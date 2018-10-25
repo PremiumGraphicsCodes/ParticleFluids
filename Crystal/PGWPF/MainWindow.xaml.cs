@@ -24,5 +24,14 @@ namespace PGWPF
         {
             InitializeComponent();
         }
+
+        private void Canvas3dView_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Canvas3dView.Instance.Render();
+        }
     }
 }
