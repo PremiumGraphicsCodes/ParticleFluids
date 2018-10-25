@@ -7,9 +7,12 @@
         xmlns:local="clr-namespace:CGStudio"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <StackPanel>
-            <Button Content="Box" Command="{Binding BoxGenerationCommand}"/>
+            <Button Content="Box" Command="{Binding CubeGenerationCommand}"/>
             <WindowsFormsHost>
                 <OpenTK:GLControl x:Name="glControl" Load="glControl_Load" Resize="glControl_Resize" Paint="glControl_Paint" />
             </WindowsFormsHost>

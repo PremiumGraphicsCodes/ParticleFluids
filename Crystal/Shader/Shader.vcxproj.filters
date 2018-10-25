@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="ShaderObject.h" />
+    <ClInclude Include="PointRenderer.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="DepthRenderer.h" />
+    <ClInclude Include="DepthTextureObject.h" />
+    <ClInclude Include="ITextureObject.h" />
+    <ClInclude Include="OnScreenRenderer.h" />
+    <ClInclude Include="ShaderUniform.h" />
+    <ClInclude Include="ShaderAttribute.h" />
+    <ClInclude Include="ShaderType.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="SmoothRenderer.h" />
+    <ClInclude Include="WireFrameRenderer.h" />
+    <ClInclude Include="IShader.h" />
+    <ClInclude Include="TextureObject.h" />
+    <ClInclude Include="CubeMapTextureObject.h" />
+    <ClInclude Include="DepthBuffer.h" />
+    <ClInclude Include="FrameBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ShaderObject.cpp" />
+    <ClCompile Include="PointRenderer.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="DepthRenderer.cpp" />
+    <ClCompile Include="OnScreenRenderer.cpp" />
+    <ClCompile Include="ShaderUniform.cpp" />
+    <ClCompile Include="ShaderAttribute.cpp" />
+    <ClCompile Include="ShaderType.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="SmoothRenderer.cpp" />
+    <ClCompile Include="WireFrameRenderer.cpp" />
+    <ClCompile Include="TextureObject.cpp" />
+    <ClCompile Include="CubeMapTextureObject.cpp" />
+    <ClCompile Include="DepthTextureObject.cpp" />
+    <ClCompile Include="DepthBuffer.cpp" />
+    <ClCompile Include="FrameBuffer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
