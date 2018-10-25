@@ -8,8 +8,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <WindowsFormsHost>
-            <OpenTK:GLControl x:Name="glControl" Load="glControl_Load" Resize="glControl_Resize" Paint="glControl_Paint" />
-        </WindowsFormsHost>
+        <StackPanel>
+            <Button Content="Box" Command="{Binding BoxGenerationCommand}"/>
+            <WindowsFormsHost>
+                <OpenTK:GLControl x:Name="glControl" Load="glControl_Load" Resize="glControl_Resize" Paint="glControl_Paint" />
+            </WindowsFormsHost>
+        </StackPanel>
     </Grid>
 </Window>
