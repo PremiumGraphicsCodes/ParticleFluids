@@ -2,14 +2,17 @@
 
 namespace PGWPF
 {
-    /// <summary>
-    /// Canvas3dView.xaml の相互作用ロジック
-    /// </summary>
     public partial class Canvas3dView : UserControl
     {
+        private PGCLI.OpenGLSimpleAdapter adapter;
+
         public Canvas3dView()
         {
             InitializeComponent();
+            Loaded += (s, e) => {
+                var handle = Host.Handle;               
+                adapter = new PGCLI.OpenGLSimpleAdapter(handle);
+            };
         }
 
     }
