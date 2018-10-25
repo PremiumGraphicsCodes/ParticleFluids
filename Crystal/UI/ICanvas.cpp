@@ -83,24 +83,22 @@ void ICanvas::fitCamera(const Box3d& boundingBox)
 	camera->setFar(dist * 10.0f);
 	camera->setTarget(boundingBox.getCenter());
 	camera->moveTo(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0));
-	camera->setAngle(45.0f, 45.0f);
-
 }
 
 void ICanvas::setCameraXY(const Box3d& boundingBox)
 {
 	fitCamera(boundingBox);
-	camera->setAngle(0.0f, 0.0f);
+	camera->setRotation(glm::mat4());
 }
 
 void ICanvas::setCameraYZ(const Box3d& boundingBox)
 {
 	fitCamera(boundingBox);
-	camera->setAngle(90.0f, 0.0f);
+	camera->rotate(glm::radians(90.0f), 0.0);
 }
 
 void ICanvas::setCameraZX(const Box3d& boundingBox)
 {
 	fitCamera(boundingBox);
-	camera->setAngle(0.0f, 90.0f);
+	camera->rotate(0.0, glm::radians(90.0f));
 }
