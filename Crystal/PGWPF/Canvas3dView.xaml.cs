@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Interop;
 
@@ -31,6 +32,28 @@ namespace PGWPF
                 adapter.Render();
             };
             */
+        }
+
+        private void WindowsFormsHost_Initialized(object sender, System.EventArgs e)
+        {
+            this.adapter = new PGCLI.OpenGLSimpleAdapter(Panel.Handle);
+            Panel.Paint += OnPaint;
+            Panel.Resize += OnResize;
+        }
+
+        private void OnResize(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void OnPaint(object sender, PaintEventArgs e)
+        {
+            this.adapter.Render();
+        }
+
+        private void WindowsFormsHost_SizeChanged(object sender, System.Windows.SizeChangedEventArgs e)
+        {
+
         }
     }
 }

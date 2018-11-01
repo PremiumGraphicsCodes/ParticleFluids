@@ -8,8 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <WindowsFormsHost>
-            <winform:Label Text="Windows Forms Label" />
+        <WindowsFormsHost x:Name="Host" Initialized="WindowsFormsHost_Initialized" SizeChanged="WindowsFormsHost_SizeChanged">
+            <winform:Panel x:Name="Panel"/>
         </WindowsFormsHost>
     </Grid>
 </UserControl>
