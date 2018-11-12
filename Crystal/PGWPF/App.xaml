@@ -1,7 +1,7 @@
-﻿<Application x:Class="PGWPF.App"
+﻿<Application x:Class="PG.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PGWPF"
+             xmlns:local="clr-namespace:PG"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

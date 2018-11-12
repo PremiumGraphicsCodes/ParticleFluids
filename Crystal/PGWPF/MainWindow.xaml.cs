@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace PGWPF
+namespace PG
 {
     public partial class MainWindow : Window
     {

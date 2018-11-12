@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PGWPF.Math;
+using PG.Math;
 
-namespace PGWPF.Shape
+namespace PG.Shape
 {
     public class WireFrame
     {

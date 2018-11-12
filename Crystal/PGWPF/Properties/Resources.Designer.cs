@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PGWPF.Properties
+namespace PG.Properties
 {
 
 

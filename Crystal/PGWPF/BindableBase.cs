@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PGWPF
+namespace PG
 {
     /// <summary>
     /// モデルを簡略化するための <see cref="INotifyPropertyChanged"/> の実装。
