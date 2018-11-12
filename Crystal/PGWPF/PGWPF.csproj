@@ -59,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Math\Line3d.cs" />
+    <Compile Include="Math\Vector3d.cs" />
+    <Compile Include="Shape\PolygonMesh.cs" />
+    <Compile Include="Shape\WireFrame.cs" />
     <Page Include="Canvas3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -75,6 +79,7 @@
     <Compile Include="Canvas3dView.xaml.cs">
       <DependentUpon>Canvas3dView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Generation\SphereGenerationViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -82,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="PolygonGenerationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

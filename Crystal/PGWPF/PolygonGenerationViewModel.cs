@@ -7,11 +7,7 @@ using System.Windows.Input;
 
 namespace PGWPF
 {
-    public class MainWindowViewModel : BindableBase
+    public class PolygonGenerationViewModel : BindableBase
     {
-        public MainWindowViewModel()
-        {
-            ;
-        }
     }
 }
