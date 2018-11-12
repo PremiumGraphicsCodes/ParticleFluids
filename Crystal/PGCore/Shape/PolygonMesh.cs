@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PGWPF.Shape
 {
-    class PolygonMesh
+    public class PolygonMesh
     {
     }
 }

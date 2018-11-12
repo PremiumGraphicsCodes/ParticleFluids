@@ -59,10 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Math\Line3d.cs" />
-    <Compile Include="Math\Vector3d.cs" />
-    <Compile Include="Shape\PolygonMesh.cs" />
-    <Compile Include="Shape\WireFrame.cs" />
+    <Compile Include="Generation\PolygonMesh\BoxGenerationViewModel.cs" />
+    <Compile Include="Generation\PolygonMesh\SphereGenerationViewModel.cs" />
+    <Compile Include="MainModel.cs" />
     <Page Include="Canvas3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -79,7 +78,6 @@
     <Compile Include="Canvas3dView.xaml.cs">
       <DependentUpon>Canvas3dView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\SphereGenerationViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -117,6 +115,10 @@
     <ProjectReference Include="..\PGCLI\PGCLI.vcxproj">
       <Project>{b2fcf247-2dcb-43ff-b179-c21d15c48500}</Project>
       <Name>PGCLI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGCore\PGCore.csproj">
+      <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
+      <Name>PGCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,17 +14,20 @@ namespace PGWPF.Math
 
         public double X
         {
-            get; set;
+            get { return x; }
+            set { this.x = value; }
         }
 
         public double Y
         {
-            get; set;
+            get { return y; }
+            set { this.y = value; }
         }
 
         public double Z
         {
-            get; set;
+            get { return z; }
+            set { this.z = value; }
         }
 
         public Vector3d(double x, double y, double z)
