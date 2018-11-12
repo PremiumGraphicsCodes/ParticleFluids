@@ -71,6 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BindableBase.cs" />
     <Compile Include="Canvas3dView.xaml.cs">
       <DependentUpon>Canvas3dView.xaml</DependentUpon>
     </Compile>
@@ -80,6 +81,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

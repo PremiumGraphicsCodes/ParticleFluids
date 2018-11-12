@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:PGWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-        <local:Canvas3dView Loaded="Canvas3dView_Loaded"/>
+        <local:Canvas3dView />
+        <Button Content="Sphere" Command="{Binding SphereGenerationCommand}" HorizontalAlignment="Left" Margin="618,43,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Box" Command="{Binding BoxGenerationCommand}" HorizontalAlignment="Left" Margin="618,83,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Cylinder" Command="{Binding CylinderGenerationCommand}" HorizontalAlignment="Left" Margin="618,123,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>
