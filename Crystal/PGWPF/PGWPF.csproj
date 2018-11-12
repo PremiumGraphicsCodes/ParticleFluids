@@ -62,6 +62,7 @@
     <Compile Include="Generation\ParticleSystem\ParticleSystemGenerationView.xaml.cs">
       <DependentUpon>ParticleSystemGenerationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Generation\ParticleSystem\SphereGenerationViewModel.cs" />
     <Compile Include="Generation\PolygonMesh\BoxGenerationViewModel.cs" />
     <Compile Include="Generation\PolygonMesh\CylinderGenerationViewModel.cs" />
     <Compile Include="Generation\PolygonMesh\PolygonMeshGenerationView.xaml.cs">
@@ -135,6 +136,9 @@
       <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
       <Name>PGCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generation\WireFrame\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

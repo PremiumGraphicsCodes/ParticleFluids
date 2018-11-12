@@ -41,6 +41,11 @@
             get { return System.Math.Sqrt(LengthSquared); }
         }
 
+        public Vector3d Normalized
+        {
+            get { return this / Length; }
+        }
+
         public double DistanceSquared(Vector3d rhs)
         {
             var xx = x - rhs.x;
@@ -81,6 +86,21 @@
             var yy = rhs.y - lhs.y;
             var zz = rhs.z - lhs.z;
             return new Vector3d(xx, yy, zz);
+        }
+
+        public static Vector3d operator*(Vector3d v, double s)
+        {
+            return new Vector3d(v.x * s, v.y * s, v.z * s);
+        }
+
+        public static Vector3d operator*(double s, Vector3d v)
+        {
+            return v * s;
+        }
+
+        public static Vector3d operator/(Vector3d v, double s)
+        {
+            return v * (1.0 / s);
         }
     }
 }

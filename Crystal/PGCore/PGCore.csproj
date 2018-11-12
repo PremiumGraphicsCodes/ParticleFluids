@@ -45,9 +45,11 @@
     <Compile Include="Math\Cylinder3d.cs" />
     <Compile Include="Math\Line3d.cs" />
     <Compile Include="Math\Sphere3d.cs" />
+    <Compile Include="Math\Triangle3d.cs" />
     <Compile Include="Math\Vector3d.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shape\ParticleSystem.cs" />
+    <Compile Include="Shape\ParticleSystemBuilder.cs" />
     <Compile Include="Shape\PolygonMesh.cs" />
     <Compile Include="Shape\WireFrame.cs" />
     <Compile Include="Shape\WireFrameBuilder.cs" />

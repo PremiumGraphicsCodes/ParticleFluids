@@ -12,6 +12,18 @@ namespace PG.CGStudio.Generation
         private int unum;
         private int vnum;
 
+        public int UNum
+        {
+            get { return unum; }
+            set { this.SetProperty(ref unum, value); }
+        }
+
+        public int VNum
+        {
+            get { return vnum; }
+            set { this.SetProperty(ref vnum, value); }
+        }
+
         public class ExecuteCommandImpl : ICommand
         {
             private SphereGenerationViewModel viewModel;
