@@ -102,5 +102,10 @@
         {
             return v * (1.0 / s);
         }
+
+        public bool IsSame(Vector3d rhs, double tolerance)
+        {
+            return DistanceSquared(rhs) < tolerance * tolerance;
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace PG.Shape
             {
                 for (double phi = 0.0; phi < pi; phi += dphi)
                 {
-                    positions.Add( sphere.GetPosition(theta, phi) );
+                    positions.Add( sphere.GetPositionByAngle(theta, phi) );
                 }
             }
         }

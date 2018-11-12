@@ -17,7 +17,14 @@ namespace PG.Math
             this.center = center;
         }
 
-        public Vector3d GetPosition(double theta, double phi)
+        public Vector3d GetPosition(double u, double v)
+        {
+            var theta = u * System.Math.PI * 2.0;
+            var phi = v * System.Math.PI;
+            return GetPositionByAngle(theta, phi);
+        }
+
+        public Vector3d GetPositionByAngle(double theta, double phi)
         {
             var x = radius * System.Math.Sin(theta) * System.Math.Cos(phi);
             var y = radius * System.Math.Sin(theta) * System.Math.Sin(phi);
