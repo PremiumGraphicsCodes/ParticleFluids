@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{49D0F9EE-05CA-4B54-AA42-9F912CF6BEEE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PGWPF</RootNamespace>
-    <AssemblyName>PGWPF</AssemblyName>
+    <RootNamespace>PG.CGStudio</RootNamespace>
+    <AssemblyName>CGStudio</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -59,10 +59,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Generation\ParticleSystem\ParticleSystemGenerationView.xaml.cs">
+      <DependentUpon>ParticleSystemGenerationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Generation\PolygonMesh\BoxGenerationViewModel.cs" />
+    <Compile Include="Generation\PolygonMesh\CylinderGenerationViewModel.cs" />
+    <Compile Include="Generation\PolygonMesh\PolygonMeshGenerationView.xaml.cs">
+      <DependentUpon>PolygonMeshGenerationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Generation\PolygonMesh\SphereGenerationViewModel.cs" />
     <Compile Include="MainModel.cs" />
     <Page Include="Canvas3dView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\ParticleSystem\ParticleSystemGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\PolygonMesh\PolygonMeshGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

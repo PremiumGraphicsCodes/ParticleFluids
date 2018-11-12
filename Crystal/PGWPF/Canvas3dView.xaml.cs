@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Interop;
 
-namespace PG
+namespace PG.CGStudio
 {
     public partial class Canvas3dView : System.Windows.Controls.UserControl
     {

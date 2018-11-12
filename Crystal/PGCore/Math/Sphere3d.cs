@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PG.Math
+{
+    public class Sphere3d
+    {
+        private double radius;
+        private Vector3d center;
+
+        public Sphere3d(double radius, Vector3d center)
+        {
+            this.radius = radius;
+            this.center = center;
+        }
+
+        public Vector3d GetPosition(double theta, double phi)
+        {
+            var x = radius * System.Math.Sin(theta) * System.Math.Cos(phi);
+            var y = radius * System.Math.Sin(theta) * System.Math.Sin(phi);
+            var z = radius * System.Math.Cos(theta);
+            return new Vector3d(x, y, z);
+        }
+    }
+}

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PG.Math
+﻿namespace PG.Math
 {
     public class Vector3d
     {
@@ -58,6 +52,35 @@ namespace PG.Math
         public double Distance(Vector3d rhs)
         {
             return System.Math.Sqrt(DistanceSquared(rhs));
+        }
+
+        public double Dot(Vector3d rhs)
+        {
+            return this.x * rhs.x + this.y * rhs.Y + this.z * rhs.z;
+        }
+
+        public Vector3d Cross(Vector3d rhs)
+        {
+            var xx = this.y * rhs.z - this.z * rhs.y;
+            var yy = this.z * rhs.x - this.x * rhs.z;
+            var zz = this.x * rhs.y - this.y * rhs.x;
+            return new Vector3d(xx, yy, zz);
+        }
+
+        public static Vector3d operator+(Vector3d lhs, Vector3d rhs)
+        {
+            var xx = rhs.x + lhs.x;
+            var yy = rhs.y + lhs.y;
+            var zz = rhs.z + lhs.z;
+            return new Vector3d(xx, yy, zz);
+        }
+
+        public static Vector3d operator-(Vector3d lhs, Vector3d rhs)
+        {
+            var xx = rhs.x - lhs.x;
+            var yy = rhs.y - lhs.y;
+            var zz = rhs.z - lhs.z;
+            return new Vector3d(xx, yy, zz);
         }
     }
 }

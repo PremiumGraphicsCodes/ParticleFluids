@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace PG
+namespace PG.CGStudio
 {
     public partial class MainWindow : Window
     {

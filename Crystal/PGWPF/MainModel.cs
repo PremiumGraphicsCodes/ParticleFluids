@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PG.Shape;
 
-namespace PG
+namespace PG.CGStudio
 {
     public class MainModel
     {
@@ -13,5 +13,11 @@ namespace PG
         private List<WireFrame> wireFrames;
         private List<PolygonMesh> polygonMeshes;
 
+        public MainModel()
+        {
+            this.particleSystems = new List<ParticleSystem>();
+            this.wireFrames = new List<WireFrame>();
+            this.polygonMeshes = new List<PolygonMesh>();
+        }
     }
 }

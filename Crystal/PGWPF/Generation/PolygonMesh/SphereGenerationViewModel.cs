@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace PG.Generation
+namespace PG.CGStudio.Generation
 {
     public class SphereGenerationViewModel : BindableBase
     {

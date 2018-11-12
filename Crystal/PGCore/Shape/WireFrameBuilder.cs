@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace PG.CGStudio
+namespace PG.Math
 {
-    public class PolygonGenerationViewModel : BindableBase
+    public class WireFrameBuilder
     {
+        private List<Line3d> lines;
+
+//        public void build()
     }
 }
