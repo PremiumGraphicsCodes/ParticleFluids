@@ -8,9 +8,16 @@ namespace PG.Math
 {
     public class Triangle3d
     {
-        public Vector3d v1;
-        public Vector3d v2;
-        public Vector3d v3;
+        private Vector3d v1;
+        private Vector3d v2;
+        private Vector3d v3;
+
+        public Triangle3d(Vector3d v1, Vector3d v2, Vector3d v3)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.v3 = v3;
+        }
 
         public Vector3d Normal
         {

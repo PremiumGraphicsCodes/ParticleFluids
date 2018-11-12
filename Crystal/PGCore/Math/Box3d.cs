@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PG.Math
+﻿namespace PG.Math
 {
     public class Box3d
     {
@@ -20,6 +14,14 @@ namespace PG.Math
             max.X = System.Math.Max(v1.X, v2.X);
             max.Y = System.Math.Max(v1.Y, v2.Y);
             max.Z = System.Math.Max(v1.Z, v2.Z);
+        }
+
+        public double Volume
+        {
+            get {
+                var v = max - min;
+                return v.X * v.Y * v.Z;
+            }
         }
     }
 }
