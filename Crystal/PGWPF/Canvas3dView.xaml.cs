@@ -19,24 +19,17 @@ namespace PG.CGStudio
             adapter.Render();
         }
 
-        private PGCLI.Renderer adapter;
+        private PG.CLI.Renderer adapter;
 
         public Canvas3dView()
         {
             instance = this;
             InitializeComponent();
-            /*
-            Loaded += (s, e) => {
-                var handle = Host.Handle;               
-                adapter = new PGCLI.OpenGLSimpleAdapter(handle);
-                adapter.Render();
-            };
-            */
         }
 
         private void WindowsFormsHost_Initialized(object sender, System.EventArgs e)
         {
-            this.adapter = new PGCLI.Renderer(Panel.Handle);
+            this.adapter = new PG.CLI.Renderer(Panel.Handle);
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
         }
