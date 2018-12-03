@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGCore", "PGCore\PGCore.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGCoreTest", "PGCoreTest\PGCoreTest.csproj", "{EF5360BE-7DBE-4197-AD64-55DD61ACD8F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGControl", "PGControl\PGControl.csproj", "{EF9CC996-010B-4334-BC64-8EB766BF73B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +241,18 @@ Global
 		{EF5360BE-7DBE-4197-AD64-55DD61ACD8F7}.Release|x64.Build.0 = Release|Any CPU
 		{EF5360BE-7DBE-4197-AD64-55DD61ACD8F7}.Release|x86.ActiveCfg = Release|Any CPU
 		{EF5360BE-7DBE-4197-AD64-55DD61ACD8F7}.Release|x86.Build.0 = Release|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Release|x64.Build.0 = Release|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF9CC996-010B-4334-BC64-8EB766BF73B0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
