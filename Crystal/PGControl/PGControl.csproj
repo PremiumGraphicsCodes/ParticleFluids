@@ -65,6 +65,7 @@
     <Compile Include="Vector3dView.xaml.cs">
       <DependentUpon>Vector3dView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vector3dViewModel.cs" />
     <Page Include="Sphere3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
