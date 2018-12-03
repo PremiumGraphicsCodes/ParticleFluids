@@ -1,9 +1,11 @@
 #include "ParticlePanel.h"
 #include "../ThirdParty/imgui-1.51/imgui.h"
+#include "../Math/Sphere3d.h"
 #include "../UI/IModel.h"
 #include "../UI/ICanvas.h"
 
 #include <cereal/cereal.hpp>
+#include <random>
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -41,6 +43,38 @@ void ParticlePanel::show()
 		}
 		ImGui::EndPopup();
 	}
+
+	if (ImGui::Button("Sphere")) {
+		ImGui::OpenPopup("Sphere");
+	}
+	if (ImGui::BeginPopup("Sphere")) {
+		static glm::vec3 center = { 0.0f, 0.0f, 0.0f };
+		ImGui::InputFloat3("Min", &center[0]);
+		static float radius = 1.0f;
+		ImGui::InputFloat("Center", &radius);
+		static float size = 1.0f;
+		ImGui::InputFloat("Size", &size);
+		static int count = 10000;
+		ImGui::InputInt("Count", &count);
+
+		if (ImGui::Button("OK")) {
+			const Math::Sphere3d sphere(center, radius);
+			std::mt19937 mt{ std::random_device{}() };
+			std::uniform_real_distribution<double> dist(0.0, 1.0);
+			std::vector<Vector3df> positions;
+			for (int i = 0; i < count; ++i) {
+				const auto u = dist(mt);
+				const auto v = dist(mt);
+				positions.push_back( sphere.getPosition(u, v) );
+			}
+			model->getRepository()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), size);
+			canvas->setViewModel(model->toViewModel());
+			canvas->fitCamera(model->getBoundingBox());
+			ImGui::CloseCurrentPopup();
+		}
+		ImGui::EndPopup();
+	}
+
 
 	ImGui::End();
 }
