@@ -4,7 +4,7 @@ using namespace System;
 
 namespace Crystal {
 	namespace UI {
-		class Model;
+		class IModel;
 	}
 }
 
@@ -25,7 +25,7 @@ public:
 	int AddPolygonMesh(PG::Shape::PolygonMesh^ src);
 
 internal:
-	Crystal::UI::Model* instance;
+	Crystal::UI::IModel* instance;
 };
 
 	}

@@ -11,6 +11,11 @@ namespace PG.Shape
     {
         private List<Vector3d> positions;
 
+        public List<Vector3d> Positions
+        {
+            get { return positions; }
+        }
+
         public ParticleSystem(List<Vector3d> positions)
         {
             this.positions = positions;

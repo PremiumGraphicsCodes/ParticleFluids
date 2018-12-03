@@ -11,6 +11,11 @@ namespace PG.Shape
     {
         private List<Vector3d> positions;
 
+        public ParticleSystemBuilder()
+        {
+            positions = new List<Vector3d>();
+        }
+
         public void Build(Sphere3d sphere, int udiv, int vdiv)
         {
             var pi = System.Math.PI;
@@ -24,5 +29,7 @@ namespace PG.Shape
                 }
             }
         }
+
+        public ParticleSystem ParticleSystem { get { return new ParticleSystem(positions); } }
     }
 }
