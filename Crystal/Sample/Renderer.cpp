@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "../../Crystal/UI/ViewModel.h"
+#include "../../Crystal/UI/ViewModel3d.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -49,7 +49,7 @@ bool Renderer::build()
 	return true;
 }
 
-void Renderer::setViewModel(const ViewModel& vm)
+void Renderer::setViewModel(const ViewModel3d& vm)
 {
 	this->pointRenderer.setBuffer(vm.getPointBuffer());
 	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);

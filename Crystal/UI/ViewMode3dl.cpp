@@ -1,16 +1,16 @@
-#include "ViewModel.h"
+#include "ViewModel3d.h"
 #include "IModel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-void ViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
+void ViewModel3d::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
 {
 	pointBuffer.add(pos, c, size);
 }
 
-void ViewModel::add(const ParticleSystemObject& object)
+void ViewModel3d::add(const ParticleSystemObject& object)
 {
 	const auto& particles = object.getShape()->getParticles();
 	for (auto p : particles) {
@@ -18,7 +18,7 @@ void ViewModel::add(const ParticleSystemObject& object)
 	}
 }
 
-void ViewModel::add(const WireFrameObject& object)
+void ViewModel3d::add(const WireFrameObject& object)
 {
 	const auto& lines = object.getShape()->getLines();
 	const auto& color = object.getColor();
@@ -29,7 +29,7 @@ void ViewModel::add(const WireFrameObject& object)
 	}
 }
 
-void ViewModel::add(const PolygonMeshObject& object)
+void ViewModel3d::add(const PolygonMeshObject& object)
 {
 	auto material = object.getMaterial();
 	triangleBuffer.add(*object.getShape(), material);

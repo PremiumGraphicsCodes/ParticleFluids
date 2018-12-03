@@ -2,18 +2,21 @@
 #include "Model.h"
 
 #include "../UI/IModel.h"
+#include "../UI/ViewModel3d.h"
 
 #include "Converter.h"
 
 using namespace PG::CLI;
 
 Model::Model() :
-	instance(new Crystal::UI::IModel())
+	instance(new Crystal::UI::IModel()),
+	viewModel(new Crystal::UI::ViewModel3d())
 {
 }
 
 Model::~Model()
 {
+	delete viewModel;
 	delete instance;
 }
 

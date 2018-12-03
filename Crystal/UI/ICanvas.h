@@ -8,7 +8,7 @@
 #include <list>
 
 #include "IUICtrl.h"
-#include "ViewModel.h"
+#include "ViewModel3d.h"
 #include "IRenderer.h"
 
 namespace Crystal {
@@ -30,7 +30,7 @@ public:
 
 	void setRenderer(IRenderer* renderer) { this->renderer.reset(renderer); }
 
-	void setViewModel(ViewModel viewModel) { this->renderer->setViewModel(viewModel); }
+	void setViewModel(ViewModel3d viewModel) { this->renderer->setViewModel(viewModel); }
 
 	void render(const int width, const int height);
 
@@ -68,7 +68,7 @@ private:
 	std::unique_ptr<Graphics::ICamera> camera;
 	std::unique_ptr<IUICtrl> ctrl;
 	std::unique_ptr<IRenderer> renderer;
-	ViewModel viewModel;
+	ViewModel3d viewModel;
 };
 	}
 }

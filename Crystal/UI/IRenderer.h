@@ -2,7 +2,7 @@
 
 namespace Crystal {
 	namespace UI {
-		class ViewModel;
+		class ViewModel3d;
 
 class IRenderer
 {
@@ -13,7 +13,7 @@ public:
 
 	virtual void render(const int width, const int height) = 0;
 
-	virtual void setViewModel(const ViewModel& vm) = 0;
+	virtual void setViewModel(const ViewModel3d& vm) = 0;
 };
 	}
 }

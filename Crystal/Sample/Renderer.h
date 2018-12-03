@@ -8,7 +8,7 @@
 
 namespace Crystal {
 	namespace UI {
-		class ViewModel;
+		class ViewModel3d;
 
 class Renderer : public IRenderer
 {
@@ -19,7 +19,7 @@ public:
 
 	bool build();
 
-	void setViewModel(const ViewModel& vm) override;
+	void setViewModel(const ViewModel3d& vm) override;
 
 	void render(const int width, const int height) override;
 

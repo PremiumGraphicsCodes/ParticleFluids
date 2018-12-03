@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ObjectRepository.h"
-#include "ViewModel.h"
+#include "ViewModel3d.h"
 #include "../Shape/WireFrame.h"
 
 namespace Crystal {
@@ -18,7 +18,7 @@ public:
 
 	ObjectRepository* getRepository() { return &objects; }
 
-	virtual ViewModel toViewModel() const;
+	virtual ViewModel3d toViewModel() const;
 
 	virtual Math::Box3d getBoundingBox() const;
 

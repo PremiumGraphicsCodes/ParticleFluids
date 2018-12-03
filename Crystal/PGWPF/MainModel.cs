@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PG.CLI;
+using PG.Core.Shape;
 
 namespace PG.CGStudio
 {
     public class MainModel
     {
-        private Model model;
+        private PG.CLI.Model model;
 
         static MainModel instance;
 
@@ -17,8 +17,13 @@ namespace PG.CGStudio
 
         public MainModel()
         {
-            model = new Model();
+            model = new PG.CLI.Model();
             instance = this;
+        }
+
+        public int Add(ParticleSystem particleSystem)
+        {
+            return model.AddParticleSystem(particleSystem);
         }
     }
 }

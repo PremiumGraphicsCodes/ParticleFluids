@@ -70,7 +70,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                     positions.Add(pos);
                 }
                 var particles = new PG.Core.Shape.ParticleSystem(positions);
-//                MainModel.Instance.
+                MainModel.Instance.Add(particles);
                 //var builder = new ParticleSystemBuilder();
                 //builder.Build()
             }

@@ -5,6 +5,7 @@ using namespace System;
 namespace Crystal {
 	namespace UI {
 		class IModel;
+		class ViewModel3d;
 	}
 }
 
@@ -26,6 +27,7 @@ public:
 
 internal:
 	Crystal::UI::IModel* instance;
+	Crystal::UI::ViewModel3d* viewModel;
 };
 
 	}

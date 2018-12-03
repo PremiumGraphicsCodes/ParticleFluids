@@ -25,9 +25,9 @@ bool IModel::write(const std::string& filename) const
 	return false;
 }
 
-ViewModel IModel::toViewModel() const
+ViewModel3d IModel::toViewModel() const
 {
-	ViewModel vm;
+	ViewModel3d vm;
 	const auto& particleSystems = objects.getParticleSystems();
 	for (const auto& p : particleSystems) {
 		vm.add(p);
