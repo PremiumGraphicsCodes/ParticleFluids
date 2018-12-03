@@ -1,13 +1,17 @@
-﻿using Prism.Mvvm;
+﻿using PG.Control;
+using PG.Core.Math;
+using Prism.Mvvm;
 using System;
 using System.Windows.Input;
 
-namespace PG.CGStudio.Generation
+namespace PG.CGStudio.Generation.PolygonMesh
 {
     public class SphereGenerationViewModel : BindableBase
     {
         private int unum;
         private int vnum;
+
+        private Sphere3dViewModel sphereViewModel;
 
         public int UNum
         {
@@ -19,6 +23,16 @@ namespace PG.CGStudio.Generation
         {
             get { return vnum; }
             set { this.SetProperty(ref vnum, value); }
+        }
+
+        public Sphere3dViewModel SphereViewModel
+        {
+            get { return sphereViewModel; }
+        }
+
+        public SphereGenerationViewModel()
+        {
+            this.sphereViewModel = new Sphere3dViewModel();
         }
 
         public class ExecuteCommandImpl : ICommand

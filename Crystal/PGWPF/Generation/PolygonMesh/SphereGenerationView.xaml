@@ -9,6 +9,10 @@
              d:DesignHeight="450" d:DesignWidth="300">
     <StackPanel>
         <Control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
+        <Label Content="UNum"/>
+        <TextBox Text="{Binding UNum}"/>
+        <Label Content="VNum"/>
+        <TextBox Text="{Binding VNum}"/>
         <Button Content="Generate" Command="{Binding GenerateCommand}"/>
     </StackPanel>
 </UserControl>
