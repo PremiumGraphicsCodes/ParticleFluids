@@ -15,7 +15,7 @@ Model::~Model()
 	delete instance;
 }
 
-int Model::AddParticleSystem(PG::Shape::ParticleSystem^ src)
+int Model::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
 {
 	auto positions = src->Positions;
 	std::vector<Crystal::Math::Vector3df> ps;
@@ -26,12 +26,12 @@ int Model::AddParticleSystem(PG::Shape::ParticleSystem^ src)
 	return instance->getRepository()->addParticleSystem(ps, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0), 1.0f);
 }
 
-int Model::AddWireFrame(PG::Shape::WireFrame^ src)
+int Model::AddWireFrame(PG::Core::Shape::WireFrame^ src)
 {
 	return -1;
 }
 
-int Model::AddPolygonMesh(PG::Shape::PolygonMesh^ src)
+int Model::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
 {
 	return -1;
 }

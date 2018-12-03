@@ -1,7 +1,7 @@
-﻿using PG.Math;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using PG.Core.Math;
 
-namespace PG.Shape
+namespace PG.Core.Shape
 {
     public class PolygonMeshBuilder
     {

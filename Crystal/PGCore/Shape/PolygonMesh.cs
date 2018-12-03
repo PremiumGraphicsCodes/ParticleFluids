@@ -1,11 +1,7 @@
-﻿using PG.Math;
-using System;
+﻿using PG.Core.Math;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PG.Shape
+namespace PG.Core.Shape
 {
     public class PolygonMesh
     {

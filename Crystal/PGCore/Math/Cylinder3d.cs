@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PG.Math
+namespace PG.Core.Math
 {
     public class Cylinder3d
     {

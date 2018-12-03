@@ -18,11 +18,11 @@ public:
 
 	~Model(void);
 
-	int AddParticleSystem(PG::Shape::ParticleSystem^ src);
+	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src);
 
-	int AddWireFrame(PG::Shape::WireFrame^ src);
+	int AddWireFrame(PG::Core::Shape::WireFrame^ src);
 
-	int AddPolygonMesh(PG::Shape::PolygonMesh^ src);
+	int AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src);
 
 internal:
 	Crystal::UI::IModel* instance;

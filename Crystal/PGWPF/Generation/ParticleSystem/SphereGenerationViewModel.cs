@@ -1,5 +1,5 @@
-﻿using PG.Math;
-using PG.Shape;
+﻿using PG.Core.Math;
+using PG.Core.Shape;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +51,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                     var pos = viewModel.sphere.GetPositionByAngle(theta, phi);
                     positions.Add(pos);
                 }
-                var particles = new PG.Shape.ParticleSystem(positions);
+                var particles = new PG.Core.Shape.ParticleSystem(positions);
                 //var builder = new ParticleSystemBuilder();
                 //builder.Build()
             }

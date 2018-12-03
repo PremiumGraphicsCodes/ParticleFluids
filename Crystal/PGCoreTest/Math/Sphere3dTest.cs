@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PG.Math;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PG.Core.Math;
 
 namespace PGCoreTest.Math
 {

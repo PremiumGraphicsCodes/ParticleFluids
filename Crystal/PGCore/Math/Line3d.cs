@@ -1,4 +1,4 @@
-﻿namespace PG.Math
+﻿namespace PG.Core.Math
 {
     public class Line3d
     {

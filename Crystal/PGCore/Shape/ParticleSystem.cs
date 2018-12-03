@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PG.Math;
+﻿using System.Collections.Generic;
+using PG.Core.Math;
 
-namespace PG.Shape
+namespace PG.Core.Shape
 {
     public class ParticleSystem
     {

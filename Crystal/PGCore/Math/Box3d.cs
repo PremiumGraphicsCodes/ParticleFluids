@@ -1,4 +1,4 @@
-﻿namespace PG.Math
+﻿namespace PG.Core.Math
 {
     public class Box3d
     {
@@ -7,6 +7,9 @@
 
         public Box3d(Vector3d v1, Vector3d v2)
         {
+            this.min = new Vector3d(0,0,0);
+            this.max = new Vector3d(0,0,0);
+
             min.X = System.Math.Min(v1.X, v2.X);
             min.Y = System.Math.Min(v1.Y, v2.Y);
             min.Z = System.Math.Min(v1.Z, v2.Z);
