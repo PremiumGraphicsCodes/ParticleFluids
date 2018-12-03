@@ -11,9 +11,14 @@ namespace PG.CGStudio
     {
         private Model model;
 
+        static MainModel instance;
+
+        public static MainModel Instance { get { return instance; } }
+
         public MainModel()
         {
             model = new Model();
+            instance = this;
         }
     }
 }

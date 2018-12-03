@@ -8,6 +8,9 @@
              d:DesignHeight="450" d:DesignWidth="300">
     <StackPanel>
         <local:Vector3dView DataContext="{Binding CenterViewModel}"/>
-        <TextBox Text="{Binding Radius}"/>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Radius"/>
+            <TextBox Text="{Binding Radius}" Width="50"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

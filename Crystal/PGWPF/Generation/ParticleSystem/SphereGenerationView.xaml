@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <Grid>
+    <StackPanel>
         <Control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
-    </Grid>
+        <Button Content="Generate" Command="{Binding GenerationCommand}"/>
+    </StackPanel>
 </UserControl>

@@ -11,6 +11,8 @@ namespace PG.CGStudio.Generation.ParticleSystem
     {
         private Sphere3dViewModel sphereViewModel;
 
+        private GenerationCommandImpl generationCommand;
+
         private int count;
 
         public Sphere3dViewModel SphereViewModel
@@ -24,17 +26,23 @@ namespace PG.CGStudio.Generation.ParticleSystem
             set { this.SetProperty(ref count, value); }
         }
 
+        public ICommand GenerationCommand
+        {
+            get { return generationCommand; }
+        }
+
         public SphereGenerationViewModel()
         {
             this.sphereViewModel = new Sphere3dViewModel();
             this.count = 10000;
+            this.generationCommand = new GenerationCommandImpl(this);
         }
 
-        public class ExecuteCommandImpl : ICommand
+        public class GenerationCommandImpl : ICommand
         {
             private SphereGenerationViewModel viewModel;
 
-            public ExecuteCommandImpl(SphereGenerationViewModel vm)
+            public GenerationCommandImpl(SphereGenerationViewModel vm)
             {
                 this.viewModel = vm;
             }
@@ -54,6 +62,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
             {
                 var random = new System.Random();
                 var positions = new List<Vector3d>();
+                var sphere = viewModel.sphereViewModel.Sphere;
                 for (int i = 0; i < viewModel.Count; ++i) {
                     var theta = random.NextDouble() * 2.0 * System.Math.PI;
                     var phi = random.NextDouble() * System.Math.PI;
@@ -61,6 +70,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                     positions.Add(pos);
                 }
                 var particles = new PG.Core.Shape.ParticleSystem(positions);
+//                MainModel.Instance.
                 //var builder = new ParticleSystemBuilder();
                 //builder.Build()
             }
