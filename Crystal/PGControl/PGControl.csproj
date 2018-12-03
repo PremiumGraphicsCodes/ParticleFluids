@@ -65,12 +65,20 @@
       <DependentUpon>Box3dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Box3dViewModel.cs" />
+    <Compile Include="Cylinder3dView.xaml.cs">
+      <DependentUpon>Cylinder3dView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cylinder3dViewModel.cs" />
     <Compile Include="Sphere3dViewModel.cs" />
     <Compile Include="Vector3dView.xaml.cs">
       <DependentUpon>Vector3dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vector3dViewModel.cs" />
     <Page Include="Box3dView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cylinder3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

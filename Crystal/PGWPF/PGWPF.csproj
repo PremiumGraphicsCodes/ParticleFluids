@@ -89,6 +89,9 @@
     <Compile Include="Generation\PolygonMesh\PolygonMeshGenerationView.xaml.cs">
       <DependentUpon>PolygonMeshGenerationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Generation\PolygonMesh\SphereGenerationView.xaml.cs">
+      <DependentUpon>SphereGenerationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Generation\PolygonMesh\SphereGenerationViewModel.cs" />
     <Compile Include="MainModel.cs" />
     <Page Include="Canvas3dView.xaml">
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Generation\PolygonMesh\PolygonMeshGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\PolygonMesh\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
