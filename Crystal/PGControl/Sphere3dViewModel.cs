@@ -10,6 +10,11 @@ namespace PG.Control
 
         public Vector3dViewModel CenterViewModel { get { return centerViewModel; } }
 
+        public Sphere3d Sphere
+        {
+            get { return new Sphere3d(radius, centerViewModel.Vector); }
+        }
+
         public double Radius
         {
             get { return radius; }

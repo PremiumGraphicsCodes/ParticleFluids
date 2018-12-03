@@ -3,19 +3,31 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using PG.Control;
 
 namespace PG.CGStudio.Generation.ParticleSystem
 {
     public class SphereGenerationViewModel : BindableBase
     {
-        private Sphere3d sphere;
+        private Sphere3dViewModel sphereViewModel;
 
         private int count;
+
+        public Sphere3dViewModel SphereViewModel
+        {
+            get {return sphereViewModel; }
+        }
 
         public int Count
         {
             get { return count; }
             set { this.SetProperty(ref count, value); }
+        }
+
+        public SphereGenerationViewModel()
+        {
+            this.sphereViewModel = new Sphere3dViewModel();
+            this.count = 10000;
         }
 
         public class ExecuteCommandImpl : ICommand
@@ -45,7 +57,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 for (int i = 0; i < viewModel.Count; ++i) {
                     var theta = random.NextDouble() * 2.0 * System.Math.PI;
                     var phi = random.NextDouble() * System.Math.PI;
-                    var pos = viewModel.sphere.GetPositionByAngle(theta, phi);
+                    var pos = viewModel.sphereViewModel.Sphere.GetPositionByAngle(theta, phi);
                     positions.Add(pos);
                 }
                 var particles = new PG.Core.Shape.ParticleSystem(positions);

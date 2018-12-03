@@ -75,6 +75,10 @@
     <Compile Include="Generation\ParticleSystem\ParticleSystemGenerationView.xaml.cs">
       <DependentUpon>ParticleSystemGenerationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Generation\ParticleSystem\ParticleSystemGenerationViewModel.cs" />
+    <Compile Include="Generation\ParticleSystem\SphereGenerationView.xaml.cs">
+      <DependentUpon>SphereGenerationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Generation\ParticleSystem\SphereGenerationViewModel.cs" />
     <Compile Include="Generation\PolygonMesh\BoxGenerationViewModel.cs" />
     <Compile Include="Generation\PolygonMesh\CylinderGenerationViewModel.cs" />
@@ -88,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Generation\ParticleSystem\ParticleSystemGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\ParticleSystem\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,6 +152,10 @@
     <ProjectReference Include="..\PGCLI\PGCLI.vcxproj">
       <Project>{b2fcf247-2dcb-43ff-b179-c21d15c48500}</Project>
       <Name>PGCLI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGControl\PGControl.csproj">
+      <Project>{ef9cc996-010b-4334-bc64-8eb766bf73b0}</Project>
+      <Name>PGControl</Name>
     </ProjectReference>
     <ProjectReference Include="..\PGCore\PGCore.csproj">
       <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
