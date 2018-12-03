@@ -61,25 +61,25 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Box3dView.xaml.cs">
+      <DependentUpon>Box3dView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Box3dViewModel.cs" />
     <Compile Include="Sphere3dViewModel.cs" />
     <Compile Include="Vector3dView.xaml.cs">
       <DependentUpon>Vector3dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vector3dViewModel.cs" />
+    <Page Include="Box3dView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Sphere3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControl1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="Sphere3dView.xaml.cs">
       <DependentUpon>Sphere3dView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Page Include="Vector3dView.xaml">
       <SubType>Designer</SubType>

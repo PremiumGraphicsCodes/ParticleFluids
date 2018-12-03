@@ -5,6 +5,16 @@
         private Vector3d min;
         private Vector3d max;
 
+        public Vector3d Min
+        {
+            get { return min; }
+        }
+
+        public Vector3d Max
+        {
+            get { return max; }
+        }
+
         public Box3d(Vector3d v1, Vector3d v2)
         {
             this.min = new Vector3d(0,0,0);

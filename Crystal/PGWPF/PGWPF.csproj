@@ -72,6 +72,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Generation\ParticleSystem\BoxGenerationView.xaml.cs">
+      <DependentUpon>BoxGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Generation\ParticleSystem\BoxGenerationViewModel.cs" />
     <Compile Include="Generation\ParticleSystem\ParticleSystemGenerationView.xaml.cs">
       <DependentUpon>ParticleSystemGenerationView.xaml</DependentUpon>
     </Compile>
@@ -88,6 +92,10 @@
     <Compile Include="Generation\PolygonMesh\SphereGenerationViewModel.cs" />
     <Compile Include="MainModel.cs" />
     <Page Include="Canvas3dView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\ParticleSystem\BoxGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

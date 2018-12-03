@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PG.Control
 {
     /// <summary>
-    /// UserControl1.xaml の相互作用ロジック
+    /// Box3dView.xaml の相互作用ロジック
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class Box3dView : UserControl
     {
-        public UserControl1()
+        public Box3dView()
         {
             InitializeComponent();
         }

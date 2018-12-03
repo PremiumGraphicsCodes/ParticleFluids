@@ -25,7 +25,7 @@
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
-    <ClCompile Include="ViewMode3dl.cpp" />
+    <ClCompile Include="ViewModel3d.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
