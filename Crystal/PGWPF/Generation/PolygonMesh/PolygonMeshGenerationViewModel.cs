@@ -5,7 +5,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
 {
     public class PolygonMeshGenerationViewModel : BindableBase
     {
-        private SphereGenerationViewModel sphereGenerationViewModel;
+        private readonly SphereGenerationViewModel sphereGenerationViewModel;
 
         public SphereGenerationViewModel SphereGenerationViewModel { get { return sphereGenerationViewModel; } }
 

@@ -6,8 +6,8 @@ namespace PG.CGStudio
 {
     public class MainWindowViewModel : BindableBase
     {
-        private ParticleSystemGenerationViewModel particleSystemGenerationViewModel;
-        private PolygonMeshGenerationViewModel polygonMeshGenerationViewModel;
+        private readonly ParticleSystemGenerationViewModel particleSystemGenerationViewModel;
+        private readonly PolygonMeshGenerationViewModel polygonMeshGenerationViewModel;
 
         public ParticleSystemGenerationViewModel ParticleSystemGenerationViewModel
         {

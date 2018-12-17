@@ -5,7 +5,7 @@ namespace PG.Core.Shape
 {
     public class WireFrameBuilder
     {
-        private List<Line3d> lines;
+        private readonly List<Line3d> lines;
 
 //        public void build()
     }

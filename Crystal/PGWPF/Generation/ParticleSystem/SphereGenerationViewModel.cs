@@ -11,7 +11,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
     {
         private Sphere3dViewModel sphereViewModel;
 
-        private GenerationCommandImpl generationCommand;
+        private readonly GenerationCommandImpl generationCommand;
 
         private int count;
 

@@ -1,47 +1,33 @@
 ﻿using PG.Core.Math;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Reactive.Bindings;
 
 namespace PG.Control
 {
     public class Vector3dViewModel : BindableBase
     {
-        private double x;
-        private double y;
-        private double z;
+        public ReactiveProperty<double> X { get; private set; }
 
-        public double X
-        {
-            get { return x; }
-            set { this.SetProperty(ref x, value); }
-        }
+        public ReactiveProperty<double> Y { get; private set; }
 
-        public double Y
-        {
-            get { return y; }
-            set { this.SetProperty(ref y, value); }
-        }
+        public ReactiveProperty<double> Z { get; private set; }
 
-        public double Z
+        public Vector3dViewModel()
         {
-            get { return z; }
-            set { this.SetProperty(ref z, value); }
+            this.X = new ReactiveProperty<double>(0.0);
+            this.Y = new ReactiveProperty<double>(0.0);
+            this.Z = new ReactiveProperty<double>(0.0);
         }
 
         public Vector3d Vector
         {
-            get { return new Vector3d(x, y, z); ; }
+            get { return new Vector3d(X.Value, Y.Value, Z.Value); ; }
             set
             {
-                X = value.X;
-                Y = value.Y;
-                Z = value.Z;
+                X.Value = value.X;
+                Y.Value = value.Y;
+                Z.Value = value.Z;
             }
         }
-
     }
 }
