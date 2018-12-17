@@ -113,6 +113,9 @@
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Generation\PolygonMesh\BoxGenerationViewModel.cs" />
+    <Compile Include="Generation\PolygonMesh\CylinderGenerationView.xaml.cs">
+      <DependentUpon>CylinderGenerationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Generation\PolygonMesh\CylinderGenerationViewModel.cs" />
     <Compile Include="Generation\PolygonMesh\PolygonMeshGenerationView.xaml.cs">
       <DependentUpon>PolygonMeshGenerationView.xaml</DependentUpon>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Generation\PolygonMesh\BoxGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\PolygonMesh\CylinderGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

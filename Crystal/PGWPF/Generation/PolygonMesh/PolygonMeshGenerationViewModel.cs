@@ -1,17 +1,17 @@
-﻿using PG.CGStudio.Generation;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 
 namespace PG.CGStudio.Generation.PolygonMesh
 {
     public class PolygonMeshGenerationViewModel : BindableBase
     {
-        private readonly SphereGenerationViewModel sphereGenerationViewModel;
+        public SphereGenerationViewModel SphereGenerationViewModel { get; private set; }
 
-        public SphereGenerationViewModel SphereGenerationViewModel { get { return sphereGenerationViewModel; } }
+        public BoxGenerationViewModel BoxGenerationViewModel { get; private set; }
 
         public PolygonMeshGenerationViewModel()
         {
-            this.sphereGenerationViewModel = new SphereGenerationViewModel();
+            SphereGenerationViewModel = new SphereGenerationViewModel();
+            BoxGenerationViewModel = new BoxGenerationViewModel();
         }
 
     }

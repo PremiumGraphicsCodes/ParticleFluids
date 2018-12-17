@@ -17,6 +17,11 @@ namespace PG.Core.Shape
             get { return new PolygonMesh(triangles); }
         }
 
+        public void Build(Box3d box)
+        {
+            var vertices = new List<Vector3d>();
+        }
+
         public void Build(Sphere3d sphere, int u, int v)
         {
             var vertices = new Vector3d[u, v];
