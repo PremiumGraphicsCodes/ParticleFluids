@@ -11,6 +11,12 @@
             this.end = end;
         }
 
+        public Vector3d Start { get { return start; } }
+
+        public Vector3d End { get { return end; } }
+
+        public Vector3d Dir { get { return end - start; } }
+
         public double Length
         {
             get { return start.Distance(end); }
