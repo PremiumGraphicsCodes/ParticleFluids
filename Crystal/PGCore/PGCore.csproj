@@ -53,6 +53,7 @@
     <Compile Include="Shape\ParticleSystemBuilder.cs" />
     <Compile Include="Shape\PolygonMesh.cs" />
     <Compile Include="Shape\PolygonMeshBuilder.cs" />
+    <Compile Include="Shape\ShapeType.cs" />
     <Compile Include="Shape\WireFrame.cs" />
     <Compile Include="Shape\WireFrameBuilder.cs" />
   </ItemGroup>

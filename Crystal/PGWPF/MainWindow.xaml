@@ -11,7 +11,6 @@
     </Window.DataContext>
     <StackPanel Orientation="Horizontal">
         <local:Canvas3dView Width="500"/>
-        <ParticleSystem:ParticleSystemGenerationView DataContext="{Binding ParticleSystemGenerationViewModel}" Width="100"/>
-        <PolygonMesh:PolygonMeshGenerationView DataContext="{Binding PolygonMeshGenerationViewModel}" />
+        <Button Content="ParticleSystem" Command="{Binding ParticleSystemGenerationCommand}"/>
     </StackPanel>
 </Window>

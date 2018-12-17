@@ -95,6 +95,7 @@
       <DependentUpon>Cylinder3dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Cylinder3dViewModel.cs" />
+    <Compile Include="ShapeSelectBehaviour.cs" />
     <Compile Include="Sphere3dViewModel.cs" />
     <Compile Include="Vector3dView.xaml.cs">
       <DependentUpon>Vector3dView.xaml</DependentUpon>

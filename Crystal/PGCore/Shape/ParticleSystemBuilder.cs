@@ -26,6 +26,22 @@ namespace PG.Core.Shape
             }
         }
 
+        public void Build(Cylinder3d cylinder, int udiv, int vdiv)
+        {
+            /*
+            var pi = System.Math.PI;
+            var dtheta = pi * 2.0 / (double)udiv;
+            var dphi = pi / (double)vdiv;
+            for (double theta = 0.0; theta <= pi * 2.0; theta += dtheta)
+            {
+                for (double phi = 0.0; phi < pi; phi += dphi)
+                {
+                    positions.Add(cylinder.GetPosition(theta, phi));
+                }
+            }
+            */
+        }
+
         public ParticleSystem ParticleSystem { get { return new ParticleSystem(positions); } }
     }
 }
