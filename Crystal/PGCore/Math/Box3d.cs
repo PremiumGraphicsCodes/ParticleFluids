@@ -36,5 +36,16 @@
                 return v.X * v.Y * v.Z;
             }
         }
+
+        public Vector3d Length
+        {
+            get { return max - min; }
+        }
+
+        public Vector3d GetPosition(double u, double v, double w)
+        {
+            var l = Length;
+            return min + new Vector3d( l.X *u, l.Y * v, l.Z * w);
+        }
     }
 }

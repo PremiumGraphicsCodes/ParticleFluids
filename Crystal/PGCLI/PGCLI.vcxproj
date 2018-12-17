@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Canvas.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Renderer.h" />

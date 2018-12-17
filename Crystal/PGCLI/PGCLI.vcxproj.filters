@@ -6,6 +6,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Converter.h" />
+    <ClInclude Include="Canvas.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
