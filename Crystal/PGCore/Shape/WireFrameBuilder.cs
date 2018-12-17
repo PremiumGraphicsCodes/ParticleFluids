@@ -7,6 +7,16 @@ namespace PG.Core.Shape
     {
         private readonly List<Line3d> lines;
 
-//        public void build()
+        public WireFrameBuilder()
+        {
+            this.lines = new List<Line3d>();
+        }
+
+        public void Build(Box3d box)
+        {
+
+        }
+
+        public WireFrame WireFrame { get { return new WireFrame(lines); } }
     }
 }

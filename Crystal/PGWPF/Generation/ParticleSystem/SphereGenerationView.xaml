@@ -8,6 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="300">
     <StackPanel>
         <Control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
+        <TextBox DataContext="{Binding Count.Value}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

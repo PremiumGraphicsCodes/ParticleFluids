@@ -17,5 +17,10 @@ namespace PG.Core.Shape
         {
             this.lines = new List<Line3d>();
         }
+
+        public WireFrame(List<Line3d> lines)
+        {
+            this.lines = lines;
+        }
     }
 }

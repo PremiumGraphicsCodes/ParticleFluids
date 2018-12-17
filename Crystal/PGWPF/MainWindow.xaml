@@ -12,5 +12,7 @@
     <StackPanel Orientation="Horizontal">
         <local:Canvas3dView Width="500"/>
         <Button Content="ParticleSystem" Command="{Binding ParticleSystemGenerationCommand}"/>
+        <Button Content="WireFrame" Command="{Binding WireFrameGenerationCommand}"/>
+        <Button Content="PolygonMesh" Command="{Binding PolygonMeshGenerationCommand}"/>
     </StackPanel>
 </Window>
