@@ -1,29 +1,19 @@
 ﻿using PG.Control;
-using PG.Core.Math;
+using PG.Core.Shape;
 using Prism.Mvvm;
-using System;
-using System.Windows.Input;
+using Reactive.Bindings;
 
 namespace PG.CGStudio.Generation.PolygonMesh
 {
     public class SphereGenerationViewModel : BindableBase
     {
-        private int unum;
-        private int vnum;
-
         private Sphere3dViewModel sphereViewModel;
 
-        public int UNum
-        {
-            get { return unum; }
-            set { this.SetProperty(ref unum, value); }
-        }
+        public ReactiveProperty<int> UNum { get; private set; }
 
-        public int VNum
-        {
-            get { return vnum; }
-            set { this.SetProperty(ref vnum, value); }
-        }
+        public ReactiveProperty<int> VNum { get; private set; }
+
+        public ReactiveCommand ExecuteCommand { get; private set; }
 
         public Sphere3dViewModel SphereViewModel
         {
@@ -33,33 +23,16 @@ namespace PG.CGStudio.Generation.PolygonMesh
         public SphereGenerationViewModel()
         {
             this.sphereViewModel = new Sphere3dViewModel();
+            this.UNum = new ReactiveProperty<int>(24);
+            this.VNum = new ReactiveProperty<int>(24);
+            this.ExecuteCommand = new ReactiveCommand();
         }
-
-        public class ExecuteCommandImpl : ICommand
+  
+        private void OnExecute()
         {
-            private SphereGenerationViewModel viewModel;
-
-            public ExecuteCommandImpl(SphereGenerationViewModel vm)
-            {
-                this.viewModel = vm;
-            }
-
-            public event EventHandler CanExecuteChanged
-            {
-                add { }
-                remove { }
-            }
-
-            public bool CanExecute(object parameter)
-            {
-                return true;
-            }
-
-            public void Execute(object parameter)
-            {
-                ;
-            }
+            var builder = new PolygonMeshBuilder();
+            builder.Build(sphereViewModel.Sphere, UNum.Value, VNum.Value);
+            MainModel.Instance.Add(builder.PolygonMesh);
         }
-
     }
 }

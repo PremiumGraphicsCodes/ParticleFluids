@@ -1,9 +1,4 @@
 ﻿using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PG.Control
 {
@@ -11,7 +6,7 @@ namespace PG.Control
     {
         private double radius;
         private double height;
-        private Vector3dViewModel centerViewModel;
+        private readonly Vector3dViewModel centerViewModel;
 
         public Vector3dViewModel CenterViewModel { get { return centerViewModel; } }
 

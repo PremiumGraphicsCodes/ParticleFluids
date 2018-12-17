@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PG.Core.Shape;
+﻿using PG.Core.Shape;
 
 namespace PG.CGStudio
 {
@@ -24,6 +19,16 @@ namespace PG.CGStudio
         public int Add(ParticleSystem particleSystem)
         {
             return model.AddParticleSystem(particleSystem);
+        }
+
+        public int Add(WireFrame wireFrame)
+        {
+            return model.AddWireFrame(wireFrame);
+        }
+
+        public int Add(PolygonMesh polygonMesh)
+        {
+            return model.AddPolygonMesh(polygonMesh);
         }
     }
 }

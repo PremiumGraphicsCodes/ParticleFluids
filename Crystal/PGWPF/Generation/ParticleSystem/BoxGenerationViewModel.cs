@@ -5,7 +5,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
 {
     public class BoxGenerationViewModel : BindableBase
     {
-        private Box3dViewModel boxViewModel;
+        private readonly Box3dViewModel boxViewModel;
 
         public Box3dViewModel BoxViewModel
         {
