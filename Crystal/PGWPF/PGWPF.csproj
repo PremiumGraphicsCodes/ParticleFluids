@@ -132,6 +132,10 @@
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Generation\WireFrame\BoxGenerationViewModel.cs" />
+    <Compile Include="Generation\WireFrame\WireFrameGenerationView.xaml.cs">
+      <DependentUpon>WireFrameGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Generation\WireFrame\WireFrameGenerationViewModel.cs" />
     <Compile Include="MainModel.cs" />
     <Page Include="Canvas3dView.xaml">
       <SubType>Designer</SubType>
@@ -170,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Generation\WireFrame\BoxGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\WireFrame\WireFrameGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,25 +1,26 @@
 ﻿using PG.App.Generation.PolygonMesh;
 using PG.CGStudio.Generation.ParticleSystem;
 using PG.CGStudio.Generation.PolygonMesh;
+using PG.CGStudio.Generation.WireFrame;
 using Reactive.Bindings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PG.CGStudio.Generation
 {
     public class GenerationViewModel
     {
-        public ReactiveCommand ParticleSystemGenerationCommand { get; private set; }
+        public ReactiveCommand ParticleSystemGenerationCommand { get; }
 
-        public ReactiveCommand PolygonMeshGenerationCommand { get; private set; }
+        public ReactiveCommand WireFrameGenerationCommand { get; }
+
+        public ReactiveCommand PolygonMeshGenerationCommand { get; }
 
         public GenerationViewModel()
         {
             this.ParticleSystemGenerationCommand = new ReactiveCommand();
             this.ParticleSystemGenerationCommand.Subscribe(OnParticleSystemGeneration);
+
+            this.WireFrameGenerationCommand = new ReactiveCommand();
+            this.WireFrameGenerationCommand.Subscribe(OnWireFrameGeneration);
 
             this.PolygonMeshGenerationCommand = new ReactiveCommand();
             this.PolygonMeshGenerationCommand.Subscribe(OnPolygonMeshGeneration);
@@ -29,6 +30,12 @@ namespace PG.CGStudio.Generation
         {
             var dialog = new ParticleSystemGenerationView();
             dialog.DataContext = new ParticleSystemGenerationViewModel();
+            dialog.Show();
+        }
+
+        private void OnWireFrameGeneration()
+        {
+            var dialog = new WireFrameGenerationView();
             dialog.Show();
         }
 

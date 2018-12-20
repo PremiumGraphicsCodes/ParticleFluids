@@ -6,9 +6,9 @@ namespace PG.CGStudio.Generation.WireFrame
 {
     public class BoxGenerationViewModel
     {
-        public Box3dViewModel BoxViewModel { get; private set; }
+        public Box3dViewModel BoxViewModel { get; }
 
-        public ReactiveCommand GenerationCommand { get; private set; }
+        public ReactiveCommand GenerationCommand { get; }
 
         public BoxGenerationViewModel()
         {
@@ -25,6 +25,7 @@ namespace PG.CGStudio.Generation.WireFrame
             var wireFrame = builder.WireFrame;
             MainModel.Instance.Add(wireFrame);
             Canvas3dView.Instance.Update(MainModel.Instance);
+            Canvas3dView.Instance.Render();
         }
     }
 }
