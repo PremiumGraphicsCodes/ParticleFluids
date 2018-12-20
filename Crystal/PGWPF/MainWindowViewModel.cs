@@ -1,8 +1,4 @@
-﻿using PG.App.Generation.PolygonMesh;
-using PG.CGStudio.Generation.ParticleSystem;
-using PG.CGStudio.Generation.PolygonMesh;
-using Prism.Mvvm;
-using Reactive.Bindings;
+﻿using Prism.Mvvm;
 
 namespace PG.CGStudio
 {

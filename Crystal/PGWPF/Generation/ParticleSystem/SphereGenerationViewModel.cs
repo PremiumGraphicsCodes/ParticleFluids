@@ -8,11 +8,11 @@ namespace PG.CGStudio.Generation.ParticleSystem
 {
     public class SphereGenerationViewModel : BindableBase
     {
-        public ReactiveCommand GenerationCommand { get; private set; }
+        public ReactiveCommand GenerationCommand { get; }
 
-        public ReactiveProperty<int> Count { get; private set; }
+        public ReactiveProperty<int> Count { get; }
 
-        public Sphere3dViewModel SphereViewModel { get; private set; }
+        public Sphere3dViewModel SphereViewModel { get; }
 
         public SphereGenerationViewModel()
         {
@@ -38,8 +38,6 @@ namespace PG.CGStudio.Generation.ParticleSystem
             MainModel.Instance.Add(particles);
             Canvas3dView.Instance.Update(MainModel.Instance);
             Canvas3dView.Instance.Render();
-            //var builder = new ParticleSystemBuilder();
-            //builder.Build()
         }
     }
 }

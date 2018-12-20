@@ -1,5 +1,4 @@
-﻿using PG.App.Generation.PolygonMesh;
-using PG.CGStudio.Generation.ParticleSystem;
+﻿using PG.CGStudio.Generation.ParticleSystem;
 using PG.CGStudio.Generation.PolygonMesh;
 using PG.CGStudio.Generation.WireFrame;
 using Reactive.Bindings;

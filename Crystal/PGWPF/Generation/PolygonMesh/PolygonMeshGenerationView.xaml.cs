@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace PG.App.Generation.PolygonMesh
+namespace PG.CGStudio.Generation.PolygonMesh
 {
     public partial class PolygonMeshGenerationView : Window
     {
