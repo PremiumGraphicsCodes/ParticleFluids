@@ -105,6 +105,10 @@
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Generation\ParticleSystem\BoxGenerationViewModel.cs" />
+    <Compile Include="Generation\ParticleSystem\CylinderGenerationView.xaml.cs">
+      <DependentUpon>CylinderGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Generation\ParticleSystem\CylinderGenerationViewModel.cs" />
     <Compile Include="Generation\ParticleSystem\ParticleSystemGenerationView.xaml.cs">
       <DependentUpon>ParticleSystemGenerationView.xaml</DependentUpon>
     </Compile>
@@ -146,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Generation\ParticleSystem\BoxGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\ParticleSystem\CylinderGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

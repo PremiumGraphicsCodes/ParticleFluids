@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:PG.CGStudio.Generation.PolygonMesh"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <Window.DataContext>
+        <local:PolygonMeshGenerationViewModel/>
+    </Window.DataContext>
     <StackPanel>
         <PolygonMesh:BoxGenerationView DataContext="{Binding BoxGenerationViewModel}"/>
         <PolygonMesh:SphereGenerationView DataContext="{Binding SphereGenerationViewModel}"/>
