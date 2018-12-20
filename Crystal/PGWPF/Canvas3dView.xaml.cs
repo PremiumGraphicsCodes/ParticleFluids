@@ -16,7 +16,7 @@ namespace PG.CGStudio
 
         public void Render()
         {
-            adapter.Render();
+            adapter.Render(Panel.Width, Panel.Height);
         }
 
         public void Update(MainModel model)
@@ -41,15 +41,13 @@ namespace PG.CGStudio
 
         private void OnResize(object sender, EventArgs e)
         {
-            var width = Panel.Width;
-            var height = Panel.Height;
-            this.adapter.Render();
+            this.adapter.Render(Panel.Width, Panel.Height);
             //throw new NotImplementedException();
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            this.adapter.Render();
+            this.adapter.Render(Panel.Width, Panel.Height);
         }
 
         private void WindowsFormsHost_SizeChanged(object sender, System.Windows.SizeChangedEventArgs e)

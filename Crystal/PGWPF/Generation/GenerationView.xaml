@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:PG.CGStudio.Generation"
         mc:Ignorable="d"
         Title="GenerationView" Height="300" Width="300">
+    <Window.DataContext>
+        <local:GenerationViewModel/>
+    </Window.DataContext>
     <StackPanel>
         <Button Content="ParticleSystem" Command="{Binding ParticleSystemGenerationCommand}"/>
         <Button Content="WireFrame" Command="{Binding WireFrameGenerationCommand}"/>
