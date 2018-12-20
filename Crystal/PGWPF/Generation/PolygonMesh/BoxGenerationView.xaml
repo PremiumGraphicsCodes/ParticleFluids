@@ -7,6 +7,9 @@
              xmlns:Control="clr-namespace:PG.Control;assembly=PGControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:BoxGenerationViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
         <Control:Box3dView DataContext="{Binding BoxViewModel}"/>
         <Button Content="Generate" DataContext="{Binding GenerationCommand}"/>

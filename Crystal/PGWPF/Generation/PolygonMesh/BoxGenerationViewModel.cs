@@ -6,9 +6,9 @@ namespace PG.CGStudio.Generation.PolygonMesh
 {
     public class BoxGenerationViewModel
     {
-        public Box3dViewModel BoxViewModel { get; private set; }
+        public Box3dViewModel BoxViewModel { get; }
 
-        public ReactiveCommand GenerationCommand { get; private set; }
+        public ReactiveCommand GenerationCommand { get; }
 
         public BoxGenerationViewModel()
         {

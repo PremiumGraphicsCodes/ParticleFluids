@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:SphereGenerationViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
         <Control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
         <TextBox DataContext="{Binding Count.Value}"/>

@@ -6,10 +6,13 @@
              xmlns:local="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
+    <Window.DataContext>
+        <local:ParticleSystemGenerationViewModel/>
+    </Window.DataContext>
     <StackPanel>
         <Label Content="Sphere"/>
-        <local:SphereGenerationView DataContext="{Binding SphereGenerationViewModel}"/>
+        <local:SphereGenerationView/>
         <Label Content="Box"/>
-        <local:BoxGenerationView DataContext="{Binding BoxGenerationViewModel}"/>
+        <local:BoxGenerationView/>
     </StackPanel>
 </Window>
