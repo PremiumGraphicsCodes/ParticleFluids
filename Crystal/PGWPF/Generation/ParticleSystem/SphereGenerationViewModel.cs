@@ -17,6 +17,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public SphereGenerationViewModel()
         {
             this.SphereViewModel = new Sphere3dViewModel();
+            this.Count = new ReactiveProperty<int>();
             this.Count.Value = 10000;
             this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
@@ -35,6 +36,8 @@ namespace PG.CGStudio.Generation.ParticleSystem
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
             MainModel.Instance.Add(particles);
+            Canvas3dView.Instance.Update(MainModel.Instance);
+            Canvas3dView.Instance.Render();
             //var builder = new ParticleSystemBuilder();
             //builder.Build()
         }

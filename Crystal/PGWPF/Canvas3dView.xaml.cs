@@ -19,6 +19,11 @@ namespace PG.CGStudio
             adapter.Render();
         }
 
+        public void Update(MainModel model)
+        {
+            adapter.Update(model.Adapter);
+        }
+
         private PG.CLI.Renderer adapter;
 
         public Canvas3dView()
