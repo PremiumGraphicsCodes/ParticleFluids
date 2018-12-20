@@ -9,10 +9,7 @@
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
-    <StackPanel Orientation="Horizontal">
-        <local:Canvas3dView Width="500"/>
-        <Button Content="ParticleSystem" Command="{Binding ParticleSystemGenerationCommand}"/>
-        <Button Content="WireFrame" Command="{Binding WireFrameGenerationCommand}"/>
-        <Button Content="PolygonMesh" Command="{Binding PolygonMeshGenerationCommand}"/>
-    </StackPanel>
+    <Grid>
+        <local:Canvas3dView Margin="0,0,0,0"/>
+    </Grid>
 </Window>

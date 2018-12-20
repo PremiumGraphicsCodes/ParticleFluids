@@ -41,6 +41,9 @@ namespace PG.CGStudio
 
         private void OnResize(object sender, EventArgs e)
         {
+            var width = Panel.Width;
+            var height = Panel.Height;
+            this.adapter.Render();
             //throw new NotImplementedException();
         }
 
