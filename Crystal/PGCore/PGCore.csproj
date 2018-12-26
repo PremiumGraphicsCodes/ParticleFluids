@@ -44,6 +44,7 @@
     <Compile Include="Math\Box3d.cs" />
     <Compile Include="Math\Cylinder3d.cs" />
     <Compile Include="Math\Line3d.cs" />
+    <Compile Include="Math\Matrix2d.cs" />
     <Compile Include="Math\Matrix3d.cs" />
     <Compile Include="Math\Matrix4d.cs" />
     <Compile Include="Math\Sphere3d.cs" />
