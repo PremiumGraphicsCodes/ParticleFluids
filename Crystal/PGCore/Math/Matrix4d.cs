@@ -30,84 +30,112 @@
             set { this.x = value; }
         }
 
+        public Matrix4d Transposed
+        {
+            get
+            {
+                return new Matrix4d(
+                    X00, X10, X20, X30,
+                    X10, X11, X21, X31,
+                    X20, X12, X22, X32,
+                    X30, X32, X23, X33);
+            }
+        }
+
         public double X00
         {
             get { return x[0, 0]; }
+            set { this.x[0, 0] = value; }
         }
 
         public double X01
         {
             get { return x[0, 1]; }
+            set { this.x[0, 1] = value; }
         }
 
         public double X02
         {
             get { return x[0, 2]; }
+            set { this.x[0, 2] = value; }
         }
 
         public double X03
         {
             get { return x[0, 3]; }
+            set { this.x[0, 3] = value; }
         }
 
         public double X10
         {
             get { return x[1, 3]; }
+            set { this.x[1, 0] = value; }
         }
 
         public double X11
         {
             get { return x[1, 1]; }
+            set { this.x[1, 1] = value; }
         }
 
         public double X12
         {
             get { return x[1, 2]; }
+            set { this.x[1, 2] = value; }
         }
 
         public double X13
         {
             get { return x[1, 3]; }
+            set { this.x[1, 3] = value; }
         }
 
         public double X20
         {
             get { return x[2, 0]; }
+            set { this.x[2, 0] = value; }
         }
-        
+
         public double X21
         {
             get { return x[2, 1]; }
+            set { this.x[2, 1] = value; }
         }
 
         public double X22
         {
             get { return x[2, 2]; }
+            set { this.x[2, 2] = value; }
         }
 
         public double X23
         {
             get { return x[2, 3]; }
+            set { this.x[2, 3] = value; }
         }
 
         public double X30
         {
             get { return x[3, 0]; }
+            set { this.x[3, 0] = value; }
         }
 
         public double X31
         {
             get { return x[3, 1]; }
+            set { this.x[3, 1] = value; }
         }
 
         public double X32
         {
             get { return x[3, 2]; }
+            set { this.x[3, 2] = value; }
         }
 
         public double X33
         {
             get { return x[3, 3]; }
+            set { this.x[3, 3] = value; }
         }
 
         private double[,] x;

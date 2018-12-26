@@ -24,6 +24,60 @@
             x[2, 2] = x22;
         }
 
+        public double X00
+        {
+            get { return x[0, 0]; }
+            set { this.x[0, 0] = value; }
+        }
+
+        public double X01
+        {
+            get { return x[0, 1]; }
+            set { this.x[0, 1] = value; }
+        }
+
+        public double X02
+        {
+            get { return x[0, 2]; }
+            set { this.x[0, 2] = value; }
+        }
+
+        public double X10
+        {
+            get { return x[1, 3]; }
+            set { this.x[1, 0] = value; }
+        }
+
+        public double X11
+        {
+            get { return x[1, 1]; }
+            set { this.x[1, 1] = value; }
+        }
+
+        public double X12
+        {
+            get { return x[1, 2]; }
+            set { this.x[1, 2] = value; }
+        }
+
+        public double X20
+        {
+            get { return x[2, 0]; }
+            set { this.x[2, 0] = value; }
+        }
+
+        public double X21
+        {
+            get { return x[2, 1]; }
+            set { this.x[2, 1] = value; }
+        }
+
+        public double X22
+        {
+            get { return x[2, 2]; }
+            set { this.x[2, 2] = value; }
+        }
+
         public double Determinant
         {
             get {
@@ -34,6 +88,19 @@
                   x[0,2] * x[1,1] * x[2,1] -
                   x[0,0] * x[0,2] * x[2,1] -
                   x[0,1] * x[1,0] * x[2,2];
+            }
+        }
+
+        public Matrix3d Transposed
+        {
+            get
+            {
+                return new Matrix3d
+                    (
+                    X00, X10, X20,
+                    X01, X11, X21,
+                    X02, X12, X22
+                    );
             }
         }
 
