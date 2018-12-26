@@ -5,6 +5,18 @@
         private double radius;
         private Vector3d center;
 
+        public double Radius
+        {
+            get { return radius; }
+            set { this.radius = value; }
+        }
+
+        public Vector3d Center
+        {
+            get { return center; }
+            set { this.center = value; }
+        }
+
         public Sphere3d(double radius, Vector3d center)
         {
             this.radius = radius;

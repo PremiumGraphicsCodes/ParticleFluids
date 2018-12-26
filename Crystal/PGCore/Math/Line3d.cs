@@ -21,5 +21,10 @@
         {
             get { return start.Distance(end); }
         }
+
+        public double LengthSquared
+        {
+            get { return start.DistanceSquared(end); }
+        }
     }
 }

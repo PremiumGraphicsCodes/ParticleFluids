@@ -2,9 +2,9 @@
 {
     public class Matrix3d
     {
-        public Matrix3d()
+        public Matrix3d() :
+            this(1,0,0,0,1,0,0,0,1)
         {
-            x = new double[3, 3];
         }
 
         public Matrix3d(

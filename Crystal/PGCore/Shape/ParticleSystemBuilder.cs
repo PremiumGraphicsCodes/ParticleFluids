@@ -14,29 +14,40 @@ namespace PG.Core.Shape
 
         public void Build(Sphere3d sphere, int udiv, int vdiv)
         {
-            var pi = System.Math.PI;
-            var dtheta = pi * 2.0 / (double)udiv;
-            var dphi = pi / (double)vdiv;
-            for(double theta = 0.0; theta <= pi * 2.0; theta += dtheta)
+            for (int i = 0; i < udiv; ++i)
             {
-                for (double phi = 0.0; phi < pi; phi += dphi)
+                var u = i / (double)udiv;
+                for (int j = 0; j < vdiv; ++j)
                 {
-                    positions.Add( sphere.GetPositionByAngle(theta, phi) );
+                    var v = j / (double)vdiv;
+                    positions.Add(sphere.GetPosition(u, v));
                 }
             }
         }
 
         public void Build(Cylinder3d cylinder, int udiv, int vdiv)
         {
-            /*
-            var pi = System.Math.PI;
-            var dtheta = pi * 2.0 / (double)udiv;
-            var dphi = pi / (double)vdiv;
-            for (double theta = 0.0; theta <= pi * 2.0; theta += dtheta)
+            for (int i = 0; i < udiv; ++i)
             {
-                for (double phi = 0.0; phi < pi; phi += dphi)
+                var u = i / (double)udiv;
+                for (int j = 0; j < vdiv; ++j)
                 {
-                    positions.Add(cylinder.GetPosition(theta, phi));
+                    var v = j / (double)vdiv;
+                    positions.Add(cylinder.GetPosition(u,v));
+                }
+            }
+        }
+
+        public void Build(Box3d box, int udiv, int vdiv)
+        {
+            /*
+            for (int i = 0; i < udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                for (int j = 0; j < vdiv; ++j)
+                {
+                    var v = j / (double)vdiv;
+                    positions.Add(box.GetPosition(u, v));
                 }
             }
             */
