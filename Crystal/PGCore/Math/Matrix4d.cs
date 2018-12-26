@@ -1,4 +1,4 @@
-﻿namespace PGCore.Math
+﻿namespace PG.Core.Math
 {
     public class Matrix4d
     {
@@ -28,6 +28,86 @@
         {
             get { return x; }
             set { this.x = value; }
+        }
+
+        public double X00
+        {
+            get { return x[0, 0]; }
+        }
+
+        public double X01
+        {
+            get { return x[0, 1]; }
+        }
+
+        public double X02
+        {
+            get { return x[0, 2]; }
+        }
+
+        public double X03
+        {
+            get { return x[0, 3]; }
+        }
+
+        public double X10
+        {
+            get { return x[1, 3]; }
+        }
+
+        public double X11
+        {
+            get { return x[1, 1]; }
+        }
+
+        public double X12
+        {
+            get { return x[1, 2]; }
+        }
+
+        public double X13
+        {
+            get { return x[1, 3]; }
+        }
+
+        public double X20
+        {
+            get { return x[2, 0]; }
+        }
+        
+        public double X21
+        {
+            get { return x[2, 1]; }
+        }
+
+        public double X22
+        {
+            get { return x[2, 2]; }
+        }
+
+        public double X23
+        {
+            get { return x[2, 3]; }
+        }
+
+        public double X30
+        {
+            get { return x[3, 0]; }
+        }
+
+        public double X31
+        {
+            get { return x[3, 1]; }
+        }
+
+        public double X32
+        {
+            get { return x[3, 2]; }
+        }
+
+        public double X33
+        {
+            get { return x[3, 3]; }
         }
 
         private double[,] x;

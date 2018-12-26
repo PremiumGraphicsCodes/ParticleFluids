@@ -3,6 +3,7 @@
 #include "../Math/Vector3d.h"
 #include "../Math/Line3d.h"
 #include "../Math/Matrix3d.h"
+#include "../Math/Matrix4d.h"
 
 using namespace System;
 
@@ -29,6 +30,10 @@ public:
 	static Crystal::Math::Matrix3dd toCpp(PG::Core::Math::Matrix3d^ src);
 
 	static PG::Core::Math::Matrix3d^ fromCpp(const Crystal::Math::Matrix3dd& src);
+
+	static Crystal::Math::Matrix4dd toCpp(PG::Core::Math::Matrix4d^ src);
+
+	static PG::Core::Math::Matrix4d^ fromCpp(const Crystal::Math::Matrix4dd& src);
 };
 
 	}
