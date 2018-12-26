@@ -20,7 +20,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
         private void OnGenerate()
         {
             var builder = new PolygonMeshBuilder();
-            var box = BoxViewModel.Box;
+            var box = BoxViewModel.Value;
             builder.Build(box);
             var polygonMesh = builder.PolygonMesh;
             MainModel.Instance.Add(polygonMesh);

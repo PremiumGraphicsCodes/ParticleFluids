@@ -12,7 +12,7 @@ namespace PG.Control
 
         public Sphere3d Sphere
         {
-            get { return new Sphere3d(Radius.Value, centerViewModel.Vector); }
+            get { return new Sphere3d(Radius.Value, centerViewModel.Value); }
         }
 
         public ReactiveProperty<double> Radius { get; private set; }

@@ -26,7 +26,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();
-            var box = BoxViewModel.Box;
+            var box = BoxViewModel.Value;
             for (int i = 0; i < Count.Value; ++i)
             {
                 var u = random.NextDouble();

@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PG.CGStudio.Generation.WireFrame"
         mc:Ignorable="d"
-        Title="WireFrameGenerationView" Height="450" Width="800">
+        Title="WireFrameGenerationView" Height="450" Width="300">
     <Window.DataContext>
         <local:WireFrameGenerationViewModel/>
     </Window.DataContext>
-    <Grid>
-        <local:BoxGenerationView DataContext="{Binding BoxGenerationViewModel}"/>
-    </Grid>
+    <StackPanel>
+        <local:BoxGenerationView/>
+        <local:CylinderGenerationView/>
+    </StackPanel>
 </Window>

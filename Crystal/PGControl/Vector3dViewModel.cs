@@ -6,20 +6,20 @@ namespace PG.Control
 {
     public class Vector3dViewModel : BindableBase
     {
-        public ReactiveProperty<double> X { get; private set; }
+        public ReactiveProperty<double> X { get; }
+            = new ReactiveProperty<double>();
 
-        public ReactiveProperty<double> Y { get; private set; }
+        public ReactiveProperty<double> Y { get; }
+            = new ReactiveProperty<double>();
 
-        public ReactiveProperty<double> Z { get; private set; }
+        public ReactiveProperty<double> Z { get; }
+            = new ReactiveProperty<double>();
 
         public Vector3dViewModel()
         {
-            this.X = new ReactiveProperty<double>(0.0);
-            this.Y = new ReactiveProperty<double>(0.0);
-            this.Z = new ReactiveProperty<double>(0.0);
         }
 
-        public Vector3d Vector
+        public Vector3d Value
         {
             get { return new Vector3d(X.Value, Y.Value, Z.Value); ; }
             set

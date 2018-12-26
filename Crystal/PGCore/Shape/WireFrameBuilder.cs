@@ -35,6 +35,19 @@ namespace PG.Core.Shape
             lines.Add(new Line3d(vertices[8], vertices[0]));
         }
 
+        public void Build(Cylinder3d cylinder, int udiv, int vdiv)
+        {
+            var vertices = new List<Vector3d>();
+            for(int i = 0; i < udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                for(int j = 0; j < vdiv; ++j)
+                {
+                    var v = j / (double)vdiv;
+                }
+            }
+        }
+
         public WireFrame WireFrame { get { return new WireFrame(lines); } }
     }
 }

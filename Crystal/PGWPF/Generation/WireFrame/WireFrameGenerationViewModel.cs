@@ -8,11 +8,8 @@ namespace PG.CGStudio.Generation.WireFrame
 {
     public class WireFrameGenerationViewModel
     {
-        public BoxGenerationViewModel BoxGenerationViewModel { get; }
-
         public WireFrameGenerationViewModel()
         {
-            this.BoxGenerationViewModel = new BoxGenerationViewModel();
         }
     }
 }

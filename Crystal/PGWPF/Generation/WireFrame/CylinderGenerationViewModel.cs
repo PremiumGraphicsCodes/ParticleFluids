@@ -4,15 +4,15 @@ using PG.Control;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
-    public class BoxGenerationViewModel
+    public class CylinderGenerationViewModel
     {
-        public Box3dViewModel BoxViewModel { get; }
+        public Cylinder3dViewModel CylinderViewModel { get; }
+            = new Cylinder3dViewModel();
 
         public ReactiveCommand GenerationCommand { get; }
 
-        public BoxGenerationViewModel()
+        public CylinderGenerationViewModel()
         {
-            this.BoxViewModel = new Box3dViewModel();
             this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
         }
@@ -20,8 +20,8 @@ namespace PG.CGStudio.Generation.WireFrame
         private void OnGenerate()
         {
             var builder = new WireFrameBuilder();
-            var box = BoxViewModel.Value;
-            builder.Build(box);
+            var cylinder = CylinderViewModel.Value;
+            builder.Build(cylinder, 25, 25);
             var wireFrame = builder.WireFrame;
             MainModel.Instance.Add(wireFrame);
             Canvas3dView.Instance.Update(MainModel.Instance);

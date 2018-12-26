@@ -30,5 +30,14 @@
             this.height = height;
             this.center = center;
         }
+
+        public Vector3d GetPosition(double u, double v)
+        {
+            var angle = u * 2.0 * System.Math.PI;
+            var x = radius * System.Math.Cos(angle);
+            var y = radius * System.Math.Sin(angle);
+            var z = height * v;
+            return new Vector3d(x, y, z);
+        }
     }
 }

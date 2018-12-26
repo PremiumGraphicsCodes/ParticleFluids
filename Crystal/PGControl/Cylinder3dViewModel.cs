@@ -1,23 +1,32 @@
-﻿using Prism.Mvvm;
+﻿using PG.Core.Math;
+using Prism.Mvvm;
 using Reactive.Bindings;
 
 namespace PG.Control
 {
     public class Cylinder3dViewModel : BindableBase
     {
-        private readonly Vector3dViewModel centerViewModel;
+        public Vector3dViewModel CenterViewModel { get; }
+            = new Vector3dViewModel();
 
-        public Vector3dViewModel CenterViewModel { get { return centerViewModel; } }
+        public ReactiveProperty<double> Radius { get; }
+            = new ReactiveProperty<double>();
 
-        public ReactiveProperty<double> Radius { get; private set; }
+        public ReactiveProperty<double> Height { get; }
+            = new ReactiveProperty<double>();
 
-        public ReactiveProperty<double> Height { get; private set; }
+        public Cylinder3d Value
+        {
+            get
+            {
+                return new Cylinder3d(Radius.Value, Height.Value, CenterViewModel.Value);
+            }
+        }
 
         public Cylinder3dViewModel()
         {
-            this.centerViewModel = new Vector3dViewModel();
-            this.Radius = new ReactiveProperty<double>(1.0);
-            this.Height = new ReactiveProperty<double>(1.0);
+            this.Radius.Value = 1.0;
+            this.Height.Value = 1.0;
         }
     }
 }
