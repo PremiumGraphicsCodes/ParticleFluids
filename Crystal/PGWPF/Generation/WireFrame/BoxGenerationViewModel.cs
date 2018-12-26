@@ -7,13 +7,13 @@ namespace PG.CGStudio.Generation.WireFrame
     public class BoxGenerationViewModel
     {
         public Box3dViewModel BoxViewModel { get; }
+            = new Box3dViewModel();
 
         public ReactiveCommand GenerationCommand { get; }
+            = new ReactiveCommand();
 
         public BoxGenerationViewModel()
         {
-            this.BoxViewModel = new Box3dViewModel();
-            this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 

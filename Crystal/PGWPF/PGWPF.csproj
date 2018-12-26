@@ -140,6 +140,10 @@
       <DependentUpon>CylinderGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Generation\WireFrame\CylinderGenerationViewModel.cs" />
+    <Compile Include="Generation\WireFrame\SphereGenerationView.xaml.cs">
+      <DependentUpon>SphereGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Generation\WireFrame\SphereGenerationViewModel.cs" />
     <Compile Include="Generation\WireFrame\WireFrameGenerationView.xaml.cs">
       <DependentUpon>WireFrameGenerationView.xaml</DependentUpon>
     </Compile>
@@ -190,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Generation\WireFrame\CylinderGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\WireFrame\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

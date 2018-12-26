@@ -12,5 +12,6 @@
     <StackPanel>
         <local:BoxGenerationView/>
         <local:CylinderGenerationView/>
+        <local:SphereGenerationView/>
     </StackPanel>
 </Window>

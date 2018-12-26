@@ -48,6 +48,11 @@ namespace PG.Core.Shape
             }
         }
 
+        public void Build(Sphere3d sphere, int udiv, int vdiv)
+        {
+
+        }
+
         public WireFrame WireFrame { get { return new WireFrame(lines); } }
     }
 }

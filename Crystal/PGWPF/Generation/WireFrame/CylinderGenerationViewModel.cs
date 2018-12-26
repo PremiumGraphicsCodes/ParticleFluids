@@ -10,10 +10,10 @@ namespace PG.CGStudio.Generation.WireFrame
             = new Cylinder3dViewModel();
 
         public ReactiveCommand GenerationCommand { get; }
+            = new ReactiveCommand();
 
         public CylinderGenerationViewModel()
         {
-            this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 
