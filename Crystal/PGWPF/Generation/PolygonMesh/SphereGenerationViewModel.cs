@@ -7,32 +7,32 @@ namespace PG.CGStudio.Generation.PolygonMesh
 {
     public class SphereGenerationViewModel : BindableBase
     {
-        private Sphere3dViewModel sphereViewModel;
+        public ReactiveProperty<int> UNum { get; }
+            = new ReactiveProperty<int>();
 
-        public ReactiveProperty<int> UNum { get; private set; }
+        public ReactiveProperty<int> VNum { get; }
+            = new ReactiveProperty<int>();
 
-        public ReactiveProperty<int> VNum { get; private set; }
+        public ReactiveCommand ExecuteCommand { get; }
+            = new ReactiveCommand();
 
-        public ReactiveCommand ExecuteCommand { get; private set; }
-
-        public Sphere3dViewModel SphereViewModel
-        {
-            get { return sphereViewModel; }
-        }
+        public Sphere3dViewModel SphereViewModel { get; }
+            = new Sphere3dViewModel();
 
         public SphereGenerationViewModel()
         {
-            this.sphereViewModel = new Sphere3dViewModel();
-            this.UNum = new ReactiveProperty<int>(24);
-            this.VNum = new ReactiveProperty<int>(24);
-            this.ExecuteCommand = new ReactiveCommand();
+            this.UNum.Value = 24;
+            this.VNum.Value = 24;
+            this.ExecuteCommand.Subscribe(OnExecute);
         }
   
         private void OnExecute()
         {
             var builder = new PolygonMeshBuilder();
-            builder.Build(sphereViewModel.Sphere, UNum.Value, VNum.Value);
+            builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
             MainModel.Instance.Add(builder.PolygonMesh);
+            Canvas3dView.Instance.Update(MainModel.Instance);
+            Canvas3dView.Instance.Render();
         }
     }
 }

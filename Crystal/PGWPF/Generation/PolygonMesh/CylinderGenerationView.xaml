@@ -11,7 +11,7 @@
         <local:CylinderGenerationViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <control:Cylinder3dView DataContext="{Binding CylinderViewModel}"/>
+        <control:Cylinder3dView/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

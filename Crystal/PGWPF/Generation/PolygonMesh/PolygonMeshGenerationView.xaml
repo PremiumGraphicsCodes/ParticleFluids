@@ -10,7 +10,8 @@
         <local:PolygonMeshGenerationViewModel/>
     </Window.DataContext>
     <StackPanel>
-        <PolygonMesh:BoxGenerationView DataContext="{Binding BoxGenerationViewModel}"/>
-        <PolygonMesh:SphereGenerationView DataContext="{Binding SphereGenerationViewModel}"/>
+        <PolygonMesh:BoxGenerationView/>
+        <PolygonMesh:CylinderGenerationView/>
+        <PolygonMesh:SphereGenerationView/>
     </StackPanel>
 </Window>

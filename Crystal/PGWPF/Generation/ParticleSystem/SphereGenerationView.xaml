@@ -11,7 +11,7 @@
     </UserControl.DataContext>
     <StackPanel>
         <Control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
-        <TextBox DataContext="{Binding Count.Value}"/>
+        <TextBox Text="{Binding Count.Value}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

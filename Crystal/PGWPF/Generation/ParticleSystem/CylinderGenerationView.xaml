@@ -12,7 +12,7 @@
     </UserControl.DataContext>
     <StackPanel>
         <control:Cylinder3dView DataContext="{Binding CylinderViewModel}"/>
-        <TextBox DataContext="{Binding Count.Value}"/>
+        <TextBox Text="{Binding Count.Value}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

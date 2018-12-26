@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:PG.Control"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:Box3dViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
         <Label Content="Min"/>
         <local:Vector3dView DataContext="{Binding MinViewModel}"/>

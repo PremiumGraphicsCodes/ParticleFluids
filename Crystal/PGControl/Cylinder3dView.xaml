@@ -14,11 +14,11 @@
         <local:Vector3dView DataContext="{Binding CenterViewModel}"/>
         <StackPanel Orientation="Horizontal">
             <Label Content="Radius" Width="50"/>
-            <TextBox DataContext="{Binding Radius.Value}" Width="50"/>
+            <TextBox Text="{Binding Radius.Value}" Width="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Content="Height" Width="50"/>
-            <TextBox DataContext="{Binding Height.Value}" Width="50"/>
+            <TextBox Text="{Binding Height.Value}" Width="50"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
