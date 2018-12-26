@@ -2,6 +2,7 @@
 
 #include "../Math/Vector3d.h"
 #include "../Math/Line3d.h"
+#include "../Math/Matrix3d.h"
 
 using namespace System;
 
@@ -17,13 +18,17 @@ namespace PG {
 class Converter
 {
 public:
-	static Crystal::Math::Vector3df toCpp(PG::Core::Math::Vector3d^ src);
+	static Crystal::Math::Vector3dd toCpp(PG::Core::Math::Vector3d^ src);
 
-	static PG::Core::Math::Vector3d^ fromCpp(const Crystal::Math::Vector3df& src);
+	static PG::Core::Math::Vector3d^ fromCpp(const Crystal::Math::Vector3dd& src);
 
 	static Crystal::Math::Line3dd toCpp(PG::Core::Math::Line3d^ src);
 
 	static PG::Core::Math::Line3d^ fromCpp(const Crystal::Math::Line3dd& src);
+
+	static Crystal::Math::Matrix3dd toCpp(PG::Core::Math::Matrix3d^ src);
+
+	static PG::Core::Math::Matrix3d^ fromCpp(const Crystal::Math::Matrix3dd& src);
 };
 
 	}
