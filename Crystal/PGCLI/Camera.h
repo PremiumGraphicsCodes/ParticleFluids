@@ -18,6 +18,10 @@ public ref class Camera
 public:
 	Camera();
 
+	void Move(PG::Core::Math::Vector3d^ vector);
+
+	void MoveTo(PG::Core::Math::Vector3d^ position);
+
 	~Camera(void);
 
 internal:

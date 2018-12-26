@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <WindowsFormsHost x:Name="Host" Initialized="WindowsFormsHost_Initialized" SizeChanged="WindowsFormsHost_SizeChanged" MouseLeftButtonDown="Host_MouseLeftButtonDown" MouseLeftButtonUp="Host_MouseLeftButtonUp" MouseRightButtonDown="Host_MouseRightButtonDown" MouseRightButtonUp="Host_MouseRightButtonUp">
+        <WindowsFormsHost x:Name="Host" Initialized="WindowsFormsHost_Initialized" SizeChanged="WindowsFormsHost_SizeChanged" MouseDown="Host_MouseDown" MouseLeftButtonDown="Host_MouseLeftButtonDown" MouseLeftButtonUp="Host_MouseLeftButtonUp">
             <winform:Panel x:Name="Panel"/>
         </WindowsFormsHost>
     </Grid>

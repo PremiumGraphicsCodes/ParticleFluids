@@ -55,22 +55,17 @@ namespace PG.CGStudio
 
         }
 
+        private void Host_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
         private void Host_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 
         }
 
         private void Host_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Host_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Host_MouseRightButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 
         }

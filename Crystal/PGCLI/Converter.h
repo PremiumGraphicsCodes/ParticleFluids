@@ -1,5 +1,8 @@
 #pragma once
 
+#include "../Math/Vector3d.h"
+#include "../Math/Line3d.h"
+
 using namespace System;
 
 namespace Crystal {
