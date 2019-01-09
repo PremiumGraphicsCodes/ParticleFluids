@@ -15,6 +15,12 @@
             get { return max; }
         }
 
+        public Box3d()
+        {
+            this.min = new Vector3d(0, 0, 0);
+            this.max = new Vector3d(1, 1, 1);
+        }
+
         public Box3d(Vector3d v1, Vector3d v2)
         {
             this.min = new Vector3d(0,0,0);

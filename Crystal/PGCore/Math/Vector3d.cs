@@ -74,17 +74,17 @@
 
         public static Vector3d operator+(Vector3d lhs, Vector3d rhs)
         {
-            var xx = rhs.x + lhs.x;
-            var yy = rhs.y + lhs.y;
-            var zz = rhs.z + lhs.z;
+            var xx = lhs.x + rhs.x;
+            var yy = lhs.y + rhs.y;
+            var zz = lhs.z + rhs.z;
             return new Vector3d(xx, yy, zz);
         }
 
         public static Vector3d operator-(Vector3d lhs, Vector3d rhs)
         {
-            var xx = rhs.x - lhs.x;
-            var yy = rhs.y - lhs.y;
-            var zz = rhs.z - lhs.z;
+            var xx = lhs.x - rhs.x;
+            var yy = lhs.y - rhs.y;
+            var zz = lhs.z - rhs.z;
             return new Vector3d(xx, yy, zz);
         }
 

@@ -24,6 +24,21 @@
             x[2, 2] = x22;
         }
 
+        public bool IsSame(Matrix3d rhs, double tolerance)
+        {
+            for(int i = 0; i < 3; ++i)
+            {
+                for(int j = 0; j < 3; ++j)
+                {
+                    if( System.Math.Abs( x[i,j] - rhs.x[i,j]) > tolerance)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         public double X00
         {
             get { return x[0, 0]; }
@@ -44,7 +59,7 @@
 
         public double X10
         {
-            get { return x[1, 3]; }
+            get { return x[1, 0]; }
             set { this.x[1, 0] = value; }
         }
 
