@@ -18,6 +18,28 @@
             x[1, 1] = x11;
         }
 
+        public static Matrix2d Zero() { return new Matrix2d(0, 0, 0, 0); }
+
+        public static Matrix2d Identity() { return new Matrix2d(1, 0, 0, 1); }
+
+        public static Matrix2d operator*(Matrix2d m, double s)
+        {
+            var result = new Matrix2d();
+            for(int i = 0; i < 2; ++i)
+            {
+                for(int j = 0; j < 2; ++j)
+                {
+                    result.x[i,j] = m.x[i,j] * s;
+                }
+            }
+            return result;
+        }
+
+        public static Matrix2d operator/(Matrix2d m, double s)
+        {
+            return m * (1.0 / s);
+        }
+
         public double X00
         {
             get { return x[0, 0]; }
