@@ -62,6 +62,22 @@
             return result;
         }
 
+        public static Matrix3d operator*(Matrix3d lhs, Matrix3d rhs)
+        {
+            var m = Matrix3d.Zero();
+            for(int i = 0; i < 3; ++i)
+            {
+                for(int j = 0; j < 3; ++j)
+                {
+                    for (int k = 0; k < 3; ++k)
+                    {
+                        m.x[i, j] += lhs.x[i, k] * rhs.x[k, j];
+                    }
+                }
+            }
+            return m;
+        }
+
         public static Matrix3d operator/(Matrix3d m, double s)
         {
             return m * (1.0 / s);

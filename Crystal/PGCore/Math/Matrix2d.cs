@@ -50,6 +50,23 @@
             return result;
         }
 
+        public static Matrix2d operator *(Matrix2d lhs, Matrix2d rhs)
+        {
+            var m = Matrix2d.Zero();
+            for (int i = 0; i < 2; ++i)
+            {
+                for (int j = 0; j < 2; ++j)
+                {
+                    for (int k = 0; k < 2; ++k)
+                    {
+                        m.x[i, j] += lhs.x[i, k] * rhs.x[k, j];
+                    }
+                }
+            }
+            return m;
+
+        }
+
         public static Matrix2d operator/(Matrix2d m, double s)
         {
             return m * (1.0 / s);

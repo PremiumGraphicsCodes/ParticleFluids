@@ -30,6 +30,27 @@
             set { this.x = value; }
         }
 
+        public static Matrix4d Zero()
+        {
+            return new Matrix4d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        }
+
+        public static Matrix4d operator*(Matrix4d lhs, Matrix4d rhs)
+        {
+            var m = Matrix4d.Zero();
+            for (int i = 0; i < 4; ++i)
+            {
+                for (int j = 0; j < 4; ++j)
+                {
+                    for (int k = 0; k < 4; ++k)
+                    {
+                        m.x[i, j] += lhs.x[i, k] * rhs.x[k, j];
+                    }
+                }
+            }
+            return m;
+        }
+
         public Matrix4d Transposed
         {
             get

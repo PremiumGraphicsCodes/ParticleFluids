@@ -51,5 +51,14 @@ namespace PGCoreTest.Math
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
         }
+
+        [TestMethod]
+        public void TestMultipy()
+        {
+            var matrix = new Matrix3d(2, 1, 3, 1, -1, 2, 1, 2, 1);
+            var actual = matrix * matrix;
+            var expected = new Matrix3d(8, 7, 11, 3, 6, 3, 5, 1, 8);
+            Assert.IsTrue(expected.IsSame(actual, tolerance));
+        }
     }
 }
