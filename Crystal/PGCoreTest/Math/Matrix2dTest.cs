@@ -22,5 +22,22 @@ namespace PGCoreTest.Math
                 Assert.AreEqual(0.0, matrix.Determinant, tolerance);
             }
         }
+
+        [TestMethod]
+        public void TestTransposed()
+        {
+            {
+                var matrix = Matrix2d.Identity();
+                var actual = matrix.Transposed;
+                var expected = Matrix2d.Identity();
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+
+            {
+                var matrix = new Matrix2d(1, 2, 3, 4);
+                var actual = matrix.Transposed;
+                var expected = new Matrix2d(1, 3, 2, 4);
+            }
+        }
     }
 }

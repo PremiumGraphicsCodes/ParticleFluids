@@ -68,7 +68,7 @@
 
         public double X10
         {
-            get { return x[1, 3]; }
+            get { return x[1, 0]; }
             set { this.x[1, 0] = value; }
         }
 

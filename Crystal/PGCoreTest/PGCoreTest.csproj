@@ -54,6 +54,7 @@
     <Compile Include="Math\Box3dTest.cs" />
     <Compile Include="Math\Matrix3dTest.cs" />
     <Compile Include="Math\Matrix2dTest.cs" />
+    <Compile Include="Math\Vector2dTest.cs" />
     <Compile Include="Math\Vector3dTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

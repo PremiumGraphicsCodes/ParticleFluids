@@ -22,6 +22,21 @@
 
         public static Matrix2d Identity() { return new Matrix2d(1, 0, 0, 1); }
 
+        public bool IsSame(Matrix2d rhs, double tolerance)
+        {
+            for (int i = 0; i < 2; ++i)
+            {
+                for (int j = 0; j < 2; ++j)
+                {
+                    if (System.Math.Abs(x[i, j] - rhs.x[i, j]) > tolerance)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         public static Matrix2d operator*(Matrix2d m, double s)
         {
             var result = new Matrix2d();
@@ -54,7 +69,7 @@
 
         public double X10
         {
-            get { return x[1, 3]; }
+            get { return x[1, 0]; }
             set { this.x[1, 0] = value; }
         }
 
