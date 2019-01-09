@@ -29,9 +29,9 @@ namespace PG.CGStudio.Generation.ParticleSystem
             var positions = new List<Vector3d>();
             var sphere = SphereViewModel.Value;
             for (int i = 0; i < Count.Value; ++i) {
-                var theta = random.NextDouble() * 2.0 * System.Math.PI;
-                var phi = random.NextDouble() * System.Math.PI;
-                var pos = SphereViewModel.Value.GetPositionByAngle(theta, phi);
+                var u = random.NextDouble();
+                var v = random.NextDouble();
+                var pos = SphereViewModel.Value.GetPosition(u,v);
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);

@@ -37,20 +37,30 @@ namespace PG.Core.Shape
 
         public void Build(Cylinder3d cylinder, int udiv, int vdiv)
         {
-            var vertices = new List<Vector3d>();
+            var vertices = new Vector3d[udiv,vdiv];
             for(int i = 0; i < udiv; ++i)
             {
                 var u = i / (double)udiv;
                 for(int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
+                    vertices[i,j] = cylinder.GetPosition(u, v);
                 }
             }
         }
 
         public void Build(Sphere3d sphere, int udiv, int vdiv)
         {
-
+            var vertices = new Vector3d[udiv, vdiv];
+            for (int i = 0; i < udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                for (int j = 0; j < vdiv; ++j)
+                {
+                    var v = j / (double)vdiv;
+                    vertices[i, j] = sphere.GetPosition(u, v);
+                }
+            }
         }
 
         public WireFrame WireFrame { get { return new WireFrame(lines); } }
