@@ -24,6 +24,16 @@
             x[2, 2] = x22;
         }
 
+        public static Matrix3d Zero()
+        {
+            return new Matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0);
+        }
+
+        public static Matrix3d Identity()
+        {
+            return new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1);
+        }
+
         public bool IsSame(Matrix3d rhs, double tolerance)
         {
             for(int i = 0; i < 3; ++i)
@@ -37,6 +47,24 @@
                 }
             }
             return true;
+        }
+
+        public static Matrix3d operator*(Matrix3d m, double s)
+        {
+            var result = new Matrix3d();
+            for (int i = 0; i < 3; ++i)
+            {
+                for (int j = 0; j < 3; ++j)
+                {
+                    result.x[i, j] = m.x[i, j] * s;
+                }
+            }
+            return result;
+        }
+
+        public static Matrix3d operator/(Matrix3d m, double s)
+        {
+            return m * (1.0 / s);
         }
 
         public double X00
@@ -103,6 +131,24 @@
                   x[0,2] * x[1,1] * x[2,1] -
                   x[0,0] * x[0,2] * x[2,1] -
                   x[0,1] * x[1,0] * x[2,2];
+            }
+        }
+
+        public Matrix3d Inverse
+        {
+            get
+            {
+                var det = Determinant;
+                var x00 = X11 * X22 - X12 * X21;
+                var x01 = X21 * X02 - X22 * X01;
+                var x02 = X01 * X12 - X02 * X11;
+                var x10 = X12 * X20 - X10 * X22;
+                var x11 = X22 * X00 - X10 * X02;
+                var x12 = X02 * X10 - X00 * X12;
+                var x20 = X01 * X21 - X11 * X20;
+                var x21 = X20 * X01 - X21 * X00;
+                var x22 = X00 * X11 - X01 * x10;
+                return new Matrix3d(x00, x01, x02, x10, x11, x12, x20, x21, x22) / det;
             }
         }
 
