@@ -45,9 +45,9 @@ namespace PGCoreTest
         [TestMethod]
         public void TestCross()
         {
-            var x = new Vector3d(1, 0, 0);
-            var y = new Vector3d(0, 1, 0);
-            var z = new Vector3d(0, 0, 1);
+            var x = Vector3d.UnitX();
+            var y = Vector3d.UnitY();
+            var z = Vector3d.UnitZ();
             Assert.IsTrue(z.IsSame(x.Cross(y), tolerance));
             Assert.IsTrue(x.IsSame(y.Cross(z), tolerance));
             Assert.IsTrue(y.IsSame(z.Cross(x), tolerance));

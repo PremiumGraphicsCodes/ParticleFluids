@@ -39,5 +39,17 @@ namespace PGCoreTest.Math
                 var expected = new Matrix2d(1, 3, 2, 4);
             }
         }
+
+        [TestMethod]
+        public void TestMutiply()
+        {
+            {
+                var m1 = new Matrix2d(1,2,3,4);
+                var m2 = new Matrix2d(5, 6, 7, 8);
+                var actual = m1 * m2;
+                var expected = new Matrix2d(19, 22, 43, 50);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+        }
     }
 }

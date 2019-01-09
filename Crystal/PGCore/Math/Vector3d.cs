@@ -24,16 +24,41 @@
             set { this.z = value; }
         }
 
+        public Vector3d() :
+            this(0,0,0)
+        {
+        }
+
         public Vector3d(double x, double y, double z)
         {
             this.x = x;
             this.y = y;
             this.z = z;
         }
+
+        public static Vector3d Zero()
+        {
+            return new Vector3d(0, 0, 0);
+        }
+
+        public static Vector3d UnitX()
+        {
+            return new Vector3d(1, 0, 0);
+        }
+
+        public static Vector3d UnitY()
+        {
+            return new Vector3d(0, 1, 0);
+        }
+
+        public static Vector3d UnitZ()
+        {
+            return new Vector3d(0, 0, 1);
+        }
         
         public double LengthSquared
         {
-            get { return x* x + y * y + z * z; }
+            get { return x*x + y*y + z*z; }
         }
 
         public double Length

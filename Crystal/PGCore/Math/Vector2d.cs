@@ -23,6 +23,21 @@
             this.y = y;
         }
 
+        public Vector2d Zero()
+        {
+            return new Vector2d(0.0, 0.0);
+        }
+
+        public Vector2d UnitX()
+        {
+            return new Vector2d(1.0, 0.0);
+        }
+
+        public Vector2d UnitY()
+        {
+            return new Vector2d(0.0, 1.0);
+        }
+
         public double LengthSquared
         {
             get { return x * x + y * y; }

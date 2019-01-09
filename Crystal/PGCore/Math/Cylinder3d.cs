@@ -24,6 +24,11 @@
             set { this.center = value; }
         }
 
+        public Cylinder3d() :
+            this(1.0, 1.0, new Vector3d())
+        {
+        }
+
         public Cylinder3d(double radius, double height, Vector3d center)
         {
             this.radius = radius;

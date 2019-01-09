@@ -33,5 +33,12 @@ namespace PGCoreTest.Math
             Assert.IsTrue(expected.IsSame(actual, tolerance));
         }
 
+        [TestMethod]
+        public void TestDot()
+        {
+            var v1 = new Vector2d(10.0, 1.0);
+            var v2 = new Vector2d(2.0, 5.0);
+            Assert.AreEqual( 25, v1.Dot(v2), tolerance );
+        }
     }
 }
