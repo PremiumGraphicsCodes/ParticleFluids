@@ -121,6 +121,7 @@
     <Compile Include="CameraControlView.xaml.cs">
       <DependentUpon>CameraControlView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="ControlView.xaml.cs">
       <DependentUpon>ControlView.xaml</DependentUpon>
     </Compile>

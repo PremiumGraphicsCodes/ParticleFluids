@@ -10,7 +10,7 @@ namespace PG.CGStudio
 
             ContentRendered += (s, e) =>
             {
-                var dialog = new Generation.GenerationView();
+                var dialog = new ControlView();
                 dialog.Owner = this;
                 dialog.Show();
             };

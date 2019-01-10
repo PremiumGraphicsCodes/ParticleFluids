@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:PG.CGStudio"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:CameraControlViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
         <Button Content="XY" Command="{Binding XYCommand}"/>
         <Button Content="YZ" Command="{Binding YZCommand}"/>

@@ -39,12 +39,12 @@ void PG::CLI::Camera::Rotate(double theta, double phi)
 	instance->rotate(theta, phi);
 }
 
-/*
-void PG::CLI::Camera::SetAngle(double theta, double phi)
+void PG::CLI::Camera::SetRotation(PG::Core::Math::Matrix3d^ matrix)
 {
-	instance->setRotation()
+	auto m = Converter::toCpp(matrix);
+	instance->setRotation(Crystal::Math::Matrix4dd( m ));
 }
-*/
+
 void PG::CLI::Camera::Zoom(double s)
 {
 	instance->zoom(s);

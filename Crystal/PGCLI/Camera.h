@@ -26,7 +26,7 @@ public:
 
 	void Rotate(double azimuth, double elevation);
 
-	//void SetAngle(double azimuth, double elevation);
+	void SetRotation(PG::Core::Math::Matrix3d^ matrix);
 
 	void Zoom(double s);
 
