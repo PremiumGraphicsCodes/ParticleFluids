@@ -29,6 +29,16 @@
         {
         }
 
+        public Vector3d(Vector2d v) :
+            this(v.X, v.Y, 0.0)
+        {
+        }
+
+        public Vector3d(Vector2d v, double z) :
+            this(v.X, v.Y, z)
+        {
+        }
+
         public Vector3d(double x, double y, double z)
         {
             this.x = x;

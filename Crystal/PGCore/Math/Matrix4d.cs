@@ -11,6 +11,15 @@
                 )
         { }
 
+        public Matrix4d(Matrix3d m) :
+            this(
+                m.X00, m.X01, m.X02, 0.0,
+                m.X10, m.X11, m.X12, 0.0,
+                m.X20, m.X21, m.X22, 0.0,
+                0.0, 0.0, 0.0, 1.0)
+        {
+        }
+
         public Matrix4d(
             double x00, double x01, double x02, double x03,
             double x10, double x11, double x12, double x13,

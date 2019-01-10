@@ -7,6 +7,14 @@
         {
         }
 
+        public Matrix3d(Matrix2d m) :
+            this(
+                m.X00, m.X01, 0.0,
+                m.X10, m.X11, 0.0,
+                0.0, 0.0, 1.0
+                )
+            { }
+
         public Matrix3d(
             double x00, double x01, double x02,
             double x10, double x11, double x12,
@@ -32,6 +40,45 @@
         public static Matrix3d Identity()
         {
             return new Matrix3d(1, 0, 0, 0, 1, 0, 0, 0, 1);
+        }
+
+        public static Matrix3d RotationX(double angle)
+        {
+            var sin = System.Math.Sin(angle);
+            var cos = System.Math.Cos(angle);
+
+            return new Matrix3d
+                (
+                1.0, 0.0, 0.0,
+                0.0, cos,-sin,
+                0.0, sin, cos
+                );
+        }
+
+        public static Matrix3d RotationY(double angle)
+        {
+            var sin = System.Math.Sin(angle);
+            var cos = System.Math.Cos(angle);
+
+            return new Matrix3d
+                (
+                 cos, 0.0, sin,
+                 0.0, 1.0, 0.0,
+                -sin, 0.0, cos
+                );
+        }
+
+        public static Matrix3d RotationZ(double angle)
+        {
+            var sin = System.Math.Sin(angle);
+            var cos = System.Math.Cos(angle);
+
+            return new Matrix3d
+                (
+                cos,-sin, 0.0,
+                sin, cos, 0.0,
+                0.0, 0.0, 1.0
+                );
         }
 
         public bool IsSame(Matrix3d rhs, double tolerance)
