@@ -7,6 +7,11 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
+void IModel::clear()
+{
+	//objects.addParticleSystem();
+}
+
 bool IModel::read(const std::string& filename)
 {
 	FileReader reader;

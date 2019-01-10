@@ -20,16 +20,16 @@ namespace PG.CGStudio
 
         public void New()
         {
-
         }
 
-        public void Open(string filename)
+        public bool Open(string filename)
         {
-
+            return instance.Open(filename);
         }
 
-        public void Save(string filename)
+        public bool Save(string filename)
         {
+            return instance.Save(filename);
         }
 
         public void Import(string filename)

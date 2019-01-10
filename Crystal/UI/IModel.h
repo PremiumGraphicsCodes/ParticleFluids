@@ -12,6 +12,8 @@ class IModel
 public:
 	virtual ~IModel() {}
 
+	void clear();
+
 	bool read(const std::string& filename);
 
 	bool write(const std::string& filename) const;

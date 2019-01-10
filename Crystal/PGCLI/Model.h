@@ -19,6 +19,12 @@ public:
 
 	~Model(void);
 
+	void Clear();
+
+	bool Read(System::String^ filename);
+
+	bool Write(System::String^ filename);
+
 	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src);
 
 	int AddWireFrame(PG::Core::Shape::WireFrame^ src);

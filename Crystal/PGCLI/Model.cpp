@@ -1,10 +1,14 @@
 #include "stdafx.h"
+#include <msclr/marshal_cppstd.h>
+
 #include "Model.h"
 
 #include "../UI/IModel.h"
 #include "../UI/ViewModel3d.h"
 
 #include "Converter.h"
+
+
 
 using namespace PG::CLI;
 
@@ -16,6 +20,24 @@ Model::Model() :
 Model::~Model()
 {
 	delete instance;
+}
+
+void Model::Clear()
+{
+	instance->clear();
+}
+
+bool Model::Read(System::String^ filename)
+{
+	//msclr::interop::marshal_as<std::string>(filename)
+	std::string str = msclr::interop::marshal_as<std::string>(filename);
+	return instance->read( str );
+}
+
+bool Model::Write(System::String^ filename)
+{
+	std::string str = msclr::interop::marshal_as<std::string>(filename);
+	return instance->write(str);
 }
 
 int Model::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
