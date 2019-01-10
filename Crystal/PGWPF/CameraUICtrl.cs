@@ -17,6 +17,8 @@ namespace PG.CGStudio
 
         public virtual void OnRightButtonDown(Vector2d position) { }
 
+        public virtual void OnRightButtonDragging(Vector2d position) { }
+
         public virtual void OnRightButtonUp(Vector2d position) { }
     }
 
@@ -47,6 +49,11 @@ namespace PG.CGStudio
         public override void OnRightButtonDown(Vector2d position)
         {
             this.prevPosition = position;
+        }
+
+        public override void OnRightButtonDragging(Vector2d position)
+        {
+            var diff = position - prevPosition;
         }
 
         public override void OnRightButtonUp(Vector2d position)

@@ -43,18 +43,41 @@ namespace PG.CGStudio
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;
+            Panel.MouseUp += Panel_MouseUp;
+            Panel.MouseMove += Panel_MouseMove; 
+        }
+
+        private void Panel_MouseUp(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                ;
+            }
+        }
+
+        private void Panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                var x = e.Location.X / (double)Panel.Width;
+                var y = e.Location.Y / (double)Panel.Height;
+                ctrl.OnLeftButtonDragging(new Vector2d(x, y));
+            }
         }
 
         private void Panel_MouseDown(object sender, MouseEventArgs e)
         {
-            ctrl.OnLeftButtonDown(new Vector2d(0,0));
-            /*
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
+            {
+                var x = e.Location.X / (double)Panel.Width;
+                var y = e.Location.Y / (double)Panel.Height;
+                ctrl.OnLeftButtonDown(new Vector2d(x, y));
+            }
+            if(e.Button == MouseButtons.Right)
             {
                 var p = e.Location;
-                ctrl.OnLeftButtonDown();
+                //ctrl.OnLeftButtonDown();
             }
-            */
         }
 
         private void OnResize(object sender, EventArgs e)
