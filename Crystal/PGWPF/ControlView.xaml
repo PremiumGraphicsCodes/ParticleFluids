@@ -8,6 +8,8 @@
         mc:Ignorable="d"
         Title="ControlView" Height="450" Width="300">
     <StackPanel>
+        <TextBlock Text="File"/>
+        <local:FileIOView/>
         <TextBlock Text="Camera"/>
         <local:CameraControlView/>
         <TextBlock Text="Generation"/>
