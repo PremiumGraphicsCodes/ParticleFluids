@@ -2,6 +2,7 @@
 using PG.CGStudio.Generation.PolygonMesh;
 using PG.CGStudio.Generation.WireFrame;
 using Reactive.Bindings;
+using System.Windows;
 
 namespace PG.CGStudio.Generation
 {
@@ -28,6 +29,7 @@ namespace PG.CGStudio.Generation
         private void OnParticleSystemGeneration()
         {
             var dialog = new ParticleSystemGenerationView();
+            dialog.Owner = Application.Current.MainWindow;
             dialog.DataContext = new ParticleSystemGenerationViewModel();
             dialog.Show();
         }

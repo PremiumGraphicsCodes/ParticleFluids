@@ -23,11 +23,6 @@ namespace PG.CGStudio.UICtrl
             prevPosition = position;
         }
 
-        public override void OnLeftButtonUp(Vector2d position)
-        {
-            //Canvas3dView.Instance.Adapter.camera.Move()
-        }
-
         public override void OnLeftButtonDragging(Vector2d position)
         {
             var diff = position - prevPosition;
@@ -49,9 +44,10 @@ namespace PG.CGStudio.UICtrl
             prevPosition = position;
         }
 
-        public override void OnRightButtonUp(Vector2d position)
+        public override void OnWheel(double dx)
         {
-
+            camera.Zoom(dx);
+            Canvas3dView.Instance.Render();
         }
     }
 }

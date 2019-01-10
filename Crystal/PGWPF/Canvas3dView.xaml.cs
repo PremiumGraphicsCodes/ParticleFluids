@@ -44,7 +44,13 @@ namespace PG.CGStudio
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;
             Panel.MouseUp += Panel_MouseUp;
-            Panel.MouseMove += Panel_MouseMove; 
+            Panel.MouseMove += Panel_MouseMove;
+            Panel.MouseWheel += Panel_MouseWheel;
+        }
+
+        private void Panel_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ctrl.OnWheel(e.Delta / 1200.0f);
         }
 
         private void Panel_MouseUp(object sender, MouseEventArgs e)
