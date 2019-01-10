@@ -7,7 +7,7 @@ using PG.Core.Math;
 
 namespace PG.CGStudio.UICtrl
 {
-    public class CameraUICtrl : UICtrl
+    public class CameraUICtrl : IUICtrl
     {
         private PG.CLI.Camera camera;
         private Vector2d prevPosition;

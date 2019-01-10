@@ -171,7 +171,8 @@
     </Compile>
     <Compile Include="Generation\WireFrame\WireFrameGenerationViewModel.cs" />
     <Compile Include="MainModel.cs" />
-    <Compile Include="UICtrl\UICtrl.cs" />
+    <Compile Include="UICtrl\IUICtrl.cs" />
+    <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
     <Page Include="Canvas3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -9,7 +9,7 @@ namespace PG.CGStudio
     public partial class Canvas3dView : System.Windows.Controls.UserControl
     {
         private static Canvas3dView instance;
-        private UICtrl.UICtrl ctrl;
+        private UICtrl.IUICtrl ctrl;
 
         public static Canvas3dView Instance
         {
@@ -18,17 +18,17 @@ namespace PG.CGStudio
 
         public void Render()
         {
-            adapter.Render(Panel.Width, Panel.Height);
+            renderer.Render(Panel.Width, Panel.Height);
         }
 
         public void Update(MainModel model)
         {
-            adapter.Update(model.Adapter);
+            renderer.Update(model.Adapter);
         }
 
-        private PG.CLI.Renderer adapter;
+        private PG.CLI.Renderer renderer;
 
-        public PG.CLI.Renderer Adapter { get { return adapter; } }
+        public PG.CLI.Renderer Renderer { get { return renderer; } }
 
         public Canvas3dView()
         {
@@ -38,8 +38,8 @@ namespace PG.CGStudio
 
         private void WindowsFormsHost_Initialized(object sender, System.EventArgs e)
         {
-            this.adapter = new PG.CLI.Renderer(Panel.Handle);
-            this.ctrl = new UICtrl.CameraUICtrl(adapter.camera);
+            this.renderer = new PG.CLI.Renderer(Panel.Handle);
+            this.ctrl = new UICtrl.CameraUICtrl(renderer.camera);
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;
@@ -95,13 +95,13 @@ namespace PG.CGStudio
 
         private void OnResize(object sender, EventArgs e)
         {
-            this.adapter.Render(Panel.Width, Panel.Height);
+            this.renderer.Render(Panel.Width, Panel.Height);
             //throw new NotImplementedException();
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            this.adapter.Render(Panel.Width, Panel.Height);
+            this.renderer.Render(Panel.Width, Panel.Height);
         }
        
     }
