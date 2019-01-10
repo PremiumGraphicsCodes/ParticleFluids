@@ -128,6 +128,7 @@
     <Compile Include="FileIOView.xaml.cs">
       <DependentUpon>FileIOView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FileIOViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Generation\GenerationView.xaml.cs">
       <DependentUpon>GenerationView.xaml</DependentUpon>

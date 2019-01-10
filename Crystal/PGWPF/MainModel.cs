@@ -18,6 +18,30 @@ namespace PG.CGStudio
             instance = this;
         }
 
+        public void New()
+        {
+
+        }
+
+        public void Open(string filename)
+        {
+
+        }
+
+        public void Save(string filename)
+        {
+        }
+
+        public void Import(string filename)
+        {
+
+        }
+
+        public void Export(string filename)
+        {
+
+        }
+
         public int Add(ParticleSystem particleSystem)
         {
             return adapter.AddParticleSystem(particleSystem);

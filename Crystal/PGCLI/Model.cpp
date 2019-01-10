@@ -9,14 +9,12 @@
 using namespace PG::CLI;
 
 Model::Model() :
-	instance(new Crystal::UI::IModel()),
-	viewModel(new Crystal::UI::ViewModel3d())
+	instance(new Crystal::UI::IModel())
 {
 }
 
 Model::~Model()
 {
-	delete viewModel;
 	delete instance;
 }
 

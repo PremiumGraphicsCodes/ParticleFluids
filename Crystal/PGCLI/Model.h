@@ -27,7 +27,6 @@ public:
 
 internal:
 	Crystal::UI::IModel* instance;
-	Crystal::UI::ViewModel3d* viewModel;
 };
 
 	}

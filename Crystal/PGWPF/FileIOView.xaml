@@ -6,6 +6,10 @@
              xmlns:local="clr-namespace:PG.CGStudio"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:FileIOViewModel/>
+    </UserControl.DataContext>
+
     <StackPanel>
         <Button Content="New" Command="{Binding NewCommand}"/>
         <Button Content="Open" Command="{Binding OpenCommand}"/>
