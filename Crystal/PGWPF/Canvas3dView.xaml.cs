@@ -49,35 +49,48 @@ namespace PG.CGStudio
 
         private void Panel_MouseUp(object sender, MouseEventArgs e)
         {
+            var p = PositionInScreen(e.Location);
             if(e.Button == MouseButtons.Left)
             {
-                ;
+                ctrl.OnLeftButtonUp(p);
+            }
+            else if(e.Button == MouseButtons.Right)
+            {
+                ctrl.OnRightButtonUp(p);
             }
         }
 
         private void Panel_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            var p = PositionInScreen(e.Location);
+            if (e.Button == MouseButtons.Left)
             {
-                var x = e.Location.X / (double)Panel.Width;
-                var y = e.Location.Y / (double)Panel.Height;
-                ctrl.OnLeftButtonDragging(new Vector2d(x, y));
+                ctrl.OnLeftButtonDragging(p);
+            }
+            else if(e.Button == MouseButtons.Right)
+            {
+                ctrl.OnRightButtonDragging(p);
             }
         }
 
         private void Panel_MouseDown(object sender, MouseEventArgs e)
         {
+            var p = PositionInScreen(e.Location);
             if (e.Button == MouseButtons.Left)
             {
-                var x = e.Location.X / (double)Panel.Width;
-                var y = e.Location.Y / (double)Panel.Height;
-                ctrl.OnLeftButtonDown(new Vector2d(x, y));
+                ctrl.OnLeftButtonDown(p);
             }
-            if(e.Button == MouseButtons.Right)
+            else if(e.Button == MouseButtons.Right)
             {
-                var p = e.Location;
-                //ctrl.OnLeftButtonDown();
+                ctrl.OnRightButtonDown(p);
             }
+        }
+
+        private Vector2d PositionInScreen(System.Drawing.Point p)
+        {
+            var x = p.X / (double)Panel.Width;
+            var y = p.Y / (double)Panel.Height;
+            return new Vector2d(x, y);
         }
 
         private void OnResize(object sender, EventArgs e)
@@ -90,31 +103,6 @@ namespace PG.CGStudio
         {
             this.adapter.Render(Panel.Width, Panel.Height);
         }
-
-        private void WindowsFormsHost_SizeChanged(object sender, System.Windows.SizeChangedEventArgs e)
-        {
-
-        }
-
-        private void Host_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            var p = e.GetPosition(this);
- //           ctrl.OnLeftButtonDown();
-        }
-
-        private void Host_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Host_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Host_MouseRightButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
-        }
+       
     }
 }

@@ -54,6 +54,9 @@ namespace PG.CGStudio
         public override void OnRightButtonDragging(Vector2d position)
         {
             var diff = position - prevPosition;
+            camera.Rotate(diff.X, diff.Y);
+            Canvas3dView.Instance.Render();
+            prevPosition = position;
         }
 
         public override void OnRightButtonUp(Vector2d position)
