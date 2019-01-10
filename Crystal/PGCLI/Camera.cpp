@@ -17,6 +17,11 @@ PG::CLI::Camera::Camera()
 	);
 }
 
+PG::CLI::Camera::~Camera()
+{
+	delete instance;
+}
+
 void PG::CLI::Camera::Move(PG::Core::Math::Vector3d^ vector)
 {
 	auto v = Converter::toCpp(vector);
@@ -29,7 +34,18 @@ void PG::CLI::Camera::MoveTo(PG::Core::Math::Vector3d^ position)
 	instance->moveTo(p);
 }
 
-PG::CLI::Camera::~Camera()
+void PG::CLI::Camera::Rotate(double theta, double phi)
 {
-	delete instance;
+	instance->rotate(theta, phi);
+}
+
+/*
+void PG::CLI::Camera::SetAngle(double theta, double phi)
+{
+	instance->setRotation()
+}
+*/
+void PG::CLI::Camera::Zoom(double s)
+{
+	instance->zoom(s);
 }

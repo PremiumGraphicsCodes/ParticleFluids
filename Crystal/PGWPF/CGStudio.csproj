@@ -118,6 +118,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CameraUICtrl.cs" />
     <Compile Include="Generation\GenerationView.xaml.cs">
       <DependentUpon>GenerationView.xaml</DependentUpon>
     </Compile>
