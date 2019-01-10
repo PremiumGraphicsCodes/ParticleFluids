@@ -1,4 +1,5 @@
 ﻿using Prism.Mvvm;
+using System.Windows;
 
 namespace PG.CGStudio
 {

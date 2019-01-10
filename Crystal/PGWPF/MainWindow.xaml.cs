@@ -7,6 +7,13 @@ namespace PG.CGStudio
         public MainWindow()
         {
             InitializeComponent();
-        }
+
+            ContentRendered += (s, e) =>
+            {
+                var dialog = new Generation.GenerationView();
+                dialog.Owner = this;
+                dialog.Show();
+            };
+        }        
     }
 }

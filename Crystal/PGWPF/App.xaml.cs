@@ -9,10 +9,6 @@ namespace PG.CGStudio
         protected override void OnStartup(StartupEventArgs e)
         {
             this.model = new MainModel();
-
-            var dialog = new Generation.GenerationView();
-//            dialog.Owner = Application.Current.MainWindow;
-            dialog.Show();
         }
     }
 }
