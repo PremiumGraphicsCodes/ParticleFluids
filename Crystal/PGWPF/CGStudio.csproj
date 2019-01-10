@@ -121,9 +121,6 @@
     <Compile Include="CameraControlView.xaml.cs">
       <DependentUpon>CameraControlView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CameraControlViewModel.xaml.cs">
-      <DependentUpon>CameraControlViewModel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ControlView.xaml.cs">
       <DependentUpon>ControlView.xaml</DependentUpon>
     </Compile>
@@ -183,10 +180,6 @@
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
     <Page Include="CameraControlView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CameraControlViewModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
