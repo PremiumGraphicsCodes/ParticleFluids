@@ -9,7 +9,7 @@ namespace PG.CGStudio
     public partial class Canvas3dView : System.Windows.Controls.UserControl
     {
         private static Canvas3dView instance;
-        private UICtrl ctrl;
+        private UICtrl.UICtrl ctrl;
 
         public static Canvas3dView Instance
         {
@@ -39,7 +39,7 @@ namespace PG.CGStudio
         private void WindowsFormsHost_Initialized(object sender, System.EventArgs e)
         {
             this.adapter = new PG.CLI.Renderer(Panel.Handle);
-            this.ctrl = new CameraUICtrl(adapter.camera);
+            this.ctrl = new UICtrl.CameraUICtrl(adapter.camera);
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;

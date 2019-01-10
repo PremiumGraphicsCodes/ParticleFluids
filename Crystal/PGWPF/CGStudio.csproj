@@ -118,7 +118,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CameraUICtrl.cs" />
+    <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Generation\GenerationView.xaml.cs">
       <DependentUpon>GenerationView.xaml</DependentUpon>
     </Compile>
@@ -171,6 +171,7 @@
     </Compile>
     <Compile Include="Generation\WireFrame\WireFrameGenerationViewModel.cs" />
     <Compile Include="MainModel.cs" />
+    <Compile Include="UICtrl\UICtrl.cs" />
     <Page Include="Canvas3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
