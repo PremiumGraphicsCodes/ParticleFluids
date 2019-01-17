@@ -3,35 +3,61 @@
   <ItemGroup>
     <ClInclude Include="RectSelectUICtrl.h" />
     <ClInclude Include="IMouseListener.h" />
-    <ClInclude Include="IObject.h" />
     <ClInclude Include="IKeyListener.h" />
-    <ClInclude Include="ParticleSystemObject.h" />
-    <ClInclude Include="PolygonMeshObject.h" />
-    <ClInclude Include="WireFrameObject.h" />
     <ClInclude Include="ObjectRepository.h" />
     <ClInclude Include="FileReader.h" />
-    <ClInclude Include="IUICtrl.h" />
-    <ClInclude Include="CameraUICtrl.h" />
-    <ClInclude Include="PickUICtrl.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="ViewModel3d.h" />
     <ClInclude Include="LightRepository.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="MaterialRepository.h" />
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="PolygonMeshObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="IObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraUICtrl.h">
+      <Filter>UICtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="PickUICtrl.h">
+      <Filter>UICtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="IUICtrl.h">
+      <Filter>UICtrl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectRepository.cpp" />
     <ClCompile Include="FileReader.cpp" />
-    <ClCompile Include="CameraUICtrl.cpp" />
-    <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="ViewModel3d.cpp" />
     <ClCompile Include="LightRepository.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="MaterialRepository.cpp" />
     <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="CameraUICtrl.cpp">
+      <Filter>UICtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="PickUICtrl.cpp">
+      <Filter>UICtrl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object">
+      <UniqueIdentifier>{53c3706e-452d-4276-a069-0001c4555325}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UICtrl">
+      <UniqueIdentifier>{19c55112-e744-4618-919d-81f8d51de695}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
