@@ -12,35 +12,35 @@
 
 using namespace PG::CLI;
 
-Model::Model() :
+ModelAdapter::ModelAdapter() :
 	instance(new Crystal::UI::Model())
 {
 }
 
-Model::~Model()
+ModelAdapter::~ModelAdapter()
 {
 	delete instance;
 }
 
-void Model::Clear()
+void ModelAdapter::Clear()
 {
 	instance->clear();
 }
 
-bool Model::Read(System::String^ filename)
+bool ModelAdapter::Read(System::String^ filename)
 {
 	//msclr::interop::marshal_as<std::string>(filename)
 	std::string str = msclr::interop::marshal_as<std::string>(filename);
 	return instance->read( str );
 }
 
-bool Model::Write(System::String^ filename)
+bool ModelAdapter::Write(System::String^ filename)
 {
 	std::string str = msclr::interop::marshal_as<std::string>(filename);
 	return instance->write(str);
 }
 
-int Model::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
+int ModelAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
 {
 	auto positions = src->Positions;
 	std::vector<Crystal::Math::Vector3df> ps;
@@ -51,7 +51,7 @@ int Model::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
 	return instance->getRepository()->addParticleSystem(ps, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0), 1.0f);
 }
 
-int Model::AddWireFrame(PG::Core::Shape::WireFrame^ src)
+int ModelAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
 {
 	auto lines = src->Lines;
 	std::vector<Crystal::Math::Line3dd> ls;
@@ -63,7 +63,7 @@ int Model::AddWireFrame(PG::Core::Shape::WireFrame^ src)
 	return instance->getRepository()->addWireFrame(wf, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0));
 }
 
-int Model::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
+int ModelAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
 {
 	return -1;
 }
