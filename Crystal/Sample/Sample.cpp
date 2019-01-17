@@ -7,7 +7,7 @@
 #include "../AppBase/WireFramePanel.h"
 #include "../AppBase/PolygonPanel.h"
 
-#include "../UI/IModel.h"
+#include "../UI/Model.h"
 #include "../UI/ICanvas.h"
 #include "Renderer.h"
 

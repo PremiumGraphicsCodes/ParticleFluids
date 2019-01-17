@@ -1,6 +1,6 @@
 #include "WireFramePanel.h"
 #include "../ThirdParty/imgui-1.51/imgui.h"
-#include "../UI/IModel.h"
+#include "../UI/Model.h"
 #include "../UI/ICanvas.h"
 #include "../Shape/WireFrameBuilder.h"
 

@@ -1,6 +1,6 @@
 #include "CtrlMenu.h"
 #include "imgui.h"
-#include "../UI/IModel.h"
+#include "../UI/Model.h"
 #include "../UI/ICanvas.h"
 #include "../UI/CameraUICtrl.h"
 #include "../UI/RectSelectUICtrl.h"

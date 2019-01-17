@@ -4,18 +4,18 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Model.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ModelAdapter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ModelAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

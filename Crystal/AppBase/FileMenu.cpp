@@ -1,7 +1,7 @@
 #include "FileMenu.h"
 #include "imgui.h"
 #include "tinyfiledialogs.h"
-#include "../UI/IModel.h"
+#include "../UI/Model.h"
 #include "../UI/ICanvas.h"
 
 using namespace Crystal::UI;

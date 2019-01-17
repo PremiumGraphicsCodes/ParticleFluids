@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include <msclr/marshal_cppstd.h>
 
-#include "Model.h"
+#include "ModelAdapter.h"
 
-#include "../UI/IModel.h"
+#include "../UI/Model.h"
 #include "../UI/ViewModel3d.h"
 
 #include "Converter.h"

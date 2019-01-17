@@ -1,5 +1,5 @@
 #include "ViewModel3d.h"
-#include "IModel.h"
+#include "Model.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
