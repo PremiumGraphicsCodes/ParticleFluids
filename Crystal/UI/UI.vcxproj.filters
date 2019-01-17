@@ -18,6 +18,7 @@
     <ClInclude Include="ViewModel3d.h" />
     <ClInclude Include="LightRepository.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="MaterialRepository.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICanvas.cpp" />
@@ -28,6 +29,7 @@
     <ClCompile Include="ViewModel3d.cpp" />
     <ClCompile Include="LightRepository.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="MaterialRepository.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

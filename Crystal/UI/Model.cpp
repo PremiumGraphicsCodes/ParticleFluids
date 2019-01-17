@@ -20,6 +20,7 @@ void Model::clear()
 {
 	objects.clear();
 	lights.clear();
+	materials.clear();
 }
 
 bool Model::read(const std::string& filename)

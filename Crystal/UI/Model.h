@@ -2,8 +2,8 @@
 
 #include "ObjectRepository.h"
 #include "LightRepository.h"
+#include "MaterialRepository.h"
 #include "ViewModel3d.h"
-#include "../Shape/WireFrame.h"
 
 namespace Crystal {
 	namespace UI {
@@ -25,6 +25,8 @@ public:
 
 	LightRepository* getLights() { return &lights; }
 
+	MaterialRepository* getMaterials() { return &materials; }
+
 	virtual ViewModel3d toViewModel() const;
 
 	virtual Math::Box3d getBoundingBox() const;
@@ -32,6 +34,7 @@ public:
 private:	
 	ObjectRepository objects;
 	LightRepository lights;
+	MaterialRepository materials;
 };
 	}
 }
