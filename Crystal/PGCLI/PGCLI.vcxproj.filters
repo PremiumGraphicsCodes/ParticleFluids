@@ -6,16 +6,16 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Canvas.h" />
-    <ClInclude Include="Camera.h" />
     <ClInclude Include="ModelAdapter.h" />
+    <ClInclude Include="CameraAdapter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Converter.cpp" />
-    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ModelAdapter.cpp" />
+    <ClCompile Include="CameraAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

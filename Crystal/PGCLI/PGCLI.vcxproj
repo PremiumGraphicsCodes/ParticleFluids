@@ -131,7 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraAdapter.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="ModelAdapter.h" />
@@ -141,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraAdapter.cpp" />
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="ModelAdapter.cpp" />
     <ClCompile Include="Renderer.cpp" />

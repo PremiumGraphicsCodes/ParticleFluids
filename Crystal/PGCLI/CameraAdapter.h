@@ -13,12 +13,12 @@ namespace PG {
 
 ref class ModelAdapter;
 
-public ref class Camera
+public ref class CameraAdapter
 {
 public:
-	Camera();
+	CameraAdapter();
 
-	~Camera(void);
+	~CameraAdapter(void);
 
 	void Move(PG::Core::Math::Vector3d^ vector);
 

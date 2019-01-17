@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PG.Core.Math;
+﻿using PG.Core.Math;
 
 namespace PG.CGStudio.UICtrl
 {
     public class CameraUICtrl : IUICtrl
     {
-        private PG.CLI.Camera camera;
+        private PG.CLI.CameraAdapter camera;
         private Vector2d prevPosition;
 
-        public CameraUICtrl(PG.CLI.Camera camera)
+        public CameraUICtrl(PG.CLI.CameraAdapter camera)
         {
             this.camera = camera;
             this.prevPosition = new Vector2d();
