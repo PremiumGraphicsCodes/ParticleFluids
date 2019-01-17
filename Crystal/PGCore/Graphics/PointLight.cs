@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Graphics
 {
-    public struct Light
+    public struct PointLight
     {
         public ColorRGB ambient;
         public ColorRGB diffuset;

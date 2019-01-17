@@ -13,7 +13,7 @@
 using namespace PG::CLI;
 
 Model::Model() :
-	instance(new Crystal::UI::IModel())
+	instance(new Crystal::UI::Model())
 {
 }
 

@@ -30,7 +30,7 @@ int main(int, char**)
 
 	Renderer *renderer = new Renderer(camera);
 
-	IModel model;
+	Model model;
 	ICanvas canvas(renderer, camera);
 
 	Window window(&model, &canvas);

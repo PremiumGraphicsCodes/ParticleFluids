@@ -8,7 +8,7 @@ namespace Crystal {
 class PolygonPanel : public IPanel
 {
 public:
-	PolygonPanel(IModel* model, ICanvas* canvas) :
+	PolygonPanel(Model* model, ICanvas* canvas) :
 		IPanel(model, canvas)
 	{}
 

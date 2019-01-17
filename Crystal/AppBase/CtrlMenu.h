@@ -8,7 +8,7 @@ namespace Crystal {
 		class CtrlMenu : public IMenu
 		{
 		public:
-			CtrlMenu(IModel* model, ICanvas* canvas) :
+			CtrlMenu(Model* model, ICanvas* canvas) :
 				IMenu(model, canvas)
 			{}
 

@@ -8,7 +8,7 @@ namespace Crystal {
 		class CameraMenu : public IMenu
 		{
 		public:
-			CameraMenu(IModel* model, ICanvas* canvas) :
+			CameraMenu(Model* model, ICanvas* canvas) :
 				IMenu(model, canvas)
 			{}
 

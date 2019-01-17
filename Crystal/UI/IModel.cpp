@@ -7,28 +7,28 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-IModel::IModel()
+Model::Model()
 {
 }
 
-IModel::~IModel()
+Model::~Model()
 {
 	clear();
 }
 
-void IModel::clear()
+void Model::clear()
 {
 	objects.clear();
 	lights.clear();
 }
 
-bool IModel::read(const std::string& filename)
+bool Model::read(const std::string& filename)
 {
 	FileReader reader;
 	return reader.read(filename);
 }
 
-bool IModel::write(const std::string& filename) const
+bool Model::write(const std::string& filename) const
 {
 	//const auto& ext = std::experimental::filesystem::path(filename).extension();
 	/*
@@ -40,7 +40,7 @@ bool IModel::write(const std::string& filename) const
 	return false;
 }
 
-ViewModel3d IModel::toViewModel() const
+ViewModel3d Model::toViewModel() const
 {
 	ViewModel3d vm;
 	const auto& particleSystems = objects.getParticleSystems();
@@ -59,7 +59,7 @@ ViewModel3d IModel::toViewModel() const
 	return vm;
 }
 
-Box3d IModel::getBoundingBox() const
+Box3d Model::getBoundingBox() const
 {
 	return objects.getBoundingBox();
 }

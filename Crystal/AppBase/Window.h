@@ -13,7 +13,7 @@ namespace Crystal {
 class Window
 {
 public:
-	Window(IModel* model, ICanvas* canvas);
+	Window(Model* model, ICanvas* canvas);
 
 	bool init();
 
@@ -24,7 +24,7 @@ public:
 	void add(IPanel* panel) { this->panels.push_back( panel); }
 
 private:
-	IModel* model;
+	Model* model;
 	ICanvas* canvas;
 	std::vector< IMenu* > menus;
 	std::vector< IPanel* > panels;

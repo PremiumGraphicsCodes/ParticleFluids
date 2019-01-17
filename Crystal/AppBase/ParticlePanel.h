@@ -8,7 +8,7 @@ namespace Crystal {
 class ParticlePanel : public IPanel
 {
 public:
-	ParticlePanel(IModel* model, ICanvas* canvas) :
+	ParticlePanel(Model* model, ICanvas* canvas) :
 		IPanel(model, canvas)
 	{}
 

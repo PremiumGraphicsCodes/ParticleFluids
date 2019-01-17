@@ -8,12 +8,12 @@
 namespace Crystal {
 	namespace UI {
 
-class IModel
+class Model
 {
 public:
-	IModel();
+	Model();
 
-	virtual ~IModel();
+	virtual ~Model();
 
 	void clear();
 

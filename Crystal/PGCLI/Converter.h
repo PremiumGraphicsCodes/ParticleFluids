@@ -9,7 +9,7 @@ using namespace System;
 
 namespace Crystal {
 	namespace UI {
-		class IModel;
+		class Model;
 	}
 }
 

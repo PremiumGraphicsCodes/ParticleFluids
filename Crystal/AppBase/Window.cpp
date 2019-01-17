@@ -80,7 +80,7 @@ namespace {
 	}
 }
 
-Window::Window(IModel* model, ICanvas* canvas) :
+Window::Window(Model* model, ICanvas* canvas) :
 	model(model),
 	canvas(canvas)
 {
