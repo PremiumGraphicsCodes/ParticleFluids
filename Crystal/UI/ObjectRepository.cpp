@@ -5,6 +5,27 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
+ObjectRepository::~ObjectRepository()
+{
+	clear();
+}
+
+void ObjectRepository::clear()
+{
+	for (auto p : particleSystems) {
+		delete p.getShape();
+	}
+	particleSystems.clear();
+	for (auto w : wires) {
+		delete w.getShape();
+	}
+	wires.clear();
+	for (auto p : polygonMeshes) {
+		delete p.getShape();
+	}
+	polygonMeshes.clear();
+}
+
 int ObjectRepository::addParticleSystem(const std::vector<Vector3df>& positions, const ColorRGBAf& color, const float size)
 {
 	auto particles = new Shape::ParticleSystem<ParticleAttr>();

@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graphics\ColorRGB.cs" />
+    <Compile Include="Graphics\Light.cs" />
+    <Compile Include="Graphics\Material.cs" />
     <Compile Include="Math\Box2d.cs" />
     <Compile Include="Math\Box3d.cs" />
     <Compile Include="Math\Circle2d.cs" />

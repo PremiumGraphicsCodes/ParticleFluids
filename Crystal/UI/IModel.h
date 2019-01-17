@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ObjectRepository.h"
+#include "LightRepository.h"
 #include "ViewModel3d.h"
 #include "../Shape/WireFrame.h"
 
@@ -10,7 +11,9 @@ namespace Crystal {
 class IModel
 {
 public:
-	virtual ~IModel() {}
+	IModel();
+
+	virtual ~IModel();
 
 	void clear();
 
@@ -20,12 +23,15 @@ public:
 
 	ObjectRepository* getRepository() { return &objects; }
 
+	LightRepository* getLights() { return &lights; }
+
 	virtual ViewModel3d toViewModel() const;
 
 	virtual Math::Box3d getBoundingBox() const;
 
 private:	
 	ObjectRepository objects;
+	LightRepository lights;
 };
 	}
 }

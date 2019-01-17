@@ -14,6 +14,10 @@ public:
 		nextId(1)
 	{}
 
+	~ObjectRepository();
+
+	void clear();
+
 	int addParticleSystem(const std::vector<Math::Vector3df>& positions, const Graphics::ColorRGBAf& color, const float size);
 
 	int addWireFrame(Shape::WireFrame* wire, const Graphics::ColorRGBAf& color);

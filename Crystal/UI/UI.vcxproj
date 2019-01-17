@@ -28,6 +28,7 @@
     <ClInclude Include="IObject.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="IUICtrl.h" />
+    <ClInclude Include="LightRepository.h" />
     <ClInclude Include="ObjectRepository.h" />
     <ClInclude Include="ParticleSystemObject.h" />
     <ClInclude Include="PickUICtrl.h" />
@@ -41,6 +42,7 @@
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="ICanvas.cpp" />
     <ClCompile Include="IModel.cpp" />
+    <ClCompile Include="LightRepository.cpp" />
     <ClCompile Include="ObjectRepository.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="ViewModel3d.cpp" />

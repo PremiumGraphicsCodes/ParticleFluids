@@ -7,9 +7,19 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
+IModel::IModel()
+{
+}
+
+IModel::~IModel()
+{
+	clear();
+}
+
 void IModel::clear()
 {
-	//objects.addParticleSystem();
+	objects.clear();
+	lights.clear();
 }
 
 bool IModel::read(const std::string& filename)

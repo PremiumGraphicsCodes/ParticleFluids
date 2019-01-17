@@ -17,6 +17,7 @@
     <ClInclude Include="PickUICtrl.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="ViewModel3d.h" />
+    <ClInclude Include="LightRepository.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IModel.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="ViewModel3d.cpp" />
+    <ClCompile Include="LightRepository.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
