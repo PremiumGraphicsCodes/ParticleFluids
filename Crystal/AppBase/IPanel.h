@@ -3,12 +3,12 @@
 namespace Crystal {
 	namespace UI {
 		class Model;
-		class ICanvas;
+		class Canvas;
 
 class IPanel
 {
 public:
-	IPanel(Model* model, ICanvas* canvas) :
+	IPanel(Model* model, Canvas* canvas) :
 		model(model),
 		canvas(canvas)
 	{}
@@ -19,7 +19,7 @@ public:
 
 protected:
 	Model* model;
-	ICanvas* canvas;
+	Canvas* canvas;
 };
 
 	}

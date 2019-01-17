@@ -8,7 +8,7 @@
 #include "../AppBase/PolygonPanel.h"
 
 #include "../UI/Model.h"
-#include "../UI/ICanvas.h"
+#include "../UI/Canvas.h"
 #include "Renderer.h"
 
 using namespace Crystal::Math;
@@ -31,7 +31,7 @@ int main(int, char**)
 	Renderer *renderer = new Renderer(camera);
 
 	Model model;
-	ICanvas canvas(renderer, camera);
+	Canvas canvas(renderer, camera);
 
 	Window window(&model, &canvas);
 	if (!window.init()) {

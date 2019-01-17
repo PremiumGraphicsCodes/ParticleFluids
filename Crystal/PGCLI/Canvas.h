@@ -1,6 +1,6 @@
 namespace Crystal {
 	namespace UI {
-		class ICanvas;
+		class Canvas;
 	}
 }
 
@@ -34,7 +34,7 @@ public:
 	void onWheel(const float scale);
 
 internal:
-	Crystal::UI::ICanvas* instance;
+	Crystal::UI::Canvas* instance;
 };
 
 	}

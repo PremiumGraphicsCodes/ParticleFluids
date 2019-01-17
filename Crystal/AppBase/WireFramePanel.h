@@ -8,7 +8,7 @@ namespace Crystal {
 		class WireFramePanel : public IPanel
 		{
 		public:
-			WireFramePanel(Model* model, ICanvas* canvas) :
+			WireFramePanel(Model* model, Canvas* canvas) :
 				IPanel(model, canvas)
 			{}
 

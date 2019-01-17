@@ -1,7 +1,7 @@
 #include "PolygonPanel.h"
 #include "../Math/Vector3d.h"
 #include "../UI/Model.h"
-#include "../UI/ICanvas.h"
+#include "../UI/Canvas.h"
 #include "../Shape/PolygonMeshBuilder.h"
 #include "../Graphics/ColorRGBA.h"
 #include "../ThirdParty/imgui-1.51/imgui.h"

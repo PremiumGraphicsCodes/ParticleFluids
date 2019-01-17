@@ -7,7 +7,7 @@
 
 #include "imgui.h"
 #include "imgui_impl_glfw_gl3.h"
-#include "../UI/ICanvas.h"
+#include "../UI/Canvas.h"
 
 #include "../Graphics/PerspectiveCamera.h"
 #include <chrono>
@@ -17,7 +17,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 namespace {
-	ICanvas* canvas;
+	Canvas* canvas;
 	std::chrono::time_point<std::chrono::system_clock> lastPressedTime;
 	bool isLeftDown;
 	bool isRightDown;
@@ -80,7 +80,7 @@ namespace {
 	}
 }
 
-Window::Window(Model* model, ICanvas* canvas) :
+Window::Window(Model* model, Canvas* canvas) :
 	model(model),
 	canvas(canvas)
 {

@@ -1,7 +1,7 @@
 #include "WireFramePanel.h"
 #include "../ThirdParty/imgui-1.51/imgui.h"
 #include "../UI/Model.h"
-#include "../UI/ICanvas.h"
+#include "../UI/Canvas.h"
 #include "../Shape/WireFrameBuilder.h"
 
 #include <cereal/cereal.hpp>

@@ -17,12 +17,12 @@ namespace Crystal {
 		class Model;
 		class IRenderer;
 
-class ICanvas : public IMouseListener
+class Canvas : public IMouseListener
 {
 public:
-	ICanvas(IRenderer* renderer, Graphics::ICamera* camera);
+	Canvas(IRenderer* renderer, Graphics::ICamera* camera);
 
-	virtual ~ICanvas() {}
+	virtual ~Canvas() {}
 
 	void build();
 

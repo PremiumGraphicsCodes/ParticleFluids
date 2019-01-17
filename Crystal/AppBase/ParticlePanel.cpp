@@ -2,7 +2,7 @@
 #include "../ThirdParty/imgui-1.51/imgui.h"
 #include "../Math/Sphere3d.h"
 #include "../UI/Model.h"
-#include "../UI/ICanvas.h"
+#include "../UI/Canvas.h"
 
 #include <cereal/cereal.hpp>
 #include <random>

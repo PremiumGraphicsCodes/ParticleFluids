@@ -1,4 +1,4 @@
-#include "ICanvas.h"
+#include "Canvas.h"
 #include "../Graphics/PerspectiveCamera.h"
 #include "CameraUICtrl.h"
 #include "../Math/Box3d.h"
@@ -8,75 +8,75 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-ICanvas::ICanvas(IRenderer* renderer, ICamera* camera) :
+Canvas::Canvas(IRenderer* renderer, ICamera* camera) :
 	renderer(renderer),
 	camera(camera)
 {
 
 }
 
-void ICanvas::build()
+void Canvas::build()
 {
 	setUICtrl(new CameraUICtrl(getCamera()));
 	renderer->build();
 }
 
-void ICanvas::render(const int width, const int height)
+void Canvas::render(const int width, const int height)
 {
 	renderer->render(width, height);
 }
 
-void ICanvas::onLeftButtonDown(const Vector2df& position)
+void Canvas::onLeftButtonDown(const Vector2df& position)
 {
 	ctrl->onLeftButtonDown(position);
 }
 
-void ICanvas::onLeftButtonUp(const Vector2df& position)
+void Canvas::onLeftButtonUp(const Vector2df& position)
 {
 	ctrl->onLeftButtonUp(position);
 }
 
-void ICanvas::onRightButtonDown(const Vector2df& position)
+void Canvas::onRightButtonDown(const Vector2df& position)
 {
 	ctrl->onRightButtonDown(position);
 }
 
-void ICanvas::onRightButtonUp(const Vector2df& position)
+void Canvas::onRightButtonUp(const Vector2df& position)
 {
 	ctrl->onRightButtonUp(position);
 }
 
-void ICanvas::onMiddleButtonDown(const Vector2df& position)
+void Canvas::onMiddleButtonDown(const Vector2df& position)
 {
 	ctrl->onMiddleButtonDown(position);
 }
 
-void ICanvas::onMiddleButtonUp(const Vector2df& position)
+void Canvas::onMiddleButtonUp(const Vector2df& position)
 {
 	ctrl->onMiddleButtonUp(position);
 }
 
-void ICanvas::onLeftDragging(const Vector2df& position)
+void Canvas::onLeftDragging(const Vector2df& position)
 {
 	ctrl->onLeftDragging(position);
 }
 
-void ICanvas::onRightDragging(const Vector2df& position)
+void Canvas::onRightDragging(const Vector2df& position)
 {
 	ctrl->onRightDragging(position);
 }
 
-void ICanvas::onMiddleDragging(const Vector2df& position)
+void Canvas::onMiddleDragging(const Vector2df& position)
 {
 	ctrl->onMiddleDragging(position);
 }
 
-void ICanvas::onWheel(const float scale)
+void Canvas::onWheel(const float scale)
 {
 	ctrl->onWheel(scale);
 }
 
-void ICanvas::fitCamera(const Box3d& boundingBox)
+void Canvas::fitCamera(const Box3d& boundingBox)
 {
 	const auto& dist = static_cast<float>( glm::distance(boundingBox.getMin(), boundingBox.getMax()) );
 	camera->setNear(dist * 0.1f);
@@ -85,19 +85,19 @@ void ICanvas::fitCamera(const Box3d& boundingBox)
 	camera->moveTo(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0));
 }
 
-void ICanvas::setCameraXY(const Box3d& boundingBox)
+void Canvas::setCameraXY(const Box3d& boundingBox)
 {
 	fitCamera(boundingBox);
 	camera->setRotation(glm::mat4());
 }
 
-void ICanvas::setCameraYZ(const Box3d& boundingBox)
+void Canvas::setCameraYZ(const Box3d& boundingBox)
 {
 	fitCamera(boundingBox);
 	camera->rotate(glm::radians(90.0f), 0.0);
 }
 
-void ICanvas::setCameraZX(const Box3d& boundingBox)
+void Canvas::setCameraZX(const Box3d& boundingBox)
 {
 	fitCamera(boundingBox);
 	camera->rotate(0.0, glm::radians(90.0f));

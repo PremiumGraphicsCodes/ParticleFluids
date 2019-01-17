@@ -1,7 +1,7 @@
 #include "CameraMenu.h"
 #include "imgui.h"
 #include "../UI/Model.h"
-#include "../UI/ICanvas.h"
+#include "../UI/Canvas.h"
 
 using namespace Crystal::UI;
 
