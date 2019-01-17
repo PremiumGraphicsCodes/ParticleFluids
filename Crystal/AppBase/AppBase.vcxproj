@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AppearancePanel.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="FileMenu.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="WireFramePanel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppearancePanel.h" />
     <ClInclude Include="CameraMenu.h" />
     <ClInclude Include="CtrlMenu.h" />
     <ClInclude Include="FileMenu.h" />

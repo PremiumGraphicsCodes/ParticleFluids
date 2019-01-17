@@ -7,6 +7,8 @@
 #include "../AppBase/WireFramePanel.h"
 #include "../AppBase/PolygonPanel.h"
 
+#include "../AppBase/AppearancePanel.h"
+
 #include "../UI/Model.h"
 #include "../UI/Canvas.h"
 #include "Renderer.h"
@@ -46,6 +48,7 @@ int main(int, char**)
 	window.add(new ParticlePanel(&model, &canvas));
 	window.add(new WireFramePanel(&model, &canvas));
 	window.add(new PolygonPanel(&model, &canvas));
+	window.add(new AppearancePanel(&model, &canvas));
 
 	window.show();
 

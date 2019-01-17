@@ -24,6 +24,7 @@
     <ClCompile Include="WireFramePanel.cpp">
       <Filter>Generation</Filter>
     </ClCompile>
+    <ClCompile Include="AppearancePanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -48,6 +49,7 @@
     <ClInclude Include="WireFramePanel.h">
       <Filter>Generation</Filter>
     </ClInclude>
+    <ClInclude Include="AppearancePanel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
