@@ -36,7 +36,7 @@ void ParticlePanel::show()
 					}
 				}
 			}
-			model->getRepository()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), 100.0f);
+			model->getObjects()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), 100.0f);
 			canvas->setViewModel(model->toViewModel());
 			canvas->fitCamera(model->getBoundingBox());
 			ImGui::CloseCurrentPopup();
@@ -67,7 +67,7 @@ void ParticlePanel::show()
 				const auto v = dist(mt);
 				positions.push_back( sphere.getPosition(u, v) );
 			}
-			model->getRepository()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), size);
+			model->getObjects()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), size);
 			canvas->setViewModel(model->toViewModel());
 			canvas->fitCamera(model->getBoundingBox());
 			ImGui::CloseCurrentPopup();

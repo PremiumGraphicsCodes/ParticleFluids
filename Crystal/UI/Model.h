@@ -21,7 +21,7 @@ public:
 
 	bool write(const std::string& filename) const;
 
-	ObjectRepository* getRepository() { return &objects; }
+	ObjectRepository* getObjects() { return &objects; }
 
 	LightRepository* getLights() { return &lights; }
 

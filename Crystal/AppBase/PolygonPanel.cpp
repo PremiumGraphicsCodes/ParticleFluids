@@ -35,7 +35,7 @@ void PolygonPanel::show()
 			Graphics::Material material;
 			material.setAmbient( glm::vec3(1, 0, 0) );
 			material.setDiffuse( glm::vec3(0, 1, 0) );
-			model->getRepository()->addPolygonMesh(builder.getPolygonMesh(), material);
+			model->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
 			canvas->setViewModel(model->toViewModel());
 			canvas->fitCamera(model->getBoundingBox());
 			ImGui::CloseCurrentPopup();
@@ -61,7 +61,7 @@ void PolygonPanel::show()
 			material.setAmbient(glm::vec3(1, 0, 0));
 			material.setSpecular(glm::vec3(0, 1, 0));
 			material.setDiffuse(glm::vec3(0, 0, 1));
-			model->getRepository()->addPolygonMesh(builder.getPolygonMesh(), material);
+			model->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
 			canvas->setViewModel(model->toViewModel());
 			canvas->fitCamera(model->getBoundingBox());
 			ImGui::CloseCurrentPopup();
@@ -81,7 +81,7 @@ void PolygonPanel::show()
 			builder.build(origin, uvec, vvec);
 			Graphics::Material material;
 			material.setAmbient(glm::vec3(1, 0, 0));
-			model->getRepository()->addPolygonMesh(builder.getPolygonMesh(), material);
+			model->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
 			canvas->setViewModel(model->toViewModel());
 			canvas->fitCamera(model->getBoundingBox());
 			ImGui::CloseCurrentPopup();

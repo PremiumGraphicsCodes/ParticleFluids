@@ -1,33 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="imgui.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="Window.cpp" />
-    <ClCompile Include="imgui_impl_glfw_gl3.cpp" />
-    <ClCompile Include="imgui_draw.cpp" />
-    <ClCompile Include="PolygonPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
-    <ClCompile Include="ParticlePanel.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
-    <ClCompile Include="WireFramePanel.cpp" />
+    <ClCompile Include="imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_glfw_gl3.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticlePanel.cpp">
+      <Filter>Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonPanel.cpp">
+      <Filter>Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFramePanel.cpp">
+      <Filter>Generation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="imgui.h" />
     <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="FileMenu.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="Window.h" />
-    <ClInclude Include="imgui_impl_glfw_gl3.h" />
     <ClInclude Include="IPanel.h" />
-    <ClInclude Include="PolygonPanel.h" />
     <ClInclude Include="CtrlMenu.h" />
-    <ClInclude Include="ParticlePanel.h" />
     <ClInclude Include="CameraMenu.h" />
-    <ClInclude Include="WireFramePanel.h" />
+    <ClInclude Include="imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_glfw_gl3.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticlePanel.h">
+      <Filter>Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonPanel.h">
+      <Filter>Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFramePanel.h">
+      <Filter>Generation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{662b1c1e-ae3f-44f1-9bee-a62584f1809b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generation">
+      <UniqueIdentifier>{6cfd2689-f312-496c-8422-5698b7f5afb2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -27,7 +27,7 @@ void WireFramePanel::show()
 			const Box3d box(min, max);
 			Crystal::Shape::WireFrameBuilder builder;
 			builder.build(box);
-			model->getRepository()->addWireFrame(builder.getWireFrame(), color);
+			model->getObjects()->addWireFrame(builder.getWireFrame(), color);
 			canvas->setViewModel(model->toViewModel());
 			canvas->fitCamera(model->getBoundingBox());
 			ImGui::CloseCurrentPopup();
@@ -50,7 +50,7 @@ void WireFramePanel::show()
 			Sphere3d sphere(center, radius);
 			Crystal::Shape::WireFrameBuilder builder;
 			builder.build(sphere);
-			model->getRepository()->addWireFrame(builder.getWireFrame(), color);
+			model->getObjects()->addWireFrame(builder.getWireFrame(), color);
 			canvas->setViewModel(model->toViewModel());
 			canvas->fitCamera(model->getBoundingBox());
 			ImGui::CloseCurrentPopup();

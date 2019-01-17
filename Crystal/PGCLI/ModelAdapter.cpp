@@ -48,7 +48,7 @@ int ModelAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
 		const auto& p = Converter::toCpp(positions[i]);
 		ps.push_back(p);
 	}
-	return instance->getRepository()->addParticleSystem(ps, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0), 1.0f);
+	return instance->getObjects()->addParticleSystem(ps, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0), 1.0f);
 }
 
 int ModelAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
@@ -60,7 +60,7 @@ int ModelAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
 		ls.push_back(l);
 	}
 	Crystal::Shape::WireFrame* wf = new Crystal::Shape::WireFrame(ls);
-	return instance->getRepository()->addWireFrame(wf, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0));
+	return instance->getObjects()->addWireFrame(wf, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0));
 }
 
 int ModelAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
