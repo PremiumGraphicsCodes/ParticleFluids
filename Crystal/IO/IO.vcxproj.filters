@@ -10,13 +10,13 @@
     <ClInclude Include="STLASCIIFileReader.h">
       <Filter>STL</Filter>
     </ClInclude>
-    <ClInclude Include="STLAsciiFileWriter.h">
-      <Filter>STL</Filter>
-    </ClInclude>
     <ClInclude Include="STLBinaryFileReader.h">
       <Filter>STL</Filter>
     </ClInclude>
     <ClInclude Include="STLBinaryFileWriter.h">
+      <Filter>STL</Filter>
+    </ClInclude>
+    <ClInclude Include="STLASCIIFileWriter.h">
       <Filter>STL</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,13 +29,13 @@
     <ClCompile Include="STLASCIIFileReader.cpp">
       <Filter>STL</Filter>
     </ClCompile>
-    <ClCompile Include="STLAsciiFileWriter.cpp">
-      <Filter>STL</Filter>
-    </ClCompile>
     <ClCompile Include="STLBinaryFileReader.cpp">
       <Filter>STL</Filter>
     </ClCompile>
     <ClCompile Include="STLBinaryFileWriter.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
+    <ClCompile Include="STLASCIIFileWriter.cpp">
       <Filter>STL</Filter>
     </ClCompile>
   </ItemGroup>

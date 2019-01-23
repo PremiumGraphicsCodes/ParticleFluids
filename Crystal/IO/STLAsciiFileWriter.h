@@ -1,16 +1,17 @@
 #pragma once
 
 #include "../Shape/TriangleMesh.h"
+#include <filesystem>
 
 namespace Crystal {
 	namespace IO {
 
-class STLAsciiFileWriter
+class STLASCIIFileWriter
 {
 public:
-	explicit STLAsciiFileWriter(const Shape::TriangleMesh& mesh);
+	explicit STLASCIIFileWriter(const Shape::TriangleMesh& mesh);
 
-	bool write(const std::string& filename);
+	bool write(const std::experimental::filesystem::path& filePath);
 
 	bool write(std::ostream& stream);
 

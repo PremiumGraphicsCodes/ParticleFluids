@@ -1,18 +1,18 @@
-#include "STLAsciiFileWriter.h"
+#include "STLASCIIFileWriter.h"
 #include <fstream>
 
 using namespace Crystal::IO;
 
-bool STLAsciiFileWriter::write(const std::string& filename)
+bool STLASCIIFileWriter::write(const std::experimental::filesystem::path& filePath)
 {
-	std::ofstream stream(filename);
+	std::ofstream stream(filePath);
 	if (!stream.is_open()) {
 		return false;
 	}
 	return write(stream);
 }
 
-bool STLAsciiFileWriter::write(std::ostream& stream)
+bool STLASCIIFileWriter::write(std::ostream& stream)
 {
 	stream << "solid" << " " << title.c_str() << std::endl;
 
