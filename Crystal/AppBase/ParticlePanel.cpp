@@ -4,6 +4,8 @@
 #include "../UI/Model.h"
 #include "../UI/Canvas.h"
 
+#include "IPopupButton.h"
+
 #include <cereal/cereal.hpp>
 #include <random>
 
@@ -11,10 +13,56 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
+namespace {
+	class BoxButton : public IPopupButton
+	{
+	public:
+		BoxButton(Model* model, Canvas* canvas) :
+			IPopupButton("Box", model, canvas)
+		{
+
+		}
+
+		void onShow() override
+		{
+			ImGui::InputFloat3("Min", &min[0]);
+			ImGui::InputFloat3("Max", &max[0]);
+			ImGui::InputFloat3("Dx", &dx[0]);
+		}
+
+		void onOk() override
+		{
+			std::vector<Vector3df> positions;
+			for (double x = min.x; x < max.x; x += dx[0]) {
+				for (double y = min.y; y < max.y; y += dx[1]) {
+					for (double z = min.z; z < max.z; z += dx[2]) {
+						positions.push_back(Vector3df(x, y, z));
+					}
+				}
+			}
+			getModel()->getObjects()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), 100.0f);
+			getCanvas()->setViewModel(getModel()->toViewModel());
+			getCanvas()->fitCamera(getModel()->getBoundingBox());
+		}
+
+		void onCancel() override
+		{
+
+		}
+
+	private:
+		glm::vec3 min = { -10.0f, -10.0f, -10.0f };
+		glm::vec3 max = { 10.0f, 10.0f, 10.0f };
+		glm::vec3 dx = { 1.0f, 1.0f, 1.0f };
+	};
+}
+
 
 void ParticlePanel::show()
 {
 	ImGui::Begin("Particle");
+
+	//BoxButton boxButton(model, canvas);
 
 	if (ImGui::Button("Box")) {
 		ImGui::OpenPopup("Box");

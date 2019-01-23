@@ -25,6 +25,7 @@
       <Filter>Generation</Filter>
     </ClCompile>
     <ClCompile Include="AppearancePanel.cpp" />
+    <ClCompile Include="IPopupButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -50,6 +51,7 @@
       <Filter>Generation</Filter>
     </ClInclude>
     <ClInclude Include="AppearancePanel.h" />
+    <ClInclude Include="IPopupButton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
