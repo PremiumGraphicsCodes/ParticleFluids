@@ -113,40 +113,8 @@ void ParticlePanel::show()
 	ImGui::Begin("Particle");
 
 	//BoxButton boxButton(model, canvas);
-
-	if (ImGui::Button("Box")) {
-		ImGui::OpenPopup("Box");
-	}
-	if (ImGui::BeginPopup("Box")) {
-		::boxButton->onShow();
-		if (ImGui::Button("OK")) {
-			::boxButton->onOk();
-			ImGui::CloseCurrentPopup();
-		}
-		if (ImGui::Button("Cancel")) {
-			::boxButton->onCancel();
-			ImGui::CloseCurrentPopup();
-		}
-		ImGui::EndPopup();
-	}
-
-	if (ImGui::Button("Sphere")) {
-		ImGui::OpenPopup("Sphere");
-	}
-	if (ImGui::BeginPopup("Sphere")) {
-		::sphereButton->onShow();
-		if (ImGui::Button("OK")) {
-			::sphereButton->onOk();
-			ImGui::CloseCurrentPopup();
-		}
-		if (ImGui::Button("Cancel")) {
-			::sphereButton->onCancel();
-			ImGui::CloseCurrentPopup();
-
-		}
-		ImGui::EndPopup();
-	}
-
+	boxButton->show();
+	sphereButton->show();
 
 	ImGui::End();
 }

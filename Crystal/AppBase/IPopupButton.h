@@ -15,6 +15,10 @@ protected:
 		canvas(canvas)
 	{}
 
+public:
+	void show();
+
+protected:
 	virtual void onShow() = 0;
 
 	virtual void onOk() = 0;
