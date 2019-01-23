@@ -55,6 +55,8 @@ namespace {
 		glm::vec3 max = { 10.0f, 10.0f, 10.0f };
 		glm::vec3 dx = { 1.0f, 1.0f, 1.0f };
 	};
+
+	BoxButton* boxButton = nullptr;
 }
 
 
@@ -68,25 +70,13 @@ void ParticlePanel::show()
 		ImGui::OpenPopup("Box");
 	}
 	if (ImGui::BeginPopup("Box")) {
-		static glm::vec3 min = { -10.0f, -10.0f, -10.0f };
-		ImGui::InputFloat3("Min", &min[0]);
-		static glm::vec3 max = { 10.0f, 10.0f, 10.0f };
-		ImGui::InputFloat3("Max", &max[0]);
-		static glm::vec3 dx = { 1.0f, 1.0f, 1.0f };
-		ImGui::InputFloat3("Dx", &dx[0]);
-
+		::boxButton->onShow();
 		if (ImGui::Button("OK")) {
-			std::vector<Vector3df> positions;
-			for (double x = min.x; x < max.x; x += dx[0]) {
-				for (double y = min.y; y < max.y; y += dx[1]) {
-					for (double z = min.z; z < max.z; z += dx[2]) {
-						positions.push_back(Vector3df(x, y, z));
-					}
-				}
-			}
-			model->getObjects()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), 100.0f);
-			canvas->setViewModel(model->toViewModel());
-			canvas->fitCamera(model->getBoundingBox());
+			::boxButton->onOk();
+			ImGui::CloseCurrentPopup();
+		}
+		if (ImGui::Button("Cancel")) {
+			::boxButton->onCancel();
 			ImGui::CloseCurrentPopup();
 		}
 		ImGui::EndPopup();
@@ -125,4 +115,10 @@ void ParticlePanel::show()
 
 
 	ImGui::End();
+}
+
+ParticlePanel::ParticlePanel(Model* model, Canvas* canvas) :
+	IPanel(model, canvas)	
+{
+	::boxButton = new BoxButton(model, canvas);
 }
