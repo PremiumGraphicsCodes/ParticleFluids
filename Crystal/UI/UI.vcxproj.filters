@@ -6,7 +6,6 @@
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="ObjectRepository.h" />
     <ClInclude Include="FileReader.h" />
-    <ClInclude Include="IRenderer.h" />
     <ClInclude Include="ViewModel3d.h" />
     <ClInclude Include="LightRepository.h" />
     <ClInclude Include="Model.h" />
@@ -33,6 +32,7 @@
     <ClInclude Include="IUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectRepository.cpp" />
@@ -48,6 +48,7 @@
     <ClCompile Include="PickUICtrl.cpp">
       <Filter>UICtrl</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

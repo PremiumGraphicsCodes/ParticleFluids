@@ -2,13 +2,13 @@
 #include "../Graphics/PerspectiveCamera.h"
 #include "CameraUICtrl.h"
 #include "../Math/Box3d.h"
-#include "IRenderer.h"
+#include "Renderer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-Canvas::Canvas(IRenderer* renderer, ICamera* camera) :
+Canvas::Canvas(Renderer* renderer, ICamera* camera) :
 	renderer(renderer),
 	camera(camera)
 {

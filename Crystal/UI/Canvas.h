@@ -9,18 +9,18 @@
 
 #include "IUICtrl.h"
 #include "ViewModel3d.h"
-#include "IRenderer.h"
+#include "Renderer.h"
 
 namespace Crystal {
 	namespace UI {
 		class IUICtrl;
 		class Model;
-		class IRenderer;
+		class Renderer;
 
 class Canvas : public IMouseListener
 {
 public:
-	Canvas(IRenderer* renderer, Graphics::ICamera* camera);
+	Canvas(Renderer* renderer, Graphics::ICamera* camera);
 
 	virtual ~Canvas() {}
 
@@ -28,7 +28,7 @@ public:
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 
-	void setRenderer(IRenderer* renderer) { this->renderer.reset(renderer); }
+	void setRenderer(Renderer* renderer) { this->renderer.reset(renderer); }
 
 	void setViewModel(ViewModel3d viewModel) { this->renderer->setViewModel(viewModel); }
 
@@ -67,7 +67,7 @@ public:
 private:
 	std::unique_ptr<Graphics::ICamera> camera;
 	std::unique_ptr<IUICtrl> ctrl;
-	std::unique_ptr<IRenderer> renderer;
+	std::unique_ptr<Renderer> renderer;
 	ViewModel3d viewModel;
 };
 	}
