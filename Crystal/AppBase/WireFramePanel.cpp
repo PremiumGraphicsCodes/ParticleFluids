@@ -48,6 +48,43 @@ namespace {
 	};
 
 	BoxButton* boxButton = nullptr;
+
+	class SphereButton : public IPopupButton
+	{
+	public:
+		SphereButton(Model* model, Canvas* canvas) :
+			IPopupButton("Sphere", model, canvas)
+		{
+		}
+
+		void onShow() override
+		{
+			ImGui::InputFloat3("Center", &center[0]);
+			ImGui::InputFloat("Radius", &radius);
+			ImGui::ColorPicker4("Color", &color[0]);
+		}
+
+		void onOk() override
+		{
+			Sphere3d sphere(center, radius);
+			Crystal::Shape::WireFrameBuilder builder;
+			builder.build(sphere);
+			getModel()->getObjects()->addWireFrame(builder.getWireFrame(), color);
+			getCanvas()->setViewModel(getModel()->toViewModel());
+			getCanvas()->fitCamera(getModel()->getBoundingBox());
+		}
+
+		void onCancel() override
+		{
+
+		}
+
+	private:
+		glm::vec3 center = { 0.0f, 0.0f, 0.0f };
+		float radius = 1.0;
+		glm::vec4 color;
+	};
+	SphereButton* sphereButton = nullptr;
 }
 
 void WireFramePanel::show()
@@ -55,29 +92,8 @@ void WireFramePanel::show()
 	ImGui::Begin("WireFrame");
 
 	boxButton->show();
+	sphereButton->show();
 
-	if (ImGui::Button("Sphere")) {
-		ImGui::OpenPopup("Sphere");
-	}
-	if (ImGui::BeginPopup("Sphere")) {
-		static glm::vec3 center = { 0.0f, 0.0f, 0.0f };
-		ImGui::InputFloat3("Center", &center[0]);
-		static float radius = 1.0;
-		ImGui::InputFloat("Radius", &radius);
-		static glm::vec4 color;
-		ImGui::ColorPicker4("Color", &color[0]);
-
-		if (ImGui::Button("OK")) {
-			Sphere3d sphere(center, radius);
-			Crystal::Shape::WireFrameBuilder builder;
-			builder.build(sphere);
-			model->getObjects()->addWireFrame(builder.getWireFrame(), color);
-			canvas->setViewModel(model->toViewModel());
-			canvas->fitCamera(model->getBoundingBox());
-			ImGui::CloseCurrentPopup();
-		}
-		ImGui::EndPopup();
-	}
 	ImGui::End();
 }
 
@@ -85,4 +101,5 @@ WireFramePanel::WireFramePanel(Model* model, Canvas* canvas) :
 	IPanel(model, canvas)
 {
 	::boxButton = new BoxButton(model, canvas);
+	::sphereButton = new SphereButton(model, canvas);
 }
