@@ -6,6 +6,7 @@
 #include <fstream>
 
 #include <vector>
+#include <filesystem>
 
 namespace Crystal {
 	namespace IO {
@@ -16,7 +17,7 @@ public:
 	STLBinaryFileReader()
 	{}
 
-	bool read(const std::string& filename);
+	bool read(const std::experimental::filesystem::path& filePath);
 
 	bool read(std::istream& stream);
 

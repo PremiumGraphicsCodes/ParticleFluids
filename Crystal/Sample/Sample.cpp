@@ -9,6 +9,8 @@
 
 #include "../AppBase/AppearancePanel.h"
 
+#include "../AppBase/ObjectTreeList.h"
+
 #include "../UI/Model.h"
 #include "../UI/Canvas.h"
 #include "../UI/Renderer.h"
@@ -49,6 +51,8 @@ int main(int, char**)
 	window.add(new WireFramePanel(&model, &canvas));
 	window.add(new PolygonPanel(&model, &canvas));
 	window.add(new AppearancePanel(&model, &canvas));
+
+	window.add(new ObjectTreeList("Objects", &model, &canvas));
 
 	window.show();
 

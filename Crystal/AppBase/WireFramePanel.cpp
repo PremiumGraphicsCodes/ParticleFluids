@@ -1,14 +1,28 @@
 #include "WireFramePanel.h"
-#include "../ThirdParty/imgui-1.51/imgui.h"
+#include "imgui.h"
 #include "../UI/Model.h"
 #include "../UI/Canvas.h"
 #include "../Shape/WireFrameBuilder.h"
+#include "IPopupButton.h"
 
 #include <cereal/cereal.hpp>
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
+
+namespace {
+	/*
+	class BoxButton : public IPopupButton
+	{
+	public :
+		BoxButton(Model* model, Canvas* canvas)
+		{
+
+		}
+	};
+	*/
+}
 
 void WireFramePanel::show()
 {

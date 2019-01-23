@@ -5,9 +5,9 @@
 using namespace Crystal::Math;
 using namespace Crystal::IO;
 
-bool STLBinaryFileWriter::write(const std::string& filename)
+bool STLBinaryFileWriter::write(const std::experimental::filesystem::path& filePath)
 {
-	std::ofstream stream(filename, std::ios::binary);
+	std::ofstream stream(filePath, std::ios::binary);
 	if (stream.is_open()) {
 		return false;
 	}

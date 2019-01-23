@@ -28,6 +28,7 @@
     <ClCompile Include="IPopupButton.cpp">
       <Filter>Window</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectTreeList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -63,6 +64,10 @@
     <ClInclude Include="IWindow.h">
       <Filter>Window</Filter>
     </ClInclude>
+    <ClInclude Include="ITreeList.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectTreeList.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

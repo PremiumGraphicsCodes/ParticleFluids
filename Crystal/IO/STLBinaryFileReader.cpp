@@ -6,9 +6,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
-bool STLBinaryFileReader::read(const std::string& filename)
+bool STLBinaryFileReader::read(const std::experimental::filesystem::path& filePath)
 {
-	std::ifstream stream(filename, std::ios::binary);
+	std::ifstream stream(filePath, std::ios::binary);
 	if (!stream.is_open()) {
 		return false;
 	}

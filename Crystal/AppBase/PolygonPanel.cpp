@@ -95,6 +95,42 @@ namespace {
 	};
 
 	BoxButton* boxButton = nullptr;
+
+	class PlaneButton : public IPopupButton
+	{
+	public:
+		PlaneButton(Model* model, Canvas* canvas) :
+			IPopupButton("Plane",model, canvas)
+		{
+		}
+
+		void onShow() override
+		{
+		}
+
+		void onOk()
+		{
+			PolygonMeshBuilder builder;
+			builder.build(origin, uvec, vvec);
+			Crystal::Graphics::Material material;
+			material.setAmbient(glm::vec3(1, 0, 0));
+			getModel()->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
+			getCanvas()->setViewModel(getModel()->toViewModel());
+			getCanvas()->fitCamera(getModel()->getBoundingBox());
+		}
+
+		void onCancel()
+		{
+
+		}
+
+	private:
+		glm::vec3 origin = { 0, 0, 0 };
+		glm::vec3 uvec = { 1, 0, 0 };
+		glm::vec3 vvec = { 0, 1, 0 };
+	};
+
+	PlaneButton* planeButton = nullptr;
 }
 
 void PolygonPanel::show()
@@ -103,26 +139,7 @@ void PolygonPanel::show()
 
 	sphereButton->show();
 	boxButton->show();
-
-	if (ImGui::Button("Plane")) {
-		ImGui::OpenPopup("Plane");
-	}
-	if (ImGui::BeginPopup("Plane")) {
-		static glm::vec3 origin(0, 0, 0);
-		static glm::vec3 uvec(1, 0, 0);
-		static glm::vec3 vvec(0, 1, 0);
-		if (ImGui::Button("OK")) {
-			PolygonMeshBuilder builder;
-			builder.build(origin, uvec, vvec);
-			Graphics::Material material;
-			material.setAmbient(glm::vec3(1, 0, 0));
-			model->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
-			canvas->setViewModel(model->toViewModel());
-			canvas->fitCamera(model->getBoundingBox());
-			ImGui::CloseCurrentPopup();
-		}
-		ImGui::EndPopup();
-	}
+	planeButton->show();
 
 	ImGui::End();
 }
@@ -132,4 +149,5 @@ PolygonPanel::PolygonPanel(Model* model, Canvas* canvas) :
 {
 	::sphereButton = new SphereButton(model, canvas);
 	::boxButton = new BoxButton(model, canvas);
+	::planeButton = new PlaneButton(model, canvas);
 }
