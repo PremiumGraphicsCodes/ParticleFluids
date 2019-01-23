@@ -26,7 +26,7 @@
     </ClCompile>
     <ClCompile Include="AppearancePanel.cpp" />
     <ClCompile Include="IPopupButton.cpp">
-      <Filter>Widget</Filter>
+      <Filter>Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,13 +52,16 @@
     </ClInclude>
     <ClInclude Include="AppearancePanel.h" />
     <ClInclude Include="IPopupButton.h">
-      <Filter>Widget</Filter>
+      <Filter>Window</Filter>
     </ClInclude>
     <ClInclude Include="IPanel.h">
-      <Filter>Widget</Filter>
+      <Filter>Window</Filter>
     </ClInclude>
     <ClInclude Include="IMenu.h">
-      <Filter>Widget</Filter>
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="IWindow.h">
+      <Filter>Window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -71,7 +74,7 @@
     <Filter Include="Generation">
       <UniqueIdentifier>{6cfd2689-f312-496c-8422-5698b7f5afb2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Widget">
+    <Filter Include="Window">
       <UniqueIdentifier>{afc4d729-1eb0-481b-8ee0-3d334e6eec54}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

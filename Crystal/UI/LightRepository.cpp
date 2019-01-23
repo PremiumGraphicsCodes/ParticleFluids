@@ -6,7 +6,7 @@ using namespace Crystal::UI;
 LightRepository::LightRepository()
 {
 	Graphics::PointLight* light = new Graphics::PointLight();
-	light->setPos(glm::vec3(100, 100, 100));
+	light->setPosition(glm::vec3(100, 100, 100));
 	light->setAmbient(glm::vec4(1, 1, 1, 1));
 	light->setDiffuse(glm::vec4(1, 1, 1, 1));
 	light->setSpecular(glm::vec4(1, 1, 1, 1));

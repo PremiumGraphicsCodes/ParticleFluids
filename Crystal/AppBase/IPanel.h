@@ -1,11 +1,13 @@
 #pragma once
 
+#include "IWindow.h"
+
 namespace Crystal {
 	namespace UI {
 		class Model;
 		class Canvas;
 
-class IPanel
+class IPanel : public IWindow
 {
 public:
 	IPanel(Model* model, Canvas* canvas) :

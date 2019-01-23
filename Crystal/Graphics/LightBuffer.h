@@ -22,7 +22,7 @@ public:
 	}
 
 	void add(const PointLight& light) {
-		this->position.add(light.getPos());
+		this->position.add(light.getPosition());
 		this->diffuse.add(light.getDiffuse());
 		this->specular.add(light.getSpecular());
 		this->ambient.add(light.getAmbient());

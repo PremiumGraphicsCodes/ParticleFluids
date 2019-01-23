@@ -32,9 +32,9 @@ public:
 
 	void setAmbient(const glm::vec4& a) { this->ambient = a; }
 
-	glm::vec3 getPos() const { return position; }
+	glm::vec3 getPosition() const { return position; }
 
-	void setPos(const glm::vec3& pos) { this->position = pos; }
+	void setPosition(const glm::vec3& pos) { this->position = pos; }
 
 private:
 	glm::vec3 position;

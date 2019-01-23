@@ -1,12 +1,14 @@
 #pragma once
 
+#include "IWindow.h"
+
 #include "../UI/Model.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {
 	namespace UI {
 
-class IPopupButton
+class IPopupButton : public IWindow
 {
 protected:
 	IPopupButton(const std::string& name, Model* model, Canvas* canvas) :
@@ -15,8 +17,11 @@ protected:
 		canvas(canvas)
 	{}
 
+	~IPopupButton()
+	{}
+
 public:
-	void show();
+	void show() override;
 
 protected:
 	virtual void onShow() = 0;

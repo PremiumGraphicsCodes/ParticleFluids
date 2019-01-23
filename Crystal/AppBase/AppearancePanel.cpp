@@ -22,6 +22,7 @@ namespace {
 
 		void onShow() override
 		{
+			ImGui::InputFloat3("Position", &position[0]);
 			ImGui::ColorPicker3("Ambient", &ambient[0]);
 			ImGui::ColorPicker3("Diffuse", &diffuse[0]);
 			ImGui::ColorPicker3("Specular", &specular[0]);
@@ -30,6 +31,7 @@ namespace {
 		void onOk() override
 		{
 			auto l = new PointLight();
+			l->setPosition(position);
 			l->setAmbient(ambient);
 			l->setDiffuse(diffuse);
 			l->setSpecular(specular);
@@ -44,6 +46,7 @@ namespace {
 		}
 
 	private:
+		glm::vec3 position = { 0,0,0 };
 		glm::vec4 ambient = { 0,0,0,0 };
 		glm::vec4 diffuse = { 0,0,0,0 };
 		glm::vec4 specular = { 0,0,0,0 };
