@@ -29,6 +29,7 @@
     <ClInclude Include="IImage.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Imagef.h" />
+    <ClInclude Include="LightBuffer.h" />
     <ClInclude Include="LineBuffer.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="OrthogonalCamera.h" />

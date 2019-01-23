@@ -6,11 +6,7 @@
     <ClInclude Include="OrthogonalCamera.h" />
     <ClInclude Include="ColorRGBA.h" />
     <ClInclude Include="PointBuffer.h" />
-    <ClInclude Include="Buffer2d.h" />
     <ClInclude Include="IBuffer.h" />
-    <ClInclude Include="Buffer1d.h" />
-    <ClInclude Include="Buffer3d.h" />
-    <ClInclude Include="Buffer4d.h" />
     <ClInclude Include="IImage.h" />
     <ClInclude Include="Imagef.h" />
     <ClInclude Include="Image.h" />
@@ -18,5 +14,23 @@
     <ClInclude Include="TriangleBuffer.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="LineBuffer.h" />
+    <ClInclude Include="Buffer1d.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffer2d.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffer3d.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffer4d.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="LightBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Buffer">
+      <UniqueIdentifier>{1a354be4-5a05-4dff-b2ad-2aaa805ae7ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

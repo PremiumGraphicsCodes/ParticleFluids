@@ -42,3 +42,11 @@ void ViewModel3d::add(const PolygonMeshObject& object)
 	*/
 }
 
+
+void ViewModel3d::add(const LightRepository& lights)
+{
+	const auto& ls = lights.getLights();
+	for (const auto& l : ls) {
+		lightBuffer.add(*l);
+	}
+}

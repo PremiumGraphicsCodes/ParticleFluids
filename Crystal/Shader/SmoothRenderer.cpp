@@ -108,7 +108,7 @@ void SmoothRenderer::findLocation()
 }
 
 
-void SmoothRenderer::render(const ICamera& camera, const PointLight& light, const TextureObject& texture)
+void SmoothRenderer::render(const ICamera& camera, const TextureObject& texture)
 {
 	const auto& positions = buffer.getPositions().get();// buffers[0].get();
 	const auto& normals = buffer.getNormals().get();//buffers[1].get();
@@ -127,12 +127,15 @@ void SmoothRenderer::render(const ICamera& camera, const PointLight& light, cons
 
 	glUseProgram(shader.getId());
 
-	const auto& lightPos = light.getPos();//{ -10.0f, 10.0f, 10.0f };
+	const auto& lightPos = light.getPosition().get();//{ -10.0f, 10.0f, 10.0f };
+	const auto& ambient = light.getAmbient().get();
+	const auto& diffuse = light.getDiffuse().get();
+	const auto& specular = light.getSpecular().get();
 
-	glUniform3fv(shader.getUniformLocation("light.position"), 1, &light.getPos()[0]);
-	glUniform3fv(shader.getUniformLocation("light.La"), 1, &light.getAmbient()[0]);
-	glUniform3fv(shader.getUniformLocation("light.Ld"), 1, &light.getDiffuse()[0]);
-	glUniform3fv(shader.getUniformLocation("light.Ls"), 1, &light.getSpecular()[0]);
+	glUniform3fv(shader.getUniformLocation("light.position"), 1, &lightPos[0]);
+	glUniform3fv(shader.getUniformLocation("light.La"), 1, &ambient[0]);
+	glUniform3fv(shader.getUniformLocation("light.Ld"), 1, &diffuse[0]);
+	glUniform3fv(shader.getUniformLocation("light.Ls"), 1, &specular[0]);
 
 	glBindFragDataLocation(shader.getId(), 0, "fragColor");
 

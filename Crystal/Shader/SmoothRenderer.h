@@ -3,7 +3,7 @@
 
 #include "../Graphics/ICamera.h"
 #include "../Graphics/TriangleBuffer.h"
-#include "../Graphics/PointLight.h"
+#include "../Graphics/LightBuffer.h"
 
 #include "ShaderObject.h"
 #include "TextureObject.h"
@@ -16,9 +16,12 @@ class SmoothRenderer
 public:
 	void findLocation();
 
-	void setBuffer(const Graphics::TriangleBuffer& buffer) { this->buffer = buffer; }
+	void setBuffer(const Graphics::TriangleBuffer& buffer, const Graphics::LightBuffer& light) {
+		this->buffer = buffer;
+		this->light = light;
+	}
 
-	void render(const Graphics::ICamera& camera, const Graphics::PointLight& light, const TextureObject& texture);
+	void render(const Graphics::ICamera& camera,const TextureObject& texture);
 
 	bool build();
 
@@ -31,6 +34,7 @@ private:
 private:
 	ShaderObject shader;
 	Graphics::TriangleBuffer buffer;
+	Graphics::LightBuffer light;
 };
 
 	}

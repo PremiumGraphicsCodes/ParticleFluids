@@ -56,6 +56,7 @@ ViewModel3d Model::toViewModel() const
 	for (const auto& p : polygons) {
 		vm.add(p);
 	}
+	vm.add(lights);
 
 	return vm;
 }

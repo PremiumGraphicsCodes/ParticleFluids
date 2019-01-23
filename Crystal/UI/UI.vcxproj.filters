@@ -4,12 +4,9 @@
     <ClInclude Include="RectSelectUICtrl.h" />
     <ClInclude Include="IMouseListener.h" />
     <ClInclude Include="IKeyListener.h" />
-    <ClInclude Include="ObjectRepository.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="ViewModel3d.h" />
-    <ClInclude Include="LightRepository.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="MaterialRepository.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="PolygonMeshObject.h">
       <Filter>Object</Filter>
@@ -33,14 +30,20 @@
       <Filter>UICtrl</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="LightRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ObjectRepository.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="ViewModel3d.cpp" />
-    <ClCompile Include="LightRepository.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="MaterialRepository.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="CameraUICtrl.cpp">
       <Filter>UICtrl</Filter>
@@ -49,6 +52,15 @@
       <Filter>UICtrl</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="LightRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -59,6 +71,9 @@
     </Filter>
     <Filter Include="UICtrl">
       <UniqueIdentifier>{19c55112-e744-4618-919d-81f8d51de695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Repository">
+      <UniqueIdentifier>{febe5541-930a-4afc-9847-a8ee6fa2f7a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
