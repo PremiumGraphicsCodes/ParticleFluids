@@ -8,6 +8,7 @@
 #include "WireFrameObject.h"
 #include "PolygonMeshObject.h"
 #include "LightRepository.h"
+#include "ObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {
@@ -15,13 +16,7 @@ namespace Crystal {
 class ViewModel3d
 {
 public:
-	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
-
-	void add(const ParticleSystemObject& object);
-
-	void add(const WireFrameObject& object);
-
-	void add(const PolygonMeshObject& object);
+	void add(const ObjectRepository& objects);
 
 	void add(const LightRepository& lights);
 
@@ -34,6 +29,15 @@ public:
 	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
 
 private:
+	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
+
+	void add(const ParticleSystemObject& object);
+
+	void add(const WireFrameObject& object);
+
+	void add(const PolygonMeshObject& object);
+
+
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
 	Graphics::TriangleBuffer triangleBuffer;

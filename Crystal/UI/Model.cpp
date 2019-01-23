@@ -44,20 +44,8 @@ bool Model::write(const std::string& filename) const
 ViewModel3d Model::toViewModel() const
 {
 	ViewModel3d vm;
-	const auto& particleSystems = objects.getParticleSystems();
-	for (const auto& p : particleSystems) {
-		vm.add(p);
-	}
-	const auto& wires = objects.getWireFrames();
-	for (const auto& w : wires) {
-		vm.add(w);
-	}
-	const auto& polygons = objects.getPolygonMeshes();
-	for (const auto& p : polygons) {
-		vm.add(p);
-	}
+	vm.add(objects);
 	vm.add(lights);
-
 	return vm;
 }
 

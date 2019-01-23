@@ -5,6 +5,22 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
+void ViewModel3d::add(const ObjectRepository& objects)
+{
+	const auto& particleSystems = objects.getParticleSystems();
+	for (const auto& ps : particleSystems) {
+		add(ps);
+	}
+	const auto& wires = objects.getWireFrames();
+	for (const auto& w : wires) {
+		add(w);
+	}
+	const auto& polygons = objects.getPolygonMeshes();
+	for (const auto& p : polygons) {
+		add(p);
+	}
+}
+
 void ViewModel3d::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
 {
 	pointBuffer.add(pos, c, size);

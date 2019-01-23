@@ -1,19 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="ICamera.h" />
-    <ClInclude Include="PerspectiveCamera.h" />
-    <ClInclude Include="OrthogonalCamera.h" />
     <ClInclude Include="ColorRGBA.h" />
-    <ClInclude Include="PointBuffer.h" />
-    <ClInclude Include="IBuffer.h" />
     <ClInclude Include="IImage.h" />
     <ClInclude Include="Imagef.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="TriangleBuffer.h" />
-    <ClInclude Include="PointLight.h" />
-    <ClInclude Include="LineBuffer.h" />
     <ClInclude Include="Buffer1d.h">
       <Filter>Buffer</Filter>
     </ClInclude>
@@ -26,11 +19,38 @@
     <ClInclude Include="Buffer4d.h">
       <Filter>Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="LightBuffer.h" />
+    <ClInclude Include="LightBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="LineBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="IBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="ICamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="OrthogonalCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PerspectiveCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h" />
+    <ClInclude Include="PointBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffer">
       <UniqueIdentifier>{1a354be4-5a05-4dff-b2ad-2aaa805ae7ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{ec04ed76-8573-4453-ad52-821848307972}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
