@@ -6,9 +6,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
-bool STLAsciiFileReader::read(const std::string& filename)
+bool STLAsciiFileReader::read(const std::experimental::filesystem::path& filePath)
 {
-	std::ifstream stream(filename);
+	std::ifstream stream(filePath);
 	if (!stream.is_open()) {
 		return false;
 	}

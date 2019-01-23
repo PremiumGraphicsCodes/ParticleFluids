@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <filesystem>
 #include "ObjectRepository.h"
 
 namespace Crystal {
@@ -9,7 +9,7 @@ namespace Crystal {
 class FileReader
 {
 public:
-	bool read(const std::string& filename);
+	bool read(const std::experimental::filesystem::path& filePath);
 
 	ObjectRepository getObjects() const { return objects; }
 

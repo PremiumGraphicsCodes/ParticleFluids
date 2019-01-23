@@ -91,10 +91,10 @@ PolygonMesh* OBJFileReader::toPolygonObject()
 }
 */
 
-bool OBJFileReader::read(const std::string& filename)
+bool OBJFileReader::read(const std::experimental::filesystem::path& filePath)
 {
 	std::ifstream stream;
-	stream.open(filename);
+	stream.open(filePath);
 
 	if (!stream.is_open()) {
 		return false;

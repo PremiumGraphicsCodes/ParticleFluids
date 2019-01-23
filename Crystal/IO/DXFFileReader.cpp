@@ -7,9 +7,9 @@
 using namespace Crystal::Math;
 using namespace Crystal::IO;
 
-bool DXFFileReader::read(const std::string& filename)
+bool DXFFileReader::read(const std::experimental::filesystem::path& filePath)
 {
-	std::ifstream stream(filename);
+	std::ifstream stream(filePath);
 	if (!stream.is_open()) {
 		return false;
 	}

@@ -6,6 +6,7 @@
 #include <fstream>
 
 #include <vector>
+#include <filesystem>
 
 namespace Crystal {
 	namespace Shape {
@@ -19,7 +20,7 @@ public:
 	STLAsciiFileReader()
 	{}
 
-	bool read(const std::string& filename);
+	bool read(const std::experimental::filesystem::path& filePath);
 
 	bool read(std::istream& stream);
 

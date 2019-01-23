@@ -4,6 +4,7 @@
 #include "../Math/Vector2d.h"
 #include "../Math/Vector3d.h"
 #include "../Shape/PolygonMesh.h"
+#include <filesystem>
 
 namespace Crystal {
 	namespace IO {
@@ -24,7 +25,7 @@ public:
 
 	std::string getComment() const { return comment; }
 
-	bool read(const std::string& filename);
+	bool read(const std::experimental::filesystem::path& filePath);
 
 	bool read(std::istream& stream);
 

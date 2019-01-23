@@ -3,6 +3,7 @@
 
 #include <istream>
 #include <cassert>
+#include <filesystem>
 
 #include "../Math/Vector3d.h"
 
@@ -38,7 +39,7 @@ class DXFFileReader
 public:
 	DXFFileReader() {};
 
-	bool read(const std::string& filename);
+	bool read(const std::experimental::filesystem::path& filePath);
 
 	bool read(std::istream& stream);
 

@@ -9,12 +9,12 @@
 using namespace Crystal::IO;
 using namespace Crystal::UI;
 
-bool FileReader::read(const std::string& filename)
+bool FileReader::read(const std::experimental::filesystem::path& filePath)
 {
-	const auto& ext = std::experimental::filesystem::path(filename).extension();
+	const auto& ext = filePath.extension();
 	if (ext == ".obj") {
 		OBJFileReader reader;
-		if (reader.read(filename)) {
+		if (reader.read(filePath)) {
 			;
 			return true;
 		}
@@ -22,11 +22,11 @@ bool FileReader::read(const std::string& filename)
 	}
 	else if (ext == ".dxf") {
 		DXFFileReader reader;
-		return reader.read(filename);
+		return reader.read(filePath);
 	}
 	else if (ext == ".stl") {
 		STLAsciiFileReader reader;
-		return reader.read(filename);
+		return reader.read(filePath);
 	}
 	return false;
 }
