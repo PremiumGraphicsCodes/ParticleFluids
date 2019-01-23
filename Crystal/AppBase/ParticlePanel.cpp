@@ -57,6 +57,54 @@ namespace {
 	};
 
 	BoxButton* boxButton = nullptr;
+
+	class SphereButton : public IPopupButton
+	{
+	public:
+		SphereButton(Model* model, Canvas* canvas) :
+			IPopupButton("Sphere", model, canvas)
+		{
+
+		}
+
+		void onShow() override
+		{
+			ImGui::InputFloat3("Center", &center[0]);
+			ImGui::InputFloat("Radius", &radius);
+			ImGui::InputFloat("Size", &size);
+			ImGui::InputInt("Count", &count);
+		}
+
+		void onOk() override
+		{
+			const Crystal::Math::Sphere3d sphere(center, radius);
+			std::mt19937 mt{ std::random_device{}() };
+			std::uniform_real_distribution<double> dist(0.0, 1.0);
+			std::vector<Vector3df> positions;
+			for (int i = 0; i < count; ++i) {
+				const auto u = dist(mt);
+				const auto v = dist(mt);
+				positions.push_back(sphere.getPosition(u, v));
+			}
+			getModel()->getObjects()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), size);
+			getCanvas()->setViewModel(getModel()->toViewModel());
+			getCanvas()->fitCamera(getModel()->getBoundingBox());
+		}
+
+		void onCancel() override
+		{
+		}
+
+	private:
+		glm::vec3 center = { 0.0f, 0.0f, 0.0f };
+		float radius = 1.0f;
+		float size = 1.0f;
+
+		int count = 10000;
+
+	};
+
+	SphereButton* sphereButton = nullptr;
 }
 
 
@@ -86,29 +134,15 @@ void ParticlePanel::show()
 		ImGui::OpenPopup("Sphere");
 	}
 	if (ImGui::BeginPopup("Sphere")) {
-		static glm::vec3 center = { 0.0f, 0.0f, 0.0f };
-		ImGui::InputFloat3("Min", &center[0]);
-		static float radius = 1.0f;
-		ImGui::InputFloat("Center", &radius);
-		static float size = 1.0f;
-		ImGui::InputFloat("Size", &size);
-		static int count = 10000;
-		ImGui::InputInt("Count", &count);
-
+		::sphereButton->onShow();
 		if (ImGui::Button("OK")) {
-			const Math::Sphere3d sphere(center, radius);
-			std::mt19937 mt{ std::random_device{}() };
-			std::uniform_real_distribution<double> dist(0.0, 1.0);
-			std::vector<Vector3df> positions;
-			for (int i = 0; i < count; ++i) {
-				const auto u = dist(mt);
-				const auto v = dist(mt);
-				positions.push_back( sphere.getPosition(u, v) );
-			}
-			model->getObjects()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), size);
-			canvas->setViewModel(model->toViewModel());
-			canvas->fitCamera(model->getBoundingBox());
+			::sphereButton->onOk();
 			ImGui::CloseCurrentPopup();
+		}
+		if (ImGui::Button("Cancel")) {
+			::sphereButton->onCancel();
+			ImGui::CloseCurrentPopup();
+
 		}
 		ImGui::EndPopup();
 	}
@@ -121,4 +155,5 @@ ParticlePanel::ParticlePanel(Model* model, Canvas* canvas) :
 	IPanel(model, canvas)	
 {
 	::boxButton = new BoxButton(model, canvas);
+	::sphereButton = new SphereButton(model, canvas);
 }
