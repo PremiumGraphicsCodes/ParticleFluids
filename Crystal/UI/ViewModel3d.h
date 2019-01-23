@@ -4,11 +4,13 @@
 #include "../Graphics/LineBuffer.h"
 #include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/LightBuffer.h"
+#include "../Graphics/MaterialBuffer.h"
 #include "ParticleSystemObject.h"
 #include "WireFrameObject.h"
 #include "PolygonMeshObject.h"
 #include "LightRepository.h"
 #include "ObjectRepository.h"
+#include "MaterialRepository.h"
 
 namespace Crystal {
 	namespace UI {
@@ -20,6 +22,8 @@ public:
 
 	void add(const LightRepository& lights);
 
+	void add(const MaterialRepository& materials);
+
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 
 	Graphics::LineBuffer getLineBuffer() const { return lineBuffer; }
@@ -27,6 +31,8 @@ public:
 	Graphics::TriangleBuffer getTriangleBuffer() const { return triangleBuffer; }
 
 	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
+
+	Graphics::MaterialBuffer getMaterialBuffer() const { return materialBuffer; }
 
 private:
 	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
@@ -37,11 +43,11 @@ private:
 
 	void add(const PolygonMeshObject& object);
 
-
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
 	Graphics::TriangleBuffer triangleBuffer;
 	Graphics::LightBuffer lightBuffer;
+	Graphics::MaterialBuffer materialBuffer;
 };
 
 	}

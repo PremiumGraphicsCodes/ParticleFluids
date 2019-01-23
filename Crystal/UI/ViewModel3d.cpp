@@ -66,3 +66,11 @@ void ViewModel3d::add(const LightRepository& lights)
 		lightBuffer.add(*l);
 	}
 }
+
+void ViewModel3d::add(const MaterialRepository& materials)
+{
+	const auto& ms = materials.getMaterials();
+	for (const auto& m : ms) {
+		materialBuffer.add(*m);
+	}
+}

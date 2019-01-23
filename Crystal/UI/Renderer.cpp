@@ -32,7 +32,7 @@ void Renderer::setViewModel(const ViewModel3d& vm)
 {
 	this->pointRenderer.setBuffer(vm.getPointBuffer());
 	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);
-	this->smoothRenderer.setBuffer(vm.getTriangleBuffer(), vm.getLightBuffer());
+	this->smoothRenderer.setBuffer(vm.getTriangleBuffer(), vm.getLightBuffer(), vm.getMaterialBuffer());
 }
 
 void Renderer::render(const int width, const int height)
