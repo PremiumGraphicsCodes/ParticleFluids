@@ -14,10 +14,10 @@ namespace Crystal {
 	}
 	namespace IO {
 
-class STLAsciiFileReader
+class STLASCIIFileReader
 {
 public:
-	STLAsciiFileReader()
+	STLASCIIFileReader()
 	{}
 
 	bool read(const std::experimental::filesystem::path& filePath);

@@ -35,8 +35,6 @@ public:
 
 	std::vector< Math::Vector2df > getTexCoords() const { return texCoords; }
 
-	Shape::PolygonMesh* toPolygonObject();
-
 	std::vector< std::pair< std::string, unsigned int > > getGroups() const { return groups; }
 
 	std::vector< std::string > getMaterialFiles() const { return mtllibs; }

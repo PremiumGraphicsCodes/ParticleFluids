@@ -25,7 +25,7 @@
     <ClInclude Include="MTLFileReader.h" />
     <ClInclude Include="OBJFileReader.h" />
     <ClInclude Include="PCDFileReader.h" />
-    <ClInclude Include="STLAsciiFileReader.h" />
+    <ClInclude Include="STLASCIIFileReader.h" />
     <ClInclude Include="STLAsciiFileWriter.h" />
     <ClInclude Include="STLBinaryFileReader.h" />
     <ClInclude Include="STLBinaryFileWriter.h" />
@@ -36,7 +36,7 @@
     <ClCompile Include="MTLFileReader.cpp" />
     <ClCompile Include="OBJFileReader.cpp" />
     <ClCompile Include="PCDFileReader.cpp" />
-    <ClCompile Include="STLAsciiFileReader.cpp" />
+    <ClCompile Include="STLASCIIFileReader.cpp" />
     <ClCompile Include="STLAsciiFileWriter.cpp" />
     <ClCompile Include="STLBinaryFileReader.cpp" />
     <ClCompile Include="STLBinaryFileWriter.cpp" />

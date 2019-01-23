@@ -5,22 +5,43 @@
     <ClInclude Include="OBJFileReader.h" />
     <ClInclude Include="DXFFileReader.h" />
     <ClInclude Include="MTLFileReader.h" />
-    <ClInclude Include="STLAsciiFileReader.h" />
-    <ClInclude Include="STLBinaryFileReader.h" />
-    <ClInclude Include="STLAsciiFileWriter.h" />
-    <ClInclude Include="STLBinaryFileWriter.h" />
     <ClInclude Include="PCDFileReader.h" />
     <ClInclude Include="ImageFileReader.h" />
+    <ClInclude Include="STLASCIIFileReader.h">
+      <Filter>STL</Filter>
+    </ClInclude>
+    <ClInclude Include="STLAsciiFileWriter.h">
+      <Filter>STL</Filter>
+    </ClInclude>
+    <ClInclude Include="STLBinaryFileReader.h">
+      <Filter>STL</Filter>
+    </ClInclude>
+    <ClInclude Include="STLBinaryFileWriter.h">
+      <Filter>STL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OBJFileReader.cpp" />
     <ClCompile Include="DXFFileReader.cpp" />
     <ClCompile Include="MTLFileReader.cpp" />
-    <ClCompile Include="STLAsciiFileReader.cpp" />
-    <ClCompile Include="STLBinaryFileReader.cpp" />
-    <ClCompile Include="STLAsciiFileWriter.cpp" />
-    <ClCompile Include="STLBinaryFileWriter.cpp" />
     <ClCompile Include="PCDFileReader.cpp" />
     <ClCompile Include="ImageFileReader.cpp" />
+    <ClCompile Include="STLASCIIFileReader.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
+    <ClCompile Include="STLAsciiFileWriter.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
+    <ClCompile Include="STLBinaryFileReader.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
+    <ClCompile Include="STLBinaryFileWriter.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="STL">
+      <UniqueIdentifier>{8ee4b111-b76c-4b82-a55e-1bc0dda24b1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

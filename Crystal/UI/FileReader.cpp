@@ -25,7 +25,7 @@ bool FileReader::read(const std::experimental::filesystem::path& filePath)
 		return reader.read(filePath);
 	}
 	else if (ext == ".stl") {
-		STLAsciiFileReader reader;
+		STLASCIIFileReader reader;
 		return reader.read(filePath);
 	}
 	return false;

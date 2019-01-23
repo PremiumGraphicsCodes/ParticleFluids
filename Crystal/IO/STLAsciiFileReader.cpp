@@ -1,4 +1,4 @@
-#include "STLAsciiFileReader.h"
+#include "STLASCIIFileReader.h"
 
 #include "Helper.h"
 
@@ -6,7 +6,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
-bool STLAsciiFileReader::read(const std::experimental::filesystem::path& filePath)
+bool STLASCIIFileReader::read(const std::experimental::filesystem::path& filePath)
 {
 	std::ifstream stream(filePath);
 	if (!stream.is_open()) {
@@ -15,7 +15,7 @@ bool STLAsciiFileReader::read(const std::experimental::filesystem::path& filePat
 	return read(stream);
 }
 
-bool STLAsciiFileReader::read(std::istream& stream)
+bool STLASCIIFileReader::read(std::istream& stream)
 {
 	std::string str = Helper::read<std::string>(stream);
 

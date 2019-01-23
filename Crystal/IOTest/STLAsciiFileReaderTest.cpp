@@ -36,7 +36,7 @@ TEST(STLAsciiFileReaderTest, TestReadAscii)
 {
 	std::stringstream stream = getSampleAscii();
 
-	STLAsciiFileReader reader;
+	STLASCIIFileReader reader;
 	EXPECT_TRUE(reader.read(stream));
 	const auto& faces = reader.getFaces();
 
