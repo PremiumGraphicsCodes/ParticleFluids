@@ -8,9 +8,7 @@ namespace Crystal {
 class PolygonPanel : public IPanel
 {
 public:
-	PolygonPanel(Model* model, Canvas* canvas) :
-		IPanel(model, canvas)
-	{}
+	PolygonPanel(Model* model, Canvas* canvas);
 
 	void show() override;
 };

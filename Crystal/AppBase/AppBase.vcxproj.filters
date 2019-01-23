@@ -25,14 +25,14 @@
       <Filter>Generation</Filter>
     </ClCompile>
     <ClCompile Include="AppearancePanel.cpp" />
-    <ClCompile Include="IPopupButton.cpp" />
+    <ClCompile Include="IPopupButton.cpp">
+      <Filter>Widget</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="FileMenu.h" />
-    <ClInclude Include="IMenu.h" />
     <ClInclude Include="Window.h" />
-    <ClInclude Include="IPanel.h" />
     <ClInclude Include="CtrlMenu.h" />
     <ClInclude Include="CameraMenu.h" />
     <ClInclude Include="imgui.h">
@@ -51,7 +51,15 @@
       <Filter>Generation</Filter>
     </ClInclude>
     <ClInclude Include="AppearancePanel.h" />
-    <ClInclude Include="IPopupButton.h" />
+    <ClInclude Include="IPopupButton.h">
+      <Filter>Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="IPanel.h">
+      <Filter>Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="IMenu.h">
+      <Filter>Widget</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -62,6 +70,9 @@
     </Filter>
     <Filter Include="Generation">
       <UniqueIdentifier>{6cfd2689-f312-496c-8422-5698b7f5afb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Widget">
+      <UniqueIdentifier>{afc4d729-1eb0-481b-8ee0-3d334e6eec54}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

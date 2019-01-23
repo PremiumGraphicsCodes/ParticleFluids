@@ -4,44 +4,64 @@
 #include "../UI/Canvas.h"
 #include "../Shape/PolygonMeshBuilder.h"
 #include "../Graphics/ColorRGBA.h"
-#include "../ThirdParty/imgui-1.51/imgui.h"
+#include "imgui.h"
+#include "IPopupButton.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
+namespace {
+	class SphereButton : public IPopupButton
+	{
+	public:
+		SphereButton(Model* model, Canvas* canvas) :
+			IPopupButton("Sphere", model, canvas)
+		{
+		}
+
+		void onShow() override
+		{
+			ImGui::InputFloat3("Center", &center[0]);
+			ImGui::InputFloat3("Radius", &radius);
+			ImGui::InputInt("UNum", &unum);
+			ImGui::InputInt("VNum", &vnum);
+		}
+
+		void onOk() override
+		{
+			PolygonMeshBuilder builder;
+			const Sphere3d sphere(center, radius);
+			builder.build(sphere, unum, vnum);
+			Crystal::Graphics::Material material;
+			material.setAmbient(glm::vec3(1, 0, 0));
+			material.setDiffuse(glm::vec3(0, 1, 0));
+			getModel()->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
+			getCanvas()->setViewModel(getModel()->toViewModel());
+			getCanvas()->fitCamera(getModel()->getBoundingBox());
+		}
+
+		void onCancel() override
+		{
+
+		}
+
+	private:
+		glm::vec3 center = { 0,0,0 };
+		float radius = 1.0f;
+		int unum = 36;
+		int vnum = 36;
+
+	};
+
+	SphereButton* sphereButton = nullptr;
+}
+
 void PolygonPanel::show()
 {
 	ImGui::Begin("Polygon");
 
-	if (ImGui::Button("Sphere")) {
-		ImGui::OpenPopup("Sphere");
-	}
-	if (ImGui::BeginPopup("Sphere")) {
-		static glm::vec3 center = { 0,0,0 };
-		static float radius = 1.0f;
-		static int unum = 36;
-		static int vnum = 36;
-
-		ImGui::InputFloat3("Center", &center[0]);
-		ImGui::InputFloat3("Radius", &radius);
-		ImGui::InputInt("UNum", &unum);
-		ImGui::InputInt("VNum", &vnum);
-
-		if (ImGui::Button("OK")) {
-			PolygonMeshBuilder builder;
-			const Sphere3d sphere(center, radius);
-			builder.build(sphere, unum, vnum);
-			Graphics::Material material;
-			material.setAmbient( glm::vec3(1, 0, 0) );
-			material.setDiffuse( glm::vec3(0, 1, 0) );
-			model->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
-			canvas->setViewModel(model->toViewModel());
-			canvas->fitCamera(model->getBoundingBox());
-			ImGui::CloseCurrentPopup();
-		}
-		ImGui::EndPopup();
-	}
+	sphereButton->show();
 
 	if (ImGui::Button("Box")) {
 		ImGui::OpenPopup("Box");
@@ -90,4 +110,10 @@ void PolygonPanel::show()
 	}
 
 	ImGui::End();
+}
+
+PolygonPanel::PolygonPanel(Model* model, Canvas* canvas) :
+	IPanel(model, canvas)
+{
+	::sphereButton = new SphereButton(model, canvas);
 }
