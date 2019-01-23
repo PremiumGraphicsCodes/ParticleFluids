@@ -8,9 +8,7 @@ namespace Crystal {
 class WireFramePanel : public IPanel
 {
 public:
-	WireFramePanel(Model* model, Canvas* canvas) :
-		IPanel(model, canvas)
-	{}
+	WireFramePanel(Model* model, Canvas* canvas);
 
 	void show() override;
 };
