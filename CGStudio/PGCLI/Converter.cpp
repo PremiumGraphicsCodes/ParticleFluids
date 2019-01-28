@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "../Math/Vector3d.h"
-#include "../Math/Line3d.h"
-#include "../Math/Matrix4d.h"
+#include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Math/Line3d.h"
+#include "../../Crystal/Math/Matrix4d.h"
 
 #include "Converter.h"
 

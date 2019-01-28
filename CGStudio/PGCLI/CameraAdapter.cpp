@@ -1,6 +1,6 @@
 #include <stdafx.h>
 #include "CameraAdapter.h"
-#include "../Graphics/PerspectiveCamera.h"
+#include "../../Crystal/Graphics/PerspectiveCamera.h"
 #include "Converter.h"
 
 using namespace Crystal::Math;

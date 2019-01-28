@@ -3,8 +3,8 @@
 
 #include "ModelAdapter.h"
 
-#include "../UI/Model.h"
-#include "../UI/ViewModel3d.h"
+#include "../../Crystal/UI/Model.h"
+#include "../../Crystal/UI/ViewModel3d.h"
 
 #include "Converter.h"
 
