@@ -17,10 +17,9 @@ void PolygonTreeList::onShow()
 
 	const auto& polygons = getModel()->getObjects()->getPolygonMeshes();
 	ImGui::BeginChild("Polygons", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
-	ImGui::Text("Polygons");
-	for (auto ws : polygons) {
-		char str[256];
-		sprintf(str, "%d", ws.getId());
+	for (auto polygon : polygons) {
+		const auto& n = polygon.getName();
+		const auto str = n.c_str();
 		ImGui::Text(str);
 	}
 	ImGui::EndChild();

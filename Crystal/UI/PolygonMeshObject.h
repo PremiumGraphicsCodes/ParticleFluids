@@ -11,8 +11,8 @@ namespace Crystal {
 class PolygonMeshObject : public IObject
 {
 public:
-	PolygonMeshObject(const int id, Shape::PolygonMesh* shape, const Graphics::Material& material) :
-		IObject(id),
+	PolygonMeshObject(const int id, const std::string& name, Shape::PolygonMesh* shape, const Graphics::Material& material) :
+		IObject(id, name),
 		shape(shape),
 		material(material)
 	{}

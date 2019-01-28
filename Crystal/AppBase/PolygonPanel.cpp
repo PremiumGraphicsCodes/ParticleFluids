@@ -36,7 +36,7 @@ namespace {
 			Crystal::Graphics::Material material;
 			material.setAmbient(glm::vec3(1, 0, 0));
 			material.setDiffuse(glm::vec3(0, 1, 0));
-			getModel()->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
+			getModel()->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material, "Sphere");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
@@ -76,7 +76,7 @@ namespace {
 			material.setAmbient(glm::vec3(1, 0, 0));
 			material.setSpecular(glm::vec3(0, 1, 0));
 			material.setDiffuse(glm::vec3(0, 0, 1));
-			getModel()->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
+			getModel()->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material, "Box");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
@@ -109,7 +109,7 @@ namespace {
 			builder.build(origin, uvec, vvec);
 			Crystal::Graphics::Material material;
 			material.setAmbient(glm::vec3(1, 0, 0));
-			getModel()->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material);
+			getModel()->getObjects()->addPolygonMesh(builder.getPolygonMesh(), material, "Plane");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
