@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Graphics/PointLight.h"
+#include "LightObject.h"
 #include <vector>
 
 namespace Crystal {
@@ -15,12 +15,13 @@ public:
 
 	void clear();
 
-	void add(Graphics::PointLight* l);
+	void add(Graphics::PointLight* l, const std::string& name);
 
-	std::vector<Graphics::PointLight*> getLights() const { return lights; }
+	std::vector<LightObject> getLights() const { return lights; }
 
 private:
-	std::vector<Graphics::PointLight*> lights;
+	std::vector<LightObject> lights;
+	int nextId;
 };
 	}
 }

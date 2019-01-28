@@ -63,7 +63,8 @@ void ViewModel3d::add(const LightRepository& lights)
 {
 	const auto& ls = lights.getLights();
 	for (const auto& l : ls) {
-		lightBuffer.add(*l);
+		auto ll = l.getLight();
+		lightBuffer.add(*ll);
 	}
 }
 

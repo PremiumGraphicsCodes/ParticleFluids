@@ -24,6 +24,7 @@ namespace {
 			ImGui::ColorPicker3("Ambient", &ambient[0]);
 			ImGui::ColorPicker3("Diffuse", &diffuse[0]);
 			ImGui::ColorPicker3("Specular", &specular[0]);
+			ImGui::InputText("Name", &name[0], 256);
 		}
 
 		void onOk() override
@@ -33,7 +34,7 @@ namespace {
 			l->setAmbient(ambient);
 			l->setDiffuse(diffuse);
 			l->setSpecular(specular);
-			getModel()->getLights()->add(l);
+			getModel()->getLights()->add(l, name);
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
@@ -48,6 +49,8 @@ namespace {
 		glm::vec4 ambient = { 0,0,0,0 };
 		glm::vec4 diffuse = { 0,0,0,0 };
 		glm::vec4 specular = { 0,0,0,0 };
+		char name[256];
+//		std::stable_partition
 	};
 
 	class MaterialButton : public IPopupButton

@@ -23,6 +23,7 @@
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="IKeyListener.h" />
+    <ClInclude Include="LightObject.h" />
     <ClInclude Include="MaterialRepository.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="IMouseListener.h" />

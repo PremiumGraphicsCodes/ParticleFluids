@@ -10,6 +10,7 @@
 #include "../AppBase/AppearancePanel.h"
 
 #include "../AppBase/ObjectTreeList.h"
+#include "../AppBase/LightTreeList.h"
 
 #include "../UI/Model.h"
 #include "../UI/Canvas.h"
@@ -53,6 +54,7 @@ int main(int, char**)
 	window.add(new AppearancePanel(&model, &canvas));
 
 	window.add(new ObjectTreeList("Objects", &model, &canvas));
+	window.add(new LightTreeList("Lights", &model, &canvas));
 
 	window.show();
 

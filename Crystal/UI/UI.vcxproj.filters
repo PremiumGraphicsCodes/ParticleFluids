@@ -39,6 +39,9 @@
     <ClInclude Include="ObjectRepository.h">
       <Filter>Repository</Filter>
     </ClInclude>
+    <ClInclude Include="LightObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileReader.cpp" />
