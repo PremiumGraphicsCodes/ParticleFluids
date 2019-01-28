@@ -126,8 +126,8 @@ namespace {
 	};
 }
 
-PolygonPanel::PolygonPanel(Model* model, Canvas* canvas) :
-	IPanel("Polygon", model, canvas)
+PolygonPanel::PolygonPanel(const std::string& name, Model* model, Canvas* canvas) :
+	IPanel(name, model, canvas)
 {
 	add( new SphereButton(model, canvas) );
 	add( new BoxButton(model, canvas) );

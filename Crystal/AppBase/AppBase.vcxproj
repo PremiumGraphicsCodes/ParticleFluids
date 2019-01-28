@@ -36,6 +36,7 @@
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WireFramePanel.cpp" />
+    <ClCompile Include="WireFrameTreeList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppearancePanel.h" />
@@ -57,6 +58,7 @@
     <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WireFramePanel.h" />
+    <ClInclude Include="WireFrameTreeList.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

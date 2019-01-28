@@ -8,7 +8,7 @@ namespace Crystal {
 class ParticlePanel : public IPanel
 {
 public:
-	ParticlePanel(Model* model, Canvas* canvas);
+	ParticlePanel(const std::string& name, Model* model, Canvas* canvas);
 
 };
 

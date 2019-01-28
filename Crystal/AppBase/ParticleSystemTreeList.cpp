@@ -26,6 +26,7 @@ void ParticleSystemTreeList::onShow()
 	}
 	ImGui::EndChild();
 
+	/*
 	const auto& wires = getModel()->getObjects()->getWireFrames();
 	ImGui::BeginChild("WireFrames", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	ImGui::Text("WireFrames");
@@ -45,7 +46,7 @@ void ParticleSystemTreeList::onShow()
 		ImGui::Text(str);
 	}
 	ImGui::EndChild();
-
+	*/
 
 
 	ImGui::End();

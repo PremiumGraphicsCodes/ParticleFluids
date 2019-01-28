@@ -84,8 +84,8 @@ namespace {
 	};
 }
 
-WireFramePanel::WireFramePanel(Model* model, Canvas* canvas) :
-	IPanel("WireFrame", model, canvas)
+WireFramePanel::WireFramePanel(const std::string& name, Model* model, Canvas* canvas) :
+	IPanel(name, model, canvas)
 {
 	add( new BoxButton(model, canvas) );
 	add( new SphereButton(model, canvas) );

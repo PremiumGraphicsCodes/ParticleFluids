@@ -8,7 +8,7 @@ namespace Crystal {
 class PolygonPanel : public IPanel
 {
 public:
-	PolygonPanel(Model* model, Canvas* canvas);
+	PolygonPanel(const std::string& name, Model* model, Canvas* canvas);
 };
 	}
 }

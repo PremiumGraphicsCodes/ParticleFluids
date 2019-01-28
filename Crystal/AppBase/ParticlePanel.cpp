@@ -104,8 +104,8 @@ namespace {
 }
 
 
-ParticlePanel::ParticlePanel(Model* model, Canvas* canvas) :
-	IPanel("Particle", model, canvas)	
+ParticlePanel::ParticlePanel(const std::string& name, Model* model, Canvas* canvas) :
+	IPanel(name, model, canvas)	
 {
 	add( new BoxButton(model, canvas) );
 	add( new SphereButton(model, canvas) );
