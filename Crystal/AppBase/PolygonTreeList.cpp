@@ -17,11 +17,17 @@ void PolygonTreeList::onShow()
 
 	const auto& polygons = getModel()->getObjects()->getPolygonMeshes();
 	ImGui::BeginChild("Polygons", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
-	for (auto polygon : polygons) {
+
+	for (const auto& polygon : polygons) {
 		const auto& n = polygon.getName();
 		const auto str = n.c_str();
-		ImGui::Text(str);
+
+		bool b = polygon.isVisible();
+		ImGui::Checkbox(str, &b);
+
+//		ImGui::Text(str);
 	}
+
 	ImGui::EndChild();
 
 	ImGui::End();
