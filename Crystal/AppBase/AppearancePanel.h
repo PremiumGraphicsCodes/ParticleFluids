@@ -9,8 +9,6 @@ class AppearancePanel : public IPanel
 {
 public:
 	AppearancePanel(Model* model, Canvas* canvas);
-
-	void show() override;
 };
 
 	}

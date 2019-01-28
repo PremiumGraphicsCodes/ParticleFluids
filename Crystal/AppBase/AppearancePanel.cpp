@@ -91,17 +91,6 @@ namespace {
 	};
 }
 
-void AppearancePanel::show()
-{
-	ImGui::Begin("Appearance");
-
-	for (auto c : children) {
-		c->show();
-	}
-
-	ImGui::End();
-}
-
 AppearancePanel::AppearancePanel(Model* model, Canvas* canvas) :
 	IPanel("Appearance", model, canvas)
 {

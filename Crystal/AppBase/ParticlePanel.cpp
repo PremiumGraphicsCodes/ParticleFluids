@@ -104,15 +104,6 @@ namespace {
 }
 
 
-void ParticlePanel::show()
-{
-	ImGui::Begin("Particle");
-
-	std::for_each(children.begin(), children.end(), [](auto c) {c->show(); });
-
-	ImGui::End();
-}
-
 ParticlePanel::ParticlePanel(Model* model, Canvas* canvas) :
 	IPanel("Particle", model, canvas)	
 {

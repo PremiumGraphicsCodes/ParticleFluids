@@ -126,17 +126,6 @@ namespace {
 	};
 }
 
-void PolygonPanel::show()
-{
-	ImGui::Begin("Polygon");
-
-	for (auto c : children) {
-		c->show();
-	}
-
-	ImGui::End();
-}
-
 PolygonPanel::PolygonPanel(Model* model, Canvas* canvas) :
 	IPanel("Polygon", model, canvas)
 {

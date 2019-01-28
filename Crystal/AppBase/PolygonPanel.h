@@ -9,8 +9,6 @@ class PolygonPanel : public IPanel
 {
 public:
 	PolygonPanel(Model* model, Canvas* canvas);
-
-	void show() override;
 };
 	}
 }

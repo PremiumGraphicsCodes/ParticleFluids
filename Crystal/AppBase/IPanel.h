@@ -19,7 +19,7 @@ public:
 
 	virtual ~IPanel() {};
 
-	virtual void show() = 0;
+	virtual void show() override;
 
 protected:
 	Model* model;

@@ -29,6 +29,9 @@
       <Filter>Window</Filter>
     </ClCompile>
     <ClCompile Include="ObjectTreeList.cpp" />
+    <ClCompile Include="IPanel.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />

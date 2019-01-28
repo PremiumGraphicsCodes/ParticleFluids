@@ -10,8 +10,6 @@ class ParticlePanel : public IPanel
 public:
 	ParticlePanel(Model* model, Canvas* canvas);
 
-	void show() override;
-
 };
 
 	}

@@ -84,17 +84,6 @@ namespace {
 	};
 }
 
-void WireFramePanel::show()
-{
-	ImGui::Begin("WireFrame");
-
-	for (auto c : children) {
-		c->show();
-	}
-
-	ImGui::End();
-}
-
 WireFramePanel::WireFramePanel(Model* model, Canvas* canvas) :
 	IPanel("WireFrame", model, canvas)
 {
