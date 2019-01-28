@@ -43,6 +43,9 @@
     <ClCompile Include="WireFrameTreeList.cpp">
       <Filter>TreeList</Filter>
     </ClCompile>
+    <ClCompile Include="PolygonTreeList.cpp">
+      <Filter>TreeList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -91,6 +94,9 @@
       <Filter>TreeList</Filter>
     </ClInclude>
     <ClInclude Include="WireFrameTreeList.h">
+      <Filter>TreeList</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonTreeList.h">
       <Filter>TreeList</Filter>
     </ClInclude>
   </ItemGroup>

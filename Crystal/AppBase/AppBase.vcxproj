@@ -33,6 +33,7 @@
     <ClCompile Include="ParticleSystemTreeList.cpp" />
     <ClCompile Include="ParticlePanel.cpp" />
     <ClCompile Include="PolygonPanel.cpp" />
+    <ClCompile Include="PolygonTreeList.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WireFramePanel.cpp" />
@@ -55,6 +56,7 @@
     <ClInclude Include="ParticleSystemTreeList.h" />
     <ClInclude Include="ParticlePanel.h" />
     <ClInclude Include="PolygonPanel.h" />
+    <ClInclude Include="PolygonTreeList.h" />
     <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WireFramePanel.h" />

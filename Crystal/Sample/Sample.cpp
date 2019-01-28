@@ -11,6 +11,7 @@
 
 #include "../AppBase/ParticleSystemTreeList.h"
 #include "../AppBase/WireFrameTreeList.h"
+#include "../AppBase/PolygonTreeList.h"
 #include "../AppBase/LightTreeList.h"
 #include "../AppBase/MaterialTreeList.h"
 
@@ -57,6 +58,7 @@ int main(int, char**)
 
 	window.add(new ParticleSystemTreeList("ParticleSystems", &model, &canvas));
 	window.add(new WireFrameTreeList("WireFrames", &model, &canvas));
+	window.add(new PolygonTreeList("Polygons", &model, &canvas));
 	window.add(new LightTreeList("Lights", &model, &canvas));
 	window.add(new MaterialTreeList("Materials", &model, &canvas));
 
