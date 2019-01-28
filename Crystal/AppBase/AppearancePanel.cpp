@@ -68,5 +68,5 @@ void AppearancePanel::show()
 AppearancePanel::AppearancePanel(Model* model, Canvas* canvas) :
 	IPanel(model, canvas)
 {
-	children.push_back( new LightButton(model, canvas) );
+	add( new LightButton(model, canvas) );
 }

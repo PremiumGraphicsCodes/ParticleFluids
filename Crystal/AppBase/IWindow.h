@@ -15,6 +15,8 @@ protected:
 	};
 
 public:
+	void add(IWindow* child) { children.push_back(child); }
+
 	virtual void show() = 0;
 
 protected:

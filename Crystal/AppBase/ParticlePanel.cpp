@@ -56,8 +56,6 @@ namespace {
 		glm::vec3 dx = { 1.0f, 1.0f, 1.0f };
 	};
 
-	BoxButton* boxButton = nullptr;
-
 	class SphereButton : public IPopupButton
 	{
 	public:
@@ -103,8 +101,6 @@ namespace {
 		int count = 10000;
 
 	};
-
-	SphereButton* sphereButton = nullptr;
 }
 
 
@@ -112,9 +108,7 @@ void ParticlePanel::show()
 {
 	ImGui::Begin("Particle");
 
-	//BoxButton boxButton(model, canvas);
-	boxButton->show();
-	sphereButton->show();
+	std::for_each(children.begin(), children.end(), [](auto c) {c->show(); });
 
 	ImGui::End();
 }
@@ -122,6 +116,6 @@ void ParticlePanel::show()
 ParticlePanel::ParticlePanel(Model* model, Canvas* canvas) :
 	IPanel(model, canvas)	
 {
-	::boxButton = new BoxButton(model, canvas);
-	::sphereButton = new SphereButton(model, canvas);
+	add( new BoxButton(model, canvas) );
+	add( new SphereButton(model, canvas) );
 }
