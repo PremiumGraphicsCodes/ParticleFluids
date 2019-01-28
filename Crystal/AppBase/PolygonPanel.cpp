@@ -51,10 +51,7 @@ namespace {
 		float radius = 1.0f;
 		int unum = 36;
 		int vnum = 36;
-
 	};
-
-	SphereButton* sphereButton = nullptr;
 
 	class BoxButton : public IPopupButton
 	{
@@ -94,8 +91,6 @@ namespace {
 		glm::vec3 point2 = { 1,1,1 };
 	};
 
-	BoxButton* boxButton = nullptr;
-
 	class PlaneButton : public IPopupButton
 	{
 	public:
@@ -129,17 +124,15 @@ namespace {
 		glm::vec3 uvec = { 1, 0, 0 };
 		glm::vec3 vvec = { 0, 1, 0 };
 	};
-
-	PlaneButton* planeButton = nullptr;
 }
 
 void PolygonPanel::show()
 {
 	ImGui::Begin("Polygon");
 
-	sphereButton->show();
-	boxButton->show();
-	planeButton->show();
+	for (auto c : children) {
+		c->show();
+	}
 
 	ImGui::End();
 }
@@ -147,7 +140,7 @@ void PolygonPanel::show()
 PolygonPanel::PolygonPanel(Model* model, Canvas* canvas) :
 	IPanel(model, canvas)
 {
-	::sphereButton = new SphereButton(model, canvas);
-	::boxButton = new BoxButton(model, canvas);
-	::planeButton = new PlaneButton(model, canvas);
+	add( new SphereButton(model, canvas) );
+	add( new BoxButton(model, canvas) );
+	add( new PlaneButton(model, canvas) );
 }

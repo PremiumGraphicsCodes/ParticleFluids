@@ -47,8 +47,6 @@ namespace {
 		glm::vec4 color;
 	};
 
-	BoxButton* boxButton = nullptr;
-
 	class SphereButton : public IPopupButton
 	{
 	public:
@@ -84,15 +82,15 @@ namespace {
 		float radius = 1.0;
 		glm::vec4 color;
 	};
-	SphereButton* sphereButton = nullptr;
 }
 
 void WireFramePanel::show()
 {
 	ImGui::Begin("WireFrame");
 
-	boxButton->show();
-	sphereButton->show();
+	for (auto c : children) {
+		c->show();
+	}
 
 	ImGui::End();
 }
@@ -100,6 +98,6 @@ void WireFramePanel::show()
 WireFramePanel::WireFramePanel(Model* model, Canvas* canvas) :
 	IPanel(model, canvas)
 {
-	::boxButton = new BoxButton(model, canvas);
-	::sphereButton = new SphereButton(model, canvas);
+	add( new BoxButton(model, canvas) );
+	add( new SphereButton(model, canvas) );
 }
