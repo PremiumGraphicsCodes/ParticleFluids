@@ -52,15 +52,15 @@ namespace {
 		glm::vec4 specular = { 0,0,0,0 };
 
 	};
-
-	LightButton* lightButton = nullptr;
 }
 
 void AppearancePanel::show()
 {
 	ImGui::Begin("Appearance");
 
-	lightButton->show();
+	for (auto c : children) {
+		c->show();
+	}
 
 	ImGui::End();
 }
@@ -68,5 +68,5 @@ void AppearancePanel::show()
 AppearancePanel::AppearancePanel(Model* model, Canvas* canvas) :
 	IPanel(model, canvas)
 {
-	::lightButton = new LightButton(model, canvas);
+	children.push_back( new LightButton(model, canvas) );
 }
