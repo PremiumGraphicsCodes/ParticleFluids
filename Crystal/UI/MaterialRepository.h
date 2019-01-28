@@ -1,12 +1,13 @@
 #pragma once
 
-#include "../Graphics/Material.h"
+#include "../Util/UnCopyable.h"
+#include "MaterialObject.h"
 #include <vector>
 
 namespace Crystal {
 	namespace UI {
 
-class MaterialRepository
+class MaterialRepository : private UnCopyable
 {
 public:
 	MaterialRepository();
@@ -15,12 +16,13 @@ public:
 
 	void clear();
 
-	void add(Graphics::Material* m);
+	void add(Graphics::Material* m, const std::string& name);
 
-	std::vector<Graphics::Material*> getMaterials() const { return materials; }
+	std::vector<MaterialObject> getMaterials() const { return materials; }
 
 private:
-	std::vector<Graphics::Material*> materials;
+	std::vector<MaterialObject> materials;
+	int nextId;
 };
 
 	}

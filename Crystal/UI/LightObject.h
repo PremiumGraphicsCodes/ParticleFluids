@@ -18,8 +18,6 @@ public:
 
 	~LightObject() {};
 
-	//Shape::ParticleSystem<ParticleAttr>* getShape() const { return shape; }
-
 	Graphics::PointLight* getLight() const { return light; }
 
 private:

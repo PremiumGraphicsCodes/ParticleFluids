@@ -28,11 +28,18 @@
     <ClCompile Include="IPopupButton.cpp">
       <Filter>Window</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectTreeList.cpp" />
     <ClCompile Include="IPanel.cpp">
       <Filter>Window</Filter>
     </ClCompile>
-    <ClCompile Include="LightTreeList.cpp" />
+    <ClCompile Include="LightTreeList.cpp">
+      <Filter>TreeList</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectTreeList.cpp">
+      <Filter>TreeList</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialTreeList.cpp">
+      <Filter>TreeList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -71,8 +78,15 @@
     <ClInclude Include="ITreeList.h">
       <Filter>Window</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectTreeList.h" />
-    <ClInclude Include="LightTreeList.h" />
+    <ClInclude Include="LightTreeList.h">
+      <Filter>TreeList</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectTreeList.h">
+      <Filter>TreeList</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialTreeList.h">
+      <Filter>TreeList</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -86,6 +100,9 @@
     </Filter>
     <Filter Include="Window">
       <UniqueIdentifier>{afc4d729-1eb0-481b-8ee0-3d334e6eec54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TreeList">
+      <UniqueIdentifier>{8dd77460-6a69-4de3-aeff-7af563b388c7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

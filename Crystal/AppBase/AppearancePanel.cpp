@@ -76,7 +76,7 @@ namespace {
 			m->setDiffuse(diffuse);
 			m->setSpecular(specular);
 			m->setShininess(shininess);
-			getModel()->getMaterials()->add(m);
+			getModel()->getMaterials()->add(m, "");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
@@ -94,8 +94,8 @@ namespace {
 	};
 }
 
-AppearancePanel::AppearancePanel(Model* model, Canvas* canvas) :
-	IPanel("Appearance", model, canvas)
+AppearancePanel::AppearancePanel(const std::string& name, Model* model, Canvas* canvas) :
+	IPanel(name, model, canvas)
 {
 	add( new LightButton(model, canvas) );
 	add( new MaterialButton(model, canvas) );

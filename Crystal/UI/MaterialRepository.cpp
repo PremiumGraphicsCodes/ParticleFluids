@@ -3,7 +3,8 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-MaterialRepository::MaterialRepository()
+MaterialRepository::MaterialRepository() :
+	nextId(1)
 {
 }
 
@@ -15,12 +16,13 @@ MaterialRepository::~MaterialRepository()
 void MaterialRepository::clear()
 {
 	for (auto m : materials) {
-		delete m;
+		delete m.getMaterial();
 	}
 	materials.clear();
 }
 
-void MaterialRepository::add(Material* m)
+void MaterialRepository::add(Material* m, const std::string& name)
 {
-	materials.push_back(m);
+	MaterialObject material(nextId++, name, m);
+	materials.push_back(material);
 }

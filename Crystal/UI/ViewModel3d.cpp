@@ -72,6 +72,7 @@ void ViewModel3d::add(const MaterialRepository& materials)
 {
 	const auto& ms = materials.getMaterials();
 	for (const auto& m : ms) {
-		materialBuffer.add(*m);
+		auto mm = m.getMaterial();
+		materialBuffer.add(*mm);
 	}
 }

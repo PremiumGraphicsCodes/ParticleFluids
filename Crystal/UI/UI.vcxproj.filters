@@ -42,6 +42,9 @@
     <ClInclude Include="LightObject.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="MaterialObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileReader.cpp" />

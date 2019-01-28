@@ -17,7 +17,7 @@ void LightTreeList::onShow()
 	auto str = n.c_str();
 	ImGui::Begin(str);
 
-	ImGui::BeginChild("Lights", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
+	ImGui::BeginChild(str, ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	for (auto l : lights) {
 		auto str = l.getName();
 		auto s = str.c_str();

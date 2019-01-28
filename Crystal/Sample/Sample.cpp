@@ -11,6 +11,7 @@
 
 #include "../AppBase/ObjectTreeList.h"
 #include "../AppBase/LightTreeList.h"
+#include "../AppBase/MaterialTreeList.h"
 
 #include "../UI/Model.h"
 #include "../UI/Canvas.h"
@@ -51,10 +52,11 @@ int main(int, char**)
 	window.add(new ParticlePanel(&model, &canvas));
 	window.add(new WireFramePanel(&model, &canvas));
 	window.add(new PolygonPanel(&model, &canvas));
-	window.add(new AppearancePanel(&model, &canvas));
+	window.add(new AppearancePanel("Appearance", &model, &canvas));
 
 	window.add(new ObjectTreeList("Objects", &model, &canvas));
 	window.add(new LightTreeList("Lights", &model, &canvas));
+	window.add(new MaterialTreeList("Materials", &model, &canvas));
 
 	window.show();
 
