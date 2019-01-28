@@ -34,10 +34,10 @@
     <ClCompile Include="LightTreeList.cpp">
       <Filter>TreeList</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectTreeList.cpp">
+    <ClCompile Include="MaterialTreeList.cpp">
       <Filter>TreeList</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialTreeList.cpp">
+    <ClCompile Include="ParticleSystemTreeList.cpp">
       <Filter>TreeList</Filter>
     </ClCompile>
   </ItemGroup>
@@ -81,10 +81,10 @@
     <ClInclude Include="LightTreeList.h">
       <Filter>TreeList</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectTreeList.h">
+    <ClInclude Include="MaterialTreeList.h">
       <Filter>TreeList</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialTreeList.h">
+    <ClInclude Include="ParticleSystemTreeList.h">
       <Filter>TreeList</Filter>
     </ClInclude>
   </ItemGroup>

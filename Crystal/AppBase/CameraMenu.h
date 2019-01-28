@@ -5,14 +5,15 @@
 namespace Crystal {
 	namespace UI {
 
-		class CameraMenu : public IMenu
-		{
-		public:
-			CameraMenu(Model* model, Canvas* canvas) :
-				IMenu("Camera", model, canvas)
-			{}
+class CameraMenu : public IMenu
+{
+public:
+	CameraMenu(const std::string& name, Model* model, Canvas* canvas) :
+		IMenu(name, model, canvas)
+	{}
 
-			virtual void show() override;
-		};
+	virtual void show() override;
+};
+
 	}
 }

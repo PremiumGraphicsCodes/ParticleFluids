@@ -8,7 +8,8 @@ using namespace Crystal::UI;
 
 void FileMenu::show()
 {
-	if (ImGui::BeginMenu("File")) {
+	const auto& n = name.c_str();
+	if (ImGui::BeginMenu(n)) {
 		if (ImGui::MenuItem("Open")) {
 			char const * lFilterPatterns[2] = { "*.stl", "*.obj" };
 			const auto filename = tinyfd_openFileDialog("Open", "", 2, lFilterPatterns, nullptr, 0);

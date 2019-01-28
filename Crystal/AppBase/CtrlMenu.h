@@ -8,8 +8,8 @@ namespace Crystal {
 		class CtrlMenu : public IMenu
 		{
 		public:
-			CtrlMenu(Model* model, Canvas* canvas) :
-				IMenu("Ctrl", model, canvas)
+			CtrlMenu(const std::string& name, Model* model, Canvas* canvas) :
+				IMenu(name, model, canvas)
 			{}
 
 			virtual void show() override;

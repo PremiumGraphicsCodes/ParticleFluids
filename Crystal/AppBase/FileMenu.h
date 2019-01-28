@@ -8,8 +8,8 @@ namespace Crystal {
 class FileMenu : public IMenu
 {
 public:
-	FileMenu(Model* model, Canvas* canvas) :
-		IMenu("File",model, canvas)
+	FileMenu(const std::string& name, Model* model, Canvas* canvas) :
+		IMenu(name,model, canvas)
 	{}
 
 	virtual void show() override;

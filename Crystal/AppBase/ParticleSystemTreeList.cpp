@@ -1,15 +1,15 @@
-#include "ObjectTreeList.h"
+#include "ParticleSystemTreeList.h"
 
 #include "imgui.h"
 
 using namespace Crystal::UI;
 
-ObjectTreeList::ObjectTreeList(const std::string& name, Model* model, Canvas* canvas) :
+ParticleSystemTreeList::ParticleSystemTreeList(const std::string& name, Model* model, Canvas* canvas) :
 	ITreeList(name, model, canvas)
 {
 }
 
-void ObjectTreeList::onShow()
+void ParticleSystemTreeList::onShow()
 {
 	const auto& particleSystems = getModel()->getObjects()->getParticleSystems();
 

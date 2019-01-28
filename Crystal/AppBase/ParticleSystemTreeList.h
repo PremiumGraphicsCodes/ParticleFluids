@@ -5,10 +5,10 @@
 namespace Crystal {
 	namespace UI {
 
-class ObjectTreeList : public ITreeList
+class ParticleSystemTreeList : public ITreeList
 {
 public:
-	ObjectTreeList(const std::string& name, Model* model, Canvas* canvas);
+	ParticleSystemTreeList(const std::string& name, Model* model, Canvas* canvas);
 
 	void show() override {
 		onShow();

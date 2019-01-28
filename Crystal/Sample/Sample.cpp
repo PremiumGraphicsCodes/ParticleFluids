@@ -9,7 +9,7 @@
 
 #include "../AppBase/AppearancePanel.h"
 
-#include "../AppBase/ObjectTreeList.h"
+#include "../AppBase/ParticleSystemTreeList.h"
 #include "../AppBase/LightTreeList.h"
 #include "../AppBase/MaterialTreeList.h"
 
@@ -45,16 +45,16 @@ int main(int, char**)
 		return 0;
 	}
 
-	window.add(new FileMenu(&model, &canvas));
-	window.add(new CameraMenu(&model, &canvas));
-	window.add(new CtrlMenu(&model, &canvas));
+	window.add(new FileMenu("File", &model, &canvas));
+	window.add(new CameraMenu("Camera", &model, &canvas));
+	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 
 	window.add(new ParticlePanel(&model, &canvas));
 	window.add(new WireFramePanel(&model, &canvas));
 	window.add(new PolygonPanel(&model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
 
-	window.add(new ObjectTreeList("Objects", &model, &canvas));
+	window.add(new ParticleSystemTreeList("ParticleSystems", &model, &canvas));
 	window.add(new LightTreeList("Lights", &model, &canvas));
 	window.add(new MaterialTreeList("Materials", &model, &canvas));
 
