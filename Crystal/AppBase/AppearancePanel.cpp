@@ -5,8 +5,6 @@
 #include "../Shape/WireFrameBuilder.h"
 #include "IPopupButton.h"
 
-#include <cereal/cereal.hpp>
-
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
@@ -50,7 +48,46 @@ namespace {
 		glm::vec4 ambient = { 0,0,0,0 };
 		glm::vec4 diffuse = { 0,0,0,0 };
 		glm::vec4 specular = { 0,0,0,0 };
+	};
 
+	class MaterialButton : public IPopupButton
+	{
+	public:
+		MaterialButton(Model* model, Canvas* canvas) :
+			IPopupButton("Material", model, canvas)
+		{
+		}
+
+		void onShow() override
+		{
+			ImGui::ColorPicker3("Ambient", &ambient[0]);
+			ImGui::ColorPicker3("Diffuse", &diffuse[0]);
+			ImGui::ColorPicker3("Specular", &specular[0]);
+			ImGui::InputFloat("Shininess", &shininess);
+		}
+
+		void onOk() override
+		{
+			Material* m = new Material();
+			m->setAmbient(ambient);
+			m->setDiffuse(diffuse);
+			m->setSpecular(specular);
+			m->setShininess(shininess);
+			getModel()->getMaterials()->add(m);
+			getCanvas()->setViewModel(getModel()->toViewModel());
+			getCanvas()->fitCamera(getModel()->getBoundingBox());
+		}
+
+		void onCancel() override
+		{
+
+		}
+
+	private:
+		glm::vec4 ambient = { 0,0,0,0 };
+		glm::vec4 diffuse = { 0,0,0,0 };
+		glm::vec4 specular = { 0,0,0,0 };
+		float shininess;
 	};
 }
 
@@ -66,7 +103,8 @@ void AppearancePanel::show()
 }
 
 AppearancePanel::AppearancePanel(Model* model, Canvas* canvas) :
-	IPanel(model, canvas)
+	IPanel("Appearance", model, canvas)
 {
 	add( new LightButton(model, canvas) );
+	add( new MaterialButton(model, canvas) );
 }

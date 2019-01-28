@@ -10,7 +10,8 @@ namespace Crystal {
 class IMenu : public IWindow
 {
 public:
-	IMenu(Model* model, Canvas* canvas) :
+	IMenu(const std::string& name, Model* model, Canvas* canvas) :
+		IWindow(name),
 		model(model),
 		canvas(canvas)
 	{}

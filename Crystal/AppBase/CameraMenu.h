@@ -9,7 +9,7 @@ namespace Crystal {
 		{
 		public:
 			CameraMenu(Model* model, Canvas* canvas) :
-				IMenu(model, canvas)
+				IMenu("Camera", model, canvas)
 			{}
 
 			virtual void show() override;

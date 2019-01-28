@@ -11,7 +11,8 @@ namespace Crystal {
 class IPanel : public IWindow
 {
 public:
-	IPanel(Model* model, Canvas* canvas) :
+	IPanel(const std::string& name, Model* model, Canvas* canvas) :
+		IWindow(name),
 		model(model),
 		canvas(canvas)
 	{}

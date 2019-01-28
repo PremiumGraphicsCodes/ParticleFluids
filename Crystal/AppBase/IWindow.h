@@ -8,6 +8,10 @@ namespace Crystal {
 class IWindow
 {
 protected:
+	explicit IWindow(const std::string& name) :
+		name(name)
+	{}
+
 	virtual ~IWindow() {
 		for (auto c : children) {
 			delete c;
@@ -20,6 +24,7 @@ public:
 	virtual void show() = 0;
 
 protected:
+	std::string name;
 	std::list<IWindow*> children;
 
 };

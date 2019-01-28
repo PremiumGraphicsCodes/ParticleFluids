@@ -12,7 +12,7 @@ class IPopupButton : public IWindow
 {
 protected:
 	IPopupButton(const std::string& name, Model* model, Canvas* canvas) :
-		name(name),
+		IWindow(name),
 		model(model),
 		canvas(canvas)
 	{}
@@ -35,7 +35,6 @@ protected:
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	std::string name;
 	Model* model;
 	Canvas* canvas;
 };

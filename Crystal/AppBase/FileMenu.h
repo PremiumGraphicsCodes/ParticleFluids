@@ -9,7 +9,7 @@ class FileMenu : public IMenu
 {
 public:
 	FileMenu(Model* model, Canvas* canvas) :
-		IMenu(model, canvas)
+		IMenu("File",model, canvas)
 	{}
 
 	virtual void show() override;

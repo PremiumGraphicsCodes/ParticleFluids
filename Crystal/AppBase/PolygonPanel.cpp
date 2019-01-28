@@ -138,7 +138,7 @@ void PolygonPanel::show()
 }
 
 PolygonPanel::PolygonPanel(Model* model, Canvas* canvas) :
-	IPanel(model, canvas)
+	IPanel("Polygon", model, canvas)
 {
 	add( new SphereButton(model, canvas) );
 	add( new BoxButton(model, canvas) );

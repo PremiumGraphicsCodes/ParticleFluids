@@ -96,7 +96,7 @@ void WireFramePanel::show()
 }
 
 WireFramePanel::WireFramePanel(Model* model, Canvas* canvas) :
-	IPanel(model, canvas)
+	IPanel("WireFrame", model, canvas)
 {
 	add( new BoxButton(model, canvas) );
 	add( new SphereButton(model, canvas) );

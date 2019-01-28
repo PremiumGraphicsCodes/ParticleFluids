@@ -9,7 +9,7 @@ namespace Crystal {
 		{
 		public:
 			CtrlMenu(Model* model, Canvas* canvas) :
-				IMenu(model, canvas)
+				IMenu("Ctrl", model, canvas)
 			{}
 
 			virtual void show() override;

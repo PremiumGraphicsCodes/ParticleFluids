@@ -114,7 +114,7 @@ void ParticlePanel::show()
 }
 
 ParticlePanel::ParticlePanel(Model* model, Canvas* canvas) :
-	IPanel(model, canvas)	
+	IPanel("Particle", model, canvas)	
 {
 	add( new BoxButton(model, canvas) );
 	add( new SphereButton(model, canvas) );
