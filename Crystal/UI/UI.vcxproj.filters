@@ -55,6 +55,9 @@
       <Filter>Repository</Filter>
     </ClInclude>
     <ClInclude Include="FileWriter.h" />
+    <ClInclude Include="PolygonMeshObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileReader.cpp" />
@@ -84,6 +87,9 @@
       <Filter>Repository</Filter>
     </ClCompile>
     <ClCompile Include="FileWriter.cpp" />
+    <ClCompile Include="PolygonMeshObjectRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

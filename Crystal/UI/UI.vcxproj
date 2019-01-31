@@ -32,6 +32,7 @@
     <ClInclude Include="IMouseListener.h" />
     <ClInclude Include="IObject.h" />
     <ClInclude Include="ParticleSystemObjectRepository.h" />
+    <ClInclude Include="PolygonMeshObjectRepository.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="LightRepository.h" />
@@ -55,6 +56,7 @@
     <ClCompile Include="ObjectRepository.cpp" />
     <ClCompile Include="ParticleSystemObjectRepository.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
+    <ClCompile Include="PolygonMeshObjectRepository.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ViewModel3d.cpp" />
     <ClCompile Include="WireFrameObjectRepository.cpp" />

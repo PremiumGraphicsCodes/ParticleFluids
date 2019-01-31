@@ -19,9 +19,8 @@ void WireFrameTreeList::onShow()
 	ImGui::BeginChild("WireFrames", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	ImGui::Text("WireFrames");
 	for (auto ws : wires) {
-		char str[256];
-		sprintf(str, "%d", ws.getId());
-		ImGui::Text(str);
+		const auto name = ws.getName();
+		ImGui::Checkbox(name.c_str(), &ws._isVisible);
 	}
 	ImGui::EndChild();
 
