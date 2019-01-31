@@ -1,5 +1,7 @@
-﻿<Fluent:RibbonWindow xmlns:ParticleSystem="clr-namespace:PG.CGStudio.Generation.ParticleSystem" 
-        xmlns:PolygonMesh="clr-namespace:PG.CGStudio.Generation.PolygonMesh"  x:Class="PG.CGStudio.MainWindow"
+﻿<Fluent:RibbonWindow
+        xmlns:ParticleSystem="clr-namespace:PG.CGStudio.Generation.ParticleSystem" 
+        xmlns:PolygonMesh="clr-namespace:PG.CGStudio.Generation.PolygonMesh"
+        x:Class="PG.CGStudio.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,22 +14,36 @@
         <local:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
-        <Fluent:Ribbon>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Fluent:Ribbon Grid.Row="0">
             <Fluent:Ribbon.Menu>
-                <Fluent:ApplicationMenu Header="ファイル">
-                    <Fluent:MenuItem Header="メニュー1">
-                        <Fluent:MenuItem Header="メニュー1-1">
-                            <Fluent:MenuItem Header="メニュー1-2"/>
-                            <Fluent:MenuItem Header="メニュー1-3"/>
-                        </Fluent:MenuItem>
-                        <Fluent:MenuItem Header="メニュー2"/>
-                    </Fluent:MenuItem>
+                <Fluent:ApplicationMenu Header="File">
+                    <Fluent:MenuItem Header="Open"/>
+                    <Fluent:MenuItem Header="Save"/>
+                    <Fluent:MenuItem Header="SaveAs"/>
+                    <Fluent:MenuItem Header="Import"/>
+                    <Fluent:MenuItem Header="Export"/>
                 </Fluent:ApplicationMenu>
             </Fluent:Ribbon.Menu>
 
-            <Fluent:RibbonTabItem Header="Tab1" KeyTip="T1">
+            <Fluent:RibbonTabItem Header="Generation" KeyTip="T1">
+                <Fluent:RibbonGroupBox Header="ParticleSystem" KeyTip="B">
+                    <Fluent:Button Header="Box" KeyTip="BI"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI"/>
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="WireFrame" KeyTip="B">
+                    <Fluent:Button Header="Box" KeyTip="BI"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI"/>
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="PolygonMesh" KeyTip="B">
+                    <Fluent:Button Header="Box" KeyTip="BI"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI"/>
+                </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
-        <local:Canvas3dView Margin="0,100,0,0"/>
+        <local:Canvas3dView Margin="0,0,0,0" Grid.Row="1"/>
     </Grid>
 </Fluent:RibbonWindow>
