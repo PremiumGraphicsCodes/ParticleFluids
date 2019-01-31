@@ -29,6 +29,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="IMouseListener.h" />
     <ClInclude Include="IObject.h" />
+    <ClInclude Include="ParticleSystemObjectRepository.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="LightRepository.h" />
@@ -48,6 +49,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="LightRepository.cpp" />
     <ClCompile Include="ObjectRepository.cpp" />
+    <ClCompile Include="ParticleSystemObjectRepository.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ViewModel3d.cpp" />
