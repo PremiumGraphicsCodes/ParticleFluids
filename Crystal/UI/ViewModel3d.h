@@ -18,7 +18,7 @@ namespace Crystal {
 class ViewModel3d
 {
 public:
-	void add(const ObjectRepository& objects);
+	void add(ObjectRepository& objects);
 
 	void add(const LightRepository& lights);
 

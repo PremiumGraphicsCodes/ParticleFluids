@@ -11,7 +11,7 @@ ParticleSystemTreeList::ParticleSystemTreeList(const std::string& name, Model* m
 
 void ParticleSystemTreeList::onShow()
 {
-	auto& particleSystems = getModel()->getObjects()->getParticleSystems();
+	const auto& particleSystems = getModel()->getObjects()->getParticleSystems()->getObjects();
 
 	auto n = getName();
 	auto str = n.c_str();
@@ -21,7 +21,8 @@ void ParticleSystemTreeList::onShow()
 	for (auto& ps : particleSystems) {
 		const auto& n = ps.getName();
 		//ImGui::Text(n.c_str());
-		ImGui::Checkbox(str, &ps._isVisible);
+		bool b = ps._isVisible;
+		ImGui::Checkbox(str, &b);
 	}
 	ImGui::EndChild();
 

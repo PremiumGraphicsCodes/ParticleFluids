@@ -27,9 +27,9 @@ public:
 
 	MaterialRepository* getMaterials() { return &materials; }
 
-	virtual ViewModel3d toViewModel() const;
+	ViewModel3d toViewModel();
 
-	virtual Math::Box3d getBoundingBox() const;
+	Math::Box3d getBoundingBox() const;
 
 private:	
 	ObjectRepository objects;

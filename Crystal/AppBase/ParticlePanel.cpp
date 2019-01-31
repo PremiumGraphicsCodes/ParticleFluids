@@ -40,7 +40,7 @@ namespace {
 					}
 				}
 			}
-			getModel()->getObjects()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), 100.0f, "Box");
+			getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), 100.0f, "Box");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
@@ -84,7 +84,7 @@ namespace {
 				const auto v = dist(mt);
 				positions.push_back(sphere.getPosition(u, v));
 			}
-			getModel()->getObjects()->addParticleSystem(positions, ColorRGBAf(1, 1, 1, 1), size, "Sphere");
+			getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), size, "Sphere");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}

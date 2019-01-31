@@ -15,7 +15,7 @@ void WireFrameTreeList::onShow()
 	auto str = n.c_str();
 	ImGui::Begin(str);
 
-	const auto& wires = getModel()->getObjects()->getWireFrames();
+	const auto& wires = getModel()->getObjects()->getWireFrames()->getObjects();
 	ImGui::BeginChild("WireFrames", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	ImGui::Text("WireFrames");
 	for (auto ws : wires) {

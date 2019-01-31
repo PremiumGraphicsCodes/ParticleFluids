@@ -1,44 +1,37 @@
 #pragma once
 
-#include "ParticleSystemObject.h"
-#include "PolygonMeshObject.h"
-#include "WireFrameObject.h"
+#include "../Util/UnCopyable.h"
+#include "ParticleSystemObjectRepository.h"
+#include "PolygonMeshObjectRepository.h"
+#include "WireFrameObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {
 
-class ObjectRepository
+class ObjectRepository : private UnCopyable
 {
 public:
-	ObjectRepository() :
-		nextId(1)
+	ObjectRepository()
 	{}
 
 	~ObjectRepository();
 
 	void clear();
 
-	int addParticleSystem(const std::vector<Math::Vector3df>& positions, const Graphics::ColorRGBAf& color, const float size, const std::string& name);
+	ParticleSystemObjectRepository* getParticleSystems() { return &particleSystems; }
 
-	int addWireFrame(Shape::WireFrame* wire, const Graphics::ColorRGBAf& color, const std::string& name);
+	WireFrameObjectRepository* getWireFrames() { return &wireFrames; }
 
-	int addPolygonMesh(Shape::PolygonMesh* mesh, const Graphics::Material& material, const std::string& name);
-
-	std::list<ParticleSystemObject> getParticleSystems() const { return particleSystems; }
-
-	std::list<WireFrameObject> getWireFrames() const { return wires; }
-
-	std::list<PolygonMeshObject> getPolygonMeshes() const { return polygonMeshes; }
+	PolygonMeshObjectRepository* getPolygonMeshes() { return &polygonMeshes; }
 
 	Math::Box3d getBoundingBox() const;
 
 	std::list<Math::Vector3dd> getAllVertices() const;
 
 private:
-	int nextId;
-	std::list<ParticleSystemObject> particleSystems;
-	std::list<WireFrameObject> wires;
-	std::list<PolygonMeshObject> polygonMeshes;
+	ParticleSystemObjectRepository particleSystems;
+	WireFrameObjectRepository wireFrames;
+	PolygonMeshObjectRepository polygonMeshes;
 };
 	}
 }

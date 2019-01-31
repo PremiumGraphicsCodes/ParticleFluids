@@ -5,17 +5,17 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-void ViewModel3d::add(const ObjectRepository& objects)
+void ViewModel3d::add(ObjectRepository& objects)
 {
-	const auto& particleSystems = objects.getParticleSystems();
+	const auto& particleSystems = objects.getParticleSystems()->getObjects();
 	for (const auto& ps : particleSystems) {
 		add(ps);
 	}
-	const auto& wires = objects.getWireFrames();
+	const auto& wires = objects.getWireFrames()->getObjects();
 	for (const auto& w : wires) {
 		add(w);
 	}
-	const auto& polygons = objects.getPolygonMeshes();
+	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	for (const auto& p : polygons) {
 		add(p);
 	}

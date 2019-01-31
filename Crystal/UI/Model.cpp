@@ -41,7 +41,7 @@ bool Model::write(const std::string& filename) const
 	return false;
 }
 
-ViewModel3d Model::toViewModel() const
+ViewModel3d Model::toViewModel()
 {
 	ViewModel3d vm;
 	vm.add(objects);
