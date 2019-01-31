@@ -21,6 +21,12 @@ void ViewModel3d::add(ObjectRepository& objects)
 	}
 }
 
+void ViewModel3d::add(AppearanceObjectRepository& appearances)
+{
+
+}
+
+
 void ViewModel3d::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
 {
 	pointBuffer.add(pos, c, size);

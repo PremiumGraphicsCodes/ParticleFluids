@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AppearanceRepository.h" />
+    <ClInclude Include="AppearanceObjectRepository.h" />
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Canvas.h" />
@@ -47,6 +47,7 @@
     <ClInclude Include="WireFrameObjectRepository.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AppearanceObjectRepository.cpp" />
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Canvas.cpp" />

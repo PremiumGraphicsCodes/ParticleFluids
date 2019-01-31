@@ -14,11 +14,14 @@
 
 namespace Crystal {
 	namespace UI {
+		class AppearanceObjectRepository;
 
 class ViewModel3d
 {
 public:
 	void add(ObjectRepository& objects);
+
+	void add(AppearanceObjectRepository& appearances);
 
 	void add(const LightObjectRepository& lights);
 

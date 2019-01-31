@@ -11,7 +11,7 @@ LightTreeList::LightTreeList(const std::string& name, Model* model, Canvas* canv
 
 void LightTreeList::onShow()
 {
-	const auto& lights = getModel()->getLights()->getLights();
+	const auto& lights = getModel()->getAppearances()->getLights()->getLights();
 
 	auto n = getName();
 	auto str = n.c_str();

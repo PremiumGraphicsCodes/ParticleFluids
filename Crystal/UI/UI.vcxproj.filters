@@ -52,13 +52,13 @@
     <ClInclude Include="WireFrameObjectRepository.h">
       <Filter>Repository\Object</Filter>
     </ClInclude>
-    <ClInclude Include="AppearanceRepository.h">
-      <Filter>Repository\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="LightObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
     <ClInclude Include="MaterialObjectRepository.h">
+      <Filter>Repository\Appearance</Filter>
+    </ClInclude>
+    <ClInclude Include="AppearanceObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
   </ItemGroup>
@@ -91,6 +91,9 @@
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="MaterialObjectRepository.cpp">
+      <Filter>Repository\Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="AppearanceObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
   </ItemGroup>

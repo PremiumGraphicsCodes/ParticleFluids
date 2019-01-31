@@ -19,8 +19,7 @@ Model::~Model()
 void Model::clear()
 {
 	objects.clear();
-	lights.clear();
-	materials.clear();
+	appearances.clear();
 }
 
 bool Model::read(const std::string& filename)
@@ -45,7 +44,7 @@ ViewModel3d Model::toViewModel()
 {
 	ViewModel3d vm;
 	vm.add(objects);
-	vm.add(lights);
+	vm.add(appearances);
 	return vm;
 }
 

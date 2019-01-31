@@ -34,7 +34,7 @@ namespace {
 			l->setAmbient(ambient);
 			l->setDiffuse(diffuse);
 			l->setSpecular(specular);
-			getModel()->getLights()->add(l, name);
+			getModel()->getAppearances()->getLights()->add(l, name);
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
@@ -76,7 +76,7 @@ namespace {
 			m->setDiffuse(diffuse);
 			m->setSpecular(specular);
 			m->setShininess(shininess);
-			getModel()->getMaterials()->add(m, "");
+			getModel()->getAppearances()->getMaterials()->add(m, "");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}

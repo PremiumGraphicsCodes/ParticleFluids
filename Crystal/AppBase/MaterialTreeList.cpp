@@ -11,7 +11,7 @@ MaterialTreeList::MaterialTreeList(const std::string& name, Model* model, Canvas
 
 void MaterialTreeList::onShow()
 {
-	const auto& materials = getModel()->getMaterials()->getMaterials();
+	const auto& materials = getModel()->getAppearances()->getMaterials()->getMaterials();
 
 	auto n = getName();
 	auto str = n.c_str();
