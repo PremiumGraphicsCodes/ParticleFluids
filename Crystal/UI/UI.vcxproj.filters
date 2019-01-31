@@ -54,6 +54,7 @@
     <ClInclude Include="WireFrameObjectRepository.h">
       <Filter>Repository</Filter>
     </ClInclude>
+    <ClInclude Include="FileWriter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileReader.cpp" />
@@ -82,6 +83,7 @@
     <ClCompile Include="WireFrameObjectRepository.cpp">
       <Filter>Repository</Filter>
     </ClCompile>
+    <ClCompile Include="FileWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

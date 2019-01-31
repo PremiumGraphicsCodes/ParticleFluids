@@ -23,6 +23,9 @@ public:
 
 	virtual std::list<Math::Vector3dd> getAllVertices() const = 0;
 
+protected:
+	int getNextId() { return nextId++; }
+
 private:
 	int nextId;
 };

@@ -22,6 +22,7 @@
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="FileWriter.h" />
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="IObjectRepository.h" />
     <ClInclude Include="LightObject.h" />
@@ -47,6 +48,7 @@
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="MaterialRepository.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="LightRepository.cpp" />
