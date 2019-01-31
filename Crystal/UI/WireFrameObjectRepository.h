@@ -2,11 +2,12 @@
 
 #include "../Math/Box3d.h"
 #include "WireFrameObject.h"
+#include "IObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {
 
-class WireFrameObjectRepository
+class WireFrameObjectRepository : public IObjectRepository
 {
 public:
 	WireFrameObjectRepository() :
@@ -21,9 +22,9 @@ public:
 
 	std::list<WireFrameObject> getObjects() const { return objects; }
 
-	Math::Box3d getBoundingBox() const;
+	Math::Box3d getBoundingBox() const override;
 
-	std::list<Math::Vector3dd> getAllVertices() const;
+	std::list<Math::Vector3dd> getAllVertices() const override;
 
 private:
 	int nextId;

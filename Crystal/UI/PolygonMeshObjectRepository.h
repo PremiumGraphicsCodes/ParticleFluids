@@ -1,11 +1,12 @@
 #pragma once
 
+#include "IObjectRepository.h"
 #include "PolygonMeshObject.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PolygonMeshObjectRepository
+class PolygonMeshObjectRepository : public IObjectRepository
 {
 public:
 	PolygonMeshObjectRepository() :
@@ -20,9 +21,9 @@ public:
 
 	std::list<PolygonMeshObject> getObjects() const { return polygonMeshes; }
 
-	Math::Box3d getBoundingBox() const;
+	Math::Box3d getBoundingBox() const override;
 
-	std::list<Math::Vector3dd> getAllVertices() const;
+	std::list<Math::Vector3dd> getAllVertices() const override;
 
 private:
 	int nextId;
