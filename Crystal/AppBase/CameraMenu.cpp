@@ -7,6 +7,9 @@ using namespace Crystal::UI;
 
 void CameraMenu::show()
 {
+	auto canvas = getCanvas();
+	auto model = getModel();
+
 	const auto c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::MenuItem("Fit")) {
@@ -20,6 +23,9 @@ void CameraMenu::show()
 		}
 		if (ImGui::MenuItem("ZX")) {
 			canvas->setCameraZX(model->getBoundingBox());
+		}
+		if (ImGui::MenuItem("XYZ")) {
+//			canvas->set
 		}
 
 		ImGui::EndMenu();

@@ -8,6 +8,8 @@ using namespace Crystal::UI;
 
 void FileMenu::show()
 {
+	auto model = getModel();
+
 	const auto& n = name.c_str();
 	if (ImGui::BeginMenu(n)) {
 		if (ImGui::MenuItem("Open")) {

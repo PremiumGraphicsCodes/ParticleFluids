@@ -21,6 +21,11 @@ public:
 	virtual void show() {};
 
 protected:
+	Model* getModel() { return model; }
+
+	Canvas* getCanvas() { return canvas; }
+
+private:
 	Model* model;
 	Canvas* canvas;
 };

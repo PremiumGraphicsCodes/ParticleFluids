@@ -10,6 +10,9 @@ using namespace Crystal::UI;
 
 void CtrlMenu::show()
 {
+	auto model = getModel();
+	auto canvas = getCanvas();
+
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::MenuItem("Camera")) {
