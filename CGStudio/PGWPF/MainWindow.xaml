@@ -21,11 +21,14 @@
         <Fluent:Ribbon Grid.Row="0">
             <Fluent:Ribbon.Menu>
                 <Fluent:ApplicationMenu Header="File">
-                    <Fluent:MenuItem Header="Open"/>
-                    <Fluent:MenuItem Header="Save"/>
-                    <Fluent:MenuItem Header="SaveAs"/>
-                    <Fluent:MenuItem Header="Import"/>
-                    <Fluent:MenuItem Header="Export"/>
+                    <Fluent:ApplicationMenu.DataContext>
+                        <local:FileIOViewModel/>
+                    </Fluent:ApplicationMenu.DataContext>
+                    <Fluent:MenuItem Header="Open" Command="{Binding OpenCommand}"/>
+                    <Fluent:MenuItem Header="Save" Command="{Binding SaveCommand}"/>
+                    <Fluent:MenuItem Header="SaveAs" Command="{Binding SaveAsCommand}"/>
+                    <Fluent:MenuItem Header="Import" Command="{Binding ImportCommand}"/>
+                    <Fluent:MenuItem Header="Export" Command="{Binding ExportCommand}"/>
                 </Fluent:ApplicationMenu>
             </Fluent:Ribbon.Menu>
 
@@ -41,6 +44,19 @@
                 <Fluent:RibbonGroupBox Header="PolygonMesh" KeyTip="B">
                     <Fluent:Button Header="Box" KeyTip="BI"/>
                     <Fluent:Button Header="Sphere" KeyTip="BI"/>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+
+            <Fluent:RibbonTabItem Header="View" KeyTip="T1">
+                <Fluent:RibbonGroupBox Header="Camera" KeyTip="B">
+                    <Fluent:RibbonGroupBox.DataContext>
+                        <local:CameraControlViewModel/>
+                    </Fluent:RibbonGroupBox.DataContext>
+                    <Fluent:Button Header="XY" KeyTip="BI" Command="{Binding XYCommand}"/>
+                    <Fluent:Button Header="YZ" KeyTip="BI" Command="{Binding YZCommand}"/>
+                    <Fluent:Button Header="ZX" KeyTip="BI" Command="{Binding ZXCommand}"/>
+                    <Fluent:Button Header="XYZ" KeyTip="BI" Command="{Binding XYZCommand}"/>
+                    <Fluent:Button Header="Fit" KeyTip="BI" Command="{Binding FitCommand}"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>

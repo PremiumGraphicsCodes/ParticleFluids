@@ -124,15 +124,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CameraControlView.xaml.cs">
-      <DependentUpon>CameraControlView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="ControlView.xaml.cs">
       <DependentUpon>ControlView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FileIOView.xaml.cs">
-      <DependentUpon>FileIOView.xaml</DependentUpon>
     </Compile>
     <Compile Include="FileIOViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
@@ -190,19 +184,11 @@
     <Compile Include="MainModel.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
-    <Page Include="CameraControlView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Canvas3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FileIOView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
