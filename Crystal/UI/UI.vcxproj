@@ -23,6 +23,7 @@
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="IKeyListener.h" />
+    <ClInclude Include="IObjectRepository.h" />
     <ClInclude Include="LightObject.h" />
     <ClInclude Include="MaterialObject.h" />
     <ClInclude Include="MaterialRepository.h" />
@@ -40,6 +41,7 @@
     <ClInclude Include="RectSelectUICtrl.h" />
     <ClInclude Include="ViewModel3d.h" />
     <ClInclude Include="WireFrameObject.h" />
+    <ClInclude Include="WireFrameObjectRepository.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraUICtrl.cpp" />
@@ -53,6 +55,7 @@
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ViewModel3d.cpp" />
+    <ClCompile Include="WireFrameObjectRepository.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
