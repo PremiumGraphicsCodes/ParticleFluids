@@ -26,7 +26,7 @@ void ObjectRepository::clear()
 	polygonMeshes.clear();
 }
 
-int ObjectRepository::addParticleSystem(const std::vector<Vector3df>& positions, const ColorRGBAf& color, const float size)
+int ObjectRepository::addParticleSystem(const std::vector<Vector3df>& positions, const ColorRGBAf& color, const float size, const std::string& name)
 {
 	auto particles = new Shape::ParticleSystem<ParticleAttr>();
 	for (const auto& p : positions) {
@@ -35,13 +35,13 @@ int ObjectRepository::addParticleSystem(const std::vector<Vector3df>& positions,
 		attr.size = size;
 		particles->add(p, attr);
 	}
-	particleSystems.push_back(ParticleSystemObject(nextId++, particles));
+	particleSystems.push_back(ParticleSystemObject(nextId++, name, particles));
 	return particleSystems.back().getId();
 }
 
-int ObjectRepository::addWireFrame(WireFrame* wire, const ColorRGBAf& color)
+int ObjectRepository::addWireFrame(WireFrame* wire, const ColorRGBAf& color, const std::string& name)
 {
-	wires.push_back(WireFrameObject(nextId++, wire, color));
+	wires.push_back(WireFrameObject(nextId++, name, wire, color));
 	return wires.back().getId();
 }
 

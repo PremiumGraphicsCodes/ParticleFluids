@@ -10,8 +10,8 @@ namespace Crystal {
 class WireFrameObject : public IObject
 {
 public:
-	WireFrameObject(const int id, Shape::WireFrame* shape, const Graphics::ColorRGBAf& color) :
-		IObject(id),
+	WireFrameObject(const int id, const std::string& name, Shape::WireFrame* shape, const Graphics::ColorRGBAf& color) :
+		IObject(id, name),
 		shape(shape),
 		color(color)
 	{}

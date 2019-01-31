@@ -18,9 +18,9 @@ public:
 
 	void clear();
 
-	int addParticleSystem(const std::vector<Math::Vector3df>& positions, const Graphics::ColorRGBAf& color, const float size);
+	int addParticleSystem(const std::vector<Math::Vector3df>& positions, const Graphics::ColorRGBAf& color, const float size, const std::string& name);
 
-	int addWireFrame(Shape::WireFrame* wire, const Graphics::ColorRGBAf& color);
+	int addWireFrame(Shape::WireFrame* wire, const Graphics::ColorRGBAf& color, const std::string& name);
 
 	int addPolygonMesh(Shape::PolygonMesh* mesh, const Graphics::Material& material, const std::string& name);
 

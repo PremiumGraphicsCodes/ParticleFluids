@@ -16,8 +16,8 @@ struct ParticleAttr
 class ParticleSystemObject : public IObject
 {
 public:
-	explicit ParticleSystemObject(const int id, Shape::ParticleSystem<ParticleAttr>* shape) :
-		IObject(id),
+	ParticleSystemObject(const int id, const std::string& name, Shape::ParticleSystem<ParticleAttr>* shape) :
+		IObject(id, name),
 		shape(shape)
 	{}
 

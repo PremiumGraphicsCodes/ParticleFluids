@@ -31,7 +31,7 @@ namespace {
 			const Box3d box(min, max);
 			Crystal::Shape::WireFrameBuilder builder;
 			builder.build(box);
-			getModel()->getObjects()->addWireFrame(builder.getWireFrame(), color);
+			getModel()->getObjects()->addWireFrame(builder.getWireFrame(), color, "Box");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
@@ -67,7 +67,7 @@ namespace {
 			Sphere3d sphere(center, radius);
 			Crystal::Shape::WireFrameBuilder builder;
 			builder.build(sphere);
-			getModel()->getObjects()->addWireFrame(builder.getWireFrame(), color);
+			getModel()->getObjects()->addWireFrame(builder.getWireFrame(), color, "Sphere");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
