@@ -6,12 +6,12 @@
 namespace Crystal {
 	namespace UI {
 
-class LightRepository
+class LightObjectRepository
 {
 public:
-	LightRepository();
+	LightObjectRepository();
 
-	~LightRepository();
+	~LightObjectRepository();
 
 	void clear();
 

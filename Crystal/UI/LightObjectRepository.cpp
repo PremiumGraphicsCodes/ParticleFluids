@@ -1,9 +1,9 @@
-#include "LightRepository.h"
+#include "LightObjectRepository.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-LightRepository::LightRepository() :
+LightObjectRepository::LightObjectRepository() :
 	nextId(1)
 {
 	Graphics::PointLight* light = new Graphics::PointLight();
@@ -15,12 +15,12 @@ LightRepository::LightRepository() :
 	lights.push_back(object);
 }
 
-LightRepository::~LightRepository()
+LightObjectRepository::~LightObjectRepository()
 {
 	clear();
 }
 
-void LightRepository::clear()
+void LightObjectRepository::clear()
 {
 	for (auto l : lights) {
 		delete l.getLight();
@@ -28,7 +28,7 @@ void LightRepository::clear()
 	lights.clear();
 }
 
-void LightRepository::add(PointLight* l, const std::string& name)
+void LightObjectRepository::add(PointLight* l, const std::string& name)
 {
 	LightObject object(nextId++, name, l);
 	lights.push_back(object);

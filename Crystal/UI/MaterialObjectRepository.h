@@ -7,12 +7,12 @@
 namespace Crystal {
 	namespace UI {
 
-class MaterialRepository : private UnCopyable
+class MateriaObjectRepository : private UnCopyable
 {
 public:
-	MaterialRepository();
+	MateriaObjectRepository();
 
-	~MaterialRepository();
+	~MateriaObjectRepository();
 
 	void clear();
 

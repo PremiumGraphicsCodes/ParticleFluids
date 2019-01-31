@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ObjectRepository.h"
-#include "LightRepository.h"
-#include "MaterialRepository.h"
+#include "LightObjectRepository.h"
+#include "MaterialObjectRepository.h"
 #include "ViewModel3d.h"
 
 namespace Crystal {
@@ -23,9 +23,9 @@ public:
 
 	ObjectRepository* getObjects() { return &objects; }
 
-	LightRepository* getLights() { return &lights; }
+	LightObjectRepository* getLights() { return &lights; }
 
-	MaterialRepository* getMaterials() { return &materials; }
+	MateriaObjectRepository* getMaterials() { return &materials; }
 
 	ViewModel3d toViewModel();
 
@@ -33,8 +33,8 @@ public:
 
 private:	
 	ObjectRepository objects;
-	LightRepository lights;
-	MaterialRepository materials;
+	LightObjectRepository lights;
+	MateriaObjectRepository materials;
 };
 	}
 }

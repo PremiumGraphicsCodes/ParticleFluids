@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AppearanceRepository.h" />
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Canvas.h" />
@@ -27,7 +28,7 @@
     <ClInclude Include="IObjectRepository.h" />
     <ClInclude Include="LightObject.h" />
     <ClInclude Include="MaterialObject.h" />
-    <ClInclude Include="MaterialRepository.h" />
+    <ClInclude Include="MaterialObjectRepository.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="IMouseListener.h" />
     <ClInclude Include="IObject.h" />
@@ -35,7 +36,7 @@
     <ClInclude Include="PolygonMeshObjectRepository.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="IUICtrl.h" />
-    <ClInclude Include="LightRepository.h" />
+    <ClInclude Include="LightObjectRepository.h" />
     <ClInclude Include="ObjectRepository.h" />
     <ClInclude Include="ParticleSystemObject.h" />
     <ClInclude Include="PickUICtrl.h" />
@@ -50,9 +51,9 @@
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="FileWriter.cpp" />
-    <ClCompile Include="MaterialRepository.cpp" />
+    <ClCompile Include="MaterialObjectRepository.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="LightRepository.cpp" />
+    <ClCompile Include="LightObjectRepository.cpp" />
     <ClCompile Include="ObjectRepository.cpp" />
     <ClCompile Include="ParticleSystemObjectRepository.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />

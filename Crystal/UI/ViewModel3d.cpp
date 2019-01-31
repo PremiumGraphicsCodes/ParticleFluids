@@ -59,7 +59,7 @@ void ViewModel3d::add(const PolygonMeshObject& object)
 }
 
 
-void ViewModel3d::add(const LightRepository& lights)
+void ViewModel3d::add(const LightObjectRepository& lights)
 {
 	const auto& ls = lights.getLights();
 	for (const auto& l : ls) {
@@ -68,7 +68,7 @@ void ViewModel3d::add(const LightRepository& lights)
 	}
 }
 
-void ViewModel3d::add(const MaterialRepository& materials)
+void ViewModel3d::add(const MateriaObjectRepository& materials)
 {
 	const auto& ms = materials.getMaterials();
 	for (const auto& m : ms) {

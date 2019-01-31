@@ -8,9 +8,9 @@
 #include "ParticleSystemObject.h"
 #include "WireFrameObject.h"
 #include "PolygonMeshObject.h"
-#include "LightRepository.h"
+#include "LightObjectRepository.h"
 #include "ObjectRepository.h"
-#include "MaterialRepository.h"
+#include "MaterialObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {
@@ -20,9 +20,9 @@ class ViewModel3d
 public:
 	void add(ObjectRepository& objects);
 
-	void add(const LightRepository& lights);
+	void add(const LightObjectRepository& lights);
 
-	void add(const MaterialRepository& materials);
+	void add(const MateriaObjectRepository& materials);
 
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 
