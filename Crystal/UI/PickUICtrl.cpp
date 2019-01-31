@@ -4,13 +4,15 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-PickUICtrl::PickUICtrl(ICamera* camera) :
+PickUICtrl::PickUICtrl(Model* model, ICamera* camera) :
+	model(model),
 	camera(camera)
 {
 }
 
 void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 {
+	
 	prevPosition = position;
 	//	camera->move();
 }

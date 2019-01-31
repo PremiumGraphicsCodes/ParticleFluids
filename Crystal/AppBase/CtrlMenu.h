@@ -5,14 +5,15 @@
 namespace Crystal {
 	namespace UI {
 
-		class CtrlMenu : public IMenu
-		{
-		public:
-			CtrlMenu(const std::string& name, Model* model, Canvas* canvas) :
-				IMenu(name, model, canvas)
-			{}
+class CtrlMenu : public IMenu
+{
+public:
+	CtrlMenu(const std::string& name, Model* model, Canvas* canvas) :
+		IMenu(name, model, canvas)
+	{}
 
-			virtual void show() override;
-		};
+	virtual void show() override;
+};
+
 	}
 }
