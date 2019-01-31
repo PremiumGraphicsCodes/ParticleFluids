@@ -9,12 +9,14 @@ namespace PG.CGStudio
         {
             InitializeComponent();
 
+            /*
             ContentRendered += (s, e) =>
             {
                 var dialog = new ControlView();
                 dialog.Owner = this;
                 dialog.Show();
             };
+            */
         }        
     }
 }

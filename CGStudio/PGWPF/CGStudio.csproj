@@ -125,9 +125,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
-    <Compile Include="ControlView.xaml.cs">
-      <DependentUpon>ControlView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FileIOViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Generation\GenerationView.xaml.cs">
@@ -185,10 +182,6 @@
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
     <Page Include="Canvas3dView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
