@@ -1,9 +1,10 @@
-﻿<Window xmlns:ParticleSystem="clr-namespace:PG.CGStudio.Generation.ParticleSystem" 
+﻿<Fluent:RibbonWindow xmlns:ParticleSystem="clr-namespace:PG.CGStudio.Generation.ParticleSystem" 
         xmlns:PolygonMesh="clr-namespace:PG.CGStudio.Generation.PolygonMesh"  x:Class="PG.CGStudio.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Fluent="urn:fluent-ribbon"
         xmlns:local="clr-namespace:PG.CGStudio"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -11,6 +12,22 @@
         <local:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
-        <local:Canvas3dView Margin="0,0,0,0"/>
+        <Fluent:Ribbon>
+            <Fluent:Ribbon.Menu>
+                <Fluent:ApplicationMenu Header="ファイル">
+                    <Fluent:MenuItem Header="メニュー1">
+                        <Fluent:MenuItem Header="メニュー1-1">
+                            <Fluent:MenuItem Header="メニュー1-2"/>
+                            <Fluent:MenuItem Header="メニュー1-3"/>
+                        </Fluent:MenuItem>
+                        <Fluent:MenuItem Header="メニュー2"/>
+                    </Fluent:MenuItem>
+                </Fluent:ApplicationMenu>
+            </Fluent:Ribbon.Menu>
+
+            <Fluent:RibbonTabItem Header="Tab1" KeyTip="T1">
+            </Fluent:RibbonTabItem>
+        </Fluent:Ribbon>
+        <local:Canvas3dView Margin="0,100,0,0"/>
     </Grid>
-</Window>
+</Fluent:RibbonWindow>

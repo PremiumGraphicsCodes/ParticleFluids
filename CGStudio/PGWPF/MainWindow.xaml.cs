@@ -1,8 +1,9 @@
-﻿using System.Windows;
+﻿using Fluent;
+using System.Windows;
 
 namespace PG.CGStudio
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : RibbonWindow
     {
         public MainWindow()
         {
