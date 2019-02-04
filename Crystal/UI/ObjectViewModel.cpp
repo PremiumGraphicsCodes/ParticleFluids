@@ -23,12 +23,6 @@ void ObjectViewModel::add(ObjectRepository& objects)
 	}
 }
 
-void ObjectViewModel::add(AppearanceObjectRepository& appearances)
-{
-	add(*appearances.getLights());
-	add(*appearances.getMaterials());
-}
-
 void ObjectViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
 {
 	pointBuffer.add(pos, c, size);
@@ -69,23 +63,4 @@ void ObjectViewModel::add(const PolygonMeshObject& object)
 		triangleBuffer.add(*object.getShape());
 	}
 	*/
-}
-
-
-void ObjectViewModel::add(const LightObjectRepository& lights)
-{
-	const auto& ls = lights.getLights();
-	for (const auto& l : ls) {
-		auto ll = l.getLight();
-		lightBuffer.add(*ll);
-	}
-}
-
-void ObjectViewModel::add(const MaterialObjectRepository& materials)
-{
-	const auto& ms = materials.getMaterials();
-	for (const auto& m : ms) {
-		auto mm = m.getMaterial();
-		materialBuffer.add(*mm);
-	}
 }

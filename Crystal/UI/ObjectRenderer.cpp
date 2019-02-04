@@ -1,5 +1,6 @@
 #include "ObjectRenderer.h"
 #include "../../Crystal/UI/ObjectViewModel.h"
+#include "../../Crystal/UI/AppearanceViewModel.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -32,11 +33,11 @@ bool ObjectRenderer::build()
 	return true;
 }
 
-void ObjectRenderer::setViewModel(const ObjectViewModel& vm)
+void ObjectRenderer::setViewModel(const ObjectViewModel& vm, const AppearanceViewModel& avm)
 {
 	this->pointRenderer.setBuffer(vm.getPointBuffer());
 	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);
-	this->smoothRenderer.setBuffer(vm.getTriangleBuffer(), vm.getLightBuffer(), vm.getMaterialBuffer());
+	this->smoothRenderer.setBuffer(vm.getTriangleBuffer(), avm.getLightBuffer(), avm.getMaterialBuffer());
 }
 
 void ObjectRenderer::render(const int width, const int height)

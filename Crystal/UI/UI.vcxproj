@@ -47,6 +47,7 @@
     <ClInclude Include="PolygonMeshObject.h" />
     <ClInclude Include="RectSelectUICtrl.h" />
     <ClInclude Include="ObjectViewModel.h" />
+    <ClInclude Include="ViewModel.h" />
     <ClInclude Include="WireFrameObject.h" />
     <ClInclude Include="WireFrameObjectRepository.h" />
   </ItemGroup>

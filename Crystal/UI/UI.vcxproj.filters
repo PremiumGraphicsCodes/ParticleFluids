@@ -85,6 +85,9 @@
     <ClInclude Include="AppearanceViewModel.h">
       <Filter>ViewModel</Filter>
     </ClInclude>
+    <ClInclude Include="ViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas.cpp" />

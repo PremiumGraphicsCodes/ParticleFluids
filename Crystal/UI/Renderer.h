@@ -6,9 +6,11 @@
 #include "ObjectRenderer.h"
 #include "ObjectIdRenderer.h"
 
+#include "ViewModel.h"
+
 namespace Crystal {
 	namespace UI {
-		class ObjectViewModel;
+		class ViewModel;
 
 class Renderer
 {
@@ -21,7 +23,11 @@ public:
 
 	void render(const int width, const int height);
 
-	void setViewModel(const ObjectViewModel& vm) { objectRenderer.setViewModel(vm); }
+	void setViewModel(ViewModel& vm) {
+		const auto& ovm = *vm.getObject();
+		const auto& avm = *vm.getAppearance();
+		objectRenderer.setViewModel(ovm, avm);
+	}
 
 private:
 	Shader::TextureObject texture;
