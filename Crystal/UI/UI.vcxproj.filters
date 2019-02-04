@@ -65,7 +65,12 @@
     <ClInclude Include="IdRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="ViewModel.h" />
+    <ClInclude Include="ViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="IdViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileReader.cpp" />
@@ -102,7 +107,15 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="ViewModel.cpp" />
+    <ClCompile Include="ViewModel.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="IdViewModel.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="IdRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -125,6 +138,9 @@
     </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{b8206f45-7a4e-449c-95d7-73f8acaff634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ViewModel">
+      <UniqueIdentifier>{608235fd-0d00-49ea-8cc3-df5da7ec1cb7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -25,11 +25,11 @@ public:
 
 	LightObjectRepository* getLights() { return &lights; }
 
-	MateriaObjectRepository* getMaterials() { return &materials; }
+	MaterialObjectRepository* getMaterials() { return &materials; }
 
 private:
 	LightObjectRepository lights;
-	MateriaObjectRepository materials;
+	MaterialObjectRepository materials;
 };
 	}
 }

@@ -25,7 +25,7 @@ public:
 
 	void add(const LightObjectRepository& lights);
 
-	void add(const MateriaObjectRepository& materials);
+	void add(const MaterialObjectRepository& materials);
 
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 

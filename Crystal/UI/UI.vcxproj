@@ -25,6 +25,7 @@
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="FileWriter.h" />
     <ClInclude Include="IdRenderer.h" />
+    <ClInclude Include="IdViewModel.h" />
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="IObjectRepository.h" />
     <ClInclude Include="LightObject.h" />
@@ -53,6 +54,8 @@
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="FileWriter.cpp" />
+    <ClCompile Include="IdRenderer.cpp" />
+    <ClCompile Include="IdViewModel.cpp" />
     <ClCompile Include="MaterialObjectRepository.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="LightObjectRepository.cpp" />

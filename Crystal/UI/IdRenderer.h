@@ -6,7 +6,7 @@
 
 namespace Crystal {
 	namespace UI {
-		class ViewModel;
+		class IdViewModel;
 
 class IdRenderer
 {
@@ -22,14 +22,12 @@ public:
 
 	void render(const int width, const int height);
 
-	void setViewModel(const ViewModel& vm);
+	void setViewModel(const IdViewModel& vm);
 
 private:
 	Shader::PointRenderer pointIdRenderer;
 
 	Graphics::ICamera* camera;
-	Shader::TextureObject texture;
-
 };
 	}
 }

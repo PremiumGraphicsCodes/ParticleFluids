@@ -81,7 +81,7 @@ void ViewModel::add(const LightObjectRepository& lights)
 	}
 }
 
-void ViewModel::add(const MateriaObjectRepository& materials)
+void ViewModel::add(const MaterialObjectRepository& materials)
 {
 	const auto& ms = materials.getMaterials();
 	for (const auto& m : ms) {

@@ -3,17 +3,17 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-MateriaObjectRepository::MateriaObjectRepository() :
+MaterialObjectRepository::MaterialObjectRepository() :
 	nextId(1)
 {
 }
 
-MateriaObjectRepository::~MateriaObjectRepository()
+MaterialObjectRepository::~MaterialObjectRepository()
 {
 	clear();
 }
 
-void MateriaObjectRepository::clear()
+void MaterialObjectRepository::clear()
 {
 	for (auto m : materials) {
 		delete m.getMaterial();
@@ -21,7 +21,7 @@ void MateriaObjectRepository::clear()
 	materials.clear();
 }
 
-void MateriaObjectRepository::add(Material* m, const std::string& name)
+void MaterialObjectRepository::add(Material* m, const std::string& name)
 {
 	MaterialObject material(nextId++, name, m);
 	materials.push_back(material);
