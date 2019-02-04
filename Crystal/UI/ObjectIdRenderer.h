@@ -4,6 +4,8 @@
 #include "../Shader/WireFrameRenderer.h"
 #include "../Shader/SmoothRenderer.h"
 
+#include "../Shader/FrameBuffer.h"
+
 namespace Crystal {
 	namespace UI {
 		class IdViewModel;
@@ -26,6 +28,9 @@ public:
 
 private:
 	Shader::PointRenderer pointIdRenderer;
+
+	Shader::FrameBuffer frameBufferObject;
+	Shader::TextureObject texture;
 
 	Graphics::ICamera* camera;
 };

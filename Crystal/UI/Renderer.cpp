@@ -7,13 +7,17 @@ using namespace Crystal::Shader;
 using namespace Crystal::UI;
 
 Renderer::Renderer(Crystal::Graphics::ICamera* camera) :
-	objectRenderer(camera)
+	objectRenderer(camera),
+	objectIdRenderer(camera)
 {
 }
 
 bool Renderer::build()
 {
 	if (!objectRenderer.build()) {
+		return false;
+	}
+	if (!objectIdRenderer.build()) {
 		return false;
 	}
 
@@ -26,6 +30,7 @@ bool Renderer::build()
 void Renderer::render(const int width, const int height)
 {
 	objectRenderer.render(width, height);
+	objectIdRenderer.render(width, height);
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);

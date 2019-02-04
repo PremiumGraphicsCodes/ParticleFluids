@@ -1,8 +1,10 @@
 #pragma once
 
 #include "../Shader/TextureObject.h"
-#include "ObjectRenderer.h"
 #include "../Shader/OnScreenRenderer.h"
+
+#include "ObjectRenderer.h"
+#include "ObjectIdRenderer.h"
 
 namespace Crystal {
 	namespace UI {
@@ -25,6 +27,7 @@ private:
 	Shader::TextureObject texture;
 	Shader::OnScreenRenderer renderer;
 	ObjectRenderer objectRenderer;
+	ObjectIdRenderer objectIdRenderer;
 };
 
 	}
