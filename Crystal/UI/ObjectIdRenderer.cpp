@@ -1,5 +1,5 @@
 #include "ObjectIdRenderer.h"
-#include "../../Crystal/UI/IdViewModel.h"
+#include "../../Crystal/UI/ObjectIdViewModel.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
@@ -18,7 +18,7 @@ bool ObjectIdRenderer::build()
 	return true;
 }
 
-void ObjectIdRenderer::setViewModel(const IdViewModel& vm)
+void ObjectIdRenderer::setViewModel(const ObjectIdViewModel& vm)
 {
 	this->pointIdRenderer.setBuffer(vm.getPointIdBuffer());
 }

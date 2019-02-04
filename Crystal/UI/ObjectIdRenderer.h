@@ -8,7 +8,7 @@
 
 namespace Crystal {
 	namespace UI {
-		class IdViewModel;
+		class ObjectIdViewModel;
 
 class ObjectIdRenderer
 {
@@ -24,7 +24,7 @@ public:
 
 	void render(const int width, const int height);
 
-	void setViewModel(const IdViewModel& vm);
+	void setViewModel(const ObjectIdViewModel& vm);
 
 private:
 	Shader::PointRenderer pointIdRenderer;

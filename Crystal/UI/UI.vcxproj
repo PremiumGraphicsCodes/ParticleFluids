@@ -24,8 +24,9 @@
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="FileWriter.h" />
+    <ClInclude Include="AppearanceViewModel.h" />
     <ClInclude Include="ObjectIdRenderer.h" />
-    <ClInclude Include="IdViewModel.h" />
+    <ClInclude Include="ObjectIdViewModel.h" />
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="IObjectRepository.h" />
     <ClInclude Include="LightObject.h" />
@@ -51,12 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppearanceObjectRepository.cpp" />
+    <ClCompile Include="AppearanceViewModel.cpp" />
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="ObjectIdRenderer.cpp" />
-    <ClCompile Include="IdViewModel.cpp" />
+    <ClCompile Include="ObjectIdViewModel.cpp" />
     <ClCompile Include="MaterialObjectRepository.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Repository.cpp" />

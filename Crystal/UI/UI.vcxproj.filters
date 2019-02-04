@@ -55,9 +55,6 @@
     <ClInclude Include="AppearanceObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="IdViewModel.h">
-      <Filter>ViewModel</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -80,6 +77,12 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="ObjectViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectIdViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="AppearanceViewModel.h">
       <Filter>ViewModel</Filter>
     </ClInclude>
   </ItemGroup>
@@ -112,9 +115,6 @@
     <ClCompile Include="AppearanceObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="IdViewModel.cpp">
-      <Filter>ViewModel</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -134,6 +134,12 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="ObjectViewModel.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectIdViewModel.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="AppearanceViewModel.cpp">
       <Filter>ViewModel</Filter>
     </ClCompile>
   </ItemGroup>
