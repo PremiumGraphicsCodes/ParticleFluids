@@ -24,6 +24,7 @@
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="FileWriter.h" />
+    <ClInclude Include="IdRenderer.h" />
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="IObjectRepository.h" />
     <ClInclude Include="LightObject.h" />
@@ -42,7 +43,7 @@
     <ClInclude Include="PickUICtrl.h" />
     <ClInclude Include="PolygonMeshObject.h" />
     <ClInclude Include="RectSelectUICtrl.h" />
-    <ClInclude Include="ViewModel3d.h" />
+    <ClInclude Include="ViewModel.h" />
     <ClInclude Include="WireFrameObject.h" />
     <ClInclude Include="WireFrameObjectRepository.h" />
   </ItemGroup>
@@ -60,7 +61,7 @@
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="PolygonMeshObjectRepository.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="ViewModel3d.cpp" />
+    <ClCompile Include="ViewModel.cpp" />
     <ClCompile Include="WireFrameObjectRepository.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -8,15 +8,15 @@ namespace Crystal {
 	namespace UI {
 		class ViewModel;
 
-class Renderer
+class IdRenderer
 {
 public:
-	Renderer(Graphics::ICamera* camera) :
+	IdRenderer(Graphics::ICamera* camera) :
 		camera(camera)
 	{
 	}
 
-	~Renderer() {}
+	~IdRenderer() {}
 
 	bool build();
 
@@ -25,10 +25,6 @@ public:
 	void setViewModel(const ViewModel& vm);
 
 private:
-	Shader::PointRenderer pointRenderer;
-	Shader::WireFrameRenderer wireRenderer;
-	Shader::SmoothRenderer smoothRenderer;
-
 	Shader::PointRenderer pointIdRenderer;
 
 	Graphics::ICamera* camera;

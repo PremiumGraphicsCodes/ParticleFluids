@@ -1,11 +1,13 @@
-#include "ViewModel3d.h"
+#include "ViewModel.h"
 #include "Model.h"
+
+#include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-void ViewModel3d::add(ObjectRepository& objects)
+void ViewModel::add(ObjectRepository& objects)
 {
 	const auto& particleSystems = objects.getParticleSystems()->getObjects();
 	for (const auto& ps : particleSystems) {
@@ -21,26 +23,31 @@ void ViewModel3d::add(ObjectRepository& objects)
 	}
 }
 
-void ViewModel3d::add(AppearanceObjectRepository& appearances)
+void ViewModel::add(AppearanceObjectRepository& appearances)
 {
 	add(*appearances.getLights());
 	add(*appearances.getMaterials());
 }
 
-void ViewModel3d::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
+void ViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
 {
 	pointBuffer.add(pos, c, size);
 }
 
-void ViewModel3d::add(const ParticleSystemObject& object)
+void ViewModel::add(const ParticleSystemObject& object)
 {
+	const auto particleSystemId = object.getId();
 	const auto& particles = object.getShape()->getParticles();
+	int particleId = 1;
 	for (auto p : particles) {
 		pointBuffer.add( p->getPosition(), p->getAttribute().color, p->getAttribute().size);
+		particleId++;
+		Graphics::DrawableID did(particleSystemId, particleId++);
+//		pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size());
 	}
 }
 
-void ViewModel3d::add(const WireFrameObject& object)
+void ViewModel::add(const WireFrameObject& object)
 {
 	const auto& lines = object.getShape()->getLines();
 	const auto& color = object.getColor();
@@ -51,7 +58,7 @@ void ViewModel3d::add(const WireFrameObject& object)
 	}
 }
 
-void ViewModel3d::add(const PolygonMeshObject& object)
+void ViewModel::add(const PolygonMeshObject& object)
 {
 	auto material = object.getMaterial();
 	triangleBuffer.add(*object.getShape(), material);
@@ -65,7 +72,7 @@ void ViewModel3d::add(const PolygonMeshObject& object)
 }
 
 
-void ViewModel3d::add(const LightObjectRepository& lights)
+void ViewModel::add(const LightObjectRepository& lights)
 {
 	const auto& ls = lights.getLights();
 	for (const auto& l : ls) {
@@ -74,7 +81,7 @@ void ViewModel3d::add(const LightObjectRepository& lights)
 	}
 }
 
-void ViewModel3d::add(const MateriaObjectRepository& materials)
+void ViewModel::add(const MateriaObjectRepository& materials)
 {
 	const auto& ms = materials.getMaterials();
 	for (const auto& m : ms) {

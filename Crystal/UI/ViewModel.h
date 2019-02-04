@@ -16,7 +16,7 @@ namespace Crystal {
 	namespace UI {
 		class AppearanceObjectRepository;
 
-class ViewModel3d
+class ViewModel
 {
 public:
 	void add(ObjectRepository& objects);
@@ -32,6 +32,8 @@ public:
 	Graphics::LineBuffer getLineBuffer() const { return lineBuffer; }
 
 	Graphics::TriangleBuffer getTriangleBuffer() const { return triangleBuffer; }
+
+	Graphics::PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
 
 	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
 
@@ -49,6 +51,11 @@ private:
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
 	Graphics::TriangleBuffer triangleBuffer;
+
+	Graphics::PointBuffer pointIdBuffer;
+	//Graphics::LineBuffer lineIdBuffer;
+	//Graphics::TriangleBuffer triangleIdBuffer;
+
 	Graphics::LightBuffer lightBuffer;
 	Graphics::MaterialBuffer materialBuffer;
 };

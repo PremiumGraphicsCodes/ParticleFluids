@@ -5,7 +5,6 @@
     <ClInclude Include="IMouseListener.h" />
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="FileReader.h" />
-    <ClInclude Include="ViewModel3d.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="PolygonMeshObject.h">
@@ -29,7 +28,6 @@
     <ClInclude Include="IUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h" />
     <ClInclude Include="LightObject.h">
       <Filter>Object</Filter>
     </ClInclude>
@@ -61,10 +59,16 @@
     <ClInclude Include="AppearanceObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="IdRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileReader.cpp" />
-    <ClCompile Include="ViewModel3d.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="CameraUICtrl.cpp">
@@ -73,7 +77,6 @@
     <ClCompile Include="PickUICtrl.cpp">
       <Filter>UICtrl</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="ParticleSystemObjectRepository.cpp">
       <Filter>Repository\Object</Filter>
@@ -96,6 +99,10 @@
     <ClCompile Include="AppearanceObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -115,6 +122,9 @@
     </Filter>
     <Filter Include="Repository\Object">
       <UniqueIdentifier>{0414d09d-d281-4135-ae3b-82e0888d1f4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{b8206f45-7a4e-449c-95d7-73f8acaff634}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

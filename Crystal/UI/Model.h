@@ -2,7 +2,7 @@
 
 #include "ObjectRepository.h"
 #include "AppearanceObjectRepository.h"
-#include "ViewModel3d.h"
+#include "ViewModel.h"
 
 namespace Crystal {
 	namespace UI {
@@ -24,7 +24,7 @@ public:
 
 	AppearanceObjectRepository* getAppearances() { return &appearances; }
 
-	ViewModel3d toViewModel();
+	ViewModel toViewModel();
 
 	Math::Box3d getBoundingBox() const;
 
