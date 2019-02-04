@@ -23,7 +23,7 @@ public:
 
 	bool build();
 
-	void render(const int width, const int height);
+	void render();
 
 	void setViewModel(const ObjectViewModel& vm, const AppearanceViewModel& avm);
 

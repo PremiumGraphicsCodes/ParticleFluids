@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Graphics/DrawableId.h"
+
 #include "../Shader/PointRenderer.h"
 #include "../Shader/WireFrameRenderer.h"
 #include "../Shader/SmoothRenderer.h"
@@ -22,7 +24,9 @@ public:
 
 	bool build();
 
-	void render(const int width, const int height);
+	void render();
+
+	Graphics::DrawableID getId(const double x, const double y) const;
 
 	void setViewModel(const ObjectIdViewModel& vm);
 

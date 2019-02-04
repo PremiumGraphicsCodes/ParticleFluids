@@ -40,7 +40,7 @@ void ObjectRenderer::setViewModel(const ObjectViewModel& vm, const AppearanceVie
 	this->smoothRenderer.setBuffer(vm.getTriangleBuffer(), avm.getLightBuffer(), avm.getMaterialBuffer());
 }
 
-void ObjectRenderer::render(const int width, const int height)
+void ObjectRenderer::render()
 {
 	frameBufferObject.setTexture(texture);
 	//texture.bind();

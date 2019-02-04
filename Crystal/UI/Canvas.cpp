@@ -9,6 +9,8 @@ using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 Canvas::Canvas(ICamera* camera) :
+	width(0),
+	height(0),
 	camera(camera)
 {
 	renderer.reset(new Renderer(camera));
@@ -23,6 +25,8 @@ void Canvas::build()
 
 void Canvas::render(const int width, const int height)
 {
+	this->width = width;
+	this->height = height;
 	renderer->render(width, height);
 }
 
@@ -101,4 +105,44 @@ void Canvas::setCameraZX(const Box3d& boundingBox)
 {
 	fitCamera(boundingBox);
 	camera->rotate(0.0, glm::radians(90.0f));
+}
+
+Image Canvas::getImage() const
+{
+	const unsigned int channelNum = 4; // RGBなら3, RGBAなら4
+	void* dataBuffer = NULL;
+	dataBuffer = (GLubyte*)malloc(width * height * channelNum);
+
+	// 読み取るOpneGLのバッファを指定 GL_FRONT:フロントバッファ　GL_BACK:バックバッファ
+	glReadBuffer(GL_BACK);
+
+	// OpenGLで画面に描画されている内容をバッファに格納
+	glReadPixels(
+		0,                 //読み取る領域の左下隅のx座標
+		0,                 //読み取る領域の左下隅のy座標 //0 or getCurrentWidth() - 1
+		width,             //読み取る領域の幅
+		height,            //読み取る領域の高さ
+		GL_RGBA, //it means GL_BGR,           //取得したい色情報の形式
+		GL_UNSIGNED_BYTE,  //読み取ったデータを保存する配列の型
+		dataBuffer      //ビットマップのピクセルデータ（実際にはバイト配列）へのポインタ
+	);
+
+	GLubyte* p = static_cast<GLubyte*>(dataBuffer);
+
+	Image image(width, height);
+	int index = 0;
+	for (unsigned int j = 0; j < height; ++j)
+	{
+		for (unsigned int i = 0; i < width; ++i)
+		{
+			const auto r = *p;
+			const auto g = *(p + 1);
+			const auto b = *(p + 2);
+			const auto a = *(p + 3);
+			const ColorRGBAuc color(r, g, b, a);
+			image.setColor(i, j, color);
+			p += 4;
+		}
+	}
+	return image;
 }

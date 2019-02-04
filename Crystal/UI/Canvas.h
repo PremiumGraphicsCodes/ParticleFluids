@@ -66,7 +66,11 @@ public:
 
 	void setCameraZX(const Math::Box3d& boundingBox);
 
+	Graphics::Image getImage() const;
+
 private:
+	int width;
+	int height;
 	std::unique_ptr<Graphics::ICamera> camera;
 	std::unique_ptr<IUICtrl> ctrl;
 	std::unique_ptr<Renderer> renderer;

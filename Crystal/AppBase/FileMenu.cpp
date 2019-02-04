@@ -24,7 +24,12 @@ void FileMenu::show()
 			//const auto filename = tinyfd_saveFileDialog("Save", "", 2, lFilterPatterns, nullptr, 0);
 			//model->write(filename);
 		}
+		if (ImGui::MenuItem("ScreenShot")) {
+			char const * lFilterPatterns[2] = { "*.png", "*.bmp" };
+			const auto filename = tinyfd_openFileDialog("Open", "", 2, lFilterPatterns, nullptr, 0);
+			const auto& image = getCanvas()->getImage();
 
+		}
 		ImGui::EndMenu();
 	}
 	//ImGui::EndMenuBar();

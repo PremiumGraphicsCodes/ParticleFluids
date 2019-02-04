@@ -29,8 +29,8 @@ bool Renderer::build()
 
 void Renderer::render(const int width, const int height)
 {
-	objectRenderer.render(width, height);
-	objectIdRenderer.render(width, height);
+	objectRenderer.render();
+	objectIdRenderer.render();
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);
