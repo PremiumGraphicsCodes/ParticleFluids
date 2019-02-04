@@ -24,9 +24,12 @@ public:
 	void render(const int width, const int height);
 
 	void setViewModel(ViewModel& vm) {
-		const auto& ovm = *vm.getObject();
-		const auto& avm = *vm.getAppearance();
+		const auto& ovm = vm.object;
+		const auto& avm = vm.appearance;
 		objectRenderer.setViewModel(ovm, avm);
+
+		const auto& idvm = vm.objectId;
+		objectIdRenderer.setViewModel(idvm);
 	}
 
 private:

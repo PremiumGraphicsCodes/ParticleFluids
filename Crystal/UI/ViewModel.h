@@ -4,24 +4,19 @@
 #include "ObjectIdViewModel.h"
 #include "AppearanceViewModel.h"
 
+#include "../Util/UnCopyable.h"
+
 namespace Crystal {
 	namespace UI {
 
-class ViewModel
+class ViewModel// : private UnCopyable
 {
 public:
 	ViewModel() {}
 
-	ObjectViewModel* getObject() { return &objectVM; }
-
-	ObjectIdViewModel* getObjectId() { return &objectIdVM; }
-
-	AppearanceViewModel* getAppearance() { return &appearanceVM; }
-
-private:
-	ObjectViewModel objectVM;
-	ObjectIdViewModel objectIdVM;
-	AppearanceViewModel appearanceVM;
+	ObjectViewModel object;
+	ObjectIdViewModel objectId;
+	AppearanceViewModel appearance;
 };
 	}
 }

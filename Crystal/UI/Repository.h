@@ -4,15 +4,17 @@
 #include "AppearanceObjectRepository.h"
 #include "ViewModel.h"
 
+#include "../Util/UnCopyable.h"
+
 namespace Crystal {
 	namespace UI {
 
-class Repository
+class Repository : private UnCopyable
 {
 public:
 	Repository();
 
-	virtual ~Repository();
+	~Repository();
 
 	void clear();
 

@@ -43,8 +43,9 @@ bool Repository::write(const std::string& filename) const
 ViewModel Repository::toViewModel()
 {
 	ViewModel vm;
-	vm.getObject()->add(objects);
-	vm.getAppearance()->add(appearances);
+	vm.object.add(objects);
+	vm.objectId.add(objects);
+	vm.appearance.add(appearances);
 	return vm;
 }
 
