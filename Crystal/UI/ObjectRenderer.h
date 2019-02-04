@@ -8,15 +8,15 @@ namespace Crystal {
 	namespace UI {
 		class ViewModel;
 
-class Renderer
+class ObjectRenderer
 {
 public:
-	Renderer(Graphics::ICamera* camera) :
+	ObjectRenderer(Graphics::ICamera* camera) :
 		camera(camera)
 	{
 	}
 
-	~Renderer() {}
+	~ObjectRenderer() {}
 
 	bool build();
 

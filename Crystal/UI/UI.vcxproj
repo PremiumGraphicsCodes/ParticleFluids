@@ -36,7 +36,7 @@
     <ClInclude Include="IObject.h" />
     <ClInclude Include="ParticleSystemObjectRepository.h" />
     <ClInclude Include="PolygonMeshObjectRepository.h" />
-    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="ObjectRenderer.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="LightObjectRepository.h" />
     <ClInclude Include="ObjectRepository.h" />
@@ -63,7 +63,7 @@
     <ClCompile Include="ParticleSystemObjectRepository.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="PolygonMeshObjectRepository.cpp" />
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="ObjectRenderer.cpp" />
     <ClCompile Include="ViewModel.cpp" />
     <ClCompile Include="WireFrameObjectRepository.cpp" />
   </ItemGroup>

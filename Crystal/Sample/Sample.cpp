@@ -17,7 +17,7 @@
 
 #include "../UI/Model.h"
 #include "../UI/Canvas.h"
-#include "../UI/Renderer.h"
+#include "../UI/ObjectRenderer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -36,7 +36,7 @@ int main(int, char**)
 		1.0f, 10.0f
 		);
 
-	Renderer *renderer = new Renderer(camera);
+	ObjectRenderer *renderer = new ObjectRenderer(camera);
 
 	Model model;
 	Canvas canvas(renderer, camera);
