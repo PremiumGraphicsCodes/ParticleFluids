@@ -36,10 +36,8 @@ int main(int, char**)
 		1.0f, 10.0f
 		);
 
-	ObjectRenderer *renderer = new ObjectRenderer(camera);
-
 	Repository model;
-	Canvas canvas(renderer, camera);
+	Canvas canvas(camera);
 
 	Window window(&model, &canvas);
 	if (!window.init()) {

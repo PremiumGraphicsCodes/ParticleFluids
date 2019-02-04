@@ -42,7 +42,7 @@ void ObjectRenderer::setViewModel(const ViewModel& vm)
 void ObjectRenderer::render(const int width, const int height)
 {
 	frameBufferObject.setTexture(texture);
-	texture.bind();
+	//texture.bind();
 	frameBufferObject.bind();
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
@@ -50,6 +50,6 @@ void ObjectRenderer::render(const int width, const int height)
 	pointRenderer.render(*camera);
 	wireRenderer.render(*camera);
 	smoothRenderer.render(*camera, texture);
-	texture.unbind();
+	//texture.unbind();
 	frameBufferObject.unbind();
 }

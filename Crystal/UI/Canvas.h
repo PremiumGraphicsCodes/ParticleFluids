@@ -21,15 +21,13 @@ namespace Crystal {
 class Canvas : public IMouseListener
 {
 public:
-	Canvas(ObjectRenderer* renderer, Graphics::ICamera* camera);
+	explicit Canvas(Graphics::ICamera* camera);
 
 	virtual ~Canvas() {}
 
 	void build();
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
-
-	void setRenderer(ObjectRenderer* renderer) { this->renderer.reset(renderer); }
 
 	void setViewModel(ViewModel viewModel) { this->renderer->setViewModel(viewModel); }
 
@@ -68,8 +66,7 @@ public:
 private:
 	std::unique_ptr<Graphics::ICamera> camera;
 	std::unique_ptr<IUICtrl> ctrl;
-	std::unique_ptr<ObjectRenderer> renderer;
-	std::unique_ptr<Renderer> r;
+	std::unique_ptr<Renderer> renderer;
 	ViewModel viewModel;
 };
 	}

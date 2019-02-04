@@ -8,25 +8,22 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-Canvas::Canvas(ObjectRenderer* renderer, ICamera* camera) :
-	renderer(renderer),
+Canvas::Canvas(ICamera* camera) :
 	camera(camera)
 {
-	r.reset(new Renderer());
+	renderer.reset(new Renderer(camera));
 }
 
 void Canvas::build()
 {
 	setUICtrl(new CameraUICtrl(getCamera()));
-	renderer->build();
 
-	r->build();
+	renderer->build();
 }
 
 void Canvas::render(const int width, const int height)
 {
 	renderer->render(width, height);
-	r->render(width, height, renderer->getTexture());
 }
 
 void Canvas::onLeftButtonDown(const Vector2df& position)
