@@ -3,8 +3,8 @@
 
 #include "ModelAdapter.h"
 
-#include "../../Crystal/UI/Model.h"
-#include "../../Crystal/UI/ViewModel3d.h"
+#include "../../Crystal/UI/Repository.h"
+//#include "../../Crystal/UI/ViewModel.h"
 
 #include "Converter.h"
 
@@ -13,7 +13,7 @@
 using namespace PG::CLI;
 
 ModelAdapter::ModelAdapter() :
-	instance(new Crystal::UI::Model())
+	instance(new Crystal::UI::Repository())
 {
 }
 
