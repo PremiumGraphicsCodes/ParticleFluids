@@ -26,6 +26,8 @@ public:
 
 	void setViewModel(const ObjectIdViewModel& vm);
 
+	Shader::TextureObject* getTexture() { return &texture; }
+
 private:
 	Shader::PointRenderer pointIdRenderer;
 
