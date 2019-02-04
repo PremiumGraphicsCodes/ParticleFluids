@@ -8,7 +8,7 @@ namespace Crystal {
 class CameraMenu : public IMenu
 {
 public:
-	CameraMenu(const std::string& name, Model* model, Canvas* canvas) :
+	CameraMenu(const std::string& name, Repository* model, Canvas* canvas) :
 		IMenu(name, model, canvas)
 	{}
 

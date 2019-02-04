@@ -1,6 +1,6 @@
 #include "AppearancePanel.h"
 #include "imgui.h"
-#include "../UI/Model.h"
+#include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 #include "../Shape/WireFrameBuilder.h"
 #include "IPopupButton.h"
@@ -13,7 +13,7 @@ namespace {
 	class LightButton : public IPopupButton
 	{
 	public:
-		LightButton(Model* model, Canvas* canvas) :
+		LightButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Light", model, canvas)
 		{
 		}
@@ -56,7 +56,7 @@ namespace {
 	class MaterialButton : public IPopupButton
 	{
 	public:
-		MaterialButton(Model* model, Canvas* canvas) :
+		MaterialButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Material", model, canvas)
 		{
 		}
@@ -94,7 +94,7 @@ namespace {
 	};
 }
 
-AppearancePanel::AppearancePanel(const std::string& name, Model* model, Canvas* canvas) :
+AppearancePanel::AppearancePanel(const std::string& name, Repository* model, Canvas* canvas) :
 	IPanel(name, model, canvas)
 {
 	add( new LightButton(model, canvas) );

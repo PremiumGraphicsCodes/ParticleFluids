@@ -8,7 +8,7 @@ namespace Crystal {
 class PolygonTreeList : public ITreeList
 {
 public:
-	PolygonTreeList(const std::string& name, Model* model, Canvas* canvas);
+	PolygonTreeList(const std::string& name, Repository* model, Canvas* canvas);
 
 	void show() override {
 		onShow();

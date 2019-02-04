@@ -80,7 +80,7 @@ namespace {
 	}
 }
 
-Window::Window(Model* model, Canvas* canvas) :
+Window::Window(Repository* model, Canvas* canvas) :
 	model(model),
 	canvas(canvas)
 {

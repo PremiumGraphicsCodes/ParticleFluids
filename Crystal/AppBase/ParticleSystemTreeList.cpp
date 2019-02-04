@@ -4,7 +4,7 @@
 
 using namespace Crystal::UI;
 
-ParticleSystemTreeList::ParticleSystemTreeList(const std::string& name, Model* model, Canvas* canvas) :
+ParticleSystemTreeList::ParticleSystemTreeList(const std::string& name, Repository* model, Canvas* canvas) :
 	ITreeList(name, model, canvas)
 {
 }

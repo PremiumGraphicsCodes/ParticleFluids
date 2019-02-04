@@ -8,7 +8,7 @@ namespace Crystal {
 class MaterialTreeList : public ITreeList
 {
 public:
-	MaterialTreeList(const std::string& name, Model* model, Canvas* canvas);
+	MaterialTreeList(const std::string& name, Repository* model, Canvas* canvas);
 
 	void show() override {
 		onShow();

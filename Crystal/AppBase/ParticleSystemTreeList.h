@@ -8,7 +8,7 @@ namespace Crystal {
 class ParticleSystemTreeList : public ITreeList
 {
 public:
-	ParticleSystemTreeList(const std::string& name, Model* model, Canvas* canvas);
+	ParticleSystemTreeList(const std::string& name, Repository* model, Canvas* canvas);
 
 	void show() override {
 		onShow();

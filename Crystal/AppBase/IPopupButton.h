@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 
-#include "../UI/Model.h"
+#include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {
@@ -11,7 +11,7 @@ namespace Crystal {
 class IPopupButton : public IWindow
 {
 protected:
-	IPopupButton(const std::string& name, Model* model, Canvas* canvas) :
+	IPopupButton(const std::string& name, Repository* model, Canvas* canvas) :
 		IWindow(name),
 		model(model),
 		canvas(canvas)
@@ -30,12 +30,12 @@ protected:
 
 	virtual void onCancel() = 0;
 
-	Model* getModel() { return model; }
+	Repository* getModel() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	Model* model;
+	Repository* model;
 	Canvas* canvas;
 };
 	}

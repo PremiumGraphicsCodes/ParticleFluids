@@ -8,7 +8,7 @@ namespace Crystal {
 class WireFrameTreeList : public ITreeList
 {
 public:
-	WireFrameTreeList(const std::string& name, Model* model, Canvas* canvas);
+	WireFrameTreeList(const std::string& name, Repository* model, Canvas* canvas);
 
 	void show() override {
 		onShow();

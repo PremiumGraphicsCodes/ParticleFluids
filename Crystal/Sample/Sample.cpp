@@ -15,7 +15,7 @@
 #include "../AppBase/LightTreeList.h"
 #include "../AppBase/MaterialTreeList.h"
 
-#include "../UI/Model.h"
+#include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 #include "../UI/ObjectRenderer.h"
 
@@ -38,7 +38,7 @@ int main(int, char**)
 
 	ObjectRenderer *renderer = new ObjectRenderer(camera);
 
-	Model model;
+	Repository model;
 	Canvas canvas(renderer, camera);
 
 	Window window(&model, &canvas);

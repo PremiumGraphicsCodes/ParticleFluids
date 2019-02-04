@@ -5,13 +5,13 @@
 
 namespace Crystal {
 	namespace UI {
-		class Model;
+		class Repository;
 		class Canvas;
 
 class IPanel : public IWindow
 {
 public:
-	IPanel(const std::string& name, Model* model, Canvas* canvas) :
+	IPanel(const std::string& name, Repository* model, Canvas* canvas) :
 		IWindow(name),
 		model(model),
 		canvas(canvas)
@@ -22,7 +22,7 @@ public:
 	virtual void show() override;
 
 protected:
-	Model* model;
+	Repository* model;
 	Canvas* canvas;
 };
 

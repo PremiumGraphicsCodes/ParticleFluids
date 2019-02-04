@@ -1,4 +1,4 @@
-#include "Model.h"
+#include "Repository.h"
 
 #include "FileReader.h"
 
@@ -7,28 +7,28 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-Model::Model()
+Repository::Repository()
 {
 }
 
-Model::~Model()
+Repository::~Repository()
 {
 	clear();
 }
 
-void Model::clear()
+void Repository::clear()
 {
 	objects.clear();
 	appearances.clear();
 }
 
-bool Model::read(const std::string& filename)
+bool Repository::read(const std::string& filename)
 {
 	FileReader reader;
 	return reader.read(filename);
 }
 
-bool Model::write(const std::string& filename) const
+bool Repository::write(const std::string& filename) const
 {
 	//const auto& ext = std::experimental::filesystem::path(filename).extension();
 	/*
@@ -40,7 +40,7 @@ bool Model::write(const std::string& filename) const
 	return false;
 }
 
-ViewModel Model::toViewModel()
+ViewModel Repository::toViewModel()
 {
 	ViewModel vm;
 	vm.add(objects);
@@ -48,7 +48,7 @@ ViewModel Model::toViewModel()
 	return vm;
 }
 
-Box3d Model::getBoundingBox() const
+Box3d Repository::getBoundingBox() const
 {
 	return objects.getBoundingBox();
 }

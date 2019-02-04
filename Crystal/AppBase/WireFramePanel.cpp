@@ -1,6 +1,6 @@
 #include "WireFramePanel.h"
 #include "imgui.h"
-#include "../UI/Model.h"
+#include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 #include "../Shape/WireFrameBuilder.h"
 #include "IPopupButton.h"
@@ -13,7 +13,7 @@ namespace {
 	class BoxButton : public IPopupButton
 	{
 	public :
-		BoxButton(Model* model, Canvas* canvas) :
+		BoxButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Box", model, canvas)
 		{
 
@@ -50,7 +50,7 @@ namespace {
 	class SphereButton : public IPopupButton
 	{
 	public:
-		SphereButton(Model* model, Canvas* canvas) :
+		SphereButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Sphere", model, canvas)
 		{
 		}
@@ -84,7 +84,7 @@ namespace {
 	};
 }
 
-WireFramePanel::WireFramePanel(const std::string& name, Model* model, Canvas* canvas) :
+WireFramePanel::WireFramePanel(const std::string& name, Repository* model, Canvas* canvas) :
 	IPanel(name, model, canvas)
 {
 	add( new BoxButton(model, canvas) );

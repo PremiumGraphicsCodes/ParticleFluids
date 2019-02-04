@@ -8,7 +8,7 @@ namespace Crystal {
 class LightTreeList : public ITreeList
 {
 public:
-	LightTreeList(const std::string& name, Model* model, Canvas* canvas);
+	LightTreeList(const std::string& name, Repository* model, Canvas* canvas);
 
 	void show() override {
 		onShow();

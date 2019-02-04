@@ -5,14 +5,14 @@
 
 namespace Crystal {
 	namespace UI {
-		class Model;
+		class Repository;
 
 class PickUICtrl : public IUICtrl
 {
 public:
 	virtual ~PickUICtrl() {}
 
-	PickUICtrl(Model* model, Graphics::ICamera* camera);
+	PickUICtrl(Repository* model, Graphics::ICamera* camera);
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 
@@ -30,7 +30,7 @@ public:
 
 private:
 	Math::Vector2df prevPosition;
-	Model* model;
+	Repository* model;
 	Graphics::ICamera* camera;
 };
 	}

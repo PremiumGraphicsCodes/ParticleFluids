@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 
-#include "../UI/Model.h"
+#include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {
@@ -11,7 +11,7 @@ namespace Crystal {
 class ITreeList : public IWindow
 {
 protected:
-	ITreeList(const std::string& name, Model* model, Canvas* canvas) :
+	ITreeList(const std::string& name, Repository* model, Canvas* canvas) :
 		IWindow(name),
 		model(model),
 		canvas(canvas)
@@ -25,12 +25,12 @@ protected:
 
 	std::string getName() const { return name; }
 
-	Model* getModel() { return model; }
+	Repository* getModel() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	Model* model;
+	Repository* model;
 	Canvas* canvas;
 };
 

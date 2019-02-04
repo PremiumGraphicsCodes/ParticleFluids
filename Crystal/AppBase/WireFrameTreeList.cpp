@@ -4,7 +4,7 @@
 
 using namespace Crystal::UI;
 
-WireFrameTreeList::WireFrameTreeList(const std::string& name, Model* model, Canvas* canvas) :
+WireFrameTreeList::WireFrameTreeList(const std::string& name, Repository* model, Canvas* canvas) :
 	ITreeList(name, model, canvas)
 {
 }

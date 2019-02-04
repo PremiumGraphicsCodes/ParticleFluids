@@ -1,6 +1,6 @@
 #include "PolygonPanel.h"
 #include "../Math/Vector3d.h"
-#include "../UI/Model.h"
+#include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 #include "../Shape/PolygonMeshBuilder.h"
 #include "../Graphics/ColorRGBA.h"
@@ -15,7 +15,7 @@ namespace {
 	class SphereButton : public IPopupButton
 	{
 	public:
-		SphereButton(Model* model, Canvas* canvas) :
+		SphereButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Sphere", model, canvas)
 		{
 		}
@@ -56,7 +56,7 @@ namespace {
 	class BoxButton : public IPopupButton
 	{
 	public:
-		BoxButton(Model* model, Canvas* canvas) :
+		BoxButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Box", model, canvas)
 		{
 		}
@@ -94,7 +94,7 @@ namespace {
 	class PlaneButton : public IPopupButton
 	{
 	public:
-		PlaneButton(Model* model, Canvas* canvas) :
+		PlaneButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Plane",model, canvas)
 		{
 		}
@@ -126,7 +126,7 @@ namespace {
 	};
 }
 
-PolygonPanel::PolygonPanel(const std::string& name, Model* model, Canvas* canvas) :
+PolygonPanel::PolygonPanel(const std::string& name, Repository* model, Canvas* canvas) :
 	IPanel(name, model, canvas)
 {
 	add( new SphereButton(model, canvas) );

@@ -4,7 +4,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-PickUICtrl::PickUICtrl(Model* model, ICamera* camera) :
+PickUICtrl::PickUICtrl(Repository* model, ICamera* camera) :
 	model(model),
 	camera(camera)
 {

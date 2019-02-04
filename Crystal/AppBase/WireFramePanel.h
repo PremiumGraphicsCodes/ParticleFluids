@@ -8,7 +8,7 @@ namespace Crystal {
 class WireFramePanel : public IPanel
 {
 public:
-	WireFramePanel(const std::string& name, Model* model, Canvas* canvas);
+	WireFramePanel(const std::string& name, Repository* model, Canvas* canvas);
 };
 
 	}

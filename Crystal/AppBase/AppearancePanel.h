@@ -8,7 +8,7 @@ namespace Crystal {
 class AppearancePanel : public IPanel
 {
 public:
-	AppearancePanel(const std::string& name, Model* model, Canvas* canvas);
+	AppearancePanel(const std::string& name, Repository* model, Canvas* canvas);
 };
 
 	}

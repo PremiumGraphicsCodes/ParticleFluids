@@ -14,7 +14,7 @@
 namespace Crystal {
 	namespace UI {
 		class IUICtrl;
-		class Model;
+		class Repository;
 		class ObjectRenderer;
 
 class Canvas : public IMouseListener

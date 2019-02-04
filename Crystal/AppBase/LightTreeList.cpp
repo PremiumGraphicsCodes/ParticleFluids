@@ -4,7 +4,7 @@
 
 using namespace Crystal::UI;
 
-LightTreeList::LightTreeList(const std::string& name, Model* model, Canvas* canvas) :
+LightTreeList::LightTreeList(const std::string& name, Repository* model, Canvas* canvas) :
 	ITreeList(name, model, canvas)
 {
 }

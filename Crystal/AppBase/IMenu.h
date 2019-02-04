@@ -4,13 +4,13 @@
 
 namespace Crystal {
 	namespace UI {
-		class Model;
+		class Repository;
 		class Canvas;
 
 class IMenu : public IWindow
 {
 public:
-	IMenu(const std::string& name, Model* model, Canvas* canvas) :
+	IMenu(const std::string& name, Repository* model, Canvas* canvas) :
 		IWindow(name),
 		model(model),
 		canvas(canvas)
@@ -21,12 +21,12 @@ public:
 	virtual void show() {};
 
 protected:
-	Model* getModel() { return model; }
+	Repository* getModel() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	Model* model;
+	Repository* model;
 	Canvas* canvas;
 };
 	}

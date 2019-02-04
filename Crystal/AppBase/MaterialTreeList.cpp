@@ -4,7 +4,7 @@
 
 using namespace Crystal::UI;
 
-MaterialTreeList::MaterialTreeList(const std::string& name, Model* model, Canvas* canvas) :
+MaterialTreeList::MaterialTreeList(const std::string& name, Repository* model, Canvas* canvas) :
 	ITreeList(name, model, canvas)
 {
 }

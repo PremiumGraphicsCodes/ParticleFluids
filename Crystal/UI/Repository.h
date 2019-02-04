@@ -7,12 +7,12 @@
 namespace Crystal {
 	namespace UI {
 
-class Model
+class Repository
 {
 public:
-	Model();
+	Repository();
 
-	virtual ~Model();
+	virtual ~Repository();
 
 	void clear();
 

@@ -5,7 +5,6 @@
     <ClInclude Include="IMouseListener.h" />
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="FileReader.h" />
-    <ClInclude Include="Model.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="PolygonMeshObject.h">
       <Filter>Object</Filter>
@@ -71,10 +70,12 @@
     <ClInclude Include="ObjectRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Repository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileReader.cpp" />
-    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="CameraUICtrl.cpp">
       <Filter>UICtrl</Filter>
@@ -115,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="ObjectRenderer.cpp">
       <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Repository.cpp">
+      <Filter>Repository</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
