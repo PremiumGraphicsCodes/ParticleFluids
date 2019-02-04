@@ -33,8 +33,6 @@ public:
 
 	Graphics::TriangleBuffer getTriangleBuffer() const { return triangleBuffer; }
 
-	Graphics::PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
-
 	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
 
 	Graphics::MaterialBuffer getMaterialBuffer() const { return materialBuffer; }
@@ -51,10 +49,6 @@ private:
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
 	Graphics::TriangleBuffer triangleBuffer;
-
-	Graphics::PointBuffer pointIdBuffer;
-	//Graphics::LineBuffer lineIdBuffer;
-	//Graphics::TriangleBuffer triangleIdBuffer;
 
 	Graphics::LightBuffer lightBuffer;
 	Graphics::MaterialBuffer materialBuffer;
