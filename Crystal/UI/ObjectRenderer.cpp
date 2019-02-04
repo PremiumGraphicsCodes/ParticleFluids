@@ -18,13 +18,17 @@ bool ObjectRenderer::build()
 		return false;
 	}
 
-	Image image(2, 2);
-	image.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
+	Image image(512, 512);
+
+/*	image.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
 	image.setColor(1, 0, ColorRGBAuc(0, 255, 0, 0));
 	image.setColor(0, 1, ColorRGBAuc(0, 0, 255, 0));
 	image.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
+	*/
 
 	texture.create(image, 0);
+
+	frameBufferObject.build(512, 512);
 	return true;
 }
 
@@ -37,9 +41,15 @@ void ObjectRenderer::setViewModel(const ViewModel& vm)
 
 void ObjectRenderer::render(const int width, const int height)
 {
+	frameBufferObject.setTexture(texture);
+	texture.bind();
+	frameBufferObject.bind();
+	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	pointRenderer.render(*camera);
 	wireRenderer.render(*camera);
 	smoothRenderer.render(*camera, texture);
+	texture.unbind();
+	frameBufferObject.unbind();
 }

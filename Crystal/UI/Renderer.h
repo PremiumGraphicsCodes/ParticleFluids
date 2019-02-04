@@ -18,7 +18,7 @@ public:
 
 	bool build();
 
-	void render(const int width, const int height);
+	void render(const int width, const int height, Shader::ITextureObject* texture);
 
 	//void setViewModel(const ViewModel& vm);
 

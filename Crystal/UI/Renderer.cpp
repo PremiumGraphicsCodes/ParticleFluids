@@ -4,6 +4,7 @@
 #include "../ThirdParty/stb/stb_image.h"
 
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::UI;
 
 bool Renderer::build()
@@ -12,6 +13,7 @@ bool Renderer::build()
 		return false;
 	}
 
+	/*
 	Image image(2, 2);
 	image.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
 	image.setColor(1, 0, ColorRGBAuc(0, 255, 0, 0));
@@ -19,13 +21,15 @@ bool Renderer::build()
 	image.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
 
 	texture.create(image, 0);
+	*/
 	return true;
 }
 
-void Renderer::render(const int width, const int height)
+void Renderer::render(const int width, const int height, ITextureObject* texture)
 {
-	glClearColor(0.0, 0.0, 1.0, 0.0);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glViewport(0, 0, width, height);
+	//glClearColor(0.0, 0.0, 1.0, 0.0);
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	renderer.render(texture);
+	renderer.render(*texture);
 }

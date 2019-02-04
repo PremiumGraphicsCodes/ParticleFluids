@@ -12,18 +12,21 @@ Canvas::Canvas(ObjectRenderer* renderer, ICamera* camera) :
 	renderer(renderer),
 	camera(camera)
 {
-
+	r.reset(new Renderer());
 }
 
 void Canvas::build()
 {
 	setUICtrl(new CameraUICtrl(getCamera()));
 	renderer->build();
+
+	r->build();
 }
 
 void Canvas::render(const int width, const int height)
 {
 	renderer->render(width, height);
+	r->render(width, height, renderer->getTexture());
 }
 
 void Canvas::onLeftButtonDown(const Vector2df& position)
