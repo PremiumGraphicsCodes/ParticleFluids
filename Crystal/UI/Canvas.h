@@ -8,7 +8,7 @@
 #include <list>
 
 #include "IUICtrl.h"
-#include "ViewModel.h"
+#include "ObjectViewModel.h"
 #include "ObjectRenderer.h"
 #include "Renderer.h"
 
@@ -29,7 +29,7 @@ public:
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 
-	void setViewModel(ViewModel viewModel) { this->renderer->setViewModel(viewModel); }
+	void setViewModel(ObjectViewModel viewModel) { this->renderer->setViewModel(viewModel); }
 
 	void render(const int width, const int height);
 
@@ -67,7 +67,7 @@ private:
 	std::unique_ptr<Graphics::ICamera> camera;
 	std::unique_ptr<IUICtrl> ctrl;
 	std::unique_ptr<Renderer> renderer;
-	ViewModel viewModel;
+	ObjectViewModel viewModel;
 };
 	}
 }

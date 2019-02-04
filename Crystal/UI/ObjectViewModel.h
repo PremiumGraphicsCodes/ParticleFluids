@@ -16,7 +16,7 @@ namespace Crystal {
 	namespace UI {
 		class AppearanceObjectRepository;
 
-class ViewModel
+class ObjectViewModel
 {
 public:
 	void add(ObjectRepository& objects);

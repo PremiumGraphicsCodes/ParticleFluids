@@ -45,7 +45,7 @@
     <ClInclude Include="PickUICtrl.h" />
     <ClInclude Include="PolygonMeshObject.h" />
     <ClInclude Include="RectSelectUICtrl.h" />
-    <ClInclude Include="ViewModel.h" />
+    <ClInclude Include="ObjectViewModel.h" />
     <ClInclude Include="WireFrameObject.h" />
     <ClInclude Include="WireFrameObjectRepository.h" />
   </ItemGroup>
@@ -66,7 +66,7 @@
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="PolygonMeshObjectRepository.cpp" />
     <ClCompile Include="ObjectRenderer.cpp" />
-    <ClCompile Include="ViewModel.cpp" />
+    <ClCompile Include="ObjectViewModel.cpp" />
     <ClCompile Include="WireFrameObjectRepository.cpp" />
   </ItemGroup>
   <ItemGroup>

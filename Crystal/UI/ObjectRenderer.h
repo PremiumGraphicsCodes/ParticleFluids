@@ -8,7 +8,7 @@
 
 namespace Crystal {
 	namespace UI {
-		class ViewModel;
+		class ObjectViewModel;
 
 class ObjectRenderer
 {
@@ -24,7 +24,7 @@ public:
 
 	void render(const int width, const int height);
 
-	void setViewModel(const ViewModel& vm);
+	void setViewModel(const ObjectViewModel& vm);
 
 	Shader::TextureObject* getTexture() { return &texture; }
 

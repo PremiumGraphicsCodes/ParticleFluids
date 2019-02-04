@@ -40,9 +40,9 @@ bool Repository::write(const std::string& filename) const
 	return false;
 }
 
-ViewModel Repository::toViewModel()
+ObjectViewModel Repository::toViewModel()
 {
-	ViewModel vm;
+	ObjectViewModel vm;
 	vm.add(objects);
 	vm.add(appearances);
 	return vm;

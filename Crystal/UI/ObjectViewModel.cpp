@@ -1,4 +1,4 @@
-#include "ViewModel.h"
+#include "ObjectViewModel.h"
 #include "Repository.h"
 
 #include "../Graphics/DrawableId.h"
@@ -7,7 +7,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-void ViewModel::add(ObjectRepository& objects)
+void ObjectViewModel::add(ObjectRepository& objects)
 {
 	const auto& particleSystems = objects.getParticleSystems()->getObjects();
 	for (const auto& ps : particleSystems) {
@@ -23,18 +23,18 @@ void ViewModel::add(ObjectRepository& objects)
 	}
 }
 
-void ViewModel::add(AppearanceObjectRepository& appearances)
+void ObjectViewModel::add(AppearanceObjectRepository& appearances)
 {
 	add(*appearances.getLights());
 	add(*appearances.getMaterials());
 }
 
-void ViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
+void ObjectViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
 {
 	pointBuffer.add(pos, c, size);
 }
 
-void ViewModel::add(const ParticleSystemObject& object)
+void ObjectViewModel::add(const ParticleSystemObject& object)
 {
 	const auto particleSystemId = object.getId();
 	const auto& particles = object.getShape()->getParticles();
@@ -47,7 +47,7 @@ void ViewModel::add(const ParticleSystemObject& object)
 	}
 }
 
-void ViewModel::add(const WireFrameObject& object)
+void ObjectViewModel::add(const WireFrameObject& object)
 {
 	const auto& lines = object.getShape()->getLines();
 	const auto& color = object.getColor();
@@ -58,7 +58,7 @@ void ViewModel::add(const WireFrameObject& object)
 	}
 }
 
-void ViewModel::add(const PolygonMeshObject& object)
+void ObjectViewModel::add(const PolygonMeshObject& object)
 {
 	auto material = object.getMaterial();
 	triangleBuffer.add(*object.getShape(), material);
@@ -72,7 +72,7 @@ void ViewModel::add(const PolygonMeshObject& object)
 }
 
 
-void ViewModel::add(const LightObjectRepository& lights)
+void ObjectViewModel::add(const LightObjectRepository& lights)
 {
 	const auto& ls = lights.getLights();
 	for (const auto& l : ls) {
@@ -81,7 +81,7 @@ void ViewModel::add(const LightObjectRepository& lights)
 	}
 }
 
-void ViewModel::add(const MaterialObjectRepository& materials)
+void ObjectViewModel::add(const MaterialObjectRepository& materials)
 {
 	const auto& ms = materials.getMaterials();
 	for (const auto& m : ms) {
