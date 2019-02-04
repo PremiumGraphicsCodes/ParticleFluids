@@ -6,12 +6,14 @@
 
 #include "../Shader/FrameBuffer.h"
 
+#include "../Util/UnCopyable.h"
+
 namespace Crystal {
 	namespace UI {
 		class ObjectViewModel;
 		class AppearanceViewModel;
 
-class ObjectRenderer
+class ObjectRenderer : private UnCopyable
 {
 public:
 	ObjectRenderer(Graphics::ICamera* camera) :

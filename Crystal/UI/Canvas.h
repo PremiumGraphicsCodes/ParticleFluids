@@ -68,6 +68,12 @@ public:
 
 	Graphics::Image getImage() const;
 
+	int getWidth() const { return width; }
+
+	int getHeight() const { return height; }
+
+	Renderer* getRenderer() { return renderer.get(); }
+
 private:
 	int width;
 	int height;

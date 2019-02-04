@@ -4,14 +4,18 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-PickUICtrl::PickUICtrl(Repository* model, ICamera* camera) :
+PickUICtrl::PickUICtrl(Repository* model, Canvas* canvas) :
 	model(model),
-	camera(camera)
+	canvas(canvas)
 {
 }
 
 void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 {
+	const auto x = position.x / (double)canvas->getWidth();
+	const auto y = position.y / (double)canvas->getHeight();
+
+	//canvas->getRenderer()->get
 	
 	prevPosition = position;
 	//	camera->move();
@@ -25,7 +29,6 @@ void PickUICtrl::onLeftButtonUp(const Vector2df& position)
 void PickUICtrl::onLeftDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
-	camera->move(glm::vec3(diff.x, diff.y, 0.0));
 	this->prevPosition = position;
 }
 
@@ -42,7 +45,6 @@ void PickUICtrl::onRightButtonUp(const Vector2df& position)
 void PickUICtrl::onRightDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
-	camera->rotate(diff.y, diff.x);
 	this->prevPosition = position;
 }
 

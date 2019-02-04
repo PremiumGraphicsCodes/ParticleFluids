@@ -8,11 +8,13 @@
 
 #include "ViewModel.h"
 
+#include "../Util/UnCopyable.h"
+
 namespace Crystal {
 	namespace UI {
 		class ViewModel;
 
-class Renderer
+class Renderer : private UnCopyable
 {
 public:
 	Renderer(Graphics::ICamera* camera);

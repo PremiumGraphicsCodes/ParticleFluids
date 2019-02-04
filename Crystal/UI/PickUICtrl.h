@@ -1,5 +1,6 @@
 #include <memory>
 #include "../Graphics/ICamera.h"
+#include "Canvas.h"
 #include "IUICtrl.h"
 #include "IMouseListener.h"
 
@@ -12,7 +13,7 @@ class PickUICtrl : public IUICtrl
 public:
 	virtual ~PickUICtrl() {}
 
-	PickUICtrl(Repository* model, Graphics::ICamera* camera);
+	PickUICtrl(Repository* model, Canvas* canvas);
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 
@@ -31,7 +32,7 @@ public:
 private:
 	Math::Vector2df prevPosition;
 	Repository* model;
-	Graphics::ICamera* camera;
+	Canvas* canvas;
 };
 	}
 }
