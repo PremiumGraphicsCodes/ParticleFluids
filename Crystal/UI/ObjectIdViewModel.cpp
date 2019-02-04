@@ -26,7 +26,7 @@ void ObjectIdViewModel::add(const ParticleSystemObject& object)
 	const auto& particles = object.getShape()->getParticles();
 	int particleId = 1;
 	for (auto p : particles) {
-		Graphics::DrawableID did(particleSystemId, particleId++);
+		Graphics::DrawableID did(particleId++, particleSystemId);
 		pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size);
 	}
 }

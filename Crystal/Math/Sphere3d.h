@@ -39,7 +39,7 @@ public:
 		const auto x = radius * std::sin(theta) * std::cos(phi);
 		const auto y = radius * std::sin(theta) * std::sin(phi);
 		const auto z = radius * std::cos(theta);
-		return Vector3dd(x, y, z);
+		return center + Vector3dd(x, y, z);
 	}
 
 	Vector3dd getPosition(const double u, const double v) const {

@@ -23,10 +23,12 @@ void ObjectIdRenderer::setViewModel(const ObjectIdViewModel& vm)
 	this->pointIdRenderer.setBuffer(vm.getPointIdBuffer());
 }
 
-DrawableID ObjectIdRenderer::getId(const double x, const double y) const
+DrawableID ObjectIdRenderer::getId(const double x, const double y)
 {
-	//texture.get
-	return DrawableID(0,0);
+	//frameBufferObject.bind();
+	const auto& color = frameBufferObject.getColor(x * texture.getWidth(), y * texture.getHeight());
+	//frameBufferObject.unbind();
+	return DrawableID(color);
 }
 
 void ObjectIdRenderer::render()

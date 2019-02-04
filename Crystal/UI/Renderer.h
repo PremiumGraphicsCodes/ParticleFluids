@@ -34,6 +34,10 @@ public:
 		objectIdRenderer.setViewModel(idvm);
 	}
 
+	ObjectRenderer* getObjectRenderer() { return &objectRenderer; }
+
+	ObjectIdRenderer* getObjectIdRenderer() { return &objectIdRenderer; }
+
 private:
 	Shader::TextureObject texture;
 	Shader::OnScreenRenderer renderer;

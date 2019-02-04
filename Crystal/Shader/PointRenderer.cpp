@@ -49,8 +49,8 @@ std::string PointRenderer::getBuildinFragmentShaderSource() const
 		<< "		discard;" << std::endl
 		<< "	}" << std::endl
 		<< "	fragColor.rgba = vColor;" << std::endl
-		<< "	fragColor.a = sqrt(distSquared) * vColor.a;" << std::endl
-		<< "	fragColor.a = 0.1;//sqrt(distSquared);" << std::endl
+//		<< "	fragColor.a = sqrt(distSquared) * vColor.a;" << std::endl
+//		<< "	fragColor.a = 0.1;//sqrt(distSquared);" << std::endl
 		<< "}" << std::endl;
 	return stream.str();
 }

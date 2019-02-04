@@ -30,7 +30,6 @@ public:
 	virtual void onWheel(const float dx) override;
 
 private:
-	Math::Vector2df prevPosition;
 	Repository* model;
 	Canvas* canvas;
 };

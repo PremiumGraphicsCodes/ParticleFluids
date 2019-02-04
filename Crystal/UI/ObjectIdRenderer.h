@@ -28,7 +28,7 @@ public:
 
 	void render();
 
-	Graphics::DrawableID getId(const double x, const double y) const;
+	Graphics::DrawableID getId(const double x, const double y);
 
 	void setViewModel(const ObjectIdViewModel& vm);
 
