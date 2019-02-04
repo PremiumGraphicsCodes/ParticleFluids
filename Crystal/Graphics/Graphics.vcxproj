@@ -24,6 +24,7 @@
     <ClInclude Include="Buffer3d.h" />
     <ClInclude Include="Buffer4d.h" />
     <ClInclude Include="ColorRGBA.h" />
+    <ClInclude Include="DrawableId.h" />
     <ClInclude Include="IBuffer.h" />
     <ClInclude Include="ICamera.h" />
     <ClInclude Include="IImage.h" />
@@ -38,6 +39,9 @@
     <ClInclude Include="PointBuffer.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="TriangleBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DrawableId.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{227E5411-92CB-4E30-A67B-043D8B04A9BC}</ProjectGuid>

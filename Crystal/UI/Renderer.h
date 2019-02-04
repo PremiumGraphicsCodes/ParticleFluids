@@ -29,6 +29,8 @@ private:
 	Shader::WireFrameRenderer wireRenderer;
 	Shader::SmoothRenderer smoothRenderer;
 
+	Shader::PointRenderer pointIdRenderer;
+
 	Graphics::ICamera* camera;
 	Shader::TextureObject texture;
 

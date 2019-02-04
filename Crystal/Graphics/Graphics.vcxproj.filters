@@ -44,6 +44,7 @@
     <ClInclude Include="PointBuffer.h">
       <Filter>Buffer</Filter>
     </ClInclude>
+    <ClInclude Include="DrawableId.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffer">
@@ -52,5 +53,8 @@
     <Filter Include="Camera">
       <UniqueIdentifier>{ec04ed76-8573-4453-ad52-821848307972}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DrawableId.cpp" />
   </ItemGroup>
 </Project>
