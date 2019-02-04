@@ -31,6 +31,7 @@
     <ClInclude Include="LightObject.h" />
     <ClInclude Include="MaterialObject.h" />
     <ClInclude Include="MaterialObjectRepository.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Repository.h" />
     <ClInclude Include="IMouseListener.h" />
     <ClInclude Include="IObject.h" />
@@ -57,6 +58,7 @@
     <ClCompile Include="ObjectIdRenderer.cpp" />
     <ClCompile Include="IdViewModel.cpp" />
     <ClCompile Include="MaterialObjectRepository.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Repository.cpp" />
     <ClCompile Include="LightObjectRepository.cpp" />
     <ClCompile Include="ObjectRepository.cpp" />

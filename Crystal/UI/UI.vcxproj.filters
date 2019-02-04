@@ -79,6 +79,9 @@
     <ClInclude Include="ObjectIdRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas.cpp" />
@@ -128,6 +131,9 @@
       <Filter>FileIO</Filter>
     </ClCompile>
     <ClCompile Include="ObjectIdRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
