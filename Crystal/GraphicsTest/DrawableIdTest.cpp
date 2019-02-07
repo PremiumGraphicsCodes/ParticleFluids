@@ -39,14 +39,14 @@ TEST(DrawableIDTest, TestToColor)
 	//EXPECT_EQ(ColorRGBA<float>(0.0f, 0.0f, 0.0f, 1.0f / 256.0f), DrawableID(256 * 256 * 256).toColor());
 }
 
-TEST(DrawableIDTest, TestGetType)
+TEST(DrawableIDTest, TestGetParentId)
 {
 	EXPECT_EQ(0, DrawableID(ColorRGBAuc(0, 0, 0, 0)).getParentId());
 	EXPECT_EQ(1, DrawableID(ColorRGBAuc(0, 0, 0, 1)).getParentId());
 	EXPECT_EQ(2, DrawableID(ColorRGBAuc(1, 0, 0, 2)).getParentId());
 }
 
-TEST(DrawableIDTest, TestGetValue)
+TEST(DrawableIDTest, TestGetChildId)
 {
 	EXPECT_EQ(10, DrawableID(0, 10).getChildId());
 	EXPECT_EQ(100, DrawableID(10, 100).getChildId());

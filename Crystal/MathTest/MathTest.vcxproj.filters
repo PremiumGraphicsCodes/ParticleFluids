@@ -6,6 +6,7 @@
     <ClCompile Include="Sphere3dTest.cpp" />
     <ClCompile Include="Triangle3dTest.cpp" />
     <ClCompile Include="Vector3dTest.cpp" />
+    <ClCompile Include="Matrix3dTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
