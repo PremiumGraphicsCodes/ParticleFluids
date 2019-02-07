@@ -1,9 +1,12 @@
 #include "ObjectUICtrl.h"
 
+#include "ObjectRepository.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-ObjectUICtrl::ObjectUICtrl()
+ObjectUICtrl::ObjectUICtrl(ObjectRepository* objects) :
+	objects(objects)
 {
 }
 
@@ -21,6 +24,13 @@ void ObjectUICtrl::onLeftButtonUp(const Vector2df& position)
 void ObjectUICtrl::onLeftDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
+
+	const auto& os = objects->getAllObjects();
+	/*
+	for (auto o : os) {
+		o->move()
+	}
+	*/
 	//camera->move(glm::vec3(diff.x, diff.y, 0.0));
 	this->prevPosition = position;
 }

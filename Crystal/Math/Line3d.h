@@ -25,6 +25,10 @@ public:
 
 	double getLength() const { return glm::distance(origin, dir); }
 
+	void move(const Math::Vector3dd& v) {
+		this->origin += v;
+	}
+
 private:
 	Math::Vector3dd origin;
 	Math::Vector3dd dir;

@@ -22,6 +22,8 @@ public:
 
 	Graphics::ColorRGBAf getColor() const { return color; }
 
+	void move(const Math::Vector3dd& v) override { shape->move(v); }
+
 private:
 	Shape::WireFrame* shape;
 	Graphics::ColorRGBAf color;

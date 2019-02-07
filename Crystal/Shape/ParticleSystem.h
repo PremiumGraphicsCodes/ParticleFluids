@@ -18,6 +18,8 @@ public:
 
 	Math::Vector3dd getPosition() const { return position; }
 
+	void move(const Math::Vector3dd& v) { this->position += v; }
+
 	Attr getAttribute() const { return attribute; }
 
 private:
@@ -44,6 +46,12 @@ public:
 	
 	void add(const Math::Vector3dd& position, const Attr& attr) {
 		particles.push_back(new Particle<Attr>(position, attr));
+	}
+
+	void move(const Math::Vector3dd& v) {
+		for (auto p : particles) {
+			p->move(v);
+		}
 	}
 
 	std::vector<Particle<Attr>*> getParticles() const { return particles; }

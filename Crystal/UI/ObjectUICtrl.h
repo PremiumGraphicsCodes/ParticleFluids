@@ -5,11 +5,12 @@
 
 namespace Crystal {
 	namespace UI {
+		class ObjectRepository;
 
 class ObjectUICtrl : public IUICtrl
 {
 public:
-	ObjectUICtrl();
+	ObjectUICtrl(ObjectRepository* objects);
 
 	virtual ~ObjectUICtrl() {}
 
@@ -28,6 +29,7 @@ public:
 	virtual void onWheel(const float dx) override;
 
 private:
+	ObjectRepository* objects;
 	Math::Vector2df prevPosition;
 };
 

@@ -25,6 +25,8 @@ public:
 
 	Shape::ParticleSystem<ParticleAttr>* getShape() const { return shape; }
 
+	void move(const Math::Vector3dd& v) override { shape->move(v); }
+
 private:
 	Shape::ParticleSystem<ParticleAttr>* shape;
 };

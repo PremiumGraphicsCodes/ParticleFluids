@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "../Math/Vector3d.h"
 
 namespace Crystal {
 	namespace UI {
@@ -32,6 +33,8 @@ public:
 	//void setVisible(const bool b) { this->_isVisible = b; }
 
 	bool _isVisible;
+
+	virtual void move(const Math::Vector3dd& v) = 0;
 
 private:
 	std::string name;

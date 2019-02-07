@@ -17,6 +17,12 @@ public:
 		this->lines.push_back(l);
 	}
 
+	void move(const Math::Vector3dd& v) {
+		for (auto& l : lines) {
+			l.move(v);
+		}
+	}
+
 	std::vector<Math::Line3dd> getLines() const;
 
 	std::vector<Math::Vector3dd> getVertices() const;

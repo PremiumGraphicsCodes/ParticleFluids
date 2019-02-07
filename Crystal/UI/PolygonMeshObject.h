@@ -23,6 +23,8 @@ public:
 
 	Graphics::Material getMaterial() const { return material; }
 
+	void move(const Math::Vector3dd& v) override { shape->move(v); }
+
 private:
 	Shape::PolygonMesh* shape;
 	Graphics::Material material;

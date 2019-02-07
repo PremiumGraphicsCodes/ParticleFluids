@@ -20,6 +20,9 @@ public:
 
 	Graphics::PointLight* getLight() const { return light; }
 
+	void move(const Math::Vector3dd& v) override { ; }
+
+
 private:
 	Graphics::PointLight* light;
 };
