@@ -33,9 +33,8 @@ static double getDistanceSquared(const Vector3dd& lhs, const Vector3dd& rhs)
 	return std::pow(lhs.x - rhs.x, 2) + std::pow(lhs.y - rhs.y, 2) + std::pow(lhs.z - rhs.z, 2);
 }
 
-static bool isEqualLoosely(const Vector3dd& lhs, const Vector3dd& rhs)
+static bool isEqualLoosely(const Vector3dd& lhs, const Vector3dd& rhs, const double tolerance)
 {
-	const auto tolerance = Tolerance<double>::getLooseTolerance();
 	return getDistanceSquared(lhs, rhs) < tolerance;
 }
 
