@@ -13,5 +13,6 @@
     <ClInclude Include="Box2d.h" />
     <ClInclude Include="Triangle3d.h" />
     <ClInclude Include="Line3d.h" />
+    <ClInclude Include="Cylinder3d.h" />
   </ItemGroup>
 </Project>

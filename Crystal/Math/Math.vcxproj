@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="Box2d.h" />
     <ClInclude Include="Box3d.h" />
+    <ClInclude Include="Cylinder3d.h" />
     <ClInclude Include="Line3d.h" />
     <ClInclude Include="Matrix3d.h" />
     <ClInclude Include="Matrix4d.h" />

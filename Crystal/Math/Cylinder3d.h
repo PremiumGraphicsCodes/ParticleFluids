@@ -1,0 +1,46 @@
+#pragma once
+
+#include "Vector3d.h"
+
+namespace Crystal {
+	namespace Math {
+
+class Cylinder3d
+{
+public:
+	Cylinder3d() :
+		Cylinder3d(1.0)
+	{
+	}
+
+	explicit Cylinder3d(const double radius) :
+		Cylinder3d(radius, 1.0)
+	{
+	}
+
+	Cylinder3d(const double radius, const double height) :
+		Cylinder3d(radius, height, Vector3dd(0,0,0))
+	{}
+
+	Cylinder3d(const double radius, const double height, const Vector3dd& center) :
+		radius(radius),
+		height(height),
+		center(center)
+	{
+	}
+
+	Vector3dd getPosition(const double u, const double v) const {
+		const auto theta = u * 2.0 * Tolerance<double>::getPI();
+		const auto x = radius * ::cos(theta);
+		const auto y = radius * ::sin(theta);
+		const auto z = height * v - height * 0.5;
+		return center + Vector3dd(x, y, z);
+	}
+
+private:
+	double radius;
+	double height;
+	Vector3dd center;
+};
+	}
+}
