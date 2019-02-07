@@ -12,16 +12,23 @@ void FileMenu::show()
 
 	const auto& n = name.c_str();
 	if (ImGui::BeginMenu(n)) {
+		if (ImGui::MenuItem("New")) {
+			model->clear();
+		}
 		if (ImGui::MenuItem("Open")) {
 			char const * lFilterPatterns[2] = { "*.stl", "*.obj" };
 			const auto filename = tinyfd_openFileDialog("Open", "", 2, lFilterPatterns, nullptr, 0);
-			model->read(filename);
+			if (filename != nullptr) {
+				model->read(filename);
+			}
 			//canvas->update();
-
 		}
 		if (ImGui::MenuItem("Save")) {
 			char const * lFilterPatterns[2] = { "*.stl", "*.obj" };
-			//const auto filename = tinyfd_saveFileDialog("Save", "", 2, lFilterPatterns, nullptr, 0);
+			const auto filename = tinyfd_saveFileDialog("Save", "", 2, lFilterPatterns, nullptr);
+			if (filename != nullptr) {
+				model->write(filename);
+			}
 			//model->write(filename);
 		}
 		if (ImGui::MenuItem("ScreenShot")) {
