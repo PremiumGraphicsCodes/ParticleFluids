@@ -25,7 +25,7 @@ TEST(Matrix3dTest, TestRotationMatrixX)
 			0.0, 0.0,-1.0,
 			0.0, 1.0, 0.0
 		);
-		EXPECT_TRUE( AreSame( expected, actual, 1.0e-12) );
+		EXPECT_TRUE(AreSame( expected, actual, 1.0e-12));
 	}
 
 	{
@@ -35,6 +35,80 @@ TEST(Matrix3dTest, TestRotationMatrixX)
 			1.0, 0.0, 0.0,
 			0.0,-1.0, 0.0,
 			0.0, 0.0,-1.0
+		);
+		EXPECT_TRUE(AreSame(expected, actual, 1.0e-12));
+	}
+}
+
+TEST(Matrix3dTest, TestRotationMatrixY)
+{
+	const auto pi = Tolerance<double>::getPI();
+	{
+		const auto actual = rotationMatrixY(0.0);
+		const auto expected = Matrix3dd
+		(
+			1.0, 0.0, 0.0,
+			0.0, 1.0, 0.0,
+			0.0, 0.0, 1.0
+		);
+		EXPECT_TRUE(AreSame(expected, actual, 1.0e-12));
+	}
+
+	{
+		const auto actual = rotationMatrixY(0.5 * pi);
+		const auto expected = Matrix3dd
+		(
+			0.0, 0.0, 1.0,
+			0.0, 1.0, 0.0,
+		   -1.0, 0.0, 0.0
+		);
+		EXPECT_TRUE(AreSame(expected, actual, 1.0e-12));
+	}
+
+	{
+		const auto actual = rotationMatrixY(pi);
+		const auto expected = Matrix3dd
+		(
+			-1.0, 0.0, 0.0,
+			0.0, 1.0, 0.0,
+			0.0, 0.0, -1.0
+		);
+		EXPECT_TRUE(AreSame(expected, actual, 1.0e-12));
+	}
+}
+
+TEST(Matrix3dTest, TestRotationMatrixZ)
+{
+	const auto pi = Tolerance<double>::getPI();
+	{
+		const auto actual = rotationMatrixZ(0.0);
+		const auto expected = Matrix3dd
+		(
+			1.0, 0.0, 0.0,
+			0.0, 1.0, 0.0,
+			0.0, 0.0, 1.0
+		);
+		EXPECT_TRUE(AreSame(expected, actual, 1.0e-12));
+	}
+
+	{
+		const auto actual = rotationMatrixZ(0.5*pi);
+		const auto expected = Matrix3dd
+		(
+			0.0,-1.0, 0.0,
+			1.0, 0.0, 0.0,
+			0.0, 0.0, 1.0
+		);
+		EXPECT_TRUE(AreSame(expected, actual, 1.0e-12));
+	}
+
+	{
+		const auto actual = rotationMatrixZ(pi);
+		const auto expected = Matrix3dd
+		(
+			-1.0, 0.0, 0.0,
+			0.0, -1.0, 0.0,
+			0.0, 0.0, 1.0
 		);
 		EXPECT_TRUE(AreSame(expected, actual, 1.0e-12));
 	}
