@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "../Math/Matrix3d.h"
+#include "../Math/Tolerance.h"
 
 using namespace Crystal::Math;
 

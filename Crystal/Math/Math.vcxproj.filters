@@ -14,5 +14,7 @@
     <ClInclude Include="Triangle3d.h" />
     <ClInclude Include="Line3d.h" />
     <ClInclude Include="Cylinder3d.h" />
+    <ClInclude Include="Matrix2d.h" />
+    <ClInclude Include="Circle2d.h" />
   </ItemGroup>
 </Project>
