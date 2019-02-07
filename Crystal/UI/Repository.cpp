@@ -46,6 +46,7 @@ ViewModel Repository::toViewModel()
 	vm.object.add(objects);
 	vm.objectId.add(objects);
 	vm.appearance.add(appearances);
+	vm.object.add(items);
 	return vm;
 }
 

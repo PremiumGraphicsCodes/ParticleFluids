@@ -8,10 +8,10 @@ namespace Crystal {
 class DrawableID
 {
 public:
-	DrawableID(const unsigned int id, const unsigned char type)
+	DrawableID(const unsigned int childId, const unsigned char parentId)
 	{
-		this->childId = id;
-		this->parentId = type;
+		this->childId = childId;
+		this->parentId = parentId;
 	}
 
 	explicit DrawableID(const ColorRGBAf& c)

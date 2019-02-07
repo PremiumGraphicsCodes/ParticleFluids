@@ -24,9 +24,14 @@ void ObjectIdViewModel::add(const ParticleSystemObject& object)
 {
 	const auto particleSystemId = object.getId();
 	const auto& particles = object.getShape()->getParticles();
-	int particleId = 1;
+	int particleId = 0;
 	for (auto p : particles) {
 		Graphics::DrawableID did(particleId++, particleSystemId);
 		pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size);
 	}
+}
+
+void ObjectIdViewModel::add(const PolygonMeshObject& object)
+{
+
 }

@@ -2,6 +2,8 @@
 
 #include "../UI/Repository.h"
 
+#include <iostream>
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
@@ -17,15 +19,20 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	const auto x = position.x;
 	const auto y = position.y;
 
+	std::cout << x << " " << y << std::endl;
+
 	const auto id = canvas->getRenderer()->getObjectIdRenderer()->getId(x, y);
 	const auto parentId = id.getParentId();
 	const auto childId = id.getChildId();
-	if (parentId != 0) {
-		if (model->getObjects()->getParticleSystems()->exists(parentId)) {
-			auto selected = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);
-			if (selected != nullptr) {
-				//model->getObjects()->getParticleSystems()->addObject();
-			}
+	if (parentId == 0) {
+		return;
+	}
+	if (model->getObjects()->getParticleSystems()->exists(parentId)) {
+		auto selected = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);
+		if (selected != nullptr) {
+			const auto size = selected->getAttribute().size * 100.0;
+			model->getItems()->getParticleSystems()->addObject(selected->getPosition(), Graphics::ColorRGBAf(1, 0, 0, 1), size, "");
+			canvas->setViewModel(model->toViewModel());
 		}
 	}
 }

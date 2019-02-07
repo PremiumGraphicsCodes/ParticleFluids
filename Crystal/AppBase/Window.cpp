@@ -26,7 +26,7 @@ namespace {
 		int width,height;
 		glfwGetWindowSize(window, &width, &height);
 		const auto xx = x / (float)width;
-		const auto yy = y / (float)height;
+		const auto yy = 1.0 - y / (float)height;
 		return Vector2df(xx, yy);
 	}
 

@@ -28,6 +28,8 @@ private:
 
 	void add(const ParticleSystemObject& object);
 
+	void add(const PolygonMeshObject& object);
+
 	Graphics::PointBuffer pointIdBuffer;
 };
 

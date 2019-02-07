@@ -32,7 +32,7 @@ void ObjectViewModel::add(const ParticleSystemObject& object)
 {
 	const auto particleSystemId = object.getId();
 	const auto& particles = object.getShape()->getParticles();
-	int particleId = 1;
+	int particleId = 0;
 	for (auto p : particles) {
 		pointBuffer.add( p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 		particleId++;
