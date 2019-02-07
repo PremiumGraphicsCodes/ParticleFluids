@@ -10,13 +10,13 @@ namespace Crystal {
 class ParticleSystemObjectRepository : public IObjectRepository
 {
 public:
-	ParticleSystemObjectRepository() :
-		nextId(1)
-	{}
+	ParticleSystemObjectRepository();
 
 	~ParticleSystemObjectRepository();
 
 	void clear() override;
+
+	int addObject(const Math::Vector3df& position, const Graphics::ColorRGBAf& color, const float size, const std::string& name);
 
 	int addObject(const std::vector<Math::Vector3df>& positions, const Graphics::ColorRGBAf& color, const float size, const std::string& name);
 
@@ -25,6 +25,12 @@ public:
 	Math::Box3d getBoundingBox() const override;
 
 	std::list<Math::Vector3dd> getAllVertices() const override;
+
+	bool exists(const int id) const;
+
+	ParticleSystemObject findObjectById(const int id) const;
+
+	Shape::Particle<ParticleAttr>* findParticleById(const int parentId, const int childId) const;
 
 private:
 	int nextId;

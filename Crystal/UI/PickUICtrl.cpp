@@ -1,5 +1,7 @@
 #include "PickUICtrl.h"
 
+#include "../UI/Repository.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
@@ -16,8 +18,15 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	const auto y = position.y;
 
 	const auto id = canvas->getRenderer()->getObjectIdRenderer()->getId(x, y);
-	if (id.getType() != 0) {
-		;
+	const auto parentId = id.getParentId();
+	const auto childId = id.getChildId();
+	if (parentId != 0) {
+		if (model->getObjects()->getParticleSystems()->exists(parentId)) {
+			auto selected = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);
+			if (selected != nullptr) {
+				//model->getObjects()->getParticleSystems()->addObject();
+			}
+		}
 	}
 }
 

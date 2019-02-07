@@ -41,16 +41,16 @@ TEST(DrawableIDTest, TestToColor)
 
 TEST(DrawableIDTest, TestGetType)
 {
-	EXPECT_EQ(0, DrawableID(ColorRGBAuc(0, 0, 0, 0)).getType());
-	EXPECT_EQ(1, DrawableID(ColorRGBAuc(0, 0, 0, 1)).getType());
-	EXPECT_EQ(2, DrawableID(ColorRGBAuc(1, 0, 0, 2)).getType());
+	EXPECT_EQ(0, DrawableID(ColorRGBAuc(0, 0, 0, 0)).getParentId());
+	EXPECT_EQ(1, DrawableID(ColorRGBAuc(0, 0, 0, 1)).getParentId());
+	EXPECT_EQ(2, DrawableID(ColorRGBAuc(1, 0, 0, 2)).getParentId());
 }
 
 TEST(DrawableIDTest, TestGetValue)
 {
-	EXPECT_EQ(0, DrawableID(0, 10).getValue());
-	EXPECT_EQ(100, DrawableID(100, 10).getValue());
-	EXPECT_EQ(0, DrawableID(ColorRGBAuc(0, 0, 0, 0)).getValue());
-	EXPECT_EQ(0, DrawableID(ColorRGBAuc(0, 0, 0, 1)).getValue());
-	EXPECT_EQ(1, DrawableID(ColorRGBAuc(1, 0, 0, 2)).getValue());
+	EXPECT_EQ(0, DrawableID(0, 10).getChildId());
+	EXPECT_EQ(100, DrawableID(100, 10).getChildId());
+	EXPECT_EQ(0, DrawableID(ColorRGBAuc(0, 0, 0, 0)).getChildId());
+	EXPECT_EQ(0, DrawableID(ColorRGBAuc(0, 0, 0, 1)).getChildId());
+	EXPECT_EQ(1, DrawableID(ColorRGBAuc(1, 0, 0, 2)).getChildId());
 }

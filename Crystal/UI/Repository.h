@@ -24,6 +24,8 @@ public:
 
 	ObjectRepository* getObjects() { return &objects; }
 
+	ObjectRepository* getItems() { return &items; }
+
 	AppearanceObjectRepository* getAppearances() { return &appearances; }
 
 	ViewModel toViewModel();
@@ -32,6 +34,7 @@ public:
 
 private:	
 	ObjectRepository objects;
+	ObjectRepository items;
 	AppearanceObjectRepository appearances;
 };
 	}

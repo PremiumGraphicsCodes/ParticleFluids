@@ -5,6 +5,10 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
+ParticleSystemObjectRepository::ParticleSystemObjectRepository() :
+	nextId(1)
+{}
+
 ParticleSystemObjectRepository::~ParticleSystemObjectRepository()
 {
 	clear();
@@ -16,6 +20,17 @@ void ParticleSystemObjectRepository::clear()
 		delete p.getShape();
 	}
 	objects.clear();
+}
+
+int ParticleSystemObjectRepository::addObject(const Vector3df& position, const ColorRGBAf& color, const float size, const std::string& name)
+{
+	auto particles = new Shape::ParticleSystem<ParticleAttr>();
+	ParticleAttr attr;
+	attr.color = color;
+	attr.size = size;
+	particles->add(position, attr);
+	objects.push_back(ParticleSystemObject(nextId++, name, particles));
+	return objects.back().getId();
 }
 
 int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& positions, const ColorRGBAf& color, const float size, const std::string& name)
@@ -54,4 +69,27 @@ std::list<Vector3dd> ParticleSystemObjectRepository::getAllVertices() const
 		}
 	}
 	return positions;
+}
+
+bool ParticleSystemObjectRepository::exists(const int id) const
+{
+	auto iter = std::find_if(objects.begin(), objects.end(), [=](auto object) { return object.getId() == id; });
+	return iter != objects.end();
+}
+
+ParticleSystemObject ParticleSystemObjectRepository::findObjectById(const int id) const
+{
+	assert(exists(id));
+	auto iter = std::find_if(objects.begin(), objects.end(), [=](auto object) { return object.getId() == id; } );
+	return *iter;
+}
+
+Particle<ParticleAttr>* ParticleSystemObjectRepository::findParticleById(const int parentId, const int childId) const
+{
+	if (!exists(parentId)) {
+		return nullptr;
+	}
+	auto object = findObjectById(parentId);
+	const auto& particles = object.getShape()->getParticles();
+	return particles[childId];
 }

@@ -10,8 +10,8 @@ class DrawableID
 public:
 	DrawableID(const unsigned int id, const unsigned char type)
 	{
-		this->id = id;
-		this->type = type;
+		this->childId = id;
+		this->parentId = type;
 	}
 
 	explicit DrawableID(const ColorRGBAf& c)
@@ -31,44 +31,44 @@ public:
 	}
 
 	void fromColor(const ColorRGBAuc& c) {
-		type = 0;
-		id = 0;
-		type = c.a;
-		id |= c.b;
-		id <<= 8;
-		id |= c.g;
-		id <<= 8;
-		id |= c.r;
+		parentId = 0;
+		childId = 0;
+		parentId = c.a;
+		childId |= c.b;
+		childId <<= 8;
+		childId |= c.g;
+		childId <<= 8;
+		childId |= c.r;
 	}
 
 	ColorRGBAf toColor() const {
-		const float red = (id % 256) / 255.0f;
-		const float green = ((id / 256) % 256) / 255.0f;
-		const float blue = ((id / 256 / 256) % (265 * 256)) / 255.0f;
-		const float alpha = getType() / 255.0f;
+		const float red = (childId % 256) / 255.0f;
+		const float green = ((childId / 256) % 256) / 255.0f;
+		const float blue = ((childId / 256 / 256) % (265 * 256)) / 255.0f;
+		const float alpha = getParentId() / 255.0f;
 		return ColorRGBAf(red, green, blue, alpha);
 	}
 
 	bool equals(const DrawableID& rhs) const {
-		return this->id == rhs.id &&
-			this->type == rhs.type;
+		return this->childId == rhs.childId &&
+			this->parentId == rhs.parentId;
 	}
 
 	bool operator==(const DrawableID& rhs) const { return equals(rhs); }
 
 	bool operator!=(const DrawableID& rhs) const { return !equals(rhs); }
 
-	bool operator<(const DrawableID& rhs) const { return id < rhs.id; }
+	bool operator<(const DrawableID& rhs) const { return childId < rhs.childId; }
 
-	bool operator>(const DrawableID& rhs) const { return id > rhs.id; }
+	bool operator>(const DrawableID& rhs) const { return childId > rhs.childId; }
 
-	unsigned int getType() const { return type; }
+	unsigned int getParentId() const { return parentId; }
 
-	unsigned int getValue() const { return id; }
+	unsigned int getChildId() const { return childId; }
 
 private:
-	unsigned int id;
-	unsigned int type;
+	unsigned int parentId;
+	unsigned int childId;
 };
 
 	}
