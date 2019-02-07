@@ -151,6 +151,7 @@
     <ClCompile Include="Cylinder3dTest.cpp" />
     <ClCompile Include="MathTest.cpp" />
     <ClCompile Include="Matrix3dTest.cpp" />
+    <ClCompile Include="Quad3dTest.cpp" />
     <ClCompile Include="Sphere3dTest.cpp" />
     <ClCompile Include="Triangle3dTest.cpp" />
     <ClCompile Include="Vector3dTest.cpp" />

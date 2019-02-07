@@ -16,5 +16,6 @@
     <ClInclude Include="Cylinder3d.h" />
     <ClInclude Include="Matrix2d.h" />
     <ClInclude Include="Circle2d.h" />
+    <ClInclude Include="Quad3d.h" />
   </ItemGroup>
 </Project>
