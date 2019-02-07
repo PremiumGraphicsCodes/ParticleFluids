@@ -4,6 +4,9 @@
 #include "../Math/Vector3d.h"
 #include "../Math/Box3d.h"
 
+#include "../Math/Matrix3d.h"
+#include "../Math/Matrix4d.h"
+
 namespace Crystal {
 	namespace Shape {
 
@@ -19,6 +22,10 @@ public:
 	Math::Vector3dd getPosition() const { return position; }
 
 	void move(const Math::Vector3dd& v) { this->position += v; }
+
+	void transform(const Math::Matrix3dd& m) { position = m * position; }
+
+	void transform(const Math::Matrix4dd& m) { position = m * glm::vec4(position,1.0); }
 
 	Attr getAttribute() const { return attribute; }
 
@@ -51,6 +58,18 @@ public:
 	void move(const Math::Vector3dd& v) {
 		for (auto p : particles) {
 			p->move(v);
+		}
+	}
+
+	void transform(const Math::Matrix3dd& m) {
+		for (auto p : particles) {
+			p->transform(m);
+		}
+	}
+
+	void transform(const Math::Matrix4dd& m) {
+		for (auto p : particles) {
+			p->transform(m);
 		}
 	}
 

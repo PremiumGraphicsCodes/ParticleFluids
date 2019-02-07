@@ -20,7 +20,7 @@ public:
 		_isVisible(true)
 	{}
 
-	~IObject() {};
+	virtual ~IObject() {};
 
 	void setName(const std::string& name) { this->name = name; }
 

@@ -5,6 +5,8 @@
 #include "Vertex.h"
 #include "Face.h"
 #include "../Math/Quaternion.h"
+#include "../Math/Matrix3d.h"
+#include "../Math/Matrix4d.h"
 
 #include <list>
 
@@ -51,6 +53,10 @@ public:
 	Math::Vector3df getCenter() const;
 
 	void move(const Math::Vector3df& v);
+
+	void transform(const Math::Matrix3dd& m);
+
+	void transform(const Math::Matrix4dd& m);
 
 	//void scale(const Math::Vector3df& s);
 

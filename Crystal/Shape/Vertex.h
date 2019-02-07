@@ -3,6 +3,7 @@
 
 #include "../Math/Vector2d.h"
 #include "../Math/Vector3d.h"
+#include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
 #include "../Math/Box3d.h"
 #include "../Util/UnCopyable.h"
@@ -38,6 +39,10 @@ public:
 	void move(const Math::Vector3df& v) { this->position += v; }
 
 	void setNormal(const Math::Vector3df& n) { this->normal = n; }
+
+	void transform(const Math::Matrix3dd& m) { position = m * position; }
+
+	void transform(const Math::Matrix4dd& m) { position = m * glm::vec4( position, 1.0 ); }
 
 	//void scale(const Vector3df& s) { this->position.scale(s); }
 

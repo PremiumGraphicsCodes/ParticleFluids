@@ -27,6 +27,18 @@ public:
 
 	std::vector<Math::Vector3dd> getVertices() const;
 
+	void transform(const Math::Matrix3dd& m) {
+		for (auto& l : lines) {
+			l.transform(m);
+		}
+	}
+
+	void transform(const Math::Matrix4dd& m) {
+		for (auto& l : lines) {
+			l.transform(m);
+		}
+	}
+
 private:
 	std::vector<Math::Line3dd> lines;
 };

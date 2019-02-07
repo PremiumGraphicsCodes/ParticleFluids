@@ -27,6 +27,10 @@ public:
 
 	void move(const Math::Vector3dd& v) override { shape->move(v); }
 
+	void transform(const Math::Matrix3dd& m) { shape->transform(m); }
+
+	void transform(const Math::Matrix4dd& m) { shape->transform(m); }
+
 private:
 	Shape::ParticleSystem<ParticleAttr>* shape;
 };

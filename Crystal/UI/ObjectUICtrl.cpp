@@ -26,12 +26,9 @@ void ObjectUICtrl::onLeftDragging(const Vector2df& position)
 	const auto diff = prevPosition - position;
 
 	const auto& os = objects->getAllObjects();
-	/*
 	for (auto o : os) {
-		o->move()
+		o->move(glm::vec3(diff.x, diff.y, 0.0));
 	}
-	*/
-	//camera->move(glm::vec3(diff.x, diff.y, 0.0));
 	this->prevPosition = position;
 }
 

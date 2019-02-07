@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../ThirdParty/glm-0.9.8.5/glm/vec3.hpp"
-#include "../ThirdParty/glm-0.9.8.5/glm/vec4.hpp"
+#include "../Math/Vector3d.h"
+#include "../Math/Vector4d.h"
 
 namespace Crystal {
 	namespace Graphics {
@@ -35,6 +35,8 @@ public:
 	glm::vec3 getPosition() const { return position; }
 
 	void setPosition(const glm::vec3& pos) { this->position = pos; }
+
+	void move(const Math::Vector3dd& v) { this->position += v; }
 
 private:
 	glm::vec3 position;

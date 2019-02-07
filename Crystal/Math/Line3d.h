@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Vector3d.h"
+#include "Matrix3d.h"
+#include "Matrix4d.h"
 
 namespace Crystal {
 	namespace Math {
@@ -28,6 +30,10 @@ public:
 	void move(const Math::Vector3dd& v) {
 		this->origin += v;
 	}
+
+	void transform(const Math::Matrix3dd& m) { dir = m * dir; }
+
+	void transform(const Math::Matrix4dd& m) { dir = m * glm::vec4(dir,1.0); }
 
 private:
 	Math::Vector3dd origin;

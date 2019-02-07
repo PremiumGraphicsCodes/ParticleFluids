@@ -123,6 +123,21 @@ void PolygonMesh::move(const Vector3df& v)
 	}
 }
 
+void PolygonMesh::transform(const Matrix3dd& m)
+{
+	for (auto p : vertices) {
+		p->transform(m);
+	}
+}
+
+void PolygonMesh::transform(const Matrix4dd& m)
+{
+	for (auto p : vertices) {
+		p->transform(m);
+	}
+}
+
+
 /*
 void PolygonMesh::scale(const Vector3df& s)
 {
