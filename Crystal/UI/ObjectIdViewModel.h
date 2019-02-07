@@ -28,9 +28,13 @@ private:
 
 	void add(const ParticleSystemObject& object);
 
+	void add(const WireFrameObject& object);
+
 	void add(const PolygonMeshObject& object);
 
 	Graphics::PointBuffer pointIdBuffer;
+	Graphics::LineBuffer lineIdBuffer;
+	Graphics::TriangleBuffer triangleIdBuffer;
 };
 
 	}

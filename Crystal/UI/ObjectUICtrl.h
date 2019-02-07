@@ -1,18 +1,17 @@
 #pragma once
 
 #include <memory>
-#include "../Graphics/ICamera.h"
 #include "IUICtrl.h"
 
 namespace Crystal {
 	namespace UI {
 
-class CameraUICtrl : public IUICtrl
+class ObjectUICtrl : public IUICtrl
 {
 public:
-	explicit CameraUICtrl(Graphics::ICamera* camera);
+	ObjectUICtrl();
 
-	virtual ~CameraUICtrl() {}
+	virtual ~ObjectUICtrl() {}
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 
@@ -30,7 +29,7 @@ public:
 
 private:
 	Math::Vector2df prevPosition;
-	Graphics::ICamera* camera;
 };
+
 	}
 }

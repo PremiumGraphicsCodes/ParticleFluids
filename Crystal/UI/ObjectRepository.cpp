@@ -41,3 +41,21 @@ std::list<Vector3dd> ObjectRepository::getAllVertices() const
 	positions.insert(positions.end(), meshes.begin(), meshes.end());
 	return positions;
 }
+
+std::list<IObject*> ObjectRepository::getAllObjects() const
+{
+	std::list<IObject*> objects;
+	auto& ps = particleSystems.getObjects();
+	for (auto& p : ps) {
+		objects.push_back(&p);
+	}
+	auto& ws = wireFrames.getObjects();
+	for (auto& w : ws) {
+		objects.push_back(&w);
+	}
+	auto& polygons = polygonMeshes.getObjects();
+	for (auto& p : polygons) {
+		objects.push_back(&p);
+	}
+	return objects;
+}
