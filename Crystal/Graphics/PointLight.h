@@ -2,6 +2,8 @@
 
 #include "../Math/Vector3d.h"
 #include "../Math/Vector4d.h"
+#include "../Math/Matrix3d.h"
+#include "../Math/Matrix4d.h"
 
 namespace Crystal {
 	namespace Graphics {
@@ -37,6 +39,10 @@ public:
 	void setPosition(const glm::vec3& pos) { this->position = pos; }
 
 	void move(const Math::Vector3dd& v) { this->position += v; }
+
+	void transform(const Math::Matrix3dd& m) { position = m * position; }
+
+	void transform(const Math::Matrix4dd& m) { position = m * glm::vec4(position,1.0); }
 
 private:
 	glm::vec3 position;
