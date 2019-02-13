@@ -16,6 +16,7 @@
     <ClInclude Include="WireFrame.h" />
     <ClInclude Include="WireFrameBuilder.h" />
     <ClInclude Include="PolygonMeshBuilder.h" />
+    <ClInclude Include="Particle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PolygonMesh.cpp" />

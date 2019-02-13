@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Shape/ParticleSystem.h"
 
 namespace Crystal {
 	namespace Algo {
@@ -9,6 +10,8 @@ class SpaceHash
 {
 public:
 	SpaceHash(const float divideLength, const int tableSize);
+
+	//void add(Shape::Partic particleSystem);
 
 	int toHash(const Math::Vector3df& pos);
 
