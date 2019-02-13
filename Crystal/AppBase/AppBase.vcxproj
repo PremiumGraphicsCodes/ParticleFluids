@@ -36,6 +36,7 @@
     <ClCompile Include="PolygonPanel.cpp" />
     <ClCompile Include="PolygonTreeList.cpp" />
     <ClCompile Include="PositionSelectButton.cpp" />
+    <ClCompile Include="ObjectScaleButton.cpp" />
     <ClCompile Include="SelectionPanel.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -62,6 +63,7 @@
     <ClInclude Include="PolygonPanel.h" />
     <ClInclude Include="PolygonTreeList.h" />
     <ClInclude Include="PositionSelectButton.h" />
+    <ClInclude Include="ObjectScaleButton.h" />
     <ClInclude Include="SelectionPanel.h" />
     <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="Window.h" />

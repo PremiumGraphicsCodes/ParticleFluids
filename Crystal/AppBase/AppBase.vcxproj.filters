@@ -55,6 +55,9 @@
     <ClCompile Include="PositionSelectButton.cpp">
       <Filter>Selection</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectScaleButton.cpp">
+      <Filter>Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -117,6 +120,9 @@
     <ClInclude Include="PositionSelectButton.h">
       <Filter>Selection</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectScaleButton.h">
+      <Filter>Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -136,6 +142,9 @@
     </Filter>
     <Filter Include="Selection">
       <UniqueIdentifier>{936f90df-2aa6-430e-9906-90d661af54f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transform">
+      <UniqueIdentifier>{a82af283-3aaa-4c83-b72f-e282c535a689}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
