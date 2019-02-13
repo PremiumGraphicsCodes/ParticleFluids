@@ -27,3 +27,7 @@ void PositionSelectButton::onOk()
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
+
+void PositionSelectButton::onCancel()
+{
+}

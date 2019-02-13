@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../../Crystal/AppBase/IPopupButton.h"
+#include "../../Crystal/AppBase/ObjectSelectButton.h"
+#include "../../Crystal/AppBase/PositionSelectButton.h"
 
 namespace Crystal {
 	namespace UI {
@@ -20,9 +22,8 @@ public:
 	}
 
 private:
-	glm::vec3 min = { -10.0f, -10.0f, -10.0f };
-	glm::vec3 max = { 10.0f, 10.0f, 10.0f };
-	glm::vec3 dx = { 1.0f, 1.0f, 1.0f };
+	PositionSelectButton positionButton;
+	ObjectSelectButton objectButton;
 };
 
 	}

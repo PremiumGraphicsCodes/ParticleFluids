@@ -6,22 +6,23 @@ using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
 SpaceHashButton::SpaceHashButton(Repository* model, Canvas* canvas) :
-	IPopupButton("SpaceHash", model, canvas)
+	IPopupButton("SpaceHash", model, canvas),
+	positionButton("Position", model, canvas),
+	objectButton("Object", model, canvas)
 {
-	SpaceHash space(1.0f, 10000);
 }
 
 void SpaceHashButton::onShow()
 {
-	/*
-	ImGui::InputFloat3("Min", &min[0]);
-	ImGui::InputFloat3("Max", &max[0]);
-	ImGui::InputFloat3("Dx", &dx[0]);
-	*/
+	positionButton.show();
+	objectButton.show();
 }
 
 void SpaceHashButton::onOk()
 {
+	SpaceHash space(1.0f, 10000);
+
+
 /*
 	std::vector<Vector3df> positions;
 	for (double x = min.x; x < max.x; x += dx[0]) {

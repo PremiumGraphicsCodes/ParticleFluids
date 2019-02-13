@@ -147,9 +147,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
