@@ -92,7 +92,7 @@
     <ClInclude Include="IMouseListener.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectTransformUICtrl.h">
+    <ClInclude Include="TransformUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
   </ItemGroup>
@@ -152,7 +152,7 @@
     <ClCompile Include="AppearanceViewModel.cpp">
       <Filter>ViewModel</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectTransformUICtrl.cpp">
+    <ClCompile Include="TransformUICtrl.cpp">
       <Filter>UICtrl</Filter>
     </ClCompile>
   </ItemGroup>

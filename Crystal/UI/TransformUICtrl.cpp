@@ -1,4 +1,4 @@
-#include "ObjectTransformUICtrl.h"
+#include "TransformUICtrl.h"
 
 #include "Repository.h"
 
@@ -7,24 +7,24 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-ObjectTransformUICtrl::ObjectTransformUICtrl(Repository* repository, Canvas* canvas) :
+TransformUICtrl::TransformUICtrl(Repository* repository, Canvas* canvas) :
 	repository(repository),
 	canvas(canvas)
 {
 }
 
-void ObjectTransformUICtrl::onLeftButtonDown(const Vector2df& position)
+void TransformUICtrl::onLeftButtonDown(const Vector2df& position)
 {
 	prevPosition = position;
 	//	camera->move();
 }
 
-void ObjectTransformUICtrl::onLeftButtonUp(const Vector2df& position)
+void TransformUICtrl::onLeftButtonUp(const Vector2df& position)
 {
 
 }
 
-void ObjectTransformUICtrl::onLeftDragging(const Vector2df& position)
+void TransformUICtrl::onLeftDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
 
@@ -36,17 +36,17 @@ void ObjectTransformUICtrl::onLeftDragging(const Vector2df& position)
 	canvas->setViewModel(repository->toViewModel());
 }
 
-void ObjectTransformUICtrl::onRightButtonDown(const Vector2df& position)
+void TransformUICtrl::onRightButtonDown(const Vector2df& position)
 {
 	prevPosition = position;
 }
 
-void ObjectTransformUICtrl::onRightButtonUp(const Vector2df& position)
+void TransformUICtrl::onRightButtonUp(const Vector2df& position)
 {
 
 }
 
-void ObjectTransformUICtrl::onRightDragging(const Vector2df& position)
+void TransformUICtrl::onRightDragging(const Vector2df& position)
 {
 	const auto& diff = prevPosition - position;
 	const auto& rotation = rotationMatrixX(diff.x) * rotationMatrixY(diff.y);
@@ -59,23 +59,23 @@ void ObjectTransformUICtrl::onRightDragging(const Vector2df& position)
 	canvas->setViewModel(repository->toViewModel());
 }
 
-void ObjectTransformUICtrl::onMiddleButtonDown(const Vector2df& position)
+void TransformUICtrl::onMiddleButtonDown(const Vector2df& position)
 {
 
 }
 
-void ObjectTransformUICtrl::onMiddleButtonUp(const Vector2df& position)
+void TransformUICtrl::onMiddleButtonUp(const Vector2df& position)
 {
 
 }
 
-void ObjectTransformUICtrl::onMiddleDragging(const Vector2df& position)
+void TransformUICtrl::onMiddleDragging(const Vector2df& position)
 {
 
 }
 
 
-void ObjectTransformUICtrl::onWheel(const float dx)
+void TransformUICtrl::onWheel(const float dx)
 {
 	//camera->zoom(dx / 100.0f);
 }
