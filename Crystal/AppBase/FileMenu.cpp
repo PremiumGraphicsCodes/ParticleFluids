@@ -14,6 +14,7 @@ void FileMenu::show()
 	if (ImGui::BeginMenu(n)) {
 		if (ImGui::MenuItem("New")) {
 			model->clear();
+			getCanvas()->setViewModel(model->toViewModel());
 		}
 		if (ImGui::MenuItem("Open")) {
 			char const * lFilterPatterns[2] = { "*.stl", "*.obj" };

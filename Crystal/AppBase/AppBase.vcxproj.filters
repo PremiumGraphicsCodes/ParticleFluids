@@ -49,6 +49,12 @@
     <ClCompile Include="SelectionPanel.cpp">
       <Filter>Selection</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectSelectButton.cpp">
+      <Filter>Selection</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionSelectButton.cpp">
+      <Filter>Selection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -103,6 +109,12 @@
       <Filter>TreeList</Filter>
     </ClInclude>
     <ClInclude Include="SelectionPanel.h">
+      <Filter>Selection</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectSelectButton.h">
+      <Filter>Selection</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionSelectButton.h">
       <Filter>Selection</Filter>
     </ClInclude>
   </ItemGroup>
