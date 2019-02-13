@@ -12,6 +12,9 @@ PickUICtrl::PickUICtrl(Repository* model, Canvas* canvas) :
 	model(model),
 	canvas(canvas)
 {
+	function = [](int id) {
+		;
+	};
 }
 
 void PickUICtrl::onLeftButtonDown(const Vector2df& position)
@@ -28,6 +31,8 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 		return;
 	}
 	if (model->getObjects()->getParticleSystems()->exists(parentId)) {
+		function(parentId);
+
 		auto selected = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);
 		if (selected != nullptr) {
 			const auto size = selected->getAttribute().size * 100.0;

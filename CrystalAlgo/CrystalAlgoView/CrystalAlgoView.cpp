@@ -21,10 +21,23 @@
 
 #include "../../Crystal/Graphics/PerspectiveCamera.h"
 
+#include "SpaceHashButton.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
+namespace {
+	class AlgoPanel : public IPanel
+	{
+	public:
+		AlgoPanel(const std::string& name, Repository* repository, Canvas* canvas) :
+			IPanel(name, repository, canvas)
+		{
+			add(new SpaceHashButton(model, canvas));
+		}
+	};
+}
 
 
 int main(int, char**)
@@ -60,6 +73,8 @@ int main(int, char**)
 	window.add(new PolygonTreeList("Polygons", &model, &canvas));
 	window.add(new LightTreeList("Lights", &model, &canvas));
 	window.add(new MaterialTreeList("Materials", &model, &canvas));
+
+	window.add(new AlgoPanel("Algo", &model, &canvas));
 
 	window.show();
 

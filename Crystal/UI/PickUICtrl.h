@@ -3,6 +3,7 @@
 #include "Canvas.h"
 #include "IUICtrl.h"
 #include "IMouseListener.h"
+#include <functional>
 
 namespace Crystal {
 	namespace UI {
@@ -29,9 +30,12 @@ public:
 
 	virtual void onWheel(const float dx) override;
 
+	void setFunction(const std::function<void(int)>& func) { this->function = func; }
+
 private:
 	Repository* model;
 	Canvas* canvas;
+	std::function<void(int)> function;
 };
 	}
 }

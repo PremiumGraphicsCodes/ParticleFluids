@@ -6,8 +6,8 @@
 #include "../AppBase/ParticlePanel.h"
 #include "../AppBase/WireFramePanel.h"
 #include "../AppBase/PolygonPanel.h"
-
 #include "../AppBase/AppearancePanel.h"
+#include "../AppBase/SelectionPanel.h"
 
 #include "../AppBase/ParticleSystemTreeList.h"
 #include "../AppBase/WireFrameTreeList.h"
@@ -53,6 +53,7 @@ int main(int, char**)
 	window.add(new WireFramePanel("WireFrame", &model, &canvas));
 	window.add(new PolygonPanel("Polygon", &model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
+	window.add(new SelectionPanel("Selection", &model, &canvas));
 
 	window.add(new ParticleSystemTreeList("ParticleSystems", &model, &canvas));
 	window.add(new WireFrameTreeList("WireFrames", &model, &canvas));

@@ -46,6 +46,9 @@
     <ClCompile Include="PolygonTreeList.cpp">
       <Filter>TreeList</Filter>
     </ClCompile>
+    <ClCompile Include="SelectionPanel.cpp">
+      <Filter>Selection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -99,6 +102,9 @@
     <ClInclude Include="PolygonTreeList.h">
       <Filter>TreeList</Filter>
     </ClInclude>
+    <ClInclude Include="SelectionPanel.h">
+      <Filter>Selection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -115,6 +121,9 @@
     </Filter>
     <Filter Include="TreeList">
       <UniqueIdentifier>{8dd77460-6a69-4de3-aeff-7af563b388c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Selection">
+      <UniqueIdentifier>{936f90df-2aa6-430e-9906-90d661af54f8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
