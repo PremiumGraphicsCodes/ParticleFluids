@@ -6,12 +6,12 @@
 namespace Crystal {
 	namespace UI {
 
-class ObjectScaleButton : public IPopupButton
+class TransformButton : public IPopupButton
 {
 public:
-	ObjectScaleButton(const std::string& name, Repository* model, Canvas* canvas) :
+	TransformButton(const std::string& name, Repository* model, Canvas* canvas) :
 		IPopupButton(name, model, canvas),
-		objectButton("Object", model, canvas)
+		objectButton("Transform", model, canvas)
 	{
 	}
 

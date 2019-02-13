@@ -55,13 +55,10 @@
     <ClCompile Include="PositionSelectButton.cpp">
       <Filter>Selection</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectScaleButton.cpp">
-      <Filter>Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectMoveButton.cpp">
-      <Filter>Transform</Filter>
-    </ClCompile>
     <ClCompile Include="TransformPanel.cpp">
+      <Filter>Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformButton.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
   </ItemGroup>
@@ -126,13 +123,10 @@
     <ClInclude Include="PositionSelectButton.h">
       <Filter>Selection</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectScaleButton.h">
-      <Filter>Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectMoveButton.h">
-      <Filter>Transform</Filter>
-    </ClInclude>
     <ClInclude Include="TransformPanel.h">
+      <Filter>Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformButton.h">
       <Filter>Transform</Filter>
     </ClInclude>
   </ItemGroup>

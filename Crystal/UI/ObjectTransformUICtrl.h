@@ -8,12 +8,12 @@ namespace Crystal {
 		class Repository;
 		class Canvas;
 
-class ObjectMoveUICtrl : public IUICtrl
+class ObjectTransformUICtrl : public IUICtrl
 {
 public:
-	ObjectMoveUICtrl(Repository* repository, Canvas* canvas);
+	ObjectTransformUICtrl(Repository* repository, Canvas* canvas);
 
-	virtual ~ObjectMoveUICtrl() {}
+	virtual ~ObjectTransformUICtrl() {}
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 
@@ -26,6 +26,12 @@ public:
 	virtual void onRightButtonUp(const Math::Vector2df& position) override;
 
 	virtual void onRightDragging(const Math::Vector2df& position) override;
+
+	virtual void onMiddleButtonDown(const Math::Vector2df& position) override;
+
+	virtual void onMiddleButtonUp(const Math::Vector2df& position) override;
+
+	virtual void onMiddleDragging(const Math::Vector2df& position) override;
 
 	virtual void onWheel(const float dx) override;
 
