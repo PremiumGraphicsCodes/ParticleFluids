@@ -7,7 +7,7 @@ namespace Crystal {
 
 class SpaceHash
 {
-protected:
+public:
 	SpaceHash(const float divideLength, const int tableSize);
 
 	int toHash(const Math::Vector3df& pos);
