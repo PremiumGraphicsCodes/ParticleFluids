@@ -1,12 +1,15 @@
 #include "ObjectMoveUICtrl.h"
 
-#include "ObjectRepository.h"
+#include "Repository.h"
+
+#include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-ObjectMoveUICtrl::ObjectMoveUICtrl(ObjectRepository* objects) :
-	objects(objects)
+ObjectMoveUICtrl::ObjectMoveUICtrl(Repository* repository, Canvas* canvas) :
+	repository(repository),
+	canvas(canvas)
 {
 }
 
@@ -25,11 +28,12 @@ void ObjectMoveUICtrl::onLeftDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
 
-	const auto& os = objects->getAllObjects();
-	for (auto o : os) {
-		o->move(glm::vec3(diff.x, diff.y, 0.0));
+	auto& os = repository->getObjects()->getParticleSystems()->getObjects();
+	for (auto& o : os) {
+		o.move(glm::vec3(diff.x, diff.y, 0.0));
 	}
 	this->prevPosition = position;
+	canvas->setViewModel(repository->toViewModel());
 }
 
 void ObjectMoveUICtrl::onRightButtonDown(const Vector2df& position)

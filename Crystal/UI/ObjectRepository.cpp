@@ -42,11 +42,12 @@ std::list<Vector3dd> ObjectRepository::getAllVertices() const
 	return positions;
 }
 
-std::list<IObject*> ObjectRepository::getAllObjects() const
+/*
+std::list<IObject> ObjectRepository::getAllObjects() const
 {
-	std::list<IObject*> objects;
-	auto& ps = particleSystems.getObjects();
-	for (auto& p : ps) {
+	std::list<IObject> objects;
+	const auto& ps = particleSystems.getObjects();
+	for (const auto& p : ps) {
 		objects.push_back(&p);
 	}
 	auto& ws = wireFrames.getObjects();
@@ -59,3 +60,4 @@ std::list<IObject*> ObjectRepository::getAllObjects() const
 	}
 	return objects;
 }
+*/

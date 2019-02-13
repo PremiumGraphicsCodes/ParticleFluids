@@ -5,12 +5,13 @@
 
 namespace Crystal {
 	namespace UI {
-		class ObjectRepository;
+		class Repository;
+		class Canvas;
 
 class ObjectMoveUICtrl : public IUICtrl
 {
 public:
-	ObjectMoveUICtrl(ObjectRepository* objects);
+	ObjectMoveUICtrl(Repository* repository, Canvas* canvas);
 
 	virtual ~ObjectMoveUICtrl() {}
 
@@ -29,7 +30,8 @@ public:
 	virtual void onWheel(const float dx) override;
 
 private:
-	ObjectRepository* objects;
+	Repository* repository;
+	Canvas* canvas;
 	Math::Vector2df prevPosition;
 };
 

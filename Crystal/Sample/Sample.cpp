@@ -8,6 +8,7 @@
 #include "../AppBase/PolygonPanel.h"
 #include "../AppBase/AppearancePanel.h"
 #include "../AppBase/SelectionPanel.h"
+#include "../AppBase/TransformPanel.h"
 
 #include "../AppBase/ParticleSystemTreeList.h"
 #include "../AppBase/WireFrameTreeList.h"
@@ -19,12 +20,13 @@
 #include "../UI/Canvas.h"
 #include "../UI/ObjectRenderer.h"
 
+#include "../Graphics/PerspectiveCamera.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 
-#include "../Graphics/PerspectiveCamera.h"
 
 int main(int, char**)
 {
@@ -54,6 +56,7 @@ int main(int, char**)
 	window.add(new PolygonPanel("Polygon", &model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
 	window.add(new SelectionPanel("Selection", &model, &canvas));
+	window.add(new TransformPanel("Transform", &model, &canvas));
 
 	window.add(new ParticleSystemTreeList("ParticleSystems", &model, &canvas));
 	window.add(new WireFrameTreeList("WireFrames", &model, &canvas));

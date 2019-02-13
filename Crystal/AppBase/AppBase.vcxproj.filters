@@ -61,6 +61,9 @@
     <ClCompile Include="ObjectMoveButton.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
+    <ClCompile Include="TransformPanel.cpp">
+      <Filter>Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -127,6 +130,9 @@
       <Filter>Transform</Filter>
     </ClInclude>
     <ClInclude Include="ObjectMoveButton.h">
+      <Filter>Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformPanel.h">
       <Filter>Transform</Filter>
     </ClInclude>
   </ItemGroup>

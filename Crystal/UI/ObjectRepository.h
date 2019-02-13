@@ -28,7 +28,7 @@ public:
 
 	std::list<Math::Vector3dd> getAllVertices() const;
 
-	std::list<IObject*> getAllObjects() const;
+	//std::list<IObject> getAllObjects() const;
 
 private:
 	ParticleSystemObjectRepository particleSystems;

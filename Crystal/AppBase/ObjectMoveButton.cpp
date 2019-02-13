@@ -9,7 +9,7 @@ void ObjectMoveButton::onShow()
 {
 	objectButton.show();
 	if (ImGui::Button("Pick")) {
-		auto ctrl = new ObjectMoveUICtrl(getModel()->getObjects());
+		auto ctrl = new ObjectMoveUICtrl(getModel(), getCanvas());
 		getCanvas()->setUICtrl(ctrl);
 	}
 }
