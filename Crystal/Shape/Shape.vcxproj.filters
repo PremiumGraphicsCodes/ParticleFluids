@@ -5,26 +5,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ParticleSystem">
+      <UniqueIdentifier>{b692e6b9-8534-4e0c-956d-c2a6f8999b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WireFrame">
+      <UniqueIdentifier>{a5ad1f02-65d3-4663-a627-40b210d8797a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PolygonMesh">
+      <UniqueIdentifier>{2d1afe88-86ab-432e-b5ba-9cce9e366110}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PolygonMesh.h" />
-    <ClInclude Include="HalfEdge.h" />
     <ClInclude Include="Vertex.h" />
-    <ClInclude Include="Face.h" />
     <ClInclude Include="TriangleMesh.h" />
-    <ClInclude Include="ParticleSystem.h" />
-    <ClInclude Include="WireFrame.h" />
-    <ClInclude Include="WireFrameBuilder.h" />
-    <ClInclude Include="PolygonMeshBuilder.h" />
-    <ClInclude Include="Particle.h" />
+    <ClInclude Include="IParticle.h">
+      <Filter>ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrame.h">
+      <Filter>WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameBuilder.h">
+      <Filter>WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMesh.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshBuilder.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="HalfEdge.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Face.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PolygonMesh.cpp" />
-    <ClCompile Include="HalfEdge.cpp" />
     <ClCompile Include="Vertex.cpp" />
-    <ClCompile Include="Face.cpp" />
-    <ClCompile Include="WireFrameBuilder.cpp" />
-    <ClCompile Include="PolygonMeshBuilder.cpp" />
-    <ClCompile Include="WireFrame.cpp" />
+    <ClCompile Include="WireFrame.cpp">
+      <Filter>WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrameBuilder.cpp">
+      <Filter>WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMesh.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshBuilder.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="HalfEdge.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Face.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
