@@ -1,27 +1,27 @@
-#include "ObjectUICtrl.h"
+#include "ObjectMoveUICtrl.h"
 
 #include "ObjectRepository.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-ObjectUICtrl::ObjectUICtrl(ObjectRepository* objects) :
+ObjectMoveUICtrl::ObjectMoveUICtrl(ObjectRepository* objects) :
 	objects(objects)
 {
 }
 
-void ObjectUICtrl::onLeftButtonDown(const Vector2df& position)
+void ObjectMoveUICtrl::onLeftButtonDown(const Vector2df& position)
 {
 	prevPosition = position;
 	//	camera->move();
 }
 
-void ObjectUICtrl::onLeftButtonUp(const Vector2df& position)
+void ObjectMoveUICtrl::onLeftButtonUp(const Vector2df& position)
 {
 
 }
 
-void ObjectUICtrl::onLeftDragging(const Vector2df& position)
+void ObjectMoveUICtrl::onLeftDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
 
@@ -32,24 +32,24 @@ void ObjectUICtrl::onLeftDragging(const Vector2df& position)
 	this->prevPosition = position;
 }
 
-void ObjectUICtrl::onRightButtonDown(const Vector2df& position)
+void ObjectMoveUICtrl::onRightButtonDown(const Vector2df& position)
 {
 	prevPosition = position;
 }
 
-void ObjectUICtrl::onRightButtonUp(const Vector2df& position)
+void ObjectMoveUICtrl::onRightButtonUp(const Vector2df& position)
 {
 
 }
 
-void ObjectUICtrl::onRightDragging(const Vector2df& position)
+void ObjectMoveUICtrl::onRightDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
 	//camera->rotate(diff.y, diff.x);
 	this->prevPosition = position;
 }
 
-void ObjectUICtrl::onWheel(const float dx)
+void ObjectMoveUICtrl::onWheel(const float dx)
 {
 	//camera->zoom(dx / 100.0f);
 }

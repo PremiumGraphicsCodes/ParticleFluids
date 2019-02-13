@@ -30,6 +30,7 @@
     <ClCompile Include="IPopupButton.cpp" />
     <ClCompile Include="LightTreeList.cpp" />
     <ClCompile Include="MaterialTreeList.cpp" />
+    <ClCompile Include="ObjectMoveButton.cpp" />
     <ClCompile Include="ObjectSelectButton.cpp" />
     <ClCompile Include="ParticleSystemTreeList.cpp" />
     <ClCompile Include="ParticlePanel.cpp" />
@@ -57,6 +58,7 @@
     <ClInclude Include="IWindow.h" />
     <ClInclude Include="LightTreeList.h" />
     <ClInclude Include="MaterialTreeList.h" />
+    <ClInclude Include="ObjectMoveButton.h" />
     <ClInclude Include="ObjectSelectButton.h" />
     <ClInclude Include="ParticleSystemTreeList.h" />
     <ClInclude Include="ParticlePanel.h" />

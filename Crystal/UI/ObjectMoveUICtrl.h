@@ -7,12 +7,12 @@ namespace Crystal {
 	namespace UI {
 		class ObjectRepository;
 
-class ObjectUICtrl : public IUICtrl
+class ObjectMoveUICtrl : public IUICtrl
 {
 public:
-	ObjectUICtrl(ObjectRepository* objects);
+	ObjectMoveUICtrl(ObjectRepository* objects);
 
-	virtual ~ObjectUICtrl() {}
+	virtual ~ObjectMoveUICtrl() {}
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 
