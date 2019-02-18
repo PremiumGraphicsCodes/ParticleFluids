@@ -134,7 +134,7 @@
     <ClInclude Include="CameraAdapter.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Converter.h" />
-    <ClInclude Include="ModelAdapter.h" />
+    <ClInclude Include="RepositoryAdapter.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -143,7 +143,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CameraAdapter.cpp" />
     <ClCompile Include="Converter.cpp" />
-    <ClCompile Include="ModelAdapter.cpp" />
+    <ClCompile Include="RepositoryAdapter.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

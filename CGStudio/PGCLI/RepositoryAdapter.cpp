@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <msclr/marshal_cppstd.h>
 
-#include "ModelAdapter.h"
+#include "RepositoryAdapter.h"
 
 #include "../../Crystal/UI/Repository.h"
 //#include "../../Crystal/UI/ViewModel.h"
@@ -12,35 +12,35 @@
 
 using namespace PG::CLI;
 
-ModelAdapter::ModelAdapter() :
+RepositoryAdapter::RepositoryAdapter() :
 	instance(new Crystal::UI::Repository())
 {
 }
 
-ModelAdapter::~ModelAdapter()
+RepositoryAdapter::~RepositoryAdapter()
 {
 	delete instance;
 }
 
-void ModelAdapter::Clear()
+void RepositoryAdapter::Clear()
 {
 	instance->clear();
 }
 
-bool ModelAdapter::Read(System::String^ filename)
+bool RepositoryAdapter::Read(System::String^ filename)
 {
 	//msclr::interop::marshal_as<std::string>(filename)
 	std::string str = msclr::interop::marshal_as<std::string>(filename);
 	return instance->read( str );
 }
 
-bool ModelAdapter::Write(System::String^ filename)
+bool RepositoryAdapter::Write(System::String^ filename)
 {
 	std::string str = msclr::interop::marshal_as<std::string>(filename);
 	return instance->write(str);
 }
 
-int ModelAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
+int RepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
 {
 	auto positions = src->Positions;
 	std::vector<Crystal::Math::Vector3df> ps;
@@ -51,7 +51,7 @@ int ModelAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
 	return instance->getObjects()->getParticleSystems()->addObject(ps, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0), 1.0f, "");
 }
 
-int ModelAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
+int RepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
 {
 	auto lines = src->Lines;
 	std::vector<Crystal::Math::Line3dd> ls;
@@ -63,7 +63,7 @@ int ModelAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
 	return instance->getObjects()->getWireFrames()->addObject(wf, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0), "");
 }
 
-int ModelAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
+int RepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
 {
 	return -1;
 }

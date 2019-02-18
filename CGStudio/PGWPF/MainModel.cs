@@ -4,17 +4,17 @@ namespace PG.CGStudio
 {
     public class MainModel
     {
-        private PG.CLI.ModelAdapter adapter;
+        private PG.CLI.RepositoryAdapter adapter;
 
         static MainModel instance;
 
         public static MainModel Instance { get { return instance; } }
 
-        public PG.CLI.ModelAdapter Adapter { get { return adapter; } }
+        public PG.CLI.RepositoryAdapter Adapter { get { return adapter; } }
 
         public MainModel()
         {
-            adapter = new PG.CLI.ModelAdapter();
+            adapter = new PG.CLI.RepositoryAdapter();
             instance = this;
         }
 

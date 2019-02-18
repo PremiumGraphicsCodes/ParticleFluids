@@ -11,7 +11,7 @@ namespace Crystal {
 namespace PG {
 	namespace CLI {
 
-ref class ModelAdapter;
+ref class RepositoryAdapter;
 
 public ref class CameraAdapter
 {

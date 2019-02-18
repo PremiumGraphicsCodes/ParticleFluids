@@ -12,12 +12,12 @@ namespace Crystal {
 namespace PG {
 	namespace CLI {
 
-public ref class ModelAdapter
+public ref class RepositoryAdapter
 {
 public:
-	ModelAdapter();
+	RepositoryAdapter();
 
-	~ModelAdapter(void);
+	~RepositoryAdapter(void);
 
 	void Clear();
 
