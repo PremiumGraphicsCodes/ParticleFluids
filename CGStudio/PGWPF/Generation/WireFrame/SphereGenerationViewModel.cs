@@ -29,8 +29,8 @@ namespace PG.CGStudio.Generation.WireFrame
         {
             var builder = new WireFrameBuilder();
             builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
-            MainModel.Instance.Add(builder.WireFrame);
-            Canvas3dView.Instance.Update(MainModel.Instance);
+            Repository.Instance.Objects.Add(builder.WireFrame);
+            Canvas3dView.Instance.Update(Repository.Instance);
             Canvas3dView.Instance.Render();
         }
     }

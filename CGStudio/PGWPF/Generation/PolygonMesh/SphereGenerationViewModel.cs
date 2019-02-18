@@ -30,8 +30,8 @@ namespace PG.CGStudio.Generation.PolygonMesh
         {
             var builder = new PolygonMeshBuilder();
             builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
-            MainModel.Instance.Add(builder.PolygonMesh);
-            Canvas3dView.Instance.Update(MainModel.Instance);
+            Repository.Instance.Objects.Add(builder.PolygonMesh);
+            Canvas3dView.Instance.Update(Repository.Instance);
             Canvas3dView.Instance.Render();
         }
     }

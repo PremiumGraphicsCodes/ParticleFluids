@@ -18,7 +18,11 @@ public:
 
 	~ObjectRepositoryAdapter(void);
 
-	int AddWireFrameObject();
+	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src);
+
+	int AddWireFrame(PG::Core::Shape::WireFrame^ src);
+
+	int AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src);
 
 internal:
 	ObjectRepositoryAdapter(Crystal::UI::ObjectRepository* instance);

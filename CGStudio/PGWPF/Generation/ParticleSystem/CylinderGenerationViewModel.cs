@@ -36,8 +36,8 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-            MainModel.Instance.Add(particles);
-            Canvas3dView.Instance.Update(MainModel.Instance);
+            Repository.Instance.Objects.Add(particles);
+            Canvas3dView.Instance.Update(Repository.Instance);
             Canvas3dView.Instance.Render();
         }
     }

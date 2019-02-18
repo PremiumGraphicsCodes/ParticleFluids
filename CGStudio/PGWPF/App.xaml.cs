@@ -4,11 +4,11 @@ namespace PG.CGStudio
 {
     public partial class App : Application
     {
-        private MainModel model;
+        private Repository model;
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            this.model = new MainModel();
+            this.model = new Repository();
         }
     }
 }

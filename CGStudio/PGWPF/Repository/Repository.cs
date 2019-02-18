@@ -2,20 +2,23 @@
 
 namespace PG.CGStudio
 {
-    public class MainModel
+    public class Repository
     {
         private PG.CLI.RepositoryAdapter adapter;
 
-        static MainModel instance;
+        static Repository instance;
 
-        public static MainModel Instance { get { return instance; } }
+        public static Repository Instance { get { return instance; } }
 
         public PG.CLI.RepositoryAdapter Adapter { get { return adapter; } }
 
-        public MainModel()
+        public ObjectRepository Objects;
+
+        public Repository()
         {
             adapter = new PG.CLI.RepositoryAdapter();
             instance = this;
+            this.Objects = new ObjectRepository(adapter.Objects());
         }
 
         public void New()
@@ -40,21 +43,6 @@ namespace PG.CGStudio
         public void Export(string filename)
         {
 
-        }
-
-        public int Add(ParticleSystem particleSystem)
-        {
-            return adapter.AddParticleSystem(particleSystem);
-        }
-
-        public int Add(WireFrame wireFrame)
-        {
-            return adapter.AddWireFrame(wireFrame);
-        }
-
-        public int Add(PolygonMesh polygonMesh)
-        {
-            return adapter.AddPolygonMesh(polygonMesh);
         }
     }
 }

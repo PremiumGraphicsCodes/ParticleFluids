@@ -26,12 +26,6 @@ public:
 
 	bool Write(System::String^ filename);
 
-	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src);
-
-	int AddWireFrame(PG::Core::Shape::WireFrame^ src);
-
-	int AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src);
-
 	ObjectRepositoryAdapter^ Objects() { return objects; }
 
 private:

@@ -35,7 +35,7 @@ namespace PG.CGStudio
 
         private void OnNew()
         {
-            MainModel.Instance.New();
+            Repository.Instance.New();
         }
 
         private void OnOpen()
@@ -44,7 +44,7 @@ namespace PG.CGStudio
             dialog.Title = "Open";
             if( DialogResult.OK == dialog.ShowDialog() )
             {
-                var model = MainModel.Instance;
+                var model = Repository.Instance;
                 model.Open(dialog.FileName);
             }
         }
@@ -55,7 +55,7 @@ namespace PG.CGStudio
             dialog.Title = "Save";
             if( DialogResult.OK == dialog.ShowDialog() )
             {
-                var model = MainModel.Instance;
+                var model = Repository.Instance;
                 model.Save(dialog.FileName);
             }
         }
@@ -66,7 +66,7 @@ namespace PG.CGStudio
             dialog.Title = "SaveAs";
             if (DialogResult.OK == dialog.ShowDialog())
             {
-                var model = MainModel.Instance;
+                var model = Repository.Instance;
                 model.Save(dialog.FileName);
             }
         }
@@ -77,7 +77,7 @@ namespace PG.CGStudio
             dialog.Title = "Import";
             if (DialogResult.OK == dialog.ShowDialog())
             {
-                var model = MainModel.Instance;
+                var model = Repository.Instance;
                 model.Import(dialog.FileName);
             }
         }
@@ -88,7 +88,7 @@ namespace PG.CGStudio
             dialog.Title = "Export";
             if (DialogResult.OK == dialog.ShowDialog())
             {
-                var model = MainModel.Instance;
+                var model = Repository.Instance;
                 model.Export(dialog.FileName);
             }
 

@@ -126,6 +126,7 @@
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
+    <Compile Include="Repository\ObjectRepository.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Generation\GenerationView.xaml.cs">
       <DependentUpon>GenerationView.xaml</DependentUpon>
@@ -178,7 +179,7 @@
       <DependentUpon>WireFrameGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Generation\WireFrame\WireFrameGenerationViewModel.cs" />
-    <Compile Include="MainModel.cs" />
+    <Compile Include="Repository\Repository.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
     <Page Include="Canvas3dView.xaml">

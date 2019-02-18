@@ -23,7 +23,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var box = BoxViewModel.Value;
             builder.Build(box);
             var polygonMesh = builder.PolygonMesh;
-            MainModel.Instance.Add(polygonMesh);
+            Repository.Instance.Objects.Add(polygonMesh);
         }
     }
 }
