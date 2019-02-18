@@ -1,7 +1,7 @@
 #include "Octree.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Core;
+using namespace Crystal::Algo;
 
 Octree::Octree(const Box3d& space) :
 	space(space)

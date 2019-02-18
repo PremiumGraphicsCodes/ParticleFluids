@@ -7,7 +7,7 @@
 #include "../../Crystal/Math/Box3d.h"
 
 namespace Crystal {
-	namespace Core {
+	namespace Algo {
 		class IParticle;
 
 class Octree
