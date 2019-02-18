@@ -16,7 +16,9 @@ public:
 
 	void clear();
 
-	void add(const Shader::TextureObject& texture, const std::string& name);
+	void add(const Graphics::Image& image, const std::string& name);
+
+	//void add(const Shader::TextureObject& texture, const std::string& name);
 
 	std::vector<Shader::TextureObject> getTextures() const { return textures; }
 

@@ -24,7 +24,9 @@ void TextureObjectRepository::clear()
 	textures.clear();
 }
 
-void TextureObjectRepository::add(const TextureObject& texture, const std::string& name)
+void TextureObjectRepository::add(const Image& image, const std::string& name)
 {
+	Crystal::Shader::TextureObject texture;
+	texture.create(image, nextId++);
 	textures.push_back(texture);
 }
