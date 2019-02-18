@@ -27,7 +27,7 @@ public:
 
 	bool build();
 
-	void render(const Shader::TextureObject& texture);
+	void render(const Shader::TextureObject& texture, const Shader::TextureObject& smoothTexture);
 
 	void setViewModel(const ObjectViewModel& vm, const AppearanceViewModel& avm);
 

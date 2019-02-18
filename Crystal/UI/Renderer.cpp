@@ -31,7 +31,8 @@ void Renderer::render(const int width, const int height, const TextureObjectRepo
 {
 	const auto& texx = textures.getTextures();
 	const auto& tex = texx[0];
-	objectRenderer.render(tex);
+	const auto& smoothTex = texx[1];
+	objectRenderer.render(tex, smoothTex);
 	objectIdRenderer.render();
 
 	glViewport(0, 0, width, height);

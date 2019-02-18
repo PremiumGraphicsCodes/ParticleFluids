@@ -20,14 +20,6 @@ bool ObjectRenderer::build()
 		return false;
 	}
 
-
-	/*	image.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
-	image.setColor(1, 0, ColorRGBAuc(0, 255, 0, 0));
-	image.setColor(0, 1, ColorRGBAuc(0, 0, 255, 0));
-	image.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
-	*/
-
-
 	frameBufferObject.build(512, 512);
 	return true;
 }
@@ -39,7 +31,7 @@ void ObjectRenderer::setViewModel(const ObjectViewModel& vm, const AppearanceVie
 	this->smoothRenderer.setBuffer(vm.getTriangleBuffer(), avm.getLightBuffer(), avm.getMaterialBuffer());
 }
 
-void ObjectRenderer::render(const TextureObject& texture)
+void ObjectRenderer::render(const TextureObject& texture, const TextureObject& smoothTexture)
 {
 	frameBufferObject.setTexture(texture);
 	//texture.bind();
@@ -49,7 +41,7 @@ void ObjectRenderer::render(const TextureObject& texture)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	pointRenderer.render(*camera);
 	wireRenderer.render(*camera);
-	smoothRenderer.render(*camera, texture);
+	smoothRenderer.render(*camera, smoothTexture);
 	//texture.unbind();
 	frameBufferObject.unbind();
 }
