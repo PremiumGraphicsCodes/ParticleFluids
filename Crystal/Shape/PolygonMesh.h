@@ -8,6 +8,8 @@
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
 
+#include "IShape.h"
+
 #include <list>
 
 namespace Crystal {
@@ -16,7 +18,7 @@ namespace Crystal {
 class Vertex;
 class Face;
 
-class PolygonMesh : private UnCopyable
+class PolygonMesh : public IShape
 {
 public:
 	PolygonMesh()
@@ -52,7 +54,7 @@ public:
 
 	Math::Vector3df getCenter() const;
 
-	void move(const Math::Vector3df& v);
+	void move(const Math::Vector3dd& v) override;
 
 	void transform(const Math::Matrix3dd& m);
 

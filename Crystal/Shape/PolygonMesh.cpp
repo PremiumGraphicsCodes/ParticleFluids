@@ -115,7 +115,7 @@ Vector3df PolygonMesh::getCenter() const
 	return center;
 }
 
-void PolygonMesh::move(const Vector3df& v)
+void PolygonMesh::move(const Vector3dd& v)
 {
 	const auto& vs = getVertices();
 	for (auto& vert : vs) {

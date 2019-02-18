@@ -1,5 +1,7 @@
 #pragma once
 
+#include "IShape.h"
+
 #include "Particle.h"
 #include "../Math/Box3d.h"
 
@@ -10,7 +12,7 @@ namespace Crystal {
 	namespace Shape {
 
 template<typename Attr>
-class ParticleSystem
+class ParticleSystem : public IShape
 {
 public:
 	ParticleSystem() {}
@@ -30,7 +32,7 @@ public:
 		particles.push_back(new Particle<Attr>(position, attr));
 	}
 
-	void move(const Math::Vector3dd& v) {
+	void move(const Math::Vector3dd& v) override {
 		for (auto p : particles) {
 			p->move(v);
 		}

@@ -2,11 +2,12 @@
 
 #include <list>
 #include "../Math/Line3d.h"
+#include "IShape.h"
 
 namespace Crystal {
 	namespace Shape {
 
-class WireFrame
+class WireFrame : public IShape
 {
 public:
 	explicit WireFrame(const std::vector<Math::Line3dd>& lines) :
@@ -17,7 +18,7 @@ public:
 		this->lines.push_back(l);
 	}
 
-	void move(const Math::Vector3dd& v) {
+	void move(const Math::Vector3dd& v) override {
 		for (auto& l : lines) {
 			l.move(v);
 		}
