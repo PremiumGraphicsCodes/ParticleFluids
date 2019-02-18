@@ -95,6 +95,9 @@
     <ClInclude Include="TransformUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
+    <ClInclude Include="TextureObjectRepository.h">
+      <Filter>Repository\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas.cpp" />
@@ -154,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="TransformUICtrl.cpp">
       <Filter>UICtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureObjectRepository.cpp">
+      <Filter>Repository\Appearance</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -32,6 +32,7 @@
     <ClInclude Include="LightObject.h" />
     <ClInclude Include="MaterialObject.h" />
     <ClInclude Include="MaterialObjectRepository.h" />
+    <ClInclude Include="TextureObjectRepository.h" />
     <ClInclude Include="TransformUICtrl.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Repository.h" />
@@ -62,6 +63,7 @@
     <ClCompile Include="ObjectIdRenderer.cpp" />
     <ClCompile Include="ObjectIdViewModel.cpp" />
     <ClCompile Include="MaterialObjectRepository.cpp" />
+    <ClCompile Include="TextureObjectRepository.cpp" />
     <ClCompile Include="TransformUICtrl.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Repository.cpp" />

@@ -20,6 +20,11 @@ void TextureObject::create(const Image& image, const int id)
 	send(image);
 }
 
+void TextureObject::clear()
+{
+	glDeleteTextures(1, &texHandle);
+}
+
 void TextureObject::bind() const
 {
 	glActiveTexture(GL_TEXTURE0 + id);

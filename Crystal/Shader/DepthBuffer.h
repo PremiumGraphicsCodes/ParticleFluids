@@ -7,33 +7,33 @@
 namespace Crystal {
 	namespace Shader {
 
-		class DepthBuffer
-		{
-		public:
-			~DepthBuffer() {
-				unbind();
-			}
+class DepthBuffer
+{
+public:
+	~DepthBuffer() {
+		unbind();
+	}
 
-			void setTexture(const DepthTextureObject& texture);
+	void setTexture(const DepthTextureObject& texture);
 
-			bool build(const DepthTextureObject& depthTexture);
+	bool build(const DepthTextureObject& depthTexture);
 
-			bool bind() const;
+	bool bind() const;
 
-			bool unbind() const;
+	bool unbind() const;
 
-			int getWidth() const { return width; }
+	int getWidth() const { return width; }
 
-			int getHeight() const { return height; }
+	int getHeight() const { return height; }
 
-			DepthTextureObject* getTexture() { return &texture; }
+	DepthTextureObject* getTexture() { return &texture; }
 
-		private:
-			GLuint frameBuffer;
-			DepthTextureObject texture;
-			int width;
-			int height;
-		};
+private:
+	GLuint frameBuffer;
+	DepthTextureObject texture;
+	int width;
+	int height;
+};
 
 	}
 }

@@ -24,6 +24,8 @@ public:
 
 	void create(const Graphics::Imagef& image, const int id = 0);
 
+	void clear();
+
 	void send(const Graphics::Image& image);
 
 	void send(const Graphics::Imagef& image);
