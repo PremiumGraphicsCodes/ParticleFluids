@@ -61,6 +61,9 @@
     <ClCompile Include="TransformButton.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
+    <ClCompile Include="TextureTreeList.cpp">
+      <Filter>TreeList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -128,6 +131,9 @@
     </ClInclude>
     <ClInclude Include="TransformButton.h">
       <Filter>Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureTreeList.h">
+      <Filter>TreeList</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
