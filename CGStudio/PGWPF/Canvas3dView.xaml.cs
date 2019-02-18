@@ -39,6 +39,7 @@ namespace PG.CGStudio
         private void WindowsFormsHost_Initialized(object sender, System.EventArgs e)
         {
             this.renderer = new PG.CLI.Renderer(Panel.Handle);
+            this.renderer.Build(MainModel.Instance.Adapter);
             this.ctrl = new UICtrl.CameraUICtrl(renderer.camera);
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
