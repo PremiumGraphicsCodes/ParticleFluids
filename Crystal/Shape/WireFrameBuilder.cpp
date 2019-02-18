@@ -30,7 +30,6 @@ void WireFrameBuilder::build(const Box3d& box)
 	lines.push_back(Line3dd::fromPoints(vertices[1], vertices[5]));
 	lines.push_back(Line3dd::fromPoints(vertices[2], vertices[6]));
 	lines.push_back(Line3dd::fromPoints(vertices[3], vertices[7]));
-
 }
 
 void WireFrameBuilder::build(const Sphere3d& sphere)
@@ -44,4 +43,16 @@ void WireFrameBuilder::build(const Sphere3d& sphere)
 		grid.push_back(g);
 	}
 	make(grid);
+}
+
+void WireFrameBuilder::make(const std::vector<std::vector<Vector3dd>>& grid)
+{
+	for (int i = 0; i < grid.size() - 1; ++i) {
+		for (int j = 0; j < grid[i].size() - 1; ++j) {
+			lines.push_back(Math::Line3dd(grid[i][j], grid[i + 1][j] - grid[i][j]));
+			lines.push_back(Math::Line3dd(grid[i][j], grid[i][j + 1] - grid[i][j]));
+			//lines.push_back(Math::Line3dd(grid[i+1][j], grid[i+1][j + 1]));
+			//lines.push_back(Math::Line3dd(grid[i][j+1], grid[i+1][j + 1]));
+		}
+	}
 }

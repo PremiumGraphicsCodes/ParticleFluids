@@ -2,7 +2,7 @@
 
 #include "IShape.h"
 
-#include "Particle.h"
+#include "IParticleSystem.h"
 #include "../Math/Box3d.h"
 
 #include "../Math/Matrix3d.h"
@@ -12,7 +12,7 @@ namespace Crystal {
 	namespace Shape {
 
 template<typename Attr>
-class ParticleSystem : public IShape
+class ParticleSystem : public IParticleSystem
 {
 public:
 	ParticleSystem() {}
@@ -51,6 +51,15 @@ public:
 	}
 
 	std::vector<Particle<Attr>*> getParticles() const { return particles; }
+
+	std::vector<IParticle*> getIParticles() const override
+	{
+		std::vector<IParticle*> ps;
+		for (auto p : particles) {
+			ps.push_back(p);
+		}
+		return ps;
+	}
 
 	Math::Box3d getBoundingBox() {
 		if (particles.empty()) {
