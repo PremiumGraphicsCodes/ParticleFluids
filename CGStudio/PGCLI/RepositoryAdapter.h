@@ -12,6 +12,7 @@ namespace Crystal {
 namespace PG {
 	namespace CLI {
 		ref class ObjectRepositoryAdapter;
+		ref class AppearanceObjectRepositoryAdapter;
 
 public ref class RepositoryAdapter
 {
@@ -28,8 +29,12 @@ public:
 
 	ObjectRepositoryAdapter^ Objects() { return objects; }
 
+	AppearanceObjectRepositoryAdapter^ Appearance() { return appearance; }
+
 private:
 	ObjectRepositoryAdapter^ objects;
+
+	AppearanceObjectRepositoryAdapter^ appearance;
 
 internal:
 	Crystal::UI::Repository* instance;

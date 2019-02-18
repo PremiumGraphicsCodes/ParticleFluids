@@ -14,11 +14,11 @@ namespace PG {
 public ref class AppearanceObjectRepositoryAdapter
 {
 public:
-	AppearanceObjectRepositoryAdapter();
-
 	~AppearanceObjectRepositoryAdapter();
 
 internal:
+	AppearanceObjectRepositoryAdapter(Crystal::UI::AppearanceObjectRepository* instance);
+
 	Crystal::UI::AppearanceObjectRepository* instance;
 };
 

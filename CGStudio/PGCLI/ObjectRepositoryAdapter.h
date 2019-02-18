@@ -14,8 +14,6 @@ namespace PG {
 public ref class ObjectRepositoryAdapter
 {
 public:
-	ObjectRepositoryAdapter();
-
 	~ObjectRepositoryAdapter(void);
 
 	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src);

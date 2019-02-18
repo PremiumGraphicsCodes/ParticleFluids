@@ -6,9 +6,6 @@
 
 using namespace PG::CLI;
 
-ObjectRepositoryAdapter::ObjectRepositoryAdapter()
-{}
-
 ObjectRepositoryAdapter::~ObjectRepositoryAdapter()
 {}
 
