@@ -1,27 +1,30 @@
 #pragma once
-/*
+
 using namespace System;
 
 namespace Crystal {
 	namespace UI {
-		class ModelRepository;
+		class ObjectRepository;
 	}
 }
 
-namespace PGCLI {
+namespace PG {
+	namespace CLI {
 
-	public ref class ObjectRepositoryAdapter
-	{
-	public:
-		ObjectRepositoryAdapter();
+public ref class ObjectRepositoryAdapter
+{
+public:
+	ObjectRepositoryAdapter();
 
-		~ObjectRepositoryAdapter(void);
+	~ObjectRepositoryAdapter(void);
 
-		int AddWireFrameObject();
+	int AddWireFrameObject();
 
-	internal:
-		Crystal::UI::ModelRepository* instance;
-	};
+internal:
+	ObjectRepositoryAdapter(Crystal::UI::ObjectRepository* instance);
 
+	Crystal::UI::ObjectRepository* instance;
+};
+
+	}
 }
-*/

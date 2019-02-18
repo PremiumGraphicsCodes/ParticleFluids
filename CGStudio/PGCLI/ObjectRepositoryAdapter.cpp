@@ -2,8 +2,7 @@
 #include "ObjectRepositoryAdapter.h"
 #include "../../Crystal/UI/ObjectRepository.h"
 
-/*
-using namespace PGCLI;
+using namespace PG::CLI;
 
 ObjectRepositoryAdapter::ObjectRepositoryAdapter()
 {}
@@ -15,4 +14,8 @@ int ObjectRepositoryAdapter::AddWireFrameObject()
 {
 	return 0;
 }
-*/
+
+ObjectRepositoryAdapter::ObjectRepositoryAdapter(Crystal::UI::ObjectRepository* instance)
+{
+	this->instance = instance;
+}

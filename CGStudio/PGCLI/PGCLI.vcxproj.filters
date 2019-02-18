@@ -7,7 +7,15 @@
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="CameraAdapter.h" />
-    <ClInclude Include="RepositoryAdapter.h" />
+    <ClInclude Include="RepositoryAdapter.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectRepositoryAdapter.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="AppearanceObjectRepositoryAdapter.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -15,9 +23,22 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="CameraAdapter.cpp" />
-    <ClCompile Include="RepositoryAdapter.cpp" />
+    <ClCompile Include="RepositoryAdapter.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectRepositoryAdapter.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="AppearanceObjectRepositoryAdapter.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Repository">
+      <UniqueIdentifier>{660dd9ac-6025-47a0-b204-a3aef84c0c7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

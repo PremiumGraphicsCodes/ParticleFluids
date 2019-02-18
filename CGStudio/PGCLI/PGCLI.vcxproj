@@ -131,18 +131,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AppearanceObjectRepositoryAdapter.h" />
     <ClInclude Include="CameraAdapter.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Converter.h" />
+    <ClInclude Include="ObjectRepositoryAdapter.h" />
     <ClInclude Include="RepositoryAdapter.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AppearanceObjectRepositoryAdapter.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CameraAdapter.cpp" />
     <ClCompile Include="Converter.cpp" />
+    <ClCompile Include="ObjectRepositoryAdapter.cpp" />
     <ClCompile Include="RepositoryAdapter.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="stdafx.cpp">

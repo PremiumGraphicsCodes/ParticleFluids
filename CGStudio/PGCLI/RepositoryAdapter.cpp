@@ -3,6 +3,8 @@
 
 #include "RepositoryAdapter.h"
 
+#include "ObjectRepositoryAdapter.h"
+
 #include "../../Crystal/UI/Repository.h"
 //#include "../../Crystal/UI/ViewModel.h"
 
@@ -15,6 +17,7 @@ using namespace PG::CLI;
 RepositoryAdapter::RepositoryAdapter() :
 	instance(new Crystal::UI::Repository())
 {
+	objects = gcnew ObjectRepositoryAdapter(instance->getObjects());
 }
 
 RepositoryAdapter::~RepositoryAdapter()

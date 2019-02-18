@@ -11,6 +11,7 @@ namespace Crystal {
 
 namespace PG {
 	namespace CLI {
+		ref class ObjectRepositoryAdapter;
 
 public ref class RepositoryAdapter
 {
@@ -30,6 +31,11 @@ public:
 	int AddWireFrame(PG::Core::Shape::WireFrame^ src);
 
 	int AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src);
+
+	ObjectRepositoryAdapter^ Objects() { return objects; }
+
+private:
+	ObjectRepositoryAdapter^ objects;
 
 internal:
 	Crystal::UI::Repository* instance;
