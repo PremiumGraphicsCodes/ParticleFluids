@@ -2,7 +2,7 @@
 #define __CRYSTAL_GRAPHICS_ORTHOGONAL_CAMERA_H__
 
 #include "ICamera.h"
-#include "../ThirdParty/glm-0.9.8.5/glm/gtc/matrix_transform.hpp"
+#include "../ThirdParty/glm-0.9.9.3/glm/gtc/matrix_transform.hpp"
 
 namespace Crystal {
 	namespace Graphics {

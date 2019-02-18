@@ -25,7 +25,9 @@ public:
 		near_(near_),
 		far_(far_),
 		scale(1.0f)
-	{}
+	{
+		rotation = Math::Matrix4df(1.0f);
+	}
 
 	virtual ~ICamera() = default;
 
