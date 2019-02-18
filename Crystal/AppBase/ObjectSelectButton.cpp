@@ -10,7 +10,7 @@ void ObjectSelectButton::onShow()
 	ImGui::InputInt("Id", &id);
 	if (ImGui::Button("Pick")) {
 		auto ctrl = new PickUICtrl(getModel(), getCanvas());
-		auto func = [=](int id) {
+		auto func = [=](int parentId, int childId) {
 			return this->id = id;
 		};
 		ctrl->setFunction(func);

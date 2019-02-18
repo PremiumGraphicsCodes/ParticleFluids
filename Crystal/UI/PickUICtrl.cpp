@@ -12,7 +12,7 @@ PickUICtrl::PickUICtrl(Repository* model, Canvas* canvas) :
 	model(model),
 	canvas(canvas)
 {
-	function = [](int id) {
+	function = [](int parentId, int childId) {
 		;
 	};
 }
@@ -31,14 +31,15 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 		return;
 	}
 	if (model->getObjects()->getParticleSystems()->exists(parentId)) {
-		function(parentId);
-
+		function(parentId, childId);
+		/*
 		auto selected = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);
 		if (selected != nullptr) {
 			const auto size = selected->getAttribute().size * 100.0;
 			model->getItems()->getParticleSystems()->addObject(selected->getPosition(), Graphics::ColorRGBAf(1, 0, 0, 1), size, "");
 			canvas->setViewModel(model->toViewModel());
 		}
+		*/
 	}
 }
 

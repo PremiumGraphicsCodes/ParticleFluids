@@ -12,9 +12,9 @@ namespace Crystal {
 class PickUICtrl : public IUICtrl
 {
 public:
-	virtual ~PickUICtrl() {}
-
 	PickUICtrl(Repository* model, Canvas* canvas);
+
+	virtual ~PickUICtrl() {}
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 
@@ -30,12 +30,12 @@ public:
 
 	virtual void onWheel(const float dx) override;
 
-	void setFunction(const std::function<void(int)>& func) { this->function = func; }
+	void setFunction(const std::function<void(int, int)>& func) { this->function = func; }
 
 private:
 	Repository* model;
 	Canvas* canvas;
-	std::function<void(int)> function;
+	std::function<void(int, int)> function;
 };
 	}
 }

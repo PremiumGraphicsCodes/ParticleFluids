@@ -12,12 +12,13 @@ void PositionSelectButton::onShow()
 		auto ctrl = new PickUICtrl(getModel(), getCanvas());
 		auto model = getModel();
 		//model->getObjects()->getParticleSystems()->findParticleById();
-		/*
-		auto func = [=](int id) {
-			return this->position =
+		auto func = [=](int parentId, int childId) {
+			auto particle = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);
+			if (particle != nullptr) {
+				this->position = particle->getPosition();
+			}
 		};
 		ctrl->setFunction(func);
-		*/
 		getCanvas()->setUICtrl(ctrl);
 	}
 }
