@@ -56,7 +56,7 @@ public:
 
 	void move(const Math::Vector3dd& v) override;
 
-	void transform(const Math::Matrix3dd& m);
+	void transform(const Math::Matrix3dd& m) override;
 
 	void transform(const Math::Matrix4dd& m);
 

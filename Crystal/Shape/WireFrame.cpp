@@ -21,3 +21,17 @@ std::vector<Vector3dd> WireFrame::getVertices() const
 	vertices.push_back(lines.back().getEnd());
 	return vertices;
 }
+
+void WireFrame::move(const Vector3dd& v)
+{
+	for (auto& l : lines) {
+		l.move(v);
+	}
+}
+
+void WireFrame::transform(const Matrix3dd& m)
+{
+	for (auto& l : lines) {
+		l.transform(m);
+	}
+}

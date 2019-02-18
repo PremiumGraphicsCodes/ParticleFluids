@@ -38,7 +38,7 @@ public:
 		}
 	}
 
-	void transform(const Math::Matrix3dd& m) {
+	void transform(const Math::Matrix3dd& m) override {
 		for (auto p : particles) {
 			p->transform(m);
 		}

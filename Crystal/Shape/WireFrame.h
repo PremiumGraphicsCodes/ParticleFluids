@@ -10,6 +10,8 @@ namespace Crystal {
 class WireFrame : public IShape
 {
 public:
+	WireFrame() {};
+
 	explicit WireFrame(const std::vector<Math::Line3dd>& lines) :
 		lines(lines)
 	{}
@@ -18,27 +20,19 @@ public:
 		this->lines.push_back(l);
 	}
 
-	void move(const Math::Vector3dd& v) override {
-		for (auto& l : lines) {
-			l.move(v);
-		}
-	}
+	void move(const Math::Vector3dd& v) override;
 
-	std::vector<Math::Line3dd> getLines() const;
-
-	std::vector<Math::Vector3dd> getVertices() const;
-
-	void transform(const Math::Matrix3dd& m) {
-		for (auto& l : lines) {
-			l.transform(m);
-		}
-	}
+	void transform(const Math::Matrix3dd& m) override;
 
 	void transform(const Math::Matrix4dd& m) {
 		for (auto& l : lines) {
 			l.transform(m);
 		}
 	}
+
+	std::vector<Math::Line3dd> getLines() const;
+
+	std::vector<Math::Vector3dd> getVertices() const;
 
 private:
 	std::vector<Math::Line3dd> lines;
