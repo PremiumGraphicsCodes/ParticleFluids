@@ -4,7 +4,7 @@
 #include "ColorRGBA.h"
 #include "IBuffer.h"
 #include "../Math/Quaternion.h"
-#include "../ThirdParty/glm-0.9.8.5/glm/glm.hpp"
+#include "../Math/glm.h"
 
 namespace Crystal {
 	namespace Graphics {

@@ -5,7 +5,7 @@
 
 //#include "../Math/Vector2d.h"
 #include "../Math/Vector3d.h"
-#include "../ThirdParty/glm-0.9.8.5/glm/glm.hpp"
+#include "../Math/glm.h"
 
 namespace Crystal {
 	namespace Graphics {

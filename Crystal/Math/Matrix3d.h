@@ -1,7 +1,7 @@
 #ifndef __CRYSTAL_MATH_MATRIX_3D_H_
 #define __CRYSTAL_MATH_MATRIX_3D_H_
 
-#include "../ThirdParty/glm-0.9.8.5/glm/glm.hpp"
+#include "glm.h"
 
 #include <vector>
 #include <array>

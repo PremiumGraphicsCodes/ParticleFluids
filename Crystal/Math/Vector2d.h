@@ -4,7 +4,7 @@
 #include <cmath>
 #include <vector>
 #include "Tolerance.h"
-#include "../ThirdParty/glm-0.9.8.5/glm/glm.hpp"
+#include "glm.h"
 
 namespace Crystal {
 	namespace Math {
