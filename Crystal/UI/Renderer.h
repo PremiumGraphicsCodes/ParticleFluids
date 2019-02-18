@@ -23,7 +23,7 @@ public:
 
 	bool build();
 
-	void render(const int width, const int height);
+	void render(const int width, const int height, const TextureObjectRepository& textures);
 
 	void setViewModel(ViewModel& vm) {
 		const auto& ovm = vm.object;

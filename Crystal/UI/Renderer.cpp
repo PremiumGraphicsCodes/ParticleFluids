@@ -27,15 +27,16 @@ bool Renderer::build()
 	return true;
 }
 
-void Renderer::render(const int width, const int height)
+void Renderer::render(const int width, const int height, const TextureObjectRepository& textures)
 {
-	objectRenderer.render();
+	const auto& texx = textures.getTextures();
+	const auto& tex = texx[0];
+	objectRenderer.render(tex);
 	objectIdRenderer.render();
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	auto texture = objectRenderer.getTexture();
-	renderer.render(*texture);
+	renderer.render(tex);
 }

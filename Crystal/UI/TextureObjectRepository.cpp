@@ -1,6 +1,9 @@
 #include "TextureObjectRepository.h"
 
+#include "../Shader/TextureObject.h"
+
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::UI;
 
 TextureObjectRepository::TextureObjectRepository() :
@@ -21,10 +24,7 @@ void TextureObjectRepository::clear()
 	textures.clear();
 }
 
-/*
-void TextureObjectRepository::add(Material* m, const std::string& name)
+void TextureObjectRepository::add(const TextureObject& texture, const std::string& name)
 {
-	MaterialObject material(nextId++, name, m);
-	materials.push_back(material);
+	textures.push_back(texture);
 }
-*/

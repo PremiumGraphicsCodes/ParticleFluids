@@ -6,6 +6,8 @@
 
 #include "../Shader/FrameBuffer.h"
 
+#include "TextureObjectRepository.h"
+
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
@@ -25,11 +27,9 @@ public:
 
 	bool build();
 
-	void render();
+	void render(const Shader::TextureObject& texture);
 
 	void setViewModel(const ObjectViewModel& vm, const AppearanceViewModel& avm);
-
-	Shader::TextureObject* getTexture() { return &texture; }
 
 private:
 	Shader::PointRenderer pointRenderer;
@@ -39,8 +39,6 @@ private:
 	Graphics::ICamera* camera;
 
 	Shader::FrameBuffer frameBufferObject;
-	Shader::TextureObject texture;
-
 };
 	}
 }

@@ -8,6 +8,7 @@
 #include "imgui.h"
 #include "imgui_impl_glfw_gl3.h"
 #include "../UI/Canvas.h"
+#include "../UI/Repository.h"
 
 #include "../Graphics/PerspectiveCamera.h"
 #include <chrono>
@@ -127,6 +128,12 @@ bool Window::init()
 	//canvas->addUICommand(new CameraUICtrl());
 	canvas->build();
 
+	Image image(512, 512);
+	Crystal::Shader::TextureObject texture;
+	texture.create(image, 0);
+	model->getAppearances()->getTextures()->add(texture, "");
+
+
 
 	return true;
 }
@@ -147,12 +154,13 @@ void Window::show()
 			p->show();
 		}
 
-		glClearColor(0,0,0,0);
+		glClearColor(0, 0, 0, 0);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		canvas->render(width, height);
+		const auto& textures = model->getAppearances()->getTextures();
+		canvas->render(width, height, *textures);
 
 		glFlush();
 

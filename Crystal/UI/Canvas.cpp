@@ -23,11 +23,11 @@ void Canvas::build()
 	renderer->build();
 }
 
-void Canvas::render(const int width, const int height)
+void Canvas::render(const int width, const int height, const TextureObjectRepository& textures)
 {
 	this->width = width;
 	this->height = height;
-	renderer->render(width, height);
+	renderer->render(width, height, textures);
 }
 
 void Canvas::onLeftButtonDown(const Vector2df& position)

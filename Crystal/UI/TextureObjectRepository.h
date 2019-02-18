@@ -18,7 +18,7 @@ public:
 
 	void add(const Shader::TextureObject& texture, const std::string& name);
 
-	//std::vector<MaterialObject> getMaterials() const { return materials; }
+	std::vector<Shader::TextureObject> getTextures() const { return textures; }
 
 private:
 	std::vector<Shader::TextureObject> textures;

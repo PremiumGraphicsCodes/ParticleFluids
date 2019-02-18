@@ -3,6 +3,7 @@
 #include "../Util/UnCopyable.h"
 #include "LightObjectRepository.h"
 #include "MaterialObjectRepository.h"
+#include "TextureObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {
@@ -14,22 +15,24 @@ public:
 	{}
 
 	~AppearanceObjectRepository()
-	{
-
-	}
+	{}
 
 	void clear() {
 		lights.clear();
 		materials.clear();
+		textures.clear();
 	}
 
 	LightObjectRepository* getLights() { return &lights; }
 
 	MaterialObjectRepository* getMaterials() { return &materials; }
 
+	TextureObjectRepository* getTextures() { return &textures; }
+
 private:
 	LightObjectRepository lights;
 	MaterialObjectRepository materials;
+	TextureObjectRepository textures;
 };
 	}
 }

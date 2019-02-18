@@ -34,7 +34,7 @@ public:
 		this->renderer->setViewModel(viewModel);
 	}
 
-	void render(const int width, const int height);
+	void render(const int width, const int height, const TextureObjectRepository& textures);
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 

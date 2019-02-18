@@ -5,6 +5,7 @@
 #include "../ThirdParty/stb/stb_image.h"
 
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::UI;
 
 bool ObjectRenderer::build()
@@ -19,15 +20,13 @@ bool ObjectRenderer::build()
 		return false;
 	}
 
-	Image image(512, 512);
 
-/*	image.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
+	/*	image.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
 	image.setColor(1, 0, ColorRGBAuc(0, 255, 0, 0));
 	image.setColor(0, 1, ColorRGBAuc(0, 0, 255, 0));
 	image.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
 	*/
 
-	texture.create(image, 0);
 
 	frameBufferObject.build(512, 512);
 	return true;
@@ -40,7 +39,7 @@ void ObjectRenderer::setViewModel(const ObjectViewModel& vm, const AppearanceVie
 	this->smoothRenderer.setBuffer(vm.getTriangleBuffer(), avm.getLightBuffer(), avm.getMaterialBuffer());
 }
 
-void ObjectRenderer::render()
+void ObjectRenderer::render(const TextureObject& texture)
 {
 	frameBufferObject.setTexture(texture);
 	//texture.bind();
