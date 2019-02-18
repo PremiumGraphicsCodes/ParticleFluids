@@ -13,7 +13,7 @@ class ITreeList : public IWindow
 protected:
 	ITreeList(const std::string& name, Repository* model, Canvas* canvas) :
 		IWindow(name),
-		model(model),
+		repository(model),
 		canvas(canvas)
 	{}
 
@@ -25,12 +25,12 @@ protected:
 
 	std::string getName() const { return name; }
 
-	Repository* getModel() { return model; }
+	Repository* getRepository() { return repository; }
 
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	Repository* model;
+	Repository* repository;
 	Canvas* canvas;
 };
 

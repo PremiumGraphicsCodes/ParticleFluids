@@ -11,7 +11,7 @@ TextureTreeList::TextureTreeList(const std::string& name, Repository* model, Can
 
 void TextureTreeList::onShow()
 {
-	const auto& textures = getModel()->getAppearances()->getTextures()->getTextures();
+	const auto& textures = getRepository()->getAppearances()->getTextures()->getTextures();
 
 	auto n = getName();
 	auto str = n.c_str();

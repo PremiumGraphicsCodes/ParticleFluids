@@ -11,7 +11,7 @@ MaterialTreeList::MaterialTreeList(const std::string& name, Repository* model, C
 
 void MaterialTreeList::onShow()
 {
-	const auto& materials = getModel()->getAppearances()->getMaterials()->getMaterials();
+	const auto& materials = getRepository()->getAppearances()->getMaterials()->getMaterials();
 
 	auto n = getName();
 	auto str = n.c_str();
