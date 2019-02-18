@@ -58,7 +58,7 @@ public:
 
 	void transform(const Math::Matrix3dd& m) override;
 
-	void transform(const Math::Matrix4dd& m);
+	void transform(const Math::Matrix4dd& m) override;
 
 	//void scale(const Math::Vector3df& s);
 

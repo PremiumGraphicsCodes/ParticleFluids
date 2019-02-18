@@ -24,11 +24,7 @@ public:
 
 	void transform(const Math::Matrix3dd& m) override;
 
-	void transform(const Math::Matrix4dd& m) {
-		for (auto& l : lines) {
-			l.transform(m);
-		}
-	}
+	void transform(const Math::Matrix4dd& m) override;
 
 	std::vector<Math::Line3dd> getLines() const;
 

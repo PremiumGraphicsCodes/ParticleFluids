@@ -16,7 +16,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vertex.h" />
     <ClInclude Include="TriangleMesh.h" />
     <ClInclude Include="IParticle.h">
       <Filter>ParticleSystem</Filter>
@@ -46,9 +45,11 @@
       <Filter>PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="IShape.h" />
+    <ClInclude Include="Vertex.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WireFrame.cpp">
       <Filter>WireFrame</Filter>
     </ClCompile>
@@ -65,6 +66,9 @@
       <Filter>PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="Face.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
       <Filter>PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>

@@ -44,7 +44,7 @@ public:
 		}
 	}
 
-	void transform(const Math::Matrix4dd& m) {
+	void transform(const Math::Matrix4dd& m) override {
 		for (auto p : particles) {
 			p->transform(m);
 		}

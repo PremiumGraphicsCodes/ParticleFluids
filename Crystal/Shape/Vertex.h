@@ -16,17 +16,13 @@ namespace Crystal {
 class Vertex
 {
 public:
-	Vertex(const Math::Vector3df& position, const unsigned int id = -1);
+	explicit Vertex(const Math::Vector3df& position);
 
-	Vertex(const Math::Vector3df& position, const Math::Vector3df& normal, const unsigned int id = -1);
+	Vertex(const Math::Vector3df& position, const Math::Vector3df& normal);
 
-	Vertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const unsigned int id = -1);
+	Vertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord);
 
 	Vertex* clone();
-
-	void setId(const int id) { this->id = id; }
-
-	unsigned int getId() const { return id; }
 
 	void reverse();
 
@@ -50,7 +46,6 @@ private:
 	Math::Vector3df position;
 	Math::Vector3df normal;
 	Math::Vector2df texCoord;
-	unsigned int id;
 };
 
 

@@ -82,7 +82,7 @@ public:
 
 	HalfEdge* getPair() const;
 
-	int getHashKey() const;
+	//int getHashKey() const;
 
 	//float getEndAngle() const;
 

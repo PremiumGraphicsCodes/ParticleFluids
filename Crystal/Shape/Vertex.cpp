@@ -4,27 +4,24 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
-Vertex::Vertex(const Vector3df& position, const unsigned int id) :
-	position(position),
-	id(id)
+Vertex::Vertex(const Vector3df& position) :
+	position(position)
 {}
 
-Vertex::Vertex(const Vector3df& position, const Vector3df& normal, const unsigned int id) :
+Vertex::Vertex(const Vector3df& position, const Vector3df& normal) :
 	position(position),
-	normal(normal),
-	id(id)
+	normal(normal)
 {}
 
-Vertex::Vertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const unsigned int id) :
+Vertex::Vertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord) :
 	position(position),
 	normal(normal),
-	texCoord(texCoord),
-	id(id)
+	texCoord(texCoord)
 {}
 
 Vertex* Vertex::clone()
 {
-	return new Vertex(getPosition(), getNormal(), id);
+	return new Vertex(getPosition(), getNormal());
 }
 
 void Vertex::reverse()

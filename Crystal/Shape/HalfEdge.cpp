@@ -184,6 +184,7 @@ HalfEdge* HalfEdge::getPair() const
 	return pair;
 }
 
+/*
 int HalfEdge::getHashKey() const
 {
 	auto id1 = start->getId();
@@ -193,6 +194,7 @@ int HalfEdge::getHashKey() const
 	}
 	return (id1 | (id2 << 16));
 }
+*/
 
 /*
 float HalfEdge::getEndAngle() const
