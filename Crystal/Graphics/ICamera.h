@@ -16,17 +16,19 @@ public:
 	ICamera() :
 		near_(1.0f),
 		far_(10.0f),
-		scale(1.0f)
-	{}
+		scale(1.0f),
+		rotation(1.0f)
+	{
+	}
 
 	ICamera(const glm::vec3& eye, const glm::vec3& target, const float near_, const float far_) :
 		eye(eye),
 		target(target),
 		near_(near_),
 		far_(far_),
-		scale(1.0f)
+		scale(1.0f),
+		rotation(1.0f)
 	{
-		rotation = Math::Matrix4df(1.0f);
 	}
 
 	virtual ~ICamera() = default;
