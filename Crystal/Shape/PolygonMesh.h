@@ -66,7 +66,7 @@ public:
 
 	void merge(PolygonMesh& rhs);
 
-	void reverse();
+	//void reverse();
 
 	std::list<Vertex*> findInnerVertices();
 

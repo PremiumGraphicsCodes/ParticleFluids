@@ -13,28 +13,31 @@
 namespace Crystal {
 	namespace Shape {
 
+struct VertexAttr
+{
+	int id;
+	Math::Vector3df normal;
+	Math::Vector2df texCoord;
+};
+
 class Vertex
 {
 public:
-	explicit Vertex(const Math::Vector3df& position);
+	Vertex(const Math::Vector3df& position, const VertexAttr& attr);
 
-	Vertex(const Math::Vector3df& position, const Math::Vector3df& normal);
-
-	Vertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord);
+	VertexAttr getAttr() const { return attr; }
 
 	Vertex* clone();
 
-	void reverse();
-
 	Math::Vector3df getPosition() const { return position; }
 
-	Math::Vector3df getNormal() const { return normal; }
+	Math::Vector3df getNormal() const { return attr.normal; }
 
-	Math::Vector2df getTexCoord() const { return texCoord; }
+	Math::Vector2df getTexCoord() const { return attr.texCoord; }
 
 	void move(const Math::Vector3df& v) { this->position += v; }
 
-	void setNormal(const Math::Vector3df& n) { this->normal = n; }
+	void setNormal(const Math::Vector3df& n) { this->attr.normal = n; }
 
 	void transform(const Math::Matrix3dd& m) { position = m * position; }
 
@@ -44,8 +47,7 @@ public:
 
 private:
 	Math::Vector3df position;
-	Math::Vector3df normal;
-	Math::Vector2df texCoord;
+	VertexAttr attr;
 };
 
 

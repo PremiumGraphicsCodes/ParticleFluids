@@ -20,7 +20,11 @@ void PolygonMeshBuilder::build(const Sphere3d& sphere, const int unum, const int
 	for (double u = 0.0; u < 1.0; u +=du) {
 		std::vector<Vertex*> vs;
 		for (double v = 0.0; v < 1.0; v+=dv) {
-			Vertex* vert = new Vertex(sphere.getPosition(u, v), sphere.getNormal(u, v), Vector2df(u,v));
+			VertexAttr attr;
+			attr.id = nextVertexId++;
+			attr.normal = sphere.getNormal(u,v);
+			attr.texCoord = Vector2df(u, v);
+			Vertex* vert = new Vertex(sphere.getPosition(u, v), attr);
 			vs.push_back(vert);
 			this->vertices.push_back(vert);
 		}
@@ -44,10 +48,20 @@ void PolygonMeshBuilder::build(const Vector3dd& start, const Vector3dd& uvec, co
 {
 	const auto& normal = -glm::cross(uvec, vvec);
 
-	auto v0 = new Vertex(start, normal, Vector2df(0,0));
-	auto v1 = new Vertex(start + uvec, normal, Vector2df(1,0));
-	auto v2 = new Vertex(start + vvec, normal, Vector2df(0,1));
-	auto v3 = new Vertex(start + uvec + vvec, normal, Vector2df(1,1));
+	VertexAttr attr;
+	attr.id = nextVertexId++;
+	attr.normal = normal;
+	attr.texCoord = Vector2df(0, 0);
+	auto v0 = new Vertex(start, attr);
+	attr.id = nextVertexId++;
+	attr.texCoord = Vector2df(1, 0);
+	auto v1 = new Vertex(start + uvec, attr);
+	attr.id = nextVertexId++;
+	attr.texCoord = Vector2df(0, 1);
+	auto v2 = new Vertex(start + vvec, attr);
+	attr.id = nextVertexId++;
+	attr.texCoord = Vector2df(1, 1);
+	auto v3 = new Vertex(start + uvec + vvec, attr);
 	vertices.push_back(v0);
 	vertices.push_back(v1);
 	vertices.push_back(v2);

@@ -169,6 +169,7 @@ void PolygonMesh::merge(PolygonMesh& rhs)
 	rhs.clear();
 }
 
+/*
 void PolygonMesh::reverse()
 {
 	auto vs = getVertices();
@@ -179,6 +180,7 @@ void PolygonMesh::reverse()
 		f->reverse();
 	}
 }
+*/
 
 std::list<Vertex*> PolygonMesh::findBoundaryVertices()
 {

@@ -12,7 +12,8 @@ class PolygonMeshBuilder
 {
 public:
 	PolygonMeshBuilder() :
-		nextId(0)
+		nextId(0),
+		nextVertexId(0)
 	{}
 
 	void build(const Math::Box3d& box);
@@ -30,6 +31,7 @@ private:
 	std::list<Face*> faces;
 	//std::vector<Vertex*> vertices;
 	int nextId;
+	int nextVertexId;
 };
 
 	}

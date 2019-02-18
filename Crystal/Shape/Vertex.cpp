@@ -4,29 +4,14 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
-Vertex::Vertex(const Vector3df& position) :
-	position(position)
-{}
-
-Vertex::Vertex(const Vector3df& position, const Vector3df& normal) :
+Vertex::Vertex(const Vector3df& position,const VertexAttr& attr) :
 	position(position),
-	normal(normal)
-{}
-
-Vertex::Vertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord) :
-	position(position),
-	normal(normal),
-	texCoord(texCoord)
+	attr(attr)
 {}
 
 Vertex* Vertex::clone()
 {
-	return new Vertex(getPosition(), getNormal());
-}
-
-void Vertex::reverse()
-{
-	this->normal = (-getNormal());
+	return new Vertex(getPosition(), attr);
 }
 
 Box3d Util::getBoundingBox(const std::list<Vertex*>& vertices)

@@ -43,11 +43,10 @@ public:
 		}
 		const auto& faces = polygon.getFaces();
 		std::vector<unsigned int> indices;
-		int id = 0;
 		for (auto f : faces) {
-			indices.push_back(id++);
-			indices.push_back(id++);
-			indices.push_back(id++);
+			indices.push_back(f->getV1()->getAttr().id);
+			indices.push_back(f->getV2()->getAttr().id);
+			indices.push_back(f->getV3()->getAttr().id);
 		}
 		TriangleBufferBlock block(indices, mat);
 		blocks.push_back(block);
