@@ -30,8 +30,8 @@ namespace PG.CGStudio.Generation.WireFrame
             var builder = new WireFrameBuilder();
             builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
             Repository.Instance.Objects.Add(builder.WireFrame);
-            Canvas3dView.Instance.Update(Repository.Instance);
-            Canvas3dView.Instance.Render();
+            OpenGLPresenter.Instance.Update(Repository.Instance);
+            OpenGLPresenter.Instance.Render();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace PG.CGStudio.UICtrl
     {
         public override void OnLeftButtonDown(Vector2d position)
         {
-            var id = Canvas3dView.Instance.Renderer.Pick(position);
+            var id = OpenGLPresenter.Instance.Renderer.Pick(position);
             if(id.parentId != 0)
             {
                 ;

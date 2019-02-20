@@ -22,7 +22,7 @@ namespace PG.CGStudio.UICtrl
         {
             var diff = position - prevPosition;
             camera.Move(new Vector3d(diff.X, diff.Y, 0.0));
-            Canvas3dView.Instance.Render();
+            OpenGLPresenter.Instance.Render();
             prevPosition = position;
         }
 
@@ -35,14 +35,14 @@ namespace PG.CGStudio.UICtrl
         {
             var diff = position - prevPosition;
             camera.Rotate(diff.X, diff.Y);
-            Canvas3dView.Instance.Render();
+            OpenGLPresenter.Instance.Render();
             prevPosition = position;
         }
 
         public override void OnWheel(double dx)
         {
             camera.Zoom(dx);
-            Canvas3dView.Instance.Render();
+            OpenGLPresenter.Instance.Render();
         }
     }
 }
