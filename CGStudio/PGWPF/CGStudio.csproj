@@ -126,6 +126,10 @@
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
+    <Compile Include="OpenGLAdornment.xaml.cs">
+      <DependentUpon>OpenGLAdornment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OpenGLPresenter.cs" />
     <Compile Include="Repository\AppearanceObjectRepository.cs" />
     <Compile Include="Repository\ObjectRepository.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
@@ -254,6 +258,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OpenGLAdornment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowViewModel.cs" />
