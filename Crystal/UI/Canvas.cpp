@@ -131,9 +131,9 @@ Image Canvas::getImage() const
 
 	Image image(width, height);
 	int index = 0;
-	for (unsigned int j = 0; j < height; ++j)
+	for (int j = 0; j < height; ++j)
 	{
-		for (unsigned int i = 0; i < width; ++i)
+		for (int i = 0; i < width; ++i)
 		{
 			const auto r = *p;
 			const auto g = *(p + 1);

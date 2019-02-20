@@ -241,3 +241,14 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /CrystalAlgo/CrystalAlgoView/imgui.ini
+/Crystal/AppBase/imstb_truetype.h
+/Crystal/AppBase/imstb_textedit.h
+/Crystal/AppBase/imstb_rectpack.h
+/Crystal/AppBase/imgui_widgets.cpp
+/Crystal/AppBase/imgui_internal.h
+/Crystal/AppBase/imgui_impl_opengl3.h
+/Crystal/AppBase/imgui_impl_opengl3.cpp
+/Crystal/AppBase/imgui_impl_glfw.h
+/Crystal/AppBase/imgui_impl_glfw.cpp
+/Crystal/AppBase/imgui_demo.cpp
+/Crystal/AppBase/imconfig.h

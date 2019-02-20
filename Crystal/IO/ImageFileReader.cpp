@@ -8,10 +8,12 @@ using namespace Crystal::IO;
 
 bool ImageFileReader::read(const std::string& filename)
 {
+	/*
 	FILE* file = fopen(filename.c_str(), "r");
 	if (file == nullptr) {
 		return false;
 	}
+	*/
 	int width = 0;
 	int height = 0;
 	int bpp = 0;
