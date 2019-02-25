@@ -79,6 +79,12 @@
     <ClCompile Include="WFCylinderButton.cpp">
       <Filter>Generation\WireFrame</Filter>
     </ClCompile>
+    <ClCompile Include="WFConeButton.cpp">
+      <Filter>Generation\WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="WFTorusButton.cpp">
+      <Filter>Generation\WireFrame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -172,6 +178,12 @@
       <Filter>Generation\WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="WFCylinderButton.h">
+      <Filter>Generation\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="WFConeButton.h">
+      <Filter>Generation\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="WFTorusButton.h">
       <Filter>Generation\WireFrame</Filter>
     </ClInclude>
   </ItemGroup>
