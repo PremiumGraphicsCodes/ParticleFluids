@@ -136,6 +136,7 @@
     <ClInclude Include="Circle2d.h" />
     <ClInclude Include="Cylinder3d.h" />
     <ClInclude Include="glm.h" />
+    <ClInclude Include="Line2d.h" />
     <ClInclude Include="Line3d.h" />
     <ClInclude Include="Matrix2d.h" />
     <ClInclude Include="Matrix3d.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Ray3d.h" />
     <ClInclude Include="Sphere3d.h" />
     <ClInclude Include="Tolerance.h" />
+    <ClInclude Include="Torus3d.h" />
     <ClInclude Include="Triangle3d.h" />
     <ClInclude Include="Vector2d.h" />
     <ClInclude Include="Vector3d.h" />

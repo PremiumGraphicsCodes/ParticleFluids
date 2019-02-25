@@ -10,6 +10,12 @@ namespace Crystal {
 class Line3dd
 {
 public:
+	Line3dd() :
+		origin(0,0,0),
+		dir(1,0,0)
+	{
+	}
+
 	Line3dd(const Math::Vector3dd& origin, const Math::Vector3dd& dir) :
 		origin(origin),
 		dir(dir)
@@ -29,9 +35,7 @@ public:
 
 	double getLength() const { return glm::distance(origin, dir); }
 
-	void move(const Math::Vector3dd& v) {
-		this->origin += v;
-	}
+	void move(const Math::Vector3dd& v) { this->origin += v; }
 
 	void transform(const Math::Matrix3dd& m) { dir = m * dir; }
 

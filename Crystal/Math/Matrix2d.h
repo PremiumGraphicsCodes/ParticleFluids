@@ -8,8 +8,8 @@
 namespace Crystal {
 	namespace Math {
 
-using Matrix3df = glm::mat3;
-using Matrix3dd = glm::dmat3;
+using Matrix2df = glm::mat2;
+using Matrix2dd = glm::dmat2;
 
 	}
 }
