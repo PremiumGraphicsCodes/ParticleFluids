@@ -25,6 +25,8 @@ public:
 		return glm::length( glm::cross(v1, v2) )  * 0.5;
 	}
 
+	std::array<Vector3dd, 3> getVertices() const { return vertices; }
+
 private:
 	std::array<Vector3dd, 3> vertices;
 };

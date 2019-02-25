@@ -142,6 +142,7 @@
     <ClInclude Include="Matrix4d.h" />
     <ClInclude Include="Quad3d.h" />
     <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="Ray3d.h" />
     <ClInclude Include="Sphere3d.h" />
     <ClInclude Include="Tolerance.h" />
     <ClInclude Include="Triangle3d.h" />

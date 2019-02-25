@@ -1,11 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="SpaceHash.h" />
-    <ClInclude Include="Octree.h" />
+    <ClInclude Include="Octree.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceHash.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="IntersectionAlgo.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SpaceHash.cpp" />
-    <ClCompile Include="Octree.cpp" />
+    <ClCompile Include="Octree.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceHash.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="IntersectionAlgo.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Search">
+      <UniqueIdentifier>{e3a4c719-e1a6-4082-a18a-bf9d62b1fdcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Boolean">
+      <UniqueIdentifier>{5a5a415d-e902-4344-98bc-c2c00f4b0cd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Intersection">
+      <UniqueIdentifier>{0048fd5c-36a5-427c-a1c4-7e067be63738}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
