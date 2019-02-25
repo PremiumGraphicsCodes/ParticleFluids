@@ -6,7 +6,8 @@
 #include "GLFW\glfw3native.h"
 
 #include "imgui.h"
-#include "imgui_impl_glfw_gl3.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 #include "../UI/Canvas.h"
 #include "../UI/Repository.h"
 
@@ -109,7 +110,23 @@ bool Window::init()
 
 
 	// Setup ImGui binding
-	ImGui_ImplGlfwGL3_Init(window, true);
+	//ImGui_ImplGlfwGL3_Init(window, true);
+
+	const char* glsl_version = "#version 130";
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;  // Enable Keyboard Controls
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;   // Enable Gamepad Controls
+
+	// Setup Dear ImGui style
+	ImGui::StyleColorsDark();
+	//ImGui::StyleColorsClassic();
+
+	// Setup Platform/Renderer bindings
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGL3_Init(glsl_version);
+
 
 	glfwSetScrollCallback(window, onWheel);
 	glfwSetMouseButtonCallback(window, onMouse);
@@ -144,7 +161,10 @@ bool Window::init()
 void Window::show()
 {
 	while (!glfwWindowShouldClose(window)) {
-		ImGui_ImplGlfwGL3_NewFrame();
+		// Start the Dear ImGui frame
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
 
 		if (ImGui::BeginMainMenuBar()) {
 			for (auto& m : menus) {
@@ -168,11 +188,15 @@ void Window::show()
 		glFlush();
 
 		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
 	// Cleanup
-	ImGui_ImplGlfwGL3_Shutdown();
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	
+	ImGui::DestroyContext();
 	glfwTerminate();
 }
