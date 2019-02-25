@@ -22,16 +22,16 @@ public:
 
 	Vector3dd getCenter() const { return center; }
 
-	double getR() const { return R; }
+	double getBigRadius() const { return R; }
 
-	double getr() const { return r; }
+	double getSmallRadius() const { return r; }
 
-	Vector3dd getPosition(const double t, const double p) const {
-		const auto tt = t * 2.0 * Tolerance<double>::getPI();
-		const auto pp = p * 2.0 * Tolerance<double>::getPI();
-		const auto x = R * ::cos(tt) + r * ::cos(pp) * ::cos(tt);
-		const auto y = R * ::sin(tt) + r * ::cos(pp) * ::sin(tt);
-		const auto z = r * ::sin(pp);
+	Vector3dd getPosition(const double u, const double v) const {
+		const auto t = u * 2.0 * Tolerance<double>::getPI();
+		const auto p = v * 2.0 * Tolerance<double>::getPI();
+		const auto x = R * ::cos(t) + r * ::cos(p) * ::cos(t);
+		const auto y = R * ::sin(t) + r * ::cos(p) * ::sin(t);
+		const auto z = r * ::sin(p);
 		return Vector3dd(x, y, z);
 	}
 

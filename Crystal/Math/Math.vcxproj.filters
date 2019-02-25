@@ -22,5 +22,6 @@
     <ClInclude Include="Plane3d.h" />
     <ClInclude Include="Line2d.h" />
     <ClInclude Include="Torus3d.h" />
+    <ClInclude Include="Cone3d.h" />
   </ItemGroup>
 </Project>
