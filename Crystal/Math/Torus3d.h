@@ -1,11 +1,12 @@
 #pragma once
 
 #include "Vector3d.h"
+#include "ICurve3d.h"
 
 namespace Crystal {
 	namespace Math {
 
-class Torus3d
+class Torus3d : ICurve3d
 {
 public:
 	Torus3d():
@@ -26,7 +27,8 @@ public:
 
 	double getSmallRadius() const { return r; }
 
-	Vector3dd getPosition(const double u, const double v) const {
+	Vector3dd getPosition(const double u, const double v) const override
+	{
 		const auto t = u * 2.0 * Tolerance<double>::getPI();
 		const auto p = v * 2.0 * Tolerance<double>::getPI();
 		const auto x = R * ::cos(t) + r * ::cos(p) * ::cos(t);

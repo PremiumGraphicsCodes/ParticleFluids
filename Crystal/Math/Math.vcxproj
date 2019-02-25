@@ -137,6 +137,7 @@
     <ClInclude Include="Cone3d.h" />
     <ClInclude Include="Cylinder3d.h" />
     <ClInclude Include="glm.h" />
+    <ClInclude Include="ICurve3d.h" />
     <ClInclude Include="Line2d.h" />
     <ClInclude Include="Line3d.h" />
     <ClInclude Include="Matrix2d.h" />

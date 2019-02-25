@@ -4,6 +4,7 @@
 #include "../Math/Sphere3d.h"
 #include "../Math/Box3d.h"
 #include "../Math/Cone3d.h"
+#include "../Math/Cylinder3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -52,12 +53,29 @@ void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int v
 	build(grid);
 }
 
-void WireFrameBuilder::build(const Cone3d& cone)
+void WireFrameBuilder::build(const Cylinder3d& cylinder, const int unum, const int vnum)
 {
+	const auto du = 1.0 / unum;
+	const auto dv = 1.0 / vnum;
 	std::vector<std::vector<Math::Vector3dd>> grid;
-	for (auto u = 0.0; u < 1.0; u += 0.1) {
+	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
 		std::vector<Math::Vector3dd> g;
-		for (auto v = 0.0; v < 1.0; v += 0.1) {
+		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
+			g.push_back(cylinder.getPosition(u, v));
+		}
+		grid.push_back(g);
+	}
+	build(grid);
+}
+
+void WireFrameBuilder::build(const Cone3d& cone, const int unum, const int vnum)
+{
+	const auto du = 1.0 / unum;
+	const auto dv = 1.0 / vnum;
+	std::vector<std::vector<Math::Vector3dd>> grid;
+	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
+		std::vector<Math::Vector3dd> g;
+		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
 			g.push_back(cone.getPosition(u, v));
 		}
 		grid.push_back(g);

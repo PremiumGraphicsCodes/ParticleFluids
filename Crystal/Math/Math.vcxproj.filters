@@ -8,20 +8,38 @@
     <ClInclude Include="Matrix4d.h" />
     <ClInclude Include="Vector4d.h" />
     <ClInclude Include="Box3d.h" />
-    <ClInclude Include="Sphere3d.h" />
     <ClInclude Include="Vector2d.h" />
     <ClInclude Include="Box2d.h" />
     <ClInclude Include="Triangle3d.h" />
     <ClInclude Include="Line3d.h" />
-    <ClInclude Include="Cylinder3d.h" />
     <ClInclude Include="Matrix2d.h" />
     <ClInclude Include="Circle2d.h" />
-    <ClInclude Include="Quad3d.h" />
     <ClInclude Include="glm.h" />
     <ClInclude Include="Ray3d.h" />
     <ClInclude Include="Plane3d.h" />
     <ClInclude Include="Line2d.h" />
-    <ClInclude Include="Torus3d.h" />
-    <ClInclude Include="Cone3d.h" />
+    <ClInclude Include="Quad3d.h">
+      <Filter>Curve3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Torus3d.h">
+      <Filter>Curve3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Cone3d.h">
+      <Filter>Curve3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Cylinder3d.h">
+      <Filter>Curve3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere3d.h">
+      <Filter>Curve3d</Filter>
+    </ClInclude>
+    <ClInclude Include="ICurve3d.h">
+      <Filter>Curve3d</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Curve3d">
+      <UniqueIdentifier>{13cca34e-c8e4-4011-be12-be3aefa210d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

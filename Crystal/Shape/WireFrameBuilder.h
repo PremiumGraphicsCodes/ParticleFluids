@@ -7,6 +7,7 @@ namespace Crystal {
 		class Box3d;
 		class Sphere3d;
 		class Cone3d;
+		class Cylinder3d;
 	}
 	namespace Shape {
 
@@ -17,7 +18,9 @@ public:
 
 	void build(const Math::Sphere3d& sphere, const int unum, const int vnum);
 
-	void build(const Math::Cone3d& cone);
+	void build(const Math::Cylinder3d& cylinder, const int unum, const int vnum);
+
+	void build(const Math::Cone3d& cone, const int unum, const int vnum);
 
 	WireFrame* getWireFrame() const { return new WireFrame(lines); }
 

@@ -2,6 +2,7 @@
 #define __CRYSTAL_MATH_SPHERE_H__
 
 #include "Vector3d.h"
+#include "ICurve3d.h"
 
 #include <vector>
 #include <cassert>
@@ -11,7 +12,7 @@ namespace Crystal {
 	namespace Math {
 		class Box3d;
 
-class Sphere3d
+class Sphere3d : public ICurve3d
 {
 public:
 	Sphere3d() :
@@ -32,20 +33,13 @@ public:
 	}
 	*/
 
-	Vector3dd getPositionByAngle(const double theta, const double phi) const {
-		assert(0.0 <= theta && theta <= Tolerance<double>::getPI());
-		assert(0.0 <= phi && phi <= Tolerance<double>::getTwoPI());
-
+	Vector3dd getPosition(const double u, const double v) const override {
+		const auto theta = u * Tolerance<double>::getPI();
+		const auto phi = v * Tolerance<double>::getTwoPI();
 		const auto x = radius * std::sin(theta) * std::cos(phi);
 		const auto y = radius * std::sin(theta) * std::sin(phi);
 		const auto z = radius * std::cos(theta);
 		return center + Vector3dd(x, y, z);
-	}
-
-	Vector3dd getPosition(const double u, const double v) const {
-		const auto theta = u * Tolerance<double>::getPI();
-		const auto phi = v * Tolerance<double>::getTwoPI();
-		return getPositionByAngle(theta, phi);
 	}
 
 	Vector3dd getNormal(const double u, const double v) const {

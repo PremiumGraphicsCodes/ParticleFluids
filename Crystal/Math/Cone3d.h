@@ -1,11 +1,12 @@
 #pragma once
 
+#include "ICurve3d.h"
 #include "Vector3d.h"
 
 namespace Crystal {
 	namespace Math {
 
-class Cone3d
+class Cone3d : public ICurve3d
 {
 public:
 	Cone3d() :
@@ -21,7 +22,7 @@ public:
 	{
 	}
 
-	Vector3dd getPosition(const double u, const double v) const
+	Vector3dd getPosition(const double u, const double v) const override
 	{
 		const auto uu = u * 2.0 * Tolerance<double>::getPI();
 		const auto r = radius * (1.0 - v);

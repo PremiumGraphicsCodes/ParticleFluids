@@ -82,7 +82,7 @@ namespace {
 		{
 			Cone3d cone(center, radius, height);
 			Crystal::Shape::WireFrameBuilder builder;
-			builder.build(cone);
+			builder.build(cone, unum, vnum);
 			getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), color, "Cone");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());

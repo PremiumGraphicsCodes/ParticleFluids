@@ -1,11 +1,12 @@
 #pragma once
 
+#include "ICurve3d.h"
 #include "Vector3d.h"
 
 namespace Crystal {
 	namespace Math {
 
-class Cylinder3d
+class Cylinder3d : public ICurve3d
 {
 public:
 	Cylinder3d() :
@@ -29,7 +30,7 @@ public:
 	{
 	}
 
-	Vector3dd getPosition(const double u, const double v) const
+	Vector3dd getPosition(const double u, const double v) const override
 	{
 		const auto theta = u * 2.0 * Tolerance<double>::getPI();
 		const auto x = radius * ::cos(theta);
