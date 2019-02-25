@@ -18,9 +18,6 @@
     <ClCompile Include="PolygonPanel.cpp">
       <Filter>Generation</Filter>
     </ClCompile>
-    <ClCompile Include="WireFramePanel.cpp">
-      <Filter>Generation</Filter>
-    </ClCompile>
     <ClCompile Include="AppearancePanel.cpp" />
     <ClCompile Include="IPopupButton.cpp">
       <Filter>Window</Filter>
@@ -73,6 +70,12 @@
     <ClCompile Include="WFBoxButton.cpp">
       <Filter>Generation\WireFrame</Filter>
     </ClCompile>
+    <ClCompile Include="WireFramePanel.cpp">
+      <Filter>Generation\WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="WFSphereButton.cpp">
+      <Filter>Generation\WireFrame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -87,9 +90,6 @@
       <Filter>Generation</Filter>
     </ClInclude>
     <ClInclude Include="PolygonPanel.h">
-      <Filter>Generation</Filter>
-    </ClInclude>
-    <ClInclude Include="WireFramePanel.h">
       <Filter>Generation</Filter>
     </ClInclude>
     <ClInclude Include="AppearancePanel.h" />
@@ -160,6 +160,12 @@
       <Filter>imgui</Filter>
     </ClInclude>
     <ClInclude Include="WFBoxButton.h">
+      <Filter>Generation\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFramePanel.h">
+      <Filter>Generation\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="WFSphereButton.h">
       <Filter>Generation\WireFrame</Filter>
     </ClInclude>
   </ItemGroup>
