@@ -14,6 +14,12 @@ public:
 	{
 	}
 
+	Ray3d(const Vector3dd& origin, const Vector3dd& direction) :
+		origin(origin),
+		direction(direction)
+	{
+	}
+
 	Vector3dd getOrigin() const { return origin; }
 
 	Vector3dd getDirection() const { return direction; }

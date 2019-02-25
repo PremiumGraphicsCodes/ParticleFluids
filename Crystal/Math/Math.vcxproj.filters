@@ -19,5 +19,6 @@
     <ClInclude Include="Quad3d.h" />
     <ClInclude Include="glm.h" />
     <ClInclude Include="Ray3d.h" />
+    <ClInclude Include="Plane3d.h" />
   </ItemGroup>
 </Project>

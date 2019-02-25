@@ -25,6 +25,8 @@ public:
 
 	Math::Vector3dd getEnd() const { return origin + dir; }
 
+	Math::Vector3dd getDirection() const { return dir; }
+
 	double getLength() const { return glm::distance(origin, dir); }
 
 	void move(const Math::Vector3dd& v) {
