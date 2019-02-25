@@ -8,6 +8,7 @@
 #include "WFBoxButton.h"
 
 #include "../Math/Sphere3d.h"
+#include "../Math/Cone3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -56,6 +57,50 @@ namespace {
 		float radius = 1.0;
 		glm::vec4 color;
 	};
+
+	class WFConeButton : public IPopupButton
+	{
+	public:
+		WFConeButton(Repository* model, Canvas* canvas) :
+			IPopupButton("Cone", model, canvas),
+			unum(12),
+			vnum(12)
+		{
+		}
+
+		void onShow() override
+		{
+			ImGui::InputInt("UNum", &unum);
+			ImGui::InputInt("VNum", &vnum);
+			ImGui::InputFloat3("Center", &center[0]);
+			ImGui::InputDouble("Radius", &radius);
+			ImGui::InputDouble("Height", &height);
+			ImGui::ColorPicker4("Color", &color[0]);
+		}
+
+		void onOk() override
+		{
+			Cone3d cone(center, radius, height);
+			Crystal::Shape::WireFrameBuilder builder;
+			builder.build(cone);
+			getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), color, "Cone");
+			getCanvas()->setViewModel(getModel()->toViewModel());
+			getCanvas()->fitCamera(getModel()->getBoundingBox());
+		}
+
+		void onCancel() override
+		{
+
+		}
+
+	private:
+		int unum;
+		int vnum;
+		Vector3df center = { 0.0, 0.0, 0.0 };
+		double radius = 1.0;
+		double height = 1.0;
+		glm::vec4 color;
+	};
 }
 
 WireFramePanel::WireFramePanel(const std::string& name, Repository* model, Canvas* canvas) :
@@ -63,4 +108,5 @@ WireFramePanel::WireFramePanel(const std::string& name, Repository* model, Canva
 {
 	add( new WFBoxButton(model, canvas) );
 	add( new WFSphereButton(model, canvas) );
+	add( new WFConeButton(model, canvas) );
 }
