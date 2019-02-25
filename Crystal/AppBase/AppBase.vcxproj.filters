@@ -85,6 +85,12 @@
     <ClCompile Include="ParticleSystemPanel.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="Box3dButton.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="PSBoxButton.cpp">
+      <Filter>Generation\ParticleSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -186,6 +192,12 @@
     <ClInclude Include="ParticleSystemPanel.h">
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
+    <ClInclude Include="Box3dButton.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PSBoxButton.h">
+      <Filter>Generation\ParticleSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -214,6 +226,9 @@
     </Filter>
     <Filter Include="Generation\ParticleSystem">
       <UniqueIdentifier>{ff093b54-2cac-42ed-845f-0440a5f5fe53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{70e528ba-4a3a-4f71-8dd3-08addce9576a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

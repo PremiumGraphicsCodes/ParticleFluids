@@ -9,16 +9,14 @@ using namespace Crystal::UI;
 
 void WFBoxButton::onShow()
 {
-	ImGui::InputFloat3("Min", &min[0]);
-	ImGui::InputFloat3("Max", &max[0]);
+	boxButton.show();
 	ImGui::ColorPicker4("Color", &color[0]);
 }
 
 void WFBoxButton::onOk()
 {
-	const Box3d box(min, max);
 	Crystal::Shape::WireFrameBuilder builder;
-	builder.build(box);
+	builder.build(boxButton.getValue());
 	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), color, "Box");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());

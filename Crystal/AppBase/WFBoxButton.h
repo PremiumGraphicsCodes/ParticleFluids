@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IPopupButton.h"
+#include "Box3dButton.h"
 
 namespace Crystal {
 	namespace UI {
@@ -9,7 +10,8 @@ class WFBoxButton : public IPopupButton
 {
 public:
 	WFBoxButton(Repository* model, Canvas* canvas) :
-		IPopupButton("Box", model, canvas)
+		IPopupButton("Box", model, canvas),
+		boxButton("Box", model, canvas)
 	{
 
 	}
@@ -21,8 +23,7 @@ public:
 	void onCancel() override;
 
 private:
-	glm::vec3 min = { -1.0f, -1.0f, -1.0f };
-	glm::vec3 max = { 1.0f, 1.0f, 1.0f };
+	Box3dButton boxButton;
 	glm::vec4 color;
 };
 
