@@ -6,7 +6,7 @@
 namespace Crystal {
 	namespace Math {
 
-class Torus3d : ICurve3d
+class Torus3d : public ICurve3d
 {
 public:
 	Torus3d():
@@ -34,7 +34,7 @@ public:
 		const auto x = R * ::cos(t) + r * ::cos(p) * ::cos(t);
 		const auto y = R * ::sin(t) + r * ::cos(p) * ::sin(t);
 		const auto z = r * ::sin(p);
-		return Vector3dd(x, y, z);
+		return center + Vector3dd(x, y, z);
 	}
 
 private:

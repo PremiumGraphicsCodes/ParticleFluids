@@ -7,58 +7,17 @@
 
 #include "WFBoxButton.h"
 #include "WFSphereButton.h"
+#include "WFCylinderButton.h"
 
 #include "../Math/Cone3d.h"
 #include "../Math/Cylinder3d.h"
+#include "../Math/Torus3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 namespace {
-	class WFCylinderButton : public IPopupButton
-	{
-	public:
-		WFCylinderButton(Repository* model, Canvas* canvas) :
-			IPopupButton("Cylinder", model, canvas),
-			unum(12),
-			vnum(12)
-		{
-		}
-
-		void onShow() override
-		{
-			ImGui::InputInt("UNum", &unum);
-			ImGui::InputInt("VNum", &vnum);
-			ImGui::InputFloat3("Center", &center[0]);
-			ImGui::InputDouble("Radius", &radius);
-			ImGui::InputDouble("Height", &radius);
-			ImGui::ColorPicker4("Color", &color[0]);
-		}
-
-		void onOk() override
-		{
-			const Cylinder3d sphere(radius, height, center);
-			Crystal::Shape::WireFrameBuilder builder;
-			builder.build(sphere, unum, vnum);
-			getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), color, "Sphere");
-			getCanvas()->setViewModel(getModel()->toViewModel());
-			getCanvas()->fitCamera(getModel()->getBoundingBox());
-		}
-
-		void onCancel() override
-		{
-
-		}
-
-	private:
-		int unum;
-		int vnum;
-		glm::vec3 center = { 0.0f, 0.0f, 0.0f };
-		double radius = 1.0;
-		double height = 1.0;
-		glm::vec4 color;
-	};
 
 
 	class WFConeButton : public IPopupButton
@@ -104,6 +63,50 @@ namespace {
 		double height = 1.0;
 		glm::vec4 color;
 	};
+
+	class WFTorusButton : public IPopupButton
+	{
+	public:
+		WFTorusButton(Repository* model, Canvas* canvas) :
+			IPopupButton("Torus", model, canvas),
+			unum(24),
+			vnum(12)
+		{
+		}
+
+		void onShow() override
+		{
+			ImGui::InputInt("UNum", &unum);
+			ImGui::InputInt("VNum", &vnum);
+			ImGui::InputFloat3("Center", &center[0]);
+			ImGui::InputDouble("BigRadius", &bigRadius);
+			ImGui::InputDouble("SmallRadius", &smallRadius);
+			ImGui::ColorPicker4("Color", &color[0]);
+		}
+
+		void onOk() override
+		{
+			const Torus3d torus(center, bigRadius, smallRadius);
+			Crystal::Shape::WireFrameBuilder builder;
+			builder.build(torus, unum, vnum);
+			getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), color, "Torus");
+			getCanvas()->setViewModel(getModel()->toViewModel());
+			getCanvas()->fitCamera(getModel()->getBoundingBox());
+		}
+
+		void onCancel() override
+		{
+
+		}
+
+	private:
+		int unum;
+		int vnum;
+		Vector3df center = { 0.0, 0.0, 0.0 };
+		double bigRadius = 1.0;
+		double smallRadius = 0.1;
+		glm::vec4 color;
+	};
 }
 
 WireFramePanel::WireFramePanel(const std::string& name, Repository* model, Canvas* canvas) :
@@ -113,4 +116,5 @@ WireFramePanel::WireFramePanel(const std::string& name, Repository* model, Canva
 	add( new WFSphereButton(model, canvas) );
 	add( new WFCylinderButton(model, canvas) );
 	add( new WFConeButton(model, canvas) );
+	add( new WFTorusButton(model, canvas) );
 }
