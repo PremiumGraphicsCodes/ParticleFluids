@@ -210,6 +210,9 @@
     <ClInclude Include="Sphere3dButton.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
