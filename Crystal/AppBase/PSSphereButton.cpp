@@ -13,15 +13,14 @@ using namespace Crystal::UI;
 
 void PSSphereButton::onShow()
 {
-	ImGui::InputFloat3("Center", &center[0]);
-	ImGui::InputFloat("Radius", &radius);
+	sphereButton.show();
 	ImGui::InputFloat("Size", &size);
 	ImGui::InputInt("Count", &count);
 }
 
 void PSSphereButton::onOk()
 {
-	const Crystal::Math::Sphere3d sphere(center, radius);
+	const auto& sphere = sphereButton.getValue();
 	std::mt19937 mt{ std::random_device{}() };
 	std::uniform_real_distribution<double> dist(0.0, 1.0);
 	std::vector<Vector3df> positions;

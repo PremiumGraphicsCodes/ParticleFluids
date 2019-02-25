@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IPopupButton.h"
+#include "Sphere3dButton.h"
 
 namespace Crystal {
 	namespace UI {
@@ -9,7 +10,8 @@ class PSSphereButton : public IPopupButton
 {
 public:
 	PSSphereButton(Repository* model, Canvas* canvas) :
-		IPopupButton("Sphere", model, canvas)
+		IPopupButton("Sphere", model, canvas),
+		sphereButton("Sphere", model, canvas)
 	{
 
 	}
@@ -23,8 +25,7 @@ public:
 	}
 
 private:
-	glm::vec3 center = { 0.0f, 0.0f, 0.0f };
-	float radius = 1.0f;
+	Sphere3dButton sphereButton;
 	float size = 1.0f;
 
 	int count = 10000;

@@ -94,6 +94,9 @@
     <ClCompile Include="PSSphereButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="Sphere3dButton.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -203,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="PSSphereButton.h">
       <Filter>Generation\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere3dButton.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

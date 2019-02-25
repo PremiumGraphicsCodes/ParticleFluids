@@ -20,7 +20,7 @@ public:
 		radius(1.0f)
 	{}
 
-	Sphere3d(const Vector3dd& center, const float radius) :
+	Sphere3d(const Vector3dd& center, const double radius) :
 		center(center),
 		radius(radius)
 	{}
