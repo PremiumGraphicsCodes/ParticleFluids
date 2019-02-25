@@ -1,13 +1,23 @@
 #include "IntersectionAlgo.h"
 
+#include "../../Crystal/Math/Line3d.h"
+#include "../../Crystal/Math/Triangle3d.h"
+#include "../../Crystal/Math/Ray3d.h"
+
 #include "../../Crystal/Math/Matrix3d.h"
+
 
 //#include "../../Crystal/ThirdParty/glm-0.9.9.3/glm/gtx/intersect.hpp"
 
 using namespace Crystal::Math;
 using namespace Crystal::Algo;
 
-void IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle)
+bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Sphere3d& sphere)
+{
+	return false;
+}
+
+bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle)
 {
 	const auto& vertices = triangle.getVertices();
 	const auto& v0 = vertices[0];
@@ -33,12 +43,14 @@ void IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d&
 				const auto t = glm::determinant(matrixt) / denominator;
 				const auto intersection = origin + direction * t;
 				intersections.push_back(intersection);
+				return true;
 			}
 		}
 	}
+	return false;
 }
 
-void IntersectionAlgo::calculateIntersection(const Triangle3d& lhs, const Triangle3d& rhs)
+bool IntersectionAlgo::calculateIntersection(const Triangle3d& lhs, const Triangle3d& rhs)
 {
-
+	return false;
 }
