@@ -43,6 +43,7 @@
     <ClCompile Include="SelectionPanel.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="TransformPanel.cpp" />
+    <ClCompile Include="WFBoxButton.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WireFramePanel.cpp" />
     <ClCompile Include="WireFrameTreeList.cpp" />
@@ -77,6 +78,7 @@
     <ClInclude Include="SelectionPanel.h" />
     <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="TransformPanel.h" />
+    <ClInclude Include="WFBoxButton.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WireFramePanel.h" />
     <ClInclude Include="WireFrameTreeList.h" />

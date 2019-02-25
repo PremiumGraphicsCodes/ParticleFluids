@@ -1,5 +1,10 @@
 #include "WireFrameBuilder.h"
 
+#include "../Math/Line3d.h"
+#include "../Math/Sphere3d.h"
+#include "../Math/Box3d.h"
+#include "../Math/Cone3d.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
@@ -32,20 +37,36 @@ void WireFrameBuilder::build(const Box3d& box)
 	lines.push_back(Line3dd::fromPoints(vertices[3], vertices[7]));
 }
 
-void WireFrameBuilder::build(const Sphere3d& sphere)
+void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int vnum)
+{
+	const auto du = 1.0 / unum;
+	const auto dv = 1.0 / vnum;
+	std::vector<std::vector<Math::Vector3dd>> grid;
+	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
+		std::vector<Math::Vector3dd> g;
+		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
+			g.push_back(sphere.getPosition(u, v));
+		}
+		grid.push_back(g);
+	}
+	build(grid);
+}
+
+void WireFrameBuilder::build(const Cone3d& cone)
 {
 	std::vector<std::vector<Math::Vector3dd>> grid;
 	for (auto u = 0.0; u < 1.0; u += 0.1) {
 		std::vector<Math::Vector3dd> g;
 		for (auto v = 0.0; v < 1.0; v += 0.1) {
-			g.push_back(sphere.getPosition(u, v));
+			g.push_back(cone.getPosition(u, v));
 		}
 		grid.push_back(g);
 	}
-	make(grid);
+	build(grid);
 }
 
-void WireFrameBuilder::make(const std::vector<std::vector<Vector3dd>>& grid)
+
+void WireFrameBuilder::build(const std::vector<std::vector<Vector3dd>>& grid)
 {
 	for (int i = 0; i < grid.size() - 1; ++i) {
 		for (int j = 0; j < grid[i].size() - 1; ++j) {

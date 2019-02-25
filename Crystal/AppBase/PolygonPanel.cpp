@@ -12,10 +12,10 @@ using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
 namespace {
-	class SphereButton : public IPopupButton
+	class WFSphereButton : public IPopupButton
 	{
 	public:
-		SphereButton(Repository* model, Canvas* canvas) :
+		WFSphereButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Sphere", model, canvas)
 		{
 		}
@@ -53,10 +53,10 @@ namespace {
 		int vnum = 36;
 	};
 
-	class BoxButton : public IPopupButton
+	class WFBoxButton : public IPopupButton
 	{
 	public:
-		BoxButton(Repository* model, Canvas* canvas) :
+		WFBoxButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Box", model, canvas)
 		{
 		}
@@ -129,7 +129,7 @@ namespace {
 PolygonPanel::PolygonPanel(const std::string& name, Repository* model, Canvas* canvas) :
 	IPanel(name, model, canvas)
 {
-	add( new SphereButton(model, canvas) );
-	add( new BoxButton(model, canvas) );
+	add( new WFSphereButton(model, canvas) );
+	add( new WFBoxButton(model, canvas) );
 	add( new PlaneButton(model, canvas) );
 }

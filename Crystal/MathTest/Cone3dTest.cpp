@@ -27,6 +27,11 @@ TEST(Cone3dTest, TestGetPosition)
 		EXPECT_TRUE(areSame(expected, actual, tolerance));
 	}
 	{
+		const auto& actual = cone.getPosition(0.5, 0.5);
+		const Vector3dd expected(-0.5, 0.0, 0.5);
+		EXPECT_TRUE(areSame(expected, actual, tolerance));
+	}
+	{
 		const auto& actual = cone.getPosition(1.0, 1.0);
 		const Vector3dd expected(0.0, 0.0, 1.0);
 		EXPECT_TRUE(areSame(expected, actual, tolerance));

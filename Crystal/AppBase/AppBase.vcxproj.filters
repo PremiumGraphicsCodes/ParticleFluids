@@ -70,6 +70,9 @@
     <ClCompile Include="imgui_widgets.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
+    <ClCompile Include="WFBoxButton.cpp">
+      <Filter>Generation\WireFrame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -156,6 +159,9 @@
     <ClInclude Include="imstb_truetype.h">
       <Filter>imgui</Filter>
     </ClInclude>
+    <ClInclude Include="WFBoxButton.h">
+      <Filter>Generation\WireFrame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -178,6 +184,9 @@
     </Filter>
     <Filter Include="Transform">
       <UniqueIdentifier>{a82af283-3aaa-4c83-b72f-e282c535a689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generation\WireFrame">
+      <UniqueIdentifier>{70322aba-1e02-4d91-9ba6-d618af4f3ea1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
