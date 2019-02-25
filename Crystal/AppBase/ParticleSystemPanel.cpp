@@ -1,4 +1,4 @@
-#include "ParticlePanel.h"
+#include "ParticleSystemPanel.h"
 #include "imgui.h"
 #include "../Math/Sphere3d.h"
 #include "../UI/Repository.h"
@@ -13,10 +13,10 @@ using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 namespace {
-	class WFBoxButton : public IPopupButton
+	class PSBoxButton : public IPopupButton
 	{
 	public:
-		WFBoxButton(Repository* model, Canvas* canvas) :
+		PSBoxButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Box", model, canvas)
 		{
 
@@ -55,10 +55,10 @@ namespace {
 		glm::vec3 dx = { 1.0f, 1.0f, 1.0f };
 	};
 
-	class WFSphereButton : public IPopupButton
+	class PSSphereButton : public IPopupButton
 	{
 	public:
-		WFSphereButton(Repository* model, Canvas* canvas) :
+		PSSphereButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Sphere", model, canvas)
 		{
 
@@ -103,9 +103,9 @@ namespace {
 }
 
 
-ParticlePanel::ParticlePanel(const std::string& name, Repository* model, Canvas* canvas) :
+ParticleSystemPanel::ParticleSystemPanel(const std::string& name, Repository* model, Canvas* canvas) :
 	IPanel(name, model, canvas)	
 {
-	add( new WFBoxButton(model, canvas) );
-	add( new WFSphereButton(model, canvas) );
+	add( new PSBoxButton(model, canvas) );
+	add( new PSSphereButton(model, canvas) );
 }

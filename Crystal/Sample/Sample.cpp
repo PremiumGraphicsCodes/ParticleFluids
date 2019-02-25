@@ -3,7 +3,7 @@
 #include "../AppBase/CameraMenu.h"
 #include "../AppBase/CtrlMenu.h"
 
-#include "../AppBase/ParticlePanel.h"
+#include "../AppBase/ParticleSystemPanel.h"
 #include "../AppBase/WireFramePanel.h"
 #include "../AppBase/PolygonPanel.h"
 #include "../AppBase/AppearancePanel.h"
@@ -52,7 +52,7 @@ int main(int, char**)
 	window.add(new CameraMenu("Camera", &model, &canvas));
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 
-	window.add(new ParticlePanel("Particle", &model, &canvas));
+	window.add(new ParticleSystemPanel("Particle", &model, &canvas));
 	window.add(new WireFramePanel("WireFrame", &model, &canvas));
 	window.add(new PolygonPanel("Polygon", &model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
