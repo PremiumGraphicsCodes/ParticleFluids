@@ -29,7 +29,10 @@ int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
 		ls.push_back(l);
 	}
 	Crystal::Shape::WireFrame* wf = new Crystal::Shape::WireFrame(ls);
-	return instance->getWireFrames()->addObject(wf, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0), "");
+	Crystal::UI::WireFrameAttribute attr;
+	attr.width = 1.0;
+	attr.color = Crystal::Graphics::ColorRGBAf(1, 0, 0, 0);
+	return instance->getWireFrames()->addObject(wf, attr, "");
 }
 
 int ObjectRepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
