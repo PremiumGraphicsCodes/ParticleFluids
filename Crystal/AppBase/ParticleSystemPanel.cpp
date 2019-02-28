@@ -9,8 +9,10 @@
 
 #include "PSBoxButton.h"
 #include "PSSphereButton.h"
+#include "PSCylinderButton.h"
 
 #include "Cylinder3dButton.h"
+#include "Cone3dButton.h"
 
 #include "IPopupButton.h"
 
@@ -21,71 +23,26 @@ using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 namespace {
-	class PSCylinderButton : public IPopupButton
-	{
-	public:
-		PSCylinderButton(Repository* model, Canvas* canvas) :
-			IPopupButton("PSCylinder", model, canvas),
-			cylinderButton(model, canvas)
-		{
-		}
-
-		void onShow() override
-		{
-			cylinderButton.show();
-			ImGui::InputFloat("Size", &size);
-			ImGui::InputInt("Count", &count);
-		}
-
-		void onOk() override
-		{
-			const auto& cylinder = cylinderButton.getValue();
-			std::mt19937 mt{ std::random_device{}() };
-			std::uniform_real_distribution<double> dist(0.0, 1.0);
-			std::vector<Vector3df> positions;
-			for (int i = 0; i < count; ++i) {
-				const auto u = dist(mt);
-				const auto v = dist(mt);
-				positions.push_back(cylinder.getPosition(u, v));
-			}
-			getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), size, "Cylinder");
-			getCanvas()->setViewModel(getModel()->toViewModel());
-			getCanvas()->fitCamera(getModel()->getBoundingBox());
-		}
-
-		void onCancel() override
-		{
-		}
-
-	private:
-		Cylinder3dButton cylinderButton;
-
-		float size = 1.0f;
-
-		int count = 10000;
-	};
 
 	class PSConeButton : public IPopupButton
 	{
 	public:
 		PSConeButton(Repository* model, Canvas* canvas) :
-			IPopupButton("Cone", model, canvas)
+			IPopupButton("PSCone", model, canvas),
+			coneButton(model, canvas)
 		{
-
 		}
 
 		void onShow() override
 		{
-			ImGui::InputFloat3("Center", &center[0]);
-			ImGui::InputFloat("Radius", &radius);
-			ImGui::InputFloat("Height", &height);
+			coneButton.show();
 			ImGui::InputFloat("Size", &size);
 			ImGui::InputInt("Count", &count);
 		}
 
 		void onOk() override
 		{
-			const Cone3d cone(center, radius, height);
+			const auto& cone = coneButton.getValue();
 			std::mt19937 mt{ std::random_device{}() };
 			std::uniform_real_distribution<double> dist(0.0, 1.0);
 			std::vector<Vector3df> positions;
@@ -104,12 +61,8 @@ namespace {
 		}
 
 	private:
-		glm::vec3 center = { 0.0f, 0.0f, 0.0f };
-		float radius = 1.0f;
-		float height = 1.0f;
-
+		Cone3dButton coneButton;
 		float size = 1.0f;
-
 		int count = 10000;
 	};
 

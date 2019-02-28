@@ -8,5 +8,5 @@ using namespace Crystal::UI;
 void Sphere3dButton::onShow()
 {
 	ImGui::InputFloat3("Center", &center[0]);
-	ImGui::InputDouble("Radius", &radius);
+	radius.show();
 }

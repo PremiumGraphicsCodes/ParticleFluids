@@ -12,17 +12,14 @@ void WFConeButton::onShow()
 {
 	ImGui::InputInt("UNum", &unum);
 	ImGui::InputInt("VNum", &vnum);
-	ImGui::InputFloat3("Center", &center[0]);
-	ImGui::InputDouble("Radius", &radius);
-	ImGui::InputDouble("Height", &height);
+	coneButton.show();
 	attributeButton.show();
 }
 
 void WFConeButton::onOk()
 {
-	const Cone3d cone(center, radius, height);
 	Crystal::Shape::WireFrameBuilder builder;
-	builder.build(cone, unum, vnum);
+	builder.build(coneButton.getValue(), unum, vnum);
 	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Cone");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
