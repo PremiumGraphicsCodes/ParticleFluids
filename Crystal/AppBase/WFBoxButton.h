@@ -13,7 +13,7 @@ public:
 	WFBoxButton(Repository* model, Canvas* canvas) :
 		IPopupButton("WFBox", model, canvas),
 		boxButton("Box"),
-		attributeButton("Attribute",model, canvas)
+		attributeButton("Attribute")
 	{
 	}
 

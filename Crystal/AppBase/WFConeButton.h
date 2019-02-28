@@ -15,7 +15,7 @@ public:
 	WFConeButton(Repository* model, Canvas* canvas) :
 		IPopupButton("WFCone", model, canvas),
 		coneButton("Cone"),
-		attributeButton("Attribute", model, canvas),
+		attributeButton("Attribute"),
 		unum(12),
 		vnum(12)
 	{

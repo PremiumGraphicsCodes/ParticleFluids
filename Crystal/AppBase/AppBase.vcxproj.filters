@@ -91,9 +91,6 @@
     <ClCompile Include="PSSphereButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
-    <ClCompile Include="WFAttributeButton.cpp">
-      <Filter>Generation\WireFrame</Filter>
-    </ClCompile>
     <ClCompile Include="PSCylinderButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
@@ -230,6 +227,12 @@
     </ClInclude>
     <ClInclude Include="Cone3dView.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Float4View.h">
+      <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatView.h">
+      <Filter>Type</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

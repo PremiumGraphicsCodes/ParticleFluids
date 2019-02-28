@@ -13,7 +13,7 @@ public:
 	WFSphereButton(Repository* repository, Canvas* canvas) :
 		IPopupButton("WFSphere", repository, canvas),
 		sphereButton("Sphere"),
-		attributeButton("Attribute",repository, canvas),
+		attributeButton("Attribute"),
 		unum(12),
 		vnum(12)
 	{

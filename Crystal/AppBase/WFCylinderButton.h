@@ -13,7 +13,7 @@ public:
 	WFCylinderButton(Repository* model, Canvas* canvas) :
 		IPopupButton("WFCylinder", model, canvas),
 		cylinderButton("Cylinder"),
-		attributeButton("Attribute",model, canvas),
+		attributeButton("Attribute"),
 		unum(12),
 		vnum(12)
 	{

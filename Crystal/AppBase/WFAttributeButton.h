@@ -2,36 +2,39 @@
 
 #include "IPopupButton.h"
 #include "../UI/WireFrameAttribute.h"
+#include "FloatView.h"
+#include "Float4View.h"
 
 namespace Crystal {
 	namespace UI {
 
-class WFAttributeButton : public IPopupButton
+class WFAttributeButton : public IWindow
 {
 public:
-	WFAttributeButton(const std::string& name, Repository* model, Canvas* canvas) :
-		IPopupButton(name, model, canvas),
-		width(1.0f),
-		color(0,0,0,0)
+	WFAttributeButton(const std::string& name) :
+		IWindow(name),
+		width("Width", 1.0f),
+		color("Color")
 	{
 	}
 
-	void onShow() override;
-
-	void onOk() override;
-
-	void onCancel() override;
+	void show() override
+	{
+		width.show();
+		color.show();
+		//ImGui::ColorPicker4("Color", &color[0]);
+	}
 
 	UI::WireFrameAttribute getValue() const {
 		UI::WireFrameAttribute attr;
-		attr.width = width;
-		attr.color = color;
+		attr.width = width.getValue();
+		attr.color = color.getValue();
 		return attr;
 	}
 
 private:
-	float width;
-	glm::vec4 color;
+	FloatView width;
+	Float4View color;
 };
 
 	}

@@ -46,7 +46,6 @@
     <ClCompile Include="SelectionPanel.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="TransformPanel.cpp" />
-    <ClCompile Include="WFAttributeButton.cpp" />
     <ClCompile Include="WFBoxButton.cpp" />
     <ClCompile Include="WFConeButton.cpp" />
     <ClCompile Include="WFCylinderButton.cpp" />
@@ -65,6 +64,8 @@
     <ClInclude Include="Cylinder3dView.h" />
     <ClInclude Include="DoubleView.h" />
     <ClInclude Include="FileMenu.h" />
+    <ClInclude Include="Float4View.h" />
+    <ClInclude Include="FloatView.h" />
     <ClInclude Include="imconfig.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="imgui.h" />

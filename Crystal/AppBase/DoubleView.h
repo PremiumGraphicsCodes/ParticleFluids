@@ -15,8 +15,7 @@ public:
 	{}
 
 	void show() override {
-		const auto str = name.c_str();
-		ImGui::InputDouble(str, &value);
+		ImGui::InputDouble(name.c_str(), &value);
 	}
 
 	double getValue() const { return value; }
