@@ -1,6 +1,8 @@
 #pragma once
 
 #include "IPopupButton.h"
+#include "FloatView.h"
+#include "IntView.h"
 #include "Sphere3dView.h"
 
 namespace Crystal {
@@ -11,7 +13,9 @@ class PSSphereButton : public IPopupButton
 public:
 	PSSphereButton(Repository* model, Canvas* canvas) :
 		IPopupButton("PSSphere", model, canvas),
-		sphereButton("Sphere")
+		sphere("Sphere"),
+		size("Size", 1.0f),
+		count("Count", 10000)
 	{
 
 	}
@@ -25,10 +29,9 @@ public:
 	}
 
 private:
-	Sphere3dView sphereButton;
-	float size = 1.0f;
-
-	int count = 10000;
+	Sphere3dView sphere;
+	FloatView size;
+	IntView count;
 };
 
 	}

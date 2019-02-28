@@ -12,9 +12,6 @@
     <ClCompile Include="imgui_draw.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonPanel.cpp">
-      <Filter>Generation</Filter>
-    </ClCompile>
     <ClCompile Include="AppearancePanel.cpp" />
     <ClCompile Include="IPopupButton.cpp">
       <Filter>Window</Filter>
@@ -97,6 +94,9 @@
     <ClCompile Include="PSConeButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="PolygonPanel.cpp">
+      <Filter>Generation\PolygonMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -106,9 +106,6 @@
     <ClInclude Include="CameraMenu.h" />
     <ClInclude Include="imgui.h">
       <Filter>imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonPanel.h">
-      <Filter>Generation</Filter>
     </ClInclude>
     <ClInclude Include="AppearancePanel.h" />
     <ClInclude Include="IPopupButton.h">
@@ -243,6 +240,9 @@
     <ClInclude Include="PSConeButton.h">
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
+    <ClInclude Include="PolygonPanel.h">
+      <Filter>Generation\PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -277,6 +277,9 @@
     </Filter>
     <Filter Include="Type">
       <UniqueIdentifier>{03e79bbc-d400-4ee6-baef-09a416838ef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generation\PolygonMesh">
+      <UniqueIdentifier>{ad45230d-8683-40fd-90bc-ec9f4bf7bbd3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

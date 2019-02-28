@@ -28,7 +28,6 @@ namespace {
 		PSTorusButton(Repository* model, Canvas* canvas) :
 			IPopupButton("Torus", model, canvas)
 		{
-
 		}
 
 		void onShow() override

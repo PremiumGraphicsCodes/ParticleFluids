@@ -18,8 +18,7 @@ public:
 	{}
 
 	void show() override {
-		const auto str = name.c_str();
-		ImGui::InputFloat3(str, &value[0]);
+		ImGui::InputFloat3(name.c_str(), &value[0]);
 	}
 
 	Math::Vector3dd getValue() const { return value; }
