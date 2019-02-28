@@ -11,9 +11,9 @@ class WFSphereButton : public IPopupButton
 {
 public:
 	WFSphereButton(Repository* repository, Canvas* canvas) :
-		IPopupButton("Sphere", repository, canvas),
+		IPopupButton("WFSphere", repository, canvas),
 		sphereButton("Sphere", repository, canvas),
-		attributeButton(repository, canvas),
+		attributeButton("Attribute",repository, canvas),
 		unum(12),
 		vnum(12)
 	{

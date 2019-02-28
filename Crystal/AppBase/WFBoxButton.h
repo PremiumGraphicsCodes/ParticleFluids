@@ -11,9 +11,9 @@ class WFBoxButton : public IPopupButton
 {
 public:
 	WFBoxButton(Repository* model, Canvas* canvas) :
-		IPopupButton("Box", model, canvas),
+		IPopupButton("WFBox", model, canvas),
 		boxButton("Box", model, canvas),
-		attributeButton(model, canvas)
+		attributeButton("Attribute",model, canvas)
 	{
 	}
 

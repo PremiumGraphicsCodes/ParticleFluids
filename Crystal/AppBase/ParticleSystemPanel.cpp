@@ -10,6 +10,8 @@
 #include "PSBoxButton.h"
 #include "PSSphereButton.h"
 
+#include "Cylinder3dButton.h"
+
 #include "IPopupButton.h"
 
 #include <random>
@@ -23,23 +25,21 @@ namespace {
 	{
 	public:
 		PSCylinderButton(Repository* model, Canvas* canvas) :
-			IPopupButton("Cylinder", model, canvas)
+			IPopupButton("PSCylinder", model, canvas),
+			cylinderButton(model, canvas)
 		{
-
 		}
 
 		void onShow() override
 		{
-			ImGui::InputFloat3("Center", &center[0]);
-			ImGui::InputFloat("Radius", &radius);
-			ImGui::InputFloat("Height", &height);
+			cylinderButton.show();
 			ImGui::InputFloat("Size", &size);
 			ImGui::InputInt("Count", &count);
 		}
 
 		void onOk() override
 		{
-			const Cylinder3d cylinder(radius, height, center);
+			const auto& cylinder = cylinderButton.getValue();
 			std::mt19937 mt{ std::random_device{}() };
 			std::uniform_real_distribution<double> dist(0.0, 1.0);
 			std::vector<Vector3df> positions;
@@ -58,9 +58,7 @@ namespace {
 		}
 
 	private:
-		glm::vec3 center = { 0.0f, 0.0f, 0.0f };
-		float radius = 1.0f;
-		float height = 1.0f;
+		Cylinder3dButton cylinderButton;
 
 		float size = 1.0f;
 

@@ -13,7 +13,7 @@ class WFTorusButton : public IPopupButton
 public:
 	WFTorusButton(Repository* model, Canvas* canvas) :
 		IPopupButton("Torus", model, canvas),
-		attributeButton(model, canvas),
+		attributeButton("Attribute", model, canvas),
 		unum(24),
 		vnum(12)
 	{

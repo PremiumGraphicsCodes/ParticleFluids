@@ -9,8 +9,8 @@ namespace Crystal {
 class WFAttributeButton : public IPopupButton
 {
 public:
-	WFAttributeButton(Repository* model, Canvas* canvas) :
-		IPopupButton("WFAttr", model, canvas),
+	WFAttributeButton(const std::string& name, Repository* model, Canvas* canvas) :
+		IPopupButton(name, model, canvas),
 		width(1.0f),
 		color(0,0,0,0)
 	{
