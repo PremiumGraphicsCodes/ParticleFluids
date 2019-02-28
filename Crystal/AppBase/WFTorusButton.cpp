@@ -10,8 +10,8 @@ using namespace Crystal::UI;
 
 void WFTorusButton::onShow()
 {
-	ImGui::InputInt("UNum", &unum);
-	ImGui::InputInt("VNum", &vnum);
+	unum.show();
+	vnum.show();
 	torus.show();
 	attribute.show();
 }
@@ -19,7 +19,7 @@ void WFTorusButton::onShow()
 void WFTorusButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
-	builder.build(torus.getValue(), unum, vnum);
+	builder.build(torus.getValue(), unum.getValue(), vnum.getValue());
 	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attribute.getValue(), "Torus");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());

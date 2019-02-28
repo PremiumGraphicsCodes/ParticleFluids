@@ -5,6 +5,7 @@
 #include "../Math/Vector3d.h"
 #include "Torus3dView.h"
 #include "WFAttributeView.h"
+#include "IntView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -16,8 +17,8 @@ public:
 		IPopupButton("WFTorus", model, canvas),
 		torus("Torus"),
 		attribute("Attribute"),
-		unum(24),
-		vnum(12)
+		unum("UNum", 24),
+		vnum("VNum",12)
 	{
 	}
 
@@ -31,8 +32,8 @@ public:
 	}
 
 private:
-	int unum;
-	int vnum;
+	IntView unum;
+	IntView vnum;
 	TorusView torus;
 	WFAttributeView attribute;
 };
