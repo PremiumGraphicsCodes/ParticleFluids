@@ -9,7 +9,7 @@ using namespace Crystal::UI;
 void PSConeButton::onShow()
 {
 	cone.show();
-	size.show();
+	attribute.show();
 	count.show();
 }
 
@@ -24,7 +24,7 @@ void PSConeButton::onOk()
 		const auto v = dist(mt);
 		positions.push_back(c.getPosition(u, v));
 	}
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), size.getValue(), "Cylinder");
+	getModel()->getObjects()->getParticleSystems()->addObject(positions, attribute.getValue(), "Cylinder");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

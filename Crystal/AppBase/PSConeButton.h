@@ -3,7 +3,7 @@
 #include "IPopupButton.h"
 
 #include "Cone3dView.h"
-#include "FloatView.h"
+#include "PSAttributeView.h"
 #include "IntView.h"
 
 namespace Crystal {
@@ -15,7 +15,7 @@ public:
 	PSConeButton(Repository* model, Canvas* canvas) :
 		IPopupButton("PSCone", model, canvas),
 		cone("Cone"),
-		size("Size", 1.0f),
+		attribute("Attribute"),
 		count("Count", 10000)
 	{
 	}
@@ -30,7 +30,7 @@ public:
 
 private:
 	Cone3dView cone;
-	FloatView size;
+	PSAttributeView attribute;
 	IntView count;
 };
 

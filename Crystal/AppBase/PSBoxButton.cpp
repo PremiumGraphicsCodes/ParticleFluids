@@ -13,6 +13,7 @@ using namespace Crystal::UI;
 void PSBoxButton::onShow()
 {
 	box.show();
+	attribute.show();
 	count.getValue();
 }
 
@@ -28,7 +29,7 @@ void PSBoxButton::onOk()
 		const auto w = dist(mt);
 		positions.push_back(b.getPosition(Vector3dd( u, v, w )));
 	}
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), 100.0f, "Box");
+	getModel()->getObjects()->getParticleSystems()->addObject(positions, attribute.getValue(), "Box");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

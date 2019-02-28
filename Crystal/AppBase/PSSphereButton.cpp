@@ -14,7 +14,7 @@ using namespace Crystal::UI;
 void PSSphereButton::onShow()
 {
 	sphere.show();
-	size.show();
+	attribute.show();
 	count.show();
 }
 
@@ -29,7 +29,7 @@ void PSSphereButton::onOk()
 		const auto v = dist(mt);
 		positions.push_back(shape.getPosition(u, v));
 	}
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), size.getValue(), "Sphere");
+	getModel()->getObjects()->getParticleSystems()->addObject(positions, attribute.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

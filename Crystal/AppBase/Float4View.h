@@ -11,9 +11,9 @@ namespace Crystal {
 class Float4View : public IWindow
 {
 public:
-	explicit Float4View(const std::string& name) :
+	Float4View(const std::string& name, const glm::vec4& value) :
 		IWindow(name),
-		value(0,0,0,0)
+		value(value)
 	{}
 
 	void show() override {

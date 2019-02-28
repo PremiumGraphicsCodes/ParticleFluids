@@ -15,8 +15,8 @@ class PSAttributeView : public IWindow
 public:
 	PSAttributeView(const std::string& name) :
 		IWindow(name),
-		size("Size", 1.0f),
-		color("Color")
+		size("Size", 100.0f),
+		color("Color", glm::vec4(1,1,1,1))
 		//nameView("Name", "WireFrame")
 	{
 	}

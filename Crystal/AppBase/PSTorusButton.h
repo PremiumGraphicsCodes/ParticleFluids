@@ -3,7 +3,7 @@
 #include "IPopupButton.h"
 
 #include "Torus3dView.h"
-#include "FloatView.h"
+#include "PSAttributeView.h"
 #include "IntView.h"
 
 namespace Crystal {
@@ -15,7 +15,7 @@ public:
 	PSTorusButton(Repository* model, Canvas* canvas) :
 		IPopupButton("PSTorus", model, canvas),
 		torusView("Torus"),
-		sizeView("Size", 1.0f),
+		attribute("Attribute"),
 		count("Count", 10000)
 	{
 	}
@@ -23,7 +23,7 @@ public:
 	void onShow() override
 	{
 		torusView.show();
-		sizeView.show();
+		attribute.show();
 		count.show();
 	}
 
@@ -33,7 +33,7 @@ public:
 
 private:
 	TorusView torusView;
-	FloatView sizeView;
+	PSAttributeView attribute;
 	IntView count;
 };
 

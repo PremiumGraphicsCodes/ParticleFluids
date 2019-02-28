@@ -16,9 +16,9 @@ public:
 
 	void clear() override;
 
-	int addObject(const Math::Vector3df& position, const Graphics::ColorRGBAf& color, const float size, const std::string& name);
+	int addObject(const Math::Vector3df& position, const ParticleAttribute& attribute, const std::string& name);
 
-	int addObject(const std::vector<Math::Vector3df>& positions, const Graphics::ColorRGBAf& color, const float size, const std::string& name);
+	int addObject(const std::vector<Math::Vector3df>& positions, const ParticleAttribute& attribute, const std::string& name);
 
 	std::list<ParticleSystemObject> getObjects() const { return objects; }
 

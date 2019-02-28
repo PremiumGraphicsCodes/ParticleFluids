@@ -1,6 +1,7 @@
 #include "IPopupButton.h"
 
 #include "Cylinder3dView.h"
+#include "PSAttributeView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -10,6 +11,7 @@ class PSCylinderButton : public IPopupButton
 public:
 	PSCylinderButton(Repository* model, Canvas* canvas) :
 		IPopupButton("PSCylinder", model, canvas),
+		attribute("Attribute"),
 		cylinderButton("Cylinder")
 	{
 	}
@@ -24,8 +26,7 @@ public:
 
 private:
 	Cylinder3dView cylinderButton;
-
-	float size = 1.0f;
+	PSAttributeView attribute;
 
 	int count = 10000;
 };

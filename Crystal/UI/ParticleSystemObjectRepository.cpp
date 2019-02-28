@@ -22,25 +22,19 @@ void ParticleSystemObjectRepository::clear()
 	objects.clear();
 }
 
-int ParticleSystemObjectRepository::addObject(const Vector3df& position, const ColorRGBAf& color, const float size, const std::string& name)
+int ParticleSystemObjectRepository::addObject(const Vector3df& position, const ParticleAttribute& attribute, const std::string& name)
 {
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
-	ParticleAttribute attr;
-	attr.color = color;
-	attr.size = size;
-	particles->add(position, attr);
+	particles->add(position, attribute);
 	objects.push_back(ParticleSystemObject(nextId++, name, particles));
 	return objects.back().getId();
 }
 
-int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& positions, const ColorRGBAf& color, const float size, const std::string& name)
+int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& positions, const ParticleAttribute& attribute, const std::string& name)
 {
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
 	for (const auto& p : positions) {
-		ParticleAttribute attr;
-		attr.color = color;
-		attr.size = size;
-		particles->add(p, attr);
+		particles->add(p, attribute);
 	}
 	objects.push_back(ParticleSystemObject(nextId++, name, particles));
 	return objects.back().getId();

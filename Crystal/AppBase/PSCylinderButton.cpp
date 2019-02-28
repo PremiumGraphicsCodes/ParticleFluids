@@ -11,7 +11,7 @@ using namespace Crystal::UI;
 void PSCylinderButton::onShow()
 {
 	cylinderButton.show();
-	ImGui::InputFloat("Size", &size);
+	attribute.show();
 	ImGui::InputInt("Count", &count);
 }
 
@@ -26,7 +26,7 @@ void PSCylinderButton::onOk()
 		const auto v = dist(mt);
 		positions.push_back(cylinder.getPosition(u, v));
 	}
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), size, "Cylinder");
+	getModel()->getObjects()->getParticleSystems()->addObject(positions, attribute.getValue(), "Cylinder");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

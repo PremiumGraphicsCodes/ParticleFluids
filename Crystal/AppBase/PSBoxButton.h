@@ -3,6 +3,7 @@
 #include "IPopupButton.h"
 
 #include "Box3dView.h"
+#include "PSAttributeView.h"
 #include "IntView.h"
 
 namespace Crystal {
@@ -14,6 +15,7 @@ public:
 	PSBoxButton(Repository* model, Canvas* canvas) :
 		IPopupButton("PSBox", model, canvas),
 		box("Box"),
+		attribute("Attribute"),
 		count("Count", 10000)
 	{
 	}
@@ -29,6 +31,7 @@ public:
 
 private:
 	Box3dView box;
+	PSAttributeView attribute;
 	IntView count;
 };
 

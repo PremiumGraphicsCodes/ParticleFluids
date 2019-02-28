@@ -16,7 +16,7 @@ public:
 	WFAttributeView(const std::string& name) :
 		IWindow(name),
 		width("Width", 1.0f),
-		color("Color")
+		color("Color", glm::vec4(0,0,0,0))
 		//nameView("Name", "WireFrame")
 	{
 	}
