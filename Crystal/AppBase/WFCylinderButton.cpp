@@ -15,7 +15,7 @@ void WFCylinderButton::onShow()
 	ImGui::InputFloat3("Center", &center[0]);
 	ImGui::InputDouble("Radius", &radius);
 	ImGui::InputDouble("Height", &radius);
-	ImGui::ColorPicker4("Color", &color[0]);
+	attributeButton.show();
 }
 
 void WFCylinderButton::onOk()
@@ -23,7 +23,7 @@ void WFCylinderButton::onOk()
 	const Cylinder3d sphere(radius, height, center);
 	Crystal::Shape::WireFrameBuilder builder;
 	builder.build(sphere, unum, vnum);
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), color, "Sphere");
+	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

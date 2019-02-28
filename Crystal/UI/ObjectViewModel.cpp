@@ -40,7 +40,7 @@ void ObjectViewModel::add(const ParticleSystemObject& object)
 void ObjectViewModel::add(const WireFrameObject& object)
 {
 	const auto& lines = object.getShape()->getLines();
-	const auto& color = object.getColor();
+	const auto& color = object.getAttribute().color;
 	int index = 0;
 	for (const auto& l : lines) {
 		lineBuffer.add(l.getStart(), color, index++);

@@ -97,6 +97,9 @@
     <ClCompile Include="Sphere3dButton.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="WFAttributeButton.cpp">
+      <Filter>Generation\WireFrame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -212,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="imconfig.h">
       <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="WFAttributeButton.h">
+      <Filter>Generation\WireFrame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

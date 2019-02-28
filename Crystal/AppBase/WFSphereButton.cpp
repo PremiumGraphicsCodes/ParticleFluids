@@ -13,14 +13,14 @@ void WFSphereButton::onShow()
 	sphereButton.show();
 	ImGui::InputInt("UNum", &unum);
 	ImGui::InputInt("VNum", &vnum);
-	ImGui::ColorPicker4("Color", &color[0]);
+	attributeButton.show();
 }
 
 void WFSphereButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
 	builder.build(sphereButton.getValue(), unum, vnum);
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), color, "Sphere");
+	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

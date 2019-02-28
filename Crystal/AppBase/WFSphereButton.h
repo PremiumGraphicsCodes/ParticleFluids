@@ -2,6 +2,7 @@
 
 #include "IPopupButton.h"
 #include "Sphere3dButton.h"
+#include "WFAttributeButton.h"
 
 namespace Crystal {
 	namespace UI {
@@ -12,6 +13,7 @@ public:
 	WFSphereButton(Repository* repository, Canvas* canvas) :
 		IPopupButton("Sphere", repository, canvas),
 		sphereButton("Sphere", repository, canvas),
+		attributeButton(repository, canvas),
 		unum(12),
 		vnum(12)
 	{
@@ -30,7 +32,7 @@ private:
 	int unum;
 	int vnum;
 	Sphere3dButton sphereButton;
-	glm::vec4 color;
+	WFAttributeButton attributeButton;
 };
 
 	}

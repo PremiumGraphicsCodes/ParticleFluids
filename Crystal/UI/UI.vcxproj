@@ -50,6 +50,7 @@
     <ClInclude Include="RectSelectUICtrl.h" />
     <ClInclude Include="ObjectViewModel.h" />
     <ClInclude Include="ViewModel.h" />
+    <ClInclude Include="WireFrameAttribute.h" />
     <ClInclude Include="WireFrameObject.h" />
     <ClInclude Include="WireFrameObjectRepository.h" />
   </ItemGroup>

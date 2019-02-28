@@ -18,9 +18,9 @@ void WireFrameObjectRepository::clear()
 	objects.clear();
 }
 
-int WireFrameObjectRepository::addObject(WireFrame* wire, const ColorRGBAf& color, const std::string& name)
+int WireFrameObjectRepository::addObject(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
 {
-	objects.push_back(WireFrameObject(nextId++, name, wire, color));
+	objects.push_back(WireFrameObject(nextId++, name, wire, attribute));
 	return objects.back().getId();
 }
 

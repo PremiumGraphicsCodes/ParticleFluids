@@ -18,7 +18,7 @@ public:
 
 	void clear();
 
-	int addObject(Shape::WireFrame* wire, const Graphics::ColorRGBAf& color, const std::string& name);
+	int addObject(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
 
 	std::list<WireFrameObject> getObjects() const { return objects; }
 

@@ -10,14 +10,14 @@ using namespace Crystal::UI;
 void WFBoxButton::onShow()
 {
 	boxButton.show();
-	ImGui::ColorPicker4("Color", &color[0]);
+	attributeButton.show();
 }
 
 void WFBoxButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
 	builder.build(boxButton.getValue());
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), color, "Box");
+	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Box");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

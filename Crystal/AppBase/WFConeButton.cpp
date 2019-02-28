@@ -15,7 +15,7 @@ void WFConeButton::onShow()
 	ImGui::InputFloat3("Center", &center[0]);
 	ImGui::InputDouble("Radius", &radius);
 	ImGui::InputDouble("Height", &height);
-	ImGui::ColorPicker4("Color", &color[0]);
+	attributeButton.show();
 }
 
 void WFConeButton::onOk()
@@ -23,7 +23,7 @@ void WFConeButton::onOk()
 	const Cone3d cone(center, radius, height);
 	Crystal::Shape::WireFrameBuilder builder;
 	builder.build(cone, unum, vnum);
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), color, "Cone");
+	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Cone");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

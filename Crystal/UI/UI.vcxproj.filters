@@ -98,6 +98,9 @@
     <ClInclude Include="TextureObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="WireFrameAttribute.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas.cpp" />
