@@ -5,7 +5,7 @@
 
 #include "../AppBase/ParticleSystemPanel.h"
 #include "../AppBase/WireFramePanel.h"
-#include "../AppBase/PolygonPanel.h"
+#include "../AppBase/PolygonMeshPanel.h"
 #include "../AppBase/AppearancePanel.h"
 #include "../AppBase/SelectionPanel.h"
 #include "../AppBase/TransformPanel.h"
@@ -54,7 +54,7 @@ int main(int, char**)
 
 	window.add(new ParticleSystemPanel("Particle", &model, &canvas));
 	window.add(new WireFramePanel("WireFrame", &model, &canvas));
-	window.add(new PolygonPanel("Polygon", &model, &canvas));
+	window.add(new PolygonMeshPanel("Polygon", &model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
 	window.add(new SelectionPanel("Selection", &model, &canvas));
 	window.add(new TransformPanel("Transform", &model, &canvas));

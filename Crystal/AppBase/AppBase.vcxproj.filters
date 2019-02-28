@@ -94,14 +94,14 @@
     <ClCompile Include="PSConeButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonPanel.cpp">
-      <Filter>Generation\PolygonMesh</Filter>
-    </ClCompile>
     <ClCompile Include="imgui_stdlib.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
     <ClCompile Include="PSTorusButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshPanel.cpp">
+      <Filter>Generation\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -246,9 +246,6 @@
     <ClInclude Include="PSConeButton.h">
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonPanel.h">
-      <Filter>Generation\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="Torus3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
@@ -263,6 +260,9 @@
     </ClInclude>
     <ClInclude Include="PSAttributeView.h">
       <Filter>Generation\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshPanel.h">
+      <Filter>Generation\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

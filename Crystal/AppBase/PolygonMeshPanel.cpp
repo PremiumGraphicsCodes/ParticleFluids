@@ -1,4 +1,4 @@
-#include "PolygonPanel.h"
+#include "PolygonMeshPanel.h"
 #include "../Math/Vector3d.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
@@ -126,7 +126,7 @@ namespace {
 	};
 }
 
-PolygonPanel::PolygonPanel(const std::string& name, Repository* model, Canvas* canvas) :
+PolygonMeshPanel::PolygonMeshPanel(const std::string& name, Repository* model, Canvas* canvas) :
 	IPanel(name, model, canvas)
 {
 	add( new WFSphereButton(model, canvas) );

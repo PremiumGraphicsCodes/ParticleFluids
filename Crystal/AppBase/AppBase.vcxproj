@@ -43,7 +43,7 @@
     <ClCompile Include="ObjectSelectButton.cpp" />
     <ClCompile Include="ParticleSystemTreeList.cpp" />
     <ClCompile Include="ParticleSystemPanel.cpp" />
-    <ClCompile Include="PolygonPanel.cpp" />
+    <ClCompile Include="PolygonMeshPanel.cpp" />
     <ClCompile Include="PolygonTreeList.cpp" />
     <ClCompile Include="PositionSelectButton.cpp" />
     <ClCompile Include="SelectionPanel.cpp" />
@@ -100,7 +100,7 @@
     <ClInclude Include="ObjectSelectButton.h" />
     <ClInclude Include="ParticleSystemTreeList.h" />
     <ClInclude Include="ParticleSystemPanel.h" />
-    <ClInclude Include="PolygonPanel.h" />
+    <ClInclude Include="PolygonMeshPanel.h" />
     <ClInclude Include="PolygonTreeList.h" />
     <ClInclude Include="PositionSelectButton.h" />
     <ClInclude Include="SelectionPanel.h" />

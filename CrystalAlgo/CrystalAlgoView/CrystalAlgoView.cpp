@@ -5,7 +5,7 @@
 
 #include "../../Crystal/AppBase/ParticleSystemPanel.h"
 #include "../../Crystal/AppBase/WireFramePanel.h"
-#include "../../Crystal/AppBase/PolygonPanel.h"
+#include "../../Crystal/AppBase/PolygonMeshPanel.h"
 
 #include "../../Crystal/AppBase/AppearancePanel.h"
 
@@ -65,7 +65,7 @@ int main(int, char**)
 
 	window.add(new ParticleSystemPanel("ParticleSystem", &model, &canvas));
 	window.add(new WireFramePanel("WireFrame", &model, &canvas));
-	window.add(new PolygonPanel("Polygon", &model, &canvas));
+	window.add(new PolygonMeshPanel("Polygon", &model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
 
 	window.add(new ParticleSystemTreeList("ParticleSystems", &model, &canvas));

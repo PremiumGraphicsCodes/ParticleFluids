@@ -17,7 +17,10 @@ int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ 
 		const auto& p = Converter::toCpp(positions[i]);
 		ps.push_back(p);
 	}
-	return instance->getParticleSystems()->addObject(ps, Crystal::Graphics::ColorRGBAf(1, 0, 0, 0), 1.0f, "");
+	Crystal::UI::ParticleAttribute attr;
+	attr.color = Crystal::Graphics::ColorRGBAf(1, 0, 0, 0);
+	attr.size = 1.0f;
+	return instance->getParticleSystems()->addObject(ps, attr, "");
 }
 
 int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
