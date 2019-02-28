@@ -15,8 +15,8 @@ public:
 	WFAttributeView(const std::string& name) :
 		IWindow(name),
 		width("Width", 1.0f),
-		color("Color"),
-		nameView("Name", "WireFrame")
+		color("Color")
+		//nameView("Name", "WireFrame")
 	{
 	}
 
@@ -24,7 +24,7 @@ public:
 	{
 		width.show();
 		color.show();
-		nameView.show();
+		//nameView.show();
 		//ImGui::ColorPicker4("Color", &color[0]);
 	}
 
@@ -38,7 +38,7 @@ public:
 private:
 	FloatView width;
 	Float4View color;
-	StringView nameView;
+	//StringView nameView;
 };
 
 	}

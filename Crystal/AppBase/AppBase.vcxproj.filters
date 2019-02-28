@@ -100,6 +100,9 @@
     <ClCompile Include="imgui_stdlib.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
+    <ClCompile Include="PSTorusButton.cpp">
+      <Filter>Generation\ParticleSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -254,6 +257,9 @@
     </ClInclude>
     <ClInclude Include="imgui_stdlib.h">
       <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="PSTorusButton.h">
+      <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
