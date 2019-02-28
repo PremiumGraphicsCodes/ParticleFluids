@@ -100,6 +100,9 @@
     <ClCompile Include="WFAttributeButton.cpp">
       <Filter>Generation\WireFrame</Filter>
     </ClCompile>
+    <ClCompile Include="Cylinder3dButton.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -218,6 +221,9 @@
     </ClInclude>
     <ClInclude Include="WFAttributeButton.h">
       <Filter>Generation\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="Cylinder3dButton.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

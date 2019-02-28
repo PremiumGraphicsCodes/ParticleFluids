@@ -10,19 +10,16 @@ using namespace Crystal::UI;
 
 void WFCylinderButton::onShow()
 {
+	cylinderButton.show();
 	ImGui::InputInt("UNum", &unum);
 	ImGui::InputInt("VNum", &vnum);
-	ImGui::InputFloat3("Center", &center[0]);
-	ImGui::InputDouble("Radius", &radius);
-	ImGui::InputDouble("Height", &radius);
 	attributeButton.show();
 }
 
 void WFCylinderButton::onOk()
 {
-	const Cylinder3d sphere(radius, height, center);
 	Crystal::Shape::WireFrameBuilder builder;
-	builder.build(sphere, unum, vnum);
+	builder.build(cylinderButton.getValue(), unum, vnum);
 	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());

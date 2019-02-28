@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IPopupButton.h"
+#include "Cylinder3dButton.h"
 #include "WFAttributeButton.h"
 
 namespace Crystal {
@@ -10,7 +11,8 @@ class WFCylinderButton : public IPopupButton
 {
 public:
 	WFCylinderButton(Repository* model, Canvas* canvas) :
-		IPopupButton("Cylinder", model, canvas),
+		IPopupButton("WFCylinder", model, canvas),
+		cylinderButton(model, canvas),
 		attributeButton(model, canvas),
 		unum(12),
 		vnum(12)
@@ -29,9 +31,7 @@ public:
 private:
 	int unum;
 	int vnum;
-	glm::vec3 center = { 0.0f, 0.0f, 0.0f };
-	double radius = 1.0;
-	double height = 1.0;
+	Cylinder3dButton cylinderButton;
 	WFAttributeButton attributeButton;
 };
 

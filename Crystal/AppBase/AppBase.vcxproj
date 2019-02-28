@@ -23,6 +23,7 @@
     <ClCompile Include="Box3dButton.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
+    <ClCompile Include="Cylinder3dButton.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_draw.cpp" />
@@ -62,6 +63,7 @@
     <ClInclude Include="Box3dButton.h" />
     <ClInclude Include="CameraMenu.h" />
     <ClInclude Include="CtrlMenu.h" />
+    <ClInclude Include="Cylinder3dButton.h" />
     <ClInclude Include="FileMenu.h" />
     <ClInclude Include="imconfig.h" />
     <ClInclude Include="IMenu.h" />
