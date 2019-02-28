@@ -85,9 +85,6 @@
     <ClCompile Include="ParticleSystemPanel.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Box3dButton.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="PSBoxButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
@@ -99,15 +96,6 @@
     </ClCompile>
     <ClCompile Include="PSCylinderButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="Cone3dButton.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="DoubleView.cpp">
-      <Filter>Type</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3dView.cpp">
-      <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,9 +198,6 @@
     <ClInclude Include="ParticleSystemPanel.h">
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Box3dButton.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="PSBoxButton.h">
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
@@ -228,9 +213,6 @@
     <ClInclude Include="PSCylinderButton.h">
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Cone3dButton.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="DoubleView.h">
       <Filter>Type</Filter>
     </ClInclude>
@@ -241,6 +223,12 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Cylinder3dView.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Box3dView.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Cone3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>

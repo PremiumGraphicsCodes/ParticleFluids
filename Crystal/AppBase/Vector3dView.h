@@ -2,6 +2,8 @@
 
 #include "IWindow.h"
 
+#include "imgui.h"
+
 #include "../Math/Vector3d.h"
 
 namespace Crystal {
@@ -15,7 +17,10 @@ public:
 		value(value)
 	{}
 
-	void show() override;
+	void show() override {
+		const auto str = name.c_str();
+		ImGui::InputFloat3(str, &value[0]);
+	}
 
 	Math::Vector3dd getValue() const { return value; }
 

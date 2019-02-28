@@ -11,7 +11,7 @@
 #include "PSSphereButton.h"
 #include "PSCylinderButton.h"
 
-#include "Cone3dButton.h"
+#include "Cone3dView.h"
 
 #include "IPopupButton.h"
 
@@ -28,7 +28,7 @@ namespace {
 	public:
 		PSConeButton(Repository* model, Canvas* canvas) :
 			IPopupButton("PSCone", model, canvas),
-			coneButton(model, canvas)
+			coneButton("Cone")
 		{
 		}
 
@@ -60,7 +60,7 @@ namespace {
 		}
 
 	private:
-		Cone3dButton coneButton;
+		Cone3dView coneButton;
 		float size = 1.0f;
 		int count = 10000;
 	};

@@ -20,11 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppearancePanel.cpp" />
-    <ClCompile Include="Box3dButton.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
-    <ClCompile Include="Cone3dButton.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
-    <ClCompile Include="DoubleView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_draw.cpp" />
@@ -49,7 +46,6 @@
     <ClCompile Include="SelectionPanel.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="TransformPanel.cpp" />
-    <ClCompile Include="Vector3dView.cpp" />
     <ClCompile Include="WFAttributeButton.cpp" />
     <ClCompile Include="WFBoxButton.cpp" />
     <ClCompile Include="WFConeButton.cpp" />
@@ -62,9 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppearancePanel.h" />
-    <ClInclude Include="Box3dButton.h" />
+    <ClInclude Include="Box3dView.h" />
     <ClInclude Include="CameraMenu.h" />
-    <ClInclude Include="Cone3dButton.h" />
+    <ClInclude Include="Cone3dView.h" />
     <ClInclude Include="CtrlMenu.h" />
     <ClInclude Include="Cylinder3dView.h" />
     <ClInclude Include="DoubleView.h" />

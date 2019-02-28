@@ -2,7 +2,7 @@
 
 #include "IPopupButton.h"
 
-#include "Box3dButton.h"
+#include "Box3dView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -11,10 +11,9 @@ class PSBoxButton : public IPopupButton
 {
 public:
 	PSBoxButton(Repository* model, Canvas* canvas) :
-		boxButton("Box", model, canvas),
-		IPopupButton("Box", model, canvas)
+		IPopupButton("PSBox", model, canvas),
+		boxButton("Box")
 	{
-
 	}
 
 	void onShow() override;
@@ -27,7 +26,7 @@ public:
 	}
 
 private:
-	Box3dButton boxButton;
+	Box3dView boxButton;
 	int count = 10000;
 };
 

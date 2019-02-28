@@ -4,7 +4,7 @@
 #include "WFAttributeButton.h"
 
 #include "../Math/Vector3d.h"
-#include "Cone3dButton.h"
+#include "Cone3dView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -13,8 +13,8 @@ class WFConeButton : public IPopupButton
 {
 public:
 	WFConeButton(Repository* model, Canvas* canvas) :
-		IPopupButton("Cone", model, canvas),
-		coneButton(model, canvas),
+		IPopupButton("WFCone", model, canvas),
+		coneButton("Cone"),
 		attributeButton("Attribute", model, canvas),
 		unum(12),
 		vnum(12)
@@ -33,7 +33,7 @@ public:
 private:
 	int unum;
 	int vnum;
-	Cone3dButton coneButton;
+	Cone3dView coneButton;
 	WFAttributeButton attributeButton;
 };
 
