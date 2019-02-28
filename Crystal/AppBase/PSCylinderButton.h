@@ -1,6 +1,6 @@
 #include "IPopupButton.h"
 
-#include "Cylinder3dButton.h"
+#include "Cylinder3dView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -10,7 +10,7 @@ class PSCylinderButton : public IPopupButton
 public:
 	PSCylinderButton(Repository* model, Canvas* canvas) :
 		IPopupButton("PSCylinder", model, canvas),
-		cylinderButton(model, canvas)
+		cylinderButton("Cylinder")
 	{
 	}
 
@@ -23,7 +23,7 @@ public:
 	}
 
 private:
-	Cylinder3dButton cylinderButton;
+	Cylinder3dView cylinderButton;
 
 	float size = 1.0f;
 

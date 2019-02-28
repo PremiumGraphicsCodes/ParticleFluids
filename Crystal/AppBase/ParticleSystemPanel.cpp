@@ -11,7 +11,6 @@
 #include "PSSphereButton.h"
 #include "PSCylinderButton.h"
 
-#include "Cylinder3dButton.h"
 #include "Cone3dButton.h"
 
 #include "IPopupButton.h"

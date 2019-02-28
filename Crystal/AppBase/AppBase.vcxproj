@@ -24,7 +24,6 @@
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="Cone3dButton.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
-    <ClCompile Include="Cylinder3dButton.cpp" />
     <ClCompile Include="DoubleView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="imgui.cpp" />
@@ -67,7 +66,7 @@
     <ClInclude Include="CameraMenu.h" />
     <ClInclude Include="Cone3dButton.h" />
     <ClInclude Include="CtrlMenu.h" />
-    <ClInclude Include="Cylinder3dButton.h" />
+    <ClInclude Include="Cylinder3dView.h" />
     <ClInclude Include="DoubleView.h" />
     <ClInclude Include="FileMenu.h" />
     <ClInclude Include="imconfig.h" />
