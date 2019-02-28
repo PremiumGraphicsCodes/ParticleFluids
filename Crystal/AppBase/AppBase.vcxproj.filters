@@ -261,6 +261,9 @@
     <ClInclude Include="PSTorusButton.h">
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
+    <ClInclude Include="PSAttributeView.h">
+      <Filter>Generation\ParticleSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

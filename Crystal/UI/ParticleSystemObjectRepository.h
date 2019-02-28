@@ -30,7 +30,7 @@ public:
 
 	ParticleSystemObject findObjectById(const int id) const;
 
-	Shape::Particle<ParticleAttr>* findParticleById(const int parentId, const int childId) const;
+	Shape::Particle<ParticleAttribute>* findParticleById(const int parentId, const int childId) const;
 
 private:
 	int nextId;

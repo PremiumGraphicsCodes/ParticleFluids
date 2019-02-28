@@ -24,8 +24,8 @@ void ParticleSystemObjectRepository::clear()
 
 int ParticleSystemObjectRepository::addObject(const Vector3df& position, const ColorRGBAf& color, const float size, const std::string& name)
 {
-	auto particles = new Shape::ParticleSystem<ParticleAttr>();
-	ParticleAttr attr;
+	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
+	ParticleAttribute attr;
 	attr.color = color;
 	attr.size = size;
 	particles->add(position, attr);
@@ -35,9 +35,9 @@ int ParticleSystemObjectRepository::addObject(const Vector3df& position, const C
 
 int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& positions, const ColorRGBAf& color, const float size, const std::string& name)
 {
-	auto particles = new Shape::ParticleSystem<ParticleAttr>();
+	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
 	for (const auto& p : positions) {
-		ParticleAttr attr;
+		ParticleAttribute attr;
 		attr.color = color;
 		attr.size = size;
 		particles->add(p, attr);
@@ -84,7 +84,7 @@ ParticleSystemObject ParticleSystemObjectRepository::findObjectById(const int id
 	return *iter;
 }
 
-Particle<ParticleAttr>* ParticleSystemObjectRepository::findParticleById(const int parentId, const int childId) const
+Particle<ParticleAttribute>* ParticleSystemObjectRepository::findParticleById(const int parentId, const int childId) const
 {
 	if (!exists(parentId)) {
 		return nullptr;

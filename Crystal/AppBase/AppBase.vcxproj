@@ -86,6 +86,7 @@
     <ClInclude Include="IWindow.h" />
     <ClInclude Include="LightTreeList.h" />
     <ClInclude Include="MaterialTreeList.h" />
+    <ClInclude Include="PSAttributeView.h" />
     <ClInclude Include="PSTorusButton.h" />
     <ClInclude Include="PSBoxButton.h" />
     <ClInclude Include="PSConeButton.h" />

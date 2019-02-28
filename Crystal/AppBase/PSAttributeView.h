@@ -5,17 +5,17 @@
 #include "Float4View.h"
 #include "StringView.h"
 
-#include "../UI/WireFrameAttribute.h"
+#include "../UI/ParticleAttribute.h"
 
 namespace Crystal {
 	namespace UI {
 
-class WFAttributeView : public IWindow
+class PSAttributeView : public IWindow
 {
 public:
-	WFAttributeView(const std::string& name) :
+	PSAttributeView(const std::string& name) :
 		IWindow(name),
-		width("Width", 1.0f),
+		size("Size", 1.0f),
 		color("Color")
 		//nameView("Name", "WireFrame")
 	{
@@ -23,21 +23,21 @@ public:
 
 	void show() override
 	{
-		width.show();
+		size.show();
 		color.show();
 		//nameView.show();
 		//ImGui::ColorPicker4("Color", &color[0]);
 	}
 
-	UI::WireFrameAttribute getValue() const {
-		UI::WireFrameAttribute attr;
-		attr.width = width.getValue();
+	UI::ParticleAttribute getValue() const {
+		UI::ParticleAttribute attr;
+		attr.size = size.getValue();
 		attr.color = color.getValue();
 		return attr;
 	}
 
 private:
-	FloatView width;
+	FloatView size;
 	Float4View color;
 	//StringView nameView;
 };
