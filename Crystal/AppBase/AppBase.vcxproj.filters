@@ -94,9 +94,6 @@
     <ClCompile Include="PSSphereButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Sphere3dButton.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="WFAttributeButton.cpp">
       <Filter>Generation\WireFrame</Filter>
     </ClCompile>
@@ -111,6 +108,9 @@
     </ClCompile>
     <ClCompile Include="DoubleView.cpp">
       <Filter>Type</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3dView.cpp">
+      <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -222,9 +222,6 @@
     <ClInclude Include="PSSphereButton.h">
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere3dButton.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="imconfig.h">
       <Filter>imgui</Filter>
     </ClInclude>
@@ -242,6 +239,12 @@
     </ClInclude>
     <ClInclude Include="DoubleView.h">
       <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3dView.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere3dView.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

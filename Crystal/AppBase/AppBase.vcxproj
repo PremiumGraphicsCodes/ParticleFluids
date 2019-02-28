@@ -39,7 +39,6 @@
     <ClCompile Include="PSBoxButton.cpp" />
     <ClCompile Include="PSCylinderButton.cpp" />
     <ClCompile Include="PSSphereButton.cpp" />
-    <ClCompile Include="Sphere3dButton.cpp" />
     <ClCompile Include="TextureTreeList.cpp" />
     <ClCompile Include="TransformButton.cpp" />
     <ClCompile Include="ObjectSelectButton.cpp" />
@@ -51,6 +50,7 @@
     <ClCompile Include="SelectionPanel.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="TransformPanel.cpp" />
+    <ClCompile Include="Vector3dView.cpp" />
     <ClCompile Include="WFAttributeButton.cpp" />
     <ClCompile Include="WFBoxButton.cpp" />
     <ClCompile Include="WFConeButton.cpp" />
@@ -88,7 +88,7 @@
     <ClInclude Include="PSBoxButton.h" />
     <ClInclude Include="PSCylinderButton.h" />
     <ClInclude Include="PSSphereButton.h" />
-    <ClInclude Include="Sphere3dButton.h" />
+    <ClInclude Include="Sphere3dView.h" />
     <ClInclude Include="TextureTreeList.h" />
     <ClInclude Include="TransformButton.h" />
     <ClInclude Include="ObjectSelectButton.h" />
@@ -100,6 +100,7 @@
     <ClInclude Include="SelectionPanel.h" />
     <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="TransformPanel.h" />
+    <ClInclude Include="Vector3dView.h" />
     <ClInclude Include="WFAttributeButton.h" />
     <ClInclude Include="WFBoxButton.h" />
     <ClInclude Include="WFConeButton.h" />

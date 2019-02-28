@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IPopupButton.h"
-#include "Sphere3dButton.h"
+#include "Sphere3dView.h"
 #include "WFAttributeButton.h"
 
 namespace Crystal {
@@ -12,7 +12,7 @@ class WFSphereButton : public IPopupButton
 public:
 	WFSphereButton(Repository* repository, Canvas* canvas) :
 		IPopupButton("WFSphere", repository, canvas),
-		sphereButton("Sphere", repository, canvas),
+		sphereButton("Sphere"),
 		attributeButton("Attribute",repository, canvas),
 		unum(12),
 		vnum(12)
@@ -31,7 +31,7 @@ public:
 private:
 	int unum;
 	int vnum;
-	Sphere3dButton sphereButton;
+	Sphere3dView sphereButton;
 	WFAttributeButton attributeButton;
 };
 
