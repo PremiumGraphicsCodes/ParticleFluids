@@ -4,6 +4,7 @@
 #include "../UI/WireFrameAttribute.h"
 #include "FloatView.h"
 #include "Float4View.h"
+#include "StringView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -14,7 +15,8 @@ public:
 	WFAttributeView(const std::string& name) :
 		IWindow(name),
 		width("Width", 1.0f),
-		color("Color")
+		color("Color"),
+		nameView("Name", "WireFrame")
 	{
 	}
 
@@ -22,6 +24,7 @@ public:
 	{
 		width.show();
 		color.show();
+		nameView.show();
 		//ImGui::ColorPicker4("Color", &color[0]);
 	}
 
@@ -35,6 +38,7 @@ public:
 private:
 	FloatView width;
 	Float4View color;
+	StringView nameView;
 };
 
 	}
