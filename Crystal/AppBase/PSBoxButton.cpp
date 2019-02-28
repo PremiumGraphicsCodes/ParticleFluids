@@ -12,21 +12,21 @@ using namespace Crystal::UI;
 
 void PSBoxButton::onShow()
 {
-	boxButton.show();
-	ImGui::InputInt("Count", &count);
+	box.show();
+	count.getValue();
 }
 
 void PSBoxButton::onOk()
 {
-	const auto& box = boxButton.getValue();
+	const auto& b = box.getValue();
 	std::mt19937 mt{ std::random_device{}() };
 	std::uniform_real_distribution<double> dist(0.0, 1.0);
 	std::vector<Vector3df> positions;
-	for (int i = 0; i < count; ++i) {
+	for (int i = 0; i < count.getValue(); ++i) {
 		const auto u = dist(mt);
 		const auto v = dist(mt);
 		const auto w = dist(mt);
-		positions.push_back(box.getPosition(Vector3dd( u, v, w )));
+		positions.push_back(b.getPosition(Vector3dd( u, v, w )));
 	}
 	getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), 100.0f, "Box");
 	getCanvas()->setViewModel(getModel()->toViewModel());

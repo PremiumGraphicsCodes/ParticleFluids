@@ -12,7 +12,8 @@ class Float4View : public IWindow
 {
 public:
 	explicit Float4View(const std::string& name) :
-		IWindow(name)
+		IWindow(name),
+		value(0,0,0,0)
 	{}
 
 	void show() override {

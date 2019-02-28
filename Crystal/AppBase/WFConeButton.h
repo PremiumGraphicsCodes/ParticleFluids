@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IPopupButton.h"
+#include "IntView.h"
 #include "WFAttributeView.h"
 
 #include "../Math/Vector3d.h"
@@ -14,10 +15,10 @@ class WFConeButton : public IPopupButton
 public:
 	WFConeButton(Repository* model, Canvas* canvas) :
 		IPopupButton("WFCone", model, canvas),
-		coneButton("Cone"),
-		attributeButton("Attribute"),
-		unum(12),
-		vnum(12)
+		cone("Cone"),
+		attribute("Attribute"),
+		unum("UNum", 12),
+		vnum("VNum", 12)
 	{
 	}
 
@@ -31,10 +32,10 @@ public:
 	}
 
 private:
-	int unum;
-	int vnum;
-	Cone3dView coneButton;
-	WFAttributeView attributeButton;
+	IntView unum;
+	IntView vnum;
+	Cone3dView cone;
+	WFAttributeView attribute;
 };
 
 	}

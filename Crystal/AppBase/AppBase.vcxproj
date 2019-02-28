@@ -33,6 +33,7 @@
     <ClCompile Include="LightTreeList.cpp" />
     <ClCompile Include="MaterialTreeList.cpp" />
     <ClCompile Include="PSBoxButton.cpp" />
+    <ClCompile Include="PSConeButton.cpp" />
     <ClCompile Include="PSCylinderButton.cpp" />
     <ClCompile Include="PSSphereButton.cpp" />
     <ClCompile Include="TextureTreeList.cpp" />
@@ -75,6 +76,7 @@
     <ClInclude Include="imstb_rectpack.h" />
     <ClInclude Include="imstb_textedit.h" />
     <ClInclude Include="imstb_truetype.h" />
+    <ClInclude Include="IntView.h" />
     <ClInclude Include="IPanel.h" />
     <ClInclude Include="IPopupButton.h" />
     <ClInclude Include="ITreeList.h" />
@@ -82,6 +84,7 @@
     <ClInclude Include="LightTreeList.h" />
     <ClInclude Include="MaterialTreeList.h" />
     <ClInclude Include="PSBoxButton.h" />
+    <ClInclude Include="PSConeButton.h" />
     <ClInclude Include="PSCylinderButton.h" />
     <ClInclude Include="PSSphereButton.h" />
     <ClInclude Include="Sphere3dView.h" />

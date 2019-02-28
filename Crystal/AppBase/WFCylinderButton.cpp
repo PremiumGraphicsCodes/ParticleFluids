@@ -10,17 +10,17 @@ using namespace Crystal::UI;
 
 void WFCylinderButton::onShow()
 {
-	cylinderButton.show();
+	cylinder.show();
 	ImGui::InputInt("UNum", &unum);
 	ImGui::InputInt("VNum", &vnum);
-	attributeButton.show();
+	attribute.show();
 }
 
 void WFCylinderButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
-	builder.build(cylinderButton.getValue(), unum, vnum);
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Sphere");
+	builder.build(cylinder.getValue(), unum, vnum);
+	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attribute.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

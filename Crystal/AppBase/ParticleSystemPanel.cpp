@@ -1,8 +1,5 @@
 #include "ParticleSystemPanel.h"
 #include "imgui.h"
-#include "../Math/Sphere3d.h"
-#include "../Math/Cylinder3d.h"
-#include "../Math/Cone3d.h"
 #include "../Math/Torus3d.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
@@ -10,6 +7,7 @@
 #include "PSBoxButton.h"
 #include "PSSphereButton.h"
 #include "PSCylinderButton.h"
+#include "PSConeButton.h"
 
 #include "Cone3dView.h"
 
@@ -23,47 +21,6 @@ using namespace Crystal::UI;
 
 namespace {
 
-	class PSConeButton : public IPopupButton
-	{
-	public:
-		PSConeButton(Repository* model, Canvas* canvas) :
-			IPopupButton("PSCone", model, canvas),
-			coneButton("Cone")
-		{
-		}
-
-		void onShow() override
-		{
-			coneButton.show();
-			ImGui::InputFloat("Size", &size);
-			ImGui::InputInt("Count", &count);
-		}
-
-		void onOk() override
-		{
-			const auto& cone = coneButton.getValue();
-			std::mt19937 mt{ std::random_device{}() };
-			std::uniform_real_distribution<double> dist(0.0, 1.0);
-			std::vector<Vector3df> positions;
-			for (int i = 0; i < count; ++i) {
-				const auto u = dist(mt);
-				const auto v = dist(mt);
-				positions.push_back(cone.getPosition(u, v));
-			}
-			getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), size, "Cylinder");
-			getCanvas()->setViewModel(getModel()->toViewModel());
-			getCanvas()->fitCamera(getModel()->getBoundingBox());
-		}
-
-		void onCancel() override
-		{
-		}
-
-	private:
-		Cone3dView coneButton;
-		float size = 1.0f;
-		int count = 10000;
-	};
 
 	class PSTorusButton : public IPopupButton
 	{
@@ -112,8 +69,6 @@ namespace {
 
 		int count = 10000;
 	};
-
-
 }
 
 

@@ -94,6 +94,9 @@
     <ClCompile Include="PSCylinderButton.cpp">
       <Filter>Generation\ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="PSConeButton.cpp">
+      <Filter>Generation\ParticleSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -233,6 +236,12 @@
     </ClInclude>
     <ClInclude Include="WFAttributeView.h">
       <Filter>Generation\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="IntView.h">
+      <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="PSConeButton.h">
+      <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

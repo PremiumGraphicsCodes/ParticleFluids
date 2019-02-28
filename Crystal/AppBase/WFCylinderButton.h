@@ -12,8 +12,8 @@ class WFCylinderButton : public IPopupButton
 public:
 	WFCylinderButton(Repository* model, Canvas* canvas) :
 		IPopupButton("WFCylinder", model, canvas),
-		cylinderButton("Cylinder"),
-		attributeButton("Attribute"),
+		cylinder("Cylinder"),
+		attribute("Attribute"),
 		unum(12),
 		vnum(12)
 	{
@@ -31,8 +31,8 @@ public:
 private:
 	int unum;
 	int vnum;
-	Cylinder3dView cylinderButton;
-	WFAttributeView attributeButton;
+	Cylinder3dView cylinder;
+	WFAttributeView attribute;
 };
 
 	}

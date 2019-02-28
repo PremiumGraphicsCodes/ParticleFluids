@@ -10,17 +10,17 @@ using namespace Crystal::UI;
 
 void WFConeButton::onShow()
 {
-	ImGui::InputInt("UNum", &unum);
-	ImGui::InputInt("VNum", &vnum);
-	coneButton.show();
-	attributeButton.show();
+	unum.show();
+	vnum.show();
+	cone.show();
+	attribute.show();
 }
 
 void WFConeButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
-	builder.build(coneButton.getValue(), unum, vnum);
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Cone");
+	builder.build(cone.getValue(), unum.getValue(), vnum.getValue());
+	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attribute.getValue(), "Cone");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
