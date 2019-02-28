@@ -89,6 +89,7 @@
     <ClInclude Include="PSSphereButton.h" />
     <ClInclude Include="Sphere3dView.h" />
     <ClInclude Include="TextureTreeList.h" />
+    <ClInclude Include="Torus3dView.h" />
     <ClInclude Include="TransformButton.h" />
     <ClInclude Include="ObjectSelectButton.h" />
     <ClInclude Include="ParticleSystemTreeList.h" />

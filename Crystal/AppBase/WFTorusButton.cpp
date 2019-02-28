@@ -12,18 +12,15 @@ void WFTorusButton::onShow()
 {
 	ImGui::InputInt("UNum", &unum);
 	ImGui::InputInt("VNum", &vnum);
-	ImGui::InputFloat3("Center", &center[0]);
-	ImGui::InputDouble("BigRadius", &bigRadius);
-	ImGui::InputDouble("SmallRadius", &smallRadius);
-	attributeButton.show();
+	torus.show();
+	attribute.show();
 }
 
 void WFTorusButton::onOk()
 {
-	const Torus3d torus(center, bigRadius, smallRadius);
 	Crystal::Shape::WireFrameBuilder builder;
-	builder.build(torus, unum, vnum);
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Torus");
+	builder.build(torus.getValue(), unum, vnum);
+	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attribute.getValue(), "Torus");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

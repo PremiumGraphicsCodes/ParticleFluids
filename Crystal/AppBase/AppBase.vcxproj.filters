@@ -243,6 +243,9 @@
     <ClInclude Include="PolygonPanel.h">
       <Filter>Generation\PolygonMesh</Filter>
     </ClInclude>
+    <ClInclude Include="Torus3dView.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -3,6 +3,7 @@
 #include "IPopupButton.h"
 
 #include "../Math/Vector3d.h"
+#include "Torus3dView.h"
 #include "WFAttributeView.h"
 
 namespace Crystal {
@@ -12,8 +13,9 @@ class WFTorusButton : public IPopupButton
 {
 public:
 	WFTorusButton(Repository* model, Canvas* canvas) :
-		IPopupButton("Torus", model, canvas),
-		attributeButton("Attribute"),
+		IPopupButton("WFTorus", model, canvas),
+		torus("Torus"),
+		attribute("Attribute"),
 		unum(24),
 		vnum(12)
 	{
@@ -31,10 +33,8 @@ public:
 private:
 	int unum;
 	int vnum;
-	Math::Vector3df center = { 0.0, 0.0, 0.0 };
-	double bigRadius = 1.0;
-	double smallRadius = 0.1;
-	WFAttributeView attributeButton;
+	TorusView torus;
+	WFAttributeView attribute;
 };
 
 	}
