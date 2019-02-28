@@ -2,7 +2,7 @@
 
 #include "IPopupButton.h"
 #include "Box3dView.h"
-#include "WFAttributeButton.h"
+#include "WFAttributeView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -25,7 +25,7 @@ public:
 
 private:
 	Box3dView boxButton;
-	WFAttributeButton attributeButton;
+	WFAttributeView attributeButton;
 };
 
 

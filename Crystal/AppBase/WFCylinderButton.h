@@ -2,7 +2,7 @@
 
 #include "IPopupButton.h"
 #include "Cylinder3dView.h"
-#include "WFAttributeButton.h"
+#include "WFAttributeView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -32,7 +32,7 @@ private:
 	int unum;
 	int vnum;
 	Cylinder3dView cylinderButton;
-	WFAttributeButton attributeButton;
+	WFAttributeView attributeButton;
 };
 
 	}

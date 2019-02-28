@@ -97,7 +97,7 @@
     <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="TransformPanel.h" />
     <ClInclude Include="Vector3dView.h" />
-    <ClInclude Include="WFAttributeButton.h" />
+    <ClInclude Include="WFAttributeView.h" />
     <ClInclude Include="WFBoxButton.h" />
     <ClInclude Include="WFConeButton.h" />
     <ClInclude Include="WFCylinderButton.h" />

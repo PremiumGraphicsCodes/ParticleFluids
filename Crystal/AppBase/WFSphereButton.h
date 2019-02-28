@@ -2,7 +2,7 @@
 
 #include "IPopupButton.h"
 #include "Sphere3dView.h"
-#include "WFAttributeButton.h"
+#include "WFAttributeView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -32,7 +32,7 @@ private:
 	int unum;
 	int vnum;
 	Sphere3dView sphereButton;
-	WFAttributeButton attributeButton;
+	WFAttributeView attributeButton;
 };
 
 	}

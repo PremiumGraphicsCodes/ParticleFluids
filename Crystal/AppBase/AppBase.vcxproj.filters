@@ -204,9 +204,6 @@
     <ClInclude Include="imconfig.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="WFAttributeButton.h">
-      <Filter>Generation\WireFrame</Filter>
-    </ClInclude>
     <ClInclude Include="PSCylinderButton.h">
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
@@ -233,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="FloatView.h">
       <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="WFAttributeView.h">
+      <Filter>Generation\WireFrame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

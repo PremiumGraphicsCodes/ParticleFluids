@@ -8,10 +8,10 @@
 namespace Crystal {
 	namespace UI {
 
-class WFAttributeButton : public IWindow
+class WFAttributeView : public IWindow
 {
 public:
-	WFAttributeButton(const std::string& name) :
+	WFAttributeView(const std::string& name) :
 		IWindow(name),
 		width("Width", 1.0f),
 		color("Color")

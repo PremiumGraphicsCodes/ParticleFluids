@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IPopupButton.h"
-#include "WFAttributeButton.h"
+#include "WFAttributeView.h"
 
 #include "../Math/Vector3d.h"
 #include "Cone3dView.h"
@@ -34,7 +34,7 @@ private:
 	int unum;
 	int vnum;
 	Cone3dView coneButton;
-	WFAttributeButton attributeButton;
+	WFAttributeView attributeButton;
 };
 
 	}

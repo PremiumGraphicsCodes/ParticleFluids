@@ -3,7 +3,7 @@
 #include "IPopupButton.h"
 
 #include "../Math/Vector3d.h"
-#include "WFAttributeButton.h"
+#include "WFAttributeView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -34,7 +34,7 @@ private:
 	Math::Vector3df center = { 0.0, 0.0, 0.0 };
 	double bigRadius = 1.0;
 	double smallRadius = 0.1;
-	WFAttributeButton attributeButton;
+	WFAttributeView attributeButton;
 };
 
 	}
