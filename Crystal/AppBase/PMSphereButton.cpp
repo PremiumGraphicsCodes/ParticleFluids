@@ -1,7 +1,5 @@
 #include "PMSphereButton.h"
 
-#include "imgui.h"
-
 #include "../Shape/PolygonMeshBuilder.h"
 
 using namespace Crystal::Math;

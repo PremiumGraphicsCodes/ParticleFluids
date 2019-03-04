@@ -8,50 +8,13 @@
 #include "IPopupButton.h"
 
 #include "PMSphereButton.h"
+#include "PMBoxButton.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
 namespace {
-
-	class PMBoxButton : public IPopupButton
-	{
-	public:
-		PMBoxButton(Repository* model, Canvas* canvas) :
-			IPopupButton("PMBox", model, canvas)
-		{
-		}
-
-		void onShow() override
-		{
-			ImGui::InputFloat3("Point1", &point1[0]);
-			ImGui::InputFloat3("Point2", &point2[0]);
-		}
-
-		void onOk() override
-		{
-			PolygonMeshBuilder builder;
-			const Box3d box(point1, point2);
-			builder.build(box);
-			Crystal::Graphics::Material material;
-			material.setAmbient(glm::vec3(1, 0, 0));
-			material.setSpecular(glm::vec3(0, 1, 0));
-			material.setDiffuse(glm::vec3(0, 0, 1));
-			getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), material, "Box");
-			getCanvas()->setViewModel(getModel()->toViewModel());
-			getCanvas()->fitCamera(getModel()->getBoundingBox());
-		}
-
-		void onCancel() override
-		{
-
-		}
-
-	private:
-		glm::vec3 point1 = { 0,0,0 };
-		glm::vec3 point2 = { 1,1,1 };
-	};
 
 	class PMPlaneButton : public IPopupButton
 	{
