@@ -103,6 +103,9 @@
     <ClCompile Include="PolygonMeshPanel.cpp">
       <Filter>Generation\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="PMSphereButton.cpp">
+      <Filter>Generation\PolygonMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -262,6 +265,9 @@
       <Filter>Generation\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshPanel.h">
+      <Filter>Generation\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PMSphereButton.h">
       <Filter>Generation\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>

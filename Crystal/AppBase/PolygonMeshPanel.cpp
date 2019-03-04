@@ -7,57 +7,19 @@
 #include "imgui.h"
 #include "IPopupButton.h"
 
+#include "PMSphereButton.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
 namespace {
-	class WFSphereButton : public IPopupButton
+
+	class PMBoxButton : public IPopupButton
 	{
 	public:
-		WFSphereButton(Repository* model, Canvas* canvas) :
-			IPopupButton("Sphere", model, canvas)
-		{
-		}
-
-		void onShow() override
-		{
-			ImGui::InputFloat3("Center", &center[0]);
-			ImGui::InputFloat3("Radius", &radius);
-			ImGui::InputInt("UNum", &unum);
-			ImGui::InputInt("VNum", &vnum);
-		}
-
-		void onOk() override
-		{
-			PolygonMeshBuilder builder;
-			const Sphere3d sphere(center, radius);
-			builder.build(sphere, unum, vnum);
-			Crystal::Graphics::Material material;
-			material.setAmbient(glm::vec3(1, 0, 0));
-			material.setDiffuse(glm::vec3(0, 1, 0));
-			getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), material, "Sphere");
-			getCanvas()->setViewModel(getModel()->toViewModel());
-			getCanvas()->fitCamera(getModel()->getBoundingBox());
-		}
-
-		void onCancel() override
-		{
-
-		}
-
-	private:
-		glm::vec3 center = { 0,0,0 };
-		float radius = 1.0f;
-		int unum = 36;
-		int vnum = 36;
-	};
-
-	class WFBoxButton : public IPopupButton
-	{
-	public:
-		WFBoxButton(Repository* model, Canvas* canvas) :
-			IPopupButton("Box", model, canvas)
+		PMBoxButton(Repository* model, Canvas* canvas) :
+			IPopupButton("PMBox", model, canvas)
 		{
 		}
 
@@ -91,11 +53,11 @@ namespace {
 		glm::vec3 point2 = { 1,1,1 };
 	};
 
-	class PlaneButton : public IPopupButton
+	class PMPlaneButton : public IPopupButton
 	{
 	public:
-		PlaneButton(Repository* model, Canvas* canvas) :
-			IPopupButton("Plane",model, canvas)
+		PMPlaneButton(Repository* model, Canvas* canvas) :
+			IPopupButton("PMPlane",model, canvas)
 		{
 		}
 
@@ -129,7 +91,7 @@ namespace {
 PolygonMeshPanel::PolygonMeshPanel(const std::string& name, Repository* model, Canvas* canvas) :
 	IPanel(name, model, canvas)
 {
-	add( new WFSphereButton(model, canvas) );
-	add( new WFBoxButton(model, canvas) );
-	add( new PlaneButton(model, canvas) );
+	add( new PMSphereButton(model, canvas) );
+	add( new PMBoxButton(model, canvas) );
+	add( new PMPlaneButton(model, canvas) );
 }
