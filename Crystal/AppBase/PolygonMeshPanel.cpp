@@ -10,6 +10,8 @@
 #include "PMSphereButton.h"
 #include "PMBoxButton.h"
 
+#include "Vector3dView.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
@@ -20,21 +22,27 @@ namespace {
 	{
 	public:
 		PMPlaneButton(Repository* model, Canvas* canvas) :
-			IPopupButton("PMPlane",model, canvas)
+			IPopupButton("PMPlane",model, canvas),
+			originView("Origin", Vector3dd(0,0,0)),
+			uvecView("UVec", Vector3dd(1,0,0)),
+			vvecView("VVec", Vector3dd(0,1,0))
 		{
 		}
 
 		void onShow() override
 		{
+			originView.show();
+			uvecView.show();
+			vvecView.show();
 		}
 
 		void onOk()
 		{
 			PolygonMeshBuilder builder;
-			builder.build(origin, uvec, vvec);
+			builder.build(originView.getValue(), uvecView.getValue(), vvecView.getValue());
 			Crystal::Graphics::Material material;
 			material.setAmbient(glm::vec3(1, 0, 0));
-			getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), material, "Plane");
+			getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), material, "PMPlane");
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
@@ -45,9 +53,9 @@ namespace {
 		}
 
 	private:
-		glm::vec3 origin = { 0, 0, 0 };
-		glm::vec3 uvec = { 1, 0, 0 };
-		glm::vec3 vvec = { 0, 1, 0 };
+		Vector3dView originView;
+		Vector3dView uvecView;
+		Vector3dView vvecView;
 	};
 }
 

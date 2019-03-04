@@ -276,6 +276,9 @@
     <ClInclude Include="PMBoxButton.h">
       <Filter>Generation\PolygonMesh</Filter>
     </ClInclude>
+    <ClInclude Include="Plane3dView.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
