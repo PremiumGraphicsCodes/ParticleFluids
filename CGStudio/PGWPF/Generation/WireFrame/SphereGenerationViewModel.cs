@@ -12,7 +12,7 @@ namespace PG.CGStudio.Generation.WireFrame
         public ReactiveProperty<int> VNum { get; }
             = new ReactiveProperty<int>();
 
-        public ReactiveCommand ExecuteCommand { get; }
+        public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
         public Sphere3dViewModel SphereViewModel { get; }
@@ -22,7 +22,7 @@ namespace PG.CGStudio.Generation.WireFrame
         {
             this.UNum.Value = 24;
             this.VNum.Value = 24;
-            this.ExecuteCommand.Subscribe(OnExecute);
+            this.GenerationCommand.Subscribe(OnExecute);
         }
 
         private void OnExecute()

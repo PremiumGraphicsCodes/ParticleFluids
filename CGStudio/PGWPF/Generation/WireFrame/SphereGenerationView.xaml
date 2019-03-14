@@ -7,12 +7,15 @@
              xmlns:Control="clr-namespace:PG.Control;assembly=PGControl"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:SphereGenerationViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
         <Control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
         <Label Content="UNum"/>
         <TextBox Text="{Binding UNum.Value}"/>
         <Label Content="VNum"/>
         <TextBox Text="{Binding VNum.Value}"/>
-        <Button Content="Generate" Command="{Binding GenerateCommand}"/>
+        <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>
