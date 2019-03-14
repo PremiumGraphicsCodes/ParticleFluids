@@ -4,6 +4,7 @@
 #include "../../Crystal/Math/Line3d.h"
 #include "../../Crystal/Math/Matrix3d.h"
 #include "../../Crystal/Math/Matrix4d.h"
+#include "../../Crystal/Graphics/ColorRGBA.h"
 
 using namespace System;
 
@@ -34,6 +35,10 @@ public:
 	static Crystal::Math::Matrix4dd toCpp(PG::Core::Math::Matrix4d^ src);
 
 	static PG::Core::Math::Matrix4d^ fromCpp(const Crystal::Math::Matrix4dd& src);
+
+	static Crystal::Graphics::ColorRGBAf toCpp(PG::Core::Graphics::ColorRGBA^ src);
+
+	//static PG::Core::Graphics::ColorRGBA fromCpp()
 };
 
 	}

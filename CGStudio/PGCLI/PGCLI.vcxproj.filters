@@ -14,7 +14,10 @@
       <Filter>Repository</Filter>
     </ClInclude>
     <ClInclude Include="AppearanceObjectRepositoryAdapter.h">
-      <Filter>Repository</Filter>
+      <Filter>Repository\Appearance</Filter>
+    </ClInclude>
+    <ClInclude Include="LightObjectRepositoryAdapter.h">
+      <Filter>Repository\Appearance</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -30,7 +33,10 @@
       <Filter>Repository</Filter>
     </ClCompile>
     <ClCompile Include="AppearanceObjectRepositoryAdapter.cpp">
-      <Filter>Repository</Filter>
+      <Filter>Repository\Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="LightObjectRepositoryAdapter.cpp">
+      <Filter>Repository\Appearance</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +45,9 @@
   <ItemGroup>
     <Filter Include="Repository">
       <UniqueIdentifier>{660dd9ac-6025-47a0-b204-a3aef84c0c7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Repository\Appearance">
+      <UniqueIdentifier>{a3759f49-cc24-4b9a-b724-3de59ecb4e2c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

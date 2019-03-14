@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Graphics\ColorRGB.cs" />
+    <Compile Include="Graphics\ColorRGBA.cs" />
     <Compile Include="Graphics\PointLight.cs" />
     <Compile Include="Graphics\Material.cs" />
     <Compile Include="Math\Box2d.cs" />

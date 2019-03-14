@@ -5,7 +5,6 @@
 
 #include "Converter.h"
 
-
 using namespace PG::CLI;
 
 Crystal::Math::Vector3dd PG::CLI::Converter::toCpp(PG::Core::Math::Vector3d^ src)
@@ -68,4 +67,9 @@ PG::Core::Math::Matrix4d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Matri
 		src[2][0], src[2][1], src[2][2], src[2][3],
 		src[3][0], src[3][1], src[3][2], src[3][3]
 	);
+}
+
+Crystal::Graphics::ColorRGBAf PG::CLI::Converter::toCpp(PG::Core::Graphics::ColorRGBA^ src)
+{
+	return Crystal::Graphics::ColorRGBAf(src->R, src->G, src->B, 1.0);
 }
