@@ -1,4 +1,6 @@
-﻿using Prism.Mvvm;
+﻿using PG.CGStudio.Light;
+using Prism.Mvvm;
+using Reactive.Bindings;
 
 namespace PG.CGStudio
 {
@@ -6,6 +8,16 @@ namespace PG.CGStudio
     {
         public MainWindowViewModel()
         {
+            LightCommand = new ReactiveCommand();
+            LightCommand.Subscribe(OnShowLight);
+        }
+
+        public ReactiveCommand LightCommand { get; }
+
+        private void OnShowLight()
+        {
+            var dialog = new LightView();
+            dialog.Show();
         }
     }
 }

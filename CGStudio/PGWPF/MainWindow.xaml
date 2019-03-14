@@ -61,6 +61,11 @@
                     <Fluent:Button Header="Fit" KeyTip="BI" Command="{Binding FitCommand}"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="Appearance" KeyTip="T1">
+                <Fluent:RibbonGroupBox Header="Light" KeyTip="B">
+                    <Fluent:Button Header="PointLight" KeyTip="BI" Command="{Binding LightCommand}"/>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

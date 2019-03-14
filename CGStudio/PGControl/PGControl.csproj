@@ -111,6 +111,9 @@
     <Compile Include="Graphics\ColorRGBAView.xaml.cs">
       <DependentUpon>ColorRGBAView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Graphics\MaterialView.xaml.cs">
+      <DependentUpon>MaterialView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Graphics\PointLightView.xaml.cs">
       <DependentUpon>PointLightView.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
     </Compile>
     <Compile Include="Math\Vector3dViewModel.cs" />
     <Page Include="Graphics\ColorRGBAView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Graphics\MaterialView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
