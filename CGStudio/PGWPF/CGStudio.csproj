@@ -129,6 +129,10 @@
     <Compile Include="Light\LightListView.xaml.cs">
       <DependentUpon>LightListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ObjectList\ObjectListView.xaml.cs">
+      <DependentUpon>ObjectListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectList\ObjectListViewModel.cs" />
     <Compile Include="OpenGLAdornment.xaml.cs">
       <DependentUpon>OpenGLAdornment.xaml</DependentUpon>
     </Compile>
@@ -258,6 +262,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ObjectList\ObjectListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OpenGLAdornment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

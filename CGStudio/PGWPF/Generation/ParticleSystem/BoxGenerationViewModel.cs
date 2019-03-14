@@ -3,6 +3,7 @@ using PG.Core.Math;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Collections.Generic;
+using PG.Control.Math;
 
 namespace PG.CGStudio.Generation.ParticleSystem
 {

@@ -1,4 +1,5 @@
 ﻿using PG.Control;
+using PG.Control.Math;
 using PG.Core.Math;
 using Prism.Mvvm;
 using Reactive.Bindings;

@@ -1,6 +1,7 @@
 ﻿using PG.Core.Shape;
 using Reactive.Bindings;
 using PG.Control;
+using PG.Control.Math;
 
 namespace PG.CGStudio.Generation.WireFrame
 {

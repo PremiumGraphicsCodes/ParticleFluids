@@ -4,10 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.Control"
+             xmlns:math="clr-namespace:PG.Control.Math"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
     <StackPanel>
-        <local:Vector3dView DataContext="{Binding CenterViewModel}"/>
+        <math:Vector3dView DataContext="{Binding CenterViewModel}"/>
         <StackPanel Orientation="Horizontal">
             <Label Content="Radius"/>
             <TextBox Text="{Binding Radius.Value}" Width="50"/>

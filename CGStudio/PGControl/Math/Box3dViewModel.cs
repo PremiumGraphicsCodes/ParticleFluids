@@ -1,7 +1,7 @@
 ﻿using PG.Core.Math;
 using Prism.Mvvm;
 
-namespace PG.Control
+namespace PG.Control.Math
 {
     public class Box3dViewModel : BindableBase
     {

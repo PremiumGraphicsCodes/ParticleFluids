@@ -23,12 +23,12 @@ namespace PG.CGStudio
 
 
             LightListCommand = new ReactiveCommand();
-            LightListCommand.Subscribe(OnShowLight);
+            LightListCommand.Subscribe(OnShowLightList);
         }
 
         public ReactiveCommand LightListCommand { get; }
 
-        private void OnShowLight()
+        private void OnShowLightList()
         {
             var dialog = new LightListView();
             dialog.Show();

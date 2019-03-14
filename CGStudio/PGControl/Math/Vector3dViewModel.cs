@@ -2,7 +2,7 @@
 using Prism.Mvvm;
 using Reactive.Bindings;
 
-namespace PG.Control
+namespace PG.Control.Math
 {
     public class Vector3dViewModel : BindableBase
     {
