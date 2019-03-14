@@ -4,9 +4,9 @@ namespace PG.Core.Graphics
 {
     public struct PointLight
     {
-        public ColorRGB Ambient { get; set; }
-        public ColorRGB Diffuset { get; set; }
-        public ColorRGB Specular { get; set; }
+        public ColorRGBA Ambient { get; set; }
+        public ColorRGBA Diffuset { get; set; }
+        public ColorRGBA Specular { get; set; }
         public Vector3d Position { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 #include "ObjectRepositoryAdapter.h"
 #include "../../Crystal/UI/ObjectRepository.h"
 
+#include "../../Crystal/Math/Triangle3d.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
+
 #include "Converter.h"
 
 using namespace PG::CLI;
@@ -40,10 +43,24 @@ int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
 
 int ObjectRepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
 {
+	/*
+	auto triangles = src->Triangles;
+	std::vector<Crystal::Math::Triangle3d> ts;
+	for (int i = 0; i < triangles->Count; ++i) {
+		const auto& t = Converter::toCpp(triangles[i]);
+		ts.push_back(t);
+	}
+	
+	Crystal::Shape::PolygonMeshBuilder builder;
+	builder.
+	//auto polygonMesh = new Crystal::Shape::PolygonMesh()
+	*/
+
 	return -1;
 }
 
 ObjectRepositoryAdapter::ObjectRepositoryAdapter(Crystal::UI::ObjectRepository* instance)
 {
 	this->instance = instance;
+
 }

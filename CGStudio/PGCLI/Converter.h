@@ -2,9 +2,11 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Line3d.h"
+#include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Math/Matrix3d.h"
 #include "../../Crystal/Math/Matrix4d.h"
 #include "../../Crystal/Graphics/ColorRGBA.h"
+#include "../../Crystal/Graphics/PointLight.h"
 
 using namespace System;
 
@@ -28,6 +30,10 @@ public:
 
 	static PG::Core::Math::Line3d^ fromCpp(const Crystal::Math::Line3dd& src);
 
+	static Crystal::Math::Triangle3d toCpp(PG::Core::Math::Triangle3d^ src);
+
+	static PG::Core::Math::Triangle3d^ fromCpp(const Crystal::Math::Triangle3d& src);
+
 	static Crystal::Math::Matrix3dd toCpp(PG::Core::Math::Matrix3d^ src);
 
 	static PG::Core::Math::Matrix3d^ fromCpp(const Crystal::Math::Matrix3dd& src);
@@ -38,7 +44,9 @@ public:
 
 	static Crystal::Graphics::ColorRGBAf toCpp(PG::Core::Graphics::ColorRGBA^ src);
 
-	//static PG::Core::Graphics::ColorRGBA fromCpp()
+	static PG::Core::Graphics::ColorRGBA^ fromCpp(const Crystal::Graphics::ColorRGBAf& src);
+
+	static Crystal::Graphics::PointLight toCpp(PG::Core::Graphics::PointLight^ src);
 };
 
 	}

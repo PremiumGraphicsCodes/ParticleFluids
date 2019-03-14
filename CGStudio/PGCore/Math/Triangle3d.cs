@@ -2,9 +2,9 @@
 {
     public class Triangle3d
     {
-        private Vector3d v1;
-        private Vector3d v2;
-        private Vector3d v3;
+        public Vector3d v1 { get; set; }
+        public Vector3d v2 { get; set; }
+        public Vector3d v3 { get; set; }
 
         public Triangle3d(Vector3d v1, Vector3d v2, Vector3d v3)
         {

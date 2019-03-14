@@ -27,6 +27,23 @@ PG::Core::Math::Line3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Line3dd
 	return gcnew PG::Core::Math::Line3d(fromCpp(src.getStart()), fromCpp(src.getEnd()));
 }
 
+Crystal::Math::Triangle3d PG::CLI::Converter::toCpp(PG::Core::Math::Triangle3d^ src)
+{
+	const auto& v1 = toCpp(src->v1);
+	const auto& v2 = toCpp(src->v2);
+	const auto& v3 = toCpp(src->v3);
+	return Crystal::Math::Triangle3d({ v1,v2,v3 });
+}
+
+PG::Core::Math::Triangle3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Triangle3d& src)
+{
+	const auto& vs = src.getVertices();
+	auto v0 = fromCpp(vs[0]);
+	auto v1 = fromCpp(vs[1]);
+	auto v2 = fromCpp(vs[2]);
+	return gcnew PG::Core::Math::Triangle3d(v0, v1, v2);
+}
+
 Crystal::Math::Matrix3dd PG::CLI::Converter::toCpp(PG::Core::Math::Matrix3d^ src)
 {
 	return Crystal::Math::Matrix3dd
@@ -71,5 +88,25 @@ PG::Core::Math::Matrix4d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Matri
 
 Crystal::Graphics::ColorRGBAf PG::CLI::Converter::toCpp(PG::Core::Graphics::ColorRGBA^ src)
 {
-	return Crystal::Graphics::ColorRGBAf(src->R, src->G, src->B, 1.0);
+	return Crystal::Graphics::ColorRGBAf(src->R, src->G, src->B, src->A);
+}
+
+PG::Core::Graphics::ColorRGBA^ PG::CLI::Converter::fromCpp(const Crystal::Graphics::ColorRGBAf& src)
+{
+	auto result = gcnew PG::Core::Graphics::ColorRGBA();
+	result->R = src.r;
+	result->G = src.g;
+	result->B = src.b;
+	result->A = src.a;
+	return result;
+}
+
+Crystal::Graphics::PointLight PG::CLI::Converter::toCpp(PG::Core::Graphics::PointLight^ src)
+{
+	auto result = Crystal::Graphics::PointLight();
+	result.setPosition( toCpp( src->Position ) );
+	result.setAmbient( toCpp(src->Ambient));
+	result.setDiffuse( toCpp(src->Diffuset));
+	result.setSpecular(toCpp(src->Specular));
+	return result;
 }
