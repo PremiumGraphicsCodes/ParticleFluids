@@ -62,11 +62,13 @@
     <Compile Include="Math\Vector4d.cs" />
     <Compile Include="ObjectId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shape\Edge.cs" />
     <Compile Include="Shape\ParticleSystem.cs" />
     <Compile Include="Shape\ParticleSystemBuilder.cs" />
     <Compile Include="Shape\PolygonMesh.cs" />
     <Compile Include="Shape\PolygonMeshBuilder.cs" />
     <Compile Include="Shape\ShapeType.cs" />
+    <Compile Include="Shape\Vertex.cs" />
     <Compile Include="Shape\WireFrame.cs" />
     <Compile Include="Shape\WireFrameBuilder.cs" />
   </ItemGroup>

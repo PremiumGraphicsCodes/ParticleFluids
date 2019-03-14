@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="PG.Control.Graphics.ColorRGBAView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PG.Control.Graphics"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+    <StackPanel>
+        <Slider Value="{Binding R.Value}"/>
+        <Slider Value="{Binding G.Value}"/>
+        <Slider Value="{Binding A.Value}"/>
+
+    </StackPanel>
+</UserControl>
