@@ -28,10 +28,10 @@ int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ 
 
 int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
 {
-	auto lines = src->Lines;
+	auto edges = src->Edges;
 	std::vector<Crystal::Math::Line3dd> ls;
-	for (int i = 0; i < lines->Count; ++i) {
-		const auto& l = Converter::toCpp(lines[i]);
+	for (int i = 0; i < edges->Count; ++i) {
+		const auto& l = Converter::toCpp(edges[i]->ToLine());
 		ls.push_back(l);
 	}
 	Crystal::Shape::WireFrame* wf = new Crystal::Shape::WireFrame(ls);

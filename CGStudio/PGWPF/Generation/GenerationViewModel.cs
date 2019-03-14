@@ -37,6 +37,8 @@ namespace PG.CGStudio.Generation
         private void OnWireFrameGeneration()
         {
             var dialog = new WireFrameGenerationView();
+            dialog.Owner = Application.Current.MainWindow;
+            dialog.DataContext = new WireFrameGenerationViewModel();
             dialog.Show();
         }
 

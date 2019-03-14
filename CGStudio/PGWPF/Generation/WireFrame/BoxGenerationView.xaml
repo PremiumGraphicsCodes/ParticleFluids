@@ -12,6 +12,6 @@
     </UserControl.DataContext>
     <StackPanel>
         <Control:Box3dView DataContext="{Binding BoxViewModel}"/>
-        <Button Content="Generate" DataContext="{Binding GenerationCommand}"/>
+        <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

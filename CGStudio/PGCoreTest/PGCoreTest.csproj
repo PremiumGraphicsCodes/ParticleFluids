@@ -58,6 +58,8 @@
     <Compile Include="Math\Vector2dTest.cs" />
     <Compile Include="Math\Vector3dTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shape\WireFrameTest.cs" />
+    <Compile Include="Shape\WireFrameBuilderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
