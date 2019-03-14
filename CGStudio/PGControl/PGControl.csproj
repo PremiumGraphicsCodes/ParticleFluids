@@ -108,36 +108,36 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Box3dView.xaml.cs">
+    <Compile Include="Math\Box3dView.xaml.cs">
       <DependentUpon>Box3dView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Box3dViewModel.cs" />
-    <Compile Include="Cylinder3dView.xaml.cs">
+    <Compile Include="Math\Box3dViewModel.cs" />
+    <Compile Include="Math\Cylinder3dView.xaml.cs">
       <DependentUpon>Cylinder3dView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Cylinder3dViewModel.cs" />
+    <Compile Include="Math\Cylinder3dViewModel.cs" />
     <Compile Include="ShapeSelectBehaviour.cs" />
-    <Compile Include="Sphere3dViewModel.cs" />
-    <Compile Include="Vector3dView.xaml.cs">
+    <Compile Include="Math\Sphere3dViewModel.cs" />
+    <Compile Include="Math\Vector3dView.xaml.cs">
       <DependentUpon>Vector3dView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vector3dViewModel.cs" />
-    <Page Include="Box3dView.xaml">
+    <Compile Include="Math\Vector3dViewModel.cs" />
+    <Page Include="Math\Box3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Cylinder3dView.xaml">
+    <Page Include="Math\Cylinder3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sphere3dView.xaml">
+    <Page Include="Math\Sphere3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Sphere3dView.xaml.cs">
+    <Compile Include="Math\Sphere3dView.xaml.cs">
       <DependentUpon>Sphere3dView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Vector3dView.xaml">
+    <Page Include="Math\Vector3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,6 +172,9 @@
       <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
       <Name>PGCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Graphics\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
