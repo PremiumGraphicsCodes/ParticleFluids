@@ -126,8 +126,8 @@
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
-    <Compile Include="Light\LightView.xaml.cs">
-      <DependentUpon>LightView.xaml</DependentUpon>
+    <Compile Include="Light\LightListView.xaml.cs">
+      <DependentUpon>LightListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="OpenGLAdornment.xaml.cs">
       <DependentUpon>OpenGLAdornment.xaml</DependentUpon>
@@ -242,7 +242,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Light\LightView.xaml">
+    <Page Include="Light\LightListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -36,16 +36,16 @@
 
             <Fluent:RibbonTabItem Header="Generation" KeyTip="T1">
                 <Fluent:RibbonGroupBox Header="ParticleSystem" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding ParticleSystemGenerationCommand}"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding ParticleSystemGenerationCommand}"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="WireFrame" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding WireFrameGenerationCommand}"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding WireFrameGenerationCommand}"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="PolygonMesh" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding PolygonMeshGenerationCommand}"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding PolygonMeshGenerationCommand}"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
 
@@ -63,7 +63,7 @@
             </Fluent:RibbonTabItem>
             <Fluent:RibbonTabItem Header="Appearance" KeyTip="T1">
                 <Fluent:RibbonGroupBox Header="Light" KeyTip="B">
-                    <Fluent:Button Header="PointLight" KeyTip="BI" Command="{Binding LightCommand}"/>
+                    <Fluent:Button Header="PointLight" KeyTip="BI" Command="{Binding LightListCommand}"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
@@ -82,7 +82,6 @@
                     </local:OpenGLPresenter>
                 </Grid>
             </host:HwndHostManager>
-            <generation:GenerationView Grid.Column="1"/>
         </Grid>
     </Grid>
 </Fluent:RibbonWindow>
