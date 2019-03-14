@@ -2,9 +2,9 @@
 {
     public struct Material
     {
-        public ColorRGB ambient;
-        public ColorRGB diffuse;
-        public ColorRGB specular;
-        public float shininess;
+        public ColorRGB Ambient { get; set; }
+        public ColorRGB Diffuse { get; set; }
+        public ColorRGB Specular { get; set; }
+        public float Shininess { get; set; }
     }
 }

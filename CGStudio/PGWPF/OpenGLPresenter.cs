@@ -8,6 +8,18 @@ using PG.Core.Math;
 
 namespace PG.CGStudio
 {
+    public class Panel3d : System.Windows.Forms.Panel
+    {
+        public Panel3d()
+        {
+        }
+
+        protected override void OnPaintBackground(System.Windows.Forms.PaintEventArgs pevent)
+        {
+            ;
+        }
+    }
+
     public class OpenGLPresenter : HwndHostPresenter
     {
         private System.Windows.Forms.Panel Panel { get; }
@@ -15,7 +27,7 @@ namespace PG.CGStudio
         public OpenGLPresenter()
         {
             var host = new WindowsFormsHost();
-            Panel = new System.Windows.Forms.Panel();
+            Panel = new Panel3d();
             host.Child = Panel;
 
             host.Initialized += Host_Initialized;
