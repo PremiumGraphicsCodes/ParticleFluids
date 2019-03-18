@@ -153,6 +153,10 @@
     </Compile>
     <Compile Include="Repository\AppearanceObjectRepository.cs" />
     <Compile Include="Repository\ObjectRepository.cs" />
+    <Compile Include="Texture\TextureListViewl.xaml.cs">
+      <DependentUpon>TextureListViewl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Texture\TextureListViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Generation\GenerationView.xaml.cs">
       <DependentUpon>GenerationView.xaml</DependentUpon>
@@ -293,6 +297,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OpenGL\OpenGLAdornment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Texture\TextureListViewl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

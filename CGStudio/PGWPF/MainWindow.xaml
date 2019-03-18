@@ -8,11 +8,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Fluent="urn:fluent-ribbon"
         xmlns:local="clr-namespace:PG.CGStudio"
-    xmlns:generation="clr-namespace:PG.CGStudio.Generation"
-    xmlns:host="clr-namespace:HwndExtensions.Host;assembly=HwndExtensions"
-    xmlns:light="clr-namespace:PG.CGStudio.Light"
-    xmlns:material="clr-namespace:PG.CGStudio.Material"
-    mc:Ignorable="d"
+        xmlns:generation="clr-namespace:PG.CGStudio.Generation"
+        xmlns:host="clr-namespace:HwndExtensions.Host;assembly=HwndExtensions"
+        xmlns:light="clr-namespace:PG.CGStudio.Light"
+        xmlns:material="clr-namespace:PG.CGStudio.Material"
+        xmlns:texture="clr-namespace:PG.CGStudio.Texture"
+        mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <local:MainWindowViewModel/>
@@ -88,6 +89,9 @@
                 </TabItem>
                 <TabItem Header="Materials">
                     <material:MaterialListView/>
+                </TabItem>
+                <TabItem Header="Textures">
+                    <texture:TextureListView/>
                 </TabItem>
             </TabControl>
 
