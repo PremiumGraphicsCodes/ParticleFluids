@@ -9,24 +9,33 @@ namespace PG.CGStudio.Generation.WireFrame
 {
     public class CylinderGenerationViewModel : BindableBase
     {
-        public Cylinder3dViewModel CylinderViewModel { get; }
-            = new Cylinder3dViewModel();
+        public Cylinder3dViewModel Cylinder { get; }
+
+        public ReactiveProperty<int> UNum { get; }
+
+        public ReactiveProperty<int> VNum { get; }
+
+        public AppearanceViewModel Appearance;
 
         public ReactiveCommand GenerationCommand { get; }
-            = new ReactiveCommand();
 
         public CylinderGenerationViewModel()
         {
+            this.Cylinder = new Cylinder3dViewModel();
+            this.UNum = new ReactiveProperty<int>(36);
+            this.VNum = new ReactiveProperty<int>(36);
+            this.Appearance = new AppearanceViewModel();
+            this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 
         private void OnGenerate()
         {
             var builder = new WireFrameBuilder();
-            var cylinder = CylinderViewModel.Value;
+            var cylinder = Cylinder.Value;
             builder.Build(cylinder, 25, 25);
             var wireFrame = builder.WireFrame;
-            Repository.Instance.Objects.Add(wireFrame, new WireAppearance());
+            Repository.Instance.Objects.Add(wireFrame, Appearance.Value);
             OpenGLPresenter.Instance.Update(Repository.Instance);
             OpenGLPresenter.Instance.Render();
         }

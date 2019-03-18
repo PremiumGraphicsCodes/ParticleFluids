@@ -10,7 +10,6 @@ namespace PG.CGStudio.Generation.WireFrame
 
         public WireFrameGenerationViewModel()
         {
-            this.ContentViewModel.Value = new SphereGenerationViewModel();
         }
     }
 }

@@ -46,8 +46,9 @@
                     <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding WireFrameGenerationCylinderCommand}"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="PolygonMesh" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding PolygonMeshGenerationCommand}"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding PolygonMeshGenerationCommand}"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding PolygonMeshGenerationBoxCommand}"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding PolygonMeshGenerationSphereCommand}"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding PolygonMeshGenerationCylinderCommand}"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
 
@@ -71,12 +72,15 @@
         </Fluent:Ribbon>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
 
-            <host:HwndHostManager>
-                <Grid Margin="0,0,0,0" Grid.Column="0">
+            <local:ObjectListView Grid.Column="0"/>
+
+            <host:HwndHostManager Grid.Column="1">
+                <Grid Margin="0,0,0,0">
                     <local:OpenGLPresenter>
                         <local:OpenGLPresenter.Adornment>
                             <local:OpenGLAdornment/>
@@ -85,7 +89,7 @@
                 </Grid>
             </host:HwndHostManager>
 
-            <generation:GenerationView Grid.Column="1" DataContext="{Binding GenerationViewModel}">
+            <generation:GenerationView Grid.Column="2" DataContext="{Binding GenerationViewModel}">
             </generation:GenerationView>
         </Grid>
     </Grid>

@@ -31,9 +31,11 @@ namespace PG.CGStudio
             this.WireFrameGenerationCylinderCommand = new ReactiveCommand();
             this.WireFrameGenerationCylinderCommand.Subscribe(OnWireFrameGenerationCylinder);
 
+            this.PolygonMeshGenerationBoxCommand = new ReactiveCommand();
+            this.PolygonMeshGenerationBoxCommand.Subscribe(OnPolygonMeshGenerationBox);
 
-            this.PolygonMeshGenerationCommand = new ReactiveCommand();
-            this.PolygonMeshGenerationCommand.Subscribe(OnPolygonMeshGeneration);
+            this.PolygonMeshGenerationSphereCommand = new ReactiveCommand();
+            this.PolygonMeshGenerationSphereCommand.Subscribe(OnPolygonMeshGenerationSphere);
 
 
             LightListCommand = new ReactiveCommand();
@@ -60,7 +62,9 @@ namespace PG.CGStudio
 
         public ReactiveCommand WireFrameGenerationCylinderCommand { get; }
 
-        public ReactiveCommand PolygonMeshGenerationCommand { get; }
+        public ReactiveCommand PolygonMeshGenerationBoxCommand { get; }
+
+        public ReactiveCommand PolygonMeshGenerationSphereCommand { get; }
 
         public GenerationViewModel GenerationViewModel { get; }
             = new GenerationViewModel();
@@ -107,10 +111,15 @@ namespace PG.CGStudio
             GenerationViewModel.ContentViewModel.Value = vm;
         }
 
-
-        private void OnPolygonMeshGeneration()
+        private void OnPolygonMeshGenerationBox()
         {
             GenerationViewModel.ContentViewModel.Value = new PolygonMeshGenerationViewModel();
         }
+
+        private void OnPolygonMeshGenerationSphere()
+        {
+            GenerationViewModel.ContentViewModel.Value = new PolygonMeshGenerationViewModel();
+        }
+
     }
 }
