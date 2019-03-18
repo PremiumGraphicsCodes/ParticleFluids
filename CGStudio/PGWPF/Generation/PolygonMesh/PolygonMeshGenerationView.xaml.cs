@@ -1,8 +1,8 @@
-﻿using System.Windows;
+﻿using System.Windows.Controls;
 
 namespace PG.CGStudio.Generation.PolygonMesh
 {
-    public partial class PolygonMeshGenerationView : Window
+    public partial class PolygonMeshGenerationView : UserControl
     {
         public PolygonMeshGenerationView()
         {

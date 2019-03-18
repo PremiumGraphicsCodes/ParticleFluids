@@ -56,18 +56,22 @@ namespace PG.CGStudio
 
         private void OnWireFrameGeneration()
         {
+            /*
             var dialog = new WireFrameGenerationView();
             dialog.Owner = Application.Current.MainWindow;
             dialog.DataContext = new WireFrameGenerationViewModel();
             dialog.Show();
+            */
         }
 
         private void OnPolygonMeshGeneration()
         {
+            /*
             var dialog = new PolygonMeshGenerationView();
             dialog.Owner = Application.Current.MainWindow;
             dialog.DataContext = new PolygonMeshGenerationViewModel();
             dialog.Show();
+            */
         }
     }
 }

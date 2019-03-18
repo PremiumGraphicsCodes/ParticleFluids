@@ -1,4 +1,5 @@
 ﻿using PG.CGStudio.Generation.ParticleSystem;
+using PG.CGStudio.Generation.WireFrame;
 
 namespace PG.CGStudio.Generation
 {
@@ -6,9 +7,9 @@ namespace PG.CGStudio.Generation
     {
         public GenerationViewModel()
         {
-            ContentViewModel = new ParticleSystemGenerationViewModel();
+            ContentViewModel = new WireFrameGenerationViewModel();
         }
 
-        public ParticleSystemGenerationViewModel ContentViewModel { get; }
+        public WireFrameGenerationViewModel ContentViewModel { get; }
     }
 }

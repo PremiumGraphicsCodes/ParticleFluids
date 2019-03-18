@@ -4,16 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PG.CGStudio.Generation"
-             xmlns:particlesystem="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
-             mc:Ignorable="d"
-        Height="300" Width="200">
+        xmlns:particlesystem="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
+        xmlns:wireframe="clr-namespace:PG.CGStudio.Generation.WireFrame"
+             xmlns:polygonmesh="clr-namespace:PG.CGStudio.Generation.PolygonMesh"
+             mc:Ignorable="d">
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type particlesystem:ParticleSystemGenerationViewModel}">
             <particlesystem:ParticleSystemGenerationView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type wireframe:WireFrameGenerationViewModel}">
+            <wireframe:WireFrameGenerationView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type polygonmesh:PolygonMeshGenerationViewModel}">
+            <polygonmesh:PolygonMeshGenerationView/>
+        </DataTemplate>
     </UserControl.Resources>
     <StackPanel>
-        <Button Content="Hello"/>
         <ContentControl Content="{Binding ContentViewModel}"/>
     </StackPanel>
 </UserControl>
