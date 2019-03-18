@@ -5,11 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.Control.Graphics"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="300">
+             d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:ColorRGBAViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
-        <Slider Value="{Binding R.Value}"/>
-        <Slider Value="{Binding G.Value}"/>
-        <Slider Value="{Binding B.Value}"/>
+        <StackPanel Orientation="Horizontal">
+            <Slider Value="{Binding R.Value}" Width="256"/>
+            <TextBox Text="{Binding R.Value}" Width="50"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Slider Value="{Binding G.Value}" Width="256"/>
+            <TextBox Text="{Binding G.Value}" Width="50"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Slider Value="{Binding B.Value}" Width="256"/>
+            <TextBox Text="{Binding B.Value}" Width="50"/>
+        </StackPanel>
         <Slider Value="{Binding A.Value}"/>
     </StackPanel>
 </UserControl>

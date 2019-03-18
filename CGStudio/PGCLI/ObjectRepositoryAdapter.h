@@ -16,7 +16,7 @@ public ref class ObjectRepositoryAdapter
 public:
 	~ObjectRepositoryAdapter(void);
 
-	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src);
+	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::Graphics::ColorRGBA^ color);
 
 	int AddWireFrame(PG::Core::Shape::WireFrame^ src);
 

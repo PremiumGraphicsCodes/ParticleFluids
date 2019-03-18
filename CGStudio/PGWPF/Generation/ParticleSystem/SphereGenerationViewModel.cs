@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using PG.Control;
 using Reactive.Bindings;
 using PG.Control.Math;
+using PG.Control.Graphics;
 
 namespace PG.CGStudio.Generation.ParticleSystem
 {
@@ -15,9 +16,12 @@ namespace PG.CGStudio.Generation.ParticleSystem
 
         public Sphere3dViewModel SphereViewModel { get; }
 
+        public ColorRGBAViewModel ColorViewModel { get; }
+
         public SphereGenerationViewModel()
         {
             this.SphereViewModel = new Sphere3dViewModel();
+            this.ColorViewModel = new ColorRGBAViewModel();
             this.Count = new ReactiveProperty<int>();
             this.Count.Value = 10000;
             this.GenerationCommand = new ReactiveCommand();
@@ -36,7 +40,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-            Repository.Instance.Objects.Add(particles);
+            Repository.Instance.Objects.Add(particles, ColorViewModel.Value);
             OpenGLPresenter.Instance.Update(Repository.Instance);
             OpenGLPresenter.Instance.Render();
         }

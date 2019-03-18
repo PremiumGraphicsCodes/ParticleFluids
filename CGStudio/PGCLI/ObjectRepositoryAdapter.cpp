@@ -12,7 +12,7 @@ using namespace PG::CLI;
 ObjectRepositoryAdapter::~ObjectRepositoryAdapter()
 {}
 
-int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src)
+int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::Graphics::ColorRGBA^ color)
 {
 	auto positions = src->Positions;
 	std::vector<Crystal::Math::Vector3df> ps;
@@ -21,7 +21,7 @@ int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ 
 		ps.push_back(p);
 	}
 	Crystal::UI::ParticleAttribute attr;
-	attr.color = Crystal::Graphics::ColorRGBAf(1, 0, 0, 0);
+	attr.color = Converter::toCpp(color);
 	attr.size = 1.0f;
 	return instance->getParticleSystems()->addObject(ps, attr, "");
 }

@@ -13,9 +13,9 @@ namespace PG.CGStudio
             this.adapter = adapter;
         }
 
-        public int Add(ParticleSystem particleSystem)
+        public int Add(ParticleSystem particleSystem, Core.Graphics.ColorRGBA color)
         {
-            return adapter.AddParticleSystem(particleSystem);
+            return adapter.AddParticleSystem(particleSystem, color);
         }
 
         public int Add(WireFrame wireFrame)
