@@ -36,8 +36,9 @@
 
             <Fluent:RibbonTabItem Header="Generation" KeyTip="T1">
                 <Fluent:RibbonGroupBox Header="ParticleSystem" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding ParticleSystemGenerationCommand}"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding ParticleSystemGenerationCommand}"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding ParticleSystemGenerationBoxCommand}"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding ParticleSystemGenerationSphereCommand}"/>
+                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding ParticleSystemGenerationCylinderCommand}"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="WireFrame" KeyTip="B">
                     <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding WireFrameGenerationCommand}"/>

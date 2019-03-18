@@ -13,8 +13,15 @@ namespace PG.CGStudio
     {
         public MainWindowViewModel()
         {
-            this.ParticleSystemGenerationCommand = new ReactiveCommand();
-            this.ParticleSystemGenerationCommand.Subscribe(OnParticleSystemGeneration);
+            this.ParticleSystemGenerationBoxCommand = new ReactiveCommand();
+            this.ParticleSystemGenerationBoxCommand.Subscribe(OnParticleSystemGenerationBox);
+
+            this.ParticleSystemGenerationSphereCommand = new ReactiveCommand();
+            this.ParticleSystemGenerationSphereCommand.Subscribe(OnParticleSystemGenerationSphere);
+
+            this.ParticleSystemGenerationCylinderCommand = new ReactiveCommand();
+            this.ParticleSystemGenerationCylinderCommand.Subscribe(OnParticleSystemGenerationCylinder);
+
 
             this.WireFrameGenerationCommand = new ReactiveCommand();
             this.WireFrameGenerationCommand.Subscribe(OnWireFrameGeneration);
@@ -35,7 +42,11 @@ namespace PG.CGStudio
             dialog.Show();
         }
 
-        public ReactiveCommand ParticleSystemGenerationCommand { get; }
+        public ReactiveCommand ParticleSystemGenerationBoxCommand { get; }
+
+        public ReactiveCommand ParticleSystemGenerationSphereCommand { get; }
+
+        public ReactiveCommand ParticleSystemGenerationCylinderCommand { get; }
 
         public ReactiveCommand WireFrameGenerationCommand { get; }
 
@@ -44,9 +55,25 @@ namespace PG.CGStudio
         public GenerationViewModel GenerationViewModel { get; }
             = new GenerationViewModel();
 
-        private void OnParticleSystemGeneration()
+        private void OnParticleSystemGenerationBox()
         {
-            GenerationViewModel.ContentViewModel.Value = new ParticleSystemGenerationViewModel();
+            var vm = new ParticleSystemGenerationViewModel();
+            vm.ContentViewModel.Value = new Generation.ParticleSystem.BoxGenerationViewModel();
+            GenerationViewModel.ContentViewModel.Value = vm;
+        }
+
+        private void OnParticleSystemGenerationSphere()
+        {
+            var vm = new ParticleSystemGenerationViewModel();
+            vm.ContentViewModel.Value = new Generation.ParticleSystem.SphereGenerationViewModel();
+            GenerationViewModel.ContentViewModel.Value = vm;
+        }
+
+        private void OnParticleSystemGenerationCylinder()
+        {
+            var vm = new ParticleSystemGenerationViewModel();
+            vm.ContentViewModel.Value = new Generation.ParticleSystem.CylinderGenerationViewModel();
+            GenerationViewModel.ContentViewModel.Value = vm;
         }
 
         private void OnWireFrameGeneration()

@@ -6,15 +6,18 @@
              xmlns:local="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <UserControl.DataContext>
-        <local:ParticleSystemGenerationViewModel/>
-    </UserControl.DataContext>
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local:BoxGenerationViewModel}">
+            <local:BoxGenerationView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:SphereGenerationViewModel}">
+            <local:SphereGenerationView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:CylinderGenerationViewModel}">
+            <local:CylinderGenerationView/>
+        </DataTemplate>
+    </UserControl.Resources>
     <StackPanel>
-        <Label Content="Sphere"/>
-        <local:SphereGenerationView/>
-        <Label Content="Cylinder"/>
-        <local:CylinderGenerationView/>
-        <Label Content="Box"/>
-        <local:BoxGenerationView/>
+        <ContentControl Content="{Binding ContentViewModel.Value}"/>
     </StackPanel>
 </UserControl>
