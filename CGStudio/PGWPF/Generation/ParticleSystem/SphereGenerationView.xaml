@@ -17,6 +17,10 @@
             <TextBlock Text="Color"/>
             <graphics:ColorRGBAView DataContext="{Binding ColorViewModel}"/>
         </StackPanel>
+        <StackPanel>
+            <TextBlock Text="Size"/>
+            <TextBox Text="{Binding Size.Value}"/>
+        </StackPanel>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

@@ -18,6 +18,8 @@ namespace PG.CGStudio.Generation.ParticleSystem
 
         public ColorRGBAViewModel ColorViewModel { get; }
 
+        public ReactiveProperty<float> Size { get; }
+
         public SphereGenerationViewModel()
         {
             this.SphereViewModel = new Sphere3dViewModel();
@@ -26,6 +28,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
             this.Count.Value = 10000;
             this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
+            this.Size = new ReactiveProperty<float>(1.0f);
         }
 
         private void OnGenerate()
@@ -40,7 +43,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-            Repository.Instance.Objects.Add(particles, ColorViewModel.Value, 1.0f);
+            Repository.Instance.Objects.Add(particles, ColorViewModel.Value, Size.Value);
             OpenGLPresenter.Instance.Update(Repository.Instance);
             OpenGLPresenter.Instance.Render();
         }

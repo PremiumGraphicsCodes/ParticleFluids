@@ -126,6 +126,10 @@
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
+    <Compile Include="Generation\ParticleSystem\AppearanceView.xaml.cs">
+      <DependentUpon>AppearanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Generation\ParticleSystem\AppearanceViewModel.cs" />
     <Compile Include="Light\LightListView.xaml.cs">
       <DependentUpon>LightListView.xaml</DependentUpon>
     </Compile>
@@ -197,6 +201,10 @@
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
     <Page Include="Generation\GenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generation\ParticleSystem\AppearanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
