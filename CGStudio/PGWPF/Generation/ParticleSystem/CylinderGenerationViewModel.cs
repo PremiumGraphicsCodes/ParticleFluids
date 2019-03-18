@@ -1,8 +1,5 @@
-﻿using PG.Control;
-using PG.Control.Graphics;
-using PG.Control.Math;
+﻿using PG.Control.Math;
 using PG.Core.Math;
-using PG.Core.UI;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -20,11 +17,11 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public ColorRGBAViewModel ColorViewModel { get; }
+        public AppearanceViewModel Appearance { get; }
 
         public CylinderGenerationViewModel()
         {
-            this.ColorViewModel = new ColorRGBAViewModel();
+            this.Appearance = new AppearanceViewModel();
             this.Count.Value = 10000;
             this.GenerationCommand.Subscribe(OnGenerate);
         }
@@ -42,12 +39,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-            var a = new ParticleAppearance
-            {
-                Color = ColorViewModel.Value,
-                Size = 1.0f
-            };
-            Repository.Instance.Objects.Add(particles, a);
+            Repository.Instance.Objects.Add(particles, Appearance.Value);
             OpenGLPresenter.Instance.Update(Repository.Instance);
             OpenGLPresenter.Instance.Render();
         }

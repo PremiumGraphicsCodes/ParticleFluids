@@ -130,7 +130,11 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Generation\ParticleSystem\AppearanceViewModel.cs" />
-    <Compile Include="Light\LightListView.xaml.cs">
+    <Compile Include="Generation\WireFrame\AppearanceViewModel.cs" />
+    <Compile Include="Generation\WireFrame\AppearanceView.xaml.cs">
+      <DependentUpon>AppearanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LightList\LightListView.xaml.cs">
       <DependentUpon>LightListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ObjectList\ObjectListView.xaml.cs">
@@ -240,6 +244,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Generation\WireFrame\AppearanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Generation\WireFrame\BoxGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -256,7 +264,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Light\LightListView.xaml">
+    <Page Include="LightList\LightListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
