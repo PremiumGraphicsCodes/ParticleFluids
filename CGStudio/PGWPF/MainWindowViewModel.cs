@@ -36,18 +36,6 @@ namespace PG.CGStudio
 
             this.PolygonMeshGenerationSphereCommand = new ReactiveCommand();
             this.PolygonMeshGenerationSphereCommand.Subscribe(OnPolygonMeshGenerationSphere);
-
-
-            LightListCommand = new ReactiveCommand();
-            LightListCommand.Subscribe(OnShowLightList);
-        }
-
-        public ReactiveCommand LightListCommand { get; }
-
-        private void OnShowLightList()
-        {
-            var dialog = new LightListView();
-            dialog.Show();
         }
 
         public ReactiveCommand ParticleSystemGenerationBoxCommand { get; }

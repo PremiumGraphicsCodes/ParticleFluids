@@ -134,13 +134,17 @@
     <Compile Include="Generation\WireFrame\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LightList\LightListView.xaml.cs">
+    <Compile Include="Light\LightListView.xaml.cs">
       <DependentUpon>LightListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ObjectList\ObjectListView.xaml.cs">
+    <Compile Include="Material\MaterialListView.xaml.cs">
+      <DependentUpon>MaterialListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Material\MaterialListViewModel.cs" />
+    <Compile Include="Object\ObjectListView.xaml.cs">
       <DependentUpon>ObjectListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ObjectList\ObjectListViewModel.cs" />
+    <Compile Include="Object\ObjectListViewModel.cs" />
     <Compile Include="OpenGL\OpenGLAdornment.xaml.cs">
       <DependentUpon>OpenGLAdornment.xaml</DependentUpon>
     </Compile>
@@ -264,7 +268,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LightList\LightListView.xaml">
+    <Page Include="Light\LightListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,7 +284,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ObjectList\ObjectListView.xaml">
+    <Page Include="Material\MaterialListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Object\ObjectListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,8 +1,8 @@
-﻿using System.Windows;
+﻿using System.Windows.Controls;
 
 namespace PG.CGStudio.Light
 {
-    public partial class LightListView : Window
+    public partial class LightListView : UserControl
     {
         public LightListView()
         {
