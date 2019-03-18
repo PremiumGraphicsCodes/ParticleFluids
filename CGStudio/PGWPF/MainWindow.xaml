@@ -82,6 +82,9 @@
                     </local:OpenGLPresenter>
                 </Grid>
             </host:HwndHostManager>
+
+            <generation:GenerationView Grid.Column="1" DataContext="{Binding GenerationViewModel}">
+            </generation:GenerationView>
         </Grid>
     </Grid>
 </Fluent:RibbonWindow>

@@ -1,4 +1,4 @@
-﻿<Window x:Class="PG.CGStudio.Generation.ParticleSystem.ParticleSystemGenerationView"
+﻿<UserControl x:Class="PG.CGStudio.Generation.ParticleSystem.ParticleSystemGenerationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <Window.DataContext>
+    <UserControl.DataContext>
         <local:ParticleSystemGenerationViewModel/>
-    </Window.DataContext>
+    </UserControl.DataContext>
     <StackPanel>
         <Label Content="Sphere"/>
         <local:SphereGenerationView/>
@@ -17,4 +17,4 @@
         <Label Content="Box"/>
         <local:BoxGenerationView/>
     </StackPanel>
-</Window>
+</UserControl>

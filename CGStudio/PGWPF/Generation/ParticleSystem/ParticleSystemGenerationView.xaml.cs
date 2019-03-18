@@ -1,11 +1,8 @@
-﻿using System.Windows;
+﻿using System.Windows.Controls;
 
 namespace PG.CGStudio.Generation.ParticleSystem
 {
-    /// <summary>
-    /// ParticleSystemGenerationView.xaml の相互作用ロジック
-    /// </summary>
-    public partial class ParticleSystemGenerationView : Window
+    public partial class ParticleSystemGenerationView : UserControl
     {
         public ParticleSystemGenerationView()
         {

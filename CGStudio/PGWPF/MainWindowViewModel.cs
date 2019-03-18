@@ -1,4 +1,5 @@
-﻿using PG.CGStudio.Generation.ParticleSystem;
+﻿using PG.CGStudio.Generation;
+using PG.CGStudio.Generation.ParticleSystem;
 using PG.CGStudio.Generation.PolygonMesh;
 using PG.CGStudio.Generation.WireFrame;
 using PG.CGStudio.Light;
@@ -40,12 +41,17 @@ namespace PG.CGStudio
 
         public ReactiveCommand PolygonMeshGenerationCommand { get; }
 
+        public GenerationViewModel GenerationViewModel { get; }
+            = new GenerationViewModel();
+
         private void OnParticleSystemGeneration()
         {
+            /*
             var dialog = new ParticleSystemGenerationView();
             dialog.Owner = Application.Current.MainWindow;
             dialog.DataContext = new ParticleSystemGenerationViewModel();
             dialog.Show();
+            */
         }
 
         private void OnWireFrameGeneration()
