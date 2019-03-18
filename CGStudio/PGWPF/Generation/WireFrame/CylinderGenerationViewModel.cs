@@ -2,10 +2,11 @@
 using Reactive.Bindings;
 using PG.Control;
 using PG.Control.Math;
+using Prism.Mvvm;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
-    public class CylinderGenerationViewModel
+    public class CylinderGenerationViewModel : BindableBase
     {
         public Cylinder3dViewModel CylinderViewModel { get; }
             = new Cylinder3dViewModel();

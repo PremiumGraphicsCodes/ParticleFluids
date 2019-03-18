@@ -22,9 +22,15 @@ namespace PG.CGStudio
             this.ParticleSystemGenerationCylinderCommand = new ReactiveCommand();
             this.ParticleSystemGenerationCylinderCommand.Subscribe(OnParticleSystemGenerationCylinder);
 
+            this.WireFrameGenerationBoxCommand = new ReactiveCommand();
+            this.WireFrameGenerationBoxCommand.Subscribe(OnWireFrameGenerationBox);
 
-            this.WireFrameGenerationCommand = new ReactiveCommand();
-            this.WireFrameGenerationCommand.Subscribe(OnWireFrameGeneration);
+            this.WireFrameGenerationSphereCommand = new ReactiveCommand();
+            this.WireFrameGenerationSphereCommand.Subscribe(OnWireFrameGenerationSphere);
+
+            this.WireFrameGenerationCylinderCommand = new ReactiveCommand();
+            this.WireFrameGenerationCylinderCommand.Subscribe(OnWireFrameGenerationCylinder);
+
 
             this.PolygonMeshGenerationCommand = new ReactiveCommand();
             this.PolygonMeshGenerationCommand.Subscribe(OnPolygonMeshGeneration);
@@ -48,7 +54,11 @@ namespace PG.CGStudio
 
         public ReactiveCommand ParticleSystemGenerationCylinderCommand { get; }
 
-        public ReactiveCommand WireFrameGenerationCommand { get; }
+        public ReactiveCommand WireFrameGenerationBoxCommand { get; }
+
+        public ReactiveCommand WireFrameGenerationSphereCommand { get; }
+
+        public ReactiveCommand WireFrameGenerationCylinderCommand { get; }
 
         public ReactiveCommand PolygonMeshGenerationCommand { get; }
 
@@ -76,10 +86,27 @@ namespace PG.CGStudio
             GenerationViewModel.ContentViewModel.Value = vm;
         }
 
-        private void OnWireFrameGeneration()
+        private void OnWireFrameGenerationBox()
         {
-            GenerationViewModel.ContentViewModel.Value = new WireFrameGenerationViewModel();
+            var vm = new WireFrameGenerationViewModel();
+            vm.ContentViewModel.Value = new Generation.WireFrame.BoxGenerationViewModel();
+            GenerationViewModel.ContentViewModel.Value = vm;
         }
+
+        private void OnWireFrameGenerationSphere()
+        {
+            var vm = new WireFrameGenerationViewModel();
+            vm.ContentViewModel.Value = new Generation.WireFrame.SphereGenerationViewModel();
+            GenerationViewModel.ContentViewModel.Value = vm;
+        }
+
+        private void OnWireFrameGenerationCylinder()
+        {
+            var vm = new WireFrameGenerationViewModel();
+            vm.ContentViewModel.Value = new Generation.WireFrame.CylinderGenerationViewModel();
+            GenerationViewModel.ContentViewModel.Value = vm;
+        }
+
 
         private void OnPolygonMeshGeneration()
         {

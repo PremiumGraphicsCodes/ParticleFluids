@@ -41,8 +41,9 @@
                     <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding ParticleSystemGenerationCylinderCommand}"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="WireFrame" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding WireFrameGenerationCommand}"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding WireFrameGenerationCommand}"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding WireFrameGenerationBoxCommand}"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding WireFrameGenerationSphereCommand}"/>
+                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding WireFrameGenerationCylinderCommand}"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="PolygonMesh" KeyTip="B">
                     <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding PolygonMeshGenerationCommand}"/>

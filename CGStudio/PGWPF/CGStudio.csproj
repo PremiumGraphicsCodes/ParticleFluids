@@ -133,10 +133,12 @@
       <DependentUpon>ObjectListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ObjectList\ObjectListViewModel.cs" />
-    <Compile Include="OpenGLAdornment.xaml.cs">
+    <Compile Include="OpenGL\OpenGLAdornment.xaml.cs">
       <DependentUpon>OpenGLAdornment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OpenGLPresenter.cs" />
+    <Compile Include="OpenGL\OpenGLPresenter.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Repository\AppearanceObjectRepository.cs" />
     <Compile Include="Repository\ObjectRepository.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
@@ -266,7 +268,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OpenGLAdornment.xaml">
+    <Page Include="OpenGL\OpenGLAdornment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

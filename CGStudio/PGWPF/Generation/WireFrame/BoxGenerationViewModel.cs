@@ -2,10 +2,11 @@
 using Reactive.Bindings;
 using PG.Control;
 using PG.Control.Math;
+using Prism.Mvvm;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
-    public class BoxGenerationViewModel
+    public class BoxGenerationViewModel : BindableBase
     {
         public Box3dViewModel BoxViewModel { get; }
             = new Box3dViewModel();

@@ -1,11 +1,12 @@
 ﻿using PG.Control;
 using PG.Control.Math;
 using PG.Core.Shape;
+using Prism.Mvvm;
 using Reactive.Bindings;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
-    public class SphereGenerationViewModel
+    public class SphereGenerationViewModel : BindableBase
     {
         public ReactiveProperty<int> UNum { get; }
             = new ReactiveProperty<int>();
