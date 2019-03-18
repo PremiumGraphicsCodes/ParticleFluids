@@ -5,8 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.Control.Graphics"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:MaterialViewModel/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <StackPanel>
+            <TextBlock Text="Ambient"/>
+            <local:ColorRGBAView DataContext="{Binding Ambient}"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Text="Diffuse"/>
+            <local:ColorRGBAView DataContext="{Binding Diffuse}"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Text="Specular"/>
+            <local:ColorRGBAView DataContext="{Binding Specular}"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Text="Shininess"/>
+            <TextBox Text="{Binding Shininess.Value}" Width="50"/>
+        </StackPanel>
+    </StackPanel>
 </UserControl>

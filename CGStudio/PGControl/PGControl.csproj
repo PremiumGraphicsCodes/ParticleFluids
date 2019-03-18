@@ -115,6 +115,7 @@
     <Compile Include="Graphics\MaterialView.xaml.cs">
       <DependentUpon>MaterialView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Graphics\MaterialViewModel.cs" />
     <Compile Include="Graphics\PointLightView.xaml.cs">
       <DependentUpon>PointLightView.xaml</DependentUpon>
     </Compile>
