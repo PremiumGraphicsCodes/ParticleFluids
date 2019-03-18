@@ -1,6 +1,8 @@
-﻿namespace PG.CGStudio.Generation.ParticleSystem
+﻿using Prism.Mvvm;
+
+namespace PG.CGStudio.Generation.ParticleSystem
 {
-    public class ParticleSystemGenerationViewModel
+    public class ParticleSystemGenerationViewModel : BindableBase
     {
         public ParticleSystemGenerationViewModel()
         {

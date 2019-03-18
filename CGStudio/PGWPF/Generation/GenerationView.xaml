@@ -20,6 +20,6 @@
         </DataTemplate>
     </UserControl.Resources>
     <StackPanel>
-        <ContentControl Content="{Binding ContentViewModel}"/>
+        <ContentControl Content="{Binding ContentViewModel.Value}"/>
     </StackPanel>
 </UserControl>

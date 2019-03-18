@@ -46,32 +46,17 @@ namespace PG.CGStudio
 
         private void OnParticleSystemGeneration()
         {
-            /*
-            var dialog = new ParticleSystemGenerationView();
-            dialog.Owner = Application.Current.MainWindow;
-            dialog.DataContext = new ParticleSystemGenerationViewModel();
-            dialog.Show();
-            */
+            GenerationViewModel.ContentViewModel.Value = new ParticleSystemGenerationViewModel();
         }
 
         private void OnWireFrameGeneration()
         {
-            /*
-            var dialog = new WireFrameGenerationView();
-            dialog.Owner = Application.Current.MainWindow;
-            dialog.DataContext = new WireFrameGenerationViewModel();
-            dialog.Show();
-            */
+            GenerationViewModel.ContentViewModel.Value = new WireFrameGenerationViewModel();
         }
 
         private void OnPolygonMeshGeneration()
         {
-            /*
-            var dialog = new PolygonMeshGenerationView();
-            dialog.Owner = Application.Current.MainWindow;
-            dialog.DataContext = new PolygonMeshGenerationViewModel();
-            dialog.Show();
-            */
+            GenerationViewModel.ContentViewModel.Value = new PolygonMeshGenerationViewModel();
         }
     }
 }

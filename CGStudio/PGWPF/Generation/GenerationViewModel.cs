@@ -1,15 +1,18 @@
 ﻿using PG.CGStudio.Generation.ParticleSystem;
 using PG.CGStudio.Generation.WireFrame;
+using Prism.Mvvm;
+using Reactive.Bindings;
 
 namespace PG.CGStudio.Generation
 {
-    public class GenerationViewModel
+    public class GenerationViewModel : BindableBase
     {
         public GenerationViewModel()
         {
-            ContentViewModel = new WireFrameGenerationViewModel();
+            ContentViewModel.Value = new WireFrameGenerationViewModel();
         }
 
-        public WireFrameGenerationViewModel ContentViewModel { get; }
+        public ReactiveProperty<BindableBase> ContentViewModel { get; }
+            = new ReactiveProperty<BindableBase>();
     }
 }

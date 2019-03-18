@@ -1,6 +1,8 @@
-﻿namespace PG.CGStudio.Generation.WireFrame
+﻿using Prism.Mvvm;
+
+namespace PG.CGStudio.Generation.WireFrame
 {
-    public class WireFrameGenerationViewModel
+    public class WireFrameGenerationViewModel : BindableBase
     {
         public WireFrameGenerationViewModel()
         {
