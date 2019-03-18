@@ -1,6 +1,7 @@
 ﻿using PG.Control;
 using PG.Control.Math;
 using PG.Core.Shape;
+using PG.Core.UI;
 using Prism.Mvvm;
 using Reactive.Bindings;
 
@@ -31,7 +32,7 @@ namespace PG.CGStudio.Generation.WireFrame
         {
             var builder = new WireFrameBuilder();
             builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
-            Repository.Instance.Objects.Add(builder.WireFrame);
+            Repository.Instance.Objects.Add(builder.WireFrame, new WireAppearance());
             OpenGLPresenter.Instance.Update(Repository.Instance);
             OpenGLPresenter.Instance.Render();
         }

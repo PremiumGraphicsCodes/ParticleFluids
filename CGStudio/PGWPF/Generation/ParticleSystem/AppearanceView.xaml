@@ -7,8 +7,11 @@
              xmlns:graphics="clr-namespace:PG.Control.Graphics;assembly=PGControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:AppearanceViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
         <graphics:ColorRGBAView DataContext="{Binding Color}"/>
-        <TextBox Text="{Binding Size.Value}"/>
+        <TextBox Text="{Binding Size.Value}" Width="50"/>
     </StackPanel>
 </UserControl>

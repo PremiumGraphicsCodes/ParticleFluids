@@ -1,4 +1,5 @@
 ﻿using PG.Core.Shape;
+using PG.Core.UI;
 
 namespace PG.CGStudio
 {
@@ -13,14 +14,14 @@ namespace PG.CGStudio
             this.adapter = adapter;
         }
 
-        public int Add(ParticleSystem particleSystem, Core.Graphics.ColorRGBA color, float size)
+        public int Add(ParticleSystem particleSystem, ParticleAppearance appearance)
         {
-            return adapter.AddParticleSystem(particleSystem, color, size);
+            return adapter.AddParticleSystem(particleSystem, appearance);
         }
 
-        public int Add(WireFrame wireFrame)
+        public int Add(WireFrame wireFrame, WireAppearance appearance)
         {
-            return adapter.AddWireFrame(wireFrame);
+            return adapter.AddWireFrame(wireFrame, appearance);
         }
 
         public int Add(PolygonMesh polygonMesh)

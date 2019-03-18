@@ -3,6 +3,7 @@ using Reactive.Bindings;
 using PG.Control;
 using PG.Control.Math;
 using Prism.Mvvm;
+using PG.Core.UI;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
@@ -25,7 +26,7 @@ namespace PG.CGStudio.Generation.WireFrame
             var cylinder = CylinderViewModel.Value;
             builder.Build(cylinder, 25, 25);
             var wireFrame = builder.WireFrame;
-            Repository.Instance.Objects.Add(wireFrame);
+            Repository.Instance.Objects.Add(wireFrame, new WireAppearance());
             OpenGLPresenter.Instance.Update(Repository.Instance);
             OpenGLPresenter.Instance.Render();
         }

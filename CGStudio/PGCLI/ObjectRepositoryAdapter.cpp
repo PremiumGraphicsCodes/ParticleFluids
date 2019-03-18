@@ -12,7 +12,7 @@ using namespace PG::CLI;
 ObjectRepositoryAdapter::~ObjectRepositoryAdapter()
 {}
 
-int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::Graphics::ColorRGBA^ color, float size)
+int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::UI::ParticleAppearance^ appearance)
 {
 	auto positions = src->Positions;
 	std::vector<Crystal::Math::Vector3df> ps;
@@ -21,12 +21,12 @@ int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ 
 		ps.push_back(p);
 	}
 	Crystal::UI::ParticleAttribute attr;
-	attr.color = Converter::toCpp(color);
-	attr.size = size;
+	attr.color = Converter::toCpp(appearance->Color);
+	attr.size = appearance->Size;
 	return instance->getParticleSystems()->addObject(ps, attr, "");
 }
 
-int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src)
+int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src, PG::Core::UI::WireAppearance^ appearance)
 {
 	auto edges = src->Edges;
 	std::vector<Crystal::Math::Line3dd> ls;

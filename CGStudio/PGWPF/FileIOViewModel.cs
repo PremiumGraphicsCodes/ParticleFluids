@@ -40,9 +40,11 @@ namespace PG.CGStudio
 
         private void OnOpen()
         {
-            var dialog = new OpenFileDialog();
-            dialog.Title = "Open";
-            if( DialogResult.OK == dialog.ShowDialog() )
+            var dialog = new OpenFileDialog
+            {
+                Title = "Open"
+            };
+            if ( DialogResult.OK == dialog.ShowDialog() )
             {
                 var model = Repository.Instance;
                 model.Open(dialog.FileName);
@@ -51,9 +53,11 @@ namespace PG.CGStudio
 
         private void OnSave()
         {
-            var dialog = new SaveFileDialog();
-            dialog.Title = "Save";
-            if( DialogResult.OK == dialog.ShowDialog() )
+            var dialog = new SaveFileDialog
+            {
+                Title = "Save"
+            };
+            if ( DialogResult.OK == dialog.ShowDialog() )
             {
                 var model = Repository.Instance;
                 model.Save(dialog.FileName);
@@ -62,8 +66,10 @@ namespace PG.CGStudio
 
         private void OnSaveAs()
         {
-            var dialog = new SaveFileDialog();
-            dialog.Title = "SaveAs";
+            var dialog = new SaveFileDialog
+            {
+                Title = "SaveAs"
+            };
             if (DialogResult.OK == dialog.ShowDialog())
             {
                 var model = Repository.Instance;
@@ -73,8 +79,10 @@ namespace PG.CGStudio
 
         private void OnImport()
         {
-            var dialog = new OpenFileDialog();
-            dialog.Title = "Import";
+            var dialog = new OpenFileDialog
+            {
+                Title = "Import"
+            };
             if (DialogResult.OK == dialog.ShowDialog())
             {
                 var model = Repository.Instance;
@@ -84,8 +92,10 @@ namespace PG.CGStudio
 
         private void OnExport()
         {
-            var dialog = new SaveFileDialog();
-            dialog.Title = "Export";
+            var dialog = new SaveFileDialog
+            {
+                Title = "Export"
+            };
             if (DialogResult.OK == dialog.ShowDialog())
             {
                 var model = Repository.Instance;

@@ -13,6 +13,7 @@
     <StackPanel>
         <math:Box3dView DataContext="{Binding BoxViewModel}"/>
         <TextBox Text="{Binding Count.Value}"/>
+        <local:AppearanceView DataContext="{Binding Appearance}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

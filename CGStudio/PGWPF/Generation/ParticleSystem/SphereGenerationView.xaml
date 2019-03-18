@@ -14,12 +14,8 @@
         <Control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
         <TextBox Text="{Binding Count.Value}"/>
         <StackPanel>
-            <TextBlock Text="Color"/>
-            <graphics:ColorRGBAView DataContext="{Binding ColorViewModel}"/>
-        </StackPanel>
-        <StackPanel>
-            <TextBlock Text="Size"/>
-            <TextBox Text="{Binding Size.Value}"/>
+            <TextBlock Text="Appearance"/>
+            <local:AppearanceView DataContext="{Binding Appearance}"/>
         </StackPanel>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>

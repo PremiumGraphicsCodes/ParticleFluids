@@ -11,18 +11,22 @@
     </UserControl.DataContext>
     <StackPanel>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="R"/>
             <Slider Value="{Binding R.Value}" Width="256"/>
             <TextBox Text="{Binding R.Value}" Width="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="G"/>
             <Slider Value="{Binding G.Value}" Width="256"/>
             <TextBox Text="{Binding G.Value}" Width="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="B"/>
             <Slider Value="{Binding B.Value}" Width="256"/>
             <TextBox Text="{Binding B.Value}" Width="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="A"/>
             <Slider Value="{Binding A.Value}" Width="256"/>
             <TextBox Text="{Binding A.Value}" Width="50"/>
         </StackPanel>

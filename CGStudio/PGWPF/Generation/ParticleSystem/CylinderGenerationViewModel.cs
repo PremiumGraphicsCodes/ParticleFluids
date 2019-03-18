@@ -2,6 +2,7 @@
 using PG.Control.Graphics;
 using PG.Control.Math;
 using PG.Core.Math;
+using PG.Core.UI;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -41,7 +42,12 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-            Repository.Instance.Objects.Add(particles, ColorViewModel.Value, 1.0f);
+            var a = new ParticleAppearance
+            {
+                Color = ColorViewModel.Value,
+                Size = 1.0f
+            };
+            Repository.Instance.Objects.Add(particles, a);
             OpenGLPresenter.Instance.Update(Repository.Instance);
             OpenGLPresenter.Instance.Render();
         }

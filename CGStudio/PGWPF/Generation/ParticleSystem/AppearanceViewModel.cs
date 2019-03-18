@@ -7,7 +7,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
     public class AppearanceViewModel
     {
         public ColorRGBAViewModel Color;
-        public ReactiveProperty<float> Size;
+        public ReactiveProperty<float> Size { get; }
 
         public AppearanceViewModel()
         {
@@ -18,9 +18,11 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public ParticleAppearance Value {
             get
             {
-                var appearance = new ParticleAppearance();
-                appearance.Color = Color.Value;
-                appearance.Size = Size.Value;
+                var appearance = new ParticleAppearance
+                {
+                    Color = Color.Value,
+                    Size = Size.Value
+                };
                 return appearance;
             }
         }

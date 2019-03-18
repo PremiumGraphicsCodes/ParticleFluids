@@ -73,6 +73,7 @@
     <Compile Include="Shape\WireFrame.cs" />
     <Compile Include="Shape\WireFrameBuilder.cs" />
     <Compile Include="UI\ParticleAppearance.cs" />
+    <Compile Include="UI\WireAppearance.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
