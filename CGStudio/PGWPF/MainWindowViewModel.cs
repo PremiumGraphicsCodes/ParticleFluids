@@ -3,7 +3,9 @@ using PG.CGStudio.Generation.ParticleSystem;
 using PG.CGStudio.Generation.PolygonMesh;
 using PG.CGStudio.Generation.WireFrame;
 using PG.CGStudio.Light;
+using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
 using Reactive.Bindings;
 using System.Windows;
 
@@ -11,8 +13,16 @@ namespace PG.CGStudio
 {
     public class MainWindowViewModel : BindableBase
     {
-        public MainWindowViewModel()
+        public DelegateCommand<string> NavigateCommand { get; }
+
+        private IRegionManager regionManager;
+
+        public MainWindowViewModel(IRegionManager regionManager)
         {
+            this.regionManager = regionManager;
+            NavigateCommand = new DelegateCommand<string>(OnNavigate);// (name => );
+
+            /*
             this.ParticleSystemGenerationBoxCommand = new ReactiveCommand();
             this.ParticleSystemGenerationBoxCommand.Subscribe(OnParticleSystemGenerationBox);
 
@@ -21,6 +31,7 @@ namespace PG.CGStudio
 
             this.ParticleSystemGenerationCylinderCommand = new ReactiveCommand();
             this.ParticleSystemGenerationCylinderCommand.Subscribe(OnParticleSystemGenerationCylinder);
+            */
 
             this.WireFrameGenerationBoxCommand = new ReactiveCommand();
             this.WireFrameGenerationBoxCommand.Subscribe(OnWireFrameGenerationBox);
@@ -36,6 +47,11 @@ namespace PG.CGStudio
 
             this.PolygonMeshGenerationSphereCommand = new ReactiveCommand();
             this.PolygonMeshGenerationSphereCommand.Subscribe(OnPolygonMeshGenerationSphere);
+        }
+
+        private void OnNavigate(string name)
+        {
+            regionManager.RequestNavigate("ContentRegion", name);
         }
 
         public ReactiveCommand ParticleSystemGenerationBoxCommand { get; }

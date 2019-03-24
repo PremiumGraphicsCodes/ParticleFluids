@@ -13,11 +13,11 @@
         xmlns:light="clr-namespace:PG.CGStudio.Light"
         xmlns:material="clr-namespace:PG.CGStudio.Material"
         xmlns:texture="clr-namespace:PG.CGStudio.Texture"
-        mc:Ignorable="d"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+    xmlns:shape="clr-namespace:PG.Core.Shape;assembly=PGCore"
+    mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.DataContext>
-        <local:MainWindowViewModel/>
-    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -39,9 +39,9 @@
 
             <Fluent:RibbonTabItem Header="Generation" KeyTip="T1">
                 <Fluent:RibbonGroupBox Header="ParticleSystem" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding ParticleSystemGenerationBoxCommand}"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding ParticleSystemGenerationSphereCommand}"/>
-                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding ParticleSystemGenerationCylinderCommand}"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCBoxGeneration"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCSphereGeneration"/>
+                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCCylinderGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="WireFrame" KeyTip="B">
                     <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding WireFrameGenerationBoxCommand}"/>
@@ -105,8 +105,7 @@
                 </Grid>
             </host:HwndHostManager>
 
-            <generation:GenerationView Grid.Column="2" DataContext="{Binding GenerationViewModel}">
-            </generation:GenerationView>
+            <ContentControl prism:RegionManager.RegionName="ContentRegion" Grid.Column="2"/>
         </Grid>
     </Grid>
 </Fluent:RibbonWindow>
