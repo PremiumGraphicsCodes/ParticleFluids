@@ -21,6 +21,9 @@
     <ClCompile Include="IntersectionAlgo.cpp">
       <Filter>Intersection</Filter>
     </ClCompile>
+    <ClCompile Include="csgjs.cpp">
+      <Filter>Boolean</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">

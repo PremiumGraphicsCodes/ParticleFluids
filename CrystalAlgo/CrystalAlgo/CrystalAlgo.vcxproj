@@ -152,6 +152,7 @@
     <ClInclude Include="SpaceHash.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="csgjs.cpp" />
     <ClCompile Include="IntersectionAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
