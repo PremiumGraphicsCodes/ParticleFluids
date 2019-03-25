@@ -40,6 +40,16 @@ int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& posi
 	return objects.back().getId();
 }
 
+ParticleSystemObject ParticleSystemObjectRepository::findObjectById(const int id)
+{
+	auto iter = std::find_if(std::begin(objects), std::end(objects), [=](auto p) {return p.getId() == id; });
+	if (iter == std::end(objects)) {
+		return ParticleSystemObject();
+	}
+	return *iter;
+}
+
+
 Box3d ParticleSystemObjectRepository::getBoundingBox() const
 {
 	const auto& vertices = getAllVertices();

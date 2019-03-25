@@ -24,6 +24,15 @@ int WireFrameObjectRepository::addObject(WireFrame* wire, const WireFrameAttribu
 	return objects.back().getId();
 }
 
+WireFrameObject WireFrameObjectRepository::findObjectById(const int id)
+{
+	auto iter = std::find_if(std::begin(objects), std::end(objects), [=](auto p) {return p.getId() == id; });
+	if (iter == std::end(objects)) {
+		return WireFrameObject();
+	}
+	return *iter;
+}
+
 Box3d WireFrameObjectRepository::getBoundingBox() const
 {
 	const auto& vertices = getAllVertices();

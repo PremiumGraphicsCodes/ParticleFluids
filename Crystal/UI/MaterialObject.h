@@ -24,6 +24,8 @@ public:
 
 	void transform(const Math::Matrix4dd& m) { ; }
 
+	bool isNull() const { return material == nullptr; }
+
 private:
 	Graphics::Material* material;
 };

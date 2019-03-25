@@ -26,6 +26,8 @@ public:
 
 	void transform(const Math::Matrix4dd& m) { light->transform(m); }
 
+	bool isNull() const { return light == nullptr; }
+
 private:
 	Graphics::PointLight* light;
 };

@@ -34,6 +34,8 @@ public:
 
 	void transform(const Math::Matrix4dd& m) { shape->transform(m); }
 
+	bool isNull() const override { return shape == nullptr; }
+
 private:
 	Shape::PolygonMesh* shape;
 	Graphics::Material material;

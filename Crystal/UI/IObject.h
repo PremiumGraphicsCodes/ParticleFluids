@@ -47,6 +47,8 @@ public:
 
 	virtual void transform(const Math::Matrix4dd& m) = 0;
 
+	virtual bool isNull() const = 0;
+
 private:
 	std::string name;
 	int id;

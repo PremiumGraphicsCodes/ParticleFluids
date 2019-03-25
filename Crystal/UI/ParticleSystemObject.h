@@ -10,6 +10,11 @@ namespace Crystal {
 class ParticleSystemObject : public IObject
 {
 public:
+	ParticleSystemObject() :
+		IObject(-1),
+		shape(nullptr)
+	{}
+
 	ParticleSystemObject(const int id, const std::string& name, Shape::ParticleSystem<ParticleAttribute>* shape) :
 		IObject(id, name),
 		shape(shape)
@@ -24,6 +29,8 @@ public:
 	void transform(const Math::Matrix3dd& m) { shape->transform(m); }
 
 	void transform(const Math::Matrix4dd& m) { shape->transform(m); }
+
+	bool isNull() const { return shape == nullptr; }
 
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;
