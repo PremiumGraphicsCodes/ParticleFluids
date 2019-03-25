@@ -108,8 +108,12 @@ void SmoothRenderer::findLocation()
 }
 
 
-void SmoothRenderer::render(const ICamera& camera, const TextureObject& texture)
+void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const TextureObject& texture)
 {
+	const auto& buffer = bf.triangle;
+	const auto& light = bf.light;
+	const auto& material = bf.material;
+
 	const auto& positions = buffer.getPositions().get();// buffers[0].get();
 	const auto& normals = buffer.getNormals().get();//buffers[1].get();
 	const auto& texCoords = buffer.getTexCoords().get();

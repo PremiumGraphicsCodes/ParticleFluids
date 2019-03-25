@@ -25,7 +25,7 @@ void BooleanButton::onOk()
 	if (polygon1 == nullptr || polygon2 == nullptr) {
 		return;
 	}
-	BooleanAlgo algo(getModel()->getObjects()->getPolygonMeshes()->getBuilder());
+	BooleanAlgo algo;
 	algo.calculateIntersection(*polygon1, *polygon2);
 	Graphics::Material mat;
 	getModel()->getObjects()->getPolygonMeshes()->addObject(algo.getResult(), mat, "Intersection");

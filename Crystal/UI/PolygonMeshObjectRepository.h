@@ -28,12 +28,9 @@ public:
 
 	std::list<Math::Vector3dd> getAllVertices() const override;
 
-	Shape::PolygonMeshBuilder* getBuilder() { return &builder; }
-
 private:
 	int nextId;
 	std::list<PolygonMeshObject> polygonMeshes;
-	Shape::PolygonMeshBuilder builder;
 };
 
 	}

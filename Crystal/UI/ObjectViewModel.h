@@ -21,7 +21,7 @@ public:
 
 	Graphics::LineBuffer getLineBuffer() const { return lineBuffer; }
 
-	Graphics::TriangleBuffer getTriangleBuffer() const { return triangleBuffer; }
+	std::vector<Graphics::TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
 private:
 	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
@@ -34,7 +34,7 @@ private:
 
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
-	Graphics::TriangleBuffer triangleBuffer;
+	std::vector<Graphics::TriangleBuffer> triangleBuffers;
 };
 
 	}

@@ -20,7 +20,13 @@ PolygonMesh::PolygonMesh(const std::vector<Vertex*>& vertices, const std::list<F
 
 void PolygonMesh::clear()
 {
+	for (auto v : vertices) {
+		delete v;
+	}
 	vertices.clear();
+	for (auto f : faces) {
+		delete f;
+	}
 	faces.clear();
 }
 

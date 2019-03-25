@@ -34,16 +34,17 @@ namespace {
 		return model;
 	}
 
-	PolygonMesh* fromCSGJSModel(const csgjs_model& model, PolygonMeshBuilder* builder)
+	PolygonMesh* fromCSGJSModel(const csgjs_model& model)
 	{
+		Crystal::Shape::PolygonMeshBuilder builder;
 		std::vector<std::pair<Vector3dd, Vector3dd> > vs;
 		for (const auto& v : model.vertices) {
 			const Vector3dd p(v.pos.x, v.pos.y, v.pos.z);
 			const Vector3dd n(v.normal.x, v.normal.y, v.normal.z);
 			vs.push_back(std::make_pair(p,n));
 		}
-		builder->build(vs, model.indices);
-		return builder->getPolygonMesh();
+		builder.build(vs, model.indices);
+		return builder.getPolygonMesh();
 		//PolygonMesh polygon;
 		//polygon.a
 	}
@@ -62,7 +63,7 @@ void BooleanAlgo::calculateDifference(const PolygonMesh& lhs, const PolygonMesh&
 void BooleanAlgo::calculateIntersection(const PolygonMesh& lhs, const PolygonMesh& rhs)
 {
 	const auto& result = csgjs_intersection(toCSGJSModel(lhs), toCSGJSModel(rhs));
-	this->result = fromCSGJSModel(result, builder);
+	this->result = fromCSGJSModel(result);
 }
 
 /*

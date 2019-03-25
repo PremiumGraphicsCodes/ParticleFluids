@@ -28,7 +28,14 @@ void ObjectRenderer::setViewModel(const ObjectViewModel& vm, const AppearanceVie
 {
 	this->pointRenderer.setBuffer(vm.getPointBuffer());
 	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);
-	this->smoothRenderer.setBuffer(vm.getTriangleBuffer(), avm.getLightBuffer(), avm.getMaterialBuffer());
+	smoothBuffers.clear();
+	for (const auto& tb : vm.getTriangleBuffers()) {
+		Shader::SmoothRenderer::Buffer buffer;
+		buffer.triangle = tb;
+		buffer.light = avm.getLightBuffer();
+		buffer.material = avm.getMaterialBuffer();
+		smoothBuffers.push_back(buffer);
+	}
 }
 
 void ObjectRenderer::render(const TextureObject& texture, const TextureObject& smoothTexture)
@@ -41,7 +48,9 @@ void ObjectRenderer::render(const TextureObject& texture, const TextureObject& s
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	pointRenderer.render(*camera);
 	wireRenderer.render(*camera);
-	smoothRenderer.render(*camera, smoothTexture);
+	for (const auto& b : smoothBuffers) {
+		smoothRenderer.render(b, *camera, smoothTexture);
+	}
 	//texture.unbind();
 	frameBufferObject.unbind();
 }

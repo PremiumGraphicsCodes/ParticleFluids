@@ -36,6 +36,8 @@ private:
 	Shader::WireFrameRenderer wireRenderer;
 	Shader::SmoothRenderer smoothRenderer;
 
+	std::vector<Shader::SmoothRenderer::Buffer> smoothBuffers;
+
 	Graphics::ICamera* camera;
 
 	Shader::FrameBuffer frameBufferObject;

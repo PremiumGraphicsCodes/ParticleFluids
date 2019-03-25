@@ -21,11 +21,11 @@ void PMPlaneButton::onShow()
 
 void PMPlaneButton::onOk()
 {
-	PolygonMeshBuilder* builder = getModel()->getObjects()->getPolygonMeshes()->getBuilder();
-	builder->build(originView.getValue(), uvecView.getValue(), vvecView.getValue());
+	PolygonMeshBuilder builder;
+	builder.build(originView.getValue(), uvecView.getValue(), vvecView.getValue());
 	Crystal::Graphics::Material material;
 	material.setAmbient(glm::vec3(1, 0, 0));
-	getModel()->getObjects()->getPolygonMeshes()->addObject(builder->getPolygonMesh(), material, "PMPlane");
+	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), material, "PMPlane");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

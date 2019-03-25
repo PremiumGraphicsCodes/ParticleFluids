@@ -11,10 +11,6 @@ namespace Crystal {
 class BooleanAlgo
 {
 public:
-	explicit BooleanAlgo( Shape::PolygonMeshBuilder* builder ) :
-		builder(builder)
-	{}
-
 	void calculateUnion(const Shape::PolygonMesh& lhs, const Shape::PolygonMesh& rhs);
 
 	void calculateDifference(const Shape::PolygonMesh& lhs, const Shape::PolygonMesh& rhs);
@@ -24,7 +20,6 @@ public:
 	Shape::PolygonMesh* getResult() { return result; }
 
 private:
-	Shape::PolygonMeshBuilder* builder;
 	Shape::PolygonMesh* result;
 };
 	}

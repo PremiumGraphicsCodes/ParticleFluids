@@ -4,11 +4,12 @@
 #include "../Math/Sphere3d.h"
 #include "../Math/Box3d.h"
 #include "PolygonMesh.h"
+#include "../Util/UnCopyable.h"
 
 namespace Crystal {
 	namespace Shape {
 
-class PolygonMeshBuilder
+class PolygonMeshBuilder : private UnCopyable
 {
 public:
 	PolygonMeshBuilder() :
@@ -24,12 +25,7 @@ public:
 
 	void build(const std::vector<std::pair<Math::Vector3dd, Math::Vector3dd> >& positionNormals, const std::vector<int>& indices);
 
-	PolygonMesh* getPolygonMesh() {
-		auto mesh = new PolygonMesh(vertices, faces);
-		vertices.clear();
-		faces.clear();
-		return mesh;
-	}
+	PolygonMesh* getPolygonMesh() const;
 
 private:
 	//void buildEdges();

@@ -15,15 +15,16 @@ namespace Crystal {
 class SmoothRenderer
 {
 public:
+	struct Buffer
+	{
+		Graphics::TriangleBuffer triangle;
+		Graphics::LightBuffer light;
+		Graphics::MaterialBuffer material;
+	};
+
 	void findLocation();
 
-	void setBuffer(const Graphics::TriangleBuffer& buffer, const Graphics::LightBuffer& light, const Graphics::MaterialBuffer material) {
-		this->buffer = buffer;
-		this->light = light;
-		this->material = material;
-	}
-
-	void render(const Graphics::ICamera& camera,const TextureObject& texture);
+	void render(const Buffer& buffer, const Graphics::ICamera& camera,const TextureObject& texture);
 
 	bool build();
 
@@ -35,9 +36,6 @@ private:
 
 private:
 	ShaderObject shader;
-	Graphics::TriangleBuffer buffer;
-	Graphics::LightBuffer light;
-	Graphics::MaterialBuffer material;
 };
 
 	}

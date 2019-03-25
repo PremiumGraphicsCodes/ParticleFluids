@@ -103,3 +103,8 @@ void PolygonMeshBuilder::build(const std::vector<std::pair<Vector3dd, Vector3dd>
 		faces.push_back(new Face(e1, e2, e3));
 	}
 }
+
+PolygonMesh* PolygonMeshBuilder::getPolygonMesh() const
+{
+	return new PolygonMesh(vertices, faces);
+}

@@ -51,7 +51,9 @@ void ObjectViewModel::add(const WireFrameObject& object)
 void ObjectViewModel::add(const PolygonMeshObject& object)
 {
 	auto material = object.getMaterial();
-	triangleBuffer.add(*object.getShape(), material);
+	TriangleBuffer bf;
+	bf.add(*object.getShape(), material);
+	triangleBuffers.push_back(bf);
 
 	/*
 	const auto& vertices =  object.getShape()->getVertices();
