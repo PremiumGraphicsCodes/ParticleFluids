@@ -3,6 +3,7 @@
 #include "IObjectRepository.h"
 #include "PolygonMeshObject.h"
 #include "../Shape/PolygonMeshBuilder.h"
+#include "PolygonMeshAttribute.h"
 
 namespace Crystal {
 	namespace UI {
@@ -18,7 +19,7 @@ public:
 
 	void clear();
 
-	int addObject(Shape::PolygonMesh* mesh, const Graphics::Material& material, const std::string& name);
+	int addObject(Shape::PolygonMesh* mesh, const PolygonMeshAttribute& material, const std::string& name);
 
 	PolygonMeshObject* findObjectById(const int id);
 

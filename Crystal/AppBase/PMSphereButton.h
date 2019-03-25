@@ -2,6 +2,7 @@
 
 #include "IPopupButton.h"
 #include "Sphere3dView.h"
+#include "PMAttributeView.h"
 #include "IntView.h"
 
 namespace Crystal {
@@ -14,7 +15,8 @@ public:
 		IPopupButton("PMSphere", model, canvas),
 		sphereView("Sphere"),
 		unumView("UNum", 36),
-		vnumView("VNum", 36)
+		vnumView("VNum", 36),
+		attribute("Attribute")
 	{
 	}
 
@@ -31,6 +33,7 @@ private:
 	Sphere3dView sphereView;
 	IntView unumView;
 	IntView vnumView;
+	PMAttributeView attribute;
 };
 
 	}

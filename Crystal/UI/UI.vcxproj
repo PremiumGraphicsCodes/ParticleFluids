@@ -33,6 +33,7 @@
     <ClInclude Include="MaterialObject.h" />
     <ClInclude Include="MaterialObjectRepository.h" />
     <ClInclude Include="ParticleAttribute.h" />
+    <ClInclude Include="PolygonMeshAttribute.h" />
     <ClInclude Include="TextureObjectRepository.h" />
     <ClInclude Include="TransformUICtrl.h" />
     <ClInclude Include="Renderer.h" />

@@ -104,6 +104,9 @@
     <ClInclude Include="ParticleAttribute.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="PolygonMeshAttribute.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas.cpp" />

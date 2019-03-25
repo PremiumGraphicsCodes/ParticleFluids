@@ -9,17 +9,14 @@ using namespace Crystal::UI;
 void PMBoxButton::onShow()
 {
 	boxView.show();
+	attribute.show();
 }
 
 void PMBoxButton::onOk()
 {
 	PolygonMeshBuilder builder;
 	builder.build(boxView.getValue());
-	Crystal::Graphics::Material material;
-	material.setAmbient(glm::vec3(1, 0, 0));
-	material.setSpecular(glm::vec3(0, 1, 0));
-	material.setDiffuse(glm::vec3(0, 0, 1));
-	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), material, "PMBox");
+	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), attribute.getValue(), "PMBox");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

@@ -3,6 +3,7 @@
 #include "IPopupButton.h"
 
 #include "Vector3dView.h"
+#include "PMAttributeView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -25,6 +26,7 @@ private:
 	Vector3dView originView;
 	Vector3dView uvecView;
 	Vector3dView vvecView;
+	PMAttributeView attribute;
 };
 
 	}
