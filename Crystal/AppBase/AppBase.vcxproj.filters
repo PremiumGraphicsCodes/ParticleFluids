@@ -109,6 +109,9 @@
     <ClCompile Include="PMBoxButton.cpp">
       <Filter>Generation\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="PMPlaneButton.cpp">
+      <Filter>Generation\PolygonMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -278,6 +281,9 @@
     </ClInclude>
     <ClInclude Include="Plane3dView.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PMPlaneButton.h">
+      <Filter>Generation\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
