@@ -18,6 +18,7 @@ namespace PG.CGStudio
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.ParticleSystemGenerationView>("PCGeneration");
+            containerRegistry.RegisterForNavigation<Generation.WireFrame.WireFrameGenerationView>("WFGeneration");
 
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.BoxGenerationView>("PCBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PCSphereGeneration");
