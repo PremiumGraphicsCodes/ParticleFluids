@@ -13,22 +13,23 @@ WireFrameObjectRepository::~WireFrameObjectRepository()
 void WireFrameObjectRepository::clear()
 {
 	for (auto w : objects) {
-		delete w.getShape();
+		delete w->getShape();
+		delete w;
 	}
 	objects.clear();
 }
 
 int WireFrameObjectRepository::addObject(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
 {
-	objects.push_back(WireFrameObject(nextId++, name, wire, attribute));
-	return objects.back().getId();
+	objects.push_back(new WireFrameObject(nextId++, name, wire, attribute));
+	return objects.back()->getId();
 }
 
-WireFrameObject WireFrameObjectRepository::findObjectById(const int id)
+WireFrameObject* WireFrameObjectRepository::findObjectById(const int id)
 {
-	auto iter = std::find_if(std::begin(objects), std::end(objects), [=](auto p) {return p.getId() == id; });
+	auto iter = std::find_if(std::begin(objects), std::end(objects), [=](auto p) {return p->getId() == id; });
 	if (iter == std::end(objects)) {
-		return WireFrameObject();
+		return nullptr;
 	}
 	return *iter;
 }
@@ -49,8 +50,8 @@ Box3d WireFrameObjectRepository::getBoundingBox() const
 std::list<Vector3dd> WireFrameObjectRepository::getAllVertices() const
 {
 	std::list<Vector3dd> positions;
-	for (const auto& ws : objects) {
-		const auto& vs = ws.getShape()->getVertices();
+	for (auto ws : objects) {
+		const auto& vs = ws->getShape()->getVertices();
 		positions.insert(positions.end(), vs.begin(), vs.end());
 	}
 	return positions;

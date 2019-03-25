@@ -20,9 +20,9 @@ public:
 
 	int addObject(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
 
-	WireFrameObject findObjectById(const int id);
+	WireFrameObject* findObjectById(const int id);
 
-	std::list<WireFrameObject> getObjects() const { return objects; }
+	std::list<WireFrameObject*> getObjects() const { return objects; }
 
 	Math::Box3d getBoundingBox() const override;
 
@@ -30,7 +30,7 @@ public:
 
 private:
 	int nextId;
-	std::list<WireFrameObject> objects;
+	std::list<WireFrameObject*> objects;
 };
 	}
 }

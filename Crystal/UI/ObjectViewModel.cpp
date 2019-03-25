@@ -15,7 +15,7 @@ void ObjectViewModel::add(ObjectRepository& objects)
 	}
 	const auto& wires = objects.getWireFrames()->getObjects();
 	for (const auto& w : wires) {
-		add(w);
+		add(*w);
 	}
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	for (auto p : polygons) {
