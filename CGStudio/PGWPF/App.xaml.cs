@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using PG.CGStudio.Generation.ParticleSystem;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
@@ -18,9 +17,16 @@ namespace PG.CGStudio
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<BoxGenerationView>("PCBoxGeneration");
-            containerRegistry.RegisterForNavigation<SphereGenerationView>("PCSphereGeneration");
-            containerRegistry.RegisterForNavigation<CylinderGenerationView>("PCCylinderGeneration");
+            containerRegistry.RegisterForNavigation<Generation.ParticleSystem.BoxGenerationView>("PCBoxGeneration");
+            containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PCSphereGeneration");
+            containerRegistry.RegisterForNavigation<Generation.ParticleSystem.CylinderGenerationView>("PCCylinderGeneration");
+
+            containerRegistry.RegisterForNavigation<Generation.WireFrame.BoxGenerationView>("WFBoxGeneration");
+            containerRegistry.RegisterForNavigation<Generation.WireFrame.SphereGenerationView>("WFSphereGeneration");
+            containerRegistry.RegisterForNavigation<Generation.WireFrame.CylinderGenerationView>("WFCylinderGeneration");
+
+            containerRegistry.RegisterForNavigation<Generation.PolygonMesh.BoxGenerationView>("PMBoxGeneration");
+            containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMSphereGeneration");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
