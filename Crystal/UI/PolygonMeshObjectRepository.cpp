@@ -13,22 +13,23 @@ PolygonMeshObjectRepository::~PolygonMeshObjectRepository()
 void PolygonMeshObjectRepository::clear()
 {
 	for (auto p : polygonMeshes) {
-		delete p.getShape();
+		delete p->getShape();
+		delete p;
 	}
 	polygonMeshes.clear();
 }
 
 int PolygonMeshObjectRepository::addObject(PolygonMesh* mesh, const Material& material, const std::string& name)
 {
-	polygonMeshes.push_back(PolygonMeshObject(nextId++, name, mesh, material));
-	return polygonMeshes.back().getId();
+	polygonMeshes.push_back(new PolygonMeshObject(nextId++, name, mesh, material));
+	return polygonMeshes.back()->getId();
 }
 
-PolygonMeshObject PolygonMeshObjectRepository::findObjectById(const int id)
+PolygonMeshObject* PolygonMeshObjectRepository::findObjectById(const int id)
 {
-	auto iter = std::find_if(polygonMeshes.begin(), polygonMeshes.end(), [=](auto p) {return p.getId() == id; });
+	auto iter = std::find_if(polygonMeshes.begin(), polygonMeshes.end(), [=](auto p) {return p->getId() == id; });
 	if (iter == polygonMeshes.end()) {
-		return PolygonMeshObject();
+		return nullptr;
 	}
 	return *iter;
 }
@@ -50,7 +51,7 @@ std::list<Vector3dd> PolygonMeshObjectRepository::getAllVertices() const
 {
 	std::list<Vector3dd> positions;
 	for (const auto& ps : polygonMeshes) {
-		const auto& vs = ps.getShape()->getVertices();
+		const auto& vs = ps->getShape()->getVertices();
 		for (const auto& p : vs) {
 			positions.push_back(p->getPosition());
 		}

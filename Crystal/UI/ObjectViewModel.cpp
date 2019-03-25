@@ -19,7 +19,7 @@ void ObjectViewModel::add(ObjectRepository& objects)
 	}
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	for (const auto& p : polygons) {
-		add(p);
+		add(*p);
 	}
 }
 
@@ -30,6 +30,9 @@ void ObjectViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float
 
 void ObjectViewModel::add(const ParticleSystemObject& object)
 {
+	if (!object.isVisible()) {
+		return;
+	}
 	const auto particleSystemId = object.getId();
 	const auto& particles = object.getShape()->getParticles();
 	for (auto p : particles) {
@@ -39,6 +42,9 @@ void ObjectViewModel::add(const ParticleSystemObject& object)
 
 void ObjectViewModel::add(const WireFrameObject& object)
 {
+	if (!object.isVisible()) {
+		return;
+	}
 	const auto& lines = object.getShape()->getLines();
 	const auto& color = object.getAttribute().color;
 	int index = 0;
@@ -50,6 +56,9 @@ void ObjectViewModel::add(const WireFrameObject& object)
 
 void ObjectViewModel::add(const PolygonMeshObject& object)
 {
+	if (!object.isVisible()) {
+		return;
+	}
 	auto material = object.getMaterial();
 	TriangleBuffer bf;
 	bf.add(*object.getShape(), material);

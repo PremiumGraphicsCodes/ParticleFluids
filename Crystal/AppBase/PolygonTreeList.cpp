@@ -19,11 +19,14 @@ void PolygonTreeList::onShow()
 	ImGui::BeginChild("Polygons", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 
 	for (const auto& polygon : polygons) {
-		const auto& n = polygon.getName();
+		const auto& n = polygon->getName();
 		const auto str = n.c_str();
 
-		bool b = polygon.isVisible();
-		ImGui::Checkbox(str, &b);
+		if (ImGui::Checkbox(str, &polygon->_isVisible)) {
+			getCanvas()->setViewModel(getRepository()->toViewModel());
+			getCanvas()->fitCamera(getRepository()->getBoundingBox());
+			//polygon->_isVisible = !polygon->_isVisible;
+		}
 
 //		ImGui::Text(str);
 	}

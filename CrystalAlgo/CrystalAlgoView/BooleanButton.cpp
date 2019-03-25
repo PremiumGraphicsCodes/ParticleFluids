@@ -20,13 +20,17 @@ void BooleanButton::onShow()
 
 void BooleanButton::onOk()
 {
-	auto polygon1 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton1.getId()).getShape();
-	auto polygon2 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton2.getId()).getShape();
+	auto polygon1 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton1.getId());
+	auto polygon2 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton2.getId());
 	if (polygon1 == nullptr || polygon2 == nullptr) {
 		return;
 	}
 	BooleanAlgo algo;
-	algo.calculateIntersection(*polygon1, *polygon2);
+	algo.calculateDifference(*polygon1->getShape(), *polygon2->getShape());
+
+	polygon1->setVisible(false);
+	polygon2->setVisible(false);
+
 	Graphics::Material mat;
 	getModel()->getObjects()->getPolygonMeshes()->addObject(algo.getResult(), mat, "Intersection");
 	getCanvas()->setViewModel(getModel()->toViewModel());

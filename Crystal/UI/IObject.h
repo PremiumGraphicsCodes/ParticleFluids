@@ -37,6 +37,8 @@ public:
 
 	bool isVisible() const { return _isVisible; }
 
+	void setVisible(const bool b) { this->_isVisible = b; }
+
 	//void setVisible(const bool b) { this->_isVisible = b; }
 
 	bool _isVisible;

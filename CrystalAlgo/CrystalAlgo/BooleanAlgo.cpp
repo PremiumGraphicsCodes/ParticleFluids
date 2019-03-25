@@ -52,12 +52,14 @@ namespace {
 
 void BooleanAlgo::calculateUnion(const PolygonMesh& lhs, const PolygonMesh& rhs)
 {
-	csgjs_union(toCSGJSModel(lhs), toCSGJSModel(rhs));
+	const auto& result = csgjs_union(toCSGJSModel(lhs), toCSGJSModel(rhs));
+	this->result = fromCSGJSModel(result);
 }
 
 void BooleanAlgo::calculateDifference(const PolygonMesh& lhs, const PolygonMesh& rhs)
 {
-	csgjs_difference(toCSGJSModel(lhs), toCSGJSModel(rhs));
+	const auto& result = csgjs_difference(toCSGJSModel(lhs), toCSGJSModel(rhs));
+	this->result = fromCSGJSModel(result);
 }
 
 void BooleanAlgo::calculateIntersection(const PolygonMesh& lhs, const PolygonMesh& rhs)
