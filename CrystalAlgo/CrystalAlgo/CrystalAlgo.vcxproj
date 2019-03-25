@@ -147,12 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BooleanAlgo.h" />
     <ClInclude Include="IntersectionAlgo.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="csgjs.cpp" />
+    <ClCompile Include="BooleanAlgo.cpp" />
+    <ClCompile Include="csgjs.h" />
     <ClCompile Include="IntersectionAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash.cpp" />

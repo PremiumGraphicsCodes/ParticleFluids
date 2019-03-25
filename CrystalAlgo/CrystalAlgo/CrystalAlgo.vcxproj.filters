@@ -10,6 +10,9 @@
     <ClInclude Include="IntersectionAlgo.h">
       <Filter>Intersection</Filter>
     </ClInclude>
+    <ClInclude Include="BooleanAlgo.h">
+      <Filter>Boolean</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -21,7 +24,10 @@
     <ClCompile Include="IntersectionAlgo.cpp">
       <Filter>Intersection</Filter>
     </ClCompile>
-    <ClCompile Include="csgjs.cpp">
+    <ClCompile Include="BooleanAlgo.cpp">
+      <Filter>Boolean</Filter>
+    </ClCompile>
+    <ClCompile Include="csgjs.h">
       <Filter>Boolean</Filter>
     </ClCompile>
   </ItemGroup>
