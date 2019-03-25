@@ -79,3 +79,27 @@ void PolygonMeshBuilder::build(const Vector3dd& start, const Vector3dd& uvec, co
 
 	//vertices.push_back(new Ver)
 }
+
+void PolygonMeshBuilder::build(const std::vector<std::pair<Vector3dd, Vector3dd> >& positionNormals, const std::vector<int>& indices)
+{
+	std::vector<Vertex*> vs;
+	for (const auto& pn : positionNormals) {
+		const auto& position = pn.first;
+		VertexAttr attr;
+		attr.normal = pn.second;
+		attr.id = nextVertexId++;
+		auto v = new Vertex(position, attr);
+		vs.push_back(v);
+		vertices.push_back(v);
+	}
+	for (size_t i = 0; i < indices.size(); i+=3) {
+		const auto v1 = vs[ indices[i+0] ];
+		const auto v2 = vs[ indices[i+1] ];
+		const auto v3 = vs[ indices[i+2] ];
+		auto e1 = new HalfEdge(v1, v2);
+		auto e2 = new HalfEdge(v2, v3);
+		auto e3 = new HalfEdge(v3, v1);
+
+		faces.push_back(new Face(e1, e2, e3));
+	}
+}

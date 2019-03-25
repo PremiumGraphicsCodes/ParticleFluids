@@ -25,21 +25,12 @@ void BooleanButton::onOk()
 	if (polygon1 == nullptr || polygon2 == nullptr) {
 		return;
 	}
-	BooleanAlgo algo;
+	BooleanAlgo algo(getModel()->getObjects()->getPolygonMeshes()->getBuilder());
 	algo.calculateIntersection(*polygon1, *polygon2);
-	/*
-		std::vector<Vector3df> positions;
-		for (double x = min.x; x < max.x; x += dx[0]) {
-			for (double y = min.y; y < max.y; y += dx[1]) {
-				for (double z = min.z; z < max.z; z += dx[2]) {
-					positions.push_back(Vector3df(x, y, z));
-				}
-			}
-		}
-		getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), 100.0f, "Box");
-		getCanvas()->setViewModel(getModel()->toViewModel());
-		getCanvas()->fitCamera(getModel()->getBoundingBox());
-		*/
+	Graphics::Material mat;
+	getModel()->getObjects()->getPolygonMeshes()->addObject(algo.getResult(), mat, "Intersection");
+	getCanvas()->setViewModel(getModel()->toViewModel());
+	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
 
 void BooleanButton::onCancel()

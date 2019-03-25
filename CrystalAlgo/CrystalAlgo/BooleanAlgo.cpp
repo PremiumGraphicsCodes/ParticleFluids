@@ -6,6 +6,7 @@
 #define CSGJS_HEADER_ONLY
 #include "csgjs.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 
@@ -33,15 +34,19 @@ namespace {
 		return model;
 	}
 
-	/*
-	PolygonMesh fromCSGJSModel(const csgjs_model& model)
+	PolygonMesh* fromCSGJSModel(const csgjs_model& model, PolygonMeshBuilder* builder)
 	{
-		PolygonMeshBuilder builder;
-		builder.build()
+		std::vector<std::pair<Vector3dd, Vector3dd> > vs;
+		for (const auto& v : model.vertices) {
+			const Vector3dd p(v.pos.x, v.pos.y, v.pos.z);
+			const Vector3dd n(v.normal.x, v.normal.y, v.normal.z);
+			vs.push_back(std::make_pair(p,n));
+		}
+		builder->build(vs, model.indices);
+		return builder->getPolygonMesh();
 		//PolygonMesh polygon;
 		//polygon.a
 	}
-	*/
 }
 
 void BooleanAlgo::calculateUnion(const PolygonMesh& lhs, const PolygonMesh& rhs)
@@ -56,7 +61,8 @@ void BooleanAlgo::calculateDifference(const PolygonMesh& lhs, const PolygonMesh&
 
 void BooleanAlgo::calculateIntersection(const PolygonMesh& lhs, const PolygonMesh& rhs)
 {
-	csgjs_intersection(toCSGJSModel(lhs), toCSGJSModel(rhs));
+	const auto& result = csgjs_intersection(toCSGJSModel(lhs), toCSGJSModel(rhs));
+	this->result = fromCSGJSModel(result, builder);
 }
 
 /*
