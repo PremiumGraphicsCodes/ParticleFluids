@@ -19,6 +19,7 @@ namespace PG.CGStudio
         {
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.ParticleSystemGenerationView>("PCGeneration");
             containerRegistry.RegisterForNavigation<Generation.WireFrame.WireFrameGenerationView>("WFGeneration");
+            containerRegistry.RegisterForNavigation<Generation.PolygonMesh.PolygonMeshGenerationView>("PMGeneration");
 
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.BoxGenerationView>("PCBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PCSphereGeneration");
@@ -30,6 +31,7 @@ namespace PG.CGStudio
 
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.BoxGenerationView>("PMBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMSphereGeneration");
+            containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMCylinderGeneration");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

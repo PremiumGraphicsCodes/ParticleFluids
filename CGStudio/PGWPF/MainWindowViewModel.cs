@@ -10,6 +10,7 @@ namespace PG.CGStudio
 
         public DelegateCommand<string> WFGenerationNavigateCommand { get; }
 
+        public DelegateCommand<string> PMGenerationNavigateCommand { get; }
 
         public DelegateCommand<string> NavigateCommand { get; }
 
@@ -20,6 +21,7 @@ namespace PG.CGStudio
             this.regionManager = regionManager;
             PCGenerationNavigateCommand = new DelegateCommand<string>(OnPCGenerationNavigate);
             WFGenerationNavigateCommand = new DelegateCommand<string>(OnWFGenerationNavigate);
+            PMGenerationNavigateCommand = new DelegateCommand<string>(OnPMGenerationNaviate);
 
             NavigateCommand = new DelegateCommand<string>(OnNavigate);// (name => );
         }
@@ -36,6 +38,11 @@ namespace PG.CGStudio
             regionManager.RequestNavigate("WFGenerationRegion", name);
         }
 
+        private void OnPMGenerationNaviate(string name)
+        {
+            regionManager.RequestNavigate("ContentRegion", "PMGeneration");
+            regionManager.RequestNavigate("PMGenerationRegion", name);
+        }
 
         private void OnNavigate(string name)
         {
