@@ -72,7 +72,16 @@
                     <Fluent:Button Header="PointLight" KeyTip="BI" Command="{Binding LightListCommand}"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
+
+            <Fluent:RibbonTabItem Header="Modification" KeyTip="T1">
+                <Fluent:RibbonGroupBox Header="Boolean" KeyTip="B">
+                    <Fluent:Button Header="Union" KeyTip="BI" Command="{Binding UnionCommand}"/>
+                    <Fluent:Button Header="Sub" KeyTip="BI" Command="{Binding SubtractCommand}"/>
+                    <Fluent:Button Header="Intersect" KeyTip="BI" Command="{Binding IntersectionCommand}"/>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
+        
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
