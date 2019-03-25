@@ -22,6 +22,7 @@
 #include "../../Crystal/Graphics/PerspectiveCamera.h"
 
 #include "SpaceHashButton.h"
+#include "BooleanButton.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -34,6 +35,7 @@ namespace {
 		AlgoPanel(const std::string& name, Repository* repository, Canvas* canvas) :
 			IPanel(name, repository, canvas)
 		{
+			add(new BooleanButton(model, canvas));
 			add(new SpaceHashButton(model, canvas));
 		}
 	};

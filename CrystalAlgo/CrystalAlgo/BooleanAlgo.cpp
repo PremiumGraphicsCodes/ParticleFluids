@@ -3,6 +3,7 @@
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
+#define CSGJS_HEADER_ONLY
 #include "csgjs.h"
 
 using namespace Crystal::Shape;
@@ -20,9 +21,14 @@ namespace {
 			csgjs_vertex v;
 			v.pos = csgjs_vector(pos.x, pos.y, pos.z);
 			v.normal = csgjs_vector(normal.x, normal.y, normal.z);
-
 			model.vertices.push_back(v);
-			model.indices.push_back(vv->getAttr().id);
+		}
+
+		const auto& faces = polygon.getFaces();
+		for (auto f : faces) {
+			model.indices.push_back(f->getV1()->getAttr().id);
+			model.indices.push_back(f->getV2()->getAttr().id);
+			model.indices.push_back(f->getV3()->getAttr().id);
 		}
 		return model;
 	}

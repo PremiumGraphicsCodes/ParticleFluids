@@ -24,6 +24,15 @@ int PolygonMeshObjectRepository::addObject(PolygonMesh* mesh, const Material& ma
 	return polygonMeshes.back().getId();
 }
 
+PolygonMeshObject PolygonMeshObjectRepository::findObjectById(const int id)
+{
+	auto iter = std::find_if(polygonMeshes.begin(), polygonMeshes.end(), [=](auto p) {return p.getId() == id; });
+	if (iter == polygonMeshes.end()) {
+		return PolygonMeshObject();
+	}
+	return *iter;
+}
+
 Box3d PolygonMeshObjectRepository::getBoundingBox() const
 {
 	const auto& vertices = getAllVertices();

@@ -11,6 +11,11 @@ namespace Crystal {
 class IObject
 {
 public:
+	IObject() :
+		id(-1),
+		_isVisible(false)
+	{}
+
 	explicit IObject(const int id) :
 		id(id),
 		_isVisible(true)

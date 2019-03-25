@@ -19,6 +19,8 @@ public:
 
 	int addObject(Shape::PolygonMesh* mesh, const Graphics::Material& material, const std::string& name);
 
+	PolygonMeshObject findObjectById(const int id);
+
 	std::list<PolygonMeshObject> getObjects() const { return polygonMeshes; }
 
 	Math::Box3d getBoundingBox() const override;

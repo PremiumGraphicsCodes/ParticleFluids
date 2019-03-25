@@ -4,6 +4,7 @@
     <ClCompile Include="CrystalAlgoView.cpp" />
     <ClCompile Include="SpaceHashButton.cpp" />
     <ClCompile Include="OctreeButton.cpp" />
+    <ClCompile Include="BooleanButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -11,5 +12,6 @@
   <ItemGroup>
     <ClInclude Include="SpaceHashButton.h" />
     <ClInclude Include="OctreeButton.h" />
+    <ClInclude Include="BooleanButton.h" />
   </ItemGroup>
 </Project>
