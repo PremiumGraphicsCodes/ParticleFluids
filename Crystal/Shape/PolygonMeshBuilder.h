@@ -22,7 +22,12 @@ public:
 
 	void build(const Math::Vector3dd& start, const Math::Vector3dd& uvec, const Math::Vector3dd& vvec);
 
-	PolygonMesh* getPolygonMesh() const { return new PolygonMesh(vertices, faces); }
+	PolygonMesh* getPolygonMesh() {
+		auto mesh = new PolygonMesh(vertices, faces);
+		vertices.clear();
+		faces.clear();
+		return mesh;
+	}
 
 private:
 	//void buildEdges();
