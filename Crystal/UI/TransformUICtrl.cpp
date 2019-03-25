@@ -29,8 +29,8 @@ void TransformUICtrl::onLeftDragging(const Vector2df& position)
 	const auto diff = prevPosition - position;
 
 	auto& os = repository->getObjects()->getParticleSystems()->getObjects();
-	for (auto& o : os) {
-		o.move(glm::vec3(diff.x, diff.y, 0.0));
+	for (auto o : os) {
+		o->move(glm::vec3(diff.x, diff.y, 0.0));
 	}
 	this->prevPosition = position;
 	canvas->setViewModel(repository->toViewModel());
@@ -52,8 +52,8 @@ void TransformUICtrl::onRightDragging(const Vector2df& position)
 	const auto& rotation = rotationMatrixX(diff.x) * rotationMatrixY(diff.y);
 
 	auto& os = repository->getObjects()->getParticleSystems()->getObjects();
-	for (auto& o : os) {
-		o.transform(rotation);
+	for (auto o : os) {
+		o->transform(rotation);
 	}
 	this->prevPosition = position;
 	canvas->setViewModel(repository->toViewModel());

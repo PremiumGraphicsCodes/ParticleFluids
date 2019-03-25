@@ -17,7 +17,8 @@ ParticleSystemObjectRepository::~ParticleSystemObjectRepository()
 void ParticleSystemObjectRepository::clear()
 {
 	for (auto p : objects) {
-		delete p.getShape();
+		delete p->getShape();
+		delete p;
 	}
 	objects.clear();
 }
@@ -26,8 +27,8 @@ int ParticleSystemObjectRepository::addObject(const Vector3df& position, const P
 {
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
 	particles->add(position, attribute);
-	objects.push_back(ParticleSystemObject(nextId++, name, particles));
-	return objects.back().getId();
+	objects.push_back(new ParticleSystemObject(nextId++, name, particles));
+	return objects.back()->getId();
 }
 
 int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& positions, const ParticleAttribute& attribute, const std::string& name)
@@ -36,15 +37,15 @@ int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& posi
 	for (const auto& p : positions) {
 		particles->add(p, attribute);
 	}
-	objects.push_back(ParticleSystemObject(nextId++, name, particles));
-	return objects.back().getId();
+	objects.push_back(new ParticleSystemObject(nextId++, name, particles));
+	return objects.back()->getId();
 }
 
-ParticleSystemObject ParticleSystemObjectRepository::findObjectById(const int id)
+ParticleSystemObject* ParticleSystemObjectRepository::findObjectById(const int id)
 {
-	auto iter = std::find_if(std::begin(objects), std::end(objects), [=](auto p) {return p.getId() == id; });
+	auto iter = std::find_if(std::begin(objects), std::end(objects), [=](auto p) {return p->getId() == id; });
 	if (iter == std::end(objects)) {
-		return ParticleSystemObject();
+		return nullptr;
 	}
 	return *iter;
 }
@@ -67,7 +68,7 @@ std::list<Vector3dd> ParticleSystemObjectRepository::getAllVertices() const
 {
 	std::list<Vector3dd> positions;
 	for (const auto& ps : objects) {
-		const auto& particles = ps.getShape()->getParticles();
+		const auto& particles = ps->getShape()->getParticles();
 		for (const auto& p : particles) {
 			positions.push_back(p->getPosition());
 		}
@@ -77,14 +78,14 @@ std::list<Vector3dd> ParticleSystemObjectRepository::getAllVertices() const
 
 bool ParticleSystemObjectRepository::exists(const int id) const
 {
-	auto iter = std::find_if(objects.begin(), objects.end(), [=](auto object) { return object.getId() == id; });
+	auto iter = std::find_if(objects.begin(), objects.end(), [=](auto object) { return object->getId() == id; });
 	return iter != objects.end();
 }
 
-ParticleSystemObject ParticleSystemObjectRepository::findObjectById(const int id) const
+ParticleSystemObject* ParticleSystemObjectRepository::findObjectById(const int id) const
 {
 	assert(exists(id));
-	auto iter = std::find_if(objects.begin(), objects.end(), [=](auto object) { return object.getId() == id; } );
+	auto iter = std::find_if(objects.begin(), objects.end(), [=](auto object) { return object->getId() == id; } );
 	return *iter;
 }
 
@@ -94,6 +95,6 @@ Particle<ParticleAttribute>* ParticleSystemObjectRepository::findParticleById(co
 		return nullptr;
 	}
 	auto object = findObjectById(parentId);
-	const auto& particles = object.getShape()->getParticles();
+	const auto& particles = object->getShape()->getParticles();
 	return particles[childId];
 }

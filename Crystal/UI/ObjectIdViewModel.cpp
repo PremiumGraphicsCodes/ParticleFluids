@@ -10,8 +10,8 @@ using namespace Crystal::UI;
 void ObjectIdViewModel::add(ObjectRepository& objects)
 {
 	const auto& particleSystems = objects.getParticleSystems()->getObjects();
-	for (const auto& ps : particleSystems) {
-		add(ps);
+	for (auto ps : particleSystems) {
+		add(*ps);
 	}
 }
 

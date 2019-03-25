@@ -19,10 +19,12 @@ void ParticleSystemTreeList::onShow()
 
 	ImGui::BeginChild("ParticleSystems", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	for (auto& ps : particleSystems) {
-		const auto& n = ps.getName();
+		const auto& n = ps->getName();
 		//ImGui::Text(n.c_str());
-		bool b = ps._isVisible;
-		ImGui::Checkbox(str, &b);
+		if(ImGui::Checkbox(str, &ps->_isVisible)) {
+			getCanvas()->setViewModel(getRepository()->toViewModel());
+			getCanvas()->fitCamera(getRepository()->getBoundingBox());
+		}
 	}
 	ImGui::EndChild();
 

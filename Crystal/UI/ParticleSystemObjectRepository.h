@@ -20,9 +20,9 @@ public:
 
 	int addObject(const std::vector<Math::Vector3df>& positions, const ParticleAttribute& attribute, const std::string& name);
 
-	ParticleSystemObject findObjectById(const int id);
+	ParticleSystemObject* findObjectById(const int id);
 
-	std::list<ParticleSystemObject> getObjects() const { return objects; }
+	std::list<ParticleSystemObject*> getObjects() const { return objects; }
 
 	Math::Box3d getBoundingBox() const override;
 
@@ -30,13 +30,13 @@ public:
 
 	bool exists(const int id) const;
 
-	ParticleSystemObject findObjectById(const int id) const;
+	ParticleSystemObject* findObjectById(const int id) const;
 
 	Shape::Particle<ParticleAttribute>* findParticleById(const int parentId, const int childId) const;
 
 private:
 	int nextId;
-	std::list<ParticleSystemObject> objects;
+	std::list<ParticleSystemObject*> objects;
 };
 
 	}

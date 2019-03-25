@@ -10,15 +10,15 @@ using namespace Crystal::UI;
 void ObjectViewModel::add(ObjectRepository& objects)
 {
 	const auto& particleSystems = objects.getParticleSystems()->getObjects();
-	for (const auto& ps : particleSystems) {
-		add(ps);
+	for (auto ps : particleSystems) {
+		add(*ps);
 	}
 	const auto& wires = objects.getWireFrames()->getObjects();
 	for (const auto& w : wires) {
 		add(w);
 	}
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
-	for (const auto& p : polygons) {
+	for (auto p : polygons) {
 		add(*p);
 	}
 }
