@@ -5,20 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
              xmlns:graphics="clr-namespace:PG.Control.Graphics;assembly=PGControl"
+             xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
-    <UserControl.Resources>
-        <DataTemplate DataType="{x:Type local:BoxGenerationViewModel}">
-            <local:BoxGenerationView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type local:SphereGenerationViewModel}">
-            <local:SphereGenerationView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type local:CylinderGenerationViewModel}">
-            <local:CylinderGenerationView/>
-        </DataTemplate>
-    </UserControl.Resources>
     <StackPanel>
-        <ContentControl Content="{Binding ContentViewModel.Value}"/>
+        <Button Content="PCGeneration"/>
+        <ContentControl prism:RegionManager.RegionName="PCGenerationRegion"/>
     </StackPanel>
 </UserControl>
