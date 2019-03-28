@@ -11,10 +11,10 @@
     </UserControl.DataContext>
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Select" Command="{Binding SelectCommand}"/>
+            <Button Content="Select" Command="{Binding FileSelectCommand}"/>
             <TextBlock Text="Path"/>
-            <TextBox Text="{Binding Path.Value}" Width="100"/>
-            <Image/>
+            <TextBox Text="{Binding ImagePath.Value}" Width="100"/>
         </StackPanel>
+        <Image Source="{Binding ImagePath.Value}"/>
     </StackPanel>
 </UserControl>
