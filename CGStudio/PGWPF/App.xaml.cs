@@ -35,6 +35,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMCylinderGeneration");
 
             containerRegistry.RegisterForNavigation<MaterialView>("Material");
+            containerRegistry.RegisterForNavigation<PointLightView>("Light");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

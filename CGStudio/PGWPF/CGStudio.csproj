@@ -143,6 +143,7 @@
     <Compile Include="Generation\WireFrame\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Light\LightListBehavior.cs" />
     <Compile Include="Light\LightListView.xaml.cs">
       <DependentUpon>LightListView.xaml</DependentUpon>
     </Compile>
