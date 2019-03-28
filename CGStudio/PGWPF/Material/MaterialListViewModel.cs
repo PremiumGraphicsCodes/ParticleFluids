@@ -1,57 +1,45 @@
-﻿using System.Collections.ObjectModel;
+﻿using Prism.Mvvm;
+using Reactive.Bindings;
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace PG.CGStudio.Material
 {
-    public class TreeSource : INotifyPropertyChanged
+    public class MaterialItem : BindableBase
     {
-        private bool _IsExpanded = true;
-        private string _Text = "";
-        private TreeSource _Parent = null;
-        private ObservableCollection<TreeSource> _Children = null;
+        public ReactiveProperty<string> Name { get; }
+        public ReactiveProperty<bool> IsVisible { get; }
 
-
-        public bool IsExpanded
+        public MaterialItem()
         {
-            get { return _IsExpanded; }
-            set { _IsExpanded = value; OnPropertyChanged("IsExpanded"); }
+            Name = new ReactiveProperty<string>();
+            IsVisible = new ReactiveProperty<bool>();
+            IsVisible.Subscribe(VisibleChanged);
         }
 
-        public string Text
+        private void VisibleChanged(bool b)
         {
-            get { return _Text; }
-            set { _Text = value; OnPropertyChanged("Text"); }
-        }
-
-        public TreeSource Parent
-        {
-            get { return _Parent; }
-            set { _Parent = value; OnPropertyChanged("Parent"); }
-        }
-
-        public ObservableCollection<TreeSource> Children
-        {
-            get { return _Children; }
-            set { _Children = value; OnPropertyChanged("Childen"); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string name)
-        {
-            if (null == this.PropertyChanged) return;
-            this.PropertyChanged(this, new PropertyChangedEventArgs(name));
-        }
-
-        public void Add(TreeSource child)
-        {
-            if (null == Children) Children = new ObservableCollection<TreeSource>();
-            child.Parent = this;
-            Children.Add(child);
+            System.Diagnostics.Debug.Write(b.ToString());
         }
     }
 
     public class MaterialListViewModel
     {
+        public ObservableCollection<ObjectItem> Items { get; set; }
+
+        public MaterialListViewModel()
+        {
+            Items = new ObservableCollection<ObjectItem>();
+            var item1 = new ObjectItem();
+            item1.Name.Value = "Object1";
+            item1.IsVisible.Value = true;
+            var item2 = new ObjectItem();
+            item2.Name.Value = "Object2";
+            item2.IsVisible.Value = false;
+            Items.Add(item1);
+            Items.Add(item2);
+        }
 
     }
 }
