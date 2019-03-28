@@ -36,6 +36,7 @@ namespace PG.CGStudio
 
             containerRegistry.RegisterForNavigation<MaterialView>("Material");
             containerRegistry.RegisterForNavigation<PointLightView>("Light");
+//            containerRegistry.RegisterForNavigation<TextureView>("Texture");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

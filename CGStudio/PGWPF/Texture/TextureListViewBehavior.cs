@@ -2,9 +2,9 @@
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
-namespace PG.CGStudio.Material
+namespace PG.CGStudio.Texture
 {
-    public class MaterialListViewBehavior : Behavior<TreeView>
+    public class TextureListViewBehavior : Behavior<TreeView>
     {
         protected override void OnAttached()
         {
@@ -20,9 +20,9 @@ namespace PG.CGStudio.Material
         {
             var treeView = e.Source as TreeView;
             if (treeView == null) return;
-            var selectedItem = treeView.SelectedItem as MaterialItem;
+            var selectedItem = treeView.SelectedItem as TextureItem;
             if (selectedItem == null) return;
-            MainWindowViewModel.Instance.NavigateCommand.Execute("Material");
+            MainWindowViewModel.Instance.NavigateCommand.Execute("Texture");
         }
     }
 }

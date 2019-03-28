@@ -5,8 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Texture"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:TextureListViewModel/>
+    </UserControl.DataContext>
+    <TreeView ItemsSource="{Binding Items}">
+        <!--
+        <i:Interaction.Behaviors>
+            <object:MaterialListViewBehavior/>
+        </i:Interaction.Behaviors>
+        -->
+        <TreeView.ItemTemplate>
+            <HierarchicalDataTemplate DataType="{x:Type local:TextureItem}">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding IsVisible.Value}"/>
+                    <TextBlock Text="{Binding Name.Value}"/>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
 </UserControl>

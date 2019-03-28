@@ -166,6 +166,7 @@
     </Compile>
     <Compile Include="Repository\AppearanceObjectRepository.cs" />
     <Compile Include="Repository\ObjectRepository.cs" />
+    <Compile Include="Texture\TextureListViewBehavior.cs" />
     <Compile Include="Texture\TextureListViewl.xaml.cs">
       <DependentUpon>TextureListViewl.xaml</DependentUpon>
     </Compile>
