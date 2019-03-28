@@ -19,6 +19,9 @@
     <ClInclude Include="LightObjectRepositoryAdapter.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="MaterialObjectRepositoryAdapter.h">
+      <Filter>Repository\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -36,6 +39,9 @@
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="LightObjectRepositoryAdapter.cpp">
+      <Filter>Repository\Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialObjectRepositoryAdapter.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
   </ItemGroup>

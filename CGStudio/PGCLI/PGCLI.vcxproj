@@ -136,6 +136,7 @@
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="LightObjectRepositoryAdapter.h" />
+    <ClInclude Include="MaterialObjectRepositoryAdapter.h" />
     <ClInclude Include="ObjectRepositoryAdapter.h" />
     <ClInclude Include="RepositoryAdapter.h" />
     <ClInclude Include="Renderer.h" />
@@ -148,6 +149,7 @@
     <ClCompile Include="CameraAdapter.cpp" />
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="LightObjectRepositoryAdapter.cpp" />
+    <ClCompile Include="MaterialObjectRepositoryAdapter.cpp" />
     <ClCompile Include="ObjectRepositoryAdapter.cpp" />
     <ClCompile Include="RepositoryAdapter.cpp" />
     <ClCompile Include="Renderer.cpp" />
