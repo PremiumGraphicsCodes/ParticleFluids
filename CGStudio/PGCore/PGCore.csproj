@@ -45,6 +45,7 @@
     <Compile Include="Graphics\ColorRGBA.cs" />
     <Compile Include="Graphics\PointLight.cs" />
     <Compile Include="Graphics\Material.cs" />
+    <Compile Include="Graphics\Texture.cs" />
     <Compile Include="Math\Box2d.cs" />
     <Compile Include="Math\Box3d.cs" />
     <Compile Include="Math\Circle2d.cs" />

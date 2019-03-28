@@ -22,6 +22,9 @@
     <ClInclude Include="MaterialObjectRepositoryAdapter.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="TextureObjectRepositoryAdapter.h">
+      <Filter>Repository\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -42,6 +45,9 @@
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="MaterialObjectRepositoryAdapter.cpp">
+      <Filter>Repository\Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureObjectRepositoryAdapter.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
   </ItemGroup>
