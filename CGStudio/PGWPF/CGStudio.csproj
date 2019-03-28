@@ -146,6 +146,7 @@
     <Compile Include="Light\LightListView.xaml.cs">
       <DependentUpon>LightListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Light\LightListViewModel.cs" />
     <Compile Include="Material\MaterialListView.xaml.cs">
       <DependentUpon>MaterialListView.xaml</DependentUpon>
     </Compile>
