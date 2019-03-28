@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using PG.Control.Graphics;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
@@ -32,6 +33,8 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.BoxGenerationView>("PMBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMSphereGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMCylinderGeneration");
+
+            containerRegistry.RegisterForNavigation<MaterialView>("Material");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

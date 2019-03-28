@@ -1,10 +1,11 @@
-﻿using System.Windows.Controls;
+﻿using PG.CGStudio.Material;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
 namespace PG.CGStudio.Object
 {
-    public class ObjectListViewBehavior : Behavior<TreeView>
+    public class MaterialListViewBehavior : Behavior<TreeView>
     {
         protected override void OnAttached()
         {
@@ -20,8 +21,9 @@ namespace PG.CGStudio.Object
         {
             var treeView = e.Source as TreeView;
             if (treeView == null) return;
-            var selectedItem = treeView.SelectedItem as ObjectItem;
+            var selectedItem = treeView.SelectedItem as MaterialItem;
             if (selectedItem == null) return;
+            MainWindowViewModel.Instance.NavigateCommand.Execute("Material");
         }
     }
 }

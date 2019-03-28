@@ -10,8 +10,20 @@ namespace PG.CGStudio
 
         private IRegionManager regionManager;
 
+        private static MainWindowViewModel instance;
+
+        public static MainWindowViewModel Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
         public MainWindowViewModel(IRegionManager regionManager)
         {
+            instance = this;
+
             this.regionManager = regionManager;
             NavigateCommand = new DelegateCommand<string>(OnNavigate);// (name => );
         }

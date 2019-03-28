@@ -26,16 +26,16 @@ namespace PG.CGStudio.Material
 
     public class MaterialListViewModel
     {
-        public ObservableCollection<ObjectItem> Items { get; set; }
+        public ObservableCollection<MaterialItem> Items { get; set; }
 
         public MaterialListViewModel()
         {
-            Items = new ObservableCollection<ObjectItem>();
-            var item1 = new ObjectItem();
-            item1.Name.Value = "Object1";
+            Items = new ObservableCollection<MaterialItem>();
+            var item1 = new MaterialItem();
+            item1.Name.Value = "Material1";
             item1.IsVisible.Value = true;
-            var item2 = new ObjectItem();
-            item2.Name.Value = "Object2";
+            var item2 = new MaterialItem();
+            item2.Name.Value = "Material2";
             item2.IsVisible.Value = false;
             Items.Add(item1);
             Items.Add(item2);

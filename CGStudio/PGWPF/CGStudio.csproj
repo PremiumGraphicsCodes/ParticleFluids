@@ -149,6 +149,7 @@
     <Compile Include="Material\MaterialListView.xaml.cs">
       <DependentUpon>MaterialListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Material\MaterialListViewBehavior.cs" />
     <Compile Include="Material\MaterialListViewModel.cs" />
     <Compile Include="Object\ObjectListView.xaml.cs">
       <DependentUpon>ObjectListView.xaml</DependentUpon>
