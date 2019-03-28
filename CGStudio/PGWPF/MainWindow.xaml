@@ -39,19 +39,19 @@
 
             <Fluent:RibbonTabItem Header="Generation" KeyTip="T1">
                 <Fluent:RibbonGroupBox Header="ParticleSystem" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding PCGenerationNavigateCommand}" CommandParameter="PCBoxGeneration"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding PCGenerationNavigateCommand}" CommandParameter="PCSphereGeneration"/>
-                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding PCGenerationNavigateCommand}" CommandParameter="PCCylinderGeneration"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCBoxGeneration"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCSphereGeneration"/>
+                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCCylinderGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="WireFrame" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding WFGenerationNavigateCommand}" CommandParameter="WFBoxGeneration"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding WFGenerationNavigateCommand}" CommandParameter="WFSphereGeneration"/>
-                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding WFGenerationNavigateCommand}" CommandParameter="WFCylinderGeneration"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="WFBoxGeneration"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="WFSphereGeneration"/>
+                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="WFCylinderGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="PolygonMesh" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding PMGenerationNavigateCommand}" CommandParameter="PMBoxGeneration"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding PMGenerationNavigateCommand}" CommandParameter="PMSphereGeneration"/>
-                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding PMGenerationNavigateCommand}" CommandParameter="PMCylinderGeneration"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMBoxGeneration"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMSphereGeneration"/>
+                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMCylinderGeneration"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
 
