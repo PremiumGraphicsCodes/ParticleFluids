@@ -120,6 +120,10 @@
       <DependentUpon>PointLightView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Graphics\PointLightViewModel.cs" />
+    <Compile Include="Graphics\TextureView.xaml.cs">
+      <DependentUpon>TextureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Graphics\TextureViewModel.cs" />
     <Compile Include="Math\Box3dView.xaml.cs">
       <DependentUpon>Box3dView.xaml</DependentUpon>
     </Compile>
@@ -155,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Graphics\PointLightView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Graphics\TextureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
