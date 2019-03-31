@@ -26,8 +26,8 @@ namespace PG.CGStudio.Generation.WireFrame
             var box = BoxViewModel.Value;
             builder.Build(box);
             var wireFrame = builder.WireFrame;
-            Repository.Instance.Objects.Add(wireFrame, new WireAppearance());
-            OpenGLPresenter.Instance.Update(Repository.Instance);
+            MainModel.Instance.Repository.Objects.Add(wireFrame, new WireAppearance());
+            OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
             OpenGLPresenter.Instance.Render();
         }
     }

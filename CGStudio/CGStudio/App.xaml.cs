@@ -8,11 +8,11 @@ namespace PG.CGStudio
 {
     public partial class App : PrismApplication
     {
-        private Repository model;
+        private MainModel model;
 
         protected override Window CreateShell()
         {
-            this.model = new Repository();
+            this.model = new MainModel();
             return Container.Resolve<MainWindow>();
         }
 

@@ -35,8 +35,8 @@ namespace PG.CGStudio.Generation.WireFrame
             var cylinder = Cylinder.Value;
             builder.Build(cylinder, 25, 25);
             var wireFrame = builder.WireFrame;
-            Repository.Instance.Objects.Add(wireFrame, Appearance.Value);
-            OpenGLPresenter.Instance.Update(Repository.Instance);
+            MainModel.Instance.Repository.Objects.Add(wireFrame, Appearance.Value);
+            OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
             OpenGLPresenter.Instance.Render();
         }
     }

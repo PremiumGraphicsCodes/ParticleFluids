@@ -6,10 +6,6 @@ namespace PG.CGStudio
     {
         private PG.CLI.RepositoryAdapter adapter;
 
-        static Repository instance;
-
-        public static Repository Instance { get { return instance; } }
-
         public PG.CLI.RepositoryAdapter Adapter { get { return adapter; } }
 
         public ObjectRepository Objects;
@@ -19,7 +15,6 @@ namespace PG.CGStudio
         public Repository()
         {
             adapter = new PG.CLI.RepositoryAdapter();
-            instance = this;
             this.Objects = new ObjectRepository(adapter.Objects());
             this.Appearance = new AppearanceObjectRepository(adapter.Appearance());
         }
@@ -30,12 +25,12 @@ namespace PG.CGStudio
 
         public bool Open(string filename)
         {
-            return instance.Open(filename);
+            return adapter.Read(filename);
         }
 
         public bool Save(string filename)
         {
-            return instance.Save(filename);
+            return adapter.Write(filename);
         }
 
         public void Import(string filename)

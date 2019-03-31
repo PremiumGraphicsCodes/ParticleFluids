@@ -39,8 +39,8 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-            Repository.Instance.Objects.Add(particles, Appearance.Value);
-            OpenGLPresenter.Instance.Update(Repository.Instance);
+            MainModel.Instance.Repository.Objects.Add(particles, Appearance.Value);
+            OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
             OpenGLPresenter.Instance.Render();
         }
     }
