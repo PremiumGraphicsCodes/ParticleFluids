@@ -21,7 +21,7 @@ public:
 
 	int addObject(Shape::PolygonMesh* mesh, const PolygonMeshAttribute& material, const std::string& name);
 
-	PolygonMeshObject* findObjectById(const int id);
+	PolygonMeshObject* findObjectById(const int id) const;
 
 	std::list<PolygonMeshObject*> getObjects() const { return polygonMeshes; }
 

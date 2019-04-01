@@ -18,12 +18,12 @@ public:
 
 	void add(const Graphics::Image& image, const std::string& name);
 
-	//void add(const Shader::TextureObject& texture, const std::string& name);
+	Shader::TextureObject* findObjectById(const int id) const;
 
-	std::vector<Shader::TextureObject> getTextures() const { return textures; }
+	std::vector<Shader::TextureObject*> getTextures() const { return textures; }
 
 private:
-	std::vector<Shader::TextureObject> textures;
+	std::vector<Shader::TextureObject*> textures;
 	int nextId;
 };
 

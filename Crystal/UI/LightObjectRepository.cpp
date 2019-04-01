@@ -11,8 +11,7 @@ LightObjectRepository::LightObjectRepository() :
 	light->setAmbient(glm::vec4(1, 1, 1, 1));
 	light->setDiffuse(glm::vec4(1, 1, 1, 1));
 	light->setSpecular(glm::vec4(1, 1, 1, 1));
-	LightObject object(nextId++, "Light", light);
-	lights.push_back(object);
+	add(light, "Light");
 }
 
 LightObjectRepository::~LightObjectRepository()
@@ -23,13 +22,23 @@ LightObjectRepository::~LightObjectRepository()
 void LightObjectRepository::clear()
 {
 	for (auto l : lights) {
-		delete l.getLight();
+		delete l->getLight();
+		delete l;
 	}
 	lights.clear();
 }
 
 void LightObjectRepository::add(PointLight* l, const std::string& name)
 {
-	LightObject object(nextId++, name, l);
+	LightObject* object = new LightObject(nextId++, name, l);
 	lights.push_back(object);
+}
+
+LightObject* LightObjectRepository::findObjectById(const int id) const
+{
+	auto iter = std::find_if(std::cbegin(lights), std::cend(lights), [=](auto p) {return p->getId() == id; });
+	if (iter == std::cend(lights)) {
+		return nullptr;
+	}
+	return *iter;
 }

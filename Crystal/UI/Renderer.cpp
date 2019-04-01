@@ -32,12 +32,12 @@ void Renderer::render(const int width, const int height, const TextureObjectRepo
 	const auto& texx = textures.getTextures();
 	const auto& tex = texx[0];
 	const auto& smoothTex = texx[1];
-	objectRenderer.render(tex, smoothTex);
+	objectRenderer.render(*tex, *smoothTex);
 	objectIdRenderer.render();
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	renderer.render(tex);
+	renderer.render(*tex);
 }

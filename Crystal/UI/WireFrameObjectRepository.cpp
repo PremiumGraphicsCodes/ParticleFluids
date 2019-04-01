@@ -25,10 +25,10 @@ int WireFrameObjectRepository::addObject(WireFrame* wire, const WireFrameAttribu
 	return objects.back()->getId();
 }
 
-WireFrameObject* WireFrameObjectRepository::findObjectById(const int id)
+WireFrameObject* WireFrameObjectRepository::findObjectById(const int id) const
 {
-	auto iter = std::find_if(std::begin(objects), std::end(objects), [=](auto p) {return p->getId() == id; });
-	if (iter == std::end(objects)) {
+	auto iter = std::find_if(std::cbegin(objects), std::cend(objects), [=](auto p) {return p->getId() == id; });
+	if (iter == std::cend(objects)) {
 		return nullptr;
 	}
 	return *iter;

@@ -25,10 +25,10 @@ int PolygonMeshObjectRepository::addObject(PolygonMesh* mesh, const PolygonMeshA
 	return polygonMeshes.back()->getId();
 }
 
-PolygonMeshObject* PolygonMeshObjectRepository::findObjectById(const int id)
+PolygonMeshObject* PolygonMeshObjectRepository::findObjectById(const int id) const
 {
-	auto iter = std::find_if(polygonMeshes.begin(), polygonMeshes.end(), [=](auto p) {return p->getId() == id; });
-	if (iter == polygonMeshes.end()) {
+	auto iter = std::find_if(std::cbegin(polygonMeshes), std::cend(polygonMeshes), [=](auto p) {return p->getId() == id; });
+	if (iter == std::cend(polygonMeshes)) {
 		return nullptr;
 	}
 	return *iter;

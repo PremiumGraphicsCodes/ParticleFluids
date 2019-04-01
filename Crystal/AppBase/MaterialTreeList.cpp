@@ -19,7 +19,7 @@ void MaterialTreeList::onShow()
 
 	ImGui::BeginChild("Materials", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	for (auto l : materials) {
-		auto str = l.getName();
+		const auto& str = l->getName();
 		auto s = str.c_str();
 		ImGui::Text(s);
 	}

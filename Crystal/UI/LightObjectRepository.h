@@ -17,10 +17,12 @@ public:
 
 	void add(Graphics::PointLight* l, const std::string& name);
 
-	std::vector<LightObject> getLights() const { return lights; }
+	LightObject* findObjectById(const int id) const;
+
+	std::vector<LightObject*> getLights() const { return lights; }
 
 private:
-	std::vector<LightObject> lights;
+	std::vector<LightObject*> lights;
 	int nextId;
 };
 	}

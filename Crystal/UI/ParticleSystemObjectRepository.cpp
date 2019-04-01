@@ -41,10 +41,10 @@ int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& posi
 	return objects.back()->getId();
 }
 
-ParticleSystemObject* ParticleSystemObjectRepository::findObjectById(const int id)
+ParticleSystemObject* ParticleSystemObjectRepository::findObjectById(const int id) const
 {
-	auto iter = std::find_if(std::begin(objects), std::end(objects), [=](auto p) {return p->getId() == id; });
-	if (iter == std::end(objects)) {
+	auto iter = std::find_if(std::cbegin(objects), std::cend(objects), [=](auto p) {return p->getId() == id; });
+	if (iter == std::cend(objects)) {
 		return nullptr;
 	}
 	return *iter;
@@ -82,12 +82,14 @@ bool ParticleSystemObjectRepository::exists(const int id) const
 	return iter != objects.end();
 }
 
+/*
 ParticleSystemObject* ParticleSystemObjectRepository::findObjectById(const int id) const
 {
 	assert(exists(id));
 	auto iter = std::find_if(objects.begin(), objects.end(), [=](auto object) { return object->getId() == id; } );
 	return *iter;
 }
+*/
 
 Particle<ParticleAttribute>* ParticleSystemObjectRepository::findParticleById(const int parentId, const int childId) const
 {

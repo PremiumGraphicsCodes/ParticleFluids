@@ -19,14 +19,24 @@ TextureObjectRepository::~TextureObjectRepository()
 void TextureObjectRepository::clear()
 {
 	for (auto t : textures) {
-		t.clear();
+		t->clear();
+		delete t;
 	}
 	textures.clear();
 }
 
 void TextureObjectRepository::add(const Image& image, const std::string& name)
 {
-	Crystal::Shader::TextureObject texture;
-	texture.create(image, nextId++);
+	Crystal::Shader::TextureObject* texture = new Crystal::Shader::TextureObject();
+	texture->create(image, nextId++);
 	textures.push_back(texture);
+}
+
+TextureObject* TextureObjectRepository::findObjectById(const int id) const
+{
+	auto iter = std::find_if(std::cbegin(textures), std::cend(textures), [=](auto p) {return p->getId() == id; });
+	if (iter == std::cend(textures)) {
+		return nullptr;
+	}
+	return *iter;
 }

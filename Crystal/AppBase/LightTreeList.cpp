@@ -19,7 +19,7 @@ void LightTreeList::onShow()
 
 	ImGui::BeginChild(str, ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	for (auto l : lights) {
-		auto str = l.getName();
+		const auto str = l->getName();
 		auto s = str.c_str();
 		ImGui::Text(s);
 	}

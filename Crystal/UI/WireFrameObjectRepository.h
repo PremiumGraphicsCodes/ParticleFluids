@@ -20,7 +20,7 @@ public:
 
 	int addObject(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
 
-	WireFrameObject* findObjectById(const int id);
+	WireFrameObject* findObjectById(const int id) const;
 
 	std::list<WireFrameObject*> getObjects() const { return objects; }
 
