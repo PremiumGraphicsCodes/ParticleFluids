@@ -32,5 +32,10 @@ namespace PG.CGStudio
         {
             regionManager.RequestNavigate("ContentRegion", name);
         }
+
+        public void NavigateWithParam(string name, NavigationParameters navigationParameters)
+        {
+            regionManager.RequestNavigate("ContentRegion", name, navigationParameters);
+        }
     }
 }

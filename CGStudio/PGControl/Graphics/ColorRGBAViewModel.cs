@@ -6,17 +6,17 @@ namespace PG.Control.Graphics
 {
     public class ColorRGBAViewModel : BindableBase
     {
-        public ReactiveProperty<byte> R { get; }
-            = new ReactiveProperty<byte>();
+        public ReactiveProperty<float> R { get; }
+            = new ReactiveProperty<float>();
 
-        public ReactiveProperty<byte> G { get; }
-            = new ReactiveProperty<byte>();
+        public ReactiveProperty<float> G { get; }
+            = new ReactiveProperty<float>();
 
-        public ReactiveProperty<byte> B { get; }
-                = new ReactiveProperty<byte>();
+        public ReactiveProperty<float> B { get; }
+                = new ReactiveProperty<float>();
 
-        public ReactiveProperty<byte> A { get; }
-            = new ReactiveProperty<byte>();
+        public ReactiveProperty<float> A { get; }
+            = new ReactiveProperty<float>();
 
         public ColorRGBA Value
         {
@@ -29,6 +29,14 @@ namespace PG.Control.Graphics
                     A = A.Value
                 };
                 return c;
+            }
+
+            set
+            {
+                R.Value = value.R;
+                G.Value = value.G;
+                B.Value = value.B;
+                A.Value = value.A;
             }
         }
     }
