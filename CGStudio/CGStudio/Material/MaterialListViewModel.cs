@@ -14,10 +14,10 @@ namespace PG.CGStudio.Material
         public MaterialListViewModel()
         {
             Items = new ObservableCollection<PG.Core.Graphics.Material>();
-            var item1 = new PG.Core.Graphics.Material();
+            var item1 = new PG.Core.Graphics.Material(1);
             item1.Name.Value = "Material1";
             item1.IsVisible.Value = true;
-            var item2 = new PG.Core.Graphics.Material();
+            var item2 = new PG.Core.Graphics.Material(2);
             item2.Name.Value = "Material2";
             item2.IsVisible.Value = false;
             Items.Add(item1);

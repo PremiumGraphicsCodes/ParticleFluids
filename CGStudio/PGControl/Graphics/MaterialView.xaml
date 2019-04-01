@@ -10,6 +10,10 @@
         <local:MaterialViewModel/>
     </UserControl.DataContext>
     <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="ID"/>
+            <TextBlock Text="{Binding ID.Value}"></TextBlock>
+        </StackPanel>
         <StackPanel>
             <TextBlock Text="Ambient"/>
             <local:ColorRGBAView DataContext="{Binding Ambient}"/>

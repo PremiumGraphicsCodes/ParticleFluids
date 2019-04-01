@@ -5,7 +5,7 @@ using Reactive.Bindings;
 
 namespace PG.CGStudio.Material
 {
-    public class MaterialEditViewModel : BindableBase
+    public class MaterialEditViewModel : BindableBase, INavigationAware
     {
         public MaterialViewModel MaterialViewModel { get; }
 
@@ -15,6 +15,12 @@ namespace PG.CGStudio.Material
         {
             this.MaterialViewModel = new MaterialViewModel();
             this.OKCommand = new ReactiveCommand();
+            this.OKCommand.Subscribe(OnOk);
+        }
+
+        private void OnOk()
+        {
+//            MainModel.Instance.Repository.Material.
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

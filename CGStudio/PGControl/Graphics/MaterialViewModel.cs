@@ -6,6 +6,8 @@ namespace PG.Control.Graphics
 {
     public class MaterialViewModel
     {
+        public ReactiveProperty<int> ID { get; }
+
         public ColorRGBAViewModel Ambient { get; }
 
         public ColorRGBAViewModel Diffuse { get; }
@@ -16,6 +18,7 @@ namespace PG.Control.Graphics
 
         public MaterialViewModel()
         {
+            ID = new ReactiveProperty<int>();
             Ambient = new ColorRGBAViewModel();
             Diffuse = new ColorRGBAViewModel();
             Specular = new ColorRGBAViewModel();
@@ -26,7 +29,7 @@ namespace PG.Control.Graphics
         {
             get
             {
-                return new PG.Core.Graphics.Material
+                return new PG.Core.Graphics.Material(ID.Value)
                 {
                     Ambient = Ambient.Value,
                     Diffuse = Diffuse.Value,
@@ -36,6 +39,7 @@ namespace PG.Control.Graphics
             }
             set
             {
+                ID.Value = value.ID;
                 Ambient.Value = value.Ambient;
                 Diffuse.Value = value.Diffuse;
                 Specular.Value = value.Specular;
