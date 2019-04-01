@@ -149,6 +149,10 @@
     </Compile>
     <Compile Include="Light\LightListViewModel.cs" />
     <Compile Include="MainModel.cs" />
+    <Compile Include="Material\MaterialEditView.xaml.cs">
+      <DependentUpon>MaterialEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Material\MaterialEditViewModel.cs" />
     <Compile Include="Material\MaterialListView.xaml.cs">
       <DependentUpon>MaterialListView.xaml</DependentUpon>
     </Compile>
@@ -306,6 +310,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Material\MaterialEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Material\MaterialListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

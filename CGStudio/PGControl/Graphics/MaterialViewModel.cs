@@ -4,7 +4,7 @@ using Reactive.Bindings;
 
 namespace PG.Control.Graphics
 {
-    public class MaterialViewModel : INavigationAware
+    public class MaterialViewModel
     {
         public ColorRGBAViewModel Ambient { get; }
 
@@ -41,25 +41,6 @@ namespace PG.Control.Graphics
                 Specular.Value = value.Specular;
                 Shininess.Value = value.Shininess;
             }
-        }
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            var item = navigationContext.Parameters["Material"] as PG.Core.Graphics.Material;
-            if (item != null)
-            {
-                this.Value = item;
-            }
-        }
-
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-            ;
         }
     }
 }

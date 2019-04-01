@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using PG.CGStudio.Material;
 using PG.Control.Graphics;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -34,7 +35,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMSphereGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMCylinderGeneration");
 
-            containerRegistry.RegisterForNavigation<MaterialView>("Material");
+            containerRegistry.RegisterForNavigation<MaterialEditView>("Material");
             containerRegistry.RegisterForNavigation<PointLightView>("Light");
             containerRegistry.RegisterForNavigation<TextureView>("Texture");
         }
