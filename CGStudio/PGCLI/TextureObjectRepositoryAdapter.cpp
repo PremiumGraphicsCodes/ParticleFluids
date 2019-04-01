@@ -8,8 +8,9 @@ using namespace PG::CLI;
 TextureObjectRepositoryAdapter::~TextureObjectRepositoryAdapter()
 {}
 
-void TextureObjectRepositoryAdapter::Add(PG::Core::Graphics::Texture^ texture)
+int TextureObjectRepositoryAdapter::Add(PG::Core::Graphics::Texture^ texture)
 {
+	return -1;
 	//	instance->add( Converter::toCpp((light), "" );
 }
 

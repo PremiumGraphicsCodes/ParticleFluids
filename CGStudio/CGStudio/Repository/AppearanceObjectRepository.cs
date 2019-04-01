@@ -4,11 +4,14 @@
     {
         private PG.CLI.AppearanceObjectRepositoryAdapter adapter;
 
+        private LightObjectRepository light;
+
         public PG.CLI.AppearanceObjectRepositoryAdapter Adapter { get { return adapter; } }
 
-        public AppearanceObjectRepository(PG.CLI.AppearanceObjectRepositoryAdapter adapter)
+        public AppearanceObjectRepository()
         {
-            this.adapter = adapter;
+            this.adapter = new PG.CLI.AppearanceObjectRepositoryAdapter();
+            this.light = new LightObjectRepository();
         }
-    }
+   }
 }

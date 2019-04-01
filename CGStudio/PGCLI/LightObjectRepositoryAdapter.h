@@ -14,9 +14,11 @@ namespace PG {
 public ref class LightObjectRepositoryAdapter
 {
 public:
+	LightObjectRepositoryAdapter();
+
 	~LightObjectRepositoryAdapter();
 
-	void Add(PG::Core::Graphics::PointLight^ light);
+	int Add(PG::Core::Graphics::PointLight^ light);
 
 internal:
 	LightObjectRepositoryAdapter(Crystal::UI::LightObjectRepository* instance);

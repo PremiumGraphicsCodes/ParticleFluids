@@ -16,7 +16,7 @@ public ref class TextureObjectRepositoryAdapter
 public:
 	~TextureObjectRepositoryAdapter();
 
-	void Add(PG::Core::Graphics::Texture^ texture);
+	int Add(PG::Core::Graphics::Texture^ texture);
 
 internal:
 	TextureObjectRepositoryAdapter(Crystal::UI::TextureObjectRepository* instance);

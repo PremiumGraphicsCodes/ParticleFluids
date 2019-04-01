@@ -5,12 +5,20 @@
 
 using namespace PG::CLI;
 
-LightObjectRepositoryAdapter::~LightObjectRepositoryAdapter()
-{}
+LightObjectRepositoryAdapter::LightObjectRepositoryAdapter()
+{
+	this->instance = new Crystal::UI::LightObjectRepository();
+}
 
-void LightObjectRepositoryAdapter::Add(PG::Core::Graphics::PointLight^ light)
+LightObjectRepositoryAdapter::~LightObjectRepositoryAdapter()
+{
+	delete instance;
+}
+
+int LightObjectRepositoryAdapter::Add(PG::Core::Graphics::PointLight^ light)
 {
 //	instance->add( Converter::toCpp((light), "" );
+	return -1;
 }
 
 LightObjectRepositoryAdapter::LightObjectRepositoryAdapter(Crystal::UI::LightObjectRepository* instance)

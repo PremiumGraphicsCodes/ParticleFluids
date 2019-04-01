@@ -14,6 +14,8 @@ namespace PG {
 public ref class AppearanceObjectRepositoryAdapter
 {
 public:
+	AppearanceObjectRepositoryAdapter();
+
 	~AppearanceObjectRepositoryAdapter();
 
 internal:

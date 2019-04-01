@@ -5,11 +5,17 @@
 
 using namespace PG::CLI;
 
+MaterialObjectRepositoryAdapter::MaterialObjectRepositoryAdapter()
+{
+	this->instance = new Crystal::UI::MaterialObjectRepository();
+}
+
 MaterialObjectRepositoryAdapter::~MaterialObjectRepositoryAdapter()
 {}
 
-void MaterialObjectRepositoryAdapter::Add(PG::Core::Graphics::Material^ material)
+int MaterialObjectRepositoryAdapter::Add(PG::Core::Graphics::Material^ material)
 {
+	return -1;
 	//	instance->add( Converter::toCpp((light), "" );
 }
 

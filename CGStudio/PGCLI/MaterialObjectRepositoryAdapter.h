@@ -14,9 +14,11 @@ namespace PG {
 public ref class MaterialObjectRepositoryAdapter
 {
 public:
+	MaterialObjectRepositoryAdapter();
+
 	~MaterialObjectRepositoryAdapter();
 
-	void Add(PG::Core::Graphics::Material^ material);
+	int Add(PG::Core::Graphics::Material^ material);
 
 internal:
 	MaterialObjectRepositoryAdapter(Crystal::UI::MaterialObjectRepository* instance);

@@ -12,11 +12,14 @@ namespace PG.CGStudio
 
         public AppearanceObjectRepository Appearance;
 
+        public MaterialObjectRepository Material;
+
         public Repository()
         {
             adapter = new PG.CLI.RepositoryAdapter();
             this.Objects = new ObjectRepository(adapter.Objects());
-            this.Appearance = new AppearanceObjectRepository(adapter.Appearance());
+            this.Appearance = new AppearanceObjectRepository();
+            this.Material = new MaterialObjectRepository();
         }
 
         public void New()
