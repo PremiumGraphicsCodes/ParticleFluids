@@ -21,7 +21,7 @@ namespace PG.CGStudio.Light
 
         private void OnOk()
         {
-//            this.PointLightViewModel.Update(this.PrevMaterial);
+            this.PointLightViewModel.Update(this.PrevLight);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -40,7 +40,7 @@ namespace PG.CGStudio.Light
             if (item != null)
             {
                 this.PrevLight = item;
-//                this.PointLightViewModel.Value = item;
+                this.PointLightViewModel.Value = item;
             }
         }
     }

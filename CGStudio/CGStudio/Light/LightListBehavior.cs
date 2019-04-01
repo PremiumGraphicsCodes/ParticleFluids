@@ -1,4 +1,5 @@
 ﻿using PG.Core.Graphics;
+using Prism.Regions;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
@@ -23,7 +24,9 @@ namespace PG.CGStudio.Light
             if (treeView == null) return;
             var selectedItem = treeView.SelectedItem as PointLight;
             if (selectedItem == null) return;
-            MainWindowViewModel.Instance.NavigateCommand.Execute("Light");
+            var parameters = new NavigationParameters();
+            parameters.Add("Light", selectedItem);
+            MainWindowViewModel.Instance.NavigateWithParam("Light", parameters);
         }
     }
 }

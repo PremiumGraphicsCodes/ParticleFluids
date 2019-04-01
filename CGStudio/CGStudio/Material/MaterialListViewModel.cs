@@ -3,6 +3,7 @@ using Reactive.Bindings;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 
 namespace PG.CGStudio.Material
 {
@@ -10,6 +11,12 @@ namespace PG.CGStudio.Material
     public class MaterialListViewModel
     {
         public ObservableCollection<PG.Core.Graphics.Material> Items { get; set; }
+
+        public ReactiveCommand AddCommand { get; }
+
+        public ReactiveCommand EditCommand { get; }
+
+        public ReactiveCommand DeleteCommand { get; }
 
         public MaterialListViewModel()
         {
@@ -22,7 +29,16 @@ namespace PG.CGStudio.Material
             item2.IsVisible.Value = false;
             Items.Add(item1);
             Items.Add(item2);
+
+            AddCommand = new ReactiveCommand();
+            AddCommand.Subscribe(OnAdd);
+            EditCommand = new ReactiveCommand();
+            DeleteCommand = new ReactiveCommand();
         }
 
+        private void OnAdd()
+        {
+            MessageBox.Show("Add");
+        }
     }
 }

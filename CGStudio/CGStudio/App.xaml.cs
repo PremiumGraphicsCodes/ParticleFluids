@@ -1,5 +1,7 @@
 ﻿using System.Windows;
+using PG.CGStudio.Light;
 using PG.CGStudio.Material;
+using PG.CGStudio.Texture;
 using PG.Control.Graphics;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -36,8 +38,8 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMCylinderGeneration");
 
             containerRegistry.RegisterForNavigation<MaterialEditView>("Material");
-            containerRegistry.RegisterForNavigation<PointLightView>("Light");
-            containerRegistry.RegisterForNavigation<TextureView>("Texture");
+            containerRegistry.RegisterForNavigation<LightEditView>("Light");
+            containerRegistry.RegisterForNavigation<TextureEditView>("Texture");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

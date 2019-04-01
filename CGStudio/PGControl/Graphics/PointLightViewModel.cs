@@ -37,5 +37,13 @@ namespace PG.Control.Graphics
                 Specular.Value = value.Specular;
             }
         }
+
+        public void Update(PointLight light)
+        {
+            light.Position = Position.Value;
+            light.Ambient = Ambient.Value;
+            light.Diffuset = Diffuse.Value;
+            light.Specular = Specular.Value;
+        }
     }
 }

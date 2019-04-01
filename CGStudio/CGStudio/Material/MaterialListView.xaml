@@ -11,7 +11,14 @@
     <UserControl.DataContext>
         <local:MaterialListViewModel/>
     </UserControl.DataContext>
-    <TreeView ItemsSource="{Binding Items}">
+    <UserControl.Resources>
+        <ContextMenu x:Key="Menu">
+            <MenuItem Header="Add" Command="{Binding AddCommand}"/>
+            <MenuItem Header="Edit" Command="{Binding EditCommand}"/>
+            <MenuItem Header="Delete" Command="{Binding DeleteCommand}"/>
+        </ContextMenu>
+    </UserControl.Resources>
+    <TreeView ItemsSource="{Binding Items}" ContextMenu="{DynamicResource Menu}">
         <i:Interaction.Behaviors>
             <local:MaterialListViewBehavior/>
         </i:Interaction.Behaviors>

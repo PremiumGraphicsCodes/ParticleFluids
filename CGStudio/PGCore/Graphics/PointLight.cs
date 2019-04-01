@@ -18,6 +18,7 @@ namespace PG.Core.Graphics
             Name = new ReactiveProperty<string>();
             IsVisible = new ReactiveProperty<bool>();
             IsVisible.Subscribe(VisibleChanged);
+            this.Position = new Vector3d(0, 0, 0);
         }
 
         private void VisibleChanged(bool b)
