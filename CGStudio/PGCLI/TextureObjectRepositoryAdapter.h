@@ -14,6 +14,8 @@ namespace PG {
 public ref class TextureObjectRepositoryAdapter
 {
 public:
+	TextureObjectRepositoryAdapter();
+
 	~TextureObjectRepositoryAdapter();
 
 	int Add(PG::Core::Graphics::Texture^ texture);

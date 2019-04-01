@@ -1,4 +1,4 @@
-﻿namespace PG.CGStudio
+﻿namespace PG.CGStudio.Light
 {
     public class LightObjectRepository
     {

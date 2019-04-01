@@ -166,14 +166,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Repository\AppearanceObjectRepository.cs" />
-    <Compile Include="Repository\LightObjectRepository.cs" />
-    <Compile Include="Repository\MaterialObjectRepository.cs" />
-    <Compile Include="Repository\ObjectRepository.cs" />
+    <Compile Include="Light\LightObjectRepository.cs" />
+    <Compile Include="Material\MaterialObjectRepository.cs" />
+    <Compile Include="Object\ObjectRepository.cs" />
     <Compile Include="Texture\TextureListViewBehavior.cs" />
     <Compile Include="Texture\TextureListViewl.xaml.cs">
       <DependentUpon>TextureListViewl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Texture\TextureListViewModel.cs" />
+    <Compile Include="Texture\TextureObjectRepository.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Generation\GenerationView.xaml.cs">
       <DependentUpon>GenerationView.xaml</DependentUpon>
