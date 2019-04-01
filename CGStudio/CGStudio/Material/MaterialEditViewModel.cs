@@ -7,6 +7,8 @@ namespace PG.CGStudio.Material
 {
     public class MaterialEditViewModel : BindableBase, INavigationAware
     {
+        private PG.Core.Graphics.Material PrevMaterial;
+
         public MaterialViewModel MaterialViewModel { get; }
 
         public ReactiveCommand OKCommand { get; }
@@ -15,12 +17,12 @@ namespace PG.CGStudio.Material
         {
             this.MaterialViewModel = new MaterialViewModel();
             this.OKCommand = new ReactiveCommand();
-            this.OKCommand.Subscribe(OnOk);
+            this.OKCommand.Subscribe( OnOk);
         }
 
         private void OnOk()
         {
-//            MainModel.Instance.Repository.Material.
+            this.MaterialViewModel.Update( this.PrevMaterial );
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -28,6 +30,7 @@ namespace PG.CGStudio.Material
             var item = navigationContext.Parameters["Material"] as PG.Core.Graphics.Material;
             if (item != null)
             {
+                this.PrevMaterial = item;
                 this.MaterialViewModel.Value = item;
             }
         }

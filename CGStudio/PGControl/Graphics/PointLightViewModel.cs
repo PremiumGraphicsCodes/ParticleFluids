@@ -1,6 +1,7 @@
 ﻿using PG.Control.Math;
 using PG.Core.Graphics;
 using Prism.Mvvm;
+using Reactive.Bindings;
 
 namespace PG.Control.Graphics
 {
@@ -8,11 +9,14 @@ namespace PG.Control.Graphics
     {
         public PointLightViewModel()
         {
+            ID = new ReactiveProperty<int>();
             Position = new Vector3dViewModel();
             Ambient = new ColorRGBAViewModel();
             Diffuse = new ColorRGBAViewModel();
             Specular = new ColorRGBAViewModel();
         }
+
+        public ReactiveProperty<int> ID { get; }
 
         public Vector3dViewModel Position { get; }
 
@@ -24,16 +28,13 @@ namespace PG.Control.Graphics
 
         public PointLight Value
         {
-            get
+            set
             {
-                var light = new PointLight
-                {
-                    Position = Position.Value,
-                    Ambient = Ambient.Value,
-                    Diffuset = Diffuse.Value,
-                    Specular = Specular.Value
-                };
-                return light;
+                ID.Value = value.ID;
+                Position.Value = value.Position;
+                Ambient.Value = value.Ambient;
+                Diffuse.Value = value.Diffuset;
+                Specular.Value = value.Specular;
             }
         }
     }

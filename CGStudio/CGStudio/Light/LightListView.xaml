@@ -16,7 +16,7 @@
             <local:LightListViewBehavior/>        
         </i:Interaction.Behaviors>
         <TreeView.ItemTemplate>
-            <HierarchicalDataTemplate DataType="{x:Type local:LightItem}">
+            <HierarchicalDataTemplate DataType="{x:Type PointLight}">
                 <StackPanel Orientation="Horizontal">
                     <CheckBox IsChecked="{Binding IsVisible.Value}"/>
                     <TextBlock Text="{Binding Name.Value}"/>

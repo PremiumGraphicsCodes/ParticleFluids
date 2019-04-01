@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using PG.Core.Graphics;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
@@ -20,7 +21,7 @@ namespace PG.CGStudio.Light
         {
             var treeView = e.Source as TreeView;
             if (treeView == null) return;
-            var selectedItem = treeView.SelectedItem as LightItem;
+            var selectedItem = treeView.SelectedItem as PointLight;
             if (selectedItem == null) return;
             MainWindowViewModel.Instance.NavigateCommand.Execute("Light");
         }
