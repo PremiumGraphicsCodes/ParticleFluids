@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using Prism.Regions;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
@@ -20,9 +21,11 @@ namespace PG.CGStudio.Texture
         {
             var treeView = e.Source as TreeView;
             if (treeView == null) return;
-            var selectedItem = treeView.SelectedItem as TextureItem;
+            var selectedItem = treeView.SelectedItem as PG.Core.Graphics.Texture;
             if (selectedItem == null) return;
-            MainWindowViewModel.Instance.NavigateCommand.Execute("Texture");
+            var parameters = new NavigationParameters();
+            parameters.Add("Texture", selectedItem);
+            MainWindowViewModel.Instance.NavigateWithParam("Texture", parameters);
         }
     }
 }

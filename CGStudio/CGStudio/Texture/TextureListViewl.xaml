@@ -15,7 +15,7 @@
             <local:TextureListViewBehavior/>
         </i:Interaction.Behaviors>
         <TreeView.ItemTemplate>
-            <HierarchicalDataTemplate DataType="{x:Type local:TextureItem}">
+            <HierarchicalDataTemplate>
                 <StackPanel Orientation="Horizontal">
                     <CheckBox IsChecked="{Binding IsVisible.Value}"/>
                     <TextBlock Text="{Binding Name.Value}"/>

@@ -1,9 +1,7 @@
-﻿using Prism.Mvvm;
+﻿using PG.Core.Graphics;
+using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Windows.Forms;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace PG.Control.Graphics
 {
@@ -27,6 +25,19 @@ namespace PG.Control.Graphics
             {
                 ImagePath.Value = dialog.FileName;
             }
+        }
+
+        public Texture Value
+        {
+            set
+            {
+                ImagePath.Value = value.ImagePath;
+            }
+        }
+
+        public void Update(Texture texture)
+        {
+            texture.ImagePath = ImagePath.Value;
         }
     }
 }
