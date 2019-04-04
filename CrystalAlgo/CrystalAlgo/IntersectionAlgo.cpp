@@ -28,23 +28,39 @@ bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Sphere3d
 	return found;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Triangle3d& triangle)
+bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Triangle3d& triangle, const double tolerance)
 {
-	const auto& start = line.getStart();
-	const auto& direction = line.getDirection();
+	const auto& origin = triangle.getVertices()[0];
+	const auto& normal = triangle.getNormal();
 
-	const auto& vertices = triangle.getVertices();
-	const auto& v0 = vertices[0];
-	const auto& v1 = vertices[1];
-	const auto& v2 = vertices[2];
+	// 線分の始点が三角系の裏側にあれば、当たらない
+	const auto tls = line.getStart() - origin;
+	const auto distl0 = glm::dot( tls , normal);	// 線分の始点と平面の距離
+	if (distl0 <= tolerance) {
+		return false;
+	}
 
-	Intersection intersection;
-	const auto found = glm::intersectLineTriangle(start, direction, v0, v1, v2, intersection.position);
-	if (found) {
+	// 線分の終点が三角系の表側にあれば、当たらない
+	const auto tle = line.getEnd() - origin;
+	const auto distl1 = glm::dot( tle, normal);	// 線分の終点と平面の距離
+	if (distl1 >= -tolerance) {
+		return false;
+	}
+
+	// 直線と平面との交点sを取る
+	const auto denom = distl0 - distl1;
+	const auto t = distl0 / denom;
+
+	const auto s = t * line.getDirection() + line.getStart();
+
+	if (triangle.isInside(s)) {
+		Intersection intersection;
+		intersection.position = s;
 		intersection.normal = triangle.getNormal();
 		intersections.push_back(intersection);
+		return true;
 	}
-	return found;
+	return false;
 }
 
 bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Plane3d& plane)
@@ -78,9 +94,14 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d&
 	return false;
 }
 
-/*
-bool IntersectionAlgo::calculateIntersection(const Triangle3d& lhs, const Triangle3d& rhs)
+bool IntersectionAlgo::calculateIntersection(const Triangle3d& lhs, const Triangle3d& rhs, const double tolerance)
 {
-	return false;
+	const auto& vertices = lhs.getVertices();
+	const auto l1 = Line3dd::fromPoints(vertices[0], vertices[1]);
+	const auto l2 = Line3dd::fromPoints(vertices[1], vertices[2]);
+	const auto l3 = Line3dd::fromPoints(vertices[2], vertices[0]);
+	const auto found1 = calculateIntersection(l1, rhs, tolerance);
+	const auto found2 = calculateIntersection(l2, rhs, tolerance);
+	const auto found3 = calculateIntersection(l3, rhs, tolerance);
+	return (found1 || found2 || found3);
 }
-*/

@@ -2,6 +2,7 @@
 
 #include <array>
 #include "Vector3d.h"
+#include "Plane3d.h"
 
 namespace Crystal {
 	namespace Math {
@@ -27,29 +28,33 @@ public:
 
 	bool isInside(const Vector3dd& p) const
 	{
-		const auto& normal = getNormal();
+		const auto& n = getNormal();
 
 		const auto a = vertices[0] - p;
 		const auto b = vertices[1] - p;
 		const auto c = vertices[2] - p;
 
-		const auto p0ToP1 = vertices[1] - vertices[0];
-		const auto p1ToP2 = vertices[2] - vertices[1];
-		const auto p2ToP0 = vertices[0] - vertices[2];
+		const auto d = vertices[1] - vertices[0];
+		const auto e = vertices[2] - vertices[1];
+		const auto f = vertices[0] - vertices[2];
 
-		const auto& v1 = glm::cross(a, p0ToP1);
-		if (glm::dot(v1, normal) < 0.0) {
+		const auto& v1 = glm::cross(a, d);
+		if (glm::dot(v1, n) < 0.0) {
 			return false;
 		}
-		const auto& v2 = glm::cross(b, p1ToP2);
-		if (glm::dot(v2, normal) < 0.0) {
+		const auto& v2 = glm::cross(b, e);
+		if (glm::dot(v2, n) < 0.0) {
 			return false;
 		}
-		const auto& v3 = glm::cross(c, p2ToP0);
-		if (glm::dot(v3, normal) < 0.0) {
+		const auto& v3 = glm::cross(c, f);
+		if (glm::dot(v3, n) < 0.0) {
 			return false;
 		}
 		return true;
+	}
+
+	Plane3d getPlane() const {
+		return Plane3d(vertices[0], getNormal());
 	}
 
 	std::array<Vector3dd, 3> getVertices() const { return vertices; }

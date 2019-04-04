@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
+#include "../../Crystal/Math/Line3d.h"
 #include "../../Crystal/Math/Plane3d.h"
 #include "../../Crystal/Math/Ray3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
@@ -8,10 +9,24 @@
 using namespace Crystal::Math;
 using namespace Crystal::Algo;
 
-TEST(IntersectionAlgoTest, TestLineAndSphere)
+TEST(IntersectionAlgoTest, TestLineAndTriangle)
 {
-	IntersectionAlgo algo;
-//	algo.calculateIntersection()
+	const double tolerance = 1.0e-12;
+
+	{
+		IntersectionAlgo algo;
+		const Line3dd line(Vector3dd(1, 1, 1), Vector3dd(0, 0, -2));
+		const Triangle3d triangle({ Vector3dd(0,0,0), Vector3dd(0, 10, 0), Vector3dd(10, 0, 0) });
+		EXPECT_FALSE(algo.calculateIntersection(line, triangle, tolerance));
+	}
+
+
+	{
+		IntersectionAlgo algo;
+		const Line3dd line(Vector3dd(1, 1, 1), Vector3dd(0, 0, -2));
+		const Triangle3d triangle({ Vector3dd(0,0,0), Vector3dd(10, 0, 0), Vector3dd(0, 10, 0) });
+		EXPECT_TRUE(algo.calculateIntersection(line, triangle, tolerance));
+	}
 }
 
 TEST(IntersectionAlgoTest, TestRayAndPlane)
@@ -34,16 +49,25 @@ TEST(IntersectionAlgoTest, TestRayAndPlane)
 		EXPECT_EQ(Vector3dd(0, 0, 0), i.position);
 		EXPECT_EQ(Vector3dd(0, 0,-1), i.normal);
 	}
-
-	//	algo.calculateIntersection()
 }
 
 TEST(IntersectionAlgoTest, TestRayAndTriangle)
 {
 	IntersectionAlgo algo;
-	
-	const Ray3d ray(Vector3dd(0,0,-10), Vector3dd(0,0,1));
-	const Triangle3d triangle({ Vector3dd(-10,-10,0), Vector3dd(-10, 100, 0), Vector3dd(100, -10, 0) });
-	EXPECT_TRUE( algo.calculateIntersection(ray, triangle) );
-//	algo.calculateIntersection()
+
+	{
+		const Ray3d ray(Vector3dd(1, 1, 1), Vector3dd(0, 0, -1));
+		const Triangle3d triangle({ Vector3dd(0,0,0), Vector3dd(0, 10, 0), Vector3dd(10, 0, 0) });
+		EXPECT_FALSE(algo.calculateIntersection(ray, triangle));
+	}
+	{
+		const Ray3d ray(Vector3dd(1, 1, -1), Vector3dd(0, 0, -1));
+		const Triangle3d triangle({ Vector3dd(0,0,0), Vector3dd(10, 0, 0), Vector3dd(0, 10, 0) });
+		EXPECT_TRUE(algo.calculateIntersection(ray, triangle));
+		const auto& intersections = algo.getIntersections();
+		EXPECT_EQ(1, intersections.size());
+		const auto i = intersections[0];
+		EXPECT_EQ(Vector3dd(1, 1, 0), i.position);
+		EXPECT_EQ(Vector3dd(0, 0, 1), i.normal);
+	}
 }
