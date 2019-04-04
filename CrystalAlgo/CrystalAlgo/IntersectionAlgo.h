@@ -33,7 +33,9 @@ public:
 class IntersectionAlgo
 {
 public:
-	bool calculateIntersection(const Math::Line3dd& line, const Math::Sphere3d& sphere);
+	bool calculateIntersection(const Math::Ray3d& ray, const Math::Sphere3d& sphere, const double tolerance);
+
+	bool calculateIntersection(const Math::Line3dd& line, const Math::Sphere3d& sphere, const double tolerance);
 
 	bool calculateIntersection(const Math::Line3dd& line, const Math::Triangle3d& triangle, const double tolerance);
 

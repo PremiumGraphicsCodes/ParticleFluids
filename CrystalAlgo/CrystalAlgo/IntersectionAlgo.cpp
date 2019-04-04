@@ -8,24 +8,58 @@
 
 #include "../../Crystal/Math/Matrix3d.h"
 
-#define GLM_ENABLE_EXPERIMENTAL
-#include "../../Crystal/ThirdParty/glm-0.9.9.3/glm/gtx/intersect.hpp"
+//#define GLM_ENABLE_EXPERIMENTAL
+//#include "../../Crystal/ThirdParty/glm-0.9.9.3/glm/gtx/intersect.hpp"
 
 using namespace Crystal::Math;
 using namespace Crystal::Algo;
 
-bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Sphere3d& sphere)
+bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Sphere3d& sphere, const double tolerance)
 {
-	const auto& start = line.getStart();
-	const auto& end = line.getEnd();
-	const auto radius = sphere.getRadius();
-	const auto& center = sphere.getCenter();
-	Intersection intersection;
-	const auto found = glm::intersectLineSphere(start, end, center, radius, intersection.position, intersection.normal);
-	if (found) {
-		intersections.push_back(intersection);
+	const auto& direction = ray.getDirection();
+	const auto& diff = sphere.getCenter() - ray.getOrigin();
+	const auto t0 = glm::dot(diff, direction);
+	const auto distanceSquared = glm::dot(diff, diff) - t0 * t0;
+	const auto sphereRadiusSquared = sphere.getRadius() * sphere.getRadius();
+	if (distanceSquared > sphereRadiusSquared)
+	{
+		return false;
 	}
-	return found;
+	const auto t1 = std::sqrt(sphereRadiusSquared - distanceSquared);
+	const auto intersectionDistance = t0 > t1 + tolerance ? t0 - t1 : t0 + t1;
+	if (intersectionDistance > tolerance) {
+		const auto& i = ray.getPosition(intersectionDistance);
+		const auto& normal = glm::normalize( i - sphere.getCenter() );
+		intersections.push_back(Intersection(i, normal));
+		return true;
+	}
+	return false;
+}
+
+bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Sphere3d& sphere, const double tolerance)
+{
+	const auto& dir = glm::normalize(line.getDirection());
+	const auto diff = sphere.getCenter() - line.getStart();
+	const auto t0 = glm::dot(diff, dir);
+	const auto dSquared = dot(diff, diff) - t0 * t0;
+	const auto sphereRadiusSquared = sphere.getRadius() * sphere.getRadius();
+	if (dSquared > sphereRadiusSquared)
+	{
+		return false;
+	}
+	auto t1 = sqrt(sphereRadiusSquared - dSquared);
+	if (t0 < t1 + tolerance) {
+		t1 = -t1;
+	}
+	Intersection i1;
+	i1.position = line.getStart() + dir * (t0 - t1);
+	i1.normal = glm::normalize(i1.position - sphere.getCenter());
+	intersections.push_back(i1);
+	Intersection i2;
+	i2.position = line.getStart() + dir * (t0 + t1);
+	i2.normal = glm::normalize(i2.position - sphere.getCenter());
+	intersections.push_back(i2);
+	return true;
 }
 
 bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Triangle3d& triangle, const double tolerance)
