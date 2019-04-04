@@ -62,6 +62,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalAlgoView", "CrystalA
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalAlgoTest", "CrystalAlgoTest\CrystalAlgoTest.vcxproj", "{F809D080-0FB0-4B55-BD97-2B1599C21EF9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D2A606D5-8E40-4FC5-90EE-07B3A0F81383} = {D2A606D5-8E40-4FC5-90EE-07B3A0F81383}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

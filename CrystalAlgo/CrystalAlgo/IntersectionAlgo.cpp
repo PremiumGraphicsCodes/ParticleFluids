@@ -62,35 +62,37 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Plane3d& pl
 
 bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle)
 {
-	const auto& vertices = triangle.getVertices();
-	const auto& v0 = vertices[0];
-	const auto& v1 = vertices[1];
-	const auto& v2 = vertices[2];
-	const auto edge1 = v1 - v0;
-	const auto edge2 = v2 - v0;
-
-	const auto& origin = ray.getOrigin();
-	const auto& direction = ray.getDirection();
-
-	const Matrix3dd matrix(v1, v2, -direction);
-	const auto denominator = glm::determinant(matrix);
-
-	if (denominator > 0.0) {
-		const Matrix3dd matrixu(origin - v0, edge2, -direction);
-		const auto u = glm::determinant(matrixu) / denominator;
-		if (0.0 <= u && u <= 1.0) {
-			const Matrix3dd matrixv(edge1, origin - v0, -direction);
-			const auto v = glm::determinant(matrixv) / denominator;
-			if (0.0 <= v && v <= 1.0) {
-				const Matrix3dd matrixt(edge1, edge2, origin - v0);
-				const auto t = glm::determinant(matrixt) / denominator;
-				const Intersection intersection( origin + direction * t, triangle.getNormal());
-				intersections.push_back(intersection);
-				return true;
-			}
-		}
+	const auto& normal = triangle.getNormal();
+	IntersectionAlgo innerAlgo;
+	const Plane3d plane(triangle.getVertices()[0], triangle.getNormal());
+	if (!innerAlgo.calculateIntersection(ray, plane)) {
+		return false;
 	}
-	return false;
+	const auto intersectionOnPlane = innerAlgo.getIntersections()[0];
+
+	const auto& i = intersectionOnPlane.position;
+	const auto a = triangle.getVertices()[0]-i;
+	const auto b = triangle.getVertices()[1]-i;
+	const auto c = triangle.getVertices()[2]-i;
+
+	const auto p0ToP1 = triangle.getVertices()[1] - triangle.getVertices()[0];
+	const auto p1ToP2 = triangle.getVertices()[2] - triangle.getVertices()[1];
+	const auto p2ToP0 = triangle.getVertices()[0] - triangle.getVertices()[2];
+
+	const auto& v1 = glm::cross(a, p0ToP1);
+	if (glm::dot(v1, normal) < 0.0) {
+		return false;
+	}
+	const auto& v2 = glm::cross(b, p1ToP2);
+	if (glm::dot(v2, normal) < 0.0) {
+		return false;
+	}
+	const auto& v3 = glm::cross(c, p2ToP0);
+	if (glm::dot(v3, normal) < 0.0) {
+		return false;
+	}
+	intersections.push_back(intersectionOnPlane);
+	return true;
 }
 
 /*

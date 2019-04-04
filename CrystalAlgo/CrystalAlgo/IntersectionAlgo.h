@@ -43,6 +43,8 @@ public:
 
 	//bool calculateIntersection(const Math::Triangle3d& lhs, const Math::Triangle3d& rhs);
 
+	std::vector<Intersection> getIntersections() const { return intersections; }
+
 private:
 	std::vector<Intersection> intersections;
 };
