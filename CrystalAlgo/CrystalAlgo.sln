@@ -61,6 +61,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalAlgoView", "CrystalA
 		{76FDBCE5-E588-4BC9-97B4-C8FE5D76F91A} = {76FDBCE5-E588-4BC9-97B4-C8FE5D76F91A}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalAlgoTest", "CrystalAlgoTest\CrystalAlgoTest.vcxproj", "{F809D080-0FB0-4B55-BD97-2B1599C21EF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,6 +173,16 @@ Global
 		{611C9BAF-6623-4B9D-92F7-02A75605EE46}.Release|x64.Build.0 = Release|x64
 		{611C9BAF-6623-4B9D-92F7-02A75605EE46}.Release|x86.ActiveCfg = Release|Win32
 		{611C9BAF-6623-4B9D-92F7-02A75605EE46}.Release|x86.Build.0 = Release|Win32
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Debug|x64.ActiveCfg = Debug|x64
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Debug|x64.Build.0 = Debug|x64
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Debug|x86.ActiveCfg = Debug|Win32
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Debug|x86.Build.0 = Debug|Win32
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Release|Any CPU.ActiveCfg = Release|Win32
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Release|x64.ActiveCfg = Release|x64
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Release|x64.Build.0 = Release|x64
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Release|x86.ActiveCfg = Release|Win32
+		{F809D080-0FB0-4B55-BD97-2B1599C21EF9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
