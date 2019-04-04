@@ -53,7 +53,7 @@ public:
 		return true;
 	}
 
-	Plane3d getPlane() const {
+	Plane3d toPlane() const {
 		return Plane3d(vertices[0], getNormal());
 	}
 

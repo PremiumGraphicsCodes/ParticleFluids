@@ -40,18 +40,20 @@ TEST(IntersectionAlgoTest, TestLineAndTriangle)
 
 TEST(IntersectionAlgoTest, TestRayAndPlane)
 {
+	const auto tolerance = 1.0e-12;
+
 	IntersectionAlgo algo;
 	const Ray3d ray(Vector3dd(0, 0, -1), Vector3dd(0, 0, 1));
 
 	{
 		const Plane3d plane(Vector3dd(0, 0, 0), Vector3dd(0, 0, 1));
-		EXPECT_FALSE(algo.calculateIntersection(ray, plane));
+		EXPECT_FALSE(algo.calculateIntersection(ray, plane, tolerance));
 		EXPECT_TRUE(algo.getIntersections().empty());
 	}
 
 	{
 		const Plane3d plane(Vector3dd(0, 0, 0), Vector3dd(0, 0, -1));
-		EXPECT_TRUE(algo.calculateIntersection(ray, plane));
+		EXPECT_TRUE(algo.calculateIntersection(ray, plane, tolerance));
 		const auto& intersections = algo.getIntersections();
 		EXPECT_EQ(1, intersections.size());
 		const auto i = intersections[0];
@@ -62,17 +64,19 @@ TEST(IntersectionAlgoTest, TestRayAndPlane)
 
 TEST(IntersectionAlgoTest, TestRayAndTriangle)
 {
+	const auto tolerance = 1.0e-12;
+
 	IntersectionAlgo algo;
 	const auto& triangle = getTriangle();
 
 	{
 		const Ray3d ray(Vector3dd(1, 1,-1), Vector3dd(0, 0, 1));
-		EXPECT_FALSE(algo.calculateIntersection(ray, triangle));
+		EXPECT_FALSE(algo.calculateIntersection(ray, triangle, tolerance));
 	}
 
 	{
 		const Ray3d ray(Vector3dd(1, 1, 1), Vector3dd(0, 0, -1));
-		EXPECT_TRUE(algo.calculateIntersection(ray, triangle));
+		EXPECT_TRUE(algo.calculateIntersection(ray, triangle, tolerance));
 		const auto& intersections = algo.getIntersections();
 		EXPECT_EQ(1, intersections.size());
 		const auto i = intersections[0];
@@ -90,6 +94,11 @@ TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 	{
 		const  Triangle3d triangle2({ Vector3dd(10,0,0), Vector3dd(20, 0, 0), Vector3dd(10, 20, 0) });
 		EXPECT_FALSE(algo.calculateIntersection(triangle1, triangle2, tolerance));
+	}
+
+	{
+		const  Triangle3d triangle2({ Vector3dd(5,0,-10), Vector3dd(5, 0, 10), Vector3dd(0, 10, 0) });
+		EXPECT_TRUE(algo.calculateIntersection(triangle1, triangle2, tolerance));
 	}
 
 }

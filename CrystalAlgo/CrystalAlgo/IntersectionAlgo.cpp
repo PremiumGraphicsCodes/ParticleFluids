@@ -30,28 +30,25 @@ bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Sphere3d
 
 bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Triangle3d& triangle, const double tolerance)
 {
-	const auto& origin = triangle.getVertices()[0];
-	const auto& normal = triangle.getNormal();
+	const auto& plane = triangle.toPlane();
 
 	// 線分の始点が三角系の裏側にあれば、当たらない
-	const auto tls = line.getStart() - origin;
-	const auto distl0 = glm::dot( tls , normal);	// 線分の始点と平面の距離
-	if (distl0 <= tolerance) {
+	const auto planeToStart = plane.getDistance(line.getStart());	// 線分の始点と平面の距離
+	if (planeToStart <= tolerance) {
 		return false;
 	}
 
 	// 線分の終点が三角系の表側にあれば、当たらない
-	const auto tle = line.getEnd() - origin;
-	const auto distl1 = glm::dot( tle, normal);	// 線分の終点と平面の距離
-	if (distl1 >= -tolerance) {
+	const auto planeToEnd = plane.getDistance(line.getEnd());	// 線分の終点と平面の距離
+	if (planeToEnd >= -tolerance) {
 		return false;
 	}
 
-	// 直線と平面との交点sを取る
-	const auto denom = distl0 - distl1;
-	const auto t = distl0 / denom;
+	// 直線と平面との交点を取る
+	const auto denom = planeToStart - planeToEnd;
+	const auto param = planeToStart / denom;
 
-	const auto s = t * line.getDirection() + line.getStart();
+	const auto s = line.getPosition(param);
 
 	if (triangle.isInside(s)) {
 		Intersection intersection;
@@ -63,25 +60,25 @@ bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Triangle
 	return false;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Plane3d& plane)
+bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Plane3d& plane, const double tolerance)
 {
-	const auto& origin = ray.getOrigin();
-	const auto& direction = ray.getDirection();
-	double distance = 0.0;
-	const auto found = glm::intersectRayPlane(origin, direction, plane.getOrigin(), plane.getNormal(), distance);
-	if (found) {
-		const Intersection intersection( origin + direction * distance, plane.getNormal());
+	const auto distance = plane.getDistance(ray.getOrigin());
+
+	if (distance > -tolerance)
+	{
+		const Intersection intersection(ray.getPosition(distance), plane.getNormal());
 		intersections.push_back(intersection);
+		return true;
 	}
-	return found;
+	return false;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle)
+bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle, const double tolerance)
 {
 	const auto& normal = triangle.getNormal();
 	IntersectionAlgo innerAlgo;
 	const Plane3d plane(triangle.getVertices()[0], triangle.getNormal());
-	if (!innerAlgo.calculateIntersection(ray, plane)) {
+	if (!innerAlgo.calculateIntersection(ray, plane, tolerance)) {
 		return false;
 	}
 	const auto intersectionOnPlane = innerAlgo.getIntersections()[0];

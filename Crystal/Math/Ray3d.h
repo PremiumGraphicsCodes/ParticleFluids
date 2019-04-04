@@ -24,6 +24,8 @@ public:
 
 	Vector3dd getDirection() const { return direction; }
 
+	Vector3dd getPosition(const double param) const { return origin + direction * param; }
+
 private:
 	Vector3dd origin;
 	Vector3dd direction;

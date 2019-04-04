@@ -24,6 +24,11 @@ public:
 
 	Vector3dd getNormal() const { return normal; }
 
+	double getDistance(const Vector3dd& position) const {
+		const auto& v = position - origin;
+		return glm::dot(v, normal);
+	}
+
 private:
 	Vector3dd origin;
 	Vector3dd normal;

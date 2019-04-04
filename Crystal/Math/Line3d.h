@@ -41,6 +41,8 @@ public:
 
 	void transform(const Math::Matrix4dd& m) { dir = m * glm::vec4(dir,1.0); }
 
+	Math::Vector3dd getPosition(const double param) const { return origin + dir * param; }
+
 private:
 	Math::Vector3dd origin;
 	Math::Vector3dd dir;
