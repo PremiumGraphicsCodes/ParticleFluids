@@ -9,23 +9,32 @@
 using namespace Crystal::Math;
 using namespace Crystal::Algo;
 
+namespace {
+	Triangle3d getTriangle()
+	{
+		return Triangle3d({ Vector3dd(0,0,0), Vector3dd(10, 0, 0), Vector3dd(0, 10, 0) });
+	}
+}
+
 TEST(IntersectionAlgoTest, TestLineAndTriangle)
 {
-	const double tolerance = 1.0e-12;
+	const auto tolerance = 1.0e-12;
+	const auto& triangle = getTriangle();
+	IntersectionAlgo algo;
 
 	{
-		IntersectionAlgo algo;
-		const Line3dd line(Vector3dd(1, 1, 1), Vector3dd(0, 0, -2));
-		const Triangle3d triangle({ Vector3dd(0,0,0), Vector3dd(0, 10, 0), Vector3dd(10, 0, 0) });
+		const Line3dd line(Vector3dd(1, 1, -1), Vector3dd(0, 0, 2));
 		EXPECT_FALSE(algo.calculateIntersection(line, triangle, tolerance));
 	}
 
-
 	{
-		IntersectionAlgo algo;
 		const Line3dd line(Vector3dd(1, 1, 1), Vector3dd(0, 0, -2));
-		const Triangle3d triangle({ Vector3dd(0,0,0), Vector3dd(10, 0, 0), Vector3dd(0, 10, 0) });
 		EXPECT_TRUE(algo.calculateIntersection(line, triangle, tolerance));
+		const auto& intersections = algo.getIntersections();
+		EXPECT_EQ(1, intersections.size());
+		const auto i = intersections[0];
+		EXPECT_EQ(Vector3dd(1, 1, 0), i.position);
+		EXPECT_EQ(Vector3dd(0, 0, 1), i.normal);
 	}
 }
 
@@ -54,15 +63,15 @@ TEST(IntersectionAlgoTest, TestRayAndPlane)
 TEST(IntersectionAlgoTest, TestRayAndTriangle)
 {
 	IntersectionAlgo algo;
+	const auto& triangle = getTriangle();
+
+	{
+		const Ray3d ray(Vector3dd(1, 1,-1), Vector3dd(0, 0, 1));
+		EXPECT_FALSE(algo.calculateIntersection(ray, triangle));
+	}
 
 	{
 		const Ray3d ray(Vector3dd(1, 1, 1), Vector3dd(0, 0, -1));
-		const Triangle3d triangle({ Vector3dd(0,0,0), Vector3dd(0, 10, 0), Vector3dd(10, 0, 0) });
-		EXPECT_FALSE(algo.calculateIntersection(ray, triangle));
-	}
-	{
-		const Ray3d ray(Vector3dd(1, 1, -1), Vector3dd(0, 0, -1));
-		const Triangle3d triangle({ Vector3dd(0,0,0), Vector3dd(10, 0, 0), Vector3dd(0, 10, 0) });
 		EXPECT_TRUE(algo.calculateIntersection(ray, triangle));
 		const auto& intersections = algo.getIntersections();
 		EXPECT_EQ(1, intersections.size());
@@ -70,4 +79,17 @@ TEST(IntersectionAlgoTest, TestRayAndTriangle)
 		EXPECT_EQ(Vector3dd(1, 1, 0), i.position);
 		EXPECT_EQ(Vector3dd(0, 0, 1), i.normal);
 	}
+}
+
+TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
+{
+	const auto tolerance = 1.0e-12;
+	IntersectionAlgo algo;
+	const auto& triangle1 = getTriangle();
+
+	{
+		const  Triangle3d triangle2({ Vector3dd(10,0,0), Vector3dd(20, 0, 0), Vector3dd(10, 20, 0) });
+		EXPECT_FALSE(algo.calculateIntersection(triangle1, triangle2, tolerance));
+	}
+
 }
