@@ -71,28 +71,11 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d&
 	const auto intersectionOnPlane = innerAlgo.getIntersections()[0];
 
 	const auto& i = intersectionOnPlane.position;
-	const auto a = triangle.getVertices()[0]-i;
-	const auto b = triangle.getVertices()[1]-i;
-	const auto c = triangle.getVertices()[2]-i;
-
-	const auto p0ToP1 = triangle.getVertices()[1] - triangle.getVertices()[0];
-	const auto p1ToP2 = triangle.getVertices()[2] - triangle.getVertices()[1];
-	const auto p2ToP0 = triangle.getVertices()[0] - triangle.getVertices()[2];
-
-	const auto& v1 = glm::cross(a, p0ToP1);
-	if (glm::dot(v1, normal) < 0.0) {
-		return false;
+	if (triangle.isInside(i)) {
+		intersections.push_back(intersectionOnPlane);
+		return true;
 	}
-	const auto& v2 = glm::cross(b, p1ToP2);
-	if (glm::dot(v2, normal) < 0.0) {
-		return false;
-	}
-	const auto& v3 = glm::cross(c, p2ToP0);
-	if (glm::dot(v3, normal) < 0.0) {
-		return false;
-	}
-	intersections.push_back(intersectionOnPlane);
-	return true;
+	return false;
 }
 
 /*
