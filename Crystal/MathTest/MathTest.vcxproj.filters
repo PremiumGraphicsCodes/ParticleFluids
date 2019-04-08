@@ -13,6 +13,7 @@
     <ClCompile Include="Torus3dTest.cpp" />
     <ClCompile Include="Cone3dTest.cpp" />
     <ClCompile Include="Line3dTest.cpp" />
+    <ClCompile Include="Ray3dTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
