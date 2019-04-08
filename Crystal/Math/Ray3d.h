@@ -4,6 +4,7 @@
 
 namespace Crystal {
 	namespace Math {
+		class Line3dd;
 
 class Ray3d
 {
@@ -25,6 +26,8 @@ public:
 	Vector3dd getDirection() const { return direction; }
 
 	Vector3dd getPosition(const double param) const { return origin + direction * param; }
+
+	Line3dd toLine(const double length) const;
 
 private:
 	Vector3dd origin;

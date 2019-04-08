@@ -6,6 +6,7 @@
 
 namespace Crystal {
 	namespace Math {
+		class Plane3d;
 
 class Quad3d : ICurve3d
 {
@@ -71,9 +72,7 @@ public:
 
 	Vector3dd getV3() const { return origin + vvec; }
 
-	Plane3d toPlane() const {
-		return Plane3d(origin, getNormal());
-	}
+	Plane3d toPlane() const;
 
 private:
 	Vector3dd origin;

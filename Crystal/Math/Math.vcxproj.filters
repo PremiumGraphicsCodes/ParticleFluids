@@ -42,4 +42,13 @@
       <UniqueIdentifier>{13cca34e-c8e4-4011-be12-be3aefa210d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Triangle3d.cpp" />
+    <ClCompile Include="Ray3d.cpp" />
+    <ClCompile Include="Line3d.cpp" />
+    <ClCompile Include="Vector3d.cpp" />
+    <ClCompile Include="Quad3d.cpp">
+      <Filter>Curve3d</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

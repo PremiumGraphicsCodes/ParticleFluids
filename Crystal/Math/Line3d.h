@@ -6,6 +6,7 @@
 
 namespace Crystal {
 	namespace Math {
+		class Ray3d;
 
 class Line3dd
 {
@@ -42,6 +43,8 @@ public:
 	void transform(const Math::Matrix4dd& m) { dir = m * glm::vec4(dir,1.0); }
 
 	Math::Vector3dd getPosition(const double param) const { return origin + dir * param; }
+
+	Ray3d toRay() const;
 
 private:
 	Math::Vector3dd origin;
