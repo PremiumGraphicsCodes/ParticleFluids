@@ -7,6 +7,9 @@
 #include <array>
 
 namespace Crystal {
+	namespace Math {
+		class Triangle3d;
+	}
 	namespace Shape {
 
 //class Vertex;
@@ -58,6 +61,8 @@ public:
 	void reverse();
 
 	void setStart(HalfEdge* start) { this->start = start; }
+
+	Math::Triangle3d toTriangle() const;
 
 private:
 	HalfEdge* start;

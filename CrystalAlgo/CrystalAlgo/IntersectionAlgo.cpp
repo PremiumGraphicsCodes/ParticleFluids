@@ -7,10 +7,13 @@
 #include "../../Crystal/Math/Plane3d.h"
 #include "../../Crystal/Math/Quad3d.h"
 
+#include "../../Crystal/Shape/PolygonMesh.h"
+
 //#define GLM_ENABLE_EXPERIMENTAL
 //#include "../../Crystal/ThirdParty/glm-0.9.9.3/glm/gtx/intersect.hpp"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 
 bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Sphere3d& sphere, const double tolerance)
@@ -185,4 +188,26 @@ bool IntersectionAlgo::calculateIntersection(const Triangle3d& lhs, const Triang
 	const auto found2 = calculateIntersection(l2, rhs, tolerance);
 	const auto found3 = calculateIntersection(l3, rhs, tolerance);
 	return (found1 || found2 || found3);
+}
+
+bool IntersectionAlgo::calculateIntersection(const PolygonMesh& lhs, const PolygonMesh& rhs, const double tolerance)
+{
+	const auto& faces1 = lhs.getFaces();
+	std::vector<Triangle3d> triangles1;
+	for (auto f : faces1) {
+		const auto& triangle = f->toTriangle();
+		triangles1.push_back(triangle);
+	}
+	const auto& faces2 = rhs.getFaces();
+	std::vector<Triangle3d> triangles2;
+	for (auto f : faces2) {
+		const auto& triangle = f->toTriangle();
+		triangles2.push_back(triangle);
+	}
+	for (const auto& t1 : triangles1) {
+		for (const auto& t2 : triangles2) {
+			calculateIntersection(t1, t2, tolerance);
+		}
+	}
+	return !intersections.empty();
 }

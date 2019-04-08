@@ -2,6 +2,7 @@
 #include "Face.h"
 #include "Vertex.h"
 #include "HalfEdge.h"
+#include "../Math/Triangle3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -158,4 +159,12 @@ void Face::reverse()
 	edges[1]->connect(edges[0]);
 	edges[0]->connect(edges[2]);
 	this->start = edges.back();
+}
+
+Triangle3d Face::toTriangle() const
+{
+	const auto& v1 = getV1()->getPosition();
+	const auto& v2 = getV2()->getPosition();
+	const auto& v3 = getV3()->getPosition();
+	return Triangle3d({ v1, v2, v3 });
 }

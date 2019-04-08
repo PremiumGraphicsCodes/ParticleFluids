@@ -9,51 +9,40 @@ using namespace Crystal::Algo;
 
 IntersectionButton::IntersectionButton(Repository* model, Canvas* canvas) :
 	IPopupButton("Intersection", model, canvas),
-	ray("Ray"),
-	plane("Plane"),
+	mesh1("Mesh1", model, canvas),
+	mesh2("Mesh2", model, canvas),
 	tolerance("Tolerance", 1.0e-12)
 {
 }
 
 void IntersectionButton::onShow()
 {
-	ray.show();
-	plane.show();
+	mesh1.show();
+	mesh2.show();
 }
 
 void IntersectionButton::onOk()
 {
-	IntersectionAlgo algo;
-	const auto isFound = algo.calculateIntersection(ray.getValue(), plane.getValue(), tolerance.getValue());
-	if (isFound) {
-		{
-			WireFrameBuilder builder;
-			builder.build(ray.getValue(), 1.0e+2);
-			WireFrameAttribute attr;
-			attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-			attr.width = 1.0f;
-			getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attr, "ray");
-		}
-		/*
-		{
-			WireFrameBuilder builder;
-			builder.build(plane.getValue()., 1.0e+2);
-			WireFrameAttribute attr;
-			attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-			attr.width = 1.0f;
-			getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attr, "ray");
-		}
-		*/
+	auto obj1 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(mesh1.getId());
+	auto obj2 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(mesh2.getId());
+	if (obj1 == nullptr || obj2 == nullptr) {
+		return;
+	}
 
+	IntersectionAlgo algo;
+	const auto isFound = algo.calculateIntersection(*obj1->getShape(),*obj2->getShape(), tolerance.getValue());
+	if (isFound) {
 		const auto& intersections = algo.getIntersections();
+		std::vector<Math::Vector3df> positions;
 		for (const auto& i : intersections) {
 			const auto& p = i.position;
-			ParticleAttribute attr;
-			attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-			attr.size = 100.0f;
-			getModel()->getObjects()->getParticleSystems()->addObject(p, attr, "intersection");
-			getCanvas()->setViewModel(getModel()->toViewModel());
+			positions.push_back(p);
 		}
+		ParticleAttribute attr;
+		attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+		attr.size = 1.0f;
+		getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "intersections");
+		getCanvas()->setViewModel(getModel()->toViewModel());
 	}
 }
 

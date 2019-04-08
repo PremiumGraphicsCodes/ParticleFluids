@@ -18,7 +18,8 @@ public:
 		ambient("Ambient", glm::vec4(1, 0, 0, 0)),
 		specular("Specular", glm::vec4(0, 0, 0, 0)),
 		diffuse("Diffuse", glm::vec4(0, 1, 0, 0)),
-		shininess("Shininess", 1.0f)
+		shininess("Shininess", 1.0f),
+		nameView("Name", "PolygonMesh")
 	{
 	}
 
@@ -28,6 +29,7 @@ public:
 		diffuse.show();
 		specular.show();
 		shininess.show();
+		nameView.show();
 	}
 
 	UI::PolygonMeshAttribute getValue() const {
@@ -41,12 +43,14 @@ public:
 		return attr;
 	}
 
+	std::string getName() const { return nameView.getValue(); }
+
 private:
 	Float4View ambient;
 	Float4View diffuse;
 	Float4View specular;
 	FloatView shininess;
-	//StringView nameView;
+	StringView nameView;
 };
 
 	}

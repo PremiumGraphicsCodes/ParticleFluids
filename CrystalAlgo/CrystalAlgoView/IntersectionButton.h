@@ -1,8 +1,7 @@
 #pragma once
 
 #include "../../Crystal/AppBase/IPopupButton.h"
-#include "../../Crystal/AppBase/Plane3dView.h"
-#include "../../Crystal/AppBase/Ray3dView.h"
+#include "../../Crystal/AppBase/ObjectSelectButton.h"
 #include "../../Crystal/AppBase/DoubleView.h"
 
 namespace Crystal {
@@ -20,8 +19,8 @@ public:
 	void onCancel() override;
 
 private:
-	Ray3dView ray;
-	Plane3dView plane;
+	ObjectSelectButton mesh1;
+	ObjectSelectButton mesh2;
 	DoubleView tolerance;
 };
 
