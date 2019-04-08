@@ -6,5 +6,6 @@ using namespace Crystal::Math;
 
 Ray3d Line3dd::toRay() const
 {
-	return Ray3d(origin, getDirection());
+	const auto& direction = glm::normalize(getDirection());
+	return Ray3d(origin, direction);
 }

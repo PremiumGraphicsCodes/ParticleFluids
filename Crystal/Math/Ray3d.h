@@ -29,6 +29,8 @@ public:
 
 	Line3dd toLine(const double length) const;
 
+	bool isSame(const Ray3d& rhs, const double tolerance) const;
+
 private:
 	Vector3dd origin;
 	Vector3dd direction;
