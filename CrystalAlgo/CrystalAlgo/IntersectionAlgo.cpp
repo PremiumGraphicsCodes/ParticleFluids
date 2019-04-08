@@ -107,6 +107,13 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Plane3d& pl
 	return false;
 }
 
+/*
+bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Quad3d& quad, const double tolerance)
+{
+
+}
+*/
+
 bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle, const double tolerance)
 {
 	const auto& normal = triangle.getNormal();

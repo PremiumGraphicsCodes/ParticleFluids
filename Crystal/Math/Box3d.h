@@ -7,7 +7,6 @@ namespace Crystal {
 	namespace Math {
 		template<typename>
 		class Space3d;
-		template<typename>
 		class Quad3d;
 		template<typename>
 		class Line3d;

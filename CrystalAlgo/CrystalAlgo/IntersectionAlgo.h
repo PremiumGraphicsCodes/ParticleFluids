@@ -9,6 +9,7 @@ namespace Crystal {
 		class Ray3d;
 		class Plane3d;
 		class Triangle3d;
+		class Quad3d;
 	}
 	namespace Algo {
 
@@ -35,13 +36,17 @@ class IntersectionAlgo
 public:
 	bool calculateIntersection(const Math::Ray3d& ray, const Math::Sphere3d& sphere, const double tolerance);
 
+	bool calculateIntersection(const Math::Ray3d& ray, const Math::Plane3d& plane, const double tolerance);
+
+	bool calculateIntersection(const Math::Ray3d& ray, const Math::Quad3d& quad, const double tolerance);
+
+	bool calculateIntersection(const Math::Ray3d& ray, const Math::Triangle3d& triangle, const double tolerance);
+
+	bool calculateIntersection(const Math::Line3dd& line, const Math::Plane3d& plane, const double tolerance);
+
 	bool calculateIntersection(const Math::Line3dd& line, const Math::Sphere3d& sphere, const double tolerance);
 
 	bool calculateIntersection(const Math::Line3dd& line, const Math::Triangle3d& triangle, const double tolerance);
-
-	bool calculateIntersection(const Math::Ray3d& ray, const Math::Plane3d& plane, const double tolerance);
-
-	bool calculateIntersection(const Math::Ray3d& ray, const Math::Triangle3d& triangle, const double tolerance);
 
 	bool calculateIntersection(const Math::Triangle3d& lhs, const Math::Triangle3d& rhs, const double tolerance);
 

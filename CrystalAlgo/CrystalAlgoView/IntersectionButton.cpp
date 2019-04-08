@@ -26,12 +26,24 @@ void IntersectionButton::onOk()
 	IntersectionAlgo algo;
 	const auto isFound = algo.calculateIntersection(ray.getValue(), plane.getValue(), tolerance.getValue());
 	if (isFound) {
-		WireFrameBuilder builder;
-		builder.build(ray.getValue(), 1.0e+2);
-		WireFrameAttribute attr;
-		attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-		attr.width = 1.0f;
-		getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attr, "ray");
+		{
+			WireFrameBuilder builder;
+			builder.build(ray.getValue(), 1.0e+2);
+			WireFrameAttribute attr;
+			attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+			attr.width = 1.0f;
+			getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attr, "ray");
+		}
+		/*
+		{
+			WireFrameBuilder builder;
+			builder.build(ray.getValue(), 1.0e+2);
+			WireFrameAttribute attr;
+			attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+			attr.width = 1.0f;
+			getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attr, "ray");
+		}
+		*/
 
 		const auto& intersections = algo.getIntersections();
 		for (const auto& i : intersections) {
