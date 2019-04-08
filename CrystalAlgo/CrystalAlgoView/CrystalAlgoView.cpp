@@ -22,6 +22,7 @@
 #include "../../Crystal/Graphics/PerspectiveCamera.h"
 
 #include "SpaceHashButton.h"
+#include "IntersectionButton.h"
 #include "BooleanButton.h"
 
 using namespace Crystal::Math;
@@ -36,6 +37,7 @@ namespace {
 			IPanel(name, repository, canvas)
 		{
 			add(new BooleanButton(model, canvas));
+			add(new IntersectionButton(model, canvas));
 			add(new SpaceHashButton(model, canvas));
 		}
 	};

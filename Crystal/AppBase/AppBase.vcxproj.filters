@@ -288,6 +288,9 @@
     <ClInclude Include="PMAttributeView.h">
       <Filter>Generation\PolygonMesh</Filter>
     </ClInclude>
+    <ClInclude Include="Ray3dView.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

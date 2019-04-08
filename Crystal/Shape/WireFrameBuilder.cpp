@@ -2,6 +2,7 @@
 
 #include "../Math/Line3d.h"
 #include "../Math/Sphere3d.h"
+#include "../Math/Ray3d.h"
 #include "../Math/Box3d.h"
 #include "../Math/Cone3d.h"
 #include "../Math/Cylinder3d.h"
@@ -36,6 +37,22 @@ void WireFrameBuilder::build(const Box3d& box)
 	lines.push_back(Line3dd::fromPoints(vertices[1], vertices[5]));
 	lines.push_back(Line3dd::fromPoints(vertices[2], vertices[6]));
 	lines.push_back(Line3dd::fromPoints(vertices[3], vertices[7]));
+}
+
+void WireFrameBuilder::build(const Line3dd& line)
+{
+	std::vector<Vector3dd> vertices;
+	vertices.push_back(line.getStart());
+	vertices.push_back(line.getEnd());
+	lines.push_back(Line3dd::fromPoints(vertices[0], vertices[1]));
+}
+
+void WireFrameBuilder::build(const Ray3d& ray, const double length)
+{
+	std::vector<Vector3dd> vertices;
+	vertices.push_back(ray.getPosition(0.0));
+	vertices.push_back(ray.getPosition(length));
+	lines.push_back(Line3dd::fromPoints(vertices[0], vertices[1]));
 }
 
 void WireFrameBuilder::build(const ICurve3d& sphere, const int unum, const int vnum)

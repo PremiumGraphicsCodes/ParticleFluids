@@ -5,6 +5,9 @@
     <ClCompile Include="SpaceHashButton.cpp" />
     <ClCompile Include="OctreeButton.cpp" />
     <ClCompile Include="BooleanButton.cpp" />
+    <ClCompile Include="IntersectionButton.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -13,5 +16,13 @@
     <ClInclude Include="SpaceHashButton.h" />
     <ClInclude Include="OctreeButton.h" />
     <ClInclude Include="BooleanButton.h" />
+    <ClInclude Include="IntersectionButton.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Intersection">
+      <UniqueIdentifier>{81e14b45-7bcc-400a-a684-4e49e0cf861f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

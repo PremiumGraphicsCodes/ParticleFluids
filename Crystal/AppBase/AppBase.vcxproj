@@ -100,6 +100,7 @@
     <ClInclude Include="PSConeButton.h" />
     <ClInclude Include="PSCylinderButton.h" />
     <ClInclude Include="PSSphereButton.h" />
+    <ClInclude Include="Ray3dView.h" />
     <ClInclude Include="Sphere3dView.h" />
     <ClInclude Include="StringView.h" />
     <ClInclude Include="TextureTreeList.h" />
