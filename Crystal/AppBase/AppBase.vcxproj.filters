@@ -112,6 +112,9 @@
     <ClCompile Include="PMPlaneButton.cpp">
       <Filter>Generation\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="WFRayButton.cpp">
+      <Filter>Generation\WireFrame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -290,6 +293,9 @@
     </ClInclude>
     <ClInclude Include="Ray3dView.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="WFRayButton.h">
+      <Filter>Generation\WireFrame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -22,7 +22,7 @@ void WireFrameTreeList::onShow()
 		const auto name = ws->getName();
 		if (ImGui::Checkbox(name.c_str(), &ws->_isVisible)) {
 			getCanvas()->setViewModel(getRepository()->toViewModel());
-			getCanvas()->fitCamera(getRepository()->getBoundingBox());
+//			getCanvas()->fitCamera(getRepository()->getBoundingBox());
 		}
 	}
 	ImGui::EndChild();

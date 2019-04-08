@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IPopupButton.h"
+#include "IntView.h"
 #include "Sphere3dView.h"
 #include "WFAttributeView.h"
 
@@ -12,10 +13,10 @@ class WFSphereButton : public IPopupButton
 public:
 	WFSphereButton(Repository* repository, Canvas* canvas) :
 		IPopupButton("WFSphere", repository, canvas),
-		sphereButton("Sphere"),
-		attributeButton("Attribute"),
-		unum(12),
-		vnum(12)
+		sphere("Sphere"),
+		attribute("Attribute"),
+		unum("UNum", 12),
+		vnum("VNum", 12)
 	{
 	}
 
@@ -29,10 +30,10 @@ public:
 	}
 
 private:
-	int unum;
-	int vnum;
-	Sphere3dView sphereButton;
-	WFAttributeView attributeButton;
+	IntView unum;
+	IntView vnum;
+	Sphere3dView sphere;
+	WFAttributeView attribute;
 };
 
 	}

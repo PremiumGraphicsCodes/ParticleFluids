@@ -24,7 +24,7 @@ void PolygonTreeList::onShow()
 
 		if (ImGui::Checkbox(str, &polygon->_isVisible)) {
 			getCanvas()->setViewModel(getRepository()->toViewModel());
-			getCanvas()->fitCamera(getRepository()->getBoundingBox());
+//			getCanvas()->fitCamera(getRepository()->getBoundingBox());
 			//polygon->_isVisible = !polygon->_isVisible;
 		}
 

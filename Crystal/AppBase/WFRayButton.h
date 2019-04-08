@@ -1,18 +1,20 @@
 #pragma once
 
 #include "IPopupButton.h"
-#include "Box3dView.h"
+#include "Ray3dView.h"
+#include "DoubleView.h"
 #include "WFAttributeView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class WFBoxButton : public IPopupButton
+class WFRayButton : public IPopupButton
 {
 public:
-	WFBoxButton(Repository* model, Canvas* canvas) :
-		IPopupButton("WFBox", model, canvas),
-		box("Box"),
+	WFRayButton(Repository* model, Canvas* canvas) :
+		IPopupButton("WFRay", model, canvas),
+		ray("Ray"),
+		length("Length", 1.0),
 		attribute("Attribute")
 	{
 	}
@@ -24,7 +26,8 @@ public:
 	void onCancel() override;
 
 private:
-	Box3dView box;
+	Ray3dView ray;
+	DoubleView length;
 	WFAttributeView attribute;
 };
 

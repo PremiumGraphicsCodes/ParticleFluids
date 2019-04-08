@@ -24,7 +24,7 @@ void ParticleSystemTreeList::onShow()
 		//ImGui::Text(n.c_str());
 		if(ImGui::Checkbox(str, &ps->_isVisible)) {
 			getCanvas()->setViewModel(getRepository()->toViewModel());
-			getCanvas()->fitCamera(getRepository()->getBoundingBox());
+//			getCanvas()->fitCamera(getRepository()->getBoundingBox());
 		}
 	}
 	ImGui::EndChild();

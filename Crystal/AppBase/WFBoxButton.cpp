@@ -9,15 +9,15 @@ using namespace Crystal::UI;
 
 void WFBoxButton::onShow()
 {
-	boxButton.show();
-	attributeButton.show();
+	box.show();
+	attribute.show();
 }
 
 void WFBoxButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
-	builder.build(boxButton.getValue());
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Box");
+	builder.build(box.getValue());
+	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attribute.getValue(), "Box");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

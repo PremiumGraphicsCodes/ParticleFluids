@@ -6,21 +6,22 @@
 #include "../Shape/WireFrameBuilder.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
 void WFSphereButton::onShow()
 {
-	sphereButton.show();
-	ImGui::InputInt("UNum", &unum);
-	ImGui::InputInt("VNum", &vnum);
-	attributeButton.show();
+	sphere.show();
+	unum.show();
+	vnum.show();
+	attribute.show();
 }
 
 void WFSphereButton::onOk()
 {
-	Crystal::Shape::WireFrameBuilder builder;
-	builder.build(sphereButton.getValue(), unum, vnum);
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attributeButton.getValue(), "Sphere");
+	WireFrameBuilder builder;
+	builder.build(sphere.getValue(), unum.getValue(), vnum.getValue());
+	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attribute.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
