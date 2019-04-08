@@ -117,17 +117,19 @@ public:
 
 	bool isShirinked() const { return (getMinX() == end.x) && (getMinY() == end.y) && (getMinZ() == end.z); }
 
-	bool equals(const Box3d& rhs) const {
+	bool equals(const Box3d& rhs, const double tolerance) const {
 		return
 			start == rhs.getStart() &&
-			Tolerance<double>::isEqualLoosely(end.x, rhs.end.x) &&
-			Tolerance<double>::isEqualLoosely(end.y, rhs.end.y) &&
-			Tolerance<double>::isEqualLoosely(end.z, rhs.end.z);
+			Tolerance<double>::isEqual(end.x, rhs.end.x, tolerance) &&
+			Tolerance<double>::isEqual(end.y, rhs.end.y, tolerance) &&
+			Tolerance<double>::isEqual(end.z, rhs.end.z, tolerance);
 	}
 
+	/*
 	bool operator==(const Box3d& rhs) const { return equals(rhs); }
 
 	bool operator!=(const Box3d& rhs) const { return !equals(rhs); }
+	*/
 
 	bool hasIntersection(const Box3d& rhs) const {
 		const auto distx = std::fabs(getCenter().x - rhs.getCenter().x);

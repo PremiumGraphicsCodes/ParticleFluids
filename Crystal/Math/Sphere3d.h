@@ -79,15 +79,11 @@ public:
 		return sphere;
 	}
 
-	bool equals(const Sphere3d& rhs) const {
+	bool equals(const Sphere3d& rhs, const double tolerance) const {
 		return
-			Tolerance<double>::isEqualLoosely(radius, rhs.radius) &&
+			Tolerance<double>::isEqual(radius, rhs.radius, tolerance) &&
 			(center == rhs.center);
 	}
-
-	bool operator==(const Sphere3d& rhs) const { return equals(rhs); }
-
-	bool operator!=(const Sphere3d& rhs) const { return !equals(rhs); }
 
 	bool isInner(const Vector3dd& v) const { return glm::distance(v, center) < radius; }
 

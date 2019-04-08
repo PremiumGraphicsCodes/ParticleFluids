@@ -24,15 +24,7 @@ public:
 		return 1.0e-18;
 	}
 
-	//static bool isEqual(const double x, const double y, const double tolerance) { return ::fabs(x - y) < tolerance; }
-
-	static bool isZeroLoosely(const double x) { return ::fabs(x) < getLooseTolerance(); }
-
-	static bool isEqualLoosely(const double x, const double y) { return ::fabs(x - y) < getLooseTolerance(); }
-
-	static bool isZeroStrictly(const double x) { return ::fabs(x) < getStrictTolerance(); }
-
-	static bool isEqualStrictly(const double x, const double y) { return ::fabs(x - y) < getStrictTolerance(); }
+	static bool isEqual(const double x, const double y, const double tolerance) { return ::fabs(x - y) < tolerance; }
 
 	static double getHalfPI() { return 0.5 * getPI(); }
 
