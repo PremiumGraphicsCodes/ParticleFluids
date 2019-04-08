@@ -79,7 +79,7 @@ public:
 		return sphere;
 	}
 
-	bool equals(const Sphere3d& rhs, const double tolerance) const {
+	bool isSame(const Sphere3d& rhs, const double tolerance) const {
 		return
 			Tolerance<double>::isEqual(radius, rhs.radius, tolerance) &&
 			(center == rhs.center);

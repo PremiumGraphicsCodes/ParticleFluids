@@ -7,15 +7,26 @@
     <ClCompile Include="Triangle3dTest.cpp" />
     <ClCompile Include="Vector3dTest.cpp" />
     <ClCompile Include="Matrix3dTest.cpp" />
-    <ClCompile Include="Cylinder3dTest.cpp" />
     <ClCompile Include="Circle2d.cpp" />
-    <ClCompile Include="Quad3dTest.cpp" />
     <ClCompile Include="Torus3dTest.cpp" />
-    <ClCompile Include="Cone3dTest.cpp" />
     <ClCompile Include="Line3dTest.cpp" />
     <ClCompile Include="Ray3dTest.cpp" />
+    <ClCompile Include="Quad3dTest.cpp">
+      <Filter>Curve3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Cone3dTest.cpp">
+      <Filter>Curve3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Cylinder3dTest.cpp">
+      <Filter>Curve3d</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Curve3d">
+      <UniqueIdentifier>{15c4f16b-602f-4df5-bdd5-7ec132d17299}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
