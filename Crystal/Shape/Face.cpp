@@ -80,11 +80,6 @@ float Face::getArea() const
 	return glm::cross( v1, v2).length() / 2.0f;
 }
 
-bool Face::isDegenerated() const
-{
-	return getArea() < Tolerance<float>::getLooseTolerance();
-}
-
 bool Face::isDegenerated(const float area) const
 {
 	return getArea() < area;

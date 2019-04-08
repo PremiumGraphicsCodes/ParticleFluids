@@ -45,8 +45,6 @@ public:
 
 	void changeId(const int id) { this->id = id; }
 
-	bool isDegenerated() const;
-
 	bool isDegenerated(const float area) const;
 
 	void toDegenerate();

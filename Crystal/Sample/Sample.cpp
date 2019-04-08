@@ -33,7 +33,7 @@ int main(int, char**)
 {
 	auto camera = new PerspectiveCamera(
 		1.0,
-		0.5f * Tolerance<float>::getPI(),
+		0.5f * Tolerance<double>::getPI(),
 		Vector3df(0,0,0),
 		Vector3df(0,0,-10.0),
 		1.0f, 10.0f

@@ -62,8 +62,6 @@ public:
 
 	float calculateCollapseCost() const;
 
-	bool isDegenerated() const;
-
 	bool isDegenerated(const float length) const;
 
 	void toDenerate();

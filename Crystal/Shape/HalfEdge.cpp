@@ -120,11 +120,6 @@ float HalfEdge::calculateCollapseCost() const
 	return 0.0f;
 }
 
-bool HalfEdge::isDegenerated() const
-{
-	return getLength() < Tolerance<float>::getLooseTolerance();
-}
-
 bool HalfEdge::isDegenerated(const float length) const
 {
 	return getLength() < length;

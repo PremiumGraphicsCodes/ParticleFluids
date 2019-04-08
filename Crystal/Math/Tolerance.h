@@ -13,35 +13,6 @@ class Tolerance
 };
 
 template<>
-class Tolerance < float >
-{
-public:
-	static float getLooseTolerance() {
-		return 1.0e-6f;
-	}
-
-	static float getStrictTolerance() {
-		return 1.0e-12f;
-	}
-
-	static bool isEqual(const float x, const float y, const float tolerance) { return ::fabs(x - y) < tolerance; }
-
-	static bool isZeroLoosely(const float x) { return ::fabs(x) < getLooseTolerance(); }
-
-	static bool isEqualLoosely(const float x, const float y) { return ::fabs(x - y) < getLooseTolerance(); }
-
-	static bool isZeroStrictly(const float x) { return ::fabs(x) < getStrictTolerance(); }
-
-	static bool isEqualStrictly(const float x, const float y) { return ::fabs(x - y) < getStrictTolerance(); }
-
-	static float getHalfPI() { return 0.5f * getPI(); }
-
-	static float getPI() { return 3.14159265359f; }
-
-	static float getTwoPI() { return 2.0f * getPI(); }
-};
-
-template<>
 class Tolerance < double > final
 {
 public:
@@ -53,7 +24,7 @@ public:
 		return 1.0e-18;
 	}
 
-	static bool isEqual(const double x, const double y, const double tolerance) { return ::fabs(x - y) < tolerance; }
+	//static bool isEqual(const double x, const double y, const double tolerance) { return ::fabs(x - y) < tolerance; }
 
 	static bool isZeroLoosely(const double x) { return ::fabs(x) < getLooseTolerance(); }
 
