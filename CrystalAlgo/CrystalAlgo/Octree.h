@@ -25,11 +25,7 @@ public:
 
 	bool isEmpty() const;
 
-	bool equals(const Octree& rhs) const;
-
-	bool operator==(const Octree& rhs) const;
-
-	bool operator!=(const Octree& rhs) const;
+	bool equals(const Octree& rhs, const double tolerance) const;
 
 	std::vector<IParticle*> getParticles() const { return particles; }
 

@@ -56,19 +56,9 @@ bool Octree::isEmpty() const
 	return particles.empty();
 }
 
-bool Octree::equals(const Octree& rhs) const
+bool Octree::equals(const Octree& rhs, const double tolerance) const
 {
 	return
-		(this->space == rhs.space) &&
+		(this->space.equals(rhs.space, tolerance)) &&
 		(this->particles == rhs.particles);
-}
-
-bool Octree::operator==(const Octree& rhs) const
-{
-	return equals(rhs);
-}
-
-bool Octree::operator!=(const Octree& rhs) const
-{
-	return !equals(rhs);
 }
