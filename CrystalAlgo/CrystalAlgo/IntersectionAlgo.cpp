@@ -5,8 +5,7 @@
 #include "../../Crystal/Math/Ray3d.h"
 #include "../../Crystal/Math/Sphere3d.h"
 #include "../../Crystal/Math/Plane3d.h"
-
-#include "../../Crystal/Math/Matrix3d.h"
+#include "../../Crystal/Math/Quad3d.h"
 
 //#define GLM_ENABLE_EXPERIMENTAL
 //#include "../../Crystal/ThirdParty/glm-0.9.9.3/glm/gtx/intersect.hpp"
@@ -66,28 +65,56 @@ bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Triangle
 {
 	const auto& plane = triangle.toPlane();
 
-	// 線分の始点が三角系の裏側にあれば、当たらない
-	const auto planeToStart = plane.getDistance(line.getStart());	// 線分の始点と平面の距離
-	if (planeToStart <= tolerance) {
+	IntersectionAlgo innerAlgo;
+	if (!innerAlgo.calculateIntersection(line, plane, tolerance)) {
 		return false;
 	}
 
-	// 線分の終点が三角系の表側にあれば、当たらない
-	const auto planeToEnd = plane.getDistance(line.getEnd());	// 線分の終点と平面の距離
-	if (planeToEnd >= -tolerance) {
-		return false;
-	}
-
-	// 直線と平面との交点を取る
-	const auto denom = planeToStart - planeToEnd;
-	const auto param = planeToStart / denom;
-
-	const auto s = line.getPosition(param);
-
+	auto s = innerAlgo.getIntersections()[0].position;
 	if (triangle.isInside(s)) {
 		Intersection intersection;
 		intersection.position = s;
 		intersection.normal = triangle.getNormal();
+		intersections.push_back(intersection);
+		return true;
+	}
+	return false;
+}
+
+bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Quad3d& quad, const double tolerance)
+{
+	const auto& plane = quad.toPlane();
+
+	IntersectionAlgo innerAlgo;
+	if (!innerAlgo.calculateIntersection(line, plane, tolerance)) {
+		return false;
+	}
+
+	auto s = innerAlgo.getIntersections()[0].position;
+	if (quad.isInside(s)) {
+		Intersection intersection;
+		intersection.position = s;
+		intersection.normal = quad.getNormal();
+		intersections.push_back(intersection);
+		return true;
+	}
+	return false;
+}
+
+bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Quad3d& quad, const double tolerance)
+{
+	const auto& plane = quad.toPlane();
+
+	IntersectionAlgo innerAlgo;
+	if (!innerAlgo.calculateIntersection(ray, plane, tolerance)) {
+		return false;
+	}
+
+	auto s = innerAlgo.getIntersections()[0].position;
+	if (quad.isInside(s)) {
+		Intersection intersection;
+		intersection.position = s;
+		intersection.normal = quad.getNormal();
 		intersections.push_back(intersection);
 		return true;
 	}
@@ -107,13 +134,6 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Plane3d& pl
 	return false;
 }
 
-/*
-bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Quad3d& quad, const double tolerance)
-{
-
-}
-*/
-
 bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle, const double tolerance)
 {
 	const auto& normal = triangle.getNormal();
@@ -130,6 +150,29 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d&
 		return true;
 	}
 	return false;
+}
+
+bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Plane3d& plane, const double tolerance)
+{
+	// 線分の始点が三角系の裏側にあれば、当たらない
+	const auto planeToStart = plane.getDistance(line.getStart());	// 線分の始点と平面の距離
+	if (planeToStart <= tolerance) {
+		return false;
+	}
+
+	// 線分の終点が三角系の表側にあれば、当たらない
+	const auto planeToEnd = plane.getDistance(line.getEnd());	// 線分の終点と平面の距離
+	if (planeToEnd >= -tolerance) {
+		return false;
+	}
+
+	// 直線と平面との交点を取る
+	const auto denom = planeToStart - planeToEnd;
+	const auto param = planeToStart / denom;
+
+	Intersection i(line.getPosition(param), plane.getNormal());
+	intersections.push_back(i);
+	return true;
 }
 
 bool IntersectionAlgo::calculateIntersection(const Triangle3d& lhs, const Triangle3d& rhs, const double tolerance)

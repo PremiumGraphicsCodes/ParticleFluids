@@ -2,6 +2,7 @@
 
 #include "Vector3d.h"
 #include "ICurve3d.h"
+#include "Plane3d.h"
 
 namespace Crystal {
 	namespace Math {
@@ -69,6 +70,10 @@ public:
 	Vector3dd getV2() const { return origin + uvec + vvec; }
 
 	Vector3dd getV3() const { return origin + vvec; }
+
+	Plane3d toPlane() const {
+		return Plane3d(origin, getNormal());
+	}
 
 private:
 	Vector3dd origin;

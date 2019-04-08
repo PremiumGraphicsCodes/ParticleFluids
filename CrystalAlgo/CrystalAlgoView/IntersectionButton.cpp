@@ -37,7 +37,7 @@ void IntersectionButton::onOk()
 		/*
 		{
 			WireFrameBuilder builder;
-			builder.build(ray.getValue(), 1.0e+2);
+			builder.build(plane.getValue()., 1.0e+2);
 			WireFrameAttribute attr;
 			attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 			attr.width = 1.0f;
