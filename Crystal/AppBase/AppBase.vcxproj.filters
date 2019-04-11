@@ -285,9 +285,6 @@
     <ClInclude Include="PMPlaneButton.h">
       <Filter>Generation\PolygonMesh</Filter>
     </ClInclude>
-    <ClInclude Include="PMAttributeView.h">
-      <Filter>Generation\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="Ray3dView.h">
       <Filter>Math</Filter>
     </ClInclude>

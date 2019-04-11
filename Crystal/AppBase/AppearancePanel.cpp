@@ -3,6 +3,8 @@
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 #include "../Shape/WireFrameBuilder.h"
+#include "IntView.h"
+#include "StringView.h"
 #include "IPopupButton.h"
 
 using namespace Crystal::Math;
@@ -57,7 +59,9 @@ namespace {
 	{
 	public:
 		MaterialButton(Repository* model, Canvas* canvas) :
-			IPopupButton("Material", model, canvas)
+			IPopupButton("Material", model, canvas),
+			id("Id", 1),
+			name("Name", "Material1")
 		{
 		}
 
@@ -67,6 +71,8 @@ namespace {
 			ImGui::ColorPicker3("Diffuse", &diffuse[0]);
 			ImGui::ColorPicker3("Specular", &specular[0]);
 			ImGui::InputFloat("Shininess", &shininess);
+			id.show();
+			name.show();
 		}
 
 		void onOk() override
@@ -76,7 +82,7 @@ namespace {
 			m->setDiffuse(diffuse);
 			m->setSpecular(specular);
 			m->setShininess(shininess);
-			getModel()->getAppearances()->getMaterials()->add(m, "");
+			getModel()->getAppearances()->getMaterials()->add(m, name.getValue());
 			getCanvas()->setViewModel(getModel()->toViewModel());
 			getCanvas()->fitCamera(getModel()->getBoundingBox());
 		}
@@ -91,6 +97,8 @@ namespace {
 		glm::vec4 diffuse = { 0,0,0,0 };
 		glm::vec4 specular = { 0,0,0,0 };
 		float shininess;
+		IntView id;
+		StringView name;
 	};
 }
 

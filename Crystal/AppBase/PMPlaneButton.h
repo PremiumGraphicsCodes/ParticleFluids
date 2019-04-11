@@ -3,8 +3,8 @@
 #include "IPopupButton.h"
 
 #include "Vector3dView.h"
-#include "PMAttributeView.h"
 #include "IntView.h"
+#include "StringView.h"
 
 namespace Crystal {
 	namespace UI {

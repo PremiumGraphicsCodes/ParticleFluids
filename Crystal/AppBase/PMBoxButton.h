@@ -2,7 +2,7 @@
 
 #include "Box3dView.h"
 #include "IntView.h"
-#include "PMAttributeView.h"
+#include "StringView.h"
 
 namespace Crystal {
 	namespace UI {

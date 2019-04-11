@@ -8,16 +8,17 @@ using namespace Crystal::UI;
 
 void PMSphereButton::onShow()
 {
-	sphereView.show();
-	unumView.show();
-	vnumView.show();
+	sphere.show();
+	unum.show();
+	vnum.show();
 	materialId.show();
+	name.show();
 }
 
 void PMSphereButton::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.build(sphereView.getValue(), unumView.getValue(), vnumView.getValue());
+	builder.build(sphere.getValue(), unum.getValue(), vnum.getValue());
 
 	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), materialId.getValue(), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());

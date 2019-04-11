@@ -90,7 +90,6 @@
     <ClInclude Include="LightTreeList.h" />
     <ClInclude Include="MaterialTreeList.h" />
     <ClInclude Include="Plane3dView.h" />
-    <ClInclude Include="PMAttributeView.h" />
     <ClInclude Include="PMBoxButton.h" />
     <ClInclude Include="PMPlaneButton.h" />
     <ClInclude Include="PMSphereButton.h" />

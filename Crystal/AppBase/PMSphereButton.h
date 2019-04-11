@@ -2,8 +2,8 @@
 
 #include "IPopupButton.h"
 #include "Sphere3dView.h"
-#include "PMAttributeView.h"
 #include "IntView.h"
+#include "StringView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -13,9 +13,9 @@ class PMSphereButton : public IPopupButton
 public:
 	PMSphereButton(Repository* model, Canvas* canvas) :
 		IPopupButton("PMSphere", model, canvas),
-		sphereView("Sphere"),
-		unumView("UNum", 36),
-		vnumView("VNum", 36),
+		sphere("Sphere"),
+		unum("UNum", 36),
+		vnum("VNum", 36),
 		materialId("MaterialId", 1),
 		name("Name", "PMSphere")
 	{
@@ -31,9 +31,9 @@ public:
 	}
 
 private:
-	Sphere3dView sphereView;
-	IntView unumView;
-	IntView vnumView;
+	Sphere3dView sphere;
+	IntView unum;
+	IntView vnum;
 	IntView materialId;
 	StringView name;
 };
