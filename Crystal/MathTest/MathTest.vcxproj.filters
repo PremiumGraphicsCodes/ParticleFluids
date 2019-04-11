@@ -7,7 +7,6 @@
     <ClCompile Include="Vector3dTest.cpp" />
     <ClCompile Include="Matrix3dTest.cpp" />
     <ClCompile Include="Circle2d.cpp" />
-    <ClCompile Include="Torus3dTest.cpp" />
     <ClCompile Include="Line3dTest.cpp" />
     <ClCompile Include="Ray3dTest.cpp" />
     <ClCompile Include="Quad3dTest.cpp">
@@ -23,6 +22,9 @@
       <Filter>Curve3d</Filter>
     </ClCompile>
     <ClCompile Include="Plane3dTest.cpp" />
+    <ClCompile Include="Torus3dTest.cpp">
+      <Filter>Curve3d</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -4,10 +4,6 @@
 #include "Vector3d.h"
 #include "ICurve3d.h"
 
-#include <vector>
-#include <cassert>
-#include <algorithm>
-
 namespace Crystal {
 	namespace Math {
 		class Box3d;
@@ -35,33 +31,11 @@ public:
 
 	double getRadius() const { return radius; }
 
-	bool isValid() const {
-		return radius >= 0.0f;
-	}
+	bool isValid(const double tolerance) const { return radius >= tolerance;  }
 
-	void outerOffset(const float offsetLength) {
-		this->radius += offsetLength;
-		assert(isValid());
-	}
+	void outerOffset(const float offsetLength) { this->radius += offsetLength; }
 
-	Sphere3d getOuterOffset(const float offsetLength) const {
-		Sphere3d sphere = *this;
-		sphere.radius += offsetLength;
-		assert(sphere.isValid());
-		return sphere;
-	}
-
-	void innerOffset(const float offsetLength) {
-		this->radius -= offsetLength;
-		assert(isValid());
-	}
-
-	Sphere3d getInnerOffset(const float offsetLength) const {
-		Sphere3d sphere = *this;
-		sphere.radius -= offsetLength;
-		assert(sphere.isValid());
-		return sphere;
-	}
+	void innerOffset(const float offsetLength) { this->radius -= offsetLength; }
 
 	bool isSame(const Sphere3d& rhs, const double tolerance) const;
 

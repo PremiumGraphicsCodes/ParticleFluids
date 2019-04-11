@@ -84,18 +84,7 @@ public:
 
 	bool isSame(const Box3d& rhs, const double tolerance) const;
 
-	bool hasIntersection(const Box3d& rhs) const {
-		const auto distx = std::fabs(getCenter().x - rhs.getCenter().x);
-		const auto lx = getLength().x / 2.0 + rhs.getLength().x / 2.0;
-
-		const auto disty = std::fabs(getCenter().y - rhs.getCenter().y);
-		const auto ly = getLength().y / 2.0 + rhs.getLength().y / 2.0;
-
-		const auto distz = std::fabs(getCenter().z - rhs.getCenter().z);
-		const auto lz = getLength().z / 2.0 + rhs.getLength().z / 2.0;
-
-		return (distx < lx && disty < ly && distz < lz);
-	}
+	bool hasIntersection(const Box3d& rhs) const;
 
 	Box3d getOverlapped(const Box3d& rhs) const;
 
