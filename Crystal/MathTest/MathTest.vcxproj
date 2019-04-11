@@ -153,6 +153,7 @@
     <ClCompile Include="Line3dTest.cpp" />
     <ClCompile Include="MathTest.cpp" />
     <ClCompile Include="Matrix3dTest.cpp" />
+    <ClCompile Include="Plane3dTest.cpp" />
     <ClCompile Include="Quad3dTest.cpp" />
     <ClCompile Include="Ray3dTest.cpp" />
     <ClCompile Include="Sphere3dTest.cpp" />

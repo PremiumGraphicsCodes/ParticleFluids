@@ -24,10 +24,9 @@ public:
 
 	Vector3dd getNormal() const { return normal; }
 
-	double getDistance(const Vector3dd& position) const {
-		const auto& v = position - origin;
-		return glm::dot(v, normal);
-	}
+	double getDistance(const Vector3dd& position) const;
+
+	bool isSame(const Plane3d& rhs, const double tolerance) const;
 
 private:
 	Vector3dd origin;

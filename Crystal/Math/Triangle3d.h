@@ -2,10 +2,10 @@
 
 #include <array>
 #include "Vector3d.h"
-#include "Plane3d.h"
 
 namespace Crystal {
 	namespace Math {
+		class Plane3d;
 
 class Triangle3d
 {
@@ -14,17 +14,9 @@ public:
 		vertices(vertices)
 	{}
 
-	Vector3dd getNormal() const {
-		const auto v1 = vertices[1] - vertices[0];
-		const auto v2 = vertices[2] - vertices[0];
-		return glm::normalize(glm::cross(v1, v2));
-	}
+	Vector3dd getNormal() const;
 
-	double getArea() const {
-		const auto v1 = vertices[1] - vertices[0];
-		const auto v2 = vertices[2] - vertices[0];
-		return glm::length( glm::cross(v1, v2) )  * 0.5;
-	}
+	double getArea() const;
 
 	bool isInside(const Vector3dd& p) const;
 

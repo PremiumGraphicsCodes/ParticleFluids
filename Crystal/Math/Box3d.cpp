@@ -53,3 +53,28 @@ bool Box3d::isSame(const Box3d& rhs, const double tolerance) const
 		start == rhs.getStart() &&
 		end == rhs.getEnd();
 }
+
+Box3d Box3d::getOverlapped(const Box3d& rhs) const
+{
+	assert(hasIntersection(rhs));
+	const auto minx = std::max<double>(this->getStart().x, rhs.getStart().x);
+	const auto miny = std::max<double>(this->getStart().y, rhs.getStart().y);
+	const auto minz = std::max<double>(this->getStart().z, rhs.getStart().z);
+
+	const auto maxx = std::min<double>(this->getEnd().x, rhs.getEnd().x);
+	const auto maxy = std::min<double>(this->getEnd().y, rhs.getEnd().y);
+	const auto maxz = std::min<double>(this->getEnd().z, rhs.getEnd().z);
+
+	const Vector3dd min_(minx, miny, minz);
+	const Vector3dd max_(maxx, maxy, maxz);
+	return Box3d(min_, max_);
+}
+
+Vector3dd Box3d::getPosition(const Vector3dd& param) const
+{
+	const auto& length = getLength();
+	const auto x = start.x + length.x * param.x;
+	const auto y = start.y + length.y * param.y;
+	const auto z = start.z + length.z * param.z;
+	return Vector3dd(x, y, z);
+}

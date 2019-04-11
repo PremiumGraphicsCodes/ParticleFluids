@@ -1,6 +1,22 @@
 #include "Triangle3d.h"
 
+#include "Plane3d.h"
+
 using namespace Crystal::Math;
+
+Vector3dd Triangle3d::getNormal() const
+{
+	const auto v1 = vertices[1] - vertices[0];
+	const auto v2 = vertices[2] - vertices[0];
+	return glm::normalize(glm::cross(v1, v2));
+}
+
+double Triangle3d::getArea() const
+{
+	const auto v1 = vertices[1] - vertices[0];
+	const auto v2 = vertices[2] - vertices[0];
+	return glm::length(glm::cross(v1, v2))  * 0.5;
+}
 
 bool Triangle3d::isInside(const Vector3dd& p) const
 {

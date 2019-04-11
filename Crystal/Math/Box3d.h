@@ -55,14 +55,14 @@ public:
 		);
 	}
 
-	bool isInterior(const Vector3dd& point) const {
+	bool isInside(const Vector3dd& point) const {
 		const bool xIsInterior = (getMinX() < point.x && point.x < end.x);
 		const bool yIsInterior = (getMinY() < point.y && point.y < end.y);
 		const bool zIsInterior = (getMinZ() < point.z && point.z < end.z);
 		return xIsInterior && yIsInterior && zIsInterior;
 	}
 
-	bool isExterior(const Vector3dd& point) const { return !isInterior(point); }
+	bool isOutside(const Vector3dd& point) const { return !isInside(point); }
 
 	double getMaxX() const { return end.x; }
 
@@ -97,28 +97,9 @@ public:
 		return (distx < lx && disty < ly && distz < lz);
 	}
 
-	Box3d getOverlapped(const Box3d& rhs) const {
-		assert(hasIntersection(rhs));
-		const auto minx = std::max<double>(this->getStart().x, rhs.getStart().x);
-		const auto miny = std::max<double>(this->getStart().y, rhs.getStart().y);
-		const auto minz = std::max<double>(this->getStart().z, rhs.getStart().z);
+	Box3d getOverlapped(const Box3d& rhs) const;
 
-		const auto maxx = std::min<double>(this->getEnd().x, rhs.getEnd().x);
-		const auto maxy = std::min<double>(this->getEnd().y, rhs.getEnd().y);
-		const auto maxz = std::min<double>(this->getEnd().z, rhs.getEnd().z);
-
-		const Vector3dd min_(minx, miny, minz);
-		const Vector3dd max_(maxx, maxy, maxz);
-		return Box3d(min_, max_);
-	}
-
-	Vector3dd getPosition(const Vector3dd& param) const {
-		const auto& length = getLength();
-		const auto x = start.x + length.x * param.x;
-		const auto y = start.y + length.y * param.y;
-		const auto z = start.z + length.z * param.z;
-		return Vector3dd(x, y, z);
-	}
+	Vector3dd getPosition(const Vector3dd& param) const;
 
 private:
 	Vector3dd start;

@@ -22,6 +22,7 @@
     <ClCompile Include="Sphere3dTest.cpp">
       <Filter>Curve3d</Filter>
     </ClCompile>
+    <ClCompile Include="Plane3dTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -158,6 +158,7 @@
   <ItemGroup>
     <ClCompile Include="Box3d.cpp" />
     <ClCompile Include="Line3d.cpp" />
+    <ClCompile Include="Plane3d.cpp" />
     <ClCompile Include="Quad3d.cpp" />
     <ClCompile Include="Ray3d.cpp" />
     <ClCompile Include="Sphere3d.cpp" />
