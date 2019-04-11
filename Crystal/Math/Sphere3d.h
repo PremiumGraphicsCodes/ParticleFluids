@@ -25,27 +25,11 @@ public:
 		radius(radius)
 	{}
 
-	/*
-	Sphere3d(const Math::Box3d& boundingBox) {
-		center = boundingBox.getCenter();
-		const auto& length = boundingBox.getLength();
-		radius = std::min<double>(std::min<double>(length.x, length.y), length.z) * 0.5;
-	}
-	*/
+	explicit Sphere3d(const Math::Box3d& boundingBox);
 
-	Vector3dd getPosition(const double u, const double v) const override {
-		const auto theta = u * Tolerance<double>::getPI();
-		const auto phi = v * Tolerance<double>::getTwoPI();
-		const auto x = radius * std::sin(theta) * std::cos(phi);
-		const auto y = radius * std::sin(theta) * std::sin(phi);
-		const auto z = radius * std::cos(theta);
-		return center + Vector3dd(x, y, z);
-	}
+	Vector3dd getPosition(const double u, const double v) const override;
 
-	Vector3dd getNormal(const double u, const double v) const {
-		const auto& pos = getPosition(u, v);
-		return glm::normalize( pos - center );
-	}
+	Vector3dd getNormal(const double u, const double v) const;
 
 	Vector3dd getCenter() const { return center; }
 
@@ -79,11 +63,7 @@ public:
 		return sphere;
 	}
 
-	bool isSame(const Sphere3d& rhs, const double tolerance) const {
-		return
-			Tolerance<double>::isEqual(radius, rhs.radius, tolerance) &&
-			(center == rhs.center);
-	}
+	bool isSame(const Sphere3d& rhs, const double tolerance) const;
 
 	bool isInner(const Vector3dd& v) const { return glm::distance(v, center) < radius; }
 

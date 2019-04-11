@@ -5,7 +5,7 @@
 
 using namespace Crystal::Math;
 
-TEST(Sphere3dTest, OffsetTest)
+TEST(Sphere3dTest, TestOffset)
 {
 	Sphere3d s;
 	s.outerOffset(1.0f);

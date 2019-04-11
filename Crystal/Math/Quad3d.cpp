@@ -30,7 +30,7 @@ bool Quad3d::isInside(const Vector3dd& p) const
 	if (glm::dot(v3, n) < 0.0) {
 		return false;
 	}
-	const auto& v4 = glm::cross(c, dd);
+	const auto& v4 = glm::cross(d, dd);
 	if (glm::dot(v4, n) < 0.0) {
 		return false;
 	}
