@@ -55,5 +55,8 @@
     </ClCompile>
     <ClCompile Include="Box3d.cpp" />
     <ClCompile Include="Plane3d.cpp" />
+    <ClCompile Include="Cone3d.cpp">
+      <Filter>Curve3d</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

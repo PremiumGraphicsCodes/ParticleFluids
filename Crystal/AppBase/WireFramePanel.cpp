@@ -5,7 +5,6 @@
 #include "WFCylinderButton.h"
 #include "WFConeButton.h"
 #include "WFTorusButton.h"
-#include "WFRayButton.h"
 
 using namespace Crystal::UI;
 
@@ -17,5 +16,4 @@ WireFramePanel::WireFramePanel(const std::string& name, Repository* model, Canva
 	add( new WFCylinderButton(model, canvas) );
 	add( new WFConeButton(model, canvas) );
 	add( new WFTorusButton(model, canvas) );
-	add( new WFRayButton(model, canvas) );
 }

@@ -55,7 +55,6 @@
     <ClCompile Include="WFBoxButton.cpp" />
     <ClCompile Include="WFConeButton.cpp" />
     <ClCompile Include="WFCylinderButton.cpp" />
-    <ClCompile Include="WFRayButton.cpp" />
     <ClCompile Include="WFSphereButton.cpp" />
     <ClCompile Include="WFTorusButton.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -121,7 +120,6 @@
     <ClInclude Include="WFBoxButton.h" />
     <ClInclude Include="WFConeButton.h" />
     <ClInclude Include="WFCylinderButton.h" />
-    <ClInclude Include="WFRayButton.h" />
     <ClInclude Include="WFSphereButton.h" />
     <ClInclude Include="WFTorusButton.h" />
     <ClInclude Include="Window.h" />

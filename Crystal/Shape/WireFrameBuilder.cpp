@@ -47,14 +47,6 @@ void WireFrameBuilder::build(const Line3dd& line)
 	lines.push_back(Line3dd::fromPoints(vertices[0], vertices[1]));
 }
 
-void WireFrameBuilder::build(const Ray3d& ray, const double length)
-{
-	std::vector<Vector3dd> vertices;
-	vertices.push_back(ray.getPosition(0.0));
-	vertices.push_back(ray.getPosition(length));
-	lines.push_back(Line3dd::fromPoints(vertices[0], vertices[1]));
-}
-
 void WireFrameBuilder::build(const ICurve3d& sphere, const int unum, const int vnum)
 {
 	const auto du = 1.0 / unum;

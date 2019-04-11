@@ -18,8 +18,6 @@ public:
 
 	void build(const Math::Line3dd& line);
 
-	void build(const Math::Ray3d& ray, const double length);
-
 	void build(const Math::ICurve3d& sphere, const int unum, const int vnum);
 
 	WireFrame* getWireFrame() const { return new WireFrame(lines); }

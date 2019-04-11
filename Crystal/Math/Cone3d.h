@@ -22,15 +22,7 @@ public:
 	{
 	}
 
-	Vector3dd getPosition(const double u, const double v) const override
-	{
-		const auto uu = u * 2.0 * Tolerance<double>::getPI();
-		const auto r = radius * (1.0 - v);
-		const auto x = r * ::cos(uu);
-		const auto y = r * ::sin(uu);
-		const auto z = v * height;
-		return bottom + Vector3dd(x, y, z);
-	}
+	Vector3dd getPosition(const double u, const double v) const override;
 
 private:
 	Vector3dd bottom;
