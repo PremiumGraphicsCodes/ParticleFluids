@@ -43,10 +43,10 @@ bool Repository::write(const std::string& filename) const
 ViewModel Repository::toViewModel()
 {
 	ViewModel vm;
-	vm.object.add(objects);
+	vm.object.add(objects, *appearances.getMaterials());
 	vm.objectId.add(objects);
 	vm.appearance.add(appearances);
-	vm.object.add(items);
+	vm.object.add(items, *appearances.getMaterials());
 	return vm;
 }
 

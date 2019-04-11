@@ -7,15 +7,15 @@
 #include "WireFrameObject.h"
 #include "PolygonMeshObject.h"
 #include "ObjectRepository.h"
+#include "MaterialObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {
-		class AppearanceObjectRepository;
 
 class ObjectViewModel
 {
 public:
-	void add(ObjectRepository& objects);
+	void add(ObjectRepository& objects, MaterialObjectRepository& materials);
 
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 
@@ -30,7 +30,7 @@ private:
 
 	void add(const WireFrameObject& object);
 
-	void add(const PolygonMeshObject& object);
+	void add(const PolygonMeshObject& object, MaterialObjectRepository& materials);
 
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;

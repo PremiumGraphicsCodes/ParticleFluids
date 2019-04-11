@@ -26,7 +26,7 @@ public:
 
 	Shape::PolygonMesh* getShape() const { return shape; }
 
-	int getMaterial() const { return materialId; }
+	int getMaterialId() const { return materialId; }
 
 	void move(const Math::Vector3dd& v) override { shape->move(v); }
 

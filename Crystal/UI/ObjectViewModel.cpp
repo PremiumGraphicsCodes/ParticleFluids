@@ -7,7 +7,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-void ObjectViewModel::add(ObjectRepository& objects)
+void ObjectViewModel::add(ObjectRepository& objects, MaterialObjectRepository& materials)
 {
 	const auto& particleSystems = objects.getParticleSystems()->getObjects();
 	for (auto ps : particleSystems) {
@@ -19,7 +19,7 @@ void ObjectViewModel::add(ObjectRepository& objects)
 	}
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	for (auto p : polygons) {
-		add(*p);
+		add(*p, materials);
 	}
 }
 
@@ -54,12 +54,15 @@ void ObjectViewModel::add(const WireFrameObject& object)
 	}
 }
 
-void ObjectViewModel::add(const PolygonMeshObject& object)
+void ObjectViewModel::add(const PolygonMeshObject& object, MaterialObjectRepository& materials)
 {
 	if (!object.isVisible()) {
 		return;
 	}
-	auto material = object.getMaterial();
+	const auto materialId = object.getMaterialId();
+	auto materialObject = materials.findObjectById(materialId);
+	auto material = materialObject ?  *(materialObject->getMaterial()) : Material();
+
 	TriangleBuffer bf;
 	bf.add(*object.getShape(), material);
 	triangleBuffers.push_back(bf);
