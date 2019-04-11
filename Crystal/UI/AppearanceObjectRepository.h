@@ -17,11 +17,7 @@ public:
 	~AppearanceObjectRepository()
 	{}
 
-	void clear() {
-		lights.clear();
-		materials.clear();
-		textures.clear();
-	}
+	void clear();
 
 	LightObjectRepository* getLights() { return &lights; }
 

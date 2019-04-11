@@ -23,6 +23,7 @@ void TextureObjectRepository::clear()
 		delete t;
 	}
 	textures.clear();
+	this->nextId = 1;
 }
 
 void TextureObjectRepository::add(const Image& image, const std::string& name)
