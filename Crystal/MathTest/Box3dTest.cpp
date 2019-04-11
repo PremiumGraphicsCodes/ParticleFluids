@@ -27,8 +27,8 @@ TEST(Box3dTest, TestGetVolume)
 	const Box3d box1;
 	const Box3d box2(Vector3dd(0, 0, 0), Vector3dd(1, 2, 3));
 
-	EXPECT_EQ(1, box1.getVolume(), tolerance);
-	EXPECT_EQ(6, box2.getVolume(), tolerance);
+	EXPECT_NEAR(1.0, box1.getVolume(), tolerance);
+	EXPECT_NEAR(6.0, box2.getVolume(), tolerance);
 }
 
 TEST(Box3dTest, TestGetLength)

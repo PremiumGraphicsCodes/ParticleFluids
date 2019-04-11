@@ -16,14 +16,6 @@ template<>
 class Tolerance < double > final
 {
 public:
-	static double getLooseTolerance() {
-		return 1.0e-9;
-	}
-
-	static double getStrictTolerance() {
-		return 1.0e-18;
-	}
-
 	static bool isEqual(const double x, const double y, const double tolerance) { return ::fabs(x - y) < tolerance; }
 
 	static double getHalfPI() { return 0.5 * getPI(); }
