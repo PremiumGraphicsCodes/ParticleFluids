@@ -32,6 +32,8 @@
     <ClCompile Include="IPanel.cpp" />
     <ClCompile Include="IPopupButton.cpp" />
     <ClCompile Include="LightTreeList.cpp" />
+    <ClCompile Include="MaterialAddButton.cpp" />
+    <ClCompile Include="MaterialEditButton.cpp" />
     <ClCompile Include="MaterialTreeList.cpp" />
     <ClCompile Include="PMBoxButton.cpp" />
     <ClCompile Include="PMPlaneButton.cpp" />
@@ -88,6 +90,8 @@
     <ClInclude Include="ITreeList.h" />
     <ClInclude Include="IWindow.h" />
     <ClInclude Include="LightTreeList.h" />
+    <ClInclude Include="MaterialAddButton.h" />
+    <ClInclude Include="MaterialEditButton.h" />
     <ClInclude Include="MaterialTreeList.h" />
     <ClInclude Include="Plane3dView.h" />
     <ClInclude Include="PMBoxButton.h" />

@@ -4,8 +4,10 @@
 
 using namespace Crystal::UI;
 
+
 MaterialTreeList::MaterialTreeList(const std::string& name, Repository* model, Canvas* canvas) :
-	ITreeList(name, model, canvas)
+	ITreeList(name, model, canvas),
+	editButton(model, canvas)
 {
 }
 
@@ -22,6 +24,7 @@ void MaterialTreeList::onShow()
 		const auto& str = l->getName();
 		auto s = str.c_str();
 		ImGui::Text(s);
+		editButton.show();
 	}
 	ImGui::EndChild();
 

@@ -12,18 +12,11 @@
     <ClCompile Include="imgui_draw.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="AppearancePanel.cpp" />
     <ClCompile Include="IPopupButton.cpp">
       <Filter>Window</Filter>
     </ClCompile>
     <ClCompile Include="IPanel.cpp">
       <Filter>Window</Filter>
-    </ClCompile>
-    <ClCompile Include="LightTreeList.cpp">
-      <Filter>TreeList</Filter>
-    </ClCompile>
-    <ClCompile Include="MaterialTreeList.cpp">
-      <Filter>TreeList</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemTreeList.cpp">
       <Filter>TreeList</Filter>
@@ -48,9 +41,6 @@
     </ClCompile>
     <ClCompile Include="TransformButton.cpp">
       <Filter>Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureTreeList.cpp">
-      <Filter>TreeList</Filter>
     </ClCompile>
     <ClCompile Include="imgui_impl_glfw.cpp">
       <Filter>imgui</Filter>
@@ -112,6 +102,24 @@
     <ClCompile Include="PMPlaneButton.cpp">
       <Filter>Generation\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="AppearancePanel.cpp">
+      <Filter>Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialEditButton.cpp">
+      <Filter>Appearance\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialTreeList.cpp">
+      <Filter>Appearance\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureTreeList.cpp">
+      <Filter>Appearance\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="LightTreeList.cpp">
+      <Filter>Appearance\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialAddButton.cpp">
+      <Filter>Appearance\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -122,7 +130,6 @@
     <ClInclude Include="imgui.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="AppearancePanel.h" />
     <ClInclude Include="IPopupButton.h">
       <Filter>Window</Filter>
     </ClInclude>
@@ -137,12 +144,6 @@
     </ClInclude>
     <ClInclude Include="ITreeList.h">
       <Filter>Window</Filter>
-    </ClInclude>
-    <ClInclude Include="LightTreeList.h">
-      <Filter>TreeList</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialTreeList.h">
-      <Filter>TreeList</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemTreeList.h">
       <Filter>TreeList</Filter>
@@ -167,9 +168,6 @@
     </ClInclude>
     <ClInclude Include="TransformButton.h">
       <Filter>Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureTreeList.h">
-      <Filter>TreeList</Filter>
     </ClInclude>
     <ClInclude Include="imgui_impl_glfw.h">
       <Filter>imgui</Filter>
@@ -288,6 +286,24 @@
     <ClInclude Include="Ray3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="AppearancePanel.h">
+      <Filter>Appearance</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialEditButton.h">
+      <Filter>Appearance\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialTreeList.h">
+      <Filter>Appearance\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureTreeList.h">
+      <Filter>Appearance\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="LightTreeList.h">
+      <Filter>Appearance\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialAddButton.h">
+      <Filter>Appearance\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -325,6 +341,18 @@
     </Filter>
     <Filter Include="Generation\PolygonMesh">
       <UniqueIdentifier>{ad45230d-8683-40fd-90bc-ec9f4bf7bbd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Appearance">
+      <UniqueIdentifier>{5e2f3a12-647d-4e15-89bd-da1dfc33d71d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Appearance\Material">
+      <UniqueIdentifier>{f6814e74-3dbf-4ce7-b3ec-ae98ae76a6ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Appearance\Texture">
+      <UniqueIdentifier>{d59d7ebb-6e6c-4330-b749-84c77ed8bb74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Appearance\Light">
+      <UniqueIdentifier>{00de2540-e2ad-4d52-9bd0-ea1797d96551}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
