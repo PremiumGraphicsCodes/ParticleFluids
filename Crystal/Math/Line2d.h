@@ -10,17 +10,9 @@ namespace Crystal {
 class Line2dd
 {
 public:
-	Line2dd() :
-		origin(0,0),
-		dir(1,0)
-	{
-	}
+	Line2dd();
 
-	Line2dd(const Math::Vector2dd& origin, const Math::Vector2dd& dir) :
-		origin(origin),
-		dir(dir)
-	{
-	}
+	Line2dd(const Math::Vector2dd& origin, const Math::Vector2dd& dir);
 
 	static Line2dd fromPoints(const Vector2dd& start, const Vector2dd& end)
 	{

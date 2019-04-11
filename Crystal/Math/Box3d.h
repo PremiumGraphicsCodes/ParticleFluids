@@ -12,24 +12,11 @@ namespace Crystal {
 class Box3d
 {
 public:
-	Box3d():
-		start(0, 0, 0),
-		end(1, 1, 1)
-	{
-	}
+	Box3d();
 
-	Box3d(const Vector3dd& point) :
-		start(point),
-		end(point)
-	{}
+	explicit Box3d(const Vector3dd& point);
 
 	Box3d(const Vector3dd& pointX, const Vector3dd& pointY);
-
-	~Box3d() = default;
-
-	static Box3d Unit() {
-		return Box3d();
-	}
 
 	Box3d getBoundingBox() const { return *this; }
 
@@ -47,20 +34,9 @@ public:
 
 	Vector3dd getEnd() const { return getMax(); }
 
-	Vector3dd getCenter() const {
-		return Vector3dd(
-			(getMinX() + end.x) / 2.0,
-			(getMinY() + end.y) / 2.0,
-			(getMinZ() + end.z) / 2.0
-		);
-	}
+	Vector3dd getCenter() const;
 
-	bool isInside(const Vector3dd& point) const {
-		const bool xIsInterior = (getMinX() < point.x && point.x < end.x);
-		const bool yIsInterior = (getMinY() < point.y && point.y < end.y);
-		const bool zIsInterior = (getMinZ() < point.z && point.z < end.z);
-		return xIsInterior && yIsInterior && zIsInterior;
-	}
+	bool isInside(const Vector3dd& point) const;
 
 	bool isOutside(const Vector3dd& point) const { return !isInside(point); }
 

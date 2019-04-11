@@ -58,5 +58,7 @@
     <ClCompile Include="Cone3d.cpp">
       <Filter>Curve3d</Filter>
     </ClCompile>
+    <ClCompile Include="Line2d.cpp" />
+    <ClCompile Include="Box2d.cpp" />
   </ItemGroup>
 </Project>

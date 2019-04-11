@@ -2,6 +2,17 @@
 
 using namespace Crystal::Math;
 
+Box3d::Box3d() :
+	start(0, 0, 0),
+	end(1, 1, 1)
+{
+}
+
+Box3d::Box3d(const Vector3dd& point) :
+	start(point),
+	end(point)
+{}
+
 Box3d::Box3d(const Vector3dd& pointX, const Vector3dd& pointY)
 {
 	const auto x = std::min<double>(pointX.x, pointY.x);
@@ -46,6 +57,24 @@ double Box3d::getVolume() const
 	const auto& length = getLength();
 	return length.x * length.y * length.z;
 }
+
+Vector3dd Box3d::getCenter() const
+{
+	return Vector3dd(
+		(getMinX() + end.x) / 2.0,
+		(getMinY() + end.y) / 2.0,
+		(getMinZ() + end.z) / 2.0
+	);
+}
+
+bool Box3d::isInside(const Vector3dd& point) const
+{
+	const bool xIsInterior = (getMinX() < point.x && point.x < end.x);
+	const bool yIsInterior = (getMinY() < point.y && point.y < end.y);
+	const bool zIsInterior = (getMinZ() < point.z && point.z < end.z);
+	return xIsInterior && yIsInterior && zIsInterior;
+}
+
 
 bool Box3d::isSame(const Box3d& rhs, const double tolerance) const
 {

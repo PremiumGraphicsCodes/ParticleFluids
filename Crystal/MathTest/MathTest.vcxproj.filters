@@ -25,6 +25,7 @@
     <ClCompile Include="Torus3dTest.cpp">
       <Filter>Curve3d</Filter>
     </ClCompile>
+    <ClCompile Include="Box2dTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
