@@ -93,6 +93,7 @@
     <ClInclude Include="MaterialAddButton.h" />
     <ClInclude Include="MaterialEditButton.h" />
     <ClInclude Include="MaterialTreeList.h" />
+    <ClInclude Include="MaterialView.h" />
     <ClInclude Include="Plane3dView.h" />
     <ClInclude Include="PMBoxButton.h" />
     <ClInclude Include="PMPlaneButton.h" />

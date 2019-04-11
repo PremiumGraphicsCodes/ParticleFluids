@@ -1,8 +1,7 @@
 #pragma once
 
 #include "IPopupButton.h"
-#include "FloatView.h"
-#include "Float4View.h"
+#include "MaterialView.h"
 #include "StringView.h"
 
 namespace Crystal {
@@ -23,10 +22,7 @@ public:
 	}
 
 private:
-	Float4View ambient;
-	Float4View diffuse;
-	Float4View specular;
-	FloatView shininess;
+	MaterialView material;
 	StringView name;
 };
 

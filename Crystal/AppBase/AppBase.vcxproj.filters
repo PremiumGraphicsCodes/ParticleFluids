@@ -304,6 +304,9 @@
     <ClInclude Include="MaterialAddButton.h">
       <Filter>Appearance\Material</Filter>
     </ClInclude>
+    <ClInclude Include="MaterialView.h">
+      <Filter>Appearance\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

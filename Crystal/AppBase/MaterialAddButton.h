@@ -2,9 +2,7 @@
 
 #include "IPopupButton.h"
 
-#include "FloatView.h"
-#include "Float4View.h"
-#include "StringView.h"
+#include "MaterialView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -24,10 +22,7 @@ public:
 	}
 
 private:
-	Float4View ambient;
-	Float4View diffuse;
-	Float4View specular;
-	FloatView shininess;
+	MaterialView material;
 	StringView name;
 };
 

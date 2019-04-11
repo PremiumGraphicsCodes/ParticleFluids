@@ -7,20 +7,14 @@ using namespace Crystal::UI;
 
 MaterialEditButton::MaterialEditButton(Repository* model, Canvas* canvas) :
 	IPopupButton("MaterialEdit", model, canvas),
-	ambient("Ambient", glm::vec4(0, 0, 0, 0)),
-	diffuse("Diffuse", glm::vec4(0, 0, 0, 0)),
-	specular("Specular", glm::vec4(0, 0, 0, 0)),
-	shininess("Shininess", 1.0f),
+	material("Material"),
 	name("Name", "Material1")
 {
 }
 
 void MaterialEditButton::onShow()
 {
-	ambient.show();
-	diffuse.show();
-	specular.show();
-	shininess.show();
+	material.show();
 	name.show();
 }
 
