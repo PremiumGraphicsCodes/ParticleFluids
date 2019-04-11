@@ -62,7 +62,7 @@ TEST(Box3dTest, TestGetOverlapped)
 	const Box3d b2(Vector3dd(1, 1, 1), Vector3dd(5, 5, 5));
 	const Box3d expected(Vector3dd(1, 1, 1), Vector3dd(2, 2, 2));
 	const auto actual = b1.getOverlapped(b2);
-	EXPECT_TRUE(expected.equals(actual, tolerance));
+	EXPECT_TRUE(expected.isSame(actual, tolerance));
 }
 
 TEST(Box3dTest, TestAdd)
@@ -71,7 +71,7 @@ TEST(Box3dTest, TestAdd)
 	const Box3d b2(Vector3dd(-1, 1, 1), Vector3dd(3, 3, 3));
 	b1.add(b2);
 	const Box3d expected(Vector3dd(-1, 0, 0), Vector3dd(3, 3, 3));
-	EXPECT_TRUE(expected.equals(b1, tolerance));
+	EXPECT_TRUE(expected.isSame(b1, tolerance));
 }
 
 TEST(Box3dTest, TestGetPosition)

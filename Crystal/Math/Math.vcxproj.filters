@@ -53,5 +53,6 @@
     <ClCompile Include="Sphere3d.cpp">
       <Filter>Curve3d</Filter>
     </ClCompile>
+    <ClCompile Include="Box3d.cpp" />
   </ItemGroup>
 </Project>
