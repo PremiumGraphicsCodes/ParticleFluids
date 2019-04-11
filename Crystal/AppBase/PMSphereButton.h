@@ -16,7 +16,8 @@ public:
 		sphereView("Sphere"),
 		unumView("UNum", 36),
 		vnumView("VNum", 36),
-		attribute("Attribute")
+		materialId("MaterialId", 1),
+		name("Name", "PMSphere")
 	{
 	}
 
@@ -33,7 +34,8 @@ private:
 	Sphere3dView sphereView;
 	IntView unumView;
 	IntView vnumView;
-	PMAttributeView attribute;
+	IntView materialId;
+	StringView name;
 };
 
 	}

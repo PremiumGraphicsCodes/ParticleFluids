@@ -1,6 +1,7 @@
 #include "IPopupButton.h"
 
 #include "Box3dView.h"
+#include "IntView.h"
 #include "PMAttributeView.h"
 
 namespace Crystal {
@@ -12,7 +13,8 @@ public:
 	PMBoxButton(Repository* model, Canvas* canvas) :
 		IPopupButton("PMBox", model, canvas),
 		boxView("Box"),
-		attribute("Attribute")
+		materialId("MaterialId", 1),
+		name("Name", "PMBox")
 	{
 	}
 
@@ -27,7 +29,8 @@ public:
 
 private:
 	Box3dView boxView;
-	PMAttributeView attribute;
+	IntView materialId;
+	StringView name;
 };
 
 	}

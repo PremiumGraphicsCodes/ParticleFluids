@@ -4,6 +4,7 @@
 
 #include "Vector3dView.h"
 #include "PMAttributeView.h"
+#include "IntView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -26,7 +27,8 @@ private:
 	Vector3dView originView;
 	Vector3dView uvecView;
 	Vector3dView vvecView;
-	PMAttributeView attribute;
+	IntView materialId;
+	StringView name;
 };
 
 	}

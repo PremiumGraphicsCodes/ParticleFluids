@@ -19,7 +19,7 @@ public:
 
 	void clear();
 
-	int addObject(Shape::PolygonMesh* mesh, const PolygonMeshAttribute& material, const std::string& name);
+	int addObject(Shape::PolygonMesh* mesh, const int materialId, const std::string& name);
 
 	PolygonMeshObject* findObjectById(const int id) const;
 

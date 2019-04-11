@@ -19,9 +19,9 @@ void PolygonMeshObjectRepository::clear()
 	polygonMeshes.clear();
 }
 
-int PolygonMeshObjectRepository::addObject(PolygonMesh* mesh, const PolygonMeshAttribute& material, const std::string& name)
+int PolygonMeshObjectRepository::addObject(PolygonMesh* mesh, const int materialId, const std::string& name)
 {
-	polygonMeshes.push_back(new PolygonMeshObject(nextId++, name, mesh, material.material));
+	polygonMeshes.push_back(new PolygonMeshObject(nextId++, name, mesh, materialId));
 	return polygonMeshes.back()->getId();
 }
 

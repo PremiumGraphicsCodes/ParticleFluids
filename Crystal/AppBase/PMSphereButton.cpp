@@ -11,7 +11,7 @@ void PMSphereButton::onShow()
 	sphereView.show();
 	unumView.show();
 	vnumView.show();
-	attribute.show();
+	materialId.show();
 }
 
 void PMSphereButton::onOk()
@@ -19,7 +19,7 @@ void PMSphereButton::onOk()
 	PolygonMeshBuilder builder;
 	builder.build(sphereView.getValue(), unumView.getValue(), vnumView.getValue());
 
-	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), attribute.getValue(), attribute.getName());
+	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), materialId.getValue(), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
