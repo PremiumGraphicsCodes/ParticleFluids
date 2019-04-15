@@ -18,7 +18,7 @@ public:
 	void onShow() override;
 
 private:
-	MaterialEditButton editButton;
+	MaterialEditView editButton;
 };
 
 	}
