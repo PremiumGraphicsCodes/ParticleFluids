@@ -252,3 +252,5 @@ ModelManifest.xml
 /Crystal/AppBase/imgui_impl_glfw.cpp
 /Crystal/AppBase/imgui_demo.cpp
 /Crystal/AppBase/imconfig.h
+/Crystal/AppBase/stdafx.cpp
+/Crystal/AppBase/stdafx.h

@@ -11,7 +11,7 @@
 
 #include "../../Crystal/AppBase/ParticleSystemTreeList.h"
 #include "../../Crystal/AppBase/WireFrameTreeList.h"
-#include "../../Crystal/AppBase/PolygonTreeList.h"
+#include "../../Crystal/AppBase/PolygonMeshTreeList.h"
 #include "../../Crystal/AppBase/LightTreeList.h"
 #include "../../Crystal/AppBase/MaterialTreeList.h"
 
@@ -74,7 +74,7 @@ int main(int, char**)
 
 	window.add(new ParticleSystemTreeList("ParticleSystems", &model, &canvas));
 	window.add(new WireFrameTreeList("WireFrames", &model, &canvas));
-	window.add(new PolygonTreeList("Polygons", &model, &canvas));
+	window.add(new PolygonMeshTreeList("Polygons", &model, &canvas));
 	window.add(new LightTreeList("Lights", &model, &canvas));
 	window.add(new MaterialTreeList("Materials", &model, &canvas));
 
