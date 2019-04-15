@@ -91,6 +91,7 @@
     <ClInclude Include="ITreeList.h" />
     <ClInclude Include="IWindow.h" />
     <ClInclude Include="LightAddButton.h" />
+    <ClInclude Include="LightEditButton.h" />
     <ClInclude Include="LightTreeList.h" />
     <ClInclude Include="LightView.h" />
     <ClInclude Include="MaterialAddButton.h" />

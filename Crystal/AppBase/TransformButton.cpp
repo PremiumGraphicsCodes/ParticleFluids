@@ -8,7 +8,7 @@ using namespace Crystal::UI;
 void TransformButton::onShow()
 {
 	objectButton.show();
-	if (ImGui::Button("Transform")) {
+	if (ImGui::Button("Move")) {
 		auto ctrl = new TransformUICtrl(getModel(), getCanvas());
 		getCanvas()->setUICtrl(ctrl);
 	}

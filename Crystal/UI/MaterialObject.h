@@ -18,6 +18,8 @@ public:
 
 	Graphics::Material* getMaterial() const { return material; }
 
+	//void setMaterial(const Graphics::Material& material) { this->material = material; }
+
 	void move(const Math::Vector3dd& v) override { ; }
 
 	void transform(const Math::Matrix3dd& m) { ; }

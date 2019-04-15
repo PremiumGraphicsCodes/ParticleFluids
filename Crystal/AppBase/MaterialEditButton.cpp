@@ -7,6 +7,7 @@ using namespace Crystal::UI;
 
 MaterialEditButton::MaterialEditButton(Repository* model, Canvas* canvas) :
 	IPopupButton("MaterialEdit", model, canvas),
+	id("Id", 0),
 	material("Material"),
 	name("Name", "Material1")
 {
@@ -14,19 +15,19 @@ MaterialEditButton::MaterialEditButton(Repository* model, Canvas* canvas) :
 
 void MaterialEditButton::onShow()
 {
+	id.show();
 	material.show();
 	name.show();
 }
 
 void MaterialEditButton::onOk()
 {
-/*	Material* m = new Material();
-	m->setAmbient(ambient.getValue());
-	m->setDiffuse(diffuse.getValue());
-	m->setSpecular(specular.getValue());
-	m->setShininess(shininess.getValue());
-	getModel()->getAppearances()->getMaterials()->add(m, name.getValue());
+	auto obj = getModel()->getAppearances()->getMaterials()->findObjectById(id.getValue());
+	if (obj == nullptr) {
+		return;
+	}
+	auto mat = obj->getMaterial();
+	*mat = material.getValue();
+	obj->setName(name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
-	getCanvas()->fitCamera(getModel()->getBoundingBox());
-	*/
 }

@@ -2,6 +2,7 @@
 
 #include "IPopupButton.h"
 #include "MaterialView.h"
+#include "IntView.h"
 #include "StringView.h"
 
 namespace Crystal {
@@ -12,7 +13,8 @@ class MaterialEditButton : public IPopupButton
 public:
 	MaterialEditButton(Repository* model, Canvas* canvas);
 
-	void setValue(const Graphics::Material& material, const std::string& name) {
+	void setValue(const int id, const Graphics::Material& material, const std::string& name) {
+		this->id.setValue(id);
 		this->material.setValue(material);
 		this->name.setValue( name );
 	}
@@ -27,6 +29,7 @@ public:
 	}
 
 private:
+	IntView id;
 	MaterialView material;
 	StringView name;
 };

@@ -316,6 +316,9 @@
     <ClInclude Include="LightView.h">
       <Filter>Appearance\Light</Filter>
     </ClInclude>
+    <ClInclude Include="LightEditButton.h">
+      <Filter>Appearance\Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

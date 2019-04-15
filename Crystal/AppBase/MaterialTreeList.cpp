@@ -23,6 +23,9 @@ void MaterialTreeList::onShow()
 	for (auto l : materials) {
 		const auto& str = l->getName();
 		auto s = str.c_str();
+		if (ImGui::Button(s)) {
+			editButton.setValue(l->getId(), *(l->getMaterial()), l->getName());
+		}
 		editButton.show();
 	}
 	ImGui::EndChild();

@@ -21,7 +21,6 @@ public:
 
 public:
 
-
 	glm::vec3 getDiffuse() const { return diffuse; }
 
 	void setDiffuse(const glm::vec4& d) { this->diffuse = d; }
@@ -43,6 +42,14 @@ public:
 	void transform(const Math::Matrix3dd& m) { position = m * position; }
 
 	void transform(const Math::Matrix4dd& m) { position = m * glm::vec4(position,1.0); }
+
+	PointLight* clone() const {
+		PointLight* light = new PointLight();
+		light->position = this->position;
+		light->diffuse = this->diffuse;
+		light->ambient = this->ambient;
+		light->specular = this->specular;
+	}
 
 private:
 	glm::vec3 position;
