@@ -34,6 +34,7 @@
     <ClCompile Include="LightAddButton.cpp" />
     <ClCompile Include="LightEditButton.cpp" />
     <ClCompile Include="LightTreeList.cpp" />
+    <ClCompile Include="LightView.cpp" />
     <ClCompile Include="MaterialAddButton.cpp" />
     <ClCompile Include="MaterialEditView.cpp" />
     <ClCompile Include="MaterialTreeList.cpp" />

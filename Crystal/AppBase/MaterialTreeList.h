@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ITreeList.h"
-#include "MaterialEditButton.h"
+#include "MaterialEditView.h"
 
 namespace Crystal {
 	namespace UI {

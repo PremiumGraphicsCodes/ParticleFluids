@@ -129,6 +129,9 @@
     <ClCompile Include="MaterialView.cpp">
       <Filter>Appearance\Material</Filter>
     </ClCompile>
+    <ClCompile Include="LightView.cpp">
+      <Filter>Appearance\Light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />

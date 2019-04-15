@@ -1,22 +1,28 @@
 #pragma once
 
-#include "IPopupButton.h"
+#include "IWindow.h"
 #include "LightView.h"
 #include "IntView.h"
 #include "StringView.h"
+#include "../UI/LightObject.h"
+#include "../UI/Repository.h"
+#include "../UI/Canvas.h"
 
 namespace Crystal {
 	namespace UI {
 
-class LightEditButton : public IPopupButton
+class LightEditButton : public IWindow
 {
 public:
-	LightEditButton(Repository* model, Canvas* canvas);
+	LightEditButton(const std::string& name, Repository* repository, Canvas* canvas);
 
-	void setValue(const Graphics::PointLight& light, const std::string& name) {
-		this->light.setValue(light);
-		this->name.setValue(name);
+	void setValue(const LightObject& value) {
+		this->id.setValue(value.getId());
+		this->light.setValue(*value.getLight());
+		this->name.setValue(value.getName());
 	}
+
+	void show() override;
 /*
 	void onShow() override;
 
@@ -32,6 +38,8 @@ private:
 	IntView id;
 	LightView light;
 	StringView name;
+	Repository* repository;
+	Canvas* canvas;
 };
 
 	}

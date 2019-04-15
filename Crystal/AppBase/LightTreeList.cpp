@@ -5,7 +5,8 @@
 using namespace Crystal::UI;
 
 LightTreeList::LightTreeList(const std::string& name, Repository* model, Canvas* canvas) :
-	ITreeList(name, model, canvas)
+	ITreeList(name, model, canvas),
+	edit("Edit", model, canvas)
 {
 }
 
@@ -21,7 +22,11 @@ void LightTreeList::onShow()
 	for (auto l : lights) {
 		const auto str = l->getName();
 		auto s = str.c_str();
-		ImGui::Text(s);
+		/*
+		if (ImGui::Button(s)) {
+			edit.setValue()
+		}
+		*/
 	}
 	ImGui::EndChild();
 
