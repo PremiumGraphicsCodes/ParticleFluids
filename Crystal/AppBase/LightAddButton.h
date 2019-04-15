@@ -1,8 +1,6 @@
 #include "IPopupButton.h"
 
-#include "Vector3dView.h"
-#include "Float4View.h"
-#include "StringView.h"
+#include "LightView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -19,10 +17,7 @@ public:
 	void onCancel() override;
 
 private:
-	Vector3dView position;
-	Float4View ambient;
-	Float4View diffuse;
-	Float4View specular;
+	LightView light;
 	StringView name;
 };
 

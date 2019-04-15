@@ -313,6 +313,9 @@
     <ClInclude Include="LightAddButton.h">
       <Filter>Appearance\Light</Filter>
     </ClInclude>
+    <ClInclude Include="LightView.h">
+      <Filter>Appearance\Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
