@@ -35,7 +35,7 @@
     <ClInclude Include="ParticleAttribute.h" />
     <ClInclude Include="PolygonMeshAttribute.h" />
     <ClInclude Include="TextureObjectRepository.h" />
-    <ClInclude Include="TransformUICtrl.h" />
+    <ClInclude Include="MoveUICtrl.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Repository.h" />
     <ClInclude Include="IMouseListener.h" />
@@ -67,7 +67,7 @@
     <ClCompile Include="ObjectIdViewModel.cpp" />
     <ClCompile Include="MaterialObjectRepository.cpp" />
     <ClCompile Include="TextureObjectRepository.cpp" />
-    <ClCompile Include="TransformUICtrl.cpp" />
+    <ClCompile Include="MoveUICtrl.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Repository.cpp" />
     <ClCompile Include="LightObjectRepository.cpp" />

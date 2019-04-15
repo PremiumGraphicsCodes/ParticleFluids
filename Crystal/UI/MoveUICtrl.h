@@ -8,12 +8,12 @@ namespace Crystal {
 		class Repository;
 		class Canvas;
 
-class TransformUICtrl : public IUICtrl
+class MoveUICtrl : public IUICtrl
 {
 public:
-	TransformUICtrl(Repository* repository, Canvas* canvas);
+	MoveUICtrl(Repository* repository, Canvas* canvas);
 
-	virtual ~TransformUICtrl() {}
+	virtual ~MoveUICtrl() {}
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 

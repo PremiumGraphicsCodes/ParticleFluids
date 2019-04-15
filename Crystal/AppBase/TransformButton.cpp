@@ -1,7 +1,7 @@
 #include "TransformButton.h"
 
 #include "imgui.h"
-#include "../UI/TransformUICtrl.h"
+#include "../UI/MoveUICtrl.h"
 
 using namespace Crystal::UI;
 
@@ -9,7 +9,7 @@ void TransformButton::onShow()
 {
 	objectButton.show();
 	if (ImGui::Button("Move")) {
-		auto ctrl = new TransformUICtrl(getModel(), getCanvas());
+		auto ctrl = new MoveUICtrl(getModel(), getCanvas());
 		getCanvas()->setUICtrl(ctrl);
 	}
 }

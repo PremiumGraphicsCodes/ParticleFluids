@@ -92,9 +92,6 @@
     <ClInclude Include="IMouseListener.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
-    <ClInclude Include="TransformUICtrl.h">
-      <Filter>UICtrl</Filter>
-    </ClInclude>
     <ClInclude Include="TextureObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
@@ -106,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="PolygonMeshAttribute.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveUICtrl.h">
+      <Filter>UICtrl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -164,11 +164,11 @@
     <ClCompile Include="AppearanceViewModel.cpp">
       <Filter>ViewModel</Filter>
     </ClCompile>
-    <ClCompile Include="TransformUICtrl.cpp">
-      <Filter>UICtrl</Filter>
-    </ClCompile>
     <ClCompile Include="TextureObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveUICtrl.cpp">
+      <Filter>UICtrl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
