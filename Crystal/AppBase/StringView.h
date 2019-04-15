@@ -19,7 +19,9 @@ public:
 		ImGui::InputText(name.c_str(), &value);
 	}
 
-	std::string getValue() const { return std::string(value); }
+	std::string getValue() const { return value; }
+
+	void setValue(const std::string& value) { this->value = value; }
 
 private:
 	std::string value;

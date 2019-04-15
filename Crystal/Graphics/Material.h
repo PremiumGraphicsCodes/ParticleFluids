@@ -15,21 +15,14 @@ namespace Crystal {
 class Material
 {
 public:
-
-	Material(const unsigned int id = 0) :
-		shininess(1.0f),
-		transparent(0.0f),
-		id(id)
+	Material() :
+		shininess(1.0f)
 	{}
 
 	~Material()
 	{}
 
 public:
-
-	std::string getName() const { return name; }
-
-	void setName(const std::string& name) { this->name = name; }
 
 	void setAmbient(const glm::vec4& a) { this->ambient = a; }
 
@@ -47,33 +40,28 @@ public:
 
 	float getShininess() const { return shininess; }
 
-	void setTransparent(const float t) { this->transparent = t; }
-
-	float getTransparent() const { return transparent; }
-
-	//Texture getTexture() const { return texture; }
-
-	//void setTexture(const Texture texture) { this->texture = texture; }
-
 	int getTextureId() const { return textureId; }
 
 	void setTextureId(const int id) { this->textureId = id; }
 
-	unsigned int getId() const { return id; }
+	Material* clone() const {
+		Material* m = new Material();
+		m->ambient = this->ambient;
+		m->diffuse = this->diffuse;
+		m->specular = this->specular;
+		m->shininess = this->shininess;
+		m->textureId = this->textureId;
+		return m;
+	}
 
 private:
-	std::string name;
 
-	float shininess;
-	float transparent;
 	glm::vec4 ambient;
 	glm::vec4 diffuse;
 	glm::vec4 specular;
+	float shininess;
+
 	int textureId;
-
-	unsigned int id;
-
-	//Texture texture;
 };
 
 	}
