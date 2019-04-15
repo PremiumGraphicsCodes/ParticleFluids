@@ -31,17 +31,17 @@ public:
 
 	void setName(const std::string& name) { this->name = name; }
 
-	void setAmbient(const glm::vec3& a) { this->ambient = a; }
+	void setAmbient(const glm::vec4& a) { this->ambient = a; }
 
-	glm::vec3 getAmbient() const { return ambient; }
+	glm::vec4 getAmbient() const { return ambient; }
 
-	void setDiffuse(const glm::vec3& d) { this->diffuse = d; }
+	void setDiffuse(const glm::vec4& d) { this->diffuse = d; }
 
-	glm::vec3 getDiffuse() const { return diffuse; }
+	glm::vec4 getDiffuse() const { return diffuse; }
 
-	void setSpecular(const glm::vec3& s) { this->specular = s; }
+	void setSpecular(const glm::vec4& s) { this->specular = s; }
 
-	glm::vec3 getSpecular() const { return specular; }
+	glm::vec4 getSpecular() const { return specular; }
 
 	void setShininess(const float s) { this->shininess = s; }
 
@@ -66,9 +66,9 @@ private:
 
 	float shininess;
 	float transparent;
-	glm::vec3 ambient;
-	glm::vec3 diffuse;
-	glm::vec3 specular;
+	glm::vec4 ambient;
+	glm::vec4 diffuse;
+	glm::vec4 specular;
 	int textureId;
 
 	unsigned int id;

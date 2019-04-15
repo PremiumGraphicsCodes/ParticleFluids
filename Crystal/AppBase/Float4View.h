@@ -22,6 +22,8 @@ public:
 
 	glm::vec4 getValue() const { return value; }
 
+	void setValue(const glm::vec4& value) { this->value = value; }
+
 private:
 	glm::vec4 value;
 };

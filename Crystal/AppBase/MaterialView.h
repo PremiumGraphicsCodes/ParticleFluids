@@ -33,6 +33,12 @@ public:
 		shininess.show();
 	}
 
+	void setMaterial(Graphics::Material* m) {
+		ambient.setValue(m->getAmbient());
+		diffuse.setValue(m->getDiffuse());
+		specular.setValue(m->getSpecular());
+	}
+
 	Graphics::Material* getMaterial() const {
 		Graphics::Material* m = new Graphics::Material();
 		m->setAmbient(ambient.getValue());
