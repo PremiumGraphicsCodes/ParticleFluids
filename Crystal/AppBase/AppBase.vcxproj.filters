@@ -96,9 +96,6 @@
     <ClCompile Include="AppearancePanel.cpp">
       <Filter>Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialEditButton.cpp">
-      <Filter>Appearance\Material</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialTreeList.cpp">
       <Filter>Appearance\Material</Filter>
     </ClCompile>
@@ -125,6 +122,12 @@
     </ClCompile>
     <ClCompile Include="LightEditButton.cpp">
       <Filter>Appearance\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialEditView.cpp">
+      <Filter>Appearance\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialView.cpp">
+      <Filter>Appearance\Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,9 +289,6 @@
     <ClInclude Include="AppearancePanel.h">
       <Filter>Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialEditButton.h">
-      <Filter>Appearance\Material</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialTreeList.h">
       <Filter>Appearance\Material</Filter>
     </ClInclude>
@@ -321,6 +321,9 @@
     </ClInclude>
     <ClInclude Include="LightEditButton.h">
       <Filter>Appearance\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialEditView.h">
+      <Filter>Appearance\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

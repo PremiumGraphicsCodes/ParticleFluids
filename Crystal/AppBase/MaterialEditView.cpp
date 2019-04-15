@@ -1,4 +1,4 @@
-#include "MaterialEditButton.h"
+#include "MaterialEditView.h"
 
 #include "../Graphics/Material.h"
 
