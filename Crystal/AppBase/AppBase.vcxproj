@@ -32,6 +32,7 @@
     <ClCompile Include="IPanel.cpp" />
     <ClCompile Include="IPopupButton.cpp" />
     <ClCompile Include="LightAddButton.cpp" />
+    <ClCompile Include="LightEditButton.cpp" />
     <ClCompile Include="LightTreeList.cpp" />
     <ClCompile Include="MaterialAddButton.cpp" />
     <ClCompile Include="MaterialEditButton.cpp" />

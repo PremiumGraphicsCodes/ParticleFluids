@@ -21,6 +21,8 @@ public:
 		ImGui::InputFloat3(name.c_str(), &value[0]);
 	}
 
+	void setValue(const Math::Vector3dd& value) { this->value = value; }
+
 	Math::Vector3dd getValue() const { return value; }
 
 private:

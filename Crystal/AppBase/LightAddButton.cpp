@@ -17,7 +17,7 @@ void LightAddButton::onShow()
 
 void LightAddButton::onOk()
 {
-	getModel()->getAppearances()->getLights()->add(light.getValue(), name.getValue());
+	getModel()->getAppearances()->getLights()->add(light.getValue().clone(), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

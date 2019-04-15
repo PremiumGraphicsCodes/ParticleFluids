@@ -27,12 +27,20 @@ public:
 		specular.show();
 	}
 
-	Graphics::PointLight* getValue() const {
-		auto l = new Graphics::PointLight();
-		l->setPosition(position.getValue());
-		l->setAmbient(ambient.getValue());
-		l->setDiffuse(diffuse.getValue());
-		l->setSpecular(specular.getValue());
+	void setValue(const Graphics::PointLight& value)
+	{
+		this->position.setValue(value.getPosition());
+		this->ambient.setValue(value.getAmbient());
+		this->diffuse.setValue(value.getDiffuse());
+		this->specular.setValue(value.getSpecular());
+	}
+
+	Graphics::PointLight getValue() const {
+		Graphics::PointLight l = Graphics::PointLight();
+		l.setPosition(position.getValue());
+		l.setAmbient(ambient.getValue());
+		l.setDiffuse(diffuse.getValue());
+		l.setSpecular(specular.getValue());
 		return l;
 	}
 

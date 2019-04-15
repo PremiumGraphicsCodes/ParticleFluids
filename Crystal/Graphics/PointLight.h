@@ -10,10 +10,7 @@ namespace Crystal {
 
 class PointLight {
 public:
-	PointLight() :
-		position(0.0f,0.0f,0.0f),
-		diffuse(0.0f, 0.0f, 0.0f),
-		specular(0.0f, 0.0f, 0.0f)
+	PointLight()
 	{
 	}
 
@@ -21,15 +18,15 @@ public:
 
 public:
 
-	glm::vec3 getDiffuse() const { return diffuse; }
+	glm::vec4 getDiffuse() const { return diffuse; }
 
 	void setDiffuse(const glm::vec4& d) { this->diffuse = d; }
 
-	glm::vec3 getSpecular() const { return specular; }
+	glm::vec4 getSpecular() const { return specular; }
 
 	void setSpecular(const glm::vec4& s) { this->specular = s; }
 
-	glm::vec3 getAmbient() const { return ambient; }
+	glm::vec4 getAmbient() const { return ambient; }
 
 	void setAmbient(const glm::vec4& a) { this->ambient = a; }
 
@@ -49,13 +46,14 @@ public:
 		light->diffuse = this->diffuse;
 		light->ambient = this->ambient;
 		light->specular = this->specular;
+		return light;
 	}
 
 private:
 	glm::vec3 position;
-	glm::vec3 diffuse;
-	glm::vec3 ambient;
-	glm::vec3 specular;
+	glm::vec4 diffuse;
+	glm::vec4 ambient;
+	glm::vec4 specular;
 };
 
 	}

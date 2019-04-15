@@ -123,6 +123,9 @@
     <ClCompile Include="LightAddButton.cpp">
       <Filter>Appearance\Light</Filter>
     </ClCompile>
+    <ClCompile Include="LightEditButton.cpp">
+      <Filter>Appearance\Light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
