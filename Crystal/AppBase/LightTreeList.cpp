@@ -19,15 +19,14 @@ void LightTreeList::onShow()
 	ImGui::Begin(str);
 
 	ImGui::BeginChild(str, ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
-	for (auto l : lights) {
+	for (const auto& l : lights) {
 		const auto str = l->getName();
 		auto s = str.c_str();
-		/*
 		if (ImGui::Button(s)) {
-			edit.setValue()
+			edit.setValue(*l);
 		}
-		*/
 	}
+	edit.show();
 	ImGui::EndChild();
 
 	ImGui::End();

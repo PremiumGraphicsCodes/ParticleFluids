@@ -13,6 +13,8 @@ LightAddButton::LightAddButton(Repository* model, Canvas* canvas) :
 
 void LightAddButton::onShow()
 {
+	light.show();
+	name.show();
 }
 
 void LightAddButton::onOk()

@@ -25,5 +25,6 @@ void LightEditButton::show()
 		auto light = object->getLight();
 		object->setName(name.getValue());
 		(*light) = this->light.getValue();
+		canvas->setViewModel(repository->toViewModel());
 	}
 }
