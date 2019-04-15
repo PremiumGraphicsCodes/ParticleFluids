@@ -28,7 +28,16 @@ void ScaleUICtrl::onLeftDragging(const Vector2df& position)
 	const auto diff = prevPosition - position;
 
 	for (auto o : this->objects) {
+		const double scalex = 1.0 + diff.x;
+		const double scaley = 1.0 + diff.y;
 		//o->(glm::vec3(diff.x, diff.y, 0.0));
+
+		Matrix3dd matrix(
+			scalex, 0.0, 0.0,
+			0.0, scaley, 0.0,
+			0.0, 0.0, 1.0
+		);
+		o->transform(matrix);
 	}
 	this->prevPosition = position;
 	canvas->setViewModel(repository->toViewModel());

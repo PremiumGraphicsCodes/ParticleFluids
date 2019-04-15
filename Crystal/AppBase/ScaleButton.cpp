@@ -10,8 +10,11 @@ void ScaleButton::onShow()
 	objectButton.show();
 	if (ImGui::Button("Scale")) {
 		auto ctrl = new ScaleUICtrl(getModel(), getCanvas());
-		//		getModel()->getObjects()->
-		//		ctrl->add(obje)
+		auto object = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton.getId());
+		if (object == nullptr) {
+			return;
+		}
+		ctrl->add(object);
 		getCanvas()->setUICtrl(ctrl);
 	}
 }
