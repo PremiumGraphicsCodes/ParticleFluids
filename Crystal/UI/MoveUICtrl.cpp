@@ -51,8 +51,7 @@ void MoveUICtrl::onRightDragging(const Vector2df& position)
 	const auto& diff = prevPosition - position;
 	const auto& rotation = rotationMatrixX(diff.x) * rotationMatrixY(diff.y);
 
-	auto& os = repository->getObjects()->getParticleSystems()->getObjects();
-	for (auto o : os) {
+	for (auto o : objects) {
 		o->transform(rotation);
 	}
 	this->prevPosition = position;

@@ -107,6 +107,9 @@
     <ClInclude Include="MoveUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
+    <ClInclude Include="ScaleUICtrl.h">
+      <Filter>UICtrl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas.cpp" />
@@ -168,6 +171,9 @@
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="MoveUICtrl.cpp">
+      <Filter>UICtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaleUICtrl.cpp">
       <Filter>UICtrl</Filter>
     </ClCompile>
   </ItemGroup>

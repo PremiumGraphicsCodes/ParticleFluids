@@ -9,14 +9,14 @@ namespace Crystal {
 		class Canvas;
 		class IObject;
 
-class MoveUICtrl : public IUICtrl
+class ScaleUICtrl : public IUICtrl
 {
 public:
-	MoveUICtrl(Repository* repository, Canvas* canvas);
+	ScaleUICtrl(Repository* repository, Canvas* canvas);
 
-	void add(IObject* object) { this->objects.push_back(object); }
+	void add(IObject* object) { objects.push_back(object); }
 
-	virtual ~MoveUICtrl() {}
+	virtual ~ScaleUICtrl() {}
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 
@@ -28,15 +28,15 @@ public:
 
 	virtual void onRightButtonUp(const Math::Vector2df& position) override;
 
-	virtual void onRightDragging(const Math::Vector2df& position) override;
+	virtual void onRightDragging(const Math::Vector2df& position) override {}
 
-	virtual void onMiddleButtonDown(const Math::Vector2df& position) override;
+	virtual void onMiddleButtonDown(const Math::Vector2df& position) override {}
 
-	virtual void onMiddleButtonUp(const Math::Vector2df& position) override;
+	virtual void onMiddleButtonUp(const Math::Vector2df& position) override {}
 
-	virtual void onMiddleDragging(const Math::Vector2df& position) override;
+	virtual void onMiddleDragging(const Math::Vector2df& position) override {}
 
-	virtual void onWheel(const float dx) override;
+	virtual void onWheel(const float dx) override {}
 
 private:
 	std::list<IObject*> objects;

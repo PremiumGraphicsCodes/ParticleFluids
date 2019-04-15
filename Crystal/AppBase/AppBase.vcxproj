@@ -48,7 +48,7 @@
     <ClCompile Include="PSSphereButton.cpp" />
     <ClCompile Include="PSTorusButton.cpp" />
     <ClCompile Include="TextureTreeList.cpp" />
-    <ClCompile Include="TransformButton.cpp" />
+    <ClCompile Include="MoveButton.cpp" />
     <ClCompile Include="ObjectSelectButton.cpp" />
     <ClCompile Include="ParticleSystemTreeList.cpp" />
     <ClCompile Include="ParticleSystemPanel.cpp" />
@@ -116,7 +116,7 @@
     <ClInclude Include="StringView.h" />
     <ClInclude Include="TextureTreeList.h" />
     <ClInclude Include="Torus3dView.h" />
-    <ClInclude Include="TransformButton.h" />
+    <ClInclude Include="MoveButton.h" />
     <ClInclude Include="ObjectSelectButton.h" />
     <ClInclude Include="ParticleSystemTreeList.h" />
     <ClInclude Include="ParticleSystemPanel.h" />
