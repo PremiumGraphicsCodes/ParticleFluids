@@ -8,7 +8,7 @@ namespace Crystal {
 class LightAddButton : public IPopupButton
 {
 public:
-	LightAddButton(Repository* model, Canvas* canvas);
+	LightAddButton(const std::string& name, Repository* model, Canvas* canvas);
 
 	void onShow() override;
 

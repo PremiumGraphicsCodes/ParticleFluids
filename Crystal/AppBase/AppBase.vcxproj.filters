@@ -81,18 +81,6 @@
     <ClCompile Include="PSTorusButton.cpp">
       <Filter>Object\ParticleSystem</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonMeshPanel.cpp">
-      <Filter>Object\PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="PMSphereButton.cpp">
-      <Filter>Object\PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="PMBoxButton.cpp">
-      <Filter>Object\PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="PMPlaneButton.cpp">
-      <Filter>Object\PolygonMesh</Filter>
-    </ClCompile>
     <ClCompile Include="AppearancePanel.cpp">
       <Filter>Appearance</Filter>
     </ClCompile>
@@ -111,9 +99,6 @@
     <ClCompile Include="ParticleSystemTreeList.cpp">
       <Filter>Object\ParticleSystem</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonTreeList.cpp">
-      <Filter>Object\PolygonMesh</Filter>
-    </ClCompile>
     <ClCompile Include="WireFrameTreeList.cpp">
       <Filter>Object\WireFrame</Filter>
     </ClCompile>
@@ -131,6 +116,21 @@
     </ClCompile>
     <ClCompile Include="LightView.cpp">
       <Filter>Appearance\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="PMBoxButton.cpp">
+      <Filter>Object\PolygonMesh\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="PMPlaneButton.cpp">
+      <Filter>Object\PolygonMesh\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="PMSphereButton.cpp">
+      <Filter>Object\PolygonMesh\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshPanel.cpp">
+      <Filter>Object\PolygonMesh\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshTreeList.cpp">
+      <Filter>Object\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -271,20 +271,8 @@
     <ClInclude Include="PSAttributeView.h">
       <Filter>Object\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshPanel.h">
-      <Filter>Object\PolygonMesh</Filter>
-    </ClInclude>
-    <ClInclude Include="PMSphereButton.h">
-      <Filter>Object\PolygonMesh</Filter>
-    </ClInclude>
-    <ClInclude Include="PMBoxButton.h">
-      <Filter>Object\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="Plane3dView.h">
       <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="PMPlaneButton.h">
-      <Filter>Object\PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="Ray3dView.h">
       <Filter>Math</Filter>
@@ -310,9 +298,6 @@
     <ClInclude Include="ParticleSystemTreeList.h">
       <Filter>Object\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonTreeList.h">
-      <Filter>Object\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="WireFrameTreeList.h">
       <Filter>Object\WireFrame</Filter>
     </ClInclude>
@@ -327,6 +312,21 @@
     </ClInclude>
     <ClInclude Include="MaterialEditView.h">
       <Filter>Appearance\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="PMBoxButton.h">
+      <Filter>Object\PolygonMesh\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="PMPlaneButton.h">
+      <Filter>Object\PolygonMesh\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="PMSphereButton.h">
+      <Filter>Object\PolygonMesh\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshPanel.h">
+      <Filter>Object\PolygonMesh\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshTreeList.h">
+      <Filter>Object\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -374,6 +374,9 @@
     </Filter>
     <Filter Include="Object\PolygonMesh">
       <UniqueIdentifier>{ad45230d-8683-40fd-90bc-ec9f4bf7bbd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\PolygonMesh\Generation">
+      <UniqueIdentifier>{de8ab38c-9b84-47d6-87c6-c6cc2ebcc527}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

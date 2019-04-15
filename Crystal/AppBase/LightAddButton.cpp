@@ -4,9 +4,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-LightAddButton::LightAddButton(Repository* model, Canvas* canvas) :
-	IPopupButton("Light", model, canvas),
-	light("LightAdd"),
+LightAddButton::LightAddButton(const std::string& name, Repository* model, Canvas* canvas) :
+	IPopupButton(name, model, canvas),
+	light("Light"),
 	name("Name", "Light01")
 {
 }

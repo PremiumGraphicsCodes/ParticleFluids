@@ -1,15 +1,15 @@
-#include "PolygonTreeList.h"
+#include "PolygonMeshTreeList.h"
 
 #include "imgui.h"
 
 using namespace Crystal::UI;
 
-PolygonTreeList::PolygonTreeList(const std::string& name, Repository* model, Canvas* canvas) :
+PolygonMeshTreeList::PolygonMeshTreeList(const std::string& name, Repository* model, Canvas* canvas) :
 	ITreeList(name, model, canvas)
 {
 }
 
-void PolygonTreeList::onShow()
+void PolygonMeshTreeList::onShow()
 {
 	auto n = getName();
 	auto str = n.c_str();

@@ -12,7 +12,7 @@
 
 #include "../AppBase/ParticleSystemTreeList.h"
 #include "../AppBase/WireFrameTreeList.h"
-#include "../AppBase/PolygonTreeList.h"
+#include "../AppBase/PolygonMeshTreeList.h"
 #include "../AppBase/LightTreeList.h"
 #include "../AppBase/MaterialTreeList.h"
 #include "../AppBase/TextureTreeList.h"
@@ -31,16 +31,8 @@ using namespace Crystal::UI;
 
 int main(int, char**)
 {
-	auto camera = new PerspectiveCamera(
-		1.0,
-		0.5f * Tolerance<double>::getPI(),
-		Vector3df(0,0,0),
-		Vector3df(0,0,-10.0),
-		1.0f, 10.0f
-		);
-
 	Repository model;
-	Canvas canvas(camera);
+	Canvas canvas;
 
 	Window window(&model, &canvas);
 	if (!window.init()) {
@@ -61,7 +53,7 @@ int main(int, char**)
 
 	window.add(new ParticleSystemTreeList("ParticleSystems", &model, &canvas));
 	window.add(new WireFrameTreeList("WireFrames", &model, &canvas));
-	window.add(new PolygonTreeList("Polygons", &model, &canvas));
+	window.add(new PolygonMeshTreeList("Polygons", &model, &canvas));
 	window.add(new LightTreeList("Lights", &model, &canvas));
 	window.add(new MaterialTreeList("Materials", &model, &canvas));
 	window.add(new TextureTreeList("Textures", &model, &canvas));

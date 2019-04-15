@@ -5,8 +5,8 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-MaterialAddButton::MaterialAddButton(Repository* model, Canvas* canvas) :
-	IPopupButton("MaterialAdd", model, canvas),
+MaterialAddButton::MaterialAddButton(const std::string& name, Repository* model, Canvas* canvas) :
+	IPopupButton(name, model, canvas),
 	material("Material"),
 	name("Name", "Material1")
 {

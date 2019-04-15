@@ -10,7 +10,7 @@ namespace Crystal {
 class MaterialAddButton : public IPopupButton
 {
 public:
-	MaterialAddButton(Repository* model, Canvas* canvas);
+	MaterialAddButton(const std::string& name, Repository* model, Canvas* canvas);
 
 	void onShow() override;
 

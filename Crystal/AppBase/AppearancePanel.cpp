@@ -21,6 +21,6 @@ using namespace Crystal::UI;
 AppearancePanel::AppearancePanel(const std::string& name, Repository* model, Canvas* canvas) :
 	IPanel(name, model, canvas)
 {
-	add( new LightAddButton(model, canvas) );
-	add( new MaterialAddButton(model, canvas) );
+	add( new LightAddButton("Light", model, canvas) );
+	add( new MaterialAddButton("Material", model, canvas) );
 }

@@ -5,10 +5,10 @@
 namespace Crystal {
 	namespace UI {
 
-class PolygonTreeList : public ITreeList
+class PolygonMeshTreeList : public ITreeList
 {
 public:
-	PolygonTreeList(const std::string& name, Repository* model, Canvas* canvas);
+	PolygonMeshTreeList(const std::string& name, Repository* model, Canvas* canvas);
 
 	void show() override {
 		onShow();
