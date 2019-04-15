@@ -132,6 +132,9 @@
     <ClCompile Include="MoveButton.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
+    <ClCompile Include="ScaleButton.cpp">
+      <Filter>Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -326,6 +329,9 @@
       <Filter>Object\WireFrame\Generation</Filter>
     </ClInclude>
     <ClInclude Include="MoveButton.h">
+      <Filter>Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleButton.h">
       <Filter>Transform</Filter>
     </ClInclude>
   </ItemGroup>

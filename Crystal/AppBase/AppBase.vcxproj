@@ -47,6 +47,7 @@
     <ClCompile Include="PSCylinderButton.cpp" />
     <ClCompile Include="PSSphereButton.cpp" />
     <ClCompile Include="PSTorusButton.cpp" />
+    <ClCompile Include="ScaleButton.cpp" />
     <ClCompile Include="TextureTreeList.cpp" />
     <ClCompile Include="MoveButton.cpp" />
     <ClCompile Include="ObjectSelectButton.cpp" />
@@ -112,6 +113,7 @@
     <ClInclude Include="PSCylinderButton.h" />
     <ClInclude Include="PSSphereButton.h" />
     <ClInclude Include="Ray3dView.h" />
+    <ClInclude Include="ScaleButton.h" />
     <ClInclude Include="Sphere3dView.h" />
     <ClInclude Include="StringView.h" />
     <ClInclude Include="TextureTreeList.h" />
