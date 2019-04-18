@@ -58,6 +58,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IOTest", "IOTest\IOTest.vcx
 		{198160CC-5ED1-499D-AD45-90DBAC4852F8} = {198160CC-5ED1-499D-AD45-90DBAC4852F8}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Model", "Model\Model.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -178,6 +180,16 @@ Global
 		{C34E306D-8361-41D4-9141-D646162D3583}.Release|x64.Build.0 = Release|x64
 		{C34E306D-8361-41D4-9141-D646162D3583}.Release|x86.ActiveCfg = Release|Win32
 		{C34E306D-8361-41D4-9141-D646162D3583}.Release|x86.Build.0 = Release|Win32
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Debug|x64.ActiveCfg = Debug|x64
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Debug|x64.Build.0 = Debug|x64
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Debug|x86.ActiveCfg = Debug|Win32
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Debug|x86.Build.0 = Debug|Win32
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Release|Any CPU.ActiveCfg = Release|Win32
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Release|x64.ActiveCfg = Release|x64
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Release|x64.Build.0 = Release|x64
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Release|x86.ActiveCfg = Release|Win32
+		{59C5EA30-1E57-417C-9416-17B592E8724E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

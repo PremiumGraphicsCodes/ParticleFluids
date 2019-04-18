@@ -110,6 +110,7 @@
     <ClInclude Include="ScaleUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
+    <ClInclude Include="UUID.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas.cpp" />
