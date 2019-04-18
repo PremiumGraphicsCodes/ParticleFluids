@@ -10,6 +10,8 @@
 
 #include "../Util/UnCopyable.h"
 
+#include "../Model/TextureObjectRepository.h"
+
 namespace Crystal {
 	namespace UI {
 		class ViewModel;

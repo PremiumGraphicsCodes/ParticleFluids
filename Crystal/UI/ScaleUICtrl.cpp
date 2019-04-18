@@ -1,6 +1,6 @@
 #include "ScaleUICtrl.h"
 
-#include "Repository.h"
+#include "../UI/Repository.h"
 
 #include "../UI/Canvas.h"
 

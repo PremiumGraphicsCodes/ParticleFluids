@@ -5,8 +5,9 @@
 #include "../Shader/SmoothRenderer.h"
 
 #include "../Shader/FrameBuffer.h"
+#include "../Shader/TextureObject.h"
 
-#include "TextureObjectRepository.h"
+//#include "TextureObjectRepository.h"
 
 #include "../Util/UnCopyable.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ObjectRepository.h"
-#include "AppearanceObjectRepository.h"
+#include "../Model/ObjectRepository.h"
+#include "../Model/AppearanceObjectRepository.h"
 #include "ViewModel.h"
 
 #include "../Util/UnCopyable.h"

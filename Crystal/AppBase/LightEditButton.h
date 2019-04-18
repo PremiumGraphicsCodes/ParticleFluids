@@ -4,7 +4,7 @@
 #include "LightView.h"
 #include "IntView.h"
 #include "StringView.h"
-#include "../UI/LightObject.h"
+#include "../Model/LightObject.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 

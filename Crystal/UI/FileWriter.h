@@ -1,7 +1,7 @@
 #pragma once
 
 #include <filesystem>
-#include "ObjectRepository.h"
+#include "../Model/ObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {

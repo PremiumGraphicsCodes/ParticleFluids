@@ -3,4 +3,68 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IObjectRepository.h" />
+    <ClInclude Include="AppearanceObjectRepository.h" />
+    <ClInclude Include="MaterialObject.h" />
+    <ClInclude Include="MaterialObjectRepository.h" />
+    <ClInclude Include="TextureObjectRepository.h" />
+    <ClInclude Include="UUID.h" />
+    <ClInclude Include="WireFrameObjectRepository.h" />
+    <ClInclude Include="IObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="LightObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="LightObjectRepository.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemObjectRepository.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshObjectRepository.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshAttribute.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameAttribute.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleAttribute.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectRepository.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppearanceObjectRepository.cpp" />
+    <ClCompile Include="TextureObjectRepository.cpp" />
+    <ClCompile Include="WireFrameObjectRepository.cpp" />
+    <ClCompile Include="LightObjectRepository.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialObjectRepository.cpp" />
+    <ClCompile Include="ParticleSystemObjectRepository.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshObjectRepository.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectRepository.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object">
+      <UniqueIdentifier>{b8ac2286-41a7-4c7a-8e11-7f3ca28786ef}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
 </Project>

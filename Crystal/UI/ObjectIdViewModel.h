@@ -5,12 +5,12 @@
 #include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/LightBuffer.h"
 #include "../Graphics/MaterialBuffer.h"
-#include "ParticleSystemObject.h"
-#include "WireFrameObject.h"
-#include "PolygonMeshObject.h"
-#include "LightObjectRepository.h"
-#include "ObjectRepository.h"
-#include "MaterialObjectRepository.h"
+#include "../Model/ParticleSystemObject.h"
+#include "../Model/WireFrameObject.h"
+#include "../Model/PolygonMeshObject.h"
+#include "../Model/LightObjectRepository.h"
+#include "../Model/ObjectRepository.h"
+#include "../Model/MaterialObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {

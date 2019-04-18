@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AppearanceObjectRepository.h" />
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Canvas.h" />
@@ -28,38 +27,19 @@
     <ClInclude Include="ObjectIdRenderer.h" />
     <ClInclude Include="ObjectIdViewModel.h" />
     <ClInclude Include="IKeyListener.h" />
-    <ClInclude Include="IObjectRepository.h" />
-    <ClInclude Include="LightObject.h" />
-    <ClInclude Include="MaterialObject.h" />
-    <ClInclude Include="MaterialObjectRepository.h" />
-    <ClInclude Include="ParticleAttribute.h" />
-    <ClInclude Include="PolygonMeshAttribute.h" />
+    <ClInclude Include="Repository.h" />
     <ClInclude Include="ScaleUICtrl.h" />
-    <ClInclude Include="TextureObjectRepository.h" />
     <ClInclude Include="MoveUICtrl.h" />
     <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Repository.h" />
     <ClInclude Include="IMouseListener.h" />
-    <ClInclude Include="IObject.h" />
-    <ClInclude Include="ParticleSystemObjectRepository.h" />
-    <ClInclude Include="PolygonMeshObjectRepository.h" />
     <ClInclude Include="ObjectRenderer.h" />
     <ClInclude Include="IUICtrl.h" />
-    <ClInclude Include="LightObjectRepository.h" />
-    <ClInclude Include="ObjectRepository.h" />
-    <ClInclude Include="ParticleSystemObject.h" />
     <ClInclude Include="PickUICtrl.h" />
-    <ClInclude Include="PolygonMeshObject.h" />
     <ClInclude Include="RectSelectUICtrl.h" />
     <ClInclude Include="ObjectViewModel.h" />
-    <ClInclude Include="UUID.h" />
     <ClInclude Include="ViewModel.h" />
-    <ClInclude Include="WireFrameAttribute.h" />
-    <ClInclude Include="WireFrameObject.h" />
-    <ClInclude Include="WireFrameObjectRepository.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AppearanceObjectRepository.cpp" />
     <ClCompile Include="AppearanceViewModel.cpp" />
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="FileReader.cpp" />
@@ -67,20 +47,13 @@
     <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="ObjectIdRenderer.cpp" />
     <ClCompile Include="ObjectIdViewModel.cpp" />
-    <ClCompile Include="MaterialObjectRepository.cpp" />
+    <ClCompile Include="Repository.cpp" />
     <ClCompile Include="ScaleUICtrl.cpp" />
-    <ClCompile Include="TextureObjectRepository.cpp" />
     <ClCompile Include="MoveUICtrl.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="Repository.cpp" />
-    <ClCompile Include="LightObjectRepository.cpp" />
-    <ClCompile Include="ObjectRepository.cpp" />
-    <ClCompile Include="ParticleSystemObjectRepository.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
-    <ClCompile Include="PolygonMeshObjectRepository.cpp" />
     <ClCompile Include="ObjectRenderer.cpp" />
     <ClCompile Include="ObjectViewModel.cpp" />
-    <ClCompile Include="WireFrameObjectRepository.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
