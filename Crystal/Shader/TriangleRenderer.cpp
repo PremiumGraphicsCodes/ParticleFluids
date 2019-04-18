@@ -60,7 +60,6 @@ void TriangleRenderer::findLocation()
 
 void TriangleRenderer::render(const ICamera& camera)
 {
-	/*
 	const auto& indices = buffer.getIndices();
 	const auto& positions = buffer.getPositions().get();
 	const auto& colors = buffer.getColors().get();
@@ -98,6 +97,4 @@ void TriangleRenderer::render(const ICamera& camera)
 
 
 	glDisable(GL_DEPTH_TEST);
-
-	*/
 }

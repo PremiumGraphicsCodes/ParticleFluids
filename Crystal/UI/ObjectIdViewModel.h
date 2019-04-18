@@ -24,6 +24,8 @@ public:
 
 	Graphics::LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
 
+	Graphics::LineBuffer getTriangleIdBuffer() const { return triangleIdBuffer; }
+
 private:
 	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
 
@@ -35,7 +37,7 @@ private:
 
 	Graphics::PointBuffer pointIdBuffer;
 	Graphics::LineBuffer lineIdBuffer;
-	Graphics::TriangleBuffer triangleIdBuffer;
+	Graphics::LineBuffer triangleIdBuffer;
 };
 
 	}

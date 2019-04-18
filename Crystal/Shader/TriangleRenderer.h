@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Graphics/ICamera.h"
-#include "../Graphics/TriangleBuffer.h"
+#include "../Graphics/LineBuffer.h"
 #include "IShader.h"
 
 #include "ShaderObject.h"
@@ -14,7 +14,7 @@ class TriangleRenderer : public IShader
 public:
 	void findLocation();
 
-	void setBuffer(const Graphics::TriangleBuffer& buffer) { this->buffer = buffer; }
+	void setBuffer(const Graphics::LineBuffer& buffer) { this->buffer = buffer; }
 
 	void render(const Graphics::ICamera& camera) override;
 
@@ -28,7 +28,7 @@ private:
 
 private:
 	ShaderObject shader;
-	Graphics::TriangleBuffer buffer;
+	Graphics::LineBuffer buffer;
 };
 
 	}

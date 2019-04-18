@@ -12,6 +12,9 @@ bool ObjectIdRenderer::build()
 	if (!lineIdRenderer.build()) {
 		return false;
 	}
+	if (!triangleIdRenderer.build()) {
+		return false;
+	}
 
 	Image image(512, 512);
 	texture.create(image, 0);
@@ -25,6 +28,7 @@ void ObjectIdRenderer::setViewModel(const ObjectIdViewModel& vm)
 {
 	this->pointIdRenderer.setBuffer(vm.getPointIdBuffer());
 	this->lineIdRenderer.setBuffer(vm.getLindIdBuffer(), 1.0f);
+	this->triangleIdRenderer.setBuffer(vm.getTriangleIdBuffer());
 }
 
 DrawableID ObjectIdRenderer::getId(const double x, const double y)
@@ -48,6 +52,7 @@ void ObjectIdRenderer::render()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	pointIdRenderer.render(*camera);
 	lineIdRenderer.render(*camera);
+	triangleIdRenderer.render(*camera);
 
 	frameBufferObject.unbind();
 }

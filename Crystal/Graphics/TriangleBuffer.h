@@ -66,6 +66,41 @@ private:
 	Buffer2d<float> texCoords;
 	std::vector<TriangleBufferBlock> blocks;
 };
+
+/*
+class TriangleColorBuffer
+{
+public:
+	TriangleColorBuffer() {}
+
+	void add(const Math::Triangle3d& triangle, const Graphics::ColorRGBAf& color) {
+		const auto& vertices = polygon.getVertices();
+		int id = 0;
+		for (auto v : vertices) {
+			positions.add(v->getPosition());
+		}
+		const auto& faces = polygon.getFaces();
+		for (auto f : faces) {
+			DrawableID did(id, f->getId());
+			indices.push_back(f->getV1()->getAttr().id);
+			indices.push_back(f->getV2()->getAttr().id);
+			indices.push_back(f->getV3()->getAttr().id);
+		}
+	}
+
+	Buffer3d<float> getPositions() const { return positions; }
+
+	Buffer4d<float> getColors() const { return colors; }
+
+	std::vector<unsigned int> getIndices() const { return indices; }
+
+private:
+	Graphics::Buffer3d<float> positions;
+	Graphics::Buffer4d<float> colors;
+	std::vector<unsigned int> indices;
+};
+*/
+
 	}
 }
 

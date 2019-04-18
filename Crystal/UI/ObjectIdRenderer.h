@@ -4,7 +4,7 @@
 
 #include "../Shader/PointRenderer.h"
 #include "../Shader/LineRenderer.h"
-#include "../Shader/SmoothRenderer.h"
+#include "../Shader/TriangleRenderer.h"
 
 #include "../Shader/FrameBuffer.h"
 
@@ -37,6 +37,7 @@ public:
 private:
 	Shader::PointRenderer pointIdRenderer;
 	Shader::LineRenderer lineIdRenderer;
+	Shader::TriangleRenderer triangleIdRenderer;
 
 	Shader::FrameBuffer frameBufferObject;
 	Shader::TextureObject texture;
