@@ -40,11 +40,14 @@ public:
 
 	ObjectIdRenderer* getObjectIdRenderer() { return &objectIdRenderer; }
 
+	void setShowOffScreen(const bool b) { this->showOffScreen = b; }
+
 private:
 	Shader::TextureObject texture;
 	Shader::OnScreenRenderer renderer;
 	ObjectRenderer objectRenderer;
 	ObjectIdRenderer objectIdRenderer;
+	bool showOffScreen;
 };
 
 	}

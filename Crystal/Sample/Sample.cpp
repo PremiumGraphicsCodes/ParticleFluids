@@ -2,6 +2,7 @@
 #include "../AppBase/FileMenu.h"
 #include "../AppBase/CameraMenu.h"
 #include "../AppBase/CtrlMenu.h"
+#include "../AppBase/ScreenMenu.h"
 
 #include "../AppBase/ParticleSystemPanel.h"
 #include "../AppBase/WireFramePanel.h"
@@ -43,6 +44,7 @@ int main(int, char**)
 	window.add(new FileMenu("File", &model, &canvas));
 	window.add(new CameraMenu("Camera", &model, &canvas));
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
+	window.add(new ScreenMenu("Screen", &model, &canvas));
 
 	window.add(new ParticleSystemPanel("Particle", &model, &canvas));
 	window.add(new WireFramePanel("WireFrame", &model, &canvas));

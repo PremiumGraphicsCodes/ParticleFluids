@@ -135,6 +135,7 @@
     <ClCompile Include="ScaleButton.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
+    <ClCompile Include="ScreenMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -334,6 +335,7 @@
     <ClInclude Include="ScaleButton.h">
       <Filter>Transform</Filter>
     </ClInclude>
+    <ClInclude Include="ScreenMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
