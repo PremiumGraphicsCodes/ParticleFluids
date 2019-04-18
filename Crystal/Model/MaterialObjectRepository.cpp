@@ -1,7 +1,7 @@
 #include "MaterialObjectRepository.h"
 
 using namespace Crystal::Graphics;
-using namespace Crystal::UI;
+using namespace Crystal::Model;
 
 MaterialObjectRepository::MaterialObjectRepository() :
 	nextId(1)

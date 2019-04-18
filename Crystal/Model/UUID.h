@@ -9,7 +9,7 @@
 #include <string>
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 unsigned char random_char() {
 	std::random_device rd;

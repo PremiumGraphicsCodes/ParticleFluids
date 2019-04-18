@@ -14,23 +14,22 @@
 
 namespace Crystal {
 	namespace UI {
-		class AppearanceObjectRepository;
 
 class ObjectIdViewModel
 {
 public:
-	void add(ObjectRepository& objects);
+	void add(Model::ObjectRepository& objects);
 
 	Graphics::PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
 
 private:
 	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
 
-	void add(const ParticleSystemObject& object);
+	void add(const Model::ParticleSystemObject& object);
 
-	void add(const WireFrameObject& object);
+	void add(const Model::WireFrameObject& object);
 
-	void add(const PolygonMeshObject& object);
+	void add(const Model::PolygonMeshObject& object);
 
 	Graphics::PointBuffer pointIdBuffer;
 	Graphics::LineBuffer lineIdBuffer;

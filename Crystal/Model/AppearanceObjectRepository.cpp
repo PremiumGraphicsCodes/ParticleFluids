@@ -1,6 +1,6 @@
 #include "AppearanceObjectRepository.h"
 
-using namespace Crystal::UI;
+using namespace Crystal::Model;
 
 void AppearanceObjectRepository::clear()
 {

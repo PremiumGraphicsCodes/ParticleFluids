@@ -5,7 +5,7 @@
 #include "IObjectRepository.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class WireFrameObjectRepository : public IObjectRepository
 {

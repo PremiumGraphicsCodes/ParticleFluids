@@ -16,7 +16,7 @@ class LightEditButton : public IWindow
 public:
 	LightEditButton(const std::string& name, Repository* repository, Canvas* canvas);
 
-	void setValue(const LightObject& value) {
+	void setValue(const Model::LightObject& value) {
 		this->id.setValue(value.getId());
 		this->light.setValue(*value.getLight());
 		this->name.setValue(value.getName());

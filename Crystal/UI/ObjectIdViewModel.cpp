@@ -5,6 +5,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Model;
 using namespace Crystal::UI;
 
 void ObjectIdViewModel::add(ObjectRepository& objects)

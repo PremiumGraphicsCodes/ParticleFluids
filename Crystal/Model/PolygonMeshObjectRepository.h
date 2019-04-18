@@ -6,7 +6,7 @@
 #include "PolygonMeshAttribute.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class PolygonMeshObjectRepository : public IObjectRepository
 {

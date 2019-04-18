@@ -22,20 +22,20 @@ public:
 
 	bool write(const std::string& filename) const;
 
-	ObjectRepository* getObjects() { return &objects; }
+	Model::ObjectRepository* getObjects() { return &objects; }
 
-	ObjectRepository* getItems() { return &items; }
+	Model::ObjectRepository* getItems() { return &items; }
 
-	AppearanceObjectRepository* getAppearances() { return &appearances; }
+	Model::AppearanceObjectRepository* getAppearances() { return &appearances; }
 
 	ViewModel toViewModel();
 
 	Math::Box3d getBoundingBox() const;
 
 private:	
-	ObjectRepository objects;
-	ObjectRepository items;
-	AppearanceObjectRepository appearances;
+	Model::ObjectRepository objects;
+	Model::ObjectRepository items;
+	Model::AppearanceObjectRepository appearances;
 };
 	}
 }

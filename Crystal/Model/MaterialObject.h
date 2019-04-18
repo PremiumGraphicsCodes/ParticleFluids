@@ -4,7 +4,7 @@
 #include "../Graphics/Material.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class MaterialObject : public IObject
 {

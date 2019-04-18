@@ -4,7 +4,7 @@
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
-using namespace Crystal::UI;
+using namespace Crystal::Model;
 
 TextureObjectRepository::TextureObjectRepository() :
 	nextId(1)

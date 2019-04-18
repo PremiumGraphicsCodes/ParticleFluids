@@ -7,18 +7,20 @@
 #include "../Model/MaterialObjectRepository.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 		class AppearanceObjectRepository;
+	}
+	namespace UI {
 
 class AppearanceViewModel
 {
 public:
 
-	void add(AppearanceObjectRepository& appearances);
+	void add(Model::AppearanceObjectRepository& appearances);
 
-	void add(const LightObjectRepository& lights);
+	void add(const Model::LightObjectRepository& lights);
 
-	void add(const MaterialObjectRepository& materials);
+	void add(const Model::MaterialObjectRepository& materials);
 
 	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
 

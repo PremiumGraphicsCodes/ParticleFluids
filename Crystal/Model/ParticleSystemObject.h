@@ -5,7 +5,7 @@
 #include "ParticleAttribute.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class ParticleSystemObject : public IObject
 {

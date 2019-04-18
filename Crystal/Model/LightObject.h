@@ -6,7 +6,7 @@
 #include "../Graphics/PointLight.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class LightObject : public IObject
 {

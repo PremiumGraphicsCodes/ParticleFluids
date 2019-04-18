@@ -25,7 +25,7 @@ public:
 
 	bool build();
 
-	void render(const int width, const int height, const TextureObjectRepository& textures);
+	void render(const int width, const int height, const Model::TextureObjectRepository& textures);
 
 	void setViewModel(ViewModel& vm) {
 		const auto& ovm = vm.object;

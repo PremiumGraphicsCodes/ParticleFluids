@@ -6,7 +6,7 @@
 #include "TextureObjectRepository.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class AppearanceObjectRepository : private UnCopyable
 {

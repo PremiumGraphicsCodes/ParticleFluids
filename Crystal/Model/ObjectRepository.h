@@ -6,7 +6,7 @@
 #include "WireFrameObjectRepository.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class ObjectRepository : private UnCopyable
 {

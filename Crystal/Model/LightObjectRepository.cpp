@@ -1,7 +1,7 @@
 #include "LightObjectRepository.h"
 
 using namespace Crystal::Graphics;
-using namespace Crystal::UI;
+using namespace Crystal::Model;
 
 LightObjectRepository::LightObjectRepository() :
 	nextId(1)

@@ -3,7 +3,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
-using namespace Crystal::UI;
+using namespace Crystal::Model;
 
 PolygonMeshObjectRepository::~PolygonMeshObjectRepository()
 {

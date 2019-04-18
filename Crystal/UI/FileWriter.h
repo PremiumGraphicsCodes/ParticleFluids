@@ -9,7 +9,7 @@ namespace Crystal {
 class FileWriter
 {
 public:
-	bool write(const std::experimental::filesystem::path& filePath, const ObjectRepository& objects);
+	bool write(const std::experimental::filesystem::path& filePath, const Model::ObjectRepository& objects);
 
 private:
 };

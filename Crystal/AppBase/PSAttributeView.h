@@ -29,8 +29,8 @@ public:
 		//ImGui::ColorPicker4("Color", &color[0]);
 	}
 
-	UI::ParticleAttribute getValue() const {
-		UI::ParticleAttribute attr;
+	Model::ParticleAttribute getValue() const {
+		Model::ParticleAttribute attr;
 		attr.size = size.getValue();
 		attr.color = color.getValue();
 		return attr;

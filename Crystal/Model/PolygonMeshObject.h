@@ -6,7 +6,7 @@
 #include "../Graphics/Material.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class PolygonMeshObject : public IObject
 {

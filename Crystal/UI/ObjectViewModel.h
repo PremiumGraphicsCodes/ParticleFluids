@@ -15,7 +15,7 @@ namespace Crystal {
 class ObjectViewModel
 {
 public:
-	void add(ObjectRepository& objects, MaterialObjectRepository& materials);
+	void add(Model::ObjectRepository& objects, Model::MaterialObjectRepository& materials);
 
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 
@@ -26,11 +26,11 @@ public:
 private:
 	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
 
-	void add(const ParticleSystemObject& object);
+	void add(const Model::ParticleSystemObject& object);
 
-	void add(const WireFrameObject& object);
+	void add(const Model::WireFrameObject& object);
 
-	void add(const PolygonMeshObject& object, MaterialObjectRepository& materials);
+	void add(const Model::PolygonMeshObject& object, Model::MaterialObjectRepository& materials);
 
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;

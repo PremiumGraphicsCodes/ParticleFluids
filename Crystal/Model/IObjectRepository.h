@@ -5,7 +5,7 @@
 #include <list>
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class IObjectRepository : private UnCopyable
 {

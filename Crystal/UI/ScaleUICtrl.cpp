@@ -5,6 +5,7 @@
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Model;
 using namespace Crystal::UI;
 
 ScaleUICtrl::ScaleUICtrl(Repository* repository, Canvas* canvas) :

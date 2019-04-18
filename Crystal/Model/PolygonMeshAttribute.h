@@ -3,7 +3,7 @@
 #include "../Graphics/Material.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 struct PolygonMeshAttribute
 {

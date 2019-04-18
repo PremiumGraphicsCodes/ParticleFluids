@@ -29,8 +29,8 @@ public:
 		//ImGui::ColorPicker4("Color", &color[0]);
 	}
 
-	UI::WireFrameAttribute getValue() const {
-		UI::WireFrameAttribute attr;
+	Model::WireFrameAttribute getValue() const {
+		Model::WireFrameAttribute attr;
 		attr.width = width.getValue();
 		attr.color = color.getValue();
 		return attr;

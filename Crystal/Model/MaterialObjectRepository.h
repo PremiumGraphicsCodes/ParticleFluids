@@ -5,7 +5,7 @@
 #include <vector>
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class MaterialObjectRepository : private UnCopyable
 {
