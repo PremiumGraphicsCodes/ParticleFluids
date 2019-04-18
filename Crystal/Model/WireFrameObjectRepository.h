@@ -10,7 +10,8 @@ namespace Crystal {
 class WireFrameObjectRepository : public IObjectRepository
 {
 public:
-	WireFrameObjectRepository() :
+	explicit WireFrameObjectRepository(const ObjectIdProvider& idProvider) :
+		IObjectRepository(idProvider),
 		nextId(1)
 	{}
 

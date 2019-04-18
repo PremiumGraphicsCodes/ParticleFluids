@@ -11,8 +11,7 @@ namespace Crystal {
 class ObjectRepository : private UnCopyable
 {
 public:
-	ObjectRepository()
-	{}
+	ObjectRepository();
 
 	~ObjectRepository();
 
@@ -31,6 +30,7 @@ public:
 	std::list<IObject*> getAllObjects() const;
 
 private:
+	ObjectIdProvider idProvider;
 	ParticleSystemObjectRepository particleSystems;
 	WireFrameObjectRepository wireFrames;
 	PolygonMeshObjectRepository polygonMeshes;

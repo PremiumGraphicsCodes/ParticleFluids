@@ -5,6 +5,13 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
+ObjectRepository::ObjectRepository() :
+	particleSystems(idProvider),
+	wireFrames(idProvider),
+	polygonMeshes(idProvider)
+{
+}
+
 ObjectRepository::~ObjectRepository()
 {
 	clear();

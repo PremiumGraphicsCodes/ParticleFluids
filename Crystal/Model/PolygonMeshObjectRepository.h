@@ -11,7 +11,8 @@ namespace Crystal {
 class PolygonMeshObjectRepository : public IObjectRepository
 {
 public:
-	PolygonMeshObjectRepository() :
+	explicit PolygonMeshObjectRepository(const ObjectIdProvider& idProvider) :
+		IObjectRepository(idProvider),
 		nextId(1)
 	{}
 

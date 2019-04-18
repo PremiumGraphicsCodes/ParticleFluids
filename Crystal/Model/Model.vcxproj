@@ -29,6 +29,8 @@
     <ClInclude Include="LightObjectRepository.h" />
     <ClInclude Include="MaterialObject.h" />
     <ClInclude Include="MaterialObjectRepository.h" />
+    <ClInclude Include="ObjectId.h" />
+    <ClInclude Include="ObjectIdProvider.h" />
     <ClInclude Include="ObjectRepository.h" />
     <ClInclude Include="ObjectType.h" />
     <ClInclude Include="ParticleAttribute.h" />

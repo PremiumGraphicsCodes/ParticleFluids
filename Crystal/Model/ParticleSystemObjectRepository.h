@@ -10,7 +10,7 @@ namespace Crystal {
 class ParticleSystemObjectRepository : public IObjectRepository
 {
 public:
-	ParticleSystemObjectRepository();
+	explicit ParticleSystemObjectRepository(const ObjectIdProvider& idProvider);
 
 	~ParticleSystemObjectRepository();
 
