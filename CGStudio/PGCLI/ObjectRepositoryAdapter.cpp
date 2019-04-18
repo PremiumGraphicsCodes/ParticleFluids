@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ObjectRepositoryAdapter.h"
-#include "../../Crystal/UI/ObjectRepository.h"
+#include "../../Crystal/Model/ObjectRepository.h"
 
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
@@ -20,7 +20,7 @@ int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ 
 		const auto& p = Converter::toCpp(positions[i]);
 		ps.push_back(p);
 	}
-	Crystal::UI::ParticleAttribute attr;
+	Crystal::Model::ParticleAttribute attr;
 	attr.color = Converter::toCpp(appearance->Color);
 	attr.size = appearance->Size;
 	return instance->getParticleSystems()->addObject(ps, attr, "");
@@ -35,7 +35,7 @@ int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src, PG::C
 		ls.push_back(l);
 	}
 	Crystal::Shape::WireFrame* wf = new Crystal::Shape::WireFrame(ls);
-	Crystal::UI::WireFrameAttribute attr;
+	Crystal::Model::WireFrameAttribute attr;
 	attr.width = 1.0;
 	attr.color = Crystal::Graphics::ColorRGBAf(1, 0, 0, 0);
 	return instance->getWireFrames()->addObject(wf, attr, "");
@@ -59,7 +59,7 @@ int ObjectRepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
 	return -1;
 }
 
-ObjectRepositoryAdapter::ObjectRepositoryAdapter(Crystal::UI::ObjectRepository* instance)
+ObjectRepositoryAdapter::ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance)
 {
 	this->instance = instance;
 

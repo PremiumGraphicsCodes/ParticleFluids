@@ -3,7 +3,7 @@
 using namespace System;
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 		class ObjectRepository;
 	}
 }
@@ -23,9 +23,9 @@ public:
 	int AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src);
 
 internal:
-	ObjectRepositoryAdapter(Crystal::UI::ObjectRepository* instance);
+	ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance);
 
-	Crystal::UI::ObjectRepository* instance;
+	Crystal::Model::ObjectRepository* instance;
 };
 
 	}

@@ -3,7 +3,7 @@
 using namespace System;
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 		class AppearanceObjectRepository;
 	}
 }
@@ -19,9 +19,9 @@ public:
 	~AppearanceObjectRepositoryAdapter();
 
 internal:
-	AppearanceObjectRepositoryAdapter(Crystal::UI::AppearanceObjectRepository* instance);
+	AppearanceObjectRepositoryAdapter(Crystal::Model::AppearanceObjectRepository* instance);
 
-	Crystal::UI::AppearanceObjectRepository* instance;
+	Crystal::Model::AppearanceObjectRepository* instance;
 };
 
 	}

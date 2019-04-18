@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "TextureObjectRepositoryAdapter.h"
-#include "../../Crystal/UI/TextureObjectRepository.h"
+#include "../../Crystal/Model/TextureObjectRepository.h"
 #include "Converter.h"
 
 using namespace PG::CLI;
 
 TextureObjectRepositoryAdapter::TextureObjectRepositoryAdapter()
 {
-	this->instance = new Crystal::UI::TextureObjectRepository();
+	this->instance = new Crystal::Model::TextureObjectRepository();
 }
 
 TextureObjectRepositoryAdapter::~TextureObjectRepositoryAdapter()
@@ -21,7 +21,7 @@ int TextureObjectRepositoryAdapter::Add(PG::Core::Graphics::Texture^ texture)
 	//	instance->add( Converter::toCpp((light), "" );
 }
 
-TextureObjectRepositoryAdapter::TextureObjectRepositoryAdapter(Crystal::UI::TextureObjectRepository* instance)
+TextureObjectRepositoryAdapter::TextureObjectRepositoryAdapter(Crystal::Model::TextureObjectRepository* instance)
 {
 	this->instance = instance;
 }

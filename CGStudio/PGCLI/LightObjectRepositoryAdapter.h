@@ -3,7 +3,7 @@
 using namespace System;
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 		class LightObjectRepository;
 	}
 }
@@ -21,9 +21,9 @@ public:
 	int Add(PG::Core::Graphics::PointLight^ light);
 
 internal:
-	LightObjectRepositoryAdapter(Crystal::UI::LightObjectRepository* instance);
+	LightObjectRepositoryAdapter(Crystal::Model::LightObjectRepository* instance);
 
-	Crystal::UI::LightObjectRepository* instance;
+	Crystal::Model::LightObjectRepository* instance;
 };
 
 	}

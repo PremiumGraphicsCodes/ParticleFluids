@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "LightObjectRepositoryAdapter.h"
-#include "../../Crystal/UI/LightObjectRepository.h"
+#include "../../Crystal/Model/LightObjectRepository.h"
 #include "Converter.h"
 
 using namespace PG::CLI;
 
 LightObjectRepositoryAdapter::LightObjectRepositoryAdapter()
 {
-	this->instance = new Crystal::UI::LightObjectRepository();
+	this->instance = new Crystal::Model::LightObjectRepository();
 }
 
 LightObjectRepositoryAdapter::~LightObjectRepositoryAdapter()
@@ -21,7 +21,7 @@ int LightObjectRepositoryAdapter::Add(PG::Core::Graphics::PointLight^ light)
 	return -1;
 }
 
-LightObjectRepositoryAdapter::LightObjectRepositoryAdapter(Crystal::UI::LightObjectRepository* instance)
+LightObjectRepositoryAdapter::LightObjectRepositoryAdapter(Crystal::Model::LightObjectRepository* instance)
 {
 	this->instance = instance;
 }

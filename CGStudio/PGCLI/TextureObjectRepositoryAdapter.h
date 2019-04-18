@@ -3,7 +3,7 @@
 using namespace System;
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 		class TextureObjectRepository;
 	}
 }
@@ -21,9 +21,9 @@ public:
 	int Add(PG::Core::Graphics::Texture^ texture);
 
 internal:
-	TextureObjectRepositoryAdapter(Crystal::UI::TextureObjectRepository* instance);
+	TextureObjectRepositoryAdapter(Crystal::Model::TextureObjectRepository* instance);
 
-	Crystal::UI::TextureObjectRepository* instance;
+	Crystal::Model::TextureObjectRepository* instance;
 };
 
 	}

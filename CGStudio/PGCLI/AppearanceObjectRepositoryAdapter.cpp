@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "AppearanceObjectRepositoryAdapter.h"
-#include "../../Crystal/UI/AppearanceObjectRepository.h"
-#include "../../Crystal/UI/ObjectRepository.h"
+#include "../../Crystal/Model/AppearanceObjectRepository.h"
+#include "../../Crystal/Model/ObjectRepository.h"
 
 using namespace PG::CLI;
 
 AppearanceObjectRepositoryAdapter::AppearanceObjectRepositoryAdapter()
 {
-	this->instance = new Crystal::UI::AppearanceObjectRepository();
+	this->instance = new Crystal::Model::AppearanceObjectRepository();
 }
 
 AppearanceObjectRepositoryAdapter::~AppearanceObjectRepositoryAdapter()
@@ -15,7 +15,7 @@ AppearanceObjectRepositoryAdapter::~AppearanceObjectRepositoryAdapter()
 	delete instance;
 }
 
-AppearanceObjectRepositoryAdapter::AppearanceObjectRepositoryAdapter(Crystal::UI::AppearanceObjectRepository* instance)
+AppearanceObjectRepositoryAdapter::AppearanceObjectRepositoryAdapter(Crystal::Model::AppearanceObjectRepository* instance)
 {
 	this->instance = instance;
 }

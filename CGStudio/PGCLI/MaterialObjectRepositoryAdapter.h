@@ -3,7 +3,7 @@
 using namespace System;
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 		class MaterialObjectRepository;
 	}
 }
@@ -21,9 +21,9 @@ public:
 	int Add(PG::Core::Graphics::Material^ material);
 
 internal:
-	MaterialObjectRepositoryAdapter(Crystal::UI::MaterialObjectRepository* instance);
+	MaterialObjectRepositoryAdapter(Crystal::Model::MaterialObjectRepository* instance);
 
-	Crystal::UI::MaterialObjectRepository* instance;
+	Crystal::Model::MaterialObjectRepository* instance;
 };
 
 	}
