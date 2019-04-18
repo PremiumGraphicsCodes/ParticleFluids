@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_WIRE_FRAME_RENDERER_H__
-#define __CRYSTAL_WIRE_FRAME_RENDERER_H__
+#pragma once
 
 #include "../Graphics/ICamera.h"
 #include "../Graphics/LineBuffer.h"
@@ -10,7 +9,7 @@
 namespace Crystal {
 	namespace Shader {
 
-class WireFrameRenderer : public IShader
+class LineRenderer : public IShader
 {
 public:
 	void findLocation();
@@ -38,5 +37,3 @@ private:
 
 	}
 }
-
-#endif

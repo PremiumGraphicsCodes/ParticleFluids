@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Shader/PointRenderer.h"
-#include "../Shader/WireFrameRenderer.h"
+#include "../Shader/LineRenderer.h"
 #include "../Shader/SmoothRenderer.h"
 
 #include "../Shader/FrameBuffer.h"
@@ -34,7 +34,7 @@ public:
 
 private:
 	Shader::PointRenderer pointRenderer;
-	Shader::WireFrameRenderer wireRenderer;
+	Shader::LineRenderer wireRenderer;
 	Shader::SmoothRenderer smoothRenderer;
 
 	std::vector<Shader::SmoothRenderer::Buffer> smoothBuffers;

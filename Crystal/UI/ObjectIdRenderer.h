@@ -3,7 +3,7 @@
 #include "../Graphics/DrawableId.h"
 
 #include "../Shader/PointRenderer.h"
-#include "../Shader/WireFrameRenderer.h"
+#include "../Shader/LineRenderer.h"
 #include "../Shader/SmoothRenderer.h"
 
 #include "../Shader/FrameBuffer.h"
@@ -36,7 +36,7 @@ public:
 
 private:
 	Shader::PointRenderer pointIdRenderer;
-	Shader::WireFrameRenderer lineIdRenderer;
+	Shader::LineRenderer lineIdRenderer;
 
 	Shader::FrameBuffer frameBufferObject;
 	Shader::TextureObject texture;

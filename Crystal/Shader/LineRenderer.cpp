@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "WireFrameRenderer.h"
+#include "LineRenderer.h"
 
 #include <sstream>
 
@@ -7,7 +7,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
 
-bool WireFrameRenderer::build()
+bool LineRenderer::build()
 {
 	const auto& vShader = getBuildinVertexShaderSource();
 	const auto& fShader = getBuildinFragmentShaderSource();
@@ -17,7 +17,7 @@ bool WireFrameRenderer::build()
 	return result;
 }
 
-std::string WireFrameRenderer::getBuildinVertexShaderSource() const
+std::string LineRenderer::getBuildinVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -35,7 +35,7 @@ std::string WireFrameRenderer::getBuildinVertexShaderSource() const
 	return stream.str();
 }
 
-std::string WireFrameRenderer::getBuildinFragmentShaderSource() const
+std::string LineRenderer::getBuildinFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -49,7 +49,7 @@ std::string WireFrameRenderer::getBuildinFragmentShaderSource() const
 }
 
 
-void WireFrameRenderer::findLocation()
+void LineRenderer::findLocation()
 {
 	shader.findUniformLocation("projectionMatrix");
 	shader.findUniformLocation("modelviewMatrix");
@@ -58,7 +58,7 @@ void WireFrameRenderer::findLocation()
 	shader.findAttribLocation("color");
 }
 
-void WireFrameRenderer::render(const ICamera& camera)
+void LineRenderer::render(const ICamera& camera)
 {
 	const auto& indices = buffer.getIndices();
 	const auto& positions = buffer.getPositions().get();

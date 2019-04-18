@@ -14,13 +14,13 @@
     <ClInclude Include="ShaderType.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SmoothRenderer.h" />
-    <ClInclude Include="WireFrameRenderer.h" />
     <ClInclude Include="IShader.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="CubeMapTextureObject.h" />
     <ClInclude Include="DepthBuffer.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="TriangleRenderer.h" />
+    <ClInclude Include="LineRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShaderObject.cpp" />
@@ -33,13 +33,13 @@
     <ClCompile Include="ShaderType.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SmoothRenderer.cpp" />
-    <ClCompile Include="WireFrameRenderer.cpp" />
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="CubeMapTextureObject.cpp" />
     <ClCompile Include="DepthTextureObject.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="TriangleRenderer.cpp" />
+    <ClCompile Include="LineRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
