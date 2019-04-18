@@ -66,3 +66,13 @@ std::list<IObject*> ObjectRepository::getAllObjects() const
 	}
 	return objects;
 }
+
+IObject* ObjectRepository::findObjectById(const int id)
+{
+	const auto& objects = getAllObjects();
+	auto iter = std::find_if(std::cbegin(objects), std::cend(objects), [=](auto p) {return p->getId() == id; });
+	if (iter == std::cend(objects)) {
+		return nullptr;
+	}
+	return *iter;
+}

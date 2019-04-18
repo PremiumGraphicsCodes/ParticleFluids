@@ -29,6 +29,8 @@ public:
 
 	std::list<IObject*> getAllObjects() const;
 
+	IObject* findObjectById(const int id);
+
 private:
 	ObjectIdProvider idProvider;
 	ParticleSystemObjectRepository particleSystems;
