@@ -11,7 +11,7 @@ namespace Crystal {
 class IObjectRepository : private UnCopyable
 {
 public:
-	explicit IObjectRepository(const ObjectIdProvider& idProvider) :
+	explicit IObjectRepository(ObjectIdProvider& idProvider) :
 		idProvider(idProvider)
 	{}
 
@@ -23,11 +23,12 @@ public:
 
 	virtual std::list<Math::Vector3dd> getAllVertices() const = 0;
 
+	int getNextId() { return idProvider.getNextId(); }
+
 protected:
 
 private:
-	const ObjectIdProvider& idProvider;
-	int nextId;
+	ObjectIdProvider& idProvider;
 };
 
 	}

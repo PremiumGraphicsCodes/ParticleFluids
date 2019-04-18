@@ -21,7 +21,7 @@ void WireFrameObjectRepository::clear()
 
 int WireFrameObjectRepository::addObject(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
 {
-	objects.push_back(new WireFrameObject(nextId++, name, wire, attribute));
+	objects.push_back(new WireFrameObject(getNextId(), name, wire, attribute));
 	return objects.back()->getId();
 }
 

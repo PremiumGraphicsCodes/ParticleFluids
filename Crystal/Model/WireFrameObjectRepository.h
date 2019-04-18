@@ -10,9 +10,8 @@ namespace Crystal {
 class WireFrameObjectRepository : public IObjectRepository
 {
 public:
-	explicit WireFrameObjectRepository(const ObjectIdProvider& idProvider) :
-		IObjectRepository(idProvider),
-		nextId(1)
+	explicit WireFrameObjectRepository(ObjectIdProvider& idProvider) :
+		IObjectRepository(idProvider)
 	{}
 
 	~WireFrameObjectRepository();
@@ -30,7 +29,6 @@ public:
 	std::list<Math::Vector3dd> getAllVertices() const override;
 
 private:
-	int nextId;
 	std::list<WireFrameObject*> objects;
 };
 	}

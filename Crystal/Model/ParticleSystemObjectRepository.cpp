@@ -5,9 +5,8 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
-ParticleSystemObjectRepository::ParticleSystemObjectRepository(const ObjectIdProvider& idProvider) :
-	IObjectRepository(idProvider),
-	nextId(1)
+ParticleSystemObjectRepository::ParticleSystemObjectRepository(ObjectIdProvider& idProvider) :
+	IObjectRepository(idProvider)
 {}
 
 ParticleSystemObjectRepository::~ParticleSystemObjectRepository()
@@ -28,7 +27,7 @@ int ParticleSystemObjectRepository::addObject(const Vector3df& position, const P
 {
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
 	particles->add(position, attribute);
-	objects.push_back(new ParticleSystemObject(nextId++, name, particles));
+	objects.push_back(new ParticleSystemObject(getNextId(), name, particles));
 	return objects.back()->getId();
 }
 
@@ -38,7 +37,7 @@ int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& posi
 	for (const auto& p : positions) {
 		particles->add(p, attribute);
 	}
-	objects.push_back(new ParticleSystemObject(nextId++, name, particles));
+	objects.push_back(new ParticleSystemObject(getNextId(), name, particles));
 	return objects.back()->getId();
 }
 

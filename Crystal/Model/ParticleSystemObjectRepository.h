@@ -10,7 +10,7 @@ namespace Crystal {
 class ParticleSystemObjectRepository : public IObjectRepository
 {
 public:
-	explicit ParticleSystemObjectRepository(const ObjectIdProvider& idProvider);
+	explicit ParticleSystemObjectRepository(ObjectIdProvider& idProvider);
 
 	~ParticleSystemObjectRepository();
 
@@ -35,7 +35,6 @@ public:
 	Shape::Particle<ParticleAttribute>* findParticleById(const int parentId, const int childId) const;
 
 private:
-	int nextId;
 	std::list<ParticleSystemObject*> objects;
 };
 

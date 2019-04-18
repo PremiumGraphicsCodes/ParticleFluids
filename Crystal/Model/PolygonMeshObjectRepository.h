@@ -11,9 +11,8 @@ namespace Crystal {
 class PolygonMeshObjectRepository : public IObjectRepository
 {
 public:
-	explicit PolygonMeshObjectRepository(const ObjectIdProvider& idProvider) :
-		IObjectRepository(idProvider),
-		nextId(1)
+	explicit PolygonMeshObjectRepository(ObjectIdProvider& idProvider) :
+		IObjectRepository(idProvider)
 	{}
 
 	~PolygonMeshObjectRepository();
@@ -31,7 +30,6 @@ public:
 	std::list<Math::Vector3dd> getAllVertices() const override;
 
 private:
-	int nextId;
 	std::list<PolygonMeshObject*> polygonMeshes;
 };
 
