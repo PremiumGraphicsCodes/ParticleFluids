@@ -2,10 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="tinyfiledialogs.cpp" />
-    <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="Window.cpp" />
-    <ClCompile Include="CtrlMenu.cpp" />
-    <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="imgui.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
@@ -135,14 +132,22 @@
     <ClCompile Include="ScaleButton.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenMenu.cpp" />
+    <ClCompile Include="CameraMenu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="CtrlMenu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="FileMenu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenMenu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
-    <ClInclude Include="FileMenu.h" />
     <ClInclude Include="Window.h" />
-    <ClInclude Include="CtrlMenu.h" />
-    <ClInclude Include="CameraMenu.h" />
     <ClInclude Include="imgui.h">
       <Filter>imgui</Filter>
     </ClInclude>
@@ -335,7 +340,18 @@
     <ClInclude Include="ScaleButton.h">
       <Filter>Transform</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenMenu.h" />
+    <ClInclude Include="CameraMenu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="CtrlMenu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="FileMenu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenMenu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -391,6 +407,9 @@
     </Filter>
     <Filter Include="Object\WireFrame\Generation">
       <UniqueIdentifier>{0ef178e9-c8bf-499a-b9bf-fb031433e057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu">
+      <UniqueIdentifier>{f853c8fe-34f8-4970-9ae4-5a8b5c5c99cb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

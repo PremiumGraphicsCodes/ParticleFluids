@@ -60,6 +60,9 @@ void ObjectIdViewModel::add(const PolygonMeshObject& object)
 	int index = 0;
 	for (auto f : faces) {
 		Graphics::DrawableID did(objectId, childId++);
-		triangleIdBuffer.add(f->getV1()->getPosition(), did.toColor(), index++);
+		const auto& idColor = did.toColor();
+		triangleIdBuffer.add(f->getV1()->getPosition(), idColor, index++);
+		triangleIdBuffer.add(f->getV2()->getPosition(), idColor, index++);
+		triangleIdBuffer.add(f->getV3()->getPosition(), idColor, index++);
 	}
 }
