@@ -14,6 +14,10 @@ void ObjectIdViewModel::add(ObjectRepository& objects)
 	for (auto ps : particleSystems) {
 		add(*ps);
 	}
+	const auto& wires = objects.getWireFrames()->getObjects();
+	for (auto wf : wires) {
+		add(*wf);
+	}
 }
 
 void ObjectIdViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)

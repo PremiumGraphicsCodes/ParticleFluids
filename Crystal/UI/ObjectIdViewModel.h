@@ -22,6 +22,8 @@ public:
 
 	Graphics::PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
 
+	Graphics::LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
+
 private:
 	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
 

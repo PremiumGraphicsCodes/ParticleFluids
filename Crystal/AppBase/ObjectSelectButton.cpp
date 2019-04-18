@@ -2,6 +2,7 @@
 
 #include "imgui.h"
 #include "../UI/PickUICtrl.h"
+#include "../UI/CameraUICtrl.h"
 
 using namespace Crystal::UI;
 
@@ -20,6 +21,12 @@ void ObjectSelectButton::onShow()
 
 void ObjectSelectButton::onOk()
 {
-	getCanvas()->setViewModel(getModel()->toViewModel());
-	getCanvas()->fitCamera(getModel()->getBoundingBox());
+	auto ctrl = new CameraUICtrl(getCanvas()->getCamera());
+	getCanvas()->setUICtrl(ctrl);
+}
+
+void ObjectSelectButton::onCancel()
+{
+	auto ctrl = new CameraUICtrl(getCanvas()->getCamera());
+	getCanvas()->setUICtrl(ctrl);
 }

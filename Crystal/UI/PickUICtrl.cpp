@@ -30,7 +30,8 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	if (parentId == 0) {
 		return;
 	}
-	if (model->getObjects()->getParticleSystems()->exists(parentId)) {
+	auto object = model->getObjects()->findObjectById(parentId);
+	if (object != nullptr) {
 		function(parentId, childId);
 		/*
 		auto selected = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);

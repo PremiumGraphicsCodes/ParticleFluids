@@ -18,7 +18,7 @@ public:
 
 	void onOk() override;
 
-	void onCancel() override { }
+	void onCancel() override;
 
 	int getId() const { return id; }
 

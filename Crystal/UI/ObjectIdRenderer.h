@@ -36,6 +36,7 @@ public:
 
 private:
 	Shader::PointRenderer pointIdRenderer;
+	Shader::WireFrameRenderer lineIdRenderer;
 
 	Shader::FrameBuffer frameBufferObject;
 	Shader::TextureObject texture;

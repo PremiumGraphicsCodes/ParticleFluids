@@ -9,6 +9,9 @@ bool ObjectIdRenderer::build()
 	if (!pointIdRenderer.build()) {
 		return false;
 	}
+	if (!lineIdRenderer.build()) {
+		return false;
+	}
 
 	Image image(512, 512);
 	texture.create(image, 0);
@@ -21,6 +24,7 @@ bool ObjectIdRenderer::build()
 void ObjectIdRenderer::setViewModel(const ObjectIdViewModel& vm)
 {
 	this->pointIdRenderer.setBuffer(vm.getPointIdBuffer());
+	this->lineIdRenderer.setBuffer(vm.getLindIdBuffer(), 1.0f);
 }
 
 DrawableID ObjectIdRenderer::getId(const double x, const double y)
@@ -43,6 +47,7 @@ void ObjectIdRenderer::render()
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	pointIdRenderer.render(*camera);
+	lineIdRenderer.render(*camera);
 
 	frameBufferObject.unbind();
 }
