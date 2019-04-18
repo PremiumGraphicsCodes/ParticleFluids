@@ -4,29 +4,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IObjectRepository.h" />
-    <ClInclude Include="AppearanceObjectRepository.h" />
-    <ClInclude Include="MaterialObject.h" />
-    <ClInclude Include="MaterialObjectRepository.h" />
-    <ClInclude Include="TextureObjectRepository.h" />
     <ClInclude Include="UUID.h" />
-    <ClInclude Include="WireFrameObjectRepository.h" />
     <ClInclude Include="IObject.h">
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="LightObject.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="LightObjectRepository.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleSystemObject.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleSystemObjectRepository.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonMeshObjectRepository.h">
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshObject.h">
@@ -44,27 +29,72 @@
     <ClInclude Include="ParticleAttribute.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectRepository.h" />
+    <ClInclude Include="AppearanceObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="IObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectType.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="LightObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AppearanceObjectRepository.cpp" />
-    <ClCompile Include="TextureObjectRepository.cpp" />
-    <ClCompile Include="WireFrameObjectRepository.cpp" />
-    <ClCompile Include="LightObjectRepository.cpp">
-      <Filter>Object</Filter>
+    <ClCompile Include="AppearanceObjectRepository.cpp">
+      <Filter>Repository</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialObjectRepository.cpp" />
+    <ClCompile Include="MaterialObjectRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureObjectRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrameObjectRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="LightObjectRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
     <ClCompile Include="ParticleSystemObjectRepository.cpp">
-      <Filter>Object</Filter>
+      <Filter>Repository</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshObjectRepository.cpp">
-      <Filter>Object</Filter>
+      <Filter>Repository</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectRepository.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Object">
       <UniqueIdentifier>{b8ac2286-41a7-4c7a-8e11-7f3ca28786ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Repository">
+      <UniqueIdentifier>{52b1342c-bb2d-4462-9ed1-43fc09af7256}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -28,6 +28,8 @@ public:
 
 	bool isNull() const { return light == nullptr; }
 
+	ObjectType getType() const override { return ObjectType::LightObject; }
+
 private:
 	Graphics::PointLight* light;
 };

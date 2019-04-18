@@ -30,6 +30,7 @@
     <ClInclude Include="MaterialObject.h" />
     <ClInclude Include="MaterialObjectRepository.h" />
     <ClInclude Include="ObjectRepository.h" />
+    <ClInclude Include="ObjectType.h" />
     <ClInclude Include="ParticleAttribute.h" />
     <ClInclude Include="ParticleSystemObject.h" />
     <ClInclude Include="ParticleSystemObjectRepository.h" />

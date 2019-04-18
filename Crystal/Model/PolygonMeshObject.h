@@ -36,6 +36,8 @@ public:
 
 	bool isNull() const override { return shape == nullptr; }
 
+	ObjectType getType() const override { return ObjectType::PolygonMeshObject; }
+
 private:
 	Shape::PolygonMesh* shape;
 	int materialId;

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include "ObjectType.h"
+
 #include "../Math/Vector3d.h"
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
@@ -50,6 +52,8 @@ public:
 	virtual void transform(const Math::Matrix4dd& m) = 0;
 
 	virtual bool isNull() const = 0;
+
+	virtual ObjectType getType() const = 0;
 
 private:
 	std::string name;

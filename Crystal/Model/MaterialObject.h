@@ -28,6 +28,8 @@ public:
 
 	bool isNull() const { return material == nullptr; }
 
+	ObjectType getType() const override { return ObjectType::MaterialObject; }
+
 private:
 	Graphics::Material* material;
 };
