@@ -18,6 +18,10 @@ void ObjectIdViewModel::add(ObjectRepository& objects)
 	for (auto wf : wires) {
 		add(*wf);
 	}
+	const auto& polygons = objects.getPolygonMeshes()->getObjects();
+	for (auto p : polygons) {
+		add(*p);
+	}
 }
 
 void ObjectIdViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)

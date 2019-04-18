@@ -20,6 +20,7 @@
     <ClInclude Include="CubeMapTextureObject.h" />
     <ClInclude Include="DepthBuffer.h" />
     <ClInclude Include="FrameBuffer.h" />
+    <ClInclude Include="TriangleRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShaderObject.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="DepthTextureObject.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="TriangleRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
