@@ -19,7 +19,7 @@ public:
 
 	void onOk() override;
 
-	void onCancel() override { }
+	void onCancel() override;
 
 private:
 	ObjectSelectButton objectButton;

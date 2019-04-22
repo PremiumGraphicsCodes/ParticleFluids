@@ -1,16 +1,16 @@
-#include "MoveButton.h"
+#include "RotateButton.h"
 
 #include "imgui.h"
-#include "../UI/MoveUICtrl.h"
+#include "../UI/RotateUICtrl.h"
 #include "../UI/CameraUICtrl.h"
 
 using namespace Crystal::UI;
 
-void MoveButton::onShow()
+void RotateButton::onShow()
 {
 	objectButton.show();
-	if (ImGui::Button("Move")) {
-		auto ctrl = new MoveUICtrl(getModel(), getCanvas());
+	if (ImGui::Button("Rotate")) {
+		auto ctrl = new RotateUICtrl(getModel(), getCanvas());
 		auto object = getModel()->getObjects()->findObjectById(objectButton.getId());
 		if (object == nullptr) {
 			return;
@@ -20,13 +20,13 @@ void MoveButton::onShow()
 	}
 }
 
-void MoveButton::onOk()
+void RotateButton::onOk()
 {
 	auto ctrl = new CameraUICtrl(getCanvas()->getCamera());
 	getCanvas()->setUICtrl(ctrl);
 }
 
-void MoveButton::onCancel()
+void RotateButton::onCancel()
 {
 	auto ctrl = new CameraUICtrl(getCanvas()->getCamera());
 	getCanvas()->setUICtrl(ctrl);

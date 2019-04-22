@@ -2,6 +2,7 @@
 
 #include "imgui.h"
 #include "../UI/ScaleUICtrl.h"
+#include "../UI/CameraUICtrl.h"
 
 using namespace Crystal::UI;
 
@@ -21,6 +22,12 @@ void ScaleButton::onShow()
 
 void ScaleButton::onOk()
 {
-	getCanvas()->setViewModel(getModel()->toViewModel());
-	getCanvas()->fitCamera(getModel()->getBoundingBox());
+	auto ctrl = new CameraUICtrl(getCanvas()->getCamera());
+	getCanvas()->setUICtrl(ctrl);
+}
+
+void ScaleButton::onCancel()
+{
+	auto ctrl = new CameraUICtrl(getCanvas()->getCamera());
+	getCanvas()->setUICtrl(ctrl);
 }

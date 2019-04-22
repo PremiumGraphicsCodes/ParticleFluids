@@ -144,6 +144,9 @@
     <ClCompile Include="ScreenMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
+    <ClCompile Include="RotateButton.cpp">
+      <Filter>Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -351,6 +354,9 @@
     </ClInclude>
     <ClInclude Include="ScreenMenu.h">
       <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="RotateButton.h">
+      <Filter>Transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

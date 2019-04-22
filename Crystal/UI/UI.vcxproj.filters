@@ -54,6 +54,9 @@
       <Filter>UICtrl</Filter>
     </ClInclude>
     <ClInclude Include="Repository.h" />
+    <ClInclude Include="RotateUICtrl.h">
+      <Filter>UICtrl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas.cpp" />
@@ -94,6 +97,9 @@
       <Filter>UICtrl</Filter>
     </ClCompile>
     <ClCompile Include="Repository.cpp" />
+    <ClCompile Include="RotateUICtrl.cpp">
+      <Filter>UICtrl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

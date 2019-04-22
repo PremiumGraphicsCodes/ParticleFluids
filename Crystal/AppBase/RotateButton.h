@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace UI {
 
-class ScaleButton : public IPopupButton
+class RotateButton : public IPopupButton
 {
 public:
-	ScaleButton(const std::string& name, Repository* model, Canvas* canvas) :
+	RotateButton(const std::string& name, Repository* model, Canvas* canvas) :
 		IPopupButton(name, model, canvas),
 		objectButton("Object", model, canvas)
 	{
