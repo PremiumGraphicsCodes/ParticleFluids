@@ -19,7 +19,10 @@ using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 namespace {
+	Window* window;
+	Repository* repository;
 	Canvas* canvas;
+
 	std::chrono::time_point<std::chrono::system_clock> lastPressedTime;
 	bool isLeftDown;
 	bool isRightDown;
@@ -33,6 +36,10 @@ namespace {
 	}
 
 	void onMouse(GLFWwindow *window, int button, int action, int mods) {
+		if (ImGui::IsMouseHoveringAnyWindow()) {
+			return;
+		}
+
 		double x, y;
 		glfwGetCursorPos(window, &x, &y);
 		const auto& coord = toScreenCoord(window, x, y);
@@ -86,6 +93,8 @@ Window::Window(Repository* model, Canvas* canvas) :
 	model(model),
 	canvas(canvas)
 {
+	::window = this;
+	::repository = repository;
 	::canvas = canvas;
 }
 
