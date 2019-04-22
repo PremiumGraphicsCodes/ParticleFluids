@@ -6,12 +6,13 @@ namespace Crystal {
 enum class ObjectType
 {
 	None = 0,
-	ParticleSystemObject = 1,
-	WireFrameObject = 2,
-	PolygonMeshObject = 4,
-	LightObject = 8,
-	MaterialObject = 16,
-	TextureObject = 32,
+	ParticleSystemObject = 0x01,
+	WireFrameObject = 0x02,
+	PolygonMeshObject = 0x04,
+	LightObject = 0x08,
+	MaterialObject = 0x10,
+	TextureObject = 0x20,
+	All = 0xFF,
 };
 	}
 }

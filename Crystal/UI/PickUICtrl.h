@@ -2,7 +2,9 @@
 #include "../Graphics/ICamera.h"
 #include "Canvas.h"
 #include "IUICtrl.h"
-#include "IMouseListener.h"
+
+#include "../Model/ObjectType.h"
+
 #include <functional>
 
 namespace Crystal {
@@ -12,7 +14,7 @@ namespace Crystal {
 class PickUICtrl : public IUICtrl
 {
 public:
-	PickUICtrl(Repository* model, Canvas* canvas);
+	PickUICtrl(Repository* model, Canvas* canvas, const Model::ObjectType& type);
 
 	virtual ~PickUICtrl() {}
 
@@ -36,6 +38,7 @@ private:
 	Repository* model;
 	Canvas* canvas;
 	std::function<void(int, int)> function;
+	const Model::ObjectType& type;
 };
 	}
 }

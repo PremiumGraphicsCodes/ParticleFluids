@@ -10,7 +10,7 @@ void ScaleButton::onShow()
 	objectButton.show();
 	if (ImGui::Button("Scale")) {
 		auto ctrl = new ScaleUICtrl(getModel(), getCanvas());
-		auto object = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton.getId());
+		auto object = getModel()->getObjects()->findObjectById(objectButton.getId());
 		if (object == nullptr) {
 			return;
 		}

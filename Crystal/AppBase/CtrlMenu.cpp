@@ -7,6 +7,7 @@
 #include "../UI/RectSelectUICtrl.h"
 
 using namespace Crystal::UI;
+using namespace Crystal::Model;
 
 void CtrlMenu::show()
 {
@@ -19,7 +20,7 @@ void CtrlMenu::show()
 			canvas->setUICtrl(new CameraUICtrl(canvas->getCamera()));
 		}
 		if (ImGui::MenuItem("Pick")) {
-			canvas->setUICtrl(new PickUICtrl(model, canvas));
+			canvas->setUICtrl(new PickUICtrl(model, canvas, ObjectType::All));
 		}
 		if (ImGui::MenuItem("Rect")) {
 		}

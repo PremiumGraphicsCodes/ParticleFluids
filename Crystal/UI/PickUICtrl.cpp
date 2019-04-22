@@ -6,11 +6,13 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Model;
 using namespace Crystal::UI;
 
-PickUICtrl::PickUICtrl(Repository* model, Canvas* canvas) :
+PickUICtrl::PickUICtrl(Repository* model, Canvas* canvas, const ObjectType& type) :
 	model(model),
-	canvas(canvas)
+	canvas(canvas),
+	type(type)
 {
 	function = [](int parentId, int childId) {
 		;
@@ -32,15 +34,10 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	}
 	auto object = model->getObjects()->findObjectById(parentId);
 	if (object != nullptr) {
-		function(parentId, childId);
-		/*
-		auto selected = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);
-		if (selected != nullptr) {
-			const auto size = selected->getAttribute().size * 100.0;
-			model->getItems()->getParticleSystems()->addObject(selected->getPosition(), Graphics::ColorRGBAf(1, 0, 0, 1), size, "");
-			canvas->setViewModel(model->toViewModel());
+		const bool masked = (int)type && (int)object->getType();
+		if (masked) {
+			function(parentId, childId);
 		}
-		*/
 	}
 }
 
