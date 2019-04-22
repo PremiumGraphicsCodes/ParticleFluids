@@ -1,8 +1,8 @@
-#include "ImageView.h"
+#include "TextureView.h"
 
 using namespace Crystal::UI;
 
-void ImageView::show()
+void TextureView::show()
 {
 	auto object = repository.findObjectById(textureId);
 	if (object == nullptr) {

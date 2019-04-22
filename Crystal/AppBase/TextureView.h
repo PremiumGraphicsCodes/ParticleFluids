@@ -8,10 +8,10 @@
 namespace Crystal {
 	namespace UI {
 
-class ImageView : public IWindow
+class TextureView : public IWindow
 {
 public:
-	ImageView(const std::string& name, Model::TextureObjectRepository& repository,  const int textureId) :
+	TextureView(const std::string& name, Model::TextureObjectRepository& repository,  const int textureId) :
 		IWindow(name),
 		repository(repository),
 		textureId(textureId)

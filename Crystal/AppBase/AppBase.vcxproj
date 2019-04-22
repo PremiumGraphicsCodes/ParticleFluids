@@ -23,7 +23,7 @@
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="FileMenu.cpp" />
-    <ClCompile Include="ImageView.cpp" />
+    <ClCompile Include="TextureView.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_draw.cpp" />
     <ClCompile Include="imgui_impl_glfw.cpp" />
@@ -82,7 +82,7 @@
     <ClInclude Include="FileMenu.h" />
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />
-    <ClInclude Include="ImageView.h" />
+    <ClInclude Include="TextureView.h" />
     <ClInclude Include="imconfig.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="imgui.h" />
@@ -122,6 +122,7 @@
     <ClInclude Include="ScreenMenu.h" />
     <ClInclude Include="Sphere3dView.h" />
     <ClInclude Include="StringView.h" />
+    <ClInclude Include="TextureAddButton.h" />
     <ClInclude Include="TextureTreeList.h" />
     <ClInclude Include="Torus3dView.h" />
     <ClInclude Include="MoveButton.h" />

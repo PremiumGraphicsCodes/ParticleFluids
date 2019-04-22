@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ITreeList.h"
-#include "ImageView.h"
+#include "TextureView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -18,7 +18,7 @@ public:
 	void onShow() override;
 
 private:
-	ImageView image;
+	TextureView image;
 };
 
 	}
