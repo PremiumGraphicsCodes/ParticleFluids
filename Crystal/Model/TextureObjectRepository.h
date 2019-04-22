@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Util/UnCopyable.h"
-#include "../Shader/TextureObject.h"
+#include "TextureObject.h"
 #include <vector>
 
 namespace Crystal {
@@ -18,12 +18,12 @@ public:
 
 	void add(const Graphics::Image& image, const std::string& name);
 
-	Shader::TextureObject* findObjectById(const int id) const;
+	TextureObject* findObjectById(const int id) const;
 
-	std::vector<Shader::TextureObject*> getTextures() const { return textures; }
+	std::vector<TextureObject*> getTextures() const { return textures; }
 
 private:
-	std::vector<Shader::TextureObject*> textures;
+	std::vector<TextureObject*> textures;
 	int nextId;
 };
 

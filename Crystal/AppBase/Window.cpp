@@ -145,14 +145,14 @@ bool Window::init()
 	canvas->build();
 
 	Image image1(512, 512);
-	model->getAppearances()->getTextures()->add(image1, "");
+	model->getAppearances()->getTextures()->add(image1, "MainTexture");
 
 	Image image2(2,2);
 	image2.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
 	image2.setColor(1, 0, ColorRGBAuc(0, 255, 0, 0));
 	image2.setColor(0, 1, ColorRGBAuc(0, 0, 255, 0));
 	image2.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
-	model->getAppearances()->getTextures()->add(image2, "");
+	model->getAppearances()->getTextures()->add(image2, "SampleTexture");
 
 	return true;
 }

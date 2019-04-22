@@ -32,10 +32,11 @@ bool Renderer::build()
 void Renderer::render(const int width, const int height, const TextureObjectRepository& textures)
 {
 	const auto& texx = textures.getTextures();
-	const auto& tex = texx[0];
-	const auto& smoothTex = texx[1];
+	const auto& tex = texx[0]->getTexture();
+	const auto& smoothTex = texx[1]->getTexture();
 	objectRenderer.render(*tex, *smoothTex);
 	objectIdRenderer.render();
+
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);

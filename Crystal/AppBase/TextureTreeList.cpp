@@ -2,10 +2,12 @@
 
 #include "imgui.h"
 
+
 using namespace Crystal::UI;
 
 TextureTreeList::TextureTreeList(const std::string& name, Repository* model, Canvas* canvas) :
-	ITreeList(name, model, canvas)
+	ITreeList(name, model, canvas),
+	image("TextureEdit", *model->getAppearances()->getTextures(), 1)
 {
 }
 
@@ -18,14 +20,16 @@ void TextureTreeList::onShow()
 	ImGui::Begin(str);
 
 	ImGui::BeginChild("Textures", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
-	/*
-	for (auto l : textures) {
-		auto str = l.getName();
+	for (const auto& l : textures) {
+		auto str = l->getName();
 		auto s = str.c_str();
-		ImGui::Text(s);
+		if (ImGui::Button(s)) {
+			image.setTextureId(l->getId());
+		}
 	}
-	*/
 	ImGui::EndChild();
+
+	image.show();
 
 	ImGui::End();
 }

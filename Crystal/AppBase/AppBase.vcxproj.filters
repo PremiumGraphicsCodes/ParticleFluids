@@ -147,6 +147,7 @@
     <ClCompile Include="RotateButton.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
+    <ClCompile Include="ImageView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -358,6 +359,7 @@
     <ClInclude Include="RotateButton.h">
       <Filter>Transform</Filter>
     </ClInclude>
+    <ClInclude Include="ImageView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

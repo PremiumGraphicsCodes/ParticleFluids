@@ -39,6 +39,7 @@
     <ClInclude Include="PolygonMeshAttribute.h" />
     <ClInclude Include="PolygonMeshObject.h" />
     <ClInclude Include="PolygonMeshObjectRepository.h" />
+    <ClInclude Include="TextureObject.h" />
     <ClInclude Include="TextureObjectRepository.h" />
     <ClInclude Include="UUID.h" />
     <ClInclude Include="WireFrameAttribute.h" />
