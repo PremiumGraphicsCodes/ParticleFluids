@@ -2,7 +2,8 @@
 
 #include "IPopupButton.h"
 
-#include "MaterialView.h"
+#include "TextureView.h"
+#include "StringView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -22,7 +23,7 @@ public:
 	}
 
 private:
-	MaterialView material;
+	TextureView texture;
 	StringView name;
 };
 

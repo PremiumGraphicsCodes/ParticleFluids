@@ -23,6 +23,7 @@
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="FileMenu.cpp" />
+    <ClCompile Include="TextureAddButton.cpp" />
     <ClCompile Include="TextureView.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_draw.cpp" />

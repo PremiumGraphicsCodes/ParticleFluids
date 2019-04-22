@@ -9,23 +9,23 @@ namespace Crystal {
 class Imagef : public IImage
 {
 public:
-	Imagef(const int id = -1) : IImage(id)
+	Imagef()
 	{}
 
-	Imagef(const int width, const int height, const int id = -1) :
-		IImage(width, height, id),
+	Imagef(const int width, const int height) :
+		IImage(width, height),
 		values(width * height * 4)
 	{}
 
-	Imagef(const int width, const int height, const std::vector< float >& values, const int id = -1) :
-		IImage(width, height, id),
+	Imagef(const int width, const int height, const std::vector< float >& values) :
+		IImage(width, height),
 		values(values)
 	{
 		assert(isValid());
 	}
 
-	Imagef(const int width, const int height, const float v, const int id = -1) :
-		IImage(width, height, id)
+	Imagef(const int width, const int height, const float v) :
+		IImage(width, height)
 	{
 		values.resize(width * height * 4);
 		std::fill(values.begin(), values.end(), v);

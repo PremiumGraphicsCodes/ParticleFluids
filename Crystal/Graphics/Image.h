@@ -9,15 +9,15 @@ namespace Crystal {
 class Image : public IImage
 {
 public:
-	Image(const int id = -1) : IImage(id)
+	Image()
 	{}
 
-	Image(const int width, const int height, const int id = -1) : IImage(width, height, id),
+	Image(const int width, const int height) : IImage(width, height),
 		values(width * height * 4)
 	{}
 
-	Image(const int width, const int height, const std::vector< unsigned char >& values, const int id = -1) :
-		IImage(width, height, id),
+	Image(const int width, const int height, const std::vector< unsigned char >& values) :
+		IImage(width, height),
 		values(values)
 	{
 		assert(isValid());

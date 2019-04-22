@@ -18,39 +18,34 @@ namespace Crystal {
 			JPG,
 		};
 
-		class IImage
-		{
-		public:
-			IImage(const int id = -1) :
-				width(0),
-				height(0),
-				id(id)
-			{}
+class IImage
+{
+public:
+	IImage() :
+		width(0),
+		height(0)
+	{}
 
-			IImage(const int width, const int height, const int id = -1) :
-				width(width),
-				height(height),
-				id(id)
-			{}
+	IImage(const int width, const int height) :
+		width(width),
+		height(height)
+	{}
 
-			int getWidth() const { return width; }
+	int getWidth() const { return width; }
 
-			int getHeight() const { return height; }
+	int getHeight() const { return height; }
 
-			void changeSize(const int width, const int height) {
-				this->width = width;
-				this->height = height;
-			}
+	void changeSize(const int width, const int height) {
+		this->width = width;
+		this->height = height;
+	}
 
-			int getIndex1d(const int x, const int y) const { return (y * width + x) * 4; }
+	int getIndex1d(const int x, const int y) const { return (y * width + x) * 4; }
 
-			int getId() const { return id; }
-
-		private:
-			int width;
-			int height;
-			int id;
-		};
+private:
+	int width;
+	int height;
+};
 
 	}
 }

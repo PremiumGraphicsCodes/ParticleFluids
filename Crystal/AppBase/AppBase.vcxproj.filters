@@ -150,6 +150,9 @@
     <ClCompile Include="TextureView.cpp">
       <Filter>Appearance\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="TextureAddButton.cpp">
+      <Filter>Appearance\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
