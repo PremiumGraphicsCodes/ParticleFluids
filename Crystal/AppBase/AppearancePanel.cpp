@@ -12,6 +12,7 @@
 
 #include "MaterialAddButton.h"
 #include "LightAddButton.h"
+#include "TextureAddButton.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -23,4 +24,5 @@ AppearancePanel::AppearancePanel(const std::string& name, Repository* model, Can
 {
 	add( new LightAddButton("Light", model, canvas) );
 	add( new MaterialAddButton("Material", model, canvas) );
+	add(new TextureAddButton("Texture", model, canvas));
 }

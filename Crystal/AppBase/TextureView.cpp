@@ -1,5 +1,6 @@
 #include "TextureView.h"
 
+
 using namespace Crystal::UI;
 
 void TextureView::show()
@@ -12,5 +13,12 @@ void TextureView::show()
 	const auto width = texture->getWidth();
 	const auto height = texture->getHeight();
 
-	ImGui::ImageButton((ImTextureID)textureId, ImVec2(width, height));
+	texture->bind();
+	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getWidth(), image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, data.data());
+	ImGui::Image((ImTextureID)textureId, ImVec2(width, height));
+	texture->unbind();
+
+
+
 }
+

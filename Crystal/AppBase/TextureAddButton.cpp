@@ -17,10 +17,13 @@ void TextureAddButton::onShow()
 
 void TextureAddButton::onOk()
 {
-	/*
-	Imagef( )
-	getModel()->getAppearances()->getTextures()->add(material.getValue().clone(), name.getValue());
+	Image image(32, 32);
+	for (int i = 0; i < 32; i++) {
+		for (int j = 0; j < 32; ++j) {
+			image.setColor(i, j, ColorRGBAuc(255, 255, 255, 0));
+		}
+	}
+	getModel()->getAppearances()->getTextures()->add(image, name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
-	*/
 }

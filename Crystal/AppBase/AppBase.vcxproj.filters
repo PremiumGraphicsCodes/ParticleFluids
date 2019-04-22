@@ -153,6 +153,9 @@
     <ClCompile Include="TextureAddButton.cpp">
       <Filter>Appearance\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="ImageView.cpp">
+      <Filter>Appearance\Image</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -370,6 +373,9 @@
     <ClInclude Include="TextureView.h">
       <Filter>Appearance\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="ImageView.h">
+      <Filter>Appearance\Image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -428,6 +434,9 @@
     </Filter>
     <Filter Include="Menu">
       <UniqueIdentifier>{f853c8fe-34f8-4970-9ae4-5a8b5c5c99cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Appearance\Image">
+      <UniqueIdentifier>{264d4f7c-5a27-4f59-872c-adce9137fd13}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
