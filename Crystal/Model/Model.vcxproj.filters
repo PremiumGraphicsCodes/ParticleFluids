@@ -66,9 +66,6 @@
     <ClInclude Include="IObjectRepository.h">
       <Filter>Repository</Filter>
     </ClInclude>
-    <ClInclude Include="TextureObjectRepository.h">
-      <Filter>Repository\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="ImageObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
@@ -97,9 +94,6 @@
     </ClCompile>
     <ClCompile Include="WireFrameObjectRepository.cpp">
       <Filter>Repository\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureObjectRepository.cpp">
-      <Filter>Repository\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="ImageObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>

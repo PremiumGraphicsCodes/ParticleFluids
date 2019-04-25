@@ -34,6 +34,8 @@ public:
 
 	void unbind() const override;
 
+	std::string getName() const { return "Texture01"; }
+
 private:
 };
 

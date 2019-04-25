@@ -21,6 +21,12 @@
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="TriangleRenderer.h" />
     <ClInclude Include="LineRenderer.h" />
+    <ClInclude Include="ShaderRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShaderObject.cpp" />
@@ -40,8 +46,16 @@
     <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="TriangleRenderer.cpp" />
     <ClCompile Include="LineRenderer.cpp" />
+    <ClCompile Include="TextureObjectRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Repository">
+      <UniqueIdentifier>{7f383030-c498-4b00-a1b5-534a7e052eb0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

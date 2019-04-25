@@ -7,13 +7,13 @@ using namespace Crystal::UI;
 
 TextureTreeList::TextureTreeList(const std::string& name, Repository* model, Canvas* canvas) :
 	ITreeList(name, model, canvas),
-	image("TextureEdit", *model->getAppearances()->getTextures(), 1)
+	image("TextureEdit", *model->getShaders()->getTextures(), 1)
 {
 }
 
 void TextureTreeList::onShow()
 {
-	const auto& textures = getRepository()->getAppearances()->getTextures()->getTextures();
+	const auto& textures = getRepository()->getShaders()->getTextures()->getTextures();
 
 	auto n = getName();
 	auto str = n.c_str();

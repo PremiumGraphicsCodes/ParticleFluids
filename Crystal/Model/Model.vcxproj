@@ -42,7 +42,6 @@
     <ClInclude Include="PolygonMeshObject.h" />
     <ClInclude Include="PolygonMeshObjectRepository.h" />
     <ClInclude Include="TextureObject.h" />
-    <ClInclude Include="TextureObjectRepository.h" />
     <ClInclude Include="UUID.h" />
     <ClInclude Include="WireFrameAttribute.h" />
     <ClInclude Include="WireFrameObject.h" />
@@ -56,7 +55,6 @@
     <ClCompile Include="ObjectRepository.cpp" />
     <ClCompile Include="ParticleSystemObjectRepository.cpp" />
     <ClCompile Include="PolygonMeshObjectRepository.cpp" />
-    <ClCompile Include="TextureObjectRepository.cpp" />
     <ClCompile Include="WireFrameObjectRepository.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -4,7 +4,6 @@
 #include "LightObjectRepository.h"
 #include "MaterialObjectRepository.h"
 #include "ImageObjectRepository.h"
-#include "TextureObjectRepository.h"
 
 namespace Crystal {
 	namespace Model {
@@ -26,13 +25,10 @@ public:
 
 	ImageObjectRepository* getImages() { return &images; }
 
-	TextureObjectRepository* getTextures() { return &textures; }
-
 private:
 	LightObjectRepository lights;
 	MaterialObjectRepository materials;
 	ImageObjectRepository images;
-	TextureObjectRepository textures;
 };
 	}
 }

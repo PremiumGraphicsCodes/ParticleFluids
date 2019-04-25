@@ -10,7 +10,7 @@
 
 #include "../Util/UnCopyable.h"
 
-#include "../Model/TextureObjectRepository.h"
+#include "../Shader/TextureObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {
@@ -25,7 +25,7 @@ public:
 
 	bool build();
 
-	void render(const int width, const int height, const Model::TextureObjectRepository& textures);
+	void render(const int width, const int height, const Shader::TextureObjectRepository& textures);
 
 	void setViewModel(ViewModel& vm) {
 		const auto& ovm = vm.object;

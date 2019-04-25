@@ -5,6 +5,7 @@ using namespace Crystal::UI;
 
 void TextureView::show()
 {
+	/*
 	auto object = repository.findObjectById(textureId);
 	if (object == nullptr) {
 		return;
@@ -19,6 +20,6 @@ void TextureView::show()
 	texture->unbind();
 
 
-
+	*/
 }
 

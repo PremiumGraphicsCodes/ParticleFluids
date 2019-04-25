@@ -6,6 +6,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
 

@@ -3,7 +3,7 @@
 #include "TextureObject.h"
 
 using namespace Crystal::Graphics;
-using namespace Crystal::Model;
+using namespace Crystal::Shader;
 
 TextureObjectRepository::TextureObjectRepository() :
 	nextId(1)
@@ -18,7 +18,7 @@ TextureObjectRepository::~TextureObjectRepository()
 void TextureObjectRepository::clear()
 {
 	for (auto t : textures) {
-		t->getTexture()->clear();
+		t->clear();
 		delete t;
 	}
 	textures.clear();
@@ -29,8 +29,7 @@ void TextureObjectRepository::add(const Image& image, const std::string& name)
 {
 	Crystal::Shader::TextureObject* texture = new Crystal::Shader::TextureObject();
 	texture->create(image, nextId++);
-	TextureObject* object = new TextureObject(texture->getId(), name, texture);
-	textures.push_back(object);
+	textures.push_back(texture);
 }
 
 TextureObject* TextureObjectRepository::findObjectById(const int id) const

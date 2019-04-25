@@ -3,7 +3,7 @@
 #include "IWindow.h"
 #include "imgui.h"
 #include "imgui_stdlib.h"
-#include "../Model/TextureObjectRepository.h"
+#include "../Shader/TextureObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {
@@ -11,7 +11,7 @@ namespace Crystal {
 class TextureView : public IWindow
 {
 public:
-	TextureView(const std::string& name, Model::TextureObjectRepository& repository,  const int textureId) :
+	TextureView(const std::string& name, Shader::TextureObjectRepository& repository,  const int textureId) :
 		IWindow(name),
 		repository(repository),
 		textureId(textureId)
@@ -28,7 +28,7 @@ public:
 	*/
 
 private:
-	Model::TextureObjectRepository& repository;
+	Shader::TextureObjectRepository& repository;
 	int textureId;
 };
 

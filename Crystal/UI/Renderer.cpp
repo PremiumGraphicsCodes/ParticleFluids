@@ -32,8 +32,8 @@ bool Renderer::build()
 void Renderer::render(const int width, const int height, const TextureObjectRepository& textures)
 {
 	const auto& texx = textures.getTextures();
-	const auto& tex = texx[0]->getTexture();
-	const auto& smoothTex = texx[1]->getTexture();
+	const auto& tex = texx[0];
+	const auto& smoothTex = texx[1];
 	objectRenderer.render(*tex, *smoothTex);
 	objectIdRenderer.render();
 

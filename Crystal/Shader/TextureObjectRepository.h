@@ -5,7 +5,7 @@
 #include <vector>
 
 namespace Crystal {
-	namespace Model {
+	namespace Shader {
 
 class TextureObjectRepository : private UnCopyable
 {
