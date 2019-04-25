@@ -4,7 +4,7 @@
 #include "../Shader/LineRenderer.h"
 #include "../Shader/SmoothRenderer.h"
 
-#include "../Shader/FrameBuffer.h"
+#include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
 
 //#include "TextureObjectRepository.h"
@@ -41,7 +41,7 @@ private:
 
 	Graphics::ICamera* camera;
 
-	Shader::FrameBuffer frameBufferObject;
+	Shader::FrameBufferObject frameBufferObject;
 };
 	}
 }

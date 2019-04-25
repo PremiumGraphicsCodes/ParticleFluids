@@ -18,7 +18,6 @@
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="CubeMapTextureObject.h" />
     <ClInclude Include="DepthBuffer.h" />
-    <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="TriangleRenderer.h" />
     <ClInclude Include="LineRenderer.h" />
     <ClInclude Include="ShaderRepository.h">
@@ -27,6 +26,7 @@
     <ClInclude Include="TextureObjectRepository.h">
       <Filter>Repository</Filter>
     </ClInclude>
+    <ClInclude Include="FrameBufferObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShaderObject.cpp" />
@@ -43,12 +43,12 @@
     <ClCompile Include="CubeMapTextureObject.cpp" />
     <ClCompile Include="DepthTextureObject.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
-    <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="TriangleRenderer.cpp" />
     <ClCompile Include="LineRenderer.cpp" />
     <ClCompile Include="TextureObjectRepository.cpp">
       <Filter>Repository</Filter>
     </ClCompile>
+    <ClCompile Include="FrameBufferObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

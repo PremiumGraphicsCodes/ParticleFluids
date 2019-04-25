@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "FrameBuffer.h"
+#include "FrameBufferObject.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-void FrameBuffer::build(int width, int height)
+void FrameBufferObject::build(int width, int height)
 {
 	this->width = width;
 	this->height = height;
@@ -13,7 +13,7 @@ void FrameBuffer::build(int width, int height)
 	assert(GL_NO_ERROR == glGetError());
 }
 
-void FrameBuffer::setTexture(const ITextureObject& texture)
+void FrameBufferObject::setTexture(const ITextureObject& texture)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 
@@ -24,14 +24,14 @@ void FrameBuffer::setTexture(const ITextureObject& texture)
 
 }
 
-void FrameBuffer::bind()
+void FrameBufferObject::bind()
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 	//glBindTexture(GL_TEXTURE_2D, texture.getId());
 	assert(GL_NO_ERROR == glGetError());
 }
 
-void FrameBuffer::unbind()
+void FrameBufferObject::unbind()
 {
 	//glBindTexture(GL_TEXTURE_2D, 0);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -40,7 +40,7 @@ void FrameBuffer::unbind()
 
 #include <iostream>
 
-Image FrameBuffer::toImage() const
+Image FrameBufferObject::toImage() const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 
@@ -54,7 +54,7 @@ Image FrameBuffer::toImage() const
 	return Image(width, height, values);
 }
 
-ColorRGBAuc FrameBuffer::getColor(const int x, const int y) const
+ColorRGBAuc FrameBufferObject::getColor(const int x, const int y) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 
@@ -68,7 +68,7 @@ ColorRGBAuc FrameBuffer::getColor(const int x, const int y) const
 	return ColorRGBAuc(values[0], values[1], values[2], values[3]);
 }
 
-ColorRGBAf FrameBuffer::getColorf(const int x, const int y) const
+ColorRGBAf FrameBufferObject::getColorf(const int x, const int y) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 
@@ -82,7 +82,7 @@ ColorRGBAf FrameBuffer::getColorf(const int x, const int y) const
 	return ColorRGBAf(values[0], values[1], values[2], values[3]);
 }
 
-std::vector<ColorRGBAuc> FrameBuffer::getColors(const int x, const int y, const int width, const int height) const
+std::vector<ColorRGBAuc> FrameBufferObject::getColors(const int x, const int y, const int width, const int height) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 
@@ -101,7 +101,7 @@ std::vector<ColorRGBAuc> FrameBuffer::getColors(const int x, const int y, const 
 	return results;
 }
 
-std::vector<ColorRGBAf> FrameBuffer::getColorsf(const int x, const int y, const int width, const int height) const
+std::vector<ColorRGBAf> FrameBufferObject::getColorsf(const int x, const int y, const int width, const int height) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 

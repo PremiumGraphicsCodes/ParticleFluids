@@ -6,7 +6,7 @@
 #include "../Shader/LineRenderer.h"
 #include "../Shader/TriangleRenderer.h"
 
-#include "../Shader/FrameBuffer.h"
+#include "../Shader/FrameBufferObject.h"
 
 #include "../Util/UnCopyable.h"
 
@@ -39,7 +39,7 @@ private:
 	Shader::LineRenderer lineIdRenderer;
 	Shader::TriangleRenderer triangleIdRenderer;
 
-	Shader::FrameBuffer frameBufferObject;
+	Shader::FrameBufferObject frameBufferObject;
 	Shader::TextureObject texture;
 
 	Graphics::ICamera* camera;

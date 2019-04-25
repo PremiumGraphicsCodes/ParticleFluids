@@ -10,7 +10,7 @@
 namespace Crystal {
 	namespace Shader {
 
-		class FrameBuffer
+		class FrameBufferObject
 		{
 		public:
 			void build(int width, int height);
