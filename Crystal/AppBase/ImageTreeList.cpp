@@ -15,7 +15,7 @@ void ImageTreeList::onShow()
 
 	auto n = getName();
 	auto str = n.c_str();
-	ImGui::Begin(str);
+	//ImGui::Begin(str);
 
 	ImGui::BeginChild(str, ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	for (const auto& l : lights) {
@@ -28,5 +28,5 @@ void ImageTreeList::onShow()
 	//edit.show();
 	ImGui::EndChild();
 
-	ImGui::End();
+	//ImGui::End();
 }

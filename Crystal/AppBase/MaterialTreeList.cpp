@@ -17,7 +17,6 @@ void MaterialTreeList::onShow()
 
 	auto n = getName();
 	auto str = n.c_str();
-	ImGui::Begin(str);
 
 	ImGui::BeginChild("Materials", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	for (auto l : materials) {
@@ -27,8 +26,6 @@ void MaterialTreeList::onShow()
 			editView.setValue(l);
 		}
 	}
-	editView.show();
+	//editView.show();
 	ImGui::EndChild();
-
-	ImGui::End();
 }

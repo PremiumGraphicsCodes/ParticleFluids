@@ -1,3 +1,5 @@
+#pragma once
+
 #include "IWindow.h"
 
 #include "Vector3dView.h"

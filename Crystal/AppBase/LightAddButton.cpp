@@ -6,7 +6,7 @@ using namespace Crystal::UI;
 
 LightAddButton::LightAddButton(const std::string& name, Repository* model, Canvas* canvas) :
 	IPopupButton(name, model, canvas),
-	light("Light"),
+	light("LAdd"),
 	name("Name", "Light01")
 {
 }
