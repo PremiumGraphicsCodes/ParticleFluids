@@ -8,12 +8,10 @@
 #include "../AppBase/WireFramePanel.h"
 #include "../AppBase/PolygonMeshPanel.h"
 #include "../AppBase/AppearancePanel.h"
+#include "../AppBase/ShaderPanel.h"
 #include "../AppBase/SelectionPanel.h"
 #include "../AppBase/TransformPanel.h"
 
-#include "../AppBase/ParticleSystemTreeList.h"
-#include "../AppBase/WireFrameTreeList.h"
-#include "../AppBase/PolygonMeshTreeList.h"
 #include "../AppBase/LightTreeList.h"
 #include "../AppBase/MaterialTreeList.h"
 #include "../AppBase/ImageTreeList.h"
@@ -50,14 +48,16 @@ int main(int, char**)
 	window.add(new ParticleSystemPanel("Particle", &model, &canvas));
 	window.add(new WireFramePanel("WireFrame", &model, &canvas));
 	window.add(new PolygonMeshPanel("Polygon", &model, &canvas));
+
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
+	window.add(new ShaderPanel("ShaderPanel", &model, &canvas));
+
 	window.add(new SelectionPanel("Selection", &model, &canvas));
 	window.add(new TransformPanel("Transform", &model, &canvas));
 
 	window.add(new LightTreeList("Lights", &model, &canvas));
 	window.add(new MaterialTreeList("Materials", &model, &canvas));
 	window.add(new ImageTreeList("Image", &model, &canvas));
-	window.add(new TextureTreeList("Textures", &model, &canvas));
 
 	window.show();
 

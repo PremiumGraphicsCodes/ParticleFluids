@@ -46,7 +46,7 @@
       <Filter>Appearance\Material</Filter>
     </ClCompile>
     <ClCompile Include="TextureTreeList.cpp">
-      <Filter>Appearance\Texture</Filter>
+      <Filter>Shader\Texture</Filter>
     </ClCompile>
     <ClCompile Include="LightTreeList.cpp">
       <Filter>Appearance\Light</Filter>
@@ -148,10 +148,10 @@
       <Filter>Transform</Filter>
     </ClCompile>
     <ClCompile Include="TextureView.cpp">
-      <Filter>Appearance\Texture</Filter>
+      <Filter>Shader\Texture</Filter>
     </ClCompile>
     <ClCompile Include="TextureAddButton.cpp">
-      <Filter>Appearance\Texture</Filter>
+      <Filter>Shader\Texture</Filter>
     </ClCompile>
     <ClCompile Include="ImageView.cpp">
       <Filter>Appearance\Image</Filter>
@@ -161,6 +161,9 @@
     </ClCompile>
     <ClCompile Include="ImageAddButton.cpp">
       <Filter>Appearance\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderPanel.cpp">
+      <Filter>Shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -269,7 +272,7 @@
       <Filter>Appearance\Material</Filter>
     </ClInclude>
     <ClInclude Include="TextureTreeList.h">
-      <Filter>Appearance\Texture</Filter>
+      <Filter>Shader\Texture</Filter>
     </ClInclude>
     <ClInclude Include="LightTreeList.h">
       <Filter>Appearance\Light</Filter>
@@ -374,10 +377,10 @@
       <Filter>Transform</Filter>
     </ClInclude>
     <ClInclude Include="TextureAddButton.h">
-      <Filter>Appearance\Texture</Filter>
+      <Filter>Shader\Texture</Filter>
     </ClInclude>
     <ClInclude Include="TextureView.h">
-      <Filter>Appearance\Texture</Filter>
+      <Filter>Shader\Texture</Filter>
     </ClInclude>
     <ClInclude Include="ImageTreeList.h">
       <Filter>Appearance\Image</Filter>
@@ -389,6 +392,9 @@
       <Filter>Appearance\Image</Filter>
     </ClInclude>
     <ClInclude Include="FileSelectView.h" />
+    <ClInclude Include="ShaderPanel.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -417,9 +423,6 @@
     </Filter>
     <Filter Include="Appearance\Material">
       <UniqueIdentifier>{f6814e74-3dbf-4ce7-b3ec-ae98ae76a6ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Appearance\Texture">
-      <UniqueIdentifier>{d59d7ebb-6e6c-4330-b749-84c77ed8bb74}</UniqueIdentifier>
     </Filter>
     <Filter Include="Appearance\Light">
       <UniqueIdentifier>{00de2540-e2ad-4d52-9bd0-ea1797d96551}</UniqueIdentifier>
@@ -450,6 +453,12 @@
     </Filter>
     <Filter Include="Appearance\Image">
       <UniqueIdentifier>{264d4f7c-5a27-4f59-872c-adce9137fd13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{482c2aa0-36e4-4755-b9b9-4e223bc09e91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\Texture">
+      <UniqueIdentifier>{d59d7ebb-6e6c-4330-b749-84c77ed8bb74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

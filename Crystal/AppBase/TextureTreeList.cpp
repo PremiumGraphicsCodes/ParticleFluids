@@ -15,10 +15,6 @@ void TextureTreeList::onShow()
 {
 	const auto& textures = getRepository()->getShaders()->getTextures()->getTextures();
 
-	auto n = getName();
-	auto str = n.c_str();
-	ImGui::Begin(str);
-
 	ImGui::BeginChild("Textures", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	for (const auto& l : textures) {
 		auto str = l->getName();
@@ -29,7 +25,5 @@ void TextureTreeList::onShow()
 	}
 	ImGui::EndChild();
 
-	image.show();
-
-	ImGui::End();
+	//image.show();
 }
