@@ -23,6 +23,8 @@
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="FileMenu.cpp" />
+    <ClCompile Include="ImageAddButton.cpp" />
+    <ClCompile Include="ImageTreeList.cpp" />
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />
     <ClCompile Include="TextureView.cpp" />
@@ -84,6 +86,8 @@
     <ClInclude Include="FileMenu.h" />
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />
+    <ClInclude Include="ImageAddButton.h" />
+    <ClInclude Include="ImageTreeList.h" />
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="TextureView.h" />
     <ClInclude Include="imconfig.h" />

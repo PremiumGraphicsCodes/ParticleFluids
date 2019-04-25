@@ -156,6 +156,12 @@
     <ClCompile Include="ImageView.cpp">
       <Filter>Appearance\Image</Filter>
     </ClCompile>
+    <ClCompile Include="ImageTreeList.cpp">
+      <Filter>Appearance\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageAddButton.cpp">
+      <Filter>Appearance\Image</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -374,6 +380,12 @@
       <Filter>Appearance\Texture</Filter>
     </ClInclude>
     <ClInclude Include="ImageView.h">
+      <Filter>Appearance\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageTreeList.h">
+      <Filter>Appearance\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageAddButton.h">
       <Filter>Appearance\Image</Filter>
     </ClInclude>
   </ItemGroup>
