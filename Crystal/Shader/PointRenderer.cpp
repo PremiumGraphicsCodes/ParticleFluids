@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "PointRenderer.h"
 #include "gl/glew.h"
 

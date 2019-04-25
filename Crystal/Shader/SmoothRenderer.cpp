@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "SmoothRenderer.h"
 #include "../Graphics/Material.h"
 #include <sstream>

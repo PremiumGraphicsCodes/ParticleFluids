@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "TriangleRenderer.h"
 
 #include <sstream>

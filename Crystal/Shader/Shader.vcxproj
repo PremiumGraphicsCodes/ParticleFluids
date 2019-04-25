@@ -149,8 +149,6 @@
     <ClInclude Include="ShaderType.h" />
     <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="SmoothRenderer.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="TextureObjectRepository.h" />
     <ClInclude Include="TriangleRenderer.h" />
@@ -170,12 +168,6 @@
     <ClCompile Include="ShaderType.cpp" />
     <ClCompile Include="ShaderUniform.cpp" />
     <ClCompile Include="SmoothRenderer.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="TextureObjectRepository.cpp" />
     <ClCompile Include="TriangleRenderer.cpp" />

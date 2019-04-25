@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "DepthBuffer.h"
 
 using namespace Crystal::Graphics;

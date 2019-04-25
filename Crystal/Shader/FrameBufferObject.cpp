@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "FrameBufferObject.h"
 
 using namespace Crystal::Graphics;
