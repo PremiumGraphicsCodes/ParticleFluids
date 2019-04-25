@@ -3,6 +3,7 @@
 #include "tinyfiledialogs.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
+#include "FileSelectView.h"
 
 using namespace Crystal::UI;
 
@@ -17,9 +18,14 @@ void FileMenu::show()
 			getCanvas()->setViewModel(model->toViewModel());
 		}
 		if (ImGui::MenuItem("Open")) {
-			char const * lFilterPatterns[2] = { "*.stl", "*.obj" };
-			const auto filename = tinyfd_openFileDialog("Open", "", 2, lFilterPatterns, nullptr, 0);
-			if (filename != nullptr) {
+			//char const * lFilterPatterns[2] = { "*.stl", "*.obj" };
+			//const auto filename = tinyfd_openFileDialog("Open", "", 2, lFilterPatterns, nullptr, 0);
+			FileSelectView view("");
+			view.addFilter("*.stl");
+			view.addFilter("*.obj");
+			view.show();
+			const auto& filename = view.getFileName();
+			if (!filename.empty()) {
 				model->read(filename);
 			}
 			//canvas->update();

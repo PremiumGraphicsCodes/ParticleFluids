@@ -23,8 +23,9 @@ void LightTreeList::onShow()
 		auto s = str.c_str();
 		if (ImGui::Button(s)) {
 			edit.setValue(*l);
+			edit.open();
 		}
 	}
-	//edit.show();
+	edit.show();
 	ImGui::EndChild();
 }

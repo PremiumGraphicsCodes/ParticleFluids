@@ -11,10 +11,10 @@
 namespace Crystal {
 	namespace UI {
 
-class LightEditButton : public IWindow
+class LightEditView : public IWindow
 {
 public:
-	LightEditButton(const std::string& name, Repository* repository, Canvas* canvas);
+	LightEditView(const std::string& name, Repository* repository, Canvas* canvas);
 
 	void setValue(const Model::LightObject& value) {
 		this->id.setValue(value.getId());
@@ -23,16 +23,8 @@ public:
 	}
 
 	void show() override;
-/*
-	void onShow() override;
 
-	void onOk() override;
-
-	void onCancel() override
-	{
-
-	}
-	*/
+	//void setVisible(const bool isVisible) { this->isVisible = isVisible; }
 
 private:
 	IntView id;

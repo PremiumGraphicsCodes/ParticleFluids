@@ -39,7 +39,7 @@
     <ClCompile Include="IPanel.cpp" />
     <ClCompile Include="IPopupButton.cpp" />
     <ClCompile Include="LightAddButton.cpp" />
-    <ClCompile Include="LightEditButton.cpp" />
+    <ClCompile Include="LightEditView.cpp" />
     <ClCompile Include="LightTreeList.cpp" />
     <ClCompile Include="LightView.cpp" />
     <ClCompile Include="MaterialAddButton.cpp" />
@@ -111,7 +111,7 @@
     <ClInclude Include="ITreeList.h" />
     <ClInclude Include="IWindow.h" />
     <ClInclude Include="LightAddButton.h" />
-    <ClInclude Include="LightEditButton.h" />
+    <ClInclude Include="LightEditView.h" />
     <ClInclude Include="LightTreeList.h" />
     <ClInclude Include="LightView.h" />
     <ClInclude Include="MaterialAddButton.h" />

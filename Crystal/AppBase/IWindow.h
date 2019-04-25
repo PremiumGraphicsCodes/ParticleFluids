@@ -9,7 +9,8 @@ class IWindow
 {
 protected:
 	explicit IWindow(const std::string& name) :
-		name(name)
+		name(name),
+		_isVisible(true)
 	{}
 
 	virtual ~IWindow() {
@@ -23,9 +24,18 @@ public:
 
 	virtual void show() = 0;
 
+	void open() { this->_isVisible = true; }
+
+	void close() { this->_isVisible = false; }
+
+	bool isVisible() const { return _isVisible; }
+
 protected:
 	std::string name;
 	std::list<IWindow*> children;
+
+private:
+	bool _isVisible;
 
 };
 	}

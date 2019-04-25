@@ -7,10 +7,16 @@ using namespace Crystal::UI;
 
 void IPanel::show()
 {
-	ImGui::Begin(name.c_str());
+	if (!name.empty()) {
+		ImGui::Begin(name.c_str());
+	}
 
-	std::for_each(children.begin(), children.end(), [](auto c) {c->show(); });
+	for (auto c : children) {
+		c->show();
+	}
+	//std::for_each(children.begin(), children.end(), [](auto c) {c->show(); });
 
-	ImGui::End();
-
+	if (!name.empty()) {
+		ImGui::End();
+	}
 }

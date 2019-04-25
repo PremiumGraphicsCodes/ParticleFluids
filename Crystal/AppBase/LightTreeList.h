@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ITreeList.h"
-#include "LightEditButton.h"
+#include "LightEditView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -18,7 +18,7 @@ public:
 	void onShow() override;
 
 private:
-	LightEditButton edit;
+	LightEditView edit;
 };
 
 	}

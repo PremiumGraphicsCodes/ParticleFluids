@@ -1,8 +1,8 @@
-#include "LightEditButton.h"
+#include "LightEditView.h"
 
 using namespace Crystal::UI;
 
-LightEditButton::LightEditButton(const std::string& name, Repository* repository, Canvas* canvas) :
+LightEditView::LightEditView(const std::string& name, Repository* repository, Canvas* canvas) :
 	IWindow(name),
 	id("Id", 0),
 	light("Light"),
@@ -10,10 +10,14 @@ LightEditButton::LightEditButton(const std::string& name, Repository* repository
 	repository(repository),
 	canvas(canvas)
 {
+	close();
 }
 
-void LightEditButton::show()
+void LightEditView::show()
 {
+	if (!isVisible()) {
+		return;
+	}
 	id.show();
 	light.show();
 	name.show();
@@ -26,5 +30,9 @@ void LightEditButton::show()
 		object->setName(name.getValue());
 		(*light) = this->light.getValue();
 		canvas->setViewModel(repository->toViewModel());
+		close();
+	}
+	if (ImGui::Button("Cancel")) {
+		close();
 	}
 }
