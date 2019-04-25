@@ -8,12 +8,7 @@
 #include "../../Crystal/AppBase/PolygonMeshPanel.h"
 
 #include "../../Crystal/AppBase/AppearancePanel.h"
-
-#include "../../Crystal/AppBase/ParticleSystemTreeList.h"
-#include "../../Crystal/AppBase/WireFrameTreeList.h"
-#include "../../Crystal/AppBase/PolygonMeshTreeList.h"
-#include "../../Crystal/AppBase/LightTreeList.h"
-#include "../../Crystal/AppBase/MaterialTreeList.h"
+#include "../../Crystal/AppBase/ShaderPanel.h"
 
 #include "../../Crystal/UI/Repository.h"
 #include "../../Crystal/UI/Canvas.h"
@@ -46,16 +41,8 @@ namespace {
 
 int main(int, char**)
 {
-	auto camera = new PerspectiveCamera(
-		1.0,
-		0.5f * Tolerance<double>::getPI(),
-		Vector3df(0, 0, 0),
-		Vector3df(0, 0, -10.0),
-		1.0f, 10.0f
-	);
-
 	Repository model;
-	Canvas canvas(camera);
+	Canvas canvas;
 
 	Window window(&model, &canvas);
 	if (!window.init()) {
@@ -71,12 +58,7 @@ int main(int, char**)
 	window.add(new WireFramePanel("WireFrame", &model, &canvas));
 	window.add(new PolygonMeshPanel("Polygon", &model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
-
-	window.add(new ParticleSystemTreeList("ParticleSystems", &model, &canvas));
-	window.add(new WireFrameTreeList("WireFrames", &model, &canvas));
-	window.add(new PolygonMeshTreeList("Polygons", &model, &canvas));
-	window.add(new LightTreeList("Lights", &model, &canvas));
-	window.add(new MaterialTreeList("Materials", &model, &canvas));
+	window.add(new ShaderPanel("ShaderPanel", &model, &canvas));
 
 	window.add(new AlgoPanel("Algo", &model, &canvas));
 
