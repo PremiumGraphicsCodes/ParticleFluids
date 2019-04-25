@@ -22,18 +22,18 @@ bool ImageFileReader::read(const std::string& filename)
 		return false;
 	}
 	int i = 0;
-	image = Imagef(width, height);
-	for (int x = 0; x < width; ++x) {
-		for (int y = 0; y < height; ++y) {
+	image = Image(width, height);
+	for (int y = 0; y < height; ++y) {
+		for (int x = 0; x < width; ++x) {
 			const auto r = pixels[i];
 			const auto g = pixels[i + 1];
 			const auto b = pixels[i + 2];
 			if (bpp == 3) {
-				image.setColor(x, y, ColorRGBAf(r, g, b, 0.0));
+				image.setColor(x, y, ColorRGBAuc(r, g, b, 255));
 			}
 			else if (bpp == 4) {
 				const auto a = pixels[i + 3];
-				image.setColor(x, y, ColorRGBAf(r, g, b, a));
+				image.setColor(x, y, ColorRGBAuc(r, g, b, a));
 			}
 			i += bpp;
 		}

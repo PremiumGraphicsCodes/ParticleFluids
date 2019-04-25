@@ -1,19 +1,20 @@
 #pragma once
 
-#include "../Graphics/Imagef.h"
+#include "../Graphics/Image.h"
 
 namespace Crystal {
 	namespace IO {
 
-		class ImageFileReader
-		{
-		public:
-			bool read(const std::string& filename);
+class ImageFileReader
+{
+public:
+	bool read(const std::string& filename);
 
-			Graphics::Imagef getImage() const { return image; }
+	Graphics::Image getImage() const { return image; }
 
-		private:
-			Graphics::Imagef image;
-		};
+private:
+	Graphics::Image image;
+};
+
 	}
 }

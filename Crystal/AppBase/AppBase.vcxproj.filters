@@ -388,6 +388,7 @@
     <ClInclude Include="ImageView.h">
       <Filter>Appearance\Image</Filter>
     </ClInclude>
+    <ClInclude Include="FileSelectView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
