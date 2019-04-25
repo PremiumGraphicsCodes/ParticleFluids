@@ -54,9 +54,6 @@ int main(int, char**)
 	window.add(new SelectionPanel("Selection", &model, &canvas));
 	window.add(new TransformPanel("Transform", &model, &canvas));
 
-	window.add(new ParticleSystemTreeList("ParticleSystems", &model, &canvas));
-	window.add(new WireFrameTreeList("WireFrames", &model, &canvas));
-	window.add(new PolygonMeshTreeList("Polygons", &model, &canvas));
 	window.add(new LightTreeList("Lights", &model, &canvas));
 	window.add(new MaterialTreeList("Materials", &model, &canvas));
 	window.add(new ImageTreeList("Image", &model, &canvas));

@@ -11,13 +11,8 @@ WireFrameTreeList::WireFrameTreeList(const std::string& name, Repository* model,
 
 void WireFrameTreeList::onShow()
 {
-	auto n = getName();
-	auto str = n.c_str();
-	ImGui::Begin(str);
-
 	const auto& wires = getRepository()->getObjects()->getWireFrames()->getObjects();
 	ImGui::BeginChild("WireFrames", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
-	ImGui::Text("WireFrames");
 	for (auto ws : wires) {
 		const auto name = ws->getName();
 		if (ImGui::Checkbox(name.c_str(), &ws->_isVisible)) {
@@ -26,6 +21,4 @@ void WireFrameTreeList::onShow()
 		}
 	}
 	ImGui::EndChild();
-
-	ImGui::End();
 }

@@ -10,6 +10,8 @@
 #include "PSConeButton.h"
 #include "PSTorusButton.h"
 
+#include "ParticleSystemTreeList.h"
+
 #include "Cone3dView.h"
 
 #include "IPopupButton.h"
@@ -28,4 +30,6 @@ ParticleSystemPanel::ParticleSystemPanel(const std::string& name, Repository* re
 	add( new PSCylinderButton(repository, canvas) );
 	add( new PSConeButton(repository, canvas) );
 	add( new PSTorusButton(repository, canvas) );
+
+	add(new ParticleSystemTreeList("ParticleSystems", repository, canvas));
 }

@@ -13,9 +13,9 @@ void ParticleSystemTreeList::onShow()
 {
 	const auto& particleSystems = getRepository()->getObjects()->getParticleSystems()->getObjects();
 
-	auto n = getName();
-	auto str = n.c_str();
-	ImGui::Begin(str);
+	//auto n = getName();
+	//auto str = n.c_str();
+	//ImGui::Begin(str);
 
 	ImGui::BeginChild("ParticleSystems", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	for (auto& ps : particleSystems) {
@@ -29,5 +29,5 @@ void ParticleSystemTreeList::onShow()
 	}
 	ImGui::EndChild();
 
-	ImGui::End();
+	//ImGui::End();
 }

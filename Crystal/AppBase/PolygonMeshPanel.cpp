@@ -1,15 +1,10 @@
 #include "PolygonMeshPanel.h"
-#include "../Math/Vector3d.h"
-#include "../UI/Repository.h"
-#include "../UI/Canvas.h"
-#include "../Shape/PolygonMeshBuilder.h"
-#include "../Graphics/ColorRGBA.h"
-#include "imgui.h"
-#include "IPopupButton.h"
 
 #include "PMSphereButton.h"
 #include "PMBoxButton.h"
 #include "PMPlaneButton.h"
+
+#include "PolygonMeshTreeList.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -21,4 +16,6 @@ PolygonMeshPanel::PolygonMeshPanel(const std::string& name, Repository* model, C
 	add( new PMSphereButton(model, canvas) );
 	add( new PMBoxButton(model, canvas) );
 	add( new PMPlaneButton(model, canvas) );
+
+	add(new PolygonMeshTreeList("Polygons", model, canvas));
 }
