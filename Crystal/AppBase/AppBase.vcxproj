@@ -26,6 +26,7 @@
     <ClCompile Include="ImageAddButton.cpp" />
     <ClCompile Include="ImageTreeList.cpp" />
     <ClCompile Include="ImageView.cpp" />
+    <ClCompile Include="ObjectPanel.cpp" />
     <ClCompile Include="ShaderPanel.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />
     <ClCompile Include="TextureView.cpp" />
@@ -91,6 +92,7 @@
     <ClInclude Include="ImageAddButton.h" />
     <ClInclude Include="ImageTreeList.h" />
     <ClInclude Include="ImageView.h" />
+    <ClInclude Include="ObjectPanel.h" />
     <ClInclude Include="ShaderPanel.h" />
     <ClInclude Include="TextureView.h" />
     <ClInclude Include="imconfig.h" />

@@ -4,24 +4,15 @@
 #include "../AppBase/CtrlMenu.h"
 #include "../AppBase/ScreenMenu.h"
 
-#include "../AppBase/ParticleSystemPanel.h"
-#include "../AppBase/WireFramePanel.h"
-#include "../AppBase/PolygonMeshPanel.h"
+#include "../AppBase/ObjectPanel.h"
 #include "../AppBase/AppearancePanel.h"
 #include "../AppBase/ShaderPanel.h"
 #include "../AppBase/SelectionPanel.h"
 #include "../AppBase/TransformPanel.h"
 
-#include "../AppBase/LightTreeList.h"
-#include "../AppBase/MaterialTreeList.h"
-#include "../AppBase/ImageTreeList.h"
-#include "../AppBase/TextureTreeList.h"
 
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
-#include "../UI/ObjectRenderer.h"
-
-#include "../Graphics/PerspectiveCamera.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -45,10 +36,7 @@ int main(int, char**)
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 	window.add(new ScreenMenu("Screen", &model, &canvas));
 
-	window.add(new ParticleSystemPanel("Particle", &model, &canvas));
-	window.add(new WireFramePanel("WireFrame", &model, &canvas));
-	window.add(new PolygonMeshPanel("Polygon", &model, &canvas));
-
+	window.add(new ObjectPanel("Object", &model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
 	window.add(new ShaderPanel("ShaderPanel", &model, &canvas));
 

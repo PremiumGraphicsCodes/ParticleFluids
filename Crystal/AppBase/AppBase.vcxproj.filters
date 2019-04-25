@@ -165,6 +165,9 @@
     <ClCompile Include="ShaderPanel.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectPanel.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -394,6 +397,9 @@
     <ClInclude Include="FileSelectView.h" />
     <ClInclude Include="ShaderPanel.h">
       <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectPanel.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
