@@ -3,10 +3,7 @@
 #include "../../Crystal/AppBase/CameraMenu.h"
 #include "../../Crystal/AppBase/CtrlMenu.h"
 
-#include "../../Crystal/AppBase/ParticleSystemPanel.h"
-#include "../../Crystal/AppBase/WireFramePanel.h"
-#include "../../Crystal/AppBase/PolygonMeshPanel.h"
-
+#include "../../Crystal/AppBase/ObjectPanel.h"
 #include "../../Crystal/AppBase/AppearancePanel.h"
 #include "../../Crystal/AppBase/ShaderPanel.h"
 
@@ -54,9 +51,7 @@ int main(int, char**)
 	window.add(new CameraMenu("Camera", &model, &canvas));
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 
-	window.add(new ParticleSystemPanel("ParticleSystem", &model, &canvas));
-	window.add(new WireFramePanel("WireFrame", &model, &canvas));
-	window.add(new PolygonMeshPanel("Polygon", &model, &canvas));
+	window.add(new ObjectPanel("Object", &model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
 	window.add(new ShaderPanel("ShaderPanel", &model, &canvas));
 
