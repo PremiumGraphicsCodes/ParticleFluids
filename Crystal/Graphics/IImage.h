@@ -11,13 +11,6 @@
 namespace Crystal {
 	namespace Graphics {
 
-		enum class ImageFileFormat
-		{
-			BMP,
-			PNG,
-			JPG,
-		};
-
 class IImage
 {
 public:

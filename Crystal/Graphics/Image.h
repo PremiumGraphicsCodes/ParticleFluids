@@ -131,6 +131,7 @@ public:
 		return dest;
 	}
 
+	Image* clone() const { return new Image(getWidth(), getHeight(), values); }
 
 private:
 	std::vector< unsigned char > values;

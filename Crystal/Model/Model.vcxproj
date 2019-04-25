@@ -23,6 +23,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppearanceObjectRepository.h" />
+    <ClInclude Include="ImageObject.h" />
+    <ClInclude Include="ImageObjectRepository.h" />
     <ClInclude Include="IObject.h" />
     <ClInclude Include="IObjectRepository.h" />
     <ClInclude Include="LightObject.h" />
@@ -48,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppearanceObjectRepository.cpp" />
+    <ClCompile Include="ImageObjectRepository.cpp" />
     <ClCompile Include="LightObjectRepository.cpp" />
     <ClCompile Include="MaterialObjectRepository.cpp" />
     <ClCompile Include="ObjectRepository.cpp" />
