@@ -379,13 +379,13 @@
     <ClInclude Include="TextureView.h">
       <Filter>Appearance\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="ImageView.h">
-      <Filter>Appearance\Image</Filter>
-    </ClInclude>
     <ClInclude Include="ImageTreeList.h">
       <Filter>Appearance\Image</Filter>
     </ClInclude>
     <ClInclude Include="ImageAddButton.h">
+      <Filter>Appearance\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageView.h">
       <Filter>Appearance\Image</Filter>
     </ClInclude>
   </ItemGroup>

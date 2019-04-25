@@ -16,6 +16,7 @@
 #include "../AppBase/PolygonMeshTreeList.h"
 #include "../AppBase/LightTreeList.h"
 #include "../AppBase/MaterialTreeList.h"
+#include "../AppBase/ImageTreeList.h"
 #include "../AppBase/TextureTreeList.h"
 
 #include "../UI/Repository.h"
@@ -58,6 +59,7 @@ int main(int, char**)
 	window.add(new PolygonMeshTreeList("Polygons", &model, &canvas));
 	window.add(new LightTreeList("Lights", &model, &canvas));
 	window.add(new MaterialTreeList("Materials", &model, &canvas));
+	window.add(new ImageTreeList("Image", &model, &canvas));
 	window.add(new TextureTreeList("Textures", &model, &canvas));
 
 	window.show();

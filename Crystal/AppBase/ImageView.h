@@ -10,12 +10,9 @@ namespace Crystal {
 class ImageView : public IWindow
 {
 public:
-	ImageView(const std::string& name, const Graphics::Image& image) :
-		IWindow(name),
-		image(image)
-	{
-		setValue(image);
-	}
+	ImageView(const std::string& name, const Graphics::Image& image);
+
+	~ImageView();
 
 	void show() override;
 
