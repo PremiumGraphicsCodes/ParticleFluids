@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="BooleanAlgo.h" />
     <ClInclude Include="IntersectionAlgo.h" />
+    <ClInclude Include="MarchingCubes.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash.h" />
   </ItemGroup>
@@ -156,6 +157,7 @@
     <ClCompile Include="BooleanAlgo.cpp" />
     <ClCompile Include="csgjs.h" />
     <ClCompile Include="IntersectionAlgo.cpp" />
+    <ClCompile Include="MarchingCubes.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
   </ItemGroup>
