@@ -21,7 +21,7 @@ void SpaceHashButton::onShow()
 void SpaceHashButton::onOk()
 {
 	SpaceHash space(1.0f, 10000);
-
+	//space.add
 
 /*
 	std::vector<Vector3df> positions;
