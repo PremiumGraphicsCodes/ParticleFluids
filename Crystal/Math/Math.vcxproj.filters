@@ -36,6 +36,7 @@
     <ClInclude Include="ICurve3d.h">
       <Filter>Curve3d</Filter>
     </ClInclude>
+    <ClInclude Include="Gaussian.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Curve3d">

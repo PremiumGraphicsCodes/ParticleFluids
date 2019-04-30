@@ -19,6 +19,9 @@
     <ClInclude Include="MarchingCubesTable.h">
       <Filter>MarchingCubes</Filter>
     </ClInclude>
+    <ClInclude Include="VolumeConverter.h">
+      <Filter>VolumeConverter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -39,6 +42,9 @@
     <ClCompile Include="MarchingCubesAlgo.cpp">
       <Filter>MarchingCubes</Filter>
     </ClCompile>
+    <ClCompile Include="VolumeConverter.cpp">
+      <Filter>VolumeConverter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">
@@ -52,6 +58,9 @@
     </Filter>
     <Filter Include="MarchingCubes">
       <UniqueIdentifier>{6d4a5a03-215a-4a8a-b4e5-c6cdd72662bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VolumeConverter">
+      <UniqueIdentifier>{aa657a9f-2f54-427f-a595-70f197e46c21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

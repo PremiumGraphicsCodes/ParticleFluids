@@ -136,6 +136,7 @@
     <ClInclude Include="Circle2d.h" />
     <ClInclude Include="Cone3d.h" />
     <ClInclude Include="Cylinder3d.h" />
+    <ClInclude Include="Gaussian.h" />
     <ClInclude Include="glm.h" />
     <ClInclude Include="ICurve3d.h" />
     <ClInclude Include="Line2d.h" />
