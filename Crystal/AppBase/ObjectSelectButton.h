@@ -10,9 +10,18 @@ class ObjectSelectButton : public IPopupButton
 public:
 	ObjectSelectButton(const std::string& name, Repository* model, Canvas* canvas) :
 		IPopupButton(name, model, canvas),
-		id(0)
+		id(0),
+		type(Model::ObjectType::All)
 	{
 	}
+
+	ObjectSelectButton(const std::string& name, Repository* model, Canvas* canvas, const Model::ObjectType type) :
+		IPopupButton(name, model, canvas),
+		id(0),
+		type(type)
+	{
+	}
+
 
 	void onShow() override;
 
@@ -24,6 +33,7 @@ public:
 
 private:
 	int id;
+	Model::ObjectType type;
 };
 
 	}

@@ -11,7 +11,7 @@ void ObjectSelectButton::onShow()
 {
 	ImGui::InputInt("Id", &id);
 	if (ImGui::Button("Pick")) {
-		auto ctrl = new PickUICtrl(getModel(), getCanvas(), Model::ObjectType::All);
+		auto ctrl = new PickUICtrl(getModel(), getCanvas(), type);
 		auto func = [=](int parentId, int childId) {
 			return this->id = parentId;
 		};

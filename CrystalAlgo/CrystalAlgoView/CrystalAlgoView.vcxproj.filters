@@ -2,27 +2,54 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CrystalAlgoView.cpp" />
-    <ClCompile Include="SpaceHashButton.cpp" />
-    <ClCompile Include="OctreeButton.cpp" />
-    <ClCompile Include="BooleanButton.cpp" />
     <ClCompile Include="IntersectionButton.cpp">
       <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="MarchingCubesButton.cpp">
+      <Filter>MarchingCubes</Filter>
+    </ClCompile>
+    <ClCompile Include="BooleanButton.cpp">
+      <Filter>Boolean</Filter>
+    </ClCompile>
+    <ClCompile Include="OctreeButton.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceHashButton.cpp">
+      <Filter>Search</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SpaceHashButton.h" />
-    <ClInclude Include="OctreeButton.h" />
-    <ClInclude Include="BooleanButton.h" />
     <ClInclude Include="IntersectionButton.h">
       <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="MarchingCubesButton.h">
+      <Filter>MarchingCubes</Filter>
+    </ClInclude>
+    <ClInclude Include="BooleanButton.h">
+      <Filter>Boolean</Filter>
+    </ClInclude>
+    <ClInclude Include="OctreeButton.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceHashButton.h">
+      <Filter>Search</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">
       <UniqueIdentifier>{81e14b45-7bcc-400a-a684-4e49e0cf861f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MarchingCubes">
+      <UniqueIdentifier>{bb8df9fd-c2ee-46f5-b032-a296b1b0a69c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Boolean">
+      <UniqueIdentifier>{ebad4551-f6fe-43a7-80a6-06149d494e73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Search">
+      <UniqueIdentifier>{41a6a766-e885-4f76-9831-f9c5f38774f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

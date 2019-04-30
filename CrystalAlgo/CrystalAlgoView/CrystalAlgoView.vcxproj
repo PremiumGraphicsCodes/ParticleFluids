@@ -160,6 +160,7 @@
     <ClCompile Include="BooleanButton.cpp" />
     <ClCompile Include="CrystalAlgoView.cpp" />
     <ClCompile Include="IntersectionButton.cpp" />
+    <ClCompile Include="MarchingCubesButton.cpp" />
     <ClCompile Include="OctreeButton.cpp" />
     <ClCompile Include="SpaceHashButton.cpp" />
   </ItemGroup>
@@ -169,6 +170,7 @@
   <ItemGroup>
     <ClInclude Include="BooleanButton.h" />
     <ClInclude Include="IntersectionButton.h" />
+    <ClInclude Include="MarchingCubesButton.h" />
     <ClInclude Include="OctreeButton.h" />
     <ClInclude Include="SpaceHashButton.h" />
   </ItemGroup>
