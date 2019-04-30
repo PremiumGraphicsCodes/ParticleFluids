@@ -17,6 +17,7 @@
 #include "IntersectionButton.h"
 #include "BooleanButton.h"
 #include "MarchingCubesButton.h"
+#include "VolumeConverterButton.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -33,6 +34,7 @@ namespace {
 			add(new IntersectionButton(model, canvas));
 			add(new SpaceHashButton(model, canvas));
 			add(new MarchingCubesButton(model, canvas));
+			add(new VolumeConverterButton(model, canvas));
 		}
 	};
 }

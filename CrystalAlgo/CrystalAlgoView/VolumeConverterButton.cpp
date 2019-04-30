@@ -23,11 +23,16 @@ void VolumeConverterButton::onOk()
 	Math::Box3d box;
 	Volume3d volume(32, 32, 32, box);
 
-	//Crystal::Shape::PolygonMeshBuilder builder;
-	//builder.build(triangles);
-	//Crystal::Shape::ParticleSystem particleSystem(volume.to)
-	//getModel()->getObjects()->getParticleSystems()->addObject(volume.toParticles(), 1, "VolumeConverter");
-	//getCanvas()->setViewModel(getModel()->toViewModel());
+	const auto& particles = volume.toParticles();
+	std::vector<Vector3df> positions;
+	for (const auto& p : particles) {
+		positions.push_back(p.getPosition());
+	}
+	ParticleAttribute attr;
+	attr.color = glm::vec4(1, 0, 0, 0);
+	attr.size = 1.0;
+	getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "VolumeConverter");
+	getCanvas()->setViewModel(getModel()->toViewModel());
 }
 
 void VolumeConverterButton::onCancel()

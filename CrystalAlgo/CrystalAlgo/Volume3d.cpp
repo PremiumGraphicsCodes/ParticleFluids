@@ -11,13 +11,13 @@ Volume3d::Volume3d(const int u, const int v, const int w, const Box3d& box)
 	const auto dz = box.getLength().z / (double)w;
 	nodes.resize(u);
 	for (int i = 0; i < u; ++i) {
-		const auto px = box.getMinX() + u * dx;
+		const auto px = box.getMinX() + i * dx;
 		nodes[i].resize(v);
 		for (int j = 0; j < v; ++j) {
-			const auto py = box.getMinY() + v * dy;
+			const auto py = box.getMinY() + j * dy;
 			nodes[i][j].resize(w);
 			for (int k = 0; k < w; ++k) {
-				const auto pz = box.getMinZ() + w * dz;
+				const auto pz = box.getMinZ() + k * dz;
 				nodes[i][j][k] = Shape::Particle<double>(Math::Vector3dd(px, py, pz), 0.0);
 			}
 		}
