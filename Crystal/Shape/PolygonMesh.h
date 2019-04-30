@@ -7,6 +7,7 @@
 #include "../Math/Quaternion.h"
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
+#include "../Math/Triangle3d.h"
 
 #include "IShape.h"
 
@@ -23,6 +24,8 @@ class PolygonMesh : public IShape
 public:
 	PolygonMesh()
 	{}
+
+	explicit PolygonMesh(const std::vector<Math::Triangle3d>& triangles);
 
 	PolygonMesh(const std::vector<Vertex*>& vertices, const std::list<Face*>& faces);
 

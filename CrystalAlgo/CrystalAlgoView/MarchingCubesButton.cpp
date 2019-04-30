@@ -2,6 +2,7 @@
 
 #include "../CrystalAlgo/MarchingCubesAlgo.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
@@ -19,22 +20,31 @@ void MarchingCubesButton::onShow()
 
 void MarchingCubesButton::onOk()
 {
-	/*
-	auto polygon1 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton1.getId());
-	auto polygon2 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton2.getId());
-	if (polygon1 == nullptr || polygon2 == nullptr) {
-		return;
-	}
-	BooleanAlgo algo;
-	algo.calculateDifference(*polygon1->getShape(), *polygon2->getShape());
+	MarchingCubesAlgo::GRIDCELL cell;
+	cell.p[0] = Vector3dd(0, 0, 0);
+	cell.p[1] = Vector3dd(1, 0, 0);
+	cell.p[2] = Vector3dd(1, 1, 0);
+	cell.p[3] = Vector3dd(0, 1, 0);
+	cell.p[4] = Vector3dd(0, 0, 1);
+	cell.p[5] = Vector3dd(1, 0, 1);
+	cell.p[6] = Vector3dd(1, 1, 1);
+	cell.p[7] = Vector3dd(0, 1, 1);
 
-	polygon1->setVisible(false);
-	polygon2->setVisible(false);
+	cell.val[0] = 0.0;
+	cell.val[1] = 100.0;
+	cell.val[2] = 0.0;
+	cell.val[3] = 0.0;
+	cell.val[4] = 0.0;
+	cell.val[5] = 0.0;
+	cell.val[6] = 0.0;
+	cell.val[7] = 0.0;
 
-	getModel()->getObjects()->getPolygonMeshes()->addObject(algo.getResult(), 1, "Intersection");
+	MarchingCubesAlgo algo;
+	algo.march(cell, 50.0);
+	const auto& triangles = algo.getTriangles();
+	Crystal::Shape::PolygonMesh* mesh = new Crystal::Shape::PolygonMesh(triangles);
+	getModel()->getObjects()->getPolygonMeshes()->addObject(mesh, 1, "MarchingCubes");
 	getCanvas()->setViewModel(getModel()->toViewModel());
-	getCanvas()->fitCamera(getModel()->getBoundingBox());
-	*/
 }
 
 void MarchingCubesButton::onCancel()

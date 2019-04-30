@@ -26,6 +26,8 @@ public:
 	*/
 	int march(GRIDCELL grid, double isolevel);
 
+	std::vector<Math::Triangle3d> getTriangles() const { return triangles; }
+
 private:
 	/*
 	Linearly interpolate the position where an isosurface cuts

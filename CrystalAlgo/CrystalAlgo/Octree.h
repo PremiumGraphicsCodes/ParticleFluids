@@ -5,19 +5,22 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Box3d.h"
+#include "../../Crystal/Util/UnCopyable.h"
 
 namespace Crystal {
-	namespace Algo {
+	namespace Shape {
 		class IParticle;
+	}
+	namespace Algo {
 
-class Octree
+class Octree //: private UnCopyable
 {
 public:
 	Octree() {};
 
 	Octree(const Math::Box3d& space);
 
-	void add(IParticle* particle) { this->particles.push_back(particle); }
+	void add(Shape::IParticle* particle);
 
 	std::vector<Octree> createChildren() const;
 
@@ -27,10 +30,10 @@ public:
 
 	bool equals(const Octree& rhs, const double tolerance) const;
 
-	std::vector<IParticle*> getParticles() const { return particles; }
+	std::vector<Shape::IParticle*> getParticles() const { return particles; }
 
 private:
-	std::vector<IParticle*> particles;
+	std::vector<Shape::IParticle*> particles;
 	Math::Box3d space;
 };
 
