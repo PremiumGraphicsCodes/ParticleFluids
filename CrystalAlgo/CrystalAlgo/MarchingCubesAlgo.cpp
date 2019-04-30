@@ -1,26 +1,15 @@
 //from http://paulbourke.net/geometry/polygonise/
 
 #include "../../Crystal/Math/Vector3d.h"
+#include "MarchingCubesAlgo.h"
 
 using namespace Crystal::Math;
-
-using XYZ = Vector3dd;
-
-typedef struct
-{
-	XYZ p[3];
-} TRIANGLE;
-
-typedef struct {
-	XYZ p[8];
-	double val[8];
-} GRIDCELL;
-
+using namespace Crystal::Algo;
 /*
    Linearly interpolate the position where an isosurface cuts
    an edge between two vertices, each with their own scalar value
 */
-XYZ VertexInterp(double isolevel, XYZ p1, XYZ p2, double valp1, double valp2)
+XYZ MarchingCubesAlgo::VertexInterp(double isolevel, XYZ p1, XYZ p2, double valp1, double valp2)
 {
 	double mu;
 	XYZ p;
@@ -47,7 +36,7 @@ XYZ VertexInterp(double isolevel, XYZ p1, XYZ p2, double valp1, double valp2)
 	0 will be returned if the grid cell is either totally above
    of totally below the isolevel.
 */
-int Polygonise(GRIDCELL grid, double isolevel, TRIANGLE *triangles)
+int MarchingCubesAlgo::Polygonise(GRIDCELL grid, double isolevel, TRIANGLE *triangles)
 {
 	int i, ntriang;
 	int cubeindex;

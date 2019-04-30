@@ -13,7 +13,7 @@
     <ClInclude Include="BooleanAlgo.h">
       <Filter>Boolean</Filter>
     </ClInclude>
-    <ClInclude Include="MarchingCubes.h">
+    <ClInclude Include="MarchingCubesAlgo.h">
       <Filter>MarchingCubes</Filter>
     </ClInclude>
   </ItemGroup>
@@ -33,7 +33,7 @@
     <ClCompile Include="csgjs.h">
       <Filter>Boolean</Filter>
     </ClCompile>
-    <ClCompile Include="MarchingCubes.cpp">
+    <ClCompile Include="MarchingCubesAlgo.cpp">
       <Filter>MarchingCubes</Filter>
     </ClCompile>
   </ItemGroup>
