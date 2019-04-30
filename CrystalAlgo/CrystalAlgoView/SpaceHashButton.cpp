@@ -2,39 +2,46 @@
 
 #include "../CrystalAlgo/SpaceHash.h"
 
+using namespace Crystal::Math;
+using namespace Crystal::Model;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
 SpaceHashButton::SpaceHashButton(Repository* model, Canvas* canvas) :
 	IPopupButton("SpaceHash", model, canvas),
 	positionButton("Position", model, canvas),
-	objectButton("Object", model, canvas)
+	searchRadius("SearchRadius", 1.0),
+	objectButton("Object", model, canvas, ObjectType::ParticleSystemObject)
 {
 }
 
 void SpaceHashButton::onShow()
 {
 	positionButton.show();
+	searchRadius.show();
 	objectButton.show();
 }
 
 void SpaceHashButton::onOk()
 {
-	SpaceHash space(1.0f, 10000);
-	//space.add
-
-/*
-	std::vector<Vector3df> positions;
-	for (double x = min.x; x < max.x; x += dx[0]) {
-		for (double y = min.y; y < max.y; y += dx[1]) {
-			for (double z = min.z; z < max.z; z += dx[2]) {
-				positions.push_back(Vector3df(x, y, z));
-			}
-		}
+	auto object = getModel()->getObjects()->getParticleSystems()->findObjectById(objectButton.getId());
+	if (object == nullptr) {
+		return;
 	}
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, ColorRGBAf(1, 1, 1, 1), 100.0f, "Box");
+
+	SpaceHash space(searchRadius.getValue(), object->getShape()->getParticles().size());
+	space.add(*object->getShape());
+
+	const auto& neighbors = space.getNeighbors(positionButton.getPosition());
+
+	std::vector<Vector3df> positions;
+	ParticleAttribute attr;
+	attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+	attr.size = 1.0;
+	for (auto n : neighbors) {
+		positions.push_back(n->getPosition());
+	}
+	getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "");
 	getCanvas()->setViewModel(getModel()->toViewModel());
-	getCanvas()->fitCamera(getModel()->getBoundingBox());
-	*/
 }
 
