@@ -22,6 +22,9 @@
     <ClInclude Include="VolumeConverter.h">
       <Filter>VolumeConverter</Filter>
     </ClInclude>
+    <ClInclude Include="Volume3d.h">
+      <Filter>VolumeConverter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -43,6 +46,9 @@
       <Filter>MarchingCubes</Filter>
     </ClCompile>
     <ClCompile Include="VolumeConverter.cpp">
+      <Filter>VolumeConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="Volume3d.cpp">
       <Filter>VolumeConverter</Filter>
     </ClCompile>
   </ItemGroup>

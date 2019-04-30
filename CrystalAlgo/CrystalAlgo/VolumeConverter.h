@@ -1,19 +1,15 @@
 #pragma once
 
+#include "Volume3d.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 
 namespace Crystal {
 	namespace Algo {
 
-struct Volume
-{
-
-};
-
 class VolumeConverter
 {
 public:
-	void convert(const Math::Box3d& space, const Shape::ParticleSystem<double>& particleSystem, const int levelOfDetail);
+	void convert(const Volume3d& volume, const Shape::ParticleSystem<double>& particleSystem);
 
 private:
 };

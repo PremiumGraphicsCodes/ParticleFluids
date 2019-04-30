@@ -17,6 +17,7 @@
     <ClCompile Include="SpaceHashButton.cpp">
       <Filter>Search</Filter>
     </ClCompile>
+    <ClCompile Include="VolumeConverterButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -37,6 +38,7 @@
     <ClInclude Include="SpaceHashButton.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="VolumeConverterButton.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">

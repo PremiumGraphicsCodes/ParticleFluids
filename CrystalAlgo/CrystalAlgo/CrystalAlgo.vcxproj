@@ -153,6 +153,7 @@
     <ClInclude Include="MarchingCubesTable.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash.h" />
+    <ClInclude Include="Volume3d.h" />
     <ClInclude Include="VolumeConverter.h" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
+    <ClCompile Include="Volume3d.cpp" />
     <ClCompile Include="VolumeConverter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

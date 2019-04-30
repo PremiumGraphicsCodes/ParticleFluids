@@ -7,17 +7,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 
-void VolumeConverter::convert(const Box3d& space, const ParticleSystem<double>& particleSystem, const int levelOfDetail)
+void VolumeConverter::convert(const Volume3d& volume, const ParticleSystem<double>& particleSystem)
 {
 	/*
-	Octree tree(space);
-	const auto& particles = particleSystem.getParticles();
-	for (auto& p : particles) {
-		tree.add(p);
-	}
-	std::vector<VolumeCell> cells;
-	const auto& children = tree.createChildren(levelOfDetail);//Vector3d<float>(effectLength,effectLength,effectLength));
-
 	Gaussian kernel;
 	for (const auto& c : children) {
 		const auto& box = c.getBoundingBox();

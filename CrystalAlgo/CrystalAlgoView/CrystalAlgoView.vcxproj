@@ -163,6 +163,7 @@
     <ClCompile Include="MarchingCubesButton.cpp" />
     <ClCompile Include="OctreeButton.cpp" />
     <ClCompile Include="SpaceHashButton.cpp" />
+    <ClCompile Include="VolumeConverterButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -173,6 +174,7 @@
     <ClInclude Include="MarchingCubesButton.h" />
     <ClInclude Include="OctreeButton.h" />
     <ClInclude Include="SpaceHashButton.h" />
+    <ClInclude Include="VolumeConverterButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

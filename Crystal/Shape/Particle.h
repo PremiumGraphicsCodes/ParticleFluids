@@ -9,6 +9,9 @@ template<typename Attr>
 class Particle : public IParticle
 {
 public:
+	Particle()
+	{}
+
 	Particle(const Math::Vector3dd& position, const Attr& attr) :
 		position(position),
 		attribute(attr)
@@ -23,6 +26,12 @@ public:
 	void transform(const Math::Matrix4dd& m) override { position = m * glm::vec4(position, 1.0); }
 
 	Attr getAttribute() const { return attribute; }
+
+	void setAttribute(Attr attr) { this->attribute = attr; }
+
+	Particle<Attr>* clone() const {
+		return new Particle(position, attribute);
+	}
 
 private:
 	Math::Vector3dd position;
