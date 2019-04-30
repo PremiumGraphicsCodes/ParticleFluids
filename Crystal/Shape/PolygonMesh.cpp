@@ -14,28 +14,6 @@ PolygonMesh::PolygonMesh(const std::vector<Vertex*>& vertices, const std::list<F
 	faces(faces)
 {}
 
-PolygonMesh::PolygonMesh(const std::vector<Triangle3d>& triangles)
-{
-	for (const auto& t : triangles) {
-		VertexAttr attr;
-		attr.normal = t.getNormal();
-		attr.id = 0;
-		Vertex* v0 = new Vertex(t.getVertices()[0], attr);
-		attr.id = 1;
-		Vertex* v1 = new Vertex(t.getVertices()[1], attr);
-		attr.id = 2;
-		Vertex* v2 = new Vertex(t.getVertices()[2], attr);
-		HalfEdge* e1 = new HalfEdge(v0, v1);
-		HalfEdge* e2 = new HalfEdge(v1, v2);
-		HalfEdge* e3 = new HalfEdge(v2, v0);
-		Face* f = new Face(e1, e2, e3);
-		vertices.push_back(v0);
-		vertices.push_back(v1);
-		vertices.push_back(v2);
-		faces.push_back(f);
-	}
-}
-
 PolygonMesh::~PolygonMesh()
 {
 	clear();

@@ -25,8 +25,6 @@ public:
 	PolygonMesh()
 	{}
 
-	explicit PolygonMesh(const std::vector<Math::Triangle3d>& triangles);
-
 	PolygonMesh(const std::vector<Vertex*>& vertices, const std::list<Face*>& faces);
 
 	~PolygonMesh();

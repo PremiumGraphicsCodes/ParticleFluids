@@ -1,12 +1,14 @@
 #pragma once
 
-#include "../Math/Line3d.h"
-#include "../Math/Sphere3d.h"
-#include "../Math/Box3d.h"
 #include "PolygonMesh.h"
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
+	namespace Math {
+		class Box3d;
+		class Sphere3d;
+		class Triangle3d;
+	}
 	namespace Shape {
 
 class PolygonMeshBuilder : private UnCopyable
@@ -16,6 +18,8 @@ public:
 		nextId(0),
 		nextVertexId(0)
 	{}
+
+	void build(const std::vector<Math::Triangle3d>& triangles);
 
 	void build(const Math::Box3d& box);
 
