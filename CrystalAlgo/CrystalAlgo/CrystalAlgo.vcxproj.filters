@@ -16,6 +16,9 @@
     <ClInclude Include="MarchingCubesAlgo.h">
       <Filter>MarchingCubes</Filter>
     </ClInclude>
+    <ClInclude Include="MarchingCubesTable.h">
+      <Filter>MarchingCubes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">

@@ -20,7 +20,7 @@ void MarchingCubesButton::onShow()
 
 void MarchingCubesButton::onOk()
 {
-	MarchingCubesAlgo::GRIDCELL cell;
+	MarchingCubesAlgo::MCCell cell;
 	cell.p[0] = Vector3dd(0, 0, 0);
 	cell.p[1] = Vector3dd(1, 0, 0);
 	cell.p[2] = Vector3dd(1, 1, 0);

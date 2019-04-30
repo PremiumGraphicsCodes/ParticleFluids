@@ -6,15 +6,14 @@
 namespace Crystal {
 	namespace Algo {
 
-using XYZ = Math::Vector3dd;
-
 class MarchingCubesAlgo
 {
 public:
-	typedef struct {
-		XYZ p[8];
+	struct MCCell
+	{
+		Math::Vector3dd p[8];
 		double val[8];
-	} GRIDCELL;
+	};
 
 	/*
 		Given a grid cell and an isolevel, calculate the triangular
@@ -24,7 +23,7 @@ public:
 		0 will be returned if the grid cell is either totally above
 		of totally below the isolevel.
 	*/
-	int march(GRIDCELL grid, double isolevel);
+	int march(const MCCell& cell, const double isolevel);
 
 	std::vector<Math::Triangle3d> getTriangles() const { return triangles; }
 
