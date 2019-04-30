@@ -5,11 +5,12 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Algo;
+
 /*
    Linearly interpolate the position where an isosurface cuts
    an edge between two vertices, each with their own scalar value
 */
-XYZ MarchingCubesAlgo::VertexInterp(double isolevel, XYZ p1, XYZ p2, double valp1, double valp2)
+Vector3dd MarchingCubesAlgo::VertexInterp(double isolevel, const Vector3dd& p1, const Vector3dd& p2, double valp1, double valp2)
 {
 	double mu;
 	XYZ p;
@@ -36,7 +37,7 @@ XYZ MarchingCubesAlgo::VertexInterp(double isolevel, XYZ p1, XYZ p2, double valp
 	0 will be returned if the grid cell is either totally above
    of totally below the isolevel.
 */
-int MarchingCubesAlgo::Polygonise(GRIDCELL grid, double isolevel, TRIANGLE *triangles)
+int MarchingCubesAlgo::march(GRIDCELL grid, double isolevel)
 {
 	int i, ntriang;
 	int cubeindex;
@@ -392,9 +393,13 @@ int MarchingCubesAlgo::Polygonise(GRIDCELL grid, double isolevel, TRIANGLE *tria
 	/* Create the triangle */
 	ntriang = 0;
 	for (i = 0; triTable[cubeindex][i] != -1; i += 3) {
-		triangles[ntriang].p[0] = vertlist[triTable[cubeindex][i]];
-		triangles[ntriang].p[1] = vertlist[triTable[cubeindex][i + 1]];
-		triangles[ntriang].p[2] = vertlist[triTable[cubeindex][i + 2]];
+		const auto& v0 = vertlist[triTable[cubeindex][i]];
+		const auto& v1 = vertlist[triTable[cubeindex][i + 1]];
+		const auto& v2 = vertlist[triTable[cubeindex][i + 2]];
+
+		Triangle3d triangle({ v0,v1,v2 });
+		triangles.push_back(triangle);
+
 		ntriang++;
 	}
 
