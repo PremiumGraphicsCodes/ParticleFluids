@@ -2,11 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Helper.h" />
-    <ClInclude Include="OBJFileReader.h" />
     <ClInclude Include="DXFFileReader.h" />
-    <ClInclude Include="MTLFileReader.h" />
     <ClInclude Include="PCDFileReader.h" />
-    <ClInclude Include="ImageFileReader.h" />
     <ClInclude Include="STLASCIIFileReader.h">
       <Filter>STL</Filter>
     </ClInclude>
@@ -19,13 +16,22 @@
     <ClInclude Include="STLASCIIFileWriter.h">
       <Filter>STL</Filter>
     </ClInclude>
+    <ClInclude Include="ImageFileReader.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFileWriter.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJFileReader.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="MTLFileReader.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OBJFileReader.cpp" />
     <ClCompile Include="DXFFileReader.cpp" />
-    <ClCompile Include="MTLFileReader.cpp" />
     <ClCompile Include="PCDFileReader.cpp" />
-    <ClCompile Include="ImageFileReader.cpp" />
     <ClCompile Include="STLASCIIFileReader.cpp">
       <Filter>STL</Filter>
     </ClCompile>
@@ -38,10 +44,28 @@
     <ClCompile Include="STLASCIIFileWriter.cpp">
       <Filter>STL</Filter>
     </ClCompile>
+    <ClCompile Include="ImageFileReader.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFileReader.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="MTLFileReader.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageFileWriter.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="STL">
       <UniqueIdentifier>{8ee4b111-b76c-4b82-a55e-1bc0dda24b1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image">
+      <UniqueIdentifier>{aca99a94-b257-4ba0-9344-559f101a3c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OBJ">
+      <UniqueIdentifier>{153fc88c-0f12-432b-8b06-96e296ea3ee5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

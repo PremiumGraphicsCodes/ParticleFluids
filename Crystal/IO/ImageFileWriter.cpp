@@ -1,17 +1,18 @@
-#include "ImageFileReader.h"
+#include "ImageFileWriter.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "../ThirdParty/stb/stb_image.h"
+#include "../ThirdParty/stb/stb_image_write.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 
-bool ImageFileReader::read(const std::string& filename)
+bool ImageFileWriter::write(const std::string& filename, const Image& image)
 {
+	/*
 	int width = 0;
 	int height = 0;
 	int bpp = 0;
-	const auto& pixels = stbi_load(filename.c_str(), &width, &height, &bpp, 0);
+	const auto& pixels = stbi_write_bmp(filename.c_str(), &width, &height, &bpp, 0);
 	if (!(bpp == 3 || bpp == 4)) {
 		return false;
 	}
@@ -33,5 +34,6 @@ bool ImageFileReader::read(const std::string& filename)
 		}
 	}
 	stbi_image_free(pixels);
+	*/
 	return true;
 }
