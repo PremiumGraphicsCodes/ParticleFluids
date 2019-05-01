@@ -15,6 +15,16 @@ public:
 
 	void set(const int i, const int j, const int k, double value);
 
+	int getUNum() const { return nodes.size(); }
+
+	int getVNum() const { return nodes.front().size(); }
+
+	int getWNum() const { return nodes.front().front().size(); }
+
+	Math::Vector3dd getPosition(const int i, const int j, const int k) const { return nodes[i][j][k].getPosition(); }
+
+	double getValue(const int i, const int j, const int k) const { return nodes[i][j][k].getAttribute(); }
+
 	std::vector<Shape::Particle<double>> toParticles();
 
 private:

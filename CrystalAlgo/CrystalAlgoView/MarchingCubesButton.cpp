@@ -21,23 +21,23 @@ void MarchingCubesButton::onShow()
 void MarchingCubesButton::onOk()
 {
 	MarchingCubesAlgo::MCCell cell;
-	cell.p[0] = Vector3dd(0, 0, 0);
-	cell.p[1] = Vector3dd(1, 0, 0);
-	cell.p[2] = Vector3dd(1, 1, 0);
-	cell.p[3] = Vector3dd(0, 1, 0);
-	cell.p[4] = Vector3dd(0, 0, 1);
-	cell.p[5] = Vector3dd(1, 0, 1);
-	cell.p[6] = Vector3dd(1, 1, 1);
-	cell.p[7] = Vector3dd(0, 1, 1);
+	cell.position[0] = Vector3dd(0, 0, 0);
+	cell.position[1] = Vector3dd(1, 0, 0);
+	cell.position[2] = Vector3dd(1, 1, 0);
+	cell.position[3] = Vector3dd(0, 1, 0);
+	cell.position[4] = Vector3dd(0, 0, 1);
+	cell.position[5] = Vector3dd(1, 0, 1);
+	cell.position[6] = Vector3dd(1, 1, 1);
+	cell.position[7] = Vector3dd(0, 1, 1);
 
-	cell.val[0] = 0.0;
-	cell.val[1] = 100.0;
-	cell.val[2] = 0.0;
-	cell.val[3] = 0.0;
-	cell.val[4] = 0.0;
-	cell.val[5] = 0.0;
-	cell.val[6] = 0.0;
-	cell.val[7] = 0.0;
+	cell.value[0] = 0.0;
+	cell.value[1] = 100.0;
+	cell.value[2] = 0.0;
+	cell.value[3] = 0.0;
+	cell.value[4] = 0.0;
+	cell.value[5] = 0.0;
+	cell.value[6] = 0.0;
+	cell.value[7] = 0.0;
 
 	MarchingCubesAlgo algo;
 	algo.march(cell, 50.0);

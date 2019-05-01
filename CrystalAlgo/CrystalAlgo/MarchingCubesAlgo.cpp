@@ -3,32 +3,31 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "MarchingCubesAlgo.h"
 #include "MarchingCubesTable.h"
+#include "Volume3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::MarchingCubesTable;
 
-/*
-   Linearly interpolate the position where an isosurface cuts
-   an edge between two vertices, each with their own scalar value
-*/
-Vector3dd MarchingCubesAlgo::VertexInterp(double isolevel, const Vector3dd& p1, const Vector3dd& p2, double valp1, double valp2)
+int MarchingCubesAlgo::build(const Volume3d& volume)
 {
-	double mu;
-	Vector3dd p;
+	const auto unum = volume.getUNum();
+	const auto vnum = volume.getVNum();
+	const auto wnum = volume.getWNum();
+	for (int i = 0; i < unum-1; ++i) {
+		for (int j = 0; j < vnum-1; ++j) {
+			for (int k = 0; k < wnum-1; ++k) {
+				MCCell cell;
 
-	if (::fabs(isolevel - valp1) < 0.00001)
-		return(p1);
-	if (::fabs(isolevel - valp2) < 0.00001)
-		return(p2);
-	if (::fabs(valp1 - valp2) < 0.00001)
-		return(p1);
-	mu = (isolevel - valp1) / (valp2 - valp1);
-	p.x = p1.x + mu * (p2.x - p1.x);
-	p.y = p1.y + mu * (p2.y - p1.y);
-	p.z = p1.z + mu * (p2.z - p1.z);
+				cell.position[0] = volume.getPosition(i, j, k);
+				cell.value[0] = volume.getValue(i,j,k);
 
-	return(p);
+				cell.position[1] = volume.getPosition(i + 1, j, k);
+				cell.value[1] = volume.getValue(i + 1, j, k);
+			}
+		}
+	}
+	return -1;
 }
 
 /*
@@ -49,14 +48,14 @@ int MarchingCubesAlgo::march(const MCCell& cell, const double isolevel)
 	   tells us which vertices are inside of the surface
 	*/
 	int cubeindex = 0;
-	if (cell.val[0] < isolevel) cubeindex |= 1;
-	if (cell.val[1] < isolevel) cubeindex |= 2;
-	if (cell.val[2] < isolevel) cubeindex |= 4;
-	if (cell.val[3] < isolevel) cubeindex |= 8;
-	if (cell.val[4] < isolevel) cubeindex |= 16;
-	if (cell.val[5] < isolevel) cubeindex |= 32;
-	if (cell.val[6] < isolevel) cubeindex |= 64;
-	if (cell.val[7] < isolevel) cubeindex |= 128;
+	if (cell.value[0] < isolevel) cubeindex |= 1;
+	if (cell.value[1] < isolevel) cubeindex |= 2;
+	if (cell.value[2] < isolevel) cubeindex |= 4;
+	if (cell.value[3] < isolevel) cubeindex |= 8;
+	if (cell.value[4] < isolevel) cubeindex |= 16;
+	if (cell.value[5] < isolevel) cubeindex |= 32;
+	if (cell.value[6] < isolevel) cubeindex |= 64;
+	if (cell.value[7] < isolevel) cubeindex |= 128;
 
 	/* Cube is entirely in/out of the surface */
 	if (edgeTable[cubeindex] == 0)
@@ -65,40 +64,40 @@ int MarchingCubesAlgo::march(const MCCell& cell, const double isolevel)
 	/* Find the vertices where the surface intersects the cube */
 	if (edgeTable[cubeindex] & 1)
 		vertlist[0] =
-		VertexInterp(isolevel, cell.p[0], cell.p[1], cell.val[0], cell.val[1]);
+		getInterpolatedPosition(isolevel, cell.position[0], cell.position[1], cell.value[0], cell.value[1]);
 	if (edgeTable[cubeindex] & 2)
 		vertlist[1] =
-		VertexInterp(isolevel, cell.p[1], cell.p[2], cell.val[1], cell.val[2]);
+		getInterpolatedPosition(isolevel, cell.position[1], cell.position[2], cell.value[1], cell.value[2]);
 	if (edgeTable[cubeindex] & 4)
 		vertlist[2] =
-		VertexInterp(isolevel, cell.p[2], cell.p[3], cell.val[2], cell.val[3]);
+		getInterpolatedPosition(isolevel, cell.position[2], cell.position[3], cell.value[2], cell.value[3]);
 	if (edgeTable[cubeindex] & 8)
 		vertlist[3] =
-		VertexInterp(isolevel, cell.p[3], cell.p[0], cell.val[3], cell.val[0]);
+		getInterpolatedPosition(isolevel, cell.position[3], cell.position[0], cell.value[3], cell.value[0]);
 	if (edgeTable[cubeindex] & 16)
 		vertlist[4] =
-		VertexInterp(isolevel, cell.p[4], cell.p[5], cell.val[4], cell.val[5]);
+		getInterpolatedPosition(isolevel, cell.position[4], cell.position[5], cell.value[4], cell.value[5]);
 	if (edgeTable[cubeindex] & 32)
 		vertlist[5] =
-		VertexInterp(isolevel, cell.p[5], cell.p[6], cell.val[5], cell.val[6]);
+		getInterpolatedPosition(isolevel, cell.position[5], cell.position[6], cell.value[5], cell.value[6]);
 	if (edgeTable[cubeindex] & 64)
 		vertlist[6] =
-		VertexInterp(isolevel, cell.p[6], cell.p[7], cell.val[6], cell.val[7]);
+		getInterpolatedPosition(isolevel, cell.position[6], cell.position[7], cell.value[6], cell.value[7]);
 	if (edgeTable[cubeindex] & 128)
 		vertlist[7] =
-		VertexInterp(isolevel, cell.p[7], cell.p[4], cell.val[7], cell.val[4]);
+		getInterpolatedPosition(isolevel, cell.position[7], cell.position[4], cell.value[7], cell.value[4]);
 	if (edgeTable[cubeindex] & 256)
 		vertlist[8] =
-		VertexInterp(isolevel, cell.p[0], cell.p[4], cell.val[0], cell.val[4]);
+		getInterpolatedPosition(isolevel, cell.position[0], cell.position[4], cell.value[0], cell.value[4]);
 	if (edgeTable[cubeindex] & 512)
 		vertlist[9] =
-		VertexInterp(isolevel, cell.p[1], cell.p[5], cell.val[1], cell.val[5]);
+		getInterpolatedPosition(isolevel, cell.position[1], cell.position[5], cell.value[1], cell.value[5]);
 	if (edgeTable[cubeindex] & 1024)
 		vertlist[10] =
-		VertexInterp(isolevel, cell.p[2], cell.p[6], cell.val[2], cell.val[6]);
+		getInterpolatedPosition(isolevel, cell.position[2], cell.position[6], cell.value[2], cell.value[6]);
 	if (edgeTable[cubeindex] & 2048)
 		vertlist[11] =
-		VertexInterp(isolevel, cell.p[3], cell.p[7], cell.val[3], cell.val[7]);
+		getInterpolatedPosition(isolevel, cell.position[3], cell.position[7], cell.value[3], cell.value[7]);
 
 	/* Create the triangle */
 	int ntriang = 0;
@@ -116,3 +115,25 @@ int MarchingCubesAlgo::march(const MCCell& cell, const double isolevel)
 	return(ntriang);
 }
 
+/*
+   Linearly interpolate the position where an isosurface cuts
+   an edge between two vertices, each with their own scalar value
+*/
+Vector3dd MarchingCubesAlgo::getInterpolatedPosition(double isolevel, const Vector3dd& p1, const Vector3dd& p2, double valp1, double valp2)
+{
+	double mu;
+	Vector3dd p;
+
+	if (::fabs(isolevel - valp1) < 0.00001)
+		return(p1);
+	if (::fabs(isolevel - valp2) < 0.00001)
+		return(p2);
+	if (::fabs(valp1 - valp2) < 0.00001)
+		return(p1);
+	mu = (isolevel - valp1) / (valp2 - valp1);
+	p.x = p1.x + mu * (p2.x - p1.x);
+	p.y = p1.y + mu * (p2.y - p1.y);
+	p.z = p1.z + mu * (p2.z - p1.z);
+
+	return(p);
+}
