@@ -3,19 +3,25 @@
 #include "../Math/Vector2d.h"
 #include "../Math/Box2d.h"
 
+#include "ShaderObjectRepository.h"
+
 #include <sstream>
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-bool OnScreenRenderer::build()
+bool OnScreenRenderer::build(ShaderObjectRepository& shaders)
 {
 	const auto vsSource = getBuildinVertexShaderSource();
 	const auto fsSource = getBuildinFragmentShaderSource();
-	bool b = shader.build(vsSource, fsSource);
+	const auto id = shaders.add(vsSource, fsSource);
+	if (id < 0) {
+		return false;
+	}
+	this->shader = shaders.findObjectById(id);
 	findLocation();
-	return b;
+	return true;
 }
 
 std::string OnScreenRenderer::getBuildinVertexShaderSource()
@@ -52,8 +58,8 @@ std::string OnScreenRenderer::getBuildinFragmentShaderSource()
 
 void OnScreenRenderer::findLocation()
 {
-	shader.findUniformLocation("texture");
-	shader.findAttribLocation("position");
+	shader->findUniformLocation("texture");
+	shader->findAttribLocation("position");
 }
 
 void OnScreenRenderer::render(const ITextureObject& texture)
@@ -63,19 +69,19 @@ void OnScreenRenderer::render(const ITextureObject& texture)
 
 	//glEnable(GL_DEPTH_TEST);
 
-	glUseProgram(shader.getId());
+	glUseProgram(shader->getId());
 
 	texture.bind();
 
-	glUniform1i(shader.getUniformLocation("texture"), texture.getId());
+	glUniform1i(shader->getUniformLocation("texture"), texture.getId());
 
-	glVertexAttribPointer(shader.getAttribLocation("position"), 2, GL_FLOAT, GL_FALSE, 0, positions.data());
+	glVertexAttribPointer(shader->getAttribLocation("position"), 2, GL_FLOAT, GL_FALSE, 0, positions.data());
 
 	glEnableVertexAttribArray(0);
 	glDrawArrays(GL_QUADS, 0, static_cast<GLsizei>(positions.size() / 2));
 	glDisableVertexAttribArray(0);
 
-	glBindFragDataLocation(shader.getId(), 0, "fragColor");
+	glBindFragDataLocation(shader->getId(), 0, "fragColor");
 
 	texture.unbind();
 	//glDisable(GL_DEPTH_TEST);

@@ -5,6 +5,7 @@
 #include "../Graphics/PointBuffer.h"
 #include "ITextureObject.h"
 #include "ShaderObject.h"
+#include "IShader.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -12,9 +13,9 @@ namespace Crystal {
 class OnScreenRenderer
 {
 public:
-	void render(const ITextureObject& texture);
+	bool build(ShaderObjectRepository& shaders);
 
-	bool build();
+	void render(const ITextureObject& texture);
 
 private:
 	std::string getBuildinVertexShaderSource();
@@ -24,7 +25,7 @@ private:
 	void findLocation();
 
 private:
-	ShaderObject shader;
+	ShaderObject* shader;
 };
 
 	}

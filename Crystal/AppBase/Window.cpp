@@ -145,7 +145,9 @@ bool Window::init()
 	//canvas->addUICommand(new CameraUICtrl());
 
 	Image image1(512, 512);
-	model->getShaders()->getTextures()->add(image1, "MainTexture");
+	const auto mainTextureId = model->getShaders()->getTextures()->add(image1, "MainTexture");
+	auto mainTexture = model->getShaders()->getTextures()->findObjectById(mainTextureId);
+	model->getShaders()->getTextures()->setOnScreenTexture(mainTexture);
 
 	Image image2(2,2);
 	image2.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));

@@ -23,7 +23,7 @@ bool Renderer::build(ShaderObjectRepository& shaders, TextureObjectRepository& t
 		return false;
 	}
 
-	if (!renderer.build()) {
+	if (!renderer.build(shaders)) {
 		return false;
 	}
 	return true;
@@ -42,10 +42,13 @@ void Renderer::render(const int width, const int height, const TextureObjectRepo
 	//glClearColor(0.0, 0.0, 1.0, 0.0);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	/*
 	if (showOffScreen) {
 		renderer.render(*objectIdRenderer.getTexture());// *tex);
 	}
 	else {
 		renderer.render(*tex);
 	}
+	*/
+	renderer.render(*textures.getOnScreenTexture());
 }
