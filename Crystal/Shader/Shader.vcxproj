@@ -167,6 +167,7 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ShaderAttribute.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
+    <ClCompile Include="ShaderObjectRepository.cpp" />
     <ClCompile Include="ShaderType.cpp" />
     <ClCompile Include="ShaderUniform.cpp" />
     <ClCompile Include="ShaderUnit.cpp" />

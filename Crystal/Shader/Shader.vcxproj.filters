@@ -113,6 +113,9 @@
     <ClCompile Include="ShaderUnit.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderObjectRepository.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

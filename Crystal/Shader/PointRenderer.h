@@ -13,13 +13,13 @@ namespace Crystal {
 class PointRenderer : public IShader
 {
 public:
+	bool build() override;
+
 	void findLocation();
 
 	void setBuffer(const Graphics::PointBuffer& buffer) { this->buffer = buffer; }
 
 	void render(const Graphics::ICamera& camera) override;
-
-	bool build() override;
 
 private:
 	std::string getBuildinVertexShaderSource() const;

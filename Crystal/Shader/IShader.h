@@ -5,15 +5,15 @@
 namespace Crystal {
 	namespace Shader {
 
-		class IShader
-		{
-		public:
-			virtual ~IShader() {}
+class IShader
+{
+public:
+	virtual ~IShader() {}
 
-			virtual void render(const Graphics::ICamera& camera) = 0;
+	virtual bool build() = 0;
 
-			virtual bool build() = 0;
-		};
+	virtual void render(const Graphics::ICamera& camera) = 0;
+};
 
 	}
 }
