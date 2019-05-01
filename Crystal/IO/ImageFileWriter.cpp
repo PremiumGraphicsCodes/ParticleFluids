@@ -1,39 +1,40 @@
 #include "ImageFileWriter.h"
 
-#define STB_IMAGE_IMPLEMENTATION
+#define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "../ThirdParty/stb/stb_image_write.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 
-bool ImageFileWriter::write(const std::string& filename, const Image& image)
+bool ImageFileWriter::write(const std::string& filename, const Image& image, const ImageFileWriter::ImageFileFormat format)
 {
-	/*
-	int width = 0;
-	int height = 0;
-	int bpp = 0;
-	const auto& pixels = stbi_write_bmp(filename.c_str(), &width, &height, &bpp, 0);
-	if (!(bpp == 3 || bpp == 4)) {
-		return false;
-	}
-	int i = 0;
-	image = Image(width, height);
+	const int width = image.getWidth();
+	const int height = image.getHeight();
+	//int bpp = 0;
+
+	std::vector<unsigned char> data;
 	for (int y = 0; y < height; ++y) {
 		for (int x = 0; x < width; ++x) {
-			const auto r = pixels[i];
-			const auto g = pixels[i + 1];
-			const auto b = pixels[i + 2];
-			if (bpp == 3) {
-				image.setColor(x, y, ColorRGBAuc(r, g, b, 255));
-			}
-			else if (bpp == 4) {
-				const auto a = pixels[i + 3];
-				image.setColor(x, y, ColorRGBAuc(r, g, b, a));
-			}
-			i += bpp;
+			const auto& c = image.getColor(x,y);
+			const auto r = c.r;
+			const auto g = c.g;
+			const auto b = c.b;
+			const auto a = c.a;
+			data.push_back(r);
+			data.push_back(g);
+			data.push_back(b);
+			data.push_back(a);
 		}
 	}
-	stbi_image_free(pixels);
-	*/
+
+	if (format == ImageFileFormat::BMP) {
+		stbi_write_bmp(filename.c_str(), width, height, 0, data.data());
+	}
+	else if (format == ImageFileFormat::JPG) {
+		stbi_write_jpg(filename.c_str(), width, height, 0, data.data(), 0);
+	}
+	else if (format == ImageFileFormat::PNG) {
+		stbi_write_png(filename.c_str(), width, height, 0, data.data(), 0);
+	}
 	return true;
 }

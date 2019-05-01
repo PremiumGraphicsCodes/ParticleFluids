@@ -8,7 +8,14 @@ namespace Crystal {
 class ImageFileWriter
 {
 public:
-	bool write(const std::string& filename, const Graphics::Image& image);
+	enum class ImageFileFormat
+	{
+		BMP,
+		PNG,
+		JPG,
+	};
+
+	bool write(const std::string& filename, const Graphics::Image& image, const ImageFileFormat format);
 private:
 };
 
