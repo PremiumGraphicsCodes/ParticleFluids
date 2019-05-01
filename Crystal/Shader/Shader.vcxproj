@@ -146,8 +146,10 @@
     <ClInclude Include="ShaderAttribute.h" />
     <ClInclude Include="ShaderObject.h" />
     <ClInclude Include="OpenGLObjectRepository.h" />
+    <ClInclude Include="ShaderObjectRepository.h" />
     <ClInclude Include="ShaderType.h" />
     <ClInclude Include="ShaderUniform.h" />
+    <ClInclude Include="ShaderUnit.h" />
     <ClInclude Include="SmoothRenderer.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="TextureObjectRepository.h" />
@@ -167,6 +169,7 @@
     <ClCompile Include="ShaderObject.cpp" />
     <ClCompile Include="ShaderType.cpp" />
     <ClCompile Include="ShaderUniform.cpp" />
+    <ClCompile Include="ShaderUnit.cpp" />
     <ClCompile Include="SmoothRenderer.cpp" />
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="TextureObjectRepository.cpp" />

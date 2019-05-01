@@ -2,6 +2,7 @@
 
 #include "../Util/UnCopyable.h"
 #include "TextureObjectRepository.h"
+#include "ShaderObjectRepository.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -19,8 +20,11 @@ public:
 
 	TextureObjectRepository* getTextures() { return &textures; }
 
+	ShaderObjectRepository* getShaders() { return &shaders; }
+
 private:
 	TextureObjectRepository textures;
+	ShaderObjectRepository shaders;
 };
 
 	}

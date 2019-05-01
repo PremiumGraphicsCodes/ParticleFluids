@@ -55,6 +55,12 @@
     <ClInclude Include="OpenGLObjectRepository.h">
       <Filter>Repository</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderObjectRepository.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUnit.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
@@ -103,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="TriangleRenderer.cpp">
       <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderUnit.cpp">
+      <Filter>Shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
