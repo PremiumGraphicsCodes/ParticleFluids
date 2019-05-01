@@ -2,7 +2,7 @@
 
 #include "../Model/ObjectRepository.h"
 #include "../Model/AppearanceObjectRepository.h"
-#include "../Shader/ShaderRepository.h"
+#include "../Shader/OpenGLObjectRepository.h"
 #include "ViewModel.h"
 
 #include "../Util/UnCopyable.h"
@@ -29,7 +29,7 @@ public:
 
 	Model::AppearanceObjectRepository* getAppearances() { return &appearances; }
 
-	Shader::ShaderObjectRepository* getShaders() { return &shaders; }
+	Shader::OpenGLObjectRepository* getShaders() { return &shaders; }
 
 	ViewModel toViewModel();
 
@@ -39,7 +39,7 @@ private:
 	Model::ObjectRepository objects;
 	Model::ObjectRepository items;
 	Model::AppearanceObjectRepository appearances;
-	Shader::ShaderObjectRepository shaders;
+	Shader::OpenGLObjectRepository shaders;
 
 };
 	}

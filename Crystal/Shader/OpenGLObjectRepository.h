@@ -6,13 +6,13 @@
 namespace Crystal {
 	namespace Shader {
 
-class ShaderObjectRepository : private UnCopyable
+class OpenGLObjectRepository : private UnCopyable
 {
 public:
-	ShaderObjectRepository()
+	OpenGLObjectRepository()
 	{}
 
-	~ShaderObjectRepository()
+	~OpenGLObjectRepository()
 	{}
 
 	void clear();

@@ -145,7 +145,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ShaderAttribute.h" />
     <ClInclude Include="ShaderObject.h" />
-    <ClInclude Include="ShaderRepository.h" />
+    <ClInclude Include="OpenGLObjectRepository.h" />
     <ClInclude Include="ShaderType.h" />
     <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="SmoothRenderer.h" />

@@ -3,9 +3,6 @@
   <ItemGroup>
     <ClInclude Include="IShader.h" />
     <ClInclude Include="DepthBuffer.h" />
-    <ClInclude Include="ShaderRepository.h">
-      <Filter>Repository</Filter>
-    </ClInclude>
     <ClInclude Include="TextureObjectRepository.h">
       <Filter>Repository</Filter>
     </ClInclude>
@@ -54,6 +51,9 @@
     </ClInclude>
     <ClInclude Include="TriangleRenderer.h">
       <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLObjectRepository.h">
+      <Filter>Repository</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
