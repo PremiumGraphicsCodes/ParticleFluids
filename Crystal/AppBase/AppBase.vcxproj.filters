@@ -391,7 +391,6 @@
     <ClInclude Include="ImageView.h">
       <Filter>Appearance\Image</Filter>
     </ClInclude>
-    <ClInclude Include="FileSelectView.h" />
     <ClInclude Include="ShaderPanel.h">
       <Filter>Shader</Filter>
     </ClInclude>
@@ -401,6 +400,7 @@
     <ClInclude Include="LightEditView.h">
       <Filter>Appearance\Light</Filter>
     </ClInclude>
+    <ClInclude Include="FileOpenView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

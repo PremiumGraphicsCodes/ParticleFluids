@@ -9,10 +9,10 @@
 namespace Crystal {
 	namespace UI {
 
-class FileSelectView : public IWindow
+class FileOpenView : public IWindow
 {
 public:
-	explicit FileSelectView(const std::string& name) :
+	explicit FileOpenView(const std::string& name) :
 		IWindow(name)
 	{}
 

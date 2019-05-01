@@ -86,7 +86,7 @@
     <ClInclude Include="Cylinder3dView.h" />
     <ClInclude Include="DoubleView.h" />
     <ClInclude Include="FileMenu.h" />
-    <ClInclude Include="FileSelectView.h" />
+    <ClInclude Include="FileOpenView.h" />
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />
     <ClInclude Include="ImageAddButton.h" />
