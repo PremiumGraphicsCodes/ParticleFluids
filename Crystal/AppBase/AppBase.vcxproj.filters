@@ -401,6 +401,7 @@
       <Filter>Appearance\Light</Filter>
     </ClInclude>
     <ClInclude Include="FileOpenView.h" />
+    <ClInclude Include="FileSaveView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

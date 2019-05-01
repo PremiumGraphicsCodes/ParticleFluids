@@ -1,4 +1,5 @@
 #include "TextureAddButton.h"
+#include "FileOpenView.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
@@ -13,6 +14,12 @@ TextureAddButton::TextureAddButton(const std::string& name, Repository* model, C
 void TextureAddButton::onShow()
 {
 	texture.show();
+	if (ImGui::Button("File")) {
+		FileOpenView view("");
+		view.addFilter("*.bmp");
+		view.addFilter("*.png");
+		view.show();
+	}
 }
 
 void TextureAddButton::onOk()
@@ -26,4 +33,9 @@ void TextureAddButton::onOk()
 	getModel()->getShaders()->getTextures()->add(image, name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
+}
+
+void TextureAddButton::onCancel()
+{
+
 }

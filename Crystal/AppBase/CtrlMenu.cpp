@@ -22,8 +22,10 @@ void CtrlMenu::show()
 		if (ImGui::MenuItem("Pick")) {
 			canvas->setUICtrl(new PickUICtrl(model, canvas, ObjectType::All));
 		}
+		/*
 		if (ImGui::MenuItem("Rect")) {
 		}
+		*/
 
 		ImGui::EndMenu();
 	}

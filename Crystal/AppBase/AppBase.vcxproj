@@ -87,6 +87,7 @@
     <ClInclude Include="DoubleView.h" />
     <ClInclude Include="FileMenu.h" />
     <ClInclude Include="FileOpenView.h" />
+    <ClInclude Include="FileSaveView.h" />
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />
     <ClInclude Include="ImageAddButton.h" />

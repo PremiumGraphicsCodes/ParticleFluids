@@ -4,6 +4,7 @@
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 #include "FileOpenView.h"
+#include "FileSaveView.h"
 
 using namespace Crystal::UI;
 
@@ -29,9 +30,12 @@ void FileMenu::show()
 			//canvas->update();
 		}
 		if (ImGui::MenuItem("Save")) {
-			char const * lFilterPatterns[2] = { "*.stl", "*.obj" };
-			const auto filename = tinyfd_saveFileDialog("Save", "", 2, lFilterPatterns, nullptr);
-			if (filename != nullptr) {
+			FileSaveView view("");
+			view.addFilter("*.stl");
+			view.addFilter("*.obj");
+			view.show();
+			const auto& filename = view.getFileName();
+			if (!filename.empty()) {
 				model->write(filename);
 			}
 			//model->write(filename);
