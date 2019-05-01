@@ -14,12 +14,12 @@ Renderer::Renderer(Crystal::Graphics::ICamera* camera) :
 {
 }
 
-bool Renderer::build(TextureObjectRepository& textures)
+bool Renderer::build(ShaderObjectRepository& shaders, TextureObjectRepository& textures)
 {
-	if (!objectRenderer.build()) {
+	if (!objectRenderer.build(shaders)) {
 		return false;
 	}
-	if (!objectIdRenderer.build(textures)) {
+	if (!objectIdRenderer.build(shaders, textures)) {
 		return false;
 	}
 

@@ -25,7 +25,7 @@ public:
 
 	~ObjectIdRenderer() {}
 
-	bool build(Shader::TextureObjectRepository& textures);
+	bool build(Shader::ShaderObjectRepository& shaders, Shader::TextureObjectRepository& textures);
 
 	void render();
 

@@ -13,7 +13,7 @@ namespace Crystal {
 class PointRenderer : public IShader
 {
 public:
-	bool build() override;
+	bool build(ShaderObjectRepository& shaders) override;
 
 	void findLocation();
 
@@ -27,7 +27,7 @@ private:
 	std::string getBuildinFragmentShaderSource() const;
 
 private:
-	ShaderObject shader;
+	ShaderObject* shader;
 	Graphics::PointBuffer buffer;
 };
 

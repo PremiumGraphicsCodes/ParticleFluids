@@ -2,6 +2,8 @@
 
 #include "../Graphics/Image.h"
 
+#include <experimental/filesystem>
+
 namespace Crystal {
 	namespace IO {
 
@@ -15,7 +17,9 @@ public:
 		JPG,
 	};
 
-	bool write(const std::string& filename, const Graphics::Image& image, const ImageFileFormat format);
+	//bool write(const std::experimental::filesystem::path& filePath, const Graphics::Image& image);
+
+	bool write(const std::experimental::filesystem::path& filePath, const Graphics::Image& image, const ImageFileFormat format);
 private:
 };
 

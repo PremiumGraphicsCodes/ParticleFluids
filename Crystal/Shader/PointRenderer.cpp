@@ -1,4 +1,5 @@
 #include "PointRenderer.h"
+#include "ShaderObjectRepository.h"
 #include "gl/glew.h"
 
 #include <sstream>
@@ -6,13 +7,17 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-bool PointRenderer::build()
+bool PointRenderer::build(ShaderObjectRepository& shaders)
 {
 	const auto vsSource = getBuildinVertexShaderSource();
 	const auto fsSource = getBuildinFragmentShaderSource();
-	bool b = shader.build(vsSource, fsSource);
+	int id = shaders.add(vsSource, fsSource);
+	if (id < 0) {
+		return false;
+	}
+	this->shader = shaders.findObjectById(id);
 	findLocation();
-	return b;
+	return true;
 }
 
 std::string PointRenderer::getBuildinVertexShaderSource() const
@@ -56,12 +61,12 @@ std::string PointRenderer::getBuildinFragmentShaderSource() const
 
 void PointRenderer::findLocation()
 {
-	shader.findUniformLocation("projectionMatrix");
-	shader.findUniformLocation("modelviewMatrix");
+	shader->findUniformLocation("projectionMatrix");
+	shader->findUniformLocation("modelviewMatrix");
 
-	shader.findAttribLocation("position");
-	shader.findAttribLocation("color");
-	shader.findAttribLocation("pointSize");
+	shader->findAttribLocation("position");
+	shader->findAttribLocation("color");
+	shader->findAttribLocation("pointSize");
 }
 
 void PointRenderer::render(const ICamera& camera)
@@ -84,14 +89,14 @@ void PointRenderer::render(const ICamera& camera)
 
 	//glEnable(GL_DEPTH_TEST);
 
-	glUseProgram(shader.getId());
+	glUseProgram(shader->getId());
 
-	glUniformMatrix4fv(shader.getUniformLocation("projectionMatrix"), 1, GL_FALSE, &projectionMatrix[0][0]);
-	glUniformMatrix4fv(shader.getUniformLocation("modelviewMatrix"), 1, GL_FALSE, &modelviewMatrix[0][0]);
+	glUniformMatrix4fv(shader->getUniformLocation("projectionMatrix"), 1, GL_FALSE, &projectionMatrix[0][0]);
+	glUniformMatrix4fv(shader->getUniformLocation("modelviewMatrix"), 1, GL_FALSE, &modelviewMatrix[0][0]);
 
-	glVertexAttribPointer(shader.getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
-	glVertexAttribPointer(shader.getAttribLocation("color"), 4, GL_FLOAT, GL_FALSE, 0, colors.data());
-	glVertexAttribPointer(shader.getAttribLocation("pointSize"), 1, GL_FLOAT, GL_FALSE, 0, sizes.data());
+	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
+	glVertexAttribPointer(shader->getAttribLocation("color"), 4, GL_FLOAT, GL_FALSE, 0, colors.data());
+	glVertexAttribPointer(shader->getAttribLocation("pointSize"), 1, GL_FLOAT, GL_FALSE, 0, sizes.data());
 
 
 	//const auto positions = buffer.getPositions();
@@ -105,7 +110,7 @@ void PointRenderer::render(const ICamera& camera)
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(0);
 
-	glBindFragDataLocation(shader.getId(), 0, "fragColor");
+	glBindFragDataLocation(shader->getId(), 0, "fragColor");
 
 	glDisable(GL_DEPTH_TEST);
 

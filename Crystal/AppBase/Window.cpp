@@ -155,7 +155,7 @@ bool Window::init()
 	model->getShaders()->getTextures()->add(image2, "SampleTexture");
 
 	auto textures = model->getShaders()->getTextures();
-	canvas->build(*textures);
+	canvas->build(*model->getShaders()->getShaders(), *textures);
 
 	return true;
 }

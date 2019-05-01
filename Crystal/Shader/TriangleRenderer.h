@@ -12,13 +12,13 @@ namespace Crystal {
 class TriangleRenderer : public IShader
 {
 public:
+	bool build(ShaderObjectRepository& shaders) override;
+
 	void findLocation();
 
 	void setBuffer(const Graphics::LineBuffer& buffer) { this->buffer = buffer; }
 
 	void render(const Graphics::ICamera& camera) override;
-
-	bool build() override;
 
 private:
 
@@ -27,7 +27,7 @@ private:
 	std::string getBuildinFragmentShaderSource() const;
 
 private:
-	ShaderObject shader;
+	ShaderObject* shader;
 	Graphics::LineBuffer buffer;
 };
 

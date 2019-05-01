@@ -28,7 +28,7 @@ public:
 
 	virtual ~Canvas() {}
 
-	void build(Shader::TextureObjectRepository& textures);
+	void build(Shader::ShaderObjectRepository& shaders, Shader::TextureObjectRepository& textures);
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 

@@ -23,7 +23,7 @@ public:
 
 	~Renderer() {}
 
-	bool build(Shader::TextureObjectRepository& textures);
+	bool build(Shader::ShaderObjectRepository& shaders, Shader::TextureObjectRepository& textures);
 
 	void render(const int width, const int height, const Shader::TextureObjectRepository& textures);
 

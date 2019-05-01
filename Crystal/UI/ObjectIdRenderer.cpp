@@ -5,15 +5,15 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::UI;
 
-bool ObjectIdRenderer::build(TextureObjectRepository& textures)
+bool ObjectIdRenderer::build(ShaderObjectRepository& shaders, TextureObjectRepository& textures)
 {
-	if (!pointIdRenderer.build()) {
+	if (!pointIdRenderer.build(shaders)) {
 		return false;
 	}
-	if (!lineIdRenderer.build()) {
+	if (!lineIdRenderer.build(shaders)) {
 		return false;
 	}
-	if (!triangleIdRenderer.build()) {
+	if (!triangleIdRenderer.build(shaders)) {
 		return false;
 	}
 

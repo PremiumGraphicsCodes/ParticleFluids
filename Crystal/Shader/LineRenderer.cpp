@@ -1,19 +1,23 @@
 #include "LineRenderer.h"
-
+#include "ShaderObjectRepository.h"
 #include <sstream>
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
 
-bool LineRenderer::build()
+bool LineRenderer::build(ShaderObjectRepository& shaders)
 {
 	const auto& vShader = getBuildinVertexShaderSource();
 	const auto& fShader = getBuildinFragmentShaderSource();
 
-	bool result = shader.build(vShader, fShader);
+	const auto id = shaders.add(vShader, fShader);
+	if (id < 0) {
+		return false;
+	}
+	this->shader = shaders.findObjectById(id);
 	findLocation();
-	return result;
+	return true;
 }
 
 std::string LineRenderer::getBuildinVertexShaderSource() const
@@ -50,11 +54,11 @@ std::string LineRenderer::getBuildinFragmentShaderSource() const
 
 void LineRenderer::findLocation()
 {
-	shader.findUniformLocation("projectionMatrix");
-	shader.findUniformLocation("modelviewMatrix");
+	shader->findUniformLocation("projectionMatrix");
+	shader->findUniformLocation("modelviewMatrix");
 
-	shader.findAttribLocation("position");
-	shader.findAttribLocation("color");
+	shader->findAttribLocation("position");
+	shader->findAttribLocation("color");
 }
 
 void LineRenderer::render(const ICamera& camera)
@@ -76,13 +80,13 @@ void LineRenderer::render(const ICamera& camera)
 	glLineWidth(width);
 
 
-	glUseProgram(shader.getId());
+	glUseProgram(shader->getId());
 
-	glUniformMatrix4fv(shader.getUniformLocation("projectionMatrix"), 1, GL_FALSE, &projectionMatrix[0][0]);
-	glUniformMatrix4fv(shader.getUniformLocation("modelviewMatrix"), 1, GL_FALSE, &modelviewMatrix[0][0]);
+	glUniformMatrix4fv(shader->getUniformLocation("projectionMatrix"), 1, GL_FALSE, &projectionMatrix[0][0]);
+	glUniformMatrix4fv(shader->getUniformLocation("modelviewMatrix"), 1, GL_FALSE, &modelviewMatrix[0][0]);
 
-	glVertexAttribPointer(shader.getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
-	glVertexAttribPointer(shader.getAttribLocation("color"), 4, GL_FLOAT, GL_FALSE, 0, colors.data());
+	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
+	glVertexAttribPointer(shader->getAttribLocation("color"), 4, GL_FLOAT, GL_FALSE, 0, colors.data());
 
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
@@ -92,7 +96,7 @@ void LineRenderer::render(const ICamera& camera)
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(0);
 
-	glBindFragDataLocation(shader.getId(), 0, "fragColor");
+	glBindFragDataLocation(shader->getId(), 0, "fragColor");
 
 	glUseProgram(0);
 

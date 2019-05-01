@@ -8,12 +8,12 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::UI;
 
-bool ObjectRenderer::build()
+bool ObjectRenderer::build(ShaderObjectRepository& shaders)
 {
-	if (!pointRenderer.build()) {
+	if (!pointRenderer.build(shaders)) {
 		return false;
 	}
-	if (!wireRenderer.build()) {
+	if (!wireRenderer.build(shaders)) {
 		return false;
 	}
 	if (!smoothRenderer.build()) {

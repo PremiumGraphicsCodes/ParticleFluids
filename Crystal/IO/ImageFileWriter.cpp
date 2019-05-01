@@ -6,8 +6,20 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 
-bool ImageFileWriter::write(const std::string& filename, const Image& image, const ImageFileWriter::ImageFileFormat format)
+/*
+bool ImageFileWriter::write(const std::experimental::filesystem::path& filePath, const Image& image)
 {
+	const auto& extension = filePath.extension();
+	if (extension == ".bmp") {
+		return write(filePath, image, ImageFileFormat::BMP);
+	}
+}
+*/
+
+bool ImageFileWriter::write(const std::experimental::filesystem::path& filePath, const Image& image, const ImageFileWriter::ImageFileFormat format)
+{
+	const auto& filename = filePath.filename().string();
+
 	const int width = image.getWidth();
 	const int height = image.getHeight();
 	//int bpp = 0;

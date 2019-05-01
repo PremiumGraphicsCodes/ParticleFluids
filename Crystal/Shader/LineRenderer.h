@@ -12,6 +12,8 @@ namespace Crystal {
 class LineRenderer : public IShader
 {
 public:
+	bool build(ShaderObjectRepository& shaders) override;
+
 	void findLocation();
 
 	void setBuffer(const Graphics::LineBuffer& buffer, const float width) {
@@ -21,8 +23,6 @@ public:
 
 	void render(const Graphics::ICamera& camera) override;
 
-	bool build() override;
-
 private:
 
 	std::string getBuildinVertexShaderSource() const;
@@ -30,7 +30,7 @@ private:
 	std::string getBuildinFragmentShaderSource() const;
 
 private:
-	ShaderObject shader;
+	ShaderObject* shader;
 	Graphics::LineBuffer buffer;
 	float width;
 };
