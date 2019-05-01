@@ -9,13 +9,26 @@ using namespace Crystal::Algo;
 
 MarchingCubesButton::MarchingCubesButton(Repository* model, Canvas* canvas) :
 	IPopupButton("MarchingCubes", model, canvas),
-	objectButton1("ParticleSystem", model, canvas, Model::ObjectType::ParticleSystemObject)
+	objectButton1("ParticleSystem", model, canvas, Model::ObjectType::ParticleSystemObject),
+	values({
+		DoubleView("Value0", 0),
+		DoubleView("Value1", 100),
+		DoubleView("Value2", 0),
+		DoubleView("Value3", 0),
+		DoubleView("Value4", 0),
+		DoubleView("Value5", 0),
+		DoubleView("Value6", 0),
+		DoubleView("Value7", 0),
+		})
 {
 }
 
 void MarchingCubesButton::onShow()
 {
 	objectButton1.show();
+	for (auto& v : values) {
+		v.show();
+	}
 }
 
 void MarchingCubesButton::onOk()
@@ -30,14 +43,9 @@ void MarchingCubesButton::onOk()
 	cell.position[6] = Vector3dd(1, 1, 1);
 	cell.position[7] = Vector3dd(0, 1, 1);
 
-	cell.value[0] = 0.0;
-	cell.value[1] = 100.0;
-	cell.value[2] = 0.0;
-	cell.value[3] = 0.0;
-	cell.value[4] = 0.0;
-	cell.value[5] = 0.0;
-	cell.value[6] = 0.0;
-	cell.value[7] = 0.0;
+	for (int i = 0; i < 8; ++i) {
+		cell.value[i] = values[i].getValue();
+	}
 
 	MarchingCubesAlgo algo;
 	algo.march(cell, 50.0);

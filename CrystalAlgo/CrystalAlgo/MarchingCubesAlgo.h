@@ -16,18 +16,14 @@ public:
 		double value[8];
 	};
 
-	int build(const Volume3d& volume);
+	int build(const Volume3d& volume, const double isoLevel);
 
-	int march(const MCCell& cell, const double isolevel);
+	int march(const MCCell& cell, const double isoLevel);
 
 	std::vector<Math::Triangle3d> getTriangles() const { return triangles; }
 
 private:
-	/*
-	Linearly interpolate the position where an isosurface cuts
-	an edge between two vertices, each with their own scalar value
-	*/
-	Math::Vector3dd getInterpolatedPosition(double isolevel, const Math::Vector3dd& p1, const Math::Vector3dd& p2, double valp1, double valp2);
+	Math::Vector3dd getInterpolatedPosition(const double isolevel, const Math::Vector3dd& p1, const Math::Vector3dd& p2, const double valp1, const double valp2);
 
 	std::vector<Math::Triangle3d> triangles;
 };

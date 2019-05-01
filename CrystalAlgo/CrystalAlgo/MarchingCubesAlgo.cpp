@@ -9,7 +9,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::MarchingCubesTable;
 
-int MarchingCubesAlgo::build(const Volume3d& volume)
+int MarchingCubesAlgo::build(const Volume3d& volume, const double isoLevel)
 {
 	const auto unum = volume.getUNum();
 	const auto vnum = volume.getVNum();
@@ -22,12 +22,32 @@ int MarchingCubesAlgo::build(const Volume3d& volume)
 				cell.position[0] = volume.getPosition(i, j, k);
 				cell.value[0] = volume.getValue(i,j,k);
 
-				cell.position[1] = volume.getPosition(i + 1, j, k);
-				cell.value[1] = volume.getValue(i + 1, j, k);
+				cell.position[1] = volume.getPosition(i+1, j, k);
+				cell.value[1] = volume.getValue(i+1, j, k);
+
+				cell.position[2] = volume.getPosition(i+1, j+1, k);
+				cell.value[2] = volume.getValue(i+1, j+1, k);
+
+				cell.position[3] = volume.getPosition(i, j + 1, k);
+				cell.value[3] = volume.getValue(i, j+1, k);
+
+				cell.position[4] = volume.getPosition(i, j, k+1);
+				cell.value[4] = volume.getValue(i, j, k+1);
+
+				cell.position[5] = volume.getPosition(i + 1, j, k+1);
+				cell.value[5] = volume.getValue(i + 1, j, k+1);
+
+				cell.position[6] = volume.getPosition(i + 1, j + 1, k+1);
+				cell.value[6] = volume.getValue(i + 1, j + 1, k+1);
+
+				cell.position[7] = volume.getPosition(i, j + 1, k+1);
+				cell.value[7] = volume.getValue(i, j + 1, k+1);
+
+				march(cell, isoLevel);
 			}
 		}
 	}
-	return -1;
+	return triangles.size();
 }
 
 /*
@@ -115,25 +135,14 @@ int MarchingCubesAlgo::march(const MCCell& cell, const double isolevel)
 	return(ntriang);
 }
 
-/*
-   Linearly interpolate the position where an isosurface cuts
-   an edge between two vertices, each with their own scalar value
-*/
-Vector3dd MarchingCubesAlgo::getInterpolatedPosition(double isolevel, const Vector3dd& p1, const Vector3dd& p2, double valp1, double valp2)
+Vector3dd MarchingCubesAlgo::getInterpolatedPosition(const double isolevel, const Vector3dd& p1, const Vector3dd& p2, const double valp1, const double valp2)
 {
-	double mu;
-	Vector3dd p;
-
 	if (::fabs(isolevel - valp1) < 0.00001)
 		return(p1);
 	if (::fabs(isolevel - valp2) < 0.00001)
 		return(p2);
 	if (::fabs(valp1 - valp2) < 0.00001)
 		return(p1);
-	mu = (isolevel - valp1) / (valp2 - valp1);
-	p.x = p1.x + mu * (p2.x - p1.x);
-	p.y = p1.y + mu * (p2.y - p1.y);
-	p.z = p1.z + mu * (p2.z - p1.z);
-
-	return(p);
+	const auto mu = (isolevel - valp1) / (valp2 - valp1);
+	return p1 + mu * (p2 - p1);
 }
