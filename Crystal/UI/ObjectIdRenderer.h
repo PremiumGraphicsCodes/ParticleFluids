@@ -7,6 +7,7 @@
 #include "../Shader/TriangleRenderer.h"
 
 #include "../Shader/FrameBufferObject.h"
+#include "../Shader/TextureObjectRepository.h"
 
 #include "../Util/UnCopyable.h"
 
@@ -17,14 +18,14 @@ namespace Crystal {
 class ObjectIdRenderer : private UnCopyable
 {
 public:
-	ObjectIdRenderer(Graphics::ICamera* camera) :
+	explicit ObjectIdRenderer(Graphics::ICamera* camera) :
 		camera(camera)
 	{
 	}
 
 	~ObjectIdRenderer() {}
 
-	bool build();
+	bool build(Shader::TextureObjectRepository& textures);
 
 	void render();
 
@@ -32,7 +33,7 @@ public:
 
 	void setViewModel(const ObjectIdViewModel& vm);
 
-	Shader::TextureObject* getTexture() { return &texture; }
+	Shader::TextureObject* getTexture() { return texture; }
 
 private:
 	Shader::PointRenderer pointIdRenderer;
@@ -40,7 +41,7 @@ private:
 	Shader::TriangleRenderer triangleIdRenderer;
 
 	Shader::FrameBufferObject frameBufferObject;
-	Shader::TextureObject texture;
+	Shader::TextureObject* texture;
 
 	Graphics::ICamera* camera;
 };

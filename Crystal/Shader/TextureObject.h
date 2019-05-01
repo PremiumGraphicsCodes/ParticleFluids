@@ -34,9 +34,12 @@ public:
 
 	void unbind() const override;
 
-	std::string getName() const { return "Texture01"; }
+	void setName(const std::string& name) { this->name = name; }
+
+	std::string getName() const { return name; }
 
 private:
+	std::string name;
 };
 
 

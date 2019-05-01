@@ -28,11 +28,11 @@ Canvas::Canvas(ICamera* camera) :
 	renderer.reset(new Renderer(camera));
 }
 
-void Canvas::build()
+void Canvas::build(TextureObjectRepository& textures)
 {
 	setUICtrl(new CameraUICtrl(getCamera()));
 
-	renderer->build();
+	renderer->build(textures);
 }
 
 void Canvas::render(const int width, const int height, const TextureObjectRepository& textures)

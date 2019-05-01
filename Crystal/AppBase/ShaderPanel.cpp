@@ -10,7 +10,7 @@ ShaderPanel::ShaderPanel(const std::string& name, Repository* model, Canvas* can
 	IPanel(name, model, canvas)
 {
 	add(new TextureAddButton("TextureAdd", model, canvas));
-	//add(new TextureTreeList("Textures", model, canvas));
+	add(new TextureTreeList("Textures", model, canvas));
 }
 
 

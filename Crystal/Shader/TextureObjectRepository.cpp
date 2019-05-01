@@ -6,7 +6,8 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
 TextureObjectRepository::TextureObjectRepository() :
-	nextId(1)
+	nextId(1),
+	onScreenTexture(nullptr)
 {
 }
 
@@ -25,11 +26,13 @@ void TextureObjectRepository::clear()
 	this->nextId = 1;
 }
 
-void TextureObjectRepository::add(const Image& image, const std::string& name)
+int TextureObjectRepository::add(const Image& image, const std::string& name)
 {
-	Crystal::Shader::TextureObject* texture = new Crystal::Shader::TextureObject();
+	auto texture = new Crystal::Shader::TextureObject();
 	texture->create(image, nextId++);
+	texture->setName(name);
 	textures.push_back(texture);
+	return texture->getId();
 }
 
 TextureObject* TextureObjectRepository::findObjectById(const int id) const

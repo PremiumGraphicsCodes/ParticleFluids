@@ -143,7 +143,6 @@ bool Window::init()
 	glfwSetCursorPosCallback(window, onMouseMove);
 
 	//canvas->addUICommand(new CameraUICtrl());
-	canvas->build();
 
 	Image image1(512, 512);
 	model->getShaders()->getTextures()->add(image1, "MainTexture");
@@ -154,6 +153,9 @@ bool Window::init()
 	image2.setColor(0, 1, ColorRGBAuc(0, 0, 255, 0));
 	image2.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
 	model->getShaders()->getTextures()->add(image2, "SampleTexture");
+
+	auto textures = model->getShaders()->getTextures();
+	canvas->build(*textures);
 
 	return true;
 }
