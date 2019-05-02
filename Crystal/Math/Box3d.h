@@ -8,6 +8,7 @@ namespace Crystal {
 		class Space3d;
 		class Quad3d;
 		class Line3d;
+		class Sphere3d;
 
 class Box3d
 {
@@ -54,10 +55,6 @@ public:
 
 	Vector3dd getLength() const { return Vector3dd(end.x - getMinX(), end.y - getMinY(), end.z - getMinZ()); }
 
-	bool isValid() const { return (getMinX() <= end.x) && (getMinY() <= end.y) && (getMinZ() <= end.z); }
-
-	bool isShirinked() const { return (getMinX() == end.x) && (getMinY() == end.y) && (getMinZ() == end.z); }
-
 	bool isSame(const Box3d& rhs, const double tolerance) const;
 
 	bool hasIntersection(const Box3d& rhs) const;
@@ -65,6 +62,8 @@ public:
 	Box3d getOverlapped(const Box3d& rhs) const;
 
 	Vector3dd getPosition(const Vector3dd& param) const;
+
+	Sphere3d getBoundintSphere() const;
 
 private:
 	Vector3dd start;

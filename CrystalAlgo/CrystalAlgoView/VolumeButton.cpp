@@ -1,6 +1,7 @@
 #include "VolumeButton.h"
 
 #include "../CrystalAlgo/Volume.h"
+#include "../../Crystal/Math/Gaussian.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Model;
@@ -20,10 +21,15 @@ void VolumeButton::onShow()
 
 void VolumeButton::onOk()
 {
-	/*
-	Math::Box3d box;
-	Volume volume(32, 32, 32, box);
+	Volume volume(32, 32, 32, box.getValue());
 
+	auto function = [](double distance) {
+		Gaussian gaussian;
+		return gaussian.getValue(distance);
+	};
+	volume.add(function);
+
+	/*
 	VolumeConverter converter;
 	//converter.convert(volume, );
 

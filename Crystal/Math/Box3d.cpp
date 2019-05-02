@@ -1,4 +1,5 @@
 #include "Box3d.h"
+#include "Sphere3d.h"
 
 using namespace Crystal::Math;
 
@@ -23,7 +24,7 @@ Box3d::Box3d(const Vector3dd& pointX, const Vector3dd& pointY)
 	const auto endY = std::max<double>(pointX.y, pointY.y);
 	const auto endZ = std::max<double>(pointX.z, pointY.z);
 	this->end = Vector3dd(endX, endY, endZ);
-	assert(isValid());
+//	assert(isValid());
 }
 
 void Box3d::add(const Vector3dd& v)
@@ -121,4 +122,11 @@ Vector3dd Box3d::getPosition(const Vector3dd& param) const
 	const auto y = start.y + length.y * param.y;
 	const auto z = start.z + length.z * param.z;
 	return Vector3dd(x, y, z);
+}
+
+Sphere3d Box3d::getBoundintSphere() const
+{
+	const auto& halfLength = getLength() * 0.5;
+	const auto radius = glm::length(halfLength);
+	return Sphere3d(getCenter(), radius);
 }

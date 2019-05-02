@@ -1,5 +1,7 @@
 #include "Volume.h"
 
+#include "../../Crystal/Math/Sphere3d.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Algo;
@@ -31,11 +33,12 @@ Volume::Volume(const int unum, const int vnum, const int wnum, const Box3d& box)
 void Volume::add(const std::function<double(double)>& function)
 {
 	const auto& center = getBoundingBox().getCenter();
+	const auto radius = getBoundingBox().getBoundintSphere().getRadius();
 	for (auto& u : nodes) {
 		for (auto& v : u) {
 			for (auto& w : v) {
-				auto distance = glm::distance( w.getPosition(), center );
-				auto value = function(distance);
+				const auto distance = glm::distance( w.getPosition(), center ) / radius;
+				const auto value = function(distance);
 				w.setAttribute(w.getAttribute() + value);
 			}
 		}
