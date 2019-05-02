@@ -37,20 +37,6 @@ TEST(Box3dTest, TestGetLength)
 	EXPECT_EQ(Vector3dd(0.0, 1.0, 2.0), box.getLength());
 }
 
-TEST(Box3dTest, TestIsShrinked)
-{
-	const Box3d box1(Vector3dd(0, 0, 0), Vector3dd(0, 0, 0));
-	const Box3d box2(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
-	EXPECT_TRUE(box1.isShirinked());
-	EXPECT_FALSE(box2.isShirinked());
-}
-
-TEST(Box3dTest, TestIsValid)
-{
-	EXPECT_TRUE(Box3d(Vector3dd(0, 0, 0), Vector3dd(0, 0, 0)).isValid());
-	EXPECT_TRUE(Box3d(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1)).isValid());
-}
-
 TEST(Box3dTest, TestHasIntersection)
 {
 	EXPECT_FALSE(Box3d(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1)).hasIntersection(Box3d(Vector3dd(2, 2, 2), Vector3dd(4, 4, 4))));
