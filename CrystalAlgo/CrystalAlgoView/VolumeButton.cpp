@@ -2,8 +2,11 @@
 
 #include "../CrystalAlgo/Volume.h"
 #include "../../Crystal/Math/Gaussian.h"
+#include "../../Crystal/Graphics/ColorMap.h"
+#include "../../Crystal/Graphics/ColorHSV.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
@@ -31,18 +34,31 @@ void VolumeButton::onOk()
 
 
 	const auto& particles = volume.toParticles();
-	std::vector<Vector3df> positions;
 	std::vector<double> values;
 	for (const auto& p : particles) {
-		positions.push_back(p.getPosition());
 		values.push_back(p.getAttribute());
 	}
-	const auto minValue = std::min_element(values.begin(), values.end());
-	const auto maxValue = std::max_element(values.begin(), values.end());
-	ParticleAttribute attr;
-	attr.color = glm::vec4(1, 0, 0, 0);
-	attr.size = 1.0;
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "VolumeConverter");
+	const auto minValue = *std::min_element(values.begin(), values.end());
+	const auto maxValue = *std::max_element(values.begin(), values.end());
+
+	ColorMap colorMap(minValue, maxValue, 360);
+	for (int i = 0; i < 360; ++i) {
+		ColorHSV hsv(i, 1.0, 1.0);
+		colorMap.setColor(i, hsv.toColorRGBA());
+	}
+
+	std::vector<Vector3df> positions;
+	std::vector<ParticleAttribute> attrs;
+	for (const auto& p : particles) {
+		positions.push_back(p.getPosition());
+		const auto value = p.getAttribute();
+		ParticleAttribute attr;
+		attr.color = colorMap.getColor(value);
+		attr.size = 1.0;
+		attrs.push_back(attr);
+	}
+
+	getModel()->getObjects()->getParticleSystems()->addObject(positions, attrs, "VolumeConverter");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 }
 

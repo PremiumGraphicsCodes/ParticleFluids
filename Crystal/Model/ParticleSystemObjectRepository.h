@@ -20,6 +20,8 @@ public:
 
 	int addObject(const std::vector<Math::Vector3df>& positions, const ParticleAttribute& attribute, const std::string& name);
 
+	int addObject(const std::vector<Math::Vector3df>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
+
 	ParticleSystemObject* findObjectById(const int id) const;
 
 	std::list<ParticleSystemObject*> getObjects() const { return objects; }

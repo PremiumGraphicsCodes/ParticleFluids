@@ -41,6 +41,18 @@ int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& posi
 	return objects.back()->getId();
 }
 
+int ParticleSystemObjectRepository::addObject(const std::vector<Vector3df>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
+{
+	assert(positions.size() == attributes.size());
+	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
+	for (int i = 0; i < positions.size(); ++i) {
+		particles->add(positions[i], attributes[i]);
+	}
+	objects.push_back(new ParticleSystemObject(getNextId(), name, particles));
+	return objects.back()->getId();
+
+}
+
 ParticleSystemObject* ParticleSystemObjectRepository::findObjectById(const int id) const
 {
 	auto iter = std::find_if(std::cbegin(objects), std::cend(objects), [=](auto p) {return p->getId() == id; });
