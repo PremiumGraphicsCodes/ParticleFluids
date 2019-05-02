@@ -17,10 +17,10 @@
     <ClCompile Include="SpaceHashButton.cpp">
       <Filter>Search</Filter>
     </ClCompile>
-    <ClCompile Include="VolumeConverterButton.cpp">
+    <ClCompile Include="VolumeButton.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
-    <ClCompile Include="VolumeButton.cpp">
+    <ClCompile Include="VolumeConvertButton.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
   </ItemGroup>
@@ -43,10 +43,10 @@
     <ClInclude Include="SpaceHashButton.h">
       <Filter>Search</Filter>
     </ClInclude>
-    <ClInclude Include="VolumeConverterButton.h">
+    <ClInclude Include="VolumeButton.h">
       <Filter>Volume</Filter>
     </ClInclude>
-    <ClInclude Include="VolumeButton.h">
+    <ClInclude Include="VolumeConvertButton.h">
       <Filter>Volume</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,7 +6,7 @@
 namespace Crystal {
 	namespace Algo {
 
-class VolumeConverter
+class VolumeConvertAlgo
 {
 public:
 	void convert(Volume& volume, const Shape::ParticleSystem<double>& particleSystem, const double searchRadius);

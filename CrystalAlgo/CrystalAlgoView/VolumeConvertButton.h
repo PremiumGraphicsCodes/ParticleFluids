@@ -7,10 +7,10 @@
 namespace Crystal {
 	namespace UI {
 
-class VolumeConverterButton : public IPopupButton
+class VolumeConvertButton : public IPopupButton
 {
 public:
-	VolumeConverterButton(Repository* model, Canvas* canvas);
+	VolumeConvertButton(Repository* model, Canvas* canvas);
 
 	void onShow() override;
 

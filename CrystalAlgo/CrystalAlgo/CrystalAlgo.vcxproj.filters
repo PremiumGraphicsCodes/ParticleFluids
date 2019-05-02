@@ -19,10 +19,10 @@
     <ClInclude Include="MarchingCubesTable.h">
       <Filter>MarchingCubes</Filter>
     </ClInclude>
-    <ClInclude Include="VolumeConverter.h">
+    <ClInclude Include="Volume.h">
       <Filter>Volume</Filter>
     </ClInclude>
-    <ClInclude Include="Volume.h">
+    <ClInclude Include="VolumeConvertAlgo.h">
       <Filter>Volume</Filter>
     </ClInclude>
   </ItemGroup>
@@ -45,10 +45,10 @@
     <ClCompile Include="MarchingCubesAlgo.cpp">
       <Filter>MarchingCubes</Filter>
     </ClCompile>
-    <ClCompile Include="VolumeConverter.cpp">
+    <ClCompile Include="Volume.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
-    <ClCompile Include="Volume.cpp">
+    <ClCompile Include="VolumeConvertAlgo.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
   </ItemGroup>

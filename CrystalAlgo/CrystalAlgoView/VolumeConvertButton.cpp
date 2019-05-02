@@ -1,30 +1,30 @@
-#include "VolumeConverterButton.h"
+#include "VolumeConvertButton.h"
 
-#include "../CrystalAlgo/VolumeConverter.h"
+#include "../CrystalAlgo/VolumeConvertAlgo.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-VolumeConverterButton::VolumeConverterButton(Repository* model, Canvas* canvas) :
-	IPopupButton("VolumeConverter", model, canvas),
+VolumeConvertButton::VolumeConvertButton(Repository* model, Canvas* canvas) :
+	IPopupButton("VolumeConvert", model, canvas),
 	objectButton("ParticleSystem", model, canvas, Model::ObjectType::ParticleSystemObject),
 	searchRadius("SearchRadius", 1.0)
 {
 }
 
-void VolumeConverterButton::onShow()
+void VolumeConvertButton::onShow()
 {
 	objectButton.show();
 }
 
-void VolumeConverterButton::onOk()
+void VolumeConvertButton::onOk()
 {
 	Math::Box3d box;
 	Volume volume(32, 32, 32, box);
 
-	VolumeConverter converter;
+	VolumeConvertAlgo converter;
 	//converter.convert(volume, );
 
 	const auto& particles = volume.toParticles();
@@ -35,11 +35,11 @@ void VolumeConverterButton::onOk()
 	ParticleAttribute attr;
 	attr.color = glm::vec4(1, 0, 0, 0);
 	attr.size = 1.0;
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "VolumeConverter");
+	getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "VolumeConvert");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 }
 
-void VolumeConverterButton::onCancel()
+void VolumeConvertButton::onCancel()
 {
 }
 
