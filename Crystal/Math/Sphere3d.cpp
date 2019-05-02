@@ -29,6 +29,6 @@ Vector3dd Sphere3d::getNormal(const double u, const double v) const
 bool Sphere3d::isSame(const Sphere3d& rhs, const double tolerance) const
 {
 	return
-		Tolerance<double>::isEqual(radius, rhs.radius, tolerance) &&
+		::isEqual(radius, rhs.radius, tolerance) &&
 		(center == rhs.center);
 }
