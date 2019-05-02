@@ -6,7 +6,7 @@
 
 namespace Crystal {
 	namespace Algo {
-		class Volume3d;
+		class Volume;
 
 class MarchingCubesAlgo
 {
@@ -22,7 +22,7 @@ public:
 		std::array<double, 8> value;
 	};
 
-	int build(const Volume3d& volume, const double isoLevel);
+	int build(const Volume& volume, const double isoLevel);
 
 	int march(const MCCell& cell, const double isoLevel);
 

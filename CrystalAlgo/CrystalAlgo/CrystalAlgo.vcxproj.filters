@@ -22,7 +22,7 @@
     <ClInclude Include="VolumeConverter.h">
       <Filter>Volume</Filter>
     </ClInclude>
-    <ClInclude Include="Volume3d.h">
+    <ClInclude Include="Volume.h">
       <Filter>Volume</Filter>
     </ClInclude>
   </ItemGroup>
@@ -48,7 +48,7 @@
     <ClCompile Include="VolumeConverter.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
-    <ClCompile Include="Volume3d.cpp">
+    <ClCompile Include="Volume.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
   </ItemGroup>

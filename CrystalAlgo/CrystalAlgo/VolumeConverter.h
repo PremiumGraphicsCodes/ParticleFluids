@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Volume3d.h"
+#include "Volume.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 
 namespace Crystal {
@@ -9,7 +9,7 @@ namespace Crystal {
 class VolumeConverter
 {
 public:
-	void convert(Volume3d& volume, const Shape::ParticleSystem<double>& particleSystem, const double searchRadius);
+	void convert(Volume& volume, const Shape::ParticleSystem<double>& particleSystem, const double searchRadius);
 
 private:
 };

@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 
-void VolumeConverter::convert(Volume3d& volume, const ParticleSystem<double>& particleSystem, const double searchRadius)
+void VolumeConverter::convert(Volume& volume, const ParticleSystem<double>& particleSystem, const double searchRadius)
 {
 	Gaussian kernel;
 

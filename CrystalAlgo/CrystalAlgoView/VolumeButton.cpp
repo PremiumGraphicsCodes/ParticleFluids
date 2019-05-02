@@ -1,26 +1,26 @@
-#include "VolumeConverterButton.h"
+#include "VolumeButton.h"
 
-#include "../CrystalAlgo/VolumeConverter.h"
+#include "../CrystalAlgo/Volume.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-VolumeConverterButton::VolumeConverterButton(Repository* model, Canvas* canvas) :
-	IPopupButton("VolumeConverter", model, canvas),
-	objectButton("ParticleSystem", model, canvas, Model::ObjectType::ParticleSystemObject),
-	searchRadius("SearchRadius", 1.0)
+VolumeButton::VolumeButton(Repository* model, Canvas* canvas) :
+	IPopupButton("Volume", model, canvas),
+	box("Box")
 {
 }
 
-void VolumeConverterButton::onShow()
+void VolumeButton::onShow()
 {
-	objectButton.show();
+	box.show();
 }
 
-void VolumeConverterButton::onOk()
+void VolumeButton::onOk()
 {
+	/*
 	Math::Box3d box;
 	Volume volume(32, 32, 32, box);
 
@@ -37,9 +37,10 @@ void VolumeConverterButton::onOk()
 	attr.size = 1.0;
 	getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "VolumeConverter");
 	getCanvas()->setViewModel(getModel()->toViewModel());
+	*/
 }
 
-void VolumeConverterButton::onCancel()
+void VolumeButton::onCancel()
 {
 }
 

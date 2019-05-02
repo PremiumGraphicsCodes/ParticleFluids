@@ -9,10 +9,10 @@
 namespace Crystal {
 	namespace Algo {
 
-class Volume3d : private UnCopyable
+class Volume : private UnCopyable
 {
 public:
-	Volume3d(const int unum, const int vnum, const int wnum, const Math::Box3d& box);
+	Volume(const int unum, const int vnum, const int wnum, const Math::Box3d& box);
 
 	void set(const int u, const int v, const int w, const double value);
 

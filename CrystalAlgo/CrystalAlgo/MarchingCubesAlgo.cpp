@@ -3,13 +3,13 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "MarchingCubesAlgo.h"
 #include "MarchingCubesTable.h"
-#include "Volume3d.h"
+#include "Volume.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::MarchingCubesTable;
 
-int MarchingCubesAlgo::build(const Volume3d& volume, const double isoLevel)
+int MarchingCubesAlgo::build(const Volume& volume, const double isoLevel)
 {
 	const auto unum = volume.getUNum();
 	const auto vnum = volume.getVNum();

@@ -17,7 +17,12 @@
     <ClCompile Include="SpaceHashButton.cpp">
       <Filter>Search</Filter>
     </ClCompile>
-    <ClCompile Include="VolumeConverterButton.cpp" />
+    <ClCompile Include="VolumeConverterButton.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeButton.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -38,7 +43,12 @@
     <ClInclude Include="SpaceHashButton.h">
       <Filter>Search</Filter>
     </ClInclude>
-    <ClInclude Include="VolumeConverterButton.h" />
+    <ClInclude Include="VolumeConverterButton.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeButton.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">
@@ -52,6 +62,9 @@
     </Filter>
     <Filter Include="Search">
       <UniqueIdentifier>{41a6a766-e885-4f76-9831-f9c5f38774f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volume">
+      <UniqueIdentifier>{c2c44d67-d31e-48da-b504-2046a4e41f9a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
