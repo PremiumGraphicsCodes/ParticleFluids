@@ -405,6 +405,9 @@
     <ClInclude Include="ColorRGBAView.h">
       <Filter>Color</Filter>
     </ClInclude>
+    <ClInclude Include="ColorMapView.h">
+      <Filter>Color</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

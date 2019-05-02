@@ -9,7 +9,7 @@
 namespace Crystal {
 	namespace Graphics {
 
-class ColorMap : private UnCopyable {
+class ColorMap {
 public:
 	ColorMap() :
 		min_(0.0),
