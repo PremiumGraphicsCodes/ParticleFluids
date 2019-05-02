@@ -13,7 +13,7 @@ using namespace Crystal::UI;
 Canvas::Canvas() :
 	Canvas(new PerspectiveCamera(
 	1.0,
-	0.5f * Tolerance<double>::getPI(),
+	0.5f * PI,
 	Vector3df(0, 0, 0),
 	Vector3df(0, 0, -10.0),
 	1.0f, 10.0f))

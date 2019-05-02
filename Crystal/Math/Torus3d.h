@@ -29,8 +29,8 @@ public:
 
 	Vector3dd getPosition(const double u, const double v) const override
 	{
-		const auto t = u * 2.0 * Tolerance<double>::getPI();
-		const auto p = v * 2.0 * Tolerance<double>::getPI();
+		const auto t = u * 2.0 * PI;
+		const auto p = v * 2.0 * PI;
 		const auto x = R * ::cos(t) + r * ::cos(p) * ::cos(t);
 		const auto y = R * ::sin(t) + r * ::cos(p) * ::sin(t);
 		const auto z = r * ::sin(p);

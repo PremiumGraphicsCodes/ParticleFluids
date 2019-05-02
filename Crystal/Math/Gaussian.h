@@ -21,7 +21,7 @@ public:
 
 	double getValue(const double x) const
 	{
-		const auto scale = 1.0 / ( std::sqrt(2.0 * Tolerance<double>::getPI()) * tau );
+		const auto scale = 1.0 / ( std::sqrt(2.0 * PI) * tau );
 		const auto power = -(x - mu) * (x - mu) / (2.0 * tau * tau);
 		return scale * std::exp(power);
 	}

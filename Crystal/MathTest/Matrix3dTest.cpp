@@ -6,7 +6,7 @@ using namespace Crystal::Math;
 
 TEST(Matrix3dTest, TestRotationMatrixX)
 {
-	const auto pi = Tolerance<double>::getPI();
+	const auto pi = PI;
 	const auto tolerance = 1.0e-12;
 
 	{
@@ -45,7 +45,7 @@ TEST(Matrix3dTest, TestRotationMatrixX)
 
 TEST(Matrix3dTest, TestRotationMatrixY)
 {
-	const auto pi = Tolerance<double>::getPI();
+	const auto pi = PI;
 	const auto tolerance = 1.0e-12;
 
 	{
@@ -84,7 +84,7 @@ TEST(Matrix3dTest, TestRotationMatrixY)
 
 TEST(Matrix3dTest, TestRotationMatrixZ)
 {
-	const auto pi = Tolerance<double>::getPI();
+	const auto pi = PI;
 	const auto tolerance = 1.0e-12;
 
 	{

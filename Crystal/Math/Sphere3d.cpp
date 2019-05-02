@@ -12,8 +12,8 @@ Sphere3d::Sphere3d(const Box3d& boundingBox)
 
 Vector3dd Sphere3d::getPosition(const double u, const double v) const
 {
-	const auto theta = u * Tolerance<double>::getPI();
-	const auto phi = v * Tolerance<double>::getTwoPI();
+	const auto theta = u * PI;
+	const auto phi = v * PI;
 	const auto x = radius * std::sin(theta) * std::cos(phi);
 	const auto y = radius * std::sin(theta) * std::sin(phi);
 	const auto z = radius * std::cos(theta);

@@ -25,7 +25,7 @@ public:
 
 	Vector2dd getPosition(const double u) const
 	{
-		const auto theta = u * 2.0 * Tolerance<double>::getPI();
+		const auto theta = u * 2.0 * PI;
 		const auto x = radius * ::cos(theta);
 		const auto y = radius * ::sin(theta);
 		return center + Vector2dd(x, y);

@@ -18,12 +18,14 @@ class Tolerance < double > final
 public:
 	static bool isEqual(const double x, const double y, const double tolerance) { return ::fabs(x - y) < tolerance; }
 
-	static double getHalfPI() { return 0.5 * getPI(); }
+	//static double getHalfPI() { return 0.5 * getPI(); }
 
-	static double getPI() { return 3.141592653589793238462643383279; }
+	//static double getPI() { return 3.141592653589793238462643383279; }
 
-	static double getTwoPI() { return 2.0 * getPI(); }
+	//static double getTwoPI() { return 2.0 * getPI(); }
 };
+
+static const double PI = 3.141592653589793238462643383279;
 	}
 }
 

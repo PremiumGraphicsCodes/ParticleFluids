@@ -32,7 +32,7 @@ public:
 
 	Vector3dd getPosition(const double u, const double v) const override
 	{
-		const auto theta = u * 2.0 * Tolerance<double>::getPI();
+		const auto theta = u * 2.0 * PI;
 		const auto x = radius * ::cos(theta);
 		const auto y = radius * ::sin(theta);
 		const auto z = height * v - height * 0.5;
