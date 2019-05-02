@@ -20,10 +20,13 @@
       <Filter>MarchingCubes</Filter>
     </ClInclude>
     <ClInclude Include="VolumeConverter.h">
-      <Filter>VolumeConverter</Filter>
+      <Filter>Volume</Filter>
     </ClInclude>
     <ClInclude Include="Volume3d.h">
-      <Filter>VolumeConverter</Filter>
+      <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeBuilder.h">
+      <Filter>Volume</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -46,10 +49,13 @@
       <Filter>MarchingCubes</Filter>
     </ClCompile>
     <ClCompile Include="VolumeConverter.cpp">
-      <Filter>VolumeConverter</Filter>
+      <Filter>Volume</Filter>
     </ClCompile>
     <ClCompile Include="Volume3d.cpp">
-      <Filter>VolumeConverter</Filter>
+      <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeBuilder.cpp">
+      <Filter>Volume</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,7 +71,7 @@
     <Filter Include="MarchingCubes">
       <UniqueIdentifier>{6d4a5a03-215a-4a8a-b4e5-c6cdd72662bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="VolumeConverter">
+    <Filter Include="Volume">
       <UniqueIdentifier>{aa657a9f-2f54-427f-a595-70f197e46c21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

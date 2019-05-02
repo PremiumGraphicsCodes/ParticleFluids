@@ -26,6 +26,7 @@
       <Filter>Curve3d</Filter>
     </ClCompile>
     <ClCompile Include="Box2dTest.cpp" />
+    <ClCompile Include="GaussianTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

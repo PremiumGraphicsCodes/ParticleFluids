@@ -25,6 +25,8 @@ public:
 
 	double getValue(const int i, const int j, const int k) const { return nodes[i][j][k].getAttribute(); }
 
+	Math::Box3d getBoundingBox() const { return boundingBox; }
+
 	std::vector<Shape::Particle<double>> toParticles() const;
 
 private:
@@ -32,6 +34,7 @@ private:
 	const int unum;
 	const int vnum;
 	const int wnum;
+	const Math::Box3d boundingBox;
 };
 
 	}

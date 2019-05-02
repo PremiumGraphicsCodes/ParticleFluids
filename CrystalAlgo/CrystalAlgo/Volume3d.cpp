@@ -7,7 +7,8 @@ using namespace Crystal::Algo;
 Volume3d::Volume3d(const int unum, const int vnum, const int wnum, const Box3d& box) :
 	unum(unum),
 	vnum(vnum),
-	wnum(wnum)
+	wnum(wnum),
+	boundingBox(box)
 {
 	const auto dx = box.getLength().x / (double)unum;
 	const auto dy = box.getLength().y / (double)vnum;
