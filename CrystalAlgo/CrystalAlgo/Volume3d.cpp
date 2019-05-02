@@ -28,6 +28,20 @@ Volume3d::Volume3d(const int unum, const int vnum, const int wnum, const Box3d& 
 	}
 }
 
+void Volume3d::add(const std::function<double(double)>& function)
+{
+	const auto& center = getBoundingBox().getCenter();
+	for (auto& u : nodes) {
+		for (auto& v : u) {
+			for (auto& w : v) {
+				auto distance = glm::distance( w.getPosition(), center );
+				auto value = function(distance);
+				w.setAttribute(w.getAttribute() + value);
+			}
+		}
+	}
+}
+
 void Volume3d::set(const int u, const int v, const int w, const double value)
 {
 	nodes[u][v][w].setAttribute(value);

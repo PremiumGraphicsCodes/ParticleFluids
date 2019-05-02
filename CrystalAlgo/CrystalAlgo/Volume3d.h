@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <functional>
 #include "../../Crystal/Math/Box3d.h"
 #include "../../Crystal/Shape/Particle.h"
 #include "../../Crystal/Util/UnCopyable.h"
@@ -14,6 +15,8 @@ public:
 	Volume3d(const int unum, const int vnum, const int wnum, const Math::Box3d& box);
 
 	void set(const int u, const int v, const int w, const double value);
+
+	void add(const std::function<double(double)>& function);
 
 	int getUNum() const { return unum; }
 
