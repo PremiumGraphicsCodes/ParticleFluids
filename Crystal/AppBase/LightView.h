@@ -4,6 +4,7 @@
 
 #include "Vector3dView.h"
 #include "Float4View.h"
+#include "ColorRGBAView.h"
 #include "StringView.h"
 #include "../Graphics/PointLight.h"
 
@@ -13,7 +14,7 @@ namespace Crystal {
 class LightView : public IWindow
 {
 public:
-	LightView(const std::string& name) :
+	explicit LightView(const std::string& name) :
 		IWindow(name),
 		position("Position", Math::Vector3dd(0, 0, 0)),
 		ambient("Ambient", glm::vec4(0, 0, 0, 0)),
@@ -49,9 +50,9 @@ public:
 
 private:
 	Vector3dView position;
-	Float4View ambient;
-	Float4View diffuse;
-	Float4View specular;
+	ColorRGBAView ambient;
+	ColorRGBAView diffuse;
+	ColorRGBAView specular;
 };
 
 	}

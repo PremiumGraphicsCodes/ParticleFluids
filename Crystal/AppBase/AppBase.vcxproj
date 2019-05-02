@@ -81,6 +81,7 @@
     <ClInclude Include="AppearancePanel.h" />
     <ClInclude Include="Box3dView.h" />
     <ClInclude Include="CameraMenu.h" />
+    <ClInclude Include="ColorRGBAView.h" />
     <ClInclude Include="Cone3dView.h" />
     <ClInclude Include="CtrlMenu.h" />
     <ClInclude Include="Cylinder3dView.h" />
