@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Crystal/AppBase/IPopupButton.h"
+#include "../../Crystal/AppBase/DoubleView.h"
 #include "../../Crystal/AppBase/ObjectSelectButton.h"
 
 namespace Crystal {
@@ -18,7 +19,8 @@ public:
 	void onCancel() override;
 
 private:
-	//ObjectSelectButton objectButton1;
+	ObjectSelectButton objectButton;
+	DoubleView searchRadius;
 };
 
 	}

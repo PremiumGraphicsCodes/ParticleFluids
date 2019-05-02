@@ -2,34 +2,37 @@
 
 #include "Octree.h"
 #include "../../Crystal/Math/Gaussian.h"
+#include "SpaceHash.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 
-void VolumeConverter::convert(const Volume3d& volume, const ParticleSystem<double>& particleSystem)
+void VolumeConverter::convert(Volume3d& volume, const ParticleSystem<double>& particleSystem, const double searchRadius)
 {
-	/*
 	Gaussian kernel;
-	for (const auto& c : children) {
-		const auto& box = c.getBoundingBox();
-		const auto& poss = box.toSpace().toArray();
-		std::array<float, 8> values;
-		values.fill(0.0f);
-		for (int i = 0; i < 8; ++i) {
-			for (const auto& particle : c.getParticles()) {
-				const auto dist2 = poss[i].getDistanceSquared(particle->getPosition());
-				const auto radiusSquared = particle->getBoundingRadius() * particle->getBoundingRadius();
-				if (dist2 < radiusSquared) {
-					//const auto value = kernel.getPoly6Kernel(std::sqrt(dist2), std::sqrt(radiusSquared)) * particle->getDensity();
-					const auto distance = std::sqrt(dist2);																		//				const auto mm = Matrix3d<float>(1.0 / particle->getRadii().getX(), 0, 0, 0, 1.0 / particle->getRadii().getY(), 0, 0, 0, 1.0 / particle->getRadii().getZ());
-					const auto value = kernel.getValue(distance);
-					values[i] += value;
+
+	const auto& particles = particleSystem.getParticles();
+	SpaceHash spaceHash(searchRadius, particles.size());
+	spaceHash.add(particleSystem);
+
+	const auto unum = volume.getUNum();
+	const auto vnum = volume.getVNum();
+	const auto wnum = volume.getWNum();
+	for (int u = 0; u < unum; ++u) {
+		for (int v = 0; v < vnum; ++v) {
+			for (int w = 0; w < wnum; ++w) {
+				const auto& p = volume.getPosition(u, v, w);
+				const auto& neighbors = spaceHash.getNeighbors(p);
+				for (auto n : neighbors) {
+					const auto distanceSquared = Crystal::Math::getDistanceSquared(p, n->getPosition());
+					if (distanceSquared > searchRadius * searchRadius) {
+						const auto distance = ::sqrt(distanceSquared);
+						const auto value = kernel.getValue(distance / searchRadius) + volume.getValue(u,v,w);
+						volume.set(u, v, w, value);
+					}
 				}
 			}
 		}
-		VolumeCell cell(c.getBoundingBox().toSpace(), values);
-		cells.emplace_back(cell);
 	}
-	*/
 }

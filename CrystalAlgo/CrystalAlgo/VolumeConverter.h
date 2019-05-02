@@ -9,7 +9,7 @@ namespace Crystal {
 class VolumeConverter
 {
 public:
-	void convert(const Volume3d& volume, const Shape::ParticleSystem<double>& particleSystem);
+	void convert(Volume3d& volume, const Shape::ParticleSystem<double>& particleSystem, const double searchRadius);
 
 private:
 };

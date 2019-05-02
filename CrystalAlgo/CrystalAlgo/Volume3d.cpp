@@ -4,32 +4,35 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 
-Volume3d::Volume3d(const int u, const int v, const int w, const Box3d& box)
+Volume3d::Volume3d(const int unum, const int vnum, const int wnum, const Box3d& box) :
+	unum(unum),
+	vnum(vnum),
+	wnum(wnum)
 {
-	const auto dx = box.getLength().x / (double)u;
-	const auto dy = box.getLength().y / (double)v;
-	const auto dz = box.getLength().z / (double)w;
-	nodes.resize(u);
-	for (int i = 0; i < u; ++i) {
-		const auto px = box.getMinX() + i * dx;
-		nodes[i].resize(v);
-		for (int j = 0; j < v; ++j) {
-			const auto py = box.getMinY() + j * dy;
-			nodes[i][j].resize(w);
-			for (int k = 0; k < w; ++k) {
-				const auto pz = box.getMinZ() + k * dz;
-				nodes[i][j][k] = Shape::Particle<double>(Math::Vector3dd(px, py, pz), 0.0);
+	const auto dx = box.getLength().x / (double)unum;
+	const auto dy = box.getLength().y / (double)vnum;
+	const auto dz = box.getLength().z / (double)wnum;
+	nodes.resize(unum);
+	for (int u = 0; u < unum; ++u) {
+		const auto px = box.getMinX() + u * dx;
+		nodes[u].resize(vnum);
+		for (int v = 0; v < vnum; ++v) {
+			const auto py = box.getMinY() + v * dy;
+			nodes[u][v].resize(wnum);
+			for (int w = 0; w < wnum; ++w) {
+				const auto pz = box.getMinZ() + w * dz;
+				nodes[u][v][w] = Shape::Particle<double>(Math::Vector3dd(px, py, pz), 0.0);
 			}
 		}
 	}
 }
 
-void Volume3d::set(const int i, const int j, const int k, double value)
+void Volume3d::set(const int u, const int v, const int w, const double value)
 {
-	nodes[i][j][k].setAttribute(value);
+	nodes[u][v][w].setAttribute(value);
 }
 
-std::vector<Particle<double>> Volume3d::toParticles()
+std::vector<Particle<double>> Volume3d::toParticles() const
 {
 	std::vector<Particle<double>> results;
 	for (const auto& u : nodes) {

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../Crystal/Util/UnCopyable.h"
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 #include <list>
@@ -7,7 +8,7 @@
 namespace Crystal {
 	namespace Algo {
 
-class SpaceHash
+class SpaceHash : private UnCopyable
 {
 public:
 	SpaceHash(const float divideLength, const int tableSize);
