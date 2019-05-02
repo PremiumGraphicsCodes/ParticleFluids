@@ -23,6 +23,8 @@
     <ClInclude Include="Buffer2d.h" />
     <ClInclude Include="Buffer3d.h" />
     <ClInclude Include="Buffer4d.h" />
+    <ClInclude Include="ColorHSV.h" />
+    <ClInclude Include="ColorMap.h" />
     <ClInclude Include="ColorRGBA.h" />
     <ClInclude Include="DrawableId.h" />
     <ClInclude Include="IBuffer.h" />

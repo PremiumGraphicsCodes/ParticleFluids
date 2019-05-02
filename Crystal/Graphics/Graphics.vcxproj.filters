@@ -47,6 +47,8 @@
     <ClInclude Include="TriangleBuffer.h">
       <Filter>Buffer</Filter>
     </ClInclude>
+    <ClInclude Include="ColorMap.h" />
+    <ClInclude Include="ColorHSV.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffer">
