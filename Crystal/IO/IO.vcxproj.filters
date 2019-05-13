@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClInclude Include="Helper.h" />
     <ClInclude Include="DXFFileReader.h" />
-    <ClInclude Include="PCDFileReader.h" />
     <ClInclude Include="STLASCIIFileReader.h">
       <Filter>STL</Filter>
     </ClInclude>
@@ -28,10 +27,12 @@
     <ClInclude Include="MTLFileReader.h">
       <Filter>OBJ</Filter>
     </ClInclude>
+    <ClInclude Include="PCDFileReader.h">
+      <Filter>PCD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXFFileReader.cpp" />
-    <ClCompile Include="PCDFileReader.cpp" />
     <ClCompile Include="STLASCIIFileReader.cpp">
       <Filter>STL</Filter>
     </ClCompile>
@@ -56,6 +57,9 @@
     <ClCompile Include="ImageFileWriter.cpp">
       <Filter>Image</Filter>
     </ClCompile>
+    <ClCompile Include="PCDFileReader.cpp">
+      <Filter>PCD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="STL">
@@ -66,6 +70,9 @@
     </Filter>
     <Filter Include="OBJ">
       <UniqueIdentifier>{153fc88c-0f12-432b-8b06-96e296ea3ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PCD">
+      <UniqueIdentifier>{5d61ce56-1ed2-438a-9950-e204952784da}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

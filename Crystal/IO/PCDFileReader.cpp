@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <cassert>
 
 using namespace Crystal::IO;
 
@@ -31,8 +32,36 @@ bool PCDFileReader::read(const std::string& filename)
 bool PCDFileReader::read(std::istream& stream)
 {
 	std::string str;
-	//while (std::getline(stream, str)) {
-	//	str << 
-	//}
+	while (std::getline(stream, str)) {
+		if (str.empty()) {
+			continue;
+		}
+		if (str[0] == '#') {
+			continue;
+		}
+		const auto& splitted = ::split(str, ' ');
+		assert(splitted.size() >= 2);
+		if (splitted[0] == "VERSION") {
+			this->version = splitted[1];
+			continue;
+		}
+		else if (splitted[0] == "FIELDS") {
+			continue;
+		}
+		else if (splitted[0] == "DATA") {
+
+		}
+	}
 	return false;
 }
+
+bool PCDFileReader::parseHeader(std::istream& stream)
+{
+	return false;
+}
+
+bool PCDFileReader::parseData(std::istream& stream)
+{
+	return false;
+}
+
