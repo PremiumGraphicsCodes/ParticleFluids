@@ -2,8 +2,10 @@
 
 #include "../CrystalAlgo/MarchingCubesAlgo.h"
 #include "../../Crystal/Shape/Volume.h"
+#include "../../Crystal/Math/Gaussian.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
@@ -45,8 +47,8 @@ void MarchingCubesButton::onOk()
 	for (int i = 0; i < 8; ++i) {
 		cell.vertices[i].value = values[i].getValue();
 	}
+	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
 	/*
-	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(4, 4, 4));
 	const auto& center = box.getCenter();
 	const auto radius = 2.0;
 	Volume volume(5, 5, 5, box);
@@ -59,8 +61,17 @@ void MarchingCubesButton::onOk()
 	}
 	*/
 
+	Volume volume(32, 32, 32, box);
+
+	auto function = [](double distance) {
+		Gaussian gaussian;
+		return gaussian.getValue(distance);
+	};
+	volume.add(function);
+
+
 	MarchingCubesAlgo algo;
-	algo.march(cell, 50.0);
+	algo.build(volume, 0.30);
 	const auto& triangles = algo.getTriangles();
 	Crystal::Shape::PolygonMeshBuilder builder;
 	builder.build(triangles);

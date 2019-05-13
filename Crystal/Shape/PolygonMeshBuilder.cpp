@@ -13,11 +13,11 @@ void PolygonMeshBuilder::build(const std::vector<Triangle3d>& triangles)
 	for (const auto& t : triangles) {
 		VertexAttr attr;
 		attr.normal = t.getNormal();
-		attr.id = 0;
+		attr.id = nextVertexId++;
 		Vertex* v0 = new Vertex(t.getVertices()[0], attr);
-		attr.id = 1;
+		attr.id = nextVertexId++;
 		Vertex* v1 = new Vertex(t.getVertices()[1], attr);
-		attr.id = 2;
+		attr.id = nextVertexId++;
 		Vertex* v2 = new Vertex(t.getVertices()[2], attr);
 		HalfEdge* e1 = new HalfEdge(v0, v1);
 		HalfEdge* e2 = new HalfEdge(v1, v2);

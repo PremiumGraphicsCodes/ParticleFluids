@@ -476,5 +476,8 @@
     <Filter Include="Color">
       <UniqueIdentifier>{2f26ae1a-95f1-4072-91f2-986837e61ab0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Selection\Object\Volume">
+      <UniqueIdentifier>{d1752fc7-4d9f-4b35-ab6a-6ce4c9a0585e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
