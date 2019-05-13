@@ -17,32 +17,33 @@ int MarchingCubesAlgo::build(const Volume& volume, const double isoLevel)
 	for (int i = 0; i < unum-1; ++i) {
 		for (int j = 0; j < vnum-1; ++j) {
 			for (int k = 0; k < wnum-1; ++k) {
-				MCCell cell;
+				std::array<MCCell::Vertex, 8> vertices;
 
-				cell.position[0] = volume.getPosition(i, j, k);
-				cell.value[0] = volume.getValue(i,j,k);
+				vertices[0].position = volume.getPosition(i, j, k);
+				vertices[0].value = volume.getValue(i,j,k);
 
-				cell.position[1] = volume.getPosition(i+1, j, k);
-				cell.value[1] = volume.getValue(i+1, j, k);
+				vertices[1].position = volume.getPosition(i+1, j, k);
+				vertices[1].value = volume.getValue(i+1, j, k);
 
-				cell.position[2] = volume.getPosition(i+1, j+1, k);
-				cell.value[2] = volume.getValue(i+1, j+1, k);
+				vertices[2].position = volume.getPosition(i+1, j+1, k);
+				vertices[2].value = volume.getValue(i+1, j+1, k);
 
-				cell.position[3] = volume.getPosition(i, j + 1, k);
-				cell.value[3] = volume.getValue(i, j+1, k);
+				vertices[3].position = volume.getPosition(i, j + 1, k);
+				vertices[3].value = volume.getValue(i, j+1, k);
 
-				cell.position[4] = volume.getPosition(i, j, k+1);
-				cell.value[4] = volume.getValue(i, j, k+1);
+				vertices[4].position = volume.getPosition(i, j, k+1);
+				vertices[4].value = volume.getValue(i, j, k+1);
 
-				cell.position[5] = volume.getPosition(i + 1, j, k+1);
-				cell.value[5] = volume.getValue(i + 1, j, k+1);
+				vertices[5].position = volume.getPosition(i + 1, j, k+1);
+				vertices[5].value = volume.getValue(i + 1, j, k+1);
 
-				cell.position[6] = volume.getPosition(i + 1, j + 1, k+1);
-				cell.value[6] = volume.getValue(i + 1, j + 1, k+1);
+				vertices[6].position = volume.getPosition(i + 1, j + 1, k+1);
+				vertices[6].value = volume.getValue(i + 1, j + 1, k+1);
 
-				cell.position[7] = volume.getPosition(i, j + 1, k+1);
-				cell.value[7] = volume.getValue(i, j + 1, k+1);
+				vertices[7].position = volume.getPosition(i, j + 1, k+1);
+				vertices[7].value = volume.getValue(i, j + 1, k+1);
 
+				MCCell cell(vertices);
 				march(cell, isoLevel);
 			}
 		}
@@ -68,14 +69,14 @@ int MarchingCubesAlgo::march(const MCCell& cell, const double isolevel)
 	   tells us which vertices are inside of the surface
 	*/
 	int cubeindex = 0;
-	if (cell.value[0] < isolevel) cubeindex |= 1;
-	if (cell.value[1] < isolevel) cubeindex |= 2;
-	if (cell.value[2] < isolevel) cubeindex |= 4;
-	if (cell.value[3] < isolevel) cubeindex |= 8;
-	if (cell.value[4] < isolevel) cubeindex |= 16;
-	if (cell.value[5] < isolevel) cubeindex |= 32;
-	if (cell.value[6] < isolevel) cubeindex |= 64;
-	if (cell.value[7] < isolevel) cubeindex |= 128;
+	if (cell.vertices[0].value < isolevel) cubeindex |= 1;
+	if (cell.vertices[1].value < isolevel) cubeindex |= 2;
+	if (cell.vertices[2].value < isolevel) cubeindex |= 4;
+	if (cell.vertices[3].value < isolevel) cubeindex |= 8;
+	if (cell.vertices[4].value < isolevel) cubeindex |= 16;
+	if (cell.vertices[5].value < isolevel) cubeindex |= 32;
+	if (cell.vertices[6].value < isolevel) cubeindex |= 64;
+	if (cell.vertices[7].value < isolevel) cubeindex |= 128;
 
 	/* Cube is entirely in/out of the surface */
 	if (edgeTable[cubeindex] == 0)
@@ -84,40 +85,40 @@ int MarchingCubesAlgo::march(const MCCell& cell, const double isolevel)
 	/* Find the vertices where the surface intersects the cube */
 	if (edgeTable[cubeindex] & 1)
 		vertlist[0] =
-		getInterpolatedPosition(isolevel, cell.position[0], cell.position[1], cell.value[0], cell.value[1]);
+		getInterpolatedPosition(isolevel, cell.vertices[0], cell.vertices[1]);
 	if (edgeTable[cubeindex] & 2)
 		vertlist[1] =
-		getInterpolatedPosition(isolevel, cell.position[1], cell.position[2], cell.value[1], cell.value[2]);
+		getInterpolatedPosition(isolevel, cell.vertices[1], cell.vertices[2]);
 	if (edgeTable[cubeindex] & 4)
 		vertlist[2] =
-		getInterpolatedPosition(isolevel, cell.position[2], cell.position[3], cell.value[2], cell.value[3]);
+		getInterpolatedPosition(isolevel, cell.vertices[2], cell.vertices[3]);
 	if (edgeTable[cubeindex] & 8)
 		vertlist[3] =
-		getInterpolatedPosition(isolevel, cell.position[3], cell.position[0], cell.value[3], cell.value[0]);
+		getInterpolatedPosition(isolevel, cell.vertices[3], cell.vertices[0]);
 	if (edgeTable[cubeindex] & 16)
 		vertlist[4] =
-		getInterpolatedPosition(isolevel, cell.position[4], cell.position[5], cell.value[4], cell.value[5]);
+		getInterpolatedPosition(isolevel, cell.vertices[4], cell.vertices[5]);
 	if (edgeTable[cubeindex] & 32)
 		vertlist[5] =
-		getInterpolatedPosition(isolevel, cell.position[5], cell.position[6], cell.value[5], cell.value[6]);
+		getInterpolatedPosition(isolevel, cell.vertices[5], cell.vertices[6]);
 	if (edgeTable[cubeindex] & 64)
 		vertlist[6] =
-		getInterpolatedPosition(isolevel, cell.position[6], cell.position[7], cell.value[6], cell.value[7]);
+		getInterpolatedPosition(isolevel, cell.vertices[6], cell.vertices[7]);
 	if (edgeTable[cubeindex] & 128)
 		vertlist[7] =
-		getInterpolatedPosition(isolevel, cell.position[7], cell.position[4], cell.value[7], cell.value[4]);
+		getInterpolatedPosition(isolevel, cell.vertices[7], cell.vertices[4]);
 	if (edgeTable[cubeindex] & 256)
 		vertlist[8] =
-		getInterpolatedPosition(isolevel, cell.position[0], cell.position[4], cell.value[0], cell.value[4]);
+		getInterpolatedPosition(isolevel, cell.vertices[0], cell.vertices[4]);
 	if (edgeTable[cubeindex] & 512)
 		vertlist[9] =
-		getInterpolatedPosition(isolevel, cell.position[1], cell.position[5], cell.value[1], cell.value[5]);
+		getInterpolatedPosition(isolevel, cell.vertices[1], cell.vertices[5]);
 	if (edgeTable[cubeindex] & 1024)
 		vertlist[10] =
-		getInterpolatedPosition(isolevel, cell.position[2], cell.position[6], cell.value[2], cell.value[6]);
+		getInterpolatedPosition(isolevel, cell.vertices[2], cell.vertices[6]);
 	if (edgeTable[cubeindex] & 2048)
 		vertlist[11] =
-		getInterpolatedPosition(isolevel, cell.position[3], cell.position[7], cell.value[3], cell.value[7]);
+		getInterpolatedPosition(isolevel, cell.vertices[3], cell.vertices[7]);
 
 	/* Create the triangle */
 	int ntriang = 0;
@@ -135,14 +136,17 @@ int MarchingCubesAlgo::march(const MCCell& cell, const double isolevel)
 	return(ntriang);
 }
 
-Vector3dd MarchingCubesAlgo::getInterpolatedPosition(const double isolevel, const Vector3dd& p1, const Vector3dd& p2, const double valp1, const double valp2)
+Vector3dd MarchingCubesAlgo::getInterpolatedPosition(const double isolevel, const MCCell::Vertex& v1, const MCCell::Vertex& v2)
 {
-	if (::fabs(isolevel - valp1) < 0.00001)
-		return(p1);
-	if (::fabs(isolevel - valp2) < 0.00001)
-		return(p2);
-	if (::fabs(valp1 - valp2) < 0.00001)
-		return(p1);
-	const auto mu = (isolevel - valp1) / (valp2 - valp1);
-	return p1 + mu * (p2 - p1);
+	if (::fabs(isolevel - v1.value) < 0.00001) {
+		return v1.position;
+	}
+	if (::fabs(isolevel - v2.value) < 0.00001) {
+		return v2.position;
+	}
+	if (::fabs(v1.value - v2.value) < 0.00001) {
+		return v1.position;
+	}
+	const auto mu = (isolevel - v1.value) / (v2.value - v1.value);
+	return v1.position + mu * (v2.position - v1.position);
 }

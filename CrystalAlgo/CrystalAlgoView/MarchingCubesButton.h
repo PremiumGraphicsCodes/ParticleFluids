@@ -19,7 +19,6 @@ public:
 	void onCancel() override;
 
 private:
-	ObjectSelectButton objectButton1;
 	std::array< DoubleView, 8 > values;
 };
 

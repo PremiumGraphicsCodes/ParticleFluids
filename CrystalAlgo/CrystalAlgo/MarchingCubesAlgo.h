@@ -13,13 +13,29 @@ class MarchingCubesAlgo
 public:
 	struct MCCell
 	{
-		/*
-		MCCell(const Math::Box3d& box) {
-		}
-		*/
+		struct Vertex
+		{
+			Vertex()
+			{}
 
-		std::array<Math::Vector3dd, 8> position;
-		std::array<double, 8> value;
+			Vertex(const Math::Vector3dd& position, double value) :
+				position(position),
+				value(value)
+			{}
+
+			Math::Vector3dd position;
+			double value;
+		};
+
+		MCCell()
+		{}
+
+		explicit MCCell(const std::array<Vertex, 8>& vertices) :
+			vertices(vertices)
+		{
+		}
+
+		std::array<Vertex, 8> vertices;
 	};
 
 	int build(const Volume& volume, const double isoLevel);
@@ -29,7 +45,7 @@ public:
 	std::vector<Math::Triangle3d> getTriangles() const { return triangles; }
 
 private:
-	Math::Vector3dd getInterpolatedPosition(const double isolevel, const Math::Vector3dd& p1, const Math::Vector3dd& p2, const double valp1, const double valp2);
+	Math::Vector3dd getInterpolatedPosition(const double isolevel, const MCCell::Vertex& v1, const MCCell::Vertex& v2);
 
 	std::vector<Math::Triangle3d> triangles;
 };

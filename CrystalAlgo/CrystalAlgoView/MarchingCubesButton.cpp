@@ -9,7 +9,6 @@ using namespace Crystal::Algo;
 
 MarchingCubesButton::MarchingCubesButton(Repository* model, Canvas* canvas) :
 	IPopupButton("MarchingCubes", model, canvas),
-	objectButton1("ParticleSystem", model, canvas, Model::ObjectType::ParticleSystemObject),
 	values({
 		DoubleView("Value0", 0),
 		DoubleView("Value1", 100),
@@ -25,7 +24,6 @@ MarchingCubesButton::MarchingCubesButton(Repository* model, Canvas* canvas) :
 
 void MarchingCubesButton::onShow()
 {
-	objectButton1.show();
 	for (auto& v : values) {
 		v.show();
 	}
@@ -34,17 +32,17 @@ void MarchingCubesButton::onShow()
 void MarchingCubesButton::onOk()
 {
 	MarchingCubesAlgo::MCCell cell;
-	cell.position[0] = Vector3dd(0, 0, 0);
-	cell.position[1] = Vector3dd(1, 0, 0);
-	cell.position[2] = Vector3dd(1, 1, 0);
-	cell.position[3] = Vector3dd(0, 1, 0);
-	cell.position[4] = Vector3dd(0, 0, 1);
-	cell.position[5] = Vector3dd(1, 0, 1);
-	cell.position[6] = Vector3dd(1, 1, 1);
-	cell.position[7] = Vector3dd(0, 1, 1);
+	cell.vertices[0].position = Vector3dd(0, 0, 0);
+	cell.vertices[1].position = Vector3dd(1, 0, 0);
+	cell.vertices[2].position = Vector3dd(1, 1, 0);
+	cell.vertices[3].position = Vector3dd(0, 1, 0);
+	cell.vertices[4].position = Vector3dd(0, 0, 1);
+	cell.vertices[5].position = Vector3dd(1, 0, 1);
+	cell.vertices[6].position = Vector3dd(1, 1, 1);
+	cell.vertices[7].position = Vector3dd(0, 1, 1);
 
 	for (int i = 0; i < 8; ++i) {
-		cell.value[i] = values[i].getValue();
+		cell.vertices[i].value = values[i].getValue();
 	}
 
 	MarchingCubesAlgo algo;
@@ -59,4 +57,3 @@ void MarchingCubesButton::onOk()
 void MarchingCubesButton::onCancel()
 {
 }
-
