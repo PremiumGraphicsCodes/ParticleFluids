@@ -1,6 +1,7 @@
 #include "Repository.h"
 
 #include "FileReader.h"
+#include "FileWriter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -29,8 +30,10 @@ bool Repository::read(const std::string& filename)
 	return reader.read(filename, objects);
 }
 
-bool Repository::write(const std::string& filename) const
+bool Repository::write(const std::string& filename)
 {
+	FileWriter writer;
+	return writer.write(filename, objects);
 	//const auto& ext = std::experimental::filesystem::path(filename).extension();
 	/*
 	if (ext == ".obj") {

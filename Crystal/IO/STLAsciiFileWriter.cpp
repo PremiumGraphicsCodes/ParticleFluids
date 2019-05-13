@@ -1,7 +1,13 @@
 #include "STLASCIIFileWriter.h"
 #include <fstream>
 
+using namespace Crystal::Shape;
 using namespace Crystal::IO;
+
+STLASCIIFileWriter::STLASCIIFileWriter(const TriangleMesh& mesh) :
+	mesh(mesh)
+{
+}
 
 bool STLASCIIFileWriter::write(const std::experimental::filesystem::path& filePath)
 {

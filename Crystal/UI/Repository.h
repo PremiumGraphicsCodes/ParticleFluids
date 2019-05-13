@@ -21,7 +21,7 @@ public:
 
 	bool read(const std::string& filename);
 
-	bool write(const std::string& filename) const;
+	bool write(const std::string& filename);
 
 	Model::ObjectRepository* getObjects() { return &objects; }
 

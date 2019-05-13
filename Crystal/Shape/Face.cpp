@@ -77,13 +77,13 @@ float Face::getArea() const
 {
 	const auto& edges = getEdges();
 	auto v1 = (edges[0]->getEnd()->getPosition() - edges[0]->getStart()->getPosition());
-	auto v2 = (edges[1]->getEnd()->getPosition() - edges[1]->getStart()->getPosition());
-	return glm::cross( v1, v2).length() / 2.0f;
+	auto v2 = (edges[1]->getEnd()->getPosition() - edges[0]->getStart()->getPosition());
+	return glm::length( glm::cross( v1, v2) ) / 2.0f;
 }
 
 bool Face::isDegenerated(const float area) const
 {
-	return getArea() < area;
+	return ::fabs( getArea() ) < area;
 }
 
 void Face::toDegenerate()
