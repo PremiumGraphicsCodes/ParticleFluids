@@ -58,14 +58,18 @@ void PolygonMeshBuilder::build(const Sphere3d& sphere, const int unum, const int
 	}
 	for (int i = 0; i < grid.size()-1; ++i) {
 		for (int j = 0; j < grid[i].size() - 1; ++j) {
-			auto e1 = new HalfEdge(grid[i+1][j], grid[i][j] );
-			auto e2 = new HalfEdge(grid[i][j+1], grid[i + 1][j] );
-			auto e3 = new HalfEdge(grid[i][j], grid[i][j + 1]);
-			faces.push_back(new Face(e1, e2, e3));
+			auto e1 = new HalfEdge(grid[i][j], grid[i+1][j] );
+			auto e2 = new HalfEdge(grid[i+1][j], grid[i][j+1] );
+			auto e3 = new HalfEdge(grid[i][j+1], grid[i][j]);
+			auto f1 = new Face(e1, e2, e3);
+			//assert(f1->getArea() > 0.0);
+			faces.push_back(f1);
 			auto e4 = new HalfEdge(grid[i][j+1], grid[i+1][j]);
 			auto e5 = new HalfEdge(grid[i+1][j], grid[i+1][j+1]);
 			auto e6 = new HalfEdge(grid[i+1][j+1], grid[i][j+1]);
-			faces.push_back(new Face(e4, e5, e6));
+			auto f2 = new Face(e4, e5, e6);
+			//assert(f2->getArea() > 0.0);
+			faces.push_back(f2);
 		}
 	}
 }
