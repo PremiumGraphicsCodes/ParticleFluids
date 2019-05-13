@@ -1,15 +1,15 @@
 #include "VolumeButton.h"
 
-#include "../CrystalAlgo/Volume.h"
+#include "../../Crystal/Shape/Volume.h"
 #include "../../Crystal/Math/Gaussian.h"
 #include "../../Crystal/Graphics/ColorMap.h"
 #include "../../Crystal/Graphics/ColorHSV.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
-using namespace Crystal::Algo;
 
 VolumeButton::VolumeButton(Repository* model, Canvas* canvas) :
 	IPopupButton("Volume", model, canvas),

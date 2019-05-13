@@ -4,7 +4,6 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Algo;
 
 Volume::Volume(const int unum, const int vnum, const int wnum, const Box3d& box) :
 	unum(unum),
@@ -37,7 +36,7 @@ void Volume::add(const std::function<double(double)>& function)
 	for (auto& u : nodes) {
 		for (auto& v : u) {
 			for (auto& w : v) {
-				const auto distance = glm::distance( w.getPosition(), center ) / radius;
+				const auto distance = glm::distance(w.getPosition(), center) / radius;
 				const auto value = function(distance);
 				w.setAttribute(w.getAttribute() + value);
 			}

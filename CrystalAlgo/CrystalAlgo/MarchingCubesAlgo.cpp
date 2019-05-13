@@ -3,9 +3,10 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "MarchingCubesAlgo.h"
 #include "MarchingCubesTable.h"
-#include "Volume.h"
+#include "../../Crystal/Shape/Volume.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::MarchingCubesTable;
 

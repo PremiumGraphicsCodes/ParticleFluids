@@ -6,14 +6,16 @@
 #include "MCCell.h"
 
 namespace Crystal {
-	namespace Algo {
+	namespace Shape {
 		class Volume;
+	}
+	namespace Algo {
 
 class MarchingCubesAlgo
 {
 public:
 
-	int build(const Volume& volume, const double isoLevel);
+	int build(const Shape::Volume& volume, const double isoLevel);
 
 	int march(const MCCell& cell, const double isoLevel);
 

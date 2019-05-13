@@ -10,6 +10,9 @@
     <Filter Include="PolygonMesh">
       <UniqueIdentifier>{2d1afe88-86ab-432e-b5ba-9cce9e366110}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Volume">
+      <UniqueIdentifier>{454cd337-108e-4ca0-aeae-93dacbace1be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TriangleMesh.h" />
@@ -47,6 +50,9 @@
     <ClInclude Include="IParticleSystem.h">
       <Filter>ParticleSystem</Filter>
     </ClInclude>
+    <ClInclude Include="Volume.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WireFrame.cpp">
@@ -69,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Volume.cpp">
+      <Filter>Volume</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

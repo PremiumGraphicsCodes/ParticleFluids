@@ -1,6 +1,7 @@
 #include "MarchingCubesButton.h"
 
 #include "../CrystalAlgo/MarchingCubesAlgo.h"
+#include "../../Crystal/Shape/Volume.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Model;
@@ -44,6 +45,19 @@ void MarchingCubesButton::onOk()
 	for (int i = 0; i < 8; ++i) {
 		cell.vertices[i].value = values[i].getValue();
 	}
+	/*
+	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(4, 4, 4));
+	const auto& center = box.getCenter();
+	const auto radius = 2.0;
+	Volume volume(5, 5, 5, box);
+	for (int i = 0; i < 5; ++i) {
+		for (int j = 0; j < 5; ++j) {
+			for (int k = 0; k < 5; ++k) {
+				volume.set()
+			}
+		}
+	}
+	*/
 
 	MarchingCubesAlgo algo;
 	algo.march(cell, 50.0);

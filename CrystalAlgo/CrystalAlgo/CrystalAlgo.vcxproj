@@ -154,7 +154,6 @@
     <ClInclude Include="MCCell.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash.h" />
-    <ClInclude Include="Volume.h" />
     <ClInclude Include="VolumeConvertAlgo.h" />
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +163,6 @@
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
-    <ClCompile Include="Volume.cpp" />
     <ClCompile Include="VolumeConvertAlgo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

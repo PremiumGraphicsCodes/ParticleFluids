@@ -7,7 +7,7 @@
 #include "../../Crystal/Util/UnCopyable.h"
 
 namespace Crystal {
-	namespace Algo {
+	namespace Shape {
 
 class Volume : private UnCopyable
 {

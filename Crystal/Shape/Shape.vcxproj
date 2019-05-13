@@ -30,6 +30,7 @@
     <ClInclude Include="PolygonMeshBuilder.h" />
     <ClInclude Include="TriangleMesh.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Volume.h" />
     <ClInclude Include="WireFrame.h" />
     <ClInclude Include="WireFrameBuilder.h" />
   </ItemGroup>
@@ -39,6 +40,7 @@
     <ClCompile Include="PolygonMesh.cpp" />
     <ClCompile Include="PolygonMeshBuilder.cpp" />
     <ClCompile Include="Vertex.cpp" />
+    <ClCompile Include="Volume.cpp" />
     <ClCompile Include="WireFrame.cpp" />
     <ClCompile Include="WireFrameBuilder.cpp" />
   </ItemGroup>
