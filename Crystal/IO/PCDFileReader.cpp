@@ -4,6 +4,7 @@
 #include <vector>
 #include <cassert>
 
+using namespace Crystal::Math;
 using namespace Crystal::IO;
 
 namespace {
@@ -31,6 +32,17 @@ bool PCDFileReader::read(const std::string& filename)
 
 bool PCDFileReader::read(std::istream& stream)
 {
+	if (!parseHeader(stream)) {
+		return false;
+	}
+	if (!parseData(stream)) {
+		return false;
+	}
+	return true;
+}
+
+bool PCDFileReader::parseHeader(std::istream& stream)
+{
 	std::string str;
 	while (std::getline(stream, str)) {
 		if (str.empty()) {
@@ -49,19 +61,25 @@ bool PCDFileReader::read(std::istream& stream)
 			continue;
 		}
 		else if (splitted[0] == "DATA") {
-
+			return true;
 		}
 	}
-	return false;
-}
 
-bool PCDFileReader::parseHeader(std::istream& stream)
-{
-	return false;
+	return true;
 }
 
 bool PCDFileReader::parseData(std::istream& stream)
 {
-	return false;
+	std::string str;
+	while (std::getline(stream, str)) {
+		const auto& splitted = ::split(str, ' ');
+		assert(splitted.size() >= 3);
+		const auto x = std::stod(splitted[0]);
+		const auto y = std::stod(splitted[1]);
+		const auto z = std::stod(splitted[2]);
+		positions.push_back(Vector3dd(x, y, z));
+	}
+
+	return true;
 }
 

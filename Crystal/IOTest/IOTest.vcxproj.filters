@@ -6,6 +6,7 @@
     <ClCompile Include="DXFFileReaderTest.cpp" />
     <ClCompile Include="MTLFileReaderTest.cpp" />
     <ClCompile Include="STLASCIIFileReaderTest.cpp" />
+    <ClCompile Include="PCDFileReaderTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
