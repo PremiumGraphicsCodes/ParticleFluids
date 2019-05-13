@@ -16,11 +16,11 @@ public:
 
 	void clear() override;
 
-	int addObject(const Math::Vector3df& position, const ParticleAttribute& attribute, const std::string& name);
+	int addObject(const Math::Vector3dd& position, const ParticleAttribute& attribute, const std::string& name);
 
-	int addObject(const std::vector<Math::Vector3df>& positions, const ParticleAttribute& attribute, const std::string& name);
+	int addObject(const std::vector<Math::Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name);
 
-	int addObject(const std::vector<Math::Vector3df>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
+	int addObject(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
 	ParticleSystemObject* findObjectById(const int id) const;
 

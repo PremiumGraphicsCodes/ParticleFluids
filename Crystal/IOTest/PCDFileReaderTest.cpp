@@ -26,4 +26,5 @@ TEST(PCDFileReaderTest, TestRead)
 		<< "0.944 0.29474 0 4.2108e+06" << std::endl;
 	PCDFileReader reader;
 	EXPECT_TRUE( reader.read(stream) );
+	EXPECT_EQ(5, reader.getPositions().size()) << std::endl;
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <filesystem>
 #include "../Math/Vector3d.h"
 
 namespace Crystal {
@@ -11,7 +12,9 @@ class PCDFileReader
 public:
 	bool read(std::istream& stream);
 
-	bool read(const std::string& filename);
+	bool read(const std::experimental::filesystem::path& filename);
+
+	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
 private:
 	bool parseHeader(std::istream& stream);

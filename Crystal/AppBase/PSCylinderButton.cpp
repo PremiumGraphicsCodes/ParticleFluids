@@ -20,7 +20,7 @@ void PSCylinderButton::onOk()
 	const auto& cylinder = cylinderButton.getValue();
 	std::mt19937 mt{ std::random_device{}() };
 	std::uniform_real_distribution<double> dist(0.0, 1.0);
-	std::vector<Vector3df> positions;
+	std::vector<Vector3dd> positions;
 	for (int i = 0; i < count; ++i) {
 		const auto u = dist(mt);
 		const auto v = dist(mt);

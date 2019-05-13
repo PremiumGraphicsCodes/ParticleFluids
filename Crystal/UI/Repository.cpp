@@ -26,7 +26,7 @@ void Repository::clear()
 bool Repository::read(const std::string& filename)
 {
 	FileReader reader;
-	return reader.read(filename);
+	return reader.read(filename, objects);
 }
 
 bool Repository::write(const std::string& filename) const

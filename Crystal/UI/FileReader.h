@@ -9,7 +9,7 @@ namespace Crystal {
 class FileReader
 {
 public:
-	bool read(const std::experimental::filesystem::path& filePath);
+	bool read(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& repository);
 
 	//ObjectRepository getObjects() const { return objects; }
 

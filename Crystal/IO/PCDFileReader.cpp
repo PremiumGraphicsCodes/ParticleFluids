@@ -21,7 +21,7 @@ namespace {
 	}
 }
 
-bool PCDFileReader::read(const std::string& filename)
+bool PCDFileReader::read(const std::experimental::filesystem::path& filename)
 {
 	std::ifstream stream(filename);
 	if (!stream.is_open()) {
