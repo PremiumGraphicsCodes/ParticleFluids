@@ -25,6 +25,9 @@
     <ClInclude Include="VolumeConvertAlgo.h">
       <Filter>Volume</Filter>
     </ClInclude>
+    <ClInclude Include="MCCell.h">
+      <Filter>MarchingCubes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">

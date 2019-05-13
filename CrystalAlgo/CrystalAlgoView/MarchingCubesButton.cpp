@@ -31,7 +31,7 @@ void MarchingCubesButton::onShow()
 
 void MarchingCubesButton::onOk()
 {
-	MarchingCubesAlgo::MCCell cell;
+	MCCell cell;
 	cell.vertices[0].position = Vector3dd(0, 0, 0);
 	cell.vertices[1].position = Vector3dd(1, 0, 0);
 	cell.vertices[2].position = Vector3dd(1, 1, 0);

@@ -151,6 +151,7 @@
     <ClInclude Include="IntersectionAlgo.h" />
     <ClInclude Include="MarchingCubesAlgo.h" />
     <ClInclude Include="MarchingCubesTable.h" />
+    <ClInclude Include="MCCell.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash.h" />
     <ClInclude Include="Volume.h" />

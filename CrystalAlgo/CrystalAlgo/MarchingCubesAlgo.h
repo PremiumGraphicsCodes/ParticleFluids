@@ -3,6 +3,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Math/Box3d.h"
+#include "MCCell.h"
 
 namespace Crystal {
 	namespace Algo {
@@ -11,32 +12,6 @@ namespace Crystal {
 class MarchingCubesAlgo
 {
 public:
-	struct MCCell
-	{
-		struct Vertex
-		{
-			Vertex()
-			{}
-
-			Vertex(const Math::Vector3dd& position, double value) :
-				position(position),
-				value(value)
-			{}
-
-			Math::Vector3dd position;
-			double value;
-		};
-
-		MCCell()
-		{}
-
-		explicit MCCell(const std::array<Vertex, 8>& vertices) :
-			vertices(vertices)
-		{
-		}
-
-		std::array<Vertex, 8> vertices;
-	};
 
 	int build(const Volume& volume, const double isoLevel);
 
