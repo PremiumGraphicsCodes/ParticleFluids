@@ -1,6 +1,8 @@
 #include "PolygonMeshBuilder.h"
 #include "HalfEdge.h"
 
+#include "TriangleMesh.h"
+
 #include "../Math/Line3d.h"
 #include "../Math/Sphere3d.h"
 #include "../Math/Box3d.h"
@@ -133,6 +135,31 @@ void PolygonMeshBuilder::build(const std::vector<std::pair<Vector3dd, Vector3dd>
 		faces.push_back(new Face(e1, e2, e3));
 	}
 }
+
+void PolygonMeshBuilder::build(const TriangleMesh& mesh)
+{
+	const auto& fs = mesh.getFaces();
+	for (const auto& f : fs) {
+		const auto& vs = f.getVertices();
+		const auto& normal = f.getNormal();
+		std::vector<Vertex*> vss;
+		for (auto v : vs) {
+			VertexAttr attr;
+			attr.normal = normal;
+			attr.id = nextVertexId++;
+			vss.push_back( new Vertex(v, attr) );
+		}
+		for (auto v : vss) {
+			vertices.push_back(v);
+		}
+		auto e1 = new HalfEdge(vss[0], vss[1]);
+		auto e2 = new HalfEdge(vss[1], vss[2]);
+		auto e3 = new HalfEdge(vss[2], vss[0]);
+
+		faces.push_back(new Face(e1, e2, e3));
+	}
+}
+
 
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh() const
 {

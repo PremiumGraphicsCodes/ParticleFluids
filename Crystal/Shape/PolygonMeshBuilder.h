@@ -10,6 +10,7 @@ namespace Crystal {
 		class Triangle3d;
 	}
 	namespace Shape {
+		class TriangleMesh;
 
 class PolygonMeshBuilder : private UnCopyable
 {
@@ -28,6 +29,8 @@ public:
 	void build(const Math::Vector3dd& start, const Math::Vector3dd& uvec, const Math::Vector3dd& vvec);
 
 	void build(const std::vector<std::pair<Math::Vector3dd, Math::Vector3dd> >& positionNormals, const std::vector<int>& indices);
+
+	void build(const TriangleMesh& mesh);
 
 	PolygonMesh* getPolygonMesh() const;
 

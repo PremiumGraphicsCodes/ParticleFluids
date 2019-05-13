@@ -7,6 +7,7 @@
 #include "../IO/STLAsciiFileReader.h"
 #include "../IO/PCDFileReader.h"
 
+using namespace Crystal::Shape;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
@@ -20,7 +21,6 @@ bool FileReader::read(const std::experimental::filesystem::path& filePath, Objec
 			;
 			return true;
 		}
-		return false;
 	}
 	else if (ext == ".dxf") {
 		DXFFileReader reader;
@@ -28,19 +28,23 @@ bool FileReader::read(const std::experimental::filesystem::path& filePath, Objec
 	}
 	else if (ext == ".stl") {
 		STLASCIIFileReader reader;
-		return reader.read(filePath);
+		if (reader.read(filePath)) {
+			PolygonMeshBuilder builder;
+			TriangleMesh mesh(reader.getFaces());
+			builder.build(mesh);
+			repository.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "STL");
+		}
 	}
 	else if (ext == ".pcd") {
 		PCDFileReader reader;
-		if (!reader.read(filePath)) {
-			return false;
+		if (reader.read(filePath)) {
+			const auto& positions = reader.getPositions();
+			ParticleAttribute attr;
+			attr.color = glm::vec4(0, 0, 0, 0);
+			attr.size = 1.0;
+			repository.getParticleSystems()->addObject(positions, attr, "PCD");
+			return true;
 		}
-		const auto& positions = reader.getPositions();
-		ParticleAttribute attr;
-		attr.color = glm::vec4(0, 0, 0, 0);
-		attr.size = 1.0;
-		repository.getParticleSystems()->addObject(positions, attr, "PCD");
-		return true;
 	}
 	return false;
 }
