@@ -1,7 +1,7 @@
 #include "Repository.h"
 
 #include "../Model/FileReader.h"
-#include "FileWriter.h"
+#include "../Model/FileWriter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -34,14 +34,6 @@ bool Repository::write(const std::string& filename)
 {
 	FileWriter writer;
 	return writer.write(filename, objects);
-	//const auto& ext = std::experimental::filesystem::path(filename).extension();
-	/*
-	if (ext == ".obj") {
-		OBJFileWriter reader;
-		return reader.read(filename);
-	}
-	*/
-	return false;
 }
 
 ViewModel Repository::toViewModel()

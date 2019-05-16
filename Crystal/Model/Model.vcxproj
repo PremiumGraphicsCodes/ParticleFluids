@@ -24,6 +24,7 @@
   <ItemGroup>
     <ClInclude Include="AppearanceObjectRepository.h" />
     <ClInclude Include="FileReader.h" />
+    <ClInclude Include="FileWriter.h" />
     <ClInclude Include="ImageObject.h" />
     <ClInclude Include="ImageObjectRepository.h" />
     <ClInclude Include="IObject.h" />
@@ -53,6 +54,7 @@
   <ItemGroup>
     <ClCompile Include="AppearanceObjectRepository.cpp" />
     <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="ImageObjectRepository.cpp" />
     <ClCompile Include="LightObjectRepository.cpp" />
     <ClCompile Include="MaterialObjectRepository.cpp" />

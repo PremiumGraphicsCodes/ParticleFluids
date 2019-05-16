@@ -7,7 +7,6 @@
 
 using namespace Crystal::IO;
 using namespace Crystal::Model;
-using namespace Crystal::UI;
 
 bool FileWriter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {

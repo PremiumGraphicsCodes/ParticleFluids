@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="Canvas.h" />
-    <ClInclude Include="FileWriter.h" />
     <ClInclude Include="AppearanceViewModel.h" />
     <ClInclude Include="ObjectIdRenderer.h" />
     <ClInclude Include="ObjectIdViewModel.h" />
@@ -43,7 +42,6 @@
     <ClCompile Include="AppearanceViewModel.cpp" />
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="Canvas.cpp" />
-    <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="ObjectIdRenderer.cpp" />
     <ClCompile Include="ObjectIdViewModel.cpp" />
     <ClCompile Include="Repository.cpp" />

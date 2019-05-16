@@ -14,9 +14,6 @@
     <ClInclude Include="ObjectRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="FileWriter.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="RectSelectUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
@@ -66,9 +63,6 @@
     <ClCompile Include="ObjectRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="FileWriter.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectIdRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -107,9 +101,6 @@
     </Filter>
     <Filter Include="ViewModel">
       <UniqueIdentifier>{608235fd-0d00-49ea-8cc3-df5da7ec1cb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FileIO">
-      <UniqueIdentifier>{974bf834-b01b-4c18-8ad9-9460560b8138}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
