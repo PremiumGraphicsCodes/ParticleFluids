@@ -1,7 +1,7 @@
 #ifndef __CRYSTAL_IO_STL_ASCII_FILE_READER_H__
 #define __CRYSTAL_IO_STL_ASCII_FILE_READER_H__
 
-#include "../Shape/TriangleMesh.h"
+#include "STLFile.h"
 
 #include <fstream>
 
@@ -9,9 +9,6 @@
 #include <filesystem>
 
 namespace Crystal {
-	namespace Shape {
-		class PolygonMesh;
-	}
 	namespace IO {
 
 class STLASCIIFileReader
@@ -24,11 +21,10 @@ public:
 
 	bool read(std::istream& stream);
 
-	std::vector<Shape::TriangleFace> getFaces() const { return faces; }
+	STLFile getSTL() const { return stl; }
 
 private:
-	std::vector<Shape::TriangleFace> faces;
-	std::string title;
+	STLFile stl;
 };
 
 	}

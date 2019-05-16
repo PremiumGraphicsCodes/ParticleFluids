@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Shape/TriangleMesh.h"
+#include "STLFile.h"
 #include <filesystem>
 
 namespace Crystal {
@@ -9,15 +9,12 @@ namespace Crystal {
 class STLASCIIFileWriter
 {
 public:
-	explicit STLASCIIFileWriter(const Shape::TriangleMesh& mesh);
+	bool write(const std::experimental::filesystem::path& filePath, const STLFile& stl);
 
-	bool write(const std::experimental::filesystem::path& filePath);
-
-	bool write(std::ostream& stream);
+	bool write(std::ostream& stream, const STLFile& stl);
 
 private:
 	std::string title;
-	Shape::TriangleMesh mesh;
 };
 	}
 }

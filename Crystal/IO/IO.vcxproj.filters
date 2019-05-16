@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Helper.h" />
-    <ClInclude Include="DXFFileReader.h" />
     <ClInclude Include="STLASCIIFileReader.h">
       <Filter>STL</Filter>
     </ClInclude>
@@ -36,9 +35,11 @@
     <ClInclude Include="PCDFile.h">
       <Filter>PCD</Filter>
     </ClInclude>
+    <ClInclude Include="STLFile.h">
+      <Filter>STL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DXFFileReader.cpp" />
     <ClCompile Include="STLASCIIFileReader.cpp">
       <Filter>STL</Filter>
     </ClCompile>

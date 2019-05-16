@@ -4,25 +4,20 @@
 using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
-STLASCIIFileWriter::STLASCIIFileWriter(const TriangleMesh& mesh) :
-	mesh(mesh)
-{
-}
-
-bool STLASCIIFileWriter::write(const std::experimental::filesystem::path& filePath)
+bool STLASCIIFileWriter::write(const std::experimental::filesystem::path& filePath, const STLFile& stl)
 {
 	std::ofstream stream(filePath);
 	if (!stream.is_open()) {
 		return false;
 	}
-	return write(stream);
+	return write(stream, stl);
 }
 
-bool STLASCIIFileWriter::write(std::ostream& stream)
+bool STLASCIIFileWriter::write(std::ostream& stream, const STLFile& stl)
 {
 	stream << "solid" << " " << title.c_str() << std::endl;
 
-	const auto& faces = mesh.getFaces();
+	const auto& faces = stl.faces;
 	for (const auto& face : faces) {
 		stream << "facet" << " ";
 		const auto& normal = face.getNormal();

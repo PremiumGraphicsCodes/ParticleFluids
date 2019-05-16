@@ -15,9 +15,6 @@ bool FileWriter::write(const std::experimental::filesystem::path& filePath, Obje
 	if (ext == ".obj") {
 		return false;
 	}
-	else if (ext == ".dxf") {
-		return false;
-	}
 	else if (ext == ".stl") {
 		const auto& polygons = objects.getPolygonMeshes()->getObjects();
 		std::vector<Shape::TriangleFace> fs;
@@ -36,8 +33,10 @@ bool FileWriter::write(const std::experimental::filesystem::path& filePath, Obje
 			}
 		}
 		Shape::TriangleMesh mesh(fs);
-		STLASCIIFileWriter writer(mesh);
-		return writer.write(filePath);
+		STLASCIIFileWriter writer;
+		STLFile stl;
+		stl.faces = mesh.getFaces();
+		return writer.write(filePath, stl);
 		//STLASCIIFileWriter writer(;
 		//return writer.write(filePath);
 	}

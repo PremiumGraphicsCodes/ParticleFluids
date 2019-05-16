@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DXFFileReader.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageFileReader.h" />
     <ClInclude Include="ImageFileWriter.h" />
@@ -32,9 +31,9 @@
     <ClInclude Include="STLASCIIFileWriter.h" />
     <ClInclude Include="STLBinaryFileReader.h" />
     <ClInclude Include="STLBinaryFileWriter.h" />
+    <ClInclude Include="STLFile.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DXFFileReader.cpp" />
     <ClCompile Include="ImageFileReader.cpp" />
     <ClCompile Include="ImageFileWriter.cpp" />
     <ClCompile Include="MTLFileReader.cpp" />

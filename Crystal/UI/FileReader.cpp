@@ -3,7 +3,6 @@
 #include <filesystem>
 
 #include "../IO/OBJFileReader.h"
-#include "../IO/DXFFileReader.h"
 #include "../IO/STLAsciiFileReader.h"
 #include "../IO/PCDFileReader.h"
 
@@ -22,15 +21,12 @@ bool FileReader::read(const std::experimental::filesystem::path& filePath, Objec
 			return true;
 		}
 	}
-	else if (ext == ".dxf") {
-		DXFFileReader reader;
-		return reader.read(filePath);
-	}
 	else if (ext == ".stl") {
 		STLASCIIFileReader reader;
 		if (reader.read(filePath)) {
 			PolygonMeshBuilder builder;
-			TriangleMesh mesh(reader.getFaces());
+			const auto& stl = reader.getSTL();
+			TriangleMesh mesh(stl.faces);
 			builder.build(mesh);
 			repository.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "STL");
 		}

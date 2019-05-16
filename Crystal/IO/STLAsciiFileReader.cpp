@@ -25,7 +25,7 @@ bool STLASCIIFileReader::read(std::istream& stream)
 
 	std::getline(stream, str);
 
-	this->title = str;
+	stl.header = str;
 
 	str = Helper::read<std::string>(stream);
 	while (str != "endsolid") {
@@ -59,7 +59,7 @@ bool STLASCIIFileReader::read(std::istream& stream)
 			vertices[i] = Helper::readVector<double>(stream);
 		}
 
-		faces.push_back(TriangleFace(vertices, normal));
+		stl.faces.push_back(TriangleFace(vertices, normal));
 
 		str = Helper::read<std::string>(stream);
 		if (str != "endloop") {

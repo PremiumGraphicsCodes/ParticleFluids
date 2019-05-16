@@ -6,8 +6,6 @@
 using namespace Crystal::Math;
 using namespace Crystal::IO;
 
-using T = float;
-
 namespace {
 	std::stringstream getSampleAscii() {
 		std::stringstream stream;
@@ -34,11 +32,11 @@ namespace {
 
 TEST(STLAsciiFileReaderTest, TestReadAscii)
 {
-	std::stringstream stream = getSampleAscii();
+	auto stream = getSampleAscii();
 
 	STLASCIIFileReader reader;
 	EXPECT_TRUE(reader.read(stream));
-	const auto& faces = reader.getFaces();
+	const auto& faces = reader.getSTL().faces;
 
 	EXPECT_EQ(2, faces.size());
 
@@ -53,15 +51,4 @@ TEST(STLAsciiFileReaderTest, TestReadAscii)
 	EXPECT_EQ( Vector3dd(1,1,1), face2.getVertices()[0]);
 	EXPECT_EQ( Vector3dd(0,1,1), face2.getVertices()[1]);
 	EXPECT_EQ( Vector3dd(1,0,1), face2.getVertices()[2]);
-
-	/*
-	const Vector3dd normal2(0.0, 0.0, 1.0);
-	const std::vector< Vector3dd > positions2 = {
-		Vector3dd(1.0, 1.0, 1.0),
-		Vector3dd(0.0, 1.0, 1.0),
-		Vector3dd(1.0, 0.0, 1.0)
-	};
-	STLFile expected(cells, " cube-ascii");
-	EXPECT_EQ(expected, file);
-	*/
 }
