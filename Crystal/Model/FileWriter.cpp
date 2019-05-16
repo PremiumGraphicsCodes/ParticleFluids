@@ -11,7 +11,7 @@ using namespace Crystal::Model;
 
 bool FileWriter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
-	const auto format = getFormat(filePath);
+	const auto format = getFileFormat(filePath);
 	return write(filePath, objects, format);
 }
 

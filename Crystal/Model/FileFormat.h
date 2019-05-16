@@ -14,7 +14,7 @@ enum class FileFormat
 	NONE,
 };
 
-static FileFormat getFormat(const std::experimental::filesystem::path& path)
+static FileFormat getFileFormat(const std::experimental::filesystem::path& path)
 {
 	const auto& ext = path.extension();
 	if (ext == ".obj") {
