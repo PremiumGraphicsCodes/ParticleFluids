@@ -3,6 +3,7 @@
 #include <filesystem>
 
 #include "../IO/STLASCIIFileWriter.h"
+#include "../IO/STLBinaryFileWriter.h"
 #include "../IO/PCDFileWriter.h"
 
 using namespace Crystal::IO;
@@ -14,7 +15,7 @@ bool FileWriter::write(const std::experimental::filesystem::path& filePath, Obje
 	return write(filePath, objects, format);
 }
 
-bool FileWriter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, const FileFormat& format)
+bool FileWriter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
@@ -30,25 +31,6 @@ bool FileWriter::write(const std::experimental::filesystem::path& filePath, Obje
 	}
 	return false;
 }
-
-FileFormat FileWriter::getFormat(const std::experimental::filesystem::path& filePath)
-{
-	const auto& ext = filePath.extension();
-	if (ext == ".obj") {
-		return FileFormat::OBJ;
-	}
-	else if (ext == ".stl") {
-		return FileFormat::STL_ASCII;
-	}
-	else if (ext == ".pcd") {
-		return FileFormat::PCD;
-	}
-	else {
-		assert(false);
-		return FileFormat::NONE;
-	}
-}
-
 
 bool FileWriter::writeOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
@@ -82,7 +64,27 @@ bool FileWriter::writeSTLAscii(const std::experimental::filesystem::path& filePa
 
 bool FileWriter::writeSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
-	return false;
+	const auto& polygons = objects.getPolygonMeshes()->getObjects();
+	std::vector<Shape::TriangleFace> fs;
+	for (auto p : polygons) {
+		const auto& faces = p->getShape()->getFaces();
+		for (const auto& f : faces) {
+			if (f->isDegenerated(1.0e-12)) {
+				continue;
+			}
+			const auto v1 = f->getV1()->getPosition();
+			const auto v2 = f->getV2()->getPosition();
+			const auto v3 = f->getV3()->getPosition();
+			Shape::TriangleFace ff({ v1,v2,v3 });
+			//const auto area = ff.toTriangle().getArea();
+			fs.push_back(ff);
+		}
+	}
+	Shape::TriangleMesh mesh(fs);
+	STLBinaryFileWriter writer(fs);
+	STLFile stl;
+	stl.faces = mesh.getFaces();
+	return writer.write(filePath);
 }
 
 bool FileWriter::writePCD(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)

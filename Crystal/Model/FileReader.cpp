@@ -43,3 +43,13 @@ bool FileReader::read(const std::experimental::filesystem::path& filePath, Objec
 	}
 	return false;
 }
+
+bool FileReader::read(const std::experimental::filesystem::path& filePath, ObjectRepository& repository, const FileFormat format)
+{
+	return false;
+}
+
+bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+{
+	return false;
+}
