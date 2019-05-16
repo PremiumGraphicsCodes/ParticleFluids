@@ -3,6 +3,7 @@
 #include <filesystem>
 
 #include "../IO/STLASCIIFileWriter.h"
+#include "../IO/PCDFileWriter.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Model;
@@ -18,7 +19,7 @@ bool FileWriter::write(const std::experimental::filesystem::path& filePath, Obje
 		return false;
 	}
 	else if (ext == ".stl") {
-		const auto polygons = objects.getPolygonMeshes()->getObjects();
+		const auto& polygons = objects.getPolygonMeshes()->getObjects();
 		std::vector<Shape::TriangleFace> fs;
 		for (auto p : polygons) {
 			const auto& faces = p->getShape()->getFaces();
@@ -39,6 +40,15 @@ bool FileWriter::write(const std::experimental::filesystem::path& filePath, Obje
 		return writer.write(filePath);
 		//STLASCIIFileWriter writer(;
 		//return writer.write(filePath);
+	}
+	else if (ext == ".pcd") {
+		const auto& positions = objects.getParticleSystems()->getAllVertices();
+		PCDFile pcd;
+		pcd.header.points = positions.size();
+		pcd.header.width = positions.size();
+		pcd.data.positions = std::vector<Math::Vector3dd>(positions.begin(), positions.end());
+		PCDFileWriter writer;
+		return writer.write(filePath, pcd);
 	}
 	return false;
 }

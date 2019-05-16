@@ -34,6 +34,7 @@ void FileMenu::show()
 			FileSaveView view("");
 			view.addFilter("*.stl");
 			view.addFilter("*.obj");
+			view.addFilter("*.pcd");
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {

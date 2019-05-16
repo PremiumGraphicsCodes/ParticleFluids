@@ -9,7 +9,8 @@ struct PCDFile
 {
 	struct Header
 	{
-
+		int width = 0;
+		int points = 0;
 	};
 	struct Data
 	{

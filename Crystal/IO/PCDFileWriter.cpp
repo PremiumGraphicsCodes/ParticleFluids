@@ -27,11 +27,39 @@ bool PCDFileWriter::write(std::ostream& stream, const PCDFile& pcd)
 
 bool PCDFileWriter::write(std::ostream& stream, const PCDFile::Header& header)
 {
-	return false;
+	stream
+		<< "# .PCD v.7 - Point Cloud Data file format" << std::endl
+		<< "VERSION "
+		<< ".7" << std::endl
+		<< "FIELDS "
+		<< "x y z rgb" << std::endl
+		<< "SIZE "
+		<< "4 4 4 4" << std::endl
+		<< "TYPE "
+		<< "F F F F" << std::endl
+		<< "COUNT "
+		<< "1 1 1 1" << std::endl
+		<< "WIDTH "
+		<< header.width << std::endl
+		<< "HEIGHT "
+		<< "1" << std::endl
+		<< "VIEWPOINT "
+		<< "0 0 0 1 0 0 0" << std::endl
+		<< "POINTS "
+		<< header.points << std::endl
+		<< "DATA "
+		<< "ascii" << std::endl;
+
+	return true;
 }
 
 bool PCDFileWriter::write(std::ostream& stream, const PCDFile::Data& data)
 {
+	const auto& positions = data.positions;
+	for (const auto& p : positions) {
+		const float color = 0.0f;
+		stream << p.x << " " <<  p.y << " " <<  p.z << " " << color << std::endl;
+	}
 	return true;
 }
 
