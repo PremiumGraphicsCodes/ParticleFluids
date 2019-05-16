@@ -3,7 +3,13 @@
 #include <fstream>
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::IO;
+
+STLBinaryFileWriter::STLBinaryFileWriter(const std::vector<TriangleFace>& faces) :
+	faces(faces)
+{
+}
 
 bool STLBinaryFileWriter::write(const std::experimental::filesystem::path& filePath)
 {
