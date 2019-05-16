@@ -2,7 +2,8 @@
 
 #include <string>
 #include <filesystem>
-#include "../Math/Vector3d.h"
+
+#include "PCDFile.h"
 
 namespace Crystal {
 	namespace IO {
@@ -14,16 +15,16 @@ public:
 
 	bool read(const std::experimental::filesystem::path& filename);
 
-	std::vector<Math::Vector3dd> getPositions() const { return positions; }
+	PCDFile getPCD() const { return pcd; }
 
 private:
-	bool parseHeader(std::istream& stream);
+	PCDFile::Header readHeader(std::istream& stream);
 
-	bool parseData(std::istream& stream);
+	PCDFile::Data readData(std::istream& stream);
 
 private:
-	std::string version;
-	std::vector<Math::Vector3dd> positions;
+	bool isOk;
+	PCDFile pcd;
 };
 	}
 }

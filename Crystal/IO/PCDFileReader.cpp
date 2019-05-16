@@ -32,17 +32,14 @@ bool PCDFileReader::read(const std::experimental::filesystem::path& filename)
 
 bool PCDFileReader::read(std::istream& stream)
 {
-	if (!parseHeader(stream)) {
-		return false;
-	}
-	if (!parseData(stream)) {
-		return false;
-	}
+	this->pcd.header = readHeader(stream);
+	this->pcd.data = readData(stream);
 	return true;
 }
 
-bool PCDFileReader::parseHeader(std::istream& stream)
+PCDFile::Header PCDFileReader::readHeader(std::istream& stream)
 {
+	PCDFile::Header header;
 	std::string str;
 	while (std::getline(stream, str)) {
 		if (str.empty()) {
@@ -54,22 +51,24 @@ bool PCDFileReader::parseHeader(std::istream& stream)
 		const auto& splitted = ::split(str, ' ');
 		assert(splitted.size() >= 2);
 		if (splitted[0] == "VERSION") {
-			this->version = splitted[1];
+			//this->version = splitted[1];
 			continue;
 		}
 		else if (splitted[0] == "FIELDS") {
 			continue;
 		}
 		else if (splitted[0] == "DATA") {
-			return true;
+			return header;
 		}
 	}
 
-	return true;
+	return header;
 }
 
-bool PCDFileReader::parseData(std::istream& stream)
+PCDFile::Data PCDFileReader::readData(std::istream& stream)
 {
+	PCDFile::Data data;
+
 	std::string str;
 	while (std::getline(stream, str)) {
 		const auto& splitted = ::split(str, ' ');
@@ -77,9 +76,9 @@ bool PCDFileReader::parseData(std::istream& stream)
 		const auto x = std::stod(splitted[0]);
 		const auto y = std::stod(splitted[1]);
 		const auto z = std::stod(splitted[2]);
-		positions.push_back(Vector3dd(x, y, z));
+		data.positions.push_back(Vector3dd(x, y, z));
 	}
 
-	return true;
+	return data;
 }
 

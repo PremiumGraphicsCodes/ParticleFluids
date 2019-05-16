@@ -38,7 +38,7 @@ bool FileReader::read(const std::experimental::filesystem::path& filePath, Objec
 	else if (ext == ".pcd") {
 		PCDFileReader reader;
 		if (reader.read(filePath)) {
-			const auto& positions = reader.getPositions();
+			const auto& positions = reader.getPCD().data.positions;
 			ParticleAttribute attr;
 			attr.color = glm::vec4(0, 0, 0, 0);
 			attr.size = 1.0;
