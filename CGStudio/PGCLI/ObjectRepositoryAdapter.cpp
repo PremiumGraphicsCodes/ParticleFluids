@@ -15,7 +15,7 @@ ObjectRepositoryAdapter::~ObjectRepositoryAdapter()
 int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::UI::ParticleAppearance^ appearance)
 {
 	auto positions = src->Positions;
-	std::vector<Crystal::Math::Vector3df> ps;
+	std::vector<Crystal::Math::Vector3dd> ps;
 	for (int i = 0; i < positions->Count; ++i) {
 		const auto& p = Converter::toCpp(positions[i]);
 		ps.push_back(p);
