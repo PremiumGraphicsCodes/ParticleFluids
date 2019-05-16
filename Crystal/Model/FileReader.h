@@ -4,7 +4,7 @@
 #include "../Model/ObjectRepository.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Model {
 
 class FileReader
 {
@@ -16,5 +16,6 @@ public:
 private:
 	//ObjectRepository objects;
 };
+
 	}
 }

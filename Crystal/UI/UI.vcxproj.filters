@@ -14,9 +14,6 @@
     <ClInclude Include="ObjectRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="FileReader.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="FileWriter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
@@ -68,9 +65,6 @@
     </ClCompile>
     <ClCompile Include="ObjectRenderer.cpp">
       <Filter>Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="FileReader.cpp">
-      <Filter>FileIO</Filter>
     </ClCompile>
     <ClCompile Include="FileWriter.cpp">
       <Filter>FileIO</Filter>

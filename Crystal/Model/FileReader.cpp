@@ -9,7 +9,6 @@
 using namespace Crystal::Shape;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
-using namespace Crystal::UI;
 
 bool FileReader::read(const std::experimental::filesystem::path& filePath, ObjectRepository& repository)
 {
