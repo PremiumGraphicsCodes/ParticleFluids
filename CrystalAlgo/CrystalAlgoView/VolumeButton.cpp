@@ -47,7 +47,7 @@ void VolumeButton::onOk()
 		colorMap.setColor(i, hsv.toColorRGBA());
 	}
 
-	std::vector<Vector3df> positions;
+	std::vector<Vector3dd> positions;
 	std::vector<ParticleAttribute> attrs;
 	for (const auto& p : particles) {
 		positions.push_back(p.getPosition());

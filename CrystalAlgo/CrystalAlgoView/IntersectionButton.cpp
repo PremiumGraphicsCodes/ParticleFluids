@@ -34,7 +34,7 @@ void IntersectionButton::onOk()
 	const auto isFound = algo.calculateIntersection(*obj1->getShape(),*obj2->getShape(), tolerance.getValue());
 	if (isFound) {
 		const auto& intersections = algo.getIntersections();
-		std::vector<Math::Vector3df> positions;
+		std::vector<Math::Vector3dd> positions;
 		for (const auto& i : intersections) {
 			const auto& p = i.position;
 			positions.push_back(p);

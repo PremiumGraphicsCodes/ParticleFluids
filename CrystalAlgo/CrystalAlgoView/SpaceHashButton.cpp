@@ -34,7 +34,7 @@ void SpaceHashButton::onOk()
 
 	const auto& neighbors = space.getNeighbors(positionButton.getPosition());
 
-	std::vector<Vector3df> positions;
+	std::vector<Vector3dd> positions;
 	ParticleAttribute attr;
 	attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 	attr.size = 1.0;

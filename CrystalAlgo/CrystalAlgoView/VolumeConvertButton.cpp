@@ -29,7 +29,7 @@ void VolumeConvertButton::onOk()
 	//converter.convert(volume, );
 
 	const auto& particles = volume.toParticles();
-	std::vector<Vector3df> positions;
+	std::vector<Vector3dd> positions;
 	for (const auto& p : particles) {
 		positions.push_back(p.getPosition());
 	}
