@@ -84,6 +84,9 @@
     <ClInclude Include="FileWriter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
+    <ClInclude Include="FileFormat.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectRepository.cpp">
