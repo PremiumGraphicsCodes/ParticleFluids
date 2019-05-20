@@ -8,9 +8,9 @@ namespace Crystal {
 
 struct OBJFace
 {
-	std::vector<int> positionIndex;
-	std::vector<int> normalIndex;
-	std::vector<int> texCoordIndex;
+	std::vector<int> positionIndices;
+	std::vector<int> normalIndices;
+	std::vector<int> texCoordIndices;
 };
 
 struct OBJFile

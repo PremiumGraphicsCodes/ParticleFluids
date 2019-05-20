@@ -29,5 +29,17 @@ bool OBJFileWriter::write(std::ostream& stream, const OBJFile& obj)
 	}
 
 	// normals
+	const auto& normals = obj.normals;
+	for (const auto& vn : normals) {
+		stream << "vn " << vn.x << " " << vn.y << " " << vn.z << std::endl;
+	}
+
+	// faces
+	const auto& faces = obj.faces;
+	for (const auto& f : faces) {
+		for (int i = 0; i < f.positionIndices.size(); ++i) {
+			stream << "f " << f.positionIndices[i] << "/" << f.texCoordIndices[i] << "/" << f.normalIndices[i] << std::endl;
+		}
+	}
 	return false;
 }

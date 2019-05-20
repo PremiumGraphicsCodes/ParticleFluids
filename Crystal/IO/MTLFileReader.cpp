@@ -114,12 +114,10 @@ bool MTLFile::write(std::ostream& stream) const
 	sprintf(s, "Ks %.4lf %.4lf %.4lf", specular.r, specular.g, specular.b);
 	stream << s << std::endl;
 
-	const float shininess = this->getSpecularExponent();
-	sprintf(s, "Ns %.4lf", shininess);
+	sprintf(s, "Ns %.4lf", specularExponent);
 	stream << s << std::endl;
 
-	const float tr = this->getTransparent();
-	sprintf(s, "Tr %.4lf", tr);
+	sprintf(s, "Tr %.4lf", transparent);
 	stream << s << std::endl;
 
 	return true;
@@ -158,29 +156,5 @@ bool MTLFileReader::read(std::istream& stream)
 			stream >> header;
 		}
 	}
-
 	return true;
 }
-
-/*
-Material OBJMaterial::toMaterial(const std::string& directory) const
-{
-	Material m;
-	m.setAmbient(this->ambient);
-	m.setDiffuse(this->diffuse);
-	m.setSpecular(this->specular);
-	m.setShininess(this->specularExponent);
-
-	Texture texture;
-	if (!this->diffuseTexture.empty()) {
-		File file(directory + this->diffuseTexture);
-		Imagef* texImage = new Imagef();
-		texImage->read(file.getFullPath());
-		texture.setDiffuse(texImage);
-	}
-	m.setTexture(texture);
-	//t.setDirectory(directory);
-
-	return m;
-}
-*/
