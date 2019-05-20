@@ -17,7 +17,8 @@
 namespace Crystal {
 	namespace IO {
 
-struct MTL {
+struct MTL
+{
 	enum class Illumination
 	{
 		COLOR_ON_AND_AMBIENT_OFF = 0,
@@ -31,8 +32,6 @@ struct MTL {
 	};
 
 	MTL();
-
-	bool read(std::istream& stream);
 
 	bool write(std::ostream& stream) const;
 
