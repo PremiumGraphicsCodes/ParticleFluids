@@ -15,7 +15,8 @@ TEST(OBJFileReaderTest, TestExampleSquare)
 		<< "f 1 2 3 4" << std::endl;
 	OBJFileReader reader;
 	reader.read(stream);
-	EXPECT_EQ(4, reader.getPositions().size());
+	const auto& obj = reader.getOBJ();
+	EXPECT_EQ(4, obj.positions.size());
 }
 
 TEST(OBJFileReaderTest, TestExampleCube)
@@ -39,9 +40,10 @@ TEST(OBJFileReaderTest, TestExampleCube)
 
 	OBJFileReader reader;
 	reader.read(stream);
-	EXPECT_EQ(8, reader.getPositions().size());
-	EXPECT_EQ(0, reader.getNormals().size());
-	EXPECT_EQ(6, reader.getFaces().size());
+	const auto& obj = reader.getOBJ();
+	EXPECT_EQ(8, obj.positions.size());
+	EXPECT_EQ(0, obj.normals.size());
+	EXPECT_EQ(6, obj.faces.size());
 }
 
 TEST(OBJFileReaderTest, TestNegativeReferenceNumber)
@@ -59,7 +61,8 @@ TEST(OBJFileReaderTest, TestNegativeReferenceNumber)
 	//EXPECT_EQ(4, file.getGroups().front().getPositions().size());
 	//EXPECT_EQ(1, file.getGroups().front().getFaces().size());
 	//std::vector<int> expected{ -4, - 3, -2, -1 };
-	auto actual = reader.getFaces().size();
+	const auto& obj = reader.getOBJ();
+	auto actual = obj.faces.size();
 	EXPECT_EQ( 1, actual );
 }
 
@@ -92,7 +95,8 @@ TEST(OBJFileReaderTest, TestExampleGroups)
 
 	OBJFileReader reader;
 	reader.read(stream);
-	EXPECT_EQ(6, reader.getFaces().size());
+	const auto& obj = reader.getOBJ();
+	EXPECT_EQ(6, obj.faces.size());
 }
 
 TEST(OBJFileReaderTest, TestExampleSmoothingGroup)
@@ -114,8 +118,9 @@ TEST(OBJFileReaderTest, TestExampleSmoothingGroup)
 
 	OBJFileReader reader;
 	reader.read(stream);
-	EXPECT_EQ(2, reader.getFaces().size());
-	EXPECT_EQ(6, reader.getPositions().size());
+	const auto& obj = reader.getOBJ();
+	EXPECT_EQ(2, obj.faces.size());
+	EXPECT_EQ(6, obj.positions.size());
 }
 
 TEST(OBJFileReaderTest, TestExampleTextureMappedSquare)
@@ -138,7 +143,8 @@ TEST(OBJFileReaderTest, TestExampleTextureMappedSquare)
 
 	OBJFileReader reader;
 	reader.read(stream);
-	EXPECT_EQ(1, reader.getFaces().size());
-	EXPECT_EQ(4, reader.getPositions().size());
-	EXPECT_EQ(4, reader.getTexCoords().size());
+	const auto& obj = reader.getOBJ();
+	EXPECT_EQ(1, obj.faces.size());
+	EXPECT_EQ(4, obj.positions.size());
+	EXPECT_EQ(4, obj.texCoords.size());
 }

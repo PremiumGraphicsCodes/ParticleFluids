@@ -120,22 +120,22 @@ bool OBJFileReader::read(std::istream& stream)
 		}
 		else if (header == "v") {
 			std::getline(stream, str);
-			positions.push_back(readVertices(str));
+			obj.positions.push_back(readVertices(str));
 		}
 		else if (header == "vt") {
 			std::getline(stream, str);
-			texCoords.push_back(readVector2d(str));
+			obj.texCoords.push_back(readVector2d(str));
 		}
 		else if (header == "vn" || header == "-vn") {
 			std::getline(stream, str);
-			normals.push_back(readVector3d(str));
+			obj.normals.push_back(readVector3d(str));
 		}
 		else if (header == "mtllib") {
 			currentMtllibName = Helper::read<std::string>(stream);
-			mtllibs.push_back(currentMtllibName);
+			obj.mtllibs.push_back(currentMtllibName);
 		}
 		else if (header == "usemtl") {
-			useMtlNames.push_back(currentUseMtl);
+			obj.useMtlNames.push_back(currentUseMtl);
 			currentUseMtl.first = Helper::read<std::string>(stream);
 			currentUseMtl.second = 0;
 			//mtllibMap.insert(std::make_pair(currentMtllibName, currentUseMtlName));
@@ -178,21 +178,21 @@ bool OBJFileReader::read(std::istream& stream)
 				}
 			}
 
-			faces.push_back(face);
+			obj.faces.push_back(face);
 			const auto count = static_cast<unsigned int>(strs.size());
 			currentGroup.second += count;
 			//groupMap.insert(std::make_pair(currentGroupName, f));
 			currentUseMtl.second += count;
 		}
 		else if (header == "g") {
-			groups.push_back(currentGroup);
+			obj.groups.push_back(currentGroup);
 			currentGroup.first = Helper::read<std::string>(stream);
 			currentGroup.second = 0;
 		}
 
 		header = Helper::read< std::string >(stream);
 	}
-	useMtlNames.push_back(currentUseMtl);
+	obj.useMtlNames.push_back(currentUseMtl);
 
 	return stream.good();
 }
