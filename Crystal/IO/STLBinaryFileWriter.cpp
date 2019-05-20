@@ -6,20 +6,6 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
-STLBinaryFileWriter::STLBinaryFileWriter(const std::vector<TriangleFace>& faces) :
-	faces(faces)
-{
-}
-
-bool STLBinaryFileWriter::write(const std::experimental::filesystem::path& filePath)
-{
-	std::ofstream stream(filePath, std::ios::binary);
-	if (stream.is_open()) {
-		return false;
-	}
-	return write(stream);
-}
-
 namespace {
 	std::array<float, 3> toArrayf(const Vector3dd& v) {
 		auto x = (float)(v.x);
@@ -27,18 +13,26 @@ namespace {
 		auto z = (float)(v.z);
 		return { x, y, z };
 	}
-
 }
 
-bool STLBinaryFileWriter::write(std::ostream& stream)
+bool STLBinaryFileWriter::write(const std::experimental::filesystem::path& filePath, const STLFile& stl)
 {
-	const char* head = title.c_str();
+	std::ofstream stream(filePath, std::ios::binary);
+	if (stream.is_open()) {
+		return false;
+	}
+	return write(stream, stl);
+}
+
+bool STLBinaryFileWriter::write(std::ostream& stream, const STLFile& stl)
+{
+	const char* head = stl.header.c_str();
 	stream.write(head, 80);
 
-	const auto howMany = faces.size();
+	const auto howMany = stl.faces.size();
 	stream.write((char *)&howMany, sizeof(unsigned int));
 
-	for (const auto& cell : faces) {
+	for (const auto& cell : stl.faces) {
 		const auto& normal = toArrayf(cell.getNormal());
 		stream.write((char *)&(normal.front()), sizeof(float) * 3);
 		const auto& vertices = cell.getVertices();

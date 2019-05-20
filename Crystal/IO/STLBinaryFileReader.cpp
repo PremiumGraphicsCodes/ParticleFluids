@@ -19,6 +19,7 @@ bool STLBinaryFileReader::read(std::istream& stream)
 {
 	char head[80];
 	stream.read(head, 80);
+	stl.header = head;
 
 	unsigned int howMany;
 	stream.read((char *)&howMany, sizeof(unsigned int));
@@ -46,7 +47,7 @@ bool STLBinaryFileReader::read(std::istream& stream)
 			Vector3dd(pos2[0], pos2[1], pos2[2]),
 		};
 		TriangleFace face(vertices, fn);
-		faces.push_back(face);
+		stl.faces.push_back(face);
 	}
 	return stream.good();
 }

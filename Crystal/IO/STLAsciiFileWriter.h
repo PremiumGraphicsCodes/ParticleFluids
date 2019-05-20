@@ -14,7 +14,6 @@ public:
 	bool write(std::ostream& stream, const STLFile& stl);
 
 private:
-	std::string title;
 };
 	}
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <filesystem>
-#include "../Shape/TriangleMesh.h"
+#include "STLFile.h"
 
 namespace Crystal {
 	namespace IO {
@@ -9,15 +9,11 @@ namespace Crystal {
 class STLBinaryFileWriter
 {
 public:
-	explicit STLBinaryFileWriter(const std::vector<Shape::TriangleFace>& faces);
+	bool write(const std::experimental::filesystem::path& filePath, const STLFile& stl);
 
-	bool write(const std::experimental::filesystem::path& filePath);
-
-	bool write(std::ostream& stream);
+	bool write(std::ostream& stream, const STLFile& stl);
 
 private:
-	std::string title;
-	std::vector<Shape::TriangleFace> faces;
 };
 	}
 }

@@ -1,7 +1,7 @@
 #ifndef __CRYSTAL_IO_STL_BINARY_FILE_READER_H__
 #define __CRYSTAL_IO_STL_BINARY_FILE_READER_H__
 
-#include "../Shape/TriangleMesh.h"
+#include "STLFile.h"
 
 #include <fstream>
 
@@ -21,9 +21,10 @@ public:
 
 	bool read(std::istream& stream);
 
+	STLFile getSTL() const { return stl; }
+
 private:
-	std::vector<Shape::TriangleFace> faces;
-	std::string title;
+	STLFile stl;
 };
 
 	}

@@ -80,11 +80,11 @@ bool FileWriter::writeSTLBinary(const std::experimental::filesystem::path& fileP
 			fs.push_back(ff);
 		}
 	}
-	Shape::TriangleMesh mesh(fs);
-	STLBinaryFileWriter writer(fs);
 	STLFile stl;
-	stl.faces = mesh.getFaces();
-	return writer.write(filePath);
+	stl.faces = fs;
+	stl.faceCount = fs.size();
+	STLBinaryFileWriter writer;
+	return writer.write(filePath, stl);
 }
 
 bool FileWriter::writePCD(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)

@@ -15,7 +15,7 @@ bool STLASCIIFileWriter::write(const std::experimental::filesystem::path& filePa
 
 bool STLASCIIFileWriter::write(std::ostream& stream, const STLFile& stl)
 {
-	stream << "solid" << " " << title.c_str() << std::endl;
+	stream << "solid" << " " << stl.header.c_str() << std::endl;
 
 	const auto& faces = stl.faces;
 	for (const auto& face : faces) {
