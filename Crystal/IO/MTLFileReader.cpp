@@ -79,33 +79,33 @@ bool MTLFileReader::read(std::istream& stream)
 		else if( header == "newmtl" ) {
 			MTL mtl;
 			mtl.name = Helper::read<std::string>(stream);
-			materials.push_back( mtl );
+			this->mtl.materials.push_back( mtl );
 			std::getline(stream, header);
 		}
 		else if (header == "Ka") {
-			materials.back().ambient = Helper::readColorRGB(stream);
+			this->mtl.materials.back().ambient = Helper::readColorRGB(stream);
 		}
 		else if (header == "Kd") {
-			materials.back().diffuse = Helper::readColorRGB(stream);
+			this->mtl.materials.back().diffuse = Helper::readColorRGB(stream);
 		}
 		else if (header == "Ks") {
-			materials.back().specular = Helper::readColorRGB(stream);
+			this->mtl.materials.back().specular = Helper::readColorRGB(stream);
 		}
 		else if (header == "Ns") {
-			materials.back().specularExponent = Helper::read< float >(stream);
+			this->mtl.materials.back().specularExponent = Helper::read< float >(stream);
 		}
 		else if (header == "d" || header == "Tr") {
-			materials.back().transparent = Helper::read<float>(stream);
+			this->mtl.materials.back().transparent = Helper::read<float>(stream);
 		}
 		else if (header == "map_Ka") {
-			materials.back().ambientTexture = Helper::read< std::string >(stream);
+			this->mtl.materials.back().ambientTexture = Helper::read< std::string >(stream);
 		}
 		else if (header == "map_Kd") {
 			std::string str = Helper::read< std::string >(stream);
-			materials.back().diffuseTexture = str;
+			this->mtl.materials.back().diffuseTexture = str;
 		}
 		else if (header == "map_Ks") {
-			materials.back().shininessTexture = Helper::read< std::string >(stream);
+			this->mtl.materials.back().shininessTexture = Helper::read< std::string >(stream);
 		}
 		else if (header == "map_Ns") {
 			const std::string& filename = Helper::read< std::string >(stream);
@@ -114,13 +114,13 @@ bool MTLFileReader::read(std::istream& stream)
 			const std::string& filename = Helper::read< std::string >(stream);
 		}
 		else if (header == "map_bump" || header == "bump") {
-			materials.back().bumpTexture = Helper::read< std::string >(stream);
+			this->mtl.materials.back().bumpTexture = Helper::read< std::string >(stream);
 		}
 		else if (header == "illum") {
-			materials.back().illumination = MTL::Illumination(Helper::read< int >(stream));
+			this->mtl.materials.back().illumination = MTL::Illumination(Helper::read< int >(stream));
 		}
 		else if (header == "Ni") {
-			materials.back().opticalDensity = Helper::read<float>(stream);
+			this->mtl.materials.back().opticalDensity = Helper::read<float>(stream);
 		}
 		stream >> header;
 	}

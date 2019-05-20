@@ -64,6 +64,11 @@ public:
 	Illumination illumination;
 };
 
+struct MTLFile
+{
+	std::vector<MTL> materials;
+};
+
 class MTLFileReader
 {
 public:
@@ -72,7 +77,10 @@ public:
 
 	bool read(std::istream& stream);
 
-	std::vector<MTL> materials;
+	MTLFile getMTL() const { return mtl; }
+
+private:
+	MTLFile mtl;
 	//MTLTextureOption option;
 };
 

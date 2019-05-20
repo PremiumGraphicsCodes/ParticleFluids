@@ -19,7 +19,8 @@ TEST(MTLFileReaderTest, TestRead)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	const auto& mtl = file.materials[0];
+	const auto& m = file.getMTL();
+	const auto& mtl = m.materials[0];
 
 	EXPECT_EQ(mtl.name, "FrontColor");
 	EXPECT_EQ(mtl.ambient, ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f));
@@ -39,25 +40,14 @@ TEST(MTLFileReaderTest, TestReadTexture)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	const auto& mtl = file.materials[0];
+	const auto& m = file.getMTL();
+	const auto& mtl = m.materials[0];
 
 	EXPECT_EQ(mtl.name, "name");
 	EXPECT_EQ(mtl.ambientTexture, "ambient.png");
 	EXPECT_EQ(mtl.diffuseTexture, "diffuse.png");
 	EXPECT_EQ(mtl.shininessTexture, "shininess.png");
 	EXPECT_EQ(mtl.bumpTexture, "bump.png");
-
-	/*
-	MTLFile expected;
-	expected.name = "name";
-	expected.ambientTexture = "ambient.png";
-	expected.diffuseTexture = "diffuse.png";
-	expected.shininessTexture = "shininess.png";
-	expected.bumpTexture = "bump.png";
-
-	const std::vector<MTLFile> expecteds = { expected };
-	EXPECT_EQ(expecteds, file.materials);
-	*/
 }
 
 
@@ -72,10 +62,14 @@ TEST(MTLFileReaderTest, TestExample1)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	EXPECT_EQ(1, file.materials.size());
-	EXPECT_EQ("neon_green", file.materials.front().name);
-	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), file.materials.front().diffuse);
-	EXPECT_EQ(MTL::Illumination::COLOR_ON_AND_AMBIENT_OFF, file.materials.front().illumination);
+
+	const auto& m = file.getMTL();
+	const auto& mtl = m.materials;
+
+	EXPECT_EQ(1, mtl.size());
+	EXPECT_EQ("neon_green", mtl.front().name);
+	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), mtl.front().diffuse);
+	EXPECT_EQ(MTL::Illumination::COLOR_ON_AND_AMBIENT_OFF, mtl.front().illumination);
 }
 
 TEST(MTLFileReaderTest, TestExample2)
@@ -89,11 +83,14 @@ TEST(MTLFileReaderTest, TestExample2)
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
 
-	EXPECT_EQ(1, file.materials.size());
-	EXPECT_EQ("flat_green", file.materials.front().name);
-	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), file.materials.front().ambient);
-	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), file.materials.front().diffuse);
-	EXPECT_EQ(MTL::Illumination::COLOR_ON_AND_AMBIENT_ON, file.materials.front().illumination);
+	const auto& mtl = file.getMTL();
+	EXPECT_EQ(1, mtl.materials.size());
+
+	const auto& m = mtl.materials[0];
+	EXPECT_EQ("flat_green", m.name);
+	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), m.ambient);
+	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), m.diffuse);
+	EXPECT_EQ(MTL::Illumination::COLOR_ON_AND_AMBIENT_ON, m.illumination);
 
 }
 
@@ -109,14 +106,16 @@ TEST(MTLFileReaderTest, TestExample3)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	EXPECT_EQ(1, file.materials.size());
 
-	const MTL& mtl = file.materials.front();
-	EXPECT_EQ("diss_green", mtl.name);
-	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), mtl.ambient);
-	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), mtl.diffuse);
-	EXPECT_FLOAT_EQ(0.8f, mtl.transparent);
-	EXPECT_EQ(MTL::Illumination::COLOR_ON_AND_AMBIENT_ON, mtl.illumination);
+	const auto& mtl = file.getMTL();
+	EXPECT_EQ(1, mtl.materials.size());
+
+	const auto& m = mtl.materials[0];
+	EXPECT_EQ("diss_green", m.name);
+	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), m.ambient);
+	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), m.diffuse);
+	EXPECT_FLOAT_EQ(0.8f, m.transparent);
+	EXPECT_EQ(MTL::Illumination::COLOR_ON_AND_AMBIENT_ON, m.illumination);
 }
 
 TEST(MTLFileReaderTest, TestExample4)
@@ -132,9 +131,9 @@ TEST(MTLFileReaderTest, TestExample4)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	EXPECT_EQ(1, file.materials.size());
+	EXPECT_EQ(1, file.getMTL().materials.size());
 
-	const MTL& mtl = file.materials.front();
+	const MTL& mtl = file.getMTL().materials.front();
 	EXPECT_EQ("shiny_green", mtl.name);
 	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), mtl.ambient);
 	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), mtl.diffuse);
@@ -157,8 +156,9 @@ TEST(MTLFileReaderTest, TestExample5)
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
 
-	EXPECT_EQ(1, file.materials.size());
-	const MTL& mtl = file.materials.front();
+	const auto& m = file.getMTL();
+	EXPECT_EQ(1, m.materials.size());
+	const MTL& mtl = m.materials[0];
 	EXPECT_EQ("green_mirror", mtl.name);
 	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), mtl.ambient);
 	EXPECT_EQ(ColorRGBAf(0.0, 1.0, 0.0, 0.0), mtl.diffuse);
@@ -181,8 +181,8 @@ TEST(MTLFileReaderTest, TestExample6)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	EXPECT_EQ(1, file.materials.size());
-	const MTL& mtl = file.materials.front();
+	EXPECT_EQ(1, file.getMTL().materials.size());
+	const MTL& mtl = file.getMTL().materials.front();
 	EXPECT_EQ("fake_windsh", mtl.name);
 	EXPECT_EQ(ColorRGBAf(0.0, 0.0, 0.0, 0.0), mtl.ambient);
 	EXPECT_EQ(ColorRGBAf(0.0, 0.0, 0.0, 0.0), mtl.diffuse);
@@ -204,8 +204,8 @@ TEST(MTLFileReaderTest, TestExample7)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	EXPECT_EQ(1, file.materials.size());
-	const MTL& mtl = file.materials.front();
+	EXPECT_EQ(1, file.getMTL().materials.size());
+	const MTL& mtl = file.getMTL().materials.front();
 	EXPECT_EQ("fresnel_blue", mtl.name);
 	EXPECT_EQ(ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f), mtl.ambient);
 	EXPECT_EQ(ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f), mtl.diffuse);
@@ -229,8 +229,8 @@ TEST(MTLFileReaderTest, TestExample8)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	EXPECT_EQ(1, file.materials.size());
-	const MTL& mtl = file.materials.front();
+	EXPECT_EQ(1, file.getMTL().materials.size());
+	const MTL& mtl = file.getMTL().materials.front();
 	EXPECT_EQ("real_windsh", mtl.name);
 	EXPECT_FLOAT_EQ(1.2f, mtl.opticalDensity);
 }
@@ -258,11 +258,11 @@ TEST(MTLFileReaderTest, TestReadMaterials)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	EXPECT_EQ(2, file.materials.size());
-	const MTL& mtl = file.materials.front();
+	EXPECT_EQ(2, file.getMTL().materials.size());
+	const MTL& mtl = file.getMTL().materials.front();
 	EXPECT_EQ("mat1", mtl.name);
 	EXPECT_FLOAT_EQ(1.2f, mtl.opticalDensity);
-	const MTL& mtl2 = file.materials.back();
+	const MTL& mtl2 = file.getMTL().materials.back();
 	EXPECT_EQ("mat2", mtl2.name);
 
 }
