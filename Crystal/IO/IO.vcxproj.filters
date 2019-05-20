@@ -38,6 +38,12 @@
     <ClInclude Include="STLFile.h">
       <Filter>STL</Filter>
     </ClInclude>
+    <ClInclude Include="OBJFile.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJFileWriter.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
@@ -69,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="PCDFileWriter.cpp">
       <Filter>PCD</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFileWriter.cpp">
+      <Filter>OBJ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
