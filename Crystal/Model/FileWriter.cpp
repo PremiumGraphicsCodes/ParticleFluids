@@ -3,6 +3,7 @@
 #include <filesystem>
 
 #include "../IO/OBJFileWriter.h"
+#include "../IO/MTLFileWriter.h"
 #include "../IO/STLASCIIFileWriter.h"
 #include "../IO/STLBinaryFileWriter.h"
 #include "../IO/PCDFileWriter.h"
@@ -11,13 +12,13 @@ using namespace Crystal::Math;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool FileWriter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool FileWriter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
 {
 	const auto format = getFileFormat(filePath);
-	return write(filePath, objects, format);
+	return write(filePath, objects, appearances, format);
 }
 
-bool FileWriter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, const FileFormat format)
+bool FileWriter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
@@ -60,6 +61,23 @@ bool FileWriter::writeOBJ(const std::experimental::filesystem::path& filePath, O
 	}
 	OBJFileWriter writer;
 	return writer.write(filePath, obj);
+}
+
+bool FileWriter::writeMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances)
+{
+	MTLFileWriter writer;
+	MTLFile mtl;
+	for (const auto mat : appearances.getMaterials()->getMaterials()) {
+		MTL m;
+		m.name = mat->getName();
+	 	m.ambient = mat->getMaterial()->getAmbient();
+		m.specular = mat->getMaterial()->getSpecular();
+		m.diffuse = mat->getMaterial()->getDiffuse();
+		m.specularExponent = mat->getMaterial()->getShininess();
+		mtl.materials.push_back(m);
+	}
+	//mtl.materials.
+	return writer.write(filePath, mtl);
 }
 
 bool FileWriter::writeSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
