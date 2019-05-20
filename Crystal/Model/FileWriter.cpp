@@ -2,10 +2,12 @@
 
 #include <filesystem>
 
+#include "../IO/OBJFileWriter.h"
 #include "../IO/STLASCIIFileWriter.h"
 #include "../IO/STLBinaryFileWriter.h"
 #include "../IO/PCDFileWriter.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
@@ -34,7 +36,30 @@ bool FileWriter::write(const std::experimental::filesystem::path& filePath, Obje
 
 bool FileWriter::writeOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
-	return false;
+	const auto& polygons = objects.getPolygonMeshes()->getObjects();
+	OBJFile obj;
+	for (auto p : polygons) {
+		const auto& vertices = p->getShape()->getVertices();
+		const auto& faces = p->getShape()->getFaces();
+		for (auto f : faces) {
+			std::vector<int> indices;
+			indices.push_back(f->getV1()->getAttr().id +1);
+			indices.push_back(f->getV2()->getAttr().id +1);
+			indices.push_back(f->getV3()->getAttr().id +1);
+			OBJFace face;
+			face.positionIndices = indices;
+			face.normalIndices = indices;
+			face.texCoordIndices = indices;
+			obj.faces.push_back(face);
+		}
+		for (auto v : vertices) {
+			obj.positions.push_back( v->getPosition() );
+			obj.normals.push_back( v->getNormal() );
+			obj.texCoords.push_back( v->getTexCoord() );
+		}
+	}
+	OBJFileWriter writer;
+	return writer.write(filePath, obj);
 }
 
 bool FileWriter::writeSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)

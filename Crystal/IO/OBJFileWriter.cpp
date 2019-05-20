@@ -37,9 +37,11 @@ bool OBJFileWriter::write(std::ostream& stream, const OBJFile& obj)
 	// faces
 	const auto& faces = obj.faces;
 	for (const auto& f : faces) {
+		stream << "f";
 		for (int i = 0; i < f.positionIndices.size(); ++i) {
-			stream << "f " << f.positionIndices[i] << "/" << f.texCoordIndices[i] << "/" << f.normalIndices[i] << std::endl;
+			stream << " " << f.positionIndices[i] << "/" << f.texCoordIndices[i] << "/" << f.normalIndices[i];
 		}
+		stream << std::endl;
 	}
 	return false;
 }

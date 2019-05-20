@@ -49,10 +49,6 @@ public:
 
 	PolygonMesh* clone();
 
-	HalfEdge* getShortestEdge();
-
-	void mergeDouble(PolygonMesh* rhs, float distance);
-
 	Math::Vector3df getCenter() const;
 
 	void move(const Math::Vector3dd& v) override;

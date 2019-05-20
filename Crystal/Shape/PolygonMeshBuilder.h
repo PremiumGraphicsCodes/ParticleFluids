@@ -15,10 +15,7 @@ namespace Crystal {
 class PolygonMeshBuilder : private UnCopyable
 {
 public:
-	PolygonMeshBuilder() :
-		nextId(0),
-		nextVertexId(0)
-	{}
+	PolygonMeshBuilder();
 
 	void build(const std::vector<Math::Triangle3d>& triangles);
 

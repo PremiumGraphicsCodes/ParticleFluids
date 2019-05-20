@@ -4,6 +4,7 @@
 
 #include "../IO/OBJFileReader.h"
 #include "../IO/STLAsciiFileReader.h"
+#include "../IO/STLBinaryFileReader.h"
 #include "../IO/PCDFileReader.h"
 
 using namespace Crystal::Shape;
@@ -59,6 +60,15 @@ bool FileReader::readSTLAscii(const std::experimental::filesystem::path& filePat
 
 bool FileReader::readSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
+	STLBinaryFileReader reader;
+	if (reader.read(filePath)) {
+		PolygonMeshBuilder builder;
+		const auto& stl = reader.getSTL();
+		TriangleMesh mesh(stl.faces);
+		builder.build(mesh);
+		objects.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "STL");
+		return true;
+	}
 	return false;
 }
 

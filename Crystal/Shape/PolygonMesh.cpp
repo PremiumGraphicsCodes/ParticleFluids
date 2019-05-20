@@ -31,26 +31,6 @@ void PolygonMesh::clear()
 	faces.clear();
 }
 
-//void create(const Math::TriangleCurve3d<float>& curve, const int id = -1);
-
-#include "HalfEdge.h"
-
-HalfEdge* PolygonMesh::getShortestEdge()
-{
-	std::list<HalfEdge> edges;
-	auto minEdge = faces.front()->getEdges().front();
-	for (auto f : faces) {
-		auto edges = f->getEdges();
-		for (auto e : edges) {
-			if (e->getLength() < minEdge->getLength()) {
-				minEdge = e;
-			}
-		}
-	}
-	return minEdge;
-}
-
-
 
 void PolygonMesh::add(Face* f)
 {
@@ -99,17 +79,6 @@ void PolygonMesh::remove(Face* f)
 PolygonMesh* PolygonMesh::clone()
 {
 	return new PolygonMesh(vertices, faces);
-}
-
-void PolygonMesh::mergeDouble(PolygonMesh* rhs, float distance)
-{
-	auto faces1 = this->getFaces();
-	auto faces2 = rhs->getFaces();
-	for (auto f1 : faces1) {
-		for (auto f2 : faces2) {
-			f1->mergeDouble(*f2, distance);
-		}
-	}
 }
 
 Vector3df PolygonMesh::getCenter() const

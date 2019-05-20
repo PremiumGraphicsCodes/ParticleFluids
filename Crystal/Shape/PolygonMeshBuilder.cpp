@@ -10,6 +10,11 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
+PolygonMeshBuilder::PolygonMeshBuilder() :
+	nextId(0),
+	nextVertexId(0)
+{}
+
 void PolygonMeshBuilder::build(const std::vector<Triangle3d>& triangles)
 {
 	for (const auto& t : triangles) {
