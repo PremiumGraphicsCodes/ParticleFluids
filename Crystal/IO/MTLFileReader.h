@@ -17,7 +17,7 @@
 namespace Crystal {
 	namespace IO {
 
-struct MTLFile {
+struct MTL {
 	enum class Illumination
 	{
 		COLOR_ON_AND_AMBIENT_OFF = 0,
@@ -30,27 +30,11 @@ struct MTLFile {
 		CAST_SHADOWS_ONTO_INVISIBLE_SURFACES = 10,
 	};
 
-	MTLFile();
+	MTL();
 
 	bool read(std::istream& stream);
 
 	bool write(std::ostream& stream) const;
-
-	void setAmbientTextureName(const std::string& tname) { this->ambientTexture = tname; }
-
-	std::string getAmbientTextureName() const { return ambientTexture; }
-
-	void setDiffuseTextureName(const std::string& dname) { this->diffuseTexture = dname; }
-
-	std::string getDiffuseTextureName() const { return diffuseTexture; }
-
-	void setShininessTextureName(const std::string sname) { this->shininessTexture = sname; }
-
-	std::string getShininessTextureName() const { return shininessTexture; }
-
-	void setBumpTextureName(const std::string& bname) { this->bumpTexture = bname; }
-
-	std::string getBumpTextureName() const { return bumpTexture; }
 
 	/*
 	void setOpticalDensity(const float d) {
@@ -60,19 +44,6 @@ struct MTLFile {
 
 	float getOpticalDensity() const { return opticalDensity; }
 	*/
-
-	bool operator==(const MTLFile& rhs) const {
-		return
-			name == rhs.name &&
-			ambient == rhs.ambient &&
-			diffuse == rhs.diffuse &&
-			specular == rhs.specular &&
-			ambientTexture == rhs.ambientTexture &&
-			diffuseTexture == rhs.diffuseTexture &&
-			bumpTexture == rhs.bumpTexture &&
-			shininessTexture == rhs.shininessTexture &&
-			illumination == rhs.illumination;
-	}
 
 	//Graphics::Material toMaterial(const std::string& directory) const;
 
@@ -86,13 +57,12 @@ public:
 	float transparent;
 	float opticalDensity;
 
-	Illumination illumination;
-
-private:
 	std::string ambientTexture;
 	std::string diffuseTexture;
 	std::string shininessTexture;
 	std::string bumpTexture;
+
+	Illumination illumination;
 };
 
 class MTLFileReader
@@ -103,17 +73,7 @@ public:
 
 	bool read(std::istream& stream);
 
-	MTLFile find(const std::string& name) {
-		for (const auto& m : materials) {
-			if (m.name == name) {
-				return m;
-			}
-		}
-		assert(false);
-		return MTLFile();
-	}
-
-	std::vector<MTLFile> materials;
+	std::vector<MTL> materials;
 	//MTLTextureOption option;
 };
 

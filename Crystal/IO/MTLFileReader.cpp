@@ -16,7 +16,7 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 
-MTLFile::MTLFile()
+MTL::MTL()
 {
 	ambient = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
 	diffuse = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
@@ -28,7 +28,7 @@ MTLFile::MTLFile()
 	illumination = Illumination::COLOR_ON_AND_AMBIENT_OFF;
 }
 
-bool MTLFile::read(std::istream& stream)
+bool MTL::read(std::istream& stream)
 {
 	std::string header;
 	this->name = Helper::read< std::string >(stream);
@@ -87,7 +87,7 @@ bool MTLFile::read(std::istream& stream)
 			this->bumpTexture = Helper::read< std::string >(stream);
 		}
 		else if (header == "illum") {
-			this->illumination = MTLFile::Illumination( Helper::read< int >(stream) );
+			this->illumination = MTL::Illumination( Helper::read< int >(stream) );
 		}
 		else if (header == "Ni") {
 			this->opticalDensity = Helper::read<float>(stream);
@@ -99,7 +99,7 @@ bool MTLFile::read(std::istream& stream)
 }
 
 
-bool MTLFile::write(std::ostream& stream) const
+bool MTL::write(std::ostream& stream) const
 {
 	stream << "newmtl " << name << std::endl;
 
@@ -148,7 +148,7 @@ bool MTLFileReader::read(std::istream& stream)
 			std::getline( stream, header );
 		}
 		else if( header == "newmtl" ) {
-			MTLFile mtl;
+			MTL mtl;
 			mtl.read(stream);
 			materials.push_back( mtl );
 		}
