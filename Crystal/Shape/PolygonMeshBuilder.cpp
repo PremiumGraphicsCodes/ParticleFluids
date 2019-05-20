@@ -141,6 +141,15 @@ void PolygonMeshBuilder::build(const std::vector<std::pair<Vector3dd, Vector3dd>
 	}
 }
 
+/*
+void PolygonMeshBuilder::build(const std::vector<Vector3dd>& positions, const std::vector<Vector3dd>& normals, const std::vector<std::pair<int, int>>& faceIndices)
+{
+	for (auto index : faceIndices) {
+		positions[index.first];
+	}
+}
+*/
+
 void PolygonMeshBuilder::build(const TriangleMesh& mesh)
 {
 	const auto& fs = mesh.getFaces();

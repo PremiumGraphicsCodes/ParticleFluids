@@ -57,20 +57,6 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override;
 
-	//void scale(const Math::Vector3df& s);
-
-	//void rotate(const Math::Quaternion<float>& quaternion);
-
-	void merge(PolygonMesh& rhs);
-
-	//void reverse();
-
-	std::list<Vertex*> findInnerVertices();
-
-	std::list<Vertex*> findBoundaryVertices();
-
-	std::list<HalfEdge*> findBoundaryEdges();
-
 	void updateNormals();
 
 private:

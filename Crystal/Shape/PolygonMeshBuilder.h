@@ -27,6 +27,8 @@ public:
 
 	void build(const std::vector<std::pair<Math::Vector3dd, Math::Vector3dd> >& positionNormals, const std::vector<int>& indices);
 
+	//void build(const std::vector<Math::Vector3dd>& positions, const std::vector<Math::Vector3dd>& normals, const std::vector<std::pair<int, int>>& faceIndices);
+
 	void build(const TriangleMesh& mesh);
 
 	PolygonMesh* getPolygonMesh() const;

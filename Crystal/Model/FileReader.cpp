@@ -38,7 +38,20 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
-		;
+		const auto& obj = reader.getOBJ();
+		const auto& positions = obj.positions;
+		int nextId = 0;
+		std::vector<Vertex*> vertices;
+		for (const auto& p : positions) {
+			VertexAttr attr;
+			attr.id = nextId++;
+			auto vertex = new Vertex(p, attr);
+			vertices.push_back(vertex);
+		}
+//		PolygonMesh* mesh = new PolygonMesh(vertices);
+
+//		builder.build(obj.positions,obj.normals,)
+//		obj.positions
 		return true;
 	}
 	return false;
