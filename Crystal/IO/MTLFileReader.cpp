@@ -16,7 +16,7 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 
-OBJMaterial::OBJMaterial()
+MTLFile::MTLFile()
 {
 	ambient = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
 	diffuse = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
@@ -28,7 +28,7 @@ OBJMaterial::OBJMaterial()
 	illumination = Illumination::COLOR_ON_AND_AMBIENT_OFF;
 }
 
-bool OBJMaterial::read(std::istream& stream)
+bool MTLFile::read(std::istream& stream)
 {
 	std::string header;
 	this->name = Helper::read< std::string >(stream);
@@ -87,7 +87,7 @@ bool OBJMaterial::read(std::istream& stream)
 			this->bumpTexture = Helper::read< std::string >(stream);
 		}
 		else if (header == "illum") {
-			this->illumination = OBJMaterial::Illumination( Helper::read< int >(stream) );
+			this->illumination = MTLFile::Illumination( Helper::read< int >(stream) );
 		}
 		else if (header == "Ni") {
 			this->opticalDensity = Helper::read<float>(stream);
@@ -99,7 +99,7 @@ bool OBJMaterial::read(std::istream& stream)
 }
 
 
-bool OBJMaterial::write(std::ostream& stream) const
+bool MTLFile::write(std::ostream& stream) const
 {
 	stream << "newmtl " << name << std::endl;
 
@@ -108,11 +108,9 @@ bool OBJMaterial::write(std::ostream& stream) const
 	sprintf(s, "Ka %.4lf %.4lf %.4lf", ambient.r, ambient.g, ambient.b);
 	stream << s << std::endl;
 
-	const ColorRGBAf& diffuse = this->getDiffuse();
 	sprintf(s, "Kd %.4lf %.4lf %.4lf", diffuse.r, diffuse.g, diffuse.b);
 	stream << s << std::endl;
 
-	const ColorRGBAf& specular = this->getSpecular();
 	sprintf(s, "Ks %.4lf %.4lf %.4lf", specular.r, specular.g, specular.b);
 	stream << s << std::endl;
 
@@ -152,7 +150,7 @@ bool MTLFileReader::read(std::istream& stream)
 			std::getline( stream, header );
 		}
 		else if( header == "newmtl" ) {
-			OBJMaterial mtl;
+			MTLFile mtl;
 			mtl.read(stream);
 			materials.push_back( mtl );
 		}

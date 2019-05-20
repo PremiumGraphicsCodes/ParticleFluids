@@ -16,5 +16,18 @@ bool OBJFileWriter::write(const std::experimental::filesystem::path& filename, c
 
 bool OBJFileWriter::write(std::ostream& stream, const OBJFile& obj)
 {
+	// vertices
+	const auto& vertices = obj.positions;
+	for (const auto& v : vertices) {
+		stream << "v " << v.x << " " << v.y << " " << v.z << std::endl;
+	}
+
+	// tex coords
+	const auto& texCoords = obj.texCoords;
+	for (const auto& vt : texCoords) {
+		stream << "vt " << vt.x << " " << vt.y << std::endl;
+	}
+
+	// normals
 	return false;
 }
