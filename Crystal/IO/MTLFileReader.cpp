@@ -16,42 +16,6 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 
-MTL::MTL()
-{
-	ambient = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
-	diffuse = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
-	specular = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
-	float specularExponent = 0.0f;
-	float transparent = 0.0f;
-	float opticalDensity = 0.0f;
-
-	illumination = Illumination::COLOR_ON_AND_AMBIENT_OFF;
-}
-
-bool MTL::write(std::ostream& stream) const
-{
-	stream << "newmtl " << name << std::endl;
-
-	const ColorRGBAf& ambient = this->ambient;
-	char s[256];
-	sprintf(s, "Ka %.4lf %.4lf %.4lf", ambient.r, ambient.g, ambient.b);
-	stream << s << std::endl;
-
-	sprintf(s, "Kd %.4lf %.4lf %.4lf", diffuse.r, diffuse.g, diffuse.b);
-	stream << s << std::endl;
-
-	sprintf(s, "Ks %.4lf %.4lf %.4lf", specular.r, specular.g, specular.b);
-	stream << s << std::endl;
-
-	sprintf(s, "Ns %.4lf", specularExponent);
-	stream << s << std::endl;
-
-	sprintf(s, "Tr %.4lf", transparent);
-	stream << s << std::endl;
-
-	return true;
-}
-
 bool MTLFileReader::read(const std::string& filename)
 {
 	std::ifstream stream;

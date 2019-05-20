@@ -218,7 +218,6 @@ TEST(MTLFileReaderTest, TestExample7)
 	//EXPECT_EQ(5, mtl.illumination);
 }
 
-/*
 TEST(MTLFileReaderTest, TestExample8)
 {
 	std::stringstream stream;
@@ -234,8 +233,9 @@ TEST(MTLFileReaderTest, TestExample8)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	EXPECT_EQ(1, file.getMTL().materials.size());
-	const MTL& mtl = file.getMTL().materials.front();
+	const auto& m = file.getMTL();
+	EXPECT_EQ(1, m.materials.size());
+	const MTL& mtl = m.materials.front();
 	EXPECT_EQ("real_windsh", mtl.name);
 	EXPECT_FLOAT_EQ(1.2f, mtl.opticalDensity);
 }
@@ -263,11 +263,9 @@ TEST(MTLFileReaderTest, TestReadMaterials)
 
 	MTLFileReader file;
 	EXPECT_TRUE(file.read(stream));
-	EXPECT_EQ(2, file.getMTL().materials.size());
-	const MTL& mtl = file.getMTL().materials.front();
-	EXPECT_EQ("mat1", mtl.name);
-	EXPECT_FLOAT_EQ(1.2f, mtl.opticalDensity);
-	const MTL& mtl2 = file.getMTL().materials.back();
-	EXPECT_EQ("mat2", mtl2.name);
+	const auto& mtl = file.getMTL();
+	EXPECT_EQ(2, mtl.materials.size());
+	EXPECT_EQ("mat1", mtl.materials[0].name);
+	EXPECT_FLOAT_EQ(1.2f, mtl.materials[0].opticalDensity);
+	EXPECT_EQ("mat2", mtl.materials[1].name);
 }
-*/

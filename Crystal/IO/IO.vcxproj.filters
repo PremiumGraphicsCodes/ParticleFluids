@@ -44,6 +44,12 @@
     <ClInclude Include="OBJFileWriter.h">
       <Filter>OBJ</Filter>
     </ClInclude>
+    <ClInclude Include="MTLFile.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="MTLFileWriter.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
@@ -77,6 +83,9 @@
       <Filter>PCD</Filter>
     </ClCompile>
     <ClCompile Include="OBJFileWriter.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="MTLFileWriter.cpp">
       <Filter>OBJ</Filter>
     </ClCompile>
   </ItemGroup>
