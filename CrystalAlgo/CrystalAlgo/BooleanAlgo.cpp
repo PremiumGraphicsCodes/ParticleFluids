@@ -36,17 +36,19 @@ namespace {
 
 	PolygonMesh* fromCSGJSModel(const csgjs_model& model)
 	{
+		/*
+		Crystal::Shape::VertexFactory vertexFactory;
 		Crystal::Shape::PolygonMeshBuilder builder;
 		std::vector<std::pair<Vector3dd, Vector3dd> > vs;
 		for (const auto& v : model.vertices) {
 			const Vector3dd p(v.pos.x, v.pos.y, v.pos.z);
 			const Vector3dd n(v.normal.x, v.normal.y, v.normal.z);
-			vs.push_back(std::make_pair(p,n));
+			vertexFactory.createVertex(p, n);
 		}
-		builder.build(vs, model.indices);
+		builder.build(model.indices);
 		return builder.getPolygonMesh();
-		//PolygonMesh polygon;
-		//polygon.a
+		*/
+		return nullptr;
 	}
 }
 

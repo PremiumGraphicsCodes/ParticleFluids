@@ -74,7 +74,10 @@ void MarchingCubesButton::onOk()
 	algo.build(volume, 0.30);
 	const auto& triangles = algo.getTriangles();
 	Crystal::Shape::PolygonMeshBuilder builder;
-	builder.build(triangles);
+	for (const auto& t : triangles) {
+		builder.add(t);
+	}
+	builder.build();
 	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), 1, "MarchingCubes");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 }
