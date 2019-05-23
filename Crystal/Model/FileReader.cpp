@@ -75,7 +75,8 @@ bool FileReader::readSTLAscii(const std::experimental::filesystem::path& filePat
 		PolygonMeshBuilder builder;
 		const auto& stl = reader.getSTL();
 		TriangleMesh mesh(stl.faces);
-		builder.build(mesh);
+		builder.add(mesh);
+		builder.build();
 		repository.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "STL");
 		return true;
 	}
@@ -89,7 +90,8 @@ bool FileReader::readSTLBinary(const std::experimental::filesystem::path& filePa
 		PolygonMeshBuilder builder;
 		const auto& stl = reader.getSTL();
 		TriangleMesh mesh(stl.faces);
-		builder.build(mesh);
+		builder.add(mesh);
+		builder.build();
 		objects.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "STL");
 		return true;
 	}

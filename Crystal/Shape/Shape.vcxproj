@@ -30,6 +30,7 @@
     <ClInclude Include="PolygonMeshBuilder.h" />
     <ClInclude Include="TriangleMesh.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="VertexFactory.h" />
     <ClInclude Include="Volume.h" />
     <ClInclude Include="WireFrame.h" />
     <ClInclude Include="WireFrameBuilder.h" />

@@ -12,26 +12,20 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
-PolygonMeshBuilder::PolygonMeshBuilder() :
-	nextId(0)
+PolygonMeshBuilder::PolygonMeshBuilder()
 {}
 
-void PolygonMeshBuilder::build(const std::vector<Triangle3d>& triangles)
+void PolygonMeshBuilder::add(const Triangle3d& triangle)
 {
-	std::vector<std::array<int,3>> indices;
-
-	for (const auto& t : triangles) {
-		const auto& vs = t.getVertices();
-		const auto& normal = t.getNormal();
-		auto v0 = vertexFactory.createVertex(vs[0], normal);
-		auto v1 = vertexFactory.createVertex(vs[1], normal);
-		auto v2 = vertexFactory.createVertex(vs[2], normal);
-		indices.push_back({ v0, v1, v2 });
-	}
-	build(indices);
+	const auto& vs = triangle.getVertices();
+	const auto& normal = triangle.getNormal();
+	auto v0 = vertexFactory.createVertex(vs[0], normal);
+	auto v1 = vertexFactory.createVertex(vs[1], normal);
+	auto v2 = vertexFactory.createVertex(vs[2], normal);
+	faceIndices.push_back({ v0,v1,v2 });
 }
 
-void PolygonMeshBuilder::build(const Box3d& box)
+void PolygonMeshBuilder::add(const Box3d& box)
 {
 	//build(box.getPosition(Vector3dd( 0, 0, 0)), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0));
 	//build(box.getPosition(Vector3dd( 1, 0, 0)), Vector3df(0, 0, 1), Vector3df(0, 1, 0));
@@ -39,7 +33,7 @@ void PolygonMeshBuilder::build(const Box3d& box)
 	//faces
 }
 
-void PolygonMeshBuilder::build(const Sphere3d& sphere, const int unum, const int vnum)
+void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int vnum)
 {
 	const auto du = 1.0 / (double)unum;
 	const auto dv = 1.0 / (double)vnum;
@@ -55,19 +49,17 @@ void PolygonMeshBuilder::build(const Sphere3d& sphere, const int unum, const int
 		}
 		grid.push_back(vs);
 	}
-	std::vector< std::array<int, 3> > faces;
 	for (int i = 0; i < grid.size()-1; ++i) {
 		for (int j = 0; j < grid[i].size() - 1; ++j) {
 			std::array<int, 3> f1{ grid[i][j], grid[i + 1][j], grid[i][j + 1] };
 			std::array<int, 3> f2{ grid[i][j + 1], grid[i + 1][j], grid[i + 1][j + 1] };
-			faces.push_back(f1);
-			faces.push_back(f2);
+			faceIndices.push_back(f1);
+			faceIndices.push_back(f2);
 		}
 	}
-	build(faces);
 }
 
-void PolygonMeshBuilder::build(const Quad3d& quad)
+void PolygonMeshBuilder::add(const Quad3d& quad)
 {
 	const auto& normal = quad.getNormal();
 
@@ -76,18 +68,13 @@ void PolygonMeshBuilder::build(const Quad3d& quad)
 	auto v2 = vertexFactory.createVertex(quad.getPosition(1, 1), normal, Vector2dd(1, 1));
 	auto v3 = vertexFactory.createVertex(quad.getPosition(0, 1), normal, Vector2dd(0, 1));
 
-	std::vector<std::array<int, 3>> faceIndices;
 	faceIndices.push_back({ v0,v1,v3 });
 	faceIndices.push_back({ v3,v1,v2 });
-
-	build(faceIndices);
-	//vertices.push_back(new Ver)
 }
 
-void PolygonMeshBuilder::build(const TriangleMesh& mesh)
+void PolygonMeshBuilder::add(const TriangleMesh& mesh)
 {
 	const auto& fs = mesh.getFaces();
-	std::vector< std::array<int, 3> > indices;
 	for (const auto& f : fs) {
 		const auto& vs = f.getVertices();
 		const auto& normal = f.getNormal();
@@ -95,12 +82,11 @@ void PolygonMeshBuilder::build(const TriangleMesh& mesh)
 		for (int i = 0; i < 3; ++i ) {
 			ids[i] = vertexFactory.createVertex(vs[i], normal);
 		}
-		indices.push_back( ids );
+		faceIndices.push_back( ids );
 	}
-	build(indices);
 }
 
-void PolygonMeshBuilder::build(const std::vector<std::array<int,3>>& faceIndices)
+void PolygonMeshBuilder::build()
 {
 	const auto& vertices = vertexFactory.getVertices();
 	for (const auto& indices : faceIndices) {

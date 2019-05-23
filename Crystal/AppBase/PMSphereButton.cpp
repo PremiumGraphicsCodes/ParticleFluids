@@ -18,8 +18,8 @@ void PMSphereButton::onShow()
 void PMSphereButton::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.build(sphere.getValue(), unum.getValue(), vnum.getValue());
-
+	builder.add(sphere.getValue(), unum.getValue(), vnum.getValue());
+	builder.build();
 	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), materialId.getValue(), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
