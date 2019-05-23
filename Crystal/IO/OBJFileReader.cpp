@@ -122,7 +122,7 @@ bool OBJFileReader::read(std::istream& stream)
 	}
 	obj.useMtlNames.push_back(currentUseMtl);
 
-	return stream.good();
+	return true;
 }
 
 

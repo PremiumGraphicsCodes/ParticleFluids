@@ -14,6 +14,12 @@ public:
 		nextId(0)
 	{}
 
+	VertexFactory(VertexFactory&& rhs) :
+		nextId(rhs.nextId),
+		vertices(std::move(rhs.vertices))
+	{
+	}
+
 	int createVertex(const Math::Vector3dd& position)
 	{
 		Shape::VertexAttr attr;

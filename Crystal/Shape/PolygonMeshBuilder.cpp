@@ -15,6 +15,11 @@ using namespace Crystal::Shape;
 PolygonMeshBuilder::PolygonMeshBuilder()
 {}
 
+PolygonMeshBuilder::PolygonMeshBuilder(VertexFactory&& vertexFactory) :
+	vertexFactory(std::move(vertexFactory))
+{
+}
+
 void PolygonMeshBuilder::add(const Triangle3d& triangle)
 {
 	const auto& vs = triangle.getVertices();
@@ -88,18 +93,25 @@ void PolygonMeshBuilder::add(const TriangleMesh& mesh)
 
 void PolygonMeshBuilder::build()
 {
-	const auto& vertices = vertexFactory.getVertices();
 	for (const auto& indices : faceIndices) {
-		const auto v1 = vertices[indices[0]];
-		const auto v2 = vertices[indices[1]];
-		const auto v3 = vertices[indices[2]];
-		auto e1 = new HalfEdge(v1, v2);
-		auto e2 = new HalfEdge(v2, v3);
-		auto e3 = new HalfEdge(v3, v1);
-
-		faces.push_back(new Face(e1, e2, e3));
+		build(indices);
 	}
 }
+
+void PolygonMeshBuilder::build(const std::array<int, 3>& indices)
+{
+	const auto& vertices = vertexFactory.getVertices();
+
+	const auto v1 = vertices[indices[0]];
+	const auto v2 = vertices[indices[1]];
+	const auto v3 = vertices[indices[2]];
+	auto e1 = new HalfEdge(v1, v2);
+	auto e2 = new HalfEdge(v2, v3);
+	auto e3 = new HalfEdge(v3, v1);
+
+	faces.push_back(new Face(e1, e2, e3));
+}
+
 
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh() const
 {

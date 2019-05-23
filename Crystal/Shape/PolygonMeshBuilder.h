@@ -19,6 +19,8 @@ class PolygonMeshBuilder : private UnCopyable
 public:
 	PolygonMeshBuilder();
 
+	explicit PolygonMeshBuilder(VertexFactory&& vertexFactory);
+
 	void add(const Math::Triangle3d& triangle);
 
 	void add(const Math::Box3d& box);
@@ -30,6 +32,8 @@ public:
 	void add(const TriangleMesh& mesh);
 
 	void build();
+
+	void build(const std::array<int, 3>& indices);
 
 	PolygonMesh* getPolygonMesh() const;
 
