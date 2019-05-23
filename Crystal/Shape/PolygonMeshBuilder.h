@@ -15,6 +15,39 @@ namespace Crystal {
 class PolygonMeshBuilder : private UnCopyable
 {
 public:
+	struct PositionNormal
+	{
+		PositionNormal()
+		{}
+
+		PositionNormal(const Math::Vector3dd& position, const Math::Vector3dd& normal) :
+			position(position),
+			normal(normal)
+		{}
+
+		PositionNormal(const Math::Vector3dd&& position, const Math::Vector3dd&& normal) :
+			position(std::move(position)),
+			normal(std::move(normal))
+		{}
+
+		Math::Vector3dd position;
+		Math::Vector3dd normal;
+	};
+
+	struct IndexedList
+	{
+		IndexedList()
+		{}
+
+		IndexedList(const std::vector<PositionNormal>& positionNormals, const std::vector<int>& indices) :
+			positionNormals(positionNormals),
+			indices(indices)
+		{}
+
+		std::vector<PositionNormal> positionNormals;
+		std::vector<int> indices;
+	};
+
 	PolygonMeshBuilder();
 
 	void build(const std::vector<Math::Triangle3d>& triangles);
@@ -25,7 +58,7 @@ public:
 
 	void build(const Math::Vector3dd& start, const Math::Vector3dd& uvec, const Math::Vector3dd& vvec);
 
-	void build(const std::vector<std::pair<Math::Vector3dd, Math::Vector3dd> >& positionNormals, const std::vector<int>& indices);
+	void build(const IndexedList& list);
 
 	//void build(const std::vector<Math::Vector3dd>& positions, const std::vector<Math::Vector3dd>& normals, const std::vector<std::pair<int, int>>& faceIndices);
 

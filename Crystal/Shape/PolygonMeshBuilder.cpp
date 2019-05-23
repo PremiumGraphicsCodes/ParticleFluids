@@ -17,23 +17,20 @@ PolygonMeshBuilder::PolygonMeshBuilder() :
 
 void PolygonMeshBuilder::build(const std::vector<Triangle3d>& triangles)
 {
+	std::vector<PositionNormal> positionNormals;
+	std::vector<int> indices;
+
+	int id = 0;
+	IndexedList list;
 	for (const auto& t : triangles) {
-		VertexAttr attr;
-		attr.normal = t.getNormal();
-		attr.id = nextVertexId++;
-		Vertex* v0 = new Vertex(t.getVertices()[0], attr);
-		attr.id = nextVertexId++;
-		Vertex* v1 = new Vertex(t.getVertices()[1], attr);
-		attr.id = nextVertexId++;
-		Vertex* v2 = new Vertex(t.getVertices()[2], attr);
-		HalfEdge* e1 = new HalfEdge(v0, v1);
-		HalfEdge* e2 = new HalfEdge(v1, v2);
-		HalfEdge* e3 = new HalfEdge(v2, v0);
-		Face* f = new Face(e1, e2, e3);
-		vertices.push_back(v0);
-		vertices.push_back(v1);
-		vertices.push_back(v2);
-		faces.push_back(f);
+		const auto& vs = t.getVertices();
+		const auto& normal = t.getNormal();
+		list.positionNormals.push_back(PositionNormal(vs[0], normal));
+		list.positionNormals.push_back(PositionNormal(vs[1], normal));
+		list.positionNormals.push_back(PositionNormal(vs[2], normal));
+		list.indices.push_back(id++);
+		list.indices.push_back(id++);
+		list.indices.push_back(id++);
 	}
 }
 
@@ -117,22 +114,22 @@ void PolygonMeshBuilder::build(const Vector3dd& start, const Vector3dd& uvec, co
 	//vertices.push_back(new Ver)
 }
 
-void PolygonMeshBuilder::build(const std::vector<std::pair<Vector3dd, Vector3dd> >& positionNormals, const std::vector<int>& indices)
+void PolygonMeshBuilder::build(const PolygonMeshBuilder::IndexedList& list)
 {
 	std::vector<Vertex*> vs;
-	for (const auto& pn : positionNormals) {
-		const auto& position = pn.first;
+	for (const auto& pn : list.positionNormals) {
+		const auto& position = pn.position;
 		VertexAttr attr;
-		attr.normal = pn.second;
+		attr.normal = pn.normal;
 		attr.id = nextVertexId++;
 		auto v = new Vertex(position, attr);
 		vs.push_back(v);
 		vertices.push_back(v);
 	}
-	for (size_t i = 0; i < indices.size(); i+=3) {
-		const auto v1 = vs[ indices[i+0] ];
-		const auto v2 = vs[ indices[i+1] ];
-		const auto v3 = vs[ indices[i+2] ];
+	for (size_t i = 0; i < list.indices.size(); i+=3) {
+		const auto v1 = vs[ list.indices[i+0] ];
+		const auto v2 = vs[ list.indices[i+1] ];
+		const auto v3 = vs[ list.indices[i+2] ];
 		auto e1 = new HalfEdge(v1, v2);
 		auto e2 = new HalfEdge(v2, v3);
 		auto e3 = new HalfEdge(v3, v1);
