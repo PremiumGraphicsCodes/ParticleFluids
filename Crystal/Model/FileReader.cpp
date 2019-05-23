@@ -36,6 +36,7 @@ bool FileReader::read(const std::experimental::filesystem::path& filePath, Objec
 
 bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
+	/*
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
 		const auto& obj = reader.getOBJ();
@@ -45,7 +46,7 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 
 		VertexFactory vertexFactory;
 		for (const auto& p : positions) {
-			vertexFactory.createVertex(p);
+			vertexFactory.createPosition(p);
 		}
 
 		PolygonMeshBuilder builder(std::move(vertexFactory));
@@ -59,6 +60,7 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 
 		return true;
 	}
+	*/
 	return false;
 }
 

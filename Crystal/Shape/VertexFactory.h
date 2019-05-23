@@ -20,7 +20,28 @@ public:
 	{
 	}
 
-	int createVertex(const Math::Vector3dd& position)
+	Math::Vector3dd* createPosition(const Math::Vector3dd& v)
+	{
+		auto p = new Math::Vector3dd(v);
+		positions.push_back(p);
+		return p;
+	}
+
+	Math::Vector3dd* createNormal(const Math::Vector3dd& n)
+	{
+		auto nn = new Math::Vector3dd(n);
+		normals.push_back(nn);
+		return nn;
+	}
+
+	Math::Vector2dd* createTexCoord(const Math::Vector2dd& n)
+	{
+		auto tt = new Math::Vector2dd(n);
+		texCoords.push_back(tt);
+		return tt;
+	}
+
+	int createVertex(Math::Vector3dd* position)
 	{
 		Shape::VertexAttr attr;
 		attr.id = nextId++;
@@ -29,7 +50,7 @@ public:
 		return v->getAttr().id;
 	}
 
-	int createVertex(const Math::Vector3dd& position, const Math::Vector3dd& normal)
+	int createVertex(Math::Vector3dd* position, Math::Vector3dd* normal)
 	{
 		Shape::VertexAttr attr;
 		attr.normal = normal;
@@ -39,7 +60,7 @@ public:
 		return v->getAttr().id;
 	}
 
-	int createVertex(const Math::Vector3dd& position, const Math::Vector3dd& normal, const Math::Vector2dd& texCoord)
+	int createVertex(Math::Vector3dd* position, Math::Vector3dd* normal, Math::Vector2dd* texCoord)
 	{
 		Shape::VertexAttr attr;
 		attr.normal = normal;
@@ -54,6 +75,9 @@ public:
 
 private:
 	int nextId;
+	std::vector<Math::Vector3dd*> positions;
+	std::vector<Math::Vector3dd*> normals;
+	std::vector<Math::Vector2dd*> texCoords;
 	std::vector<Vertex*> vertices;
 };
 

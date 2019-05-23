@@ -81,12 +81,12 @@ PolygonMesh* PolygonMesh::clone()
 	return new PolygonMesh(vertices, faces);
 }
 
-Vector3df PolygonMesh::getCenter() const
+Vector3dd PolygonMesh::getCenter() const
 {
-	Vector3df center;
+	Vector3dd center;
 	const auto& vs = this->getVertices();
 	for (const auto& v : vs) {
-		center += v->getPosition() / static_cast<float>(vs.size());
+		center += v->getPosition() / static_cast<double>(vs.size());
 	}
 	return center;
 }
@@ -128,7 +128,7 @@ void PolygonMesh::updateNormals()
 		}
 	}
 	for (auto f : fs) {
-		const auto area = f->getArea() * 1.0e+6f;
+		const auto area = f->getArea() * 1.0e+6;
 		//assert(area > 0);
 		//assert(area > 1.0e-1);
 		const auto& normal = f->getNormal();

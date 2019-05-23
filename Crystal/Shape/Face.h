@@ -32,7 +32,7 @@ public:
 
 	//Math::Point3d<float> getCenterPoint() const;
 
-	Math::Vector3df getNormal() const;
+	Math::Vector3dd getNormal() const;
 
 	//Math::Orientation getOrientation(const Math::Vector3df& pos) const;
 

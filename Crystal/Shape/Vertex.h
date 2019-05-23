@@ -16,37 +16,35 @@ namespace Crystal {
 struct VertexAttr
 {
 	int id;
-	Math::Vector3df normal;
-	Math::Vector2df texCoord;
+	Math::Vector3dd* normal;
+	Math::Vector2dd* texCoord;
 };
 
 class Vertex
 {
 public:
-	Vertex(const Math::Vector3df& position, const VertexAttr& attr);
+	Vertex(Math::Vector3dd* position, const VertexAttr& attr);
 
 	VertexAttr getAttr() const { return attr; }
 
-	Vertex* clone();
+	Math::Vector3dd getPosition() const { return *position; }
 
-	Math::Vector3df getPosition() const { return position; }
+	Math::Vector3dd getNormal() const { return *attr.normal; }
 
-	Math::Vector3df getNormal() const { return attr.normal; }
+	Math::Vector2dd getTexCoord() const { return *attr.texCoord; }
 
-	Math::Vector2df getTexCoord() const { return attr.texCoord; }
+	void move(const Math::Vector3df& v) { *this->position += v;}
 
-	void move(const Math::Vector3df& v) { this->position += v; }
+	void setNormal(const Math::Vector3df& n) { *this->attr.normal = n; }
 
-	void setNormal(const Math::Vector3df& n) { this->attr.normal = n; }
+	void transform(const Math::Matrix3dd& m) { *position = m * *position; }
 
-	void transform(const Math::Matrix3dd& m) { position = m * position; }
-
-	void transform(const Math::Matrix4dd& m) { position = m * glm::vec4( position, 1.0 ); }
+	void transform(const Math::Matrix4dd& m) { *position = m * glm::vec4( *position, 1.0 ); }
 
 	//void scale(const Vector3df& s) { this->position.scale(s); }
 
 private:
-	Math::Vector3df position;
+	Math::Vector3dd* position;
 	VertexAttr attr;
 };
 

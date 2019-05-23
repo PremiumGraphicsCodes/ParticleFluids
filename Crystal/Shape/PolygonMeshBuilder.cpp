@@ -23,10 +23,10 @@ PolygonMeshBuilder::PolygonMeshBuilder(VertexFactory&& vertexFactory) :
 void PolygonMeshBuilder::add(const Triangle3d& triangle)
 {
 	const auto& vs = triangle.getVertices();
-	const auto& normal = triangle.getNormal();
-	auto v0 = vertexFactory.createVertex(vs[0], normal);
-	auto v1 = vertexFactory.createVertex(vs[1], normal);
-	auto v2 = vertexFactory.createVertex(vs[2], normal);
+	const auto& normal = vertexFactory.createNormal( triangle.getNormal() );
+	auto v0 = vertexFactory.createVertex( vertexFactory.createPosition( vs[0] ), normal);
+	auto v1 = vertexFactory.createVertex( vertexFactory.createPosition( vs[1] ), normal);
+	auto v2 = vertexFactory.createVertex( vertexFactory.createPosition( vs[2] ), normal);
 	faceIndices.push_back({ v0,v1,v2 });
 }
 
@@ -46,10 +46,10 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 	for (double u = 0.0; u < 1.0; u +=du) {
 		std::vector<int> vs;
 		for (double v = 0.0; v < 1.0; v+=dv) {
-			const auto& p = sphere.getPosition(u, v);
-			const auto& n = sphere.getNormal(u, v);
-			const Vector2dd texCoord(u, v);
-			const auto id = vertexFactory.createVertex(p, n, texCoord);
+			auto p = vertexFactory.createPosition( sphere.getPosition(u, v) );
+			auto n = vertexFactory.createNormal( sphere.getNormal(u, v) );
+			auto tx = vertexFactory.createTexCoord(Vector2dd( u,v) );
+			const auto id = vertexFactory.createVertex(p, n, tx);
 			vs.push_back(id);
 		}
 		grid.push_back(vs);
@@ -66,12 +66,12 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 
 void PolygonMeshBuilder::add(const Quad3d& quad)
 {
-	const auto& normal = quad.getNormal();
+	auto normal = vertexFactory.createNormal( quad.getNormal() );
 
-	auto v0 = vertexFactory.createVertex(quad.getPosition(0, 0), normal, Vector2dd(0, 0));
-	auto v1 = vertexFactory.createVertex(quad.getPosition(1, 0), normal, Vector2dd(1, 0));
-	auto v2 = vertexFactory.createVertex(quad.getPosition(1, 1), normal, Vector2dd(1, 1));
-	auto v3 = vertexFactory.createVertex(quad.getPosition(0, 1), normal, Vector2dd(0, 1));
+	auto v0 = vertexFactory.createVertex( vertexFactory.createPosition( quad.getPosition(0, 0) ), normal, vertexFactory.createTexCoord( Vector2dd(0, 0)) );
+	auto v1 = vertexFactory.createVertex( vertexFactory.createPosition( quad.getPosition(1, 0) ), normal, vertexFactory.createTexCoord( Vector2dd(1, 0)) );
+	auto v2 = vertexFactory.createVertex( vertexFactory.createPosition( quad.getPosition(1, 1) ), normal, vertexFactory.createTexCoord( Vector2dd(1, 1)) );
+	auto v3 = vertexFactory.createVertex( vertexFactory.createPosition( quad.getPosition(0, 1) ), normal, vertexFactory.createTexCoord( Vector2dd(0, 1)) );
 
 	faceIndices.push_back({ v0,v1,v3 });
 	faceIndices.push_back({ v3,v1,v2 });
@@ -83,9 +83,11 @@ void PolygonMeshBuilder::add(const TriangleMesh& mesh)
 	for (const auto& f : fs) {
 		const auto& vs = f.getVertices();
 		const auto& normal = f.getNormal();
+		auto n = vertexFactory.createNormal(normal);
 		std::array<int,3> ids;
 		for (int i = 0; i < 3; ++i ) {
-			ids[i] = vertexFactory.createVertex(vs[i], normal);
+			auto p = vertexFactory.createPosition(vs[i]);
+			ids[i] = vertexFactory.createVertex(p, n);
 		}
 		faceIndices.push_back( ids );
 	}

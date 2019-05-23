@@ -4,15 +4,11 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
-Vertex::Vertex(const Vector3df& position,const VertexAttr& attr) :
+Vertex::Vertex(Vector3dd* position,const VertexAttr& attr) :
 	position(position),
 	attr(attr)
 {}
 
-Vertex* Vertex::clone()
-{
-	return new Vertex(getPosition(), attr);
-}
 
 Box3d Util::getBoundingBox(const std::list<Vertex*>& vertices)
 {

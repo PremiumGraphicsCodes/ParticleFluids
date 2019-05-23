@@ -49,7 +49,7 @@ public:
 
 	PolygonMesh* clone();
 
-	Math::Vector3df getCenter() const;
+	Math::Vector3dd getCenter() const;
 
 	void move(const Math::Vector3dd& v) override;
 

@@ -39,7 +39,7 @@ Vertex* Face::find(Vertex* v)
 	return nullptr;
 }
 
-Vector3df Face::getNormal() const
+Vector3dd Face::getNormal() const
 {
 	auto vertices = getVertices();
 	auto normal = glm::cross((vertices[1]->getPosition() - vertices[0]->getPosition()), (vertices[2]->getPosition() - vertices[0]->getPosition()));
