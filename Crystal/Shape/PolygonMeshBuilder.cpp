@@ -13,8 +13,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
 PolygonMeshBuilder::PolygonMeshBuilder() :
-	nextId(0),
-	nextVertexId(0)
+	nextId(0)
 {}
 
 void PolygonMeshBuilder::build(const std::vector<Triangle3d>& triangles)
@@ -51,11 +50,10 @@ void PolygonMeshBuilder::build(const Sphere3d& sphere, const int unum, const int
 	for (double u = 0.0; u < 1.0; u +=du) {
 		std::vector<Vertex*> vs;
 		for (double v = 0.0; v < 1.0; v+=dv) {
-			VertexAttr attr;
-			attr.id = nextVertexId++;
-			attr.normal = sphere.getNormal(u,v);
-			attr.texCoord = Vector2df(u, v);
-			Vertex* vert = new Vertex(sphere.getPosition(u, v), attr);
+			const auto& p = sphere.getPosition(u, v);
+			const auto& n = sphere.getNormal(u, v);
+			const Vector2dd texCoord(u, v);
+			Vertex* vert = vertexFactory.createVertex(p, n, texCoord);
 			vs.push_back(vert);
 			this->vertices.push_back(vert);
 		}
@@ -123,11 +121,7 @@ void PolygonMeshBuilder::build(const PolygonMeshBuilder::IndexedList& list)
 {
 	std::vector<Vertex*> vs;
 	for (const auto& pn : list.vertices) {
-		const auto& position = pn.position;
-		VertexAttr attr;
-		attr.normal = pn.normal;
-		attr.id = nextVertexId++;
-		auto v = new Vertex(position, attr);
+		auto v = vertexFactory.createVertex(pn.position, pn.normal);
 		vs.push_back(v);
 		vertices.push_back(v);
 	}

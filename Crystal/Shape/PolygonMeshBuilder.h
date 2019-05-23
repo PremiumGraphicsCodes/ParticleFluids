@@ -13,6 +13,41 @@ namespace Crystal {
 	namespace Shape {
 		class TriangleMesh;
 
+class VertexFactory : private UnCopyable
+{
+public:
+	VertexFactory() :
+		nextId(0)
+	{}
+
+	Vertex* createVertex(const Math::Vector3dd& position)
+	{
+		Shape::VertexAttr attr;
+		attr.id = nextId++;
+		return new Vertex(position, attr);
+	}
+
+	Vertex* createVertex(const Math::Vector3dd& position, const Math::Vector3dd& normal)
+	{
+		Shape::VertexAttr attr;
+		attr.normal = normal;
+		attr.id = nextId++;
+		return new Vertex(position, attr);
+	}
+
+	Vertex* createVertex(const Math::Vector3dd& position, const Math::Vector3dd& normal, const Math::Vector2dd& texCoord)
+	{
+		Shape::VertexAttr attr;
+		attr.normal = normal;
+		attr.texCoord = texCoord;
+		attr.id = nextId++;
+		return new Vertex(position, attr);
+	}
+
+private:
+	int nextId;
+};
+
 class PolygonMeshBuilder : private UnCopyable
 {
 public:
@@ -69,13 +104,11 @@ public:
 	PolygonMesh* getPolygonMesh() const;
 
 private:
-	//void buildEdges();
+	VertexFactory vertexFactory;
 
-	std::vector<Vertex*> vertices;
 	std::list<Face*> faces;
-	//std::vector<Vertex*> vertices;
+	std::vector<Vertex*> vertices;
 	int nextId;
-	int nextVertexId;
 };
 
 	}
