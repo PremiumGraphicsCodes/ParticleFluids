@@ -75,9 +75,6 @@
     <ClCompile Include="PMBoxButton.cpp">
       <Filter>Object\PolygonMesh\Generation</Filter>
     </ClCompile>
-    <ClCompile Include="PMPlaneButton.cpp">
-      <Filter>Object\PolygonMesh\Generation</Filter>
-    </ClCompile>
     <ClCompile Include="PMSphereButton.cpp">
       <Filter>Object\PolygonMesh\Generation</Filter>
     </ClCompile>
@@ -167,6 +164,9 @@
     </ClCompile>
     <ClCompile Include="LightEditView.cpp">
       <Filter>Appearance\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="PMQuadButton.cpp">
+      <Filter>Object\PolygonMesh\Generation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -304,9 +304,6 @@
     <ClInclude Include="PMBoxButton.h">
       <Filter>Object\PolygonMesh\Generation</Filter>
     </ClInclude>
-    <ClInclude Include="PMPlaneButton.h">
-      <Filter>Object\PolygonMesh\Generation</Filter>
-    </ClInclude>
     <ClInclude Include="PMSphereButton.h">
       <Filter>Object\PolygonMesh\Generation</Filter>
     </ClInclude>
@@ -410,6 +407,9 @@
     </ClInclude>
     <ClInclude Include="Quad3dView.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PMQuadButton.h">
+      <Filter>Object\PolygonMesh\Generation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

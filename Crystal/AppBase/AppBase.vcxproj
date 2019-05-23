@@ -47,7 +47,7 @@
     <ClCompile Include="MaterialTreeList.cpp" />
     <ClCompile Include="MaterialView.cpp" />
     <ClCompile Include="PMBoxButton.cpp" />
-    <ClCompile Include="PMPlaneButton.cpp" />
+    <ClCompile Include="PMQuadButton.cpp" />
     <ClCompile Include="PMSphereButton.cpp" />
     <ClCompile Include="PSBoxButton.cpp" />
     <ClCompile Include="PSConeButton.cpp" />
@@ -124,7 +124,7 @@
     <ClInclude Include="MaterialView.h" />
     <ClInclude Include="Plane3dView.h" />
     <ClInclude Include="PMBoxButton.h" />
-    <ClInclude Include="PMPlaneButton.h" />
+    <ClInclude Include="PMQuadButton.h" />
     <ClInclude Include="PMSphereButton.h" />
     <ClInclude Include="PSAttributeView.h" />
     <ClInclude Include="PSTorusButton.h" />
