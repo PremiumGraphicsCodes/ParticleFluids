@@ -27,3 +27,7 @@ void PMQuadButton::onOk()
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
+
+void PMQuadButton::onCancel()
+{
+}

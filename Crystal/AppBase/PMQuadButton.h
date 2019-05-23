@@ -18,10 +18,7 @@ public:
 
 	void onOk();
 
-	void onCancel()
-	{
-
-	}
+	void onCancel();
 
 private:
 	Quad3dView quad;

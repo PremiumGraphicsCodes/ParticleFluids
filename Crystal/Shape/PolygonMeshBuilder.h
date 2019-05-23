@@ -16,23 +16,26 @@ namespace Crystal {
 class PolygonMeshBuilder : private UnCopyable
 {
 public:
-	struct PositionNormal
+	struct PolygonVertex
 	{
-		PositionNormal()
+		PolygonVertex()
 		{}
 
-		PositionNormal(const Math::Vector3dd& position, const Math::Vector3dd& normal) :
+		PolygonVertex(const Math::Vector3dd& position, const Math::Vector3dd& normal) :
 			position(position),
 			normal(normal)
 		{}
 
-		PositionNormal(const Math::Vector3dd&& position, const Math::Vector3dd&& normal) :
-			position(std::move(position)),
-			normal(std::move(normal))
+		PolygonVertex(const Math::Vector3dd& position, const Math::Vector3dd& normal, const Math::Vector2dd& texCoord) :
+			position(position),
+			normal(normal),
+			texCoord(texCoord)
 		{}
+
 
 		Math::Vector3dd position;
 		Math::Vector3dd normal;
+		Math::Vector2dd texCoord;
 	};
 
 	struct IndexedList
@@ -40,13 +43,13 @@ public:
 		IndexedList()
 		{}
 
-		IndexedList(const std::vector<PositionNormal>& positionNormals, const std::vector<int>& indices) :
-			positionNormals(positionNormals),
+		IndexedList(const std::vector<PolygonVertex>& vertices, const std::vector<std::array<int,3>>& indices) :
+			vertices(vertices),
 			indices(indices)
 		{}
 
-		std::vector<PositionNormal> positionNormals;
-		std::vector<int> indices;
+		std::vector<PolygonVertex> vertices;
+		std::vector<std::array<int,3>> indices;
 	};
 
 	PolygonMeshBuilder();

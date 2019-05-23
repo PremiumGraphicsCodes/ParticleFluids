@@ -40,17 +40,26 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 	if (reader.read(filePath)) {
 		const auto& obj = reader.getOBJ();
 		const auto& positions = obj.positions;
-		int nextId = 0;
-		std::vector<Vertex*> vertices;
-		for (const auto& p : positions) {
-			VertexAttr attr;
-			attr.id = nextId++;
-			auto vertex = new Vertex(p, attr);
-			vertices.push_back(vertex);
-		}
-//		PolygonMesh* mesh = new PolygonMesh(vertices);
+		const auto& normals = obj.normals;
+		const auto& texCoords = obj.texCoords;
 
-//		builder.build(obj.positions,obj.normals,)
+		PolygonMeshBuilder::IndexedList list;
+
+		int nextId = 0;
+		for (const auto& f : obj.faces) {
+			for (int i = 0; i < f.positionIndices.size(); ++i) {
+				const auto& position = positions[f.positionIndices[i]];
+				const auto& normal = normals[f.normalIndices[i]];
+				const auto& texCoord = texCoords[f.texCoordIndices[i]];
+				PolygonMeshBuilder::PolygonVertex v(position, normal, texCoord);
+				list.vertices.push_back(v);
+				std::array<int, 3> indices{ nextId++, nextId++, nextId++ };
+				list.indices.push_back(indices);
+			}
+		}
+
+		PolygonMeshBuilder builder;
+		builder.build(list);
 //		obj.positions
 		return true;
 	}

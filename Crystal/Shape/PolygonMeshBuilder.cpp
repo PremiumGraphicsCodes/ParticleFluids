@@ -19,7 +19,7 @@ PolygonMeshBuilder::PolygonMeshBuilder() :
 
 void PolygonMeshBuilder::build(const std::vector<Triangle3d>& triangles)
 {
-	std::vector<PositionNormal> positionNormals;
+	std::vector<PolygonVertex> positionNormals;
 	std::vector<int> indices;
 
 	int id = 0;
@@ -27,13 +27,12 @@ void PolygonMeshBuilder::build(const std::vector<Triangle3d>& triangles)
 	for (const auto& t : triangles) {
 		const auto& vs = t.getVertices();
 		const auto& normal = t.getNormal();
-		list.positionNormals.push_back(PositionNormal(vs[0], normal));
-		list.positionNormals.push_back(PositionNormal(vs[1], normal));
-		list.positionNormals.push_back(PositionNormal(vs[2], normal));
-		list.indices.push_back(id++);
-		list.indices.push_back(id++);
-		list.indices.push_back(id++);
+		list.vertices.push_back(PolygonVertex(vs[0], normal));
+		list.vertices.push_back(PolygonVertex(vs[1], normal));
+		list.vertices.push_back(PolygonVertex(vs[2], normal));
+		list.indices.push_back({ id++, id++, id++ });
 	}
+	build(list);
 }
 
 void PolygonMeshBuilder::build(const Box3d& box)
@@ -84,42 +83,46 @@ void PolygonMeshBuilder::build(const Quad3d& quad)
 {
 	const auto& normal = quad.getNormal();
 
-	VertexAttr attr;
-	attr.id = nextVertexId++;
-	attr.normal = normal;
-	attr.texCoord = Vector2df(0, 0);
-	auto v0 = new Vertex(quad.getPosition(0,0), attr);
-	attr.id = nextVertexId++;
-	attr.texCoord = Vector2df(1, 0);
-	auto v1 = new Vertex(quad.getPosition(1,0), attr);
-	attr.id = nextVertexId++;
-	attr.texCoord = Vector2df(0, 1);
-	auto v2 = new Vertex(quad.getPosition(1,1), attr);
-	attr.id = nextVertexId++;
-	attr.texCoord = Vector2df(1, 1);
-	auto v3 = new Vertex(quad.getPosition(0,1), attr);
-	vertices.push_back(v0);
-	vertices.push_back(v1);
-	vertices.push_back(v2);
-	vertices.push_back(v3);
+	IndexedList list;
+	PolygonVertex v0(quad.getPosition(0, 0), normal, Vector2dd(0, 0));
+	PolygonVertex v1(quad.getPosition(1, 0), normal, Vector2dd(1, 0));
+	PolygonVertex v2(quad.getPosition(1, 1), normal, Vector2dd(1, 1));
+	PolygonVertex v3(quad.getPosition(0, 1), normal, Vector2dd(0, 1));
 
-	auto e1 = new HalfEdge(v0, v1);
-	auto e2 = new HalfEdge(v1, v2);
-	auto e3 = new HalfEdge(v2, v0);
-	faces.push_back(new Face(e1, e2, e3));
+	list.vertices.push_back(v0);
+	list.vertices.push_back(v1);
+	list.vertices.push_back(v2);
+	list.vertices.push_back(v3);
 
-	auto e4 = new HalfEdge(v2, v1);
-	auto e5 = new HalfEdge(v1, v3);
-	auto e6 = new HalfEdge(v3, v2);
-	faces.push_back(new Face(e4, e5, e6));
+	list.indices.push_back({ 0,1,3 });
+	list.indices.push_back({ 3,1,2 });
 
+	build(list);
 	//vertices.push_back(new Ver)
+}
+
+void PolygonMeshBuilder::build(const TriangleMesh& mesh)
+{
+	const auto& fs = mesh.getFaces();
+	IndexedList list;
+	int id = 0;
+	for (const auto& f : fs) {
+		const auto& vs = f.getVertices();
+		const auto& normal = f.getNormal();
+		std::vector<Vertex*> vss;
+		for (auto v : vs) {
+			PolygonVertex pn(v, normal);
+			list.vertices.push_back(pn);
+		}
+		list.indices.push_back({ id++, id++, id++ });
+	}
+	build(list);
 }
 
 void PolygonMeshBuilder::build(const PolygonMeshBuilder::IndexedList& list)
 {
 	std::vector<Vertex*> vs;
-	for (const auto& pn : list.positionNormals) {
+	for (const auto& pn : list.vertices) {
 		const auto& position = pn.position;
 		VertexAttr attr;
 		attr.normal = pn.normal;
@@ -128,10 +131,10 @@ void PolygonMeshBuilder::build(const PolygonMeshBuilder::IndexedList& list)
 		vs.push_back(v);
 		vertices.push_back(v);
 	}
-	for (size_t i = 0; i < list.indices.size(); i+=3) {
-		const auto v1 = vs[ list.indices[i+0] ];
-		const auto v2 = vs[ list.indices[i+1] ];
-		const auto v3 = vs[ list.indices[i+2] ];
+	for (const auto& indices : list.indices) {
+		const auto v1 = vs[indices[0]];
+		const auto v2 = vs[indices[1]];
+		const auto v3 = vs[indices[2]];
 		auto e1 = new HalfEdge(v1, v2);
 		auto e2 = new HalfEdge(v2, v3);
 		auto e3 = new HalfEdge(v3, v1);
@@ -139,31 +142,6 @@ void PolygonMeshBuilder::build(const PolygonMeshBuilder::IndexedList& list)
 		faces.push_back(new Face(e1, e2, e3));
 	}
 }
-
-void PolygonMeshBuilder::build(const TriangleMesh& mesh)
-{
-	const auto& fs = mesh.getFaces();
-	for (const auto& f : fs) {
-		const auto& vs = f.getVertices();
-		const auto& normal = f.getNormal();
-		std::vector<Vertex*> vss;
-		for (auto v : vs) {
-			VertexAttr attr;
-			attr.normal = normal;
-			attr.id = nextVertexId++;
-			vss.push_back( new Vertex(v, attr) );
-		}
-		for (auto v : vss) {
-			vertices.push_back(v);
-		}
-		auto e1 = new HalfEdge(vss[0], vss[1]);
-		auto e2 = new HalfEdge(vss[1], vss[2]);
-		auto e3 = new HalfEdge(vss[2], vss[0]);
-
-		faces.push_back(new Face(e1, e2, e3));
-	}
-}
-
 
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh() const
 {
