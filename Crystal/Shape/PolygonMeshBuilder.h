@@ -51,41 +51,6 @@ private:
 class PolygonMeshBuilder : private UnCopyable
 {
 public:
-	struct PolygonVertex
-	{
-		PolygonVertex()
-		{}
-
-		PolygonVertex(const Math::Vector3dd& position, const Math::Vector3dd& normal) :
-			position(position),
-			normal(normal)
-		{}
-
-		PolygonVertex(const Math::Vector3dd& position, const Math::Vector3dd& normal, const Math::Vector2dd& texCoord) :
-			position(position),
-			normal(normal),
-			texCoord(texCoord)
-		{}
-
-
-		Math::Vector3dd position;
-		Math::Vector3dd normal;
-		Math::Vector2dd texCoord;
-	};
-
-	struct IndexedList
-	{
-		IndexedList()
-		{}
-
-		IndexedList(const std::vector<PolygonVertex>& vertices, const std::vector<std::array<int,3>>& indices) :
-			vertices(vertices),
-			indices(indices)
-		{}
-
-		std::vector<PolygonVertex> vertices;
-		std::vector<std::array<int,3>> indices;
-	};
 
 	PolygonMeshBuilder();
 
@@ -97,7 +62,7 @@ public:
 
 	void build(const Math::Quad3d& quad);
 
-	void build(const IndexedList& list);
+	void build(const std::vector<std::array<int, 3>>& faceIndices);
 
 	void build(const TriangleMesh& mesh);
 

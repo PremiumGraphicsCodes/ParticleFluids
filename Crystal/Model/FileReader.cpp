@@ -43,6 +43,7 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 		const auto& normals = obj.normals;
 		const auto& texCoords = obj.texCoords;
 
+		/*
 		PolygonMeshBuilder::IndexedList list;
 
 		int nextId = 0;
@@ -60,6 +61,7 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 
 		PolygonMeshBuilder builder;
 		builder.build(list);
+		*/
 //		obj.positions
 		return true;
 	}
