@@ -32,6 +32,16 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 
 void PolygonMeshBuilder::add(const Box3d& box)
 {
+	const auto& p0 = vertexFactory.createPosition(box.getPosition(Vector3dd(0, 0, 0)));
+	const auto& p1 = vertexFactory.createPosition(box.getPosition(Vector3dd(1, 0, 0)));
+	const auto& p2 = vertexFactory.createPosition(box.getPosition(Vector3dd(1, 1, 0)));
+	const auto& p3 = vertexFactory.createPosition(box.getPosition(Vector3dd(0, 1, 0)));
+
+	const auto& normal = glm::cross(*p1 - *p0,*p2 - *p0);
+	vertexFactory.createNormal(normal);
+
+//	vertexFactory.createVertex();
+//	add(qua)
 	//build(box.getPosition(Vector3dd( 0, 0, 0)), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0));
 	//build(box.getPosition(Vector3dd( 1, 0, 0)), Vector3df(0, 0, 1), Vector3df(0, 1, 0));
 

@@ -57,31 +57,25 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 		const auto& positionTable = vertexFactory.getPositions();
 		const auto& normalTable = vertexFactory.getNormals();
 		const auto& texCoordTable = vertexFactory.getTexCoords();
+
+		std::vector< std::vector<int> > indices;
 		for (const auto& f : obj.faces) {
+			std::vector<int> eachIndices;
 			for (int i = 0; i < f.positionIndices.size(); i++) {
 				auto p = positionTable[f.positionIndices[i] - 1];
 				auto n = normalTable[f.normalIndices[i] - 1];
 				auto t = texCoordTable[f.texCoordIndices[i] - 1];
 				auto v = vertexFactory.createVertex(p, n, t);
+				eachIndices.push_back(v);
 			}
+			indices.push_back(eachIndices);
 		}
 
-		/*
 		PolygonMeshBuilder builder(std::move(vertexFactory));
-		std::array<int, 3 > indices;
-		for (const auto& f : obj.faces) {
-			for (int i = 0; i < f.positionIndices.size(); i++) {
-				auto p = positionTable[ f.positionIndices[i] - 1 ];
-				auto n = normalTable[f.normalIndices[i] - 1];
-				auto t = texCoordTable[f.texCoordIndices[i] - 1];
-
-				indices[i] = builder.build( p, n, t);
-			}
-			builder.build(indices);
-
+		for (const auto& i : indices) {
+			builder.build({ i[0], i[1], i[2] });
 		}
 		objects.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "OBJ");
-		*/
 
 		return true;
 	}
