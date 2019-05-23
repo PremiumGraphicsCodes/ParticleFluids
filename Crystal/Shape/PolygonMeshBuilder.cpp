@@ -26,7 +26,7 @@ void PolygonMeshBuilder::build(const std::vector<Triangle3d>& triangles)
 		auto v0 = vertexFactory.createVertex(vs[0], normal);
 		auto v1 = vertexFactory.createVertex(vs[1], normal);
 		auto v2 = vertexFactory.createVertex(vs[2], normal);
-		indices.push_back({ v0->getAttr().id, v1->getAttr().id, v2->getAttr().id });
+		indices.push_back({ v0, v1, v2 });
 	}
 	build(indices);
 }
@@ -43,35 +43,28 @@ void PolygonMeshBuilder::build(const Sphere3d& sphere, const int unum, const int
 {
 	const auto du = 1.0 / (double)unum;
 	const auto dv = 1.0 / (double)vnum;
-	std::vector<std::vector<Vertex*>> grid;
+	std::vector<std::vector<int>> grid;
 	for (double u = 0.0; u < 1.0; u +=du) {
-		std::vector<Vertex*> vs;
+		std::vector<int> vs;
 		for (double v = 0.0; v < 1.0; v+=dv) {
 			const auto& p = sphere.getPosition(u, v);
 			const auto& n = sphere.getNormal(u, v);
 			const Vector2dd texCoord(u, v);
-			Vertex* vert = vertexFactory.createVertex(p, n, texCoord);
-			vs.push_back(vert);
-			this->vertices.push_back(vert);
+			const auto id = vertexFactory.createVertex(p, n, texCoord);
+			vs.push_back(id);
 		}
 		grid.push_back(vs);
 	}
+	std::vector< std::array<int, 3> > faces;
 	for (int i = 0; i < grid.size()-1; ++i) {
 		for (int j = 0; j < grid[i].size() - 1; ++j) {
-			auto e1 = new HalfEdge(grid[i][j], grid[i+1][j] );
-			auto e2 = new HalfEdge(grid[i+1][j], grid[i][j+1] );
-			auto e3 = new HalfEdge(grid[i][j+1], grid[i][j]);
-			auto f1 = new Face(e1, e2, e3);
-			//assert(f1->getArea() > 0.0);
+			std::array<int, 3> f1{ grid[i][j], grid[i + 1][j], grid[i][j + 1] };
+			std::array<int, 3> f2{ grid[i][j + 1], grid[i + 1][j], grid[i + 1][j + 1] };
 			faces.push_back(f1);
-			auto e4 = new HalfEdge(grid[i][j+1], grid[i+1][j]);
-			auto e5 = new HalfEdge(grid[i+1][j], grid[i+1][j+1]);
-			auto e6 = new HalfEdge(grid[i+1][j+1], grid[i][j+1]);
-			auto f2 = new Face(e4, e5, e6);
-			//assert(f2->getArea() > 0.0);
 			faces.push_back(f2);
 		}
 	}
+	build(faces);
 }
 
 void PolygonMeshBuilder::build(const Quad3d& quad)
@@ -83,19 +76,9 @@ void PolygonMeshBuilder::build(const Quad3d& quad)
 	auto v2 = vertexFactory.createVertex(quad.getPosition(1, 1), normal, Vector2dd(1, 1));
 	auto v3 = vertexFactory.createVertex(quad.getPosition(0, 1), normal, Vector2dd(0, 1));
 
-	vertices.push_back(v0);
-	vertices.push_back(v1);
-	vertices.push_back(v2);
-	vertices.push_back(v3);
-
-	const auto i0 = v0->getAttr().id;
-	const auto i1 = v1->getAttr().id;
-	const auto i2 = v2->getAttr().id;
-	const auto i3 = v3->getAttr().id;
-
 	std::vector<std::array<int, 3>> faceIndices;
-	faceIndices.push_back({ i0,i1,i3 });
-	faceIndices.push_back({ i3,i1,i2 });
+	faceIndices.push_back({ v0,v1,v3 });
+	faceIndices.push_back({ v3,v1,v2 });
 
 	build(faceIndices);
 	//vertices.push_back(new Ver)
@@ -110,9 +93,7 @@ void PolygonMeshBuilder::build(const TriangleMesh& mesh)
 		const auto& normal = f.getNormal();
 		std::array<int,3> ids;
 		for (int i = 0; i < 3; ++i ) {
-			auto vertex = vertexFactory.createVertex(vs[i], normal);
-			vertices.push_back(vertex);
-			ids[i] = vertex->getAttr().id;
+			ids[i] = vertexFactory.createVertex(vs[i], normal);
 		}
 		indices.push_back( ids );
 	}
@@ -121,6 +102,7 @@ void PolygonMeshBuilder::build(const TriangleMesh& mesh)
 
 void PolygonMeshBuilder::build(const std::vector<std::array<int,3>>& faceIndices)
 {
+	const auto& vertices = vertexFactory.getVertices();
 	for (const auto& indices : faceIndices) {
 		const auto v1 = vertices[indices[0]];
 		const auto v2 = vertices[indices[1]];
@@ -135,5 +117,5 @@ void PolygonMeshBuilder::build(const std::vector<std::array<int,3>>& faceIndices
 
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh() const
 {
-	return new PolygonMesh(vertices, faces);
+	return new PolygonMesh(vertexFactory.getVertices(), faces);
 }
