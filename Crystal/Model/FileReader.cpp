@@ -36,7 +36,6 @@ bool FileReader::read(const std::experimental::filesystem::path& filePath, Objec
 
 bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
-	/*
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
 		const auto& obj = reader.getOBJ();
@@ -48,19 +47,44 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 		for (const auto& p : positions) {
 			vertexFactory.createPosition(p);
 		}
+		for (const auto& n : normals) {
+			vertexFactory.createNormal(n);
+		}
+		for (const auto& tc : texCoords) {
+			vertexFactory.createTexCoord(tc);
+		}
 
-		PolygonMeshBuilder builder(std::move(vertexFactory));
+		const auto& positionTable = vertexFactory.getPositions();
+		const auto& normalTable = vertexFactory.getNormals();
+		const auto& texCoordTable = vertexFactory.getTexCoords();
 		for (const auto& f : obj.faces) {
-			for (int i = 0; i < f.positionIndices.size(); i+=3) {
-				std::array<int, 3 > indices{ f.positionIndices[0]-1 , f.positionIndices[1]-1, f.positionIndices[2]-1 };
-				builder.build(indices);
+			for (int i = 0; i < f.positionIndices.size(); i++) {
+				auto p = positionTable[f.positionIndices[i] - 1];
+				auto n = normalTable[f.normalIndices[i] - 1];
+				auto t = texCoordTable[f.texCoordIndices[i] - 1];
+				auto v = vertexFactory.createVertex(p, n, t);
 			}
 		}
+
+		/*
+		PolygonMeshBuilder builder(std::move(vertexFactory));
+		std::array<int, 3 > indices;
+		for (const auto& f : obj.faces) {
+			for (int i = 0; i < f.positionIndices.size(); i++) {
+				auto p = positionTable[ f.positionIndices[i] - 1 ];
+				auto n = normalTable[f.normalIndices[i] - 1];
+				auto t = texCoordTable[f.texCoordIndices[i] - 1];
+
+				indices[i] = builder.build( p, n, t);
+			}
+			builder.build(indices);
+
+		}
 		objects.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "OBJ");
+		*/
 
 		return true;
 	}
-	*/
 	return false;
 }
 

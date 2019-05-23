@@ -37,6 +37,12 @@ public:
 
 	PolygonMesh* getPolygonMesh() const;
 
+	std::vector<Math::Vector3dd*> getPositions() const { return vertexFactory.getPositions(); }
+
+	std::vector<Math::Vector3dd*> getNormals() const { return vertexFactory.getNormals(); }
+
+	std::vector<Math::Vector2dd*> getTexCoords() const { return vertexFactory.getTexCoords(); }
+
 private:
 	VertexFactory vertexFactory;
 	std::vector<std::array<int, 3>> faceIndices;

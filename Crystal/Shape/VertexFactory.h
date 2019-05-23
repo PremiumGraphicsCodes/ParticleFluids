@@ -73,6 +73,12 @@ public:
 
 	std::vector<Vertex*> getVertices() const { return vertices; }
 
+	std::vector<Math::Vector3dd*> getPositions() const { return positions; }
+
+	std::vector<Math::Vector3dd*> getNormals() const { return normals; }
+
+	std::vector<Math::Vector2dd*> getTexCoords() const { return texCoords; }
+
 private:
 	int nextId;
 	std::vector<Math::Vector3dd*> positions;
