@@ -8,6 +8,7 @@ namespace Crystal {
 		class Box3d;
 		class Sphere3d;
 		class Triangle3d;
+		class Quad3d;
 	}
 	namespace Shape {
 		class TriangleMesh;
@@ -56,11 +57,9 @@ public:
 
 	void build(const Math::Sphere3d& sphere, const int udiv, const int vdiv);
 
-	void build(const Math::Vector3dd& start, const Math::Vector3dd& uvec, const Math::Vector3dd& vvec);
+	void build(const Math::Quad3d& quad);
 
 	void build(const IndexedList& list);
-
-	//void build(const std::vector<Math::Vector3dd>& positions, const std::vector<Math::Vector3dd>& normals, const std::vector<std::pair<int, int>>& faceIndices);
 
 	void build(const TriangleMesh& mesh);
 

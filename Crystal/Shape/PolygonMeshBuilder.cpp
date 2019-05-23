@@ -5,6 +5,8 @@
 
 #include "../Math/Line3d.h"
 #include "../Math/Sphere3d.h"
+#include "../Math/Plane3d.h"
+#include "../Math/Quad3d.h"
 #include "../Math/Box3d.h"
 
 using namespace Crystal::Math;
@@ -36,8 +38,8 @@ void PolygonMeshBuilder::build(const std::vector<Triangle3d>& triangles)
 
 void PolygonMeshBuilder::build(const Box3d& box)
 {
-	build(box.getPosition(Vector3dd( 0, 0, 0)), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0));
-	build(box.getPosition(Vector3dd( 1, 0, 0)), Vector3df(0, 0, 1), Vector3df(0, 1, 0));
+	//build(box.getPosition(Vector3dd( 0, 0, 0)), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0));
+	//build(box.getPosition(Vector3dd( 1, 0, 0)), Vector3df(0, 0, 1), Vector3df(0, 1, 0));
 
 	//faces
 }
@@ -78,24 +80,24 @@ void PolygonMeshBuilder::build(const Sphere3d& sphere, const int unum, const int
 	}
 }
 
-void PolygonMeshBuilder::build(const Vector3dd& start, const Vector3dd& uvec, const Vector3dd& vvec)
+void PolygonMeshBuilder::build(const Quad3d& quad)
 {
-	const auto& normal = -glm::cross(uvec, vvec);
+	const auto& normal = quad.getNormal();
 
 	VertexAttr attr;
 	attr.id = nextVertexId++;
 	attr.normal = normal;
 	attr.texCoord = Vector2df(0, 0);
-	auto v0 = new Vertex(start, attr);
+	auto v0 = new Vertex(quad.getPosition(0,0), attr);
 	attr.id = nextVertexId++;
 	attr.texCoord = Vector2df(1, 0);
-	auto v1 = new Vertex(start + uvec, attr);
+	auto v1 = new Vertex(quad.getPosition(1,0), attr);
 	attr.id = nextVertexId++;
 	attr.texCoord = Vector2df(0, 1);
-	auto v2 = new Vertex(start + vvec, attr);
+	auto v2 = new Vertex(quad.getPosition(1,1), attr);
 	attr.id = nextVertexId++;
 	attr.texCoord = Vector2df(1, 1);
-	auto v3 = new Vertex(start + uvec + vvec, attr);
+	auto v3 = new Vertex(quad.getPosition(0,1), attr);
 	vertices.push_back(v0);
 	vertices.push_back(v1);
 	vertices.push_back(v2);
@@ -137,15 +139,6 @@ void PolygonMeshBuilder::build(const PolygonMeshBuilder::IndexedList& list)
 		faces.push_back(new Face(e1, e2, e3));
 	}
 }
-
-/*
-void PolygonMeshBuilder::build(const std::vector<Vector3dd>& positions, const std::vector<Vector3dd>& normals, const std::vector<std::pair<int, int>>& faceIndices)
-{
-	for (auto index : faceIndices) {
-		positions[index.first];
-	}
-}
-*/
 
 void PolygonMeshBuilder::build(const TriangleMesh& mesh)
 {

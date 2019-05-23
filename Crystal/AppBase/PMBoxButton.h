@@ -1,3 +1,4 @@
+#pragma once
 #include "IPopupButton.h"
 
 #include "Box3dView.h"

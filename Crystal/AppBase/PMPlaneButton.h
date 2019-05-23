@@ -2,17 +2,17 @@
 
 #include "IPopupButton.h"
 
-#include "Vector3dView.h"
+#include "Quad3dView.h"
 #include "IntView.h"
 #include "StringView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PMPlaneButton : public IPopupButton
+class PMQuadButton : public IPopupButton
 {
 public:
-	PMPlaneButton(Repository* model, Canvas* canvas);
+	PMQuadButton(Repository* model, Canvas* canvas);
 
 	void onShow();
 
@@ -24,9 +24,7 @@ public:
 	}
 
 private:
-	Vector3dView originView;
-	Vector3dView uvecView;
-	Vector3dView vvecView;
+	Quad3dView quad;
 	IntView materialId;
 	StringView name;
 };

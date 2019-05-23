@@ -14,8 +14,8 @@ PolygonMeshPanel::PolygonMeshPanel(const std::string& name, Repository* model, C
 	IPanel(name, model, canvas)
 {
 	add( new PMSphereButton(model, canvas) );
-	add( new PMBoxButton(model, canvas) );
-	add( new PMPlaneButton(model, canvas) );
+	add( new PMQuadButton(model, canvas) );
+	add( new PMQuadButton(model, canvas) );
 
 	add(new PolygonMeshTreeList("Polygons", model, canvas));
 }

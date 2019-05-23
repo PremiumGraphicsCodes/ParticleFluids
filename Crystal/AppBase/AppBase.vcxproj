@@ -96,6 +96,7 @@
     <ClInclude Include="ImageTreeList.h" />
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="ObjectPanel.h" />
+    <ClInclude Include="Quad3dView.h" />
     <ClInclude Include="ShaderPanel.h" />
     <ClInclude Include="TextureView.h" />
     <ClInclude Include="imconfig.h" />

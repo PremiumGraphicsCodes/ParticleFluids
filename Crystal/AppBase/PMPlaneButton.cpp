@@ -4,29 +4,25 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-PMPlaneButton::PMPlaneButton(Repository* model, Canvas* canvas) :
+PMQuadButton::PMQuadButton(Repository* model, Canvas* canvas) :
 	IPopupButton("PMPlane", model, canvas),
-	originView("Origin", Vector3dd(0, 0, 0)),
-	uvecView("UVec", Vector3dd(1, 0, 0)),
-	vvecView("VVec", Vector3dd(0, 1, 0)),
+	quad("Quad"),
 	materialId("MaterialId", 1),
 	name("Name", "PMPlane")
 {
 }
 
-void PMPlaneButton::onShow()
+void PMQuadButton::onShow()
 {
-	originView.show();
-	uvecView.show();
-	vvecView.show();
+	quad.show();
 	materialId.show();
 	name.show();
 }
 
-void PMPlaneButton::onOk()
+void PMQuadButton::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.build(originView.getValue(), uvecView.getValue(), vvecView.getValue());
+	builder.build(quad.getValue());
 	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), materialId.getValue(), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());

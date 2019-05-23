@@ -32,5 +32,6 @@ private:
 	Vector3dd origin;
 	Vector3dd normal;
 };
+
 	}
 }
