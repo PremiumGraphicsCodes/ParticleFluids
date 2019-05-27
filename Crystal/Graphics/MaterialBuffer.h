@@ -15,10 +15,10 @@ public:
 	MaterialBuffer() {};
 
 	void add(const Graphics::Material& m) {
-		this->ambient.add(m.getAmbient());
-		this->diffuse.add(m.getDiffuse());
-		this->specular.add(m.getSpecular());
-		this->shininess.add(m.getShininess());
+		this->ambient.add(m.ambient);
+		this->diffuse.add(m.diffuse);
+		this->specular.add(m.specular);
+		this->shininess.add(m.shininess);
 	}
 
 	Graphics::Buffer3d<float> getAmbient() const { return ambient; }

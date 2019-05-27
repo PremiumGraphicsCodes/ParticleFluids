@@ -3,31 +3,37 @@
 #include <filesystem>
 
 #include "../IO/OBJFileReader.h"
+#include "../IO/MTLFileReader.h"
 #include "../IO/STLAsciiFileReader.h"
 #include "../IO/STLBinaryFileReader.h"
 #include "../IO/PCDFileReader.h"
 
+#include "../Graphics/Material.h"
+
 using namespace Crystal::Shape;
+using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool FileReader::read(const std::experimental::filesystem::path& filePath, ObjectRepository& repository)
+bool FileReader::read(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
 {
 	const auto format = getFileFormat( filePath.extension() );
-	return read(filePath, repository, format);
+	return read(filePath, objects, appearances, format);
 }
 
-bool FileReader::read(const std::experimental::filesystem::path& filePath, ObjectRepository& repository, const FileFormat format)
+bool FileReader::read(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
-		return readOBJ(filePath, repository);
+		return readOBJ(filePath, objects);
+	case FileFormat::MTL:
+		return readMTL(filePath, appearances);
 	case FileFormat::STL_ASCII :
-		return readSTLAscii(filePath, repository);
+		return readSTLAscii(filePath, objects);
 	case FileFormat::STL_BINARY :
-		return readSTLBinary(filePath, repository);
+		return readSTLBinary(filePath, objects);
 	case FileFormat::PCD :
-		return readPCD(filePath, repository);
+		return readPCD(filePath, objects);
 	default:
 		assert(false);
 	}
@@ -77,6 +83,24 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 		}
 		objects.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "OBJ");
 
+		return true;
+	}
+	return false;
+}
+
+bool FileReader::readMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances)
+{
+	MTLFileReader reader;
+	if (reader.read(filePath)) {
+		const auto& mtl = reader.getMTL();
+		for (const auto& m : mtl.materials) {
+			Material mat;
+			mat.ambient = m.ambient;
+			mat.diffuse = m.diffuse;
+			mat.specular = m.specular;
+			mat.shininess = m.specularExponent;
+			//mat.textureId = m.ambientTexture;
+		}
 		return true;
 	}
 	return false;

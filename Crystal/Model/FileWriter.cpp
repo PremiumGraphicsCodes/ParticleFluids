@@ -23,6 +23,8 @@ bool FileWriter::write(const std::experimental::filesystem::path& filePath, Obje
 	switch (format) {
 	case FileFormat::OBJ :
 		return writeOBJ(filePath, objects);
+	case FileFormat::MTL :
+		return writeMTL(filePath, appearances);
 	case FileFormat::STL_ASCII :
 		return writeSTLAscii(filePath, objects);
 	case FileFormat::STL_BINARY :
@@ -70,13 +72,12 @@ bool FileWriter::writeMTL(const std::experimental::filesystem::path& filePath, A
 	for (const auto mat : appearances.getMaterials()->getMaterials()) {
 		MTL m;
 		m.name = mat->getName();
-	 	m.ambient = mat->getMaterial()->getAmbient();
-		m.specular = mat->getMaterial()->getSpecular();
-		m.diffuse = mat->getMaterial()->getDiffuse();
-		m.specularExponent = mat->getMaterial()->getShininess();
+	 	m.ambient = mat->getMaterial()->ambient;
+		m.specular = mat->getMaterial()->specular;
+		m.diffuse = mat->getMaterial()->diffuse;
+		m.specularExponent = mat->getMaterial()->shininess;
 		mtl.materials.push_back(m);
 	}
-	//mtl.materials.
 	return writer.write(filePath, mtl);
 }
 

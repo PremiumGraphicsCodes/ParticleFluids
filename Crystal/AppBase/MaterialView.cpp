@@ -23,18 +23,18 @@ void MaterialView::show()
 
 void MaterialView::setValue(const Material& m)
 {
-	ambient.setValue(m.getAmbient());
-	diffuse.setValue(m.getDiffuse());
-	specular.setValue(m.getSpecular());
-	shininess.setValue(m.getShininess());
+	ambient.setValue(m.ambient);
+	diffuse.setValue(m.diffuse);
+	specular.setValue(m.specular);
+	shininess.setValue(m.shininess);
 }
 
 Material MaterialView::getValue() const
 {
 	Graphics::Material m;
-	m.setAmbient(ambient.getValue());
-	m.setDiffuse(diffuse.getValue());
-	m.setSpecular(specular.getValue());
-	m.setShininess(shininess.getValue());
+	m.ambient = (ambient.getValue());
+	m.diffuse = (diffuse.getValue());
+	m.specular = (specular.getValue());
+	m.shininess = (shininess.getValue());
 	return m;
 }

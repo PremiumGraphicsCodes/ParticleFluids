@@ -19,7 +19,7 @@ void MaterialAddButton::onShow()
 
 void MaterialAddButton::onOk()
 {
-	getModel()->getAppearances()->getMaterials()->add(material.getValue().clone(), name.getValue());
+	getModel()->getAppearances()->getMaterials()->add(new Material(material.getValue()), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

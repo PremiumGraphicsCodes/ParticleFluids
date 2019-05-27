@@ -2,6 +2,7 @@
 
 #include <filesystem>
 #include "ObjectRepository.h"
+#include "AppearanceObjectRepository.h"
 #include "FileFormat.h"
 
 namespace Crystal {
@@ -10,12 +11,14 @@ namespace Crystal {
 class FileReader
 {
 public:
-	bool read(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& repository);
+	bool read(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances);
 
-	bool read(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& repository, const FileFormat format);
+	bool read(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances, const FileFormat format);
 
 private:
 	bool readOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
+
+	bool readMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances);
 
 	bool readSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
 

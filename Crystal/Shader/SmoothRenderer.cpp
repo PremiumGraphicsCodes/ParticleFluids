@@ -168,13 +168,10 @@ void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const Textu
 	for (const auto& b : blocks) {
 		const auto& indices = b.getIndices();
 		const auto& m = b.getMaterial();
-		const auto& a = m.getAmbient();
-		const auto& d = m.getDiffuse();
-		const auto& s = m.getSpecular();
-		glUniform3fv(shader.getUniformLocation("material.Ka"), 1, &a[0]);
-		glUniform3fv(shader.getUniformLocation("material.Kd"), 1, &d[0]);
-		glUniform3fv(shader.getUniformLocation("material.Ks"), 1, &s[0]);
-		glUniform1f(shader.getUniformLocation("material.shininess"), m.getShininess());
+		glUniform3fv(shader.getUniformLocation("material.Ka"), 1, &m.ambient[0]);
+		glUniform3fv(shader.getUniformLocation("material.Kd"), 1, &m.diffuse[0]);
+		glUniform3fv(shader.getUniformLocation("material.Ks"), 1, &m.specular[0]);
+		glUniform1f(shader.getUniformLocation("material.shininess"), m.shininess);
 		glUniform1i(shader.getUniformLocation("texture1"), texture.getId());
 		glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
 	}

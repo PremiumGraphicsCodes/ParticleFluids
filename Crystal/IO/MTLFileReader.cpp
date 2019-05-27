@@ -16,10 +16,10 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 
-bool MTLFileReader::read(const std::string& filename)
+bool MTLFileReader::read(const std::experimental::filesystem::path& filePath)
 {
 	std::ifstream stream;
-	stream.open(filename.c_str());
+	stream.open(filePath);
 
 	if (!stream.is_open()) {
 		return false;

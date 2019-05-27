@@ -6,6 +6,7 @@
 
 #include <fstream>
 #include <string>
+#include <experimental/filesystem>
 
 namespace Crystal {
 	namespace IO {
@@ -13,7 +14,7 @@ namespace Crystal {
 class MTLFileReader
 {
 public:
-	bool read(const std::string& filename);
+	bool read(const std::experimental::filesystem::path& filePath);
 
 	bool read(std::istream& stream);
 
