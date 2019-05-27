@@ -26,7 +26,10 @@ void FileMenu::show()
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
-				model->read(filename);
+				if (model->read(filename)) {
+					getCanvas()->setViewModel(model->toViewModel());
+					getCanvas()->fitCamera(getModel()->getBoundingBox());
+				}
 			}
 			//canvas->update();
 		}
