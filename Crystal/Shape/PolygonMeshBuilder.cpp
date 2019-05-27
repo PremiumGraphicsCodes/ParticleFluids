@@ -1,5 +1,4 @@
 #include "PolygonMeshBuilder.h"
-#include "HalfEdge.h"
 
 #include "TriangleMesh.h"
 

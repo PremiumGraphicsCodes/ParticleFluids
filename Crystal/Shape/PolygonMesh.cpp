@@ -2,7 +2,6 @@
 
 #include "../Math/Vector3d.h"
 #include "Vertex.h"
-#include "HalfEdge.h"
 #include "Face.h"
 
 using namespace Crystal::Math;

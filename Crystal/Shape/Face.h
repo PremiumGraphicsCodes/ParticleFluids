@@ -2,7 +2,6 @@
 
 #include <map>
 #include "Vertex.h"
-#include "HalfEdge.h"
 #include <array>
 
 namespace Crystal {
@@ -10,9 +9,6 @@ namespace Crystal {
 		class Triangle3d;
 	}
 	namespace Shape {
-
-//class Vertex;
-//class HalfEdge;
 
 class Face
 {

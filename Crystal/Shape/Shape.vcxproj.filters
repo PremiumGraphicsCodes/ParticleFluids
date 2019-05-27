@@ -37,9 +37,6 @@
     <ClInclude Include="PolygonMeshBuilder.h">
       <Filter>PolygonMesh</Filter>
     </ClInclude>
-    <ClInclude Include="HalfEdge.h">
-      <Filter>PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="Face.h">
       <Filter>PolygonMesh</Filter>
     </ClInclude>
@@ -68,9 +65,6 @@
       <Filter>PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshBuilder.cpp">
-      <Filter>PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="HalfEdge.cpp">
       <Filter>PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="Face.cpp">

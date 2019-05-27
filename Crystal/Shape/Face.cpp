@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Face.h"
 #include "Vertex.h"
-#include "HalfEdge.h"
 #include "../Math/Triangle3d.h"
 
 using namespace Crystal::Math;
