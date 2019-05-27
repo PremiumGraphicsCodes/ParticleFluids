@@ -22,6 +22,12 @@ class Face;
 class PolygonMesh : public IShape
 {
 public:
+	struct Group
+	{
+		int materialId;
+		std::list<Face*> faces;
+	};
+
 	PolygonMesh()
 	{}
 
@@ -54,8 +60,6 @@ public:
 	void transform(const Math::Matrix3dd& m) override;
 
 	void transform(const Math::Matrix4dd& m) override;
-
-	void updateNormals();
 
 private:
 	VertexFactory vertices;

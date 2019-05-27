@@ -49,8 +49,6 @@ public:
 
 	bool isDegenerated(const float area) const;
 
-	void toDegenerate();
-
 	//Math::Triangle3d<float> toTriangle() const;
 
 	void reverse();
