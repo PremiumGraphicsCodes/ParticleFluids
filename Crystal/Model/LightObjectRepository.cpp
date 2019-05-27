@@ -26,6 +26,13 @@ void LightObjectRepository::clear()
 		delete l;
 	}
 	lights.clear();
+
+	Graphics::PointLight* light = new Graphics::PointLight();
+	light->setPosition(glm::vec3(100, 100, 100));
+	light->setAmbient(glm::vec4(1, 1, 1, 1));
+	light->setDiffuse(glm::vec4(1, 1, 1, 1));
+	light->setSpecular(glm::vec4(1, 1, 1, 1));
+	add(light, "Light");
 }
 
 void LightObjectRepository::add(PointLight* l, const std::string& name)

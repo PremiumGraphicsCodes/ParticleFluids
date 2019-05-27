@@ -18,6 +18,13 @@ struct VertexAttr
 	int id;
 	Math::Vector3dd* normal;
 	Math::Vector2dd* texCoord;
+
+	VertexAttr() :
+		id(-1),
+		normal(nullptr),
+		texCoord(nullptr)
+	{
+	}
 };
 
 class Vertex

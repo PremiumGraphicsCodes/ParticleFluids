@@ -39,7 +39,12 @@ public:
 		for (auto v : vertices) {
 			positions.add(v->getPosition());
 			normals.add(v->getNormal());
-			texCoords.add(v->getTexCoord());
+			if (v->getAttr().texCoord != nullptr) {
+				texCoords.add(v->getTexCoord());
+			}
+			else {
+				texCoords.add(Math::Vector2dd(0,0));
+			}
 		}
 		const auto& faces = polygon.getFaces();
 		std::vector<unsigned int> indices;
