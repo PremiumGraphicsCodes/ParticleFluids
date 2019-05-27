@@ -9,6 +9,13 @@ void FrameBufferObject::build(int width, int height)
 	this->height = height;
 	glGenFramebuffers(1, &frameBuffer);
 
+	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
+	glGenRenderbuffers(1, &depthBuffer);
+	glBindRenderbuffer(GL_RENDERBUFFER, depthBuffer);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, 512, 512);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthBuffer);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
 	assert(GL_NO_ERROR == glGetError());
 }
 

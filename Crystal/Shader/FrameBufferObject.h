@@ -10,36 +10,37 @@
 namespace Crystal {
 	namespace Shader {
 
-		class FrameBufferObject
-		{
-		public:
-			void build(int width, int height);
+class FrameBufferObject
+{
+public:
+	void build(int width, int height);
 
-			void setTexture(const ITextureObject& texture);
+	void setTexture(const ITextureObject& texture);
 
-			void bind();
+	void bind();
 
-			void unbind();
+	void unbind();
 
-			Graphics::Image toImage() const;
+	Graphics::Image toImage() const;
 
-			Graphics::ColorRGBAuc getColor(const int x, const int y) const;
+	Graphics::ColorRGBAuc getColor(const int x, const int y) const;
 
-			Graphics::ColorRGBAf getColorf(const int x, const int y) const;
+	Graphics::ColorRGBAf getColorf(const int x, const int y) const;
 
-			std::vector<Graphics::ColorRGBAuc> getColors(const int x, const int y, const int width, const int height) const;
+	std::vector<Graphics::ColorRGBAuc> getColors(const int x, const int y, const int width, const int height) const;
 
-			std::vector<Graphics::ColorRGBAf> getColorsf(const int x, const int y, const int width, const int height) const;
+	std::vector<Graphics::ColorRGBAf> getColorsf(const int x, const int y, const int width, const int height) const;
 
-			int getWidth() const { return width; }
+	int getWidth() const { return width; }
 
-			int getHeight() const { return height; }
+	int getHeight() const { return height; }
 
-		private:
-			GLuint frameBuffer;
-			int width;
-			int height;
-		};
+private:
+	GLuint frameBuffer;
+	GLuint depthBuffer;
+	int width;
+	int height;
+};
 	}
 }
 
