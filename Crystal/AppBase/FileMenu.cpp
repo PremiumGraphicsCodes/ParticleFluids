@@ -22,6 +22,7 @@ void FileMenu::show()
 			FileOpenView view("");
 			view.addFilter("*.stl");
 			view.addFilter("*.obj");
+			view.addFilter("*.mtl");
 			view.addFilter("*.pcd");
 			view.show();
 			const auto& filename = view.getFileName();
@@ -37,6 +38,7 @@ void FileMenu::show()
 			FileSaveView view("");
 			view.addFilter("*.stl");
 			view.addFilter("*.obj");
+			view.addFilter("*.mtl");
 			view.addFilter("*.pcd");
 			view.show();
 			const auto& filename = view.getFileName();

@@ -113,6 +113,7 @@ bool FileReader::readMTL(const std::experimental::filesystem::path& filePath, Ap
 			mat.diffuse = m.diffuse;
 			mat.specular = m.specular;
 			mat.shininess = m.specularExponent;
+			appearances.getMaterials()->add(new Material(mat), m.name);
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;

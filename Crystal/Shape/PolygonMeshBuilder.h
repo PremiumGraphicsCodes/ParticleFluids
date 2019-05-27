@@ -44,6 +44,8 @@ public:
 	std::vector<Math::Vector2dd*> getTexCoords() const { return vertexFactory.getTexCoords(); }
 
 private:
+	void add(Math::Vector3dd* p0, Math::Vector3dd* p1, Math::Vector3dd* p2, Math::Vector3dd* p3);
+
 	VertexFactory vertexFactory;
 	std::vector<std::array<int, 3>> faceIndices;
 	std::list<Face*> faces;

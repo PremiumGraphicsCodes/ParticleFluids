@@ -32,20 +32,23 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 
 void PolygonMeshBuilder::add(const Box3d& box)
 {
-	const auto& p0 = vertexFactory.createPosition(box.getPosition(Vector3dd(0, 0, 0)));
-	const auto& p1 = vertexFactory.createPosition(box.getPosition(Vector3dd(1, 0, 0)));
-	const auto& p2 = vertexFactory.createPosition(box.getPosition(Vector3dd(1, 1, 0)));
-	const auto& p3 = vertexFactory.createPosition(box.getPosition(Vector3dd(0, 1, 0)));
+	auto p0 = vertexFactory.createPosition(box.getPosition(Vector3dd(0, 0, 0)));
+	auto p1 = vertexFactory.createPosition(box.getPosition(Vector3dd(1, 0, 0)));
+	auto p2 = vertexFactory.createPosition(box.getPosition(Vector3dd(1, 1, 0)));
+	auto p3 = vertexFactory.createPosition(box.getPosition(Vector3dd(0, 1, 0)));
 
-	const auto& normal = glm::cross(*p1 - *p0,*p2 - *p0);
-	vertexFactory.createNormal(normal);
+	auto p4 = vertexFactory.createPosition(box.getPosition(Vector3dd(0, 0, 1)));
+	auto p5 = vertexFactory.createPosition(box.getPosition(Vector3dd(1, 0, 1)));
+	auto p6 = vertexFactory.createPosition(box.getPosition(Vector3dd(1, 1, 1)));
+	auto p7 = vertexFactory.createPosition(box.getPosition(Vector3dd(0, 1, 1)));
 
-//	vertexFactory.createVertex();
-//	add(qua)
-	//build(box.getPosition(Vector3dd( 0, 0, 0)), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0));
-	//build(box.getPosition(Vector3dd( 1, 0, 0)), Vector3df(0, 0, 1), Vector3df(0, 1, 0));
+	add(p0, p1, p2, p3); // front
+	add(p7, p6, p5, p4); // back
+	add(p3, p2, p6, p7); // top
+	add(p0, p1, p5, p4); // bottom
+	add(p0, p4, p7, p3); // left
+	add(p1, p5, p6, p2); // right;
 
-	//faces
 }
 
 void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int vnum)
@@ -128,4 +131,18 @@ void PolygonMeshBuilder::build(const std::array<int, 3>& indices)
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
 {
 	return new PolygonMesh(std::move(vertexFactory), faces);
+}
+
+void PolygonMeshBuilder::add(Vector3dd* p0, Vector3dd* p1, Vector3dd* p2, Vector3dd* p3)
+{
+	const auto& normal1 = glm::cross(*p1 - *p0, *p2 - *p0);
+	auto n0 = vertexFactory.createNormal(normal1);
+
+	auto v0 = vertexFactory.createVertex(p0, n0);
+	auto v1 = vertexFactory.createVertex(p1, n0);
+	auto v2 = vertexFactory.createVertex(p2, n0);
+	auto v3 = vertexFactory.createVertex(p3, n0);
+
+	faceIndices.push_back({ v0,v1,v2 });
+	faceIndices.push_back({ v0,v2,v3 });
 }

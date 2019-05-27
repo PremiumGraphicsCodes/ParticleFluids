@@ -26,7 +26,7 @@ void MaterialTreeList::onShow()
 			editView.setValue(l);
 		}
 	}
-	//editView.show();
+	editView.show();
 	ImGui::EndChild();
 }
 
