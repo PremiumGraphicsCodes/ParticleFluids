@@ -22,6 +22,19 @@ namespace Crystal {
 class Canvas : public IMouseListener
 {
 public:
+	struct Mask
+	{
+		Mask() :
+			showPoints(true),
+			showLines(true),
+			showTrianlges(true)
+		{}
+
+		bool showPoints;
+		bool showLines;
+		bool showTrianlges;
+	};
+
 	Canvas();
 
 	explicit Canvas(Graphics::ICamera* camera);
@@ -76,12 +89,17 @@ public:
 
 	Renderer* getRenderer() { return renderer.get(); }
 
+	void setMask(Mask mask) { this->mask = mask; }
+
+	Mask getMask() const { return mask; }
+
 private:
 	int width;
 	int height;
 	std::unique_ptr<Graphics::ICamera> camera;
 	std::unique_ptr<IUICtrl> ctrl;
 	std::unique_ptr<Renderer> renderer;
+	Mask mask;
 };
 	}
 }

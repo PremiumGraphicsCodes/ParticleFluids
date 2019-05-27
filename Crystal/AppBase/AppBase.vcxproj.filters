@@ -168,6 +168,9 @@
     <ClCompile Include="PMQuadButton.cpp">
       <Filter>Object\PolygonMesh\Generation</Filter>
     </ClCompile>
+    <ClCompile Include="MaskMenu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -410,6 +413,9 @@
     </ClInclude>
     <ClInclude Include="PMQuadButton.h">
       <Filter>Object\PolygonMesh\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="MaskMenu.h">
+      <Filter>Menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

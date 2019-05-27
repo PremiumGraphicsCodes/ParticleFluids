@@ -14,6 +14,8 @@ void ScreenMenu::show()
 
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
+		auto mask = canvas->getMask();
+
 		for (const auto& t : textures) {
 			const auto str = t->getName();
 			const auto c_str = str.c_str();
@@ -21,16 +23,7 @@ void ScreenMenu::show()
 				model->getShaders()->getTextures()->setOnScreenTexture(t);
 //				canvas->getRenderer()->setShowOffScreen(false);
 			}
-
 		}
-		/*
-		if (ImGui::MenuItem("OnScreen")) {
-			canvas->getRenderer()->setShowOffScreen(false);
-		}
-		if (ImGui::MenuItem("OffScreen")) {
-			canvas->getRenderer()->setShowOffScreen(true);
-		}
-		*/
 
 		ImGui::EndMenu();
 	}

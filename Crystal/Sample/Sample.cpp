@@ -1,6 +1,7 @@
 #include "../AppBase/Window.h"
 #include "../AppBase/FileMenu.h"
 #include "../AppBase/CameraMenu.h"
+#include "../AppBase/MaskMenu.h"
 #include "../AppBase/CtrlMenu.h"
 #include "../AppBase/ScreenMenu.h"
 
@@ -33,6 +34,7 @@ int main(int, char**)
 
 	window.add(new FileMenu("File", &model, &canvas));
 	window.add(new CameraMenu("Camera", &model, &canvas));
+	window.add(new MaskMenu("Mask", &model, &canvas));
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 	window.add(new ScreenMenu("Screen", &model, &canvas));
 
