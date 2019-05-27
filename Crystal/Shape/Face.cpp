@@ -7,25 +7,12 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
-Face::Face(HalfEdge* e1, HalfEdge* e2, HalfEdge* e3, const int id) :
+Face::Face(Vertex* v1, Vertex* v2, Vertex* v3, const int id) :
+	v1(v1),
+	v2(v2),
+	v3(v3),
 	id(id)
 {
-	e1->connect(e2);
-	e2->connect(e3);
-	e3->connect(e1);
-	e1->setFace(this);
-	e2->setFace(this);
-	e3->setFace(this);
-	this->start = (e1);
-}
-
-Face::Face(const std::array<HalfEdge*, 3>& edges, const int id) :
-	id(id)
-{
-	edges[0]->setFace(this);
-	edges[1]->setFace(this);
-	edges[2]->setFace(this);
-	this->start = edges[0];
 }
 
 Vertex* Face::find(Vertex* v)
@@ -46,11 +33,6 @@ Vector3dd Face::getNormal() const
 	return glm::normalize( normal );
 }
 
-std::array< HalfEdge*, 3 > Face::getEdges() const
-{
-	return{ start, start->getNext(), start->getNext()->getNext() };
-}
-
 std::array< Vertex*, 3 > Face::getVertices() const
 {
 	return{ getV1(), getV2(), getV3() };
@@ -65,9 +47,8 @@ bool Face::has(Vertex* v) const
 
 float Face::getArea() const
 {
-	const auto& edges = getEdges();
-	auto v1 = (edges[0]->getEnd()->getPosition() - edges[0]->getStart()->getPosition());
-	auto v2 = (edges[1]->getEnd()->getPosition() - edges[0]->getStart()->getPosition());
+	auto v1 = (this->v2->getPosition() - this->v1->getPosition());
+	auto v2 = (this->v3->getPosition() - this->v1->getPosition());
 	return glm::length( glm::cross( v1, v2) ) / 2.0f;
 }
 
@@ -78,24 +59,7 @@ bool Face::isDegenerated(const float area) const
 
 void Face::reverse()
 {
-	const auto edges = getEdges();
-
-	/*
-	for (auto iter = edges.rbegin(); iter != edges.rend()-1; ++iter) {
-	auto e = *(iter);
-	auto next = *(iter + 1);
-	e->reverse();
-	e->connect(next);
-	}
-	edges.back()->connect(edges.front());
-	*/
-	edges[2]->reverse();
-	edges[1]->reverse();
-	edges[0]->reverse();
-	edges[2]->connect(edges[1]);
-	edges[1]->connect(edges[0]);
-	edges[0]->connect(edges[2]);
-	this->start = edges.back();
+	std::swap(v2, v3);
 }
 
 Triangle3d Face::toTriangle() const

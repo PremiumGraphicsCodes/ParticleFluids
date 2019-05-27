@@ -17,25 +17,21 @@ namespace Crystal {
 class Face
 {
 public:
-	Face(HalfEdge* e1, HalfEdge* e2, HalfEdge* e3, const int id = -1);
-
-	Face(const std::array<HalfEdge*, 3>& edges, const int id = -1);
+	Face(Vertex* v1, Vertex* v2, Vertex* v3, const int id = -1);
 
 	Vertex* find(Vertex* v);
 
-	Vertex* getV1() const { return start->getStart(); }
+	Vertex* getV1() const { return v1; }
 
-	Vertex* getV2() const { return start->getNext()->getStart(); }
+	Vertex* getV2() const { return v2; }
 
-	Vertex* getV3() const { return start->getNext()->getNext()->getStart(); }
+	Vertex* getV3() const { return v3; }
 
 	//Math::Point3d<float> getCenterPoint() const;
 
 	Math::Vector3dd getNormal() const;
 
 	//Math::Orientation getOrientation(const Math::Vector3df& pos) const;
-
-	std::array< HalfEdge*, 3 > getEdges() const;
 
 	std::array< Vertex*, 3 > getVertices() const;
 
@@ -49,17 +45,14 @@ public:
 
 	bool isDegenerated(const float area) const;
 
-	//Math::Triangle3d<float> toTriangle() const;
-
 	void reverse();
-
-	void setStart(HalfEdge* start) { this->start = start; }
 
 	Math::Triangle3d toTriangle() const;
 
 private:
-	HalfEdge* start;
-	//std::array< Vertex*, 3> vertices;
+	Vertex* v1;
+	Vertex* v2;
+	Vertex* v3;
 	int id;
 };
 

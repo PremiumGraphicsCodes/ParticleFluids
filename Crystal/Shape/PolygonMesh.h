@@ -24,7 +24,7 @@ class PolygonMesh : public IShape
 public:
 	struct Group
 	{
-		int materialId;
+		int id;
 		std::list<Face*> faces;
 	};
 
@@ -39,15 +39,11 @@ public:
 
 	std::vector<Vertex*> getVertices() const;
 
-	std::list<HalfEdge*> getEdges() const;
-
 	void clear();
 
 	void add(Face* f);
 
 	bool has(Face* f);
-
-	bool has(HalfEdge* e);
 
 	bool has(Vertex* v);
 

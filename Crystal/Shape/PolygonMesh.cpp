@@ -38,12 +38,6 @@ bool PolygonMesh::has(Face* f)
 	return std::find(faces.begin(), faces.end(), f) != faces.end();
 }
 
-bool PolygonMesh::has(HalfEdge* e)
-{
-	const auto& edges = getEdges();
-	return std::find(edges.begin(), edges.end(), e) != edges.end();
-}
-
 bool PolygonMesh::has(Vertex* v)
 {
 	const auto& vertices = getVertices();
@@ -53,18 +47,6 @@ bool PolygonMesh::has(Vertex* v)
 std::vector<Vertex*> PolygonMesh::getVertices() const
 {
 	return vertices.getVertices();
-}
-
-std::list<HalfEdge*> PolygonMesh::getEdges() const
-{
-	std::list<HalfEdge*> edges;
-	for (auto f : faces) {
-		auto es = f->getEdges();
-		edges.insert(edges.end(), es.begin(), es.end());
-	}
-	edges.sort();
-	edges.unique();
-	return edges;
 }
 
 void PolygonMesh::remove(Face* f)
