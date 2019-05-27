@@ -70,7 +70,7 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 			for (int i = 0; i < f.positionIndices.size(); i++) {
 				auto p = positionTable[f.positionIndices[i] - 1];
 				auto n = normalTable[f.normalIndices[i] - 1];
-				const auto texCoordIndex = f.texCoordIndices[i];
+				const auto texCoordIndex = f.texCoordIndices[i] - 1;
 				if (texCoordIndex != -1) {
 					auto t = texCoordTable[texCoordIndex];
 					auto v = vertexFactory.createVertex(p, n, t);
@@ -85,8 +85,15 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 		}
 
 		PolygonMeshBuilder builder(std::move(vertexFactory));
-		for (const auto& i : indices) {
-			builder.build({ i[0], i[1], i[2] });
+		for (const auto& is : indices) {
+			int origin = is[0];
+			int i1 = 1;
+			int i2 = 2;
+			for (int i = 0; i2 < is.size(); i++) {
+				builder.build({ origin, is[i1], is[i2] });
+				i1++;
+				i2++;
+			}
 		}
 		objects.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "OBJ");
 
