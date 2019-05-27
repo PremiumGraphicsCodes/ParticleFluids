@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_SHAPE_FACE_H__
-#define __CRYSTAL_SHAPE_FACE_H__
+#pragma once
 
 #include <map>
 #include "Vertex.h"
@@ -52,10 +51,6 @@ public:
 
 	void toDegenerate();
 
-	std::map<Vertex*, Vertex*> findDouble(const Face& rhs, const float distance);
-
-	void mergeDouble(const Face& rhs, float distance);
-
 	//Math::Triangle3d<float> toTriangle() const;
 
 	void reverse();
@@ -72,5 +67,3 @@ private:
 
 	}
 }
-
-#endif

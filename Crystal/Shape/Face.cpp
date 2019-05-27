@@ -46,16 +46,6 @@ Vector3dd Face::getNormal() const
 	return glm::normalize( normal );
 }
 
-/*
-Point3d<float> Face::getCenterPoint() const {
-	auto vertices = getVertices();
-	auto pos = (vertices[0]->getPosition() + vertices[1]->getPosition() + vertices[2]->getPosition()) / 3;
-	auto norm = (vertices[0]->getNormal() + vertices[1]->getNormal() + vertices[2]->getNormal()) / 3;
-	//auto param = (vertices[0]->getParameter() + vertices[1]->getParameter() + vertices[2]->getParameter()) / 3;
-	return Point3d<float>(pos, norm);
-}
-*/
-
 std::array< HalfEdge*, 3 > Face::getEdges() const
 {
 	return{ start, start->getNext(), start->getNext()->getNext() };
@@ -84,59 +74,6 @@ float Face::getArea() const
 bool Face::isDegenerated(const float area) const
 {
 	return ::fabs( getArea() ) < area;
-}
-
-void Face::toDegenerate()
-{
-	const auto& edges = getEdges();
-	for (auto e : edges) {
-		e->toDenerate();
-	}
-	/*
-	edges[0]->toDenerate();
-	edges[1]->changeStart(edges[0]->getEnd());
-	edges[1]->toDenerate();
-	edges[2]->changeStart(edges[0]->getEnd());
-	edges[2]->toDenerate();
-	//edges[1]->toDenerate();
-	//edges[2]->toDenerate();
-	*/
-}
-
-std::map<Vertex*, Vertex*> Face::findDouble(const Face& rhs, const float distance)
-{
-	const auto& vertices1 = this->getVertices();
-	const auto& vertices2 = rhs.getVertices();
-	std::map<Vertex*, Vertex*> map;
-	for (auto v1 : vertices1) {
-		for (auto v2 : vertices2) {
-			auto p1 = v1->getPosition();
-			auto p2 = v2->getPosition();
-			if (glm::distance( p1, p2) < distance) {
-				map[v1] = v2;
-			}
-		}
-	}
-	return map;
-}
-
-void Face::mergeDouble(const Face& rhs, float distance)
-{
-	auto vertices1 = this->getVertices();
-	auto doubles = findDouble(rhs, distance);
-	for (auto d : doubles) {
-		auto v1 = d.first;
-		auto v2 = d.second;
-		auto edges2 = rhs.getEdges();
-		for (auto e2 : edges2) {
-			if (e2->getStart() == v2) {
-				e2->changeStart(v1);
-			}
-			if (e2->getEnd() == v2) {
-				e2->changeEnd(v1);
-			}
-		}
-	}
 }
 
 void Face::reverse()
