@@ -15,7 +15,7 @@ VertexFactory::VertexFactory(VertexFactory&& rhs) :
 
 VertexFactory::~VertexFactory()
 {
-	clear();
+	//clear();
 }
 
 void VertexFactory::clear()
