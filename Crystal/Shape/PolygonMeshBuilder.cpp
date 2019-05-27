@@ -125,7 +125,7 @@ void PolygonMeshBuilder::build(const std::array<int, 3>& indices)
 }
 
 
-PolygonMesh* PolygonMeshBuilder::getPolygonMesh() const
+PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
 {
-	return new PolygonMesh(vertexFactory.getVertices(), faces);
+	return new PolygonMesh(std::move(vertexFactory), faces);
 }

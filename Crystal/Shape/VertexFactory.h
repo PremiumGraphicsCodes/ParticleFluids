@@ -10,66 +10,25 @@ namespace Crystal {
 class VertexFactory : private UnCopyable
 {
 public:
-	VertexFactory() :
-		nextId(0)
-	{}
+	VertexFactory();
 
-	VertexFactory(VertexFactory&& rhs) :
-		nextId(rhs.nextId),
-		vertices(std::move(rhs.vertices))
-	{
-	}
+	VertexFactory(VertexFactory&& rhs);
 
-	Math::Vector3dd* createPosition(const Math::Vector3dd& v)
-	{
-		auto p = new Math::Vector3dd(v);
-		positions.push_back(p);
-		return p;
-	}
+	~VertexFactory();
 
-	Math::Vector3dd* createNormal(const Math::Vector3dd& n)
-	{
-		auto nn = new Math::Vector3dd(n);
-		normals.push_back(nn);
-		return nn;
-	}
+	void clear();
 
-	Math::Vector2dd* createTexCoord(const Math::Vector2dd& n)
-	{
-		auto tt = new Math::Vector2dd(n);
-		texCoords.push_back(tt);
-		return tt;
-	}
+	Math::Vector3dd* createPosition(const Math::Vector3dd& v);
 
-	int createVertex(Math::Vector3dd* position)
-	{
-		Shape::VertexAttr attr;
-		attr.id = nextId++;
-		auto v = new Vertex(position, attr);
-		vertices.push_back(v);
-		return v->getAttr().id;
-	}
+	Math::Vector3dd* createNormal(const Math::Vector3dd& n);
 
-	int createVertex(Math::Vector3dd* position, Math::Vector3dd* normal)
-	{
-		Shape::VertexAttr attr;
-		attr.normal = normal;
-		attr.id = nextId++;
-		auto v = new Vertex(position, attr);
-		vertices.push_back(v);
-		return v->getAttr().id;
-	}
+	Math::Vector2dd* createTexCoord(const Math::Vector2dd& n);
 
-	int createVertex(Math::Vector3dd* position, Math::Vector3dd* normal, Math::Vector2dd* texCoord)
-	{
-		Shape::VertexAttr attr;
-		attr.normal = normal;
-		attr.texCoord = texCoord;
-		attr.id = nextId++;
-		auto v = new Vertex(position, attr);
-		vertices.push_back(v);
-		return v->getAttr().id;
-	}
+	int createVertex(Math::Vector3dd* position);
+
+	int createVertex(Math::Vector3dd* position, Math::Vector3dd* normal);
+
+	int createVertex(Math::Vector3dd* position, Math::Vector3dd* normal, Math::Vector2dd* texCoord);
 
 	std::vector<Vertex*> getVertices() const { return vertices; }
 

@@ -35,7 +35,7 @@ public:
 
 	void build(const std::array<int, 3>& indices);
 
-	PolygonMesh* getPolygonMesh() const;
+	PolygonMesh* getPolygonMesh();
 
 	std::vector<Math::Vector3dd*> getPositions() const { return vertexFactory.getPositions(); }
 

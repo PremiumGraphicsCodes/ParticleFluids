@@ -1,8 +1,8 @@
-#ifndef __CRYSTAL_SHAPE_POLYGON_MESH_H__
-#define __CRYSTAL_SHAPE_POLYGON_MESH_H__
+#pragma once
 
 #include "../Util/UnCopyable.h"
 #include "Vertex.h"
+#include "VertexFactory.h"
 #include "Face.h"
 #include "../Math/Quaternion.h"
 #include "../Math/Matrix3d.h"
@@ -25,7 +25,7 @@ public:
 	PolygonMesh()
 	{}
 
-	PolygonMesh(const std::vector<Vertex*>& vertices, const std::list<Face*>& faces);
+	PolygonMesh(VertexFactory&& vertices, const std::list<Face*>& faces);
 
 	~PolygonMesh();
 
@@ -47,8 +47,6 @@ public:
 
 	void remove(Face* f);
 
-	PolygonMesh* clone();
-
 	Math::Vector3dd getCenter() const;
 
 	void move(const Math::Vector3dd& v) override;
@@ -60,11 +58,9 @@ public:
 	void updateNormals();
 
 private:
-	std::vector<Vertex*> vertices;
+	VertexFactory vertices;
 	std::list<Face*> faces;
 };
 
 	}
 }
-
-#endif

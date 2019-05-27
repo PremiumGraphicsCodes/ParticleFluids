@@ -41,6 +41,7 @@
     <ClCompile Include="PolygonMesh.cpp" />
     <ClCompile Include="PolygonMeshBuilder.cpp" />
     <ClCompile Include="Vertex.cpp" />
+    <ClCompile Include="VertexFactory.cpp" />
     <ClCompile Include="Volume.cpp" />
     <ClCompile Include="WireFrame.cpp" />
     <ClCompile Include="WireFrameBuilder.cpp" />

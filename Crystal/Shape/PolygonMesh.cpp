@@ -9,8 +9,8 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
 
-PolygonMesh::PolygonMesh(const std::vector<Vertex*>& vertices, const std::list<Face*>& faces) :
-	vertices(vertices),
+PolygonMesh::PolygonMesh(VertexFactory&& vertices, const std::list<Face*>& faces) :
+	vertices(std::move(vertices)),
 	faces(faces)
 {}
 
@@ -21,9 +21,6 @@ PolygonMesh::~PolygonMesh()
 
 void PolygonMesh::clear()
 {
-	for (auto v : vertices) {
-		delete v;
-	}
 	vertices.clear();
 	for (auto f : faces) {
 		delete f;
@@ -56,7 +53,7 @@ bool PolygonMesh::has(Vertex* v)
 
 std::vector<Vertex*> PolygonMesh::getVertices() const
 {
-	return vertices;
+	return vertices.getVertices();
 }
 
 std::list<HalfEdge*> PolygonMesh::getEdges() const
@@ -74,11 +71,6 @@ std::list<HalfEdge*> PolygonMesh::getEdges() const
 void PolygonMesh::remove(Face* f)
 {
 	faces.remove(f);
-}
-
-PolygonMesh* PolygonMesh::clone()
-{
-	return new PolygonMesh(vertices, faces);
 }
 
 Vector3dd PolygonMesh::getCenter() const
@@ -101,14 +93,16 @@ void PolygonMesh::move(const Vector3dd& v)
 
 void PolygonMesh::transform(const Matrix3dd& m)
 {
-	for (auto p : vertices) {
+	const auto& vs = vertices.getVertices();
+	for (auto p : vs) {
 		p->transform(m);
 	}
 }
 
 void PolygonMesh::transform(const Matrix4dd& m)
 {
-	for (auto p : vertices) {
+	const auto& vs = vertices.getVertices();
+	for (auto p : vs) {
 		p->transform(m);
 	}
 }
