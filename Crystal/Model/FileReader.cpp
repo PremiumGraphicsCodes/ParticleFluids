@@ -44,25 +44,27 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
+		PolygonMeshBuilder builder;
+
 		const auto& obj = reader.getOBJ();
 		const auto& positions = obj.positions;
 		const auto& normals = obj.normals;
 		const auto& texCoords = obj.texCoords;
 
-		VertexFactory vertexFactory;
+		VertexFactory* vertexFactory = builder.getVertexFactory();
 		for (const auto& p : positions) {
-			vertexFactory.createPosition(p);
+			vertexFactory->createPosition(p);
 		}
 		for (const auto& n : normals) {
-			vertexFactory.createNormal(n);
+			vertexFactory->createNormal(n);
 		}
 		for (const auto& tc : texCoords) {
-			vertexFactory.createTexCoord(tc);
+			vertexFactory->createTexCoord(tc);
 		}
 
-		const auto& positionTable = vertexFactory.getPositions();
-		const auto& normalTable = vertexFactory.getNormals();
-		const auto& texCoordTable = vertexFactory.getTexCoords();
+		const auto& positionTable = vertexFactory->getPositions();
+		const auto& normalTable = vertexFactory->getNormals();
+		const auto& texCoordTable = vertexFactory->getTexCoords();
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& f : obj.faces) {
@@ -71,26 +73,26 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 				auto p = positionTable[f.positionIndices[i] - 1];
 				auto n = normalTable[f.normalIndices[i] - 1];
 				const auto texCoordIndex = f.texCoordIndices[i] - 1;
-				if (texCoordIndex != -1) {
+				if (texCoordIndex >= 0) {
 					auto t = texCoordTable[texCoordIndex];
-					auto v = vertexFactory.createVertex(p, n, t);
+					auto v = vertexFactory->createVertex(p, n, t);
 					eachIndices.push_back(v);
 				}
 				else {
-					auto v = vertexFactory.createVertex(p, n);
+					auto v = vertexFactory->createVertex(p, n);
 					eachIndices.push_back(v);
 				}
 			}
 			indices.push_back(eachIndices);
 		}
 
-		PolygonMeshBuilder builder(std::move(vertexFactory));
+		FaceFactory* faceFactory = builder.getFaceFactory();
 		for (const auto& is : indices) {
 			int origin = is[0];
 			int i1 = 1;
 			int i2 = 2;
 			for (int i = 0; i2 < is.size(); i++) {
-				builder.build({ origin, is[i1], is[i2] });
+				faceFactory->createFace({ origin, is[i1], is[i2] });
 				i1++;
 				i2++;
 			}

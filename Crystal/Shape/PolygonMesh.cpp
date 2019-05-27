@@ -8,9 +8,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
 
-PolygonMesh::PolygonMesh(VertexFactory&& vertices, const std::list<Face*>& faces) :
+PolygonMesh::PolygonMesh(VertexFactory&& vertices, FaceFactory&& faces) :
 	vertices(std::move(vertices)),
-	faces(faces)
+	faces(std::move(faces))
 {}
 
 PolygonMesh::~PolygonMesh()
@@ -21,20 +21,7 @@ PolygonMesh::~PolygonMesh()
 void PolygonMesh::clear()
 {
 	vertices.clear();
-	for (auto f : faces) {
-		delete f;
-	}
 	faces.clear();
-}
-
-void PolygonMesh::add(Face* f)
-{
-	faces.push_back(f);
-}
-
-bool PolygonMesh::has(Face* f)
-{
-	return std::find(faces.begin(), faces.end(), f) != faces.end();
 }
 
 bool PolygonMesh::has(Vertex* v)
@@ -46,11 +33,6 @@ bool PolygonMesh::has(Vertex* v)
 std::vector<Vertex*> PolygonMesh::getVertices() const
 {
 	return vertices.getVertices();
-}
-
-void PolygonMesh::remove(Face* f)
-{
-	faces.remove(f);
 }
 
 Vector3dd PolygonMesh::getCenter() const

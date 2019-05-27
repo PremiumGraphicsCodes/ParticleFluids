@@ -3,6 +3,7 @@
 #include "../Util/UnCopyable.h"
 #include "Vertex.h"
 #include "VertexFactory.h"
+#include "FaceFactory.h"
 #include "Face.h"
 #include "../Math/Quaternion.h"
 #include "../Math/Matrix3d.h"
@@ -28,26 +29,20 @@ public:
 		std::list<Face*> faces;
 	};
 
-	PolygonMesh()
-	{}
+	//PolygonMesh()
+	//{}
 
-	PolygonMesh(VertexFactory&& vertices, const std::list<Face*>& faces);
+	PolygonMesh(VertexFactory&& vertices, FaceFactory&& faces);
 
 	~PolygonMesh();
 
-	std::list<Face*> getFaces() const { return faces; }
+	std::list<Face*> getFaces() const { return faces.getFaces(); }
 
 	std::vector<Vertex*> getVertices() const;
 
 	void clear();
 
-	void add(Face* f);
-
-	bool has(Face* f);
-
 	bool has(Vertex* v);
-
-	void remove(Face* f);
 
 	Math::Vector3dd getCenter() const;
 
@@ -59,7 +54,7 @@ public:
 
 private:
 	VertexFactory vertices;
-	std::list<Face*> faces;
+	FaceFactory faces;
 };
 
 	}

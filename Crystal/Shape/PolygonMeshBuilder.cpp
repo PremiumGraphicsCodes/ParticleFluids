@@ -11,13 +11,9 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
-PolygonMeshBuilder::PolygonMeshBuilder()
+PolygonMeshBuilder::PolygonMeshBuilder() :
+	faceFactory(vertexFactory)
 {}
-
-PolygonMeshBuilder::PolygonMeshBuilder(VertexFactory&& vertexFactory) :
-	vertexFactory(std::move(vertexFactory))
-{
-}
 
 void PolygonMeshBuilder::add(const Triangle3d& triangle)
 {
@@ -108,31 +104,19 @@ void PolygonMeshBuilder::add(const TriangleMesh& mesh)
 void PolygonMeshBuilder::build()
 {
 	for (const auto& indices : faceIndices) {
-		build(indices);
+		faceFactory.createFace(indices);
 	}
 }
 
-void PolygonMeshBuilder::build(const std::array<int, 3>& indices)
-{
-	const auto& vertices = vertexFactory.getVertices();
-
-	const auto v1 = vertices[indices[0]];
-	const auto v2 = vertices[indices[1]];
-	const auto v3 = vertices[indices[2]];
-
-	faces.push_back(new Face(v1, v2, v3));
-}
-
-
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
 {
-	return new PolygonMesh(std::move(vertexFactory), faces);
+	return new PolygonMesh(std::move(vertexFactory), std::move(faceFactory));
 }
 
 void PolygonMeshBuilder::add(Vector3dd* p0, Vector3dd* p1, Vector3dd* p2, Vector3dd* p3)
 {
-	const auto& normal1 = glm::cross(*p1 - *p0, *p2 - *p0);
-	auto n0 = vertexFactory.createNormal(normal1);
+	const auto& normal = glm::cross(*p1 - *p0, *p2 - *p0);
+	auto n0 = vertexFactory.createNormal(normal);
 
 	auto v0 = vertexFactory.createVertex(p0, n0);
 	auto v1 = vertexFactory.createVertex(p1, n0);
