@@ -93,6 +93,9 @@
     <ClInclude Include="PCDFileImporter.h">
       <Filter>FileIO\PCD</Filter>
     </ClInclude>
+    <ClInclude Include="OBJFileExporter.h">
+      <Filter>FileIO\OBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectRepository.cpp">
@@ -133,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="PCDFileImporter.cpp">
       <Filter>FileIO\PCD</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFileExporter.cpp">
+      <Filter>FileIO\OBJ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

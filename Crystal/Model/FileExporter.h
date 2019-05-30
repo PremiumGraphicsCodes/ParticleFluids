@@ -16,10 +16,6 @@ public:
 	bool exportFile(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances, const FileFormat format);
 
 private:
-	bool exportOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
-
-	bool exportMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& objects);
-
 	bool exportSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
 
 	bool exportSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
