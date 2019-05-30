@@ -15,7 +15,7 @@ bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& 
 	for (auto p : polygons) {
 		const auto& faces = p->getShape()->getFaces();
 		for (const auto& f : faces) {
-			if (f->isDegenerated(1.0e-12)) {
+			if (f->isDegenerated(1.0e-12f)) {
 				continue;
 			}
 			const auto v1 = f->getV1()->getPosition();
@@ -40,7 +40,7 @@ bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path&
 	for (auto p : polygons) {
 		const auto& faces = p->getShape()->getFaces();
 		for (const auto& f : faces) {
-			if (f->isDegenerated(1.0e-12)) {
+			if (f->isDegenerated(1.0e-12f)) {
 				continue;
 			}
 			const auto v1 = f->getV1()->getPosition();

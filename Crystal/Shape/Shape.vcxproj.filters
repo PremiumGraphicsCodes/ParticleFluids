@@ -82,5 +82,8 @@
     <ClCompile Include="VertexFactory.cpp">
       <Filter>PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="FaceFactory.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

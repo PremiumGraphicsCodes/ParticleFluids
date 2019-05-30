@@ -26,43 +26,19 @@ struct FaceGroup
 class FaceFactory
 {
 public:
-	explicit FaceFactory(const VertexFactory& vertices) :
-		vertices(vertices)
-	{}
+	explicit FaceFactory(const VertexFactory& vertices);
 
-	explicit FaceFactory(FaceFactory&& rhs) :
-		faces(std::move(rhs.faces)),
-		vertices(rhs.vertices)
-	{}
+	explicit FaceFactory(FaceFactory&& rhs);
 
-	Face* createFace(const std::array<int, 3>& indices) {
-		const auto& vertices = this->vertices.getVertices();
-		const auto v1 = vertices[indices[0]];
-		const auto v2 = vertices[indices[1]];
-		const auto v3 = vertices[indices[2]];
+	~FaceFactory();
 
-		auto f = new Face(v1, v2, v3);
-		faces.push_back(f);
-		nextGroup.faces.push_back(f);
-		return f;
-	}
+	Face* createFace(const std::array<int, 3>& indices);
 
 	std::list<Face*> getFaces() const { return faces; }
 
-	void clear()
-	{
-		for (auto f : faces) {
-			delete f;
-		}
-		faces.clear();
-		groups.clear();
-		nextGroup = FaceGroup(0);
-	}
+	void clear();
 
-	void pushCurrentGroup() {
-		groups.push_back( nextGroup );
-		nextGroup = FaceGroup(nextGroupId++);
-	}
+	void pushCurrentGroup();
 
 	std::vector<FaceGroup> getGroups() const { return groups; }
 

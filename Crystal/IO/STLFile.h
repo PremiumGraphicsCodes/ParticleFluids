@@ -9,7 +9,7 @@ namespace Crystal {
 struct STLFile
 {
 	std::string header;
-	int faceCount = 0;
+	size_t faceCount = 0;
 	std::vector<Shape::TriangleFace> faces;
 };
 

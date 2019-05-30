@@ -14,10 +14,7 @@ public:
 	bool exportFile(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances);
 
 	bool exportFile(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances, const FileFormat format);
-
-private:
-
-	bool exportPCD(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
 };
+
 	}
 }

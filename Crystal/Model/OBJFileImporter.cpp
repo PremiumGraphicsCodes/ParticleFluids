@@ -58,6 +58,7 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 				}
 				indices.push_back(eachIndices);
 			}
+			builder.pushCurrentFaceGroup();
 		}
 
 		FaceFactory* faceFactory = builder.getFaceFactory();

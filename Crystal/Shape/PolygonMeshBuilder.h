@@ -46,6 +46,8 @@ public:
 
 	FaceFactory* getFaceFactory() { return &faceFactory; }
 
+	void pushCurrentFaceGroup() { faceFactory.pushCurrentGroup(); }
+
 private:
 	void add(Math::Vector3dd* p0, Math::Vector3dd* p1, Math::Vector3dd* p2, Math::Vector3dd* p3);
 

@@ -99,6 +99,9 @@
     <ClInclude Include="STLFileExporter.h">
       <Filter>FileIO\STL</Filter>
     </ClInclude>
+    <ClInclude Include="PCDFileExporter.h">
+      <Filter>FileIO\PCD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectRepository.cpp">
@@ -145,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="STLFileExporter.cpp">
       <Filter>FileIO\STL</Filter>
+    </ClCompile>
+    <ClCompile Include="PCDFileExporter.cpp">
+      <Filter>FileIO\PCD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
