@@ -12,32 +12,32 @@ using namespace Crystal::Math;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool FileExporter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
+bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
 {
 	const auto format = getFileFormat(filePath);
-	return write(filePath, objects, appearances, format);
+	return exportFile(filePath, objects, appearances, format);
 }
 
-bool FileExporter::write(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances, const FileFormat format)
+bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
-		return writeOBJ(filePath, objects);
+		return exportOBJ(filePath, objects);
 	case FileFormat::MTL :
-		return writeMTL(filePath, appearances);
+		return exportMTL(filePath, appearances);
 	case FileFormat::STL_ASCII :
-		return writeSTLAscii(filePath, objects);
+		return exportSTLAscii(filePath, objects);
 	case FileFormat::STL_BINARY :
-		return writeSTLBinary(filePath, objects);
+		return exportSTLBinary(filePath, objects);
 	case FileFormat::PCD :
-		return writePCD(filePath, objects);
+		return exportPCD(filePath, objects);
 	default :
 		assert(false);
 	}
 	return false;
 }
 
-bool FileExporter::writeOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool FileExporter::exportOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	OBJFile obj;
@@ -65,7 +65,7 @@ bool FileExporter::writeOBJ(const std::experimental::filesystem::path& filePath,
 	return writer.write(filePath, obj);
 }
 
-bool FileExporter::writeMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances)
+bool FileExporter::exportMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances)
 {
 	MTLFileWriter writer;
 	MTLFile mtl;
@@ -81,7 +81,7 @@ bool FileExporter::writeMTL(const std::experimental::filesystem::path& filePath,
 	return writer.write(filePath, mtl);
 }
 
-bool FileExporter::writeSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool FileExporter::exportSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	std::vector<Shape::TriangleFace> fs;
@@ -106,7 +106,7 @@ bool FileExporter::writeSTLAscii(const std::experimental::filesystem::path& file
 	return writer.write(filePath, stl);
 }
 
-bool FileExporter::writeSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool FileExporter::exportSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	std::vector<Shape::TriangleFace> fs;
@@ -131,7 +131,7 @@ bool FileExporter::writeSTLBinary(const std::experimental::filesystem::path& fil
 	return writer.write(filePath, stl);
 }
 
-bool FileExporter::writePCD(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool FileExporter::exportPCD(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
 	const auto& positions = objects.getParticleSystems()->getAllVertices();
 	PCDFile pcd;

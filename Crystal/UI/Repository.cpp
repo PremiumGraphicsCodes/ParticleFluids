@@ -33,7 +33,7 @@ bool Repository::read(const std::string& filename)
 bool Repository::write(const std::string& filename)
 {
 	FileExporter writer;
-	return writer.write(filename, objects, appearances);
+	return writer.exportFile(filename, objects, appearances);
 }
 
 ViewModel Repository::toViewModel()
