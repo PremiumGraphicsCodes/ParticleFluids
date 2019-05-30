@@ -6,7 +6,7 @@ namespace Crystal {
 	namespace Model {
 		class ObjectRepository;
 
-class STLFileConverter
+class STLFileImporter
 {
 public:
 	IO::STLFile toSTL(ObjectRepository& repository);

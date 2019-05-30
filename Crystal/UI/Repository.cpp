@@ -1,7 +1,7 @@
 #include "Repository.h"
 
 #include "../Model/FileReader.h"
-#include "../Model/FileWriter.h"
+#include "../Model/FileExporter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -32,7 +32,7 @@ bool Repository::read(const std::string& filename)
 
 bool Repository::write(const std::string& filename)
 {
-	FileWriter writer;
+	FileExporter writer;
 	return writer.write(filename, objects, appearances);
 }
 

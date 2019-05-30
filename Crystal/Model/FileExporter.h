@@ -8,7 +8,7 @@
 namespace Crystal {
 	namespace Model {
 
-class FileWriter
+class FileExporter
 {
 public:
 	bool write(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances);

@@ -25,7 +25,7 @@
     <ClInclude Include="AppearanceObjectRepository.h" />
     <ClInclude Include="FileFormat.h" />
     <ClInclude Include="FileReader.h" />
-    <ClInclude Include="FileWriter.h" />
+    <ClInclude Include="FileExporter.h" />
     <ClInclude Include="ImageObject.h" />
     <ClInclude Include="ImageObjectRepository.h" />
     <ClInclude Include="IObject.h" />
@@ -44,7 +44,7 @@
     <ClInclude Include="PolygonMeshAttribute.h" />
     <ClInclude Include="PolygonMeshObject.h" />
     <ClInclude Include="PolygonMeshObjectRepository.h" />
-    <ClInclude Include="STLFileConverter.h" />
+    <ClInclude Include="STLFileImporter.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="UUID.h" />
     <ClInclude Include="VolumeObject.h" />
@@ -55,14 +55,14 @@
   <ItemGroup>
     <ClCompile Include="AppearanceObjectRepository.cpp" />
     <ClCompile Include="FileReader.cpp" />
-    <ClCompile Include="FileWriter.cpp" />
+    <ClCompile Include="FileExporter.cpp" />
     <ClCompile Include="ImageObjectRepository.cpp" />
     <ClCompile Include="LightObjectRepository.cpp" />
     <ClCompile Include="MaterialObjectRepository.cpp" />
     <ClCompile Include="ObjectRepository.cpp" />
     <ClCompile Include="ParticleSystemObjectRepository.cpp" />
     <ClCompile Include="PolygonMeshObjectRepository.cpp" />
-    <ClCompile Include="STLFileConverter.cpp" />
+    <ClCompile Include="STLFileImporter.cpp" />
     <ClCompile Include="WireFrameObjectRepository.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
