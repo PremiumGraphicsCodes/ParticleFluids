@@ -37,11 +37,11 @@ bool RepositoryAdapter::Read(System::String^ filename)
 {
 	//msclr::interop::marshal_as<std::string>(filename)
 	std::string str = msclr::interop::marshal_as<std::string>(filename);
-	return instance->read( str );
+	return instance->importFile( str );
 }
 
 bool RepositoryAdapter::Write(System::String^ filename)
 {
 	std::string str = msclr::interop::marshal_as<std::string>(filename);
-	return instance->write(str);
+	return instance->exportFile(str);
 }
