@@ -90,6 +90,9 @@
     <ClInclude Include="OBJFileImporter.h">
       <Filter>FileIO\OBJ</Filter>
     </ClInclude>
+    <ClInclude Include="PCDFileImporter.h">
+      <Filter>FileIO\PCD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectRepository.cpp">
@@ -128,6 +131,9 @@
     <ClCompile Include="OBJFileImporter.cpp">
       <Filter>FileIO\OBJ</Filter>
     </ClCompile>
+    <ClCompile Include="PCDFileImporter.cpp">
+      <Filter>FileIO\PCD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Object">
@@ -150,6 +156,9 @@
     </Filter>
     <Filter Include="FileIO\OBJ">
       <UniqueIdentifier>{e3ea69e2-4a46-4b40-a582-f5949fba0a68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO\PCD">
+      <UniqueIdentifier>{719573c3-31e4-4d26-aab0-0a675a7b0967}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -42,6 +42,7 @@
     <ClInclude Include="ParticleAttribute.h" />
     <ClInclude Include="ParticleSystemObject.h" />
     <ClInclude Include="ParticleSystemObjectRepository.h" />
+    <ClInclude Include="PCDFileImporter.h" />
     <ClInclude Include="PolygonMeshAttribute.h" />
     <ClInclude Include="PolygonMeshObject.h" />
     <ClInclude Include="PolygonMeshObjectRepository.h" />
@@ -63,6 +64,7 @@
     <ClCompile Include="ObjectRepository.cpp" />
     <ClCompile Include="OBJFileImporter.cpp" />
     <ClCompile Include="ParticleSystemObjectRepository.cpp" />
+    <ClCompile Include="PCDFileImporter.cpp" />
     <ClCompile Include="PolygonMeshObjectRepository.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
     <ClCompile Include="WireFrameObjectRepository.cpp" />
