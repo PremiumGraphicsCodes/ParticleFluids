@@ -15,6 +15,8 @@ struct OBJFace
 
 struct OBJGroup
 {
+	std::string name;
+	std::string usemtl;
 	std::vector< OBJFace > faces;
 };
 
@@ -28,7 +30,6 @@ struct OBJFile
 
 	std::vector< OBJGroup > groups;
 	std::vector< std::string > mtllibs;
-	std::vector< std::pair< std::string, unsigned int> > useMtlNames;
 };
 
 	}

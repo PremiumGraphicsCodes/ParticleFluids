@@ -62,6 +62,10 @@ public:
 struct MTLFile
 {
 	std::vector<MTL> materials;
+
+	MTL find(const std::string& name) {
+		std::find_if(materials.begin(), materials.end(), [=](const auto& m) { return m.name == name; });
+	}
 };
 
 	}

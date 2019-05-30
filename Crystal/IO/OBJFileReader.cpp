@@ -31,14 +31,12 @@ bool OBJFileReader::read(const std::experimental::filesystem::path& filePath)
 	return read(stream);
 }
 
-
 bool OBJFileReader::read(std::istream& stream)
 {
 	std::string str;
 
 	std::string header;
 	std::string currentMtllibName;
-	std::pair< std::string, unsigned int > currentUseMtl;
 
 	auto currentGroup = OBJGroup();
 
@@ -64,9 +62,7 @@ bool OBJFileReader::read(std::istream& stream)
 			obj.mtllibs.push_back(currentMtllibName);
 		}
 		else if (header == "usemtl") {
-			obj.useMtlNames.push_back(currentUseMtl);
-			currentUseMtl.first = Helper::read<std::string>(stream);
-			currentUseMtl.second = 0;
+			currentGroup.usemtl = Helper::read<std::string>(stream);
 			//mtllibMap.insert(std::make_pair(currentMtllibName, currentUseMtlName));
 		}
 		else if (header == "f") {
@@ -108,21 +104,19 @@ bool OBJFileReader::read(std::istream& stream)
 			}
 
 			currentGroup.faces.push_back(face);
-			const auto count = static_cast<unsigned int>(strs.size());
-			//groupMap.insert(std::make_pair(currentGroupName, f));
-			currentUseMtl.second += count;
 		}
 		else if (header == "g") {
+			std::string name = Helper::read<std::string>(stream);
 			if (!currentGroup.faces.empty()) {
 				obj.groups.push_back(currentGroup);
 				currentGroup = OBJGroup();
+				currentGroup.name = name;
 			}
 		}
 
 		header = Helper::read< std::string >(stream);
 	}
 	obj.groups.push_back(currentGroup);
-	obj.useMtlNames.push_back(currentUseMtl);
 
 	return true;
 }
@@ -130,7 +124,7 @@ bool OBJFileReader::read(std::istream& stream)
 
 Vector3df OBJFileReader::readVertices(const std::string& str)
 {
-	const std::vector< std::string >& strs = Helper::split(str, ' ');
+	const auto& strs = Helper::split(str, ' ');
 	//assert(strs.front() == "v");
 
 	const float x = std::stof(strs[0].c_str());
@@ -147,7 +141,7 @@ Vector3df OBJFileReader::readVertices(const std::string& str)
 
 Vector3df OBJFileReader::readVector3d(const std::string& str)
 {
-	const std::vector< std::string >& strs = Helper::split(str, ' ');
+	const auto& strs = Helper::split(str, ' ');
 	//assert(strs.front() == "vt");
 	const float u = ::std::stof(strs[0]);
 	const float v = ::std::stof(strs[1]);
@@ -162,7 +156,7 @@ Vector3df OBJFileReader::readVector3d(const std::string& str)
 
 Vector2df OBJFileReader::readVector2d(const std::string& str)
 {
-	const std::vector< std::string >& strs = Helper::split(str, ' ');
+	const auto& strs = Helper::split(str, ' ');
 	//assert(strs.front() == "vt");
 	const float u = ::std::stof(strs[0]);
 	const float v = ::std::stof(strs[1]);

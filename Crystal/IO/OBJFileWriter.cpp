@@ -36,6 +36,7 @@ bool OBJFileWriter::write(std::ostream& stream, const OBJFile& obj)
 
 	const auto& groups = obj.groups;
 	for (const auto& g : groups) {
+		stream << "g " << g.name << std::endl;
 		// faces
 		const auto& faces = g.faces;
 		for (const auto& f : faces) {

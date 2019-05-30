@@ -12,15 +12,18 @@ namespace Crystal {
 struct FaceGroup
 {
 	FaceGroup():
-		id(-1)
+		id(-1),
+		attributeId(-1)
 	{}
 
 	explicit FaceGroup(const int id) :
-		id(id)
+		id(id),
+		attributeId(-1)
 	{}
 
 	std::list<Face*> faces;
 	int id;
+	int attributeId;
 };
 
 class FaceFactory
@@ -38,7 +41,7 @@ public:
 
 	void clear();
 
-	void pushCurrentGroup();
+	int pushCurrentGroup(int attributeId = -1);
 
 	std::vector<FaceGroup> getGroups() const { return groups; }
 

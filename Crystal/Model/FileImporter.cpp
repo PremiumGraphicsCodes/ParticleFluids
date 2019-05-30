@@ -20,7 +20,7 @@ bool FileImporter::importFile(const std::experimental::filesystem::path& filePat
 	case FileFormat::OBJ :
 	{
 		OBJFileImporter importer;
-		return importer.importOBJ(filePath, objects);
+		return importer.importOBJ(filePath, objects, appearances);
 	}
 	case FileFormat::MTL:
 	{

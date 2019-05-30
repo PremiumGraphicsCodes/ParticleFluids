@@ -36,3 +36,13 @@ MaterialObject* MaterialObjectRepository::findObjectById(const int id) const
 	}
 	return *iter;
 }
+
+MaterialObject* MaterialObjectRepository::findByName(const std::string& name) const
+{
+	auto iter = std::find_if(std::cbegin(materials), std::cend(materials), [=](auto p) {return p->getName() == name; });
+	if (iter == std::cend(materials)) {
+		return nullptr;
+	}
+	return *iter;
+
+}

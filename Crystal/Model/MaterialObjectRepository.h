@@ -20,6 +20,8 @@ public:
 
 	MaterialObject* findObjectById(const int id) const;
 
+	MaterialObject* findByName(const std::string& name) const;
+
 	std::vector<MaterialObject*> getMaterials() const { return materials; }
 
 private:

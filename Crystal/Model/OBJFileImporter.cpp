@@ -12,7 +12,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
@@ -58,7 +58,9 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 				}
 				indices.push_back(eachIndices);
 			}
-			builder.pushCurrentFaceGroup();
+			auto material = appearances.getMaterials()->findByName(g.usemtl);
+			const auto materialId = (material) ? material->getId() : -1;
+			builder.pushCurrentFaceGroup(materialId);
 		}
 
 		FaceFactory* faceFactory = builder.getFaceFactory();
@@ -97,3 +99,29 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 	}
 	return false;
 }
+
+bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+{
+	// path から .objファイル名を取得する．
+
+	// mtl ファイルを読み込む．
+	//importMTL()
+
+	// obj ファイルを読み込む．
+
+	return false;
+}
+
+/*
+void OBJFileImporter::match(const IO::OBJFile& obj, AppearanceObjectRepository& apperances)
+{
+	const auto& groups = obj.groups;
+	for (const auto& g : groups) {
+		auto material = apperances.getMaterials()->findByName(g.usemtl);
+		const auto materialId = material->getId();
+		for (const auto& f : g.faces) {
+			f.
+		}
+	}
+}
+*/

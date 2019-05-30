@@ -39,8 +39,11 @@ Face* FaceFactory::createFace(const std::array<int, 3>& indices)
 	return f;
 }
 
-void FaceFactory::pushCurrentGroup()
+int FaceFactory::pushCurrentGroup(int attributeId)
 {
+	nextGroup.attributeId = attributeId;
+	const auto id = nextGroup.id;
 	groups.push_back(nextGroup);
 	nextGroup = FaceGroup(nextGroupId++);
+	return id;
 }
