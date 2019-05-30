@@ -23,9 +23,6 @@
     <ClInclude Include="OBJFileReader.h">
       <Filter>OBJ</Filter>
     </ClInclude>
-    <ClInclude Include="MTLFileReader.h">
-      <Filter>OBJ</Filter>
-    </ClInclude>
     <ClInclude Include="PCDFileReader.h">
       <Filter>PCD</Filter>
     </ClInclude>
@@ -44,11 +41,14 @@
     <ClInclude Include="OBJFileWriter.h">
       <Filter>OBJ</Filter>
     </ClInclude>
-    <ClInclude Include="MTLFile.h">
-      <Filter>OBJ</Filter>
-    </ClInclude>
     <ClInclude Include="MTLFileWriter.h">
-      <Filter>OBJ</Filter>
+      <Filter>OBJ\MTL</Filter>
+    </ClInclude>
+    <ClInclude Include="MTLFileReader.h">
+      <Filter>OBJ\MTL</Filter>
+    </ClInclude>
+    <ClInclude Include="MTLFile.h">
+      <Filter>OBJ\MTL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -70,9 +70,6 @@
     <ClCompile Include="OBJFileReader.cpp">
       <Filter>OBJ</Filter>
     </ClCompile>
-    <ClCompile Include="MTLFileReader.cpp">
-      <Filter>OBJ</Filter>
-    </ClCompile>
     <ClCompile Include="ImageFileWriter.cpp">
       <Filter>Image</Filter>
     </ClCompile>
@@ -86,7 +83,10 @@
       <Filter>OBJ</Filter>
     </ClCompile>
     <ClCompile Include="MTLFileWriter.cpp">
-      <Filter>OBJ</Filter>
+      <Filter>OBJ\MTL</Filter>
+    </ClCompile>
+    <ClCompile Include="MTLFileReader.cpp">
+      <Filter>OBJ\MTL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +101,9 @@
     </Filter>
     <Filter Include="PCD">
       <UniqueIdentifier>{5d61ce56-1ed2-438a-9950-e204952784da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OBJ\MTL">
+      <UniqueIdentifier>{ecf9045c-05c3-4776-b602-a9dcdc213f96}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

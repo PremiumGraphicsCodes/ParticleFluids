@@ -9,10 +9,24 @@ namespace Crystal {
 	namespace Shape {
 		class Face;
 
+struct FaceGroup
+{
+	FaceGroup():
+		id(-1)
+	{}
+
+	explicit FaceGroup(const int id) :
+		id(id)
+	{}
+
+	std::list<Face*> faces;
+	int id;
+};
+
 class FaceFactory
 {
 public:
-	FaceFactory(const VertexFactory& vertices) :
+	explicit FaceFactory(const VertexFactory& vertices) :
 		vertices(vertices)
 	{}
 
@@ -29,6 +43,7 @@ public:
 
 		auto f = new Face(v1, v2, v3);
 		faces.push_back(f);
+		nextGroup.faces.push_back(f);
 		return f;
 	}
 
@@ -40,11 +55,23 @@ public:
 			delete f;
 		}
 		faces.clear();
+		groups.clear();
+		nextGroup = FaceGroup(0);
 	}
+
+	void pushCurrentGroup() {
+		groups.push_back( nextGroup );
+		nextGroup = FaceGroup(nextGroupId++);
+	}
+
+	std::vector<FaceGroup> getGroups() const { return groups; }
 
 private:
 	const VertexFactory& vertices;
 	std::list<Face*> faces;
+	FaceGroup nextGroup;
+	int nextGroupId = 0;
+	std::vector<FaceGroup> groups;
 };
 
 	}

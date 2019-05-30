@@ -23,12 +23,6 @@ class Face;
 class PolygonMesh : public IShape
 {
 public:
-	struct Group
-	{
-		int id;
-		std::list<Face*> faces;
-	};
-
 	//PolygonMesh()
 	//{}
 
@@ -37,6 +31,8 @@ public:
 	~PolygonMesh();
 
 	std::list<Face*> getFaces() const { return faces.getFaces(); }
+
+	std::vector<FaceGroup> getGroups() const { return faces.getGroups(); }
 
 	std::vector<Vertex*> getVertices() const;
 
