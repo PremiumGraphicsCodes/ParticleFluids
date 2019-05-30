@@ -24,7 +24,7 @@
   <ItemGroup>
     <ClInclude Include="AppearanceObjectRepository.h" />
     <ClInclude Include="FileFormat.h" />
-    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="FileImporter.h" />
     <ClInclude Include="FileExporter.h" />
     <ClInclude Include="ImageObject.h" />
     <ClInclude Include="ImageObjectRepository.h" />
@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppearanceObjectRepository.cpp" />
-    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="FileImporter.cpp" />
     <ClCompile Include="FileExporter.cpp" />
     <ClCompile Include="ImageObjectRepository.cpp" />
     <ClCompile Include="LightObjectRepository.cpp" />

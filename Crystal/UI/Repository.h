@@ -4,6 +4,7 @@
 #include "../Model/AppearanceObjectRepository.h"
 #include "../Shader/OpenGLObjectRepository.h"
 #include "ViewModel.h"
+#include <filesystem>
 
 #include "../Util/UnCopyable.h"
 
@@ -19,9 +20,9 @@ public:
 
 	void clear();
 
-	bool read(const std::string& filename);
+	bool importFile(const std::experimental::filesystem::path& filename);
 
-	bool write(const std::string& filename);
+	bool exportFile(const std::experimental::filesystem::path& filePath);
 
 	Model::ObjectRepository* getObjects() { return &objects; }
 

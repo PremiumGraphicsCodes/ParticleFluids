@@ -18,7 +18,7 @@ void FileMenu::show()
 			model->clear();
 			getCanvas()->setViewModel(model->toViewModel());
 		}
-		if (ImGui::MenuItem("Open")) {
+		if (ImGui::MenuItem("Import")) {
 			FileOpenView view("");
 			view.addFilter("*.stl");
 			view.addFilter("*.obj");
@@ -27,14 +27,14 @@ void FileMenu::show()
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
-				if (model->read(filename)) {
+				if (model->importFile(filename)) {
 					getCanvas()->setViewModel(model->toViewModel());
 					getCanvas()->fitCamera(getModel()->getBoundingBox());
 				}
 			}
 			//canvas->update();
 		}
-		if (ImGui::MenuItem("Save")) {
+		if (ImGui::MenuItem("Export")) {
 			FileSaveView view("");
 			view.addFilter("*.stl");
 			view.addFilter("*.obj");
@@ -43,7 +43,7 @@ void FileMenu::show()
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
-				model->write(filename);
+				model->exportFile(filename);
 			}
 			//model->write(filename);
 		}

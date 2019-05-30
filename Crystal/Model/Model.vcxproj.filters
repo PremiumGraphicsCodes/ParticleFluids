@@ -75,9 +75,6 @@
     <ClInclude Include="VolumeObject.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="FileReader.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="FileFormat.h">
       <Filter>FileIO</Filter>
     </ClInclude>
@@ -85,6 +82,9 @@
       <Filter>FileIO</Filter>
     </ClInclude>
     <ClInclude Include="FileExporter.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="FileImporter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,13 +113,13 @@
     <ClCompile Include="ImageObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="FileReader.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="STLFileImporter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
     <ClCompile Include="FileExporter.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="FileImporter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
   </ItemGroup>

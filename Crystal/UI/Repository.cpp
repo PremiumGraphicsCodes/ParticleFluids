@@ -1,6 +1,6 @@
 #include "Repository.h"
 
-#include "../Model/FileReader.h"
+#include "../Model/FileImporter.h"
 #include "../Model/FileExporter.h"
 
 using namespace Crystal::Math;
@@ -24,13 +24,13 @@ void Repository::clear()
 	appearances.clear();
 }
 
-bool Repository::read(const std::string& filename)
+bool Repository::importFile(const std::experimental::filesystem::path& filename)
 {
-	FileReader reader;
-	return reader.read(filename, objects, appearances);
+	FileImporter reader;
+	return reader.import(filename, objects, appearances);
 }
 
-bool Repository::write(const std::string& filename)
+bool Repository::exportFile(const std::experimental::filesystem::path& filename)
 {
 	FileExporter writer;
 	return writer.exportFile(filename, objects, appearances);

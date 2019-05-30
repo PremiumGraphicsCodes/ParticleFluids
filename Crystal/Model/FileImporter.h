@@ -8,12 +8,12 @@
 namespace Crystal {
 	namespace Model {
 
-class FileReader
+class FileImporter
 {
 public:
-	bool read(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances);
+	bool import(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances);
 
-	bool read(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances, const FileFormat format);
+	bool import(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances, const FileFormat format);
 
 private:
 	bool readOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);

@@ -1,4 +1,4 @@
-#include "FileReader.h"
+#include "FileImporter.h"
 
 #include <filesystem>
 
@@ -15,13 +15,13 @@ using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool FileReader::read(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
+bool FileImporter::import(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
 {
 	const auto format = getFileFormat( filePath.extension() );
-	return read(filePath, objects, appearances, format);
+	return import(filePath, objects, appearances, format);
 }
 
-bool FileReader::read(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances, const FileFormat format)
+bool FileImporter::import(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
@@ -40,7 +40,7 @@ bool FileReader::read(const std::experimental::filesystem::path& filePath, Objec
 	return false;
 }
 
-bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool FileImporter::readOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
@@ -104,7 +104,7 @@ bool FileReader::readOBJ(const std::experimental::filesystem::path& filePath, Ob
 	return false;
 }
 
-bool FileReader::readMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances)
+bool FileImporter::readMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances)
 {
 	MTLFileReader reader;
 	if (reader.read(filePath)) {
@@ -123,7 +123,7 @@ bool FileReader::readMTL(const std::experimental::filesystem::path& filePath, Ap
 	return false;
 }
 
-bool FileReader::readSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& repository)
+bool FileImporter::readSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& repository)
 {
 	STLASCIIFileReader reader;
 	if (reader.read(filePath)) {
@@ -138,7 +138,7 @@ bool FileReader::readSTLAscii(const std::experimental::filesystem::path& filePat
 	return false;
 }
 
-bool FileReader::readSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool FileImporter::readSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
 {
 	STLBinaryFileReader reader;
 	if (reader.read(filePath)) {
@@ -153,7 +153,7 @@ bool FileReader::readSTLBinary(const std::experimental::filesystem::path& filePa
 	return false;
 }
 
-bool FileReader::readPCD(const std::experimental::filesystem::path& filePath, ObjectRepository& repository)
+bool FileImporter::readPCD(const std::experimental::filesystem::path& filePath, ObjectRepository& repository)
 {
 	PCDFileReader reader;
 	if (reader.read(filePath)) {
