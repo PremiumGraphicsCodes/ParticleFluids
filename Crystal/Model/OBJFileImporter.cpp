@@ -39,23 +39,25 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 		const auto& texCoordTable = vertexFactory->getTexCoords();
 
 		std::vector< std::vector<int> > indices;
-		for (const auto& f : obj.faces) {
-			std::vector<int> eachIndices;
-			for (int i = 0; i < f.positionIndices.size(); i++) {
-				auto p = positionTable[f.positionIndices[i] - 1];
-				auto n = normalTable[f.normalIndices[i] - 1];
-				const auto texCoordIndex = f.texCoordIndices[i] - 1;
-				if (texCoordIndex >= 0) {
-					auto t = texCoordTable[texCoordIndex];
-					auto v = vertexFactory->createVertex(p, n, t);
-					eachIndices.push_back(v);
+		for (const auto& g : obj.groups) {
+			for (const auto& f : g.faces) {
+				std::vector<int> eachIndices;
+				for (int i = 0; i < f.positionIndices.size(); i++) {
+					auto p = positionTable[f.positionIndices[i] - 1];
+					auto n = normalTable[f.normalIndices[i] - 1];
+					const auto texCoordIndex = f.texCoordIndices[i] - 1;
+					if (texCoordIndex >= 0) {
+						auto t = texCoordTable[texCoordIndex];
+						auto v = vertexFactory->createVertex(p, n, t);
+						eachIndices.push_back(v);
+					}
+					else {
+						auto v = vertexFactory->createVertex(p, n);
+						eachIndices.push_back(v);
+					}
 				}
-				else {
-					auto v = vertexFactory->createVertex(p, n);
-					eachIndices.push_back(v);
-				}
+				indices.push_back(eachIndices);
 			}
-			indices.push_back(eachIndices);
 		}
 
 		FaceFactory* faceFactory = builder.getFaceFactory();

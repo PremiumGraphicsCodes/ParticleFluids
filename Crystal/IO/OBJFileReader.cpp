@@ -37,9 +37,10 @@ bool OBJFileReader::read(std::istream& stream)
 	std::string str;
 
 	std::string header;
-	std::pair< std::string, unsigned int > currentGroup;
 	std::string currentMtllibName;
 	std::pair< std::string, unsigned int > currentUseMtl;
+
+	auto currentGroup = OBJGroup();
 
 	while (!stream.eof()) {
 		if (header == "#") {
@@ -106,20 +107,21 @@ bool OBJFileReader::read(std::istream& stream)
 				}
 			}
 
-			obj.faces.push_back(face);
+			currentGroup.faces.push_back(face);
 			const auto count = static_cast<unsigned int>(strs.size());
-			currentGroup.second += count;
 			//groupMap.insert(std::make_pair(currentGroupName, f));
 			currentUseMtl.second += count;
 		}
 		else if (header == "g") {
-			obj.groups.push_back(currentGroup);
-			currentGroup.first = Helper::read<std::string>(stream);
-			currentGroup.second = 0;
+			if (!currentGroup.faces.empty()) {
+				obj.groups.push_back(currentGroup);
+				currentGroup = OBJGroup();
+			}
 		}
 
 		header = Helper::read< std::string >(stream);
 	}
+	obj.groups.push_back(currentGroup);
 	obj.useMtlNames.push_back(currentUseMtl);
 
 	return true;

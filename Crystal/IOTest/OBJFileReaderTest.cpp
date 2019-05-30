@@ -43,7 +43,8 @@ TEST(OBJFileReaderTest, TestExampleCube)
 	const auto& obj = reader.getOBJ();
 	EXPECT_EQ(8, obj.positions.size());
 	EXPECT_EQ(0, obj.normals.size());
-	EXPECT_EQ(6, obj.faces.size());
+	EXPECT_EQ(1, obj.groups.size());
+	EXPECT_EQ(6, obj.groups[0].faces.size());
 }
 
 TEST(OBJFileReaderTest, TestNegativeReferenceNumber)
@@ -62,8 +63,8 @@ TEST(OBJFileReaderTest, TestNegativeReferenceNumber)
 	//EXPECT_EQ(1, file.getGroups().front().getFaces().size());
 	//std::vector<int> expected{ -4, - 3, -2, -1 };
 	const auto& obj = reader.getOBJ();
-	auto actual = obj.faces.size();
-	EXPECT_EQ( 1, actual );
+	EXPECT_EQ(1, obj.groups.size());
+	EXPECT_EQ(1, obj.groups[0].faces.size() );
 }
 
 TEST(OBJFileReaderTest, TestExampleGroups)
@@ -96,7 +97,8 @@ TEST(OBJFileReaderTest, TestExampleGroups)
 	OBJFileReader reader;
 	reader.read(stream);
 	const auto& obj = reader.getOBJ();
-	EXPECT_EQ(6, obj.faces.size());
+	EXPECT_EQ(6, obj.groups.size());
+	//EXPECT_EQ(6, obj.faces.size());
 }
 
 TEST(OBJFileReaderTest, TestExampleSmoothingGroup)
@@ -119,7 +121,7 @@ TEST(OBJFileReaderTest, TestExampleSmoothingGroup)
 	OBJFileReader reader;
 	reader.read(stream);
 	const auto& obj = reader.getOBJ();
-	EXPECT_EQ(2, obj.faces.size());
+	EXPECT_EQ(2, obj.groups[0].faces.size());
 	EXPECT_EQ(6, obj.positions.size());
 }
 
@@ -144,7 +146,7 @@ TEST(OBJFileReaderTest, TestExampleTextureMappedSquare)
 	OBJFileReader reader;
 	reader.read(stream);
 	const auto& obj = reader.getOBJ();
-	EXPECT_EQ(1, obj.faces.size());
+	EXPECT_EQ(1, obj.groups[0].faces.size());
 	EXPECT_EQ(4, obj.positions.size());
 	EXPECT_EQ(4, obj.texCoords.size());
 }

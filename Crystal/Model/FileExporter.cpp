@@ -41,6 +41,7 @@ bool FileExporter::exportOBJ(const std::experimental::filesystem::path& filePath
 {
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	OBJFile obj;
+	obj.groups.push_back(OBJGroup());
 	for (auto p : polygons) {
 		const auto& vertices = p->getShape()->getVertices();
 		const auto& faces = p->getShape()->getFaces();
@@ -53,7 +54,7 @@ bool FileExporter::exportOBJ(const std::experimental::filesystem::path& filePath
 			face.positionIndices = indices;
 			face.normalIndices = indices;
 			face.texCoordIndices = indices;
-			obj.faces.push_back(face);
+			obj.groups[0].faces.push_back(face);
 		}
 		for (auto v : vertices) {
 			obj.positions.push_back( v->getPosition() );

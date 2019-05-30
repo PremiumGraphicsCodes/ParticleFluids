@@ -34,14 +34,17 @@ bool OBJFileWriter::write(std::ostream& stream, const OBJFile& obj)
 		stream << "vn " << vn.x << " " << vn.y << " " << vn.z << std::endl;
 	}
 
-	// faces
-	const auto& faces = obj.faces;
-	for (const auto& f : faces) {
-		stream << "f";
-		for (int i = 0; i < f.positionIndices.size(); ++i) {
-			stream << " " << f.positionIndices[i] << "/" << f.texCoordIndices[i] << "/" << f.normalIndices[i];
+	const auto& groups = obj.groups;
+	for (const auto& g : groups) {
+		// faces
+		const auto& faces = g.faces;
+		for (const auto& f : faces) {
+			stream << "f";
+			for (int i = 0; i < f.positionIndices.size(); ++i) {
+				stream << " " << f.positionIndices[i] << "/" << f.texCoordIndices[i] << "/" << f.normalIndices[i];
+			}
+			stream << std::endl;
 		}
-		stream << std::endl;
 	}
 	return false;
 }

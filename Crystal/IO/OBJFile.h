@@ -13,6 +13,11 @@ struct OBJFace
 	std::vector<int> texCoordIndices;
 };
 
+struct OBJGroup
+{
+	std::vector< OBJFace > faces;
+};
+
 struct OBJFile
 {
 	std::string comment;
@@ -21,9 +26,7 @@ struct OBJFile
 	std::vector< Math::Vector3df > normals;
 	std::vector< Math::Vector2df > texCoords;
 
-	std::vector< OBJFace > faces;
-
-	std::vector< std::pair< std::string, unsigned int > > groups;
+	std::vector< OBJGroup > groups;
 	std::vector< std::string > mtllibs;
 	std::vector< std::pair< std::string, unsigned int> > useMtlNames;
 };
