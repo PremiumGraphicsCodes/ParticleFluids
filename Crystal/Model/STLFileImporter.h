@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../IO/STLFile.h"
+#include <filesystem>
 
 namespace Crystal {
 	namespace Model {
@@ -9,9 +9,9 @@ namespace Crystal {
 class STLFileImporter
 {
 public:
-	IO::STLFile toSTL(ObjectRepository& repository);
+	bool importSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
 
-	void fromSTL(const IO::STLFile& stl, ObjectRepository& repository);
+	bool importSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
 
 private:
 	

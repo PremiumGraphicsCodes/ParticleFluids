@@ -78,14 +78,17 @@
     <ClInclude Include="FileFormat.h">
       <Filter>FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="STLFileImporter.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="FileExporter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
     <ClInclude Include="FileImporter.h">
       <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="STLFileImporter.h">
+      <Filter>FileIO\STL</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJFileImporter.h">
+      <Filter>FileIO\OBJ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,14 +116,17 @@
     <ClCompile Include="ImageObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="STLFileImporter.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="FileExporter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
     <ClCompile Include="FileImporter.cpp">
       <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="STLFileImporter.cpp">
+      <Filter>FileIO\STL</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFileImporter.cpp">
+      <Filter>FileIO\OBJ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +144,12 @@
     </Filter>
     <Filter Include="FileIO">
       <UniqueIdentifier>{beb36380-0e7c-4d6f-9c2b-494d9cb328f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO\STL">
+      <UniqueIdentifier>{a56d1d37-dae8-4a33-8256-06be8311463c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO\OBJ">
+      <UniqueIdentifier>{e3ea69e2-4a46-4b40-a582-f5949fba0a68}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
