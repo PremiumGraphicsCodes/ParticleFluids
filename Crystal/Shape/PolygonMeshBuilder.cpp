@@ -66,8 +66,8 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 		for (int j = 0; j < grid[i].size() - 1; ++j) {
 			std::array<int, 3> f1{ grid[i][j], grid[i + 1][j], grid[i][j + 1] };
 			std::array<int, 3> f2{ grid[i][j + 1], grid[i + 1][j], grid[i + 1][j + 1] };
-			faceIndices.push_back(f1);
-			faceIndices.push_back(f2);
+			faceFactory.createFace(f1);
+			faceFactory.createFace(f2);
 		}
 	}
 }
