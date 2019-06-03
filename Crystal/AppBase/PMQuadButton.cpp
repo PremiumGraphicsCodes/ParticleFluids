@@ -23,7 +23,7 @@ void PMQuadButton::onOk()
 {
 	PolygonMeshBuilder builder;
 	builder.add(quad.getValue());
-	builder.build();
+	builder.pushCurrentFaceGroup();
 	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), materialId.getValue(), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());

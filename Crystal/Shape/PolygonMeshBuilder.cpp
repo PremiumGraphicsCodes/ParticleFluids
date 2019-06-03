@@ -22,7 +22,7 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 	auto v0 = vertexFactory.createVertex( vertexFactory.createPosition( vs[0] ), normal);
 	auto v1 = vertexFactory.createVertex( vertexFactory.createPosition( vs[1] ), normal);
 	auto v2 = vertexFactory.createVertex( vertexFactory.createPosition( vs[2] ), normal);
-	faceIndices.push_back({ v0,v1,v2 });
+	faceFactory.createFace({ v0,v1,v2 });
 }
 
 void PolygonMeshBuilder::add(const Box3d& box)
@@ -81,8 +81,8 @@ void PolygonMeshBuilder::add(const Quad3d& quad)
 	auto v2 = vertexFactory.createVertex( vertexFactory.createPosition( quad.getPosition(1, 1) ), normal, vertexFactory.createTexCoord( Vector2dd(1, 1)) );
 	auto v3 = vertexFactory.createVertex( vertexFactory.createPosition( quad.getPosition(0, 1) ), normal, vertexFactory.createTexCoord( Vector2dd(0, 1)) );
 
-	faceIndices.push_back({ v0,v1,v3 });
-	faceIndices.push_back({ v3,v1,v2 });
+	faceFactory.createFace({ v0,v1,v3 });
+	faceFactory.createFace({ v3,v1,v2 });
 }
 
 void PolygonMeshBuilder::add(const TriangleMesh& mesh)
@@ -97,14 +97,7 @@ void PolygonMeshBuilder::add(const TriangleMesh& mesh)
 			auto p = vertexFactory.createPosition(vs[i]);
 			ids[i] = vertexFactory.createVertex(p, n);
 		}
-		faceIndices.push_back( ids );
-	}
-}
-
-void PolygonMeshBuilder::build()
-{
-	for (const auto& indices : faceIndices) {
-		faceFactory.createFace(indices);
+		faceFactory.createFace( ids );
 	}
 }
 
@@ -123,6 +116,6 @@ void PolygonMeshBuilder::add(Vector3dd* p0, Vector3dd* p1, Vector3dd* p2, Vector
 	auto v2 = vertexFactory.createVertex(p2, n0);
 	auto v3 = vertexFactory.createVertex(p3, n0);
 
-	faceIndices.push_back({ v0,v1,v2 });
-	faceIndices.push_back({ v0,v2,v3 });
+	faceFactory.createFace({ v0,v1,v2 });
+	faceFactory.createFace({ v0,v2,v3 });
 }

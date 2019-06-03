@@ -32,8 +32,6 @@ public:
 
 	void add(const TriangleMesh& mesh);
 
-	void build();
-
 	PolygonMesh* getPolygonMesh();
 
 	std::vector<Math::Vector3dd*> getPositions() const { return vertexFactory.getPositions(); }
@@ -53,7 +51,6 @@ private:
 
 	VertexFactory vertexFactory;
 	FaceFactory faceFactory;
-	std::vector<std::array<int, 3>> faceIndices;
 };
 
 	}

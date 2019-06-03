@@ -22,17 +22,11 @@ void FaceSelectButton::onShow()
 				return;
 			}
 			face.setValue(f);
-			auto g = mesh->getShape()->findGroupByFace(f);
-			group = std::make_unique<FaceGroupView>("Group", g);
 		};
 		ctrl->setFunction(func);
 		getCanvas()->setUICtrl(ctrl);
 	}
 	face.show();
-
-	if (group) {
-		group->show();
-	}
 }
 
 void FaceSelectButton::onOk()
