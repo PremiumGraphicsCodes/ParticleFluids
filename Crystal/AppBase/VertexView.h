@@ -14,12 +14,12 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class PolygonVertexView : public IWindow
+class VertexView : public IWindow
 {
 public:
-	explicit PolygonVertexView(const std::string& name);
+	explicit VertexView(const std::string& name);
 
-	PolygonVertexView(const std::string& name, Shape::Vertex* value);
+	VertexView(const std::string& name, Shape::Vertex* value);
 
 	void show() override;
 

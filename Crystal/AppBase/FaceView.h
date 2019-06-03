@@ -5,7 +5,7 @@
 
 #include "IntView.h"
 #include "StringView.h"
-#include "PolygonVertexView.h"
+#include "VertexView.h"
 
 namespace Crystal {
 	namespace Shape {
@@ -13,12 +13,12 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class PolygonFaceView : public IWindow
+class FaceView : public IWindow
 {
 public:
-	explicit PolygonFaceView(const std::string& name);
+	explicit FaceView(const std::string& name);
 
-	PolygonFaceView(const std::string& name, Shape::Face* value);
+	FaceView(const std::string& name, Shape::Face* value);
 
 	void show() override;
 
@@ -29,9 +29,9 @@ public:
 private:
 	IntView id;
 	Shape::Face* value;
-	PolygonVertexView vertex1;
-	PolygonVertexView vertex2;
-	PolygonVertexView vertex3;
+	VertexView vertex1;
+	VertexView vertex2;
+	VertexView vertex3;
 };
 
 	}

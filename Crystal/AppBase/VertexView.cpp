@@ -1,11 +1,11 @@
-#include "PolygonVertexView.h"
+#include "VertexView.h"
 
 #include "../Shape/Face.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-PolygonVertexView::PolygonVertexView(const std::string& name) :
+VertexView::VertexView(const std::string& name) :
 	IWindow(name),
 	id("Id"),
 	position("Position"),
@@ -14,7 +14,7 @@ PolygonVertexView::PolygonVertexView(const std::string& name) :
 {
 }
 
-PolygonVertexView::PolygonVertexView(const std::string& name, Vertex* value) :
+VertexView::VertexView(const std::string& name, Vertex* value) :
 	IWindow(name),
 	id("Id", value->getId()),
 	position("Position"),
@@ -23,7 +23,7 @@ PolygonVertexView::PolygonVertexView(const std::string& name, Vertex* value) :
 
 {}
 
-void PolygonVertexView::show()
+void VertexView::show()
 {
 	id.show();
 	position.show();
@@ -31,7 +31,7 @@ void PolygonVertexView::show()
 	texCoord.show();
 }
 
-void PolygonVertexView::setValue(Vertex* value)
+void VertexView::setValue(Vertex* value)
 {
 	id.setValue(value->getId());
 	position.setValue(value->getPosition());

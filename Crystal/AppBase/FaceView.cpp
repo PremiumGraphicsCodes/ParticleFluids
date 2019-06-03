@@ -1,11 +1,11 @@
-#include "PolygonFaceView.h"
+#include "FaceView.h"
 
 #include "../Shape/Face.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-PolygonFaceView::PolygonFaceView(const std::string& name) :
+FaceView::FaceView(const std::string& name) :
 	IWindow(name),
 	id("Id"),
 	vertex1("Vertex1"),
@@ -14,7 +14,7 @@ PolygonFaceView::PolygonFaceView(const std::string& name) :
 {
 }
 
-PolygonFaceView::PolygonFaceView(const std::string& name, Face* face) :
+FaceView::FaceView(const std::string& name, Face* face) :
 	IWindow(name),
 	id("Id", face->getId()),
 	vertex1("Vertex1", face->getV1()),
@@ -22,7 +22,7 @@ PolygonFaceView::PolygonFaceView(const std::string& name, Face* face) :
 	vertex3("Vertex3", face->getV3())
 {}
 
-void PolygonFaceView::show()
+void FaceView::show()
 {
 	id.show();
 	vertex1.show();
@@ -30,7 +30,7 @@ void PolygonFaceView::show()
 	vertex3.show();
 }
 
-void PolygonFaceView::setValue(Face* value)
+void FaceView::setValue(Face* value)
 {
 	id.setValue(value->getId());
 	vertex1.setValue(value->getV1());

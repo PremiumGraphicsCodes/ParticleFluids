@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IPopupButton.h"
-#include "PolygonFaceView.h"
+#include "FaceView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -22,7 +22,7 @@ public:
 	void onCancel() override;
 
 private:
-	PolygonFaceView face;
+	FaceView face;
 };
 
 	}

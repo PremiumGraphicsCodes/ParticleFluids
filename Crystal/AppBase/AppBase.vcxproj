@@ -29,9 +29,9 @@
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="MaskMenu.cpp" />
     <ClCompile Include="ObjectPanel.cpp" />
-    <ClCompile Include="PolygonFaceView.cpp" />
+    <ClCompile Include="FaceView.cpp" />
     <ClCompile Include="PolygonMeshView.cpp" />
-    <ClCompile Include="PolygonVertexView.cpp" />
+    <ClCompile Include="VertexView.cpp" />
     <ClCompile Include="ShaderPanel.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />
     <ClCompile Include="TextureView.cpp" />
@@ -103,9 +103,9 @@
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="MaskMenu.h" />
     <ClInclude Include="ObjectPanel.h" />
-    <ClInclude Include="PolygonFaceView.h" />
+    <ClInclude Include="FaceView.h" />
     <ClInclude Include="PolygonMeshView.h" />
-    <ClInclude Include="PolygonVertexView.h" />
+    <ClInclude Include="VertexView.h" />
     <ClInclude Include="Quad3dView.h" />
     <ClInclude Include="ShaderPanel.h" />
     <ClInclude Include="TextureView.h" />

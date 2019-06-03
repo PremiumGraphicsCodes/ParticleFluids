@@ -177,10 +177,10 @@
     <ClCompile Include="PolygonMeshView.cpp">
       <Filter>Object\PolygonMesh\View</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonFaceView.cpp">
+    <ClCompile Include="FaceView.cpp">
       <Filter>Object\PolygonMesh\View</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonVertexView.cpp">
+    <ClCompile Include="VertexView.cpp">
       <Filter>Object\PolygonMesh\View</Filter>
     </ClCompile>
   </ItemGroup>
@@ -435,14 +435,14 @@
     <ClInclude Include="PolygonMeshView.h">
       <Filter>Object\PolygonMesh\View</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonFaceView.h">
-      <Filter>Object\PolygonMesh\View</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonVertexView.h">
-      <Filter>Object\PolygonMesh\View</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2dView.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="FaceView.h">
+      <Filter>Object\PolygonMesh\View</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexView.h">
+      <Filter>Object\PolygonMesh\View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
