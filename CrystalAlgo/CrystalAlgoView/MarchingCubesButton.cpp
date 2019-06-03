@@ -77,7 +77,7 @@ void MarchingCubesButton::onOk()
 	for (const auto& t : triangles) {
 		builder.add(t);
 	}
-	builder.build();
+	builder.pushCurrentFaceGroup();
 	getModel()->getObjects()->getPolygonMeshes()->addObject(builder.getPolygonMesh(), 1, "MarchingCubes");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 }
