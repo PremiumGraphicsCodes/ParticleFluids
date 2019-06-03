@@ -10,6 +10,11 @@ namespace Crystal {
 class StringView : public IWindow
 {
 public:
+	explicit StringView(const std::string& name) :
+		IWindow(name),
+		value("")
+	{}
+
 	StringView(const std::string& name, const std::string& value) :
 		IWindow(name),
 		value(value)

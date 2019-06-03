@@ -183,6 +183,9 @@
     <ClCompile Include="VertexView.cpp">
       <Filter>Object\PolygonMesh\View</Filter>
     </ClCompile>
+    <ClCompile Include="FaceGroupView.cpp">
+      <Filter>Object\PolygonMesh\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -442,6 +445,12 @@
       <Filter>Object\PolygonMesh\View</Filter>
     </ClInclude>
     <ClInclude Include="VertexView.h">
+      <Filter>Object\PolygonMesh\View</Filter>
+    </ClInclude>
+    <ClInclude Include="FaceGroupSelectButton.h">
+      <Filter>Selection\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="FaceGroupView.h">
       <Filter>Object\PolygonMesh\View</Filter>
     </ClInclude>
   </ItemGroup>
