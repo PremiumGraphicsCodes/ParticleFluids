@@ -50,6 +50,8 @@ public:
 
 	Face* findFaceById(const int id);
 
+	FaceGroup findGroupByFace(Face* f) { return faces.findGroupByFace(f); }
+
 private:
 	VertexFactory vertices;
 	FaceFactory faces;

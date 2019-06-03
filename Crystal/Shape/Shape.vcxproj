@@ -39,6 +39,7 @@
   <ItemGroup>
     <ClCompile Include="Face.cpp" />
     <ClCompile Include="FaceFactory.cpp" />
+    <ClCompile Include="FaceGroup.cpp" />
     <ClCompile Include="PolygonMesh.cpp" />
     <ClCompile Include="PolygonMeshBuilder.cpp" />
     <ClCompile Include="Vertex.cpp" />

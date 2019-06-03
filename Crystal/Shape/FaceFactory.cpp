@@ -49,3 +49,10 @@ int FaceFactory::pushCurrentGroup(int attributeId)
 	nextGroup = FaceGroup(nextGroupId++);
 	return id;
 }
+
+FaceGroup FaceFactory::findGroupByFace(Face* f) const
+{
+	auto iter = std::find_if(groups.cbegin(), groups.cend(), [=](auto g) { return g.has(f); });
+	assert( iter != groups.cend() );
+	return *iter;
+}

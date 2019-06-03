@@ -29,6 +29,8 @@ public:
 
 	std::vector<FaceGroup> getGroups() const { return groups; }
 
+	FaceGroup findGroupByFace(Face* f) const;
+
 private:
 	const VertexFactory& vertices;
 	std::list<Face*> faces;

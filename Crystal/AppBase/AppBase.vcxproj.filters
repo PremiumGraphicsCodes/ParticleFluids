@@ -186,6 +186,9 @@
     <ClCompile Include="FaceGroupView.cpp">
       <Filter>Object\PolygonMesh\View</Filter>
     </ClCompile>
+    <ClCompile Include="FaceGroupSelectButton.cpp">
+      <Filter>Selection\PolygonMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />

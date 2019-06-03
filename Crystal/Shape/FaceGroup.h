@@ -1,3 +1,5 @@
+#pragma once
+
 #include <list>
 
 namespace Crystal {
@@ -19,6 +21,8 @@ struct FaceGroup
 	std::list<Face*> faces;
 	int id;
 	int attributeId;
+
+	bool has(Face* f) const;
 };
 
 	}

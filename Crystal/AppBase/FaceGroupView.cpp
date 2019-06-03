@@ -14,11 +14,11 @@ FaceGroupView::FaceGroupView(const std::string& name) :
 {
 }
 
-FaceGroupView::FaceGroupView(const std::string& name, FaceGroup* value) :
+FaceGroupView::FaceGroupView(const std::string& name, const FaceGroup& value) :
 	IWindow(name),
-	id("Id", value->id),
+	id("Id", value.id),
 	faceCount("Faces"),
-	attributeId("AttributeId", value->attributeId)
+	attributeId("AttributeId", value.attributeId)
 {
 }
 
@@ -29,9 +29,9 @@ void FaceGroupView::show()
 	attributeId.show();
 }
 
-void FaceGroupView::setValue(FaceGroup* value)
+void FaceGroupView::setValue(const FaceGroup& value)
 {
-	id.setValue(value->id);
-	faceCount.setValue(value->faces.size());
-	attributeId.setValue(value->attributeId);
+	id.setValue(value.id);
+	faceCount.setValue(value.faces.size());
+	attributeId.setValue(value.attributeId);
 }

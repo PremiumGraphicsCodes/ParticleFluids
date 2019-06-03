@@ -22,6 +22,7 @@
     <ClCompile Include="AppearancePanel.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
+    <ClCompile Include="FaceGroupSelectButton.cpp" />
     <ClCompile Include="FaceGroupView.cpp" />
     <ClCompile Include="FaceSelectButton.cpp" />
     <ClCompile Include="FileMenu.cpp" />
