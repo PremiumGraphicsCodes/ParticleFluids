@@ -16,7 +16,7 @@ public:
 
 	bool importMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances);
 
-	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
+	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances);
 
 private:
 	void match(const IO::OBJFile& obj, AppearanceObjectRepository& appearances);

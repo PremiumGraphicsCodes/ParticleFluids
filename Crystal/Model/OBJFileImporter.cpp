@@ -34,6 +34,9 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 			vertexFactory->createTexCoord(tc);
 		}
 
+		FaceFactory* faceFactory = builder.getFaceFactory();
+
+
 		const auto& positionTable = vertexFactory->getPositions();
 		const auto& normalTable = vertexFactory->getNormals();
 		const auto& texCoordTable = vertexFactory->getTexCoords();
@@ -56,24 +59,21 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 						eachIndices.push_back(v);
 					}
 				}
-				indices.push_back(eachIndices);
+				//indices.push_back(eachIndices);
+				int origin = eachIndices[0];
+				int i1 = 1;
+				int i2 = 2;
+				for (int i = 0; i2 < eachIndices.size(); i++) {
+					faceFactory->createFace({ origin, eachIndices[i1], eachIndices[i2] });
+					i1++;
+					i2++;
+				}
 			}
 			auto material = appearances.getMaterials()->findByName(g.usemtl);
 			const auto materialId = (material) ? material->getId() : -1;
 			builder.pushCurrentFaceGroup(materialId);
 		}
 
-		FaceFactory* faceFactory = builder.getFaceFactory();
-		for (const auto& is : indices) {
-			int origin = is[0];
-			int i1 = 1;
-			int i2 = 2;
-			for (int i = 0; i2 < is.size(); i++) {
-				faceFactory->createFace({ origin, is[i1], is[i2] });
-				i1++;
-				i2++;
-			}
-		}
 		objects.getPolygonMeshes()->addObject(builder.getPolygonMesh(), 0, "OBJ");
 
 		return true;
@@ -100,14 +100,20 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 	return false;
 }
 
-bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
 {
 	// path から .objファイル名を取得する．
-
+	auto filename = filePath.parent_path() / filePath.stem();
+	filename.concat(".mtl");
 	// mtl ファイルを読み込む．
-	//importMTL()
+	if (!importMTL(filename, appearances)) {
+		return false;
+	}
 
 	// obj ファイルを読み込む．
+	if (!importOBJ(filePath, objects, appearances)) {
+		return false;
+	}
 
 	return false;
 }
