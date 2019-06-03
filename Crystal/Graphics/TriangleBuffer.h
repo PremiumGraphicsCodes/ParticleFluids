@@ -6,6 +6,7 @@
 #include "Buffer3d.h"
 #include "Buffer4d.h"
 #include "Material.h"
+#include "../Shape/FaceGroup.h"
 #include "../Shape/PolygonMesh.h"
 
 namespace Crystal {
@@ -34,8 +35,8 @@ class TriangleBuffer
 public:
 	TriangleBuffer() {}
 
-	void add(const Shape::PolygonMesh& polygon, const Material& mat) {
-		const auto& vertices = polygon.getVertices();
+	TriangleBuffer(const Shape::PolygonMesh& mesh) {
+		const auto& vertices = mesh.getVertices();
 		for (auto v : vertices) {
 			positions.add(v->getPosition());
 			normals.add(v->getNormal());
@@ -43,10 +44,13 @@ public:
 				texCoords.add(v->getTexCoord());
 			}
 			else {
-				texCoords.add(Math::Vector2dd(0,0));
+				texCoords.add(Math::Vector2dd(0, 0));
 			}
 		}
-		const auto& faces = polygon.getFaces();
+	}
+
+	void add(const Shape::FaceGroup& group, const Material& mat) {
+		const auto& faces = group.faces;
 		std::vector<unsigned int> indices;
 		for (auto f : faces) {
 			indices.push_back(f->getV1()->getAttr().id);

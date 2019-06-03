@@ -60,12 +60,17 @@ void ObjectViewModel::add(const PolygonMeshObject& object, MaterialObjectReposit
 	if (!object.isVisible()) {
 		return;
 	}
-	const auto materialId = object.getMaterialId();
-	auto materialObject = materials.findObjectById(materialId);
-	auto material = materialObject ?  *(materialObject->getMaterial()) : Material();
 
-	TriangleBuffer bf;
-	bf.add(*object.getShape(), material);
+	TriangleBuffer bf(*object.getShape());
+	for (const auto& group : object.getShape()->getGroups()) {
+		auto mat = materials.findObjectById(group.attributeId);
+		if (mat == nullptr) {
+			bf.add(group, Material());
+		}
+		else {
+			bf.add(group, *(mat->getMaterial()));
+		}
+	}
 	triangleBuffers.push_back(bf);
 
 	/*

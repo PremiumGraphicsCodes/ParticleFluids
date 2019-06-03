@@ -16,17 +16,14 @@ public:
 		shape(nullptr)
 	{}
 
-	PolygonMeshObject(const int id, const std::string& name, Shape::PolygonMesh* shape, const int materialId) :
+	PolygonMeshObject(const int id, const std::string& name, Shape::PolygonMesh* shape) :
 		IObject(id, name),
-		shape(shape),
-		materialId(materialId)
+		shape(shape)
 	{}
 
 	~PolygonMeshObject() {};
 
 	Shape::PolygonMesh* getShape() const { return shape; }
-
-	int getMaterialId() const { return materialId; }
 
 	void move(const Math::Vector3dd& v) override { shape->move(v); }
 
@@ -40,7 +37,6 @@ public:
 
 private:
 	Shape::PolygonMesh* shape;
-	int materialId;
 };
 
 	}
