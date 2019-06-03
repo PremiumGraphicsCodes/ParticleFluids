@@ -110,7 +110,7 @@ void PolygonMeshBuilder::build()
 
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
 {
-	return new PolygonMesh(std::move(vertexFactory), std::move(faceFactory));
+	return new PolygonMesh(vertexFactory, faceFactory);
 }
 
 void PolygonMeshBuilder::add(Vector3dd* p0, Vector3dd* p1, Vector3dd* p2, Vector3dd* p3)

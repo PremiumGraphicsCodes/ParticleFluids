@@ -6,14 +6,8 @@ FaceFactory::FaceFactory(const VertexFactory& vertices) :
 	vertices(vertices)
 {}
 
-FaceFactory::FaceFactory(FaceFactory&& rhs) :
-	faces(std::move(rhs.faces)),
-	vertices(rhs.vertices)
-{}
-
 FaceFactory::~FaceFactory()
 {
-	clear();
 }
 
 void FaceFactory::clear()

@@ -15,8 +15,6 @@ class FaceFactory
 public:
 	explicit FaceFactory(const VertexFactory& vertices);
 
-	explicit FaceFactory(FaceFactory&& rhs);
-
 	~FaceFactory();
 
 	Face* createFace(const std::array<int, 3>& indices);

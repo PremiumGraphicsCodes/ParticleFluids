@@ -8,9 +8,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
 
-PolygonMesh::PolygonMesh(VertexFactory&& vertices, FaceFactory&& faces) :
-	vertices(std::move(vertices)),
-	faces(std::move(faces))
+PolygonMesh::PolygonMesh(const VertexFactory& vertices, const FaceFactory& faces) :
+	vertices(vertices),
+	faces(faces)
 {}
 
 PolygonMesh::~PolygonMesh()

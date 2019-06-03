@@ -7,12 +7,10 @@
 namespace Crystal {
 	namespace Shape {
 
-class VertexFactory : private UnCopyable
+class VertexFactory// : private UnCopyable
 {
 public:
 	VertexFactory();
-
-	VertexFactory(VertexFactory&& rhs);
 
 	~VertexFactory();
 

@@ -26,7 +26,7 @@ public:
 	//PolygonMesh()
 	//{}
 
-	PolygonMesh(VertexFactory&& vertices, FaceFactory&& faces);
+	PolygonMesh(const VertexFactory& vertices, const FaceFactory& faces);
 
 	~PolygonMesh();
 

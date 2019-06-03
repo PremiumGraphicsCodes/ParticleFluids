@@ -7,12 +7,6 @@ VertexFactory::VertexFactory() :
 	nextId(0)
 {}
 
-VertexFactory::VertexFactory(VertexFactory&& rhs) :
-	nextId(rhs.nextId),
-	vertices(std::move(rhs.vertices))
-{
-}
-
 VertexFactory::~VertexFactory()
 {
 	//clear();
