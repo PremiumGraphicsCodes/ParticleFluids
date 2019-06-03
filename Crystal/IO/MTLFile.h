@@ -23,9 +23,9 @@ struct MTL
 		ambient = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
 		diffuse = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
 		specular = Graphics::ColorRGBAf(0.0f, 0.0f, 0.0f, 0.0f);
-		float specularExponent = 0.0f;
-		float transparent = 0.0f;
-		float opticalDensity = 0.0f;
+		specularExponent = 1.0f;
+		transparent = 0.0f;
+		opticalDensity = 0.0f;
 
 		illumination = Illumination::COLOR_ON_AND_AMBIENT_OFF;
 	}
