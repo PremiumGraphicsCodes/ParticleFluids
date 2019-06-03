@@ -48,6 +48,8 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override;
 
+	Face* findFaceById(const int id);
+
 private:
 	VertexFactory vertices;
 	FaceFactory faces;

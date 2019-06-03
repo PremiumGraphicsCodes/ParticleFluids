@@ -1,6 +1,7 @@
 #include "SelectionPanel.h"
 #include "ObjectSelectButton.h"
 #include "PositionSelectButton.h"
+#include "FaceSelectButton.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -12,4 +13,5 @@ SelectionPanel::SelectionPanel(const std::string& name, Repository* model, Canva
 {
 	add(new ObjectSelectButton("Object", model, canvas));
 	add(new PositionSelectButton("Position", model, canvas));
+	add(new FaceSelectButton("Face", model, canvas));
 }

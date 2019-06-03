@@ -68,3 +68,13 @@ void PolygonMesh::transform(const Matrix4dd& m)
 		p->transform(m);
 	}
 }
+
+Face* PolygonMesh::findFaceById(const int id)
+{
+	const auto& fs = faces.getFaces();
+	auto iter = std::find_if(fs.begin(), fs.end(), [=](auto f) { return f->getId() == id; });
+	if (iter == fs.end()) {
+		return nullptr;
+	}
+	return *iter;
+}

@@ -38,7 +38,7 @@ private:
 	Repository* model;
 	Canvas* canvas;
 	std::function<void(int, int)> function;
-	const Model::ObjectType& type;
+	const Model::ObjectType type;
 };
 	}
 }

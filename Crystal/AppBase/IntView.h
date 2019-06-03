@@ -9,6 +9,11 @@ namespace Crystal {
 class IntView : public IWindow
 {
 public:
+	explicit IntView(const std::string& name) :
+		IWindow(name),
+		value(0)
+	{}
+
 	IntView(const std::string& name, const int value) :
 		IWindow(name),
 		value(value)

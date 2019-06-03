@@ -9,15 +9,23 @@ using namespace Crystal::Model;
 
 void FaceSelectButton::onShow()
 {
-	ImGui::InputInt("Id", &id);
 	if (ImGui::Button("Pick")) {
-		auto ctrl = new PickUICtrl(getModel(), getCanvas(), type);
+		auto ctrl = new PickUICtrl(getModel(), getCanvas(), ObjectType::PolygonMeshObject);
 		auto func = [=](int parentId, int childId) {
-			return this->id = parentId;
+			auto mesh = getModel()->getObjects()->getPolygonMeshes()->findObjectById(parentId);
+			if (mesh == nullptr) {
+				return;
+			}
+			auto f = mesh->getShape()->findFaceById(childId);
+			if (f == nullptr) {
+				return;
+			}
+			face.setValue(f);
 		};
 		ctrl->setFunction(func);
 		getCanvas()->setUICtrl(ctrl);
 	}
+	face.show();
 }
 
 void FaceSelectButton::onOk()

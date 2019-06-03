@@ -50,6 +50,7 @@ private:
 	std::list<Face*> faces;
 	FaceGroup nextGroup;
 	int nextGroupId = 0;
+	int nextFaceId = 0;
 	std::vector<FaceGroup> groups;
 };
 

@@ -23,7 +23,9 @@ void FaceFactory::clear()
 	}
 	faces.clear();
 	groups.clear();
+	nextFaceId = 0;
 	nextGroup = FaceGroup(0);
+	nextGroupId = 0;
 }
 
 Face* FaceFactory::createFace(const std::array<int, 3>& indices)
@@ -33,7 +35,7 @@ Face* FaceFactory::createFace(const std::array<int, 3>& indices)
 	const auto v2 = vertices[indices[1]];
 	const auto v3 = vertices[indices[2]];
 
-	auto f = new Face(v1, v2, v3);
+	auto f = new Face(v1, v2, v3, nextFaceId++);
 	faces.push_back(f);
 	nextGroup.faces.push_back(f);
 	return f;

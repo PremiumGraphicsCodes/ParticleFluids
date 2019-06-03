@@ -15,14 +15,20 @@ namespace Crystal {
 class PolygonFaceView : public IWindow
 {
 public:
-	PolygonFaceView(const std::string& name, Shape::Face* face);
+	explicit PolygonFaceView(const std::string& name);
+
+	PolygonFaceView(const std::string& name, Shape::Face* value);
 
 	void show() override;
+
+	void setValue(Shape::Face* value);
+
+	Shape::Face* getValue() const { return value; }
 
 private:
 	StringView name;
 	IntView id;
-	Shape::Face* face;
+	Shape::Face* value;
 };
 
 	}
