@@ -1,10 +1,10 @@
 #pragma once
 
 #include "ITreeList.h"
-#include "MaterialEditView.h"
 
 namespace Crystal {
 	namespace UI {
+		class MaterialEditView;
 
 class MaterialTreeList : public ITreeList
 {
@@ -18,7 +18,7 @@ public:
 	void onShow() override;
 
 private:
-	MaterialEditView editView;
+	std::unique_ptr<MaterialEditView> editView;
 };
 
 	}

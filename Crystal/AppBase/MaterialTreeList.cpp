@@ -2,12 +2,13 @@
 
 #include "imgui.h"
 
+#include "MaterialEditView.h"
+
 using namespace Crystal::UI;
 
 
 MaterialTreeList::MaterialTreeList(const std::string& name, Repository* model, Canvas* canvas) :
-	ITreeList(name, model, canvas),
-	editView("Edit",model, canvas)
+	ITreeList(name, model, canvas)
 {
 }
 
@@ -23,28 +24,22 @@ void MaterialTreeList::onShow()
 		const auto& str = l->getName();
 		auto s = str.c_str();
 		if (ImGui::Button(s)) {
-			editView.setValue(l);
+			editView = std::make_unique<MaterialEditView>("Edit", getRepository(), getCanvas());
+			editView->setValue(l);
+			ImGui::OpenPopup(s);
+		}
+		if (ImGui::BeginPopup(s)) {
+			if (editView) {
+				editView->show();
+			}
+			if (ImGui::Button("OK")) {
+				ImGui::CloseCurrentPopup();
+			}
+			if (ImGui::Button("Cancel")) {
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::EndPopup();
 		}
 	}
-	editView.show();
 	ImGui::EndChild();
 }
-
-/*
-const auto nameStr = name.c_str();
-if (ImGui::Button(nameStr)) {
-	ImGui::OpenPopup(nameStr);
-}
-if (ImGui::BeginPopup(nameStr)) {
-	onShow();
-	if (ImGui::Button("OK")) {
-		onOk();
-		ImGui::CloseCurrentPopup();
-	}
-	if (ImGui::Button("Cancel")) {
-		onCancel();
-		ImGui::CloseCurrentPopup();
-	}
-	ImGui::EndPopup();
-}
-*/

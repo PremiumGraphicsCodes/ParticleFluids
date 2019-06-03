@@ -15,6 +15,7 @@ MaterialAddButton::MaterialAddButton(const std::string& name, Repository* model,
 void MaterialAddButton::onShow()
 {
 	material.show();
+	name.show();
 }
 
 void MaterialAddButton::onOk()
