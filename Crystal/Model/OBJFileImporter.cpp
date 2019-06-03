@@ -44,7 +44,7 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
 			for (const auto& f : g.faces) {
-				std::vector<int> eachIndices;
+				std::vector<int> indices;
 				for (int i = 0; i < f.positionIndices.size(); i++) {
 					auto p = positionTable[f.positionIndices[i] - 1];
 					auto n = normalTable[f.normalIndices[i] - 1];
@@ -52,19 +52,19 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 					if (texCoordIndex >= 0) {
 						auto t = texCoordTable[texCoordIndex];
 						auto v = vertexFactory->createVertex(p, n, t);
-						eachIndices.push_back(v);
+						indices.push_back(v);
 					}
 					else {
 						auto v = vertexFactory->createVertex(p, n);
-						eachIndices.push_back(v);
+						indices.push_back(v);
 					}
 				}
 				//indices.push_back(eachIndices);
-				int origin = eachIndices[0];
+				int origin = indices[0];
 				int i1 = 1;
 				int i2 = 2;
-				for (int i = 0; i2 < eachIndices.size(); i++) {
-					faceFactory->createFace({ origin, eachIndices[i1], eachIndices[i2] });
+				for (int i = 0; i2 < indices.size(); i++) {
+					faceFactory->createFace({ origin, indices[i1], indices[i2] });
 					i1++;
 					i2++;
 				}
