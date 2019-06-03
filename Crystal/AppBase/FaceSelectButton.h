@@ -3,8 +3,11 @@
 #include "IPopupButton.h"
 #include "FaceView.h"
 
+#include <memory>
+
 namespace Crystal {
 	namespace UI {
+		class FaceGroupView;
 
 class FaceSelectButton : public IPopupButton
 {
@@ -23,6 +26,7 @@ public:
 
 private:
 	FaceView face;
+	std::unique_ptr<FaceGroupView> group;
 };
 
 	}
