@@ -12,6 +12,12 @@ namespace Crystal {
 class Vector2dView : public IWindow
 {
 public:
+	explicit Vector2dView(const std::string& name) :
+		IWindow(name),
+		value(0,0)
+	{}
+
+
 	Vector2dView(const std::string& name, const Math::Vector2dd& value) :
 		IWindow(name),
 		value(value)

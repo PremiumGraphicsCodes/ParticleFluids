@@ -17,12 +17,15 @@ namespace Crystal {
 class PolygonVertexView : public IWindow
 {
 public:
+	explicit PolygonVertexView(const std::string& name);
+
 	PolygonVertexView(const std::string& name, Shape::Vertex* value);
 
 	void show() override;
 
+	void setValue(Shape::Vertex* value);
+
 private:
-	StringView name;
 	IntView id;
 	Vector3dView position;
 	Vector3dView normal;

@@ -34,6 +34,8 @@ public:
 
 	VertexAttr getAttr() const { return attr; }
 
+	int getId() const { return attr.id; }
+
 	Math::Vector3dd getPosition() const { return *position; }
 
 	Math::Vector3dd getNormal() const { return *attr.normal; }

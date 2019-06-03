@@ -5,6 +5,7 @@
 
 #include "IntView.h"
 #include "StringView.h"
+#include "PolygonVertexView.h"
 
 namespace Crystal {
 	namespace Shape {
@@ -26,9 +27,11 @@ public:
 	Shape::Face* getValue() const { return value; }
 
 private:
-	StringView name;
 	IntView id;
 	Shape::Face* value;
+	PolygonVertexView vertex1;
+	PolygonVertexView vertex2;
+	PolygonVertexView vertex3;
 };
 
 	}

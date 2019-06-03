@@ -12,6 +12,11 @@ namespace Crystal {
 class Vector3dView : public IWindow
 {
 public:
+	explicit Vector3dView(const std::string& name) :
+		IWindow(name),
+		value(0,0,0)
+	{}
+
 	Vector3dView(const std::string& name, const Math::Vector3dd& value) :
 		IWindow(name),
 		value(value)

@@ -180,6 +180,9 @@
     <ClCompile Include="PolygonFaceView.cpp">
       <Filter>Object\PolygonMesh\View</Filter>
     </ClCompile>
+    <ClCompile Include="PolygonVertexView.cpp">
+      <Filter>Object\PolygonMesh\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
