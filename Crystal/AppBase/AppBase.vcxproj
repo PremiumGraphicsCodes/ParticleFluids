@@ -22,12 +22,15 @@
     <ClCompile Include="AppearancePanel.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
+    <ClCompile Include="FaceSelectButton.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="ImageAddButton.cpp" />
     <ClCompile Include="ImageTreeList.cpp" />
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="MaskMenu.cpp" />
     <ClCompile Include="ObjectPanel.cpp" />
+    <ClCompile Include="PolygonFaceView.cpp" />
+    <ClCompile Include="PolygonMeshView.cpp" />
     <ClCompile Include="ShaderPanel.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />
     <ClCompile Include="TextureView.cpp" />
@@ -88,6 +91,7 @@
     <ClInclude Include="CtrlMenu.h" />
     <ClInclude Include="Cylinder3dView.h" />
     <ClInclude Include="DoubleView.h" />
+    <ClInclude Include="FaceSelectButton.h" />
     <ClInclude Include="FileMenu.h" />
     <ClInclude Include="FileOpenView.h" />
     <ClInclude Include="FileSaveView.h" />
@@ -98,6 +102,9 @@
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="MaskMenu.h" />
     <ClInclude Include="ObjectPanel.h" />
+    <ClInclude Include="PolygonFaceView.h" />
+    <ClInclude Include="PolygonMeshView.h" />
+    <ClInclude Include="PolygonVertexView.h" />
     <ClInclude Include="Quad3dView.h" />
     <ClInclude Include="ShaderPanel.h" />
     <ClInclude Include="TextureView.h" />
@@ -153,6 +160,7 @@
     <ClInclude Include="SelectionPanel.h" />
     <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="TransformPanel.h" />
+    <ClInclude Include="Vector2dView.h" />
     <ClInclude Include="Vector3dView.h" />
     <ClInclude Include="WFAttributeView.h" />
     <ClInclude Include="WFBoxButton.h" />
