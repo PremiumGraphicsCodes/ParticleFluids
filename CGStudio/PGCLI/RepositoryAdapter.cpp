@@ -38,8 +38,7 @@ bool RepositoryAdapter::Import(System::String^ filename)
 	if (filename == nullptr) {
 		return false;
 	}
-	//msclr::interop::marshal_as<std::string>(filename)
-	std::string str = msclr::interop::marshal_as<std::string>(filename);
+	const auto& str = msclr::interop::marshal_as<std::wstring>(filename);
 	return instance->importFile( str );
 }
 

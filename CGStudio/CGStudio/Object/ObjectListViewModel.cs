@@ -25,10 +25,13 @@ namespace PG.CGStudio
 
     public class ObjectListViewModel
     {
-        public ObservableCollection<ObjectItem> Items { get; set; }
+        public ObservableCollection<ObjectItem> Items { get; }
 
         public ObjectListViewModel()
         {
+            Items = MainModel.Instance.Repository.Objects.Items;
+//            var model = 
+            /*
             Items = new ObservableCollection<ObjectItem>();
             var item1 = new ObjectItem();
             item1.Name.Value = "Object1";
@@ -38,6 +41,7 @@ namespace PG.CGStudio
             item2.IsVisible.Value = false;
             Items.Add(item1);
             Items.Add(item2);
+            */
         }
     }
 }

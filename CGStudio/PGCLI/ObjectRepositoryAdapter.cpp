@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include <msclr/marshal_cppstd.h>
+
 #include "ObjectRepositoryAdapter.h"
 #include "../../Crystal/Model/ObjectRepository.h"
 
@@ -6,6 +8,7 @@
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
 #include "Converter.h"
+
 
 using namespace PG::CLI;
 
@@ -58,6 +61,29 @@ int ObjectRepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
 
 	return -1;
 }
+
+System::Collections::Generic::List<int>^ ObjectRepositoryAdapter::GetAllIds()
+{
+	System::Collections::Generic::List<int>^ results = gcnew System::Collections::Generic::List<int>();
+	const auto& objects = instance->getAllObjects();
+	for (const auto& o : objects) {
+		results->Add( o->getId() );
+	}
+	return results;
+}
+
+System::String^ ObjectRepositoryAdapter::GetNameById(int id)
+{
+	auto object = instance->findObjectById(id);
+	if (object != nullptr) {
+		return "";
+	}
+	const auto& name = object->getName();
+	return msclr::interop::marshal_as<System::String^>(name);
+}
+
+//System::String^ GetVisibleById(int id);
+
 
 ObjectRepositoryAdapter::ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance)
 {

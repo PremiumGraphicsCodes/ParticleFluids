@@ -22,6 +22,12 @@ public:
 
 	int AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src);
 
+	System::Collections::Generic::List<int>^ GetAllIds();
+
+	System::String^ GetNameById(int id);
+
+	//System::String^ GetVisibleById(int id);
+
 internal:
 	ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance);
 
