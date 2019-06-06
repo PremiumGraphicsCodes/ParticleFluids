@@ -19,16 +19,23 @@ namespace PG.Core.Shape
 
     public class PolygonMesh
     {
-        private List<Triangle3d> triangles;
+        private List<Vertex> vertices;
+        private List<Face> faces;
 
-        public List<Triangle3d> Triangles
+        public List<Vertex> Vertices
         {
-            get { return triangles; }
+            get { return vertices; }
         }
 
-        public PolygonMesh(List<Triangle3d> triangles)
+        public List<Face> Faces
         {
-            this.triangles = triangles;
+            get { return faces; }
+        }
+
+        public PolygonMesh(List<Vertex> vertices, List<Face> faces)
+        {
+            this.vertices = vertices;
+            this.faces = faces;
         }
     }
 }

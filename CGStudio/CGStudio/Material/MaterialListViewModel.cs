@@ -7,10 +7,9 @@ using System.Windows;
 
 namespace PG.CGStudio.Material
 {
-
     public class MaterialListViewModel
     {
-        public ObservableCollection<PG.Core.Graphics.Material> Items { get; set; }
+        public ObservableCollection<MaterialModel> Items { get; }
 
         public ReactiveCommand AddCommand { get; }
 
@@ -20,11 +19,11 @@ namespace PG.CGStudio.Material
 
         public MaterialListViewModel()
         {
-            Items = new ObservableCollection<PG.Core.Graphics.Material>();
-            var item1 = new PG.Core.Graphics.Material(1);
+            Items = new ObservableCollection<MaterialModel>();
+            var item1 = new MaterialModel(1);
             item1.Name.Value = "Material1";
             item1.IsVisible.Value = true;
-            var item2 = new PG.Core.Graphics.Material(2);
+            var item2 = new MaterialModel(2);
             item2.Name.Value = "Material2";
             item2.IsVisible.Value = false;
             Items.Add(item1);

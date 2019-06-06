@@ -5,33 +5,36 @@ namespace PG.Core.Shape
 {
     public class PolygonMeshBuilder
     {
-        private List<Triangle3d> triangles;
+        private List<Vertex> vertices;
+
+        private List<Face> faces;
 
         public PolygonMeshBuilder()
         {
-            this.triangles = new List<Triangle3d>();
+            this.vertices = new List<Vertex>();
+            this.faces = new List<Face>();
         }
 
         public PolygonMesh PolygonMesh
         {
-            get { return new PolygonMesh(triangles); }
+            get { return new PolygonMesh(vertices, faces); }
         }
 
         public void Build(Box3d box)
         {
-            var vertices = new List<Vector3d>();
+            var vertices = new List<Vertex>();
         }
 
         public void Build(Sphere3d sphere, int u, int v)
         {
-            var vertices = new Vector3d[u, v];
+            var vertices = new Vertex[u, v];
             for (int i = 0; i < u; ++i)
             {
                 var uu = u / (double)i;
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
-                    vertices[u, v] = sphere.GetPosition(u, v);
+                    vertices[u, v] = new Vertex( sphere.GetPosition(u, v) );
                 }
             }
 
@@ -42,22 +45,22 @@ namespace PG.Core.Shape
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
                     var v3 = vertices[i, j + 1];
-                    var triangle = new Triangle3d(v1, v2, v3);
-                    triangles.Add(triangle);
+                    var f = new Face(v1, v2, v3);
+                    faces.Add(f);
                 }
             }
         }
 
         public void Build(Cylinder3d cylinder, int u, int v)
         {
-            var vertices = new Vector3d[u, v];
+            var vertices = new Vertex[u, v];
             for (int i = 0; i < u; ++i)
             {
                 var uu = u / (double)i;
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
-                    vertices[u, v] = cylinder.GetPosition(u, v);
+                    vertices[u, v] = new Vertex( cylinder.GetPosition(u, v) );
                 }
             }
 
@@ -68,8 +71,8 @@ namespace PG.Core.Shape
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
                     var v3 = vertices[i, j + 1];
-                    var triangle = new Triangle3d(v1, v2, v3);
-                    triangles.Add(triangle);
+                    var face = new Face(v1, v2, v3);
+                    faces.Add(face);
                 }
             }
         }
