@@ -28,6 +28,8 @@ public:
 
 	bool GetVisibleById(int id);
 
+	void SetVisibleById(int id, bool visible);
+
 internal:
 	ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance);
 

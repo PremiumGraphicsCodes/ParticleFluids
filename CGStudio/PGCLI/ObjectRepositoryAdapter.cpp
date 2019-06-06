@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include <msclr/marshal_cppstd.h>
 
 #include "ObjectRepositoryAdapter.h"
 #include "../../Crystal/Model/ObjectRepository.h"
@@ -91,6 +90,15 @@ bool ObjectRepositoryAdapter::GetVisibleById(int id)
 		return false;
 	}
 	return object->isVisible();
+}
+
+void ObjectRepositoryAdapter::SetVisibleById(int id, bool visible)
+{
+	auto object = instance->findObjectById(id);
+	if (object == nullptr) {
+		return;
+	}
+	object->setVisible(visible);
 }
 
 ObjectRepositoryAdapter::ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance)

@@ -46,6 +46,7 @@ namespace PG.CGStudio
             foreach(var id in ids)
             {
                 var item = new ObjectModel();
+                item.Id.Value = id;
                 item.IsVisible.Value = adapter.GetVisibleById(id);
                 item.Name.Value = adapter.GetNameById(id);
                 this.Objects.Add(item);

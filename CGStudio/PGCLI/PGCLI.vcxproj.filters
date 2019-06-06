@@ -25,6 +25,7 @@
     <ClInclude Include="TextureObjectRepositoryAdapter.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectAdapter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -50,6 +51,7 @@
     <ClCompile Include="TextureObjectRepositoryAdapter.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
