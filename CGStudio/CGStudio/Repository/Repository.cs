@@ -20,7 +20,7 @@ namespace PG.CGStudio
 
         public Repository()
         {
-            adapter = new PG.CLI.RepositoryAdapter();
+            this.adapter = new PG.CLI.RepositoryAdapter();
             this.Objects = new ObjectRepository(adapter.Objects());
             this.Appearance = new AppearanceObjectRepository();
             this.Material = new Material.MaterialObjectRepository();
@@ -30,26 +30,27 @@ namespace PG.CGStudio
 
         public void New()
         {
+            this.adapter.Clear();
         }
 
         public bool Open(string filename)
         {
-            return adapter.Read(filename);
+            return false;
         }
 
         public bool Save(string filename)
         {
-            return adapter.Write(filename);
+            return false;
         }
 
-        public void Import(string filename)
+        public bool Import(string filename)
         {
-
+            return adapter.Import(filename);
         }
 
-        public void Export(string filename)
+        public bool Export(string filename)
         {
-
+            return adapter.Export(filename);
         }
     }
 }

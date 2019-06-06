@@ -33,15 +33,22 @@ void RepositoryAdapter::Clear()
 	instance->clear();
 }
 
-bool RepositoryAdapter::Read(System::String^ filename)
+bool RepositoryAdapter::Import(System::String^ filename)
 {
+	if (filename == nullptr) {
+		return false;
+	}
 	//msclr::interop::marshal_as<std::string>(filename)
 	std::string str = msclr::interop::marshal_as<std::string>(filename);
 	return instance->importFile( str );
 }
 
-bool RepositoryAdapter::Write(System::String^ filename)
+bool RepositoryAdapter::Export(System::String^ filename)
 {
-	std::string str = msclr::interop::marshal_as<std::string>(filename);
+	if (filename == nullptr) {
+		return false;
+	}
+
+	const auto& str = msclr::interop::marshal_as<std::wstring>(filename);
 	return instance->exportFile(str);
 }

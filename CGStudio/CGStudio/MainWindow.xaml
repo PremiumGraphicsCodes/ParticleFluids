@@ -25,6 +25,7 @@
                     <Fluent:ApplicationMenu.DataContext>
                         <local:FileIOViewModel/>
                     </Fluent:ApplicationMenu.DataContext>
+                    <Fluent:MenuItem Header="New" Command="{Binding NewCommand}"/>
                     <Fluent:MenuItem Header="Open" Command="{Binding OpenCommand}"/>
                     <Fluent:MenuItem Header="Save" Command="{Binding SaveCommand}"/>
                     <Fluent:MenuItem Header="SaveAs" Command="{Binding SaveAsCommand}"/>

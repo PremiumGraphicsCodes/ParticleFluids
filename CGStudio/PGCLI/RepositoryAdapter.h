@@ -23,13 +23,14 @@ public:
 
 	void Clear();
 
-	bool Read(System::String^ filename);
+	bool Import(System::String^ filename);
 
-	bool Write(System::String^ filename);
+	bool Export(System::String^ filename);
 
 	ObjectRepositoryAdapter^ Objects() { return objects; }
 
 	AppearanceObjectRepositoryAdapter^ Appearance() { return appearance; }
+
 
 private:
 	ObjectRepositoryAdapter^ objects;

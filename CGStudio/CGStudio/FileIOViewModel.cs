@@ -36,6 +36,8 @@ namespace PG.CGStudio
         private void OnNew()
         {
             MainModel.Instance.Repository.New();
+            OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
+            OpenGLPresenter.Instance.Render();
         }
 
         private void OnOpen()
@@ -81,12 +83,22 @@ namespace PG.CGStudio
         {
             var dialog = new OpenFileDialog
             {
-                Title = "Import"
+                Title = "Import",
+                Filter = "STLFile(*.stl)|*.stl|OBJFile(*.obj)|*.obj|PCDFile(*.pcd)|*.pcd|すべてのファイル(*.*)|*.*",
             };
             if (DialogResult.OK == dialog.ShowDialog())
             {
                 var model = MainModel.Instance.Repository;
-                model.Import(dialog.FileName);
+                if(model.Import(dialog.FileName))
+                {
+                    OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
+                    OpenGLPresenter.Instance.Render();
+                    MessageBox.Show("Import Suceeded");                    
+                }
+                else
+                {
+                    MessageBox.Show("Import Failed");
+                }
             }
         }
 
@@ -94,12 +106,20 @@ namespace PG.CGStudio
         {
             var dialog = new SaveFileDialog
             {
-                Title = "Export"
+                Title = "Export",
+                Filter = "STLFile(*.stl)|*.stl|OBJFile(*.obj)|*.obj|PCDFile(*.pcd)|*.pcd|すべてのファイル(*.*)|*.*",
             };
             if (DialogResult.OK == dialog.ShowDialog())
             {
                 var model = MainModel.Instance.Repository;
-                model.Export(dialog.FileName);
+                if(model.Export(dialog.FileName))
+                {
+                    MessageBox.Show("Export Suceeded");
+                }
+                else
+                {
+                    MessageBox.Show("Export Failed");
+                }
             }
 
         }
