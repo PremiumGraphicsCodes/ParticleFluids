@@ -10,6 +10,7 @@ namespace Crystal {
 
 namespace PG {
 	namespace CLI {
+		ref class MaterialObjectAdapter;
 
 public ref class MaterialObjectRepositoryAdapter
 {
@@ -19,6 +20,8 @@ public:
 	~MaterialObjectRepositoryAdapter();
 
 	int Add(PG::Core::Graphics::Material^ material);
+
+	System::Collections::Generic::List<MaterialObjectAdapter^>^ GetObjects();
 
 internal:
 	MaterialObjectRepositoryAdapter(Crystal::Model::MaterialObjectRepository* instance);

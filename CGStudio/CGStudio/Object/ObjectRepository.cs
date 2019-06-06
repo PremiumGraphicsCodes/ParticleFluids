@@ -1,5 +1,6 @@
 ﻿using PG.Core.Shape;
 using PG.Core.UI;
+using Reactive.Bindings;
 using System.Collections.ObjectModel;
 
 namespace PG.CGStudio
@@ -10,12 +11,12 @@ namespace PG.CGStudio
 
         public PG.CLI.ObjectRepositoryAdapter Adapter { get { return adapter; } }
 
-        public ObservableCollection<ObjectModel> Objects { get; }
+        public ReactiveCollection<ObjectModel> Objects { get; }
 
         public ObjectRepository(PG.CLI.ObjectRepositoryAdapter adapter)
         {
             this.adapter = adapter;
-            this.Objects = new ObservableCollection<ObjectModel>();
+            this.Objects = new ReactiveCollection<ObjectModel>();
         }
 
         public int Add(ParticleSystem particleSystem, ParticleAppearance appearance, System.String name)

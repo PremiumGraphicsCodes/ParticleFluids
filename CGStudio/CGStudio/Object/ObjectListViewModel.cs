@@ -7,7 +7,7 @@ namespace PG.CGStudio
 {
     public class ObjectListViewModel
     {
-        public ObservableCollection<ObjectModel> Items { get; }
+        public ReactiveCollection<ObjectModel> Items { get; }
 
         public ObjectListViewModel()
         {

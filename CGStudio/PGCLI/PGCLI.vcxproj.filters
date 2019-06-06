@@ -8,24 +8,29 @@
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="CameraAdapter.h" />
     <ClInclude Include="RepositoryAdapter.h">
-      <Filter>Repository</Filter>
+      <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="ObjectRepositoryAdapter.h">
-      <Filter>Repository</Filter>
+      <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="AppearanceObjectRepositoryAdapter.h">
-      <Filter>Repository\Appearance</Filter>
+      <Filter>Object\Appearance</Filter>
     </ClInclude>
     <ClInclude Include="LightObjectRepositoryAdapter.h">
-      <Filter>Repository\Appearance</Filter>
+      <Filter>Object\Appearance</Filter>
     </ClInclude>
     <ClInclude Include="MaterialObjectRepositoryAdapter.h">
-      <Filter>Repository\Appearance</Filter>
+      <Filter>Object\Appearance</Filter>
     </ClInclude>
     <ClInclude Include="TextureObjectRepositoryAdapter.h">
-      <Filter>Repository\Appearance</Filter>
+      <Filter>Object\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectAdapter.h" />
+    <ClInclude Include="ObjectAdapter.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialObjectAdapter.h">
+      <Filter>Object\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -34,33 +39,38 @@
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="CameraAdapter.cpp" />
     <ClCompile Include="RepositoryAdapter.cpp">
-      <Filter>Repository</Filter>
+      <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="ObjectRepositoryAdapter.cpp">
-      <Filter>Repository</Filter>
+      <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="AppearanceObjectRepositoryAdapter.cpp">
-      <Filter>Repository\Appearance</Filter>
+      <Filter>Object\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="LightObjectRepositoryAdapter.cpp">
-      <Filter>Repository\Appearance</Filter>
+      <Filter>Object\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="MaterialObjectRepositoryAdapter.cpp">
-      <Filter>Repository\Appearance</Filter>
+      <Filter>Object\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="TextureObjectRepositoryAdapter.cpp">
-      <Filter>Repository\Appearance</Filter>
+      <Filter>Object\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectAdapter.cpp" />
+    <ClCompile Include="ObjectAdapter.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialObjectAdapter.cpp">
+      <Filter>Object\Appearance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Repository">
+    <Filter Include="Object">
       <UniqueIdentifier>{660dd9ac-6025-47a0-b204-a3aef84c0c7a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Repository\Appearance">
+    <Filter Include="Object\Appearance">
       <UniqueIdentifier>{a3759f49-cc24-4b9a-b724-3de59ecb4e2c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
