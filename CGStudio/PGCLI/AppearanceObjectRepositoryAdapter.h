@@ -10,13 +10,14 @@ namespace Crystal {
 
 namespace PG {
 	namespace CLI {
+		ref class MaterialObjectRepositoryAdapter;
 
 public ref class AppearanceObjectRepositoryAdapter
 {
 public:
-	AppearanceObjectRepositoryAdapter();
-
 	~AppearanceObjectRepositoryAdapter();
+
+	MaterialObjectRepositoryAdapter^ Material();
 
 internal:
 	AppearanceObjectRepositoryAdapter(Crystal::Model::AppearanceObjectRepository* instance);

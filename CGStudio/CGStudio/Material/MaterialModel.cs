@@ -20,6 +20,8 @@ namespace PG.CGStudio.Material
             this.Id = new ReactiveProperty<int>(adapter.GetId());
             this.Name = new ReactiveProperty<string>(adapter.GetName());
             this.IsVisible = new ReactiveProperty<bool>(adapter.GetVisible());
+
+            this.Material = new Core.Graphics.Material();
         }
     }
 }

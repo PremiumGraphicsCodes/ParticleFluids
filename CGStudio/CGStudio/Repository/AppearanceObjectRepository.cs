@@ -6,9 +6,9 @@
 
         public PG.CLI.AppearanceObjectRepositoryAdapter Adapter { get { return adapter; } }
 
-        public AppearanceObjectRepository()
+        public AppearanceObjectRepository(PG.CLI.AppearanceObjectRepositoryAdapter adapter)
         {
-            this.adapter = new PG.CLI.AppearanceObjectRepositoryAdapter();
+            this.adapter = adapter;
         }
    }
 }

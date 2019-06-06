@@ -6,11 +6,6 @@
 
 using namespace PG::CLI;
 
-MaterialObjectRepositoryAdapter::MaterialObjectRepositoryAdapter()
-{
-	this->instance = new Crystal::Model::MaterialObjectRepository();
-}
-
 MaterialObjectRepositoryAdapter::~MaterialObjectRepositoryAdapter()
 {}
 

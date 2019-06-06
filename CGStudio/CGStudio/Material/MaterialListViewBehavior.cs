@@ -24,7 +24,7 @@ namespace PG.CGStudio.Material
             {
                 return;
             }
-            var selectedItem = treeView.SelectedItem as PG.Core.Graphics.Material;
+            var selectedItem = treeView.SelectedItem as MaterialModel;
             if (selectedItem == null)
             {
                 return;

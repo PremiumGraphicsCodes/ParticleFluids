@@ -15,8 +15,6 @@ namespace PG {
 public ref class MaterialObjectRepositoryAdapter
 {
 public:
-	MaterialObjectRepositoryAdapter();
-
 	~MaterialObjectRepositoryAdapter();
 
 	int Add(PG::Core::Graphics::Material^ material, System::String^ name);

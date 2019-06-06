@@ -27,11 +27,11 @@ namespace PG.CGStudio.Material
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["Material"] as PG.Core.Graphics.Material;
+            var item = navigationContext.Parameters["Material"] as MaterialModel;
             if (item != null)
             {
-                this.PrevMaterial = item;
-                this.MaterialViewModel.Value = item;
+                this.PrevMaterial = item.Material;
+                this.MaterialViewModel.Value = item.Material;
             }
         }
 

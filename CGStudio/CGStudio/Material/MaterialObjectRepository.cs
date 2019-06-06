@@ -8,9 +8,9 @@ namespace PG.CGStudio.Material
 
         public ObservableCollection<MaterialModel> Items;
 
-        public MaterialObjectRepository()
+        public MaterialObjectRepository(PG.CLI.MaterialObjectRepositoryAdapter adapter)
         {
-            this.adapter = new PG.CLI.MaterialObjectRepositoryAdapter();
+            this.adapter = adapter;
             this.Items = new ObservableCollection<MaterialModel>();
 
             Add(new PG.Core.Graphics.Material(), "Mat1");

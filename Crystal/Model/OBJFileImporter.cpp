@@ -115,7 +115,7 @@ bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path
 		return false;
 	}
 
-	return false;
+	return true;
 }
 
 /*

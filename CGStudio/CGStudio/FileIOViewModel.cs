@@ -92,6 +92,7 @@ namespace PG.CGStudio
                 if(model.Import(dialog.FileName))
                 {
                     model.Objects.Sync();
+                    model.Material.Sync();
                     OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
                     OpenGLPresenter.Instance.Render();
                     MessageBox.Show("Import Suceeded");                    

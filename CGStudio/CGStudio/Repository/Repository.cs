@@ -22,8 +22,8 @@ namespace PG.CGStudio
         {
             this.adapter = new PG.CLI.RepositoryAdapter();
             this.Objects = new ObjectRepository(adapter.Objects());
-            this.Appearance = new AppearanceObjectRepository();
-            this.Material = new Material.MaterialObjectRepository();
+            this.Appearance = new AppearanceObjectRepository(adapter.Appearance());
+            this.Material = new Material.MaterialObjectRepository(adapter.Appearance().Material());
             this.Light = new Light.LightObjectRepository();
             this.Texture = new Texture.TextureObjectRepository();
         }
