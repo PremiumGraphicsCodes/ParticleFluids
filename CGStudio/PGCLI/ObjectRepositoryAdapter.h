@@ -16,11 +16,11 @@ public ref class ObjectRepositoryAdapter
 public:
 	~ObjectRepositoryAdapter(void);
 
-	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::UI::ParticleAppearance^ appearance);
+	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::UI::ParticleAppearance^ appearance, System::String^ name);
 
-	int AddWireFrame(PG::Core::Shape::WireFrame^ src, PG::Core::UI::WireAppearance^ appearance);
+	int AddWireFrame(PG::Core::Shape::WireFrame^ src, PG::Core::UI::WireAppearance^ appearance, System::String^ name);
 
-	int AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src);
+	int AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src, System::String^ name);
 
 	System::Collections::Generic::List<int>^ GetAllIds();
 

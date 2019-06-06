@@ -15,7 +15,7 @@ using namespace PG::CLI;
 ObjectRepositoryAdapter::~ObjectRepositoryAdapter()
 {}
 
-int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::UI::ParticleAppearance^ appearance)
+int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::UI::ParticleAppearance^ appearance, System::String^ name)
 {
 	auto positions = src->Positions;
 	std::vector<Crystal::Math::Vector3dd> ps;
@@ -26,10 +26,11 @@ int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ 
 	Crystal::Model::ParticleAttribute attr;
 	attr.color = Converter::toCpp(appearance->Color);
 	attr.size = appearance->Size;
-	return instance->getParticleSystems()->addObject(ps, attr, "");
+	const auto& n = msclr::interop::marshal_as<std::string>(name);
+	return instance->getParticleSystems()->addObject(ps, attr, n);
 }
 
-int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src, PG::Core::UI::WireAppearance^ appearance)
+int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src, PG::Core::UI::WireAppearance^ appearance, System::String^ name)
 {
 	auto edges = src->Edges;
 	std::vector<Crystal::Math::Line3dd> ls;
@@ -41,10 +42,11 @@ int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src, PG::C
 	Crystal::Model::WireFrameAttribute attr;
 	attr.width = 1.0;
 	attr.color = Crystal::Graphics::ColorRGBAf(1, 0, 0, 0);
-	return instance->getWireFrames()->addObject(wf, attr, "");
+	const auto& n = msclr::interop::marshal_as<std::string>(name);
+	return instance->getWireFrames()->addObject(wf, attr, n);
 }
 
-int ObjectRepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src)
+int ObjectRepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src, System::String^ name)
 {
 	/*
 	auto triangles = src->Triangles;
@@ -75,7 +77,7 @@ System::Collections::Generic::List<int>^ ObjectRepositoryAdapter::GetAllIds()
 System::String^ ObjectRepositoryAdapter::GetNameById(int id)
 {
 	auto object = instance->findObjectById(id);
-	if (object != nullptr) {
+	if (object == nullptr) {
 		return "";
 	}
 	const auto& name = object->getName();

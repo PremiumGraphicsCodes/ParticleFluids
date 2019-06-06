@@ -18,9 +18,9 @@ namespace PG.CGStudio
             this.Items = new ObservableCollection<ObjectItem>();
         }
 
-        public int Add(ParticleSystem particleSystem, ParticleAppearance appearance)
+        public int Add(ParticleSystem particleSystem, ParticleAppearance appearance, System.String name)
         {
-            var id = adapter.AddParticleSystem(particleSystem, appearance);
+            var id = adapter.AddParticleSystem(particleSystem, appearance, name);
             if(id > 0)
             {
                 UpdateItems();
@@ -28,14 +28,14 @@ namespace PG.CGStudio
             return id;
         }
 
-        public int Add(WireFrame wireFrame, WireAppearance appearance)
+        public int Add(WireFrame wireFrame, WireAppearance appearance, System.String name)
         {
-            return adapter.AddWireFrame(wireFrame, appearance);
+            return adapter.AddWireFrame(wireFrame, appearance, name);
         }
 
-        public int Add(PolygonMesh polygonMesh)
+        public int Add(PolygonMesh polygonMesh, System.String name)
         {
-            return adapter.AddPolygonMesh(polygonMesh);
+            return adapter.AddPolygonMesh(polygonMesh, name);
         }
 
         public void UpdateItems()
@@ -46,7 +46,7 @@ namespace PG.CGStudio
             {
                 var item = new ObjectItem();
                 item.IsVisible.Value = false;
-                item.Name.Value = "Name";
+                item.Name.Value = adapter.GetNameById(id);
                 this.Items.Add(item);
             }
         }
