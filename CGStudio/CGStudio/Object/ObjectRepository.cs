@@ -45,10 +45,7 @@ namespace PG.CGStudio
             var ids = adapter.GetAllIds();
             foreach(var id in ids)
             {
-                var item = new ObjectModel();
-                item.Id.Value = id;
-                item.IsVisible.Value = adapter.GetVisibleById(id);
-                item.Name.Value = adapter.GetNameById(id);
+                var item = new ObjectModel(adapter.GetObjectById(id));
                 this.Objects.Add(item);
             }
         }

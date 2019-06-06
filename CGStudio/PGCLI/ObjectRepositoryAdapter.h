@@ -10,6 +10,7 @@ namespace Crystal {
 
 namespace PG {
 	namespace CLI {
+		ref class ObjectAdapter;
 
 public ref class ObjectRepositoryAdapter
 {
@@ -24,11 +25,7 @@ public:
 
 	System::Collections::Generic::List<int>^ GetAllIds();
 
-	System::String^ GetNameById(int id);
-
-	bool GetVisibleById(int id);
-
-	void SetVisibleById(int id, bool visible);
+	ObjectAdapter^ GetObjectById(int id);
 
 internal:
 	ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance);

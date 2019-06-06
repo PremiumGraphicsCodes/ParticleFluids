@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "ObjectRepositoryAdapter.h"
+#include "ObjectAdapter.h"
 #include "../../Crystal/Model/ObjectRepository.h"
 
 #include "../../Crystal/Math/Triangle3d.h"
@@ -73,32 +74,13 @@ System::Collections::Generic::List<int>^ ObjectRepositoryAdapter::GetAllIds()
 	return results;
 }
 
-System::String^ ObjectRepositoryAdapter::GetNameById(int id)
+ObjectAdapter^ ObjectRepositoryAdapter::GetObjectById(int id)
 {
 	auto object = instance->findObjectById(id);
 	if (object == nullptr) {
-		return "";
+		return nullptr;
 	}
-	const auto& name = object->getName();
-	return msclr::interop::marshal_as<System::String^>(name);
-}
-
-bool ObjectRepositoryAdapter::GetVisibleById(int id)
-{
-	auto object = instance->findObjectById(id);
-	if (object == nullptr) {
-		return false;
-	}
-	return object->isVisible();
-}
-
-void ObjectRepositoryAdapter::SetVisibleById(int id, bool visible)
-{
-	auto object = instance->findObjectById(id);
-	if (object == nullptr) {
-		return;
-	}
-	object->setVisible(visible);
+	return gcnew ObjectAdapter(object);
 }
 
 ObjectRepositoryAdapter::ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance)
