@@ -22,10 +22,11 @@ void MaterialObjectRepository::clear()
 	materials.clear();
 }
 
-void MaterialObjectRepository::add(Material* m, const std::string& name)
+int MaterialObjectRepository::add(Material* m, const std::string& name)
 {
 	MaterialObject* material = new MaterialObject(nextId++, name, m);
 	materials.push_back(material);
+	return material->getId();
 }
 
 MaterialObject* MaterialObjectRepository::findObjectById(const int id) const

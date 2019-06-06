@@ -19,9 +19,6 @@
     <ClInclude Include="LightObjectRepositoryAdapter.h">
       <Filter>Object\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialObjectRepositoryAdapter.h">
-      <Filter>Object\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="TextureObjectRepositoryAdapter.h">
       <Filter>Object\Appearance</Filter>
     </ClInclude>
@@ -29,7 +26,10 @@
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="MaterialObjectAdapter.h">
-      <Filter>Object\Appearance</Filter>
+      <Filter>Object\Appearance\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialObjectRepositoryAdapter.h">
+      <Filter>Object\Appearance\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -50,9 +50,6 @@
     <ClCompile Include="LightObjectRepositoryAdapter.cpp">
       <Filter>Object\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialObjectRepositoryAdapter.cpp">
-      <Filter>Object\Appearance</Filter>
-    </ClCompile>
     <ClCompile Include="TextureObjectRepositoryAdapter.cpp">
       <Filter>Object\Appearance</Filter>
     </ClCompile>
@@ -60,7 +57,10 @@
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="MaterialObjectAdapter.cpp">
-      <Filter>Object\Appearance</Filter>
+      <Filter>Object\Appearance\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialObjectRepositoryAdapter.cpp">
+      <Filter>Object\Appearance\Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +72,9 @@
     </Filter>
     <Filter Include="Object\Appearance">
       <UniqueIdentifier>{a3759f49-cc24-4b9a-b724-3de59ecb4e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Appearance\Material">
+      <UniqueIdentifier>{bf55518f-33ea-422d-9161-8c65d3d6d04a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

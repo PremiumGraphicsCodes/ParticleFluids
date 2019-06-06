@@ -13,6 +13,9 @@ namespace PG.CGStudio.Material
             this.adapter = new PG.CLI.MaterialObjectRepositoryAdapter();
             this.Items = new ObservableCollection<MaterialModel>();
 
+            Add(new PG.Core.Graphics.Material(), "Mat1");
+            Add(new PG.Core.Graphics.Material(), "Mat2");
+
             /*
             var item1 = new MaterialModel(1);
             item1.Name.Value = "Material1";
@@ -23,11 +26,24 @@ namespace PG.CGStudio.Material
             Items.Add(item1);
             Items.Add(item2);
             */
+            Sync();
+
         }
 
-        public int Add(PG.Core.Graphics.Material material)
+        public int Add(PG.Core.Graphics.Material material, string name)
         {
-            return this.adapter.Add(material);
+            return this.adapter.Add(material, name);
+        }
+
+        public void Sync()
+        {
+            this.Items.Clear();
+            var objects = adapter.GetObjects();
+            foreach (var o in objects)
+            {
+                var item = new MaterialModel(o);
+                this.Items.Add(item);
+            }
         }
     }
 }

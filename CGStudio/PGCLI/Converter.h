@@ -7,6 +7,7 @@
 #include "../../Crystal/Math/Matrix4d.h"
 #include "../../Crystal/Graphics/ColorRGBA.h"
 #include "../../Crystal/Graphics/PointLight.h"
+#include "../../Crystal/Graphics/Material.h"
 
 using namespace System;
 
@@ -47,6 +48,8 @@ public:
 	static PG::Core::Graphics::ColorRGBA^ fromCpp(const Crystal::Graphics::ColorRGBAf& src);
 
 	static Crystal::Graphics::PointLight toCpp(PG::Core::Graphics::PointLight^ src);
+
+	static Crystal::Graphics::Material toCpp(PG::Core::Graphics::Material^ src);
 };
 
 	}

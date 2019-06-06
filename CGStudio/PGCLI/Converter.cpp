@@ -110,3 +110,14 @@ Crystal::Graphics::PointLight PG::CLI::Converter::toCpp(PG::Core::Graphics::Poin
 	result.setSpecular(toCpp(src->Specular));
 	return result;
 }
+
+Crystal::Graphics::Material PG::CLI::Converter::toCpp(PG::Core::Graphics::Material^ src)
+{
+	auto result = Crystal::Graphics::Material();
+	result.ambient = toCpp(src->Ambient);
+	result.diffuse = toCpp(src->Diffuse);
+	result.specular = toCpp(src->Specular);
+	result.shininess = src->Shininess;
+	//result.textureId = src->
+	return result;
+}

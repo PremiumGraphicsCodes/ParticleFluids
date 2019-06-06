@@ -14,10 +14,11 @@ MaterialObjectRepositoryAdapter::MaterialObjectRepositoryAdapter()
 MaterialObjectRepositoryAdapter::~MaterialObjectRepositoryAdapter()
 {}
 
-int MaterialObjectRepositoryAdapter::Add(PG::Core::Graphics::Material^ material)
+int MaterialObjectRepositoryAdapter::Add(PG::Core::Graphics::Material^ material, System::String^ name)
 {
-	return -1;
-	//	instance->add( Converter::toCpp((light), "" );
+	auto m = Converter::toCpp(material);
+	const auto& n = msclr::interop::marshal_as<std::string>(name);
+	return instance->add(new Crystal::Graphics::Material(m), n);
 }
 
 System::Collections::Generic::List<MaterialObjectAdapter^>^ MaterialObjectRepositoryAdapter::GetObjects()

@@ -19,7 +19,7 @@ public:
 
 	~MaterialObjectRepositoryAdapter();
 
-	int Add(PG::Core::Graphics::Material^ material);
+	int Add(PG::Core::Graphics::Material^ material, System::String^ name);
 
 	System::Collections::Generic::List<MaterialObjectAdapter^>^ GetObjects();
 

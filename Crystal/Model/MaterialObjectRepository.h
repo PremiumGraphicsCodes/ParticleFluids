@@ -16,7 +16,7 @@ public:
 
 	void clear();
 
-	void add(Graphics::Material* m, const std::string& name);
+	int add(Graphics::Material* m, const std::string& name);
 
 	MaterialObject* findObjectById(const int id) const;
 
