@@ -84,8 +84,14 @@ System::String^ ObjectRepositoryAdapter::GetNameById(int id)
 	return msclr::interop::marshal_as<System::String^>(name);
 }
 
-//System::String^ GetVisibleById(int id);
-
+bool ObjectRepositoryAdapter::GetVisibleById(int id)
+{
+	auto object = instance->findObjectById(id);
+	if (object == nullptr) {
+		return false;
+	}
+	return object->isVisible();
+}
 
 ObjectRepositoryAdapter::ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance)
 {

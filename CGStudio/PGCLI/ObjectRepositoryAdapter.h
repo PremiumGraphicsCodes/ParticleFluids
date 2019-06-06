@@ -26,7 +26,7 @@ public:
 
 	System::String^ GetNameById(int id);
 
-	//System::String^ GetVisibleById(int id);
+	bool GetVisibleById(int id);
 
 internal:
 	ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance);

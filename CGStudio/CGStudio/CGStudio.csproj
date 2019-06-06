@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Object\ObjectListViewBehavior.cs" />
     <Compile Include="Object\ObjectListViewModel.cs" />
+    <Compile Include="Object\ObjectModel.cs" />
     <Compile Include="OpenGL\OpenGLAdornment.xaml.cs">
       <DependentUpon>OpenGLAdornment.xaml</DependentUpon>
     </Compile>

@@ -20,7 +20,7 @@ namespace PG.CGStudio.Object
         {
             var treeView = e.Source as TreeView;
             if (treeView == null) return;
-            var selectedItem = treeView.SelectedItem as ObjectItem;
+            var selectedItem = treeView.SelectedItem as ObjectModel;
             if (selectedItem == null) return;
         }
     }

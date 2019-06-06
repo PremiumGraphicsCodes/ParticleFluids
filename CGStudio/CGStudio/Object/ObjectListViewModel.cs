@@ -5,31 +5,13 @@ using System.Collections.ObjectModel;
 
 namespace PG.CGStudio
 {
-    public class ObjectItem : BindableBase
-    {
-        public ReactiveProperty<string> Name { get; }
-        public ReactiveProperty<bool> IsVisible { get; }
-
-        public ObjectItem()
-        {
-            Name = new ReactiveProperty<string>();
-            IsVisible = new ReactiveProperty<bool>();
-            IsVisible.Subscribe(VisibleChanged);
-        }
-
-        private void VisibleChanged(bool b)
-        {
-            System.Diagnostics.Debug.Write(b.ToString());
-        }
-    }
-
     public class ObjectListViewModel
     {
-        public ObservableCollection<ObjectItem> Items { get; }
+        public ObservableCollection<ObjectModel> Items { get; }
 
         public ObjectListViewModel()
         {
-            Items = MainModel.Instance.Repository.Objects.Items;
+            Items = MainModel.Instance.Repository.Objects.Objects;
 //            var model = 
             /*
             Items = new ObservableCollection<ObjectItem>();
