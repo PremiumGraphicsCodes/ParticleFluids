@@ -17,9 +17,9 @@ namespace PG.CGStudio.Material
         public MaterialModel(CLI.MaterialObjectAdapter adapter)
         {
             this.adapter = adapter;
-            this.Id = new ReactiveProperty<int>();
-            this.Name = new ReactiveProperty<string>();
-            this.IsVisible = new ReactiveProperty<bool>(false);
+            this.Id = new ReactiveProperty<int>(adapter.GetId());
+            this.Name = new ReactiveProperty<string>(adapter.GetName());
+            this.IsVisible = new ReactiveProperty<bool>(adapter.GetVisible());
         }
     }
 }
