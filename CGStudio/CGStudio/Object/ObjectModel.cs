@@ -6,15 +6,17 @@ namespace PG.CGStudio
 {
     public class ObjectModel : BindableBase
     {
-        private readonly PG.CLI.ObjectAdapter adapter;
+        private readonly PG.CLI.ObjectAdapter Adapter;
 
         public ReactiveProperty<int> Id { get; }
+
         public ReactiveProperty<string> Name { get; }
+
         public ReactiveProperty<bool> IsVisible { get; }
 
         public ObjectModel(PG.CLI.ObjectAdapter adapter)
         {
-            this.adapter = adapter;
+            Adapter = adapter;
             Id = new ReactiveProperty<int>(adapter.GetId());
             Name = new ReactiveProperty<string>(adapter.GetName());
             IsVisible = new ReactiveProperty<bool>(adapter.GetVisible());
@@ -23,6 +25,7 @@ namespace PG.CGStudio
 
         private void VisibleChanged(bool b)
         {
+            Adapter.SetVisible(b);
             OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
             OpenGLPresenter.Instance.Render();
             //System.Diagnostics.Debug.Write(b.ToString());
