@@ -43,10 +43,10 @@ namespace PG.CGStudio
         public void Sync()
         {
             this.Objects.Clear();
-            var ids = adapter.GetAllIds();
-            foreach(var id in ids)
+            var objects = adapter.GetObjects();
+            foreach(var o in objects)
             {
-                var item = new ObjectModel(adapter.GetObjectById(id));
+                var item = new ObjectModel(o);
                 this.Objects.Add(item);
             }
         }

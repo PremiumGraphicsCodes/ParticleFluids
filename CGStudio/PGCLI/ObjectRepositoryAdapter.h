@@ -23,7 +23,7 @@ public:
 
 	int AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src, System::String^ name);
 
-	System::Collections::Generic::List<int>^ GetAllIds();
+	System::Collections::Generic::List<ObjectAdapter^>^ GetObjects();
 
 	ObjectAdapter^ GetObjectById(int id);
 

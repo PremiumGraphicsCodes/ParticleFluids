@@ -64,12 +64,12 @@ int ObjectRepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src, S
 	return -1;
 }
 
-System::Collections::Generic::List<int>^ ObjectRepositoryAdapter::GetAllIds()
+System::Collections::Generic::List<ObjectAdapter^>^ ObjectRepositoryAdapter::GetObjects()
 {
-	System::Collections::Generic::List<int>^ results = gcnew System::Collections::Generic::List<int>();
+	auto results = gcnew System::Collections::Generic::List<ObjectAdapter^>();
 	const auto& objects = instance->getAllObjects();
 	for (const auto& o : objects) {
-		results->Add( o->getId() );
+		results->Add( gcnew ObjectAdapter(o) );
 	}
 	return results;
 }
