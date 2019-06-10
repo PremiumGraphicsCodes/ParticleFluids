@@ -15,18 +15,21 @@ class IObject
 public:
 	IObject() :
 		id(-1),
-		_isVisible(false)
+		_isVisible(false),
+		_isSelected(false)
 	{}
 
 	explicit IObject(const int id) :
 		id(id),
-		_isVisible(true)
+		_isVisible(true),
+		_isSelected(false)
 	{}
 
 	IObject(const int id, const std::string& name) :
 		id(id),
 		name(name),
-		_isVisible(true)
+		_isVisible(true),
+		_isSelected(false)
 	{}
 
 	virtual ~IObject() {};
@@ -55,9 +58,14 @@ public:
 
 	virtual ObjectType getType() const = 0;
 
+	bool isSelected() const { return _isSelected; }
+
+	void setSelected(bool b) { this->_isSelected = b; }
+
 private:
 	std::string name;
 	int id;
+	bool _isSelected;
 };
 	}
 }

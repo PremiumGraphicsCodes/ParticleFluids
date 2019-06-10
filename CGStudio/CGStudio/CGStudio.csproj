@@ -244,7 +244,9 @@
     <Compile Include="Object\WireFrame\WireFrameGenerationViewModel.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
+    <Compile Include="UICtrl\ObjectMoveUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
+    <Compile Include="UICtrl\ObjectScaleUICtrl.cs" />
     <Page Include="Object\ParticleSystem\AppearanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

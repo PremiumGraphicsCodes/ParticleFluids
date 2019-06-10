@@ -21,6 +21,12 @@ System::String^ ObjectAdapter::GetName()
 	return msclr::interop::marshal_as<System::String^>(name);
 }
 
+void ObjectAdapter::SetName(System::String^ name)
+{
+	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	instance->setName(str);
+}
+
 bool ObjectAdapter::GetVisible()
 {
 	return instance->isVisible();
@@ -30,6 +36,42 @@ void ObjectAdapter::SetVisible(bool visible)
 {
 	instance->setVisible(visible);
 }
+
+void ObjectAdapter::Move(PG::Core::Math::Vector3d^ v)
+{
+
+}
+
+void ObjectAdapter::Scale(PG::Core::Math::Vector3d^ s)
+{
+
+}
+
+void ObjectAdapter::Rotate(double rx, double ry, double rz)
+{
+
+}
+
+bool ObjectAdapter::IsSelected()
+{
+	return instance->isSelected();
+}
+
+void ObjectAdapter::Select()
+{
+	instance->setSelected(true);
+}
+
+void ObjectAdapter::UnSelect()
+{
+	instance->setSelected(false);
+}
+
+void ObjectAdapter::SetSelected(bool b)
+{
+	instance->setSelected(b);
+}
+
 
 ObjectAdapter::ObjectAdapter(Crystal::Model::IObject* instance)
 {

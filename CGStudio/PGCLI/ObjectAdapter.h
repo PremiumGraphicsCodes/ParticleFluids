@@ -20,9 +20,25 @@ public:
 
 	System::String^ GetName();
 
+	void SetName(System::String^ name);
+
 	bool GetVisible();
 
 	void SetVisible(bool visible);
+
+	void Move(PG::Core::Math::Vector3d^ v);
+
+	void Scale(PG::Core::Math::Vector3d^ s);
+
+	void Rotate(double rx, double ry, double rz);
+
+	bool IsSelected();
+
+	void Select();
+
+	void UnSelect();
+
+	void SetSelected(bool b);
 
 internal:
 	ObjectAdapter(Crystal::Model::IObject* instance);

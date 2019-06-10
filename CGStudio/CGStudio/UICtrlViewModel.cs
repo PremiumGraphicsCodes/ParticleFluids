@@ -24,7 +24,7 @@ namespace PG.CGStudio
 
         private void OnPickUICtrl()
         {
-            OpenGLPresenter.Instance.UICtrl = new ObjectPickUICtrl();
+            OpenGLPresenter.Instance.UICtrl = new ObjectPickUICtrl(10);
         }
     }
 }
