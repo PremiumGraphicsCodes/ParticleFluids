@@ -195,10 +195,6 @@
     <Compile Include="Texture\TextureObjectRepository.cs" />
     <Compile Include="UICtrlViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
-    <Compile Include="Generation\GenerationView.xaml.cs">
-      <DependentUpon>GenerationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Generation\GenerationViewModel.cs" />
     <Compile Include="Generation\ParticleSystem\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
@@ -249,10 +245,6 @@
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
-    <Page Include="Generation\GenerationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Generation\ParticleSystem\AppearanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
