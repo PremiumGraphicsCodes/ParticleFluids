@@ -1,4 +1,5 @@
 ﻿using PG.Core.Math;
+using Prism.Regions;
 using System.Windows;
 
 namespace PG.CGStudio.UICtrl
@@ -11,7 +12,17 @@ namespace PG.CGStudio.UICtrl
             var id = OpenGLPresenter.Instance.Renderer.Pick(position, 10);
             if(id.parentId != 0)
             {
-                MessageBox.Show("Picked");
+                var model = MainModel.Instance.Repository.Objects;
+                var selectedItem = model.FindObjectById(id.parentId);
+                if (selectedItem == null)
+                {
+                    return;
+                }
+                var parameters = new NavigationParameters
+                {
+                    { "Object", selectedItem }
+                };
+                MainWindowViewModel.Instance.NavigateWithParam("Object", parameters);
             }
         }
     }

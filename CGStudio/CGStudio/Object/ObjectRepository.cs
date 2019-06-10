@@ -2,6 +2,7 @@
 using PG.Core.UI;
 using Reactive.Bindings;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace PG.CGStudio
 {
@@ -49,6 +50,12 @@ namespace PG.CGStudio
                 var item = new ObjectModel(o);
                 this.Objects.Add(item);
             }
+        }
+
+        public ObjectModel FindObjectById(int id)
+        {
+            var objs = Objects.ToList();
+            return objs.Find(x => x.Id.Value == id);
         }
     }
 }
