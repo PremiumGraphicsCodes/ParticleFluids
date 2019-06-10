@@ -37,9 +37,14 @@ void ObjectIdRenderer::setViewModel(const ObjectIdViewModel& vm)
 
 DrawableID ObjectIdRenderer::getId(const double x, const double y)
 {
+	return getIdInTexCoord(x * texture->getWidth(), y * texture->getHeight());
+}
+
+DrawableID ObjectIdRenderer::getIdInTexCoord(const int x, const int y)
+{
 	frameBufferObject.bind();
 	glViewport(0, 0, texture->getWidth(), texture->getHeight());
-	const auto& color = frameBufferObject.getColor(x * texture->getWidth(), y * texture->getHeight());
+	const auto& color = frameBufferObject.getColor(x, y);
 	frameBufferObject.unbind();
 	return DrawableID(color);
 }

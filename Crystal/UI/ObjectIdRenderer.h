@@ -31,6 +31,8 @@ public:
 
 	Graphics::DrawableID getId(const double x, const double y);
 
+	Graphics::DrawableID getIdInTexCoord(const int x, const int y);
+
 	void setViewModel(const ObjectIdViewModel& vm);
 
 	Shader::TextureObject* getTexture() { return texture; }
