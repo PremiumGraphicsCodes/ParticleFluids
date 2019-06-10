@@ -54,6 +54,12 @@ namespace PG.CGStudio
         private static OpenGLPresenter instance;
         private UICtrl.IUICtrl ctrl;
 
+        public UICtrl.IUICtrl UICtrl
+        {
+            get { return ctrl; }
+            set { this.ctrl = value; }
+        }
+
         public static OpenGLPresenter Instance
         {
             get { return instance; }
