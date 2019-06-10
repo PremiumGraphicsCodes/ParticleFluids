@@ -5,6 +5,7 @@
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Math/Matrix3d.h"
 #include "../../Crystal/Math/Matrix4d.h"
+#include "../../Crystal/Math/Box3d.h"
 #include "../../Crystal/Graphics/ColorRGBA.h"
 #include "../../Crystal/Graphics/PointLight.h"
 #include "../../Crystal/Graphics/Material.h"
@@ -50,6 +51,8 @@ public:
 	static Crystal::Graphics::PointLight toCpp(PG::Core::Graphics::PointLight^ src);
 
 	static Crystal::Graphics::Material toCpp(PG::Core::Graphics::Material^ src);
+
+	static Crystal::Math::Box3d toCpp(PG::Core::Math::Box3d^ src);
 };
 
 	}

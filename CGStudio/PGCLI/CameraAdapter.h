@@ -30,6 +30,8 @@ public:
 
 	void Zoom(double s);
 
+	void PG::CLI::CameraAdapter::Fit(PG::Core::Math::Box3d^ boundingBox);
+
 
 internal:
 	Crystal::Graphics::ICamera* instance;

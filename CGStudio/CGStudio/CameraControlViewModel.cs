@@ -30,7 +30,7 @@ namespace PG.CGStudio
 
         private void OnXY()
         {
- //           Canvas3dView.Instance.Renderer.camera.XY
+            //OpenGLPresenter.Instance.Renderer.camera.SetRotation()
         }
 
         private void OnYZ()

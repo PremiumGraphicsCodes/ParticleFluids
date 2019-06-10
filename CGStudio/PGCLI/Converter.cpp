@@ -121,3 +121,8 @@ Crystal::Graphics::Material PG::CLI::Converter::toCpp(PG::Core::Graphics::Materi
 	//result.textureId = src->
 	return result;
 }
+
+Crystal::Math::Box3d PG::CLI::Converter::toCpp(PG::Core::Math::Box3d^ src)
+{
+	return Crystal::Math::Box3d();
+}
