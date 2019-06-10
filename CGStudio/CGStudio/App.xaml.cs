@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using PG.CGStudio.Light;
 using PG.CGStudio.Material;
+using PG.CGStudio.Object;
 using PG.CGStudio.Texture;
 using PG.Control.Graphics;
 using Prism.Ioc;
@@ -40,6 +41,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<MaterialEditView>("Material");
             containerRegistry.RegisterForNavigation<LightEditView>("Light");
             containerRegistry.RegisterForNavigation<TextureEditView>("Texture");
+            containerRegistry.RegisterForNavigation<ObjectView>("Object");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

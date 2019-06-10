@@ -169,6 +169,10 @@
     <Compile Include="Object\ObjectListViewBehavior.cs" />
     <Compile Include="Object\ObjectListViewModel.cs" />
     <Compile Include="Object\ObjectModel.cs" />
+    <Compile Include="Object\ObjectView.xaml.cs">
+      <DependentUpon>ObjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Object\ObjectViewModel.cs" />
     <Compile Include="OpenGL\OpenGLAdornment.xaml.cs">
       <DependentUpon>OpenGLAdornment.xaml</DependentUpon>
     </Compile>
@@ -334,6 +338,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Object\ObjectListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Object\ObjectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

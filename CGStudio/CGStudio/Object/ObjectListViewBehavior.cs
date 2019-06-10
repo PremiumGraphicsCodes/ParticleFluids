@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using Prism.Regions;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
@@ -19,9 +20,21 @@ namespace PG.CGStudio.Object
         private void ItemDoubleClicked(object sender, MouseButtonEventArgs e)
         {
             var treeView = e.Source as TreeView;
-            if (treeView == null) return;
+            if (treeView == null)
+            {
+                return;
+            }
             var selectedItem = treeView.SelectedItem as ObjectModel;
-            if (selectedItem == null) return;
+            if (selectedItem == null)
+            {
+                return;
+            }
+            var parameters = new NavigationParameters
+            {
+                { "Object", selectedItem }
+            };
+            MainWindowViewModel.Instance.NavigateWithParam("Object", parameters);
+
         }
     }
 }
