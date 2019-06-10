@@ -63,6 +63,16 @@
                     <Fluent:Button Header="XYZ" KeyTip="BI" Command="{Binding XYZCommand}"/>
                     <Fluent:Button Header="Fit" KeyTip="BI" Command="{Binding FitCommand}"/>
                 </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="UICtrl" KeyTip="B">
+                    <!--
+                    <Fluent:RibbonGroupBox.DataContext>
+                        <local:UIControlViewModel/>
+                    </Fluent:RibbonGroupBox.DataContext>
+                                        -->
+                    <Fluent:Button Header="Camera" KeyTip="BI" Command="{Binding CameraUICtrlCommand}"/>
+                    <Fluent:Button Header="Pick" KeyTip="BI" Command="{Binding PickUICtrlCommand}"/>
+                </Fluent:RibbonGroupBox>
+
             </Fluent:RibbonTabItem>
             <Fluent:RibbonTabItem Header="Appearance" KeyTip="T1">
                 <Fluent:RibbonGroupBox Header="Light" KeyTip="B">
