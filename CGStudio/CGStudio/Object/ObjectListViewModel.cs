@@ -7,11 +7,11 @@ namespace PG.CGStudio
 {
     public class ObjectListViewModel
     {
-        public ReactiveCollection<ObjectModel> Items { get; }
+        public ReadOnlyReactiveCollection<ObjectModel> Items { get; }
 
         public ObjectListViewModel()
         {
-            Items = MainModel.Instance.Repository.Objects.Objects;
+            Items = MainModel.Instance.Repository.Objects.Objects.ToReadOnlyReactiveCollection();
 //            var model = 
             /*
             Items = new ObservableCollection<ObjectItem>();

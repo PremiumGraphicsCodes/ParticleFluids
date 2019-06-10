@@ -1,6 +1,7 @@
 ﻿using PG.Core.Shape;
 using PG.Core.UI;
 using Reactive.Bindings;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -54,8 +55,7 @@ namespace PG.CGStudio
 
         public ObjectModel FindObjectById(int id)
         {
-            var objs = Objects.ToList();
-            return objs.Find(x => x.Id.Value == id);
+            return Objects.FirstOrDefault(x => x.Id.Value == id);
         }
     }
 }
