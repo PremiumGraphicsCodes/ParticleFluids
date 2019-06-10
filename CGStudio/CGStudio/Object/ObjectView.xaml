@@ -9,6 +9,9 @@
         <local:ObjectViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <TextBlock Text="Object"/>
+        <TextBlock Text="Id"/>
+        <TextBox Text="{Binding Id.Value}"/>
+        <TextBlock Text="Name"/>
+        <TextBox Text="{Binding Name.Value}"/>
     </StackPanel>
 </UserControl>

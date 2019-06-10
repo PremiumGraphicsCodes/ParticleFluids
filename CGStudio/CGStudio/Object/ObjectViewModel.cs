@@ -1,21 +1,21 @@
-﻿using PG.Control.Shape;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Reactive.Bindings;
 
 namespace PG.CGStudio.Object
 {
     public class ObjectViewModel : BindableBase, INavigationAware
     {
-        public PolygonMeshViewModel PolygonMeshViewModel { get; }
+        public ReactiveProperty<int> Id { get; }
+
+        public ReactiveProperty<string> Name { get; }
 
         public ObjectViewModel()
         {
-            this.PolygonMeshViewModel = new PolygonMeshViewModel();
+            this.Id = new ReactiveProperty<int>();
+            this.Name = new ReactiveProperty<string>();
+ //           this.PolygonMeshViewModel = new PolygonMeshViewModel();
+
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -23,6 +23,8 @@ namespace PG.CGStudio.Object
             var item = navigationContext.Parameters["Object"] as ObjectModel;
             if (item != null)
             {
+                Id.Value = item.Id.Value;
+                Name.Value = item.Name.Value;
 //                this.PrevMaterial = item.Material;
 //                this.MaterialViewModel.Value = item.Material;
             }
