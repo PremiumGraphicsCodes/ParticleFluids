@@ -40,7 +40,7 @@ namespace PG.CGStudio
 
         private void Host_Initialized(object sender, EventArgs e)
         {
-            this.renderer = new PG.CLI.Renderer(Panel.Handle);
+            this.renderer = new PG.CLI.Renderer(Panel.Handle, MainModel.Instance.Repository.Adapter);
             this.renderer.Build(MainModel.Instance.Repository.Adapter);
             this.ctrl = new UICtrl.CameraUICtrl(renderer.camera);
             Panel.Paint += OnPaint;
@@ -61,7 +61,7 @@ namespace PG.CGStudio
 
         public void Render()
         {
-            renderer.Render(Panel.Width, Panel.Height);
+            renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
         }
 
         public void Update(Repository model)
@@ -135,12 +135,12 @@ namespace PG.CGStudio
 
         private void OnResize(object sender, EventArgs e)
         {
-            this.renderer.Render(Panel.Width, Panel.Height);
+            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
         }
 
-        private void OnPaint(object sender, System.Windows.Forms.PaintEventArgs e)
+        private void OnPaint(object sender, PaintEventArgs e)
         {
-            this.renderer.Render(Panel.Width, Panel.Height);
+            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
         }
 
         private void RegisterToAppShutdown()
