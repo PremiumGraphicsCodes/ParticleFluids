@@ -143,6 +143,7 @@
     <ClInclude Include="RepositoryAdapter.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ShaderObjectRepositoryAdapter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TextureObjectRepositoryAdapter.h" />
   </ItemGroup>
@@ -158,6 +159,7 @@
     <ClCompile Include="ObjectRepositoryAdapter.cpp" />
     <ClCompile Include="RepositoryAdapter.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="ShaderObjectRepositoryAdapter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

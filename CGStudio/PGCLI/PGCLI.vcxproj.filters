@@ -31,6 +31,9 @@
     <ClInclude Include="MaterialObjectRepositoryAdapter.h">
       <Filter>Object\Appearance\Material</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderObjectRepositoryAdapter.h">
+      <Filter>Object\Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -62,6 +65,9 @@
     <ClCompile Include="MaterialObjectRepositoryAdapter.cpp">
       <Filter>Object\Appearance\Material</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderObjectRepositoryAdapter.cpp">
+      <Filter>Object\Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -75,6 +81,9 @@
     </Filter>
     <Filter Include="Object\Appearance\Material">
       <UniqueIdentifier>{bf55518f-33ea-422d-9161-8c65d3d6d04a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Shader">
+      <UniqueIdentifier>{6b77f7d6-659f-41dc-9605-bd1d03b82035}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
