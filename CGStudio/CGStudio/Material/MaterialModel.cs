@@ -23,5 +23,10 @@ namespace PG.CGStudio.Material
 
             this.Material = new Core.Graphics.Material();
         }
+
+        public void Sync()
+        {
+            adapter.Update(Material);
+        }
     }
 }

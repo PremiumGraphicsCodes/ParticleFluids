@@ -7,7 +7,7 @@ namespace PG.CGStudio.Material
 {
     public class MaterialEditViewModel : BindableBase, INavigationAware
     {
-        private PG.Core.Graphics.Material PrevMaterial;
+        private MaterialModel PrevMaterial;
 
         public MaterialViewModel MaterialViewModel { get; }
 
@@ -22,7 +22,8 @@ namespace PG.CGStudio.Material
 
         private void OnOk()
         {
-            this.MaterialViewModel.Update( this.PrevMaterial );
+            this.MaterialViewModel.Update( this.PrevMaterial.Material );
+            this.PrevMaterial.Sync();
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -30,7 +31,7 @@ namespace PG.CGStudio.Material
             var item = navigationContext.Parameters["Material"] as MaterialModel;
             if (item != null)
             {
-                this.PrevMaterial = item.Material;
+                this.PrevMaterial = item;
                 this.MaterialViewModel.Value = item.Material;
             }
         }

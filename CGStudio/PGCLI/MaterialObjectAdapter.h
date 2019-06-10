@@ -24,6 +24,8 @@ public:
 
 	void SetVisible(bool visible);
 
+	void Update(PG::Core::Graphics::Material^ material);
+
 internal:
 	MaterialObjectAdapter(Crystal::Model::MaterialObject* instance);
 
