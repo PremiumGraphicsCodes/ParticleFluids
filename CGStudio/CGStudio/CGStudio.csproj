@@ -135,12 +135,12 @@
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
-    <Compile Include="Generation\ParticleSystem\AppearanceView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\ParticleSystem\AppearanceViewModel.cs" />
-    <Compile Include="Generation\WireFrame\AppearanceViewModel.cs" />
-    <Compile Include="Generation\WireFrame\AppearanceView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\AppearanceViewModel.cs" />
+    <Compile Include="Object\WireFrame\AppearanceViewModel.cs" />
+    <Compile Include="Object\WireFrame\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Light\LightEditView.xaml.cs">
@@ -195,109 +195,109 @@
     <Compile Include="Texture\TextureObjectRepository.cs" />
     <Compile Include="UICtrlViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
-    <Compile Include="Generation\ParticleSystem\BoxGenerationView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\ParticleSystem\BoxGenerationViewModel.cs" />
-    <Compile Include="Generation\ParticleSystem\CylinderGenerationView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\BoxGenerationViewModel.cs" />
+    <Compile Include="Object\ParticleSystem\CylinderGenerationView.xaml.cs">
       <DependentUpon>CylinderGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\ParticleSystem\CylinderGenerationViewModel.cs" />
-    <Compile Include="Generation\ParticleSystem\ParticleSystemGenerationView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\CylinderGenerationViewModel.cs" />
+    <Compile Include="Object\ParticleSystem\ParticleSystemGenerationView.xaml.cs">
       <DependentUpon>ParticleSystemGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\ParticleSystem\ParticleSystemGenerationViewModel.cs" />
-    <Compile Include="Generation\ParticleSystem\SphereGenerationView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\ParticleSystemGenerationViewModel.cs" />
+    <Compile Include="Object\ParticleSystem\SphereGenerationView.xaml.cs">
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\ParticleSystem\SphereGenerationViewModel.cs" />
-    <Compile Include="Generation\PolygonMesh\BoxGenerationView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\SphereGenerationViewModel.cs" />
+    <Compile Include="Object\PolygonMesh\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\PolygonMesh\BoxGenerationViewModel.cs" />
-    <Compile Include="Generation\PolygonMesh\CylinderGenerationView.xaml.cs">
+    <Compile Include="Object\PolygonMesh\BoxGenerationViewModel.cs" />
+    <Compile Include="Object\PolygonMesh\CylinderGenerationView.xaml.cs">
       <DependentUpon>CylinderGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\PolygonMesh\CylinderGenerationViewModel.cs" />
-    <Compile Include="Generation\PolygonMesh\PolygonMeshGenerationView.xaml.cs">
+    <Compile Include="Object\PolygonMesh\CylinderGenerationViewModel.cs" />
+    <Compile Include="Object\PolygonMesh\PolygonMeshGenerationView.xaml.cs">
       <DependentUpon>PolygonMeshGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\PolygonMesh\SphereGenerationView.xaml.cs">
+    <Compile Include="Object\PolygonMesh\SphereGenerationView.xaml.cs">
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\PolygonMesh\SphereGenerationViewModel.cs" />
-    <Compile Include="Generation\WireFrame\BoxGenerationView.xaml.cs">
+    <Compile Include="Object\PolygonMesh\SphereGenerationViewModel.cs" />
+    <Compile Include="Object\WireFrame\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\WireFrame\BoxGenerationViewModel.cs" />
-    <Compile Include="Generation\WireFrame\CylinderGenerationView.xaml.cs">
+    <Compile Include="Object\WireFrame\BoxGenerationViewModel.cs" />
+    <Compile Include="Object\WireFrame\CylinderGenerationView.xaml.cs">
       <DependentUpon>CylinderGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\WireFrame\CylinderGenerationViewModel.cs" />
-    <Compile Include="Generation\WireFrame\SphereGenerationView.xaml.cs">
+    <Compile Include="Object\WireFrame\CylinderGenerationViewModel.cs" />
+    <Compile Include="Object\WireFrame\SphereGenerationView.xaml.cs">
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\WireFrame\SphereGenerationViewModel.cs" />
-    <Compile Include="Generation\WireFrame\WireFrameGenerationView.xaml.cs">
+    <Compile Include="Object\WireFrame\SphereGenerationViewModel.cs" />
+    <Compile Include="Object\WireFrame\WireFrameGenerationView.xaml.cs">
       <DependentUpon>WireFrameGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Generation\WireFrame\WireFrameGenerationViewModel.cs" />
+    <Compile Include="Object\WireFrame\WireFrameGenerationViewModel.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
-    <Page Include="Generation\ParticleSystem\AppearanceView.xaml">
+    <Page Include="Object\ParticleSystem\AppearanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\ParticleSystem\BoxGenerationView.xaml">
+    <Page Include="Object\ParticleSystem\BoxGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\ParticleSystem\CylinderGenerationView.xaml">
+    <Page Include="Object\ParticleSystem\CylinderGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\ParticleSystem\ParticleSystemGenerationView.xaml">
+    <Page Include="Object\ParticleSystem\ParticleSystemGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\ParticleSystem\SphereGenerationView.xaml">
+    <Page Include="Object\ParticleSystem\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\PolygonMesh\BoxGenerationView.xaml">
+    <Page Include="Object\PolygonMesh\BoxGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\PolygonMesh\CylinderGenerationView.xaml">
+    <Page Include="Object\PolygonMesh\CylinderGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\PolygonMesh\PolygonMeshGenerationView.xaml">
+    <Page Include="Object\PolygonMesh\PolygonMeshGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\PolygonMesh\SphereGenerationView.xaml">
+    <Page Include="Object\PolygonMesh\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\WireFrame\AppearanceView.xaml">
+    <Page Include="Object\WireFrame\AppearanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\WireFrame\BoxGenerationView.xaml">
+    <Page Include="Object\WireFrame\BoxGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\WireFrame\CylinderGenerationView.xaml">
+    <Page Include="Object\WireFrame\CylinderGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\WireFrame\SphereGenerationView.xaml">
+    <Page Include="Object\WireFrame\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Generation\WireFrame\WireFrameGenerationView.xaml">
+    <Page Include="Object\WireFrame\WireFrameGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -352,7 +352,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="Generation\PolygonMesh\PolygonMeshGenerationViewModel.cs" />
+    <Compile Include="Object\PolygonMesh\PolygonMeshGenerationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
