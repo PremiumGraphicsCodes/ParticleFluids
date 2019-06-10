@@ -135,9 +135,14 @@
     <Compile Include="Shape\ParticleSystemView.xaml.cs">
       <DependentUpon>ParticleSystemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Shape\PolygonMeshView.xaml.cs">
+    <Compile Include="Shape\PolygonMesh\FaceGroupView.xaml.cs">
+      <DependentUpon>FaceGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shape\PolygonMesh\FaceGroupViewModel.cs" />
+    <Compile Include="Shape\PolygonMesh\PolygonMeshView.xaml.cs">
       <DependentUpon>PolygonMeshView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Shape\PolygonMesh\PolygonMeshViewModel.cs" />
     <Compile Include="Shape\WireFrameView.xaml.cs">
       <DependentUpon>WireFrameView.xaml</DependentUpon>
     </Compile>
@@ -189,7 +194,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Shape\PolygonMeshView.xaml">
+    <Page Include="Shape\PolygonMesh\FaceGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shape\PolygonMesh\PolygonMeshView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

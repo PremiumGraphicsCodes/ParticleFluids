@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="PG.Control.Shape.FaceGroupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PG.Control.Shape"
+             xmlns:graphics="clr-namespace:PG.Control.Graphics"
+             mc:Ignorable="d">
+    <UserControl.DataContext>
+        <local:FaceGroupViewModel/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <TextBlock Text="Id"/>
+        <TextBox Text="{Binding Id.Value}"/>
+        <TextBlock Text="FaceCount"/>
+        <TextBox Text="{Binding FaceCount.Value}"/>
+        <TextBlock Text="Material"/>
+        <graphics:MaterialView DataContext="{Binding MaterialViewModel}"/>
+    </StackPanel>
+</UserControl>
