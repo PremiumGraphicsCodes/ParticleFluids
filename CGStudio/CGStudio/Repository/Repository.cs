@@ -30,6 +30,7 @@ namespace PG.CGStudio
 
         public void New()
         {
+            this.Objects.Clear();
             this.adapter.Clear();
         }
 

@@ -12,7 +12,12 @@ namespace PG.CGStudio
             this.Adapter = adapter;
         }
 
-        Matrix4d ProjectionMatrix
+        public Matrix4d ModelViewMatrix
+        {
+            get { return Adapter.ModelViewMatrix(); }
+        }
+
+        public Matrix4d ProjectionMatrix
         {
             get { return Adapter.ProjectionMatrix(); }
         }

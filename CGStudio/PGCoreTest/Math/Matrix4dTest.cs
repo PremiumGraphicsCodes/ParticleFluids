@@ -5,20 +5,21 @@ using PG.Core.Math;
 namespace PGCoreTest.Math
 {
     [TestClass]
-    public class Matrix3dTest
+    public class Matrix4dTest
     {
         private readonly double tolerance = 1.0e-9;
 
+        /*
         [TestMethod]
         public void TestDeterminant()
         {
             {
-                var matrix = new Matrix3d();
+                var matrix = new Matrix4d();
                 Assert.AreEqual(1.0, matrix.Determinant, tolerance);
             }
 
             {
-                var matrix = new Matrix3d(1, 1, 1, 1, 1, 1, 1, 1, 1);
+                var matrix = new Matrix4d(1, 1, 1, 1, 1, 1, 1, 1, 1,1,1,1,1);
                 Assert.AreEqual(0.0, matrix.Determinant, tolerance);
             }
         }
@@ -27,18 +28,18 @@ namespace PGCoreTest.Math
         public void TestTransposed()
         {
             {
-                var matrix = new Matrix3d();
+                var matrix = new Matrix4d();
                 var actual = matrix.Transposed;
-                var expected = new Matrix3d();
+                var expected = new Matrix4d();
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
 
             {
-                var matrix = new Matrix3d(0, 1, 2, 10, 11, 12, 20, 21, 22);
+                var matrix = new Matrix4d(0, 1, 2, 10, 11, 12, 20, 21, 22);
                 var actual = matrix.Transposed;
-                var expected = new Matrix3d(0, 10, 20, 1, 11, 21, 2, 12, 22);
+                var expected = new Matrix4d(0, 10, 20, 1, 11, 21, 2, 12, 22);
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
-            }            
+            }
         }
 
         [TestMethod]
@@ -60,5 +61,7 @@ namespace PGCoreTest.Math
             var expected = new Matrix3d(8, 7, 11, 3, 6, 3, 5, 1, 8);
             Assert.IsTrue(expected.IsSame(actual, tolerance));
         }
+                */
+
     }
 }

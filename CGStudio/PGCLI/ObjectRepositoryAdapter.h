@@ -17,6 +17,8 @@ public ref class ObjectRepositoryAdapter
 public:
 	~ObjectRepositoryAdapter(void);
 
+	void Clear();
+
 	int AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::UI::ParticleAppearance^ appearance, System::String^ name);
 
 	int AddWireFrame(PG::Core::Shape::WireFrame^ src, PG::Core::UI::WireAppearance^ appearance, System::String^ name);

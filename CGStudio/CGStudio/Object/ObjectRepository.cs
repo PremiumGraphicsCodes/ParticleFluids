@@ -42,6 +42,12 @@ namespace PG.CGStudio
             return id;
         }
 
+        public void Clear()
+        {
+            Objects.Clear();
+            adapter.Clear();
+        }
+
         public void Sync()
         {
             this.Objects.Clear();

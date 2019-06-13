@@ -13,7 +13,14 @@
 using namespace PG::CLI;
 
 ObjectRepositoryAdapter::~ObjectRepositoryAdapter()
-{}
+{
+	Clear();
+}
+
+void ObjectRepositoryAdapter::Clear()
+{
+	instance->clear();
+}
 
 int ObjectRepositoryAdapter::AddParticleSystem(PG::Core::Shape::ParticleSystem^ src, PG::Core::UI::ParticleAppearance^ appearance, System::String^ name)
 {

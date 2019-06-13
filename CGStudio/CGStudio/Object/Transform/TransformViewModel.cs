@@ -22,12 +22,19 @@ namespace PG.CGStudio.Object.Transform
             MoveCommand = new ReactiveCommand();
             MoveCommand.Subscribe(OnMove);
             ScaleCommand = new ReactiveCommand();
+            ScaleCommand.Subscribe(OnScale);
             RotateCommand = new ReactiveCommand();
         }
 
         private void OnMove()
         {
             var moveCtrl = new ObjectMoveUICtrl(SelectViewModel.SelectedObjects);
+            Canvas3d.Instance.UICtrl = moveCtrl;
+        }
+
+        private void OnScale()
+        {
+            var moveCtrl = new ObjectScaleUICtrl(SelectViewModel.SelectedObjects);
             Canvas3d.Instance.UICtrl = moveCtrl;
         }
 
