@@ -44,6 +44,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<ObjectView>("Object");
 
             containerRegistry.RegisterForNavigation<Object.Select.SelectView>("Select");
+            containerRegistry.RegisterForNavigation<Object.Transform.TransformView>("Transform");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

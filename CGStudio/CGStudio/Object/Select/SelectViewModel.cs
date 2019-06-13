@@ -15,6 +15,7 @@ namespace PG.CGStudio.Object.Select
         {
             Id = new ReactiveProperty<int>();
             PickCommand = new ReactiveCommand();
+            PickCommand.Subscribe(OnPickUI);
         }
 
         private void OnPickUI()
