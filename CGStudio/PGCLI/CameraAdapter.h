@@ -32,6 +32,9 @@ public:
 
 	void PG::CLI::CameraAdapter::Fit(PG::Core::Math::Box3d^ boundingBox);
 
+	PG::Core::Math::Matrix4d^ ModelViewMatrix();
+
+	PG::Core::Math::Matrix4d^ ProjectionMatrix();
 
 internal:
 	Crystal::Graphics::ICamera* instance;

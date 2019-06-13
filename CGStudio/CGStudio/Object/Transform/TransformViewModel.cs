@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using PG.CGStudio.UICtrl;
+using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
 
@@ -15,8 +16,15 @@ namespace PG.CGStudio.Object.Transform
         public TransformViewModel()
         {
             MoveCommand = new ReactiveCommand();
+            MoveCommand.Subscribe(OnMove);
             ScaleCommand = new ReactiveCommand();
             RotateCommand = new ReactiveCommand();
+        }
+
+        private void OnMove()
+        {
+            var moveCtrl = new ObjectMoveUICtrl();
+            Canvas3d.Instance.UICtrl = moveCtrl;
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

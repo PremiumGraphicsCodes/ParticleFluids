@@ -116,11 +116,11 @@
 
             <host:HwndHostManager Grid.Column="1">
                 <Grid Margin="0,0,0,0">
-                    <local:OpenGLPresenter>
-                        <local:OpenGLPresenter.Adornment>
+                    <local:Canvas3d>
+                        <local:Canvas3d.Adornment>
                             <local:OpenGLAdornment/>
-                        </local:OpenGLPresenter.Adornment>
-                    </local:OpenGLPresenter>
+                        </local:Canvas3d.Adornment>
+                    </local:Canvas3d>
                 </Grid>
             </host:HwndHostManager>
 

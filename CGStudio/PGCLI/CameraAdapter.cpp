@@ -61,6 +61,17 @@ void PG::CLI::CameraAdapter::Fit(PG::Core::Math::Box3d^ boundingBox)
 	*/
 }
 
+PG::Core::Math::Matrix4d^ PG::CLI::CameraAdapter::ModelViewMatrix()
+{
+	return Converter::fromCpp(instance->getModelviewMatrix());
+}
+
+PG::Core::Math::Matrix4d^ PG::CLI::CameraAdapter::ProjectionMatrix()
+{
+	return Converter::fromCpp(instance->getProjectionMatrix());
+}
+
+
 /*
 void Canvas::setCameraXY(const Box3d& boundingBox)
 {

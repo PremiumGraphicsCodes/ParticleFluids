@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using PG.Core.Math;
+using Prism.Mvvm;
 using Reactive.Bindings;
 using System;
 
@@ -34,10 +35,24 @@ namespace PG.CGStudio
         private void OnVisibleChanged(bool b)
         {
             Adapter.SetVisible(b);
-            OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
-            OpenGLPresenter.Instance.Render();
+            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            Canvas3d.Instance.Render();
             //System.Diagnostics.Debug.Write(b.ToString());
         }
-    }
 
+        public void Move(Vector3d v)
+        {
+            Adapter.Move(v);
+        }
+
+        public void Transform(Matrix3d m)
+        {
+            Adapter.Transform(m);
+        }
+
+        public void Transform(Matrix4d m)
+        {
+            Adapter.Transform(m);
+        }
+    }
 }

@@ -32,8 +32,8 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var builder = new PolygonMeshBuilder();
             builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
             MainModel.Instance.Repository.Objects.Add(builder.PolygonMesh, "PMSphere");
-            OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
-            OpenGLPresenter.Instance.Render();
+            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            Canvas3d.Instance.Render();
         }
     }
 }

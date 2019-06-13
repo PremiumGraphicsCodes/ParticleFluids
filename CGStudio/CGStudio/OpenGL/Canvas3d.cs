@@ -20,11 +20,11 @@ namespace PG.CGStudio
         }
     }
 
-    public class OpenGLPresenter : HwndHostPresenter
+    public class Canvas3d : HwndHostPresenter
     {
         private System.Windows.Forms.Panel Panel { get; }
 
-        public OpenGLPresenter()
+        public Canvas3d()
         {
             var host = new WindowsFormsHost();
             Panel = new Panel3d();
@@ -51,7 +51,7 @@ namespace PG.CGStudio
             Panel.MouseWheel += Panel_MouseWheel;
         }
 
-        private static OpenGLPresenter instance;
+        private static Canvas3d instance;
         private UICtrl.IUICtrl ctrl;
 
         public UICtrl.IUICtrl UICtrl
@@ -60,7 +60,7 @@ namespace PG.CGStudio
             set { this.ctrl = value; }
         }
 
-        public static OpenGLPresenter Instance
+        public static Canvas3d Instance
         {
             get { return instance; }
         }

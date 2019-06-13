@@ -21,7 +21,7 @@ namespace PG.CGStudio.Object.Select
         private void OnPickUI()
         {
             var picker = new ObjectPickUICtrl(10);
-            OpenGLPresenter.Instance.UICtrl = picker;
+            Canvas3d.Instance.UICtrl = picker;
             picker.Action = OnPicked;
         }
 

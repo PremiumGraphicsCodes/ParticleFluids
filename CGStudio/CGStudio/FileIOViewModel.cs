@@ -36,8 +36,8 @@ namespace PG.CGStudio
         private void OnNew()
         {
             MainModel.Instance.Repository.New();
-            OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
-            OpenGLPresenter.Instance.Render();
+            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            Canvas3d.Instance.Render();
         }
 
         private void OnOpen()
@@ -93,8 +93,8 @@ namespace PG.CGStudio
                 {
                     model.Objects.Sync();
                     model.Material.Sync();
-                    OpenGLPresenter.Instance.Update(MainModel.Instance.Repository);
-                    OpenGLPresenter.Instance.Render();
+                    Canvas3d.Instance.Update(MainModel.Instance.Repository);
+                    Canvas3d.Instance.Render();
                     MessageBox.Show("Import Suceeded");                    
                 }
                 else

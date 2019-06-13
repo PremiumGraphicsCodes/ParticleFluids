@@ -23,10 +23,15 @@ namespace PG.CGStudio.UICtrl
             this.pickedObjects = new List<ObjectModel>();
         }
 
+        public List<ObjectModel> PickedObjects
+        {
+            get { return pickedObjects; }
+        }
+
         public override void OnLeftButtonDown(Vector2d position)
         {
             position.Y = 1.0 - position.Y;
-            var id = OpenGLPresenter.Instance.Renderer.Pick(position, mergin);
+            var id = Canvas3d.Instance.Renderer.Pick(position, mergin);
             if(id.parentId != 0)
             {
                 var model = MainModel.Instance.Repository.Objects;
