@@ -1,4 +1,5 @@
-﻿using PG.CGStudio.UICtrl;
+﻿using PG.CGStudio.Object.Select;
+using PG.CGStudio.UICtrl;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -7,6 +8,8 @@ namespace PG.CGStudio.Object.Transform
 {
     public class TransformViewModel : BindableBase, INavigationAware
     {
+        public SelectViewModel SelectViewModel { get; }
+
         public ReactiveCommand MoveCommand { get; }
 
         public ReactiveCommand ScaleCommand { get; }
@@ -15,6 +18,7 @@ namespace PG.CGStudio.Object.Transform
 
         public TransformViewModel()
         {
+            SelectViewModel = new SelectViewModel();
             MoveCommand = new ReactiveCommand();
             MoveCommand.Subscribe(OnMove);
             ScaleCommand = new ReactiveCommand();
@@ -23,7 +27,7 @@ namespace PG.CGStudio.Object.Transform
 
         private void OnMove()
         {
-            var moveCtrl = new ObjectMoveUICtrl();
+            var moveCtrl = new ObjectMoveUICtrl(SelectViewModel.SelectedObjects);
             Canvas3d.Instance.UICtrl = moveCtrl;
         }
 

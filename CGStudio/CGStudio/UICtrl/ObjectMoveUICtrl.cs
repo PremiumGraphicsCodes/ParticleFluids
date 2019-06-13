@@ -37,6 +37,8 @@ namespace PG.CGStudio.UICtrl
                 o.Move(new Vector3d(v.X, v.Y, 0.0));
             }
             this.prevPos = position;
+            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            Canvas3d.Instance.Render();
         }
 
     }

@@ -24,6 +24,8 @@ namespace PG.CGStudio
     {
         private System.Windows.Forms.Panel Panel { get; }
 
+        public Camera Camera { get; }
+
         public Canvas3d()
         {
             var host = new WindowsFormsHost();
@@ -36,6 +38,8 @@ namespace PG.CGStudio
             RegisterToAppShutdown();
 
             instance = this;
+
+            Camera = new Camera(renderer.camera);
         }
 
         private void Host_Initialized(object sender, EventArgs e)
