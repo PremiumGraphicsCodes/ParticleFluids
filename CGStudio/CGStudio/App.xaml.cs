@@ -42,6 +42,8 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<LightEditView>("Light");
             containerRegistry.RegisterForNavigation<TextureEditView>("Texture");
             containerRegistry.RegisterForNavigation<ObjectView>("Object");
+
+            containerRegistry.RegisterForNavigation<Object.Select.SelectView>("Select");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

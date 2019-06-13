@@ -1,5 +1,6 @@
 ﻿using PG.Core.Math;
 using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -9,11 +10,17 @@ namespace PG.CGStudio.UICtrl
     {
         private List<ObjectModel> pickedObjects;
         private int mergin;
+        private Action<int> action;
+
+        public Action<int> Action
+        {
+            set { this.action = value; }
+        }
 
         public ObjectPickUICtrl(int mergin)
         {
             this.mergin = mergin;
-            pickedObjects = new List<ObjectModel>();
+            this.pickedObjects = new List<ObjectModel>();
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -29,11 +36,19 @@ namespace PG.CGStudio.UICtrl
                     return;
                 }
                 pickedObjects.Add(selectedItem);
+
+                if (action != null)
+                {
+                    action(id.parentId);
+                }
+
+                /*
                 var parameters = new NavigationParameters
                 {
                     { "Object", selectedItem }
                 };
                 MainWindowViewModel.Instance.NavigateWithParam("Object", parameters);
+                */
             }
         }
     }

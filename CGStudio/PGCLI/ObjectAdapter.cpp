@@ -2,6 +2,7 @@
 #include "../../Crystal/Model/IObject.h"
 
 #include "ObjectAdapter.h"
+#include "Converter.h"
 
 using namespace Crystal::Model;
 using namespace PG::CLI;
@@ -39,18 +40,30 @@ void ObjectAdapter::SetVisible(bool visible)
 
 void ObjectAdapter::Move(PG::Core::Math::Vector3d^ v)
 {
-
+	instance->move(Converter::toCpp(v));
 }
 
+void ObjectAdapter::Transform(PG::Core::Math::Matrix3d^ m)
+{
+	instance->transform(Converter::toCpp(m));
+}
+
+void ObjectAdapter::Transform(PG::Core::Math::Matrix4d^ m)
+{
+	instance->transform(Converter::toCpp(m));
+}
+
+
+/*
 void ObjectAdapter::Scale(PG::Core::Math::Vector3d^ s)
 {
-
 }
 
 void ObjectAdapter::Rotate(double rx, double ry, double rz)
 {
 
 }
+*/
 
 bool ObjectAdapter::IsSelected()
 {

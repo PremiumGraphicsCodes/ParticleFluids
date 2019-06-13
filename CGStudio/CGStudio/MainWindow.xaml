@@ -49,6 +49,7 @@
                     <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMBoxGeneration"/>
                     <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMSphereGeneration"/>
                     <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMCylinderGeneration"/>
+                    <Fluent:Button Header="Select" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Select"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
 

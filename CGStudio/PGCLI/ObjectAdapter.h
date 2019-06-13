@@ -28,9 +28,13 @@ public:
 
 	void Move(PG::Core::Math::Vector3d^ v);
 
-	void Scale(PG::Core::Math::Vector3d^ s);
+	void Transform(PG::Core::Math::Matrix3d^ m);
 
-	void Rotate(double rx, double ry, double rz);
+	void Transform(PG::Core::Math::Matrix4d^ m);
+
+	//void Scale(PG::Core::Math::Vector3d^ s);
+
+	//void Rotate(double rx, double ry, double rz);
 
 	bool IsSelected();
 

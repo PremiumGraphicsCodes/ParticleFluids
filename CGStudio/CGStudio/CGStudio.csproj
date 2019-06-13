@@ -139,6 +139,11 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Object\ParticleSystem\AppearanceViewModel.cs" />
+    <Compile Include="Object\Select\SelectView.xaml.cs">
+      <DependentUpon>SelectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Object\Select\SelectViewModel.cs" />
+    <Compile Include="Object\Transform\TransformViewModel.cs" />
     <Compile Include="Object\WireFrame\AppearanceViewModel.cs" />
     <Compile Include="Object\WireFrame\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
@@ -193,6 +198,7 @@
     </Compile>
     <Compile Include="Texture\TextureListViewModel.cs" />
     <Compile Include="Texture\TextureObjectRepository.cs" />
+    <Compile Include="UICommand\UICommand.cs" />
     <Compile Include="UICtrlViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Object\ParticleSystem\BoxGenerationView.xaml.cs">
@@ -280,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Object\PolygonMesh\SphereGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Object\Select\SelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
