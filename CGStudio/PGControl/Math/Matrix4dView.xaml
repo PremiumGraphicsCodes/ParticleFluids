@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="PG.Control.Math.Matrix4dView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PG.Control.Math"
+             mc:Ignorable="d">
+    <UserControl.DataContext>
+        <local:Matrix4dViewModel/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding X00.Value}"/>
+            <TextBox Text="{Binding X01.Value}"/>
+            <TextBox Text="{Binding X02.Value}"/>
+            <TextBox Text="{Binding X03.Value}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding X10.Value}"/>
+            <TextBox Text="{Binding X11.Value}"/>
+            <TextBox Text="{Binding X12.Value}"/>
+            <TextBox Text="{Binding X13.Value}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding X20.Value}"/>
+            <TextBox Text="{Binding X21.Value}"/>
+            <TextBox Text="{Binding X22.Value}"/>
+            <TextBox Text="{Binding X23.Value}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding X30.Value}"/>
+            <TextBox Text="{Binding X31.Value}"/>
+            <TextBox Text="{Binding X32.Value}"/>
+            <TextBox Text="{Binding X33.Value}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

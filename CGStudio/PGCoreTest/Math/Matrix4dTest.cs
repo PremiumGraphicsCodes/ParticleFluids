@@ -9,7 +9,6 @@ namespace PGCoreTest.Math
     {
         private readonly double tolerance = 1.0e-9;
 
-        /*
         [TestMethod]
         public void TestDeterminant()
         {
@@ -19,7 +18,7 @@ namespace PGCoreTest.Math
             }
 
             {
-                var matrix = new Matrix4d(1, 1, 1, 1, 1, 1, 1, 1, 1,1,1,1,1);
+                var matrix = new Matrix4d(1, 1, 1, 1, 1, 1, 1, 1, 1,1,1,1,1,1,1,1);
                 Assert.AreEqual(0.0, matrix.Determinant, tolerance);
             }
         }
@@ -35,13 +34,26 @@ namespace PGCoreTest.Math
             }
 
             {
-                var matrix = new Matrix4d(0, 1, 2, 10, 11, 12, 20, 21, 22);
+                var matrix = new Matrix4d
+                    (
+                    0, 1, 2, 3,
+                    10, 11, 12, 13,
+                    20, 21, 22, 23,
+                    30, 31, 32, 33
+                    );
                 var actual = matrix.Transposed;
-                var expected = new Matrix4d(0, 10, 20, 1, 11, 21, 2, 12, 22);
+                var expected = new Matrix4d
+                    (
+                    0, 10, 20, 30,
+                    1, 11, 21, 31,
+                    2, 12, 22, 32,
+                    3, 13, 23, 33
+                    );
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
         }
 
+        /*
         [TestMethod]
         public void TestInverse()
         {

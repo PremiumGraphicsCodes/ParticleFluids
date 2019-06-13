@@ -60,15 +60,47 @@
             return m;
         }
 
+        public bool IsSame(Matrix4d rhs, double tolerance)
+        {
+            for (int i = 0; i < 4; ++i)
+            {
+                for (int j = 0; j < 4; ++j)
+                {
+                    if (System.Math.Abs(x[i, j] - rhs.x[i, j]) > tolerance)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+
         public Matrix4d Transposed
         {
             get
             {
                 return new Matrix4d(
                     X00, X10, X20, X30,
-                    X10, X11, X21, X31,
-                    X20, X12, X22, X32,
-                    X30, X32, X23, X33);
+                    X01, X11, X21, X31,
+                    X02, X12, X22, X32,
+                    X03, X13, X23, X33);
+            }
+        }
+
+        public double Determinant
+        {
+            get
+            {
+                return
+                      (X00 * X11 * X22 * X33) + (X00 * X12 * X23 * X31) + (X00 * X13 * X21 * X32)
+                    + (X01 * X10 * X23 * X32) + (X01 * X12 * X20 * X33) + (X01 * X13 * X22 * X30)
+                    + (X02 * X10 * X21 * X33) + (X02 * X11 * X23 * X30) + (X02 * X13 * X20 * X31)
+                    + (X03 * X10 * X22 * X31) + (X03 * X11 * X20 * X32) + (X03 * X12 * X21 * X30)
+                    - (X00 * X11 * X23 * X32) - (X00 * X12 * X21 * X33) - (X00 * X13 * X22 * X31)
+                    - (X01 * X10 * X22 * X33) - (X01 * X12 * X23 * X30) - (X01 * X13 * X20 * X32)
+                    - (X02 * X10 * X23 * X31) - (X02 * X11 * X20 * X33) - (X02 * X13 * X21 * X30)
+                    - (X03 * X10 * X21 * X32) - (X03 * X11 * X22 * X30) - (X03 * X12 * X20 * X31);
             }
         }
 
