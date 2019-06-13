@@ -44,7 +44,7 @@ namespace PGCoreTest.Math
         public void TestMutiply()
         {
             {
-                var m1 = new Matrix2d(1,2,3,4);
+                var m1 = new Matrix2d(1, 2, 3, 4);
                 var m2 = new Matrix2d(5, 6, 7, 8);
                 var actual = m1 * m2;
                 var expected = new Matrix2d(19, 22, 43, 50);

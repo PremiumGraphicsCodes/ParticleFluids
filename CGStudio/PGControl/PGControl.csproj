@@ -132,6 +132,14 @@
       <DependentUpon>Cylinder3dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Math\Cylinder3dViewModel.cs" />
+    <Compile Include="Math\Matrix2dViewModel.cs" />
+    <Compile Include="Math\Matrix2dView.xaml.cs">
+      <DependentUpon>Matrix2dView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Math\Matrix3dView.xaml.cs">
+      <DependentUpon>Matrix3dView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Math\Matrix3dViewModel.cs" />
     <Compile Include="Math\Matrix4dView.xaml.cs">
       <DependentUpon>Matrix4dView.xaml</DependentUpon>
     </Compile>
@@ -180,6 +188,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Math\Cylinder3dView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Math\Matrix2dView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Math\Matrix3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
