@@ -44,11 +44,31 @@ namespace PGCoreTest.Math
         [TestMethod]
         public void TestToRotationMatrix()
         {
-            var angle = 0.5 * System.Math.PI;
-            var q = new Quaternion(new Vector3d(-1.0, 0.0, 0.0), angle);
-            var actual = q.ToRotationMatrix();
-            var expected = Matrix3d.RotationX(angle);
-            Assert.IsTrue(expected.IsSame(actual, 1.0e-6));
+            {
+                var angle = 0.5 * System.Math.PI;
+                var q = new Quaternion(new Vector3d(1.0, 0.0, 0.0), angle);
+                var actual = q.ToRotationMatrix();
+                var expected = Matrix3d.RotationX(angle);
+                Assert.IsTrue(expected.IsSame(actual, 1.0e-6));
+            }
+
+            {
+                var angle = 0.5 * System.Math.PI;
+                var q = new Quaternion(new Vector3d(0.0, 1.0, 0.0), angle);
+                var actual = q.ToRotationMatrix();
+                var expected = Matrix3d.RotationY(angle);
+                Assert.IsTrue(expected.IsSame(actual, 1.0e-6));
+            }
+
+            {
+                var angle = 0.5 * System.Math.PI;
+                var q = new Quaternion(new Vector3d(0.0, 0.0, 1.0), angle);
+                var actual = q.ToRotationMatrix();
+                var expected = Matrix3d.RotationZ(angle);
+                Assert.IsTrue(expected.IsSame(actual, 1.0e-6));
+            }
+
+
         }
     }
 }

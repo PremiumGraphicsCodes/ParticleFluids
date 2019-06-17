@@ -43,6 +43,10 @@
 
         public Matrix3d ToRotationMatrix()
         {
+            var x = -this.x;
+            var y = -this.y;
+            var z = -this.z;
+
             var m11 = 1.0 - 2.0 * y * y - 2.0 * z * z;
             var m12 = 2.0 * x * y + 2.0 * w * z;
             var m13 = 2.0 * x * z - 2.0 * w * y;
