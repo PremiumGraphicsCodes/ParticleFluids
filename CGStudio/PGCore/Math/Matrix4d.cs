@@ -44,6 +44,17 @@
             return new Matrix4d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
 
+        public static Matrix4d Identity()
+        {
+            return new Matrix4d
+                (
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+                );
+        }
+
         public static Matrix4d operator*(Matrix4d lhs, Matrix4d rhs)
         {
             var m = Matrix4d.Zero();
