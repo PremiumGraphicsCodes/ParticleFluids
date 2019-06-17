@@ -66,61 +66,67 @@
                 );
         }
 
-        public static Quaternion FromRotationMatrix(Matrix3d m)
+        public static Quaternion FromRotationMatrix(Matrix3d mat)
         {
-            // 最大成分を検索
-            var elem = new double[4]; // 0:x, 1:y, 2:z, 3:w
-            elem[0] = m.X00 - m.X11 - m.X22 + 1.0;
-            elem[1] = -m.X00 + m.X11 - m.X22 + 1.0f;
-            elem[2] = -m.X00 - m.X11 + m.X22 + 1.0f;
-            elem[3] = m.X00 + m.X11 + m.X22 + 1.0f;
+            Quaternion q = new Quaternion();
 
-            int biggestIndex = 0;
-            for (int i = 1; i < 4; i++)
+            double s;
+            double tr = mat.X00 + mat.X11 + mat.X22 + 1.0f;
+            if (tr >= 1.0f)
             {
-                if (elem[i] > elem[biggestIndex])
+                s = 0.5f / System.Math.Sqrt(tr);
+                q.w = 0.25f / s;
+                q.x = (mat.X12 - mat.X21) * s;
+                q.y = (mat.X20 - mat.X02) * s;
+                q.z = (mat.X01 - mat.X10) * s;
+                return q;
+            }
+            else
+            {
+                double max;
+                if (mat.X11 > mat.X22)
                 {
-                    biggestIndex = i;
+                    max = mat.X11;
+                }
+                else
+                {
+                    max = mat.X22;
+                }
+
+                if (max < mat.X00)
+                {
+                    s = System.Math.Sqrt(mat.X00 - (mat.X11 + mat.X22) + 1.0f);
+                    double x = s * 0.5;
+                    s = 0.5f / s;
+                    q.x = x;
+                    q.y = (mat.X01 + mat.X10) * s;
+                    q.z = (mat.X20 + mat.X02) * s;
+                    q.w = (mat.X12 - mat.X21) * s;
+                    return q;
+                }
+                else if (max == mat.X11)
+                {
+                    s = System.Math.Sqrt(mat.X11 - (mat.X22 + mat.X00) + 1.0f);
+                    double y = s * 0.5;
+                    s = 0.5f / s;
+                    q.x = (mat.X01 + mat.X10) * s;
+                    q.y = y;
+                    q.z = (mat.X12 + mat.X21) * s;
+                    q.w = (mat.X20 - mat.X02) * s;
+                    return q;
+                }
+                else
+                {
+                    s = System.Math.Sqrt(mat.X22 - (mat.X00 + mat.X11) + 1.0f);
+                    double z = s * 0.5;
+                    s = 0.5f / s;
+                    q.x = (mat.X20 + mat.X02) * s;
+                    q.y = (mat.X12 + mat.X21) * s;
+                    q.z = z;
+                    q.w = (mat.X01 - mat.X10) * s;
+                    return q;
                 }
             }
-
-            if (elem[biggestIndex] < 0.0f) {
-                return new Quaternion(); // 引数の行列に間違いあり！
-            }
-
-            // 最大要素の値を算出
-            var v = System.Math.Sqrt(elem[biggestIndex]) * 0.5;
-            var mult = 0.25f / v;
-
-            var q = new Quaternion();
-            switch (biggestIndex)
-            {
-                case 0: // x
-                    q.x = v;
-                    q.y = (m.X01 + m.X10) * mult;
-                    q.z = (m.X20 + m.X02) * mult;
-                    q.w = (m.X12 - m.X21) * mult;
-                    break;
-                case 1: // y
-                    q.y = v;
-                    q.x = (m.X10 + m.X10) * mult;
-                    q.z = (m.X12 + m.X21) * mult;
-                    q.w = (m.X20 - m.X02) * mult;
-                    break;
-                case 2: // z
-                    q.x = (m.X20 + m.X02) * mult;
-                    q.y = (m.X12 + m.X21) * mult;
-                    q.z = v;
-                    q.w = (m.X01 - m.X10) * mult;
-                    break;
-                case 3: // w
-                    q.x = (m.X12 - m.X21) * mult;
-                    q.y = (m.X20 - m.X02) * mult;
-                    q.z = (m.X01 - m.X10) * mult;
-                    q.w = v;
-                    break;
-            }
-            return -q;
         }
 
         public double Norm

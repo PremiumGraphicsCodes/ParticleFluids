@@ -11,8 +11,8 @@ namespace PGCoreTest.Math
         public void TestFromRotationMatrix()
         {
             {
-                var axis = new Vector3d(1, 0, 0);
-                var angle = System.Math.PI / 0.5;
+                var axis = new Vector3d(-1, 0, 0);
+                var angle = System.Math.PI * 0.25;
                 var expected = new Quaternion(axis, angle);
 
                 var m = Matrix3d.RotationX(angle);
@@ -21,8 +21,29 @@ namespace PGCoreTest.Math
             }
 
             {
-                var axis = new Vector3d(0, 1, 0);
-                var angle = System.Math.PI / 0.5;
+                var axis = new Vector3d(-1, 0, 0);
+                var angle = System.Math.PI * 0.5;
+                var expected = new Quaternion(axis, angle);
+
+                var m = Matrix3d.RotationX(angle);
+                var actual = Quaternion.FromRotationMatrix(m);
+                Assert.IsTrue(expected.IsSame(actual, 1.0e-6));
+            }
+
+            {
+                var axis = new Vector3d(1, 0, 0);
+                var angle = System.Math.PI * 0.75;
+                var expected = new Quaternion(axis, angle);
+
+                var m = Matrix3d.RotationX(angle);
+                var actual = Quaternion.FromRotationMatrix(m);
+                Assert.IsTrue(expected.IsSame(actual, 1.0e-3));
+            }
+
+
+            {
+                var axis = new Vector3d(0, -1, 0);
+                var angle = System.Math.PI * 0.5;
                 var expected = new Quaternion(axis, angle);
 
                 var m = Matrix3d.RotationY(angle);
@@ -31,8 +52,8 @@ namespace PGCoreTest.Math
             }
 
             {
-                var axis = new Vector3d(0, 0, 1);
-                var angle = System.Math.PI / 0.5;
+                var axis = new Vector3d(0, 0, -1);
+                var angle = System.Math.PI * 0.5;
                 var expected = new Quaternion(axis, angle);
 
                 var m = Matrix3d.RotationZ(angle);
