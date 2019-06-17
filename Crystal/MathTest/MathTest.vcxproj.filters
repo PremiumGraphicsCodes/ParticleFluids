@@ -27,6 +27,7 @@
     </ClCompile>
     <ClCompile Include="Box2dTest.cpp" />
     <ClCompile Include="GaussianTest.cpp" />
+    <ClCompile Include="Matrix4dTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
