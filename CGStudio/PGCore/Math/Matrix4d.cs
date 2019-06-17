@@ -55,6 +55,49 @@
                 );
         }
 
+        public static Matrix4d RotationX(double angle)
+        {
+            var sin = System.Math.Sin(angle);
+            var cos = System.Math.Cos(angle);
+
+            return new Matrix4d
+                (
+                1.0, 0.0, 0.0, 0.0,
+                0.0, cos,-sin, 0.0,
+                0.0, sin, cos, 0.0,
+                0.0, 0.0, 0.0, 1.0
+                );
+        }
+
+        public static Matrix4d RotationY(double angle)
+        {
+            var sin = System.Math.Sin(angle);
+            var cos = System.Math.Cos(angle);
+
+            return new Matrix4d
+                (
+                 cos, 0.0, sin, 0.0,
+                 0.0, 1.0, 0.0, 0.0,
+                -sin, 0.0, cos, 0.0,
+                0.0, 0.0, 0.0, 1.0
+                );
+        }
+
+        public static Matrix4d RotationZ(double angle)
+        {
+            var sin = System.Math.Sin(angle);
+            var cos = System.Math.Cos(angle);
+
+            return new Matrix4d
+                (
+                cos, -sin, 0.0, 0.0,
+                sin, cos, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                0.0, 0.0, 0.0, 1.0
+                );
+        }
+
+
         public static Matrix4d operator*(Matrix4d lhs, Matrix4d rhs)
         {
             var m = Matrix4d.Zero();
@@ -156,10 +199,11 @@
                 var x22 = X33 * (X00*X11 - X01*X10) + X30 * (X01*X13 - X03*X11) + X31 * (X03*X10 - X00*X13);
                 var x23 = X03 * (X10*X21 - X11*X20) + X00 * (X11*X23 - X13*X21) + X01 * (X13*X20 - X10*X23);
 
-                var x30 = X10 + X11 + X12;
-                var x31 = X20 + X21 + X22;
-                var x32 = X30 + X31 + X32;
-                var x33 = X00 + X01 + X02;
+                var x30 = X10 * (X21*X32 - X22*X30) + X11 * (X22*X30 - X20*X32) + X12 * (X20*X31 - X21*X30);
+                var x31 = X20 * (X31*X02 - X32*X01) + X21 * (X32*X00 - X30*X02) + X22 * (X30*X01 - X31*X00);
+                var x32 = X30 * (X01*X12 - X02*X11) + X31 * (X02*X10 - X00*X12) + X32 * (X00*X11 - X01*X10);
+                var x33 = X00 * (X11*X22 - X12*X21) + X01 * (X12*X20 - X10*X22) + X02 * (X10*X21 - X11*X20);
+
                 return new Matrix4d
                     (
                     x00, x01, x02, x03,

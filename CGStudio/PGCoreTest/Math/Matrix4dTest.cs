@@ -64,19 +64,17 @@ namespace PGCoreTest.Math
             }
         }
 
-        /*
         [TestMethod]
         public void TestInverse()
         {
             {
-                var matrix = new Matrix3d();
+                var matrix = new Matrix4d();
                 var actual = matrix.Inverse;
-                var expected = Matrix3d.Identity();
+                var expected = Matrix4d.Identity();
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
         }
 
-        */
         [TestMethod]
         public void TestMultipyByScalar()
         {
