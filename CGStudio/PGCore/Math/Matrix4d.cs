@@ -71,6 +71,24 @@
             return m;
         }
 
+        public static Matrix4d operator*(Matrix4d m, double s)
+        {
+            var result = new Matrix4d();
+            for (int i = 0; i < 4; ++i)
+            {
+                for (int j = 0; j < 4; ++j)
+                {
+                    result.x[i, j] = m.x[i, j] * s;
+                }
+            }
+            return result;
+        }
+
+        public static Matrix4d operator /(Matrix4d m, double s)
+        {
+            return m * (1.0 / s);
+        }
+
         public bool IsSame(Matrix4d rhs, double tolerance)
         {
             for (int i = 0; i < 4; ++i)
@@ -115,30 +133,33 @@
             }
         }
 
-        /*
         public Matrix4d Inverse
         {
             get
             {
                 var det = Determinant;
-                var x00 =
-                     (X11 * X22 * X33) + (X12 * X23 * X31) + (X13 * X21 * X32)
-                    -(X13 * X22 * X31) - (X12 * X21 * X33) -(X11 * X23 * X32);
-                var x01 =
-                    -(X01 * X22 * X33) - (X02 * X23 * X31) - (X03 * X21 * X32)
-                var x02 = X01 * X12 - X02 * X11;
-                var x10 = X12 * X20 - X10 * X22;
-                var x11 = X22 * X00 - X10 * X02;
-                var x12 = X02 * X10 - X00 * X12;
-                var x20 = X01 * X21 - X11 * X20;
-                var x21 = X20 * X01 - X21 * X00;
-                var x33 =
-                     (X00 * X11 * X22) + (X01 * X12 * X20) + (X02 * X10 * X21)
-                    -(X02 * X11 * X20) - (X01 * X10 * X22) - (X00 * X12 * X21);
-                return new Matrix4d(x00, x01, x02, x10, x11, x12, x20, x21, x22) / det;
+                var x00 = X11 * (X22*X33 - X23*X32) + X12 * (X23*X30 - X21*X33) +X13 *(X21*X32 -X22*X31);
+                var x01 = X21; //* ();
+                var x02 = X31; //* ();
+                var x03 = X12; //* ();
+
+                var x10 = X12;// *
+                var x11 = X22;// * X00 - X10 * X02;
+                var x12 = X32;// * X10 - X00 * X12;
+                var x13 = X02;//
+
+                var x20 = 0.0;
+                var x21 = 0.0;
+                var x22 = 0.0;
+                var x23 = 0.0;
+
+                var x30 = 0.0;
+                var x31 = 0.0;
+                var x32 = 0.0;
+                var x33 = 0.0;
+                return new Matrix4d(x00, x01, x02, x03, x10, x11, x12, x13, x20, x21, x22, x23, x30, x31, x32, x33) / det;
             }
         }
-        */
 
 
         public double X00

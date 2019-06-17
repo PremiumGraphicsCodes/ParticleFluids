@@ -96,19 +96,6 @@
             return true;
         }
 
-        public static Matrix3d operator*(Matrix3d m, double s)
-        {
-            var result = new Matrix3d();
-            for (int i = 0; i < 3; ++i)
-            {
-                for (int j = 0; j < 3; ++j)
-                {
-                    result.x[i, j] = m.x[i, j] * s;
-                }
-            }
-            return result;
-        }
-
         public static Matrix3d operator*(Matrix3d lhs, Matrix3d rhs)
         {
             var m = Matrix3d.Zero();
@@ -123,6 +110,19 @@
                 }
             }
             return m;
+        }
+
+        public static Matrix3d operator *(Matrix3d m, double s)
+        {
+            var result = new Matrix3d();
+            for (int i = 0; i < 3; ++i)
+            {
+                for (int j = 0; j < 3; ++j)
+                {
+                    result.x[i, j] = m.x[i, j] * s;
+                }
+            }
+            return result;
         }
 
         public static Matrix3d operator/(Matrix3d m, double s)
