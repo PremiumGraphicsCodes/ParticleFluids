@@ -57,6 +57,7 @@
     <Compile Include="Math\Cylinder3dTest.cs" />
     <Compile Include="Math\Matrix4dTest.cs" />
     <Compile Include="Math\Circle2dTest.cs" />
+    <Compile Include="Math\QuaternionTest.cs" />
     <Compile Include="Math\Vector2dTest.cs" />
     <Compile Include="Math\Vector3dTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
