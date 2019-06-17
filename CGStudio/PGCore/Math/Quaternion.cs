@@ -25,8 +25,8 @@
 
         public Quaternion(Vector3d axis, double angle)
         {
-            var s = System.Math.Sin(angle);
-            w = System.Math.Cos(angle);
+            var s = System.Math.Sin(angle * 0.5);
+            w = System.Math.Cos(angle * 0.5);
             x = axis.X * s;
             y = axis.Y * s;
             z = axis.Z * s;
@@ -62,7 +62,7 @@
                 );
         }
 
-        public void FromRotationMatrix(Matrix3d m)
+        public static Quaternion FromRotationMatrix(Matrix3d m)
         {
             // 最大成分を検索
             var elem = new double[4]; // 0:x, 1:y, 2:z, 3:w
@@ -81,40 +81,42 @@
             }
 
             if (elem[biggestIndex] < 0.0f) {
-                return; // 引数の行列に間違いあり！
+                return new Quaternion(); // 引数の行列に間違いあり！
             }
 
             // 最大要素の値を算出
             var v = System.Math.Sqrt(elem[biggestIndex]) * 0.5;
             var mult = 0.25f / v;
 
+            var q = new Quaternion();
             switch (biggestIndex)
             {
                 case 0: // x
-                    x = v;
-                    y = (m.X01 + m.X10) * mult;
-                    z = (m.X20 + m.X02) * mult;
-                    w = (m.X12 - m.X21) * mult;
+                    q.x = v;
+                    q.y = (m.X01 + m.X10) * mult;
+                    q.z = (m.X20 + m.X02) * mult;
+                    q.w = (m.X12 - m.X21) * mult;
                     break;
                 case 1: // y
-                    y = v;
-                    x = (m.X10 + m.X10) * mult;
-                    z = (m.X12 + m.X21) * mult;
-                    w = (m.X20 - m.X02) * mult;
+                    q.y = v;
+                    q.x = (m.X10 + m.X10) * mult;
+                    q.z = (m.X12 + m.X21) * mult;
+                    q.w = (m.X20 - m.X02) * mult;
                     break;
                 case 2: // z
-                    x = (m.X20 + m.X02) * mult;
-                    y = (m.X12 + m.X21) * mult;
-                    z = v;
-                    w = (m.X01 - m.X10) * mult;
+                    q.x = (m.X20 + m.X02) * mult;
+                    q.y = (m.X12 + m.X21) * mult;
+                    q.z = v;
+                    q.w = (m.X01 - m.X10) * mult;
                     break;
                 case 3: // w
-                    x = (m.X12 - m.X21) * mult;
-                    y = (m.X20 - m.X02) * mult;
-                    z = (m.X01 - m.X10) * mult;
-                    w = v;
+                    q.x = (m.X12 - m.X21) * mult;
+                    q.y = (m.X20 - m.X02) * mult;
+                    q.z = (m.X01 - m.X10) * mult;
+                    q.w = v;
                     break;
             }
+            return -q;
         }
 
         public double Norm
