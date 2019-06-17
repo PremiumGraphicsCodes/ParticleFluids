@@ -78,6 +78,27 @@ namespace PGCoreTest.Math
 
         */
         [TestMethod]
+        public void TestMultipyByScalar()
+        {
+            var matrix = new Matrix4d
+                (
+                1, 2, 3, 4,
+                11, 12, 13, 14,
+                21, 22, 23, 24,
+                31, 32, 33, 34
+                );
+            var actual = matrix * 10;
+            var expected = new Matrix4d
+                (
+                10, 20, 30, 40,
+                110, 120, 130, 140,
+                210, 220, 230, 240,
+                310, 320, 330, 340
+                );
+            Assert.IsTrue(expected.IsSame(actual, tolerance));
+        }
+
+        [TestMethod]
         public void TestMultipy()
         {
             var lhs = new Matrix4d

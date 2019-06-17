@@ -11,7 +11,7 @@ namespace PGCoreTest.Math
         public void TestLength()
         {
             var l = new Line3d(new Vector3d(0, 0, 0), new Vector3d(10, 0, 0));
+            Assert.AreEqual(l.Length, 10.0);
         }
-
     }
 }
