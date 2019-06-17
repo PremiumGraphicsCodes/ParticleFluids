@@ -27,5 +27,5 @@ TEST( Matrix4dTest, TestMultipy )
 		16790, 19580, 22370, 25160,
 		24090, 28180, 32270, 36360
 	);
-	EXPECT_EQ(lhs, rhs);
+	EXPECT_EQ(expected, actual);
 }
