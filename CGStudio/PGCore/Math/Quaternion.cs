@@ -66,6 +66,65 @@
                 );
         }
 
+        public static Quaternion FromRotationMatrix(Matrix3d m)
+        {
+            // 最大成分を検索
+            var elem = new double[4]; // 0:x, 1:y, 2:z, 3:w
+            elem[0] = m.X00 - m.X11 - m.X22 + 1.0;
+            elem[1] = -m.X00 + m.X11 - m.X22 + 1.0f;
+            elem[2] = -m.X00 - m.X11 + m.X22 + 1.0f;
+            elem[3] = m.X00 + m.X11 + m.X22 + 1.0f;
+
+            int biggestIndex = 0;
+            for (int i = 1; i < 4; i++)
+            {
+                if (elem[i] > elem[biggestIndex])
+                {
+                    biggestIndex = i;
+                }
+            }
+
+            if (elem[biggestIndex] < 0.0f)
+            {
+                return new Quaternion(); // 引数の行列に間違いあり！
+            }
+
+            // 最大要素の値を算出
+            var v = System.Math.Sqrt(elem[biggestIndex]) * 0.5;
+            var mult = 0.25f / v;
+
+            var q = new Quaternion();
+            switch (biggestIndex)
+            {
+                case 0: // x
+                    q.x = v;
+                    q.y = (m.X01 + m.X10) * mult;
+                    q.z = (m.X20 + m.X02) * mult;
+                    q.w = (m.X21 - m.X12) * mult;
+                    break;
+                case 1: // y
+                    q.y = v;
+                    q.x = (m.X10 + m.X10) * mult;
+                    q.z = (m.X12 + m.X21) * mult;
+                    q.w = (m.X02 - m.X20) * mult;
+                    break;
+                case 2: // z
+                    q.x = (m.X20 + m.X02) * mult;
+                    q.y = (m.X12 + m.X21) * mult;
+                    q.z = v;
+                    q.w = (m.X10 - m.X01) * mult;
+                    break;
+                case 3: // w
+                    q.x = (m.X21 - m.X12) * mult;
+                    q.y = (m.X02 - m.X20) * mult;
+                    q.z = (m.X10 - m.X01) * mult;
+                    q.w = v;
+                    break;
+            }
+            return q;
+        }
+
+        /*
         public static Quaternion FromRotationMatrix(Matrix3d mat)
         {
             Quaternion q = new Quaternion();
@@ -128,6 +187,7 @@
                 }
             }
         }
+        */
 
         public double Norm
         {

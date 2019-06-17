@@ -11,7 +11,7 @@ namespace PGCoreTest.Math
         public void TestFromRotationMatrix()
         {
             {
-                var axis = new Vector3d(-1, 0, 0);
+                var axis = new Vector3d(1, 0, 0);
                 var angle = System.Math.PI * 0.25;
                 var expected = new Quaternion(axis, angle);
 
@@ -21,7 +21,7 @@ namespace PGCoreTest.Math
             }
 
             {
-                var axis = new Vector3d(-1, 0, 0);
+                var axis = new Vector3d(1, 0, 0);
                 var angle = System.Math.PI * 0.5;
                 var expected = new Quaternion(axis, angle);
 
@@ -42,7 +42,7 @@ namespace PGCoreTest.Math
 
 
             {
-                var axis = new Vector3d(0, -1, 0);
+                var axis = new Vector3d(0, 1, 0);
                 var angle = System.Math.PI * 0.5;
                 var expected = new Quaternion(axis, angle);
 
@@ -52,7 +52,7 @@ namespace PGCoreTest.Math
             }
 
             {
-                var axis = new Vector3d(0, 0, -1);
+                var axis = new Vector3d(0, 0, 1);
                 var angle = System.Math.PI * 0.5;
                 var expected = new Quaternion(axis, angle);
 
