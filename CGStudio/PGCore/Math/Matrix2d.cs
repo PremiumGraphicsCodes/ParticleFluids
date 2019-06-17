@@ -72,6 +72,19 @@
             return m * (1.0 / s);
         }
 
+        public static Matrix2d Rotation(double angle)
+        {
+            var sin = System.Math.Sin(angle);
+            var cos = System.Math.Cos(angle);
+
+            return new Matrix2d
+                (
+                cos,-sin,
+                sin, cos
+                );
+        }
+
+
         public double X00
         {
             get { return x[0, 0]; }
