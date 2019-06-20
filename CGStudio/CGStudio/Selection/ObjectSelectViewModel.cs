@@ -13,11 +13,6 @@ namespace PG.CGStudio.Object.Select
 
         public ReactiveCommand PickCommand { get; }
 
-        public List<ObjectModel> SelectedObjects
-        {
-            get { return Picker.PickedObjects; }
-        }
-
         private ObjectPickUICtrl Picker { get; }
 
         public ObjectSelectViewModel()

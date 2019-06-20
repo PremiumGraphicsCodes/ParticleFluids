@@ -9,16 +9,16 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos;
 
-        private readonly List<ObjectModel> Objects;
+        private readonly List<int> ObjectIds;
 
         public ObjectScaleUICtrl()
         {
-            Objects = new List<ObjectModel>();
+            ObjectIds = new List<int>();
         }
 
-        public ObjectScaleUICtrl(List<ObjectModel> objects)
+        public ObjectScaleUICtrl(List<int> objects)
         {
-            Objects = objects;
+            ObjectIds = objects;
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -50,9 +50,13 @@ namespace PG.CGStudio.UICtrl
             var matrix = m1 * m2;
             */
 
-            foreach (var o in Objects)
+            foreach (var id in ObjectIds)
             {
-                o.Transform(m1);
+                var o = MainModel.Instance.Repository.Objects.FindObjectById(id);
+                if (o != null)
+                {
+                    o.Transform(m1);
+                }
             }
             canvas.Update(MainModel.Instance.Repository);
             canvas.Render();

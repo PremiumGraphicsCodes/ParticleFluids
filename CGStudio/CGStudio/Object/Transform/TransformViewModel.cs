@@ -3,6 +3,7 @@ using PG.CGStudio.UICtrl;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
+using System.Collections.Generic;
 
 namespace PG.CGStudio.Object.Transform
 {
@@ -28,13 +29,21 @@ namespace PG.CGStudio.Object.Transform
 
         private void OnMove()
         {
-            var moveCtrl = new ObjectMoveUICtrl(SelectViewModel.SelectedObjects);
+            var ids = new List<int>
+            {
+                SelectViewModel.Id.Value
+            };
+            var moveCtrl = new ObjectMoveUICtrl(ids);
             Canvas3d.Instance.UICtrl = moveCtrl;
         }
 
         private void OnScale()
         {
-            var moveCtrl = new ObjectScaleUICtrl(SelectViewModel.SelectedObjects);
+            var ids = new List<int>
+            {
+                SelectViewModel.Id.Value
+            };
+            var moveCtrl = new ObjectScaleUICtrl(ids);
             Canvas3d.Instance.UICtrl = moveCtrl;
         }
 

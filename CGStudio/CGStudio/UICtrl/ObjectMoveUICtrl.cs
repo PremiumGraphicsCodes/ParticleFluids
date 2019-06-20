@@ -7,16 +7,16 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos;
 
-        private List<ObjectModel> Objects;
+        private List<int> ObjectIds;
 
         public ObjectMoveUICtrl()
         {
-            Objects = new List<ObjectModel>();
+            ObjectIds = new List<int>();
         }
 
-        public ObjectMoveUICtrl(List<ObjectModel> objects)
+        public ObjectMoveUICtrl(List<int> objects)
         {
-            Objects = objects;
+            ObjectIds = objects;
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -48,9 +48,13 @@ namespace PG.CGStudio.UICtrl
             var matrix = m2 * m1;
             */
 
-            foreach(var o in Objects)
+            foreach(var id in ObjectIds)
             {
-                o.Move(new Vector3d(v, 0.0));
+                var o = MainModel.Instance.Repository.Objects.FindObjectById(id);
+                if (o != null)
+                {
+                    o.Move(new Vector3d(v, 0.0));
+                }
             }
             this.prevPos = position;
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
