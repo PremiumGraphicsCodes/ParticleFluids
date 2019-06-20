@@ -33,7 +33,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    positions.Add(cylinder.GetPosition(u,v));
+                    positions.Add(cylinder.GetPosition(1.0, u, v));
                 }
             }
         }

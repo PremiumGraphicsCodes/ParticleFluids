@@ -55,6 +55,17 @@ int ObjectRepositoryAdapter::AddWireFrame(PG::Core::Shape::WireFrame^ src, PG::C
 
 int ObjectRepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src, System::String^ name)
 {
+	auto vertices = src->Vertices;
+
+	/*
+	Crystal::Shape::PolygonMeshBuilder builder;
+	auto vertexFactory = builder.getVertexFactory();
+	for (int i = 0; i < vertices->Count; ++i) {
+		auto p = vertexFactory->createPosition(Converter::toCpp(vertices[i]->Position));
+		auto n = vertexFactory->createNormal(Converter::toCpp(vertices[i]->No))
+		vs.push_back()
+	}
+	*/
 	/*
 	auto triangles = src->Triangles;
 	std::vector<Crystal::Math::Triangle3d> ts;
@@ -63,7 +74,6 @@ int ObjectRepositoryAdapter::AddPolygonMesh(PG::Core::Shape::PolygonMesh^ src, S
 		ts.push_back(t);
 	}
 	
-	Crystal::Shape::PolygonMeshBuilder builder;
 	builder.
 	//auto polygonMesh = new Crystal::Shape::PolygonMesh()
 	*/

@@ -52,7 +52,7 @@ namespace PG.Core.Shape
                 for(int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    vertices[i,j] = new Vertex( cylinder.GetPosition(u, v) );
+                    vertices[i,j] = new Vertex( cylinder.GetPosition(1.0, u, v) );
                 }
             }
             for(int i = 0; i < udiv-1; ++i)

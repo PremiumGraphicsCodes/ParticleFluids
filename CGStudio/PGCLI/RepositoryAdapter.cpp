@@ -19,6 +19,7 @@ RepositoryAdapter::RepositoryAdapter() :
 	instance(new Crystal::UI::Repository())
 {
 	objects = gcnew ObjectRepositoryAdapter(instance->getObjects());
+	items = gcnew ObjectRepositoryAdapter(instance->getItems());
 	appearance = gcnew AppearanceObjectRepositoryAdapter(instance->getAppearances());
 }
 

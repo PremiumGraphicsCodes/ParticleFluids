@@ -36,13 +36,22 @@
             this.center = center;
         }
 
-        public Vector3d GetPosition(double u, double v)
+        public Vector3d GetPosition(double r, double u, double v)
         {
             var angle = u * 2.0 * System.Math.PI;
-            var x = radius * System.Math.Cos(angle);
-            var y = radius * System.Math.Sin(angle);
+            var x = r * radius * System.Math.Cos(angle);
+            var y = r * radius * System.Math.Sin(angle);
             var z = height * v;
             return new Vector3d(x, y, z);
         }
+
+        public Vector3d GetNormal(double u, double v)
+        {
+            var p1 = GetPosition(1.0, u, v);
+            var p2 = GetPosition(0.0, u, v);
+            var vv = p1 - p2;
+            return vv.Normalized;
+        }
+
     }
 }

@@ -34,7 +34,10 @@ namespace PG.Core.Shape
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
-                    vertices[u, v] = new Vertex( sphere.GetPosition(u, v) );
+                    var p = sphere.GetPosition(u, v);
+                    var n = sphere.GetNormal(u, v);
+                    var t = new Vector2d(uu, vv);
+                    vertices[u, v] = new Vertex(p, n, t);
                 }
             }
 
@@ -60,7 +63,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
-                    vertices[u, v] = new Vertex( cylinder.GetPosition(u, v) );
+                    vertices[u, v] = new Vertex( cylinder.GetPosition(1.0, u, v) );
                 }
             }
 

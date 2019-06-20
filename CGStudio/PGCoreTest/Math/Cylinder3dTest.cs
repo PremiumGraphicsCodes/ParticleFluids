@@ -15,12 +15,12 @@ namespace PGCoreTest.Math
             var cylinder = new Cylinder3d();
             {
                 var expected = Vector3d.UnitX();
-                var actual = cylinder.GetPosition(0.0, 0.0);
+                var actual = cylinder.GetPosition(1.0, 0.0, 0.0);
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
             {
                 var expected = new Vector3d(-1, 0, 0);
-                var actual = cylinder.GetPosition(0.5, 0.0);
+                var actual = cylinder.GetPosition(1.0, 0.5, 0.0);
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
         }

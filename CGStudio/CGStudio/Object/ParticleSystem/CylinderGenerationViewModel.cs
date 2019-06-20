@@ -35,7 +35,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
             {
                 var u = random.NextDouble();
                 var v = random.NextDouble();
-                var pos = cylinder.GetPosition(u, v);
+                var pos = cylinder.GetPosition(1.0, u, v);
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);

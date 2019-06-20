@@ -33,5 +33,12 @@
             var z = radius * System.Math.Cos(theta);
             return new Vector3d(x, y, z);
         }
+
+        public Vector3d GetNormal(double u, double v)
+        {
+            var vv = GetPosition(u, v) - Center;
+            return vv.Normalized;
+        }
+
     }
 }
