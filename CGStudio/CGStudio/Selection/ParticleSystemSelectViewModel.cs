@@ -39,6 +39,8 @@ namespace PG.CGStudio.Selection
         {
             this.Id.Value = id.parentId;
             this.PointId.Value = id.childId;
+            var obj = MainModel.Instance.Repository.Objects.FindObjectById(id.parentId);
+            this.PositionViewModel.Value = obj.GetPosition(id.childId);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

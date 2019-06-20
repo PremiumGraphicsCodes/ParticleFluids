@@ -18,7 +18,8 @@ namespace PG.CGStudio
 
         public ReactiveProperty<bool> IsSelected { get; }
 
-        public ShapeType Type {
+        public ShapeType Type
+        {
             get { return Adapter.GetType(); }
         }
 
@@ -59,5 +60,11 @@ namespace PG.CGStudio
         {
             Adapter.Transform(m);
         }
+
+        public Vector3d GetPosition(int id)
+        {
+            return Adapter.GetPositionById(id);
+        }
+
     }
 }

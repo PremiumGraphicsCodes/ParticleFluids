@@ -4,6 +4,8 @@
 #include "ObjectAdapter.h"
 #include "Converter.h"
 
+#include "../../Crystal/Model/ParticleSystemObject.h"
+
 using namespace Crystal::Model;
 using namespace PG::CLI;
 
@@ -99,6 +101,17 @@ PG::Core::Shape::ShapeType ObjectAdapter::GetType()
 		assert(false);
 	}
 	return PG::Core::Shape::ShapeType::None;
+}
+
+PG::Core::Math::Vector3d^ ObjectAdapter::GetPositionById(int id)
+{
+	const auto type = instance->getType();
+	if (type == Crystal::Model::ObjectType::ParticleSystemObject) {
+		auto ps = static_cast<Crystal::Model::ParticleSystemObject*>(instance);
+		const auto& particles = ps->getShape()->getParticles();
+		return Converter::fromCpp( particles[id]->getPosition() );
+	}
+	return nullptr;
 }
 
 

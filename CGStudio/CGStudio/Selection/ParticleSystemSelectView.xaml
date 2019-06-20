@@ -18,7 +18,7 @@
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="PointId"/>
             <TextBox Text="{Binding PointId.Value}"/>
-            <math:Vector3dView DataContext="{Binding PositionViewModel}"/>
         </StackPanel>
+        <math:Vector3dView DataContext="{Binding PositionViewModel}"/>
     </StackPanel>
 </UserControl>

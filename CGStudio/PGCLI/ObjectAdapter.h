@@ -46,6 +46,8 @@ public:
 
 	PG::Core::Shape::ShapeType GetType();
 
+	PG::Core::Math::Vector3d^ GetPositionById(int id);
+
 internal:
 	ObjectAdapter(Crystal::Model::IObject* instance);
 
