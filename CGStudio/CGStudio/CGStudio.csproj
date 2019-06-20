@@ -140,10 +140,10 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Object\ParticleSystem\AppearanceViewModel.cs" />
-    <Compile Include="Object\Select\SelectView.xaml.cs">
+    <Compile Include="Selection\SelectView.xaml.cs">
       <DependentUpon>SelectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Object\Select\SelectViewModel.cs" />
+    <Compile Include="Selection\SelectViewModel.cs" />
     <Compile Include="Object\Transform\TransformView.xaml.cs">
       <DependentUpon>TransformView.xaml</DependentUpon>
     </Compile>
@@ -297,7 +297,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Object\Select\SelectView.xaml">
+    <Page Include="Selection\SelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
