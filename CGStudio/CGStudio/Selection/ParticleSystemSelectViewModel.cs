@@ -1,6 +1,9 @@
 ﻿using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
+using PG.Core.Math;
+using PG.Core.Shape;
+using PG.Core.UI;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -41,6 +44,14 @@ namespace PG.CGStudio.Selection
             this.PointId.Value = id.childId;
             var obj = MainModel.Instance.Repository.Objects.FindObjectById(id.parentId);
             this.PositionViewModel.Value = obj.GetPosition(id.childId);
+            var sphere = new Sphere3d(1.0, obj.GetPosition(id.childId));
+            var builder = new WireFrameBuilder();
+            builder.Build(sphere, 24, 24);
+            MainModel.Instance.Repository.Items.Add(builder.WireFrame, new WireAppearance(),"Item");
+            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            Canvas3d.Instance.Render();
+
+            Canvas3d.Instance.UICtrl = new CameraUICtrl(Canvas3d.Instance.Renderer.camera);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
