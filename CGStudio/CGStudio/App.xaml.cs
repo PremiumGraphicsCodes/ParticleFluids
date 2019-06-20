@@ -43,7 +43,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<TextureEditView>("Texture");
             containerRegistry.RegisterForNavigation<ObjectView>("Object");
 
-            containerRegistry.RegisterForNavigation<Object.Select.SelectView>("Select");
+            containerRegistry.RegisterForNavigation<Object.Select.ObjectSelectView>("Select");
             containerRegistry.RegisterForNavigation<Object.Transform.TransformView>("Transform");
         }
 

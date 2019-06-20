@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace PG.CGStudio.Object.Select
 {
-    public class SelectViewModel : BindableBase, INavigationAware
+    public class ObjectSelectViewModel : BindableBase, INavigationAware
     {
         public ReactiveProperty<int> Id { get; }
 
@@ -20,7 +20,7 @@ namespace PG.CGStudio.Object.Select
 
         private ObjectPickUICtrl Picker { get; }
 
-        public SelectViewModel()
+        public ObjectSelectViewModel()
         {
             Id = new ReactiveProperty<int>();
             PickCommand = new ReactiveCommand();

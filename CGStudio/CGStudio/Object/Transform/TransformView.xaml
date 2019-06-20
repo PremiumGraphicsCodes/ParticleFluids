@@ -10,7 +10,7 @@
         <local:TransformViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <select:SelectView DataContext="{Binding SelectViewModel}"/>
+        <select:ObjectSelectView DataContext="{Binding SelectViewModel}"/>
         <Button Content="Move" Command="{Binding MoveCommand}"/>
         <Button Content="Scale" Command="{Binding ScaleCommand}"/>
         <Button Content="Rotate" Command="{Binding RotateCommand}"/>

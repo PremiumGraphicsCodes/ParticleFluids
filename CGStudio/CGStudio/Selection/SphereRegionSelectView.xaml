@@ -11,7 +11,7 @@
         <local:SphereRegionSelectViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <select:SelectView DataContext="{Binding SelectViewModel}"/>
+        <select:ObjectSelectView DataContext="{Binding SelectViewModel}"/>
         <control:Sphere3dView/>
         <Button Content="Pick" Command="{Binding PickCommand}"/>
     </StackPanel>
