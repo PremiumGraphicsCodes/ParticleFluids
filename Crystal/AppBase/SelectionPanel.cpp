@@ -3,6 +3,7 @@
 #include "PositionSelectButton.h"
 #include "FaceSelectButton.h"
 #include "FaceGroupSelectButton.h"
+#include "SphereRegionSelectButton.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -16,4 +17,5 @@ SelectionPanel::SelectionPanel(const std::string& name, Repository* model, Canva
 	add(new PositionSelectButton("Position", model, canvas));
 	add(new FaceSelectButton("Face", model, canvas));
 	add(new FaceGroupSelectButton("FaceGroup", model, canvas));
+	add(new SphereRegionSelectButton("SphereRegion", model, canvas));
 }

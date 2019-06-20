@@ -20,6 +20,8 @@ public:
 
 	double getValue() const { return value; }
 
+	void setValue(const double value) { this->value = value; }
+
 private:
 	double value;
 };

@@ -43,6 +43,8 @@ public:
 
 	bool isOuter(const Vector3dd& v) const { return glm::distance(v, center) > radius; }
 
+	void moveTo(const Vector3dd& pos) { this->center = pos; }
+
 private:
 	Vector3dd center;
 	double radius;

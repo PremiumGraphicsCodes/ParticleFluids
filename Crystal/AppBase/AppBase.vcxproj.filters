@@ -189,6 +189,9 @@
     <ClCompile Include="FaceGroupSelectButton.cpp">
       <Filter>Selection\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="SphereRegionSelectButton.cpp">
+      <Filter>Selection\Region</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -456,6 +459,9 @@
     <ClInclude Include="FaceGroupView.h">
       <Filter>Object\PolygonMesh\View</Filter>
     </ClInclude>
+    <ClInclude Include="SphereRegionSelectButton.h">
+      <Filter>Selection\Region</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -529,6 +535,9 @@
     </Filter>
     <Filter Include="Object\PolygonMesh\View">
       <UniqueIdentifier>{7d47a270-b5be-48e3-ae02-5582727d03b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Selection\Region">
+      <UniqueIdentifier>{e4b2434e-80ef-408a-8240-0d6068d1138a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

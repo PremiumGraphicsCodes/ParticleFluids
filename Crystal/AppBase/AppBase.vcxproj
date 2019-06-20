@@ -33,6 +33,7 @@
     <ClCompile Include="ObjectPanel.cpp" />
     <ClCompile Include="FaceView.cpp" />
     <ClCompile Include="PolygonMeshView.cpp" />
+    <ClCompile Include="SphereRegionSelectButton.cpp" />
     <ClCompile Include="VertexView.cpp" />
     <ClCompile Include="ShaderPanel.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="ObjectPanel.h" />
     <ClInclude Include="FaceView.h" />
     <ClInclude Include="PolygonMeshView.h" />
+    <ClInclude Include="SphereRegionSelectButton.h" />
     <ClInclude Include="VertexView.h" />
     <ClInclude Include="Quad3dView.h" />
     <ClInclude Include="ShaderPanel.h" />

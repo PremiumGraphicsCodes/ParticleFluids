@@ -24,6 +24,12 @@ public:
 
 	Math::Sphere3d getValue() const { return Math::Sphere3d(center.getValue(), radius.getValue()); }
 
+	void setValue(const Math::Sphere3d& value)
+	{
+		this->center.setValue(value.getCenter());
+		this->radius.setValue(value.getRadius());
+	}
+
 private:
 	Vector3dView center;
 	DoubleView radius;
