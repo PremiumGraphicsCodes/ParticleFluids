@@ -1,4 +1,5 @@
 ﻿using PG.CGStudio.UICtrl;
+using PG.Core;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -33,9 +34,9 @@ namespace PG.CGStudio.Object.Select
             Picker.Action = OnPicked;
         }
 
-        private void OnPicked(int id)
+        private void OnPicked(ObjectId id)
         {
-            this.Id.Value = id;
+            this.Id.Value = id.parentId;
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

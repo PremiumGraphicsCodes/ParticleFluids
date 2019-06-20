@@ -192,6 +192,10 @@
     <Compile Include="Light\LightObjectRepository.cs" />
     <Compile Include="Material\MaterialObjectRepository.cs" />
     <Compile Include="Object\ObjectRepository.cs" />
+    <Compile Include="Selection\SphereRegionSelectView.xaml.cs">
+      <DependentUpon>SphereRegionSelectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Selection\SphereRegionSelectViewModel.cs" />
     <Compile Include="Texture\TextureEditView.xaml.cs">
       <DependentUpon>TextureEditView.xaml</DependentUpon>
     </Compile>
@@ -360,6 +364,10 @@
     <Page Include="OpenGL\OpenGLAdornment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Selection\SphereRegionSelectView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Texture\TextureEditView.xaml">
       <SubType>Designer</SubType>

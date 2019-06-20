@@ -1,4 +1,5 @@
-﻿using PG.Core.Math;
+﻿using PG.Core;
+using PG.Core.Math;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace PG.CGStudio.UICtrl
     {
         private List<ObjectModel> pickedObjects;
         private int mergin;
-        private Action<int> action;
+        private Action<ObjectId> action;
 
-        public Action<int> Action
+        public Action<ObjectId> Action
         {
             set { this.action = value; }
         }
@@ -44,7 +45,7 @@ namespace PG.CGStudio.UICtrl
 
                 if (action != null)
                 {
-                    action(id.parentId);
+                    action(id);
                 }
 
                 /*
