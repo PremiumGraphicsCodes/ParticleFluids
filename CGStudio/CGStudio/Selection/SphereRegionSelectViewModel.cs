@@ -30,7 +30,7 @@ namespace PG.CGStudio.Selection
 
         private void OnPickUI()
         {
-            var picker = new ObjectPickUICtrl(10);
+            var picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.All);
             picker.Action = OnPicked;
             Canvas3d.Instance.UICtrl = picker;
         }

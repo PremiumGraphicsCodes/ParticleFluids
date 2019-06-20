@@ -2,6 +2,7 @@
 using PG.CGStudio.Light;
 using PG.CGStudio.Material;
 using PG.CGStudio.Object;
+using PG.CGStudio.Selection;
 using PG.CGStudio.Texture;
 using PG.Control.Graphics;
 using Prism.Ioc;
@@ -45,6 +46,7 @@ namespace PG.CGStudio
 
             containerRegistry.RegisterForNavigation<Object.Select.ObjectSelectView>("Select");
             containerRegistry.RegisterForNavigation<Object.Transform.TransformView>("Transform");
+            containerRegistry.RegisterForNavigation<ParticleSystemSelectView>("ParticleSystemSelect");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

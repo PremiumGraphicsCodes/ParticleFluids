@@ -85,6 +85,22 @@ void ObjectAdapter::SetSelected(bool b)
 	instance->setSelected(b);
 }
 
+PG::Core::Shape::ShapeType ObjectAdapter::GetType()
+{
+	const auto type = instance->getType();
+	switch (type) {
+	case Crystal::Model::ObjectType::ParticleSystemObject :
+		return PG::Core::Shape::ShapeType::ParticleSystem;
+	case Crystal::Model::ObjectType::WireFrameObject :
+		return PG::Core::Shape::ShapeType::WireFrame;
+	case Crystal::Model::ObjectType::PolygonMeshObject :
+		return PG::Core::Shape::ShapeType::PolygonMesh;
+	default:
+		assert(false);
+	}
+	return PG::Core::Shape::ShapeType::None;
+}
+
 
 ObjectAdapter::ObjectAdapter(Crystal::Model::IObject* instance)
 {

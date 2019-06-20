@@ -44,6 +44,8 @@ public:
 
 	void SetSelected(bool b);
 
+	PG::Core::Shape::ShapeType GetType();
+
 internal:
 	ObjectAdapter(Crystal::Model::IObject* instance);
 

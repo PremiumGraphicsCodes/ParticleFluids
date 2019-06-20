@@ -192,6 +192,10 @@
     <Compile Include="Light\LightObjectRepository.cs" />
     <Compile Include="Material\MaterialObjectRepository.cs" />
     <Compile Include="Object\ObjectRepository.cs" />
+    <Compile Include="Selection\ParticleSystemSelectView.xaml.cs">
+      <DependentUpon>ParticleSystemSelectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Selection\ParticleSystemSelectViewModel.cs" />
     <Compile Include="Selection\SphereRegionSelectView.xaml.cs">
       <DependentUpon>SphereRegionSelectView.xaml</DependentUpon>
     </Compile>
@@ -362,6 +366,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OpenGL\OpenGLAdornment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Selection\ParticleSystemSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

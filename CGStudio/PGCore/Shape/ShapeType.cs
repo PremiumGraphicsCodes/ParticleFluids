@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PG.Core.Shape
+﻿namespace PG.Core.Shape
 {
     public enum ShapeType
     {
-        ParticleSystem,
-        WireFrame,
-        TriangleMesh,
+        None = 0x00,
+        ParticleSystem = 0x01,
+        WireFrame = 0x02,
+        PolygonMesh = 0x04,
+        All = 0xff,
     }
 }

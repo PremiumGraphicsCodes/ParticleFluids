@@ -1,4 +1,5 @@
 ﻿using PG.Core.Math;
+using PG.Core.Shape;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System;
@@ -16,6 +17,10 @@ namespace PG.CGStudio
         public ReactiveProperty<bool> IsVisible { get; }
 
         public ReactiveProperty<bool> IsSelected { get; }
+
+        public ShapeType Type {
+            get { return Adapter.GetType(); }
+        }
 
         public ObjectModel(PG.CLI.ObjectAdapter adapter)
         {

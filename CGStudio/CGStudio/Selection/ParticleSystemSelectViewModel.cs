@@ -1,26 +1,32 @@
 ﻿using PG.CGStudio.UICtrl;
+using PG.Control.Math;
 using PG.Core;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
-using System.Collections.Generic;
 
-namespace PG.CGStudio.Object.Select
+namespace PG.CGStudio.Selection
 {
-    public class ObjectSelectViewModel : BindableBase, INavigationAware
+    public class ParticleSystemSelectViewModel : BindableBase, INavigationAware
     {
         public ReactiveProperty<int> Id { get; }
 
+        public ReactiveProperty<int> PointId { get; }
+
         public ReactiveCommand PickCommand { get; }
+
+        public Vector3dViewModel PositionViewModel { get; }
 
         private ObjectPickUICtrl Picker { get; }
 
-        public ObjectSelectViewModel()
+        public ParticleSystemSelectViewModel()
         {
             Id = new ReactiveProperty<int>();
+            PointId = new ReactiveProperty<int>();
+            PositionViewModel = new Vector3dViewModel();
             PickCommand = new ReactiveCommand();
             PickCommand.Subscribe(OnPickUI);
-            Picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.All);
+            Picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.ParticleSystem);
         }
 
         private void OnPickUI()
@@ -32,6 +38,7 @@ namespace PG.CGStudio.Object.Select
         private void OnPicked(ObjectId id)
         {
             this.Id.Value = id.parentId;
+            this.PointId.Value = id.childId;
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
