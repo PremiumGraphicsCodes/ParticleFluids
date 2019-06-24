@@ -30,11 +30,11 @@ public:
 	{
 	}
 
-	Vector3dd getPosition(const double u, const double v) const override
+	Vector3dd getPosition(const double r, const double u, const double v) const override
 	{
 		const auto theta = u * 2.0 * PI;
-		const auto x = radius * ::cos(theta);
-		const auto y = radius * ::sin(theta);
+		const auto x = r * radius * ::cos(theta);
+		const auto y = r * radius * ::sin(theta);
 		const auto z = height * v - height * 0.5;
 		return center + Vector3dd(x, y, z);
 	}

@@ -23,7 +23,7 @@ public:
 
 	explicit Sphere3d(const Math::Box3d& boundingBox);
 
-	Vector3dd getPosition(const double u, const double v) const override;
+	Vector3dd getPosition(const double r, const double u, const double v) const override;
 
 	Vector3dd getNormal(const double u, const double v) const;
 

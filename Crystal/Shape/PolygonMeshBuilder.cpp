@@ -54,7 +54,7 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 	for (double u = 0.0; u < 1.0; u +=du) {
 		std::vector<int> vs;
 		for (double v = 0.0; v < 1.0; v+=dv) {
-			auto p = vertexFactory.createPosition( sphere.getPosition(u, v) );
+			auto p = vertexFactory.createPosition( sphere.getPosition(1.0, u, v) );
 			auto n = vertexFactory.createNormal( sphere.getNormal(u, v) );
 			auto tx = vertexFactory.createTexCoord(Vector2dd( u,v) );
 			const auto id = vertexFactory.createVertex(p, n, tx);

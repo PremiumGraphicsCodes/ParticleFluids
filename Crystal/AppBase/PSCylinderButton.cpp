@@ -24,7 +24,7 @@ void PSCylinderButton::onOk()
 	for (int i = 0; i < count; ++i) {
 		const auto u = dist(mt);
 		const auto v = dist(mt);
-		positions.push_back(cylinder.getPosition(u, v));
+		positions.push_back(cylinder.getPosition(1.0, u, v));
 	}
 	getModel()->getObjects()->getParticleSystems()->addObject(positions, attribute.getValue(), "Cylinder");
 	getCanvas()->setViewModel(getModel()->toViewModel());

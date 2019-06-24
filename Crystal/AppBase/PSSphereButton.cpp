@@ -27,7 +27,7 @@ void PSSphereButton::onOk()
 	for (int i = 0; i < count.getValue(); ++i) {
 		const auto u = dist(mt);
 		const auto v = dist(mt);
-		positions.push_back(shape.getPosition(u, v));
+		positions.push_back(shape.getPosition(1.0, u, v));
 	}
 	getModel()->getObjects()->getParticleSystems()->addObject(positions, attribute.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());

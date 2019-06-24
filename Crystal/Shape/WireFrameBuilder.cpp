@@ -47,7 +47,7 @@ void WireFrameBuilder::build(const Line3dd& line)
 	lines.push_back(Line3dd::fromPoints(vertices[0], vertices[1]));
 }
 
-void WireFrameBuilder::build(const ICurve3d& sphere, const int unum, const int vnum)
+void WireFrameBuilder::build(const ICurve2d& curve, const int unum, const int vnum)
 {
 	const auto du = 1.0 / unum;
 	const auto dv = 1.0 / vnum;
@@ -55,7 +55,23 @@ void WireFrameBuilder::build(const ICurve3d& sphere, const int unum, const int v
 	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
 		std::vector<Math::Vector3dd> g;
 		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
-			g.push_back(sphere.getPosition(u, v));
+			g.push_back(curve.getPosition(u, v));
+		}
+		grid.push_back(g);
+	}
+	build(grid);
+
+}
+
+void WireFrameBuilder::build(const ICurve3d& curve, const int unum, const int vnum)
+{
+	const auto du = 1.0 / unum;
+	const auto dv = 1.0 / vnum;
+	std::vector<std::vector<Math::Vector3dd>> grid;
+	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
+		std::vector<Math::Vector3dd> g;
+		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
+			g.push_back(curve.getPosition(1.0, u, v));
 		}
 		grid.push_back(g);
 	}

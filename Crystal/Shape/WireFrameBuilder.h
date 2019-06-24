@@ -1,6 +1,7 @@
 #pragma once
 
 #include "WireFrame.h"
+#include "../Math/ICurve2d.h"
 #include "../Math/ICurve3d.h"
 
 namespace Crystal {
@@ -18,7 +19,9 @@ public:
 
 	void build(const Math::Line3dd& line);
 
-	void build(const Math::ICurve3d& sphere, const int unum, const int vnum);
+	void build(const Math::ICurve2d& curve, const int unum, const int vnum);
+
+	void build(const Math::ICurve3d& curve, const int unum, const int vnum);
 
 	WireFrame* getWireFrame() const { return new WireFrame(lines); }
 
