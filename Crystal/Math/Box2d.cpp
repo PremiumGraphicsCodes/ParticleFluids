@@ -83,3 +83,11 @@ std::array< float, 8 > Box2d::toArray() const
 		getMaxX(), getMaxY()
 	};
 }
+
+/*
+Vector3dd Box2d::getPosition(const double u, const double v) const
+{
+	const auto& l = getLength();
+	return start + l.x * u + l.y * v;
+}
+*/

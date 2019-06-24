@@ -7,9 +7,7 @@
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Matrix4d.h" />
     <ClInclude Include="Vector4d.h" />
-    <ClInclude Include="Box3d.h" />
     <ClInclude Include="Vector2d.h" />
-    <ClInclude Include="Box2d.h" />
     <ClInclude Include="Triangle3d.h" />
     <ClInclude Include="Line3d.h" />
     <ClInclude Include="Matrix2d.h" />
@@ -40,6 +38,10 @@
     <ClInclude Include="Quad3d.h">
       <Filter>Curve2d</Filter>
     </ClInclude>
+    <ClInclude Include="Box3d.h">
+      <Filter>Curve3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Box2d.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Curve3d">
@@ -57,15 +59,17 @@
     <ClCompile Include="Sphere3d.cpp">
       <Filter>Curve3d</Filter>
     </ClCompile>
-    <ClCompile Include="Box3d.cpp" />
     <ClCompile Include="Plane3d.cpp" />
     <ClCompile Include="Cone3d.cpp">
       <Filter>Curve3d</Filter>
     </ClCompile>
     <ClCompile Include="Line2d.cpp" />
-    <ClCompile Include="Box2d.cpp" />
     <ClCompile Include="Quad3d.cpp">
       <Filter>Curve2d</Filter>
     </ClCompile>
+    <ClCompile Include="Box3d.cpp">
+      <Filter>Curve3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Box2d.cpp" />
   </ItemGroup>
 </Project>

@@ -2,12 +2,13 @@
 #define __CRYSTAL_MATH_BOX_2D_H__
 
 #include "Vector2d.h"
+//#include "ICurve2d.h"
 #include <array>
 
 namespace Crystal {
 	namespace Math {
 
-class Box2d
+class Box2d //: ICurve2d
 {
 public:
 	Box2d() :
@@ -53,6 +54,8 @@ public:
 	bool hasIntersection(const Box2d& rhs) const;
 
 	Box2d getOverlapped(const Box2d& rhs) const;
+
+	//Vector3dd getPosition(const double u, const double v) const;
 
 	std::array< float, 8 > toArray() const;
 
