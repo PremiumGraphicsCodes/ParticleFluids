@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PG.CGStudio.Selection
 {
     /// <summary>
-    /// ParticleSystemSelectView.xaml の相互作用ロジック
+    /// PolygonMeshObjectSelectView.xaml の相互作用ロジック
     /// </summary>
-    public partial class ParticleSystemSelectView : UserControl
+    public partial class PolygonMeshObjectSelectView : UserControl
     {
-        public ParticleSystemSelectView()
+        public PolygonMeshObjectSelectView()
         {
             InitializeComponent();
         }

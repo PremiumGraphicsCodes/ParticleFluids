@@ -140,10 +140,10 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Object\ParticleSystem\AppearanceViewModel.cs" />
-    <Compile Include="Selection\ObjectSelectView.xaml.cs">
+    <Compile Include="Selection\Object\ObjectSelectView.xaml.cs">
       <DependentUpon>ObjectSelectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Selection\ObjectSelectViewModel.cs" />
+    <Compile Include="Selection\Object\ObjectSelectViewModel.cs" />
     <Compile Include="Object\Transform\TransformView.xaml.cs">
       <DependentUpon>TransformView.xaml</DependentUpon>
     </Compile>
@@ -192,10 +192,13 @@
     <Compile Include="Light\LightObjectRepository.cs" />
     <Compile Include="Material\MaterialObjectRepository.cs" />
     <Compile Include="Object\ObjectRepository.cs" />
-    <Compile Include="Selection\ParticleSystemSelectView.xaml.cs">
-      <DependentUpon>ParticleSystemSelectView.xaml</DependentUpon>
+    <Compile Include="Selection\Object\ParticleSystemObjectSelectView.xaml.cs">
+      <DependentUpon>ParticleSystemObjectSelectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Selection\ParticleSystemSelectViewModel.cs" />
+    <Compile Include="Selection\Object\ParticleSystemObjectSelectViewModel.cs" />
+    <Compile Include="Selection\Object\PolygonMeshObjectSelectView.xaml.cs">
+      <DependentUpon>PolygonMeshObjectSelectView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Selection\SphereRegionSelectView.xaml.cs">
       <DependentUpon>SphereRegionSelectView.xaml</DependentUpon>
     </Compile>
@@ -301,7 +304,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Selection\ObjectSelectView.xaml">
+    <Page Include="Selection\Object\ObjectSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -369,7 +372,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Selection\ParticleSystemSelectView.xaml">
+    <Page Include="Selection\Object\ParticleSystemObjectSelectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Selection\Object\PolygonMeshObjectSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="PG.Control.Shape.ParticleSystemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PG.Control.Shape"
+             xmlns:particlesystem="clr-namespace:PG.Control.Shape.ParticleSystem"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <particlesystem:ParticleSystemViewModel/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <TextBlock Text="PointCount"/>
+        <TextBox Text="{Binding PointCount.Value}"/>
+    </StackPanel>
+</UserControl>

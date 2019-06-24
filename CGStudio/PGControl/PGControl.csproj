@@ -144,7 +144,8 @@
       <DependentUpon>Matrix4dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Math\Matrix4dViewModel.cs" />
-    <Compile Include="Shape\ParticleSystemView.xaml.cs">
+    <Compile Include="Shape\ParticleSystem\ParticleSystemViewModel.cs" />
+    <Compile Include="Shape\ParticleSystem\ParticleSystemView.xaml.cs">
       <DependentUpon>ParticleSystemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shape\PolygonMesh\FaceGroupView.xaml.cs">
@@ -214,7 +215,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Shape\ParticleSystemView.xaml">
+    <Page Include="Shape\ParticleSystem\ParticleSystemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
