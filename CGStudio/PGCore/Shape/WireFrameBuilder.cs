@@ -74,7 +74,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    vertices[i, j] = new Vertex( sphere.GetPosition(u, v) );
+                    vertices[i, j] = new Vertex( sphere.GetPosition(1.0, u, v) );
                 }
             }
             for (int i = 0; i < udiv - 1; ++i)
