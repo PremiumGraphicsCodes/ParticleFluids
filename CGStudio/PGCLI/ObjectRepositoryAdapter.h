@@ -11,6 +11,7 @@ namespace Crystal {
 namespace PG {
 	namespace CLI {
 		ref class ObjectAdapter;
+		ref class PolygonMeshObjectRepositoryAdapter;
 
 public ref class ObjectRepositoryAdapter
 {
@@ -28,6 +29,8 @@ public:
 	System::Collections::Generic::List<ObjectAdapter^>^ GetObjects();
 
 	ObjectAdapter^ GetObjectById(int id);
+
+	PolygonMeshObjectRepositoryAdapter^ GetPolygonMeshes();
 
 internal:
 	ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance);

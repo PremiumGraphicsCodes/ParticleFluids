@@ -15,10 +15,13 @@ namespace PG.CGStudio
 
         public ReactiveCollection<ObjectModel> Objects { get; }
 
+        public PolygonMeshObjectRepository PolygonMeshes { get; }
+
         public ObjectRepository(PG.CLI.ObjectRepositoryAdapter adapter)
         {
             this.adapter = adapter;
             this.Objects = new ReactiveCollection<ObjectModel>();
+            this.PolygonMeshes = new PolygonMeshObjectRepository(adapter.GetPolygonMeshes());
         }
 
         public int Add(ParticleSystem particleSystem, ParticleAppearance appearance, System.String name)
@@ -57,6 +60,8 @@ namespace PG.CGStudio
                 var item = new ObjectModel(o);
                 this.Objects.Add(item);
             }
+
+            this.PolygonMeshes.Sync();
         }
 
         public ObjectModel FindObjectById(int id)

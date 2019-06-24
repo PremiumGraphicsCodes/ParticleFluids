@@ -141,6 +141,7 @@
     <ClInclude Include="ObjectAdapter.h" />
     <ClInclude Include="ObjectRepositoryAdapter.h" />
     <ClInclude Include="PolygonMeshObjectAdapter.h" />
+    <ClInclude Include="PolygonMeshObjectRepositoryAdapter.h" />
     <ClInclude Include="RepositoryAdapter.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resource.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="ObjectAdapter.cpp" />
     <ClCompile Include="ObjectRepositoryAdapter.cpp" />
     <ClCompile Include="PolygonMeshObjectAdapter.cpp" />
+    <ClCompile Include="PolygonMeshObjectRepositoryAdapter.cpp" />
     <ClCompile Include="RepositoryAdapter.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ShaderObjectRepositoryAdapter.cpp" />

@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Object\ParticleSystem\AppearanceViewModel.cs" />
     <Compile Include="Object\PolygonMesh\PolygonMeshObjectModel.cs" />
+    <Compile Include="Object\PolygonMesh\PolygonMeshObjectRepository.cs" />
     <Compile Include="Selection\Object\ObjectSelectView.xaml.cs">
       <DependentUpon>ObjectSelectView.xaml</DependentUpon>
     </Compile>

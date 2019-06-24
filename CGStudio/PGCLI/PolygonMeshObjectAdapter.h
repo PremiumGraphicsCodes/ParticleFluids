@@ -18,7 +18,9 @@ public ref class PolygonMeshObjectAdapter : public ObjectAdapter
 public:
 	~PolygonMeshObjectAdapter(void);
 
-	int GetFaceById(int id);
+	//PG::Core::Shape::PolygonFace^ GetFaceById(int id);
+
+	int GetAttributeIdById(int id);
 
 internal:
 	PolygonMeshObjectAdapter(Crystal::Model::PolygonMeshObject* instance);

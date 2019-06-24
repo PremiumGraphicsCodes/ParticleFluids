@@ -7,12 +7,12 @@ namespace PG.Core.Shape
     {
         private List<Vertex> vertices;
 
-        private List<Face> faces;
+        private List<PolygonFace> faces;
 
         public PolygonMeshBuilder()
         {
             this.vertices = new List<Vertex>();
-            this.faces = new List<Face>();
+            this.faces = new List<PolygonFace>();
         }
 
         public PolygonMesh PolygonMesh
@@ -48,7 +48,7 @@ namespace PG.Core.Shape
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
                     var v3 = vertices[i, j + 1];
-                    var f = new Face(v1, v2, v3);
+                    var f = new PolygonFace(v1, v2, v3);
                     faces.Add(f);
                 }
             }
@@ -74,7 +74,7 @@ namespace PG.Core.Shape
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
                     var v3 = vertices[i, j + 1];
-                    var face = new Face(v1, v2, v3);
+                    var face = new PolygonFace(v1, v2, v3);
                     faces.Add(face);
                 }
             }

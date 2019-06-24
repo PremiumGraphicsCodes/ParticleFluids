@@ -11,10 +11,29 @@ PolygonMeshObjectAdapter::~PolygonMeshObjectAdapter(void)
 {
 }
 
-int PolygonMeshObjectAdapter::GetFaceById(int id)
+/*
+PG::Core::Shape::PolygonFace^ PolygonMeshObjectAdapter::GetFaceById(int id)
 {
-	return -1;
+	auto f = instance->getShape()->findFaceById(id);
+	if (f == nullptr) {
+		return nullptr;
+	}
+	auto vs = instance->getShape()->getVertices();
+	vs[f->getV1()->getId()];
+	auto result = gcnew PG::Core::Shape::PolygonFace(f->getV1(), );
 }
+*/
+
+int PolygonMeshObjectAdapter::GetAttributeIdById(int id)
+{
+	auto f = instance->getShape()->findFaceById(id);
+	if (f == nullptr) {
+		return -1;
+	}
+	auto g = instance->getShape()->findGroupByFace(f);
+	return g.attributeId;
+}
+
 
 PolygonMeshObjectAdapter::PolygonMeshObjectAdapter(Crystal::Model::PolygonMeshObject* inst) :
 	ObjectAdapter(inst)

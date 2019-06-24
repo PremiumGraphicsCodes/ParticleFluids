@@ -4,6 +4,8 @@
 #include "ObjectAdapter.h"
 #include "../../Crystal/Model/ObjectRepository.h"
 
+#include "PolygonMeshObjectRepositoryAdapter.h"
+
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
@@ -100,8 +102,13 @@ ObjectAdapter^ ObjectRepositoryAdapter::GetObjectById(int id)
 	return gcnew ObjectAdapter(object);
 }
 
+PolygonMeshObjectRepositoryAdapter^ ObjectRepositoryAdapter::GetPolygonMeshes()
+{
+	return gcnew PolygonMeshObjectRepositoryAdapter( instance->getPolygonMeshes() );
+}
+
+
 ObjectRepositoryAdapter::ObjectRepositoryAdapter(Crystal::Model::ObjectRepository* instance)
 {
 	this->instance = instance;
-
 }

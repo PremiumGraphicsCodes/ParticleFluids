@@ -43,7 +43,10 @@ namespace PG.CGStudio.Selection.Object
         {
             this.Id.Value = id.parentId;
             this.FaceId.Value = id.childId;
-            var obj = MainModel.Instance.Repository.Objects.FindObjectById(id.parentId);
+            var obj = MainModel.Instance.Repository.Objects.PolygonMeshes.FindObjectById(id.parentId);
+            var attributeId = obj.GetAttributeByFaceId(id.childId);
+            var material = MainModel.Instance.Repository.Material.FindObjectById(attributeId);
+            this.MaterialViewModel.Value = material.Material;
             //this.PositionViewModel.Value = obj.GetPosition(id.childId);
         }
 

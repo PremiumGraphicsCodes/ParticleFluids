@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace PG.CGStudio.Material
 {
@@ -44,6 +45,12 @@ namespace PG.CGStudio.Material
                 var item = new MaterialModel(o);
                 this.Items.Add(item);
             }
+        }
+
+
+        public MaterialModel FindObjectById(int id)
+        {
+            return Items.FirstOrDefault(x => x.Id.Value == id);
         }
     }
 }
