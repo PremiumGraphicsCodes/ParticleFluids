@@ -10,7 +10,7 @@ class ICurve3d
 public:
 	virtual ~ICurve3d() = default;
 
-	virtual Vector3dd getPosition(const double r, const double u, const double v) const = 0;
+	virtual Vector3dd getPosition(const Math::Vector3dd& p) const = 0;
 };
 
 	}

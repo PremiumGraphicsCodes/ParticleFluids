@@ -10,19 +10,19 @@ Sphere3d::Sphere3d(const Box3d& boundingBox)
 	radius = std::min<double>(std::min<double>(length.x, length.y), length.z) * 0.5;
 }
 
-Vector3dd Sphere3d::getPosition(const double r, const double u, const double v) const
+Vector3dd Sphere3d::getPosition(const Vector3dd& p) const
 {
-	const auto theta = 2.0 * u * PI;
-	const auto phi = v * PI;
-	const auto x = r * radius * std::sin(theta) * std::cos(phi);
-	const auto y = r * radius * std::sin(theta) * std::sin(phi);
-	const auto z = r * radius * std::cos(theta);
+	const auto theta = 2.0 * p.x * PI;
+	const auto phi = p.y * PI;
+	const auto x = p.z * radius * std::sin(theta) * std::cos(phi);
+	const auto y = p.z * radius * std::sin(theta) * std::sin(phi);
+	const auto z = p.z * radius * std::cos(theta);
 	return center + Vector3dd(x, y, z);
 }
 
 Vector3dd Sphere3d::getNormal(const double u, const double v) const
 {
-	const auto& pos = getPosition(1.0, u, v);
+	const auto& pos = getPosition(Vector3dd(u, v, 1.0));
 	return glm::normalize(pos - center);
 }
 

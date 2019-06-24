@@ -18,9 +18,6 @@
     <ClInclude Include="Ray3d.h" />
     <ClInclude Include="Plane3d.h" />
     <ClInclude Include="Line2d.h" />
-    <ClInclude Include="Quad3d.h">
-      <Filter>Curve3d</Filter>
-    </ClInclude>
     <ClInclude Include="Torus3d.h">
       <Filter>Curve3d</Filter>
     </ClInclude>
@@ -38,12 +35,18 @@
     </ClInclude>
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="ICurve2d.h">
-      <Filter>Curve3d</Filter>
+      <Filter>Curve2d</Filter>
+    </ClInclude>
+    <ClInclude Include="Quad3d.h">
+      <Filter>Curve2d</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Curve3d">
       <UniqueIdentifier>{13cca34e-c8e4-4011-be12-be3aefa210d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Curve2d">
+      <UniqueIdentifier>{0dec3512-4c43-4267-af16-19c2b89cd27b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,9 +54,6 @@
     <ClCompile Include="Ray3d.cpp" />
     <ClCompile Include="Line3d.cpp" />
     <ClCompile Include="Vector3d.cpp" />
-    <ClCompile Include="Quad3d.cpp">
-      <Filter>Curve3d</Filter>
-    </ClCompile>
     <ClCompile Include="Sphere3d.cpp">
       <Filter>Curve3d</Filter>
     </ClCompile>
@@ -64,5 +64,8 @@
     </ClCompile>
     <ClCompile Include="Line2d.cpp" />
     <ClCompile Include="Box2d.cpp" />
+    <ClCompile Include="Quad3d.cpp">
+      <Filter>Curve2d</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

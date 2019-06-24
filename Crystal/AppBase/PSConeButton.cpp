@@ -22,7 +22,7 @@ void PSConeButton::onOk()
 	for (int i = 0; i < count.getValue(); ++i) {
 		const auto u = dist(mt);
 		const auto v = dist(mt);
-		positions.push_back(c.getPosition(1.0, u, v));
+		positions.push_back(c.getPosition(Vector3dd(u, v, 1.0)));
 	}
 	getModel()->getObjects()->getParticleSystems()->addObject(positions, attribute.getValue(), "Cylinder");
 	getCanvas()->setViewModel(getModel()->toViewModel());

@@ -22,7 +22,7 @@ public:
 	{
 	}
 
-	Vector3dd getPosition(const double r, const double u, const double v) const override;
+	Vector3dd getPosition(const Vector3dd& p) const override;
 
 private:
 	Vector3dd bottom;
