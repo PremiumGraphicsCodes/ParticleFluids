@@ -203,6 +203,7 @@
     <Compile Include="Selection\Object\WireFrameObjectSelectView.xaml.cs">
       <DependentUpon>WireFrameObjectSelectView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Selection\Object\WireFrameObjectSelectViewModel.cs" />
     <Compile Include="Selection\SphereRegionSelectView.xaml.cs">
       <DependentUpon>SphereRegionSelectView.xaml</DependentUpon>
     </Compile>
