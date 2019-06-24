@@ -1,16 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="Vector3d.h" />
     <ClInclude Include="Tolerance.h" />
-    <ClInclude Include="Matrix3d.h" />
     <ClInclude Include="Quaternion.h" />
-    <ClInclude Include="Matrix4d.h" />
-    <ClInclude Include="Vector4d.h" />
-    <ClInclude Include="Vector2d.h" />
     <ClInclude Include="Triangle3d.h" />
     <ClInclude Include="Line3d.h" />
-    <ClInclude Include="Matrix2d.h" />
     <ClInclude Include="Circle2d.h" />
     <ClInclude Include="glm.h" />
     <ClInclude Include="Ray3d.h" />
@@ -42,6 +36,24 @@
       <Filter>Curve3d</Filter>
     </ClInclude>
     <ClInclude Include="Box2d.h" />
+    <ClInclude Include="Matrix2d.h">
+      <Filter>Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3d.h">
+      <Filter>Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4d.h">
+      <Filter>Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2d.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3d.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4d.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Curve3d">
@@ -50,12 +62,17 @@
     <Filter Include="Curve2d">
       <UniqueIdentifier>{0dec3512-4c43-4267-af16-19c2b89cd27b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Matrix">
+      <UniqueIdentifier>{d0a4de4b-26b6-4a81-b3ab-52342e035b73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vector">
+      <UniqueIdentifier>{a20ffa60-e43b-4cba-a0fe-209061263892}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Triangle3d.cpp" />
     <ClCompile Include="Ray3d.cpp" />
     <ClCompile Include="Line3d.cpp" />
-    <ClCompile Include="Vector3d.cpp" />
     <ClCompile Include="Sphere3d.cpp">
       <Filter>Curve3d</Filter>
     </ClCompile>
@@ -71,5 +88,8 @@
       <Filter>Curve3d</Filter>
     </ClCompile>
     <ClCompile Include="Box2d.cpp" />
+    <ClCompile Include="Vector3d.cpp">
+      <Filter>Vector</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

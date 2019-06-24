@@ -4,10 +4,13 @@
 
 using namespace Crystal::Math;
 
+namespace {
+	const auto tolerance = 1.0e-12;
+}
+
 TEST(Matrix3dTest, TestRotationMatrixX)
 {
 	const auto pi = PI;
-	const auto tolerance = 1.0e-12;
 
 	{
 		const auto actual = rotationMatrixX(0.0);
@@ -46,7 +49,6 @@ TEST(Matrix3dTest, TestRotationMatrixX)
 TEST(Matrix3dTest, TestRotationMatrixY)
 {
 	const auto pi = PI;
-	const auto tolerance = 1.0e-12;
 
 	{
 		const auto actual = rotationMatrixY(0.0);
@@ -85,7 +87,6 @@ TEST(Matrix3dTest, TestRotationMatrixY)
 TEST(Matrix3dTest, TestRotationMatrixZ)
 {
 	const auto pi = PI;
-	const auto tolerance = 1.0e-12;
 
 	{
 		const auto actual = rotationMatrixZ(0.0);
