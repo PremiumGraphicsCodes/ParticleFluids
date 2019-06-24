@@ -199,6 +199,7 @@
     <Compile Include="Selection\Object\PolygonMeshObjectSelectView.xaml.cs">
       <DependentUpon>PolygonMeshObjectSelectView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Selection\Object\PolygonMeshObjectSelectViewModel.cs" />
     <Compile Include="Selection\SphereRegionSelectView.xaml.cs">
       <DependentUpon>SphereRegionSelectView.xaml</DependentUpon>
     </Compile>

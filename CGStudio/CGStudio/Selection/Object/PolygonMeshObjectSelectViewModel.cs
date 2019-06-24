@@ -1,36 +1,32 @@
 ﻿using PG.CGStudio.UICtrl;
-using PG.Control.Math;
-using PG.Control.Shape;
+using PG.Control.Graphics;
 using PG.Core;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
+using System;
 
-namespace PG.CGStudio.Selection
+namespace PG.CGStudio.Selection.Object
 {
-    public class ParticleSystemObjectSelectViewModel : BindableBase, INavigationAware
+    public class PolygonMeshObjectSelectViewModel : BindableBase, INavigationAware
     {
         public ReactiveProperty<int> Id { get; }
 
-        public ReactiveProperty<int> PointId { get; }
+        public ReactiveProperty<int> FaceId { get; }
 
-        public ReactiveCommand PickCommand { get; }
+        public ReactiveProperty<int> FaceGroupId { get; }
 
-        public ParticleSystemView ParticleSystemView { get; }
-
-        public Vector3dViewModel PositionViewModel { get; }
+        public MaterialViewModel MaterialViewModel { get; }
 
         private ObjectPickUICtrl Picker { get; }
 
-        public ParticleSystemObjectSelectViewModel()
+        public PolygonMeshObjectSelectViewModel()
         {
             Id = new ReactiveProperty<int>();
-            PointId = new ReactiveProperty<int>();
-            PositionViewModel = new Vector3dViewModel();
-            PickCommand = new ReactiveCommand();
-            PickCommand.Subscribe(OnPickUI);
-            Picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.ParticleSystem);
-            ParticleSystemView = new ParticleSystemView();
+            FaceId = new ReactiveProperty<int>();
+            FaceGroupId = new ReactiveProperty<int>();
+            MaterialViewModel = new MaterialViewModel();
+            Picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.PolygonMesh);
         }
 
         private void OnPickUI()
@@ -42,9 +38,9 @@ namespace PG.CGStudio.Selection
         private void OnPicked(ObjectId id)
         {
             this.Id.Value = id.parentId;
-            this.PointId.Value = id.childId;
+            this.FaceId.Value = id.childId;
             var obj = MainModel.Instance.Repository.Objects.FindObjectById(id.parentId);
-            this.PositionViewModel.Value = obj.GetPosition(id.childId);
+            //this.PositionViewModel.Value = obj.GetPosition(id.childId);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -61,5 +57,6 @@ namespace PG.CGStudio.Selection
         {
             ;
         }
+
     }
 }

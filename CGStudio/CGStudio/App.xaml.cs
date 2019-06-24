@@ -47,6 +47,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Object.Select.ObjectSelectView>("Select");
             containerRegistry.RegisterForNavigation<Object.Transform.TransformView>("Transform");
             containerRegistry.RegisterForNavigation<ParticleSystemObjectSelectView>("ParticleSystemSelect");
+            containerRegistry.RegisterForNavigation<PolygonMeshObjectSelectView>("PolygonMeshSelect");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

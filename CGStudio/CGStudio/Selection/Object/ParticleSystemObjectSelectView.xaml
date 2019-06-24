@@ -12,7 +12,6 @@
     </UserControl.DataContext>
     <StackPanel>
         <Button Content="Pick" Command="{Binding PickCommand}"/>
-        <shape:ParticleSystemView DataContext="{Binding ParticleSystemViewModel}"/>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Id"/>
             <TextBox Text="{Binding Id.Value}"/>

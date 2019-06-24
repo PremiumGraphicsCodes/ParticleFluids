@@ -5,9 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Selection"
              xmlns:shape="clr-namespace:PG.Control.Shape;assembly=PGControl"
+             xmlns:graphics="clr-namespace:PG.Control.Graphics;assembly=PGControl"
              mc:Ignorable="d">
     <StackPanel>
         <Button Content="Pick" Command="{Binding PickCommand}"/>
-        <shape:PolygonMeshView/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Id"/>
+            <TextBox Text="{Binding Id.Value}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="FaceId"/>
+            <TextBox Text="{Binding FaceId.Value}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="FaceGroupId"/>
+            <TextBox Text="{Binding FaceGroupId.Value}"/>
+        </StackPanel>
+        <graphics:MaterialView DataContext="{Binding MaterialViewModel}"/>
     </StackPanel>
 </UserControl>
