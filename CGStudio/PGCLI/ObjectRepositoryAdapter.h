@@ -15,7 +15,7 @@ namespace PG {
 public ref class ObjectRepositoryAdapter
 {
 public:
-	~ObjectRepositoryAdapter(void);
+	virtual ~ObjectRepositoryAdapter(void);
 
 	void Clear();
 

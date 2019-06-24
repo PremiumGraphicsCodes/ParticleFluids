@@ -1,15 +1,10 @@
-﻿<UserControl x:Class="PG.CGStudio.Selection.PolygonMeshObjectSelectView"
+﻿<UserControl x:Class="PG.CGStudio.Selection.Object.WireFrameObjectSelectView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Selection.Object"
-             xmlns:shape="clr-namespace:PG.Control.Shape;assembly=PGControl"
-             xmlns:graphics="clr-namespace:PG.Control.Graphics;assembly=PGControl"
              mc:Ignorable="d">
-    <UserControl.DataContext>
-        <local:PolygonMeshObjectSelectViewModel/>
-    </UserControl.DataContext>
     <StackPanel>
         <Button Content="Pick" Command="{Binding PickCommand}"/>
         <StackPanel Orientation="Horizontal">
@@ -17,13 +12,8 @@
             <TextBox Text="{Binding Id.Value}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="FaceId"/>
-            <TextBox Text="{Binding FaceId.Value}"/>
+            <TextBlock Text="EdgeId"/>
+            <TextBox Text="{Binding EdgeId.Value}"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="FaceGroupId"/>
-            <TextBox Text="{Binding FaceGroupId.Value}"/>
-        </StackPanel>
-        <graphics:MaterialView DataContext="{Binding MaterialViewModel}"/>
     </StackPanel>
 </UserControl>

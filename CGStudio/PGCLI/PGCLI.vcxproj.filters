@@ -34,6 +34,9 @@
     <ClInclude Include="ShaderObjectRepositoryAdapter.h">
       <Filter>Object\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="PolygonMeshObjectAdapter.h">
+      <Filter>Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -67,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="ShaderObjectRepositoryAdapter.cpp">
       <Filter>Object\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshObjectAdapter.cpp">
+      <Filter>Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

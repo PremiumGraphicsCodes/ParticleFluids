@@ -200,6 +200,9 @@
       <DependentUpon>PolygonMeshObjectSelectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Selection\Object\PolygonMeshObjectSelectViewModel.cs" />
+    <Compile Include="Selection\Object\WireFrameObjectSelectView.xaml.cs">
+      <DependentUpon>WireFrameObjectSelectView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Selection\SphereRegionSelectView.xaml.cs">
       <DependentUpon>SphereRegionSelectView.xaml</DependentUpon>
     </Compile>
@@ -378,6 +381,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Selection\Object\PolygonMeshObjectSelectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Selection\Object\WireFrameObjectSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

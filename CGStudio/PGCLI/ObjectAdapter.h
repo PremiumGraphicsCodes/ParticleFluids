@@ -32,10 +32,6 @@ public:
 
 	void Transform(PG::Core::Math::Matrix4d^ m);
 
-	//void Scale(PG::Core::Math::Vector3d^ s);
-
-	//void Rotate(double rx, double ry, double rz);
-
 	bool IsSelected();
 
 	void Select();

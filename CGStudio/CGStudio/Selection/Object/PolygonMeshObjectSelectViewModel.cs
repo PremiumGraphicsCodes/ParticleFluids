@@ -18,6 +18,8 @@ namespace PG.CGStudio.Selection.Object
 
         public MaterialViewModel MaterialViewModel { get; }
 
+        public ReactiveCommand PickCommand { get; }
+
         private ObjectPickUICtrl Picker { get; }
 
         public PolygonMeshObjectSelectViewModel()
@@ -26,6 +28,8 @@ namespace PG.CGStudio.Selection.Object
             FaceId = new ReactiveProperty<int>();
             FaceGroupId = new ReactiveProperty<int>();
             MaterialViewModel = new MaterialViewModel();
+            PickCommand = new ReactiveCommand();
+            PickCommand.Subscribe(OnPickUI);
             Picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.PolygonMesh);
         }
 
