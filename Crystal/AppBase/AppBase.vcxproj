@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppearancePanel.h" />
+    <ClInclude Include="BoolView.h" />
     <ClInclude Include="Box3dView.h" />
     <ClInclude Include="CameraMenu.h" />
     <ClInclude Include="ColorMapView.h" />

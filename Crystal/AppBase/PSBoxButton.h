@@ -5,6 +5,7 @@
 #include "Box3dView.h"
 #include "PSAttributeView.h"
 #include "IntView.h"
+#include "BoolView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -16,7 +17,8 @@ public:
 		IPopupButton("PSBox", model, canvas),
 		box("Box"),
 		attribute("Attribute"),
-		count("Count", 10000)
+		count("Count", 10000),
+		isVolume("Volume", false)
 	{
 	}
 
@@ -33,6 +35,7 @@ private:
 	Box3dView box;
 	PSAttributeView attribute;
 	IntView count;
+	BoolView isVolume;
 };
 
 	}

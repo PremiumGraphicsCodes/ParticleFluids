@@ -462,6 +462,9 @@
     <ClInclude Include="SphereRegionSelectButton.h">
       <Filter>Selection\Region</Filter>
     </ClInclude>
+    <ClInclude Include="BoolView.h">
+      <Filter>Type</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
