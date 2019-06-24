@@ -154,26 +154,26 @@
     <Compile Include="Object\WireFrame\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Light\LightEditView.xaml.cs">
+    <Compile Include="Appearance\Light\LightEditView.xaml.cs">
       <DependentUpon>LightEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Light\LightEditViewModel.cs" />
-    <Compile Include="Light\LightListBehavior.cs" />
-    <Compile Include="Light\LightListView.xaml.cs">
+    <Compile Include="Appearance\Light\LightEditViewModel.cs" />
+    <Compile Include="Appearance\Light\LightListBehavior.cs" />
+    <Compile Include="Appearance\Light\LightListView.xaml.cs">
       <DependentUpon>LightListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Light\LightListViewModel.cs" />
+    <Compile Include="Appearance\Light\LightListViewModel.cs" />
     <Compile Include="MainModel.cs" />
-    <Compile Include="Material\MaterialEditView.xaml.cs">
+    <Compile Include="Appearance\Material\MaterialEditView.xaml.cs">
       <DependentUpon>MaterialEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Material\MaterialEditViewModel.cs" />
-    <Compile Include="Material\MaterialListView.xaml.cs">
+    <Compile Include="Appearance\Material\MaterialEditViewModel.cs" />
+    <Compile Include="Appearance\Material\MaterialListView.xaml.cs">
       <DependentUpon>MaterialListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Material\MaterialListViewBehavior.cs" />
-    <Compile Include="Material\MaterialListViewModel.cs" />
-    <Compile Include="Material\MaterialModel.cs" />
+    <Compile Include="Appearance\Material\MaterialListViewBehavior.cs" />
+    <Compile Include="Appearance\Material\MaterialListViewModel.cs" />
+    <Compile Include="Appearance\Material\MaterialModel.cs" />
     <Compile Include="Object\ObjectListView.xaml.cs">
       <DependentUpon>ObjectListView.xaml</DependentUpon>
     </Compile>
@@ -190,9 +190,9 @@
     <Compile Include="OpenGL\Canvas3d.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Repository\AppearanceObjectRepository.cs" />
-    <Compile Include="Light\LightObjectRepository.cs" />
-    <Compile Include="Material\MaterialObjectRepository.cs" />
+    <Compile Include="Appearance\AppearanceObjectRepository.cs" />
+    <Compile Include="Appearance\Light\LightObjectRepository.cs" />
+    <Compile Include="Appearance\Material\MaterialObjectRepository.cs" />
     <Compile Include="Object\ObjectRepository.cs" />
     <Compile Include="Selection\Object\ParticleSystemObjectSelectView.xaml.cs">
       <DependentUpon>ParticleSystemObjectSelectView.xaml</DependentUpon>
@@ -270,7 +270,7 @@
       <DependentUpon>WireFrameGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Object\WireFrame\WireFrameGenerationViewModel.cs" />
-    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectMoveUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
@@ -339,11 +339,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Light\LightEditView.xaml">
+    <Page Include="Appearance\Light\LightEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Light\LightListView.xaml">
+    <Page Include="Appearance\Light\LightListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -359,11 +359,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Material\MaterialEditView.xaml">
+    <Page Include="Appearance\Material\MaterialEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Material\MaterialListView.xaml">
+    <Page Include="Appearance\Material\MaterialListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
