@@ -46,7 +46,7 @@ public:
 
 	static Crystal::Graphics::ColorRGBAf toCpp(PG::Core::Graphics::ColorRGBA^ src);
 
-	static PG::Core::Graphics::ColorRGBA^ fromCpp(const Crystal::Graphics::ColorRGBAf& src);
+	static PG::Core::Graphics::ColorRGBA fromCpp(const Crystal::Graphics::ColorRGBAf& src);
 
 	static Crystal::Graphics::PointLight toCpp(PG::Core::Graphics::PointLight^ src);
 

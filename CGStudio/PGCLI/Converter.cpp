@@ -91,13 +91,13 @@ Crystal::Graphics::ColorRGBAf PG::CLI::Converter::toCpp(PG::Core::Graphics::Colo
 	return Crystal::Graphics::ColorRGBAf(src->R, src->G, src->B, src->A);
 }
 
-PG::Core::Graphics::ColorRGBA^ PG::CLI::Converter::fromCpp(const Crystal::Graphics::ColorRGBAf& src)
+PG::Core::Graphics::ColorRGBA PG::CLI::Converter::fromCpp(const Crystal::Graphics::ColorRGBAf& src)
 {
-	auto result = gcnew PG::Core::Graphics::ColorRGBA();
-	result->R = src.r;
-	result->G = src.g;
-	result->B = src.b;
-	result->A = src.a;
+	auto result = PG::Core::Graphics::ColorRGBA();
+	result.R = src.r;
+	result.G = src.g;
+	result.B = src.b;
+	result.A = src.a;
 	return result;
 }
 

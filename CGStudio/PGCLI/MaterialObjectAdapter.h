@@ -26,6 +26,8 @@ public:
 
 	void Update(PG::Core::Graphics::Material^ material);
 
+	PG::Core::Graphics::Material^ GetValue();
+
 internal:
 	MaterialObjectAdapter(Crystal::Model::MaterialObject* instance);
 

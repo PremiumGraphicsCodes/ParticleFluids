@@ -42,6 +42,18 @@ void MaterialObjectAdapter::Update(PG::Core::Graphics::Material^ material)
 	m->shininess = material->Shininess;
 }
 
+PG::Core::Graphics::Material^ MaterialObjectAdapter::GetValue()
+{
+	PG::Core::Graphics::Material^ result = gcnew PG::Core::Graphics::Material();
+	auto m = instance->getMaterial();
+	result->Ambient = Converter::fromCpp(m->ambient);
+	result->Diffuse = Converter::fromCpp(m->diffuse);
+	result->Specular = Converter::fromCpp(m->specular);
+	result->Shininess = m->shininess;
+	return result;
+}
+
+
 MaterialObjectAdapter::MaterialObjectAdapter(Crystal::Model::MaterialObject* instance)
 {
 	this->instance = instance;
