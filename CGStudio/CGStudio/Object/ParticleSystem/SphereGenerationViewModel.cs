@@ -33,7 +33,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
             for (int i = 0; i < Count.Value; ++i) {
                 var u = random.NextDouble();
                 var v = random.NextDouble();
-                var pos = SphereViewModel.Value.GetPosition(u,v);
+                var pos = SphereViewModel.Value.GetPosition(1.0,u,v);
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
