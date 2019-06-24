@@ -18,6 +18,8 @@ public ref class PolygonMeshObjectAdapter : public ObjectAdapter
 public:
 	~PolygonMeshObjectAdapter(void);
 
+	int GetFaceById(int id);
+
 internal:
 	PolygonMeshObjectAdapter(Crystal::Model::PolygonMeshObject* instance);
 

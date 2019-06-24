@@ -11,6 +11,11 @@ PolygonMeshObjectAdapter::~PolygonMeshObjectAdapter(void)
 {
 }
 
+int PolygonMeshObjectAdapter::GetFaceById(int id)
+{
+	return -1;
+}
+
 PolygonMeshObjectAdapter::PolygonMeshObjectAdapter(Crystal::Model::PolygonMeshObject* inst) :
 	ObjectAdapter(inst)
 {
