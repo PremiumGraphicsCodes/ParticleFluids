@@ -6,37 +6,37 @@
   <ItemGroup>
     <ClInclude Include="UUID.h" />
     <ClInclude Include="IObject.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="LightObject.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemObject.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshObject.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshAttribute.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="WireFrameObject.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="WireFrameAttribute.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="ParticleAttribute.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="ObjectRepository.h">
       <Filter>Repository</Filter>
     </ClInclude>
     <ClInclude Include="ObjectType.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="MaterialObject.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="AppearanceObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
@@ -52,7 +52,7 @@
       <Filter>Repository</Filter>
     </ClInclude>
     <ClInclude Include="TextureObject.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemObjectRepository.h">
       <Filter>Repository\Object</Filter>
@@ -70,10 +70,10 @@
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
     <ClInclude Include="ImageObject.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="VolumeObject.h">
-      <Filter>Object</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="FileFormat.h">
       <Filter>FileIO</Filter>
@@ -154,9 +154,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Object">
-      <UniqueIdentifier>{b8ac2286-41a7-4c7a-8e11-7f3ca28786ef}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Repository">
       <UniqueIdentifier>{52b1342c-bb2d-4462-9ed1-43fc09af7256}</UniqueIdentifier>
     </Filter>
@@ -177,6 +174,9 @@
     </Filter>
     <Filter Include="FileIO\PCD">
       <UniqueIdentifier>{719573c3-31e4-4d26-aab0-0a675a7b0967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{b8ac2286-41a7-4c7a-8e11-7f3ca28786ef}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

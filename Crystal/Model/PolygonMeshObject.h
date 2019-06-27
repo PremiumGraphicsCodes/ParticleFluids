@@ -8,16 +8,16 @@
 namespace Crystal {
 	namespace Model {
 
-class PolygonMeshObject : public IObject
+class PolygonMeshObject : public IScene
 {
 public:
 	PolygonMeshObject() :
-		IObject(),
+		IScene(),
 		shape(nullptr)
 	{}
 
 	PolygonMeshObject(const int id, const std::string& name, Shape::PolygonMesh* shape) :
-		IObject(id, name),
+		IScene(id, name),
 		shape(shape)
 	{}
 

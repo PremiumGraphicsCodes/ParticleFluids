@@ -6,11 +6,11 @@
 namespace Crystal {
 	namespace Model {
 
-class TextureObject : public IObject
+class TextureObject : public IScene
 {
 public:
 	TextureObject(const int id, const std::string& name, Shader::TextureObject* texture) :
-		IObject(id, name),
+		IScene(id, name),
 		texture(texture)
 	{}
 

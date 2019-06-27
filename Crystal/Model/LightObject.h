@@ -8,11 +8,11 @@
 namespace Crystal {
 	namespace Model {
 
-class LightObject : public IObject
+class LightObject : public IScene
 {
 public:
 	LightObject(const int id, const std::string& name, Graphics::PointLight* light) :
-		IObject(id,name),
+		IScene(id,name),
 		light(light)
 	{}
 

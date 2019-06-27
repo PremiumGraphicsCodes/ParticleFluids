@@ -6,11 +6,11 @@
 namespace Crystal {
 	namespace Model {
 
-class ImageObject : public IObject
+class ImageObject : public IScene
 {
 public:
 	ImageObject(const int id, const std::string& name, Graphics::Image* image) :
-		IObject(id, name),
+		IScene(id, name),
 		image(image)
 	{}
 

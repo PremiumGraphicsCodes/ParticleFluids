@@ -7,16 +7,16 @@
 namespace Crystal {
 	namespace Model {
 
-class WireFrameObject : public IObject
+class WireFrameObject : public IScene
 {
 public:
 	WireFrameObject() :
-		IObject(-1),
+		IScene(-1),
 		shape(nullptr)
 	{}
 
 	WireFrameObject(const int id, const std::string& name, Shape::WireFrame* shape, const WireFrameAttribute& attribute) :
-		IObject(id, name),
+		IScene(id, name),
 		shape(shape),
 		attribute(attribute)
 	{}

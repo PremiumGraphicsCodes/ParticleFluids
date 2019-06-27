@@ -49,9 +49,9 @@ std::list<Vector3dd> ObjectRepository::getAllVertices() const
 	return positions;
 }
 
-std::list<IObject*> ObjectRepository::getAllObjects() const
+std::list<IScene*> ObjectRepository::getAllObjects() const
 {
-	std::list<IObject*> objects;
+	std::list<IScene*> objects;
 	const auto& ps = particleSystems.getObjects();
 	for (auto p : ps) {
 		objects.push_back(p);
@@ -67,7 +67,7 @@ std::list<IObject*> ObjectRepository::getAllObjects() const
 	return objects;
 }
 
-IObject* ObjectRepository::findObjectById(const int id)
+IScene* ObjectRepository::findObjectById(const int id)
 {
 	const auto& objects = getAllObjects();
 	auto iter = std::find_if(std::cbegin(objects), std::cend(objects), [=](auto p) {return p->getId() == id; });

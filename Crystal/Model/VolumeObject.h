@@ -7,16 +7,16 @@
 namespace Crystal {
 	namespace Model {
 
-class VolumeObject : public IObject
+class VolumeObject : public IScene
 {
 public:
 	VolumeObject() :
-		IObject(-1),
+		IScene(-1),
 		shape(nullptr)
 	{}
 
 	VolumeObject(const int id, const std::string& name, Shape::Volume* shape) :
-		IObject(id, name),
+		IScene(id, name),
 		shape(shape)
 	{}
 

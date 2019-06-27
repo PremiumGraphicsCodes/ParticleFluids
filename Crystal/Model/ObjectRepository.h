@@ -27,9 +27,9 @@ public:
 
 	std::list<Math::Vector3dd> getAllVertices() const;
 
-	std::list<IObject*> getAllObjects() const;
+	std::list<IScene*> getAllObjects() const;
 
-	IObject* findObjectById(const int id);
+	IScene* findObjectById(const int id);
 
 private:
 	ObjectIdProvider idProvider;

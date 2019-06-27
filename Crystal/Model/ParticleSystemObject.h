@@ -7,16 +7,16 @@
 namespace Crystal {
 	namespace Model {
 
-class ParticleSystemObject : public IObject
+class ParticleSystemObject : public IScene
 {
 public:
 	ParticleSystemObject() :
-		IObject(-1),
+		IScene(-1),
 		shape(nullptr)
 	{}
 
 	ParticleSystemObject(const int id, const std::string& name, Shape::ParticleSystem<ParticleAttribute>* shape) :
-		IObject(id, name),
+		IScene(id, name),
 		shape(shape)
 	{}
 

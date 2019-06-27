@@ -10,29 +10,29 @@
 namespace Crystal {
 	namespace Model {
 
-class IObject
+class IScene
 {
 public:
-	IObject() :
+	IScene() :
 		id(-1),
 		_isVisible(false),
 		_isSelected(false)
 	{}
 
-	explicit IObject(const int id) :
+	explicit IScene(const int id) :
 		id(id),
 		_isVisible(true),
 		_isSelected(false)
 	{}
 
-	IObject(const int id, const std::string& name) :
+	IScene(const int id, const std::string& name) :
 		id(id),
 		name(name),
 		_isVisible(true),
 		_isSelected(false)
 	{}
 
-	virtual ~IObject() {};
+	virtual ~IScene() {};
 
 	void setName(const std::string& name) { this->name = name; }
 

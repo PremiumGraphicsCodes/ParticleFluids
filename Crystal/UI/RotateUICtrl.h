@@ -5,7 +5,7 @@
 
 namespace Crystal {
 	namespace Model {
-		class IObject;
+		class IScene;
 	}
 	namespace UI {
 		class Repository;
@@ -17,7 +17,7 @@ class RotateUICtrl : public IUICtrl
 public:
 	RotateUICtrl(Repository* repository, Canvas* canvas);
 
-	void add(Model::IObject* object) { objects.push_back(object); }
+	void add(Model::IScene* object) { objects.push_back(object); }
 
 	virtual ~RotateUICtrl() {}
 
@@ -42,7 +42,7 @@ public:
 	virtual void onWheel(const float dx) override {}
 
 private:
-	std::list<Model::IObject*> objects;
+	std::list<Model::IScene*> objects;
 	Repository* repository;
 	Canvas* canvas;
 	Math::Vector2df prevPosition;
