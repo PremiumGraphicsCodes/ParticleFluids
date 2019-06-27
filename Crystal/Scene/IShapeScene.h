@@ -24,6 +24,11 @@ public:
 
 	virtual void transform(const Math::Matrix4dd& m) = 0;
 
+	/*
+	virtual Math::Box3d getBoundingBox() const = 0;
+
+	virtual std::list<Math::Vector3dd> getAllVertices() const = 0;
+	*/
 };
 	}
 }

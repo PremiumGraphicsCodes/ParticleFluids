@@ -5,10 +5,10 @@
 namespace Crystal {
 	namespace Model {
 
-class ObjectId
+class SceneId
 {
 public:
-	ObjectId(const SceneType& type, const int parentId, const int childId) :
+	SceneId(const SceneType& type, const int parentId, const int childId) :
 		type(type),
 		parentId(parentId),
 		childId(childId)

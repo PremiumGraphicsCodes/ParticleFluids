@@ -52,6 +52,8 @@ public:
 
 	FaceGroup findGroupByFace(Face* f) { return faces.findGroupByFace(f); }
 
+	Math::Box3d getBoundingBox() const override;
+
 private:
 	VertexFactory vertices;
 	FaceFactory faces;

@@ -61,7 +61,7 @@ public:
 		return ps;
 	}
 
-	Math::Box3d getBoundingBox() {
+	Math::Box3d getBoundingBox() const override {
 		if (particles.empty()) {
 			return Math::Box3d();
 		}

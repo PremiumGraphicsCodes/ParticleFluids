@@ -30,6 +30,8 @@ public:
 
 	std::vector<Math::Vector3dd> getVertices() const;
 
+	Math::Box3d getBoundingBox() const override;
+
 private:
 	std::vector<Math::Line3dd> lines;
 };

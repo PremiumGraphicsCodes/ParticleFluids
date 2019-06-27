@@ -4,6 +4,7 @@
 #include "../Math/Vector3d.h"
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
+#include "../Math/Box3d.h"
 
 namespace Crystal {
 	namespace Shape {
@@ -20,6 +21,8 @@ public:
 	virtual void transform(const Math::Matrix3dd& m) = 0;
 
 	virtual void transform(const Math::Matrix4dd& m) = 0;
+
+	virtual Math::Box3d getBoundingBox() const = 0;
 };
 	}
 }

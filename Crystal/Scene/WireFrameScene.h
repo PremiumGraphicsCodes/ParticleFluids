@@ -37,10 +37,11 @@ public:
 
 	SceneType getType() const override { return SceneType::WireFrameScene; }
 
-	void onClear() override
-	{
-		delete shape;
-	}
+	void onClear() override { delete shape; }
+
+	virtual Math::Box3d getBoundingBox() const { return shape->getBoundingBox(); }
+
+	virtual std::vector<Math::Vector3dd> getAllVertices() const { return shape->getVertices(); }
 
 private:
 	Shape::WireFrame* shape;

@@ -78,3 +78,18 @@ Face* PolygonMesh::findFaceById(const int id)
 	}
 	return *iter;
 }
+
+Box3d PolygonMesh::getBoundingBox() const
+{
+	const auto& vertices = getVertices();
+
+	if (vertices.empty()) {
+		return Box3d();
+	}
+
+	Box3d bb(vertices.front()->getPosition());
+	for (const auto& v : vertices) {
+		bb.add(v->getPosition());
+	}
+	return bb;
+}

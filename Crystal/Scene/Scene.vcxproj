@@ -35,7 +35,7 @@
     <ClInclude Include="LightObjectRepository.h" />
     <ClInclude Include="MaterialObject.h" />
     <ClInclude Include="MaterialObjectRepository.h" />
-    <ClInclude Include="ObjectId.h" />
+    <ClInclude Include="SceneId.h" />
     <ClInclude Include="ObjectIdProvider.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneType.h" />
@@ -76,6 +76,7 @@
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
     <ClCompile Include="WireFrameObjectRepository.cpp" />
+    <ClCompile Include="WireFrameScene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{59C5EA30-1E57-417C-9416-17B592E8724E}</ProjectGuid>

@@ -42,3 +42,17 @@ std::vector<Vector3dd> WireFrame::getVertices() const
 	vertices.push_back(lines.back().getEnd());
 	return vertices;
 }
+
+Box3d WireFrame::getBoundingBox() const
+{
+	if (lines.empty()) {
+		return Box3d();
+	}
+
+	const auto& vertices = getVertices();
+	Box3d bb(vertices.front());
+	for (const auto& v : vertices) {
+		bb.add(v);
+	}
+	return bb;
+}
