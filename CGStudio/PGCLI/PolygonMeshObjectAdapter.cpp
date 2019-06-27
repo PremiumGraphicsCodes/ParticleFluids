@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "../../Crystal/Model/PolygonMeshObject.h"
+#include "../../Crystal/Scene/PolygonMeshObject.h"
 
 #include "PolygonMeshObjectAdapter.h"
 #include "Converter.h"

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "../../Crystal/Model/MaterialObject.h"
+#include "../../Crystal/Scene/MaterialObject.h"
 
 #include "Converter.h"
 

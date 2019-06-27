@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "AppearanceObjectRepositoryAdapter.h"
-#include "../../Crystal/Model/AppearanceObjectRepository.h"
-#include "../../Crystal/Model/ObjectRepository.h"
+#include "../../Crystal/Scene/AppearanceObjectRepository.h"
+#include "../../Crystal/Scene/ObjectRepository.h"
 #include "MaterialObjectRepositoryAdapter.h"
 
 using namespace PG::CLI;

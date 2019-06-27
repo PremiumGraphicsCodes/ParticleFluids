@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "LightObjectRepositoryAdapter.h"
-#include "../../Crystal/Model/LightObjectRepository.h"
+#include "../../Crystal/Scene/LightObjectRepository.h"
 #include "Converter.h"
 
 using namespace PG::CLI;

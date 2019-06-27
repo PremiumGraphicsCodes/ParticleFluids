@@ -2,7 +2,7 @@
 
 #include "PolygonMeshObjectRepositoryAdapter.h"
 #include "PolygonMeshObjectAdapter.h"
-#include "../../Crystal/Model/PolygonMeshObjectRepository.h"
+#include "../../Crystal/Scene/PolygonMeshObjectRepository.h"
 
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"

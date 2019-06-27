@@ -2,7 +2,7 @@
 
 #include "ObjectRepositoryAdapter.h"
 #include "ObjectAdapter.h"
-#include "../../Crystal/Model/ObjectRepository.h"
+#include "../../Crystal/Scene/ObjectRepository.h"
 
 #include "PolygonMeshObjectRepositoryAdapter.h"
 

@@ -4,7 +4,7 @@ using namespace System;
 
 namespace Crystal {
 	namespace Model {
-		class IObject;
+		class IScene;
 	}
 }
 
@@ -45,9 +45,9 @@ public:
 	PG::Core::Math::Vector3d^ GetPositionById(int id);
 
 internal:
-	ObjectAdapter(Crystal::Model::IObject* instance);
+	ObjectAdapter(Crystal::Model::IScene* instance);
 
-	Crystal::Model::IObject* instance;
+	Crystal::Model::IScene* instance;
 };
 
 	}
