@@ -28,7 +28,7 @@ void SphereRegionSelectButton::onShow()
 				WireFrameAttribute attr;
 				attr.color = Graphics::ColorRGBAf(1.0, 0.0, 0.0, 0.0);
 				attr.width = 1.0;
-				model->getItems()->getWireFrames()->addObject(builder.getWireFrame(), attr, "Region");
+				model->getItems()->getFactory()->addWireFrameScene(builder.getWireFrame(), attr, "Region");
 				canvas->setViewModel(model->toViewModel());
 			}
 		};

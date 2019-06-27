@@ -7,8 +7,7 @@ using namespace Crystal::Model;
 
 Scene::Scene() :
 	particleSystems(idProvider),
-	wireFrames(idProvider),
-	polygonMeshes(idProvider)
+	factory(idProvider)
 {
 }
 
@@ -20,8 +19,7 @@ Scene::~Scene()
 void Scene::clear()
 {
 	particleSystems.clear();
-	wireFrames.clear();
-	polygonMeshes.clear();
+	factory.clear();
 }
 
 Box3d Scene::getBoundingBox() const
@@ -42,9 +40,11 @@ std::list<Vector3dd> Scene::getAllVertices() const
 	std::list<Vector3dd> positions;
 	const auto& particles = particleSystems.getAllVertices();
 	positions.insert(positions.end(), particles.begin(), particles.end());
-	const auto& wires = wireFrames.getAllVertices();
+	/*
+	const auto& wires = polygonMeshes.getWires().getAllVertices();
 	positions.insert(positions.end(), wires.begin(), wires.end());
-	const auto& meshes = polygonMeshes.getAllVertices();
+	*/
+	const auto& meshes = factory.getAllVertices();
 	positions.insert(positions.end(), meshes.begin(), meshes.end());
 	return positions;
 }
@@ -56,11 +56,13 @@ std::list<IScene*> Scene::getAllObjects() const
 	for (auto p : ps) {
 		objects.push_back(p);
 	}
+	/*
 	auto& ws = wireFrames.getObjects();
 	for (auto w : ws) {
 		objects.push_back(w);
 	}
-	auto& polygons = polygonMeshes.getObjects();
+	*/
+	auto& polygons = factory.getObjects();
 	for (auto& p : polygons) {
 		objects.push_back(p);
 	}

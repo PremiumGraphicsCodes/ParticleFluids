@@ -20,7 +20,7 @@ void WFCylinderButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
 	builder.build(cylinder.getValue(), unum, vnum);
-	getModel()->getObjects()->getWireFrames()->addObject(builder.getWireFrame(), attribute.getValue(), "Sphere");
+	getModel()->getObjects()->getFactory()->addWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

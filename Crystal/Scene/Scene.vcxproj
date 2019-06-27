@@ -56,7 +56,6 @@
     <ClInclude Include="VolumeObject.h" />
     <ClInclude Include="WireFrameAttribute.h" />
     <ClInclude Include="WireFrameScene.h" />
-    <ClInclude Include="WireFrameObjectRepository.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppearanceObjectRepository.cpp" />
@@ -75,7 +74,6 @@
     <ClCompile Include="SceneFactory.cpp" />
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
-    <ClCompile Include="WireFrameObjectRepository.cpp" />
     <ClCompile Include="WireFrameScene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

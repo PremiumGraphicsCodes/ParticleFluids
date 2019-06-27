@@ -19,6 +19,12 @@ void SceneFactory::clear()
 	polygonMeshes.clear();
 }
 
+int SceneFactory::addWireFrameScene(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
+{
+	wires.push_back(new WireFrameScene(getNextId(), name, wire, attribute));
+	return wires.back()->getId();
+}
+
 int SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, const std::string& name)
 {
 	polygonMeshes.push_back(new PolygonMeshScene(getNextId(), name, mesh));

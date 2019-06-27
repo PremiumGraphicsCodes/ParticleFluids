@@ -3,7 +3,6 @@
 #include "../Util/UnCopyable.h"
 #include "ParticleSystemObjectRepository.h"
 #include "SceneFactory.h"
-#include "WireFrameObjectRepository.h"
 
 namespace Crystal {
 	namespace Model {
@@ -19,9 +18,7 @@ public:
 
 	ParticleSystemObjectRepository* getParticleSystems() { return &particleSystems; }
 
-	WireFrameObjectRepository* getWireFrames() { return &wireFrames; }
-
-	SceneFactory* getPolygonMeshes() { return &polygonMeshes; }
+	SceneFactory* getFactory() { return &factory; }
 
 	Math::Box3d getBoundingBox() const;
 
@@ -39,8 +36,7 @@ private:
 private:
 	SceneIdProvider idProvider;
 	ParticleSystemObjectRepository particleSystems;
-	WireFrameObjectRepository wireFrames;
-	SceneFactory polygonMeshes;
+	SceneFactory factory;
 };
 	}
 }

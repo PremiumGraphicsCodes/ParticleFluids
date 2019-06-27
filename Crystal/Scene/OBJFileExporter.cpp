@@ -11,7 +11,7 @@ using namespace Crystal::Model;
 
 bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
-	const auto& polygons = objects.getPolygonMeshes()->getObjects();
+	const auto& polygons = objects.getFactory()->getObjects();
 	OBJFile obj;
 	obj.groups.push_back(OBJGroup());
 	for (auto p : polygons) {
