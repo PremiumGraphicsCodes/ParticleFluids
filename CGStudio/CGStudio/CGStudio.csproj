@@ -227,22 +227,18 @@
     <Compile Include="UICommand\UICommand.cs" />
     <Compile Include="UICtrlViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
-    <Compile Include="Object\ParticleSystem\BoxGenerationView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\Generation\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Object\ParticleSystem\BoxGenerationViewModel.cs" />
-    <Compile Include="Object\ParticleSystem\CylinderGenerationView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\Generation\BoxGenerationViewModel.cs" />
+    <Compile Include="Object\ParticleSystem\Generation\CylinderGenerationView.xaml.cs">
       <DependentUpon>CylinderGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Object\ParticleSystem\CylinderGenerationViewModel.cs" />
-    <Compile Include="Object\ParticleSystem\ParticleSystemGenerationView.xaml.cs">
-      <DependentUpon>ParticleSystemGenerationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Object\ParticleSystem\ParticleSystemGenerationViewModel.cs" />
-    <Compile Include="Object\ParticleSystem\SphereGenerationView.xaml.cs">
+    <Compile Include="Object\ParticleSystem\Generation\CylinderGenerationViewModel.cs" />
+    <Compile Include="Object\ParticleSystem\Generation\SphereGenerationView.xaml.cs">
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Object\ParticleSystem\SphereGenerationViewModel.cs" />
+    <Compile Include="Object\ParticleSystem\Generation\SphereGenerationViewModel.cs" />
     <Compile Include="Object\PolygonMesh\Generation\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
@@ -267,10 +263,6 @@
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Object\WireFrame\SphereGenerationViewModel.cs" />
-    <Compile Include="Object\WireFrame\WireFrameGenerationView.xaml.cs">
-      <DependentUpon>WireFrameGenerationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Object\WireFrame\WireFrameGenerationViewModel.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectMoveUICtrl.cs" />
@@ -280,19 +272,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Object\ParticleSystem\BoxGenerationView.xaml">
+    <Page Include="Object\ParticleSystem\Generation\BoxGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Object\ParticleSystem\CylinderGenerationView.xaml">
+    <Page Include="Object\ParticleSystem\Generation\CylinderGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Object\ParticleSystem\ParticleSystemGenerationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Object\ParticleSystem\SphereGenerationView.xaml">
+    <Page Include="Object\ParticleSystem\Generation\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -333,10 +321,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Object\WireFrame\SphereGenerationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Object\WireFrame\WireFrameGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
