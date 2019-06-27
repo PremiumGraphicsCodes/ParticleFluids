@@ -41,7 +41,7 @@ void ObjectViewModel::add(const ParticleSystemScene& object)
 	}
 }
 
-void ObjectViewModel::add(const WireFrameObject& object)
+void ObjectViewModel::add(const WireFrameScene& object)
 {
 	if (!object.isVisible()) {
 		return;

@@ -21,11 +21,11 @@ void WireFrameObjectRepository::clear()
 
 int WireFrameObjectRepository::addObject(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
 {
-	objects.push_back(new WireFrameObject(getNextId(), name, wire, attribute));
+	objects.push_back(new WireFrameScene(getNextId(), name, wire, attribute));
 	return objects.back()->getId();
 }
 
-WireFrameObject* WireFrameObjectRepository::findObjectById(const int id) const
+WireFrameScene* WireFrameObjectRepository::findObjectById(const int id) const
 {
 	auto iter = std::find_if(std::cbegin(objects), std::cend(objects), [=](auto p) {return p->getId() == id; });
 	if (iter == std::cend(objects)) {

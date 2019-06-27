@@ -8,13 +8,7 @@
     <ClInclude Include="LightObject.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshObject.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMeshAttribute.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="WireFrameObject.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="WireFrameAttribute.h">
@@ -99,8 +93,14 @@
     <ClInclude Include="IScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="WireFrameScene.h">
+      <Filter>Scene\Shape</Filter>
+    </ClInclude>
     <ClInclude Include="ParticleSystemScene.h">
-      <Filter>Scene</Filter>
+      <Filter>Scene\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshObject.h">
+      <Filter>Scene\Shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +177,9 @@
     </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{b8ac2286-41a7-4c7a-8e11-7f3ca28786ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape">
+      <UniqueIdentifier>{27b37c2d-3ec6-4cde-8dbe-4e0905e7cd52}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

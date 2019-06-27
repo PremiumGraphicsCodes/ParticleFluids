@@ -7,21 +7,21 @@
 namespace Crystal {
 	namespace Model {
 
-class WireFrameObject : public IScene
+class WireFrameScene : public IScene
 {
 public:
-	WireFrameObject() :
+	WireFrameScene() :
 		IScene(-1),
 		shape(nullptr)
 	{}
 
-	WireFrameObject(const int id, const std::string& name, Shape::WireFrame* shape, const WireFrameAttribute& attribute) :
+	WireFrameScene(const int id, const std::string& name, Shape::WireFrame* shape, const WireFrameAttribute& attribute) :
 		IScene(id, name),
 		shape(shape),
 		attribute(attribute)
 	{}
 
-	~WireFrameObject() {};
+	~WireFrameScene() {};
 
 	Shape::WireFrame* getShape() const { return shape; }
 

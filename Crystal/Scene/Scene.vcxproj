@@ -54,7 +54,7 @@
     <ClInclude Include="UUID.h" />
     <ClInclude Include="VolumeObject.h" />
     <ClInclude Include="WireFrameAttribute.h" />
-    <ClInclude Include="WireFrameObject.h" />
+    <ClInclude Include="WireFrameScene.h" />
     <ClInclude Include="WireFrameObjectRepository.h" />
   </ItemGroup>
   <ItemGroup>

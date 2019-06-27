@@ -40,7 +40,7 @@ void ObjectIdViewModel::add(const ParticleSystemScene& object)
 	}
 }
 
-void ObjectIdViewModel::add(const WireFrameObject& object)
+void ObjectIdViewModel::add(const WireFrameScene& object)
 {
 	const auto objectId = object.getId();
 	const auto& lines = object.getShape()->getLines();

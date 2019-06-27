@@ -6,7 +6,7 @@
 #include "../Graphics/LightBuffer.h"
 #include "../Graphics/MaterialBuffer.h"
 #include "../Scene/ParticleSystemScene.h"
-#include "../Scene/WireFrameObject.h"
+#include "../Scene/WireFrameScene.h"
 #include "../Scene/PolygonMeshObject.h"
 #include "../Scene/LightObjectRepository.h"
 #include "../Scene/ObjectRepository.h"
@@ -31,7 +31,7 @@ private:
 
 	void add(const Model::ParticleSystemScene& object);
 
-	void add(const Model::WireFrameObject& object);
+	void add(const Model::WireFrameScene& object);
 
 	void add(const Model::PolygonMeshObject& object);
 
