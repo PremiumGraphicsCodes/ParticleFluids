@@ -24,6 +24,11 @@ public:
 
 	SceneType getType() const override { return SceneType::TextureObject; }
 
+	void onClear() override
+	{
+		delete image;
+	}
+
 private:
 	Graphics::Image* image;
 };

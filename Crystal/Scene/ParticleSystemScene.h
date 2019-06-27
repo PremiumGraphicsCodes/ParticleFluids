@@ -34,6 +34,11 @@ public:
 
 	SceneType getType() const override { return SceneType::ParticleSystemScene; }
 
+	void onClear() override
+	{
+		delete shape;
+	}
+
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;
 };

@@ -35,6 +35,11 @@ public:
 
 	SceneType getType() const override { return SceneType::PolygonMeshScene; }
 
+	void onClear() override
+	{
+		delete shape;
+	}
+
 private:
 	Shape::PolygonMesh* shape;
 };

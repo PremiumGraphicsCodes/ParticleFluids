@@ -20,8 +20,6 @@ public:
 
 	//void setMaterial(const Graphics::Material& material) { this->material = material; }
 
-	void move(const Math::Vector3dd& v) override { ; }
-
 	void transform(const Math::Matrix3dd& m) { ; }
 
 	void transform(const Math::Matrix4dd& m) { ; }
@@ -29,6 +27,11 @@ public:
 	bool isNull() const { return texture == nullptr; }
 
 	SceneType getType() const override { return SceneType::TextureObject; }
+
+	void onClear() override
+	{
+		delete texture;
+	}
 
 private:
 	Shader::TextureObject* texture;

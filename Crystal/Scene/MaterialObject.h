@@ -24,6 +24,12 @@ public:
 
 	SceneType getType() const override { return SceneType::MaterialObject; }
 
+	void onClear() override
+	{
+		delete material;
+	}
+
+
 private:
 	Graphics::Material* material;
 };

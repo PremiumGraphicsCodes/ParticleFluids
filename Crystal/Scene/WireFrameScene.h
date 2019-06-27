@@ -37,6 +37,11 @@ public:
 
 	SceneType getType() const override { return SceneType::WireFrameScene; }
 
+	void onClear() override
+	{
+		delete shape;
+	}
+
 private:
 	Shape::WireFrame* shape;
 	WireFrameAttribute attribute;

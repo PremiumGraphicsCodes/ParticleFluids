@@ -32,6 +32,12 @@ public:
 
 	SceneType getType() const override { return SceneType::LightObject; }
 
+	void onClear() override
+	{
+		delete light;
+	}
+
+
 private:
 	Graphics::PointLight* light;
 };

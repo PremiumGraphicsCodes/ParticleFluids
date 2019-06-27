@@ -7,6 +7,8 @@
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
 
+#include <list>
+
 namespace Crystal {
 	namespace Model {
 
@@ -34,6 +36,13 @@ public:
 
 	virtual ~IScene() {};
 
+	void clear() {
+		for (const auto& c : children) {
+			c->clear();
+		}
+		onClear();
+	}
+
 	void setName(const std::string& name) { this->name = name; }
 
 	std::string getName() const { return name; }
@@ -56,10 +65,16 @@ public:
 
 	void setSelected(bool b) { this->_isSelected = b; }
 
+	void addScene(IScene* scene) { this->children.push_back(scene); }
+
+protected:
+	virtual void onClear() = 0;
+
 private:
 	std::string name;
 	int id;
 	bool _isSelected;
+	std::list<IScene*> children;
 };
 	}
 }
