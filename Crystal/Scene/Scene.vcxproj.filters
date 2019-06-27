@@ -99,6 +99,18 @@
     <ClInclude Include="SceneIdProvider.h">
       <Filter>Repository</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectIdViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="AppearanceViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppearanceObjectRepository.cpp">
@@ -149,6 +161,15 @@
     <ClCompile Include="SceneFactory.cpp">
       <Filter>Repository\Object</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectIdViewModel.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectViewModel.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="AppearanceViewModel.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Repository">
@@ -177,6 +198,9 @@
     </Filter>
     <Filter Include="Scene\Shape">
       <UniqueIdentifier>{27b37c2d-3ec6-4cde-8dbe-4e0905e7cd52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ViewModel">
+      <UniqueIdentifier>{b4af8391-a4b7-4fb7-84d7-1c71fb361279}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

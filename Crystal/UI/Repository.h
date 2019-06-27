@@ -3,7 +3,7 @@
 #include "../Scene/Scene.h"
 #include "../Scene/AppearanceObjectRepository.h"
 #include "../Shader/OpenGLObjectRepository.h"
-#include "ViewModel.h"
+#include "../Scene/ViewModel.h"
 #include <filesystem>
 
 #include "../Util/UnCopyable.h"

@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "../../Crystal/UI/ObjectViewModel.h"
+#include "../../Crystal/Scene/ObjectViewModel.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 

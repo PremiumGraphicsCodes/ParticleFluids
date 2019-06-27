@@ -1,5 +1,5 @@
 #include "ObjectIdRenderer.h"
-#include "../../Crystal/UI/ObjectIdViewModel.h"
+#include "../../Crystal/Scene/ObjectIdViewModel.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;

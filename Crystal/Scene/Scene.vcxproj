@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppearanceObjectRepository.h" />
+    <ClInclude Include="AppearanceViewModel.h" />
     <ClInclude Include="FileFormat.h" />
     <ClInclude Include="FileImporter.h" />
     <ClInclude Include="FileExporter.h" />
@@ -35,6 +36,8 @@
     <ClInclude Include="LightObjectRepository.h" />
     <ClInclude Include="MaterialObject.h" />
     <ClInclude Include="MaterialObjectRepository.h" />
+    <ClInclude Include="ObjectIdViewModel.h" />
+    <ClInclude Include="ObjectViewModel.h" />
     <ClInclude Include="SceneId.h" />
     <ClInclude Include="SceneIdProvider.h" />
     <ClInclude Include="Scene.h" />
@@ -52,18 +55,22 @@
     <ClInclude Include="STLFileImporter.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="UUID.h" />
+    <ClInclude Include="ViewModel.h" />
     <ClInclude Include="VolumeObject.h" />
     <ClInclude Include="WireFrameAttribute.h" />
     <ClInclude Include="WireFrameScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppearanceObjectRepository.cpp" />
+    <ClCompile Include="AppearanceViewModel.cpp" />
     <ClCompile Include="FileImporter.cpp" />
     <ClCompile Include="FileExporter.cpp" />
     <ClCompile Include="ImageObjectRepository.cpp" />
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="LightObjectRepository.cpp" />
     <ClCompile Include="MaterialObjectRepository.cpp" />
+    <ClCompile Include="ObjectIdViewModel.cpp" />
+    <ClCompile Include="ObjectViewModel.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="OBJFileExporter.cpp" />
     <ClCompile Include="OBJFileImporter.cpp" />

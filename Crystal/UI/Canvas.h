@@ -8,8 +8,6 @@
 #include <list>
 
 #include "IUICtrl.h"
-#include "ObjectViewModel.h"
-#include "AppearanceViewModel.h"
 #include "ObjectRenderer.h"
 #include "Renderer.h"
 

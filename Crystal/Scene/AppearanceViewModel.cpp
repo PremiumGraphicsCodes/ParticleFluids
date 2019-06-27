@@ -1,6 +1,6 @@
 #include "AppearanceViewModel.h"
-#include "Repository.h"
 
+#include "AppearanceObjectRepository.h"
 #include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Math;

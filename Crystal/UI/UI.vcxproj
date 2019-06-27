@@ -21,9 +21,7 @@
   <ItemGroup>
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="Canvas.h" />
-    <ClInclude Include="AppearanceViewModel.h" />
     <ClInclude Include="ObjectIdRenderer.h" />
-    <ClInclude Include="ObjectIdViewModel.h" />
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="Repository.h" />
     <ClInclude Include="RotateUICtrl.h" />
@@ -35,15 +33,11 @@
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="PickUICtrl.h" />
     <ClInclude Include="RectSelectUICtrl.h" />
-    <ClInclude Include="ObjectViewModel.h" />
-    <ClInclude Include="ViewModel.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AppearanceViewModel.cpp" />
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="ObjectIdRenderer.cpp" />
-    <ClCompile Include="ObjectIdViewModel.cpp" />
     <ClCompile Include="Repository.cpp" />
     <ClCompile Include="RotateUICtrl.cpp" />
     <ClCompile Include="ScaleUICtrl.cpp" />
@@ -51,7 +45,6 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="ObjectRenderer.cpp" />
-    <ClCompile Include="ObjectViewModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -6,7 +6,7 @@
 #include "ObjectRenderer.h"
 #include "ObjectIdRenderer.h"
 
-#include "ViewModel.h"
+#include "../Scene/ViewModel.h"
 
 #include "../Util/UnCopyable.h"
 

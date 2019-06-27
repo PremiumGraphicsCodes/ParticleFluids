@@ -1,5 +1,4 @@
 #include "ObjectViewModel.h"
-#include "Repository.h"
 
 #include "../Graphics/DrawableId.h"
 
