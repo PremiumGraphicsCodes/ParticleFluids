@@ -41,7 +41,7 @@
     <ClInclude Include="OBJFileExporter.h" />
     <ClInclude Include="OBJFileImporter.h" />
     <ClInclude Include="ParticleAttribute.h" />
-    <ClInclude Include="ParticleSystemObject.h" />
+    <ClInclude Include="ParticleSystemScene.h" />
     <ClInclude Include="ParticleSystemObjectRepository.h" />
     <ClInclude Include="PCDFileExporter.h" />
     <ClInclude Include="PCDFileImporter.h" />

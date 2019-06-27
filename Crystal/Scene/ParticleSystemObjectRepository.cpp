@@ -27,7 +27,7 @@ int ParticleSystemObjectRepository::addObject(const Vector3dd& position, const P
 {
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
 	particles->add(position, attribute);
-	objects.push_back(new ParticleSystemObject(getNextId(), name, particles));
+	objects.push_back(new ParticleSystemScene(getNextId(), name, particles));
 	return objects.back()->getId();
 }
 
@@ -37,7 +37,7 @@ int ParticleSystemObjectRepository::addObject(const std::vector<Vector3dd>& posi
 	for (const auto& p : positions) {
 		particles->add(p, attribute);
 	}
-	objects.push_back(new ParticleSystemObject(getNextId(), name, particles));
+	objects.push_back(new ParticleSystemScene(getNextId(), name, particles));
 	return objects.back()->getId();
 }
 
@@ -48,12 +48,12 @@ int ParticleSystemObjectRepository::addObject(const std::vector<Vector3dd>& posi
 	for (int i = 0; i < positions.size(); ++i) {
 		particles->add(positions[i], attributes[i]);
 	}
-	objects.push_back(new ParticleSystemObject(getNextId(), name, particles));
+	objects.push_back(new ParticleSystemScene(getNextId(), name, particles));
 	return objects.back()->getId();
 
 }
 
-ParticleSystemObject* ParticleSystemObjectRepository::findObjectById(const int id) const
+ParticleSystemScene* ParticleSystemObjectRepository::findObjectById(const int id) const
 {
 	auto iter = std::find_if(std::cbegin(objects), std::cend(objects), [=](auto p) {return p->getId() == id; });
 	if (iter == std::cend(objects)) {

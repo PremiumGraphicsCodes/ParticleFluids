@@ -29,7 +29,7 @@ void ObjectViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float
 	pointBuffer.add(pos, c, size);
 }
 
-void ObjectViewModel::add(const ParticleSystemObject& object)
+void ObjectViewModel::add(const ParticleSystemScene& object)
 {
 	if (!object.isVisible()) {
 		return;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IObjectRepository.h"
-#include "ParticleSystemObject.h"
+#include "ParticleSystemScene.h"
 #include <list>
 
 namespace Crystal {
@@ -22,9 +22,9 @@ public:
 
 	int addObject(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
-	ParticleSystemObject* findObjectById(const int id) const;
+	ParticleSystemScene* findObjectById(const int id) const;
 
-	std::list<ParticleSystemObject*> getObjects() const { return objects; }
+	std::list<ParticleSystemScene*> getObjects() const { return objects; }
 
 	Math::Box3d getBoundingBox() const override;
 
@@ -37,7 +37,7 @@ public:
 	Shape::Particle<ParticleAttribute>* findParticleById(const int parentId, const int childId) const;
 
 private:
-	std::list<ParticleSystemObject*> objects;
+	std::list<ParticleSystemScene*> objects;
 };
 
 	}

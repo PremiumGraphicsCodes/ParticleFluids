@@ -29,7 +29,7 @@ void ObjectIdViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const flo
 	pointIdBuffer.add(pos, c, size);
 }
 
-void ObjectIdViewModel::add(const ParticleSystemObject& object)
+void ObjectIdViewModel::add(const ParticleSystemScene& object)
 {
 	const auto objectId = object.getId();
 	const auto& particles = object.getShape()->getParticles();

@@ -5,7 +5,7 @@
 #include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/LightBuffer.h"
 #include "../Graphics/MaterialBuffer.h"
-#include "../Scene/ParticleSystemObject.h"
+#include "../Scene/ParticleSystemScene.h"
 #include "../Scene/WireFrameObject.h"
 #include "../Scene/PolygonMeshObject.h"
 #include "../Scene/LightObjectRepository.h"
@@ -29,7 +29,7 @@ public:
 private:
 	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
 
-	void add(const Model::ParticleSystemObject& object);
+	void add(const Model::ParticleSystemScene& object);
 
 	void add(const Model::WireFrameObject& object);
 

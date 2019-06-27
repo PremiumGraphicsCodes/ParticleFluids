@@ -8,9 +8,6 @@
     <ClInclude Include="LightObject.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemObject.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMeshObject.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -100,6 +97,9 @@
       <Filter>FileIO\PCD</Filter>
     </ClInclude>
     <ClInclude Include="IScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
