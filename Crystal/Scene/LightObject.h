@@ -30,7 +30,7 @@ public:
 
 	bool isNull() const { return light == nullptr; }
 
-	ObjectType getType() const override { return ObjectType::LightObject; }
+	SceneType getType() const override { return SceneType::LightObject; }
 
 private:
 	Graphics::PointLight* light;

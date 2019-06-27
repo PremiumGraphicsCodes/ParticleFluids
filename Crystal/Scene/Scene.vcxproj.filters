@@ -20,9 +20,6 @@
     <ClInclude Include="ObjectRepository.h">
       <Filter>Repository</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectType.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialObject.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -104,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="IShapeScene.h">
       <Filter>Scene\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneType.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

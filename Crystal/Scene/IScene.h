@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "ObjectType.h"
+#include "SceneType.h"
 
 #include "../Math/Vector3d.h"
 #include "../Math/Matrix3d.h"
@@ -50,7 +50,7 @@ public:
 
 	virtual bool isNull() const = 0;
 
-	virtual ObjectType getType() const = 0;
+	virtual SceneType getType() const = 0;
 
 	bool isSelected() const { return _isSelected; }
 

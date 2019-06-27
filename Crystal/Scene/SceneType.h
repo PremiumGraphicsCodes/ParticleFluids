@@ -3,7 +3,7 @@
 namespace Crystal {
 	namespace Model {
 
-enum class ObjectType
+enum class SceneType
 {
 	None = 0,
 	ParticleSystemObject = 0x01,

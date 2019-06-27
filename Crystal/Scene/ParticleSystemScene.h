@@ -32,7 +32,7 @@ public:
 
 	bool isNull() const { return shape == nullptr; }
 
-	ObjectType getType() const override { return ObjectType::ParticleSystemObject; }
+	SceneType getType() const override { return SceneType::ParticleSystemObject; }
 
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;

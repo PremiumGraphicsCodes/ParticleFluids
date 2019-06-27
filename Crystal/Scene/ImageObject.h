@@ -22,7 +22,7 @@ public:
 
 	bool isNull() const { return image == nullptr; }
 
-	ObjectType getType() const override { return ObjectType::TextureObject; }
+	SceneType getType() const override { return SceneType::TextureObject; }
 
 private:
 	Graphics::Image* image;

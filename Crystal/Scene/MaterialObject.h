@@ -22,7 +22,7 @@ public:
 
 	bool isNull() const { return material == nullptr; }
 
-	ObjectType getType() const override { return ObjectType::MaterialObject; }
+	SceneType getType() const override { return SceneType::MaterialObject; }
 
 private:
 	Graphics::Material* material;

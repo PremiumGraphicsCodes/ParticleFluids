@@ -11,7 +11,7 @@ using namespace Crystal::Model;
 void FaceSelectButton::onShow()
 {
 	if (ImGui::Button("Pick")) {
-		auto ctrl = new PickUICtrl(getModel(), getCanvas(), ObjectType::PolygonMeshObject);
+		auto ctrl = new PickUICtrl(getModel(), getCanvas(), SceneType::PolygonMeshObject);
 		auto func = [=](int parentId, int childId) {
 			auto mesh = getModel()->getObjects()->getPolygonMeshes()->findObjectById(parentId);
 			if (mesh == nullptr) {

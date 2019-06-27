@@ -28,7 +28,7 @@ public:
 
 	bool isNull() const { return texture == nullptr; }
 
-	ObjectType getType() const override { return ObjectType::TextureObject; }
+	SceneType getType() const override { return SceneType::TextureObject; }
 
 private:
 	Shader::TextureObject* texture;

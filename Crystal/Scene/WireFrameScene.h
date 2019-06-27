@@ -35,7 +35,7 @@ public:
 
 	bool isNull() const { return shape == nullptr; }
 
-	ObjectType getType() const override { return ObjectType::WireFrameObject; }
+	SceneType getType() const override { return SceneType::WireFrameObject; }
 
 private:
 	Shape::WireFrame* shape;

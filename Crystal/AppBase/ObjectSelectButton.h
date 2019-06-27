@@ -11,11 +11,11 @@ public:
 	ObjectSelectButton(const std::string& name, Repository* model, Canvas* canvas) :
 		IPopupButton(name, model, canvas),
 		id(0),
-		type(Model::ObjectType::All)
+		type(Model::SceneType::All)
 	{
 	}
 
-	ObjectSelectButton(const std::string& name, Repository* model, Canvas* canvas, const Model::ObjectType type) :
+	ObjectSelectButton(const std::string& name, Repository* model, Canvas* canvas, const Model::SceneType type) :
 		IPopupButton(name, model, canvas),
 		id(0),
 		type(type)
@@ -33,7 +33,7 @@ public:
 
 private:
 	int id;
-	Model::ObjectType type;
+	Model::SceneType type;
 };
 
 	}

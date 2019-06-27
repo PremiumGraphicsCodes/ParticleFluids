@@ -32,7 +32,7 @@ public:
 
 	bool isNull() const { return shape == nullptr; }
 
-	ObjectType getType() const override { return ObjectType::VolumeObjectObject; }
+	SceneType getType() const override { return SceneType::VolumeObjectObject; }
 
 private:
 	Shape::Volume* shape;

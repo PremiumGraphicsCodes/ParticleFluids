@@ -3,7 +3,7 @@
 #include "Canvas.h"
 #include "IUICtrl.h"
 
-#include "../Scene/ObjectType.h"
+#include "../Scene/SceneType.h"
 
 #include <functional>
 
@@ -14,7 +14,7 @@ namespace Crystal {
 class PickUICtrl : public IUICtrl
 {
 public:
-	PickUICtrl(Repository* model, Canvas* canvas, const Model::ObjectType& type);
+	PickUICtrl(Repository* model, Canvas* canvas, const Model::SceneType& type);
 
 	virtual ~PickUICtrl() {}
 
@@ -38,7 +38,7 @@ private:
 	Repository* model;
 	Canvas* canvas;
 	std::function<void(int, int)> function;
-	const Model::ObjectType type;
+	const Model::SceneType type;
 };
 	}
 }
