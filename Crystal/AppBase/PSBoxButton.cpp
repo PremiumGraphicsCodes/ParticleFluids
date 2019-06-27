@@ -40,7 +40,7 @@ void PSBoxButton::onOk()
 		}
 	}
 
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, attribute.getValue(), "Box");
+	getModel()->getObjects()->getParticleSystems()->addParticleSystemScene(positions, attribute.getValue(), "Box");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

@@ -23,7 +23,7 @@ void ParticleSystemObjectRepository::clear()
 	objects.clear();
 }
 
-int ParticleSystemObjectRepository::addObject(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
+int ParticleSystemObjectRepository::addParticleSystemScene(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
 {
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
 	particles->add(position, attribute);
@@ -31,7 +31,7 @@ int ParticleSystemObjectRepository::addObject(const Vector3dd& position, const P
 	return objects.back()->getId();
 }
 
-int ParticleSystemObjectRepository::addObject(const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name)
+int ParticleSystemObjectRepository::addParticleSystemScene(const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name)
 {
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
 	for (const auto& p : positions) {
@@ -41,7 +41,7 @@ int ParticleSystemObjectRepository::addObject(const std::vector<Vector3dd>& posi
 	return objects.back()->getId();
 }
 
-int ParticleSystemObjectRepository::addObject(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
+int ParticleSystemObjectRepository::addParticleSystemScene(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
 {
 	assert(positions.size() == attributes.size());
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();

@@ -26,7 +26,7 @@ void PSCylinderButton::onOk()
 		const auto v = dist(mt);
 		positions.push_back(cylinder.getPosition(Vector3dd( u, v, 1.0)));
 	}
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, attribute.getValue(), "Cylinder");
+	getModel()->getObjects()->getParticleSystems()->addParticleSystemScene(positions, attribute.getValue(), "Cylinder");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
