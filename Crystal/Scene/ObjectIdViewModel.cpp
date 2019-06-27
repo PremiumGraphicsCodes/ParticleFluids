@@ -13,11 +13,11 @@ void ObjectIdViewModel::add(Scene& objects)
 	for (auto ps : particleSystems) {
 		add(*ps);
 	}
-	const auto& wires = objects.getFactory()->getWires();
+	const auto& wires = objects.getFactory()->getWireFrames();
 	for (auto wf : wires) {
 		add(*wf);
 	}
-	const auto& polygons = objects.getFactory()->getObjects();
+	const auto& polygons = objects.getFactory()->getPolygonMeshes();
 	for (auto p : polygons) {
 		add(*p);
 	}

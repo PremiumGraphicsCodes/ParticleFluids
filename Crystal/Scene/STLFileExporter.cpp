@@ -10,7 +10,7 @@ using namespace Crystal::Model;
 
 bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
-	const auto& polygons = objects.getFactory()->getObjects();
+	const auto& polygons = objects.getFactory()->getPolygonMeshes();
 	std::vector<Shape::TriangleFace> fs;
 	for (auto p : polygons) {
 		const auto& faces = p->getShape()->getFaces();
@@ -35,7 +35,7 @@ bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& 
 
 bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
-	const auto& polygons = objects.getFactory()->getObjects();
+	const auto& polygons = objects.getFactory()->getPolygonMeshes();
 	std::vector<Shape::TriangleFace> fs;
 	for (auto p : polygons) {
 		const auto& faces = p->getShape()->getFaces();

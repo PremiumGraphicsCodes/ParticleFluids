@@ -32,9 +32,6 @@
     <ClInclude Include="TextureObject.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="IObjectRepository.h">
-      <Filter>Repository</Filter>
-    </ClInclude>
     <ClInclude Include="ImageObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
@@ -89,16 +86,7 @@
     <ClInclude Include="SceneType.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Repository</Filter>
-    </ClInclude>
     <ClInclude Include="SceneId.h" />
-    <ClInclude Include="SceneFactory.h">
-      <Filter>Repository\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneIdProvider.h">
-      <Filter>Repository</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectIdViewModel.h">
       <Filter>ViewModel</Filter>
     </ClInclude>
@@ -110,6 +98,15 @@
     </ClInclude>
     <ClInclude Include="AppearanceViewModel.h">
       <Filter>ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneFactory.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneIdProvider.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,17 +146,11 @@
     <ClCompile Include="PCDFileExporter.cpp">
       <Filter>FileIO\PCD</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Repository</Filter>
-    </ClCompile>
     <ClCompile Include="IScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="WireFrameScene.cpp">
       <Filter>Scene\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneFactory.cpp">
-      <Filter>Repository\Object</Filter>
     </ClCompile>
     <ClCompile Include="ObjectIdViewModel.cpp">
       <Filter>ViewModel</Filter>
@@ -170,6 +161,12 @@
     <ClCompile Include="AppearanceViewModel.cpp">
       <Filter>ViewModel</Filter>
     </ClCompile>
+    <ClCompile Include="SceneFactory.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Repository">
@@ -177,9 +174,6 @@
     </Filter>
     <Filter Include="Repository\Appearance">
       <UniqueIdentifier>{49256813-d3dc-49dc-8d0d-4c7b77908895}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Repository\Object">
-      <UniqueIdentifier>{3be7f5fc-e617-41e0-b988-f86fb4b9d409}</UniqueIdentifier>
     </Filter>
     <Filter Include="FileIO">
       <UniqueIdentifier>{beb36380-0e7c-4d6f-9c2b-494d9cb328f4}</UniqueIdentifier>

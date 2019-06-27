@@ -11,7 +11,7 @@ PolygonMeshTreeList::PolygonMeshTreeList(const std::string& name, Repository* mo
 
 void PolygonMeshTreeList::onShow()
 {
-	const auto& polygons = getRepository()->getObjects()->getFactory()->getObjects();
+	const auto& polygons = getRepository()->getObjects()->getFactory()->getPolygonMeshes();
 	ImGui::BeginChild("Polygons", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 
 	for (const auto& polygon : polygons) {

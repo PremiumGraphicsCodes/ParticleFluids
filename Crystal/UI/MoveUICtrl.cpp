@@ -28,7 +28,7 @@ void MoveUICtrl::onLeftDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
 
-	auto& os = repository->getObjects()->getFactory()->getObjects();
+	auto& os = repository->getObjects()->getFactory()->getPolygonMeshes();
 	for (auto o : os) {
 		o->move(glm::vec3(diff.x, diff.y, 0.0));
 	}

@@ -5,6 +5,10 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
+SceneFactory::SceneFactory(SceneIdProvider& idProvider):
+	idProvider(idProvider)
+{}
+
 SceneFactory::~SceneFactory()
 {
 	clear();
@@ -12,11 +16,11 @@ SceneFactory::~SceneFactory()
 
 void SceneFactory::clear()
 {
-	for (auto p : particleSystemScenes) {
+	for (auto p : particleSystems) {
 		delete p->getShape();
 		delete p;
 	}
-	particleSystemScenes.clear();
+	particleSystems.clear();
 
 	for (auto p : polygonMeshes) {
 		delete p->getShape();
@@ -29,8 +33,8 @@ int SceneFactory::addParticleSystemScene(const Vector3dd& position, const Partic
 {
 	auto particles = new ParticleSystem<ParticleAttribute>();
 	particles->add(position, attribute);
-	particleSystemScenes.push_back(new ParticleSystemScene(getNextId(), name, particles));
-	return particleSystemScenes.back()->getId();
+	particleSystems.push_back(new ParticleSystemScene(getNextId(), name, particles));
+	return particleSystems.back()->getId();
 }
 
 int SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name)
@@ -39,8 +43,8 @@ int SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions
 	for (const auto& p : positions) {
 		particles->add(p, attribute);
 	}
-	particleSystemScenes.push_back(new ParticleSystemScene(getNextId(), name, particles));
-	return particleSystemScenes.back()->getId();
+	particleSystems.push_back(new ParticleSystemScene(getNextId(), name, particles));
+	return particleSystems.back()->getId();
 }
 
 int SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
@@ -50,8 +54,8 @@ int SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions
 	for (int i = 0; i < positions.size(); ++i) {
 		particles->add(positions[i], attributes[i]);
 	}
-	particleSystemScenes.push_back(new ParticleSystemScene(getNextId(), name, particles));
-	return particleSystemScenes.back()->getId();
+	particleSystems.push_back(new ParticleSystemScene(getNextId(), name, particles));
+	return particleSystems.back()->getId();
 
 }
 

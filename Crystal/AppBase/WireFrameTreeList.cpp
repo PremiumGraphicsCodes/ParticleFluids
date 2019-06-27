@@ -11,7 +11,7 @@ WireFrameTreeList::WireFrameTreeList(const std::string& name, Repository* model,
 
 void WireFrameTreeList::onShow()
 {
-	const auto& wires = getRepository()->getObjects()->getFactory()->getWires();
+	const auto& wires = getRepository()->getObjects()->getFactory()->getWireFrames();
 	ImGui::BeginChild("WireFrames", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
 	for (auto ws : wires) {
 		const auto name = ws->getName();

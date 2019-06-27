@@ -61,7 +61,7 @@ std::list<IScene*> Scene::getAllObjects() const
 		objects.push_back(w);
 	}
 	*/
-	auto& polygons = factory.getObjects();
+	auto& polygons = factory.getPolygonMeshes();
 	for (auto& p : polygons) {
 		objects.push_back(p);
 	}

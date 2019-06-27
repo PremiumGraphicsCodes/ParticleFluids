@@ -1,20 +1,17 @@
 #pragma once
 
-#include "IObjectRepository.h"
+#include "SceneIdProvider.h"
 #include "PolygonMeshScene.h"
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
-#include "PolygonMeshAttribute.h"
 
 namespace Crystal {
 	namespace Model {
 
-class SceneFactory : public IObjectRepository
+class SceneFactory
 {
 public:
-	explicit SceneFactory(SceneIdProvider& idProvider) :
-		IObjectRepository(idProvider)
-	{}
+	explicit SceneFactory(SceneIdProvider& idProvider);
 
 	~SceneFactory();
 
@@ -32,18 +29,21 @@ public:
 
 	PolygonMeshScene* findObjectById(const int id) const;
 
-	std::list<ParticleSystemScene*> getParticleSystems() const { return particleSystemScenes; }
+	std::list<ParticleSystemScene*> getParticleSystems() const { return particleSystems; }
 
-	std::list<WireFrameScene*> getWires() const { return wires; }
+	std::list<WireFrameScene*> getWireFrames() const { return wires; }
 
-	std::list<PolygonMeshScene*> getObjects() const { return polygonMeshes; }
+	std::list<PolygonMeshScene*> getPolygonMeshes() const { return polygonMeshes; }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3d getBoundingBox() const;
 
-	std::list<Math::Vector3dd> getAllVertices() const override;
+	std::list<Math::Vector3dd> getAllVertices() const;
+
+	int getNextId() { return idProvider.getNextId(); }
 
 private:
-	std::list<ParticleSystemScene*> particleSystemScenes;
+	SceneIdProvider& idProvider;
+	std::list<ParticleSystemScene*> particleSystems;
 	std::list<WireFrameScene*> wires;
 	std::list<PolygonMeshScene*> polygonMeshes;
 

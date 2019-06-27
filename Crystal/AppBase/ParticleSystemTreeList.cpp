@@ -11,7 +11,7 @@ ParticleSystemTreeList::ParticleSystemTreeList(const std::string& name, Reposito
 
 void ParticleSystemTreeList::onShow()
 {
-	const auto& particleSystems = getRepository()->getObjects()->getFactory()->getObjects();
+	const auto& particleSystems = getRepository()->getObjects()->getFactory()->getPolygonMeshes();
 
 	//auto n = getName();
 	//auto str = n.c_str();

@@ -30,7 +30,6 @@
     <ClInclude Include="ImageObject.h" />
     <ClInclude Include="ImageObjectRepository.h" />
     <ClInclude Include="IScene.h" />
-    <ClInclude Include="IObjectRepository.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LightObject.h" />
     <ClInclude Include="LightObjectRepository.h" />
