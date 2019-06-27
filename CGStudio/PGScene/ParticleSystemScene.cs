@@ -7,7 +7,7 @@ namespace PG.Scene
     {
         private ParticleSystem shape;
 
-        public string Name;
+        public override string Name { get; }
 
         public ParticleSystemScene()
         {

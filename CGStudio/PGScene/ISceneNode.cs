@@ -5,6 +5,8 @@ namespace PG.Scene
 {
     public abstract class ISceneNode
     {
+        public virtual string Name { get; }
+
         public List<ISceneNode> Children { get; set; }
 
         /*

@@ -6,7 +6,7 @@ namespace PG.Scene
     {
         private WireFrame shape;
 
-        public string Name;
+        public override string Name { get; }
 
         public WireFrameScene()
         {
