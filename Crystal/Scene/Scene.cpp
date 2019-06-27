@@ -1,30 +1,30 @@
-#include "ObjectRepository.h"
+#include "Scene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
-ObjectRepository::ObjectRepository() :
+Scene::Scene() :
 	particleSystems(idProvider),
 	wireFrames(idProvider),
 	polygonMeshes(idProvider)
 {
 }
 
-ObjectRepository::~ObjectRepository()
+Scene::~Scene()
 {
 	clear();
 }
 
-void ObjectRepository::clear()
+void Scene::clear()
 {
 	particleSystems.clear();
 	wireFrames.clear();
 	polygonMeshes.clear();
 }
 
-Box3d ObjectRepository::getBoundingBox() const
+Box3d Scene::getBoundingBox() const
 {
 	const auto& vertices = getAllVertices();
 	if (vertices.empty()) {
@@ -37,7 +37,7 @@ Box3d ObjectRepository::getBoundingBox() const
 	return bb;
 }
 
-std::list<Vector3dd> ObjectRepository::getAllVertices() const
+std::list<Vector3dd> Scene::getAllVertices() const
 {
 	std::list<Vector3dd> positions;
 	const auto& particles = particleSystems.getAllVertices();
@@ -49,7 +49,7 @@ std::list<Vector3dd> ObjectRepository::getAllVertices() const
 	return positions;
 }
 
-std::list<IScene*> ObjectRepository::getAllObjects() const
+std::list<IScene*> Scene::getAllObjects() const
 {
 	std::list<IScene*> objects;
 	const auto& ps = particleSystems.getObjects();
@@ -67,7 +67,7 @@ std::list<IScene*> ObjectRepository::getAllObjects() const
 	return objects;
 }
 
-IScene* ObjectRepository::findObjectById(const int id)
+IScene* Scene::findObjectById(const int id)
 {
 	const auto& objects = getAllObjects();
 	auto iter = std::find_if(std::cbegin(objects), std::cend(objects), [=](auto p) {return p->getId() == id; });

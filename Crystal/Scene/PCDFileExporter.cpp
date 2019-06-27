@@ -1,6 +1,6 @@
 #include "PCDFileExporter.h"
 
-#include "ObjectRepository.h"
+#include "Scene.h"
 
 #include "../IO/PCDFileWriter.h"
 
@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool PCDFileExporter::exportPCD(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool PCDFileExporter::exportPCD(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
 	const auto& positions = objects.getParticleSystems()->getAllVertices();
 	PCDFile pcd;

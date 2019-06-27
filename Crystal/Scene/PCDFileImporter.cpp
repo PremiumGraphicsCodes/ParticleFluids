@@ -1,12 +1,12 @@
 #include "PCDFileImporter.h"
 
 #include "../IO/PCDFileReader.h"
-#include "ObjectRepository.h"
+#include "Scene.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool PCDFileImporter::importPCD(const std::experimental::filesystem::path& filePath, ObjectRepository& repository)
+bool PCDFileImporter::importPCD(const std::experimental::filesystem::path& filePath, Scene& repository)
 {
 	PCDFileReader reader;
 	if (reader.read(filePath)) {

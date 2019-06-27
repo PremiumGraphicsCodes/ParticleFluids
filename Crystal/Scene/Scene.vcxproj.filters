@@ -17,9 +17,6 @@
     <ClInclude Include="ParticleAttribute.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectRepository.h">
-      <Filter>Repository</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialObject.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -105,11 +102,11 @@
     <ClInclude Include="SceneType.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Repository</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ObjectRepository.cpp">
-      <Filter>Repository</Filter>
-    </ClCompile>
     <ClCompile Include="AppearanceObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
@@ -154,6 +151,12 @@
     </ClCompile>
     <ClCompile Include="PCDFileExporter.cpp">
       <Filter>FileIO\PCD</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Repository</Filter>
+    </ClCompile>
+    <ClCompile Include="IScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

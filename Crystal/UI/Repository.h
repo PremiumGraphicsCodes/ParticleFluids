@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Scene/ObjectRepository.h"
+#include "../Scene/Scene.h"
 #include "../Scene/AppearanceObjectRepository.h"
 #include "../Shader/OpenGLObjectRepository.h"
 #include "ViewModel.h"
@@ -24,9 +24,9 @@ public:
 
 	bool exportFile(const std::experimental::filesystem::path& filePath);
 
-	Model::ObjectRepository* getObjects() { return &objects; }
+	Model::Scene* getObjects() { return &objects; }
 
-	Model::ObjectRepository* getItems() { return &items; }
+	Model::Scene* getItems() { return &items; }
 
 	Model::AppearanceObjectRepository* getAppearances() { return &appearances; }
 
@@ -37,8 +37,8 @@ public:
 	Math::Box3d getBoundingBox() const;
 
 private:	
-	Model::ObjectRepository objects;
-	Model::ObjectRepository items;
+	Model::Scene objects;
+	Model::Scene items;
 	Model::AppearanceObjectRepository appearances;
 	Shader::OpenGLObjectRepository shaders;
 

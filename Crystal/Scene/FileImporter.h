@@ -1,7 +1,7 @@
 #pragma once
 
 #include <filesystem>
-#include "ObjectRepository.h"
+#include "Scene.h"
 #include "AppearanceObjectRepository.h"
 #include "FileFormat.h"
 
@@ -11,9 +11,9 @@ namespace Crystal {
 class FileImporter
 {
 public:
-	bool importFile(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances);
+	bool importFile(const std::experimental::filesystem::path& filePath, Model::Scene& objects, Model::AppearanceObjectRepository& appearances);
 
-	bool importFile(const std::experimental::filesystem::path& filePath, Model::ObjectRepository& objects, Model::AppearanceObjectRepository& appearances, const FileFormat format);
+	bool importFile(const std::experimental::filesystem::path& filePath, Model::Scene& objects, Model::AppearanceObjectRepository& appearances, const FileFormat format);
 };
 
 	}

@@ -3,13 +3,13 @@
 #include "../IO/OBJFileWriter.h"
 #include "../IO/MTLFileWriter.h"
 
-#include "ObjectRepository.h"
+#include "Scene.h"
 #include "AppearanceObjectRepository.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	OBJFile obj;

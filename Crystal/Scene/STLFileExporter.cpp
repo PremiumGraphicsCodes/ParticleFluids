@@ -3,12 +3,12 @@
 #include "../IO/STLASCIIFileWriter.h"
 #include "../IO/STLBinaryFileWriter.h"
 
-#include "ObjectRepository.h"
+#include "Scene.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	std::vector<Shape::TriangleFace> fs;
@@ -33,7 +33,7 @@ bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& 
 	return writer.write(filePath, stl);
 }
 
-bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
 	const auto& polygons = objects.getPolygonMeshes()->getObjects();
 	std::vector<Shape::TriangleFace> fs;

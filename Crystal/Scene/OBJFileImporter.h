@@ -6,17 +6,17 @@
 
 namespace Crystal {
 	namespace Model {
-		class ObjectRepository;
+		class Scene;
 		class AppearanceObjectRepository;
 
 class OBJFileImporter
 {
 public:
-	bool importOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances);
+	bool importOBJ(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances);
 
 	bool importMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances);
 
-	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances);
+	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances);
 
 private:
 	void match(const IO::OBJFile& obj, AppearanceObjectRepository& appearances);

@@ -3,7 +3,7 @@
 #include "../Graphics/LightBuffer.h"
 #include "../Graphics/MaterialBuffer.h"
 #include "../Scene/LightObjectRepository.h"
-#include "../Scene/ObjectRepository.h"
+#include "../Scene/Scene.h"
 #include "../Scene/MaterialObjectRepository.h"
 
 namespace Crystal {

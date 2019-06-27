@@ -4,15 +4,15 @@
 
 namespace Crystal {
 	namespace Model {
-		class ObjectRepository;
+		class Scene;
 		class AppearanceObjectRepository;
 
 class STLFileExporter
 {
 public:
-	bool exportSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
+	bool exportSTLAscii(const std::experimental::filesystem::path& filePath, Scene& objects);
 
-	bool exportSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
+	bool exportSTLBinary(const std::experimental::filesystem::path& filePath, Scene& objects);
 };
 
 	}

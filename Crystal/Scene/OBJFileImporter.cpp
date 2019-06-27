@@ -4,7 +4,7 @@
 #include "../IO/OBJFileReader.h"
 #include "../IO/MTLFileReader.h"
 
-#include "ObjectRepository.h"
+#include "Scene.h"
 #include "AppearanceObjectRepository.h"
 
 using namespace Crystal::Shape;
@@ -12,7 +12,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
+bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances)
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
@@ -100,7 +100,7 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 	return false;
 }
 
-bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, ObjectRepository& objects, AppearanceObjectRepository& appearances)
+bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances)
 {
 	// path から .objファイル名を取得する．
 	auto filename = filePath.parent_path() / filePath.stem();

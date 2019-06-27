@@ -6,7 +6,7 @@
 #include "../Scene/ParticleSystemScene.h"
 #include "../Scene/WireFrameScene.h"
 #include "../Scene/PolygonMeshScene.h"
-#include "../Scene/ObjectRepository.h"
+#include "../Scene/Scene.h"
 #include "../Scene/MaterialObjectRepository.h"
 
 namespace Crystal {
@@ -15,7 +15,7 @@ namespace Crystal {
 class ObjectViewModel
 {
 public:
-	void add(Model::ObjectRepository& objects, Model::MaterialObjectRepository& materials);
+	void add(Model::Scene& objects, Model::MaterialObjectRepository& materials);
 
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 

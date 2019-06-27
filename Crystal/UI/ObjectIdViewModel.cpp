@@ -8,7 +8,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
 
-void ObjectIdViewModel::add(ObjectRepository& objects)
+void ObjectIdViewModel::add(Scene& objects)
 {
 	const auto& particleSystems = objects.getParticleSystems()->getObjects();
 	for (auto ps : particleSystems) {

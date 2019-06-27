@@ -8,12 +8,12 @@
 namespace Crystal {
 	namespace Model {
 
-class ObjectRepository : private UnCopyable
+class Scene : private UnCopyable
 {
 public:
-	ObjectRepository();
+	Scene();
 
-	~ObjectRepository();
+	~Scene();
 
 	void clear();
 

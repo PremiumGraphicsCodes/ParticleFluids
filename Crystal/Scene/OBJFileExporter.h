@@ -4,13 +4,13 @@
 
 namespace Crystal {
 	namespace Model {
-		class ObjectRepository;
+		class Scene;
 		class AppearanceObjectRepository;
 
 class OBJFileExporter
 {
 public:
-	bool exportOBJ(const std::experimental::filesystem::path& filePath, ObjectRepository& objects);
+	bool exportOBJ(const std::experimental::filesystem::path& filePath, Scene& objects);
 
 	bool exportMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& objects);
 };

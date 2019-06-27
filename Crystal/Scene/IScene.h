@@ -67,6 +67,8 @@ public:
 
 	void addScene(IScene* scene) { this->children.push_back(scene); }
 
+	IScene* findSceneById(int id);
+
 protected:
 	virtual void onClear() = 0;
 

@@ -3,13 +3,13 @@
 #include "../Shape/PolygonMeshBuilder.h"
 #include "../IO/STLASCIIFileReader.h"
 #include "../IO/STLBinaryFileReader.h"
-#include "ObjectRepository.h"
+#include "Scene.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& filePath, ObjectRepository& repository)
+bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& filePath, Scene& repository)
 {
 	STLASCIIFileReader reader;
 	if (reader.read(filePath)) {
@@ -23,7 +23,7 @@ bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& 
 	return false;
 }
 
-bool STLFileImporter::importSTLBinary(const std::experimental::filesystem::path& filePath, ObjectRepository& objects)
+bool STLFileImporter::importSTLBinary(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
 	STLBinaryFileReader reader;
 	if (reader.read(filePath)) {
