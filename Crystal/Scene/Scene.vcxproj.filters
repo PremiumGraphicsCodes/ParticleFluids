@@ -102,6 +102,9 @@
     <ClInclude Include="PolygonMeshScene.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="IShapeScene.h">
+      <Filter>Scene\Shape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjectRepository.cpp">

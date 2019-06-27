@@ -1,6 +1,7 @@
 #include "ScaleButton.h"
 
 #include "imgui.h"
+#include "../Scene/IShapeScene.h"
 #include "../UI/ScaleUICtrl.h"
 #include "../UI/CameraUICtrl.h"
 
@@ -11,7 +12,7 @@ void ScaleButton::onShow()
 	objectButton.show();
 	if (ImGui::Button("Scale")) {
 		auto ctrl = new ScaleUICtrl(getModel(), getCanvas());
-		auto object = getModel()->getObjects()->findObjectById(objectButton.getId());
+		auto object = static_cast<Crystal::Model::IShapeScene*>(getModel()->getObjects()->findObjectById(objectButton.getId()) );
 		if (object == nullptr) {
 			return;
 		}

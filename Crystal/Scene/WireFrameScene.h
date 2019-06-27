@@ -1,22 +1,22 @@
 #pragma once
 
-#include "IScene.h"
+#include "IShapeScene.h"
 #include "WireFrameAttribute.h"
 #include "../Shape/WireFrame.h"
 
 namespace Crystal {
 	namespace Model {
 
-class WireFrameScene : public IScene
+class WireFrameScene : public IShapeScene
 {
 public:
 	WireFrameScene() :
-		IScene(-1),
+		IShapeScene(-1),
 		shape(nullptr)
 	{}
 
 	WireFrameScene(const int id, const std::string& name, Shape::WireFrame* shape, const WireFrameAttribute& attribute) :
-		IScene(id, name),
+		IShapeScene(id, name),
 		shape(shape),
 		attribute(attribute)
 	{}

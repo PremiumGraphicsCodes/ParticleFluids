@@ -20,12 +20,6 @@ public:
 
 	//void setMaterial(const Graphics::Material& material) { this->material = material; }
 
-	void move(const Math::Vector3dd& v) override { ; }
-
-	void transform(const Math::Matrix3dd& m) { ; }
-
-	void transform(const Math::Matrix4dd& m) { ; }
-
 	bool isNull() const { return image == nullptr; }
 
 	ObjectType getType() const override { return ObjectType::TextureObject; }

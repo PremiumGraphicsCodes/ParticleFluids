@@ -48,12 +48,6 @@ public:
 
 	bool _isVisible;
 
-	virtual void move(const Math::Vector3dd& v) = 0;
-
-	virtual void transform(const Math::Matrix3dd& m) = 0;
-
-	virtual void transform(const Math::Matrix4dd& m) = 0;
-
 	virtual bool isNull() const = 0;
 
 	virtual ObjectType getType() const = 0;

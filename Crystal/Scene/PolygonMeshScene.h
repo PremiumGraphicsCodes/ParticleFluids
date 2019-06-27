@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IScene.h"
+#include "IShapeScene.h"
 #include "../Shape/PolygonMesh.h"
 #include "../Graphics/ColorRGBA.h"
 #include "../Graphics/Material.h"
@@ -8,16 +8,16 @@
 namespace Crystal {
 	namespace Model {
 
-class PolygonMeshScene : public IScene
+class PolygonMeshScene : public IShapeScene
 {
 public:
 	PolygonMeshScene() :
-		IScene(),
+		IShapeScene(-1),
 		shape(nullptr)
 	{}
 
 	PolygonMeshScene(const int id, const std::string& name, Shape::PolygonMesh* shape) :
-		IScene(id, name),
+		IShapeScene(id, name),
 		shape(shape)
 	{}
 

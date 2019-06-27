@@ -3,7 +3,9 @@
 #include "imgui.h"
 #include "../UI/MoveUICtrl.h"
 #include "../UI/CameraUICtrl.h"
+#include "../Scene/IShapeScene.h"
 
+using namespace Crystal::Model;
 using namespace Crystal::UI;
 
 void MoveButton::onShow()
@@ -15,7 +17,7 @@ void MoveButton::onShow()
 		if (object == nullptr) {
 			return;
 		}
-		ctrl->add(object);
+		ctrl->add(static_cast<IShapeScene*>(object));
 		getCanvas()->setUICtrl(ctrl);
 	}
 }

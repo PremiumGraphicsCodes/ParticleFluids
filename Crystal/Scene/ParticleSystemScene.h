@@ -1,22 +1,22 @@
 #pragma once
 
-#include "IScene.h"
+#include "IShapeScene.h"
 #include "../Shape/ParticleSystem.h"
 #include "ParticleAttribute.h"
 
 namespace Crystal {
 	namespace Model {
 
-class ParticleSystemScene : public IScene
+class ParticleSystemScene : public IShapeScene
 {
 public:
 	ParticleSystemScene() :
-		IScene(-1),
+		IShapeScene(-1),
 		shape(nullptr)
 	{}
 
 	ParticleSystemScene(const int id, const std::string& name, Shape::ParticleSystem<ParticleAttribute>* shape) :
-		IScene(id, name),
+		IShapeScene(id, name),
 		shape(shape)
 	{}
 
