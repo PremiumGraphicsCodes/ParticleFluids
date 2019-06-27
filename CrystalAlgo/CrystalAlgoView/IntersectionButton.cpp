@@ -24,8 +24,8 @@ void IntersectionButton::onShow()
 
 void IntersectionButton::onOk()
 {
-	auto obj1 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(mesh1.getId());
-	auto obj2 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(mesh2.getId());
+	auto obj1 = getModel()->getObjects()->getFactory()->findObjectById(mesh1.getId());
+	auto obj2 = getModel()->getObjects()->getFactory()->findObjectById(mesh2.getId());
 	if (obj1 == nullptr || obj2 == nullptr) {
 		return;
 	}

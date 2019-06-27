@@ -20,8 +20,8 @@ void BooleanButton::onShow()
 
 void BooleanButton::onOk()
 {
-	auto polygon1 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton1.getId());
-	auto polygon2 = getModel()->getObjects()->getPolygonMeshes()->findObjectById(objectButton2.getId());
+	auto polygon1 = getModel()->getObjects()->getFactory()->findObjectById(objectButton1.getId());
+	auto polygon2 = getModel()->getObjects()->getFactory()->findObjectById(objectButton2.getId());
 	if (polygon1 == nullptr || polygon2 == nullptr) {
 		return;
 	}
@@ -31,7 +31,7 @@ void BooleanButton::onOk()
 	polygon1->setVisible(false);
 	polygon2->setVisible(false);
 
-	getModel()->getObjects()->getPolygonMeshes()->addObject(algo.getResult(), "Intersection");
+	getModel()->getObjects()->getFactory()->addPolygonMeshScene(algo.getResult(), "Intersection");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
