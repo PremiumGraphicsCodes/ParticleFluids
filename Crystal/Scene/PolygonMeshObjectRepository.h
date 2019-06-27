@@ -8,18 +8,18 @@
 namespace Crystal {
 	namespace Model {
 
-class PolygonMeshObjectRepository : public IObjectRepository
+class SceneFactory : public IObjectRepository
 {
 public:
-	explicit PolygonMeshObjectRepository(ObjectIdProvider& idProvider) :
+	explicit SceneFactory(ObjectIdProvider& idProvider) :
 		IObjectRepository(idProvider)
 	{}
 
-	~PolygonMeshObjectRepository();
+	~SceneFactory();
 
 	void clear();
 
-	int addObject(Shape::PolygonMesh* mesh, const std::string& name);
+	int addPolygonMeshScene(Shape::PolygonMesh* mesh, const std::string& name);
 
 	PolygonMeshScene* findObjectById(const int id) const;
 

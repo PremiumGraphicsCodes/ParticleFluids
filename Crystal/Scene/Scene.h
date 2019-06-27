@@ -21,7 +21,7 @@ public:
 
 	WireFrameObjectRepository* getWireFrames() { return &wireFrames; }
 
-	PolygonMeshObjectRepository* getPolygonMeshes() { return &polygonMeshes; }
+	SceneFactory* getPolygonMeshes() { return &polygonMeshes; }
 
 	Math::Box3d getBoundingBox() const;
 
@@ -31,11 +31,16 @@ public:
 
 	IScene* findObjectById(const int id);
 
+	void add(IScene* scene) { children.push_back(scene); }
+
+private:
+	std::list<IScene*> children;
+
 private:
 	ObjectIdProvider idProvider;
 	ParticleSystemObjectRepository particleSystems;
 	WireFrameObjectRepository wireFrames;
-	PolygonMeshObjectRepository polygonMeshes;
+	SceneFactory polygonMeshes;
 };
 	}
 }

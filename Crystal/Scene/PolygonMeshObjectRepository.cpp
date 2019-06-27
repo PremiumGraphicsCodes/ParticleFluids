@@ -5,12 +5,12 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
-PolygonMeshObjectRepository::~PolygonMeshObjectRepository()
+SceneFactory::~SceneFactory()
 {
 	clear();
 }
 
-void PolygonMeshObjectRepository::clear()
+void SceneFactory::clear()
 {
 	for (auto p : polygonMeshes) {
 		delete p->getShape();
@@ -19,13 +19,13 @@ void PolygonMeshObjectRepository::clear()
 	polygonMeshes.clear();
 }
 
-int PolygonMeshObjectRepository::addObject(PolygonMesh* mesh, const std::string& name)
+int SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, const std::string& name)
 {
 	polygonMeshes.push_back(new PolygonMeshScene(getNextId(), name, mesh));
 	return polygonMeshes.back()->getId();
 }
 
-PolygonMeshScene* PolygonMeshObjectRepository::findObjectById(const int id) const
+PolygonMeshScene* SceneFactory::findObjectById(const int id) const
 {
 	auto iter = std::find_if(std::cbegin(polygonMeshes), std::cend(polygonMeshes), [=](auto p) {return p->getId() == id; });
 	if (iter == std::cend(polygonMeshes)) {
@@ -34,7 +34,7 @@ PolygonMeshScene* PolygonMeshObjectRepository::findObjectById(const int id) cons
 	return *iter;
 }
 
-Box3d PolygonMeshObjectRepository::getBoundingBox() const
+Box3d SceneFactory::getBoundingBox() const
 {
 	const auto& vertices = getAllVertices();
 	if (vertices.empty()) {
@@ -47,7 +47,7 @@ Box3d PolygonMeshObjectRepository::getBoundingBox() const
 	return bb;
 }
 
-std::list<Vector3dd> PolygonMeshObjectRepository::getAllVertices() const
+std::list<Vector3dd> SceneFactory::getAllVertices() const
 {
 	std::list<Vector3dd> positions;
 	for (const auto& ps : polygonMeshes) {
