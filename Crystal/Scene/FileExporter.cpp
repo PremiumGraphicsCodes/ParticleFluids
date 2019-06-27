@@ -40,8 +40,11 @@ bool FileExporter::exportFile(const std::experimental::filesystem::path& filePat
 	}
 	case FileFormat::PCD :
 	{
+		/*
 		PCDFileExporter exporter;
 		return exporter.exportPCD(filePath, objects);
+		*/
+		return false;
 	}
 	default :
 		assert(false);

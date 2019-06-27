@@ -29,7 +29,7 @@ void PSSphereButton::onOk()
 		const auto v = dist(mt);
 		positions.push_back(shape.getPosition(Vector3dd(u, v, 1.0)));
 	}
-	getModel()->getObjects()->getParticleSystems()->addParticleSystemScene(positions, attribute.getValue(), "Sphere");
+	getModel()->getObjects()->getFactory()->addParticleSystemScene(positions, attribute.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

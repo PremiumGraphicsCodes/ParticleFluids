@@ -8,13 +8,16 @@ using namespace Crystal::Math;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool PCDFileExporter::exportPCD(const std::experimental::filesystem::path& filePath, Scene& objects)
+bool PCDFileExporter::exportPCD(const std::experimental::filesystem::path& filePath, ParticleSystemScene& scene)
 {
-	const auto& positions = objects.getParticleSystems()->getAllVertices();
+	/*
+	const auto& positions = scene.getShape()->getParticles();
 	PCDFile pcd;
 	pcd.header.points = positions.size();
 	pcd.header.width = positions.size();
 	pcd.data.positions = std::vector<Vector3dd>(positions.begin(), positions.end());
 	PCDFileWriter writer;
 	return writer.write(filePath, pcd);
+	*/
+	return false;
 }

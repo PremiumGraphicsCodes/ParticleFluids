@@ -17,6 +17,7 @@ void SphereRegionSelectButton::onShow()
 
 		//model->getObjects()->getParticleSystems()->findParticleById();
 		auto func = [=](int parentId, int childId) {
+			/*
 			auto particle = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);
 			if (particle != nullptr) {
 				auto s = sphere.getValue();
@@ -31,6 +32,7 @@ void SphereRegionSelectButton::onShow()
 				model->getItems()->getFactory()->addWireFrameScene(builder.getWireFrame(), attr, "Region");
 				canvas->setViewModel(model->toViewModel());
 			}
+			*/
 		};
 		ctrl->setFunction(func);
 		getCanvas()->setUICtrl(ctrl);

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Util/UnCopyable.h"
-#include "ParticleSystemObjectRepository.h"
 #include "SceneFactory.h"
 
 namespace Crystal {
@@ -15,8 +14,6 @@ public:
 	~Scene();
 
 	void clear();
-
-	ParticleSystemObjectRepository* getParticleSystems() { return &particleSystems; }
 
 	SceneFactory* getFactory() { return &factory; }
 
@@ -35,7 +32,6 @@ private:
 
 private:
 	SceneIdProvider idProvider;
-	ParticleSystemObjectRepository particleSystems;
 	SceneFactory factory;
 };
 	}

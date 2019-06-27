@@ -32,9 +32,6 @@
     <ClInclude Include="TextureObject.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemObjectRepository.h">
-      <Filter>Repository\Object</Filter>
-    </ClInclude>
     <ClInclude Include="IObjectRepository.h">
       <Filter>Repository</Filter>
     </ClInclude>
@@ -112,9 +109,6 @@
     </ClCompile>
     <ClCompile Include="LightObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystemObjectRepository.cpp">
-      <Filter>Repository\Object</Filter>
     </ClCompile>
     <ClCompile Include="ImageObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>

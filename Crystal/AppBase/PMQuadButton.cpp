@@ -1,5 +1,7 @@
 #include "PMQuadButton.h"
 
+#include "../Shape/PolygonMeshBuilder.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;

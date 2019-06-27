@@ -6,7 +6,6 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
 Scene::Scene() :
-	particleSystems(idProvider),
 	factory(idProvider)
 {
 }
@@ -18,7 +17,6 @@ Scene::~Scene()
 
 void Scene::clear()
 {
-	particleSystems.clear();
 	factory.clear();
 }
 
@@ -38,9 +36,10 @@ Box3d Scene::getBoundingBox() const
 std::list<Vector3dd> Scene::getAllVertices() const
 {
 	std::list<Vector3dd> positions;
+	/*
+
 	const auto& particles = particleSystems.getAllVertices();
 	positions.insert(positions.end(), particles.begin(), particles.end());
-	/*
 	const auto& wires = polygonMeshes.getWires().getAllVertices();
 	positions.insert(positions.end(), wires.begin(), wires.end());
 	*/
@@ -52,11 +51,11 @@ std::list<Vector3dd> Scene::getAllVertices() const
 std::list<IScene*> Scene::getAllObjects() const
 {
 	std::list<IScene*> objects;
+	/*
 	const auto& ps = particleSystems.getObjects();
 	for (auto p : ps) {
 		objects.push_back(p);
 	}
-	/*
 	auto& ws = wireFrames.getObjects();
 	for (auto w : ws) {
 		objects.push_back(w);

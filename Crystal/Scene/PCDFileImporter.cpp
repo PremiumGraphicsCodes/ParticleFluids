@@ -14,7 +14,7 @@ bool PCDFileImporter::importPCD(const std::experimental::filesystem::path& fileP
 		ParticleAttribute attr;
 		attr.color = glm::vec4(0, 0, 0, 0);
 		attr.size = 1.0;
-		repository.getParticleSystems()->addParticleSystemScene(positions, attr, "PCD");
+		repository.getFactory()->addParticleSystemScene(positions, attr, "PCD");
 		return true;
 	}
 	return false;

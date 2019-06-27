@@ -4,12 +4,12 @@
 
 namespace Crystal {
 	namespace Model {
-		class Scene;
+		class ParticleSystemScene;
 
 class PCDFileExporter
 {
 public:
-	bool exportPCD(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool exportPCD(const std::experimental::filesystem::path& filePath, ParticleSystemScene& objects);
 };
 
 	}
