@@ -2,7 +2,7 @@
 
 #include "../Util/UnCopyable.h"
 #include "ParticleSystemObjectRepository.h"
-#include "PolygonMeshObjectRepository.h"
+#include "SceneFactory.h"
 #include "WireFrameObjectRepository.h"
 
 namespace Crystal {
