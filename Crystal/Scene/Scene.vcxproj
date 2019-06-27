@@ -28,7 +28,7 @@
     <ClInclude Include="FileExporter.h" />
     <ClInclude Include="ImageObject.h" />
     <ClInclude Include="ImageObjectRepository.h" />
-    <ClInclude Include="IObject.h" />
+    <ClInclude Include="IScene.h" />
     <ClInclude Include="IObjectRepository.h" />
     <ClInclude Include="LightObject.h" />
     <ClInclude Include="LightObjectRepository.h" />

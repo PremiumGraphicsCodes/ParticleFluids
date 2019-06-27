@@ -5,9 +5,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UUID.h" />
-    <ClInclude Include="IObject.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="LightObject.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -101,6 +98,9 @@
     </ClInclude>
     <ClInclude Include="PCDFileExporter.h">
       <Filter>FileIO\PCD</Filter>
+    </ClInclude>
+    <ClInclude Include="IScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

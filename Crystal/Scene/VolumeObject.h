@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IObject.h"
+#include "IScene.h"
 #include "../Shape/Volume.h"
 #include "ParticleAttribute.h"
 

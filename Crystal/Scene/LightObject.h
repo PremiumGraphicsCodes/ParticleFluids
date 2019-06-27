@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IObject.h"
+#include "IScene.h"
 #include "../Shape/ParticleSystem.h"
 #include "../Graphics/ColorRGBA.h"
 #include "../Graphics/PointLight.h"
