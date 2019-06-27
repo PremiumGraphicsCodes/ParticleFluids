@@ -58,7 +58,7 @@ void VolumeButton::onOk()
 		attrs.push_back(attr);
 	}
 
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, attrs, "VolumeConverter");
+	getModel()->getObjects()->getFactory()->addParticleSystemScene(positions, attrs, "VolumeConverter");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 }
 

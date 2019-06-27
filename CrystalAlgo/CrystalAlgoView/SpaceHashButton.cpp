@@ -24,7 +24,8 @@ void SpaceHashButton::onShow()
 
 void SpaceHashButton::onOk()
 {
-	auto object = getModel()->getObjects()->getParticleSystems()->findObjectById(objectButton.getId());
+	/*
+	auto object = getModel()->getObjects()->getFactory()->getParticleSystems()->findObjectById(objectButton.getId());
 	if (object == nullptr) {
 		return;
 	}
@@ -43,5 +44,6 @@ void SpaceHashButton::onOk()
 	}
 	getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "");
 	getCanvas()->setViewModel(getModel()->toViewModel());
+	*/
 }
 
