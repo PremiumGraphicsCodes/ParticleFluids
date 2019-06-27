@@ -5,7 +5,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
-ParticleSystemObjectRepository::ParticleSystemObjectRepository(ObjectIdProvider& idProvider) :
+ParticleSystemObjectRepository::ParticleSystemObjectRepository(SceneIdProvider& idProvider) :
 	IObjectRepository(idProvider)
 {}
 

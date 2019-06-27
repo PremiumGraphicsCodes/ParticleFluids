@@ -2,7 +2,7 @@
 
 #include "../Math/Box3d.h"
 #include "../Util/UnCopyable.h"
-#include "ObjectIdProvider.h"
+#include "SceneIdProvider.h"
 #include <list>
 
 namespace Crystal {
@@ -11,7 +11,7 @@ namespace Crystal {
 class IObjectRepository : private UnCopyable
 {
 public:
-	explicit IObjectRepository(ObjectIdProvider& idProvider) :
+	explicit IObjectRepository(SceneIdProvider& idProvider) :
 		idProvider(idProvider)
 	{}
 
@@ -28,7 +28,7 @@ public:
 protected:
 
 private:
-	ObjectIdProvider& idProvider;
+	SceneIdProvider& idProvider;
 };
 
 	}

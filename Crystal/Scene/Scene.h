@@ -37,7 +37,7 @@ private:
 	std::list<IScene*> children;
 
 private:
-	ObjectIdProvider idProvider;
+	SceneIdProvider idProvider;
 	ParticleSystemObjectRepository particleSystems;
 	WireFrameObjectRepository wireFrames;
 	SceneFactory polygonMeshes;

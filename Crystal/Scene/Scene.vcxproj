@@ -36,7 +36,7 @@
     <ClInclude Include="MaterialObject.h" />
     <ClInclude Include="MaterialObjectRepository.h" />
     <ClInclude Include="SceneId.h" />
-    <ClInclude Include="ObjectIdProvider.h" />
+    <ClInclude Include="SceneIdProvider.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneType.h" />
     <ClInclude Include="OBJFileExporter.h" />

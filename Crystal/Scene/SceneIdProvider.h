@@ -5,10 +5,10 @@
 namespace Crystal {
 	namespace Model {
 
-class ObjectIdProvider : private UnCopyable
+class SceneIdProvider : private UnCopyable
 {
 public:
-	ObjectIdProvider() :
+	SceneIdProvider() :
 		nextId(1)
 	{}
 

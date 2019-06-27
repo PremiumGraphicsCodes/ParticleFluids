@@ -11,7 +11,7 @@ namespace Crystal {
 class SceneFactory : public IObjectRepository
 {
 public:
-	explicit SceneFactory(ObjectIdProvider& idProvider) :
+	explicit SceneFactory(SceneIdProvider& idProvider) :
 		IObjectRepository(idProvider)
 	{}
 
