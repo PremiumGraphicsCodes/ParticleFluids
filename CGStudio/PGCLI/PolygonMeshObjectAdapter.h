@@ -6,7 +6,7 @@ using namespace System;
 
 namespace Crystal {
 	namespace Model {
-		class PolygonMeshObject;
+		class PolygonMeshScene;
 	}
 }
 
@@ -23,9 +23,9 @@ public:
 	int GetAttributeIdById(int id);
 
 internal:
-	PolygonMeshObjectAdapter(Crystal::Model::PolygonMeshObject* instance);
+	PolygonMeshObjectAdapter(Crystal::Model::PolygonMeshScene* instance);
 
-	Crystal::Model::PolygonMeshObject* instance;
+	Crystal::Model::PolygonMeshScene* instance;
 };
 
 	}

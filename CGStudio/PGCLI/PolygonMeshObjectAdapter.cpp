@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "../../Crystal/Scene/PolygonMeshObject.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "PolygonMeshObjectAdapter.h"
 #include "Converter.h"
@@ -35,7 +35,7 @@ int PolygonMeshObjectAdapter::GetAttributeIdById(int id)
 }
 
 
-PolygonMeshObjectAdapter::PolygonMeshObjectAdapter(Crystal::Model::PolygonMeshObject* inst) :
+PolygonMeshObjectAdapter::PolygonMeshObjectAdapter(Crystal::Model::PolygonMeshScene* inst) :
 	ObjectAdapter(inst)
 {
 	this->instance = inst;

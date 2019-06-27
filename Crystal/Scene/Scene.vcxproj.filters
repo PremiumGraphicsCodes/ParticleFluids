@@ -99,7 +99,7 @@
     <ClInclude Include="ParticleSystemScene.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshObject.h">
+    <ClInclude Include="PolygonMeshScene.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
   </ItemGroup>

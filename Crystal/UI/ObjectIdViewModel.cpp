@@ -52,7 +52,7 @@ void ObjectIdViewModel::add(const WireFrameScene& object)
 	}
 }
 
-void ObjectIdViewModel::add(const PolygonMeshObject& object)
+void ObjectIdViewModel::add(const PolygonMeshScene& object)
 {
 	const auto objectId = object.getId();
 	const auto& faces = object.getShape()->getFaces();

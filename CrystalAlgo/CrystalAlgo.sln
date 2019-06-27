@@ -71,7 +71,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalAlgoTest", "CrystalA
 		{76FDBCE5-E588-4BC9-97B4-C8FE5D76F91A} = {76FDBCE5-E588-4BC9-97B4-C8FE5D76F91A}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\Crystal\Scene\Model.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\Crystal\Scene\Scene.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

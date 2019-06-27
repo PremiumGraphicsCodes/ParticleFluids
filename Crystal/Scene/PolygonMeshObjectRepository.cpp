@@ -21,11 +21,11 @@ void PolygonMeshObjectRepository::clear()
 
 int PolygonMeshObjectRepository::addObject(PolygonMesh* mesh, const std::string& name)
 {
-	polygonMeshes.push_back(new PolygonMeshObject(getNextId(), name, mesh));
+	polygonMeshes.push_back(new PolygonMeshScene(getNextId(), name, mesh));
 	return polygonMeshes.back()->getId();
 }
 
-PolygonMeshObject* PolygonMeshObjectRepository::findObjectById(const int id) const
+PolygonMeshScene* PolygonMeshObjectRepository::findObjectById(const int id) const
 {
 	auto iter = std::find_if(std::cbegin(polygonMeshes), std::cend(polygonMeshes), [=](auto p) {return p->getId() == id; });
 	if (iter == std::cend(polygonMeshes)) {

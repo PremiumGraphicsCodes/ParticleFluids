@@ -5,7 +5,7 @@
 #include "../Graphics/TriangleBuffer.h"
 #include "../Scene/ParticleSystemScene.h"
 #include "../Scene/WireFrameScene.h"
-#include "../Scene/PolygonMeshObject.h"
+#include "../Scene/PolygonMeshScene.h"
 #include "../Scene/ObjectRepository.h"
 #include "../Scene/MaterialObjectRepository.h"
 
@@ -30,7 +30,7 @@ private:
 
 	void add(const Model::WireFrameScene& object);
 
-	void add(const Model::PolygonMeshObject& object, Model::MaterialObjectRepository& materials);
+	void add(const Model::PolygonMeshScene& object, Model::MaterialObjectRepository& materials);
 
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;

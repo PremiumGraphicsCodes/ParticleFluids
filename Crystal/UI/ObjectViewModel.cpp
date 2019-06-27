@@ -55,7 +55,7 @@ void ObjectViewModel::add(const WireFrameScene& object)
 	}
 }
 
-void ObjectViewModel::add(const PolygonMeshObject& object, MaterialObjectRepository& materials)
+void ObjectViewModel::add(const PolygonMeshScene& object, MaterialObjectRepository& materials)
 {
 	if (!object.isVisible()) {
 		return;

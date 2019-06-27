@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "../../Crystal/Scene/IObject.h"
+#include "../../Crystal/Scene/IScene.h"
 
 #include "ObjectAdapter.h"
 #include "Converter.h"
 
-#include "../../Crystal/Scene/ParticleSystemObject.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Model;
 using namespace PG::CLI;
@@ -107,7 +107,7 @@ PG::Core::Math::Vector3d^ ObjectAdapter::GetPositionById(int id)
 {
 	const auto type = instance->getType();
 	if (type == Crystal::Model::ObjectType::ParticleSystemObject) {
-		auto ps = static_cast<Crystal::Model::ParticleSystemObject*>(instance);
+		auto ps = static_cast<Crystal::Model::ParticleSystemScene*>(instance);
 		const auto& particles = ps->getShape()->getParticles();
 		return Converter::fromCpp( particles[id]->getPosition() );
 	}
