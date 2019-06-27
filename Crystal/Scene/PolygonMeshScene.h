@@ -33,7 +33,7 @@ public:
 
 	bool isNull() const override { return shape == nullptr; }
 
-	SceneType getType() const override { return SceneType::PolygonMeshObject; }
+	SceneType getType() const override { return SceneType::PolygonMeshScene; }
 
 private:
 	Shape::PolygonMesh* shape;

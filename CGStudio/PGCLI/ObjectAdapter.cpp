@@ -42,17 +42,17 @@ void ObjectAdapter::SetVisible(bool visible)
 
 void ObjectAdapter::Move(PG::Core::Math::Vector3d^ v)
 {
-	instance->move(Converter::toCpp(v));
+//	instance->move(Converter::toCpp(v));
 }
 
 void ObjectAdapter::Transform(PG::Core::Math::Matrix3d^ m)
 {
-	instance->transform(Converter::toCpp(m));
+//	instance->transform(Converter::toCpp(m));
 }
 
 void ObjectAdapter::Transform(PG::Core::Math::Matrix4d^ m)
 {
-	instance->transform(Converter::toCpp(m));
+//	instance->transform(Converter::toCpp(m));
 }
 
 
@@ -91,11 +91,11 @@ PG::Core::Shape::ShapeType ObjectAdapter::GetType()
 {
 	const auto type = instance->getType();
 	switch (type) {
-	case Crystal::Model::ObjectType::ParticleSystemObject :
+	case Crystal::Model::SceneType::ParticleSystemScene :
 		return PG::Core::Shape::ShapeType::ParticleSystem;
-	case Crystal::Model::ObjectType::WireFrameObject :
+	case Crystal::Model::SceneType::WireFrameScene :
 		return PG::Core::Shape::ShapeType::WireFrame;
-	case Crystal::Model::ObjectType::PolygonMeshObject :
+	case Crystal::Model::SceneType::PolygonMeshScene :
 		return PG::Core::Shape::ShapeType::PolygonMesh;
 	default:
 		assert(false);
@@ -106,7 +106,7 @@ PG::Core::Shape::ShapeType ObjectAdapter::GetType()
 PG::Core::Math::Vector3d^ ObjectAdapter::GetPositionById(int id)
 {
 	const auto type = instance->getType();
-	if (type == Crystal::Model::ObjectType::ParticleSystemObject) {
+	if (type == Crystal::Model::SceneType::ParticleSystemScene) {
 		auto ps = static_cast<Crystal::Model::ParticleSystemScene*>(instance);
 		const auto& particles = ps->getShape()->getParticles();
 		return Converter::fromCpp( particles[id]->getPosition() );

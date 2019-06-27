@@ -11,7 +11,7 @@ using namespace Crystal::UI;
 void SphereRegionSelectButton::onShow()
 {
 	if (ImGui::Button("Pick")) {
-		auto ctrl = new PickUICtrl(getModel(), getCanvas(), SceneType::ParticleSystemObject);
+		auto ctrl = new PickUICtrl(getModel(), getCanvas(), SceneType::ParticleSystemScene);
 		auto model = getModel();
 		auto canvas = getCanvas();
 

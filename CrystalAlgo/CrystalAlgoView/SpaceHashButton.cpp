@@ -11,7 +11,7 @@ SpaceHashButton::SpaceHashButton(Repository* model, Canvas* canvas) :
 	IPopupButton("SpaceHash", model, canvas),
 	positionButton("Position", model, canvas),
 	searchRadius("SearchRadius", 1.0),
-	objectButton("Object", model, canvas, ObjectType::ParticleSystemObject)
+	objectButton("Object", model, canvas, SceneType::ParticleSystemScene)
 {
 }
 

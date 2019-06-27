@@ -11,7 +11,7 @@ void PositionSelectButton::onShow()
 {
 	ImGui::InputFloat3("Position", &position[0]);
 	if (ImGui::Button("Pick")) {
-		auto ctrl = new PickUICtrl(getModel(), getCanvas(), SceneType::PolygonMeshObject);
+		auto ctrl = new PickUICtrl(getModel(), getCanvas(), SceneType::PolygonMeshScene);
 		auto model = getModel();
 		//model->getObjects()->getParticleSystems()->findParticleById();
 		auto func = [=](int parentId, int childId) {
