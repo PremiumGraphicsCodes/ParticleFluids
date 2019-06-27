@@ -140,6 +140,10 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Object\ParticleSystem\AppearanceViewModel.cs" />
+    <Compile Include="Object\PolygonMesh\PolygonMeshObjectListView.xaml.cs">
+      <DependentUpon>PolygonMeshObjectListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Object\PolygonMesh\PolygonMeshObjectListViewModel.cs" />
     <Compile Include="Object\PolygonMesh\PolygonMeshObjectModel.cs" />
     <Compile Include="Object\PolygonMesh\PolygonMeshObjectRepository.cs" />
     <Compile Include="Selection\Object\ObjectSelectView.xaml.cs">
@@ -239,21 +243,18 @@
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Object\ParticleSystem\SphereGenerationViewModel.cs" />
-    <Compile Include="Object\PolygonMesh\BoxGenerationView.xaml.cs">
+    <Compile Include="Object\PolygonMesh\Generation\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Object\PolygonMesh\BoxGenerationViewModel.cs" />
-    <Compile Include="Object\PolygonMesh\CylinderGenerationView.xaml.cs">
+    <Compile Include="Object\PolygonMesh\Generation\BoxGenerationViewModel.cs" />
+    <Compile Include="Object\PolygonMesh\Generation\CylinderGenerationView.xaml.cs">
       <DependentUpon>CylinderGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Object\PolygonMesh\CylinderGenerationViewModel.cs" />
-    <Compile Include="Object\PolygonMesh\PolygonMeshGenerationView.xaml.cs">
-      <DependentUpon>PolygonMeshGenerationView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Object\PolygonMesh\SphereGenerationView.xaml.cs">
+    <Compile Include="Object\PolygonMesh\Generation\CylinderGenerationViewModel.cs" />
+    <Compile Include="Object\PolygonMesh\Generation\SphereGenerationView.xaml.cs">
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Object\PolygonMesh\SphereGenerationViewModel.cs" />
+    <Compile Include="Object\PolygonMesh\Generation\SphereGenerationViewModel.cs" />
     <Compile Include="Object\WireFrame\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
@@ -295,19 +296,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Object\PolygonMesh\BoxGenerationView.xaml">
+    <Page Include="Object\PolygonMesh\Generation\BoxGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Object\PolygonMesh\CylinderGenerationView.xaml">
+    <Page Include="Object\PolygonMesh\Generation\CylinderGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Object\PolygonMesh\PolygonMeshGenerationView.xaml">
+    <Page Include="Object\PolygonMesh\PolygonMeshObjectListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Object\PolygonMesh\SphereGenerationView.xaml">
+    <Page Include="Object\PolygonMesh\Generation\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -406,7 +407,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="Object\PolygonMesh\PolygonMeshGenerationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

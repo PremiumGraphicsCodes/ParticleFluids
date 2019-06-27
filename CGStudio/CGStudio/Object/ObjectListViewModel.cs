@@ -1,7 +1,4 @@
-﻿using Prism.Mvvm;
-using Reactive.Bindings;
-using System;
-using System.Collections.ObjectModel;
+﻿using Reactive.Bindings;
 
 namespace PG.CGStudio
 {
