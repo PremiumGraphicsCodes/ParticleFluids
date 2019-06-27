@@ -5,7 +5,7 @@
 #include "Float4View.h"
 #include "StringView.h"
 
-#include "../Model/ParticleAttribute.h"
+#include "../Scene/ParticleAttribute.h"
 
 namespace Crystal {
 	namespace UI {

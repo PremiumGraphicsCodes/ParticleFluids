@@ -5,7 +5,7 @@
 #include "Float4View.h"
 #include "StringView.h"
 
-#include "../Model/WireFrameAttribute.h"
+#include "../Scene/WireFrameAttribute.h"
 
 namespace Crystal {
 	namespace UI {

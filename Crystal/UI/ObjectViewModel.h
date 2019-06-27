@@ -3,11 +3,11 @@
 #include "../Graphics/PointBuffer.h"
 #include "../Graphics/LineBuffer.h"
 #include "../Graphics/TriangleBuffer.h"
-#include "../Model/ParticleSystemObject.h"
-#include "../Model/WireFrameObject.h"
-#include "../Model/PolygonMeshObject.h"
-#include "../Model/ObjectRepository.h"
-#include "../Model/MaterialObjectRepository.h"
+#include "../Scene/ParticleSystemObject.h"
+#include "../Scene/WireFrameObject.h"
+#include "../Scene/PolygonMeshObject.h"
+#include "../Scene/ObjectRepository.h"
+#include "../Scene/MaterialObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {

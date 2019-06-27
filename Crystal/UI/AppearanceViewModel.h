@@ -2,9 +2,9 @@
 
 #include "../Graphics/LightBuffer.h"
 #include "../Graphics/MaterialBuffer.h"
-#include "../Model/LightObjectRepository.h"
-#include "../Model/ObjectRepository.h"
-#include "../Model/MaterialObjectRepository.h"
+#include "../Scene/LightObjectRepository.h"
+#include "../Scene/ObjectRepository.h"
+#include "../Scene/MaterialObjectRepository.h"
 
 namespace Crystal {
 	namespace Model {

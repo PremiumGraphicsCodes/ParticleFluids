@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Model/ObjectRepository.h"
-#include "../Model/AppearanceObjectRepository.h"
+#include "../Scene/ObjectRepository.h"
+#include "../Scene/AppearanceObjectRepository.h"
 #include "../Shader/OpenGLObjectRepository.h"
 #include "ViewModel.h"
 #include <filesystem>

@@ -3,7 +3,7 @@
 #include "Canvas.h"
 #include "IUICtrl.h"
 
-#include "../Model/ObjectType.h"
+#include "../Scene/ObjectType.h"
 
 #include <functional>
 

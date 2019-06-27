@@ -61,7 +61,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IOTest", "IOTest\IOTest.vcx
 		{198160CC-5ED1-499D-AD45-90DBAC4852F8} = {198160CC-5ED1-499D-AD45-90DBAC4852F8}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Model", "Model\Model.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "Scene\Model.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
