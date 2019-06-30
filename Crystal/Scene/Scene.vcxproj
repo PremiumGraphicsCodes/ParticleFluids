@@ -32,7 +32,7 @@
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LightScene.h" />
-    <ClInclude Include="MaterialObject.h" />
+    <ClInclude Include="MaterialScene.h" />
     <ClInclude Include="MaterialObjectRepository.h" />
     <ClInclude Include="ObjectIdViewModel.h" />
     <ClInclude Include="ObjectViewModel.h" />

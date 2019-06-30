@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Util/UnCopyable.h"
-#include "MaterialObject.h"
+#include "MaterialScene.h"
 #include <vector>
 
 namespace Crystal {
@@ -18,14 +18,14 @@ public:
 
 	int add(Graphics::Material* m, const std::string& name);
 
-	MaterialObject* findObjectById(const int id) const;
+	MaterialScene* findObjectById(const int id) const;
 
-	MaterialObject* findByName(const std::string& name) const;
+	MaterialScene* findByName(const std::string& name) const;
 
-	std::vector<MaterialObject*> getMaterials() const { return materials; }
+	std::vector<MaterialScene*> getMaterials() const { return materials; }
 
 private:
-	std::vector<MaterialObject*> materials;
+	std::vector<MaterialScene*> materials;
 	int nextId;
 };
 

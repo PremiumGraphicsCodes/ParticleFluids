@@ -14,9 +14,6 @@
     <ClInclude Include="ParticleAttribute.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialObject.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="AppearanceObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
@@ -103,6 +100,9 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="LightScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>

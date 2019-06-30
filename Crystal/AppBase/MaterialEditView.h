@@ -13,7 +13,7 @@ class MaterialEditView : public IWindow
 public:
 	MaterialEditView(const std::string& name, Repository* model, Canvas* canvas);
 
-	void setValue(Model::MaterialObject* value)
+	void setValue(Model::MaterialScene* value)
 	{
 //		int id, const Graphics::Material& material, const std::string& name) {
 		this->id.setValue(value->getId());

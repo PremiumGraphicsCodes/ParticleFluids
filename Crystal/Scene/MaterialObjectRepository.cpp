@@ -24,12 +24,12 @@ void MaterialObjectRepository::clear()
 
 int MaterialObjectRepository::add(Material* m, const std::string& name)
 {
-	MaterialObject* material = new MaterialObject(nextId++, name, m);
+	MaterialScene* material = new MaterialScene(nextId++, name, m);
 	materials.push_back(material);
 	return material->getId();
 }
 
-MaterialObject* MaterialObjectRepository::findObjectById(const int id) const
+MaterialScene* MaterialObjectRepository::findObjectById(const int id) const
 {
 	auto iter = std::find_if(std::cbegin(materials), std::cend(materials), [=](auto p) {return p->getId() == id; });
 	if (iter == std::cend(materials)) {
@@ -38,7 +38,7 @@ MaterialObject* MaterialObjectRepository::findObjectById(const int id) const
 	return *iter;
 }
 
-MaterialObject* MaterialObjectRepository::findByName(const std::string& name) const
+MaterialScene* MaterialObjectRepository::findByName(const std::string& name) const
 {
 	auto iter = std::find_if(std::cbegin(materials), std::cend(materials), [=](auto p) {return p->getName() == name; });
 	if (iter == std::cend(materials)) {
