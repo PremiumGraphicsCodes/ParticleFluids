@@ -19,96 +19,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AppearanceObjectRepository.h" />
-    <ClInclude Include="AppearanceViewModel.h" />
-    <ClInclude Include="FileFormat.h" />
-    <ClInclude Include="FileImporter.h" />
-    <ClInclude Include="FileExporter.h" />
-    <ClInclude Include="ImageObject.h" />
-    <ClInclude Include="ImageObjectRepository.h" />
-    <ClInclude Include="IScene.h" />
-    <ClInclude Include="IShapeScene.h" />
-    <ClInclude Include="LightScene.h" />
-    <ClInclude Include="LightObjectRepository.h" />
-    <ClInclude Include="MaterialObject.h" />
-    <ClInclude Include="MaterialObjectRepository.h" />
-    <ClInclude Include="ObjectIdViewModel.h" />
-    <ClInclude Include="ObjectViewModel.h" />
-    <ClInclude Include="SceneId.h" />
-    <ClInclude Include="SceneIdProvider.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneType.h" />
-    <ClInclude Include="OBJFileExporter.h" />
-    <ClInclude Include="OBJFileImporter.h" />
-    <ClInclude Include="ParticleAttribute.h" />
-    <ClInclude Include="ParticleSystemScene.h" />
-    <ClInclude Include="PCDFileExporter.h" />
-    <ClInclude Include="PCDFileImporter.h" />
-    <ClInclude Include="PolygonMeshAttribute.h" />
-    <ClInclude Include="PolygonMeshScene.h" />
-    <ClInclude Include="SceneFactory.h" />
-    <ClInclude Include="STLFileExporter.h" />
-    <ClInclude Include="STLFileImporter.h" />
-    <ClInclude Include="TextureObject.h" />
-    <ClInclude Include="UUID.h" />
-    <ClInclude Include="ViewModel.h" />
-    <ClInclude Include="VolumeObject.h" />
-    <ClInclude Include="WireFrameAttribute.h" />
-    <ClInclude Include="WireFrameScene.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AppearanceObjectRepository.cpp" />
-    <ClCompile Include="AppearanceViewModel.cpp" />
-    <ClCompile Include="FileImporter.cpp" />
-    <ClCompile Include="FileExporter.cpp" />
-    <ClCompile Include="ImageObjectRepository.cpp" />
-    <ClCompile Include="IScene.cpp" />
-    <ClCompile Include="LightObjectRepository.cpp" />
-    <ClCompile Include="MaterialObjectRepository.cpp" />
-    <ClCompile Include="ObjectIdViewModel.cpp" />
-    <ClCompile Include="ObjectViewModel.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="OBJFileExporter.cpp" />
-    <ClCompile Include="OBJFileImporter.cpp" />
-    <ClCompile Include="PCDFileExporter.cpp" />
-    <ClCompile Include="PCDFileImporter.cpp" />
-    <ClCompile Include="SceneFactory.cpp" />
-    <ClCompile Include="STLFileExporter.cpp" />
-    <ClCompile Include="STLFileImporter.cpp" />
-    <ClCompile Include="WireFrameScene.cpp" />
+    <ClCompile Include="SceneTest.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{59C5EA30-1E57-417C-9416-17B592E8724E}</ProjectGuid>
+    <ProjectGuid>{539EC4C4-1A6D-451B-9D34-3EF6D318D464}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>UI</RootNamespace>
+    <RootNamespace>GraphicsTest</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>Scene</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -132,17 +72,28 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -152,12 +103,13 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -168,10 +120,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
@@ -185,25 +137,25 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets" Condition="Exists('..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets')" />
-    <Import Project="..\packages\glew.1.9.0.1\build\native\glew.targets" Condition="Exists('..\packages\glew.1.9.0.1\build\native\glew.targets')" />
+    <Import Project="..\packages\googletest.v140.windesktop.static.rt-dyn.1.7.0.1\build\native\googletest.v140.windesktop.static.rt-dyn.targets" Condition="Exists('..\packages\googletest.v140.windesktop.static.rt-dyn.1.7.0.1\build\native\googletest.v140.windesktop.static.rt-dyn.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets'))" />
-    <Error Condition="!Exists('..\packages\glew.1.9.0.1\build\native\glew.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glew.1.9.0.1\build\native\glew.targets'))" />
+    <Error Condition="!Exists('..\packages\googletest.v140.windesktop.static.rt-dyn.1.7.0.1\build\native\googletest.v140.windesktop.static.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\googletest.v140.windesktop.static.rt-dyn.1.7.0.1\build\native\googletest.v140.windesktop.static.rt-dyn.targets'))" />
   </Target>
 </Project>

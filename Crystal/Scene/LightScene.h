@@ -8,15 +8,15 @@
 namespace Crystal {
 	namespace Model {
 
-class LightObject : public IScene
+class LightScene : public IScene
 {
 public:
-	LightObject(const int id, const std::string& name, Graphics::PointLight* light) :
+	LightScene(const int id, const std::string& name, Graphics::PointLight* light) :
 		IScene(id,name),
 		light(light)
 	{}
 
-	~LightObject() {};
+	~LightScene() {};
 
 	Graphics::PointLight* getLight() const { return light; }
 

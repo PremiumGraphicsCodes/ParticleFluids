@@ -4,7 +4,7 @@
 #include "LightView.h"
 #include "IntView.h"
 #include "StringView.h"
-#include "../Scene/LightObject.h"
+#include "../Scene/LightScene.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
 
@@ -16,7 +16,7 @@ class LightEditView : public IWindow
 public:
 	LightEditView(const std::string& name, Repository* repository, Canvas* canvas);
 
-	void setValue(const Model::LightObject& value) {
+	void setValue(const Model::LightScene& value) {
 		this->id.setValue(value.getId());
 		this->light.setValue(*value.getLight());
 		this->name.setValue(value.getName());

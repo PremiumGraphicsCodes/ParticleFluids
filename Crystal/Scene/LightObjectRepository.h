@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LightObject.h"
+#include "LightScene.h"
 #include <vector>
 
 namespace Crystal {
@@ -15,14 +15,14 @@ public:
 
 	void clear();
 
-	void add(Graphics::PointLight* l, const std::string& name);
+	void addLightScene(Graphics::PointLight* l, const std::string& name);
 
-	LightObject* findObjectById(const int id) const;
+	LightScene* findObjectById(const int id) const;
 
-	std::vector<LightObject*> getLights() const { return lights; }
+	std::vector<LightScene*> getLights() const { return lights; }
 
 private:
-	std::vector<LightObject*> lights;
+	std::vector<LightScene*> lights;
 	int nextId;
 };
 	}
