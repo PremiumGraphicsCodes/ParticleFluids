@@ -7,7 +7,14 @@ using namespace Crystal::Model;
 
 SceneFactory::SceneFactory(SceneIdProvider& idProvider):
 	idProvider(idProvider)
-{}
+{
+	Graphics::PointLight* light = new Graphics::PointLight();
+	light->setPosition(glm::vec3(100, 100, 100));
+	light->setAmbient(glm::vec4(1, 1, 1, 1));
+	light->setDiffuse(glm::vec4(1, 1, 1, 1));
+	light->setSpecular(glm::vec4(1, 1, 1, 1));
+	addLightScene(light, "Light");
+}
 
 SceneFactory::~SceneFactory()
 {
@@ -69,6 +76,12 @@ int SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, const std::string& name
 {
 	polygonMeshes.push_back(new PolygonMeshScene(getNextId(), name, mesh));
 	return polygonMeshes.back()->getId();
+}
+
+void SceneFactory::addLightScene(PointLight* l, const std::string& name)
+{
+	LightScene* object = new LightScene(getNextId(), name, l);
+	lights.push_back(object);
 }
 
 PolygonMeshScene* SceneFactory::findObjectById(const int id) const

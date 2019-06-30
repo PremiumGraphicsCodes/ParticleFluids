@@ -20,9 +20,6 @@
     <ClInclude Include="AppearanceObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="LightObjectRepository.h">
-      <Filter>Repository\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialObjectRepository.h">
       <Filter>Repository\Appearance</Filter>
     </ClInclude>
@@ -114,9 +111,6 @@
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="MaterialObjectRepository.cpp">
-      <Filter>Repository\Appearance</Filter>
-    </ClCompile>
-    <ClCompile Include="LightObjectRepository.cpp">
       <Filter>Repository\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="ImageObjectRepository.cpp">

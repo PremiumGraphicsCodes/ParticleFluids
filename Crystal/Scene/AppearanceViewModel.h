@@ -2,7 +2,7 @@
 
 #include "../Graphics/LightBuffer.h"
 #include "../Graphics/MaterialBuffer.h"
-#include "../Scene/LightObjectRepository.h"
+#include "../Scene/SceneFactory.h"
 #include "../Scene/Scene.h"
 #include "../Scene/MaterialObjectRepository.h"
 
@@ -18,16 +18,11 @@ public:
 
 	void add(Model::AppearanceObjectRepository& appearances);
 
-	void add(const Model::LightObjectRepository& lights);
-
 	void add(const Model::MaterialObjectRepository& materials);
-
-	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
 
 	Graphics::MaterialBuffer getMaterialBuffer() const { return materialBuffer; }
 
 private:
-	Graphics::LightBuffer lightBuffer;
 	Graphics::MaterialBuffer materialBuffer;
 };
 

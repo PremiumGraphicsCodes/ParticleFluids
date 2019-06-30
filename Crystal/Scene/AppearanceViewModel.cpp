@@ -10,17 +10,7 @@ using namespace Crystal::UI;
 
 void AppearanceViewModel::add(AppearanceObjectRepository& appearances)
 {
-	add(*appearances.getLights());
 	add(*appearances.getMaterials());
-}
-
-void AppearanceViewModel::add(const LightObjectRepository& lights)
-{
-	const auto& ls = lights.getLights();
-	for (const auto& l : ls) {
-		auto ll = l->getLight();
-		lightBuffer.add(*ll);
-	}
 }
 
 void AppearanceViewModel::add(const MaterialObjectRepository& materials)

@@ -21,6 +21,10 @@ void ObjectViewModel::add(Scene& objects, MaterialObjectRepository& materials)
 	for (auto p : polygons) {
 		add(*p, materials);
 	}
+	const auto& lights = objects.getFactory()->getLights();
+	for (auto l : lights) {
+		add(*l);
+	}
 }
 
 void ObjectViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
@@ -78,4 +82,10 @@ void ObjectViewModel::add(const PolygonMeshScene& object, MaterialObjectReposito
 		triangleBuffer.add(*object.getShape());
 	}
 	*/
+}
+
+void ObjectViewModel::add(const LightScene& light)
+{
+	auto ll = light.getLight();
+	lightBuffer.add(*ll);
 }

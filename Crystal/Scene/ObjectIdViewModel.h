@@ -8,7 +8,6 @@
 #include "../Scene/ParticleSystemScene.h"
 #include "../Scene/WireFrameScene.h"
 #include "../Scene/PolygonMeshScene.h"
-#include "../Scene/LightObjectRepository.h"
 #include "../Scene/Scene.h"
 #include "../Scene/MaterialObjectRepository.h"
 

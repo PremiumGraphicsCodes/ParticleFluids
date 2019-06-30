@@ -3,6 +3,7 @@
 #include "../Graphics/PointBuffer.h"
 #include "../Graphics/LineBuffer.h"
 #include "../Graphics/TriangleBuffer.h"
+#include "../Graphics/LightBuffer.h"
 #include "../Scene/ParticleSystemScene.h"
 #include "../Scene/WireFrameScene.h"
 #include "../Scene/PolygonMeshScene.h"
@@ -23,6 +24,8 @@ public:
 
 	std::vector<Graphics::TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
+	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
+
 private:
 	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
 
@@ -32,9 +35,12 @@ private:
 
 	void add(const Model::PolygonMeshScene& object, Model::MaterialObjectRepository& materials);
 
+	void add(const Model::LightScene& light);
+
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
 	std::vector<Graphics::TriangleBuffer> triangleBuffers;
+	Graphics::LightBuffer lightBuffer;
 };
 
 	}

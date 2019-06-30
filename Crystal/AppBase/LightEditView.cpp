@@ -15,6 +15,7 @@ LightEditView::LightEditView(const std::string& name, Repository* repository, Ca
 
 void LightEditView::show()
 {
+	/*
 	if (!isVisible()) {
 		return;
 	}
@@ -22,7 +23,7 @@ void LightEditView::show()
 	light.show();
 	name.show();
 	if (ImGui::Button("Edit")) {
-		auto object = repository->getAppearances()->getLights()->findObjectById(id.getValue());
+		auto object = repository->getObjects()->getFactory()->getLights()->findObjectById(id.getValue());
 		if (object == nullptr) {
 			return;
 		}
@@ -35,4 +36,5 @@ void LightEditView::show()
 	if (ImGui::Button("Cancel")) {
 		close();
 	}
+	*/
 }

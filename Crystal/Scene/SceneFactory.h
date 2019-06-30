@@ -4,6 +4,7 @@
 #include "PolygonMeshScene.h"
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
+#include "LightScene.h"
 
 namespace Crystal {
 	namespace Model {
@@ -27,6 +28,8 @@ public:
 
 	int addPolygonMeshScene(Shape::PolygonMesh* mesh, const std::string& name);
 
+	void addLightScene(Graphics::PointLight* l, const std::string& name);
+
 	PolygonMeshScene* findObjectById(const int id) const;
 
 	std::list<ParticleSystemScene*> getParticleSystems() const { return particleSystems; }
@@ -34,6 +37,8 @@ public:
 	std::list<WireFrameScene*> getWireFrames() const { return wires; }
 
 	std::list<PolygonMeshScene*> getPolygonMeshes() const { return polygonMeshes; }
+
+	std::vector<LightScene*> getLights() const { return lights; }
 
 	Math::Box3d getBoundingBox() const;
 
@@ -46,6 +51,7 @@ private:
 	std::list<ParticleSystemScene*> particleSystems;
 	std::list<WireFrameScene*> wires;
 	std::list<PolygonMeshScene*> polygonMeshes;
+	std::vector<LightScene*> lights;
 
 };
 
