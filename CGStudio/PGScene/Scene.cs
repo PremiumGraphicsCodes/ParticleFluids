@@ -1,35 +1,36 @@
-﻿using System.Xml;
+﻿using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace PG.Scene
 {
-    public class Scene
+    public enum SceneType
     {
-        public RootScene Root { get; }
+        None,
+        Root,
+        ParticleSystem,
+        WireFrame,
+        PolygonMesh,
+        PointLight,
+    }
 
-        public Scene()
-        {
-            this.Root = new RootScene();
-        }
+    public class Scene : IScene
+    {
+        public int Id { get; }
 
-        /*
-        public void Add(ISceneNode parent, ISceneNode child)
-        {
-            parent.Children.Add(child);
-        }
-        */
+        public virtual string Name { get; }
 
-        public XDocument ToDocument()
+        public List<IScene> Children { get; set; }
+
+        public SceneType Type { get; }
+
+        public Scene(int id, string name, SceneType type) :
+            base(id, name, SceneType.Root)
         {
-            var document = new XDocument();
-            document.Add(new XElement("Root", new XAttribute("name", "value")) );
-            foreach(var child in Root.Children)
-            {
-                ;
-                //child.Add()
-            }
-            document.Add(new XElement("Child", "text node"));
-            return document;
+            this.Id = id;
+            this.Name = name;
+            this.Type = type;
+            Children = new List<IScene>();
         }
     }
 }

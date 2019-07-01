@@ -10,10 +10,7 @@ namespace PGSceneTest
         [TestMethod]
         public void TestAdd()
         {
-            var scene = new Scene();
-            scene.Root.Children.Add(new ParticleSystemScene());
-            scene.Root.Children.Add(new WireFrameScene());
-            scene.Root.Children.Add(new PolygonMeshScene());
+            var scene = new Scene(1, "Root", SceneType.Root);
         }
     }
 }
