@@ -23,12 +23,6 @@ SceneFactory::~SceneFactory()
 
 void SceneFactory::clear()
 {
-	for (auto p : particleSystems) {
-		delete p->getShape();
-		delete p;
-	}
-	particleSystems.clear();
-
 	for (auto p : polygonMeshes) {
 		delete p->getShape();
 		delete p;
@@ -36,34 +30,30 @@ void SceneFactory::clear()
 	polygonMeshes.clear();
 }
 
-int SceneFactory::addParticleSystemScene(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
+ParticleSystemScene* SceneFactory::addParticleSystemScene(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
 {
 	auto particles = new ParticleSystem<ParticleAttribute>();
 	particles->add(position, attribute);
-	particleSystems.push_back(new ParticleSystemScene(getNextId(), name, particles));
-	return particleSystems.back()->getId();
+	return new ParticleSystemScene(getNextId(), name, particles);
 }
 
-int SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name)
+ParticleSystemScene* SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name)
 {
 	auto particles = new ParticleSystem<ParticleAttribute>();
 	for (const auto& p : positions) {
 		particles->add(p, attribute);
 	}
-	particleSystems.push_back(new ParticleSystemScene(getNextId(), name, particles));
-	return particleSystems.back()->getId();
+	return new ParticleSystemScene(getNextId(), name, particles);
 }
 
-int SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
+ParticleSystemScene* SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
 {
 	assert(positions.size() == attributes.size());
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
 	for (int i = 0; i < positions.size(); ++i) {
 		particles->add(positions[i], attributes[i]);
 	}
-	particleSystems.push_back(new ParticleSystemScene(getNextId(), name, particles));
-	return particleSystems.back()->getId();
-
+	return new ParticleSystemScene(getNextId(), name, particles);
 }
 
 int SceneFactory::addWireFrameScene(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)

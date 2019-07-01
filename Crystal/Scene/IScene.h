@@ -82,7 +82,7 @@ public:
 protected:
 	virtual void onClear() = 0;
 
-private:
+protected:
 	std::string name;
 	int id;
 	bool _isSelected;

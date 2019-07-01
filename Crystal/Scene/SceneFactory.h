@@ -19,11 +19,11 @@ public:
 
 	void clear();
 
-	int addParticleSystemScene(const Math::Vector3dd& position, const ParticleAttribute& attribute, const std::string& name);
+	ParticleSystemScene* addParticleSystemScene(const Math::Vector3dd& position, const ParticleAttribute& attribute, const std::string& name);
 
-	int addParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name);
+	ParticleSystemScene* addParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name);
 
-	int addParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
+	ParticleSystemScene* addParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
 	int addWireFrameScene(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
 
@@ -32,8 +32,6 @@ public:
 	void addLightScene(Graphics::PointLight* l, const std::string& name);
 
 	int addMaterialScene(Graphics::Material* m, const std::string& name);
-
-	std::list<ParticleSystemScene*> getParticleSystems() const { return particleSystems; }
 
 	std::list<WireFrameScene*> getWireFrames() const { return wires; }
 
@@ -49,7 +47,6 @@ public:
 
 private:
 	SceneIdProvider& idProvider;
-	std::list<ParticleSystemScene*> particleSystems;
 	std::list<WireFrameScene*> wires;
 	std::list<PolygonMeshScene*> polygonMeshes;
 	std::vector<LightScene*> lights;

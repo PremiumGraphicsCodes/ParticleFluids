@@ -16,8 +16,6 @@ namespace Crystal {
 class SceneIdViewModel
 {
 public:
-	void add(Model::Scene& objects);
-
 	Graphics::PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
 
 	Graphics::LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
