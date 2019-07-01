@@ -1,23 +1,24 @@
-﻿<UserControl x:Class="PG.CGStudio.Light.LightListView"
+﻿<UserControl x:Class="PG.CGStudio.ObjectListView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:local="clr-namespace:PG.CGStudio.Light"
-        xmlns:graphics="clr-namespace:PG.Control.Graphics;assembly=PGControl"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:PG.CGStudio"
+             xmlns:object="clr-namespace:PG.CGStudio.Object"
+             mc:Ignorable="d"
         Width="300">
     <UserControl.DataContext>
-        <local:LightListViewModel/>
+        <local:ObjectListViewModel/>
     </UserControl.DataContext>
     <TreeView ItemsSource="{Binding Items}">
         <i:Interaction.Behaviors>
-            <local:LightListViewBehavior/>        
+            <object:ObjectListViewBehavior/>
         </i:Interaction.Behaviors>
         <TreeView.ItemTemplate>
-            <HierarchicalDataTemplate DataType="{x:Type PointLight}">
+            <HierarchicalDataTemplate DataType="{x:Type local:ObjectModel}">
                 <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Id.Value}"/>
                     <CheckBox IsChecked="{Binding IsVisible.Value}"/>
                     <TextBlock Text="{Binding Name.Value}"/>
                 </StackPanel>

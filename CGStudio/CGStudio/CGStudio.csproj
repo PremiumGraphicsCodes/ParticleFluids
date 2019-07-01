@@ -140,11 +140,6 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Object\ParticleSystem\AppearanceViewModel.cs" />
-    <Compile Include="Object\PolygonMesh\PolygonMeshObjectListView.xaml.cs">
-      <DependentUpon>PolygonMeshObjectListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Object\PolygonMesh\PolygonMeshObjectListViewModel.cs" />
-    <Compile Include="Object\PolygonMesh\PolygonMeshObjectModel.cs" />
     <Compile Include="Selection\Object\ObjectSelectView.xaml.cs">
       <DependentUpon>ObjectSelectView.xaml</DependentUpon>
     </Compile>
@@ -161,21 +156,11 @@
       <DependentUpon>LightEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Appearance\Light\LightEditViewModel.cs" />
-    <Compile Include="Appearance\Light\LightListBehavior.cs" />
-    <Compile Include="Appearance\Light\LightListView.xaml.cs">
-      <DependentUpon>LightListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Appearance\Light\LightListViewModel.cs" />
     <Compile Include="MainModel.cs" />
     <Compile Include="Appearance\Material\MaterialEditView.xaml.cs">
       <DependentUpon>MaterialEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Appearance\Material\MaterialEditViewModel.cs" />
-    <Compile Include="Appearance\Material\MaterialListView.xaml.cs">
-      <DependentUpon>MaterialListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Appearance\Material\MaterialListViewBehavior.cs" />
-    <Compile Include="Appearance\Material\MaterialListViewModel.cs" />
     <Compile Include="Appearance\Material\MaterialModel.cs" />
     <Compile Include="Object\ObjectListView.xaml.cs">
       <DependentUpon>ObjectListView.xaml</DependentUpon>
@@ -214,11 +199,6 @@
       <DependentUpon>TextureEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Texture\TextureEditViewModel.cs" />
-    <Compile Include="Texture\TextureListViewBehavior.cs" />
-    <Compile Include="Texture\TextureListViewl.xaml.cs">
-      <DependentUpon>TextureListViewl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Texture\TextureListViewModel.cs" />
     <Compile Include="UICommand\UICommand.cs" />
     <Compile Include="UICtrlViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
@@ -287,10 +267,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Object\PolygonMesh\PolygonMeshObjectListView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Object\PolygonMesh\Generation\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -323,10 +299,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Appearance\Light\LightListView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -340,10 +312,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Appearance\Material\MaterialEditView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Appearance\Material\MaterialListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -376,10 +344,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Texture\TextureEditView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Texture\TextureListViewl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

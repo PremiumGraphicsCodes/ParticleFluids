@@ -104,17 +104,8 @@
             </Grid.ColumnDefinitions>
 
             <TabControl Grid.Column="0">
-                <TabItem Header="Objects">
+                <TabItem Header="Scene">
                     <local:ObjectListView/>
-                </TabItem>
-                <TabItem Header="Lights">
-                    <light:LightListView/>
-                </TabItem>
-                <TabItem Header="Materials">
-                    <material:MaterialListView/>
-                </TabItem>
-                <TabItem Header="Textures">
-                    <texture:TextureListView/>
                 </TabItem>
             </TabControl>
 
