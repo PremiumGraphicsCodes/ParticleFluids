@@ -44,9 +44,9 @@ public:
 
 	const MaterialScene* getMaterial() const { return material; }
 
-	virtual void addViewModel(UI::SceneViewModel& viewModel) override;
+	virtual void addViewModel(UI::SceneViewModel& viewModel) const override;
 
-	virtual void addViewModel(UI::SceneIdViewModel& viewModel) override;
+	virtual void addViewModel(UI::SceneIdViewModel& viewModel) const override;
 
 	virtual void getBoundingBox(Math::Box3d& boundingBox) const override;
 

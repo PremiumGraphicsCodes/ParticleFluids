@@ -7,7 +7,7 @@
 
 using namespace Crystal::Model;
 
-void WireFrameScene::addViewModel(Crystal::UI::SceneViewModel& viewModel)
+void WireFrameScene::addViewModel(Crystal::UI::SceneViewModel& viewModel) const
 {
 	if (!isVisible()) {
 		return;
@@ -21,7 +21,7 @@ void WireFrameScene::addViewModel(Crystal::UI::SceneViewModel& viewModel)
 	}
 }
 
-void WireFrameScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel)
+void WireFrameScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel) const
 {
 	const auto objectId = getId();
 	const auto& lines = getShape()->getLines();

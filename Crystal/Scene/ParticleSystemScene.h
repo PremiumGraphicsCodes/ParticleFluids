@@ -39,9 +39,9 @@ public:
 		delete shape;
 	}
 
-	virtual void addViewModel(UI::SceneViewModel& viewModel) override;
+	virtual void addViewModel(UI::SceneViewModel& viewModel) const override;
 
-	virtual void addViewModel(UI::SceneIdViewModel& viewModel) override;
+	virtual void addViewModel(UI::SceneIdViewModel& viewModel) const override;
 
 	virtual void getBoundingBox(Math::Box3d& box) const override;
 

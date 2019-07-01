@@ -24,9 +24,9 @@ public:
 
 	virtual void onClear() override;
 
-	void addViewModel(UI::SceneViewModel& viewModel) override;
+	void addViewModel(UI::SceneViewModel& viewModel) const override;
 
-	void addViewModel(UI::SceneIdViewModel& viewModel) override;
+	void addViewModel(UI::SceneIdViewModel& viewModel) const override;
 
 private:
 	SceneFactory factory;

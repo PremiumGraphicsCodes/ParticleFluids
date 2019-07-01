@@ -77,9 +77,9 @@ public:
 
 	IScene* findSceneByName(const std::string& name);
 
-	virtual void addViewModel(UI::SceneViewModel& viewModel) {};
+	virtual void addViewModel(UI::SceneViewModel& viewModel) const {};
 
-	virtual void addViewModel(UI::SceneIdViewModel& viewModel) {};
+	virtual void addViewModel(UI::SceneIdViewModel& viewModel) const {};
 
 	virtual void getBoundingBox(Math::Box3d& box) const {}
 
