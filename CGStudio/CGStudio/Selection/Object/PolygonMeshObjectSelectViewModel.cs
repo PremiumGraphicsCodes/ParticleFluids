@@ -41,6 +41,7 @@ namespace PG.CGStudio.Selection.Object
 
         private void OnPicked(ObjectId id)
         {
+            /*
             this.Id.Value = id.parentId;
             this.FaceId.Value = id.childId;
             var obj = MainModel.Instance.Repository.Objects.PolygonMeshes.FindObjectById(id.parentId);
@@ -48,6 +49,7 @@ namespace PG.CGStudio.Selection.Object
             var material = MainModel.Instance.Repository.Material.FindObjectById(attributeId);
             this.MaterialViewModel.Value = material.Material;
             //this.PositionViewModel.Value = obj.GetPosition(id.childId);
+            */
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

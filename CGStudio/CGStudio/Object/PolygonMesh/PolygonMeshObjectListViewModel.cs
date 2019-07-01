@@ -8,7 +8,7 @@ namespace PG.CGStudio.Object.PolygonMesh
 
         public PolygonMeshObjectListViewModel()
         {
-            Items = MainModel.Instance.Repository.Objects.PolygonMeshes.Meshes.ToReadOnlyReactiveCollection();
+            //Items = MainModel.Instance.Repository.Objects.PolygonMeshes.Meshes.ToReadOnlyReactiveCollection();
         }
     }
 }

@@ -145,7 +145,6 @@
     </Compile>
     <Compile Include="Object\PolygonMesh\PolygonMeshObjectListViewModel.cs" />
     <Compile Include="Object\PolygonMesh\PolygonMeshObjectModel.cs" />
-    <Compile Include="Object\PolygonMesh\PolygonMeshObjectRepository.cs" />
     <Compile Include="Selection\Object\ObjectSelectView.xaml.cs">
       <DependentUpon>ObjectSelectView.xaml</DependentUpon>
     </Compile>
@@ -194,9 +193,6 @@
     <Compile Include="OpenGL\Canvas3d.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Appearance\AppearanceObjectRepository.cs" />
-    <Compile Include="Appearance\Light\LightObjectRepository.cs" />
-    <Compile Include="Appearance\Material\MaterialObjectRepository.cs" />
     <Compile Include="Object\ObjectRepository.cs" />
     <Compile Include="Selection\Object\ParticleSystemObjectSelectView.xaml.cs">
       <DependentUpon>ParticleSystemObjectSelectView.xaml</DependentUpon>
@@ -223,7 +219,6 @@
       <DependentUpon>TextureListViewl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Texture\TextureListViewModel.cs" />
-    <Compile Include="Texture\TextureObjectRepository.cs" />
     <Compile Include="UICommand\UICommand.cs" />
     <Compile Include="UICtrlViewModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />

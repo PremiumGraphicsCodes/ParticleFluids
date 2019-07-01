@@ -35,6 +35,7 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
+            /*
             var obj = MainModel.Instance.Repository.Objects.FindObjectById(id.parentId);
 
             var sphere = new Sphere3d(1.0, obj.GetPosition(id.childId));
@@ -46,6 +47,7 @@ namespace PG.CGStudio.Selection
             Canvas3d.Instance.Render();
 
             Canvas3d.Instance.UICtrl = new CameraUICtrl(Canvas3d.Instance.Renderer.camera);
+            */
         }
     }
 }

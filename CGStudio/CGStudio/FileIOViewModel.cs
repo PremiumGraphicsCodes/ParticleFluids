@@ -91,8 +91,8 @@ namespace PG.CGStudio
                 var model = MainModel.Instance.Repository;
                 if(model.Import(dialog.FileName))
                 {
-                    model.Objects.Sync();
-                    model.Material.Sync();
+                    //model.Objects.Sync();
+                    //model.Material.Sync();
                     Canvas3d.Instance.Update(MainModel.Instance.Repository);
                     Canvas3d.Instance.Render();
                     MessageBox.Show("Import Suceeded");                    

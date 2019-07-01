@@ -9,51 +9,22 @@ namespace PG.CGStudio
 {
     public class ObjectRepository
     {
-        private PG.CLI.ObjectRepositoryAdapter adapter;
-
-        public PG.CLI.ObjectRepositoryAdapter Adapter { get { return adapter; } }
-
         public ReactiveCollection<ObjectModel> Objects { get; }
 
-        public PolygonMeshObjectRepository PolygonMeshes { get; }
-
-        public ObjectRepository(PG.CLI.ObjectRepositoryAdapter adapter)
+        public ObjectRepository()
         {
-            this.adapter = adapter;
             this.Objects = new ReactiveCollection<ObjectModel>();
-            this.PolygonMeshes = new PolygonMeshObjectRepository(adapter.GetPolygonMeshes());
-        }
-
-        public int Add(ParticleSystem particleSystem, ParticleAppearance appearance, System.String name)
-        {
-            var id = adapter.AddParticleSystem(particleSystem, appearance, name);
-            Sync();
-            return id;
-        }
-
-        public int Add(WireFrame wireFrame, WireAppearance appearance, System.String name)
-        {
-            var id = adapter.AddWireFrame(wireFrame, appearance, name);
-            Sync();
-            return id;
-        }
-
-        public int Add(PolygonMesh polygonMesh, System.String name)
-        {
-            var id = adapter.AddPolygonMesh(polygonMesh, name);
-            Sync();
-            return id;
         }
 
         public void Clear()
         {
             Objects.Clear();
-            adapter.Clear();
         }
 
         public void Sync()
         {
             this.Objects.Clear();
+            /*
             var objects = adapter.GetObjects();
             foreach(var o in objects)
             {
@@ -62,6 +33,7 @@ namespace PG.CGStudio
             }
 
             this.PolygonMeshes.Sync();
+            */
         }
 
         public ObjectModel FindObjectById(int id)

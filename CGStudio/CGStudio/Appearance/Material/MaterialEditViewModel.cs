@@ -23,7 +23,6 @@ namespace PG.CGStudio.Material
         private void OnOk()
         {
             this.MaterialViewModel.Update( this.PrevMaterial.Material );
-            this.PrevMaterial.Sync();
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

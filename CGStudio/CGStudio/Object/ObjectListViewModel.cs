@@ -8,9 +8,9 @@ namespace PG.CGStudio
 
         public ObjectListViewModel()
         {
-            Items = MainModel.Instance.Repository.Objects.Objects.ToReadOnlyReactiveCollection();
-//            var model = 
             /*
+            //Items = MainModel.Instance.Repository.Objects.Objects.ToReadOnlyReactiveCollection();
+//            var model = 
             Items = new ObservableCollection<ObjectItem>();
             var item1 = new ObjectItem();
             item1.Name.Value = "Object1";

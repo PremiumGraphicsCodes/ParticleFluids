@@ -34,6 +34,7 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDown(Vector2d position)
         {
+            /*
             position.Y = 1.0 - position.Y;
             var id = Canvas3d.Instance.Renderer.Pick(position, mergin);
             if(id.parentId != 0)
@@ -55,14 +56,8 @@ namespace PG.CGStudio.UICtrl
                     action(id);
                 }
 
-                /*
-                var parameters = new NavigationParameters
-                {
-                    { "Object", selectedItem }
-                };
-                MainWindowViewModel.Instance.NavigateWithParam("Object", parameters);
-                */
             }
+            */
         }
     }
 }

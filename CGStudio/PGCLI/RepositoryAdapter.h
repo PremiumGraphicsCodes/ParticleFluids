@@ -27,19 +27,7 @@ public:
 
 	bool Export(System::String^ filename);
 
-	ObjectRepositoryAdapter^ Objects() { return objects; }
-
-	ObjectRepositoryAdapter^ Items() { return items; }
-
-	AppearanceObjectRepositoryAdapter^ Appearance() { return appearance; }
-
 private:
-	ObjectRepositoryAdapter^ objects;
-
-	ObjectRepositoryAdapter^ items;
-
-	AppearanceObjectRepositoryAdapter^ appearance;
-
 internal:
 	Crystal::UI::Repository* instance;
 };

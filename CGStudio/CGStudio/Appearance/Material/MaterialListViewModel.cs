@@ -19,7 +19,7 @@ namespace PG.CGStudio.Material
 
         public MaterialListViewModel()
         {
-            Items = MainModel.Instance.Repository.Material.Items;
+//            Items = MainModel.Instance.Repository.Material.Items;
 
             AddCommand = new ReactiveCommand();
             AddCommand.Subscribe(OnAdd);
