@@ -17,7 +17,8 @@ void WFBoxButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
 	builder.build(box.getValue());
-	getModel()->getObjects()->getFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Box");
+	auto scene = getModel()->getObjects()->getFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Box");
+	getModel()->getObjects()->addScene(scene);
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
