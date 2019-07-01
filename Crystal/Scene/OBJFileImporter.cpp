@@ -74,7 +74,7 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 			//builder.pushCurrentFaceGroup(materialId);
 		}
 
-		objects.getFactory()->addPolygonMeshScene(builder.getPolygonMesh(), nullptr, "OBJ");
+		objects.getFactory()->createPolygonMeshScene(builder.getPolygonMesh(), nullptr, "OBJ");
 
 		return true;
 	}

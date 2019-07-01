@@ -19,7 +19,7 @@ void LightAddButton::onShow()
 
 void LightAddButton::onOk()
 {
-	getModel()->getObjects()->getFactory()->addLightScene(light.getValue().clone(), name.getValue());
+	getModel()->getObjects()->getFactory()->createLightScene(light.getValue().clone(), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

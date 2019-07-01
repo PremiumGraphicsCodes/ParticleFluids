@@ -17,7 +17,7 @@ bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& 
 		const auto& stl = reader.getSTL();
 		TriangleMesh mesh(stl.faces);
 		builder.add(mesh);
-		repository.getFactory()->addPolygonMeshScene(builder.getPolygonMesh(), nullptr, "STL");
+		repository.getFactory()->createPolygonMeshScene(builder.getPolygonMesh(), nullptr, "STL");
 		return true;
 	}
 	return false;
@@ -31,7 +31,7 @@ bool STLFileImporter::importSTLBinary(const std::experimental::filesystem::path&
 		const auto& stl = reader.getSTL();
 		TriangleMesh mesh(stl.faces);
 		builder.add(mesh);
-		objects.getFactory()->addPolygonMeshScene(builder.getPolygonMesh(), nullptr, "STL");
+		objects.getFactory()->createPolygonMeshScene(builder.getPolygonMesh(), nullptr, "STL");
 		return true;
 	}
 	return false;

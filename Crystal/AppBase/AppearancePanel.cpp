@@ -4,8 +4,6 @@
 #include "LightAddButton.h"
 #include "ImageAddButton.h"
 
-#include "LightTreeList.h"
-
 #include "ColorMapView.h"
 
 #include "../Graphics/ColorHSV.h"
@@ -19,10 +17,7 @@ AppearancePanel::AppearancePanel(const std::string& name, Repository* model, Can
 	IPanel(name, model, canvas)
 {
 	add( new LightAddButton("LightAdd", model, canvas) );
-	add( new LightTreeList("Lights", model, canvas) );
-
 	add( new MaterialAddButton("MaterialAdd", model, canvas) );
-
 	add(new ImageAddButton("Image", model, canvas));
 
 	ColorMap colorMap(0.0, 1.0, 360);

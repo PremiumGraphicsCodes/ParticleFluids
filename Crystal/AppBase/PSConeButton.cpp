@@ -24,7 +24,7 @@ void PSConeButton::onOk()
 		const auto v = dist(mt);
 		positions.push_back(c.getPosition(Vector3dd(u, v, 1.0)));
 	}
-	getModel()->getObjects()->getFactory()->addParticleSystemScene(positions, attribute.getValue(), "Cylinder");
+	getModel()->getObjects()->getFactory()->createParticleSystemScene(positions, attribute.getValue(), "Cylinder");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

@@ -18,7 +18,7 @@ void PMBoxButton::onOk()
 	PolygonMeshBuilder builder;
 	builder.add(boxView.getValue());
 	builder.pushCurrentFaceGroup();
-	getModel()->getObjects()->getFactory()->addPolygonMeshScene(builder.getPolygonMesh(), nullptr, name.getValue());
+	getModel()->getObjects()->getFactory()->createPolygonMeshScene(builder.getPolygonMesh(), nullptr, name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

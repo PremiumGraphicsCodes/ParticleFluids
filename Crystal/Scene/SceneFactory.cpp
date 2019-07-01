@@ -12,7 +12,7 @@ SceneFactory::SceneFactory()
 	light->setAmbient(glm::vec4(1, 1, 1, 1));
 	light->setDiffuse(glm::vec4(1, 1, 1, 1));
 	light->setSpecular(glm::vec4(1, 1, 1, 1));
-	addLightScene(light, "Light");
+	createLightScene(light, "Light");
 }
 
 SceneFactory::~SceneFactory()
@@ -25,14 +25,14 @@ void SceneFactory::clear()
 	idProvider.reset();
 }
 
-ParticleSystemScene* SceneFactory::addParticleSystemScene(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
+ParticleSystemScene* SceneFactory::createParticleSystemScene(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
 {
 	auto particles = new ParticleSystem<ParticleAttribute>();
 	particles->add(position, attribute);
 	return new ParticleSystemScene(getNextId(), name, particles);
 }
 
-ParticleSystemScene* SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name)
+ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name)
 {
 	auto particles = new ParticleSystem<ParticleAttribute>();
 	for (const auto& p : positions) {
@@ -41,7 +41,7 @@ ParticleSystemScene* SceneFactory::addParticleSystemScene(const std::vector<Vect
 	return new ParticleSystemScene(getNextId(), name, particles);
 }
 
-ParticleSystemScene* SceneFactory::addParticleSystemScene(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
+ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
 {
 	assert(positions.size() == attributes.size());
 	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
@@ -51,24 +51,23 @@ ParticleSystemScene* SceneFactory::addParticleSystemScene(const std::vector<Vect
 	return new ParticleSystemScene(getNextId(), name, particles);
 }
 
-WireFrameScene* SceneFactory::addWireFrameScene(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
+WireFrameScene* SceneFactory::createWireFrameScene(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
 {
 	return new WireFrameScene(getNextId(), name, wire, attribute);
 }
 
-PolygonMeshScene* SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, Material* m, const std::string& name)
+PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh, Material* m, const std::string& name)
 {
 	MaterialScene* material = new MaterialScene(getNextId(), name, m);
 	return new PolygonMeshScene(getNextId(), name, mesh, material);
 }
 
-void SceneFactory::addLightScene(PointLight* l, const std::string& name)
+LightScene* SceneFactory::createLightScene(PointLight* l, const std::string& name)
 {
-	LightScene* object = new LightScene(getNextId(), name, l);
-	lights.push_back(object);
+	return new LightScene(getNextId(), name, l);
 }
 
-MaterialScene* SceneFactory::addMaterialScene(Material* m, const std::string& name)
+MaterialScene* SceneFactory::createMaterialScene(Material* m, const std::string& name)
 {
 	return new MaterialScene(getNextId(), name, m);
 }

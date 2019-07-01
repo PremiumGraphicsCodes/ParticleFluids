@@ -17,7 +17,7 @@ void PSTorusButton::onOk()
 		const auto v = dist(mt);
 		positions.push_back(shape.getPosition(u, v));
 	}
-	getModel()->getObjects()->getFactory()->addParticleSystemScene(positions, attribute.getValue(), "Cylinder");
+	getModel()->getObjects()->getFactory()->createParticleSystemScene(positions, attribute.getValue(), "Cylinder");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

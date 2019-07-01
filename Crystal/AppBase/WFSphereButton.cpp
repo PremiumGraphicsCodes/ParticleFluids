@@ -21,7 +21,7 @@ void WFSphereButton::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(sphere.getValue(), unum.getValue(), vnum.getValue());
-	getModel()->getObjects()->getFactory()->addWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Sphere");
+	getModel()->getObjects()->getFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Sphere");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

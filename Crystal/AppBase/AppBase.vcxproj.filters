@@ -45,9 +45,6 @@
     <ClCompile Include="TextureTreeList.cpp">
       <Filter>Shader\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="LightTreeList.cpp">
-      <Filter>Appearance\Light</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialAddButton.cpp">
       <Filter>Appearance\Material</Filter>
     </ClCompile>
@@ -282,9 +279,6 @@
     </ClInclude>
     <ClInclude Include="TextureTreeList.h">
       <Filter>Shader\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="LightTreeList.h">
-      <Filter>Appearance\Light</Filter>
     </ClInclude>
     <ClInclude Include="MaterialAddButton.h">
       <Filter>Appearance\Material</Filter>
