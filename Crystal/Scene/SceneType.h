@@ -6,13 +6,14 @@ namespace Crystal {
 enum class SceneType
 {
 	None = 0,
-	ParticleSystemScene = 0x01,
-	WireFrameScene = 0x02,
-	PolygonMeshScene = 0x04,
-	VolumeObject = 0x08,
-	LightObject = 0x10,
-	MaterialObject = 0x20,
-	TextureObject = 0x40,
+	Root = 0x01,
+	ParticleSystemScene = 0x02,
+	WireFrameScene = 0x04,
+	PolygonMeshScene = 0x08,
+	VolumeObject = 0x10,
+	LightObject = 0x20,
+	MaterialObject = 0x40,
+	TextureObject = 0x80,
 	All = 0xFF,
 };
 	}

@@ -15,7 +15,7 @@ Scene::~Scene()
 	clear();
 }
 
-void Scene::clear()
+void Scene::onClear()
 {
 	factory.clear();
 }

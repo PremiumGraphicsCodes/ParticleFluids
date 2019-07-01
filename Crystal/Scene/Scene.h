@@ -1,19 +1,18 @@
 #pragma once
 
 #include "../Util/UnCopyable.h"
+#include "IScene.h"
 #include "SceneFactory.h"
 
 namespace Crystal {
 	namespace Model {
 
-class Scene : private UnCopyable
+class Scene : public IScene
 {
 public:
 	Scene();
 
 	~Scene();
-
-	void clear();
 
 	SceneFactory* getFactory() { return &factory; }
 
@@ -25,10 +24,11 @@ public:
 
 	IScene* findObjectById(const int id);
 
-	void add(IScene* scene) { children.push_back(scene); }
+	virtual bool isNull() const override { return false; }
 
-private:
-	std::list<IScene*> children;
+	virtual SceneType getType() const { return SceneType::Root; }
+
+	virtual void onClear() override;
 
 private:
 	SceneIdProvider idProvider;
