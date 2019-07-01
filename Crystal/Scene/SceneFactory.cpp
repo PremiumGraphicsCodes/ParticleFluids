@@ -7,12 +7,6 @@ using namespace Crystal::Model;
 
 SceneFactory::SceneFactory()
 {
-	Graphics::PointLight* light = new Graphics::PointLight();
-	light->setPosition(glm::vec3(100, 100, 100));
-	light->setAmbient(glm::vec4(1, 1, 1, 1));
-	light->setDiffuse(glm::vec4(1, 1, 1, 1));
-	light->setSpecular(glm::vec4(1, 1, 1, 1));
-	createLightScene(light, "Light");
 }
 
 SceneFactory::~SceneFactory()
@@ -56,10 +50,9 @@ WireFrameScene* SceneFactory::createWireFrameScene(WireFrame* wire, const WireFr
 	return new WireFrameScene(getNextId(), name, wire, attribute);
 }
 
-PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh, Material* m, const std::string& name)
+PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh, MaterialScene* m, const std::string& name)
 {
-	MaterialScene* material = new MaterialScene(getNextId(), name, m);
-	return new PolygonMeshScene(getNextId(), name, mesh, material);
+	return new PolygonMeshScene(getNextId(), name, mesh, m);
 }
 
 LightScene* SceneFactory::createLightScene(PointLight* l, const std::string& name)
@@ -67,7 +60,7 @@ LightScene* SceneFactory::createLightScene(PointLight* l, const std::string& nam
 	return new LightScene(getNextId(), name, l);
 }
 
-MaterialScene* SceneFactory::createMaterialScene(Material* m, const std::string& name)
+MaterialScene* SceneFactory::createMaterialScene(const std::string& name)
 {
-	return new MaterialScene(getNextId(), name, m);
+	return new MaterialScene(getNextId(), name);
 }

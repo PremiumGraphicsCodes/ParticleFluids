@@ -2,24 +2,30 @@
 
 #include "../IO/OBJFile.h"
 #include "../IO/MTLFile.h"
+#include "SceneFactory.h"
 #include <experimental/filesystem>
 
 namespace Crystal {
 	namespace Model {
-		class Scene;
-		class AppearanceObjectRepository;
+		class PolygonMeshScene;
+		class MaterialScene;
 
 class OBJFileImporter
 {
 public:
-	bool importOBJ(const std::experimental::filesystem::path& filePath, Scene& objects);
+	OBJFileImporter(SceneFactory* sceneFactory) :
+		sceneFactory(sceneFactory)
+	{}
 
-	bool importMTL(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool importOBJ(const std::experimental::filesystem::path& filePath);
 
-	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool importMTL(const std::experimental::filesystem::path& filePath);
+
+	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath);
 
 private:
-	void match(const IO::OBJFile& obj, Scene& appearances);
+	//void match(const IO::OBJFile& obj, Scene& appearances);
+	SceneFactory* sceneFactory;
 };
 	}
 }

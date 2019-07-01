@@ -19,13 +19,13 @@ bool FileImporter::importFile(const std::experimental::filesystem::path& filePat
 	switch (format) {
 	case FileFormat::OBJ :
 	{
-		OBJFileImporter importer;
-		return importer.importOBJWithMTL(filePath, objects);
+		OBJFileImporter importer(objects.getFactory());
+		return importer.importOBJWithMTL(filePath);
 	}
 	case FileFormat::MTL:
 	{
-		OBJFileImporter importer;
-		return importer.importMTL(filePath, objects);
+		OBJFileImporter importer(objects.getFactory());
+		return importer.importMTL(filePath);
 	}
 	case FileFormat::STL_ASCII :
 	{

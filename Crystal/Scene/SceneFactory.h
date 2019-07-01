@@ -27,11 +27,11 @@ public:
 
 	WireFrameScene* createWireFrameScene(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
 
-	PolygonMeshScene* createPolygonMeshScene(Shape::PolygonMesh* mesh, Graphics::Material* material, const std::string& name);
+	PolygonMeshScene* createPolygonMeshScene(Shape::PolygonMesh* mesh, MaterialScene* material, const std::string& name);
 
 	LightScene* createLightScene(Graphics::PointLight* l, const std::string& name);
 
-	MaterialScene* createMaterialScene(Graphics::Material* m, const std::string& name);
+	MaterialScene* createMaterialScene(const std::string& name);
 
 	int getNextId() { return idProvider.getNextId(); }
 

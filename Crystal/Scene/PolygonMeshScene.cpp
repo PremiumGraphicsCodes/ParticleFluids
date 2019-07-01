@@ -18,21 +18,17 @@ void PolygonMeshScene::addViewModel(Crystal::UI::SceneViewModel& viewModel) cons
 	TriangleBuffer bf(*getShape());
 	for (const auto& group : getShape()->getGroups()) {
 		auto mat = getMaterial();
+		bf.add(group, Material());
+		/*
 		if (mat == nullptr) {
 			bf.add(group, Material());
 		}
 		else {
 			bf.add(group, *(mat->getMaterial()));
 		}
+		*/
 	}
 	viewModel.triangleBuffers.push_back(bf);
-
-	/*
-	const auto& vertices =  object.getShape()->getVertices();
-	for (auto l : vertices) {
-		triangleBuffer.add(*object.getShape());
-	}
-	*/
 }
 
 void PolygonMeshScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel) const

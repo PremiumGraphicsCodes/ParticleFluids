@@ -13,14 +13,12 @@ class PolygonMeshScene : public IShapeScene
 public:
 	PolygonMeshScene() :
 		IShapeScene(-1),
-		shape(nullptr),
-		material(nullptr)
+		shape(nullptr)
 	{}
 
 	PolygonMeshScene(const int id, const std::string& name, Shape::PolygonMesh* shape, MaterialScene* material) :
 		IShapeScene(id, name),
-		shape(shape),
-		material(material)
+		shape(shape)
 	{}
 
 	~PolygonMeshScene() {};
@@ -42,7 +40,7 @@ public:
 		delete shape;
 	}
 
-	const MaterialScene* getMaterial() const { return material; }
+	MaterialScene* getMaterial() const { return material; }
 
 	virtual void addViewModel(UI::SceneViewModel& viewModel) const override;
 

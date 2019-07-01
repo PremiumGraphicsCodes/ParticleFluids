@@ -12,7 +12,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath, Scene& objects)
+bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath)
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
@@ -73,18 +73,18 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 			//const auto materialId = (material) ? material->getId() : -1;
 			//builder.pushCurrentFaceGroup(materialId);
 		}
-
-		objects.getFactory()->createPolygonMeshScene(builder.getPolygonMesh(), nullptr, "OBJ");
+		sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), nullptr, "OBJ");
 
 		return true;
 	}
 	return false;
 }
 
-bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& filePath, Scene& appearances)
+bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& filePath)
 {
 	MTLFileReader reader;
 	if (reader.read(filePath)) {
+		MaterialScene* materials = sceneFactory->createMaterialScene("MTL");
 		const auto& mtl = reader.getMTL();
 		for (const auto& m : mtl.materials) {
 			Material mat;
@@ -92,6 +92,7 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 			mat.diffuse = m.diffuse;
 			mat.specular = m.specular;
 			mat.shininess = m.specularExponent;
+			materials->addMaterial(m.name, mat);
 			//appearances.getMaterials()->addMaterialScene(new Material(mat), m.name);
 			//mat.textureId = m.ambientTexture;
 		}
@@ -100,18 +101,18 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 	return false;
 }
 
-bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene& objects)
+bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath)
 {
 	// path から .objファイル名を取得する．
 	auto filename = filePath.parent_path() / filePath.stem();
 	filename.concat(".mtl");
 	// mtl ファイルを読み込む．
-	if (!importMTL(filename, objects)) {
+	if (!importMTL(filename)) {
 		return false;
 	}
 
 	// obj ファイルを読み込む．
-	if (!importOBJ(filePath, objects)) {
+	if (!importOBJ(filePath)) {
 		return false;
 	}
 

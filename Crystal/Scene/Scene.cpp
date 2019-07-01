@@ -9,6 +9,13 @@ using namespace Crystal::Model;
 
 Scene::Scene()
 {
+	Graphics::PointLight* light = new Graphics::PointLight();
+	light->setPosition(glm::vec3(100, 100, 100));
+	light->setAmbient(glm::vec4(1, 1, 1, 1));
+	light->setDiffuse(glm::vec4(1, 1, 1, 1));
+	light->setSpecular(glm::vec4(1, 1, 1, 1));
+	addScene( factory.createLightScene(light, "Light") );
+
 }
 
 Scene::~Scene()

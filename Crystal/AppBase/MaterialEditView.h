@@ -17,7 +17,7 @@ public:
 	{
 //		int id, const Graphics::Material& material, const std::string& name) {
 		this->id.setValue(value->getId());
-		this->material.setValue(*value->getMaterial());
+		//this->material.setValue(*value->getMaterial());
 		this->name.setValue( value->getName() );
 	}
 
