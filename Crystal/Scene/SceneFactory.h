@@ -33,8 +33,6 @@ public:
 
 	int addMaterialScene(Graphics::Material* m, const std::string& name);
 
-	PolygonMeshScene* findObjectById(const int id) const;
-
 	std::list<ParticleSystemScene*> getParticleSystems() const { return particleSystems; }
 
 	std::list<WireFrameScene*> getWireFrames() const { return wires; }

@@ -12,7 +12,7 @@ void FaceGroupSelectButton::onShow()
 	if (ImGui::Button("Pick")) {
 		auto ctrl = new PickUICtrl(getModel(), getCanvas(), SceneType::PolygonMeshScene);
 		auto func = [=](int parentId, int childId) {
-			auto mesh = getModel()->getObjects()->getFactory()->findObjectById(parentId);
+			auto mesh = static_cast<PolygonMeshScene*>( getModel()->getObjects()->findObjectById(parentId) );
 			if (mesh == nullptr) {
 				return;
 			}

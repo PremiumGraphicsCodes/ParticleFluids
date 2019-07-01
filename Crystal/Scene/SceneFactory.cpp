@@ -93,15 +93,6 @@ int SceneFactory::addMaterialScene(Material* m, const std::string& name)
 	return material->getId();
 }
 
-PolygonMeshScene* SceneFactory::findObjectById(const int id) const
-{
-	auto iter = std::find_if(std::cbegin(polygonMeshes), std::cend(polygonMeshes), [=](auto p) {return p->getId() == id; });
-	if (iter == std::cend(polygonMeshes)) {
-		return nullptr;
-	}
-	return *iter;
-}
-
 Box3d SceneFactory::getBoundingBox() const
 {
 	const auto& vertices = getAllVertices();
