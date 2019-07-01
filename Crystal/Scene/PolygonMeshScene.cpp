@@ -1,7 +1,10 @@
 #include "PolygonMeshScene.h"
+#include "SceneViewModel.h"
+#include "SceneIdViewModel.h"
+
 
 #include "../Graphics/TriangleBuffer.h"
-#include "SceneViewModel.h"
+#include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
@@ -32,3 +35,17 @@ void PolygonMeshScene::addViewModel(Crystal::UI::SceneViewModel& viewModel)
 	*/
 }
 
+void PolygonMeshScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel)
+{
+	const auto objectId = getId();
+	const auto& faces = getShape()->getFaces();
+	int childId = 0;
+	int index = 0;
+	for (auto f : faces) {
+		Graphics::DrawableID did(objectId, childId++);
+		const auto& idColor = did.toColor();
+		viewModel.triangleIdBuffer.add(f->getV1()->getPosition(), idColor, index++);
+		viewModel.triangleIdBuffer.add(f->getV2()->getPosition(), idColor, index++);
+		viewModel.triangleIdBuffer.add(f->getV3()->getPosition(), idColor, index++);
+	}
+}

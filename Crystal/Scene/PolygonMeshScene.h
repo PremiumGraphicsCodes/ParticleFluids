@@ -46,6 +46,8 @@ public:
 
 	virtual void addViewModel(UI::SceneViewModel& viewModel) override;
 
+	virtual void addViewModel(UI::SceneIdViewModel& viewModel) override;
+
 private:
 	Shape::PolygonMesh* shape;
 	MaterialScene* material;
