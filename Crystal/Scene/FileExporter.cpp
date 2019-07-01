@@ -17,6 +17,7 @@ bool FileExporter::exportFile(const std::experimental::filesystem::path& filePat
 
 bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, Scene& objects, const FileFormat format)
 {
+	/*
 	switch (format) {
 	case FileFormat::OBJ :
 	{
@@ -40,15 +41,14 @@ bool FileExporter::exportFile(const std::experimental::filesystem::path& filePat
 	}
 	case FileFormat::PCD :
 	{
-		/*
 		PCDFileExporter exporter;
 		return exporter.exportPCD(filePath, objects);
-		*/
 		return false;
 	}
 	default :
 		assert(false);
 	}
+	*/
 	return false;
 }
 

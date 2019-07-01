@@ -18,12 +18,6 @@ public:
 
 	Math::Box3d getBoundingBox() const;
 
-	std::list<Math::Vector3dd> getAllVertices() const;
-
-	std::list<IScene*> getAllObjects() const;
-
-	IScene* findObjectById(const int id);
-
 	virtual bool isNull() const override { return false; }
 
 	virtual SceneType getType() const { return SceneType::Root; }

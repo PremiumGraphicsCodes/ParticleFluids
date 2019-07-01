@@ -27,23 +27,18 @@ public:
 
 	WireFrameScene* addWireFrameScene(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
 
-	int addPolygonMeshScene(Shape::PolygonMesh* mesh, Graphics::Material* material, const std::string& name);
+	PolygonMeshScene* addPolygonMeshScene(Shape::PolygonMesh* mesh, Graphics::Material* material, const std::string& name);
 
 	void addLightScene(Graphics::PointLight* l, const std::string& name);
 
 	MaterialScene* addMaterialScene(Graphics::Material* m, const std::string& name);
 
-	std::list<PolygonMeshScene*> getPolygonMeshes() const { return polygonMeshes; }
-
 	std::vector<LightScene*> getLights() const { return lights; }
-
-	std::list<Math::Vector3dd> getAllVertices() const;
 
 	int getNextId() { return idProvider.getNextId(); }
 
 private:
 	SceneIdProvider idProvider;
-	std::list<PolygonMeshScene*> polygonMeshes;
 	std::vector<LightScene*> lights;
 };
 

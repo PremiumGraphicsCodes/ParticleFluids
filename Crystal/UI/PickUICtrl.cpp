@@ -32,7 +32,7 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	if (parentId == 0) {
 		return;
 	}
-	auto object = model->getObjects()->findObjectById(parentId);
+	auto object = model->getObjects()->findSceneById(parentId);
 	if (object != nullptr) {
 		const bool masked = (int)type && (int)object->getType();
 		if (masked) {

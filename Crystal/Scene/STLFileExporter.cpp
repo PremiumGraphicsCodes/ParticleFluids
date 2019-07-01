@@ -3,17 +3,15 @@
 #include "../IO/STLASCIIFileWriter.h"
 #include "../IO/STLBinaryFileWriter.h"
 
-#include "Scene.h"
+#include "PolygonMeshScene.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& filePath, Scene& objects)
+bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
 {
-	const auto& polygons = objects.getFactory()->getPolygonMeshes();
 	std::vector<Shape::TriangleFace> fs;
-	for (auto p : polygons) {
-		const auto& faces = p->getShape()->getFaces();
+		const auto& faces = polygonMesh.getShape()->getFaces();
 		for (const auto& f : faces) {
 			if (f->isDegenerated(1.0e-12f)) {
 				continue;
@@ -25,7 +23,6 @@ bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& 
 			//const auto area = ff.toTriangle().getArea();
 			fs.push_back(ff);
 		}
-	}
 	Shape::TriangleMesh mesh(fs);
 	STLASCIIFileWriter writer;
 	STLFile stl;
@@ -33,12 +30,10 @@ bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& 
 	return writer.write(filePath, stl);
 }
 
-bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path& filePath, Scene& objects)
+bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
 {
-	const auto& polygons = objects.getFactory()->getPolygonMeshes();
 	std::vector<Shape::TriangleFace> fs;
-	for (auto p : polygons) {
-		const auto& faces = p->getShape()->getFaces();
+		const auto& faces = polygonMesh.getShape()->getFaces();
 		for (const auto& f : faces) {
 			if (f->isDegenerated(1.0e-12f)) {
 				continue;
@@ -50,7 +45,6 @@ bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path&
 			//const auto area = ff.toTriangle().getArea();
 			fs.push_back(ff);
 		}
-	}
 	STLFile stl;
 	stl.faces = fs;
 	stl.faceCount = fs.size();

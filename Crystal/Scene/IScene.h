@@ -45,6 +45,7 @@ public:
 		for (const auto& c : children) {
 			c->clear();
 		}
+		children.clear();
 		onClear();
 	}
 

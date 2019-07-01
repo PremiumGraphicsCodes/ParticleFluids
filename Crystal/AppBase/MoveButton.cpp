@@ -13,7 +13,7 @@ void MoveButton::onShow()
 	objectButton.show();
 	if (ImGui::Button("Move")) {
 		auto ctrl = new MoveUICtrl(getModel(), getCanvas());
-		auto object = getModel()->getObjects()->findObjectById(objectButton.getId());
+		auto object = getModel()->getObjects()->findSceneById(objectButton.getId());
 		if (object == nullptr) {
 			return;
 		}

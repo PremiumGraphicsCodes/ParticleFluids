@@ -4,14 +4,14 @@
 
 namespace Crystal {
 	namespace Model {
-		class Scene;
+		class PolygonMeshScene;
 
 class OBJFileExporter
 {
 public:
-	bool exportOBJ(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool exportOBJ(const std::experimental::filesystem::path& filePath, PolygonMeshScene& objects);
 
-	bool exportMTL(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool exportMTL(const std::experimental::filesystem::path& filePath, PolygonMeshScene& objects);
 };
 
 	}

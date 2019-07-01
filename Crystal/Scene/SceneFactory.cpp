@@ -22,11 +22,7 @@ SceneFactory::~SceneFactory()
 
 void SceneFactory::clear()
 {
-	for (auto p : polygonMeshes) {
-		delete p->getShape();
-		delete p;
-	}
-	polygonMeshes.clear();
+	idProvider.reset();
 }
 
 ParticleSystemScene* SceneFactory::addParticleSystemScene(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
@@ -60,11 +56,10 @@ WireFrameScene* SceneFactory::addWireFrameScene(WireFrame* wire, const WireFrame
 	return new WireFrameScene(getNextId(), name, wire, attribute);
 }
 
-int SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, Material* m, const std::string& name)
+PolygonMeshScene* SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, Material* m, const std::string& name)
 {
 	MaterialScene* material = new MaterialScene(getNextId(), name, m);
-	polygonMeshes.push_back(new PolygonMeshScene(getNextId(), name, mesh, material));
-	return polygonMeshes.back()->getId();
+	return new PolygonMeshScene(getNextId(), name, mesh, material);
 }
 
 void SceneFactory::addLightScene(PointLight* l, const std::string& name)
@@ -76,16 +71,4 @@ void SceneFactory::addLightScene(PointLight* l, const std::string& name)
 MaterialScene* SceneFactory::addMaterialScene(Material* m, const std::string& name)
 {
 	return new MaterialScene(getNextId(), name, m);
-}
-
-std::list<Vector3dd> SceneFactory::getAllVertices() const
-{
-	std::list<Vector3dd> positions;
-	for (const auto& ps : polygonMeshes) {
-		const auto& vs = ps->getShape()->getVertices();
-		for (const auto& p : vs) {
-			positions.push_back(p->getPosition());
-		}
-	}
-	return positions;
 }

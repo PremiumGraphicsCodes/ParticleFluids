@@ -11,7 +11,7 @@ void RotateButton::onShow()
 	objectButton.show();
 	if (ImGui::Button("Rotate")) {
 		auto ctrl = new RotateUICtrl(getModel(), getCanvas());
-		auto object = getModel()->getObjects()->findObjectById(objectButton.getId());
+		auto object = getModel()->getObjects()->findSceneById(objectButton.getId());
 		if (object == nullptr) {
 			return;
 		}

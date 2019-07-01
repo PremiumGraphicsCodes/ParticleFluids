@@ -3,19 +3,17 @@
 #include "../IO/OBJFileWriter.h"
 #include "../IO/MTLFileWriter.h"
 
-#include "Scene.h"
+#include "PolygonMeshScene.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& filePath, Scene& objects)
+bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygon)
 {
-	const auto& polygons = objects.getFactory()->getPolygonMeshes();
 	OBJFile obj;
 	obj.groups.push_back(OBJGroup());
-	for (auto p : polygons) {
-		const auto& vertices = p->getShape()->getVertices();
-		const auto& faces = p->getShape()->getFaces();
+		const auto& vertices = polygon.getShape()->getVertices();
+		const auto& faces = polygon.getShape()->getFaces();
 		for (auto f : faces) {
 			std::vector<int> indices;
 			indices.push_back(f->getV1()->getAttr().id + 1);
@@ -32,12 +30,11 @@ bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& fileP
 			obj.normals.push_back(v->getNormal());
 			obj.texCoords.push_back(v->getTexCoord());
 		}
-	}
 	OBJFileWriter writer;
 	return writer.write(filePath, obj);
 }
 
-bool OBJFileExporter::exportMTL(const std::experimental::filesystem::path& filePath, Scene& appearances)
+bool OBJFileExporter::exportMTL(const std::experimental::filesystem::path& filePath, PolygonMeshScene& appearances)
 {
 	/*
 	MTLFileWriter writer;

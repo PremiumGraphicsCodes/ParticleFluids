@@ -4,8 +4,6 @@
 #include "PMBoxButton.h"
 #include "PMQuadButton.h"
 
-#include "PolygonMeshTreeList.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
@@ -16,6 +14,4 @@ PolygonMeshPanel::PolygonMeshPanel(const std::string& name, Repository* model, C
 	add( new PMSphereButton(model, canvas) );
 	add( new PMBoxButton(model, canvas) );
 	add( new PMQuadButton(model, canvas) );
-
-	add(new PolygonMeshTreeList("Polygons", model, canvas));
 }

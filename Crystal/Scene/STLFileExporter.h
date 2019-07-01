@@ -4,15 +4,14 @@
 
 namespace Crystal {
 	namespace Model {
-		class Scene;
-		class AppearanceObjectRepository;
+		class PolygonMeshScene;
 
 class STLFileExporter
 {
 public:
-	bool exportSTLAscii(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool exportSTLAscii(const std::experimental::filesystem::path& filePath, PolygonMeshScene& objects);
 
-	bool exportSTLBinary(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool exportSTLBinary(const std::experimental::filesystem::path& filePath, PolygonMeshScene& objects);
 };
 
 	}
