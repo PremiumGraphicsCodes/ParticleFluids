@@ -1,10 +1,10 @@
 #include "WireFrameScene.h"
 
-#include "ObjectViewModel.h"
+#include "SceneViewModel.h"
 
 using namespace Crystal::Model;
 
-void WireFrameScene::addViewModel(Crystal::UI::ObjectViewModel& viewModel)
+void WireFrameScene::addViewModel(Crystal::UI::SceneViewModel& viewModel)
 {
 	if (!isVisible()) {
 		return;

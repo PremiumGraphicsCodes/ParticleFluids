@@ -43,7 +43,7 @@ public:
 
 	virtual std::vector<Math::Vector3dd> getAllVertices() const { return shape->getVertices(); }
 
-	virtual void addViewModel(UI::ObjectViewModel& viewModel) override;
+	virtual void addViewModel(UI::SceneViewModel& viewModel) override;
 
 private:
 	Shape::WireFrame* shape;

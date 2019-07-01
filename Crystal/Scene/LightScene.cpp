@@ -1,10 +1,10 @@
 #include "LightScene.h"
 
-#include "ObjectViewModel.h"
+#include "SceneViewModel.h"
 
 using namespace Crystal::Model;
 
-void LightScene::addViewModel(Crystal::UI::ObjectViewModel& viewModel)
+void LightScene::addViewModel(Crystal::UI::SceneViewModel& viewModel)
 {
 	auto ll = getLight();
 	viewModel.lightBuffer.add(*ll);

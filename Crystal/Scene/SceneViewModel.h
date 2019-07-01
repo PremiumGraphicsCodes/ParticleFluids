@@ -5,15 +5,11 @@
 #include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/LightBuffer.h"
 #include "../Graphics/MaterialBuffer.h"
-#include "../Scene/ParticleSystemScene.h"
-#include "../Scene/WireFrameScene.h"
-#include "../Scene/PolygonMeshScene.h"
-#include "../Scene/Scene.h"
 
 namespace Crystal {
 	namespace UI {
 
-class ObjectViewModel
+class SceneViewModel
 {
 public:
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }

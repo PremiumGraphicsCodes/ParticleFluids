@@ -30,7 +30,7 @@
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
     <ClInclude Include="ObjectIdViewModel.h" />
-    <ClInclude Include="ObjectViewModel.h" />
+    <ClInclude Include="SceneViewModel.h" />
     <ClInclude Include="SceneId.h" />
     <ClInclude Include="SceneIdProvider.h" />
     <ClInclude Include="Scene.h" />
@@ -59,7 +59,6 @@
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="ObjectIdViewModel.cpp" />
-    <ClCompile Include="ObjectViewModel.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="Scene.cpp" />

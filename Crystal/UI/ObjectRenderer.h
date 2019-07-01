@@ -13,7 +13,7 @@
 
 namespace Crystal {
 	namespace UI {
-		class ObjectViewModel;
+		class SceneViewModel;
 
 class ObjectRenderer : private UnCopyable
 {
@@ -29,7 +29,7 @@ public:
 
 	void render(const Shader::TextureObject& texture, const Shader::TextureObject& smoothTexture);
 
-	void setViewModel(const ObjectViewModel& vm);
+	void setViewModel(const SceneViewModel& vm);
 
 private:
 	Shader::PointRenderer pointRenderer;

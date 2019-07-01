@@ -39,9 +39,9 @@ public:
 		delete shape;
 	}
 
-	virtual void addViewModel(UI::ObjectViewModel& viewModel) override;
+	virtual void addViewModel(UI::SceneViewModel& viewModel) override;
 
-	//virtual void addViewModel(UI::ObjectViewModel& viewModel) override;
+	virtual void addViewModel(UI::ObjectIdViewModel& viewModel) override;
 
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;

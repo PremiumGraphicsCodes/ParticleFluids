@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-#include "ObjectViewModel.h"
+#include "SceneViewModel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -80,7 +80,7 @@ IScene* Scene::findObjectById(const int id)
 	return *iter;
 }
 
-void Scene::addViewModel(Crystal::UI::ObjectViewModel& viewModel)
+void Scene::addViewModel(Crystal::UI::SceneViewModel& viewModel)
 {
 	const auto& particleSystems = getFactory()->getParticleSystems();
 	for (auto ps : particleSystems) {

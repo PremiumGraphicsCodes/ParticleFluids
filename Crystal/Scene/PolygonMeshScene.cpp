@@ -1,12 +1,12 @@
 #include "PolygonMeshScene.h"
 
 #include "../Graphics/TriangleBuffer.h"
-#include "ObjectViewModel.h"
+#include "SceneViewModel.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
-void PolygonMeshScene::addViewModel(Crystal::UI::ObjectViewModel& viewModel)
+void PolygonMeshScene::addViewModel(Crystal::UI::SceneViewModel& viewModel)
 {
 	if (!isVisible()) {
 		return;

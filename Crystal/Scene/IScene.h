@@ -11,7 +11,8 @@
 
 namespace Crystal {
 	namespace UI {
-		class ObjectViewModel;
+		class SceneViewModel;
+		class ObjectIdViewModel;
 	}
 	namespace Model {
 
@@ -74,7 +75,9 @@ public:
 
 	IScene* findSceneByName(const std::string& name);
 
-	virtual void addViewModel(UI::ObjectViewModel& viewModel) {};
+	virtual void addViewModel(UI::SceneViewModel& viewModel) {};
+
+	virtual void addViewModel(UI::ObjectIdViewModel& viewModel) {};
 
 protected:
 	virtual void onClear() = 0;

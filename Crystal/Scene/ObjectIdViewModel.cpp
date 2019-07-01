@@ -11,7 +11,7 @@ void ObjectIdViewModel::add(Scene& objects)
 {
 	const auto& particleSystems = objects.getFactory()->getParticleSystems();
 	for (auto ps : particleSystems) {
-		add(*ps);
+		ps->addViewModel(*this);
 	}
 	const auto& wires = objects.getFactory()->getWireFrames();
 	for (auto wf : wires) {
@@ -20,22 +20,6 @@ void ObjectIdViewModel::add(Scene& objects)
 	const auto& polygons = objects.getFactory()->getPolygonMeshes();
 	for (auto p : polygons) {
 		add(*p);
-	}
-}
-
-void ObjectIdViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
-{
-	pointIdBuffer.add(pos, c, size);
-}
-
-void ObjectIdViewModel::add(const ParticleSystemScene& object)
-{
-	const auto objectId = object.getId();
-	const auto& particles = object.getShape()->getParticles();
-	int particleId = 0;
-	for (auto p : particles) {
-		Graphics::DrawableID did(objectId, particleId++);
-		pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size);
 	}
 }
 

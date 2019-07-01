@@ -1,5 +1,5 @@
 #include "ObjectRenderer.h"
-#include "../../Crystal/Scene/ObjectViewModel.h"
+#include "../../Crystal/Scene/SceneViewModel.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -23,7 +23,7 @@ bool ObjectRenderer::build(ShaderObjectRepository& shaders)
 	return true;
 }
 
-void ObjectRenderer::setViewModel(const ObjectViewModel& vm)
+void ObjectRenderer::setViewModel(const SceneViewModel& vm)
 {
 	this->pointRenderer.setBuffer(vm.getPointBuffer());
 	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);
