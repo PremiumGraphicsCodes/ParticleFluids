@@ -36,7 +36,7 @@ void VolumeConvertButton::onOk()
 	ParticleAttribute attr;
 	attr.color = glm::vec4(1, 0, 0, 0);
 	attr.size = 1.0;
-	getModel()->getObjects()->getFactory()->addParticleSystemScene(positions, attr, "VolumeConvert");
+	getModel()->getObjects()->getFactory()->createParticleSystemScene(positions, attr, "VolumeConvert");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 }
 

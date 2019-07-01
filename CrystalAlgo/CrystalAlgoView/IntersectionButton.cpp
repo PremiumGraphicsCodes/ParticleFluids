@@ -24,8 +24,8 @@ void IntersectionButton::onShow()
 
 void IntersectionButton::onOk()
 {
-	auto obj1 = getModel()->getObjects()->getFactory()->findObjectById(mesh1.getId());
-	auto obj2 = getModel()->getObjects()->getFactory()->findObjectById(mesh2.getId());
+	auto obj1 = static_cast<PolygonMeshScene*>( getModel()->getObjects()->findSceneById(mesh1.getId()) );
+	auto obj2 = static_cast<PolygonMeshScene*>( getModel()->getObjects()->findSceneById(mesh2.getId()) );
 	if (obj1 == nullptr || obj2 == nullptr) {
 		return;
 	}
@@ -42,7 +42,7 @@ void IntersectionButton::onOk()
 		ParticleAttribute attr;
 		attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 		attr.size = 1.0f;
-		getModel()->getObjects()->getFactory()->addParticleSystemScene(positions, attr, "intersections");
+		getModel()->getObjects()->getFactory()->createParticleSystemScene(positions, attr, "intersections");
 		getCanvas()->setViewModel(getModel()->toViewModel());
 	}
 }
