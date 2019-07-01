@@ -22,18 +22,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AppearanceObjectRepository.h" />
-    <ClInclude Include="AppearanceViewModel.h" />
     <ClInclude Include="FileFormat.h" />
     <ClInclude Include="FileImporter.h" />
     <ClInclude Include="FileExporter.h" />
     <ClInclude Include="ImageObject.h" />
-    <ClInclude Include="ImageObjectRepository.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
-    <ClInclude Include="MaterialObjectRepository.h" />
     <ClInclude Include="ObjectIdViewModel.h" />
     <ClInclude Include="ObjectViewModel.h" />
     <ClInclude Include="SceneId.h" />
@@ -59,13 +55,9 @@
     <ClInclude Include="WireFrameScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AppearanceObjectRepository.cpp" />
-    <ClCompile Include="AppearanceViewModel.cpp" />
     <ClCompile Include="FileImporter.cpp" />
     <ClCompile Include="FileExporter.cpp" />
-    <ClCompile Include="ImageObjectRepository.cpp" />
     <ClCompile Include="IScene.cpp" />
-    <ClCompile Include="MaterialObjectRepository.cpp" />
     <ClCompile Include="ObjectIdViewModel.cpp" />
     <ClCompile Include="ObjectViewModel.cpp" />
     <ClCompile Include="Scene.cpp" />

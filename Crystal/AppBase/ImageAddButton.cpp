@@ -35,9 +35,11 @@ void ImageAddButton::onShow()
 
 void ImageAddButton::onOk()
 {
+	/*
 	getModel()->getAppearances()->getImages()->add(image.getValue(), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
+	*/
 }
 
 void ImageAddButton::onCancel()

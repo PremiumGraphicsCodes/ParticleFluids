@@ -5,6 +5,7 @@
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
 #include "LightScene.h"
+#include "MaterialScene.h"
 
 namespace Crystal {
 	namespace Model {
@@ -26,9 +27,11 @@ public:
 
 	int addWireFrameScene(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
 
-	int addPolygonMeshScene(Shape::PolygonMesh* mesh, const std::string& name);
+	int addPolygonMeshScene(Shape::PolygonMesh* mesh, Graphics::Material* material, const std::string& name);
 
 	void addLightScene(Graphics::PointLight* l, const std::string& name);
+
+	int addMaterialScene(Graphics::Material* m, const std::string& name);
 
 	PolygonMeshScene* findObjectById(const int id) const;
 
@@ -52,6 +55,7 @@ private:
 	std::list<WireFrameScene*> wires;
 	std::list<PolygonMeshScene*> polygonMeshes;
 	std::vector<LightScene*> lights;
+	std::vector<MaterialScene*> materials;
 
 };
 

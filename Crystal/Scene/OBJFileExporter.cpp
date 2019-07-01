@@ -4,7 +4,6 @@
 #include "../IO/MTLFileWriter.h"
 
 #include "Scene.h"
-#include "AppearanceObjectRepository.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Model;
@@ -38,11 +37,12 @@ bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& fileP
 	return writer.write(filePath, obj);
 }
 
-bool OBJFileExporter::exportMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances)
+bool OBJFileExporter::exportMTL(const std::experimental::filesystem::path& filePath, Scene& appearances)
 {
+	/*
 	MTLFileWriter writer;
 	MTLFile mtl;
-	for (const auto mat : appearances.getMaterials()->getMaterials()) {
+	for (const auto mat : objects.getMaterials()->getMaterials()) {
 		MTL m;
 		m.name = mat->getName();
 		m.ambient = mat->getMaterial()->ambient;
@@ -52,4 +52,6 @@ bool OBJFileExporter::exportMTL(const std::experimental::filesystem::path& fileP
 		mtl.materials.push_back(m);
 	}
 	return writer.write(filePath, mtl);
+	*/
+	return false;
 }

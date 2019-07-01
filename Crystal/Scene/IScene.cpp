@@ -14,3 +14,17 @@ IScene* IScene::findSceneById(int id)
 	}
 	return nullptr;
 }
+
+IScene* IScene::findSceneByName(const std::string& name)
+{
+	if (name == this->name) {
+		return this;
+	}
+	for (auto c : children) {
+		if (c->findSceneByName(name) != nullptr) {
+			return c;
+		}
+	}
+	return nullptr;
+
+}

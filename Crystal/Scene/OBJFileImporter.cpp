@@ -5,14 +5,14 @@
 #include "../IO/MTLFileReader.h"
 
 #include "Scene.h"
-#include "AppearanceObjectRepository.h"
+//#include "AppearanceObjectRepository.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances)
+bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
@@ -69,19 +69,19 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 					i2++;
 				}
 			}
-			auto material = appearances.getMaterials()->findByName(g.usemtl);
-			const auto materialId = (material) ? material->getId() : -1;
-			builder.pushCurrentFaceGroup(materialId);
+			//auto material = objects.f->findByName(g.usemtl);
+			//const auto materialId = (material) ? material->getId() : -1;
+			//builder.pushCurrentFaceGroup(materialId);
 		}
 
-		objects.getFactory()->addPolygonMeshScene(builder.getPolygonMesh(), "OBJ");
+		objects.getFactory()->addPolygonMeshScene(builder.getPolygonMesh(), nullptr, "OBJ");
 
 		return true;
 	}
 	return false;
 }
 
-bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances)
+bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& filePath, Scene& appearances)
 {
 	MTLFileReader reader;
 	if (reader.read(filePath)) {
@@ -92,7 +92,7 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 			mat.diffuse = m.diffuse;
 			mat.specular = m.specular;
 			mat.shininess = m.specularExponent;
-			appearances.getMaterials()->add(new Material(mat), m.name);
+			//appearances.getMaterials()->addMaterialScene(new Material(mat), m.name);
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;
@@ -100,18 +100,18 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 	return false;
 }
 
-bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances)
+bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
 	// path から .objファイル名を取得する．
 	auto filename = filePath.parent_path() / filePath.stem();
 	filename.concat(".mtl");
 	// mtl ファイルを読み込む．
-	if (!importMTL(filename, appearances)) {
+	if (!importMTL(filename, objects)) {
 		return false;
 	}
 
 	// obj ファイルを読み込む．
-	if (!importOBJ(filePath, objects, appearances)) {
+	if (!importOBJ(filePath, objects)) {
 		return false;
 	}
 

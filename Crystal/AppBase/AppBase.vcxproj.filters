@@ -42,9 +42,6 @@
     <ClCompile Include="AppearancePanel.cpp">
       <Filter>Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialTreeList.cpp">
-      <Filter>Appearance\Material</Filter>
-    </ClCompile>
     <ClCompile Include="TextureTreeList.cpp">
       <Filter>Shader\Texture</Filter>
     </ClCompile>
@@ -148,9 +145,6 @@
       <Filter>Shader\Texture</Filter>
     </ClCompile>
     <ClCompile Include="ImageView.cpp">
-      <Filter>Appearance\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageTreeList.cpp">
       <Filter>Appearance\Image</Filter>
     </ClCompile>
     <ClCompile Include="ImageAddButton.cpp">
@@ -295,9 +289,6 @@
     <ClInclude Include="AppearancePanel.h">
       <Filter>Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialTreeList.h">
-      <Filter>Appearance\Material</Filter>
-    </ClInclude>
     <ClInclude Include="TextureTreeList.h">
       <Filter>Shader\Texture</Filter>
     </ClInclude>
@@ -402,9 +393,6 @@
     </ClInclude>
     <ClInclude Include="TextureView.h">
       <Filter>Shader\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageTreeList.h">
-      <Filter>Appearance\Image</Filter>
     </ClInclude>
     <ClInclude Include="ImageAddButton.h">
       <Filter>Appearance\Image</Filter>

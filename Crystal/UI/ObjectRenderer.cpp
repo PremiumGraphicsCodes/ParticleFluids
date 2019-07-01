@@ -1,6 +1,5 @@
 #include "ObjectRenderer.h"
 #include "../../Crystal/Scene/ObjectViewModel.h"
-#include "../../Crystal/Scene/AppearanceViewModel.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -24,7 +23,7 @@ bool ObjectRenderer::build(ShaderObjectRepository& shaders)
 	return true;
 }
 
-void ObjectRenderer::setViewModel(const ObjectViewModel& vm, const AppearanceViewModel& avm)
+void ObjectRenderer::setViewModel(const ObjectViewModel& vm)
 {
 	this->pointRenderer.setBuffer(vm.getPointBuffer());
 	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);
@@ -33,7 +32,7 @@ void ObjectRenderer::setViewModel(const ObjectViewModel& vm, const AppearanceVie
 		Shader::SmoothRenderer::Buffer buffer;
 		buffer.triangle = tb;
 		buffer.light = vm.getLightBuffer();
-		buffer.material = avm.getMaterialBuffer();
+		//buffer.material = avm.getMaterialBuffer();
 		smoothBuffers.push_back(buffer);
 	}
 }

@@ -21,28 +21,27 @@ Repository::~Repository()
 void Repository::clear()
 {
 	objects.clear();
-	appearances.clear();
 }
 
 bool Repository::importFile(const std::experimental::filesystem::path& filename)
 {
 	FileImporter reader;
-	return reader.importFile(filename, objects, appearances);
+	return reader.importFile(filename, objects);
 }
 
 bool Repository::exportFile(const std::experimental::filesystem::path& filename)
 {
 	FileExporter writer;
-	return writer.exportFile(filename, objects, appearances);
+	return writer.exportFile(filename, objects);
 }
 
 ViewModel Repository::toViewModel()
 {
 	ViewModel vm;
-	vm.object.add(objects, *appearances.getMaterials());
+	vm.object.add(objects);
 	vm.objectId.add(objects);
-	vm.appearance.add(appearances);
-	vm.object.add(items, *appearances.getMaterials());
+	//vm.appearance.add(appearances);
+	vm.object.add(items);
 	return vm;
 }
 

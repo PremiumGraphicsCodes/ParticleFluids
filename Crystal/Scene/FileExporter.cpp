@@ -9,13 +9,13 @@
 using namespace Crystal::Math;
 using namespace Crystal::Model;
 
-bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances)
+bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
 	const auto format = getFileFormat(filePath);
-	return exportFile(filePath, objects, appearances, format);
+	return exportFile(filePath, objects, format);
 }
 
-bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances, const FileFormat format)
+bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, Scene& objects, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
@@ -26,7 +26,7 @@ bool FileExporter::exportFile(const std::experimental::filesystem::path& filePat
 	case FileFormat::MTL :
 	{
 		OBJFileExporter exporter;
-		return exporter.exportMTL(filePath, appearances);
+		return exporter.exportMTL(filePath, objects);
 	}
 	case FileFormat::STL_ASCII :
 	{

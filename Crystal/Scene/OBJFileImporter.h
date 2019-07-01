@@ -12,14 +12,14 @@ namespace Crystal {
 class OBJFileImporter
 {
 public:
-	bool importOBJ(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances);
+	bool importOBJ(const std::experimental::filesystem::path& filePath, Scene& objects);
 
-	bool importMTL(const std::experimental::filesystem::path& filePath, AppearanceObjectRepository& appearances);
+	bool importMTL(const std::experimental::filesystem::path& filePath, Scene& objects);
 
-	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances);
+	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene& objects);
 
 private:
-	void match(const IO::OBJFile& obj, AppearanceObjectRepository& appearances);
+	void match(const IO::OBJFile& obj, Scene& appearances);
 };
 	}
 }

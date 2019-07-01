@@ -5,8 +5,6 @@
 #include "ImageAddButton.h"
 
 #include "LightTreeList.h"
-#include "MaterialTreeList.h"
-#include "ImageTreeList.h"
 
 #include "ColorMapView.h"
 
@@ -24,10 +22,8 @@ AppearancePanel::AppearancePanel(const std::string& name, Repository* model, Can
 	add( new LightTreeList("Lights", model, canvas) );
 
 	add( new MaterialAddButton("MaterialAdd", model, canvas) );
-	add(new MaterialTreeList("Materials", model, canvas));
 
 	add(new ImageAddButton("Image", model, canvas));
-	add(new ImageTreeList("Image", model, canvas));
 
 	ColorMap colorMap(0.0, 1.0, 360);
 	for (int i = 0; i < 360; ++i) {

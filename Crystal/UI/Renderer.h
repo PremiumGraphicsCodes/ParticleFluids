@@ -19,7 +19,7 @@ namespace Crystal {
 class Renderer : private UnCopyable
 {
 public:
-	Renderer(Graphics::ICamera* camera);
+	explicit Renderer(Graphics::ICamera* camera);
 
 	~Renderer() {}
 
@@ -29,8 +29,7 @@ public:
 
 	void setViewModel(ViewModel& vm) {
 		const auto& ovm = vm.object;
-		const auto& avm = vm.appearance;
-		objectRenderer.setViewModel(ovm, avm);
+		objectRenderer.setViewModel(ovm);
 
 		const auto& idvm = vm.objectId;
 		objectIdRenderer.setViewModel(idvm);

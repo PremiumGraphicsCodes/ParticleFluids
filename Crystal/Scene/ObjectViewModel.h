@@ -4,11 +4,11 @@
 #include "../Graphics/LineBuffer.h"
 #include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/LightBuffer.h"
+#include "../Graphics/MaterialBuffer.h"
 #include "../Scene/ParticleSystemScene.h"
 #include "../Scene/WireFrameScene.h"
 #include "../Scene/PolygonMeshScene.h"
 #include "../Scene/Scene.h"
-#include "../Scene/MaterialObjectRepository.h"
 
 namespace Crystal {
 	namespace UI {
@@ -16,7 +16,7 @@ namespace Crystal {
 class ObjectViewModel
 {
 public:
-	void add(Model::Scene& objects, Model::MaterialObjectRepository& materials);
+	void add(Model::Scene& objects);
 
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 
@@ -33,7 +33,7 @@ private:
 
 	void add(const Model::WireFrameScene& object);
 
-	void add(const Model::PolygonMeshScene& object, Model::MaterialObjectRepository& materials);
+	void add(const Model::PolygonMeshScene& object);
 
 	void add(const Model::LightScene& light);
 
@@ -41,6 +41,7 @@ private:
 	Graphics::LineBuffer lineBuffer;
 	std::vector<Graphics::TriangleBuffer> triangleBuffers;
 	Graphics::LightBuffer lightBuffer;
+	Graphics::MaterialBuffer materialBuffer;
 };
 
 	}

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Scene/Scene.h"
-#include "../Scene/AppearanceObjectRepository.h"
 #include "../Shader/OpenGLObjectRepository.h"
 #include "../Scene/ViewModel.h"
 #include <filesystem>
@@ -28,8 +27,6 @@ public:
 
 	Model::Scene* getItems() { return &items; }
 
-	Model::AppearanceObjectRepository* getAppearances() { return &appearances; }
-
 	Shader::OpenGLObjectRepository* getShaders() { return &shaders; }
 
 	ViewModel toViewModel();
@@ -39,7 +36,6 @@ public:
 private:	
 	Model::Scene objects;
 	Model::Scene items;
-	Model::AppearanceObjectRepository appearances;
 	Shader::OpenGLObjectRepository shaders;
 
 };

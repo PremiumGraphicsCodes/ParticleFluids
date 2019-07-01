@@ -14,7 +14,6 @@
 namespace Crystal {
 	namespace UI {
 		class ObjectViewModel;
-		class AppearanceViewModel;
 
 class ObjectRenderer : private UnCopyable
 {
@@ -30,7 +29,7 @@ public:
 
 	void render(const Shader::TextureObject& texture, const Shader::TextureObject& smoothTexture);
 
-	void setViewModel(const ObjectViewModel& vm, const AppearanceViewModel& avm);
+	void setViewModel(const ObjectViewModel& vm);
 
 private:
 	Shader::PointRenderer pointRenderer;

@@ -69,6 +69,8 @@ public:
 
 	IScene* findSceneById(int id);
 
+	IScene* findSceneByName(const std::string& name);
+
 protected:
 	virtual void onClear() = 0;
 

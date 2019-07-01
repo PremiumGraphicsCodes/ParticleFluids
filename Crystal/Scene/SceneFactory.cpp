@@ -72,9 +72,11 @@ int SceneFactory::addWireFrameScene(WireFrame* wire, const WireFrameAttribute& a
 	return wires.back()->getId();
 }
 
-int SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, const std::string& name)
+int SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, Material* m, const std::string& name)
 {
-	polygonMeshes.push_back(new PolygonMeshScene(getNextId(), name, mesh));
+	MaterialScene* material = new MaterialScene(getNextId(), name, m);
+	materials.push_back(material);
+	polygonMeshes.push_back(new PolygonMeshScene(getNextId(), name, mesh, material));
 	return polygonMeshes.back()->getId();
 }
 
@@ -82,6 +84,13 @@ void SceneFactory::addLightScene(PointLight* l, const std::string& name)
 {
 	LightScene* object = new LightScene(getNextId(), name, l);
 	lights.push_back(object);
+}
+
+int SceneFactory::addMaterialScene(Material* m, const std::string& name)
+{
+	MaterialScene* material = new MaterialScene(getNextId(), name, m);
+	materials.push_back(material);
+	return material->getId();
 }
 
 PolygonMeshScene* SceneFactory::findObjectById(const int id) const

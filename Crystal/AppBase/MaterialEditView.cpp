@@ -22,6 +22,7 @@ void MaterialEditView::show()
 	name.show();
 
 	if (ImGui::Button("Edit")) {
+		/*
 		auto obj = repository->getAppearances()->getMaterials()->findObjectById(id.getValue());
 		if (obj == nullptr) {
 			return;
@@ -30,6 +31,7 @@ void MaterialEditView::show()
 		*mat = material.getValue();
 		obj->setName(name.getValue());
 		canvas->setViewModel(repository->toViewModel());
+		*/
 	}
 }
 

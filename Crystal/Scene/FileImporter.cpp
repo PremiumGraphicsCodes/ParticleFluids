@@ -8,24 +8,24 @@
 
 using namespace Crystal::Model;
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances)
+bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects)
 {
 	const auto format = getFileFormat( filePath.extension() );
-	return importFile(filePath, objects, appearances, format);
+	return importFile(filePath, objects, format);
 }
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects, AppearanceObjectRepository& appearances, const FileFormat format)
+bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
 	{
 		OBJFileImporter importer;
-		return importer.importOBJWithMTL(filePath, objects, appearances);
+		return importer.importOBJWithMTL(filePath, objects);
 	}
 	case FileFormat::MTL:
 	{
 		OBJFileImporter importer;
-		return importer.importMTL(filePath, appearances);
+		return importer.importMTL(filePath, objects);
 	}
 	case FileFormat::STL_ASCII :
 	{

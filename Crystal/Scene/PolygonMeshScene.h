@@ -3,7 +3,7 @@
 #include "IShapeScene.h"
 #include "../Shape/PolygonMesh.h"
 #include "../Graphics/ColorRGBA.h"
-#include "../Graphics/Material.h"
+#include "MaterialScene.h"
 
 namespace Crystal {
 	namespace Model {
@@ -13,12 +13,14 @@ class PolygonMeshScene : public IShapeScene
 public:
 	PolygonMeshScene() :
 		IShapeScene(-1),
-		shape(nullptr)
+		shape(nullptr),
+		material(nullptr)
 	{}
 
-	PolygonMeshScene(const int id, const std::string& name, Shape::PolygonMesh* shape) :
+	PolygonMeshScene(const int id, const std::string& name, Shape::PolygonMesh* shape, MaterialScene* material) :
 		IShapeScene(id, name),
-		shape(shape)
+		shape(shape),
+		material(material)
 	{}
 
 	~PolygonMeshScene() {};
@@ -40,8 +42,12 @@ public:
 		delete shape;
 	}
 
+	const MaterialScene* getMaterial() const { return material; }
+
 private:
 	Shape::PolygonMesh* shape;
+	MaterialScene* material;
+
 };
 
 	}

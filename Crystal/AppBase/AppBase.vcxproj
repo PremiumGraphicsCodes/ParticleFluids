@@ -27,7 +27,6 @@
     <ClCompile Include="FaceSelectButton.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="ImageAddButton.cpp" />
-    <ClCompile Include="ImageTreeList.cpp" />
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="MaskMenu.cpp" />
     <ClCompile Include="ObjectPanel.cpp" />
@@ -52,7 +51,6 @@
     <ClCompile Include="LightView.cpp" />
     <ClCompile Include="MaterialAddButton.cpp" />
     <ClCompile Include="MaterialEditView.cpp" />
-    <ClCompile Include="MaterialTreeList.cpp" />
     <ClCompile Include="MaterialView.cpp" />
     <ClCompile Include="PMBoxButton.cpp" />
     <ClCompile Include="PMQuadButton.cpp" />
@@ -105,7 +103,6 @@
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />
     <ClInclude Include="ImageAddButton.h" />
-    <ClInclude Include="ImageTreeList.h" />
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="MaskMenu.h" />
     <ClInclude Include="ObjectPanel.h" />
@@ -137,7 +134,6 @@
     <ClInclude Include="LightView.h" />
     <ClInclude Include="MaterialAddButton.h" />
     <ClInclude Include="MaterialEditView.h" />
-    <ClInclude Include="MaterialTreeList.h" />
     <ClInclude Include="MaterialView.h" />
     <ClInclude Include="Plane3dView.h" />
     <ClInclude Include="PMBoxButton.h" />
