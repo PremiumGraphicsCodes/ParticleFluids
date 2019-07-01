@@ -137,9 +137,6 @@
     <ClCompile Include="PolygonMeshScene.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
-    <ClCompile Include="SceneIdViewModel.cpp">
-      <Filter>ViewModel</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">

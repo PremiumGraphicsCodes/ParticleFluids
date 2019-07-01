@@ -31,13 +31,11 @@ public:
 
 	void addLightScene(Graphics::PointLight* l, const std::string& name);
 
-	int addMaterialScene(Graphics::Material* m, const std::string& name);
+	MaterialScene* addMaterialScene(Graphics::Material* m, const std::string& name);
 
 	std::list<PolygonMeshScene*> getPolygonMeshes() const { return polygonMeshes; }
 
 	std::vector<LightScene*> getLights() const { return lights; }
-
-	Math::Box3d getBoundingBox() const;
 
 	std::list<Math::Vector3dd> getAllVertices() const;
 
@@ -47,8 +45,6 @@ private:
 	SceneIdProvider idProvider;
 	std::list<PolygonMeshScene*> polygonMeshes;
 	std::vector<LightScene*> lights;
-	std::vector<MaterialScene*> materials;
-
 };
 
 	}

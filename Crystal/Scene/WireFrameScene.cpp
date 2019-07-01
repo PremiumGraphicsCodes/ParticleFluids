@@ -32,3 +32,8 @@ void WireFrameScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel)
 		viewModel.lineIdBuffer.add(l.getStart(), did.toColor(), index++);
 	}
 }
+
+void WireFrameScene::getBoundingBox(Crystal::Math::Box3d& box) const
+{
+	box.add( getShape()->getBoundingBox() );
+}

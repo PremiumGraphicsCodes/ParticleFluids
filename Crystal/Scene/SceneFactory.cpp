@@ -63,7 +63,6 @@ WireFrameScene* SceneFactory::addWireFrameScene(WireFrame* wire, const WireFrame
 int SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, Material* m, const std::string& name)
 {
 	MaterialScene* material = new MaterialScene(getNextId(), name, m);
-	materials.push_back(material);
 	polygonMeshes.push_back(new PolygonMeshScene(getNextId(), name, mesh, material));
 	return polygonMeshes.back()->getId();
 }
@@ -74,24 +73,9 @@ void SceneFactory::addLightScene(PointLight* l, const std::string& name)
 	lights.push_back(object);
 }
 
-int SceneFactory::addMaterialScene(Material* m, const std::string& name)
+MaterialScene* SceneFactory::addMaterialScene(Material* m, const std::string& name)
 {
-	MaterialScene* material = new MaterialScene(getNextId(), name, m);
-	materials.push_back(material);
-	return material->getId();
-}
-
-Box3d SceneFactory::getBoundingBox() const
-{
-	const auto& vertices = getAllVertices();
-	if (vertices.empty()) {
-		return Box3d();
-	}
-	Box3d bb(vertices.front());
-	for (const auto& v : vertices) {
-		bb.add(v);
-	}
-	return bb;
+	return new MaterialScene(getNextId(), name, m);
 }
 
 std::list<Vector3dd> SceneFactory::getAllVertices() const

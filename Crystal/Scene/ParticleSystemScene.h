@@ -43,6 +43,8 @@ public:
 
 	virtual void addViewModel(UI::SceneIdViewModel& viewModel) override;
 
+	virtual void getBoundingBox(Math::Box3d& box) const override;
+
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;
 };

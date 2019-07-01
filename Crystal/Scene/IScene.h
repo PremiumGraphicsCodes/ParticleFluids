@@ -6,6 +6,7 @@
 #include "../Math/Vector3d.h"
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
+#include "../Math/Box3d.h"
 
 #include <list>
 
@@ -78,6 +79,8 @@ public:
 	virtual void addViewModel(UI::SceneViewModel& viewModel) {};
 
 	virtual void addViewModel(UI::SceneIdViewModel& viewModel) {};
+
+	virtual void getBoundingBox(Math::Box3d& box) const {}
 
 protected:
 	virtual void onClear() = 0;

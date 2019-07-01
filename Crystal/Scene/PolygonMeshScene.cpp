@@ -49,3 +49,8 @@ void PolygonMeshScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel)
 		viewModel.triangleIdBuffer.add(f->getV3()->getPosition(), idColor, index++);
 	}
 }
+
+void PolygonMeshScene::getBoundingBox(Crystal::Math::Box3d& boundingBox) const
+{
+	boundingBox.add(getShape()->getBoundingBox());
+}

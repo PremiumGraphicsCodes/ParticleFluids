@@ -23,14 +23,11 @@ void Scene::onClear()
 
 Box3d Scene::getBoundingBox() const
 {
-	const auto& vertices = getAllVertices();
-	if (vertices.empty()) {
-		return Box3d();
+	Box3d bb;
+	for (auto c : children) {
+		c->getBoundingBox(bb);
 	}
-	Box3d bb(vertices.front());
-	for (const auto& v : vertices) {
-		bb.add(v);
-	}
+
 	return bb;
 }
 
@@ -92,4 +89,6 @@ void Scene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel)
 		c->addViewModel(viewModel);
 	}
 }
+
+
 

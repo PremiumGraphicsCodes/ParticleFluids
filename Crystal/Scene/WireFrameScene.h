@@ -47,6 +47,8 @@ public:
 
 	virtual void addViewModel(UI::SceneIdViewModel& viewModel) override;
 
+	virtual void getBoundingBox(Math::Box3d& box) const;
+
 private:
 	Shape::WireFrame* shape;
 	WireFrameAttribute attribute;

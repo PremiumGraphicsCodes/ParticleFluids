@@ -28,3 +28,8 @@ void ParticleSystemScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel)
 		viewModel.pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size);
 	}
 }
+
+void ParticleSystemScene::getBoundingBox(Crystal::Math::Box3d& box) const
+{
+	box.add(getShape()->getBoundingBox());
+}

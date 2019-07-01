@@ -48,6 +48,8 @@ public:
 
 	virtual void addViewModel(UI::SceneIdViewModel& viewModel) override;
 
+	virtual void getBoundingBox(Math::Box3d& boundingBox) const override;
+
 private:
 	Shape::PolygonMesh* shape;
 	MaterialScene* material;
