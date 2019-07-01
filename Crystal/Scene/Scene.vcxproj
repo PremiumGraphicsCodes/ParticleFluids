@@ -47,10 +47,10 @@
     <ClInclude Include="SceneFactory.h" />
     <ClInclude Include="STLFileExporter.h" />
     <ClInclude Include="STLFileImporter.h" />
-    <ClInclude Include="TextureObject.h" />
+    <ClInclude Include="TextureScene.h" />
     <ClInclude Include="UUID.h" />
     <ClInclude Include="ViewModel.h" />
-    <ClInclude Include="VolumeObject.h" />
+    <ClInclude Include="VolumeScene.h" />
     <ClInclude Include="WireFrameAttribute.h" />
     <ClInclude Include="WireFrameScene.h" />
   </ItemGroup>

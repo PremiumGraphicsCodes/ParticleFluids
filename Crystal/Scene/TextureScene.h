@@ -6,23 +6,19 @@
 namespace Crystal {
 	namespace Model {
 
-class TextureObject : public IScene
+class TextureScene : public IScene
 {
 public:
-	TextureObject(const int id, const std::string& name, Shader::TextureObject* texture) :
+	TextureScene(const int id, const std::string& name, Shader::TextureObject* texture) :
 		IScene(id, name),
 		texture(texture)
 	{}
 
-	~TextureObject() {};
+	~TextureScene() {};
 
 	Shader::TextureObject* getTexture() const { return texture; }
 
 	//void setMaterial(const Graphics::Material& material) { this->material = material; }
-
-	void transform(const Math::Matrix3dd& m) { ; }
-
-	void transform(const Math::Matrix4dd& m) { ; }
 
 	bool isNull() const { return texture == nullptr; }
 
