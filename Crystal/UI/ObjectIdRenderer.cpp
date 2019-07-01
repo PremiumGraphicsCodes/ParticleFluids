@@ -1,5 +1,5 @@
 #include "ObjectIdRenderer.h"
-#include "../../Crystal/Scene/ObjectIdViewModel.h"
+#include "../../Crystal/Scene/SceneIdViewModel.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
@@ -28,7 +28,7 @@ bool ObjectIdRenderer::build(ShaderObjectRepository& shaders, TextureObjectRepos
 	return true;
 }
 
-void ObjectIdRenderer::setViewModel(const ObjectIdViewModel& vm)
+void ObjectIdRenderer::setViewModel(const SceneIdViewModel& vm)
 {
 	this->pointIdRenderer.setBuffer(vm.getPointIdBuffer());
 	this->lineIdRenderer.setBuffer(vm.getLindIdBuffer(), 1.0f);

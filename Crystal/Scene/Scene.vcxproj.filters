@@ -51,9 +51,6 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="SceneId.h" />
-    <ClInclude Include="ObjectIdViewModel.h">
-      <Filter>ViewModel</Filter>
-    </ClInclude>
     <ClInclude Include="ViewModel.h">
       <Filter>ViewModel</Filter>
     </ClInclude>
@@ -90,6 +87,9 @@
     <ClInclude Include="SceneViewModel.h">
       <Filter>ViewModel</Filter>
     </ClInclude>
+    <ClInclude Include="SceneIdViewModel.h">
+      <Filter>ViewModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
@@ -122,9 +122,6 @@
     <ClCompile Include="WireFrameScene.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectIdViewModel.cpp">
-      <Filter>ViewModel</Filter>
-    </ClCompile>
     <ClCompile Include="SceneFactory.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -139,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="PolygonMeshScene.cpp">
       <Filter>Scene\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneIdViewModel.cpp">
+      <Filter>ViewModel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

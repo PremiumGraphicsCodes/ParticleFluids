@@ -13,7 +13,7 @@
 namespace Crystal {
 	namespace UI {
 
-class ObjectIdViewModel
+class SceneIdViewModel
 {
 public:
 	void add(Model::Scene& objects);
@@ -25,8 +25,6 @@ public:
 	Graphics::LineBuffer getTriangleIdBuffer() const { return triangleIdBuffer; }
 
 private:
-
-	void add(const Model::WireFrameScene& object);
 
 	void add(const Model::PolygonMeshScene& object);
 

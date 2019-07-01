@@ -13,7 +13,7 @@
 
 namespace Crystal {
 	namespace UI {
-		class ObjectIdViewModel;
+		class SceneIdViewModel;
 
 class ObjectIdRenderer : private UnCopyable
 {
@@ -33,7 +33,7 @@ public:
 
 	Graphics::DrawableID getIdInTexCoord(const int x, const int y);
 
-	void setViewModel(const ObjectIdViewModel& vm);
+	void setViewModel(const SceneIdViewModel& vm);
 
 	Shader::TextureObject* getTexture() { return texture; }
 

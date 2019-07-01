@@ -1,7 +1,7 @@
 #include "ParticleSystemScene.h"
 
 #include "SceneViewModel.h"
-#include "ObjectIdViewModel.h"
+#include "SceneIdViewModel.h"
 
 #include "../Graphics/DrawableId.h"
 
@@ -18,7 +18,7 @@ void ParticleSystemScene::addViewModel(Crystal::UI::SceneViewModel& viewModel)
 	}
 }
 
-void ParticleSystemScene::addViewModel(Crystal::UI::ObjectIdViewModel& viewModel)
+void ParticleSystemScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel)
 {
 	const auto objectId = getId();
 	const auto& particles = getShape()->getParticles();

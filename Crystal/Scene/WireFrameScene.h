@@ -45,6 +45,8 @@ public:
 
 	virtual void addViewModel(UI::SceneViewModel& viewModel) override;
 
+	virtual void addViewModel(UI::SceneIdViewModel& viewModel) override;
+
 private:
 	Shape::WireFrame* shape;
 	WireFrameAttribute attribute;

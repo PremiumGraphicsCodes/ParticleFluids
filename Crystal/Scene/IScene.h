@@ -12,7 +12,7 @@
 namespace Crystal {
 	namespace UI {
 		class SceneViewModel;
-		class ObjectIdViewModel;
+		class SceneIdViewModel;
 	}
 	namespace Model {
 
@@ -77,7 +77,7 @@ public:
 
 	virtual void addViewModel(UI::SceneViewModel& viewModel) {};
 
-	virtual void addViewModel(UI::ObjectIdViewModel& viewModel) {};
+	virtual void addViewModel(UI::SceneIdViewModel& viewModel) {};
 
 protected:
 	virtual void onClear() = 0;

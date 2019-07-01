@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SceneViewModel.h"
-#include "ObjectIdViewModel.h"
+#include "SceneIdViewModel.h"
 
 namespace Crystal {
 	namespace UI {
@@ -12,7 +12,7 @@ public:
 	ViewModel() {}
 
 	SceneViewModel object;
-	ObjectIdViewModel objectId;
+	SceneIdViewModel objectId;
 };
 	}
 }

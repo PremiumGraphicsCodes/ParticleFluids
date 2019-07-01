@@ -1,4 +1,4 @@
-#include "ObjectIdViewModel.h"
+#include "SceneIdViewModel.h"
 
 #include "../Graphics/DrawableId.h"
 
@@ -7,7 +7,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
 
-void ObjectIdViewModel::add(Scene& objects)
+void SceneIdViewModel::add(Scene& objects)
 {
 	const auto& particleSystems = objects.getFactory()->getParticleSystems();
 	for (auto ps : particleSystems) {
@@ -15,7 +15,7 @@ void ObjectIdViewModel::add(Scene& objects)
 	}
 	const auto& wires = objects.getFactory()->getWireFrames();
 	for (auto wf : wires) {
-		add(*wf);
+		wf->addViewModel(*this);
 	}
 	const auto& polygons = objects.getFactory()->getPolygonMeshes();
 	for (auto p : polygons) {
@@ -23,19 +23,7 @@ void ObjectIdViewModel::add(Scene& objects)
 	}
 }
 
-void ObjectIdViewModel::add(const WireFrameScene& object)
-{
-	const auto objectId = object.getId();
-	const auto& lines = object.getShape()->getLines();
-	int childId = 0;
-	int index = 0;
-	for (auto l : lines) {
-		Graphics::DrawableID did(objectId, childId++);
-		lineIdBuffer.add(l.getStart(), did.toColor(), index++);
-	}
-}
-
-void ObjectIdViewModel::add(const PolygonMeshScene& object)
+void SceneIdViewModel::add(const PolygonMeshScene& object)
 {
 	const auto objectId = object.getId();
 	const auto& faces = object.getShape()->getFaces();
