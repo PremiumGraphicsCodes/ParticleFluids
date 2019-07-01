@@ -27,16 +27,9 @@ public:
 	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
 
 private:
-	void add(const Math::Vector3df& pos, const Graphics::ColorRGBAf& c, const float size);
-
-	void add(const Model::ParticleSystemScene& object);
-
-	void add(const Model::WireFrameScene& object);
-
 	void add(const Model::PolygonMeshScene& object);
 
-	void add(const Model::LightScene& light);
-
+public:
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
 	std::vector<Graphics::TriangleBuffer> triangleBuffers;

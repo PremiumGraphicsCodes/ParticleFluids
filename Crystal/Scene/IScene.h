@@ -10,6 +10,9 @@
 #include <list>
 
 namespace Crystal {
+	namespace UI {
+		class ObjectViewModel;
+	}
 	namespace Model {
 
 class IScene
@@ -70,6 +73,8 @@ public:
 	IScene* findSceneById(int id);
 
 	IScene* findSceneByName(const std::string& name);
+
+	virtual void addViewModel(UI::ObjectViewModel& viewModel) {};
 
 protected:
 	virtual void onClear() = 0;

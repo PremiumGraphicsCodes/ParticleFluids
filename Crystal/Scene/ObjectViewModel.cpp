@@ -11,11 +11,11 @@ void ObjectViewModel::add(Scene& objects)
 {
 	const auto& particleSystems = objects.getFactory()->getParticleSystems();
 	for (auto ps : particleSystems) {
-		add(*ps);
+		ps->addViewModel(*this);
 	}
 	const auto& wires = objects.getFactory()->getWireFrames();
 	for (const auto& w : wires) {
-		add(*w);
+		w->addViewModel(*this);
 	}
 	const auto& polygons = objects.getFactory()->getPolygonMeshes();
 	for (auto p : polygons) {
@@ -23,40 +23,10 @@ void ObjectViewModel::add(Scene& objects)
 	}
 	const auto& lights = objects.getFactory()->getLights();
 	for (auto l : lights) {
-		add(*l);
+		l->addViewModel(*this);
 	}
 }
 
-void ObjectViewModel::add(const Vector3df& pos, const ColorRGBAf& c, const float size)
-{
-	pointBuffer.add(pos, c, size);
-}
-
-void ObjectViewModel::add(const ParticleSystemScene& object)
-{
-	if (!object.isVisible()) {
-		return;
-	}
-	const auto particleSystemId = object.getId();
-	const auto& particles = object.getShape()->getParticles();
-	for (auto p : particles) {
-		pointBuffer.add( p->getPosition(), p->getAttribute().color, p->getAttribute().size);
-	}
-}
-
-void ObjectViewModel::add(const WireFrameScene& object)
-{
-	if (!object.isVisible()) {
-		return;
-	}
-	const auto& lines = object.getShape()->getLines();
-	const auto& color = object.getAttribute().color;
-	int index = 0;
-	for (const auto& l : lines) {
-		lineBuffer.add(l.getStart(), color, index++);
-		lineBuffer.add(l.getEnd(), color, index++);
-	}
-}
 
 void ObjectViewModel::add(const PolygonMeshScene& object)
 {
@@ -84,8 +54,3 @@ void ObjectViewModel::add(const PolygonMeshScene& object)
 	*/
 }
 
-void ObjectViewModel::add(const LightScene& light)
-{
-	auto ll = light.getLight();
-	lightBuffer.add(*ll);
-}

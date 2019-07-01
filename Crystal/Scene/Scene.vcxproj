@@ -58,8 +58,10 @@
     <ClCompile Include="FileImporter.cpp" />
     <ClCompile Include="FileExporter.cpp" />
     <ClCompile Include="IScene.cpp" />
+    <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="ObjectIdViewModel.cpp" />
     <ClCompile Include="ObjectViewModel.cpp" />
+    <ClCompile Include="ParticleSystemScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="OBJFileExporter.cpp" />
     <ClCompile Include="OBJFileImporter.cpp" />

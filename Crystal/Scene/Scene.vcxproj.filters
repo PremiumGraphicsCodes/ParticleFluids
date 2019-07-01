@@ -137,6 +137,12 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleSystemScene.cpp">
+      <Filter>Scene\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="LightScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">
