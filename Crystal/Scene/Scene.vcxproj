@@ -25,7 +25,6 @@
     <ClInclude Include="FileFormat.h" />
     <ClInclude Include="FileImporter.h" />
     <ClInclude Include="FileExporter.h" />
-    <ClInclude Include="ImageObject.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LightScene.h" />
@@ -62,6 +61,7 @@
     <ClCompile Include="ObjectIdViewModel.cpp" />
     <ClCompile Include="ObjectViewModel.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
+    <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="OBJFileExporter.cpp" />
     <ClCompile Include="OBJFileImporter.cpp" />

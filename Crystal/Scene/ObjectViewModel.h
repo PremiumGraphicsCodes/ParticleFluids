@@ -16,8 +16,6 @@ namespace Crystal {
 class ObjectViewModel
 {
 public:
-	void add(Model::Scene& objects);
-
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 
 	Graphics::LineBuffer getLineBuffer() const { return lineBuffer; }
@@ -25,9 +23,6 @@ public:
 	std::vector<Graphics::TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
 	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
-
-private:
-	void add(const Model::PolygonMeshScene& object);
 
 public:
 	Graphics::PointBuffer pointBuffer;

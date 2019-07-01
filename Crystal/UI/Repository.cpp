@@ -38,10 +38,11 @@ bool Repository::exportFile(const std::experimental::filesystem::path& filename)
 ViewModel Repository::toViewModel()
 {
 	ViewModel vm;
-	vm.object.add(objects);
+	objects.addViewModel(vm.object);
+	items.addViewModel(vm.object);
+
 	vm.objectId.add(objects);
 	//vm.appearance.add(appearances);
-	vm.object.add(items);
 	return vm;
 }
 

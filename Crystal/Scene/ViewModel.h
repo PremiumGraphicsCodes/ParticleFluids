@@ -3,12 +3,10 @@
 #include "ObjectViewModel.h"
 #include "ObjectIdViewModel.h"
 
-#include "../Util/UnCopyable.h"
-
 namespace Crystal {
 	namespace UI {
 
-class ViewModel// : private UnCopyable
+class ViewModel
 {
 public:
 	ViewModel() {}

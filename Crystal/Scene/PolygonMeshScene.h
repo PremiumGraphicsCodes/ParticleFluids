@@ -44,6 +44,8 @@ public:
 
 	const MaterialScene* getMaterial() const { return material; }
 
+	virtual void addViewModel(UI::ObjectViewModel& viewModel) override;
+
 private:
 	Shape::PolygonMesh* shape;
 	MaterialScene* material;

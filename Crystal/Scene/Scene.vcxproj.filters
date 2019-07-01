@@ -5,9 +5,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UUID.h" />
-    <ClInclude Include="ImageObject.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="FileFormat.h">
       <Filter>FileIO</Filter>
     </ClInclude>
@@ -142,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="LightScene.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshScene.cpp">
+      <Filter>Scene\Shape</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

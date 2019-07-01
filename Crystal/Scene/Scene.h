@@ -30,6 +30,8 @@ public:
 
 	virtual void onClear() override;
 
+	void addViewModel(UI::ObjectViewModel& viewModel) override;
+
 private:
 	SceneIdProvider idProvider;
 	SceneFactory factory;
