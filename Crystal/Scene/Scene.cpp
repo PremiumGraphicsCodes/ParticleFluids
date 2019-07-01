@@ -7,8 +7,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
-Scene::Scene() :
-	factory(idProvider)
+Scene::Scene()
 {
 }
 

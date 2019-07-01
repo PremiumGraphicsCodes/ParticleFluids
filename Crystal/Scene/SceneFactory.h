@@ -13,7 +13,7 @@ namespace Crystal {
 class SceneFactory
 {
 public:
-	explicit SceneFactory(SceneIdProvider& idProvider);
+	SceneFactory();
 
 	~SceneFactory();
 
@@ -25,15 +25,13 @@ public:
 
 	ParticleSystemScene* addParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
-	int addWireFrameScene(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
+	WireFrameScene* addWireFrameScene(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
 
 	int addPolygonMeshScene(Shape::PolygonMesh* mesh, Graphics::Material* material, const std::string& name);
 
 	void addLightScene(Graphics::PointLight* l, const std::string& name);
 
 	int addMaterialScene(Graphics::Material* m, const std::string& name);
-
-	std::list<WireFrameScene*> getWireFrames() const { return wires; }
 
 	std::list<PolygonMeshScene*> getPolygonMeshes() const { return polygonMeshes; }
 
@@ -46,8 +44,7 @@ public:
 	int getNextId() { return idProvider.getNextId(); }
 
 private:
-	SceneIdProvider& idProvider;
-	std::list<WireFrameScene*> wires;
+	SceneIdProvider idProvider;
 	std::list<PolygonMeshScene*> polygonMeshes;
 	std::vector<LightScene*> lights;
 	std::vector<MaterialScene*> materials;

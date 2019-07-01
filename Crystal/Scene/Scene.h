@@ -35,7 +35,6 @@ public:
 	void addViewModel(UI::SceneIdViewModel& viewModel) override;
 
 private:
-	SceneIdProvider idProvider;
 	SceneFactory factory;
 };
 	}

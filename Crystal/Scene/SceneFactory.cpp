@@ -5,8 +5,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 
-SceneFactory::SceneFactory(SceneIdProvider& idProvider):
-	idProvider(idProvider)
+SceneFactory::SceneFactory()
 {
 	Graphics::PointLight* light = new Graphics::PointLight();
 	light->setPosition(glm::vec3(100, 100, 100));
@@ -56,10 +55,9 @@ ParticleSystemScene* SceneFactory::addParticleSystemScene(const std::vector<Vect
 	return new ParticleSystemScene(getNextId(), name, particles);
 }
 
-int SceneFactory::addWireFrameScene(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
+WireFrameScene* SceneFactory::addWireFrameScene(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
 {
-	wires.push_back(new WireFrameScene(getNextId(), name, wire, attribute));
-	return wires.back()->getId();
+	return new WireFrameScene(getNextId(), name, wire, attribute);
 }
 
 int SceneFactory::addPolygonMeshScene(PolygonMesh* mesh, Material* m, const std::string& name)

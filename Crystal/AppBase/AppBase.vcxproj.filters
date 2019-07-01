@@ -54,9 +54,6 @@
     <ClCompile Include="ParticleSystemTreeList.cpp">
       <Filter>Object\ParticleSystem</Filter>
     </ClCompile>
-    <ClCompile Include="WireFrameTreeList.cpp">
-      <Filter>Object\WireFrame</Filter>
-    </ClCompile>
     <ClCompile Include="LightAddButton.cpp">
       <Filter>Appearance\Light</Filter>
     </ClCompile>
@@ -303,9 +300,6 @@
     </ClInclude>
     <ClInclude Include="ParticleSystemTreeList.h">
       <Filter>Object\ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="WireFrameTreeList.h">
-      <Filter>Object\WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="LightAddButton.h">
       <Filter>Appearance\Light</Filter>

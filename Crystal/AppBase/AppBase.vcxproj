@@ -81,7 +81,6 @@
     <ClCompile Include="WFTorusButton.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WireFramePanel.cpp" />
-    <ClCompile Include="WireFrameTreeList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppearancePanel.h" />
@@ -174,7 +173,6 @@
     <ClInclude Include="WFTorusButton.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WireFramePanel.h" />
-    <ClInclude Include="WireFrameTreeList.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
