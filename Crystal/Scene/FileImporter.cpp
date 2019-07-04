@@ -8,18 +8,18 @@
 
 using namespace Crystal::Model;
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects)
+bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects, SceneFactory* factory)
 {
 	const auto format = getFileFormat( filePath.extension() );
-	return importFile(filePath, objects, format);
+	return importFile(filePath, objects, factory, format);
 }
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects, const FileFormat format)
+bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects, SceneFactory* factory, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
 	{
-		OBJFileImporter importer(objects.getFactory());
+		OBJFileImporter importer(factory);
 		const auto isOk = importer.importOBJWithMTL(filePath);
 		if (isOk) {
 			objects.addScene(importer.getScene());
@@ -28,17 +28,17 @@ bool FileImporter::importFile(const std::experimental::filesystem::path& filePat
 	}
 	case FileFormat::MTL:
 	{
-		OBJFileImporter importer(objects.getFactory());
+		OBJFileImporter importer(factory);
 		return importer.importMTL(filePath);
 	}
 	case FileFormat::STL_ASCII :
 	{
-		STLFileImporter importer(objects.getFactory());
+		STLFileImporter importer(factory);
 		return importer.importSTLAscii(filePath);
 	}
 	case FileFormat::STL_BINARY :
 	{
-		STLFileImporter importer(objects.getFactory());
+		STLFileImporter importer(factory);
 		return importer.importSTLBinary(filePath);
 	}
 	case FileFormat::PCD :

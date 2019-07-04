@@ -20,7 +20,7 @@ void WFConeButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
 	builder.build(cone.getValue(), unum.getValue(), vnum.getValue());
-	auto scene = getModel()->getObjects()->getFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Cone");
+	auto scene = getModel()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Cone");
 	getModel()->getObjects()->addScene(scene);
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());

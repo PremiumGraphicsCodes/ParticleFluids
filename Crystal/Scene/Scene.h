@@ -14,8 +14,6 @@ public:
 
 	~Scene();
 
-	SceneFactory* getFactory() { return &factory; }
-
 	Math::Box3d getBoundingBox() const;
 
 	virtual bool isNull() const override { return false; }
@@ -29,7 +27,6 @@ public:
 	void addViewModel(UI::SceneIdViewModel& viewModel) const override;
 
 private:
-	SceneFactory factory;
 };
 	}
 }

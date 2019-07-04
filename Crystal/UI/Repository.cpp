@@ -13,6 +13,12 @@ Repository::Repository() :
 	objects(0, "Root"),
 	items(0, "Item")
 {
+	Graphics::PointLight* light = new Graphics::PointLight();
+	light->setPosition(glm::vec3(100, 100, 100));
+	light->setAmbient(glm::vec4(1, 1, 1, 1));
+	light->setDiffuse(glm::vec4(1, 1, 1, 1));
+	light->setSpecular(glm::vec4(1, 1, 1, 1));
+	objects.addScene(objectFactory.createLightScene(light, "Light"));
 }
 
 Repository::~Repository()
@@ -28,7 +34,7 @@ void Repository::clear()
 bool Repository::importFile(const std::experimental::filesystem::path& filename)
 {
 	FileImporter reader;
-	return reader.importFile(filename, objects);
+	return reader.importFile(filename, objects, &objectFactory);
 }
 
 bool Repository::exportFile(const std::experimental::filesystem::path& filename)

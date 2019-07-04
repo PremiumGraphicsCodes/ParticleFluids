@@ -10,9 +10,9 @@ namespace Crystal {
 class FileImporter
 {
 public:
-	bool importFile(const std::experimental::filesystem::path& filePath, Model::Scene& objects);
+	bool importFile(const std::experimental::filesystem::path& filePath, Model::Scene& objects, SceneFactory* factory);
 
-	bool importFile(const std::experimental::filesystem::path& filePath, Model::Scene& objects, const FileFormat format);
+	bool importFile(const std::experimental::filesystem::path& filePath, Model::Scene& objects, SceneFactory* factory, const FileFormat format);
 };
 
 	}

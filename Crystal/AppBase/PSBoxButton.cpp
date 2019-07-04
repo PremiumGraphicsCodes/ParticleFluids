@@ -40,7 +40,7 @@ void PSBoxButton::onOk()
 		}
 	}
 
-	auto scene = getModel()->getObjects()->getFactory()->createParticleSystemScene(positions, attribute.getValue(), "Box");
+	auto scene = getModel()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Box");
 	getModel()->getObjects()->addScene(scene);
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());

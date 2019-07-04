@@ -20,7 +20,7 @@ void WFTorusButton::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
 	builder.build(torus.getValue(), unum.getValue(), vnum.getValue());
-	auto scene = getModel()->getObjects()->getFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Torus");
+	auto scene = getModel()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Torus");
 	getModel()->getObjects()->addScene(scene);
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
