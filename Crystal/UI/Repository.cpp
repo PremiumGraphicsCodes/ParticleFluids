@@ -9,9 +9,10 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Model;
 using namespace Crystal::UI;
 
-Repository::Repository()
+Repository::Repository() :
+	objects(0, "Root"),
+	items(0, "Item")
 {
-	objects.setName("Root");
 }
 
 Repository::~Repository()

@@ -10,7 +10,7 @@ namespace Crystal {
 class Scene : public IScene
 {
 public:
-	Scene();
+	Scene(const int id, const std::string& name);
 
 	~Scene();
 

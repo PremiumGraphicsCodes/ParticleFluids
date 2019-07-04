@@ -9,6 +9,7 @@
 
 namespace Crystal {
 	namespace Model {
+		class Scene;
 
 class SceneFactory
 {
@@ -18,6 +19,8 @@ public:
 	~SceneFactory();
 
 	void clear();
+
+	Scene* createScene(const std::string& name);
 
 	ParticleSystemScene* createParticleSystemScene(const Math::Vector3dd& position, const ParticleAttribute& attribute, const std::string& name);
 

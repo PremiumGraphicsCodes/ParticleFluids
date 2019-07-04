@@ -34,12 +34,12 @@ bool FileImporter::importFile(const std::experimental::filesystem::path& filePat
 	case FileFormat::STL_ASCII :
 	{
 		STLFileImporter importer(objects.getFactory());
-		return importer.importSTLAscii(filePath, objects);
+		return importer.importSTLAscii(filePath);
 	}
 	case FileFormat::STL_BINARY :
 	{
 		STLFileImporter importer(objects.getFactory());
-		return importer.importSTLBinary(filePath, objects);
+		return importer.importSTLBinary(filePath);
 	}
 	case FileFormat::PCD :
 	{

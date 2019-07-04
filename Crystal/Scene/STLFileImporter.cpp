@@ -9,7 +9,13 @@ using namespace Crystal::Shape;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
-bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& filePath, Scene& repository)
+STLFileImporter::STLFileImporter(SceneFactory* sceneFactory) :
+	sceneFactory(sceneFactory)
+{
+	scene = sceneFactory->createScene("STL");
+}
+
+bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& filePath)
 {
 	STLASCIIFileReader reader;
 	if (reader.read(filePath)) {
@@ -17,13 +23,13 @@ bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& 
 		const auto& stl = reader.getSTL();
 		TriangleMesh mesh(stl.faces);
 		builder.add(mesh);
-		repository.getFactory()->createPolygonMeshScene(builder.getPolygonMesh(), "STL");
+		scene->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );
 		return true;
 	}
 	return false;
 }
 
-bool STLFileImporter::importSTLBinary(const std::experimental::filesystem::path& filePath, Scene& objects)
+bool STLFileImporter::importSTLBinary(const std::experimental::filesystem::path& filePath)
 {
 	STLBinaryFileReader reader;
 	if (reader.read(filePath)) {
@@ -31,7 +37,7 @@ bool STLFileImporter::importSTLBinary(const std::experimental::filesystem::path&
 		const auto& stl = reader.getSTL();
 		TriangleMesh mesh(stl.faces);
 		builder.add(mesh);
-		objects.getFactory()->createPolygonMeshScene(builder.getPolygonMesh(), "STL");
+		scene->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );
 		return true;
 	}
 	return false;

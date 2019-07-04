@@ -12,13 +12,13 @@ namespace Crystal {
 class STLFileImporter : public UnCopyable
 {
 public:
-	explicit STLFileImporter(SceneFactory* sceneFactory) :
-		sceneFactory(sceneFactory)
-	{}
+	explicit STLFileImporter(SceneFactory* sceneFactory);
 
-	bool importSTLAscii(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool importSTLAscii(const std::experimental::filesystem::path& filePath);
 
-	bool importSTLBinary(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool importSTLBinary(const std::experimental::filesystem::path& filePath);
+
+	IScene* getScene() const { return scene; }
 
 private:
 	SceneFactory* sceneFactory;

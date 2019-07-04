@@ -1,5 +1,7 @@
 #include "SceneFactory.h"
 
+#include "Scene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
@@ -18,6 +20,12 @@ void SceneFactory::clear()
 {
 	idProvider.reset();
 }
+
+Scene* SceneFactory::createScene(const std::string& name)
+{
+	return new Scene(getNextId(), name);
+}
+
 
 ParticleSystemScene* SceneFactory::createParticleSystemScene(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
 {

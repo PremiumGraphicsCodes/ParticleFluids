@@ -13,10 +13,9 @@ using namespace Crystal::IO;
 using namespace Crystal::Model;
 
 OBJFileImporter::OBJFileImporter(SceneFactory* sceneFactory) :
-	sceneFactory(sceneFactory),
-	scene(new Scene())
+	sceneFactory(sceneFactory)
 {
-	scene->setName("OBJ");
+	scene = sceneFactory->createScene("OBJ");
 }
 
 bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath)
