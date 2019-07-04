@@ -15,7 +15,9 @@ using namespace Crystal::Model;
 OBJFileImporter::OBJFileImporter(SceneFactory* sceneFactory) :
 	sceneFactory(sceneFactory),
 	scene(new Scene())
-{}
+{
+	scene->setName("OBJ");
+}
 
 bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath)
 {
@@ -78,7 +80,7 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 			const auto materialId = (material) ? material->getId() : -1;
 			builder.pushCurrentFaceGroup(materialId);
 		}
-		scene->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "OBJ") );
+		scene->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "PolygonMesh") );
 
 		return true;
 	}

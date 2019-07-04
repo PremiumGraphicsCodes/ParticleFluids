@@ -11,6 +11,8 @@
 #include "../AppBase/SelectionPanel.h"
 #include "../AppBase/TransformPanel.h"
 
+#include "../AppBase/ScenePanel.h"
+
 
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
@@ -45,6 +47,7 @@ int main(int, char**)
 	window.add(new SelectionPanel("Selection", &model, &canvas));
 	window.add(new TransformPanel("Transform", &model, &canvas));
 
+	window.add(new ScenePanel("Scene", &model, &canvas));
 
 	window.show();
 

@@ -61,49 +61,49 @@
       <Filter>Appearance\Light</Filter>
     </ClCompile>
     <ClCompile Include="PMBoxButton.cpp">
-      <Filter>Object\PolygonMesh\Generation</Filter>
+      <Filter>Shape\PolygonMesh\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PMSphereButton.cpp">
-      <Filter>Object\PolygonMesh\Generation</Filter>
+      <Filter>Shape\PolygonMesh\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshPanel.cpp">
-      <Filter>Object\PolygonMesh\Generation</Filter>
+      <Filter>Shape\PolygonMesh\Generation</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemPanel.cpp">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PSBoxButton.cpp">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PSConeButton.cpp">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PSCylinderButton.cpp">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PSSphereButton.cpp">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PSTorusButton.cpp">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
     <ClCompile Include="WFBoxButton.cpp">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClCompile>
     <ClCompile Include="WFConeButton.cpp">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClCompile>
     <ClCompile Include="WFCylinderButton.cpp">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClCompile>
     <ClCompile Include="WFSphereButton.cpp">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClCompile>
     <ClCompile Include="WFTorusButton.cpp">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClCompile>
     <ClCompile Include="WireFramePanel.cpp">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClCompile>
     <ClCompile Include="MoveButton.cpp">
       <Filter>Transform</Filter>
@@ -142,13 +142,13 @@
       <Filter>Shader</Filter>
     </ClCompile>
     <ClCompile Include="ObjectPanel.cpp">
-      <Filter>Object</Filter>
+      <Filter>Shape</Filter>
     </ClCompile>
     <ClCompile Include="LightEditView.cpp">
       <Filter>Appearance\Light</Filter>
     </ClCompile>
     <ClCompile Include="PMQuadButton.cpp">
-      <Filter>Object\PolygonMesh\Generation</Filter>
+      <Filter>Shape\PolygonMesh\Generation</Filter>
     </ClCompile>
     <ClCompile Include="MaskMenu.cpp">
       <Filter>Menu</Filter>
@@ -157,22 +157,25 @@
       <Filter>Selection\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshView.cpp">
-      <Filter>Object\PolygonMesh\View</Filter>
+      <Filter>Shape\PolygonMesh\View</Filter>
     </ClCompile>
     <ClCompile Include="FaceView.cpp">
-      <Filter>Object\PolygonMesh\View</Filter>
+      <Filter>Shape\PolygonMesh\View</Filter>
     </ClCompile>
     <ClCompile Include="VertexView.cpp">
-      <Filter>Object\PolygonMesh\View</Filter>
+      <Filter>Shape\PolygonMesh\View</Filter>
     </ClCompile>
     <ClCompile Include="FaceGroupView.cpp">
-      <Filter>Object\PolygonMesh\View</Filter>
+      <Filter>Shape\PolygonMesh\View</Filter>
     </ClCompile>
     <ClCompile Include="FaceGroupSelectButton.cpp">
       <Filter>Selection\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="SphereRegionSelectButton.cpp">
       <Filter>Selection\Region</Filter>
+    </ClCompile>
+    <ClCompile Include="ScenePanel.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,7 +257,7 @@
       <Filter>Type</Filter>
     </ClInclude>
     <ClInclude Include="WFAttributeView.h">
-      <Filter>Object\WireFrame</Filter>
+      <Filter>Shape\WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="IntView.h">
       <Filter>Type</Filter>
@@ -296,52 +299,52 @@
       <Filter>Appearance\Material</Filter>
     </ClInclude>
     <ClInclude Include="PMBoxButton.h">
-      <Filter>Object\PolygonMesh\Generation</Filter>
+      <Filter>Shape\PolygonMesh\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PMSphereButton.h">
-      <Filter>Object\PolygonMesh\Generation</Filter>
+      <Filter>Shape\PolygonMesh\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshPanel.h">
-      <Filter>Object\PolygonMesh\Generation</Filter>
+      <Filter>Shape\PolygonMesh\Generation</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemPanel.h">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PSBoxButton.h">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PSAttributeView.h">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PSConeButton.h">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PSCylinderButton.h">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PSSphereButton.h">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PSTorusButton.h">
-      <Filter>Object\ParticleSystem\Generation</Filter>
+      <Filter>Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="WFBoxButton.h">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClInclude>
     <ClInclude Include="WFConeButton.h">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClInclude>
     <ClInclude Include="WFCylinderButton.h">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClInclude>
     <ClInclude Include="WFSphereButton.h">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClInclude>
     <ClInclude Include="WFTorusButton.h">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClInclude>
     <ClInclude Include="WireFramePanel.h">
-      <Filter>Object\WireFrame\Generation</Filter>
+      <Filter>Shape\WireFrame\Generation</Filter>
     </ClInclude>
     <ClInclude Include="MoveButton.h">
       <Filter>Transform</Filter>
@@ -380,7 +383,7 @@
       <Filter>Shader</Filter>
     </ClInclude>
     <ClInclude Include="ObjectPanel.h">
-      <Filter>Object</Filter>
+      <Filter>Shape</Filter>
     </ClInclude>
     <ClInclude Include="LightEditView.h">
       <Filter>Appearance\Light</Filter>
@@ -397,7 +400,7 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="PMQuadButton.h">
-      <Filter>Object\PolygonMesh\Generation</Filter>
+      <Filter>Shape\PolygonMesh\Generation</Filter>
     </ClInclude>
     <ClInclude Include="MaskMenu.h">
       <Filter>Menu</Filter>
@@ -406,28 +409,31 @@
       <Filter>Selection\PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshView.h">
-      <Filter>Object\PolygonMesh\View</Filter>
+      <Filter>Shape\PolygonMesh\View</Filter>
     </ClInclude>
     <ClInclude Include="Vector2dView.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="FaceView.h">
-      <Filter>Object\PolygonMesh\View</Filter>
+      <Filter>Shape\PolygonMesh\View</Filter>
     </ClInclude>
     <ClInclude Include="VertexView.h">
-      <Filter>Object\PolygonMesh\View</Filter>
+      <Filter>Shape\PolygonMesh\View</Filter>
     </ClInclude>
     <ClInclude Include="FaceGroupSelectButton.h">
       <Filter>Selection\PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="FaceGroupView.h">
-      <Filter>Object\PolygonMesh\View</Filter>
+      <Filter>Shape\PolygonMesh\View</Filter>
     </ClInclude>
     <ClInclude Include="SphereRegionSelectButton.h">
       <Filter>Selection\Region</Filter>
     </ClInclude>
     <ClInclude Include="BoolView.h">
       <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenePanel.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -476,35 +482,38 @@
     <Filter Include="Color">
       <UniqueIdentifier>{2f26ae1a-95f1-4072-91f2-986837e61ab0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object">
-      <UniqueIdentifier>{6cfd2689-f312-496c-8422-5698b7f5afb2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\WireFrame">
-      <UniqueIdentifier>{70322aba-1e02-4d91-9ba6-d618af4f3ea1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\WireFrame\Generation">
-      <UniqueIdentifier>{0ef178e9-c8bf-499a-b9bf-fb031433e057}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\ParticleSystem">
-      <UniqueIdentifier>{ff093b54-2cac-42ed-845f-0440a5f5fe53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\ParticleSystem\Generation">
-      <UniqueIdentifier>{aecead23-e970-491d-a425-53f4d593d5b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\PolygonMesh">
-      <UniqueIdentifier>{ad45230d-8683-40fd-90bc-ec9f4bf7bbd3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\PolygonMesh\Generation">
-      <UniqueIdentifier>{de8ab38c-9b84-47d6-87c6-c6cc2ebcc527}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Selection\PolygonMesh">
       <UniqueIdentifier>{fac5a7c1-3111-4e05-8117-c219f1225aa9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\PolygonMesh\View">
-      <UniqueIdentifier>{7d47a270-b5be-48e3-ae02-5582727d03b6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Selection\Region">
       <UniqueIdentifier>{e4b2434e-80ef-408a-8240-0d6068d1138a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape">
+      <UniqueIdentifier>{6cfd2689-f312-496c-8422-5698b7f5afb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape\WireFrame">
+      <UniqueIdentifier>{70322aba-1e02-4d91-9ba6-d618af4f3ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape\WireFrame\Generation">
+      <UniqueIdentifier>{0ef178e9-c8bf-499a-b9bf-fb031433e057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape\ParticleSystem">
+      <UniqueIdentifier>{ff093b54-2cac-42ed-845f-0440a5f5fe53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape\ParticleSystem\Generation">
+      <UniqueIdentifier>{aecead23-e970-491d-a425-53f4d593d5b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape\PolygonMesh">
+      <UniqueIdentifier>{ad45230d-8683-40fd-90bc-ec9f4bf7bbd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape\PolygonMesh\Generation">
+      <UniqueIdentifier>{de8ab38c-9b84-47d6-87c6-c6cc2ebcc527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape\PolygonMesh\View">
+      <UniqueIdentifier>{7d47a270-b5be-48e3-ae02-5582727d03b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{8e7bcd81-820d-49ce-8f4a-0badefb7b484}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

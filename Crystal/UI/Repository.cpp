@@ -11,6 +11,7 @@ using namespace Crystal::UI;
 
 Repository::Repository()
 {
+	objects.setName("Root");
 }
 
 Repository::~Repository()

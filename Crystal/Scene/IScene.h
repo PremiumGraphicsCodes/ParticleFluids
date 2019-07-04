@@ -73,6 +73,8 @@ public:
 
 	IScene* getParent() const { return parent; }
 
+	std::list<IScene*> getChildren() const { return children; }
+
 protected:
 	virtual void onClear() = 0;
 
