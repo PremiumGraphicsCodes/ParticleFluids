@@ -2,6 +2,9 @@
 
 #include "IScene.h"
 
+#include "../Math/Matrix3d.h"
+#include "../Math/Matrix4d.h"
+
 namespace Crystal {
 	namespace Model {
 

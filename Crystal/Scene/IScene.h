@@ -1,14 +1,10 @@
 #pragma once
 
+#include <list>
 #include <string>
 #include "SceneType.h"
 
-#include "../Math/Vector3d.h"
-#include "../Math/Matrix3d.h"
-#include "../Math/Matrix4d.h"
 #include "../Math/Box3d.h"
-
-#include <list>
 
 namespace Crystal {
 	namespace UI {
@@ -20,24 +16,11 @@ namespace Crystal {
 class IScene
 {
 public:
-	IScene() :
-		id(-1),
-		_isVisible(false),
-		_isSelected(false)
-	{}
+	IScene();
 
-	explicit IScene(const int id) :
-		id(id),
-		_isVisible(true),
-		_isSelected(false)
-	{}
+	explicit IScene(const int id);
 
-	IScene(const int id, const std::string& name) :
-		id(id),
-		name(name),
-		_isVisible(true),
-		_isSelected(false)
-	{}
+	IScene(const int id, const std::string& name);
 
 	virtual ~IScene() {};
 
@@ -71,7 +54,10 @@ public:
 
 	void setSelected(bool b) { this->_isSelected = b; }
 
-	void addScene(IScene* scene) { this->children.push_back(scene); }
+	void addScene(IScene* scene) {
+		scene->parent = this;
+		this->children.push_back(scene);
+	}
 
 	IScene* findSceneById(int id);
 
@@ -83,6 +69,10 @@ public:
 
 	virtual void getBoundingBox(Math::Box3d& box) const {}
 
+	bool isRoot() const { return parent == nullptr; }
+
+	IScene* getParent() { return parent; }
+
 protected:
 	virtual void onClear() = 0;
 
@@ -91,6 +81,7 @@ protected:
 	int id;
 	bool _isSelected;
 	std::list<IScene*> children;
+	IScene* parent;
 };
 	}
 }

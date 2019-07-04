@@ -2,6 +2,28 @@
 
 using namespace Crystal::Model;
 
+IScene::IScene() :
+	id(-1),
+	_isVisible(false),
+	_isSelected(false),
+	parent(nullptr)
+{}
+
+IScene::IScene(const int id) :
+	id(id),
+	_isVisible(true),
+	_isSelected(false),
+	parent(nullptr)
+{}
+
+IScene::IScene(const int id, const std::string& name) :
+	id(id),
+	name(name),
+	_isVisible(true),
+	_isSelected(false),
+	parent(nullptr)
+{}
+
 IScene* IScene::findSceneById(int id)
 {
 	if (id == this->id) {
