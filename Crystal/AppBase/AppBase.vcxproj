@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="AppearancePanel.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
+    <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="FaceGroupSelectButton.cpp" />
     <ClCompile Include="FaceGroupView.cpp" />
@@ -88,6 +89,7 @@
     <ClInclude Include="ColorMapView.h" />
     <ClInclude Include="ColorRGBAView.h" />
     <ClInclude Include="Cone3dView.h" />
+    <ClInclude Include="ControlPanel.h" />
     <ClInclude Include="CtrlMenu.h" />
     <ClInclude Include="Cylinder3dView.h" />
     <ClInclude Include="DoubleView.h" />

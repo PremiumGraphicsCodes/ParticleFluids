@@ -177,6 +177,7 @@
     <ClCompile Include="ScenePanel.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="ControlPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -435,6 +436,7 @@
     <ClInclude Include="ScenePanel.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="ControlPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

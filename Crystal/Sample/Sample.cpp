@@ -12,7 +12,7 @@
 #include "../AppBase/TransformPanel.h"
 
 #include "../AppBase/ScenePanel.h"
-
+#include "../AppBase/ControlPanel.h"
 
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
@@ -47,7 +47,10 @@ int main(int, char**)
 	window.add(new SelectionPanel("Selection", &model, &canvas));
 	window.add(new TransformPanel("Transform", &model, &canvas));
 
-	window.add(new ScenePanel("Scene", &model, &canvas));
+	auto control = new ControlPanel("Control", &model, &canvas);
+	window.add(control);
+
+	window.add(new ScenePanel("Scene", &model, &canvas, control));
 
 	window.show();
 
