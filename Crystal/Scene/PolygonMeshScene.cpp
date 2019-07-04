@@ -17,7 +17,7 @@ void PolygonMeshScene::addViewModel(Crystal::UI::SceneViewModel& viewModel) cons
 
 	TriangleBuffer bf(*getShape());
 	for (const auto& group : getShape()->getGroups()) {
-		auto mat = getMaterial();
+		auto materialId = group.attributeId;
 		bf.add(group, Material());
 		/*
 		if (mat == nullptr) {

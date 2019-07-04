@@ -9,13 +9,12 @@ namespace Crystal {
 	namespace Model {
 		class PolygonMeshScene;
 		class MaterialScene;
+		class Scene;
 
 class OBJFileImporter
 {
 public:
-	OBJFileImporter(SceneFactory* sceneFactory) :
-		sceneFactory(sceneFactory)
-	{}
+	explicit OBJFileImporter(SceneFactory* sceneFactory);
 
 	bool importOBJ(const std::experimental::filesystem::path& filePath);
 
@@ -23,8 +22,11 @@ public:
 
 	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath);
 
+	Scene* getScene() { return scene; }
+
 private:
 	//void match(const IO::OBJFile& obj, Scene& appearances);
+	Scene* scene;
 	SceneFactory* sceneFactory;
 };
 	}

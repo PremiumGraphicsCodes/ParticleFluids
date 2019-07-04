@@ -16,7 +16,7 @@ public:
 		shape(nullptr)
 	{}
 
-	PolygonMeshScene(const int id, const std::string& name, Shape::PolygonMesh* shape, MaterialScene* material) :
+	PolygonMeshScene(const int id, const std::string& name, Shape::PolygonMesh* shape) :
 		IShapeScene(id, name),
 		shape(shape)
 	{}
@@ -40,8 +40,6 @@ public:
 		delete shape;
 	}
 
-	MaterialScene* getMaterial() const { return material; }
-
 	virtual void addViewModel(UI::SceneViewModel& viewModel) const override;
 
 	virtual void addViewModel(UI::SceneIdViewModel& viewModel) const override;
@@ -50,8 +48,6 @@ public:
 
 private:
 	Shape::PolygonMesh* shape;
-	MaterialScene* material;
-
 };
 
 	}

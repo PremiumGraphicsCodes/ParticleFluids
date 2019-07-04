@@ -12,6 +12,11 @@ using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Model;
 
+OBJFileImporter::OBJFileImporter(SceneFactory* sceneFactory) :
+	sceneFactory(sceneFactory),
+	scene(new Scene())
+{}
+
 bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath)
 {
 	OBJFileReader reader;
@@ -69,11 +74,11 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 					i2++;
 				}
 			}
-			//auto material = objects.f->findByName(g.usemtl);
-			//const auto materialId = (material) ? material->getId() : -1;
-			//builder.pushCurrentFaceGroup(materialId);
+			auto material = scene->findSceneByName(g.usemtl);
+			const auto materialId = (material) ? material->getId() : -1;
+			builder.pushCurrentFaceGroup(materialId);
 		}
-		sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), nullptr, "OBJ");
+		scene->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "OBJ") );
 
 		return true;
 	}
@@ -84,7 +89,6 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 {
 	MTLFileReader reader;
 	if (reader.read(filePath)) {
-		MaterialScene* materials = sceneFactory->createMaterialScene("MTL");
 		const auto& mtl = reader.getMTL();
 		for (const auto& m : mtl.materials) {
 			Material mat;
@@ -92,8 +96,7 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 			mat.diffuse = m.diffuse;
 			mat.specular = m.specular;
 			mat.shininess = m.specularExponent;
-			materials->addMaterial(m.name, mat);
-			//appearances.getMaterials()->addMaterialScene(new Material(mat), m.name);
+			scene->addScene( sceneFactory->createMaterialScene(new Material(mat), m.name) );
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;

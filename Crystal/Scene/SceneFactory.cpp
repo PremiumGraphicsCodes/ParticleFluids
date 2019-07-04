@@ -50,9 +50,9 @@ WireFrameScene* SceneFactory::createWireFrameScene(WireFrame* wire, const WireFr
 	return new WireFrameScene(getNextId(), name, wire, attribute);
 }
 
-PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh, MaterialScene* m, const std::string& name)
+PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh,  const std::string& name)
 {
-	return new PolygonMeshScene(getNextId(), name, mesh, m);
+	return new PolygonMeshScene(getNextId(), name, mesh);
 }
 
 LightScene* SceneFactory::createLightScene(PointLight* l, const std::string& name)
@@ -60,7 +60,7 @@ LightScene* SceneFactory::createLightScene(PointLight* l, const std::string& nam
 	return new LightScene(getNextId(), name, l);
 }
 
-MaterialScene* SceneFactory::createMaterialScene(const std::string& name)
+MaterialScene* SceneFactory::createMaterialScene(Material* m, const std::string& name)
 {
-	return new MaterialScene(getNextId(), name);
+	return new MaterialScene(getNextId(), name, m);
 }

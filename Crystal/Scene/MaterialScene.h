@@ -9,30 +9,29 @@ namespace Crystal {
 class MaterialScene : public IScene
 {
 public:
-	MaterialScene(const int id, const std::string& name) :
-		IScene(id, name)
+	MaterialScene(const int id, const std::string& name, Graphics::Material* material) :
+		IScene(id, name),
+		material(material)
 	{}
 
 	~MaterialScene() {};
 
-	Graphics::Material getMaterial(const std::string& name) { return materialMap[name]; }
-
-	void addMaterial(const std::string& name, Graphics::Material mat) { materialMap[name] = mat; }
+	Graphics::Material* getMaterial() { return material; }
 
 	//void setMaterial(const Graphics::Material& material) { this->material = material; }
 
-	bool isNull() const { return materialMap.empty(); }
+	bool isNull() const { return material == nullptr; }
 
 	SceneType getType() const override { return SceneType::MaterialObject; }
 
 	void onClear() override
 	{
-		materialMap.clear();
+		delete material;
 	}
 
 
 private:
-	std::map<std::string, Graphics::Material> materialMap;
+	Graphics::Material* material;
 };
 
 	}
