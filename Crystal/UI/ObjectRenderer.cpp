@@ -5,6 +5,7 @@
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 bool ObjectRenderer::build(ShaderObjectRepository& shaders)

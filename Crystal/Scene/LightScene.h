@@ -37,7 +37,7 @@ public:
 		delete light;
 	}
 
-	void addViewModel(UI::SceneViewModel& viewModel) const override;
+	void addViewModel(SceneViewModel& viewModel) const override;
 
 private:
 	Graphics::PointLight* light;

@@ -12,8 +12,10 @@
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Scene {
 		class SceneViewModel;
+	}
+	namespace UI {
 
 class ObjectRenderer : private UnCopyable
 {
@@ -29,7 +31,7 @@ public:
 
 	void render(const Shader::TextureObject& texture, const Shader::TextureObject& smoothTexture);
 
-	void setViewModel(const SceneViewModel& vm);
+	void setViewModel(const Scene::SceneViewModel& vm);
 
 private:
 	Shader::PointRenderer pointRenderer;

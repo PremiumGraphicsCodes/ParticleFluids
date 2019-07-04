@@ -4,7 +4,7 @@
 #include "SceneIdViewModel.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Scene {
 
 class ViewModel
 {

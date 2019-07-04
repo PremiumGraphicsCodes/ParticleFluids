@@ -9,7 +9,7 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-void PolygonMeshScene::addViewModel(Crystal::UI::SceneViewModel& viewModel) const
+void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
 {
 	if (!isVisible()) {
 		return;
@@ -35,7 +35,7 @@ void PolygonMeshScene::addViewModel(Crystal::UI::SceneViewModel& viewModel) cons
 	viewModel.triangleBuffers.push_back(bf);
 }
 
-void PolygonMeshScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel) const
+void PolygonMeshScene::addViewModel(SceneIdViewModel& viewModel) const
 {
 	const auto objectId = getId();
 	const auto& faces = getShape()->getFaces();

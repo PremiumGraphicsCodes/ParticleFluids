@@ -31,14 +31,14 @@ Box3d Scene::getBoundingBox() const
 	return bb;
 }
 
-void Scene::addViewModel(Crystal::UI::SceneViewModel& viewModel) const
+void Scene::addViewModel(SceneViewModel& viewModel) const
 {
 	for (auto c : children) {
 		c->addViewModel(viewModel);
 	}
 }
 
-void Scene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel) const
+void Scene::addViewModel(SceneIdViewModel& viewModel) const
 {
 	for (auto c : children) {
 		c->addViewModel(viewModel);

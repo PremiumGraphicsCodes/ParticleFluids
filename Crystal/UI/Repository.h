@@ -34,7 +34,7 @@ public:
 
 	Shader::OpenGLObjectRepository* getShaders() { return &shaders; }
 
-	ViewModel toViewModel();
+	Scene::ViewModel toViewModel();
 
 	Math::Box3d getBoundingBox() const;
 

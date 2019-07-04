@@ -12,8 +12,10 @@
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Scene {
 		class SceneIdViewModel;
+	}
+	namespace UI {
 
 class ObjectIdRenderer : private UnCopyable
 {
@@ -33,7 +35,7 @@ public:
 
 	Graphics::DrawableID getIdInTexCoord(const int x, const int y);
 
-	void setViewModel(const SceneIdViewModel& vm);
+	void setViewModel(const Scene::SceneIdViewModel& vm);
 
 	Shader::TextureObject* getTexture() { return texture; }
 

@@ -7,7 +7,7 @@
 #include "../Graphics/MaterialBuffer.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Scene {
 
 class SceneViewModel
 {

@@ -22,9 +22,9 @@ public:
 
 	virtual void onClear() override;
 
-	void addViewModel(UI::SceneViewModel& viewModel) const override;
+	void addViewModel(SceneViewModel& viewModel) const override;
 
-	void addViewModel(UI::SceneIdViewModel& viewModel) const override;
+	void addViewModel(SceneIdViewModel& viewModel) const override;
 
 private:
 };

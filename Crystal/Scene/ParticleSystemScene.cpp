@@ -7,7 +7,7 @@
 
 using namespace Crystal::Scene;
 
-void ParticleSystemScene::addViewModel(Crystal::UI::SceneViewModel& viewModel) const
+void ParticleSystemScene::addViewModel(SceneViewModel& viewModel) const
 {
 	if (!isVisible()) {
 		return;
@@ -18,7 +18,7 @@ void ParticleSystemScene::addViewModel(Crystal::UI::SceneViewModel& viewModel) c
 	}
 }
 
-void ParticleSystemScene::addViewModel(Crystal::UI::SceneIdViewModel& viewModel) const
+void ParticleSystemScene::addViewModel(SceneIdViewModel& viewModel) const
 {
 	const auto objectId = getId();
 	const auto& particles = getShape()->getParticles();

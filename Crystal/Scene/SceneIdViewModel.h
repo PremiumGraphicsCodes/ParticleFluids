@@ -11,7 +11,7 @@
 #include "../Scene/Scene.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Scene {
 
 class SceneIdViewModel
 {
@@ -24,7 +24,7 @@ public:
 
 private:
 
-	void add(const Scene::PolygonMeshScene& object);
+	void add(const PolygonMeshScene& object);
 
 public:
 	Graphics::PointBuffer pointIdBuffer;

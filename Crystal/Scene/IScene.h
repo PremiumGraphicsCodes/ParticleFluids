@@ -7,11 +7,9 @@
 #include "../Math/Box3d.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Scene {
 		class SceneViewModel;
 		class SceneIdViewModel;
-	}
-	namespace Scene {
 
 class IScene
 {
@@ -63,9 +61,9 @@ public:
 
 	IScene* findSceneByName(const std::string& name);
 
-	virtual void addViewModel(UI::SceneViewModel& viewModel) const {};
+	virtual void addViewModel(SceneViewModel& viewModel) const {};
 
-	virtual void addViewModel(UI::SceneIdViewModel& viewModel) const {};
+	virtual void addViewModel(SceneIdViewModel& viewModel) const {};
 
 	virtual void getBoundingBox(Math::Box3d& box) const {}
 

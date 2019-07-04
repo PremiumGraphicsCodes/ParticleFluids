@@ -14,7 +14,6 @@
 
 namespace Crystal {
 	namespace UI {
-		class ViewModel;
 
 class Renderer : private UnCopyable
 {
@@ -27,7 +26,7 @@ public:
 
 	void render(const int width, const int height, const Shader::TextureObjectRepository& textures);
 
-	void setViewModel(ViewModel& vm) {
+	void setViewModel(Scene::ViewModel& vm) {
 		const auto& ovm = vm.object;
 		objectRenderer.setViewModel(ovm);
 

@@ -12,6 +12,9 @@
 #include "Renderer.h"
 
 namespace Crystal {
+	namespace Scene {
+		class ViewModel;
+	}
 	namespace UI {
 		class IUICtrl;
 		class Repository;
@@ -43,7 +46,7 @@ public:
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 
-	void setViewModel(ViewModel viewModel) {
+	void setViewModel(Scene::ViewModel viewModel) {
 		this->renderer->setViewModel(viewModel);
 	}
 
