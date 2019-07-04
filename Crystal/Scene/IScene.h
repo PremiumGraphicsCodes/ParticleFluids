@@ -71,7 +71,7 @@ public:
 
 	bool isRoot() const { return parent == nullptr; }
 
-	IScene* getParent() { return parent; }
+	IScene* getParent() const { return parent; }
 
 protected:
 	virtual void onClear() = 0;
