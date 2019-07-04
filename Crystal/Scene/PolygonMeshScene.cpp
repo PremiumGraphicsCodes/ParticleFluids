@@ -7,7 +7,7 @@
 #include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Graphics;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 void PolygonMeshScene::addViewModel(Crystal::UI::SceneViewModel& viewModel) const
 {

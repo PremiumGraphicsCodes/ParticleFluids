@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 enum class SceneType
 {

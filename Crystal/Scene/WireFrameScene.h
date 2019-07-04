@@ -5,7 +5,7 @@
 #include "../Shape/WireFrame.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class WireFrameScene : public IShapeScene
 {

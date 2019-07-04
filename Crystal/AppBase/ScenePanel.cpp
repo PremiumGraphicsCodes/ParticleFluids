@@ -7,7 +7,7 @@
 
 #include "imgui.h"
 
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 ScenePanel::ScenePanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control) :

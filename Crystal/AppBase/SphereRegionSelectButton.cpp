@@ -5,7 +5,7 @@
 #include "../Shape/WireFrameBuilder.h"
 
 using namespace Crystal::Shape;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 void SphereRegionSelectButton::onShow()

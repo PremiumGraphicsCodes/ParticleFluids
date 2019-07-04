@@ -11,7 +11,7 @@ namespace Crystal {
 		class SceneViewModel;
 		class SceneIdViewModel;
 	}
-	namespace Model {
+	namespace Scene {
 
 class IScene
 {

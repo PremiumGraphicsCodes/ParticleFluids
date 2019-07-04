@@ -7,7 +7,7 @@
 
 using namespace Crystal::Shape;
 using namespace Crystal::IO;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 STLFileImporter::STLFileImporter(SceneFactory* sceneFactory) :
 	sceneFactory(sceneFactory)

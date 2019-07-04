@@ -4,7 +4,7 @@
 #include "../UI/PickUICtrl.h"
 #include "../UI/CameraUICtrl.h"
 
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 void PositionSelectButton::onShow()

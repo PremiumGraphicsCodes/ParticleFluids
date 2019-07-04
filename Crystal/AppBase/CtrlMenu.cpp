@@ -7,7 +7,7 @@
 #include "../UI/RectSelectUICtrl.h"
 
 using namespace Crystal::UI;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 void CtrlMenu::show()
 {

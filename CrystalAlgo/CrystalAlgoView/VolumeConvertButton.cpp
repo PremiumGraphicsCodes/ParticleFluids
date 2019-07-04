@@ -4,13 +4,13 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
 VolumeConvertButton::VolumeConvertButton(Repository* model, Canvas* canvas) :
 	IPopupButton("VolumeConvert", model, canvas),
-	objectButton("ParticleSystem", model, canvas, Model::SceneType::ParticleSystemScene),
+	objectButton("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
 	searchRadius("SearchRadius", 1.0)
 {
 }

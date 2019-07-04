@@ -5,14 +5,14 @@
 #include "FileFormat.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class FileExporter
 {
 public:
-	bool exportFile(const std::experimental::filesystem::path& filePath, Model::Scene& objects);
+	bool exportFile(const std::experimental::filesystem::path& filePath, Scene& objects);
 
-	bool exportFile(const std::experimental::filesystem::path& filePath, Model::Scene& objects, const FileFormat format);
+	bool exportFile(const std::experimental::filesystem::path& filePath, Scene& objects, const FileFormat format);
 };
 
 	}

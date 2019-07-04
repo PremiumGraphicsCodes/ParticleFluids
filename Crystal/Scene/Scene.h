@@ -5,7 +5,7 @@
 #include "SceneFactory.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class Scene : public IScene
 {

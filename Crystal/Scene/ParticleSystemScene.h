@@ -5,7 +5,7 @@
 #include "ParticleAttribute.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class ParticleSystemScene : public IShapeScene
 {

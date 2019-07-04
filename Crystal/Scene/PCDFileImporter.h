@@ -3,7 +3,7 @@
 #include <filesystem>
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 		class Scene;
 
 class PCDFileImporter

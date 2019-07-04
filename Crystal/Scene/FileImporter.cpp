@@ -6,7 +6,7 @@
 #include "OBJFileImporter.h"
 #include "PCDFileImporter.h"
 
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects, SceneFactory* factory)
 {

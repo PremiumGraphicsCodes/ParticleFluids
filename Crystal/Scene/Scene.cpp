@@ -5,7 +5,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 Scene::Scene(const int id, const std::string& name) :
 	IScene(id, name)

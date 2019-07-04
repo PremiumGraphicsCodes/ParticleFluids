@@ -20,8 +20,8 @@ void BooleanButton::onShow()
 
 void BooleanButton::onOk()
 {
-	auto polygon1 = static_cast<Crystal::Model::PolygonMeshScene*>( getModel()->getObjects()->findSceneById(objectButton1.getId()) );
-	auto polygon2 = static_cast<Crystal::Model::PolygonMeshScene*>( getModel()->getObjects()->findSceneById(objectButton2.getId()) );
+	auto polygon1 = static_cast<Crystal::Scene::PolygonMeshScene*>( getModel()->getObjects()->findSceneById(objectButton1.getId()) );
+	auto polygon2 = static_cast<Crystal::Scene::PolygonMeshScene*>( getModel()->getObjects()->findSceneById(objectButton2.getId()) );
 	if (polygon1 == nullptr || polygon2 == nullptr) {
 		return;
 	}

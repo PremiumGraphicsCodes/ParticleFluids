@@ -11,7 +11,7 @@ class SphereRegionSelectButton : public IPopupButton
 public:
 	SphereRegionSelectButton(const std::string& name, Repository* model, Canvas* canvas) :
 		IPopupButton(name, model, canvas),
-		object("Object", model, canvas, Model::SceneType::ParticleSystemScene),
+		object("Object", model, canvas, Scene::SceneType::ParticleSystemScene),
 		sphere("Region")
 	{
 	}

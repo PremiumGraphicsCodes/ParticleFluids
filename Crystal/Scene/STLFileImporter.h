@@ -4,7 +4,7 @@
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 		class Scene;
 		class IScene;
 		class SceneFactory;

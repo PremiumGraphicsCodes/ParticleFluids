@@ -5,7 +5,7 @@
 #include "../UI/CameraUICtrl.h"
 #include "../Scene/IShapeScene.h"
 
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 void MoveButton::onShow()

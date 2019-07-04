@@ -12,7 +12,7 @@ void ScaleButton::onShow()
 	objectButton.show();
 	if (ImGui::Button("Scale")) {
 		auto ctrl = new ScaleUICtrl(getModel(), getCanvas());
-		auto object = static_cast<Crystal::Model::IShapeScene*>(getModel()->getObjects()->findSceneById(objectButton.getId()) );
+		auto object = static_cast<Crystal::Scene::IShapeScene*>(getModel()->getObjects()->findSceneById(objectButton.getId()) );
 		if (object == nullptr) {
 			return;
 		}

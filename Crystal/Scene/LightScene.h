@@ -6,7 +6,7 @@
 #include "../Graphics/PointLight.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class LightScene : public IScene
 {

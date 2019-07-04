@@ -3,7 +3,7 @@
 #include "IPanel.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 		class IScene;
 	}
 	namespace UI {
@@ -16,7 +16,7 @@ public:
 	void show() override;
 
 private:
-	void show(Model::IScene* scene);
+	void show(Scene::IScene* scene);
 
 	IPanel* control;
 };

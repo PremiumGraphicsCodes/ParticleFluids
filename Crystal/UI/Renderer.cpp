@@ -4,7 +4,7 @@
 #include "../ThirdParty/stb/stb_image.h"
 
 using namespace Crystal::Shader;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 Renderer::Renderer(Crystal::Graphics::ICamera* camera) :

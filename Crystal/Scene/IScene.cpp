@@ -1,6 +1,6 @@
 #include "IScene.h"
 
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 IScene::IScene() :
 	id(-1),

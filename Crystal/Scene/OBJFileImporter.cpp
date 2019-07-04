@@ -10,7 +10,7 @@
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 OBJFileImporter::OBJFileImporter(SceneFactory* sceneFactory) :
 	sceneFactory(sceneFactory)

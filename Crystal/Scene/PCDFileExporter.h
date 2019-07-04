@@ -3,7 +3,7 @@
 #include <experimental/filesystem>
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 		class ParticleSystemScene;
 
 class PCDFileExporter

@@ -7,7 +7,7 @@
 #include "PCDFileExporter.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, Scene& objects)
 {

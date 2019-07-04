@@ -8,7 +8,7 @@
 #include "MaterialScene.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 		class Scene;
 
 class SceneFactory

@@ -3,7 +3,7 @@
 #include "SceneType.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class SceneId
 {

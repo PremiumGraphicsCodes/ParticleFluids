@@ -4,7 +4,7 @@
 #include "Scene.h"
 
 using namespace Crystal::IO;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 bool PCDFileImporter::importPCD(const std::experimental::filesystem::path& filePath, Scene& repository)
 {

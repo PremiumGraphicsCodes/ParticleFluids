@@ -24,7 +24,7 @@ public:
 
 private:
 
-	void add(const Model::PolygonMeshScene& object);
+	void add(const Scene::PolygonMeshScene& object);
 
 public:
 	Graphics::PointBuffer pointIdBuffer;

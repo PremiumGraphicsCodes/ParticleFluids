@@ -24,13 +24,13 @@ public:
 
 	bool exportFile(const std::experimental::filesystem::path& filePath);
 
-	Model::Scene* getObjects() { return &objects; }
+	Scene::Scene* getObjects() { return &objects; }
 
-	Model::Scene* getItems() { return &items; }
+	Scene::Scene* getItems() { return &items; }
 
-	Model::SceneFactory* getObjectFactory() { return &objectFactory; }
+	Scene::SceneFactory* getObjectFactory() { return &objectFactory; }
 	
-	Model::SceneFactory* getItemFactory() { return &itemFactory; }
+	Scene::SceneFactory* getItemFactory() { return &itemFactory; }
 
 	Shader::OpenGLObjectRepository* getShaders() { return &shaders; }
 
@@ -39,11 +39,11 @@ public:
 	Math::Box3d getBoundingBox() const;
 
 private:	
-	Model::Scene objects;
-	Model::Scene items;
+	Scene::Scene objects;
+	Scene::Scene items;
 
-	Model::SceneFactory objectFactory;
-	Model::SceneFactory itemFactory;
+	Scene::SceneFactory objectFactory;
+	Scene::SceneFactory itemFactory;
 
 	Shader::OpenGLObjectRepository shaders;
 };

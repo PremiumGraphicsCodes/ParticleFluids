@@ -5,7 +5,7 @@
 #include "../UI/CameraUICtrl.h"
 
 using namespace Crystal::UI;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 void FaceGroupSelectButton::onShow()
 {

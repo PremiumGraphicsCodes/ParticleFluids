@@ -6,7 +6,7 @@
 #include "PolygonMeshScene.h"
 
 using namespace Crystal::IO;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
 {

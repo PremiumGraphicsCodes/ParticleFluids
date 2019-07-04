@@ -4,7 +4,7 @@
 #include "../Shader/TextureObject.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class TextureScene : public IScene
 {

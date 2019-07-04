@@ -4,7 +4,7 @@
 #include "IUICtrl.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 		class IShapeScene;
 	}
 	namespace UI {
@@ -17,7 +17,7 @@ class ScaleUICtrl : public IUICtrl
 public:
 	ScaleUICtrl(Repository* repository, Canvas* canvas);
 
-	void add(Model::IShapeScene* object) { objects.push_back(object); }
+	void add(Scene::IShapeScene* object) { objects.push_back(object); }
 
 	virtual ~ScaleUICtrl() {}
 
@@ -42,7 +42,7 @@ public:
 	virtual void onWheel(const float dx) override {}
 
 private:
-	std::list<Model::IShapeScene*> objects;
+	std::list<Scene::IShapeScene*> objects;
 	Repository* repository;
 	Canvas* canvas;
 	Math::Vector2df prevPosition;

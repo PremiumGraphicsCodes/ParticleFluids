@@ -3,7 +3,7 @@
 #include "../Graphics/ColorRGBA.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 struct WireFrameAttribute
 {

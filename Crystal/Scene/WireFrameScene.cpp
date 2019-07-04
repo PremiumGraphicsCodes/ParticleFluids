@@ -5,7 +5,7 @@
 
 #include "../Graphics/DrawableId.h"
 
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 
 void WireFrameScene::addViewModel(Crystal::UI::SceneViewModel& viewModel) const
 {

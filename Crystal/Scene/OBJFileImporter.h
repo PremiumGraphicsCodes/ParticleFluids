@@ -6,7 +6,7 @@
 #include <experimental/filesystem>
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 		class PolygonMeshScene;
 		class MaterialScene;
 		class Scene;

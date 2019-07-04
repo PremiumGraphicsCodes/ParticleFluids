@@ -6,7 +6,7 @@
 #include "MaterialScene.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class PolygonMeshScene : public IShapeScene
 {

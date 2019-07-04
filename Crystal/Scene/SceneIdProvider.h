@@ -3,7 +3,7 @@
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class SceneIdProvider : private UnCopyable
 {

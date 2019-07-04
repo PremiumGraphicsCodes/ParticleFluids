@@ -6,7 +6,7 @@
 #include "../Math/Matrix4d.h"
 
 namespace Crystal {
-	namespace Model {
+	namespace Scene {
 
 class IShapeScene : public IScene
 {

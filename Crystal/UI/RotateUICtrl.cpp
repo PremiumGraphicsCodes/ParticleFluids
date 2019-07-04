@@ -5,7 +5,7 @@
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 RotateUICtrl::RotateUICtrl(Repository* repository, Canvas* canvas) :

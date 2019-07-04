@@ -3,7 +3,7 @@
 #include "../CrystalAlgo/SpaceHash.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Model;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
