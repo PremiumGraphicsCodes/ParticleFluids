@@ -15,6 +15,10 @@ LightEditView::LightEditView(const std::string& name, Repository* repository, Ca
 
 void LightEditView::show()
 {
+	id.show();
+	light.show();
+	name.show();
+
 	/*
 	if (!isVisible()) {
 		return;

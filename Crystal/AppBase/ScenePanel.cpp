@@ -2,6 +2,8 @@
 
 #include "../UI/Repository.h"
 
+#include "LightEditView.h"
+
 #include "imgui.h"
 
 using namespace Crystal::Model;
@@ -16,29 +18,21 @@ void ScenePanel::show()
 {
 	ImGui::Begin("Scene");
 	show(model->getObjects());
-	/*
-	auto root = model->getObjects()->getName();
-	const auto str = root.c_str();
-	if (ImGui::TreeNode(str)) {
-		const auto& children = model->getObjects()->getChildren();
-		for (auto child : children) {
-			const auto& name = child->getName();
-			const auto str = name.c_str();
-			if (ImGui::TreeNode(str)) {
-				ImGui::TreePop();
-			}
-		}
-		ImGui::TreePop();
-	}
-	*/
 	ImGui::End();
 }
 
 void ScenePanel::show(IScene* scene)
 {
+	const auto type = scene->getType();
+
 	const auto& name = scene->getName();
 	const auto str = name.c_str();
 	if (ImGui::TreeNode(str)) {
+		if (type == SceneType::LightScene) {
+			LightEditView lightEditView("LightEdit", model, canvas);
+			lightEditView.show();
+		}
+
 		const auto& children = scene->getChildren();
 		for (auto child : children) {
 			show(child);

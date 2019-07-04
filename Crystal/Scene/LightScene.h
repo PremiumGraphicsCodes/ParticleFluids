@@ -30,7 +30,7 @@ public:
 
 	bool isNull() const { return light == nullptr; }
 
-	SceneType getType() const override { return SceneType::LightObject; }
+	SceneType getType() const override { return SceneType::LightScene; }
 
 	void onClear() override
 	{

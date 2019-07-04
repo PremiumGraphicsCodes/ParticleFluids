@@ -75,6 +75,8 @@ public:
 
 	std::list<IScene*> getChildren() const { return children; }
 
+	bool isLeaf() const { return children.empty(); }
+
 protected:
 	virtual void onClear() = 0;
 

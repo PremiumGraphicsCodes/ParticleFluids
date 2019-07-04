@@ -22,7 +22,7 @@ public:
 
 	bool isNull() const { return material == nullptr; }
 
-	SceneType getType() const override { return SceneType::MaterialObject; }
+	SceneType getType() const override { return SceneType::MaterialScene; }
 
 	void onClear() override
 	{
