@@ -31,7 +31,7 @@ void BooleanButton::onOk()
 	polygon1->setVisible(false);
 	polygon2->setVisible(false);
 
-	getModel()->getObjects()->getFactory()->createPolygonMeshScene(algo.getResult(), nullptr, "Intersection");
+	getModel()->getObjectFactory()->createPolygonMeshScene(algo.getResult(), "Intersection");
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }

@@ -42,7 +42,7 @@ void IntersectionButton::onOk()
 		ParticleAttribute attr;
 		attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 		attr.size = 1.0f;
-		getModel()->getObjects()->getFactory()->createParticleSystemScene(positions, attr, "intersections");
+		getModel()->getObjectFactory()->createParticleSystemScene(positions, attr, "intersections");
 		getCanvas()->setViewModel(getModel()->toViewModel());
 	}
 }
