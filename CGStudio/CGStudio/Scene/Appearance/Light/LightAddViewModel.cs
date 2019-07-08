@@ -15,8 +15,13 @@ namespace PG.CGStudio.Scene.Appearance.Light
         {
             this.PointLightViewModel = new PointLightViewModel();
             this.OKCommand = new ReactiveCommand();
+            this.OKCommand.Subscribe(OnOk);
         }
 
+        private void OnOk()
+        {
+            MainModel.Instance.Repository.AddLightScene(PointLightViewModel.Value, "Light");
+        }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
@@ -30,11 +35,13 @@ namespace PG.CGStudio.Scene.Appearance.Light
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
+            /*
             var item = navigationContext.Parameters["LightAdd"] as PG.Core.Scene;
             if (item == null)
             {
                 return;
             }
+            */
             //var light = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindLightById(item.Id);
             //this.PointLightViewModel.Value = light;
         }

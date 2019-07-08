@@ -28,6 +28,17 @@ namespace PG.Control.Graphics
 
         public PointLight Value
         {
+            get
+            {
+                var p = new PointLight
+                {
+                    Position = Position.Value,
+                    Ambient = Ambient.Value,
+                    Diffuse = Diffuse.Value,
+                    Specular = Specular.Value
+                };
+                return p;
+            }
             set
             {
                 Position.Value = value.Position;

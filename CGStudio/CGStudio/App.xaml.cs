@@ -2,6 +2,7 @@
 using PG.CGStudio.Light;
 using PG.CGStudio.Material;
 using PG.CGStudio.Object;
+using PG.CGStudio.Scene.Appearance.Light;
 using PG.CGStudio.Selection;
 using PG.CGStudio.Selection.Object;
 using PG.CGStudio.Texture;
@@ -37,6 +38,8 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMCylinderGeneration");
 
             containerRegistry.RegisterForNavigation<MaterialEditView>("MaterialEdit");
+
+            containerRegistry.RegisterForNavigation<LightAddView>("LightAdd");
             containerRegistry.RegisterForNavigation<LightEditView>("LightEdit");
             containerRegistry.RegisterForNavigation<TextureEditView>("TextureEdit");
             containerRegistry.RegisterForNavigation<SceneView>("Object");

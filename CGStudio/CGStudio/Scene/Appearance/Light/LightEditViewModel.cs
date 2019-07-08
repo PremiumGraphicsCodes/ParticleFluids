@@ -17,6 +17,7 @@ namespace PG.CGStudio.Light
         {
             this.PointLightViewModel = new PointLightViewModel();
             this.OKCommand = new ReactiveCommand();
+            this.OKCommand.Subscribe(OnOk);
         }
 
         private void OnOk()

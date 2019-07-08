@@ -75,7 +75,7 @@
             </Fluent:RibbonTabItem>
             <Fluent:RibbonTabItem Header="Appearance" KeyTip="T1">
                 <Fluent:RibbonGroupBox Header="Light" KeyTip="B">
-                    <Fluent:Button Header="PointLight" KeyTip="BI" Command="{Binding LightListCommand}"/>
+                    <Fluent:Button Header="PointLight" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="LightAdd"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
 

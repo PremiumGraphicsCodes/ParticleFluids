@@ -136,6 +136,9 @@
     <Compile Include="Camera.cs" />
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
+    <Compile Include="Scene\Appearance\Light\LightAddView.xaml.cs">
+      <DependentUpon>LightAddView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scene\Appearance\Light\LightAddViewModel.cs" />
     <Compile Include="Scene\Shape\ParticleSystem\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
@@ -242,6 +245,10 @@
     <Compile Include="UICtrl\ObjectMoveUICtrl.cs" />
     <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
     <Compile Include="UICtrl\ObjectScaleUICtrl.cs" />
+    <Page Include="Scene\Appearance\Light\LightAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Scene\Shape\ParticleSystem\AppearanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

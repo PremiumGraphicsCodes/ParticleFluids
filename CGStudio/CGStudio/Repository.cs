@@ -62,6 +62,19 @@ namespace PG.CGStudio
             Sync();
         }
 
+        public void AddMaterialScene(PG.Core.Graphics.Material material, string name)
+        {
+           // this.adapter.GetSceneAdapter().AddMaterialScene(material, name);
+           // Sync();
+        }
+
+        public void AddLightScene(PG.Core.Graphics.PointLight light, string name)
+        {
+            this.adapter.GetSceneAdapter().AddLightScene(light, name);
+            Sync();
+        }
+
+
         private void Sync()
         {
             var newScene = this.adapter.GetSceneAdapter().ToScene();
