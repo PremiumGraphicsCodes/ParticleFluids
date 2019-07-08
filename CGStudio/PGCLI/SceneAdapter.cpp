@@ -71,7 +71,8 @@ PG::Core::Scene^ SceneAdapter::ToScene()
 PG::Core::Scene^ SceneAdapter::ToScene(IScene* parent)
 {
 	auto str = msclr::interop::marshal_as<System::String^>(parent->getName());
-	auto p = gcnew PG::Core::Scene(parent->getId(), str, PG::Core::SceneType::ParticleSystem);
+	auto type = Converter::fromCpp(parent->getType());
+	auto p = gcnew PG::Core::Scene(parent->getId(), str, type);
 
 	auto children = parent->getChildren();
 	for (auto child : children) {

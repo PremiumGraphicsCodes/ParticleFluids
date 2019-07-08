@@ -143,8 +143,34 @@ Crystal::Scene::SceneType PG::CLI::Converter::toCpp(PG::Core::SceneType src)
 		return Crystal::Scene::SceneType::PolygonMeshScene;
 	case PG::Core::SceneType::PointLight:
 		return Crystal::Scene::SceneType::LightScene;
+	case PG::Core::SceneType::Material :
+		return Crystal::Scene::SceneType::MaterialScene;
 	default:
 		return Crystal::Scene::SceneType::None;
+		break;
+	}
+}
+
+PG::Core::SceneType PG::CLI::Converter::fromCpp(Crystal::Scene::SceneType src)
+{
+	switch (src)
+	{
+	case Crystal::Scene::SceneType::None:
+		return PG::Core::SceneType::None;
+	case Crystal::Scene::SceneType::Root:
+		return PG::Core::SceneType::Root;
+	case Crystal::Scene::SceneType::ParticleSystemScene:
+		return PG::Core::SceneType::ParticleSystem;
+	case Crystal::Scene::SceneType::WireFrameScene:
+		return PG::Core::SceneType::WireFrame;
+	case Crystal::Scene::SceneType::PolygonMeshScene:
+		return PG::Core::SceneType::PolygonMesh;
+	case Crystal::Scene::SceneType::LightScene:
+		return PG::Core::SceneType::PointLight;
+	case Crystal::Scene::SceneType::MaterialScene:
+		return PG::Core::SceneType::Material;
+	default:
+		return PG::Core::SceneType::None;
 		break;
 	}
 }

@@ -13,6 +13,7 @@ namespace PG.Core
         ParticleSystem,
         WireFrame,
         PolygonMesh,
+        Material,
         PointLight,
     }
 

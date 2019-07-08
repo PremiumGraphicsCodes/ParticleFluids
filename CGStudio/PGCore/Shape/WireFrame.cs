@@ -16,5 +16,14 @@ namespace PG.Core.Shape
         {
             this.Edges = edges;
         }
+
+        /*
+        public List<Line3d> ToLines()
+        {
+            foreach(var e in Edges) {
+                e.Origin;
+            }
+        }
+        */
     }
 }
