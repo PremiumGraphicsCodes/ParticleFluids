@@ -37,7 +37,12 @@ namespace PG.CGStudio
 
         public bool Import(string filename)
         {
-            return adapter.Import(filename);
+            var isOk = adapter.Import(filename);
+            if(isOk)
+            {
+                Sync();
+            }
+            return isOk;
         }
 
         public bool Export(string filename)
