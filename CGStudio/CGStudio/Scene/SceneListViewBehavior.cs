@@ -30,14 +30,16 @@ namespace PG.CGStudio.Object
             {
                 return;
             }
+            var parameters = new NavigationParameters();
             switch(selectedItem.Type)
             {
                 case SceneType.PointLight:
-                    var parameters = new NavigationParameters
-                    {
-                        { "Object", selectedItem }
-                    };
+                    parameters.Add("LightEdit", selectedItem);
                     MainWindowViewModel.Instance.NavigateWithParam("LightEdit", parameters);
+                    break;
+                case SceneType.Material:
+                    parameters.Add("MaterialEdit", selectedItem);
+                    MainWindowViewModel.Instance.NavigateWithParam("MaterialEdit", parameters);
                     break;
                 default:
                     break;

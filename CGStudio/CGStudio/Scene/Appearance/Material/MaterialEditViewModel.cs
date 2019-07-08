@@ -1,4 +1,5 @@
 ﻿using PG.Control.Graphics;
+using PG.Core;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -7,8 +8,6 @@ namespace PG.CGStudio.Material
 {
     public class MaterialEditViewModel : BindableBase, INavigationAware
     {
-        private MaterialModel PrevMaterial;
-
         public MaterialViewModel MaterialViewModel { get; }
 
         public ReactiveCommand OKCommand { get; }
@@ -22,17 +21,18 @@ namespace PG.CGStudio.Material
 
         private void OnOk()
         {
-            this.MaterialViewModel.Update( this.PrevMaterial.Material );
+
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["Material"] as MaterialModel;
-            if (item != null)
+            var item = navigationContext.Parameters["MaterialEdit"] as Scene;
+            if (item == null)
             {
-                this.PrevMaterial = item;
-                this.MaterialViewModel.Value = item.Material;
+                return;
             }
+            var material = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindMaterialByid(item.Id);
+            this.MaterialViewModel.Value = material;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

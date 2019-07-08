@@ -62,6 +62,16 @@ int SceneAdapter::AddPolygonMeshScene(System::Collections::Generic::List<PG::Cor
 	return -1;
 }
 
+PG::Core::Graphics::Material^ SceneAdapter::FindMaterialByid(int id)
+{
+	auto scene = instance->findSceneById(id);
+	if (scene->getType() != Crystal::Scene::SceneType::MaterialScene) {
+		return nullptr;
+	}
+	auto materialScene = static_cast<Crystal::Scene::MaterialScene*>(scene);
+	return Converter::fromCpp(*materialScene->getMaterial());
+}
+
 PG::Core::Graphics::PointLight^ SceneAdapter::FindLightById(int id)
 {
 	auto scene = instance->findSceneById(id);

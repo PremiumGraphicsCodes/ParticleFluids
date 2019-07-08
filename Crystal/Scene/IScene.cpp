@@ -30,8 +30,9 @@ IScene* IScene::findSceneById(int id)
 		return this;
 	}
 	for (auto c : children) {
-		if (c->findSceneById(id) != nullptr) {
-			return c;
+		auto s = c->findSceneById(id);
+		if (s != nullptr) {
+			return s;
 		}
 	}
 	return nullptr;

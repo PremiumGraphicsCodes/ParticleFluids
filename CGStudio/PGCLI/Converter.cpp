@@ -119,9 +119,7 @@ PG::Core::Graphics::PointLight^ PG::CLI::Converter::fromCpp(const Crystal::Graph
 	result->Specular = fromCpp(src.getSpecular());
 	result->Diffuse = fromCpp(src.getDiffuse());
 	return result;
-
 }
-
 
 Crystal::Graphics::Material PG::CLI::Converter::toCpp(PG::Core::Graphics::Material^ src)
 {
@@ -131,6 +129,16 @@ Crystal::Graphics::Material PG::CLI::Converter::toCpp(PG::Core::Graphics::Materi
 	result.specular = toCpp(src->Specular);
 	result.shininess = src->Shininess;
 	//result.textureId = src->
+	return result;
+}
+
+PG::Core::Graphics::Material^ PG::CLI::Converter::fromCpp(const Crystal::Graphics::Material& src)
+{
+	auto result = gcnew PG::Core::Graphics::Material();
+	result->Ambient = fromCpp(src.ambient);
+	result->Specular = fromCpp(src.specular);
+	result->Diffuse = fromCpp(src.diffuse);
+	result->Shininess = src.shininess;
 	return result;
 }
 

@@ -55,6 +55,8 @@ public:
 
 	static Crystal::Graphics::Material toCpp(PG::Core::Graphics::Material^ src);
 
+	static PG::Core::Graphics::Material^ fromCpp(const Crystal::Graphics::Material& src);
+
 	static Crystal::Math::Box3d toCpp(PG::Core::Math::Box3d^ src);
 
 	static Crystal::Scene::SceneType toCpp(PG::Core::SceneType src);

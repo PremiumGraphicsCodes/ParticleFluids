@@ -161,7 +161,6 @@
       <DependentUpon>MaterialEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Appearance\Material\MaterialEditViewModel.cs" />
-    <Compile Include="Scene\Appearance\Material\MaterialModel.cs" />
     <Compile Include="Scene\SceneListView.xaml.cs">
       <DependentUpon>SceneListView.xaml</DependentUpon>
     </Compile>
