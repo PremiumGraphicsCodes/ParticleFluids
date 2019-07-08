@@ -167,11 +167,11 @@
     </Compile>
     <Compile Include="Scene\SceneListViewBehavior.cs" />
     <Compile Include="Scene\SceneListViewModel.cs" />
-    <Compile Include="Scene\ObjectModel.cs" />
-    <Compile Include="Scene\ObjectView.xaml.cs">
-      <DependentUpon>ObjectView.xaml</DependentUpon>
+    <Compile Include="Scene\SceneModel.cs" />
+    <Compile Include="Scene\SceneView.xaml.cs">
+      <DependentUpon>SceneView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scene\ObjectViewModel.cs" />
+    <Compile Include="Scene\SceneViewModel.cs" />
     <Compile Include="OpenGL\OpenGLAdornment.xaml.cs">
       <DependentUpon>OpenGLAdornment.xaml</DependentUpon>
     </Compile>
@@ -318,7 +318,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Scene\ObjectView.xaml">
+    <Page Include="Scene\SceneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

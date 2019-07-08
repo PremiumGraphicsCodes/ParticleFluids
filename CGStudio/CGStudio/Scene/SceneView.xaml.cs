@@ -1,10 +1,10 @@
 ﻿using System.Windows.Controls;
 
-namespace PG.CGStudio
+namespace PG.CGStudio.Object
 {
-    public partial class ObjectListView : UserControl
+    public partial class SceneView : UserControl
     {
-        public ObjectListView()
+        public SceneView()
         {
             InitializeComponent();
         }

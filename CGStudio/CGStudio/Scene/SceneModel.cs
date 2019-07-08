@@ -6,7 +6,7 @@ using System;
 
 namespace PG.CGStudio
 {
-    public class ObjectModel : BindableBase
+    public class SceneModel : BindableBase
     {
         public ReactiveProperty<int> Id { get; }
 
@@ -23,7 +23,7 @@ namespace PG.CGStudio
         }
         */
 
-        public ObjectModel()
+        public SceneModel()
         {
             Id = new ReactiveProperty<int>();
             Name = new ReactiveProperty<string>();

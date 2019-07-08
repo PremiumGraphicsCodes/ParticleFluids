@@ -20,7 +20,7 @@ namespace PG.CGStudio.Object
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["Object"] as ObjectModel;
+            var item = navigationContext.Parameters["Object"] as SceneModel;
             if (item != null)
             {
                 Id.Value = item.Id.Value;

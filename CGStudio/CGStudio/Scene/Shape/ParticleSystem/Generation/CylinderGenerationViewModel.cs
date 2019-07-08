@@ -39,7 +39,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-           // MainModel.Instance.Repository.Objects.Add(particles, Appearance.Value, "PSCylinder");
+            MainModel.Instance.Repository.Adapter.GetSceneAdapter().AddParticleSystemScene(positions);//, Appearance.Value, "PSCylinder");
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
         }

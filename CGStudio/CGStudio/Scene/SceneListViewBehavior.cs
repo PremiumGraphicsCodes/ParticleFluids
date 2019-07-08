@@ -24,7 +24,7 @@ namespace PG.CGStudio.Object
             {
                 return;
             }
-            var selectedItem = treeView.SelectedItem as ObjectModel;
+            var selectedItem = treeView.SelectedItem as SceneModel;
             if (selectedItem == null)
             {
                 return;
