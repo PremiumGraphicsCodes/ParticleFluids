@@ -9,11 +9,11 @@
              mc:Ignorable="d"
         Width="300">
     <UserControl.DataContext>
-        <local:ObjectListViewModel/>
+        <local:SceneListViewModel/>
     </UserControl.DataContext>
     <TreeView ItemsSource="{Binding Items}">
         <i:Interaction.Behaviors>
-            <object:ObjectListViewBehavior/>
+            <object:SceneListViewBehavior/>
         </i:Interaction.Behaviors>
         <TreeView.ItemTemplate>
             <HierarchicalDataTemplate DataType="{x:Type local:ObjectModel}">

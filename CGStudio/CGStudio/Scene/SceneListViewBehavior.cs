@@ -5,7 +5,7 @@ using System.Windows.Interactivity;
 
 namespace PG.CGStudio.Object
 {
-    public class ObjectListViewBehavior : Behavior<TreeView>
+    public class SceneListViewBehavior : Behavior<TreeView>
     {
         protected override void OnAttached()
         {

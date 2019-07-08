@@ -2,11 +2,11 @@
 
 namespace PG.CGStudio
 {
-    public class ObjectListViewModel
+    public class SceneListViewModel
     {
         public ReadOnlyReactiveCollection<ObjectModel> Items { get; }
 
-        public ObjectListViewModel()
+        public SceneListViewModel()
         {
             /*
             //Items = MainModel.Instance.Repository.Objects.Objects.ToReadOnlyReactiveCollection();
