@@ -33,6 +33,11 @@ namespace PG.Core
             this.Type = type;
             Children = new List<Scene>();
         }
+
+        public void Clear()
+        {
+            Children.Clear();
+        }
     }
 
 }

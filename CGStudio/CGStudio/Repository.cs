@@ -1,4 +1,5 @@
 ﻿using PG.Core.Shape;
+using Reactive.Bindings;
 
 namespace PG.CGStudio
 {
@@ -8,14 +9,13 @@ namespace PG.CGStudio
 
         public PG.CLI.RepositoryAdapter Adapter { get { return adapter; } }
 
-        public PG.Core.Scene scene;
-
-        public PG.Core.Scene Scene { get { return scene; } }
+        public ReactiveCollection<PG.Core.Scene> Scene;
 
         public Repository()
         {
             this.adapter = new PG.CLI.RepositoryAdapter();
-            this.scene = new PG.Core.Scene(0, "Root", Core.SceneType.Root);
+            this.Scene = new ReactiveCollection<Core.Scene>();
+            this.Scene.Add( new PG.Core.Scene(0, "Root", Core.SceneType.Root) );
         }
 
         public void New()
@@ -41,6 +41,12 @@ namespace PG.CGStudio
         public bool Export(string filename)
         {
             return adapter.Export(filename);
+        }
+
+        public void Sync()
+        {
+            var newScene = this.adapter.GetSceneAdapter().ToScene();
+            Scene[0] = newScene;
         }
     }
 }
