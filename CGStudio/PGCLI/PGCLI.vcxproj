@@ -137,6 +137,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RepositoryAdapter.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SceneAdapter.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +146,7 @@
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RepositoryAdapter.cpp" />
+    <ClCompile Include="SceneAdapter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
