@@ -11,8 +11,7 @@ namespace Crystal {
 
 namespace PG {
 	namespace CLI {
-		ref class ObjectRepositoryAdapter;
-		ref class AppearanceObjectRepositoryAdapter;
+		ref class SceneAdapter;
 
 public ref class RepositoryAdapter
 {
@@ -26,6 +25,8 @@ public:
 	bool Import(System::String^ filename);
 
 	bool Export(System::String^ filename);
+
+	SceneAdapter^ GetSceneAdapter();
 
 private:
 internal:

@@ -2,6 +2,7 @@
 #include <msclr/marshal_cppstd.h>
 
 #include "RepositoryAdapter.h"
+#include "SceneAdapter.h"
 
 #include "../../Crystal/UI/Repository.h"
 //#include "../../Crystal/UI/ViewModel.h"
@@ -45,4 +46,9 @@ bool RepositoryAdapter::Export(System::String^ filename)
 
 	const auto& str = msclr::interop::marshal_as<std::wstring>(filename);
 	return instance->exportFile(str);
+}
+
+SceneAdapter^ RepositoryAdapter::GetSceneAdapter()
+{
+	return gcnew SceneAdapter(instance->getObjects(), instance->getObjectFactory());
 }

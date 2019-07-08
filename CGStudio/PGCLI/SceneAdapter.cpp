@@ -39,12 +39,20 @@ int SceneAdapter::AddParticleSystemScene(System::Collections::Generic::List<PG::
 	for (int i = 0; i < positions->Count; ++i) {
 		ps.push_back(Converter::toCpp(positions[i]));
 	}
-	factory->createParticleSystemScene(ps, ParticleAttribute(), "");
-	return -1;
+	auto scene = factory->createParticleSystemScene(ps, ParticleAttribute(), "");
+	instance->addScene( scene );
+	return scene->getId();
 }
 
-int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ positions)
+int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines)
 {
+	/*
+	std::vector<Line3dd> ls;
+	for (int i = 0; i < lines->Count; ++i) {
+		ls.push_back(Converter::toCpp(lines[i]));
+	}
+	factory->createWireFrameScene(ls, WireFrameAttribute(), "");
+	*/
 	return -1;
 }
 
@@ -53,8 +61,9 @@ int SceneAdapter::AddPolygonMeshScene(System::Collections::Generic::List<PG::Cor
 	return -1;
 }
 
-SceneAdapter::SceneAdapter(Crystal::Scene::Scene* instance) :
-	instance(instance)
+SceneAdapter::SceneAdapter(Crystal::Scene::Scene* instance, Crystal::Scene::SceneFactory*factory) :
+	instance(instance),
+	factory(factory)
 {
 
 }

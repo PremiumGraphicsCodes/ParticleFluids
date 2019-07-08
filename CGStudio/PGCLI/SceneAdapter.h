@@ -25,12 +25,12 @@ public:
 
 	int AddParticleSystemScene(System::Collections::Generic::List<PG::Core::Math::Vector3d^>^ positions);
 
-	int AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ positions);
+	int AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines);
 
 	int AddPolygonMeshScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ positions);
 
-private:
-	SceneAdapter(Crystal::Scene::Scene* instance);
+internal:
+	SceneAdapter(Crystal::Scene::Scene* instance, Crystal::Scene::SceneFactory*factory);
 
 internal:
 	Crystal::Scene::Scene* instance;
