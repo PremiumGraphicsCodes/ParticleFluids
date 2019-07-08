@@ -36,12 +36,12 @@ namespace PG.CGStudio.Light
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["Light"] as PG.Core.Graphics.PointLight;
-            if (item != null)
+            var item = navigationContext.Parameters["Light"] as PG.Core.Scene;
+            if (item == null)
             {
-                this.PrevLight = item;
-                this.PointLightViewModel.Value = item;
+                return;
             }
+            //var id = item.Id;
         }
     }
 }

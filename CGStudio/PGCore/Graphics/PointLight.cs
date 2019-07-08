@@ -6,15 +6,12 @@ namespace PG.Core.Graphics
 {
     public class PointLight
     {
-        public int ID { get; }
-
         public ReactiveProperty<string> Name { get; }
 
         public ReactiveProperty<bool> IsVisible { get; }
 
-        public PointLight(int id)
+        public PointLight()
         {
-            this.ID = id;
             Name = new ReactiveProperty<string>();
             IsVisible = new ReactiveProperty<bool>();
             IsVisible.Subscribe(VisibleChanged);
@@ -27,7 +24,7 @@ namespace PG.Core.Graphics
         }
 
         public ColorRGBA Ambient { get; set; }
-        public ColorRGBA Diffuset { get; set; }
+        public ColorRGBA Diffuse { get; set; }
         public ColorRGBA Specular { get; set; }
         public Vector3d Position { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using Prism.Regions;
+﻿using PG.Core;
+using Prism.Regions;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
@@ -24,16 +25,30 @@ namespace PG.CGStudio.Object
             {
                 return;
             }
-            var selectedItem = treeView.SelectedItem as SceneModel;
+            var selectedItem = treeView.SelectedItem as Scene;
             if (selectedItem == null)
             {
                 return;
             }
+            switch(selectedItem.Type)
+            {
+                case SceneType.PointLight:
+                    var parameters = new NavigationParameters
+                    {
+                        { "Object", selectedItem }
+                    };
+                    MainWindowViewModel.Instance.NavigateWithParam("LightEdit", parameters);
+                    break;
+                default:
+                    break;
+            }
+            /*
             var parameters = new NavigationParameters
             {
                 { "Object", selectedItem }
             };
             MainWindowViewModel.Instance.NavigateWithParam("Object", parameters);
+            */
 
         }
     }

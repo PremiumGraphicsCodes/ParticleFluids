@@ -30,10 +30,9 @@ namespace PG.Control.Graphics
         {
             set
             {
-                ID.Value = value.ID;
                 Position.Value = value.Position;
                 Ambient.Value = value.Ambient;
-                Diffuse.Value = value.Diffuset;
+                Diffuse.Value = value.Diffuse;
                 Specular.Value = value.Specular;
             }
         }
@@ -42,7 +41,7 @@ namespace PG.Control.Graphics
         {
             light.Position = Position.Value;
             light.Ambient = Ambient.Value;
-            light.Diffuset = Diffuse.Value;
+            light.Diffuse = Diffuse.Value;
             light.Specular = Specular.Value;
         }
     }

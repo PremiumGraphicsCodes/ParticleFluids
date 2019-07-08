@@ -51,6 +51,8 @@ public:
 
 	static Crystal::Graphics::PointLight toCpp(PG::Core::Graphics::PointLight^ src);
 
+	static PG::Core::Graphics::PointLight^ fromCpp(const Crystal::Graphics::PointLight& src);
+
 	static Crystal::Graphics::Material toCpp(PG::Core::Graphics::Material^ src);
 
 	static Crystal::Math::Box3d toCpp(PG::Core::Math::Box3d^ src);

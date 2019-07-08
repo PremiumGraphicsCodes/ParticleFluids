@@ -106,10 +106,22 @@ Crystal::Graphics::PointLight PG::CLI::Converter::toCpp(PG::Core::Graphics::Poin
 	auto result = Crystal::Graphics::PointLight();
 	result.setPosition( toCpp( src->Position ) );
 	result.setAmbient( toCpp(src->Ambient));
-	result.setDiffuse( toCpp(src->Diffuset));
+	result.setDiffuse( toCpp(src->Diffuse));
 	result.setSpecular(toCpp(src->Specular));
 	return result;
 }
+
+PG::Core::Graphics::PointLight^ PG::CLI::Converter::fromCpp(const Crystal::Graphics::PointLight& src)
+{
+	auto result = gcnew PG::Core::Graphics::PointLight();
+	result->Position = fromCpp(src.getPosition());
+	result->Ambient = fromCpp(src.getAmbient());
+	result->Specular = fromCpp(src.getSpecular());
+	result->Diffuse = fromCpp(src.getDiffuse());
+	return result;
+
+}
+
 
 Crystal::Graphics::Material PG::CLI::Converter::toCpp(PG::Core::Graphics::Material^ src)
 {

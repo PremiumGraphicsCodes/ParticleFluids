@@ -30,6 +30,8 @@ public:
 
 	int AddPolygonMeshScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ positions);
 
+	PG::Core::Graphics::PointLight^ FindLightById(int id);
+
 	PG::Core::Scene^ ToScene();
 
 internal:
