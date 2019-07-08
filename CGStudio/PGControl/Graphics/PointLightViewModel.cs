@@ -9,14 +9,11 @@ namespace PG.Control.Graphics
     {
         public PointLightViewModel()
         {
-            ID = new ReactiveProperty<int>();
             Position = new Vector3dViewModel();
             Ambient = new ColorRGBAViewModel();
             Diffuse = new ColorRGBAViewModel();
             Specular = new ColorRGBAViewModel();
         }
-
-        public ReactiveProperty<int> ID { get; }
 
         public Vector3dViewModel Position { get; }
 
@@ -46,14 +43,6 @@ namespace PG.Control.Graphics
                 Diffuse.Value = value.Diffuse;
                 Specular.Value = value.Specular;
             }
-        }
-
-        public void Update(PointLight light)
-        {
-            light.Position = Position.Value;
-            light.Ambient = Ambient.Value;
-            light.Diffuse = Diffuse.Value;
-            light.Specular = Specular.Value;
         }
     }
 }

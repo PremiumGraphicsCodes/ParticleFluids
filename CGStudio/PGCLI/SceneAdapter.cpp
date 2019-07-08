@@ -72,6 +72,17 @@ int SceneAdapter::AddLightScene(PG::Core::Graphics::PointLight^ light, System::S
 	return scene->getId();
 }
 
+void SceneAdapter::UpdateLightScene(int id, PG::Core::Graphics::PointLight^ light)
+{
+	auto scene = instance->findSceneById(id);
+	if (scene->getType() != Crystal::Scene::SceneType::LightScene) {
+		return;
+	}
+	auto lightScene = static_cast<Crystal::Scene::LightScene*>(scene);
+	auto l = Converter::toCpp(light);
+	lightScene->setLight(l);
+}
+
 PG::Core::Graphics::Material^ SceneAdapter::FindMaterialByid(int id)
 {
 	auto scene = instance->findSceneById(id);

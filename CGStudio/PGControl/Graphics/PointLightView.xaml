@@ -12,10 +12,6 @@
         <local:PointLightViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="ID"/>
-            <TextBlock Text="{Binding ID.Value}"/>
-        </StackPanel>
         <math:Vector3dView DataContext="{Binding Position}"/>
         <local:ColorRGBAView DataContext="{Binding Ambient}"/>
         <local:ColorRGBAView DataContext="{Binding Diffuse}"/>

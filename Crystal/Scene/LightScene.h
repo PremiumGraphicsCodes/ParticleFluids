@@ -20,6 +20,8 @@ public:
 
 	Graphics::PointLight* getLight() const { return light; }
 
+	void setLight(const Graphics::PointLight& l) { *light = l; }
+
 	/*
 	void move(const Math::Vector3dd& v) override { light->move(v); }
 

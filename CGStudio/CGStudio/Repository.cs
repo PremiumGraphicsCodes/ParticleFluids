@@ -74,6 +74,11 @@ namespace PG.CGStudio
             Sync();
         }
 
+        public void UpdateLightScene(int id, PG.Core.Graphics.PointLight light)
+        {
+            this.adapter.GetSceneAdapter().UpdateLightScene(id, light);
+//            Sync();
+        }
 
         private void Sync()
         {

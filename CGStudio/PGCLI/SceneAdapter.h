@@ -32,6 +32,8 @@ public:
 
 	int AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name);
 
+	void UpdateLightScene(int id, PG::Core::Graphics::PointLight^ light);
+
 	//System::String^ FindNameById(int id);
 
 	PG::Core::Graphics::Material^ FindMaterialByid(int id);
