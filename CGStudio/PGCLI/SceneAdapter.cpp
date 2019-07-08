@@ -61,6 +61,25 @@ int SceneAdapter::AddPolygonMeshScene(System::Collections::Generic::List<PG::Cor
 	return -1;
 }
 
+PG::Core::Scene^ SceneAdapter::ToScene()
+{
+	auto str = msclr::interop::marshal_as<System::String^>(instance->getName());
+	auto root = gcnew PG::Core::Scene(instance->getId(), str, PG::Core::SceneType::ParticleSystem);
+	/*
+	auto scene = instance;
+	while (!scene->isLeaf()) {
+
+	}
+	*/
+
+	return root;
+}
+
+PG::Core::Scene^ SceneAdapter::ToScene(IScene* parent)
+{
+	return nullptr;
+}
+
 SceneAdapter::SceneAdapter(Crystal::Scene::Scene* instance, Crystal::Scene::SceneFactory*factory) :
 	instance(instance),
 	factory(factory)

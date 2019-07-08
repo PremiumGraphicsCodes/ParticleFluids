@@ -4,6 +4,7 @@ using namespace System;
 
 namespace Crystal {
 	namespace Scene {
+		class IScene;
 		class Scene;
 		class SceneFactory;
 	}
@@ -29,7 +30,11 @@ public:
 
 	int AddPolygonMeshScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ positions);
 
+	PG::Core::Scene^ ToScene();
+
 internal:
+	PG::Core::Scene^ ToScene(Crystal::Scene::IScene* parent);
+
 	SceneAdapter(Crystal::Scene::Scene* instance, Crystal::Scene::SceneFactory*factory);
 
 internal:
