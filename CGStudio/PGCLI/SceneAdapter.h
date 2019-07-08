@@ -5,6 +5,7 @@ using namespace System;
 namespace Crystal {
 	namespace Scene {
 		class Scene;
+		class SceneFactory;
 	}
 }
 
@@ -33,6 +34,7 @@ private:
 
 internal:
 	Crystal::Scene::Scene* instance;
+	Crystal::Scene::SceneFactory* factory;
 };
 
 	}

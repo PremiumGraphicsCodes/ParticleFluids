@@ -3,7 +3,12 @@
 
 #include "../../Crystal/Scene/Scene.h"
 
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/SceneFactory.h"
+#include "Converter.h"
+
 using namespace PG::CLI;
+using namespace Crystal::Math;
 using namespace Crystal::Scene;
 
 SceneAdapter::~SceneAdapter()
@@ -30,6 +35,11 @@ bool SceneAdapter::Export(System::String^ filename)
 
 int SceneAdapter::AddParticleSystemScene(System::Collections::Generic::List<PG::Core::Math::Vector3d^>^ positions)
 {
+	std::vector<Vector3dd> ps;
+	for (int i = 0; i < positions->Count; ++i) {
+		ps.push_back(Converter::toCpp(positions[i]));
+	}
+	factory->createParticleSystemScene(ps, ParticleAttribute(), "");
 	return -1;
 }
 
@@ -46,4 +56,5 @@ int SceneAdapter::AddPolygonMeshScene(System::Collections::Generic::List<PG::Cor
 SceneAdapter::SceneAdapter(Crystal::Scene::Scene* instance) :
 	instance(instance)
 {
+
 }
