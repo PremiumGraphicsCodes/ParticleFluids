@@ -1,11 +1,10 @@
-﻿using PG.Core;
-using Reactive.Bindings;
+﻿using Reactive.Bindings;
 
 namespace PG.CGStudio
 {
     public class SceneListViewModel
     {
-        public ReadOnlyReactiveCollection<Scene> Items { get; }
+        public ReadOnlyReactiveCollection<PG.Core.Scene> Items { get; }
 
         public SceneListViewModel()
         {

@@ -30,6 +30,8 @@ public:
 
 	int AddPolygonMeshScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ positions);
 
+	int AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name);
+
 	//System::String^ FindNameById(int id);
 
 	PG::Core::Graphics::Material^ FindMaterialByid(int id);

@@ -26,7 +26,7 @@ namespace PG.CGStudio.Material
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["MaterialEdit"] as Scene;
+            var item = navigationContext.Parameters["MaterialEdit"] as PG.Core.Scene;
             if (item == null)
             {
                 return;

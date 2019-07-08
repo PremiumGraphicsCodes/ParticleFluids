@@ -62,6 +62,16 @@ int SceneAdapter::AddPolygonMeshScene(System::Collections::Generic::List<PG::Cor
 	return -1;
 }
 
+int SceneAdapter::AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name)
+{
+	auto l = Converter::toCpp(light);
+	auto ll = new Crystal::Graphics::PointLight(l);
+	auto str = msclr::interop::marshal_as<std::string>(name);
+	auto scene = factory->createLightScene(ll, str);
+	instance->addScene(scene);
+	return scene->getId();
+}
+
 PG::Core::Graphics::Material^ SceneAdapter::FindMaterialByid(int id)
 {
 	auto scene = instance->findSceneById(id);
