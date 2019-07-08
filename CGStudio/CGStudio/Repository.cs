@@ -1,5 +1,7 @@
-﻿using PG.Core.Shape;
+﻿using PG.Core.Math;
+using PG.Core.Shape;
 using Reactive.Bindings;
+using System.Collections.Generic;
 
 namespace PG.CGStudio
 {
@@ -43,7 +45,13 @@ namespace PG.CGStudio
             return adapter.Export(filename);
         }
 
-        public void Sync()
+        public void AddParticleSystemScene(List<Vector3d> positions, string name)
+        {
+            this.adapter.GetSceneAdapter().AddParticleSystemScene(positions, name);
+            Sync();
+        }
+
+        private void Sync()
         {
             var newScene = this.adapter.GetSceneAdapter().ToScene();
             Scene[0] = newScene;

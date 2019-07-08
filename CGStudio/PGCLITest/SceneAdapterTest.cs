@@ -14,8 +14,6 @@ namespace PGCLITest
         {
             var repository = new RepositoryAdapter();
             var adapter = repository.GetSceneAdapter();
-            adapter.AddParticleSystemScene(new List<Vector3d>());
-            var scene = adapter.ToScene();
             //var adapter = new PolygonMeshObjectAdapter();
         }
     }
