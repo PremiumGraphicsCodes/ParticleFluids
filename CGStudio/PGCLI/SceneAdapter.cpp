@@ -33,13 +33,14 @@ bool SceneAdapter::Export(System::String^ filename)
 	return false;
 }
 
-int SceneAdapter::AddParticleSystemScene(System::Collections::Generic::List<PG::Core::Math::Vector3d^>^ positions)
+int SceneAdapter::AddParticleSystemScene(System::Collections::Generic::List<PG::Core::Math::Vector3d^>^ positions, System::String^ name)
 {
 	std::vector<Vector3dd> ps;
 	for (int i = 0; i < positions->Count; ++i) {
 		ps.push_back(Converter::toCpp(positions[i]));
 	}
-	auto scene = factory->createParticleSystemScene(ps, ParticleAttribute(), "");
+	auto str = msclr::interop::marshal_as<std::string>(name);
+	auto scene = factory->createParticleSystemScene(ps, ParticleAttribute(), str);
 	instance->addScene( scene );
 	return scene->getId();
 }

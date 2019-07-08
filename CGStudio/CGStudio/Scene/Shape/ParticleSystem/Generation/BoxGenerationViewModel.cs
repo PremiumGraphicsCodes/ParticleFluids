@@ -38,7 +38,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 var pos = box.GetPosition(u, v, w);
                 positions.Add(pos);
             }
-            MainModel.Instance.Repository.Adapter.GetSceneAdapter().AddParticleSystemScene(positions);//, Appearance.Value, "PSBox");
+            MainModel.Instance.Repository.Adapter.GetSceneAdapter().AddParticleSystemScene(positions, "PSBox");//, Appearance.Value, "PSBox");
             MainModel.Instance.Repository.Sync();
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
