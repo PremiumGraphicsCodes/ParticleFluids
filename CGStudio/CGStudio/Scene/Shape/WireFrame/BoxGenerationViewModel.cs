@@ -26,7 +26,7 @@ namespace PG.CGStudio.Generation.WireFrame
             var box = BoxViewModel.Value;
             builder.Build(box);
             var wireFrame = builder.WireFrame;
-            //MainModel.Instance.Repository.Scene.Add(wireFrame, new WireAppearance(), "WFBox");
+            //MainModel.Instance.Repository.AddWireFrameScene(wireFrame.Li, "WFBox");
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
         }

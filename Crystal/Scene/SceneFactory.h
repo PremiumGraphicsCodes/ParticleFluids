@@ -28,6 +28,8 @@ public:
 
 	ParticleSystemScene* createParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
+	WireFrameScene* createWireFrameScene(const std::vector<Math::Line3dd>& lines, const WireFrameAttribute& attribute, const std::string& name);
+
 	WireFrameScene* createWireFrameScene(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
 
 	PolygonMeshScene* createPolygonMeshScene(Shape::PolygonMesh* mesh, const std::string& name);

@@ -56,6 +56,12 @@ namespace PG.CGStudio
             Sync();
         }
 
+        public void AddWireFrameScene(List<Line3d> lines, string name)
+        {
+            this.adapter.GetSceneAdapter().AddWireFrameScene(lines, name);
+            Sync();
+        }
+
         private void Sync()
         {
             var newScene = this.adapter.GetSceneAdapter().ToScene();

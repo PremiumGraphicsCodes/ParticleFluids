@@ -126,3 +126,25 @@ Crystal::Math::Box3d PG::CLI::Converter::toCpp(PG::Core::Math::Box3d^ src)
 {
 	return Crystal::Math::Box3d();
 }
+
+Crystal::Scene::SceneType PG::CLI::Converter::toCpp(PG::Core::SceneType src)
+{
+	switch (src)
+	{
+	case PG::Core::SceneType::None:
+		return Crystal::Scene::SceneType::None;
+	case PG::Core::SceneType::Root:
+		return Crystal::Scene::SceneType::Root;
+	case PG::Core::SceneType::ParticleSystem:
+		return Crystal::Scene::SceneType::ParticleSystemScene;
+	case PG::Core::SceneType::WireFrame:
+		return Crystal::Scene::SceneType::WireFrameScene;
+	case PG::Core::SceneType::PolygonMesh:
+		return Crystal::Scene::SceneType::PolygonMeshScene;
+	case PG::Core::SceneType::PointLight:
+		return Crystal::Scene::SceneType::LightScene;
+	default:
+		return Crystal::Scene::SceneType::None;
+		break;
+	}
+}

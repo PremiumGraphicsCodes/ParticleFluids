@@ -45,16 +45,16 @@ int SceneAdapter::AddParticleSystemScene(System::Collections::Generic::List<PG::
 	return scene->getId();
 }
 
-int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines)
+int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines, System::String^ name)
 {
-	/*
 	std::vector<Line3dd> ls;
 	for (int i = 0; i < lines->Count; ++i) {
 		ls.push_back(Converter::toCpp(lines[i]));
 	}
-	factory->createWireFrameScene(ls, WireFrameAttribute(), "");
-	*/
-	return -1;
+	auto str = msclr::interop::marshal_as<std::string>(name);
+	auto scene = factory->createWireFrameScene(ls, WireFrameAttribute(), str);
+	instance->addScene( scene );
+	return scene->getId();
 }
 
 int SceneAdapter::AddPolygonMeshScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ positions)
