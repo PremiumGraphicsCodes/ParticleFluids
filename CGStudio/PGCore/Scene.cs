@@ -20,7 +20,7 @@ namespace PG.Core
     {
         public int Id { get; }
 
-        public virtual string Name { get; }
+        public string Name { get; }
 
         public List<Scene> Children { get; set; }
 

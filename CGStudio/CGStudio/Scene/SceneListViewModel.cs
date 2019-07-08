@@ -1,15 +1,19 @@
-﻿using Reactive.Bindings;
+﻿using PG.Core;
+using Reactive.Bindings;
+using System.Collections.Generic;
 
 namespace PG.CGStudio
 {
     public class SceneListViewModel
     {
-        public ReadOnlyReactiveCollection<SceneModel> Items { get; }
+        public List<Scene> Items { get; }
 
         public SceneListViewModel()
         {
+            //Items = MainModel.Instance.Repository.Scene;
+            Items = new List<Scene>();
+            Items.Add(MainModel.Instance.Repository.Scene);
             /*
-            //Items = MainModel.Instance.Repository.Objects.Objects.ToReadOnlyReactiveCollection();
 //            var model = 
             Items = new ObservableCollection<ObjectItem>();
             var item1 = new ObjectItem();

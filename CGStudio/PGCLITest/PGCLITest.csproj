@@ -49,7 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PolygonMeshObjectAdapterTest.cs" />
+    <Compile Include="SceneAdapterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +59,10 @@
     <ProjectReference Include="..\PGCLI\PGCLI.vcxproj">
       <Project>{b2fcf247-2dcb-43ff-b179-c21d15c48500}</Project>
       <Name>PGCLI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGCore\PGCore.csproj">
+      <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
+      <Name>PGCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

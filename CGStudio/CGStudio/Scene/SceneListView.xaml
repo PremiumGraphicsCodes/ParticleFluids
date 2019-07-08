@@ -16,11 +16,11 @@
             <object:SceneListViewBehavior/>
         </i:Interaction.Behaviors>
         <TreeView.ItemTemplate>
-            <HierarchicalDataTemplate DataType="{x:Type local:SceneModel}">
+            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding Id.Value}"/>
-                    <CheckBox IsChecked="{Binding IsVisible.Value}"/>
-                    <TextBlock Text="{Binding Name.Value}"/>
+                    <TextBlock Text="{Binding Id}"/>
+                    <CheckBox IsChecked="{Binding IsVisible}"/>
+                    <TextBlock Text="{Binding Name}"/>
                 </StackPanel>
             </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>
