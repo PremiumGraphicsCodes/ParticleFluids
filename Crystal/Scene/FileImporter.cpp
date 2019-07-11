@@ -8,13 +8,13 @@
 
 using namespace Crystal::Scene;
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects, SceneFactory* factory)
+bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene* parent, SceneFactory* factory)
 {
 	const auto format = getFileFormat( filePath.extension() );
-	return importFile(filePath, objects, factory, format);
+	return importFile(filePath, parent, factory, format);
 }
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene& objects, SceneFactory* factory, const FileFormat format)
+bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene* parent, SceneFactory* factory, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
@@ -22,7 +22,7 @@ bool FileImporter::importFile(const std::experimental::filesystem::path& filePat
 		OBJFileImporter importer(factory);
 		const auto isOk = importer.importOBJWithMTL(filePath);
 		if (isOk) {
-			objects.addScene(importer.getScene());
+			parent->addScene(importer.getScene());
 		}
 		return isOk;
 	}
@@ -43,8 +43,8 @@ bool FileImporter::importFile(const std::experimental::filesystem::path& filePat
 	}
 	case FileFormat::PCD :
 	{
-		PCDFileImporter importer;
-		return importer.importPCD(filePath, objects);
+		PCDFileImporter importer(factory);
+		return importer.importPCD(filePath, parent);
 	}
 	default:
 		assert(false);

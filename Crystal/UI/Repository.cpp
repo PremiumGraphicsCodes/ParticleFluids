@@ -34,7 +34,7 @@ void Repository::clear()
 bool Repository::importFile(const std::experimental::filesystem::path& filename)
 {
 	FileImporter reader;
-	return reader.importFile(filename, objects, &objectFactory);
+	return reader.importFile(filename, &objects, &objectFactory);
 }
 
 bool Repository::exportFile(const std::experimental::filesystem::path& filename)

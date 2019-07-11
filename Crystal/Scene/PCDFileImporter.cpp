@@ -2,11 +2,16 @@
 
 #include "../IO/PCDFileReader.h"
 #include "Scene.h"
+#include "SceneFactory.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
 
-bool PCDFileImporter::importPCD(const std::experimental::filesystem::path& filePath, Scene& repository)
+PCDFileImporter::PCDFileImporter(SceneFactory* factory) :
+	factory(factory)
+{}
+
+bool PCDFileImporter::importPCD(const std::experimental::filesystem::path& filePath, Scene* parent)
 {
 	PCDFileReader reader;
 	if (reader.read(filePath)) {
@@ -14,7 +19,7 @@ bool PCDFileImporter::importPCD(const std::experimental::filesystem::path& fileP
 		ParticleAttribute attr;
 		attr.color = glm::vec4(0, 0, 0, 0);
 		attr.size = 1.0;
-		//repository.getFactory()->createParticleSystemScene(positions, attr, "PCD");
+		parent->addScene( factory->createParticleSystemScene(positions, attr, "PCD") );
 		return true;
 	}
 	return false;

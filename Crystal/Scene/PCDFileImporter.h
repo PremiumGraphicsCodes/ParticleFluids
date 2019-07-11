@@ -5,11 +5,17 @@
 namespace Crystal {
 	namespace Scene {
 		class Scene;
+		class SceneFactory;
 
 class PCDFileImporter
 {
 public:
-	bool importPCD(const std::experimental::filesystem::path& filePath, Scene& objects);
+	explicit PCDFileImporter(SceneFactory* factory);
+
+	bool importPCD(const std::experimental::filesystem::path& filePath, Scene* parent);
+
+private:
+	SceneFactory* factory;
 };
 
 	}
