@@ -7,7 +7,7 @@ namespace PG.CGStudio.Light
 {
     public class LightEditViewModel : BindableBase, INavigationAware
     {
-        private int id;
+        public ReactiveProperty<int> Id { get; }
 
         public PointLightViewModel PointLightViewModel { get; }
 
@@ -15,6 +15,7 @@ namespace PG.CGStudio.Light
 
         public LightEditViewModel()
         {
+            this.Id = new ReactiveProperty<int>();
             this.PointLightViewModel = new PointLightViewModel();
             this.OKCommand = new ReactiveCommand();
             this.OKCommand.Subscribe(OnOk);
@@ -22,7 +23,10 @@ namespace PG.CGStudio.Light
 
         private void OnOk()
         {
-            MainModel.Instance.Repository.UpdateLightScene(id, PointLightViewModel.Value);
+            var repository = MainModel.Instance.Repository;
+            repository.UpdateLightScene(Id.Value, PointLightViewModel.Value);
+            Canvas3d.Instance.Update(repository);
+            Canvas3d.Instance.Render();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -42,7 +46,7 @@ namespace PG.CGStudio.Light
             {
                 return;
             }
-            this.id = item.Id;
+            this.Id.Value = item.Id;
             var light = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindLightById( item.Id );
             this.PointLightViewModel.Value = light;
         }
