@@ -16,20 +16,17 @@ void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
 		return;
 	}
 
+	// Polygon直下にあるfaceはデフォルトで描画．
 	TriangleBuffer bf(*getShape());
-
 	bf.add(getShape()->getFaces(), Material());
 
-
+	// groupにあるfaceは対応するmaterialで描画．
 	const auto& children = getChildren();
 	for (auto& child : children) {
 		auto faceGroup = static_cast<FaceGroupScene*>(child);
 		auto materialScene = static_cast<MaterialScene*>( getParent()->findSceneByName( faceGroup->getMaterialName() ) );
 		bf.add(faceGroup->getShape(), *(materialScene->getMaterial()));
 	}
-
-	// childrenをFaceGroupにcastすればok.
-
 	viewModel.triangleBuffers.push_back(bf);
 }
 
