@@ -28,7 +28,8 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 		const auto& normals = obj.normals;
 		const auto& texCoords = obj.texCoords;
 
-		VertexFactory* vertexFactory = builder.getVertexFactory();
+		PolygonMesh* polygonMesh = new PolygonMesh();
+		VertexFactory* vertexFactory = polygonMesh->getVertexFactory();
 		for (const auto& p : positions) {
 			vertexFactory->createPosition(p);
 		}
@@ -39,15 +40,13 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 			vertexFactory->createTexCoord(tc);
 		}
 
-		FaceFactory* faceFactory = builder.getFaceFactory();
-
-
 		const auto& positionTable = vertexFactory->getPositions();
 		const auto& normalTable = vertexFactory->getNormals();
 		const auto& texCoordTable = vertexFactory->getTexCoords();
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
+			FaceGroup faceGroup;
 			for (const auto& f : g.faces) {
 				std::vector<int> indices;
 				for (int i = 0; i < f.positionIndices.size(); i++) {
@@ -57,11 +56,11 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 					if (texCoordIndex >= 0) {
 						auto t = texCoordTable[texCoordIndex];
 						auto v = vertexFactory->createVertex(p, n, t);
-						indices.push_back(v);
+						indices.push_back(v->getId());
 					}
 					else {
 						auto v = vertexFactory->createVertex(p, n);
-						indices.push_back(v);
+						indices.push_back(v->getId());
 					}
 				}
 				//indices.push_back(eachIndices);
@@ -69,14 +68,16 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 				int i1 = 1;
 				int i2 = 2;
 				for (int i = 0; i2 < indices.size(); i++) {
-					faceFactory->createFace({ origin, indices[i1], indices[i2] });
+					Face f(origin, indices[i1], indices[i2]);
+					faceGroup.faces.push_back(f);
 					i1++;
 					i2++;
 				}
 			}
 			auto material = scene->findSceneByName(g.usemtl);
 			const auto materialId = (material) ? material->getId() : -1;
-			builder.pushCurrentFaceGroup(materialId);
+			faceGroup.attributeId = materialId;
+			polygonMesh->addFaceGroup(faceGroup);
 		}
 		scene->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "PolygonMesh") );
 

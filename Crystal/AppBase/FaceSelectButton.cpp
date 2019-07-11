@@ -17,11 +17,13 @@ void FaceSelectButton::onShow()
 			if (mesh == nullptr) {
 				return;
 			}
+			/*
 			auto f = mesh->getShape()->findFaceById(childId);
 			if (f == nullptr) {
 				return;
 			}
 			face.setValue(f);
+			*/
 		};
 		ctrl->setFunction(func);
 		getCanvas()->setUICtrl(ctrl);

@@ -7,12 +7,6 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
-
-PolygonMesh::PolygonMesh(const VertexFactory& vertices, const FaceFactory& faces) :
-	vertices(vertices),
-	faces(faces)
-{}
-
 PolygonMesh::~PolygonMesh()
 {
 	clear();
@@ -21,7 +15,7 @@ PolygonMesh::~PolygonMesh()
 void PolygonMesh::clear()
 {
 	vertices.clear();
-	faces.clear();
+	faceGroups.clear();
 }
 
 bool PolygonMesh::has(Vertex* v)
@@ -67,16 +61,6 @@ void PolygonMesh::transform(const Matrix4dd& m)
 	for (auto p : vs) {
 		p->transform(m);
 	}
-}
-
-Face* PolygonMesh::findFaceById(const int id)
-{
-	const auto& fs = faces.getFaces();
-	auto iter = std::find_if(fs.begin(), fs.end(), [=](auto f) { return f->getId() == id; });
-	if (iter == fs.end()) {
-		return nullptr;
-	}
-	return *iter;
 }
 
 Box3d PolygonMesh::getBoundingBox() const

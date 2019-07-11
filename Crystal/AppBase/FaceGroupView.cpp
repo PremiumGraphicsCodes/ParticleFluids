@@ -1,7 +1,6 @@
 #include "FaceGroupView.h"
 
 #include "../Shape/Face.h"
-#include "../Shape/FaceFactory.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::UI;

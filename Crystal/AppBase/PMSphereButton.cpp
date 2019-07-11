@@ -20,7 +20,6 @@ void PMSphereButton::onOk()
 	PolygonMeshBuilder builder;
 	//builder.pushCurrentFaceGroup();
 	builder.add(sphere.getValue(), unum.getValue(), vnum.getValue());
-	builder.pushCurrentFaceGroup();
 	auto scene = getModel()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
 	getModel()->getObjects()->addScene(scene);
 	getCanvas()->setViewModel(getModel()->toViewModel());

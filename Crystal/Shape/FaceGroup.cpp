@@ -2,6 +2,7 @@
 
 using namespace Crystal::Shape;
 
+/*
 bool FaceGroup::has(Face* f) const
 {
 	if (faces.empty()) {
@@ -10,3 +11,4 @@ bool FaceGroup::has(Face* f) const
 	auto iter = std::find(faces.cbegin(), faces.cend(), f);
 	return iter != faces.cend();
 }
+*/

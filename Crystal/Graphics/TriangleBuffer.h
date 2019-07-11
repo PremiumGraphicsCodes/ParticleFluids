@@ -53,9 +53,9 @@ public:
 		const auto& faces = group.faces;
 		std::vector<unsigned int> indices;
 		for (auto f : faces) {
-			indices.push_back(f->getV1()->getAttr().id);
-			indices.push_back(f->getV2()->getAttr().id);
-			indices.push_back(f->getV3()->getAttr().id);
+			indices.push_back(f.v1);
+			indices.push_back(f.v2);
+			indices.push_back(f.v3);
 		}
 		TriangleBufferBlock block(indices, mat);
 		blocks.push_back(block);

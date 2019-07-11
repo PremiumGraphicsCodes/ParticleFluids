@@ -22,11 +22,11 @@ public:
 
 	Math::Vector2dd* createTexCoord(const Math::Vector2dd& n);
 
-	int createVertex(Math::Vector3dd* position);
+	Vertex* createVertex(Math::Vector3dd* position);
 
-	int createVertex(Math::Vector3dd* position, Math::Vector3dd* normal);
+	Vertex* createVertex(Math::Vector3dd* position, Math::Vector3dd* normal);
 
-	int createVertex(Math::Vector3dd* position, Math::Vector3dd* normal, Math::Vector2dd* texCoord);
+	Vertex* createVertex(Math::Vector3dd* position, Math::Vector3dd* normal, Math::Vector2dd* texCoord);
 
 	std::vector<Vertex*> getVertices() const { return vertices; }
 

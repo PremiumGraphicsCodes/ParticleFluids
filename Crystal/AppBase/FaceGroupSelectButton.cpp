@@ -16,12 +16,14 @@ void FaceGroupSelectButton::onShow()
 			if (mesh == nullptr) {
 				return;
 			}
+			/*
 			auto f = mesh->getShape()->findFaceById(childId);
 			if (f == nullptr) {
 				return;
 			}
 			auto g = mesh->getShape()->findGroupByFace(f);
 			group.setValue(g);
+			*/
 		};
 		ctrl->setFunction(func);
 		getCanvas()->setUICtrl(ctrl);

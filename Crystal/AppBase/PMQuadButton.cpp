@@ -25,7 +25,6 @@ void PMQuadButton::onOk()
 {
 	PolygonMeshBuilder builder;
 	builder.add(quad.getValue());
-	builder.pushCurrentFaceGroup();
 	auto scene = getModel()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
 	getModel()->getObjects()->addScene(scene);
 	getCanvas()->setViewModel(getModel()->toViewModel());

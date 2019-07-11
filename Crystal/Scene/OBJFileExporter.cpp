@@ -12,24 +12,28 @@ bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& fileP
 {
 	OBJFile obj;
 	obj.groups.push_back(OBJGroup());
-		const auto& vertices = polygon.getShape()->getVertices();
-		const auto& faces = polygon.getShape()->getFaces();
+	const auto& vertices = polygon.getShape()->getVertices();
+	const auto& groups = polygon.getShape()->getGroups();
+
+	for (auto g : groups) {
+		const auto& faces = g.faces;
 		for (auto f : faces) {
 			std::vector<int> indices;
-			indices.push_back(f->getV1()->getAttr().id + 1);
-			indices.push_back(f->getV2()->getAttr().id + 1);
-			indices.push_back(f->getV3()->getAttr().id + 1);
+			indices.push_back(f.v1 + 1);
+			indices.push_back(f.v2 + 1);
+			indices.push_back(f.v3 + 1);
 			OBJFace face;
 			face.positionIndices = indices;
 			face.normalIndices = indices;
 			face.texCoordIndices = indices;
 			obj.groups[0].faces.push_back(face);
 		}
-		for (auto v : vertices) {
-			obj.positions.push_back(v->getPosition());
-			obj.normals.push_back(v->getNormal());
-			obj.texCoords.push_back(v->getTexCoord());
-		}
+	}
+	for (auto v : vertices) {
+		obj.positions.push_back(v->getPosition());
+		obj.normals.push_back(v->getNormal());
+		obj.texCoords.push_back(v->getTexCoord());
+	}
 	OBJFileWriter writer;
 	return writer.write(filePath, obj);
 }

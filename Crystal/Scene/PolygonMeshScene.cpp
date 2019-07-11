@@ -38,15 +38,19 @@ void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
 void PolygonMeshScene::addViewModel(SceneIdViewModel& viewModel) const
 {
 	const auto objectId = getId();
-	const auto& faces = getShape()->getFaces();
+	const auto& vertices = getShape()->getVertices();
+	const auto& groups = getShape()->getGroups();
 	int childId = 0;
 	int index = 0;
-	for (auto f : faces) {
-		Graphics::DrawableID did(objectId, childId++);
-		const auto& idColor = did.toColor();
-		viewModel.triangleIdBuffer.add(f->getV1()->getPosition(), idColor, index++);
-		viewModel.triangleIdBuffer.add(f->getV2()->getPosition(), idColor, index++);
-		viewModel.triangleIdBuffer.add(f->getV3()->getPosition(), idColor, index++);
+	for (auto g : groups) {
+		const auto& faces = g.faces;
+		for (auto f : faces) {
+			Graphics::DrawableID did(objectId, childId++);
+			const auto& idColor = did.toColor();
+			viewModel.triangleIdBuffer.add( vertices[f.v1]->getPosition(), idColor, index++);
+			viewModel.triangleIdBuffer.add( vertices[f.v2]->getPosition(), idColor, index++);
+			viewModel.triangleIdBuffer.add( vertices[f.v3]->getPosition(), idColor, index++);
+		}
 	}
 }
 

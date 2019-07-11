@@ -54,26 +54,26 @@ Vector2dd* VertexFactory::createTexCoord(const Vector2dd& n)
 	return tt;
 }
 
-int VertexFactory::createVertex(Vector3dd* position)
+Vertex* VertexFactory::createVertex(Vector3dd* position)
 {
 	Shape::VertexAttr attr;
 	attr.id = nextId++;
 	auto v = new Vertex(position, attr);
 	vertices.push_back(v);
-	return v->getAttr().id;
+	return v;
 }
 
-int VertexFactory::createVertex(Vector3dd* position, Vector3dd* normal)
+Vertex* VertexFactory::createVertex(Vector3dd* position, Vector3dd* normal)
 {
 	Shape::VertexAttr attr;
 	attr.normal = normal;
 	attr.id = nextId++;
 	auto v = new Vertex(position, attr);
 	vertices.push_back(v);
-	return v->getAttr().id;
+	return v;
 }
 
-int VertexFactory::createVertex(Vector3dd* position, Vector3dd* normal, Vector2dd* texCoord)
+Vertex* VertexFactory::createVertex(Vector3dd* position, Vector3dd* normal, Vector2dd* texCoord)
 {
 	Shape::VertexAttr attr;
 	attr.normal = normal;
@@ -81,5 +81,5 @@ int VertexFactory::createVertex(Vector3dd* position, Vector3dd* normal, Vector2d
 	attr.id = nextId++;
 	auto v = new Vertex(position, attr);
 	vertices.push_back(v);
-	return v->getAttr().id;
+	return v;
 }

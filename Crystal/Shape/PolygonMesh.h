@@ -3,7 +3,7 @@
 #include "../Util/UnCopyable.h"
 #include "Vertex.h"
 #include "VertexFactory.h"
-#include "FaceFactory.h"
+#include "FaceGroup.h"
 #include "Face.h"
 #include "../Math/Quaternion.h"
 #include "../Math/Matrix3d.h"
@@ -23,16 +23,12 @@ class Face;
 class PolygonMesh : public IShape
 {
 public:
-	//PolygonMesh()
-	//{}
-
-	PolygonMesh(const VertexFactory& vertices, const FaceFactory& faces);
+	PolygonMesh()
+	{}
 
 	~PolygonMesh();
 
-	std::list<Face*> getFaces() const { return faces.getFaces(); }
-
-	std::vector<FaceGroup> getGroups() const { return faces.getGroups(); }
+	std::list<FaceGroup> getGroups() const { return faceGroups; }
 
 	std::vector<Vertex*> getVertices() const;
 
@@ -48,15 +44,18 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override;
 
-	Face* findFaceById(const int id);
-
-	FaceGroup findGroupByFace(Face* f) { return faces.findGroupByFace(f); }
+	//Face* findFaceById(const int id);
 
 	Math::Box3d getBoundingBox() const override;
 
+	VertexFactory* getVertexFactory() { return &vertices; }
+
+	void addFaceGroup(FaceGroup group) { this->faceGroups.push_back(group); }
+
 private:
 	VertexFactory vertices;
-	FaceFactory faces;
+	std::list<FaceGroup> faceGroups;
+
 };
 
 	}

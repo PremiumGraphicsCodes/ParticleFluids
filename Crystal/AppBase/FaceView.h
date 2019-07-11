@@ -29,10 +29,9 @@ public:
 private:
 	IntView id;
 	Shape::Face* value;
-	VertexView vertex1;
-	VertexView vertex2;
-	VertexView vertex3;
+	IntView vertex1;
+	IntView vertex2;
+	IntView vertex3;
 };
-
 	}
 }

@@ -53,9 +53,6 @@
     <ClInclude Include="VertexFactory.h">
       <Filter>PolygonMesh</Filter>
     </ClInclude>
-    <ClInclude Include="FaceFactory.h">
-      <Filter>PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="FaceGroup.h">
       <Filter>PolygonMesh</Filter>
     </ClInclude>
@@ -83,9 +80,6 @@
       <Filter>Volume</Filter>
     </ClCompile>
     <ClCompile Include="VertexFactory.cpp">
-      <Filter>PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="FaceFactory.cpp">
       <Filter>PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="FaceGroup.cpp">
