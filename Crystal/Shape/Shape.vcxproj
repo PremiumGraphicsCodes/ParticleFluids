@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Face.h" />
-    <ClInclude Include="FaceGroup.h" />
     <ClInclude Include="IParticle.h" />
     <ClInclude Include="IParticleSystem.h" />
     <ClInclude Include="IShape.h" />
@@ -37,7 +36,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Face.cpp" />
-    <ClCompile Include="FaceGroup.cpp" />
     <ClCompile Include="PolygonMesh.cpp" />
     <ClCompile Include="PolygonMeshBuilder.cpp" />
     <ClCompile Include="Vertex.cpp" />

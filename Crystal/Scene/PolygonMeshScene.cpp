@@ -5,6 +5,7 @@
 
 #include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/DrawableId.h"
+#include "FaceGroupScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
@@ -17,23 +18,18 @@ void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
 
 	TriangleBuffer bf(*getShape());
 
-	// children‚ðFaceGroup‚Écast‚·‚ê‚Îok.
-	for (const auto& group : getShape()->getGroups()) {
-		auto materialId = group.attributeId;
-		auto parent = getParent();
-		if (parent != nullptr) {
-			auto mat = static_cast<MaterialScene*>( parent->findSceneById(materialId) );
-			if (mat == nullptr) {
-				bf.add(group, Material());
-			}
-			else {
-				bf.add(group, *(mat->getMaterial()));
-			}			
-		}
-		else {
-			bf.add(group, Material());
-		}
+	bf.add(getShape()->getFaces(), Material());
+
+
+	const auto& children = getChildren();
+	for (auto& child : children) {
+		auto faceGroup = static_cast<FaceGroupScene*>(child);
+		auto materialScene = static_cast<MaterialScene*>( getParent()->findSceneByName( faceGroup->getMaterialName() ) );
+		bf.add(faceGroup->getShape(), *(materialScene->getMaterial()));
 	}
+
+	// children‚ðFaceGroup‚Écast‚·‚ê‚Îok.
+
 	viewModel.triangleBuffers.push_back(bf);
 }
 
@@ -41,18 +37,15 @@ void PolygonMeshScene::addViewModel(SceneIdViewModel& viewModel) const
 {
 	const auto objectId = getId();
 	const auto& vertices = getShape()->getVertices();
-	const auto& groups = getShape()->getGroups();
+	const auto& faces = getShape()->getFaces();
 	int childId = 0;
 	int index = 0;
-	for (auto g : groups) {
-		const auto& faces = g.faces;
-		for (auto f : faces) {
-			Graphics::DrawableID did(objectId, childId++);
-			const auto& idColor = did.toColor();
-			viewModel.triangleIdBuffer.add( vertices[f.v1]->getPosition(), idColor, index++);
-			viewModel.triangleIdBuffer.add( vertices[f.v2]->getPosition(), idColor, index++);
-			viewModel.triangleIdBuffer.add( vertices[f.v3]->getPosition(), idColor, index++);
-		}
+	for (auto f : faces) {
+		Graphics::DrawableID did(objectId, childId++);
+		const auto& idColor = did.toColor();
+		viewModel.triangleIdBuffer.add( vertices[f.v1]->getPosition(), idColor, index++);
+		viewModel.triangleIdBuffer.add( vertices[f.v2]->getPosition(), idColor, index++);
+		viewModel.triangleIdBuffer.add( vertices[f.v3]->getPosition(), idColor, index++);
 	}
 }
 

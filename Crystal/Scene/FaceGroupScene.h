@@ -15,14 +15,14 @@ public:
 		IShapeScene(-1)
 	{}
 
-	FaceGroupScene(const int id, const std::string& name, const std::list<Shape::Face>& faces) :
+	FaceGroupScene(const int id, const std::string& name, const std::vector<Shape::Face>& faces) :
 		IShapeScene(id, name),
 		faces(faces)
 	{}
 
 	~FaceGroupScene() {};
 
-	std::list<Shape::Face> getShape() const { return faces; }
+	std::vector<Shape::Face> getShape() const { return faces; }
 
 	void move(const Math::Vector3dd& v) override { ; }
 
@@ -31,6 +31,10 @@ public:
 	void transform(const Math::Matrix4dd& m) { ; }
 
 	bool isNull() const override { return faces.empty(); }
+
+	void addFace(const Shape::Face& f) { faces.push_back(f); }
+
+	void setMaterialName(const std::string& mname) { this->materialName = mname; }
 
 	SceneType getType() const override { return SceneType::FaceGroupScene; }
 
@@ -45,9 +49,11 @@ public:
 
 	virtual void getBoundingBox(Math::Box3d& boundingBox) const override {}
 
+	std::string getMaterialName() const { return materialName; }
+
 private:
-	std::list<Shape::Face> faces;
-	int materialId;
+	std::vector<Shape::Face> faces;
+	std::string materialName;
 };
 
 	}

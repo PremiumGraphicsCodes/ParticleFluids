@@ -9,7 +9,7 @@ PolygonMeshView::PolygonMeshView(const std::string& name, PolygonMesh* mesh) :
 	IWindow(name),
 	name("Name", name),
 	vertexCount("Verticies", mesh->getVertices().size()),
-	groupCount("Groups", mesh->getGroups().size()),
+	faceCount("Faces", mesh->getFaces().size()),
 	value(mesh)
 {}
 
@@ -17,5 +17,5 @@ void PolygonMeshView::show()
 {
 	name.show();
 	vertexCount.show();
-	groupCount.show();
+	faceCount.show();
 }

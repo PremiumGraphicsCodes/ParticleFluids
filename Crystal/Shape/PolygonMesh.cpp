@@ -15,7 +15,7 @@ PolygonMesh::~PolygonMesh()
 void PolygonMesh::clear()
 {
 	vertices.clear();
-	faceGroups.clear();
+	faces.clear();
 }
 
 bool PolygonMesh::has(Vertex* v)

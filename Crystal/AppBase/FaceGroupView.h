@@ -7,7 +7,7 @@
 #include "StringView.h"
 #include "FaceView.h"
 
-#include "../Shape/FaceGroup.h"
+#include "../Scene/FaceGroupScene.h"
 
 namespace Crystal {
 	namespace UI {
@@ -17,19 +17,19 @@ class FaceGroupView : public IWindow
 public:
 	explicit FaceGroupView(const std::string& name);
 
-	FaceGroupView(const std::string& name, const Shape::FaceGroup& value);
+	FaceGroupView(const std::string& name, Scene::FaceGroupScene* value);
 
 	void show() override;
 
-	void setValue(const Shape::FaceGroup& value);
+	void setValue(Scene::FaceGroupScene* value);
 
-	Shape::FaceGroup getValue() const { return value; }
+	//Shape::FaceGroup getValue() const { return value; }
 
 private:
 	IntView id;
 	IntView faceCount;
-	IntView attributeId;
-	Shape::FaceGroup value;
+	StringView materialName;
+	Scene::FaceGroupScene* value;
 };
 
 	}

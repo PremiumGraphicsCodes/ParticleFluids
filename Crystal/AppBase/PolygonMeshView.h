@@ -22,7 +22,7 @@ public:
 private:
 	StringView name;
 	IntView vertexCount;
-	IntView groupCount;
+	IntView faceCount;
 	Shape::PolygonMesh* value;
 };
 

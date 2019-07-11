@@ -28,9 +28,7 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 	auto v1 = vertexFactory->createVertex( p1, normal)->getId();
 	auto v2 = vertexFactory->createVertex( p2, normal)->getId();
 	auto f = Face(v0, v1, v2, nextFaceId++);
-	FaceGroup group;
-	group.faces.push_back(f);
-	polygonMesh->addFaceGroup(group);
+	polygonMesh->addFace(f);
 }
 
 void PolygonMeshBuilder::add(const Box3d& box)
@@ -46,14 +44,12 @@ void PolygonMeshBuilder::add(const Box3d& box)
 	auto p6 = vertexFactory->createPosition(box.getPosition(Vector3dd(1, 1, 1)));
 	auto p7 = vertexFactory->createPosition(box.getPosition(Vector3dd(0, 1, 1)));
 
-	FaceGroup group;
-	add(p0, p1, p2, p3, group); // front
-	add(p7, p6, p5, p4, group); // back
-	add(p3, p2, p6, p7, group); // top
-	add(p0, p1, p5, p4, group); // bottom
-	add(p0, p4, p7, p3, group); // left
-	add(p1, p5, p6, p2, group); // right;
-	polygonMesh->addFaceGroup(group);
+	add(p0, p1, p2, p3); // front
+	add(p7, p6, p5, p4); // back
+	add(p3, p2, p6, p7); // top
+	add(p0, p1, p5, p4); // bottom
+	add(p0, p4, p7, p3); // left
+	add(p1, p5, p6, p2); // right;
 }
 
 void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int vnum)
@@ -74,14 +70,12 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 		}
 		grid.push_back(vs);
 	}
-	FaceGroup faceGroup;
 	for (int i = 0; i < grid.size()-1; ++i) {
 		for (int j = 0; j < grid[i].size() - 1; ++j) {
-			faceGroup.faces.push_back( Face( grid[i][j], grid[i + 1][j], grid[i][j + 1] ) );
-			faceGroup.faces.push_back( Face(grid[i][j + 1], grid[i + 1][j], grid[i + 1][j + 1] ) );
+			polygonMesh->addFace( Face( grid[i][j], grid[i + 1][j], grid[i][j + 1] ) );
+			polygonMesh->addFace( Face(grid[i][j + 1], grid[i + 1][j], grid[i + 1][j + 1] ) );
 		}
 	}
-	polygonMesh->addFaceGroup(faceGroup);
 }
 
 void PolygonMeshBuilder::add(const Quad3d& quad)
@@ -95,17 +89,14 @@ void PolygonMeshBuilder::add(const Quad3d& quad)
 	auto v2 = vertexFactory->createVertex( vertexFactory->createPosition( quad.getPosition(1, 1) ), normal, vertexFactory->createTexCoord( Vector2dd(1, 1)) )->getId();
 	auto v3 = vertexFactory->createVertex( vertexFactory->createPosition( quad.getPosition(0, 1) ), normal, vertexFactory->createTexCoord( Vector2dd(0, 1)) )->getId();
 
-	FaceGroup faceGroup;
-	faceGroup.faces.push_back(Face(v0, v1, v2));
-	faceGroup.faces.push_back(Face(v3,v1,v2 ));
-	polygonMesh->addFaceGroup(faceGroup);
+	polygonMesh->addFace(Face(v0, v1, v2));
+	polygonMesh->addFace(Face(v3,v1,v2 ));
 }
 
 void PolygonMeshBuilder::add(const TriangleMesh& mesh)
 {
 	auto vertexFactory = polygonMesh->getVertexFactory();
 	const auto& fs = mesh.getFaces();
-	FaceGroup faceGroup;
 	for (const auto& f : fs) {
 		const auto& vs = f.getVertices();
 		const auto& normal = f.getNormal();
@@ -115,9 +106,8 @@ void PolygonMeshBuilder::add(const TriangleMesh& mesh)
 			auto p = vertexFactory->createPosition(vs[i]);
 			ids[i] = vertexFactory->createVertex(p, n)->getId();
 		}
-		faceGroup.faces.push_back( Face(ids[0], ids[1], ids[2]) );
+		polygonMesh->addFace( Face(ids[0], ids[1], ids[2]) );
 	}
-	polygonMesh->addFaceGroup(faceGroup);
 }
 
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
@@ -125,7 +115,7 @@ PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
 	return polygonMesh;
 }
 
-void PolygonMeshBuilder::add(Vector3dd* p0, Vector3dd* p1, Vector3dd* p2, Vector3dd* p3, FaceGroup& faceGroup)
+void PolygonMeshBuilder::add(Vector3dd* p0, Vector3dd* p1, Vector3dd* p2, Vector3dd* p3)
 {
 	auto vertexFactory = polygonMesh->getVertexFactory();
 
@@ -137,6 +127,6 @@ void PolygonMeshBuilder::add(Vector3dd* p0, Vector3dd* p1, Vector3dd* p2, Vector
 	auto v2 = vertexFactory->createVertex(p2, n0)->getId();
 	auto v3 = vertexFactory->createVertex(p3, n0)->getId();
 
-	faceGroup.faces.push_back( Face( v0,v1,v2 ));
-	faceGroup.faces.push_back(Face(v0, v2, v3));
+	polygonMesh->addFace( Face( v0,v1,v2 ));
+	polygonMesh->addFace( Face(v0, v2, v3));
 }

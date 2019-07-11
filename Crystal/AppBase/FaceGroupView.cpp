@@ -3,21 +3,22 @@
 #include "../Shape/Face.h"
 
 using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 FaceGroupView::FaceGroupView(const std::string& name) :
 	IWindow(name),
 	id("Id"),
 	faceCount("Faces"),
-	attributeId("AttributeId")
+	materialName("Material")
 {
 }
 
-FaceGroupView::FaceGroupView(const std::string& name, const FaceGroup& value) :
+FaceGroupView::FaceGroupView(const std::string& name, FaceGroupScene* value) :
 	IWindow(name),
-	id("Id", value.id),
-	faceCount("Faces"),
-	attributeId("AttributeId", value.attributeId)
+	id("Id", value->getId()),
+	faceCount("Faces", value->getShape().size()),
+	materialName("Material", value->getMaterialName())
 {
 }
 
@@ -25,12 +26,12 @@ void FaceGroupView::show()
 {
 	id.show();
 	faceCount.show();
-	attributeId.show();
+	materialName.show();
 }
 
-void FaceGroupView::setValue(const FaceGroup& value)
+void FaceGroupView::setValue(FaceGroupScene* value)
 {
-	id.setValue(value.id);
-	faceCount.setValue(value.faces.size());
-	attributeId.setValue(value.attributeId);
+	id.setValue(value->getId());
+	faceCount.setValue(value->getShape().size());
+	materialName.setValue(value->getMaterialName());
 }

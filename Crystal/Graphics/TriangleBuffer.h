@@ -6,7 +6,6 @@
 #include "Buffer3d.h"
 #include "Buffer4d.h"
 #include "Material.h"
-#include "../Shape/FaceGroup.h"
 #include "../Shape/PolygonMesh.h"
 
 namespace Crystal {
@@ -49,8 +48,7 @@ public:
 		}
 	}
 
-	void add(const Shape::FaceGroup& group, const Material& mat) {
-		const auto& faces = group.faces;
+	void add(const std::vector<Shape::Face>& faces, const Material& mat) {
 		std::vector<unsigned int> indices;
 		for (auto f : faces) {
 			indices.push_back(f.v1);

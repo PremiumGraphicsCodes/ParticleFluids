@@ -3,7 +3,6 @@
 #include "../Util/UnCopyable.h"
 #include "Vertex.h"
 #include "VertexFactory.h"
-#include "FaceGroup.h"
 #include "Face.h"
 #include "../Math/Quaternion.h"
 #include "../Math/Matrix3d.h"
@@ -28,9 +27,9 @@ public:
 
 	~PolygonMesh();
 
-	std::list<FaceGroup> getGroups() const { return faceGroups; }
-
 	std::vector<Vertex*> getVertices() const;
+
+	std::vector<Face> getFaces() const { return faces; }
 
 	void clear();
 
@@ -50,11 +49,11 @@ public:
 
 	VertexFactory* getVertexFactory() { return &vertices; }
 
-	void addFaceGroup(FaceGroup group) { this->faceGroups.push_back(group); }
+	void addFace(const Face& face) { this->faces.push_back(face); }
 
 private:
 	VertexFactory vertices;
-	std::list<FaceGroup> faceGroups;
+	std::vector<Face> faces;
 
 };
 

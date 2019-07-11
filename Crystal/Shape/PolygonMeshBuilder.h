@@ -34,7 +34,7 @@ public:
 	PolygonMesh* getPolygonMesh();
 
 private:
-	void add(Math::Vector3dd* p0, Math::Vector3dd* p1, Math::Vector3dd* p2, Math::Vector3dd* p3Face, FaceGroup& faceGroup);
+	void add(Math::Vector3dd* p0, Math::Vector3dd* p1, Math::Vector3dd* p2, Math::Vector3dd* p3);
 
 	PolygonMesh* polygonMesh;
 	int nextFaceId;
