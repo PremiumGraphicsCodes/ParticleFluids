@@ -1,32 +1,24 @@
 #pragma once
 
-#include "../IO/OBJFile.h"
-#include "../IO/MTLFile.h"
-#include "SceneFactory.h"
 #include <experimental/filesystem>
 
 namespace Crystal {
 	namespace Scene {
-		class PolygonMeshScene;
-		class MaterialScene;
 		class Scene;
+		class SceneFactory;
 
 class OBJFileImporter
 {
 public:
 	explicit OBJFileImporter(SceneFactory* sceneFactory);
 
-	bool importOBJ(const std::experimental::filesystem::path& filePath);
+	bool importOBJ(const std::experimental::filesystem::path& filePath, Scene* scene);
 
-	bool importMTL(const std::experimental::filesystem::path& filePath);
+	bool importMTL(const std::experimental::filesystem::path& filePath, Scene* scene);
 
-	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath);
-
-	Scene* getScene() { return scene; }
+	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene* parent);
 
 private:
-	//void match(const IO::OBJFile& obj, Scene& appearances);
-	Scene* scene;
 	SceneFactory* sceneFactory;
 };
 	}

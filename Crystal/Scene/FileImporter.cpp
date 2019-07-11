@@ -20,16 +20,12 @@ bool FileImporter::importFile(const std::experimental::filesystem::path& filePat
 	case FileFormat::OBJ :
 	{
 		OBJFileImporter importer(factory);
-		const auto isOk = importer.importOBJWithMTL(filePath);
-		if (isOk) {
-			parent->addScene(importer.getScene());
-		}
-		return isOk;
+		return importer.importOBJWithMTL(filePath, parent);
 	}
 	case FileFormat::MTL:
 	{
 		OBJFileImporter importer(factory);
-		return importer.importMTL(filePath);
+		return importer.importMTL(filePath, parent);
 	}
 	case FileFormat::STL_ASCII :
 	{

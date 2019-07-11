@@ -15,10 +15,9 @@ using namespace Crystal::Scene;
 OBJFileImporter::OBJFileImporter(SceneFactory* sceneFactory) :
 	sceneFactory(sceneFactory)
 {
-	scene = sceneFactory->createScene("OBJ");
 }
 
-bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath)
+bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath, Scene* scene)
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
@@ -86,7 +85,7 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 	return false;
 }
 
-bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& filePath)
+bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& filePath, Scene* scene)
 {
 	MTLFileReader reader;
 	if (reader.read(filePath)) {
@@ -105,34 +104,23 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 	return false;
 }
 
-bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath)
+bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene* parent)
 {
 	// path から .objファイル名を取得する．
 	auto filename = filePath.parent_path() / filePath.stem();
 	filename.concat(".mtl");
+
+	auto scene = sceneFactory->createScene("OBJ");
+
 	// mtl ファイルを読み込む．
-	if (!importMTL(filename)) {
+	if (!importMTL(filename, scene)) {
 		return false;
 	}
 
 	// obj ファイルを読み込む．
-	if (!importOBJ(filePath)) {
+	if (!importOBJ(filePath, scene)) {
 		return false;
 	}
 
 	return true;
 }
-
-/*
-void OBJFileImporter::match(const IO::OBJFile& obj, AppearanceObjectRepository& apperances)
-{
-	const auto& groups = obj.groups;
-	for (const auto& g : groups) {
-		auto material = apperances.getMaterials()->findByName(g.usemtl);
-		const auto materialId = material->getId();
-		for (const auto& f : g.faces) {
-			f.
-		}
-	}
-}
-*/
