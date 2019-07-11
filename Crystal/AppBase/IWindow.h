@@ -22,6 +22,8 @@ protected:
 public:
 	void add(IWindow* child) { children.push_back(child); }
 
+	void clear() { children.clear(); }
+
 	virtual void show() = 0;
 
 	void open() { this->_isVisible = true; }

@@ -8,13 +8,13 @@
 
 using namespace Crystal::Scene;
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene* parent, SceneFactory* factory)
+bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, IScene* parent, SceneFactory* factory)
 {
 	const auto format = getFileFormat( filePath.extension() );
 	return importFile(filePath, parent, factory, format);
 }
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, Scene* parent, SceneFactory* factory, const FileFormat format)
+bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, IScene* parent, SceneFactory* factory, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :
@@ -30,12 +30,12 @@ bool FileImporter::importFile(const std::experimental::filesystem::path& filePat
 	case FileFormat::STL_ASCII :
 	{
 		STLFileImporter importer(factory);
-		return importer.importSTLAscii(filePath);
+		return importer.importSTLAscii(filePath, parent);
 	}
 	case FileFormat::STL_BINARY :
 	{
 		STLFileImporter importer(factory);
-		return importer.importSTLBinary(filePath);
+		return importer.importSTLBinary(filePath, parent);
 	}
 	case FileFormat::PCD :
 	{

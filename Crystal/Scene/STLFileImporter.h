@@ -5,7 +5,6 @@
 
 namespace Crystal {
 	namespace Scene {
-		class Scene;
 		class IScene;
 		class SceneFactory;
 
@@ -14,15 +13,12 @@ class STLFileImporter : public UnCopyable
 public:
 	explicit STLFileImporter(SceneFactory* sceneFactory);
 
-	bool importSTLAscii(const std::experimental::filesystem::path& filePath);
+	bool importSTLAscii(const std::experimental::filesystem::path& filePath, IScene* parent);
 
-	bool importSTLBinary(const std::experimental::filesystem::path& filePath);
-
-	IScene* getScene() const { return scene; }
+	bool importSTLBinary(const std::experimental::filesystem::path& filePath, IScene* parent);
 
 private:
 	SceneFactory* sceneFactory;
-	IScene* scene;
 };
 	}
 }

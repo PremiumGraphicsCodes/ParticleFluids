@@ -29,6 +29,7 @@ void ScenePanel::show(IScene* scene)
 
 	const auto& name = scene->getName();
 	const auto str = name.c_str();
+	const auto id = scene->getId();
 
 	if (!scene->isLeaf()) {
 		if (ImGui::TreeNode(str)) {
@@ -44,11 +45,17 @@ void ScenePanel::show(IScene* scene)
 			switch (type) {
 				case SceneType::LightScene: {
 					LightEditView* editView = new LightEditView("LightEdit", model, canvas);
+					//auto lightScene = scene->findSceneById<LightScene*>(id);
+					//editView->setValue(lightScene);
+					control->clear();
 					control->add(editView);
 					break;
 				}
 				case SceneType::MaterialScene: {
 					MaterialEditView* materialView = new MaterialEditView("MaterialEdit", model, canvas);
+					auto materialScene = scene->findSceneById<MaterialScene*>(id);
+					materialView->setValue(materialScene);
+					control->clear();
 					control->add(materialView);
 					break;
 				}

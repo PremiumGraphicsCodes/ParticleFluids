@@ -11,7 +11,7 @@ PCDFileImporter::PCDFileImporter(SceneFactory* factory) :
 	factory(factory)
 {}
 
-bool PCDFileImporter::importPCD(const std::experimental::filesystem::path& filePath, Scene* parent)
+bool PCDFileImporter::importPCD(const std::experimental::filesystem::path& filePath, IScene* parent)
 {
 	PCDFileReader reader;
 	if (reader.read(filePath)) {

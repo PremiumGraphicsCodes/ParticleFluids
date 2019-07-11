@@ -4,7 +4,7 @@
 
 namespace Crystal {
 	namespace Scene {
-		class Scene;
+		class IScene;
 		class SceneFactory;
 
 class OBJFileImporter
@@ -12,11 +12,11 @@ class OBJFileImporter
 public:
 	explicit OBJFileImporter(SceneFactory* sceneFactory);
 
-	bool importOBJ(const std::experimental::filesystem::path& filePath, Scene* scene);
+	bool importOBJ(const std::experimental::filesystem::path& filePath, IScene* scene);
 
-	bool importMTL(const std::experimental::filesystem::path& filePath, Scene* scene);
+	bool importMTL(const std::experimental::filesystem::path& filePath, IScene* scene);
 
-	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene* parent);
+	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, IScene* parent);
 
 private:
 	SceneFactory* sceneFactory;
