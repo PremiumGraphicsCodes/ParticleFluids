@@ -13,6 +13,8 @@
     <StackPanel>
         <TextBlock Text="Id"/>
         <TextBlock Text="{Binding Id.Value}"/>
+        <TextBlock Text="Name"/>
+        <TextBox Text="{Binding Name.Value}"/>
         <graphics:PointLightView DataContext="{Binding PointLightViewModel}"/>
         <Button Content="OK" Command="{Binding OKCommand}"/>
     </StackPanel>

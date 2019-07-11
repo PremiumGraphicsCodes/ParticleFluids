@@ -9,6 +9,8 @@ namespace PG.CGStudio.Light
     {
         public ReactiveProperty<int> Id { get; }
 
+        public ReactiveProperty<string> Name { get; }
+
         public PointLightViewModel PointLightViewModel { get; }
 
         public ReactiveCommand OKCommand { get; }
@@ -16,6 +18,7 @@ namespace PG.CGStudio.Light
         public LightEditViewModel()
         {
             this.Id = new ReactiveProperty<int>();
+            this.Name = new ReactiveProperty<string>();
             this.PointLightViewModel = new PointLightViewModel();
             this.OKCommand = new ReactiveCommand();
             this.OKCommand.Subscribe(OnOk);
@@ -47,6 +50,7 @@ namespace PG.CGStudio.Light
                 return;
             }
             this.Id.Value = item.Id;
+            this.Name.Value = item.Name;
             var light = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindLightById( item.Id );
             this.PointLightViewModel.Value = light;
         }
