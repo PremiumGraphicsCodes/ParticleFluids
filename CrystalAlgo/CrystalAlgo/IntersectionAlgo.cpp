@@ -192,6 +192,7 @@ bool IntersectionAlgo::calculateIntersection(const Triangle3d& lhs, const Triang
 
 bool IntersectionAlgo::calculateIntersection(const PolygonMesh& lhs, const PolygonMesh& rhs, const double tolerance)
 {
+	/*
 	const auto& faces1 = lhs.getFaces();
 	std::vector<Triangle3d> triangles1;
 	for (auto f : faces1) {
@@ -209,5 +210,6 @@ bool IntersectionAlgo::calculateIntersection(const PolygonMesh& lhs, const Polyg
 			calculateIntersection(t1, t2, tolerance);
 		}
 	}
+	*/
 	return !intersections.empty();
 }

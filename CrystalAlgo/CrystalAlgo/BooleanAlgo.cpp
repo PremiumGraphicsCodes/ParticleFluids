@@ -25,12 +25,14 @@ namespace {
 			model.vertices.push_back(v);
 		}
 
-		const auto& faces = polygon.getFaces();
+		/*
+		const auto& faces = polygon.getFaceG();
 		for (auto f : faces) {
 			model.indices.push_back(f->getV1()->getAttr().id);
 			model.indices.push_back(f->getV2()->getAttr().id);
 			model.indices.push_back(f->getV3()->getAttr().id);
 		}
+		*/
 		return model;
 	}
 
