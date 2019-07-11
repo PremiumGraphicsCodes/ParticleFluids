@@ -21,8 +21,6 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
-		PolygonMeshBuilder builder;
-
 		const auto& obj = reader.getOBJ();
 		const auto& positions = obj.positions;
 		const auto& normals = obj.normals;
@@ -79,7 +77,7 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 			faceGroup.attributeId = materialId;
 			polygonMesh->addFaceGroup(faceGroup);
 		}
-		scene->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "PolygonMesh") );
+		scene->addScene( sceneFactory->createPolygonMeshScene(polygonMesh, "PolygonMesh") );
 
 		return true;
 	}
