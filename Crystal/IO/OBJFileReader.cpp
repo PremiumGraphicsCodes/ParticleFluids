@@ -106,11 +106,11 @@ bool OBJFileReader::read(std::istream& stream)
 			currentGroup.faces.push_back(face);
 		}
 		else if (header == "g") {
-			std::string name = Helper::read<std::string>(stream);
+			currentGroup.name = Helper::read<std::string>(stream);
 			if (!currentGroup.faces.empty()) {
 				obj.groups.push_back(currentGroup);
 				currentGroup = OBJGroup();
-				currentGroup.name = name;
+//				currentGroup.name = name;
 			}
 		}
 

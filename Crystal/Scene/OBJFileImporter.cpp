@@ -48,7 +48,7 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
-			auto faceGroup = new FaceGroupScene();
+			auto faceGroup = new FaceGroupScene(sceneFactory->getNextId(), g.name, {});
 			for (const auto& f : g.faces) {
 				std::vector<int> indices;
 				for (int i = 0; i < f.positionIndices.size(); i++) {
