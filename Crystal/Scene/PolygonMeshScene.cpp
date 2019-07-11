@@ -16,6 +16,8 @@ void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
 	}
 
 	TriangleBuffer bf(*getShape());
+
+	// children‚ðFaceGroup‚Écast‚·‚ê‚Îok.
 	for (const auto& group : getShape()->getGroups()) {
 		auto materialId = group.attributeId;
 		auto parent = getParent();

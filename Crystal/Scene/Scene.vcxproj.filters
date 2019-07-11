@@ -41,9 +41,6 @@
     <ClInclude Include="ParticleSystemScene.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshScene.h">
-      <Filter>Scene\Shape</Filter>
-    </ClInclude>
     <ClInclude Include="IShapeScene.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
@@ -66,9 +63,6 @@
     <ClInclude Include="ParticleAttribute.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshAttribute.h">
-      <Filter>Scene\Shape</Filter>
-    </ClInclude>
     <ClInclude Include="WireFrameAttribute.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
@@ -89,6 +83,15 @@
     </ClInclude>
     <ClInclude Include="MaterialScene.h">
       <Filter>Scene\Appearance</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshAttribute.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshScene.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="FaceGroupScene.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -131,11 +134,14 @@
     <ClCompile Include="ParticleSystemScene.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonMeshScene.cpp">
-      <Filter>Scene\Shape</Filter>
-    </ClCompile>
     <ClCompile Include="LightScene.cpp">
       <Filter>Scene\Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshScene.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="FaceGroupScene.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +168,9 @@
     </Filter>
     <Filter Include="Scene\Appearance">
       <UniqueIdentifier>{b3e58cb2-98f8-4ebd-af48-c18db3dce8fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\PolygonMesh">
+      <UniqueIdentifier>{e541b7cb-5f77-473c-aa74-c3ee9d0dd728}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

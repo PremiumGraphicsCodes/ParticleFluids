@@ -10,9 +10,9 @@ enum class SceneType
 	ParticleSystemScene = 0x02,
 	WireFrameScene = 0x04,
 	PolygonMeshScene = 0x08,
-	VolumeScene = 0x10,
-	LightScene = 0x20,
-	MaterialScene = 0x40,
+	FaceGroupScene = 0x10,
+	LightScene = 0x40,
+	MaterialScene = 0x80,
 	TextureScene = 0x80,
 	All = 0xFF,
 };
