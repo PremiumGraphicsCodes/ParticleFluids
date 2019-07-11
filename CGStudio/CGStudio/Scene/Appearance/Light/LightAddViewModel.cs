@@ -30,20 +30,10 @@ namespace PG.CGStudio.Scene.Appearance.Light
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            /*
-            var item = navigationContext.Parameters["LightAdd"] as PG.Core.Scene;
-            if (item == null)
-            {
-                return;
-            }
-            */
-            //var light = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindLightById(item.Id);
-            //this.PointLightViewModel.Value = light;
         }
     }
 }

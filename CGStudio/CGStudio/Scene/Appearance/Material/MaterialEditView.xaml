@@ -11,6 +11,8 @@
         <local:MaterialEditViewModel/>
     </UserControl.DataContext>
     <StackPanel>
+        <TextBlock Text="{Binding Id.Value}"/>
+        <TextBox Text="{Binding Name.Value}"/>
         <graphics:MaterialView DataContext="{Binding MaterialViewModel}"/>
         <Button Content="OK" Command="{Binding OKCommand}"/>
     </StackPanel>
