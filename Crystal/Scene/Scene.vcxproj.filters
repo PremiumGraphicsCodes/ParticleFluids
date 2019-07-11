@@ -63,12 +63,6 @@
     <ClInclude Include="SceneIdProvider.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="LightScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleAttribute.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
@@ -81,14 +75,20 @@
     <ClInclude Include="VolumeScene.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="TextureScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="SceneViewModel.h">
       <Filter>ViewModel</Filter>
     </ClInclude>
     <ClInclude Include="SceneIdViewModel.h">
       <Filter>ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureScene.h">
+      <Filter>Scene\Appearance</Filter>
+    </ClInclude>
+    <ClInclude Include="LightScene.h">
+      <Filter>Scene\Appearance</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialScene.h">
+      <Filter>Scene\Appearance</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -131,11 +131,11 @@
     <ClCompile Include="ParticleSystemScene.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
-    <ClCompile Include="LightScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="PolygonMeshScene.cpp">
       <Filter>Scene\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="LightScene.cpp">
+      <Filter>Scene\Appearance</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +159,9 @@
     </Filter>
     <Filter Include="ViewModel">
       <UniqueIdentifier>{b4af8391-a4b7-4fb7-84d7-1c71fb361279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance">
+      <UniqueIdentifier>{b3e58cb2-98f8-4ebd-af48-c18db3dce8fd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

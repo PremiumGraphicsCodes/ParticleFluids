@@ -18,7 +18,7 @@ public:
 
 	Graphics::Material* getMaterial() { return material; }
 
-	//void setMaterial(const Graphics::Material& material) { this->material = material; }
+	void setMaterial(const Graphics::Material& material) { *this->material = material; }
 
 	bool isNull() const { return material == nullptr; }
 

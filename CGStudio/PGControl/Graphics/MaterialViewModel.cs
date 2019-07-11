@@ -1,6 +1,4 @@
-﻿using Prism.Mvvm;
-using Prism.Regions;
-using Reactive.Bindings;
+﻿using Reactive.Bindings;
 
 namespace PG.Control.Graphics
 {
@@ -24,6 +22,17 @@ namespace PG.Control.Graphics
 
         public Core.Graphics.Material Value
         {
+            get
+            {
+                var m = new Core.Graphics.Material
+                {
+                    Ambient = Ambient.Value,
+                    Diffuse = Diffuse.Value,
+                    Specular = Specular.Value,
+                    Shininess = Shininess.Value
+                };
+                return m;
+            }
             set
             {
                 Ambient.Value = value.Ambient;
@@ -31,14 +40,6 @@ namespace PG.Control.Graphics
                 Specular.Value = value.Specular;
                 Shininess.Value = value.Shininess;
             }
-        }
-
-        public void Update(Core.Graphics.Material m)
-        {
-            m.Ambient = Ambient.Value;
-            m.Diffuse = Diffuse.Value;
-            m.Specular = Specular.Value;
-            m.Shininess = Shininess.Value;
         }
     }
 }

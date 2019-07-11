@@ -72,6 +72,16 @@ int SceneAdapter::AddLightScene(PG::Core::Graphics::PointLight^ light, System::S
 	return scene->getId();
 }
 
+int SceneAdapter::AddMaterialScene(PG::Core::Graphics::Material^ material, System::String^ name)
+{
+	auto m = Converter::toCpp(material);
+	auto mm = new Crystal::Graphics::Material(m);
+	auto str = msclr::interop::marshal_as<std::string>(name);
+	auto scene = factory->createMaterialScene(mm, str);
+	instance->addScene(scene);
+	return scene->getId();
+}
+
 void SceneAdapter::UpdateLightScene(int id, PG::Core::Graphics::PointLight^ light)
 {
 	auto scene = instance->findSceneById(id);
@@ -81,6 +91,17 @@ void SceneAdapter::UpdateLightScene(int id, PG::Core::Graphics::PointLight^ ligh
 	auto lightScene = static_cast<Crystal::Scene::LightScene*>(scene);
 	auto l = Converter::toCpp(light);
 	lightScene->setLight(l);
+}
+
+void SceneAdapter::UpdateMaterialScene(int id, PG::Core::Graphics::Material^ material)
+{
+	auto scene = instance->findSceneById(id);
+	if (scene->getType() != Crystal::Scene::SceneType::MaterialScene) {
+		return;
+	}
+	auto materialScene = static_cast<Crystal::Scene::MaterialScene*>(scene);
+	auto m = Converter::toCpp(material);
+//	materialScene->getMaterial(m);
 }
 
 PG::Core::Graphics::Material^ SceneAdapter::FindMaterialByid(int id)
