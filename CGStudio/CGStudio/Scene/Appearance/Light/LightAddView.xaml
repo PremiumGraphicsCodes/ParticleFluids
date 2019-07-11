@@ -11,6 +11,7 @@
         <local:LightAddViewModel/>
     </UserControl.DataContext>
     <StackPanel>
+        <TextBox Text="{Binding Name.Value}"/>
         <graphics:PointLightView DataContext="{Binding PointLightViewModel}"/>
         <Button Content="OK" Command="{Binding OKCommand}"/>
     </StackPanel>

@@ -26,7 +26,10 @@ namespace PG.CGStudio.Material
 
         private void OnOk()
         {
-            MainModel.Instance.Repository.UpdateMaterialScene(Id.Value, MaterialViewModel.Value);
+            var repository = MainModel.Instance.Repository;
+            repository.UpdateMaterialScene(Id.Value, MaterialViewModel.Value);
+            Canvas3d.Instance.Update(repository);
+            Canvas3d.Instance.Render();
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

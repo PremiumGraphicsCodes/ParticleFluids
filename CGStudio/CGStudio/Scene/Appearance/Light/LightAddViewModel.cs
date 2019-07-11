@@ -7,12 +7,15 @@ namespace PG.CGStudio.Scene.Appearance.Light
 {
     public class LightAddViewModel : BindableBase, INavigationAware
     {
+        public ReactiveProperty<string> Name { get; }
+
         public PointLightViewModel PointLightViewModel { get; }
 
         public ReactiveCommand OKCommand { get; }
 
         public LightAddViewModel()
         {
+            this.Name = new ReactiveProperty<string>("Light");
             this.PointLightViewModel = new PointLightViewModel();
             this.OKCommand = new ReactiveCommand();
             this.OKCommand.Subscribe(OnOk);
@@ -20,7 +23,7 @@ namespace PG.CGStudio.Scene.Appearance.Light
 
         private void OnOk()
         {
-            MainModel.Instance.Repository.AddLightScene(PointLightViewModel.Value, "Light");
+            MainModel.Instance.Repository.AddLightScene(PointLightViewModel.Value, Name.Value);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

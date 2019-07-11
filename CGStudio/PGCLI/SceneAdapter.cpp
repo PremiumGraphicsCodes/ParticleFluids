@@ -101,7 +101,7 @@ void SceneAdapter::UpdateMaterialScene(int id, PG::Core::Graphics::Material^ mat
 	}
 	auto materialScene = static_cast<Crystal::Scene::MaterialScene*>(scene);
 	auto m = Converter::toCpp(material);
-//	materialScene->getMaterial(m);
+	materialScene->setMaterial(m);
 }
 
 PG::Core::Graphics::Material^ SceneAdapter::FindMaterialByid(int id)
