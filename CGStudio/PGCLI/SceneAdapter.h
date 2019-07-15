@@ -28,7 +28,7 @@ public:
 
 	int AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines, System::String^ name);
 
-	int AddPolygonMeshScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ positions);
+	int AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System::String^ name);
 
 	int AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name);
 

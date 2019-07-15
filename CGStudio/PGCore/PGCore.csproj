@@ -102,7 +102,7 @@
     <Compile Include="Shape\PolygonMesh\PolygonMesh.cs" />
     <Compile Include="Shape\PolygonMesh\PolygonMeshBuilder.cs" />
     <Compile Include="Shape\ShapeType.cs" />
-    <Compile Include="Shape\Vertex.cs" />
+    <Compile Include="Shape\PolygonMesh\Vertex.cs" />
     <Compile Include="Shape\WireFrame.cs" />
     <Compile Include="Shape\WireFrameBuilder.cs" />
     <Compile Include="UI\ParticleAppearance.cs" />

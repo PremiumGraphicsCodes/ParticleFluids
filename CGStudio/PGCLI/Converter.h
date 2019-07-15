@@ -25,6 +25,10 @@ namespace PG {
 class Converter
 {
 public:
+	static Crystal::Math::Vector2dd toCpp2d(PG::Core::Math::Vector2d^ src);
+
+	static PG::Core::Math::Vector2d^ fromCpp2d(const Crystal::Math::Vector2dd& src);
+
 	static Crystal::Math::Vector3dd toCpp(PG::Core::Math::Vector3d^ src);
 
 	static PG::Core::Math::Vector3d^ fromCpp(const Crystal::Math::Vector3dd& src);

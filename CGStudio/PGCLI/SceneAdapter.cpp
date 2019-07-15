@@ -57,8 +57,28 @@ int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core:
 	return scene->getId();
 }
 
-int SceneAdapter::AddPolygonMeshScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ positions)
+int SceneAdapter::AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System::String^ name)
 {
+	auto faces = mesh->Faces;
+	std::vector<Crystal::Shape::Face> fs;
+	for (int i = 0; i < faces->Count; ++i) {
+		auto f = faces[i];
+		Crystal::Shape::Face ff(f->V0, f->V1, f->V2);
+		fs.push_back(ff);
+	}
+	/*
+	auto vertices = mesh->Vertices;
+	for (int i = 0; i < vertices->Count; ++i) {
+		auto v = vertices[i];
+		const auto& p = Converter::toCpp(v->Position);
+		const auto& n = Converter::toCpp(v->Normal);
+		const auto& t = Converter::toCpp(v->TexCoord);
+		Crystal::Shape::VertexAttr attr;
+		attr.normal = n;
+		attr.texCoord = t;
+		Crystal::Shape::Vertex vv(v->Position);
+	}
+	*/
 	return -1;
 }
 

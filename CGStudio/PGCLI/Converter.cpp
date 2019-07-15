@@ -5,7 +5,15 @@
 
 #include "Converter.h"
 
-using namespace PG::CLI;
+Crystal::Math::Vector2dd PG::CLI::Converter::toCpp2d(PG::Core::Math::Vector2d^ src)
+{
+	return Crystal::Math::Vector2dd(src->X, src->Y);
+}
+
+PG::Core::Math::Vector2d^ PG::CLI::Converter::fromCpp2d(const Crystal::Math::Vector2dd& src)
+{
+	 return gcnew PG::Core::Math::Vector2d(src.x, src.y);
+}
 
 Crystal::Math::Vector3dd PG::CLI::Converter::toCpp(PG::Core::Math::Vector3d^ src)
 {
@@ -114,7 +122,7 @@ Crystal::Graphics::PointLight PG::CLI::Converter::toCpp(PG::Core::Graphics::Poin
 PG::Core::Graphics::PointLight^ PG::CLI::Converter::fromCpp(const Crystal::Graphics::PointLight& src)
 {
 	auto result = gcnew PG::Core::Graphics::PointLight();
-	result->Position = fromCpp(src.getPosition());
+	result->Position = fromCpp( src.getPosition() );
 	result->Ambient = fromCpp(src.getAmbient());
 	result->Specular = fromCpp(src.getSpecular());
 	result->Diffuse = fromCpp(src.getDiffuse());

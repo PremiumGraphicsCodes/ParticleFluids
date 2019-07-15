@@ -7,23 +7,25 @@ namespace PG.Core.Shape
     {
         private readonly List<Edge> edges;
         private readonly List<Vertex> vertices;
+        private int nextVertexId;
 
         public WireFrameBuilder()
         {
             this.edges = new List<Edge>();
             this.vertices = new List<Vertex>();
+            this.nextVertexId = 0;
         }
 
         public void Build(Box3d box)
         {
-            vertices.Add( new Vertex( box.GetPosition(0.0, 0.0, 0.0) ) );
-            vertices.Add( new Vertex( box.GetPosition(1.0, 0.0, 0.0) ) );
-            vertices.Add( new Vertex( box.GetPosition(1.0, 1.0, 0.0) ) );
-            vertices.Add( new Vertex( box.GetPosition(0.0, 1.0, 0.0) ) );
-            vertices.Add( new Vertex( box.GetPosition(0.0, 0.0, 1.0) ) );
-            vertices.Add( new Vertex( box.GetPosition(1.0, 0.0, 1.0) ) );
-            vertices.Add( new Vertex( box.GetPosition(1.0, 1.0, 1.0) ) );
-            vertices.Add( new Vertex( box.GetPosition(0.0, 1.0, 1.0) ) );
+            vertices.Add( new Vertex( box.GetPosition(0.0, 0.0, 0.0), nextVertexId++) );
+            vertices.Add( new Vertex( box.GetPosition(1.0, 0.0, 0.0), nextVertexId++) );
+            vertices.Add( new Vertex( box.GetPosition(1.0, 1.0, 0.0), nextVertexId++) );
+            vertices.Add( new Vertex( box.GetPosition(0.0, 1.0, 0.0), nextVertexId++) );
+            vertices.Add( new Vertex( box.GetPosition(0.0, 0.0, 1.0), nextVertexId++) );
+            vertices.Add( new Vertex( box.GetPosition(1.0, 0.0, 1.0), nextVertexId++) );
+            vertices.Add( new Vertex( box.GetPosition(1.0, 1.0, 1.0), nextVertexId++) );
+            vertices.Add( new Vertex( box.GetPosition(0.0, 1.0, 1.0), nextVertexId++) );
 
             CreateEdge(0, 1);
             CreateEdge(1, 2);
@@ -52,7 +54,7 @@ namespace PG.Core.Shape
                 for(int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    vertices[i,j] = new Vertex( cylinder.GetPosition(1.0, u, v) );
+                    vertices[i,j] = new Vertex( cylinder.GetPosition(1.0, u, v), nextVertexId++);
                 }
             }
             for(int i = 0; i < udiv-1; ++i)
@@ -74,7 +76,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    vertices[i, j] = new Vertex( sphere.GetPosition(1.0, u, v) );
+                    vertices[i, j] = new Vertex( sphere.GetPosition(1.0, u, v), nextVertexId++);
                 }
             }
             for (int i = 0; i < udiv - 1; ++i)
