@@ -30,8 +30,6 @@ public:
 
 	void transform(const Math::Matrix4dd& m) { ; }
 
-	bool isNull() const override { return faces.empty(); }
-
 	void addFace(const Shape::Face& f) { faces.push_back(f); }
 
 	void setMaterialName(const std::string& mname) { this->materialName = mname; }

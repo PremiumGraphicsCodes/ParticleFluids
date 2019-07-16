@@ -44,8 +44,6 @@ public:
 
 	bool _isVisible;
 
-	virtual bool isNull() const = 0;
-
 	virtual SceneType getType() const = 0;
 
 	bool isSelected() const { return _isSelected; }

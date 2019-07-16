@@ -31,8 +31,6 @@ public:
 
 	void transform(const Math::Matrix4dd& m) { shape->transform(m); }
 
-	bool isNull() const override { return shape == nullptr; }
-
 	SceneType getType() const override { return SceneType::PolygonMeshScene; }
 
 	void onClear() override

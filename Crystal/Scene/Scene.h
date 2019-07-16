@@ -16,8 +16,6 @@ public:
 
 	Math::Box3d getBoundingBox() const;
 
-	virtual bool isNull() const override { return false; }
-
 	virtual SceneType getType() const { return SceneType::Root; }
 
 	virtual void onClear() override;
