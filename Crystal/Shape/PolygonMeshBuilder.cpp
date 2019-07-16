@@ -45,7 +45,7 @@ void PolygonMeshBuilder::add(const Box3d& box)
 	add(p3, p2, p6, p7); // top
 	add(p0, p1, p5, p4); // bottom
 	add(p0, p4, p7, p3); // left
-	add(p1, p5, p6, p2); // right;
+	add(p1, p5, p6, p2); // right
 }
 
 void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int vnum)

@@ -17,34 +17,24 @@ namespace PG.Core.Shape
             get { return polygon; }
         }
 
-        public void Build(Box3d box, int u, int v)
+        public void Build(Box3d box)
         {
-            /*
-            var vertices = new int[u, v];
-            for (int i = 0; i < u; ++i)
-            {
-                var uu = u / (double)i;
-                for (int j = 0; j < v; ++j)
-                {
-                    var vv = j / (double)v;
-                    var p = polygon.CreatePosition(box.GetPosition(1.0, u, v));
-                    var n = polygon.CreateNormal(box.GetNormal(u, v));
-                    var t = polygon.CreateTexCoord(new Vector2d(uu, vv));
-                    vertices[i, j] = polygon.CreateVertex(p, n, t);
-                }
-            }
+            var p0 = polygon.CreatePosition(box.GetPosition(0, 0, 0));
+            var p1 = polygon.CreatePosition(box.GetPosition(1, 0, 0));
+            var p2 = polygon.CreatePosition(box.GetPosition(1, 1, 0));
+            var p3 = polygon.CreatePosition(box.GetPosition(0, 1, 0));
 
-            for (int i = 0; i < u - 1; ++i)
-            {
-                for (int j = 0; j < v - 1; ++j)
-                {
-                    var v1 = vertices[i, j];
-                    var v2 = vertices[i + 1, j];
-                    var v3 = vertices[i, j + 1];
-                    var f = polygon.CreateFace(v1, v2, v3);
-                }
-            }
-            */
+            var p4 = polygon.CreatePosition(box.GetPosition(0, 0, 1));
+            var p5 = polygon.CreatePosition(box.GetPosition(1, 0, 1));
+            var p6 = polygon.CreatePosition(box.GetPosition(1, 1, 1));
+            var p7 = polygon.CreatePosition(box.GetPosition(0, 1, 1));
+
+	        Add(p0, p1, p2, p3); // front
+	        Add(p7, p6, p5, p4); // back
+	        Add(p3, p2, p6, p7); // top
+	        Add(p0, p1, p5, p4); // bottom
+	        Add(p0, p4, p7, p3); // left
+	        Add(p1, p5, p6, p2); // right
         }
 
         public void Build(Sphere3d sphere, int u, int v)

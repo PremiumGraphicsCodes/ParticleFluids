@@ -22,12 +22,6 @@ public:
 	int id;
 };
 
-
-class Util {
-public:
-	static Math::Box3d getBoundingBox(const std::list<Vertex*>& vertices);
-};
-
 	}
 }
 #endif
