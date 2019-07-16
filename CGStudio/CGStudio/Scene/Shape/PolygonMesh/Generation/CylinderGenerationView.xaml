@@ -12,6 +12,10 @@
     </UserControl.DataContext>
     <StackPanel>
         <control:Cylinder3dView/>
-        <Button Content="Generate" Command="{Binding GenerationCommand}"/>
+        <Label Content="UNum"/>
+        <TextBox Text="{Binding UNum.Value}"/>
+        <Label Content="VNum"/>
+        <TextBox Text="{Binding VNum.Value}"/>
+        <Button Content="Generate" Command="{Binding GenerateCommand}"/>
     </StackPanel>
 </UserControl>

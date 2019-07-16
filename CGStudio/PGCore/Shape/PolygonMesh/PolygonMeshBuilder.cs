@@ -52,7 +52,7 @@ namespace PG.Core.Shape
             var vertices = new int[u, v];
             for (int i = 0; i < u; ++i)
             {
-                var uu = u / (double)i;
+                var uu = i / (double)u;
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
@@ -80,13 +80,13 @@ namespace PG.Core.Shape
             var vertices = new int[u, v];
             for (int i = 0; i < u; ++i)
             {
-                var uu = u / (double)i;
+                var uu = i / (double)u;
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
                     var p = polygon.CreatePosition( cylinder.GetPosition(1.0, uu, vv) );
                     var n = polygon.CreateNormal( cylinder.GetNormal(uu, vv) );
-                    vertices[u, v] = polygon.CreateVertex(p, n, -1);
+                    vertices[i, j] = polygon.CreateVertex(p, n, -1);
                 }
             }
 
