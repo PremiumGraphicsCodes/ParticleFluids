@@ -66,19 +66,17 @@ int SceneAdapter::AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System
 		Crystal::Shape::Face ff(f->V0, f->V1, f->V2);
 		fs.push_back(ff);
 	}
-	/*
 	auto vertices = mesh->Vertices;
 	for (int i = 0; i < vertices->Count; ++i) {
 		auto v = vertices[i];
 		const auto& p = Converter::toCpp(v->Position);
 		const auto& n = Converter::toCpp(v->Normal);
-		const auto& t = Converter::toCpp(v->TexCoord);
-		Crystal::Shape::VertexAttr attr;
-		attr.normal = n;
-		attr.texCoord = t;
-		Crystal::Shape::Vertex vv(v->Position);
+		const auto& t = Converter::toCpp2d(v->TexCoord);
+		//Crystal::Shape::VertexAttr attr;
+		//attr.normal = n;
+		//attr.texCoord = t;
+		//Crystal::Shape::Vertex vv(v->Position);
 	}
-	*/
 	return -1;
 }
 
