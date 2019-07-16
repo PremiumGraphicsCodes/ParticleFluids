@@ -19,12 +19,12 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 {
 	const auto& vs = triangle.getVertices();
 	const auto p0 = polygonMesh->createPosition(vs[0]);
-	polygonMesh->createPosition(vs[1]);
-	polygonMesh->createPosition(vs[2]);
-	polygonMesh->createNormal(triangle.getNormal());
-	const auto v0 = polygonMesh->createVertex( 0, 0, -1);
-	const auto v1 = polygonMesh->createVertex( 1, 0, -1);
-	const auto v2 = polygonMesh->createVertex( 2, 0, -1);
+	const auto p1 = polygonMesh->createPosition(vs[1]);
+	const auto p2 = polygonMesh->createPosition(vs[2]);
+	const auto n = polygonMesh->createNormal(triangle.getNormal());
+	const auto v0 = polygonMesh->createVertex( p0, n, -1);
+	const auto v1 = polygonMesh->createVertex( p1, n, -1);
+	const auto v2 = polygonMesh->createVertex( p2, n, -1);
 	polygonMesh->createFace( v0, v1, v2 );
 }
 

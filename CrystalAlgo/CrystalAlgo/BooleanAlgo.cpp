@@ -15,6 +15,7 @@ namespace {
 	{
 		csgjs_model model;
 		const auto& vertices = polygon.getVertices();
+		/*
 		for (auto vv : vertices) {
 			const auto& pos = vv->getPosition();
 			const auto& normal = vv->getNormal();
@@ -24,6 +25,7 @@ namespace {
 			v.normal = csgjs_vector(normal.x, normal.y, normal.z);
 			model.vertices.push_back(v);
 		}
+		*/
 
 		/*
 		const auto& faces = polygon.getFaceG();
