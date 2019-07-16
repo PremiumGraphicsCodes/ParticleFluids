@@ -54,7 +54,8 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 					const auto p = f.positionIndices[i] - 1;
 					const auto n = f.normalIndices[i] - 1;
 					const auto tc = f.texCoordIndices[i] - 1;
-					indices.push_back(polygonMesh->getVertices().back().id);
+					const auto v = polygonMesh->createVertex(p, n, tc);
+					indices.push_back(v);
 				}
 				//indices.push_back(eachIndices);
 				int origin = indices[0];
