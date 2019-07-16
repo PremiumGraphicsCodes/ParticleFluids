@@ -69,9 +69,9 @@ int SceneAdapter::AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System
 	auto vertices = mesh->Vertices;
 	for (int i = 0; i < vertices->Count; ++i) {
 		auto v = vertices[i];
-		const auto& p = Converter::toCpp(v->Position);
-		const auto& n = Converter::toCpp(v->Normal);
-		const auto& t = Converter::toCpp2d(v->TexCoord);
+	//	const auto& p = Converter::toCpp(v->Position);
+	//	const auto& n = Converter::toCpp(v->Normal);
+	//	const auto& t = Converter::toCpp2d(v->TexCoord);
 		//Crystal::Shape::VertexAttr attr;
 		//attr.normal = n;
 		//attr.texCoord = t;

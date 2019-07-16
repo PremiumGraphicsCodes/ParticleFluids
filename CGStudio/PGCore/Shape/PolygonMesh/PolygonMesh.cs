@@ -7,30 +7,10 @@ namespace PG.Core.Shape
     {
         private List<Vertex> vertices;
         private List<PolygonFace> faces;
-
-        public List<Vertex> Vertices
-        {
-            get { return vertices; }
-        }
-
-        public List<PolygonFace> Faces
-        {
-            get { return faces; }
-        }
-
-        public PolygonMesh(List<Vertex> vertices, List<PolygonFace> faces)
-        {
-            this.vertices = vertices;
-            this.faces = faces;
-        }
-    }
-
-    public class VertexFactory
-    {
-        private int nextVertexId;
         private List<Vector3d> positions;
         private List<Vector3d> normals;
         private List<Vector2d> texCoords;
+        private int nextVertexId;
 
         public List<Vector3d> Positions
         {
@@ -47,36 +27,49 @@ namespace PG.Core.Shape
             get { return texCoords; }
         }
 
-        public VertexFactory()
+        public List<Vertex> Vertices
         {
-            nextVertexId = 0;
-            positions = new List<Vector3d>();
-            normals = new List<Vector3d>();
-            texCoords = new List<Vector2d>();
+            get { return vertices; }
         }
 
-        public void CreatePosition(Vector3d position)
+        public List<PolygonFace> Faces
+        {
+            get { return faces; }
+        }
+
+        public PolygonMesh()
+        {
+            this.positions = new List<Vector3d>();
+            this.normals = new List<Vector3d>();
+            this.texCoords = new List<Vector2d>();
+            this.vertices = new List<Vertex>();
+            this.faces = new List<PolygonFace>();
+            this.nextVertexId = 0;
+        }
+
+        public int CreatePosition(Vector3d position)
         {
             positions.Add(position);
+            return positions.Count - 1;
         }
 
-        public void CreateNormal(Vector3d normal)
+        public int CreateNormal(Vector3d normal)
         {
             normals.Add(normal);
+            return normals.Count - 1;
         }
 
-        public void CreateTexCoord(Vector2d texCoord)
+        public int CreateTexCoord(Vector2d texCoord)
         {
             texCoords.Add(texCoord);
+            return texCoords.Count - 1;
         }
 
-        /*
-        public void CreateVertex(int positionId)
+        public int CreateVertex(int positionId, int normalId, int texCoordId)
         {
-            var p = positions[positionId];
-            return new Vertex(p, nextVertexId++);
+            var v = new Vertex(positionId, normalId, texCoordId, nextVertexId++);
+            vertices.Add(v);
+            return v.Id;
         }
-        */
     }
-
 }

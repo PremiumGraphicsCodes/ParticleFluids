@@ -5,14 +5,14 @@ namespace PG.Core.Shape
 {
     public class WireFrame
     {
-        public List<Edge> Edges { get; set; }
+        public List<Line3d> Edges { get; set; }
 
         public WireFrame()
         {
-            this.Edges = new List<Edge>();
+            this.Edges = new List<Line3d>();
         }
 
-        public WireFrame(List<Edge> edges)
+        public WireFrame(List<Line3d> edges)
         {
             this.Edges = edges;
         }

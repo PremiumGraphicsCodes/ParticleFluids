@@ -4,35 +4,29 @@ namespace PG.Core.Shape
 {
     public class Vertex
     {
-        public Vertex(Vector3d position, int id)
+        public Vertex(int positionId, int id) :
+            this(positionId, -1, -1, id)
         {
-            this.Position = position;
-            this.Normal = null;
-            this.TexCoord = null;
+        }
+
+        public Vertex(int position, int normal, int id) :
+            this(position, normal, -1, id)
+        {
+        }
+
+        public Vertex(int position, int normal, int texCoordId, int id)
+        {
+            this.PositionId = position;
+            this.NormalId = normal;
+            this.TexCoordId = texCoordId;
             this.Id = id;
         }
 
-        public Vertex(Vector3d position, Vector3d normal, int id)
-        {
-            this.Position = position;
-            this.Normal = normal;
-            this.TexCoord = null;
-            this.Id = id;
-        }
+        public int PositionId { get; set; }
 
-        public Vertex(Vector3d position, Vector3d normal, Vector2d texCoord, int id)
-        {
-            this.Position = position;
-            this.Normal = normal;
-            this.TexCoord = texCoord;
-            this.Id = id;
-        }
+        public int NormalId { get; set; }
 
-        public Vector3d Position { get; set; }
-
-        public Vector3d Normal { get; set; }
-
-        public Vector2d TexCoord { get; set; }
+        public int TexCoordId { get; set; }
 
         public int Id { get; }
     }
