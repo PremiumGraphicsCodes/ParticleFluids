@@ -16,16 +16,22 @@ void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
 		return;
 	}
 
+	auto lights = getParent()->findScenes(SceneType::LightScene);
+	PointLight light;
+	if(!lights.empty()) {
+		light = *(static_cast<LightScene*>(lights.front())->getLight());
+	}
+
 	// Polygon直下にあるfaceはデフォルトで描画．
 	TriangleBuffer bf(*getShape());
-	bf.add(getShape()->getFaces(), Material());
+	bf.add(getShape()->getFaces(), Material(), light);
 
 	// groupにあるfaceは対応するmaterialで描画．
 	const auto& children = getChildren();
 	for (auto& child : children) {
 		auto faceGroup = static_cast<FaceGroupScene*>(child);
 		auto materialScene = static_cast<MaterialScene*>( getParent()->findSceneByName( faceGroup->getMaterialName() ) );
-		bf.add(faceGroup->getShape(), *(materialScene->getMaterial()));
+		bf.add(faceGroup->getShape(), *(materialScene->getMaterial()), light);
 	}
 	viewModel.triangleBuffers.push_back(bf);
 }

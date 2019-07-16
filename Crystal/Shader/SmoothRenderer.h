@@ -18,8 +18,6 @@ public:
 	struct Buffer
 	{
 		Graphics::TriangleBuffer triangle;
-		Graphics::LightBuffer light;
-		Graphics::MaterialBuffer material;
 	};
 
 	void findLocation();

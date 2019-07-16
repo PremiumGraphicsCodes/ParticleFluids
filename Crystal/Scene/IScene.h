@@ -65,7 +65,9 @@ public:
 	T findSceneById(int id) { return static_cast<T>( findSceneById(id) ); }
 
 	template<class T>
-	T findSceneByName(int id) { return static_cast<T>(findSceneByName(id)); }
+	T findSceneByName(const std::string& name) { return static_cast<T>(findSceneByName(name)); }
+
+	std::list<IScene*> findScenes(SceneType type);
 
 	virtual void addViewModel(SceneViewModel& viewModel) const {};
 

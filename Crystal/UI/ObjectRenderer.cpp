@@ -32,7 +32,7 @@ void ObjectRenderer::setViewModel(const SceneViewModel& vm)
 	for (const auto& tb : vm.getTriangleBuffers()) {
 		Shader::SmoothRenderer::Buffer buffer;
 		buffer.triangle = tb;
-		buffer.light = vm.getLightBuffer();
+		//buffer.light = vm.getLightBuffer();
 		//buffer.material = avm.getMaterialBuffer();
 		smoothBuffers.push_back(buffer);
 	}

@@ -111,8 +111,6 @@ void SmoothRenderer::findLocation()
 void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const TextureObject& texture)
 {
 	const auto& buffer = bf.triangle;
-	const auto& light = bf.light;
-	const auto& material = bf.material;
 
 	const auto& positions = buffer.getPositions().get();// buffers[0].get();
 	const auto& normals = buffer.getNormals().get();//buffers[1].get();
@@ -130,16 +128,6 @@ void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const Textu
 	assert(GL_NO_ERROR == glGetError());
 
 	glUseProgram(shader.getId());
-
-	const auto& lightPos = light.getPosition().get();//{ -10.0f, 10.0f, 10.0f };
-	const auto& ambient = light.getAmbient().get();
-	const auto& diffuse = light.getDiffuse().get();
-	const auto& specular = light.getSpecular().get();
-
-	glUniform3fv(shader.getUniformLocation("light.position"), 1, &lightPos[0]);
-	glUniform3fv(shader.getUniformLocation("light.La"), 1, &ambient[0]);
-	glUniform3fv(shader.getUniformLocation("light.Ld"), 1, &diffuse[0]);
-	glUniform3fv(shader.getUniformLocation("light.Ls"), 1, &specular[0]);
 
 	glBindFragDataLocation(shader.getId(), 0, "fragColor");
 
@@ -165,6 +153,17 @@ void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const Textu
 	const auto& blocks = buffer.getBlocks();
 	for (const auto& b : blocks) {
 		const auto& indices = b.getIndices();
+		const auto& light = b.getLight();
+		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
+		const auto& ambient = light.getAmbient();
+		const auto& diffuse = light.getDiffuse();
+		const auto& specular = light.getSpecular();
+
+		glUniform3fv(shader.getUniformLocation("light.position"), 1, &lightPos[0]);
+		glUniform3fv(shader.getUniformLocation("light.La"), 1, &ambient[0]);
+		glUniform3fv(shader.getUniformLocation("light.Ld"), 1, &diffuse[0]);
+		glUniform3fv(shader.getUniformLocation("light.Ls"), 1, &specular[0]);
+
 		const auto& m = b.getMaterial();
 		glUniform3fv(shader.getUniformLocation("material.Ka"), 1, &m.ambient[0]);
 		glUniform3fv(shader.getUniformLocation("material.Kd"), 1, &m.diffuse[0]);

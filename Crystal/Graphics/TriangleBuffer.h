@@ -6,6 +6,7 @@
 #include "Buffer3d.h"
 #include "Buffer4d.h"
 #include "Material.h"
+#include "PointLight.h"
 #include "../Shape/PolygonMesh.h"
 
 namespace Crystal {
@@ -14,18 +15,22 @@ namespace Crystal {
 class TriangleBufferBlock
 {
 public:
-	TriangleBufferBlock(const std::vector<unsigned int>& indices, const Material& material) :
+	TriangleBufferBlock(const std::vector<unsigned int>& indices, const Material& material, const PointLight& light) :
 		indices(indices),
-		material(material)
+		material(material),
+		light(light)
 	{}
 
 	std::vector<unsigned int> getIndices() const { return indices; }
 
 	Material getMaterial() const { return material; }
 
+	PointLight getLight() const { return light; }
+
 private:
 	std::vector<unsigned int> indices;
 	Material material;
+	PointLight light;
 };
 
 
@@ -51,14 +56,14 @@ public:
 		}
 	}
 
-	void add(const std::vector<Shape::Face>& faces, const Material& mat) {
+	void add(const std::vector<Shape::Face>& faces, const Material& mat, const PointLight& light) {
 		std::vector<unsigned int> indices;
 		for (auto f : faces) {
 			indices.push_back(f.v1);
 			indices.push_back(f.v2);
 			indices.push_back(f.v3);
 		}
-		TriangleBufferBlock block(indices, mat);
+		TriangleBufferBlock block(indices, mat, light);
 		blocks.push_back(block);
 	}
 
