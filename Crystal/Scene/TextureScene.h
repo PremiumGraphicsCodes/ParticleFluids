@@ -18,16 +18,9 @@ public:
 
 	Shader::TextureObject* getTexture() const { return texture; }
 
-	//void setMaterial(const Graphics::Material& material) { this->material = material; }
-
-	bool isNull() const { return texture == nullptr; }
-
 	SceneType getType() const override { return SceneType::TextureScene; }
 
-	void onClear() override
-	{
-		delete texture;
-	}
+	void onClear() override { delete texture; }
 
 private:
 	Shader::TextureObject* texture;

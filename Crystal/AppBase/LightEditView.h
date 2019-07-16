@@ -18,7 +18,7 @@ public:
 
 	void setValue(const Scene::LightScene& value) {
 		this->id.setValue(value.getId());
-		this->light.setValue(*value.getLight());
+		this->light.setValue(value.getLight());
 		this->name.setValue(value.getName());
 	}
 

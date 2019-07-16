@@ -30,8 +30,6 @@ public:
 	void transform(const Math::Matrix4dd& m) { light->transform(m); }
 	*/
 
-	bool isNull() const { return false; }
-
 	SceneType getType() const override { return SceneType::LightScene; }
 
 	void onClear() override

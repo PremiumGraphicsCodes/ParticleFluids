@@ -20,14 +20,9 @@ public:
 
 	void setMaterial(const Graphics::Material& material) { this->material = material; }
 
-	bool isNull() const { return false; }
-
 	SceneType getType() const override { return SceneType::MaterialScene; }
 
-	void onClear() override
-	{
-
-	}
+	void onClear() override {}
 
 
 private:
