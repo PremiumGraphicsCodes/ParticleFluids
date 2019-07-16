@@ -36,11 +36,14 @@ public:
 
 	TriangleBuffer(const Shape::PolygonMesh& mesh) {
 		const auto& vertices = mesh.getVertices();
+		const auto& ps = mesh.getPositions();
+		const auto& ns = mesh.getNormals();
+		const auto& tcs = mesh.getTexCoords();
 		for (auto v : vertices) {
-			positions.add(v->getPosition());
-			normals.add(v->getNormal());
-			if (v->getAttr().texCoord != nullptr) {
-				texCoords.add(v->getTexCoord());
+			positions.add(ps[v.positionId]);
+			normals.add(ns[v.normalId]);
+			if (v.texCoordId != -1) {
+				texCoords.add(tcs[v.texCoordId]);
 			}
 			else {
 				texCoords.add(Math::Vector2dd(0, 0));

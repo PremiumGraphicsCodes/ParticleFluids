@@ -1,7 +1,6 @@
 #pragma once
 
 #include "PolygonMesh.h"
-#include "VertexFactory.h"
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
@@ -19,8 +18,6 @@ class PolygonMeshBuilder : private UnCopyable
 public:
 	PolygonMeshBuilder();
 
-	//explicit PolygonMeshBuilder(VertexFactory&& vertexFactory);
-
 	void add(const Math::Triangle3d& triangle);
 
 	void add(const Math::Box3d& box);
@@ -34,10 +31,9 @@ public:
 	PolygonMesh* getPolygonMesh();
 
 private:
-	void add(Math::Vector3dd* p0, Math::Vector3dd* p1, Math::Vector3dd* p2, Math::Vector3dd* p3);
+	void add(const int v0, const int v1, const int v2, const int v3);
 
 	PolygonMesh* polygonMesh;
-	int nextFaceId;
 };
 
 	}

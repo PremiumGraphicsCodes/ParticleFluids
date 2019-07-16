@@ -29,7 +29,6 @@
     <ClInclude Include="PolygonMeshBuilder.h" />
     <ClInclude Include="TriangleMesh.h" />
     <ClInclude Include="Vertex.h" />
-    <ClInclude Include="VertexFactory.h" />
     <ClInclude Include="Volume.h" />
     <ClInclude Include="WireFrame.h" />
     <ClInclude Include="WireFrameBuilder.h" />
@@ -39,7 +38,6 @@
     <ClCompile Include="PolygonMesh.cpp" />
     <ClCompile Include="PolygonMeshBuilder.cpp" />
     <ClCompile Include="Vertex.cpp" />
-    <ClCompile Include="VertexFactory.cpp" />
     <ClCompile Include="Volume.cpp" />
     <ClCompile Include="WireFrame.cpp" />
     <ClCompile Include="WireFrameBuilder.cpp" />

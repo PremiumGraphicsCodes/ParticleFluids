@@ -32,27 +32,51 @@ namespace PG.Core.Shape
         private List<Vector3d> normals;
         private List<Vector2d> texCoords;
 
-        VertexFactory()
+        public List<Vector3d> Positions
+        {
+            get { return positions; }
+        }
+
+        public List<Vector3d> Normals
+        {
+            get { return normals; }
+        }
+
+        public List<Vector2d> TexCoords
+        {
+            get { return texCoords; }
+        }
+
+        public VertexFactory()
         {
             nextVertexId = 0;
             positions = new List<Vector3d>();
+            normals = new List<Vector3d>();
             texCoords = new List<Vector2d>();
         }
 
-        void CreatePosition(Vector3d position)
+        public void CreatePosition(Vector3d position)
         {
             positions.Add(position);
         }
 
-        void CreateNormal(Vector3d normal)
+        public void CreateNormal(Vector3d normal)
         {
             normals.Add(normal);
         }
 
-        void CreateTexCoord(Vector2d texCoord)
+        public void CreateTexCoord(Vector2d texCoord)
         {
             texCoords.Add(texCoord);
         }
+
+        /*
+        public void CreateVertex(int positionId)
+        {
+            var p = positions[positionId];
+            return new Vertex(p, nextVertexId++);
+        }
+        */
     }
 
 }

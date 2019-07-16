@@ -50,9 +50,6 @@
     <ClInclude Include="Volume.h">
       <Filter>Volume</Filter>
     </ClInclude>
-    <ClInclude Include="VertexFactory.h">
-      <Filter>PolygonMesh</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WireFrame.cpp">
@@ -75,9 +72,6 @@
     </ClCompile>
     <ClCompile Include="Volume.cpp">
       <Filter>Volume</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexFactory.cpp">
-      <Filter>PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

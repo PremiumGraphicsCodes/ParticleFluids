@@ -16,7 +16,7 @@ VertexView::VertexView(const std::string& name) :
 
 VertexView::VertexView(const std::string& name, Vertex* value) :
 	IWindow(name),
-	id("Id", value->getId()),
+	id("Id", value->id),
 	position("Position"),
 	normal("Normal"),
 	texCoord("TexCoord")
@@ -33,8 +33,10 @@ void VertexView::show()
 
 void VertexView::setValue(Vertex* value)
 {
+	/*
 	id.setValue(value->getId());
 	position.setValue(value->getPosition());
 	normal.setValue(value->getNormal());
 	texCoord.setValue(value->getTexCoord());
+	*/
 }

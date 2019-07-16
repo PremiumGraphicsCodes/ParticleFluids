@@ -16,17 +16,13 @@ void PolygonMesh::clear()
 {
 	vertices.clear();
 	faces.clear();
+	nextVertexId = 0;
+	nextFaceId = 0;
 }
 
-bool PolygonMesh::has(Vertex* v)
+std::vector<Vertex> PolygonMesh::getVertices() const
 {
-	const auto& vertices = getVertices();
-	return std::find(vertices.begin(), vertices.end(), v) != vertices.end();
-}
-
-std::vector<Vertex*> PolygonMesh::getVertices() const
-{
-	return vertices.getVertices();
+	return vertices;
 }
 
 Vector3dd PolygonMesh::getCenter() const
@@ -34,32 +30,35 @@ Vector3dd PolygonMesh::getCenter() const
 	Vector3dd center;
 	const auto& vs = this->getVertices();
 	for (const auto& v : vs) {
-		center += v->getPosition() / static_cast<double>(vs.size());
+		const auto p = positions[ v.positionId ];
+		center += p / static_cast<double>(vs.size());
 	}
 	return center;
 }
 
-void PolygonMesh::move(const Vector3dd& v)
+void PolygonMesh::move(const Vector3dd& vec)
 {
-	const auto& vs = getVertices();
-	for (auto& vert : vs) {
-		vert->move(v);
+	const auto& vs = this->getVertices();
+	for (const auto& v : vs) {
+		positions[v.positionId] += vec;
 	}
 }
 
 void PolygonMesh::transform(const Matrix3dd& m)
 {
-	const auto& vs = vertices.getVertices();
-	for (auto p : vs) {
-		p->transform(m);
+	const auto& vs = vertices;
+	for (auto v : vs) {
+		auto& p = positions[v.positionId];
+		p = p * m;
 	}
 }
 
 void PolygonMesh::transform(const Matrix4dd& m)
 {
-	const auto& vs = vertices.getVertices();
-	for (auto p : vs) {
-		p->transform(m);
+	const auto& vs = vertices;
+	for (auto v : vs) {
+		auto& p = positions[v.positionId];
+		p = glm::vec4(p,1.0) * m;
 	}
 }
 
@@ -71,9 +70,9 @@ Box3d PolygonMesh::getBoundingBox() const
 		return Box3d();
 	}
 
-	Box3d bb(vertices.front()->getPosition());
-	for (const auto& v : vertices) {
-		bb.add(v->getPosition());
+	Box3d bb(positions.front());
+	for (const auto& p : positions) {
+		bb.add(p);
 	}
 	return bb;
 }

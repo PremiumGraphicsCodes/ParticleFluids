@@ -11,7 +11,7 @@ using namespace Crystal::Scene;
 bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
 {
 	std::vector<Shape::TriangleFace> fs;
-	const auto& vertices = polygonMesh.getShape()->getVertices();
+	const auto& positions = polygonMesh.getShape()->getPositions();
 	const auto& faces = polygonMesh.getShape()->getFaces();
 	for (const auto& f : faces) {
 		/*
@@ -19,9 +19,9 @@ bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& 
 			continue;
 		}
 		*/
-		const auto v1 = vertices[ f.v1 ]->getPosition();
-		const auto v2 = vertices[ f.v2 ]->getPosition();
-		const auto v3 = vertices[ f.v3 ]->getPosition();
+		const auto v1 = positions[ f.v1 ];
+		const auto v2 = positions[ f.v2 ];
+		const auto v3 = positions[ f.v3 ];
 		Shape::TriangleFace ff({ v1,v2,v3 });
 		//const auto area = ff.toTriangle().getArea();
 		fs.push_back(ff);
@@ -36,7 +36,7 @@ bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& 
 bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
 {
 	std::vector<Shape::TriangleFace> fs;
-	const auto& vertices = polygonMesh.getShape()->getVertices();
+	const auto& positions = polygonMesh.getShape()->getPositions();
 	const auto& faces = polygonMesh.getShape()->getFaces();
 	for (const auto& f : faces) {
 		/*
@@ -44,9 +44,9 @@ bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path&
 			continue;
 		}
 		*/
-		const auto v1 = vertices[f.v1]->getPosition();
-		const auto v2 = vertices[f.v2]->getPosition();
-		const auto v3 = vertices[f.v3]->getPosition();
+		const auto v1 = positions[f.v1];
+		const auto v2 = positions[f.v2];
+		const auto v3 = positions[f.v3];
 		Shape::TriangleFace ff({ v1,v2,v3 });
 		//const auto area = ff.toTriangle().getArea();
 		fs.push_back(ff);

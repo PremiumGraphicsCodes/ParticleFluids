@@ -28,20 +28,19 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 		const auto& texCoords = obj.texCoords;
 
 		PolygonMesh* polygonMesh = new PolygonMesh();
-		VertexFactory* vertexFactory = polygonMesh->getVertexFactory();
 		for (const auto& p : positions) {
-			vertexFactory->createPosition(p);
+			polygonMesh->createPosition(p);
 		}
 		for (const auto& n : normals) {
-			vertexFactory->createNormal(n);
+			polygonMesh->createNormal(n);
 		}
 		for (const auto& tc : texCoords) {
-			vertexFactory->createTexCoord(tc);
+			polygonMesh->createTexCoord(tc);
 		}
 
-		const auto& positionTable = vertexFactory->getPositions();
-		const auto& normalTable = vertexFactory->getNormals();
-		const auto& texCoordTable = vertexFactory->getTexCoords();
+		const auto& positionTable = polygonMesh->getPositions();
+		const auto& normalTable = polygonMesh->getNormals();
+		const auto& texCoordTable = polygonMesh->getTexCoords();
 
 		auto meshScene = sceneFactory->createPolygonMeshScene(polygonMesh, "PolygonMesh");
 		scene->addScene(meshScene);
@@ -52,18 +51,10 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 			for (const auto& f : g.faces) {
 				std::vector<int> indices;
 				for (int i = 0; i < f.positionIndices.size(); i++) {
-					auto p = positionTable[f.positionIndices[i] - 1];
-					auto n = normalTable[f.normalIndices[i] - 1];
-					const auto texCoordIndex = f.texCoordIndices[i] - 1;
-					if (texCoordIndex >= 0) {
-						auto t = texCoordTable[texCoordIndex];
-						auto v = vertexFactory->createVertex(p, n, t);
-						indices.push_back(v->getId());
-					}
-					else {
-						auto v = vertexFactory->createVertex(p, n);
-						indices.push_back(v->getId());
-					}
+					const auto p = f.positionIndices[i] - 1;
+					const auto n = f.normalIndices[i] - 1;
+					const auto tc = f.texCoordIndices[i] - 1;
+					indices.push_back(polygonMesh->getVertices().back().id);
 				}
 				//indices.push_back(eachIndices);
 				int origin = indices[0];

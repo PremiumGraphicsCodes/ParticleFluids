@@ -15,6 +15,19 @@ bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& fileP
 	const auto& vertices = polygon.getShape()->getVertices();
 	const auto& faces = polygon.getShape()->getFaces();
 
+	const auto& positions = polygon.getShape()->getPositions();
+	for (const auto& v : positions) {
+		obj.positions.push_back(v);
+	}
+	const auto& normals = polygon.getShape()->getNormals();
+	for (const auto& n : normals) {
+		obj.normals.push_back(n);
+	}
+	const auto& tcs = polygon.getShape()->getTexCoords();
+	for (const auto& tc : tcs) {
+		obj.texCoords.push_back(tc);
+	}
+
 	for (auto f : faces) {
 		std::vector<int> indices;
 		indices.push_back(f.v1 + 1);
@@ -25,11 +38,6 @@ bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& fileP
 		face.normalIndices = indices;
 		face.texCoordIndices = indices;
 		obj.groups[0].faces.push_back(face);
-	}
-	for (auto v : vertices) {
-		obj.positions.push_back(v->getPosition());
-		obj.normals.push_back(v->getNormal());
-		obj.texCoords.push_back(v->getTexCoord());
 	}
 	OBJFileWriter writer;
 	return writer.write(filePath, obj);
