@@ -88,7 +88,7 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 			mat.diffuse = m.diffuse;
 			mat.specular = m.specular;
 			mat.shininess = m.specularExponent;
-			scene->addScene( sceneFactory->createMaterialScene(new Material(mat), m.name) );
+			scene->addScene( sceneFactory->createMaterialScene(mat, m.name) );
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;

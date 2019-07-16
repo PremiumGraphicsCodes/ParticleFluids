@@ -6,6 +6,5 @@ using namespace Crystal::Scene;
 
 void LightScene::addViewModel(Crystal::Scene::SceneViewModel& viewModel) const
 {
-	auto ll = getLight();
-	viewModel.lightBuffer.add(*ll);
+	viewModel.lightBuffer.add(getLight());
 }

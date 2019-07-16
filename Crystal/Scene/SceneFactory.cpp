@@ -72,12 +72,12 @@ PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh,  const
 	return new PolygonMeshScene(getNextId(), name, mesh);
 }
 
-LightScene* SceneFactory::createLightScene(PointLight* l, const std::string& name)
+LightScene* SceneFactory::createLightScene(const PointLight& light, const std::string& name)
 {
-	return new LightScene(getNextId(), name, l);
+	return new LightScene(getNextId(), name, light);
 }
 
-MaterialScene* SceneFactory::createMaterialScene(Material* m, const std::string& name)
+MaterialScene* SceneFactory::createMaterialScene(const Material& material, const std::string& name)
 {
-	return new MaterialScene(getNextId(), name, m);
+	return new MaterialScene(getNextId(), name, material);
 }

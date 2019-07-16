@@ -19,7 +19,7 @@ void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
 	auto lights = getParent()->findScenes(SceneType::LightScene);
 	PointLight light;
 	if(!lights.empty()) {
-		light = *(static_cast<LightScene*>(lights.front())->getLight());
+		light = static_cast<LightScene*>(lights.front())->getLight();
 	}
 
 	// Polygon直下にあるfaceはデフォルトで描画．
@@ -31,7 +31,7 @@ void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
 	for (auto& child : children) {
 		auto faceGroup = static_cast<FaceGroupScene*>(child);
 		auto materialScene = static_cast<MaterialScene*>( getParent()->findSceneByName( faceGroup->getMaterialName() ) );
-		bf.add(faceGroup->getShape(), *(materialScene->getMaterial()), light);
+		bf.add(faceGroup->getShape(), materialScene->getMaterial(), light);
 	}
 	viewModel.triangleBuffers.push_back(bf);
 }

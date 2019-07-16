@@ -93,9 +93,8 @@ int SceneAdapter::AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System
 int SceneAdapter::AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name)
 {
 	auto l = Converter::toCpp(light);
-	auto ll = new Crystal::Graphics::PointLight(l);
 	auto str = msclr::interop::marshal_as<std::string>(name);
-	auto scene = factory->createLightScene(ll, str);
+	auto scene = factory->createLightScene(l, str);
 	instance->addScene(scene);
 	return scene->getId();
 }
@@ -103,9 +102,8 @@ int SceneAdapter::AddLightScene(PG::Core::Graphics::PointLight^ light, System::S
 int SceneAdapter::AddMaterialScene(PG::Core::Graphics::Material^ material, System::String^ name)
 {
 	auto m = Converter::toCpp(material);
-	auto mm = new Crystal::Graphics::Material(m);
 	auto str = msclr::interop::marshal_as<std::string>(name);
-	auto scene = factory->createMaterialScene(mm, str);
+	auto scene = factory->createMaterialScene(m, str);
 	instance->addScene(scene);
 	return scene->getId();
 }
@@ -139,7 +137,7 @@ PG::Core::Graphics::Material^ SceneAdapter::FindMaterialByid(int id)
 		return nullptr;
 	}
 	auto materialScene = static_cast<Crystal::Scene::MaterialScene*>(scene);
-	return Converter::fromCpp(*materialScene->getMaterial());
+	return Converter::fromCpp(materialScene->getMaterial());
 }
 
 PG::Core::Graphics::PointLight^ SceneAdapter::FindLightById(int id)
@@ -149,7 +147,7 @@ PG::Core::Graphics::PointLight^ SceneAdapter::FindLightById(int id)
 		return nullptr;
 	}
 	auto lightScene = static_cast<Crystal::Scene::LightScene*>(scene);
-	return Converter::fromCpp(*lightScene->getLight());
+	return Converter::fromCpp(lightScene->getLight());
 }
 
 PG::Core::Scene^ SceneAdapter::ToScene()

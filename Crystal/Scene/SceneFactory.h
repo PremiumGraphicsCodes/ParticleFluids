@@ -34,9 +34,9 @@ public:
 
 	PolygonMeshScene* createPolygonMeshScene(Shape::PolygonMesh* mesh, const std::string& name);
 
-	LightScene* createLightScene(Graphics::PointLight* l, const std::string& name);
+	LightScene* createLightScene(const Graphics::PointLight& light, const std::string& name);
 
-	MaterialScene* createMaterialScene(Graphics::Material* material, const std::string& name);
+	MaterialScene* createMaterialScene(const Graphics::Material& material, const std::string& name);
 
 	int getNextId() { return idProvider.getNextId(); }
 

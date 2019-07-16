@@ -11,16 +11,16 @@ namespace Crystal {
 class LightScene : public IScene
 {
 public:
-	LightScene(const int id, const std::string& name, Graphics::PointLight* light) :
+	LightScene(const int id, const std::string& name, const Graphics::PointLight& light) :
 		IScene(id,name),
 		light(light)
 	{}
 
 	~LightScene() {};
 
-	Graphics::PointLight* getLight() const { return light; }
+	Graphics::PointLight getLight() const { return light; }
 
-	void setLight(const Graphics::PointLight& l) { *light = l; }
+	void setLight(const Graphics::PointLight& l) { light = l; }
 
 	/*
 	void move(const Math::Vector3dd& v) override { light->move(v); }
@@ -30,19 +30,19 @@ public:
 	void transform(const Math::Matrix4dd& m) { light->transform(m); }
 	*/
 
-	bool isNull() const { return light == nullptr; }
+	bool isNull() const { return false; }
 
 	SceneType getType() const override { return SceneType::LightScene; }
 
 	void onClear() override
 	{
-		delete light;
+
 	}
 
 	void addViewModel(SceneViewModel& viewModel) const override;
 
 private:
-	Graphics::PointLight* light;
+	Graphics::PointLight light;
 };
 
 	}
