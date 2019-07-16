@@ -59,25 +59,35 @@ int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core:
 
 int SceneAdapter::AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System::String^ name)
 {
-	auto faces = mesh->Faces;
-	std::vector<Crystal::Shape::Face> fs;
-	for (int i = 0; i < faces->Count; ++i) {
-		auto f = faces[i];
-		Crystal::Shape::Face ff(f->V0, f->V1, f->V2);
-		fs.push_back(ff);
+	Crystal::Shape::PolygonMesh* dest = new Crystal::Shape::PolygonMesh();
+	auto positions = mesh->Positions;
+	for (int i = 0; i < positions->Count; ++i) {
+		dest->createPosition(Converter::toCpp(positions[i]));
+	}
+	auto normals = mesh->Normals;
+	for (int i = 0; i < normals->Count; ++i) {
+		dest->createNormal(Converter::toCpp(normals[i]));
+	}
+	auto texCoords = mesh->TexCoords;
+	for (int i = 0; i < texCoords->Count; ++i) {
+		dest->createTexCoord(Converter::toCpp2d(texCoords[i]));
 	}
 	auto vertices = mesh->Vertices;
 	for (int i = 0; i < vertices->Count; ++i) {
 		auto v = vertices[i];
-	//	const auto& p = Converter::toCpp(v->Position);
-	//	const auto& n = Converter::toCpp(v->Normal);
-	//	const auto& t = Converter::toCpp2d(v->TexCoord);
-		//Crystal::Shape::VertexAttr attr;
-		//attr.normal = n;
-		//attr.texCoord = t;
-		//Crystal::Shape::Vertex vv(v->Position);
+		dest->createVertex(v->PositionId, v->NormalId, v->TexCoordId);
 	}
-	return -1;
+
+	auto faces = mesh->Faces;
+	std::vector<Crystal::Shape::Face> fs;
+	for (int i = 0; i < faces->Count; ++i) {
+		auto f = faces[i];
+		dest->createFace(f->V0, f->V1, f->V2);
+	}
+	auto str = msclr::interop::marshal_as<std::string>(name);
+	auto scene = factory->createPolygonMeshScene(dest, str);
+	instance->addScene(scene);
+	return scene->getId();
 }
 
 int SceneAdapter::AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name)

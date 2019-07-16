@@ -11,6 +11,7 @@ namespace PG.Core.Shape
         private List<Vector3d> normals;
         private List<Vector2d> texCoords;
         private int nextVertexId;
+        private int nextFaceId;
 
         public List<Vector3d> Positions
         {
@@ -45,6 +46,7 @@ namespace PG.Core.Shape
             this.vertices = new List<Vertex>();
             this.faces = new List<PolygonFace>();
             this.nextVertexId = 0;
+            this.nextFaceId = 0;
         }
 
         public int CreatePosition(Vector3d position)
@@ -70,6 +72,13 @@ namespace PG.Core.Shape
             var v = new Vertex(positionId, normalId, texCoordId, nextVertexId++);
             vertices.Add(v);
             return v.Id;
+        }
+
+        public int CreateFace(int v0, int v1, int v2)
+        {
+            var f = new PolygonFace(v0, v1, v2, nextFaceId++);
+            faces.Add(f);
+            return f.Id;
         }
     }
 }

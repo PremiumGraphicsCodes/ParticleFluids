@@ -7,13 +7,11 @@ namespace PG.Core.Shape
     {
         private readonly List<Vector3d> vertices;
         private readonly List<Line3d> edges;
-        private int nextVertexId;
 
         public WireFrameBuilder()
         {
             this.vertices = new List<Vector3d>();
             this.edges = new List<Line3d>();
-            this.nextVertexId = 0;
         }
 
         public void Build(Box3d box)

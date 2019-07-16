@@ -45,8 +45,7 @@ namespace PG.Core.Shape
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
                     var v3 = vertices[i, j + 1];
-                    var f = new PolygonFace(v1, v2, v3);
-                    //faces.Add(f);
+                    var f = polygon.CreateFace(v1, v2, v3);
                 }
             }
         }
@@ -71,8 +70,7 @@ namespace PG.Core.Shape
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
                     var v3 = vertices[i, j + 1];
-                    var face = new PolygonFace(v1, v2, v3);
-                    //faces.Add(face);
+                    var face = polygon.CreateFace(v1, v2, v3);
                 }
             }
         }
