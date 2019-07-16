@@ -36,7 +36,7 @@ namespace PG.CGStudio
 
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.BoxGenerationView>("PMBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMSphereGeneration");
-            containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMCylinderGeneration");
+            containerRegistry.RegisterForNavigation<Generation.PolygonMesh.CylinderGenerationView>("PMCylinderGeneration");
 
             containerRegistry.RegisterForNavigation<MaterialAddView>("MaterialAdd");
             containerRegistry.RegisterForNavigation<MaterialEditView>("MaterialEdit");

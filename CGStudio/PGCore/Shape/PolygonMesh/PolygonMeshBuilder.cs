@@ -56,8 +56,8 @@ namespace PG.Core.Shape
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
-                    var p = polygon.CreatePosition( sphere.GetPosition(1.0, u, v) );
-                    var n = polygon.CreateNormal( sphere.GetNormal(u, v) );
+                    var p = polygon.CreatePosition( sphere.GetPosition(1.0, uu, vv) );
+                    var n = polygon.CreateNormal( sphere.GetNormal(uu, vv) );
                     var t = polygon.CreateTexCoord( new Vector2d(uu, vv) );
                     vertices[i, j] = polygon.CreateVertex( p, n, t );
                 }
@@ -84,7 +84,9 @@ namespace PG.Core.Shape
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
-                    vertices[u, v] = polygon.CreatePosition( cylinder.GetPosition(1.0, u, v) );
+                    var p = polygon.CreatePosition( cylinder.GetPosition(1.0, uu, vv) );
+                    var n = polygon.CreateNormal( cylinder.GetNormal(uu, vv) );
+                    vertices[u, v] = polygon.CreateVertex(p, n, -1);
                 }
             }
 
