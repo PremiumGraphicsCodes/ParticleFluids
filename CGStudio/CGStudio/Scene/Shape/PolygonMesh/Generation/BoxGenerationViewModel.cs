@@ -1,5 +1,4 @@
-﻿using PG.Control;
-using PG.Control.Math;
+﻿using PG.Control.Math;
 using PG.Core.Shape;
 using Reactive.Bindings;
 
@@ -22,9 +21,9 @@ namespace PG.CGStudio.Generation.PolygonMesh
         {
             var builder = new PolygonMeshBuilder();
             var box = BoxViewModel.Value;
-            builder.Build(box);
+            builder.Build(box, 2, 2);
             var polygonMesh = builder.PolygonMesh;
-           // MainModel.Instance.Repository.Objects.Add(polygonMesh, "PMBox");
+            MainModel.Instance.Repository.AddPolygonMeshScene(builder.PolygonMesh, "PMBox");
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
         }

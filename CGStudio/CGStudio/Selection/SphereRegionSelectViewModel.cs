@@ -2,9 +2,6 @@
 using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
-using PG.Core.Math;
-using PG.Core.Shape;
-using PG.Core.UI;
 using Prism.Mvvm;
 using Reactive.Bindings;
 
@@ -28,8 +25,10 @@ namespace PG.CGStudio.Selection
 
         private void OnPickUI()
         {
-            var picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.All);
-            picker.Action = OnPicked;
+            var picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.All)
+            {
+                Action = OnPicked
+            };
             Canvas3d.Instance.UICtrl = picker;
         }
 

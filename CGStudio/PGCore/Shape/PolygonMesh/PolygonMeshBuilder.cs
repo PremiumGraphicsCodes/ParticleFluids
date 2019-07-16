@@ -17,9 +17,34 @@ namespace PG.Core.Shape
             get { return polygon; }
         }
 
-        public void Build(Box3d box)
+        public void Build(Box3d box, int u, int v)
         {
-            var vertices = new List<Vertex>();
+            /*
+            var vertices = new int[u, v];
+            for (int i = 0; i < u; ++i)
+            {
+                var uu = u / (double)i;
+                for (int j = 0; j < v; ++j)
+                {
+                    var vv = j / (double)v;
+                    var p = polygon.CreatePosition(box.GetPosition(1.0, u, v));
+                    var n = polygon.CreateNormal(box.GetNormal(u, v));
+                    var t = polygon.CreateTexCoord(new Vector2d(uu, vv));
+                    vertices[i, j] = polygon.CreateVertex(p, n, t);
+                }
+            }
+
+            for (int i = 0; i < u - 1; ++i)
+            {
+                for (int j = 0; j < v - 1; ++j)
+                {
+                    var v1 = vertices[i, j];
+                    var v2 = vertices[i + 1, j];
+                    var v3 = vertices[i, j + 1];
+                    var f = polygon.CreateFace(v1, v2, v3);
+                }
+            }
+            */
         }
 
         public void Build(Sphere3d sphere, int u, int v)
@@ -34,7 +59,7 @@ namespace PG.Core.Shape
                     var p = polygon.CreatePosition( sphere.GetPosition(1.0, u, v) );
                     var n = polygon.CreateNormal( sphere.GetNormal(u, v) );
                     var t = polygon.CreateTexCoord( new Vector2d(uu, vv) );
-                    vertices[u, v] = polygon.CreateVertex( p, n, t );
+                    vertices[i, j] = polygon.CreateVertex( p, n, t );
                 }
             }
 

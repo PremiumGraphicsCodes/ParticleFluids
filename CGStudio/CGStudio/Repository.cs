@@ -62,6 +62,12 @@ namespace PG.CGStudio
             Sync();
         }
 
+        public void AddPolygonMeshScene(PG.Core.Shape.PolygonMesh polygonMesh, string name)
+        {
+            this.adapter.GetSceneAdapter().AddPolygonMeshScene(polygonMesh, name);
+            Sync();
+        }
+
         public void AddMaterialScene(PG.Core.Graphics.Material material, string name)
         {
             this.adapter.GetSceneAdapter().AddMaterialScene(material, name);

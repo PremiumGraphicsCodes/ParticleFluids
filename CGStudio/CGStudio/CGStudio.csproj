@@ -232,18 +232,18 @@
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\PolygonMesh\Generation\SphereGenerationViewModel.cs" />
-    <Compile Include="Scene\Shape\WireFrame\BoxGenerationView.xaml.cs">
+    <Compile Include="Scene\Shape\WireFrame\Generation\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scene\Shape\WireFrame\BoxGenerationViewModel.cs" />
-    <Compile Include="Scene\Shape\WireFrame\CylinderGenerationView.xaml.cs">
+    <Compile Include="Scene\Shape\WireFrame\Generation\BoxGenerationViewModel.cs" />
+    <Compile Include="Scene\Shape\WireFrame\Generation\CylinderGenerationView.xaml.cs">
       <DependentUpon>CylinderGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scene\Shape\WireFrame\CylinderGenerationViewModel.cs" />
-    <Compile Include="Scene\Shape\WireFrame\SphereGenerationView.xaml.cs">
+    <Compile Include="Scene\Shape\WireFrame\Generation\CylinderGenerationViewModel.cs" />
+    <Compile Include="Scene\Shape\WireFrame\Generation\SphereGenerationView.xaml.cs">
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scene\Shape\WireFrame\SphereGenerationViewModel.cs" />
+    <Compile Include="Scene\Shape\WireFrame\Generation\SphereGenerationViewModel.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="UICtrl\ObjectMoveUICtrl.cs" />
@@ -297,15 +297,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Scene\Shape\WireFrame\BoxGenerationView.xaml">
+    <Page Include="Scene\Shape\WireFrame\Generation\BoxGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Scene\Shape\WireFrame\CylinderGenerationView.xaml">
+    <Page Include="Scene\Shape\WireFrame\Generation\CylinderGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Scene\Shape\WireFrame\SphereGenerationView.xaml">
+    <Page Include="Scene\Shape\WireFrame\Generation\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

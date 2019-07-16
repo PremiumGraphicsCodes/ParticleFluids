@@ -14,7 +14,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
         public ReactiveProperty<int> VNum { get; }
             = new ReactiveProperty<int>();
 
-        public ReactiveCommand ExecuteCommand { get; }
+        public ReactiveCommand GenerateCommand { get; }
             = new ReactiveCommand();
 
         public Sphere3dViewModel SphereViewModel { get; }
@@ -24,14 +24,14 @@ namespace PG.CGStudio.Generation.PolygonMesh
         {
             this.UNum.Value = 24;
             this.VNum.Value = 24;
-            this.ExecuteCommand.Subscribe(OnExecute);
+            this.GenerateCommand.Subscribe(OnExecute);
         }
   
         private void OnExecute()
         {
             var builder = new PolygonMeshBuilder();
             builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
-            //MainModel.Instance.Repository.Objects.Add(builder.PolygonMesh, "PMSphere");
+            MainModel.Instance.Repository.AddPolygonMeshScene(builder.PolygonMesh, "PMSphere");
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
         }
