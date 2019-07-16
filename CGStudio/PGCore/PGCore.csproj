@@ -95,15 +95,15 @@
     <Compile Include="ObjectId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
-    <Compile Include="Shape\ParticleSystem.cs" />
-    <Compile Include="Shape\ParticleSystemBuilder.cs" />
+    <Compile Include="Shape\ParticleSystem\ParticleSystem.cs" />
+    <Compile Include="Shape\ParticleSystem\ParticleSystemBuilder.cs" />
     <Compile Include="Shape\PolygonMesh\PolygonFace.cs" />
     <Compile Include="Shape\PolygonMesh\PolygonMesh.cs" />
     <Compile Include="Shape\PolygonMesh\PolygonMeshBuilder.cs" />
     <Compile Include="Shape\ShapeType.cs" />
     <Compile Include="Shape\PolygonMesh\Vertex.cs" />
-    <Compile Include="Shape\WireFrame.cs" />
-    <Compile Include="Shape\WireFrameBuilder.cs" />
+    <Compile Include="Shape\WireFrame\WireFrame.cs" />
+    <Compile Include="Shape\WireFrame\WireFrameBuilder.cs" />
     <Compile Include="UI\ParticleAppearance.cs" />
     <Compile Include="UI\WireAppearance.cs" />
   </ItemGroup>

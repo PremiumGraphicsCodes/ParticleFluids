@@ -25,5 +25,28 @@ namespace PGCoreTest.Math
                 Assert.AreEqual(10.0, box.Volume, tolerance);
             }
         }
+
+        [TestMethod]
+        public void TestGetPosition()
+        {
+            {
+                var v1 = new Vector3d(0, 0, 0);
+                var v2 = new Vector3d(10, 1, 1);
+                var box = new Box3d(v1, v2);
+                var actual = box.GetPosition(0.0, 0.0, 0.0);
+                var expected = new Vector3d(0.0, 0.0, 0.0);
+                Assert.IsTrue( expected.IsSame(actual, tolerance) );
+
+                actual = box.GetPosition(0.5, 0.0, 0.0);
+                expected = new Vector3d(5, 0, 0);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+
+                actual = box.GetPosition(0.5, 0.5, 0.0);
+                expected = new Vector3d(5, 0.5, 0);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+
+            }
+        }
+
     }
 }

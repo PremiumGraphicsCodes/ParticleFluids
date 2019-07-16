@@ -56,21 +56,23 @@ namespace PG.Core.Shape
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
-                    var p = polygon.CreatePosition( sphere.GetPosition(1.0, uu, vv) );
-                    var n = polygon.CreateNormal( sphere.GetNormal(uu, vv) );
-                    var t = polygon.CreateTexCoord( new Vector2d(uu, vv) );
-                    vertices[i, j] = polygon.CreateVertex( p, n, t );
+                    var p = polygon.CreatePosition(sphere.GetPosition(1.0, uu, vv));
+                    var n = polygon.CreateNormal(sphere.GetNormal(uu, vv));
+                    var t = polygon.CreateTexCoord(new Vector2d(uu, vv));
+                    vertices[i, j] = polygon.CreateVertex(p, n, t);
                 }
             }
 
-            for(int i = 0; i < u-1; ++i)
+            for (int i = 0; i < u - 1; ++i)
             {
-                for(int j = 0; j < v-1; ++j)
+                for (int j = 0; j < v - 1; ++j)
                 {
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
                     var v3 = vertices[i, j + 1];
-                    var f = polygon.CreateFace(v1, v2, v3);
+                    var v4 = vertices[i + 1, j + 1];
+                    polygon.CreateFace(v1, v2, v3);
+                    polygon.CreateFace(v4, v3, v2);
                 }
             }
         }
@@ -84,8 +86,8 @@ namespace PG.Core.Shape
                 for (int j = 0; j < v; ++j)
                 {
                     var vv = j / (double)v;
-                    var p = polygon.CreatePosition( cylinder.GetPosition(1.0, uu, vv) );
-                    var n = polygon.CreateNormal( cylinder.GetNormal(uu, vv) );
+                    var p = polygon.CreatePosition(cylinder.GetPosition(1.0, uu, vv));
+                    var n = polygon.CreateNormal(cylinder.GetNormal(uu, vv));
                     vertices[i, j] = polygon.CreateVertex(p, n, -1);
                 }
             }
@@ -97,9 +99,30 @@ namespace PG.Core.Shape
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
                     var v3 = vertices[i, j + 1];
-                    var face = polygon.CreateFace(v1, v2, v3);
+                    var v4 = vertices[i + 1, j + 1];
+                    polygon.CreateFace(v1, v2, v3);
+                    polygon.CreateFace(v4, v3, v2);
                 }
             }
+        }
+
+        private void Add(int v0, int v1, int v2, int v3)
+        {
+            var positions = polygon.Positions;
+            var p0 = positions[v0];
+            var p1 = positions[v1];
+            var p2 = positions[v2];
+
+            var normal = (p1 - p0).Cross(p2 - p0);
+            var n0 = polygon.CreateNormal(normal);
+
+            var vv0 = polygon.CreateVertex(v0, n0);
+            var vv1 = polygon.CreateVertex(v1, n0);
+            var vv2 = polygon.CreateVertex(v2, n0);
+            var vv3 = polygon.CreateVertex(v3, n0);
+
+            polygon.CreateFace(vv0, vv1, vv2);
+            polygon.CreateFace(vv3, vv2, vv0);
         }
     }
 }

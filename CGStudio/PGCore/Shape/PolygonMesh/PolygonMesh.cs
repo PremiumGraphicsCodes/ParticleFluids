@@ -67,6 +67,13 @@ namespace PG.Core.Shape
             return texCoords.Count - 1;
         }
 
+        public int CreateVertex(int positionId, int normalId)
+        {
+            var v = new Vertex(positionId, normalId, -1, nextVertexId++);
+            vertices.Add(v);
+            return v.Id;
+        }
+
         public int CreateVertex(int positionId, int normalId, int texCoordId)
         {
             var v = new Vertex(positionId, normalId, texCoordId, nextVertexId++);
