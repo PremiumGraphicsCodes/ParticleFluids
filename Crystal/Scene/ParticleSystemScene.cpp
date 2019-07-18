@@ -16,11 +16,9 @@ SceneViewModel ParticleSystemScene::toViewModel() const
 		return viewModel;
 	}
 	const auto& particles = getShape()->getParticles();
-	PointBuffer pointBuffer;
 	for (auto p : particles) {
-		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
+		viewModel.pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
-	viewModel.pointBuffers.push_back(pointBuffer);
 	return viewModel;
 }
 

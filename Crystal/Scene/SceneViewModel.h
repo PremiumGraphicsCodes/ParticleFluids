@@ -12,7 +12,7 @@ namespace Crystal {
 class SceneViewModel
 {
 public:
-	std::list<Graphics::PointBuffer> getPointBuffers() const { return pointBuffers; }
+	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 
 	std::list<Graphics::LineBuffer> getLineBuffers() const { return lineBuffers; }
 
@@ -21,14 +21,14 @@ public:
 	std::list<Graphics::LightBuffer> getLightBuffers() const { return lightBuffers; }
 
 	void merge(SceneViewModel& rhs) {
-		pointBuffers.splice(pointBuffers.end(), rhs.pointBuffers);
+		pointBuffer.merge(rhs.pointBuffer);
 		lineBuffers.splice(lineBuffers.end(), rhs.lineBuffers);
 		triangleBuffers.splice(triangleBuffers.end(), rhs.triangleBuffers);
 		lightBuffers.splice(lightBuffers.end(), rhs.lightBuffers);
 	}
 
 public:
-	std::list<Graphics::PointBuffer> pointBuffers;
+	Graphics::PointBuffer pointBuffer;
 	std::list<Graphics::LineBuffer> lineBuffers;
 	std::list<Graphics::TriangleBuffer> triangleBuffers;
 	std::list<Graphics::LightBuffer> lightBuffers;

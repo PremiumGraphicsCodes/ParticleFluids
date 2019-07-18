@@ -26,9 +26,7 @@ bool ObjectRenderer::build(ShaderObjectRepository& shaders)
 
 void ObjectRenderer::setViewModel(const SceneViewModel& vm)
 {
-	for (const auto& pb : vm.getPointBuffers()) {
-		this->pointRenderer.setBuffer(pb);
-	}
+	this->pointRenderer.setBuffer(vm.getPointBuffer());
 	for (const auto& lb : vm.getLineBuffers()) {
 		this->wireRenderer.setBuffer(lb, 1.0f);
 	}
