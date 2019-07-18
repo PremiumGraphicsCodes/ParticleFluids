@@ -8,7 +8,6 @@
 #include "../Scene/ParticleSystemScene.h"
 #include "../Scene/WireFrameScene.h"
 #include "../Scene/PolygonMeshScene.h"
-#include "../Scene/Scene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -21,6 +20,13 @@ public:
 	std::list<Graphics::LineBuffer> getLindIdBuffer() const { return lineIdBuffers; }
 
 	std::list<Graphics::LineBuffer> getTriangleIdBuffer() const { return triangleIdBuffers; }
+
+	void merge(SceneIdViewModel& rhs) {
+		pointIdBuffers.splice(pointIdBuffers.end(), rhs.pointIdBuffers);
+		lineIdBuffers.splice(lineIdBuffers.end(), rhs.lineIdBuffers);
+		triangleIdBuffers.splice(triangleIdBuffers.end(), rhs.triangleIdBuffers);
+	}
+
 
 public:
 	std::list<Graphics::PointBuffer> pointIdBuffers;

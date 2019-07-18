@@ -39,6 +39,8 @@ public:
 
 	SceneViewModel toViewModel() const override;
 
+	SceneIdViewModel toIdViewModel() const override;
+
 private:
 	Graphics::PointLight light;
 };

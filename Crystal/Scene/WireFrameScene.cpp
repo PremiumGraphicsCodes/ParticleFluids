@@ -27,7 +27,7 @@ SceneViewModel WireFrameScene::toViewModel() const
 	return viewModel;
 }
 
-void WireFrameScene::addViewModel(SceneIdViewModel& viewModel) const
+SceneIdViewModel WireFrameScene::toIdViewModel() const
 {
 	const auto objectId = getId();
 	const auto& lines = getShape()->getLines();
@@ -39,7 +39,9 @@ void WireFrameScene::addViewModel(SceneIdViewModel& viewModel) const
 		Graphics::DrawableID did(objectId, childId++);
 		lineIdBuffer.add(l.getStart(), did.toColor(), index++);
 	}
+	SceneIdViewModel viewModel;
 	viewModel.lineIdBuffers.push_back(lineIdBuffer);
+	return viewModel;
 }
 
 void WireFrameScene::getBoundingBox(Crystal::Math::Box3d& box) const

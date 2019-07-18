@@ -49,9 +49,9 @@ ViewModel Repository::toViewModel()
 {
 	ViewModel vm;
 	vm.object = objects.toViewModel();
-	//items.addViewModel(vm.object);
+	 //items.addViewModel(vm.object);
 
-	objects.addViewModel(vm.objectId);
+	vm.objectId = objects.toIdViewModel();
 
 	return vm;
 }

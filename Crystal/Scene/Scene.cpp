@@ -1,6 +1,7 @@
 #include "Scene.h"
 
 #include "SceneViewModel.h"
+#include "SceneIdViewModel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -41,11 +42,14 @@ SceneViewModel Scene::toViewModel() const
 	return viewModel;
 }
 
-void Scene::addViewModel(SceneIdViewModel& viewModel) const
+SceneIdViewModel Scene::toIdViewModel() const
 {
+	SceneIdViewModel viewModel;
 	for (auto c : children) {
-		c->addViewModel(viewModel);
+		auto& vm = c->toIdViewModel();
+		viewModel.merge(vm);
 	}
+	return viewModel;
 }
 
 

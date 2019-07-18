@@ -2,7 +2,6 @@
 
 #include "IScene.h"
 #include "../Graphics/Material.h"
-#include "SceneViewModel.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -25,7 +24,9 @@ public:
 
 	void onClear() override {}
 
-	SceneViewModel toViewModel() const override { return SceneViewModel(); }
+	SceneViewModel toViewModel() const override;
+
+	SceneIdViewModel toIdViewModel() const override;
 
 private:
 	Graphics::Material material;

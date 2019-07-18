@@ -60,6 +60,7 @@
     <ClCompile Include="FileExporter.cpp" />
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
+    <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="Scene.cpp" />

@@ -41,7 +41,7 @@ public:
 
 	SceneViewModel toViewModel() const override;
 
-	virtual void addViewModel(SceneIdViewModel& viewModel) const override;
+	SceneIdViewModel toIdViewModel() const override;
 
 	virtual void getBoundingBox(Math::Box3d& box) const override;
 

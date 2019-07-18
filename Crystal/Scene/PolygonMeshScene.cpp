@@ -7,6 +7,8 @@
 #include "../Graphics/DrawableId.h"
 #include "FaceGroupScene.h"
 
+#include "LightScene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
@@ -39,8 +41,9 @@ SceneViewModel PolygonMeshScene::toViewModel() const
 	return viewModel;
 }
 
-void PolygonMeshScene::addViewModel(SceneIdViewModel& viewModel) const
+SceneIdViewModel PolygonMeshScene::toIdViewModel() const
 {
+	SceneIdViewModel viewModel;
 	const auto objectId = getId();
 	const auto& vertices = getShape()->getVertices();
 	const auto& positions = getShape()->getPositions();
@@ -56,6 +59,7 @@ void PolygonMeshScene::addViewModel(SceneIdViewModel& viewModel) const
 		triangleIdBuffer.add( positions[ vertices[f.v3].positionId ], idColor, index++);
 	}
 	viewModel.triangleIdBuffers.push_back(triangleIdBuffer);
+	return viewModel;
 }
 
 void PolygonMeshScene::getBoundingBox(Crystal::Math::Box3d& boundingBox) const

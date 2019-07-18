@@ -143,6 +143,9 @@
     <ClCompile Include="WireFrameScene.cpp">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
+    <ClCompile Include="MaterialScene.cpp">
+      <Filter>Scene\Appearance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">

@@ -69,7 +69,7 @@ public:
 
 	virtual SceneViewModel toViewModel() const = 0;
 
-	virtual void addViewModel(SceneIdViewModel& viewModel) const {};
+	virtual SceneIdViewModel toIdViewModel() const = 0;
 
 	virtual void getBoundingBox(Math::Box3d& box) const {}
 

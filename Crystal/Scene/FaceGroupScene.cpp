@@ -39,3 +39,8 @@ SceneViewModel FaceGroupScene::toViewModel() const
 	viewModel.triangleBuffers.push_back(bf);
 	*/
 }
+
+SceneIdViewModel FaceGroupScene::toIdViewModel() const
+{
+	return SceneIdViewModel();
+}
