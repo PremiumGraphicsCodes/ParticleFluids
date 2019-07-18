@@ -29,10 +29,12 @@ void ParticleSystemScene::addViewModel(SceneIdViewModel& viewModel) const
 	const auto objectId = getId();
 	const auto& particles = getShape()->getParticles();
 	int particleId = 0;
+	PointBuffer pointIdBuffer;
 	for (auto p : particles) {
 		Graphics::DrawableID did(objectId, particleId++);
-		viewModel.pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size);
+		pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size);
 	}
+	viewModel.pointIdBuffers.push_back(pointIdBuffer);
 }
 
 void ParticleSystemScene::getBoundingBox(Crystal::Math::Box3d& box) const

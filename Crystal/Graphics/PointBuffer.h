@@ -37,6 +37,12 @@ public:
 
 	Graphics::Buffer1d<float> getSize() const { return sizes; }
 
+	void merge(const PointBuffer& rhs) {
+		position.add(rhs.position);
+		color.add(rhs.color);
+		sizes.add(rhs.sizes);
+	}
+
 private:
 	Graphics::Buffer3d<float> position;
 	Graphics::Buffer4d<float> color;

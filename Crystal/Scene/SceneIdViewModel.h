@@ -16,20 +16,16 @@ namespace Crystal {
 class SceneIdViewModel
 {
 public:
-	Graphics::PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
+	std::list<Graphics::PointBuffer> getPointIdBuffers() const { return pointIdBuffers; }
 
-	Graphics::LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
+	std::list<Graphics::LineBuffer> getLindIdBuffer() const { return lineIdBuffers; }
 
-	Graphics::LineBuffer getTriangleIdBuffer() const { return triangleIdBuffer; }
-
-private:
-
-	void add(const PolygonMeshScene& object);
+	std::list<Graphics::LineBuffer> getTriangleIdBuffer() const { return triangleIdBuffers; }
 
 public:
-	Graphics::PointBuffer pointIdBuffer;
-	Graphics::LineBuffer lineIdBuffer;
-	Graphics::LineBuffer triangleIdBuffer;
+	std::list<Graphics::PointBuffer> pointIdBuffers;
+	std::list<Graphics::LineBuffer> lineIdBuffers;
+	std::list<Graphics::LineBuffer> triangleIdBuffers;
 };
 
 	}

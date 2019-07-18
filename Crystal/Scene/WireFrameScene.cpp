@@ -6,6 +6,7 @@
 #include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
 SceneViewModel WireFrameScene::toViewModel() const
@@ -17,7 +18,7 @@ SceneViewModel WireFrameScene::toViewModel() const
 	const auto& lines = getShape()->getLines();
 	const auto& color = getAttribute().color;
 	int index = 0;
-	Crystal::Graphics::LineBuffer lineBuffer;
+	LineBuffer lineBuffer;
 	for (const auto& l : lines) {
 		lineBuffer.add(l.getStart(), color, index++);
 		lineBuffer.add(l.getEnd(), color, index++);
@@ -32,10 +33,13 @@ void WireFrameScene::addViewModel(SceneIdViewModel& viewModel) const
 	const auto& lines = getShape()->getLines();
 	int childId = 0;
 	int index = 0;
+	
+	LineBuffer lineIdBuffer;
 	for (auto l : lines) {
 		Graphics::DrawableID did(objectId, childId++);
-		viewModel.lineIdBuffer.add(l.getStart(), did.toColor(), index++);
+		lineIdBuffer.add(l.getStart(), did.toColor(), index++);
 	}
+	viewModel.lineIdBuffers.push_back(lineIdBuffer);
 }
 
 void WireFrameScene::getBoundingBox(Crystal::Math::Box3d& box) const
