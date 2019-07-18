@@ -46,8 +46,11 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
+	std::string getMaterialName() const { return materialName; }
+
 private:
 	Shape::PolygonMesh* shape;
+	std::string materialName;
 };
 
 	}
