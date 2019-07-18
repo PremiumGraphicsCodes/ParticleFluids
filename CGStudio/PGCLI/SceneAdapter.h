@@ -44,6 +44,8 @@ public:
 
 	PG::Core::Graphics::PointLight^ FindLightById(int id);
 
+	PG::Core::Math::Vector3d^ FindPositionById(int parentId, int childId);
+
 	PG::Core::Scene^ ToScene();
 
 internal:

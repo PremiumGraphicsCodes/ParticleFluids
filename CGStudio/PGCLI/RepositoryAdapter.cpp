@@ -52,3 +52,8 @@ SceneAdapter^ RepositoryAdapter::GetSceneAdapter()
 {
 	return gcnew SceneAdapter(instance->getObjects(), instance->getObjectFactory());
 }
+
+SceneAdapter^ RepositoryAdapter::GetItemAdapter()
+{
+	return gcnew SceneAdapter(instance->getItems(), instance->getItemFactory());
+}

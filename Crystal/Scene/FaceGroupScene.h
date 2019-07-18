@@ -8,15 +8,15 @@
 namespace Crystal {
 	namespace Scene {
 
-class FaceGroupScene : public IShapeScene
+class FaceGroupScene : public IScene
 {
 public:
 	FaceGroupScene() :
-		IShapeScene(-1)
+		IScene(-1)
 	{}
 
 	FaceGroupScene(const int id, const std::string& name, const std::vector<Shape::Face>& faces) :
-		IShapeScene(id, name),
+		IScene(id, name),
 		faces(faces)
 	{}
 
@@ -24,11 +24,11 @@ public:
 
 	std::vector<Shape::Face> getShape() const { return faces; }
 
-	void move(const Math::Vector3dd& v) override { ; }
+	//void move(const Math::Vector3dd& v) override { ; }
 
-	void transform(const Math::Matrix3dd& m) { ; }
+	//void transform(const Math::Matrix3dd& m) override { ; }
 
-	void transform(const Math::Matrix4dd& m) { ; }
+	//void transform(const Math::Matrix4dd& m) override { ; }
 
 	void addFace(const Shape::Face& f) { faces.push_back(f); }
 

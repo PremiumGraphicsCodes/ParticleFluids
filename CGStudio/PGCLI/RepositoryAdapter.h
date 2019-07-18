@@ -28,6 +28,8 @@ public:
 
 	SceneAdapter^ GetSceneAdapter();
 
+	SceneAdapter^ GetItemAdapter();
+
 private:
 internal:
 	Crystal::UI::Repository* instance;

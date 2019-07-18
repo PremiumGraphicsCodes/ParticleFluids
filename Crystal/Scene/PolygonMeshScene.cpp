@@ -7,6 +7,7 @@
 #include "../Graphics/DrawableId.h"
 #include "FaceGroupScene.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
@@ -56,4 +57,10 @@ void PolygonMeshScene::addViewModel(SceneIdViewModel& viewModel) const
 void PolygonMeshScene::getBoundingBox(Crystal::Math::Box3d& boundingBox) const
 {
 	boundingBox.add(getShape()->getBoundingBox());
+}
+
+Vector3dd PolygonMeshScene::getPosition(const int index) const
+{
+	const auto& positions = getShape()->getPositions();
+	return positions[index];
 }

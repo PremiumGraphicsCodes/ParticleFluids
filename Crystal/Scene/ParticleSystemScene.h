@@ -45,6 +45,8 @@ public:
 
 	virtual void getBoundingBox(Math::Box3d& box) const override;
 
+	Math::Vector3dd getPosition(const int index) const override;
+
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;
 };

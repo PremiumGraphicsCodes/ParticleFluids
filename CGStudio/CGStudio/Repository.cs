@@ -62,7 +62,7 @@ namespace PG.CGStudio
             Sync();
         }
 
-        public void AddPolygonMeshScene(PG.Core.Shape.PolygonMesh polygonMesh, string name)
+        public void AddPolygonMeshScene(PolygonMesh polygonMesh, string name)
         {
             this.adapter.GetSceneAdapter().AddPolygonMeshScene(polygonMesh, name);
             Sync();
@@ -95,5 +95,24 @@ namespace PG.CGStudio
             var newScene = this.adapter.GetSceneAdapter().ToScene();
             Scene[0] = newScene;
         }
+
+        public void AddParticleSystemItem(List<Vector3d> positions, string name)
+        {
+            this.adapter.GetItemAdapter().AddParticleSystemScene(positions, name);
+            Sync();
+        }
+
+        public void AddWireFrameItem(List<Line3d> lines, string name)
+        {
+            this.adapter.GetItemAdapter().AddWireFrameScene(lines, name);
+            Sync();
+        }
+
+        public void AddPolygonMeshItem(PolygonMesh polygonMesh, string name)
+        {
+            this.adapter.GetItemAdapter().AddPolygonMeshScene(polygonMesh, name);
+            Sync();
+        }
+
     }
 }

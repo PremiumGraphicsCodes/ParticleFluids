@@ -47,6 +47,8 @@ public:
 
 	virtual void getBoundingBox(Math::Box3d& box) const;
 
+	Math::Vector3dd getPosition(const int index) const override;
+
 private:
 	Shape::WireFrame* shape;
 	WireFrameAttribute attribute;

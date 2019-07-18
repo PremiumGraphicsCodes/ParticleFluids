@@ -150,6 +150,13 @@ PG::Core::Graphics::PointLight^ SceneAdapter::FindLightById(int id)
 	return Converter::fromCpp(lightScene->getLight());
 }
 
+PG::Core::Math::Vector3d^ SceneAdapter::FindPositionById(int parentId, int childId)
+{
+	auto scene = instance->findSceneById<Crystal::Scene::IShapeScene*>(parentId);
+	return Converter::fromCpp( scene->getPosition(childId) );
+}
+
+
 PG::Core::Scene^ SceneAdapter::ToScene()
 {
 	auto scene = ToScene(instance);

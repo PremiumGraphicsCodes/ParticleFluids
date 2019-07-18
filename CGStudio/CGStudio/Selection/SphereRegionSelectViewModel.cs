@@ -35,7 +35,7 @@ namespace PG.CGStudio.Selection
         private void OnPicked(ObjectId id)
         {
             /*
-            var obj = MainModel.Instance.Repository.Objects.FindObjectById(id.parentId);
+            var obj = MainModel.Instance.Repository.Adapter.GetSceneAdapter().(id.parentId);
 
             var sphere = new Sphere3d(1.0, obj.GetPosition(id.childId));
             SphereViewModel.Value = sphere;

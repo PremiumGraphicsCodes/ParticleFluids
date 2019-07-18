@@ -5,6 +5,7 @@
 
 #include "../Graphics/DrawableId.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Scene;
 
 void ParticleSystemScene::addViewModel(SceneViewModel& viewModel) const
@@ -32,4 +33,10 @@ void ParticleSystemScene::addViewModel(SceneIdViewModel& viewModel) const
 void ParticleSystemScene::getBoundingBox(Crystal::Math::Box3d& box) const
 {
 	box.add(getShape()->getBoundingBox());
+}
+
+Vector3dd ParticleSystemScene::getPosition(const int index) const
+{
+	const auto& ps = getShape()->getParticles();
+	return ps[index]->getPosition();
 }

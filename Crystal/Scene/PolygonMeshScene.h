@@ -38,11 +38,13 @@ public:
 		delete shape;
 	}
 
-	virtual void addViewModel(SceneViewModel& viewModel) const override;
+	void addViewModel(SceneViewModel& viewModel) const override;
 
-	virtual void addViewModel(SceneIdViewModel& viewModel) const override;
+	void addViewModel(SceneIdViewModel& viewModel) const override;
 
-	virtual void getBoundingBox(Math::Box3d& boundingBox) const override;
+	void getBoundingBox(Math::Box3d& boundingBox) const override;
+
+	Math::Vector3dd getPosition(const int index) const override;
 
 private:
 	Shape::PolygonMesh* shape;

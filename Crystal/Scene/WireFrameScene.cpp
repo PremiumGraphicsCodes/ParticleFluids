@@ -5,6 +5,7 @@
 
 #include "../Graphics/DrawableId.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Scene;
 
 void WireFrameScene::addViewModel(SceneViewModel& viewModel) const
@@ -36,4 +37,10 @@ void WireFrameScene::addViewModel(SceneIdViewModel& viewModel) const
 void WireFrameScene::getBoundingBox(Crystal::Math::Box3d& box) const
 {
 	box.add( getShape()->getBoundingBox() );
+}
+
+Vector3dd WireFrameScene::getPosition(const int index) const
+{
+	const auto& vertices = getShape()->getVertices();
+	return vertices[index];
 }
