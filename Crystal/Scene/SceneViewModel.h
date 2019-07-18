@@ -18,20 +18,20 @@ public:
 
 	std::list<Graphics::TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
-	std::list<Graphics::LightBuffer> getLightBuffers() const { return lightBuffers; }
+	Graphics::LightBuffer getLightBuffers() const { return lightBuffer; }
 
 	void merge(SceneViewModel& rhs) {
 		pointBuffer.merge(rhs.pointBuffer);
 		lineBuffer.merge(rhs.lineBuffer);
 		triangleBuffers.splice(triangleBuffers.end(), rhs.triangleBuffers);
-		lightBuffers.splice(lightBuffers.end(), rhs.lightBuffers);
+		lightBuffer.merge(rhs.lightBuffer);
 	}
 
 public:
 	Graphics::PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
 	std::list<Graphics::TriangleBuffer> triangleBuffers;
-	std::list<Graphics::LightBuffer> lightBuffers;
+	Graphics::LightBuffer lightBuffer;
 	std::list<Graphics::MaterialBuffer> materialBuffers;
 };
 

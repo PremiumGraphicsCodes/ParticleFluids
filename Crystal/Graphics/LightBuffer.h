@@ -36,6 +36,13 @@ public:
 
 	Graphics::Buffer3d<float> getAmbient() const { return ambient; }
 
+	void merge(const LightBuffer& rhs) {
+		this->position.merge(rhs.position);
+		this->diffuse.merge(rhs.diffuse);
+		this->specular.merge(rhs.specular);
+		this->ambient.merge(rhs.ambient);
+	}
+
 private:
 	Graphics::Buffer3d<float> position;
 	Graphics::Buffer3d<float> diffuse;

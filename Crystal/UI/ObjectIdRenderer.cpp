@@ -33,9 +33,7 @@ void ObjectIdRenderer::setViewModel(const SceneIdViewModel& vm)
 {
 	this->pointIdRenderer.setBuffer(vm.getPointIdBuffer());
 	this->lineIdRenderer.setBuffer(vm.getLindIdBuffer(), 1.0f);
-	for (const auto& bf : vm.getTriangleIdBuffer()) {
-		this->triangleIdRenderer.setBuffer(bf);
-	}
+	this->triangleIdRenderer.setBuffer(vm.getTriangleIdBuffer());
 }
 
 DrawableID ObjectIdRenderer::getId(const double x, const double y)

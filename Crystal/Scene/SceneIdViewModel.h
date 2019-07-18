@@ -16,19 +16,18 @@ public:
 
 	Graphics::LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
 
-	std::list<Graphics::LineBuffer> getTriangleIdBuffer() const { return triangleIdBuffers; }
+	Graphics::LineBuffer getTriangleIdBuffer() const { return triangleIdBuffer; }
 
 	void merge(SceneIdViewModel& rhs) {
 		pointIdBuffer.merge(rhs.pointIdBuffer);
 		lineIdBuffer.merge(rhs.lineIdBuffer);
-		triangleIdBuffers.splice(triangleIdBuffers.end(), rhs.triangleIdBuffers);
+		triangleIdBuffer.merge(triangleIdBuffer);
 	}
-
 
 public:
 	Graphics::PointBuffer pointIdBuffer;
 	Graphics::LineBuffer lineIdBuffer;
-	std::list<Graphics::LineBuffer> triangleIdBuffers;
+	Graphics::LineBuffer triangleIdBuffer;
 };
 
 	}

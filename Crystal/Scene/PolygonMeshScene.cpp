@@ -56,15 +56,13 @@ SceneIdViewModel PolygonMeshScene::toIdViewModel() const
 	const auto& faces = getShape()->getFaces();
 	int childId = 0;
 	int index = 0;
-	LineBuffer triangleIdBuffer;
 	for (auto f : faces) {
 		Graphics::DrawableID did(objectId, childId++);
 		const auto& idColor = did.toColor();
-		triangleIdBuffer.add( positions[ vertices[f.v1].positionId ], idColor, index++);
-		triangleIdBuffer.add( positions[ vertices[f.v2].positionId ], idColor, index++);
-		triangleIdBuffer.add( positions[ vertices[f.v3].positionId ], idColor, index++);
+		viewModel.triangleIdBuffer.add( positions[ vertices[f.v1].positionId ], idColor, index++);
+		viewModel.triangleIdBuffer.add( positions[ vertices[f.v2].positionId ], idColor, index++);
+		viewModel.triangleIdBuffer.add( positions[ vertices[f.v3].positionId ], idColor, index++);
 	}
-	viewModel.triangleIdBuffers.push_back(triangleIdBuffer);
 	return viewModel;
 }
 

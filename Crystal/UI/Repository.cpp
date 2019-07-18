@@ -49,7 +49,7 @@ ViewModel Repository::toViewModel()
 {
 	ViewModel vm;
 	vm.object = objects.toViewModel();
-	 //items.addViewModel(vm.object);
+	vm.object.merge( items.toViewModel() );
 
 	vm.objectId = objects.toIdViewModel();
 
