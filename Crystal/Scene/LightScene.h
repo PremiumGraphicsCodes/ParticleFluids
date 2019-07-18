@@ -37,7 +37,7 @@ public:
 
 	}
 
-	void addViewModel(SceneViewModel& viewModel) const override;
+	SceneViewModel toViewModel() const override;
 
 private:
 	Graphics::PointLight light;

@@ -6,17 +6,22 @@
 #include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-void ParticleSystemScene::addViewModel(SceneViewModel& viewModel) const
+SceneViewModel ParticleSystemScene::toViewModel() const
 {
+	SceneViewModel viewModel;
 	if (!isVisible()) {
-		return;
+		return viewModel;
 	}
 	const auto& particles = getShape()->getParticles();
+	PointBuffer pointBuffer;
 	for (auto p : particles) {
-		viewModel.pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
+		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
+	viewModel.pointBuffers.push_back(pointBuffer);
+	return viewModel;
 }
 
 void ParticleSystemScene::addViewModel(SceneIdViewModel& viewModel) const

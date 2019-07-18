@@ -12,20 +12,27 @@ namespace Crystal {
 class SceneViewModel
 {
 public:
-	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
+	std::list<Graphics::PointBuffer> getPointBuffers() const { return pointBuffers; }
 
-	Graphics::LineBuffer getLineBuffer() const { return lineBuffer; }
+	std::list<Graphics::LineBuffer> getLineBuffers() const { return lineBuffers; }
 
-	std::vector<Graphics::TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
+	std::list<Graphics::TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
-	Graphics::LightBuffer getLightBuffer() const { return lightBuffer; }
+	std::list<Graphics::LightBuffer> getLightBuffers() const { return lightBuffers; }
+
+	void merge(SceneViewModel& rhs) {
+		pointBuffers.splice(pointBuffers.end(), rhs.pointBuffers);
+		lineBuffers.splice(lineBuffers.end(), rhs.lineBuffers);
+		triangleBuffers.splice(triangleBuffers.end(), rhs.triangleBuffers);
+		lightBuffers.splice(lightBuffers.end(), rhs.lightBuffers);
+	}
 
 public:
-	Graphics::PointBuffer pointBuffer;
-	Graphics::LineBuffer lineBuffer;
-	std::vector<Graphics::TriangleBuffer> triangleBuffers;
-	Graphics::LightBuffer lightBuffer;
-	Graphics::MaterialBuffer materialBuffer;
+	std::list<Graphics::PointBuffer> pointBuffers;
+	std::list<Graphics::LineBuffer> lineBuffers;
+	std::list<Graphics::TriangleBuffer> triangleBuffers;
+	std::list<Graphics::LightBuffer> lightBuffers;
+	std::list<Graphics::MaterialBuffer> materialBuffers;
 };
 
 	}

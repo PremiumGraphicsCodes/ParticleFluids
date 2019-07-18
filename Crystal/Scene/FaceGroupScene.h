@@ -41,7 +41,7 @@ public:
 		faces.clear();
 	}
 
-	virtual void addViewModel(SceneViewModel& viewModel) const override;
+	SceneViewModel toViewModel() const override;
 
 	virtual void addViewModel(SceneIdViewModel& viewModel) const override {}
 

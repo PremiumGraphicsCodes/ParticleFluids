@@ -26,8 +26,12 @@ bool ObjectRenderer::build(ShaderObjectRepository& shaders)
 
 void ObjectRenderer::setViewModel(const SceneViewModel& vm)
 {
-	this->pointRenderer.setBuffer(vm.getPointBuffer());
-	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);
+	for (const auto& pb : vm.getPointBuffers()) {
+		this->pointRenderer.setBuffer(pb);
+	}
+	for (const auto& lb : vm.getLineBuffers()) {
+		this->wireRenderer.setBuffer(lb, 1.0f);
+	}
 	smoothBuffers.clear();
 	for (const auto& tb : vm.getTriangleBuffers()) {
 		Shader::SmoothRenderer::Buffer buffer;

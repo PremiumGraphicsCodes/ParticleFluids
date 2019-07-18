@@ -11,10 +11,11 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
+SceneViewModel PolygonMeshScene::toViewModel() const
 {
+	SceneViewModel viewModel;
 	if (!isVisible()) {
-		return;
+		return viewModel;
 	}
 
 	auto lights = getParent()->findScenes(SceneType::LightScene);
@@ -35,6 +36,7 @@ void PolygonMeshScene::addViewModel(SceneViewModel& viewModel) const
 		bf.add(faceGroup->getShape(), materialScene->getMaterial(), light);
 	}
 	viewModel.triangleBuffers.push_back(bf);
+	return viewModel;
 }
 
 void PolygonMeshScene::addViewModel(SceneIdViewModel& viewModel) const

@@ -8,18 +8,22 @@
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 
-void WireFrameScene::addViewModel(SceneViewModel& viewModel) const
+SceneViewModel WireFrameScene::toViewModel() const
 {
+	SceneViewModel viewModel;
 	if (!isVisible()) {
-		return;
+		return viewModel;
 	}
 	const auto& lines = getShape()->getLines();
 	const auto& color = getAttribute().color;
 	int index = 0;
+	Crystal::Graphics::LineBuffer lineBuffer;
 	for (const auto& l : lines) {
-		viewModel.lineBuffer.add(l.getStart(), color, index++);
-		viewModel.lineBuffer.add(l.getEnd(), color, index++);
+		lineBuffer.add(l.getStart(), color, index++);
+		lineBuffer.add(l.getEnd(), color, index++);
 	}
+	viewModel.lineBuffers.push_back(lineBuffer);
+	return viewModel;
 }
 
 void WireFrameScene::addViewModel(SceneIdViewModel& viewModel) const

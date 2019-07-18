@@ -11,8 +11,9 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-void FaceGroupScene::addViewModel(SceneViewModel& viewModel) const
+SceneViewModel FaceGroupScene::toViewModel() const
 {
+	return SceneViewModel();
 	/*
 	if (!isVisible()) {
 		return;

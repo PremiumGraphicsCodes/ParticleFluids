@@ -37,11 +37,11 @@ public:
 
 	void onClear() override { delete shape; }
 
-	virtual Math::Box3d getBoundingBox() const { return shape->getBoundingBox(); }
+	Math::Box3d getBoundingBox() const { return shape->getBoundingBox(); }
 
-	virtual std::vector<Math::Vector3dd> getAllVertices() const { return shape->getVertices(); }
+	std::vector<Math::Vector3dd> getAllVertices() const { return shape->getVertices(); }
 
-	virtual void addViewModel(SceneViewModel& viewModel) const override;
+	SceneViewModel toViewModel() const override;
 
 	virtual void addViewModel(SceneIdViewModel& viewModel) const override;
 
