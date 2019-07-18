@@ -28,12 +28,10 @@ SceneIdViewModel ParticleSystemScene::toIdViewModel() const
 	const auto objectId = getId();
 	const auto& particles = getShape()->getParticles();
 	int particleId = 0;
-	PointBuffer pointIdBuffer;
 	for (auto p : particles) {
 		Graphics::DrawableID did(objectId, particleId++);
-		pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size);
+		viewModel.pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size);
 	}
-	viewModel.pointIdBuffers.push_back(pointIdBuffer);
 	return viewModel;
 }
 

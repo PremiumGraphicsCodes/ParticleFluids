@@ -31,9 +31,7 @@ bool ObjectIdRenderer::build(ShaderObjectRepository& shaders, TextureObjectRepos
 
 void ObjectIdRenderer::setViewModel(const SceneIdViewModel& vm)
 {
-	for (const auto& bf : vm.getPointIdBuffers()) {
-		this->pointIdRenderer.setBuffer(bf);
-	}
+	this->pointIdRenderer.setBuffer(vm.getPointIdBuffer());
 	for (const auto& bf : vm.getLindIdBuffer()) {
 		this->lineIdRenderer.setBuffer(bf, 1.0f);
 	}
