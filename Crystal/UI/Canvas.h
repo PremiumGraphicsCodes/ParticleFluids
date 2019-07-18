@@ -42,7 +42,7 @@ public:
 
 	virtual ~Canvas() {}
 
-	void build(Shader::ShaderObjectRepository& shaders, Shader::TextureObjectRepository& textures);
+	void build(Shader::ShaderObjectRepository& shaders, Scene::IScene* scene, Scene::SceneFactory* factory);
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 
@@ -50,7 +50,7 @@ public:
 		this->renderer->setViewModel(viewModel);
 	}
 
-	void render(const int width, const int height, const Shader::TextureObjectRepository& textures);
+	void render(const int width, const int height, Scene::IScene* scene);
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 

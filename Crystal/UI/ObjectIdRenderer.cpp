@@ -1,12 +1,14 @@
 #include "ObjectIdRenderer.h"
+#include "../../Crystal/Scene/Scene.h"
 #include "../../Crystal/Scene/SceneIdViewModel.h"
+#include "../../Crystal/Scene/TextureScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-bool ObjectIdRenderer::build(ShaderObjectRepository& shaders, TextureObjectRepository& textures)
+bool ObjectIdRenderer::build(ShaderObjectRepository& shaders, IScene* scene, SceneFactory* factory)
 {
 	if (!pointIdRenderer.build(shaders)) {
 		return false;
@@ -18,11 +20,10 @@ bool ObjectIdRenderer::build(ShaderObjectRepository& shaders, TextureObjectRepos
 		return false;
 	}
 
-	const auto id = textures.add(Image(512, 512), "IdTexture");
-	this->texture = textures.findObjectById(id);
-
-	//Image image(512, 512);
-	//texture.create(image, 0);
+	auto textureScene = factory->createTextureScene(Image(512, 512), "IdTexture");
+	scene->addScene( textureScene );
+	const auto id = textureScene->getId();
+	this->texture = textureScene->getTexture();
 
 	frameBufferObject.build(512, 512);
 

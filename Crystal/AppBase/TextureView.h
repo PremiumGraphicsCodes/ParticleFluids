@@ -1,5 +1,6 @@
 #pragma once
 
+/*
 #include "IWindow.h"
 #include "imgui.h"
 #include "imgui_stdlib.h"
@@ -21,11 +22,9 @@ public:
 
 	void show() override;
 
-/*
 	std::string getValue() const { return value; }
 
 	void setValue(const std::string& value) { this->value = value; }
-	*/
 
 private:
 	Shader::TextureObjectRepository& repository;
@@ -34,3 +33,4 @@ private:
 
 	}
 }
+*/

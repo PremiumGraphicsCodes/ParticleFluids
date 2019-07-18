@@ -22,6 +22,10 @@ public:
 
 	void onClear() override { delete texture; }
 
+	SceneViewModel toViewModel() const override;
+
+	SceneIdViewModel toIdViewModel() const override;
+
 private:
 	Shader::TextureObject* texture;
 };

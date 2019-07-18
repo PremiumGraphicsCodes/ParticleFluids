@@ -6,13 +6,14 @@
 using namespace Crystal::UI;
 
 TextureTreeList::TextureTreeList(const std::string& name, Repository* model, Canvas* canvas) :
-	ITreeList(name, model, canvas),
-	image("TextureEdit", *model->getShaders()->getTextures(), 1)
+	ITreeList(name, model, canvas)
+	//image("TextureEdit", *model->getShaders()->getTextures(), 1)
 {
 }
 
 void TextureTreeList::onShow()
 {
+	/*
 	const auto& textures = getRepository()->getShaders()->getTextures()->getTextures();
 
 	ImGui::BeginChild("Textures", ImVec2(250, 100), ImGuiWindowFlags_NoTitleBar);
@@ -24,6 +25,7 @@ void TextureTreeList::onShow()
 		}
 	}
 	ImGui::EndChild();
+	*/
 
 	//image.show();
 }

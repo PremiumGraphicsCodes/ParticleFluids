@@ -20,7 +20,7 @@ public:
 	void onCancel() override;
 
 private:
-	TextureView texture;
+	//TextureView texture;
 	StringView name;
 };
 

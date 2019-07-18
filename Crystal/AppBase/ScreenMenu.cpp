@@ -7,6 +7,7 @@ using namespace Crystal::UI;
 
 void ScreenMenu::show()
 {
+	/*
 	auto model = getModel();
 	auto canvas = getCanvas();
 
@@ -21,10 +22,10 @@ void ScreenMenu::show()
 			const auto c_str = str.c_str();
 			if (ImGui::MenuItem(c_str)) {
 				model->getShaders()->getTextures()->setOnScreenTexture(t);
-//				canvas->getRenderer()->setShowOffScreen(false);
 			}
 		}
 
 		ImGui::EndMenu();
 	}
+	*/
 }

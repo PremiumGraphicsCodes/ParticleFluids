@@ -146,6 +146,9 @@
     <ClCompile Include="MaterialScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
+    <ClCompile Include="TextureScene.cpp">
+      <Filter>Scene\Appearance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">

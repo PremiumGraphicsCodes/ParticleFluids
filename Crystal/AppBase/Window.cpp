@@ -95,7 +95,7 @@ Window::Window(Repository* model, Canvas* canvas) :
 	canvas(canvas)
 {
 	::window = this;
-	::repository = repository;
+	::repository = model;
 	::canvas = canvas;
 }
 
@@ -144,20 +144,19 @@ bool Window::init()
 
 	//canvas->addUICommand(new CameraUICtrl());
 
-	Image image1(512, 512);
-	const auto mainTextureId = model->getShaders()->getTextures()->add(image1, "MainTexture");
-	auto mainTexture = model->getShaders()->getTextures()->findObjectById(mainTextureId);
-	model->getShaders()->getTextures()->setOnScreenTexture(mainTexture);
+	auto scene = repository->getObjects();
+	auto factory = repository->getObjectFactory();
+
+	scene->addScene(factory->createTextureScene(Image(512, 512), "OnScreenTexture"));
 
 	Image image2(2,2);
 	image2.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
 	image2.setColor(1, 0, ColorRGBAuc(0, 255, 0, 0));
 	image2.setColor(0, 1, ColorRGBAuc(0, 0, 255, 0));
 	image2.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
-	model->getShaders()->getTextures()->add(image2, "SampleTexture");
+	scene->addScene(factory->createTextureScene(image2,"SmoothTexture"));
 
-	auto textures = model->getShaders()->getTextures();
-	canvas->build(*model->getShaders()->getShaders(), *textures);
+	canvas->build(*model->getShaders()->getShaders(), scene, factory);
 
 	return true;
 }
@@ -186,8 +185,7 @@ void Window::show()
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		const auto& textures = model->getShaders()->getTextures();
-		canvas->render(width, height, *textures);
+		canvas->render(width, height, repository->getObjects());
 
 		glFlush();
 

@@ -7,12 +7,13 @@
 #include "../Shader/TriangleRenderer.h"
 
 #include "../Shader/FrameBufferObject.h"
-#include "../Shader/TextureObjectRepository.h"
 
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
 	namespace Scene {
+		class IScene;
+		class SceneFactory;
 		class SceneIdViewModel;
 	}
 	namespace UI {
@@ -27,7 +28,7 @@ public:
 
 	~ObjectIdRenderer() {}
 
-	bool build(Shader::ShaderObjectRepository& shaders, Shader::TextureObjectRepository& textures);
+	bool build(Shader::ShaderObjectRepository& shaders, Scene::IScene* scene, Scene::SceneFactory* factory);
 
 	void render();
 

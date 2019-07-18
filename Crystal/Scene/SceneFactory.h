@@ -6,6 +6,7 @@
 #include "WireFrameScene.h"
 #include "LightScene.h"
 #include "MaterialScene.h"
+#include "TextureScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -37,6 +38,8 @@ public:
 	LightScene* createLightScene(const Graphics::PointLight& light, const std::string& name);
 
 	MaterialScene* createMaterialScene(const Graphics::Material& material, const std::string& name);
+
+	TextureScene* createTextureScene(const Graphics::Image& image, const std::string& name);
 
 	int getNextId() { return idProvider.getNextId(); }
 

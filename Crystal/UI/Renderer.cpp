@@ -1,5 +1,7 @@
 #include "Renderer.h"
 #include "../../Crystal/Scene/SceneViewModel.h"
+#include "../../Crystal/Scene/IScene.h"
+#include "../../Crystal/Scene/TextureScene.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -14,12 +16,12 @@ Renderer::Renderer(Crystal::Graphics::ICamera* camera) :
 {
 }
 
-bool Renderer::build(ShaderObjectRepository& shaders, TextureObjectRepository& textures)
+bool Renderer::build(ShaderObjectRepository& shaders, IScene* scene, SceneFactory* factory)
 {
 	if (!objectRenderer.build(shaders)) {
 		return false;
 	}
-	if (!objectIdRenderer.build(shaders, textures)) {
+	if (!objectIdRenderer.build(shaders, scene, factory)) {
 		return false;
 	}
 
@@ -29,12 +31,12 @@ bool Renderer::build(ShaderObjectRepository& shaders, TextureObjectRepository& t
 	return true;
 }
 
-void Renderer::render(const int width, const int height, const TextureObjectRepository& textures)
+void Renderer::render(const int width, const int height, IScene* scene)
 {
-	const auto& texx = textures.getTextures();
-	const auto& tex = texx[0];
-	const auto& smoothTex = texx[1];
-	objectRenderer.render(*tex, *smoothTex);
+	//const auto& tex = scene->findSceneByName<TextureScene*>("MainTexture");
+	const auto& smoothTex = scene->findSceneByName<TextureScene*>("SmoothTexture");
+	const auto& onScreenTex = scene->findSceneByName<TextureScene*>("OnScreenTexture");
+	objectRenderer.render(*onScreenTex->getTexture(), *smoothTex->getTexture());
 	objectIdRenderer.render();
 
 
@@ -50,5 +52,5 @@ void Renderer::render(const int width, const int height, const TextureObjectRepo
 		renderer.render(*tex);
 	}
 	*/
-	renderer.render(*textures.getOnScreenTexture());
+	renderer.render(*onScreenTex->getTexture());
 }

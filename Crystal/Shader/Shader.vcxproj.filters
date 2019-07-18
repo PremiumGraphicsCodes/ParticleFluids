@@ -3,9 +3,6 @@
   <ItemGroup>
     <ClInclude Include="IShader.h" />
     <ClInclude Include="DepthBuffer.h" />
-    <ClInclude Include="TextureObjectRepository.h">
-      <Filter>Repository</Filter>
-    </ClInclude>
     <ClInclude Include="FrameBufferObject.h" />
     <ClInclude Include="TextureObject.h">
       <Filter>Texture</Filter>
@@ -64,9 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
-    <ClCompile Include="TextureObjectRepository.cpp">
-      <Filter>Repository</Filter>
-    </ClCompile>
     <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="TextureObject.cpp">
       <Filter>Texture</Filter>

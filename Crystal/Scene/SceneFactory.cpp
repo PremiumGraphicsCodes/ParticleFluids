@@ -5,6 +5,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 SceneFactory::SceneFactory()
@@ -80,4 +81,11 @@ LightScene* SceneFactory::createLightScene(const PointLight& light, const std::s
 MaterialScene* SceneFactory::createMaterialScene(const Material& material, const std::string& name)
 {
 	return new MaterialScene(getNextId(), name, material);
+}
+
+TextureScene* SceneFactory::createTextureScene(const Image& image, const std::string& name)
+{
+	TextureObject* tex = new TextureObject();
+	tex->create(image);
+	return new TextureScene(getNextId(), name, tex);
 }

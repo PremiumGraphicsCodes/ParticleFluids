@@ -28,18 +28,18 @@ Canvas::Canvas(ICamera* camera) :
 	renderer.reset(new Renderer(camera));
 }
 
-void Canvas::build(ShaderObjectRepository& shaders, TextureObjectRepository& textures)
+void Canvas::build(ShaderObjectRepository& shaders, IScene* scene, SceneFactory* factory)
 {
 	setUICtrl(new CameraUICtrl(getCamera()));
 
-	renderer->build(shaders, textures);
+	renderer->build(shaders, scene, factory);
 }
 
-void Canvas::render(const int width, const int height, const TextureObjectRepository& textures)
+void Canvas::render(const int width, const int height, IScene* scene)
 {
 	this->width = width;
 	this->height = height;
-	renderer->render(width, height, textures);
+	renderer->render(width, height, scene);
 }
 
 void Canvas::onLeftButtonDown(const Vector2df& position)

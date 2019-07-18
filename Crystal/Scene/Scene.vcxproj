@@ -71,6 +71,7 @@
     <ClCompile Include="SceneFactory.cpp" />
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
+    <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="WireFrameScene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

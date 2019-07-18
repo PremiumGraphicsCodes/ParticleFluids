@@ -6,14 +6,14 @@ using namespace Crystal::UI;
 
 TextureAddButton::TextureAddButton(const std::string& name, Repository* model, Canvas* canvas) :
 	IPopupButton(name, model, canvas),
-	texture("Texture", *model->getShaders()->getTextures(), 0),
+	//texture("Texture", *model->getShaders()->getTextures(), 0),
 	name("Name", "Texture01")
 {
 }
 
 void TextureAddButton::onShow()
 {
-	texture.show();
+	//texture.show();
 	if (ImGui::Button("File")) {
 		FileOpenView view("");
 		view.addFilter("*.bmp");
@@ -30,7 +30,7 @@ void TextureAddButton::onOk()
 			image.setColor(i, j, ColorRGBAuc(255, 255, 255, 0));
 		}
 	}
-	getModel()->getShaders()->getTextures()->add(image, name.getValue());
+	//getModel()->getShaders()->getTextures()->add(image, name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
