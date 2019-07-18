@@ -18,12 +18,10 @@ SceneViewModel WireFrameScene::toViewModel() const
 	const auto& lines = getShape()->getLines();
 	const auto& color = getAttribute().color;
 	int index = 0;
-	LineBuffer lineBuffer;
 	for (const auto& l : lines) {
-		lineBuffer.add(l.getStart(), color, index++);
-		lineBuffer.add(l.getEnd(), color, index++);
+		viewModel.lineBuffer.add(l.getStart(), color, index++);
+		viewModel.lineBuffer.add(l.getEnd(), color, index++);
 	}
-	viewModel.lineBuffers.push_back(lineBuffer);
 	return viewModel;
 }
 
@@ -34,13 +32,11 @@ SceneIdViewModel WireFrameScene::toIdViewModel() const
 	int childId = 0;
 	int index = 0;
 	
-	LineBuffer lineIdBuffer;
-	for (auto l : lines) {
-		Graphics::DrawableID did(objectId, childId++);
-		lineIdBuffer.add(l.getStart(), did.toColor(), index++);
-	}
 	SceneIdViewModel viewModel;
-	viewModel.lineIdBuffers.push_back(lineIdBuffer);
+	for (const auto& l : lines) {
+		Graphics::DrawableID did(objectId, childId++);
+		viewModel.lineIdBuffer.add(l.getStart(), did.toColor(), index++);
+	}
 	return viewModel;
 }
 

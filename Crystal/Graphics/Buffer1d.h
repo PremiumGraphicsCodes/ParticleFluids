@@ -24,7 +24,7 @@ public:
 
 	std::vector< T > get() const { return buffer; }
 
-	void add(const Buffer1d<T>& rhs) {
+	void merge(const Buffer1d<T>& rhs) {
 		buffer.insert(buffer.end(), rhs.buffer.begin(), rhs.buffer.end());
 	}
 

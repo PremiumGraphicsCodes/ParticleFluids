@@ -27,7 +27,7 @@ public:
 		buffer.push_back(v[2]);
 	}
 
-	void add(const Buffer3d<T>& rhs) {
+	void merge(const Buffer3d<T>& rhs) {
 		buffer.insert(buffer.end(), rhs.buffer.begin(), rhs.buffer.end());
 	}
 

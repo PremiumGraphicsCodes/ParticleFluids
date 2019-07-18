@@ -22,19 +22,26 @@ public:
 	void add(const Math::Vector3df& position, const ColorRGBAf& color, const int index) {
 		positions.add(position);
 		colors.add(color);
-		indices.push_back(index);
+		indices.add(index);
 	}
 
 	Graphics::Buffer3d<float> getPositions() const { return positions; }
 
 	Graphics::Buffer4d<float> getColors() const { return colors; }
 
-	std::vector<unsigned int> getIndices() const { return indices; }
+	Graphics::Buffer1d<unsigned int> getIndices() const { return indices; }
+
+	void merge(LineBuffer& rhs)
+	{
+		this->positions.merge(rhs.positions);
+		this->colors.add(rhs.colors);
+		this->indices.merge(rhs.indices);
+	}
 
 private:
 	Graphics::Buffer3d<float> positions;
 	Graphics::Buffer4d<float> colors;
-	std::vector<unsigned int> indices;
+	Graphics::Buffer1d<unsigned int> indices;
 };
 
 	}

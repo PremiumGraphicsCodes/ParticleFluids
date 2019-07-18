@@ -14,20 +14,20 @@ class SceneIdViewModel
 public:
 	Graphics::PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
 
-	std::list<Graphics::LineBuffer> getLindIdBuffer() const { return lineIdBuffers; }
+	Graphics::LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
 
 	std::list<Graphics::LineBuffer> getTriangleIdBuffer() const { return triangleIdBuffers; }
 
 	void merge(SceneIdViewModel& rhs) {
 		pointIdBuffer.merge(rhs.pointIdBuffer);
-		lineIdBuffers.splice(lineIdBuffers.end(), rhs.lineIdBuffers);
+		lineIdBuffer.merge(rhs.lineIdBuffer);
 		triangleIdBuffers.splice(triangleIdBuffers.end(), rhs.triangleIdBuffers);
 	}
 
 
 public:
 	Graphics::PointBuffer pointIdBuffer;
-	std::list<Graphics::LineBuffer> lineIdBuffers;
+	Graphics::LineBuffer lineIdBuffer;
 	std::list<Graphics::LineBuffer> triangleIdBuffers;
 };
 

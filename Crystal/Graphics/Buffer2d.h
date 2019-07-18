@@ -33,6 +33,10 @@ public:
 
 	std::vector< T > get() const { return std::move(buffer); }
 
+	void merge(const Buffer2d<T>& rhs) {
+		buffer.insert(buffer.end(), rhs.buffer.begin(), rhs.buffer.end());
+	}
+
 };
 
 	}

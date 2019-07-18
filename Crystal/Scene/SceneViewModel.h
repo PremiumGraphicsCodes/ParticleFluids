@@ -14,7 +14,7 @@ class SceneViewModel
 public:
 	Graphics::PointBuffer getPointBuffer() const { return pointBuffer; }
 
-	std::list<Graphics::LineBuffer> getLineBuffers() const { return lineBuffers; }
+	Graphics::LineBuffer getLineBuffer() const { return lineBuffer; }
 
 	std::list<Graphics::TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
@@ -22,14 +22,14 @@ public:
 
 	void merge(SceneViewModel& rhs) {
 		pointBuffer.merge(rhs.pointBuffer);
-		lineBuffers.splice(lineBuffers.end(), rhs.lineBuffers);
+		lineBuffer.merge(rhs.lineBuffer);
 		triangleBuffers.splice(triangleBuffers.end(), rhs.triangleBuffers);
 		lightBuffers.splice(lightBuffers.end(), rhs.lightBuffers);
 	}
 
 public:
 	Graphics::PointBuffer pointBuffer;
-	std::list<Graphics::LineBuffer> lineBuffers;
+	Graphics::LineBuffer lineBuffer;
 	std::list<Graphics::TriangleBuffer> triangleBuffers;
 	std::list<Graphics::LightBuffer> lightBuffers;
 	std::list<Graphics::MaterialBuffer> materialBuffers;

@@ -35,6 +35,10 @@ public:
 
 	std::vector< T > get() const { return buffer; }
 
+	void merge(const Buffer4d<T>& rhs) {
+		buffer.insert(buffer.end(), rhs.buffer.begin(), rhs.buffer.end());
+	}
+
 private:
 };
 
