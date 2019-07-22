@@ -175,6 +175,9 @@
     <ClCompile Include="WireFrameView.cpp">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
+    <ClCompile Include="WireFrameEditView.cpp">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -430,6 +433,12 @@
     </ClInclude>
     <ClInclude Include="WireFrameView.h">
       <Filter>Scene\Shape\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameEditView.h">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureEditView.h">
+      <Filter>Scene\Appearance\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
