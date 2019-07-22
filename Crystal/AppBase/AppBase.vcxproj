@@ -26,6 +26,7 @@
     <ClCompile Include="FaceGroupView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />
+    <ClCompile Include="TextureEditView.cpp" />
     <ClCompile Include="TextureView.cpp" />
     <ClCompile Include="MaskMenu.cpp" />
     <ClCompile Include="SceneGenerationPanel.cpp" />

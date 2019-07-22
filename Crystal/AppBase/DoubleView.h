@@ -9,6 +9,10 @@ namespace Crystal {
 class DoubleView : public IWindow
 {
 public:
+	explicit DoubleView(const std::string& name) :
+		DoubleView(name, 0.0)
+	{}
+
 	DoubleView(const std::string& name, const double value) :
 		IWindow(name),
 		value(value)

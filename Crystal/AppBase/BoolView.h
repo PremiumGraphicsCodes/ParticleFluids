@@ -9,6 +9,10 @@ namespace Crystal {
 class BoolView : public IWindow
 {
 public:
+	explicit BoolView(const std::string& name) :
+		BoolView(name, false)
+	{}
+
 	BoolView(const std::string& name, const bool value) :
 		IWindow(name),
 		value(value)

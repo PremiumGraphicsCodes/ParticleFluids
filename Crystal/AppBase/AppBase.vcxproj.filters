@@ -173,6 +173,9 @@
     <ClCompile Include="WireFrameEditView.cpp">
       <Filter>Scene\Shape\WireFrame\Edit</Filter>
     </ClCompile>
+    <ClCompile Include="TextureEditView.cpp">
+      <Filter>Scene\Appearance\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />

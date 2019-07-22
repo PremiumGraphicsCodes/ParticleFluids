@@ -7,7 +7,7 @@
 #include "PolygonMeshEditView.h"
 #include "MaterialEditView.h"
 #include "LightEditView.h"
-//#include "TextureEditView.h"
+#include "TextureEditView.h"
 
 #include "imgui.h"
 
@@ -92,12 +92,15 @@ void SceneListPanel::show(IScene* scene)
 					control->add(editView);
 					break;
 				}
-				/*
 				case SceneType::TextureScene:
 				{
-					auto editView = new TextureEditView("")
+					auto editView = new TextureEditView("TextureEdit", model, canvas);
+					auto textureScene = scene->findSceneById<TextureScene*>(id);
+					editView->setValue(textureScene);
+					control->clear();
+					control->add(editView);
+					break;
 				}
-				*/
 			}
 		}
 	}

@@ -9,6 +9,10 @@ namespace Crystal {
 class FloatView : public IWindow
 {
 public:
+	explicit FloatView(const std::string& name) :
+		FloatView(name, 0.0f)
+	{}
+
 	FloatView(const std::string& name, const float value) :
 		IWindow(name),
 		value(value)

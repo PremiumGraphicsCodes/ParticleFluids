@@ -11,6 +11,10 @@ namespace Crystal {
 class Float4View : public IWindow
 {
 public:
+	explicit Float4View(const std::string& name) :
+		IWindow(name)
+	{}
+
 	Float4View(const std::string& name, const glm::vec4& value) :
 		IWindow(name),
 		value(value)

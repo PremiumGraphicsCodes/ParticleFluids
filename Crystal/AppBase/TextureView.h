@@ -9,6 +9,10 @@ namespace Crystal {
 class TextureView : public IWindow
 {
 public:
+	explicit TextureView(const std::string& name) :
+		TextureView(name, Graphics::Image(0,0))
+	{}
+
 	TextureView(const std::string& name, const Graphics::Image& image);
 
 	~TextureView();
