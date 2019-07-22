@@ -5,12 +5,11 @@
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-PolygonMeshView::PolygonMeshView(const std::string& name, PolygonMesh* mesh) :
+PolygonMeshView::PolygonMeshView(const std::string& name) :
 	IWindow(name),
 	name("Name", name),
-	vertexCount("Verticies", mesh->getVertices().size()),
-	faceCount("Faces", mesh->getFaces().size()),
-	value(mesh)
+	vertexCount("Verticies"),
+	faceCount("Faces")
 {}
 
 void PolygonMeshView::show()
@@ -18,4 +17,10 @@ void PolygonMeshView::show()
 	name.show();
 	vertexCount.show();
 	faceCount.show();
+}
+
+void PolygonMeshView::setValue(PolygonMesh* value)
+{
+	vertexCount.setValue(value->getVertices().size());
+	faceCount.setValue(value->getFaces().size());
 }

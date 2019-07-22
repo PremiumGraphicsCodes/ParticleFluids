@@ -15,15 +15,16 @@ namespace Crystal {
 class PolygonMeshView : public IWindow
 {
 public:
-	PolygonMeshView(const std::string& name, Shape::PolygonMesh* mesh);
+	explicit PolygonMeshView(const std::string& name);
 
 	void show() override;
+
+	void setValue(Shape::PolygonMesh* value);
 
 private:
 	StringView name;
 	IntView vertexCount;
 	IntView faceCount;
-	Shape::PolygonMesh* value;
 };
 
 	}

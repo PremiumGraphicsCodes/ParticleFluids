@@ -178,6 +178,9 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="ControlPanel.cpp" />
+    <ClCompile Include="PolygonMeshEditView.cpp">
+      <Filter>Shape\PolygonMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -437,6 +440,9 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="ControlPanel.h" />
+    <ClInclude Include="PolygonMeshEditView.h">
+      <Filter>Shape\PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -2,6 +2,7 @@
 
 #include "../UI/Repository.h"
 
+#include "PolygonMeshEditView.h"
 #include "MaterialEditView.h"
 #include "LightEditView.h"
 
@@ -43,8 +44,21 @@ void ScenePanel::show(IScene* scene)
 	else {
 		if (ImGui::Button(str)) {
 			switch (type) {
-				case SceneType::LightScene: {
-					LightEditView* editView = new LightEditView("LightEdit", model, canvas);
+				/*
+			case SceneType::PolygonMeshScene :
+			{
+				auto editView = new PolygonMeshEditView("PolygonMeshEdit", model, canvas);
+				//auto lightScene = scene->findSceneById<LightScene*>(id);
+				//editView->setValue(lightScene);
+				control->clear();
+				control->add(editView);
+				break;
+
+			}
+			*/
+			case SceneType::LightScene:
+			{
+				LightEditView* editView = new LightEditView("LightEdit", model, canvas);
 					//auto lightScene = scene->findSceneById<LightScene*>(id);
 					//editView->setValue(lightScene);
 					control->clear();
