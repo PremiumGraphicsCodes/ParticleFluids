@@ -4,6 +4,7 @@
 #include "LightView.h"
 #include "IntView.h"
 #include "StringView.h"
+#include "Button.h"
 #include "../Scene/LightScene.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
@@ -26,6 +27,7 @@ private:
 	IntView id;
 	LightView light;
 	StringView name;
+	Button editButton;
 	Repository* repository;
 	Canvas* canvas;
 };

@@ -9,9 +9,16 @@ LightEditView::LightEditView(const std::string& name, Repository* repository, Ca
 	light("Light"),
 	name("Name", ""),
 	repository(repository),
-	canvas(canvas)
+	canvas(canvas),
+	editButton("Edit")
 {
-	close();
+	auto func = [=]()
+	{
+		auto light = repository->getObjects()->findSceneById<LightScene*>(id.getValue());
+		light->setLight(this->light.getValue());
+		light->setName(this->name.getValue());
+	};
+	editButton.setFunction(func);
 }
 
 void LightEditView::show()
@@ -19,6 +26,7 @@ void LightEditView::show()
 	id.show();
 	light.show();
 	name.show();
+	editButton.show();
 }
 
 void LightEditView::setValue(LightScene* value)

@@ -20,7 +20,7 @@ void MaterialAddButton::onShow()
 
 void MaterialAddButton::onOk()
 {
-	//getModel()->getObjects()->getFactory()->createMaterialScene(new Material(material.getValue()), name.getValue());
+	getModel()->getObjects()->addScene( getModel()->getObjectFactory()->createMaterialScene(material.getValue(), name.getValue()));
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 }
