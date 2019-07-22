@@ -10,6 +10,7 @@ bool PointRenderer::build()
 {
 	const auto vsSource = getBuildinVertexShaderSource();
 	const auto fsSource = getBuildinFragmentShaderSource();
+	this->shader = new ShaderObject();
 	if (!this->shader->build(vsSource, fsSource)) {
 		return false;
 	}

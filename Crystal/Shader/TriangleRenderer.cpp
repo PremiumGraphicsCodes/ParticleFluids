@@ -11,7 +11,8 @@ bool TriangleRenderer::build()
 	const auto& vShader = getBuildinVertexShaderSource();
 	const auto& fShader = getBuildinFragmentShaderSource();
 
-	if (!shader->build(fShader, vShader)) {
+	shader = new ShaderObject();
+	if (!shader->build(vShader, fShader)) {
 		return false;
 	}
 	findLocation();

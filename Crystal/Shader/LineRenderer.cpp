@@ -10,6 +10,7 @@ bool LineRenderer::build()
 	const auto& vShader = getBuildinVertexShaderSource();
 	const auto& fShader = getBuildinFragmentShaderSource();
 
+	this->shader = new ShaderObject();
 	if (!this->shader->build(vShader, fShader)) {
 		return false;
 	}
