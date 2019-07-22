@@ -3,9 +3,8 @@
 #include "../../Crystal/AppBase/CameraMenu.h"
 #include "../../Crystal/AppBase/CtrlMenu.h"
 
-#include "../../Crystal/AppBase/ObjectPanel.h"
-#include "../../Crystal/AppBase/AppearancePanel.h"
-#include "../../Crystal/AppBase/ShaderPanel.h"
+#include "../../Crystal/AppBase/SceneGenerationPanel.h"
+#include "../../Crystal/AppBase/SceneListPanel.h"
 
 #include "../../Crystal/UI/Repository.h"
 #include "../../Crystal/UI/Canvas.h"
@@ -19,6 +18,7 @@
 #include "MarchingCubesButton.h"
 #include "VolumeButton.h"
 #include "VolumeConvertButton.h"
+#include "../../Crystal/AppBase/ControlPanel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -57,9 +57,11 @@ int main(int, char**)
 	window.add(new CameraMenu("Camera", &model, &canvas));
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 
-	window.add(new ObjectPanel("Object", &model, &canvas));
-	window.add(new AppearancePanel("Appearance", &model, &canvas));
-	window.add(new ShaderPanel("ShaderPanel", &model, &canvas));
+	auto control = new ControlPanel("Control", &model, &canvas);
+	window.add(control);
+
+	window.add(new SceneGenerationPanel("Generation", &model, &canvas, control));
+	window.add(new SceneListPanel("Object", &model, &canvas, control));
 
 	window.add(new AlgoPanel("Algo", &model, &canvas));
 
