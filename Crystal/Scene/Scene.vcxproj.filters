@@ -93,6 +93,9 @@
     <ClInclude Include="WireFrameScene.h">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderScene.h">
+      <Filter>Scene\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
@@ -147,6 +150,9 @@
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="TextureScene.cpp">
+      <Filter>Scene\Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
   </ItemGroup>

@@ -45,6 +45,7 @@
     <ClInclude Include="PolygonMeshAttribute.h" />
     <ClInclude Include="PolygonMeshScene.h" />
     <ClInclude Include="SceneFactory.h" />
+    <ClInclude Include="ShaderScene.h" />
     <ClInclude Include="STLFileExporter.h" />
     <ClInclude Include="STLFileImporter.h" />
     <ClInclude Include="TextureScene.h" />
@@ -69,6 +70,7 @@
     <ClCompile Include="PCDFileExporter.cpp" />
     <ClCompile Include="PCDFileImporter.cpp" />
     <ClCompile Include="SceneFactory.cpp" />
+    <ClCompile Include="ShaderScene.cpp" />
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
     <ClCompile Include="TextureScene.cpp" />
