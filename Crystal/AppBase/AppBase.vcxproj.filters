@@ -45,9 +45,6 @@
     <ClCompile Include="LightAddButton.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialEditView.cpp">
-      <Filter>Scene\Appearance\Material</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialView.cpp">
       <Filter>Scene\Appearance\Material</Filter>
     </ClCompile>
@@ -151,9 +148,6 @@
     <ClCompile Include="ParticleSystemView.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleSystemEditView.cpp">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClCompile>
     <ClCompile Include="SceneGenerationPanel.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -169,8 +163,15 @@
     <ClCompile Include="WireFrameView.cpp">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ParticleSystemEditView.cpp">
+      <Filter>Scene\Shape\ParticleSystem\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialEditView.cpp">
+      <Filter>Scene\Appearance\Material\Edit</Filter>
+    </ClCompile>
     <ClCompile Include="WireFrameEditView.cpp">
-      <Filter>Scene\Shape\WireFrame</Filter>
+      <Filter>Scene\Shape\WireFrame\Edit</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -283,9 +284,6 @@
     </ClInclude>
     <ClInclude Include="LightView.h">
       <Filter>Scene\Appearance\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialEditView.h">
-      <Filter>Scene\Appearance\Material</Filter>
     </ClInclude>
     <ClInclude Include="PMBoxButton.h">
       <Filter>Scene\Shape\PolygonMesh\Generation</Filter>
@@ -404,9 +402,6 @@
     <ClInclude Include="ParticleSystemView.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemEditView.h">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClInclude>
     <ClInclude Include="SceneGenerationPanel.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -422,11 +417,18 @@
     <ClInclude Include="WireFrameView.h">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClInclude>
-    <ClInclude Include="WireFrameEditView.h">
-      <Filter>Scene\Shape\WireFrame</Filter>
-    </ClInclude>
     <ClInclude Include="TextureEditView.h">
       <Filter>Scene\Appearance\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="ParticleSystemEditView.h">
+      <Filter>Scene\Shape\ParticleSystem\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialEditView.h">
+      <Filter>Scene\Appearance\Material\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameEditView.h">
+      <Filter>Scene\Shape\WireFrame\Edit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -498,6 +500,15 @@
     </Filter>
     <Filter Include="Primitive">
       <UniqueIdentifier>{03e79bbc-d400-4ee6-baef-09a416838ef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\ParticleSystem\Edit">
+      <UniqueIdentifier>{db94fe90-c632-4fb2-bf95-bac77d0878ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Material\Edit">
+      <UniqueIdentifier>{6065c070-c3c6-4308-90d1-318293bf11d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\WireFrame\Edit">
+      <UniqueIdentifier>{c89b2041-f2ff-48f5-9bd1-c2a37cb319ed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

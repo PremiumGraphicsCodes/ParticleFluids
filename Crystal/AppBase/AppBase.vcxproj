@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
@@ -82,6 +83,7 @@
   <ItemGroup>
     <ClInclude Include="BoolView.h" />
     <ClInclude Include="Box3dView.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="CameraMenu.h" />
     <ClInclude Include="ColorMapView.h" />
     <ClInclude Include="ColorRGBAView.h" />

@@ -4,6 +4,7 @@
 #include "MaterialView.h"
 #include "IntView.h"
 #include "StringView.h"
+#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
@@ -15,22 +16,12 @@ public:
 
 	void setValue(Scene::MaterialScene* value)
 	{
-//		int id, const Graphics::Material& material, const std::string& name) {
 		this->id.setValue(value->getId());
-		//this->material.setValue(*value->getMaterial());
 		this->name.setValue( value->getName() );
 	}
 
 	void show() override;
 
-	/*
-	void onOk() override;
-
-	void onCancel() override
-	{
-
-	}
-	*/
 
 private:
 	IntView id;
@@ -38,6 +29,7 @@ private:
 	StringView name;
 	Repository* repository;
 	Canvas* canvas;
+	Button editButton;
 };
 
 	}

@@ -11,8 +11,15 @@ MaterialEditView::MaterialEditView(const std::string& name, Repository* model, C
 	canvas(canvas),
 	id("Id", 0),
 	material("Material"),
-	name("Name", "Material1")
+	name("Name", "Material1"),
+	editButton("Edit")
 {
+	/*
+	auto func = [=]()
+	{
+	};
+	editButton.setFunction()
+		*/
 }
 
 void MaterialEditView::show()
@@ -20,23 +27,5 @@ void MaterialEditView::show()
 	id.show();
 	material.show();
 	name.show();
-
-	if (ImGui::Button("Edit")) {
-		/*
-		auto obj = repository->getAppearances()->getMaterials()->findObjectById(id.getValue());
-		if (obj == nullptr) {
-			return;
-		}
-		auto mat = obj->getMaterial();
-		*mat = material.getValue();
-		obj->setName(name.getValue());
-		canvas->setViewModel(repository->toViewModel());
-		*/
-	}
+	editButton.show();
 }
-
-/*
-void MaterialEditButton::onOk()
-{
-}
-*/
