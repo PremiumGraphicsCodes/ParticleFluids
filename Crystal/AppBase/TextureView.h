@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IWindow.h"
-#include "imgui.h"
 #include "../Graphics/Image.h"
 
 namespace Crystal {
@@ -22,7 +21,7 @@ public:
 
 private:
 	Graphics::Image image;
-	GLuint textureId;
+	unsigned int textureId;
 };
 
 	}

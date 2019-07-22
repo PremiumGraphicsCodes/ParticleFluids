@@ -26,7 +26,7 @@
     <ClCompile Include="FaceGroupView.cpp" />
     <ClCompile Include="FaceSelectButton.cpp" />
     <ClCompile Include="FileMenu.cpp" />
-    <ClCompile Include="ImageAddButton.cpp" />
+    <ClCompile Include="TextureAddButton.cpp" />
     <ClCompile Include="TextureView.cpp" />
     <ClCompile Include="MaskMenu.cpp" />
     <ClCompile Include="SceneGenerationPanel.cpp" />
@@ -78,6 +78,7 @@
     <ClCompile Include="WFTorusButton.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WireFramePanel.cpp" />
+    <ClCompile Include="WireFrameView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoolView.h" />
@@ -98,7 +99,7 @@
     <ClInclude Include="FileSaveView.h" />
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />
-    <ClInclude Include="ImageAddButton.h" />
+    <ClInclude Include="TextureAddButton.h" />
     <ClInclude Include="TextureView.h" />
     <ClInclude Include="MaskMenu.h" />
     <ClInclude Include="SceneGenerationPanel.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="WFTorusButton.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WireFramePanel.h" />
+    <ClInclude Include="WireFrameView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

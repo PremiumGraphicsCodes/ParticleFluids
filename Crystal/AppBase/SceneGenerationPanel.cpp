@@ -6,7 +6,7 @@
 
 #include "MaterialAddButton.h"
 #include "LightAddButton.h"
-#include "ImageAddButton.h"
+#include "TextureAddButton.h"
 #include "ColorMapView.h"
 
 #include "../Graphics/ColorHSV.h"
@@ -23,7 +23,7 @@ SceneGenerationPanel::SceneGenerationPanel(const std::string& name, Repository* 
 
 	add(new LightAddButton("LightAdd", model, canvas));
 	add(new MaterialAddButton("MaterialAdd", model, canvas));
-	add(new ImageAddButton("Image", model, canvas));
+	add(new TextureAddButton("Texture", model, canvas));
 
 	ColorMap colorMap(0.0, 1.0, 360);
 	for (int i = 0; i < 360; ++i) {

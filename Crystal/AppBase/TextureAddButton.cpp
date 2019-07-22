@@ -1,4 +1,4 @@
-#include "ImageAddButton.h"
+#include "TextureAddButton.h"
 
 #include "tinyfiledialogs.h"
 
@@ -9,14 +9,14 @@ using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::UI;
 
-ImageAddButton::ImageAddButton(const std::string& name, Repository* model, Canvas* canvas) :
+TextureAddButton::TextureAddButton(const std::string& name, Repository* model, Canvas* canvas) :
 	IPopupButton(name, model, canvas),
 	image("Image", Graphics::Image(256,256,255)),
 	name("Name", "Image01")
 {
 }
 
-void ImageAddButton::onShow()
+void TextureAddButton::onShow()
 {
 	image.show();
 	name.show();
@@ -33,7 +33,7 @@ void ImageAddButton::onShow()
 	}
 }
 
-void ImageAddButton::onOk()
+void TextureAddButton::onOk()
 {
 	/*
 	getModel()->getAppearances()->getImages()->add(image.getValue(), name.getValue());
@@ -42,6 +42,6 @@ void ImageAddButton::onOk()
 	*/
 }
 
-void ImageAddButton::onCancel()
+void TextureAddButton::onCancel()
 {
 }

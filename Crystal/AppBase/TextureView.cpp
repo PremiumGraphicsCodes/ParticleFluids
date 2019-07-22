@@ -2,6 +2,7 @@
 
 #include "TextureView.h"
 
+#include "imgui.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;

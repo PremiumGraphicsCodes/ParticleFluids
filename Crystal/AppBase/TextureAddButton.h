@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace UI {
 
-class ImageAddButton : public IPopupButton
+class TextureAddButton : public IPopupButton
 {
 public:
-	ImageAddButton(const std::string& name, Repository* model, Canvas* canvas);
+	TextureAddButton(const std::string& name, Repository* model, Canvas* canvas);
 
 	void onShow() override;
 

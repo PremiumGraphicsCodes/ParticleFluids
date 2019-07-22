@@ -3,6 +3,7 @@
 #include "../UI/Repository.h"
 
 #include "ParticleSystemEditView.h"
+//#include "WireFrameEditView.h"
 #include "PolygonMeshEditView.h"
 #include "MaterialEditView.h"
 #include "LightEditView.h"
@@ -55,6 +56,17 @@ void SceneListPanel::show(IScene* scene)
 					control->add(editView);
 					break;
 				}
+				/*
+				case SceneType::WireFrameScene:
+				{
+					auto editView = new WireFrameEditView("PolygonMeshEdit", model, canvas);
+					auto s = scene->findSceneById<PolygonMeshScene*>(id);
+					editView->setValue(s);
+					control->clear();
+					control->add(editView);
+					break;
+				}
+				*/
 				case SceneType::PolygonMeshScene:
 				{
 					auto editView = new PolygonMeshEditView("PolygonMeshEdit", model, canvas);
@@ -63,7 +75,6 @@ void SceneListPanel::show(IScene* scene)
 					control->clear();
 					control->add(editView);
 					break;
-
 				}
 				case SceneType::LightScene:
 				{

@@ -120,9 +120,6 @@
     <ClCompile Include="RotateButton.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
-    <ClCompile Include="ImageAddButton.cpp">
-      <Filter>Scene\Appearance\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="LightEditView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
@@ -171,6 +168,12 @@
     </ClCompile>
     <ClCompile Include="TextureView.cpp">
       <Filter>Scene\Appearance\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureAddButton.cpp">
+      <Filter>Scene\Appearance\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrameView.cpp">
+      <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,7 +231,7 @@
       <Filter>imgui</Filter>
     </ClInclude>
     <ClInclude Include="DoubleView.h">
-      <Filter>Type</Filter>
+      <Filter>Primitive</Filter>
     </ClInclude>
     <ClInclude Include="Vector3dView.h">
       <Filter>Math</Filter>
@@ -246,22 +249,22 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Float4View.h">
-      <Filter>Type</Filter>
+      <Filter>Primitive</Filter>
     </ClInclude>
     <ClInclude Include="FloatView.h">
-      <Filter>Type</Filter>
+      <Filter>Primitive</Filter>
     </ClInclude>
     <ClInclude Include="WFAttributeView.h">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="IntView.h">
-      <Filter>Type</Filter>
+      <Filter>Primitive</Filter>
     </ClInclude>
     <ClInclude Include="Torus3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="StringView.h">
-      <Filter>Type</Filter>
+      <Filter>Primitive</Filter>
     </ClInclude>
     <ClInclude Include="imgui_stdlib.h">
       <Filter>imgui</Filter>
@@ -356,9 +359,6 @@
     <ClInclude Include="RotateButton.h">
       <Filter>Transform</Filter>
     </ClInclude>
-    <ClInclude Include="ImageAddButton.h">
-      <Filter>Scene\Appearance\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="LightEditView.h">
       <Filter>Scene\Appearance\Light</Filter>
     </ClInclude>
@@ -404,7 +404,7 @@
       <Filter>Selection\Region</Filter>
     </ClInclude>
     <ClInclude Include="BoolView.h">
-      <Filter>Type</Filter>
+      <Filter>Primitive</Filter>
     </ClInclude>
     <ClInclude Include="ControlPanel.h" />
     <ClInclude Include="PolygonMeshEditView.h">
@@ -425,6 +425,12 @@
     <ClInclude Include="TextureView.h">
       <Filter>Scene\Appearance\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="TextureAddButton.h">
+      <Filter>Scene\Appearance\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameView.h">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -444,9 +450,6 @@
     </Filter>
     <Filter Include="Math">
       <UniqueIdentifier>{70e528ba-4a3a-4f71-8dd3-08addce9576a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Type">
-      <UniqueIdentifier>{03e79bbc-d400-4ee6-baef-09a416838ef4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Menu">
       <UniqueIdentifier>{f853c8fe-34f8-4970-9ae4-5a8b5c5c99cb}</UniqueIdentifier>
@@ -498,6 +501,9 @@
     </Filter>
     <Filter Include="Scene\Appearance\Texture">
       <UniqueIdentifier>{264d4f7c-5a27-4f59-872c-adce9137fd13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Primitive">
+      <UniqueIdentifier>{03e79bbc-d400-4ee6-baef-09a416838ef4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
