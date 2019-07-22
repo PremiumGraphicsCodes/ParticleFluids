@@ -39,9 +39,6 @@
     <ClCompile Include="imgui_stdlib.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="AppearancePanel.cpp">
-      <Filter>Scene\Appearance</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialAddButton.cpp">
       <Filter>Scene\Appearance\Material</Filter>
     </ClCompile>
@@ -129,9 +126,6 @@
     <ClCompile Include="ImageAddButton.cpp">
       <Filter>Scene\Appearance\Image</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectPanel.cpp">
-      <Filter>Scene\Shape</Filter>
-    </ClCompile>
     <ClCompile Include="LightEditView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
@@ -162,9 +156,6 @@
     <ClCompile Include="SphereRegionSelectButton.cpp">
       <Filter>Selection\Region</Filter>
     </ClCompile>
-    <ClCompile Include="ScenePanel.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="PolygonMeshEditView.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
@@ -174,6 +165,12 @@
     </ClCompile>
     <ClCompile Include="ParticleSystemEditView.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGenerationPanel.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneListPanel.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,9 +272,6 @@
     <ClInclude Include="Ray3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="AppearancePanel.h">
-      <Filter>Scene\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialAddButton.h">
       <Filter>Scene\Appearance\Material</Filter>
     </ClInclude>
@@ -368,9 +362,6 @@
     <ClInclude Include="ImageView.h">
       <Filter>Scene\Appearance\Image</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectPanel.h">
-      <Filter>Scene\Shape</Filter>
-    </ClInclude>
     <ClInclude Include="LightEditView.h">
       <Filter>Scene\Appearance\Light</Filter>
     </ClInclude>
@@ -418,9 +409,6 @@
     <ClInclude Include="BoolView.h">
       <Filter>Type</Filter>
     </ClInclude>
-    <ClInclude Include="ScenePanel.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="ControlPanel.h" />
     <ClInclude Include="PolygonMeshEditView.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
@@ -430,6 +418,12 @@
     </ClInclude>
     <ClInclude Include="ParticleSystemEditView.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGenerationPanel.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneListPanel.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

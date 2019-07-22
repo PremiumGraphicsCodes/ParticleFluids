@@ -5,12 +5,11 @@
 #include "../AppBase/CtrlMenu.h"
 #include "../AppBase/ScreenMenu.h"
 
-#include "../AppBase/ObjectPanel.h"
-#include "../AppBase/AppearancePanel.h"
+#include "../AppBase/SceneGenerationPanel.h"
 #include "../AppBase/SelectionPanel.h"
 #include "../AppBase/TransformPanel.h"
 
-#include "../AppBase/ScenePanel.h"
+#include "../AppBase/SceneListPanel.h"
 #include "../AppBase/ControlPanel.h"
 
 #include "../UI/Repository.h"
@@ -39,8 +38,7 @@ int main(int, char**)
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 	window.add(new ScreenMenu("Screen", &model, &canvas));
 
-	window.add(new ObjectPanel("Object", &model, &canvas));
-	window.add(new AppearancePanel("Appearance", &model, &canvas));
+	window.add(new SceneGenerationPanel("Generation", &model, &canvas));
 
 	window.add(new SelectionPanel("Selection", &model, &canvas));
 	window.add(new TransformPanel("Transform", &model, &canvas));
@@ -48,7 +46,7 @@ int main(int, char**)
 	auto control = new ControlPanel("Control", &model, &canvas);
 	window.add(control);
 
-	window.add(new ScenePanel("Scene", &model, &canvas, control));
+	window.add(new SceneListPanel("SceneList", &model, &canvas, control));
 
 	window.show();
 

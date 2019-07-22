@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AppearancePanel.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
@@ -30,13 +29,13 @@
     <ClCompile Include="ImageAddButton.cpp" />
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="MaskMenu.cpp" />
-    <ClCompile Include="ObjectPanel.cpp" />
+    <ClCompile Include="SceneGenerationPanel.cpp" />
     <ClCompile Include="FaceView.cpp" />
     <ClCompile Include="ParticleSystemEditView.cpp" />
     <ClCompile Include="ParticleSystemView.cpp" />
     <ClCompile Include="PolygonMeshEditView.cpp" />
     <ClCompile Include="PolygonMeshView.cpp" />
-    <ClCompile Include="ScenePanel.cpp" />
+    <ClCompile Include="SceneListPanel.cpp" />
     <ClCompile Include="SphereRegionSelectButton.cpp" />
     <ClCompile Include="VertexView.cpp" />
     <ClCompile Include="imgui.cpp" />
@@ -81,7 +80,6 @@
     <ClCompile Include="WireFramePanel.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AppearancePanel.h" />
     <ClInclude Include="BoolView.h" />
     <ClInclude Include="Box3dView.h" />
     <ClInclude Include="CameraMenu.h" />
@@ -103,13 +101,13 @@
     <ClInclude Include="ImageAddButton.h" />
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="MaskMenu.h" />
-    <ClInclude Include="ObjectPanel.h" />
+    <ClInclude Include="SceneGenerationPanel.h" />
     <ClInclude Include="FaceView.h" />
     <ClInclude Include="ParticleSystemEditView.h" />
     <ClInclude Include="ParticleSystemView.h" />
     <ClInclude Include="PolygonMeshEditView.h" />
     <ClInclude Include="PolygonMeshView.h" />
-    <ClInclude Include="ScenePanel.h" />
+    <ClInclude Include="SceneListPanel.h" />
     <ClInclude Include="SphereRegionSelectButton.h" />
     <ClInclude Include="VertexView.h" />
     <ClInclude Include="Quad3dView.h" />

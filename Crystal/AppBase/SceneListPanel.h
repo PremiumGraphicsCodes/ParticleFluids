@@ -8,10 +8,10 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class ScenePanel : public IPanel
+class SceneListPanel : public IPanel
 {
 public:
-	ScenePanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control);
+	SceneListPanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control);
 
 	void show() override;
 

@@ -1,4 +1,4 @@
-#include "ScenePanel.h"
+#include "SceneListPanel.h"
 
 #include "../UI/Repository.h"
 
@@ -13,20 +13,20 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-ScenePanel::ScenePanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control) :
+SceneListPanel::SceneListPanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control) :
 	IPanel(name, model, canvas),
 	control(control)
 {
 }
 
-void ScenePanel::show()
+void SceneListPanel::show()
 {
-	ImGui::Begin("Scene");
+	ImGui::Begin("SceneList");
 	show(model->getObjects());
 	ImGui::End();
 }
 
-void ScenePanel::show(IScene* scene)
+void SceneListPanel::show(IScene* scene)
 {
 	const auto type = scene->getType();
 
