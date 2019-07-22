@@ -1,12 +1,12 @@
 #include "GL/glew.h"
 
-#include "ImageView.h"
+#include "TextureView.h"
 
 
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-ImageView::ImageView(const std::string& name, const Image& image) :
+TextureView::TextureView(const std::string& name, const Image& image) :
 	IWindow(name),
 	image(image),
 	textureId(-1)
@@ -16,12 +16,12 @@ ImageView::ImageView(const std::string& name, const Image& image) :
 	setValue(image);
 }
 
-ImageView::~ImageView()
+TextureView::~TextureView()
 {
 	glDeleteTextures(1, &textureId);
 }
 
-void ImageView::show()
+void TextureView::show()
 {
 	// Turn the RGBA pixel data into an OpenGL texture:
 	glBindTexture(GL_TEXTURE_2D, textureId);
@@ -29,7 +29,7 @@ void ImageView::show()
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void ImageView::setValue(const Image& image)
+void TextureView::setValue(const Image& image)
 {
 	this->image = image;
 

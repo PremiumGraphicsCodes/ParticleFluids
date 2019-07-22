@@ -7,12 +7,12 @@
 namespace Crystal {
 	namespace UI {
 
-class ImageView : public IWindow
+class TextureView : public IWindow
 {
 public:
-	ImageView(const std::string& name, const Graphics::Image& image);
+	TextureView(const std::string& name, const Graphics::Image& image);
 
-	~ImageView();
+	~TextureView();
 
 	void show() override;
 

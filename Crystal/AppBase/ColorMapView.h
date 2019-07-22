@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 #include "imgui.h"
-#include "ImageView.h"
+#include "TextureView.h"
 #include "FloatView.h"
 #include "IntView.h"
 #include "../Graphics/ColorMap.h"
@@ -50,7 +50,7 @@ public:
 
 private:
 	Graphics::ColorMap value;
-	ImageView image;
+	TextureView image;
 	IntView resolution;
 	FloatView minValue;
 	FloatView maxValue;

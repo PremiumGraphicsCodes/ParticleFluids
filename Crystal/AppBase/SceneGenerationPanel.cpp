@@ -14,7 +14,7 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-SceneGenerationPanel::SceneGenerationPanel(const std::string& name, Repository* model, Canvas* canvas) :
+SceneGenerationPanel::SceneGenerationPanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control) :
 	IPanel(name, model, canvas)
 {
 	add(new ParticleSystemPanel("", model, canvas));

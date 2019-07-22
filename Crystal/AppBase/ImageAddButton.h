@@ -1,6 +1,6 @@
 #include "IPopupButton.h"
 
-#include "ImageView.h"
+#include "TextureView.h"
 #include "StringView.h"
 
 namespace Crystal {
@@ -18,7 +18,7 @@ public:
 	void onCancel() override;
 
 private:
-	ImageView image;
+	TextureView image;
 	StringView name;
 };
 

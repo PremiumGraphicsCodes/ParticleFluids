@@ -38,15 +38,15 @@ int main(int, char**)
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 	window.add(new ScreenMenu("Screen", &model, &canvas));
 
-	window.add(new SceneGenerationPanel("Generation", &model, &canvas));
-
-	window.add(new SelectionPanel("Selection", &model, &canvas));
-	window.add(new TransformPanel("Transform", &model, &canvas));
 
 	auto control = new ControlPanel("Control", &model, &canvas);
 	window.add(control);
 
+	window.add(new SceneGenerationPanel("Generation", &model, &canvas, control));
 	window.add(new SceneListPanel("SceneList", &model, &canvas, control));
+
+	window.add(new SelectionPanel("Selection", &model, &canvas));
+	window.add(new TransformPanel("Transform", &model, &canvas));
 
 	window.show();
 

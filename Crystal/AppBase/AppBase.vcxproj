@@ -27,7 +27,7 @@
     <ClCompile Include="FaceSelectButton.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="ImageAddButton.cpp" />
-    <ClCompile Include="ImageView.cpp" />
+    <ClCompile Include="TextureView.cpp" />
     <ClCompile Include="MaskMenu.cpp" />
     <ClCompile Include="SceneGenerationPanel.cpp" />
     <ClCompile Include="FaceView.cpp" />
@@ -99,7 +99,7 @@
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />
     <ClInclude Include="ImageAddButton.h" />
-    <ClInclude Include="ImageView.h" />
+    <ClInclude Include="TextureView.h" />
     <ClInclude Include="MaskMenu.h" />
     <ClInclude Include="SceneGenerationPanel.h" />
     <ClInclude Include="FaceView.h" />

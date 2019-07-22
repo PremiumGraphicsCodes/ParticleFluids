@@ -8,7 +8,10 @@ namespace Crystal {
 class SceneGenerationPanel : public IPanel
 {
 public:
-	SceneGenerationPanel(const std::string& name, Repository* model, Canvas* canvas);
+	SceneGenerationPanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control);
+
+private:
+	IPanel* control;
 };
 
 	}
