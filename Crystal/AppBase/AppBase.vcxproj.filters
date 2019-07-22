@@ -184,6 +184,9 @@
     <ClCompile Include="ParticleSystemView.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleSystemEditView.cpp">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -447,6 +450,9 @@
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemView.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemEditView.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
   </ItemGroup>

@@ -20,8 +20,6 @@ public:
 
 	void setValue(Scene::PolygonMeshScene* value);
 
-	//void setVisible(const bool isVisible) { this->isVisible = isVisible; }
-
 private:
 	PolygonMeshView polygonMesh;
 	IntView id;

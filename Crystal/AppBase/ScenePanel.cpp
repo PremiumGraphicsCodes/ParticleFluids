@@ -2,6 +2,7 @@
 
 #include "../UI/Repository.h"
 
+#include "ParticleSystemEditView.h"
 #include "PolygonMeshEditView.h"
 #include "MaterialEditView.h"
 #include "LightEditView.h"
@@ -45,6 +46,15 @@ void ScenePanel::show(IScene* scene)
 	else {
 		if (ImGui::Button(str)) {
 			switch (type) {
+				case SceneType::ParticleSystemScene:
+				{
+					auto editView = new ParticleSystemEditView("ParticleSystemEdit", model, canvas);
+					auto s = scene->findSceneById<ParticleSystemScene*>(id);
+					editView->setValue(s);
+					control->clear();
+					control->add(editView);
+					break;
+				}
 				case SceneType::PolygonMeshScene:
 				{
 					auto editView = new PolygonMeshEditView("PolygonMeshEdit", model, canvas);
