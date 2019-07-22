@@ -9,18 +9,11 @@ namespace Crystal {
 class DoubleView : public IWindow
 {
 public:
-	explicit DoubleView(const std::string& name) :
-		DoubleView(name, 0.0)
-	{}
+	explicit DoubleView(const std::string& name);
 
-	DoubleView(const std::string& name, const double value) :
-		IWindow(name),
-		value(value)
-	{}
+	DoubleView(const std::string& name, const double value);
 
-	void show() override {
-		ImGui::InputDouble(name.c_str(), &value);
-	}
+	void show() override;
 
 	double getValue() const { return value; }
 

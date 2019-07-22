@@ -176,6 +176,12 @@
     <ClCompile Include="TextureEditView.cpp">
       <Filter>Scene\Appearance\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="BoolView.cpp">
+      <Filter>Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleView.cpp">
+      <Filter>Primitive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -512,6 +518,9 @@
     </Filter>
     <Filter Include="Scene\Shape\WireFrame\Edit">
       <UniqueIdentifier>{c89b2041-f2ff-48f5-9bd1-c2a37cb319ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Shader">
+      <UniqueIdentifier>{f9511435-7972-4726-96e9-ec00fd9973c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

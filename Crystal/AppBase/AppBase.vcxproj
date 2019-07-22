@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BoolView.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
+    <ClCompile Include="DoubleView.cpp" />
     <ClCompile Include="FaceGroupView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />

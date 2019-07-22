@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IWindow.h"
-#include "imgui.h"
 
 namespace Crystal {
 	namespace UI {
@@ -9,18 +8,11 @@ namespace Crystal {
 class BoolView : public IWindow
 {
 public:
-	explicit BoolView(const std::string& name) :
-		BoolView(name, false)
-	{}
+	explicit BoolView(const std::string& name);
 
-	BoolView(const std::string& name, const bool value) :
-		IWindow(name),
-		value(value)
-	{}
+	BoolView(const std::string& name, const bool value);
 
-	void show() override {
-		ImGui::Checkbox(name.c_str(), &value);
-	}
+	void show() override;
 
 	bool getValue() const { return value; }
 
