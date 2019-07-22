@@ -16,11 +16,7 @@ class LightEditView : public IWindow
 public:
 	LightEditView(const std::string& name, Repository* repository, Canvas* canvas);
 
-	void setValue(const Scene::LightScene& value) {
-		this->id.setValue(value.getId());
-		this->light.setValue(value.getLight());
-		this->name.setValue(value.getName());
-	}
+	void setValue(Scene::LightScene* value);
 
 	void show() override;
 

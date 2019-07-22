@@ -5,6 +5,7 @@
 #include "PolygonMeshEditView.h"
 #include "MaterialEditView.h"
 #include "LightEditView.h"
+//#include "TextureEditView.h"
 
 #include "imgui.h"
 
@@ -44,35 +45,40 @@ void ScenePanel::show(IScene* scene)
 	else {
 		if (ImGui::Button(str)) {
 			switch (type) {
-				/*
-			case SceneType::PolygonMeshScene :
-			{
-				auto editView = new PolygonMeshEditView("PolygonMeshEdit", model, canvas);
-				//auto lightScene = scene->findSceneById<LightScene*>(id);
-				//editView->setValue(lightScene);
-				control->clear();
-				control->add(editView);
-				break;
+				case SceneType::PolygonMeshScene:
+				{
+					auto editView = new PolygonMeshEditView("PolygonMeshEdit", model, canvas);
+					auto s = scene->findSceneById<PolygonMeshScene*>(id);
+					editView->setValue(s);
+					control->clear();
+					control->add(editView);
+					break;
 
-			}
-			*/
-			case SceneType::LightScene:
-			{
-				LightEditView* editView = new LightEditView("LightEdit", model, canvas);
-					//auto lightScene = scene->findSceneById<LightScene*>(id);
-					//editView->setValue(lightScene);
+				}
+				case SceneType::LightScene:
+				{
+					auto editView = new LightEditView("LightEdit", model, canvas);
+					auto lightScene = scene->findSceneById<LightScene*>(id);
+					editView->setValue(lightScene);
 					control->clear();
 					control->add(editView);
 					break;
 				}
-				case SceneType::MaterialScene: {
-					MaterialEditView* materialView = new MaterialEditView("MaterialEdit", model, canvas);
+				case SceneType::MaterialScene:
+				{
+					auto editView = new MaterialEditView("MaterialEdit", model, canvas);
 					auto materialScene = scene->findSceneById<MaterialScene*>(id);
-					materialView->setValue(materialScene);
+					editView->setValue(materialScene);
 					control->clear();
-					control->add(materialView);
+					control->add(editView);
 					break;
 				}
+				/*
+				case SceneType::TextureScene:
+				{
+					auto editView = new TextureEditView("")
+				}
+				*/
 			}
 		}
 	}

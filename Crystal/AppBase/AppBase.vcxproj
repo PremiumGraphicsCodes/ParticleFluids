@@ -32,6 +32,7 @@
     <ClCompile Include="MaskMenu.cpp" />
     <ClCompile Include="ObjectPanel.cpp" />
     <ClCompile Include="FaceView.cpp" />
+    <ClCompile Include="ParticleSystemView.cpp" />
     <ClCompile Include="PolygonMeshEditView.cpp" />
     <ClCompile Include="PolygonMeshView.cpp" />
     <ClCompile Include="ScenePanel.cpp" />
@@ -107,6 +108,7 @@
     <ClInclude Include="MaskMenu.h" />
     <ClInclude Include="ObjectPanel.h" />
     <ClInclude Include="FaceView.h" />
+    <ClInclude Include="ParticleSystemView.h" />
     <ClInclude Include="PolygonMeshEditView.h" />
     <ClInclude Include="PolygonMeshView.h" />
     <ClInclude Include="ScenePanel.h" />

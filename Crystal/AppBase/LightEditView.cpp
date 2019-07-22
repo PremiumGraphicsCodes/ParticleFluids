@@ -1,5 +1,6 @@
 #include "LightEditView.h"
 
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 LightEditView::LightEditView(const std::string& name, Repository* repository, Canvas* canvas) :
@@ -18,27 +19,12 @@ void LightEditView::show()
 	id.show();
 	light.show();
 	name.show();
-
-	/*
-	if (!isVisible()) {
-		return;
-	}
-	id.show();
-	light.show();
-	name.show();
-	if (ImGui::Button("Edit")) {
-		auto object = repository->getObjects()->getFactory()->getLights()->findObjectById(id.getValue());
-		if (object == nullptr) {
-			return;
-		}
-		auto light = object->getLight();
-		object->setName(name.getValue());
-		(*light) = this->light.getValue();
-		canvas->setViewModel(repository->toViewModel());
-		close();
-	}
-	if (ImGui::Button("Cancel")) {
-		close();
-	}
-	*/
 }
+
+void LightEditView::setValue(LightScene* value)
+{
+	this->id.setValue(value->getId());
+	this->light.setValue(value->getLight());
+	this->name.setValue(value->getName());
+}
+

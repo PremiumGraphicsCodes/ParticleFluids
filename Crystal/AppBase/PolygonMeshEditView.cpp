@@ -3,18 +3,24 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-/*
 PolygonMeshEditView::PolygonMeshEditView(const std::string& name, Repository* repository, Canvas* canvas) :
-	polygonMesh(name)
-	id()
+	IWindow(name),
+	polygonMesh("PolygonMesh"),
+	id("Id"),
+	name("Name")
 {
-
 }
 
-void setValue(const Scene::PolygonMeshScene& value) {
-	this->id.setValue(value.getId());
-	this->name.setValue(value.getName());
+void PolygonMeshEditView::show()
+{
+	polygonMesh.show();
+	id.show();
+	name.show();
 }
 
-void show() override;
-*/
+void PolygonMeshEditView::setValue(PolygonMeshScene* value)
+{
+	this->polygonMesh.setValue(value->getShape());
+	this->id.setValue(value->getId());
+	this->name.setValue(value->getName());
+}

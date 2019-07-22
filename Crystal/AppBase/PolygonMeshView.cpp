@@ -7,14 +7,12 @@ using namespace Crystal::UI;
 
 PolygonMeshView::PolygonMeshView(const std::string& name) :
 	IWindow(name),
-	name("Name", name),
 	vertexCount("Verticies"),
 	faceCount("Faces")
 {}
 
 void PolygonMeshView::show()
 {
-	name.show();
 	vertexCount.show();
 	faceCount.show();
 }

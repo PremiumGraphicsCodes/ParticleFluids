@@ -4,7 +4,6 @@
 #include "imgui.h"
 
 #include "IntView.h"
-#include "StringView.h"
 
 namespace Crystal {
 	namespace Shape {
@@ -22,7 +21,6 @@ public:
 	void setValue(Shape::PolygonMesh* value);
 
 private:
-	StringView name;
 	IntView vertexCount;
 	IntView faceCount;
 };
