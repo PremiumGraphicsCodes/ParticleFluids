@@ -28,11 +28,11 @@ Canvas::Canvas(ICamera* camera) :
 	renderer.reset(new Renderer(camera));
 }
 
-void Canvas::build(ShaderObjectRepository& shaders, IScene* scene, SceneFactory* factory)
+void Canvas::build(IScene* scene, SceneFactory* factory)
 {
 	setUICtrl(new CameraUICtrl(getCamera()));
 
-	renderer->build(shaders, scene, factory);
+	renderer->build(scene, factory);
 }
 
 void Canvas::render(const int width, const int height, IScene* scene)

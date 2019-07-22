@@ -12,7 +12,7 @@ namespace Crystal {
 class LineRenderer : public IShader
 {
 public:
-	bool build(ShaderObjectRepository& shaders) override;
+	bool build() override;
 
 	void findLocation();
 

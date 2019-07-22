@@ -1,5 +1,4 @@
 #include "PointRenderer.h"
-#include "ShaderObjectRepository.h"
 #include "gl/glew.h"
 
 #include <sstream>
@@ -7,15 +6,13 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-bool PointRenderer::build(ShaderObjectRepository& shaders)
+bool PointRenderer::build()
 {
 	const auto vsSource = getBuildinVertexShaderSource();
 	const auto fsSource = getBuildinFragmentShaderSource();
-	int id = shaders.add(vsSource, fsSource);
-	if (id < 0) {
+	if (!this->shader->build(vsSource, fsSource)) {
 		return false;
 	}
-	this->shader = shaders.findObjectById(id);
 	findLocation();
 	return true;
 }

@@ -3,23 +3,19 @@
 #include "../Math/Vector2d.h"
 #include "../Math/Box2d.h"
 
-#include "ShaderObjectRepository.h"
-
 #include <sstream>
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-bool OnScreenRenderer::build(ShaderObjectRepository& shaders)
+bool OnScreenRenderer::build()
 {
 	const auto vsSource = getBuildinVertexShaderSource();
 	const auto fsSource = getBuildinFragmentShaderSource();
-	const auto id = shaders.add(vsSource, fsSource);
-	if (id < 0) {
+	if (!this->shader->build(vsSource, fsSource)) {
 		return false;
 	}
-	this->shader = shaders.findObjectById(id);
 	findLocation();
 	return true;
 }

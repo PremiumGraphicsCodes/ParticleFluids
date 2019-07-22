@@ -1,5 +1,4 @@
 #include "TriangleRenderer.h"
-#include "ShaderObjectRepository.h"
 
 #include <sstream>
 
@@ -7,16 +6,14 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
 
-bool TriangleRenderer::build(ShaderObjectRepository& shaders)
+bool TriangleRenderer::build()
 {
 	const auto& vShader = getBuildinVertexShaderSource();
 	const auto& fShader = getBuildinFragmentShaderSource();
 
-	const auto id = shaders.add(vShader, fShader);
-	if (id < 0) {
+	if (!shader->build(fShader, vShader)) {
 		return false;
 	}
-	this->shader = shaders.findObjectById(id);
 	findLocation();
 	return true;
 }

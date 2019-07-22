@@ -20,7 +20,7 @@ public:
 
 	~Renderer() {}
 
-	bool build(Shader::ShaderObjectRepository& shaders, Scene::IScene* scene, Scene::SceneFactory* factory);
+	bool build(Scene::IScene* scene, Scene::SceneFactory* factory);
 
 	void render(const int width, const int height, Scene::IScene* scene);
 

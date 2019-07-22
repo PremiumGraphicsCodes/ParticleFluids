@@ -2,7 +2,6 @@
 
 #include "../Scene/Scene.h"
 #include "../Scene/SceneFactory.h"
-#include "../Shader/OpenGLObjectRepository.h"
 #include "../Scene/ViewModel.h"
 #include <filesystem>
 
@@ -32,8 +31,6 @@ public:
 	
 	Scene::SceneFactory* getItemFactory() { return &itemFactory; }
 
-	Shader::OpenGLObjectRepository* getShaders() { return &shaders; }
-
 	Scene::ViewModel toViewModel();
 
 	Math::Box3d getBoundingBox() const;
@@ -44,8 +41,6 @@ private:
 
 	Scene::SceneFactory objectFactory;
 	Scene::SceneFactory itemFactory;
-
-	Shader::OpenGLObjectRepository shaders;
 };
 	}
 }

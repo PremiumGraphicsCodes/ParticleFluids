@@ -27,7 +27,7 @@ public:
 
 	~ObjectRenderer() {}
 
-	bool build(Shader::ShaderObjectRepository& shaders);
+	bool build();
 
 	void render(const Shader::TextureObject& texture, const Shader::TextureObject& smoothTexture);
 

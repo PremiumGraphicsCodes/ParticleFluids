@@ -145,8 +145,6 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ShaderAttribute.h" />
     <ClInclude Include="ShaderObject.h" />
-    <ClInclude Include="OpenGLObjectRepository.h" />
-    <ClInclude Include="ShaderObjectRepository.h" />
     <ClInclude Include="ShaderType.h" />
     <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="ShaderUnit.h" />
@@ -166,7 +164,6 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ShaderAttribute.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
-    <ClCompile Include="ShaderObjectRepository.cpp" />
     <ClCompile Include="ShaderType.cpp" />
     <ClCompile Include="ShaderUniform.cpp" />
     <ClCompile Include="ShaderUnit.cpp" />

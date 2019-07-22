@@ -1,21 +1,18 @@
 #include "LineRenderer.h"
-#include "ShaderObjectRepository.h"
 #include <sstream>
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
 
-bool LineRenderer::build(ShaderObjectRepository& shaders)
+bool LineRenderer::build()
 {
 	const auto& vShader = getBuildinVertexShaderSource();
 	const auto& fShader = getBuildinFragmentShaderSource();
 
-	const auto id = shaders.add(vShader, fShader);
-	if (id < 0) {
+	if (!this->shader->build(vShader, fShader)) {
 		return false;
 	}
-	this->shader = shaders.findObjectById(id);
 	findLocation();
 	return true;
 }

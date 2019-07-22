@@ -13,7 +13,7 @@ namespace Crystal {
 class OnScreenRenderer
 {
 public:
-	bool build(ShaderObjectRepository& shaders);
+	bool build();
 
 	void render(const ITextureObject& texture);
 

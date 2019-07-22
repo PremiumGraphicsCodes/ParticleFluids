@@ -28,7 +28,7 @@ public:
 
 	~ObjectIdRenderer() {}
 
-	bool build(Shader::ShaderObjectRepository& shaders, Scene::IScene* scene, Scene::SceneFactory* factory);
+	bool build(Scene::IScene* scene, Scene::SceneFactory* factory);
 
 	void render();
 

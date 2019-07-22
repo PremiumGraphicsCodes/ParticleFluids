@@ -156,7 +156,7 @@ bool Window::init()
 	image2.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
 	scene->addScene(factory->createTextureScene(image2,"SmoothTexture"));
 
-	canvas->build(*model->getShaders()->getShaders(), scene, factory);
+	canvas->build(scene, factory);
 
 	return true;
 }

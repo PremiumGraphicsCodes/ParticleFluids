@@ -16,16 +16,16 @@ Renderer::Renderer(Crystal::Graphics::ICamera* camera) :
 {
 }
 
-bool Renderer::build(ShaderObjectRepository& shaders, IScene* scene, SceneFactory* factory)
+bool Renderer::build(IScene* scene, SceneFactory* factory)
 {
-	if (!objectRenderer.build(shaders)) {
+	if (!objectRenderer.build()) {
 		return false;
 	}
-	if (!objectIdRenderer.build(shaders, scene, factory)) {
+	if (!objectIdRenderer.build(scene, factory)) {
 		return false;
 	}
 
-	if (!renderer.build(shaders)) {
+	if (!renderer.build()) {
 		return false;
 	}
 	return true;

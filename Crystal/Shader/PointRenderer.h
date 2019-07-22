@@ -13,7 +13,7 @@ namespace Crystal {
 class PointRenderer : public IShader
 {
 public:
-	bool build(ShaderObjectRepository& shaders) override;
+	bool build() override;
 
 	void findLocation();
 

@@ -8,15 +8,15 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-bool ObjectIdRenderer::build(ShaderObjectRepository& shaders, IScene* scene, SceneFactory* factory)
+bool ObjectIdRenderer::build(IScene* scene, SceneFactory* factory)
 {
-	if (!pointIdRenderer.build(shaders)) {
+	if (!pointIdRenderer.build()) {
 		return false;
 	}
-	if (!lineIdRenderer.build(shaders)) {
+	if (!lineIdRenderer.build()) {
 		return false;
 	}
-	if (!triangleIdRenderer.build(shaders)) {
+	if (!triangleIdRenderer.build()) {
 		return false;
 	}
 

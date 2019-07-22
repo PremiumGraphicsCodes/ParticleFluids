@@ -49,12 +49,6 @@
     <ClInclude Include="TriangleRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGLObjectRepository.h">
-      <Filter>Repository</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderObjectRepository.h">
-      <Filter>Repository</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderUnit.h">
       <Filter>Shader</Filter>
     </ClInclude>
@@ -107,17 +101,11 @@
     <ClCompile Include="ShaderUnit.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderObjectRepository.cpp">
-      <Filter>Repository</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Repository">
-      <UniqueIdentifier>{7f383030-c498-4b00-a1b5-534a7e052eb0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Texture">
       <UniqueIdentifier>{b674cba5-2b4e-43ba-9ca3-edccfd2796c6}</UniqueIdentifier>
     </Filter>
