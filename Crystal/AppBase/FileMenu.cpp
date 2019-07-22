@@ -16,6 +16,8 @@ void FileMenu::show()
 	if (ImGui::BeginMenu(n)) {
 		if (ImGui::MenuItem("New")) {
 			model->clear();
+			model->init();
+			getCanvas()->getRenderer()->getObjectIdRenderer()->init(model->getObjects(), model->getObjectFactory());
 			getCanvas()->setViewModel(model->toViewModel());
 		}
 		if (ImGui::MenuItem("Import")) {

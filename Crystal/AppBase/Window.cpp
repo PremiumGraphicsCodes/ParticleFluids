@@ -144,19 +144,10 @@ bool Window::init()
 
 	//canvas->addUICommand(new CameraUICtrl());
 
-	auto scene = repository->getObjects();
-	auto factory = repository->getObjectFactory();
+	repository->init();
 
-	scene->addScene(factory->createTextureScene(Image(512, 512), "OnScreenTexture"));
-
-	Image image2(2,2);
-	image2.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
-	image2.setColor(1, 0, ColorRGBAuc(0, 255, 0, 0));
-	image2.setColor(0, 1, ColorRGBAuc(0, 0, 255, 0));
-	image2.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
-	scene->addScene(factory->createTextureScene(image2,"SmoothTexture"));
-
-	canvas->build(scene, factory);
+	canvas->build(repository->getObjects(), repository->getObjectFactory());
+	canvas->getRenderer()->getObjectIdRenderer()->init(repository->getObjects(), repository->getObjectFactory());
 
 	return true;
 }

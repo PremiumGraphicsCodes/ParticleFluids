@@ -17,6 +17,8 @@ public:
 
 	~Repository();
 
+	void init();
+
 	void clear();
 
 	bool importFile(const std::experimental::filesystem::path& filename);

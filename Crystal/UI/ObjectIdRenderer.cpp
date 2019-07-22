@@ -20,14 +20,16 @@ bool ObjectIdRenderer::build(IScene* scene, SceneFactory* factory)
 		return false;
 	}
 
-	auto textureScene = factory->createTextureScene(Image(512, 512), "IdTexture");
-	scene->addScene( textureScene );
-	const auto id = textureScene->getId();
-	this->texture = textureScene->getTexture();
-
 	frameBufferObject.build(512, 512);
 
 	return true;
+}
+
+void ObjectIdRenderer::init(IScene* scene, SceneFactory* factory)
+{
+	auto textureScene = factory->createTextureScene(Image(512, 512), "IdTexture");
+	scene->addScene(textureScene);
+	this->texture = textureScene->getTexture();
 }
 
 void ObjectIdRenderer::setViewModel(const SceneIdViewModel& vm)

@@ -5,7 +5,6 @@
 #include "../Shader/PointRenderer.h"
 #include "../Shader/LineRenderer.h"
 #include "../Shader/TriangleRenderer.h"
-
 #include "../Shader/FrameBufferObject.h"
 
 #include "../Util/UnCopyable.h"
@@ -30,6 +29,8 @@ public:
 
 	bool build(Scene::IScene* scene, Scene::SceneFactory* factory);
 
+	void init(Scene::IScene* scene, Scene::SceneFactory* factory);
+
 	void render();
 
 	Graphics::DrawableID getId(const double x, const double y);
@@ -38,7 +39,7 @@ public:
 
 	void setViewModel(const Scene::SceneIdViewModel& vm);
 
-	Shader::TextureObject* getTexture() { return texture; }
+	//Shader::TextureObject* getTexture() { return texture; }
 
 private:
 	Shader::PointRenderer pointIdRenderer;
