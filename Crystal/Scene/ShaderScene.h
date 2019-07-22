@@ -21,6 +21,10 @@ public:
 
 	SceneIdViewModel toIdViewModel() const override;
 
+	void onClear() override {
+		delete shader;
+	}
+
 private:
 	Shader::ShaderObject* shader;
 };

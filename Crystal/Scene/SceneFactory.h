@@ -9,8 +9,12 @@
 #include "TextureScene.h"
 
 namespace Crystal {
+	namespace Shader {
+		class ShaderObject;
+	}
 	namespace Scene {
 		class Scene;
+		class ShaderScene;
 
 class SceneFactory
 {
@@ -40,6 +44,8 @@ public:
 	MaterialScene* createMaterialScene(const Graphics::Material& material, const std::string& name);
 
 	TextureScene* createTextureScene(const Graphics::Image& image, const std::string& name);
+
+	ShaderScene* createShaderScene(Shader::ShaderObject* shader, const std::string& name);
 
 	int getNextId() { return idProvider.getNextId(); }
 

@@ -18,6 +18,8 @@ public:
 
 	Graphics::Material getMaterial() { return material; }
 
+	void onClear() override {};
+
 	void setMaterial(const Graphics::Material& material) { this->material = material; }
 
 	SceneType getType() const override { return SceneType::MaterialScene; }

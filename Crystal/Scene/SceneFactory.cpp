@@ -2,6 +2,8 @@
 
 #include "Scene.h"
 
+#include "ShaderScene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
@@ -82,6 +84,12 @@ MaterialScene* SceneFactory::createMaterialScene(const Material& material, const
 {
 	return new MaterialScene(getNextId(), name, material);
 }
+
+ShaderScene* SceneFactory::createShaderScene(ShaderObject* shader, const std::string& name)
+{
+	return new ShaderScene(getNextId(), name, shader);
+}
+
 
 TextureScene* SceneFactory::createTextureScene(const Image& image, const std::string& name)
 {
