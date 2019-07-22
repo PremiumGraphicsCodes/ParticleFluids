@@ -22,9 +22,7 @@
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
-    <ClCompile Include="FaceGroupSelectButton.cpp" />
     <ClCompile Include="FaceGroupView.cpp" />
-    <ClCompile Include="FaceSelectButton.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />
     <ClCompile Include="TextureView.cpp" />
@@ -92,9 +90,7 @@
     <ClInclude Include="CtrlMenu.h" />
     <ClInclude Include="Cylinder3dView.h" />
     <ClInclude Include="DoubleView.h" />
-    <ClInclude Include="FaceGroupSelectButton.h" />
     <ClInclude Include="FaceGroupView.h" />
-    <ClInclude Include="FaceSelectButton.h" />
     <ClInclude Include="FileMenu.h" />
     <ClInclude Include="FileOpenView.h" />
     <ClInclude Include="FileSaveView.h" />

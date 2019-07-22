@@ -11,28 +11,25 @@ using namespace Crystal::UI;
 void SphereRegionSelectButton::onShow()
 {
 	if (ImGui::Button("Pick")) {
-		auto ctrl = new PickUICtrl(getModel(), getCanvas(), SceneType::ParticleSystemScene);
+		auto mask = (int)SceneType::ParticleSystemScene | (int)SceneType::WireFrameScene | (int)SceneType::PolygonMeshScene;
+		auto ctrl = new PickUICtrl(getModel(), getCanvas(), SceneType(mask));
 		auto model = getModel();
 		auto canvas = getCanvas();
 
-		//model->getObjects()->getParticleSystems()->findParticleById();
 		auto func = [=](int parentId, int childId) {
-			/*
-			auto particle = model->getObjects()->getParticleSystems()->findParticleById(parentId, childId);
-			if (particle != nullptr) {
-				auto s = sphere.getValue();
-				s.moveTo(particle->getPosition());
-				sphere.setValue(s);
+			auto scene = model->getObjects()->findSceneById<IShapeScene*>(parentId);
+			const auto& position = scene->getPosition(childId);
+			auto s = sphere.getValue();
+			s.moveTo(position);
+			sphere.setValue(s);
 
-				WireFrameBuilder builder;
-				builder.build(s, 36, 36);
-				WireFrameAttribute attr;
-				attr.color = Graphics::ColorRGBAf(1.0, 0.0, 0.0, 0.0);
-				attr.width = 1.0;
-				model->getItems()->getFactory()->addWireFrameScene(builder.getWireFrame(), attr, "Region");
-				canvas->setViewModel(model->toViewModel());
-			}
-			*/
+			WireFrameBuilder builder;
+			builder.build(s, 36, 36);
+			WireFrameAttribute attr;
+			attr.color = Graphics::ColorRGBAf(1.0, 0.0, 0.0, 0.0);
+			attr.width = 1.0;
+			//model->getItems()->addScene(builder.getWireFrame(), attr, "Region");
+			canvas->setViewModel(model->toViewModel());
 		};
 		ctrl->setFunction(func);
 		getCanvas()->setUICtrl(ctrl);

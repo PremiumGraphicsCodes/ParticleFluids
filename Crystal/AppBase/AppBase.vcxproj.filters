@@ -129,9 +129,6 @@
     <ClCompile Include="MaskMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
-    <ClCompile Include="FaceSelectButton.cpp">
-      <Filter>Selection\PolygonMesh</Filter>
-    </ClCompile>
     <ClCompile Include="PolygonMeshView.cpp">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClCompile>
@@ -143,9 +140,6 @@
     </ClCompile>
     <ClCompile Include="FaceGroupView.cpp">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
-    </ClCompile>
-    <ClCompile Include="FaceGroupSelectButton.cpp">
-      <Filter>Selection\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="SphereRegionSelectButton.cpp">
       <Filter>Selection\Region</Filter>
@@ -382,9 +376,6 @@
     <ClInclude Include="MaskMenu.h">
       <Filter>Menu</Filter>
     </ClInclude>
-    <ClInclude Include="FaceSelectButton.h">
-      <Filter>Selection\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMeshView.h">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClInclude>
@@ -396,9 +387,6 @@
     </ClInclude>
     <ClInclude Include="VertexView.h">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
-    </ClInclude>
-    <ClInclude Include="FaceGroupSelectButton.h">
-      <Filter>Selection\PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="FaceGroupView.h">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
@@ -465,9 +453,6 @@
     </Filter>
     <Filter Include="Color">
       <UniqueIdentifier>{2f26ae1a-95f1-4072-91f2-986837e61ab0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Selection\PolygonMesh">
-      <UniqueIdentifier>{fac5a7c1-3111-4e05-8117-c219f1225aa9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Selection\Region">
       <UniqueIdentifier>{e4b2434e-80ef-408a-8240-0d6068d1138a}</UniqueIdentifier>
