@@ -25,8 +25,9 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	const auto y = position.y;
 
 	std::cout << x << " " << y << std::endl;
-
-	const auto id = canvas->getRenderer()->getObjectIdRenderer()->getId(x, y);
+	
+	auto tex = model->getObjects()->findSceneByName<TextureScene*>("IdTexture");
+	const auto id = canvas->getRenderer()->getObjectIdRenderer()->getId(x, y, *tex->getTexture());
 	const auto parentId = id.getParentId();
 	const auto childId = id.getChildId();
 	if (parentId == 0) {

@@ -20,7 +20,7 @@ void PolygonMeshEditView::show()
 
 void PolygonMeshEditView::setValue(PolygonMeshScene* value)
 {
-	this->polygonMesh.setValue(value->getShape());
-	this->id.setValue(value->getId());
-	this->name.setValue(value->getName());
+	polygonMesh.setValue(value->getShape());
+	id.setValue(value->getId());
+	name.setValue(value->getName());
 }

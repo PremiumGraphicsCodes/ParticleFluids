@@ -38,10 +38,7 @@ void Repository::init()
 	image2.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
 	objects.addScene(objectFactory.createTextureScene(image2, "SmoothTexture"));
 
-	
-
-
-
+	objects.addScene(objectFactory.createTextureScene(Image(512, 512), "IdTexture"));
 }
 
 void Repository::clear()

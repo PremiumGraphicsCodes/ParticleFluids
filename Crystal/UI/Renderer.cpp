@@ -36,8 +36,9 @@ void Renderer::render(const int width, const int height, IScene* scene)
 	//const auto& tex = scene->findSceneByName<TextureScene*>("MainTexture");
 	const auto& smoothTex = scene->findSceneByName<TextureScene*>("SmoothTexture");
 	const auto& onScreenTex = scene->findSceneByName<TextureScene*>("OnScreenTexture");
+	const auto& idTex = scene->findSceneByName<TextureScene*>("IdTexture");
 	objectRenderer.render(*onScreenTex->getTexture(), *smoothTex->getTexture());
-	objectIdRenderer.render();
+	objectIdRenderer.render(*idTex->getTexture());
 
 
 	glViewport(0, 0, width, height);

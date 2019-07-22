@@ -25,12 +25,6 @@ bool ObjectIdRenderer::build(IScene* scene, SceneFactory* factory)
 	return true;
 }
 
-void ObjectIdRenderer::init(IScene* scene, SceneFactory* factory)
-{
-	auto textureScene = factory->createTextureScene(Image(512, 512), "IdTexture");
-	scene->addScene(textureScene);
-	this->texture = textureScene->getTexture();
-}
 
 void ObjectIdRenderer::setViewModel(const SceneIdViewModel& vm)
 {
@@ -39,26 +33,26 @@ void ObjectIdRenderer::setViewModel(const SceneIdViewModel& vm)
 	this->triangleIdRenderer.setBuffer(vm.getTriangleIdBuffer());
 }
 
-DrawableID ObjectIdRenderer::getId(const double x, const double y)
+DrawableID ObjectIdRenderer::getId(const double x, const double y, const TextureObject& texture)
 {
-	return getIdInTexCoord(x * texture->getWidth(), y * texture->getHeight());
+	return getIdInTexCoord(x * texture.getWidth(), y * texture.getHeight(), texture);
 }
 
-DrawableID ObjectIdRenderer::getIdInTexCoord(const int x, const int y)
+DrawableID ObjectIdRenderer::getIdInTexCoord(const int x, const int y, const TextureObject& texture)
 {
 	frameBufferObject.bind();
-	glViewport(0, 0, texture->getWidth(), texture->getHeight());
+	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	const auto& color = frameBufferObject.getColor(x, y);
 	frameBufferObject.unbind();
 	return DrawableID(color);
 }
 
-void ObjectIdRenderer::render()
+void ObjectIdRenderer::render(const TextureObject& texture)
 {
-	frameBufferObject.setTexture(*texture);
+	frameBufferObject.setTexture(texture);
 	//texture.bind();
 	frameBufferObject.bind();
-	glViewport(0, 0, texture->getWidth(), texture->getHeight());
+	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 
 	glClearColor(0.0, 0.0, 0.0, 0.0);

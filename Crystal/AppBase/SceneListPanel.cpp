@@ -58,7 +58,7 @@ void SceneListPanel::show(IScene* scene)
 				}
 				case SceneType::WireFrameScene:
 				{
-					auto editView = new WireFrameEditView("PolygonMeshEdit", model, canvas);
+					auto editView = new WireFrameEditView("WireFrameEdit", model, canvas);
 					auto s = scene->findSceneById<WireFrameScene*>(id);
 					editView->setValue(s);
 					control->clear();

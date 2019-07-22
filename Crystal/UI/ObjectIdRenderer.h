@@ -29,13 +29,11 @@ public:
 
 	bool build(Scene::IScene* scene, Scene::SceneFactory* factory);
 
-	void init(Scene::IScene* scene, Scene::SceneFactory* factory);
+	void render(const Shader::TextureObject& texture);
 
-	void render();
+	Graphics::DrawableID getId(const double x, const double y, const Shader::TextureObject& texture);
 
-	Graphics::DrawableID getId(const double x, const double y);
-
-	Graphics::DrawableID getIdInTexCoord(const int x, const int y);
+	Graphics::DrawableID getIdInTexCoord(const int x, const int y, const Shader::TextureObject& texture);
 
 	void setViewModel(const Scene::SceneIdViewModel& vm);
 
@@ -47,7 +45,6 @@ private:
 	Shader::TriangleRenderer triangleIdRenderer;
 
 	Shader::FrameBufferObject frameBufferObject;
-	Shader::TextureObject* texture;
 
 	Graphics::ICamera* camera;
 };
