@@ -42,9 +42,6 @@
     <ClCompile Include="AppearancePanel.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="TextureTreeList.cpp">
-      <Filter>Shader\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialAddButton.cpp">
       <Filter>Scene\Appearance\Material</Filter>
     </ClCompile>
@@ -126,20 +123,11 @@
     <ClCompile Include="RotateButton.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
-    <ClCompile Include="TextureView.cpp">
-      <Filter>Shader\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureAddButton.cpp">
-      <Filter>Shader\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="ImageView.cpp">
       <Filter>Scene\Appearance\Image</Filter>
     </ClCompile>
     <ClCompile Include="ImageAddButton.cpp">
       <Filter>Scene\Appearance\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderPanel.cpp">
-      <Filter>Shader</Filter>
     </ClCompile>
     <ClCompile Include="ObjectPanel.cpp">
       <Filter>Scene\Shape</Filter>
@@ -290,9 +278,6 @@
     <ClInclude Include="AppearancePanel.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="TextureTreeList.h">
-      <Filter>Shader\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialAddButton.h">
       <Filter>Scene\Appearance\Material</Filter>
     </ClInclude>
@@ -377,20 +362,11 @@
     <ClInclude Include="RotateButton.h">
       <Filter>Transform</Filter>
     </ClInclude>
-    <ClInclude Include="TextureAddButton.h">
-      <Filter>Shader\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureView.h">
-      <Filter>Shader\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="ImageAddButton.h">
       <Filter>Scene\Appearance\Image</Filter>
     </ClInclude>
     <ClInclude Include="ImageView.h">
       <Filter>Scene\Appearance\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderPanel.h">
-      <Filter>Shader</Filter>
     </ClInclude>
     <ClInclude Include="ObjectPanel.h">
       <Filter>Scene\Shape</Filter>
@@ -480,12 +456,6 @@
     </Filter>
     <Filter Include="Menu">
       <UniqueIdentifier>{f853c8fe-34f8-4970-9ae4-5a8b5c5c99cb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shader">
-      <UniqueIdentifier>{482c2aa0-36e4-4755-b9b9-4e223bc09e91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shader\Texture">
-      <UniqueIdentifier>{d59d7ebb-6e6c-4330-b749-84c77ed8bb74}</UniqueIdentifier>
     </Filter>
     <Filter Include="Color">
       <UniqueIdentifier>{2f26ae1a-95f1-4072-91f2-986837e61ab0}</UniqueIdentifier>

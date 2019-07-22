@@ -39,9 +39,6 @@
     <ClCompile Include="ScenePanel.cpp" />
     <ClCompile Include="SphereRegionSelectButton.cpp" />
     <ClCompile Include="VertexView.cpp" />
-    <ClCompile Include="ShaderPanel.cpp" />
-    <ClCompile Include="TextureAddButton.cpp" />
-    <ClCompile Include="TextureView.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_draw.cpp" />
     <ClCompile Include="imgui_impl_glfw.cpp" />
@@ -67,7 +64,6 @@
     <ClCompile Include="RotateButton.cpp" />
     <ClCompile Include="ScaleButton.cpp" />
     <ClCompile Include="ScreenMenu.cpp" />
-    <ClCompile Include="TextureTreeList.cpp" />
     <ClCompile Include="MoveButton.cpp" />
     <ClCompile Include="ObjectSelectButton.cpp" />
     <ClCompile Include="ParticleSystemPanel.cpp" />
@@ -117,8 +113,6 @@
     <ClInclude Include="SphereRegionSelectButton.h" />
     <ClInclude Include="VertexView.h" />
     <ClInclude Include="Quad3dView.h" />
-    <ClInclude Include="ShaderPanel.h" />
-    <ClInclude Include="TextureView.h" />
     <ClInclude Include="imconfig.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="imgui.h" />
@@ -156,8 +150,6 @@
     <ClInclude Include="ScreenMenu.h" />
     <ClInclude Include="Sphere3dView.h" />
     <ClInclude Include="StringView.h" />
-    <ClInclude Include="TextureAddButton.h" />
-    <ClInclude Include="TextureTreeList.h" />
     <ClInclude Include="Torus3dView.h" />
     <ClInclude Include="MoveButton.h" />
     <ClInclude Include="ObjectSelectButton.h" />

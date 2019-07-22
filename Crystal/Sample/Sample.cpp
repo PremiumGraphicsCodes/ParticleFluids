@@ -7,7 +7,6 @@
 
 #include "../AppBase/ObjectPanel.h"
 #include "../AppBase/AppearancePanel.h"
-#include "../AppBase/ShaderPanel.h"
 #include "../AppBase/SelectionPanel.h"
 #include "../AppBase/TransformPanel.h"
 
@@ -42,7 +41,6 @@ int main(int, char**)
 
 	window.add(new ObjectPanel("Object", &model, &canvas));
 	window.add(new AppearancePanel("Appearance", &model, &canvas));
-	window.add(new ShaderPanel("ShaderPanel", &model, &canvas));
 
 	window.add(new SelectionPanel("Selection", &model, &canvas));
 	window.add(new TransformPanel("Transform", &model, &canvas));
