@@ -20,7 +20,7 @@ namespace PG.CGStudio.Object.Select
             Id = new ReactiveProperty<int>();
             PickCommand = new ReactiveCommand();
             PickCommand.Subscribe(OnPickUI);
-            Picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.All);
+            Picker = new ObjectPickUICtrl(10, Core.SceneType.AllScene);
         }
 
         private void OnPickUI()

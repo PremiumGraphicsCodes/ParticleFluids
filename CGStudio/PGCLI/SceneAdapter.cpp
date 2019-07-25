@@ -178,6 +178,15 @@ PG::Core::Scene^ SceneAdapter::ToScene(IScene* parent)
 	return p;
 }
 
+PG::Core::SceneType^ SceneAdapter::GetTypeById(int id)
+{
+	auto scene = instance->findSceneById(id);
+	if (scene == nullptr) {
+		return PG::Core::SceneType::None;
+	}
+	return Converter::fromCpp(scene->getType());
+}
+
 SceneAdapter::SceneAdapter(Crystal::Scene::Scene* instance, Crystal::Scene::SceneFactory*factory) :
 	instance(instance),
 	factory(factory)

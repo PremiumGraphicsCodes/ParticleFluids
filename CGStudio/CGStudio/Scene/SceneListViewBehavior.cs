@@ -33,6 +33,18 @@ namespace PG.CGStudio.Object
             var parameters = new NavigationParameters();
             switch(selectedItem.Type)
             {
+                case SceneType.ParticleSystem:
+                    parameters.Add("ParticleSystemEdit", selectedItem);
+                    MainWindowViewModel.Instance.NavigateWithParam("ParticleSystemEdit", parameters);
+                    break;
+                case SceneType.WireFrame:
+                    parameters.Add("WireFrameEdit", selectedItem);
+                    MainWindowViewModel.Instance.NavigateWithParam("WireFrameEdit", parameters);
+                    break;
+                case SceneType.PolygonMesh:
+                    parameters.Add("PolygonMeshEdit", selectedItem);
+                    MainWindowViewModel.Instance.NavigateWithParam("WireFrameEdit", parameters);
+                    break;
                 case SceneType.PointLight:
                     parameters.Add("LightEdit", selectedItem);
                     MainWindowViewModel.Instance.NavigateWithParam("LightEdit", parameters);
@@ -44,14 +56,6 @@ namespace PG.CGStudio.Object
                 default:
                     break;
             }
-            /*
-            var parameters = new NavigationParameters
-            {
-                { "Object", selectedItem }
-            };
-            MainWindowViewModel.Instance.NavigateWithParam("Object", parameters);
-            */
-
         }
     }
 }

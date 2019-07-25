@@ -29,7 +29,7 @@ namespace PG.CGStudio.Selection
             PositionViewModel = new Vector3dViewModel();
             PickCommand = new ReactiveCommand();
             PickCommand.Subscribe(OnPickUI);
-            Picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.ParticleSystem);
+            Picker = new ObjectPickUICtrl(10, Core.SceneType.ParticleSystem);
             ParticleSystemView = new ParticleSystemView();
         }
 

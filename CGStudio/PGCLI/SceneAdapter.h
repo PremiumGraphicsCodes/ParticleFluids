@@ -46,6 +46,8 @@ public:
 
 	PG::Core::Math::Vector3d^ FindPositionById(int parentId, int childId);
 
+	PG::Core::SceneType^ GetTypeById(int id);
+
 	PG::Core::Scene^ ToScene();
 
 internal:

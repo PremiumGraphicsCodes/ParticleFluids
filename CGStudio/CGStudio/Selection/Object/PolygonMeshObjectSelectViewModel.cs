@@ -30,7 +30,7 @@ namespace PG.CGStudio.Selection.Object
             MaterialViewModel = new MaterialViewModel();
             PickCommand = new ReactiveCommand();
             PickCommand.Subscribe(OnPickUI);
-            Picker = new ObjectPickUICtrl(10, Core.Shape.ShapeType.PolygonMesh);
+            Picker = new ObjectPickUICtrl(10, SceneType.PolygonMesh);
         }
 
         private void OnPickUI()

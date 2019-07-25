@@ -52,6 +52,8 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<ParticleSystemObjectSelectView>("ParticleSystemSelect");
             containerRegistry.RegisterForNavigation<WireFrameObjectSelectView>("WireFrameSelect");
             containerRegistry.RegisterForNavigation<PolygonMeshObjectSelectView>("PolygonMeshSelect");
+
+            containerRegistry.RegisterForNavigation<SphereRegionSelectView>("SphereRegionSelection");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

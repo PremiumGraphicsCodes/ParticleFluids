@@ -13,14 +13,14 @@ namespace PG.CGStudio.UICtrl
         private List<ObjectId> pickedIds;
         private int mergin;
         private Action<ObjectId> action;
-        private ShapeType type;
+        private SceneType type;
 
         public Action<ObjectId> Action
         {
             set { this.action = value; }
         }
 
-        public ObjectPickUICtrl(int mergin, ShapeType type)
+        public ObjectPickUICtrl(int mergin, SceneType type)
         {
             this.mergin = mergin;
             this.pickedIds = new List<ObjectId>();
@@ -34,18 +34,13 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDown(Vector2d position)
         {
-            /*
             position.Y = 1.0 - position.Y;
             var id = Canvas3d.Instance.Renderer.Pick(position, mergin);
-            if(id.parentId != 0)
+            if (id.parentId != 0)
             {
-                var model = MainModel.Instance.Repository.Objects;
-                var selectedItem = model.FindObjectById(id.parentId);
-                if (selectedItem == null)
-                {
-                    return;
-                }
-                if(!type.HasFlag(selectedItem.Type))
+                var model = MainModel.Instance.Repository;
+                var selectedType = model.GetTypeById(id.parentId);
+                if (!type.HasFlag(selectedType))
                 {
                     return;
                 }
@@ -55,9 +50,7 @@ namespace PG.CGStudio.UICtrl
                 {
                     action(id);
                 }
-
             }
-            */
         }
     }
 }

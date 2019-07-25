@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PG.Core
 {
     public enum SceneType
     {
-        None,
-        Root,
-        ParticleSystem,
-        WireFrame,
-        PolygonMesh,
-        Material,
-        PointLight,
+        None = 0x00,
+        Root = 0x01,
+        ParticleSystem = 0x02,
+        WireFrame = 0x04,
+        PolygonMesh = 0x08,
+        ShapeScene = 0x02 | 0x04 | 0x08,
+        Material = 0x10,
+        PointLight = 0x20,
+        Texture = 0x40,
+        AllScene = 0xFF,
     }
 
     public class Scene

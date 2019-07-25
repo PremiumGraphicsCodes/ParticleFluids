@@ -96,6 +96,11 @@
                     <Fluent:Button Header="Sub" KeyTip="BI" Command="{Binding SubtractCommand}"/>
                     <Fluent:Button Header="Intersect" KeyTip="BI" Command="{Binding IntersectionCommand}"/>
                 </Fluent:RibbonGroupBox>
+
+                <Fluent:RibbonGroupBox Header="RegionSelect">
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="SphereRegionSelection"/>
+                </Fluent:RibbonGroupBox>
+
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         

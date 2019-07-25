@@ -1,4 +1,5 @@
-﻿using PG.Core.Math;
+﻿using PG.Core;
+using PG.Core.Math;
 using PG.Core.Shape;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -114,5 +115,10 @@ namespace PG.CGStudio
             Sync();
         }
 
+        public SceneType GetTypeById(int id)
+        {
+            var type = (SceneType)this.adapter.GetSceneAdapter().GetTypeById(id);
+            return type;
+        }
     }
 }
