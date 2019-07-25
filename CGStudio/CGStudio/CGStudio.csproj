@@ -148,10 +148,10 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\ParticleSystem\AppearanceViewModel.cs" />
-    <Compile Include="Selection\Object\ObjectSelectView.xaml.cs">
+    <Compile Include="Selection\ObjectSelectView.xaml.cs">
       <DependentUpon>ObjectSelectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Selection\Object\ObjectSelectViewModel.cs" />
+    <Compile Include="Selection\ObjectSelectViewModel.cs" />
     <Compile Include="Scene\Shape\Transform\TransformView.xaml.cs">
       <DependentUpon>TransformView.xaml</DependentUpon>
     </Compile>
@@ -185,18 +185,6 @@
     <Compile Include="OpenGL\Canvas3d.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Selection\Object\ParticleSystemObjectSelectView.xaml.cs">
-      <DependentUpon>ParticleSystemObjectSelectView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Selection\Object\ParticleSystemObjectSelectViewModel.cs" />
-    <Compile Include="Selection\Object\PolygonMeshObjectSelectView.xaml.cs">
-      <DependentUpon>PolygonMeshObjectSelectView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Selection\Object\PolygonMeshObjectSelectViewModel.cs" />
-    <Compile Include="Selection\Object\WireFrameObjectSelectView.xaml.cs">
-      <DependentUpon>WireFrameObjectSelectView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Selection\Object\WireFrameObjectSelectViewModel.cs" />
     <Compile Include="Selection\SphereRegionSelectView.xaml.cs">
       <DependentUpon>SphereRegionSelectView.xaml</DependentUpon>
     </Compile>
@@ -285,7 +273,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Selection\Object\ObjectSelectView.xaml">
+    <Page Include="Selection\ObjectSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,18 +326,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OpenGL\OpenGLAdornment.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Selection\Object\ParticleSystemObjectSelectView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Selection\Object\PolygonMeshObjectSelectView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Selection\Object\WireFrameObjectSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

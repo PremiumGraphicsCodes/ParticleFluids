@@ -5,9 +5,7 @@ using PG.CGStudio.Object;
 using PG.CGStudio.Scene.Appearance.Light;
 using PG.CGStudio.Scene.Appearance.Material;
 using PG.CGStudio.Selection;
-using PG.CGStudio.Selection.Object;
 using PG.CGStudio.Texture;
-using PG.Control.Graphics;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
@@ -48,10 +46,6 @@ namespace PG.CGStudio
 
             containerRegistry.RegisterForNavigation<Object.Select.ObjectSelectView>("Select");
             containerRegistry.RegisterForNavigation<Object.Transform.TransformView>("Transform");
-
-            containerRegistry.RegisterForNavigation<ParticleSystemObjectSelectView>("ParticleSystemSelect");
-            containerRegistry.RegisterForNavigation<WireFrameObjectSelectView>("WireFrameSelect");
-            containerRegistry.RegisterForNavigation<PolygonMeshObjectSelectView>("PolygonMeshSelect");
 
             containerRegistry.RegisterForNavigation<SphereRegionSelectView>("SphereRegionSelection");
         }
