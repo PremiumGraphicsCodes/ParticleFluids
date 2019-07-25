@@ -159,6 +159,7 @@
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditView.xaml.cs">
       <DependentUpon>PolygonMeshEditView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditViewModel.cs" />
     <Compile Include="Scene\Shape\WireFrame\WireFrameEditView.xaml.cs">
       <DependentUpon>WireFrameEditView.xaml</DependentUpon>
     </Compile>

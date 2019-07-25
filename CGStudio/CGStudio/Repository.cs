@@ -25,6 +25,7 @@ namespace PG.CGStudio
         public void New()
         {
             this.adapter.Clear();
+            Sync();
         }
 
         public bool Open(string filename)
