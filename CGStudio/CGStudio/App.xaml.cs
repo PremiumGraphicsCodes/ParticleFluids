@@ -4,6 +4,7 @@ using PG.CGStudio.Material;
 using PG.CGStudio.Object;
 using PG.CGStudio.Scene.Appearance.Light;
 using PG.CGStudio.Scene.Appearance.Material;
+using PG.CGStudio.Scene.Appearance.Texture;
 using PG.CGStudio.Selection;
 using PG.CGStudio.Texture;
 using Prism.Ioc;
@@ -41,7 +42,10 @@ namespace PG.CGStudio
 
             containerRegistry.RegisterForNavigation<LightAddView>("LightAdd");
             containerRegistry.RegisterForNavigation<LightEditView>("LightEdit");
+
+            containerRegistry.RegisterForNavigation<TextureAddView>("TextureAdd");
             containerRegistry.RegisterForNavigation<TextureEditView>("TextureEdit");
+
             containerRegistry.RegisterForNavigation<SceneView>("Object");
 
             containerRegistry.RegisterForNavigation<Object.Select.ObjectSelectView>("Select");

@@ -80,6 +80,9 @@
                 <Fluent:RibbonGroupBox Header="Material" KeyTip="B">
                     <Fluent:Button Header="Material" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="MaterialAdd"/>
                 </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="Texture" KeyTip="B">
+                    <Fluent:Button Header="Texture" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="TextureAdd"/>
+                </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
 
             <Fluent:RibbonTabItem Header="Selection" KeyTip="T1">

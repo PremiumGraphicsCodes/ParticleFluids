@@ -144,6 +144,10 @@
       <DependentUpon>MaterialAddView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Appearance\Material\MaterialAddViewModel.cs" />
+    <Compile Include="Scene\Appearance\Texture\TextureAddView.xaml.cs">
+      <DependentUpon>TextureAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Appearance\Texture\TextureAddViewModel.cs" />
     <Compile Include="Scene\Shape\ParticleSystem\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
@@ -242,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Appearance\Material\MaterialAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Appearance\Texture\TextureAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -27,7 +27,7 @@ namespace PG.CGStudio.Texture
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["Texture"] as PG.Core.Graphics.Texture;
+            var item = navigationContext.Parameters["TextureEdit"] as PG.Core.Graphics.Texture;
             if (item != null)
             {
                 this.PrevTexture = item;
