@@ -152,10 +152,11 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\ParticleSystem\AppearanceViewModel.cs" />
-    <Compile Include="Selection\ObjectSelectView.xaml.cs">
-      <DependentUpon>ObjectSelectView.xaml</DependentUpon>
+    <Compile Include="Scene\Shape\ParticleSystem\ParticleSystemEditViewModel.cs" />
+    <Compile Include="Selection\ScenetSelectView.xaml.cs">
+      <DependentUpon>ScenetSelectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Selection\ObjectSelectViewModel.cs" />
+    <Compile Include="Selection\SceneSelectViewModel.cs" />
     <Compile Include="Scene\Shape\Transform\TransformView.xaml.cs">
       <DependentUpon>TransformView.xaml</DependentUpon>
     </Compile>
@@ -238,9 +239,9 @@
     <Compile Include="Scene\Shape\WireFrame\Generation\SphereGenerationViewModel.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
-    <Compile Include="UICtrl\ObjectMoveUICtrl.cs" />
-    <Compile Include="UICtrl\ObjectPickUICtrl.cs" />
-    <Compile Include="UICtrl\ObjectScaleUICtrl.cs" />
+    <Compile Include="Scene\Shape\Transform\ObjectMoveUICtrl.cs" />
+    <Compile Include="Scene\Shape\Transform\ObjectPickUICtrl.cs" />
+    <Compile Include="Scene\Shape\Transform\ObjectScaleUICtrl.cs" />
     <Page Include="Scene\Appearance\Light\LightAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -281,7 +282,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Selection\ObjectSelectView.xaml">
+    <Page Include="Selection\ScenetSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PG.CGStudio.Object.Select"
              mc:Ignorable="d">
     <UserControl.DataContext>
-        <local:ObjectSelectViewModel/>
+        <local:SceneSelectViewModel/>
     </UserControl.DataContext>
     <StackPanel Orientation="Horizontal">
         <TextBlock Text="Id"/>

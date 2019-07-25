@@ -12,7 +12,7 @@ namespace PG.CGStudio.Selection
 {
     public class SphereRegionSelectViewModel : BindableBase
     {
-        public ObjectSelectViewModel SelectViewModel { get; }
+        public SceneSelectViewModel SelectViewModel { get; }
 
         public Sphere3dViewModel SphereViewModel { get; }
 
@@ -20,7 +20,7 @@ namespace PG.CGStudio.Selection
 
         public SphereRegionSelectViewModel()
         {
-            SelectViewModel = new ObjectSelectViewModel();
+            SelectViewModel = new SceneSelectViewModel();
             SphereViewModel = new Sphere3dViewModel();
             PickCommand = new ReactiveCommand();
             PickCommand.Subscribe(OnPickUI);
