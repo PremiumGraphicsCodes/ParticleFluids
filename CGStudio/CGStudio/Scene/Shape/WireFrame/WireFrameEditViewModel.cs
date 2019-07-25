@@ -2,15 +2,15 @@
 using Prism.Regions;
 using Reactive.Bindings;
 
-namespace PG.CGStudio.Scene.Shape.ParticleSystem
+namespace PG.CGStudio.Scene.Shape.WireFrame
 {
-    public class ParticleSystemEditViewModel : BindableBase, INavigationAware
+    public class WireFrameEditViewModel : BindableBase, INavigationAware
     {
         public ReactiveProperty<int> Id { get; }
 
         public ReactiveProperty<string> Name { get; }
 
-        public ParticleSystemEditViewModel()
+        public WireFrameEditViewModel()
         {
             Id = new ReactiveProperty<int>();
             Name = new ReactiveProperty<string>();
@@ -28,7 +28,7 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["ParticleSystemEdit"] as PG.Core.Scene;
+            var item = navigationContext.Parameters["WireFrameEdit"] as PG.Core.Scene;
             if (item == null)
             {
                 return;

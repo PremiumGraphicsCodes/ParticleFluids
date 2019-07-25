@@ -43,7 +43,7 @@ namespace PG.CGStudio.Object
                     break;
                 case SceneType.PolygonMesh:
                     parameters.Add("PolygonMeshEdit", selectedItem);
-                    MainWindowViewModel.Instance.NavigateWithParam("WireFrameEdit", parameters);
+                    MainWindowViewModel.Instance.NavigateWithParam("PolygonMeshEdit", parameters);
                     break;
                 case SceneType.PointLight:
                     parameters.Add("LightEdit", selectedItem);
@@ -52,6 +52,10 @@ namespace PG.CGStudio.Object
                 case SceneType.Material:
                     parameters.Add("MaterialEdit", selectedItem);
                     MainWindowViewModel.Instance.NavigateWithParam("MaterialEdit", parameters);
+                    break;
+                case SceneType.Texture:
+                    parameters.Add("TextureEdit", selectedItem);
+                    MainWindowViewModel.Instance.NavigateWithParam("TextureEdit", parameters);
                     break;
                 default:
                     break;
