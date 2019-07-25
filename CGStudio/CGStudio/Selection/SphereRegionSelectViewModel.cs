@@ -2,6 +2,7 @@
 using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
+using PG.Core.Graphics;
 using PG.Core.Math;
 using PG.Core.Shape;
 using PG.Core.UI;
@@ -43,7 +44,7 @@ namespace PG.CGStudio.Selection
             SphereViewModel.Value = sphere;
             var builder = new WireFrameBuilder();
             builder.Build(sphere, 24, 24);
-            MainModel.Instance.Repository.Adapter.GetItemAdapter().AddWireFrameScene(builder.WireFrame.Edges, "Item");
+            MainModel.Instance.Repository.Adapter.GetItemAdapter().AddWireFrameScene(builder.WireFrame.Edges, "Item", 1, new ColorRGBA(0.0f,0.0f,0.0f,0.0f));
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
 

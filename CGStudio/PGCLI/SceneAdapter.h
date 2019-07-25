@@ -26,7 +26,7 @@ public:
 
 	int AddParticleSystemScene(System::Collections::Generic::List<PG::Core::Math::Vector3d^>^ positions, System::String^ name);
 
-	int AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines, System::String^ name);
+	int AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines, System::String^ name,int width, PG::Core::Graphics::ColorRGBA^ color);
 
 	int AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System::String^ name);
 

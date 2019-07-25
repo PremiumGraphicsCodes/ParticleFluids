@@ -1,4 +1,5 @@
 ﻿using PG.Core;
+using PG.Core.Graphics;
 using PG.Core.Math;
 using PG.Core.Shape;
 using Reactive.Bindings;
@@ -57,9 +58,9 @@ namespace PG.CGStudio
             Sync();
         }
 
-        public void AddWireFrameScene(List<Line3d> lines, string name)
+        public void AddWireFrameScene(List<Line3d> lines, string name, int width, Core.Graphics.ColorRGBA color)
         {
-            this.adapter.GetSceneAdapter().AddWireFrameScene(lines, name);
+            this.adapter.GetSceneAdapter().AddWireFrameScene(lines, name, width, color);
             Sync();
         }
 
@@ -103,9 +104,9 @@ namespace PG.CGStudio
             Sync();
         }
 
-        public void AddWireFrameItem(List<Line3d> lines, string name)
+        public void AddWireFrameItem(List<Line3d> lines, string name, int width, ColorRGBA color)
         {
-            this.adapter.GetItemAdapter().AddWireFrameScene(lines, name);
+            this.adapter.GetItemAdapter().AddWireFrameScene(lines, name, width, color);
             Sync();
         }
 
