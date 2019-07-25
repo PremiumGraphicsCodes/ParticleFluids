@@ -152,6 +152,9 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\ParticleSystem\AppearanceViewModel.cs" />
+    <Compile Include="Scene\Shape\ParticleSystem\ParticleSystemEditView.xaml.cs">
+      <DependentUpon>ParticleSystemEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scene\Shape\ParticleSystem\ParticleSystemEditViewModel.cs" />
     <Compile Include="Selection\ScenetSelectView.xaml.cs">
       <DependentUpon>ScenetSelectView.xaml</DependentUpon>
@@ -267,6 +270,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Shape\ParticleSystem\Generation\SphereGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Shape\ParticleSystem\ParticleSystemEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

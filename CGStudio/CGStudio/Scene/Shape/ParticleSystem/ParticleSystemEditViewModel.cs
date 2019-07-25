@@ -1,15 +1,21 @@
 ﻿using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Reactive.Bindings;
 
 namespace PG.CGStudio.Scene.Shape.ParticleSystem
 {
     public class ParticleSystemEditViewModel : BindableBase, INavigationAware
     {
+        public ReactiveProperty<int> Id { get; }
+
+        public ReactiveProperty<string> Name { get; }
+
+        public ParticleSystemEditViewModel()
+        {
+            Id = new ReactiveProperty<int>();
+            Name = new ReactiveProperty<string>();
+        }
+
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return true;

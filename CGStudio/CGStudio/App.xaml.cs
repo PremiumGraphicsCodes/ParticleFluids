@@ -5,6 +5,7 @@ using PG.CGStudio.Object;
 using PG.CGStudio.Scene.Appearance.Light;
 using PG.CGStudio.Scene.Appearance.Material;
 using PG.CGStudio.Scene.Appearance.Texture;
+using PG.CGStudio.Scene.Shape.ParticleSystem;
 using PG.CGStudio.Selection;
 using PG.CGStudio.Texture;
 using Prism.Ioc;
@@ -36,6 +37,8 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.BoxGenerationView>("PMBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMSphereGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.CylinderGenerationView>("PMCylinderGeneration");
+
+            containerRegistry.RegisterForNavigation<ParticleSystemEditView>("ParticleSystemEdit");
 
             containerRegistry.RegisterForNavigation<MaterialAddView>("MaterialAdd");
             containerRegistry.RegisterForNavigation<MaterialEditView>("MaterialEdit");
