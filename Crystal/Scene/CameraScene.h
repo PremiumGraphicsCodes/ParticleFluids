@@ -2,19 +2,21 @@
 
 #include "IScene.h"
 #include "../Graphics/ICamera.h"
+#include "SceneViewModel.h"
+#include "SceneIdViewModel.h"
 
 namespace Crystal {
 	namespace Scene {
 
-class LightScene : public IScene
+class CameraScene : public IScene
 {
 public:
-	LightScene(const int id, const std::string& name, Graphics::ICamera* camera) :
+	CameraScene(const int id, const std::string& name, Graphics::ICamera* camera) :
 		IScene(id, name),
 		camera(camera)
 	{}
 
-	~LightScene() {};
+	~CameraScene() {};
 
 	Graphics::ICamera* getCamera() const { return camera; }
 
@@ -25,9 +27,9 @@ public:
 		delete camera;
 	}
 
-	SceneViewModel toViewModel() const override;
+	SceneViewModel toViewModel() const override { return SceneViewModel(); };
 
-	SceneIdViewModel toIdViewModel() const override;
+	SceneIdViewModel toIdViewModel() const override { return SceneIdViewModel(); }
 
 private:
 	Graphics::ICamera* camera;

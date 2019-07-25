@@ -3,6 +3,8 @@
 #include "Scene.h"
 
 #include "ShaderScene.h"
+#include "LightScene.h"
+#include "CameraScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -99,5 +101,5 @@ TextureScene* SceneFactory::createTextureScene(const Image& image, const std::st
 
 CameraScene* SceneFactory::createCameraScene(ICamera* camera, const std::string& name)
 {
-	return nullptr;
+	return new CameraScene(getNextId(), name, camera);
 }
