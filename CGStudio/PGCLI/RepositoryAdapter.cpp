@@ -29,6 +29,11 @@ void RepositoryAdapter::Clear()
 	instance->clear();
 }
 
+void RepositoryAdapter::Init()
+{
+	instance->init();
+}
+
 bool RepositoryAdapter::Import(System::String^ filename)
 {
 	if (filename == nullptr) {

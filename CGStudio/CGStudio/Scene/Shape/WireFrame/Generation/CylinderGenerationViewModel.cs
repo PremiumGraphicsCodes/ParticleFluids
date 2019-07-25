@@ -1,31 +1,28 @@
 ﻿using PG.Core.Shape;
 using Reactive.Bindings;
-using PG.Control;
 using PG.Control.Math;
 using Prism.Mvvm;
-using PG.Core.UI;
-using PG.Core.Graphics;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
     public class CylinderGenerationViewModel : BindableBase
     {
-        public Cylinder3dViewModel Cylinder { get; }
+        public Cylinder3dViewModel CylinderViewModel { get; }
 
         public ReactiveProperty<int> UNum { get; }
 
         public ReactiveProperty<int> VNum { get; }
 
-        public AppearanceViewModel Appearance { get; }
+        public AppearanceViewModel AppearanceViewModel { get; }
 
         public ReactiveCommand GenerationCommand { get; }
 
         public CylinderGenerationViewModel()
         {
-            this.Cylinder = new Cylinder3dViewModel();
+            this.CylinderViewModel = new Cylinder3dViewModel();
             this.UNum = new ReactiveProperty<int>(36);
             this.VNum = new ReactiveProperty<int>(36);
-            this.Appearance = new AppearanceViewModel();
+            this.AppearanceViewModel = new AppearanceViewModel();
             this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
         }
@@ -33,10 +30,10 @@ namespace PG.CGStudio.Generation.WireFrame
         private void OnGenerate()
         {
             var builder = new WireFrameBuilder();
-            var cylinder = Cylinder.Value;
+            var cylinder = CylinderViewModel.Value;
             builder.Build(cylinder, 25, 25);
             var wireFrame = builder.WireFrame;
-            MainModel.Instance.Repository.AddWireFrameScene(wireFrame.Edges, "WFCylinder", Appearance.Value);
+            MainModel.Instance.Repository.AddWireFrameScene(wireFrame.Edges, "WFCylinder", AppearanceViewModel.Value);
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
         }

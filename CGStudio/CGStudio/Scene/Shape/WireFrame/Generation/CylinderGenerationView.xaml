@@ -11,10 +11,10 @@
         <local:CylinderGenerationViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <control:Cylinder3dView DataContext="{Binding Cylinder}"/>
+        <control:Cylinder3dView DataContext="{Binding CylinderViewModel}"/>
         <TextBox Text="{Binding UNum.Value}"/>
         <TextBox Text="{Binding VNum.Value}"/>
-        <local:AppearanceView DataContext="{Binding Appearance}"/>
+        <local:AppearanceView DataContext="{Binding AppearanceViewModel}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

@@ -11,12 +11,12 @@
         <local:SphereGenerationViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <Control:Sphere3dView DataContext="{Binding Sphere}"/>
+        <Control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
         <Label Content="UNum"/>
         <TextBox Text="{Binding UNum.Value}"/>
         <Label Content="VNum"/>
         <TextBox Text="{Binding VNum.Value}"/>
-        <local:AppearanceView DataContext="{Binding Appearance}"/>
+        <local:AppearanceView DataContext="{Binding AppearanceViewModel}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

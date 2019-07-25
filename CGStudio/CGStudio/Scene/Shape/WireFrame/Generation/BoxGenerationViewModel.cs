@@ -15,12 +15,12 @@ namespace PG.CGStudio.Generation.WireFrame
         public AppearanceViewModel AppearanceViewModel { get; }
 
         public ReactiveCommand GenerationCommand { get; }
-            = new ReactiveCommand();
 
         public BoxGenerationViewModel()
         {
             this.BoxViewModel = new Box3dViewModel();
             this.AppearanceViewModel = new AppearanceViewModel();
+            this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 

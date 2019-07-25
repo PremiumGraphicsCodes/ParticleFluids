@@ -22,6 +22,8 @@ public:
 
 	void Clear();
 
+	void Init();
+
 	bool Import(System::String^ filename);
 
 	bool Export(System::String^ filename);

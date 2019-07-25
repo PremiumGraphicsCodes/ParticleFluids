@@ -26,6 +26,11 @@ namespace PG.CGStudio.Generation.WireFrame
                 };
                 return appearance;
             }
+            set
+            {
+                Color.Value = value.Color;
+                Width.Value = value.Width;
+            }
         }
 
     }

@@ -14,24 +14,24 @@ namespace PG.CGStudio.Generation.WireFrame
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public Sphere3dViewModel Sphere { get; }
+        public Sphere3dViewModel SphereViewModel { get; }
             = new Sphere3dViewModel();
 
-        public AppearanceViewModel Appearance { get; }
+        public AppearanceViewModel AppearanceViewModel { get; }
 
         public SphereGenerationViewModel()
         {
             this.UNum = new ReactiveProperty<int>(36);
             this.VNum = new ReactiveProperty<int>(36);
-            this.Appearance = new AppearanceViewModel();
+            this.AppearanceViewModel = new AppearanceViewModel();
             this.GenerationCommand.Subscribe(OnExecute);
         }
 
         private void OnExecute()
         {
             var builder = new WireFrameBuilder();
-            builder.Build(Sphere.Value, UNum.Value, VNum.Value);
-            MainModel.Instance.Repository.AddWireFrameScene(builder.WireFrame.Edges, "WFSphere", Appearance.Value);
+            builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
+            MainModel.Instance.Repository.AddWireFrameScene(builder.WireFrame.Edges, "WFSphere", AppearanceViewModel.Value);
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
         }
