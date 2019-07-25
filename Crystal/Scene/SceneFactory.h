@@ -9,12 +9,16 @@
 #include "TextureScene.h"
 
 namespace Crystal {
+	namespace Graphics {
+		class ICamera;
+	}
 	namespace Shader {
 		class ShaderObject;
 	}
 	namespace Scene {
 		class Scene;
 		class ShaderScene;
+		class CameraScene;
 
 class SceneFactory
 {
@@ -46,6 +50,8 @@ public:
 	TextureScene* createTextureScene(const Graphics::Image& image, const std::string& name);
 
 	ShaderScene* createShaderScene(Shader::ShaderObject* shader, const std::string& name);
+
+	CameraScene* createCameraScene(Graphics::ICamera* camera, const std::string& name);
 
 	int getNextId() { return idProvider.getNextId(); }
 

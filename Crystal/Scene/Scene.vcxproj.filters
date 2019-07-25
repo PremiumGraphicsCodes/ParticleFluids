@@ -96,6 +96,9 @@
     <ClInclude Include="ShaderScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="CameraScene.h">
+      <Filter>Scene\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
