@@ -13,6 +13,7 @@
     </UserControl.DataContext>
     <StackPanel>
         <math:Box3dView DataContext="{Binding BoxViewModel}"/>
+        <local:AppearanceView DataContext="{Binding AppearanceViewModel}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

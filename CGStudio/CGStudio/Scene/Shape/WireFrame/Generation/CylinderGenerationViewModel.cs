@@ -16,7 +16,7 @@ namespace PG.CGStudio.Generation.WireFrame
 
         public ReactiveProperty<int> VNum { get; }
 
-        public AppearanceViewModel Appearance;
+        public AppearanceViewModel Appearance { get; }
 
         public ReactiveCommand GenerationCommand { get; }
 
@@ -36,7 +36,7 @@ namespace PG.CGStudio.Generation.WireFrame
             var cylinder = Cylinder.Value;
             builder.Build(cylinder, 25, 25);
             var wireFrame = builder.WireFrame;
-            MainModel.Instance.Repository.AddWireFrameScene(wireFrame.Edges, "WFCylinder", 1, new ColorRGBA(0.0f,0.0f,0.0f,0.0f));
+            MainModel.Instance.Repository.AddWireFrameScene(wireFrame.Edges, "WFCylinder", Appearance.Value);
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
         }

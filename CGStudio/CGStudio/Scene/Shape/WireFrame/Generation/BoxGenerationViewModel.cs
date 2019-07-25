@@ -11,13 +11,16 @@ namespace PG.CGStudio.Generation.WireFrame
     public class BoxGenerationViewModel : BindableBase
     {
         public Box3dViewModel BoxViewModel { get; }
-            = new Box3dViewModel();
+
+        public AppearanceViewModel AppearanceViewModel { get; }
 
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
         public BoxGenerationViewModel()
         {
+            this.BoxViewModel = new Box3dViewModel();
+            this.AppearanceViewModel = new AppearanceViewModel();
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 
@@ -27,7 +30,8 @@ namespace PG.CGStudio.Generation.WireFrame
             var box = BoxViewModel.Value;
             builder.Build(box);
             var wireFrame = builder.WireFrame;
-            MainModel.Instance.Repository.AddWireFrameScene(wireFrame.Edges, "WFBox", 1, new ColorRGBA(0.0f,0.0f,0.0f,0.0f));
+            var appearance = AppearanceViewModel.Value;
+            MainModel.Instance.Repository.AddWireFrameScene(wireFrame.Edges, "WFBox", appearance);
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
         }

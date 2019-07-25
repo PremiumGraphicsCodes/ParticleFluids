@@ -58,9 +58,9 @@ namespace PG.CGStudio
             Sync();
         }
 
-        public void AddWireFrameScene(List<Line3d> lines, string name, int width, Core.Graphics.ColorRGBA color)
+        public void AddWireFrameScene(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
         {
-            this.adapter.GetSceneAdapter().AddWireFrameScene(lines, name, width, color);
+            this.adapter.GetSceneAdapter().AddWireFrameScene(lines, name, appearance);
             Sync();
         }
 
@@ -104,9 +104,9 @@ namespace PG.CGStudio
             Sync();
         }
 
-        public void AddWireFrameItem(List<Line3d> lines, string name, int width, ColorRGBA color)
+        public void AddWireFrameItem(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
         {
-            this.adapter.GetItemAdapter().AddWireFrameScene(lines, name, width, color);
+            this.adapter.GetItemAdapter().AddWireFrameScene(lines, name, appearance);
             Sync();
         }
 

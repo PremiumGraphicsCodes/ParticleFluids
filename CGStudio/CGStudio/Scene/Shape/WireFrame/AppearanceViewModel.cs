@@ -6,7 +6,7 @@ namespace PG.CGStudio.Generation.WireFrame
 {
     public class AppearanceViewModel
     {
-        public ColorRGBAViewModel Color;
+        public ColorRGBAViewModel Color { get; }
         public ReactiveProperty<float> Width { get; }
 
         public AppearanceViewModel()

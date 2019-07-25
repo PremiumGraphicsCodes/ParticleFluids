@@ -45,7 +45,7 @@ int SceneAdapter::AddParticleSystemScene(System::Collections::Generic::List<PG::
 	return scene->getId();
 }
 
-int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines, System::String^ name, int width, PG::Core::Graphics::ColorRGBA^ color)
+int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines, System::String^ name, PG::Core::UI::WireAppearance^ appearance)
 {
 	std::vector<Line3dd> ls;
 	for (int i = 0; i < lines->Count; ++i) {
@@ -53,8 +53,8 @@ int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core:
 	}
 	auto str = msclr::interop::marshal_as<std::string>(name);
 	WireFrameAttribute attr;
-	attr.width = width;
-	attr.color = Converter::toCpp(color);
+	attr.width = appearance->Width;
+	attr.color = Converter::toCpp(appearance->Color);
 	auto scene = factory->createWireFrameScene(ls, attr, str);
 	instance->addScene( scene );
 	return scene->getId();
