@@ -57,8 +57,8 @@
     <ClCompile Include="PMBoxButton.cpp" />
     <ClCompile Include="PMQuadButton.cpp" />
     <ClCompile Include="PMSphereButton.cpp" />
-    <ClCompile Include="PSBoxButton.cpp" />
-    <ClCompile Include="PSConeButton.cpp" />
+    <ClCompile Include="PSBoxView.cpp" />
+    <ClCompile Include="PSConeView.cpp" />
     <ClCompile Include="PSCylinderButton.cpp" />
     <ClCompile Include="PSSphereButton.cpp" />
     <ClCompile Include="PSTorusButton.cpp" />
@@ -142,8 +142,8 @@
     <ClInclude Include="PMSphereButton.h" />
     <ClInclude Include="PSAttributeView.h" />
     <ClInclude Include="PSTorusButton.h" />
-    <ClInclude Include="PSBoxButton.h" />
-    <ClInclude Include="PSConeButton.h" />
+    <ClInclude Include="PSBoxView.h" />
+    <ClInclude Include="PSConeView.h" />
     <ClInclude Include="PSCylinderButton.h" />
     <ClInclude Include="PSSphereButton.h" />
     <ClInclude Include="Ray3dView.h" />

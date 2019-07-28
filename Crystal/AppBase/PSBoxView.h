@@ -26,6 +26,8 @@ public:
 
 	void show() override;
 
+	void onOk();
+
 private:
 	Box3dView box;
 	PSAttributeView attribute;

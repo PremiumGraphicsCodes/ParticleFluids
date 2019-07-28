@@ -63,12 +63,6 @@
     <ClCompile Include="ParticleSystemPanel.cpp">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
-    <ClCompile Include="PSBoxButton.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
-    </ClCompile>
-    <ClCompile Include="PSConeButton.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
-    </ClCompile>
     <ClCompile Include="PSCylinderButton.cpp">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
@@ -181,6 +175,12 @@
     </ClCompile>
     <ClCompile Include="DoubleView.cpp">
       <Filter>Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="PSConeView.cpp">
+      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="PSBoxView.cpp">
+      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -306,13 +306,7 @@
     <ClInclude Include="ParticleSystemPanel.h">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
-    <ClInclude Include="PSBoxButton.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
-    </ClInclude>
     <ClInclude Include="PSAttributeView.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
-    </ClInclude>
-    <ClInclude Include="PSConeButton.h">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PSCylinderButton.h">
@@ -438,6 +432,12 @@
     </ClInclude>
     <ClInclude Include="WireFrameEditView.h">
       <Filter>Scene\Shape\WireFrame\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="PSConeView.h">
+      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="PSBoxView.h">
+      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
