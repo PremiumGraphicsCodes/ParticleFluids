@@ -10,6 +10,17 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
+PSBoxView::PSBoxView(Repository* model, Canvas* canvas) :
+	IPanel("PSBox", model, canvas),
+	box("Box"),
+	attribute("Attribute"),
+	count("Count", 10000),
+	isVolume("Volume", false),
+	okButton("OK")
+{
+	okButton.setFunction([=]() { onOk(); });
+};
+
 void PSBoxView::show()
 {
 	box.show();
@@ -17,7 +28,6 @@ void PSBoxView::show()
 	count.show();
 	isVolume.show();
 	okButton.show();
-	okButton.setFunction([=]() { onOk(); });
 }
 
 void PSBoxView::onOk()

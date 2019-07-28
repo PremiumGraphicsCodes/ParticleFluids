@@ -63,9 +63,6 @@
     <ClCompile Include="ParticleSystemPanel.cpp">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
-    <ClCompile Include="PSCylinderButton.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
-    </ClCompile>
     <ClCompile Include="PSSphereButton.cpp">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
@@ -180,6 +177,9 @@
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PSBoxView.cpp">
+      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="PSCylinderView.cpp">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
   </ItemGroup>
@@ -309,9 +309,6 @@
     <ClInclude Include="PSAttributeView.h">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
-    <ClInclude Include="PSCylinderButton.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
-    </ClInclude>
     <ClInclude Include="PSSphereButton.h">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
@@ -437,6 +434,9 @@
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PSBoxView.h">
+      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="PSCylinderView.h">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
   </ItemGroup>

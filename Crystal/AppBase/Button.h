@@ -13,6 +13,11 @@ public:
 		IWindow(name)
 	{}
 
+	Button(const std::string& name, std::function<void()> func) :
+		IWindow(name),
+		func(func)
+	{}
+
 	~Button()
 	{}
 

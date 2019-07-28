@@ -6,7 +6,7 @@
 
 #include "PSBoxView.h"
 #include "PSSphereButton.h"
-#include "PSCylinderButton.h"
+#include "PSCylinderView.h"
 #include "PSConeView.h"
 #include "PSTorusButton.h"
 #include "ControlPanel.h"
@@ -27,7 +27,6 @@ ParticleSystemPanel::ParticleSystemPanel(const std::string& name, Repository* re
 	control(control)
 {
 	add( new PSSphereButton(repository, canvas) );
-	add( new PSCylinderButton(repository, canvas) );
 	add( new PSTorusButton(repository, canvas) );
 }
 
@@ -40,5 +39,9 @@ void ParticleSystemPanel::show()
 	else if (ImGui::Button("PSCone")) {
 		control->clear();
 		control->add(new PSConeView(getRepository(), canvas));
+	}
+	else if (ImGui::Button("PSCylinder")) {
+		control->clear();
+		control->add(new PSCylinderView(getRepository(), canvas));
 	}
 }
