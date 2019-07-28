@@ -1,41 +1,37 @@
 #pragma once
 
-#include "IPopupButton.h"
+#include "IPanel.h"
 
 #include "Box3dView.h"
 #include "PSAttributeView.h"
 #include "IntView.h"
 #include "BoolView.h"
+#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PSBoxButton : public IPopupButton
+class PSBoxView : public IPanel
 {
 public:
-	PSBoxButton(Repository* model, Canvas* canvas) :
-		IPopupButton("PSBox", model, canvas),
+	PSBoxView(Repository* model, Canvas* canvas) :
+		IPanel("PSBox", model, canvas),
 		box("Box"),
 		attribute("Attribute"),
 		count("Count", 10000),
-		isVolume("Volume", false)
+		isVolume("Volume", false),
+		okButton("OK")
 	{
-	}
+	};
 
-	void onShow() override;
-
-	void onOk() override;
-
-	void onCancel() override
-	{
-
-	}
+	void show() override;
 
 private:
 	Box3dView box;
 	PSAttributeView attribute;
 	IntView count;
 	BoolView isVolume;
+	Button okButton;
 };
 
 	}

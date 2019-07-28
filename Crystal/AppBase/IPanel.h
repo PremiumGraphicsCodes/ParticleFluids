@@ -22,6 +22,10 @@ public:
 	virtual void show() override;
 
 protected:
+	Repository* getRepository() { return model; }
+	Canvas* getCanvas() { return canvas; }
+
+
 	Repository* model;
 	Canvas* canvas;
 };

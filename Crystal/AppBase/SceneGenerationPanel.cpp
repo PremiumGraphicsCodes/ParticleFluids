@@ -14,10 +14,10 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-SceneGenerationPanel::SceneGenerationPanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control) :
+SceneGenerationPanel::SceneGenerationPanel(const std::string& name, Repository* model, Canvas* canvas, ControlPanel* control) :
 	IPanel(name, model, canvas)
 {
-	add(new ParticleSystemPanel("", model, canvas));
+	add(new ParticleSystemPanel("", model, canvas, control));
 	add(new WireFramePanel("", model, canvas));
 	add(new PolygonMeshPanel("", model, canvas));
 
