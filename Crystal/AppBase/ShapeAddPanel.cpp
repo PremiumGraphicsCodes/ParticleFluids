@@ -12,7 +12,7 @@
 
 #include "PMBoxView.h"
 #include "PMQuadView.h"
-#include "PMSphereButton.h"
+#include "PMSphereView.h"
 
 #include "ControlPanel.h"
 

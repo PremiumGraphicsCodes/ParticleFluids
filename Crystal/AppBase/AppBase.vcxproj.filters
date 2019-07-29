@@ -48,9 +48,6 @@
     <ClCompile Include="LightView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
-    <ClCompile Include="PMSphereButton.cpp">
-      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
-    </ClCompile>
     <ClCompile Include="WFBoxButton.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
@@ -179,6 +176,9 @@
     <ClCompile Include="PMQuadView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
+    <ClCompile Include="PMSphereView.cpp">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -287,9 +287,6 @@
     </ClInclude>
     <ClInclude Include="LightView.h">
       <Filter>Scene\Appearance\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="PMSphereButton.h">
-      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
     <ClInclude Include="PSAttributeView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
@@ -431,6 +428,9 @@
       <Filter>Scene\Appearance\Material\Add</Filter>
     </ClInclude>
     <ClInclude Include="PMQuadView.h">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="PMSphereView.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
   </ItemGroup>

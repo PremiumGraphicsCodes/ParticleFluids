@@ -29,6 +29,7 @@
     <ClInclude Include="FileExporter.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
+    <ClInclude Include="ITransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
     <ClInclude Include="SceneIdViewModel.h" />
@@ -49,6 +50,7 @@
     <ClInclude Include="STLFileExporter.h" />
     <ClInclude Include="STLFileImporter.h" />
     <ClInclude Include="TextureScene.h" />
+    <ClInclude Include="TranslateScene.h" />
     <ClInclude Include="UUID.h" />
     <ClInclude Include="ViewModel.h" />
     <ClInclude Include="VolumeScene.h" />
@@ -74,6 +76,7 @@
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
     <ClCompile Include="TextureScene.cpp" />
+    <ClCompile Include="TranslateScene.cpp" />
     <ClCompile Include="WireFrameScene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -96,6 +96,12 @@
     <ClInclude Include="CameraScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="ITransformScene.h">
+      <Filter>Scene\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslateScene.h">
+      <Filter>Scene\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
@@ -155,6 +161,9 @@
     <ClCompile Include="ShaderScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
+    <ClCompile Include="TranslateScene.cpp">
+      <Filter>Scene\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">
@@ -189,6 +198,9 @@
     </Filter>
     <Filter Include="Scene\Shape\WireFrame">
       <UniqueIdentifier>{09fb888a-ebba-4ade-9e15-4b067cb8f0c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Transform">
+      <UniqueIdentifier>{cc2dee8e-1aa8-4b36-971f-d59b4361fad8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

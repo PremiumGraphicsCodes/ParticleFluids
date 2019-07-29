@@ -21,7 +21,7 @@ public:
 
 	virtual ~IShapeScene() {};
 
-	virtual void move(const Math::Vector3dd& v) = 0;
+	virtual void translate(const Math::Vector3dd& v) = 0;
 
 	virtual void transform(const Math::Matrix3dd& m) = 0;
 

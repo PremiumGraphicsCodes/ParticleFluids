@@ -27,7 +27,7 @@ public:
 
 	WireFrameAttribute getAttribute() const { return attribute; }
 
-	void move(const Math::Vector3dd& v) override { shape->move(v); }
+	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 
 	void transform(const Math::Matrix3dd& m) { shape->transform(m); }
 
