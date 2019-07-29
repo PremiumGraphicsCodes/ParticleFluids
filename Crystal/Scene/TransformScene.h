@@ -29,6 +29,17 @@ public:
 
 	Math::Vector3dd getTranslate() const { return translate; }
 
+	SceneType getType() const override { return SceneType::TransformScene; }
+
+	void onClear() override
+	{
+	}
+
+	SceneViewModel toViewModel() const override;
+
+	SceneIdViewModel toIdViewModel() const override;
+
+
 private:
 	Math::Vector3dd translate;
 	Math::Matrix3dd rotation;

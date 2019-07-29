@@ -1,5 +1,7 @@
 #include "DoubleView.h"
 
+#include "imgui.h"
+
 using namespace Crystal::UI;
 
 DoubleView::DoubleView(const std::string& name) :

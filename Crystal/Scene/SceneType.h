@@ -16,6 +16,7 @@ enum class SceneType
 	TextureScene = 0x80,
 	ShaderScene = 0xf0,
 	CameraScene = 0xf1,
+	TransformScene = 0xf2,
 	All = 0xFF,
 };
 	}

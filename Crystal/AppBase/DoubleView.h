@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IWindow.h"
-#include "imgui.h"
 
 namespace Crystal {
 	namespace UI {

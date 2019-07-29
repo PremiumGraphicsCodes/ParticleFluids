@@ -19,6 +19,7 @@ namespace Crystal {
 		class Scene;
 		class ShaderScene;
 		class CameraScene;
+		class TransformScene;
 
 class SceneFactory
 {
@@ -52,6 +53,8 @@ public:
 	ShaderScene* createShaderScene(Shader::ShaderObject* shader, const std::string& name);
 
 	CameraScene* createCameraScene(Graphics::ICamera* camera, const std::string& name);
+
+	TransformScene* createTransformScene(const std::string& name);
 
 	int getNextId() { return idProvider.getNextId(); }
 

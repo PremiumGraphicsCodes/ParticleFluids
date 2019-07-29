@@ -158,6 +158,9 @@
     <ClCompile Include="ShaderScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
+    <ClCompile Include="TransformScene.cpp">
+      <Filter>Scene\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">
