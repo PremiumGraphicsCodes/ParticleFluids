@@ -36,9 +36,6 @@
     <ClCompile Include="imgui_stdlib.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="LightAddButton.cpp">
-      <Filter>Scene\Appearance\Light</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialView.cpp">
       <Filter>Scene\Appearance\Material</Filter>
     </ClCompile>
@@ -173,6 +170,12 @@
     <ClCompile Include="ShapeAddMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
+    <ClCompile Include="LightAddView.cpp">
+      <Filter>Scene\Appearance\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformAddView.cpp">
+      <Filter>Scene\Transform\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -272,9 +275,6 @@
     </ClInclude>
     <ClInclude Include="MaterialView.h">
       <Filter>Scene\Appearance\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="LightAddButton.h">
-      <Filter>Scene\Appearance\Light</Filter>
     </ClInclude>
     <ClInclude Include="LightView.h">
       <Filter>Scene\Appearance\Light</Filter>
@@ -423,6 +423,9 @@
     </ClInclude>
     <ClInclude Include="ShapeAddMenu.h">
       <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="LightAddView.h">
+      <Filter>Scene\Appearance\Light</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

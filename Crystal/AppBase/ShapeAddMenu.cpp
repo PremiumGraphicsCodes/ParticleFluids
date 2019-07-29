@@ -20,6 +20,9 @@
 #include "PMQuadView.h"
 #include "PMSphereView.h"
 
+#include "TransformAddView.h"
+
+#include "LightAddView.h"
 
 using namespace Crystal::UI;
 
@@ -68,10 +71,17 @@ void ShapeAddMenu::show()
 		if (ImGui::MenuItem("PMQuad")) {
 			control->setWindow(new PMQuadView(getModel(), canvas));
 		}
-		if (ImGui::MenuItem("WFSphere")) {
+		if (ImGui::MenuItem("PMSphere")) {
 			control->setWindow(new PMSphereView(getModel(), canvas));
 		}
 
+		if (ImGui::MenuItem("Transform")) {
+			control->setWindow(new TransformAddView("Transform",getModel(), canvas));
+		}
+
+		if (ImGui::MenuItem("Light")) {
+			control->setWindow(new LightAddView("Light", getModel(), canvas));
+		}
 
 		ImGui::EndMenu();
 	}

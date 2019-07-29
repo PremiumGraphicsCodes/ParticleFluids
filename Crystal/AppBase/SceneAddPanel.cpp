@@ -1,7 +1,6 @@
 #include "SceneAddPanel.h"
 
 #include "MaterialAddButton.h"
-#include "LightAddButton.h"
 #include "TextureAddButton.h"
 #include "ColorMapView.h"
 
@@ -14,7 +13,6 @@ SceneAddPanel::SceneAddPanel(const std::string& name, Repository* model, Canvas*
 	IPanel(name, model, canvas)
 {
 
-	add(new LightAddButton("Light", model, canvas));
 	add(new MaterialAddButton("Material", model, canvas));
 	add(new TextureAddButton("Texture", model, canvas));
 

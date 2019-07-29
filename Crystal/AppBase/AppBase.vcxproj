@@ -41,6 +41,7 @@
     <ClCompile Include="PolygonMeshView.cpp" />
     <ClCompile Include="SceneListPanel.cpp" />
     <ClCompile Include="SphereRegionSelectButton.cpp" />
+    <ClCompile Include="TransformAddView.cpp" />
     <ClCompile Include="Vector3dView.cpp" />
     <ClCompile Include="VertexView.cpp" />
     <ClCompile Include="imgui.cpp" />
@@ -51,7 +52,7 @@
     <ClCompile Include="imgui_widgets.cpp" />
     <ClCompile Include="IPanel.cpp" />
     <ClCompile Include="IPopupButton.cpp" />
-    <ClCompile Include="LightAddButton.cpp" />
+    <ClCompile Include="LightAddView.cpp" />
     <ClCompile Include="LightEditView.cpp" />
     <ClCompile Include="LightView.cpp" />
     <ClCompile Include="MaterialAddButton.cpp" />
@@ -131,7 +132,7 @@
     <ClInclude Include="IPopupButton.h" />
     <ClInclude Include="ITreeList.h" />
     <ClInclude Include="IWindow.h" />
-    <ClInclude Include="LightAddButton.h" />
+    <ClInclude Include="LightAddView.h" />
     <ClInclude Include="LightEditView.h" />
     <ClInclude Include="LightView.h" />
     <ClInclude Include="MaterialAddButton.h" />
