@@ -19,7 +19,7 @@ SceneGenerationPanel::SceneGenerationPanel(const std::string& name, Repository* 
 {
 	add(new ParticleSystemPanel("", model, canvas, control));
 	add(new WireFramePanel("", model, canvas));
-	add(new PolygonMeshPanel("", model, canvas));
+	add(new PolygonMeshPanel("", model, canvas, control));
 
 	add(new LightAddButton("LightAdd", model, canvas));
 	add(new MaterialAddButton("MaterialAdd", model, canvas));

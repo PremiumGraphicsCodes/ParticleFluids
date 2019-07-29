@@ -51,20 +51,17 @@
     <ClCompile Include="LightView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
-    <ClCompile Include="PMBoxButton.cpp">
-      <Filter>Scene\Shape\PolygonMesh\Generation</Filter>
-    </ClCompile>
     <ClCompile Include="PMSphereButton.cpp">
-      <Filter>Scene\Shape\PolygonMesh\Generation</Filter>
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshPanel.cpp">
-      <Filter>Scene\Shape\PolygonMesh\Generation</Filter>
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemPanel.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClCompile>
     <ClCompile Include="PSTorusButton.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClCompile>
     <ClCompile Include="WFBoxButton.cpp">
       <Filter>Scene\Shape\WireFrame\Generation</Filter>
@@ -109,7 +106,7 @@
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
     <ClCompile Include="PMQuadButton.cpp">
-      <Filter>Scene\Shape\PolygonMesh\Generation</Filter>
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
     <ClCompile Include="MaskMenu.cpp">
       <Filter>Menu</Filter>
@@ -168,19 +165,22 @@
       <Filter>Primitive</Filter>
     </ClCompile>
     <ClCompile Include="PSConeView.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClCompile>
     <ClCompile Include="PSBoxView.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClCompile>
     <ClCompile Include="PSCylinderView.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshEditView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Edit</Filter>
     </ClCompile>
     <ClCompile Include="PSSphereView.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="PMBoxView.cpp">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -294,23 +294,20 @@
     <ClInclude Include="LightView.h">
       <Filter>Scene\Appearance\Light</Filter>
     </ClInclude>
-    <ClInclude Include="PMBoxButton.h">
-      <Filter>Scene\Shape\PolygonMesh\Generation</Filter>
-    </ClInclude>
     <ClInclude Include="PMSphereButton.h">
-      <Filter>Scene\Shape\PolygonMesh\Generation</Filter>
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshPanel.h">
-      <Filter>Scene\Shape\PolygonMesh\Generation</Filter>
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemPanel.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="PSAttributeView.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="PSTorusButton.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="WFBoxButton.h">
       <Filter>Scene\Shape\WireFrame\Generation</Filter>
@@ -366,7 +363,7 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="PMQuadButton.h">
-      <Filter>Scene\Shape\PolygonMesh\Generation</Filter>
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
     <ClInclude Include="MaskMenu.h">
       <Filter>Menu</Filter>
@@ -425,19 +422,22 @@
       <Filter>Scene\Shape\WireFrame\Edit</Filter>
     </ClInclude>
     <ClInclude Include="PSConeView.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="PSBoxView.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="PSCylinderView.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshEditView.h">
       <Filter>Scene\Shape\PolygonMesh\Edit</Filter>
     </ClInclude>
     <ClInclude Include="PSSphereView.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="PMBoxView.h">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -483,14 +483,8 @@
     <Filter Include="Scene\Shape\ParticleSystem">
       <UniqueIdentifier>{ff093b54-2cac-42ed-845f-0440a5f5fe53}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Shape\ParticleSystem\Generation">
-      <UniqueIdentifier>{aecead23-e970-491d-a425-53f4d593d5b0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Shape\PolygonMesh">
       <UniqueIdentifier>{ad45230d-8683-40fd-90bc-ec9f4bf7bbd3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Shape\PolygonMesh\Generation">
-      <UniqueIdentifier>{de8ab38c-9b84-47d6-87c6-c6cc2ebcc527}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\Shape\PolygonMesh\View">
       <UniqueIdentifier>{7d47a270-b5be-48e3-ae02-5582727d03b6}</UniqueIdentifier>
@@ -524,6 +518,12 @@
     </Filter>
     <Filter Include="Scene\Shape\PolygonMesh\Edit">
       <UniqueIdentifier>{0ae31894-1c86-4c94-b39c-562582ae4fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\ParticleSystem\Add">
+      <UniqueIdentifier>{aecead23-e970-491d-a425-53f4d593d5b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\PolygonMesh\Add">
+      <UniqueIdentifier>{de8ab38c-9b84-47d6-87c6-c6cc2ebcc527}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
