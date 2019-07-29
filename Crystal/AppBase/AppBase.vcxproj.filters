@@ -52,22 +52,22 @@
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
     <ClCompile Include="WFBoxButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
     <ClCompile Include="WFConeButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
     <ClCompile Include="WFCylinderButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
     <ClCompile Include="WFSphereButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
     <ClCompile Include="WFTorusButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
     <ClCompile Include="WireFramePanel.cpp">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
     <ClCompile Include="MoveButton.cpp">
       <Filter>Transform</Filter>
@@ -92,9 +92,6 @@
     </ClCompile>
     <ClCompile Include="LightEditView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
-    </ClCompile>
-    <ClCompile Include="PMQuadButton.cpp">
-      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
     <ClCompile Include="MaskMenu.cpp">
       <Filter>Menu</Filter>
@@ -178,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="MaterialAddButton.cpp">
       <Filter>Scene\Appearance\Material\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="PMQuadView.cpp">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -295,22 +295,22 @@
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="WFBoxButton.h">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
     <ClInclude Include="WFConeButton.h">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
     <ClInclude Include="WFCylinderButton.h">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
     <ClInclude Include="WFSphereButton.h">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
     <ClInclude Include="WFTorusButton.h">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
     <ClInclude Include="WireFramePanel.h">
-      <Filter>Scene\Shape\WireFrame\Generation</Filter>
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
     <ClInclude Include="MoveButton.h">
       <Filter>Transform</Filter>
@@ -346,9 +346,6 @@
     </ClInclude>
     <ClInclude Include="Quad3dView.h">
       <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="PMQuadButton.h">
-      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
     <ClInclude Include="MaskMenu.h">
       <Filter>Menu</Filter>
@@ -433,6 +430,9 @@
     <ClInclude Include="MaterialAddButton.h">
       <Filter>Scene\Appearance\Material\Add</Filter>
     </ClInclude>
+    <ClInclude Include="PMQuadView.h">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -470,9 +470,6 @@
     </Filter>
     <Filter Include="Scene\Shape\WireFrame">
       <UniqueIdentifier>{70322aba-1e02-4d91-9ba6-d618af4f3ea1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Shape\WireFrame\Generation">
-      <UniqueIdentifier>{0ef178e9-c8bf-499a-b9bf-fb031433e057}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\Shape\ParticleSystem">
       <UniqueIdentifier>{ff093b54-2cac-42ed-845f-0440a5f5fe53}</UniqueIdentifier>
@@ -524,6 +521,9 @@
     </Filter>
     <Filter Include="Scene\Appearance\Material\Add">
       <UniqueIdentifier>{ab9d6b48-39ad-430c-80b9-bcabe1486191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\WireFrame\Add">
+      <UniqueIdentifier>{0ef178e9-c8bf-499a-b9bf-fb031433e057}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

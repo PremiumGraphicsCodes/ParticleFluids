@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPopupButton.h"
+#include "IPanel.h"
 
 #include "Quad3dView.h"
 #include "IntView.h"
@@ -9,20 +9,19 @@
 namespace Crystal {
 	namespace UI {
 
-class PMQuadButton : public IPopupButton
+class PMQuadView : public IPanel
 {
 public:
-	PMQuadButton(Repository* model, Canvas* canvas);
+	PMQuadView(Repository* model, Canvas* canvas);
 
-	void onShow();
+	void show() override;
 
+private:
 	void onOk();
-
-	void onCancel();
 
 private:
 	Quad3dView quad;
-	IntView materialId;
+	StringView materialName;
 	StringView name;
 };
 

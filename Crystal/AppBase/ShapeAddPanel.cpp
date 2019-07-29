@@ -11,6 +11,7 @@
 #include "PSTorusView.h"
 
 #include "PMBoxView.h"
+#include "PMQuadView.h"
 #include "ControlPanel.h"
 
 #include "IPopupButton.h"
@@ -30,7 +31,8 @@ ShapeAddPanel::ShapeAddPanel(const std::string& name, Repository* repository, Ca
 	psCylinder("PSCylinder"),
 	psSphere("PSSphere"),
 	psTorus("PSTorus"),
-	pmBox("PMBox")
+	pmBox("PMBox"),
+	pmQuad("PMQuad")
 {
 	psBox.setFunction
 	(
@@ -57,6 +59,10 @@ ShapeAddPanel::ShapeAddPanel(const std::string& name, Repository* repository, Ca
 	(
 		[=]() { control->setWindow(new PMBoxView(getRepository(), canvas)); }
 	);
+	pmQuad.setFunction
+	(
+		[=]() { control->setWindow(new PMQuadView(getRepository(), canvas)); }
+	);
 
 	/*
 		else if (ImGui::Button("PSSphere")) {
@@ -78,4 +84,5 @@ void ShapeAddPanel::show()
 	psTorus.show();
 
 	pmBox.show();
+	pmQuad.show();
 }

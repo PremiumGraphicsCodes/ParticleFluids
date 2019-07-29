@@ -55,7 +55,7 @@
     <ClCompile Include="MaterialEditView.cpp" />
     <ClCompile Include="MaterialView.cpp" />
     <ClCompile Include="PMBoxView.cpp" />
-    <ClCompile Include="PMQuadButton.cpp" />
+    <ClCompile Include="PMQuadView.cpp" />
     <ClCompile Include="PMSphereButton.cpp" />
     <ClCompile Include="PSBoxView.cpp" />
     <ClCompile Include="PSConeView.cpp" />
@@ -137,7 +137,7 @@
     <ClInclude Include="MaterialView.h" />
     <ClInclude Include="Plane3dView.h" />
     <ClInclude Include="PMBoxView.h" />
-    <ClInclude Include="PMQuadButton.h" />
+    <ClInclude Include="PMQuadView.h" />
     <ClInclude Include="PMSphereButton.h" />
     <ClInclude Include="PSAttributeView.h" />
     <ClInclude Include="PSTorusView.h" />

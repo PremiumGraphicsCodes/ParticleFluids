@@ -4,6 +4,7 @@
 #include "PolygonMeshView.h"
 #include "IntView.h"
 #include "StringView.h"
+#include "Button.h"
 #include "../Scene/PolygonMeshScene.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
@@ -21,10 +22,14 @@ public:
 	void setValue(Scene::PolygonMeshScene* value);
 
 private:
+	void onEdit();
+
+private:
 	PolygonMeshView polygonMesh;
 	IntView id;
 	StringView name;
 	StringView materialName;
+	Button edit;
 };
 
 	}
