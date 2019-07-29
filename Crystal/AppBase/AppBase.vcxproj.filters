@@ -39,9 +39,6 @@
     <ClCompile Include="imgui_stdlib.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialAddButton.cpp">
-      <Filter>Scene\Appearance\Material</Filter>
-    </ClCompile>
     <ClCompile Include="LightAddButton.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
@@ -53,12 +50,6 @@
     </ClCompile>
     <ClCompile Include="PMSphereButton.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMeshPanel.cpp">
-      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
-    </ClCompile>
-    <ClCompile Include="PSTorusButton.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClCompile>
     <ClCompile Include="WFBoxButton.cpp">
       <Filter>Scene\Shape\WireFrame\Generation</Filter>
@@ -182,6 +173,12 @@
     <ClCompile Include="ShapeAddPanel.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
+    <ClCompile Include="PSTorusView.cpp">
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialAddButton.cpp">
+      <Filter>Scene\Appearance\Material\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -282,9 +279,6 @@
     <ClInclude Include="Ray3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialAddButton.h">
-      <Filter>Scene\Appearance\Material</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialView.h">
       <Filter>Scene\Appearance\Material</Filter>
     </ClInclude>
@@ -297,13 +291,7 @@
     <ClInclude Include="PMSphereButton.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshPanel.h">
-      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
-    </ClInclude>
     <ClInclude Include="PSAttributeView.h">
-      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
-    </ClInclude>
-    <ClInclude Include="PSTorusButton.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="WFBoxButton.h">
@@ -439,6 +427,12 @@
     <ClInclude Include="ShapeAddPanel.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="PSTorusView.h">
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialAddButton.h">
+      <Filter>Scene\Appearance\Material\Add</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -527,6 +521,9 @@
     </Filter>
     <Filter Include="Scene\Shape\ParticleSystem\View">
       <UniqueIdentifier>{cb9fbdd9-7dc9-49fa-aaaf-b4e9883b4dea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Material\Add">
+      <UniqueIdentifier>{ab9d6b48-39ad-430c-80b9-bcabe1486191}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

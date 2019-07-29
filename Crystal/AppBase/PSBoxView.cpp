@@ -16,9 +16,10 @@ PSBoxView::PSBoxView(Repository* model, Canvas* canvas) :
 	attribute("Attribute"),
 	count("Count", 10000),
 	isVolume("Volume", false),
-	okButton("OK")
+	name("Name", "PSBox"),
+	ok("OK")
 {
-	okButton.setFunction([=]() { onOk(); });
+	ok.setFunction([=]() { onOk(); });
 };
 
 void PSBoxView::show()
@@ -27,7 +28,8 @@ void PSBoxView::show()
 	attribute.show();
 	count.show();
 	isVolume.show();
-	okButton.show();
+	name.show();
+	ok.show();
 }
 
 void PSBoxView::onOk()
@@ -53,7 +55,7 @@ void PSBoxView::onOk()
 	}
 
 	auto repository = getRepository();
-	auto scene = repository->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Box");
+	auto scene = repository->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), name.getValue());
 	repository->getObjects()->addScene(scene);
 	getCanvas()->setViewModel(repository->toViewModel());
 	getCanvas()->fitCamera(repository->getBoundingBox());

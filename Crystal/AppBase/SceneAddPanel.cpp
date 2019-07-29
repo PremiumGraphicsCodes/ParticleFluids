@@ -2,7 +2,6 @@
 
 #include "ShapeAddPanel.h"
 #include "WireFramePanel.h"
-#include "PolygonMeshPanel.h"
 
 #include "MaterialAddButton.h"
 #include "LightAddButton.h"
@@ -19,7 +18,6 @@ SceneAddPanel::SceneAddPanel(const std::string& name, Repository* model, Canvas*
 {
 	add(new ShapeAddPanel("", model, canvas, control));
 	add(new WireFramePanel("", model, canvas));
-	add(new PolygonMeshPanel("", model, canvas, control));
 
 	add(new LightAddButton("LightAdd", model, canvas));
 	add(new MaterialAddButton("MaterialAdd", model, canvas));

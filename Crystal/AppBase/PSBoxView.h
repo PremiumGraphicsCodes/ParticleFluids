@@ -26,7 +26,8 @@ private:
 	PSAttributeView attribute;
 	IntView count;
 	BoolView isVolume;
-	Button okButton;
+	StringView name;
+	Button ok;
 };
 
 	}

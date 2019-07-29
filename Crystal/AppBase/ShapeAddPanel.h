@@ -20,6 +20,9 @@ private:
 	Button psCone;
 	Button psCylinder;
 	Button psSphere;
+	Button psTorus;
+
+	Button pmBox;
 };
 
 	}

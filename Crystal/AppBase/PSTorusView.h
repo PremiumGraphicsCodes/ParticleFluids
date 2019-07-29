@@ -1,32 +1,28 @@
 #pragma once
 
-#include "IPopupButton.h"
+#include "IPanel.h"
 
-#include "Cone3dView.h"
+#include "Torus3dView.h"
 #include "PSAttributeView.h"
 #include "IntView.h"
-#include "StringView.h"
-#include "IPanel.h"
 #include "Button.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PSConeView : public IPanel
+class PSTorusView : public IPanel
 {
 public:
-	PSConeView(Repository* model, Canvas* canvas);
+	PSTorusView(Repository* model, Canvas* canvas);
 
 	void show() override;
 
-private:
 	void onOk();
 
 private:
-	Cone3dView cone;
+	TorusView torusView;
 	PSAttributeView attribute;
 	IntView count;
-	StringView name;
 	Button ok;
 };
 

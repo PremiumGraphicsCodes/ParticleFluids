@@ -8,10 +8,10 @@
 #include "PSSphereView.h"
 #include "PSCylinderView.h"
 #include "PSConeView.h"
-#include "PSTorusButton.h"
-#include "ControlPanel.h"
+#include "PSTorusView.h"
 
-#include "Cone3dView.h"
+#include "PMBoxView.h"
+#include "ControlPanel.h"
 
 #include "IPopupButton.h"
 #include "Button.h"
@@ -28,12 +28,36 @@ ShapeAddPanel::ShapeAddPanel(const std::string& name, Repository* repository, Ca
 	psBox("PSBox"),
 	psCone("PSCone"),
 	psCylinder("PSCylinder"),
-	psSphere("PSSphere")
+	psSphere("PSSphere"),
+	psTorus("PSTorus"),
+	pmBox("PMBox")
 {
-	psBox.setFunction([=]() { control->setWindow(new PSBoxView(getRepository(), canvas)); });
-	psCone.setFunction([=]() { control->setWindow(new PSConeView(getRepository(), canvas)); });
-	psCylinder.setFunction([=]() { control->setWindow(new PSCylinderView(getRepository(), canvas)); });
-	psSphere.setFunction([=]() {control->setWindow(new PSSphereView(getRepository(), canvas)); });
+	psBox.setFunction
+	(
+		[=](){ control->setWindow(new PSBoxView(getRepository(), canvas)); }
+	);
+	psCone.setFunction
+	(
+		[=]() { control->setWindow(new PSConeView(getRepository(), canvas)); }
+	);
+	psCylinder.setFunction
+	(
+		[=]() { control->setWindow(new PSCylinderView(getRepository(), canvas)); }
+	);
+	psSphere.setFunction
+	(
+		[=]() {control->setWindow(new PSSphereView(getRepository(), canvas)); }
+	);
+	psTorus.setFunction
+	(
+		[=]() {control->setWindow(new PSTorusView(getRepository(), canvas)); }
+	);
+
+	pmBox.setFunction
+	(
+		[=]() { control->setWindow(new PMBoxView(getRepository(), canvas)); }
+	);
+
 	/*
 		else if (ImGui::Button("PSSphere")) {
 		control->clear();
@@ -51,4 +75,7 @@ void ShapeAddPanel::show()
 	psCone.show();
 	psCylinder.show();
 	psSphere.show();
+	psTorus.show();
+
+	pmBox.show();
 }

@@ -61,14 +61,13 @@
     <ClCompile Include="PSConeView.cpp" />
     <ClCompile Include="PSCylinderView.cpp" />
     <ClCompile Include="PSSphereView.cpp" />
-    <ClCompile Include="PSTorusButton.cpp" />
+    <ClCompile Include="PSTorusView.cpp" />
     <ClCompile Include="RotateButton.cpp" />
     <ClCompile Include="ScaleButton.cpp" />
     <ClCompile Include="ScreenMenu.cpp" />
     <ClCompile Include="MoveButton.cpp" />
     <ClCompile Include="ObjectSelectButton.cpp" />
     <ClCompile Include="ShapeAddPanel.cpp" />
-    <ClCompile Include="PolygonMeshPanel.cpp" />
     <ClCompile Include="PositionSelectButton.cpp" />
     <ClCompile Include="SelectionPanel.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
@@ -141,7 +140,7 @@
     <ClInclude Include="PMQuadButton.h" />
     <ClInclude Include="PMSphereButton.h" />
     <ClInclude Include="PSAttributeView.h" />
-    <ClInclude Include="PSTorusButton.h" />
+    <ClInclude Include="PSTorusView.h" />
     <ClInclude Include="PSBoxView.h" />
     <ClInclude Include="PSConeView.h" />
     <ClInclude Include="PSCylinderView.h" />
@@ -156,7 +155,6 @@
     <ClInclude Include="MoveButton.h" />
     <ClInclude Include="ObjectSelectButton.h" />
     <ClInclude Include="ShapeAddPanel.h" />
-    <ClInclude Include="PolygonMeshPanel.h" />
     <ClInclude Include="PositionSelectButton.h" />
     <ClInclude Include="SelectionPanel.h" />
     <ClInclude Include="tinyfiledialogs.h" />
