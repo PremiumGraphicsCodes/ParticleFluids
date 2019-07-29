@@ -57,9 +57,6 @@
     <ClCompile Include="PolygonMeshPanel.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleSystemPanel.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
-    </ClCompile>
     <ClCompile Include="PSTorusButton.cpp">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClCompile>
@@ -127,12 +124,6 @@
       <Filter>Selection\Region</Filter>
     </ClCompile>
     <ClCompile Include="ControlPanel.cpp" />
-    <ClCompile Include="ParticleSystemView.cpp">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneGenerationPanel.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="SceneListPanel.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -181,6 +172,15 @@
     </ClCompile>
     <ClCompile Include="PMBoxView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemView.cpp">
+      <Filter>Scene\Shape\ParticleSystem\View</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneAddPanel.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeAddPanel.cpp">
+      <Filter>Scene\Shape</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,9 +300,6 @@
     <ClInclude Include="PolygonMeshPanel.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemPanel.h">
-      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
-    </ClInclude>
     <ClInclude Include="PSAttributeView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
@@ -390,12 +387,6 @@
       <Filter>Primitive</Filter>
     </ClInclude>
     <ClInclude Include="ControlPanel.h" />
-    <ClInclude Include="ParticleSystemView.h">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneGenerationPanel.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="SceneListPanel.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -438,6 +429,15 @@
     </ClInclude>
     <ClInclude Include="PMBoxView.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemView.h">
+      <Filter>Scene\Shape\ParticleSystem\View</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneAddPanel.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeAddPanel.h">
+      <Filter>Scene\Shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -524,6 +524,9 @@
     </Filter>
     <Filter Include="Scene\Shape\PolygonMesh\Add">
       <UniqueIdentifier>{de8ab38c-9b84-47d6-87c6-c6cc2ebcc527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\ParticleSystem\View">
+      <UniqueIdentifier>{cb9fbdd9-7dc9-49fa-aaaf-b4e9883b4dea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

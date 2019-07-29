@@ -1,6 +1,6 @@
-#include "SceneGenerationPanel.h"
+#include "SceneAddPanel.h"
 
-#include "ParticleSystemPanel.h"
+#include "ShapeAddPanel.h"
 #include "WireFramePanel.h"
 #include "PolygonMeshPanel.h"
 
@@ -14,10 +14,10 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-SceneGenerationPanel::SceneGenerationPanel(const std::string& name, Repository* model, Canvas* canvas, ControlPanel* control) :
+SceneAddPanel::SceneAddPanel(const std::string& name, Repository* model, Canvas* canvas, ControlPanel* control) :
 	IPanel(name, model, canvas)
 {
-	add(new ParticleSystemPanel("", model, canvas, control));
+	add(new ShapeAddPanel("", model, canvas, control));
 	add(new WireFramePanel("", model, canvas));
 	add(new PolygonMeshPanel("", model, canvas, control));
 

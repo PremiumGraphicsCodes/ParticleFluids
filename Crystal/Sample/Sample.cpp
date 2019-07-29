@@ -5,7 +5,7 @@
 #include "../AppBase/CtrlMenu.h"
 #include "../AppBase/ScreenMenu.h"
 
-#include "../AppBase/SceneGenerationPanel.h"
+#include "../AppBase/SceneAddPanel.h"
 #include "../AppBase/SelectionPanel.h"
 #include "../AppBase/TransformPanel.h"
 
@@ -42,7 +42,7 @@ int main(int, char**)
 	auto control = new ControlPanel("Control", &model, &canvas);
 	window.add(control);
 
-	window.add(new SceneGenerationPanel("Generation", &model, &canvas, control));
+	window.add(new SceneAddPanel("SceneAdd", &model, &canvas, control));
 	window.add(new SceneListPanel("SceneList", &model, &canvas, control));
 
 	window.add(new SelectionPanel("Selection", &model, &canvas));

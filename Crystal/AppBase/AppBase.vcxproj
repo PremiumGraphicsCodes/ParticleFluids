@@ -31,7 +31,7 @@
     <ClCompile Include="TextureEditView.cpp" />
     <ClCompile Include="TextureView.cpp" />
     <ClCompile Include="MaskMenu.cpp" />
-    <ClCompile Include="SceneGenerationPanel.cpp" />
+    <ClCompile Include="SceneAddPanel.cpp" />
     <ClCompile Include="FaceView.cpp" />
     <ClCompile Include="ParticleSystemEditView.cpp" />
     <ClCompile Include="ParticleSystemView.cpp" />
@@ -67,7 +67,7 @@
     <ClCompile Include="ScreenMenu.cpp" />
     <ClCompile Include="MoveButton.cpp" />
     <ClCompile Include="ObjectSelectButton.cpp" />
-    <ClCompile Include="ParticleSystemPanel.cpp" />
+    <ClCompile Include="ShapeAddPanel.cpp" />
     <ClCompile Include="PolygonMeshPanel.cpp" />
     <ClCompile Include="PositionSelectButton.cpp" />
     <ClCompile Include="SelectionPanel.cpp" />
@@ -105,7 +105,7 @@
     <ClInclude Include="TextureEditView.h" />
     <ClInclude Include="TextureView.h" />
     <ClInclude Include="MaskMenu.h" />
-    <ClInclude Include="SceneGenerationPanel.h" />
+    <ClInclude Include="SceneAddPanel.h" />
     <ClInclude Include="FaceView.h" />
     <ClInclude Include="ParticleSystemEditView.h" />
     <ClInclude Include="ParticleSystemView.h" />
@@ -155,7 +155,7 @@
     <ClInclude Include="Torus3dView.h" />
     <ClInclude Include="MoveButton.h" />
     <ClInclude Include="ObjectSelectButton.h" />
-    <ClInclude Include="ParticleSystemPanel.h" />
+    <ClInclude Include="ShapeAddPanel.h" />
     <ClInclude Include="PolygonMeshPanel.h" />
     <ClInclude Include="PositionSelectButton.h" />
     <ClInclude Include="SelectionPanel.h" />
