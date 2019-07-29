@@ -45,9 +45,6 @@
     <ClCompile Include="LightView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
-    <ClCompile Include="WFTorusButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClCompile>
     <ClCompile Include="CameraMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
@@ -173,6 +170,9 @@
     <ClCompile Include="WFSphereView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
+    <ClCompile Include="WFTorusView.cpp">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -281,9 +281,6 @@
     </ClInclude>
     <ClInclude Include="PSAttributeView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
-    </ClInclude>
-    <ClInclude Include="WFTorusButton.h">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
     <ClInclude Include="CameraMenu.h">
       <Filter>Menu</Filter>
@@ -422,6 +419,9 @@
       <Filter>Scene\Transform\View</Filter>
     </ClInclude>
     <ClInclude Include="WFSphereView.h">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="WFTorusView.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
   </ItemGroup>

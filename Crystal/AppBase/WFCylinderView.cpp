@@ -6,6 +6,17 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
+WFCylinderView::WFCylinderView(Repository* model, Canvas* canvas) :
+	IPanel("WFCylinder", model, canvas),
+	cylinder("Cylinder"),
+	attribute("Attribute"),
+	unum("UNum", 12),
+	vnum("VNum", 12),
+	ok("Ok")
+{
+	ok.setFunction([=]() { onOk(); });
+}
+
 void WFCylinderView::show()
 {
 	cylinder.show();

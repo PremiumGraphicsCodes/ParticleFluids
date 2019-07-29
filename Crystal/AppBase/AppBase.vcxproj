@@ -75,7 +75,7 @@
     <ClCompile Include="WFConeView.cpp" />
     <ClCompile Include="WFCylinderView.cpp" />
     <ClCompile Include="WFSphereView.cpp" />
-    <ClCompile Include="WFTorusButton.cpp" />
+    <ClCompile Include="WFTorusView.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WireFrameEditView.cpp" />
     <ClCompile Include="WireFrameView.cpp" />
@@ -164,7 +164,7 @@
     <ClInclude Include="WFConeView.h" />
     <ClInclude Include="WFCylinderView.h" />
     <ClInclude Include="WFSphereView.h" />
-    <ClInclude Include="WFTorusButton.h" />
+    <ClInclude Include="WFTorusView.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WireFrameEditView.h" />
     <ClInclude Include="WireFrameView.h" />

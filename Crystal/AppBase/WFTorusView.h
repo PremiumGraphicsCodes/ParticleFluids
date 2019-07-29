@@ -1,18 +1,18 @@
 #pragma once
 
 #include "IPanel.h"
-#include "IntView.h"
-#include "Cylinder3dView.h"
+
+#include "Torus3dView.h"
 #include "WFAttributeView.h"
-#include "Button.h"
+#include "IntView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class WFCylinderView : public IPanel
+class WFTorusView : public IPanel
 {
 public:
-	WFCylinderView(Repository* model, Canvas* canvas);
+	WFTorusView(Repository* model, Canvas* canvas);
 
 	void show() override;
 
@@ -22,9 +22,8 @@ private:
 private:
 	IntView unum;
 	IntView vnum;
-	Cylinder3dView cylinder;
+	TorusView torus;
 	WFAttributeView attribute;
-	Button ok;
 };
 
 	}
