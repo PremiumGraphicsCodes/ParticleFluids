@@ -2,7 +2,8 @@
 #include "../../Crystal/AppBase/FileMenu.h"
 #include "../../Crystal/AppBase/CameraMenu.h"
 #include "../../Crystal/AppBase/CtrlMenu.h"
-#include "../../Crystal/AppBase/ShapeAddMenu.h"
+#include "../../Crystal/AppBase/ShapeMenu.h"
+#include "../../Crystal/AppBase/AppearanceMenu.h"
 
 #include "../../Crystal/AppBase/SceneListPanel.h"
 
@@ -59,7 +60,8 @@ int main(int, char**)
 	window.add(new FileMenu("File", &model, &canvas));
 	window.add(new CameraMenu("Camera", &model, &canvas));
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
-	window.add(new ShapeAddMenu("Shape", &model, &canvas, control));
+	window.add(new ShapeMenu("Shape", &model, &canvas, control));
+	window.add(new AppearanceMenu("Appearance", &model, &canvas, control));
 
 	//window.add(new SceneAddPanel("SceneAdd", &model, &canvas, control));
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));

@@ -4,7 +4,8 @@
 #include "../AppBase/MaskMenu.h"
 #include "../AppBase/CtrlMenu.h"
 #include "../AppBase/ScreenMenu.h"
-#include "../AppBase/ShapeAddMenu.h"
+#include "../AppBase/ShapeMenu.h"
+#include "../AppBase/AppearanceMenu.h"
 
 #include "../AppBase/SelectionPanel.h"
 
@@ -37,10 +38,10 @@ int main(int, char**)
 	window.add(new MaskMenu("Mask", &model, &canvas));
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 	window.add(new ScreenMenu("Screen", &model, &canvas));
-	window.add(new ShapeAddMenu("Shape", &model, &canvas, control));
+	window.add(new ShapeMenu("Shape", &model, &canvas, control));
+	window.add(new AppearanceMenu("Appearance", &model, &canvas, control));
 
 	window.add(new SceneListPanel("SceneList", &model, &canvas, control));
-
 	window.add(new SelectionPanel("Selection", &model, &canvas));
 
 	window.show();

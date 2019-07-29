@@ -143,9 +143,6 @@
     <ClCompile Include="WFTorusView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeAddMenu.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
     <ClCompile Include="TransformAddView.cpp">
       <Filter>Scene\Transform\Add</Filter>
     </ClCompile>
@@ -172,6 +169,12 @@
     </ClCompile>
     <ClCompile Include="LightView.cpp">
       <Filter>Scene\Appearance\Light\View</Filter>
+    </ClCompile>
+    <ClCompile Include="AppearanceMenu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeMenu.cpp">
+      <Filter>Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -394,9 +397,6 @@
     <ClInclude Include="WFTorusView.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeAddMenu.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialAddView.h">
       <Filter>Scene\Appearance\Material\Add</Filter>
     </ClInclude>
@@ -420,6 +420,12 @@
     </ClInclude>
     <ClInclude Include="LightView.h">
       <Filter>Scene\Appearance\Light\View</Filter>
+    </ClInclude>
+    <ClInclude Include="AppearanceMenu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeMenu.h">
+      <Filter>Menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -6,10 +6,10 @@ namespace Crystal {
 	namespace UI {
 		class ControlPanel;
 
-class ShapeAddMenu : public IMenu
+class ShapeMenu : public IMenu
 {
 public:
-	ShapeAddMenu(const std::string& name, Repository* model, Canvas* canvas, ControlPanel* control) :
+	ShapeMenu(const std::string& name, Repository* model, Canvas* canvas, ControlPanel* control) :
 		IMenu(name, model, canvas),
 		control(control)
 	{}
