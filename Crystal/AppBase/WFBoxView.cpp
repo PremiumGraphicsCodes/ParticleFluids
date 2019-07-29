@@ -10,14 +10,17 @@ using namespace Crystal::UI;
 WFBoxView::WFBoxView(Repository* model, Canvas* canvas) :
 	IPanel("WFBox", model, canvas),
 	box("Box"),
-	attribute("Attribute")
+	attribute("Attribute"),
+	ok("Ok")
 {
+	ok.setFunction([=]() { onOk(); });
 }
 
 void WFBoxView::show()
 {
 	box.show();
 	attribute.show();
+	ok.show();
 }
 
 void WFBoxView::onOk()

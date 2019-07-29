@@ -3,6 +3,7 @@
 #include "IPanel.h"
 #include "Box3dView.h"
 #include "WFAttributeView.h"
+#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
@@ -20,6 +21,7 @@ private:
 private:
 	Box3dView box;
 	WFAttributeView attribute;
+	Button ok;
 };
 
 

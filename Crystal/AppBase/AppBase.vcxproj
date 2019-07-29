@@ -73,12 +73,11 @@
     <ClCompile Include="TransformView.cpp" />
     <ClCompile Include="WFBoxView.cpp" />
     <ClCompile Include="WFConeView.cpp" />
-    <ClCompile Include="WFCylinderButton.cpp" />
-    <ClCompile Include="WFSphereButton.cpp" />
+    <ClCompile Include="WFCylinderView.cpp" />
+    <ClCompile Include="WFSphereView.cpp" />
     <ClCompile Include="WFTorusButton.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WireFrameEditView.cpp" />
-    <ClCompile Include="WireFramePanel.cpp" />
     <ClCompile Include="WireFrameView.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +99,7 @@
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />
     <ClInclude Include="Matrix3dView.h" />
+    <ClInclude Include="ShaderAddView.h" />
     <ClInclude Include="TextureAddButton.h" />
     <ClInclude Include="TextureEditView.h" />
     <ClInclude Include="TextureView.h" />
@@ -112,6 +112,7 @@
     <ClInclude Include="PolygonMeshView.h" />
     <ClInclude Include="SceneListPanel.h" />
     <ClInclude Include="SphereRegionSelectButton.h" />
+    <ClInclude Include="TransformAddView.h" />
     <ClInclude Include="VertexView.h" />
     <ClInclude Include="Quad3dView.h" />
     <ClInclude Include="imconfig.h" />
@@ -161,12 +162,11 @@
     <ClInclude Include="WFAttributeView.h" />
     <ClInclude Include="WFBoxView.h" />
     <ClInclude Include="WFConeView.h" />
-    <ClInclude Include="WFCylinderButton.h" />
-    <ClInclude Include="WFSphereButton.h" />
+    <ClInclude Include="WFCylinderView.h" />
+    <ClInclude Include="WFSphereView.h" />
     <ClInclude Include="WFTorusButton.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WireFrameEditView.h" />
-    <ClInclude Include="WireFramePanel.h" />
     <ClInclude Include="WireFrameView.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPopupButton.h"
+#include "IPanel.h"
 #include "IntView.h"
 #include "Sphere3dView.h"
 #include "WFAttributeView.h"
@@ -8,11 +8,11 @@
 namespace Crystal {
 	namespace UI {
 
-class WFSphereButton : public IPopupButton
+class WFSphereView : public IPanel
 {
 public:
-	WFSphereButton(Repository* repository, Canvas* canvas) :
-		IPopupButton("WFSphere", repository, canvas),
+	WFSphereView(Repository* repository, Canvas* canvas) :
+		IPanel("WFSphere", repository, canvas),
 		sphere("Sphere"),
 		attribute("Attribute"),
 		unum("UNum", 12),
@@ -20,14 +20,10 @@ public:
 	{
 	}
 
-	void onShow() override;
+	void show() override;
 
-	void onOk() override;
-
-	void onCancel() override
-	{
-
-	}
+private:
+	void onOk();
 
 private:
 	IntView unum;

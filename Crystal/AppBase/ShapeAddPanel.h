@@ -24,6 +24,8 @@ private:
 
 	Button wfBox;
 	Button wfCone;
+	Button wfCylinder;
+	Button wfSphere;
 
 	Button pmBox;
 	Button pmQuad;

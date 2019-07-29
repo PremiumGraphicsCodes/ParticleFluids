@@ -45,16 +45,7 @@
     <ClCompile Include="LightView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
-    <ClCompile Include="WFCylinderButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClCompile>
-    <ClCompile Include="WFSphereButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClCompile>
     <ClCompile Include="WFTorusButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClCompile>
-    <ClCompile Include="WireFramePanel.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
     <ClCompile Include="CameraMenu.cpp">
@@ -170,10 +161,16 @@
     <ClCompile Include="Vector3dView.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="TransformView.cpp">
-      <Filter>Scene\Transform</Filter>
-    </ClCompile>
     <ClCompile Include="WFConeView.cpp">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="WFCylinderView.cpp">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformView.cpp">
+      <Filter>Scene\Transform\View</Filter>
+    </ClCompile>
+    <ClCompile Include="WFSphereView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
   </ItemGroup>
@@ -285,16 +282,7 @@
     <ClInclude Include="PSAttributeView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
-    <ClInclude Include="WFCylinderButton.h">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClInclude>
-    <ClInclude Include="WFSphereButton.h">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClInclude>
     <ClInclude Include="WFTorusButton.h">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClInclude>
-    <ClInclude Include="WireFramePanel.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
     <ClInclude Include="CameraMenu.h">
@@ -418,10 +406,22 @@
     <ClInclude Include="Matrix3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="TransformView.h">
-      <Filter>Scene\Transform</Filter>
-    </ClInclude>
     <ClInclude Include="WFConeView.h">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="WFCylinderView.h">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformAddView.h">
+      <Filter>Scene\Transform\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderAddView.h">
+      <Filter>Scene\Appearance\Shader\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformView.h">
+      <Filter>Scene\Transform\View</Filter>
+    </ClInclude>
+    <ClInclude Include="WFSphereView.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
   </ItemGroup>
@@ -518,6 +518,15 @@
     </Filter>
     <Filter Include="Scene\Transform">
       <UniqueIdentifier>{a82af283-3aaa-4c83-b72f-e282c535a689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Transform\Add">
+      <UniqueIdentifier>{cd7bd861-bc94-4400-9c1f-29f7943f66da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Shader\Add">
+      <UniqueIdentifier>{7c2b8257-3636-4e0b-8b0a-d87925e37bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Transform\View">
+      <UniqueIdentifier>{b4f13708-92de-4360-acdf-bf82ab51bd44}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

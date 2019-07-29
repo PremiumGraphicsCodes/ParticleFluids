@@ -6,12 +6,24 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
+WFConeView::WFConeView(Repository* model, Canvas* canvas) :
+	IPanel("WFCone", model, canvas),
+	cone("Cone"),
+	attribute("Attribute"),
+	unum("UNum", 12),
+	vnum("VNum", 12),
+	ok("Ok")
+{
+	ok.setFunction([=]() { onOk(); });
+}
+
 void WFConeView::show()
 {
 	unum.show();
 	vnum.show();
 	cone.show();
 	attribute.show();
+	ok.show();
 }
 
 void WFConeView::onOk()

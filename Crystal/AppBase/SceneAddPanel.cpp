@@ -1,7 +1,6 @@
 #include "SceneAddPanel.h"
 
 #include "ShapeAddPanel.h"
-#include "WireFramePanel.h"
 
 #include "MaterialAddButton.h"
 #include "LightAddButton.h"

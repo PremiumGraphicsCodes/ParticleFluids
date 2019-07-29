@@ -1,5 +1,4 @@
 #include "ShapeAddPanel.h"
-#include "imgui.h"
 #include "../Math/Torus3d.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
@@ -12,6 +11,8 @@
 
 #include "WFBoxView.h"
 #include "WFConeView.h"
+#include "WFCylinderView.h"
+#include "WFSphereView.h"
 
 #include "PMBoxView.h"
 #include "PMQuadView.h"
@@ -38,6 +39,8 @@ ShapeAddPanel::ShapeAddPanel(const std::string& name, Repository* repository, Ca
 	psTorus("PSTorus"),
 	wfBox("WFBox"),
 	wfCone("WFCone"),
+	wfCylinder("WFCylinder"),
+	wfSphere("WFSphere"),
 	pmBox("PMBox"),
 	pmQuad("PMQuad"),
 	pmSphere("PMSphere")
@@ -67,10 +70,17 @@ ShapeAddPanel::ShapeAddPanel(const std::string& name, Repository* repository, Ca
 	(
 		[=]() {control->setWindow(new WFBoxView(getRepository(), canvas)); }
 	);
-
 	wfCone.setFunction
 	(
 		[=]() {control->setWindow(new WFConeView(getRepository(), canvas)); }
+	);
+	wfCylinder.setFunction
+	(
+		[=]() {control->setWindow(new WFCylinderView(getRepository(), canvas)); }
+	);
+	wfSphere.setFunction
+	(
+		[=]() {control->setWindow(new WFSphereView(getRepository(), canvas)); }
 	);
 
 
@@ -99,6 +109,8 @@ void ShapeAddPanel::show()
 
 	wfBox.show();
 	wfCone.show();
+	wfCylinder.show();
+	wfSphere.show();
 
 	pmBox.show();
 	pmQuad.show();

@@ -6,6 +6,7 @@
 
 #include "../Math/Vector3d.h"
 #include "Cone3dView.h"
+#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
@@ -13,14 +14,7 @@ namespace Crystal {
 class WFConeView : public IPanel
 {
 public:
-	WFConeView(Repository* model, Canvas* canvas) :
-		IPanel("WFCone", model, canvas),
-		cone("Cone"),
-		attribute("Attribute"),
-		unum("UNum", 12),
-		vnum("VNum", 12)
-	{
-	}
+	WFConeView(Repository* model, Canvas* canvas);
 
 	void show() override;
 
@@ -32,6 +26,7 @@ private:
 	IntView vnum;
 	Cone3dView cone;
 	WFAttributeView attribute;
+	Button ok;
 };
 
 	}
