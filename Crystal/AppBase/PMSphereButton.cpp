@@ -6,22 +6,35 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-void PMSphereButton::onShow()
+PMSphereView::PMSphereView(Repository* model, Canvas* canvas) :
+	IPanel("PMSphere", model, canvas),
+	sphere("Sphere"),
+	unum("UNum", 36),
+	vnum("VNum", 36),
+	materialName("MaterialName", ""),
+	name("Name", "PMSphere"),
+	ok("Ok")
+{
+	ok.setFunction([=]() {onOk(); });
+}
+
+
+void PMSphereView::show()
 {
 	sphere.show();
 	unum.show();
 	vnum.show();
-	materialId.show();
+	materialName.show();
 	name.show();
+	ok.show();
 }
 
-void PMSphereButton::onOk()
+void PMSphereView::onOk()
 {
 	PolygonMeshBuilder builder;
-	//builder.pushCurrentFaceGroup();
 	builder.add(sphere.getValue(), unum.getValue(), vnum.getValue());
-	auto scene = getModel()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
-	getModel()->getObjects()->addScene(scene);
-	getCanvas()->setViewModel(getModel()->toViewModel());
-	getCanvas()->fitCamera(getModel()->getBoundingBox());
+	auto scene = getRepository()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
+	getRepository()->getObjects()->addScene(scene);
+	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 }

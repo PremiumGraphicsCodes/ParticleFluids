@@ -13,8 +13,10 @@ PMQuadView::PMQuadView(Repository* model, Canvas* canvas) :
 	IPanel("PMQuad", model, canvas),
 	quad("Quad"),
 	materialName("Material", ""),
-	name("Name", "PMPlane")
+	name("Name", "PMPlane"),
+	ok("Ok")
 {
+	ok.setFunction([=]() {onOk(); });
 }
 
 void PMQuadView::show()
@@ -22,6 +24,7 @@ void PMQuadView::show()
 	quad.show();
 	materialName.show();
 	name.show();
+	ok.show();
 }
 
 void PMQuadView::onOk()

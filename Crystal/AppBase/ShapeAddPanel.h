@@ -24,6 +24,7 @@ private:
 
 	Button pmBox;
 	Button pmQuad;
+	Button pmSphere;
 };
 
 	}

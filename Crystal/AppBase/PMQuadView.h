@@ -5,6 +5,7 @@
 #include "Quad3dView.h"
 #include "IntView.h"
 #include "StringView.h"
+#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
@@ -23,6 +24,7 @@ private:
 	Quad3dView quad;
 	StringView materialName;
 	StringView name;
+	Button ok;
 };
 
 	}
