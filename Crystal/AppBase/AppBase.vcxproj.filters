@@ -24,9 +24,6 @@
     <ClCompile Include="PositionSelectButton.cpp">
       <Filter>Selection</Filter>
     </ClCompile>
-    <ClCompile Include="TransformPanel.cpp">
-      <Filter>Scene\Transform</Filter>
-    </ClCompile>
     <ClCompile Include="imgui_impl_glfw.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
@@ -170,6 +167,15 @@
     <ClCompile Include="WFBoxView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
+    <ClCompile Include="Matrix3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformView.cpp">
+      <Filter>Scene\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -200,9 +206,6 @@
     </ClInclude>
     <ClInclude Include="PositionSelectButton.h">
       <Filter>Selection</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformPanel.h">
-      <Filter>Scene\Transform</Filter>
     </ClInclude>
     <ClInclude Include="imgui_impl_glfw.h">
       <Filter>imgui</Filter>
@@ -414,6 +417,12 @@
     </ClInclude>
     <ClInclude Include="WFBoxView.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3dView.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformView.h">
+      <Filter>Scene\Transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

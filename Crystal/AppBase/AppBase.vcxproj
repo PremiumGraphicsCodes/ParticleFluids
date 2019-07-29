@@ -27,6 +27,7 @@
     <ClCompile Include="DoubleView.cpp" />
     <ClCompile Include="FaceGroupView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
+    <ClCompile Include="Matrix3dView.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />
     <ClCompile Include="TextureEditView.cpp" />
     <ClCompile Include="TextureView.cpp" />
@@ -39,6 +40,7 @@
     <ClCompile Include="PolygonMeshView.cpp" />
     <ClCompile Include="SceneListPanel.cpp" />
     <ClCompile Include="SphereRegionSelectButton.cpp" />
+    <ClCompile Include="Vector3dView.cpp" />
     <ClCompile Include="VertexView.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_draw.cpp" />
@@ -68,7 +70,7 @@
     <ClCompile Include="PositionSelectButton.cpp" />
     <ClCompile Include="SelectionPanel.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
-    <ClCompile Include="TransformPanel.cpp" />
+    <ClCompile Include="TransformView.cpp" />
     <ClCompile Include="WFBoxView.cpp" />
     <ClCompile Include="WFConeButton.cpp" />
     <ClCompile Include="WFCylinderButton.cpp" />
@@ -97,6 +99,7 @@
     <ClInclude Include="FileSaveView.h" />
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />
+    <ClInclude Include="Matrix3dView.h" />
     <ClInclude Include="TextureAddButton.h" />
     <ClInclude Include="TextureEditView.h" />
     <ClInclude Include="TextureView.h" />
@@ -152,7 +155,7 @@
     <ClInclude Include="PositionSelectButton.h" />
     <ClInclude Include="SelectionPanel.h" />
     <ClInclude Include="tinyfiledialogs.h" />
-    <ClInclude Include="TransformPanel.h" />
+    <ClInclude Include="TransformView.h" />
     <ClInclude Include="Vector2dView.h" />
     <ClInclude Include="Vector3dView.h" />
     <ClInclude Include="WFAttributeView.h" />

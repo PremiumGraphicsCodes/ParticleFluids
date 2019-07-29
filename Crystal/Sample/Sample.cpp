@@ -7,7 +7,6 @@
 
 #include "../AppBase/SceneAddPanel.h"
 #include "../AppBase/SelectionPanel.h"
-#include "../AppBase/TransformPanel.h"
 
 #include "../AppBase/SceneListPanel.h"
 #include "../AppBase/ControlPanel.h"
@@ -18,8 +17,6 @@
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
-
-
 
 int main(int, char**)
 {
@@ -46,7 +43,6 @@ int main(int, char**)
 	window.add(new SceneListPanel("SceneList", &model, &canvas, control));
 
 	window.add(new SelectionPanel("Selection", &model, &canvas));
-	window.add(new TransformPanel("Transform", &model, &canvas));
 
 	window.show();
 

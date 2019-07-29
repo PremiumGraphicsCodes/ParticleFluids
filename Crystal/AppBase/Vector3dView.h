@@ -2,8 +2,6 @@
 
 #include "IWindow.h"
 
-#include "imgui.h"
-
 #include "../Math/Vector3d.h"
 
 namespace Crystal {
@@ -22,13 +20,7 @@ public:
 		value(value)
 	{}
 
-	void show() override {
-		ImGui::InputDouble("X", &value.x);
-		ImGui::InputDouble("Y", &value.y);
-		ImGui::InputDouble("Z", &value.z);
-
-		//ImGui::InputFloat3(name.c_str(), &value[0]);
-	}
+	void show() override;
 
 	void setValue(const Math::Vector3dd& value) { this->value = value; }
 
