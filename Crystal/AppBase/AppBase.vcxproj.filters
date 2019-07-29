@@ -45,9 +45,6 @@
     <ClCompile Include="LightView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
-    <ClCompile Include="WFConeButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClCompile>
     <ClCompile Include="WFCylinderButton.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
@@ -176,6 +173,9 @@
     <ClCompile Include="TransformView.cpp">
       <Filter>Scene\Transform</Filter>
     </ClCompile>
+    <ClCompile Include="WFConeView.cpp">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -284,9 +284,6 @@
     </ClInclude>
     <ClInclude Include="PSAttributeView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
-    </ClInclude>
-    <ClInclude Include="WFConeButton.h">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
     <ClInclude Include="WFCylinderButton.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
@@ -423,6 +420,9 @@
     </ClInclude>
     <ClInclude Include="TransformView.h">
       <Filter>Scene\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="WFConeView.h">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -72,7 +72,7 @@
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="TransformView.cpp" />
     <ClCompile Include="WFBoxView.cpp" />
-    <ClCompile Include="WFConeButton.cpp" />
+    <ClCompile Include="WFConeView.cpp" />
     <ClCompile Include="WFCylinderButton.cpp" />
     <ClCompile Include="WFSphereButton.cpp" />
     <ClCompile Include="WFTorusButton.cpp" />
@@ -160,7 +160,7 @@
     <ClInclude Include="Vector3dView.h" />
     <ClInclude Include="WFAttributeView.h" />
     <ClInclude Include="WFBoxView.h" />
-    <ClInclude Include="WFConeButton.h" />
+    <ClInclude Include="WFConeView.h" />
     <ClInclude Include="WFCylinderButton.h" />
     <ClInclude Include="WFSphereButton.h" />
     <ClInclude Include="WFTorusButton.h" />

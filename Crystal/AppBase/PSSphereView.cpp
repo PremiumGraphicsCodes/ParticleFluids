@@ -1,7 +1,5 @@
 #include "PSSphereView.h"
 
-#include "imgui.h"
-
 #include "../Math/Sphere3d.h"
 #include "../Graphics/ColorRGBA.h"
 

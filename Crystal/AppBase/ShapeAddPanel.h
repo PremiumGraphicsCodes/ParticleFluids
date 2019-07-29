@@ -23,6 +23,7 @@ private:
 	Button psTorus;
 
 	Button wfBox;
+	Button wfCone;
 
 	Button pmBox;
 	Button pmQuad;

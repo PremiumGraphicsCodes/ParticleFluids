@@ -1,7 +1,5 @@
 #include "PSCylinderView.h"
 
-#include "imgui.h"
-
 #include <random>
 
 using namespace Crystal::Math;

@@ -1,7 +1,5 @@
 #include "WFBoxView.h"
 
-#include "imgui.h"
-
 #include "../Shape/WireFrameBuilder.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"

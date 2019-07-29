@@ -1,7 +1,5 @@
 #include "PSBoxView.h"
 
-#include "imgui.h"
-
 #include "../Graphics/ColorRGBA.h"
 
 #include <random>

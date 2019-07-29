@@ -17,11 +17,11 @@ SceneAddPanel::SceneAddPanel(const std::string& name, Repository* model, Canvas*
 	IPanel(name, model, canvas)
 {
 	add(new ShapeAddPanel("", model, canvas, control));
-	add(new WireFramePanel("", model, canvas));
+	//add(new WireFramePanel("", model, canvas));
 
-	add(new LightAddButton("LightAdd", model, canvas));
-	add(new MaterialAddButton("MaterialAdd", model, canvas));
-	add(new TextureAddButton("TextureAdd", model, canvas));
+	add(new LightAddButton("Light", model, canvas));
+	add(new MaterialAddButton("Material", model, canvas));
+	add(new TextureAddButton("Texture", model, canvas));
 
 	ColorMap colorMap(0.0, 1.0, 360);
 	for (int i = 0; i < 360; ++i) {
