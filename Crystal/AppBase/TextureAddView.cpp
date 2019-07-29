@@ -1,22 +1,23 @@
-#include "TextureAddButton.h"
+#include "TextureAddView.h"
 
 #include "tinyfiledialogs.h"
 
 #include "../IO/ImageFileReader.h"
 
-using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::UI;
 
-TextureAddButton::TextureAddButton(const std::string& name, Repository* model, Canvas* canvas) :
-	IPopupButton(name, model, canvas),
+TextureAddView::TextureAddView(const std::string& name, Repository* model, Canvas* canvas) :
+	IPanel(name, model, canvas),
 	image("Image", Graphics::Image(256,256,255)),
-	name("Name", "Image01")
+	name("Name", "Image01"),
+	ok("Ok")
 {
+	ok.setFunction([=]() { onOk(); });
 }
 
-void TextureAddButton::onShow()
+void TextureAddView::show()
 {
 	image.show();
 	name.show();
@@ -31,17 +32,14 @@ void TextureAddButton::onShow()
 		}
 		//canvas->update();
 	}
+	ok.show();
 }
 
-void TextureAddButton::onOk()
+void TextureAddView::onOk()
 {
 	/*
 	getModel()->getAppearances()->getImages()->add(image.getValue(), name.getValue());
 	getCanvas()->setViewModel(getModel()->toViewModel());
 	getCanvas()->fitCamera(getModel()->getBoundingBox());
 	*/
-}
-
-void TextureAddButton::onCancel()
-{
 }

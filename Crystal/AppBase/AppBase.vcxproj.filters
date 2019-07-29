@@ -36,12 +36,6 @@
     <ClCompile Include="imgui_stdlib.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialView.cpp">
-      <Filter>Scene\Appearance\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="LightView.cpp">
-      <Filter>Scene\Appearance\Light</Filter>
-    </ClCompile>
     <ClCompile Include="CameraMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
@@ -53,9 +47,6 @@
     </ClCompile>
     <ClCompile Include="ScreenMenu.cpp">
       <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="LightEditView.cpp">
-      <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
     <ClCompile Include="MaskMenu.cpp">
       <Filter>Menu</Filter>
@@ -79,12 +70,6 @@
     <ClCompile Include="SceneListPanel.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="TextureView.cpp">
-      <Filter>Scene\Appearance\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureAddButton.cpp">
-      <Filter>Scene\Appearance\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ParticleSystemEditView.cpp">
       <Filter>Scene\Shape\ParticleSystem\Edit</Filter>
@@ -94,9 +79,6 @@
     </ClCompile>
     <ClCompile Include="WireFrameEditView.cpp">
       <Filter>Scene\Shape\WireFrame\Edit</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureEditView.cpp">
-      <Filter>Scene\Appearance\Texture</Filter>
     </ClCompile>
     <ClCompile Include="BoolView.cpp">
       <Filter>Primitive</Filter>
@@ -164,14 +146,32 @@
     <ClCompile Include="ShapeAddMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
-    <ClCompile Include="LightAddView.cpp">
-      <Filter>Scene\Appearance\Light</Filter>
-    </ClCompile>
     <ClCompile Include="TransformAddView.cpp">
       <Filter>Scene\Transform\Add</Filter>
     </ClCompile>
     <ClCompile Include="MaterialAddView.cpp">
       <Filter>Scene\Appearance\Material\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureAddView.cpp">
+      <Filter>Scene\Appearance\Texture\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureEditView.cpp">
+      <Filter>Scene\Appearance\Texture\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialView.cpp">
+      <Filter>Scene\Appearance\Material\View</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureView.cpp">
+      <Filter>Scene\Appearance\Texture\View</Filter>
+    </ClCompile>
+    <ClCompile Include="LightAddView.cpp">
+      <Filter>Scene\Appearance\Light\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="LightEditView.cpp">
+      <Filter>Scene\Appearance\Light\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="LightView.cpp">
+      <Filter>Scene\Appearance\Light\View</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -270,12 +270,6 @@
     <ClInclude Include="Ray3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialView.h">
-      <Filter>Scene\Appearance\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="LightView.h">
-      <Filter>Scene\Appearance\Light</Filter>
-    </ClInclude>
     <ClInclude Include="PSAttributeView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
@@ -290,9 +284,6 @@
     </ClInclude>
     <ClInclude Include="ScreenMenu.h">
       <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="LightEditView.h">
-      <Filter>Scene\Appearance\Light</Filter>
     </ClInclude>
     <ClInclude Include="FileOpenView.h" />
     <ClInclude Include="FileSaveView.h" />
@@ -332,15 +323,6 @@
     <ClInclude Include="ControlPanel.h" />
     <ClInclude Include="SceneListPanel.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureView.h">
-      <Filter>Scene\Appearance\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureAddButton.h">
-      <Filter>Scene\Appearance\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureEditView.h">
-      <Filter>Scene\Appearance\Texture</Filter>
     </ClInclude>
     <ClInclude Include="Button.h" />
     <ClInclude Include="ParticleSystemEditView.h">
@@ -415,11 +397,29 @@
     <ClInclude Include="ShapeAddMenu.h">
       <Filter>Menu</Filter>
     </ClInclude>
-    <ClInclude Include="LightAddView.h">
-      <Filter>Scene\Appearance\Light</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialAddView.h">
       <Filter>Scene\Appearance\Material\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureAddView.h">
+      <Filter>Scene\Appearance\Texture\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureEditView.h">
+      <Filter>Scene\Appearance\Texture\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialView.h">
+      <Filter>Scene\Appearance\Material\View</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureView.h">
+      <Filter>Scene\Appearance\Texture\View</Filter>
+    </ClInclude>
+    <ClInclude Include="LightAddView.h">
+      <Filter>Scene\Appearance\Light\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="LightEditView.h">
+      <Filter>Scene\Appearance\Light\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="LightView.h">
+      <Filter>Scene\Appearance\Light\View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -524,6 +524,27 @@
     </Filter>
     <Filter Include="Scene\Transform\View">
       <UniqueIdentifier>{b4f13708-92de-4360-acdf-bf82ab51bd44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Texture\Add">
+      <UniqueIdentifier>{c82d6f3c-3fb5-41f7-b8de-364dbe9c801b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Texture\Edit">
+      <UniqueIdentifier>{6543e3cd-7590-46a3-a798-c144608e2049}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Material\View">
+      <UniqueIdentifier>{14031458-3d12-4364-9164-3b9d40194fef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Texture\View">
+      <UniqueIdentifier>{879f21b8-ffc5-4ecf-8e36-76612b044e0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Light\Add">
+      <UniqueIdentifier>{996da972-ddaf-4642-ac94-97bff22cf49d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Light\Edit">
+      <UniqueIdentifier>{4b5cc65c-be72-467d-b1d8-86e72d305d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Light\View">
+      <UniqueIdentifier>{416758df-c1a5-498f-848d-5a53dda6e17c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
