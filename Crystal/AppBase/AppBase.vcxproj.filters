@@ -125,14 +125,8 @@
     <ClCompile Include="ParticleSystemView.cpp">
       <Filter>Scene\Shape\ParticleSystem\View</Filter>
     </ClCompile>
-    <ClCompile Include="SceneAddPanel.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="PSTorusView.cpp">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
-    </ClCompile>
-    <ClCompile Include="MaterialAddButton.cpp">
-      <Filter>Scene\Appearance\Material\Add</Filter>
     </ClCompile>
     <ClCompile Include="PMQuadView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
@@ -175,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="TransformAddView.cpp">
       <Filter>Scene\Transform\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialAddView.cpp">
+      <Filter>Scene\Appearance\Material\Add</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -376,14 +373,8 @@
     <ClInclude Include="ParticleSystemView.h">
       <Filter>Scene\Shape\ParticleSystem\View</Filter>
     </ClInclude>
-    <ClInclude Include="SceneAddPanel.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="PSTorusView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
-    </ClInclude>
-    <ClInclude Include="MaterialAddButton.h">
-      <Filter>Scene\Appearance\Material\Add</Filter>
     </ClInclude>
     <ClInclude Include="PMQuadView.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
@@ -426,6 +417,9 @@
     </ClInclude>
     <ClInclude Include="LightAddView.h">
       <Filter>Scene\Appearance\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialAddView.h">
+      <Filter>Scene\Appearance\Material\Add</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

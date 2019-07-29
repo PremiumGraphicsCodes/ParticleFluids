@@ -33,7 +33,6 @@
     <ClCompile Include="TextureEditView.cpp" />
     <ClCompile Include="TextureView.cpp" />
     <ClCompile Include="MaskMenu.cpp" />
-    <ClCompile Include="SceneAddPanel.cpp" />
     <ClCompile Include="FaceView.cpp" />
     <ClCompile Include="ParticleSystemEditView.cpp" />
     <ClCompile Include="ParticleSystemView.cpp" />
@@ -55,7 +54,7 @@
     <ClCompile Include="LightAddView.cpp" />
     <ClCompile Include="LightEditView.cpp" />
     <ClCompile Include="LightView.cpp" />
-    <ClCompile Include="MaterialAddButton.cpp" />
+    <ClCompile Include="MaterialAddView.cpp" />
     <ClCompile Include="MaterialEditView.cpp" />
     <ClCompile Include="MaterialView.cpp" />
     <ClCompile Include="PMBoxView.cpp" />
@@ -106,7 +105,6 @@
     <ClInclude Include="TextureEditView.h" />
     <ClInclude Include="TextureView.h" />
     <ClInclude Include="MaskMenu.h" />
-    <ClInclude Include="SceneAddPanel.h" />
     <ClInclude Include="FaceView.h" />
     <ClInclude Include="ParticleSystemEditView.h" />
     <ClInclude Include="ParticleSystemView.h" />
@@ -135,7 +133,7 @@
     <ClInclude Include="LightAddView.h" />
     <ClInclude Include="LightEditView.h" />
     <ClInclude Include="LightView.h" />
-    <ClInclude Include="MaterialAddButton.h" />
+    <ClInclude Include="MaterialAddView.h" />
     <ClInclude Include="MaterialEditView.h" />
     <ClInclude Include="MaterialView.h" />
     <ClInclude Include="Plane3dView.h" />

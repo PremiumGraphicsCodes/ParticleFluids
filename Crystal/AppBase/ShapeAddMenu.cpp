@@ -23,6 +23,7 @@
 #include "TransformAddView.h"
 
 #include "LightAddView.h"
+#include "MaterialAddView.h"
 
 using namespace Crystal::UI;
 
@@ -82,6 +83,10 @@ void ShapeAddMenu::show()
 		if (ImGui::MenuItem("Light")) {
 			control->setWindow(new LightAddView("Light", getModel(), canvas));
 		}
+		if (ImGui::MenuItem("Material")) {
+			control->setWindow(new MaterialAddView("Material", getModel(), canvas));
+		}
+
 
 		ImGui::EndMenu();
 	}

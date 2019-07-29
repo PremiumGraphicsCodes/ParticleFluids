@@ -6,7 +6,6 @@
 #include "../AppBase/ScreenMenu.h"
 #include "../AppBase/ShapeAddMenu.h"
 
-#include "../AppBase/SceneAddPanel.h"
 #include "../AppBase/SelectionPanel.h"
 
 #include "../AppBase/SceneListPanel.h"
@@ -40,7 +39,6 @@ int main(int, char**)
 	window.add(new ScreenMenu("Screen", &model, &canvas));
 	window.add(new ShapeAddMenu("Shape", &model, &canvas, control));
 
-	window.add(new SceneAddPanel("SceneAdd", &model, &canvas, control));
 	window.add(new SceneListPanel("SceneList", &model, &canvas, control));
 
 	window.add(new SelectionPanel("Selection", &model, &canvas));

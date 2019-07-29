@@ -2,6 +2,7 @@
 #include "../../Crystal/AppBase/FileMenu.h"
 #include "../../Crystal/AppBase/CameraMenu.h"
 #include "../../Crystal/AppBase/CtrlMenu.h"
+#include "../../Crystal/AppBase/ShapeAddMenu.h"
 
 #include "../../Crystal/AppBase/SceneAddPanel.h"
 #include "../../Crystal/AppBase/SceneListPanel.h"
@@ -52,16 +53,17 @@ int main(int, char**)
 		assert(false);
 		return 0;
 	}
+	auto control = new ControlPanel("Control", &model, &canvas);
+	window.add(control);
+
 
 	window.add(new FileMenu("File", &model, &canvas));
 	window.add(new CameraMenu("Camera", &model, &canvas));
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
+	window.add(new ShapeAddMenu("Shape", &model, &canvas, control));
 
-	auto control = new ControlPanel("Control", &model, &canvas);
-	window.add(control);
-
-	window.add(new SceneAddPanel("SceneAdd", &model, &canvas, control));
-	window.add(new SceneListPanel("Object", &model, &canvas, control));
+	//window.add(new SceneAddPanel("SceneAdd", &model, &canvas, control));
+	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 
 	window.add(new AlgoPanel("Algo", &model, &canvas));
 

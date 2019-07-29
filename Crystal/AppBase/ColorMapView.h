@@ -48,6 +48,15 @@ public:
 	}
 	*/
 
+	/*
+	ColorMap colorMap(0.0, 1.0, 360);
+	for (int i = 0; i < 360; ++i) {
+		ColorHSV hsv(i, 1.0, 1.0);
+		colorMap.setColor(i, hsv.toColorRGBA());
+	}
+	add(new ColorMapView("ColorMap", colorMap));
+	*/
+
 private:
 	Graphics::ColorMap value;
 	TextureView image;
