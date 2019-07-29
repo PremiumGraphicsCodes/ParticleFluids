@@ -4,6 +4,7 @@
 #include "IntView.h"
 #include "Sphere3dView.h"
 #include "WFAttributeView.h"
+#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
@@ -11,14 +12,7 @@ namespace Crystal {
 class WFSphereView : public IPanel
 {
 public:
-	WFSphereView(Repository* repository, Canvas* canvas) :
-		IPanel("WFSphere", repository, canvas),
-		sphere("Sphere"),
-		attribute("Attribute"),
-		unum("UNum", 12),
-		vnum("VNum", 12)
-	{
-	}
+	WFSphereView(Repository* repository, Canvas* canvas);
 
 	void show() override;
 
@@ -30,6 +24,7 @@ private:
 	IntView vnum;
 	Sphere3dView sphere;
 	WFAttributeView attribute;
+	Button ok;
 };
 
 	}

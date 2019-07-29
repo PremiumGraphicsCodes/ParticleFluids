@@ -9,6 +9,17 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
+WFSphereView::WFSphereView(Repository* repository, Canvas* canvas) :
+	IPanel("WFSphere", repository, canvas),
+	sphere("Sphere"),
+	attribute("Attribute"),
+	unum("UNum", 12),
+	vnum("VNum", 12),
+	ok("Ok")
+{
+	ok.setFunction([=]() { onOk(); });
+}
+
 void WFSphereView::show()
 {
 	sphere.show();

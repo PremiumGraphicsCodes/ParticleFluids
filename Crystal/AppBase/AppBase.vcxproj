@@ -28,6 +28,7 @@
     <ClCompile Include="FaceGroupView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="Matrix3dView.cpp" />
+    <ClCompile Include="ShapeAddMenu.cpp" />
     <ClCompile Include="TextureAddButton.cpp" />
     <ClCompile Include="TextureEditView.cpp" />
     <ClCompile Include="TextureView.cpp" />
@@ -66,7 +67,6 @@
     <ClCompile Include="PSTorusView.cpp" />
     <ClCompile Include="ScreenMenu.cpp" />
     <ClCompile Include="ObjectSelectButton.cpp" />
-    <ClCompile Include="ShapeAddPanel.cpp" />
     <ClCompile Include="PositionSelectButton.cpp" />
     <ClCompile Include="SelectionPanel.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
@@ -81,6 +81,7 @@
     <ClCompile Include="WireFrameView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ShapeAddMenu.h" />
     <ClInclude Include="BoolView.h" />
     <ClInclude Include="Box3dView.h" />
     <ClInclude Include="Button.h" />
@@ -152,7 +153,6 @@
     <ClInclude Include="StringView.h" />
     <ClInclude Include="Torus3dView.h" />
     <ClInclude Include="ObjectSelectButton.h" />
-    <ClInclude Include="ShapeAddPanel.h" />
     <ClInclude Include="PositionSelectButton.h" />
     <ClInclude Include="SelectionPanel.h" />
     <ClInclude Include="tinyfiledialogs.h" />

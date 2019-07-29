@@ -1,7 +1,5 @@
 #include "SceneAddPanel.h"
 
-#include "ShapeAddPanel.h"
-
 #include "MaterialAddButton.h"
 #include "LightAddButton.h"
 #include "TextureAddButton.h"
@@ -15,8 +13,6 @@ using namespace Crystal::UI;
 SceneAddPanel::SceneAddPanel(const std::string& name, Repository* model, Canvas* canvas, ControlPanel* control) :
 	IPanel(name, model, canvas)
 {
-	add(new ShapeAddPanel("", model, canvas, control));
-	//add(new WireFramePanel("", model, canvas));
 
 	add(new LightAddButton("Light", model, canvas));
 	add(new MaterialAddButton("Material", model, canvas));
