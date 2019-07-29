@@ -4,7 +4,6 @@
 #include "../../Crystal/AppBase/CtrlMenu.h"
 #include "../../Crystal/AppBase/ShapeAddMenu.h"
 
-#include "../../Crystal/AppBase/SceneAddPanel.h"
 #include "../../Crystal/AppBase/SceneListPanel.h"
 
 #include "../../Crystal/UI/Repository.h"
