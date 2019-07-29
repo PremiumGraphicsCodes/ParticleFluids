@@ -3,7 +3,7 @@
 #include "../../Crystal/AppBase/CameraMenu.h"
 #include "../../Crystal/AppBase/CtrlMenu.h"
 
-#include "../../Crystal/AppBase/SceneGenerationPanel.h"
+#include "../../Crystal/AppBase/SceneAddPanel.h"
 #include "../../Crystal/AppBase/SceneListPanel.h"
 
 #include "../../Crystal/UI/Repository.h"
@@ -60,7 +60,7 @@ int main(int, char**)
 	auto control = new ControlPanel("Control", &model, &canvas);
 	window.add(control);
 
-	window.add(new SceneGenerationPanel("Generation", &model, &canvas, control));
+	window.add(new SceneAddPanel("SceneAdd", &model, &canvas, control));
 	window.add(new SceneListPanel("Object", &model, &canvas, control));
 
 	window.add(new AlgoPanel("Algo", &model, &canvas));

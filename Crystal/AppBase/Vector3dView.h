@@ -23,7 +23,11 @@ public:
 	{}
 
 	void show() override {
-		ImGui::InputFloat3(name.c_str(), &value[0]);
+		ImGui::InputDouble("X", &value.x);
+		ImGui::InputDouble("Y", &value.y);
+		ImGui::InputDouble("Z", &value.z);
+
+		//ImGui::InputFloat3(name.c_str(), &value[0]);
 	}
 
 	void setValue(const Math::Vector3dd& value) { this->value = value; }
@@ -31,7 +35,7 @@ public:
 	Math::Vector3dd getValue() const { return value; }
 
 private:
-	Math::Vector3df value;
+	Math::Vector3dd value;
 };
 
 	}

@@ -21,7 +21,7 @@ SceneAddPanel::SceneAddPanel(const std::string& name, Repository* model, Canvas*
 
 	add(new LightAddButton("LightAdd", model, canvas));
 	add(new MaterialAddButton("MaterialAdd", model, canvas));
-	add(new TextureAddButton("Texture", model, canvas));
+	add(new TextureAddButton("TextureAdd", model, canvas));
 
 	ColorMap colorMap(0.0, 1.0, 360);
 	for (int i = 0; i < 360; ++i) {

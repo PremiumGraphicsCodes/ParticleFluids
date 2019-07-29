@@ -22,6 +22,8 @@ private:
 	Button psSphere;
 	Button psTorus;
 
+	Button wfBox;
+
 	Button pmBox;
 	Button pmQuad;
 	Button pmSphere;

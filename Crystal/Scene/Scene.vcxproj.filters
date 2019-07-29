@@ -96,10 +96,7 @@
     <ClInclude Include="CameraScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="ITransformScene.h">
-      <Filter>Scene\Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="TranslateScene.h">
+    <ClInclude Include="TransformScene.h">
       <Filter>Scene\Transform</Filter>
     </ClInclude>
   </ItemGroup>
@@ -160,9 +157,6 @@
     </ClCompile>
     <ClCompile Include="ShaderScene.cpp">
       <Filter>Scene\Appearance</Filter>
-    </ClCompile>
-    <ClCompile Include="TranslateScene.cpp">
-      <Filter>Scene\Transform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

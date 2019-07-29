@@ -25,7 +25,7 @@
       <Filter>Selection</Filter>
     </ClCompile>
     <ClCompile Include="TransformPanel.cpp">
-      <Filter>Transform</Filter>
+      <Filter>Scene\Transform</Filter>
     </ClCompile>
     <ClCompile Include="imgui_impl_glfw.cpp">
       <Filter>imgui</Filter>
@@ -48,9 +48,6 @@
     <ClCompile Include="LightView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
-    <ClCompile Include="WFBoxButton.cpp">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClCompile>
     <ClCompile Include="WFConeButton.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
@@ -66,12 +63,6 @@
     <ClCompile Include="WireFramePanel.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
-    <ClCompile Include="MoveButton.cpp">
-      <Filter>Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="ScaleButton.cpp">
-      <Filter>Transform</Filter>
-    </ClCompile>
     <ClCompile Include="CameraMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
@@ -83,9 +74,6 @@
     </ClCompile>
     <ClCompile Include="ScreenMenu.cpp">
       <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="RotateButton.cpp">
-      <Filter>Transform</Filter>
     </ClCompile>
     <ClCompile Include="LightEditView.cpp">
       <Filter>Scene\Appearance\Light</Filter>
@@ -117,9 +105,6 @@
     </ClCompile>
     <ClCompile Include="TextureAddButton.cpp">
       <Filter>Scene\Appearance\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="WireFrameView.cpp">
-      <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ParticleSystemEditView.cpp">
@@ -179,6 +164,12 @@
     <ClCompile Include="PMSphereView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
+    <ClCompile Include="WireFrameView.cpp">
+      <Filter>Scene\Shape\WireFrame\View</Filter>
+    </ClCompile>
+    <ClCompile Include="WFBoxView.cpp">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -211,7 +202,7 @@
       <Filter>Selection</Filter>
     </ClInclude>
     <ClInclude Include="TransformPanel.h">
-      <Filter>Transform</Filter>
+      <Filter>Scene\Transform</Filter>
     </ClInclude>
     <ClInclude Include="imgui_impl_glfw.h">
       <Filter>imgui</Filter>
@@ -291,9 +282,6 @@
     <ClInclude Include="PSAttributeView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
-    <ClInclude Include="WFBoxButton.h">
-      <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClInclude>
     <ClInclude Include="WFConeButton.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
@@ -309,12 +297,6 @@
     <ClInclude Include="WireFramePanel.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
-    <ClInclude Include="MoveButton.h">
-      <Filter>Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="ScaleButton.h">
-      <Filter>Transform</Filter>
-    </ClInclude>
     <ClInclude Include="CameraMenu.h">
       <Filter>Menu</Filter>
     </ClInclude>
@@ -326,9 +308,6 @@
     </ClInclude>
     <ClInclude Include="ScreenMenu.h">
       <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="RotateButton.h">
-      <Filter>Transform</Filter>
     </ClInclude>
     <ClInclude Include="LightEditView.h">
       <Filter>Scene\Appearance\Light</Filter>
@@ -377,9 +356,6 @@
     </ClInclude>
     <ClInclude Include="TextureAddButton.h">
       <Filter>Scene\Appearance\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="WireFrameView.h">
-      <Filter>Scene\Shape\WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="TextureEditView.h">
       <Filter>Scene\Appearance\Texture</Filter>
@@ -433,6 +409,12 @@
     <ClInclude Include="PMSphereView.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
+    <ClInclude Include="WireFrameView.h">
+      <Filter>Scene\Shape\WireFrame\View</Filter>
+    </ClInclude>
+    <ClInclude Include="WFBoxView.h">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -446,9 +428,6 @@
     </Filter>
     <Filter Include="Selection">
       <UniqueIdentifier>{936f90df-2aa6-430e-9906-90d661af54f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Transform">
-      <UniqueIdentifier>{a82af283-3aaa-4c83-b72f-e282c535a689}</UniqueIdentifier>
     </Filter>
     <Filter Include="Math">
       <UniqueIdentifier>{70e528ba-4a3a-4f71-8dd3-08addce9576a}</UniqueIdentifier>
@@ -524,6 +503,12 @@
     </Filter>
     <Filter Include="Scene\Shape\WireFrame\Add">
       <UniqueIdentifier>{0ef178e9-c8bf-499a-b9bf-fb031433e057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\WireFrame\View">
+      <UniqueIdentifier>{f36693f7-aa63-4851-b79d-67ed57a8804d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Transform">
+      <UniqueIdentifier>{a82af283-3aaa-4c83-b72f-e282c535a689}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

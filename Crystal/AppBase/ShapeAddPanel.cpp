@@ -10,6 +10,8 @@
 #include "PSConeView.h"
 #include "PSTorusView.h"
 
+#include "WFBoxView.h"
+
 #include "PMBoxView.h"
 #include "PMQuadView.h"
 #include "PMSphereView.h"
@@ -33,6 +35,7 @@ ShapeAddPanel::ShapeAddPanel(const std::string& name, Repository* repository, Ca
 	psCylinder("PSCylinder"),
 	psSphere("PSSphere"),
 	psTorus("PSTorus"),
+	wfBox("WFBox"),
 	pmBox("PMBox"),
 	pmQuad("PMQuad"),
 	pmSphere("PMSphere")
@@ -58,6 +61,11 @@ ShapeAddPanel::ShapeAddPanel(const std::string& name, Repository* repository, Ca
 		[=]() {control->setWindow(new PSTorusView(getRepository(), canvas)); }
 	);
 
+	wfBox.setFunction
+	(
+		[=]() {control->setWindow(new WFBoxView(getRepository(), canvas)); }
+	);
+
 	pmBox.setFunction
 	(
 		[=]() { control->setWindow(new PMBoxView(getRepository(), canvas)); }
@@ -71,16 +79,6 @@ ShapeAddPanel::ShapeAddPanel(const std::string& name, Repository* repository, Ca
 		[=]() { control->setWindow(new PMSphereView(getRepository(), canvas)); }
 	);
 
-
-	/*
-		else if (ImGui::Button("PSSphere")) {
-		control->clear();
-		control->add(new PSSphereView(getRepository(), canvas));
-	}
-	*/
-
-
-	//add( new PSTorusButton(repository, canvas) );
 }
 
 void ShapeAddPanel::show()
@@ -90,6 +88,8 @@ void ShapeAddPanel::show()
 	psCylinder.show();
 	psSphere.show();
 	psTorus.show();
+
+	wfBox.show();
 
 	pmBox.show();
 	pmQuad.show();
