@@ -72,9 +72,6 @@
     <ClInclude Include="MaterialScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshAttribute.h">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMeshScene.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>

@@ -48,6 +48,8 @@ public:
 
 	std::string getMaterialName() const { return materialName; }
 
+	void setMaterialName(const std::string& mname) { this->materialName = mname; }
+
 private:
 	Shape::PolygonMesh* shape;
 	std::string materialName;

@@ -11,7 +11,7 @@ using namespace Crystal::UI;
 PMBoxView::PMBoxView(Repository* model, Canvas* canvas) :
 	IPanel("PMBox", model, canvas),
 	boxView("Box"),
-	materialId("MaterialId", 1),
+	materialName("MaterialName", ""),
 	name("Name", "PMBox"),
 	ok("Ok")
 {
@@ -21,7 +21,7 @@ PMBoxView::PMBoxView(Repository* model, Canvas* canvas) :
 void PMBoxView::show()
 {
 	boxView.show();
-	materialId.show();
+	materialName.show();
 	name.show();
 	ok.show();
 }
@@ -31,6 +31,7 @@ void PMBoxView::onOk()
 	PolygonMeshBuilder builder;
 	builder.add(boxView.getValue());
 	auto scene = getRepository()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
+	scene->setMaterialName(materialName.getValue());
 	getRepository()->getObjects()->addScene(scene);
 	getCanvas()->setViewModel(getRepository()->toViewModel());
 	getCanvas()->fitCamera(getRepository()->getBoundingBox());

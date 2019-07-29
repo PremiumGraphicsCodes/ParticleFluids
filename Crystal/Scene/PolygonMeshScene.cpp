@@ -41,7 +41,12 @@ SceneViewModel PolygonMeshScene::toViewModel() const
 	for (auto& child : children) {
 		auto faceGroup = static_cast<FaceGroupScene*>(child);
 		auto materialScene = static_cast<MaterialScene*>( getParent()->findSceneByName( faceGroup->getMaterialName() ) );
-		bf.add(faceGroup->getShape(), materialScene->getMaterial(), light);
+		if (materialScene == nullptr) {
+			bf.add(faceGroup->getShape(), Material(), light);
+		}
+		else {
+			bf.add(faceGroup->getShape(), materialScene->getMaterial(), light);
+		}
 	}
 	viewModel.triangleBuffers.push_back(bf);
 	return viewModel;

@@ -43,7 +43,6 @@
     <ClInclude Include="ParticleSystemScene.h" />
     <ClInclude Include="PCDFileExporter.h" />
     <ClInclude Include="PCDFileImporter.h" />
-    <ClInclude Include="PolygonMeshAttribute.h" />
     <ClInclude Include="PolygonMeshScene.h" />
     <ClInclude Include="SceneFactory.h" />
     <ClInclude Include="ShaderScene.h" />

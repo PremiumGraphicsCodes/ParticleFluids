@@ -21,7 +21,7 @@ private:
 
 private:
 	Box3dView boxView;
-	IntView materialId;
+	StringView materialName;
 	StringView name;
 	Button ok;
 };
