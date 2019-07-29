@@ -16,6 +16,10 @@ public:
 
 private:
 	ControlPanel* control;
+	Button box;
+	Button cone;
+	Button cylinder;
+	Button sphere;
 };
 
 	}

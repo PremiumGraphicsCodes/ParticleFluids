@@ -13,6 +13,7 @@ PSConeView::PSConeView(Repository* model, Canvas* canvas) :
 	count("Count", 10000),
 	okButton("OK")
 {
+	okButton.setFunction([=]() { onOk(); });
 }
 
 void PSConeView::show()
@@ -21,7 +22,6 @@ void PSConeView::show()
 	attribute.show();
 	count.show();
 	okButton.show();
-	okButton.setFunction([=]() { onOk(); });
 }
 
 void PSConeView::onOk()

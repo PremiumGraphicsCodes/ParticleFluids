@@ -1,4 +1,4 @@
-#include "PSSphereButton.h"
+#include "PSSphereView.h"
 
 #include "imgui.h"
 
@@ -11,14 +11,25 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-void PSSphereButton::onShow()
+PSSphereView::PSSphereView(Repository* model, Canvas* canvas) :
+	IPanel("PSSphere", model, canvas),
+	sphere("Sphere"),
+	attribute("Attribute"),
+	count("Count", 10000),
+	ok("OK")
+{
+	ok.setFunction([=]() {onOk(); });
+}
+
+void PSSphereView::show()
 {
 	sphere.show();
 	attribute.show();
 	count.show();
+	ok.show();
 }
 
-void PSSphereButton::onOk()
+void PSSphereView::onOk()
 {
 	const auto& shape = sphere.getValue();
 	std::mt19937 mt{ std::random_device{}() };
@@ -29,8 +40,8 @@ void PSSphereButton::onOk()
 		const auto v = dist(mt);
 		positions.push_back(shape.getPosition(Vector3dd(u, v, 1.0)));
 	}
-	auto scene = getModel()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Sphere");
-	getModel()->getObjects()->addScene(scene);
-	getCanvas()->setViewModel(getModel()->toViewModel());
-	getCanvas()->fitCamera(getModel()->getBoundingBox());
+	auto scene = getRepository()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Sphere");
+	getRepository()->getObjects()->addScene(scene);
+	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 }

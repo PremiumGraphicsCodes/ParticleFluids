@@ -60,7 +60,7 @@
     <ClCompile Include="PSBoxView.cpp" />
     <ClCompile Include="PSConeView.cpp" />
     <ClCompile Include="PSCylinderView.cpp" />
-    <ClCompile Include="PSSphereButton.cpp" />
+    <ClCompile Include="PSSphereView.cpp" />
     <ClCompile Include="PSTorusButton.cpp" />
     <ClCompile Include="RotateButton.cpp" />
     <ClCompile Include="ScaleButton.cpp" />
@@ -145,7 +145,7 @@
     <ClInclude Include="PSBoxView.h" />
     <ClInclude Include="PSConeView.h" />
     <ClInclude Include="PSCylinderView.h" />
-    <ClInclude Include="PSSphereButton.h" />
+    <ClInclude Include="PSSphereView.h" />
     <ClInclude Include="Ray3dView.h" />
     <ClInclude Include="RotateButton.h" />
     <ClInclude Include="ScaleButton.h" />

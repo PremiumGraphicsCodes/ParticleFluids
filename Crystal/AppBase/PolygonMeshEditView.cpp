@@ -7,7 +7,8 @@ PolygonMeshEditView::PolygonMeshEditView(const std::string& name, Repository* re
 	IWindow(name),
 	polygonMesh("PolygonMesh"),
 	id("Id"),
-	name("Name")
+	name("Name"),
+	materialName("MaterialName")
 {
 }
 
@@ -16,6 +17,7 @@ void PolygonMeshEditView::show()
 	polygonMesh.show();
 	id.show();
 	name.show();
+	materialName.show();
 }
 
 void PolygonMeshEditView::setValue(PolygonMeshScene* value)
@@ -23,4 +25,5 @@ void PolygonMeshEditView::setValue(PolygonMeshScene* value)
 	polygonMesh.setValue(value->getShape());
 	id.setValue(value->getId());
 	name.setValue(value->getName());
+	materialName.setValue( value->getMaterialName() );
 }

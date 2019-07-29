@@ -5,7 +5,7 @@
 #include "../UI/Canvas.h"
 
 #include "PSBoxView.h"
-#include "PSSphereButton.h"
+#include "PSSphereView.h"
 #include "PSCylinderView.h"
 #include "PSConeView.h"
 #include "PSTorusButton.h"
@@ -24,24 +24,31 @@ using namespace Crystal::UI;
 
 ParticleSystemPanel::ParticleSystemPanel(const std::string& name, Repository* repository, Canvas* canvas, ControlPanel* control) :
 	IPanel(name, repository, canvas),
-	control(control)
+	control(control),
+	box("PSBox"),
+	cone("PSCone"),
+	cylinder("PSCylinder"),
+	sphere("PSSphere")
 {
-	add( new PSSphereButton(repository, canvas) );
-	add( new PSTorusButton(repository, canvas) );
+	box.setFunction([=]() { control->setWindow(new PSBoxView(getRepository(), canvas)); });
+	cone.setFunction([=]() { control->setWindow(new PSConeView(getRepository(), canvas)); });
+	cylinder.setFunction([=]() { control->setWindow(new PSCylinderView(getRepository(), canvas)); });
+	sphere.setFunction([=]() {control->setWindow(new PSSphereView(getRepository(), canvas)); });
+	/*
+		else if (ImGui::Button("PSSphere")) {
+		control->clear();
+		control->add(new PSSphereView(getRepository(), canvas));
+	}
+	*/
+
+
+	//add( new PSTorusButton(repository, canvas) );
 }
 
 void ParticleSystemPanel::show()
 {
-	if (ImGui::Button("PSBox")) {
-		control->clear();
-		control->add(new PSBoxView(getRepository(), canvas));
-	}
-	else if (ImGui::Button("PSCone")) {
-		control->clear();
-		control->add(new PSConeView(getRepository(), canvas));
-	}
-	else if (ImGui::Button("PSCylinder")) {
-		control->clear();
-		control->add(new PSCylinderView(getRepository(), canvas));
-	}
+	box.show();
+	cone.show();
+	cylinder.show();
+	sphere.show();
 }

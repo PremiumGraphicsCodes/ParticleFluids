@@ -24,6 +24,7 @@ private:
 	PolygonMeshView polygonMesh;
 	IntView id;
 	StringView name;
+	StringView materialName;
 };
 
 	}

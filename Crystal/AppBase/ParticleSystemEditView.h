@@ -4,6 +4,7 @@
 #include "ParticleSystemView.h"
 #include "IntView.h"
 #include "StringView.h"
+#include "Button.h"
 #include "../Scene/ParticleSystemScene.h"
 #include "../UI/Repository.h"
 #include "../UI/Canvas.h"
@@ -21,9 +22,13 @@ public:
 	void setValue(Scene::ParticleSystemScene* value);
 
 private:
+	void onEdit();
+
+private:
 	ParticleSystemView particleSystem;
 	IntView id;
 	StringView name;
+	Button edit;
 };
 
 	}

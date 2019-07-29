@@ -63,9 +63,6 @@
     <ClCompile Include="ParticleSystemPanel.cpp">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
-    <ClCompile Include="PSSphereButton.cpp">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
-    </ClCompile>
     <ClCompile Include="PSTorusButton.cpp">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
@@ -133,9 +130,6 @@
       <Filter>Selection\Region</Filter>
     </ClCompile>
     <ClCompile Include="ControlPanel.cpp" />
-    <ClCompile Include="PolygonMeshEditView.cpp">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleSystemView.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
@@ -180,6 +174,12 @@
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
     <ClCompile Include="PSCylinderView.cpp">
+      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshEditView.cpp">
+      <Filter>Scene\Shape\PolygonMesh\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="PSSphereView.cpp">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClCompile>
   </ItemGroup>
@@ -309,9 +309,6 @@
     <ClInclude Include="PSAttributeView.h">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
-    <ClInclude Include="PSSphereButton.h">
-      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
-    </ClInclude>
     <ClInclude Include="PSTorusButton.h">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
@@ -396,9 +393,6 @@
       <Filter>Primitive</Filter>
     </ClInclude>
     <ClInclude Include="ControlPanel.h" />
-    <ClInclude Include="PolygonMeshEditView.h">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleSystemView.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
@@ -437,6 +431,12 @@
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
     <ClInclude Include="PSCylinderView.h">
+      <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshEditView.h">
+      <Filter>Scene\Shape\PolygonMesh\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="PSSphereView.h">
       <Filter>Scene\Shape\ParticleSystem\Generation</Filter>
     </ClInclude>
   </ItemGroup>
@@ -521,6 +521,9 @@
     </Filter>
     <Filter Include="Scene\Appearance\Shader">
       <UniqueIdentifier>{f9511435-7972-4726-96e9-ec00fd9973c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\PolygonMesh\Edit">
+      <UniqueIdentifier>{0ae31894-1c86-4c94-b39c-562582ae4fb1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
