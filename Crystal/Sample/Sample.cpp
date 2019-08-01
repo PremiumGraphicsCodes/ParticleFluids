@@ -6,8 +6,7 @@
 #include "../AppBase/ScreenMenu.h"
 #include "../AppBase/ShapeMenu.h"
 #include "../AppBase/AppearanceMenu.h"
-
-#include "../AppBase/SelectionPanel.h"
+#include "../AppBase/SelectionMenu.h"
 
 #include "../AppBase/SceneListPanel.h"
 #include "../AppBase/ControlPanel.h"
@@ -41,9 +40,9 @@ int main(int, char**)
 	window.add(new ScreenMenu("Screen", &model, &canvas));
 	window.add(new ShapeMenu("Shape", &model, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &model, &canvas, control));
+	window.add(new SelectionMenu("Selection", &model, &canvas, control));
 
 	window.add(new SceneListPanel("SceneList", &model, &canvas, control));
-	window.add(new SelectionPanel("Selection", &model, &canvas));
 
 	window.show();
 

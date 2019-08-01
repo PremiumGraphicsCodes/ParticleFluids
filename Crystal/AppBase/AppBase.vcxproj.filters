@@ -15,9 +15,6 @@
     <ClCompile Include="IPanel.cpp">
       <Filter>Window</Filter>
     </ClCompile>
-    <ClCompile Include="SelectionPanel.cpp">
-      <Filter>Selection</Filter>
-    </ClCompile>
     <ClCompile Include="imgui_impl_glfw.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
@@ -176,6 +173,9 @@
     <ClCompile Include="SphereRegionSelectView.cpp">
       <Filter>Selection\Region</Filter>
     </ClCompile>
+    <ClCompile Include="SelectionMenu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -197,9 +197,6 @@
     </ClInclude>
     <ClInclude Include="ITreeList.h">
       <Filter>Window</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectionPanel.h">
-      <Filter>Selection</Filter>
     </ClInclude>
     <ClInclude Include="imgui_impl_glfw.h">
       <Filter>imgui</Filter>
@@ -426,6 +423,9 @@
     </ClInclude>
     <ClInclude Include="SphereRegionSelectView.h">
       <Filter>Selection\Region</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionMenu.h">
+      <Filter>Menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
