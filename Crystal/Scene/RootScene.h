@@ -30,14 +30,14 @@ public:
 	Scene::Scene* getItems() { return &items; }
 
 	Scene::SceneFactory* getObjectFactory() { return &objectFactory; }
-	
+
 	Scene::SceneFactory* getItemFactory() { return &itemFactory; }
 
 	Scene::ViewModel toViewModel();
 
 	Math::Box3d getBoundingBox() const;
 
-private:	
+private:
 	Scene::Scene objects;
 	Scene::Scene items;
 

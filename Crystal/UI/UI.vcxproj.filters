@@ -35,7 +35,6 @@
     <ClInclude Include="ScaleUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
-    <ClInclude Include="Repository.h" />
     <ClInclude Include="RotateUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
@@ -63,7 +62,6 @@
     <ClCompile Include="ScaleUICtrl.cpp">
       <Filter>UICtrl</Filter>
     </ClCompile>
-    <ClCompile Include="Repository.cpp" />
     <ClCompile Include="RotateUICtrl.cpp">
       <Filter>UICtrl</Filter>
     </ClCompile>

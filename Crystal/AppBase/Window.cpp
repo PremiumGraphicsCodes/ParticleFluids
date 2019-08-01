@@ -9,7 +9,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "../UI/Canvas.h"
-#include "../UI/Repository.h"
+#include "../Scene/RootScene.h"
 
 #include "../Graphics/PerspectiveCamera.h"
 #include <chrono>

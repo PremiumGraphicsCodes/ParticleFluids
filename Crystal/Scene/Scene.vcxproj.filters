@@ -99,6 +99,7 @@
     <ClInclude Include="TransformScene.h">
       <Filter>Scene\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="RootScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
@@ -161,6 +162,7 @@
     <ClCompile Include="TransformScene.cpp">
       <Filter>Scene\Transform</Filter>
     </ClCompile>
+    <ClCompile Include="RootScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">

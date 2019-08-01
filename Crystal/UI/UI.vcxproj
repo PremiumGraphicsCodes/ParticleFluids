@@ -23,7 +23,6 @@
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="ObjectIdRenderer.h" />
     <ClInclude Include="IKeyListener.h" />
-    <ClInclude Include="Repository.h" />
     <ClInclude Include="RotateUICtrl.h" />
     <ClInclude Include="ScaleUICtrl.h" />
     <ClInclude Include="MoveUICtrl.h" />
@@ -38,7 +37,6 @@
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="ObjectIdRenderer.cpp" />
-    <ClCompile Include="Repository.cpp" />
     <ClCompile Include="RotateUICtrl.cpp" />
     <ClCompile Include="ScaleUICtrl.cpp" />
     <ClCompile Include="MoveUICtrl.cpp" />

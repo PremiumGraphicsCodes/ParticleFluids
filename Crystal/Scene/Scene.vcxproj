@@ -29,6 +29,7 @@
     <ClInclude Include="FileExporter.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
+    <ClInclude Include="RootScene.h" />
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
@@ -65,6 +66,7 @@
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
+    <ClCompile Include="RootScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="OBJFileExporter.cpp" />
     <ClCompile Include="OBJFileImporter.cpp" />

@@ -1,4 +1,4 @@
-#include "Repository.h"
+#include "RootScene.h"
 
 #include "../Scene/FileImporter.h"
 #include "../Scene/FileExporter.h"
@@ -62,7 +62,7 @@ ViewModel RootScene::toViewModel()
 {
 	ViewModel vm;
 	vm.object = objects.toViewModel();
-	vm.object.merge( items.toViewModel() );
+	vm.object.merge(items.toViewModel());
 
 	vm.objectId = objects.toIdViewModel();
 

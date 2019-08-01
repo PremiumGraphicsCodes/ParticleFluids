@@ -6,7 +6,7 @@
 #include "StringView.h"
 #include "Button.h"
 #include "../Scene/ParticleSystemScene.h"
-#include "../UI/Repository.h"
+#include "../Scene/RootScene.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {

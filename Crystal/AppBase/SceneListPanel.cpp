@@ -1,6 +1,6 @@
 #include "SceneListPanel.h"
 
-#include "../UI/Repository.h"
+#include "../Scene/RootScene.h"
 
 #include "ParticleSystemEditView.h"
 #include "WireFrameEditView.h"

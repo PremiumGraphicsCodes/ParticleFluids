@@ -5,7 +5,7 @@
 #include "IntView.h"
 #include "StringView.h"
 #include "../Scene/TextureScene.h"
-#include "../UI/Repository.h"
+#include "../Scene/RootScene.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {
