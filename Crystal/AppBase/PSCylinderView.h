@@ -3,7 +3,6 @@
 #include "Cylinder3dView.h"
 #include "PSAttributeView.h"
 #include "IntView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {

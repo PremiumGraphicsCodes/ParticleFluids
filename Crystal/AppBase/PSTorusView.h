@@ -1,29 +1,27 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IOkCancelView.h"
 
 #include "Torus3dView.h"
 #include "PSAttributeView.h"
 #include "IntView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PSTorusView : public IPanel
+class PSTorusView : public IOkCancelView
 {
 public:
 	PSTorusView(Scene::RootScene* model, Canvas* canvas);
 
 	void show() override;
 
-	void onOk();
+	void onOk() override;
 
 private:
 	TorusView torusView;
 	PSAttributeView attribute;
 	IntView count;
-	Button ok;
 };
 
 	}

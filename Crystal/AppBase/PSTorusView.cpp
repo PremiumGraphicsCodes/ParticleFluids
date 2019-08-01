@@ -8,13 +8,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSTorusView::PSTorusView(RootScene* model, Canvas* canvas) :
-	IPanel("PSTorus", model, canvas),
+	IOkCancelView("PSTorus", model, canvas),
 	torusView("Torus"),
 	attribute("Attribute"),
-	count("Count", 10000),
-	ok("Ok")
+	count("Count", 10000)
 {
-	ok.setFunction([=]() {onOk(); });
 }
 
 void PSTorusView::show()
@@ -22,7 +20,7 @@ void PSTorusView::show()
 	torusView.show();
 	attribute.show();
 	count.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void PSTorusView::onOk()

@@ -1,15 +1,14 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IOkCancelView.h"
 #include "Sphere3dView.h"
 #include "PSAttributeView.h"
 #include "IntView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PSSphereView : public IPanel
+class PSSphereView : public IOkCancelView
 {
 public:
 	PSSphereView(Scene::RootScene* model, Canvas* canvas);
@@ -17,13 +16,12 @@ public:
 	void show() override;
 
 private:
-	void onOk();
+	void onOk() override;
 
 private:
 	Sphere3dView sphere;
 	PSAttributeView attribute;
 	IntView count;
-	Button ok;
 };
 
 	}

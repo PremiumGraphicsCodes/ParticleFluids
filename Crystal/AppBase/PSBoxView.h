@@ -6,7 +6,6 @@
 #include "PSAttributeView.h"
 #include "IntView.h"
 #include "BoolView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {

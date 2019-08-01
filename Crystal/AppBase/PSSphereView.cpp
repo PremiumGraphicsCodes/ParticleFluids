@@ -11,13 +11,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSSphereView::PSSphereView(RootScene* model, Canvas* canvas) :
-	IPanel("PSSphere", model, canvas),
+	IOkCancelView("PSSphere", model, canvas),
 	sphere("Sphere"),
 	attribute("Attribute"),
-	count("Count", 10000),
-	ok("OK")
+	count("Count", 10000)
 {
-	ok.setFunction([=]() {onOk(); });
 }
 
 void PSSphereView::show()
@@ -25,7 +23,7 @@ void PSSphereView::show()
 	sphere.show();
 	attribute.show();
 	count.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void PSSphereView::onOk()

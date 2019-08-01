@@ -7,7 +7,6 @@
 #include "IntView.h"
 #include "StringView.h"
 #include "IPanel.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {

@@ -1,14 +1,13 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IOkCancelView.h"
 #include "Box3dView.h"
 #include "WFAttributeView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
 
-class WFBoxView : public IPanel
+class WFBoxView : public IOkCancelView
 {
 public:
 	WFBoxView(Scene::RootScene* model, Canvas* canvas);
@@ -16,12 +15,11 @@ public:
 	void show() override;
 
 private:
-	void onOk();
+	void onOk() override;
 
 private:
 	Box3dView box;
 	WFAttributeView attribute;
-	Button ok;
 };
 
 

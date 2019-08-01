@@ -9,19 +9,17 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFBoxView::WFBoxView(RootScene* model, Canvas* canvas) :
-	IPanel("WFBox", model, canvas),
+	IOkCancelView("WFBox", model, canvas),
 	box("Box"),
-	attribute("Attribute"),
-	ok("Ok")
+	attribute("Attribute")
 {
-	ok.setFunction([=]() { onOk(); });
 }
 
 void WFBoxView::show()
 {
 	box.show();
 	attribute.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void WFBoxView::onOk()
