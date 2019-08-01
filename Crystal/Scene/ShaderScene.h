@@ -25,6 +25,8 @@ public:
 		delete shader;
 	}
 
+	Shader::ShaderObject* getShader() { return shader; }
+
 private:
 	Shader::ShaderObject* shader;
 };

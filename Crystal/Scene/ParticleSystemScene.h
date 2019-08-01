@@ -3,6 +3,9 @@
 #include "IShapeScene.h"
 #include "../Shape/ParticleSystem.h"
 #include "ParticleAttribute.h"
+#include "../Graphics/ICamera.h"
+#include "../Graphics/PointBuffer.h"
+#include "../Shader/ShaderObject.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -47,8 +50,14 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
+	void build();
+
+	void render(const Graphics::ICamera& camera);
+
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;
+	Graphics::PointBuffer buffer;
+	Shader::ShaderObject* shader;
 };
 
 	}

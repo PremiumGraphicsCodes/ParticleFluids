@@ -77,9 +77,21 @@ public:
 
 	IScene* getParent() const { return parent; }
 
+	IScene* getRoot() {
+		auto p = this;
+		while (!p->isRoot()) {
+			p = p->getParent();
+		}
+		return p;
+	}
+
 	std::list<IScene*> getChildren() const { return children; }
 
 	bool isLeaf() const { return children.empty(); }
+
+	virtual void build() {};
+
+	virtual void render() {};
 
 protected:
 	virtual void onClear() = 0;
