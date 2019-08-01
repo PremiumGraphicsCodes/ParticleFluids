@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../../Crystal/AppBase/IPopupButton.h"
-#include "../../Crystal/AppBase/ObjectSelectButton.h"
-#include "../../Crystal/AppBase/PositionSelectButton.h"
+#include "../../Crystal/AppBase/ObjectSelectView.h"
+#include "../../Crystal/AppBase/PositionSelectView.h"
 #include "../../Crystal/AppBase/DoubleView.h"
 
 namespace Crystal {
@@ -23,9 +23,9 @@ public:
 	}
 
 private:
-	PositionSelectButton positionButton;
+	PositionSelectView positionButton;
 	DoubleView searchRadius;
-	ObjectSelectButton objectButton;
+	ObjectSelectView objectButton;
 };
 
 	}

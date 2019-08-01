@@ -2,7 +2,7 @@
 
 #include "../../Crystal/AppBase/IPopupButton.h"
 #include "../../Crystal/AppBase/DoubleView.h"
-#include "../../Crystal/AppBase/ObjectSelectButton.h"
+#include "../../Crystal/AppBase/ObjectSelectView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -19,7 +19,7 @@ public:
 	void onCancel() override;
 
 private:
-	ObjectSelectButton objectButton;
+	ObjectSelectView objectButton;
 	DoubleView searchRadius;
 };
 

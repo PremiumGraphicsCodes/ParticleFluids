@@ -2,7 +2,6 @@
 
 #include "../../Crystal/AppBase/IPopupButton.h"
 #include "../../Crystal/AppBase/Box3dView.h"
-#include "../../Crystal/AppBase/ObjectSelectButton.h"
 
 namespace Crystal {
 	namespace UI {

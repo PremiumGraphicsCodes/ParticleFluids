@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../../Crystal/AppBase/IPopupButton.h"
-#include "../../Crystal/AppBase/ObjectSelectButton.h"
-#include "../../Crystal/AppBase/PositionSelectButton.h"
+#include "../../Crystal/AppBase/ObjectSelectView.h"
+#include "../../Crystal/AppBase/PositionSelectView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -19,8 +19,8 @@ public:
 	void onCancel() override;
 
 private:
-	ObjectSelectButton objectButton1;
-	ObjectSelectButton objectButton2;
+	ObjectSelectView objectButton1;
+	ObjectSelectView objectButton2;
 };
 
 	}
