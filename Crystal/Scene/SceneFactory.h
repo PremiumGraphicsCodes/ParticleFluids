@@ -50,7 +50,7 @@ public:
 
 	TextureScene* createTextureScene(const Graphics::Image& image, const std::string& name);
 
-	ShaderScene* createShaderScene(Shader::ShaderObject* shader, const std::string& name);
+	ShaderScene* createShaderScene(const std::string& vsSource, const std::string& fsSource, const std::string& name);
 
 	CameraScene* createCameraScene(Graphics::ICamera* camera, const std::string& name);
 

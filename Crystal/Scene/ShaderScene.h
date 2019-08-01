@@ -4,18 +4,23 @@
 
 #include "../Shader/ShaderObject.h"
 
+#include <memory>
+
 namespace Crystal {
 	namespace Scene {
 
 class ShaderScene : public IScene
 {
 public:
-	ShaderScene(const int id, const std::string& name, Shader::ShaderObject* shader) :
+	ShaderScene(const int id, const std::string& name, const std::string& vsSource, const std::string& fsSource) :
 		IScene(id, name),
-		shader(shader)
+		vsSource(vsSource),
+		fsSource(fsSource)
 	{}
 
-	//void addUniform(const std::string& name);
+	void addUniform(const std::string& name) { uniforms.push_back(name); }
+
+	void addAttribute(const std::string& name) { attributes.push_back(name); }
 
 	SceneType getType() const override { return SceneType::ShaderScene; }
 
@@ -23,14 +28,16 @@ public:
 
 	SceneIdViewModel toIdViewModel() const override;
 
-	void onClear() override {
-		delete shader;
-	}
+	void onClear() override { shader.reset(); }
 
-	Shader::ShaderObject* getShader() { return shader; }
+	Shader::ShaderObject* getShader() { return shader.get(); }
+
+	bool build() override;
 
 private:
-	Shader::ShaderObject* shader;
+	std::unique_ptr<Shader::ShaderObject> shader;
+	std::string vsSource;
+	std::string fsSource;
 	std::vector<std::string> uniforms;
 	std::vector<std::string> attributes;
 };

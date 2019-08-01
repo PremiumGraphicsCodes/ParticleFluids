@@ -85,23 +85,23 @@ bool SceneBuilder::buildPointShader()
 			<< "}" << std::endl;
 		fsSource = stream.str();
 	}
-	auto shader = new ShaderObject();
-	if (!shader->build(vsSource, fsSource)) {
-		return false;
-	}
-	shader->findUniformLocation("projectionMatrix");
-	shader->findUniformLocation("modelviewMatrix");
 
-	shader->findAttribLocation("position");
-	shader->findAttribLocation("color");
-	shader->findAttribLocation("pointSize");
 
-	scene.addScene(factory.createShaderScene(shader, "PointShader"));
+	auto sscene = factory.createShaderScene(vsSource, fsSource, "PointShader");
+	sscene->addUniform("projectionMatrix");
+	sscene->addUniform("modelviewMatrix");
+	sscene->addAttribute("position");
+	sscene->addAttribute("color");
+	sscene->addAttribute("pointSize");
+
+	sscene->build();
+	scene.addScene(sscene);
 	return true;
 }
 
 bool SceneBuilder::buildLineShader()
 {
+	/*
 	std::string vsSource;
 	{
 		std::ostringstream stream;
@@ -142,5 +142,6 @@ bool SceneBuilder::buildLineShader()
 	shader->findAttribLocation("position");
 	shader->findAttribLocation("color");
 	scene.addScene(factory.createShaderScene(shader, "LineShader"));
+	*/
 	return true;
 }
