@@ -20,7 +20,7 @@ public:
 
 	Graphics::ICamera* getCamera() const { return camera; }
 
-	SceneType getType() const override { return SceneType::LightScene; }
+	SceneType getType() const override { return SceneType::CameraScene; }
 
 	void onClear() override
 	{

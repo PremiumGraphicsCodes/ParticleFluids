@@ -49,7 +49,7 @@ Vector3dd ParticleSystemScene::getPosition(const int index) const
 	return ps[index]->getPosition();
 }
 
-bool ParticleSystemScene::build()
+bool ParticleSystemScene::onBuild()
 {
 	if (!isVisible()) {
 		return true;
@@ -62,7 +62,7 @@ bool ParticleSystemScene::build()
 	return true;
 }
 
-void ParticleSystemScene::render(const ICamera& camera)
+void ParticleSystemScene::onRender(const ICamera& camera)
 {
 	const auto positions = buffer.getPosition().get();
 	const auto colors = buffer.getColor().get();

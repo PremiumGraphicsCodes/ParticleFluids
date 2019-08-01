@@ -48,9 +48,9 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
-	bool build() override;
+	bool onBuild() override;
 
-	void render(const Graphics::ICamera& camera);
+	void onRender(const Graphics::ICamera& camera) override;
 
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;

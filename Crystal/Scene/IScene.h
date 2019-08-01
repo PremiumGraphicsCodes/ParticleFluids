@@ -5,6 +5,7 @@
 #include "SceneType.h"
 
 #include "../Math/Box3d.h"
+#include "../Graphics/ICamera.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -89,9 +90,11 @@ public:
 
 	bool isLeaf() const { return children.empty(); }
 
-	virtual bool build() { return false; };
+	bool build() { return onBuild(); }
 
-	virtual void onRender() {};
+	virtual bool onBuild() { return false; };
+
+	virtual void onRender(const Graphics::ICamera& camera) {};
 
 protected:
 	virtual void onClear() = 0;

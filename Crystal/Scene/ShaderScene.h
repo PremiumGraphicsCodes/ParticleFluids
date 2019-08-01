@@ -38,7 +38,7 @@ public:
 
 	Shader::ShaderObject* getShader() { return shader.get(); }
 
-	bool build() override;
+	bool onBuild() override;
 
 private:
 	std::unique_ptr<Shader::ShaderObject> shader;

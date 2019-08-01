@@ -16,7 +16,7 @@ SceneIdViewModel ShaderScene::toIdViewModel() const
 	return SceneIdViewModel();
 }
 
-bool ShaderScene::build()
+bool ShaderScene::onBuild()
 {
 	this->shader = std::make_unique<ShaderObject>();
 	if (!shader->build(vsSource, fsSource)) {

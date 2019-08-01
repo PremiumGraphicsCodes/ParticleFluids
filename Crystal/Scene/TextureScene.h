@@ -29,7 +29,7 @@ public:
 
 	SceneIdViewModel toIdViewModel() const override;
 
-	bool build() override;
+	bool onBuild() override;
 
 private:
 	Graphics::Image image;

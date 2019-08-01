@@ -51,7 +51,7 @@ Vector3dd WireFrameScene::getPosition(const int index) const
 	return vertices[index];
 }
 
-bool WireFrameScene::build()
+bool WireFrameScene::onBuild()
 {
 	if (!isVisible()) {
 		return true;

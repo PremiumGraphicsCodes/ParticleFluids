@@ -49,7 +49,7 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
-	bool build() override;
+	bool onBuild() override;
 
 private:
 	Shape::WireFrame* shape;
