@@ -1,13 +1,13 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IOkCancelView.h"
 
 #include "MaterialView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class MaterialAddView : public IPanel
+class MaterialAddView : public IOkCancelView
 {
 public:
 	MaterialAddView(const std::string& name, Scene::RootScene* model, Canvas* canvas);
@@ -15,7 +15,7 @@ public:
 	void show() override;
 
 private:
-	void onOk();
+	void onOk() override;
 
 private:
 	MaterialView material;

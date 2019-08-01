@@ -9,7 +9,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 MaterialAddView::MaterialAddView(const std::string& name, RootScene* model, Canvas* canvas) :
-	IPanel(name, model, canvas),
+	IOkCancelView(name, model, canvas),
 	material("Material"),
 	name("Name", "Material1")
 {
@@ -19,6 +19,7 @@ void MaterialAddView::show()
 {
 	material.show();
 	name.show();
+	IOkCancelView::show();
 }
 
 void MaterialAddView::onOk()

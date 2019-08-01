@@ -8,17 +8,15 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 TransformAddView::TransformAddView(const std::string& name, RootScene* model, Canvas* canvas) :
-	IPanel(name, model, canvas),
-	transform("Transform", model, canvas),
-	ok("Ok")
+	IOkCancelView(name, model, canvas),
+	transform("Transform", model, canvas)
 {
-	ok.setFunction([=]() { onOk(); });
 }
 
 void TransformAddView::show()
 {
 	transform.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void TransformAddView::onOk()

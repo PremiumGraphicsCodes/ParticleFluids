@@ -24,6 +24,10 @@ public:
 
 	void addAttribute(const std::string& name) { attributes.push_back(name); }
 
+	std::string getVertexShaderSource() const { return vsSource; }
+
+	std::string getFragmentShaderSource() const { return fsSource; }
+
 	SceneType getType() const override { return SceneType::ShaderScene; }
 
 	SceneViewModel toViewModel() const override;

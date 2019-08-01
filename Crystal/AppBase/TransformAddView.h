@@ -1,13 +1,13 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IOkCancelView.h"
 #include "TransformView.h"
 #include "Button.h"
 
 namespace Crystal {
 	namespace UI {
 
-class TransformAddView : public IPanel
+class TransformAddView : public IOkCancelView
 {
 public:
 	TransformAddView(const std::string& name, Scene::RootScene* model, Canvas* canvas);
@@ -15,11 +15,10 @@ public:
 	void show() override;
 
 private:
-	void onOk();
+	void onOk() override;
 
 private:
 	TransformView transform;
-	Button ok;
 };
 
 	}

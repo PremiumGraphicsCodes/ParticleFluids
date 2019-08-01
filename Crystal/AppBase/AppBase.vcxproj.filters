@@ -179,6 +179,9 @@
     <ClCompile Include="ShaderAddView.cpp">
       <Filter>Scene\Appearance\Shader\Add</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderView.cpp">
+      <Filter>Scene\Appearance\Shader\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -431,6 +434,9 @@
       <Filter>Menu</Filter>
     </ClInclude>
     <ClInclude Include="IOkCancelView.h" />
+    <ClInclude Include="ShaderView.h">
+      <Filter>Scene\Appearance\Shader\View</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
