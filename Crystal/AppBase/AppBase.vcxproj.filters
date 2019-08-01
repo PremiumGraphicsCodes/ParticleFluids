@@ -430,6 +430,7 @@
     <ClInclude Include="SelectionMenu.h">
       <Filter>Menu</Filter>
     </ClInclude>
+    <ClInclude Include="IOkCancelView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -557,6 +558,9 @@
     </Filter>
     <Filter Include="Scene\Appearance\Shader\View">
       <UniqueIdentifier>{8bb109ae-0815-467f-b695-bdac07c4a6b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Shader\Edit">
+      <UniqueIdentifier>{01c88d73-663b-4fbf-bbaf-82caf2d8ff07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

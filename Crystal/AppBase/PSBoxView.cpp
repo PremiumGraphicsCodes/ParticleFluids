@@ -10,15 +10,13 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSBoxView::PSBoxView(RootScene* model, Canvas* canvas) :
-	IPanel("PSBox", model, canvas),
+	IOkCancelView("PSBox", model, canvas),
 	box("Box"),
 	attribute("Attribute"),
 	count("Count", 10000),
 	isVolume("Volume", false),
-	name("Name", "PSBox"),
-	ok("OK")
+	name("Name", "PSBox")
 {
-	ok.setFunction([=]() { onOk(); });
 };
 
 void PSBoxView::show()
@@ -28,7 +26,7 @@ void PSBoxView::show()
 	count.show();
 	isVolume.show();
 	name.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void PSBoxView::onOk()

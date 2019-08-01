@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPopupButton.h"
+#include "IOkCancelView.h"
 
 #include "Cone3dView.h"
 #include "PSAttributeView.h"
@@ -12,7 +12,7 @@
 namespace Crystal {
 	namespace UI {
 
-class PSConeView : public IPanel
+class PSConeView : public IOkCancelView
 {
 public:
 	PSConeView(Scene::RootScene* model, Canvas* canvas);
@@ -20,14 +20,13 @@ public:
 	void show() override;
 
 private:
-	void onOk();
+	void onOk() override;
 
 private:
 	Cone3dView cone;
 	PSAttributeView attribute;
 	IntView count;
 	StringView name;
-	Button ok;
 };
 
 	}

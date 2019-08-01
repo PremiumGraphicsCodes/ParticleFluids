@@ -8,14 +8,12 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSConeView::PSConeView(RootScene* model, Canvas* canvas) :
-	IPanel("PSCone", model, canvas),
+	IOkCancelView("PSCone", model, canvas),
 	cone("Cone"),
 	attribute("Attribute"),
 	count("Count", 10000),
-	name("Name", "PSCone"),
-	ok("OK")
+	name("Name", "PSCone")
 {
-	ok.setFunction([=]() { onOk(); });
 }
 
 void PSConeView::show()
@@ -24,7 +22,7 @@ void PSConeView::show()
 	attribute.show();
 	count.show();
 	name.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void PSConeView::onOk()

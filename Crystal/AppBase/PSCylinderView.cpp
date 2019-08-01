@@ -8,13 +8,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSCylinderView::PSCylinderView(RootScene* model, Canvas* canvas) :
-	IPanel("PSCylinder", model, canvas),
+	IOkCancelView("PSCylinder", model, canvas),
 	attribute("Attribute"),
 	cylinderButton("Cylinder"),
-	count("Count", 10000),
-	ok("OK")
+	count("Count", 10000)
 {
-	ok.setFunction([=]() {onOk(); });
 }
 
 void PSCylinderView::show()
@@ -22,7 +20,7 @@ void PSCylinderView::show()
 	cylinderButton.show();
 	attribute.show();
 	count.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void PSCylinderView::onOk()

@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppearanceMenu.h" />
+    <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="SelectionMenu.h" />
     <ClInclude Include="ShapeMenu.h" />
     <ClInclude Include="BoolView.h" />

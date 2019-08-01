@@ -1,4 +1,4 @@
-#include "IPanel.h"
+#include "IOkCancelView.h"
 
 #include "Cylinder3dView.h"
 #include "PSAttributeView.h"
@@ -8,7 +8,7 @@
 namespace Crystal {
 	namespace UI {
 
-class PSCylinderView : public IPanel
+class PSCylinderView : public IOkCancelView
 {
 public:
 	PSCylinderView(Scene::RootScene* model, Canvas* canvas);
@@ -16,13 +16,12 @@ public:
 	void show() override;
 
 private:
-	void onOk();
+	void onOk() override;
 
 private:
 	Cylinder3dView cylinderButton;
 	PSAttributeView attribute;
 	IntView count;
-	Button ok;
 };
 
 	}
