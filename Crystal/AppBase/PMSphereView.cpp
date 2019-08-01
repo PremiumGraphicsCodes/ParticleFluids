@@ -8,17 +8,14 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PMSphereView::PMSphereView(RootScene* model, Canvas* canvas) :
-	IPanel("PMSphere", model, canvas),
+	IOkCancelView("PMSphere", model, canvas),
 	sphere("Sphere"),
 	unum("UNum", 36),
 	vnum("VNum", 36),
 	materialName("MaterialName", ""),
-	name("Name", "PMSphere"),
-	ok("Ok")
+	name("Name", "PMSphere")
 {
-	ok.setFunction([=]() {onOk(); });
 }
-
 
 void PMSphereView::show()
 {
@@ -27,7 +24,7 @@ void PMSphereView::show()
 	vnum.show();
 	materialName.show();
 	name.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void PMSphereView::onOk()

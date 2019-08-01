@@ -10,13 +10,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PMBoxView::PMBoxView(RootScene* model, Canvas* canvas) :
-	IPanel("PMBox", model, canvas),
+	IOkCancelView("PMBox", model, canvas),
 	boxView("Box"),
 	materialName("MaterialName", ""),
-	name("Name", "PMBox"),
-	ok("Ok")
+	name("Name", "PMBox")
 {
-	ok.setFunction([=]() {onOk(); });
 }
 
 void PMBoxView::show()
@@ -24,7 +22,7 @@ void PMBoxView::show()
 	boxView.show();
 	materialName.show();
 	name.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void PMBoxView::onOk()

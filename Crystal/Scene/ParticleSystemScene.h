@@ -33,8 +33,6 @@ public:
 
 	void transform(const Math::Matrix4dd& m) { shape->transform(m); }
 
-	bool isNull() const { return shape == nullptr; }
-
 	SceneType getType() const override { return SceneType::ParticleSystemScene; }
 
 	void onClear() override

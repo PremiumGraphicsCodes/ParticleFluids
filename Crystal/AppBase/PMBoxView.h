@@ -1,5 +1,5 @@
 #pragma once
-#include "IPanel.h"
+#include "IOkCancelView.h"
 
 #include "Box3dView.h"
 #include "IntView.h"
@@ -9,7 +9,7 @@
 namespace Crystal {
 	namespace UI {
 
-class PMBoxView : public IPanel
+class PMBoxView : public IOkCancelView
 {
 public:
 	PMBoxView(Scene::RootScene* model, Canvas* canvas);
@@ -17,13 +17,12 @@ public:
 private:
 	void show() override;
 
-	void onOk();
+	void onOk() override;
 
 private:
 	Box3dView boxView;
 	StringView materialName;
 	StringView name;
-	Button ok;
 };
 
 	}

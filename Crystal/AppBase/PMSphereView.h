@@ -1,15 +1,14 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IOkCancelView.h"
 #include "Sphere3dView.h"
 #include "IntView.h"
 #include "StringView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PMSphereView : public IPanel
+class PMSphereView : public IOkCancelView
 {
 public:
 	PMSphereView(Scene::RootScene* model, Canvas* canvas);
@@ -17,7 +16,7 @@ public:
 	void show() override;
 
 private:
-	void onOk();
+	void onOk() override;
 
 private:
 	Sphere3dView sphere;
@@ -25,7 +24,6 @@ private:
 	IntView vnum;
 	StringView materialName;
 	StringView name;
-	Button ok;
 };
 
 	}

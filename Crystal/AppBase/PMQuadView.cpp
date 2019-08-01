@@ -11,13 +11,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PMQuadView::PMQuadView(RootScene* model, Canvas* canvas) :
-	IPanel("PMQuad", model, canvas),
+	IOkCancelView("PMQuad", model, canvas),
 	quad("Quad"),
 	materialName("Material", ""),
-	name("Name", "PMPlane"),
-	ok("Ok")
+	name("Name", "PMPlane")
 {
-	ok.setFunction([=]() {onOk(); });
 }
 
 void PMQuadView::show()
@@ -25,7 +23,7 @@ void PMQuadView::show()
 	quad.show();
 	materialName.show();
 	name.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void PMQuadView::onOk()
