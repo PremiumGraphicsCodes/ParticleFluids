@@ -15,6 +15,8 @@ public:
 		shader(shader)
 	{}
 
+	//void addUniform(const std::string& name);
+
 	SceneType getType() const override { return SceneType::ShaderScene; }
 
 	SceneViewModel toViewModel() const override;
@@ -29,6 +31,8 @@ public:
 
 private:
 	Shader::ShaderObject* shader;
+	std::vector<std::string> uniforms;
+	std::vector<std::string> attributes;
 };
 
 	}

@@ -95,9 +95,9 @@ ShaderScene* SceneFactory::createShaderScene(ShaderObject* shader, const std::st
 
 TextureScene* SceneFactory::createTextureScene(const Image& image, const std::string& name)
 {
-	TextureObject* tex = new TextureObject();
-	tex->create(image);
-	return new TextureScene(getNextId(), name, tex);
+	auto scene = new TextureScene(getNextId(), name, image);
+	scene->build();
+	return scene;
 }
 
 CameraScene* SceneFactory::createCameraScene(ICamera* camera, const std::string& name)

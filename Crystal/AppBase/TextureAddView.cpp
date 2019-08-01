@@ -1,6 +1,7 @@
 #include "TextureAddView.h"
 
 #include "tinyfiledialogs.h"
+#include "../Scene/RootScene.h"
 
 #include "../IO/ImageFileReader.h"
 
@@ -38,9 +39,5 @@ void TextureAddView::show()
 
 void TextureAddView::onOk()
 {
-	/*
-	getModel()->getAppearances()->getImages()->add(image.getValue(), name.getValue());
-	getCanvas()->setViewModel(getModel()->toViewModel());
-	getCanvas()->fitCamera(getModel()->getBoundingBox());
-	*/
+	getRepository()->getObjects()->addScene( getRepository()->getObjectFactory()->createTextureScene( image.getValue(), name.getValue()) );
 }

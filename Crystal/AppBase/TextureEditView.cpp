@@ -22,14 +22,14 @@ TextureEditView::TextureEditView(const std::string& name, RootScene* model, Canv
 
 void TextureEditView::show()
 {
-	texture.show();
 	id.show();
 	name.show();
+	texture.show();
 }
 
 void TextureEditView::setValue(TextureScene* value)
 {
-//	texture.setValue(value->getTexture());
+	texture.setValue(value->getImage());
 	id.setValue(value->getId());
 	name.setValue(value->getName());
 }

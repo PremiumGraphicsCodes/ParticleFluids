@@ -9,25 +9,31 @@ namespace Crystal {
 class TextureScene : public IScene
 {
 public:
-	TextureScene(const int id, const std::string& name, Shader::TextureObject* texture) :
+	TextureScene(const int id, const std::string& name, const Graphics::Image& image) :
 		IScene(id, name),
-		texture(texture)
+		image(image),
+		texture(nullptr)
 	{}
 
 	~TextureScene() {};
 
-	Shader::TextureObject* getTexture() const { return texture; }
+	Graphics::Image getImage() const { return image; }
+
+	Shader::TextureObject* getTexture() const { return texture.get(); }
 
 	SceneType getType() const override { return SceneType::TextureScene; }
 
-	void onClear() override { delete texture; }
+	void onClear() override { texture.reset(); }
 
 	SceneViewModel toViewModel() const override;
 
 	SceneIdViewModel toIdViewModel() const override;
 
+	bool build() override;
+
 private:
-	Shader::TextureObject* texture;
+	Graphics::Image image;
+	std::unique_ptr<Shader::TextureObject> texture;
 };
 
 	}
