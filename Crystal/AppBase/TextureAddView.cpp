@@ -8,7 +8,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::UI;
 
-TextureAddView::TextureAddView(const std::string& name, Repository* model, Canvas* canvas) :
+TextureAddView::TextureAddView(const std::string& name, RootScene* model, Canvas* canvas) :
 	IPanel(name, model, canvas),
 	image("Image", Graphics::Image(256,256,255)),
 	name("Name", "Image01"),

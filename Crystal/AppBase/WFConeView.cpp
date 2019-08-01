@@ -6,7 +6,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-WFConeView::WFConeView(Repository* model, Canvas* canvas) :
+WFConeView::WFConeView(RootScene* model, Canvas* canvas) :
 	IPanel("WFCone", model, canvas),
 	cone("Cone"),
 	attribute("Attribute"),

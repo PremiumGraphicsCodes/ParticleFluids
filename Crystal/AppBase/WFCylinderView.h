@@ -12,7 +12,7 @@ namespace Crystal {
 class WFCylinderView : public IPanel
 {
 public:
-	WFCylinderView(Repository* model, Canvas* canvas);
+	WFCylinderView(RootScene* model, Canvas* canvas);
 
 	void show() override;
 

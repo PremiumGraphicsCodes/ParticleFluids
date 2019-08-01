@@ -21,7 +21,7 @@ using namespace Crystal::UI;
 
 int main(int, char**)
 {
-	Repository model;
+	RootScene model;
 	Canvas canvas;
 
 	Window window(&model, &canvas);

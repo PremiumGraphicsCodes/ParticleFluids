@@ -14,7 +14,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-SceneListPanel::SceneListPanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control) :
+SceneListPanel::SceneListPanel(const std::string& name, RootScene* model, Canvas* canvas, IPanel* control) :
 	IPanel(name, model, canvas),
 	control(control)
 {

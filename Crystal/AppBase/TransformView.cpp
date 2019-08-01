@@ -3,7 +3,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-TransformView::TransformView(const std::string& name, Repository* model, Canvas* canvas) :
+TransformView::TransformView(const std::string& name, RootScene* model, Canvas* canvas) :
 	IPanel(name, model, canvas),
 	translate("Translate"),
 	rotation("Rotation")

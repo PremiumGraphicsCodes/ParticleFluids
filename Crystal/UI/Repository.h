@@ -10,12 +10,12 @@
 namespace Crystal {
 	namespace UI {
 
-class Repository : private UnCopyable
+class RootScene : private UnCopyable
 {
 public:
-	Repository();
+	RootScene();
 
-	~Repository();
+	~RootScene();
 
 	void init();
 

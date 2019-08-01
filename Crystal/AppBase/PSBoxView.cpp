@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-PSBoxView::PSBoxView(Repository* model, Canvas* canvas) :
+PSBoxView::PSBoxView(RootScene* model, Canvas* canvas) :
 	IPanel("PSBox", model, canvas),
 	box("Box"),
 	attribute("Attribute"),

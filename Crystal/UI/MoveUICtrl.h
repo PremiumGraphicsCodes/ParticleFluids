@@ -8,13 +8,13 @@ namespace Crystal {
 		class IShapeScene;
 	}
 	namespace UI {
-		class Repository;
+		class RootScene;
 		class Canvas;
 
 class MoveUICtrl : public IUICtrl
 {
 public:
-	MoveUICtrl(Repository* repository, Canvas* canvas);
+	MoveUICtrl(RootScene* repository, Canvas* canvas);
 
 	void add(Scene::IShapeScene* object) { this->objects.push_back(object); }
 
@@ -42,7 +42,7 @@ public:
 
 private:
 	std::list<Scene::IShapeScene*> objects;
-	Repository* repository;
+	RootScene* repository;
 	Canvas* canvas;
 	Math::Vector2df prevPosition;
 };

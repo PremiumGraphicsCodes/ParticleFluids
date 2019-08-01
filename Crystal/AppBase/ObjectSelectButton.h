@@ -8,14 +8,14 @@ namespace Crystal {
 class ObjectSelectButton : public IPopupButton
 {
 public:
-	ObjectSelectButton(const std::string& name, Repository* model, Canvas* canvas) :
+	ObjectSelectButton(const std::string& name, RootScene* model, Canvas* canvas) :
 		IPopupButton(name, model, canvas),
 		id(0),
 		type(Scene::SceneType::All)
 	{
 	}
 
-	ObjectSelectButton(const std::string& name, Repository* model, Canvas* canvas, const Scene::SceneType type) :
+	ObjectSelectButton(const std::string& name, RootScene* model, Canvas* canvas, const Scene::SceneType type) :
 		IPopupButton(name, model, canvas),
 		id(0),
 		type(type)

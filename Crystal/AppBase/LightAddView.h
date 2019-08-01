@@ -9,7 +9,7 @@ namespace Crystal {
 class LightAddView : public IPanel
 {
 public:
-	LightAddView(const std::string& name, Repository* model, Canvas* canvas);
+	LightAddView(const std::string& name, RootScene* model, Canvas* canvas);
 
 	void show() override;
 

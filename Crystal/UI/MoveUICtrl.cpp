@@ -7,7 +7,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-MoveUICtrl::MoveUICtrl(Repository* repository, Canvas* canvas) :
+MoveUICtrl::MoveUICtrl(RootScene* repository, Canvas* canvas) :
 	repository(repository),
 	canvas(canvas)
 {

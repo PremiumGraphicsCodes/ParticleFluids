@@ -14,7 +14,7 @@ namespace Crystal {
 class TextureEditView : public IWindow
 {
 public:
-	TextureEditView(const std::string& name, Repository* repository, Canvas* canvas);
+	TextureEditView(const std::string& name, RootScene* repository, Canvas* canvas);
 
 	void show() override;
 

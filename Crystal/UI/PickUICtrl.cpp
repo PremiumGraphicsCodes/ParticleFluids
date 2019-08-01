@@ -9,7 +9,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PickUICtrl::PickUICtrl(Repository* model, Canvas* canvas, const SceneType& type) :
+PickUICtrl::PickUICtrl(RootScene* model, Canvas* canvas, const SceneType& type) :
 	model(model),
 	canvas(canvas),
 	type(type)

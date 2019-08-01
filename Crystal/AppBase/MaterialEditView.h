@@ -12,7 +12,7 @@ namespace Crystal {
 class MaterialEditView : public IWindow
 {
 public:
-	MaterialEditView(const std::string& name, Repository* model, Canvas* canvas);
+	MaterialEditView(const std::string& name, RootScene* model, Canvas* canvas);
 
 	void setValue(Scene::MaterialScene* value)
 	{
@@ -27,7 +27,7 @@ private:
 	IntView id;
 	MaterialView material;
 	StringView name;
-	Repository* repository;
+	RootScene* repository;
 	Canvas* canvas;
 	Button editButton;
 };

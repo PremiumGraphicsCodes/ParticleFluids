@@ -6,7 +6,7 @@
 
 using namespace Crystal::UI;
 
-TransformAddView::TransformAddView(const std::string& name, Repository* model, Canvas* canvas) :
+TransformAddView::TransformAddView(const std::string& name, RootScene* model, Canvas* canvas) :
 	IPanel(name, model, canvas),
 	transform("Transform", model, canvas),
 	ok("Ok")

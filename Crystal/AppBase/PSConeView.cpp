@@ -6,7 +6,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-PSConeView::PSConeView(Repository* model, Canvas* canvas) :
+PSConeView::PSConeView(RootScene* model, Canvas* canvas) :
 	IPanel("PSCone", model, canvas),
 	cone("Cone"),
 	attribute("Attribute"),

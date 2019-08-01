@@ -9,7 +9,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-PSSphereView::PSSphereView(Repository* model, Canvas* canvas) :
+PSSphereView::PSSphereView(RootScene* model, Canvas* canvas) :
 	IPanel("PSSphere", model, canvas),
 	sphere("Sphere"),
 	attribute("Attribute"),

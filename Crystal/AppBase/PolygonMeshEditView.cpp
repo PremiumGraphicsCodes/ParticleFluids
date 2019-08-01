@@ -3,7 +3,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PolygonMeshEditView::PolygonMeshEditView(const std::string& name, Repository* repository, Canvas* canvas) :
+PolygonMeshEditView::PolygonMeshEditView(const std::string& name, RootScene* repository, Canvas* canvas) :
 	IWindow(name),
 	polygonMesh("PolygonMesh"),
 	id("Id"),

@@ -21,7 +21,7 @@ using namespace Crystal::UI;
 
 namespace {
 	Window* window;
-	Repository* repository;
+	RootScene* repository;
 	Canvas* canvas;
 
 	std::chrono::time_point<std::chrono::system_clock> lastPressedTime;
@@ -90,7 +90,7 @@ namespace {
 	}
 }
 
-Window::Window(Repository* model, Canvas* canvas) :
+Window::Window(RootScene* model, Canvas* canvas) :
 	model(model),
 	canvas(canvas)
 {

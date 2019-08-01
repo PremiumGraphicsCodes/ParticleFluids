@@ -12,7 +12,7 @@ namespace Crystal {
 class WFTorusView : public IPanel
 {
 public:
-	WFTorusView(Repository* model, Canvas* canvas);
+	WFTorusView(RootScene* model, Canvas* canvas);
 
 	void show() override;
 

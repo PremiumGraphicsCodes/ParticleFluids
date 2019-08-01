@@ -9,7 +9,7 @@ namespace Crystal {
 class ControlPanel : public IPanel
 {
 public:
-	ControlPanel(const std::string& name, Repository* model, Canvas* canvas);
+	ControlPanel(const std::string& name, RootScene* model, Canvas* canvas);
 
 	void setWindow(IWindow* view)
 	{

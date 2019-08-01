@@ -9,7 +9,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-WFSphereView::WFSphereView(Repository* repository, Canvas* canvas) :
+WFSphereView::WFSphereView(RootScene* repository, Canvas* canvas) :
 	IPanel("WFSphere", repository, canvas),
 	sphere("Sphere"),
 	attribute("Attribute"),

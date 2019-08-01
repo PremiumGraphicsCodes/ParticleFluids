@@ -3,7 +3,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-LightEditView::LightEditView(const std::string& name, Repository* repository, Canvas* canvas) :
+LightEditView::LightEditView(const std::string& name, RootScene* repository, Canvas* canvas) :
 	IWindow(name),
 	id("Id", 0),
 	light("Light"),

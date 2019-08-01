@@ -12,7 +12,7 @@ namespace Crystal {
 class WFSphereView : public IPanel
 {
 public:
-	WFSphereView(Repository* repository, Canvas* canvas);
+	WFSphereView(RootScene* repository, Canvas* canvas);
 
 	void show() override;
 

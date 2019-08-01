@@ -6,7 +6,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-PSCylinderView::PSCylinderView(Repository* model, Canvas* canvas) :
+PSCylinderView::PSCylinderView(RootScene* model, Canvas* canvas) :
 	IPanel("PSCylinder", model, canvas),
 	attribute("Attribute"),
 	cylinderButton("Cylinder"),

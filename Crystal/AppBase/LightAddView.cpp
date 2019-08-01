@@ -7,7 +7,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-LightAddView::LightAddView(const std::string& name, Repository* model, Canvas* canvas) :
+LightAddView::LightAddView(const std::string& name, RootScene* model, Canvas* canvas) :
 	IPanel(name, model, canvas),
 	light("LAdd"),
 	name("Name", "Light01"),

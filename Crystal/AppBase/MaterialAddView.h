@@ -10,7 +10,7 @@ namespace Crystal {
 class MaterialAddView : public IPanel
 {
 public:
-	MaterialAddView(const std::string& name, Repository* model, Canvas* canvas);
+	MaterialAddView(const std::string& name, RootScene* model, Canvas* canvas);
 
 	void show() override;
 

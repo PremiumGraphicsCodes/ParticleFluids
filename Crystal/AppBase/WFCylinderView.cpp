@@ -6,7 +6,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-WFCylinderView::WFCylinderView(Repository* model, Canvas* canvas) :
+WFCylinderView::WFCylinderView(RootScene* model, Canvas* canvas) :
 	IPanel("WFCylinder", model, canvas),
 	cylinder("Cylinder"),
 	attribute("Attribute"),

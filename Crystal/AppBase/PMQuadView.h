@@ -13,7 +13,7 @@ namespace Crystal {
 class PMQuadView : public IPanel
 {
 public:
-	PMQuadView(Repository* model, Canvas* canvas);
+	PMQuadView(RootScene* model, Canvas* canvas);
 
 	void show() override;
 

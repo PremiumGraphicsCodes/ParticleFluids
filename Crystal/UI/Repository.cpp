@@ -9,18 +9,18 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-Repository::Repository() :
+RootScene::RootScene() :
 	objects(0, "Root"),
 	items(0, "Item")
 {
 }
 
-Repository::~Repository()
+RootScene::~RootScene()
 {
 	clear();
 }
 
-void Repository::init()
+void RootScene::init()
 {
 	Graphics::PointLight light;
 	light.setPosition(glm::vec3(100, 100, 100));
@@ -41,24 +41,24 @@ void Repository::init()
 	objects.addScene(objectFactory.createTextureScene(Image(512, 512), "IdTexture"));
 }
 
-void Repository::clear()
+void RootScene::clear()
 {
 	objects.clear();
 }
 
-bool Repository::importFile(const std::experimental::filesystem::path& filename)
+bool RootScene::importFile(const std::experimental::filesystem::path& filename)
 {
 	FileImporter reader;
 	return reader.importFile(filename, &objects, &objectFactory);
 }
 
-bool Repository::exportFile(const std::experimental::filesystem::path& filename)
+bool RootScene::exportFile(const std::experimental::filesystem::path& filename)
 {
 	FileExporter writer;
 	return writer.exportFile(filename, objects);
 }
 
-ViewModel Repository::toViewModel()
+ViewModel RootScene::toViewModel()
 {
 	ViewModel vm;
 	vm.object = objects.toViewModel();
@@ -69,7 +69,7 @@ ViewModel Repository::toViewModel()
 	return vm;
 }
 
-Box3d Repository::getBoundingBox() const
+Box3d RootScene::getBoundingBox() const
 {
 	return objects.getBoundingBox();
 }

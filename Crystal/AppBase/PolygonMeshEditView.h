@@ -15,7 +15,7 @@ namespace Crystal {
 class PolygonMeshEditView : public IWindow
 {
 public:
-	PolygonMeshEditView(const std::string& name, Repository* repository, Canvas* canvas);
+	PolygonMeshEditView(const std::string& name, RootScene* repository, Canvas* canvas);
 
 	void show() override;
 

@@ -11,7 +11,7 @@ namespace Crystal {
 class ITreeList : public IWindow
 {
 protected:
-	ITreeList(const std::string& name, Repository* model, Canvas* canvas) :
+	ITreeList(const std::string& name, RootScene* model, Canvas* canvas) :
 		IWindow(name),
 		repository(model),
 		canvas(canvas)
@@ -25,12 +25,12 @@ protected:
 
 	std::string getName() const { return name; }
 
-	Repository* getRepository() { return repository; }
+	RootScene* getRepository() { return repository; }
 
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	Repository* repository;
+	RootScene* repository;
 	Canvas* canvas;
 };
 

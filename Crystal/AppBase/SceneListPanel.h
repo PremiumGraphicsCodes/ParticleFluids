@@ -11,7 +11,7 @@ namespace Crystal {
 class SceneListPanel : public IPanel
 {
 public:
-	SceneListPanel(const std::string& name, Repository* model, Canvas* canvas, IPanel* control);
+	SceneListPanel(const std::string& name, RootScene* model, Canvas* canvas, IPanel* control);
 
 	void show() override;
 

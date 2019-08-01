@@ -9,7 +9,7 @@ namespace Crystal {
 class ShaderAddView : public IPanel
 {
 public:
-	ShaderAddView(const std::string& name, Repository* model, Canvas* canvas);
+	ShaderAddView(const std::string& name, RootScene* model, Canvas* canvas);
 
 	void show() override;
 

@@ -9,7 +9,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-PMQuadView::PMQuadView(Repository* model, Canvas* canvas) :
+PMQuadView::PMQuadView(RootScene* model, Canvas* canvas) :
 	IPanel("PMQuad", model, canvas),
 	quad("Quad"),
 	materialName("Material", ""),

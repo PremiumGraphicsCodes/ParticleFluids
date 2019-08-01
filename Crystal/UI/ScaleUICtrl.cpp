@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-ScaleUICtrl::ScaleUICtrl(Repository* repository, Canvas* canvas) :
+ScaleUICtrl::ScaleUICtrl(RootScene* repository, Canvas* canvas) :
 	repository(repository),
 	canvas(canvas)
 {

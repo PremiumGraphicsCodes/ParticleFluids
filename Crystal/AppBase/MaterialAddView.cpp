@@ -7,7 +7,7 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-MaterialAddView::MaterialAddView(const std::string& name, Repository* model, Canvas* canvas) :
+MaterialAddView::MaterialAddView(const std::string& name, RootScene* model, Canvas* canvas) :
 	IPanel(name, model, canvas),
 	material("Material"),
 	name("Name", "Material1")

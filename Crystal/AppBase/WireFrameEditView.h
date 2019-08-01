@@ -14,7 +14,7 @@ namespace Crystal {
 class WireFrameEditView : public IWindow
 {
 public:
-	WireFrameEditView(const std::string& name, Repository* repository, Canvas* canvas);
+	WireFrameEditView(const std::string& name, RootScene* repository, Canvas* canvas);
 
 	void show() override;
 

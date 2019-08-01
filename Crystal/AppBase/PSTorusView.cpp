@@ -6,7 +6,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
-PSTorusView::PSTorusView(Repository* model, Canvas* canvas) :
+PSTorusView::PSTorusView(RootScene* model, Canvas* canvas) :
 	IPanel("PSTorus", model, canvas),
 	torusView("Torus"),
 	attribute("Attribute"),

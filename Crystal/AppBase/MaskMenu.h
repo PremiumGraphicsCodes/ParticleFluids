@@ -8,7 +8,7 @@ namespace Crystal {
 class MaskMenu : public IMenu
 {
 public:
-	MaskMenu(const std::string& name, Repository* model, Canvas* canvas) :
+	MaskMenu(const std::string& name, RootScene* model, Canvas* canvas) :
 		IMenu(name, model, canvas)
 	{}
 

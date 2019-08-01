@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-PMBoxView::PMBoxView(Repository* model, Canvas* canvas) :
+PMBoxView::PMBoxView(RootScene* model, Canvas* canvas) :
 	IPanel("PMBox", model, canvas),
 	boxView("Box"),
 	materialName("MaterialName", ""),

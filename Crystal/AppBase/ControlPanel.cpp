@@ -2,7 +2,7 @@
 
 using namespace Crystal::UI;
 
-ControlPanel::ControlPanel(const std::string& name, Repository* model, Canvas* canvas) :
+ControlPanel::ControlPanel(const std::string& name, RootScene* model, Canvas* canvas) :
 	IPanel(name, model, canvas)
 {
 }

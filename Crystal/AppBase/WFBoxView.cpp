@@ -7,7 +7,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-WFBoxView::WFBoxView(Repository* model, Canvas* canvas) :
+WFBoxView::WFBoxView(RootScene* model, Canvas* canvas) :
 	IPanel("WFBox", model, canvas),
 	box("Box"),
 	attribute("Attribute"),

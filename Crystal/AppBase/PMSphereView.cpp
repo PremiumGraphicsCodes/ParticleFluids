@@ -6,7 +6,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
-PMSphereView::PMSphereView(Repository* model, Canvas* canvas) :
+PMSphereView::PMSphereView(RootScene* model, Canvas* canvas) :
 	IPanel("PMSphere", model, canvas),
 	sphere("Sphere"),
 	unum("UNum", 36),

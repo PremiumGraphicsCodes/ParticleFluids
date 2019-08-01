@@ -3,7 +3,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-ParticleSystemEditView::ParticleSystemEditView(const std::string& name, Repository* repository, Canvas* canvas) :
+ParticleSystemEditView::ParticleSystemEditView(const std::string& name, RootScene* repository, Canvas* canvas) :
 	IWindow(name),
 	particleSystem("ParticleSystem"),
 	id("Id"),
