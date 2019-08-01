@@ -6,21 +6,17 @@
 namespace Crystal {
 	namespace UI {
 
-class SphereRegionSelectButton : public IPopupButton
+class SphereRegionSelectView : public IPanel
 {
 public:
-	SphereRegionSelectButton(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
-		IPopupButton(name, model, canvas),
+	SphereRegionSelectView(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
+		IPanel(name, model, canvas),
 		object("Object", model, canvas, Scene::SceneType::ParticleSystemScene),
 		sphere("Region")
 	{
 	}
 
-	void onShow() override;
-
-	void onOk() override;
-
-	void onCancel() override;
+	void show() override;
 
 	//std::vector<Math::Vector3dd> getSelected() const { return positions; }
 

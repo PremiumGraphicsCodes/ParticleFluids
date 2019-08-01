@@ -57,9 +57,6 @@
     <ClCompile Include="FaceGroupView.cpp">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClCompile>
-    <ClCompile Include="SphereRegionSelectButton.cpp">
-      <Filter>Selection\Region</Filter>
-    </ClCompile>
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="SceneListPanel.cpp">
       <Filter>Scene</Filter>
@@ -175,6 +172,9 @@
     </ClCompile>
     <ClCompile Include="PositionSelectView.cpp">
       <Filter>Selection</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereRegionSelectView.cpp">
+      <Filter>Selection\Region</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -311,9 +311,6 @@
     <ClInclude Include="FaceGroupView.h">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClInclude>
-    <ClInclude Include="SphereRegionSelectButton.h">
-      <Filter>Selection\Region</Filter>
-    </ClInclude>
     <ClInclude Include="BoolView.h">
       <Filter>Primitive</Filter>
     </ClInclude>
@@ -426,6 +423,9 @@
     </ClInclude>
     <ClInclude Include="PositionSelectView.h">
       <Filter>Selection</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereRegionSelectView.h">
+      <Filter>Selection\Region</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

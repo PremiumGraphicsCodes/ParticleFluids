@@ -1,7 +1,7 @@
 #include "SelectionPanel.h"
 #include "ObjectSelectView.h"
 #include "PositionSelectView.h"
-#include "SphereRegionSelectButton.h"
+#include "SphereRegionSelectView.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -13,5 +13,5 @@ SelectionPanel::SelectionPanel(const std::string& name, RootScene* model, Canvas
 {
 	add(new ObjectSelectView("Shape", model, canvas));
 	add(new PositionSelectView("Position", model, canvas));
-	add(new SphereRegionSelectButton("SphereRegion", model, canvas));
+	add(new SphereRegionSelectView("SphereRegion", model, canvas));
 }
