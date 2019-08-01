@@ -18,9 +18,6 @@
     <ClCompile Include="SelectionPanel.cpp">
       <Filter>Selection</Filter>
     </ClCompile>
-    <ClCompile Include="PositionSelectButton.cpp">
-      <Filter>Selection</Filter>
-    </ClCompile>
     <ClCompile Include="imgui_impl_glfw.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
@@ -176,6 +173,9 @@
     <ClCompile Include="ObjectSelectView.cpp">
       <Filter>Selection</Filter>
     </ClCompile>
+    <ClCompile Include="PositionSelectView.cpp">
+      <Filter>Selection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -199,9 +199,6 @@
       <Filter>Window</Filter>
     </ClInclude>
     <ClInclude Include="SelectionPanel.h">
-      <Filter>Selection</Filter>
-    </ClInclude>
-    <ClInclude Include="PositionSelectButton.h">
       <Filter>Selection</Filter>
     </ClInclude>
     <ClInclude Include="imgui_impl_glfw.h">
@@ -425,6 +422,9 @@
       <Filter>Menu</Filter>
     </ClInclude>
     <ClInclude Include="ObjectSelectView.h">
+      <Filter>Selection</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionSelectView.h">
       <Filter>Selection</Filter>
     </ClInclude>
   </ItemGroup>

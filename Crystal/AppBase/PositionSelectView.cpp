@@ -1,4 +1,4 @@
-#include "PositionSelectButton.h"
+#include "PositionSelectView.h"
 
 #include "imgui.h"
 #include "../UI/PickUICtrl.h"
@@ -7,12 +7,12 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-void PositionSelectButton::onShow()
+void PositionSelectView::show()
 {
 	ImGui::InputFloat3("Position", &position[0]);
 	if (ImGui::Button("Pick")) {
-		auto ctrl = new PickUICtrl(getModel(), getCanvas(), SceneType::PolygonMeshScene);
-		auto model = getModel();
+		auto ctrl = new PickUICtrl(getRepository(), getCanvas(), SceneType::PolygonMeshScene);
+		auto model = getRepository();
 		//model->getObjects()->getParticleSystems()->findParticleById();
 		auto func = [=](int parentId, int childId) {
 			/*
@@ -25,16 +25,4 @@ void PositionSelectButton::onShow()
 		ctrl->setFunction(func);
 		getCanvas()->setUICtrl(ctrl);
 	}
-}
-
-void PositionSelectButton::onOk()
-{
-	auto ctrl = new CameraUICtrl(getCanvas()->getCamera());
-	getCanvas()->setUICtrl(ctrl);
-}
-
-void PositionSelectButton::onCancel()
-{
-	auto ctrl = new CameraUICtrl(getCanvas()->getCamera());
-	getCanvas()->setUICtrl(ctrl);
 }
