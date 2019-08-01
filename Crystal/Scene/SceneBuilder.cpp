@@ -3,10 +3,15 @@
 #include "../Graphics/PointLight.h"
 
 #include "../Graphics/Image.h"
+#include "../Shader/ShaderObject.h"
+#include "ShaderScene.h"
 
 #include "Scene.h"
 
+#include <sstream>
+
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 bool SceneBuilder::build()
@@ -29,5 +34,59 @@ bool SceneBuilder::build()
 
 	scene.addScene(factory.createTextureScene(Image(512, 512), "IdTexture"));
 
+	return buildPointShader();
+}
+
+bool SceneBuilder::buildPointShader()
+{
+	std::string vsSource;
+	{
+		std::ostringstream stream;
+		stream
+			<< "#version 150" << std::endl
+			<< "in vec3 position;" << std::endl
+			<< "in float pointSize;" << std::endl
+			<< "in vec4 color;" << std::endl
+			<< "out vec4 vColor;" << std::endl
+			<< "uniform mat4 projectionMatrix;" << std::endl
+			<< "uniform mat4 modelviewMatrix;" << std::endl
+			<< "void main(void) {" << std::endl
+			<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position, 1.0);" << std::endl
+			<< "	gl_PointSize = pointSize / gl_Position.w;" << std::endl
+			<< "	vColor = color;" << std::endl
+			<< "}" << std::endl;
+		vsSource = stream.str();
+	}
+	std::string fsSource;
+	{
+		std::ostringstream stream;
+		stream
+			<< "#version 150" << std::endl
+			<< "in vec4 vColor;" << std::endl
+			<< "out vec4 fragColor;" << std::endl
+			<< "void main(void) {" << std::endl
+			<< "	vec2 coord = gl_PointCoord * 2.0 - 1.0;" << std::endl
+			<< "	float distSquared = 1.0 - dot(coord, coord);" << std::endl
+			<< "	if (distSquared < 0.0) {" << std::endl
+			<< "		discard;" << std::endl
+			<< "	}" << std::endl
+			<< "	fragColor.rgba = vColor;" << std::endl
+			//		<< "	fragColor.a = sqrt(distSquared) * vColor.a;" << std::endl
+			//		<< "	fragColor.a = 0.1;//sqrt(distSquared);" << std::endl
+			<< "}" << std::endl;
+		fsSource = stream.str();
+	}
+	auto shader = new ShaderObject();
+	if (!shader->build(vsSource, fsSource)) {
+		return false;
+	}
+	shader->findUniformLocation("projectionMatrix");
+	shader->findUniformLocation("modelviewMatrix");
+
+	shader->findAttribLocation("position");
+	shader->findAttribLocation("color");
+	shader->findAttribLocation("pointSize");
+
+	scene.addScene(factory.createShaderScene(shader, "PointShader"));
 	return true;
 }
