@@ -9,7 +9,23 @@ namespace Crystal {
 class SceneBuilder
 {
 public:
-	static void build(Scene& scene, SceneFactory& factory);
+	SceneBuilder(Scene& scene, SceneFactory& factory) :
+		scene(scene),
+		factory(factory)
+	{}
+
+	bool build();
+
+private:
+	bool buildPointShader();
+
+	bool buildLineShader();
+
+	bool buildSmoothShader();
+
+private:
+	Scene& scene;
+	SceneFactory& factory;
 };
 	}
 }

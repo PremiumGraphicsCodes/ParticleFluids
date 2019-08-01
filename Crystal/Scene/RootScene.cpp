@@ -24,7 +24,8 @@ RootScene::~RootScene()
 
 void RootScene::init()
 {
-	SceneBuilder::build(objects, objectFactory);
+	SceneBuilder builder(objects, objectFactory);
+	builder.build();
 }
 
 void RootScene::clear()
