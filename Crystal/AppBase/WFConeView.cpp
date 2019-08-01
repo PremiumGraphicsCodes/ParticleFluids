@@ -8,14 +8,12 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFConeView::WFConeView(RootScene* model, Canvas* canvas) :
-	IPanel("WFCone", model, canvas),
+	IOkCancelView("WFCone", model, canvas),
 	cone("Cone"),
 	attribute("Attribute"),
 	unum("UNum", 12),
-	vnum("VNum", 12),
-	ok("Ok")
+	vnum("VNum", 12)
 {
-	ok.setFunction([=]() { onOk(); });
 }
 
 void WFConeView::show()
@@ -24,7 +22,7 @@ void WFConeView::show()
 	vnum.show();
 	cone.show();
 	attribute.show();
-	ok.show();
+	IOkCancelView::show();
 }
 
 void WFConeView::onOk()

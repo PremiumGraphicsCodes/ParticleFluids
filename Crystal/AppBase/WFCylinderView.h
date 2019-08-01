@@ -1,15 +1,14 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IOkCancelView.h"
 #include "IntView.h"
 #include "Cylinder3dView.h"
 #include "WFAttributeView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
 
-class WFCylinderView : public IPanel
+class WFCylinderView : public IOkCancelView
 {
 public:
 	WFCylinderView(Scene::RootScene* model, Canvas* canvas);
@@ -17,14 +16,13 @@ public:
 	void show() override;
 
 private:
-	void onOk();
+	void onOk() override;
 
 private:
 	IntView unum;
 	IntView vnum;
 	Cylinder3dView cylinder;
 	WFAttributeView attribute;
-	Button ok;
 };
 
 	}

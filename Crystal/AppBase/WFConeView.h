@@ -1,17 +1,15 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IOkCancelView.h"
 #include "IntView.h"
 #include "WFAttributeView.h"
 
-#include "../Math/Vector3d.h"
 #include "Cone3dView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
 
-class WFConeView : public IPanel
+class WFConeView : public IOkCancelView
 {
 public:
 	WFConeView(Scene::RootScene* model, Canvas* canvas);
@@ -19,14 +17,13 @@ public:
 	void show() override;
 
 private:
-	void onOk();
+	void onOk() override;
 
 private:
 	IntView unum;
 	IntView vnum;
 	Cone3dView cone;
 	WFAttributeView attribute;
-	Button ok;
 };
 
 	}

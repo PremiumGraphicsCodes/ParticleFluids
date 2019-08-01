@@ -91,7 +91,7 @@ public:
 
 	virtual bool build() { return false; };
 
-	virtual void render() {};
+	virtual void onRender() {};
 
 protected:
 	virtual void onClear() = 0;

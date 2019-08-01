@@ -8,14 +8,12 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFCylinderView::WFCylinderView(RootScene* model, Canvas* canvas) :
-	IPanel("WFCylinder", model, canvas),
+	IOkCancelView("WFCylinder", model, canvas),
 	cylinder("Cylinder"),
 	attribute("Attribute"),
 	unum("UNum", 12),
-	vnum("VNum", 12),
-	ok("Ok")
+	vnum("VNum", 12)
 {
-	ok.setFunction([=]() { onOk(); });
 }
 
 void WFCylinderView::show()
@@ -24,6 +22,7 @@ void WFCylinderView::show()
 	unum.show();
 	vnum.show();
 	attribute.show();
+	IOkCancelView::show();
 }
 
 void WFCylinderView::onOk()

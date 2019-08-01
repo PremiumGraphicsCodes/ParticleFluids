@@ -1,7 +1,5 @@
 #include "WFSphereView.h"
 
-#include "imgui.h"
-
 #include "../Math/Sphere3d.h"
 #include "../Shape/WireFrameBuilder.h"
 
@@ -11,14 +9,12 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFSphereView::WFSphereView(RootScene* repository, Canvas* canvas) :
-	IPanel("WFSphere", repository, canvas),
+	IOkCancelView("WFSphere", repository, canvas),
 	sphere("Sphere"),
 	attribute("Attribute"),
 	unum("UNum", 12),
-	vnum("VNum", 12),
-	ok("Ok")
+	vnum("VNum", 12)
 {
-	ok.setFunction([=]() { onOk(); });
 }
 
 void WFSphereView::show()
@@ -27,6 +23,7 @@ void WFSphereView::show()
 	unum.show();
 	vnum.show();
 	attribute.show();
+	IOkCancelView::show();
 }
 
 void WFSphereView::onOk()
