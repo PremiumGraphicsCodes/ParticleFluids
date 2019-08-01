@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ObjectSelectButton.h"
+#include "ObjectSelectView.h"
 #include "Sphere3dView.h"
 
 namespace Crystal {
@@ -25,7 +25,7 @@ public:
 	//std::vector<Math::Vector3dd> getSelected() const { return positions; }
 
 private:
-	ObjectSelectButton object;
+	ObjectSelectView object;
 	Sphere3dView sphere;
 };
 

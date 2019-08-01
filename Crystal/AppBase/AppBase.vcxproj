@@ -67,7 +67,7 @@
     <ClCompile Include="PSSphereView.cpp" />
     <ClCompile Include="PSTorusView.cpp" />
     <ClCompile Include="ScreenMenu.cpp" />
-    <ClCompile Include="ObjectSelectButton.cpp" />
+    <ClCompile Include="ObjectSelectView.cpp" />
     <ClCompile Include="PositionSelectButton.cpp" />
     <ClCompile Include="SelectionPanel.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
@@ -153,7 +153,7 @@
     <ClInclude Include="Sphere3dView.h" />
     <ClInclude Include="StringView.h" />
     <ClInclude Include="Torus3dView.h" />
-    <ClInclude Include="ObjectSelectButton.h" />
+    <ClInclude Include="ObjectSelectView.h" />
     <ClInclude Include="PositionSelectButton.h" />
     <ClInclude Include="SelectionPanel.h" />
     <ClInclude Include="tinyfiledialogs.h" />
