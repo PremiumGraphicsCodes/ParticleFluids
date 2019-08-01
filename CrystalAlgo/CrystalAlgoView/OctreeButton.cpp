@@ -2,10 +2,11 @@
 
 #include "../CrystalAlgo/Octree.h"
 
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-OctreeButton::OctreeButton(Repository* model, Canvas* canvas) :
+OctreeButton::OctreeButton(RootScene* model, Canvas* canvas) :
 	IPopupButton("Octree", model, canvas),
 	positionButton("Position", model, canvas),
 	objectButton("Object", model, canvas)

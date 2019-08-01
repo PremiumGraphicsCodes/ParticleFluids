@@ -10,7 +10,7 @@ namespace Crystal {
 class VolumeButton : public IPopupButton
 {
 public:
-	VolumeButton(Repository* model, Canvas* canvas);
+	VolumeButton(Scene::RootScene* model, Canvas* canvas);
 
 	void onShow() override;
 

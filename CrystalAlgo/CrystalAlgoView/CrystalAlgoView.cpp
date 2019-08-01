@@ -7,7 +7,7 @@
 
 #include "../../Crystal/AppBase/SceneListPanel.h"
 
-#include "../../Crystal/UI/Repository.h"
+#include "../../Crystal/Scene/RootScene.h"
 #include "../../Crystal/UI/Canvas.h"
 #include "../../Crystal/UI/ObjectRenderer.h"
 
@@ -23,13 +23,14 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 namespace {
 	class AlgoPanel : public IPanel
 	{
 	public:
-		AlgoPanel(const std::string& name, Repository* repository, Canvas* canvas) :
+		AlgoPanel(const std::string& name, RootScene* repository, Canvas* canvas) :
 			IPanel(name, repository, canvas)
 		{
 			add(new BooleanButton(model, canvas));
@@ -45,7 +46,7 @@ namespace {
 
 int main(int, char**)
 {
-	Repository model;
+	RootScene model;
 	Canvas canvas;
 
 	Window window(&model, &canvas);

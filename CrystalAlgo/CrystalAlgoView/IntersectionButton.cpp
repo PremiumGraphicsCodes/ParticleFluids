@@ -8,7 +8,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-IntersectionButton::IntersectionButton(Repository* model, Canvas* canvas) :
+IntersectionButton::IntersectionButton(RootScene* model, Canvas* canvas) :
 	IPopupButton("Intersection", model, canvas),
 	mesh1("Mesh1", model, canvas),
 	mesh2("Mesh2", model, canvas),

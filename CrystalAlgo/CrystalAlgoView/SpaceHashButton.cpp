@@ -7,7 +7,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-SpaceHashButton::SpaceHashButton(Repository* model, Canvas* canvas) :
+SpaceHashButton::SpaceHashButton(RootScene* model, Canvas* canvas) :
 	IPopupButton("SpaceHash", model, canvas),
 	positionButton("Position", model, canvas),
 	searchRadius("SearchRadius", 1.0),

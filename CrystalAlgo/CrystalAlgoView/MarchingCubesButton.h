@@ -10,7 +10,7 @@ namespace Crystal {
 class MarchingCubesButton : public IPopupButton
 {
 public:
-	MarchingCubesButton(Repository* model, Canvas* canvas);
+	MarchingCubesButton(Scene::RootScene* model, Canvas* canvas);
 
 	void onShow() override;
 

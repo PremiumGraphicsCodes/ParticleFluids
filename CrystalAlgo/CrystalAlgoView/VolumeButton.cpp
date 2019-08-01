@@ -11,7 +11,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-VolumeButton::VolumeButton(Repository* model, Canvas* canvas) :
+VolumeButton::VolumeButton(RootScene* model, Canvas* canvas) :
 	IPopupButton("Volume", model, canvas),
 	box("Box")
 {

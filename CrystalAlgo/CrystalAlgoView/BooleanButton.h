@@ -10,7 +10,7 @@ namespace Crystal {
 class BooleanButton : public IPopupButton
 {
 public:
-	BooleanButton(Repository* model, Canvas* canvas);
+	BooleanButton(Scene::RootScene* model, Canvas* canvas);
 
 	void onShow() override;
 

@@ -3,9 +3,10 @@
 #include "../CrystalAlgo/BooleanAlgo.h"
 
 using namespace Crystal::UI;
+using namespace Crystal::Scene;
 using namespace Crystal::Algo;
 
-BooleanButton::BooleanButton(Repository* model, Canvas* canvas) :
+BooleanButton::BooleanButton(RootScene* model, Canvas* canvas) :
 	IPopupButton("Boolean", model, canvas),
 	objectButton1("Polygon1", model, canvas),
 	objectButton2("Polygon2", model, canvas)

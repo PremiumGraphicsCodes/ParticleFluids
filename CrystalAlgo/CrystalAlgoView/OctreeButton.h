@@ -10,7 +10,7 @@ namespace Crystal {
 class OctreeButton : public IPopupButton
 {
 public:
-	OctreeButton(Repository* model, Canvas* canvas);
+	OctreeButton(Scene::RootScene* model, Canvas* canvas);
 
 	void onShow() override;
 

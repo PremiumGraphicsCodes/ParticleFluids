@@ -8,7 +8,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-VolumeConvertButton::VolumeConvertButton(Repository* model, Canvas* canvas) :
+VolumeConvertButton::VolumeConvertButton(RootScene* model, Canvas* canvas) :
 	IPopupButton("VolumeConvert", model, canvas),
 	objectButton("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
 	searchRadius("SearchRadius", 1.0)

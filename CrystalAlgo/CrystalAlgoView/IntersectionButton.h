@@ -10,7 +10,7 @@ namespace Crystal {
 class IntersectionButton : public IPopupButton
 {
 public:
-	IntersectionButton(Repository* model, Canvas* canvas);
+	IntersectionButton(Scene::RootScene* model, Canvas* canvas);
 
 	void onShow() override;
 

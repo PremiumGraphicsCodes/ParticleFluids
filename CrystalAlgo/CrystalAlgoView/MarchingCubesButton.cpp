@@ -11,7 +11,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-MarchingCubesButton::MarchingCubesButton(Repository* model, Canvas* canvas) :
+MarchingCubesButton::MarchingCubesButton(RootScene* model, Canvas* canvas) :
 	IPopupButton("MarchingCubes", model, canvas),
 	values({
 		DoubleView("Value0", 0),

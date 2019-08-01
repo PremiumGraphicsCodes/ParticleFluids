@@ -11,7 +11,7 @@ namespace Crystal {
 class SpaceHashButton : public IPopupButton
 {
 public:
-	SpaceHashButton(Repository* model, Canvas* canvas);
+	SpaceHashButton(Scene::RootScene* model, Canvas* canvas);
 
 	void onShow() override;
 
