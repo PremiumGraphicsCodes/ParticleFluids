@@ -4,6 +4,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PMSphereView::PMSphereView(RootScene* model, Canvas* canvas) :

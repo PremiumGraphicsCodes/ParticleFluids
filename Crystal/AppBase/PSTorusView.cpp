@@ -4,6 +4,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSTorusView::PSTorusView(RootScene* model, Canvas* canvas) :

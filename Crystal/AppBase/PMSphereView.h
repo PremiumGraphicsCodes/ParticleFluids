@@ -12,7 +12,7 @@ namespace Crystal {
 class PMSphereView : public IPanel
 {
 public:
-	PMSphereView(RootScene* model, Canvas* canvas);
+	PMSphereView(Scene::RootScene* model, Canvas* canvas);
 
 	void show() override;
 

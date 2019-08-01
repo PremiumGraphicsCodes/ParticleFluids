@@ -3,6 +3,7 @@
 #include "../Scene/RootScene.h"
 #include "../UI/Canvas.h"
 
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 void CameraMenu::show()

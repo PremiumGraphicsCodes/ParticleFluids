@@ -9,7 +9,7 @@ namespace Crystal {
 class SphereRegionSelectButton : public IPopupButton
 {
 public:
-	SphereRegionSelectButton(const std::string& name, RootScene* model, Canvas* canvas) :
+	SphereRegionSelectButton(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
 		IPopupButton(name, model, canvas),
 		object("Object", model, canvas, Scene::SceneType::ParticleSystemScene),
 		sphere("Region")

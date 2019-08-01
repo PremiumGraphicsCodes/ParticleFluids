@@ -3,14 +3,16 @@
 #include "IWindow.h"
 
 namespace Crystal {
-	namespace UI {
+	namespace Scene {
 		class RootScene;
+	}
+	namespace UI {
 		class Canvas;
 
 class IMenu : public IWindow
 {
 public:
-	IMenu(const std::string& name, RootScene* model, Canvas* canvas) :
+	IMenu(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
 		IWindow(name),
 		model(model),
 		canvas(canvas)
@@ -21,12 +23,12 @@ public:
 	virtual void show() {};
 
 protected:
-	RootScene* getModel() { return model; }
+	Scene::RootScene* getModel() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	RootScene* model;
+	Scene::RootScene* model;
 	Canvas* canvas;
 };
 	}

@@ -8,6 +8,7 @@
 #include "MaterialAddView.h"
 #include "TextureAddView.h"
 
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 void AppearanceMenu::show()

@@ -6,16 +6,16 @@
 namespace Crystal {
 	namespace Scene {
 		class IScene;
+		class RootScene;
 	}
 	namespace UI {
-		class RootScene;
 		class Canvas;
 
 
 class RotateUICtrl : public IUICtrl
 {
 public:
-	RotateUICtrl(RootScene* repository, Canvas* canvas);
+	RotateUICtrl(Scene::RootScene* repository, Canvas* canvas);
 
 	void add(Scene::IScene* object) { objects.push_back(object); }
 
@@ -43,7 +43,7 @@ public:
 
 private:
 	std::list<Scene::IScene*> objects;
-	RootScene* repository;
+	Scene::RootScene* repository;
 	Canvas* canvas;
 	Math::Vector2df prevPosition;
 };

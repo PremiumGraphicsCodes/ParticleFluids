@@ -14,7 +14,7 @@ namespace Crystal {
 class WFConeView : public IPanel
 {
 public:
-	WFConeView(RootScene* model, Canvas* canvas);
+	WFConeView(Scene::RootScene* model, Canvas* canvas);
 
 	void show() override;
 

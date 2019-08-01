@@ -1,6 +1,7 @@
 #include "TransformView.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 TransformView::TransformView(const std::string& name, RootScene* model, Canvas* canvas) :

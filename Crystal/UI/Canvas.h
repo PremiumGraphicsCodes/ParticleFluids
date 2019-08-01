@@ -14,10 +14,10 @@
 namespace Crystal {
 	namespace Scene {
 		class ViewModel;
+		class RootScene;
 	}
 	namespace UI {
 		class IUICtrl;
-		class RootScene;
 		class ObjectRenderer;
 
 class Canvas : public IMouseListener

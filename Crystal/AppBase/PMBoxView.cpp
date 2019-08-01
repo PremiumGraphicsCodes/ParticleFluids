@@ -6,6 +6,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PMBoxView::PMBoxView(RootScene* model, Canvas* canvas) :

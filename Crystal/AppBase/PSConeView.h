@@ -15,7 +15,7 @@ namespace Crystal {
 class PSConeView : public IPanel
 {
 public:
-	PSConeView(RootScene* model, Canvas* canvas);
+	PSConeView(Scene::RootScene* model, Canvas* canvas);
 
 	void show() override;
 

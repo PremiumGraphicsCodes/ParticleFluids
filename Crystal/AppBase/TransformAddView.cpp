@@ -4,6 +4,7 @@
 #include "../UI/Canvas.h"
 #include "../Scene/TransformScene.h"
 
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 TransformAddView::TransformAddView(const std::string& name, RootScene* model, Canvas* canvas) :

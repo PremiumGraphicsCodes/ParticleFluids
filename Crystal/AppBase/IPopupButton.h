@@ -11,7 +11,7 @@ namespace Crystal {
 class IPopupButton : public IWindow
 {
 protected:
-	IPopupButton(const std::string& name, RootScene* model, Canvas* canvas) :
+	IPopupButton(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
 		IWindow(name),
 		model(model),
 		canvas(canvas)
@@ -30,12 +30,12 @@ protected:
 
 	virtual void onCancel() = 0;
 
-	RootScene* getModel() { return model; }
+	Scene::RootScene* getModel() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	RootScene* model;
+	Scene::RootScene* model;
 	Canvas* canvas;
 };
 	}

@@ -5,6 +5,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 LightAddView::LightAddView(const std::string& name, RootScene* model, Canvas* canvas) :

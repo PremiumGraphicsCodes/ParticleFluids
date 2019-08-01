@@ -6,16 +6,16 @@
 namespace Crystal {
 	namespace Scene {
 		class IShapeScene;
+		class RootScene;
 	}
 	namespace UI {
-		class RootScene;
 		class Canvas;
 
 
 class ScaleUICtrl : public IUICtrl
 {
 public:
-	ScaleUICtrl(RootScene* repository, Canvas* canvas);
+	ScaleUICtrl(Scene::RootScene* repository, Canvas* canvas);
 
 	void add(Scene::IShapeScene* object) { objects.push_back(object); }
 
@@ -43,7 +43,7 @@ public:
 
 private:
 	std::list<Scene::IShapeScene*> objects;
-	RootScene* repository;
+	Scene::RootScene* repository;
 	Canvas* canvas;
 	Math::Vector2df prevPosition;
 };

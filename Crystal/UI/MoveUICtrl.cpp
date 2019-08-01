@@ -5,6 +5,7 @@
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 MoveUICtrl::MoveUICtrl(RootScene* repository, Canvas* canvas) :

@@ -10,7 +10,7 @@ namespace Crystal {
 class TextureAddView : public IPanel
 {
 public:
-	TextureAddView(const std::string& name, RootScene* model, Canvas* canvas);
+	TextureAddView(const std::string& name, Scene::RootScene* model, Canvas* canvas);
 
 	void show() override;
 

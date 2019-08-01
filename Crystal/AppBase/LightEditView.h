@@ -15,7 +15,7 @@ namespace Crystal {
 class LightEditView : public IWindow
 {
 public:
-	LightEditView(const std::string& name, RootScene* repository, Canvas* canvas);
+	LightEditView(const std::string& name, Scene::RootScene* repository, Canvas* canvas);
 
 	void setValue(Scene::LightScene* value);
 
@@ -28,7 +28,7 @@ private:
 	LightView light;
 	StringView name;
 	Button editButton;
-	RootScene* repository;
+	Scene::RootScene* repository;
 	Canvas* canvas;
 };
 

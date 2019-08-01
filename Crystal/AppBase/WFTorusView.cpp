@@ -6,6 +6,7 @@
 #include "../Shape/WireFrameBuilder.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFTorusView::WFTorusView(RootScene* model, Canvas* canvas) :

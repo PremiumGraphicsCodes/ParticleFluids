@@ -7,6 +7,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSSphereView::PSSphereView(RootScene* model, Canvas* canvas) :

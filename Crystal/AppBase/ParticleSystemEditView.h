@@ -15,7 +15,7 @@ namespace Crystal {
 class ParticleSystemEditView : public IWindow
 {
 public:
-	ParticleSystemEditView(const std::string& name, RootScene* repository, Canvas* canvas);
+	ParticleSystemEditView(const std::string& name, Scene::RootScene* repository, Canvas* canvas);
 
 	void show() override;
 

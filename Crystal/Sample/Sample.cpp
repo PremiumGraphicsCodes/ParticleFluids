@@ -17,6 +17,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 int main(int, char**)

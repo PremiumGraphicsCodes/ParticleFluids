@@ -8,7 +8,7 @@ namespace Crystal {
 class ScreenMenu : public IMenu
 {
 public:
-	ScreenMenu(const std::string& name, RootScene* model, Canvas* canvas) :
+	ScreenMenu(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
 		IMenu(name, model, canvas)
 	{}
 

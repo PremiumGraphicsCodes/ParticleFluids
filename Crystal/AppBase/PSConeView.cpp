@@ -4,6 +4,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSConeView::PSConeView(RootScene* model, Canvas* canvas) :

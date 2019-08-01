@@ -13,7 +13,7 @@ namespace Crystal {
 class PSTorusView : public IPanel
 {
 public:
-	PSTorusView(RootScene* model, Canvas* canvas);
+	PSTorusView(Scene::RootScene* model, Canvas* canvas);
 
 	void show() override;
 

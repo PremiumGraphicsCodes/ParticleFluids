@@ -4,6 +4,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSCylinderView::PSCylinderView(RootScene* model, Canvas* canvas) :

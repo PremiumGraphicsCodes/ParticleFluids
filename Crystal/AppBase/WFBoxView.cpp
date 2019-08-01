@@ -5,6 +5,7 @@
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFBoxView::WFBoxView(RootScene* model, Canvas* canvas) :

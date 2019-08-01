@@ -11,7 +11,7 @@ namespace Crystal {
 class PSCylinderView : public IPanel
 {
 public:
-	PSCylinderView(RootScene* model, Canvas* canvas);
+	PSCylinderView(Scene::RootScene* model, Canvas* canvas);
 
 	void show() override;
 

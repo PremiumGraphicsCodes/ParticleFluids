@@ -4,6 +4,7 @@
 #include "../Shape/WireFrameBuilder.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFConeView::WFConeView(RootScene* model, Canvas* canvas) :

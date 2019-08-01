@@ -8,7 +8,7 @@ namespace Crystal {
 class SelectionPanel : public IPanel
 {
 public:
-	SelectionPanel(const std::string& name, RootScene* model, Canvas* canvas);
+	SelectionPanel(const std::string& name, Scene::RootScene* model, Canvas* canvas);
 };
 
 	}

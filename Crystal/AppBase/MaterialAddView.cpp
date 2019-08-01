@@ -5,6 +5,7 @@
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 MaterialAddView::MaterialAddView(const std::string& name, RootScene* model, Canvas* canvas) :

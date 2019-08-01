@@ -11,7 +11,7 @@ namespace Crystal {
 class WFBoxView : public IPanel
 {
 public:
-	WFBoxView(RootScene* model, Canvas* canvas);
+	WFBoxView(Scene::RootScene* model, Canvas* canvas);
 
 	void show() override;
 

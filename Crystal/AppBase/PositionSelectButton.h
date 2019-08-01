@@ -9,7 +9,7 @@ namespace Crystal {
 class PositionSelectButton : public IPopupButton
 {
 public:
-	PositionSelectButton(const std::string& name, RootScene* model, Canvas* canvas) :
+	PositionSelectButton(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
 		IPopupButton(name, model, canvas),
 		position(0,0,0)
 	{

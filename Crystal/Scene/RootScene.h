@@ -1,14 +1,15 @@
 #pragma once
 
-#include "../Scene/Scene.h"
-#include "../Scene/SceneFactory.h"
-#include "../Scene/ViewModel.h"
-#include <filesystem>
-
 #include "../Util/UnCopyable.h"
 
+#include "Scene.h"
+#include "SceneFactory.h"
+#include "ViewModel.h"
+
+#include <filesystem>
+
 namespace Crystal {
-	namespace UI {
+	namespace Scene {
 
 class RootScene : private UnCopyable
 {
@@ -25,24 +26,24 @@ public:
 
 	bool exportFile(const std::experimental::filesystem::path& filePath);
 
-	Scene::Scene* getObjects() { return &objects; }
+	Scene* getObjects() { return &objects; }
 
-	Scene::Scene* getItems() { return &items; }
+	Scene* getItems() { return &items; }
 
-	Scene::SceneFactory* getObjectFactory() { return &objectFactory; }
+	SceneFactory* getObjectFactory() { return &objectFactory; }
 
-	Scene::SceneFactory* getItemFactory() { return &itemFactory; }
+	SceneFactory* getItemFactory() { return &itemFactory; }
 
-	Scene::ViewModel toViewModel();
+	ViewModel toViewModel();
 
 	Math::Box3d getBoundingBox() const;
 
 private:
-	Scene::Scene objects;
-	Scene::Scene items;
+	Scene objects;
+	Scene items;
 
-	Scene::SceneFactory objectFactory;
-	Scene::SceneFactory itemFactory;
+	SceneFactory objectFactory;
+	SceneFactory itemFactory;
 };
 	}
 }

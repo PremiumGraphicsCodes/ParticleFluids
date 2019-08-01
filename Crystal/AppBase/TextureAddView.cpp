@@ -6,6 +6,7 @@
 
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 TextureAddView::TextureAddView(const std::string& name, RootScene* model, Canvas* canvas) :

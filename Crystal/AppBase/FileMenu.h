@@ -8,7 +8,7 @@ namespace Crystal {
 class FileMenu : public IMenu
 {
 public:
-	FileMenu(const std::string& name, RootScene* model, Canvas* canvas) :
+	FileMenu(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
 		IMenu(name,model, canvas)
 	{}
 

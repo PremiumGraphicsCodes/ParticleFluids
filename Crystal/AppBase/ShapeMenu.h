@@ -9,7 +9,7 @@ namespace Crystal {
 class ShapeMenu : public IMenu
 {
 public:
-	ShapeMenu(const std::string& name, RootScene* model, Canvas* canvas, ControlPanel* control) :
+	ShapeMenu(const std::string& name, Scene::RootScene* model, Canvas* canvas, ControlPanel* control) :
 		IMenu(name, model, canvas),
 		control(control)
 	{}

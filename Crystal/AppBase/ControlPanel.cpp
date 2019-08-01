@@ -1,5 +1,6 @@
 #include "ControlPanel.h"
 
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 ControlPanel::ControlPanel(const std::string& name, RootScene* model, Canvas* canvas) :
