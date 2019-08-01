@@ -49,16 +49,17 @@ Vector3dd ParticleSystemScene::getPosition(const int index) const
 	return ps[index]->getPosition();
 }
 
-void ParticleSystemScene::build()
+bool ParticleSystemScene::build()
 {
 	if (!isVisible()) {
-		return;
+		return true;
 	}
 	const auto& particles = getShape()->getParticles();
 	for (auto p : particles) {
 		buffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
 	this->shader = getRoot()->findSceneByName<ShaderScene*>("PointShader")->getShader();
+	return true;
 }
 
 void ParticleSystemScene::render(const ICamera& camera)

@@ -50,7 +50,7 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
-	void build();
+	bool build() override;
 
 	void render(const Graphics::ICamera& camera);
 

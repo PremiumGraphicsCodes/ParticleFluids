@@ -50,3 +50,18 @@ Vector3dd WireFrameScene::getPosition(const int index) const
 	const auto& vertices = getShape()->getVertices();
 	return vertices[index];
 }
+
+bool WireFrameScene::build()
+{
+	if (!isVisible()) {
+		return true;
+	}
+	/*
+	const auto& particles = getShape()->getParticles();
+	for (auto p : particles) {
+		buffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
+	}
+	this->shader = getRoot()->findSceneByName<ShaderScene*>("LineShader")->getShader();
+	*/
+	return true;
+}

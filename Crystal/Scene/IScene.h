@@ -89,7 +89,7 @@ public:
 
 	bool isLeaf() const { return children.empty(); }
 
-	virtual void build() {};
+	virtual bool build() { return false; };
 
 	virtual void render() {};
 

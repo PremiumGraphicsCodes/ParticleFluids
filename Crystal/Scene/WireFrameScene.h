@@ -49,6 +49,8 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
+	bool build() override;
+
 private:
 	Shape::WireFrame* shape;
 	WireFrameAttribute attribute;

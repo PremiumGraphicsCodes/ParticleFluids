@@ -17,6 +17,8 @@ public:
 	bool build();
 
 private:
+	void buildLight();
+
 	bool buildPointShader();
 
 	bool buildLineShader();
