@@ -30,6 +30,7 @@
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="Matrix3dView.cpp" />
     <ClCompile Include="SelectionMenu.cpp" />
+    <ClCompile Include="ShaderAddView.cpp" />
     <ClCompile Include="ShapeMenu.cpp" />
     <ClCompile Include="TextureAddView.cpp" />
     <ClCompile Include="TextureEditView.cpp" />

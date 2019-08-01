@@ -87,7 +87,9 @@ bool SceneBuilder::buildPointShader()
 	}
 
 
-	auto sscene = factory.createShaderScene(vsSource, fsSource, "PointShader");
+	auto sscene = factory.createShaderScene("PointShader");
+	sscene->setVertexShaderSource(vsSource);
+	sscene->setFragmentShaderSource(fsSource);
 	sscene->addUniform("projectionMatrix");
 	sscene->addUniform("modelviewMatrix");
 	sscene->addAttribute("position");

@@ -12,11 +12,13 @@ namespace Crystal {
 class ShaderScene : public IScene
 {
 public:
-	ShaderScene(const int id, const std::string& name, const std::string& vsSource, const std::string& fsSource) :
-		IScene(id, name),
-		vsSource(vsSource),
-		fsSource(fsSource)
+	ShaderScene(const int id, const std::string& name) :
+		IScene(id, name)
 	{}
+
+	void setVertexShaderSource(const std::string& vsSource) { this->vsSource = vsSource; }
+
+	void setFragmentShaderSource(const std::string& fsSource) { this->fsSource = fsSource; }
 
 	void addUniform(const std::string& name) { uniforms.push_back(name); }
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IPanel.h"
-#include "TransformView.h"
+//#include "ShaderView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -14,7 +14,7 @@ public:
 	void show() override;
 
 private:
-	TransformView transform;
+	//ShaderView shader;
 };
 
 	}

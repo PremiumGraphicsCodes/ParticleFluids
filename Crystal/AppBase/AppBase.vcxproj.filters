@@ -176,6 +176,9 @@
     <ClCompile Include="SelectionMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderAddView.cpp">
+      <Filter>Scene\Appearance\Shader\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -551,6 +554,9 @@
     </Filter>
     <Filter Include="Scene\Appearance\Light\View">
       <UniqueIdentifier>{416758df-c1a5-498f-848d-5a53dda6e17c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Shader\View">
+      <UniqueIdentifier>{8bb109ae-0815-467f-b695-bdac07c4a6b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

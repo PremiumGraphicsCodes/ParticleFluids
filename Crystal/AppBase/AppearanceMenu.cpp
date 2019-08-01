@@ -7,6 +7,7 @@
 #include "LightAddView.h"
 #include "MaterialAddView.h"
 #include "TextureAddView.h"
+#include "ShaderAddView.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -28,7 +29,9 @@ void AppearanceMenu::show()
 		if (ImGui::MenuItem("Texture")) {
 			control->setWindow(new TextureAddView("Texture", getModel(), canvas));
 		}
-
+		if (ImGui::MenuItem("Shader")) {
+			control->setWindow(new ShaderAddView("Shader", getModel(), canvas));
+		}
 
 		ImGui::EndMenu();
 	}
