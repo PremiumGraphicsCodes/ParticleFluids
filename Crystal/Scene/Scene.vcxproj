@@ -30,6 +30,7 @@
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="RootScene.h" />
+    <ClInclude Include="SceneBuilder.h" />
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
@@ -73,6 +74,7 @@
     <ClCompile Include="PCDFileExporter.cpp" />
     <ClCompile Include="PCDFileImporter.cpp" />
     <ClCompile Include="SceneFactory.cpp" />
+    <ClCompile Include="SceneBuilder.cpp" />
     <ClCompile Include="ShaderScene.cpp" />
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
