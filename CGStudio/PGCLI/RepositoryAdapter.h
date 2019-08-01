@@ -3,8 +3,10 @@
 using namespace System;
 
 namespace Crystal {
+	namespace Scene {
+		class RootScene;
+	}
 	namespace UI {
-		class Repository;
 		class ViewModel3d;
 	}
 }
@@ -34,7 +36,7 @@ public:
 
 private:
 internal:
-	Crystal::UI::Repository* instance;
+	Crystal::Scene::RootScene* instance;
 };
 
 	}
