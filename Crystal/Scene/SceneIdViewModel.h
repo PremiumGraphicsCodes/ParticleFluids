@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Graphics/PointBuffer.h"
+#include "PointShaderScene.h"
 #include "../Graphics/LineBuffer.h"
 #include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/LightBuffer.h"
@@ -12,7 +12,7 @@ namespace Crystal {
 class SceneIdViewModel
 {
 public:
-	Graphics::PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
+	PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
 
 	Graphics::LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
 
@@ -25,7 +25,7 @@ public:
 	}
 
 public:
-	Graphics::PointBuffer pointIdBuffer;
+	PointBuffer pointIdBuffer;
 	Graphics::LineBuffer lineIdBuffer;
 	Graphics::LineBuffer triangleIdBuffer;
 };

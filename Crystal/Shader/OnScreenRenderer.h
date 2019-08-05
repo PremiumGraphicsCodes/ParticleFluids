@@ -2,7 +2,6 @@
 #define __CRYSTAL_SHADER_ON_SCREEN_RENDERER_H__
 
 #include "../Graphics/ICamera.h"
-#include "../Graphics/PointBuffer.h"
 #include "ITextureObject.h"
 #include "ShaderObject.h"
 #include "IShader.h"

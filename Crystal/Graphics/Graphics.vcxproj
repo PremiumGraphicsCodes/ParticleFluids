@@ -38,7 +38,6 @@
     <ClInclude Include="MaterialBuffer.h" />
     <ClInclude Include="OrthogonalCamera.h" />
     <ClInclude Include="PerspectiveCamera.h" />
-    <ClInclude Include="PointBuffer.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="TriangleBuffer.h" />
   </ItemGroup>

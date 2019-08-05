@@ -40,9 +40,6 @@
       <Filter>Buffer</Filter>
     </ClInclude>
     <ClInclude Include="PointLight.h" />
-    <ClInclude Include="PointBuffer.h">
-      <Filter>Buffer</Filter>
-    </ClInclude>
     <ClInclude Include="DrawableId.h" />
     <ClInclude Include="TriangleBuffer.h">
       <Filter>Buffer</Filter>
