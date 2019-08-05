@@ -66,6 +66,7 @@
     <ClCompile Include="FileImporter.cpp" />
     <ClCompile Include="FileExporter.cpp" />
     <ClCompile Include="IScene.cpp" />
+    <ClCompile Include="IShaderScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />

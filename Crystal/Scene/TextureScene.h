@@ -1,16 +1,16 @@
 #pragma once
 
-#include "IScene.h"
+#include "IShaderScene.h"
 #include "../Shader/TextureObject.h"
 
 namespace Crystal {
 	namespace Scene {
 
-class TextureScene : public IScene
+class TextureScene : public IShaderScene
 {
 public:
 	TextureScene(const int id, const std::string& name, const Graphics::Image& image) :
-		IScene(id, name),
+		IShaderScene(id, name),
 		image(image),
 		texture(nullptr)
 	{}
@@ -21,15 +21,9 @@ public:
 
 	Shader::TextureObject* getTexture() const { return texture.get(); }
 
-	SceneType getType() const override { return SceneType::TextureScene; }
-
-	void onClear() override { texture.reset(); }
-
-	SceneViewModel toViewModel() const override;
-
-	SceneIdViewModel toIdViewModel() const override;
-
 	bool build();
+
+	void render(const Graphics::ICamera& camera) override {}
 
 private:
 	Graphics::Image image;

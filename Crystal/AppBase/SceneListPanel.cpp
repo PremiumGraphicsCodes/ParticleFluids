@@ -92,6 +92,7 @@ void SceneListPanel::show(IScene* scene)
 					control->add(editView);
 					break;
 				}
+				/*
 				case SceneType::TextureScene:
 				{
 					auto editView = new TextureEditView("TextureEdit", model, canvas);
@@ -101,6 +102,7 @@ void SceneListPanel::show(IScene* scene)
 					control->add(editView);
 					break;
 				}
+				*/
 			}
 		}
 	}

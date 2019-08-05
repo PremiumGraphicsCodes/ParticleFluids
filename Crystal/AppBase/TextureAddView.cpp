@@ -39,5 +39,5 @@ void TextureAddView::show()
 
 void TextureAddView::onOk()
 {
-	getRepository()->getObjects()->addScene( getRepository()->getObjectFactory()->createTextureScene( image.getValue(), name.getValue()) );
+	//getRepository()->getObjects()->addScene( getRepository()->getObjectFactory()->createTextureScene( image.getValue(), name.getValue()) );
 }

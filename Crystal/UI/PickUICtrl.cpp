@@ -21,6 +21,7 @@ PickUICtrl::PickUICtrl(RootScene* model, Canvas* canvas, const SceneType& type) 
 
 void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 {
+	/*
 	const auto x = position.x;
 	const auto y = position.y;
 
@@ -40,6 +41,7 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 			function(parentId, childId);
 		}
 	}
+	*/
 }
 
 void PickUICtrl::onLeftButtonUp(const Vector2df& position)

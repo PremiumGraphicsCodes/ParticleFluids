@@ -29,7 +29,9 @@ void TextureEditView::show()
 
 void TextureEditView::setValue(TextureScene* value)
 {
+	/*
 	texture.setValue(value->getImage());
 	id.setValue(value->getId());
 	name.setValue(value->getName());
+	*/
 }

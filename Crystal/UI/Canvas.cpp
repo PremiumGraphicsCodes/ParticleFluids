@@ -35,7 +35,7 @@ void Canvas::build(IScene* scene, SceneFactory* factory)
 	renderer->build(scene, factory);
 }
 
-void Canvas::render(const int width, const int height, IScene* scene)
+void Canvas::render(const int width, const int height, IShaderScene* scene)
 {
 	this->width = width;
 	this->height = height;

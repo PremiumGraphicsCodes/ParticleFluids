@@ -35,6 +35,8 @@ public:
 
 	SceneFactory* getItemFactory() { return &itemFactory; }
 
+	RootShaderScene* getShaders() { return &shaders; }
+
 	ViewModel toViewModel();
 
 	Math::Box3d getBoundingBox() const;

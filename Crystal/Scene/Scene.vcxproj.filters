@@ -63,9 +63,6 @@
     <ClInclude Include="SceneIdViewModel.h">
       <Filter>ViewModel</Filter>
     </ClInclude>
-    <ClInclude Include="TextureScene.h">
-      <Filter>Scene\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="LightScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
@@ -108,6 +105,9 @@
       <Filter>ShaderScene</Filter>
     </ClInclude>
     <ClInclude Include="RootShaderScene.h">
+      <Filter>ShaderScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureScene.h">
       <Filter>ShaderScene</Filter>
     </ClInclude>
   </ItemGroup>
@@ -163,9 +163,6 @@
     <ClCompile Include="MaterialScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="TextureScene.cpp">
-      <Filter>Scene\Appearance</Filter>
-    </ClCompile>
     <ClCompile Include="TransformScene.cpp">
       <Filter>Scene\Transform</Filter>
     </ClCompile>
@@ -175,6 +172,12 @@
       <Filter>ShaderScene</Filter>
     </ClCompile>
     <ClCompile Include="PointShaderScene.cpp">
+      <Filter>ShaderScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureScene.cpp">
+      <Filter>ShaderScene</Filter>
+    </ClCompile>
+    <ClCompile Include="IShaderScene.cpp">
       <Filter>ShaderScene</Filter>
     </ClCompile>
   </ItemGroup>

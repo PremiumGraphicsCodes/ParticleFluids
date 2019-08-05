@@ -31,7 +31,7 @@ bool Renderer::build(IScene* scene, SceneFactory* factory)
 	return true;
 }
 
-void Renderer::render(const int width, const int height, IScene* scene)
+void Renderer::render(const int width, const int height, IShaderScene* scene)
 {
 	//const auto& tex = scene->findSceneByName<TextureScene*>("MainTexture");
 	const auto& smoothTex = scene->findSceneByName<TextureScene*>("SmoothTexture");

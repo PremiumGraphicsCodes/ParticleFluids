@@ -9,6 +9,7 @@
 #include "../Scene/ViewModel.h"
 
 #include "../Util/UnCopyable.h"
+#include "../Scene/IShaderScene.h"
 
 namespace Crystal {
 	namespace UI {
@@ -22,7 +23,7 @@ public:
 
 	bool build(Scene::IScene* scene, Scene::SceneFactory* factory);
 
-	void render(const int width, const int height, Scene::IScene* scene);
+	void render(const int width, const int height, Scene::IShaderScene* scene);
 
 	void setViewModel(Scene::ViewModel& vm) {
 		const auto& ovm = vm.object;
