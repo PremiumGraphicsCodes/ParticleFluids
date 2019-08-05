@@ -99,6 +99,8 @@ public:
 
 	void drawPoints(const int count);
 
+	void drawLines(const std::vector<unsigned int>& indices);
+
 	void bindOutput(const std::string& name);
 
 public:

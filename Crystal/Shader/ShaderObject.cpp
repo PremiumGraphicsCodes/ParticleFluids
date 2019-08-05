@@ -408,6 +408,11 @@ void ShaderObject::drawPoints(const int count)
 	glDrawArrays(GL_POINTS, 0, count);
 }
 
+void ShaderObject::drawLines(const std::vector<unsigned int>& indices)
+{
+	glDrawElements(GL_LINES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
+}
+
 void ShaderObject::bindOutput(const std::string& name)
 {
 	auto str = name.c_str();

@@ -72,34 +72,34 @@ void LineRenderer::render(const ICamera& camera)
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto& modelviewMatrix = camera.getModelviewMatrix();
 
-	assert(GL_NO_ERROR == glGetError());
+	//assert(GL_NO_ERROR == glGetError());
 
-	glEnable(GL_DEPTH_TEST);
 	glLineWidth(width);
 
+	shader->bind();
 
-	glUseProgram(shader->getId());
+	shader->enableDepthTest();
 
-	glUniformMatrix4fv(shader->getUniformLocation("projectionMatrix"), 1, GL_FALSE, &projectionMatrix[0][0]);
-	glUniformMatrix4fv(shader->getUniformLocation("modelviewMatrix"), 1, GL_FALSE, &modelviewMatrix[0][0]);
+	shader->sendUniform("projectionMatrix", projectionMatrix);
+	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
-	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
-	glVertexAttribPointer(shader->getAttribLocation("color"), 4, GL_FLOAT, GL_FALSE, 0, colors.data());
+	shader->sendVertexAttribute3df("position", positions);
+	shader->sendVertexAttribute4df("color", colors);
 
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
+	shader->enableVertexAttribute("position");
+	shader->enableVertexAttribute("color");
 
-	glDrawElements(GL_LINES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
+	shader->drawLines(indices);
 
-	glDisableVertexAttribArray(1);
-	glDisableVertexAttribArray(0);
+	shader->disableVertexAttribute("color");
+	shader->disableVertexAttribute("position");
 
-	glBindFragDataLocation(shader->getId(), 0, "fragColor");
-
-	glUseProgram(0);
+	shader->bindOutput("fragColor");
 
 	glLineWidth(1);
 
-	glDisable(GL_DEPTH_TEST);
+	//glDisable(GL_DEPTH_TEST);
+	shader->disableDepthTest();
 
+	shader->unbind();
 }
