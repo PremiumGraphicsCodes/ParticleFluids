@@ -13,9 +13,6 @@
     <ClInclude Include="CubeMapTextureObject.h">
       <Filter>Texture</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="PointRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -67,9 +64,6 @@
     </ClCompile>
     <ClCompile Include="CubeMapTextureObject.cpp">
       <Filter>Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="PointRenderer.cpp">
       <Filter>Renderer</Filter>
