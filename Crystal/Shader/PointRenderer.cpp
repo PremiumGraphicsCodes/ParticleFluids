@@ -85,20 +85,14 @@ void PointRenderer::render(const ICamera& camera)
 	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
 	glEnable(GL_POINT_SPRITE);
 
-	//glEnable(GL_DEPTH_TEST);
-
-	//glUseProgram(shader->getId());
 	shader->bind();
 
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
-
-	//auto bp = buffer.getPosition();
-	//shader->sendVertexAttribute("position", bp);
-	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
-	glVertexAttribPointer(shader->getAttribLocation("color"), 4, GL_FLOAT, GL_FALSE, 0, colors.data());
-	glVertexAttribPointer(shader->getAttribLocation("pointSize"), 1, GL_FLOAT, GL_FALSE, 0, sizes.data());
+	shader->sendVertexAttribute3df("position", positions);
+	shader->sendVertexAttribute4df("color", colors);
+	shader->sendVertexAttribute1df("pointSize", sizes);
 
 
 	//const auto bp = buffer.getPosition();

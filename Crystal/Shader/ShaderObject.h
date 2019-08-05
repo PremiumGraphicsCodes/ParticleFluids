@@ -81,11 +81,11 @@ public:
 		glUniformMatrix4fv( getUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
 	}
 
-	void sendVertexAttribute(const std::string& name, const Graphics::Buffer1d<float> buffer);
+	void sendVertexAttribute1df(const std::string& name, const std::vector<float>& data);
 
-	void sendVertexAttribute(const std::string& name, const Graphics::Buffer3d<float> buffer);
+	void sendVertexAttribute3df(const std::string& name, const std::vector<float>& data);
 
-	void sendVertexAttribute(const std::string& name, const Graphics::Buffer4d<float> buffer);
+	void sendVertexAttribute4df(const std::string& name, const std::vector<float>& data);
 
 public:
 	unsigned int id;
