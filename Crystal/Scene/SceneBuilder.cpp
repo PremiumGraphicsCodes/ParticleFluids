@@ -50,21 +50,6 @@ bool SceneBuilder::buildPointShader()
 {
 	std::string vsSource;
 	{
-		std::ostringstream stream;
-		stream
-			<< "#version 150" << std::endl
-			<< "in vec3 position;" << std::endl
-			<< "in float pointSize;" << std::endl
-			<< "in vec4 color;" << std::endl
-			<< "out vec4 vColor;" << std::endl
-			<< "uniform mat4 projectionMatrix;" << std::endl
-			<< "uniform mat4 modelviewMatrix;" << std::endl
-			<< "void main(void) {" << std::endl
-			<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position, 1.0);" << std::endl
-			<< "	gl_PointSize = pointSize / gl_Position.w;" << std::endl
-			<< "	vColor = color;" << std::endl
-			<< "}" << std::endl;
-		vsSource = stream.str();
 	}
 	std::string fsSource;
 	{
@@ -87,6 +72,7 @@ bool SceneBuilder::buildPointShader()
 	}
 
 
+	/*
 	auto sscene = factory.createShaderScene("PointShader");
 	sscene->setVertexShaderSource(vsSource);
 	sscene->setFragmentShaderSource(fsSource);
@@ -97,6 +83,7 @@ bool SceneBuilder::buildPointShader()
 	sscene->addAttribute("pointSize");
 
 	sscene->build();
+	*/
 	//scene.addScene(sscene);
 	return true;
 }

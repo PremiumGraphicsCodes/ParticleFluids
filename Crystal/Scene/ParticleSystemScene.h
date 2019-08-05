@@ -4,7 +4,6 @@
 #include "../Shape/ParticleSystem.h"
 #include "ParticleAttribute.h"
 #include "../Graphics/ICamera.h"
-#include "../Graphics/PointBuffer.h"
 #include "../Shader/IShaderCommand.h"
 
 namespace Crystal {

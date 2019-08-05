@@ -28,9 +28,11 @@
     <ClInclude Include="FileImporter.h" />
     <ClInclude Include="FileExporter.h" />
     <ClInclude Include="IScene.h" />
+    <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="PointShaderScene.h" />
     <ClInclude Include="RootScene.h" />
+    <ClInclude Include="RootShaderScene.h" />
     <ClInclude Include="SceneBuilder.h" />
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />

@@ -104,6 +104,12 @@
     <ClInclude Include="PointShaderScene.h">
       <Filter>ShaderScene</Filter>
     </ClInclude>
+    <ClInclude Include="IShaderScene.h">
+      <Filter>ShaderScene</Filter>
+    </ClInclude>
+    <ClInclude Include="RootShaderScene.h">
+      <Filter>ShaderScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">

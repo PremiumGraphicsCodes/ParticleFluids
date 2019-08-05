@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IScene.h"
+#include "IShaderScene.h"
 
 #include "../Shader/ShaderObject.h"
 
@@ -8,23 +8,6 @@
 
 namespace Crystal {
 	namespace Scene {
-
-class IShaderScene
-{
-public:
-	IShaderScene(const int id, const std::string& name) :
-		id(id),
-		name(name)
-	{}
-
-	virtual ~IShaderScene() {}
-
-	virtual bool build() = 0;
-
-private:
-	const int id;
-	std::string name;
-};
 
 class ShaderScene : public IShaderScene
 {
@@ -50,6 +33,8 @@ public:
 	std::string getFragmentShaderSource() const { return fsSource; }
 
 	Shader::ShaderObject* getShader() { return shader.get(); }
+
+	//void render(const Graphics::ICamera& camera) {};
 
 private:
 	std::unique_ptr<Shader::ShaderObject> shader;
