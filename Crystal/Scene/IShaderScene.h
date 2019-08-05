@@ -1,5 +1,6 @@
 #pragma once
 
+#include <list>
 #include <string>
 #include "../Graphics/ICamera.h"
 
@@ -18,13 +19,12 @@ public:
 
 	virtual bool build() = 0;
 
-	//virtual void render(Graphics::ICamera& camera) = 0;
-
 	virtual void render(const Graphics::ICamera& camera) = 0;
 
 private:
 	const int id;
 	std::string name;
+	std::list<IShaderScene*> children;
 };
 
 	}

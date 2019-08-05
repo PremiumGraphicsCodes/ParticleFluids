@@ -5,23 +5,18 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-std::string PointShaderScene::getBuiltInVsSource() const
+PointShaderScene::PointShaderScene(const int id, const std::string& name) :
+	ShaderScene(id, name)
 {
-	std::ostringstream stream;
-	stream
-		<< "#version 150" << std::endl
-		<< "in vec3 position;" << std::endl
-		<< "in float pointSize;" << std::endl
-		<< "in vec4 color;" << std::endl
-		<< "out vec4 vColor;" << std::endl
-		<< "uniform mat4 projectionMatrix;" << std::endl
-		<< "uniform mat4 modelviewMatrix;" << std::endl
-		<< "void main(void) {" << std::endl
-		<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position, 1.0);" << std::endl
-		<< "	gl_PointSize = pointSize / gl_Position.w;" << std::endl
-		<< "	vColor = color;" << std::endl
-		<< "}" << std::endl;
-	return stream.str();
+	setVertexShaderSource(getBuiltInVsSource());
+	setFragmentShaderSource(getBuiltInFsSource());
+
+	addUniform("projectionMatrix");
+	addUniform("modelviewMatrix");
+	
+	addAttribute("position");
+	addAttribute("color");
+	addAttribute("pointSize");
 }
 
 void PointShaderScene::render(const ICamera& camera)
@@ -67,4 +62,43 @@ void PointShaderScene::render(const ICamera& camera)
 	shader->disableDepthTest();
 
 	shader->unbind();
+}
+
+std::string PointShaderScene::getBuiltInVsSource() const
+{
+	std::ostringstream stream;
+	stream
+		<< "#version 150" << std::endl
+		<< "in vec3 position;" << std::endl
+		<< "in float pointSize;" << std::endl
+		<< "in vec4 color;" << std::endl
+		<< "out vec4 vColor;" << std::endl
+		<< "uniform mat4 projectionMatrix;" << std::endl
+		<< "uniform mat4 modelviewMatrix;" << std::endl
+		<< "void main(void) {" << std::endl
+		<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position, 1.0);" << std::endl
+		<< "	gl_PointSize = pointSize / gl_Position.w;" << std::endl
+		<< "	vColor = color;" << std::endl
+		<< "}" << std::endl;
+	return stream.str();
+}
+
+std::string PointShaderScene::getBuiltInFsSource() const
+{
+	std::ostringstream stream;
+	stream
+		<< "#version 150" << std::endl
+		<< "in vec4 vColor;" << std::endl
+		<< "out vec4 fragColor;" << std::endl
+		<< "void main(void) {" << std::endl
+		<< "	vec2 coord = gl_PointCoord * 2.0 - 1.0;" << std::endl
+		<< "	float distSquared = 1.0 - dot(coord, coord);" << std::endl
+		<< "	if (distSquared < 0.0) {" << std::endl
+		<< "		discard;" << std::endl
+		<< "	}" << std::endl
+		<< "	fragColor.rgba = vColor;" << std::endl
+		//		<< "	fragColor.a = sqrt(distSquared) * vColor.a;" << std::endl
+		//		<< "	fragColor.a = 0.1;//sqrt(distSquared);" << std::endl
+		<< "}" << std::endl;
+	return stream.str();
 }

@@ -48,39 +48,9 @@ void SceneBuilder::buildLight()
 
 bool SceneBuilder::buildPointShader()
 {
-	std::string vsSource;
-	{
-	}
-	std::string fsSource;
-	{
-		std::ostringstream stream;
-		stream
-			<< "#version 150" << std::endl
-			<< "in vec4 vColor;" << std::endl
-			<< "out vec4 fragColor;" << std::endl
-			<< "void main(void) {" << std::endl
-			<< "	vec2 coord = gl_PointCoord * 2.0 - 1.0;" << std::endl
-			<< "	float distSquared = 1.0 - dot(coord, coord);" << std::endl
-			<< "	if (distSquared < 0.0) {" << std::endl
-			<< "		discard;" << std::endl
-			<< "	}" << std::endl
-			<< "	fragColor.rgba = vColor;" << std::endl
-			//		<< "	fragColor.a = sqrt(distSquared) * vColor.a;" << std::endl
-			//		<< "	fragColor.a = 0.1;//sqrt(distSquared);" << std::endl
-			<< "}" << std::endl;
-		fsSource = stream.str();
-	}
-
 
 	/*
 	auto sscene = factory.createShaderScene("PointShader");
-	sscene->setVertexShaderSource(vsSource);
-	sscene->setFragmentShaderSource(fsSource);
-	sscene->addUniform("projectionMatrix");
-	sscene->addUniform("modelviewMatrix");
-	sscene->addAttribute("position");
-	sscene->addAttribute("color");
-	sscene->addAttribute("pointSize");
 
 	sscene->build();
 	*/

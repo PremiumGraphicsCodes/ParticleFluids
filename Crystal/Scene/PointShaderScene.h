@@ -13,9 +13,7 @@ namespace Crystal {
 class PointShaderScene : public ShaderScene
 {
 public:
-	PointShaderScene(const int id, const std::string& name) :
-		ShaderScene(id, name)
-	{}
+	PointShaderScene(const int id, const std::string& name);
 
 	void render(const Graphics::ICamera& camera) override;
 
