@@ -25,14 +25,6 @@ public:
 		buffer.push_back(v.y);
 	}
 
-	Math::Vector2df get(const unsigned int i) const {
-		const auto x = buffer[i * 2];
-		const auto y = buffer[i * 2 + 1];
-		return Math::Vector2df(x, y);
-	}
-
-	std::vector< T > get() const { return std::move(buffer); }
-
 	void merge(const Buffer2d<T>& rhs) {
 		buffer.insert(buffer.end(), rhs.buffer.begin(), rhs.buffer.end());
 	}

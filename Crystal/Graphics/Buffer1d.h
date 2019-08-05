@@ -20,10 +20,6 @@ public:
 
 	void add(const T v) { buffer.push_back(v); }
 
-	T get(const unsigned int i) const { return buffer.get[i]; }
-
-	std::vector< T > get() const { return buffer; }
-
 	void merge(const Buffer1d<T>& rhs) {
 		buffer.insert(buffer.end(), rhs.buffer.begin(), rhs.buffer.end());
 	}

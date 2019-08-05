@@ -33,8 +33,6 @@ public:
 
 	bool operator==(const Buffer4d<T>& rhs) { return buffer == rhs.buffer; }
 
-	std::vector< T > get() const { return buffer; }
-
 	void merge(const Buffer4d<T>& rhs) {
 		buffer.insert(buffer.end(), rhs.buffer.begin(), rhs.buffer.end());
 	}
