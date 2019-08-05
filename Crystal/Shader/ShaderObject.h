@@ -77,9 +77,11 @@ public:
 		glDisable(e);
 	}
 
-	void sendUniform(const std::string& name, Math::Matrix4df matrix);
+	void sendUniform(const std::string& name, const Math::Matrix4df& matrix);
 
 	void sendUniform(const std::string& name, const Math::Vector3df& vector);
+
+	void sendUniform(const std::string& name, const float value);
 
 	void sendVertexAttribute1df(const std::string& name, const std::vector<float>& data);
 

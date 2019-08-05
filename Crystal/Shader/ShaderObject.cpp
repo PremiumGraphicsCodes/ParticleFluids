@@ -342,7 +342,7 @@ unsigned int ShaderObject::getAttribLocation(const std::string& str)
 	return attribMap[str];
 }
 
-void ShaderObject::sendUniform(const std::string& name, Matrix4df matrix)
+void ShaderObject::sendUniform(const std::string& name, const Matrix4df& matrix)
 {
 	glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
 }
@@ -350,8 +350,13 @@ void ShaderObject::sendUniform(const std::string& name, Matrix4df matrix)
 void ShaderObject::sendUniform(const std::string& name, const Vector3df& v)
 {
 	glUniform3fv(getUniformLocation(name), 1, &v[0]);
-
 }
+
+void ShaderObject::sendUniform(const std::string& name, const float value)
+{
+	glUniform1f(getUniformLocation(name), value);
+}
+
 void ShaderObject::sendVertexAttribute1df(const std::string& name, const std::vector<float>& data)
 {
 	const auto location = getAttribLocation(name);

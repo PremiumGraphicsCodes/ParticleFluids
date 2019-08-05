@@ -5,10 +5,20 @@
 #include "ParticleAttribute.h"
 #include "../Graphics/ICamera.h"
 #include "../Graphics/PointBuffer.h"
-#include "../Shader/ShaderObject.h"
+#include "../Shader/IShaderCommand.h"
 
 namespace Crystal {
 	namespace Scene {
+
+class PointShaderCommand : public Shader::IShaderCommand
+{
+public:
+	Graphics::ICamera* camera;
+	Graphics::PointBuffer buffer;
+
+	void execute(Shader::ShaderObject* shader) override;
+};
+
 
 class ParticleSystemScene : public IShapeScene
 {
@@ -50,12 +60,11 @@ public:
 
 	bool onBuild() override;
 
-	void onRender(const Graphics::ICamera& camera) override;
+	Shader::IShaderCommand* toShaderCommand() override;
 
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;
-	Graphics::PointBuffer buffer;
-	Shader::ShaderObject* shader;
+	PointShaderCommand shaderCommand;
 };
 
 	}

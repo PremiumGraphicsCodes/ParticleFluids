@@ -161,7 +161,7 @@ void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const Textu
 		shader.sendUniform("material.Ka", m.ambient);
 		shader.sendUniform("material.Kd", m.diffuse);
 		shader.sendUniform("material.Ks", m.specular);
-		glUniform1f(shader.getUniformLocation("material.shininess"), m.shininess);
+		shader.sendUniform("material.shininess", m.shininess);
 		//glUniform1i(shader.getUniformLocation("texture1"), texture.getId());
 		shader.drawTriangles(indices);
 		//glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());

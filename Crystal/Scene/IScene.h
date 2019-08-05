@@ -8,6 +8,9 @@
 #include "../Graphics/ICamera.h"
 
 namespace Crystal {
+	namespace Shader {
+		class IShaderCommand;
+	}
 	namespace Scene {
 		class SceneViewModel;
 		class SceneIdViewModel;
@@ -94,7 +97,7 @@ public:
 
 	virtual bool onBuild() { return false; };
 
-	virtual void onRender(const Graphics::ICamera& camera) {};
+	virtual Shader::IShaderCommand* toShaderCommand() { return nullptr; };
 
 protected:
 	virtual void onClear() = 0;
