@@ -17,6 +17,11 @@ public:
 
 	void render(const Graphics::ICamera& camera) override;
 
+	void setBuffer(const Graphics::LineBuffer& buffer, const float width) {
+		this->buffer = buffer;
+		this->width = width;
+	}
+
 private:
 	std::string getBuiltInVsSource() const;
 
@@ -24,7 +29,6 @@ private:
 
 	Graphics::LineBuffer buffer;
 	float width;
-	Shader::ShaderObject* shader;
 };
 
 	}

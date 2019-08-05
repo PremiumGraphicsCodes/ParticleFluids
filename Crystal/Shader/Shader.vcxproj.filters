@@ -37,9 +37,6 @@
     <ClInclude Include="ShaderUniform.h">
       <Filter>Shader</Filter>
     </ClInclude>
-    <ClInclude Include="LineRenderer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="TriangleRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -82,9 +79,6 @@
     </ClCompile>
     <ClCompile Include="ShaderUniform.cpp">
       <Filter>Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="LineRenderer.cpp">
-      <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="TriangleRenderer.cpp">
       <Filter>Renderer</Filter>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Scene/PointShaderScene.h"
-#include "../Shader/LineRenderer.h"
+#include "../Scene/LineShaderScene.h"
 #include "../Shader/SmoothRenderer.h"
 
 #include "../Shader/FrameBufferObject.h"
@@ -22,7 +22,8 @@ class ObjectRenderer : private UnCopyable
 public:
 	ObjectRenderer(Graphics::ICamera* camera) :
 		camera(camera),
-		pointRenderer(0, "PointRenderer")
+		pointRenderer(-1, "PointRenderer"),
+		wireRenderer(-1, "LineRenderer")
 	{
 	}
 
@@ -36,7 +37,7 @@ public:
 
 private:
 	Scene::PointShaderScene pointRenderer;
-	Shader::LineRenderer wireRenderer;
+	Scene::LineShaderScene wireRenderer;
 	Shader::SmoothRenderer smoothRenderer;
 
 	std::vector<Shader::SmoothRenderer::Buffer> smoothBuffers;
