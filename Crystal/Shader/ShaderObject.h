@@ -79,6 +79,8 @@ public:
 
 	void sendUniform(const std::string& name, Math::Matrix4df matrix);
 
+	void sendUniform(const std::string& name, const Math::Vector3df& vector);
+
 	void sendVertexAttribute1df(const std::string& name, const std::vector<float>& data);
 
 	void sendVertexAttribute3df(const std::string& name, const std::vector<float>& data);
@@ -100,6 +102,8 @@ public:
 	void drawPoints(const int count);
 
 	void drawLines(const std::vector<unsigned int>& indices);
+
+	void drawTriangles(const std::vector<unsigned int>& indices);
 
 	void bindOutput(const std::string& name);
 

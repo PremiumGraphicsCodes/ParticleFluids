@@ -347,6 +347,11 @@ void ShaderObject::sendUniform(const std::string& name, Matrix4df matrix)
 	glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
 }
 
+void ShaderObject::sendUniform(const std::string& name, const Vector3df& v)
+{
+	glUniform3fv(getUniformLocation(name), 1, &v[0]);
+
+}
 void ShaderObject::sendVertexAttribute1df(const std::string& name, const std::vector<float>& data)
 {
 	const auto location = getAttribLocation(name);
@@ -411,6 +416,11 @@ void ShaderObject::drawPoints(const int count)
 void ShaderObject::drawLines(const std::vector<unsigned int>& indices)
 {
 	glDrawElements(GL_LINES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
+}
+
+void ShaderObject::drawTriangles(const std::vector<unsigned int>& indices)
+{
+	glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
 }
 
 void ShaderObject::bindOutput(const std::string& name)

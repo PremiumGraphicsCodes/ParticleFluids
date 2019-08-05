@@ -119,35 +119,27 @@ void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const Textu
 		return;
 	}
 
-	glEnable(GL_DEPTH_TEST);
-
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto& modelviewMatrix = camera.getModelviewMatrix();
 	const auto& eyePos = camera.getPosition();
 
-	assert(GL_NO_ERROR == glGetError());
-
-	//glUseProgram(shader.getId());
 	shader.bind();
-
 	shader.bindOutput("fragColor");
+
+	shader.enableDepthTest();
 
 	shader.sendUniform("projectionMatrix", projectionMatrix);
 	shader.sendUniform("modelviewMatrix", modelviewMatrix);
-	glUniform3fv(shader.getUniformLocation("eyePosition"), 1, &eyePos[0]);
+	shader.sendUniform("eyePosition", eyePos);
 
-	assert(GL_NO_ERROR == glGetError());
 
-	glVertexAttribPointer(shader.getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
-	glVertexAttribPointer(shader.getAttribLocation("normal"), 3, GL_FLOAT, GL_FALSE, 0, normals.data());
+	shader.sendVertexAttribute3df("position", positions);
+	shader.sendVertexAttribute3df("normal", normals);
 	//glVertexAttribPointer(shader.getAttribLocation("texCoord"), 2, GL_FLOAT, GL_FALSE, 0, texCoords.data());
 
-	assert(GL_NO_ERROR == glGetError());
 
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
-	glEnableVertexAttribArray(2);
-	assert(GL_NO_ERROR == glGetError());
+	shader.enableVertexAttribute("position");
+	shader.enableVertexAttribute("normal");
 
 	texture.bind();
 
@@ -160,31 +152,26 @@ void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const Textu
 		const auto& diffuse = light.getDiffuse();
 		const auto& specular = light.getSpecular();
 
-		glUniform3fv(shader.getUniformLocation("light.position"), 1, &lightPos[0]);
-		glUniform3fv(shader.getUniformLocation("light.La"), 1, &ambient[0]);
-		glUniform3fv(shader.getUniformLocation("light.Ld"), 1, &diffuse[0]);
-		glUniform3fv(shader.getUniformLocation("light.Ls"), 1, &specular[0]);
+		//glUniform3fv(shader.getUniformLocation("light.position"), 1, &lightPos[0]);
+		shader.sendUniform("light.La", ambient);
+		shader.sendUniform("light.Ld", diffuse);
+		shader.sendUniform("light.Ls", specular);
 
 		const auto& m = b.getMaterial();
-		glUniform3fv(shader.getUniformLocation("material.Ka"), 1, &m.ambient[0]);
-		glUniform3fv(shader.getUniformLocation("material.Kd"), 1, &m.diffuse[0]);
-		glUniform3fv(shader.getUniformLocation("material.Ks"), 1, &m.specular[0]);
+		shader.sendUniform("material.Ka", m.ambient);
+		shader.sendUniform("material.Kd", m.diffuse);
+		shader.sendUniform("material.Ks", m.specular);
 		glUniform1f(shader.getUniformLocation("material.shininess"), m.shininess);
 		//glUniform1i(shader.getUniformLocation("texture1"), texture.getId());
-		glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
+		shader.drawTriangles(indices);
+		//glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
 	}
 
 	texture.unbind();
 
-	glDisableVertexAttribArray(2);
-	glDisableVertexAttribArray(1);
-	glDisableVertexAttribArray(0);
+	shader.disableVertexAttribute("position");
+	shader.disableVertexAttribute("normal");
 
-	//glUseProgram(0);
+	shader.disableDepthTest();
 	shader.unbind();
-
-	const GLenum error = glGetError();
-	assert(GL_NO_ERROR == error);
-
-	glDisable(GL_DEPTH_TEST);
 }
