@@ -60,9 +60,9 @@ public:
 	void setBuffer(const PointBuffer& buffer) { this->buffer = buffer; }
 
 private:
-	std::string getBuiltInVsSource() const;
+	std::string getBuiltInVertexShaderSource() const;
 
-	std::string getBuiltInFsSource() const;
+	std::string getBuiltInFragmentShaderSource() const;
 
 	PointBuffer buffer;
 };

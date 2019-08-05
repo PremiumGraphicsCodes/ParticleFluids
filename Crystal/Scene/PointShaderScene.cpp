@@ -8,8 +8,8 @@ using namespace Crystal::Scene;
 PointShaderScene::PointShaderScene(const int id, const std::string& name) :
 	ShaderScene(id, name)
 {
-	setVertexShaderSource(getBuiltInVsSource());
-	setFragmentShaderSource(getBuiltInFsSource());
+	setVertexShaderSource(getBuiltInVertexShaderSource());
+	setFragmentShaderSource(getBuiltInFragmentShaderSource());
 
 	addUniform("projectionMatrix");
 	addUniform("modelviewMatrix");
@@ -64,7 +64,7 @@ void PointShaderScene::render(const ICamera& camera)
 	shader->unbind();
 }
 
-std::string PointShaderScene::getBuiltInVsSource() const
+std::string PointShaderScene::getBuiltInVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -83,7 +83,7 @@ std::string PointShaderScene::getBuiltInVsSource() const
 	return stream.str();
 }
 
-std::string PointShaderScene::getBuiltInFsSource() const
+std::string PointShaderScene::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

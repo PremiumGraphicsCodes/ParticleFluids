@@ -73,30 +73,26 @@ void TriangleRenderer::render(const ICamera& camera)
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto& modelviewMatrix = camera.getModelviewMatrix();
 
-	assert(GL_NO_ERROR == glGetError());
+	shader->bind();
+	shader->bindOutput("fragColor");
 
-	glEnable(GL_DEPTH_TEST);
+	shader->enableDepthTest();
 
-	glUseProgram(shader->getId());
+	shader->sendUniform("projectionMatrix", projectionMatrix);
+	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
-	glUniformMatrix4fv(shader->getUniformLocation("projectionMatrix"), 1, GL_FALSE, &projectionMatrix[0][0]);
-	glUniformMatrix4fv(shader->getUniformLocation("modelviewMatrix"), 1, GL_FALSE, &modelviewMatrix[0][0]);
+	shader->sendVertexAttribute3df("position", positions);
+	shader->sendVertexAttribute4df("color", colors);
 
-	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
-	glVertexAttribPointer(shader->getAttribLocation("color"), 4, GL_FLOAT, GL_FALSE, 0, colors.data());
+	shader->enableVertexAttribute("position");
+	shader->enableVertexAttribute("color");
 
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
+	shader->drawTriangles(indices);
 
-	glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
+	shader->disableVertexAttribute("color");
+	shader->disableVertexAttribute("position");
 
-	glDisableVertexAttribArray(1);
-	glDisableVertexAttribArray(0);
+	shader->disableDepthTest();
 
-	glBindFragDataLocation(shader->getId(), 0, "fragColor");
-
-	glUseProgram(0);
-
-
-	glDisable(GL_DEPTH_TEST);
+	shader->unbind();
 }
