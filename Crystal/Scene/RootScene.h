@@ -4,6 +4,7 @@
 
 #include "Scene.h"
 #include "SceneFactory.h"
+#include "RootShaderScene.h"
 #include "ViewModel.h"
 
 #include <filesystem>
@@ -41,6 +42,7 @@ public:
 private:
 	Scene objects;
 	Scene items;
+	RootShaderScene shaders;
 
 	SceneFactory objectFactory;
 	SceneFactory itemFactory;

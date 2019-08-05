@@ -21,6 +21,10 @@ public:
 
 	virtual void render(const Graphics::ICamera& camera) = 0;
 
+	void addChild(IShaderScene* child) { children.push_back(child); }
+
+	std::list<IShaderScene*> getChildren() const { return children; }
+
 private:
 	const int id;
 	std::string name;

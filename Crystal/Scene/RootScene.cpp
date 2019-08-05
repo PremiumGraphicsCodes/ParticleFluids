@@ -3,6 +3,8 @@
 #include "../Scene/FileImporter.h"
 #include "../Scene/FileExporter.h"
 
+#include "PointShaderScene.h"
+
 #include "SceneBuilder.h"
 
 using namespace Crystal::Math;
@@ -12,7 +14,8 @@ using namespace Crystal::Scene;
 
 RootScene::RootScene() :
 	objects(0, "Root"),
-	items(0, "Item")
+	items(0, "Item"),
+	shaders(0, "Shaders")
 {
 }
 
@@ -25,11 +28,14 @@ void RootScene::init()
 {
 	SceneBuilder builder(objects, objectFactory);
 	builder.build();
+
+	shaders.addChild(new PointShaderScene(1, "PointShader"));
 }
 
 void RootScene::clear()
 {
 	objects.clear();
+	//shaders.clear();
 }
 
 bool RootScene::importFile(const std::experimental::filesystem::path& filename)
