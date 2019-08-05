@@ -13,6 +13,11 @@
 
 #include "ShaderUnit.h"
 
+#include "../Graphics/Buffer1d.h"
+#include "../Graphics/Buffer2d.h"
+#include "../Graphics/Buffer3d.h"
+#include "../Graphics/Buffer4d.h"
+
 namespace Crystal {
 	namespace Shader {
 
@@ -54,6 +59,33 @@ public:
 	unsigned int getUniformLocation(const std::string& str);
 
 	unsigned int getAttribLocation(const std::string& str);
+
+	void bind() {
+		glUseProgram(getId());
+	}
+
+	void unbind()
+	{
+		glUseProgram(0);
+	}
+
+	void enable(GLenum e) {
+		glEnable(e);
+	}
+
+	void disable(GLenum e) {
+		glDisable(e);
+	}
+
+	void sendUniform(const std::string& name, Math::Matrix4df matrix) {
+		glUniformMatrix4fv( getUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
+	}
+
+	void sendVertexAttribute(const std::string& name, const Graphics::Buffer1d<float> buffer);
+
+	void sendVertexAttribute(const std::string& name, const Graphics::Buffer3d<float> buffer);
+
+	void sendVertexAttribute(const std::string& name, const Graphics::Buffer4d<float> buffer);
 
 public:
 	unsigned int id;

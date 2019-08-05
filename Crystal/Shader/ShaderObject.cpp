@@ -12,6 +12,7 @@
 #include "gl/glew.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
 namespace {
@@ -339,4 +340,29 @@ unsigned int ShaderObject::getAttribLocation(const std::string& str)
 {
 	assert(attribMap.find(str) != attribMap.end());
 	return attribMap[str];
+}
+
+void ShaderObject::sendVertexAttribute(const std::string& name, const Buffer1d<float> buffer)
+{
+	const auto& values = buffer.get();
+	const auto location = getAttribLocation(name);
+	glVertexAttribPointer(location, 1, GL_FLOAT, GL_FALSE, 0, values.data());
+	//glEnableVertexAttribArray(location);
+}
+
+void ShaderObject::sendVertexAttribute(const std::string& name, const Buffer3d<float> buffer)
+{
+	const auto values = buffer.get();
+	const auto location = getAttribLocation(name);
+	glVertexAttribPointer(getAttribLocation(name), 3, GL_FLOAT, GL_FALSE, 0, values.data());
+	//	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
+
+}
+
+void ShaderObject::sendVertexAttribute(const std::string& name, const Buffer4d<float> buffer)
+{
+	const auto& values = buffer.get();
+	const auto location = getAttribLocation(name);
+	glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, 0, values.data());
+	//glEnableVertexAttribArray(location);
 }

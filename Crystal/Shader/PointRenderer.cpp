@@ -89,12 +89,18 @@ void PointRenderer::render(const ICamera& camera)
 
 	glUseProgram(shader->getId());
 
-	glUniformMatrix4fv(shader->getUniformLocation("projectionMatrix"), 1, GL_FALSE, &projectionMatrix[0][0]);
-	glUniformMatrix4fv(shader->getUniformLocation("modelviewMatrix"), 1, GL_FALSE, &modelviewMatrix[0][0]);
+	shader->sendUniform("projectionMatrix", projectionMatrix);
+	shader->sendUniform("modelviewMatrix", modelviewMatrix);
+
 
 	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
 	glVertexAttribPointer(shader->getAttribLocation("color"), 4, GL_FLOAT, GL_FALSE, 0, colors.data());
 	glVertexAttribPointer(shader->getAttribLocation("pointSize"), 1, GL_FLOAT, GL_FALSE, 0, sizes.data());
+
+
+	//const auto bp = buffer.getPosition();
+	//shader->sendVertexAttribute("position", positions);
+	//shader->sendVertexAttribute("pointSize", buffer.getSize());
 
 
 	//const auto positions = buffer.getPositions();
