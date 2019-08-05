@@ -43,7 +43,7 @@ void RootScene::init()
 
 	shaders.addChild(new TextureScene(4, "IdTexture", Image(512, 512)));
 
-	shaders.build();
+	//shaders.build();
 }
 
 void RootScene::clear()

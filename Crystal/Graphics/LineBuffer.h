@@ -13,6 +13,11 @@ class LineBuffer
 public:
 	LineBuffer() {};
 
+	~LineBuffer()
+	{
+
+	}
+
 	void clear() {
 		indices.clear();
 		positions.clear();

@@ -35,6 +35,7 @@
     <ClInclude Include="RootScene.h" />
     <ClInclude Include="RootShaderScene.h" />
     <ClInclude Include="SceneBuilder.h" />
+    <ClInclude Include="SmoothShaderScene.h" />
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
@@ -83,6 +84,7 @@
     <ClCompile Include="SceneFactory.cpp" />
     <ClCompile Include="SceneBuilder.cpp" />
     <ClCompile Include="ShaderScene.cpp" />
+    <ClCompile Include="SmoothShaderScene.cpp" />
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
     <ClCompile Include="TextureScene.cpp" />

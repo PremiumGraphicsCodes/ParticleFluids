@@ -2,7 +2,7 @@
 
 #include "../Scene/PointShaderScene.h"
 #include "../Scene/LineShaderScene.h"
-#include "../Shader/SmoothRenderer.h"
+#include "../Scene/SmoothShaderScene.h"
 
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
@@ -23,7 +23,8 @@ public:
 	ObjectRenderer(Graphics::ICamera* camera) :
 		camera(camera),
 		pointRenderer(-1, "PointRenderer"),
-		wireRenderer(-1, "LineRenderer")
+		wireRenderer(-1, "LineRenderer"),
+		smoothRenderer(-1, "SmoothRenderer")
 	{
 	}
 
@@ -38,9 +39,9 @@ public:
 private:
 	Scene::PointShaderScene pointRenderer;
 	Scene::LineShaderScene wireRenderer;
-	Shader::SmoothRenderer smoothRenderer;
+	Scene::SmoothShaderScene smoothRenderer;
 
-	std::vector<Shader::SmoothRenderer::Buffer> smoothBuffers;
+	std::vector<Graphics::TriangleBuffer> smoothBuffers;
 
 	Graphics::ICamera* camera;
 

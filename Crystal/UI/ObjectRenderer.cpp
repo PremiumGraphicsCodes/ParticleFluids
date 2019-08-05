@@ -30,11 +30,10 @@ void ObjectRenderer::setViewModel(const SceneViewModel& vm)
 	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);
 	smoothBuffers.clear();
 	for (const auto& tb : vm.getTriangleBuffers()) {
-		Shader::SmoothRenderer::Buffer buffer;
-		buffer.triangle = tb;
+//		Graphics::TriangleBuffer buffer;
 		//buffer.light = vm.getLightBuffer();
 		//buffer.material = avm.getMaterialBuffer();
-		smoothBuffers.push_back(buffer);
+		smoothBuffers.push_back(tb);
 	}
 }
 
@@ -49,7 +48,8 @@ void ObjectRenderer::render(const TextureObject& texture, const TextureObject& s
 	pointRenderer.render(*camera);
 	wireRenderer.render(*camera);
 	for (const auto& b : smoothBuffers) {
-		smoothRenderer.render(b, *camera, smoothTexture);
+		smoothRenderer.setBuffer(b);
+		smoothRenderer.render(*camera);
 	}
 	//texture.unbind();
 	frameBufferObject.unbind();

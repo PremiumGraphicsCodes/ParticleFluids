@@ -147,7 +147,7 @@ bool Window::init()
 
 	repository->init();
 
-	canvas->build(repository->getObjects(), repository->getObjectFactory());
+	canvas->build(repository->getObjects(), repository->getObjectFactory(), repository->getShaders());
 
 	return true;
 }

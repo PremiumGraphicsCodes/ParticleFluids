@@ -113,6 +113,9 @@
     <ClInclude Include="LineShaderScene.h">
       <Filter>ShaderScene</Filter>
     </ClInclude>
+    <ClInclude Include="SmoothShaderScene.h">
+      <Filter>ShaderScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
@@ -184,6 +187,9 @@
       <Filter>ShaderScene</Filter>
     </ClCompile>
     <ClCompile Include="LineShaderScene.cpp">
+      <Filter>ShaderScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SmoothShaderScene.cpp">
       <Filter>ShaderScene</Filter>
     </ClCompile>
   </ItemGroup>
