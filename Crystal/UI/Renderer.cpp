@@ -2,6 +2,7 @@
 #include "../../Crystal/Scene/SceneViewModel.h"
 #include "../../Crystal/Scene/IScene.h"
 #include "../../Crystal/Scene/TextureScene.h"
+#include "../../Crystal/Scene/ShaderScene.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -16,7 +17,7 @@ Renderer::Renderer(Crystal::Graphics::ICamera* camera) :
 {
 }
 
-bool Renderer::build(IScene* scene, SceneFactory* factory)
+bool Renderer::build(IScene* scene, SceneFactory* factory, IShaderScene* sscene)
 {
 	if (!objectRenderer.build()) {
 		return false;
@@ -26,6 +27,10 @@ bool Renderer::build(IScene* scene, SceneFactory* factory)
 	}
 
 	if (!renderer.build()) {
+		return false;
+	}
+
+	if (!sscene->build()) {
 		return false;
 	}
 	return true;

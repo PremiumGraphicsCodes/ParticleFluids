@@ -21,7 +21,7 @@ public:
 
 	~Renderer() {}
 
-	bool build(Scene::IScene* scene, Scene::SceneFactory* factory);
+	bool build(Scene::IScene* scene, Scene::SceneFactory* factory, Scene::IShaderScene* sscene);
 
 	void render(const int width, const int height, Scene::IShaderScene* scene);
 
