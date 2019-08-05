@@ -80,12 +80,10 @@ void PointRenderer::render(const ICamera& camera)
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto& modelviewMatrix = camera.getModelviewMatrix();
 
-	glEnable(GL_DEPTH_TEST);
-
-	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
-	glEnable(GL_POINT_SPRITE);
-
 	shader->bind();
+
+	shader->enableDepthTest();
+	shader->enablePointSprite();
 
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
@@ -94,32 +92,20 @@ void PointRenderer::render(const ICamera& camera)
 	shader->sendVertexAttribute4df("color", colors);
 	shader->sendVertexAttribute1df("pointSize", sizes);
 
+	shader->enableVertexAttribute("position");
+	shader->enableVertexAttribute("color");
+	shader->enableVertexAttribute("pointSize");
 
-	//const auto bp = buffer.getPosition();
-	//shader->sendVertexAttribute("position", positions);
-	//shader->sendVertexAttribute("pointSize", buffer.getSize());
+	shader->drawPoints(positions.size() / 3);
 
+	shader->disableVertexAttribute("pointSize");
+	shader->disableVertexAttribute("color");
+	shader->disableVertexAttribute("position");
 
-	//const auto positions = buffer.getPositions();
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
-	glEnableVertexAttribArray(2);
+	shader->bindOutput("fragColor");
 
-	glDrawArrays(GL_POINTS, 0, static_cast<GLsizei>(positions.size() / 3));
+	shader->disablePointSprite();
+	shader->disableDepthTest();
 
-	glDisableVertexAttribArray(2);
-	glDisableVertexAttribArray(1);
-	glDisableVertexAttribArray(0);
-
-	glBindFragDataLocation(shader->getId(), 0, "fragColor");
-
-	glDisable(GL_DEPTH_TEST);
-
-
-	glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);
-	glDisable(GL_POINT_SPRITE);
-
-
-	//glUseProgram(0);
 	shader->unbind();
 }

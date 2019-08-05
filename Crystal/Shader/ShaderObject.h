@@ -77,15 +77,29 @@ public:
 		glDisable(e);
 	}
 
-	void sendUniform(const std::string& name, Math::Matrix4df matrix) {
-		glUniformMatrix4fv( getUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
-	}
+	void sendUniform(const std::string& name, Math::Matrix4df matrix);
 
 	void sendVertexAttribute1df(const std::string& name, const std::vector<float>& data);
 
 	void sendVertexAttribute3df(const std::string& name, const std::vector<float>& data);
 
 	void sendVertexAttribute4df(const std::string& name, const std::vector<float>& data);
+
+	void enableVertexAttribute(const std::string& name);
+
+	void disableVertexAttribute(const std::string& name);
+
+	void enableDepthTest();
+
+	void disableDepthTest();
+
+	void enablePointSprite();
+
+	void disablePointSprite();
+
+	void drawPoints(const int count);
+
+	void bindOutput(const std::string& name);
 
 public:
 	unsigned int id;

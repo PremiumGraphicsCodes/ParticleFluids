@@ -342,6 +342,11 @@ unsigned int ShaderObject::getAttribLocation(const std::string& str)
 	return attribMap[str];
 }
 
+void ShaderObject::sendUniform(const std::string& name, Matrix4df matrix)
+{
+	glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
+}
+
 void ShaderObject::sendVertexAttribute1df(const std::string& name, const std::vector<float>& data)
 {
 	const auto location = getAttribLocation(name);
@@ -362,4 +367,49 @@ void ShaderObject::sendVertexAttribute4df(const std::string& name, const std::ve
 	const auto location = getAttribLocation(name);
 	glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, 0, data.data());
 	//glEnableVertexAttribArray(location);
+}
+
+void ShaderObject::enableVertexAttribute(const std::string& name)
+{
+	const auto location = getAttribLocation(name);
+	glEnableVertexAttribArray(location);
+}
+
+void ShaderObject::disableVertexAttribute(const std::string& name)
+{
+	const auto location = getAttribLocation(name);
+	glDisableVertexAttribArray(2);
+}
+
+void ShaderObject::enableDepthTest()
+{
+	glEnable(GL_DEPTH_TEST);
+}
+
+void ShaderObject::disableDepthTest()
+{
+	glDisable(GL_DEPTH_TEST);
+}
+
+void ShaderObject::enablePointSprite()
+{
+	glEnable(GL_POINT_SPRITE);
+	glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
+}
+
+void ShaderObject::disablePointSprite()
+{
+	glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);
+	glDisable(GL_POINT_SPRITE);
+}
+
+void ShaderObject::drawPoints(const int count)
+{
+	glDrawArrays(GL_POINTS, 0, count);
+}
+
+void ShaderObject::bindOutput(const std::string& name)
+{
+	auto str = name.c_str();
+	glBindFragDataLocation(getId(), 0, str);
 }
