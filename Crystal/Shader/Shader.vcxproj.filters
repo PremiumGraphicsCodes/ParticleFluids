@@ -22,9 +22,6 @@
     <ClInclude Include="DepthRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="SmoothRenderer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderAttribute.h">
       <Filter>Shader</Filter>
     </ClInclude>
@@ -63,9 +60,6 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="DepthRenderer.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="SmoothRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="ShaderAttribute.cpp">
