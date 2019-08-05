@@ -3,7 +3,7 @@
 #include "../Graphics/DrawableId.h"
 
 #include "../Scene/LineShaderScene.h"
-#include "../Shader/TriangleRenderer.h"
+#include "../Scene/TriangleShaderScene.h"
 #include "../Shader/FrameBufferObject.h"
 
 #include "../Scene/PointShaderScene.h"
@@ -24,6 +24,7 @@ public:
 	explicit ObjectIdRenderer(Graphics::ICamera* camera) :
 		pointIdRenderer(-1, "PointShader"),
 		lineIdRenderer(-1, "LineShader"),
+		triangleIdRenderer(-1, "TriangleShader"),
 		camera(camera)
 	{
 	}
@@ -45,7 +46,7 @@ public:
 private:
 	Scene::PointShaderScene pointIdRenderer;
 	Scene::LineShaderScene lineIdRenderer;
-	Shader::TriangleRenderer triangleIdRenderer;
+	Scene::TriangleShaderScene triangleIdRenderer;
 
 	Shader::FrameBufferObject frameBufferObject;
 
