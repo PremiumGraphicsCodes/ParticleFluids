@@ -10,16 +10,6 @@
 namespace Crystal {
 	namespace Scene {
 
-class PointShaderCommand : public Shader::IShaderCommand
-{
-public:
-	Graphics::ICamera* camera;
-	Graphics::PointBuffer buffer;
-
-	void execute(Shader::ShaderObject* shader) override;
-};
-
-
 class ParticleSystemScene : public IShapeScene
 {
 public:
@@ -58,13 +48,8 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
-	bool onBuild() override;
-
-	Shader::IShaderCommand* toShaderCommand() override;
-
 private:
 	Shape::ParticleSystem<ParticleAttribute>* shape;
-	PointShaderCommand shaderCommand;
 };
 
 	}

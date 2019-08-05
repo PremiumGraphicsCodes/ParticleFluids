@@ -9,12 +9,33 @@
 namespace Crystal {
 	namespace Scene {
 
-class ShaderScene : public IScene
+class IShaderScene
+{
+public:
+	IShaderScene(const int id, const std::string& name) :
+		id(id),
+		name(name)
+	{}
+
+	virtual ~IShaderScene() {}
+
+	virtual bool build() = 0;
+
+private:
+	const int id;
+	std::string name;
+};
+
+class ShaderScene : public IShaderScene
 {
 public:
 	ShaderScene(const int id, const std::string& name) :
-		IScene(id, name)
+		IShaderScene(id, name)
 	{}
+
+	virtual ~ShaderScene() {};
+
+	bool build() override;
 
 	void setVertexShaderSource(const std::string& vsSource) { this->vsSource = vsSource; }
 
@@ -28,17 +49,7 @@ public:
 
 	std::string getFragmentShaderSource() const { return fsSource; }
 
-	SceneType getType() const override { return SceneType::ShaderScene; }
-
-	SceneViewModel toViewModel() const override;
-
-	SceneIdViewModel toIdViewModel() const override;
-
-	void onClear() override { shader.reset(); }
-
 	Shader::ShaderObject* getShader() { return shader.get(); }
-
-	bool onBuild() override;
 
 private:
 	std::unique_ptr<Shader::ShaderObject> shader;

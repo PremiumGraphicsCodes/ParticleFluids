@@ -90,9 +90,6 @@
     <ClInclude Include="WireFrameScene.h">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderScene.h">
-      <Filter>Scene\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="CameraScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
@@ -101,6 +98,12 @@
     </ClInclude>
     <ClInclude Include="RootScene.h" />
     <ClInclude Include="SceneBuilder.h" />
+    <ClInclude Include="ShaderScene.h">
+      <Filter>ShaderScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PointShaderScene.h">
+      <Filter>ShaderScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
@@ -157,14 +160,17 @@
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderScene.cpp">
-      <Filter>Scene\Appearance</Filter>
-    </ClCompile>
     <ClCompile Include="TransformScene.cpp">
       <Filter>Scene\Transform</Filter>
     </ClCompile>
     <ClCompile Include="RootScene.cpp" />
     <ClCompile Include="SceneBuilder.cpp" />
+    <ClCompile Include="ShaderScene.cpp">
+      <Filter>ShaderScene</Filter>
+    </ClCompile>
+    <ClCompile Include="PointShaderScene.cpp">
+      <Filter>ShaderScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">
@@ -202,6 +208,9 @@
     </Filter>
     <Filter Include="Scene\Transform">
       <UniqueIdentifier>{cc2dee8e-1aa8-4b36-971f-d59b4361fad8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderScene">
+      <UniqueIdentifier>{da606853-d3a7-41d3-8f8f-db26d68099d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

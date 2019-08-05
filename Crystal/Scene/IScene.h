@@ -93,12 +93,6 @@ public:
 
 	bool isLeaf() const { return children.empty(); }
 
-	bool build() { return onBuild(); }
-
-	virtual bool onBuild() { return false; };
-
-	virtual Shader::IShaderCommand* toShaderCommand() { return nullptr; };
-
 protected:
 	virtual void onClear() = 0;
 

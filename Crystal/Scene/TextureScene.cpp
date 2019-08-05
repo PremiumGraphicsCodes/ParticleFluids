@@ -14,7 +14,7 @@ SceneIdViewModel TextureScene::toIdViewModel() const
 	return SceneIdViewModel();
 }
 
-bool TextureScene::onBuild()
+bool TextureScene::build()
 {
 	this->texture = std::make_unique<Crystal::Shader::TextureObject>();
 	this->texture->create(image);

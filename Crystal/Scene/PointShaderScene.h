@@ -7,22 +7,12 @@
 namespace Crystal {
 	namespace Scene {
 
-class PointShaderScene : public ShaderScene
+class PointShaderScene : ShaderScene
 {
 public:
-	PointShaderScene(const int id, const std::string& name, Shader::ShaderObject* shader) :
-		ShaderScene(id, name, shader)
+	PointShaderScene(const int id, const std::string& name) :
+		ShaderScene(id, name)
 	{}
-
-	SceneType getType() const override { return SceneType::ShaderScene; }
-
-	SceneViewModel toViewModel() const override;
-
-	SceneIdViewModel toIdViewModel() const override;
-
-	void onClear() override {
-		delete shader;
-	}
 
 private:
 };

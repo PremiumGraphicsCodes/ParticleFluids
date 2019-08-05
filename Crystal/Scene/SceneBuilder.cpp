@@ -97,7 +97,7 @@ bool SceneBuilder::buildPointShader()
 	sscene->addAttribute("pointSize");
 
 	sscene->build();
-	scene.addScene(sscene);
+	//scene.addScene(sscene);
 	return true;
 }
 
