@@ -74,10 +74,10 @@ void LineRenderer::render(const ICamera& camera)
 
 	//assert(GL_NO_ERROR == glGetError());
 
-	glLineWidth(width);
 
 	shader->bind();
 
+	shader->setLineWidth(width);
 	shader->enableDepthTest();
 
 	shader->sendUniform("projectionMatrix", projectionMatrix);
@@ -96,9 +96,7 @@ void LineRenderer::render(const ICamera& camera)
 
 	shader->bindOutput("fragColor");
 
-	glLineWidth(1);
-
-	//glDisable(GL_DEPTH_TEST);
+	shader->setLineWidth(1);
 	shader->disableDepthTest();
 
 	shader->unbind();

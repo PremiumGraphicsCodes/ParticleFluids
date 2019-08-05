@@ -67,6 +67,7 @@ void PointRenderer::findLocation()
 	shader->findAttribLocation("pointSize");
 }
 
+
 void PointRenderer::render(const ICamera& camera)
 {
 	const auto positions = buffer.getPosition().get();

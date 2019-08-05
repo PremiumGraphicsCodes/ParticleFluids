@@ -52,6 +52,9 @@
     <ClInclude Include="ShaderUnit.h">
       <Filter>Shader</Filter>
     </ClInclude>
+    <ClInclude Include="IShaderCommand.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
@@ -99,6 +102,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="ShaderUnit.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="IShaderCommand.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
   </ItemGroup>

@@ -139,6 +139,7 @@
     <ClInclude Include="DepthTextureObject.h" />
     <ClInclude Include="FrameBufferObject.h" />
     <ClInclude Include="IShader.h" />
+    <ClInclude Include="IShaderCommand.h" />
     <ClInclude Include="ITextureObject.h" />
     <ClInclude Include="OnScreenRenderer.h" />
     <ClInclude Include="PointRenderer.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="DepthRenderer.cpp" />
     <ClCompile Include="DepthTextureObject.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
+    <ClCompile Include="IShaderCommand.cpp" />
     <ClCompile Include="OnScreenRenderer.cpp" />
     <ClCompile Include="PointRenderer.cpp" />
     <ClCompile Include="Renderer.cpp" />

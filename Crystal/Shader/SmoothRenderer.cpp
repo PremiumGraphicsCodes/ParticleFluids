@@ -127,12 +127,13 @@ void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const Textu
 
 	assert(GL_NO_ERROR == glGetError());
 
-	glUseProgram(shader.getId());
+	//glUseProgram(shader.getId());
+	shader.bind();
 
-	glBindFragDataLocation(shader.getId(), 0, "fragColor");
+	shader.bindOutput("fragColor");
 
-	glUniformMatrix4fv(shader.getUniformLocation("projectionMatrix"), 1, GL_FALSE, &projectionMatrix[0][0]);
-	glUniformMatrix4fv(shader.getUniformLocation("modelviewMatrix"), 1, GL_FALSE, &modelviewMatrix[0][0]);
+	shader.sendUniform("projectionMatrix", projectionMatrix);
+	shader.sendUniform("modelviewMatrix", modelviewMatrix);
 	glUniform3fv(shader.getUniformLocation("eyePosition"), 1, &eyePos[0]);
 
 	assert(GL_NO_ERROR == glGetError());
@@ -179,7 +180,8 @@ void SmoothRenderer::render(const Buffer& bf, const ICamera& camera, const Textu
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(0);
 
-	glUseProgram(0);
+	//glUseProgram(0);
+	shader.unbind();
 
 	const GLenum error = glGetError();
 	assert(GL_NO_ERROR == error);
