@@ -142,7 +142,6 @@
     <ClInclude Include="IShaderCommand.h" />
     <ClInclude Include="ITextureObject.h" />
     <ClInclude Include="OnScreenRenderer.h" />
-    <ClInclude Include="PointRenderer.h" />
     <ClInclude Include="ShaderAttribute.h" />
     <ClInclude Include="ShaderObject.h" />
     <ClInclude Include="ShaderType.h" />
@@ -161,7 +160,6 @@
     <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="IShaderCommand.cpp" />
     <ClCompile Include="OnScreenRenderer.cpp" />
-    <ClCompile Include="PointRenderer.cpp" />
     <ClCompile Include="ShaderAttribute.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
     <ClCompile Include="ShaderType.cpp" />

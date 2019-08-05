@@ -30,6 +30,7 @@
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="IShapeScene.h" />
+    <ClInclude Include="LineShaderScene.h" />
     <ClInclude Include="PointShaderScene.h" />
     <ClInclude Include="RootScene.h" />
     <ClInclude Include="RootShaderScene.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="IShaderScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
+    <ClCompile Include="LineShaderScene.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />

@@ -110,6 +110,9 @@
     <ClInclude Include="TextureScene.h">
       <Filter>ShaderScene</Filter>
     </ClInclude>
+    <ClInclude Include="LineShaderScene.h">
+      <Filter>ShaderScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
@@ -178,6 +181,9 @@
       <Filter>ShaderScene</Filter>
     </ClCompile>
     <ClCompile Include="IShaderScene.cpp">
+      <Filter>ShaderScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LineShaderScene.cpp">
       <Filter>ShaderScene</Filter>
     </ClCompile>
   </ItemGroup>

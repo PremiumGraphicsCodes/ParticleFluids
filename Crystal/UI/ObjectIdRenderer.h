@@ -2,10 +2,11 @@
 
 #include "../Graphics/DrawableId.h"
 
-#include "../Shader/PointRenderer.h"
 #include "../Shader/LineRenderer.h"
 #include "../Shader/TriangleRenderer.h"
 #include "../Shader/FrameBufferObject.h"
+
+#include "../Scene/PointShaderScene.h"
 
 #include "../Util/UnCopyable.h"
 
@@ -21,6 +22,7 @@ class ObjectIdRenderer : private UnCopyable
 {
 public:
 	explicit ObjectIdRenderer(Graphics::ICamera* camera) :
+		pointIdRenderer(-1, "PointShader"),
 		camera(camera)
 	{
 	}
@@ -40,7 +42,7 @@ public:
 	//Shader::TextureObject* getTexture() { return texture; }
 
 private:
-	Shader::PointRenderer pointIdRenderer;
+	Scene::PointShaderScene pointIdRenderer;
 	Shader::LineRenderer lineIdRenderer;
 	Shader::TriangleRenderer triangleIdRenderer;
 

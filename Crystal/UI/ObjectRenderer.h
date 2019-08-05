@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Shader/PointRenderer.h"
+#include "../Scene/PointShaderScene.h"
 #include "../Shader/LineRenderer.h"
 #include "../Shader/SmoothRenderer.h"
 
@@ -21,7 +21,8 @@ class ObjectRenderer : private UnCopyable
 {
 public:
 	ObjectRenderer(Graphics::ICamera* camera) :
-		camera(camera)
+		camera(camera),
+		pointRenderer(0, "PointRenderer")
 	{
 	}
 
@@ -34,7 +35,7 @@ public:
 	void setViewModel(const Scene::SceneViewModel& vm);
 
 private:
-	Shader::PointRenderer pointRenderer;
+	Scene::PointShaderScene pointRenderer;
 	Shader::LineRenderer wireRenderer;
 	Shader::SmoothRenderer smoothRenderer;
 
