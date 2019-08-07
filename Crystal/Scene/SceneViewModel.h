@@ -3,7 +3,7 @@
 #include "PointShaderScene.h"
 #include "SmoothShaderScene.h"
 #include "../Graphics/LineBuffer.h"
-#include "../Graphics/LightBuffer.h"
+#include "../Scene/LightShaderScene.h"
 #include "../Graphics/MaterialBuffer.h"
 
 namespace Crystal {
@@ -18,12 +18,12 @@ public:
 
 	std::list<SmoothTriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
-	Graphics::LightBuffer getLightBuffers() const { return lightBuffer; }
+	std::list<LightBuffer> getLightBuffers() const { return lightBuffers; }
 
 	void merge(SceneViewModel& rhs) {
 		pointBuffers.splice(pointBuffers.end(), rhs.pointBuffers);
 		lineBuffers.splice(lineBuffers.end(), rhs.lineBuffers);
-		lightBuffer.merge(rhs.lightBuffer);
+		lightBuffers.splice(lightBuffers.end(), rhs.lightBuffers);
 		triangleBuffers.splice(triangleBuffers.end(), rhs.triangleBuffers);
 	}
 
@@ -31,7 +31,7 @@ public:
 	std::list<PointBuffer> pointBuffers;
 	std::list<Graphics::LineBuffer> lineBuffers;
 	std::list<SmoothTriangleBuffer> triangleBuffers;
-	Graphics::LightBuffer lightBuffer;
+	std::list<LightBuffer> lightBuffers;
 	std::list<Graphics::MaterialBuffer> materialBuffers;
 };
 

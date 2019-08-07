@@ -18,9 +18,6 @@
     <ClInclude Include="Buffer4d.h">
       <Filter>Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="LightBuffer.h">
-      <Filter>Buffer</Filter>
-    </ClInclude>
     <ClInclude Include="LineBuffer.h">
       <Filter>Buffer</Filter>
     </ClInclude>

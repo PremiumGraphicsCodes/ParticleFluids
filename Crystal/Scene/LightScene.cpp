@@ -9,7 +9,9 @@ using namespace Crystal::Scene;
 SceneViewModel LightScene::toViewModel() const
 {
 	SceneViewModel viewModel;
-	viewModel.lightBuffer.add(light);
+	LightBuffer lb;
+	lb.add(light);
+	viewModel.lightBuffers.push_back(lb);
 	return viewModel;
 }
 

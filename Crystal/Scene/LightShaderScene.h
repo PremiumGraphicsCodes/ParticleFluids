@@ -1,13 +1,11 @@
 #pragma once
 
-#include "Buffer3d.h"
-#include "Buffer1d.h"
-#include "Buffer4d.h"
-
-#include "PointLight.h"
+#include "IShaderScene.h"
+#include "../Graphics/PointLight.h"
+#include "../Graphics/Buffer3d.h"
 
 namespace Crystal {
-	namespace Graphics {
+	namespace Scene {
 
 class LightBuffer
 {
@@ -21,7 +19,7 @@ public:
 		ambient.clear();
 	}
 
-	void add(const PointLight& light) {
+	void add(const Graphics::PointLight& light) {
 		this->position.add(light.getPosition());
 		this->diffuse.add(light.getDiffuse());
 		this->specular.add(light.getSpecular());
@@ -48,6 +46,29 @@ private:
 	Graphics::Buffer3d<float> diffuse;
 	Graphics::Buffer3d<float> specular;
 	Graphics::Buffer3d<float> ambient;
+};
+
+
+class LightShaderScene : public IShaderScene
+{
+public:
+	LightShaderScene(const int id, const std::string& name, const Graphics::PointLight& light) :
+		IShaderScene(id, name),
+		light(light)
+	{}
+
+	~LightShaderScene() {};
+
+	Graphics::PointLight getLight() const { return light; }
+
+	//Shader::TextureObject* getTexture() const { return texture.get(); }
+
+	bool build() { return false; }
+
+	void render(const Graphics::ICamera& camera) override {}
+
+private:
+	Graphics::PointLight light;
 };
 
 	}

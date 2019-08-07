@@ -29,6 +29,7 @@
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="IShapeScene.h" />
+    <ClInclude Include="LightShaderScene.h" />
     <ClInclude Include="LineShaderScene.h" />
     <ClInclude Include="SceneIdRenderer.h" />
     <ClInclude Include="SceneRenderer.h" />

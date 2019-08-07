@@ -2,8 +2,6 @@
 
 #include "PointShaderScene.h"
 #include "../Graphics/LineBuffer.h"
-#include "../Graphics/LightBuffer.h"
-#include "../Graphics/MaterialBuffer.h"
 
 namespace Crystal {
 	namespace Scene {
