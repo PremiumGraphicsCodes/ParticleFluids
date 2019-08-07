@@ -13,8 +13,8 @@ void SphereRegionSelectView::show()
 {
 	if (ImGui::Button("Pick")) {
 		auto mask = (int)SceneType::ParticleSystemScene | (int)SceneType::WireFrameScene | (int)SceneType::PolygonMeshScene;
-		auto ctrl = new PickUICtrl(getRepository(), getCanvas(), SceneType(mask));
-		auto model = getRepository();
+		auto ctrl = new PickUICtrl(getWorld(), getCanvas(), SceneType(mask));
+		auto model = getWorld();
 		auto canvas = getCanvas();
 
 		auto func = [=](int parentId, int childId) {

@@ -34,9 +34,9 @@ void PSCylinderView::onOk()
 		const auto v = dist(mt);
 		positions.push_back(cylinder.getPosition(Vector3dd( u, v, 1.0)));
 	}
-	auto scene = getRepository()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Cylinder");
-	getRepository()->getObjects()->addScene(scene);
-	getRepository()->updateViewModel();
-	getCanvas()->fitCamera(getRepository()->getBoundingBox());
+	auto scene = getWorld()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Cylinder");
+	getWorld()->getObjects()->addScene(scene);
+	getWorld()->updateViewModel();
+	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }
 

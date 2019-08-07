@@ -29,8 +29,8 @@ void WFConeView::onOk()
 {
 	Crystal::Shape::WireFrameBuilder builder;
 	builder.build(cone.getValue(), unum.getValue(), vnum.getValue());
-	auto scene = getRepository()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Cone");
-	getRepository()->getObjects()->addScene(scene);
-	getRepository()->updateViewModel();
-	getCanvas()->fitCamera(getRepository()->getBoundingBox());
+	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Cone");
+	getWorld()->getObjects()->addScene(scene);
+	getWorld()->updateViewModel();
+	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

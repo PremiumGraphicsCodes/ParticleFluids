@@ -30,9 +30,9 @@ void PMQuadView::onOk()
 {
 	PolygonMeshBuilder builder;
 	builder.add(quad.getValue());
-	auto scene = getRepository()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
+	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
 	scene->setMaterialName(materialName.getValue());
-	getRepository()->getObjects()->addScene(scene);
-	getRepository()->updateViewModel();
-	getCanvas()->fitCamera(getRepository()->getBoundingBox());
+	getWorld()->getObjects()->addScene(scene);
+	getWorld()->updateViewModel();
+	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

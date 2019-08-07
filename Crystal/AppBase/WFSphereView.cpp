@@ -30,8 +30,8 @@ void WFSphereView::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(sphere.getValue(), unum.getValue(), vnum.getValue());
-	auto scene = getRepository()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Sphere");
-	getRepository()->getObjects()->addScene(scene);
-	getRepository()->updateViewModel();
-	getCanvas()->fitCamera(getRepository()->getBoundingBox());
+	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Sphere");
+	getWorld()->getObjects()->addScene(scene);
+	getWorld()->updateViewModel();
+	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

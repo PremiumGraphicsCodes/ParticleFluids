@@ -25,7 +25,7 @@ public:
 	virtual void show() override;
 
 protected:
-	Scene::World* getRepository() { return model; }
+	Scene::World* getWorld() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 

@@ -24,7 +24,7 @@ void MaterialAddView::show()
 
 void MaterialAddView::onOk()
 {
-	getRepository()->getObjects()->addScene( getRepository()->getObjectFactory()->createMaterialScene(material.getValue(), name.getValue()));
-	getRepository()->updateViewModel();
-	getCanvas()->fitCamera(getRepository()->getBoundingBox());
+	getWorld()->getObjects()->addScene( getWorld()->getObjectFactory()->createMaterialScene(material.getValue(), name.getValue()));
+	getWorld()->updateViewModel();
+	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

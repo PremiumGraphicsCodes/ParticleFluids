@@ -34,8 +34,8 @@ void PSTorusView::onOk()
 		const auto v = dist(mt);
 		positions.push_back(shape.getPosition(u, v));
 	}
-	auto scene = getRepository()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Cylinder");
-	getRepository()->getObjects()->addScene(scene);
-	getRepository()->updateViewModel();
-	getCanvas()->fitCamera(getRepository()->getBoundingBox());
+	auto scene = getWorld()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Cylinder");
+	getWorld()->getObjects()->addScene(scene);
+	getWorld()->updateViewModel();
+	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

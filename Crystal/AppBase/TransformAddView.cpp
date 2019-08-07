@@ -21,10 +21,10 @@ void TransformAddView::show()
 
 void TransformAddView::onOk()
 {
-	auto scene = getRepository()->getObjectFactory()->createTransformScene("Transform");
+	auto scene = getWorld()->getObjectFactory()->createTransformScene("Transform");
 	//scene->setTranslate()
-	getRepository()->getObjects()->addScene(scene);
-	getRepository()->updateViewModel();
-	getCanvas()->fitCamera(getRepository()->getBoundingBox());
+	getWorld()->getObjects()->addScene(scene);
+	getWorld()->updateViewModel();
+	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 
 }
