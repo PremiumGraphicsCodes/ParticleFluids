@@ -33,6 +33,7 @@ void SmoothShaderScene::render(const ICamera& camera)
 {
 	auto shader = getShader();
 
+	const auto& indices = buffer.getIndices().get();
 	const auto& positions = buffer.getPositions().get();// buffers[0].get();
 	const auto& normals = buffer.getNormals().get();//buffers[1].get();
 	const auto& texCoords = buffer.getTexCoords().get();
@@ -64,10 +65,8 @@ void SmoothShaderScene::render(const ICamera& camera)
 
 	//texture.bind();
 
-	const auto& blocks = buffer.getBlocks();
-	for (const auto& b : blocks) {
-		const auto& indices = b.getIndices();
-		const auto& light = b.getLight();
+	{
+		const auto light = Graphics::PointLight();
 		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
 		const auto& ambient = light.getAmbient();
 		const auto& diffuse = light.getDiffuse();
@@ -78,7 +77,7 @@ void SmoothShaderScene::render(const ICamera& camera)
 		shader->sendUniform("lights[0].Ld", diffuse);
 		shader->sendUniform("lights[0].Ls", specular);
 
-		const auto& m = b.getMaterial();
+		const auto& m = Graphics::Material();
 		shader->sendUniform("materials[0].Ka", m.ambient);
 		shader->sendUniform("materials[0].Kd", m.diffuse);
 		shader->sendUniform("materials[0].Ks", m.specular);

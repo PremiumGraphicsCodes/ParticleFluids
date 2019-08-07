@@ -30,10 +30,10 @@ SceneViewModel PolygonMeshScene::toViewModel() const
 	TriangleBuffer bf(*getShape());
 	auto materialScene = static_cast<MaterialScene*>(getParent()->findSceneByName(materialName));
 	if(materialScene == nullptr) {
-		bf.add(getShape()->getFaces(), Material(), light);
+		bf.add(getShape()->getFaces(), 0);
 	}
 	else {
-		bf.add(getShape()->getFaces(), materialScene->getMaterial(), light);
+		bf.add(getShape()->getFaces(), 0);
 	}
 
 	// group‚É‚ ‚éface‚Í‘Î‰‚·‚ématerial‚Å•`‰æD
@@ -42,10 +42,10 @@ SceneViewModel PolygonMeshScene::toViewModel() const
 		auto faceGroup = static_cast<FaceGroupScene*>(child);
 		auto materialScene = static_cast<MaterialScene*>( getParent()->findSceneByName( faceGroup->getMaterialName() ) );
 		if (materialScene == nullptr) {
-			bf.add(faceGroup->getShape(), Material(), light);
+			bf.add(faceGroup->getShape(), 0);
 		}
 		else {
-			bf.add(faceGroup->getShape(), materialScene->getMaterial(), light);
+			bf.add(faceGroup->getShape(), 0);
 		}
 	}
 	viewModel.triangleBuffers.push_back(bf);

@@ -12,28 +12,6 @@
 namespace Crystal {
 	namespace Graphics {
 
-class TriangleBufferBlock
-{
-public:
-	TriangleBufferBlock(const std::vector<unsigned int>& indices, const Material& material, const PointLight& light) :
-		indices(indices),
-		material(material),
-		light(light)
-	{}
-
-	std::vector<unsigned int> getIndices() const { return indices; }
-
-	Material getMaterial() const { return material; }
-
-	PointLight getLight() const { return light; }
-
-private:
-	std::vector<unsigned int> indices;
-	Material material;
-	PointLight light;
-};
-
-
 class TriangleBuffer
 {
 public:
@@ -56,15 +34,13 @@ public:
 		}
 	}
 
-	void add(const std::vector<Shape::Face>& faces, const Material& mat, const PointLight& light) {
-		std::vector<unsigned int> indices;
+	void add(const std::vector<Shape::Face>& faces, const int materialIndex) {
 		for (auto f : faces) {
-			indices.push_back(f.v1);
-			indices.push_back(f.v2);
-			indices.push_back(f.v3);
+			indices.add(f.v1);
+			indices.add(f.v2);
+			indices.add(f.v3);
 		}
-		TriangleBufferBlock block(indices, mat, light);
-		blocks.push_back(block);
+		materialIndices.add(materialIndex);
 	}
 
 	Buffer3d<float> getPositions() const { return positions; }
@@ -73,13 +49,18 @@ public:
 
 	Buffer2d<float> getTexCoords() const { return texCoords; }
 
-	std::vector<TriangleBufferBlock> getBlocks() const { return blocks; }
+	Buffer1d<unsigned int> getIndices() const { return indices; }
+
+	Buffer1d<int> getMaterialIndices() const { return materialIndices; }
+
+	int getLightIndex() const { return 0; }
 
 private:
 	Buffer3d<float> positions;
 	Buffer3d<float> normals;
 	Buffer2d<float> texCoords;
-	std::vector<TriangleBufferBlock> blocks;
+	Buffer1d<int> materialIndices;
+	Buffer1d<unsigned int> indices;
 };
 
 /*
