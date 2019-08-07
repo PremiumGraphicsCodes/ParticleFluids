@@ -49,6 +49,7 @@
     <ClInclude Include="VolumeView.h">
       <Filter>Volume</Filter>
     </ClInclude>
+    <ClInclude Include="AlgoMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">
