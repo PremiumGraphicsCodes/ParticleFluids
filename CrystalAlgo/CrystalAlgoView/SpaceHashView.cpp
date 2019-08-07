@@ -7,7 +7,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-SpaceHashView::SpaceHashView(RootScene* model, Canvas* canvas) :
+SpaceHashView::SpaceHashView(World* model, Canvas* canvas) :
 	IOkCancelView("SpaceHash", model, canvas),
 	positionButton("Position", model, canvas),
 	searchRadius("SearchRadius", 1.0),

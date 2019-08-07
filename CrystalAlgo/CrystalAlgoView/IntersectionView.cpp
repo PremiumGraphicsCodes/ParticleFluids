@@ -8,7 +8,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-IntersectionView::IntersectionView(RootScene* model, Canvas* canvas) :
+IntersectionView::IntersectionView(World* model, Canvas* canvas) :
 	IOkCancelView("Intersection", model, canvas),
 	mesh1("Mesh1", model, canvas),
 	mesh2("Mesh2", model, canvas),
@@ -24,7 +24,7 @@ void IntersectionView::show()
 
 void IntersectionView::onOk()
 {
-	auto repository = getRepository();
+	auto repository = getWorld();
 	auto obj1 = static_cast<PolygonMeshScene*>( repository->getObjects()->findSceneById(mesh1.getId()) );
 	auto obj2 = static_cast<PolygonMeshScene*>( repository->getObjects()->findSceneById(mesh2.getId()) );
 	if (obj1 == nullptr || obj2 == nullptr) {
@@ -44,7 +44,7 @@ void IntersectionView::onOk()
 		attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 		attr.size = 1.0f;
 		repository->getObjectFactory()->createParticleSystemScene(positions, attr, "intersections");
-		getRepository()->updateViewModel();
+		getWorld()->updateViewModel();
 	}
 }
 

@@ -10,7 +10,7 @@ namespace Crystal {
 class IntersectionView : public IOkCancelView
 {
 public:
-	IntersectionView(Scene::RootScene* model, Canvas* canvas);
+	IntersectionView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

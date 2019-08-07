@@ -11,7 +11,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-MarchingCubesView::MarchingCubesView(RootScene* model, Canvas* canvas) :
+MarchingCubesView::MarchingCubesView(World* model, Canvas* canvas) :
 	IOkCancelView("MarchingCubes", model, canvas),
 	values({
 		DoubleView("Value0", 0),
@@ -79,6 +79,6 @@ void MarchingCubesView::onOk()
 		builder.add(t);
 	}
 	//builder.pushCurrentFaceGroup();
-	getRepository()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), "MarchingCubes");
-	getRepository()->updateViewModel();
+	getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), "MarchingCubes");
+	getWorld()->updateViewModel();
 }

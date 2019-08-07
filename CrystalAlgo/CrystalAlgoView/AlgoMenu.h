@@ -9,7 +9,7 @@ namespace Crystal {
 class AlgoMenu : public IMenu
 {
 public:
-	AlgoMenu(const std::string& name, Scene::RootScene* model, Canvas* canvas, ControlPanel* control);
+	AlgoMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
 
 	void show() override;
 

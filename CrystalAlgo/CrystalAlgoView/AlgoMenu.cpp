@@ -14,7 +14,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-AlgoMenu::AlgoMenu(const std::string& name, RootScene* model, Canvas* canvas, ControlPanel* control) :
+AlgoMenu::AlgoMenu(const std::string& name, World* model, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, model, canvas),
 	control(control)
 {

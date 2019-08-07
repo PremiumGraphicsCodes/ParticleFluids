@@ -13,7 +13,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-VolumeView::VolumeView(RootScene* model, Canvas* canvas) :
+VolumeView::VolumeView(World* model, Canvas* canvas) :
 	IOkCancelView("Volume", model, canvas),
 	box("Box")
 {
@@ -60,6 +60,6 @@ void VolumeView::onOk()
 		attrs.push_back(attr);
 	}
 
-	getRepository()->getObjectFactory()->createParticleSystemScene(positions, attrs, "VolumeConverter");
-	getRepository()->updateViewModel();
+	getWorld()->getObjectFactory()->createParticleSystemScene(positions, attrs, "VolumeConverter");
+	getWorld()->updateViewModel();
 }

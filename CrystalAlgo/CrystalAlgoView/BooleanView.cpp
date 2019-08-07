@@ -6,7 +6,7 @@ using namespace Crystal::UI;
 using namespace Crystal::Scene;
 using namespace Crystal::Algo;
 
-BooleanView::BooleanView(RootScene* model, Canvas* canvas) :
+BooleanView::BooleanView(World* model, Canvas* canvas) :
 	IOkCancelView("Boolean", model, canvas),
 	objectButton1("Polygon1", model, canvas),
 	objectButton2("Polygon2", model, canvas)
@@ -21,8 +21,8 @@ void BooleanView::show()
 
 void BooleanView::onOk()
 {
-	auto polygon1 = static_cast<Crystal::Scene::PolygonMeshScene*>( getRepository()->getObjects()->findSceneById(objectButton1.getId()) );
-	auto polygon2 = static_cast<Crystal::Scene::PolygonMeshScene*>( getRepository()->getObjects()->findSceneById(objectButton2.getId()) );
+	auto polygon1 = static_cast<Crystal::Scene::PolygonMeshScene*>( getWorld()->getObjects()->findSceneById(objectButton1.getId()) );
+	auto polygon2 = static_cast<Crystal::Scene::PolygonMeshScene*>( getWorld()->getObjects()->findSceneById(objectButton2.getId()) );
 	if (polygon1 == nullptr || polygon2 == nullptr) {
 		return;
 	}
@@ -32,7 +32,7 @@ void BooleanView::onOk()
 	polygon1->setVisible(false);
 	polygon2->setVisible(false);
 
-	getRepository()->getObjectFactory()->createPolygonMeshScene(algo.getResult(), "Intersection");
-	getRepository()->updateViewModel();
-	getCanvas()->fitCamera(getRepository()->getBoundingBox());
+	getWorld()->getObjectFactory()->createPolygonMeshScene(algo.getResult(), "Intersection");
+	getWorld()->updateViewModel();
+	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

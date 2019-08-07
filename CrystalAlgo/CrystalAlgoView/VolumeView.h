@@ -9,7 +9,7 @@ namespace Crystal {
 class VolumeView : public IOkCancelView
 {
 public:
-	VolumeView(Scene::RootScene* model, Canvas* canvas);
+	VolumeView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

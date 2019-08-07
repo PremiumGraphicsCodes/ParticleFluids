@@ -11,7 +11,7 @@ namespace Crystal {
 class SpaceHashView : public IOkCancelView
 {
 public:
-	SpaceHashView(Scene::RootScene* model, Canvas* canvas);
+	SpaceHashView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

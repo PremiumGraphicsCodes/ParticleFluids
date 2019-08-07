@@ -10,7 +10,7 @@ namespace Crystal {
 class OctreeView : public IOkCancelView
 {
 public:
-	OctreeView(Scene::RootScene* model, Canvas* canvas);
+	OctreeView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

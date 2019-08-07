@@ -10,7 +10,7 @@ namespace Crystal {
 class MarchingCubesView : public IOkCancelView
 {
 public:
-	MarchingCubesView(Scene::RootScene* model, Canvas* canvas);
+	MarchingCubesView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

@@ -6,7 +6,7 @@
 #include "../../Crystal/AppBase/AppearanceMenu.h"
 #include "../../Crystal/AppBase/SceneListPanel.h"
 
-#include "../../Crystal/Scene/RootScene.h"
+#include "../../Crystal/Scene/World.h"
 #include "../../Crystal/UI/Canvas.h"
 #include "../../Crystal/AppBase/ControlPanel.h"
 
@@ -20,7 +20,7 @@ using namespace Crystal::UI;
 
 int main(int, char**)
 {
-	RootScene model;
+	World model;
 	Canvas canvas;
 
 	Window window(&model, &canvas);

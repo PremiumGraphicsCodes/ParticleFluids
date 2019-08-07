@@ -8,7 +8,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-VolumeConvertView::VolumeConvertView(RootScene* model, Canvas* canvas) :
+VolumeConvertView::VolumeConvertView(World* model, Canvas* canvas) :
 	IOkCancelView("VolumeConvert", model, canvas),
 	objectButton("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
 	searchRadius("SearchRadius", 1.0)
@@ -36,6 +36,6 @@ void VolumeConvertView::onOk()
 	ParticleAttribute attr;
 	attr.color = glm::vec4(1, 0, 0, 0);
 	attr.size = 1.0;
-	getRepository()->getObjectFactory()->createParticleSystemScene(positions, attr, "VolumeConvert");
-	getRepository()->updateViewModel();
+	getWorld()->getObjectFactory()->createParticleSystemScene(positions, attr, "VolumeConvert");
+	getWorld()->updateViewModel();
 }

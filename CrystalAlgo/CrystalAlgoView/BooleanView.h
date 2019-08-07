@@ -10,7 +10,7 @@ namespace Crystal {
 class BooleanView : public IOkCancelView
 {
 public:
-	BooleanView(Scene::RootScene* model, Canvas* canvas);
+	BooleanView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

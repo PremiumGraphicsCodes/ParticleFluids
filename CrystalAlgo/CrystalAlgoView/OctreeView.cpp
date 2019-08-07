@@ -6,7 +6,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-OctreeView::OctreeView(RootScene* model, Canvas* canvas) :
+OctreeView::OctreeView(World* model, Canvas* canvas) :
 	IOkCancelView("Octree", model, canvas),
 	positionButton("Position", model, canvas),
 	objectButton("Object", model, canvas)
