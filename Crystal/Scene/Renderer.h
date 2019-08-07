@@ -25,14 +25,6 @@ public:
 
 	void render(const int width, const int height, Scene::IShaderScene* scene, const Scene::ViewModel& vm);
 
-	void setViewModel(Scene::ViewModel& vm) {
-		//const auto& ovm = vm.object;
-		//objectRenderer.setViewModel(ovm);
-
-		const auto& idvm = vm.objectId;
-		objectIdRenderer.setViewModel(idvm);
-	}
-
 	SceneRenderer* getObjectRenderer() { return &objectRenderer; }
 
 	SceneIdRenderer* getObjectIdRenderer() { return &objectIdRenderer; }

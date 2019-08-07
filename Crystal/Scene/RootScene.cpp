@@ -64,7 +64,7 @@ bool RootScene::exportFile(const std::experimental::filesystem::path& filename)
 	return writer.exportFile(filename, objects);
 }
 
-ViewModel RootScene::toViewModel()
+void RootScene::updateViewModel()
 {
 	ViewModel vm;
 	vm.object = objects.toViewModel();
@@ -72,7 +72,7 @@ ViewModel RootScene::toViewModel()
 
 	vm.objectId = objects.toIdViewModel();
 
-	return vm;
+	this->viewModel = vm;
 }
 
 Box3d RootScene::getBoundingBox() const

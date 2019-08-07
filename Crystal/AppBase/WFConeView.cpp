@@ -31,6 +31,6 @@ void WFConeView::onOk()
 	builder.build(cone.getValue(), unum.getValue(), vnum.getValue());
 	auto scene = getRepository()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Cone");
 	getRepository()->getObjects()->addScene(scene);
-	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getRepository()->updateViewModel();
 	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 }

@@ -16,17 +16,17 @@ void MaskMenu::show()
 		if (ImGui::MenuItem("Point")) {
 			mask.showPoints = !mask.showPoints;
 			canvas->setMask(mask);
-			canvas->setViewModel(model->toViewModel());
+			model->updateViewModel();
 		}
 		if (ImGui::MenuItem("Line")) {
 			mask.showLines = !mask.showLines;
 			canvas->setMask(mask);
-			canvas->setViewModel(model->toViewModel());
+			model->updateViewModel();
 		}
 		if (ImGui::MenuItem("Triangle")) {
 			mask.showTrianlges = !mask.showTrianlges;
 			canvas->setMask(mask);
-			canvas->setViewModel(model->toViewModel());
+			model->updateViewModel();
 		}
 
 		ImGui::EndMenu();

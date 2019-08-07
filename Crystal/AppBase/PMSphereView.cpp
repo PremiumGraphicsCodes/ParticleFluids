@@ -33,6 +33,6 @@ void PMSphereView::onOk()
 	builder.add(sphere.getValue(), unum.getValue(), vnum.getValue());
 	auto scene = getRepository()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
 	getRepository()->getObjects()->addScene(scene);
-	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getRepository()->updateViewModel();
 	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 }

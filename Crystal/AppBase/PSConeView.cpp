@@ -38,6 +38,6 @@ void PSConeView::onOk()
 	}
 	auto scene = getRepository()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), name.getValue());
 	getRepository()->getObjects()->addScene(scene);
-	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getRepository()->updateViewModel();
 	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 }

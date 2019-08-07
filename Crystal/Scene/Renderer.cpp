@@ -43,8 +43,7 @@ void Renderer::render(const int width, const int height, IShaderScene* scene, co
 	const auto& onScreenTex = scene->findSceneByName<TextureScene*>("OnScreenTexture");
 	const auto& idTex = scene->findSceneByName<TextureScene*>("IdTexture");
 	objectRenderer.render(vm.object, *onScreenTex->getTexture(), *smoothTex->getTexture());
-	objectIdRenderer.render(*idTex->getTexture());
-
+	objectIdRenderer.render(vm.objectId, *idTex->getTexture());
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);

@@ -58,7 +58,8 @@ void MoveUICtrl::onRightDragging(const Vector2df& position)
 		o->transform(rotation);
 	}
 	this->prevPosition = position;
-	canvas->setViewModel(repository->toViewModel());
+	//canvas->setViewModel(repository->toViewModel());
+	repository->updateViewModel();
 }
 
 void MoveUICtrl::onMiddleButtonDown(const Vector2df& position)

@@ -30,7 +30,7 @@ void SphereRegionSelectView::show()
 			attr.color = Graphics::ColorRGBAf(1.0, 0.0, 0.0, 0.0);
 			attr.width = 1.0;
 			//model->getItems()->addScene(builder.getWireFrame(), attr, "Region");
-			canvas->setViewModel(model->toViewModel());
+			model->updateViewModel();
 		};
 		ctrl->setFunction(func);
 		getCanvas()->setUICtrl(ctrl);

@@ -25,14 +25,6 @@ bool SceneIdRenderer::build(IScene* scene, SceneFactory* factory)
 	return true;
 }
 
-
-void SceneIdRenderer::setViewModel(const SceneIdViewModel& vm)
-{
-	this->pointIdRenderer.setBuffer(vm.getPointIdBuffer());
-	this->lineIdRenderer.setBuffer(vm.getLindIdBuffer(), 1.0f);
-	this->triangleIdRenderer.setBuffer(vm.getTriangleIdBuffer());
-}
-
 DrawableID SceneIdRenderer::getId(const double x, const double y, const TextureObject& texture)
 {
 	return getIdInTexCoord(x * texture.getWidth(), y * texture.getHeight(), texture);
@@ -47,8 +39,12 @@ DrawableID SceneIdRenderer::getIdInTexCoord(const int x, const int y, const Text
 	return DrawableID(color);
 }
 
-void SceneIdRenderer::render(const TextureObject& texture)
+void SceneIdRenderer::render(const SceneIdViewModel& vm, const TextureObject& texture)
 {
+	pointIdRenderer.setBuffer(vm.getPointIdBuffer());
+	lineIdRenderer.setBuffer(vm.getLindIdBuffer(), 1.0f);
+	triangleIdRenderer.setBuffer(vm.getTriangleIdBuffer());
+
 	frameBufferObject.setTexture(texture);
 	//texture.bind();
 	frameBufferObject.bind();

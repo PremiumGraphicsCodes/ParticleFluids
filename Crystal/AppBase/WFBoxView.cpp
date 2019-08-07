@@ -28,6 +28,6 @@ void WFBoxView::onOk()
 	builder.build(box.getValue());
 	auto scene = getRepository()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Box");
 	getRepository()->getObjects()->addScene(scene);
-	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getRepository()->updateViewModel();
 	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 }

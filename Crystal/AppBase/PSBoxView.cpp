@@ -54,6 +54,6 @@ void PSBoxView::onOk()
 	auto repository = getRepository();
 	auto scene = repository->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), name.getValue());
 	repository->getObjects()->addScene(scene);
-	getCanvas()->setViewModel(repository->toViewModel());
+	getRepository()->updateViewModel();
 	getCanvas()->fitCamera(repository->getBoundingBox());
 }

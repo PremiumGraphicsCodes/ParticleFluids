@@ -37,7 +37,11 @@ public:
 
 	RootShaderScene* getShaders() { return &shaders; }
 
-	ViewModel toViewModel();
+	//ViewModel toViewModel();
+
+	void updateViewModel();
+
+	ViewModel getViewModel() const { return viewModel; }
 
 	Math::Box3d getBoundingBox() const;
 
@@ -45,6 +49,7 @@ private:
 	Scene objects;
 	Scene items;
 	RootShaderScene shaders;
+	ViewModel viewModel;
 
 	SceneFactory objectFactory;
 	SceneFactory itemFactory;

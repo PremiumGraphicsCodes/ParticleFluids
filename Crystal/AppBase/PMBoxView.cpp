@@ -32,6 +32,6 @@ void PMBoxView::onOk()
 	auto scene = getRepository()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
 	scene->setMaterialName(materialName.getValue());
 	getRepository()->getObjects()->addScene(scene);
-	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getRepository()->updateViewModel();
 	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 }

@@ -41,7 +41,7 @@ void ScaleUICtrl::onLeftDragging(const Vector2df& position)
 		o->transform(matrix);
 	}
 	this->prevPosition = position;
-	canvas->setViewModel(repository->toViewModel());
+	repository->updateViewModel();
 }
 
 void ScaleUICtrl::onRightButtonDown(const Vector2df& position)

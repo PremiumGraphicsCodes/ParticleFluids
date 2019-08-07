@@ -17,7 +17,7 @@ void FileMenu::show()
 		if (ImGui::MenuItem("New")) {
 			model->clear();
 			model->init();
-			getCanvas()->setViewModel(model->toViewModel());
+			model->updateViewModel();
 		}
 		if (ImGui::MenuItem("Import")) {
 			FileOpenView view("");
@@ -29,7 +29,7 @@ void FileMenu::show()
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
 				if (model->importFile(filename)) {
-					getCanvas()->setViewModel(model->toViewModel());
+					model->updateViewModel();
 					getCanvas()->fitCamera(getModel()->getBoundingBox());
 				}
 			}

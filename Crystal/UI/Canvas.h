@@ -45,10 +45,6 @@ public:
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 
-	void setViewModel(Scene::ViewModel viewModel) {
-		this->renderer->setViewModel(viewModel);
-	}
-
 	void render(const int width, const int height, Scene::IShaderScene* scene, const Scene::ViewModel& viewModel);
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;

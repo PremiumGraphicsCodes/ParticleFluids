@@ -33,13 +33,11 @@ public:
 
 	bool build(Scene::IScene* scene, Scene::SceneFactory* factory);
 
-	void render(const Shader::TextureObject& texture);
+	void render(const Scene::SceneIdViewModel& vm,const Shader::TextureObject& texture);
 
 	Graphics::DrawableID getId(const double x, const double y, const Shader::TextureObject& texture);
 
 	Graphics::DrawableID getIdInTexCoord(const int x, const int y, const Shader::TextureObject& texture);
-
-	void setViewModel(const Scene::SceneIdViewModel& vm);
 
 	//Shader::TextureObject* getTexture() { return texture; }
 

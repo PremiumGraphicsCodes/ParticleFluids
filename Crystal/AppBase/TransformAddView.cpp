@@ -24,7 +24,7 @@ void TransformAddView::onOk()
 	auto scene = getRepository()->getObjectFactory()->createTransformScene("Transform");
 	//scene->setTranslate()
 	getRepository()->getObjects()->addScene(scene);
-	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getRepository()->updateViewModel();
 	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 
 }

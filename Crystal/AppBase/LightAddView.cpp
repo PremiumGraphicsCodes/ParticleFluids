@@ -27,6 +27,6 @@ void LightAddView::show()
 void LightAddView::onOk()
 {
 	getRepository()->getObjects()->addScene( getRepository()->getObjectFactory()->createLightScene(light.getValue(), name.getValue()) );
-	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getRepository()->updateViewModel();
 	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 }
