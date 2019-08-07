@@ -9,7 +9,6 @@
 
 #include "../../Crystal/Scene/RootScene.h"
 #include "../../Crystal/UI/Canvas.h"
-#include "../../Crystal/UI/ObjectRenderer.h"
 
 #include "../../Crystal/Graphics/PerspectiveCamera.h"
 
