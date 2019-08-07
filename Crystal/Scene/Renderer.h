@@ -4,7 +4,7 @@
 #include "../Shader/OnScreenRenderer.h"
 
 #include "SceneRenderer.h"
-#include "ObjectIdRenderer.h"
+#include "SceneIdRenderer.h"
 
 #include "../Scene/ViewModel.h"
 
@@ -35,7 +35,7 @@ public:
 
 	SceneRenderer* getObjectRenderer() { return &objectRenderer; }
 
-	ObjectIdRenderer* getObjectIdRenderer() { return &objectIdRenderer; }
+	SceneIdRenderer* getObjectIdRenderer() { return &objectIdRenderer; }
 
 	void setShowOffScreen(const bool b) { this->showOffScreen = b; }
 
@@ -43,7 +43,7 @@ private:
 	Shader::TextureObject texture;
 	Shader::OnScreenRenderer renderer;
 	SceneRenderer objectRenderer;
-	ObjectIdRenderer objectIdRenderer;
+	SceneIdRenderer objectIdRenderer;
 	bool showOffScreen;
 };
 

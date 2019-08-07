@@ -119,10 +119,10 @@
     <ClInclude Include="Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectIdRenderer.h">
+    <ClInclude Include="SceneRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="SceneRenderer.h">
+    <ClInclude Include="SceneIdRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
@@ -204,10 +204,10 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectIdRenderer.cpp">
+    <ClCompile Include="SceneRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="SceneRenderer.cpp">
+    <ClCompile Include="SceneIdRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>

@@ -18,10 +18,10 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class ObjectIdRenderer : private UnCopyable
+class SceneIdRenderer : private UnCopyable
 {
 public:
-	explicit ObjectIdRenderer(Graphics::ICamera* camera) :
+	explicit SceneIdRenderer(Graphics::ICamera* camera) :
 		pointIdRenderer(-1, "PointShader"),
 		lineIdRenderer(-1, "LineShader"),
 		triangleIdRenderer(-1, "TriangleShader"),
@@ -29,7 +29,7 @@ public:
 	{
 	}
 
-	~ObjectIdRenderer() {}
+	~SceneIdRenderer() {}
 
 	bool build(Scene::IScene* scene, Scene::SceneFactory* factory);
 

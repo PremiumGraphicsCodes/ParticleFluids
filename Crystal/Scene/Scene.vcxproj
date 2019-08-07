@@ -30,7 +30,7 @@
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LineShaderScene.h" />
-    <ClInclude Include="ObjectIdRenderer.h" />
+    <ClInclude Include="SceneIdRenderer.h" />
     <ClInclude Include="SceneRenderer.h" />
     <ClInclude Include="PointShaderScene.h" />
     <ClInclude Include="Renderer.h" />
@@ -74,7 +74,7 @@
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="LineShaderScene.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
-    <ClCompile Include="ObjectIdRenderer.cpp" />
+    <ClCompile Include="SceneIdRenderer.cpp" />
     <ClCompile Include="SceneRenderer.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
