@@ -5,7 +5,6 @@
 
 #include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/DrawableId.h"
-#include "FaceGroupScene.h"
 
 #include "LightScene.h"
 
@@ -36,18 +35,6 @@ SceneViewModel PolygonMeshScene::toViewModel() const
 		bf.add(getShape()->getFaces(), 0);
 	}
 
-	// group‚É‚ ‚éface‚Í‘Î‰‚·‚ématerial‚Å•`‰æD
-	const auto& children = getChildren();
-	for (auto& child : children) {
-		auto faceGroup = static_cast<FaceGroupScene*>(child);
-		auto materialScene = static_cast<MaterialScene*>( getParent()->findSceneByName( faceGroup->getMaterialName() ) );
-		if (materialScene == nullptr) {
-			bf.add(faceGroup->getShape(), 0);
-		}
-		else {
-			bf.add(faceGroup->getShape(), 0);
-		}
-	}
 	viewModel.triangleBuffers.push_back(bf);
 	return viewModel;
 }

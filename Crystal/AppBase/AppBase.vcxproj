@@ -26,7 +26,6 @@
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="DoubleView.cpp" />
-    <ClCompile Include="FaceGroupView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="Matrix3dView.cpp" />
     <ClCompile Include="SelectionMenu.cpp" />
@@ -100,7 +99,6 @@
     <ClInclude Include="CtrlMenu.h" />
     <ClInclude Include="Cylinder3dView.h" />
     <ClInclude Include="DoubleView.h" />
-    <ClInclude Include="FaceGroupView.h" />
     <ClInclude Include="FileMenu.h" />
     <ClInclude Include="FileOpenView.h" />
     <ClInclude Include="FileSaveView.h" />

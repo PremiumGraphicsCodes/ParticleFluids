@@ -72,9 +72,6 @@
     <ClInclude Include="PolygonMeshScene.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
-    <ClInclude Include="FaceGroupScene.h">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleAttribute.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
@@ -158,9 +155,6 @@
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshScene.cpp">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="FaceGroupScene.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemScene.cpp">

@@ -23,7 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraScene.h" />
-    <ClInclude Include="FaceGroupScene.h" />
     <ClInclude Include="FileFormat.h" />
     <ClInclude Include="FileImporter.h" />
     <ClInclude Include="FileExporter.h" />
@@ -65,7 +64,6 @@
     <ClInclude Include="WireFrameScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FaceGroupScene.cpp" />
     <ClCompile Include="FileImporter.cpp" />
     <ClCompile Include="FileExporter.cpp" />
     <ClCompile Include="IScene.cpp" />

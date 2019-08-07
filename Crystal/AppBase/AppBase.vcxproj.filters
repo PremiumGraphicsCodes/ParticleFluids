@@ -51,9 +51,6 @@
     <ClCompile Include="VertexView.cpp">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClCompile>
-    <ClCompile Include="FaceGroupView.cpp">
-      <Filter>Scene\Shape\PolygonMesh\View</Filter>
-    </ClCompile>
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="SceneListPanel.cpp">
       <Filter>Scene</Filter>
@@ -309,9 +306,6 @@
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClInclude>
     <ClInclude Include="VertexView.h">
-      <Filter>Scene\Shape\PolygonMesh\View</Filter>
-    </ClInclude>
-    <ClInclude Include="FaceGroupView.h">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClInclude>
     <ClInclude Include="BoolView.h">

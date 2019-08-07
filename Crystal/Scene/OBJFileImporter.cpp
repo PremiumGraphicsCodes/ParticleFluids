@@ -5,7 +5,6 @@
 #include "../IO/MTLFileReader.h"
 
 #include "Scene.h"
-#include "FaceGroupScene.h"
 //#include "AppearanceObjectRepository.h"
 
 using namespace Crystal::Shape;
@@ -42,12 +41,9 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 		const auto& normalTable = polygonMesh->getNormals();
 		const auto& texCoordTable = polygonMesh->getTexCoords();
 
-		auto meshScene = sceneFactory->createPolygonMeshScene(polygonMesh, "PolygonMesh");
-		scene->addScene(meshScene);
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
-			auto faceGroup = new FaceGroupScene(sceneFactory->getNextId(), g.name, {});
 			for (const auto& f : g.faces) {
 				std::vector<int> indices;
 				for (int i = 0; i < f.positionIndices.size(); i++) {
@@ -62,15 +58,15 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 				int i1 = 1;
 				int i2 = 2;
 				for (int i = 0; i2 < indices.size(); i++) {
-					Face f(origin, indices[i1], indices[i2]);
-					faceGroup->addFace(f);
+					polygonMesh->createFace(origin, indices[i1], indices[i2]);
 					i1++;
 					i2++;
 				}
 			}
-			faceGroup->setMaterialName(g.usemtl);
-			meshScene->addScene(faceGroup);
+//			faceGroup->setMaterialName(g.usemtl);
 		}
+		auto meshScene = sceneFactory->createPolygonMeshScene(polygonMesh, "PolygonMesh");
+		scene->addScene(meshScene);
 
 		return true;
 	}
