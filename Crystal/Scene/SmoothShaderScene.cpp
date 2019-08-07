@@ -14,14 +14,14 @@ SmoothShaderScene::SmoothShaderScene(const int id, const std::string& name) :
 	addUniform("projectionMatrix");
 	addUniform("modelviewMatrix");
 	addUniform("eyePosition");
-	addUniform("light.position");
-	addUniform("light.La");
-	addUniform("light.Ld");
-	addUniform("light.Ls");
-	addUniform("material.Ka");
-	addUniform("material.Kd");
-	addUniform("material.Ks");
-	addUniform("material.shininess");
+	addUniform("lights[0].position");
+	addUniform("lights[0].La");
+	addUniform("lights[0].Ld");
+	addUniform("lights[0].Ls");
+	addUniform("materials[0].Ka");
+	addUniform("materials[0].Kd");
+	addUniform("materials[0].Ks");
+	addUniform("materials[0].shininess");
 	//shader.findUniformLocation("texture1");
 
 	addAttribute("position");
@@ -74,15 +74,15 @@ void SmoothShaderScene::render(const ICamera& camera)
 		const auto& specular = light.getSpecular();
 
 		//glUniform3fv(shader->getUniformLocation("light.position"), 1, &lightPos[0]);
-		shader->sendUniform("light.La", ambient);
-		shader->sendUniform("light.Ld", diffuse);
-		shader->sendUniform("light.Ls", specular);
+		shader->sendUniform("lights[0].La", ambient);
+		shader->sendUniform("lights[0].Ld", diffuse);
+		shader->sendUniform("lights[0].Ls", specular);
 
 		const auto& m = b.getMaterial();
-		shader->sendUniform("material.Ka", m.ambient);
-		shader->sendUniform("material.Kd", m.diffuse);
-		shader->sendUniform("material.Ks", m.specular);
-		shader->sendUniform("material.shininess", m.shininess);
+		shader->sendUniform("materials[0].Ka", m.ambient);
+		shader->sendUniform("materials[0].Kd", m.diffuse);
+		shader->sendUniform("materials[0].Ks", m.specular);
+		shader->sendUniform("materials[0].shininess", m.shininess);
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 		shader->drawTriangles(indices);
 		//glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
@@ -136,15 +136,17 @@ std::string SmoothShaderScene::getBuiltInFragmentShaderSource() const
 		<< "	vec3 Ld;" << std::endl
 		<< "	vec3 Ls;" << std::endl
 		<< "};"
-		<< "uniform LightInfo light;"
+		<< "uniform LightInfo lights[8];"
 		<< "struct MaterialInfo {" << std::endl
 		<< "	vec3 Ka;" << std::endl
 		<< "	vec3 Kd;" << std::endl
 		<< "	vec3 Ks;" << std::endl
 		<< "	float shininess;" << std::endl
 		<< "};"
-		<< "uniform MaterialInfo material;"
+		<< "uniform MaterialInfo materials[256];"
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
+		<< "	MaterialInfo material = materials[0];" << std::endl
+		<< "	LightInfo light = lights[0];" << std::endl
 		<< "	vec3 s = normalize(light.position - vPosition);" << std::endl
 		<< "	vec3 v = normalize(vPosition - eyePosition);" << std::endl
 		<< "	vec3 r = reflect( -s, normal );" << std::endl
