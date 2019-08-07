@@ -4,7 +4,7 @@ using namespace System;
 
 namespace Crystal {
 	namespace Scene {
-		class RootScene;
+		class World;
 	}
 	namespace UI {
 		class ViewModel3d;
@@ -36,7 +36,7 @@ public:
 
 private:
 internal:
-	Crystal::Scene::RootScene* instance;
+	Crystal::Scene::World* instance;
 };
 
 	}

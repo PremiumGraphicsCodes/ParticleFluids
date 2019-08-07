@@ -4,7 +4,7 @@
 #include "RepositoryAdapter.h"
 #include "SceneAdapter.h"
 
-#include "../../Crystal/Scene/RootScene.h"
+#include "../../Crystal/Scene/World.h"
 //#include "../../Crystal/UI/ViewModel.h"
 
 #include "Converter.h"
@@ -14,7 +14,7 @@
 using namespace PG::CLI;
 
 RepositoryAdapter::RepositoryAdapter() :
-	instance(new Crystal::Scene::RootScene())
+	instance(new Crystal::Scene::World())
 {
 }
 
