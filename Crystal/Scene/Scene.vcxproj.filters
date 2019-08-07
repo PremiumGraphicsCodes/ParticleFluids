@@ -116,6 +116,15 @@
     <ClInclude Include="TriangleShaderScene.h">
       <Filter>ShaderScene\Triangle</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectIdRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
@@ -192,6 +201,15 @@
     <ClCompile Include="TriangleShaderScene.cpp">
       <Filter>ShaderScene\Triangle</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectIdRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">
@@ -241,6 +259,9 @@
     </Filter>
     <Filter Include="ShaderScene\Triangle">
       <UniqueIdentifier>{ab71925f-3edc-4808-b231-7094ef2b8fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{442dc2c7-873a-40c4-a519-d8ff2e247cb4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

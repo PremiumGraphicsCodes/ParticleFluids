@@ -8,8 +8,7 @@
 #include <list>
 
 #include "IUICtrl.h"
-#include "ObjectRenderer.h"
-#include "Renderer.h"
+#include "../Scene/Renderer.h"
 
 namespace Crystal {
 	namespace Scene {

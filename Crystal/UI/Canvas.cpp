@@ -2,7 +2,7 @@
 #include "../Graphics/PerspectiveCamera.h"
 #include "CameraUICtrl.h"
 #include "../Math/Box3d.h"
-#include "ObjectRenderer.h"
+#include "../Scene/Renderer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
