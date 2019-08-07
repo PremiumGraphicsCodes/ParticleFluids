@@ -105,7 +105,7 @@
       <Filter>ShaderScene</Filter>
     </ClInclude>
     <ClInclude Include="LineShaderScene.h">
-      <Filter>ShaderScene\LIne</Filter>
+      <Filter>ShaderScene\Line</Filter>
     </ClInclude>
     <ClInclude Include="PointShaderScene.h">
       <Filter>ShaderScene\Point</Filter>
@@ -190,7 +190,7 @@
       <Filter>ShaderScene</Filter>
     </ClCompile>
     <ClCompile Include="LineShaderScene.cpp">
-      <Filter>ShaderScene\LIne</Filter>
+      <Filter>ShaderScene\Line</Filter>
     </ClCompile>
     <ClCompile Include="PointShaderScene.cpp">
       <Filter>ShaderScene\Point</Filter>
@@ -251,9 +251,6 @@
     <Filter Include="ShaderScene">
       <UniqueIdentifier>{da606853-d3a7-41d3-8f8f-db26d68099d8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ShaderScene\LIne">
-      <UniqueIdentifier>{f769a1c5-59b7-4df8-baee-b951b683673b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ShaderScene\Point">
       <UniqueIdentifier>{49b90fdf-90d4-4783-b57f-e098b1691c16}</UniqueIdentifier>
     </Filter>
@@ -262,6 +259,9 @@
     </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{442dc2c7-873a-40c4-a519-d8ff2e247cb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderScene\Line">
+      <UniqueIdentifier>{f769a1c5-59b7-4df8-baee-b951b683673b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -176,7 +176,7 @@ void Window::show()
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		canvas->render(width, height, repository->getShaders());
+		canvas->render(width, height, repository->getShaders(), repository->toViewModel());
 
 		glFlush();
 

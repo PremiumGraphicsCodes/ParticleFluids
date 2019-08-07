@@ -36,13 +36,13 @@ bool Renderer::build(IScene* scene, SceneFactory* factory, IShaderScene* sscene)
 	return true;
 }
 
-void Renderer::render(const int width, const int height, IShaderScene* scene)
+void Renderer::render(const int width, const int height, IShaderScene* scene, const ViewModel& vm)
 {
 	//const auto& tex = scene->findSceneByName<TextureScene*>("MainTexture");
 	const auto& smoothTex = scene->findSceneByName<TextureScene*>("SmoothTexture");
 	const auto& onScreenTex = scene->findSceneByName<TextureScene*>("OnScreenTexture");
 	const auto& idTex = scene->findSceneByName<TextureScene*>("IdTexture");
-	objectRenderer.render(*onScreenTex->getTexture(), *smoothTex->getTexture());
+	objectRenderer.render(vm.object, *onScreenTex->getTexture(), *smoothTex->getTexture());
 	objectIdRenderer.render(*idTex->getTexture());
 
 

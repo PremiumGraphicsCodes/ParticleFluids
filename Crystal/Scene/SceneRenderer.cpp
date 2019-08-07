@@ -24,29 +24,25 @@ bool SceneRenderer::build()
 	return true;
 }
 
-void SceneRenderer::setViewModel(const SceneViewModel& vm)
+void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& texture, const TextureObject& smoothTexture)
 {
-	this->pointRenderer.setBuffer(vm.getPointBuffer());
-	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);
-	smoothBuffers.clear();
-	for (const auto& tb : vm.getTriangleBuffers()) {
-//		Graphics::TriangleBuffer buffer;
-		//buffer.light = vm.getLightBuffer();
-		//buffer.material = avm.getMaterialBuffer();
-		smoothBuffers.push_back(tb);
-	}
-}
-
-void SceneRenderer::render(const TextureObject& texture, const TextureObject& smoothTexture)
-{
+	const auto& pointBuffers = vm.getPointBuffers();
+	const auto& lineBuffers = vm.getLineBuffers();
+	const auto& smoothBuffers = vm.getTriangleBuffers();
 	frameBufferObject.setTexture(texture);
 	//texture.bind();
 	frameBufferObject.bind();
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	pointRenderer.render(*camera);
-	wireRenderer.render(*camera);
+	for (const auto& b : pointBuffers) {
+		pointRenderer.setBuffer(b);
+		pointRenderer.render(*camera);
+	}
+	for (const auto& b : lineBuffers) {
+		wireRenderer.setBuffer(b, 1.0f);
+		wireRenderer.render(*camera);
+	}
 	for (const auto& b : smoothBuffers) {
 		smoothRenderer.setBuffer(b);
 		smoothRenderer.render(*camera);

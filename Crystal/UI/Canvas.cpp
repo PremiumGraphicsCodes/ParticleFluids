@@ -3,6 +3,7 @@
 #include "CameraUICtrl.h"
 #include "../Math/Box3d.h"
 #include "../Scene/Renderer.h"
+#include "../Scene/SceneViewModel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -35,11 +36,16 @@ void Canvas::build(IScene* scene, SceneFactory* factory, IShaderScene* sscene)
 	renderer->build(scene, factory, sscene);
 }
 
-void Canvas::render(const int width, const int height, IShaderScene* scene)
+/*
+void Canvas::render(const int width, const int height, IShaderScene* scene, const SceneViewModel& vm)
+{
+}
+*/
+void Crystal::UI::Canvas::render(const int width, const int height, Scene::IShaderScene * scene, const Scene::ViewModel & viewModel)
 {
 	this->width = width;
 	this->height = height;
-	renderer->render(width, height, scene);
+	renderer->render(width, height, scene, viewModel);
 }
 
 void Canvas::onLeftButtonDown(const Vector2df& position)

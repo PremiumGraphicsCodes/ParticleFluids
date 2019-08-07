@@ -23,11 +23,11 @@ public:
 
 	bool build(Scene::IScene* scene, Scene::SceneFactory* factory, Scene::IShaderScene* sscene);
 
-	void render(const int width, const int height, Scene::IShaderScene* scene);
+	void render(const int width, const int height, Scene::IShaderScene* scene, const Scene::ViewModel& vm);
 
 	void setViewModel(Scene::ViewModel& vm) {
-		const auto& ovm = vm.object;
-		objectRenderer.setViewModel(ovm);
+		//const auto& ovm = vm.object;
+		//objectRenderer.setViewModel(ovm);
 
 		const auto& idvm = vm.objectId;
 		objectIdRenderer.setViewModel(idvm);

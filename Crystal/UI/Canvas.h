@@ -49,7 +49,7 @@ public:
 		this->renderer->setViewModel(viewModel);
 	}
 
-	void render(const int width, const int height, Scene::IShaderScene* scene);
+	void render(const int width, const int height, Scene::IShaderScene* scene, const Scene::ViewModel& viewModel);
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 

@@ -18,10 +18,12 @@ SceneViewModel WireFrameScene::toViewModel() const
 	const auto& lines = getShape()->getLines();
 	const auto& color = getAttribute().color;
 	int index = 0;
+	LineBuffer lineBuffer;
 	for (const auto& l : lines) {
-		viewModel.lineBuffer.add(l.getStart(), color, index++);
-		viewModel.lineBuffer.add(l.getEnd(), color, index++);
+		lineBuffer.add(l.getStart(), color, index++);
+		lineBuffer.add(l.getEnd(), color, index++);
 	}
+	viewModel.lineBuffers.push_back(lineBuffer);
 	return viewModel;
 }
 

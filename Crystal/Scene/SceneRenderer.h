@@ -32,16 +32,12 @@ public:
 
 	bool build();
 
-	void render(const Shader::TextureObject& texture, const Shader::TextureObject& smoothTexture);
-
-	void setViewModel(const Scene::SceneViewModel& vm);
+	void render(const Scene::SceneViewModel& vm, const Shader::TextureObject& texture, const Shader::TextureObject& smoothTexture);
 
 private:
 	Scene::PointShaderScene pointRenderer;
 	Scene::LineShaderScene wireRenderer;
 	Scene::SmoothShaderScene smoothRenderer;
-
-	std::vector<Scene::SmoothTriangleBuffer> smoothBuffers;
 
 	Graphics::ICamera* camera;
 
