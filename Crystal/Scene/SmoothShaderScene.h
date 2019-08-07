@@ -10,12 +10,12 @@
 namespace Crystal {
 	namespace Scene {
 
-class TriangleBuffer
+class SmoothTriangleBuffer
 {
 public:
-	TriangleBuffer() {}
+	SmoothTriangleBuffer() {}
 
-	TriangleBuffer(const Shape::PolygonMesh& mesh) {
+	SmoothTriangleBuffer(const Shape::PolygonMesh& mesh) {
 		const auto& vertices = mesh.getVertices();
 		const auto& ps = mesh.getPositions();
 		const auto& ns = mesh.getNormals();
@@ -69,14 +69,14 @@ public:
 
 	void render(const Graphics::ICamera& camera) override;
 
-	void setBuffer(const TriangleBuffer& buffer) { this->buffer = buffer; }
+	void setBuffer(const SmoothTriangleBuffer& buffer) { this->buffer = buffer; }
 
 private:
 	std::string getBuildInVertexShaderSource() const;
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	TriangleBuffer buffer;
+	SmoothTriangleBuffer buffer;
 };
 
 	}

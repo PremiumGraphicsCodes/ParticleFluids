@@ -16,7 +16,7 @@ public:
 
 	Graphics::LineBuffer getLineBuffer() const { return lineBuffer; }
 
-	std::list<TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
+	std::list<SmoothTriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
 	Graphics::LightBuffer getLightBuffers() const { return lightBuffer; }
 
@@ -30,7 +30,7 @@ public:
 public:
 	PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
-	std::list<TriangleBuffer> triangleBuffers;
+	std::list<SmoothTriangleBuffer> triangleBuffers;
 	Graphics::LightBuffer lightBuffer;
 	std::list<Graphics::MaterialBuffer> materialBuffers;
 };

@@ -24,7 +24,7 @@ SceneViewModel PolygonMeshScene::toViewModel() const
 	}
 
 	// Polygon直下にあるfaceはデフォルトで描画．
-	TriangleBuffer bf(*getShape());
+	SmoothTriangleBuffer bf(*getShape());
 	auto materialScene = static_cast<MaterialScene*>(getParent()->findSceneByName(materialName));
 	if(materialScene == nullptr) {
 		bf.add(getShape()->getFaces(), 0);

@@ -41,7 +41,7 @@ private:
 	Scene::LineShaderScene wireRenderer;
 	Scene::SmoothShaderScene smoothRenderer;
 
-	std::vector<Scene::TriangleBuffer> smoothBuffers;
+	std::vector<Scene::SmoothTriangleBuffer> smoothBuffers;
 
 	Graphics::ICamera* camera;
 
