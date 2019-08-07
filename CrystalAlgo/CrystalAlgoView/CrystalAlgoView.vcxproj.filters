@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CrystalAlgoView.cpp" />
-    <ClCompile Include="VolumeButton.cpp">
-      <Filter>Volume</Filter>
-    </ClCompile>
     <ClCompile Include="VolumeConvertButton.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
@@ -23,14 +20,14 @@
     <ClCompile Include="IntersectionView.cpp">
       <Filter>Intersection</Filter>
     </ClCompile>
+    <ClCompile Include="VolumeView.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VolumeButton.h">
-      <Filter>Volume</Filter>
-    </ClInclude>
     <ClInclude Include="VolumeConvertButton.h">
       <Filter>Volume</Filter>
     </ClInclude>
@@ -48,6 +45,9 @@
     </ClInclude>
     <ClInclude Include="IntersectionView.h">
       <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeView.h">
+      <Filter>Volume</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

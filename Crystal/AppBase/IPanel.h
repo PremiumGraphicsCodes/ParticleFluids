@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IWindow.h"
+#include "../Scene/RootScene.h"
 #include "../UI/Canvas.h"
 #include <list>
 

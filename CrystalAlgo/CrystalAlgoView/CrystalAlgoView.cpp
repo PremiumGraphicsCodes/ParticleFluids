@@ -16,10 +16,12 @@
 #include "BooleanView.h"
 #include "SpaceHashView.h"
 #include "MarchingCubesView.h"
-#include "VolumeButton.h"
+#include "VolumeView.h"
 #include "VolumeConvertButton.h"
 #include "OctreeView.h"
 #include "SpaceHashView.h"
+
+#include "../../Crystal/AppBase/imgui.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -27,20 +29,40 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 namespace {
-	class AlgoPanel : public IPanel
+	class AlgoMenu : public IMenu
 	{
 	public:
-		AlgoPanel(const std::string& name, RootScene* repository, Canvas* canvas, ControlPanel* control) :
-			IPanel(name, repository, canvas)
+		AlgoMenu(const std::string& name, RootScene* model, Canvas* canvas, ControlPanel* control) :
+			IMenu(name, model, canvas),
+			control(control)
 		{
-			add(new BooleanView(model, canvas));
-			add(new IntersectionView(model, canvas));
+			/*
 			add(new SpaceHashView(model, canvas));
 			add(new MarchingCubesView(model, canvas));
 			add(new VolumeButton(model, canvas));
 			add(new VolumeConvertButton(model, canvas));
 			add(new SpaceHashView(model, canvas));
+			*/
 		}
+
+		void show() override
+		{
+			if (ImGui::BeginMenu("Algo")) {
+				if (ImGui::MenuItem("Boolean")) {
+					control->setWindow(new BooleanView(getModel(), getCanvas()));
+				}
+				if (ImGui::MenuItem("SpaceHash")) {
+					control->setWindow(new SpaceHashView(getModel(), getCanvas()));
+				}
+				if (ImGui::MenuItem("Intersection")) {
+					control->setWindow(new IntersectionView(getModel(), getCanvas()));
+				}
+				ImGui::EndMenu();
+			}
+		}
+
+	private:
+		ControlPanel* control;
 	};
 }
 
@@ -58,17 +80,15 @@ int main(int, char**)
 	auto control = new ControlPanel("Control", &model, &canvas);
 	window.add(control);
 
-
 	window.add(new FileMenu("File", &model, &canvas));
 	window.add(new CameraMenu("Camera", &model, &canvas));
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 	window.add(new ShapeMenu("Shape", &model, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &model, &canvas, control));
+	window.add(new AlgoMenu("Algo", &model, &canvas, control));
 
-	//window.add(new SceneAddPanel("SceneAdd", &model, &canvas, control));
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 
-	window.add(new AlgoPanel("Algo", &model, &canvas, control));
 
 	window.show();
 

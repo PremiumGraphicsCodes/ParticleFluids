@@ -163,7 +163,7 @@
     <ClCompile Include="MarchingCubesView.cpp" />
     <ClCompile Include="OctreeView.cpp" />
     <ClCompile Include="SpaceHashView.cpp" />
-    <ClCompile Include="VolumeButton.cpp" />
+    <ClCompile Include="VolumeView.cpp" />
     <ClCompile Include="VolumeConvertButton.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,7 +175,7 @@
     <ClInclude Include="MarchingCubesView.h" />
     <ClInclude Include="OctreeView.h" />
     <ClInclude Include="SpaceHashView.h" />
-    <ClInclude Include="VolumeButton.h" />
+    <ClInclude Include="VolumeView.h" />
     <ClInclude Include="VolumeConvertButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

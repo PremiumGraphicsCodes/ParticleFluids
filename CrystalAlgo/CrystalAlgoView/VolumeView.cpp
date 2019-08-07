@@ -1,9 +1,11 @@
-#include "VolumeButton.h"
+#include "VolumeView.h"
 
 #include "../../Crystal/Shape/Volume.h"
 #include "../../Crystal/Math/Gaussian.h"
 #include "../../Crystal/Graphics/ColorMap.h"
 #include "../../Crystal/Graphics/ColorHSV.h"
+
+#include "../../Crystal/Scene/ParticleAttribute.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -11,18 +13,18 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-VolumeButton::VolumeButton(RootScene* model, Canvas* canvas) :
-	IPopupButton("Volume", model, canvas),
+VolumeView::VolumeView(RootScene* model, Canvas* canvas) :
+	IOkCancelView("Volume", model, canvas),
 	box("Box")
 {
 }
 
-void VolumeButton::onShow()
+void VolumeView::show()
 {
 	box.show();
 }
 
-void VolumeButton::onOk()
+void VolumeView::onOk()
 {
 	Volume volume(32, 32, 32, box.getValue());
 
@@ -58,11 +60,6 @@ void VolumeButton::onOk()
 		attrs.push_back(attr);
 	}
 
-	getModel()->getObjectFactory()->createParticleSystemScene(positions, attrs, "VolumeConverter");
-	getCanvas()->setViewModel(getModel()->toViewModel());
+	getRepository()->getObjectFactory()->createParticleSystemScene(positions, attrs, "VolumeConverter");
+	getCanvas()->setViewModel(getRepository()->toViewModel());
 }
-
-void VolumeButton::onCancel()
-{
-}
-
