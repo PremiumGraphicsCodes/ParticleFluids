@@ -23,6 +23,7 @@
     <ClCompile Include="VolumeConvertView.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
+    <ClCompile Include="AlgoMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

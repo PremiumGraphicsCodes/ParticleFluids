@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AlgoMenu.cpp" />
     <ClCompile Include="BooleanView.cpp" />
     <ClCompile Include="CrystalAlgoView.cpp" />
     <ClCompile Include="IntersectionView.cpp" />
