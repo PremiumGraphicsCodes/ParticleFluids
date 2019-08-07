@@ -43,6 +43,7 @@ public:
 
 	void build(Scene::IScene* scene, Scene::SceneFactory* factory, Scene::IShaderScene* sscene);
 
+
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 
 	void render(const int width, const int height, Scene::IShaderScene* scene, const Scene::ViewModel& viewModel);
