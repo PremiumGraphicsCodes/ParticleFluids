@@ -3,7 +3,7 @@
 #include "../Shader/TextureObject.h"
 #include "../Shader/OnScreenRenderer.h"
 
-#include "ObjectRenderer.h"
+#include "SceneRenderer.h"
 #include "ObjectIdRenderer.h"
 
 #include "../Scene/ViewModel.h"
@@ -33,7 +33,7 @@ public:
 		objectIdRenderer.setViewModel(idvm);
 	}
 
-	ObjectRenderer* getObjectRenderer() { return &objectRenderer; }
+	SceneRenderer* getObjectRenderer() { return &objectRenderer; }
 
 	ObjectIdRenderer* getObjectIdRenderer() { return &objectIdRenderer; }
 
@@ -42,7 +42,7 @@ public:
 private:
 	Shader::TextureObject texture;
 	Shader::OnScreenRenderer renderer;
-	ObjectRenderer objectRenderer;
+	SceneRenderer objectRenderer;
 	ObjectIdRenderer objectIdRenderer;
 	bool showOffScreen;
 };

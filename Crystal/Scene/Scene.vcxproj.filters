@@ -122,7 +122,7 @@
     <ClInclude Include="ObjectIdRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectRenderer.h">
+    <ClInclude Include="SceneRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
@@ -207,7 +207,7 @@
     <ClCompile Include="ObjectIdRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectRenderer.cpp">
+    <ClCompile Include="SceneRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>

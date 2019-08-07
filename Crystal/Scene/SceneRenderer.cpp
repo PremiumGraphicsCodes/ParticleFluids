@@ -1,4 +1,4 @@
-#include "ObjectRenderer.h"
+#include "SceneRenderer.h"
 #include "../../Crystal/Scene/SceneViewModel.h"
 
 #include "../ThirdParty/stb/stb_image.h"
@@ -8,7 +8,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-bool ObjectRenderer::build()
+bool SceneRenderer::build()
 {
 	if (!pointRenderer.build()) {
 		return false;
@@ -24,7 +24,7 @@ bool ObjectRenderer::build()
 	return true;
 }
 
-void ObjectRenderer::setViewModel(const SceneViewModel& vm)
+void SceneRenderer::setViewModel(const SceneViewModel& vm)
 {
 	this->pointRenderer.setBuffer(vm.getPointBuffer());
 	this->wireRenderer.setBuffer(vm.getLineBuffer(), 1.0f);
@@ -37,7 +37,7 @@ void ObjectRenderer::setViewModel(const SceneViewModel& vm)
 	}
 }
 
-void ObjectRenderer::render(const TextureObject& texture, const TextureObject& smoothTexture)
+void SceneRenderer::render(const TextureObject& texture, const TextureObject& smoothTexture)
 {
 	frameBufferObject.setTexture(texture);
 	//texture.bind();

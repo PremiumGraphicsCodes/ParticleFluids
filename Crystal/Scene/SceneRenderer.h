@@ -17,10 +17,10 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class ObjectRenderer : private UnCopyable
+class SceneRenderer : private UnCopyable
 {
 public:
-	ObjectRenderer(Graphics::ICamera* camera) :
+	SceneRenderer(Graphics::ICamera* camera) :
 		camera(camera),
 		pointRenderer(-1, "PointRenderer"),
 		wireRenderer(-1, "LineRenderer"),
@@ -28,7 +28,7 @@ public:
 	{
 	}
 
-	~ObjectRenderer() {}
+	~SceneRenderer() {}
 
 	bool build();
 
