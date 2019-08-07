@@ -1,5 +1,8 @@
 #include "SmoothShaderScene.h"
 
+#include "../Graphics/Material.h"
+#include "../Graphics/PointLight.h"
+
 #include <sstream>
 
 using namespace Crystal::Graphics;

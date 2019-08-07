@@ -2,8 +2,6 @@
 #include "SceneViewModel.h"
 #include "SceneIdViewModel.h"
 
-
-#include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/DrawableId.h"
 
 #include "LightScene.h"

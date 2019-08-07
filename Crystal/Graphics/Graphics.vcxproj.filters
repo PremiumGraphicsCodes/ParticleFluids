@@ -41,9 +41,6 @@
     </ClInclude>
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="DrawableId.h" />
-    <ClInclude Include="TriangleBuffer.h">
-      <Filter>Buffer</Filter>
-    </ClInclude>
     <ClInclude Include="ColorMap.h" />
     <ClInclude Include="ColorHSV.h" />
   </ItemGroup>

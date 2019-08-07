@@ -1,8 +1,8 @@
 #pragma once
 
 #include "PointShaderScene.h"
+#include "SmoothShaderScene.h"
 #include "../Graphics/LineBuffer.h"
-#include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/LightBuffer.h"
 #include "../Graphics/MaterialBuffer.h"
 
@@ -16,21 +16,21 @@ public:
 
 	Graphics::LineBuffer getLineBuffer() const { return lineBuffer; }
 
-	std::list<Graphics::TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
+	std::list<TriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
 	Graphics::LightBuffer getLightBuffers() const { return lightBuffer; }
 
 	void merge(SceneViewModel& rhs) {
 		pointBuffer.merge(rhs.pointBuffer);
 		lineBuffer.merge(rhs.lineBuffer);
-		triangleBuffers.splice(triangleBuffers.end(), rhs.triangleBuffers);
 		lightBuffer.merge(rhs.lightBuffer);
+		triangleBuffers.splice(triangleBuffers.end(), rhs.triangleBuffers);
 	}
 
 public:
 	PointBuffer pointBuffer;
 	Graphics::LineBuffer lineBuffer;
-	std::list<Graphics::TriangleBuffer> triangleBuffers;
+	std::list<TriangleBuffer> triangleBuffers;
 	Graphics::LightBuffer lightBuffer;
 	std::list<Graphics::MaterialBuffer> materialBuffers;
 };

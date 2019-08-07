@@ -2,7 +2,6 @@
 
 #include "PointShaderScene.h"
 #include "../Graphics/LineBuffer.h"
-#include "../Graphics/TriangleBuffer.h"
 #include "../Graphics/LightBuffer.h"
 #include "../Graphics/MaterialBuffer.h"
 
