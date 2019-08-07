@@ -2,12 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CrystalAlgoView.cpp" />
-    <ClCompile Include="IntersectionButton.cpp">
-      <Filter>Intersection</Filter>
-    </ClCompile>
-    <ClCompile Include="MarchingCubesButton.cpp">
-      <Filter>MarchingCubes</Filter>
-    </ClCompile>
     <ClCompile Include="VolumeButton.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
@@ -23,17 +17,17 @@
     <ClCompile Include="OctreeView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
+    <ClCompile Include="MarchingCubesView.cpp">
+      <Filter>MarchingCubes</Filter>
+    </ClCompile>
+    <ClCompile Include="IntersectionView.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IntersectionButton.h">
-      <Filter>Intersection</Filter>
-    </ClInclude>
-    <ClInclude Include="MarchingCubesButton.h">
-      <Filter>MarchingCubes</Filter>
-    </ClInclude>
     <ClInclude Include="VolumeButton.h">
       <Filter>Volume</Filter>
     </ClInclude>
@@ -48,6 +42,12 @@
     </ClInclude>
     <ClInclude Include="OctreeView.h">
       <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="MarchingCubesView.h">
+      <Filter>MarchingCubes</Filter>
+    </ClInclude>
+    <ClInclude Include="IntersectionView.h">
+      <Filter>Intersection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

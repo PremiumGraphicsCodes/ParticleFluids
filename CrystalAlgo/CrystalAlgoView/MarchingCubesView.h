@@ -1,22 +1,20 @@
 #pragma once
 
-#include "../../Crystal/AppBase/IPopupButton.h"
+#include "../../Crystal/AppBase/IOkCancelView.h"
 #include "../../Crystal/AppBase/ObjectSelectView.h"
 #include "../../Crystal/AppBase/DoubleView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class MarchingCubesButton : public IPopupButton
+class MarchingCubesView : public IOkCancelView
 {
 public:
-	MarchingCubesButton(Scene::RootScene* model, Canvas* canvas);
+	MarchingCubesView(Scene::RootScene* model, Canvas* canvas);
 
-	void onShow() override;
+	void show() override;
 
 	void onOk() override;
-
-	void onCancel() override;
 
 private:
 	std::array< DoubleView, 8 > values;

@@ -1,22 +1,20 @@
 #pragma once
 
-#include "../../Crystal/AppBase/IPopupButton.h"
+#include "../../Crystal/AppBase/IOkCancelView.h"
 #include "../../Crystal/AppBase/ObjectSelectView.h"
 #include "../../Crystal/AppBase/DoubleView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class IntersectionButton : public IPopupButton
+class IntersectionView : public IOkCancelView
 {
 public:
-	IntersectionButton(Scene::RootScene* model, Canvas* canvas);
+	IntersectionView(Scene::RootScene* model, Canvas* canvas);
 
-	void onShow() override;
+	void show() override;
 
 	void onOk() override;
-
-	void onCancel() override;
 
 private:
 	ObjectSelectView mesh1;

@@ -1,4 +1,4 @@
-#include "IntersectionButton.h"
+#include "IntersectionView.h"
 
 #include "../CrystalAlgo/IntersectionAlgo.h"
 #include "../../Crystal/Shape/WireFrameBuilder.h"
@@ -8,24 +8,25 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-IntersectionButton::IntersectionButton(RootScene* model, Canvas* canvas) :
-	IPopupButton("Intersection", model, canvas),
+IntersectionView::IntersectionView(RootScene* model, Canvas* canvas) :
+	IOkCancelView("Intersection", model, canvas),
 	mesh1("Mesh1", model, canvas),
 	mesh2("Mesh2", model, canvas),
 	tolerance("Tolerance", 1.0e-12)
 {
 }
 
-void IntersectionButton::onShow()
+void IntersectionView::show()
 {
 	mesh1.show();
 	mesh2.show();
 }
 
-void IntersectionButton::onOk()
+void IntersectionView::onOk()
 {
-	auto obj1 = static_cast<PolygonMeshScene*>( getModel()->getObjects()->findSceneById(mesh1.getId()) );
-	auto obj2 = static_cast<PolygonMeshScene*>( getModel()->getObjects()->findSceneById(mesh2.getId()) );
+	auto repository = getRepository();
+	auto obj1 = static_cast<PolygonMeshScene*>( repository->getObjects()->findSceneById(mesh1.getId()) );
+	auto obj2 = static_cast<PolygonMeshScene*>( repository->getObjects()->findSceneById(mesh2.getId()) );
 	if (obj1 == nullptr || obj2 == nullptr) {
 		return;
 	}
@@ -42,12 +43,8 @@ void IntersectionButton::onOk()
 		ParticleAttribute attr;
 		attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 		attr.size = 1.0f;
-		getModel()->getObjectFactory()->createParticleSystemScene(positions, attr, "intersections");
-		getCanvas()->setViewModel(getModel()->toViewModel());
+		repository->getObjectFactory()->createParticleSystemScene(positions, attr, "intersections");
+		getCanvas()->setViewModel(repository->toViewModel());
 	}
-}
-
-void IntersectionButton::onCancel()
-{
 }
 

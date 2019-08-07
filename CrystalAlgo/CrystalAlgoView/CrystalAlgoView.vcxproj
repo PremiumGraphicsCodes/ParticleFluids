@@ -159,8 +159,8 @@
   <ItemGroup>
     <ClCompile Include="BooleanView.cpp" />
     <ClCompile Include="CrystalAlgoView.cpp" />
-    <ClCompile Include="IntersectionButton.cpp" />
-    <ClCompile Include="MarchingCubesButton.cpp" />
+    <ClCompile Include="IntersectionView.cpp" />
+    <ClCompile Include="MarchingCubesView.cpp" />
     <ClCompile Include="OctreeView.cpp" />
     <ClCompile Include="SpaceHashView.cpp" />
     <ClCompile Include="VolumeButton.cpp" />
@@ -171,8 +171,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h" />
-    <ClInclude Include="IntersectionButton.h" />
-    <ClInclude Include="MarchingCubesButton.h" />
+    <ClInclude Include="IntersectionView.h" />
+    <ClInclude Include="MarchingCubesView.h" />
     <ClInclude Include="OctreeView.h" />
     <ClInclude Include="SpaceHashView.h" />
     <ClInclude Include="VolumeButton.h" />

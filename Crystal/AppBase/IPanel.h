@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IWindow.h"
+#include "../UI/Canvas.h"
 #include <list>
 
 namespace Crystal {
@@ -8,7 +9,6 @@ namespace Crystal {
 		class RootScene;
 	}
 	namespace UI {
-		class Canvas;
 
 class IPanel : public IWindow
 {

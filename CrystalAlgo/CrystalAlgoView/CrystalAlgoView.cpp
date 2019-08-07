@@ -12,10 +12,10 @@
 #include "../../Crystal/AppBase/ControlPanel.h"
 
 
-#include "IntersectionButton.h"
+#include "IntersectionView.h"
 #include "BooleanView.h"
 #include "SpaceHashView.h"
-#include "MarchingCubesButton.h"
+#include "MarchingCubesView.h"
 #include "VolumeButton.h"
 #include "VolumeConvertButton.h"
 #include "OctreeView.h"
@@ -34,9 +34,9 @@ namespace {
 			IPanel(name, repository, canvas)
 		{
 			add(new BooleanView(model, canvas));
-			add(new IntersectionButton(model, canvas));
+			add(new IntersectionView(model, canvas));
 			add(new SpaceHashView(model, canvas));
-			add(new MarchingCubesButton(model, canvas));
+			add(new MarchingCubesView(model, canvas));
 			add(new VolumeButton(model, canvas));
 			add(new VolumeConvertButton(model, canvas));
 			add(new SpaceHashView(model, canvas));

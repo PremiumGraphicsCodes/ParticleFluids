@@ -1,4 +1,4 @@
-#include "MarchingCubesButton.h"
+#include "MarchingCubesView.h"
 
 #include "../CrystalAlgo/MarchingCubesAlgo.h"
 #include "../../Crystal/Shape/Volume.h"
@@ -11,8 +11,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-MarchingCubesButton::MarchingCubesButton(RootScene* model, Canvas* canvas) :
-	IPopupButton("MarchingCubes", model, canvas),
+MarchingCubesView::MarchingCubesView(RootScene* model, Canvas* canvas) :
+	IOkCancelView("MarchingCubes", model, canvas),
 	values({
 		DoubleView("Value0", 0),
 		DoubleView("Value1", 100),
@@ -26,14 +26,14 @@ MarchingCubesButton::MarchingCubesButton(RootScene* model, Canvas* canvas) :
 {
 }
 
-void MarchingCubesButton::onShow()
+void MarchingCubesView::show()
 {
 	for (auto& v : values) {
 		v.show();
 	}
 }
 
-void MarchingCubesButton::onOk()
+void MarchingCubesView::onOk()
 {
 	MCCell cell;
 	cell.vertices[0].position = Vector3dd(0, 0, 0);
@@ -79,10 +79,6 @@ void MarchingCubesButton::onOk()
 		builder.add(t);
 	}
 	//builder.pushCurrentFaceGroup();
-	getModel()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), "MarchingCubes");
-	getCanvas()->setViewModel(getModel()->toViewModel());
-}
-
-void MarchingCubesButton::onCancel()
-{
+	getRepository()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), "MarchingCubes");
+	getCanvas()->setViewModel(getRepository()->toViewModel());
 }
