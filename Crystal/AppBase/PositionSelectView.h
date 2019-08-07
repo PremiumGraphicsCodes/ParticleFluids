@@ -9,7 +9,7 @@ namespace Crystal {
 class PositionSelectView : public IPanel
 {
 public:
-	PositionSelectView(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
+	PositionSelectView(const std::string& name, Scene::World* model, Canvas* canvas) :
 		IPanel(name, model, canvas),
 		position(0,0,0)
 	{

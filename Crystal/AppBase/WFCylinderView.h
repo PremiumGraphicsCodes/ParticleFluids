@@ -11,7 +11,7 @@ namespace Crystal {
 class WFCylinderView : public IOkCancelView
 {
 public:
-	WFCylinderView(Scene::RootScene* model, Canvas* canvas);
+	WFCylinderView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

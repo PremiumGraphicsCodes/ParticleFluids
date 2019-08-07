@@ -9,7 +9,7 @@ namespace Crystal {
 class SphereRegionSelectView : public IPanel
 {
 public:
-	SphereRegionSelectView(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
+	SphereRegionSelectView(const std::string& name, Scene::World* model, Canvas* canvas) :
 		IPanel(name, model, canvas),
 		object("Object", model, canvas, Scene::SceneType::ParticleSystemScene),
 		sphere("Region")

@@ -7,7 +7,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFCylinderView::WFCylinderView(RootScene* model, Canvas* canvas) :
+WFCylinderView::WFCylinderView(World* model, Canvas* canvas) :
 	IOkCancelView("WFCylinder", model, canvas),
 	cylinder("Cylinder"),
 	attribute("Attribute"),

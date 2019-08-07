@@ -10,7 +10,7 @@ namespace Crystal {
 class TransformView : public IPanel
 {
 public:
-	TransformView(const std::string& name, Scene::RootScene* model, Canvas* canvas);
+	TransformView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

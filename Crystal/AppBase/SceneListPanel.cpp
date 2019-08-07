@@ -1,6 +1,6 @@
 #include "SceneListPanel.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 
 #include "ParticleSystemEditView.h"
 #include "WireFrameEditView.h"
@@ -14,7 +14,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-SceneListPanel::SceneListPanel(const std::string& name, RootScene* model, Canvas* canvas, IPanel* control) :
+SceneListPanel::SceneListPanel(const std::string& name, World* model, Canvas* canvas, IPanel* control) :
 	IPanel(name, model, canvas),
 	control(control)
 {

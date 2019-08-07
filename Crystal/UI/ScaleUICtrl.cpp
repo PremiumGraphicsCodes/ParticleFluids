@@ -1,6 +1,6 @@
 #include "ScaleUICtrl.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 
 #include "../UI/Canvas.h"
 
@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-ScaleUICtrl::ScaleUICtrl(RootScene* repository, Canvas* canvas) :
+ScaleUICtrl::ScaleUICtrl(World* repository, Canvas* canvas) :
 	repository(repository),
 	canvas(canvas)
 {

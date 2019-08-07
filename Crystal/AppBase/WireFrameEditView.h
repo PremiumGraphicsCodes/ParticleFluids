@@ -5,7 +5,7 @@
 #include "IntView.h"
 #include "StringView.h"
 #include "../Scene/WireFrameScene.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {
@@ -14,7 +14,7 @@ namespace Crystal {
 class WireFrameEditView : public IWindow
 {
 public:
-	WireFrameEditView(const std::string& name, Scene::RootScene* repository, Canvas* canvas);
+	WireFrameEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
 
 	void show() override;
 

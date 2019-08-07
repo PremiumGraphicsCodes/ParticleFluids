@@ -5,7 +5,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-ShaderView::ShaderView(const std::string& name, RootScene* model, Canvas* canvas) :
+ShaderView::ShaderView(const std::string& name, World* model, Canvas* canvas) :
 	IPanel(name, model, canvas)
 {
 }

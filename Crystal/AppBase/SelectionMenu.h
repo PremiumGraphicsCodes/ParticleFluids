@@ -9,7 +9,7 @@ namespace Crystal {
 class SelectionMenu : public IMenu
 {
 public:
-	SelectionMenu(const std::string& name, Scene::RootScene* model, Canvas* canvas, ControlPanel* control) :
+	SelectionMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
 		IMenu(name, model, canvas),
 		control(control)
 	{}

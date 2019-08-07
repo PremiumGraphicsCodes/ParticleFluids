@@ -1,6 +1,6 @@
 #include "RotateUICtrl.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 
 #include "../UI/Canvas.h"
 
@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-RotateUICtrl::RotateUICtrl(RootScene* repository, Canvas* canvas) :
+RotateUICtrl::RotateUICtrl(World* repository, Canvas* canvas) :
 	repository(repository),
 	canvas(canvas)
 {

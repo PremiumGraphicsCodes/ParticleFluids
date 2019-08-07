@@ -1,7 +1,7 @@
 #include "TextureAddView.h"
 
 #include "tinyfiledialogs.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 
 #include "../IO/ImageFileReader.h"
 
@@ -10,7 +10,7 @@ using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-TextureAddView::TextureAddView(const std::string& name, RootScene* model, Canvas* canvas) :
+TextureAddView::TextureAddView(const std::string& name, World* model, Canvas* canvas) :
 	IPanel(name, model, canvas),
 	image("Image", Graphics::Image(256,256,255)),
 	name("Name", "Image01"),

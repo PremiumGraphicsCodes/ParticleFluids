@@ -7,7 +7,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PSCylinderView::PSCylinderView(RootScene* model, Canvas* canvas) :
+PSCylinderView::PSCylinderView(World* model, Canvas* canvas) :
 	IOkCancelView("PSCylinder", model, canvas),
 	attribute("Attribute"),
 	cylinderButton("Cylinder"),

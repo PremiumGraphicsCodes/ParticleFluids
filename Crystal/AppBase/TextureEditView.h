@@ -5,7 +5,7 @@
 #include "IntView.h"
 #include "StringView.h"
 #include "../Scene/TextureScene.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {
@@ -14,7 +14,7 @@ namespace Crystal {
 class TextureEditView : public IWindow
 {
 public:
-	TextureEditView(const std::string& name, Scene::RootScene* repository, Canvas* canvas);
+	TextureEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
 
 	void show() override;
 

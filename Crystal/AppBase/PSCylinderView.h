@@ -10,7 +10,7 @@ namespace Crystal {
 class PSCylinderView : public IOkCancelView
 {
 public:
-	PSCylinderView(Scene::RootScene* model, Canvas* canvas);
+	PSCylinderView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

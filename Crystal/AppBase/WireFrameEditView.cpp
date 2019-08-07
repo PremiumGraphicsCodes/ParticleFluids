@@ -3,7 +3,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WireFrameEditView::WireFrameEditView(const std::string& name, RootScene* repository, Canvas* canvas) :
+WireFrameEditView::WireFrameEditView(const std::string& name, World* repository, Canvas* canvas) :
 	IWindow(name),
 	wire("WireFrame"),
 	id("Id"),

@@ -12,7 +12,7 @@ namespace Crystal {
 class WFConeView : public IOkCancelView
 {
 public:
-	WFConeView(Scene::RootScene* model, Canvas* canvas);
+	WFConeView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

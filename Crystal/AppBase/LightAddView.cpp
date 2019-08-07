@@ -1,6 +1,6 @@
 #include "LightAddView.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
@@ -8,7 +8,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-LightAddView::LightAddView(const std::string& name, RootScene* model, Canvas* canvas) :
+LightAddView::LightAddView(const std::string& name, World* model, Canvas* canvas) :
 	IPanel(name, model, canvas),
 	light("LAdd"),
 	name("Name", "Light01"),

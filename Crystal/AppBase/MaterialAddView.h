@@ -10,7 +10,7 @@ namespace Crystal {
 class MaterialAddView : public IOkCancelView
 {
 public:
-	MaterialAddView(const std::string& name, Scene::RootScene* model, Canvas* canvas);
+	MaterialAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

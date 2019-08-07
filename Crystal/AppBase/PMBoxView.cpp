@@ -1,7 +1,7 @@
 #include "PMBoxView.h"
 
 #include "../Shape/PolygonMeshBuilder.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
@@ -9,7 +9,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PMBoxView::PMBoxView(RootScene* model, Canvas* canvas) :
+PMBoxView::PMBoxView(World* model, Canvas* canvas) :
 	IOkCancelView("PMBox", model, canvas),
 	boxView("Box"),
 	materialName("MaterialName", ""),

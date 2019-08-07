@@ -1,13 +1,13 @@
 #include "TransformAddView.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 #include "../Scene/TransformScene.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-TransformAddView::TransformAddView(const std::string& name, RootScene* model, Canvas* canvas) :
+TransformAddView::TransformAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	transform("Transform", model, canvas)
 {

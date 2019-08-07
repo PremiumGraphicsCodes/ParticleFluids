@@ -13,7 +13,7 @@
 namespace Crystal {
 	namespace Scene {
 		class ViewModel;
-		class RootScene;
+		class World;
 	}
 	namespace UI {
 		class IUICtrl;

@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {
@@ -11,7 +11,7 @@ namespace Crystal {
 class IPopupButton : public IWindow
 {
 protected:
-	IPopupButton(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
+	IPopupButton(const std::string& name, Scene::World* model, Canvas* canvas) :
 		IWindow(name),
 		model(model),
 		canvas(canvas)
@@ -30,12 +30,12 @@ protected:
 
 	virtual void onCancel() = 0;
 
-	Scene::RootScene* getModel() { return model; }
+	Scene::World* getModel() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	Scene::RootScene* model;
+	Scene::World* model;
 	Canvas* canvas;
 };
 	}

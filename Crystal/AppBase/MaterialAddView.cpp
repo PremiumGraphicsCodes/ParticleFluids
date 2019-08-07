@@ -1,14 +1,14 @@
 #include "MaterialAddView.h"
 
 #include "../Graphics/Material.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-MaterialAddView::MaterialAddView(const std::string& name, RootScene* model, Canvas* canvas) :
+MaterialAddView::MaterialAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	material("Material"),
 	name("Name", "Material1")

@@ -13,7 +13,7 @@ namespace Crystal {
 class PMQuadView : public IOkCancelView
 {
 public:
-	PMQuadView(Scene::RootScene* model, Canvas* canvas);
+	PMQuadView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

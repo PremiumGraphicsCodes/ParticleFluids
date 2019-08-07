@@ -1,14 +1,14 @@
 #include "WFBoxView.h"
 
 #include "../Shape/WireFrameBuilder.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFBoxView::WFBoxView(RootScene* model, Canvas* canvas) :
+WFBoxView::WFBoxView(World* model, Canvas* canvas) :
 	IOkCancelView("WFBox", model, canvas),
 	box("Box"),
 	attribute("Attribute")

@@ -1,4 +1,4 @@
-#include "RootScene.h"
+#include "World.h"
 
 #include "../Scene/FileImporter.h"
 #include "../Scene/FileExporter.h"
@@ -13,19 +13,19 @@ using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-RootScene::RootScene() :
+World::World() :
 	objects(0, "Root"),
 	items(0, "Item"),
 	shaders(0, "Shaders")
 {
 }
 
-RootScene::~RootScene()
+World::~World()
 {
 	clear();
 }
 
-void RootScene::init()
+void World::init()
 {
 	SceneBuilder builder(objects, objectFactory);
 	builder.build();
@@ -46,25 +46,25 @@ void RootScene::init()
 	//shaders.build();
 }
 
-void RootScene::clear()
+void World::clear()
 {
 	objects.clear();
 	//shaders.clear();
 }
 
-bool RootScene::importFile(const std::experimental::filesystem::path& filename)
+bool World::importFile(const std::experimental::filesystem::path& filename)
 {
 	FileImporter reader;
 	return reader.importFile(filename, &objects, &objectFactory);
 }
 
-bool RootScene::exportFile(const std::experimental::filesystem::path& filename)
+bool World::exportFile(const std::experimental::filesystem::path& filename)
 {
 	FileExporter writer;
 	return writer.exportFile(filename, objects);
 }
 
-void RootScene::updateViewModel()
+void World::updateViewModel()
 {
 	ViewModel vm;
 	vm.object = objects.toViewModel();
@@ -75,7 +75,7 @@ void RootScene::updateViewModel()
 	this->viewModel = vm;
 }
 
-Box3d RootScene::getBoundingBox() const
+Box3d World::getBoundingBox() const
 {
 	return objects.getBoundingBox();
 }

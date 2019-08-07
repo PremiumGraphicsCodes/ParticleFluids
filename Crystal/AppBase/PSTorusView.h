@@ -12,7 +12,7 @@ namespace Crystal {
 class PSTorusView : public IOkCancelView
 {
 public:
-	PSTorusView(Scene::RootScene* model, Canvas* canvas);
+	PSTorusView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

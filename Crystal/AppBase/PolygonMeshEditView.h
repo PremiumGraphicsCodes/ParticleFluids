@@ -6,7 +6,7 @@
 #include "StringView.h"
 #include "Button.h"
 #include "../Scene/PolygonMeshScene.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {
@@ -15,7 +15,7 @@ namespace Crystal {
 class PolygonMeshEditView : public IWindow
 {
 public:
-	PolygonMeshEditView(const std::string& name, Scene::RootScene* repository, Canvas* canvas);
+	PolygonMeshEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
 
 	void show() override;
 

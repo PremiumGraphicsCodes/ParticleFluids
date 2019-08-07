@@ -7,7 +7,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PSTorusView::PSTorusView(RootScene* model, Canvas* canvas) :
+PSTorusView::PSTorusView(World* model, Canvas* canvas) :
 	IOkCancelView("PSTorus", model, canvas),
 	torusView("Torus"),
 	attribute("Attribute"),

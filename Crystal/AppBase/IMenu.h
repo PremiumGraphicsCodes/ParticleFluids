@@ -4,7 +4,7 @@
 
 namespace Crystal {
 	namespace Scene {
-		class RootScene;
+		class World;
 	}
 	namespace UI {
 		class Canvas;
@@ -12,7 +12,7 @@ namespace Crystal {
 class IMenu : public IWindow
 {
 public:
-	IMenu(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
+	IMenu(const std::string& name, Scene::World* model, Canvas* canvas) :
 		IWindow(name),
 		model(model),
 		canvas(canvas)
@@ -23,12 +23,12 @@ public:
 	virtual void show() {};
 
 protected:
-	Scene::RootScene* getModel() { return model; }
+	Scene::World* getModel() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 
 private:
-	Scene::RootScene* model;
+	Scene::World* model;
 	Canvas* canvas;
 };
 	}

@@ -2,7 +2,7 @@
 
 #include "../Shape/PolygonMeshBuilder.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
@@ -10,7 +10,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PMQuadView::PMQuadView(RootScene* model, Canvas* canvas) :
+PMQuadView::PMQuadView(World* model, Canvas* canvas) :
 	IOkCancelView("PMQuad", model, canvas),
 	quad("Quad"),
 	materialName("Material", ""),

@@ -13,7 +13,7 @@ namespace Crystal {
 class PSBoxView : public IOkCancelView
 {
 public:
-	PSBoxView(Scene::RootScene* model, Canvas* canvas);
+	PSBoxView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

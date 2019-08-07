@@ -11,7 +11,7 @@ namespace Crystal {
 class WFSphereView : public IOkCancelView
 {
 public:
-	WFSphereView(Scene::RootScene* repository, Canvas* canvas);
+	WFSphereView(Scene::World* repository, Canvas* canvas);
 
 	void show() override;
 

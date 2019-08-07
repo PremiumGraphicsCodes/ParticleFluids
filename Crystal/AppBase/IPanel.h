@@ -1,20 +1,20 @@
 #pragma once
 
 #include "IWindow.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 #include <list>
 
 namespace Crystal {
 	namespace Scene {
-		class RootScene;
+		class World;
 	}
 	namespace UI {
 
 class IPanel : public IWindow
 {
 public:
-	IPanel(const std::string& name, Scene::RootScene* model, Canvas* canvas) :
+	IPanel(const std::string& name, Scene::World* model, Canvas* canvas) :
 		IWindow(name),
 		model(model),
 		canvas(canvas)
@@ -25,11 +25,11 @@ public:
 	virtual void show() override;
 
 protected:
-	Scene::RootScene* getRepository() { return model; }
+	Scene::World* getRepository() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 
-	Scene::RootScene* model;
+	Scene::World* model;
 
 	Canvas* canvas;
 };

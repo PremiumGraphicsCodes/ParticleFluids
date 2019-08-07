@@ -10,7 +10,7 @@ namespace Crystal {
 class WFBoxView : public IOkCancelView
 {
 public:
-	WFBoxView(Scene::RootScene* model, Canvas* canvas);
+	WFBoxView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

@@ -9,7 +9,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "../UI/Canvas.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 
 #include "../Graphics/PerspectiveCamera.h"
 #include <chrono>
@@ -22,7 +22,7 @@ using namespace Crystal::UI;
 
 namespace {
 	Window* window;
-	RootScene* repository;
+	World* repository;
 	Canvas* canvas;
 
 	std::chrono::time_point<std::chrono::system_clock> lastPressedTime;
@@ -91,7 +91,7 @@ namespace {
 	}
 }
 
-Window::Window(RootScene* model, Canvas* canvas) :
+Window::Window(World* model, Canvas* canvas) :
 	model(model),
 	canvas(canvas)
 {

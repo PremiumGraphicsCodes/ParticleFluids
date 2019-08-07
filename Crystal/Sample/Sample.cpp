@@ -11,7 +11,7 @@
 #include "../AppBase/SceneListPanel.h"
 #include "../AppBase/ControlPanel.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
@@ -21,7 +21,7 @@ using namespace Crystal::UI;
 
 int main(int, char**)
 {
-	RootScene model;
+	World model;
 	Canvas canvas;
 
 	Window window(&model, &canvas);

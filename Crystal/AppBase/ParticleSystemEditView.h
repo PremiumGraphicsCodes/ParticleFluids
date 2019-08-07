@@ -6,7 +6,7 @@
 #include "StringView.h"
 #include "Button.h"
 #include "../Scene/ParticleSystemScene.h"
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 #include "../UI/Canvas.h"
 
 namespace Crystal {
@@ -15,7 +15,7 @@ namespace Crystal {
 class ParticleSystemEditView : public IWindow
 {
 public:
-	ParticleSystemEditView(const std::string& name, Scene::RootScene* repository, Canvas* canvas);
+	ParticleSystemEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
 
 	void show() override;
 

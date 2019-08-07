@@ -9,7 +9,7 @@ namespace Crystal {
 class AppearanceMenu : public IMenu
 {
 public:
-	AppearanceMenu(const std::string& name, Scene::RootScene* model, Canvas* canvas, ControlPanel* control) :
+	AppearanceMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
 		IMenu(name, model, canvas),
 		control(control)
 	{}

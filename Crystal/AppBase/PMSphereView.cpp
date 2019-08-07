@@ -7,7 +7,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PMSphereView::PMSphereView(RootScene* model, Canvas* canvas) :
+PMSphereView::PMSphereView(World* model, Canvas* canvas) :
 	IOkCancelView("PMSphere", model, canvas),
 	sphere("Sphere"),
 	unum("UNum", 36),

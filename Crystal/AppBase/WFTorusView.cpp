@@ -9,7 +9,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFTorusView::WFTorusView(RootScene* model, Canvas* canvas) :
+WFTorusView::WFTorusView(World* model, Canvas* canvas) :
 	IPanel("WFTorus", model, canvas),
 	torus("Torus"),
 	attribute("Attribute"),

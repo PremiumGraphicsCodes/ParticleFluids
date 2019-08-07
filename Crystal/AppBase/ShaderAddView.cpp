@@ -6,7 +6,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-ShaderAddView::ShaderAddView(const std::string& name, RootScene* model, Canvas* canvas) :
+ShaderAddView::ShaderAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	shader("Shader", model, canvas)
 {

@@ -14,7 +14,7 @@ namespace Crystal {
 class PSConeView : public IOkCancelView
 {
 public:
-	PSConeView(Scene::RootScene* model, Canvas* canvas);
+	PSConeView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

@@ -10,7 +10,7 @@ namespace Crystal {
 class TransformAddView : public IOkCancelView
 {
 public:
-	TransformAddView(const std::string& name, Scene::RootScene* model, Canvas* canvas);
+	TransformAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

@@ -1,6 +1,6 @@
 #include "PickUICtrl.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 
 #include <iostream>
 
@@ -9,7 +9,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PickUICtrl::PickUICtrl(RootScene* model, Canvas* canvas, const SceneType& type) :
+PickUICtrl::PickUICtrl(World* model, Canvas* canvas, const SceneType& type) :
 	model(model),
 	canvas(canvas),
 	type(type)

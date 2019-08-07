@@ -9,7 +9,7 @@ namespace Crystal {
 class ShaderAddView : public IOkCancelView
 {
 public:
-	ShaderAddView(const std::string& name, Scene::RootScene* model, Canvas* canvas);
+	ShaderAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

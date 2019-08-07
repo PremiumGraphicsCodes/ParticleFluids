@@ -7,7 +7,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PSConeView::PSConeView(RootScene* model, Canvas* canvas) :
+PSConeView::PSConeView(World* model, Canvas* canvas) :
 	IOkCancelView("PSCone", model, canvas),
 	cone("Cone"),
 	attribute("Attribute"),

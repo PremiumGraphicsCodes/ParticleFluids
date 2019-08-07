@@ -7,7 +7,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFConeView::WFConeView(RootScene* model, Canvas* canvas) :
+WFConeView::WFConeView(World* model, Canvas* canvas) :
 	IOkCancelView("WFCone", model, canvas),
 	cone("Cone"),
 	attribute("Attribute"),

@@ -11,7 +11,7 @@ namespace Crystal {
 class PSSphereView : public IOkCancelView
 {
 public:
-	PSSphereView(Scene::RootScene* model, Canvas* canvas);
+	PSSphereView(Scene::World* model, Canvas* canvas);
 
 	void show() override;
 

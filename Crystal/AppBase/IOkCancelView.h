@@ -9,7 +9,7 @@ namespace Crystal {
 class IOkCancelView : public IPanel
 {
 public:
-	IOkCancelView(const std::string& name, Scene::RootScene* scene, Canvas* canvas) :
+	IOkCancelView(const std::string& name, Scene::World* scene, Canvas* canvas) :
 		IPanel(name, scene, canvas),
 		ok("Ok"),
 		cancel("Cancel")

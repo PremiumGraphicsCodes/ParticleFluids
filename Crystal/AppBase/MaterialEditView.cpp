@@ -6,7 +6,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-MaterialEditView::MaterialEditView(const std::string& name, RootScene* model, Canvas* canvas) :
+MaterialEditView::MaterialEditView(const std::string& name, World* model, Canvas* canvas) :
 	IWindow(name),
 	repository(model),
 	canvas(canvas),

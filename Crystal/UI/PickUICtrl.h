@@ -9,14 +9,14 @@
 
 namespace Crystal {
 	namespace Scene {
-		class RootScene;
+		class World;
 	}
 	namespace UI {
 
 class PickUICtrl : public IUICtrl
 {
 public:
-	PickUICtrl(Scene::RootScene* model, Canvas* canvas, const Scene::SceneType& type);
+	PickUICtrl(Scene::World* model, Canvas* canvas, const Scene::SceneType& type);
 
 	virtual ~PickUICtrl() {}
 
@@ -37,7 +37,7 @@ public:
 	void setFunction(const std::function<void(int, int)>& func) { this->function = func; }
 
 private:
-	Scene::RootScene* model;
+	Scene::World* model;
 	Canvas* canvas;
 	std::function<void(int, int)> function;
 	const Scene::SceneType type;

@@ -12,12 +12,12 @@
 namespace Crystal {
 	namespace Scene {
 
-class RootScene : private UnCopyable
+class World : private UnCopyable
 {
 public:
-	RootScene();
+	World();
 
-	~RootScene();
+	~World();
 
 	void init();
 

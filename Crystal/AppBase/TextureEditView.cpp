@@ -6,7 +6,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-TextureEditView::TextureEditView(const std::string& name, RootScene* model, Canvas* canvas) :
+TextureEditView::TextureEditView(const std::string& name, World* model, Canvas* canvas) :
 	IWindow(name),
 	texture("Texture"),
 	id("Id"),

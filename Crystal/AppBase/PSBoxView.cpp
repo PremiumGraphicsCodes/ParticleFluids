@@ -9,7 +9,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PSBoxView::PSBoxView(RootScene* model, Canvas* canvas) :
+PSBoxView::PSBoxView(World* model, Canvas* canvas) :
 	IOkCancelView("PSBox", model, canvas),
 	box("Box"),
 	attribute("Attribute"),

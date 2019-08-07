@@ -1,6 +1,6 @@
 #include "MoveUICtrl.h"
 
-#include "../Scene/RootScene.h"
+#include "../Scene/World.h"
 
 #include "../UI/Canvas.h"
 
@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-MoveUICtrl::MoveUICtrl(RootScene* repository, Canvas* canvas) :
+MoveUICtrl::MoveUICtrl(World* repository, Canvas* canvas) :
 	repository(repository),
 	canvas(canvas)
 {

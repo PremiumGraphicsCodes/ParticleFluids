@@ -34,7 +34,7 @@
     <ClInclude Include="SceneRenderer.h" />
     <ClInclude Include="PointShaderScene.h" />
     <ClInclude Include="Renderer.h" />
-    <ClInclude Include="RootScene.h" />
+    <ClInclude Include="World.h" />
     <ClInclude Include="RootShaderScene.h" />
     <ClInclude Include="SceneBuilder.h" />
     <ClInclude Include="SmoothShaderScene.h" />
@@ -80,7 +80,7 @@
     <ClCompile Include="PointShaderScene.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="RootScene.cpp" />
+    <ClCompile Include="World.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="OBJFileExporter.cpp" />
     <ClCompile Include="OBJFileImporter.cpp" />

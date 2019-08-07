@@ -8,7 +8,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFSphereView::WFSphereView(RootScene* repository, Canvas* canvas) :
+WFSphereView::WFSphereView(World* repository, Canvas* canvas) :
 	IOkCancelView("WFSphere", repository, canvas),
 	sphere("Sphere"),
 	attribute("Attribute"),
