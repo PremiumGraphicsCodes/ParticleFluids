@@ -1,4 +1,4 @@
-#include "SpaceHashButton.h"
+#include "SpaceHashView.h"
 
 #include "../CrystalAlgo/SpaceHash.h"
 
@@ -7,22 +7,22 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-SpaceHashButton::SpaceHashButton(RootScene* model, Canvas* canvas) :
-	IPopupButton("SpaceHash", model, canvas),
+SpaceHashView::SpaceHashView(RootScene* model, Canvas* canvas) :
+	IOkCancelView("SpaceHash", model, canvas),
 	positionButton("Position", model, canvas),
 	searchRadius("SearchRadius", 1.0),
 	objectButton("Object", model, canvas, SceneType::ParticleSystemScene)
 {
 }
 
-void SpaceHashButton::onShow()
+void SpaceHashView::show()
 {
 	positionButton.show();
 	searchRadius.show();
 	objectButton.show();
 }
 
-void SpaceHashButton::onOk()
+void SpaceHashView::onOk()
 {
 	/*
 	auto object = getModel()->getObjects()->getFactory()->getParticleSystems()->findObjectById(objectButton.getId());

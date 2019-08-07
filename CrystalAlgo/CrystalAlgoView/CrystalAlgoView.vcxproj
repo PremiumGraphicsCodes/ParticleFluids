@@ -157,12 +157,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BooleanButton.cpp" />
+    <ClCompile Include="BooleanView.cpp" />
     <ClCompile Include="CrystalAlgoView.cpp" />
     <ClCompile Include="IntersectionButton.cpp" />
     <ClCompile Include="MarchingCubesButton.cpp" />
-    <ClCompile Include="OctreeButton.cpp" />
-    <ClCompile Include="SpaceHashButton.cpp" />
+    <ClCompile Include="OctreeView.cpp" />
+    <ClCompile Include="SpaceHashView.cpp" />
     <ClCompile Include="VolumeButton.cpp" />
     <ClCompile Include="VolumeConvertButton.cpp" />
   </ItemGroup>
@@ -170,11 +170,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BooleanButton.h" />
+    <ClInclude Include="BooleanView.h" />
     <ClInclude Include="IntersectionButton.h" />
     <ClInclude Include="MarchingCubesButton.h" />
-    <ClInclude Include="OctreeButton.h" />
-    <ClInclude Include="SpaceHashButton.h" />
+    <ClInclude Include="OctreeView.h" />
+    <ClInclude Include="SpaceHashView.h" />
     <ClInclude Include="VolumeButton.h" />
     <ClInclude Include="VolumeConvertButton.h" />
   </ItemGroup>

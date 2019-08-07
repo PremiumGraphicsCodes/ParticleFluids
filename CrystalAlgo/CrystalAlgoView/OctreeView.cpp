@@ -1,4 +1,4 @@
-#include "OctreeButton.h"
+#include "OctreeView.h"
 
 #include "../CrystalAlgo/Octree.h"
 
@@ -6,20 +6,20 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
-OctreeButton::OctreeButton(RootScene* model, Canvas* canvas) :
-	IPopupButton("Octree", model, canvas),
+OctreeView::OctreeView(RootScene* model, Canvas* canvas) :
+	IOkCancelView("Octree", model, canvas),
 	positionButton("Position", model, canvas),
 	objectButton("Object", model, canvas)
 {
 }
 
-void OctreeButton::onShow()
+void OctreeView::show()
 {
 	positionButton.show();
 	objectButton.show();
 }
 
-void OctreeButton::onOk()
+void OctreeView::onOk()
 {
 	Octree octree;
 
@@ -38,8 +38,3 @@ void OctreeButton::onOk()
 		getCanvas()->fitCamera(getModel()->getBoundingBox());
 		*/
 }
-
-void OctreeButton::onCancel()
-{
-}
-

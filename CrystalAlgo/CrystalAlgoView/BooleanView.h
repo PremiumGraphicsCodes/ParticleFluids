@@ -1,22 +1,20 @@
 #pragma once
 
-#include "../../Crystal/AppBase/IPopupButton.h"
+#include "../../Crystal/AppBase/IOkCancelView.h"
 #include "../../Crystal/AppBase/ObjectSelectView.h"
 #include "../../Crystal/AppBase/PositionSelectView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class BooleanButton : public IPopupButton
+class BooleanView : public IOkCancelView
 {
 public:
-	BooleanButton(Scene::RootScene* model, Canvas* canvas);
+	BooleanView(Scene::RootScene* model, Canvas* canvas);
 
-	void onShow() override;
+	void show() override;
 
 	void onOk() override;
-
-	void onCancel() override;
 
 private:
 	ObjectSelectView objectButton1;

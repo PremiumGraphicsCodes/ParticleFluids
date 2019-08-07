@@ -9,16 +9,17 @@
 
 #include "../../Crystal/Scene/RootScene.h"
 #include "../../Crystal/UI/Canvas.h"
+#include "../../Crystal/AppBase/ControlPanel.h"
 
-#include "../../Crystal/Graphics/PerspectiveCamera.h"
 
-#include "SpaceHashButton.h"
 #include "IntersectionButton.h"
-#include "BooleanButton.h"
+#include "BooleanView.h"
+#include "SpaceHashView.h"
 #include "MarchingCubesButton.h"
 #include "VolumeButton.h"
 #include "VolumeConvertButton.h"
-#include "../../Crystal/AppBase/ControlPanel.h"
+#include "OctreeView.h"
+#include "SpaceHashView.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -29,15 +30,16 @@ namespace {
 	class AlgoPanel : public IPanel
 	{
 	public:
-		AlgoPanel(const std::string& name, RootScene* repository, Canvas* canvas) :
+		AlgoPanel(const std::string& name, RootScene* repository, Canvas* canvas, ControlPanel* control) :
 			IPanel(name, repository, canvas)
 		{
-			add(new BooleanButton(model, canvas));
+			add(new BooleanView(model, canvas));
 			add(new IntersectionButton(model, canvas));
-			add(new SpaceHashButton(model, canvas));
+			add(new SpaceHashView(model, canvas));
 			add(new MarchingCubesButton(model, canvas));
 			add(new VolumeButton(model, canvas));
 			add(new VolumeConvertButton(model, canvas));
+			add(new SpaceHashView(model, canvas));
 		}
 	};
 }
@@ -66,7 +68,7 @@ int main(int, char**)
 	//window.add(new SceneAddPanel("SceneAdd", &model, &canvas, control));
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 
-	window.add(new AlgoPanel("Algo", &model, &canvas));
+	window.add(new AlgoPanel("Algo", &model, &canvas, control));
 
 	window.show();
 

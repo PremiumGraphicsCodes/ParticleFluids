@@ -8,20 +8,20 @@
     <ClCompile Include="MarchingCubesButton.cpp">
       <Filter>MarchingCubes</Filter>
     </ClCompile>
-    <ClCompile Include="BooleanButton.cpp">
-      <Filter>Boolean</Filter>
-    </ClCompile>
-    <ClCompile Include="OctreeButton.cpp">
-      <Filter>Search</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceHashButton.cpp">
-      <Filter>Search</Filter>
-    </ClCompile>
     <ClCompile Include="VolumeButton.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
     <ClCompile Include="VolumeConvertButton.cpp">
       <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="BooleanView.cpp">
+      <Filter>Boolean</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceHashView.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="OctreeView.cpp">
+      <Filter>Search</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -34,20 +34,20 @@
     <ClInclude Include="MarchingCubesButton.h">
       <Filter>MarchingCubes</Filter>
     </ClInclude>
-    <ClInclude Include="BooleanButton.h">
-      <Filter>Boolean</Filter>
-    </ClInclude>
-    <ClInclude Include="OctreeButton.h">
-      <Filter>Search</Filter>
-    </ClInclude>
-    <ClInclude Include="SpaceHashButton.h">
-      <Filter>Search</Filter>
-    </ClInclude>
     <ClInclude Include="VolumeButton.h">
       <Filter>Volume</Filter>
     </ClInclude>
     <ClInclude Include="VolumeConvertButton.h">
       <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="BooleanView.h">
+      <Filter>Boolean</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceHashView.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="OctreeView.h">
+      <Filter>Search</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
