@@ -61,5 +61,5 @@ void VolumeView::onOk()
 	}
 
 	getRepository()->getObjectFactory()->createParticleSystemScene(positions, attrs, "VolumeConverter");
-	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getRepository()->updateViewModel();
 }

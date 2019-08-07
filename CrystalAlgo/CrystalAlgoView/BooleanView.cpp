@@ -33,6 +33,6 @@ void BooleanView::onOk()
 	polygon2->setVisible(false);
 
 	getRepository()->getObjectFactory()->createPolygonMeshScene(algo.getResult(), "Intersection");
-	getCanvas()->setViewModel(getRepository()->toViewModel());
+	getRepository()->updateViewModel();
 	getCanvas()->fitCamera(getRepository()->getBoundingBox());
 }
