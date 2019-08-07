@@ -1,10 +1,10 @@
 #pragma once
 
 #include "PointShaderScene.h"
+#include "LineShaderScene.h"
 #include "SmoothShaderScene.h"
-#include "../Graphics/LineBuffer.h"
-#include "../Scene/LightShaderScene.h"
-#include "../Graphics/MaterialBuffer.h"
+#include "LightShaderScene.h"
+#include "MaterialShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -14,7 +14,7 @@ class SceneViewModel
 public:
 	std::list<PointBuffer> getPointBuffers() const { return pointBuffers; }
 
-	std::list<Graphics::LineBuffer> getLineBuffers() const { return lineBuffers; }
+	std::list<LineBuffer> getLineBuffers() const { return lineBuffers; }
 
 	std::list<SmoothTriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
@@ -29,10 +29,10 @@ public:
 
 public:
 	std::list<PointBuffer> pointBuffers;
-	std::list<Graphics::LineBuffer> lineBuffers;
+	std::list<LineBuffer> lineBuffers;
 	std::list<SmoothTriangleBuffer> triangleBuffers;
 	std::list<LightBuffer> lightBuffers;
-	std::list<Graphics::MaterialBuffer> materialBuffers;
+	std::list<MaterialBuffer> materialBuffers;
 };
 
 	}

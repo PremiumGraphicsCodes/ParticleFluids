@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PointShaderScene.h"
-#include "../Graphics/LineBuffer.h"
+#include "LineShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -11,9 +11,9 @@ class SceneIdViewModel
 public:
 	PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
 
-	Graphics::LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
+	LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
 
-	Graphics::LineBuffer getTriangleIdBuffer() const { return triangleIdBuffer; }
+	LineBuffer getTriangleIdBuffer() const { return triangleIdBuffer; }
 
 	void merge(SceneIdViewModel& rhs) {
 		pointIdBuffer.merge(rhs.pointIdBuffer);
@@ -23,8 +23,8 @@ public:
 
 public:
 	PointBuffer pointIdBuffer;
-	Graphics::LineBuffer lineIdBuffer;
-	Graphics::LineBuffer triangleIdBuffer;
+	LineBuffer lineIdBuffer;
+	LineBuffer triangleIdBuffer;
 };
 
 	}

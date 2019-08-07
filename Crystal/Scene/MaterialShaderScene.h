@@ -1,13 +1,12 @@
 #pragma once
 
-#include "Buffer3d.h"
-#include "Buffer1d.h"
-#include "Buffer4d.h"
+#include "../Graphics/Material.h"
+#include "../Graphics/Buffer1d.h"
+#include "../Graphics/Buffer3d.h"
 
-#include "Material.h"
 
 namespace Crystal {
-	namespace Graphics {
+	namespace Scene {
 
 class MaterialBuffer
 {

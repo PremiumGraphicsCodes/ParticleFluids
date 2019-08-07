@@ -128,6 +128,9 @@
     <ClInclude Include="LightShaderScene.h">
       <Filter>ShaderScene</Filter>
     </ClInclude>
+    <ClInclude Include="MaterialShaderScene.h">
+      <Filter>ShaderScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">

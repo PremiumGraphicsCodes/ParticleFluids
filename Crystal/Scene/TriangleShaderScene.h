@@ -1,5 +1,5 @@
 #include "ShaderScene.h"
-#include "../Graphics/LineBuffer.h"
+#include "LineShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -11,14 +11,14 @@ public:
 
 	void render(const Graphics::ICamera& camera) override;
 
-	void setBuffer(const Graphics::LineBuffer& buffer) { this->buffer = buffer; }
+	void setBuffer(const LineBuffer& buffer) { this->buffer = buffer; }
 
 private:
 	std::string getBuildInVertexShaderSource() const;
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	Graphics::LineBuffer buffer;
+	LineBuffer buffer;
 };
 
 	}
