@@ -8,7 +8,7 @@
 #include "SpaceHashView.h"
 #include "MarchingCubesView.h"
 #include "VolumeView.h"
-#include "VolumeConvertButton.h"
+#include "VolumeConvertView.h"
 #include "OctreeView.h"
 #include "SpaceHashView.h"
 
@@ -43,6 +43,9 @@ namespace Crystal {
 					}
 					if (ImGui::MenuItem("Intersection")) {
 						control->setWindow(new IntersectionView(getModel(), getCanvas()));
+					}
+					if (ImGui::MenuItem("VolumeConvert")) {
+						control->setWindow(new VolumeConvertView(getModel(), getCanvas()));
 					}
 					ImGui::EndMenu();
 				}

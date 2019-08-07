@@ -164,7 +164,7 @@
     <ClCompile Include="OctreeView.cpp" />
     <ClCompile Include="SpaceHashView.cpp" />
     <ClCompile Include="VolumeView.cpp" />
-    <ClCompile Include="VolumeConvertButton.cpp" />
+    <ClCompile Include="VolumeConvertView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -177,7 +177,7 @@
     <ClInclude Include="OctreeView.h" />
     <ClInclude Include="SpaceHashView.h" />
     <ClInclude Include="VolumeView.h" />
-    <ClInclude Include="VolumeConvertButton.h" />
+    <ClInclude Include="VolumeConvertView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
