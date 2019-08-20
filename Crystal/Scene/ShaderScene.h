@@ -12,8 +12,6 @@ namespace Crystal {
 class ShaderScene : public IShaderScene
 {
 public:
-	ShaderScene();
-
 	ShaderScene(const int id, const std::string& name) :
 		IShaderScene(id, name)
 	{}
