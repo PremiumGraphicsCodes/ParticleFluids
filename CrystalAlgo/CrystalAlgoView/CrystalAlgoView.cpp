@@ -5,10 +5,10 @@
 #include "../../Crystal/AppBase/ShapeMenu.h"
 #include "../../Crystal/AppBase/AppearanceMenu.h"
 #include "../../Crystal/AppBase/SceneListPanel.h"
+#include "../../Crystal/AppBase/Canvas.h"
+#include "../../Crystal/AppBase/ControlPanel.h"
 
 #include "../../Crystal/Scene/World.h"
-#include "../../Crystal/UI/Canvas.h"
-#include "../../Crystal/AppBase/ControlPanel.h"
 
 #include "AlgoMenu.h"
 
