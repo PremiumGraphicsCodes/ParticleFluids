@@ -11,8 +11,9 @@
 #include "../AppBase/SceneListPanel.h"
 #include "../AppBase/ControlPanel.h"
 
+#include "../AppBase/Canvas.h"
+
 #include "../Scene/World.h"
-#include "../UI/Canvas.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

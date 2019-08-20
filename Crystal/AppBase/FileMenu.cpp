@@ -2,7 +2,7 @@
 #include "imgui.h"
 #include "tinyfiledialogs.h"
 #include "../Scene/World.h"
-#include "../UI/Canvas.h"
+#include "Canvas.h"
 #include "FileOpenView.h"
 #include "FileSaveView.h"
 

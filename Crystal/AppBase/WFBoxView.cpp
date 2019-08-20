@@ -2,7 +2,7 @@
 
 #include "../Shape/WireFrameBuilder.h"
 #include "../Scene/World.h"
-#include "../UI/Canvas.h"
+#include "Canvas.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

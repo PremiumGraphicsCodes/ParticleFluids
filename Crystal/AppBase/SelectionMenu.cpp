@@ -1,7 +1,7 @@
 #include "SelectionMenu.h"
 #include "imgui.h"
 #include "../Scene/World.h"
-#include "../UI/Canvas.h"
+#include "Canvas.h"
 #include "ControlPanel.h"
 
 #include "ObjectSelectView.h"

@@ -1,6 +1,6 @@
 #include "SphereRegionSelectView.h"
-#include "../UI/PickUICtrl.h"
-#include "../UI/CameraUICtrl.h"
+#include "PickUICtrl.h"
+#include "CameraUICtrl.h"
 
 #include "../Shape/WireFrameBuilder.h"
 #include "imgui.h"

@@ -2,7 +2,7 @@
 
 #include "../Graphics/Material.h"
 #include "../Scene/World.h"
-#include "../UI/Canvas.h"
+#include "Canvas.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;

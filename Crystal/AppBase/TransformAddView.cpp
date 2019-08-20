@@ -1,8 +1,9 @@
 #include "TransformAddView.h"
 
 #include "../Scene/World.h"
-#include "../UI/Canvas.h"
 #include "../Scene/TransformScene.h"
+
+#include "Canvas.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

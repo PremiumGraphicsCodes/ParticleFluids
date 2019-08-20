@@ -1,10 +1,9 @@
 #include "CtrlMenu.h"
 #include "imgui.h"
 #include "../Scene/World.h"
-#include "../UI/Canvas.h"
-#include "../UI/CameraUICtrl.h"
-#include "../UI/PickUICtrl.h"
-#include "../UI/RectSelectUICtrl.h"
+#include "Canvas.h"
+#include "CameraUICtrl.h"
+#include "PickUICtrl.h"
 
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
@@ -22,10 +21,6 @@ void CtrlMenu::show()
 		if (ImGui::MenuItem("Pick")) {
 			canvas->setUICtrl(new PickUICtrl(model, canvas, SceneType::All));
 		}
-		/*
-		if (ImGui::MenuItem("Rect")) {
-		}
-		*/
 
 		ImGui::EndMenu();
 	}

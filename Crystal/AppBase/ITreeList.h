@@ -3,7 +3,7 @@
 #include "IWindow.h"
 
 #include "../Scene/World.h"
-#include "../UI/Canvas.h"
+#include "Canvas.h"
 
 namespace Crystal {
 	namespace UI {

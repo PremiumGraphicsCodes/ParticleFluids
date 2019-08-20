@@ -1,23 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="Canvas.h" />
-    <ClInclude Include="CameraUICtrl.h">
-      <Filter>UICtrl</Filter>
-    </ClInclude>
     <ClInclude Include="PickUICtrl.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
-    <ClInclude Include="IUICtrl.h">
-      <Filter>UICtrl</Filter>
-    </ClInclude>
     <ClInclude Include="RectSelectUICtrl.h">
-      <Filter>UICtrl</Filter>
-    </ClInclude>
-    <ClInclude Include="IKeyListener.h">
-      <Filter>UICtrl</Filter>
-    </ClInclude>
-    <ClInclude Include="IMouseListener.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
     <ClInclude Include="MoveUICtrl.h">
@@ -31,10 +18,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Canvas.cpp" />
-    <ClCompile Include="CameraUICtrl.cpp">
-      <Filter>UICtrl</Filter>
-    </ClCompile>
     <ClCompile Include="PickUICtrl.cpp">
       <Filter>UICtrl</Filter>
     </ClCompile>

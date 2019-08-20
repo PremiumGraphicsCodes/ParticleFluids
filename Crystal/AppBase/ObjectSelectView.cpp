@@ -1,8 +1,8 @@
 #include "ObjectSelectView.h"
 
 #include "imgui.h"
-#include "../UI/PickUICtrl.h"
-#include "../UI/CameraUICtrl.h"
+#include "PickUICtrl.h"
+#include "CameraUICtrl.h"
 
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
