@@ -42,7 +42,7 @@ void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& textur
 		pointRenderer.render(*camera);
 	}
 	for (const auto& b : lineBuffers) {
-		wireRenderer.setBuffer(b, 1.0f);
+		wireRenderer.setBuffer(b);
 		wireRenderer.render(*camera);
 	}
 	smoothRenderer.setLights(lights);

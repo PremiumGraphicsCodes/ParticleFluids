@@ -37,7 +37,7 @@ void LineShaderScene::render(const ICamera& camera)
 
 	shader->bind();
 
-	shader->setLineWidth(width);
+	shader->setLineWidth(buffer.getWidth());
 	shader->enableDepthTest();
 
 	shader->sendUniform("projectionMatrix", projectionMatrix);

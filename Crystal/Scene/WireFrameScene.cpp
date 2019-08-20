@@ -17,7 +17,7 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 	const auto& lines = getShape()->getLines();
 	const auto& color = getAttribute().color;
 	int index = 0;
-	LineBuffer lineBuffer;
+	LineBuffer lineBuffer(1.0f);
 	for (const auto& l : lines) {
 		lineBuffer.add(l.getStart(), color, index++);
 		lineBuffer.add(l.getEnd(), color, index++);

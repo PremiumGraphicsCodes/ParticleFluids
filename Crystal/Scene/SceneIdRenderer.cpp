@@ -41,7 +41,7 @@ DrawableID SceneIdRenderer::getIdInTexCoord(const int x, const int y, const Text
 void SceneIdRenderer::render(const SceneIdViewModel& vm, const TextureObject& texture)
 {
 	pointIdRenderer.setBuffer(vm.getPointIdBuffer());
-	lineIdRenderer.setBuffer(vm.getLindIdBuffer(), 1.0f);
+	lineIdRenderer.setBuffer(vm.getLindIdBuffer());
 	triangleIdRenderer.setBuffer(vm.getTriangleIdBuffer());
 
 	frameBufferObject.setTexture(texture);

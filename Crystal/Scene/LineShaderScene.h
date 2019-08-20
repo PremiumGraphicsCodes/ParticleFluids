@@ -15,24 +15,21 @@ namespace Crystal {
 class LineBuffer
 {
 public:
-	LineBuffer() {};
+	LineBuffer() :
+		width(1.0f)
+	{}
 
-	~LineBuffer()
-	{
-
-	}
-
-	void clear() {
-		indices.clear();
-		positions.clear();
-		colors.clear();
-	}
+	explicit LineBuffer(const float width) :
+		width(width)
+	{};
 
 	void add(const Math::Vector3df& position, const Graphics::ColorRGBAf& color, const int index) {
 		positions.add(position);
 		colors.add(color);
 		indices.add(index);
 	}
+
+	float getWidth() const { return width; }
 
 	Graphics::Buffer3d<float> getPositions() const { return positions; }
 
@@ -41,6 +38,7 @@ public:
 	Graphics::Buffer1d<unsigned int> getIndices() const { return indices; }
 
 private:
+	float width;
 	Graphics::Buffer3d<float> positions;
 	Graphics::Buffer4d<float> colors;
 	Graphics::Buffer1d<unsigned int> indices;
@@ -54,9 +52,8 @@ public:
 
 	void render(const Graphics::ICamera& camera) override;
 
-	void setBuffer(const LineBuffer& buffer, const float width) {
+	void setBuffer(const LineBuffer& buffer) {
 		this->buffer = buffer;
-		this->width = width;
 	}
 
 private:
@@ -65,7 +62,6 @@ private:
 	std::string getBuiltInFsSource() const;
 
 	LineBuffer buffer;
-	float width;
 };
 
 	}
