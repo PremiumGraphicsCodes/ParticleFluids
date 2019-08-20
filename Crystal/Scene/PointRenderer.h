@@ -44,10 +44,10 @@ private:
 };
 
 
-class PointShaderScene : public IRenderer
+class PointRenderer : public IRenderer
 {
 public:
-	PointShaderScene(const int id, const std::string& name);
+	PointRenderer(const int id, const std::string& name);
 
 	void render(const Graphics::ICamera& camera) override;
 

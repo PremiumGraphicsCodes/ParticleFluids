@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Scene/PointShaderScene.h"
+#include "../Scene/PointRenderer.h"
 #include "../Scene/LineShaderScene.h"
 #include "../Scene/SmoothShaderScene.h"
 
@@ -35,7 +35,7 @@ public:
 	void render(const Scene::SceneViewModel& vm, const Shader::TextureObject& texture);
 
 private:
-	Scene::PointShaderScene pointRenderer;
+	Scene::PointRenderer pointRenderer;
 	Scene::LineShaderScene wireRenderer;
 	Scene::SmoothShaderScene smoothRenderer;
 

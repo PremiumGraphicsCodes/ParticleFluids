@@ -6,7 +6,7 @@
 #include "../Scene/TriangleShaderScene.h"
 #include "../Shader/FrameBufferObject.h"
 
-#include "../Scene/PointShaderScene.h"
+#include "../Scene/PointRenderer.h"
 
 #include "../Util/UnCopyable.h"
 
@@ -42,7 +42,7 @@ public:
 	//Shader::TextureObject* getTexture() { return texture; }
 
 private:
-	Scene::PointShaderScene pointIdRenderer;
+	Scene::PointRenderer pointIdRenderer;
 	Scene::LineShaderScene lineIdRenderer;
 	Scene::TriangleShaderScene triangleIdRenderer;
 

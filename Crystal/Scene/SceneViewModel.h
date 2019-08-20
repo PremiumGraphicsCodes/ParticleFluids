@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PointShaderScene.h"
+#include "PointRenderer.h"
 #include "LineShaderScene.h"
 #include "SmoothShaderScene.h"
 #include "../Graphics/PointLight.h"

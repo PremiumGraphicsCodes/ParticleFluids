@@ -90,9 +90,6 @@
     <ClInclude Include="LineShaderScene.h">
       <Filter>ShaderScene\Line</Filter>
     </ClInclude>
-    <ClInclude Include="PointShaderScene.h">
-      <Filter>ShaderScene\Point</Filter>
-    </ClInclude>
     <ClInclude Include="SmoothShaderScene.h">
       <Filter>ShaderScene\Triangle</Filter>
     </ClInclude>
@@ -111,6 +108,9 @@
     <ClInclude Include="World.h" />
     <ClInclude Include="IRenderer.h">
       <Filter>ShaderScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PointRenderer.h">
+      <Filter>ShaderScene\Point</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -168,9 +168,6 @@
     <ClCompile Include="LineShaderScene.cpp">
       <Filter>ShaderScene\Line</Filter>
     </ClCompile>
-    <ClCompile Include="PointShaderScene.cpp">
-      <Filter>ShaderScene\Point</Filter>
-    </ClCompile>
     <ClCompile Include="SmoothShaderScene.cpp">
       <Filter>ShaderScene\Triangle</Filter>
     </ClCompile>
@@ -189,6 +186,9 @@
     <ClCompile Include="World.cpp" />
     <ClCompile Include="IRenderer.cpp">
       <Filter>ShaderScene</Filter>
+    </ClCompile>
+    <ClCompile Include="PointRenderer.cpp">
+      <Filter>ShaderScene\Point</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

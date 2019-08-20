@@ -1,11 +1,11 @@
-#include "PointShaderScene.h"
+#include "PointRenderer.h"
 
 #include <sstream>
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-PointShaderScene::PointShaderScene(const int id, const std::string& name) :
+PointRenderer::PointRenderer(const int id, const std::string& name) :
 	IRenderer(id, name)
 {
 	setVertexShaderSource(getBuiltInVertexShaderSource());
@@ -19,7 +19,7 @@ PointShaderScene::PointShaderScene(const int id, const std::string& name) :
 	addAttribute("pointSize");
 }
 
-void PointShaderScene::render(const ICamera& camera)
+void PointRenderer::render(const ICamera& camera)
 {
 	auto shader = getShader();
 
@@ -64,7 +64,7 @@ void PointShaderScene::render(const ICamera& camera)
 	shader->unbind();
 }
 
-std::string PointShaderScene::getBuiltInVertexShaderSource() const
+std::string PointRenderer::getBuiltInVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -83,7 +83,7 @@ std::string PointShaderScene::getBuiltInVertexShaderSource() const
 	return stream.str();
 }
 
-std::string PointShaderScene::getBuiltInFragmentShaderSource() const
+std::string PointRenderer::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

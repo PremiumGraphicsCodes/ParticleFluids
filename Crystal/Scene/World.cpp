@@ -3,7 +3,7 @@
 #include "../Scene/FileImporter.h"
 #include "../Scene/FileExporter.h"
 
-#include "PointShaderScene.h"
+#include "PointRenderer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
