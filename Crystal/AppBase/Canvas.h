@@ -41,7 +41,7 @@ public:
 
 	virtual ~Canvas() {}
 
-	void build(Scene::IScene* scene, Scene::SceneFactory* factory, Scene::IShaderScene* sscene);
+	void build(Scene::World* world);
 
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }

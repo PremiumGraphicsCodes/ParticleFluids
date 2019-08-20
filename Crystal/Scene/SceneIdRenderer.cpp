@@ -8,7 +8,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-bool SceneIdRenderer::build(IScene* scene, SceneFactory* factory)
+bool SceneIdRenderer::build()
 {
 	if (!pointIdRenderer.build()) {
 		return false;

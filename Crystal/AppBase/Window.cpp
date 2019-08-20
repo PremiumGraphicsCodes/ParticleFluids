@@ -22,7 +22,7 @@ using namespace Crystal::UI;
 
 namespace {
 	Window* window;
-	World* repository;
+	World* world;
 	Canvas* canvas;
 
 	std::chrono::time_point<std::chrono::system_clock> lastPressedTime;
@@ -96,7 +96,7 @@ Window::Window(World* model, Canvas* canvas) :
 	canvas(canvas)
 {
 	::window = this;
-	::repository = model;
+	::world = model;
 	::canvas = canvas;
 }
 
@@ -145,9 +145,9 @@ bool Window::init()
 
 	//canvas->addUICommand(new CameraUICtrl());
 
-	repository->init();
+	world->init();
 
-	canvas->build(repository->getObjects(), repository->getObjectFactory(), repository->getShaders());
+	canvas->build(world);
 
 	return true;
 }
@@ -176,7 +176,7 @@ void Window::show()
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		canvas->render(width, height, repository->getShaders(), repository->getViewModel());
+		canvas->render(width, height, world->getShaders(), world->getViewModel());
 
 		glFlush();
 

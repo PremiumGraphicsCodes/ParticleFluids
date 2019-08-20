@@ -31,7 +31,7 @@ public:
 
 	~SceneIdRenderer() {}
 
-	bool build(Scene::IScene* scene, Scene::SceneFactory* factory);
+	bool build();
 
 	void render(const Scene::SceneIdViewModel& vm,const Shader::TextureObject& texture);
 

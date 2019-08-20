@@ -4,6 +4,7 @@
 #include "../Math/Box3d.h"
 #include "../Scene/Renderer.h"
 #include "../Scene/SceneViewModel.h"
+#include "../Scene/World.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -29,11 +30,11 @@ Canvas::Canvas(ICamera* camera) :
 	renderer.reset(new Renderer(camera));
 }
 
-void Canvas::build(IScene* scene, SceneFactory* factory, IShaderScene* sscene)
+void Canvas::build(World* world)
 {
 	setUICtrl(new CameraUICtrl(getCamera()));
 
-	renderer->build(scene, factory, sscene);
+	renderer->build(world->getShaders());
 }
 
 /*

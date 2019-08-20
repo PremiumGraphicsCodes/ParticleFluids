@@ -21,12 +21,12 @@ Renderer::Renderer(Crystal::Graphics::ICamera* camera) :
 {
 }
 
-bool Renderer::build(IScene* scene, SceneFactory* factory, IShaderScene* sscene)
+bool Renderer::build(IShaderScene* sscene)
 {
 	if (!objectRenderer.build()) {
 		return false;
 	}
-	if (!objectIdRenderer.build(scene, factory)) {
+	if (!objectIdRenderer.build()) {
 		return false;
 	}
 
