@@ -33,13 +33,13 @@ public:
 	void setShowOffScreen(const bool b) { this->showOffScreen = b; }
 
 private:
-	Shader::TextureObject texture;
 	Shader::OnScreenRenderer renderer;
-	SceneRenderer objectRenderer;
-	SceneIdRenderer objectIdRenderer;
 	Scene::TextureScene smoothTex;
 	Scene::TextureScene onScreenTex;
 	Scene::TextureScene idTex;
+
+	SceneRenderer objectRenderer;
+	SceneIdRenderer objectIdRenderer;
 
 	bool showOffScreen;
 };

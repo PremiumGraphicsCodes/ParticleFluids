@@ -6,6 +6,7 @@
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer2d.h"
 #include "../Graphics/Buffer3d.h"
+#include "../Graphics/PointLight.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -71,12 +72,17 @@ public:
 
 	void setBuffer(const SmoothTriangleBuffer& buffer) { this->buffer = buffer; }
 
+	void clearLights() { lights.clear(); }
+
+	void addLight(const Graphics::PointLight& light) { lights.push_back( light ); }
+
 private:
 	std::string getBuildInVertexShaderSource() const;
 
 	std::string getBuiltInFragmentShaderSource() const;
 
 	SmoothTriangleBuffer buffer;
+	std::vector<Graphics::PointLight> lights;
 };
 
 	}

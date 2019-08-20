@@ -47,7 +47,7 @@ bool Renderer::build(IShaderScene* sscene)
 
 void Renderer::render(const int width, const int height, IShaderScene* scene, const ViewModel& vm)
 {
-	objectRenderer.render(vm.object, *onScreenTex.getTexture(), *smoothTex.getTexture());
+	objectRenderer.render(vm.object, *onScreenTex.getTexture());
 	objectIdRenderer.render(vm.objectId, *idTex.getTexture());
 
 	glViewport(0, 0, width, height);

@@ -74,8 +74,8 @@ void SmoothShaderScene::render(const ICamera& camera)
 
 	//texture.bind();
 
-	for (int i = 0; i < 8; ++i) {
-		const auto light = Graphics::PointLight();
+	for (int i = 0; i < lights.size(); ++i) {
+		const auto light = lights[i];
 		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
 		const auto& ambient = light.getAmbient();
 		const auto& diffuse = light.getDiffuse();

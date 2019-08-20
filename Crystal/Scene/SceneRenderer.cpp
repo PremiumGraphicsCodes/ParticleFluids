@@ -24,11 +24,13 @@ bool SceneRenderer::build()
 	return true;
 }
 
-void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& texture, const TextureObject& smoothTexture)
+void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& texture)
 {
 	const auto& pointBuffers = vm.getPointBuffers();
 	const auto& lineBuffers = vm.getLineBuffers();
 	const auto& smoothBuffers = vm.getTriangleBuffers();
+	const auto& lights = vm.getLights();
+
 	frameBufferObject.setTexture(texture);
 	//texture.bind();
 	frameBufferObject.bind();
@@ -42,6 +44,10 @@ void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& textur
 	for (const auto& b : lineBuffers) {
 		wireRenderer.setBuffer(b, 1.0f);
 		wireRenderer.render(*camera);
+	}
+	smoothRenderer.clearLights();
+	for (const auto& l : lights) {
+		smoothRenderer.addLight(l);
 	}
 	for (const auto& b : smoothBuffers) {
 		smoothRenderer.setBuffer(b);

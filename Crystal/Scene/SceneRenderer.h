@@ -32,7 +32,7 @@ public:
 
 	bool build();
 
-	void render(const Scene::SceneViewModel& vm, const Shader::TextureObject& texture, const Shader::TextureObject& smoothTexture);
+	void render(const Scene::SceneViewModel& vm, const Shader::TextureObject& texture);
 
 private:
 	Scene::PointShaderScene pointRenderer;

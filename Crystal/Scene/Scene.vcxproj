@@ -29,7 +29,6 @@
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="IShapeScene.h" />
-    <ClInclude Include="LightShaderScene.h" />
     <ClInclude Include="LineShaderScene.h" />
     <ClInclude Include="MaterialShaderScene.h" />
     <ClInclude Include="SceneIdRenderer.h" />
@@ -74,7 +73,6 @@
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="IShaderScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
-    <ClCompile Include="LightShaderScene.cpp" />
     <ClCompile Include="LineShaderScene.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="SceneIdRenderer.cpp" />

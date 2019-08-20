@@ -125,9 +125,6 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="World.h" />
-    <ClInclude Include="LightShaderScene.h">
-      <Filter>ShaderScene</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialShaderScene.h">
       <Filter>ShaderScene</Filter>
     </ClInclude>
@@ -216,9 +213,6 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="LightShaderScene.cpp">
-      <Filter>ShaderScene</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">
