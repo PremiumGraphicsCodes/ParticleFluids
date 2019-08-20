@@ -54,7 +54,7 @@
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="STLFileExporter.h" />
     <ClInclude Include="STLFileImporter.h" />
-    <ClInclude Include="TriangleShaderScene.h" />
+    <ClInclude Include="TriangleRenderer.h" />
     <ClInclude Include="UUID.h" />
     <ClInclude Include="ViewModel.h" />
     <ClInclude Include="VolumeScene.h" />
@@ -86,7 +86,7 @@
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
     <ClCompile Include="TransformScene.cpp" />
-    <ClCompile Include="TriangleShaderScene.cpp" />
+    <ClCompile Include="TriangleRenderer.cpp" />
     <ClCompile Include="WireFrameScene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,11 +1,11 @@
-#include "TriangleShaderScene.h"
+#include "TriangleRenderer.h"
 
 #include <sstream>
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-TriangleShaderScene::TriangleShaderScene(const int id, const std::string & name) :
+TriangleRenderer::TriangleRenderer(const int id, const std::string & name) :
 	IRenderer(id, name)
 {
 	setVertexShaderSource(getBuildInVertexShaderSource());
@@ -18,7 +18,7 @@ TriangleShaderScene::TriangleShaderScene(const int id, const std::string & name)
 	addAttribute("color");
 }
 
-void TriangleShaderScene::render(const ICamera& camera)
+void TriangleRenderer::render(const ICamera& camera)
 {
 	auto shader = getShader();
 
@@ -57,7 +57,7 @@ void TriangleShaderScene::render(const ICamera& camera)
 	shader->unbind();
 }
 
-std::string TriangleShaderScene::getBuildInVertexShaderSource() const
+std::string TriangleRenderer::getBuildInVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -76,7 +76,7 @@ std::string TriangleShaderScene::getBuildInVertexShaderSource() const
 
 }
 
-std::string TriangleShaderScene::getBuiltInFragmentShaderSource() const
+std::string TriangleRenderer::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

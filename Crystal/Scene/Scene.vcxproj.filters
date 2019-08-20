@@ -87,9 +87,6 @@
     <ClInclude Include="TransformScene.h">
       <Filter>Scene\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="TriangleShaderScene.h">
-      <Filter>Renderer\Triangle</Filter>
-    </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -110,6 +107,9 @@
       <Filter>Renderer\Line</Filter>
     </ClInclude>
     <ClInclude Include="SmoothRenderer.h">
+      <Filter>Renderer\Triangle</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleRenderer.h">
       <Filter>Renderer\Triangle</Filter>
     </ClInclude>
   </ItemGroup>
@@ -165,9 +165,6 @@
     <ClCompile Include="TransformScene.cpp">
       <Filter>Scene\Transform</Filter>
     </ClCompile>
-    <ClCompile Include="TriangleShaderScene.cpp">
-      <Filter>Renderer\Triangle</Filter>
-    </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -188,6 +185,9 @@
       <Filter>Renderer\Line</Filter>
     </ClCompile>
     <ClCompile Include="SmoothRenderer.cpp">
+      <Filter>Renderer\Triangle</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleRenderer.cpp">
       <Filter>Renderer\Triangle</Filter>
     </ClCompile>
   </ItemGroup>

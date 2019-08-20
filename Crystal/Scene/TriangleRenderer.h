@@ -4,10 +4,10 @@
 namespace Crystal {
 	namespace Scene {
 
-class TriangleShaderScene : public IRenderer
+class TriangleRenderer : public IRenderer
 {
 public:
-	TriangleShaderScene(const int id, const std::string& name);
+	TriangleRenderer(const int id, const std::string& name);
 
 	void render(const Graphics::ICamera& camera) override;
 
