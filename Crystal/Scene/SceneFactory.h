@@ -49,7 +49,7 @@ public:
 
 	//ShaderScene* createShaderScene(const std::string& name);
 
-	CameraScene* createCameraScene(Graphics::ICamera* camera, const std::string& name);
+	//CameraScene* createCameraScene(Graphics::ICamera* camera, const std::string& name);
 
 	TransformScene* createTransformScene(const std::string& name);
 

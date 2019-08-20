@@ -4,7 +4,6 @@
 
 #include "ShaderScene.h"
 #include "LightScene.h"
-#include "CameraScene.h"
 #include "TransformScene.h"
 
 using namespace Crystal::Math;
@@ -93,12 +92,12 @@ ShaderScene* SceneFactory::createShaderScene(const std::string& name)
 {
 	return new ShaderScene(getNextId(), name);
 }
-*/
 
 CameraScene* SceneFactory::createCameraScene(ICamera* camera, const std::string& name)
 {
 	return new CameraScene(getNextId(), name, camera);
 }
+*/
 
 TransformScene* SceneFactory::createTransformScene(const std::string& name)
 {

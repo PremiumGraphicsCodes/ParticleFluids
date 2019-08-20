@@ -84,9 +84,6 @@
     <ClInclude Include="WireFrameScene.h">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClInclude>
-    <ClInclude Include="CameraScene.h">
-      <Filter>Scene\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="TransformScene.h">
       <Filter>Scene\Transform</Filter>
     </ClInclude>
