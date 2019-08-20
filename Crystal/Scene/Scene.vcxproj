@@ -27,7 +27,7 @@
     <ClInclude Include="FileExporter.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
-    <ClInclude Include="LineShaderScene.h" />
+    <ClInclude Include="LineRenderer.h" />
     <ClInclude Include="SceneIdRenderer.h" />
     <ClInclude Include="SceneRenderer.h" />
     <ClInclude Include="PointRenderer.h" />
@@ -66,7 +66,7 @@
     <ClCompile Include="FileExporter.cpp" />
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
-    <ClCompile Include="LineShaderScene.cpp" />
+    <ClCompile Include="LineRenderer.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="SceneIdRenderer.cpp" />
     <ClCompile Include="SceneRenderer.cpp" />

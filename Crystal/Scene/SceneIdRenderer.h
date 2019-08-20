@@ -2,11 +2,11 @@
 
 #include "../Graphics/DrawableId.h"
 
-#include "../Scene/LineShaderScene.h"
 #include "../Scene/TriangleShaderScene.h"
 #include "../Shader/FrameBufferObject.h"
 
 #include "../Scene/PointRenderer.h"
+#include "../Scene/LineRenderer.h"
 
 #include "../Util/UnCopyable.h"
 
@@ -43,7 +43,7 @@ public:
 
 private:
 	Scene::PointRenderer pointIdRenderer;
-	Scene::LineShaderScene lineIdRenderer;
+	Scene::LineRenderer lineIdRenderer;
 	Scene::TriangleShaderScene triangleIdRenderer;
 
 	Shader::FrameBufferObject frameBufferObject;

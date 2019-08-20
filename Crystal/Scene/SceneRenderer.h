@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Scene/PointRenderer.h"
-#include "../Scene/LineShaderScene.h"
+#include "../Scene/LineRenderer.h"
 #include "../Scene/SmoothShaderScene.h"
 
 #include "../Shader/FrameBufferObject.h"
@@ -36,7 +36,7 @@ public:
 
 private:
 	Scene::PointRenderer pointRenderer;
-	Scene::LineShaderScene wireRenderer;
+	Scene::LineRenderer wireRenderer;
 	Scene::SmoothShaderScene smoothRenderer;
 
 	Graphics::ICamera* camera;

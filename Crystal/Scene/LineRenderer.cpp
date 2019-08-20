@@ -1,11 +1,11 @@
-#include "LineShaderScene.h"
+#include "LineRenderer.h"
 #include <sstream>
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-LineShaderScene::LineShaderScene(const int id, const std::string& name) :
+LineRenderer::LineRenderer(const int id, const std::string& name) :
 	IRenderer(id, name)
 {
 	setVertexShaderSource(getBuiltInVsSource());
@@ -18,7 +18,7 @@ LineShaderScene::LineShaderScene(const int id, const std::string& name) :
 	addAttribute("color");
 }
 
-void LineShaderScene::render(const ICamera& camera)
+void LineRenderer::render(const ICamera& camera)
 {
 	auto shader = getShader();
 
@@ -62,7 +62,7 @@ void LineShaderScene::render(const ICamera& camera)
 	shader->unbind();
 }
 
-std::string LineShaderScene::getBuiltInVsSource() const
+std::string LineRenderer::getBuiltInVsSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -80,7 +80,7 @@ std::string LineShaderScene::getBuiltInVsSource() const
 	return stream.str();
 }
 
-std::string LineShaderScene::getBuiltInFsSource() const
+std::string LineRenderer::getBuiltInFsSource() const
 {
 	std::ostringstream stream;
 	stream

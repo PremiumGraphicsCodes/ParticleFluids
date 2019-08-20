@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PointRenderer.h"
-#include "LineShaderScene.h"
+#include "LineRenderer.h"
 #include "SmoothShaderScene.h"
 #include "../Graphics/PointLight.h"
 #include "../Graphics/Material.h"

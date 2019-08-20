@@ -45,10 +45,10 @@ private:
 };
 
 
-class LineShaderScene : public IRenderer
+class LineRenderer : public IRenderer
 {
 public:
-	LineShaderScene(const int id, const std::string& name);
+	LineRenderer(const int id, const std::string& name);
 
 	void render(const Graphics::ICamera& camera) override;
 

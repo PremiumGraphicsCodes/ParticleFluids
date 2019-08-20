@@ -1,5 +1,5 @@
 #include "IRenderer.h"
-#include "LineShaderScene.h"
+#include "LineRenderer.h"
 
 namespace Crystal {
 	namespace Scene {
