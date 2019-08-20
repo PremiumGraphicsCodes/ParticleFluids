@@ -95,13 +95,6 @@ ShaderScene* SceneFactory::createShaderScene(const std::string& name)
 }
 */
 
-TextureScene* SceneFactory::createTextureScene(const Image& image, const std::string& name)
-{
-	auto scene = new TextureScene(getNextId(), name, image);
-	scene->build();
-	return scene;
-}
-
 CameraScene* SceneFactory::createCameraScene(ICamera* camera, const std::string& name)
 {
 	return new CameraScene(getNextId(), name, camera);

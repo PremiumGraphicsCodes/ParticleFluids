@@ -58,7 +58,6 @@
     <ClInclude Include="ShaderScene.h" />
     <ClInclude Include="STLFileExporter.h" />
     <ClInclude Include="STLFileImporter.h" />
-    <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TriangleShaderScene.h" />
     <ClInclude Include="UUID.h" />
     <ClInclude Include="ViewModel.h" />
@@ -92,7 +91,6 @@
     <ClCompile Include="SmoothShaderScene.cpp" />
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
-    <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="TransformScene.cpp" />
     <ClCompile Include="TriangleShaderScene.cpp" />
     <ClCompile Include="WireFrameScene.cpp" />

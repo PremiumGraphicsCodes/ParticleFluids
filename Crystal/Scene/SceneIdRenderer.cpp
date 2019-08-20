@@ -1,7 +1,6 @@
 #include "SceneIdRenderer.h"
 #include "../../Crystal/Scene/Scene.h"
 #include "../../Crystal/Scene/SceneIdViewModel.h"
-#include "../../Crystal/Scene/TextureScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;

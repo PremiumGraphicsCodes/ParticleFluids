@@ -100,9 +100,6 @@
     <ClInclude Include="RootShaderScene.h">
       <Filter>ShaderScene</Filter>
     </ClInclude>
-    <ClInclude Include="TextureScene.h">
-      <Filter>ShaderScene</Filter>
-    </ClInclude>
     <ClInclude Include="LineShaderScene.h">
       <Filter>ShaderScene\Line</Filter>
     </ClInclude>
@@ -180,9 +177,6 @@
     </ClCompile>
     <ClCompile Include="SceneBuilder.cpp" />
     <ClCompile Include="ShaderScene.cpp">
-      <Filter>ShaderScene</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureScene.cpp">
       <Filter>ShaderScene</Filter>
     </ClCompile>
     <ClCompile Include="IShaderScene.cpp">

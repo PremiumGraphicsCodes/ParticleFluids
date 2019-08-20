@@ -1,5 +1,6 @@
 #pragma once
 
+/*
 #include "IWindow.h"
 #include "TextureView.h"
 #include "IntView.h"
@@ -28,3 +29,4 @@ private:
 
 	}
 }
+*/

@@ -4,7 +4,6 @@
 #include "../Scene/FileExporter.h"
 
 #include "PointShaderScene.h"
-#include "TextureScene.h"
 
 #include "SceneBuilder.h"
 
