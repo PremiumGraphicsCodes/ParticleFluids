@@ -2,7 +2,7 @@
 
 #include "../Scene/PointRenderer.h"
 #include "../Scene/LineRenderer.h"
-#include "../Scene/SmoothShaderScene.h"
+#include "../Scene/SmoothRenderer.h"
 
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
@@ -37,7 +37,7 @@ public:
 private:
 	Scene::PointRenderer pointRenderer;
 	Scene::LineRenderer wireRenderer;
-	Scene::SmoothShaderScene smoothRenderer;
+	Scene::SmoothRenderer smoothRenderer;
 
 	Graphics::ICamera* camera;
 

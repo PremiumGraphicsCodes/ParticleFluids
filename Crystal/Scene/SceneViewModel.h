@@ -2,7 +2,7 @@
 
 #include "PointRenderer.h"
 #include "LineRenderer.h"
-#include "SmoothShaderScene.h"
+#include "SmoothRenderer.h"
 #include "../Graphics/PointLight.h"
 #include "../Graphics/Material.h"
 

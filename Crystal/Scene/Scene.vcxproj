@@ -33,7 +33,7 @@
     <ClInclude Include="PointRenderer.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="SmoothShaderScene.h" />
+    <ClInclude Include="SmoothRenderer.h" />
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
@@ -82,7 +82,7 @@
     <ClCompile Include="PCDFileImporter.cpp" />
     <ClCompile Include="SceneFactory.cpp" />
     <ClCompile Include="IRenderer.cpp" />
-    <ClCompile Include="SmoothShaderScene.cpp" />
+    <ClCompile Include="SmoothRenderer.cpp" />
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />
     <ClCompile Include="TransformScene.cpp" />

@@ -1,4 +1,4 @@
-#include "SmoothShaderScene.h"
+#include "SmoothRenderer.h"
 
 #include "../Graphics/Material.h"
 #include "../Graphics/PointLight.h"
@@ -8,7 +8,7 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-SmoothShaderScene::SmoothShaderScene(const int id, const std::string& name) :
+SmoothRenderer::SmoothRenderer(const int id, const std::string& name) :
 	IRenderer(id, name)
 {
 	setVertexShaderSource(getBuildInVertexShaderSource());
@@ -38,7 +38,7 @@ SmoothShaderScene::SmoothShaderScene(const int id, const std::string& name) :
 	//shader.findAttribLocation("texCoord");
 }
 
-void SmoothShaderScene::render(const ICamera& camera)
+void SmoothRenderer::render(const ICamera& camera)
 {
 	auto shader = getShader();
 
@@ -110,7 +110,7 @@ void SmoothShaderScene::render(const ICamera& camera)
 	shader->unbind();
 }
 
-std::string SmoothShaderScene::getBuildInVertexShaderSource() const
+std::string SmoothRenderer::getBuildInVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -132,7 +132,7 @@ std::string SmoothShaderScene::getBuildInVertexShaderSource() const
 	return stream.str();
 }
 
-std::string SmoothShaderScene::getBuiltInFragmentShaderSource() const
+std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

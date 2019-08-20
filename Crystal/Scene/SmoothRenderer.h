@@ -64,10 +64,10 @@ private:
 };
 
 
-class SmoothShaderScene : public IRenderer
+class SmoothRenderer : public IRenderer
 {
 public:
-	SmoothShaderScene(const int id, const std::string& name);
+	SmoothRenderer(const int id, const std::string& name);
 
 	void render(const Graphics::ICamera& camera) override;
 
