@@ -1,7 +1,6 @@
 #pragma once
 
-#include "IShaderScene.h"
-
+#include "../Graphics/ICamera.h"
 #include "../Shader/ShaderObject.h"
 
 #include <memory>
@@ -9,16 +8,17 @@
 namespace Crystal {
 	namespace Scene {
 
-class ShaderScene : public IShaderScene
+class ShaderScene
 {
 public:
-	ShaderScene(const int id, const std::string& name) :
-		IShaderScene(id, name)
+	ShaderScene(const int id, const std::string& name)
 	{}
 
 	virtual ~ShaderScene() {};
 
-	bool build() override;
+	virtual bool build();
+
+	virtual void render(const Graphics::ICamera& camera) = 0;
 
 	void setVertexShaderSource(const std::string& vsSource) { this->vsSource = vsSource; }
 

@@ -9,7 +9,6 @@
 #include "../Scene/ViewModel.h"
 
 #include "../Util/UnCopyable.h"
-#include "../Scene/IShaderScene.h"
 
 namespace Crystal {
 	namespace UI {
