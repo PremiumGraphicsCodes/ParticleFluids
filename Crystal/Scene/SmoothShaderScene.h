@@ -72,9 +72,7 @@ public:
 
 	void setBuffer(const SmoothTriangleBuffer& buffer) { this->buffer = buffer; }
 
-	void clearLights() { lights.clear(); }
-
-	void addLight(const Graphics::PointLight& light) { lights.push_back( light ); }
+	void setLights(const std::vector<Graphics::PointLight>& lights) { this->lights = lights; }
 
 private:
 	std::string getBuildInVertexShaderSource() const;

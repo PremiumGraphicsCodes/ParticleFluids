@@ -4,7 +4,7 @@
 #include "LineShaderScene.h"
 #include "SmoothShaderScene.h"
 #include "../Graphics/PointLight.h"
-#include "MaterialShaderScene.h"
+#include "../Graphics/Material.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -18,21 +18,16 @@ public:
 
 	std::list<SmoothTriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
-	std::list<Graphics::PointLight> getLights() const { return lights; }
+	std::vector<Graphics::PointLight> getLights() const { return lights; }
 
-	void merge(SceneViewModel& rhs) {
-		pointBuffers.splice(pointBuffers.end(), rhs.pointBuffers);
-		lineBuffers.splice(lineBuffers.end(), rhs.lineBuffers);
-		lights.splice(lights.end(), rhs.lights);
-		triangleBuffers.splice(triangleBuffers.end(), rhs.triangleBuffers);
-	}
+	std::vector<Graphics::Material> getMaterials() const { return materials; }
 
 public:
 	std::list<PointBuffer> pointBuffers;
 	std::list<LineBuffer> lineBuffers;
 	std::list<SmoothTriangleBuffer> triangleBuffers;
-	std::list<Graphics::PointLight> lights;
-	std::list<MaterialBuffer> materialBuffers;
+	std::vector<Graphics::PointLight> lights;
+	std::vector<Graphics::Material> materials;
 };
 
 	}

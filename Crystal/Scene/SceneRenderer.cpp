@@ -45,10 +45,7 @@ void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& textur
 		wireRenderer.setBuffer(b, 1.0f);
 		wireRenderer.render(*camera);
 	}
-	smoothRenderer.clearLights();
-	for (const auto& l : lights) {
-		smoothRenderer.addLight(l);
-	}
+	smoothRenderer.setLights(lights);
 	for (const auto& b : smoothBuffers) {
 		smoothRenderer.setBuffer(b);
 		smoothRenderer.render(*camera);
