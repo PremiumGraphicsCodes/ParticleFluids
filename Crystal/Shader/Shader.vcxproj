@@ -148,7 +148,6 @@
     <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="ShaderUnit.h" />
     <ClInclude Include="TextureObject.h" />
-    <ClInclude Include="TextureObjectRepository.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CubeMapTextureObject.cpp" />
@@ -164,7 +163,6 @@
     <ClCompile Include="ShaderUniform.cpp" />
     <ClCompile Include="ShaderUnit.cpp" />
     <ClCompile Include="TextureObject.cpp" />
-    <ClCompile Include="TextureObjectRepository.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

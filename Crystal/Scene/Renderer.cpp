@@ -47,7 +47,6 @@ bool Renderer::build(IShaderScene* sscene)
 
 void Renderer::render(const int width, const int height, IShaderScene* scene, const ViewModel& vm)
 {
-	//const auto& tex = scene->findSceneByName<TextureScene*>("MainTexture");
 	objectRenderer.render(vm.object, *onScreenTex.getTexture(), *smoothTex.getTexture());
 	objectIdRenderer.render(vm.objectId, *idTex.getTexture());
 
