@@ -88,13 +88,13 @@
       <Filter>Scene\Transform</Filter>
     </ClInclude>
     <ClInclude Include="LineShaderScene.h">
-      <Filter>ShaderScene\Line</Filter>
+      <Filter>Renderer\Line</Filter>
     </ClInclude>
     <ClInclude Include="SmoothShaderScene.h">
-      <Filter>ShaderScene\Triangle</Filter>
+      <Filter>Renderer\Triangle</Filter>
     </ClInclude>
     <ClInclude Include="TriangleShaderScene.h">
-      <Filter>ShaderScene\Triangle</Filter>
+      <Filter>Renderer\Triangle</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Renderer</Filter>
@@ -106,11 +106,11 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="World.h" />
-    <ClInclude Include="IRenderer.h">
-      <Filter>ShaderScene</Filter>
-    </ClInclude>
     <ClInclude Include="PointRenderer.h">
-      <Filter>ShaderScene\Point</Filter>
+      <Filter>Renderer\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderer.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -166,13 +166,13 @@
       <Filter>Scene\Transform</Filter>
     </ClCompile>
     <ClCompile Include="LineShaderScene.cpp">
-      <Filter>ShaderScene\Line</Filter>
+      <Filter>Renderer\Line</Filter>
     </ClCompile>
     <ClCompile Include="SmoothShaderScene.cpp">
-      <Filter>ShaderScene\Triangle</Filter>
+      <Filter>Renderer\Triangle</Filter>
     </ClCompile>
     <ClCompile Include="TriangleShaderScene.cpp">
-      <Filter>ShaderScene\Triangle</Filter>
+      <Filter>Renderer\Triangle</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Renderer</Filter>
@@ -184,11 +184,11 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="IRenderer.cpp">
-      <Filter>ShaderScene</Filter>
-    </ClCompile>
     <ClCompile Include="PointRenderer.cpp">
-      <Filter>ShaderScene\Point</Filter>
+      <Filter>Renderer\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="IRenderer.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,20 +228,17 @@
     <Filter Include="Scene\Transform">
       <UniqueIdentifier>{cc2dee8e-1aa8-4b36-971f-d59b4361fad8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ShaderScene">
-      <UniqueIdentifier>{da606853-d3a7-41d3-8f8f-db26d68099d8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ShaderScene\Point">
-      <UniqueIdentifier>{49b90fdf-90d4-4783-b57f-e098b1691c16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ShaderScene\Triangle">
-      <UniqueIdentifier>{ab71925f-3edc-4808-b231-7094ef2b8fc1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{442dc2c7-873a-40c4-a519-d8ff2e247cb4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ShaderScene\Line">
+    <Filter Include="Renderer\Point">
+      <UniqueIdentifier>{49b90fdf-90d4-4783-b57f-e098b1691c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Line">
       <UniqueIdentifier>{f769a1c5-59b7-4df8-baee-b951b683673b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Triangle">
+      <UniqueIdentifier>{ab71925f-3edc-4808-b231-7094ef2b8fc1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

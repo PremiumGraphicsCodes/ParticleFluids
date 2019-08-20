@@ -89,16 +89,14 @@ void SmoothShaderScene::render(const ICamera& camera)
 		shader->sendUniform(prefix + ".Ls", specular);
 	}
 
-	for (int i = 0; i < 256; ++i) {
-		const auto m = Graphics::Material();
-
+	for (int i = 0; i < materials.size(); ++i) {
+		const auto m = materials[i];
 		const auto prefix = "materials[" + std::to_string(i) + "]";
 		shader->sendUniform(prefix + ".Ka", m.ambient);
 		shader->sendUniform(prefix + ".Kd", m.diffuse);
 		shader->sendUniform(prefix + ".Ks", m.specular);
 		shader->sendUniform(prefix + ".shininess", m.shininess);
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
-		//glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
 	}
 	shader->drawTriangles(indices);
 

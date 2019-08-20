@@ -7,6 +7,7 @@
 #include "../Graphics/Buffer2d.h"
 #include "../Graphics/Buffer3d.h"
 #include "../Graphics/PointLight.h"
+#include "../Graphics/Material.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -74,6 +75,8 @@ public:
 
 	void setLights(const std::vector<Graphics::PointLight>& lights) { this->lights = lights; }
 
+	void setMaterials(const std::vector<Graphics::Material>& materials) { this->materials = materials; }
+
 private:
 	std::string getBuildInVertexShaderSource() const;
 
@@ -81,6 +84,7 @@ private:
 
 	SmoothTriangleBuffer buffer;
 	std::vector<Graphics::PointLight> lights;
+	std::vector<Graphics::Material> materials;
 };
 
 	}

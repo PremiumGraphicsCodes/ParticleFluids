@@ -29,6 +29,7 @@ void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& textur
 	const auto& pointBuffers = vm.getPointBuffers();
 	const auto& lineBuffers = vm.getLineBuffers();
 	const auto& smoothBuffers = vm.getTriangleBuffers();
+	const auto& materials = vm.getMaterials();
 	const auto& lights = vm.getLights();
 
 	frameBufferObject.setTexture(texture);
@@ -45,6 +46,7 @@ void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& textur
 		wireRenderer.setBuffer(b);
 		wireRenderer.render(*camera);
 	}
+	smoothRenderer.setMaterials(materials);
 	smoothRenderer.setLights(lights);
 	for (const auto& b : smoothBuffers) {
 		smoothRenderer.setBuffer(b);
