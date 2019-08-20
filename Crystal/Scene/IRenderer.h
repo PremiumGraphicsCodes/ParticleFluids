@@ -8,13 +8,13 @@
 namespace Crystal {
 	namespace Scene {
 
-class ShaderScene
+class IRenderer
 {
 public:
-	ShaderScene(const int id, const std::string& name)
+	IRenderer(const int id, const std::string& name)
 	{}
 
-	virtual ~ShaderScene() {};
+	virtual ~IRenderer() {};
 
 	virtual bool build();
 

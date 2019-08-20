@@ -1,10 +1,9 @@
-#include "ShaderScene.h"
-#include "SceneIdViewModel.h"
+#include "IRenderer.h"
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-bool ShaderScene::build()
+bool IRenderer::build()
 {
 	this->shader = std::make_unique<ShaderObject>();
 	if (!shader->build(vsSource, fsSource)) {

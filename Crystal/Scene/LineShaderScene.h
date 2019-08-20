@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ShaderScene.h"
+#include "IRenderer.h"
 
 #include "../Shader/ShaderObject.h"
 
@@ -40,13 +40,6 @@ public:
 
 	Graphics::Buffer1d<unsigned int> getIndices() const { return indices; }
 
-	void merge(LineBuffer& rhs)
-	{
-		this->positions.merge(rhs.positions);
-		this->colors.add(rhs.colors);
-		this->indices.merge(rhs.indices);
-	}
-
 private:
 	Graphics::Buffer3d<float> positions;
 	Graphics::Buffer4d<float> colors;
@@ -54,7 +47,7 @@ private:
 };
 
 
-class LineShaderScene : public ShaderScene
+class LineShaderScene : public IRenderer
 {
 public:
 	LineShaderScene(const int id, const std::string& name);

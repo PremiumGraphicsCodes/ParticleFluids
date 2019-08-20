@@ -16,7 +16,7 @@ namespace Crystal {
 	}
 	namespace Scene {
 		class Scene;
-		class ShaderScene;
+		class IRenderer;
 		class CameraScene;
 		class TransformScene;
 

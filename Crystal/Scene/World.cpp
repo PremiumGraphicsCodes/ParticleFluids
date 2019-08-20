@@ -5,8 +5,6 @@
 
 #include "PointShaderScene.h"
 
-#include "SceneBuilder.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
@@ -25,8 +23,8 @@ World::~World()
 
 void World::init()
 {
-	SceneBuilder builder(objects, objectFactory);
-	builder.build();
+	//SceneBuilder builder(objects, objectFactory);
+	//builder.build();
 }
 
 void World::clear()

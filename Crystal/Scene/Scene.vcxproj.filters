@@ -87,10 +87,6 @@
     <ClInclude Include="TransformScene.h">
       <Filter>Scene\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="SceneBuilder.h" />
-    <ClInclude Include="ShaderScene.h">
-      <Filter>ShaderScene</Filter>
-    </ClInclude>
     <ClInclude Include="LineShaderScene.h">
       <Filter>ShaderScene\Line</Filter>
     </ClInclude>
@@ -113,6 +109,9 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="World.h" />
+    <ClInclude Include="IRenderer.h">
+      <Filter>ShaderScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">
@@ -166,10 +165,6 @@
     <ClCompile Include="TransformScene.cpp">
       <Filter>Scene\Transform</Filter>
     </ClCompile>
-    <ClCompile Include="SceneBuilder.cpp" />
-    <ClCompile Include="ShaderScene.cpp">
-      <Filter>ShaderScene</Filter>
-    </ClCompile>
     <ClCompile Include="LineShaderScene.cpp">
       <Filter>ShaderScene\Line</Filter>
     </ClCompile>
@@ -192,6 +187,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
+    <ClCompile Include="IRenderer.cpp">
+      <Filter>ShaderScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">

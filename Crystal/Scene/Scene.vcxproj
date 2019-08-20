@@ -33,7 +33,6 @@
     <ClInclude Include="PointShaderScene.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="SceneBuilder.h" />
     <ClInclude Include="SmoothShaderScene.h" />
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
@@ -52,7 +51,7 @@
     <ClInclude Include="PCDFileImporter.h" />
     <ClInclude Include="PolygonMeshScene.h" />
     <ClInclude Include="SceneFactory.h" />
-    <ClInclude Include="ShaderScene.h" />
+    <ClInclude Include="IRenderer.h" />
     <ClInclude Include="STLFileExporter.h" />
     <ClInclude Include="STLFileImporter.h" />
     <ClInclude Include="TriangleShaderScene.h" />
@@ -82,8 +81,7 @@
     <ClCompile Include="PCDFileExporter.cpp" />
     <ClCompile Include="PCDFileImporter.cpp" />
     <ClCompile Include="SceneFactory.cpp" />
-    <ClCompile Include="SceneBuilder.cpp" />
-    <ClCompile Include="ShaderScene.cpp" />
+    <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="SmoothShaderScene.cpp" />
     <ClCompile Include="STLFileExporter.cpp" />
     <ClCompile Include="STLFileImporter.cpp" />

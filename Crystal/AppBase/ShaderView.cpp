@@ -15,7 +15,7 @@ void ShaderView::show()
 	ImGui::InputTextMultiline("VSSource", "Hello", 100, ImVec2(100, 100));
 }
 
-void ShaderView::setValue(const ShaderScene& scene)
+void ShaderView::setValue(const IRenderer& scene)
 {
 	vsSource = scene.getVertexShaderSource();
 	fsSource = scene.getFragmentShaderSource();

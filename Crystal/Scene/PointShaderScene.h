@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ShaderScene.h"
+#include "IRenderer.h"
 
 #include "../Graphics/ICamera.h"
 #include "../Shader/ShaderObject.h"
@@ -37,12 +37,6 @@ public:
 
 	Graphics::Buffer1d<float> getSize() const { return sizes; }
 
-	void merge(const PointBuffer& rhs) {
-		position.merge(rhs.position);
-		color.add(rhs.color);
-		sizes.merge(rhs.sizes);
-	}
-
 private:
 	Graphics::Buffer3d<float> position;
 	Graphics::Buffer4d<float> color;
@@ -50,7 +44,7 @@ private:
 };
 
 
-class PointShaderScene : public ShaderScene
+class PointShaderScene : public IRenderer
 {
 public:
 	PointShaderScene(const int id, const std::string& name);

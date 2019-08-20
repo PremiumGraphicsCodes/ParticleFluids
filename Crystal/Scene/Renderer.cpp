@@ -1,7 +1,7 @@
 #include "Renderer.h"
 #include "../../Crystal/Scene/SceneViewModel.h"
 #include "../../Crystal/Scene/IScene.h"
-#include "../../Crystal/Scene/ShaderScene.h"
+#include "../../Crystal/Scene/IRenderer.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 

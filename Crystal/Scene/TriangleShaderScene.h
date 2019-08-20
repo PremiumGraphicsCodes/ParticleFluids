@@ -1,10 +1,10 @@
-#include "ShaderScene.h"
+#include "IRenderer.h"
 #include "LineShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
 
-class TriangleShaderScene : public ShaderScene
+class TriangleShaderScene : public IRenderer
 {
 public:
 	TriangleShaderScene(const int id, const std::string& name);

@@ -2,7 +2,7 @@
 
 #include "Scene.h"
 
-#include "ShaderScene.h"
+#include "IRenderer.h"
 #include "LightScene.h"
 #include "TransformScene.h"
 

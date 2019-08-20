@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ShaderScene.h"
+#include "IRenderer.h"
 
 #include "../Shape/PolygonMesh.h"
 #include "../Graphics/Buffer1d.h"
@@ -63,7 +63,7 @@ private:
 };
 
 
-class SmoothShaderScene : public ShaderScene
+class SmoothShaderScene : public IRenderer
 {
 public:
 	SmoothShaderScene(const int id, const std::string& name);
