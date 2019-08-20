@@ -74,6 +74,7 @@
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="IShaderScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
+    <ClCompile Include="LightShaderScene.cpp" />
     <ClCompile Include="LineShaderScene.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="SceneIdRenderer.cpp" />

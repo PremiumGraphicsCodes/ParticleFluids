@@ -65,7 +65,7 @@ public:
 
 	bool build() { return false; }
 
-	void render(const Graphics::ICamera& camera) override {}
+	void render(const Graphics::ICamera& camera) override;
 
 private:
 	Graphics::PointLight light;

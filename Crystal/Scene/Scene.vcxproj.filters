@@ -216,6 +216,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
+    <ClCompile Include="LightShaderScene.cpp">
+      <Filter>ShaderScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">

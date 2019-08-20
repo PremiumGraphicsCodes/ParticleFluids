@@ -17,14 +17,20 @@ SmoothShaderScene::SmoothShaderScene(const int id, const std::string& name) :
 	addUniform("projectionMatrix");
 	addUniform("modelviewMatrix");
 	addUniform("eyePosition");
-	addUniform("lights[0].position");
-	addUniform("lights[0].La");
-	addUniform("lights[0].Ld");
-	addUniform("lights[0].Ls");
-	addUniform("materials[0].Ka");
-	addUniform("materials[0].Kd");
-	addUniform("materials[0].Ks");
-	addUniform("materials[0].shininess");
+	for (int i = 0; i < 8; ++i) {
+		const auto prefix = "lights[" + std::to_string(i) + "]";
+		addUniform(prefix + ".position");
+		addUniform(prefix + ".La");
+		addUniform(prefix + ".Ld");
+		addUniform(prefix + ".Ls");
+	}
+	for (int i = 0; i < 256; ++i) {
+		const auto prefix = "materials[" + std::to_string(i) + "]";
+		addUniform(prefix + ".Ka");
+		addUniform(prefix + ".Kd");
+		addUniform(prefix + ".Ks");
+		addUniform(prefix + ".shininess");
+	}
 	//shader.findUniformLocation("texture1");
 
 	addAttribute("position");
@@ -68,27 +74,34 @@ void SmoothShaderScene::render(const ICamera& camera)
 
 	//texture.bind();
 
-	{
+	for (int i = 0; i < 8; ++i) {
 		const auto light = Graphics::PointLight();
 		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
 		const auto& ambient = light.getAmbient();
 		const auto& diffuse = light.getDiffuse();
 		const auto& specular = light.getSpecular();
 
-		//glUniform3fv(shader->getUniformLocation("light.position"), 1, &lightPos[0]);
-		shader->sendUniform("lights[0].La", ambient);
-		shader->sendUniform("lights[0].Ld", diffuse);
-		shader->sendUniform("lights[0].Ls", specular);
+		const auto prefix = "lights[" + std::to_string(i) + "]";
 
-		const auto& m = Graphics::Material();
-		shader->sendUniform("materials[0].Ka", m.ambient);
-		shader->sendUniform("materials[0].Kd", m.diffuse);
-		shader->sendUniform("materials[0].Ks", m.specular);
-		shader->sendUniform("materials[0].shininess", m.shininess);
+		shader->sendUniform(prefix + ".position", lightPos);
+		shader->sendUniform(prefix + ".La", ambient);
+		shader->sendUniform(prefix + ".Ld", diffuse);
+		shader->sendUniform(prefix + ".Ls", specular);
+	}
+
+	for (int i = 0; i < 256; ++i) {
+		const auto m = Graphics::Material();
+
+		const auto prefix = "materials[" + std::to_string(i) + "]";
+		shader->sendUniform(prefix + ".Ka", m.ambient);
+		shader->sendUniform(prefix + ".Kd", m.diffuse);
+		shader->sendUniform(prefix + ".Ks", m.specular);
+		shader->sendUniform(prefix + ".shininess", m.shininess);
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
-		shader->drawTriangles(indices);
 		//glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
 	}
+	shader->drawTriangles(indices);
+
 
 	//texture.unbind();
 
