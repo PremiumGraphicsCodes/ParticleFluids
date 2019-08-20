@@ -16,16 +16,14 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 		return;
 	}
 
-	// Polygon直下にあるfaceはデフォルトで描画．
 	SmoothTriangleBuffer bf(*getShape());
 	bf.add(getShape()->getFaces(), 0);
 
 	viewModel.triangleBuffers.push_back(bf);
 }
 
-SceneIdViewModel PolygonMeshScene::toIdViewModel() const
+void PolygonMeshScene::toIdViewModel(SceneIdViewModel& viewModel) const
 {
-	SceneIdViewModel viewModel;
 	const auto objectId = getId();
 	const auto& vertices = getShape()->getVertices();
 	const auto& positions = getShape()->getPositions();
@@ -39,7 +37,6 @@ SceneIdViewModel PolygonMeshScene::toIdViewModel() const
 		viewModel.triangleIdBuffer.add( positions[ vertices[f.v2].positionId ], idColor, index++);
 		viewModel.triangleIdBuffer.add( positions[ vertices[f.v3].positionId ], idColor, index++);
 	}
-	return viewModel;
 }
 
 void PolygonMeshScene::getBoundingBox(Crystal::Math::Box3d& boundingBox) const

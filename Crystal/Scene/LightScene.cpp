@@ -11,7 +11,6 @@ void LightScene::toViewModel(SceneViewModel& viewModel) const
 	viewModel.lights.push_back(light);
 }
 
-SceneIdViewModel LightScene::toIdViewModel() const
+void LightScene::toIdViewModel(SceneIdViewModel& viewModel) const
 {
-	return SceneIdViewModel();
 }

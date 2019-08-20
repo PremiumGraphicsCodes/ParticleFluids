@@ -39,14 +39,11 @@ void Scene::toViewModel(SceneViewModel& viewModel) const
 	}
 }
 
-SceneIdViewModel Scene::toIdViewModel() const
+void Scene::toIdViewModel(SceneIdViewModel& viewModel) const
 {
-	SceneIdViewModel viewModel;
 	for (auto c : children) {
-		auto& vm = c->toIdViewModel();
-		viewModel.merge(vm);
+		c->toIdViewModel(viewModel);
 	}
-	return viewModel;
 }
 
 

@@ -15,12 +15,6 @@ public:
 
 	LineBuffer getTriangleIdBuffer() const { return triangleIdBuffer; }
 
-	void merge(SceneIdViewModel& rhs) {
-		pointIdBuffer.merge(rhs.pointIdBuffer);
-		lineIdBuffer.merge(rhs.lineIdBuffer);
-		triangleIdBuffer.merge(triangleIdBuffer);
-	}
-
 public:
 	PointBuffer pointIdBuffer;
 	LineBuffer lineIdBuffer;

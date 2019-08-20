@@ -8,7 +8,7 @@ void TransformScene::toViewModel(SceneViewModel& viewModel) const
 {
 }
 
-SceneIdViewModel TransformScene::toIdViewModel() const
+void TransformScene::toIdViewModel(SceneIdViewModel& viewModel) const
 {
-	return SceneIdViewModel();
+
 }

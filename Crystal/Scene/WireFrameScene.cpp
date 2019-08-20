@@ -25,19 +25,20 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 	viewModel.lineBuffers.push_back(lineBuffer);
 }
 
-SceneIdViewModel WireFrameScene::toIdViewModel() const
+void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
 {
+	if (!isVisible()) {
+		return;
+	}
 	const auto objectId = getId();
 	const auto& lines = getShape()->getLines();
 	int childId = 0;
 	int index = 0;
 	
-	SceneIdViewModel viewModel;
 	for (const auto& l : lines) {
 		Graphics::DrawableID did(objectId, childId++);
 		viewModel.lineIdBuffer.add(l.getStart(), did.toColor(), index++);
 	}
-	return viewModel;
 }
 
 void WireFrameScene::getBoundingBox(Crystal::Math::Box3d& box) const

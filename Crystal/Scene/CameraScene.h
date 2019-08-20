@@ -29,7 +29,7 @@ public:
 
 	void toViewModel(SceneViewModel& viewModel) const override { ; };
 
-	SceneIdViewModel toIdViewModel() const override { return SceneIdViewModel(); }
+	void toIdViewModel(SceneIdViewModel& viewModel) const override { ; }
 
 private:
 	Graphics::ICamera* camera;

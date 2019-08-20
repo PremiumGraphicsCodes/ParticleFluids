@@ -6,10 +6,10 @@ using namespace Crystal::Scene;
 
 void MaterialScene::toViewModel(SceneViewModel& viewModel) const
 {
-	;
+	viewModel.materials.push_back(material);
 }
 
-SceneIdViewModel MaterialScene::toIdViewModel() const
+void MaterialScene::toIdViewModel(SceneIdViewModel& viewModel) const
 {
-	return SceneIdViewModel();
+
 }

@@ -24,9 +24,11 @@ void ParticleSystemScene::toViewModel(SceneViewModel& viewModel) const
 	viewModel.pointBuffers.push_back(pointBuffer);
 }
 
-SceneIdViewModel ParticleSystemScene::toIdViewModel() const
+void ParticleSystemScene::toIdViewModel(SceneIdViewModel& viewModel) const
 {
-	SceneIdViewModel viewModel;
+	if (!isVisible()) {
+		return;
+	}
 	const auto objectId = getId();
 	const auto& particles = getShape()->getParticles();
 	int particleId = 0;
@@ -34,7 +36,6 @@ SceneIdViewModel ParticleSystemScene::toIdViewModel() const
 		Graphics::DrawableID did(objectId, particleId++);
 		viewModel.pointIdBuffer.add(p->getPosition(), did.toColor(), p->getAttribute().size);
 	}
-	return viewModel;
 }
 
 void ParticleSystemScene::getBoundingBox(Crystal::Math::Box3d& box) const
