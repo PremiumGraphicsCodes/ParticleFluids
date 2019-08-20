@@ -10,6 +10,7 @@
 
 #include "../Util/UnCopyable.h"
 #include "../Scene/IShaderScene.h"
+#include "TextureScene.h"
 
 namespace Crystal {
 	namespace UI {
@@ -36,6 +37,10 @@ private:
 	Shader::OnScreenRenderer renderer;
 	SceneRenderer objectRenderer;
 	SceneIdRenderer objectIdRenderer;
+	Scene::TextureScene smoothTex;
+	Scene::TextureScene onScreenTex;
+	Scene::TextureScene idTex;
+
 	bool showOffScreen;
 };
 

@@ -29,21 +29,6 @@ void World::init()
 {
 	SceneBuilder builder(objects, objectFactory);
 	builder.build();
-
-	shaders.addChild(new PointShaderScene(1, "PointShader"));
-
-	shaders.addChild(new TextureScene(2, "OnScreenTexture", Image(512, 512)));
-
-	Image image2(2, 2);
-	image2.setColor(0, 0, ColorRGBAuc(255, 0, 0, 0));
-	image2.setColor(1, 0, ColorRGBAuc(0, 255, 0, 0));
-	image2.setColor(0, 1, ColorRGBAuc(0, 0, 255, 0));
-	image2.setColor(1, 1, ColorRGBAuc(255, 255, 255, 0));
-	shaders.addChild(new TextureScene(3, "SmoothTexture", image2));
-
-	shaders.addChild(new TextureScene(4, "IdTexture", Image(512, 512)));
-
-	//shaders.build();
 }
 
 void World::clear()

@@ -6,6 +6,7 @@
 
 #include "../ThirdParty/stb/stb_image.h"
 
+using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -13,7 +14,10 @@ using namespace Crystal::UI;
 Renderer::Renderer(Crystal::Graphics::ICamera* camera) :
 	objectRenderer(camera),
 	objectIdRenderer(camera),
-	showOffScreen(false)
+	showOffScreen(false),
+	smoothTex(-1, "", Image(512,512)),
+	onScreenTex(-1, "", Image(512, 512)),
+	idTex(-1, "", Image(512, 521))
 {
 }
 
@@ -33,17 +37,19 @@ bool Renderer::build(IScene* scene, SceneFactory* factory, IShaderScene* sscene)
 	if (!sscene->build()) {
 		return false;
 	}
+
+	smoothTex.build();
+	onScreenTex.build();
+	idTex.build();
+
 	return true;
 }
 
 void Renderer::render(const int width, const int height, IShaderScene* scene, const ViewModel& vm)
 {
 	//const auto& tex = scene->findSceneByName<TextureScene*>("MainTexture");
-	const auto& smoothTex = scene->findSceneByName<TextureScene*>("SmoothTexture");
-	const auto& onScreenTex = scene->findSceneByName<TextureScene*>("OnScreenTexture");
-	const auto& idTex = scene->findSceneByName<TextureScene*>("IdTexture");
-	objectRenderer.render(vm.object, *onScreenTex->getTexture(), *smoothTex->getTexture());
-	objectIdRenderer.render(vm.objectId, *idTex->getTexture());
+	objectRenderer.render(vm.object, *onScreenTex.getTexture(), *smoothTex.getTexture());
+	objectIdRenderer.render(vm.objectId, *idTex.getTexture());
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);
@@ -57,5 +63,5 @@ void Renderer::render(const int width, const int height, IShaderScene* scene, co
 		renderer.render(*tex);
 	}
 	*/
-	renderer.render(*onScreenTex->getTexture());
+	renderer.render(*onScreenTex.getTexture());
 }
