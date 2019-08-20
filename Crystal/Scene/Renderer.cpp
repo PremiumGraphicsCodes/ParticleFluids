@@ -17,7 +17,7 @@ Renderer::Renderer(Crystal::Graphics::ICamera* camera) :
 {
 }
 
-bool Renderer::build(IShaderScene* sscene)
+bool Renderer::build()
 {
 	if (!objectRenderer.build()) {
 		return false;
@@ -30,10 +30,6 @@ bool Renderer::build(IShaderScene* sscene)
 		return false;
 	}
 
-	if (!sscene->build()) {
-		return false;
-	}
-
 	smoothTex.create(Image(512, 512));
 	onScreenTex.create(Image(512, 512));
 	idTex.create(Image(512, 521));
@@ -42,7 +38,7 @@ bool Renderer::build(IShaderScene* sscene)
 	return true;
 }
 
-void Renderer::render(const int width, const int height, IShaderScene* scene, const ViewModel& vm)
+void Renderer::render(const int width, const int height, const ViewModel& vm)
 {
 	objectRenderer.render(vm.object, onScreenTex);
 	objectIdRenderer.render(vm.objectId, idTex);

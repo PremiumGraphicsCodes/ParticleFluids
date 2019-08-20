@@ -94,9 +94,6 @@
     <ClInclude Include="IShaderScene.h">
       <Filter>ShaderScene</Filter>
     </ClInclude>
-    <ClInclude Include="RootShaderScene.h">
-      <Filter>ShaderScene</Filter>
-    </ClInclude>
     <ClInclude Include="LineShaderScene.h">
       <Filter>ShaderScene\Line</Filter>
     </ClInclude>

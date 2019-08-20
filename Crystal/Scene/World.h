@@ -4,7 +4,6 @@
 
 #include "Scene.h"
 #include "SceneFactory.h"
-#include "RootShaderScene.h"
 #include "ViewModel.h"
 
 #include <filesystem>
@@ -35,8 +34,6 @@ public:
 
 	SceneFactory* getItemFactory() { return &itemFactory; }
 
-	RootShaderScene* getShaders() { return &shaders; }
-
 	//ViewModel toViewModel();
 
 	void updateViewModel();
@@ -48,7 +45,6 @@ public:
 private:
 	Scene objects;
 	Scene items;
-	RootShaderScene shaders;
 	ViewModel viewModel;
 
 	SceneFactory objectFactory;

@@ -147,7 +147,7 @@ bool Window::init()
 
 	world->init();
 
-	canvas->build(world);
+	canvas->build();
 
 	return true;
 }
@@ -176,7 +176,7 @@ void Window::show()
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		canvas->render(width, height, world->getShaders(), world->getViewModel());
+		canvas->render(width, height, world->getViewModel());
 
 		glFlush();
 

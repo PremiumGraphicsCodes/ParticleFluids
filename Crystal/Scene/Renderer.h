@@ -21,9 +21,9 @@ public:
 
 	~Renderer() {}
 
-	bool build(Scene::IShaderScene* sscene);
+	bool build();
 
-	void render(const int width, const int height, Scene::IShaderScene* scene, const Scene::ViewModel& vm);
+	void render(const int width, const int height, const Scene::ViewModel& vm);
 
 	SceneRenderer* getObjectRenderer() { return &objectRenderer; }
 

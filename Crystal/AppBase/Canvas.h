@@ -41,12 +41,11 @@ public:
 
 	virtual ~Canvas() {}
 
-	void build(Scene::World* world);
-
+	void build();
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 
-	void render(const int width, const int height, Scene::IShaderScene* scene, const Scene::ViewModel& viewModel);
+	void render(const int width, const int height, const Scene::ViewModel& viewModel);
 
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 

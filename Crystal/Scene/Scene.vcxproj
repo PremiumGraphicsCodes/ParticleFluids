@@ -34,7 +34,6 @@
     <ClInclude Include="PointShaderScene.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="RootShaderScene.h" />
     <ClInclude Include="SceneBuilder.h" />
     <ClInclude Include="SmoothShaderScene.h" />
     <ClInclude Include="TransformScene.h" />

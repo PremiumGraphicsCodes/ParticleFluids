@@ -14,8 +14,7 @@ using namespace Crystal::Scene;
 
 World::World() :
 	objects(0, "Root"),
-	items(0, "Item"),
-	shaders(0, "Shaders")
+	items(0, "Item")
 {
 }
 
