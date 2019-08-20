@@ -9,11 +9,10 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-SceneViewModel WireFrameScene::toViewModel() const
+void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 {
-	SceneViewModel viewModel;
 	if (!isVisible()) {
-		return viewModel;
+		return;
 	}
 	const auto& lines = getShape()->getLines();
 	const auto& color = getAttribute().color;
@@ -24,7 +23,6 @@ SceneViewModel WireFrameScene::toViewModel() const
 		lineBuffer.add(l.getEnd(), color, index++);
 	}
 	viewModel.lineBuffers.push_back(lineBuffer);
-	return viewModel;
 }
 
 SceneIdViewModel WireFrameScene::toIdViewModel() const

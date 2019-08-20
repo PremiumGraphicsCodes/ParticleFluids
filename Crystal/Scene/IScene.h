@@ -71,7 +71,7 @@ public:
 
 	std::list<IScene*> findScenes(SceneType type);
 
-	virtual SceneViewModel toViewModel() const = 0;
+	virtual void toViewModel(SceneViewModel& viewModel) const = 0;
 
 	virtual SceneIdViewModel toIdViewModel() const = 0;
 

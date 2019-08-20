@@ -4,9 +4,8 @@
 
 using namespace Crystal::Scene;
 
-SceneViewModel TransformScene::toViewModel() const
+void TransformScene::toViewModel(SceneViewModel& viewModel) const
 {
-	return SceneViewModel();
 }
 
 SceneIdViewModel TransformScene::toIdViewModel() const

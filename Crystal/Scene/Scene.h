@@ -20,7 +20,7 @@ public:
 
 	virtual void onClear() override;
 
-	SceneViewModel toViewModel() const override;
+	void toViewModel(SceneViewModel& viewModel) const override;
 
 	SceneIdViewModel toIdViewModel() const override;
 

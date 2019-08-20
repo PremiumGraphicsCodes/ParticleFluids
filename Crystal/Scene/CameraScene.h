@@ -27,7 +27,7 @@ public:
 		delete camera;
 	}
 
-	SceneViewModel toViewModel() const override { return SceneViewModel(); };
+	void toViewModel(SceneViewModel& viewModel) const override { ; };
 
 	SceneIdViewModel toIdViewModel() const override { return SceneIdViewModel(); }
 

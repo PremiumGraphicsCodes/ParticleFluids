@@ -4,9 +4,9 @@
 
 using namespace Crystal::Scene;
 
-SceneViewModel MaterialScene::toViewModel() const
+void MaterialScene::toViewModel(SceneViewModel& viewModel) const
 {
-	return SceneViewModel();
+	;
 }
 
 SceneIdViewModel MaterialScene::toIdViewModel() const

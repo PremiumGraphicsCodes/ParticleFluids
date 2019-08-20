@@ -32,14 +32,11 @@ Box3d Scene::getBoundingBox() const
 	return bb;
 }
 
-SceneViewModel Scene::toViewModel() const
+void Scene::toViewModel(SceneViewModel& viewModel) const
 {
-	SceneViewModel viewModel;
 	for (auto c : children) {
-		auto& vm = c->toViewModel();
-		viewModel.merge(vm);
+		c->toViewModel(viewModel);
 	}
-	return viewModel;
 }
 
 SceneIdViewModel Scene::toIdViewModel() const

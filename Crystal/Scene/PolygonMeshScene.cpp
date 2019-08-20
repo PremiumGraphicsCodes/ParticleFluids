@@ -10,31 +10,17 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-SceneViewModel PolygonMeshScene::toViewModel() const
+void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 {
-	SceneViewModel viewModel;
 	if (!isVisible()) {
-		return viewModel;
-	}
-
-	auto lights = getParent()->findScenes(SceneType::LightScene);
-	PointLight light;
-	if(!lights.empty()) {
-		light = static_cast<LightScene*>(lights.front())->getLight();
+		return;
 	}
 
 	// Polygon直下にあるfaceはデフォルトで描画．
 	SmoothTriangleBuffer bf(*getShape());
-	auto materialScene = static_cast<MaterialScene*>(getParent()->findSceneByName(materialName));
-	if(materialScene == nullptr) {
-		bf.add(getShape()->getFaces(), 0);
-	}
-	else {
-		bf.add(getShape()->getFaces(), 0);
-	}
+	bf.add(getShape()->getFaces(), 0);
 
 	viewModel.triangleBuffers.push_back(bf);
-	return viewModel;
 }
 
 SceneIdViewModel PolygonMeshScene::toIdViewModel() const

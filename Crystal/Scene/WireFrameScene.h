@@ -41,7 +41,7 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const { return shape->getVertices(); }
 
-	SceneViewModel toViewModel() const override;
+	void toViewModel(SceneViewModel& viewModel) const override;
 
 	SceneIdViewModel toIdViewModel() const override;
 

@@ -52,8 +52,7 @@ bool World::exportFile(const std::experimental::filesystem::path& filename)
 void World::updateViewModel()
 {
 	ViewModel vm;
-	vm.object = objects.toViewModel();
-	vm.object.merge(items.toViewModel());
+	objects.toViewModel(vm.object);
 
 	vm.objectId = objects.toIdViewModel();
 

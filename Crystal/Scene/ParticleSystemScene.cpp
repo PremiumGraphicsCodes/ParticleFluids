@@ -11,11 +11,10 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-SceneViewModel ParticleSystemScene::toViewModel() const
+void ParticleSystemScene::toViewModel(SceneViewModel& viewModel) const
 {
-	SceneViewModel viewModel;
 	if (!isVisible()) {
-		return viewModel;
+		return;
 	}
 	const auto& particles = getShape()->getParticles();
 	PointBuffer pointBuffer;
@@ -23,7 +22,6 @@ SceneViewModel ParticleSystemScene::toViewModel() const
 		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
 	viewModel.pointBuffers.push_back(pointBuffer);
-	return viewModel;
 }
 
 SceneIdViewModel ParticleSystemScene::toIdViewModel() const

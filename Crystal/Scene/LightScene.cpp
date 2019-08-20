@@ -6,11 +6,9 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-SceneViewModel LightScene::toViewModel() const
+void LightScene::toViewModel(SceneViewModel& viewModel) const
 {
-	SceneViewModel viewModel;
 	viewModel.lights.push_back(light);
-	return viewModel;
 }
 
 SceneIdViewModel LightScene::toIdViewModel() const

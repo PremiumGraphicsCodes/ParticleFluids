@@ -24,7 +24,7 @@ public:
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
 
-	SceneViewModel toViewModel() const override;
+	void toViewModel(SceneViewModel& viewModel) const override;
 
 	SceneIdViewModel toIdViewModel() const override;
 
