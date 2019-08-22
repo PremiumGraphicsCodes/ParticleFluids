@@ -23,7 +23,7 @@ public:
 		width(width)
 	{};
 
-	void add(const Math::Vector3df& position, const Graphics::ColorRGBAf& color) {
+	void addVertex(const Math::Vector3df& position, const Graphics::ColorRGBAf& color) {
 		positions.add(position);
 		colors.add(color);
 	}
