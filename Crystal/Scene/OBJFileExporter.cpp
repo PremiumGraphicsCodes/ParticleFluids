@@ -30,9 +30,10 @@ bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& fileP
 
 	for (auto f : faces) {
 		std::vector<int> indices;
-		indices.push_back(f.v1 + 1);
-		indices.push_back(f.v2 + 1);
-		indices.push_back(f.v3 + 1);
+		const auto& vIds = f.getVertexIds();
+		indices.push_back(vIds[0] + 1);
+		indices.push_back(vIds[1] + 1);
+		indices.push_back(vIds[2] + 1);
 		OBJFace face;
 		face.positionIndices = indices;
 		face.normalIndices = indices;

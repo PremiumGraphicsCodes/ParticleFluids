@@ -12,7 +12,6 @@ using namespace Crystal::UI;
 PMBoxView::PMBoxView(World* model, Canvas* canvas) :
 	IOkCancelView("PMBox", model, canvas),
 	boxView("Box"),
-	materialName("MaterialName", ""),
 	name("Name", "PMBox")
 {
 }
@@ -20,7 +19,6 @@ PMBoxView::PMBoxView(World* model, Canvas* canvas) :
 void PMBoxView::show()
 {
 	boxView.show();
-	materialName.show();
 	name.show();
 	IOkCancelView::show();
 }
@@ -30,7 +28,6 @@ void PMBoxView::onOk()
 	PolygonMeshBuilder builder;
 	builder.add(boxView.getValue());
 	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
-	scene->setMaterialName(materialName.getValue());
 	getWorld()->getObjects()->addScene(scene);
 	getWorld()->updateViewModel();
 	getCanvas()->fitCamera(getWorld()->getBoundingBox());

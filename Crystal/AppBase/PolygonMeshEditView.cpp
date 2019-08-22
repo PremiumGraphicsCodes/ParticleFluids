@@ -8,7 +8,6 @@ PolygonMeshEditView::PolygonMeshEditView(const std::string& name, World* reposit
 	polygonMesh("PolygonMesh"),
 	id("Id"),
 	name("Name"),
-	materialName("MaterialName"),
 	edit("Edit")
 {
 	edit.setFunction([=]() { onEdit(); });
@@ -19,7 +18,6 @@ void PolygonMeshEditView::show()
 	polygonMesh.show();
 	id.show();
 	name.show();
-	materialName.show();
 	edit.show();
 }
 
@@ -28,7 +26,6 @@ void PolygonMeshEditView::setValue(PolygonMeshScene* value)
 	polygonMesh.setValue(value->getShape());
 	id.setValue(value->getId());
 	name.setValue(value->getName());
-	materialName.setValue( value->getMaterialName() );
 }
 
 void PolygonMeshEditView::onEdit()

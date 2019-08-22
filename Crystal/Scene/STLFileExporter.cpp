@@ -19,9 +19,10 @@ bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& 
 			continue;
 		}
 		*/
-		const auto v1 = positions[ f.v1 ];
-		const auto v2 = positions[ f.v2 ];
-		const auto v3 = positions[ f.v3 ];
+		const auto& vIds = f.getVertexIds();
+		const auto v1 = positions[ vIds[0] ];
+		const auto v2 = positions[ vIds[1] ];
+		const auto v3 = positions[ vIds[2] ];
 		Shape::TriangleFace ff({ v1,v2,v3 });
 		//const auto area = ff.toTriangle().getArea();
 		fs.push_back(ff);
@@ -44,9 +45,10 @@ bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path&
 			continue;
 		}
 		*/
-		const auto v1 = positions[f.v1];
-		const auto v2 = positions[f.v2];
-		const auto v3 = positions[f.v3];
+		const auto& vIds = f.getVertexIds();
+		const auto v1 = positions[vIds[0]];
+		const auto v2 = positions[vIds[1]];
+		const auto v3 = positions[vIds[2]];
 		Shape::TriangleFace ff({ v1,v2,v3 });
 		//const auto area = ff.toTriangle().getArea();
 		fs.push_back(ff);

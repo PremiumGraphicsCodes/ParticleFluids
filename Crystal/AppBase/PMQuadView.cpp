@@ -13,7 +13,6 @@ using namespace Crystal::UI;
 PMQuadView::PMQuadView(World* model, Canvas* canvas) :
 	IOkCancelView("PMQuad", model, canvas),
 	quad("Quad"),
-	materialName("Material", ""),
 	name("Name", "PMPlane")
 {
 }
@@ -21,7 +20,6 @@ PMQuadView::PMQuadView(World* model, Canvas* canvas) :
 void PMQuadView::show()
 {
 	quad.show();
-	materialName.show();
 	name.show();
 	IOkCancelView::show();
 }
@@ -31,7 +29,6 @@ void PMQuadView::onOk()
 	PolygonMeshBuilder builder;
 	builder.add(quad.getValue());
 	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
-	scene->setMaterialName(materialName.getValue());
 	getWorld()->getObjects()->addScene(scene);
 	getWorld()->updateViewModel();
 	getCanvas()->fitCamera(getWorld()->getBoundingBox());

@@ -22,7 +22,6 @@ private:
 
 private:
 	Quad3dView quad;
-	StringView materialName;
 	StringView name;
 };
 

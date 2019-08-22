@@ -21,7 +21,6 @@ private:
 
 private:
 	Box3dView boxView;
-	StringView materialName;
 	StringView name;
 };
 

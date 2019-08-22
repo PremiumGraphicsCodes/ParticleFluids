@@ -14,20 +14,22 @@ class Face
 {
 public:
 	Face(int v1, int v2, int v3, int id = -1) :
-		v1(v1),
-		v2(v2),
-		v3(v3),
+		vertexIds{ v1, v2, v3 },
 		id(id)
 	{}
 
-	std::array<int, 3> getVertexIds() const { return { v1,v2,v3 }; }
+	std::array<int, 3> getVertexIds() const { return vertexIds; }
 
-	int v1;
-	int v2;
-	int v3;
+	int getV1() const { return vertexIds[0]; }
+
+	int getV2() const { return vertexIds[1]; }
+
+	int getV3() const { return vertexIds[2]; }
+
 	int id;
 
 private:
+	std::array<int, 3> vertexIds;
 };
 
 	}

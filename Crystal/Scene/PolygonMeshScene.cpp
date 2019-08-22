@@ -57,9 +57,11 @@ void PolygonMeshScene::toIdViewModel(SceneIdViewModel& viewModel) const
 	for (auto f : faces) {
 		Graphics::DrawableID did(objectId, childId++);
 		const auto& idColor = did.toColor();
-		buffer.addVertex( positions[ vertices[f.v1].positionId ], idColor);
-		buffer.addVertex( positions[ vertices[f.v2].positionId ], idColor);
-		buffer.addVertex( positions[ vertices[f.v3].positionId ], idColor);
+		const auto& vIds = f.getVertexIds();
+
+		buffer.addVertex( positions[ vertices[vIds[0]].positionId ], idColor);
+		buffer.addVertex( positions[ vertices[vIds[1]].positionId ], idColor);
+		buffer.addVertex( positions[ vertices[vIds[2]].positionId ], idColor);
 		buffer.addIndex(index++);
 		buffer.addIndex(index++);
 		buffer.addIndex(index++);
