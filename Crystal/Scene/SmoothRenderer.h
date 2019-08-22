@@ -17,30 +17,19 @@ class SmoothTriangleBuffer
 public:
 	SmoothTriangleBuffer() {}
 
-	SmoothTriangleBuffer(const Shape::PolygonMesh& mesh) {
-		const auto& vertices = mesh.getVertices();
-		const auto& ps = mesh.getPositions();
-		const auto& ns = mesh.getNormals();
-		const auto& tcs = mesh.getTexCoords();
-		for (auto v : vertices) {
-			positions.add(ps[v.positionId]);
-			normals.add(ns[v.normalId]);
-			if (v.texCoordId != -1) {
-				texCoords.add(tcs[v.texCoordId]);
-			}
-			else {
-				texCoords.add(Math::Vector2dd(0, 0));
-			}
-		}
+	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialIndex)
+	{
+		positions.add(position);
+		normals.add(normal);
+		texCoords.add(texCoord);
+		materialIndices.add(materialIndex);
 	}
 
-	void add(const std::vector<Shape::Face>& faces, const int materialIndex) {
-		for (auto f : faces) {
-			indices.add(f.v1);
-			indices.add(f.v2);
-			indices.add(f.v3);
-		}
-		materialIndices.add(materialIndex);
+	void addFace(const int i0, const int i1, const int i2)
+	{
+		this->indices.add(i0);
+		this->indices.add(i1);
+		this->indices.add(i2);
 	}
 
 	Graphics::Buffer3d<float> getPositions() const { return positions; }
@@ -49,11 +38,9 @@ public:
 
 	Graphics::Buffer2d<float> getTexCoords() const { return texCoords; }
 
-	Graphics::Buffer1d<unsigned int> getIndices() const { return indices; }
-
 	Graphics::Buffer1d<int> getMaterialIndices() const { return materialIndices; }
 
-	int getLightIndex() const { return 0; }
+	Graphics::Buffer1d<unsigned int> getIndices() const { return indices; }
 
 private:
 	Graphics::Buffer3d<float> positions;
