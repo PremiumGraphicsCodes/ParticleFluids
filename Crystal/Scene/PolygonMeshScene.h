@@ -1,9 +1,10 @@
 #pragma once
 
 #include "IShapeScene.h"
+#include "MaterialScene.h"
+
 #include "../Shape/PolygonMesh.h"
 #include "../Graphics/ColorRGBA.h"
-#include "MaterialScene.h"
 
 namespace Crystal {
 	namespace Scene {

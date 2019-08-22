@@ -16,11 +16,13 @@ FaceView::FaceView(const std::string& name) :
 
 FaceView::FaceView(const std::string& name, Face* face) :
 	IWindow(name),
-	id("Id", face->id),
+	id("Id", face->getId()),
 	vertex1("Vertex1", face->getV1()),
 	vertex2("Vertex2", face->getV2()),
 	vertex3("Vertex3", face->getV3())
-{}
+{
+	setValue(face);
+}
 
 void FaceView::show()
 {
@@ -32,7 +34,7 @@ void FaceView::show()
 
 void FaceView::setValue(Face* value)
 {
-	id.setValue(value->id);
+	id.setValue(value->getId());
 	vertex1.setValue(value->getV1());
 	vertex2.setValue(value->getV2());
 	vertex3.setValue(value->getV3());

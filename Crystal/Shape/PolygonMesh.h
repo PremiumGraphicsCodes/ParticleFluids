@@ -1,12 +1,14 @@
 #pragma once
 
 #include "../Util/UnCopyable.h"
-#include "Vertex.h"
-#include "Face.h"
 #include "../Math/Quaternion.h"
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
 #include "../Math/Triangle3d.h"
+
+#include "Vertex.h"
+#include "Face.h"
+#include "FaceGroup.h"
 
 #include "IShape.h"
 
@@ -21,10 +23,7 @@ class Face;
 class PolygonMesh : public IShape
 {
 public:
-	PolygonMesh() :
-		nextVertexId(0),
-		nextFaceId(0)
-	{}
+	PolygonMesh();
 
 	~PolygonMesh();
 
@@ -46,41 +45,15 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
-	int createPosition(const Math::Vector3dd& v)
-	{
-		positions.push_back(v);
-		return static_cast<int>( positions.size()-1 );
-	}
+	int createPosition(const Math::Vector3dd& v);
 
-	int createNormal(const Math::Vector3dd& v)
-	{
-		normals.push_back(v);
-		return static_cast<int>( normals.size()-1 );
-	}
+	int createNormal(const Math::Vector3dd& v);
 
-	int createTexCoord(const Math::Vector2dd& v)
-	{
-		texCoords.push_back(v);
-		return static_cast<int>( texCoords.size()-1 );
-	}
+	int createTexCoord(const Math::Vector2dd& v);
 
-	int createVertex(const int positionId, const int normalId = -1, const int texCoordId = -1)
-	{
-		Vertex v;
-		v.positionId = positionId;
-		v.normalId = normalId;
-		v.texCoordId = texCoordId;
-		v.id = nextVertexId++;
-		vertices.push_back(v);
-		return v.id;
-	}
+	int createVertex(const int positionId, const int normalId = -1, const int texCoordId = -1);
 
-	int createFace(int v0, int v1, int v2)
-	{
-		Face f(v0, v1, v2, nextFaceId++);
-		faces.push_back(f);
-		return f.id;
-	}
+	int createFace(int v0, int v1, int v2);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
@@ -94,6 +67,7 @@ private:
 	std::vector<Math::Vector2dd> texCoords;
 	std::vector<Vertex> vertices;
 	std::vector<Face> faces;
+	std::vector<FaceGroup> faceGroups;
 	int nextVertexId;
 	int nextFaceId;
 };

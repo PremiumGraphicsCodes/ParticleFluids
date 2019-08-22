@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Face.h" />
+    <ClInclude Include="FaceGroup.h" />
     <ClInclude Include="IParticle.h" />
     <ClInclude Include="IParticleSystem.h" />
     <ClInclude Include="IShape.h" />

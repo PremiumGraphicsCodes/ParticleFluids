@@ -13,7 +13,7 @@ namespace Crystal {
 class Face
 {
 public:
-	Face(int v1, int v2, int v3, int id = -1) :
+	Face(int v1, int v2, int v3, int id) :
 		vertexIds{ v1, v2, v3 },
 		id(id)
 	{}
@@ -26,9 +26,10 @@ public:
 
 	int getV3() const { return vertexIds[2]; }
 
-	int id;
+	int getId() const { return id; }
 
 private:
+	int id;
 	std::array<int, 3> vertexIds;
 };
 

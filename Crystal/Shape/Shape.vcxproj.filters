@@ -50,6 +50,9 @@
     <ClInclude Include="Volume.h">
       <Filter>Volume</Filter>
     </ClInclude>
+    <ClInclude Include="FaceGroup.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WireFrame.cpp">

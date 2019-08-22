@@ -23,8 +23,12 @@ World::~World()
 
 void World::init()
 {
-	//SceneBuilder builder(objects, objectFactory);
-	//builder.build();
+	PointLight light;
+	light.setPosition(Vector3dd(100, 100, 100));
+	light.setAmbient(ColorRGBAf(1, 1, 1, 1));
+	light.setDiffuse(ColorRGBAf(1, 1, 1, 1));
+	light.setSpecular(ColorRGBAf(1, 1, 1, 1));
+	objects.addScene(objectFactory.createLightScene(light, "Light0"));
 }
 
 void World::clear()
