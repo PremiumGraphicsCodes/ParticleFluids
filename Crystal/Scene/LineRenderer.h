@@ -51,7 +51,7 @@ private:
 class LineRenderer : public IRenderer
 {
 public:
-	LineRenderer(const int id, const std::string& name);
+	LineRenderer();
 
 	void render(const Graphics::ICamera& camera) override;
 

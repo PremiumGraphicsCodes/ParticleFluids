@@ -21,12 +21,8 @@ namespace Crystal {
 class SceneIdRenderer : private UnCopyable
 {
 public:
-	explicit SceneIdRenderer() :
-		pointIdRenderer(-1, "PointShader"),
-		lineIdRenderer(-1, "LineShader"),
-		triangleIdRenderer(-1, "TriangleShader")
-	{
-	}
+	SceneIdRenderer()
+	{}
 
 	~SceneIdRenderer() {}
 

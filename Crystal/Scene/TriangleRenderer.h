@@ -7,7 +7,7 @@ namespace Crystal {
 class TriangleRenderer : public IRenderer
 {
 public:
-	TriangleRenderer(const int id, const std::string& name);
+	TriangleRenderer();
 
 	void render(const Graphics::ICamera& camera) override;
 

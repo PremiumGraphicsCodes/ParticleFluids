@@ -11,8 +11,7 @@ namespace Crystal {
 class IRenderer
 {
 public:
-	IRenderer(const int id, const std::string& name)
-	{}
+	IRenderer() {}
 
 	virtual ~IRenderer() {};
 

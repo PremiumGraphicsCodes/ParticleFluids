@@ -21,10 +21,7 @@ namespace Crystal {
 class SceneRenderer : private UnCopyable
 {
 public:
-	SceneRenderer() :
-		pointRenderer(-1, "PointRenderer"),
-		wireRenderer(-1, "LineRenderer"),
-		smoothRenderer(-1, "SmoothRenderer")
+	SceneRenderer()
 	{
 	}
 

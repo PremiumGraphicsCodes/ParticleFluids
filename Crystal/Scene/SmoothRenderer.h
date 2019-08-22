@@ -45,7 +45,7 @@ private:
 class SmoothRenderer : public IRenderer
 {
 public:
-	SmoothRenderer(const int id, const std::string& name);
+	SmoothRenderer();
 
 	void render(const Graphics::ICamera& camera) override;
 

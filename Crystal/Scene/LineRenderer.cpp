@@ -5,8 +5,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-LineRenderer::LineRenderer(const int id, const std::string& name) :
-	IRenderer(id, name)
+LineRenderer::LineRenderer()
 {
 	setVertexShaderSource(getBuiltInVsSource());
 	setFragmentShaderSource(getBuiltInFsSource());

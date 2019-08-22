@@ -47,7 +47,7 @@ private:
 class PointRenderer : public IRenderer
 {
 public:
-	PointRenderer(const int id, const std::string& name);
+	PointRenderer();
 
 	void render(const Graphics::ICamera& camera) override;
 

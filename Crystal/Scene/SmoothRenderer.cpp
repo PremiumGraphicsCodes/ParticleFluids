@@ -8,8 +8,7 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-SmoothRenderer::SmoothRenderer(const int id, const std::string& name) :
-	IRenderer(id, name)
+SmoothRenderer::SmoothRenderer()
 {
 	setVertexShaderSource(getBuildInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());

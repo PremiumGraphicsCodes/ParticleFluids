@@ -5,8 +5,7 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-TriangleRenderer::TriangleRenderer(const int id, const std::string & name) :
-	IRenderer(id, name)
+TriangleRenderer::TriangleRenderer()
 {
 	setVertexShaderSource(getBuildInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
