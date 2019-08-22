@@ -71,7 +71,7 @@ namespace PG.CGStudio
 
         public void Render()
         {
-            renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
+            renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter, renderer.camera);
         }
 
         public void Update(Repository model)
@@ -145,12 +145,12 @@ namespace PG.CGStudio
 
         private void OnResize(object sender, EventArgs e)
         {
-            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
+            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter, renderer.camera);
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
+            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter, renderer.camera);
         }
 
         private void RegisterToAppShutdown()
