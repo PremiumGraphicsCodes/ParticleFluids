@@ -21,14 +21,12 @@ PickUICtrl::PickUICtrl(World* model, Canvas* canvas, const SceneType& type) :
 
 void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 {
-	/*
 	const auto x = position.x;
 	const auto y = position.y;
 
 	std::cout << x << " " << y << std::endl;
 	
-	auto tex = model->getObjects()->findSceneByName<TextureScene*>("IdTexture");
-	const auto id = canvas->getRenderer()->getObjectIdRenderer()->getId(x, y, *tex->getTexture());
+	const auto id = canvas->getRenderer()->getObjectIdRenderer()->getId(x,y);
 	const auto parentId = id.getParentId();
 	const auto childId = id.getChildId();
 	if (parentId == 0) {
@@ -41,7 +39,6 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 			function(parentId, childId);
 		}
 	}
-	*/
 }
 
 void PickUICtrl::onLeftButtonUp(const Vector2df& position)

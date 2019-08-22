@@ -33,11 +33,11 @@ public:
 
 	bool build();
 
-	void render(const Scene::SceneIdViewModel& vm,const Shader::TextureObject& texture);
+	void render(const Scene::SceneIdViewModel& vm);
 
-	Graphics::DrawableID getId(const double x, const double y, const Shader::TextureObject& texture);
+	Graphics::DrawableID getId(const double x, const double y);
 
-	Graphics::DrawableID getIdInTexCoord(const int x, const int y, const Shader::TextureObject& texture);
+	Graphics::DrawableID getIdInTexCoord(const int x, const int y);
 
 	//Shader::TextureObject* getTexture() { return texture; }
 
@@ -45,6 +45,8 @@ private:
 	Scene::PointRenderer pointIdRenderer;
 	Scene::LineRenderer lineIdRenderer;
 	Scene::TriangleRenderer triangleIdRenderer;
+
+	Shader::TextureObject texture;
 
 	Shader::FrameBufferObject frameBufferObject;
 

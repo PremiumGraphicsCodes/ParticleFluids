@@ -21,24 +21,12 @@ bool SceneIdRenderer::build()
 
 	frameBufferObject.build(512, 512);
 
+	texture.create(Imagef(512, 512));
+
 	return true;
 }
 
-DrawableID SceneIdRenderer::getId(const double x, const double y, const TextureObject& texture)
-{
-	return getIdInTexCoord(x * texture.getWidth(), y * texture.getHeight(), texture);
-}
-
-DrawableID SceneIdRenderer::getIdInTexCoord(const int x, const int y, const TextureObject& texture)
-{
-	frameBufferObject.bind();
-	glViewport(0, 0, texture.getWidth(), texture.getHeight());
-	const auto& color = frameBufferObject.getColor(x, y);
-	frameBufferObject.unbind();
-	return DrawableID(color);
-}
-
-void SceneIdRenderer::render(const SceneIdViewModel& vm, const TextureObject& texture)
+void SceneIdRenderer::render(const SceneIdViewModel& vm)
 {
 	pointIdRenderer.setBuffer(vm.getPointIdBuffer());
 	lineIdRenderer.setBuffer(vm.getLindIdBuffer());
@@ -57,4 +45,18 @@ void SceneIdRenderer::render(const SceneIdViewModel& vm, const TextureObject& te
 	triangleIdRenderer.render(*camera);
 
 	frameBufferObject.unbind();
+}
+
+DrawableID SceneIdRenderer::getId(const double x, const double y)
+{
+	return getIdInTexCoord(x * texture.getWidth(), y * texture.getHeight());
+}
+
+DrawableID SceneIdRenderer::getIdInTexCoord(const int x, const int y)
+{
+	frameBufferObject.bind();
+	glViewport(0, 0, texture.getWidth(), texture.getHeight());
+	const auto& color = frameBufferObject.getColor(x, y);
+	frameBufferObject.unbind();
+	return DrawableID(color);
 }

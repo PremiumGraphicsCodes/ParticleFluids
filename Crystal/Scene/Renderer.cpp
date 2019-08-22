@@ -32,8 +32,6 @@ bool Renderer::build()
 
 	smoothTex.create(Image(512, 512));
 	onScreenTex.create(Image(512, 512));
-	idTex.create(Image(512, 521));
-
 
 	return true;
 }
@@ -41,7 +39,7 @@ bool Renderer::build()
 void Renderer::render(const int width, const int height, const ViewModel& vm)
 {
 	objectRenderer.render(vm.object, onScreenTex);
-	objectIdRenderer.render(vm.objectId, idTex);
+	objectIdRenderer.render(vm.objectId);
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);

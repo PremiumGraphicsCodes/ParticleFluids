@@ -21,6 +21,11 @@ void ParticleSystemScene::toViewModel(SceneViewModel& viewModel) const
 	for (auto p : particles) {
 		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
+	if (isSelected()) {
+		for (auto p : particles) {
+			pointBuffer.add(p->getPosition(), ColorRGBAf(1, 0, 0, 0), p->getAttribute().size * 2.0f);
+		}
+	}
 	viewModel.pointBuffers.push_back(pointBuffer);
 }
 
