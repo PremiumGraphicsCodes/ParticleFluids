@@ -33,7 +33,7 @@ public:
 
 	bool build();
 
-	void render(const Scene::SceneViewModel& vm, const Shader::TextureObject& texture);
+	void render(const Scene::SceneViewModel& vm);
 
 	struct Mask
 	{
@@ -52,6 +52,8 @@ public:
 
 	Mask getMask() const { return mask; }
 
+	Shader::TextureObject* getTexture() { return &texture; }
+
 private:
 	Scene::PointRenderer pointRenderer;
 	Scene::LineRenderer wireRenderer;
@@ -61,6 +63,7 @@ private:
 
 	Graphics::ICamera* camera;
 
+	Shader::TextureObject texture;
 	Shader::FrameBufferObject frameBufferObject;
 };
 	}

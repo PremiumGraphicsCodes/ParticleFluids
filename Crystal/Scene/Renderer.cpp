@@ -30,15 +30,12 @@ bool Renderer::build()
 		return false;
 	}
 
-	smoothTex.create(Image(512, 512));
-	onScreenTex.create(Image(512, 512));
-
 	return true;
 }
 
 void Renderer::render(const int width, const int height, const ViewModel& vm)
 {
-	objectRenderer.render(vm.object, onScreenTex);
+	objectRenderer.render(vm.object);
 	objectIdRenderer.render(vm.objectId);
 
 	glViewport(0, 0, width, height);
@@ -53,5 +50,6 @@ void Renderer::render(const int width, const int height, const ViewModel& vm)
 		renderer.render(*tex);
 	}
 	*/
-	renderer.render(onScreenTex);
+	auto texture = objectRenderer.getTexture();
+	renderer.render(*texture);
 }

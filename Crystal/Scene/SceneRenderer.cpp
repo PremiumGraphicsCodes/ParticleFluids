@@ -20,11 +20,12 @@ bool SceneRenderer::build()
 		return false;
 	}
 
+	texture.create(Image(512, 512));
 	frameBufferObject.build(512, 512);
 	return true;
 }
 
-void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& texture)
+void SceneRenderer::render(const SceneViewModel& vm)
 {
 	const auto& pointBuffers = vm.getPointBuffers();
 	const auto& lineBuffers = vm.getLineBuffers();

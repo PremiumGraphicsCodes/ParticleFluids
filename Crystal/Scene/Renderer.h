@@ -32,8 +32,6 @@ public:
 
 private:
 	Shader::OnScreenRenderer renderer;
-	Shader::TextureObject smoothTex;
-	Shader::TextureObject onScreenTex;
 
 	SceneRenderer objectRenderer;
 	SceneIdRenderer objectIdRenderer;
