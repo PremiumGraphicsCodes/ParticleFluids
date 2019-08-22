@@ -39,6 +39,30 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 		}
 		viewModel.triangleBuffers.push_back(buffer);
 	}
+	{
+		LineBuffer buffer(10.0f);
+		const auto& faces = shape->getFaces();
+		const auto& ps = shape->getPositions();
+		const auto& vertices = shape->getVertices();
+
+		for (const auto& f : faces) {
+			const auto& vIds = f.getVertexIds();
+			for (const auto vId : vIds) {
+				const auto& v = vertices[vId];
+				const auto& p = ps[v.positionId];
+				buffer.addVertex(p, ColorRGBAf(1, 0, 0, 0));
+			}
+		}
+		for (const auto& f : faces) {
+			buffer.addIndex(f.getV1());
+			buffer.addIndex(f.getV2());
+			buffer.addIndex(f.getV2());
+			buffer.addIndex(f.getV3());
+			buffer.addIndex(f.getV3());
+			buffer.addIndex(f.getV1());
+		}
+		viewModel.lineBuffers.push_back(buffer);
+	}
 	if (isSelected()) {
 		LineBuffer buffer;
 	}
