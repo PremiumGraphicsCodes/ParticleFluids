@@ -15,7 +15,7 @@ SpaceHashView::SpaceHashView(World* model, Canvas* canvas) :
 {
 }
 
-void SpaceHashView::show()
+void SpaceHashView::onShow()
 {
 	positionButton.show();
 	searchRadius.show();

@@ -16,7 +16,7 @@ IntersectionView::IntersectionView(World* model, Canvas* canvas) :
 {
 }
 
-void IntersectionView::show()
+void IntersectionView::onShow()
 {
 	mesh1.show();
 	mesh2.show();

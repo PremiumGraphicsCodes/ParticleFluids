@@ -13,7 +13,7 @@ OctreeView::OctreeView(World* model, Canvas* canvas) :
 {
 }
 
-void OctreeView::show()
+void OctreeView::onShow()
 {
 	positionButton.show();
 	objectButton.show();

@@ -19,7 +19,7 @@ VolumeView::VolumeView(World* model, Canvas* canvas) :
 {
 }
 
-void VolumeView::show()
+void VolumeView::onShow()
 {
 	box.show();
 }

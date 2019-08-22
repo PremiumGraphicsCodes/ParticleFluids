@@ -26,7 +26,7 @@ MarchingCubesView::MarchingCubesView(World* model, Canvas* canvas) :
 {
 }
 
-void MarchingCubesView::show()
+void MarchingCubesView::onShow()
 {
 	for (auto& v : values) {
 		v.show();

@@ -12,7 +12,8 @@ class IntersectionView : public IOkCancelView
 public:
 	IntersectionView(Scene::World* model, Canvas* canvas);
 
-	void show() override;
+private:
+	void onShow() override;
 
 	void onOk() override;
 

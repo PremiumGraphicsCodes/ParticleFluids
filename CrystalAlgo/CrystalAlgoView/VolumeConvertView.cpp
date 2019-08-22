@@ -15,7 +15,7 @@ VolumeConvertView::VolumeConvertView(World* model, Canvas* canvas) :
 {
 }
 
-void VolumeConvertView::show()
+void VolumeConvertView::onShow()
 {
 	objectButton.show();
 }

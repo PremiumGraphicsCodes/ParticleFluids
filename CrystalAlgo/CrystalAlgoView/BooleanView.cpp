@@ -14,7 +14,7 @@ BooleanView::BooleanView(World* model, Canvas* canvas) :
 {
 }
 
-void BooleanView::show()
+void BooleanView::onShow()
 {
 	objectButton1.show();
 	objectButton2.show();

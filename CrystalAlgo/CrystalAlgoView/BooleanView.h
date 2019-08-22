@@ -12,7 +12,8 @@ class BooleanView : public IOkCancelView
 public:
 	BooleanView(Scene::World* model, Canvas* canvas);
 
-	void show() override;
+private:
+	void onShow() override;
 
 	void onOk() override;
 
