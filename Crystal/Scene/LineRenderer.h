@@ -23,9 +23,12 @@ public:
 		width(width)
 	{};
 
-	void add(const Math::Vector3df& position, const Graphics::ColorRGBAf& color, const int index) {
+	void add(const Math::Vector3df& position, const Graphics::ColorRGBAf& color) {
 		positions.add(position);
 		colors.add(color);
+	}
+
+	void addIndex(const int index) {
 		indices.add(index);
 	}
 

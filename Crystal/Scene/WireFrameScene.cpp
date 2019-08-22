@@ -16,24 +16,29 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 	}
 	const auto& lines = getShape()->getLines();
 	const auto& color = getAttribute().color;
+	if(!isSelected())
 	{
 		int index = 0;
-		LineBuffer lineBuffer(getAttribute().width);
+		LineBuffer buffer(getAttribute().width);
 		for (const auto& l : lines) {
-			lineBuffer.add(l.getStart(), color, index++);
-			lineBuffer.add(l.getEnd(), color, index++);
+			buffer.add(l.getStart(), color);
+			buffer.add(l.getEnd(), color);
+			buffer.addIndex(index++);
+			buffer.addIndex(index++);
 		}
-		viewModel.lineBuffers.push_back(lineBuffer);
+		viewModel.lineBuffers.push_back(buffer);
 	}
-	if (isSelected())
+	else
 	{
 		int index = 0;
-		LineBuffer lb(getAttribute().width * 10.0f);
+		LineBuffer buffer(getAttribute().width * 10.0f);
 		for (const auto& l : lines) {
-			lb.add(l.getStart(), ColorRGBAf(1,0,0,0), index++);
-			lb.add(l.getEnd(), ColorRGBAf(1,0,0,0), index++);
+			buffer.add(l.getStart(), ColorRGBAf(1,0,0,0));
+			buffer.add(l.getEnd(), ColorRGBAf(1,0,0,0));
+			buffer.addIndex(index++);
+			buffer.addIndex(index++);
 		}
-		viewModel.lineBuffers.push_back(lb);
+		viewModel.lineBuffers.push_back(buffer);
 	}
 }
 
@@ -50,7 +55,8 @@ void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
 	LineBuffer lineBuffer(getAttribute().width);
 	for (const auto& l : lines) {
 		Graphics::DrawableID did(objectId, childId++);
-		lineBuffer.add(l.getStart(), did.toColor(), index++);
+		lineBuffer.add(l.getStart(), did.toColor());
+		lineBuffer.addIndex(index++);
 	}
 	viewModel.lineIdBuffers.push_back(lineBuffer);
 }

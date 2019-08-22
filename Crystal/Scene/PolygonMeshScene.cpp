@@ -16,10 +16,15 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 		return;
 	}
 
-	SmoothTriangleBuffer bf(*getShape());
-	bf.add(getShape()->getFaces(), 0);
+	{
+		SmoothTriangleBuffer bf(*getShape());
+		bf.add(getShape()->getFaces(), 0);
 
-	viewModel.triangleBuffers.push_back(bf);
+		viewModel.triangleBuffers.push_back(bf);
+	}
+	if (isSelected()) {
+		LineBuffer buffer;
+	}
 }
 
 void PolygonMeshScene::toIdViewModel(SceneIdViewModel& viewModel) const
@@ -35,9 +40,12 @@ void PolygonMeshScene::toIdViewModel(SceneIdViewModel& viewModel) const
 	for (auto f : faces) {
 		Graphics::DrawableID did(objectId, childId++);
 		const auto& idColor = did.toColor();
-		buffer.add( positions[ vertices[f.v1].positionId ], idColor, index++);
-		buffer.add( positions[ vertices[f.v2].positionId ], idColor, index++);
-		buffer.add( positions[ vertices[f.v3].positionId ], idColor, index++);
+		buffer.add( positions[ vertices[f.v1].positionId ], idColor);
+		buffer.add( positions[ vertices[f.v2].positionId ], idColor);
+		buffer.add( positions[ vertices[f.v3].positionId ], idColor);
+		buffer.addIndex(index++);
+		buffer.addIndex(index++);
+		buffer.addIndex(index++);
 	}
 	viewModel.triangleIdBuffers.push_back(buffer);
 }
