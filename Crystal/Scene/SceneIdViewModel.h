@@ -9,16 +9,16 @@ namespace Crystal {
 class SceneIdViewModel
 {
 public:
-	PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
+	std::vector<PointBuffer> getPointIdBuffers() const { return pointIdBuffers; }
 
 	std::vector<LineBuffer> getLindIdBuffers() const { return lineIdBuffers; }
 
-	LineBuffer getTriangleIdBuffer() const { return triangleIdBuffer; }
+	std::vector<LineBuffer> getTriangleIdBuffers() const { return triangleIdBuffers; }
 
 public:
-	PointBuffer pointIdBuffer;
+	std::vector<PointBuffer> pointIdBuffers;
 	std::vector<LineBuffer> lineIdBuffers;
-	LineBuffer triangleIdBuffer;
+	std::vector<LineBuffer> triangleIdBuffers;
 };
 
 	}

@@ -30,13 +30,16 @@ void PolygonMeshScene::toIdViewModel(SceneIdViewModel& viewModel) const
 	const auto& faces = getShape()->getFaces();
 	int childId = 0;
 	int index = 0;
+
+	LineBuffer buffer;
 	for (auto f : faces) {
 		Graphics::DrawableID did(objectId, childId++);
 		const auto& idColor = did.toColor();
-		viewModel.triangleIdBuffer.add( positions[ vertices[f.v1].positionId ], idColor, index++);
-		viewModel.triangleIdBuffer.add( positions[ vertices[f.v2].positionId ], idColor, index++);
-		viewModel.triangleIdBuffer.add( positions[ vertices[f.v3].positionId ], idColor, index++);
+		buffer.add( positions[ vertices[f.v1].positionId ], idColor, index++);
+		buffer.add( positions[ vertices[f.v2].positionId ], idColor, index++);
+		buffer.add( positions[ vertices[f.v3].positionId ], idColor, index++);
 	}
+	viewModel.triangleIdBuffers.push_back(buffer);
 }
 
 void PolygonMeshScene::getBoundingBox(Crystal::Math::Box3d& boundingBox) const

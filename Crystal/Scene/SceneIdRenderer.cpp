@@ -28,9 +28,9 @@ bool SceneIdRenderer::build()
 
 void SceneIdRenderer::render(const SceneIdViewModel& vm)
 {
-	pointIdRenderer.setBuffer(vm.getPointIdBuffer());
+	const auto& pointBuffers = vm.getPointIdBuffers();
 	const auto& lineBuffers = vm.getLindIdBuffers();
-	triangleIdRenderer.setBuffer(vm.getTriangleIdBuffer());
+	const auto& triangleBuffers = vm.getTriangleIdBuffers();
 
 	frameBufferObject.setTexture(texture);
 	//texture.bind();
@@ -40,12 +40,18 @@ void SceneIdRenderer::render(const SceneIdViewModel& vm)
 
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	pointIdRenderer.render(*camera);
+	for (const auto& b : pointBuffers) {
+		pointIdRenderer.setBuffer(b);
+		pointIdRenderer.render(*camera);
+	}
 	for (const auto& b : lineBuffers) {
 		lineIdRenderer.setBuffer(b);
 		lineIdRenderer.render(*camera);
 	}
-	triangleIdRenderer.render(*camera);
+	for (const auto& b : triangleBuffers) {
+		lineIdRenderer.setBuffer(b);
+		triangleIdRenderer.render(*camera);
+	}
 
 	frameBufferObject.unbind();
 }
