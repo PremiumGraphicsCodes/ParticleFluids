@@ -16,13 +16,25 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 	}
 	const auto& lines = getShape()->getLines();
 	const auto& color = getAttribute().color;
-	int index = 0;
-	LineBuffer lineBuffer(1.0f);
-	for (const auto& l : lines) {
-		lineBuffer.add(l.getStart(), color, index++);
-		lineBuffer.add(l.getEnd(), color, index++);
+	{
+		int index = 0;
+		LineBuffer lineBuffer(getAttribute().width);
+		for (const auto& l : lines) {
+			lineBuffer.add(l.getStart(), color, index++);
+			lineBuffer.add(l.getEnd(), color, index++);
+		}
+		viewModel.lineBuffers.push_back(lineBuffer);
 	}
-	viewModel.lineBuffers.push_back(lineBuffer);
+	if (isSelected())
+	{
+		int index = 0;
+		LineBuffer lb(getAttribute().width * 10.0f);
+		for (const auto& l : lines) {
+			lb.add(l.getStart(), ColorRGBAf(1,0,0,0), index++);
+			lb.add(l.getEnd(), ColorRGBAf(1,0,0,0), index++);
+		}
+		viewModel.lineBuffers.push_back(lb);
+	}
 }
 
 void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
@@ -34,11 +46,13 @@ void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
 	const auto& lines = getShape()->getLines();
 	int childId = 0;
 	int index = 0;
-	
+
+	LineBuffer lineBuffer(getAttribute().width);
 	for (const auto& l : lines) {
 		Graphics::DrawableID did(objectId, childId++);
-		viewModel.lineIdBuffer.add(l.getStart(), did.toColor(), index++);
+		lineBuffer.add(l.getStart(), did.toColor(), index++);
 	}
+	viewModel.lineIdBuffers.push_back(lineBuffer);
 }
 
 void WireFrameScene::getBoundingBox(Crystal::Math::Box3d& box) const

@@ -29,7 +29,7 @@ bool SceneIdRenderer::build()
 void SceneIdRenderer::render(const SceneIdViewModel& vm)
 {
 	pointIdRenderer.setBuffer(vm.getPointIdBuffer());
-	lineIdRenderer.setBuffer(vm.getLindIdBuffer());
+	const auto& lineBuffers = vm.getLindIdBuffers();
 	triangleIdRenderer.setBuffer(vm.getTriangleIdBuffer());
 
 	frameBufferObject.setTexture(texture);
@@ -41,7 +41,10 @@ void SceneIdRenderer::render(const SceneIdViewModel& vm)
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	pointIdRenderer.render(*camera);
-	lineIdRenderer.render(*camera);
+	for (const auto& b : lineBuffers) {
+		lineIdRenderer.setBuffer(b);
+		lineIdRenderer.render(*camera);
+	}
 	triangleIdRenderer.render(*camera);
 
 	frameBufferObject.unbind();

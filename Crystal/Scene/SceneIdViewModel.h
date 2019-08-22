@@ -11,13 +11,13 @@ class SceneIdViewModel
 public:
 	PointBuffer getPointIdBuffer() const { return pointIdBuffer; }
 
-	LineBuffer getLindIdBuffer() const { return lineIdBuffer; }
+	std::vector<LineBuffer> getLindIdBuffers() const { return lineIdBuffers; }
 
 	LineBuffer getTriangleIdBuffer() const { return triangleIdBuffer; }
 
 public:
 	PointBuffer pointIdBuffer;
-	LineBuffer lineIdBuffer;
+	std::vector<LineBuffer> lineIdBuffers;
 	LineBuffer triangleIdBuffer;
 };
 
