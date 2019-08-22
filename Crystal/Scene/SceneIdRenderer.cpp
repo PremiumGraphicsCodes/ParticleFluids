@@ -49,7 +49,7 @@ void SceneIdRenderer::render(const SceneIdViewModel& vm)
 		lineIdRenderer.render(*camera);
 	}
 	for (const auto& b : triangleBuffers) {
-		lineIdRenderer.setBuffer(b);
+		triangleIdRenderer.setBuffer(b);
 		triangleIdRenderer.render(*camera);
 	}
 

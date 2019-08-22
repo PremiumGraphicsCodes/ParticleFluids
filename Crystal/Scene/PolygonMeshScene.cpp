@@ -39,7 +39,7 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 		}
 		viewModel.triangleBuffers.push_back(buffer);
 	}
-	{
+	if (isSelected()) {
 		LineBuffer buffer(10.0f);
 		const auto& faces = shape->getFaces();
 		const auto& ps = shape->getPositions();
@@ -62,9 +62,6 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 			buffer.addIndex(f.getV1());
 		}
 		viewModel.lineBuffers.push_back(buffer);
-	}
-	if (isSelected()) {
-		LineBuffer buffer;
 	}
 }
 
