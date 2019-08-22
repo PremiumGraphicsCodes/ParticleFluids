@@ -13,10 +13,9 @@ ShaderAddView::ShaderAddView(const std::string& name, World* model, Canvas* canv
 	//ImGui::InputTextMultiline()
 }
 
-void ShaderAddView::show()
+void ShaderAddView::onShow()
 {
 	shader.show();
-	IOkCancelView::show();
 }
 
 void ShaderAddView::onOk()

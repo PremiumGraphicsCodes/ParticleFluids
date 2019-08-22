@@ -15,12 +15,11 @@ PSTorusView::PSTorusView(World* model, Canvas* canvas) :
 {
 }
 
-void PSTorusView::show()
+void PSTorusView::onShow()
 {
 	torusView.show();
 	attribute.show();
 	count.show();
-	IOkCancelView::show();
 }
 
 void PSTorusView::onOk()

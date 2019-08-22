@@ -18,12 +18,11 @@ PSSphereView::PSSphereView(World* model, Canvas* canvas) :
 {
 }
 
-void PSSphereView::show()
+void PSSphereView::onShow()
 {
 	sphere.show();
 	attribute.show();
 	count.show();
-	IOkCancelView::show();
 }
 
 void PSSphereView::onOk()

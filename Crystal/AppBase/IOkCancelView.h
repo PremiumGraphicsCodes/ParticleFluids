@@ -18,11 +18,17 @@ public:
 		cancel.setFunction([=]() { onCancel(); });
 	}
 
+	virtual ~IOkCancelView() {}
+
 	void show() override
 	{
+		onShow();
 		ok.show();
 		cancel.show();
 	}
+
+protected:
+	virtual void onShow() {};
 
 	virtual void onOk() = 0;
 

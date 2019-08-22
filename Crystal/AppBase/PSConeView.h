@@ -16,9 +16,9 @@ class PSConeView : public IOkCancelView
 public:
 	PSConeView(Scene::World* model, Canvas* canvas);
 
-	void show() override;
-
 private:
+	void onShow() override;
+
 	void onOk() override;
 
 private:

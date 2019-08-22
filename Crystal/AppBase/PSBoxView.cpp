@@ -19,14 +19,13 @@ PSBoxView::PSBoxView(World* model, Canvas* canvas) :
 {
 };
 
-void PSBoxView::show()
+void PSBoxView::onShow()
 {
 	box.show();
 	attribute.show();
 	count.show();
 	isVolume.show();
 	name.show();
-	IOkCancelView::show();
 }
 
 void PSBoxView::onOk()

@@ -15,9 +15,9 @@ class PSBoxView : public IOkCancelView
 public:
 	PSBoxView(Scene::World* model, Canvas* canvas);
 
-	void show() override;
-
 private:
+	void onShow() override;
+
 	void onOk() override;
 
 private:

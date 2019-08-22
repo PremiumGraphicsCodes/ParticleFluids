@@ -15,11 +15,10 @@ MaterialAddView::MaterialAddView(const std::string& name, World* model, Canvas* 
 {
 }
 
-void MaterialAddView::show()
+void MaterialAddView::onShow()
 {
 	material.show();
 	name.show();
-	IOkCancelView::show();
 }
 
 void MaterialAddView::onOk()

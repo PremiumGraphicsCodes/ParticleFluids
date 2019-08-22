@@ -12,7 +12,7 @@ class MaterialAddView : public IOkCancelView
 public:
 	MaterialAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	void show() override;
+	void onShow() override;
 
 private:
 	void onOk() override;

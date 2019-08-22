@@ -16,13 +16,12 @@ PSConeView::PSConeView(World* model, Canvas* canvas) :
 {
 }
 
-void PSConeView::show()
+void PSConeView::onShow()
 {
 	cone.show();
 	attribute.show();
 	count.show();
 	name.show();
-	IOkCancelView::show();
 }
 
 void PSConeView::onOk()

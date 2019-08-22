@@ -15,11 +15,10 @@ WFBoxView::WFBoxView(World* model, Canvas* canvas) :
 {
 }
 
-void WFBoxView::show()
+void WFBoxView::onShow()
 {
 	box.show();
 	attribute.show();
-	IOkCancelView::show();
 }
 
 void WFBoxView::onOk()

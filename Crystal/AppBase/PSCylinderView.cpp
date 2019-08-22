@@ -15,12 +15,11 @@ PSCylinderView::PSCylinderView(World* model, Canvas* canvas) :
 {
 }
 
-void PSCylinderView::show()
+void PSCylinderView::onShow()
 {
 	cylinderButton.show();
 	attribute.show();
 	count.show();
-	IOkCancelView::show();
 }
 
 void PSCylinderView::onOk()
