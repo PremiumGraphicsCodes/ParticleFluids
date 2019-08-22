@@ -29,13 +29,13 @@ void SphereRegionSelectView::show()
 			WireFrameAttribute attr;
 			attr.color = Graphics::ColorRGBAf(1.0, 0.0, 0.0, 0.0);
 			attr.width = 1.0;
-			//model->getItems()->addScene(builder.getWireFrame(), attr, "Region");
+
+			model->getItems()->addScene( model->getItemFactory()->createWireFrameScene(builder.getWireFrame(), attr, "Region") );
 			model->updateViewModel();
 		};
 		ctrl->setFunction(func);
 		getCanvas()->setUICtrl(ctrl);
 	}
 
-	object.show();
 	sphere.show();
 }
