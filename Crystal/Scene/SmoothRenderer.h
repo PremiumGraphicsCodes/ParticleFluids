@@ -12,40 +12,17 @@
 namespace Crystal {
 	namespace Scene {
 
-class SmoothFaceGroupBuffer
-{
-public:
-	explicit SmoothFaceGroupBuffer(const int materialId) :
-		materialId(materialId)
-	{
-	}
-
-	void addFace(const int i0, const int i1, const int i2)
-	{
-		indices.add(i0);
-		indices.add(i1);
-		indices.add(i2);
-	}
-
-	Graphics::Buffer1d<unsigned int> indices;
-	int materialId;
-};
-
 class SmoothTriangleBuffer
 {
 public:
 	SmoothTriangleBuffer() {}
 
-	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord)
+	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialId)
 	{
 		positions.add(position);
 		normals.add(normal);
 		texCoords.add(texCoord);
-	}
-
-	void addGroup(const SmoothFaceGroupBuffer& group)
-	{
-		groups.push_back(group);
+		materialIds.add(materialId);
 	}
 
 	Graphics::Buffer3d<float> getPositions() const { return positions; }
@@ -54,13 +31,14 @@ public:
 
 	Graphics::Buffer2d<float> getTexCoords() const { return texCoords; }
 
-	std::vector<SmoothFaceGroupBuffer> getGroups() const { return groups; }
+	Graphics::Buffer1d<int> getMaterialIds() const { return materialIds; }
 
 private:
+
 	Graphics::Buffer3d<float> positions;
 	Graphics::Buffer3d<float> normals;
 	Graphics::Buffer2d<float> texCoords;
-	std::vector<SmoothFaceGroupBuffer> groups;
+	Graphics::Buffer1d<int> materialIds;
 };
 
 

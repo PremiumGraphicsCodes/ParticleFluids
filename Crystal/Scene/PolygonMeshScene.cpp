@@ -17,29 +17,26 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 	}
 
 	{
+		const auto& faces = shape->getFaces();
 		const auto& vertices = shape->getVertices();
 		const auto& ps = shape->getPositions();
 		const auto& ns = shape->getNormals();
 		const auto& tcs = shape->getTexCoords();
 
 		SmoothTriangleBuffer buffer;
-		for (auto v : vertices) {
-			const auto& p = ps[v.positionId];
-			const auto& n = ns[v.normalId];
-			Math::Vector2df texCoord(0,0);
-			if (v.texCoordId != -1) {
-				texCoord = tcs[v.texCoordId];
+		for (const auto& f : faces) {
+			const auto& vIds = f.getVertexIds();
+			for(const auto vId : vIds) {
+				const auto& v = vertices[vId];
+				const auto& p = ps[v.positionId];
+				const auto& n = ns[v.normalId];
+				Math::Vector2df texCoord(0, 0);
+				if (v.texCoordId != -1) {
+					texCoord = tcs[v.texCoordId];
+				}
+				buffer.addVertex(p, n, texCoord, 0);
 			}
-			buffer.addVertex(p, n, texCoord);
 		}
-
-		SmoothFaceGroupBuffer groupBuffer(0);
-		const auto& faces = shape->getFaces();
-		for (auto f : faces) {
-			groupBuffer.addFace(f.v1, f.v2, f.v3);
-		}
-		buffer.addGroup(groupBuffer);
-
 		viewModel.triangleBuffers.push_back(buffer);
 	}
 	if (isSelected()) {

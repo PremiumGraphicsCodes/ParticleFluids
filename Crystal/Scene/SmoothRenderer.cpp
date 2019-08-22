@@ -98,10 +98,8 @@ void SmoothRenderer::render(const ICamera& camera)
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 	}
 
-	const auto& groups = buffer.getGroups();
-	for (const auto& g : groups) {
-		shader->drawTriangles(g.indices.get());
-	}
+	const int count = positions.size() / 3;
+	shader->drawTriangles(count);
 
 
 	//texture.unbind();

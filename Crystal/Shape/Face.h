@@ -20,6 +20,8 @@ public:
 		id(id)
 	{}
 
+	std::array<int, 3> getVertexIds() const { return { v1,v2,v3 }; }
+
 	int v1;
 	int v2;
 	int v3;

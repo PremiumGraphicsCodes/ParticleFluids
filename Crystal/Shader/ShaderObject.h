@@ -105,6 +105,8 @@ public:
 
 	void drawLines(const std::vector<unsigned int>& indices);
 
+	void drawTriangles(const int count);
+
 	void drawTriangles(const std::vector<unsigned int>& indices);
 
 	void bindOutput(const std::string& name);
