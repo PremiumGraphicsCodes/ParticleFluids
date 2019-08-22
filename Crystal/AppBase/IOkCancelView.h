@@ -28,7 +28,7 @@ public:
 	}
 
 protected:
-	virtual void onShow() {};
+	virtual void onShow() = 0;
 
 	virtual void onOk() = 0;
 

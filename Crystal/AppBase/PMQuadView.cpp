@@ -17,11 +17,10 @@ PMQuadView::PMQuadView(World* model, Canvas* canvas) :
 {
 }
 
-void PMQuadView::show()
+void PMQuadView::onShow()
 {
 	quad.show();
 	name.show();
-	IOkCancelView::show();
 }
 
 void PMQuadView::onOk()

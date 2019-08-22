@@ -16,13 +16,12 @@ WFCylinderView::WFCylinderView(World* model, Canvas* canvas) :
 {
 }
 
-void WFCylinderView::show()
+void WFCylinderView::onShow()
 {
 	cylinder.show();
 	unum.show();
 	vnum.show();
 	attribute.show();
-	IOkCancelView::show();
 }
 
 void WFCylinderView::onOk()

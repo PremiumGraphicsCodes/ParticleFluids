@@ -2,6 +2,7 @@
 
 #include "IShapeScene.h"
 #include "MaterialScene.h"
+#include "FaceGroupScene.h"
 
 #include "../Shape/PolygonMesh.h"
 #include "../Graphics/ColorRGBA.h"
@@ -47,8 +48,14 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
+	void addGroup(FaceGroupScene* group) {
+		groups.push_back(group);
+		children.push_back(group);
+	}
+
 private:
 	Shape::PolygonMesh* shape;
+	std::vector<FaceGroupScene*> groups;
 };
 
 	}

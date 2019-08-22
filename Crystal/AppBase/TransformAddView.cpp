@@ -14,10 +14,9 @@ TransformAddView::TransformAddView(const std::string& name, World* model, Canvas
 {
 }
 
-void TransformAddView::show()
+void TransformAddView::onShow()
 {
 	transform.show();
-	IOkCancelView::show();
 }
 
 void TransformAddView::onOk()

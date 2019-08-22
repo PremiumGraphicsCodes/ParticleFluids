@@ -16,11 +16,10 @@ PMBoxView::PMBoxView(World* model, Canvas* canvas) :
 {
 }
 
-void PMBoxView::show()
+void PMBoxView::onShow()
 {
 	boxView.show();
 	name.show();
-	IOkCancelView::show();
 }
 
 void PMBoxView::onOk()

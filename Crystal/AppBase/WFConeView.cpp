@@ -16,13 +16,12 @@ WFConeView::WFConeView(World* model, Canvas* canvas) :
 {
 }
 
-void WFConeView::show()
+void WFConeView::onShow()
 {
 	unum.show();
 	vnum.show();
 	cone.show();
 	attribute.show();
-	IOkCancelView::show();
 }
 
 void WFConeView::onOk()

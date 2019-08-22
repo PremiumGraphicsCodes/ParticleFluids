@@ -12,9 +12,9 @@ class TransformAddView : public IOkCancelView
 public:
 	TransformAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	void show() override;
-
 private:
+	void onShow() override;
+
 	void onOk() override;
 
 private:

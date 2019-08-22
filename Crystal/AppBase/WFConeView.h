@@ -14,9 +14,9 @@ class WFConeView : public IOkCancelView
 public:
 	WFConeView(Scene::World* model, Canvas* canvas);
 
-	void show() override;
-
 private:
+	void onShow() override;
+
 	void onOk() override;
 
 private:

@@ -15,7 +15,7 @@ public:
 	PMBoxView(Scene::World* model, Canvas* canvas);
 
 private:
-	void show() override;
+	void onShow() override;
 
 	void onOk() override;
 

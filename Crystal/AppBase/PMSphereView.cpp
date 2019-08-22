@@ -17,14 +17,13 @@ PMSphereView::PMSphereView(World* model, Canvas* canvas) :
 {
 }
 
-void PMSphereView::show()
+void PMSphereView::onShow()
 {
 	sphere.show();
 	unum.show();
 	vnum.show();
 	materialName.show();
 	name.show();
-	IOkCancelView::show();
 }
 
 void PMSphereView::onOk()

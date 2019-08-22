@@ -15,9 +15,9 @@ class PMQuadView : public IOkCancelView
 public:
 	PMQuadView(Scene::World* model, Canvas* canvas);
 
-	void show() override;
-
 private:
+	void onShow() override;
+
 	void onOk() override;
 
 private:

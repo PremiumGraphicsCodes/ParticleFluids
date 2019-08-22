@@ -17,13 +17,12 @@ WFSphereView::WFSphereView(World* repository, Canvas* canvas) :
 {
 }
 
-void WFSphereView::show()
+void WFSphereView::onShow()
 {
 	sphere.show();
 	unum.show();
 	vnum.show();
 	attribute.show();
-	IOkCancelView::show();
 }
 
 void WFSphereView::onOk()
