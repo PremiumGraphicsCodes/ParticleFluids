@@ -38,19 +38,25 @@ void SceneRenderer::render(const SceneViewModel& vm, const TextureObject& textur
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	for (const auto& b : pointBuffers) {
-		pointRenderer.setBuffer(b);
-		pointRenderer.render(*camera);
+	if (mask.showPoints) {
+		for (const auto& b : pointBuffers) {
+			pointRenderer.setBuffer(b);
+			pointRenderer.render(*camera);
+		}
 	}
-	for (const auto& b : lineBuffers) {
-		wireRenderer.setBuffer(b);
-		wireRenderer.render(*camera);
+	if (mask.showLines) {
+		for (const auto& b : lineBuffers) {
+			wireRenderer.setBuffer(b);
+			wireRenderer.render(*camera);
+		}
 	}
-	smoothRenderer.setMaterials(materials);
-	smoothRenderer.setLights(lights);
-	for (const auto& b : smoothBuffers) {
-		smoothRenderer.setBuffer(b);
-		smoothRenderer.render(*camera);
+	if (mask.showTrianlges) {
+		smoothRenderer.setMaterials(materials);
+		smoothRenderer.setLights(lights);
+		for (const auto& b : smoothBuffers) {
+			smoothRenderer.setBuffer(b);
+			smoothRenderer.render(*camera);
+		}
 	}
 	//texture.unbind();
 	frameBufferObject.unbind();

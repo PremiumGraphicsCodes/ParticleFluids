@@ -12,20 +12,21 @@ void MaskMenu::show()
 
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
-		auto mask = canvas->getMask();
+		auto renderer = canvas->getRenderer()->getObjectRenderer();
+		auto mask = renderer->getMask();
 		if (ImGui::MenuItem("Point")) {
 			mask.showPoints = !mask.showPoints;
-			canvas->setMask(mask);
+			renderer->setMask(mask);
 			model->updateViewModel();
 		}
 		if (ImGui::MenuItem("Line")) {
 			mask.showLines = !mask.showLines;
-			canvas->setMask(mask);
+			renderer->setMask(mask);
 			model->updateViewModel();
 		}
 		if (ImGui::MenuItem("Triangle")) {
 			mask.showTrianlges = !mask.showTrianlges;
-			canvas->setMask(mask);
+			renderer->setMask(mask);
 			model->updateViewModel();
 		}
 
