@@ -21,11 +21,10 @@ namespace Crystal {
 class SceneIdRenderer : private UnCopyable
 {
 public:
-	explicit SceneIdRenderer(Graphics::ICamera* camera) :
+	explicit SceneIdRenderer() :
 		pointIdRenderer(-1, "PointShader"),
 		lineIdRenderer(-1, "LineShader"),
-		triangleIdRenderer(-1, "TriangleShader"),
-		camera(camera)
+		triangleIdRenderer(-1, "TriangleShader")
 	{
 	}
 
@@ -33,7 +32,7 @@ public:
 
 	bool build();
 
-	void render(const Scene::SceneIdViewModel& vm);
+	void render(Graphics::ICamera* camera, const Scene::SceneIdViewModel& vm);
 
 	Graphics::DrawableID getId(const double x, const double y);
 

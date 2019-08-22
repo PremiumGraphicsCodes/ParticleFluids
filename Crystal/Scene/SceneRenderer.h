@@ -21,8 +21,7 @@ namespace Crystal {
 class SceneRenderer : private UnCopyable
 {
 public:
-	SceneRenderer(Graphics::ICamera* camera) :
-		camera(camera),
+	SceneRenderer() :
 		pointRenderer(-1, "PointRenderer"),
 		wireRenderer(-1, "LineRenderer"),
 		smoothRenderer(-1, "SmoothRenderer")
@@ -33,7 +32,7 @@ public:
 
 	bool build();
 
-	void render(const Scene::SceneViewModel& vm);
+	void render(Graphics::ICamera* camera, const Scene::SceneViewModel& vm);
 
 	struct Mask
 	{

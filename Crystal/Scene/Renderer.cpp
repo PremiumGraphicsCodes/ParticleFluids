@@ -10,9 +10,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-Renderer::Renderer(Crystal::Graphics::ICamera* camera) :
-	objectRenderer(camera),
-	objectIdRenderer(camera),
+Renderer::Renderer() :
 	showOffScreen(false)
 {
 }
@@ -33,10 +31,10 @@ bool Renderer::build()
 	return true;
 }
 
-void Renderer::render(const int width, const int height, const ViewModel& vm)
+void Renderer::render(const int width, const int height, ICamera* camera, const ViewModel& vm)
 {
-	objectRenderer.render(vm.object);
-	objectIdRenderer.render(vm.objectId);
+	objectRenderer.render(camera, vm.object);
+	objectIdRenderer.render(camera, vm.objectId);
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);

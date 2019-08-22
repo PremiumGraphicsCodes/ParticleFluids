@@ -26,7 +26,7 @@ bool SceneIdRenderer::build()
 	return true;
 }
 
-void SceneIdRenderer::render(const SceneIdViewModel& vm)
+void SceneIdRenderer::render(ICamera* camera, const SceneIdViewModel& vm)
 {
 	const auto& pointBuffers = vm.getPointIdBuffers();
 	const auto& lineBuffers = vm.getLindIdBuffers();

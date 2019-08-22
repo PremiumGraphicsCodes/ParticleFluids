@@ -16,13 +16,13 @@ namespace Crystal {
 class Renderer : private UnCopyable
 {
 public:
-	explicit Renderer(Graphics::ICamera* camera);
+	Renderer();
 
 	~Renderer() {}
 
 	bool build();
 
-	void render(const int width, const int height, const Scene::ViewModel& vm);
+	void render(const int width, const int height, Graphics::ICamera* camera, const Scene::ViewModel& vm);
 
 	SceneRenderer* getObjectRenderer() { return &objectRenderer; }
 

@@ -25,7 +25,7 @@ bool SceneRenderer::build()
 	return true;
 }
 
-void SceneRenderer::render(const SceneViewModel& vm)
+void SceneRenderer::render(ICamera* camera, const SceneViewModel& vm)
 {
 	const auto& pointBuffers = vm.getPointBuffers();
 	const auto& lineBuffers = vm.getLineBuffers();

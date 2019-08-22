@@ -27,7 +27,7 @@ Canvas::Canvas(ICamera* camera) :
 	height(0),
 	camera(camera)
 {
-	renderer.reset(new Renderer(camera));
+	renderer.reset(new Renderer());
 }
 
 void Canvas::build()
@@ -46,7 +46,7 @@ void Crystal::UI::Canvas::render(const int width, const int height, const Scene:
 {
 	this->width = width;
 	this->height = height;
-	renderer->render(width, height, viewModel);
+	renderer->render(width, height, getCamera(), viewModel);
 }
 
 void Canvas::onLeftButtonDown(const Vector2df& position)
