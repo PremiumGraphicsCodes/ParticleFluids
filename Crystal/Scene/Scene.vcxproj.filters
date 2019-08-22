@@ -112,6 +112,9 @@
     <ClInclude Include="TriangleRenderer.h">
       <Filter>Renderer\Triangle</Filter>
     </ClInclude>
+    <ClInclude Include="FaceGroupScene.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp">

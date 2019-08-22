@@ -22,6 +22,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FaceGroupScene.h" />
     <ClInclude Include="FileFormat.h" />
     <ClInclude Include="FileImporter.h" />
     <ClInclude Include="FileExporter.h" />

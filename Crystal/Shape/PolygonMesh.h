@@ -8,7 +8,6 @@
 
 #include "Vertex.h"
 #include "Face.h"
-#include "FaceGroup.h"
 
 #include "IShape.h"
 
@@ -67,7 +66,6 @@ private:
 	std::vector<Math::Vector2dd> texCoords;
 	std::vector<Vertex> vertices;
 	std::vector<Face> faces;
-	std::vector<FaceGroup> faceGroups;
 	int nextVertexId;
 	int nextFaceId;
 };
