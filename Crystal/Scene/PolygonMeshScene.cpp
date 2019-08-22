@@ -30,14 +30,15 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 			if (v.texCoordId != -1) {
 				texCoord = tcs[v.texCoordId];
 			}
-			const auto mi = 0;
-			buffer.addVertex(p, n, texCoord, mi);
+			buffer.addVertex(p, n, texCoord);
 		}
 
+		SmoothFaceGroupBuffer groupBuffer(0);
 		const auto& faces = shape->getFaces();
 		for (auto f : faces) {
-			buffer.addFace(f.v1, f.v2, f.v3);
+			groupBuffer.addFace(f.v1, f.v2, f.v3);
 		}
+		buffer.addGroup(groupBuffer);
 
 		viewModel.triangleBuffers.push_back(buffer);
 	}

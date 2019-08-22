@@ -42,7 +42,6 @@ void SmoothRenderer::render(const ICamera& camera)
 {
 	auto shader = getShader();
 
-	const auto& indices = buffer.getIndices().get();
 	const auto& positions = buffer.getPositions().get();// buffers[0].get();
 	const auto& normals = buffer.getNormals().get();//buffers[1].get();
 	const auto& texCoords = buffer.getTexCoords().get();
@@ -98,7 +97,11 @@ void SmoothRenderer::render(const ICamera& camera)
 		shader->sendUniform(prefix + ".shininess", m.shininess);
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 	}
-	shader->drawTriangles(indices);
+
+	const auto& groups = buffer.getGroups();
+	for (const auto& g : groups) {
+		shader->drawTriangles(g.indices.get());
+	}
 
 
 	//texture.unbind();
