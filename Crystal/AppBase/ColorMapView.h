@@ -31,7 +31,7 @@ public:
 		image.setValue(img);
 	}
 
-	void show() override {
+	void onShow() override {
 		image.show();
 		resolution.show();
 		minValue.show();

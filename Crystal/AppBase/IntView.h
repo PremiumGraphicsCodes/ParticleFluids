@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IWindow.h"
-#include "imgui.h"
 
 namespace Crystal {
 	namespace UI {
@@ -19,10 +18,7 @@ public:
 		value(value)
 	{}
 
-	void onShow() override
-	{
-		ImGui::InputInt(name.c_str(), &value);
-	}
+	void onShow() override;
 
 	int getValue() const { return value; }
 

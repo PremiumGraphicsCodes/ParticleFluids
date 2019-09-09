@@ -2,7 +2,7 @@
 
 #include "IPopupButton.h"
 #include "FloatView.h"
-#include "Float4View.h"
+#include "ColorRGBAView.h"
 #include "StringView.h"
 
 #include "../Scene/WireFrameAttribute.h"
@@ -38,7 +38,7 @@ public:
 
 private:
 	FloatView width;
-	Float4View color;
+	ColorRGBAView color;
 	//StringView nameView;
 };
 

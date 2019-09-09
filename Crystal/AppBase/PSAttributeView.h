@@ -4,6 +4,7 @@
 #include "FloatView.h"
 #include "Float4View.h"
 #include "StringView.h"
+#include "ColorRGBAView.h"
 
 #include "../Scene/ParticleAttribute.h"
 
@@ -38,7 +39,7 @@ public:
 
 private:
 	FloatView size;
-	Float4View color;
+	ColorRGBAView color;
 	//StringView nameView;
 };
 

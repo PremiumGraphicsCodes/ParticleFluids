@@ -194,6 +194,12 @@
     <ClCompile Include="FloatView.cpp">
       <Filter>Primitive</Filter>
     </ClCompile>
+    <ClCompile Include="IntView.cpp">
+      <Filter>Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="StringView.cpp">
+      <Filter>Primitive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
