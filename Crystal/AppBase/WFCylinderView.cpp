@@ -14,14 +14,10 @@ WFCylinderView::WFCylinderView(World* model, Canvas* canvas) :
 	unum("UNum", 12),
 	vnum("VNum", 12)
 {
-}
-
-void WFCylinderView::onShow()
-{
-	cylinder.show();
-	unum.show();
-	vnum.show();
-	attribute.show();
+	add(&cylinder);
+	add(&unum);
+	add(&vnum);
+	add(&attribute);
 }
 
 void WFCylinderView::onOk()

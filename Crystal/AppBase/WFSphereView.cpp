@@ -15,14 +15,10 @@ WFSphereView::WFSphereView(World* repository, Canvas* canvas) :
 	unum("UNum", 12),
 	vnum("VNum", 12)
 {
-}
-
-void WFSphereView::onShow()
-{
-	sphere.show();
-	unum.show();
-	vnum.show();
-	attribute.show();
+	add(&sphere);
+	add(&unum);
+	add(&vnum);
+	add(&attribute);
 }
 
 void WFSphereView::onOk()

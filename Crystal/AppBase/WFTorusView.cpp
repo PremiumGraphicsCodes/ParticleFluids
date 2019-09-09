@@ -16,14 +16,10 @@ WFTorusView::WFTorusView(World* model, Canvas* canvas) :
 	unum("UNum", 24),
 	vnum("VNum", 12)
 {
-}
-
-void WFTorusView::onShow()
-{
-	unum.show();
-	vnum.show();
-	torus.show();
-	attribute.show();
+	add(&unum);
+	add(&vnum);
+	add(&torus);
+	add(&attribute);
 }
 
 void WFTorusView::onOk()

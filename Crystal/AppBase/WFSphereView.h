@@ -14,8 +14,6 @@ public:
 	WFSphereView(Scene::World* repository, Canvas* canvas);
 
 private:
-	void onShow() override;
-
 	void onOk() override;
 
 private:

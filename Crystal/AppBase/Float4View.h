@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 
-#include "imgui.h"
+#include "../Math/Vector4d.h"
 #include <array>
 
 namespace Crystal {
@@ -11,19 +11,11 @@ namespace Crystal {
 class Float4View : public IWindow
 {
 public:
-	explicit Float4View(const std::string& name) :
-		IWindow(name)
-	{}
+	explicit Float4View(const std::string& name);
 
-	Float4View(const std::string& name, const glm::vec4& value) :
-		IWindow(name),
-		value(value)
-	{}
+	Float4View(const std::string& name, const glm::vec4& value);
 
-	void onShow() override
-	{
-		ImGui::InputFloat4(name.c_str(), &value[0]);
-	}
+	void onShow() override;
 
 	glm::vec4 getValue() const { return value; }
 

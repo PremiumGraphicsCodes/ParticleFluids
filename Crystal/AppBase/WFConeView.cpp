@@ -14,14 +14,10 @@ WFConeView::WFConeView(World* model, Canvas* canvas) :
 	unum("UNum", 12),
 	vnum("VNum", 12)
 {
-}
-
-void WFConeView::onShow()
-{
-	unum.show();
-	vnum.show();
-	cone.show();
-	attribute.show();
+	add(&unum);
+	add(&vnum);
+	add(&cone);
+	add(&attribute);
 }
 
 void WFConeView::onOk()

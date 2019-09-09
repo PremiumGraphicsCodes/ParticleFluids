@@ -13,12 +13,8 @@ WFBoxView::WFBoxView(World* model, Canvas* canvas) :
 	box("Box"),
 	attribute("Attribute")
 {
-}
-
-void WFBoxView::onShow()
-{
-	box.show();
-	attribute.show();
+	add(&box);
+	add(&attribute);
 }
 
 void WFBoxView::onOk()

@@ -188,6 +188,12 @@
     <ClCompile Include="PickUICtrl.cpp">
       <Filter>UICtrl</Filter>
     </ClCompile>
+    <ClCompile Include="Float4View.cpp">
+      <Filter>Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatView.cpp">
+      <Filter>Primitive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
