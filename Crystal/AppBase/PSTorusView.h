@@ -14,9 +14,7 @@ class PSTorusView : public IOkCancelView
 public:
 	PSTorusView(Scene::World* model, Canvas* canvas);
 
-protected:
-	void onShow() override;
-
+private:
 	void onOk() override;
 
 private:

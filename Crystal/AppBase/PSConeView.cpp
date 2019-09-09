@@ -14,14 +14,10 @@ PSConeView::PSConeView(World* model, Canvas* canvas) :
 	count("Count", 10000),
 	name("Name", "PSCone")
 {
-}
-
-void PSConeView::onShow()
-{
-	cone.show();
-	attribute.show();
-	count.show();
-	name.show();
+	add(&cone);
+	add(&attribute);
+	add(&count);
+	add(&name);
 }
 
 void PSConeView::onOk()

@@ -23,12 +23,16 @@ public:
 	void show() override
 	{
 		onShow();
-		ok.show();
-		cancel.show();
 	}
 
 protected:
-	virtual void onShow() = 0;
+	virtual void onShow() {
+		for (auto c : children) {
+			c->show();
+		}
+		ok.show();
+		cancel.show();
+	}
 
 	virtual void onOk() = 0;
 

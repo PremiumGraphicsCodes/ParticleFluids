@@ -16,13 +16,9 @@ PSSphereView::PSSphereView(World* model, Canvas* canvas) :
 	attribute("Attribute"),
 	count("Count", 10000)
 {
-}
-
-void PSSphereView::onShow()
-{
-	sphere.show();
-	attribute.show();
-	count.show();
+	add(&sphere);
+	add(&attribute);
+	add(&count);
 }
 
 void PSSphereView::onOk()

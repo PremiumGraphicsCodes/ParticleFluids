@@ -26,6 +26,7 @@ private:
 
 private:
 	ParticleSystemView particleSystem;
+	Scene::World* world;
 	IntView id;
 	StringView name;
 	Button edit;

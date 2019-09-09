@@ -13,13 +13,9 @@ PSTorusView::PSTorusView(World* model, Canvas* canvas) :
 	attribute("Attribute"),
 	count("Count", 10000)
 {
-}
-
-void PSTorusView::onShow()
-{
-	torusView.show();
-	attribute.show();
-	count.show();
+	add(&torusView);
+	add(&attribute);
+	add(&count);
 }
 
 void PSTorusView::onOk()

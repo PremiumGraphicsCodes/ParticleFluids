@@ -17,16 +17,12 @@ PSBoxView::PSBoxView(World* model, Canvas* canvas) :
 	isVolume("Volume", false),
 	name("Name", "PSBox")
 {
+	add(&box);
+	add(&attribute);
+	add(&count);
+	add(&isVolume);
+	add(&name);
 };
-
-void PSBoxView::onShow()
-{
-	box.show();
-	attribute.show();
-	count.show();
-	isVolume.show();
-	name.show();
-}
 
 void PSBoxView::onOk()
 {

@@ -14,12 +14,8 @@ PMBoxView::PMBoxView(World* model, Canvas* canvas) :
 	boxView("Box"),
 	name("Name", "PMBox")
 {
-}
-
-void PMBoxView::onShow()
-{
-	boxView.show();
-	name.show();
+	add(&boxView);
+	add(&name);
 }
 
 void PMBoxView::onOk()

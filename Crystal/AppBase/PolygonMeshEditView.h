@@ -26,6 +26,7 @@ private:
 
 private:
 	PolygonMeshView polygonMesh;
+	Scene::World* world;
 	IntView id;
 	StringView name;
 	Button edit;

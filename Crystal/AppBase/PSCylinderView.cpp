@@ -10,21 +10,17 @@ using namespace Crystal::UI;
 PSCylinderView::PSCylinderView(World* model, Canvas* canvas) :
 	IOkCancelView("PSCylinder", model, canvas),
 	attribute("Attribute"),
-	cylinderButton("Cylinder"),
+	cylinder("Cylinder"),
 	count("Count", 10000)
 {
-}
-
-void PSCylinderView::onShow()
-{
-	cylinderButton.show();
-	attribute.show();
-	count.show();
+	add(&cylinder);
+	add(&attribute);
+	add(&count);
 }
 
 void PSCylinderView::onOk()
 {
-	const auto& cylinder = cylinderButton.getValue();
+	const auto& cylinder = this->cylinder.getValue();
 	std::mt19937 mt{ std::random_device{}() };
 	std::uniform_real_distribution<double> dist(0.0, 1.0);
 	std::vector<Vector3dd> positions;

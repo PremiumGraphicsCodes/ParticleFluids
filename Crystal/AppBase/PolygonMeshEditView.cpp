@@ -6,6 +6,7 @@ using namespace Crystal::UI;
 PolygonMeshEditView::PolygonMeshEditView(const std::string& name, World* repository, Canvas* canvas) :
 	IWindow(name),
 	polygonMesh("PolygonMesh"),
+	world(repository),
 	id("Id"),
 	name("Name"),
 	edit("Edit")
@@ -30,5 +31,6 @@ void PolygonMeshEditView::setValue(PolygonMeshScene* value)
 
 void PolygonMeshEditView::onEdit()
 {
-
+	auto polygonMesh = world->getObjects()->findSceneById<PolygonMeshScene*>(id.getValue());
+	polygonMesh->setName(name.getValue());
 }

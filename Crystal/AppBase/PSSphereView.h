@@ -13,9 +13,7 @@ class PSSphereView : public IOkCancelView
 public:
 	PSSphereView(Scene::World* model, Canvas* canvas);
 
-protected:
-	void onShow() override;
-
+private:
 	void onOk() override;
 
 private:

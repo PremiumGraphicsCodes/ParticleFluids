@@ -13,12 +13,10 @@ public:
 	PSCylinderView(Scene::World* model, Canvas* canvas);
 
 private:
-	void onShow() override;
-
 	void onOk() override;
 
 private:
-	Cylinder3dView cylinderButton;
+	Cylinder3dView cylinder;
 	PSAttributeView attribute;
 	IntView count;
 };
