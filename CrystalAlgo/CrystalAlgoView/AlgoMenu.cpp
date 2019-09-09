@@ -20,7 +20,7 @@ AlgoMenu::AlgoMenu(const std::string& name, World* model, Canvas* canvas, Contro
 {
 }
 
-void AlgoMenu::show()
+void AlgoMenu::onShow()
 {
 	if (ImGui::BeginMenu("Algo")) {
 		if (ImGui::MenuItem("Boolean")) {

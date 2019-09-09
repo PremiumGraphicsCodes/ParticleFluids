@@ -5,6 +5,8 @@
 
 #include "../IO/ImageFileReader.h"
 
+#include "imgui.h"
+
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
