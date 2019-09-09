@@ -3,7 +3,7 @@
 
 using namespace Crystal::UI;
 
-void Button::show()
+void Button::onShow()
 {
 	auto str = name.c_str();
 	if (ImGui::Button(str)) {

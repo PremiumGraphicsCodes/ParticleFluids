@@ -12,7 +12,7 @@ class TransformView : public IPanel
 public:
 	TransformView(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	void show() override;
+	void onShow() override;
 
 private:
 	Vector3dView translate;

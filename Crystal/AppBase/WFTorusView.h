@@ -14,7 +14,7 @@ class WFTorusView : public IPanel
 public:
 	WFTorusView(Scene::World* model, Canvas* canvas);
 
-	void show() override;
+	void onShow() override;
 
 private:
 	void onOk();

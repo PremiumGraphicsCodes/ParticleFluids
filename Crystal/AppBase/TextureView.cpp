@@ -22,7 +22,7 @@ TextureView::~TextureView()
 	glDeleteTextures(1, &textureId);
 }
 
-void TextureView::show()
+void TextureView::onShow()
 {
 	// Turn the RGBA pixel data into an OpenGL texture:
 	glBindTexture(GL_TEXTURE_2D, textureId);

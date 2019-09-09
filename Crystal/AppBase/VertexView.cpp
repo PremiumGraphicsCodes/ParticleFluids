@@ -23,7 +23,7 @@ VertexView::VertexView(const std::string& name, Vertex* value) :
 
 {}
 
-void VertexView::show()
+void VertexView::onShow()
 {
 	id.show();
 	position.show();

@@ -18,7 +18,7 @@ class MaterialView : public IWindow
 public:
 	explicit MaterialView(const std::string& name);
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(const Graphics::Material& m);
 

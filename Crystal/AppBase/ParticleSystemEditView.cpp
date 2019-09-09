@@ -14,7 +14,7 @@ ParticleSystemEditView::ParticleSystemEditView(const std::string& name, World* r
 	edit.setFunction([=] { onEdit(); });
 }
 
-void ParticleSystemEditView::show()
+void ParticleSystemEditView::onShow()
 {
 	particleSystem.show();
 	id.show();

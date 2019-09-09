@@ -20,11 +20,6 @@ public:
 
 	virtual ~IOkCancelView() {}
 
-	void show() override
-	{
-		onShow();
-	}
-
 protected:
 	virtual void onShow() {
 		for (auto c : children) {

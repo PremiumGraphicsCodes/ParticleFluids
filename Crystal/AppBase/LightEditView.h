@@ -19,7 +19,7 @@ public:
 
 	void setValue(Scene::LightScene* value);
 
-	void show() override;
+	void onShow() override;
 
 	//void setVisible(const bool isVisible) { this->isVisible = isVisible; }
 

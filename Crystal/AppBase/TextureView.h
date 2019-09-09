@@ -17,7 +17,7 @@ public:
 
 	~TextureView();
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(const Graphics::Image& image);
 

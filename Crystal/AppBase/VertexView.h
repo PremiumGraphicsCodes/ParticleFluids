@@ -21,7 +21,7 @@ public:
 
 	VertexView(const std::string& name, Shape::Vertex* value);
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(Shape::Vertex* value);
 

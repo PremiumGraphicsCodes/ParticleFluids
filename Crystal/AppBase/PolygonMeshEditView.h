@@ -17,7 +17,7 @@ class PolygonMeshEditView : public IWindow
 public:
 	PolygonMeshEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(Scene::PolygonMeshScene* value);
 

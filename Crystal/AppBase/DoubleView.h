@@ -12,7 +12,7 @@ public:
 
 	DoubleView(const std::string& name, const double value);
 
-	void show() override;
+	void onShow() override;
 
 	double getValue() const { return value; }
 

@@ -5,7 +5,7 @@
 
 using namespace Crystal::UI;
 
-void MaskMenu::show()
+void MaskMenu::onShow()
 {
 	auto model = getModel();
 	auto canvas = getCanvas();

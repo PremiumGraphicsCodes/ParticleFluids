@@ -24,7 +24,7 @@ public:
 	{
 	}
 
-	void show() override;
+	void onShow() override;
 
 	int getId() const { return id; }
 

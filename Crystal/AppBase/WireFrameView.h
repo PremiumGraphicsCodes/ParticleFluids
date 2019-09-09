@@ -15,7 +15,7 @@ class WireFrameView : public IWindow
 public:
 	explicit WireFrameView(const std::string& name);
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(Shape::WireFrame* value);
 

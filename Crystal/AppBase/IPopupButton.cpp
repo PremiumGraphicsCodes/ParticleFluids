@@ -3,7 +3,7 @@
 
 using namespace Crystal::UI;
 
-void IPopupButton::show()
+void IPopupButton::onShow()
 {
 	const auto nameStr = name.c_str();
 	if (ImGui::Button(nameStr)) {

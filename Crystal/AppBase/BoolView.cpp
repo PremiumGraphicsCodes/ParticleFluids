@@ -12,7 +12,7 @@ BoolView::BoolView(const std::string& name, const bool value) :
 	value(value)
 {}
 
-void BoolView::show()
+void BoolView::onShow()
 {
 	ImGui::Checkbox(name.c_str(), &value);
 }

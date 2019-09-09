@@ -16,7 +16,7 @@ class ParticleSystemView : public IWindow
 public:
 	explicit ParticleSystemView(const std::string& name);
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(Shape::IParticleSystem* value);
 

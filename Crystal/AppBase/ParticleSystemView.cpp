@@ -10,7 +10,7 @@ ParticleSystemView::ParticleSystemView(const std::string& name) :
 	particleCount("Particles")
 {}
 
-void ParticleSystemView::show()
+void ParticleSystemView::onShow()
 {
 	particleCount.show();
 }

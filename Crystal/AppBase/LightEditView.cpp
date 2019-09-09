@@ -21,7 +21,7 @@ LightEditView::LightEditView(const std::string& name, World* repository, Canvas*
 	editButton.setFunction(func);
 }
 
-void LightEditView::show()
+void LightEditView::onShow()
 {
 	id.show();
 	light.show();

@@ -19,7 +19,7 @@ TextureAddView::TextureAddView(const std::string& name, World* model, Canvas* ca
 	ok.setFunction([=]() { onOk(); });
 }
 
-void TextureAddView::show()
+void TextureAddView::onShow()
 {
 	image.show();
 	name.show();

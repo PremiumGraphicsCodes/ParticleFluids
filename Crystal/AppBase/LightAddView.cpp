@@ -17,7 +17,7 @@ LightAddView::LightAddView(const std::string& name, World* model, Canvas* canvas
 	ok.setFunction([=]() { onOk(); });
 }
 
-void LightAddView::show()
+void LightAddView::onShow()
 {
 	light.show();
 	name.show();

@@ -8,7 +8,7 @@
 
 using namespace Crystal::UI;
 
-void FileMenu::show()
+void FileMenu::onShow()
 {
 	auto model = getModel();
 

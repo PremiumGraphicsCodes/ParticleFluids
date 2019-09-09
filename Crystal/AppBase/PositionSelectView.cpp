@@ -7,7 +7,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-void PositionSelectView::show()
+void PositionSelectView::onShow()
 {
 	ImGui::InputFloat3("Position", &position[0]);
 	if (ImGui::Button("Pick")) {

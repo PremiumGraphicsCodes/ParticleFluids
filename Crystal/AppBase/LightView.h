@@ -23,7 +23,8 @@ public:
 	{
 	}
 
-	void show() override{
+	void onShow() override
+	{
 		position.show();
 		ambient.show();
 		diffuse.show();

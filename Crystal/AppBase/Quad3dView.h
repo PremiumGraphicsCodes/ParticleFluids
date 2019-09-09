@@ -20,7 +20,7 @@ public:
 	{
 	}
 
-	void show() override
+	void onShow() override
 	{
 		origin.show();
 		uvec.show();

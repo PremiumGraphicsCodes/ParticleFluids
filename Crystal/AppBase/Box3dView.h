@@ -19,7 +19,7 @@ public:
 	{
 	}
 
-	void show() override
+	void onShow() override
 	{
 		min.show();
 		max.show();

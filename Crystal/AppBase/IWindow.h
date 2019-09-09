@@ -24,7 +24,9 @@ public:
 
 	void clear() { children.clear(); }
 
-	virtual void show() = 0;
+	void show() { onShow(); }
+
+	virtual void onShow() = 0;
 
 	void open() { this->_isVisible = true; }
 

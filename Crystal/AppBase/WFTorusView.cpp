@@ -18,7 +18,7 @@ WFTorusView::WFTorusView(World* model, Canvas* canvas) :
 {
 }
 
-void WFTorusView::show()
+void WFTorusView::onShow()
 {
 	unum.show();
 	vnum.show();

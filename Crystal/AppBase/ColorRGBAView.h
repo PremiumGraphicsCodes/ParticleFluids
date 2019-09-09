@@ -16,7 +16,8 @@ public:
 		setValue(v);
 	}
 
-	void show() override {
+	void onShow() override
+	{
 		ImGui::ColorEdit4(name.c_str(), value);
 	}
 

@@ -9,7 +9,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-void SphereRegionSelectView::show()
+void SphereRegionSelectView::onShow()
 {
 	if (ImGui::Button("Pick")) {
 		auto mask = (int)SceneType::ParticleSystemScene | (int)SceneType::WireFrameScene | (int)SceneType::PolygonMeshScene;

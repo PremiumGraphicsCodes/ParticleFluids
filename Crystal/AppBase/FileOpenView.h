@@ -18,7 +18,7 @@ public:
 
 	void addFilter(char const* filter) { filters.push_back(filter); }
 
-	void show() override
+	void onShow() override
 	{
 		//char const * lFilterPatterns[2] = { "*.stl", "*.obj" };
 		filename = tinyfd_openFileDialog("Open", "", filters.size(), filters.data(), nullptr, 0);

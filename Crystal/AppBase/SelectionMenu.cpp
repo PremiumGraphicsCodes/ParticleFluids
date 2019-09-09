@@ -11,7 +11,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-void SelectionMenu::show()
+void SelectionMenu::onShow()
 {
 	auto model = getModel();
 	auto canvas = getCanvas();

@@ -20,8 +20,7 @@ public:
 		this->name.setValue( value->getName() );
 	}
 
-	void show() override;
-
+	void onShow() override;
 
 private:
 	IntView id;

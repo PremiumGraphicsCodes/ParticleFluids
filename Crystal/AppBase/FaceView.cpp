@@ -24,7 +24,7 @@ FaceView::FaceView(const std::string& name, Face* face) :
 	setValue(face);
 }
 
-void FaceView::show()
+void FaceView::onShow()
 {
 	id.show();
 	vertex1.show();

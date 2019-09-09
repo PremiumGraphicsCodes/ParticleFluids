@@ -16,7 +16,7 @@ class PolygonMeshView : public IWindow
 public:
 	explicit PolygonMeshView(const std::string& name);
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(Shape::PolygonMesh* value);
 

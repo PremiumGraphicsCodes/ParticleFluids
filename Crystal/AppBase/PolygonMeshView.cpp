@@ -11,7 +11,7 @@ PolygonMeshView::PolygonMeshView(const std::string& name) :
 	faceCount("Faces")
 {}
 
-void PolygonMeshView::show()
+void PolygonMeshView::onShow()
 {
 	vertexCount.show();
 	faceCount.show();

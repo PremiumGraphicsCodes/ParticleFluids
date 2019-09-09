@@ -13,7 +13,7 @@ DoubleView::DoubleView(const std::string& name, const double value) :
 	value(value)
 {}
 
-void DoubleView::show()
+void DoubleView::onShow()
 {
 	ImGui::InputDouble(name.c_str(), &value);
 }

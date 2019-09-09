@@ -20,8 +20,6 @@ public:
 
 	virtual ~IMenu() {};
 
-	virtual void show() {};
-
 protected:
 	Scene::World* getModel() { return model; }
 

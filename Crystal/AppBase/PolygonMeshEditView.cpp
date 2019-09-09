@@ -14,7 +14,7 @@ PolygonMeshEditView::PolygonMeshEditView(const std::string& name, World* reposit
 	edit.setFunction([=]() { onEdit(); });
 }
 
-void PolygonMeshEditView::show()
+void PolygonMeshEditView::onShow()
 {
 	polygonMesh.show();
 	id.show();

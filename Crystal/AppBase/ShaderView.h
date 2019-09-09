@@ -11,7 +11,7 @@ class ShaderView : public IPanel
 public:
 	ShaderView(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(const Scene::IRenderer& scene);
 

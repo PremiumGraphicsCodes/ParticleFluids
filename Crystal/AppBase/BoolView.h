@@ -12,7 +12,7 @@ public:
 
 	BoolView(const std::string& name, const bool value);
 
-	void show() override;
+	void onShow() override;
 
 	bool getValue() const { return value; }
 

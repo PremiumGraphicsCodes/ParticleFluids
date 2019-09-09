@@ -20,7 +20,8 @@ public:
 		value(value)
 	{}
 
-	void show() override {
+	void onShow() override
+	{
 		ImGui::InputText(name.c_str(), &value);
 	}
 

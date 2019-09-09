@@ -11,7 +11,7 @@ TransformView::TransformView(const std::string& name, World* model, Canvas* canv
 {
 }
 
-void TransformView::show()
+void TransformView::onShow()
 {
 	translate.show();
 	rotation.show();

@@ -5,7 +5,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-void Vector3dView::show()
+void Vector3dView::onShow()
 {
 	ImGui::InputFloat3(name.c_str(), &value[0]);
 }

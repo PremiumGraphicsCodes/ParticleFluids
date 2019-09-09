@@ -13,7 +13,7 @@ class SceneListPanel : public IPanel
 public:
 	SceneListPanel(const std::string& name, Scene::World* model, Canvas* canvas, IPanel* control);
 
-	void show() override;
+	void onShow() override;
 
 private:
 	void show(Scene::IScene* scene);

@@ -12,7 +12,7 @@ public:
 		IMenu(name, model, canvas)
 	{}
 
-	virtual void show() override;
+	virtual void onShow() override;
 };
 
 	}

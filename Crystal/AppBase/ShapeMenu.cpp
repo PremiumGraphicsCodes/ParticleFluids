@@ -24,7 +24,7 @@
 
 using namespace Crystal::UI;
 
-void ShapeMenu::show()
+void ShapeMenu::onShow()
 {
 	auto model = getModel();
 	auto canvas = getCanvas();

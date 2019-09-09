@@ -6,7 +6,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-void CameraMenu::show()
+void CameraMenu::onShow()
 {
 	auto canvas = getCanvas();
 	auto model = getModel();

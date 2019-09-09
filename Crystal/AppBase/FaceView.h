@@ -20,7 +20,7 @@ public:
 
 	FaceView(const std::string& name, Shape::Face* value);
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(Shape::Face* value);
 

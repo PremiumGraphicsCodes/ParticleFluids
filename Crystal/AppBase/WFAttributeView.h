@@ -21,7 +21,7 @@ public:
 	{
 	}
 
-	void show() override
+	void onShow() override
 	{
 		width.show();
 		color.show();

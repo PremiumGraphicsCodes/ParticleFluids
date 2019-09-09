@@ -16,7 +16,7 @@ public:
 	{
 	}
 
-	void show() override;
+	void onShow() override;
 
 	//std::vector<Math::Vector3dd> getSelected() const { return positions; }
 

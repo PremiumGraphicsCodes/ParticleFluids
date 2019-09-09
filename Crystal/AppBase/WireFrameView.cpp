@@ -10,7 +10,7 @@ WireFrameView::WireFrameView(const std::string& name) :
 	edgeCount("Edges")
 {}
 
-void WireFrameView::show()
+void WireFrameView::onShow()
 {
 	edgeCount.show();
 }

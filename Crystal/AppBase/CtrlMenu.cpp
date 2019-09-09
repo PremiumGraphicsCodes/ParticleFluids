@@ -8,7 +8,7 @@
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
 
-void CtrlMenu::show()
+void CtrlMenu::onShow()
 {
 	auto model = getModel();
 	auto canvas = getCanvas();

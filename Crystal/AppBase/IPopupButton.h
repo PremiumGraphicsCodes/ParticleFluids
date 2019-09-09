@@ -20,8 +20,6 @@ protected:
 	~IPopupButton()
 	{}
 
-public:
-	void show() override;
 
 protected:
 	virtual void onShow() = 0;

@@ -11,7 +11,7 @@ WireFrameEditView::WireFrameEditView(const std::string& name, World* repository,
 {
 }
 
-void WireFrameEditView::show()
+void WireFrameEditView::onShow()
 {
 	wire.show();
 	id.show();

@@ -17,7 +17,7 @@ public:
 		radius("Radius", 1.0)
 	{}
 
-	void show() override {
+	void onShow() override {
 		center.show();
 		radius.show();
 	}

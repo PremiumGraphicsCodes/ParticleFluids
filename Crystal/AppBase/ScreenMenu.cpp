@@ -5,7 +5,7 @@
 
 using namespace Crystal::UI;
 
-void ScreenMenu::show()
+void ScreenMenu::onShow()
 {
 	/*
 	auto model = getModel();

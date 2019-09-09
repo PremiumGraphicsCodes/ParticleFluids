@@ -15,7 +15,7 @@ public:
 	{
 	}
 
-	void show() override;
+	void onShow() override;
 
 	Math::Vector3dd getPosition() const { return position; }
 

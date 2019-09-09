@@ -22,7 +22,7 @@ public:
 
 	virtual ~IPanel() {};
 
-	virtual void show() override;
+	virtual void onShow() override;
 
 protected:
 	Scene::World* getWorld() { return model; }

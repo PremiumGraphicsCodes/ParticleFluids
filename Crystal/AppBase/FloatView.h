@@ -18,7 +18,8 @@ public:
 		value(value)
 	{}
 
-	void show() override {
+	void onShow() override
+	{
 		ImGui::InputFloat(name.c_str(), &value);
 	}
 

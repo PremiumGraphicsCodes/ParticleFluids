@@ -21,7 +21,7 @@ public:
 	~Button()
 	{}
 
-	void show() override;
+	void onShow() override;
 
 	void setFunction(std::function<void(void)> func) {
 		this->func = std::move(func);

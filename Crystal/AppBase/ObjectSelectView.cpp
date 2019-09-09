@@ -7,7 +7,7 @@
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
 
-void ObjectSelectView::show()
+void ObjectSelectView::onShow()
 {
 	ImGui::InputInt("Id", &id);
 	if (ImGui::Button("Pick")) {

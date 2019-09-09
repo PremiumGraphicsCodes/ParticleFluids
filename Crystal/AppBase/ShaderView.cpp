@@ -10,7 +10,7 @@ ShaderView::ShaderView(const std::string& name, World* model, Canvas* canvas) :
 {
 }
 
-void ShaderView::show()
+void ShaderView::onShow()
 {
 	ImGui::InputTextMultiline("VSSource", "Hello", 100, ImVec2(100, 100));
 }

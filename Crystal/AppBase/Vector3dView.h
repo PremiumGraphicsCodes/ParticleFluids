@@ -20,7 +20,7 @@ public:
 		value(value)
 	{}
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(const Math::Vector3dd& value) { this->value = value; }
 

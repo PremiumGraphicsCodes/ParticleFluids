@@ -22,7 +22,7 @@ public:
 	{
 	}
 
-	void show() override
+	void onShow() override
 	{
 		center.show();
 		bigRadius.show();

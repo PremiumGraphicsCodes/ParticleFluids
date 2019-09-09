@@ -18,7 +18,7 @@ public:
 
 	void addFilter(char const* filter) { filters.push_back(filter); }
 
-	void show() override
+	void onShow() override
 	{
 		filename = tinyfd_saveFileDialog("Save", "", filters.size(), filters.data(), nullptr);
 	}

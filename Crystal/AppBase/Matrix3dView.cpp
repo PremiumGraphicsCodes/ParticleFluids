@@ -5,7 +5,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-void Matrix3dView::show()
+void Matrix3dView::onShow()
 {
 	ImGui::InputDouble("00", &value[0][0]);
 	//ImGui::SameLine();

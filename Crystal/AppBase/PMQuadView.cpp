@@ -15,12 +15,8 @@ PMQuadView::PMQuadView(World* model, Canvas* canvas) :
 	quad("Quad"),
 	name("Name", "PMPlane")
 {
-}
-
-void PMQuadView::onShow()
-{
-	quad.show();
-	name.show();
+	add(&quad);
+	add(&name);
 }
 
 void PMQuadView::onOk()

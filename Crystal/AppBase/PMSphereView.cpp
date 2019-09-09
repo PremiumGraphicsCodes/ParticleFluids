@@ -12,18 +12,12 @@ PMSphereView::PMSphereView(World* model, Canvas* canvas) :
 	sphere("Sphere"),
 	unum("UNum", 36),
 	vnum("VNum", 36),
-	materialName("MaterialName", ""),
 	name("Name", "PMSphere")
 {
-}
-
-void PMSphereView::onShow()
-{
-	sphere.show();
-	unum.show();
-	vnum.show();
-	materialName.show();
-	name.show();
+	add(&sphere);
+	add(&unum);
+	add(&vnum);
+	add(&name);
 }
 
 void PMSphereView::onOk()

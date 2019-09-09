@@ -16,7 +16,7 @@ class WireFrameEditView : public IWindow
 public:
 	WireFrameEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
 
-	void show() override;
+	void onShow() override;
 
 	void setValue(Scene::WireFrameScene* value);
 

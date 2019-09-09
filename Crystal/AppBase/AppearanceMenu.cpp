@@ -12,7 +12,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-void AppearanceMenu::show()
+void AppearanceMenu::onShow()
 {
 	auto model = getModel();
 	auto canvas = getCanvas();

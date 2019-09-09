@@ -5,7 +5,7 @@
 
 using namespace Crystal::UI;
 
-void IPanel::show()
+void IPanel::onShow()
 {
 	if (!name.empty()) {
 		ImGui::Begin(name.c_str());

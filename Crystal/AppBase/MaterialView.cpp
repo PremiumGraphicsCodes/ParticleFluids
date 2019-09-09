@@ -13,7 +13,7 @@ MaterialView::MaterialView(const std::string& name) :
 {
 }
 
-void MaterialView::show()
+void MaterialView::onShow()
 {
 	ambient.show();
 	diffuse.show();
