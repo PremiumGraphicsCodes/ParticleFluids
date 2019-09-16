@@ -1,6 +1,7 @@
 #pragma once
 
 #include <experimental/filesystem>
+#include <cassert>
 
 namespace Crystal {
 	namespace Scene {

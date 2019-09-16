@@ -1,8 +1,8 @@
 #include "PCDFileImporter.h"
 
 #include "../IO/PCDFileReader.h"
-#include "Scene.h"
-#include "SceneFactory.h"
+#include "../Scene/Scene.h"
+#include "../Scene/SceneFactory.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;

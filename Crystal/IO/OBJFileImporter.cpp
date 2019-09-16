@@ -4,7 +4,7 @@
 #include "../IO/OBJFileReader.h"
 #include "../IO/MTLFileReader.h"
 
-#include "Scene.h"
+#include "../Scene/Scene.h"
 //#include "AppearanceObjectRepository.h"
 
 using namespace Crystal::Shape;

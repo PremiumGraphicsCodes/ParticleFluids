@@ -50,6 +50,22 @@
     <ClInclude Include="MTLFile.h">
       <Filter>OBJ\MTL</Filter>
     </ClInclude>
+    <ClInclude Include="OBJFileImporter.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJFileExporter.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="PCDFileImporter.h">
+      <Filter>PCD</Filter>
+    </ClInclude>
+    <ClInclude Include="STLFileExporter.h">
+      <Filter>STL</Filter>
+    </ClInclude>
+    <ClInclude Include="STLFileImporter.h">
+      <Filter>STL</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormat.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
@@ -87,6 +103,21 @@
     </ClCompile>
     <ClCompile Include="MTLFileReader.cpp">
       <Filter>OBJ\MTL</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFileImporter.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFileExporter.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="PCDFileImporter.cpp">
+      <Filter>PCD</Filter>
+    </ClCompile>
+    <ClCompile Include="STLFileExporter.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
+    <ClCompile Include="STLFileImporter.cpp">
+      <Filter>STL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

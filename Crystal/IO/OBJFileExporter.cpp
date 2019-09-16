@@ -3,7 +3,7 @@
 #include "../IO/OBJFileWriter.h"
 #include "../IO/MTLFileWriter.h"
 
-#include "PolygonMeshScene.h"
+#include "../Scene/PolygonMeshScene.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;

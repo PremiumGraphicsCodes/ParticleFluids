@@ -23,9 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FaceGroupScene.h" />
-    <ClInclude Include="FileFormat.h" />
-    <ClInclude Include="FileImporter.h" />
-    <ClInclude Include="FileExporter.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LineRenderer.h" />
@@ -44,17 +41,11 @@
     <ClInclude Include="SceneIdProvider.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneType.h" />
-    <ClInclude Include="OBJFileExporter.h" />
-    <ClInclude Include="OBJFileImporter.h" />
     <ClInclude Include="ParticleAttribute.h" />
     <ClInclude Include="ParticleSystemScene.h" />
-    <ClInclude Include="PCDFileExporter.h" />
-    <ClInclude Include="PCDFileImporter.h" />
     <ClInclude Include="PolygonMeshScene.h" />
     <ClInclude Include="SceneFactory.h" />
     <ClInclude Include="IRenderer.h" />
-    <ClInclude Include="STLFileExporter.h" />
-    <ClInclude Include="STLFileImporter.h" />
     <ClInclude Include="TriangleRenderer.h" />
     <ClInclude Include="UUID.h" />
     <ClInclude Include="ViewModel.h" />
@@ -63,8 +54,6 @@
     <ClInclude Include="WireFrameScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FileImporter.cpp" />
-    <ClCompile Include="FileExporter.cpp" />
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="LineRenderer.cpp" />
@@ -77,15 +66,9 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="OBJFileExporter.cpp" />
-    <ClCompile Include="OBJFileImporter.cpp" />
-    <ClCompile Include="PCDFileExporter.cpp" />
-    <ClCompile Include="PCDFileImporter.cpp" />
     <ClCompile Include="SceneFactory.cpp" />
     <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="SmoothRenderer.cpp" />
-    <ClCompile Include="STLFileExporter.cpp" />
-    <ClCompile Include="STLFileImporter.cpp" />
     <ClCompile Include="TransformScene.cpp" />
     <ClCompile Include="TriangleRenderer.cpp" />
     <ClCompile Include="WireFrameScene.cpp" />

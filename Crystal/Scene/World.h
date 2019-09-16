@@ -22,10 +22,6 @@ public:
 
 	void clear();
 
-	bool importFile(const std::experimental::filesystem::path& filename);
-
-	bool exportFile(const std::experimental::filesystem::path& filePath);
-
 	Scene* getObjects() { return &objects; }
 
 	Scene* getItems() { return &items; }

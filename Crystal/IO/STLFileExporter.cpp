@@ -3,7 +3,7 @@
 #include "../IO/STLASCIIFileWriter.h"
 #include "../IO/STLBinaryFileWriter.h"
 
-#include "PolygonMeshScene.h"
+#include "../Scene/PolygonMeshScene.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;

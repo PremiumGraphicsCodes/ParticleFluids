@@ -3,7 +3,7 @@
 #include "../Shape/PolygonMeshBuilder.h"
 #include "../IO/STLASCIIFileReader.h"
 #include "../IO/STLBinaryFileReader.h"
-#include "Scene.h"
+#include "../Scene/Scene.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::IO;

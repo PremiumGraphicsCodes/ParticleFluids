@@ -5,33 +5,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UUID.h" />
-    <ClInclude Include="FileFormat.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="FileExporter.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="FileImporter.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="STLFileImporter.h">
-      <Filter>FileIO\STL</Filter>
-    </ClInclude>
-    <ClInclude Include="OBJFileImporter.h">
-      <Filter>FileIO\OBJ</Filter>
-    </ClInclude>
-    <ClInclude Include="PCDFileImporter.h">
-      <Filter>FileIO\PCD</Filter>
-    </ClInclude>
-    <ClInclude Include="OBJFileExporter.h">
-      <Filter>FileIO\OBJ</Filter>
-    </ClInclude>
-    <ClInclude Include="STLFileExporter.h">
-      <Filter>FileIO\STL</Filter>
-    </ClInclude>
-    <ClInclude Include="PCDFileExporter.h">
-      <Filter>FileIO\PCD</Filter>
-    </ClInclude>
     <ClInclude Include="IScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -117,30 +90,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FileExporter.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="FileImporter.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="STLFileImporter.cpp">
-      <Filter>FileIO\STL</Filter>
-    </ClCompile>
-    <ClCompile Include="OBJFileImporter.cpp">
-      <Filter>FileIO\OBJ</Filter>
-    </ClCompile>
-    <ClCompile Include="PCDFileImporter.cpp">
-      <Filter>FileIO\PCD</Filter>
-    </ClCompile>
-    <ClCompile Include="OBJFileExporter.cpp">
-      <Filter>FileIO\OBJ</Filter>
-    </ClCompile>
-    <ClCompile Include="STLFileExporter.cpp">
-      <Filter>FileIO\STL</Filter>
-    </ClCompile>
-    <ClCompile Include="PCDFileExporter.cpp">
-      <Filter>FileIO\PCD</Filter>
-    </ClCompile>
     <ClCompile Include="IScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -195,18 +144,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="FileIO">
-      <UniqueIdentifier>{beb36380-0e7c-4d6f-9c2b-494d9cb328f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FileIO\STL">
-      <UniqueIdentifier>{a56d1d37-dae8-4a33-8256-06be8311463c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FileIO\OBJ">
-      <UniqueIdentifier>{e3ea69e2-4a46-4b40-a582-f5949fba0a68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FileIO\PCD">
-      <UniqueIdentifier>{719573c3-31e4-4d26-aab0-0a675a7b0967}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{b8ac2286-41a7-4c7a-8e11-7f3ca28786ef}</UniqueIdentifier>
     </Filter>

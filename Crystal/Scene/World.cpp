@@ -1,8 +1,5 @@
 #include "World.h"
 
-#include "../Scene/FileImporter.h"
-#include "../Scene/FileExporter.h"
-
 #include "PointRenderer.h"
 
 using namespace Crystal::Math;
@@ -35,18 +32,6 @@ void World::clear()
 {
 	objects.clear();
 	//shaders.clear();
-}
-
-bool World::importFile(const std::experimental::filesystem::path& filename)
-{
-	FileImporter reader;
-	return reader.importFile(filename, &objects, &objectFactory);
-}
-
-bool World::exportFile(const std::experimental::filesystem::path& filename)
-{
-	FileExporter writer;
-	return writer.exportFile(filename, objects);
 }
 
 void World::updateViewModel()

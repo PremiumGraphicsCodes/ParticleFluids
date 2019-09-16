@@ -28,10 +28,12 @@ void FileMenu::onShow()
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
+				/*
 				if (model->importFile(filename)) {
 					model->updateViewModel();
 					getCanvas()->fitCamera(getModel()->getBoundingBox());
 				}
+				*/
 			}
 			//canvas->update();
 		}
@@ -43,9 +45,11 @@ void FileMenu::onShow()
 			view.addFilter("*.pcd");
 			view.show();
 			const auto& filename = view.getFileName();
+			/*
 			if (!filename.empty()) {
 				model->exportFile(filename);
 			}
+			*/
 			//model->write(filename);
 		}
 		if (ImGui::MenuItem("ScreenShot")) {
