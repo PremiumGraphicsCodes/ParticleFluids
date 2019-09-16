@@ -7,6 +7,7 @@
 #include "PCDFileImporter.h"
 
 using namespace Crystal::Scene;
+using namespace Crystal::IO;
 
 bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, IScene* parent, SceneFactory* factory)
 {

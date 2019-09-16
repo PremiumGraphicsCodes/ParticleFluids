@@ -1,18 +1,18 @@
 #pragma once
 
 #include <filesystem>
-#include "Scene.h"
+#include "../Scene/Scene.h"
 #include "FileFormat.h"
 
 namespace Crystal {
-	namespace Scene {
+	namespace IO {
 
 class FileExporter
 {
 public:
-	bool exportFile(const std::experimental::filesystem::path& filePath, Scene& objects);
+	bool exportFile(const std::experimental::filesystem::path& filePath, Scene::IScene& objects);
 
-	bool exportFile(const std::experimental::filesystem::path& filePath, Scene& objects, const FileFormat format);
+	bool exportFile(const std::experimental::filesystem::path& filePath, Scene::IScene& objects, const FileFormat format);
 };
 
 	}

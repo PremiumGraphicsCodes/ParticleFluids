@@ -8,14 +8,15 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
+using namespace Crystal::IO;
 
-bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, Scene& objects)
+bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, IScene& objects)
 {
 	const auto format = getFileFormat(filePath);
 	return exportFile(filePath, objects, format);
 }
 
-bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, Scene& objects, const FileFormat format)
+bool FileExporter::exportFile(const std::experimental::filesystem::path& filePath, IScene& objects, const FileFormat format)
 {
 	/*
 	switch (format) {

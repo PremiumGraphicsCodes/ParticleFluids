@@ -4,7 +4,7 @@
 #include <cassert>
 
 namespace Crystal {
-	namespace Scene {
+	namespace IO {
 
 enum class FileFormat
 {

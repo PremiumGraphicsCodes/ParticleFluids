@@ -1,12 +1,14 @@
 #include "FileMenu.h"
 #include "imgui.h"
 #include "tinyfiledialogs.h"
-#include "../Scene/World.h"
 #include "Canvas.h"
 #include "FileOpenView.h"
 #include "FileSaveView.h"
+#include "../Scene/World.h"
+#include "../IO/FileImporter.h"
 
 using namespace Crystal::UI;
+using namespace Crystal::IO;
 
 void FileMenu::onShow()
 {
@@ -28,12 +30,12 @@ void FileMenu::onShow()
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
-				/*
-				if (model->importFile(filename)) {
+				FileImporter importer;
+				const auto isOk = importer.importFile(filename, model->getObjects(), model->getObjectFactory());
+				if (isOk) {
 					model->updateViewModel();
 					getCanvas()->fitCamera(getModel()->getBoundingBox());
 				}
-				*/
 			}
 			//canvas->update();
 		}

@@ -66,6 +66,8 @@
       <Filter>STL</Filter>
     </ClInclude>
     <ClInclude Include="FileFormat.h" />
+    <ClInclude Include="FileImporter.h" />
+    <ClInclude Include="FileExporter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
@@ -119,6 +121,8 @@
     <ClCompile Include="STLFileImporter.cpp">
       <Filter>STL</Filter>
     </ClCompile>
+    <ClCompile Include="FileImporter.cpp" />
+    <ClCompile Include="FileExporter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="STL">
