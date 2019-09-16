@@ -30,12 +30,6 @@
     <ClCompile Include="CameraMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
-    <ClCompile Include="CtrlMenu.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="FileMenu.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenMenu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
@@ -155,12 +149,6 @@
     <ClCompile Include="LightView.cpp">
       <Filter>Scene\Appearance\Light\View</Filter>
     </ClCompile>
-    <ClCompile Include="AppearanceMenu.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeMenu.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectSelectView.cpp">
       <Filter>Selection</Filter>
     </ClCompile>
@@ -169,9 +157,6 @@
     </ClCompile>
     <ClCompile Include="SphereRegionSelectView.cpp">
       <Filter>Selection\Region</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectionMenu.cpp">
-      <Filter>Menu</Filter>
     </ClCompile>
     <ClCompile Include="ShaderAddView.cpp">
       <Filter>Scene\Appearance\Shader\Add</Filter>
@@ -199,6 +184,21 @@
     </ClCompile>
     <ClCompile Include="StringView.cpp">
       <Filter>Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="AppearanceMenu.cpp">
+      <Filter>Scene\Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeMenu.cpp">
+      <Filter>Scene\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="FileMenu.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionMenu.cpp">
+      <Filter>Selection</Filter>
+    </ClCompile>
+    <ClCompile Include="CtrlMenu.cpp">
+      <Filter>UICtrl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -292,12 +292,6 @@
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="CameraMenu.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="CtrlMenu.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="FileMenu.h">
       <Filter>Menu</Filter>
     </ClInclude>
     <ClInclude Include="ScreenMenu.h">
@@ -430,12 +424,6 @@
     <ClInclude Include="LightView.h">
       <Filter>Scene\Appearance\Light\View</Filter>
     </ClInclude>
-    <ClInclude Include="AppearanceMenu.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeMenu.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectSelectView.h">
       <Filter>Selection</Filter>
     </ClInclude>
@@ -444,9 +432,6 @@
     </ClInclude>
     <ClInclude Include="SphereRegionSelectView.h">
       <Filter>Selection\Region</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectionMenu.h">
-      <Filter>Menu</Filter>
     </ClInclude>
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="ShaderView.h">
@@ -465,6 +450,21 @@
       <Filter>UICtrl</Filter>
     </ClInclude>
     <ClInclude Include="PickUICtrl.h">
+      <Filter>UICtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="AppearanceMenu.h">
+      <Filter>Scene\Appearance</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeMenu.h">
+      <Filter>Scene\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="FileMenu.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionMenu.h">
+      <Filter>Selection</Filter>
+    </ClInclude>
+    <ClInclude Include="CtrlMenu.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
   </ItemGroup>
@@ -600,6 +600,9 @@
     </Filter>
     <Filter Include="UICtrl">
       <UniqueIdentifier>{b65367ad-e676-4622-ae35-ba737971ddc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File">
+      <UniqueIdentifier>{26b5bd9f-5afa-4db8-8fc9-47581f977f86}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
