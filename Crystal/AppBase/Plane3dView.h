@@ -12,20 +12,11 @@ namespace Crystal {
 class Plane3dView : public IWindow
 {
 public:
-	Plane3dView(const std::string& name) :
-		IWindow(name),
-		origin("Origin", Math::Vector3dd(0,0,0)),
-		normal("Normal", Math::Vector3dd(0,0,1))
-	{
-	}
+	explicit Plane3dView(const std::string& name);
 
-	void show() override
-	{
-		origin.show();
-		normal.show();
-	}
+	void onShow() override;
 
-	Math::Plane3d getValue() const { return Math::Plane3d(origin.getValue(), normal.getValue()); }
+	Math::Plane3d getValue() const;
 
 private:
 	Vector3dView origin;

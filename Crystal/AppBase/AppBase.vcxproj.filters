@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="imgui.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClCompile>
     <ClCompile Include="imgui_draw.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClCompile>
     <ClCompile Include="IPopupButton.cpp">
       <Filter>Window</Filter>
@@ -16,16 +15,16 @@
       <Filter>Window</Filter>
     </ClCompile>
     <ClCompile Include="imgui_impl_glfw.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClCompile>
     <ClCompile Include="imgui_impl_opengl3.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClCompile>
     <ClCompile Include="imgui_widgets.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClCompile>
     <ClCompile Include="imgui_stdlib.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClCompile>
     <ClCompile Include="CameraMenu.cpp">
       <Filter>View</Filter>
@@ -215,12 +214,20 @@
     <ClCompile Include="Matrix4dView.cpp">
       <Filter>Math\Matrix</Filter>
     </ClCompile>
+    <ClCompile Include="Cylinder3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyfiledialogs.cpp">
+      <Filter>ThirdParty</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tinyfiledialogs.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="imgui.h">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="IPopupButton.h">
       <Filter>Window</Filter>
@@ -238,25 +245,25 @@
       <Filter>Window</Filter>
     </ClInclude>
     <ClInclude Include="imgui_impl_glfw.h">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="imgui_impl_opengl3.h">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="imgui_internal.h">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="imstb_rectpack.h">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="imstb_textedit.h">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="imstb_truetype.h">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="imconfig.h">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="DoubleView.h">
       <Filter>Primitive</Filter>
@@ -295,7 +302,7 @@
       <Filter>Primitive</Filter>
     </ClInclude>
     <ClInclude Include="imgui_stdlib.h">
-      <Filter>imgui</Filter>
+      <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="Plane3dView.h">
       <Filter>Math</Filter>
@@ -494,14 +501,14 @@
     <ClInclude Include="Matrix4dView.h">
       <Filter>Math\Matrix</Filter>
     </ClInclude>
+    <ClInclude Include="tinyfiledialogs.h">
+      <Filter>ThirdParty</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="imgui">
-      <UniqueIdentifier>{662b1c1e-ae3f-44f1-9bee-a62584f1809b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Window">
       <UniqueIdentifier>{afc4d729-1eb0-481b-8ee0-3d334e6eec54}</UniqueIdentifier>
     </Filter>
@@ -627,6 +634,12 @@
     </Filter>
     <Filter Include="Math\Matrix">
       <UniqueIdentifier>{10e0da6a-ae71-4a41-bdcf-41e61d900fc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{dc4896c0-6bca-46ee-a40f-7803c34057cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\imgui">
+      <UniqueIdentifier>{662b1c1e-ae3f-44f1-9bee-a62584f1809b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

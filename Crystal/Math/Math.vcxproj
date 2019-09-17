@@ -138,6 +138,7 @@
     <ClInclude Include="Cylinder3d.h" />
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="glm.h" />
+    <ClInclude Include="ICurveU.h" />
     <ClInclude Include="ICurveUV.h" />
     <ClInclude Include="ICurveUVW.h" />
     <ClInclude Include="Line2d.h" />
