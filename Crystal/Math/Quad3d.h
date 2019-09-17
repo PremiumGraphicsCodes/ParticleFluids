@@ -1,14 +1,14 @@
 #pragma once
 
 #include "Vector3d.h"
-#include "ICurve2d.h"
+#include "ICurveUV.h"
 #include "Plane3d.h"
 
 namespace Crystal {
 	namespace Math {
 		class Plane3d;
 
-class Quad3d : ICurve2d
+class Quad3d : ICurveUV
 {
 public:
 	Quad3d(const Vector3dd& origin, const Vector3dd& uvec, const Vector3dd& vvec) :

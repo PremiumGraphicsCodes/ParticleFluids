@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Math/ICurve2d.h"
-#include "../Math/ICurve3d.h"
+#include "../Math/ICurveUV.h"
+#include "../Math/ICurveUVW.h"
 
 namespace Crystal {
 	namespace Math {
@@ -18,9 +18,9 @@ public:
 
 	void build(const Math::Line3dd& line);
 
-	void build(const Math::ICurve2d& curve, const int unum, const int vnum);
+	void build(const Math::ICurveUV& curve, const int unum, const int vnum);
 
-	void build(const Math::ICurve3d& curve, const int unum, const int vnum);
+	void build(const Math::ICurveUVW& curve, const int unum, const int vnum);
 
 	std::vector<Math::Line3dd> getWireFrame() const { return lines; }
 

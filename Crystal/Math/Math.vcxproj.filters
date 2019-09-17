@@ -11,29 +11,23 @@
     <ClInclude Include="Plane3d.h" />
     <ClInclude Include="Line2d.h" />
     <ClInclude Include="Torus3d.h">
-      <Filter>Curve3d</Filter>
+      <Filter>CurveUVW</Filter>
     </ClInclude>
     <ClInclude Include="Cone3d.h">
-      <Filter>Curve3d</Filter>
+      <Filter>CurveUVW</Filter>
     </ClInclude>
     <ClInclude Include="Cylinder3d.h">
-      <Filter>Curve3d</Filter>
+      <Filter>CurveUVW</Filter>
     </ClInclude>
     <ClInclude Include="Sphere3d.h">
-      <Filter>Curve3d</Filter>
-    </ClInclude>
-    <ClInclude Include="ICurve3d.h">
-      <Filter>Curve3d</Filter>
+      <Filter>CurveUVW</Filter>
     </ClInclude>
     <ClInclude Include="Gaussian.h" />
-    <ClInclude Include="ICurve2d.h">
-      <Filter>Curve2d</Filter>
-    </ClInclude>
     <ClInclude Include="Quad3d.h">
-      <Filter>Curve2d</Filter>
+      <Filter>CurveUV</Filter>
     </ClInclude>
     <ClInclude Include="Box3d.h">
-      <Filter>Curve3d</Filter>
+      <Filter>CurveUVW</Filter>
     </ClInclude>
     <ClInclude Include="Box2d.h" />
     <ClInclude Include="Matrix2d.h">
@@ -54,19 +48,25 @@
     <ClInclude Include="Vector4d.h">
       <Filter>Vector</Filter>
     </ClInclude>
+    <ClInclude Include="ICurveUV.h">
+      <Filter>CurveUV</Filter>
+    </ClInclude>
+    <ClInclude Include="ICurveUVW.h">
+      <Filter>CurveUVW</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Curve3d">
-      <UniqueIdentifier>{13cca34e-c8e4-4011-be12-be3aefa210d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Curve2d">
-      <UniqueIdentifier>{0dec3512-4c43-4267-af16-19c2b89cd27b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Matrix">
       <UniqueIdentifier>{d0a4de4b-26b6-4a81-b3ab-52342e035b73}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vector">
       <UniqueIdentifier>{a20ffa60-e43b-4cba-a0fe-209061263892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CurveUV">
+      <UniqueIdentifier>{0dec3512-4c43-4267-af16-19c2b89cd27b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CurveUVW">
+      <UniqueIdentifier>{13cca34e-c8e4-4011-be12-be3aefa210d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -74,25 +74,25 @@
     <ClCompile Include="Ray3d.cpp" />
     <ClCompile Include="Line3d.cpp" />
     <ClCompile Include="Sphere3d.cpp">
-      <Filter>Curve3d</Filter>
+      <Filter>CurveUVW</Filter>
     </ClCompile>
     <ClCompile Include="Plane3d.cpp" />
     <ClCompile Include="Cone3d.cpp">
-      <Filter>Curve3d</Filter>
+      <Filter>CurveUVW</Filter>
     </ClCompile>
     <ClCompile Include="Line2d.cpp" />
     <ClCompile Include="Quad3d.cpp">
-      <Filter>Curve2d</Filter>
+      <Filter>CurveUV</Filter>
     </ClCompile>
     <ClCompile Include="Box3d.cpp">
-      <Filter>Curve3d</Filter>
+      <Filter>CurveUVW</Filter>
     </ClCompile>
     <ClCompile Include="Box2d.cpp" />
     <ClCompile Include="Vector3d.cpp">
       <Filter>Vector</Filter>
     </ClCompile>
     <ClCompile Include="Cylinder3d.cpp">
-      <Filter>Curve3d</Filter>
+      <Filter>CurveUVW</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace Math {
 
-class ICurve3d
+class ICurveUVW
 {
 public:
-	virtual ~ICurve3d() = default;
+	virtual ~ICurveUVW() = default;
 
 	virtual Vector3dd getPosition(const Math::Vector3dd& p) const = 0;
 

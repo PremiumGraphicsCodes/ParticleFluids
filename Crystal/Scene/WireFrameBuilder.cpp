@@ -47,7 +47,7 @@ void WireFrameBuilder::build(const Line3dd& line)
 	lines.push_back(Line3dd::fromPoints(vertices[0], vertices[1]));
 }
 
-void WireFrameBuilder::build(const ICurve2d& curve, const int unum, const int vnum)
+void WireFrameBuilder::build(const ICurveUV& curve, const int unum, const int vnum)
 {
 	const auto du = 1.0 / unum;
 	const auto dv = 1.0 / vnum;
@@ -63,7 +63,7 @@ void WireFrameBuilder::build(const ICurve2d& curve, const int unum, const int vn
 
 }
 
-void WireFrameBuilder::build(const ICurve3d& curve, const int unum, const int vnum)
+void WireFrameBuilder::build(const ICurveUVW& curve, const int unum, const int vnum)
 {
 	const auto du = 1.0 / unum;
 	const auto dv = 1.0 / vnum;
