@@ -42,6 +42,7 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 		const auto& normalTable = polygonMesh->getNormals();
 		const auto& texCoordTable = polygonMesh->getTexCoords();
 
+		auto meshScene = sceneFactory->createPolygonMeshScene(polygonMesh, "PolygonMesh");
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
@@ -64,11 +65,9 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 					i2++;
 				}
 			}
-			auto faceGroup = sceneFactory->createFaceGroupScene(g.name);
+			auto faceGroup = sceneFactory->createFaceGroupScene(meshScene, g.name);
 			faceGroup->setMaterialName(g.usemtl);
 		}
-		auto meshScene = sceneFactory->createPolygonMeshScene(polygonMesh, "PolygonMesh");
-		//meshScene->addGroup()
 		scene->addScene(meshScene);
 
 		return true;

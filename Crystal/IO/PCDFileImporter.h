@@ -6,16 +6,18 @@ namespace Crystal {
 	namespace Scene {
 		class IScene;
 		class SceneFactory;
+	}
+	namespace IO {
 
 class PCDFileImporter
 {
 public:
-	explicit PCDFileImporter(SceneFactory* factory);
+	explicit PCDFileImporter(Scene::SceneFactory* factory);
 
-	bool importPCD(const std::experimental::filesystem::path& filePath, IScene* parent);
+	bool importPCD(const std::experimental::filesystem::path& filePath, Scene::IScene* parent);
 
 private:
-	SceneFactory* factory;
+	Scene::SceneFactory* factory;
 };
 
 	}

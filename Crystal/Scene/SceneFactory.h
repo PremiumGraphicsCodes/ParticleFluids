@@ -61,7 +61,7 @@ public:
 
 	TransformScene* createTransformScene(const std::string& name);
 
-	FaceGroupScene* createFaceGroupScene(const std::string& name);
+	FaceGroupScene* createFaceGroupScene(PolygonMeshScene* parent, const std::string& name);
 
 	int getNextId() { return idProvider.getNextId(); }
 

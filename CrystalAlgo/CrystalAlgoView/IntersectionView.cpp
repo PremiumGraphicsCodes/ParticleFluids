@@ -2,6 +2,8 @@
 
 #include "../CrystalAlgo/IntersectionAlgo.h"
 #include "../../Crystal/Shape/WireFrameBuilder.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -25,8 +27,8 @@ void IntersectionView::onShow()
 void IntersectionView::onOk()
 {
 	auto repository = getWorld();
-	auto obj1 = static_cast<PolygonMeshScene*>( repository->getObjects()->findSceneById(mesh1.getId()) );
-	auto obj2 = static_cast<PolygonMeshScene*>( repository->getObjects()->findSceneById(mesh2.getId()) );
+	auto obj1 = repository->getObjects()->findSceneById<PolygonMeshScene*>(mesh1.getId());
+	auto obj2 = repository->getObjects()->findSceneById<PolygonMeshScene*>(mesh2.getId());
 	if (obj1 == nullptr || obj2 == nullptr) {
 		return;
 	}

@@ -5,8 +5,8 @@
 
 #include "../Scene/PolygonMeshScene.h"
 
-using namespace Crystal::IO;
 using namespace Crystal::Scene;
+using namespace Crystal::IO;
 
 bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygon)
 {

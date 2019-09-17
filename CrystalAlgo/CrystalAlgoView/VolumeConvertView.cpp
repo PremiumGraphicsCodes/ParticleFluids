@@ -1,5 +1,6 @@
 #include "VolumeConvertView.h"
 
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../CrystalAlgo/VolumeConvertAlgo.h"
 
 using namespace Crystal::Math;
