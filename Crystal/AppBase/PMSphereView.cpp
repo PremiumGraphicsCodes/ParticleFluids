@@ -1,6 +1,7 @@
 #include "PMSphereView.h"
 
 #include "../Shape/PolygonMeshBuilder.h"
+#include "../Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

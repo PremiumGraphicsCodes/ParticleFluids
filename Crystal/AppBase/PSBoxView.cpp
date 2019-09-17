@@ -1,6 +1,7 @@
 #include "PSBoxView.h"
 
 #include "../Graphics/ColorRGBA.h"
+#include "../Scene/ParticleSystemScene.h"
 
 #include <random>
 

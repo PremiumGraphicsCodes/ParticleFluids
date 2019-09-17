@@ -1,13 +1,15 @@
 #pragma once
 
 #include "SceneIdProvider.h"
-#include "PolygonMeshScene.h"
-#include "ParticleSystemScene.h"
-#include "WireFrameScene.h"
 #include "LightScene.h"
 #include "MaterialScene.h"
+#include "../Math/Line3d.h"
 
 namespace Crystal {
+	namespace Shape {
+		class WireFrame;
+		class PolygonMesh;
+	}
 	namespace Graphics {
 		class ICamera;
 	}
@@ -18,6 +20,12 @@ namespace Crystal {
 		class Scene;
 		class IRenderer;
 		class CameraScene;
+		class ParticleSystemScene;
+		struct ParticleAttribute;
+		class WireFrameScene;
+		struct WireFrameAttribute;
+		class PolygonMeshScene;
+		class FaceGroupScene;
 		class TransformScene;
 
 class SceneFactory
@@ -52,6 +60,8 @@ public:
 	//CameraScene* createCameraScene(Graphics::ICamera* camera, const std::string& name);
 
 	TransformScene* createTransformScene(const std::string& name);
+
+	FaceGroupScene* createFaceGroupScene(const std::string& name);
 
 	int getNextId() { return idProvider.getNextId(); }
 

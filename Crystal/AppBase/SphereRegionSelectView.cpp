@@ -3,6 +3,9 @@
 #include "CameraUICtrl.h"
 
 #include "../Shape/WireFrameBuilder.h"
+#include "../Scene/IShapeScene.h"
+#include "../Scene/WireFrameScene.h"
+
 #include "imgui.h"
 
 using namespace Crystal::Shape;

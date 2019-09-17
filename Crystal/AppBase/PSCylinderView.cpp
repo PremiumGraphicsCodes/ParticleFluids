@@ -1,5 +1,7 @@
 #include "PSCylinderView.h"
 
+#include "../Scene/ParticleSystemScene.h"
+
 #include <random>
 
 using namespace Crystal::Math;

@@ -1,5 +1,7 @@
 #include "PSConeView.h"
 
+#include "../Scene/ParticleSystemScene.h"
+
 #include <random>
 
 using namespace Crystal::Math;

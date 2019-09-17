@@ -3,6 +3,7 @@
 #include "../IO/PCDFileReader.h"
 #include "../Scene/Scene.h"
 #include "../Scene/SceneFactory.h"
+#include "../Scene/ParticleSystemScene.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;

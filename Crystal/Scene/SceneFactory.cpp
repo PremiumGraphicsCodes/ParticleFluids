@@ -4,7 +4,11 @@
 
 #include "IRenderer.h"
 #include "LightScene.h"
+#include "ParticleSystemScene.h"
+#include "WireFrameScene.h"
+#include "PolygonMeshScene.h"
 #include "TransformScene.h"
+#include "FaceGroupScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -30,7 +34,6 @@ Scene* SceneFactory::createScene(const std::string& name)
 {
 	return new Scene(getNextId(), name);
 }
-
 
 ParticleSystemScene* SceneFactory::createParticleSystemScene(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
 {
@@ -102,4 +105,9 @@ CameraScene* SceneFactory::createCameraScene(ICamera* camera, const std::string&
 TransformScene* SceneFactory::createTransformScene(const std::string& name)
 {
 	return new TransformScene(getNextId(), name);
+}
+
+FaceGroupScene* SceneFactory::createFaceGroupScene(const std::string& name)
+{
+	return new FaceGroupScene(getNextId(), name);
 }

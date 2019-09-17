@@ -6,6 +6,7 @@
 
 #include "../Scene/Scene.h"
 //#include "AppearanceObjectRepository.h"
+#include "../Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
@@ -63,9 +64,11 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 					i2++;
 				}
 			}
-//			faceGroup->setMaterialName(g.usemtl);
+			auto faceGroup = sceneFactory->createFaceGroupScene(g.name);
+			faceGroup->setMaterialName(g.usemtl);
 		}
 		auto meshScene = sceneFactory->createPolygonMeshScene(polygonMesh, "PolygonMesh");
+		//meshScene->addGroup()
 		scene->addScene(meshScene);
 
 		return true;

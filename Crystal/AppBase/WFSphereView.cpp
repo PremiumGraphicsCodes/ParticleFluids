@@ -2,6 +2,7 @@
 
 #include "../Math/Sphere3d.h"
 #include "../Shape/WireFrameBuilder.h"
+#include "../Scene/WireFrameScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
