@@ -7,6 +7,9 @@
 #include "../../Crystal/Scene/World.h"
 //#include "../../Crystal/UI/ViewModel.h"
 
+#include "../../Crystal/IO/FileImporter.h"
+#include "../../Crystal/IO/FileExporter.h"
+
 #include "Converter.h"
 
 
@@ -40,7 +43,9 @@ bool RepositoryAdapter::Import(System::String^ filename)
 		return false;
 	}
 	const auto& str = msclr::interop::marshal_as<std::wstring>(filename);
-	return instance->importFile( str );
+	Crystal::IO::FileImporter importer;
+	const auto isOk = importer.importFile(str, instance->getObjects(), instance->getObjectFactory());
+	return isOk;
 }
 
 bool RepositoryAdapter::Export(System::String^ filename)
@@ -50,7 +55,9 @@ bool RepositoryAdapter::Export(System::String^ filename)
 	}
 
 	const auto& str = msclr::interop::marshal_as<std::wstring>(filename);
-	return instance->exportFile(str);
+	Crystal::IO::FileExporter exporter;
+	const auto isOk = exporter.exportFile(str, *instance->getObjects());
+	return isOk;
 }
 
 SceneAdapter^ RepositoryAdapter::GetSceneAdapter()

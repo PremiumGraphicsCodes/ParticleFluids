@@ -4,6 +4,9 @@
 #include "../../Crystal/Scene/Scene.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
+
 #include "../../Crystal/Scene/SceneFactory.h"
 #include "Converter.h"
 
