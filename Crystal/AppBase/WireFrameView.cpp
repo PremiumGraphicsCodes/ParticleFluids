@@ -1,8 +1,8 @@
 #include "WireFrameView.h"
 
-#include "../Scene/WireFrame.h"
+#include "../Scene/WireFrameScene.h"
 
-using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WireFrameView::WireFrameView(const std::string& name) :
@@ -15,7 +15,7 @@ void WireFrameView::onShow()
 	edgeCount.show();
 }
 
-void WireFrameView::setValue(WireFrame* value)
+void WireFrameView::setValue(WireFrameScene* value)
 {
 	edgeCount.setValue(value->getLines().size());
 }

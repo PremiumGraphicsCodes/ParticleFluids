@@ -20,7 +20,7 @@ void WireFrameEditView::onShow()
 
 void WireFrameEditView::setValue(WireFrameScene* value)
 {
-	wire.setValue(value->getShape());
+	wire.setValue(value);
 	id.setValue(value->getId());
 	name.setValue(value->getName());
 }

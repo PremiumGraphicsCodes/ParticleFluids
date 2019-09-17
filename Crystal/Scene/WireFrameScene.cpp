@@ -9,12 +9,62 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
+void WireFrameScene::translate(const Vector3dd& v)
+{
+	for (auto& l : lines) {
+		l.move(v);
+	}
+}
+
+void WireFrameScene::transform(const Matrix3dd& m)
+{
+	for (auto& l : lines) {
+		l.transform(m);
+	}
+}
+
+void WireFrameScene::transform(const Matrix4dd& m)
+{
+	for (auto& l : lines) {
+		l.transform(m);
+	}
+}
+
+std::vector<Vector3dd> WireFrameScene::getAllVertices() const
+{
+	if (lines.empty()) {
+		return std::vector<Vector3dd>();
+	}
+
+	std::vector<Vector3dd> vertices;
+	for (const auto& l : lines) {
+		vertices.push_back(l.getStart());
+	}
+	vertices.push_back(lines.back().getEnd());
+	return vertices;
+}
+
+void WireFrameScene::getBoundingBox(Box3d& box) const
+{
+	if (lines.empty()) {
+		return;
+	}
+
+	const auto& vertices = getAllVertices();
+	Box3d bb(vertices.front());
+	for (const auto& v : vertices) {
+		bb.add(v);
+	}
+	box.add(bb);
+}
+
+
+
 void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 {
 	if (!isVisible()) {
 		return;
 	}
-	const auto& lines = getShape()->getLines();
 	const auto& color = getAttribute().color;
 	if(!isSelected())
 	{
@@ -48,7 +98,6 @@ void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
 		return;
 	}
 	const auto objectId = getId();
-	const auto& lines = getShape()->getLines();
 	int childId = 0;
 	int index = 0;
 
@@ -61,13 +110,7 @@ void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
 	viewModel.lineIdBuffers.push_back(lineBuffer);
 }
 
-void WireFrameScene::getBoundingBox(Crystal::Math::Box3d& box) const
-{
-	box.add( getShape()->getBoundingBox() );
-}
-
 Vector3dd WireFrameScene::getPosition(const int index) const
 {
-	const auto& vertices = getShape()->getVertices();
-	return vertices[index];
+	return lines[index].getStart();
 }

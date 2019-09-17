@@ -23,7 +23,7 @@ WFTorusView::WFTorusView(World* model, Canvas* canvas) :
 
 void WFTorusView::onOk()
 {
-	Crystal::Shape::WireFrameBuilder builder;
+	WireFrameBuilder builder;
 	builder.build(torus.getValue(), unum.getValue(), vnum.getValue());
 	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Torus");
 	getWorld()->getObjects()->addScene(scene);

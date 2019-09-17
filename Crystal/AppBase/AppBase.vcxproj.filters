@@ -488,6 +488,9 @@
     <ClInclude Include="Matrix2dView.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="RotateView.h">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

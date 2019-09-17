@@ -23,7 +23,7 @@ WFConeView::WFConeView(World* model, Canvas* canvas) :
 
 void WFConeView::onOk()
 {
-	Crystal::Shape::WireFrameBuilder builder;
+	WireFrameBuilder builder;
 	builder.build(cone.getValue(), unum.getValue(), vnum.getValue());
 	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Cone");
 	getWorld()->getObjects()->addScene(scene);

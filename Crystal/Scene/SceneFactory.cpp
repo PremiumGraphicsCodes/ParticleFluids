@@ -63,16 +63,7 @@ ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<V
 
 WireFrameScene* SceneFactory::createWireFrameScene(const std::vector<Line3dd>& lines, const WireFrameAttribute& attribute, const std::string& name)
 {
-	auto wire = new Shape::WireFrame();
-	for (int i = 0; i < lines.size(); ++i) {
-		wire->add(lines[i]);
-	}
-	return new WireFrameScene(getNextId(), name, wire, attribute);
-}
-
-WireFrameScene* SceneFactory::createWireFrameScene(WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name)
-{
-	return new WireFrameScene(getNextId(), name, wire, attribute);
+	return new WireFrameScene(getNextId(), name, lines, attribute);
 }
 
 PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh,  const std::string& name)

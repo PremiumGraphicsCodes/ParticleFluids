@@ -23,7 +23,7 @@ WFCylinderView::WFCylinderView(World* model, Canvas* canvas) :
 
 void WFCylinderView::onOk()
 {
-	Crystal::Shape::WireFrameBuilder builder;
+	WireFrameBuilder builder;
 	builder.build(cylinder.getValue(), unum.getValue(), vnum.getValue());
 	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Sphere");
 	getWorld()->getObjects()->addScene(scene);

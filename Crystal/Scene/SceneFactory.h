@@ -47,8 +47,6 @@ public:
 
 	WireFrameScene* createWireFrameScene(const std::vector<Math::Line3dd>& lines, const WireFrameAttribute& attribute, const std::string& name);
 
-	WireFrameScene* createWireFrameScene(Shape::WireFrame* wire, const WireFrameAttribute& attribute, const std::string& name);
-
 	PolygonMeshScene* createPolygonMeshScene(Shape::PolygonMesh* mesh, const std::string& name);
 
 	LightScene* createLightScene(const Graphics::PointLight& light, const std::string& name);

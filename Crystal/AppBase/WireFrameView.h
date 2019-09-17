@@ -3,11 +3,9 @@
 #include "IWindow.h"
 
 #include "IntView.h"
+#include "../Scene/WireFrameScene.h"
 
 namespace Crystal {
-	namespace Shape {
-		class WireFrame;
-	}
 	namespace UI {
 
 class WireFrameView : public IWindow
@@ -17,7 +15,7 @@ public:
 
 	void onShow() override;
 
-	void setValue(Shape::WireFrame* value);
+	void setValue(Scene::WireFrameScene* value);
 
 private:
 	IntView edgeCount;

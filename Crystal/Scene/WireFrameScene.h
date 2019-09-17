@@ -2,7 +2,8 @@
 
 #include "IShapeScene.h"
 #include "WireFrameAttribute.h"
-#include "WireFrame.h"
+
+#include "../Math/Line3d.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -11,46 +12,45 @@ class WireFrameScene : public IShapeScene
 {
 public:
 	WireFrameScene() :
-		IShapeScene(-1),
-		shape(nullptr)
+		IShapeScene(-1)
 	{}
 
-	WireFrameScene(const int id, const std::string& name, Shape::WireFrame* shape, const WireFrameAttribute& attribute) :
+	WireFrameScene(const int id, const std::string& name, const std::vector<Math::Line3dd>& lines, const WireFrameAttribute& attribute) :
 		IShapeScene(id, name),
-		shape(shape),
+		lines(lines),
 		attribute(attribute)
 	{}
 
 	~WireFrameScene() {};
 
-	Shape::WireFrame* getShape() const { return shape; }
+	std::vector<Math::Line3dd> getLines() const { return lines; }
 
 	WireFrameAttribute getAttribute() const { return attribute; }
 
-	void translate(const Math::Vector3dd& v) override { shape->move(v); }
+	void translate(const Math::Vector3dd& v) override;
 
-	void transform(const Math::Matrix3dd& m) { shape->transform(m); }
+	void transform(const Math::Matrix3dd& m) override;
 
-	void transform(const Math::Matrix4dd& m) { shape->transform(m); }
+	void transform(const Math::Matrix4dd& m) override;
 
 	SceneType getType() const override { return SceneType::WireFrameScene; }
 
-	void onClear() override { delete shape; }
+	void onClear() override { lines.clear(); }
 
-	Math::Box3d getBoundingBox() const { return shape->getBoundingBox(); }
+	Math::Box3d getBoundingBox() const;
 
-	std::vector<Math::Vector3dd> getAllVertices() const { return shape->getVertices(); }
+	std::vector<Math::Vector3dd> getAllVertices() const;
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
 	void toIdViewModel(SceneIdViewModel& viewModel) const override;
 
-	virtual void getBoundingBox(Math::Box3d& box) const;
+	void getBoundingBox(Math::Box3d& box) const;
 
 	Math::Vector3dd getPosition(const int index) const override;
 
 private:
-	Shape::WireFrame* shape;
+	std::vector<Math::Line3dd> lines;
 	WireFrameAttribute attribute;
 };
 

@@ -20,7 +20,7 @@ WFBoxView::WFBoxView(World* model, Canvas* canvas) :
 
 void WFBoxView::onOk()
 {
-	Crystal::Shape::WireFrameBuilder builder;
+	WireFrameBuilder builder;
 	builder.build(box.getValue());
 	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Box");
 	getWorld()->getObjects()->addScene(scene);

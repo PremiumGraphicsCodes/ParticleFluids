@@ -1,6 +1,5 @@
 #pragma once
 
-#include "WireFrame.h"
 #include "../Math/ICurve2d.h"
 #include "../Math/ICurve3d.h"
 
@@ -10,7 +9,7 @@ namespace Crystal {
 		class Ray3d;
 		class Box3d;
 	}
-	namespace Shape {
+	namespace Scene {
 
 class WireFrameBuilder
 {
@@ -23,7 +22,7 @@ public:
 
 	void build(const Math::ICurve3d& curve, const int unum, const int vnum);
 
-	WireFrame* getWireFrame() const { return new WireFrame(lines); }
+	std::vector<Math::Line3dd> getWireFrame() const { return lines; }
 
 private:
 	void build(const std::vector<std::vector<Math::Vector3dd>>& grid);

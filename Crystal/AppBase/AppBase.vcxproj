@@ -103,6 +103,7 @@
     <ClInclude Include="Matrix2dView.h" />
     <ClInclude Include="Matrix4dView.h" />
     <ClInclude Include="PickUICtrl.h" />
+    <ClInclude Include="RotateView.h" />
     <ClInclude Include="ScaleView.h" />
     <ClInclude Include="SelectionMenu.h" />
     <ClInclude Include="ShaderView.h" />

@@ -32,7 +32,6 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="TriangleFace.h" />
     <ClInclude Include="TriangleMeshScene.h" />
-    <ClInclude Include="WireFrame.h" />
     <ClInclude Include="WireFrameBuilder.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="SmoothRenderer.h" />
@@ -69,7 +68,6 @@
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
-    <ClCompile Include="WireFrame.cpp" />
     <ClCompile Include="WireFrameBuilder.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="Scene.cpp" />
