@@ -12,7 +12,7 @@ class TransformView : public IOkCancelView
 public:
 	TransformView(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	void onShow() override;
+	void onOk() override;
 
 private:
 	ObjectSelectView objectSelectView;

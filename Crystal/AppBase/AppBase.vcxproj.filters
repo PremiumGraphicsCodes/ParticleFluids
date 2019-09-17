@@ -203,6 +203,9 @@
     <ClCompile Include="TranslateView.cpp">
       <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
+    <ClCompile Include="Matrix4dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
