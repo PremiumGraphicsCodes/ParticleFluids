@@ -1,17 +1,16 @@
 #pragma once
 
-#include <vector>
 #include <array>
 #include "../Math/Vector3d.h"
 #include "../Math/Triangle3d.h"
 
 namespace Crystal {
-	namespace Shape {
+	namespace Scene {
 
 class TriangleFace
 {
 public:
-	explicit TriangleFace(const std::array<Math::Vector3dd,3>& vertices) :
+	explicit TriangleFace(const std::array<Math::Vector3dd, 3>& vertices) :
 		vertices(vertices)
 	{
 		this->normal = toTriangle().getNormal();
@@ -33,17 +32,5 @@ private:
 	Math::Vector3dd normal;
 };
 
-class TriangleMesh
-{
-public:
-	explicit TriangleMesh(const std::vector<TriangleFace>& faces) :
-		faces(faces)
-	{}
-
-	std::vector<TriangleFace> getFaces() const { return faces; }
-
-private:
-	std::vector<TriangleFace> faces;
-};
 	}
 }

@@ -27,7 +27,6 @@
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="PolygonMesh.h" />
     <ClInclude Include="PolygonMeshBuilder.h" />
-    <ClInclude Include="TriangleMesh.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Volume.h" />
     <ClInclude Include="WireFrame.h" />

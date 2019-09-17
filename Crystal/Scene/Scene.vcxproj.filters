@@ -88,6 +88,12 @@
     <ClInclude Include="FaceGroupScene.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
+    <ClInclude Include="TriangleMeshScene.h">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleFace.h">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -142,6 +148,9 @@
     <ClCompile Include="TriangleRenderer.cpp">
       <Filter>Renderer\Triangle</Filter>
     </ClCompile>
+    <ClCompile Include="TriangleMeshScene.cpp">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -179,6 +188,9 @@
     </Filter>
     <Filter Include="Renderer\Triangle">
       <UniqueIdentifier>{ab71925f-3edc-4808-b231-7094ef2b8fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\TriangleMesh">
+      <UniqueIdentifier>{74600514-a3cc-49be-8c9f-04f5fab37c08}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

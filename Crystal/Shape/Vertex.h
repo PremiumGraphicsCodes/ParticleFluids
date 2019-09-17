@@ -1,14 +1,4 @@
-#ifndef __CRYSTAL_SHAPE_VERTEX_H__
-#define __CRYSTAL_SHAPE_VERTEX_H__
-
-#include "../Math/Vector2d.h"
-#include "../Math/Vector3d.h"
-#include "../Math/Matrix3d.h"
-#include "../Math/Matrix4d.h"
-#include "../Math/Box3d.h"
-#include "../Util/UnCopyable.h"
-#include <list>
-#include <array>
+#pragma once
 
 namespace Crystal {
 	namespace Shape {
@@ -24,4 +14,3 @@ public:
 
 	}
 }
-#endif
