@@ -21,6 +21,7 @@
 #include "PMSphereView.h"
 
 #include "TransformAddView.h"
+#include "ScaleView.h"
 
 using namespace Crystal::UI;
 
@@ -82,11 +83,12 @@ void ShapeMenu::onShow()
 			ImGui::EndMenu();
 		}
 
-		/*
-		if (ImGui::MenuItem("Transform")) {
-			control->setWindow(new TransformAddView("Transform",getModel(), canvas));
+		if (ImGui::BeginMenu("Transform")) {
+			if (ImGui::MenuItem("Scale")) {
+				control->setWindow(new ScaleView("Scale", getModel(), canvas));
+			}
+			ImGui::EndMenu();
 		}
-		*/
 
 
 		ImGui::EndMenu();

@@ -200,6 +200,9 @@
     <ClCompile Include="CtrlMenu.cpp">
       <Filter>UICtrl</Filter>
     </ClCompile>
+    <ClCompile Include="ScaleView.cpp">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -467,6 +470,9 @@
     <ClInclude Include="CtrlMenu.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
+    <ClInclude Include="ScaleView.h">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -603,6 +609,9 @@
     </Filter>
     <Filter Include="File">
       <UniqueIdentifier>{26b5bd9f-5afa-4db8-8fc9-47581f977f86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Transform">
+      <UniqueIdentifier>{e7fc0823-3758-48b2-a744-3bcde64f3869}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

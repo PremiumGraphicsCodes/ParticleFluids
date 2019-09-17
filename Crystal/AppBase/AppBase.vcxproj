@@ -34,6 +34,7 @@
     <ClCompile Include="IntView.cpp" />
     <ClCompile Include="Matrix3dView.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
+    <ClCompile Include="ScaleView.cpp" />
     <ClCompile Include="SelectionMenu.cpp" />
     <ClCompile Include="ShaderAddView.cpp" />
     <ClCompile Include="ShaderView.cpp" />
@@ -97,6 +98,7 @@
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="PickUICtrl.h" />
+    <ClInclude Include="ScaleView.h" />
     <ClInclude Include="SelectionMenu.h" />
     <ClInclude Include="ShaderView.h" />
     <ClInclude Include="ShapeMenu.h" />
