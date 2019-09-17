@@ -20,8 +20,8 @@
 #include "PMQuadView.h"
 #include "PMSphereView.h"
 
-#include "TransformAddView.h"
 #include "ScaleView.h"
+#include "TranslateView.h"
 
 using namespace Crystal::UI;
 
@@ -86,6 +86,9 @@ void ShapeMenu::onShow()
 		if (ImGui::BeginMenu("Transform")) {
 			if (ImGui::MenuItem("Scale")) {
 				control->setWindow(new ScaleView("Scale", getModel(), canvas));
+			}
+			if (ImGui::MenuItem("Translate")) {
+				control->setWindow(new TranslateView("Translate", getModel(), canvas));
 			}
 			ImGui::EndMenu();
 		}

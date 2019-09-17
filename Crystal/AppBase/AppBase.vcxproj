@@ -51,7 +51,7 @@
     <ClCompile Include="PolygonMeshView.cpp" />
     <ClCompile Include="SceneListPanel.cpp" />
     <ClCompile Include="SphereRegionSelectView.cpp" />
-    <ClCompile Include="TransformAddView.cpp" />
+    <ClCompile Include="TranslateView.cpp" />
     <ClCompile Include="Vector3dView.cpp" />
     <ClCompile Include="VertexView.cpp" />
     <ClCompile Include="imgui.cpp" />
@@ -97,6 +97,7 @@
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="IUICtrl.h" />
+    <ClInclude Include="Matrix4dView.h" />
     <ClInclude Include="PickUICtrl.h" />
     <ClInclude Include="ScaleView.h" />
     <ClInclude Include="SelectionMenu.h" />
@@ -131,7 +132,7 @@
     <ClInclude Include="PolygonMeshView.h" />
     <ClInclude Include="SceneListPanel.h" />
     <ClInclude Include="SphereRegionSelectView.h" />
-    <ClInclude Include="TransformAddView.h" />
+    <ClInclude Include="TranslateView.h" />
     <ClInclude Include="VertexView.h" />
     <ClInclude Include="Quad3dView.h" />
     <ClInclude Include="imconfig.h" />

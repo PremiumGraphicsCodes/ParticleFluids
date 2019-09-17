@@ -28,13 +28,13 @@
       <Filter>imgui</Filter>
     </ClCompile>
     <ClCompile Include="CameraMenu.cpp">
-      <Filter>Menu</Filter>
+      <Filter>View</Filter>
     </ClCompile>
     <ClCompile Include="ScreenMenu.cpp">
-      <Filter>Menu</Filter>
+      <Filter>View</Filter>
     </ClCompile>
     <ClCompile Include="MaskMenu.cpp">
-      <Filter>Menu</Filter>
+      <Filter>View</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshView.cpp">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
@@ -113,17 +113,11 @@
     <ClCompile Include="WFCylinderView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
-    <ClCompile Include="TransformView.cpp">
-      <Filter>Scene\Transform\View</Filter>
-    </ClCompile>
     <ClCompile Include="WFSphereView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
     <ClCompile Include="WFTorusView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
-    </ClCompile>
-    <ClCompile Include="TransformAddView.cpp">
-      <Filter>Scene\Transform\Add</Filter>
     </ClCompile>
     <ClCompile Include="MaterialAddView.cpp">
       <Filter>Scene\Appearance\Material\Add</Filter>
@@ -201,6 +195,12 @@
       <Filter>UICtrl</Filter>
     </ClCompile>
     <ClCompile Include="ScaleView.cpp">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformView.cpp">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslateView.cpp">
       <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
   </ItemGroup>
@@ -295,10 +295,10 @@
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
     <ClInclude Include="CameraMenu.h">
-      <Filter>Menu</Filter>
+      <Filter>View</Filter>
     </ClInclude>
     <ClInclude Include="ScreenMenu.h">
-      <Filter>Menu</Filter>
+      <Filter>View</Filter>
     </ClInclude>
     <ClInclude Include="FileOpenView.h" />
     <ClInclude Include="FileSaveView.h" />
@@ -312,7 +312,7 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="MaskMenu.h">
-      <Filter>Menu</Filter>
+      <Filter>View</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshView.h">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
@@ -388,14 +388,8 @@
     <ClInclude Include="WFCylinderView.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
-    <ClInclude Include="TransformAddView.h">
-      <Filter>Scene\Transform\Add</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderAddView.h">
       <Filter>Scene\Appearance\Shader\Add</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformView.h">
-      <Filter>Scene\Transform\View</Filter>
     </ClInclude>
     <ClInclude Include="WFSphereView.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
@@ -473,6 +467,15 @@
     <ClInclude Include="ScaleView.h">
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="TransformView.h">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4dView.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslateView.h">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -489,9 +492,6 @@
     </Filter>
     <Filter Include="Math">
       <UniqueIdentifier>{70e528ba-4a3a-4f71-8dd3-08addce9576a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Menu">
-      <UniqueIdentifier>{f853c8fe-34f8-4970-9ae4-5a8b5c5c99cb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Color">
       <UniqueIdentifier>{2f26ae1a-95f1-4072-91f2-986837e61ab0}</UniqueIdentifier>
@@ -565,17 +565,8 @@
     <Filter Include="Scene\Shape\WireFrame\View">
       <UniqueIdentifier>{f36693f7-aa63-4851-b79d-67ed57a8804d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Transform">
-      <UniqueIdentifier>{a82af283-3aaa-4c83-b72f-e282c535a689}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Transform\Add">
-      <UniqueIdentifier>{cd7bd861-bc94-4400-9c1f-29f7943f66da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Appearance\Shader\Add">
       <UniqueIdentifier>{7c2b8257-3636-4e0b-8b0a-d87925e37bbd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Transform\View">
-      <UniqueIdentifier>{b4f13708-92de-4360-acdf-bf82ab51bd44}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\Appearance\Texture\Add">
       <UniqueIdentifier>{c82d6f3c-3fb5-41f7-b8de-364dbe9c801b}</UniqueIdentifier>
@@ -612,6 +603,9 @@
     </Filter>
     <Filter Include="Scene\Shape\Transform">
       <UniqueIdentifier>{e7fc0823-3758-48b2-a744-3bcde64f3869}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{f853c8fe-34f8-4970-9ae4-5a8b5c5c99cb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

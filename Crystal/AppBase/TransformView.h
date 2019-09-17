@@ -1,13 +1,13 @@
 #pragma once
 
-#include "IPanel.h"
-#include "Vector3dView.h"
-#include "Matrix3dView.h"
+#include "IOkCancelView.h"
+#include "ObjectSelectView.h"
+#include "Matrix4dView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class TransformView : public IPanel
+class TransformView : public IOkCancelView
 {
 public:
 	TransformView(const std::string& name, Scene::World* model, Canvas* canvas);
@@ -15,8 +15,8 @@ public:
 	void onShow() override;
 
 private:
-	Vector3dView translate;
-	Matrix3dView rotation;
+	ObjectSelectView objectSelectView;
+	Matrix4dView matrixView;
 };
 
 	}
