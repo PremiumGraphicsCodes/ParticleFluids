@@ -1,6 +1,6 @@
 #include "VolumeView.h"
 
-#include "../../Crystal/Shape/Volume.h"
+#include "../../Crystal/Scene/VolumeScene.h"
 #include "../../Crystal/Math/Gaussian.h"
 #include "../../Crystal/Graphics/ColorMap.h"
 #include "../../Crystal/Graphics/ColorHSV.h"
@@ -34,7 +34,7 @@ void VolumeView::onOk()
 	};
 	volume.add(function);
 
-
+	/*
 	const auto& particles = volume.toParticles();
 	std::vector<double> values;
 	for (const auto& p : particles) {
@@ -62,4 +62,5 @@ void VolumeView::onOk()
 
 	getWorld()->getObjectFactory()->createParticleSystemScene(positions, attrs, "VolumeConverter");
 	getWorld()->updateViewModel();
+	*/
 }

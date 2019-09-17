@@ -6,6 +6,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::Algo;
 
 void VolumeConvertAlgo::convert(Volume& volume, const ParticleSystem<double>& particleSystem, const double searchRadius)

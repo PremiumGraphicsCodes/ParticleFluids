@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Crystal/Shape/Volume.h"
-#include "../../Crystal/Shape/ParticleSystem.h"
+#include "../../Crystal/Scene/VolumeScene.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 namespace Crystal {
 	namespace Algo {
@@ -9,7 +9,7 @@ namespace Crystal {
 class VolumeConvertAlgo
 {
 public:
-	void convert(Shape::Volume& volume, const Shape::ParticleSystem<double>& particleSystem, const double searchRadius);
+	void convert(Scene::Volume& volume, const Shape::ParticleSystem<double>& particleSystem, const double searchRadius);
 
 private:
 };

@@ -1,7 +1,7 @@
 #include "IntersectionView.h"
 
 #include "../CrystalAlgo/IntersectionAlgo.h"
-#include "../../Crystal/Shape/WireFrameBuilder.h"
+#include "../../Crystal/Scene/WireFrameBuilder.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 

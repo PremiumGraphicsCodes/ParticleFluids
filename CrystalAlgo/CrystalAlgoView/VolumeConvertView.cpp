@@ -29,6 +29,7 @@ void VolumeConvertView::onOk()
 	VolumeConvertAlgo converter;
 	//converter.convert(volume, );
 
+	/*
 	const auto& particles = volume.toParticles();
 	std::vector<Vector3dd> positions;
 	for (const auto& p : particles) {
@@ -39,4 +40,5 @@ void VolumeConvertView::onOk()
 	attr.size = 1.0;
 	getWorld()->getObjectFactory()->createParticleSystemScene(positions, attr, "VolumeConvert");
 	getWorld()->updateViewModel();
+	*/
 }
