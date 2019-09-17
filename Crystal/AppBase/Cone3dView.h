@@ -14,22 +14,11 @@ namespace Crystal {
 class Cone3dView : public IWindow
 {
 public:
-	explicit Cone3dView(const std::string& name) :
-		IWindow(name),
-		center("Bottom", Math::Vector3dd(0,0,0)),
-		radius("Radius", 1.0),
-		height("Height", 1.0)
-	{
-	}
+	explicit Cone3dView(const std::string& name);
 
-	void onShow() override
-	{
-		center.show();
-		radius.show();
-		height.show();
-	}
+	void onShow() override;
 
-	Math::Cone3d getValue() const { return Math::Cone3d(center.getValue(), radius.getValue(), height.getValue()); }
+	Math::Cone3d getValue() const;
 
 private:
 	Vector3dView center;

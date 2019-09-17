@@ -206,6 +206,12 @@
     <ClCompile Include="Matrix4dView.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="Box3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Cone3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />
@@ -478,6 +484,9 @@
     </ClInclude>
     <ClInclude Include="TranslateView.h">
       <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix2dView.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,25 +12,16 @@ namespace Crystal {
 class Box3dView : public IWindow
 {
 public:
-	Box3dView(const std::string& name) :
-		IWindow(name),
-		min("Min", Math::Vector3dd(0,0,0)),
-		max("Max", Math::Vector3dd(1,1,1))
-	{
-	}
+	Box3dView(const std::string& name);
 
-	void onShow() override
-	{
-		min.show();
-		max.show();
-	}
+	void onShow() override;
 
-	Math::Box3d getValue() const { return Math::Box3d(min.getValue(), max.getValue()); }
+	Math::Box3d getValue() const;
 
 private:
 	Vector3dView min;
 	Vector3dView max;
-
 };
+
 	}
 }

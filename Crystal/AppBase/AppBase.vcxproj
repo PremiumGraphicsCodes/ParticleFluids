@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClCompile Include="AppearanceMenu.cpp" />
     <ClCompile Include="BoolView.cpp" />
+    <ClCompile Include="Box3dView.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="Cone3dView.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="DoubleView.cpp" />
@@ -98,6 +100,7 @@
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="IUICtrl.h" />
+    <ClInclude Include="Matrix2dView.h" />
     <ClInclude Include="Matrix4dView.h" />
     <ClInclude Include="PickUICtrl.h" />
     <ClInclude Include="ScaleView.h" />
