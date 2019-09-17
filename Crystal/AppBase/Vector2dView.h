@@ -17,7 +17,6 @@ public:
 		value(0,0)
 	{}
 
-
 	Vector2dView(const std::string& name, const Math::Vector2dd& value) :
 		IWindow(name),
 		value(value)

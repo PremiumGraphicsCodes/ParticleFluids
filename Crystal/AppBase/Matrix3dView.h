@@ -10,24 +10,18 @@ namespace Crystal {
 class Matrix3dView : public IWindow
 {
 public:
-	explicit Matrix3dView(const std::string& name) :
-		IWindow(name),
-		value(Math::Matrix3dd(1,0,0,0,1,0,0,0,1))
-	{}
+	explicit Matrix3dView(const std::string& name);
 
-	Matrix3dView(const std::string& name, const Math::Matrix3dd& value) :
-		IWindow(name),
-		value(value)
-	{}
+	Matrix3dView(const std::string& name, const Math::Matrix3dd& value);
 
 	void onShow() override;
 
-	void setValue(const Math::Matrix3dd& value) { this->value = value; }
+	void setValue(const Math::Matrix3dd& value);
 
-	Math::Matrix3dd getValue() const { return value; }
+	Math::Matrix3dd getValue() const;
 
 private:
-	Math::Matrix3dd value;
+	float value[3][3];
 };
 
 	}

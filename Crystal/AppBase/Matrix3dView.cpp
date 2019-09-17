@@ -5,25 +5,40 @@
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
+Matrix3dView::Matrix3dView(const std::string& name) :
+	Matrix3dView(name, Matrix3dd(1,0,0, 0,1,0, 0,0,1))
+{
+}
+
+Matrix3dView::Matrix3dView(const std::string& name, const Matrix3dd& value) :
+	IWindow(name)
+{
+	setValue(value);
+}
+
 void Matrix3dView::onShow()
 {
-	ImGui::InputDouble("00", &value[0][0]);
-	//ImGui::SameLine();
-	ImGui::InputDouble("01", &value[0][1]);
-	//ImGui::SameLine();
-	ImGui::InputDouble("02", &value[0][2]);
+	ImGui::InputFloat3("Row1", value[0]);
+	ImGui::InputFloat3("Row2", value[1]);
+	ImGui::InputFloat3("Row3", value[2]);
+}
 
-	//ImGui::SameLine();
-	ImGui::InputDouble("10", &value[1][0]);
-	//ImGui::SameLine();
-	ImGui::InputDouble("11", &value[1][1]);
-	//ImGui::SameLine();
-	ImGui::InputDouble("12", &value[1][2]);
+void Matrix3dView::setValue(const Matrix3dd& value)
+{
+	for (int i = 0; i < 3; ++i) {
+		for (int j = 0; j < 3; ++j) {
+			this->value[i][j] = value[i][j];
+		}
+	}
+}
 
-	//ImGui::SameLine();
-	ImGui::InputDouble("20", &value[2][0]);
-	//ImGui::SameLine();
-	ImGui::InputDouble("21", &value[2][1]);
-	//ImGui::SameLine();
-	ImGui::InputDouble("22", &value[2][2]);
+Matrix3dd Matrix3dView::getValue() const
+{
+	Matrix3dd m;
+	for (int i = 0; i < 3; ++i) {
+		for (int j = 0; j < 3; ++j) {
+			m[i][j] = value[i][j];
+		}
+	}
+	return m;
 }
