@@ -20,10 +20,12 @@ public:
 
 	Math::Cone3d getValue() const;
 
+	void setValue(const Math::Cone3d& value);
+
 private:
-	Vector3dView center;
-	DoubleView radius;
-	DoubleView height;
+	Vector3dView bottomView;
+	DoubleView radiusView;
+	DoubleView heightView;
 };
 
 	}

@@ -3,6 +3,8 @@
 #include <array>
 #include "../Math/Vector3d.h"
 #include "../Math/Triangle3d.h"
+#include "../Math/Matrix3d.h"
+#include "../Math/Matrix4d.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -10,11 +12,7 @@ namespace Crystal {
 class TriangleFace
 {
 public:
-	explicit TriangleFace(const std::array<Math::Vector3dd, 3>& vertices) :
-		vertices(vertices)
-	{
-		this->normal = toTriangle().getNormal();
-	}
+	explicit TriangleFace(const std::array<Math::Vector3dd, 3>& vertices);
 
 	TriangleFace(const std::array<Math::Vector3dd, 3>& vertices, const Math::Vector3dd& normal) :
 		vertices(vertices),
@@ -28,6 +26,10 @@ public:
 	Math::Triangle3d toTriangle() const { return Math::Triangle3d(vertices); }
 
 	void translate(const Math::Vector3dd& v);
+
+	void transform(const Math::Matrix3dd& m);
+
+	void transform(const Math::Matrix4dd& m);
 
 private:
 	std::array<Math::Vector3dd, 3> vertices;

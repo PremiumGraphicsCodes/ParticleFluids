@@ -23,21 +23,15 @@ public:
 		Cylinder3d(radius, height, Vector3dd(0,0,0))
 	{}
 
-	Cylinder3d(const double radius, const double height, const Vector3dd& center) :
-		radius(radius),
-		height(height),
-		center(center)
-	{
-	}
+	Cylinder3d(const double radius, const double height, const Vector3dd& center);
 
-	Vector3dd getPosition(const Vector3dd& p) const override
-	{
-		const auto theta = p.x * 2.0 * PI;
-		const auto x = p.z * radius * ::cos(theta);
-		const auto y = p.z * radius * ::sin(theta);
-		const auto z = height * p.y - height * 0.5;
-		return center + Vector3dd(x, y, z);
-	}
+	Vector3dd getPosition(const Vector3dd& p) const override;
+
+	double getRadius() const { return radius; }
+
+	double getHeight() const { return height; }
+
+	Vector3dd getCenter() const { return center; }
 
 private:
 	double radius;

@@ -161,6 +161,7 @@
     <ClCompile Include="Box2d.cpp" />
     <ClCompile Include="Box3d.cpp" />
     <ClCompile Include="Cone3d.cpp" />
+    <ClCompile Include="Cylinder3d.cpp" />
     <ClCompile Include="Line2d.cpp" />
     <ClCompile Include="Line3d.cpp" />
     <ClCompile Include="Plane3d.cpp" />

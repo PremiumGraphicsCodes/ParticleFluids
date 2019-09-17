@@ -12,12 +12,16 @@ void TriangleMeshScene::translate(const Vector3dd& v)
 
 void TriangleMeshScene::transform(const Matrix3dd& m)
 {
-	assert(false);
+	for (auto& f : faces) {
+		f.transform(m);
+	}
 }
 
 void TriangleMeshScene::transform(const Matrix4dd& m)
 {
-	assert(false);
+	for (auto& f : faces) {
+		f.transform(m);
+	}
 }
 
 Vector3dd TriangleMeshScene::getPosition(const int index) const

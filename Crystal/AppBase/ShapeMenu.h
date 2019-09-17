@@ -14,7 +14,7 @@ public:
 		control(control)
 	{}
 
-	virtual void onShow() override;
+	void onShow() override;
 
 private:
 	ControlPanel* control;

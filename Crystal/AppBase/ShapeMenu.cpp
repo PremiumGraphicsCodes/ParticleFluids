@@ -23,6 +23,7 @@
 #include "ScaleView.h"
 #include "TranslateView.h"
 #include "TransformView.h"
+#include "RotateView.h"
 
 using namespace Crystal::UI;
 
@@ -90,6 +91,9 @@ void ShapeMenu::onShow()
 			}
 			if (ImGui::MenuItem("Translate")) {
 				control->setWindow(new TranslateView("Translate", getModel(), canvas));
+			}
+			if (ImGui::MenuItem("Rotate")) {
+				control->setWindow(new RotateView("Rotate", getModel(), canvas));
 			}
 			if (ImGui::MenuItem("Transform")) {
 				control->setWindow(new TransformView("Transform", getModel(), canvas));

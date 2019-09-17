@@ -24,6 +24,12 @@ public:
 
 	Vector3dd getPosition(const Vector3dd& p) const override;
 
+	Vector3dd getBottom() const { return bottom; }
+
+	double getRadius() const { return radius; }
+
+	double getHeight() const { return height; }
+
 private:
 	Vector3dd bottom;
 	double radius;
