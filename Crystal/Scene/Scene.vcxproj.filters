@@ -27,9 +27,6 @@
     <ClInclude Include="SceneIdProvider.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="VolumeScene.h">
-      <Filter>Scene\Shape</Filter>
-    </ClInclude>
     <ClInclude Include="SceneViewModel.h">
       <Filter>ViewModel</Filter>
     </ClInclude>
@@ -97,6 +94,9 @@
     <ClInclude Include="WireFrameBuilder.h">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClInclude>
+    <ClInclude Include="VolumeScene.h">
+      <Filter>Scene\Shape\Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -157,6 +157,12 @@
     <ClCompile Include="WireFrameBuilder.cpp">
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
+    <ClCompile Include="VolumeScene.cpp">
+      <Filter>Scene\Shape\Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleFace.cpp">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -197,6 +203,9 @@
     </Filter>
     <Filter Include="Scene\Shape\TriangleMesh">
       <UniqueIdentifier>{74600514-a3cc-49be-8c9f-04f5fab37c08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Volume">
+      <UniqueIdentifier>{e4eec2bb-f092-4b14-864c-f47953c88957}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

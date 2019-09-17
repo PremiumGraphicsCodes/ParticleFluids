@@ -37,6 +37,7 @@
     <ClCompile Include="Matrix3dView.cpp" />
     <ClCompile Include="Matrix4dView.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
+    <ClCompile Include="RotateView.cpp" />
     <ClCompile Include="ScaleView.cpp" />
     <ClCompile Include="SelectionMenu.cpp" />
     <ClCompile Include="ShaderAddView.cpp" />

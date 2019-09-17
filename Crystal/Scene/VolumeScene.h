@@ -1,47 +1,44 @@
 #pragma once
 
-#include "IScene.h"
-#include "../Shape/Volume.h"
-#include "ParticleAttribute.h"
+#include <vector>
+#include <functional>
+#include "../../Crystal/Math/Box3d.h"
+#include "../../Crystal/Shape/Particle.h"
+#include "../../Crystal/Util/UnCopyable.h"
 
 namespace Crystal {
 	namespace Scene {
 
-class VolumeScene : public IScene
-{
-public:
-	VolumeScene() :
-		IScene(-1),
-		shape(nullptr)
-	{}
+		class Volume : private UnCopyable
+		{
+		public:
+			Volume(const int unum, const int vnum, const int wnum, const Math::Box3d& box);
 
-	VolumeScene(const int id, const std::string& name, Shape::Volume* shape) :
-		IScene(id, name),
-		shape(shape)
-	{}
+			void set(const int u, const int v, const int w, const double value);
 
-	~VolumeScene() {};
+			void add(const std::function<double(double)>& function);
 
-	Shape::Volume* getShape() const { return shape; }
+			int getUNum() const { return unum; }
 
-	/*
-	void move(const Math::Vector3dd& v) override { shape->move(v); }
+			int getVNum() const { return vnum; }
 
-	void transform(const Math::Matrix3dd& m) { shape->transform(m); }
+			int getWNum() const { return wnum; }
 
-	void transform(const Math::Matrix4dd& m) { shape->transform(m); }
-	*/
+			Math::Vector3dd getPosition(const int i, const int j, const int k) const { return nodes[i][j][k].getPosition(); }
 
-	SceneType getType() const override { return SceneType::VolumeScene; }
+			double getValue(const int i, const int j, const int k) const { return nodes[i][j][k].getAttribute(); }
 
-	void onClear() override
-	{
-		delete shape;
-	}
+			Math::Box3d getBoundingBox() const { return boundingBox; }
 
-private:
-	Shape::Volume* shape;
-};
+			//std::vector<Shape::Particle<double>> toParticles() const;
+
+		private:
+			std::vector< std::vector< std::vector< Shape::Particle<double> > > > nodes;
+			const int unum;
+			const int vnum;
+			const int wnum;
+			const Math::Box3d boundingBox;
+		};
 
 	}
 }

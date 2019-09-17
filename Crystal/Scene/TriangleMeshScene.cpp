@@ -5,7 +5,9 @@ using namespace Crystal::Scene;
 
 void TriangleMeshScene::translate(const Vector3dd& v)
 {
-	assert(false);
+	for (auto& f : faces) {
+		f.translate(v);
+	}
 }
 
 void TriangleMeshScene::transform(const Matrix3dd& m)

@@ -1,9 +1,9 @@
-#include "Volume.h"
+#include "VolumeScene.h"
 
 #include "../../Crystal/Math/Sphere3d.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 
 Volume::Volume(const int unum, const int vnum, const int wnum, const Box3d& box) :
 	unum(unum),
@@ -49,6 +49,7 @@ void Volume::set(const int u, const int v, const int w, const double value)
 	nodes[u][v][w].setAttribute(value);
 }
 
+/*
 std::vector<Particle<double>> Volume::toParticles() const
 {
 	std::vector<Particle<double>> results;
@@ -61,3 +62,4 @@ std::vector<Particle<double>> Volume::toParticles() const
 	}
 	return results;
 }
+*/

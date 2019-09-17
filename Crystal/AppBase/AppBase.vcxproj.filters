@@ -212,6 +212,9 @@
     <ClCompile Include="Cone3dView.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="RotateView.cpp">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyfiledialogs.h" />

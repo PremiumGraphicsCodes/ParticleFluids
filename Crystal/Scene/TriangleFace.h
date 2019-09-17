@@ -27,6 +27,8 @@ public:
 
 	Math::Triangle3d toTriangle() const { return Math::Triangle3d(vertices); }
 
+	void translate(const Math::Vector3dd& v);
+
 private:
 	std::array<Math::Vector3dd, 3> vertices;
 	Math::Vector3dd normal;
