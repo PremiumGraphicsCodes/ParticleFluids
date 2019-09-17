@@ -3,30 +3,20 @@
 #include "Vector3d.h"
 #include "Matrix3d.h"
 #include "Matrix4d.h"
+#include "ICurveU.h"
 
 namespace Crystal {
 	namespace Math {
 		class Ray3d;
 
-class Line3dd
+class Line3dd : public ICurveU
 {
 public:
-	Line3dd() :
-		origin(0,0,0),
-		dir(1,0,0)
-	{
-	}
+	Line3dd();
 
-	Line3dd(const Math::Vector3dd& origin, const Math::Vector3dd& dir) :
-		origin(origin),
-		dir(dir)
-	{
-	}
+	Line3dd(const Math::Vector3dd& origin, const Math::Vector3dd& dir);
 
-	static Line3dd fromPoints(const Vector3dd& start, const Vector3dd& end)
-	{
-		return Line3dd(start, end - start);
-	}
+	static Line3dd fromPoints(const Vector3dd& start, const Vector3dd& end);
 
 	Math::Vector3dd getStart() const { return origin; }
 
@@ -42,7 +32,7 @@ public:
 
 	void transform(const Math::Matrix4dd& m);
 
-	Math::Vector3dd getPosition(const double param) const { return origin + dir * param; }
+	Math::Vector3dd getPosition(const double u) const override;
 
 	bool isSame(const Line3dd& rhs, const double tolerance) const;
 

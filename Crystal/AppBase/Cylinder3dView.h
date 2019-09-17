@@ -19,6 +19,8 @@ public:
 
 	Math::Cylinder3d getValue() const;
 
+	void setValue(const Math::Cylinder3d& value);
+
 private:
 	Vector3dView center;
 	DoubleView radius;

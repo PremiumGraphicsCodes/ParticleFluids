@@ -20,3 +20,9 @@ Plane3d Plane3dView::getValue() const
 {
 	return Math::Plane3d(origin.getValue(), normal.getValue());
 }
+
+void Plane3dView::setValue(const Plane3d& value)
+{
+	origin.setValue( value.getOrigin() );
+	normal.setValue( value.getNormal() );
+}

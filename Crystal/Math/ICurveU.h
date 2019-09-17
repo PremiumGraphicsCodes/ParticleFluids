@@ -10,7 +10,7 @@ class ICurveU
 public:
 	virtual ~ICurveU() = default;
 
-	virtual Vector3dd getPosition(const double u, const double v) const = 0;
+	virtual Vector3dd getPosition(const double u) const = 0;
 };
 
 	}

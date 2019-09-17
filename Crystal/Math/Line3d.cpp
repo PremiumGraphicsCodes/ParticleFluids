@@ -1,8 +1,24 @@
 #include "Line3d.h"
-
 #include "Ray3d.h"
 
 using namespace Crystal::Math;
+
+Line3dd::Line3dd() :
+	origin(0, 0, 0),
+	dir(1, 0, 0)
+{
+}
+
+Line3dd::Line3dd(const Vector3dd& origin, const Vector3dd& dir) :
+	origin(origin),
+	dir(dir)
+{
+}
+
+Line3dd Line3dd::fromPoints(const Vector3dd& start, const Vector3dd& end)
+{
+	return Line3dd(start, end - start);
+}
 
 void Line3dd::transform(const Matrix3dd& m)
 {
@@ -16,6 +32,10 @@ void Line3dd::transform(const Matrix4dd& m)
 	dir = m * glm::vec4(dir, 1.0);
 }
 
+Vector3dd Line3dd::getPosition(const double u) const
+{
+	return origin + dir * u;
+}
 
 bool Line3dd::isSame(const Line3dd& rhs, const double tolerance) const
 {

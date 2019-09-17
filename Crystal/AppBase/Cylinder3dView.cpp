@@ -22,3 +22,10 @@ Cylinder3d Cylinder3dView::getValue() const
 {
 	return Math::Cylinder3d(radius.getValue(), height.getValue(), center.getValue());
 }
+
+void Cylinder3dView::setValue(const Cylinder3d& value)
+{
+	center.setValue(value.getCenter());
+	radius.setValue(value.getRadius());
+	height.setValue(value.getHeight());
+}
