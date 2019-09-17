@@ -2,7 +2,7 @@
 
 #include <list>
 #include "../Math/Line3d.h"
-#include "IShape.h"
+#include "../Shape/IShape.h"
 
 namespace Crystal {
 	namespace Shape {

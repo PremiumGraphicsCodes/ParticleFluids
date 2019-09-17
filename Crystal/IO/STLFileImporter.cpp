@@ -17,6 +17,7 @@ STLFileImporter::STLFileImporter(SceneFactory* sceneFactory) :
 
 bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& filePath, IScene* parent)
 {
+	/*
 	STLASCIIFileReader reader;
 	if (reader.read(filePath)) {
 		PolygonMeshBuilder builder;
@@ -26,11 +27,13 @@ bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& 
 		parent->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );
 		return true;
 	}
+	*/
 	return false;
 }
 
 bool STLFileImporter::importSTLBinary(const std::experimental::filesystem::path& filePath, IScene* parent)
 {
+	/*
 	STLBinaryFileReader reader;
 	if (reader.read(filePath)) {
 		PolygonMeshBuilder builder;
@@ -40,5 +43,6 @@ bool STLFileImporter::importSTLBinary(const std::experimental::filesystem::path&
 		parent->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );
 		return true;
 	}
+	*/
 	return false;
 }

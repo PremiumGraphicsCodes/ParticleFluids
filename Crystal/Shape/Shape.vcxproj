@@ -29,8 +29,6 @@
     <ClInclude Include="PolygonMeshBuilder.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Volume.h" />
-    <ClInclude Include="WireFrame.h" />
-    <ClInclude Include="WireFrameBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Face.cpp" />
@@ -38,8 +36,6 @@
     <ClCompile Include="PolygonMeshBuilder.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="Volume.cpp" />
-    <ClCompile Include="WireFrame.cpp" />
-    <ClCompile Include="WireFrameBuilder.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{76FDBCE5-E588-4BC9-97B4-C8FE5D76F91A}</ProjectGuid>

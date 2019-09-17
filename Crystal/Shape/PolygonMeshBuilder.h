@@ -11,7 +11,6 @@ namespace Crystal {
 		class Quad3d;
 	}
 	namespace Shape {
-		class TriangleMesh;
 
 class PolygonMeshBuilder : private UnCopyable
 {
@@ -26,7 +25,7 @@ public:
 
 	void add(const Math::Quad3d& quad);
 
-	void add(const TriangleMesh& mesh);
+	//void add(const TriangleMesh& mesh);
 
 	PolygonMesh* getPolygonMesh();
 

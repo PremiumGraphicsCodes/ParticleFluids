@@ -1,7 +1,7 @@
 #include "WFConeView.h"
 
 #include "../Math/Cone3d.h"
-#include "../Shape/WireFrameBuilder.h"
+#include "../Scene/WireFrameBuilder.h"
 #include "../Scene/WireFrameScene.h"
 
 using namespace Crystal::Math;

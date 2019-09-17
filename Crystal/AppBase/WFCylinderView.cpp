@@ -1,7 +1,7 @@
 #include "WFCylinderView.h"
 
 #include "../Math/Cylinder3d.h"
-#include "../Shape/WireFrameBuilder.h"
+#include "../Scene/WireFrameBuilder.h"
 #include "../Scene/WireFrameScene.h"
 
 using namespace Crystal::Math;

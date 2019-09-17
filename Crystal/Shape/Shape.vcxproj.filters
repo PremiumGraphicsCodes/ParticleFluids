@@ -4,9 +4,6 @@
     <Filter Include="ParticleSystem">
       <UniqueIdentifier>{b692e6b9-8534-4e0c-956d-c2a6f8999b79}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WireFrame">
-      <UniqueIdentifier>{a5ad1f02-65d3-4663-a627-40b210d8797a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PolygonMesh">
       <UniqueIdentifier>{2d1afe88-86ab-432e-b5ba-9cce9e366110}</UniqueIdentifier>
     </Filter>
@@ -23,12 +20,6 @@
     </ClInclude>
     <ClInclude Include="ParticleSystem.h">
       <Filter>ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="WireFrame.h">
-      <Filter>WireFrame</Filter>
-    </ClInclude>
-    <ClInclude Include="WireFrameBuilder.h">
-      <Filter>WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMesh.h">
       <Filter>PolygonMesh</Filter>
@@ -51,12 +42,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WireFrame.cpp">
-      <Filter>WireFrame</Filter>
-    </ClCompile>
-    <ClCompile Include="WireFrameBuilder.cpp">
-      <Filter>WireFrame</Filter>
-    </ClCompile>
     <ClCompile Include="PolygonMesh.cpp">
       <Filter>PolygonMesh</Filter>
     </ClCompile>

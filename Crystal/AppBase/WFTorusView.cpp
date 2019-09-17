@@ -1,7 +1,7 @@
 #include "WFTorusView.h"
 
 #include "../Math/Torus3d.h"
-#include "../Shape/WireFrameBuilder.h"
+#include "../Scene/WireFrameBuilder.h"
 #include "../Scene/WireFrameScene.h"
 
 using namespace Crystal::Math;

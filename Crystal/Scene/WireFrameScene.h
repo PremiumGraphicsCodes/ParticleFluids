@@ -2,7 +2,7 @@
 
 #include "IShapeScene.h"
 #include "WireFrameAttribute.h"
-#include "../Shape/WireFrame.h"
+#include "WireFrame.h"
 
 namespace Crystal {
 	namespace Scene {

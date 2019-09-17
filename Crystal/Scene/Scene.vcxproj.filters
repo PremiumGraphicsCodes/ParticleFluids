@@ -94,6 +94,12 @@
     <ClInclude Include="TriangleFace.h">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClInclude>
+    <ClInclude Include="WireFrame.h">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameBuilder.h">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -150,6 +156,12 @@
     </ClCompile>
     <ClCompile Include="TriangleMeshScene.cpp">
       <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrame.cpp">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrameBuilder.cpp">
+      <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

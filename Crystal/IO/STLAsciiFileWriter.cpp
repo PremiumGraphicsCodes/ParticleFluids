@@ -1,7 +1,6 @@
 #include "STLASCIIFileWriter.h"
 #include <fstream>
 
-using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
 bool STLASCIIFileWriter::write(const std::experimental::filesystem::path& filePath, const STLFile& stl)

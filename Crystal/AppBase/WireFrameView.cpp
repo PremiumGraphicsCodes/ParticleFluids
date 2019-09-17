@@ -1,6 +1,6 @@
 #include "WireFrameView.h"
 
-#include "../Shape/WireFrame.h"
+#include "../Scene/WireFrame.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::UI;

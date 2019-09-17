@@ -1,7 +1,5 @@
 #include "PolygonMeshBuilder.h"
 
-#include "TriangleMesh.h"
-
 #include "../Math/Line3d.h"
 #include "../Math/Sphere3d.h"
 #include "../Math/Plane3d.h"
@@ -85,6 +83,7 @@ void PolygonMeshBuilder::add(const Quad3d& quad)
 	polygonMesh->createFace(v3,v1,v2);
 }
 
+/*
 void PolygonMeshBuilder::add(const TriangleMesh& mesh)
 {
 	const auto& fs = mesh.getFaces();
@@ -100,6 +99,7 @@ void PolygonMeshBuilder::add(const TriangleMesh& mesh)
 		polygonMesh->createFace(ids[0], ids[1], ids[2]);
 	}
 }
+*/
 
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
 {

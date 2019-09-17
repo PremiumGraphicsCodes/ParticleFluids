@@ -3,7 +3,7 @@
 #include <cassert>
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::IO;
 
 bool STLBinaryFileReader::read(const std::experimental::filesystem::path& filePath)

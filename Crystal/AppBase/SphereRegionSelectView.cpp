@@ -2,7 +2,7 @@
 #include "PickUICtrl.h"
 #include "CameraUICtrl.h"
 
-#include "../Shape/WireFrameBuilder.h"
+#include "../Scene/WireFrameBuilder.h"
 #include "../Scene/IShapeScene.h"
 #include "../Scene/WireFrameScene.h"
 

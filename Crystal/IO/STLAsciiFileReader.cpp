@@ -2,8 +2,9 @@
 
 #include "Helper.h"
 
+
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::IO;
 
 bool STLASCIIFileReader::read(const std::experimental::filesystem::path& filePath)
