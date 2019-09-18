@@ -17,6 +17,7 @@ SpaceHash::SpaceHash(const float divideLength, const int tableSize) :
 {
 }
 
+/*
 void SpaceHash::add(const IParticleSystem& particles)
 {
 	const auto& points = particles.getIParticles();
@@ -24,6 +25,7 @@ void SpaceHash::add(const IParticleSystem& particles)
 		add(p);
 	}
 }
+*/
 
 void SpaceHash::add(IParticle* particle)
 {

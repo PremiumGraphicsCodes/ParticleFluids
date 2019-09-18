@@ -15,7 +15,7 @@ void VolumeConvertAlgo::convert(Volume& volume, const ParticleSystem<double>& pa
 
 	const auto& particles = particleSystem.getParticles();
 	SpaceHash spaceHash(searchRadius, particles.size());
-	spaceHash.add(particleSystem);
+	//spaceHash.add(particleSystem);
 
 	const auto unum = volume.getUNum();
 	const auto vnum = volume.getVNum();

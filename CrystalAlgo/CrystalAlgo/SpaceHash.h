@@ -13,7 +13,7 @@ class SpaceHash : private UnCopyable
 public:
 	SpaceHash(const float divideLength, const int tableSize);
 
-	void add(const Shape::IParticleSystem& particles);
+	//void add(const Shape::IParticleSystem& particles);
 
 	void add(Shape::IParticle* particle);
 
