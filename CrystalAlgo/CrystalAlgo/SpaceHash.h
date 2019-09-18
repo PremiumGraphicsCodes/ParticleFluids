@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Util/UnCopyable.h"
 #include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Shape/ParticleSystem.h"
+#include "../../Crystal/Scene/ParticleSystem.h"
 #include <list>
 
 namespace Crystal {

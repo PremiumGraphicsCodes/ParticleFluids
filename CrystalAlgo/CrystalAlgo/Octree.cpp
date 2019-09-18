@@ -1,6 +1,6 @@
 #include "Octree.h"
 
-#include "../../Crystal/Shape/IParticle.h"
+#include "../../Crystal/Scene/IParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
