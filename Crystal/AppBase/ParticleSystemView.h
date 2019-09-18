@@ -4,11 +4,9 @@
 #include "imgui.h"
 
 #include "IntView.h"
+#include "../Scene/ParticleSystemScene.h"
 
 namespace Crystal {
-	namespace Shape {
-		class IParticleSystem;
-	}
 	namespace UI {
 
 class ParticleSystemView : public IWindow
@@ -18,7 +16,7 @@ public:
 
 	void onShow() override;
 
-	void setValue(Shape::IParticleSystem* value);
+	void setValue(Scene::ParticleSystemScene* value);
 
 private:
 	IntView particleCount;

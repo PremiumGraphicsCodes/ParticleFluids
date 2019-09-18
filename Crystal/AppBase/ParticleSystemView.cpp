@@ -1,8 +1,8 @@
 #include "ParticleSystemView.h"
 
-#include "../Scene/ParticleSystem.h"
+#include "../Scene/ParticleSystemScene.h"
 
-using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 ParticleSystemView::ParticleSystemView(const std::string& name) :
@@ -15,7 +15,7 @@ void ParticleSystemView::onShow()
 	particleCount.show();
 }
 
-void ParticleSystemView::setValue(IParticleSystem* value)
+void ParticleSystemView::setValue(ParticleSystemScene* value)
 {
-	particleCount.setValue(value->getIParticles().size());
+	//particleCount.setValue(value->getIParticles().size());
 }

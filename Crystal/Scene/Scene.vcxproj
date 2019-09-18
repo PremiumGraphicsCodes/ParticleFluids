@@ -24,7 +24,6 @@
   <ItemGroup>
     <ClInclude Include="FaceGroupScene.h" />
     <ClInclude Include="IParticle.h" />
-    <ClInclude Include="IParticleSystem.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LineRenderer.h" />
