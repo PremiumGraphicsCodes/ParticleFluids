@@ -1,10 +1,8 @@
 #pragma once
 
 #include "IShapeScene.h"
-#include "../Shape/ParticleSystem.h"
+#include "ParticleSystem.h"
 #include "ParticleAttribute.h"
-#include "../Graphics/ICamera.h"
-#include "../Shader/IShaderCommand.h"
 
 namespace Crystal {
 	namespace Scene {

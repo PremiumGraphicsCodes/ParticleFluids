@@ -1,23 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ParticleSystem">
-      <UniqueIdentifier>{b692e6b9-8534-4e0c-956d-c2a6f8999b79}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PolygonMesh">
       <UniqueIdentifier>{2d1afe88-86ab-432e-b5ba-9cce9e366110}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IParticle.h">
-      <Filter>ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleSystem.h">
-      <Filter>ParticleSystem</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMesh.h">
       <Filter>PolygonMesh</Filter>
     </ClInclude>
@@ -30,9 +18,6 @@
     <ClInclude Include="IShape.h" />
     <ClInclude Include="Vertex.h">
       <Filter>PolygonMesh</Filter>
-    </ClInclude>
-    <ClInclude Include="IParticleSystem.h">
-      <Filter>ParticleSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

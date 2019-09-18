@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IScene.h"
-#include "../Shape/ParticleSystem.h"
 #include "../Graphics/ColorRGBA.h"
 #include "../Graphics/PointLight.h"
 
