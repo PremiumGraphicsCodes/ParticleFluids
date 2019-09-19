@@ -23,7 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FaceGroupScene.h" />
-    <ClInclude Include="IParticle.h" />
     <ClInclude Include="IPoint.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />

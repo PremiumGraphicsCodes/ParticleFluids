@@ -1,12 +1,12 @@
 #pragma once
 
-#include "IParticle.h"
+#include "IPoint.h"
 
 namespace Crystal {
 	namespace Shape {
 
 template<typename Attr>
-class Particle : public IParticle
+class Particle : public IPoint
 {
 public:
 	Particle()
