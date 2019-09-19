@@ -7,5 +7,6 @@ using namespace Crystal::UI;
 
 void Vector3dView::onShow()
 {
-	ImGui::InputFloat3(name.c_str(), &value[0]);
+	ImGui::InputScalarN(name.c_str(), ImGuiDataType_Double, &value[0],3);
+	//ImGui::InputFloat3(name.c_str(), &value[0]);
 }

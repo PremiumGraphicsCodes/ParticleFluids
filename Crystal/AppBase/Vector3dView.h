@@ -27,7 +27,7 @@ public:
 	Math::Vector3dd getValue() const { return value; }
 
 private:
-	Math::Vector3df value;
+	Math::Vector3dd value;
 };
 
 	}
