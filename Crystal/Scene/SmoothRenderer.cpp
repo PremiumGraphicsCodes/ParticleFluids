@@ -34,6 +34,7 @@ SmoothRenderer::SmoothRenderer()
 
 	addAttribute("position");
 	addAttribute("normal");
+	addAttribute("materialId");
 	//shader.findAttribLocation("texCoord");
 }
 
@@ -44,6 +45,7 @@ void SmoothRenderer::render(const ICamera& camera)
 	const auto& positions = buffer.getPositions().get();// buffers[0].get();
 	const auto& normals = buffer.getNormals().get();//buffers[1].get();
 	const auto& texCoords = buffer.getTexCoords().get();
+	const auto& materialIds = buffer.getMaterialIds().get();
 	if (positions.empty()) {
 		return;
 	}
@@ -69,6 +71,7 @@ void SmoothRenderer::render(const ICamera& camera)
 
 	shader->enableVertexAttribute("position");
 	shader->enableVertexAttribute("normal");
+	shader->enableVertexAttribute("materialId");
 
 	//texture.bind();
 
@@ -103,6 +106,7 @@ void SmoothRenderer::render(const ICamera& camera)
 
 	//texture.unbind();
 
+	shader->disableVertexAttribute("materialId");
 	shader->disableVertexAttribute("position");
 	shader->disableVertexAttribute("normal");
 
@@ -117,9 +121,11 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "#version 150" << std::endl
 		<< "in vec3 position;" << std::endl
 		<< "in vec3 normal;" << std::endl
+		<< "in int materialId;" << std::endl
 		//<< "in vec2 texCoord;" << std::endl
 		<< "out vec3 vNormal;" << std::endl
 		<< "out vec3 vPosition;" << std::endl
+		<< "flat out int vMaterialId;" << std::endl
 		//<< "out vec2 vTexCoord;" << std::endl
 		<< "uniform mat4 projectionMatrix;"
 		<< "uniform mat4 modelviewMatrix;"
@@ -127,6 +133,7 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position, 1.0);" << std::endl
 		<< "	vNormal = normalize(normal);" << std::endl
 		<< "	vPosition = position;" << std::endl
+		<< "	vMaterialId = materialId;" << std::endl
 		//<< "	vTexCoord = texCoord;" << std::endl
 		<< "}" << std::endl;
 	return stream.str();
@@ -139,6 +146,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "#version 150" << std::endl
 		<< "in vec3 vNormal;" << std::endl
 		<< "in vec3 vPosition;" << std::endl
+		<< "flat in int vMaterialId;" << std::endl
 		//<< "in vec2 vTexCoord;" << std::endl
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
@@ -158,7 +166,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "};"
 		<< "uniform MaterialInfo materials[256];"
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
-		<< "	MaterialInfo material = materials[0];" << std::endl
+		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl
 		<< "	LightInfo light = lights[0];" << std::endl
 		<< "	vec3 s = normalize(light.position - vPosition);" << std::endl
 		<< "	vec3 v = normalize(vPosition - eyePosition);" << std::endl

@@ -15,7 +15,8 @@ class Face
 public:
 	Face(int v1, int v2, int v3, int id) :
 		vertexIds{ v1, v2, v3 },
-		id(id)
+		id(id),
+		materialId(-1)
 	{}
 
 	std::array<int, 3> getVertexIds() const { return vertexIds; }
@@ -27,6 +28,8 @@ public:
 	int getV3() const { return vertexIds[2]; }
 
 	int getId() const { return id; }
+
+	int materialId;
 
 private:
 	int id;

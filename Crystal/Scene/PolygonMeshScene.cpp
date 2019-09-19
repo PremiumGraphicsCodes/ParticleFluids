@@ -34,7 +34,7 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 				if (v.texCoordId != -1) {
 					texCoord = tcs[v.texCoordId];
 				}
-				buffer.addVertex(p, n, texCoord, 0);
+				buffer.addVertex(p, n, texCoord, 0);// f.materialId);
 			}
 		}
 		viewModel.triangleBuffers.push_back(buffer);
