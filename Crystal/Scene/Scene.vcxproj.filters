@@ -103,6 +103,9 @@
     <ClInclude Include="IParticle.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
+    <ClInclude Include="IPoint.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">

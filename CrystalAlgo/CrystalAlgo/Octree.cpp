@@ -1,6 +1,6 @@
 #include "Octree.h"
 
-#include "../../Crystal/Scene/IParticle.h"
+#include "../../Crystal/Scene/IPoint.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -10,9 +10,9 @@ Octree::Octree(const Box3d& space) :
 	space(space)
 {}
 
-void Octree::add(IParticle* particle)
+void Octree::add(IPoint* particle)
 {
-	const auto& position = particle->getPosition();
+	//const auto& position = particle->getPosition();
 	this->particles.push_back(particle);
 }
 
