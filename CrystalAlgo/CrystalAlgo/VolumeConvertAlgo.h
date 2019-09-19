@@ -9,7 +9,7 @@ namespace Crystal {
 class VolumeConvertAlgo
 {
 public:
-	void convert(Scene::Volume& volume, const Shape::ParticleSystem<double>& particleSystem, const double searchRadius);
+	void convert(Scene::Volume& volume, const Scene::ParticleSystem<double>& particleSystem, const double searchRadius);
 
 private:
 };

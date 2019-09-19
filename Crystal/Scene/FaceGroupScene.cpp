@@ -12,9 +12,10 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 		return;
 	}
 
-	/*
 	PolygonMeshScene* parent = static_cast<PolygonMeshScene*>( getParent() );
 	const auto& shape = parent->getShape();
+	/*
+	shape->getVertices();
 	{
 		SmoothTriangleBuffer buffer;
 		for (const auto& f : faces) {

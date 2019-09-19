@@ -1,9 +1,8 @@
 #pragma once
 
-#include "../../Crystal/Scene/PolygonMeshBuilder.h"
 
 namespace Crystal {
-	namespace Shape {
+	namespace Scene {
 		class PolygonMesh;
 	}
 	namespace Algo {
@@ -11,16 +10,16 @@ namespace Crystal {
 class BooleanAlgo
 {
 public:
-	void calculateUnion(const Shape::PolygonMesh& lhs, const Shape::PolygonMesh& rhs);
+	void calculateUnion(const Scene::PolygonMesh& lhs, const Scene::PolygonMesh& rhs);
 
-	void calculateDifference(const Shape::PolygonMesh& lhs, const Shape::PolygonMesh& rhs);
+	void calculateDifference(const Scene::PolygonMesh& lhs, const Scene::PolygonMesh& rhs);
 
-	void calculateIntersection(const Shape::PolygonMesh& lhs, const Shape::PolygonMesh& rhs);
+	void calculateIntersection(const Scene::PolygonMesh& lhs, const Scene::PolygonMesh& rhs);
 
-	Shape::PolygonMesh* getResult() { return result; }
+	Scene::PolygonMesh* getResult() { return result; }
 
 private:
-	Shape::PolygonMesh* result;
+	Scene::PolygonMesh* result;
 };
 	}
 }

@@ -6,7 +6,6 @@
 #include "../../Crystal/Math/Gaussian.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
@@ -74,7 +73,7 @@ void MarchingCubesView::onOk()
 	MarchingCubesAlgo algo;
 	algo.build(volume, 0.30);
 	const auto& triangles = algo.getTriangles();
-	Crystal::Shape::PolygonMeshBuilder builder;
+	PolygonMeshBuilder builder;
 	for (const auto& t : triangles) {
 		builder.add(t);
 	}

@@ -4,7 +4,6 @@
 #include "../CrystalAlgo/VolumeConvertAlgo.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;

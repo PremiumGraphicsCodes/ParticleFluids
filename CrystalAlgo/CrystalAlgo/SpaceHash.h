@@ -15,12 +15,12 @@ public:
 
 	//void add(const Shape::IParticleSystem& particles);
 
-	void add(Shape::IPoint* particle);
+	void add(Scene::IPoint* particle);
 
-	std::list<Shape::IPoint*> getNeighbors(const Math::Vector3dd& position);
+	std::list<Scene::IPoint*> getNeighbors(const Math::Vector3dd& position);
 
 private:
-	std::vector<std::list<Shape::IPoint*>> table;
+	std::vector<std::list<Scene::IPoint*>> table;
 
 	int toHash(const Math::Vector3df& pos);
 

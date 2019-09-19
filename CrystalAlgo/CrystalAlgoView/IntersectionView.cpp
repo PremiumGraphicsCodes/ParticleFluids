@@ -5,7 +5,6 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
-using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;

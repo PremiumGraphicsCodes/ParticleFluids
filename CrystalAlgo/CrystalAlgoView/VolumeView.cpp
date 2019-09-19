@@ -8,7 +8,6 @@
 #include "../../Crystal/Scene/ParticleAttribute.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
