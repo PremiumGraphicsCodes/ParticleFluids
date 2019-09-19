@@ -19,7 +19,6 @@ private:
 
 private:
 	Box3dView boxView;
-	StringView materialNameView;
 	StringView nameView;
 };
 

@@ -14,12 +14,12 @@ FaceView::FaceView(const std::string& name) :
 {
 }
 
-FaceView::FaceView(const std::string& name, Face* face) :
+FaceView::FaceView(const std::string& name, const Face& face) :
 	IWindow(name),
-	id("Id", face->getId()),
-	vertex1("Vertex1", face->getV1()),
-	vertex2("Vertex2", face->getV2()),
-	vertex3("Vertex3", face->getV3())
+	id("Id", face.getId()),
+	vertex1("Vertex1", face.getV1()),
+	vertex2("Vertex2", face.getV2()),
+	vertex3("Vertex3", face.getV3())
 {
 	setValue(face);
 }
@@ -32,10 +32,10 @@ void FaceView::onShow()
 	vertex3.show();
 }
 
-void FaceView::setValue(Face* value)
+void FaceView::setValue(const Face& value)
 {
-	id.setValue(value->getId());
-	vertex1.setValue(value->getV1());
-	vertex2.setValue(value->getV2());
-	vertex3.setValue(value->getV3());
+	id.setValue(value.getId());
+	vertex1.setValue(value.getV1());
+	vertex2.setValue(value.getV2());
+	vertex3.setValue(value.getV3());
 }

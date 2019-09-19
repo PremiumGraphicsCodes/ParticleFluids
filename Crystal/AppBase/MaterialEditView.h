@@ -14,11 +14,7 @@ class MaterialEditView : public IWindow
 public:
 	MaterialEditView(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	void setValue(Scene::MaterialScene* value)
-	{
-		this->id.setValue(value->getId());
-		this->name.setValue( value->getName() );
-	}
+	void setValue(Scene::MaterialScene* value);
 
 	void onShow() override;
 

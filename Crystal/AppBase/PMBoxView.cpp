@@ -12,11 +12,9 @@ using namespace Crystal::UI;
 PMBoxView::PMBoxView(World* model, Canvas* canvas) :
 	IOkCancelView("PMBox", model, canvas),
 	boxView("Box"),
-	materialNameView("MaterialName", "Material01"),
 	nameView("Name", "PMBox")
 {
 	add(&boxView);
-	add(&materialNameView);
 	add(&nameView);
 }
 

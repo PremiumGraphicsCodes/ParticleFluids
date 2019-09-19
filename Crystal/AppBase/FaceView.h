@@ -18,20 +18,17 @@ class FaceView : public IWindow
 public:
 	explicit FaceView(const std::string& name);
 
-	FaceView(const std::string& name, Scene::Face* value);
+	FaceView(const std::string& name, const Scene::Face& value);
 
 	void onShow() override;
 
-	void setValue(Scene::Face* value);
-
-	Scene::Face* getValue() const { return value; }
+	void setValue(const Scene::Face& value);
 
 private:
 	IntView id;
 	IntView vertex1;
 	IntView vertex2;
 	IntView vertex3;
-	Scene::Face* value;
 };
 	}
 }

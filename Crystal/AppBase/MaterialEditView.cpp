@@ -24,6 +24,13 @@ MaterialEditView::MaterialEditView(const std::string& name, World* model, Canvas
 	editButton.setFunction(func);
 }
 
+void MaterialEditView::setValue(MaterialScene* value)
+{
+	this->id.setValue(value->getId());
+	this->name.setValue(value->getName());
+	this->material.setValue(value->getMaterial());
+}
+
 void MaterialEditView::onShow()
 {
 	id.show();
