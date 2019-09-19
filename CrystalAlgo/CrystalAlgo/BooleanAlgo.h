@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
+#include "../../Crystal/Scene/PolygonMeshBuilder.h"
 
 namespace Crystal {
 	namespace Shape {

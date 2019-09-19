@@ -27,16 +27,16 @@ void SpaceHash::add(const IParticleSystem& particles)
 }
 */
 
-void SpaceHash::add(IParticle* particle)
+void SpaceHash::add(IPoint* particle)
 {
 	const auto& index = toIndex(particle->getPosition());
 	const auto hashIndex = toHash(index);
 	table[hashIndex].push_back( particle );
 }
 
-std::list<IParticle*> SpaceHash::getNeighbors(const Vector3dd& position)
+std::list<IPoint*> SpaceHash::getNeighbors(const Vector3dd& position)
 {
-	std::list<IParticle*> results;
+	std::list<IPoint*> results;
 
 	const auto& index = toIndex(position);
 	for (int i = index[0] - 1; i < index[0] + 1; ++i) {

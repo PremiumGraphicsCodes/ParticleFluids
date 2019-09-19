@@ -7,7 +7,7 @@
 #include "../../Crystal/Math/Plane3d.h"
 #include "../../Crystal/Math/Quad3d.h"
 
-#include "../../Crystal/Shape/PolygonMesh.h"
+#include "../../Crystal/Scene/PolygonMesh.h"
 
 //#define GLM_ENABLE_EXPERIMENTAL
 //#include "../../Crystal/ThirdParty/glm-0.9.9.3/glm/gtx/intersect.hpp"
