@@ -3,6 +3,7 @@
 #include "SceneIdViewModel.h"
 
 #include "../Graphics/DrawableId.h"
+#include "../Math/Line3d.h"
 
 #include "LightScene.h"
 
@@ -34,7 +35,7 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 				if (v.texCoordId != -1) {
 					texCoord = tcs[v.texCoordId];
 				}
-				buffer.addVertex(p, n, texCoord, 0);// f.materialId);
+				buffer.addVertex(p, n, texCoord, f.materialId);
 			}
 		}
 		viewModel.triangleBuffers.push_back(buffer);
@@ -45,22 +46,34 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 		const auto& ps = shape->getPositions();
 		const auto& vertices = shape->getVertices();
 
+		std::vector<Line3dd> lines;
 		for (const auto& f : faces) {
 			const auto& vIds = f.getVertexIds();
-			for (const auto vId : vIds) {
-				const auto& v = vertices[vId];
-				const auto& p = ps[v.positionId];
-				buffer.addVertex(p, ColorRGBAf(1, 0, 0, 0));
+			{
+				const auto& start = ps[vertices[vIds[0]].positionId];
+				const auto& end = ps[vertices[vIds[1]].positionId];
+				lines.push_back(Line3dd(start, end - start));
 			}
+			{
+				const auto& start = ps[vertices[vIds[1]].positionId];
+				const auto& end = ps[vertices[vIds[2]].positionId];
+				lines.push_back(Line3dd(start, end - start));
+			}
+			{
+				const auto& start = ps[vertices[vIds[2]].positionId];
+				const auto& end = ps[vertices[vIds[0]].positionId];
+				lines.push_back(Line3dd(start, end - start));
+			}
+
 		}
-		for (const auto& f : faces) {
-			buffer.addIndex(f.getV1());
-			buffer.addIndex(f.getV2());
-			buffer.addIndex(f.getV2());
-			buffer.addIndex(f.getV3());
-			buffer.addIndex(f.getV3());
-			buffer.addIndex(f.getV1());
+		int index = 0;
+		for (const auto& l : lines) {
+			buffer.addVertex(l.getStart(), ColorRGBAf(1, 0, 0, 0));
+			buffer.addVertex(l.getEnd(), ColorRGBAf(1, 0, 0, 0));
+			buffer.addIndex(index++);
+			buffer.addIndex(index++);
 		}
+
 		viewModel.lineBuffers.push_back(buffer);
 	}
 }

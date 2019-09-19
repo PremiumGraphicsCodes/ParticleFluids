@@ -16,7 +16,7 @@ public:
 	Face(int v1, int v2, int v3, int id) :
 		vertexIds{ v1, v2, v3 },
 		id(id),
-		materialId(-1)
+		materialId(0)
 	{}
 
 	std::array<int, 3> getVertexIds() const { return vertexIds; }
