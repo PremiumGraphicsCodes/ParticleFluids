@@ -6,7 +6,6 @@
 #include "../IO/STLBinaryFileReader.h"
 #include "../Scene/Scene.h"
 
-using namespace Crystal::Shape;
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
 

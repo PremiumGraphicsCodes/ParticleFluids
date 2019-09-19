@@ -6,24 +6,25 @@
 #include "Canvas.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PMBoxView::PMBoxView(World* model, Canvas* canvas) :
 	IOkCancelView("PMBox", model, canvas),
 	boxView("Box"),
-	name("Name", "PMBox")
+	materialNameView("MaterialName", "Material01"),
+	nameView("Name", "PMBox")
 {
 	add(&boxView);
-	add(&name);
+	add(&materialNameView);
+	add(&nameView);
 }
 
 void PMBoxView::onOk()
 {
 	PolygonMeshBuilder builder;
 	builder.add(boxView.getValue());
-	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
+	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), nameView.getValue());
 	getWorld()->getObjects()->addScene(scene);
 	getWorld()->updateViewModel();
 	getCanvas()->fitCamera(getWorld()->getBoundingBox());

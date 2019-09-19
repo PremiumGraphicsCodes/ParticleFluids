@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Crystal {
-	namespace Shape {
+	namespace Scene {
 
 class Vertex
 {

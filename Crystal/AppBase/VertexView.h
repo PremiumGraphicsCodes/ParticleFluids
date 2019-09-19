@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IWindow.h"
-#include "imgui.h"
 
 #include "IntView.h"
 #include "Vector3dView.h"
@@ -9,7 +8,7 @@
 #include "StringView.h"
 
 namespace Crystal {
-	namespace Shape {
+	namespace Scene {
 		class Vertex;
 	}
 	namespace UI {
@@ -19,18 +18,18 @@ class VertexView : public IWindow
 public:
 	explicit VertexView(const std::string& name);
 
-	VertexView(const std::string& name, Shape::Vertex* value);
+	VertexView(const std::string& name, Scene::Vertex* value);
 
 	void onShow() override;
 
-	void setValue(Shape::Vertex* value);
+	void setValue(Scene::Vertex* value);
 
 private:
 	IntView id;
 	Vector3dView position;
 	Vector3dView normal;
 	Vector2dView texCoord;
-	Shape::Vertex* value;
+	Scene::Vertex* value;
 };
 
 	}

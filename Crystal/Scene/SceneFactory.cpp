@@ -11,7 +11,6 @@
 #include "FaceGroupScene.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
@@ -54,7 +53,7 @@ ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<V
 ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
 {
 	assert(positions.size() == attributes.size());
-	auto particles = new Shape::ParticleSystem<ParticleAttribute>();
+	auto particles = new ParticleSystem<ParticleAttribute>();
 	for (int i = 0; i < positions.size(); ++i) {
 		particles->add(positions[i], attributes[i]);
 	}

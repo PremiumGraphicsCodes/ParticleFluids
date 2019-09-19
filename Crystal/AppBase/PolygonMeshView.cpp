@@ -2,7 +2,7 @@
 
 #include "../Scene/PolygonMesh.h"
 
-using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PolygonMeshView::PolygonMeshView(const std::string& name) :

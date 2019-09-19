@@ -3,7 +3,6 @@
 #include "PointRenderer.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 

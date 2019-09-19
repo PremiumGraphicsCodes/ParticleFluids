@@ -6,10 +6,6 @@
 #include "../Math/Line3d.h"
 
 namespace Crystal {
-	namespace Shape {
-		class WireFrame;
-		class PolygonMesh;
-	}
 	namespace Graphics {
 		class ICamera;
 	}
@@ -27,6 +23,9 @@ namespace Crystal {
 		class PolygonMeshScene;
 		class FaceGroupScene;
 		class TransformScene;
+		class WireFrame;
+		class PolygonMesh;
+
 
 class SceneFactory
 {
@@ -47,7 +46,7 @@ public:
 
 	WireFrameScene* createWireFrameScene(const std::vector<Math::Line3dd>& lines, const WireFrameAttribute& attribute, const std::string& name);
 
-	PolygonMeshScene* createPolygonMeshScene(Shape::PolygonMesh* mesh, const std::string& name);
+	PolygonMeshScene* createPolygonMeshScene(PolygonMesh* mesh, const std::string& name);
 
 	LightScene* createLightScene(const Graphics::PointLight& light, const std::string& name);
 

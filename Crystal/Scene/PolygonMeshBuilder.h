@@ -10,7 +10,7 @@ namespace Crystal {
 		class Triangle3d;
 		class Quad3d;
 	}
-	namespace Shape {
+	namespace Scene {
 
 class PolygonMeshBuilder : private UnCopyable
 {

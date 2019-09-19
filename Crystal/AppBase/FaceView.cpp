@@ -2,7 +2,7 @@
 
 #include "../Scene/Face.h"
 
-using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 FaceView::FaceView(const std::string& name) :

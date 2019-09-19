@@ -5,7 +5,7 @@
 #include "Face.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 
 PolygonMesh::PolygonMesh() :
 	nextVertexId(0),

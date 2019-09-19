@@ -199,6 +199,9 @@
     <ClCompile Include="Vertex.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="FaceGroupScene.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

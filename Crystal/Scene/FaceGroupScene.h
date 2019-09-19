@@ -13,9 +13,9 @@ public:
 		IScene(id, name)
 	{}
 
-	void addFace(Shape::Face f) { this->faces.push_back(f); }
+	void addFace(Face f) { this->faces.push_back(f); }
 
-	std::vector<Shape::Face> getFaces() const { return faces; }
+	std::vector<Face> getFaces() const { return faces; }
 
 	//int getId() const { return id; }
 
@@ -25,7 +25,7 @@ public:
 
 	SceneType getType() const override { return SceneType::FaceGroupScene; }
 
-	void toViewModel(SceneViewModel& viewModel) const override {}
+	void toViewModel(SceneViewModel& viewModel) const;
 
 	void toIdViewModel(SceneIdViewModel& viewModel) const override {}
 
@@ -35,7 +35,7 @@ public:
 
 private:
 	std::string materialName;
-	std::vector<Shape::Face> faces;
+	std::vector<Face> faces;
 
 };
 

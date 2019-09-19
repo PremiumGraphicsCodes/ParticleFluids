@@ -14,7 +14,7 @@
 #include <list>
 
 namespace Crystal {
-	namespace Shape {
+	namespace Scene {
 
 class Vertex;
 class Face;

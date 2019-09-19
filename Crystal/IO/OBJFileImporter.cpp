@@ -8,7 +8,6 @@
 //#include "AppearanceObjectRepository.h"
 #include "../Scene/PolygonMeshScene.h"
 
-using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Scene;

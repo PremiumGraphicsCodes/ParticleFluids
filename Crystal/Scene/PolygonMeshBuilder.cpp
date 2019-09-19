@@ -7,7 +7,7 @@
 #include "../Math/Box3d.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
+using namespace Crystal::Scene;
 
 PolygonMeshBuilder::PolygonMeshBuilder() :
 	polygonMesh(new PolygonMesh())

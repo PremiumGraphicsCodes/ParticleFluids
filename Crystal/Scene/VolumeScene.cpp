@@ -23,7 +23,7 @@ Volume::Volume(const int unum, const int vnum, const int wnum, const Box3d& box)
 			nodes[u][v].resize(wnum);
 			for (int w = 0; w < wnum; ++w) {
 				const auto pz = box.getMinZ() + w * dz;
-				nodes[u][v][w] = Shape::Particle<double>(Math::Vector3dd(px, py, pz), 0.0);
+				nodes[u][v][w] = Particle<double>(Math::Vector3dd(px, py, pz), 0.0);
 			}
 		}
 	}

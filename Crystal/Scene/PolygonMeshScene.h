@@ -18,14 +18,14 @@ public:
 		shape(nullptr)
 	{}
 
-	PolygonMeshScene(const int id, const std::string& name, Shape::PolygonMesh* shape) :
+	PolygonMeshScene(const int id, const std::string& name, PolygonMesh* shape) :
 		IShapeScene(id, name),
 		shape(shape)
 	{}
 
 	~PolygonMeshScene() {};
 
-	Shape::PolygonMesh* getShape() const { return shape; }
+	PolygonMesh* getShape() const { return shape; }
 
 	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 
@@ -54,7 +54,7 @@ public:
 	}
 
 private:
-	Shape::PolygonMesh* shape;
+	PolygonMesh* shape;
 	std::vector<FaceGroupScene*> groups;
 };
 
