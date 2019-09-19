@@ -1,6 +1,6 @@
 #include "STLFileImporter.h"
 
-#include "../Shape/PolygonMeshBuilder.h"
+#include "../Scene/PolygonMeshBuilder.h"
 #include "../Scene/PolygonMeshScene.h"
 #include "../IO/STLASCIIFileReader.h"
 #include "../IO/STLBinaryFileReader.h"

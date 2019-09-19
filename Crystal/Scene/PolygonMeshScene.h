@@ -4,7 +4,7 @@
 #include "MaterialScene.h"
 #include "FaceGroupScene.h"
 
-#include "../Shape/PolygonMesh.h"
+#include "../Scene/PolygonMesh.h"
 #include "../Graphics/ColorRGBA.h"
 
 namespace Crystal {

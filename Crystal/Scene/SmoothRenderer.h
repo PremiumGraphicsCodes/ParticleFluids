@@ -2,7 +2,6 @@
 
 #include "IRenderer.h"
 
-#include "../Shape/PolygonMesh.h"
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer2d.h"
 #include "../Graphics/Buffer3d.h"

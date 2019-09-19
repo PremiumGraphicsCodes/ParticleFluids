@@ -5,9 +5,9 @@
 #include <vector>
 
 #include "../Math/Vector3d.h"
-#include "../Shape/Vertex.h"
-#include "../Shape/Face.h"
-//#include "../Shape/PolygonMesh.h"
+#include "../Scene/Vertex.h"
+#include "../Scene/Face.h"
+//#include "../Scene/PolygonMesh.h"
 
 #include "Helper.h"
 

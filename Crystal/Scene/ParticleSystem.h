@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Shape/IShape.h"
+#include "IShape.h"
 
 #include "Particle.h"
 

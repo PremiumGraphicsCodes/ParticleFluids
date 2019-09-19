@@ -1,6 +1,6 @@
 #include "PMQuadView.h"
 
-#include "../Shape/PolygonMeshBuilder.h"
+#include "../Scene/PolygonMeshBuilder.h"
 
 #include "../Scene/PolygonMeshScene.h"
 

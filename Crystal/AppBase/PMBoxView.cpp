@@ -1,6 +1,6 @@
 #include "PMBoxView.h"
 
-#include "../Shape/PolygonMeshBuilder.h"
+#include "../Scene/PolygonMeshBuilder.h"
 #include "../Scene/PolygonMeshScene.h"
 #include "../Scene/World.h"
 #include "Canvas.h"

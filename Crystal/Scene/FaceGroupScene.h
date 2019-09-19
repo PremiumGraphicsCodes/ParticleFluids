@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IScene.h"
-#include "../Shape/Face.h"
+#include "../Scene/Face.h"
 
 namespace Crystal {
 	namespace Scene {

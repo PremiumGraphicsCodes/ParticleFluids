@@ -6,30 +6,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PolygonMesh.h">
-      <Filter>PolygonMesh</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonMeshBuilder.h">
-      <Filter>PolygonMesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Face.h">
-      <Filter>PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="IShape.h" />
     <ClInclude Include="Vertex.h">
       <Filter>PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PolygonMesh.cpp">
-      <Filter>PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMeshBuilder.cpp">
-      <Filter>PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="Face.cpp">
-      <Filter>PolygonMesh</Filter>
-    </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>PolygonMesh</Filter>
     </ClCompile>

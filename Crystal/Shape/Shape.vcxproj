@@ -19,16 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Face.h" />
     <ClInclude Include="IShape.h" />
-    <ClInclude Include="PolygonMesh.h" />
-    <ClInclude Include="PolygonMeshBuilder.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Face.cpp" />
-    <ClCompile Include="PolygonMesh.cpp" />
-    <ClCompile Include="PolygonMeshBuilder.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

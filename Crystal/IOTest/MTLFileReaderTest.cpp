@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../Shape/PolygonMesh.h"
+#include "../Scene/PolygonMesh.h"
 #include "../IO/MTLFileReader.h"
 
 using namespace Crystal::Math;

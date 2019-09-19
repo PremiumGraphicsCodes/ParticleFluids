@@ -103,6 +103,21 @@
     <ClInclude Include="IPoint.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="Face.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMesh.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshBuilder.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="IShape.h">
+      <Filter>Scene\Shape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -171,6 +186,18 @@
     </ClCompile>
     <ClCompile Include="ParticleSystem.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Face.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMesh.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshBuilder.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

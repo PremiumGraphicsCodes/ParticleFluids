@@ -1,6 +1,6 @@
 #include "OBJFileImporter.h"
 
-#include "../Shape/PolygonMeshBuilder.h"
+#include "../Scene/PolygonMeshBuilder.h"
 #include "../IO/OBJFileReader.h"
 #include "../IO/MTLFileReader.h"
 
