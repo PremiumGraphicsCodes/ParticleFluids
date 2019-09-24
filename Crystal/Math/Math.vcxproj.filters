@@ -51,17 +51,17 @@
     <ClInclude Include="ICurveUVW.h">
       <Filter>Curve\CurveUVW</Filter>
     </ClInclude>
-    <ClInclude Include="Line3d.h">
-      <Filter>Curve\CurveU</Filter>
-    </ClInclude>
-    <ClInclude Include="Line2d.h">
-      <Filter>Curve\CurveU</Filter>
+    <ClInclude Include="ICurve.h">
+      <Filter>Curve</Filter>
     </ClInclude>
     <ClInclude Include="Circle2d.h">
-      <Filter>Curve\CurveU</Filter>
+      <Filter>Curve</Filter>
     </ClInclude>
-    <ClInclude Include="ICurveU.h">
-      <Filter>Curve\CurveU</Filter>
+    <ClInclude Include="Line2d.h">
+      <Filter>Curve</Filter>
+    </ClInclude>
+    <ClInclude Include="Line3d.h">
+      <Filter>Curve</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +73,6 @@
     </Filter>
     <Filter Include="Curve">
       <UniqueIdentifier>{62e4bbe1-ab29-4955-a2e5-b711c2a90036}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Curve\CurveU">
-      <UniqueIdentifier>{707fbd39-40e4-4c6e-b548-6e70ebd255cc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Curve\CurveUV">
       <UniqueIdentifier>{0dec3512-4c43-4267-af16-19c2b89cd27b}</UniqueIdentifier>
@@ -107,11 +104,11 @@
     <ClCompile Include="Cylinder3d.cpp">
       <Filter>Curve\CurveUVW</Filter>
     </ClCompile>
-    <ClCompile Include="Line3d.cpp">
-      <Filter>Curve\CurveU</Filter>
-    </ClCompile>
     <ClCompile Include="Line2d.cpp">
-      <Filter>Curve\CurveU</Filter>
+      <Filter>Curve</Filter>
+    </ClCompile>
+    <ClCompile Include="Line3d.cpp">
+      <Filter>Curve</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

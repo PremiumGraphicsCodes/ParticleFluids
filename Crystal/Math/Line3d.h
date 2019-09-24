@@ -3,13 +3,13 @@
 #include "Vector3d.h"
 #include "Matrix3d.h"
 #include "Matrix4d.h"
-#include "ICurveU.h"
+#include "ICurve.h"
 
 namespace Crystal {
 	namespace Math {
 		class Ray3d;
 
-class Line3dd : public ICurveU
+class Line3dd : public ICurve
 {
 public:
 	Line3dd();
