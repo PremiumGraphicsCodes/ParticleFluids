@@ -34,6 +34,8 @@ public:
 
 	int AddMaterialScene(PG::Core::Graphics::Material^ material, System::String^ name);
 
+	void ChangeName(int id, System::String^ name);
+
 	void UpdateLightScene(int id, PG::Core::Graphics::PointLight^ light);
 
 	void UpdateMaterialScene(int id, PG::Core::Graphics::Material^ m);

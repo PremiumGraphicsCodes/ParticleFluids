@@ -88,10 +88,7 @@
             <Fluent:RibbonTabItem Header="Selection" KeyTip="T1">
                 <Fluent:RibbonGroupBox>
                     <Fluent:Button Header="Transform" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Transform"/>
-                    <Fluent:Button Header="All" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Select"/>
-                    <Fluent:Button Header="ParticleSystem" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="ParticleSystemSelect"/>
-                    <Fluent:Button Header="WireFrame" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="WireFrameSelect"/>
-                    <Fluent:Button Header="PolygonMesh" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PolygonMeshSelect"/>
+                    <Fluent:Button Header="Selection" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Select"/>
                 </Fluent:RibbonGroupBox>
 
                 <Fluent:RibbonGroupBox Header="Boolean" KeyTip="B">

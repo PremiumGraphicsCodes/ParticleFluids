@@ -83,6 +83,12 @@ namespace PG.CGStudio
             Sync();
         }
 
+        public void ChangeName(int id, string name)
+        {
+            this.Adapter.GetSceneAdapter().ChangeName(id, name);
+            Sync();
+        }
+
         public void UpdateLightScene(int id, PG.Core.Graphics.PointLight light)
         {
             this.adapter.GetSceneAdapter().UpdateLightScene(id, light);

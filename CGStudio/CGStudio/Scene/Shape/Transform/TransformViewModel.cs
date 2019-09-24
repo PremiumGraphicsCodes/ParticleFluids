@@ -1,5 +1,6 @@
 ﻿using PG.CGStudio.Object.Select;
 using PG.CGStudio.UICtrl;
+using PG.Control.Math;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -10,6 +11,7 @@ namespace PG.CGStudio.Object.Transform
     public class TransformViewModel : BindableBase, INavigationAware
     {
         public SceneSelectViewModel SelectViewModel { get; }
+            = new SceneSelectViewModel();
 
         public ReactiveCommand MoveCommand { get; }
 
@@ -17,9 +19,16 @@ namespace PG.CGStudio.Object.Transform
 
         public ReactiveCommand RotateCommand { get; }
 
+        public Matrix4dViewModel MatrixViewModel { get; }
+            = new Matrix4dViewModel();
+
+        public ReactiveCommand OKCommand { get; }
+            = new ReactiveCommand();
+
+        public ReactiveCommand CancelCommand { get; }
+
         public TransformViewModel()
         {
-            SelectViewModel = new SceneSelectViewModel();
             MoveCommand = new ReactiveCommand();
             MoveCommand.Subscribe(OnMove);
             ScaleCommand = new ReactiveCommand();

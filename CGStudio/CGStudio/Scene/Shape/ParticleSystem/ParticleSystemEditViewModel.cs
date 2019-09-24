@@ -7,13 +7,17 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem
     public class ParticleSystemEditViewModel : BindableBase, INavigationAware
     {
         public ReactiveProperty<int> Id { get; }
+            = new ReactiveProperty<int>();
 
         public ReactiveProperty<string> Name { get; }
+            = new ReactiveProperty<string>();
+
+        public ReactiveCommand EditCommand { get; }
+            = new ReactiveCommand();
 
         public ParticleSystemEditViewModel()
         {
-            Id = new ReactiveProperty<int>();
-            Name = new ReactiveProperty<string>();
+            EditCommand.Subscribe(OnEdit);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -35,6 +39,11 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem
             }
             Id.Value = item.Id;
             Name.Value = item.Name;
+        }
+
+        private void OnEdit()
+        {
+            MainModel.Instance.Repository.ChangeName(Id.Value, Name.Value);
         }
     }
 }

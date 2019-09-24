@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PG.CGStudio.Object.Transform"
         xmlns:select="clr-namespace:PG.CGStudio.Object.Select"
-        mc:Ignorable="d">
+             xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
+             mc:Ignorable="d">
     <UserControl.DataContext>
         <local:TransformViewModel/>
     </UserControl.DataContext>
@@ -14,5 +15,8 @@
         <Button Content="Move" Command="{Binding MoveCommand}"/>
         <Button Content="Scale" Command="{Binding ScaleCommand}"/>
         <Button Content="Rotate" Command="{Binding RotateCommand}"/>
+        <math:Matrix4dView DataContext="{Binding MatrixViewModel}"/>
+        <Button Content="OK" Command="{Binding OKCommand}"/>
+        <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>
 </UserControl>

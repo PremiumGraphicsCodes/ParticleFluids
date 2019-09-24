@@ -114,6 +114,13 @@ int SceneAdapter::AddMaterialScene(PG::Core::Graphics::Material^ material, Syste
 	return scene->getId();
 }
 
+void SceneAdapter::ChangeName(int id, System::String^ name)
+{
+	auto scene = instance->findSceneById(id);
+	auto str = msclr::interop::marshal_as<std::string>(name);
+	scene->setName(str);
+}
+
 void SceneAdapter::UpdateLightScene(int id, PG::Core::Graphics::PointLight^ light)
 {
 	auto scene = instance->findSceneById(id);
