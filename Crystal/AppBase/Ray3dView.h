@@ -1,27 +1,18 @@
 #pragma once
 
-#include "IWindow.h"
-
+#include "IView.h"
 #include "Vector3dView.h"
-
 #include "../Math/Ray3d.h"
 
 namespace Crystal {
 	namespace UI {
 
-class Ray3dView : public IWindow
+class Ray3dView : public IView
 {
 public:
-	Ray3dView(const std::string& name) :
-		IWindow(name),
-		origin("Origin", Math::Vector3dd(0, 0, 0)),
-		direction("Direction", Math::Vector3dd(0, 0, 1))
-	{
-		add(&origin);
-		add(&direction);
-	}
+	explicit Ray3dView(const std::string& name);
 
-	Math::Ray3d getValue() const { return Math::Ray3d(origin.getValue(), direction.getValue()); }
+	Math::Ray3d getValue() const;
 
 private:
 	Vector3dView origin;

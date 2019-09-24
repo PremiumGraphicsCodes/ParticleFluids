@@ -2,6 +2,7 @@
 
 #include "IWindow.h"
 #include "../Scene/World.h"
+#include "Canvas.h"
 #include <list>
 
 namespace Crystal {
@@ -9,7 +10,6 @@ namespace Crystal {
 		class World;
 	}
 	namespace UI {
-		class Canvas;
 
 class IPanel : public IWindow
 {

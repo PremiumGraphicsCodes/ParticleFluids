@@ -35,6 +35,9 @@ void ShapeMenu::onShow()
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::BeginMenu("ParticleSystem")) {
+			if (ImGui::MenuItem("PSSphere")) {
+				control->setWindow(new PSSphereView(getModel(), canvas));
+			}
 			if (ImGui::MenuItem("PSBox")) {
 				control->setWindow(new PSBoxView(getModel(), canvas));
 			}
@@ -43,9 +46,6 @@ void ShapeMenu::onShow()
 			}
 			if (ImGui::MenuItem("PSCylinder")) {
 				control->setWindow(new PSCylinderView(getModel(), canvas));
-			}
-			if (ImGui::MenuItem("PSSphere")) {
-				control->setWindow(new PSSphereView(getModel(), canvas));
 			}
 			if (ImGui::MenuItem("PSTorus")) {
 				control->setWindow(new PSTorusView(getModel(), canvas));

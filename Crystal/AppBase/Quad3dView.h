@@ -17,9 +17,9 @@ public:
 	Math::Quad3d getValue() const;
 
 private:
-	Vector3dView origin;
-	Vector3dView uvec;
-	Vector3dView vvec;
+	Vector3dView originView;
+	Vector3dView uvecView;
+	Vector3dView vvecView;
 };
 
 	}

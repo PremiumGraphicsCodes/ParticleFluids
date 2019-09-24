@@ -42,6 +42,7 @@
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="Plane3dView.cpp" />
     <ClCompile Include="Quad3dView.cpp" />
+    <ClCompile Include="Ray3dView.cpp" />
     <ClCompile Include="RotateView.cpp" />
     <ClCompile Include="ScaleView.cpp" />
     <ClCompile Include="SelectionMenu.cpp" />
@@ -104,7 +105,6 @@
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Double4View.h" />
-    <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="IView.h" />

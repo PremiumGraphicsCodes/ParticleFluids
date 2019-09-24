@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPopupButton.h"
+#include "IView.h"
 #include "../Math/Sphere3d.h"
 #include "Vector3dView.h"
 #include "DoubleView.h"
@@ -8,18 +8,16 @@
 namespace Crystal {
 	namespace UI {
 
-class Sphere3dView : public IWindow
+class Sphere3dView : public IView
 {
 public:
 	Sphere3dView(const std::string& name) :
-		IWindow(name),
+		IView(name),
 		center("Center", Math::Vector3dd(0,0,0)),
 		radius("Radius", 1.0)
-	{}
-
-	void onShow() override {
-		center.show();
-		radius.show();
+	{
+		add(&center);
+		add(&radius);
 	}
 
 	Math::Sphere3d getValue() const { return Math::Sphere3d(center.getValue(), radius.getValue()); }

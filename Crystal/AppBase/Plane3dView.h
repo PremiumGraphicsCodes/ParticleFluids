@@ -18,8 +18,8 @@ public:
 	void setValue(const Math::Plane3d& value);
 
 private:
-	Vector3dView origin;
-	Vector3dView normal;
+	Vector3dView originView;
+	Vector3dView normalView;
 };
 
 	}

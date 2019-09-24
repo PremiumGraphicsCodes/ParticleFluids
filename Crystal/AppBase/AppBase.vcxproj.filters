@@ -232,6 +232,9 @@
     <ClCompile Include="Quad3dView.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="Ray3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -456,9 +459,6 @@
       <Filter>UICtrl</Filter>
     </ClInclude>
     <ClInclude Include="IUICtrl.h">
-      <Filter>UICtrl</Filter>
-    </ClInclude>
-    <ClInclude Include="IKeyListener.h">
       <Filter>UICtrl</Filter>
     </ClInclude>
     <ClInclude Include="Canvas.h">
