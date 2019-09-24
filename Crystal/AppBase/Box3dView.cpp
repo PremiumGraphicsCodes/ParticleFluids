@@ -4,19 +4,21 @@ using namespace Crystal::Math;
 using namespace Crystal::UI;
 
 Box3dView::Box3dView(const std::string& name) :
-	IWindow(name),
-	min("Min", Math::Vector3dd(0, 0, 0)),
-	max("Max", Math::Vector3dd(1, 1, 1))
+	IView(name),
+	minView("Min", Vector3dd(0, 0, 0)),
+	maxView("Max", Vector3dd(1, 1, 1))
 {
-}
-
-void Box3dView::onShow()
-{
-	min.show();
-	max.show();
+	add(&minView);
+	add(&maxView);
 }
 
 Box3d Box3dView::getValue() const
 {
-	return Math::Box3d(min.getValue(), max.getValue());
+	return Box3d(minView.getValue(), maxView.getValue());
+}
+
+void Box3dView::setValue(const Box3d& value)
+{
+	minView.setValue(value.getMin());
+	maxView.setValue(value.getMax());
 }

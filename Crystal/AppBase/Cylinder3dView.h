@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPopupButton.h"
+#include "IView.h"
 
 #include "../Math/Cylinder3d.h"
 
@@ -10,21 +10,19 @@
 namespace Crystal {
 	namespace UI {
 
-class Cylinder3dView : public IWindow
+class Cylinder3dView : public IView
 {
 public:
 	explicit Cylinder3dView(const std::string& name);
-
-	void onShow() override;
 
 	Math::Cylinder3d getValue() const;
 
 	void setValue(const Math::Cylinder3d& value);
 
 private:
-	Vector3dView center;
-	DoubleView radius;
-	DoubleView height;
+	Vector3dView centerView;
+	DoubleView radiusView;
+	DoubleView heightView;
 };
 
 	}

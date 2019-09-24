@@ -21,7 +21,7 @@ public:
 	Math::Matrix3dd getValue() const;
 
 private:
-	float value[3][3];
+	Math::Matrix3dd value;
 };
 
 	}

@@ -1,31 +1,38 @@
 #include "Matrix4dView.h"
 
-#include "imgui.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 
-void Matrix4dView::onShow()
+Matrix4dView::Matrix4dView(const std::string& name, const Matrix4dd& value) :
+	IView(name),
+	row1View("Row1"),
+	row2View("Row1"),
+	row3View("Row3"),
+	row4View("Row4")
 {
-	//ImGui::SameLine(); Ç≈ìØàÍçsÇ…Ç»ÇÈÅD
+	setValue(value);
 
-	ImGui::InputDouble("00", &value[0][0]);
-	ImGui::InputDouble("01", &value[0][1]);
-	ImGui::InputDouble("02", &value[0][2]);
-	ImGui::InputDouble("03", &value[0][3]);
+	add(&row1View);
+	add(&row2View);
+	add(&row3View);
+	add(&row4View);
+}
 
-	ImGui::InputDouble("10", &value[1][0]);
-	ImGui::InputDouble("11", &value[1][1]);
-	ImGui::InputDouble("12", &value[1][2]);
-	ImGui::InputDouble("13", &value[1][3]);
+void Matrix4dView::setValue(const Matrix4dd& value)
+{
+	row1View.setValue(value[0]);
+	row2View.setValue(value[1]);
+	row3View.setValue(value[2]);
+	row4View.setValue(value[3]);
+}
 
-	ImGui::InputDouble("20", &value[2][0]);
-	ImGui::InputDouble("21", &value[2][1]);
-	ImGui::InputDouble("22", &value[2][2]);
-	ImGui::InputDouble("23", &value[2][3]);
-
-	ImGui::InputDouble("30", &value[3][0]);
-	ImGui::InputDouble("31", &value[3][1]);
-	ImGui::InputDouble("32", &value[3][2]);
-	ImGui::InputDouble("33", &value[3][3]);
+Matrix4dd Matrix4dView::getValue() const
+{
+	return Matrix4dd
+	(
+		row1View.getValue(),
+		row2View.getValue(),
+		row3View.getValue(),
+		row4View.getValue()
+	);
 }

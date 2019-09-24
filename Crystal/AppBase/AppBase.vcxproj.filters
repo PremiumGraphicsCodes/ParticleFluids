@@ -226,6 +226,9 @@
     <ClCompile Include="Vector3dView.cpp">
       <Filter>Math\Vector</Filter>
     </ClCompile>
+    <ClCompile Include="Double4View.cpp">
+      <Filter>Primitive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -443,7 +446,6 @@
     <ClInclude Include="SphereRegionSelectView.h">
       <Filter>Selection\Region</Filter>
     </ClInclude>
-    <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="ShaderView.h">
       <Filter>Scene\Appearance\Shader\View</Filter>
     </ClInclude>
@@ -506,6 +508,15 @@
     </ClInclude>
     <ClInclude Include="Vector3dView.h">
       <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Double4View.h">
+      <Filter>Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="IOkCancelView.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="IView.h">
+      <Filter>Window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -18,9 +18,10 @@ Matrix3dView::Matrix3dView(const std::string& name, const Matrix3dd& value) :
 
 void Matrix3dView::onShow()
 {
-	ImGui::InputFloat3("Row1", value[0]);
-	ImGui::InputFloat3("Row2", value[1]);
-	ImGui::InputFloat3("Row3", value[2]);
+	//ImGui::InputFloat3("Row1", value[0]);
+	ImGui::InputScalarN("Row1", ImGuiDataType_Double, &value[0], 3);
+	ImGui::InputScalarN("Row2", ImGuiDataType_Double, &value[1], 3);
+	ImGui::InputScalarN("Row3", ImGuiDataType_Double, &value[2], 3);
 }
 
 void Matrix3dView::setValue(const Matrix3dd& value)

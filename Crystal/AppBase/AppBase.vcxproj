@@ -30,6 +30,7 @@
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="Cylinder3dView.cpp" />
+    <ClCompile Include="Double4View.cpp" />
     <ClCompile Include="DoubleView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="Float4View.cpp" />
@@ -101,9 +102,11 @@
     <ClInclude Include="AppearanceMenu.h" />
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="Double4View.h" />
     <ClInclude Include="IKeyListener.h" />
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="IUICtrl.h" />
+    <ClInclude Include="IView.h" />
     <ClInclude Include="Matrix2dView.h" />
     <ClInclude Include="Matrix4dView.h" />
     <ClInclude Include="PickUICtrl.h" />

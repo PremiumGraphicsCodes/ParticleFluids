@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 
 #include "Vector3dView.h"
 
@@ -9,18 +9,18 @@
 namespace Crystal {
 	namespace UI {
 
-class Box3dView : public IWindow
+class Box3dView : public IView
 {
 public:
 	Box3dView(const std::string& name);
 
-	void onShow() override;
-
 	Math::Box3d getValue() const;
 
+	void setValue(const Math::Box3d& value);
+
 private:
-	Vector3dView min;
-	Vector3dView max;
+	Vector3dView minView;
+	Vector3dView maxView;
 };
 
 	}

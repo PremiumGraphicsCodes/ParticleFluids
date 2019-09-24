@@ -14,7 +14,7 @@ public:
 
 	virtual ~IView() {};
 
-	void show() override {
+	void onShow() override {
 		for (auto c : children) {
 			c->show();
 		}

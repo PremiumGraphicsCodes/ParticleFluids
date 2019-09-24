@@ -1,35 +1,27 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 
 #include "../Math/Matrix4d.h"
+#include "Double4View.h"
 
 namespace Crystal {
 	namespace UI {
 
-class Matrix4dView : public IWindow
+class Matrix4dView : public IView
 {
 public:
-	/*
-	explicit Matrix4dView(const std::string& name) :
-		IWindow(name),
-		value(Math::Matrix4dd(1, 0, 0, 0, 1, 0, 0, 0, 1))
-	{}
-	*/
+	Matrix4dView(const std::string& name, const Math::Matrix4dd& value);
 
-	Matrix4dView(const std::string& name, const Math::Matrix4dd& value) :
-		IWindow(name),
-		value(value)
-	{}
+	void setValue(const Math::Matrix4dd& value);
 
-	void onShow() override;
-
-	void setValue(const Math::Matrix4dd& value) { this->value = value; }
-
-	Math::Matrix4dd getValue() const { return value; }
+	Math::Matrix4dd getValue() const;
 
 private:
-	Math::Matrix4dd value;
+	Double4View row1View;
+	Double4View row2View;
+	Double4View row3View;
+	Double4View row4View;
 };
 
 	}

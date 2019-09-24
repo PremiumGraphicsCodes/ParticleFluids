@@ -4,28 +4,24 @@ using namespace Crystal::Math;
 using namespace Crystal::UI;
 
 Cylinder3dView::Cylinder3dView(const std::string& name) :
-	IWindow(name),
-	center("Center", Math::Vector3dd(0, 0, 0)),
-	radius("Radius", 1.0),
-	height("Height", 1.0)
+	IView(name),
+	centerView("Center", Math::Vector3dd(0, 0, 0)),
+	radiusView("Radius", 1.0),
+	heightView("Height", 1.0)
 {
-}
-
-void Cylinder3dView::onShow()
-{
-	center.show();
-	radius.show();
-	height.show();
+	add(&centerView);
+	add(&radiusView);
+	add(&heightView);
 }
 
 Cylinder3d Cylinder3dView::getValue() const
 {
-	return Math::Cylinder3d(radius.getValue(), height.getValue(), center.getValue());
+	return Math::Cylinder3d(radiusView.getValue(), heightView.getValue(), centerView.getValue());
 }
 
 void Cylinder3dView::setValue(const Cylinder3d& value)
 {
-	center.setValue(value.getCenter());
-	radius.setValue(value.getRadius());
-	height.setValue(value.getHeight());
+	centerView.setValue(value.getCenter());
+	radiusView.setValue(value.getRadius());
+	heightView.setValue(value.getHeight());
 }
