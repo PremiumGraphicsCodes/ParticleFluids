@@ -235,6 +235,9 @@
     <ClCompile Include="Ray3dView.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="Sphere3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -328,8 +331,6 @@
     <ClInclude Include="ScreenMenu.h">
       <Filter>View</Filter>
     </ClInclude>
-    <ClInclude Include="FileOpenView.h" />
-    <ClInclude Include="FileSaveView.h" />
     <ClInclude Include="ColorRGBAView.h">
       <Filter>Color</Filter>
     </ClInclude>
@@ -520,6 +521,12 @@
     </ClInclude>
     <ClInclude Include="IView.h">
       <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="FileOpenView.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSaveView.h">
+      <Filter>File</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

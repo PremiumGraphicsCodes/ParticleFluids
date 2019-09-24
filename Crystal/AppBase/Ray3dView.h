@@ -15,8 +15,8 @@ public:
 	Math::Ray3d getValue() const;
 
 private:
-	Vector3dView origin;
-	Vector3dView direction;
+	Vector3dView originView;
+	Vector3dView directionView;
 };
 
 	}

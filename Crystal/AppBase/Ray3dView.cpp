@@ -5,14 +5,14 @@ using namespace Crystal::UI;
 
 Ray3dView::Ray3dView(const std::string& name) :
 	IView(name),
-	origin("Origin", Math::Vector3dd(0, 0, 0)),
-	direction("Direction", Math::Vector3dd(0, 0, 1))
+	originView("Origin", Math::Vector3dd(0, 0, 0)),
+	directionView("Direction", Math::Vector3dd(0, 0, 1))
 {
-	add(&origin);
-	add(&direction);
+	add(&originView);
+	add(&directionView);
 }
 
 Ray3d Ray3dView::getValue() const
 {
-	return Math::Ray3d(origin.getValue(), direction.getValue());
+	return Math::Ray3d(originView.getValue(), directionView.getValue());
 }

@@ -11,22 +11,11 @@ namespace Crystal {
 class Sphere3dView : public IView
 {
 public:
-	Sphere3dView(const std::string& name) :
-		IView(name),
-		center("Center", Math::Vector3dd(0,0,0)),
-		radius("Radius", 1.0)
-	{
-		add(&center);
-		add(&radius);
-	}
+	explicit Sphere3dView(const std::string& name);
 
-	Math::Sphere3d getValue() const { return Math::Sphere3d(center.getValue(), radius.getValue()); }
+	Math::Sphere3d getValue() const;
 
-	void setValue(const Math::Sphere3d& value)
-	{
-		this->center.setValue(value.getCenter());
-		this->radius.setValue(value.getRadius());
-	}
+	void setValue(const Math::Sphere3d& value);
 
 private:
 	Vector3dView center;
