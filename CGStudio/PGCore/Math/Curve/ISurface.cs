@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public interface ICurveUV
+    public interface ISurface
     {
         Vector3d GetPosition(double u, double v);
     }

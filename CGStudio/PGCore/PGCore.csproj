@@ -81,8 +81,9 @@
     <Compile Include="Math\Box2d.cs" />
     <Compile Include="Math\Box3d.cs" />
     <Compile Include="Math\Circle2d.cs" />
-    <Compile Include="Math\Curve\ICurveUV.cs" />
-    <Compile Include="Math\Curve\ICurveUVW.cs" />
+    <Compile Include="Math\Curve\ICurve.cs" />
+    <Compile Include="Math\Curve\ISurface.cs" />
+    <Compile Include="Math\Curve\IVolume.cs" />
     <Compile Include="Math\Cylinder3d.cs" />
     <Compile Include="Math\Line2d.cs" />
     <Compile Include="Math\Line3d.cs" />

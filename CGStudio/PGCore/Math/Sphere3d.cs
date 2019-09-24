@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Sphere3d : ICurveUV
+    public class Sphere3d : ISurface, IVolume
     {
         private double radius;
         private Vector3d center;

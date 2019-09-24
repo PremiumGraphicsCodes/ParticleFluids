@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Line3d
+    public class Line3d : ICurve
     {
         private Vector3d start;
         private Vector3d end;
@@ -25,6 +25,12 @@
         public double LengthSquared
         {
             get { return start.DistanceSquared(end); }
+        }
+
+        public Vector3d GetPosition(double u)
+        {
+            var dir = Dir.Normalized;
+            return start + dir * u;
         }
     }
 }

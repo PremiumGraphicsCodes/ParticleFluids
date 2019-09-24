@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Cylinder3d : ICurveUV
+    public class Cylinder3d : ISurface
     {
         private double radius;
         private double height;

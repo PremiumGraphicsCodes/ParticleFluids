@@ -48,7 +48,7 @@ namespace PG.Core.Shape
             edges.Add(new Line3d(origin, dest));
         }
 
-        public void Build(ICurveUV sphere, int udiv, int vdiv)
+        public void Build(ISurface sphere, int udiv, int vdiv)
         {
             var vertices = new Vector3d[udiv, vdiv];
             for (int i = 0; i < udiv; ++i)
