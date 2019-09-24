@@ -5,10 +5,10 @@
 namespace Crystal {
 	namespace Math {
 
-class ICurveUV
+class ISurface
 {
 public:
-	virtual ~ICurveUV() = default;
+	virtual ~ISurface() = default;
 
 	virtual Vector3dd getPosition(const double u, const double v) const = 0;
 };

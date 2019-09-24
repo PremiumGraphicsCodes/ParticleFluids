@@ -2,7 +2,7 @@
 #define __CRYSTAL_MATH_BOX_2D_H__
 
 #include "Vector2d.h"
-//#include "ICurveUV.h"
+//#include "ISurface.h"
 #include <array>
 
 namespace Crystal {
