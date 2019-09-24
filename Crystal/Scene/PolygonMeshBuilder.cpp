@@ -74,13 +74,13 @@ void PolygonMeshBuilder::add(const Quad3d& quad)
 {
 	auto normal = polygonMesh->createNormal( quad.getNormal() );
 
-	auto v0 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(0, 0) ), normal, polygonMesh->createTexCoord( Vector2dd(0, 0)) );
-	auto v1 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(1, 0) ), normal, polygonMesh->createTexCoord( Vector2dd(1, 0)) );
-	auto v2 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(1, 1) ), normal, polygonMesh->createTexCoord( Vector2dd(1, 1)) );
-	auto v3 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(0, 1) ), normal, polygonMesh->createTexCoord( Vector2dd(0, 1)) );
+	auto v00 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(0, 0) ), normal, polygonMesh->createTexCoord( Vector2dd(0, 0)) );
+	auto v01 = polygonMesh->createVertex(polygonMesh->createPosition(quad.getPosition(0, 1)), normal, polygonMesh->createTexCoord(Vector2dd(0, 1)));
+	auto v10 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(1, 0) ), normal, polygonMesh->createTexCoord( Vector2dd(1, 0)) );
+	auto v11 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(1, 1) ), normal, polygonMesh->createTexCoord( Vector2dd(1, 1)) );
 
-	polygonMesh->createFace(v0,v1,v2);
-	polygonMesh->createFace(v3,v1,v2);
+	polygonMesh->createFace(v00,v01,v10);
+	polygonMesh->createFace(v11,v10,v01);
 }
 
 /*

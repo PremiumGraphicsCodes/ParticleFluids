@@ -41,6 +41,7 @@
     <ClCompile Include="Matrix4dView.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="Plane3dView.cpp" />
+    <ClCompile Include="Quad3dView.cpp" />
     <ClCompile Include="RotateView.cpp" />
     <ClCompile Include="ScaleView.cpp" />
     <ClCompile Include="SelectionMenu.cpp" />

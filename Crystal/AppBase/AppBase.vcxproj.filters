@@ -229,6 +229,9 @@
     <ClCompile Include="Double4View.cpp">
       <Filter>Primitive</Filter>
     </ClCompile>
+    <ClCompile Include="Quad3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />

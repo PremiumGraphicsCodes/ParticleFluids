@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 
 #include "Vector3dView.h"
 
@@ -9,22 +9,18 @@
 namespace Crystal {
 	namespace UI {
 
-class Quad3dView : public IWindow
+class Quad3dView : public IView
 {
 public:
 	Quad3dView(const std::string& name) :
-		IWindow(name),
+		IView(name),
 		origin("Origin", Math::Vector3dd(0, 0, 0)),
 		uvec("UVec", Math::Vector3dd(1, 0, 0)),
 		vvec("VVec", Math::Vector3dd(0, 1, 0))
 	{
-	}
-
-	void onShow() override
-	{
-		origin.show();
-		uvec.show();
-		vvec.show();
+		add(&origin);
+		add(&uvec);
+		add(&vvec);
 	}
 
 	Math::Quad3d getValue() const { return Math::Quad3d(origin.getValue(), uvec.getValue(), vvec.getValue()); }
