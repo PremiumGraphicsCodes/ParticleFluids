@@ -11,12 +11,13 @@ namespace Crystal {
 	namespace Graphics {
 
 template<typename T>
-class Buffer3d : public IBuffer<T> {
+class Buffer3d 
+{
 public:
 	Buffer3d() = default;
 
 	Buffer3d(const std::vector<T>& buffer) :
-		IBuffer(buffer)
+		buffer(buffer)
 	{}
 
 	~Buffer3d() = default;
@@ -33,8 +34,12 @@ public:
 
 	bool operator==(const Buffer3d<T>& rhs) { return buffer == rhs.buffer; }
 
+	void clear() { buffer.clear(); }
+
+	std::vector<T> get() const { return buffer; }
 
 private:
+	std::vector<T> buffer;
 };
 
 	}

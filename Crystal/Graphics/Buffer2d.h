@@ -10,12 +10,12 @@ namespace Crystal {
 	namespace Graphics {
 
 template<typename T>
-class Buffer2d : public IBuffer<T> {
+class Buffer2d {
 public:
 	Buffer2d() = default;
 
 	Buffer2d(const std::vector<T>& buffer) :
-		IBuffer(buffer)
+		buffer(buffer)
 	{}
 
 	~Buffer2d() = default;
@@ -29,6 +29,12 @@ public:
 		buffer.insert(buffer.end(), rhs.buffer.begin(), rhs.buffer.end());
 	}
 
+	void clear() { buffer.clear(); }
+
+	std::vector<T> get() const { return buffer; }
+
+private:
+	std::vector<T> buffer;
 };
 
 	}

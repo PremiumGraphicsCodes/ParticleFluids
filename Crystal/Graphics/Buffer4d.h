@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_GRAPHICS_BUFFER_4D_H__
-#define __CRYSTAL_GRAPHICS_BUFFER_4D_H__
+#pragma once
 
 #include "ColorRGBA.h"
 #include "IBuffer.h"
@@ -10,12 +9,13 @@ namespace Crystal {
 	namespace Graphics {
 
 template<typename T>
-class Buffer4d : public IBuffer<T> {
+class Buffer4d
+{
 public:
 	Buffer4d() = default;
 
 	Buffer4d(const std::vector<T>& buffer) :
-		IBuffer(buffer)
+		buffer(buffer)
 	{}
 
 	~Buffer4d() = default;
@@ -37,10 +37,15 @@ public:
 		buffer.insert(buffer.end(), rhs.buffer.begin(), rhs.buffer.end());
 	}
 
+	void clear() {
+		buffer.clear();
+	}
+
+	std::vector<T> get() const { return buffer; }
+
 private:
+	std::vector<T> buffer;
 };
 
 	}
 }
-
-#endif
