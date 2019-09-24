@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 
 #include "../Math/Vector3d.h"
 #include "../Math/Cone3d.h"
@@ -11,12 +11,10 @@
 namespace Crystal {
 	namespace UI {
 
-class Cone3dView : public IWindow
+class Cone3dView : public IView
 {
 public:
 	explicit Cone3dView(const std::string& name);
-
-	void onShow() override;
 
 	Math::Cone3d getValue() const;
 

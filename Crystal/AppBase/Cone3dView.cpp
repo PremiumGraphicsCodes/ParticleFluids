@@ -4,18 +4,14 @@ using namespace Crystal::Math;
 using namespace Crystal::UI;
 
 Cone3dView::Cone3dView(const std::string& name) :
-	IWindow(name),
+	IView(name),
 	bottomView("Bottom", Math::Vector3dd(0, 0, 0)),
 	radiusView("Radius", 1.0),
 	heightView("Height", 1.0)
 {
-}
-
-void Cone3dView::onShow()
-{
-	bottomView.show();
-	radiusView.show();
-	heightView.show();
+	add(&bottomView);
+	add(&radiusView);
+	add(&heightView);
 }
 
 Cone3d Cone3dView::getValue() const

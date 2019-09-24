@@ -1,20 +1,17 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 
 #include "Vector3dView.h"
-
 #include "../Math/Plane3d.h"
 
 namespace Crystal {
 	namespace UI {
 
-class Plane3dView : public IWindow
+class Plane3dView : public IView
 {
 public:
 	explicit Plane3dView(const std::string& name);
-
-	void onShow() override;
 
 	Math::Plane3d getValue() const;
 

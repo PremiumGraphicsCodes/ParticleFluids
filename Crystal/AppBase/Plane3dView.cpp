@@ -4,16 +4,12 @@ using namespace Crystal::Math;
 using namespace Crystal::UI;
 
 Plane3dView::Plane3dView(const std::string& name) :
-	IWindow(name),
+	IView(name),
 	origin("Origin", Math::Vector3dd(0, 0, 0)),
 	normal("Normal", Math::Vector3dd(0, 0, 1))
 {
-}
-
-void Plane3dView::onShow()
-{
-	origin.show();
-	normal.show();
+	add(&origin);
+	add(&normal);
 }
 
 Plane3d Plane3dView::getValue() const
