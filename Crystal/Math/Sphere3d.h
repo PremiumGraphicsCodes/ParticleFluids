@@ -2,13 +2,13 @@
 #define __CRYSTAL_MATH_SPHERE_H__
 
 #include "Vector3d.h"
-#include "ICurveUVW.h"
+#include "IVolume.h"
 
 namespace Crystal {
 	namespace Math {
 		class Box3d;
 
-class Sphere3d : public ICurveUVW
+class Sphere3d : public IVolume
 {
 public:
 	Sphere3d() :

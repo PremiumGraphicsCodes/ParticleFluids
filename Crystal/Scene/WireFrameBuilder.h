@@ -2,7 +2,7 @@
 
 #include "../Math/ICurve.h"
 #include "../Math/ISurface.h"
-#include "../Math/ICurveUVW.h"
+#include "../Math/IVolume.h"
 
 namespace Crystal {
 	namespace Math {
@@ -20,7 +20,7 @@ public:
 
 	void build(const Math::ISurface& curve, const int unum, const int vnum);
 
-	void build(const Math::ICurveUVW& curve, const int unum, const int vnum);
+	void build(const Math::IVolume& curve, const int unum, const int vnum);
 
 	std::vector<Math::Line3dd> getWireFrame() const { return lines; }
 
