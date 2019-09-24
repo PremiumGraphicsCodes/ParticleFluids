@@ -2,7 +2,8 @@
 
 #include "IPanel.h"
 
-#include "../Scene/World.h"
+#include "IntView.h"
+#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
@@ -10,26 +11,15 @@ namespace Crystal {
 class ObjectSelectView : public IPanel
 {
 public:
-	ObjectSelectView(const std::string& name, Scene::World* model, Canvas* canvas) :
-		IPanel(name, model, canvas),
-		id(0),
-		type(Scene::SceneType::All)
-	{
-	}
+	ObjectSelectView(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	ObjectSelectView(const std::string& name, Scene::World* model, Canvas* canvas, const Scene::SceneType type) :
-		IPanel(name, model, canvas),
-		id(0),
-		type(type)
-	{
-	}
+	ObjectSelectView(const std::string& name, Scene::World* model, Canvas* canvas, const Scene::SceneType type);
 
-	void onShow() override;
-
-	int getId() const { return id; }
+	int getId() const { return idView.getValue(); }
 
 private:
-	int id;
+	IntView idView;
+	Button pickButton;
 	Scene::SceneType type;
 };
 
