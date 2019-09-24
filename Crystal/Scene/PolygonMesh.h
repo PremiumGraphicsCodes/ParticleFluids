@@ -5,6 +5,7 @@
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
 #include "../Math/Triangle3d.h"
+#include "../Math/Line3d.h"
 
 #include "Vertex.h"
 #include "Face.h"

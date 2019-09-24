@@ -1,8 +1,10 @@
 #pragma once
 
 #include <map>
-#include "Vertex.h"
+#include <vector>
 #include <array>
+#include "../Math/Vector3d.h"
+#include "../Math/Line3d.h"
 
 namespace Crystal {
 	namespace Math {
@@ -30,6 +32,10 @@ public:
 	int getId() const { return id; }
 
 	int materialId;
+
+	Math::Triangle3d toTriangle(const std::vector<Math::Vector3dd>& positions) const;
+
+	std::vector<Math::Line3dd> toLines(const std::vector<Math::Vector3dd>& positions) const;
 
 private:
 	int id;

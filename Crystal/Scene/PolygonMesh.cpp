@@ -117,3 +117,4 @@ int PolygonMesh::createFace(int v0, int v1, int v2)
 	faces.push_back(f);
 	return f.getId();
 }
+
