@@ -45,6 +45,8 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
+	IShapeScene* clone() const override;
+
 private:
 	ParticleSystem<ParticleAttribute>* shape;
 };

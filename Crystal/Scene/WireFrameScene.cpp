@@ -114,3 +114,9 @@ Vector3dd WireFrameScene::getPosition(const int index) const
 {
 	return lines[index].getStart();
 }
+
+IShapeScene* WireFrameScene::clone() const
+{
+	return nullptr;
+	//return new WireFrameScene();
+}

@@ -49,6 +49,8 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
+	IShapeScene* clone() const override;
+
 private:
 	std::vector<Math::Line3dd> lines;
 	WireFrameAttribute attribute;

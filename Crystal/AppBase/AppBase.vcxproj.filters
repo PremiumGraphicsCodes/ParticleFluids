@@ -238,6 +238,9 @@
     <ClCompile Include="Sphere3dView.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="ShapeCloneView.cpp">
+      <Filter>Scene\Shape</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -527,6 +530,9 @@
     </ClInclude>
     <ClInclude Include="FileSaveView.h">
       <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeCloneView.h">
+      <Filter>Scene\Shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

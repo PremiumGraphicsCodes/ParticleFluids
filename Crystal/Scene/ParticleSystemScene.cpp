@@ -60,3 +60,7 @@ Vector3dd ParticleSystemScene::getPosition(const int index) const
 	return ps[index]->getPosition();
 }
 
+IShapeScene* ParticleSystemScene::clone() const
+{
+	return nullptr;
+}

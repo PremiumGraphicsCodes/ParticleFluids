@@ -29,6 +29,8 @@ public:
 
 	virtual Math::Vector3dd getPosition(const int index) const = 0;
 
+	virtual IShapeScene* clone() const = 0;
+
 	/*
 	virtual Math::Box3d getBoundingBox() const = 0;
 

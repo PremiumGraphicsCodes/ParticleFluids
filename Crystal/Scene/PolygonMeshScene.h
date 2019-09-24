@@ -53,6 +53,8 @@ public:
 		children.push_back(group);
 	}
 
+	IShapeScene* clone() const override;
+
 private:
 	PolygonMesh* shape;
 	std::vector<FaceGroupScene*> groups;
