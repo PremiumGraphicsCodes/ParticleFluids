@@ -34,6 +34,11 @@ namespace PG.Core.Shape
             CreateEdge(5, 6);
             CreateEdge(6, 7);
             CreateEdge(7, 4);
+
+            CreateEdge(0, 4);
+            CreateEdge(1, 5);
+            CreateEdge(2, 6);
+            CreateEdge(3, 7);
         }
 
         private void CreateEdge(int originIndex, int destIndex)
@@ -43,29 +48,7 @@ namespace PG.Core.Shape
             edges.Add(new Line3d(origin, dest));
         }
 
-        public void Build(Cylinder3d cylinder, int udiv, int vdiv)
-        {
-            var vertices = new Vector3d[udiv,vdiv];
-            for(int i = 0; i < udiv; ++i)
-            {
-                var u = i / (double)udiv;
-                for(int j = 0; j < vdiv; ++j)
-                {
-                    var v = j / (double)vdiv;
-                    vertices[i,j] = cylinder.GetPosition(1.0, u, v);
-                }
-            }
-            for(int i = 0; i < udiv-1; ++i)
-            {
-                for(int j = 0; j < vdiv-1; ++j)
-                {
-                    edges.Add(new Line3d( vertices[i, j], vertices[i+1,j]) );
-                    edges.Add(new Line3d( vertices[i, j], vertices[i, j+1]));
-                }
-            }
-        }
-
-        public void Build(Sphere3d sphere, int udiv, int vdiv)
+        public void Build(ICurveUV sphere, int udiv, int vdiv)
         {
             var vertices = new Vector3d[udiv, vdiv];
             for (int i = 0; i < udiv; ++i)
@@ -74,7 +57,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    vertices[i, j] = sphere.GetPosition(1.0, u, v);
+                    vertices[i, j] = sphere.GetPosition(u, v);
                 }
             }
             for (int i = 0; i < udiv - 1; ++i)
@@ -83,6 +66,13 @@ namespace PG.Core.Shape
                 {
                     edges.Add(new Line3d(vertices[i, j], vertices[i + 1, j]));
                     edges.Add(new Line3d(vertices[i, j], vertices[i, j + 1]));
+                }
+            }
+            var ulast = udiv - 1;
+            {
+                for(int j = 0; j < vdiv-1; ++j)
+                {
+                    edges.Add(new Line3d(vertices[ulast, j], vertices[0, j]));
                 }
             }
         }

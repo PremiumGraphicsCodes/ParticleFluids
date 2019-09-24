@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Cylinder3d
+    public class Cylinder3d : ICurveUV
     {
         private double radius;
         private double height;
@@ -53,5 +53,13 @@
             return vv.Normalized;
         }
 
+        public Vector3d GetPosition(double u, double v)
+        {
+            var angle = u * 2.0 * System.Math.PI;
+            var x = radius * System.Math.Cos(angle);
+            var y = radius * System.Math.Sin(angle);
+            var z = height * v;
+            return new Vector3d(x, y, z);
+        }
     }
 }

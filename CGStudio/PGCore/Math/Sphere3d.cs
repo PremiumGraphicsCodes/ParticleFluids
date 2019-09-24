@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Sphere3d
+    public class Sphere3d : ICurveUV
     {
         private double radius;
         private Vector3d center;
@@ -40,5 +40,15 @@
             return vv.Normalized;
         }
 
+        public Vector3d GetPosition(double u, double v)
+        {
+            var theta = u * System.Math.PI * 2.0;
+            var phi = v * System.Math.PI;
+
+            var x = radius * System.Math.Sin(theta) * System.Math.Cos(phi);
+            var y = radius * System.Math.Sin(theta) * System.Math.Sin(phi);
+            var z = radius * System.Math.Cos(theta);
+            return new Vector3d(x, y, z);
+        }
     }
 }
