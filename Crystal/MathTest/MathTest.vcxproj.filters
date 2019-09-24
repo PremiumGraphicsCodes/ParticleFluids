@@ -1,42 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="MathTest.cpp" />
-    <ClCompile Include="Box3dTest.cpp" />
-    <ClCompile Include="Triangle3dTest.cpp" />
-    <ClCompile Include="Vector3dTest.cpp" />
-    <ClCompile Include="Circle2d.cpp" />
-    <ClCompile Include="Line3dTest.cpp" />
-    <ClCompile Include="Ray3dTest.cpp" />
-    <ClCompile Include="Cone3dTest.cpp">
-      <Filter>Curve3d</Filter>
-    </ClCompile>
-    <ClCompile Include="Cylinder3dTest.cpp">
-      <Filter>Curve3d</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere3dTest.cpp">
-      <Filter>Curve3d</Filter>
-    </ClCompile>
-    <ClCompile Include="Plane3dTest.cpp" />
-    <ClCompile Include="Torus3dTest.cpp">
-      <Filter>Curve3d</Filter>
-    </ClCompile>
-    <ClCompile Include="Box2dTest.cpp" />
-    <ClCompile Include="GaussianTest.cpp" />
-    <ClCompile Include="Quad3dTest.cpp">
-      <Filter>Curve2d</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix3dTest.cpp">
-      <Filter>Matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix4dTest.cpp">
-      <Filter>Matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix2dTest.cpp">
-      <Filter>Matrix</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -49,5 +13,24 @@
     <Filter Include="Matrix">
       <UniqueIdentifier>{2ee3834c-c55c-4b53-9897-2fb232e464d3}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Box2dTest.cpp" />
+    <ClCompile Include="Box3dTest.cpp" />
+    <ClCompile Include="Circle2d.cpp" />
+    <ClCompile Include="Cone3dTest.cpp" />
+    <ClCompile Include="Cylinder3dTest.cpp" />
+    <ClCompile Include="GaussianTest.cpp" />
+    <ClCompile Include="Line3dTest.cpp" />
+    <ClCompile Include="Matrix2dTest.cpp" />
+    <ClCompile Include="Matrix3dTest.cpp" />
+    <ClCompile Include="Matrix4dTest.cpp" />
+    <ClCompile Include="Plane3dTest.cpp" />
+    <ClCompile Include="Quad3dTest.cpp" />
+    <ClCompile Include="Ray3dTest.cpp" />
+    <ClCompile Include="Sphere3dTest.cpp" />
+    <ClCompile Include="Torus3dTest.cpp" />
+    <ClCompile Include="Triangle3dTest.cpp" />
+    <ClCompile Include="Vector3dTest.cpp" />
   </ItemGroup>
 </Project>
