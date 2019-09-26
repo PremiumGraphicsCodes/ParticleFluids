@@ -27,8 +27,7 @@ namespace PGCLITest
         [TestMethod]
         public void TestMock()
         {
-            var command = new Command();
-            command.Create("Mock");
+            var command = new Command("Mock");
             command.Execute();
         }
     }

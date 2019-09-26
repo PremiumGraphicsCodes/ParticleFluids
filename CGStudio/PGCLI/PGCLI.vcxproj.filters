@@ -10,6 +10,7 @@
     <ClInclude Include="RepositoryAdapter.h" />
     <ClInclude Include="SceneAdapter.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="AnyConverter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -20,6 +21,7 @@
     <ClCompile Include="RepositoryAdapter.cpp" />
     <ClCompile Include="SceneAdapter.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="AnyConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

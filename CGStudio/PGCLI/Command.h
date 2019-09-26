@@ -12,7 +12,7 @@ public:
 
 	void Execute();
 
-	//System::Object^ GetResult(System::String^ name);
+	System::Object^ GetResult(System::String^ name);
 
 	void Clear();
 };
