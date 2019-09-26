@@ -10,8 +10,16 @@ class MockCommand : public ICommand
 public:
 	struct Args : IArgs
 	{
-		int lhs;
-		int rhs;
+		Arg<int> lhs;
+		Arg<int> rhs;
+
+		Args() :
+			lhs("lhs", 0),
+			rhs("rhs", 0)
+		{
+			add(&lhs);
+			add(&rhs);
+		}
 	};
 
 	struct Results : IResults

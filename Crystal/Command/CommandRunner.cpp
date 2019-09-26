@@ -15,7 +15,7 @@ void CommandRunner::create(const std::string& name)
 
 void CommandRunner::setArg(const std::string& name, std::any value)
 {
-//	::command->setArg()
+	::command->setArg(name, value);
 }
 
 void CommandRunner::execute()

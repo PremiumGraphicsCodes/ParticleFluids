@@ -11,6 +11,7 @@
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="CommandRunner.h" />
+    <ClInclude Include="IArgs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

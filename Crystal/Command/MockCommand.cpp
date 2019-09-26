@@ -4,5 +4,6 @@ using namespace Crystal::Command;
 
 void MockCommand::execute()
 {
-	results.value = args.lhs + args.rhs;
+	auto v1 = args.lhs.getValue();
+	results.value = args.lhs.getValue() + args.rhs.getValue();
 }

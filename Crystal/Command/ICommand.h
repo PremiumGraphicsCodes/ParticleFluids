@@ -1,16 +1,19 @@
 #pragma once
 
 #include "../Util/UnCopyable.h"
+#include "IArgs.h"
 #include <any>
 #include <string>
 #include <map>
+#include <vector>
 
 namespace Crystal {
 	namespace Command {
 
-struct IArgs
+struct IResult
 {
-//	std::map<std::string, std::any> args;
+	std::string name;
+	std::any value;
 };
 
 struct IResults
@@ -21,7 +24,7 @@ struct IResults
 class ICommand : private UnCopyable
 {
 public:
-	//void setArg(std::string& name, std::any value) { args[name] = value; }
+	void setArg(const std::string& name, std::any value) { args->setValue(name, value); }
 
 	virtual void execute() = 0;
 
