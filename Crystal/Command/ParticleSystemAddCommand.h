@@ -10,12 +10,24 @@ namespace Crystal {
 class ParticleSystemAddCommand : public ICommand
 {
 public:
-	struct Args
+	ParticleSystemAddCommand() :
+		ICommand(&args, &results)
+	{}
+
+	struct Args : IArgs
 	{
 		std::vector<Math::Vector3dd> positions;
 	};
 
+	struct Results : IResults
+	{
+	};
+
 	void execute() override {}
+
+private:
+	Args args;
+	Results results;
 };
 	}
 }

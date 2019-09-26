@@ -14,12 +14,16 @@ public:
 		int rhs;
 	};
 
-	void execute();
-
 	struct Results : IResults
 	{
 		int value;
 	};
+
+	MockCommand() :
+		ICommand(&args, &results)
+	{}
+
+	void execute();
 
 private:
 	Args args;
