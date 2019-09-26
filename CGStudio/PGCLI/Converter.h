@@ -13,18 +13,14 @@
 
 using namespace System;
 
-namespace Crystal {
-	namespace UI {
-		class Model;
-	}
-}
-
 namespace PG {
 	namespace CLI {
 
 class Converter
 {
 public:
+	static std::string toCpp(System::String^ src);
+
 	static System::String^ fromCpp(const std::string& src);
 
 	static Crystal::Math::Vector2dd toCpp2d(PG::Core::Math::Vector2d^ src);

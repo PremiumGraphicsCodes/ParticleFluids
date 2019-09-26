@@ -6,7 +6,7 @@ namespace PG {
 public ref class Command
 {
 public:
-	void Create(System::String^ name);
+	Command::Command(System::String^ name);
 
 	void SetArg(System::String^ name, System::Object^ value);
 

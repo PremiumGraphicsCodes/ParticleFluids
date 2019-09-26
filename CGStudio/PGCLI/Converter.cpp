@@ -1,10 +1,12 @@
 #include "stdafx.h"
-#include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Math/Line3d.h"
-#include "../../Crystal/Math/Matrix4d.h"
 #include <msclr/marshal_cppstd.h>
 
 #include "Converter.h"
+
+std::string PG::CLI::Converter::toCpp(System::String^ src)
+{
+	return msclr::interop::marshal_as<std::string>(src);
+}
 
 System::String^ PG::CLI::Converter::fromCpp(const std::string& src)
 {

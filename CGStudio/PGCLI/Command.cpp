@@ -12,7 +12,7 @@ namespace {
 	CommandRunner instance;
 }
 
-void Command::Create(System::String^ name)
+Command::Command(System::String^ name)
 {
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
 	::instance.create(str);
