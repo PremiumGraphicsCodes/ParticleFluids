@@ -37,7 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandFactoryTest.cpp" />
-    <ClCompile Include="CommandRunnerTest.cpp" />
+    <ClCompile Include="CommandTest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -49,6 +49,15 @@
   <ItemGroup>
     <ProjectReference Include="..\Command\Command.vcxproj">
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Math\Math.vcxproj">
+      <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Scene\Scene.vcxproj">
+      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Shader\Shader.vcxproj">
+      <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -24,7 +24,7 @@ public:
 		ICommand(&args, &results)
 	{}
 
-	void execute() override {}
+	void execute(Scene::Scene* scene) override {}
 
 private:
 	Args args;
