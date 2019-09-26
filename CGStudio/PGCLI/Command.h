@@ -2,6 +2,7 @@
 
 namespace PG {
 	namespace CLI {
+		ref class RepositoryAdapter;
 
 public ref class Command
 {
@@ -10,7 +11,7 @@ public:
 
 	void SetArg(System::String^ name, System::Object^ value);
 
-	void Execute();
+	void Execute(RepositoryAdapter^ objects);
 
 	System::Object^ GetResult(System::String^ name);
 

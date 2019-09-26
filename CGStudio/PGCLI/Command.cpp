@@ -4,7 +4,9 @@
 #include <msclr/marshal_cppstd.h>
 
 #include "../../Crystal/Command/Command.h"
+#include "../../Crystal/Scene/World.h"
 #include "AnyConverter.h"
+#include "RepositoryAdapter.h"
 
 using namespace PG::CLI;
 
@@ -25,9 +27,9 @@ void Command::SetArg(System::String^ name, System::Object^ value)
 	::instance.setArg(str, v);
 }
 
-void Command::Execute()
+void Command::Execute(RepositoryAdapter^ objects)
 {
-	::instance.execute();
+	::instance.execute(objects->instance->getObjects());
 }
 
 System::Object^ Command::GetResult(System::String^ name)

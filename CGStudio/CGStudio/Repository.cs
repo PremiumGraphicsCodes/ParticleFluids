@@ -43,7 +43,7 @@ namespace PG.CGStudio
             var command = new PG.CLI.Command("Mock");
             command.SetArg("lhs", 1);
             command.SetArg("rhs", 2);
-            command.Execute();
+            command.Execute(adapter);
             var result = command.GetResult("value");
             /*
             var isOk = adapter.Import(filename);
