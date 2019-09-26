@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="ICommand.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="ParticleSystemAddCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="FileImportCommand.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandFactory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ICommand.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="FileImportCommand.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandFactory.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{b7086cd9-f50a-435e-964a-8e5395384f99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File">
+      <UniqueIdentifier>{c6a7890d-cf84-4105-acdd-dc0da0eddf17}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
