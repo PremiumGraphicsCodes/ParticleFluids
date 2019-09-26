@@ -11,9 +11,7 @@ namespace Crystal {
 class CommandFactory : UnCopyable
 {
 public:
-	std::unique_ptr<ICommand> create(const std::string& name);
-
-private:
+	static std::unique_ptr<ICommand> create(const std::string& name);
 };
 	}
 }

@@ -7,12 +7,12 @@
 namespace Crystal {
 	namespace Command {
 
-class IArg
+class IArgs
 {
 
 };
 
-struct IResult
+struct IResults
 {
 
 };
@@ -20,9 +20,12 @@ struct IResult
 class ICommand : private UnCopyable
 {
 public:
-//	void setArg(const std::string& str, std::any value);
+	//void setArg(const std::string& str, std::any value);
 
 	virtual void execute() = 0;
+
+private:
+	//IArgs
 };
 	}
 }

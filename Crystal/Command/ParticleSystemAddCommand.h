@@ -15,7 +15,7 @@ public:
 		std::vector<Math::Vector3dd> positions;
 	};
 
-	void execute() override;
+	void execute() override {}
 };
 	}
 }

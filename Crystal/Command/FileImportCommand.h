@@ -15,7 +15,7 @@ public:
 		std::filesystem::path filePath;
 	};
 
-	void execute() override;
+	void execute() override {}
 };
 
 	}

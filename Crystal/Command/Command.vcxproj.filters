@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="ICommand.h" />
-    <ClInclude Include="pch.h" />
     <ClInclude Include="ParticleSystemAddCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -10,14 +9,17 @@
       <Filter>File</Filter>
     </ClInclude>
     <ClInclude Include="CommandFactory.h" />
+    <ClInclude Include="MockCommand.h" />
+    <ClInclude Include="CommandRunner.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
-    <ClCompile Include="pch.cpp" />
     <ClCompile Include="FileImportCommand.cpp">
       <Filter>File</Filter>
     </ClCompile>
     <ClCompile Include="CommandFactory.cpp" />
+    <ClCompile Include="MockCommand.cpp" />
+    <ClCompile Include="CommandRunner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
