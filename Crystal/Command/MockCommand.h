@@ -24,7 +24,13 @@ public:
 
 	struct Results : IResults
 	{
-		int value;
+		Result<int> value;
+
+		Results() :
+			value("value", 0)
+		{
+			add(&value);
+		}
 	};
 
 	MockCommand() :

@@ -12,6 +12,7 @@
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="CommandRunner.h" />
     <ClInclude Include="IArgs.h" />
+    <ClInclude Include="IResults.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

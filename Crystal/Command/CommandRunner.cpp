@@ -25,5 +25,5 @@ void CommandRunner::execute()
 
 std::any CommandRunner::getResult(const std::string& name)
 {
-	return std::any(0);
+	return ::command->getResult(name);
 }

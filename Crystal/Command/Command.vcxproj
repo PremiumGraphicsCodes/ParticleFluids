@@ -158,6 +158,7 @@
     <ClInclude Include="FileImportCommand.h" />
     <ClInclude Include="IArgs.h" />
     <ClInclude Include="ICommand.h" />
+    <ClInclude Include="IResults.h" />
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="ParticleSystemAddCommand.h" />
   </ItemGroup>
