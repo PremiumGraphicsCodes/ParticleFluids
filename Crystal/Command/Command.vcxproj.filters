@@ -10,9 +10,9 @@
     </ClInclude>
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="MockCommand.h" />
-    <ClInclude Include="CommandRunner.h" />
     <ClInclude Include="IArgs.h" />
     <ClInclude Include="IResults.h" />
+    <ClInclude Include="Command.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -21,7 +21,7 @@
     </ClCompile>
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="MockCommand.cpp" />
-    <ClCompile Include="CommandRunner.cpp" />
+    <ClCompile Include="Command.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

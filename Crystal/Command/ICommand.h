@@ -15,6 +15,8 @@ public:
 		results(results)
 	{}
 
+	virtual ~ICommand(){}
+
 	void setArg(const std::string& name, std::any value) { args->setValue(name, value); }
 
 	virtual void execute() = 0;

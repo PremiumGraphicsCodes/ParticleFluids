@@ -1,18 +1,15 @@
 #include "pch.h"
 
-#include "../Command/CommandRunner.h"
+#include "../Command/Command.h"
 
 using namespace Crystal::Command;
 
 TEST(CommandRunnerTest, TestExecute)
 {
-	CommandRunner runner;
-	runner.create("Mock");
-	runner.setArg("lhs", 1);
-	runner.setArg("rhs", 2);
-	runner.execute();
-	const auto actual = std::any_cast<int>( runner.getResult("value") );
+	Command command("Mock");
+	command.setArg("lhs", 1);
+	command.setArg("rhs", 2);
+	command.execute();
+	const auto actual = std::any_cast<int>( command.getResult("value") );
 	EXPECT_EQ( 3, actual );
-//	auto actual = Command::create("Mock");
-//	EXPECT_NE(nullptr, actual);
 }

@@ -1,22 +1,36 @@
 #pragma once
 
 #include <string>
-#include <memory.h>
+#include <memory>
 #include <any>
+
+#include "ICommand.h"
 
 namespace Crystal {
 	namespace Command {
 
-class CommandRunner
+class Command
 {
 public:
+	Command() {}
+
+	Command(const std::string& name);
+
+	~Command();
+
 	void create(const std::string& name);
+
+	void clear();
 
 	void setArg(const std::string& name, std::any value);
 
 	void execute();
 
 	std::any getResult(const std::string& name);
+
+private:
+	std::unique_ptr<ICommand> command;
+
 };
 
 	}

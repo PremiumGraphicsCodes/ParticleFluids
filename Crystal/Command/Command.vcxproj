@@ -154,7 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CommandFactory.h" />
-    <ClInclude Include="CommandRunner.h" />
+    <ClInclude Include="Command.h" />
     <ClInclude Include="FileImportCommand.h" />
     <ClInclude Include="IArgs.h" />
     <ClInclude Include="ICommand.h" />
@@ -164,7 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandFactory.cpp" />
-    <ClCompile Include="CommandRunner.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="FileImportCommand.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="MockCommand.cpp" />

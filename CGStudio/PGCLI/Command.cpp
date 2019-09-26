@@ -3,14 +3,13 @@
 
 #include <msclr/marshal_cppstd.h>
 
-#include "../../Crystal/Command/CommandRunner.h"
+#include "../../Crystal/Command/Command.h"
 #include "AnyConverter.h"
 
 using namespace PG::CLI;
-using namespace Crystal::Command;
 
 namespace {
-	CommandRunner instance;
+	Crystal::Command::Command instance;
 }
 
 Command::Command(System::String^ name)
@@ -40,5 +39,5 @@ System::Object^ Command::GetResult(System::String^ name)
 
 void Command::Clear()
 {
-	//instance.clear();
+	::instance.clear();
 }
