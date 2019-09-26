@@ -4,12 +4,14 @@
 #include "../Graphics/ColorRGBA.h"
 
 #include "../Scene/ParticleSystemScene.h"
+#include "../Command/Command.h"
 
 #include <random>
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
+using namespace Crystal::Command;
 using namespace Crystal::UI;
 
 PSSphereView::PSSphereView(World* model, Canvas* canvas) :
@@ -34,8 +36,14 @@ void PSSphereView::onOk()
 		const auto v = dist(mt);
 		positions.push_back(shape.getPosition(Vector3dd(u, v, 1.0)));
 	}
-	auto scene = getWorld()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Sphere");
-	getWorld()->getObjects()->addScene(scene);
-	getWorld()->updateViewModel();
+	
+	Command::Command command;
+	command.create("ParticleSystemAdd");
+	command.setArg("Positions", positions);
+	command.setArg("PointSize", attribute.getValue().size);
+	command.setArg("Color", attribute.getValue().color);
+	command.setArg("Name", std::string("PSSphere"));
+	command.execute(getWorld());
+
 	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

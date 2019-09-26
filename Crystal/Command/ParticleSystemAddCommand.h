@@ -2,6 +2,7 @@
 
 #include "ICommand.h"
 #include "../Math/Vector3d.h"
+#include "../Graphics/ColorRGBA.h"
 #include <vector>
 
 namespace Crystal {
@@ -16,18 +17,33 @@ public:
 
 	struct Args : IArgs
 	{
-		std::vector<Math::Vector3dd> positions;
+		Args() :
+			positions("Positions", {}),
+			pointSize("PointSize", 1.0f),
+			color("Color", Graphics::ColorRGBAf(1,1,1,1)),
+			name("Name", std::string(""))
+		{
+			add(&positions);
+			add(&pointSize);
+			add(&color);
+			add(&name);
+		}
+
+		Arg< std::vector<Math::Vector3dd> > positions;
+		Arg< float > pointSize;
+		Arg< Graphics::ColorRGBAf > color;
+		Arg< std::string > name;
 	};
 
 	struct Results : IResults
 	{
 		Results() :
-			generatedId("GeneratedId", -1)
+			newId("NewId", -1)
 		{
-			add(&generatedId);
+			add(&newId);
 		}
 
-		Result<int> generatedId;
+		Result<int> newId;
 	};
 
 	void execute(Scene::World* scene) override;

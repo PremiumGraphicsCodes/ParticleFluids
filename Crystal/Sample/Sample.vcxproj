@@ -156,6 +156,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Command\Command.vcxproj">
+      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\glfw.redist.3.2.1\build\native\glfw.redist.targets" Condition="Exists('..\packages\glfw.redist.3.2.1\build\native\glfw.redist.targets')" />
