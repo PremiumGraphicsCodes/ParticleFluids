@@ -92,6 +92,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Math.lib;Shader.lib;IO.lib;Scene.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -124,6 +125,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Math.lib;Shader.lib;IO.lib;Scene.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -133,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="CameraAdapter.h" />
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="Command.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RepositoryAdapter.h" />
@@ -143,6 +146,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CameraAdapter.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RepositoryAdapter.cpp" />
@@ -163,6 +167,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Crystal\Command\Command.vcxproj">
+      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\PGCore\PGCore.csproj">
       <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
     </ProjectReference>

@@ -40,12 +40,18 @@ namespace PG.CGStudio
 
         public bool Import(string filename)
         {
+            var command = new PG.CLI.Command();
+            command.Create("Mock");
+            command.Execute();
+            /*
             var isOk = adapter.Import(filename);
             if(isOk)
             {
                 Sync();
             }
             return isOk;
+            */
+            return false;
         }
 
         public bool Export(string filename)

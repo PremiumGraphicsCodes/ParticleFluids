@@ -9,6 +9,7 @@
     <ClInclude Include="CameraAdapter.h" />
     <ClInclude Include="RepositoryAdapter.h" />
     <ClInclude Include="SceneAdapter.h" />
+    <ClInclude Include="Command.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -18,6 +19,7 @@
     <ClCompile Include="CameraAdapter.cpp" />
     <ClCompile Include="RepositoryAdapter.cpp" />
     <ClCompile Include="SceneAdapter.cpp" />
+    <ClCompile Include="Command.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

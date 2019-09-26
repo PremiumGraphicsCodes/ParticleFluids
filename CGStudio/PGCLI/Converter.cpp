@@ -2,8 +2,14 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Line3d.h"
 #include "../../Crystal/Math/Matrix4d.h"
+#include <msclr/marshal_cppstd.h>
 
 #include "Converter.h"
+
+System::String^ PG::CLI::Converter::fromCpp(const std::string& src)
+{
+	return msclr::interop::marshal_as<System::String^>(src);
+}
 
 Crystal::Math::Vector2dd PG::CLI::Converter::toCpp2d(PG::Core::Math::Vector2d^ src)
 {
