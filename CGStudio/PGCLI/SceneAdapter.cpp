@@ -36,6 +36,7 @@ bool SceneAdapter::Export(System::String^ filename)
 	return false;
 }
 
+/*
 int SceneAdapter::AddParticleSystemScene(System::Collections::Generic::List<PG::Core::Math::Vector3d^>^ positions, System::String^ name)
 {
 	std::vector<Vector3dd> ps;
@@ -47,6 +48,7 @@ int SceneAdapter::AddParticleSystemScene(System::Collections::Generic::List<PG::
 	instance->addScene( scene );
 	return scene->getId();
 }
+*/
 
 int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines, System::String^ name, PG::Core::UI::WireAppearance^ appearance)
 {

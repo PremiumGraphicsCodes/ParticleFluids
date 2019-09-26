@@ -29,7 +29,7 @@ void Command::SetArg(System::String^ name, System::Object^ value)
 
 void Command::Execute(RepositoryAdapter^ objects)
 {
-	::instance.execute(objects->instance->getObjects());
+	::instance.execute(objects->instance);
 }
 
 System::Object^ Command::GetResult(System::String^ name)

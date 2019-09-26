@@ -63,7 +63,12 @@ namespace PG.CGStudio
 
         public void AddParticleSystemScene(List<Vector3d> positions, string name)
         {
-            this.adapter.GetSceneAdapter().AddParticleSystemScene(positions, name);
+            var command = new PG.CLI.Command("ParticleSystemAdd");
+            command.SetArg("Positions", positions);
+            command.SetArg("Name", name);
+            command.Execute(adapter);
+
+            //            this.adapter.GetSceneAdapter().AddParticleSystemScene(positions, name);
             Sync();
         }
 
@@ -111,12 +116,6 @@ namespace PG.CGStudio
         {
             var newScene = this.adapter.GetSceneAdapter().ToScene();
             Scene[0] = newScene;
-        }
-
-        public void AddParticleSystemItem(List<Vector3d> positions, string name)
-        {
-            this.adapter.GetItemAdapter().AddParticleSystemScene(positions, name);
-            Sync();
         }
 
         public void AddWireFrameItem(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
