@@ -28,7 +28,7 @@ void Command::setArg(const std::string& name, std::any value)
 	command->setArg(name, value);
 }
 
-void Command::execute(Crystal::Scene::Scene* scene)
+void Command::execute(Crystal::Scene::World* scene)
 {
 	command->execute(scene);
 }

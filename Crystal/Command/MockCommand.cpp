@@ -2,7 +2,7 @@
 
 using namespace Crystal::Command;
 
-void MockCommand::execute(Crystal::Scene::Scene* scene)
+void MockCommand::execute(Crystal::Scene::World* world)
 {
 	results.value.setValue( args.lhs.getValue() + args.rhs.getValue() );
 }

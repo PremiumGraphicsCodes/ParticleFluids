@@ -24,7 +24,7 @@ public:
 
 	void setArg(const std::string& name, std::any value);
 
-	void execute(Scene::Scene* scene);
+	void execute(Scene::World* scene);
 
 	std::any getResult(const std::string& name);
 

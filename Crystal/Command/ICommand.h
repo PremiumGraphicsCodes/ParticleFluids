@@ -4,7 +4,7 @@
 #include "IArgs.h"
 #include "IResults.h"
 
-#include "../Scene/Scene.h"
+#include "../Scene/World.h"
 
 namespace Crystal {
 	namespace Command {
@@ -21,7 +21,7 @@ public:
 
 	void setArg(const std::string& name, std::any value) { args->setValue(name, value); }
 
-	virtual void execute(Scene::Scene* scene) = 0;
+	virtual void execute(Scene::World* scene) = 0;
 
 	std::any getResult(const std::string& name) { return results->getValue(name); }
 

@@ -21,9 +21,16 @@ public:
 
 	struct Results : IResults
 	{
+		Results() :
+			generatedId("GeneratedId", -1)
+		{
+			add(&generatedId);
+		}
+
+		Result<int> generatedId;
 	};
 
-	void execute(Scene::Scene* scene) override {}
+	void execute(Scene::World* scene) override;
 
 private:
 	Args args;

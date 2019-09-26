@@ -37,7 +37,7 @@ public:
 		ICommand(&args, &results)
 	{}
 
-	void execute(Scene::Scene* scene) override;
+	void execute(Scene::World* world) override;
 
 private:
 	Args args;

@@ -6,11 +6,11 @@ using namespace Crystal::Command;
 
 TEST(CommandTest, TestExecute)
 {
-	Crystal::Scene::Scene scene(0, "");
+	Crystal::Scene::World world;
 	Command command("Mock");
 	command.setArg("lhs", 1);
 	command.setArg("rhs", 2);
-	command.execute(&scene);
+	command.execute(&world);
 	const auto actual = std::any_cast<int>( command.getResult("value") );
 	EXPECT_EQ( 3, actual );
 }
