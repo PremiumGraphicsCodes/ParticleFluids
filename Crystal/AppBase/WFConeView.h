@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IOkCancelView.h"
+#include "IWFAddView.h"
 #include "IntView.h"
 #include "WFAttributeView.h"
 
@@ -9,7 +9,7 @@
 namespace Crystal {
 	namespace UI {
 
-class WFConeView : public IOkCancelView
+class WFConeView : public IWFAddView
 {
 public:
 	WFConeView(Scene::World* model, Canvas* canvas);
@@ -21,7 +21,6 @@ private:
 	IntView unum;
 	IntView vnum;
 	Cone3dView cone;
-	WFAttributeView attribute;
 };
 
 	}

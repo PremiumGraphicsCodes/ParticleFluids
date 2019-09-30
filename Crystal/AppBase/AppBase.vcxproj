@@ -37,6 +37,7 @@
     <ClCompile Include="FloatView.cpp" />
     <ClCompile Include="IntView.cpp" />
     <ClCompile Include="IPSAddView.cpp" />
+    <ClCompile Include="IWFAddView.cpp" />
     <ClCompile Include="Matrix2dView.cpp" />
     <ClCompile Include="Matrix3dView.cpp" />
     <ClCompile Include="Matrix4dView.cpp" />

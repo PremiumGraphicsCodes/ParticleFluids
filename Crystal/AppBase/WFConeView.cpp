@@ -9,24 +9,20 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFConeView::WFConeView(World* model, Canvas* canvas) :
-	IOkCancelView("WFCone", model, canvas),
+	IWFAddView("WFCone", model, canvas),
 	cone("Cone"),
-	attribute("Attribute"),
 	unum("UNum", 12),
 	vnum("VNum", 12)
 {
 	add(&unum);
 	add(&vnum);
 	add(&cone);
-	add(&attribute);
 }
 
 void WFConeView::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(cone.getValue(), unum.getValue(), vnum.getValue());
-	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Cone");
-	getWorld()->getObjects()->addScene(scene);
-	getWorld()->updateViewModel();
+	IWFAddView::addWireFrame(builder.getWireFrame());
 	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

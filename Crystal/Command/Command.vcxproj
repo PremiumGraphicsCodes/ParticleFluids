@@ -164,6 +164,7 @@
     <ClInclude Include="LightAddCommand.h" />
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="ParticleSystemAddCommand.h" />
+    <ClInclude Include="ParticleSystemEditCommand.h" />
     <ClInclude Include="PolygonMeshAddCommand.h" />
     <ClInclude Include="TransformCommand.h" />
     <ClInclude Include="WireFrameAddCommand.h" />

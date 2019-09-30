@@ -15,13 +15,13 @@ void WireFrameAddCommand::execute(World* world)
 	attr.width = args.lineWidth.getValue();
 	const auto& name = args.name.getValue();
 	if (args.isItem.getValue()) {
-		auto scene = world->getObjectFactory()->createWireFrameScene(lines, attr, name);
-		world->getObjects()->addScene(scene);
+		auto scene = world->getItemFactory()->createWireFrameScene(lines, attr, name);
+		world->getItems()->addScene(scene);
 		results.newId.setValue(scene->getId());
 	}
 	else {
-		auto scene = world->getItemFactory()->createWireFrameScene(lines, attr, name);
-		world->getItems()->addScene(scene);
+		auto scene = world->getObjectFactory()->createWireFrameScene(lines, attr, name);
+		world->getObjects()->addScene(scene);
 		results.newId.setValue(scene->getId());
 	}
 	world->updateViewModel();

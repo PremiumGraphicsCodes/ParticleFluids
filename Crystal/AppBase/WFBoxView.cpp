@@ -10,20 +10,16 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFBoxView::WFBoxView(World* model, Canvas* canvas) :
-	IOkCancelView("WFBox", model, canvas),
-	box("Box"),
-	attribute("Attribute")
+	IWFAddView("WFBox", model, canvas),
+	box("Box")
 {
 	add(&box);
-	add(&attribute);
 }
 
 void WFBoxView::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(box.getValue());
-	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Box");
-	getWorld()->getObjects()->addScene(scene);
-	getWorld()->updateViewModel();
+	IWFAddView::addWireFrame(builder.getWireFrame());
 	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

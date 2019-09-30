@@ -11,16 +11,19 @@ class IWFAddView : public IOkCancelView
 public:
 	IWFAddView(const std::string& name, Scene::World* model, Canvas* canvas) :
 		IOkCancelView(name, model, canvas),
-		attributeView("WFAttribute")
+		attributeView("WFAttribute"),
+		nameView("Name")
 	{
 		add(&attributeView);
+		add(&nameView);
 	}
 
 protected:
-	void addWireFrame(const std::vector<Math::Vector3dd>& positions);
+	void addWireFrame(const std::vector<Math::Line3dd>& lines);
 
 private:
 	WFAttributeView attributeView;
+	StringView nameView;
 };
 
 	}

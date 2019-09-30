@@ -10,9 +10,6 @@
     <ClInclude Include="IArgs.h" />
     <ClInclude Include="IResults.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="ParticleSystemAddCommand.h">
-      <Filter>Scene\Shape</Filter>
-    </ClInclude>
     <ClInclude Include="WireFrameAddCommand.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
@@ -22,12 +19,18 @@
     <ClInclude Include="PolygonMeshAddCommand.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="TransformCommand.h">
-      <Filter>Scene\Shape</Filter>
-    </ClInclude>
     <ClInclude Include="GetCommand.h" />
     <ClInclude Include="LightAddCommand.h">
       <Filter>Scene\Appearance</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformCommand.h">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemAddCommand.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemEditCommand.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -38,9 +41,6 @@
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="Command.cpp" />
-    <ClCompile Include="ParticleSystemAddCommand.cpp">
-      <Filter>Scene\Shape</Filter>
-    </ClCompile>
     <ClCompile Include="WireFrameAddCommand.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
@@ -50,12 +50,15 @@
     <ClCompile Include="PolygonMeshAddCommand.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
-    <ClCompile Include="TransformCommand.cpp">
-      <Filter>Scene\Shape</Filter>
-    </ClCompile>
     <ClCompile Include="GetCommand.cpp" />
     <ClCompile Include="LightAddCommand.cpp">
       <Filter>Scene\Appearance</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformCommand.cpp">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemAddCommand.cpp">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +73,12 @@
     </Filter>
     <Filter Include="Scene\Appearance">
       <UniqueIdentifier>{5008008f-228d-4376-b123-d0293605e6b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Transform">
+      <UniqueIdentifier>{653ad305-666d-4e9b-ba03-9eea40943d03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\ParticleSystem">
+      <UniqueIdentifier>{a2955083-84ec-435a-a5cf-7e82af13379b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

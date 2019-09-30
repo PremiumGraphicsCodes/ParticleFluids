@@ -244,6 +244,9 @@
     <ClCompile Include="IPSAddView.cpp">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClCompile>
+    <ClCompile Include="IWFAddView.cpp">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
