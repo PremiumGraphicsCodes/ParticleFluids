@@ -30,14 +30,11 @@ void CameraMenu::onShow()
 			command.create("CameraYZ");
 			command.execute(getModel());
 		}
-		/*
 		if (ImGui::MenuItem("ZX")) {
-			canvas->setCameraZX(model->getBoundingBox());
+			Command::Command command;
+			command.create("CameraZX");
+			command.execute(getModel());
 		}
-		if (ImGui::MenuItem("XYZ")) {
-//			canvas->set
-		}
-		*/
 		ImGui::EndMenu();
 	}
 	//ImGui::EndMenuBar();

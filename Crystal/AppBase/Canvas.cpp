@@ -87,15 +87,6 @@ void Canvas::onWheel(const float scale)
 {
 	ctrl->onWheel(scale);
 }
-/*
-
-
-void Canvas::setCameraZX(const Box3d& boundingBox)
-{
-	fitCamera(boundingBox);
-	camera->rotate(0.0, glm::radians(90.0f));
-}
-*/
 
 Image Canvas::getImage() const
 {

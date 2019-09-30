@@ -58,7 +58,24 @@ public:
 private:
 	Args args;
 	Results results;
+};
 
+class CameraZXCommand : public ICommand
+{
+public:
+	struct Args : IArgs {};
+
+	struct Results : IResults {};
+
+	CameraZXCommand() :
+		ICommand(&args, &results)
+	{}
+
+	void execute(Scene::World* world) override;
+
+private:
+	Args args;
+	Results results;
 };
 
 
