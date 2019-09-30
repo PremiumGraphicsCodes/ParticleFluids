@@ -118,6 +118,9 @@
     <ClInclude Include="IShape.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="CameraScene.h">
+      <Filter>Scene\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">

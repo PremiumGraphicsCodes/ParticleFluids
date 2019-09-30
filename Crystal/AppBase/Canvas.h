@@ -24,7 +24,7 @@ class Canvas : public IMouseListener
 public:
 	Canvas();
 
-	explicit Canvas(Graphics::ICamera* camera);
+	//explicit Canvas(Graphics::ICamera* camera);
 
 	virtual ~Canvas() {}
 

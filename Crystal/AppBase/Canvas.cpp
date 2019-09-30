@@ -13,15 +13,19 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 Canvas::Canvas() :
-	Canvas(new PerspectiveCamera(
+	width(0),
+	height(0),
+	camera(new PerspectiveCamera(
 	1.0,
 	0.5f * PI,
 	Vector3df(0, 0, 0),
 	Vector3df(0, 0, -10.0),
 	1.0f, 10.0f))
 {
+	renderer.reset(new Renderer());
 }
 
+/*
 Canvas::Canvas(ICamera* camera) :
 	width(0),
 	height(0),
@@ -29,6 +33,7 @@ Canvas::Canvas(ICamera* camera) :
 {
 	renderer.reset(new Renderer());
 }
+*/
 
 void Canvas::build()
 {
