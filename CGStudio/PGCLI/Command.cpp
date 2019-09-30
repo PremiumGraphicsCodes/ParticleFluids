@@ -5,6 +5,7 @@
 
 #include "../../Crystal/Command/Command.h"
 #include "../../Crystal/Command/GetCommand.h"
+#include "../../Crystal/Command/SetCommand.h"
 
 #include "../../Crystal/Scene/World.h"
 #include "AnyConverter.h"
@@ -17,6 +18,12 @@ namespace {
 }
 
 Command::Command(System::String^ name)
+{
+	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	::instance.create(str);
+}
+
+void Command::Create(System::String^ name)
 {
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
 	::instance.create(str);
@@ -52,4 +59,11 @@ System::Object^ Command::Get(RepositoryAdapter^ objects, System::String^ name)
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
 	auto result = AnyConverter::fromCpp( Crystal::Command::GetCommand::Get(objects->instance, str) );
 	return nullptr;
+}
+
+void Command::Set(RepositoryAdapter^ objects, System::String^ name, System::Object^ value)
+{
+	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	auto v = AnyConverter::toCpp(value);
+	Crystal::Command::SetCommand::Set(objects->instance, str, v);
 }

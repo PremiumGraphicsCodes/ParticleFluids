@@ -9,6 +9,8 @@ public ref class Command
 public:
 	Command::Command(System::String^ name);
 
+	void Create(System::String^ name);
+
 	void SetArg(System::String^ name, System::Object^ value);
 
 	void Execute(RepositoryAdapter^ objects);
@@ -19,6 +21,8 @@ public:
 	void Clear();
 
 	static System::Object^ Get(RepositoryAdapter^ objects, System::String^ name);
+
+	static void Set(RepositoryAdapter^ objects, System::String^ name, System::Object^ value);
 };
 
 
