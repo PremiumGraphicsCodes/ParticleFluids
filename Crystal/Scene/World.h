@@ -6,6 +6,8 @@
 #include "SceneFactory.h"
 #include "ViewModel.h"
 
+#include "Renderer.h"
+
 #include <filesystem>
 
 namespace Crystal {
@@ -38,6 +40,8 @@ public:
 
 	Math::Box3d getBoundingBox() const;
 
+	UI::Renderer* getRenderer() { return renderer.get(); }
+
 private:
 	Scene objects;
 	Scene items;
@@ -45,6 +49,9 @@ private:
 
 	SceneFactory objectFactory;
 	SceneFactory itemFactory;
+
+	std::unique_ptr<UI::Renderer> renderer;
+
 };
 	}
 }

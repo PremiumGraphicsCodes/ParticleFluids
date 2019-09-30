@@ -26,7 +26,7 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 
 	std::cout << x << " " << y << std::endl;
 	
-	const auto id = canvas->getRenderer()->getObjectIdRenderer()->getId(x,y);
+	const auto id = model->getRenderer()->getObjectIdRenderer()->getId(x,y);
 	const auto parentId = id.getParentId();
 	const auto childId = id.getChildId();
 	if (parentId == 0) {

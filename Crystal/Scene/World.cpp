@@ -32,6 +32,8 @@ void World::init()
 	material.specular = ColorRGBAf(1, 1, 1, 1);
 	material.shininess = 1.0;
 	objects.addScene(objectFactory.createMaterialScene(material, "Material0"));
+
+	renderer = std::make_unique<UI::Renderer>();
 }
 
 void World::clear()

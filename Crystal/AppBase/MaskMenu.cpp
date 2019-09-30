@@ -12,7 +12,7 @@ void MaskMenu::onShow()
 
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
-		auto renderer = canvas->getRenderer()->getObjectRenderer();
+		auto renderer = model->getRenderer()->getObjectRenderer();
 		auto mask = renderer->getMask();
 		if (ImGui::MenuItem("Point")) {
 			mask.showPoints = !mask.showPoints;

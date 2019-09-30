@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CameraFitCommand.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="FileExportCommand.h" />

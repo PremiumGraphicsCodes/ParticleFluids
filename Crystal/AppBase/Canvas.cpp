@@ -22,7 +22,6 @@ Canvas::Canvas() :
 	Vector3df(0, 0, -10.0),
 	1.0f, 10.0f))
 {
-	renderer.reset(new Renderer());
 }
 
 /*
@@ -38,8 +37,6 @@ Canvas::Canvas(ICamera* camera) :
 void Canvas::build()
 {
 	setUICtrl(new CameraUICtrl(getCamera()));
-
-	renderer->build();
 }
 
 /*
@@ -47,12 +44,6 @@ void Canvas::render(const int width, const int height, IShaderScene* scene, cons
 {
 }
 */
-void Crystal::UI::Canvas::render(const int width, const int height, const Scene::ViewModel & viewModel)
-{
-	this->width = width;
-	this->height = height;
-	renderer->render(width, height, getCamera(), viewModel);
-}
 
 void Canvas::onLeftButtonDown(const Vector2df& position)
 {

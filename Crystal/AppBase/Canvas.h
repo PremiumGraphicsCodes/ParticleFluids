@@ -32,8 +32,6 @@ public:
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 
-	void render(const int width, const int height, const Scene::ViewModel& viewModel);
-
 	virtual void onLeftButtonDown(const Math::Vector2df& position) override;
 
 	virtual void onLeftButtonUp(const Math::Vector2df& position) override;
@@ -70,14 +68,11 @@ public:
 
 	int getHeight() const { return height; }
 
-	Renderer* getRenderer() { return renderer.get(); }
-
 private:
 	int width;
 	int height;
 	std::unique_ptr<Graphics::ICamera> camera;
 	std::unique_ptr<IUICtrl> ctrl;
-	std::unique_ptr<Renderer> renderer;
 };
 	}
 }

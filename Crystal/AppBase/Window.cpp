@@ -146,6 +146,7 @@ bool Window::init()
 	//canvas->addUICommand(new CameraUICtrl());
 
 	world->init();
+	world->getRenderer()->build();
 
 	canvas->build();
 
@@ -176,7 +177,7 @@ void Window::show()
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		canvas->render(width, height, world->getViewModel());
+		world->getRenderer()->render(width, height, canvas->getCamera(), world->getViewModel());
 
 		glFlush();
 
