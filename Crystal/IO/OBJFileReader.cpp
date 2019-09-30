@@ -19,7 +19,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::IO;
 
-bool OBJFileReader::read(const std::experimental::filesystem::path& filePath)
+bool OBJFileReader::read(const std::filesystem::path& filePath)
 {
 	std::ifstream stream;
 	stream.open(filePath);

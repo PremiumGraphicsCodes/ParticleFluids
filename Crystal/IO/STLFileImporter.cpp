@@ -14,7 +14,7 @@ STLFileImporter::STLFileImporter(SceneFactory* sceneFactory) :
 {
 }
 
-bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& filePath, IScene* parent)
+bool STLFileImporter::importSTLAscii(const std::filesystem::path& filePath, IScene* parent)
 {
 	/*
 	STLASCIIFileReader reader;
@@ -30,7 +30,7 @@ bool STLFileImporter::importSTLAscii(const std::experimental::filesystem::path& 
 	return false;
 }
 
-bool STLFileImporter::importSTLBinary(const std::experimental::filesystem::path& filePath, IScene* parent)
+bool STLFileImporter::importSTLBinary(const std::filesystem::path& filePath, IScene* parent)
 {
 	/*
 	STLBinaryFileReader reader;

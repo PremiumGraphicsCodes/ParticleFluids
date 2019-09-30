@@ -17,7 +17,7 @@ OBJFileImporter::OBJFileImporter(SceneFactory* sceneFactory) :
 {
 }
 
-bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& filePath, IScene* scene)
+bool OBJFileImporter::importOBJ(const std::filesystem::path& filePath, IScene* scene)
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
@@ -74,7 +74,7 @@ bool OBJFileImporter::importOBJ(const std::experimental::filesystem::path& fileP
 	return false;
 }
 
-bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& filePath, IScene* scene)
+bool OBJFileImporter::importMTL(const std::filesystem::path& filePath, IScene* scene)
 {
 	MTLFileReader reader;
 	if (reader.read(filePath)) {
@@ -93,7 +93,7 @@ bool OBJFileImporter::importMTL(const std::experimental::filesystem::path& fileP
 	return false;
 }
 
-bool OBJFileImporter::importOBJWithMTL(const std::experimental::filesystem::path& filePath, IScene* parent)
+bool OBJFileImporter::importOBJWithMTL(const std::filesystem::path& filePath, IScene* parent)
 {
 	// path から .objファイル名を取得する．
 	auto filename = filePath.parent_path() / filePath.stem();

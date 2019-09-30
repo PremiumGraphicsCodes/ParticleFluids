@@ -14,7 +14,7 @@ class PCDFileImporter
 public:
 	explicit PCDFileImporter(Scene::SceneFactory* factory);
 
-	bool importPCD(const std::experimental::filesystem::path& filePath, Scene::IScene* parent);
+	bool importPCD(const std::filesystem::path& filePath, Scene::IScene* parent);
 
 private:
 	Scene::SceneFactory* factory;

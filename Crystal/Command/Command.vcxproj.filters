@@ -54,6 +54,9 @@
       <Filter>Scene\Shape</Filter>
     </ClCompile>
     <ClCompile Include="GetCommand.cpp" />
+    <ClCompile Include="LightAddCommand.cpp">
+      <Filter>Scene\Appearance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

@@ -175,6 +175,7 @@
     <ClCompile Include="FileImportCommand.cpp" />
     <ClCompile Include="GetCommand.cpp" />
     <ClCompile Include="ICommand.cpp" />
+    <ClCompile Include="LightAddCommand.cpp" />
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="ParticleSystemAddCommand.cpp" />
     <ClCompile Include="PolygonMeshAddCommand.cpp" />

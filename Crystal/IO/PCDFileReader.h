@@ -13,7 +13,7 @@ class PCDFileReader
 public:
 	bool read(std::istream& stream);
 
-	bool read(const std::experimental::filesystem::path& filename);
+	bool read(const std::filesystem::path& filename);
 
 	PCDFile getPCD() const { return pcd; }
 

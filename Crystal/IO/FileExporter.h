@@ -10,9 +10,9 @@ namespace Crystal {
 class FileExporter
 {
 public:
-	bool exportFile(const std::experimental::filesystem::path& filePath, Scene::IScene& objects);
+	bool exportFile(const std::filesystem::path& filePath, Scene::IScene& objects);
 
-	bool exportFile(const std::experimental::filesystem::path& filePath, Scene::IScene& objects, const FileFormat format);
+	bool exportFile(const std::filesystem::path& filePath, Scene::IScene& objects, const FileFormat format);
 };
 
 	}

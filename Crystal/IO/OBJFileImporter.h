@@ -1,6 +1,6 @@
 #pragma once
 
-#include <experimental/filesystem>
+#include <filesystem>
 
 namespace Crystal {
 	namespace Scene {
@@ -14,11 +14,11 @@ class OBJFileImporter
 public:
 	explicit OBJFileImporter(Scene::SceneFactory* sceneFactory);
 
-	bool importOBJ(const std::experimental::filesystem::path& filePath, Scene::IScene* scene);
+	bool importOBJ(const std::filesystem::path& filePath, Scene::IScene* scene);
 
-	bool importMTL(const std::experimental::filesystem::path& filePath, Scene::IScene* scene);
+	bool importMTL(const std::filesystem::path& filePath, Scene::IScene* scene);
 
-	bool importOBJWithMTL(const std::experimental::filesystem::path& filePath, Scene::IScene* parent);
+	bool importOBJWithMTL(const std::filesystem::path& filePath, Scene::IScene* parent);
 
 private:
 	Scene::SceneFactory* sceneFactory;

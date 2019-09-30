@@ -13,9 +13,9 @@ class STLFileImporter : public UnCopyable
 public:
 	explicit STLFileImporter(SceneFactory* sceneFactory);
 
-	bool importSTLAscii(const std::experimental::filesystem::path& filePath, IScene* parent);
+	bool importSTLAscii(const std::filesystem::path& filePath, IScene* parent);
 
-	bool importSTLBinary(const std::experimental::filesystem::path& filePath, IScene* parent);
+	bool importSTLBinary(const std::filesystem::path& filePath, IScene* parent);
 
 private:
 	SceneFactory* sceneFactory;

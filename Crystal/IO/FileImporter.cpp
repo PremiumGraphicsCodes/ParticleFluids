@@ -9,13 +9,13 @@
 using namespace Crystal::Scene;
 using namespace Crystal::IO;
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, IScene* parent, SceneFactory* factory)
+bool FileImporter::importFile(const std::filesystem::path& filePath, IScene* parent, SceneFactory* factory)
 {
 	const auto format = getFileFormat( filePath.extension() );
 	return importFile(filePath, parent, factory, format);
 }
 
-bool FileImporter::importFile(const std::experimental::filesystem::path& filePath, IScene* parent, SceneFactory* factory, const FileFormat format)
+bool FileImporter::importFile(const std::filesystem::path& filePath, IScene* parent, SceneFactory* factory, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ :

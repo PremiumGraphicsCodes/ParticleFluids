@@ -7,7 +7,8 @@ namespace Crystal {
 
 class LightAddCommand : ICommand
 {
-	void execute(Scene::World* world) override {};
+public:
+	void execute(Scene::World* world) override;
 };
 
 	}

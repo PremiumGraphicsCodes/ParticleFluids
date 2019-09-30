@@ -1,6 +1,6 @@
 #pragma once
 
-#include <experimental/filesystem>
+#include <filesystem>
 #include <cassert>
 
 namespace Crystal {
@@ -16,7 +16,7 @@ enum class FileFormat
 	NONE,
 };
 
-static FileFormat getFileFormat(const std::experimental::filesystem::path& path)
+static FileFormat getFileFormat(const std::filesystem::path& path)
 {
 	const auto& ext = path.extension();
 	if (ext == ".obj") {
