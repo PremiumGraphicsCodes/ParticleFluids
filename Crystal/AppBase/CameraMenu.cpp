@@ -2,7 +2,7 @@
 #include "imgui.h"
 #include "../Scene/World.h"
 #include "Canvas.h"
-#include "../Command/CameraFitCommand.h"
+#include "../Command/Command.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -16,16 +16,21 @@ void CameraMenu::onShow()
 	const auto c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::MenuItem("Fit")) {
-			CameraFitCommand command;
-			command.execute(model);
+			Command::Command command;
+			command.create("CameraFit");
+			command.execute(getModel());
 		}
-		/*
 		if (ImGui::MenuItem("XY")) {
-			canvas->setCameraXY(model->getBoundingBox());
+			Command::Command command;
+			command.create("CameraXY");
+			command.execute(getModel());
 		}
 		if (ImGui::MenuItem("YZ")) {
-			canvas->setCameraYZ(model->getBoundingBox());
+			Command::Command command;
+			command.create("CameraYZ");
+			command.execute(getModel());
 		}
+		/*
 		if (ImGui::MenuItem("ZX")) {
 			canvas->setCameraZX(model->getBoundingBox());
 		}

@@ -14,3 +14,27 @@ void CameraFitCommand::execute(World* world)
 	camera->setTarget(boundingBox.getCenter());
 	camera->moveTo(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0));
 }
+
+void CameraXYCommand::execute(World* world)
+{
+	CameraFitCommand fitCommand;
+	fitCommand.execute(world);
+	auto camera = world->getRenderer()->getCamera();
+	camera->setRotation(
+		Math::Matrix4dd
+		(
+			1,0,0,0,
+			0,1,0,0,
+			0,0,1,0,
+			0,0,0,1
+		)
+	);
+}
+
+void CameraYZCommand::execute(World* world)
+{
+	CameraFitCommand fitCommand;
+	fitCommand.execute(world);
+	auto camera = world->getRenderer()->getCamera();
+	camera->rotate(glm::radians(90.0f), 0.0);
+}

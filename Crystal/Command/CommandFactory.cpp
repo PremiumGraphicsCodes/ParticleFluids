@@ -33,6 +33,14 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == "CameraFit") {
 		return std::make_unique<CameraFitCommand>();
 	}
+	else if (name == "CameraXY") {
+		return std::make_unique<CameraXYCommand>();
+	}
+	else if (name == "CameraYZ") {
+		return std::make_unique<CameraYZCommand>();
+	}
+
+
 	assert(false);
 	return nullptr;
 }
