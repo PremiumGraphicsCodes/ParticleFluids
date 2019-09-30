@@ -21,18 +21,21 @@ public:
 			lines("Lines", {}),
 			lineWidth("LineWidth", 1.0f),
 			color("Color", Graphics::ColorRGBAf(1, 1, 1, 1)),
-			name("Name", std::string(""))
+			name("Name", std::string("")),
+			isItem("IsItem", false)
 		{
 			add(&lines);
 			add(&lineWidth);
 			add(&color);
 			add(&name);
+			add(&isItem);
 		}
 
 		Arg< std::vector<Math::Line3dd> > lines;
 		Arg< float > lineWidth;
 		Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;
+		Arg< bool > isItem;
 	};
 
 	struct Results : IResults

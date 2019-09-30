@@ -88,16 +88,22 @@ namespace PG.CGStudio
             return newId;
         }
 
-        public void AddMaterialScene(PG.Core.Graphics.Material material, string name)
+        public int AddMaterialScene(PG.Core.Graphics.Material material, string name)
         {
-            this.adapter.GetSceneAdapter().AddMaterialScene(material, name);
+            var command = new PG.CLI.Command("MaterialAdd");
+            command.Execute(adapter);
+            var newId = (int)command.GetResult("NewId");
             Sync();
+            return newId;
         }
 
-        public void AddLightScene(PG.Core.Graphics.PointLight light, string name)
+        public int AddLightScene(PG.Core.Graphics.PointLight light, string name)
         {
-            this.adapter.GetSceneAdapter().AddLightScene(light, name);
+            var command = new PG.CLI.Command("LightAdd");
+            command.Execute(adapter);
+            var newId = (int)command.GetResult("NewId");
             Sync();
+            return newId;
         }
 
         public void ChangeName(int id, string name)

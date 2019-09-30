@@ -19,18 +19,22 @@ public:
 	{
 		Args() :
 			positions("Positions", {}),
+			normals("Normals", {}),
+			texCoords("TexCoords", {}),
 			//pointSize("PointSize", 1.0f),
 			//color("Color", Graphics::ColorRGBAf(1, 1, 1, 1)),
 			name("Name", std::string(""))
 		{
 			add(&positions);
+			add(&normals);
 			//add(&pointSize);
 			//add(&color);
 			add(&name);
 		}
 
 		Arg< std::vector<Math::Vector3dd> > positions;
-		//Arg< float > pointSize;
+		Arg< std::vector<Math::Vector3dd> > normals;
+		Arg< std::vector<Math::Vector2dd> > texCoords;
 		//Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;
 	};

@@ -22,6 +22,13 @@
     <ClInclude Include="PolygonMeshAddCommand.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="TransformCommand.h">
+      <Filter>Scene\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="GetCommand.h" />
+    <ClInclude Include="LightAddCommand.h">
+      <Filter>Scene\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -43,6 +50,10 @@
     <ClCompile Include="PolygonMeshAddCommand.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
+    <ClCompile Include="TransformCommand.cpp">
+      <Filter>Scene\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="GetCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

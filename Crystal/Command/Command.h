@@ -14,7 +14,7 @@ class Command
 public:
 	Command() {}
 
-	Command(const std::string& name);
+	explicit Command(const std::string& name);
 
 	~Command();
 
@@ -41,13 +41,6 @@ public:
 	void Set(int id, std::any value);
 };
 
-class GetCommand
-{
-public:
-	SetCommand(const std::string& name);
-
-	std::any Get(const std::string& name);
-}
 */
 	}
 }

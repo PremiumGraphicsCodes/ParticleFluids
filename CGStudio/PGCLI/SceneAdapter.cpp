@@ -25,41 +25,6 @@ void SceneAdapter::Clear()
 	instance->clear();
 }
 
-/*
-int SceneAdapter::AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System::String^ name)
-{
-	auto dest = new Crystal::Scene::PolygonMesh();
-	auto positions = mesh->Positions;
-	for (int i = 0; i < positions->Count; ++i) {
-		dest->createPosition(Converter::toCpp(positions[i]));
-	}
-	auto normals = mesh->Normals;
-	for (int i = 0; i < normals->Count; ++i) {
-		dest->createNormal(Converter::toCpp(normals[i]));
-	}
-	auto texCoords = mesh->TexCoords;
-	for (int i = 0; i < texCoords->Count; ++i) {
-		dest->createTexCoord(Converter::toCpp2d(texCoords[i]));
-	}
-	auto vertices = mesh->Vertices;
-	for (int i = 0; i < vertices->Count; ++i) {
-		auto v = vertices[i];
-		dest->createVertex(v->PositionId, v->NormalId, v->TexCoordId);
-	}
-
-	auto faces = mesh->Faces;
-	std::vector<Crystal::Scene::Face> fs;
-	for (int i = 0; i < faces->Count; ++i) {
-		auto f = faces[i];
-		dest->createFace(f->V0, f->V1, f->V2);
-	}
-	auto str = msclr::interop::marshal_as<std::string>(name);
-	auto scene = factory->createPolygonMeshScene(dest, str);
-	instance->addScene(scene);
-	return scene->getId();
-}
-*/
-
 int SceneAdapter::AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name)
 {
 	auto l = Converter::toCpp(light);
