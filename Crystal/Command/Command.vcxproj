@@ -172,6 +172,7 @@
     <ClInclude Include="WireFrameAddCommand.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CameraFitCommand.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="FileExportCommand.cpp" />

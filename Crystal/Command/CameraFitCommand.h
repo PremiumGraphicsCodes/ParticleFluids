@@ -5,10 +5,22 @@
 namespace Crystal {
 	namespace Command {
 
-class CameraFitCommand : ICommand
+class CameraFitCommand : public ICommand
 {
 public:
+	struct Args : IArgs {};
+
+	struct Results : IResults {};
+
+	CameraFitCommand() :
+		ICommand(&args, &results)
+	{}
+
 	void execute(Scene::World* world) override;
+
+private:
+	Args args;
+	Results results;
 };
 
 	}

@@ -14,13 +14,7 @@ using namespace Crystal::UI;
 
 Canvas::Canvas() :
 	width(0),
-	height(0),
-	camera(new PerspectiveCamera(
-	1.0,
-	0.5f * PI,
-	Vector3df(0, 0, 0),
-	Vector3df(0, 0, -10.0),
-	1.0f, 10.0f))
+	height(0)
 {
 }
 
@@ -32,7 +26,6 @@ Canvas::Canvas(ICamera* camera) :
 {
 	renderer.reset(new Renderer());
 }
-*/
 
 void Canvas::build()
 {
@@ -94,16 +87,7 @@ void Canvas::onWheel(const float scale)
 {
 	ctrl->onWheel(scale);
 }
-
-void Canvas::fitCamera(const Box3d& boundingBox)
-{
-	const auto& dist = static_cast<float>( glm::distance(boundingBox.getMin(), boundingBox.getMax()) );
-	camera->setNear(dist * 0.1f);
-	camera->setFar(dist * 10.0f);
-	camera->setTarget(boundingBox.getCenter());
-	camera->moveTo(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0));
-}
-
+/*
 void Canvas::setCameraXY(const Box3d& boundingBox)
 {
 	fitCamera(boundingBox);
@@ -121,6 +105,7 @@ void Canvas::setCameraZX(const Box3d& boundingBox)
 	fitCamera(boundingBox);
 	camera->rotate(0.0, glm::radians(90.0f));
 }
+*/
 
 Image Canvas::getImage() const
 {

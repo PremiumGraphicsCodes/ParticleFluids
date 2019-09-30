@@ -24,5 +24,4 @@ void WFConeView::onOk()
 	WireFrameBuilder builder;
 	builder.build(cone.getValue(), unum.getValue(), vnum.getValue());
 	IWFAddView::addWireFrame(builder.getWireFrame());
-	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

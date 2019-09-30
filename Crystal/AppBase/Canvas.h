@@ -52,16 +52,6 @@ public:
 
 	virtual void onWheel(const float scale) override;
 
-	Graphics::ICamera* getCamera() { return camera.get(); }
-
-	void fitCamera(const Math::Box3d& boundingBox);
-
-	void setCameraXY(const Math::Box3d& boundingBox);
-
-	void setCameraYZ(const Math::Box3d& boundingBox);
-
-	void setCameraZX(const Math::Box3d& boundingBox);
-
 	Graphics::Image getImage() const;
 
 	int getWidth() const { return width; }
@@ -71,7 +61,6 @@ public:
 private:
 	int width;
 	int height;
-	std::unique_ptr<Graphics::ICamera> camera;
 	std::unique_ptr<IUICtrl> ctrl;
 };
 	}

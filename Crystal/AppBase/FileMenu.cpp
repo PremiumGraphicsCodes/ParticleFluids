@@ -6,9 +6,11 @@
 #include "FileSaveView.h"
 #include "../Scene/World.h"
 #include "../IO/FileImporter.h"
+#include "../Command/CameraFitCommand.h"
 
 using namespace Crystal::UI;
 using namespace Crystal::IO;
+using namespace Crystal::Command;
 
 void FileMenu::onShow()
 {
@@ -34,7 +36,10 @@ void FileMenu::onShow()
 				const auto isOk = importer.importFile(filename, model->getObjects(), model->getObjectFactory());
 				if (isOk) {
 					model->updateViewModel();
-					getCanvas()->fitCamera(getModel()->getBoundingBox());
+//					getCanvas()->fitCamera(getModel()->getBoundingBox());
+					CameraFitCommand command;
+					command.execute(model);
+
 				}
 			}
 			//canvas->update();

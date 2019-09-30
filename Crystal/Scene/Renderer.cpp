@@ -3,16 +3,26 @@
 #include "../../Crystal/Scene/IScene.h"
 #include "../../Crystal/Scene/IRenderer.h"
 
+#include "../Graphics/PerspectiveCamera.h"
+
 #include "../ThirdParty/stb/stb_image.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 Renderer::Renderer() :
-	showOffScreen(false)
+	showOffScreen(false),
+	camera(new PerspectiveCamera(
+		1.0,
+		0.5f * PI,
+		Vector3df(0, 0, 0),
+		Vector3df(0, 0, -10.0),
+		1.0f, 10.0f))
 {
+
 }
 
 bool Renderer::build()
@@ -31,10 +41,10 @@ bool Renderer::build()
 	return true;
 }
 
-void Renderer::render(const int width, const int height, ICamera* camera, const ViewModel& vm)
+void Renderer::render(const int width, const int height, const ViewModel& vm)
 {
-	objectRenderer.render(camera, vm.object);
-	objectIdRenderer.render(camera, vm.objectId);
+	objectRenderer.render(camera.get(), vm.object);
+	objectIdRenderer.render(camera.get(), vm.objectId);
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);

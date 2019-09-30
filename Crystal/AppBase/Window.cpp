@@ -12,6 +12,7 @@
 #include "../Scene/World.h"
 
 #include "../Graphics/PerspectiveCamera.h"
+#include "CameraUICtrl.h"
 #include <chrono>
 
 using namespace Crystal::Math;
@@ -148,7 +149,9 @@ bool Window::init()
 	world->init();
 	world->getRenderer()->build();
 
-	canvas->build();
+	canvas->setUICtrl(new CameraUICtrl(world->getRenderer()->getCamera()));
+
+	//canvas->build();
 
 	return true;
 }
@@ -177,7 +180,7 @@ void Window::show()
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		world->getRenderer()->render(width, height, canvas->getCamera(), world->getViewModel());
+		world->getRenderer()->render(width, height, world->getViewModel());
 
 		glFlush();
 

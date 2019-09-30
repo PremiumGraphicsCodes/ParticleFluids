@@ -6,6 +6,7 @@
 #include "ParticleSystemAddCommand.h"
 #include "WireFrameAddCommand.h"
 #include "PolygonMeshAddCommand.h"
+#include "CameraFitCommand.h"
 
 using namespace Crystal::Command;
 
@@ -28,6 +29,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == "PolygonMeshAdd") {
 		return std::make_unique<PolygonMeshAddCommand>();
+	}
+	else if (name == "CameraFit") {
+		return std::make_unique<CameraFitCommand>();
 	}
 	assert(false);
 	return nullptr;

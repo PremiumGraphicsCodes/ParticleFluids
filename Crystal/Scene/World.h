@@ -50,6 +50,7 @@ private:
 	SceneFactory objectFactory;
 	SceneFactory itemFactory;
 
+
 	std::unique_ptr<UI::Renderer> renderer;
 
 };

@@ -4,6 +4,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
+using namespace Crystal::Command;
 
 void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 {
@@ -15,6 +16,9 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	command.setArg("Name", attributeView.getName());
 	command.execute(getWorld());
 
-	getCanvas()->fitCamera(getWorld()->getBoundingBox());
+	command.create("CameraFit");
+	command.execute(getWorld());
+
+	//getCanvas()->fitCamera(getWorld()->getBoundingBox());
 
 }

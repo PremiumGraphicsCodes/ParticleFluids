@@ -4,10 +4,12 @@
 #include "../Scene/PolygonMeshScene.h"
 #include "../Scene/World.h"
 #include "Canvas.h"
+#include "../Command/CameraFitCommand.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
+using namespace Crystal::Command;
 
 PMBoxView::PMBoxView(World* model, Canvas* canvas) :
 	IOkCancelView("PMBox", model, canvas),
@@ -25,5 +27,7 @@ void PMBoxView::onOk()
 	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), nameView.getValue());
 	getWorld()->getObjects()->addScene(scene);
 	getWorld()->updateViewModel();
-	getCanvas()->fitCamera(getWorld()->getBoundingBox());
+
+	CameraFitCommand command;
+	command.execute(model);
 }

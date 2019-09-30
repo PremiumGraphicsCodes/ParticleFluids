@@ -15,4 +15,7 @@ void IWFAddView::addWireFrame(const std::vector<Line3dd>& lines)
 	command.setArg("Color", attribute.color);
 	command.setArg("Name", nameView.getValue());
 	command.execute(getWorld());
+
+	command.create("CameraFit");
+	command.execute(getWorld());
 }

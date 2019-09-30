@@ -65,6 +65,9 @@
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
     <ClCompile Include="SetCommand.cpp" />
+    <ClCompile Include="CameraFitCommand.cpp">
+      <Filter>Scene\Appearance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

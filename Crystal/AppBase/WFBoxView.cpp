@@ -21,5 +21,4 @@ void WFBoxView::onOk()
 	WireFrameBuilder builder;
 	builder.build(box.getValue());
 	IWFAddView::addWireFrame(builder.getWireFrame());
-	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

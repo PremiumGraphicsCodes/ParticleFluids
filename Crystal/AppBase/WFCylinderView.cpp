@@ -24,5 +24,4 @@ void WFCylinderView::onOk()
 	WireFrameBuilder builder;
 	builder.build(cylinder.getValue(), unum.getValue(), vnum.getValue());
 	IWFAddView::addWireFrame(builder.getWireFrame());
-	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

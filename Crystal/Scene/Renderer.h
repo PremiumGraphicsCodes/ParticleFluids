@@ -22,13 +22,15 @@ public:
 
 	bool build();
 
-	void render(const int width, const int height, Graphics::ICamera* camera, const Scene::ViewModel& vm);
+	void render(const int width, const int height, const Scene::ViewModel& vm);
 
 	SceneRenderer* getObjectRenderer() { return &objectRenderer; }
 
 	SceneIdRenderer* getObjectIdRenderer() { return &objectIdRenderer; }
 
 	void setShowOffScreen(const bool b) { this->showOffScreen = b; }
+
+	Graphics::ICamera* getCamera() { return camera.get(); }
 
 private:
 	Shader::OnScreenRenderer renderer;
@@ -37,6 +39,8 @@ private:
 	SceneIdRenderer objectIdRenderer;
 
 	bool showOffScreen;
+
+	std::unique_ptr<Graphics::ICamera> camera;
 };
 
 	}
