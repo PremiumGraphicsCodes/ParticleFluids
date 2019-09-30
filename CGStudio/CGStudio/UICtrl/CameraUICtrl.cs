@@ -4,12 +4,10 @@ namespace PG.CGStudio.UICtrl
 {
     public class CameraUICtrl : IUICtrl
     {
-        private PG.CLI.CameraAdapter camera;
         private Vector2d prevPosition;
 
-        public CameraUICtrl(PG.CLI.CameraAdapter camera)
+        public CameraUICtrl()
         {
-            this.camera = camera;
             this.prevPosition = new Vector2d();
         }
 
@@ -21,7 +19,9 @@ namespace PG.CGStudio.UICtrl
         public override void OnLeftButtonDragging(Vector2d position)
         {
             var diff = position - prevPosition;
-            camera.Move(new Vector3d(diff.X, diff.Y, 0.0));
+            var pos = PG.CLI.Command.Get(MainModel.Instance.Repository.Adapter, "CameraPosition") as Vector3d;
+            pos += new Vector3d(diff.X, diff.Y, 0.0);
+            PG.CLI.Command.Set(MainModel.Instance.Repository.Adapter, "CameraPosition", pos);
             Canvas3d.Instance.Render();
             prevPosition = position;
         }
@@ -33,15 +33,17 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnRightButtonDragging(Vector2d position)
         {
+            /*
             var diff = position - prevPosition;
             camera.Rotate(diff.X, diff.Y);
             Canvas3d.Instance.Render();
+            */
             prevPosition = position;
         }
 
         public override void OnWheel(double dx)
         {
-            camera.Zoom(dx);
+            //camera.Zoom(dx);
             Canvas3d.Instance.Render();
         }
     }

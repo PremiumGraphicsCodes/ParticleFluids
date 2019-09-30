@@ -24,8 +24,6 @@ namespace PG.CGStudio
     {
         private System.Windows.Forms.Panel Panel { get; }
 
-        public Camera Camera { get; }
-
         public Canvas3d()
         {
             var host = new WindowsFormsHost();
@@ -38,15 +36,13 @@ namespace PG.CGStudio
             RegisterToAppShutdown();
 
             instance = this;
-
-            Camera = new Camera(renderer.camera);
         }
 
         private void Host_Initialized(object sender, EventArgs e)
         {
             this.renderer = new PG.CLI.Renderer(Panel.Handle, MainModel.Instance.Repository.Adapter);
             this.renderer.Build(MainModel.Instance.Repository.Adapter);
-            this.ctrl = new UICtrl.CameraUICtrl(renderer.camera);
+            this.ctrl = new UICtrl.CameraUICtrl();
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;
@@ -71,7 +67,7 @@ namespace PG.CGStudio
 
         public void Render()
         {
-            renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter, renderer.camera);
+            renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
         }
 
         public void Update(Repository model)
@@ -145,12 +141,12 @@ namespace PG.CGStudio
 
         private void OnResize(object sender, EventArgs e)
         {
-            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter, renderer.camera);
+            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter, renderer.camera);
+            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
         }
 
         private void RegisterToAppShutdown()

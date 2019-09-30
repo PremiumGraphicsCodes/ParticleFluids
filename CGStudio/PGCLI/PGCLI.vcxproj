@@ -134,7 +134,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AnyConverter.h" />
-    <ClInclude Include="CameraAdapter.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Converter.h" />
@@ -147,7 +146,6 @@
   <ItemGroup>
     <ClCompile Include="AnyConverter.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="CameraAdapter.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="Renderer.cpp" />

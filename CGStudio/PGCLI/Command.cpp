@@ -57,8 +57,9 @@ void Command::Clear()
 System::Object^ Command::Get(RepositoryAdapter^ objects, System::String^ name)
 {
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
-	auto result = AnyConverter::fromCpp( Crystal::Command::GetCommand::Get(objects->instance, str) );
-	return nullptr;
+	auto value = Crystal::Command::GetCommand::Get(objects->instance, str);
+	auto result = AnyConverter::fromCpp( value );
+	return result;
 }
 
 void Command::Set(RepositoryAdapter^ objects, System::String^ name, System::Object^ value)

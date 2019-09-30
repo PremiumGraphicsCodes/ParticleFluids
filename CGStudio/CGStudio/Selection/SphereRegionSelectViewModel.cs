@@ -49,7 +49,7 @@ namespace PG.CGStudio.Selection
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
 
-            Canvas3d.Instance.UICtrl = new CameraUICtrl(Canvas3d.Instance.Renderer.camera);
+            Canvas3d.Instance.UICtrl = new CameraUICtrl();
         }
     }
 }

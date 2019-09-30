@@ -7,9 +7,10 @@ using namespace Crystal::Command;
 std::any GetCommand::Get(World* world, const std::string& name)
 {
 	if (name == "CameraPosition") {
-		//world->getViewModel()-
+		const auto& pos = world->getRenderer()->getCamera()->getPosition();
+		return std::any(pos);
 	}
-	if (name == "SceneList") {
+	else if (name == "SceneList") {
 		const auto& children = world->getObjects()->getRoot()->getChildren();
 		std::vector<std::string> names;
 		for (auto child : children) {
