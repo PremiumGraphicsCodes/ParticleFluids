@@ -10,15 +10,8 @@ void PolygonMeshAddCommand::execute(World* scene)
 	const auto& positions = args.positions.getValue();
 	const auto& normals = args.normals.getValue();
 	const auto& texCoords = args.texCoords.getValue();
+	const auto& vertices = args.vertices.getValue();
 	/*
-	for (int i = 0; i < texCoords->Count; ++i) {
-		dest->createTexCoord(Converter::toCpp2d(texCoords[i]));
-	}
-	auto vertices = mesh->Vertices;
-	for (int i = 0; i < vertices->Count; ++i) {
-		auto v = vertices[i];
-		dest->createVertex(v->PositionId, v->NormalId, v->TexCoordId);
-	}
 
 	auto faces = mesh->Faces;
 	std::vector<Crystal::Scene::Face> fs;

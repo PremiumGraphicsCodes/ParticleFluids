@@ -42,7 +42,7 @@ namespace PG.CGStudio
             var command = new PG.CLI.Command("FileImport");
             command.SetArg("FilePath", filePath);
             command.Execute(adapter);
-            var isOk = (bool)command.GetResult("IsOk");
+            var isOk = command.GetResult<bool>("IsOk");
             return isOk;
         }
 
@@ -51,7 +51,7 @@ namespace PG.CGStudio
             var command = new PG.CLI.Command("FileExport");
             command.SetArg("FilePath", filePath);
             command.Execute(adapter);
-            var isOk = (bool)command.GetResult("IsOk");
+            var isOk = command.GetResult<bool>("IsOk");
             return false;
         }
 
@@ -61,7 +61,7 @@ namespace PG.CGStudio
             command.SetArg("Positions", positions);
             command.SetArg("Name", name);
             command.Execute(adapter);
-            var newId = (int)command.GetResult("NewId");
+            var newId = command.GetResult<int>("NewId");
             Sync();
             return newId;
         }
@@ -72,7 +72,7 @@ namespace PG.CGStudio
             command.SetArg("Lines", lines);
             command.SetArg("Name", name);
             command.Execute(adapter);
-            var newId = (int)command.GetResult("NewId");
+            var newId = command.GetResult<int>("NewId");
             Sync();
             return newId;
         }
@@ -83,7 +83,7 @@ namespace PG.CGStudio
 //            command.SetArg("Lines", lines);
 //            command.SetArg("Name", name);
             command.Execute(adapter);
-            var newId = (int)command.GetResult("NewId");
+            var newId = command.GetResult<int>("NewId");
             Sync();
             return newId;
         }
@@ -92,7 +92,7 @@ namespace PG.CGStudio
         {
             var command = new PG.CLI.Command("MaterialAdd");
             command.Execute(adapter);
-            var newId = (int)command.GetResult("NewId");
+            var newId = command.GetResult<int>("NewId");
             Sync();
             return newId;
         }
@@ -101,7 +101,7 @@ namespace PG.CGStudio
         {
             var command = new PG.CLI.Command("LightAdd");
             command.Execute(adapter);
-            var newId = (int)command.GetResult("NewId");
+            var newId = command.GetResult<int>("NewId");
             Sync();
             return newId;
         }

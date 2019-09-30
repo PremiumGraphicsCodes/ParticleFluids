@@ -3,6 +3,8 @@
 #include "ICommand.h"
 #include "../Math/Vector3d.h"
 #include "../Graphics/ColorRGBA.h"
+#include "../Scene/Vertex.h"
+#include "../Scene/Face.h"
 #include <vector>
 
 namespace Crystal {
@@ -21,21 +23,23 @@ public:
 			positions("Positions", {}),
 			normals("Normals", {}),
 			texCoords("TexCoords", {}),
-			//pointSize("PointSize", 1.0f),
-			//color("Color", Graphics::ColorRGBAf(1, 1, 1, 1)),
+			vertices("Vertices", {}),
+			faces("Faces", {}),
 			name("Name", std::string(""))
 		{
 			add(&positions);
 			add(&normals);
-			//add(&pointSize);
-			//add(&color);
+			add(&texCoords);
+			add(&vertices);
+			add(&faces);
 			add(&name);
 		}
 
 		Arg< std::vector<Math::Vector3dd> > positions;
 		Arg< std::vector<Math::Vector3dd> > normals;
 		Arg< std::vector<Math::Vector2dd> > texCoords;
-		//Arg< Graphics::ColorRGBAf > color;
+		Arg< std::vector<Scene::Vertex > > vertices;
+		Arg< std::vector<Scene::Face > > faces;
 		Arg< std::string > name;
 	};
 

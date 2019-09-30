@@ -1,13 +1,12 @@
-#include "IOkCancelView.h"
+#include "IPSAddView.h"
 
 #include "Cylinder3dView.h"
-#include "PSAttributeView.h"
 #include "IntView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PSCylinderView : public IOkCancelView
+class PSCylinderView : public IPSAddView
 {
 public:
 	PSCylinderView(Scene::World* model, Canvas* canvas);
@@ -17,7 +16,6 @@ private:
 
 private:
 	Cylinder3dView cylinder;
-	PSAttributeView attribute;
 	IntView count;
 };
 

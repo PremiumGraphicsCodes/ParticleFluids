@@ -32,14 +32,20 @@ void Command::Execute(RepositoryAdapter^ objects)
 	::instance.execute(objects->instance);
 }
 
-System::Object^ Command::GetResult(System::String^ name)
+generic <class T>
+T Command::GetResult(System::String^ name)
 {
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
 	auto result = ::instance.getResult(str);
-	return AnyConverter::fromCpp(result);
+	return (T)(AnyConverter::fromCpp(result));
 }
 
 void Command::Clear()
 {
 	::instance.clear();
+}
+
+System::Object^ Command::Get(RepositoryAdapter^ objects, System::String^ name)
+{
+	return nullptr;
 }

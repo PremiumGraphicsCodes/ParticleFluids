@@ -1,17 +1,15 @@
 #pragma once
 
-#include "IOkCancelView.h"
+#include "IPSAddView.h"
 
 #include "Cone3dView.h"
-#include "PSAttributeView.h"
 #include "IntView.h"
 #include "StringView.h"
-#include "IPanel.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PSConeView : public IOkCancelView
+class PSConeView : public IPSAddView
 {
 public:
 	PSConeView(Scene::World* model, Canvas* canvas);
@@ -21,9 +19,7 @@ private:
 
 private:
 	Cone3dView cone;
-	PSAttributeView attribute;
 	IntView count;
-	StringView name;
 };
 
 	}

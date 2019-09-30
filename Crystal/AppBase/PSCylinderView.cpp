@@ -1,7 +1,5 @@
 #include "PSCylinderView.h"
 
-#include "../Scene/ParticleSystemScene.h"
-
 #include <random>
 
 using namespace Crystal::Math;
@@ -10,13 +8,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSCylinderView::PSCylinderView(World* model, Canvas* canvas) :
-	IOkCancelView("PSCylinder", model, canvas),
-	attribute("Attribute"),
+	IPSAddView("PSCylinder", model, canvas),
 	cylinder("Cylinder"),
 	count("Count", 10000)
 {
 	add(&cylinder);
-	add(&attribute);
 	add(&count);
 }
 
@@ -31,9 +27,6 @@ void PSCylinderView::onOk()
 		const auto v = dist(mt);
 		positions.push_back(cylinder.getPosition(Vector3dd( u, v, 1.0)));
 	}
-	auto scene = getWorld()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Cylinder");
-	getWorld()->getObjects()->addScene(scene);
-	getWorld()->updateViewModel();
-	getCanvas()->fitCamera(getWorld()->getBoundingBox());
+	IPSAddView::addParticleSystem(positions);
 }
 

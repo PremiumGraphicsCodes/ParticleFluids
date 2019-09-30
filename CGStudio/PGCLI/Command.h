@@ -12,11 +12,15 @@ public:
 	void SetArg(System::String^ name, System::Object^ value);
 
 	void Execute(RepositoryAdapter^ objects);
-
-	System::Object^ GetResult(System::String^ name);
+	
+	generic <class T>
+	T GetResult(System::String^ name);
 
 	void Clear();
+
+	static System::Object^ Get(RepositoryAdapter^ objects, System::String^ name);
 };
+
 
 	}
 }
