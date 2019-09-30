@@ -9,24 +9,20 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFCylinderView::WFCylinderView(World* model, Canvas* canvas) :
-	IOkCancelView("WFCylinder", model, canvas),
+	IWFAddView("WFCylinder", model, canvas),
 	cylinder("Cylinder"),
-	attribute("Attribute"),
 	unum("UNum", 12),
 	vnum("VNum", 12)
 {
 	add(&cylinder);
 	add(&unum);
 	add(&vnum);
-	add(&attribute);
 }
 
 void WFCylinderView::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(cylinder.getValue(), unum.getValue(), vnum.getValue());
-	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Sphere");
-	getWorld()->getObjects()->addScene(scene);
-	getWorld()->updateViewModel();
+	IWFAddView::addWireFrame(builder.getWireFrame());
 	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

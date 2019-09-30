@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IWFAddView.h"
 
 #include "Torus3dView.h"
 #include "WFAttributeView.h"
@@ -9,7 +9,7 @@
 namespace Crystal {
 	namespace UI {
 
-class WFTorusView : public IPanel
+class WFTorusView : public IWFAddView
 {
 public:
 	WFTorusView(Scene::World* model, Canvas* canvas);
@@ -21,7 +21,6 @@ private:
 	IntView unum;
 	IntView vnum;
 	TorusView torus;
-	WFAttributeView attribute;
 };
 
 	}

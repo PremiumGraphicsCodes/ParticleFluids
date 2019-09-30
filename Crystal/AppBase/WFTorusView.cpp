@@ -9,24 +9,20 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 WFTorusView::WFTorusView(World* model, Canvas* canvas) :
-	IPanel("WFTorus", model, canvas),
+	IWFAddView("WFTorus", model, canvas),
 	torus("Torus"),
-	attribute("Attribute"),
 	unum("UNum", 24),
 	vnum("VNum", 12)
 {
 	add(&unum);
 	add(&vnum);
 	add(&torus);
-	add(&attribute);
 }
 
 void WFTorusView::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(torus.getValue(), unum.getValue(), vnum.getValue());
-	auto scene = getWorld()->getObjectFactory()->createWireFrameScene(builder.getWireFrame(), attribute.getValue(), "Torus");
-	getWorld()->getObjects()->addScene(scene);
-	getWorld()->updateViewModel();
+	IWFAddView::addWireFrame(builder.getWireFrame());
 	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }

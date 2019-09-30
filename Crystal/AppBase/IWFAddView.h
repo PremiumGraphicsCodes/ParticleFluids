@@ -12,7 +12,7 @@ public:
 	IWFAddView(const std::string& name, Scene::World* model, Canvas* canvas) :
 		IOkCancelView(name, model, canvas),
 		attributeView("WFAttribute"),
-		nameView("Name")
+		nameView("Name", "WireFrame01")
 	{
 		add(&attributeView);
 		add(&nameView);
