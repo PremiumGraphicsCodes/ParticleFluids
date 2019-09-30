@@ -11,6 +11,14 @@ std::any AnyConverter::toCpp(System::Object^ object)
 		const auto a = (int)(object);
 		return std::any(a);
 	}
+	else if (type == float::typeid) {
+		const auto a = (float)(object);
+		return std::any(a);
+	}
+	else if (type == double::typeid) {
+		const auto a = (double)(object);
+		return std::any(a);
+	}
 	else if (type == System::String::typeid) {
 		const auto str = Converter::toCpp((System::String^)object);
 		return std::any(str);

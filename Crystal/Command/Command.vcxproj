@@ -164,9 +164,10 @@
     <ClInclude Include="LightAddCommand.h" />
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="ParticleSystemAddCommand.h" />
-    <ClInclude Include="ParticleSystemEditCommand.h" />
     <ClInclude Include="PolygonMeshAddCommand.h" />
+    <ClInclude Include="SetCommand.h" />
     <ClInclude Include="TransformCommand.h" />
+    <ClInclude Include="TranslateCommand.h" />
     <ClInclude Include="WireFrameAddCommand.h" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,7 @@
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="ParticleSystemAddCommand.cpp" />
     <ClCompile Include="PolygonMeshAddCommand.cpp" />
+    <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="WireFrameAddCommand.cpp" />
   </ItemGroup>

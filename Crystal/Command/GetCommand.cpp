@@ -4,12 +4,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 
-GetCommand::GetCommand(const std::string& name)
+std::any GetCommand::Get(World* world, const std::string& name)
 {
-}
-
-std::any GetCommand::Get(World* world)
-{
+	if (name == "CameraPosition") {
+		//world->getViewModel()-
+	}
 	if (name == "SceneList") {
 		const auto& children = world->getObjects()->getRoot()->getChildren();
 		std::vector<std::string> names;
@@ -20,3 +19,14 @@ std::any GetCommand::Get(World* world)
 	}
 	return std::any(0);
 }
+
+std::any GetCommand::Get(World* world, int id, const std::string& name)
+{
+	return std::any(0);
+}
+
+std::any GetCommand::Get(World* world, int parentId, int childId, const std::string& name)
+{
+	return std::any(0);
+}
+

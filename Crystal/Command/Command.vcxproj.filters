@@ -10,14 +10,8 @@
     <ClInclude Include="IArgs.h" />
     <ClInclude Include="IResults.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="WireFrameAddCommand.h">
-      <Filter>Scene\Shape</Filter>
-    </ClInclude>
     <ClInclude Include="FileExportCommand.h">
       <Filter>File</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonMeshAddCommand.h">
-      <Filter>Scene\Shape</Filter>
     </ClInclude>
     <ClInclude Include="GetCommand.h" />
     <ClInclude Include="LightAddCommand.h">
@@ -29,9 +23,16 @@
     <ClInclude Include="ParticleSystemAddCommand.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemEditCommand.h">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
+    <ClInclude Include="TranslateCommand.h">
+      <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="PolygonMeshAddCommand.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameAddCommand.h">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="SetCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -41,14 +42,8 @@
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="Command.cpp" />
-    <ClCompile Include="WireFrameAddCommand.cpp">
-      <Filter>Scene\Shape</Filter>
-    </ClCompile>
     <ClCompile Include="FileExportCommand.cpp">
       <Filter>File</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMeshAddCommand.cpp">
-      <Filter>Scene\Shape</Filter>
     </ClCompile>
     <ClCompile Include="GetCommand.cpp" />
     <ClCompile Include="LightAddCommand.cpp">
@@ -60,6 +55,13 @@
     <ClCompile Include="ParticleSystemAddCommand.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="PolygonMeshAddCommand.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrameAddCommand.cpp">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="SetCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -79,6 +81,12 @@
     </Filter>
     <Filter Include="Scene\Shape\ParticleSystem">
       <UniqueIdentifier>{a2955083-84ec-435a-a5cf-7e82af13379b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\PolygonMesh">
+      <UniqueIdentifier>{372e22b4-7ef2-4a57-aad3-48d9598c67e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\WireFrame">
+      <UniqueIdentifier>{dc1000d9-5ac0-4216-b9e4-c076d1638f4e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

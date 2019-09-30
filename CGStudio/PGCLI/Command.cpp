@@ -4,6 +4,8 @@
 #include <msclr/marshal_cppstd.h>
 
 #include "../../Crystal/Command/Command.h"
+#include "../../Crystal/Command/GetCommand.h"
+
 #include "../../Crystal/Scene/World.h"
 #include "AnyConverter.h"
 #include "RepositoryAdapter.h"
@@ -47,5 +49,7 @@ void Command::Clear()
 
 System::Object^ Command::Get(RepositoryAdapter^ objects, System::String^ name)
 {
+	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	auto result = AnyConverter::fromCpp( Crystal::Command::GetCommand::Get(objects->instance, str) );
 	return nullptr;
 }

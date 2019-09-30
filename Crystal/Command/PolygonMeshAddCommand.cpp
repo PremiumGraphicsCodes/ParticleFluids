@@ -1,6 +1,9 @@
 #include "PolygonMeshAddCommand.h"
 
+#include "../Scene/PolygonMeshScene.h"
+
 #include "../Scene/PolygonMesh.h"
+#include "../Scene/PolygonMeshBuilder.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
@@ -11,23 +14,26 @@ void PolygonMeshAddCommand::execute(World* scene)
 	const auto& normals = args.normals.getValue();
 	const auto& texCoords = args.texCoords.getValue();
 	const auto& vertices = args.vertices.getValue();
-	/*
-
-	auto faces = mesh->Faces;
-	std::vector<Crystal::Scene::Face> fs;
-	for (int i = 0; i < faces->Count; ++i) {
-		auto f = faces[i];
-		dest->createFace(f->V0, f->V1, f->V2);
-	}
-	auto str = msclr::interop::marshal_as<std::string>(name);
-	auto scene = factory->createPolygonMeshScene(dest, str);
-	instance->addScene(scene);
-	return scene->getId();
-
-	/*
+	const auto& faces = args.faces.getValue();
 	PolygonMesh* mesh = new PolygonMesh();
-	mesh->createPosition()
-	scene->getObjectFactory()->createPolygonMeshScene();
-	scene->getObjects()->addScene()
-	*/
+	for (const auto& p : positions) {
+		mesh->createPosition(p);
+	}
+	for (const auto& n : normals) {
+		mesh->createNormal(n);
+	}
+	for (const auto& tc : texCoords) {
+		mesh->createTexCoord(tc);
+	}
+	for (const auto& v : vertices) {
+		mesh->createVertex(v.positionId, v.normalId, v.texCoordId);
+	}
+	for (const auto& f : faces) {
+		mesh->createFace(f.getV1(), f.getV2(), f.getV3());
+	}
+
+	auto shape = scene->getObjectFactory()->createPolygonMeshScene(mesh, args.name.getValue());
+	const auto newId = shape->getId();
+
+	results.newId.setValue(newId);
 }
