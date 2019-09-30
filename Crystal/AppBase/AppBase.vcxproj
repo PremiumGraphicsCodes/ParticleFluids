@@ -112,6 +112,7 @@
     <ClInclude Include="IPSAddView.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="IView.h" />
+    <ClInclude Include="IWFAddView.h" />
     <ClInclude Include="Matrix2dView.h" />
     <ClInclude Include="Matrix4dView.h" />
     <ClInclude Include="PickUICtrl.h" />

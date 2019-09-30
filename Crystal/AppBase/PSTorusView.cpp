@@ -1,7 +1,5 @@
 #include "PSTorusView.h"
 
-#include "../Scene/ParticleSystemScene.h"
-
 #include <random>
 
 using namespace Crystal::Math;
@@ -10,13 +8,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PSTorusView::PSTorusView(World* model, Canvas* canvas) :
-	IOkCancelView("PSTorus", model, canvas),
+	IPSAddView("PSTorus", model, canvas),
 	torusView("Torus"),
-	attribute("Attribute"),
 	count("Count", 10000)
 {
 	add(&torusView);
-	add(&attribute);
 	add(&count);
 }
 
@@ -31,8 +27,5 @@ void PSTorusView::onOk()
 		const auto v = dist(mt);
 		positions.push_back(shape.getPosition(u, v));
 	}
-	auto scene = getWorld()->getObjectFactory()->createParticleSystemScene(positions, attribute.getValue(), "Cylinder");
-	getWorld()->getObjects()->addScene(scene);
-	getWorld()->updateViewModel();
-	getCanvas()->fitCamera(getWorld()->getBoundingBox());
+	IPSAddView::addParticleSystem(positions);
 }

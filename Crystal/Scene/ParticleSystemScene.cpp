@@ -64,3 +64,11 @@ IShapeScene* ParticleSystemScene::clone() const
 {
 	return nullptr;
 }
+
+void ParticleSystemScene::setAttribute(const ParticleAttribute& attribute)
+{
+	auto particles = getShape()->getParticles();
+	for (auto p : particles) {
+		p->setAttribute(attribute);
+	}
+}

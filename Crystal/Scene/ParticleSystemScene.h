@@ -47,6 +47,10 @@ public:
 
 	IShapeScene* clone() const override;
 
+	//ParticleAttribute getAttribute() const { return shape->getA}
+
+	void setAttribute(const ParticleAttribute& attribute);
+
 private:
 	ParticleSystem<ParticleAttribute>* shape;
 };

@@ -16,32 +16,38 @@ class PSAttributeView : public IWindow
 public:
 	PSAttributeView(const std::string& name) :
 		IWindow(name),
-		size("Size", 10.0f),
-		color("Color", glm::vec4(1,1,1,1)),
+		sizeView("Size", 10.0f),
+		colorView("Color", glm::vec4(1,1,1,1)),
 		nameView("Name", "ParticleSystem01")
 	{
 	}
 
 	void onShow() override
 	{
-		size.show();
-		color.show();
+		sizeView.show();
+		colorView.show();
 		nameView.show();
-		//ImGui::ColorPicker4("Color", &color[0]);
 	}
 
 	Scene::ParticleAttribute getValue() const {
 		Scene::ParticleAttribute attr;
-		attr.size = size.getValue();
-		attr.color = color.getValue();
+		attr.size = sizeView.getValue();
+		attr.color = colorView.getValue();
 		return attr;
+	}
+
+	void setValue(const Scene::ParticleAttribute& value) {
+		this->sizeView.setValue( value.size );
+		this->colorView.setValue(value.color);
 	}
 	
 	std::string getName() const { return nameView.getValue(); }
 
+	void setName(const std::string& name) { this->nameView.setValue(name); }
+
 private:
-	FloatView size;
-	ColorRGBAView color;
+	FloatView sizeView;
+	ColorRGBAView colorView;
 	StringView nameView;
 };
 

@@ -328,9 +328,6 @@
     <ClInclude Include="Ray3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="PSAttributeView.h">
-      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
-    </ClInclude>
     <ClInclude Include="CameraMenu.h">
       <Filter>View</Filter>
     </ClInclude>
@@ -539,6 +536,12 @@
     </ClInclude>
     <ClInclude Include="IPSAddView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="PSAttributeView.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="IWFAddView.h">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,15 +1,14 @@
 #pragma once
 
-#include "IOkCancelView.h"
+#include "IPSAddView.h"
 
 #include "Torus3dView.h"
-#include "PSAttributeView.h"
 #include "IntView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PSTorusView : public IOkCancelView
+class PSTorusView : public IPSAddView
 {
 public:
 	PSTorusView(Scene::World* model, Canvas* canvas);
@@ -19,7 +18,6 @@ private:
 
 private:
 	TorusView torusView;
-	PSAttributeView attribute;
 	IntView count;
 };
 

@@ -3,7 +3,7 @@
 #include "IWindow.h"
 #include "ParticleSystemView.h"
 #include "IntView.h"
-#include "StringView.h"
+#include "PSAttributeView.h"
 #include "Button.h"
 #include "../Scene/ParticleSystemScene.h"
 #include "../Scene/World.h"
@@ -25,10 +25,11 @@ private:
 	void onEdit();
 
 private:
-	ParticleSystemView particleSystem;
+	ParticleSystemView particleSystemView;
 	Scene::World* world;
-	IntView id;
-	StringView name;
+	Canvas* canvas;
+	IntView idView;
+	PSAttributeView attributeView;
 	Button edit;
 };
 
