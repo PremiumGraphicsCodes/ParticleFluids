@@ -3,6 +3,7 @@
 #include "MockCommand.h"
 #include "FileImportCommand.h"
 #include "ParticleSystemAddCommand.h"
+#include "WireFrameAddCommand.h"
 
 using namespace Crystal::Command;
 
@@ -16,6 +17,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == "ParticleSystemAdd") {
 		return std::make_unique<ParticleSystemAddCommand>();
+	}
+	else if (name == "WireFrameAdd") {
+		return std::make_unique<WireFrameAddCommand>();
 	}
 	assert(false);
 	return nullptr;

@@ -74,7 +74,11 @@ namespace PG.CGStudio
 
         public void AddWireFrameScene(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
         {
-            this.adapter.GetSceneAdapter().AddWireFrameScene(lines, name, appearance);
+            var command = new PG.CLI.Command("WireFrameAdd");
+            command.SetArg("Lines", lines);
+            command.SetArg("Name", name);
+            command.Execute(adapter);
+
             Sync();
         }
 

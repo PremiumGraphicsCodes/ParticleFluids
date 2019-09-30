@@ -13,6 +13,9 @@
     <ClInclude Include="IArgs.h" />
     <ClInclude Include="IResults.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="WireFrameAddCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -23,6 +26,9 @@
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="ParticleSystemAddCommand.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrameAddCommand.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>

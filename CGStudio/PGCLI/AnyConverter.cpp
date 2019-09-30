@@ -23,6 +23,15 @@ std::any AnyConverter::toCpp(System::Object^ object)
 		}
 		return std::any(dest);
 	}
+	else if (type == System::Collections::Generic::List<Core::Math::Line3d^>::typeid) {
+		auto values = (System::Collections::Generic::List<Core::Math::Line3d^>^)object;
+		std::vector<Crystal::Math::Line3dd> dest(values->Count);
+		for (int i = 0; i < values->Count; ++i) {
+			dest[i] = Converter::toCpp(values[i]);
+		}
+		return std::any(dest);
+	}
+
 	return std::any(0);
 }
 

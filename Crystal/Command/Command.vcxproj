@@ -161,6 +161,7 @@
     <ClInclude Include="IResults.h" />
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="ParticleSystemAddCommand.h" />
+    <ClInclude Include="WireFrameAddCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandFactory.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="ParticleSystemAddCommand.cpp" />
+    <ClCompile Include="WireFrameAddCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
