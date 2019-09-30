@@ -26,9 +26,9 @@ public:
 
 	void Init();
 
-	bool Import(System::String^ filename);
+	//bool Import(System::String^ filename);
 
-	bool Export(System::String^ filename);
+	//bool Export(System::String^ filename);
 
 	SceneAdapter^ GetSceneAdapter();
 

@@ -13,7 +13,6 @@
 #include "Converter.h"
 
 
-
 using namespace PG::CLI;
 
 RepositoryAdapter::RepositoryAdapter() :
@@ -35,29 +34,6 @@ void RepositoryAdapter::Clear()
 void RepositoryAdapter::Init()
 {
 	instance->init();
-}
-
-bool RepositoryAdapter::Import(System::String^ filename)
-{
-	if (filename == nullptr) {
-		return false;
-	}
-	const auto& str = msclr::interop::marshal_as<std::wstring>(filename);
-	Crystal::IO::FileImporter importer;
-	const auto isOk = importer.importFile(str, instance->getObjects(), instance->getObjectFactory());
-	return isOk;
-}
-
-bool RepositoryAdapter::Export(System::String^ filename)
-{
-	if (filename == nullptr) {
-		return false;
-	}
-
-	const auto& str = msclr::interop::marshal_as<std::wstring>(filename);
-	Crystal::IO::FileExporter exporter;
-	const auto isOk = exporter.exportFile(str, *instance->getObjects());
-	return isOk;
 }
 
 SceneAdapter^ RepositoryAdapter::GetSceneAdapter()

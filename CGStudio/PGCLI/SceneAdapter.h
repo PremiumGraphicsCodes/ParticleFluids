@@ -20,14 +20,6 @@ public:
 
 	void Clear();
 
-	bool Import(System::String^ filename);
-
-	bool Export(System::String^ filename);
-
-	//int AddParticleSystemScene(System::Collections::Generic::List<PG::Core::Math::Vector3d^>^ positions, System::String^ name);
-
-	int AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines, System::String^ name, PG::Core::UI::WireAppearance^ appearance);
-
 	int AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System::String^ name);
 
 	int AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name);

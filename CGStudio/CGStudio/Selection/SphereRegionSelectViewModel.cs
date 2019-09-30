@@ -45,7 +45,7 @@ namespace PG.CGStudio.Selection
             var builder = new WireFrameBuilder();
             builder.Build(sphere, 24, 24);
             var appearance = new WireAppearance();
-            MainModel.Instance.Repository.Adapter.GetItemAdapter().AddWireFrameScene(builder.WireFrame.Edges, "Item", appearance);
+//            MainModel.Instance.Repository.Adapter.GetItemAdapter().AddWireFrameScene(builder.WireFrame.Edges, "Item", appearance);
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();
 

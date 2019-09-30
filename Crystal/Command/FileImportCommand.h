@@ -1,5 +1,6 @@
 #pragma once
 
+#include "IArgs.h"
 #include "ICommand.h"
 #include <filesystem>
 #include <vector>
@@ -12,7 +13,11 @@ class FileImportCommand : public ICommand
 public:
 	struct Args : IArgs
 	{
-		std::filesystem::path filePath;
+		Args() :
+			filePath("FilePath", "")
+		{}
+
+		Arg< std::filesystem::path > filePath;
 	};
 
 	struct Results : IResults

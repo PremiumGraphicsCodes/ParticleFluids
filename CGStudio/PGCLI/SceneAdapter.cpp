@@ -25,46 +25,6 @@ void SceneAdapter::Clear()
 	instance->clear();
 }
 
-bool SceneAdapter::Import(System::String^ filename)
-{
-	//const auto& str = msclr::interop::marshal_as<std::wstring>(filename);
-	return false;
-}
-
-bool SceneAdapter::Export(System::String^ filename)
-{
-	return false;
-}
-
-/*
-int SceneAdapter::AddParticleSystemScene(System::Collections::Generic::List<PG::Core::Math::Vector3d^>^ positions, System::String^ name)
-{
-	std::vector<Vector3dd> ps;
-	for (int i = 0; i < positions->Count; ++i) {
-		ps.push_back(Converter::toCpp(positions[i]));
-	}
-	auto str = msclr::interop::marshal_as<std::string>(name);
-	auto scene = factory->createParticleSystemScene(ps, ParticleAttribute(), str);
-	instance->addScene( scene );
-	return scene->getId();
-}
-*/
-
-int SceneAdapter::AddWireFrameScene(System::Collections::Generic::List<PG::Core::Math::Line3d^>^ lines, System::String^ name, PG::Core::UI::WireAppearance^ appearance)
-{
-	std::vector<Line3dd> ls;
-	for (int i = 0; i < lines->Count; ++i) {
-		ls.push_back(Converter::toCpp(lines[i]));
-	}
-	auto str = msclr::interop::marshal_as<std::string>(name);
-	WireFrameAttribute attr;
-	attr.width = appearance->Width;
-	attr.color = Converter::toCpp(appearance->Color);
-	auto scene = factory->createWireFrameScene(ls, attr, str);
-	instance->addScene( scene );
-	return scene->getId();
-}
-
 int SceneAdapter::AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System::String^ name)
 {
 	auto dest = new Crystal::Scene::PolygonMesh();

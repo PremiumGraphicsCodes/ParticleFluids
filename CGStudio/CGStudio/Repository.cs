@@ -38,13 +38,12 @@ namespace PG.CGStudio
             return false;
         }
 
-        public bool Import(string filename)
+        public bool Import(string filePath)
         {
-            var command = new PG.CLI.Command("Mock");
-            command.SetArg("lhs", 1);
-            command.SetArg("rhs", 2);
+            var command = new PG.CLI.Command("FileImport");
+            command.SetArg("FilePath", filePath);
             command.Execute(adapter);
-            var result = command.GetResult("value");
+//            var result = command.GetResult("value");
             /*
             var isOk = adapter.Import(filename);
             if(isOk)
@@ -58,7 +57,8 @@ namespace PG.CGStudio
 
         public bool Export(string filename)
         {
-            return adapter.Export(filename);
+            //            return adapter.Export(filename);
+            return false;
         }
 
         public void AddParticleSystemScene(List<Vector3d> positions, string name)
@@ -120,12 +120,6 @@ namespace PG.CGStudio
         {
             var newScene = this.adapter.GetSceneAdapter().ToScene();
             Scene[0] = newScene;
-        }
-
-        public void AddWireFrameItem(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
-        {
-            this.adapter.GetItemAdapter().AddWireFrameScene(lines, name, appearance);
-            Sync();
         }
 
         public void AddPolygonMeshItem(PolygonMesh polygonMesh, string name)
