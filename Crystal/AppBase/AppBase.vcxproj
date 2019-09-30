@@ -36,6 +36,7 @@
     <ClCompile Include="Float4View.cpp" />
     <ClCompile Include="FloatView.cpp" />
     <ClCompile Include="IntView.cpp" />
+    <ClCompile Include="IPSAddView.cpp" />
     <ClCompile Include="Matrix2dView.cpp" />
     <ClCompile Include="Matrix3dView.cpp" />
     <ClCompile Include="Matrix4dView.cpp" />
@@ -108,6 +109,7 @@
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Double4View.h" />
     <ClInclude Include="IOkCancelView.h" />
+    <ClInclude Include="IPSAddView.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="IView.h" />
     <ClInclude Include="Matrix2dView.h" />

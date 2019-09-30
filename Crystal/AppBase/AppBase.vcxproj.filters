@@ -241,6 +241,9 @@
     <ClCompile Include="ShapeCloneView.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
+    <ClCompile Include="IPSAddView.cpp">
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -533,6 +536,9 @@
     </ClInclude>
     <ClInclude Include="ShapeCloneView.h">
       <Filter>Scene\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="IPSAddView.h">
+      <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

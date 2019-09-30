@@ -17,8 +17,8 @@ public:
 	PSAttributeView(const std::string& name) :
 		IWindow(name),
 		size("Size", 10.0f),
-		color("Color", glm::vec4(1,1,1,1))
-		//nameView("Name", "WireFrame")
+		color("Color", glm::vec4(1,1,1,1)),
+		nameView("Name", "ParticleSystem01")
 	{
 	}
 
@@ -26,7 +26,7 @@ public:
 	{
 		size.show();
 		color.show();
-		//nameView.show();
+		nameView.show();
 		//ImGui::ColorPicker4("Color", &color[0]);
 	}
 
@@ -36,11 +36,13 @@ public:
 		attr.color = color.getValue();
 		return attr;
 	}
+	
+	std::string getName() const { return nameView.getValue(); }
 
 private:
 	FloatView size;
 	ColorRGBAView color;
-	//StringView nameView;
+	StringView nameView;
 };
 
 	}

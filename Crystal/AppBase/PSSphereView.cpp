@@ -14,13 +14,11 @@ using namespace Crystal::Command;
 using namespace Crystal::UI;
 
 PSSphereView::PSSphereView(World* model, Canvas* canvas) :
-	IOkCancelView("PSSphere", model, canvas),
+	IPSAddView("PSSphere", model, canvas),
 	sphere("Sphere"),
-	attribute("Attribute"),
 	count("Count", 10000)
 {
 	add(&sphere);
-	add(&attribute);
 	add(&count);
 }
 
@@ -35,14 +33,6 @@ void PSSphereView::onOk()
 		const auto v = dist(mt);
 		positions.push_back(shape.getPosition(Vector3dd(u, v, 1.0)));
 	}
+	IPSAddView::addParticleSystem(positions);
 	
-	Command::Command command;
-	command.create("ParticleSystemAdd");
-	command.setArg("Positions", positions);
-	command.setArg("PointSize", attribute.getValue().size);
-	command.setArg("Color", attribute.getValue().color);
-	command.setArg("Name", std::string("PSSphere"));
-	command.execute(getWorld());
-
-	getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }
