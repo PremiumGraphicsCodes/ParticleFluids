@@ -2,8 +2,10 @@
 
 #include "MockCommand.h"
 #include "FileImportCommand.h"
+#include "FileExportCommand.h"
 #include "ParticleSystemAddCommand.h"
 #include "WireFrameAddCommand.h"
+#include "PolygonMeshAddCommand.h"
 
 using namespace Crystal::Command;
 
@@ -15,11 +17,17 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == "FileImport") {
 		return std::make_unique<FileImportCommand>();		
 	}
+	else if (name == "FileExport") {
+		return std::make_unique<FileExportCommand>();
+	}
 	else if (name == "ParticleSystemAdd") {
 		return std::make_unique<ParticleSystemAddCommand>();
 	}
 	else if (name == "WireFrameAdd") {
 		return std::make_unique<WireFrameAddCommand>();
+	}
+	else if (name == "PolygonMeshAdd") {
+		return std::make_unique<PolygonMeshAddCommand>();
 	}
 	assert(false);
 	return nullptr;

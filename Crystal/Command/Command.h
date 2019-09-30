@@ -30,8 +30,24 @@ public:
 
 private:
 	std::unique_ptr<ICommand> command;
-
 };
 
+/*
+class SetCommand
+{
+public:
+	SetCommand(const std::string& name);
+
+	void Set(int id, std::any value);
+};
+
+class GetCommand
+{
+public:
+	SetCommand(const std::string& name);
+
+	std::any Get(const std::string& name);
+}
+*/
 	}
 }

@@ -5,5 +5,6 @@ using namespace Crystal::Command;
 
 void FileImportCommand::execute(World* scene)
 {
+	results.isOk.value = false;
 	//scene->getObjects()
 }

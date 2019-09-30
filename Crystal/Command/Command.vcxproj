@@ -155,21 +155,25 @@
   <ItemGroup>
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="FileExportCommand.h" />
     <ClInclude Include="FileImportCommand.h" />
     <ClInclude Include="IArgs.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IResults.h" />
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="ParticleSystemAddCommand.h" />
+    <ClInclude Include="PolygonMeshAddCommand.h" />
     <ClInclude Include="WireFrameAddCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="FileExportCommand.cpp" />
     <ClCompile Include="FileImportCommand.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="ParticleSystemAddCommand.cpp" />
+    <ClCompile Include="PolygonMeshAddCommand.cpp" />
     <ClCompile Include="WireFrameAddCommand.cpp" />
   </ItemGroup>
   <ItemGroup>

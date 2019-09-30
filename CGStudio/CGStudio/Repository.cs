@@ -10,7 +10,6 @@ namespace PG.CGStudio
     public class Repository
     {
         private PG.CLI.RepositoryAdapter adapter;
-
         public PG.CLI.RepositoryAdapter Adapter { get { return adapter; } }
 
         public ReactiveCollection<PG.Core.Scene> Scene;
@@ -43,49 +42,50 @@ namespace PG.CGStudio
             var command = new PG.CLI.Command("FileImport");
             command.SetArg("FilePath", filePath);
             command.Execute(adapter);
-//            var result = command.GetResult("value");
-            /*
-            var isOk = adapter.Import(filename);
-            if(isOk)
-            {
-                Sync();
-            }
+            var isOk = (bool)command.GetResult("IsOk");
             return isOk;
-            */
-            return false;
         }
 
-        public bool Export(string filename)
+        public bool Export(string filePath)
         {
-            //            return adapter.Export(filename);
+            var command = new PG.CLI.Command("FileExport");
+            command.SetArg("FilePath", filePath);
+            command.Execute(adapter);
+            var isOk = (bool)command.GetResult("IsOk");
             return false;
         }
 
-        public void AddParticleSystemScene(List<Vector3d> positions, string name)
+        public int AddParticleSystemScene(List<Vector3d> positions, string name)
         {
             var command = new PG.CLI.Command("ParticleSystemAdd");
             command.SetArg("Positions", positions);
             command.SetArg("Name", name);
             command.Execute(adapter);
-
-            //            this.adapter.GetSceneAdapter().AddParticleSystemScene(positions, name);
+            var newId = (int)command.GetResult("NewId");
             Sync();
+            return newId;
         }
 
-        public void AddWireFrameScene(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
+        public int AddWireFrameScene(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
         {
             var command = new PG.CLI.Command("WireFrameAdd");
             command.SetArg("Lines", lines);
             command.SetArg("Name", name);
             command.Execute(adapter);
-
+            var newId = (int)command.GetResult("NewId");
             Sync();
+            return newId;
         }
 
-        public void AddPolygonMeshScene(PolygonMesh polygonMesh, string name)
+        public int AddPolygonMeshScene(PolygonMesh polygonMesh, string name)
         {
-            this.adapter.GetSceneAdapter().AddPolygonMeshScene(polygonMesh, name);
+            var command = new PG.CLI.Command("PolygonMeshAdd");
+//            command.SetArg("Lines", lines);
+//            command.SetArg("Name", name);
+            command.Execute(adapter);
+            var newId = (int)command.GetResult("NewId");
             Sync();
+            return newId;
         }
 
         public void AddMaterialScene(PG.Core.Graphics.Material material, string name)
@@ -120,12 +120,6 @@ namespace PG.CGStudio
         {
             var newScene = this.adapter.GetSceneAdapter().ToScene();
             Scene[0] = newScene;
-        }
-
-        public void AddPolygonMeshItem(PolygonMesh polygonMesh, string name)
-        {
-            this.adapter.GetItemAdapter().AddPolygonMeshScene(polygonMesh, name);
-            Sync();
         }
 
         public SceneType GetTypeById(int id)

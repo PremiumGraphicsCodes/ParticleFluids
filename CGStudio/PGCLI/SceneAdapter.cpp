@@ -25,6 +25,7 @@ void SceneAdapter::Clear()
 	instance->clear();
 }
 
+/*
 int SceneAdapter::AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System::String^ name)
 {
 	auto dest = new Crystal::Scene::PolygonMesh();
@@ -57,6 +58,7 @@ int SceneAdapter::AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System
 	instance->addScene(scene);
 	return scene->getId();
 }
+*/
 
 int SceneAdapter::AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name)
 {

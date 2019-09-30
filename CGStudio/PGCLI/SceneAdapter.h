@@ -20,8 +20,6 @@ public:
 
 	void Clear();
 
-	int AddPolygonMeshScene(PG::Core::Shape::PolygonMesh^ mesh, System::String^ name);
-
 	int AddLightScene(PG::Core::Graphics::PointLight^ light, System::String^ name);
 
 	int AddMaterialScene(PG::Core::Graphics::Material^ material, System::String^ name);

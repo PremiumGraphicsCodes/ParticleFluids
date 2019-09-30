@@ -8,10 +8,10 @@
 namespace Crystal {
 	namespace Command {
 
-class ParticleSystemAddCommand : public ICommand
+class PolygonMeshAddCommand : public ICommand
 {
 public:
-	ParticleSystemAddCommand() :
+	PolygonMeshAddCommand() :
 		ICommand(&args, &results)
 	{}
 
@@ -19,23 +19,20 @@ public:
 	{
 		Args() :
 			positions("Positions", {}),
-			pointSize("PointSize", 1.0f),
-			color("Color", Graphics::ColorRGBAf(1,1,1,1)),
-			name("Name", std::string("")),
-			isItem("IsItem", false)
+			//pointSize("PointSize", 1.0f),
+			//color("Color", Graphics::ColorRGBAf(1, 1, 1, 1)),
+			name("Name", std::string(""))
 		{
 			add(&positions);
-			add(&pointSize);
-			add(&color);
+			//add(&pointSize);
+			//add(&color);
 			add(&name);
-			add(&isItem);
 		}
 
 		Arg< std::vector<Math::Vector3dd> > positions;
-		Arg< float > pointSize;
-		Arg< Graphics::ColorRGBAf > color;
+		//Arg< float > pointSize;
+		//Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;
-		Arg< bool > isItem;
 	};
 
 	struct Results : IResults

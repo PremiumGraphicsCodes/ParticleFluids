@@ -8,14 +8,16 @@
 namespace Crystal {
 	namespace Command {
 
-class FileImportCommand : public ICommand
+class FileExportCommand : public ICommand
 {
 public:
 	struct Args : IArgs
 	{
 		Args() :
 			filePath("FilePath", "")
-		{}
+		{
+			add(&filePath);
+		}
 
 		Arg< std::filesystem::path > filePath;
 	};
@@ -24,12 +26,14 @@ public:
 	{
 		Results() :
 			isOk("IsOk", false)
-		{}
+		{
+			add(&isOk);
+		}
 
-		Arg< bool > isOk;
+		Result< bool > isOk;
 	};
 
-	FileImportCommand() :
+	FileExportCommand() :
 		ICommand(&args, &results)
 	{}
 

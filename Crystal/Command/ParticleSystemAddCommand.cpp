@@ -14,10 +14,16 @@ void ParticleSystemAddCommand::execute(World* world)
 	attr.color = args.color.getValue();
 	attr.size = args.pointSize.getValue();
 	auto name = args.name.getValue();
-	auto scene = world->getObjectFactory()->createParticleSystemScene(positions, attr, name);
-
-	world->getObjects()->addScene(scene);
+	if (args.isItem.getValue()) {
+		auto scene = world->getObjectFactory()->createParticleSystemScene(positions, attr, name);
+		world->getObjects()->addScene(scene);
+		results.newId.setValue(scene->getId());
+	}
+	else {
+		auto scene = world->getItemFactory()->createParticleSystemScene(positions, attr, name);
+		world->getItems()->addScene(scene);
+		results.newId.setValue(scene->getId());
+	}
 	world->updateViewModel();
 
-	results.newId.setValue(scene->getId());
 }

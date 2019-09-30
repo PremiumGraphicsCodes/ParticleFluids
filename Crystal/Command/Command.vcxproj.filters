@@ -16,6 +16,12 @@
     <ClInclude Include="WireFrameAddCommand.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="FileExportCommand.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshAddCommand.h">
+      <Filter>Scene\Shape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -31,6 +37,12 @@
     <ClCompile Include="WireFrameAddCommand.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
+    <ClCompile Include="FileExportCommand.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshAddCommand.cpp">
+      <Filter>Scene\Shape</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -41,6 +53,9 @@
     </Filter>
     <Filter Include="Scene\Shape">
       <UniqueIdentifier>{4f81f62c-81fa-45b7-9867-98da2e63bbcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance">
+      <UniqueIdentifier>{5008008f-228d-4376-b123-d0293605e6b2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

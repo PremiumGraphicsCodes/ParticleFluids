@@ -3,7 +3,6 @@
 #include "../Math/Sphere3d.h"
 #include "../Graphics/ColorRGBA.h"
 
-#include "../Scene/ParticleSystemScene.h"
 #include "../Command/Command.h"
 
 #include <random>
