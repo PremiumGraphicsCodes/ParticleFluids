@@ -43,7 +43,11 @@ void Command::SetArg(System::String^ name, int value)
 	::instance.setArg(str, std::any(value));
 }
 
-//void SetArg(System::String^ name, double x, double y, double z);
+void Command::SetArg(System::String^ name, double x, double y)
+{
+	const auto& str = Converter::toCpp(name);
+	::instance.setArg(str, std::any(Crystal::Math::Vector2dd(x,y)));
+}
 
 
 void Command::Execute(WorldAdapter^ objects)

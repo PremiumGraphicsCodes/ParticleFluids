@@ -34,11 +34,18 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDown(Vector2d position)
         {
-            /*
             position.Y = 1.0 - position.Y;
-            var id = Canvas3d.Instance.Renderer.Pick(position, mergin);
-            if (id.parentId != 0)
+
+            Canvas3d.Instance.Renderer.Bind();
+            var command = new PG.CLI.Command("PickCommand");
+            command.SetArg("Position", position.X, position.Y);
+            command.Execute(MainModel.Instance.Repository.Adapter);
+            var parentId = command.GetResult<int>("ParentId");
+            Canvas3d.Instance.Renderer.UnBind();
+
+            if (parentId != 0)
             {
+                /*
                 var model = MainModel.Instance.Repository;
                 var selectedType = model.GetTypeById(id.parentId);
                 if (!type.HasFlag(selectedType))
@@ -51,8 +58,8 @@ namespace PG.CGStudio.UICtrl
                 {
                     action(id);
                 }
+                */
             }
-            */
         }
     }
 }

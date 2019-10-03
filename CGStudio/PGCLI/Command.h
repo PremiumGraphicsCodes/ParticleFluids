@@ -15,6 +15,9 @@ public:
 
 	void SetArg(System::String^ name, int value);
 
+	void SetArg(System::String^ name, double x, double y);
+
+
 	//void SetArg(System::String^ name, double x, double y, double z);
 
 	void Execute(WorldAdapter^ objects);
