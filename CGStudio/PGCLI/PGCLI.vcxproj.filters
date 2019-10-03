@@ -6,7 +6,6 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Canvas.h" />
-    <ClInclude Include="SceneAdapter.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="AnyConverter.h" />
     <ClInclude Include="WorldAdapter.h" />
@@ -16,7 +15,6 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Converter.cpp" />
-    <ClCompile Include="SceneAdapter.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="AnyConverter.cpp" />
     <ClCompile Include="WorldAdapter.cpp" />
