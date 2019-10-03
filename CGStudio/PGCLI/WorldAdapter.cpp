@@ -35,13 +35,3 @@ void WorldAdapter::Init()
 {
 	instance->init();
 }
-
-SceneAdapter^ WorldAdapter::GetSceneAdapter()
-{
-	return gcnew SceneAdapter(instance->getObjects(), instance->getObjectFactory());
-}
-
-SceneAdapter^ WorldAdapter::GetItemAdapter()
-{
-	return gcnew SceneAdapter(instance->getItems(), instance->getItemFactory());
-}

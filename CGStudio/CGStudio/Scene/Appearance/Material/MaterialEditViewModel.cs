@@ -27,7 +27,7 @@ namespace PG.CGStudio.Material
         private void OnOk()
         {
             var repository = MainModel.Instance.Repository;
-            repository.UpdateMaterialScene(Id.Value, MaterialViewModel.Value);
+            //repository.UpdateMaterialScene(Id.Value, MaterialViewModel.Value);
             Canvas3d.Instance.Update(repository);
             Canvas3d.Instance.Render();
         }
@@ -41,8 +41,8 @@ namespace PG.CGStudio.Material
             }
             Id.Value = item.Id;
             Name.Value = item.Name;
-            var material = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindMaterialByid(item.Id);
-            this.MaterialViewModel.Value = material;
+           // var material = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindMaterialByid(item.Id);
+           // this.MaterialViewModel.Value = material;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

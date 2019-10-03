@@ -27,7 +27,7 @@ namespace PG.CGStudio.Light
         private void OnOk()
         {
             var repository = MainModel.Instance.Repository;
-            repository.UpdateLightScene(Id.Value, PointLightViewModel.Value);
+//            repository.UpdateLightScene(Id.Value, PointLightViewModel.Value);
             Canvas3d.Instance.Update(repository);
             Canvas3d.Instance.Render();
         }
@@ -51,8 +51,8 @@ namespace PG.CGStudio.Light
             }
             this.Id.Value = item.Id;
             this.Name.Value = item.Name;
-            var light = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindLightById( item.Id );
-            this.PointLightViewModel.Value = light;
+//            var light = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindLightById( item.Id );
+//            this.PointLightViewModel.Value = light;
         }
     }
 }

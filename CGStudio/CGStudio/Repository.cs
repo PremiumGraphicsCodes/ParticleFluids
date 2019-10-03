@@ -110,32 +110,18 @@ namespace PG.CGStudio
             return newId;
         }
 
-        public void ChangeName(int id, string name)
-        {
-            this.Adapter.GetSceneAdapter().ChangeName(id, name);
-            Sync();
-        }
-
-        public void UpdateLightScene(int id, PG.Core.Graphics.PointLight light)
-        {
-            this.adapter.GetSceneAdapter().UpdateLightScene(id, light);
-        }
-
-        public void UpdateMaterialScene(int id, PG.Core.Graphics.Material material)
-        {
-            this.adapter.GetSceneAdapter().UpdateMaterialScene(id, material);
-        }
-
         private void Sync()
         {
-            var newScene = this.adapter.GetSceneAdapter().ToScene();
-            Scene[0] = newScene;
+            //var newScene = this.adapter.GetSceneAdapter().ToScene();
+            //Scene[0] = newScene;
         }
+        /*
 
         public SceneType GetTypeById(int id)
         {
             var type = (SceneType)this.adapter.GetSceneAdapter().GetTypeById(id);
             return type;
         }
+        */
     }
 }

@@ -43,7 +43,7 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem
 
         private void OnEdit()
         {
-            MainModel.Instance.Repository.ChangeName(Id.Value, Name.Value);
+            //MainModel.Instance.Repository.ChangeName(Id.Value, Name.Value);
         }
     }
 }
