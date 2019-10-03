@@ -70,11 +70,19 @@ void Command::Clear()
 
 System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name)
 {
-	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	const auto& str = Converter::toCpp(name);
 	auto value = Crystal::Command::GetCommand::Get(objects->instance, str);
 	auto result = AnyConverter::fromCpp( value );
 	return result;
 }
+
+System::Object^ Command::Get(WorldAdapter^ objects, int id, System::String^ name)
+{
+	const auto& str = Converter::toCpp(name);
+	auto value = Crystal::Command::GetCommand::Get(objects->instance, id, str);
+	return AnyConverter::fromCpp(value);
+}
+
 
 void Command::Set(WorldAdapter^ objects, System::String^ name, System::Object^ value)
 {

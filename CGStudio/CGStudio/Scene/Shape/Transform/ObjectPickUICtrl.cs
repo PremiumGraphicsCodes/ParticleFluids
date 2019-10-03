@@ -34,20 +34,19 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDown(Vector2d position)
         {
-            position.Y = 1.0 - position.Y;
+            var model = MainModel.Instance.Repository.Adapter;
 
             Canvas3d.Instance.Renderer.Bind();
             var command = new PG.CLI.Command("PickCommand");
-            command.SetArg("Position", position.X, position.Y);
-            command.Execute(MainModel.Instance.Repository.Adapter);
+            command.SetArg("Position", position.X, 1.0 - position.Y);
+            command.Execute(model);
             var parentId = command.GetResult<int>("ParentId");
             Canvas3d.Instance.Renderer.UnBind();
 
             if (parentId != 0)
             {
+                var selectedType = CLI.Command.Get(model, parentId, "SceneTypeId");// model.GetTypeById(id.parentId);
                 /*
-                var model = MainModel.Instance.Repository;
-                var selectedType = model.GetTypeById(id.parentId);
                 if (!type.HasFlag(selectedType))
                 {
                     return;
