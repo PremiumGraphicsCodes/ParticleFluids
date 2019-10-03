@@ -23,22 +23,14 @@ public:
 		Arg<Math::Matrix4dd> matrix;
 	};
 
-	struct Results : IResults
-	{
-		Results()
-		{
-		}
-	};
-
 	TransformCommand() :
-		ICommand(&args, &results)
+		ICommand(&args)
 	{}
 
 	void execute(Scene::World* world) override;
 
 private:
 	Args args;
-	Results results;
 };
 	}
 }

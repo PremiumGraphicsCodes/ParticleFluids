@@ -25,9 +25,11 @@ void SelectionMenu::onShow()
 		if (ImGui::MenuItem("Position")) {
 			control->setWindow(new PositionSelectView("PositionSelect", getModel(), canvas));
 		}
+		/*
 		if (ImGui::MenuItem("SphereRegion")) {
 			control->setWindow(new SphereRegionSelectView("SphereRegionSelect", getModel(), canvas));
 		}
+		*/
 
 
 		ImGui::EndMenu();

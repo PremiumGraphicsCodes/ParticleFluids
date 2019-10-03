@@ -11,6 +11,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
+/*
 void SphereRegionSelectView::onShow()
 {
 	if (ImGui::Button("Pick")) {
@@ -41,3 +42,4 @@ void SphereRegionSelectView::onShow()
 
 	sphere.show();
 }
+*/

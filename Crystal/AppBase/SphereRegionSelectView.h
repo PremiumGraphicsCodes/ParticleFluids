@@ -1,16 +1,17 @@
 #pragma once
 
+/*
 #include "ObjectSelectView.h"
 #include "Sphere3dView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class SphereRegionSelectView : public IPanel
+class SphereRegionSelectView : public IView
 {
 public:
 	SphereRegionSelectView(const std::string& name, Scene::World* model, Canvas* canvas) :
-		IPanel(name, model, canvas),
+		IView(name),
 		object("Object", model, canvas, Scene::SceneType::ParticleSystemScene),
 		sphere("Region")
 	{
@@ -27,3 +28,4 @@ private:
 
 	}
 }
+*/

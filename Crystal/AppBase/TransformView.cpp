@@ -1,6 +1,7 @@
 #include "TransformView.h"
 
 #include "../Scene/IShapeScene.h"
+#include "../Command/Command.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -17,9 +18,15 @@ TransformView::TransformView(const std::string& name, World* model, Canvas* canv
 
 void TransformView::onOk()
 {
+	Crystal::Command::Command command("Transform");
+	command.setArg("Id", objectSelectView.getId());
+	command.setArg("Matrix", matrixView.getValue());
+	command.execute(getWorld());
+	/*
 	const auto id = objectSelectView.getId();
 	auto scene = getWorld()->getObjects()->findSceneById<IShapeScene*>(id);
 	const auto& matrix = matrixView.getValue();
 	scene->transform(matrix);
+	*/
 	getWorld()->updateViewModel();
 }

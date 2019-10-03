@@ -1,14 +1,17 @@
 #pragma once
 
-#include "IPanel.h"
+#include "IView.h"
 
 #include "IntView.h"
 #include "Button.h"
 
+#include "../Scene/World.h"
+#include "Canvas.h"
+
 namespace Crystal {
 	namespace UI {
 
-class ObjectSelectView : public IPanel
+class ObjectSelectView : public IView
 {
 public:
 	ObjectSelectView(const std::string& name, Scene::World* model, Canvas* canvas);

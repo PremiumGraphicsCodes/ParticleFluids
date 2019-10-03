@@ -33,14 +33,6 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	const auto parentId = std::any_cast<int>( command.getResult("ParentId") );
 	const auto childId = std::any_cast<int>(command.getResult("ChildId"));
 
-	/*
-	const auto id = model->getRenderer()->getObjectIdRenderer()->getId(x,y);
-	const auto parentId = id.getParentId();
-	const auto childId = id.getChildId();
-	if (parentId == 0) {
-		return;
-	}
-	*/
 	auto object = model->getObjects()->findSceneById(parentId);
 	if (object != nullptr) {
 		const bool masked = (int)type && (int)object->getType();
