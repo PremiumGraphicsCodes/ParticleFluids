@@ -33,10 +33,13 @@
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="SetCommand.h" />
-    <ClInclude Include="CameraFitCommand.h">
-      <Filter>Scene\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="CameraRotateCommand.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraFitCommand.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraZoomCommand.h">
       <Filter>Camera</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,10 +71,13 @@
       <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
     <ClCompile Include="SetCommand.cpp" />
-    <ClCompile Include="CameraFitCommand.cpp">
-      <Filter>Scene\Appearance</Filter>
-    </ClCompile>
     <ClCompile Include="CameraRotateCommand.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraFitCommand.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraZoomCommand.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,5 +1,5 @@
 #include "CameraUICtrl.h"
-#include "../Command/CameraRotateCommand.h"
+#include "../Command/Command.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -45,7 +45,7 @@ void CameraUICtrl::onRightButtonUp(const Vector2df& position)
 void CameraUICtrl::onRightDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
-	Crystal::Command::CameraRotateCommand command;
+	Crystal::Command::Command command("CameraRotate");
 	command.setArg("Rx", diff.x);
 	command.setArg("Ry", diff.y);
 	command.execute(world);
@@ -56,5 +56,7 @@ void CameraUICtrl::onRightDragging(const Vector2df& position)
 void CameraUICtrl::onWheel(const float dx)
 {
 	auto camera = world->getRenderer()->getCamera();
-	camera->zoom(dx / 100.0f);
+	Crystal::Command::Command command("CameraZoom");
+	command.setArg("Ratio", dx / 100.0f);
+	command.execute(world);
 }

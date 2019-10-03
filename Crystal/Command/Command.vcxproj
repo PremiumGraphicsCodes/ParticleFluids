@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="CameraFitCommand.h" />
     <ClInclude Include="CameraRotateCommand.h" />
+    <ClInclude Include="CameraZoomCommand.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="FileExportCommand.h" />
@@ -175,6 +176,7 @@
   <ItemGroup>
     <ClCompile Include="CameraFitCommand.cpp" />
     <ClCompile Include="CameraRotateCommand.cpp" />
+    <ClCompile Include="CameraZoomCommand.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="FileExportCommand.cpp" />

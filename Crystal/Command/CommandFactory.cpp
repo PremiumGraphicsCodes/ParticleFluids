@@ -8,6 +8,7 @@
 #include "PolygonMeshAddCommand.h"
 #include "CameraFitCommand.h"
 #include "CameraRotateCommand.h"
+#include "CameraZoomCommand.h"
 
 using namespace Crystal::Command;
 
@@ -46,7 +47,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == "CameraRotate") {
 		return std::make_unique<CameraRotateCommand>();
 	}
-
+	else if (name == "CameraZoom") {
+		return std::make_unique<CameraZoomCommand>();
+	}
 
 	assert(false);
 	return nullptr;
