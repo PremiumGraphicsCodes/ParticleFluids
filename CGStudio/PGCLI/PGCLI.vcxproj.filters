@@ -6,20 +6,20 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Canvas.h" />
-    <ClInclude Include="RepositoryAdapter.h" />
     <ClInclude Include="SceneAdapter.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="AnyConverter.h" />
+    <ClInclude Include="WorldAdapter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Converter.cpp" />
-    <ClCompile Include="RepositoryAdapter.cpp" />
     <ClCompile Include="SceneAdapter.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="AnyConverter.cpp" />
+    <ClCompile Include="WorldAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

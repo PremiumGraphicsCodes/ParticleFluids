@@ -9,7 +9,7 @@
 
 #include "../../Crystal/Scene/World.h"
 #include "AnyConverter.h"
-#include "RepositoryAdapter.h"
+#include "WorldAdapter.h"
 
 using namespace PG::CLI;
 
@@ -36,7 +36,7 @@ void Command::SetArg(System::String^ name, System::Object^ value)
 	::instance.setArg(str, v);
 }
 
-void Command::Execute(RepositoryAdapter^ objects)
+void Command::Execute(WorldAdapter^ objects)
 {
 	::instance.execute(objects->instance);
 }
@@ -54,7 +54,7 @@ void Command::Clear()
 	::instance.clear();
 }
 
-System::Object^ Command::Get(RepositoryAdapter^ objects, System::String^ name)
+System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name)
 {
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
 	auto value = Crystal::Command::GetCommand::Get(objects->instance, str);
@@ -62,7 +62,7 @@ System::Object^ Command::Get(RepositoryAdapter^ objects, System::String^ name)
 	return result;
 }
 
-void Command::Set(RepositoryAdapter^ objects, System::String^ name, System::Object^ value)
+void Command::Set(WorldAdapter^ objects, System::String^ name, System::Object^ value)
 {
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
 	auto v = AnyConverter::toCpp(value);

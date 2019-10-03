@@ -9,14 +9,14 @@ namespace PG.CGStudio
 {
     public class Repository
     {
-        private PG.CLI.RepositoryAdapter adapter;
-        public PG.CLI.RepositoryAdapter Adapter { get { return adapter; } }
+        private PG.CLI.WorldAdapter adapter;
+        public PG.CLI.WorldAdapter Adapter { get { return adapter; } }
 
         public ReactiveCollection<PG.Core.Scene> Scene;
 
         public Repository()
         {
-            this.adapter = new PG.CLI.RepositoryAdapter();
+            this.adapter = new PG.CLI.WorldAdapter();
             this.Scene = new ReactiveCollection<Core.Scene>();
             this.Scene.Add( new PG.Core.Scene(0, "Root", Core.SceneType.Root) );
         }

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <msclr/marshal_cppstd.h>
 
-#include "RepositoryAdapter.h"
+#include "WorldAdapter.h"
 #include "SceneAdapter.h"
 
 #include "../../Crystal/Scene/World.h"
@@ -15,33 +15,33 @@
 
 using namespace PG::CLI;
 
-RepositoryAdapter::RepositoryAdapter() :
+WorldAdapter::WorldAdapter() :
 	instance(new Crystal::Scene::World())
 {
 }
 
-RepositoryAdapter::~RepositoryAdapter()
+WorldAdapter::~WorldAdapter()
 {
 	instance->clear();
 	delete instance;
 }
 
-void RepositoryAdapter::Clear()
+void WorldAdapter::Clear()
 {
 	instance->clear();
 }
 
-void RepositoryAdapter::Init()
+void WorldAdapter::Init()
 {
 	instance->init();
 }
 
-SceneAdapter^ RepositoryAdapter::GetSceneAdapter()
+SceneAdapter^ WorldAdapter::GetSceneAdapter()
 {
 	return gcnew SceneAdapter(instance->getObjects(), instance->getObjectFactory());
 }
 
-SceneAdapter^ RepositoryAdapter::GetItemAdapter()
+SceneAdapter^ WorldAdapter::GetItemAdapter()
 {
 	return gcnew SceneAdapter(instance->getItems(), instance->getItemFactory());
 }

@@ -138,7 +138,7 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Renderer.h" />
-    <ClInclude Include="RepositoryAdapter.h" />
+    <ClInclude Include="WorldAdapter.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SceneAdapter.h" />
     <ClInclude Include="stdafx.h" />
@@ -149,7 +149,7 @@
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="RepositoryAdapter.cpp" />
+    <ClCompile Include="WorldAdapter.cpp" />
     <ClCompile Include="SceneAdapter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -2,7 +2,7 @@
 
 namespace PG {
 	namespace CLI {
-		ref class RepositoryAdapter;
+		ref class WorldAdapter;
 
 public ref class Command
 {
@@ -13,16 +13,16 @@ public:
 
 	void SetArg(System::String^ name, System::Object^ value);
 
-	void Execute(RepositoryAdapter^ objects);
+	void Execute(WorldAdapter^ objects);
 	
 	generic <class T>
 	T GetResult(System::String^ name);
 
 	void Clear();
 
-	static System::Object^ Get(RepositoryAdapter^ objects, System::String^ name);
+	static System::Object^ Get(WorldAdapter^ objects, System::String^ name);
 
-	static void Set(RepositoryAdapter^ objects, System::String^ name, System::Object^ value);
+	static void Set(WorldAdapter^ objects, System::String^ name, System::Object^ value);
 };
 
 

@@ -6,7 +6,7 @@ namespace Crystal {
 
 namespace PG {
 	namespace CLI {
-		ref class RepositoryAdapter;
+		ref class WorldAdapter;
 
 public ref class Canvas
 {

@@ -47,7 +47,7 @@ namespace PG.CGStudio.UICtrl
         {
             var model = MainModel.Instance.Repository.Adapter;
             var command = new PG.CLI.Command("CameraZoom");
-            command.SetArg("Scale", dx);
+            command.SetArg("Ratio", (float)dx);
             command.Execute(model);
             Canvas3d.Instance.Render();
         }

@@ -15,12 +15,12 @@ namespace PG {
 	namespace CLI {
 		ref class SceneAdapter;
 
-public ref class RepositoryAdapter
+public ref class WorldAdapter
 {
 public:
-	RepositoryAdapter();
+	WorldAdapter();
 
-	~RepositoryAdapter(void);
+	~WorldAdapter(void);
 
 	void Clear();
 
@@ -34,7 +34,6 @@ public:
 
 	SceneAdapter^ GetItemAdapter();
 
-private:
 internal:
 	Crystal::Scene::World* instance;
 };
