@@ -112,8 +112,16 @@ namespace PG.CGStudio
 
         private void Sync()
         {
+            var scenes = PG.CLI.Command.Get(adapter, "SceneList") as List<string>;
+            var root = new PG.Core.Scene(0, "Root", SceneType.Root);
+            foreach(var scene in scenes)
+            {
+                var s = new PG.Core.Scene(0, scene, SceneType.ParticleSystem);
+                root.Children.Add(s);
+            }
+            Scene[0] = root;
+
             //var newScene = this.adapter.GetSceneAdapter().ToScene();
-            //Scene[0] = newScene;
         }
         /*
 

@@ -67,5 +67,14 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 		const auto& v = std::any_cast<Crystal::Math::Matrix4df>(any);
 		return Converter::fromCpp(v);
 	}
+	else if (type == typeid(std::vector<std::string>)) {
+		const auto& v = std::any_cast<std::vector<std::string>>(any);
+		auto dest = gcnew System::Collections::Generic::List<System::String^>();
+		for (int i = 0; i < v.size(); ++i) {
+			dest->Add( Converter::fromCpp(v[i]) );
+		}
+		return dest;
+	}
+
 	return nullptr;
 }
