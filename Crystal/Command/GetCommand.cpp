@@ -20,6 +20,9 @@ std::any GetCommand::Get(World* world, const std::string& name)
 		return std::any(rot);
 	}
 	*/
+	else if (name == "SceneCount") {
+		return static_cast<int>( world->getObjects()->getRoot()->getChildren().size() );
+	}
 
 	else if (name == "SceneList") {
 		const auto& children = world->getObjects()->getRoot()->getChildren();

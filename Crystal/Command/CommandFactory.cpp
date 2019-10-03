@@ -7,6 +7,7 @@
 #include "WireFrameAddCommand.h"
 #include "PolygonMeshAddCommand.h"
 #include "CameraFitCommand.h"
+#include "CameraTranslateCommand.h"
 #include "CameraRotateCommand.h"
 #include "CameraZoomCommand.h"
 
@@ -43,6 +44,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == "CameraZX") {
 		return std::make_unique<CameraZXCommand>();
+	}
+	else if (name == "CameraTranslate") {
+		return std::make_unique<CameraTranslateCommand>();
 	}
 	else if (name == "CameraRotate") {
 		return std::make_unique<CameraRotateCommand>();
