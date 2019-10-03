@@ -33,17 +33,22 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnRightButtonDragging(Vector2d position)
         {
-            /*
+            var model = MainModel.Instance.Repository.Adapter;
             var diff = position - prevPosition;
-            camera.Rotate(diff.X, diff.Y);
+            var command = new PG.CLI.Command("CameraRotate");
+            command.SetArg("Rx", (float)diff.X);
+            command.SetArg("Ry", (float)diff.Y);
+            command.Execute(model);
             Canvas3d.Instance.Render();
-            */
             prevPosition = position;
         }
 
         public override void OnWheel(double dx)
         {
-            //camera.Zoom(dx);
+            var model = MainModel.Instance.Repository.Adapter;
+            var command = new PG.CLI.Command("CameraZoom");
+            command.SetArg("Scale", dx);
+            command.Execute(model);
             Canvas3d.Instance.Render();
         }
     }

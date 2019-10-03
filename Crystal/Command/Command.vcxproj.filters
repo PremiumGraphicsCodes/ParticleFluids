@@ -36,6 +36,9 @@
     <ClInclude Include="CameraFitCommand.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="CameraRotateCommand.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -68,6 +71,9 @@
     <ClCompile Include="CameraFitCommand.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
+    <ClCompile Include="CameraRotateCommand.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -93,6 +99,9 @@
     </Filter>
     <Filter Include="Scene\Shape\WireFrame">
       <UniqueIdentifier>{dc1000d9-5ac0-4216-b9e4-c076d1638f4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{38bb3154-0de5-4bba-afa6-a792c3a6ebe9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

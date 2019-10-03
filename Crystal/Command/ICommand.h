@@ -12,6 +12,10 @@ namespace Crystal {
 class ICommand : private UnCopyable
 {
 public:
+	explicit ICommand(IArgs* args) :
+		args(args)
+	{}
+
 	ICommand(IArgs* args, IResults* results) :
 		args(args),
 		results(results)

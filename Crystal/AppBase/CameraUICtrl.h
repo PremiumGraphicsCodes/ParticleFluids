@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "../Graphics/ICamera.h"
+#include "../Scene/World.h"
 #include "IUICtrl.h"
 
 namespace Crystal {
@@ -10,7 +10,7 @@ namespace Crystal {
 class CameraUICtrl : public IUICtrl
 {
 public:
-	explicit CameraUICtrl(Graphics::ICamera* camera);
+	explicit CameraUICtrl(Scene::World* world);
 
 	virtual ~CameraUICtrl() {}
 
@@ -30,7 +30,7 @@ public:
 
 private:
 	Math::Vector2df prevPosition;
-	Graphics::ICamera* camera;
+	Scene::World* world;
 };
 	}
 }

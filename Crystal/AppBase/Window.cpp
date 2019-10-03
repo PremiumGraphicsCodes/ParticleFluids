@@ -149,7 +149,7 @@ bool Window::init()
 	world->init();
 	world->getRenderer()->build();
 
-	canvas->setUICtrl(new CameraUICtrl(world->getRenderer()->getCamera()));
+	canvas->setUICtrl(new CameraUICtrl(world));
 
 	//canvas->build();
 

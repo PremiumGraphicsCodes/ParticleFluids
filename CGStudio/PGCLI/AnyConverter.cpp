@@ -28,6 +28,11 @@ std::any AnyConverter::toCpp(System::Object^ object)
 		auto vv = Converter::toCpp(v);
 		return std::any(vv);
 	}
+	else if (type == Core::Math::Matrix4d::typeid) {
+		auto v = (Core::Math::Matrix4d^)(object);
+		auto vv = Converter::toCpp(v);
+		return std::any(vv);
+	}
 	else if (type == System::Collections::Generic::List<Core::Math::Vector3d^>::typeid) {
 		auto values = (System::Collections::Generic::List<Core::Math::Vector3d^>^)object;
 		std::vector<Crystal::Math::Vector3dd> dest(values->Count);
@@ -54,9 +59,13 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 	if (type == typeid(int)) {
 		return std::any_cast<int>(any);
 	}
-	if (type == typeid(Crystal::Math::Vector3df)) {
+	else if (type == typeid(Crystal::Math::Vector3df)) {
 		const auto& v = std::any_cast<Crystal::Math::Vector3df>(any);
-		return Converter::fromCpp( v );
+		return Converter::fromCpp(v);
+	}
+	else if (type == typeid(Crystal::Math::Matrix4df)) {
+		const auto& v = std::any_cast<Crystal::Math::Matrix4df>(any);
+		return Converter::fromCpp(v);
 	}
 	return nullptr;
 }

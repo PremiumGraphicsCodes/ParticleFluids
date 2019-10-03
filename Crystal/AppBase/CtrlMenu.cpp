@@ -16,7 +16,7 @@ void CtrlMenu::onShow()
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::MenuItem("Camera")) {
-			canvas->setUICtrl(new CameraUICtrl(model->getRenderer()->getCamera()));
+			canvas->setUICtrl(new CameraUICtrl(model));
 		}
 		if (ImGui::MenuItem("Pick")) {
 			canvas->setUICtrl(new PickUICtrl(model, canvas, SceneType::All));

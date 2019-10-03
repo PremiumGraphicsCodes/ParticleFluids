@@ -62,6 +62,8 @@ public:
 
 	void setRotation(const Math::Matrix4df& rotation) { this->rotation = rotation; }
 
+	Math::Matrix4df getRotation() const { return this->rotation; }
+
 	void rotate(const float azimuth, const float elevation) {
 		rotation = glm::rotate(rotation, azimuth, getRight());
 		rotation = glm::rotate(rotation, elevation, getUp());

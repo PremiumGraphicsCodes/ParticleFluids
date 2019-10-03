@@ -17,7 +17,7 @@ public:
 		aspect(aspect)
 	{}
 
-	PerspectiveCamera(const float fovy, const float aspect, const glm::vec3& target, const glm::vec3& position, const float near, const float far) :
+	PerspectiveCamera(const float fovy, const float aspect, const glm::vec3& target, const glm::vec3& position, const float near_, const float far_) :
 		fovy(fovy),
 		aspect(aspect),
 		ICamera(target, position, near_, far_)

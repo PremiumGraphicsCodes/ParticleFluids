@@ -10,6 +10,17 @@ std::any GetCommand::Get(World* world, const std::string& name)
 		const auto& pos = world->getRenderer()->getCamera()->getPosition();
 		return std::any(pos);
 	}
+	else if (name == "CameraProjectionMatrix") {
+		const auto& rot = world->getRenderer()->getCamera()->getProjectionMatrix();
+		return std::any(rot);
+	}
+	/*
+	else if (name == "CameraScale") {
+		const auto& rot = world->getRenderer()->getCamera()->setS();
+		return std::any(rot);
+	}
+	*/
+
 	else if (name == "SceneList") {
 		const auto& children = world->getObjects()->getRoot()->getChildren();
 		std::vector<std::string> names;
