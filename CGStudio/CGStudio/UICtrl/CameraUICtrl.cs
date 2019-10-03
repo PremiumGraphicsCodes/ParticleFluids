@@ -18,10 +18,11 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
+            var model = MainModel.Instance.Repository.Adapter;
             var diff = position - prevPosition;
-            var pos = PG.CLI.Command.Get(MainModel.Instance.Repository.Adapter, "CameraPosition") as Vector3d;
-            pos += new Vector3d(diff.X, diff.Y, 0.0);
-            PG.CLI.Command.Set(MainModel.Instance.Repository.Adapter, "CameraPosition", pos);
+            var command = new PG.CLI.Command("CameraTranslate");
+            command.SetArg("Translate", new Vector3d(diff.X, diff.Y, 0.0));
+            command.Execute(model);
             Canvas3d.Instance.Render();
             prevPosition = position;
         }

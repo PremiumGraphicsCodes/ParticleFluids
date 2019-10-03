@@ -8,6 +8,7 @@
 #include "../../Crystal/Command/SetCommand.h"
 
 #include "../../Crystal/Scene/World.h"
+#include "Converter.h"
 #include "AnyConverter.h"
 #include "WorldAdapter.h"
 
@@ -35,6 +36,15 @@ void Command::SetArg(System::String^ name, System::Object^ value)
 	const auto v = AnyConverter::toCpp(value);
 	::instance.setArg(str, v);
 }
+
+void Command::SetArg(System::String^ name, int value)
+{
+	const auto& str = Converter::toCpp(name);
+	::instance.setArg(str, std::any(value));
+}
+
+//void SetArg(System::String^ name, double x, double y, double z);
+
 
 void Command::Execute(WorldAdapter^ objects)
 {
