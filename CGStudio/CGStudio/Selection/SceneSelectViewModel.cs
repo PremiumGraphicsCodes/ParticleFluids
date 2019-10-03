@@ -13,14 +13,14 @@ namespace PG.CGStudio.Object.Select
 
         public ReactiveCommand PickCommand { get; }
 
-        private ObjectPickUICtrl Picker { get; }
+        private PickUICtrl Picker { get; }
 
         public SceneSelectViewModel()
         {
             Id = new ReactiveProperty<int>();
             PickCommand = new ReactiveCommand();
             PickCommand.Subscribe(OnPickUI);
-            Picker = new ObjectPickUICtrl(10, Core.SceneType.AllScene);
+            Picker = new PickUICtrl(10, Core.SceneType.AllScene);
         }
 
         private void OnPickUI()

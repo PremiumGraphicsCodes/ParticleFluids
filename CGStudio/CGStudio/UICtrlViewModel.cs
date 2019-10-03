@@ -24,7 +24,7 @@ namespace PG.CGStudio
 
         private void OnPickUICtrl()
         {
-            Canvas3d.Instance.UICtrl = new ObjectPickUICtrl(10, Core.SceneType.AllScene);
+            Canvas3d.Instance.UICtrl = new PickUICtrl(10, Core.SceneType.AllScene);
         }
     }
 }

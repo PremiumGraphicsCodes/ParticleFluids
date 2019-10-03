@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace PG.CGStudio.UICtrl
 {
-    public class ObjectMoveUICtrl : IUICtrl
+    public class TranslateUICtrl : IUICtrl
     {
         private Vector2d prevPos;
 
         private List<int> ObjectIds;
 
-        public ObjectMoveUICtrl()
+        public TranslateUICtrl()
         {
             ObjectIds = new List<int>();
         }
 
-        public ObjectMoveUICtrl(List<int> objects)
+        public TranslateUICtrl(List<int> objects)
         {
             ObjectIds = objects;
         }
@@ -34,31 +34,11 @@ namespace PG.CGStudio.UICtrl
             var canvas = Canvas3d.Instance;
 
             var v = (position - prevPos) * 0.1;
-            /*
-var m1 = new Matrix4d
-    (
-    1.0, 0.0, 0.0, 0.0,
-    0.0, 1.0, 0.0, 0.0,
-    0.0, 0.0, 1.0, 0.0,
-    v.X, v.Y, 0.0, 1.0
-    );
-var m2 = camera.ProjectionMatrix;
+            var command = new PG.CLI.Command("Translate");
+            command.SetArg("Translate", v.X, v.Y, 0.0);
+            command.Execute(MainModel.Instance.Repository.Adapter);
 
-var matrix = m2 * m1;
-
-foreach(var id in ObjectIds)
-{
-    var o = MainModel.Instance.Repository.Objects.FindObjectById(id);
-    if (o != null)
-    {
-        o.Move(new Vector3d(v, 0.0));
-    }
-}
-this.prevPos = position;
-Canvas3d.Instance.Update(MainModel.Instance.Repository);
-Canvas3d.Instance.Render();
-            */
-
+            canvas.Update(MainModel.Instance.Repository);
         }
 
     }

@@ -251,9 +251,9 @@
     <Compile Include="Scene\Shape\WireFrame\Generation\SphereGenerationViewModel.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
-    <Compile Include="Scene\Shape\Transform\ObjectMoveUICtrl.cs" />
-    <Compile Include="Scene\Shape\Transform\ObjectPickUICtrl.cs" />
-    <Compile Include="Scene\Shape\Transform\ObjectScaleUICtrl.cs" />
+    <Compile Include="Scene\Shape\Transform\TranslateUICtrl.cs" />
+    <Compile Include="Scene\Shape\Transform\PickUICtrl.cs" />
+    <Compile Include="Scene\Shape\Transform\ScaleUICtrl.cs" />
     <Page Include="Scene\Appearance\Light\LightAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

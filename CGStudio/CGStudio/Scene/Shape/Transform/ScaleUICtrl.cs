@@ -33,32 +33,15 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
-            /*
             var canvas = Canvas3d.Instance;
-            var camera = canvas.Camera;
 
             var v = (position - prevPos) * 0.1;
-            var m1 = new Matrix4d
-                (
-                1.0 + v.X, 0.0, 0.0, 0.0,
-                0.0,  1.0 + v.Y, 0.0, 0.0,
-                0.0, 0.0, 1.0, 0.0,
-                0.0, 0.0, 0.0, 1.0
-                );
+            var command = new PG.CLI.Command("Scale");
+            command.SetArg("Scale", v.X + 1.0, v.Y + 1.0, 1.0);
+            command.Execute(MainModel.Instance.Repository.Adapter);
 
-            foreach (var id in ObjectIds)
-            {
-                var o = MainModel.Instance.Repository.Objects.FindObjectById(id);
-                if (o != null)
-                {
-                    o.Transform(m1);
-                }
-            }
             canvas.Update(MainModel.Instance.Repository);
-            canvas.Render();
 
-            this.prevPos = position;
-            */
         }
     }
 }

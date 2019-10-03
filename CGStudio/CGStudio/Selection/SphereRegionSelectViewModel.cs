@@ -29,7 +29,7 @@ namespace PG.CGStudio.Selection
 
         private void OnPickUI()
         {
-            var picker = new ObjectPickUICtrl(10, SceneType.AllScene)
+            var picker = new PickUICtrl(10, SceneType.AllScene)
             {
                 Action = OnPicked
             };

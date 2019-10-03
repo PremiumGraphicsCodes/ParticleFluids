@@ -1,6 +1,7 @@
 ﻿using PG.CGStudio.Object.Select;
 using PG.CGStudio.UICtrl;
 using PG.Control.Math;
+using PG.Core.Math;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -34,6 +35,15 @@ namespace PG.CGStudio.Object.Transform
             ScaleCommand = new ReactiveCommand();
             ScaleCommand.Subscribe(OnScale);
             RotateCommand = new ReactiveCommand();
+            OKCommand = new ReactiveCommand();
+            OKCommand.Subscribe(OnOk);
+            MatrixViewModel.Value = new Matrix4d
+                (
+                1,0,0,0,
+                0,1,0,0,
+                0,0,1,0,
+                0,0,0,1
+                );
         }
 
         private void OnMove()
@@ -42,7 +52,7 @@ namespace PG.CGStudio.Object.Transform
             {
                 SelectViewModel.Id.Value
             };
-            var moveCtrl = new ObjectMoveUICtrl(ids);
+            var moveCtrl = new TranslateUICtrl(ids);
             Canvas3d.Instance.UICtrl = moveCtrl;
         }
 
@@ -54,6 +64,14 @@ namespace PG.CGStudio.Object.Transform
             };
             var moveCtrl = new ObjectScaleUICtrl(ids);
             Canvas3d.Instance.UICtrl = moveCtrl;
+        }
+
+        private void OnOk()
+        {
+            var command = new PG.CLI.Command("Transform");
+            command.SetArg("Id", SelectViewModel.Id.Value);
+            //            command.SetArg("Matrix", MatrixViewModel.Value.ToArray());
+            command.Execute(MainModel.Instance.Repository.Adapter);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

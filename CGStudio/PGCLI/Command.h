@@ -7,7 +7,9 @@ namespace PG {
 public ref class Command
 {
 public:
-	Command::Command(System::String^ name);
+	Command();
+
+	Command(System::String^ name);
 
 	void Create(System::String^ name);
 
@@ -15,10 +17,15 @@ public:
 
 	void SetArg(System::String^ name, int value);
 
+	void SetArg(System::String^ name, double value);
+
 	void SetArg(System::String^ name, double x, double y);
 
+	void SetArg(System::String^ name, double x, double y, double z);
 
-	//void SetArg(System::String^ name, double x, double y, double z);
+	void SetArg(System::String^ name, double x, double y, double z, double w);
+
+	void SetArg(System::String^ name, double matrix[]);
 
 	void Execute(WorldAdapter^ objects);
 	

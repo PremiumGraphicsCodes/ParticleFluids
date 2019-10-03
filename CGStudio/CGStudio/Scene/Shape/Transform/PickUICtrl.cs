@@ -1,14 +1,11 @@
 ﻿using PG.Core;
 using PG.Core.Math;
-using PG.Core.Shape;
-using Prism.Regions;
 using System;
 using System.Collections.Generic;
-using System.Windows;
 
 namespace PG.CGStudio.UICtrl
 {
-    public class ObjectPickUICtrl : IUICtrl
+    public class PickUICtrl : IUICtrl
     {
         private List<ObjectId> pickedIds;
         private int mergin;
@@ -20,7 +17,7 @@ namespace PG.CGStudio.UICtrl
             set { this.action = value; }
         }
 
-        public ObjectPickUICtrl(int mergin, SceneType type)
+        public PickUICtrl(int mergin, SceneType type)
         {
             this.mergin = mergin;
             this.pickedIds = new List<ObjectId>();
@@ -31,7 +28,6 @@ namespace PG.CGStudio.UICtrl
         {
             get { return pickedIds; }
         }
-
         public override void OnLeftButtonDown(Vector2d position)
         {
             var model = MainModel.Instance.Repository.Adapter;
