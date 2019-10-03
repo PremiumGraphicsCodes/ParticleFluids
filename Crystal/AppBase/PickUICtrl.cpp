@@ -1,6 +1,7 @@
 #include "PickUICtrl.h"
 
 #include "../Scene/World.h"
+#include "../Command/Command.h"
 
 #include <iostream>
 
@@ -25,13 +26,21 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	const auto y = position.y;
 
 	std::cout << x << " " << y << std::endl;
-	
+
+	Crystal::Command::Command command("PickCommand");
+	command.setArg("Position", Vector2dd(position));
+	command.execute(model);
+	const auto parentId = std::any_cast<int>( command.getResult("ParentId") );
+	const auto childId = std::any_cast<int>(command.getResult("ChildId"));
+
+	/*
 	const auto id = model->getRenderer()->getObjectIdRenderer()->getId(x,y);
 	const auto parentId = id.getParentId();
 	const auto childId = id.getChildId();
 	if (parentId == 0) {
 		return;
 	}
+	*/
 	auto object = model->getObjects()->findSceneById(parentId);
 	if (object != nullptr) {
 		const bool masked = (int)type && (int)object->getType();

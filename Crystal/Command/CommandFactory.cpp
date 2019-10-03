@@ -10,6 +10,7 @@
 #include "CameraTranslateCommand.h"
 #include "CameraRotateCommand.h"
 #include "CameraZoomCommand.h"
+#include "PickCommand.h"
 
 using namespace Crystal::Command;
 
@@ -53,6 +54,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == "CameraZoom") {
 		return std::make_unique<CameraZoomCommand>();
+	}
+	else if (name == "PickCommand") {
+		return std::make_unique<PickCommand>();
 	}
 
 	assert(false);

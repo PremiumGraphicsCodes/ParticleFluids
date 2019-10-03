@@ -45,6 +45,7 @@
     <ClInclude Include="CameraTranslateCommand.h">
       <Filter>Camera</Filter>
     </ClInclude>
+    <ClInclude Include="PickCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -86,6 +87,7 @@
     <ClCompile Include="CameraTranslateCommand.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
+    <ClCompile Include="PickCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
