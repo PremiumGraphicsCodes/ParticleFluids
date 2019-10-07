@@ -208,9 +208,6 @@
     <ClInclude Include="WireFrameEditView.h" />
     <ClInclude Include="WireFrameView.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8BCD40A1-4223-4E7A-A84A-93FBF1B6FFD8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

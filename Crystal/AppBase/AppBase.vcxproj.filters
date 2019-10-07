@@ -551,9 +551,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="Window">
       <UniqueIdentifier>{afc4d729-1eb0-481b-8ee0-3d334e6eec54}</UniqueIdentifier>
     </Filter>
