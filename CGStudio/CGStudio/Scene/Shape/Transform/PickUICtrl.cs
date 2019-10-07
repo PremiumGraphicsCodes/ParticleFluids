@@ -37,11 +37,21 @@ namespace PG.CGStudio.UICtrl
             command.SetArg("Position", position.X, 1.0 - position.Y);
             command.Execute(model);
             var parentId = command.GetResult<int>("ParentId");
+            var childId = command.GetResult<int>("ChildId");
             Canvas3d.Instance.Renderer.UnBind();
 
             if (parentId != 0)
             {
                 var selectedType = CLI.Command.Get(model, parentId, "SceneTypeId");// model.GetTypeById(id.parentId);
+                var pickedId = new ObjectId();
+                pickedId.parentId = parentId;
+                pickedId.childId = childId;
+                pickedIds.Add(pickedId);
+
+                if (action != null)
+                {
+                    action(pickedId);
+                }
                 /*
                 if (!type.HasFlag(selectedType))
                 {
@@ -49,10 +59,6 @@ namespace PG.CGStudio.UICtrl
                 }
                 pickedIds.Add(id);
 
-                if (action != null)
-                {
-                    action(id);
-                }
                 */
             }
         }

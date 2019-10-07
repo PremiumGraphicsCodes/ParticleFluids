@@ -21,6 +21,7 @@ namespace PG.CGStudio.Object.Select
             PickCommand = new ReactiveCommand();
             PickCommand.Subscribe(OnPickUI);
             Picker = new PickUICtrl(10, Core.SceneType.AllScene);
+            Picker.Action = OnPicked;
         }
 
         private void OnPickUI()

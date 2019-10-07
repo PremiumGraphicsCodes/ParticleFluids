@@ -23,22 +23,14 @@ public:
 		Arg<Math::Vector3dd> vector;
 	};
 
-	struct Results : IResults
-	{
-		Results()
-		{
-		}
-	};
-
 	TranslateCommand() :
-		ICommand(&args, &results)
+		ICommand(&args)
 	{}
 
 	void execute(Scene::World* world) override;
 
 private:
 	Args args;
-	Results results;
 };
 	}
 }

@@ -88,6 +88,9 @@
       <Filter>Camera</Filter>
     </ClCompile>
     <ClCompile Include="PickCommand.cpp" />
+    <ClCompile Include="TranslateCommand.cpp">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

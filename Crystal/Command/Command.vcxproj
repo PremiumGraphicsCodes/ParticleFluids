@@ -193,6 +193,7 @@
     <ClCompile Include="PolygonMeshAddCommand.cpp" />
     <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="TransformCommand.cpp" />
+    <ClCompile Include="TranslateCommand.cpp" />
     <ClCompile Include="WireFrameAddCommand.cpp" />
   </ItemGroup>
   <ItemGroup>

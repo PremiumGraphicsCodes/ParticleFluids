@@ -12,6 +12,7 @@
 #include "CameraZoomCommand.h"
 #include "PickCommand.h"
 #include "TransformCommand.h"
+#include "TranslateCommand.h"
 
 using namespace Crystal::Command;
 
@@ -59,8 +60,11 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == "PickCommand") {
 		return std::make_unique<PickCommand>();
 	}
-	else if (name == "TransformCommand") {
+	else if (name == "Transform") {
 		return std::make_unique<TransformCommand>();
+	}
+	else if (name == "Translate") {
+		return std::make_unique<TranslateCommand>();
 	}
 
 
