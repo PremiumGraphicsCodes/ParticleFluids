@@ -161,6 +161,10 @@
       <DependentUpon>PolygonMeshEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditViewModel.cs" />
+    <Compile Include="Scene\Shape\Transform\Scale\ScaleView.xaml.cs">
+      <DependentUpon>ScaleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Shape\Transform\Scale\ScaleViewModel.cs" />
     <Compile Include="Scene\Shape\Transform\Translate\TranslateView.xaml.cs">
       <DependentUpon>TranslateView.xaml</DependentUpon>
     </Compile>
@@ -257,7 +261,7 @@
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="Scene\Shape\Transform\Translate\TranslateUICtrl.cs" />
     <Compile Include="Scene\Shape\Transform\PickUICtrl.cs" />
-    <Compile Include="Scene\Shape\Transform\ScaleUICtrl.cs" />
+    <Compile Include="Scene\Shape\Transform\Scale\ScaleUICtrl.cs" />
     <Page Include="Scene\Appearance\Light\LightAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -303,6 +307,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Shape\PolygonMesh\PolygonMeshEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Shape\Transform\Scale\ScaleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,6 +7,7 @@ using PG.CGStudio.Scene.Appearance.Material;
 using PG.CGStudio.Scene.Appearance.Texture;
 using PG.CGStudio.Scene.Shape.ParticleSystem;
 using PG.CGStudio.Scene.Shape.PolygonMesh;
+using PG.CGStudio.Scene.Shape.Transform.Scale;
 using PG.CGStudio.Scene.Shape.WireFrame;
 using PG.CGStudio.Selection;
 using PG.CGStudio.Texture;
@@ -58,6 +59,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Object.Select.SceneSelectView>("Select");
             containerRegistry.RegisterForNavigation<Object.Transform.TransformView>("Transform");
             containerRegistry.RegisterForNavigation<Scene.Shape.Transform.TranslateView>("Translate");
+            containerRegistry.RegisterForNavigation<ScaleView>("Scale");
 
             containerRegistry.RegisterForNavigation<SphereRegionSelectView>("SphereRegionSelection");
         }

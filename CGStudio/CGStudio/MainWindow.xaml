@@ -52,6 +52,7 @@
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox>
                     <Fluent:Button Header="Translate" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Translate"/>
+                    <Fluent:Button Header="Scale" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Scale"/>
                     <Fluent:Button Header="Transform" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Transform"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
