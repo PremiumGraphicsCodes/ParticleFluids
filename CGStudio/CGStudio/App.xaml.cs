@@ -57,6 +57,7 @@ namespace PG.CGStudio
 
             containerRegistry.RegisterForNavigation<Object.Select.SceneSelectView>("Select");
             containerRegistry.RegisterForNavigation<Object.Transform.TransformView>("Transform");
+            containerRegistry.RegisterForNavigation<Scene.Shape.Transform.TranslateView>("Translate");
 
             containerRegistry.RegisterForNavigation<SphereRegionSelectView>("SphereRegionSelection");
         }

@@ -194,6 +194,7 @@
     <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="PolygonMeshAddCommand.cpp" />
     <ClCompile Include="RotateCommand.cpp" />
+    <ClCompile Include="ScaleCommand.cpp" />
     <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="TranslateCommand.cpp" />

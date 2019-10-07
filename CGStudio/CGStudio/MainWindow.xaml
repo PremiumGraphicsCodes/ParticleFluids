@@ -34,7 +34,7 @@
                 </Fluent:ApplicationMenu>
             </Fluent:Ribbon.Menu>
 
-            <Fluent:RibbonTabItem Header="Generation" KeyTip="T1">
+            <Fluent:RibbonTabItem Header="Shape" KeyTip="T1">
                 <Fluent:RibbonGroupBox Header="ParticleSystem" KeyTip="B">
                     <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCBoxGeneration"/>
                     <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCSphereGeneration"/>
@@ -51,6 +51,7 @@
                     <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMCylinderGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox>
+                    <Fluent:Button Header="Translate" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Translate"/>
                     <Fluent:Button Header="Transform" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Transform"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>

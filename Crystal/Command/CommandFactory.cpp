@@ -14,6 +14,7 @@
 #include "TransformCommand.h"
 #include "TranslateCommand.h"
 #include "RotateCommand.h"
+#include "ScaleCommand.h"
 
 using namespace Crystal::Command;
 
@@ -70,8 +71,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == "Rotate") {
 		return std::make_unique<RotateCommand>();
 	}
-
-
+	else if (name == "Scale") {
+		return std::make_unique<ScaleCommand>();
+	}
 
 	assert(false);
 	return nullptr;

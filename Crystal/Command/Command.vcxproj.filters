@@ -100,6 +100,9 @@
     <ClCompile Include="RotateCommand.cpp">
       <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
+    <ClCompile Include="ScaleCommand.cpp">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
