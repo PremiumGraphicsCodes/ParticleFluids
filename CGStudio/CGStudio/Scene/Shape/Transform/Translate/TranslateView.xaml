@@ -6,13 +6,15 @@
              xmlns:local="clr-namespace:PG.CGStudio.Scene.Shape.Transform"
              xmlns:ui="clr-namespace:PG.Control.UI;assembly=PGControl"
              xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
+             xmlns:select="clr-namespace:PG.CGStudio.Object.Select"
              mc:Ignorable="d">
     <UserControl.DataContext>
         <local:TranslateViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <ui:ObjectSelectView DataContext="{Binding ShapeSelectViewModel}"/>
+        <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
         <math:Vector3dView DataContext="{Binding VectorViewModel}"/>
-        <Button Command="{Binding OkCommand}"/>
+        <Button Content="Translate" Command="{Binding TranslateCommand}"/>
+        <Button Content="OK" Command="{Binding OkCommand}"/>
     </StackPanel>
 </UserControl>
