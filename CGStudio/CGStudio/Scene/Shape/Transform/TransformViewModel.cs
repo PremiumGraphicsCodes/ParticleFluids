@@ -62,7 +62,7 @@ namespace PG.CGStudio.Object.Transform
             {
                 SelectViewModel.Id.Value
             };
-            var moveCtrl = new ObjectScaleUICtrl(ids);
+            var moveCtrl = new ScaleUICtrl(ids);
             Canvas3d.Instance.UICtrl = moveCtrl;
         }
 

@@ -1,22 +1,20 @@
 ﻿using PG.Core.Math;
-using Prism.Regions;
 using System.Collections.Generic;
-using System.Windows;
 
 namespace PG.CGStudio.UICtrl
 {
-    public class ObjectScaleUICtrl : IUICtrl
+    public class ScaleUICtrl : IUICtrl
     {
         private Vector2d prevPos;
 
-        private readonly List<int> ObjectIds;
+        private List<int> ObjectIds;
 
-        public ObjectScaleUICtrl()
+        public ScaleUICtrl()
         {
             ObjectIds = new List<int>();
         }
 
-        public ObjectScaleUICtrl(List<int> objects)
+        public ScaleUICtrl(List<int> objects)
         {
             ObjectIds = objects;
         }
@@ -37,11 +35,13 @@ namespace PG.CGStudio.UICtrl
 
             var v = (position - prevPos) * 0.1;
             var command = new PG.CLI.Command("Scale");
-            command.SetArg("Scale", v.X + 1.0, v.Y + 1.0, 1.0);
+            command.SetArg("Id", ObjectIds[0]);
+            command.SetArg("Scale", v.X + 1.0, v.Y + 1.0, 0.0);
             command.Execute(MainModel.Instance.Repository.Adapter);
 
             canvas.Update(MainModel.Instance.Repository);
-
+            canvas.Render();
         }
+
     }
 }

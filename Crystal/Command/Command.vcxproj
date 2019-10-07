@@ -170,6 +170,8 @@
     <ClInclude Include="ParticleSystemAddCommand.h" />
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PolygonMeshAddCommand.h" />
+    <ClInclude Include="RotateCommand.h" />
+    <ClInclude Include="ScaleCommand.h" />
     <ClInclude Include="SetCommand.h" />
     <ClInclude Include="TransformCommand.h" />
     <ClInclude Include="TranslateCommand.h" />
@@ -191,6 +193,7 @@
     <ClCompile Include="ParticleSystemAddCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="PolygonMeshAddCommand.cpp" />
+    <ClCompile Include="RotateCommand.cpp" />
     <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="TranslateCommand.cpp" />

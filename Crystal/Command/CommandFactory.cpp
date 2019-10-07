@@ -13,6 +13,7 @@
 #include "PickCommand.h"
 #include "TransformCommand.h"
 #include "TranslateCommand.h"
+#include "RotateCommand.h"
 
 using namespace Crystal::Command;
 
@@ -66,6 +67,10 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == "Translate") {
 		return std::make_unique<TranslateCommand>();
 	}
+	else if (name == "Rotate") {
+		return std::make_unique<RotateCommand>();
+	}
+
 
 
 	assert(false);

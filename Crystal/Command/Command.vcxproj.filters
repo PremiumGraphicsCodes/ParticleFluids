@@ -46,6 +46,12 @@
       <Filter>Camera</Filter>
     </ClInclude>
     <ClInclude Include="PickCommand.h" />
+    <ClInclude Include="RotateCommand.h">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleCommand.h">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -89,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="TranslateCommand.cpp">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="RotateCommand.cpp">
       <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
   </ItemGroup>
