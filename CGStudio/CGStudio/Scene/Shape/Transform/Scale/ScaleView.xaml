@@ -4,11 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Scene.Shape.Transform.Scale"
+             xmlns:select="clr-namespace:PG.CGStudio.Object.Select"
+             xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
              mc:Ignorable="d">
     <UserControl.DataContext>
         <local:ScaleViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-            
+        <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
+        <math:Vector3dView DataContext="{Binding RatioViewModel}"/>
+        <Button Content="Scale" Command="{Binding ScaleCommand}"/>
+        <Button Content="OK" Command="{Binding OkCommand}"/>
     </StackPanel>
 </UserControl>

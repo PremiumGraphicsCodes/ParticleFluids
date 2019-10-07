@@ -90,11 +90,7 @@
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
 
-            <Fluent:RibbonTabItem Header="Selection" KeyTip="T1">
-                <Fluent:RibbonGroupBox>
-                    <Fluent:Button Header="Transform" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Transform"/>
-                    <Fluent:Button Header="Selection" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Select"/>
-                </Fluent:RibbonGroupBox>
+            <Fluent:RibbonTabItem Header="Develop" KeyTip="T1">
 
                 <Fluent:RibbonGroupBox Header="Boolean" KeyTip="B">
                     <Fluent:Button Header="Union" KeyTip="BI" Command="{Binding UnionCommand}"/>

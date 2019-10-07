@@ -7,16 +7,16 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos;
 
-        private List<int> ObjectIds;
+        private int ObjectId;
 
         public ScaleUICtrl()
         {
-            ObjectIds = new List<int>();
+            ObjectId = -1;
         }
 
-        public ScaleUICtrl(List<int> objects)
+        public ScaleUICtrl(int objectId)
         {
-            ObjectIds = objects;
+            this.ObjectId = objectId;
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -35,7 +35,7 @@ namespace PG.CGStudio.UICtrl
 
             var v = (position - prevPos) * 0.1;
             var command = new PG.CLI.Command("Scale");
-            command.SetArg("Id", ObjectIds[0]);
+            command.SetArg("Id", ObjectId);
             command.SetArg("Scale", v.X + 1.0, v.Y + 1.0, 1.0);
             command.Execute(MainModel.Instance.Repository.Adapter);
 
