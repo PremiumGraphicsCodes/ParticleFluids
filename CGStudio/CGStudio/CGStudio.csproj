@@ -136,6 +136,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
+    <Compile Include="ConstLabels.cs" />
     <Compile Include="FileIOViewModel.cs" />
     <Compile Include="Scene\Appearance\Light\LightAddView.xaml.cs">
       <DependentUpon>LightAddView.xaml</DependentUpon>

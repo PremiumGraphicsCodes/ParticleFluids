@@ -1,21 +1,28 @@
 #include "PickCommand.h"
 
+#include "Public/PickLabels.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 PickCommand::Args::Args() :
-	position("Position", Vector2dd())
+	position(::PositionLabel, Vector2dd())
 {
 	add(&position);
 }
 
 PickCommand::Results::Results() :
-	parentId("ParentId", -1),
-	childId("ChildId",-1)
+	parentId(::ParentIdLabel, -1),
+	childId(::ChildIdLabel,-1)
 {
 	add(&parentId);
 	add(&childId);
+}
+
+std::string PickCommand::getName()
+{
+	return ::PickCommandLabel;
 }
 
 void PickCommand::execute(World* world)

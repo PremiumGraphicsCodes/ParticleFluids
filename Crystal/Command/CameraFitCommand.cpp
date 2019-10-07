@@ -1,8 +1,15 @@
 #include "CameraFitCommand.h"
 
+#include "Public/CameraLabels.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
+
+std::string CameraFitCommand::getName()
+{
+	return ::CameraFitCommandLabel;
+}
 
 void CameraFitCommand::execute(World* world)
 {
@@ -13,6 +20,11 @@ void CameraFitCommand::execute(World* world)
 	camera->setFar(dist * 10.0f);
 	camera->setTarget(boundingBox.getCenter());
 	camera->moveTo(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0));
+}
+
+std::string CameraXYCommand::getName()
+{
+	return ::CameraXYCommandLabel;
 }
 
 void CameraXYCommand::execute(World* world)

@@ -1,4 +1,4 @@
-#define PublicLabel constexpr auto
+#include "PublicLabel.h"
 
 namespace {
 	PublicLabel CameraFitCommandLabel = "CameraFit";

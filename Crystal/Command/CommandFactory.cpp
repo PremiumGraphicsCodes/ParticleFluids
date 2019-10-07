@@ -38,10 +38,10 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == "PolygonMeshAdd") {
 		return std::make_unique<PolygonMeshAddCommand>();
 	}
-	else if (name == "CameraFit") {
+	else if (name == CameraFitCommand::getName()) {
 		return std::make_unique<CameraFitCommand>();
 	}
-	else if (name == "CameraXY") {
+	else if (name == CameraXYCommand::getName()) {
 		return std::make_unique<CameraXYCommand>();
 	}
 	else if (name == "CameraYZ") {
@@ -59,7 +59,7 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == "CameraZoom") {
 		return std::make_unique<CameraZoomCommand>();
 	}
-	else if (name == "PickCommand") {
+	else if (name == PickCommand::getName()) {
 		return std::make_unique<PickCommand>();
 	}
 	else if (name == "Transform") {

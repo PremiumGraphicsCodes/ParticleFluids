@@ -8,12 +8,16 @@ namespace Crystal {
 class CameraFitCommand : public ICommand
 {
 public:
+	static std::string getName();
+
 	void execute(Scene::World* world) override;
 };
 
 class CameraXYCommand : public ICommand
 {
 public:
+	static std::string getName();
+
 	void execute(Scene::World* world) override;
 };
 

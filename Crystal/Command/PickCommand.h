@@ -27,6 +27,8 @@ public:
 		ICommand(&args, &results)
 	{}
 
+	static std::string getName();
+
 	void execute(Scene::World* world) override;
 
 private:

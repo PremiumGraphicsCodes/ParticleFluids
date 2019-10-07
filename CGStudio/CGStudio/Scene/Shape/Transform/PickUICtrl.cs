@@ -2,6 +2,7 @@
 using PG.Core.Math;
 using System;
 using System.Collections.Generic;
+using Labels = PG.PickLabels;
 
 namespace PG.CGStudio.UICtrl
 {
@@ -33,11 +34,11 @@ namespace PG.CGStudio.UICtrl
             var model = MainModel.Instance.Repository.Adapter;
 
             Canvas3d.Instance.Renderer.Bind();
-            var command = new PG.CLI.Command("PickCommand");
-            command.SetArg("Position", position.X, 1.0 - position.Y);
+            var command = new PG.CLI.Command(Labels.PickCommandLabel);
+            command.SetArg(Labels.PositionLabel, position.X, 1.0 - position.Y);
             command.Execute(model);
-            var parentId = command.GetResult<int>("ParentId");
-            var childId = command.GetResult<int>("ChildId");
+            var parentId = command.GetResult<int>(Labels.ParentIdLabel);
+            var childId = command.GetResult<int>(Labels.ChildIdLabel);
             Canvas3d.Instance.Renderer.UnBind();
 
             if (parentId != 0)

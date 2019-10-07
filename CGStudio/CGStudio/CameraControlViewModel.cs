@@ -30,7 +30,9 @@ namespace PG.CGStudio
 
         private void OnXY()
         {
-            //OpenGLPresenter.Instance.Renderer.camera.SetRotation()
+            var command = new PG.CLI.Command(CameraLabels.CameraXYCommandLabel);
+            command.Execute(MainModel.Instance.Repository.Adapter);
+            Canvas3d.Instance.Render();
         }
 
         private void OnYZ()
@@ -50,7 +52,9 @@ namespace PG.CGStudio
 
         private void OnFit()
         {
-
+            var command = new PG.CLI.Command(CameraLabels.CameraFitCommandLabel);
+            command.Execute(MainModel.Instance.Repository.Adapter);
+            Canvas3d.Instance.Render();
         }
     }
 }
