@@ -36,5 +36,5 @@ void BooleanView::onOk()
 
 	getWorld()->getObjectFactory()->createPolygonMeshScene(algo.getResult(), "Intersection");
 	getWorld()->updateViewModel();
-	getCanvas()->fitCamera(getWorld()->getBoundingBox());
+	//getCanvas()->fitCamera(getWorld()->getBoundingBox());
 }
