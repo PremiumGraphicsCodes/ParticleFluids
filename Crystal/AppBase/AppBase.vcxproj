@@ -109,6 +109,7 @@
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Double4View.h" />
+    <ClInclude Include="glfw3.h" />
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="IPSAddView.h" />
     <ClInclude Include="IUICtrl.h" />
@@ -330,14 +331,5 @@
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets" Condition="Exists('..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets')" />
     <Import Project="..\packages\glew.1.9.0.1\build\native\glew.targets" Condition="Exists('..\packages\glew.1.9.0.1\build\native\glew.targets')" />
-    <Import Project="..\packages\glfw.redist.3.2.1\build\native\glfw.redist.targets" Condition="Exists('..\packages\glfw.redist.3.2.1\build\native\glfw.redist.targets')" />
-    <Import Project="..\packages\glfw.3.3.0.1\build\native\glfw.targets" Condition="Exists('..\packages\glfw.3.3.0.1\build\native\glfw.targets')" />
   </ImportGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\glfw.redist.3.2.1\build\native\glfw.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glfw.redist.3.2.1\build\native\glfw.redist.targets'))" />
-    <Error Condition="!Exists('..\packages\glfw.3.3.0.1\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glfw.3.3.0.1\build\native\glfw.targets'))" />
-  </Target>
 </Project>

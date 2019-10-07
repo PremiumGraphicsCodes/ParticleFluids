@@ -546,6 +546,9 @@
     <ClInclude Include="IWFAddView.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
+    <ClInclude Include="glfw3.h">
+      <Filter>ThirdParty</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
