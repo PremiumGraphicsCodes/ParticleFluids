@@ -1,6 +1,6 @@
 #include "DepthRenderer.h"
 
-#include "GL/glew.h"
+#include "glew.h"
 
 #include <sstream>
 

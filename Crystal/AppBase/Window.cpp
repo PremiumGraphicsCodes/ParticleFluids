@@ -1,6 +1,6 @@
 #include "Window.h"
 
-#include "GL/glew.h"
+#include "../Shader/glew.h"
 
 #include "GLFW\glfw3.h"
 #include "GLFW\glfw3native.h"

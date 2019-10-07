@@ -40,6 +40,9 @@
     <ClInclude Include="IShaderCommand.h">
       <Filter>Shader</Filter>
     </ClInclude>
+    <ClInclude Include="glew.h">
+      <Filter>ThirdParty</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
@@ -79,9 +82,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="Texture">
       <UniqueIdentifier>{b674cba5-2b4e-43ba-9ca3-edccfd2796c6}</UniqueIdentifier>
     </Filter>
@@ -90,6 +90,9 @@
     </Filter>
     <Filter Include="Shader">
       <UniqueIdentifier>{53bde5a9-c60d-4ac5-bdeb-b8fec0a09a10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{82cfef0e-80f9-455c-98ef-e769624a9550}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

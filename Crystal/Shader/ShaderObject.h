@@ -9,7 +9,7 @@
 #include "../Math/Vector3d.h"
 #include "ShaderUniform.h"
 #include "ShaderAttribute.h"
-#include "GL/glew.h"
+#include "glew.h"
 
 #include "ShaderUnit.h"
 

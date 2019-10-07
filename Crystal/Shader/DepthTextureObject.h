@@ -1,7 +1,7 @@
 #ifndef __CRYSTAL_SHADER_DEPTH_TEXTURE_OBJECT_H__
 #define __CRYSTAL_SHADER_DEPTH_TEXTURE_OBJECT_H__
 
-#include "GL/glew.h"
+#include "glew.h"
 #include "../Graphics/Imagef.h"
 #include "ITextureObject.h"
 

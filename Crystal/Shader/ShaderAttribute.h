@@ -3,7 +3,7 @@
 
 #include <string>
 #include <array>
-#include "GL/glew.h"
+#include "glew.h"
 #include "ShaderType.h"
 
 namespace Crystal {

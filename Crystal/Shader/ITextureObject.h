@@ -1,7 +1,7 @@
 #ifndef __CRYSTAL_SHADER_I_TEXTURE_OBJECT_H__
 #define __CRYSTAL_SHADER_I_TEXTURE_OBJECT_H__
 
-#include "GL/glew.h"
+#include "glew.h"
 
 namespace Crystal {
 	namespace Shader {

@@ -9,7 +9,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "gl/glew.h"
+#include "glew.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
