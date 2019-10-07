@@ -10,15 +10,15 @@ namespace PG.CGStudio.Object.Select
     public class SceneSelectViewModel : BindableBase, INavigationAware
     {
         public ReactiveProperty<int> Id { get; }
+            = new ReactiveProperty<int>();
 
         public ReactiveCommand PickCommand { get; }
+            = new ReactiveCommand();
 
         private PickUICtrl Picker { get; }
 
         public SceneSelectViewModel()
         {
-            Id = new ReactiveProperty<int>();
-            PickCommand = new ReactiveCommand();
             PickCommand.Subscribe(OnPickUI);
             Picker = new PickUICtrl(10, Core.SceneType.AllScene);
             Picker.Action = OnPicked;

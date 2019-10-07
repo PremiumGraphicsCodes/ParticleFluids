@@ -23,11 +23,17 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public ScaleViewModel()
         {
             this.ScaleCommand.Subscribe(OnScale);
+            this.OkCommand.Subscribe(OnOk);
         }
 
         private void OnScale()
         {
-            Canvas3d.Instance.UICtrl = new ScaleUICtrl();
+            Canvas3d.Instance.UICtrl = new ScaleUICtrl(ShapeSelectViewModel.Id.Value);
+        }
+
+        private void OnOk()
+        {
+
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
