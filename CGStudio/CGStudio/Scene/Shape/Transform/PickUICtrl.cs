@@ -35,7 +35,7 @@ namespace PG.CGStudio.UICtrl
 
             Canvas3d.Instance.Renderer.Bind();
             var command = new PG.CLI.Command(Labels.PickCommandLabel);
-            command.SetArg(Labels.PositionLabel, position.X, 1.0 - position.Y);
+            command.SetArg(Labels.PositionLabel, new Vector2d( position.X, 1.0 - position.Y) );
             command.Execute(model);
             var parentId = command.GetResult<int>(Labels.ParentIdLabel);
             var childId = command.GetResult<int>(Labels.ChildIdLabel);

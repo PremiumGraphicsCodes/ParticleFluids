@@ -1,10 +1,28 @@
 #include "FileImportCommand.h"
+#include "Public/FileImportLabel.h"
 
 #include "../IO/FileImporter.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
+
+FileImportCommand::Args::Args() :
+	filePath("FilePath", "")
+{
+	add(&filePath);
+}
+
+FileImportCommand::Results::Results() :
+	isOk("IsOk", false)
+{
+	add(&isOk);
+}
+
+std::string FileImportCommand::getName()
+{
+	return ::FileImportCommandLabel;
+}
 
 void FileImportCommand::execute(World* scene)
 {

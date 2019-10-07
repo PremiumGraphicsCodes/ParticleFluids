@@ -43,12 +43,22 @@ void CameraXYCommand::execute(World* world)
 	);
 }
 
+std::string CameraYZCommand::getName()
+{
+	return ::CameraYZCommandLabel;
+}
+
 void CameraYZCommand::execute(World* world)
 {
 	CameraFitCommand fitCommand;
 	fitCommand.execute(world);
 	auto camera = world->getRenderer()->getCamera();
 	camera->rotate(glm::radians(90.0f), 0.0);
+}
+
+std::string CameraZXCommand::getName()
+{
+	return ::CameraZXCommandLabel;
 }
 
 void CameraZXCommand::execute(World* world)

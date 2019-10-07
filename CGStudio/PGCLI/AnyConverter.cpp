@@ -23,6 +23,11 @@ std::any AnyConverter::toCpp(System::Object^ object)
 		const auto str = Converter::toCpp((System::String^)object);
 		return std::any(str);
 	}
+	else if (type == Core::Math::Vector2d::typeid) {
+		auto v = (Core::Math::Vector2d^)(object);
+		auto vv = Converter::toCpp2d(v);
+		return std::any(vv);
+	}
 	else if (type == Core::Math::Vector3d::typeid) {
 		auto v = (Core::Math::Vector3d^)(object);
 		auto vv = Converter::toCpp(v);

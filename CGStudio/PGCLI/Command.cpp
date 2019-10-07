@@ -38,41 +38,6 @@ void Command::SetArg(System::String^ name, System::Object^ value)
 	::instance.setArg(str, v);
 }
 
-void Command::SetArg(System::String^ name, int value)
-{
-	const auto& str = Converter::toCpp(name);
-	::instance.setArg(str, std::any(value));
-}
-
-void Command::SetArg(System::String^ name, double value)
-{
-	const auto& str = Converter::toCpp(name);
-	::instance.setArg(str, std::any(value));
-}
-
-void Command::SetArg(System::String^ name, double x, double y)
-{
-	const auto& str = Converter::toCpp(name);
-	::instance.setArg(str, std::any(Crystal::Math::Vector2dd(x,y)));
-}
-
-void Command::SetArg(System::String^ name, double x, double y, double z)
-{
-	const auto& str = Converter::toCpp(name);
-	::instance.setArg(str, std::any(Crystal::Math::Vector3dd(x, y, z)));
-}
-
-void Command::SetArg(System::String^ name, double x, double y, double z, double w)
-{
-	const auto& str = Converter::toCpp(name);
-	::instance.setArg(str, std::any(glm::dvec4(x, y, z, w)));
-}
-
-void Command::SetArg(System::String^ name, double matrix[])
-{
-	const auto& str = Converter::toCpp(name);
-}
-
 void Command::Execute(WorldAdapter^ objects)
 {
 	::instance.execute(objects->instance);

@@ -24,12 +24,16 @@ public:
 class CameraYZCommand : public ICommand
 {
 public:
+	static std::string getName();
+
 	void execute(Scene::World* world) override;
 };
 
 class CameraZXCommand : public ICommand
 {
 public:
+	static std::string getName();
+
 	void execute(Scene::World* world) override;
 };
 

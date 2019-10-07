@@ -15,18 +15,6 @@ public:
 
 	void SetArg(System::String^ name, System::Object^ value);
 
-	void SetArg(System::String^ name, int value);
-
-	void SetArg(System::String^ name, double value);
-
-	void SetArg(System::String^ name, double x, double y);
-
-	void SetArg(System::String^ name, double x, double y, double z);
-
-	void SetArg(System::String^ name, double x, double y, double z, double w);
-
-	void SetArg(System::String^ name, double matrix[]);
-
 	void Execute(WorldAdapter^ objects);
 	
 	generic <class T>

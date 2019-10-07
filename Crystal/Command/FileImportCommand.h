@@ -13,25 +13,23 @@ class FileImportCommand : public ICommand
 public:
 	struct Args : IArgs
 	{
-		Args() :
-			filePath("FilePath", "")
-		{}
+		Args();
 
 		Arg< std::filesystem::path > filePath;
 	};
 
 	struct Results : IResults
 	{
-		Results() :
-			isOk("IsOk", false)
-		{}
+		Results();
 
-		Arg< bool > isOk;
+		Result< bool > isOk;
 	};
 
 	FileImportCommand() :
 		ICommand(&args, &results)
 	{}
+
+	static std::string getName();
 
 	void execute(Scene::World* scene) override;
 

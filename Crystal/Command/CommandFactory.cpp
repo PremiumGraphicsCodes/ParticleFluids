@@ -23,7 +23,7 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	if (name == "Mock") {
 		return std::make_unique<MockCommand>();
 	}
-	else if (name == "FileImport") {
+	else if (name == FileImportCommand::getName()) {
 		return std::make_unique<FileImportCommand>();		
 	}
 	else if (name == "FileExport") {
@@ -44,7 +44,7 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == CameraXYCommand::getName()) {
 		return std::make_unique<CameraXYCommand>();
 	}
-	else if (name == "CameraYZ") {
+	else if (name == CameraYZCommand::getName()) {
 		return std::make_unique<CameraYZCommand>();
 	}
 	else if (name == "CameraZX") {
