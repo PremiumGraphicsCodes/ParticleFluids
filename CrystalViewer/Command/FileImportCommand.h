@@ -38,9 +38,9 @@ public:
 	void execute(Scene::World* scene) override;
 
 private:
-	bool importFile(const std::filesystem::path& filePath, Scene::IScene* parent, Scene::SceneFactory* factory);
+	bool importFile(const std::filesystem::path& filePath, Scene::World* world);
 
-	bool importFile(const std::filesystem::path& filePath, Scene::IScene* parent, Scene::SceneFactory* factory, const IO::FileFormat format);
+	bool importFile(const std::filesystem::path& filePath, Scene::World* world, const IO::FileFormat format);
 
 private:
 	Args args;

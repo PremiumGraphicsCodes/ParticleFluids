@@ -6,13 +6,14 @@
 namespace Crystal {
 	namespace Command {
 
-class PCDFileImportCommand : public ICommand
+class STLFileImportCommand : public ICommand
 {
 public:
 	struct Args : IArgs
 	{
 		Args();
 
+		Arg< bool > isBinary;
 		Arg< std::filesystem::path > filePath;
 	};
 
@@ -23,7 +24,7 @@ public:
 		Result< bool > isOk;
 	};
 
-	PCDFileImportCommand() :
+	STLFileImportCommand() :
 		ICommand(&args, &results)
 	{}
 

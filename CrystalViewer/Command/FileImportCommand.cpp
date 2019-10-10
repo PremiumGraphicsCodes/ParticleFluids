@@ -3,7 +3,7 @@
 
 #include "../../Crystal/IO/FileFormat.h"
 #include "../../Crystal/IO/OBJFileImporter.h"
-#include "../../Crystal/IO/STLFileImporter.h"
+#include "STLFileImportCommand.h"
 #include "PCDFileImportCommand.h"
 
 using namespace Crystal::IO;
@@ -29,48 +29,65 @@ std::string FileImportCommand::getName()
 
 void FileImportCommand::execute(World* scene)
 {
-	if (!importFile(args.filePath.getValue(), scene->getObjects(), scene->getObjectFactory())) {
+	if (!importFile(args.filePath.getValue(), scene)) {
 		results.isOk.value = false;
 	}
 	//scene->getObjects()
 }
 
-bool FileImportCommand::importFile(const std::filesystem::path& filePath, IScene* parent, SceneFactory* factory)
+bool FileImportCommand::importFile(const std::filesystem::path& filePath, World* world)
 {
 	const auto format = getFileFormat(filePath.extension());
-	return importFile(filePath, parent, factory, format);
+	return importFile(filePath, world, format);
 }
 
-bool FileImportCommand::importFile(const std::filesystem::path& filePath, IScene* parent, SceneFactory* factory, const FileFormat format)
+bool FileImportCommand::importFile(const std::filesystem::path& filePath, World* world, const FileFormat format)
 {
 	switch (format) {
 	case FileFormat::OBJ:
 	{
-		OBJFileImporter importer(factory);
-		return importer.importOBJWithMTL(filePath, parent);
+		//OBJFileImporter importer(factory);
+		//return importer.importOBJWithMTL(filePath, parent);
+		return false;
 	}
 	case FileFormat::MTL:
 	{
-		OBJFileImporter importer(factory);
-		return importer.importMTL(filePath, parent);
+//		OBJFileImporter importer(factory);
+//		return importer.importMTL(filePath, parent);
+		return false;
 	}
 	case FileFormat::STL_ASCII:
 	{
-		STLFileImporter importer(factory);
-		return importer.importSTLAscii(filePath, parent);
+		STLFileImportCommand command;
+		STLFileImportCommand::Args args;
+		args.filePath = this->args.filePath;
+		args.isBinary.setValue(true);
+		command.setArg("FilePath", this->args.filePath.getValue());
+		command.setArg("IsBinary", true);
+		command.execute(world);
+		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
+		return true;
 	}
 	case FileFormat::STL_BINARY:
 	{
-		STLFileImporter importer(factory);
-		return importer.importSTLBinary(filePath, parent);
+		STLFileImportCommand command;
+		STLFileImportCommand::Args args;
+		args.filePath = this->args.filePath;
+		args.isBinary.setValue(true);
+		command.setArg("FilePath", this->args.filePath.getValue());
+		command.setArg("IsBinary", true);
+		command.execute(world);
+		this->results.isOk.setValue( std::any_cast<bool>( command.getResult("IsOk") ) );
+		return true;
 	}
-	/*
 	case FileFormat::PCD:
 	{
-		PCDFileImportCommand importer(factory);
-		return importer.importPCD(filePath, parent);
+		PCDFileImportCommand command;
+		command.setArg("FilePath", this->args.filePath.getValue());
+		command.execute(world);
+		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
+		return true;
 	}
-	*/
 	default:
 		assert(false);
 	}

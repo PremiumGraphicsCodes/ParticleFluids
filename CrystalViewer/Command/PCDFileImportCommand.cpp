@@ -7,6 +7,14 @@ using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+PCDFileImportCommand::Args::Args() :
+	filePath("FilePath", "")
+{}
+
+PCDFileImportCommand::Results::Results() :
+	isOk("IsOk", false)
+{}
+
 std::string PCDFileImportCommand::getName()
 {
 	return "PCDFileImport";

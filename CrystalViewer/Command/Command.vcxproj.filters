@@ -55,6 +55,9 @@
     <ClInclude Include="PCDFileImportCommand.h">
       <Filter>File\PCD</Filter>
     </ClInclude>
+    <ClInclude Include="STLFileImportCommand.h">
+      <Filter>File\STL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -109,6 +112,9 @@
     <ClCompile Include="PCDFileImportCommand.cpp">
       <Filter>File\PCD</Filter>
     </ClCompile>
+    <ClCompile Include="STLFileImportCommand.cpp">
+      <Filter>File\STL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -140,6 +146,9 @@
     </Filter>
     <Filter Include="File\PCD">
       <UniqueIdentifier>{dc691723-56be-4a0f-a3e0-4a490be68a6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File\STL">
+      <UniqueIdentifier>{cb222483-923f-4320-9e11-fddafba396ba}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
