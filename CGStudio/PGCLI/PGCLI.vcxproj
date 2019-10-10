@@ -165,7 +165,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Crystal\Command\Command.vcxproj">
+    <ProjectReference Include="..\..\CrystalViewer\Command\Command.vcxproj">
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
     </ProjectReference>
     <ProjectReference Include="..\PGCore\PGCore.csproj">

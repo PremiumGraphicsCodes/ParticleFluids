@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Command.h"
 
-#include "../../Crystal/Command/Command.h"
-#include "../../Crystal/Command/GetCommand.h"
-#include "../../Crystal/Command/SetCommand.h"
+#include "../../CrystalViewer/Command/Command.h"
+#include "../../CrystalViewer/Command/GetCommand.h"
+#include "../../CrystalViewer/Command/SetCommand.h"
 
 #include "../../Crystal/Scene/World.h"
 #include "Converter.h"

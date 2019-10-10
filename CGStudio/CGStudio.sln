@@ -44,7 +44,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\Crystal\Scene\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGCLITest", "PGCLITest\PGCLITest.csproj", "{E4087E4C-A059-414E-A0A2-5D7DE0A96988}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Command", "..\Crystal\Command\Command.vcxproj", "{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Command", "..\CrystalViewer\Command\Command.vcxproj", "{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGConstCSFileGenerator", "PGConstCSFileGenerator\PGConstCSFileGenerator.csproj", "{D97E078F-CDEB-4393-96AD-5F37387EB7F2}"
 EndProject
