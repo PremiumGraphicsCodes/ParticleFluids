@@ -2,7 +2,7 @@
 
 #include "IView.h"
 
-#include "../Math/Matrix4d.h"
+#include "../../Crystal/Math/Matrix4d.h"
 #include "Double4View.h"
 
 namespace Crystal {

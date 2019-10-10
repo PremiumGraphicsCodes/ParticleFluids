@@ -1,6 +1,6 @@
 #include "SetCommand.h"
 
-#include "../Scene/ParticleAttribute.h"
+#include "../../Crystal/Scene/ParticleAttribute.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

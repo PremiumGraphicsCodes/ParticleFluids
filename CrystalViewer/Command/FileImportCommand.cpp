@@ -1,7 +1,7 @@
 #include "FileImportCommand.h"
 #include "Public/FileImportLabel.h"
 
-#include "../IO/FileImporter.h"
+#include "../../Crystal/IO/FileImporter.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;

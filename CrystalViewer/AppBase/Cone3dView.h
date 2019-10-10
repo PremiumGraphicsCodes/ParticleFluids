@@ -2,8 +2,8 @@
 
 #include "IView.h"
 
-#include "../Math/Vector3d.h"
-#include "../Math/Cone3d.h"
+#include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Math/Cone3d.h"
 
 #include "Vector3dView.h"
 #include "DoubleView.h"

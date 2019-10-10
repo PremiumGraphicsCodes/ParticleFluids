@@ -5,8 +5,8 @@
 #include "TextureView.h"
 #include "IntView.h"
 #include "StringView.h"
-#include "../Scene/TextureScene.h"
-#include "../Scene/World.h"
+#include "../../Crystal/Scene/TextureScene.h"
+#include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
 
 namespace Crystal {

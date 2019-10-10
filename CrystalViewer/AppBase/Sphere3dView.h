@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IView.h"
-#include "../Math/Sphere3d.h"
+#include "../../Crystal/Math/Sphere3d.h"
 #include "Vector3dView.h"
 #include "DoubleView.h"
 

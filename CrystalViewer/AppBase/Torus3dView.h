@@ -2,8 +2,8 @@
 
 #include "IWindow.h"
 
-#include "../Math/Vector3d.h"
-#include "../Math/Torus3d.h"
+#include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Math/Torus3d.h"
 
 #include "Vector3dView.h"
 #include "DoubleView.h"

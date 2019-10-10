@@ -1,6 +1,6 @@
 #include "MaterialEditView.h"
 
-#include "../Graphics/Material.h"
+#include "../../Crystal/Graphics/Material.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;

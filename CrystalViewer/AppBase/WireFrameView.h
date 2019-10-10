@@ -3,7 +3,7 @@
 #include "IWindow.h"
 
 #include "IntView.h"
-#include "../Scene/WireFrameScene.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
 
 namespace Crystal {
 	namespace UI {

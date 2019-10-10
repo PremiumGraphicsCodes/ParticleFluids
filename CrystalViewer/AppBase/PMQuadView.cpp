@@ -1,10 +1,10 @@
 #include "PMQuadView.h"
 
-#include "../Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/Scene/PolygonMeshBuilder.h"
 
-#include "../Scene/PolygonMeshScene.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "../Scene/World.h"
+#include "../../Crystal/Scene/World.h"
 
 #include "../Command/CameraFitCommand.h"
 

@@ -1,6 +1,6 @@
 #include "PSConeView.h"
 
-#include "../Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include <random>
 

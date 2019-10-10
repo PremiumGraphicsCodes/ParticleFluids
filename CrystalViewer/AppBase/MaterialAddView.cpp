@@ -1,7 +1,7 @@
 #include "MaterialAddView.h"
 
-#include "../Graphics/Material.h"
-#include "../Scene/World.h"
+#include "../../Crystal/Graphics/Material.h"
+#include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
 
 using namespace Crystal::Graphics;

@@ -5,8 +5,8 @@
 #include "IntView.h"
 #include "PSAttributeView.h"
 #include "Button.h"
-#include "../Scene/ParticleSystemScene.h"
-#include "../Scene/World.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
 
 namespace Crystal {

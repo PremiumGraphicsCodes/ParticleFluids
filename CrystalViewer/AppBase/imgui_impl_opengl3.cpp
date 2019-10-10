@@ -94,9 +94,9 @@
 //#include "GL/glew.h"
 //#include "GLFW\glfw3.h"
 //#include "GLFW\glfw3native.h"
-#include "../ThirdParty/glew-2.1.0/include/GL/glew.h"
-#include "../ThirdParty/glfw-3.3/include/GLFW/glfw3.h"
-#include "../ThirdParty/glfw-3.3/include/GLFW/glfw3native.h"
+#include "../../Crystal/ThirdParty/glew-2.1.0/include/GL/glew.h"
+#include "../../Crystal/ThirdParty/glfw-3.3/include/GLFW/glfw3.h"
+#include "../../Crystal/ThirdParty/glfw-3.3/include/GLFW/glfw3native.h"
 
 // OpenGL Data
 static char         g_GlslVersionString[32] = "";

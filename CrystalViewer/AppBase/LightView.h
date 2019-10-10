@@ -6,7 +6,7 @@
 #include "Float4View.h"
 #include "ColorRGBAView.h"
 #include "StringView.h"
-#include "../Graphics/PointLight.h"
+#include "../../Crystal/Graphics/PointLight.h"
 
 namespace Crystal {
 	namespace UI {

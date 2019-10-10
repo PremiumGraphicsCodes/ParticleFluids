@@ -1,5 +1,5 @@
 #include "RotateView.h"
-#include "../Scene/IShapeScene.h"
+#include "../../Crystal/Scene/IShapeScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

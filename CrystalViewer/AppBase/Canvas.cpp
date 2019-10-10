@@ -1,10 +1,10 @@
 #include "Canvas.h"
-#include "../Graphics/PerspectiveCamera.h"
+#include "../../Crystal/Graphics/PerspectiveCamera.h"
 #include "CameraUICtrl.h"
-#include "../Math/Box3d.h"
-#include "../Scene/Renderer.h"
-#include "../Scene/SceneViewModel.h"
-#include "../Scene/World.h"
+#include "../../Crystal/Math/Box3d.h"
+#include "../../Crystal/Scene/Renderer.h"
+#include "../../Crystal/Scene/SceneViewModel.h"
+#include "../../Crystal/Scene/World.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

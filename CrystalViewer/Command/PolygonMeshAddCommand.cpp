@@ -1,9 +1,9 @@
 #include "PolygonMeshAddCommand.h"
 
-#include "../Scene/PolygonMeshScene.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "../Scene/PolygonMesh.h"
-#include "../Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/Scene/PolygonMesh.h"
+#include "../../Crystal/Scene/PolygonMeshBuilder.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;

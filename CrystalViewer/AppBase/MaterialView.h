@@ -8,7 +8,7 @@
 #include "Float4View.h"
 #include "StringView.h"
 
-#include "../Graphics/Material.h"
+#include "../../Crystal/Graphics/Material.h"
 
 namespace Crystal {
 	namespace UI {

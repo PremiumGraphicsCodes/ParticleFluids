@@ -1,8 +1,8 @@
 #include "WFBoxView.h"
 
-#include "../Scene/WireFrameBuilder.h"
-#include "../Scene/World.h"
-#include "../Scene/WireFrameScene.h"
+#include "../../Crystal/Scene/WireFrameBuilder.h"
+#include "../../Crystal/Scene/World.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
 #include "Canvas.h"
 
 using namespace Crystal::Math;

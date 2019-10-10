@@ -1,6 +1,6 @@
 #include "LightAddView.h"
 
-#include "../Scene/World.h"
+#include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
 #include "../Command/CameraFitCommand.h"
 

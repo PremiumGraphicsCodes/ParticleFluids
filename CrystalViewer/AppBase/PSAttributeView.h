@@ -6,7 +6,7 @@
 #include "StringView.h"
 #include "ColorRGBAView.h"
 
-#include "../Scene/ParticleAttribute.h"
+#include "../../Crystal/Scene/ParticleAttribute.h"
 
 namespace Crystal {
 	namespace UI {

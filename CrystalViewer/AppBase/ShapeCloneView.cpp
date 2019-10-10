@@ -1,6 +1,6 @@
 #include "ShapeCloneView.h"
 
-#include "../Scene/IShapeScene.h"
+#include "../../Crystal/Scene/IShapeScene.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

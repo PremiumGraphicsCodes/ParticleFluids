@@ -2,7 +2,7 @@
 
 #include "IView.h"
 
-#include "../Math/Cylinder3d.h"
+#include "../../Crystal/Math/Cylinder3d.h"
 
 #include "Vector3dView.h"
 #include "DoubleView.h"

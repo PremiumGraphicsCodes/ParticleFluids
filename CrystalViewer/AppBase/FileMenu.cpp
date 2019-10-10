@@ -4,8 +4,8 @@
 #include "Canvas.h"
 #include "FileOpenView.h"
 #include "FileSaveView.h"
-#include "../Scene/World.h"
-#include "../IO/FileImporter.h"
+#include "../../Crystal/Scene/World.h"
+#include "../../Crystal/IO/FileImporter.h"
 #include "../Command/CameraFitCommand.h"
 
 using namespace Crystal::UI;

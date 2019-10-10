@@ -13,7 +13,7 @@
 
 #include "../AppBase/Canvas.h"
 
-#include "../Scene/World.h"
+#include "../../Crystal/Scene/World.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

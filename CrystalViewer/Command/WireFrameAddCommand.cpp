@@ -1,7 +1,7 @@
 #include "WireFrameAddCommand.h"
 
-#include "../Scene/WireFrameAttribute.h"
-#include "../Scene/WireFrameScene.h"
+#include "../../Crystal/Scene/WireFrameAttribute.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

@@ -1,6 +1,6 @@
 #include "FaceView.h"
 
-#include "../Scene/Face.h"
+#include "../../Crystal/Scene/Face.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IPanel.h"
-#include "../Scene/IRenderer.h"
+#include "../../Crystal/Scene/IRenderer.h"
 
 namespace Crystal {
 	namespace UI {

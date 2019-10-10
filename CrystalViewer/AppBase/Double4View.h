@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 
-#include "../Math/Vector4d.h"
+#include "../../Crystal/Math/Vector4d.h"
 #include <array>
 
 namespace Crystal {

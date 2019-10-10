@@ -1,6 +1,6 @@
 #include "ParticleSystemView.h"
 
-#include "../Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

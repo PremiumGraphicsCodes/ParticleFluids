@@ -2,9 +2,9 @@
 #include "PickUICtrl.h"
 #include "CameraUICtrl.h"
 
-#include "../Scene/WireFrameBuilder.h"
-#include "../Scene/IShapeScene.h"
-#include "../Scene/WireFrameScene.h"
+#include "../../Crystal/Scene/WireFrameBuilder.h"
+#include "../../Crystal/Scene/IShapeScene.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
 
 #include "imgui.h"
 

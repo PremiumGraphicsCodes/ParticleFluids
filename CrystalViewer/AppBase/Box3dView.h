@@ -4,7 +4,7 @@
 
 #include "Vector3dView.h"
 
-#include "../Math/Box3d.h"
+#include "../../Crystal/Math/Box3d.h"
 
 namespace Crystal {
 	namespace UI {

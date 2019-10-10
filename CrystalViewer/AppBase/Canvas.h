@@ -1,14 +1,14 @@
 #ifndef __CRYSTAL_UI_I_CANVAS_H__
 #define __CRYSTAL_UI_I_CANVAS_H__
 
-#include "../Math/Vector2d.h"
-#include "../Math/Box3d.h"
-#include "../Graphics/ICamera.h"
+#include "../../Crystal/Math/Vector2d.h"
+#include "../../Crystal/Math/Box3d.h"
+#include "../../Crystal/Graphics/ICamera.h"
 #include <memory>
 #include <list>
 
 #include "IUICtrl.h"
-#include "../Scene/Renderer.h"
+#include "../../Crystal/Scene/Renderer.h"
 
 namespace Crystal {
 	namespace Scene {

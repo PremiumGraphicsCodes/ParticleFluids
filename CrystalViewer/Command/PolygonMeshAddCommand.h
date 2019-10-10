@@ -1,10 +1,10 @@
 #pragma once
 
 #include "ICommand.h"
-#include "../Math/Vector3d.h"
-#include "../Graphics/ColorRGBA.h"
-#include "../Scene/Vertex.h"
-#include "../Scene/Face.h"
+#include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Graphics/ColorRGBA.h"
+#include "../../Crystal/Scene/Vertex.h"
+#include "../../Crystal/Scene/Face.h"
 #include <vector>
 
 namespace Crystal {

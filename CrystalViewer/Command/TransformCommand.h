@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ICommand.h"
-#include "../Math/Matrix4d.h"
+#include "../../Crystal/Math/Matrix4d.h"
 
 namespace Crystal {
 	namespace Command {

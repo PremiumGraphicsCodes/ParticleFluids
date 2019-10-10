@@ -1,2 +1,2 @@
 #pragma once
-#include "../ThirdParty/tinyfiledialogs/tinyfiledialogs.h"
+#include "../../Crystal/ThirdParty/tinyfiledialogs/tinyfiledialogs.h"

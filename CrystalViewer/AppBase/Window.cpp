@@ -1,6 +1,6 @@
 #include "Window.h"
 
-#include "../Shader/glew.h"
+#include "../../Crystal/Shader/glew.h"
 
 #include "glfw3.h"
 //#include "GLFW\glfw3native.h"
@@ -9,9 +9,9 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "Canvas.h"
-#include "../Scene/World.h"
+#include "../../Crystal/Scene/World.h"
 
-#include "../Graphics/PerspectiveCamera.h"
+#include "../../Crystal/Graphics/PerspectiveCamera.h"
 #include "CameraUICtrl.h"
 #include <chrono>
 

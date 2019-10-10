@@ -2,7 +2,7 @@
 
 #include <string>
 #include <any>
-#include "../Scene/World.h"
+#include "../../Crystal/Scene/World.h"
 
 namespace Crystal {
 	namespace Command {

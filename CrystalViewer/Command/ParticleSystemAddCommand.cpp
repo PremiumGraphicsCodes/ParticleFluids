@@ -1,7 +1,7 @@
 #include "ParticleSystemAddCommand.h"
 
-#include "../Scene/ParticleAttribute.h"
-#include "../Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/ParticleAttribute.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

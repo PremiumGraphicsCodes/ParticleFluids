@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ICommand.h"
-#include "../Math/Vector3d.h"
-#include "../Graphics/ColorRGBA.h"
+#include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Graphics/ColorRGBA.h"
 #include <vector>
 
 namespace Crystal {

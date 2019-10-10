@@ -4,8 +4,8 @@
 #include "WireFrameView.h"
 #include "IntView.h"
 #include "StringView.h"
-#include "../Scene/WireFrameScene.h"
-#include "../Scene/World.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
+#include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
 
 namespace Crystal {

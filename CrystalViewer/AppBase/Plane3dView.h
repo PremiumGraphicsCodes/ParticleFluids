@@ -3,7 +3,7 @@
 #include "IView.h"
 
 #include "Vector3dView.h"
-#include "../Math/Plane3d.h"
+#include "../../Crystal/Math/Plane3d.h"
 
 namespace Crystal {
 	namespace UI {

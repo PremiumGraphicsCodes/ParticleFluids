@@ -1,9 +1,9 @@
 #include <memory>
-#include "../Graphics/ICamera.h"
+#include "../../Crystal/Graphics/ICamera.h"
 #include "Canvas.h"
 #include "IUICtrl.h"
 
-#include "../Scene/SceneType.h"
+#include "../../Crystal/Scene/SceneType.h"
 
 #include <functional>
 

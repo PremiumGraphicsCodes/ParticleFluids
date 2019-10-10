@@ -1,9 +1,9 @@
 #include "TextureAddView.h"
 
 #include "tinyfiledialogs.h"
-#include "../Scene/World.h"
+#include "../../Crystal/Scene/World.h"
 
-#include "../IO/ImageFileReader.h"
+#include "../../Crystal/IO/ImageFileReader.h"
 
 #include "imgui.h"
 
