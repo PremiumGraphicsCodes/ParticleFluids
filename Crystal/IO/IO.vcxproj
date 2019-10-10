@@ -39,7 +39,6 @@
     <ClInclude Include="STLBinaryFileReader.h" />
     <ClInclude Include="STLBinaryFileWriter.h" />
     <ClInclude Include="STLFile.h" />
-    <ClInclude Include="STLFileExporter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageFileReader.cpp" />
@@ -56,7 +55,6 @@
     <ClCompile Include="STLASCIIFileWriter.cpp" />
     <ClCompile Include="STLBinaryFileReader.cpp" />
     <ClCompile Include="STLBinaryFileWriter.cpp" />
-    <ClCompile Include="STLFileExporter.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{198160CC-5ED1-499D-AD45-90DBAC4852F8}</ProjectGuid>

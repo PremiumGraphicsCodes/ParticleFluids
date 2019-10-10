@@ -1,16 +1,27 @@
-#include "STLFileExporter.h"
+#include "STLFileExportCommand.h"
 
-#include "../IO/STLASCIIFileWriter.h"
-#include "../IO/STLBinaryFileWriter.h"
+#include "../../Crystal/IO/STLASCIIFileWriter.h"
+#include "../../Crystal/IO/STLBinaryFileWriter.h"
 
-#include "../Scene/PolygonMeshScene.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
+using namespace Crystal::Command;
 
-bool STLFileExporter::exportSTLAscii(const std::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
+std::string STLFileExportCommand::getName()
 {
-	//std::vector<Shape::TriangleFace> fs;
+	return "STLFileExport";
+}
+
+void STLFileExportCommand::execute(World* scene)
+{
+
+}
+
+void STLFileExportCommand::exportAscii(World* scene)
+{
+	//std::vector<Scene::TriangleFace> fs;
 	//const auto& positions = polygonMesh.getShape()->getPositions();
 	//const auto& faces = polygonMesh.getShape()->getFaces();
 	//for (const auto& f : faces) {
@@ -32,10 +43,9 @@ bool STLFileExporter::exportSTLAscii(const std::filesystem::path& filePath, Poly
 	//STLFile stl;
 	//stl.faces = mesh.getFaces();
 	//return writer.write(filePath, stl);
-	return false;
 }
 
-bool STLFileExporter::exportSTLBinary(const std::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
+void STLFileExportCommand::exportBinary(World* world)
 {
 	//std::vector<Shape::TriangleFace> fs;
 	//const auto& positions = polygonMesh.getShape()->getPositions();
@@ -59,5 +69,4 @@ bool STLFileExporter::exportSTLBinary(const std::filesystem::path& filePath, Pol
 	//stl.faceCount = fs.size();
 	//STLBinaryFileWriter writer;
 	//return writer.write(filePath, stl);
-	return false;
 }

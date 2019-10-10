@@ -58,6 +58,9 @@
     <ClInclude Include="STLFileImportCommand.h">
       <Filter>File\STL</Filter>
     </ClInclude>
+    <ClInclude Include="STLFileExportCommand.h">
+      <Filter>File\STL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -113,6 +116,9 @@
       <Filter>File\PCD</Filter>
     </ClCompile>
     <ClCompile Include="STLFileImportCommand.cpp">
+      <Filter>File\STL</Filter>
+    </ClCompile>
+    <ClCompile Include="STLFileExportCommand.cpp">
       <Filter>File\STL</Filter>
     </ClCompile>
   </ItemGroup>
