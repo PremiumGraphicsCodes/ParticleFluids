@@ -64,6 +64,9 @@
     <ClInclude Include="OBJFileImportCommand.h">
       <Filter>File\OBJ</Filter>
     </ClInclude>
+    <ClInclude Include="OBJFileExportCommand.h">
+      <Filter>File\OBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -125,6 +128,9 @@
       <Filter>File\STL</Filter>
     </ClCompile>
     <ClCompile Include="OBJFileImportCommand.cpp">
+      <Filter>File\OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFileExportCommand.cpp">
       <Filter>File\OBJ</Filter>
     </ClCompile>
   </ItemGroup>

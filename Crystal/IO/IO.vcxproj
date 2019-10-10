@@ -27,7 +27,6 @@
     <ClInclude Include="MTLFileReader.h" />
     <ClInclude Include="MTLFileWriter.h" />
     <ClInclude Include="OBJFile.h" />
-    <ClInclude Include="OBJFileExporter.h" />
     <ClInclude Include="OBJFileReader.h" />
     <ClInclude Include="OBJFileWriter.h" />
     <ClInclude Include="PCDFile.h" />
@@ -44,7 +43,6 @@
     <ClCompile Include="ImageFileWriter.cpp" />
     <ClCompile Include="MTLFileReader.cpp" />
     <ClCompile Include="MTLFileWriter.cpp" />
-    <ClCompile Include="OBJFileExporter.cpp" />
     <ClCompile Include="OBJFileReader.cpp" />
     <ClCompile Include="OBJFileWriter.cpp" />
     <ClCompile Include="PCDFileReader.cpp" />

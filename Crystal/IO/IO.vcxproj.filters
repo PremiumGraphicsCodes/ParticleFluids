@@ -50,9 +50,6 @@
     <ClInclude Include="MTLFile.h">
       <Filter>OBJ\MTL</Filter>
     </ClInclude>
-    <ClInclude Include="OBJFileExporter.h">
-      <Filter>OBJ</Filter>
-    </ClInclude>
     <ClInclude Include="FileFormat.h" />
   </ItemGroup>
   <ItemGroup>
@@ -91,9 +88,6 @@
     </ClCompile>
     <ClCompile Include="MTLFileReader.cpp">
       <Filter>OBJ\MTL</Filter>
-    </ClCompile>
-    <ClCompile Include="OBJFileExporter.cpp">
-      <Filter>OBJ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

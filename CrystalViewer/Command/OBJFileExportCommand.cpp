@@ -1,14 +1,25 @@
-#include "OBJFileExporter.h"
+#include "OBJFileExportCommand.h"
 
-#include "../IO/OBJFileWriter.h"
-#include "../IO/MTLFileWriter.h"
+#include "../../Crystal/IO/OBJFileWriter.h"
+#include "../../Crystal/IO/MTLFileWriter.h"
 
-#include "../Scene/PolygonMeshScene.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::IO;
+using namespace Crystal::Command;
 
-bool OBJFileExporter::exportOBJ(const std::filesystem::path& filePath, PolygonMeshScene& polygon)
+std::string OBJFileExportCommand::getName()
+{
+	return "OBJFileExport";
+}
+
+void OBJFileExportCommand::execute(World* scene)
+{
+	;
+}
+
+bool OBJFileExportCommand::exportOBJ(const std::filesystem::path& filePath, PolygonMeshScene& polygon)
 {
 	OBJFile obj;
 	obj.groups.push_back(OBJGroup());
@@ -44,7 +55,7 @@ bool OBJFileExporter::exportOBJ(const std::filesystem::path& filePath, PolygonMe
 	return writer.write(filePath, obj);
 }
 
-bool OBJFileExporter::exportMTL(const std::filesystem::path& filePath, PolygonMeshScene& appearances)
+bool OBJFileExportCommand::exportMTL(const std::filesystem::path& filePath, PolygonMeshScene& appearances)
 {
 	/*
 	MTLFileWriter writer;
