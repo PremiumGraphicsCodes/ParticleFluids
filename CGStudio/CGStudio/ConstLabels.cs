@@ -6,6 +6,10 @@ namespace PG {
 		public const string CameraZXCommandLabel = "CameraZX";
 	}
 
+	public class FileImportLabel{
+		public const string FileImportCommandLabel = "FileImport";
+	}
+
 	public class PickLabels{
 		public const string PickCommandLabel = "Pick";
 		public const string PositionLabel = "Position";
