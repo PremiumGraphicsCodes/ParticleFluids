@@ -1,5 +1,7 @@
 #include "CameraRotateCommand.h"
 
+#include "Public/CameraLabels.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Command;
 
@@ -12,6 +14,12 @@ CameraRotateCommand::Args::Args() :
 	add(&ry);
 	add(&rz);
 }
+
+std::string CameraRotateCommand::getName()
+{
+	return ::CameraRotateCommandLabel;
+}
+
 
 void CameraRotateCommand::execute(Crystal::Scene::World* scene)
 {

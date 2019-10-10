@@ -5,4 +5,7 @@ namespace {
 	PublicLabel CameraXYCommandLabel = "CameraXY";
 	PublicLabel CameraYZCommandLabel = "CameraYZ";
 	PublicLabel CameraZXCommandLabel = "CameraZX";
+	PublicLabel CameraRotateCommandLabel = "CameraRotate";
+	PublicLabel CameraTranslateCommandLabel = "CameraTranslate";
+	PublicLabel CameraZoomCommandLabel = "CameraZoom";
 }

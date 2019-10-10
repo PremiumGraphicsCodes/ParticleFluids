@@ -3,7 +3,7 @@
 
 using namespace Crystal::IO;
 
-bool MTLFileWriter::write(const std::experimental::filesystem::path& filePath, const MTLFile& mtl)
+bool MTLFileWriter::write(const std::filesystem::path& filePath, const MTLFile& mtl)
 {
 	std::ofstream stream(filePath);
 	if (!stream.is_open()) {

@@ -9,7 +9,7 @@ namespace Crystal {
 class OBJFileWriter
 {
 public:
-	bool write(const std::experimental::filesystem::path& filePath, const OBJFile& obj);
+	bool write(const std::filesystem::path& filePath, const OBJFile& obj);
 
 	bool write(std::ostream& stream, const OBJFile& obj);
 

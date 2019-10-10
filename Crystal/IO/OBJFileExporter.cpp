@@ -8,7 +8,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::IO;
 
-bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygon)
+bool OBJFileExporter::exportOBJ(const std::filesystem::path& filePath, PolygonMeshScene& polygon)
 {
 	OBJFile obj;
 	obj.groups.push_back(OBJGroup());
@@ -44,7 +44,7 @@ bool OBJFileExporter::exportOBJ(const std::experimental::filesystem::path& fileP
 	return writer.write(filePath, obj);
 }
 
-bool OBJFileExporter::exportMTL(const std::experimental::filesystem::path& filePath, PolygonMeshScene& appearances)
+bool OBJFileExporter::exportMTL(const std::filesystem::path& filePath, PolygonMeshScene& appearances)
 {
 	/*
 	MTLFileWriter writer;

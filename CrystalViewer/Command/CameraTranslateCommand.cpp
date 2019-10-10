@@ -1,4 +1,5 @@
 #include "CameraTranslateCommand.h"
+#include "Public/CameraLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -8,6 +9,11 @@ CameraTranslateCommand::Args::Args() :
 	translate("Translate", Vector3dd())
 {
 	add(&translate);
+}
+
+std::string CameraTranslateCommand::getName()
+{
+	return ::CameraTranslateCommandLabel;
 }
 
 void CameraTranslateCommand::execute(World* scene)

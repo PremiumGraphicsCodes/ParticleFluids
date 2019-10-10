@@ -9,7 +9,7 @@ namespace Crystal {
 class STLASCIIFileWriter
 {
 public:
-	bool write(const std::experimental::filesystem::path& filePath, const STLFile& stl);
+	bool write(const std::filesystem::path& filePath, const STLFile& stl);
 
 	bool write(std::ostream& stream, const STLFile& stl);
 

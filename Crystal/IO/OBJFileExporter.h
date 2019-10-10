@@ -1,6 +1,6 @@
 #pragma once
 
-#include <experimental/filesystem>
+#include <filesystem>
 
 namespace Crystal {
 	namespace Scene {
@@ -11,9 +11,9 @@ namespace Crystal {
 class OBJFileExporter
 {
 public:
-	bool exportOBJ(const std::experimental::filesystem::path& filePath, Scene::PolygonMeshScene& objects);
+	bool exportOBJ(const std::filesystem::path& filePath, Scene::PolygonMeshScene& objects);
 
-	bool exportMTL(const std::experimental::filesystem::path& filePath, Scene::PolygonMeshScene& objects);
+	bool exportMTL(const std::filesystem::path& filePath, Scene::PolygonMeshScene& objects);
 };
 
 	}

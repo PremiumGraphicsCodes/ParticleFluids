@@ -11,13 +11,13 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 FileImportCommand::Args::Args() :
-	filePath("FilePath", "")
+	filePath(::FilePathLabel, "")
 {
 	add(&filePath);
 }
 
 FileImportCommand::Results::Results() :
-	isOk("IsOk", false)
+	isOk(::IsOkLabel, false)
 {
 	add(&isOk);
 }

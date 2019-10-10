@@ -17,7 +17,7 @@ public:
 	STLBinaryFileReader()
 	{}
 
-	bool read(const std::experimental::filesystem::path& filePath);
+	bool read(const std::filesystem::path& filePath);
 
 	bool read(std::istream& stream);
 

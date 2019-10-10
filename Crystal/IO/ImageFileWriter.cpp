@@ -16,7 +16,7 @@ bool ImageFileWriter::write(const std::experimental::filesystem::path& filePath,
 }
 */
 
-bool ImageFileWriter::write(const std::experimental::filesystem::path& filePath, const Image& image, const ImageFileWriter::ImageFileFormat format)
+bool ImageFileWriter::write(const std::filesystem::path& filePath, const Image& image, const ImageFileWriter::ImageFileFormat format)
 {
 	const auto& filename = filePath.filename().string();
 

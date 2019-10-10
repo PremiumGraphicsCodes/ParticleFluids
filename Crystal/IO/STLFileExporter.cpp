@@ -8,7 +8,7 @@
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
 
-bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
+bool STLFileExporter::exportSTLAscii(const std::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
 {
 	//std::vector<Shape::TriangleFace> fs;
 	//const auto& positions = polygonMesh.getShape()->getPositions();
@@ -35,7 +35,7 @@ bool STLFileExporter::exportSTLAscii(const std::experimental::filesystem::path& 
 	return false;
 }
 
-bool STLFileExporter::exportSTLBinary(const std::experimental::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
+bool STLFileExporter::exportSTLBinary(const std::filesystem::path& filePath, PolygonMeshScene& polygonMesh)
 {
 	//std::vector<Shape::TriangleFace> fs;
 	//const auto& positions = polygonMesh.getShape()->getPositions();

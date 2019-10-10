@@ -1,6 +1,6 @@
 #pragma once
 
-#include <experimental/filesystem>
+#include <filesystem>
 
 namespace Crystal {
 	namespace Scene {
@@ -9,9 +9,9 @@ namespace Crystal {
 class STLFileExporter
 {
 public:
-	bool exportSTLAscii(const std::experimental::filesystem::path& filePath, PolygonMeshScene& objects);
+	bool exportSTLAscii(const std::filesystem::path& filePath, PolygonMeshScene& objects);
 
-	bool exportSTLBinary(const std::experimental::filesystem::path& filePath, PolygonMeshScene& objects);
+	bool exportSTLBinary(const std::filesystem::path& filePath, PolygonMeshScene& objects);
 };
 
 	}

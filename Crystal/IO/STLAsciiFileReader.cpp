@@ -7,7 +7,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::IO;
 
-bool STLASCIIFileReader::read(const std::experimental::filesystem::path& filePath)
+bool STLASCIIFileReader::read(const std::filesystem::path& filePath)
 {
 	std::ifstream stream(filePath);
 	if (!stream.is_open()) {

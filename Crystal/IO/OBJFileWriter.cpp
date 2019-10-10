@@ -5,7 +5,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::IO;
 
-bool OBJFileWriter::write(const std::experimental::filesystem::path& filename, const OBJFile& obj)
+bool OBJFileWriter::write(const std::filesystem::path& filename, const OBJFile& obj)
 {
 	std::ofstream stream(filename);
 	if (!stream.is_open()) {

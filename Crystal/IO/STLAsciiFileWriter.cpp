@@ -3,7 +3,7 @@
 
 using namespace Crystal::IO;
 
-bool STLASCIIFileWriter::write(const std::experimental::filesystem::path& filePath, const STLFile& stl)
+bool STLASCIIFileWriter::write(const std::filesystem::path& filePath, const STLFile& stl)
 {
 	std::ofstream stream(filePath);
 	if (!stream.is_open()) {
