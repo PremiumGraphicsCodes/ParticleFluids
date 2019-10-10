@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Sphere3d : ISurface, IVolume
+    public class Sphere3d : ISurface3d, IVolume3d
     {
         private double radius;
         private Vector3d center;
@@ -23,6 +23,17 @@
             this.center = center;
         }
 
+        public Vector3d GetPosition(double u, double v)
+        {
+            var theta = u * System.Math.PI * 2.0;
+            var phi = v * System.Math.PI;
+
+            var x = radius * System.Math.Sin(theta) * System.Math.Cos(phi);
+            var y = radius * System.Math.Sin(theta) * System.Math.Sin(phi);
+            var z = radius * System.Math.Cos(theta);
+            return new Vector3d(x, y, z);
+        }
+
         public Vector3d GetPosition(double r, double u, double v)
         {
             var theta = u * System.Math.PI * 2.0;
@@ -38,17 +49,6 @@
         {
             var vv = GetPosition(1.0, u, v) - Center;
             return vv.Normalized;
-        }
-
-        public Vector3d GetPosition(double u, double v)
-        {
-            var theta = u * System.Math.PI * 2.0;
-            var phi = v * System.Math.PI;
-
-            var x = radius * System.Math.Sin(theta) * System.Math.Cos(phi);
-            var y = radius * System.Math.Sin(theta) * System.Math.Sin(phi);
-            var z = radius * System.Math.Cos(theta);
-            return new Vector3d(x, y, z);
         }
     }
 }

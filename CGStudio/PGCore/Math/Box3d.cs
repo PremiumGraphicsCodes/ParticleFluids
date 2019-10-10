@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Box3d
+    public class Box3d : IVolume3d
     {
         private Vector3d min;
         private Vector3d max;
@@ -19,6 +19,12 @@
         {
             this.min = new Vector3d(0, 0, 0);
             this.max = new Vector3d(1, 1, 1);
+        }
+
+        public Box3d(Vector3d v)
+        {
+            this.min = v.Clone();
+            this.max = v.Clone();
         }
 
         public Box3d(Vector3d v1, Vector3d v2)

@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Torus3d
+    public class Torus3d : ISurface3d
     {
         public double BigRadius { get; set; }
         public double SmallRadius { get; set; }

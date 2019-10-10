@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Line3d : ICurve
+    public class Line3d : ICurve3d
     {
         private Vector3d start;
         private Vector3d end;

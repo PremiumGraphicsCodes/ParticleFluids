@@ -14,16 +14,45 @@ namespace PG.Core.Shape
             this.edges = new List<Line3d>();
         }
 
-        public void Build(Box3d box)
+        public void Build(ISurface3d surface, int udiv, int vdiv)
         {
-            vertices.Add( box.GetPosition(0.0, 0.0, 0.0) );
-            vertices.Add( box.GetPosition(1.0, 0.0, 0.0) );
-            vertices.Add( box.GetPosition(1.0, 1.0, 0.0) );
-            vertices.Add( box.GetPosition(0.0, 1.0, 0.0) );
-            vertices.Add( box.GetPosition(0.0, 0.0, 1.0) );
-            vertices.Add( box.GetPosition(1.0, 0.0, 1.0) );
-            vertices.Add( box.GetPosition(1.0, 1.0, 1.0) );
-            vertices.Add( box.GetPosition(0.0, 1.0, 1.0) );
+            var vertices = new Vector3d[udiv, vdiv];
+            for (int i = 0; i < udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                for (int j = 0; j < vdiv; ++j)
+                {
+                    var v = j / (double)vdiv;
+                    vertices[i, j] = surface.GetPosition(u, v);
+                }
+            }
+            for (int i = 0; i < udiv - 1; ++i)
+            {
+                for (int j = 0; j < vdiv - 1; ++j)
+                {
+                    edges.Add(new Line3d(vertices[i, j], vertices[i + 1, j]));
+                    edges.Add(new Line3d(vertices[i, j], vertices[i, j + 1]));
+                }
+            }
+            var ulast = udiv - 1;
+            {
+                for(int j = 0; j < vdiv-1; ++j)
+                {
+                    edges.Add(new Line3d(vertices[ulast, j], vertices[0, j]));
+                }
+            }
+        }
+
+        public void Build(IVolume3d box)
+        {
+            vertices.Add(box.GetPosition(0.0, 0.0, 0.0));
+            vertices.Add(box.GetPosition(1.0, 0.0, 0.0));
+            vertices.Add(box.GetPosition(1.0, 1.0, 0.0));
+            vertices.Add(box.GetPosition(0.0, 1.0, 0.0));
+            vertices.Add(box.GetPosition(0.0, 0.0, 1.0));
+            vertices.Add(box.GetPosition(1.0, 0.0, 1.0));
+            vertices.Add(box.GetPosition(1.0, 1.0, 1.0));
+            vertices.Add(box.GetPosition(0.0, 1.0, 1.0));
 
             CreateEdge(0, 1);
             CreateEdge(1, 2);
@@ -46,35 +75,6 @@ namespace PG.Core.Shape
             var origin = vertices[originIndex];
             var dest = vertices[destIndex];
             edges.Add(new Line3d(origin, dest));
-        }
-
-        public void Build(ISurface sphere, int udiv, int vdiv)
-        {
-            var vertices = new Vector3d[udiv, vdiv];
-            for (int i = 0; i < udiv; ++i)
-            {
-                var u = i / (double)udiv;
-                for (int j = 0; j < vdiv; ++j)
-                {
-                    var v = j / (double)vdiv;
-                    vertices[i, j] = sphere.GetPosition(u, v);
-                }
-            }
-            for (int i = 0; i < udiv - 1; ++i)
-            {
-                for (int j = 0; j < vdiv - 1; ++j)
-                {
-                    edges.Add(new Line3d(vertices[i, j], vertices[i + 1, j]));
-                    edges.Add(new Line3d(vertices[i, j], vertices[i, j + 1]));
-                }
-            }
-            var ulast = udiv - 1;
-            {
-                for(int j = 0; j < vdiv-1; ++j)
-                {
-                    edges.Add(new Line3d(vertices[ulast, j], vertices[0, j]));
-                }
-            }
         }
 
         public WireFrame WireFrame { get { return new WireFrame(edges); } }

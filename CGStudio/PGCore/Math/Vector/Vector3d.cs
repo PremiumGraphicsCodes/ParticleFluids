@@ -46,6 +46,11 @@
             this.z = z;
         }
 
+        public Vector3d Clone()
+        {
+            return new Vector3d(x, y, z);
+        }
+
         public static Vector3d Zero()
         {
             return new Vector3d(0, 0, 0);
