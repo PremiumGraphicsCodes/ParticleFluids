@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClInclude Include="FileExporter.h" />
     <ClInclude Include="FileFormat.h" />
-    <ClInclude Include="FileImporter.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="ImageFileReader.h" />
     <ClInclude Include="ImageFileWriter.h" />
@@ -47,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileExporter.cpp" />
-    <ClCompile Include="FileImporter.cpp" />
     <ClCompile Include="ImageFileReader.cpp" />
     <ClCompile Include="ImageFileWriter.cpp" />
     <ClCompile Include="MTLFileReader.cpp" />

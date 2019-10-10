@@ -5,11 +5,9 @@
 #include "FileOpenView.h"
 #include "FileSaveView.h"
 #include "../../Crystal/Scene/World.h"
-#include "../../Crystal/IO/FileImporter.h"
 #include "../Command/CameraFitCommand.h"
 
 using namespace Crystal::UI;
-using namespace Crystal::IO;
 using namespace Crystal::Command;
 
 void FileMenu::onShow()
@@ -31,6 +29,7 @@ void FileMenu::onShow()
 			view.addFilter("*.pcd");
 			view.show();
 			const auto& filename = view.getFileName();
+			/*
 			if (!filename.empty()) {
 				FileImporter importer;
 				const auto isOk = importer.importFile(filename, model->getObjects(), model->getObjectFactory());
@@ -42,6 +41,7 @@ void FileMenu::onShow()
 
 				}
 			}
+			*/
 			//canvas->update();
 		}
 		if (ImGui::MenuItem("Export")) {
