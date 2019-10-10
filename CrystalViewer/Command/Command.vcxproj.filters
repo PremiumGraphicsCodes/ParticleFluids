@@ -52,6 +52,9 @@
     <ClInclude Include="ScaleCommand.h">
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="PCDFileImportCommand.h">
+      <Filter>File\PCD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -103,6 +106,9 @@
     <ClCompile Include="ScaleCommand.cpp">
       <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
+    <ClCompile Include="PCDFileImportCommand.cpp">
+      <Filter>File\PCD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -131,6 +137,9 @@
     </Filter>
     <Filter Include="Camera">
       <UniqueIdentifier>{38bb3154-0de5-4bba-afa6-a792c3a6ebe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File\PCD">
+      <UniqueIdentifier>{dc691723-56be-4a0f-a3e0-4a490be68a6c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

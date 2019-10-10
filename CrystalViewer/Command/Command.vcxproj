@@ -168,6 +168,7 @@
     <ClInclude Include="LightAddCommand.h" />
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="ParticleSystemAddCommand.h" />
+    <ClInclude Include="PCDFileImportCommand.h" />
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PolygonMeshAddCommand.h" />
     <ClInclude Include="RotateCommand.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="LightAddCommand.cpp" />
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="ParticleSystemAddCommand.cpp" />
+    <ClCompile Include="PCDFileImportCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="PolygonMeshAddCommand.cpp" />
     <ClCompile Include="RotateCommand.cpp" />

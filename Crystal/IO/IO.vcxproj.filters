@@ -56,9 +56,6 @@
     <ClInclude Include="OBJFileExporter.h">
       <Filter>OBJ</Filter>
     </ClInclude>
-    <ClInclude Include="PCDFileImporter.h">
-      <Filter>PCD</Filter>
-    </ClInclude>
     <ClInclude Include="STLFileExporter.h">
       <Filter>STL</Filter>
     </ClInclude>
@@ -109,9 +106,6 @@
     </ClCompile>
     <ClCompile Include="OBJFileExporter.cpp">
       <Filter>OBJ</Filter>
-    </ClCompile>
-    <ClCompile Include="PCDFileImporter.cpp">
-      <Filter>PCD</Filter>
     </ClCompile>
     <ClCompile Include="STLFileExporter.cpp">
       <Filter>STL</Filter>

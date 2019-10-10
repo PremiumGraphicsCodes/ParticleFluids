@@ -4,7 +4,7 @@
 #include "../../Crystal/IO/FileFormat.h"
 #include "../../Crystal/IO/OBJFileImporter.h"
 #include "../../Crystal/IO/STLFileImporter.h"
-#include "../../Crystal/IO/PCDFileImporter.h"
+#include "PCDFileImportCommand.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
@@ -64,11 +64,13 @@ bool FileImportCommand::importFile(const std::filesystem::path& filePath, IScene
 		STLFileImporter importer(factory);
 		return importer.importSTLBinary(filePath, parent);
 	}
+	/*
 	case FileFormat::PCD:
 	{
-		PCDFileImporter importer(factory);
+		PCDFileImportCommand importer(factory);
 		return importer.importPCD(filePath, parent);
 	}
+	*/
 	default:
 		assert(false);
 	}
