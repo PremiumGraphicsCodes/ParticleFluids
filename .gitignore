@@ -255,3 +255,5 @@ ModelManifest.xml
 /Crystal/AppBase/stdafx.cpp
 /Crystal/AppBase/stdafx.h
 /CrystalViewer/Sample/imgui.ini
+/CrystalViewer/Viewer/glew32.dll
+/CrystalViewer/Viewer/imgui.ini

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sample", "Sample\Sample.vcxproj", "{4621D140-811E-4E2B-ACF7-0948322E13B4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Viewer", "Viewer\Viewer.vcxproj", "{4621D140-811E-4E2B-ACF7-0948322E13B4}"
 	ProjectSection(ProjectDependencies) = postProject
 		{227E5411-92CB-4E30-A67B-043D8B04A9BC} = {227E5411-92CB-4E30-A67B-043D8B04A9BC}
 		{59C5EA30-1E57-417C-9416-17B592E8724E} = {59C5EA30-1E57-417C-9416-17B592E8724E}
