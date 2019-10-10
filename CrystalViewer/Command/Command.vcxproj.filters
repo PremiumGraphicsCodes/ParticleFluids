@@ -61,6 +61,9 @@
     <ClInclude Include="STLFileExportCommand.h">
       <Filter>File\STL</Filter>
     </ClInclude>
+    <ClInclude Include="OBJFileImportCommand.h">
+      <Filter>File\OBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -121,6 +124,9 @@
     <ClCompile Include="STLFileExportCommand.cpp">
       <Filter>File\STL</Filter>
     </ClCompile>
+    <ClCompile Include="OBJFileImportCommand.cpp">
+      <Filter>File\OBJ</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -155,6 +161,9 @@
     </Filter>
     <Filter Include="File\STL">
       <UniqueIdentifier>{cb222483-923f-4320-9e11-fddafba396ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File\OBJ">
+      <UniqueIdentifier>{42593c27-df0f-4740-bafb-9b6414a5528d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

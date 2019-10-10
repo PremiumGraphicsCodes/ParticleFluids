@@ -1,23 +1,23 @@
-#include "OBJFileImporter.h"
+#include "OBJFileImportCommand.h"
 
-#include "../Scene/PolygonMeshBuilder.h"
-#include "../IO/OBJFileReader.h"
-#include "../IO/MTLFileReader.h"
+#include "../../Crystal/Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/IO/OBJFileReader.h"
+#include "../../Crystal/IO/MTLFileReader.h"
 
-#include "../Scene/Scene.h"
-//#include "AppearanceObjectRepository.h"
-#include "../Scene/PolygonMeshScene.h"
+#include "../../Crystal/Scene/Scene.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
+using namespace Crystal::Command;
 
-OBJFileImporter::OBJFileImporter(SceneFactory* sceneFactory) :
-	sceneFactory(sceneFactory)
+void OBJFileImportCommand::execute(World* scene)
 {
+
 }
 
-bool OBJFileImporter::importOBJ(const std::filesystem::path& filePath, IScene* scene)
+bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, World* world)
 {
 	OBJFileReader reader;
 	if (reader.read(filePath)) {
@@ -41,7 +41,7 @@ bool OBJFileImporter::importOBJ(const std::filesystem::path& filePath, IScene* s
 		const auto& normalTable = polygonMesh->getNormals();
 		const auto& texCoordTable = polygonMesh->getTexCoords();
 
-		auto meshScene = sceneFactory->createPolygonMeshScene(polygonMesh, "PolygonMesh");
+		auto meshScene = world->getObjectFactory()->createPolygonMeshScene(polygonMesh, "PolygonMesh");
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
@@ -64,17 +64,17 @@ bool OBJFileImporter::importOBJ(const std::filesystem::path& filePath, IScene* s
 					i2++;
 				}
 			}
-			auto faceGroup = sceneFactory->createFaceGroupScene(meshScene, g.name);
+			auto faceGroup = world->getObjectFactory()->createFaceGroupScene(meshScene, g.name);
 			faceGroup->setMaterialName(g.usemtl);
 		}
-		scene->addScene(meshScene);
+		world->getObjects()->addScene(meshScene);
 
 		return true;
 	}
 	return false;
 }
 
-bool OBJFileImporter::importMTL(const std::filesystem::path& filePath, IScene* scene)
+bool OBJFileImportCommand::importMTL(const std::filesystem::path& filePath, World* world)
 {
 	MTLFileReader reader;
 	if (reader.read(filePath)) {
@@ -85,7 +85,7 @@ bool OBJFileImporter::importMTL(const std::filesystem::path& filePath, IScene* s
 			mat.diffuse = m.diffuse;
 			mat.specular = m.specular;
 			mat.shininess = m.specularExponent;
-			scene->addScene( sceneFactory->createMaterialScene(mat, m.name) );
+			world->getObjects()->addScene(world->getObjectFactory()->createMaterialScene(mat, m.name));
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;
@@ -93,25 +93,25 @@ bool OBJFileImporter::importMTL(const std::filesystem::path& filePath, IScene* s
 	return false;
 }
 
-bool OBJFileImporter::importOBJWithMTL(const std::filesystem::path& filePath, IScene* parent)
+bool OBJFileImportCommand::importOBJWithMTL(const std::filesystem::path& filePath, World* world)
 {
 	// path から .objファイル名を取得する．
 	auto filename = filePath.parent_path() / filePath.stem();
 	filename.concat(".mtl");
 
-	auto scene = sceneFactory->createScene("OBJ");
+	auto scene = world->getObjectFactory()->createScene("OBJ");
 
 	// mtl ファイルを読み込む．
-	if (!importMTL(filename, scene)) {
+	if (!importMTL(filename, world)) {
 		return false;
 	}
 
 	// obj ファイルを読み込む．
-	if (!importOBJ(filePath, scene)) {
+	if (!importOBJ(filePath, world)) {
 		return false;
 	}
 
-	parent->addScene(scene);
+	world->getObjects()->addScene(scene);
 
 	return true;
 }

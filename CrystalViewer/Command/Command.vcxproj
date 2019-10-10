@@ -167,6 +167,7 @@
     <ClInclude Include="IResults.h" />
     <ClInclude Include="LightAddCommand.h" />
     <ClInclude Include="MockCommand.h" />
+    <ClInclude Include="OBJFileImportCommand.h" />
     <ClInclude Include="ParticleSystemAddCommand.h" />
     <ClInclude Include="PCDFileImportCommand.h" />
     <ClInclude Include="PickCommand.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="LightAddCommand.cpp" />
     <ClCompile Include="MockCommand.cpp" />
+    <ClCompile Include="OBJFileImportCommand.cpp" />
     <ClCompile Include="ParticleSystemAddCommand.cpp" />
     <ClCompile Include="PCDFileImportCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />

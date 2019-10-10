@@ -2,9 +2,10 @@
 #include "Public/FileImportLabel.h"
 
 #include "../../Crystal/IO/FileFormat.h"
-#include "../../Crystal/IO/OBJFileImporter.h"
 #include "STLFileImportCommand.h"
 #include "PCDFileImportCommand.h"
+
+#include "Command.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
@@ -46,6 +47,9 @@ bool FileImportCommand::importFile(const std::filesystem::path& filePath, World*
 	switch (format) {
 	case FileFormat::OBJ:
 	{
+		Command command("OBJFileImport");
+		command.setArg("FilePath", args.filePath.getValue());
+		command.execute(world);
 		//OBJFileImporter importer(factory);
 		//return importer.importOBJWithMTL(filePath, parent);
 		return false;
