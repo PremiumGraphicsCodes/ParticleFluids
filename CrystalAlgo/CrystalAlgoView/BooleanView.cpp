@@ -1,7 +1,7 @@
 #include "BooleanView.h"
 
 #include "../CrystalAlgo/BooleanAlgo.h"
-#include "../../Crystal/AppBase/Canvas.h"
+#include "../../CrystalViewer/AppBase/Canvas.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::UI;

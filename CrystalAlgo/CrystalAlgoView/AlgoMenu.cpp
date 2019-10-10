@@ -9,7 +9,7 @@
 #include "OctreeView.h"
 #include "SpaceHashView.h"
 
-#include "../../Crystal/AppBase/imgui.h"
+#include "../../CrystalViewer/AppBase/imgui.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
