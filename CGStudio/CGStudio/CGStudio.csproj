@@ -174,10 +174,11 @@
       <DependentUpon>WireFrameEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\WireFrame\WireFrameEditViewModel.cs" />
-    <Compile Include="Selection\SceneSelectView.xaml.cs">
-      <DependentUpon>SceneSelectView.xaml</DependentUpon>
+    <Compile Include="Selection\CylinderRegionSelectViewModel.cs" />
+    <Compile Include="Selection\ShapeSelectView.xaml.cs">
+      <DependentUpon>ShapeSelectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Selection\SceneSelectViewModel.cs" />
+    <Compile Include="Selection\ShapeSelectViewModel.cs" />
     <Compile Include="Scene\Shape\Transform\TransformView.xaml.cs">
       <DependentUpon>TransformView.xaml</DependentUpon>
     </Compile>
@@ -323,7 +324,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Selection\SceneSelectView.xaml">
+    <Page Include="Selection\ShapeSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

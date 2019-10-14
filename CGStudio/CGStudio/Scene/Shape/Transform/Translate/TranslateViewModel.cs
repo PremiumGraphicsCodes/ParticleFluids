@@ -9,8 +9,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
 {
     public class TranslateViewModel : INavigationAware
     {
-        public SceneSelectViewModel ShapeSelectViewModel { get; }
-            = new SceneSelectViewModel();
+        public ShapeSelectViewModel ShapeSelectViewModel { get; }
+            = new ShapeSelectViewModel();
 
         public Vector3dViewModel VectorViewModel { get; }
             = new Vector3dViewModel();

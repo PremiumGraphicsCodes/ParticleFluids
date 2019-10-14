@@ -21,6 +21,12 @@ namespace PG.Control.Math
             {
                 return new Cylinder3d(Radius.Value, Height.Value, CenterViewModel.Value);
             }
+            set
+            {
+                this.Radius.Value = value.Radius;
+                this.Height.Value = value.Height;
+                this.CenterViewModel.Value = value.Center;
+            }
         }
 
         public Cylinder3dViewModel()

@@ -11,8 +11,8 @@ namespace PG.CGStudio.Object.Transform
 {
     public class TransformViewModel : BindableBase, INavigationAware
     {
-        public SceneSelectViewModel SelectViewModel { get; }
-            = new SceneSelectViewModel();
+        public ShapeSelectViewModel SelectViewModel { get; }
+            = new ShapeSelectViewModel();
 
         public ReactiveCommand MoveCommand { get; }
 

@@ -4,10 +4,15 @@ namespace PG {
 		public const string CameraXYCommandLabel = "CameraXY";
 		public const string CameraYZCommandLabel = "CameraYZ";
 		public const string CameraZXCommandLabel = "CameraZX";
+		public const string CameraRotateCommandLabel = "CameraRotate";
+		public const string CameraTranslateCommandLabel = "CameraTranslate";
+		public const string CameraZoomCommandLabel = "CameraZoom";
 	}
 
 	public class FileImportLabel{
 		public const string FileImportCommandLabel = "FileImport";
+		public const string FilePathLabel = "FilePath";
+		public const string IsOkLabel = "IsOk";
 	}
 
 	public class PickLabels{

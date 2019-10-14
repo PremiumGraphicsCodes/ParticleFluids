@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace PG.CGStudio.Object.Select
 {
-    public class SceneSelectViewModel : BindableBase, INavigationAware
+    public class ShapeSelectViewModel : BindableBase, INavigationAware
     {
         public ReactiveProperty<int> Id { get; }
             = new ReactiveProperty<int>();
@@ -17,7 +17,7 @@ namespace PG.CGStudio.Object.Select
 
         private PickUICtrl Picker { get; }
 
-        public SceneSelectViewModel()
+        public ShapeSelectViewModel()
         {
             PickCommand.Subscribe(OnPickUI);
             Picker = new PickUICtrl(10, Core.SceneType.AllScene);

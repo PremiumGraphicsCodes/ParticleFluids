@@ -3,25 +3,23 @@ using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
 using PG.Core.Math;
-using PG.Core.Shape;
-using PG.Core.UI;
 using Prism.Mvvm;
 using Reactive.Bindings;
 
 namespace PG.CGStudio.Selection
 {
-    public class SphereRegionSelectViewModel : BindableBase
+    public class CylinderRegionSelectViewModel : BindableBase
     {
         public ShapeSelectViewModel SelectViewModel { get; }
             = new ShapeSelectViewModel();
 
-        public Sphere3dViewModel SphereViewModel { get; }
-            = new Sphere3dViewModel();
+        public Cylinder3dViewModel CylinderViewModel { get; }
+            = new Cylinder3dViewModel();
 
         public ReactiveCommand PickCommand { get; }
             = new ReactiveCommand();
 
-        public SphereRegionSelectViewModel()
+        public CylinderRegionSelectViewModel()
         {
             PickCommand.Subscribe(OnPickUI);
         }
@@ -43,8 +41,8 @@ namespace PG.CGStudio.Selection
             command.Execute(MainModel.Instance.Repository.Adapter);
             var position = command.GetResult<Vector3d>("Position");
 
-            var sphere = new Sphere3d(SphereViewModel.Value.Radius, position);
-            SphereViewModel.Value = sphere;
+            var cylinder = new Sphere3d(CylinderViewModel.Value.Radius, position);
+            CylinderViewModel.Value = cylinder;
             var builder = new WireFrameBuilder();
             builder.Build(sphere, 24, 24);
             var appearance = new WireAppearance();
