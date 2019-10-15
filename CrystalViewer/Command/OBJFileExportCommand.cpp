@@ -9,6 +9,16 @@ using namespace Crystal::Scene;
 using namespace Crystal::IO;
 using namespace Crystal::Command;
 
+OBJFileExportCommand::Args::Args() :
+	filePath("FilePath", "")
+{
+}
+
+OBJFileExportCommand::Results::Results() :
+	isOk("IsOk", false)
+{
+}
+
 std::string OBJFileExportCommand::getName()
 {
 	return "OBJFileExport";

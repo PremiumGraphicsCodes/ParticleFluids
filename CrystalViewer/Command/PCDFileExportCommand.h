@@ -1,22 +1,19 @@
 #pragma once
 
-#include "IArgs.h"
 #include "ICommand.h"
 #include <filesystem>
-#include <vector>
-
-#include "../../Crystal/IO/FileFormat.h"
 
 namespace Crystal {
 	namespace Command {
 
-class FileExportCommand : public ICommand
+class PCDFileExportCommand : public ICommand
 {
 public:
 	struct Args : IArgs
 	{
 		Args();
 
+		Arg< bool > isBinary;
 		Arg< std::filesystem::path > filePath;
 	};
 
@@ -27,7 +24,7 @@ public:
 		Result< bool > isOk;
 	};
 
-	FileExportCommand() :
+	PCDFileExportCommand() :
 		ICommand(&args, &results)
 	{}
 
@@ -36,8 +33,9 @@ public:
 	void execute(Scene::World* scene) override;
 
 private:
-	bool exportFile(const std::filesystem::path& filePath, const IO::FileFormat format, Scene::World* world);
+	void exportAscii(Scene::World* world);
 
+	void exportBinary(Scene::World* world);
 
 private:
 	Args args;

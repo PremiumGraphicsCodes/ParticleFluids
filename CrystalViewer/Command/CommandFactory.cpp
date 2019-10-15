@@ -35,7 +35,7 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == WireFrameAddCommand::getName()) {
 		return std::make_unique<WireFrameAddCommand>();
 	}
-	else if (name == "PolygonMeshAdd") {
+	else if (name == PolygonMeshAddCommand::getName()) {
 		return std::make_unique<PolygonMeshAddCommand>();
 	}
 	else if (name == CameraFitCommand::getName()) {
@@ -71,7 +71,7 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == RotateCommand::getName()) {
 		return std::make_unique<RotateCommand>();
 	}
-	else if (name == "Scale") {
+	else if (name == ScaleCommand::getName()) {
 		return std::make_unique<ScaleCommand>();
 	}
 

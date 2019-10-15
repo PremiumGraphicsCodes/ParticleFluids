@@ -170,6 +170,7 @@
     <ClInclude Include="OBJFileExportCommand.h" />
     <ClInclude Include="OBJFileImportCommand.h" />
     <ClInclude Include="ParticleSystemAddCommand.h" />
+    <ClInclude Include="PCDFileExportCommand.h" />
     <ClInclude Include="PCDFileImportCommand.h" />
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PolygonMeshAddCommand.h" />

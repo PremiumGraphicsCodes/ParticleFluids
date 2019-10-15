@@ -6,6 +6,11 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+std::string ScaleCommand::getName()
+{
+	return "Scale";
+}
+
 void ScaleCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<Scene::IShapeScene*>(args.id.getValue());

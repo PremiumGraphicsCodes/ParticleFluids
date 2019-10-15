@@ -8,6 +8,11 @@
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+std::string PolygonMeshAddCommand::getName()
+{
+	return "PolygonMeshAdd";
+}
+
 void PolygonMeshAddCommand::execute(World* scene)
 {
 	const auto& positions = args.positions.getValue();

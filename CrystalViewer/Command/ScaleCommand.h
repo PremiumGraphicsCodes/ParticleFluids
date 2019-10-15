@@ -23,6 +23,8 @@ public:
 		Arg<Math::Vector3dd> ratio;
 	};
 
+	static std::string getName();
+
 	ScaleCommand() :
 		ICommand(&args)
 	{}

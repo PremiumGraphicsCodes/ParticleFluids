@@ -94,6 +94,9 @@
     <ClInclude Include="Public\PolygonMeshAddLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="PCDFileExportCommand.h">
+      <Filter>File\PCD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

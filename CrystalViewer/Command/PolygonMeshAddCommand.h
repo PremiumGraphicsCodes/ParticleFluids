@@ -54,6 +54,8 @@ public:
 		Result<int> newId;
 	};
 
+	static std::string getName();
+
 	void execute(Scene::World* scene) override;
 
 private:

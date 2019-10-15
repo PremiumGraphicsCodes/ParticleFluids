@@ -1,36 +1,48 @@
 #include "FileExportCommand.h"
 
 #include "OBJFileExportCommand.h"
+//#include "PCDFileExportCommand.h"
+
+#include "Public/FileExportLabels.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+FileExportCommand::Args::Args() :
+	filePath(::FilePathLabel, "")
+{
+	add(&filePath);
+}
+
+FileExportCommand::Results::Results() :
+	isOk("IsOk", false)
+{
+	add(&isOk);
+}
+
 std::string FileExportCommand::getName()
 {
-	return "FileExport";
+	return ::FileExportCommandLabel;
 }
 
 void FileExportCommand::execute(World* scene)
 {
-	//scene->getObjects()
+	const auto format = Crystal::IO::getFileFormat(args.filePath.getValue());
+	exportFile(args.filePath.getValue(), format, scene);
 }
 
-bool FileExportCommand::exportFile(const std::filesystem::path& filePath)
+bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format, World* world)
 {
-	const auto format = Crystal::IO::getFileFormat(filePath);
-	return exportFile(filePath, format);
-}
-
-bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format)
-{
-	/*
 	switch (format) {
 	case FileFormat::OBJ :
 	{
-		OBJFileExportCommand exporter;
-		return exporter.exportOBJ(filePath, objects);
+		OBJFileExportCommand command;
+		command.setArg("filePath", args.filePath.getValue());
+		command.execute(world);
+		this->results.isOk.setValue( std::any_cast<bool>( command.getResult("IsOk") ) );
 	}
+	/*
 	case FileFormat::MTL :
 	{
 		OBJFileExporter exporter;
@@ -48,14 +60,14 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	}
 	case FileFormat::PCD :
 	{
-		PCDFileExporter exporter;
+		PCDFileExportCommand exporter;
 		return exporter.exportPCD(filePath, objects);
 		return false;
 	}
+	*/
 	default :
 		assert(false);
 	}
-	*/
 	return false;
 }
 
