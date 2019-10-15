@@ -79,10 +79,19 @@
     <ClInclude Include="Public\PublicLabel.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="FileExportLabels.h">
+    <ClInclude Include="Public\ParticleSystemAddLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="Public\ParticleSystemAddLabels.h">
+    <ClInclude Include="Public\FileExportLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\WireFrameAddLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\SetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\PolygonMeshAddLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
   </ItemGroup>

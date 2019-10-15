@@ -3,9 +3,30 @@
 #include "../../Crystal/Scene/WireFrameAttribute.h"
 #include "../../Crystal/Scene/WireFrameScene.h"
 
+#include "Public/WireFrameAddLabels.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
+
+WireFrameAddCommand::Args::Args() :
+	lines(::LinesLabel, {}),
+	lineWidth(::LineWidthLabel, 1.0f),
+	color(::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
+	name(::NameLabel, std::string("")),
+	isItem(::IsItemLabel, false)
+{
+	add(&lines);
+	add(&lineWidth);
+	add(&color);
+	add(&name);
+	add(&isItem);
+}
+
+std::string WireFrameAddCommand::getName()
+{
+	return ::WireFrameAddLabel;
+}
 
 void WireFrameAddCommand::execute(World* world)
 {

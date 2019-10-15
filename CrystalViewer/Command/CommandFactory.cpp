@@ -29,7 +29,7 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == "FileExport") {
 		return std::make_unique<FileExportCommand>();
 	}
-	else if (name == "ParticleSystemAdd") {
+	else if (name == ParticleSystemAddCommand::getName()) {
 		return std::make_unique<ParticleSystemAddCommand>();
 	}
 	else if (name == "WireFrameAdd") {
@@ -47,7 +47,7 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == CameraYZCommand::getName()) {
 		return std::make_unique<CameraYZCommand>();
 	}
-	else if (name == "CameraZX") {
+	else if (name == CameraZXCommand::getName()) {
 		return std::make_unique<CameraZXCommand>();
 	}
 	else if (name == "CameraTranslate") {

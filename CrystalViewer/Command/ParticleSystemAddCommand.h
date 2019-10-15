@@ -28,11 +28,7 @@ public:
 
 	struct Results : IResults
 	{
-		Results() :
-			newId("NewId", -1)
-		{
-			add(&newId);
-		}
+		Results();
 
 		Result<int> newId;
 	};

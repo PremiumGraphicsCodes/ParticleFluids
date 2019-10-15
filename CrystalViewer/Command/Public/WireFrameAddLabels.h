@@ -3,9 +3,9 @@
 #include "PublicLabel.h"
 
 namespace {
-	PublicLabel ParticleSystemAddLabel = "ParticleSystemAdd";
-	PublicLabel PositionsLabel = "Positions";
-	PublicLabel PointSizeLabel = "PointSize";
+	PublicLabel WireFrameAddLabel = "WireFrameAdd";
+	PublicLabel LinesLabel = "Lines";
+	PublicLabel LineWidthLabel = "LineWidth";
 	PublicLabel ColorLabel = "Color";
 	PublicLabel NameLabel = "Name";
 	PublicLabel IsItemLabel = "IsItem";

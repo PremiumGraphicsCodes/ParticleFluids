@@ -23,6 +23,13 @@ ParticleSystemAddCommand::Args::Args() :
 	add(&isItem);
 }
 
+ParticleSystemAddCommand::Results::Results() :
+	newId(::NewIdLabel, -1)
+{
+	add(&newId);
+}
+
+
 std::string ParticleSystemAddCommand::getName()
 {
 	return ::ParticleSystemAddLabel;

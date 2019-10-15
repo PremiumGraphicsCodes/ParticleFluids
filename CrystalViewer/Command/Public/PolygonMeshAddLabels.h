@@ -9,5 +9,4 @@ namespace {
 	PublicLabel ColorLabel = "Color";
 	PublicLabel NameLabel = "Name";
 	PublicLabel IsItemLabel = "IsItem";
-	PublicLabel NewIdLabel = "NewId";
 }
