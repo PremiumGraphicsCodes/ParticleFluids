@@ -1,16 +1,20 @@
 #include "GetCommand.h"
 
+#include "Public/GetLabels.h"
+
+#include "../../Crystal/Scene/IShapeScene.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 
 std::any GetCommand::Get(World* world, const std::string& name)
 {
-	if (name == "CameraPosition") {
+	if (name == ::CameraPositionLabel) {
 		const auto& pos = world->getRenderer()->getCamera()->getPosition();
 		return std::any(pos);
 	}
-	else if (name == "CameraProjectionMatrix") {
+	else if (name == ::CameraProjectionMatrixLabel) {
 		const auto& rot = world->getRenderer()->getCamera()->getProjectionMatrix();
 		return std::any(rot);
 	}
@@ -47,6 +51,10 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 
 std::any GetCommand::Get(World* world, int parentId, int childId, const std::string& name)
 {
+	if (name == ::PositionLabel) {
+		auto scene = world->getObjects()->findSceneById<Crystal::Scene::IShapeScene*>(parentId);
+		return std::any( scene->getPosition(childId) );
+	}
 	return std::any(0);
 }
 

@@ -160,6 +160,7 @@
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="FileExportCommand.h" />
+    <ClInclude Include="FileExportLabels.h" />
     <ClInclude Include="FileImportCommand.h" />
     <ClInclude Include="GetCommand.h" />
     <ClInclude Include="IArgs.h" />
@@ -173,6 +174,10 @@
     <ClInclude Include="PCDFileImportCommand.h" />
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PolygonMeshAddCommand.h" />
+    <ClInclude Include="Public\CameraLabels.h" />
+    <ClInclude Include="Public\FileImportLabels.h" />
+    <ClInclude Include="Public\PickLabels.h" />
+    <ClInclude Include="Public\PublicLabel.h" />
     <ClInclude Include="RotateCommand.h" />
     <ClInclude Include="ScaleCommand.h" />
     <ClInclude Include="SetCommand.h" />
@@ -209,6 +214,9 @@
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="TranslateCommand.cpp" />
     <ClCompile Include="WireFrameAddCommand.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Public\GetLabels.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

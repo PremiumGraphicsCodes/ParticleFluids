@@ -67,6 +67,21 @@
     <ClInclude Include="OBJFileExportCommand.h">
       <Filter>File\OBJ</Filter>
     </ClInclude>
+    <ClInclude Include="Public\CameraLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\FileImportLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\PickLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\PublicLabel.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="FileExportLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -171,5 +186,13 @@
     <Filter Include="File\OBJ">
       <UniqueIdentifier>{42593c27-df0f-4740-bafb-9b6414a5528d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{d6ba1b28-bbff-414a-911b-334672ec90b6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Public\GetLabels.h">
+      <Filter>Public</Filter>
+    </Text>
   </ItemGroup>
 </Project>

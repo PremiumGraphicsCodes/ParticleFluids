@@ -1,5 +1,5 @@
 #include "FileImportCommand.h"
-#include "Public/FileImportLabel.h"
+#include "Public/FileImportLabels.h"
 
 #include "../../Crystal/IO/FileFormat.h"
 #include "STLFileImportCommand.h"
