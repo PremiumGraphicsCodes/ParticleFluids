@@ -16,29 +16,22 @@ namespace PG.Core.Shape
 
         public void Build(ISurface3d surface, int udiv, int vdiv)
         {
-            var vertices = new Vector3d[udiv, vdiv];
-            for (int i = 0; i < udiv; ++i)
+            var vertices = new Vector3d[udiv+1, vdiv+1];
+            for (int i = 0; i <= udiv; ++i)
             {
                 var u = i / (double)udiv;
-                for (int j = 0; j < vdiv; ++j)
+                for (int j = 0; j <= vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
                     vertices[i, j] = surface.GetPosition(u, v);
                 }
             }
-            for (int i = 0; i < udiv - 1; ++i)
+            for (int i = 0; i < udiv; ++i)
             {
-                for (int j = 0; j < vdiv - 1; ++j)
+                for (int j = 0; j < vdiv; ++j)
                 {
                     edges.Add(new Line3d(vertices[i, j], vertices[i + 1, j]));
                     edges.Add(new Line3d(vertices[i, j], vertices[i, j + 1]));
-                }
-            }
-            var ulast = udiv - 1;
-            {
-                for(int j = 0; j < vdiv-1; ++j)
-                {
-                    edges.Add(new Line3d(vertices[ulast, j], vertices[0, j]));
                 }
             }
         }

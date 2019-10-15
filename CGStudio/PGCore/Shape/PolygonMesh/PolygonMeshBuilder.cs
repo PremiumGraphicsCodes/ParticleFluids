@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using PG.Core.Math;
+﻿using PG.Core.Math;
 
 namespace PG.Core.Shape
 {

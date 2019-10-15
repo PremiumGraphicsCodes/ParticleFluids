@@ -12,7 +12,16 @@ namespace PG.Core.Shape
             positions = new List<Vector3d>();
         }
 
-        public void Build(Sphere3d sphere, int udiv, int vdiv)
+        public void Build(ICurve3d curve, int udiv)
+        {
+            for (int i = 0; i < udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                positions.Add(curve.GetPosition(u));
+            }
+        }
+
+        public void Build(ISurface3d surface, int udiv, int vdiv)
         {
             for (int i = 0; i < udiv; ++i)
             {
@@ -20,12 +29,12 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    positions.Add(sphere.GetPosition(1.0, u, v));
+                    positions.Add(surface.GetPosition(u, v));
                 }
             }
         }
 
-        public void Build(Cylinder3d cylinder, int udiv, int vdiv)
+        public void Build(IVolume3d volume, int udiv, int vdiv)
         {
             for (int i = 0; i < udiv; ++i)
             {
@@ -33,20 +42,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    positions.Add(cylinder.GetPosition(1.0, u, v));
-                }
-            }
-        }
-
-        public void Build(Box3d box, int udiv, int vdiv)
-        {
-            for (int i = 0; i < udiv; ++i)
-            {
-                var u = i / (double)udiv;
-                for (int j = 0; j < vdiv; ++j)
-                {
-                    var v = j / (double)vdiv;
-                    positions.Add(box.GetPosition(1.0, u, v));
+                    positions.Add(volume.GetPosition(1.0, u, v));
                 }
             }
             for (int i = 0; i < udiv; ++i)
@@ -55,7 +51,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    positions.Add(box.GetPosition(-1.0, u, v));
+                    positions.Add(volume.GetPosition(-1.0, u, v));
                 }
             }
             for (int i = 0; i < udiv; ++i)
@@ -64,7 +60,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    positions.Add(box.GetPosition(u, 1.0, v));
+                    positions.Add(volume.GetPosition(u, 1.0, v));
                 }
             }
             for (int i = 0; i < udiv; ++i)
@@ -73,7 +69,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    positions.Add(box.GetPosition(u, -1.0, v));
+                    positions.Add(volume.GetPosition(u, -1.0, v));
                 }
             }
             for (int i = 0; i < udiv; ++i)
@@ -82,7 +78,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    positions.Add(box.GetPosition(u, v, -1.0));
+                    positions.Add(volume.GetPosition(u, v, -1.0));
                 }
             }
             for (int i = 0; i < udiv; ++i)
@@ -91,7 +87,7 @@ namespace PG.Core.Shape
                 for (int j = 0; j < vdiv; ++j)
                 {
                     var v = j / (double)vdiv;
-                    positions.Add(box.GetPosition(u, v, 1.0));
+                    positions.Add(volume.GetPosition(u, v, 1.0));
                 }
             }
         }
