@@ -1,26 +1,34 @@
 #include "FileExportCommand.h"
 
+#include "OBJFileExportCommand.h"
+
+using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
+
+std::string FileExportCommand::getName()
+{
+	return "FileExport";
+}
 
 void FileExportCommand::execute(World* scene)
 {
 	//scene->getObjects()
 }
 
-/*
-bool FileExporter::exportFile(const std::filesystem::path& filePath, IScene& objects)
+bool FileExportCommand::exportFile(const std::filesystem::path& filePath)
 {
-	const auto format = getFileFormat(filePath);
-	return exportFile(filePath, objects, format);
+	const auto format = Crystal::IO::getFileFormat(filePath);
+	return exportFile(filePath, format);
 }
 
-bool FileExporter::exportFile(const std::filesystem::path& filePath, IScene& objects, const FileFormat format)
+bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format)
 {
+	/*
 	switch (format) {
 	case FileFormat::OBJ :
 	{
-		OBJFileExporter exporter;
+		OBJFileExportCommand exporter;
 		return exporter.exportOBJ(filePath, objects);
 	}
 	case FileFormat::MTL :
@@ -47,8 +55,7 @@ bool FileExporter::exportFile(const std::filesystem::path& filePath, IScene& obj
 	default :
 		assert(false);
 	}
+	*/
 	return false;
 }
-	*/
-
 

@@ -3,7 +3,7 @@
 #include "PublicLabel.h"
 
 namespace {
-	PublicLabel FileImportCommandLabel = "FileImport";
+	PublicLabel FileExportCommandLabel = "FileExport";
 	PublicLabel FilePathLabel = "FilePath";
 	PublicLabel IsOkLabel = "IsOk";
 }

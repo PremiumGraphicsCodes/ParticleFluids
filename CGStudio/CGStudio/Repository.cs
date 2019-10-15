@@ -37,15 +37,6 @@ namespace PG.CGStudio
             return false;
         }
 
-        public bool Export(string filePath)
-        {
-            var command = new PG.CLI.Command("FileExport");
-            command.SetArg("FilePath", filePath);
-            command.Execute(adapter);
-            var isOk = command.GetResult<bool>("IsOk");
-            return false;
-        }
-
         public int AddParticleSystemScene(List<Vector3d> positions, string name)
         {
             var command = new PG.CLI.Command(PG.ParticleSystemAddLabels.ParticleSystemAddLabel);

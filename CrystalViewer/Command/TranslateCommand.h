@@ -23,6 +23,8 @@ public:
 		Arg<Math::Vector3dd> vector;
 	};
 
+	static std::string getName();
+
 	TranslateCommand() :
 		ICommand(&args)
 	{}

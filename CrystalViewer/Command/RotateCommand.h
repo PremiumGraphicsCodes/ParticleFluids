@@ -23,6 +23,8 @@ public:
 		Arg<Math::Matrix3dd> matrix;
 	};
 
+	static std::string getName();
+
 	RotateCommand() :
 		ICommand(&args)
 	{}

@@ -5,7 +5,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Command;
 
 CameraZoomCommand::Args::Args() :
-	ratio("Ratio", 1.0)
+	ratio(::ZoomRatioLabel, 1.0)
 {
 	add(&ratio);
 }

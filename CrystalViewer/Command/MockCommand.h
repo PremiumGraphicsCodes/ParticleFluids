@@ -33,6 +33,8 @@ public:
 		}
 	};
 
+	static std::string getName();
+
 	MockCommand() :
 		ICommand(&args, &results)
 	{}

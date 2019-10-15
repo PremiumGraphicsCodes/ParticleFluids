@@ -124,8 +124,7 @@ namespace PG.CGStudio
             };
             if (DialogResult.OK == dialog.ShowDialog())
             {
-                var model = MainModel.Instance.Repository;
-                if(model.Export(dialog.FileName))
+                if(Export(dialog.FileName))
                 {
                     MessageBox.Show("Export Suceeded");
                 }
@@ -134,8 +133,19 @@ namespace PG.CGStudio
                     MessageBox.Show("Export Failed");
                 }
             }
-
         }
+
+
+        private bool Export(string filePath)
+        {
+            var model = MainModel.Instance.Repository;
+            var command = new PG.CLI.Command("FileExport");
+            command.SetArg("FilePath", filePath);
+            command.Execute(model.Adapter);
+            var isOk = command.GetResult<bool>("IsOk");
+            return false;
+        }
+
 
     }
 }

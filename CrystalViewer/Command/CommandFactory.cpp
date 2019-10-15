@@ -20,19 +20,19 @@ using namespace Crystal::Command;
 
 std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 {
-	if (name == "Mock") {
+	if (name == MockCommand::getName()) {
 		return std::make_unique<MockCommand>();
 	}
 	else if (name == FileImportCommand::getName()) {
-		return std::make_unique<FileImportCommand>();		
+		return std::make_unique<FileImportCommand>();
 	}
-	else if (name == "FileExport") {
+	else if (name == FileExportCommand::getName()) {
 		return std::make_unique<FileExportCommand>();
 	}
 	else if (name == ParticleSystemAddCommand::getName()) {
 		return std::make_unique<ParticleSystemAddCommand>();
 	}
-	else if (name == "WireFrameAdd") {
+	else if (name == WireFrameAddCommand::getName()) {
 		return std::make_unique<WireFrameAddCommand>();
 	}
 	else if (name == "PolygonMeshAdd") {
@@ -50,25 +50,25 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == CameraZXCommand::getName()) {
 		return std::make_unique<CameraZXCommand>();
 	}
-	else if (name == "CameraTranslate") {
+	else if (name == CameraTranslateCommand::getName()) {
 		return std::make_unique<CameraTranslateCommand>();
 	}
-	else if (name == "CameraRotate") {
+	else if (name == CameraRotateCommand::getName()) {
 		return std::make_unique<CameraRotateCommand>();
 	}
-	else if (name == "CameraZoom") {
+	else if (name == CameraZoomCommand::getName()) {
 		return std::make_unique<CameraZoomCommand>();
 	}
 	else if (name == PickCommand::getName()) {
 		return std::make_unique<PickCommand>();
 	}
-	else if (name == "Transform") {
+	else if (name == TransformCommand::getName()) {
 		return std::make_unique<TransformCommand>();
 	}
-	else if (name == "Translate") {
+	else if (name == TranslateCommand::getName()) {
 		return std::make_unique<TranslateCommand>();
 	}
-	else if (name == "Rotate") {
+	else if (name == RotateCommand::getName()) {
 		return std::make_unique<RotateCommand>();
 	}
 	else if (name == "Scale") {

@@ -23,6 +23,8 @@ public:
 		Arg<Math::Matrix4dd> matrix;
 	};
 
+	static std::string getName();
+
 	TransformCommand() :
 		ICommand(&args)
 	{}

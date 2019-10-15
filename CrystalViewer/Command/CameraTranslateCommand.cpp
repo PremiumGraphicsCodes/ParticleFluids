@@ -6,7 +6,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 CameraTranslateCommand::Args::Args() :
-	translate("Translate", Vector3dd())
+	translate(::TranslateLabel, Vector3dd())
 {
 	add(&translate);
 }

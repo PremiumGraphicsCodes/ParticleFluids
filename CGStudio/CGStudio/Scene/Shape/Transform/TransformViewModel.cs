@@ -5,7 +5,6 @@ using PG.Core.Math;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
-using System.Collections.Generic;
 
 namespace PG.CGStudio.Object.Transform
 {
@@ -15,10 +14,13 @@ namespace PG.CGStudio.Object.Transform
             = new ShapeSelectViewModel();
 
         public ReactiveCommand MoveCommand { get; }
+            = new ReactiveCommand();
 
         public ReactiveCommand ScaleCommand { get; }
+            = new ReactiveCommand();
 
         public ReactiveCommand RotateCommand { get; }
+            = new ReactiveCommand();
 
         public Matrix4dViewModel MatrixViewModel { get; }
             = new Matrix4dViewModel();
@@ -27,15 +29,13 @@ namespace PG.CGStudio.Object.Transform
             = new ReactiveCommand();
 
         public ReactiveCommand CancelCommand { get; }
+            = new ReactiveCommand();
 
         public TransformViewModel()
         {
-            MoveCommand = new ReactiveCommand();
             MoveCommand.Subscribe(OnMove);
-            ScaleCommand = new ReactiveCommand();
             ScaleCommand.Subscribe(OnScale);
-            RotateCommand = new ReactiveCommand();
-            OKCommand = new ReactiveCommand();
+            RotateCommand.Subscribe(OnRotate);
             OKCommand.Subscribe(OnOk);
             MatrixViewModel.Value = new Matrix4d
                 (
@@ -48,14 +48,17 @@ namespace PG.CGStudio.Object.Transform
 
         private void OnMove()
         {
-            var moveCtrl = new TranslateUICtrl(SelectViewModel.Id.Value);
-            Canvas3d.Instance.UICtrl = moveCtrl;
+            Canvas3d.Instance.UICtrl = new TranslateUICtrl(SelectViewModel.Id.Value);
         }
 
         private void OnScale()
         {
-            var moveCtrl = new ScaleUICtrl(SelectViewModel.Id.Value);
-            Canvas3d.Instance.UICtrl = moveCtrl;
+            Canvas3d.Instance.UICtrl = new ScaleUICtrl(SelectViewModel.Id.Value);
+        }
+
+        private void OnRotate()
+        {
+            Canvas3d.Instance.UICtrl = new RotateUICtrl(SelectViewModel.Id.Value);
         }
 
         private void OnOk()

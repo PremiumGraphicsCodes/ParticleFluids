@@ -6,9 +6,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Command;
 
 CameraRotateCommand::Args::Args() :
-	rx("Rx", 0.0),
-	ry("Ry", 0.0),
-	rz("Rz", 0.0)
+	rx(::RxLabel, 0.0),
+	ry(::RyLabel, 0.0),
+	rz(::RzLabel, 0.0)
 {
 	add(&rx);
 	add(&ry);

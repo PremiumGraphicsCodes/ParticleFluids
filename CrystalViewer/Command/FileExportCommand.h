@@ -5,6 +5,8 @@
 #include <filesystem>
 #include <vector>
 
+#include "../../Crystal/IO/FileFormat.h"
+
 namespace Crystal {
 	namespace Command {
 
@@ -37,7 +39,15 @@ public:
 		ICommand(&args, &results)
 	{}
 
+	static std::string getName();
+
 	void execute(Scene::World* scene) override;
+
+private:
+	bool exportFile(const std::filesystem::path& filePath);
+
+	bool exportFile(const std::filesystem::path& filePath, const IO::FileFormat format);
+
 
 private:
 	Args args;
