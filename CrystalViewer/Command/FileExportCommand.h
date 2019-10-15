@@ -36,7 +36,7 @@ public:
 	void execute(Scene::World* scene) override;
 
 private:
-	bool exportFile(const std::filesystem::path& filePath, const IO::FileFormat format, Scene::World* world);
+	void exportFile(const std::filesystem::path& filePath, const IO::FileFormat format, Scene::World* world);
 
 
 private:

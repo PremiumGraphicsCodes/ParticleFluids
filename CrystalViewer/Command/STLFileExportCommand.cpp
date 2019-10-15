@@ -9,6 +9,17 @@ using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+STLFileExportCommand::Args::Args() :
+	isBinary("IsBinary", false),
+	filePath("FilePath", "")
+{
+}
+
+STLFileExportCommand::Results::Results() :
+	isOk("IsOk", false)
+{
+}
+
 std::string STLFileExportCommand::getName()
 {
 	return "STLFileExport";

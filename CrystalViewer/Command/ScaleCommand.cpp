@@ -1,14 +1,24 @@
 #include "ScaleCommand.h"
 
 #include "../../Crystal/Scene/IShapeScene.h"
+#include "Public/TransformLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+ScaleCommand::Args::Args() :
+	id(::IdLabel, -1),
+	ratio(::ScaleRatioLabel, Math::Vector3dd())
+{
+	add(&id);
+	add(&ratio);
+}
+
+
 std::string ScaleCommand::getName()
 {
-	return "Scale";
+	return ::ScaleCommandLabel;
 }
 
 void ScaleCommand::execute(World* world)

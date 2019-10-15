@@ -11,13 +11,7 @@ class RotateCommand : public ICommand
 public:
 	struct Args : IArgs
 	{
-		Args() :
-			id("Id", -1),
-			matrix("Matrix", Math::Matrix3dd())
-		{
-			add(&id);
-			add(&matrix);
-		}
+		Args();
 
 		Arg<int> id;
 		Arg<Math::Matrix3dd> matrix;

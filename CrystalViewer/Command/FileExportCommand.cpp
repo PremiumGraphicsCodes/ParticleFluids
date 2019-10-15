@@ -2,6 +2,7 @@
 
 #include "OBJFileExportCommand.h"
 //#include "PCDFileExportCommand.h"
+#include "STLFileExportCommand.h"
 
 #include "Public/FileExportLabels.h"
 
@@ -16,7 +17,7 @@ FileExportCommand::Args::Args() :
 }
 
 FileExportCommand::Results::Results() :
-	isOk("IsOk", false)
+	isOk(::IsOkLabel, false)
 {
 	add(&isOk);
 }
@@ -32,7 +33,7 @@ void FileExportCommand::execute(World* scene)
 	exportFile(args.filePath.getValue(), format, scene);
 }
 
-bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format, World* world)
+void FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format, World* world)
 {
 	switch (format) {
 	case FileFormat::OBJ :
@@ -48,16 +49,25 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 		OBJFileExporter exporter;
 		return exporter.exportMTL(filePath, objects);
 	}
+	*/
 	case FileFormat::STL_ASCII :
 	{
-		STLFileExporter exporter;
-		return exporter.exportSTLAscii(filePath, objects);
+		STLFileExportCommand command;
+		command.setArg("filePath", args.filePath.getValue());
+		command.setArg("isBinary", false);
+		command.execute(world);
+		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
 	}
 	case FileFormat::STL_BINARY :
 	{
-		STLFileExporter exporter;
-		return exporter.exportSTLBinary(filePath, objects);
+		STLFileExportCommand command;
+		command.setArg("filePath", args.filePath.getValue());
+		command.setArg("isBinary", true);
+
+		command.execute(world);
+		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
 	}
+	/*
 	case FileFormat::PCD :
 	{
 		PCDFileExportCommand exporter;
@@ -68,6 +78,5 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	default :
 		assert(false);
 	}
-	return false;
 }
 

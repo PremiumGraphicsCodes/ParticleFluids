@@ -97,6 +97,12 @@
     <ClInclude Include="PCDFileExportCommand.h">
       <Filter>File\PCD</Filter>
     </ClInclude>
+    <ClInclude Include="Public\TransformLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\MockLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

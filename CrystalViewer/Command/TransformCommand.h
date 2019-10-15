@@ -11,13 +11,7 @@ class TransformCommand : public ICommand
 public:
 	struct Args : IArgs
 	{
-		Args() :
-			id("Id", -1),
-			matrix("Matrix", Math::Matrix4dd())
-		{
-			add(&id);
-			add(&matrix);
-		}
+		Args();
 
 		Arg<int> id;
 		Arg<Math::Matrix4dd> matrix;

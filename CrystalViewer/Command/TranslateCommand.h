@@ -11,13 +11,7 @@ class TranslateCommand : public ICommand
 public:
 	struct Args : IArgs
 	{
-		Args() :
-			id("Id", -1),
-			vector("Vector", Math::Vector3dd())
-		{
-			add(&id);
-			add(&vector);
-		}
+		Args();
 
 		Arg<int> id;
 		Arg<Math::Vector3dd> vector;

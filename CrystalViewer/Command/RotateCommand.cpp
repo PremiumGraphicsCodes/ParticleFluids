@@ -1,14 +1,23 @@
 #include "RotateCommand.h"
 
 #include "../../Crystal/Scene/IShapeScene.h"
+#include "Public/TransformLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+RotateCommand::Args::Args() :
+	id(::IdLabel, -1),
+	matrix(::MatrixLabel, Math::Matrix3dd())
+{
+	add(&id);
+	add(&matrix);
+}
+
 std::string RotateCommand::getName()
 {
-	return "Rotate";
+	return ::RotateCommandLabel;
 }
 
 void RotateCommand::execute(World* world)

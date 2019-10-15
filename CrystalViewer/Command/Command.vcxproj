@@ -177,11 +177,13 @@
     <ClInclude Include="Public\CameraLabels.h" />
     <ClInclude Include="Public\FileExportLabels.h" />
     <ClInclude Include="Public\FileImportLabels.h" />
+    <ClInclude Include="Public\MockLabels.h" />
     <ClInclude Include="Public\ParticleSystemAddLabels.h" />
     <ClInclude Include="Public\PickLabels.h" />
     <ClInclude Include="Public\PolygonMeshAddLabels.h" />
     <ClInclude Include="Public\PublicLabel.h" />
     <ClInclude Include="Public\SetLabels.h" />
+    <ClInclude Include="Public\TransformLabels.h" />
     <ClInclude Include="Public\WireFrameAddLabels.h" />
     <ClInclude Include="RotateCommand.h" />
     <ClInclude Include="ScaleCommand.h" />
