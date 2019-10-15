@@ -3,21 +3,27 @@
 #include "../../Crystal/IO/PCDFileReader.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
+#include "Public/FileImportLabels.h"
+
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 PCDFileImportCommand::Args::Args() :
-	filePath("FilePath", "")
-{}
+	filePath(::FilePathLabel, "")
+{
+	add(&filePath);
+}
 
 PCDFileImportCommand::Results::Results() :
-	isOk("IsOk", false)
-{}
+	isOk(::IsOkLabel, false)
+{
+	add(&isOk);
+}
 
 std::string PCDFileImportCommand::getName()
 {
-	return "PCDFileImport";
+	return ::PCDFileImportCommandLabel;
 }
 
 void PCDFileImportCommand::execute(Crystal::Scene::World* scene)

@@ -13,24 +13,34 @@ using namespace Crystal::Command;
 
 STLFileExportCommand::Args::Args() :
 	id(::IdLabel, -1),
-	isBinary("IsBinary", false),
+	isBinary(::IsBinaryLabel, false),
 	filePath(::FilePathLabel, "")
 {
+	add(&id);
+	add(&isBinary);
+	add(&filePath);
 }
 
 STLFileExportCommand::Results::Results() :
 	isOk(::IsOkLabel, false)
 {
+	add(&isOk);
 }
 
 std::string STLFileExportCommand::getName()
 {
-	return "STLFileExport";
+	return ::STLFileExportCommandLabel;
 }
 
 void STLFileExportCommand::execute(World* scene)
 {
 	auto mesh = scene->getObjects()->findSceneById<PolygonMeshScene*>(args.id.getValue());
+	if (args.isBinary.getValue()) {
+		exportBinary(*mesh);
+	}
+	else {
+		exportAscii(*mesh);
+	}
 }
 
 void STLFileExportCommand::exportAscii(PolygonMeshScene& polygonMesh)

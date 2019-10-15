@@ -13,7 +13,7 @@ public:
 	{
 		Args();
 
-		Arg< bool > isBinary;
+		Arg< int > id;
 		Arg< std::filesystem::path > filePath;
 	};
 
@@ -33,10 +33,6 @@ public:
 	void execute(Scene::World* scene) override;
 
 private:
-	void exportAscii(Scene::World* world);
-
-	void exportBinary(Scene::World* world);
-
 private:
 	Args args;
 	Results results;

@@ -6,6 +6,8 @@
 #include "../../Crystal/IO/STLAsciiFileReader.h"
 #include "../../Crystal/IO/STLBinaryFileReader.h"
 
+#include "Public/FileImportLabels.h"
+
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
@@ -14,15 +16,20 @@ using namespace Crystal::Command;
 STLFileImportCommand::Args::Args() :
 	filePath("FilePath", ""),
 	isBinary("IsBinary", false)
-{}
+{
+	add(&filePath);
+	add(&isBinary);
+}
 
 STLFileImportCommand::Results::Results() :
 	isOk("IsOk", false)
-{}
+{
+	add(&isOk);
+}
 
 std::string STLFileImportCommand::getName()
 {
-	return "STLFileImport";
+	return ::FileImportCommandLabel;
 }
 
 void STLFileImportCommand::execute(Crystal::Scene::World* scene)

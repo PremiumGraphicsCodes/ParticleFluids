@@ -12,11 +12,13 @@ using namespace Crystal::Command;
 OBJFileExportCommand::Args::Args() :
 	filePath("FilePath", "")
 {
+	add(&filePath);
 }
 
 OBJFileExportCommand::Results::Results() :
 	isOk("IsOk", false)
 {
+	add(&isOk);
 }
 
 std::string OBJFileExportCommand::getName()
