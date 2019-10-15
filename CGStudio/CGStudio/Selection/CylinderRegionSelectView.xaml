@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="PG.CGStudio.Selection.CylinderRegionSelectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PG.CGStudio.Selection"
+             xmlns:select="clr-namespace:PG.CGStudio.Object.Select"
+             xmlns:control="clr-namespace:PG.Control;assembly=PGControl"
+             mc:Ignorable="d">
+    <UserControl.DataContext>
+        <local:CylinderRegionSelectViewModel/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <select:SceneSelectView DataContext="{Binding SelectViewModel}"/>
+        <control:Cylinder3dView DataContext="{Binding CylinderViewModel}"/>
+        <Button Content="Pick" Command="{Binding PickCommand}"/>
+    </StackPanel>
+</UserControl>

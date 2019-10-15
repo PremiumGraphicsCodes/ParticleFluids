@@ -3,6 +3,8 @@ using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
 using PG.Core.Math;
+using PG.Core.Shape;
+using PG.Core.UI;
 using Prism.Mvvm;
 using Reactive.Bindings;
 
@@ -41,10 +43,10 @@ namespace PG.CGStudio.Selection
             command.Execute(MainModel.Instance.Repository.Adapter);
             var position = command.GetResult<Vector3d>("Position");
 
-            var cylinder = new Sphere3d(CylinderViewModel.Value.Radius, position);
+            var cylinder = new Cylinder3d();
             CylinderViewModel.Value = cylinder;
             var builder = new WireFrameBuilder();
-            builder.Build(sphere, 24, 24);
+            builder.Build(cylinder, 24, 24);
             var appearance = new WireAppearance();
 
             var wfCommand = new PG.CLI.Command("AddWireFrame");
