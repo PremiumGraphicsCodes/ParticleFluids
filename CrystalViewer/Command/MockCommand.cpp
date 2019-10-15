@@ -1,10 +1,12 @@
 #include "MockCommand.h"
 
+#include "Public/MockLabels.h"
+
 using namespace Crystal::Command;
 
 std::string MockCommand::getName()
 {
-	return "Mock";
+	return ::MockCommandLabel;
 }
 
 void MockCommand::execute(Crystal::Scene::World* world)
