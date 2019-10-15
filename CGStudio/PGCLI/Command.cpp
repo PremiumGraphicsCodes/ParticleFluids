@@ -64,10 +64,17 @@ System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name)
 	return result;
 }
 
-System::Object^ Command::Get(WorldAdapter^ objects, int id, System::String^ name)
+System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name, int id)
 {
 	const auto& str = Converter::toCpp(name);
 	auto value = Crystal::Command::GetCommand::Get(objects->instance, id, str);
+	return AnyConverter::fromCpp(value);
+}
+
+System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId)
+{
+	const auto& str = Converter::toCpp(name);
+	auto value = Crystal::Command::GetCommand::Get(objects->instance, parentId, childId, str);
 	return AnyConverter::fromCpp(value);
 }
 

@@ -43,7 +43,7 @@ namespace PG.CGStudio.UICtrl
 
             if (parentId != 0)
             {
-                var selectedType = CLI.Command.Get(model, parentId, "SceneTypeId");// model.GetTypeById(id.parentId);
+                var selectedType = CLI.Command.Get(model, "SceneTypeId", parentId);// model.GetTypeById(id.parentId);
                 var pickedId = new ObjectId();
                 pickedId.parentId = parentId;
                 pickedId.childId = childId;

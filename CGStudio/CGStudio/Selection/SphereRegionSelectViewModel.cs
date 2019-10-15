@@ -37,11 +37,15 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
-            var command = new PG.CLI.Command("GetPosition");
-            command.SetArg("ParentId", id.parentId);
+            var model = MainModel.Instance.Repository.Adapter;
+            var position = PG.CLI.Command.Get(model, PG.GetLabels.PositionLabel, id.parentId, id.childId) as Vector3d;
+            /*
+            command.SetArg(, id.parentId);
             command.SetArg("ChildId", id.childId);
             command.Execute(MainModel.Instance.Repository.Adapter);
             var position = command.GetResult<Vector3d>("Position");
+            command.Clear();
+                        */
 
             var sphere = new Sphere3d(SphereViewModel.Value.Radius, position);
             SphereViewModel.Value = sphere;
@@ -49,10 +53,11 @@ namespace PG.CGStudio.Selection
             builder.Build(sphere, 24, 24);
             var appearance = new WireAppearance();
 
-            var wfCommand = new PG.CLI.Command("AddWireFrame");
-            wfCommand.SetArg("Lines", builder.WireFrame);
-            wfCommand.SetArg("IsItem", true);
-            wfCommand.Execute(MainModel.Instance.Repository.Adapter);
+            var command = new PG.CLI.Command();
+            command.Create(PG.WireFrameAddLabels.WireFrameAddLabel);
+            command.SetArg(PG.WireFrameAddLabels.LinesLabel, builder.WireFrame);
+            command.SetArg(PG.WireFrameAddLabels.IsItemLabel, true);
+            command.Execute(MainModel.Instance.Repository.Adapter);
 
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();

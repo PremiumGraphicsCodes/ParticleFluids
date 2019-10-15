@@ -37,15 +37,6 @@ namespace PG.CGStudio
             return false;
         }
 
-        public bool Import(string filePath)
-        {
-            var command = new PG.CLI.Command("FileImport");
-            command.SetArg("FilePath", filePath);
-            command.Execute(adapter);
-            var isOk = command.GetResult<bool>("IsOk");
-            return isOk;
-        }
-
         public bool Export(string filePath)
         {
             var command = new PG.CLI.Command("FileExport");
@@ -57,13 +48,13 @@ namespace PG.CGStudio
 
         public int AddParticleSystemScene(List<Vector3d> positions, string name)
         {
-            var command = new PG.CLI.Command("ParticleSystemAdd");
-            command.SetArg("Positions", positions);
-            command.SetArg("Name", name);
+            var command = new PG.CLI.Command(PG.ParticleSystemAddLabels.ParticleSystemAddLabel);
+            command.SetArg(PG.ParticleSystemAddLabels.PositionsLabel, positions);
+            command.SetArg(PG.ParticleSystemAddLabels.NameLabel, name);
             command.Execute(adapter);
-            var newId = command.GetResult<int>("NewId");
+            var newId = command.GetResult<int>(PG.ParticleSystemAddLabels.NewIdLabel);
 
-            command.Create("CameraFit");
+            command.Create(PG.CameraLabels.CameraFitCommandLabel);
             command.Execute(adapter);
             command.Clear();
             Sync();
@@ -72,11 +63,16 @@ namespace PG.CGStudio
 
         public int AddWireFrameScene(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
         {
-            var command = new PG.CLI.Command("WireFrameAdd");
-            command.SetArg("Lines", lines);
-            command.SetArg("Name", name);
+            var command = new PG.CLI.Command(PG.WireFrameAddLabels.WireFrameAddLabel);
+            command.SetArg(PG.WireFrameAddLabels.LinesLabel, lines);
+            command.SetArg(PG.WireFrameAddLabels.NameLabel, name);
             command.Execute(adapter);
             var newId = command.GetResult<int>("NewId");
+
+            command.Create(PG.CameraLabels.CameraFitCommandLabel);
+            command.Execute(adapter);
+            command.Clear();
+
             Sync();
             return newId;
         }

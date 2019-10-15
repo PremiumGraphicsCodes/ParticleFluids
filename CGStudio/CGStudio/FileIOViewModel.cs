@@ -89,8 +89,7 @@ namespace PG.CGStudio
             };
             if (DialogResult.OK == dialog.ShowDialog())
             {
-                var model = MainModel.Instance.Repository;
-                if(model.Import(dialog.FileName))
+                if(Import(dialog.FileName))
                 {
                     //model.Objects.Sync();
                     //model.Material.Sync();
@@ -104,6 +103,17 @@ namespace PG.CGStudio
                 }
             }
         }
+
+        private bool Import(string filePath)
+        {
+            var model = MainModel.Instance.Repository;
+            var command = new PG.CLI.Command("FileImport");
+            command.SetArg("FilePath", filePath);
+            command.Execute(model.Adapter);
+            var isOk = command.GetResult<bool>("IsOk");
+            return isOk;
+        }
+
 
         private void OnExport()
         {
