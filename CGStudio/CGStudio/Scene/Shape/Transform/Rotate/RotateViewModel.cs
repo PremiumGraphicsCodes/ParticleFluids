@@ -6,23 +6,34 @@ using Reactive.Bindings;
 
 namespace PG.CGStudio.Scene.Shape.Transform
 {
-    public class TranslateViewModel : INavigationAware
+    public class RotateViewModel : INavigationAware
     {
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
             = new ShapeSelectViewModel();
 
-        public Vector3dViewModel VectorViewModel { get; }
+        public Vector3dViewModel RatioViewModel { get; }
             = new Vector3dViewModel();
 
-        public ReactiveCommand TranslateCommand { get; }
+        public ReactiveCommand ScaleCommand { get; }
             = new ReactiveCommand();
 
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        public TranslateViewModel()
+        public RotateViewModel()
         {
-            this.TranslateCommand.Subscribe(OnTranslate);
+            this.ScaleCommand.Subscribe(OnScale);
+            this.OkCommand.Subscribe(OnOk);
+        }
+
+        private void OnScale()
+        {
+            Canvas3d.Instance.UICtrl = new RotateUICtrl(ShapeSelectViewModel.Id.Value);
+        }
+
+        private void OnOk()
+        {
+
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -36,12 +47,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-        }
-
-        private void OnTranslate()
-        {
-            var moveCtrl = new TranslateUICtrl(ShapeSelectViewModel.Id.Value);
-            Canvas3d.Instance.UICtrl = moveCtrl;
         }
     }
 }

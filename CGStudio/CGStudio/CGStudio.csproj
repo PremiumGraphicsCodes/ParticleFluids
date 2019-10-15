@@ -162,6 +162,8 @@
       <DependentUpon>PolygonMeshEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditViewModel.cs" />
+    <Compile Include="Scene\Shape\Transform\Rotate\RotateUICtrl.cs" />
+    <Compile Include="Scene\Shape\Transform\Rotate\RotateViewModel.cs" />
     <Compile Include="Scene\Shape\Transform\Scale\ScaleView.xaml.cs">
       <DependentUpon>ScaleView.xaml</DependentUpon>
     </Compile>
@@ -450,8 +452,6 @@
       <Name>HwndExtensions</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scene\Shape\Transform\Rotate\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

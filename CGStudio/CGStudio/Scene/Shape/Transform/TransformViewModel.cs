@@ -48,11 +48,7 @@ namespace PG.CGStudio.Object.Transform
 
         private void OnMove()
         {
-            var ids = new List<int>
-            {
-                SelectViewModel.Id.Value
-            };
-            var moveCtrl = new TranslateUICtrl(ids);
+            var moveCtrl = new TranslateUICtrl(SelectViewModel.Id.Value);
             Canvas3d.Instance.UICtrl = moveCtrl;
         }
 

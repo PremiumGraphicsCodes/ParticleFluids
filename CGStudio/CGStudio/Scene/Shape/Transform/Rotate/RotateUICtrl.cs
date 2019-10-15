@@ -1,22 +1,21 @@
 ﻿using PG.Core.Math;
-using System.Collections.Generic;
 
 namespace PG.CGStudio.UICtrl
 {
-    public class TranslateUICtrl : IUICtrl
+    public class RotateUICtrl : IUICtrl
     {
         private Vector2d prevPos;
 
         private int ObjectId;
 
-        public TranslateUICtrl()
+        public RotateUICtrl()
         {
             ObjectId = -1;
         }
 
-        public TranslateUICtrl(int objectId)
+        public RotateUICtrl(int objectId)
         {
-            ObjectId = objectId;
+            this.ObjectId = objectId;
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -31,16 +30,18 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
+            /*
             var canvas = Canvas3d.Instance;
 
             var v = (position - prevPos) * 0.1;
-            var command = new PG.CLI.Command("Translate");
+            var command = new PG.CLI.Command("Scale");
             command.SetArg("Id", ObjectId);
-            command.SetArg("Vector", new Vector3d( v.X, v.Y, 0.0) );
+            command.SetArg("Ratio", new Vector3d(v.X + 1.0, v.Y + 1.0, 1.0));
             command.Execute(MainModel.Instance.Repository.Adapter);
 
             canvas.Update(MainModel.Instance.Repository);
             canvas.Render();
+            */
         }
 
     }
