@@ -75,7 +75,8 @@ namespace PGConstCSFileGenerator
         public string ToCSSource()
         {
             var writer = new StringWriter();
-            writer.WriteLine("\tpublic class " + Name + "{");
+            writer.WriteLine("\tpublic class " + Name);
+            writer.WriteLine("\t{");
             foreach (var c in Constants)
             {
                 writer.WriteLine("\t\t" + c.ToCSSource());

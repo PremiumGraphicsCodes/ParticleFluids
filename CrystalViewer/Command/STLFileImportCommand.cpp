@@ -14,15 +14,15 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 STLFileImportCommand::Args::Args() :
-	filePath("FilePath", ""),
-	isBinary("IsBinary", false)
+	filePath(::FilePathLabel, ""),
+	isBinary(::IsBinaryLabel, false)
 {
 	add(&filePath);
 	add(&isBinary);
 }
 
 STLFileImportCommand::Results::Results() :
-	isOk("IsOk", false)
+	isOk(::IsOkLabel, false)
 {
 	add(&isOk);
 }

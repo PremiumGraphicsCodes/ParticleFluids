@@ -55,8 +55,9 @@ namespace PG.CGStudio.Selection
 
             var command = new PG.CLI.Command();
             command.Create(PG.WireFrameAddLabels.WireFrameAddLabel);
-            command.SetArg(PG.WireFrameAddLabels.LinesLabel, builder.WireFrame);
+            command.SetArg(PG.WireFrameAddLabels.LinesLabel, builder.WireFrame.Edges);
             command.SetArg(PG.WireFrameAddLabels.IsItemLabel, true);
+            command.SetArg(PG.WireFrameAddLabels.ColorLabel, new PG.Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f));
             command.Execute(MainModel.Instance.Repository.Adapter);
 
             Canvas3d.Instance.Update(MainModel.Instance.Repository);

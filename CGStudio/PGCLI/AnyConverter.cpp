@@ -19,6 +19,10 @@ std::any AnyConverter::toCpp(System::Object^ object)
 		const auto a = (double)(object);
 		return std::any(a);
 	}
+	else if (type == bool::typeid) {
+		const auto a = (bool)(object);
+		return std::any(a);
+	}
 	else if (type == System::String::typeid) {
 		const auto str = Converter::toCpp((System::String^)object);
 		return std::any(str);
@@ -35,6 +39,11 @@ std::any AnyConverter::toCpp(System::Object^ object)
 	}
 	else if (type == Core::Math::Matrix4d::typeid) {
 		auto v = (Core::Math::Matrix4d^)(object);
+		auto vv = Converter::toCpp(v);
+		return std::any(vv);
+	}
+	else if (type == Core::Graphics::ColorRGBA::typeid) {
+		auto v = (Core::Graphics::ColorRGBA^)(object);
 		auto vv = Converter::toCpp(v);
 		return std::any(vv);
 	}
@@ -68,6 +77,10 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 		const auto& v = std::any_cast<Crystal::Math::Vector3df>(any);
 		return Converter::fromCpp(v);
 	}
+	else if (type == typeid(Crystal::Math::Vector3dd)) {
+		const auto& v = std::any_cast<Crystal::Math::Vector3dd>(any);
+		return Converter::fromCpp(v);
+	}
 	else if (type == typeid(Crystal::Math::Matrix4df)) {
 		const auto& v = std::any_cast<Crystal::Math::Matrix4df>(any);
 		return Converter::fromCpp(v);
@@ -79,6 +92,9 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 			dest->Add( Converter::fromCpp(v[i]) );
 		}
 		return dest;
+	}
+	else {
+		assert(false);
 	}
 
 	return nullptr;

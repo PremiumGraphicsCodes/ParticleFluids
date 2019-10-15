@@ -2,17 +2,12 @@
 {
     public struct ColorRGBA
     {
-        private float v1;
-        private float v2;
-        private float v3;
-        private float v4;
-
-        public ColorRGBA(float v1, float v2, float v3, float v4) : this()
+        public ColorRGBA(float r, float g, float b, float a) : this()
         {
-            this.v1 = v1;
-            this.v2 = v2;
-            this.v3 = v3;
-            this.v4 = v4;
+            this.R = r;
+            this.G = g;
+            this.B = b;
+            this.A = a;
         }
 
         public float R { get; set; }
