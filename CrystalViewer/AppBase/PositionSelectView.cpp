@@ -1,18 +1,25 @@
 #include "PositionSelectView.h"
 
-#include "imgui.h"
 #include "PickUICtrl.h"
 #include "CameraUICtrl.h"
+
+#include "../Command/GetCommand.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-void PositionSelectView::onShow()
+PositionSelectView::PositionSelectView(const std::string& name, World* model, Canvas* canvas) :
+	IView(name),
+	positionView("Position", Math::Vector3dd(0, 0, 0)),
+	button("Pick"),
+	world(model),
+	canvas(canvas)
 {
-	ImGui::InputFloat3("Position", &position[0]);
-	if (ImGui::Button("Pick")) {
-		auto ctrl = new PickUICtrl(getWorld(), getCanvas(), SceneType::PolygonMeshScene);
-		auto model = getWorld();
+	add(&positionView);
+	add(&button);
+
+	button.setFunction([=](){
+		auto ctrl = new PickUICtrl(world, canvas, SceneType::PolygonMeshScene);
 		//model->getObjects()->getParticleSystems()->findParticleById();
 		auto func = [=](int parentId, int childId) {
 			/*
@@ -23,6 +30,7 @@ void PositionSelectView::onShow()
 			*/
 		};
 		ctrl->setFunction(func);
-		getCanvas()->setUICtrl(ctrl);
-	}
+		canvas->setUICtrl(ctrl);
+		}
+	);
 }

@@ -17,19 +17,7 @@ public:
 
 	struct Args : IArgs
 	{
-		Args() :
-			positions("Positions", {}),
-			pointSize("PointSize", 1.0f),
-			color("Color", Graphics::ColorRGBAf(1,1,1,1)),
-			name("Name", std::string("")),
-			isItem("IsItem", false)
-		{
-			add(&positions);
-			add(&pointSize);
-			add(&color);
-			add(&name);
-			add(&isItem);
-		}
+		Args();
 
 		Arg< std::vector<Math::Vector3dd> > positions;
 		Arg< float > pointSize;
@@ -48,6 +36,8 @@ public:
 
 		Result<int> newId;
 	};
+
+	static std::string getName();
 
 	void execute(Scene::World* scene) override;
 

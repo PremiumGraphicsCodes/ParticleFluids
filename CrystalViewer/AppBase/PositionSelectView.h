@@ -1,26 +1,28 @@
 #pragma once
 
-#include "IPanel.h"
-#include "../../Crystal/Math/Vector3d.h"
+#include "IView.h"
+#include "Vector3dView.h"
+#include "Button.h"
 
 namespace Crystal {
+	namespace Scene {
+		class World;
+	}
 	namespace UI {
+		class Canvas;
 
-class PositionSelectView : public IPanel
+class PositionSelectView : public IView
 {
 public:
-	PositionSelectView(const std::string& name, Scene::World* model, Canvas* canvas) :
-		IPanel(name, model, canvas),
-		position(0,0,0)
-	{
-	}
+	PositionSelectView(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	void onShow() override;
-
-	Math::Vector3dd getPosition() const { return position; }
+	Math::Vector3dd getPosition() const { return positionView.getValue(); }
 
 private:
-	Math::Vector3df position;
+	Vector3dView positionView;
+	Button button;
+	Scene::World* world;
+	Canvas* canvas;
 };
 
 	}

@@ -176,6 +176,7 @@
     <ClInclude Include="PolygonMeshAddCommand.h" />
     <ClInclude Include="Public\CameraLabels.h" />
     <ClInclude Include="Public\FileImportLabels.h" />
+    <ClInclude Include="Public\ParticleSystemAddLabels.h" />
     <ClInclude Include="Public\PickLabels.h" />
     <ClInclude Include="Public\PublicLabel.h" />
     <ClInclude Include="RotateCommand.h" />

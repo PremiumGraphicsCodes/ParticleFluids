@@ -3,13 +3,34 @@
 #include "../../Crystal/Scene/ParticleAttribute.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
+#include "Public/ParticleSystemAddLabels.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+ParticleSystemAddCommand::Args::Args() :
+	positions(::PositionsLabel, {}),
+	pointSize(::PointSizeLabel, 1.0f),
+	color(::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
+	name(::NameLabel, std::string("")),
+	isItem(::IsItemLabel, false)
+{
+	add(&positions);
+	add(&pointSize);
+	add(&color);
+	add(&name);
+	add(&isItem);
+}
+
+std::string ParticleSystemAddCommand::getName()
+{
+	return ::ParticleSystemAddLabel;
+}
+
 void ParticleSystemAddCommand::execute(World* world)
 {
-	const auto positions = args.positions.getValue();
+	const auto& positions = args.positions.getValue();
 	ParticleAttribute attr;
 	attr.color = args.color.getValue();
 	attr.size = args.pointSize.getValue();
@@ -25,5 +46,4 @@ void ParticleSystemAddCommand::execute(World* world)
 		results.newId.setValue(scene->getId());
 	}
 	world->updateViewModel();
-
 }
