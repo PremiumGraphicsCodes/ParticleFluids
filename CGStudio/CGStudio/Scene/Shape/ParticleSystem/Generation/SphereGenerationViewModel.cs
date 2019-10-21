@@ -37,7 +37,9 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-            MainModel.Instance.Repository.AddParticleSystemScene(positions, "PSSphere");
+            //MainModel.Instance.Repository.AddParticleSystemScene(positions, "PSSphere");
+            MainModel.Instance.Repository.AddParticleSystemScene(positions, "PSSphere", false, 1.0f, new Core.Graphics.ColorRGBA(1.0f, 1.0f, 1.0f, 1.0f));//, Appearance.Value, "PSBox");
+
             //MainModel.Instance.Repository.Objects.Add(particles, Appearance.Value, "PSSphere");
             Canvas3d.Instance.Update(MainModel.Instance.Repository);
             Canvas3d.Instance.Render();

@@ -37,11 +37,14 @@ namespace PG.CGStudio
             return false;
         }
 
-        public int AddParticleSystemScene(List<Vector3d> positions, string name)
+        public int AddParticleSystemScene(List<Vector3d> positions, string name, bool isItem, float pointSize, ColorRGBA color)
         {
             var command = new PG.CLI.Command(PG.ParticleSystemAddLabels.ParticleSystemAddLabel);
             command.SetArg(PG.ParticleSystemAddLabels.PositionsLabel, positions);
+            command.SetArg(PG.ParticleSystemAddLabels.IsItemLabel, isItem);
+            command.SetArg(PG.ParticleSystemAddLabels.PointSizeLabel, pointSize);
             command.SetArg(PG.ParticleSystemAddLabels.NameLabel, name);
+            command.SetArg(PG.ParticleSystemAddLabels.ColorLabel, color);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.ParticleSystemAddLabels.NewIdLabel);
 
