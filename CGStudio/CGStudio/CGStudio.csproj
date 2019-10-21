@@ -150,6 +150,7 @@
       <DependentUpon>TextureAddView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Appearance\Texture\TextureAddViewModel.cs" />
+    <Compile Include="Scene\SceneListModel.cs" />
     <Compile Include="Scene\Shape\ParticleSystem\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>

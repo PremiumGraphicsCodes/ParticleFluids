@@ -20,7 +20,7 @@ namespace PG.CGStudio.Scene.Appearance.Material
 
         private void OnOk()
         {
-            MainModel.Instance.World.AddMaterialScene(MaterialViewModel.Value, "Material");
+            MainModel.Instance.World.Scenes.AddMaterialScene(MaterialViewModel.Value, "Material");
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

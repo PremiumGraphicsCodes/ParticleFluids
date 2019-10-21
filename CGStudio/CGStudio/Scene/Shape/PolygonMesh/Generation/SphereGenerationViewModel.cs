@@ -31,7 +31,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
         {
             var builder = new PolygonMeshBuilder();
             builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
-            MainModel.Instance.World.AddPolygonMeshScene(builder.PolygonMesh, "PMSphere");
+            MainModel.Instance.World.Scenes.AddPolygonMeshScene(builder.PolygonMesh, "PMSphere");
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
         }
