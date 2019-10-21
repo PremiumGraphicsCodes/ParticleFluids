@@ -6,13 +6,14 @@ namespace PG.CGStudio.Generation.WireFrame
 {
     public class AppearanceViewModel
     {
-        public ColorRGBAViewModel Color { get; }
+        public ColorRGBAViewModel ColorViewModel { get; }
+            = new ColorRGBAViewModel();
+
         public ReactiveProperty<float> Width { get; }
+            = new ReactiveProperty<float>(1.0f);      
 
         public AppearanceViewModel()
         {
-            Color = new ColorRGBAViewModel();
-            Width = new ReactiveProperty<float>(1.0f);
         }
 
         public WireAppearance Value
@@ -21,14 +22,14 @@ namespace PG.CGStudio.Generation.WireFrame
             {
                 var appearance = new WireAppearance
                 {
-                    Color = Color.Value,
+                    Color = ColorViewModel.Value,
                     Width = Width.Value
                 };
                 return appearance;
             }
             set
             {
-                Color.Value = value.Color;
+                ColorViewModel.Value = value.Color;
                 Width.Value = value.Width;
             }
         }

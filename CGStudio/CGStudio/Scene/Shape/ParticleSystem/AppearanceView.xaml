@@ -11,7 +11,7 @@
         <local:AppearanceViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <graphics:ColorRGBAView DataContext="{Binding Color}"/>
+        <graphics:ColorRGBAView DataContext="{Binding ColorViewModel}"/>
         <TextBox Text="{Binding Size.Value}" Width="50"/>
     </StackPanel>
 </UserControl>
