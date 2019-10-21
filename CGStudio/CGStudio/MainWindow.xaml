@@ -105,6 +105,10 @@
                     <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="BoxRegionSelection"/>
                 </Fluent:RibbonGroupBox>
 
+                <Fluent:RibbonGroupBox Header="Trim">
+                    <Fluent:Button Header="Trim" Command="{Binding NavigateCommand}" CommandParameter="Trim"/>
+                </Fluent:RibbonGroupBox>
+
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         

@@ -4,9 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Scene.Shape.Trim"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             xmlns:select="clr-namespace:PG.CGStudio.Object.Select"
+             xmlns:selection="clr-namespace:PG.CGStudio.Selection"
+             mc:Ignorable="d">
+    <UserControl.DataContext>
+        <local:TrimViewModel/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
+        <selection:SphereRegionSelectView DataContext="{Binding SphereRegionSelectViewModel}"/>
+        <Button Content="OK" Command="{Binding OkCommand}"/>
+    </StackPanel>
 </UserControl>

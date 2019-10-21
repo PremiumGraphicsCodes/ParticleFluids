@@ -9,6 +9,7 @@ using PG.CGStudio.Scene.Shape.ParticleSystem;
 using PG.CGStudio.Scene.Shape.PolygonMesh;
 using PG.CGStudio.Scene.Shape.Transform.Rotate;
 using PG.CGStudio.Scene.Shape.Transform.Scale;
+using PG.CGStudio.Scene.Shape.Trim;
 using PG.CGStudio.Scene.Shape.WireFrame;
 using PG.CGStudio.Selection;
 using PG.CGStudio.Texture;
@@ -66,6 +67,8 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<SphereRegionSelectView>("SphereRegionSelection");
             containerRegistry.RegisterForNavigation<CylinderRegionSelectView>("CylinderRegionSelection");
             containerRegistry.RegisterForNavigation<BoxRegionSelectView>("BoxRegionSelection");
+
+            containerRegistry.RegisterForNavigation<TrimView>("Trim");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
