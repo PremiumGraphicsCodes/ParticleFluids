@@ -23,7 +23,7 @@ namespace PG.CGStudio.Scene.Appearance.Light
 
         private void OnOk()
         {
-            MainModel.Instance.Repository.AddLightScene(PointLightViewModel.Value, Name.Value);
+            MainModel.Instance.World.AddLightScene(PointLightViewModel.Value, Name.Value);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

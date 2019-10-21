@@ -18,7 +18,7 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
-            var model = MainModel.Instance.Repository.Adapter;
+            var model = MainModel.Instance.World.Adapter;
             var diff = position - prevPosition;
             var command = new PG.CLI.Command("CameraTranslate");
             command.SetArg("Translate", new Vector3d(diff.X, diff.Y, 0.0));
@@ -34,7 +34,7 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnRightButtonDragging(Vector2d position)
         {
-            var model = MainModel.Instance.Repository.Adapter;
+            var model = MainModel.Instance.World.Adapter;
             var diff = position - prevPosition;
             var command = new PG.CLI.Command("CameraRotate");
             command.SetArg("Rx", (float)diff.X);
@@ -46,7 +46,7 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnWheel(double dx)
         {
-            var model = MainModel.Instance.Repository.Adapter;
+            var model = MainModel.Instance.World.Adapter;
             var command = new PG.CLI.Command("CameraZoom");
             command.SetArg("Ratio", (float)dx);
             command.Execute(model);

@@ -6,14 +6,14 @@
 
         public static MainModel Instance { get { return instance; } }
 
-        private World repository;
+        private World world;
 
-        public World Repository { get { return repository; } }
+        public World World { get { return world; } }
 
         public MainModel()
         {
             instance = this;
-            repository = new World();
+            world = new World();
         }
     }
 }

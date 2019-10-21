@@ -36,9 +36,9 @@ namespace PG.CGStudio.UICtrl
             var command = new PG.CLI.Command("Scale");
             command.SetArg("Id", ObjectId);
             command.SetArg("Ratio", new Vector3d( v.X + 1.0, v.Y + 1.0, 1.0) );
-            command.Execute(MainModel.Instance.Repository.Adapter);
+            command.Execute(MainModel.Instance.World.Adapter);
 
-            canvas.Update(MainModel.Instance.Repository);
+            canvas.Update(MainModel.Instance.World);
             canvas.Render();
         }
 

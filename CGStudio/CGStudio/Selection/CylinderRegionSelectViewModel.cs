@@ -40,7 +40,7 @@ namespace PG.CGStudio.Selection
             var command = new PG.CLI.Command("GetPosition");
             command.SetArg("ParentId", id.parentId);
             command.SetArg("ChildId", id.childId);
-            command.Execute(MainModel.Instance.Repository.Adapter);
+            command.Execute(MainModel.Instance.World.Adapter);
             var position = command.GetResult<Vector3d>("Position");
 
             var cylinder = new Cylinder3d();
@@ -52,9 +52,9 @@ namespace PG.CGStudio.Selection
             var wfCommand = new PG.CLI.Command("AddWireFrame");
             wfCommand.SetArg("Lines", builder.WireFrame);
             wfCommand.SetArg("IsItem", true);
-            wfCommand.Execute(MainModel.Instance.Repository.Adapter);
+            wfCommand.Execute(MainModel.Instance.World.Adapter);
 
-            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
 
             Canvas3d.Instance.UICtrl = new CameraUICtrl();

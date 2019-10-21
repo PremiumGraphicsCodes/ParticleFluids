@@ -26,7 +26,7 @@ namespace PG.CGStudio.Light
 
         private void OnOk()
         {
-            var repository = MainModel.Instance.Repository;
+            var repository = MainModel.Instance.World;
 //            repository.UpdateLightScene(Id.Value, PointLightViewModel.Value);
             Canvas3d.Instance.Update(repository);
             Canvas3d.Instance.Render();

@@ -33,8 +33,8 @@ namespace PG.CGStudio.Generation.WireFrame
             var cylinder = CylinderViewModel.Value;
             builder.Build(cylinder, 25, 25);
             var wireFrame = builder.WireFrame;
-            MainModel.Instance.Repository.AddWireFrameScene(wireFrame.Edges, "WFCylinder", AppearanceViewModel.Value, false);
-            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            MainModel.Instance.World.AddWireFrameScene(wireFrame.Edges, "WFCylinder", AppearanceViewModel.Value, false);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
         }
     }

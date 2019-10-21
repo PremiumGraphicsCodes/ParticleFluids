@@ -66,7 +66,7 @@ namespace PG.CGStudio.Object.Transform
             var command = new PG.CLI.Command("Transform");
             command.SetArg("Id", SelectViewModel.Id.Value);
             //            command.SetArg("Matrix", MatrixViewModel.Value.ToArray());
-            command.Execute(MainModel.Instance.Repository.Adapter);
+            command.Execute(MainModel.Instance.World.Adapter);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

@@ -40,7 +40,7 @@ namespace PG.CGStudio
         private void OnVisibleChanged(bool b)
         {
   //          Adapter.SetVisible(b);
-            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
             //System.Diagnostics.Debug.Write(b.ToString());
         }

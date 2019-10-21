@@ -37,9 +37,9 @@ namespace PG.CGStudio.UICtrl
             var command = new PG.CLI.Command("Translate");
             command.SetArg("Id", ObjectId);
             command.SetArg("Vector", new Vector3d( v.X, v.Y, 0.0) );
-            command.Execute(MainModel.Instance.Repository.Adapter);
+            command.Execute(MainModel.Instance.World.Adapter);
 
-            canvas.Update(MainModel.Instance.Repository);
+            canvas.Update(MainModel.Instance.World);
             canvas.Render();
         }
 

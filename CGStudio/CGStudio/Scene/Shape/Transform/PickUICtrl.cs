@@ -31,7 +31,7 @@ namespace PG.CGStudio.UICtrl
         }
         public override void OnLeftButtonDown(Vector2d position)
         {
-            var model = MainModel.Instance.Repository.Adapter;
+            var model = MainModel.Instance.World.Adapter;
 
             Canvas3d.Instance.Renderer.Bind();
             var command = new PG.CLI.Command(Labels.PickCommandLabel);

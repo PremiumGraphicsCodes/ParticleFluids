@@ -12,9 +12,6 @@ namespace PG.CGStudio.Selection
 {
     public class SphereRegionSelectViewModel : BindableBase
     {
-        public ShapeSelectViewModel SelectViewModel { get; }
-            = new ShapeSelectViewModel();
-
         public Sphere3dViewModel SphereViewModel { get; }
             = new Sphere3dViewModel();
 
@@ -37,7 +34,7 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
-            var model = MainModel.Instance.Repository.Adapter;
+            var model = MainModel.Instance.World.Adapter;
             var position = PG.CLI.Command.Get(model, PG.GetLabels.PositionLabel, id.parentId, id.childId) as Vector3d;
             /*
             command.SetArg(, id.parentId);
@@ -52,15 +49,20 @@ namespace PG.CGStudio.Selection
             var builder = new WireFrameBuilder();
             builder.Build(sphere, 24, 24);
             var appearance = new WireAppearance();
+            appearance.Width = 1.0f;
+            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
 
+            MainModel.Instance.World.AddWireFrameScene(builder.WireFrame.Edges, "Item",appearance, true);
+            /*
             var command = new PG.CLI.Command();
             command.Create(PG.WireFrameAddLabels.WireFrameAddLabel);
             command.SetArg(PG.WireFrameAddLabels.LinesLabel, builder.WireFrame.Edges);
             command.SetArg(PG.WireFrameAddLabels.IsItemLabel, true);
             command.SetArg(PG.WireFrameAddLabels.ColorLabel, new PG.Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f));
-            command.Execute(MainModel.Instance.Repository.Adapter);
+            command.Execute(MainModel.Instance.World.Adapter);
+            */
 
-            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
 
             Canvas3d.Instance.UICtrl = new CameraUICtrl();

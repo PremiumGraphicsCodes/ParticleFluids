@@ -66,9 +66,11 @@ namespace PG.CGStudio
             command.Execute(adapter);
             var newId = command.GetResult<int>("NewId");
 
+            /*
             command.Create(PG.CameraLabels.CameraFitCommandLabel);
             command.Execute(adapter);
             command.Clear();
+            */
 
             Sync();
             return newId;
