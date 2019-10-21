@@ -271,7 +271,7 @@
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\WireFrame\Generation\SphereGenerationViewModel.cs" />
-    <Compile Include="Repository.cs" />
+    <Compile Include="World.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="Scene\Shape\Transform\Translate\TranslateUICtrl.cs" />
     <Compile Include="Scene\Shape\Transform\PickUICtrl.cs" />

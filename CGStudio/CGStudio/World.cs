@@ -7,14 +7,14 @@ using System.Collections.Generic;
 
 namespace PG.CGStudio
 {
-    public class Repository
+    public class World
     {
         private PG.CLI.WorldAdapter adapter;
         public PG.CLI.WorldAdapter Adapter { get { return adapter; } }
 
         public ReactiveCollection<PG.Core.Scene> Scene;
 
-        public Repository()
+        public World()
         {
             this.adapter = new PG.CLI.WorldAdapter();
             this.Scene = new ReactiveCollection<Core.Scene>();

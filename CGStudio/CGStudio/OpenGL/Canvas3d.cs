@@ -70,7 +70,7 @@ namespace PG.CGStudio
             renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.Repository.Adapter);
         }
 
-        public void Update(Repository model)
+        public void Update(World model)
         {
             renderer.Update(model.Adapter);
         }
