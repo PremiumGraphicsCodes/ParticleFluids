@@ -47,10 +47,9 @@ namespace PG.CGStudio
             {
                 return;
             }
-            PG.CLI.Command.Set(MainModel.Instance.World.Adapter, "IsVisible", Id.Value, b);
+            PG.CLI.Command.Set(MainModel.Instance.World.Adapter, GetLabels.IsVisibleLabel, Id.Value, b);
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
-            //System.Diagnostics.Debug.Write(b.ToString());
         }
 
     }

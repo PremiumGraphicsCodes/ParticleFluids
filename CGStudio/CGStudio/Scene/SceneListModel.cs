@@ -95,15 +95,15 @@ namespace PG.CGStudio.Scene
 
         public void Sync()
         {
-            var ids = PG.CLI.Command.Get(adapter, "SceneListIds") as List<int>;
+            var ids = PG.CLI.Command.Get(adapter, GetLabels.SceneListIdsLabel) as List<int>;
             this.Scenes.Clear();
             var root = CreateRoot();
             foreach (var id in ids)
             {
                 var s = new SceneModel();
                 s.Id.Value = id;
-                s.Name.Value = PG.CLI.Command.Get(adapter, "Name", id) as string;
-                s.IsVisible.Value = (bool)PG.CLI.Command.Get(adapter, "IsVisible", id);
+                s.Name.Value = PG.CLI.Command.Get(adapter, GetLabels.NameLabel, id) as string;
+                s.IsVisible.Value = (bool)PG.CLI.Command.Get(adapter, GetLabels.IsVisibleLabel, id);
                 root.Children.Add(s);
             }
             Scenes.Add( root );

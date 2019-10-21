@@ -41,6 +41,11 @@ namespace PG {
 		public const string CameraPositionLabel = "CameraPosition";
 		public const string CameraProjectionMatrixLabel = "CameraProjectionMatrix";
 		public const string PositionLabel = "Position";
+		public const string SceneCountLabel = "SceneCount";
+		public const string SceneListIdsLabel = "SceneListIds";
+		public const string IsVisibleLabel = "IsVisible";
+		public const string NameLabel = "Name";
+		public const string SceneTypeIdLabel = "SceneTypeId";
 	}
 
 	public class MockLabels
@@ -86,6 +91,9 @@ namespace PG {
 		public const string CameraPositionLabel = "CameraPosition";
 		public const string CameraProjectionMatrixLabel = "CameraProjectionMatrix";
 		public const string PositionLabel = "Position";
+		public const string PointSizeLabel = "PointSize";
+		public const string IsVisibleLabel = "IsVisible";
+		public const string ColorLabel = "Color";
 	}
 
 	public class TransformLabels

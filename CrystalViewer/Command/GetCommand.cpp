@@ -18,24 +18,10 @@ std::any GetCommand::Get(World* world, const std::string& name)
 		const auto& rot = world->getRenderer()->getCamera()->getProjectionMatrix();
 		return std::any(rot);
 	}
-	/*
-	else if (name == "CameraScale") {
-		const auto& rot = world->getRenderer()->getCamera()->setS();
-		return std::any(rot);
-	}
-	*/
-	else if (name == "SceneCount") {
+	else if (name == ::SceneCountLabel) {
 		return static_cast<int>( world->getObjects()->getRoot()->getChildren().size() );
 	}
-	else if (name == "SceneList") {
-		const auto& children = world->getObjects()->getRoot()->getChildren();
-		std::vector<std::string> names;
-		for (auto child : children) {
-			names.push_back( child->getName() );
-		}
-		return std::any(names);
-	}
-	else if (name == "SceneListIds") {
+	else if (name == ::SceneListIdsLabel) {
 		const auto& children = world->getObjects()->getRoot()->getChildren();
 		std::vector<int> ids;
 		for (auto child : children) {
@@ -50,13 +36,13 @@ std::any GetCommand::Get(World* world, const std::string& name)
 std::any GetCommand::Get(World* world, int id, const std::string& name)
 {
 	auto scene = world->getObjects()->findSceneById(id);
-	if (name == "SceneTypeId") {
+	if (name == ::SceneTypeIdLabel) {
 		return static_cast<int>(scene->getType());
 	}
-	else if (name == "Name") {
+	else if (name == ::NameLabel) {
 		return std::string(scene->getName());
 	}
-	else if (name == "IsVisible") {
+	else if (name == ::IsVisibleLabel) {
 		return std::any(scene->isVisible());
 	}
 	return std::any(0);
