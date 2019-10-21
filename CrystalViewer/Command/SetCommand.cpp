@@ -23,7 +23,7 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 	auto scene = world->getObjects()->findSceneById(id);
 	if (scene->getType() == SceneType::ParticleSystemScene) {
 		ParticleAttribute attr;
-		std::string name = scene->getName();
+//		std::string name = scene->getName();
 		if (name == "PointSize") {
 			attr.size = std::any_cast<float>(value);
 		}

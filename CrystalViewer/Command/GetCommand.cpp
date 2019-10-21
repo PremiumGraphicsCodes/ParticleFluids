@@ -27,7 +27,6 @@ std::any GetCommand::Get(World* world, const std::string& name)
 	else if (name == "SceneCount") {
 		return static_cast<int>( world->getObjects()->getRoot()->getChildren().size() );
 	}
-
 	else if (name == "SceneList") {
 		const auto& children = world->getObjects()->getRoot()->getChildren();
 		std::vector<std::string> names;
@@ -36,15 +35,29 @@ std::any GetCommand::Get(World* world, const std::string& name)
 		}
 		return std::any(names);
 	}
+	else if (name == "SceneListIds") {
+		const auto& children = world->getObjects()->getRoot()->getChildren();
+		std::vector<int> ids;
+		for (auto child : children) {
+			ids.push_back(child->getId());
+		}
+		return std::any(ids);
+	}
+
 	return std::any(0);
 }
 
 std::any GetCommand::Get(World* world, int id, const std::string& name)
 {
 	auto scene = world->getObjects()->findSceneById(id);
-	if (name == "SceneTypeId")
-	{
+	if (name == "SceneTypeId") {
 		return static_cast<int>(scene->getType());
+	}
+	else if (name == "Name") {
+		return std::string(scene->getName());
+	}
+	else if (name == "IsVisible") {
+		return std::any(scene->isVisible());
 	}
 	return std::any(0);
 }

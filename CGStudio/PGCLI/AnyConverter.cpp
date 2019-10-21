@@ -73,6 +73,9 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 	if (type == typeid(int)) {
 		return std::any_cast<int>(any);
 	}
+	if (type == typeid(bool)) {
+		return std::any_cast<bool>(any);
+	}
 	else if (type == typeid(Crystal::Math::Vector3df)) {
 		const auto& v = std::any_cast<Crystal::Math::Vector3df>(any);
 		return Converter::fromCpp(v);
@@ -84,6 +87,18 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 	else if (type == typeid(Crystal::Math::Matrix4df)) {
 		const auto& v = std::any_cast<Crystal::Math::Matrix4df>(any);
 		return Converter::fromCpp(v);
+	}
+	else if (type == typeid(std::string)) {
+		const auto& v = std::any_cast<std::string>(any);
+		return Converter::fromCpp(v);
+	}
+	else if (type == typeid(std::vector<int>)) {
+		const auto& v = std::any_cast<std::vector<int>>(any);
+		auto dest = gcnew System::Collections::Generic::List<int>();
+		for (int i = 0; i < v.size(); ++i) {
+			dest->Add(v[i]);
+		}
+		return dest;
 	}
 	else if (type == typeid(std::vector<std::string>)) {
 		const auto& v = std::any_cast<std::vector<std::string>>(any);
