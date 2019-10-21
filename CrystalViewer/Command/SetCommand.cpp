@@ -30,6 +30,9 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 		else if (name == "Color") {
 			attr.color = std::any_cast<Graphics::ColorRGBAf>(value);
 		}
+		else if (name == "IsVisible") {
+			scene->_isVisible = std::any_cast<bool>(value);
+		}
 		/*
 		else if (name == "Name") {
 			std::any_cast<std::string>(value);

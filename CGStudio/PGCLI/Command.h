@@ -29,6 +29,10 @@ public:
 	static System::Object^ Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId);
 
 	static void Set(WorldAdapter^ objects, System::String^ name, System::Object^ value);
+
+	static void Set(WorldAdapter^ objects, System::String^ name, int parentId, System::Object^ value);
+
+	static void Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, System::Object^ value);
 };
 
 

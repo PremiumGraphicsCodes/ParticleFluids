@@ -8,7 +8,7 @@ namespace PG.CGStudio
 
         public SceneListViewModel()
         {
-            Items = MainModel.Instance.World.Scenes.Scene.ToReadOnlyReactiveCollection();
+            Items = MainModel.Instance.World.Scenes.Scenes.ToReadOnlyReactiveCollection();
         }
     }
 }

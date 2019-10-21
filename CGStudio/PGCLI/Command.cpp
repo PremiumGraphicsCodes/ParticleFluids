@@ -84,3 +84,17 @@ void Command::Set(WorldAdapter^ objects, System::String^ name, System::Object^ v
 	auto v = AnyConverter::toCpp(value);
 	Crystal::Command::SetCommand::Set(objects->instance, str, v);
 }
+
+void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, System::Object^ value)
+{
+	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	auto v = AnyConverter::toCpp(value);
+	Crystal::Command::SetCommand::Set(objects->instance, parentId, str, v);
+}
+
+void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, System::Object^ value)
+{
+	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	auto v = AnyConverter::toCpp(value);
+	Crystal::Command::SetCommand::Set(objects->instance, parentId, childId, str, v);
+}

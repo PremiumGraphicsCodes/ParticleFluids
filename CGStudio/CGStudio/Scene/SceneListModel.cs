@@ -10,14 +10,14 @@ namespace PG.CGStudio.Scene
     {
         private PG.CLI.WorldAdapter adapter;
 
-        public ReactiveCollection<PG.Core.Scene> Scene;
+        public ReactiveCollection<PG.Core.Scene> Scenes;
 
         public SceneListModel(PG.CLI.WorldAdapter adapter)
         {
             this.adapter = adapter;
 
-            this.Scene = new ReactiveCollection<Core.Scene>();
-            this.Scene.Add(new PG.Core.Scene(0, "Root", Core.SceneType.Root));
+            this.Scenes = new ReactiveCollection<Core.Scene>();
+            this.Scenes.Add(new PG.Core.Scene(0, "Root", Core.SceneType.Root));
         }
 
         public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance)
@@ -95,7 +95,7 @@ namespace PG.CGStudio.Scene
                 var s = new PG.Core.Scene(0, scene, SceneType.ParticleSystem);
                 root.Children.Add(s);
             }
-            Scene[0] = root;
+            Scenes[0] = root;
 
             //var newScene = this.adapter.GetSceneAdapter().ToScene();
         }
