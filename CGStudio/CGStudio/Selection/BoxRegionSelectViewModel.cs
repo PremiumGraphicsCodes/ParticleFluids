@@ -1,13 +1,11 @@
 ﻿using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
+using PG.Core.Math;
+using PG.Core.Shape;
+using PG.Core.UI;
 using Prism.Mvvm;
 using Reactive.Bindings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PG.CGStudio.Selection
 {
@@ -21,7 +19,7 @@ namespace PG.CGStudio.Selection
 
         public BoxRegionSelectViewModel()
         {
-     //       this.PickCommand.Subscribe()
+            this.PickCommand.Subscribe(OnPickUI);
         }
 
         private void OnPickUI()
@@ -35,29 +33,19 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
-            /*
-            var command = new PG.CLI.Command("GetPosition");
-            command.SetArg("ParentId", id.parentId);
-            command.SetArg("ChildId", id.childId);
-            command.Execute(MainModel.Instance.Repository.Adapter);
-            var position = command.GetResult<Vector3d>("Position");
+            var position = MainModel.Instance.World.GetPosition(id);
 
-            var cylinder = new Cylinder3d();
-            CylinderViewModel.Value = cylinder;
+            var box = new Box3d();
             var builder = new WireFrameBuilder();
-            builder.Build(cylinder, 24, 24);
+            builder.Build(box);
             var appearance = new WireAppearance();
 
-            var wfCommand = new PG.CLI.Command("AddWireFrame");
-            wfCommand.SetArg("Lines", builder.WireFrame);
-            wfCommand.SetArg("IsItem", true);
-            wfCommand.Execute(MainModel.Instance.Repository.Adapter);
+            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.WireFrame.Edges, "", appearance, true);
 
-            Canvas3d.Instance.Update(MainModel.Instance.Repository);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
 
             Canvas3d.Instance.UICtrl = new CameraUICtrl();
-            */
         }
     }
 }

@@ -4,8 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Selection"
+             xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
              mc:Ignorable="d">
+    <UserControl.DataContext>
+        <local:BoxRegionSelectViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
-            
+        <Button Content="Pick" Command="{Binding PickCommand}"/>
+        <math:Box3dView DataContext="{Binding BoxViewModel}"/>
     </StackPanel>
 </UserControl>
