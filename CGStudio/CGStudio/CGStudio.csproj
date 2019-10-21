@@ -163,6 +163,9 @@
     </Compile>
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditViewModel.cs" />
     <Compile Include="Scene\Shape\Transform\Rotate\RotateUICtrl.cs" />
+    <Compile Include="Scene\Shape\Transform\Rotate\RotateView.xaml.cs">
+      <DependentUpon>RotateView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scene\Shape\Transform\Rotate\RotateViewModel.cs" />
     <Compile Include="Scene\Shape\Transform\Scale\ScaleView.xaml.cs">
       <DependentUpon>ScaleView.xaml</DependentUpon>
@@ -318,6 +321,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Shape\PolygonMesh\PolygonMeshEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Shape\Transform\Rotate\RotateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

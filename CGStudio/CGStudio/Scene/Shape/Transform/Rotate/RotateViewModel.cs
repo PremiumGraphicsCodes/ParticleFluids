@@ -14,7 +14,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public Vector3dViewModel RatioViewModel { get; }
             = new Vector3dViewModel();
 
-        public ReactiveCommand ScaleCommand { get; }
+        public ReactiveCommand RotateCommand { get; }
             = new ReactiveCommand();
 
         public ReactiveCommand OkCommand { get; }
@@ -22,11 +22,11 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public RotateViewModel()
         {
-            this.ScaleCommand.Subscribe(OnScale);
+            this.RotateCommand.Subscribe(OnRotate);
             this.OkCommand.Subscribe(OnOk);
         }
 
-        private void OnScale()
+        private void OnRotate()
         {
             Canvas3d.Instance.UICtrl = new RotateUICtrl(ShapeSelectViewModel.Id.Value);
         }
