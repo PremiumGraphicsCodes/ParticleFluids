@@ -108,6 +108,7 @@ namespace PG {
 		public const string ColorLabel = "Color";
 		public const string NameLabel = "Name";
 		public const string IsItemLabel = "IsItem";
+		public const string NewIdLabel = "NewId";
 	}
 
 }

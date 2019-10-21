@@ -64,13 +64,11 @@ namespace PG.CGStudio
             command.SetArg(PG.WireFrameAddLabels.LineWidthLabel, appearance.Width);
             command.SetArg(PG.WireFrameAddLabels.IsItemLabel, isItem);
             command.Execute(adapter);
-            var newId = command.GetResult<int>("NewId");
+            var newId = command.GetResult<int>(PG.WireFrameAddLabels.NewIdLabel);
 
-            /*
             command.Create(PG.CameraLabels.CameraFitCommandLabel);
             command.Execute(adapter);
             command.Clear();
-            */
 
             Sync();
             return newId;

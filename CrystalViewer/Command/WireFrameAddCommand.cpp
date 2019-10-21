@@ -23,6 +23,12 @@ WireFrameAddCommand::Args::Args() :
 	add(&isItem);
 }
 
+WireFrameAddCommand::Results::Results() :
+	newId(::NewIdLabel, -1)
+{
+	add(&newId);
+}
+
 std::string WireFrameAddCommand::getName()
 {
 	return ::WireFrameAddLabel;
