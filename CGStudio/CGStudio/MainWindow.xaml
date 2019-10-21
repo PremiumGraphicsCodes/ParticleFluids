@@ -101,6 +101,7 @@
 
                 <Fluent:RibbonGroupBox Header="RegionSelect">
                     <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="SphereRegionSelection"/>
+                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="CylinderRegionSelection"/>
                 </Fluent:RibbonGroupBox>
 
             </Fluent:RibbonTabItem>

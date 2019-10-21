@@ -64,6 +64,8 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<ScaleView>("Scale");
 
             containerRegistry.RegisterForNavigation<SphereRegionSelectView>("SphereRegionSelection");
+            containerRegistry.RegisterForNavigation<CylinderRegionSelectView>("CylinderRegionSelection");
+
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

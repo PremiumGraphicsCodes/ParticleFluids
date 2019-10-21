@@ -11,8 +11,7 @@
         <local:CylinderRegionSelectViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <select:SceneSelectView DataContext="{Binding SelectViewModel}"/>
-        <control:Cylinder3dView DataContext="{Binding CylinderViewModel}"/>
         <Button Content="Pick" Command="{Binding PickCommand}"/>
+        <control:Cylinder3dView DataContext="{Binding CylinderViewModel}"/>
     </StackPanel>
 </UserControl>

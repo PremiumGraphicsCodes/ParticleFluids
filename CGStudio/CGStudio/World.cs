@@ -36,5 +36,10 @@ namespace PG.CGStudio
         {
             return false;
         }
+
+        public Vector3d GetPosition(ObjectId id)
+        {
+            return PG.CLI.Command.Get(adapter, PG.GetLabels.PositionLabel, id.parentId, id.childId) as Vector3d;
+        }
     }
 }

@@ -12,9 +12,6 @@ namespace PG.CGStudio.Selection
 {
     public class CylinderRegionSelectViewModel : BindableBase
     {
-        public ShapeSelectViewModel SelectViewModel { get; }
-            = new ShapeSelectViewModel();
-
         public Cylinder3dViewModel CylinderViewModel { get; }
             = new Cylinder3dViewModel();
 
@@ -37,22 +34,16 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
-            var command = new PG.CLI.Command("GetPosition");
-            command.SetArg("ParentId", id.parentId);
-            command.SetArg("ChildId", id.childId);
-            command.Execute(MainModel.Instance.World.Adapter);
-            var position = command.GetResult<Vector3d>("Position");
+            var position = MainModel.Instance.World.GetPosition(id);
 
             var cylinder = new Cylinder3d();
             CylinderViewModel.Value = cylinder;
             var builder = new WireFrameBuilder();
             builder.Build(cylinder, 24, 24);
             var appearance = new WireAppearance();
+            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
 
-            var wfCommand = new PG.CLI.Command("AddWireFrame");
-            wfCommand.SetArg("Lines", builder.WireFrame);
-            wfCommand.SetArg("IsItem", true);
-            wfCommand.Execute(MainModel.Instance.World.Adapter);
+            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.WireFrame.Edges, "", appearance, true);
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();

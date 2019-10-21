@@ -1,4 +1,7 @@
-﻿namespace PG.CGStudio
+﻿using PG.Core;
+using PG.Core.Math;
+
+namespace PG.CGStudio
 {
     public class MainModel
     {
@@ -15,5 +18,6 @@
             instance = this;
             world = new World();
         }
+
     }
 }
