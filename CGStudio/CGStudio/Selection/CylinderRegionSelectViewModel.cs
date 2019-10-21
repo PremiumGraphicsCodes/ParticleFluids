@@ -43,7 +43,7 @@ namespace PG.CGStudio.Selection
             var appearance = new WireAppearance();
             appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
 
-            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.WireFrame.Edges, "", appearance, true);
+            MainModel.Instance.World.Items.AddWireFrameScene(builder.WireFrame.Edges, "", appearance);
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();

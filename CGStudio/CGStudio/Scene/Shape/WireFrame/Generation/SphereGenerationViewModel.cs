@@ -31,7 +31,7 @@ namespace PG.CGStudio.Generation.WireFrame
         {
             var builder = new WireFrameBuilder();
             builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
-            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.WireFrame.Edges, "WFSphere", AppearanceViewModel.Value, false);
+            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.WireFrame.Edges, "WFSphere", AppearanceViewModel.Value);
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
         }

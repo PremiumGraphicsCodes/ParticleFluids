@@ -20,14 +20,14 @@ namespace PG.CGStudio.Scene
             this.Scene.Add(new PG.Core.Scene(0, "Root", Core.SceneType.Root));
         }
 
-        public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance, bool isItem)
+        public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance)
         {
             var command = new PG.CLI.Command(PG.ParticleSystemAddLabels.ParticleSystemAddLabel);
             command.SetArg(PG.ParticleSystemAddLabels.PositionsLabel, positions);
             command.SetArg(PG.ParticleSystemAddLabels.NameLabel, name);
             command.SetArg(PG.ParticleSystemAddLabels.PointSizeLabel, appearance.Size);
             command.SetArg(PG.ParticleSystemAddLabels.ColorLabel, appearance.Color);
-            command.SetArg(PG.ParticleSystemAddLabels.IsItemLabel, isItem);
+            command.SetArg(PG.ParticleSystemAddLabels.IsItemLabel, false);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.ParticleSystemAddLabels.NewIdLabel);
 
@@ -38,14 +38,14 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
-        public int AddWireFrameScene(List<Line3d> lines, string name, Core.UI.WireAppearance appearance, bool isItem)
+        public int AddWireFrameScene(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
         {
             var command = new PG.CLI.Command(PG.WireFrameAddLabels.WireFrameAddLabel);
             command.SetArg(PG.WireFrameAddLabels.LinesLabel, lines);
             command.SetArg(PG.WireFrameAddLabels.NameLabel, name);
             command.SetArg(PG.WireFrameAddLabels.ColorLabel, appearance.Color);
             command.SetArg(PG.WireFrameAddLabels.LineWidthLabel, appearance.Width);
-            command.SetArg(PG.WireFrameAddLabels.IsItemLabel, isItem);
+            command.SetArg(PG.WireFrameAddLabels.IsItemLabel, false);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.WireFrameAddLabels.NewIdLabel);
 

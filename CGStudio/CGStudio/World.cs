@@ -1,10 +1,7 @@
 ﻿using PG.CGStudio.Scene;
+using PG.CGStudio.Scene.Item;
 using PG.Core;
-using PG.Core.Graphics;
 using PG.Core.Math;
-using PG.Core.Shape;
-using Reactive.Bindings;
-using System.Collections.Generic;
 
 namespace PG.CGStudio
 {
@@ -15,10 +12,13 @@ namespace PG.CGStudio
 
         public SceneListModel Scenes { get; }
 
+        public ItemListModel Items { get; }
+
         public World()
         {
             this.adapter = new PG.CLI.WorldAdapter();
             this.Scenes = new SceneListModel(adapter);
+            this.Items = new ItemListModel(adapter);
         }
 
         public void New()

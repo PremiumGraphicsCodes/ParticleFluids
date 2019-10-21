@@ -1,4 +1,7 @@
-﻿namespace PG.Core.Math
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace PG.Core.Math
 {
     public class Box3d : IVolume3d
     {
@@ -29,9 +32,6 @@
 
         public Box3d(Vector3d v1, Vector3d v2)
         {
-            this.min = new Vector3d(0,0,0);
-            this.max = new Vector3d(0,0,0);
-
             min.X = System.Math.Min(v1.X, v2.X);
             min.Y = System.Math.Min(v1.Y, v2.Y);
             min.Z = System.Math.Min(v1.Z, v2.Z);
@@ -40,6 +40,27 @@
             max.Y = System.Math.Max(v1.Y, v2.Y);
             max.Z = System.Math.Max(v1.Z, v2.Z);
         }
+
+        public Box3d(IEnumerable<Vector3d> positions) :
+            this(positions.FirstOrDefault())
+        {
+            foreach(var p in positions)
+            {
+                Add(p);
+            }
+        }
+
+        public void Add(Vector3d v)
+        {
+            min.X = System.Math.Min(min.X, v.X);
+            min.Y = System.Math.Min(min.Y, v.Y);
+            min.Z = System.Math.Min(min.Z, v.Z);
+
+            max.X = System.Math.Max(max.X, v.X);
+            max.Y = System.Math.Max(max.Y, v.Y);
+            max.Z = System.Math.Max(max.Z, v.Z);
+        }
+
 
         public double Volume
         {
