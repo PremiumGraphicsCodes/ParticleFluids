@@ -37,7 +37,7 @@ namespace PG.CGStudio
             return false;
         }
 
-        public int AddParticleSystemScene(List<Vector3d> positions, string name, bool isItem, Core.UI.ParticleAppearance appearance)
+        public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance, bool isItem)
         {
             var command = new PG.CLI.Command(PG.ParticleSystemAddLabels.ParticleSystemAddLabel);
             command.SetArg(PG.ParticleSystemAddLabels.PositionsLabel, positions);
