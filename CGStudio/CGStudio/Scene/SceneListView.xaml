@@ -18,9 +18,9 @@
         <TreeView.ItemTemplate>
             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding Id}"/>
-                    <CheckBox IsChecked="{Binding IsVisible}"/>
-                    <TextBlock Text="{Binding Name}"/>
+                    <TextBlock Text="{Binding Id.Value}"/>
+                    <CheckBox IsChecked="{Binding IsVisible.Value}"/>
+                    <TextBlock Text="{Binding Name.Value}"/>
                 </StackPanel>
             </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>

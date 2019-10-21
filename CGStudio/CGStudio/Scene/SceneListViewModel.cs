@@ -4,7 +4,7 @@ namespace PG.CGStudio
 {
     public class SceneListViewModel
     {
-        public ReadOnlyReactiveCollection<PG.Core.Scene> Items { get; }
+        public ReadOnlyReactiveCollection<SceneModel> Items { get; }
 
         public SceneListViewModel()
         {

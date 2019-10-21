@@ -3,6 +3,7 @@ using PG.Core.Shape;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System;
+using System.Collections.Generic;
 
 namespace PG.CGStudio
 {
@@ -15,6 +16,9 @@ namespace PG.CGStudio
         public ReactiveProperty<bool> IsVisible { get; }
 
         public ReactiveProperty<bool> IsSelected { get; }
+
+        public List<SceneModel> Children { get; }
+            = new List<SceneModel>();
 
         /*
         public ShapeType Type
@@ -39,6 +43,10 @@ namespace PG.CGStudio
 
         private void OnVisibleChanged(bool b)
         {
+            if(Canvas3d.Instance == null)
+            {
+                return;
+            }
   //          Adapter.SetVisible(b);
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
