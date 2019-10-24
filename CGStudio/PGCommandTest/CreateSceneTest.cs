@@ -5,18 +5,23 @@ using PG.CLI;
 namespace PGCommandTest
 {
     [TestClass]
-    public class UnitTest1
+    public class CreateSceneTest
     {
         [TestMethod]
-        public void TestGetSceneType()
+        public void TestCreateParticleSystemScene()
         {
             var world = new WorldAdapter();
             var id = CreateParticleSystemScene(world);
             var type = PG.CLI.Command.Get<PG.Core.SceneType>(world, "SceneType", id);
             Assert.AreEqual(PG.Core.SceneType.ParticleSystem, type);
+        }
 
-            id = CreateWireFrameScene(world);
-            type = PG.CLI.Command.Get<PG.Core.SceneType>(world, "SceneType", id);
+        [TestMethod]
+        public void TestCreateWireFrameScene()
+        {
+            var world = new WorldAdapter();
+            var id = CreateWireFrameScene(world);
+            var type = PG.CLI.Command.Get<PG.Core.SceneType>(world, "SceneType", id);
             Assert.AreEqual(PG.Core.SceneType.WireFrame, type);
         }
 
