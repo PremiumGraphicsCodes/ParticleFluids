@@ -45,6 +45,7 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 	else if (name == ::IsVisibleLabel) {
 		return std::any(scene->isVisible());
 	}
+	assert(false);
 	return std::any(0);
 }
 

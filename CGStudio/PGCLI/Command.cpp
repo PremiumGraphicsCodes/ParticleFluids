@@ -64,11 +64,12 @@ System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name)
 	return result;
 }
 
-System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name, int id)
+generic <class T>
+T Command::Get(WorldAdapter^ objects, System::String^ name, int id)
 {
-	const auto& str = Converter::toCpp(name);
+	const auto& str = PG::CLI::Converter::toCpp(name);
 	auto value = Crystal::Command::GetCommand::Get(objects->instance, id, str);
-	return AnyConverter::fromCpp(value);
+	return (T)AnyConverter::fromCpp(value);
 }
 
 System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId)

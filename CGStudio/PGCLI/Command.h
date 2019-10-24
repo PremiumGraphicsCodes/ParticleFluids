@@ -24,7 +24,8 @@ public:
 
 	static System::Object^ Get(WorldAdapter^ objects, System::String^ name);
 
-	static System::Object^ Get(WorldAdapter^ objects, System::String^ name, int parentId);
+	generic <class T>
+	static T Get(WorldAdapter^ objects, System::String^ name, int parentId);
 
 	static System::Object^ Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId);
 

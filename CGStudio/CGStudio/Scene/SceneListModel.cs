@@ -102,8 +102,8 @@ namespace PG.CGStudio.Scene
             {
                 var s = new SceneModel();
                 s.Id.Value = id;
-                s.Name.Value = PG.CLI.Command.Get(adapter, GetLabels.NameLabel, id) as string;
-                s.IsVisible.Value = (bool)PG.CLI.Command.Get(adapter, GetLabels.IsVisibleLabel, id);
+                s.Name.Value = PG.CLI.Command.Get<string>(adapter, GetLabels.NameLabel, id);
+                s.IsVisible.Value = PG.CLI.Command.Get<bool>(adapter, GetLabels.IsVisibleLabel, id);
                 root.Children.Add(s);
             }
             Scenes.Add( root );
