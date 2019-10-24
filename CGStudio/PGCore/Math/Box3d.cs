@@ -30,15 +30,10 @@ namespace PG.Core.Math
             this.max = v.Clone();
         }
 
-        public Box3d(Vector3d v1, Vector3d v2)
+        public Box3d(Vector3d v1, Vector3d v2) :
+            this(v1)
         {
-            min.X = System.Math.Min(v1.X, v2.X);
-            min.Y = System.Math.Min(v1.Y, v2.Y);
-            min.Z = System.Math.Min(v1.Z, v2.Z);
-
-            max.X = System.Math.Max(v1.X, v2.X);
-            max.Y = System.Math.Max(v1.Y, v2.Y);
-            max.Z = System.Math.Max(v1.Z, v2.Z);
+            Add(v2);
         }
 
         public Box3d(IEnumerable<Vector3d> positions) :

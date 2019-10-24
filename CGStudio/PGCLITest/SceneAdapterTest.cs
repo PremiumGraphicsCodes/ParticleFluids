@@ -7,28 +7,14 @@ using PG.Core.Math;
 namespace PGCLITest
 {
     [TestClass]
-    public class SceneAdapterTest
-    {
-        /*
-        [TestMethod]
-        public void TestAddParticleSystemScene()
-        {
-            var repository = new RepositoryAdapter();
-            var adapter = repository.GetSceneAdapter();
-            //var adapter = new PolygonMeshObjectAdapter();
-        }
-        */
-
-    }
-
-    [TestClass]
     public class CommandTest
     {
         [TestMethod]
         public void TestMock()
         {
+            var world = new WorldAdapter();
             var command = new Command("Mock");
-            //command.Execute();
+            command.Execute(world);
         }
     }
 }
