@@ -22,12 +22,14 @@ public:
 
 	void Clear();
 
-	static System::Object^ Get(WorldAdapter^ objects, System::String^ name);
+	generic <class T>
+	static T Get(WorldAdapter^ objects, System::String^ name);
 
 	generic <class T>
 	static T Get(WorldAdapter^ objects, System::String^ name, int parentId);
 
-	static System::Object^ Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId);
+	generic <class T>
+	static T Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId);
 
 	static void Set(WorldAdapter^ objects, System::String^ name, System::Object^ value);
 

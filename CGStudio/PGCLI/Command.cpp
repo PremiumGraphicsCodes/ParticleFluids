@@ -56,11 +56,12 @@ void Command::Clear()
 	::instance.clear();
 }
 
-System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name)
+generic <class T>
+T Command::Get(WorldAdapter^ objects, System::String^ name)
 {
-	const auto& str = Converter::toCpp(name);
+	const auto& str = PG::CLI::Converter::toCpp(name);
 	auto value = Crystal::Command::GetCommand::Get(objects->instance, str);
-	auto result = AnyConverter::fromCpp( value );
+	auto result = (T)AnyConverter::fromCpp( value );
 	return result;
 }
 
@@ -72,11 +73,12 @@ T Command::Get(WorldAdapter^ objects, System::String^ name, int id)
 	return (T)AnyConverter::fromCpp(value);
 }
 
-System::Object^ Command::Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId)
+generic <class T>
+T Command::Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId)
 {
-	const auto& str = Converter::toCpp(name);
+	const auto& str = PG::CLI::Converter::toCpp(name);
 	auto value = Crystal::Command::GetCommand::Get(objects->instance, parentId, childId, str);
-	return AnyConverter::fromCpp(value);
+	return (T)AnyConverter::fromCpp(value);
 }
 
 void Command::Set(WorldAdapter^ objects, System::String^ name, System::Object^ value)
