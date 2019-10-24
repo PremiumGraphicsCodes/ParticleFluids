@@ -10,13 +10,14 @@ namespace PGCLITest
         public void TestMock()
         {
             var world = new WorldAdapter();
-            var command = new Command(PG.MockLabels.MockCommandLabel);
+            var command = new Command("Mock");
             command.SetArg("rhs", 1);
             command.SetArg("lhs", 2);
             command.Execute(world);
             var actual = command.GetResult<int>("value");
             Assert.AreEqual(3, actual);
         }
+        /*
 
         [TestMethod]
         public void TestGetSceneType()
@@ -45,7 +46,6 @@ namespace PGCLITest
             return command.GetResult<int>(PG.WireFrameAddLabels.NewIdLabel);
         }
 
-        /*
         private int CreatePolygonMeshScene(WorldAdapter world)
         {
             var command = new Command(PG.PolygonMeshAddLabels.);

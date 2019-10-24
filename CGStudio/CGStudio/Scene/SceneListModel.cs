@@ -95,7 +95,7 @@ namespace PG.CGStudio.Scene
 
         public void Sync()
         {
-            var ids = PG.CLI.Command.Get<List<int>>(adapter, GetLabels.SceneListIdsLabel);
+            var ids = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel);
             this.Scenes.Clear();
             var root = CreateRoot();
             foreach (var id in ids)

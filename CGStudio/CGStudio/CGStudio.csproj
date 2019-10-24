@@ -136,7 +136,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
-    <Compile Include="ConstLabels.cs" />
     <Compile Include="FileIOViewModel.cs" />
     <Compile Include="Scene\Appearance\Light\LightAddView.xaml.cs">
       <DependentUpon>LightAddView.xaml</DependentUpon>
@@ -455,6 +454,10 @@
     <ProjectReference Include="..\PGCLI\PGCLI.vcxproj">
       <Project>{b2fcf247-2dcb-43ff-b179-c21d15c48500}</Project>
       <Name>PGCLI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PGCommand\PGCommand.csproj">
+      <Project>{b3ab885d-feda-476a-848f-515c34f1b2aa}</Project>
+      <Name>PGCommand</Name>
     </ProjectReference>
     <ProjectReference Include="..\PGControl\PGControl.csproj">
       <Project>{ef9cc996-010b-4334-bc64-8eb766bf73b0}</Project>
