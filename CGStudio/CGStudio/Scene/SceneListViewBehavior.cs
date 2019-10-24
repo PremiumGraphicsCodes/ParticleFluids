@@ -25,13 +25,14 @@ namespace PG.CGStudio.Object
             {
                 return;
             }
-            var selectedItem = treeView.SelectedItem as PG.Core.Scene;
+            var selectedItem = treeView.SelectedItem as SceneModel;
             if (selectedItem == null)
             {
                 return;
             }
             var parameters = new NavigationParameters();
-            switch(selectedItem.Type)
+            var type = PG.CLI.Command.Get<SceneType>(MainModel.Instance.World.Adapter, "SceneType", selectedItem.Id.Value);
+            switch(type)
             {
                 case SceneType.ParticleSystem:
                     parameters.Add("ParticleSystemEdit", selectedItem);
