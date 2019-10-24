@@ -73,7 +73,7 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 	if (type == typeid(int)) {
 		return std::any_cast<int>(any);
 	}
-	if (type == typeid(bool)) {
+	else if (type == typeid(bool)) {
 		return std::any_cast<bool>(any);
 	}
 	else if (type == typeid(Crystal::Math::Vector3df)) {
@@ -107,6 +107,10 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 			dest->Add( Converter::fromCpp(v[i]) );
 		}
 		return dest;
+	}
+	else if (type == typeid(Crystal::Scene::SceneType)) {
+		const auto& v = std::any_cast<Crystal::Scene::SceneType>(any);
+		return Converter::fromCpp(v);
 	}
 	else {
 		assert(false);

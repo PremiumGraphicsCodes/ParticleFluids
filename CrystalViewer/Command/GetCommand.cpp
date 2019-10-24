@@ -36,8 +36,8 @@ std::any GetCommand::Get(World* world, const std::string& name)
 std::any GetCommand::Get(World* world, int id, const std::string& name)
 {
 	auto scene = world->getObjects()->findSceneById(id);
-	if (name == ::SceneTypeIdLabel) {
-		return static_cast<int>(scene->getType());
+	if (name == "SceneType") {
+		return std::any(scene->getType());
 	}
 	else if (name == ::NameLabel) {
 		return std::string(scene->getName());

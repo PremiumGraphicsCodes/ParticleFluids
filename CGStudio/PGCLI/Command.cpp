@@ -31,9 +31,10 @@ void Command::Create(System::String^ name)
 	::instance.create(str);
 }
 
-void Command::SetArg(System::String^ name, System::Object^ value)
+generic <class T>
+void Command::SetArg(System::String^ name, T value)
 {
-	const auto& str = Converter::toCpp(name);
+	const auto& str = PG::CLI::Converter::toCpp(name);
 	const auto v = AnyConverter::toCpp(value);
 	::instance.setArg(str, v);
 }
@@ -81,23 +82,26 @@ T Command::Get(WorldAdapter^ objects, System::String^ name, int parentId, int ch
 	return (T)AnyConverter::fromCpp(value);
 }
 
-void Command::Set(WorldAdapter^ objects, System::String^ name, System::Object^ value)
+generic <class T>
+void Command::Set(WorldAdapter^ objects, System::String^ name, T value)
 {
-	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	const auto& str = PG::CLI::Converter::toCpp(name);
 	auto v = AnyConverter::toCpp(value);
 	Crystal::Command::SetCommand::Set(objects->instance, str, v);
 }
 
-void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, System::Object^ value)
+generic <class T>
+void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, T value)
 {
-	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	const auto& str = PG::CLI::Converter::toCpp(name);
 	auto v = AnyConverter::toCpp(value);
 	Crystal::Command::SetCommand::Set(objects->instance, parentId, str, v);
 }
 
-void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, System::Object^ value)
+generic <class T>
+void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, T value)
 {
-	const auto& str = msclr::interop::marshal_as<std::string>(name);
+	const auto& str = PG::CLI::Converter::toCpp(name);
 	auto v = AnyConverter::toCpp(value);
 	Crystal::Command::SetCommand::Set(objects->instance, parentId, childId, str, v);
 }

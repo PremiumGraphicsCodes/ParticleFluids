@@ -13,7 +13,8 @@ public:
 
 	void Create(System::String^ name);
 
-	void SetArg(System::String^ name, System::Object^ value);
+	generic <class T>
+	void SetArg(System::String^ name, T value);
 
 	void Execute(WorldAdapter^ objects);
 	
@@ -31,11 +32,14 @@ public:
 	generic <class T>
 	static T Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId);
 
-	static void Set(WorldAdapter^ objects, System::String^ name, System::Object^ value);
+	generic <class T>
+	static void Set(WorldAdapter^ objects, System::String^ name, T value);
 
-	static void Set(WorldAdapter^ objects, System::String^ name, int parentId, System::Object^ value);
+	generic <class T>
+	static void Set(WorldAdapter^ objects, System::String^ name, int parentId, T value);
 
-	static void Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, System::Object^ value);
+	generic <class T>
+	static void Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, T value);
 };
 
 
