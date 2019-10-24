@@ -10,7 +10,7 @@ namespace PGCLITest
         public void TestMock()
         {
             var world = new WorldAdapter();
-            var command = new Command("Mock");
+            var command = new Command(PG.MockLabels.MockCommandLabel);
             command.SetArg("rhs", 1);
             command.SetArg("lhs", 2);
             command.Execute(world);
@@ -23,9 +23,9 @@ namespace PGCLITest
         {
             var world = new WorldAdapter();
 
-            var command = new Command("ParticleSystemAdd");
+            var command = new Command(PG.ParticleSystemAddLabels.ParticleSystemAddLabel);
             command.Execute(world);
-            var id = command.GetResult<int>("NewId");
+            var id = command.GetResult<int>(PG.ParticleSystemAddLabels.NewIdLabel);
 
             var type = PG.CLI.Command.Get<int>(world, "SceneTypeId", id);
         }
