@@ -36,15 +36,6 @@
             this.center = center;
         }
 
-        public Vector3d GetPosition(double r, double u, double v)
-        {
-            var angle = u * 2.0 * System.Math.PI;
-            var x = r * radius * System.Math.Cos(angle);
-            var y = r * radius * System.Math.Sin(angle);
-            var z = height * v;
-            return new Vector3d(x, y, z);
-        }
-
         public Vector3d GetNormal(double u, double v)
         {
             var p1 = GetPosition(1.0, u, v);
@@ -62,11 +53,47 @@
             return new Vector3d(x, y, z);
         }
 
+        public Vector3d GetPosition(double r, double u, double v)
+        {
+            var angle = u * 2.0 * System.Math.PI;
+            var x = r * radius * System.Math.Cos(angle);
+            var y = r * radius * System.Math.Sin(angle);
+            var z = height * v;
+            return new Vector3d(x, y, z);
+        }
+
         public bool IsInside(Vector3d position)
         {
- //           var heightIsOk = height - position.Z;
- //           var distIsOk = position.X
-            return false;
+            var distance = CalculateDistance(position);
+            return distance < 0.0;
+        }
+
+        public double CalculateDistance(Vector3d position)
+        {
+            var bottom = GetPosition(0.0, 0.0, 0.0);
+            var top = GetPosition(0.0, 0.0, 1.0);
+            var bottomToTop = top - bottom;
+
+            var ptp = position - bottom;            
+            var dot = ptp.Dot(bottomToTop);
+
+            var heightSquared = height * height;
+            if(dot< 0.0f || dot> heightSquared )
+            {
+                return( -1.0f );
+            }
+            else
+            {
+                var dsq = ptp.LengthSquared - dot* dot / heightSquared;
+                if(dsq > heightSquared )
+                {
+                    return( -1.0f );
+                }
+                else
+                {
+                    return System.Math.Sqrt(dsq) - radius;
+                }
+            }
         }
     }
 }
