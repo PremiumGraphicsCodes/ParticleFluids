@@ -12,6 +12,9 @@
     </UserControl.DataContext>
     <StackPanel>
         <Button Content="Pick" Command="{Binding PickCommand}"/>
-        <control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
+        <StackPanel>
+            <TextBlock Text="Radius"/>
+            <TextBox Text="{Binding Radius.Value}"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

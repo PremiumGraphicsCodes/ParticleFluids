@@ -7,13 +7,18 @@ using PG.Core.Shape;
 using PG.Core.UI;
 using Prism.Mvvm;
 using Reactive.Bindings;
+using System.Collections.Generic;
 
 namespace PG.CGStudio.Selection
 {
     public class SphereRegionSelectViewModel : BindableBase
     {
-        public Sphere3dViewModel SphereViewModel { get; }
-            = new Sphere3dViewModel();
+        public IEnumerable<Sphere3d> Spheres { get { return spheres; } }
+
+        private List<Sphere3d> spheres = new List<Sphere3d>();
+
+        public ReactiveProperty<double> Radius { get; }
+            = new ReactiveProperty<double>(1.0);
 
         public ReactiveCommand PickCommand { get; }
             = new ReactiveCommand();
@@ -37,8 +42,7 @@ namespace PG.CGStudio.Selection
             var model = MainModel.Instance.World.Adapter;
             var position = PG.CLI.Command.Get<Vector3d>(model, PG.GetLabels.PositionLabel, id.parentId, id.childId);
 
-            var sphere = new Sphere3d(SphereViewModel.Value.Radius, position);
-            SphereViewModel.Value = sphere;
+            var sphere = new Sphere3d(Radius.Value, position);
             var builder = new WireFrameBuilder();
             builder.Build(sphere, 24, 24);
             var appearance = new WireAppearance
@@ -51,6 +55,8 @@ namespace PG.CGStudio.Selection
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
+
+            spheres.Add(sphere);
 
             Canvas3d.Instance.UICtrl = new CameraUICtrl();
         }
