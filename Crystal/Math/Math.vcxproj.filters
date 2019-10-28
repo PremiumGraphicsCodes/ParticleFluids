@@ -42,9 +42,6 @@
     <ClInclude Include="Quad3d.h">
       <Filter>Curve</Filter>
     </ClInclude>
-    <ClInclude Include="ISurface.h">
-      <Filter>Curve</Filter>
-    </ClInclude>
     <ClInclude Include="Box3d.h">
       <Filter>Curve</Filter>
     </ClInclude>
@@ -61,6 +58,9 @@
       <Filter>Curve</Filter>
     </ClInclude>
     <ClInclude Include="IVolume3d.h">
+      <Filter>Curve</Filter>
+    </ClInclude>
+    <ClInclude Include="ISurface3d.h">
       <Filter>Curve</Filter>
     </ClInclude>
   </ItemGroup>

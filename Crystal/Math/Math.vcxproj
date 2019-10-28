@@ -141,7 +141,7 @@
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="glm.h" />
     <ClInclude Include="ICurve.h" />
-    <ClInclude Include="ISurface.h" />
+    <ClInclude Include="ISurface3d.h" />
     <ClInclude Include="IVolume3d.h" />
     <ClInclude Include="Line2d.h" />
     <ClInclude Include="Line3d.h" />

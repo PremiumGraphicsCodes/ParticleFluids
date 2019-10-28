@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Math/ICurve.h"
-#include "../Math/ISurface.h"
+#include "../Math/ISurface3d.h"
 #include "../Math/IVolume3d.h"
 
 namespace Crystal {
@@ -18,7 +18,7 @@ public:
 
 	void build(const Math::ICurve& curve);
 
-	void build(const Math::ISurface& curve, const int unum, const int vnum);
+	void build(const Math::ISurface3d& curve, const int unum, const int vnum);
 
 	void build(const Math::IVolume3d& curve, const int unum, const int vnum);
 

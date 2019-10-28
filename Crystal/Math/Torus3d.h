@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Vector3d.h"
-#include "ISurface.h"
+#include "ISurface3d.h"
 
 namespace Crystal {
 	namespace Math {
 
-class Torus3d : public ISurface
+class Torus3d : public ISurface3d
 {
 public:
 	Torus3d():

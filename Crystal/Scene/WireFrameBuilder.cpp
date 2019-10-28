@@ -47,7 +47,7 @@ void WireFrameBuilder::build(const ICurve& line)
 	lines.push_back(Line3dd::fromPoints(vertices[0], vertices[1]));
 }
 
-void WireFrameBuilder::build(const ISurface& curve, const int unum, const int vnum)
+void WireFrameBuilder::build(const ISurface3d& curve, const int unum, const int vnum)
 {
 	const auto du = 1.0 / unum;
 	const auto dv = 1.0 / vnum;
