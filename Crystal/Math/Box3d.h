@@ -64,6 +64,11 @@ public:
 
 	Vector3dd getPosition(const Vector3dd& param) const;
 
+	Vector3dd getNormal(const Math::Vector2dd& p) const override
+	{
+		return getPosition(Vector3dd(p, 1.0) - Vector3dd(p, 0.0));
+	}
+
 	Sphere3d getBoundintSphere() const;
 
 private:
