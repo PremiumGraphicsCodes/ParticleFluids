@@ -67,6 +67,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<SphereRegionSelectView>("SphereRegionSelection");
             containerRegistry.RegisterForNavigation<CylinderRegionSelectView>("CylinderRegionSelection");
             containerRegistry.RegisterForNavigation<BoxRegionSelectView>("BoxRegionSelection");
+            containerRegistry.RegisterForNavigation<RegionSelectView>("RegionSelection");
 
             containerRegistry.RegisterForNavigation<TrimView>("Trim");
         }

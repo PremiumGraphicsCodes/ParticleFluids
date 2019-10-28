@@ -1,14 +1,18 @@
 ﻿using Reactive.Bindings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PG.CGStudio.Selection
 {
     public class RegionSelectViewModel
     {
+        public SphereRegionSelectViewModel SphereRegionSelectViewModel { get; }
+            = new SphereRegionSelectViewModel();
+
+        public BoxRegionSelectViewModel BoxRegionSelectViewModel { get; }
+            = new BoxRegionSelectViewModel();
+
+        public CylinderRegionSelectViewModel CylinderRegionSelectViewModel { get; }
+            = new CylinderRegionSelectViewModel();
+
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 

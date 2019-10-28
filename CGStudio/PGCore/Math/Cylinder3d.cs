@@ -78,7 +78,7 @@
             var dot = ptp.Dot(bottomToTop);
 
             var heightSquared = height * height;
-            if(dot< 0.0f || dot> heightSquared )
+            if(dot < 0.0f || dot > heightSquared )
             {
                 return( -1.0f );
             }

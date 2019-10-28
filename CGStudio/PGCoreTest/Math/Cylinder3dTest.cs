@@ -7,7 +7,7 @@ namespace PGCoreTest.Math
     [TestClass]
     public class Cylinder3dTest
     {
-        private double tolerance = 1.0e-9;
+        private readonly double tolerance = 1.0e-9;
 
         [TestMethod]
         public void TestGetPosition()
@@ -31,14 +31,18 @@ namespace PGCoreTest.Math
             var position = new Vector3d(20.0, 0.0, 0.0);
             var cylinder = new Cylinder3d(10.0, 100.0, new Vector3d(0, 0, 0));
             var distance = cylinder.CalculateDistance(position);
-            Assert.AreEqual(10.0, distance, 1.0e-12);
+            Assert.AreEqual(10.0, distance, tolerance);
         }
 
         [TestMethod]
         public void TestIsInside()
         {
             var cylinder = new Cylinder3d(10.0, 100.0, new Vector3d(0, 0, 0));
-            Assert.IsTrue( cylinder.IsInside(new Vector3d(5.0, 0.0, 0.0)) );
+            Assert.IsTrue( cylinder.IsInside(new Vector3d(5.0, 0.0, 0.0)));
+            Assert.IsFalse(cylinder.IsInside(new Vector3d(15.0, 0.0, 0.0)));
+
+            //Assert.IsFalse(cylinder.IsInside(new Vector3d(0.0, 200.0, 0.0)));
+
         }
     }
 }

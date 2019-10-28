@@ -5,18 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Selection"
              mc:Ignorable="d">
+    <UserControl.DataContext>
+        <local:RegionSelectViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Box"/>
-            <local:BoxRegionSelectView/>
+            <local:BoxRegionSelectView DataContext="{Binding BoxRegionSelectViewModel}"/>
         </StackPanel>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Sphere"/>
-            <local:SphereRegionSelectView/>
+            <local:SphereRegionSelectView DataContext="{Binding SphereRegionSelectViewModel}"/>
         </StackPanel>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Cylinder"/>
-            <local:CylinderRegionSelectView/>
+            <local:CylinderRegionSelectView DataContext="{Binding CylinderRegionSelectViewModel}"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
