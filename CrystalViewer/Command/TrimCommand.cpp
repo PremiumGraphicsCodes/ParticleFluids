@@ -7,6 +7,17 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+TrimCommand::Args::Args() :
+	shapeId("ShapeId", -1),
+	space("Space", Math::Space3d())
+{
+};
+
+TrimCommand::Results::Results() :
+	newId("NewId", -1)
+{
+}
+
 void TrimCommand::execute(World* world)
 {
 	auto shape = world->getObjects()->findSceneById<IShapeScene*>(args.shapeId.getValue());

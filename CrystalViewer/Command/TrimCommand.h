@@ -11,12 +11,16 @@ class TrimCommand : public ICommand
 {
 	struct Args : IArgs
 	{
+		Args();
+
 		Arg<int> shapeId;
 		Arg<Math::Space3d> space;
 	};
 
 	struct Results : IResults
 	{
+		Results();
+
 		Result<int> newId;
 	};
 
