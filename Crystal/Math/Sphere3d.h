@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_MATH_SPHERE_H__
-#define __CRYSTAL_MATH_SPHERE_H__
+#pragma once
 
 #include "Vector3d.h"
 #include "IVolume3d.h"
@@ -39,9 +38,9 @@ public:
 
 	bool isSame(const Sphere3d& rhs, const double tolerance) const;
 
-	bool isInner(const Vector3dd& v) const { return glm::distance(v, center) < radius; }
+	bool isInside(const Vector3dd& v) const { return glm::distance(v, center) < radius; }
 
-	bool isOuter(const Vector3dd& v) const { return glm::distance(v, center) > radius; }
+	bool isOutside(const Vector3dd& v) const { return glm::distance(v, center) > radius; }
 
 	void moveTo(const Vector3dd& pos) { this->center = pos; }
 
@@ -52,5 +51,3 @@ private:
 
 	}
 }
-
-#endif

@@ -17,3 +17,9 @@ Vector3dd Cylinder3d::getPosition(const Vector3dd& p) const
 	const auto z = height * p.y - height * 0.5;
 	return center + Vector3dd(x, y, z);
 }
+
+bool Cylinder3d::isInside(const Vector3dd& position) const
+{
+	assert(false);
+	return false;
+}

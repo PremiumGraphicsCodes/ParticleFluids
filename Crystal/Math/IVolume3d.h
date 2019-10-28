@@ -16,8 +16,10 @@ public:
 	virtual Vector3dd getNormal(const Math::Vector2dd& p) const
 	{
 		return getPosition(Vector3dd(p, 1.0) - Vector3dd(p, 0.0));
-
 	}
+
+	virtual bool isInside(const Math::Vector3dd& position) const = 0;
+
 };
 
 	}

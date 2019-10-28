@@ -11,3 +11,9 @@ Vector3dd Cone3d::getPosition(const Vector3dd& p) const
 	const auto z = p.y * height;
 	return bottom + Vector3dd(x, y, z);
 }
+
+bool Cone3d::isInside(const Vector3dd& position) const
+{
+	assert(false);
+	return false;
+}

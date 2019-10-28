@@ -30,6 +30,8 @@ public:
 
 	double getHeight() const { return height; }
 
+	bool isInside(const Math::Vector3dd& position) const override;
+
 private:
 	Vector3dd bottom;
 	double radius;

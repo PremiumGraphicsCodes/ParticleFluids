@@ -5,7 +5,7 @@
 using namespace Crystal::Math;
 
 namespace {
-	double tolerance = 1.0e-12;
+	const double tolerance = 1.0e-12;
 }
 
 TEST(Box3dTest, TestGetMin)

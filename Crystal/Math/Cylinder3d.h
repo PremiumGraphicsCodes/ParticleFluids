@@ -33,6 +33,8 @@ public:
 
 	Vector3dd getCenter() const { return center; }
 
+	bool isInside(const Math::Vector3dd& position) const;
+
 private:
 	double radius;
 	double height;
