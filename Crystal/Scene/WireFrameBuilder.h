@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Math/ICurve.h"
+#include "../Math/ICurve3d.h"
 #include "../Math/ISurface3d.h"
 #include "../Math/IVolume3d.h"
 
@@ -16,7 +16,7 @@ class WireFrameBuilder
 public:
 	void build(const Math::Box3d& box);
 
-	void build(const Math::ICurve& curve);
+	void build(const Math::ICurve3d& curve);
 
 	void build(const Math::ISurface3d& curve, const int unum, const int vnum);
 

@@ -39,7 +39,7 @@ void WireFrameBuilder::build(const Box3d& box)
 	lines.push_back(Line3dd::fromPoints(vertices[3], vertices[7]));
 }
 
-void WireFrameBuilder::build(const ICurve& line)
+void WireFrameBuilder::build(const ICurve3d& line)
 {
 	std::vector<Vector3dd> vertices;
 	vertices.push_back(line.getPosition(0.0));

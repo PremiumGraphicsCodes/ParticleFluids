@@ -27,9 +27,6 @@
     <ClInclude Include="Vector4d.h">
       <Filter>Vector</Filter>
     </ClInclude>
-    <ClInclude Include="ICurve.h">
-      <Filter>Curve</Filter>
-    </ClInclude>
     <ClInclude Include="Circle2d.h">
       <Filter>Curve</Filter>
     </ClInclude>
@@ -61,6 +58,9 @@
       <Filter>Curve</Filter>
     </ClInclude>
     <ClInclude Include="ISurface3d.h">
+      <Filter>Curve</Filter>
+    </ClInclude>
+    <ClInclude Include="ICurve3d.h">
       <Filter>Curve</Filter>
     </ClInclude>
   </ItemGroup>
