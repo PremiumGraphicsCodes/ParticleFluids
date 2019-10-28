@@ -10,20 +10,16 @@
     <Filter Include="Vector">
       <UniqueIdentifier>{b807285c-d727-4a84-ae41-1602b18c585a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Primitive2d">
+      <UniqueIdentifier>{f5697436-9181-44e0-a579-3c14c24dc38f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Primitive3d">
+      <UniqueIdentifier>{1765ff6f-07d1-48a1-a9b4-db722b5b5fa8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Box3dTest.cpp" />
-    <ClCompile Include="Circle2d.cpp" />
-    <ClCompile Include="Cone3dTest.cpp" />
-    <ClCompile Include="Cylinder3dTest.cpp" />
     <ClCompile Include="GaussianTest.cpp" />
-    <ClCompile Include="Line3dTest.cpp" />
-    <ClCompile Include="Plane3dTest.cpp" />
-    <ClCompile Include="Quad3dTest.cpp" />
     <ClCompile Include="Ray3dTest.cpp" />
-    <ClCompile Include="Sphere3dTest.cpp" />
-    <ClCompile Include="Torus3dTest.cpp" />
-    <ClCompile Include="Triangle3dTest.cpp" />
     <ClCompile Include="Matrix2dTest.cpp">
       <Filter>Matrix</Filter>
     </ClCompile>
@@ -36,6 +32,38 @@
     <ClCompile Include="Vector3dTest.cpp">
       <Filter>Vector</Filter>
     </ClCompile>
-    <ClCompile Include="Box2dTest.cpp" />
+    <ClCompile Include="Box2dTest.cpp">
+      <Filter>Primitive2d</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle2d.cpp">
+      <Filter>Primitive2d</Filter>
+    </ClCompile>
+    <ClCompile Include="Box3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Cone3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Cylinder3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Line3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Quad3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Torus3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

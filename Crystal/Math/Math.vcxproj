@@ -152,6 +152,7 @@
     <ClInclude Include="Quad3d.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Ray3d.h" />
+    <ClInclude Include="Space3d.h" />
     <ClInclude Include="Sphere3d.h" />
     <ClInclude Include="Tolerance.h" />
     <ClInclude Include="Torus3d.h" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Plane3d.cpp" />
     <ClCompile Include="Quad3d.cpp" />
     <ClCompile Include="Ray3d.cpp" />
+    <ClCompile Include="Space3d.cpp" />
     <ClCompile Include="Sphere3d.cpp" />
     <ClCompile Include="Triangle3d.cpp" />
     <ClCompile Include="Vector3d.cpp" />

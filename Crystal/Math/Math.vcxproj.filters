@@ -3,12 +3,9 @@
   <ItemGroup>
     <ClInclude Include="Tolerance.h" />
     <ClInclude Include="Quaternion.h" />
-    <ClInclude Include="Triangle3d.h" />
     <ClInclude Include="glm.h" />
     <ClInclude Include="Ray3d.h" />
-    <ClInclude Include="Plane3d.h" />
     <ClInclude Include="Gaussian.h" />
-    <ClInclude Include="Box2d.h" />
     <ClInclude Include="Matrix2d.h">
       <Filter>Matrix</Filter>
     </ClInclude>
@@ -27,42 +24,52 @@
     <ClInclude Include="Vector4d.h">
       <Filter>Vector</Filter>
     </ClInclude>
-    <ClInclude Include="Circle2d.h">
-      <Filter>Curve</Filter>
-    </ClInclude>
-    <ClInclude Include="Line2d.h">
-      <Filter>Curve</Filter>
-    </ClInclude>
     <ClInclude Include="Line3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="Quad3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="Box3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="Cone3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="Cylinder3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="Sphere3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="Torus3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="IVolume3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="ISurface3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="ICurve3d.h">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClInclude>
+    <ClInclude Include="Circle2d.h">
+      <Filter>Primitive2d</Filter>
+    </ClInclude>
+    <ClInclude Include="Line2d.h">
+      <Filter>Primitive2d</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane3d.h">
+      <Filter>Primitive3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Box2d.h">
+      <Filter>Primitive2d</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle3d.h">
+      <Filter>Primitive3d</Filter>
+    </ClInclude>
+    <ClInclude Include="Space3d.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Matrix">
@@ -71,38 +78,48 @@
     <Filter Include="Vector">
       <UniqueIdentifier>{a20ffa60-e43b-4cba-a0fe-209061263892}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Curve">
+    <Filter Include="Primitive3d">
       <UniqueIdentifier>{62e4bbe1-ab29-4955-a2e5-b711c2a90036}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Primitive2d">
+      <UniqueIdentifier>{6345ad72-c8fd-4e79-82f5-c72584a1e0d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Triangle3d.cpp" />
     <ClCompile Include="Ray3d.cpp" />
-    <ClCompile Include="Plane3d.cpp" />
-    <ClCompile Include="Box2d.cpp" />
     <ClCompile Include="Vector3d.cpp">
       <Filter>Vector</Filter>
     </ClCompile>
-    <ClCompile Include="Line2d.cpp">
-      <Filter>Curve</Filter>
-    </ClCompile>
     <ClCompile Include="Line3d.cpp">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClCompile>
     <ClCompile Include="Quad3d.cpp">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClCompile>
     <ClCompile Include="Box3d.cpp">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClCompile>
     <ClCompile Include="Cone3d.cpp">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClCompile>
     <ClCompile Include="Cylinder3d.cpp">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClCompile>
     <ClCompile Include="Sphere3d.cpp">
-      <Filter>Curve</Filter>
+      <Filter>Primitive3d</Filter>
     </ClCompile>
+    <ClCompile Include="Line2d.cpp">
+      <Filter>Primitive2d</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane3d.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Box2d.cpp">
+      <Filter>Primitive2d</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle3d.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
+    <ClCompile Include="Space3d.cpp" />
   </ItemGroup>
 </Project>
