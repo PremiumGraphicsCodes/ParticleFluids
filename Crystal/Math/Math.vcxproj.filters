@@ -60,7 +60,7 @@
     <ClInclude Include="Torus3d.h">
       <Filter>Curve</Filter>
     </ClInclude>
-    <ClInclude Include="IVolume.h">
+    <ClInclude Include="IVolume3d.h">
       <Filter>Curve</Filter>
     </ClInclude>
   </ItemGroup>

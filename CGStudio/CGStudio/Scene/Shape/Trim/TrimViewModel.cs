@@ -10,10 +10,27 @@ namespace PG.CGStudio.Scene.Shape.Trim
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
             = new ShapeSelectViewModel();
 
-        public SphereRegionSelectViewModel SphereRegionSelectViewModel { get; }
-            = new SphereRegionSelectViewModel();
+        public RegionSelectViewModel RegionSelectViewModel { get; }
+            = new RegionSelectViewModel();
 
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
+
+        public TrimViewModel()
+        {
+            OkCommand.Subscribe(OnOk);
+        }
+
+        private void OnOk()
+        {
+            var regions = RegionSelectViewModel.Regions;
+            /*
+            for(var region in regions)
+            {
+                region.IsInside()
+            }
+            */
+
+        }
     }
 }

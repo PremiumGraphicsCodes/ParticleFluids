@@ -103,6 +103,9 @@
     <ClInclude Include="Public\MockLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="TrimCommand.h">
+      <Filter>Scene\Shape\Trim</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -212,6 +215,9 @@
     </Filter>
     <Filter Include="Public">
       <UniqueIdentifier>{d6ba1b28-bbff-414a-911b-334672ec90b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Trim">
+      <UniqueIdentifier>{d9be7589-1db5-4cd6-8ea1-d013ea4f6881}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

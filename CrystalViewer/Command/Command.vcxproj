@@ -192,6 +192,7 @@
     <ClInclude Include="STLFileImportCommand.h" />
     <ClInclude Include="TransformCommand.h" />
     <ClInclude Include="TranslateCommand.h" />
+    <ClInclude Include="TrimCommand.h" />
     <ClInclude Include="WireFrameAddCommand.h" />
   </ItemGroup>
   <ItemGroup>

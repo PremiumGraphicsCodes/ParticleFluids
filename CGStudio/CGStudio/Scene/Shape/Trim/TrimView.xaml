@@ -12,7 +12,7 @@
     </UserControl.DataContext>
     <StackPanel>
         <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
-        <selection:SphereRegionSelectView DataContext="{Binding SphereRegionSelectViewModel}"/>
+        <selection:RegionSelectView DataContext="{Binding RegionSelectViewModel}"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
     </StackPanel>
 </UserControl>

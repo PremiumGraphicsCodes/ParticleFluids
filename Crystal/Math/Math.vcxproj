@@ -142,7 +142,7 @@
     <ClInclude Include="glm.h" />
     <ClInclude Include="ICurve.h" />
     <ClInclude Include="ISurface.h" />
-    <ClInclude Include="IVolume.h" />
+    <ClInclude Include="IVolume3d.h" />
     <ClInclude Include="Line2d.h" />
     <ClInclude Include="Line3d.h" />
     <ClInclude Include="Matrix2d.h" />

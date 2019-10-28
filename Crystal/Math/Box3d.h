@@ -2,7 +2,7 @@
 #define __CRYSTAL_MATH_BOX_3D_H__
 
 #include "Vector3d.h"
-#include "IVolume.h"
+#include "IVolume3d.h"
 
 namespace Crystal {
 	namespace Math {
@@ -11,7 +11,7 @@ namespace Crystal {
 		class Line3d;
 		class Sphere3d;
 
-class Box3d : IVolume
+class Box3d : IVolume3d
 {
 public:
 	Box3d();

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "IVolume.h"
+#include "IVolume3d.h"
 #include "Vector3d.h"
 
 namespace Crystal {
 	namespace Math {
 
-class Cylinder3d : public IVolume
+class Cylinder3d : public IVolume3d
 {
 public:
 	Cylinder3d() :
