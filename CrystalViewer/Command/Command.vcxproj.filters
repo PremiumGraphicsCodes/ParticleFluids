@@ -175,6 +175,9 @@
     <ClCompile Include="PCDFileExportCommand.cpp">
       <Filter>File\PCD</Filter>
     </ClCompile>
+    <ClCompile Include="TrimCommand.cpp">
+      <Filter>Scene\Shape\Trim</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

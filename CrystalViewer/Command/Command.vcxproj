@@ -222,6 +222,7 @@
     <ClCompile Include="STLFileImportCommand.cpp" />
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="TranslateCommand.cpp" />
+    <ClCompile Include="TrimCommand.cpp" />
     <ClCompile Include="WireFrameAddCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
