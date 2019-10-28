@@ -75,5 +75,13 @@ namespace PG.Core.Math
             var l = Length;
             return min + new Vector3d( l.X *u, l.Y * v, l.Z * w);
         }
+
+        public bool IsInside(Vector3d position)
+        {
+            var xIsIn = (min.X < position.X) && (position.X < max.X);
+            var yIsIn = (min.Y < position.Y) && (position.Y < max.Y);
+            var zIsIn = (min.Z < position.Z) && (position.Z < max.Z);
+            return xIsIn && yIsIn && zIsIn;
+        }
     }
 }

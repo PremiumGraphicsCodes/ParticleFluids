@@ -50,5 +50,11 @@
             var vv = GetPosition(1.0, u, v) - Center;
             return vv.Normalized;
         }
+
+        public bool IsInside(Vector3d position)
+        {
+            var distanceSquared = position.DistanceSquared( center );
+            return distanceSquared < radius * radius;
+        }
     }
 }

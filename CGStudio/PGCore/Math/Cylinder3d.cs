@@ -61,5 +61,12 @@
             var z = height * v;
             return new Vector3d(x, y, z);
         }
+
+        public bool IsInside(Vector3d position)
+        {
+ //           var heightIsOk = height - position.Z;
+ //           var distIsOk = position.X
+            return false;
+        }
     }
 }

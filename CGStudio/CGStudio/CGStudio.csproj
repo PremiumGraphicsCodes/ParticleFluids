@@ -192,6 +192,10 @@
       <DependentUpon>CylinderRegionSelectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Selection\CylinderRegionSelectViewModel.cs" />
+    <Compile Include="Selection\RegionSelectView.xaml.cs">
+      <DependentUpon>RegionSelectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Selection\RegionSelectViewModel.cs" />
     <Compile Include="Selection\ShapeSelectView.xaml.cs">
       <DependentUpon>ShapeSelectView.xaml</DependentUpon>
     </Compile>
@@ -354,6 +358,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Selection\CylinderRegionSelectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Selection\RegionSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

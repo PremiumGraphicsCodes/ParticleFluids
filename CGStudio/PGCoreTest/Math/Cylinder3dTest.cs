@@ -24,5 +24,12 @@ namespace PGCoreTest.Math
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
         }
+
+        [TestMethod]
+        public void TestIsInside()
+        {
+            var cylinder = new Cylinder3d(10.0, 100.0, new Vector3d(0, 0, 0));
+            Assert.IsTrue( cylinder.IsInside(new Vector3d(5.0, 0.0, 0.0)) );
+        }
     }
 }

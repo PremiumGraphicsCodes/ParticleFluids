@@ -20,5 +20,14 @@ namespace PGCoreTest.Math
             actual = sphere.GetPosition(1.0, 0.5, 0.0);
             Assert.IsTrue(expected.IsSame(actual, tolerance));
         }
+
+        [TestMethod]
+        public void TestIsInside()
+        {
+            var sphere = new Sphere3d(10.0, new Vector3d(0, 0, 0));
+            Assert.IsTrue( sphere.IsInside(new Vector3d(5.0, 0.0, 0.0)) );
+            Assert.IsFalse(sphere.IsInside(new Vector3d(15.0, 0.0, 0.0)));
+
+        }
     }
 }
