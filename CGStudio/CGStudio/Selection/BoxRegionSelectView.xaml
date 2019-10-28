@@ -11,6 +11,5 @@
     </UserControl.DataContext>
     <StackPanel>
         <Button Content="Pick" Command="{Binding PickCommand}"/>
-        <math:Box3dView DataContext="{Binding BoxViewModel}"/>
     </StackPanel>
 </UserControl>

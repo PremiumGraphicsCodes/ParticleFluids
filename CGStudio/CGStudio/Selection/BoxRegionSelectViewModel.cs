@@ -12,8 +12,9 @@ namespace PG.CGStudio.Selection
 {
     public class BoxRegionSelectViewModel : BindableBase
     {
-        public Box3dViewModel BoxViewModel { get; }
-            = new Box3dViewModel();
+        public IEnumerable<Box3d> Boxes { get { return boxes; } }
+
+        private List<Box3d> boxes = new List<Box3d>();
 
         public ReactiveCommand PickCommand { get; }
             = new ReactiveCommand();
@@ -47,13 +48,18 @@ namespace PG.CGStudio.Selection
             var box = new Box3d(pickedPositions);
             var builder = new WireFrameBuilder();
             builder.Build(box);
-            var appearance = new WireAppearance();
-            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
+            var appearance = new WireAppearance
+            {
+                Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f),
+                Width = 1.0f
+            };
 
             MainModel.Instance.World.Items.AddWireFrameScene(builder.WireFrame.Edges, "", appearance);
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
+
+            boxes.Add(box);
 
             Canvas3d.Instance.UICtrl = new CameraUICtrl();
         }

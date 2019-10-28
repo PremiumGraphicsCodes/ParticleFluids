@@ -7,13 +7,15 @@ using PG.Core.Shape;
 using PG.Core.UI;
 using Prism.Mvvm;
 using Reactive.Bindings;
+using System.Collections.Generic;
 
 namespace PG.CGStudio.Selection
 {
     public class CylinderRegionSelectViewModel : BindableBase
     {
-        public Cylinder3dViewModel CylinderViewModel { get; }
-            = new Cylinder3dViewModel();
+        public IEnumerable<Cylinder3d> Cylinders { get { return cylinders; } }
+
+        private readonly List<Cylinder3d> cylinders = new List<Cylinder3d>();
 
         public ReactiveCommand PickCommand { get; }
             = new ReactiveCommand();
@@ -37,16 +39,20 @@ namespace PG.CGStudio.Selection
             var position = MainModel.Instance.World.GetPosition(id);
 
             var cylinder = new Cylinder3d();
-            CylinderViewModel.Value = cylinder;
             var builder = new WireFrameBuilder();
             builder.Build(cylinder, 24, 24);
-            var appearance = new WireAppearance();
-            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
+            var appearance = new WireAppearance
+            {
+                Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f),
+                Width = 1.0f
+            };
 
             MainModel.Instance.World.Items.AddWireFrameScene(builder.WireFrame.Edges, "", appearance);
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
+
+            cylinders.Add( cylinder );
 
             Canvas3d.Instance.UICtrl = new CameraUICtrl();
         }

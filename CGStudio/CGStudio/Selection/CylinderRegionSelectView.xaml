@@ -12,6 +12,5 @@
     </UserControl.DataContext>
     <StackPanel>
         <Button Content="Pick" Command="{Binding PickCommand}"/>
-        <control:Cylinder3dView DataContext="{Binding CylinderViewModel}"/>
     </StackPanel>
 </UserControl>
