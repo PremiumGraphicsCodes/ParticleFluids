@@ -39,7 +39,9 @@ TEST(Box3dTest, TestGetLength)
 
 TEST(Box3dTest, TestHasIntersection)
 {
-	EXPECT_FALSE(Box3d(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1)).hasIntersection(Box3d(Vector3dd(2, 2, 2), Vector3dd(4, 4, 4))));
+	const Box3d b1(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
+	const Box3d b2(Vector3dd(2, 2, 2), Vector3dd(4, 4, 4));
+	EXPECT_FALSE(b1.hasIntersection(b2));
 }
 
 TEST(Box3dTest, TestGetOverlapped)
@@ -67,4 +69,11 @@ TEST(Box3dTest, TestGetPosition)
 	EXPECT_EQ(Vector3dd(2,0,0), b1.getPosition(Vector3dd(1, 0, 0)));
 	EXPECT_EQ(Vector3dd(2,2,0), b1.getPosition(Vector3dd(1, 1, 0)));
 	EXPECT_EQ(Vector3dd(0,2,0), b1.getPosition(Vector3dd(0, 1, 0)));
+}
+
+TEST(Box3dTest, TestIsInside)
+{
+	const Box3d b1(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2));
+	EXPECT_TRUE( b1.isInside(Vector3dd(1, 1, 1)) );
+	EXPECT_FALSE(b1.isInside(Vector3dd(5, 1, 1)) );
 }
