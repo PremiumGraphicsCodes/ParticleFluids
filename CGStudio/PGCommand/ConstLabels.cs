@@ -108,6 +108,14 @@ namespace PG {
 		public const string ScaleRatioLabel = "Ratio";
 	}
 
+	public class TrimLabels
+	{
+		public const string TrimCommandLabel = "Trim";
+		public const string ShapeIdLabel = "ShapeId";
+		public const string SpaceLabel = "Space";
+		public const string NewIdLabel = "NewId";
+	}
+
 	public class WireFrameAddLabels
 	{
 		public const string WireFrameAddLabel = "WireFrameAdd";

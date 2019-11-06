@@ -47,11 +47,11 @@ std::any AnyConverter::toCpp(System::Object^ object)
 		auto vv = Converter::toCpp(v);
 		return std::any(vv);
 	}
-	else if (type == System::Collections::Generic::List<Core::Math::Vector3d^>::typeid) {
-		auto values = (System::Collections::Generic::List<Core::Math::Vector3d^>^)object;
-		std::vector<Crystal::Math::Vector3dd> dest(values->Count);
-		for (int i = 0; i < values->Count; ++i) {
-			dest[i] = Converter::toCpp(values[i]);
+	else if (nullptr != (System::Collections::Generic::IEnumerable<Core::Math::Vector3d^>^)object) {
+		auto values = (System::Collections::Generic::IEnumerable<Core::Math::Vector3d^>^)object;
+		std::vector<Crystal::Math::Vector3dd> dest;
+		for each(Core::Math::Vector3d^ v in values) {
+			dest.push_back( Converter::toCpp(v) );
 		}
 		return std::any(dest);
 	}
