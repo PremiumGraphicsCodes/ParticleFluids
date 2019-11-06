@@ -2,20 +2,26 @@
 #include "../../Crystal/Scene/World.h"
 #include "../../Crystal/Scene/IShapeScene.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "Public/TrimLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 TrimCommand::Args::Args() :
-	shapeId("ShapeId", -1),
-	space("Space", Math::Space3d())
+	shapeId(::ShapeIdLabel, -1),
+	space(::SpaceLabel, Math::Space3d())
 {
 };
 
 TrimCommand::Results::Results() :
-	newId("NewId", -1)
+	newId(::NewIdLabel, -1)
 {
+}
+
+std::string TrimCommand::getName()
+{
+	return ::TrimCommandLabel;
 }
 
 void TrimCommand::execute(World* world)

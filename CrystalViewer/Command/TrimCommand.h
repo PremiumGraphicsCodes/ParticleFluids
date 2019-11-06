@@ -24,6 +24,8 @@ class TrimCommand : public ICommand
 		Result<int> newId;
 	};
 
+	static std::string getName();
+
 	void execute(Scene::World* world) override;
 
 private:

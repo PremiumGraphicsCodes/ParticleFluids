@@ -184,6 +184,7 @@
     <ClInclude Include="Public\PublicLabel.h" />
     <ClInclude Include="Public\SetLabels.h" />
     <ClInclude Include="Public\TransformLabels.h" />
+    <ClInclude Include="Public\TrimLabels.h" />
     <ClInclude Include="Public\WireFrameAddLabels.h" />
     <ClInclude Include="RotateCommand.h" />
     <ClInclude Include="ScaleCommand.h" />

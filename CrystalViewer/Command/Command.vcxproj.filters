@@ -106,6 +106,9 @@
     <ClInclude Include="TrimCommand.h">
       <Filter>Scene\Shape\Trim</Filter>
     </ClInclude>
+    <ClInclude Include="Public\TrimLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
