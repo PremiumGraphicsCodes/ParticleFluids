@@ -17,7 +17,8 @@ public:
 	{
 		Args();
 
-		Arg< std::filesystem::path > filePath;
+		Arg< int > id;
+		Arg< std::string > filePath;
 	};
 
 	struct Results : IResults

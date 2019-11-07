@@ -11,8 +11,10 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 FileExportCommand::Args::Args() :
+	id(::IdLabel, -1),
 	filePath(::FilePathLabel, "")
 {
+	add(&id);
 	add(&filePath);
 }
 
@@ -29,8 +31,9 @@ std::string FileExportCommand::getName()
 
 void FileExportCommand::execute(World* scene)
 {
-	const auto format = Crystal::IO::getFileFormat(args.filePath.getValue());
-	exportFile(args.filePath.getValue(), format, scene);
+	const auto filePath(args.filePath.getValue());
+	const auto format = Crystal::IO::getFileFormat(filePath);
+	exportFile(filePath, format, scene);
 }
 
 void FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format, World* world)
@@ -73,6 +76,7 @@ void FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	case FileFormat::PCD :
 	{
 		PCDFileExportCommand command;
+		command.setArg("Id", args.id.getValue());
 		command.setArg("FilePath", args.filePath.getValue());
 		command.execute(world);
 		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));

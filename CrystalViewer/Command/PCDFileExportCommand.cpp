@@ -36,7 +36,12 @@ void PCDFileExportCommand::execute(World* scene)
 		return;
 	}
 	PCDFile file;
-	//file.data.positions = particles->getShape()->get();
+	const auto& ps = particles->getShape()->getParticles();
+	for (auto p : ps) {
+		file.data.positions.push_back( p->getPosition() );
+	}
 	PCDFileWriter writer;
-	//writer.write(args.filePath.getValue(), )
+	std::filesystem::path filePath(args.filePath.getValue());
+	bool isOk = writer.write(filePath, file);
+	this->results.isOk.setValue( isOk );
 }

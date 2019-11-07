@@ -13,7 +13,7 @@
         <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
         <StackPanel Orientation="Horizontal">
            <TextBox Text="{Binding FilePath.Value}"/>
-           <Button Content="Select"/>
+           <Button Content="Select" Command="{Binding FileSelectCommand}"/>
         </StackPanel>
         <Button Content="Export" Command="{Binding ExportCommand}"/>
     </StackPanel>
