@@ -34,10 +34,8 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 		else if (name == ::IsVisibleLabel) {
 			scene->_isVisible = std::any_cast<bool>(value);
 		}
-		/*
-		else if (name == "Name") {
-			std::any_cast<std::string>(value);
+		else if (name == ::NameLabel) {
+			scene->setName( std::any_cast<std::string>(value) );
 		}
-		*/
 	}
 }

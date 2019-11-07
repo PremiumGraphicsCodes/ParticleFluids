@@ -9,4 +9,5 @@ namespace {
 	PublicLabel PointSizeLabel = "PointSize";
 	PublicLabel IsVisibleLabel = "IsVisible";
 	PublicLabel ColorLabel = "Color";
+	PublicLabel NameLabel = "Name";
 }
