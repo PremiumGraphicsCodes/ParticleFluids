@@ -2,6 +2,7 @@
 using PG.CGStudio.Light;
 using PG.CGStudio.Material;
 using PG.CGStudio.Object;
+using PG.CGStudio.Scene;
 using PG.CGStudio.Scene.Appearance.Light;
 using PG.CGStudio.Scene.Appearance.Material;
 using PG.CGStudio.Scene.Appearance.Texture;
@@ -70,6 +71,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<RegionSelectView>("RegionSelection");
 
             containerRegistry.RegisterForNavigation<TrimView>("Trim");
+            containerRegistry.RegisterForNavigation<SceneExportView>("SceneExport");
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

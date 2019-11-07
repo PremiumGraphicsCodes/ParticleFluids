@@ -108,6 +108,7 @@
 
                 <Fluent:RibbonGroupBox Header="Trim">
                     <Fluent:Button Header="Trim" Command="{Binding NavigateCommand}" CommandParameter="Trim"/>
+                    <Fluent:Button Header="SceneExport" Command="{Binding NavigateCommand}" CommandParameter="SceneExport"/>
                 </Fluent:RibbonGroupBox>
 
             </Fluent:RibbonTabItem>
