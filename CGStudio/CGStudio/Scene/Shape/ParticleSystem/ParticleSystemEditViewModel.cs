@@ -32,18 +32,19 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["ParticleSystemEdit"] as PG.Core.Scene;
+            var item = navigationContext.Parameters["ParticleSystemEdit"] as SceneModel;
             if (item == null)
             {
                 return;
             }
-            Id.Value = item.Id;
-            Name.Value = item.Name;
+            Id.Value = item.Id.Value;
+            Name.Value = item.Name.Value;
         }
 
         private void OnEdit()
         {
             PG.CLI.Command.Set<string>(MainModel.Instance.World.Adapter, "Name", Id.Value, Name.Value);
+            MainModel.Instance.World.Scenes.Sync();
             //Command.Set<string>(world, "Name", id, "AAA");
 
         }
