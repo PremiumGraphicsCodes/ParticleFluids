@@ -91,8 +91,6 @@ namespace PG.CGStudio
             {
                 if(Import(dialog.FileName))
                 {
-                    //model.Objects.Sync();
-                    //model.Material.Sync();
                     Canvas3d.Instance.Update(MainModel.Instance.World);
                     Canvas3d.Instance.Render();
                     MessageBox.Show("Import Suceeded");                    
@@ -114,7 +112,6 @@ namespace PG.CGStudio
             return isOk;
         }
 
-
         private void OnExport()
         {
             var dialog = new SaveFileDialog
@@ -134,7 +131,6 @@ namespace PG.CGStudio
                 }
             }
         }
-
 
         private bool Export(string filePath)
         {

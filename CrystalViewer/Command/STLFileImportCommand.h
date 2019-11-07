@@ -14,7 +14,7 @@ public:
 		Args();
 
 		Arg< bool > isBinary;
-		Arg< std::filesystem::path > filePath;
+		Arg< std::string > filePath;
 	};
 
 	struct Results : IResults
