@@ -94,6 +94,7 @@ namespace PG {
 		public const string PointSizeLabel = "PointSize";
 		public const string IsVisibleLabel = "IsVisible";
 		public const string ColorLabel = "Color";
+		public const string NameLabel = "Name";
 	}
 
 	public class TransformLabels

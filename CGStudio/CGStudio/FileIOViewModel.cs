@@ -91,6 +91,7 @@ namespace PG.CGStudio
             {
                 if(Import(dialog.FileName))
                 {
+                    MainModel.Instance.World.Scenes.Sync();
                     Canvas3d.Instance.Update(MainModel.Instance.World);
                     Canvas3d.Instance.Render();
                     MessageBox.Show("Import Suceeded");                    
@@ -105,10 +106,10 @@ namespace PG.CGStudio
         private bool Import(string filePath)
         {
             var model = MainModel.Instance.World;
-            var command = new PG.CLI.Command("FileImport");
-            command.SetArg("FilePath", filePath);
+            var command = new PG.CLI.Command(PG.FileImportLabels.FileImportCommandLabel);
+            command.SetArg(PG.FileImportLabels.FilePathLabel, filePath);
             command.Execute(model.Adapter);
-            var isOk = command.GetResult<bool>("IsOk");
+            var isOk = command.GetResult<bool>(PG.FileImportLabels.IsOkLabel);
             return isOk;
         }
 
