@@ -47,21 +47,23 @@ std::any AnyConverter::toCpp(System::Object^ object)
 		auto vv = Converter::toCpp(v);
 		return std::any(vv);
 	}
-	else if (nullptr != (System::Collections::Generic::IEnumerable<Core::Math::Vector3d^>^)object) {
-		auto values = (System::Collections::Generic::IEnumerable<Core::Math::Vector3d^>^)object;
-		std::vector<Crystal::Math::Vector3dd> dest;
-		for each(Core::Math::Vector3d^ v in values) {
-			dest.push_back( Converter::toCpp(v) );
+	else {
+		auto values = (System::Collections::Generic::IEnumerable<Object^>^)object;
+		auto first = System::Linq::Enumerable::FirstOrDefault(values);
+		if (first->GetType() == PG::Core::Math::Vector3d::typeid) {
+			std::vector<Crystal::Math::Vector3dd> dest;
+			for each (Core::Math::Vector3d ^ v in values) {
+				dest.push_back(Converter::toCpp(v));
+			}
+			return std::any(dest);
 		}
-		return std::any(dest);
-	}
-	else if (type == System::Collections::Generic::List<Core::Math::Line3d^>::typeid) {
-		auto values = (System::Collections::Generic::List<Core::Math::Line3d^>^)object;
-		std::vector<Crystal::Math::Line3dd> dest(values->Count);
-		for (int i = 0; i < values->Count; ++i) {
-			dest[i] = Converter::toCpp(values[i]);
+		else if (first->GetType() == Core::Math::Line3d::typeid) {
+			std::vector<Crystal::Math::Line3dd> dest;
+			for each (Core::Math::Line3d^ l in values) {
+				dest.push_back( Converter::toCpp(l) );
+			}
+			return std::any(dest);
 		}
-		return std::any(dest);
 	}
 
 	return std::any(0);

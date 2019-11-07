@@ -38,4 +38,9 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 			scene->setName( std::any_cast<std::string>(value) );
 		}
 	}
+	else if (scene->getType() == SceneType::WireFrameScene) {
+		if (name == ::NameLabel) {
+			scene->setName(std::any_cast<std::string>(value));
+		}
+	}
 }

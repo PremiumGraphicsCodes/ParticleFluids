@@ -7,13 +7,17 @@ namespace PG.CGStudio.Scene.Shape.WireFrame
     public class WireFrameEditViewModel : BindableBase, INavigationAware
     {
         public ReactiveProperty<int> Id { get; }
+            = new ReactiveProperty<int>();
 
         public ReactiveProperty<string> Name { get; }
+            = new ReactiveProperty<string>();
+
+        public ReactiveCommand EditCommand { get; }
+            = new ReactiveCommand();
 
         public WireFrameEditViewModel()
         {
-            Id = new ReactiveProperty<int>();
-            Name = new ReactiveProperty<string>();
+            EditCommand.Subscribe(OnEdit);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -28,13 +32,19 @@ namespace PG.CGStudio.Scene.Shape.WireFrame
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["WireFrameEdit"] as PG.Core.Scene;
+            var item = navigationContext.Parameters["WireFrameEdit"] as SceneModel;
             if (item == null)
             {
                 return;
             }
-            Id.Value = item.Id;
-            Name.Value = item.Name;
+            Id.Value = item.Id.Value;
+            Name.Value = item.Name.Value;
+        }
+
+        private void OnEdit()
+        {
+            PG.CLI.Command.Set<string>(MainModel.Instance.World.Adapter, "Name", Id.Value, Name.Value);
+            MainModel.Instance.World.Scenes.Sync();
         }
     }
 }

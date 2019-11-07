@@ -45,8 +45,6 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem
         {
             PG.CLI.Command.Set<string>(MainModel.Instance.World.Adapter, "Name", Id.Value, Name.Value);
             MainModel.Instance.World.Scenes.Sync();
-            //Command.Set<string>(world, "Name", id, "AAA");
-
         }
     }
 }

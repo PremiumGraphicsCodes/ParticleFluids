@@ -13,5 +13,6 @@
         <TextBox Text="{Binding Id.Value}"/>
         <TextBlock Text="Name"/>
         <TextBox Text="{Binding Name.Value}"/>
+        <Button Content="Edit" Command="{Binding EditCommand}"/>
     </StackPanel>
 </UserControl>
