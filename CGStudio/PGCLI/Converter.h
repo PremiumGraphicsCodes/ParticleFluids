@@ -3,9 +3,11 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Line3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
+#include "../../Crystal/Math/Sphere3d.h"
 #include "../../Crystal/Math/Matrix3d.h"
 #include "../../Crystal/Math/Matrix4d.h"
 #include "../../Crystal/Math/Box3d.h"
+#include "../../Crystal/Math/Space3d.h"
 #include "../../Crystal/Graphics/ColorRGBA.h"
 #include "../../Crystal/Graphics/PointLight.h"
 #include "../../Crystal/Graphics/Material.h"
@@ -39,6 +41,10 @@ public:
 
 	static PG::Core::Math::Triangle3d^ fromCpp(const Crystal::Math::Triangle3d& src);
 
+	static Crystal::Math::Sphere3d toCpp(PG::Core::Math::Sphere3d^ src);
+
+	static PG::Core::Math::Sphere3d^ fromCpp(const Crystal::Math::Sphere3d& src);
+
 	static Crystal::Math::Matrix3dd toCpp(PG::Core::Math::Matrix3d^ src);
 
 	static PG::Core::Math::Matrix3d^ fromCpp(const Crystal::Math::Matrix3dd& src);
@@ -64,6 +70,12 @@ public:
 	static Crystal::Scene::SceneType toCpp(PG::Core::SceneType src);
 
 	static PG::Core::SceneType fromCpp(Crystal::Scene::SceneType src);
+
+	static Crystal::Math::Space3d toCpp(PG::Core::Math::Space3d^ src);
+
+	static Crystal::Math::IVolume3d* toCpp(PG::Core::Math::IVolume3d^ src);
+
+
 };
 
 	}

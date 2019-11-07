@@ -60,6 +60,18 @@ PG::Core::Math::Triangle3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Tri
 	return gcnew PG::Core::Math::Triangle3d(v0, v1, v2);
 }
 
+Crystal::Math::Sphere3d PG::CLI::Converter::toCpp(PG::Core::Math::Sphere3d^ src)
+{
+	auto center = toCpp(src->Center);
+	return Crystal::Math::Sphere3d(center, src->Radius);
+}
+
+PG::Core::Math::Sphere3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Sphere3d& src)
+{
+	auto center = fromCpp(src.getCenter());
+	return gcnew PG::Core::Math::Sphere3d(src.getRadius(), center);
+}
+
 Crystal::Math::Matrix3dd PG::CLI::Converter::toCpp(PG::Core::Math::Matrix3d^ src)
 {
 	return Crystal::Math::Matrix3dd
@@ -209,4 +221,22 @@ PG::Core::SceneType PG::CLI::Converter::fromCpp(Crystal::Scene::SceneType src)
 		return PG::Core::SceneType::None;
 		break;
 	}
+}
+
+Crystal::Math::Space3d PG::CLI::Converter::toCpp(PG::Core::Math::Space3d^ src)
+{
+	auto volumes = src->Volumes;
+	for each (auto v in volumes) {
+		toCpp(v);
+	}
+	return Crystal::Math::Space3d();
+}
+
+Crystal::Math::IVolume3d* PG::CLI::Converter::toCpp(PG::Core::Math::IVolume3d^ src)
+{
+	if (src->GetType() == PG::Core::Math::Sphere3d::typeid) {
+		auto s = (PG::Core::Math::Sphere3d^)(src);
+		toCpp(s);
+	}
+	return nullptr;
 }

@@ -13,8 +13,8 @@ namespace PG.CGStudio.Scene.Shape.Trim
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
             = new ShapeSelectViewModel();
 
-        public RegionSelectViewModel RegionSelectViewModel { get; }
-            = new RegionSelectViewModel();
+        public SphereRegionSelectViewModel RegionSelectViewModel { get; }
+            = new SphereRegionSelectViewModel();
 
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
@@ -26,13 +26,17 @@ namespace PG.CGStudio.Scene.Shape.Trim
 
         private void OnOk()
         {
-            var regions = RegionSelectViewModel.Regions;
+            var regions = RegionSelectViewModel.Spheres;
             var command = new PG.CLI.Command(Label.TrimCommandLabel);
             command.SetArg<int>(Label.ShapeIdLabel, ShapeSelectViewModel.Id.Value);
-            command.SetArg<IEnumerable<IVolume3d>>(Label.SpaceLabel, regions);
+            command.SetArg<IEnumerable<Sphere3d>>("Spheres", regions);
             command.Execute(MainModel.Instance.World.Adapter);
             var newId = command.GetResult<int>(Label.NewIdLabel);
 
+            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Render();
+
+            MainModel.Instance.World.Scenes.Sync();
         }
     }
 }

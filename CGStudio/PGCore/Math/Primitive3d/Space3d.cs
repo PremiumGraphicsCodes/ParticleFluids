@@ -25,6 +25,8 @@ namespace PG.Core.Math
             return true;
         }
 
+        public IEnumerable<IVolume3d> Volumes { get { return volumes; } }
+
         private readonly List<IVolume3d> volumes = new List<IVolume3d>();
     }
 }

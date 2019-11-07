@@ -16,6 +16,17 @@ namespace PG.CGStudio.Selection
         public CylinderRegionSelectViewModel CylinderRegionSelectViewModel { get; }
             = new CylinderRegionSelectViewModel();
 
+        public Space3d Space
+        {
+            get {
+                var s = new Space3d();
+                foreach(var r in Regions) {
+                    s.Add(r);
+                }
+                return s;
+            }
+        }
+
         public IEnumerable<IVolume3d> Regions
         {
             get

@@ -64,6 +64,14 @@ std::any AnyConverter::toCpp(System::Object^ object)
 			}
 			return std::any(dest);
 		}
+		else if (first->GetType() == Core::Math::Sphere3d::typeid) {
+			std::vector<Crystal::Math::Sphere3d> dest;
+			for each (Core::Math::Sphere3d ^ s in values) {
+				dest.push_back(Converter::toCpp(s));
+			}
+			return std::any(dest);
+		}
+
 	}
 
 	return std::any(0);

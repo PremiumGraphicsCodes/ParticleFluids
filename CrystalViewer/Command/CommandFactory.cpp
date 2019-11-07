@@ -15,6 +15,7 @@
 #include "TranslateCommand.h"
 #include "RotateCommand.h"
 #include "ScaleCommand.h"
+#include "TrimCommand.h"
 
 using namespace Crystal::Command;
 
@@ -73,6 +74,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == ScaleCommand::getName()) {
 		return std::make_unique<ScaleCommand>();
+	}
+	else if (name == TrimCommand::getName()) {
+		return std::make_unique<TrimCommand>();
 	}
 
 	assert(false);
