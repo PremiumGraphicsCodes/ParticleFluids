@@ -20,6 +20,8 @@ public:
 
 	void Clear();
 
+	void ClearItems();
+
 	void Init();
 
 internal:

@@ -38,6 +38,9 @@ namespace PG.CGStudio.Scene.Item
             return newId;
         }
 
-
+        public void Clear()
+        {
+            adapter.ClearItems();
+        }
     }
 }

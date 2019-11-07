@@ -28,10 +28,12 @@ namespace PG.CGStudio.Scene.Shape.Trim
         {
             var regions = RegionSelectViewModel.Spheres;
             var command = new PG.CLI.Command(Label.TrimCommandLabel);
-            command.SetArg<int>(Label.ShapeIdLabel, ShapeSelectViewModel.Id.Value);
-            command.SetArg<IEnumerable<Sphere3d>>("Spheres", regions);
+            command.SetArg(Label.ShapeIdLabel, ShapeSelectViewModel.Id.Value);
+            command.SetArg("Spheres", regions);
             command.Execute(MainModel.Instance.World.Adapter);
             var newId = command.GetResult<int>(Label.NewIdLabel);
+
+            MainModel.Instance.World.Items.Clear();
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
