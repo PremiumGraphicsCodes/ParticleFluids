@@ -38,7 +38,7 @@ void FileImportCommand::execute(World* scene)
 
 bool FileImportCommand::importFile(const std::filesystem::path& filePath, World* world)
 {
-	const auto format = getFileFormat(filePath.extension());
+	const auto format = getFileFormat(filePath);
 	return importFile(filePath, world, format);
 }
 

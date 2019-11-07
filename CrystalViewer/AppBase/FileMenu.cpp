@@ -6,6 +6,11 @@
 #include "FileSaveView.h"
 #include "../../Crystal/Scene/World.h"
 #include "../Command/CameraFitCommand.h"
+#include "../Command/Command.h"
+//#include "../Command/Public/FileImportLabels.h"
+#include "../Command/Public/FileExportLabels.h"
+
+#include <iostream>
 
 using namespace Crystal::UI;
 using namespace Crystal::Command;
@@ -29,19 +34,15 @@ void FileMenu::onShow()
 			view.addFilter("*.pcd");
 			view.show();
 			const auto& filename = view.getFileName();
-			/*
 			if (!filename.empty()) {
-				FileImporter importer;
-				const auto isOk = importer.importFile(filename, model->getObjects(), model->getObjectFactory());
-				if (isOk) {
-					model->updateViewModel();
-//					getCanvas()->fitCamera(getModel()->getBoundingBox());
-					CameraFitCommand command;
-					command.execute(model);
-
+				Crystal::Command::Command command("FileImport");
+				command.setArg(::FilePathLabel, std::filesystem::path(filename));
+				command.execute(model);
+				bool isOk = std::any_cast<bool>(command.getResult(::IsOkLabel));
+				if (!isOk) {
+					std::cout << "import failed." << std::endl;
 				}
 			}
-			*/
 			//canvas->update();
 		}
 		if (ImGui::MenuItem("Export")) {
@@ -52,11 +53,15 @@ void FileMenu::onShow()
 			view.addFilter("*.pcd");
 			view.show();
 			const auto& filename = view.getFileName();
-			/*
 			if (!filename.empty()) {
-				model->exportFile(filename);
+				Crystal::Command::Command command(::FileExportCommandLabel);
+				command.setArg(::FilePathLabel, std::filesystem::path(filename));
+				command.execute(model);
+				bool isOk = std::any_cast<bool>( command.getResult(::IsOkLabel) );
+				if (!isOk) {
+					std::cout << "export failed." << std::endl;
+				}
 			}
-			*/
 			//model->write(filename);
 		}
 		if (ImGui::MenuItem("ScreenShot")) {

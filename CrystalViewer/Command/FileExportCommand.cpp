@@ -1,8 +1,8 @@
 #include "FileExportCommand.h"
 
 #include "OBJFileExportCommand.h"
-//#include "PCDFileExportCommand.h"
 #include "STLFileExportCommand.h"
+#include "PCDFileExportCommand.h"
 
 #include "Public/FileExportLabels.h"
 
@@ -42,6 +42,7 @@ void FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 		command.setArg("filePath", args.filePath.getValue());
 		command.execute(world);
 		this->results.isOk.setValue( std::any_cast<bool>( command.getResult("IsOk") ) );
+		break;
 	}
 	/*
 	case FileFormat::MTL :
@@ -57,6 +58,7 @@ void FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 		command.setArg("isBinary", false);
 		command.execute(world);
 		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
+		break;
 	}
 	case FileFormat::STL_BINARY :
 	{
@@ -66,15 +68,16 @@ void FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 
 		command.execute(world);
 		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
+		break;
 	}
-	/*
 	case FileFormat::PCD :
 	{
-		PCDFileExportCommand exporter;
-		return exporter.exportPCD(filePath, objects);
-		return false;
+		PCDFileExportCommand command;
+		command.setArg("FilePath", args.filePath.getValue());
+		command.execute(world);
+		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
+		break;
 	}
-	*/
 	default :
 		assert(false);
 	}
