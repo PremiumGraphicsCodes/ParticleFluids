@@ -39,7 +39,10 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 		}
 	}
 	else if (scene->getType() == SceneType::WireFrameScene) {
-		if (name == ::NameLabel) {
+		if (name == ::IsVisibleLabel) {
+			scene->_isVisible = std::any_cast<bool>(value);
+		}
+		else if (name == ::NameLabel) {
 			scene->setName(std::any_cast<std::string>(value));
 		}
 	}

@@ -47,7 +47,7 @@ std::any AnyConverter::toCpp(System::Object^ object)
 		auto vv = Converter::toCpp(v);
 		return std::any(vv);
 	}
-	else {
+	else if(System::Collections::Generic::IEnumerable<Object^>::typeid->IsAssignableFrom(type)){
 		auto values = (System::Collections::Generic::IEnumerable<Object^>^)object;
 		auto first = System::Linq::Enumerable::FirstOrDefault(values);
 		if (first->GetType() == PG::Core::Math::Vector3d::typeid) {
