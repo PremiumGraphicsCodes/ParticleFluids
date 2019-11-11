@@ -20,9 +20,6 @@
     <ClInclude Include="TransformCommand.h">
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemAddCommand.h">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClInclude>
     <ClInclude Include="TranslateCommand.h">
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
@@ -76,9 +73,6 @@
     <ClInclude Include="Public\PublicLabel.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="Public\ParticleSystemAddLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="Public\FileExportLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
@@ -109,6 +103,12 @@
     <ClInclude Include="Public\WireFrameCreateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleSystemCreateCommand.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\ParticleSystemCreateLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -127,9 +127,6 @@
     </ClCompile>
     <ClCompile Include="TransformCommand.cpp">
       <Filter>Scene\Shape\Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystemAddCommand.cpp">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshAddCommand.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
@@ -180,6 +177,9 @@
     </ClCompile>
     <ClCompile Include="WireFrameCreateCommand.cpp">
       <Filter>Scene\Shape\WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemCreateCommand.cpp">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

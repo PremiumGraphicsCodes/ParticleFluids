@@ -8,10 +8,10 @@
 namespace Crystal {
 	namespace Command {
 
-class ParticleSystemAddCommand : public ICommand
+class ParticleSystemCreateCommand : public ICommand
 {
 public:
-	ParticleSystemAddCommand() :
+	ParticleSystemCreateCommand() :
 		ICommand(&args, &results)
 	{}
 

@@ -14,14 +14,14 @@ namespace PG.CGStudio.Scene.Item
 
         public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance)
         {
-            var command = new PG.CLI.Command(PG.ParticleSystemAddLabels.ParticleSystemAddLabel);
-            command.SetArg(PG.ParticleSystemAddLabels.PositionsLabel, positions);
-            command.SetArg(PG.ParticleSystemAddLabels.NameLabel, name);
-            command.SetArg(PG.ParticleSystemAddLabels.PointSizeLabel, appearance.Size);
-            command.SetArg(PG.ParticleSystemAddLabels.ColorLabel, appearance.Color);
-            command.SetArg(PG.ParticleSystemAddLabels.IsItemLabel, true);
+            var command = new PG.CLI.Command(PG.ParticleSystemCreateLabels.ParticleSystemAddLabel);
+            command.SetArg(PG.ParticleSystemCreateLabels.PositionsLabel, positions);
+            command.SetArg(PG.ParticleSystemCreateLabels.NameLabel, name);
+            command.SetArg(PG.ParticleSystemCreateLabels.PointSizeLabel, appearance.Size);
+            command.SetArg(PG.ParticleSystemCreateLabels.ColorLabel, appearance.Color);
+            command.SetArg(PG.ParticleSystemCreateLabels.IsItemLabel, true);
             command.Execute(adapter);
-            var newId = command.GetResult<int>(PG.ParticleSystemAddLabels.NewIdLabel);
+            var newId = command.GetResult<int>(PG.ParticleSystemCreateLabels.NewIdLabel);
             return newId;
         }
 

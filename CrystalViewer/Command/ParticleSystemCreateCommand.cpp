@@ -1,20 +1,20 @@
-#include "ParticleSystemAddCommand.h"
+#include "ParticleSystemCreateCommand.h"
 
 #include "../../Crystal/Scene/ParticleAttribute.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
-#include "Public/ParticleSystemAddLabels.h"
+#include "Public/ParticleSystemCreateLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-ParticleSystemAddCommand::Args::Args() :
-	positions(ParticleSystemAddLabels::PositionsLabel, {}),
-	pointSize(ParticleSystemAddLabels::PointSizeLabel, 1.0f),
-	color(ParticleSystemAddLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
-	name(ParticleSystemAddLabels::NameLabel, std::string("")),
-	isItem(ParticleSystemAddLabels::IsItemLabel, false)
+ParticleSystemCreateCommand::Args::Args() :
+	positions(ParticleSystemCreateLabels::PositionsLabel, {}),
+	pointSize(ParticleSystemCreateLabels::PointSizeLabel, 1.0f),
+	color(ParticleSystemCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
+	name(ParticleSystemCreateLabels::NameLabel, std::string("")),
+	isItem(ParticleSystemCreateLabels::IsItemLabel, false)
 {
 	add(&positions);
 	add(&pointSize);
@@ -23,19 +23,19 @@ ParticleSystemAddCommand::Args::Args() :
 	add(&isItem);
 }
 
-ParticleSystemAddCommand::Results::Results() :
-	newId(ParticleSystemAddLabels::NewIdLabel, -1)
+ParticleSystemCreateCommand::Results::Results() :
+	newId(ParticleSystemCreateLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
 
 
-std::string ParticleSystemAddCommand::getName()
+std::string ParticleSystemCreateCommand::getName()
 {
-	return ParticleSystemAddLabels::ParticleSystemAddLabel;
+	return ParticleSystemCreateLabels::ParticleSystemAddLabel;
 }
 
-void ParticleSystemAddCommand::execute(World* world)
+void ParticleSystemCreateCommand::execute(World* world)
 {
 	const auto& positions = args.positions.getValue();
 	ParticleAttribute attr;

@@ -53,7 +53,7 @@ namespace PG {
 		public const string MockCommandLabel = "Mock";
 	}
 
-	public class ParticleSystemAddLabels
+	public class ParticleSystemCreateLabels
 	{
 		public const string ParticleSystemAddLabel = "ParticleSystemAdd";
 		public const string PositionsLabel = "Positions";

@@ -3,7 +3,7 @@
 #include "MockCommand.h"
 #include "FileImportCommand.h"
 #include "FileExportCommand.h"
-#include "ParticleSystemAddCommand.h"
+#include "ParticleSystemCreateCommand.h"
 #include "WireFrameCreateCommand.h"
 #include "PolygonMeshAddCommand.h"
 #include "CameraFitCommand.h"
@@ -30,8 +30,8 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == FileExportCommand::getName()) {
 		return std::make_unique<FileExportCommand>();
 	}
-	else if (name == ParticleSystemAddCommand::getName()) {
-		return std::make_unique<ParticleSystemAddCommand>();
+	else if (name == ParticleSystemCreateCommand::getName()) {
+		return std::make_unique<ParticleSystemCreateCommand>();
 	}
 	else if (name == WireFrameCreateCommand::getName()) {
 		return std::make_unique<WireFrameCreateCommand>();

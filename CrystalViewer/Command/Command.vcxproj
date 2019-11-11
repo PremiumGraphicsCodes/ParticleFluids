@@ -169,7 +169,7 @@
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="OBJFileExportCommand.h" />
     <ClInclude Include="OBJFileImportCommand.h" />
-    <ClInclude Include="ParticleSystemAddCommand.h" />
+    <ClInclude Include="ParticleSystemCreateCommand.h" />
     <ClInclude Include="PCDFileExportCommand.h" />
     <ClInclude Include="PCDFileImportCommand.h" />
     <ClInclude Include="PickCommand.h" />
@@ -178,7 +178,7 @@
     <ClInclude Include="Public\FileExportLabels.h" />
     <ClInclude Include="Public\FileImportLabels.h" />
     <ClInclude Include="Public\MockLabels.h" />
-    <ClInclude Include="Public\ParticleSystemAddLabels.h" />
+    <ClInclude Include="Public\ParticleSystemCreateLabels.h" />
     <ClInclude Include="Public\PickLabels.h" />
     <ClInclude Include="Public\PolygonMeshAddLabels.h" />
     <ClInclude Include="Public\PublicLabel.h" />
@@ -211,7 +211,7 @@
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="OBJFileExportCommand.cpp" />
     <ClCompile Include="OBJFileImportCommand.cpp" />
-    <ClCompile Include="ParticleSystemAddCommand.cpp" />
+    <ClCompile Include="ParticleSystemCreateCommand.cpp" />
     <ClCompile Include="PCDFileExportCommand.cpp" />
     <ClCompile Include="PCDFileImportCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />
