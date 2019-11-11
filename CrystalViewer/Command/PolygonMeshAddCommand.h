@@ -19,21 +19,7 @@ public:
 
 	struct Args : IArgs
 	{
-		Args() :
-			positions("Positions", {}),
-			normals("Normals", {}),
-			texCoords("TexCoords", {}),
-			vertices("Vertices", {}),
-			faces("Faces", {}),
-			name("Name", std::string(""))
-		{
-			add(&positions);
-			add(&normals);
-			add(&texCoords);
-			add(&vertices);
-			add(&faces);
-			add(&name);
-		}
+		Args();
 
 		Arg< std::vector<Math::Vector3dd> > positions;
 		Arg< std::vector<Math::Vector3dd> > normals;
@@ -45,11 +31,7 @@ public:
 
 	struct Results : IResults
 	{
-		Results() :
-			newId("NewId", -1)
-		{
-			add(&newId);
-		}
+		Results();
 
 		Result<int> newId;
 	};

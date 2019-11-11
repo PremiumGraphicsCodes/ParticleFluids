@@ -5,12 +5,36 @@
 #include "../../Crystal/Scene/PolygonMesh.h"
 #include "../../Crystal/Scene/PolygonMeshBuilder.h"
 
+#include "Public/PolygonMeshAddLabels.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+PolygonMeshAddCommand::Args::Args() :
+	positions(PolygonMeshAddLabels::PositionsLabel, {}),
+	normals(PolygonMeshAddLabels::NormalsLabel, {}),
+	texCoords(PolygonMeshAddLabels::TexCoordsLabel, {}),
+	vertices(PolygonMeshAddLabels::VerticesLabel, {}),
+	faces(PolygonMeshAddLabels::FacesLabel, {}),
+	name(PolygonMeshAddLabels::NameLabel, std::string(""))
+{
+	add(&positions);
+	add(&normals);
+	add(&texCoords);
+	add(&vertices);
+	add(&faces);
+	add(&name);
+}
+
+PolygonMeshAddCommand::Results::Results() :
+	newId(PolygonMeshAddLabels::NewIdLabel, -1)
+{
+	add(&newId);
+}
+
 std::string PolygonMeshAddCommand::getName()
 {
-	return "PolygonMeshAdd";
+	return ::PolygonMeshAddLabels::CommandNameLabel;
 }
 
 void PolygonMeshAddCommand::execute(World* scene)

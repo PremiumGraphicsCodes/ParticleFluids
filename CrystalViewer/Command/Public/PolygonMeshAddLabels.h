@@ -2,11 +2,14 @@
 
 #include "PublicLabel.h"
 
-namespace {
-	PublicLabel ParticleSystemAddLabel = "ParticleSystemAdd";
+namespace PolygonMeshAddLabels
+{
+	PublicLabel CommandNameLabel = "ParticleSystemAdd";
 	PublicLabel PositionsLabel = "Positions";
-	PublicLabel PointSizeLabel = "PointSize";
-	PublicLabel ColorLabel = "Color";
+	PublicLabel NormalsLabel = "Normals";
+	PublicLabel TexCoordsLabel = "TexCoords";
+	PublicLabel VerticesLabel = "Vertices";
+	PublicLabel FacesLabel = "Faces";
 	PublicLabel NameLabel = "Name";
-	PublicLabel IsItemLabel = "IsItem";
+	PublicLabel NewIdLabel = "NewId";
 }

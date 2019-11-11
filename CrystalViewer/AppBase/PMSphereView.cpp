@@ -3,7 +3,8 @@
 #include "../../Crystal/Scene/PolygonMeshBuilder.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "../Command/CameraFitCommand.h"
+#include "../Command/Command.h"
+#include "../Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -29,8 +30,8 @@ void PMSphereView::onOk()
 	builder.add(sphere.getValue(), unum.getValue(), vnum.getValue());
 	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
 	getWorld()->getObjects()->addScene(scene);
-	getWorld()->updateViewModel();
 
-	CameraFitCommand command;
-	command.execute(model);
+	Command::Command cameraFitCommand(::CameraFitCommandLabel);
+	cameraFitCommand.execute(getWorld());
+	getWorld()->updateViewModel();
 }
