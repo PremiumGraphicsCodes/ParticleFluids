@@ -66,6 +66,7 @@ void SmoothRenderer::render(const ICamera& camera)
 
 	shader->sendVertexAttribute3df("position", positions);
 	shader->sendVertexAttribute3df("normal", normals);
+	shader->sendVertexAttribute1di("materialId", materialIds);
 	//glVertexAttribPointer(shader->getAttribLocation("texCoord"), 2, GL_FLOAT, GL_FALSE, 0, texCoords.data());
 
 

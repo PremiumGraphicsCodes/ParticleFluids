@@ -379,6 +379,14 @@ void ShaderObject::sendVertexAttribute4df(const std::string& name, const std::ve
 	//glEnableVertexAttribArray(location);
 }
 
+void ShaderObject::sendVertexAttribute1di(const std::string& name, const std::vector<int>& data)
+{
+	const auto location = getAttribLocation(name);
+	glVertexAttribPointer(getAttribLocation(name), 1, GL_INT, GL_FALSE, 0, data.data());
+	//	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
+}
+
+
 void ShaderObject::enableVertexAttribute(const std::string& name)
 {
 	const auto location = getAttribLocation(name);

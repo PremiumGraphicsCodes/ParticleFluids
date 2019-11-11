@@ -89,6 +89,8 @@ public:
 
 	void sendVertexAttribute4df(const std::string& name, const std::vector<float>& data);
 
+	void sendVertexAttribute1di(const std::string& name, const std::vector<int>& data);
+
 	void enableVertexAttribute(const std::string& name);
 
 	void disableVertexAttribute(const std::string& name);

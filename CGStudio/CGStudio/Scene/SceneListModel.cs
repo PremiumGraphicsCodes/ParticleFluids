@@ -84,6 +84,7 @@ namespace PG.CGStudio.Scene
             command.SetArg(PG.PolygonMeshCreateBySurfaceLabels.NameLabel, name);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.PolygonMeshCreateBySurfaceLabels.NewIdLabel);
+            command.Clear();
             Sync();
             return newId;
 

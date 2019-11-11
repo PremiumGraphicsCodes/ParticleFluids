@@ -25,7 +25,7 @@ public:
 
 	Vector3dd getPosition(const double u, const double v) const override
 	{
-		return getPosition(Vector3dd( u, v, 0.0));
+		return getPosition(Vector3dd( u, v, 1.0));
 	}
 
 	Vector3dd getPosition(const Vector3dd& p) const override;
