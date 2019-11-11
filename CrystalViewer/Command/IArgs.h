@@ -42,6 +42,9 @@ struct IArgs
 		return (*iter)->value;
 	};
 
+//	std::type_info
+
+
 	void setValue(const std::string& name, std::any value) {
 		auto iter = std::find_if(args.begin(), args.end(), [=](auto a) { return a->name == name; });
 		(*iter)->value = value;

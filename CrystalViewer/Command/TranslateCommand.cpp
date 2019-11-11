@@ -7,8 +7,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 TranslateCommand::Args::Args() :
-	id(::IdLabel, -1),
-	vector(::TranslateLabel, Math::Vector3dd())
+	id(TransformLabels::IdLabel, -1),
+	vector(TransformLabels::TranslateLabel, Math::Vector3dd())
 {
 	add(&id);
 	add(&vector);
@@ -17,7 +17,7 @@ TranslateCommand::Args::Args() :
 
 std::string TranslateCommand::getName()
 {
-	return ::TransformCommandLabel;
+	return TransformLabels::TransformCommandLabel;
 }
 
 void TranslateCommand::execute(World* world)

@@ -47,17 +47,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Command\Command.vcxproj">
-      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
+    <ProjectReference Include="..\..\Crystal\IO\IO.vcxproj">
+      <Project>{198160cc-5ed1-499d-ad45-90dbac4852f8}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Math\Math.vcxproj">
+    <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Scene\Scene.vcxproj">
+    <ProjectReference Include="..\..\Crystal\Scene\Scene.vcxproj">
       <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Shader\Shader.vcxproj">
+    <ProjectReference Include="..\..\Crystal\Shader\Shader.vcxproj">
       <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Command\Command.vcxproj">
+      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -97,9 +100,12 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>../ThirdParty/glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../ThirdParty/glew-2.1.0\lib\Release\x64;../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\Crystal\ThirdParty\glew-2.1.0\bin\Release\x64\glew32.dll .\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
