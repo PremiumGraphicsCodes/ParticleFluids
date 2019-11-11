@@ -2,6 +2,7 @@
 
 #include "PolygonMesh.h"
 #include "../Util/UnCopyable.h"
+#include "../Math/ISurface3d.h"
 
 namespace Crystal {
 	namespace Math {
@@ -21,7 +22,7 @@ public:
 
 	void add(const Math::Box3d& box);
 
-	void add(const Math::Sphere3d& sphere, const int udiv, const int vdiv);
+	void add(const Math::ISurface3d& sphere, const int udiv, const int vdiv);
 
 	void add(const Math::Quad3d& quad);
 

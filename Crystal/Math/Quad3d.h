@@ -28,6 +28,10 @@ public:
 		return glm::normalize( glm::cross(uvec, vvec) );
 	}
 
+	Vector3dd getNormal(const double u, const double v) const {
+		return getNormal();
+	}
+
 	bool isInside(const Vector3dd& p) const;
 
 	Vector3dd getV0() const { return origin; }

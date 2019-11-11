@@ -22,6 +22,6 @@ WFCylinderView::WFCylinderView(World* model, Canvas* canvas) :
 void WFCylinderView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(cylinder.getValue(), unum.getValue(), vnum.getValue());
+	builder.build(cylinder.getValue(), unum.getValue(), vnum.getValue(), 10);
 	IWFAddView::addWireFrame(builder.getWireFrame());
 }

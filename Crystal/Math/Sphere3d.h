@@ -2,12 +2,13 @@
 
 #include "Vector3d.h"
 #include "IVolume3d.h"
+#include "ISurface3d.h"
 
 namespace Crystal {
 	namespace Math {
 		class Box3d;
 
-class Sphere3d : public IVolume3d
+class Sphere3d : public IVolume3d, public ISurface3d
 {
 public:
 	Sphere3d() :
@@ -22,6 +23,11 @@ public:
 
 	explicit Sphere3d(const Math::Box3d& boundingBox);
 
+	Vector3dd getPosition(const double u, const double v) const override
+	{
+		return getPosition(Vector3dd( u, v, 0.0));
+	}
+
 	Vector3dd getPosition(const Vector3dd& p) const override;
 
 	Vector3dd getNormal(const Math::Vector2dd& p) const override
@@ -29,7 +35,7 @@ public:
 		return getPosition(Vector3dd(p, 1.0) - Vector3dd(p, 0.0));
 	}
 
-	Vector3dd getNormal(const double u, const double v) const;
+	Vector3dd getNormal(const double u, const double v) const override;
 
 	Vector3dd getCenter() const { return center; }
 

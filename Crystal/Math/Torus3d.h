@@ -37,6 +37,13 @@ public:
 		return center + Vector3dd(x, y, z);
 	}
 
+	Vector3dd getNormal(const double u, const double v) const override
+	{
+		// todo.
+		return Vector3dd();
+	}
+
+
 private:
 	Vector3dd center;
 	double R;

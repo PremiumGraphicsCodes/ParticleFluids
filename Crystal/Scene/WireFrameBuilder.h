@@ -20,7 +20,7 @@ public:
 
 	void build(const Math::ISurface3d& curve, const int unum, const int vnum);
 
-	void build(const Math::IVolume3d& curve, const int unum, const int vnum);
+	void build(const Math::IVolume3d& curve, const int unum, const int vnum, const int wnum);
 
 	std::vector<Math::Line3dd> getWireFrame() const { return lines; }
 

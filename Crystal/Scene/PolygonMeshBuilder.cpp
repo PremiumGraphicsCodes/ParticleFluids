@@ -46,7 +46,7 @@ void PolygonMeshBuilder::add(const Box3d& box)
 	add(p1, p5, p6, p2); // right
 }
 
-void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int vnum)
+void PolygonMeshBuilder::add(const ISurface3d& sphere, const int unum, const int vnum)
 {
 	const auto du = 1.0 / (double)unum;
 	const auto dv = 1.0 / (double)vnum;
@@ -54,7 +54,7 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 	for (double u = 0.0; u < 1.0; u +=du) {
 		std::vector<int> vs;
 		for (double v = 0.0; v < 1.0; v+=dv) {
-			const auto p = polygonMesh->createPosition( sphere.getPosition(Vector3dd( u, v, 1.0)) );
+			const auto p = polygonMesh->createPosition( sphere.getPosition( u, v) );
 			const auto n = polygonMesh->createNormal( sphere.getNormal(u, v) );
 			const auto tx = polygonMesh->createTexCoord(Vector2dd( u,v) );
 			const auto id = polygonMesh->createVertex(p, n, tx);

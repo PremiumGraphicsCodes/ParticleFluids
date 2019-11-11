@@ -63,7 +63,7 @@ void WireFrameBuilder::build(const ISurface3d& curve, const int unum, const int 
 
 }
 
-void WireFrameBuilder::build(const IVolume3d& curve, const int unum, const int vnum)
+void WireFrameBuilder::build(const IVolume3d& curve, const int unum, const int vnum, const int wnum)
 {
 	const auto du = 1.0 / unum;
 	const auto dv = 1.0 / vnum;
