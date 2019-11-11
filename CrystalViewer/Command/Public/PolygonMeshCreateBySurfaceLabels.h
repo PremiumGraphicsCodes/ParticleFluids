@@ -5,6 +5,9 @@
 namespace PolygonMeshCreateBySurfaceLabels
 {
 	PublicLabel CommandNameLabel = "PolygonMeshCreateBySurface";
-	PublicLabel SurfacesLabel = "Surfaces";
+	PublicLabel SurfaceLabel = "Surface";
+	PublicLabel UDivLabel = "UDivNum";
+	PublicLabel VDivLabel = "VDivNum";
+	PublicLabel NameLabel = "Name";
 	PublicLabel NewIdLabel = "NewId";
 }

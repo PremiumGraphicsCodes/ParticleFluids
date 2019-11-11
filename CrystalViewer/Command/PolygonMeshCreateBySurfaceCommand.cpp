@@ -11,12 +11,12 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 PolygonMeshCreateBySurfaceCommand::Args::Args() :
-	surfaces(PolygonMeshCreateBySurfaceLabels::SurfacesLabel, {}),
-	uDivNum("UDivNum", 24),
-	vDivNum("VDivNum", 24),
-	name("Name", std::string(""))
+	surface(PolygonMeshCreateBySurfaceLabels::SurfaceLabel, nullptr),
+	uDivNum(PolygonMeshCreateBySurfaceLabels::UDivLabel, 24),
+	vDivNum(PolygonMeshCreateBySurfaceLabels::VDivLabel, 24),
+	name(PolygonMeshCreateBySurfaceLabels::NameLabel, std::string(""))
 {
-	add(&surfaces);
+	add(&surface);
 	add(&uDivNum);
 	add(&vDivNum);
 	add(&name);
@@ -36,14 +36,14 @@ std::string PolygonMeshCreateBySurfaceCommand::getName()
 void PolygonMeshCreateBySurfaceCommand::execute(World* scene)
 {
 	PolygonMeshBuilder builder;
-	const auto& surfaces = std::any_cast<std::vector<Math::ISurface3d*>>(args.surfaces.getValue());
+	auto surface = std::any_cast<std::shared_ptr<Math::ISurface3d>>(args.surface.getValue());
 	const auto uNum = std::any_cast<int>( args.uDivNum.getValue() );
 	const auto vNum = std::any_cast<int>( args.vDivNum.getValue() );
-	for (auto s : surfaces) {
-		builder.add(*s, uNum, vNum);
-	}
+	builder.add(*surface, uNum, vNum);
 
 	auto shape = scene->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), args.name.getValue());
+	scene->getObjects()->addScene(shape);
+
 	const auto newId = shape->getId();
 
 	results.newId.setValue(newId);

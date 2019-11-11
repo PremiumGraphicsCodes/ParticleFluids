@@ -75,7 +75,10 @@ namespace PG {
 	public class PolygonMeshCreateBySurfaceLabels
 	{
 		public const string CommandNameLabel = "PolygonMeshCreateBySurface";
-		public const string SurfacesLabel = "Surfaces";
+		public const string SurfaceLabel = "Surface";
+		public const string UDivLabel = "UDivNum";
+		public const string VDivLabel = "VDivNum";
+		public const string NameLabel = "Name";
 		public const string NewIdLabel = "NewId";
 	}
 

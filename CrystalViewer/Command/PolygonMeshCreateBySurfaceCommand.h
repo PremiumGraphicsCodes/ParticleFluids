@@ -19,7 +19,7 @@ public:
 	{
 		Args();
 
-		Arg< std::vector<Math::ISurface3d*> > surfaces;
+		Arg< std::shared_ptr<Math::ISurface3d> > surface;
 		Arg< int > uDivNum;
 		Arg< int > vDivNum;
 		Arg< std::string > name;

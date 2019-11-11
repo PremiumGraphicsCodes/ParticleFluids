@@ -4,9 +4,8 @@
 
 using namespace PG::CLI;
 
-std::any AnyConverter::toCpp(System::Object^ object)
+std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 {
-	auto type = object->GetType();
 	if (type == int::typeid) {
 		const auto a = (int)(object);
 		return std::any(a);
@@ -46,6 +45,11 @@ std::any AnyConverter::toCpp(System::Object^ object)
 		auto v = (Core::Graphics::ColorRGBA^)(object);
 		auto vv = Converter::toCpp(v);
 		return std::any(vv);
+	}
+	else if (type == Core::Math::ISurface3d::typeid) {
+		auto v = (Core::Math::ISurface3d^)(object);
+		auto vv = Converter::toCpp(v);
+		return std::any(std::shared_ptr<Crystal::Math::ISurface3d>(vv));
 	}
 	else if(System::Collections::Generic::IEnumerable<Object^>::typeid->IsAssignableFrom(type)){
 		auto values = (System::Collections::Generic::IEnumerable<Object^>^)object;

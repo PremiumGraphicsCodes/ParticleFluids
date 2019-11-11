@@ -75,6 +75,20 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
+        public int AddPolygonMeshScene(ISurface3d surface, int unum, int vnum, string name)
+        {
+            var command = new PG.CLI.Command(PG.PolygonMeshCreateBySurfaceLabels.CommandNameLabel);
+            command.SetArg(PG.PolygonMeshCreateBySurfaceLabels.SurfaceLabel, surface);
+            command.SetArg(PG.PolygonMeshCreateBySurfaceLabels.UDivLabel, unum);
+            command.SetArg(PG.PolygonMeshCreateBySurfaceLabels.VDivLabel, vnum);
+            command.SetArg(PG.PolygonMeshCreateBySurfaceLabels.NameLabel, name);
+            command.Execute(adapter);
+            var newId = command.GetResult<int>(PG.PolygonMeshCreateBySurfaceLabels.NewIdLabel);
+            Sync();
+            return newId;
+
+        }
+
         public int AddMaterialScene(PG.Core.Graphics.Material material, string name)
         {
             var command = new PG.CLI.Command("MaterialAdd");

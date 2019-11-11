@@ -35,7 +35,7 @@ generic <class T>
 void Command::SetArg(System::String^ name, T value)
 {
 	const auto& str = PG::CLI::Converter::toCpp(name);
-	const auto v = AnyConverter::toCpp(value);
+	const auto v = AnyConverter::toCpp(value, T::typeid);
 	::instance.setArg(str, v);
 }
 
@@ -86,7 +86,7 @@ generic <class T>
 void Command::Set(WorldAdapter^ objects, System::String^ name, T value)
 {
 	const auto& str = PG::CLI::Converter::toCpp(name);
-	auto v = AnyConverter::toCpp(value);
+	auto v = AnyConverter::toCpp(value, T::typeid);
 	Crystal::Command::SetCommand::Set(objects->instance, str, v);
 }
 
@@ -94,7 +94,7 @@ generic <class T>
 void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, T value)
 {
 	const auto& str = PG::CLI::Converter::toCpp(name);
-	auto v = AnyConverter::toCpp(value);
+	auto v = AnyConverter::toCpp(value, T::typeid);
 	Crystal::Command::SetCommand::Set(objects->instance, parentId, str, v);
 }
 
@@ -102,6 +102,6 @@ generic <class T>
 void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, T value)
 {
 	const auto& str = PG::CLI::Converter::toCpp(name);
-	auto v = AnyConverter::toCpp(value);
+	auto v = AnyConverter::toCpp(value, T::typeid);
 	Crystal::Command::SetCommand::Set(objects->instance, parentId, childId, str, v);
 }

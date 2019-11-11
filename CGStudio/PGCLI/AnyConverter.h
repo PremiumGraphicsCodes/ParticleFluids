@@ -8,7 +8,7 @@ namespace PG {
 class AnyConverter
 {
 public:
-	static std::any toCpp(System::Object^ object);
+	static std::any toCpp(System::Object^ object, System::Type^ type);
 
 	static System::Object^ fromCpp(std::any any);
 };
