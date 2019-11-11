@@ -8,10 +8,10 @@
 namespace Crystal {
 	namespace Command {
 
-class WireFrameAddCommand : public ICommand
+class WireFrameCreateCommand : public ICommand
 {
 public:
-	WireFrameAddCommand() :
+	WireFrameCreateCommand() :
 		ICommand(&args, &results)
 	{}
 

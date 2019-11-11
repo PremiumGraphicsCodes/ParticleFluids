@@ -29,9 +29,6 @@
     <ClInclude Include="PolygonMeshAddCommand.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
-    <ClInclude Include="WireFrameAddCommand.h">
-      <Filter>Scene\Shape\WireFrame</Filter>
-    </ClInclude>
     <ClInclude Include="SetCommand.h" />
     <ClInclude Include="CameraRotateCommand.h">
       <Filter>Camera</Filter>
@@ -85,9 +82,6 @@
     <ClInclude Include="Public\FileExportLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="Public\WireFrameAddLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="Public\SetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
@@ -107,6 +101,12 @@
       <Filter>Scene\Shape\Trim</Filter>
     </ClInclude>
     <ClInclude Include="Public\TrimLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameCreateCommand.h">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\WireFrameCreateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
   </ItemGroup>
@@ -133,9 +133,6 @@
     </ClCompile>
     <ClCompile Include="PolygonMeshAddCommand.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="WireFrameAddCommand.cpp">
-      <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
     <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="CameraRotateCommand.cpp">
@@ -180,6 +177,9 @@
     </ClCompile>
     <ClCompile Include="TrimCommand.cpp">
       <Filter>Scene\Shape\Trim</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrameCreateCommand.cpp">
+      <Filter>Scene\Shape\WireFrame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

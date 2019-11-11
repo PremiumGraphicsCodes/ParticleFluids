@@ -185,7 +185,7 @@
     <ClInclude Include="Public\SetLabels.h" />
     <ClInclude Include="Public\TransformLabels.h" />
     <ClInclude Include="Public\TrimLabels.h" />
-    <ClInclude Include="Public\WireFrameAddLabels.h" />
+    <ClInclude Include="Public\WireFrameCreateLabels.h" />
     <ClInclude Include="RotateCommand.h" />
     <ClInclude Include="ScaleCommand.h" />
     <ClInclude Include="SetCommand.h" />
@@ -194,7 +194,7 @@
     <ClInclude Include="TransformCommand.h" />
     <ClInclude Include="TranslateCommand.h" />
     <ClInclude Include="TrimCommand.h" />
-    <ClInclude Include="WireFrameAddCommand.h" />
+    <ClInclude Include="WireFrameCreateCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraFitCommand.cpp" />
@@ -224,7 +224,7 @@
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="TranslateCommand.cpp" />
     <ClCompile Include="TrimCommand.cpp" />
-    <ClCompile Include="WireFrameAddCommand.cpp" />
+    <ClCompile Include="WireFrameCreateCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Public\GetLabels.h" />

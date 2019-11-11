@@ -1,20 +1,20 @@
-#include "WireFrameAddCommand.h"
+#include "WireFrameCreateCommand.h"
 
 #include "../../Crystal/Scene/WireFrameAttribute.h"
 #include "../../Crystal/Scene/WireFrameScene.h"
 
-#include "Public/WireFrameAddLabels.h"
+#include "Public/WireFrameCreateLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-WireFrameAddCommand::Args::Args() :
-	lines(WireFrameAddLabels::LinesLabel, {}),
-	lineWidth(WireFrameAddLabels::LineWidthLabel, 1.0f),
-	color(WireFrameAddLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
-	name(WireFrameAddLabels::NameLabel, std::string("")),
-	isItem(WireFrameAddLabels::IsItemLabel, false)
+WireFrameCreateCommand::Args::Args() :
+	lines(WireFrameCreateLabels::LinesLabel, {}),
+	lineWidth(WireFrameCreateLabels::LineWidthLabel, 1.0f),
+	color(WireFrameCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
+	name(WireFrameCreateLabels::NameLabel, std::string("")),
+	isItem(WireFrameCreateLabels::IsItemLabel, false)
 {
 	add(&lines);
 	add(&lineWidth);
@@ -23,18 +23,18 @@ WireFrameAddCommand::Args::Args() :
 	add(&isItem);
 }
 
-WireFrameAddCommand::Results::Results() :
-	newId(WireFrameAddLabels::NewIdLabel, -1)
+WireFrameCreateCommand::Results::Results() :
+	newId(WireFrameCreateLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
 
-std::string WireFrameAddCommand::getName()
+std::string WireFrameCreateCommand::getName()
 {
-	return WireFrameAddLabels::WireFrameAddLabel;
+	return WireFrameCreateLabels::WireFrameAddLabel;
 }
 
-void WireFrameAddCommand::execute(World* world)
+void WireFrameCreateCommand::execute(World* world)
 {
 	const auto& lines = args.lines.getValue();
 	WireFrameAttribute attr;
