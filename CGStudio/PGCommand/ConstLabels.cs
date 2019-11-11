@@ -6,12 +6,12 @@ namespace PG {
 		public const string CameraYZCommandLabel = "CameraYZ";
 		public const string CameraZXCommandLabel = "CameraZX";
 		public const string CameraRotateCommandLabel = "CameraRotate";
-		public const string CameraTranslateCommandLabel = "CameraTranslate";
-		public const string CameraZoomCommandLabel = "CameraZoom";
 		public const string RxLabel = "Rx";
 		public const string RyLabel = "Ry";
 		public const string RzLabel = "Rz";
 		public const string TranslateLabel = "Translate";
+		public const string CameraTranslateCommandLabel = "CameraTranslate";
+		public const string CameraZoomCommandLabel = "CameraZoom";
 		public const string ZoomRatioLabel = "Ratio";
 	}
 
@@ -74,12 +74,14 @@ namespace PG {
 
 	public class PolygonMeshAddLabels
 	{
-		public const string ParticleSystemAddLabel = "ParticleSystemAdd";
+		public const string CommandNameLabel = "ParticleSystemAdd";
 		public const string PositionsLabel = "Positions";
-		public const string PointSizeLabel = "PointSize";
-		public const string ColorLabel = "Color";
+		public const string NormalsLabel = "Normals";
+		public const string TexCoordsLabel = "TexCoords";
+		public const string VerticesLabel = "Vertices";
+		public const string FacesLabel = "Faces";
 		public const string NameLabel = "Name";
-		public const string IsItemLabel = "IsItem";
+		public const string NewIdLabel = "NewId";
 	}
 
 	public class PublicLabel
@@ -117,7 +119,7 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
-	public class WireFrameAddLabels
+	public class WireFrameCreateLabels
 	{
 		public const string WireFrameAddLabel = "WireFrameAdd";
 		public const string LinesLabel = "Lines";

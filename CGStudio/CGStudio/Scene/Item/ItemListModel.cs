@@ -27,14 +27,14 @@ namespace PG.CGStudio.Scene.Item
 
         public int AddWireFrameScene(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
         {
-            var command = new PG.CLI.Command(PG.WireFrameAddLabels.WireFrameAddLabel);
-            command.SetArg(PG.WireFrameAddLabels.LinesLabel, lines);
-            command.SetArg(PG.WireFrameAddLabels.NameLabel, name);
-            command.SetArg(PG.WireFrameAddLabels.ColorLabel, appearance.Color);
-            command.SetArg(PG.WireFrameAddLabels.LineWidthLabel, appearance.Width);
-            command.SetArg(PG.WireFrameAddLabels.IsItemLabel, true);
+            var command = new PG.CLI.Command(PG.WireFrameCreateLabels.WireFrameAddLabel);
+            command.SetArg(PG.WireFrameCreateLabels.LinesLabel, lines);
+            command.SetArg(PG.WireFrameCreateLabels.NameLabel, name);
+            command.SetArg(PG.WireFrameCreateLabels.ColorLabel, appearance.Color);
+            command.SetArg(PG.WireFrameCreateLabels.LineWidthLabel, appearance.Width);
+            command.SetArg(PG.WireFrameCreateLabels.IsItemLabel, true);
             command.Execute(adapter);
-            var newId = command.GetResult<int>(PG.WireFrameAddLabels.NewIdLabel);
+            var newId = command.GetResult<int>(PG.WireFrameCreateLabels.NewIdLabel);
             return newId;
         }
 
