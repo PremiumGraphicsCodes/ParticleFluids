@@ -24,6 +24,8 @@ public:
 
 	void setArg(const std::string& name, std::any value);
 
+	const std::type_info& getArgType(const std::string& name);
+
 	void execute(Scene::World* scene);
 
 	std::any getResult(const std::string& name);

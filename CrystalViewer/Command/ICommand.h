@@ -31,6 +31,8 @@ public:
 
 	void setArg(const std::string& name, std::any value) { args->setValue(name, value); }
 
+	const std::type_info& getArgType(const std::string& name) { return args->getType(name); }
+
 	virtual void execute(Scene::World* scene) = 0;
 
 	std::any getResult(const std::string& name) { return results->getValue(name); }
