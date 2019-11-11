@@ -183,6 +183,7 @@
     <ClInclude Include="Public\MockLabels.h" />
     <ClInclude Include="Public\ParticleSystemCreateLabels.h" />
     <ClInclude Include="Public\PickLabels.h" />
+    <ClInclude Include="Public\PolygonMeshCreateBySurfaceLabels.h" />
     <ClInclude Include="Public\PolygonMeshCreateLabels.h" />
     <ClInclude Include="Public\PublicLabel.h" />
     <ClInclude Include="Public\SetLabels.h" />

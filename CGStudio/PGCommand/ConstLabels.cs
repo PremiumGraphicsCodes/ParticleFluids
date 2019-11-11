@@ -72,9 +72,16 @@ namespace PG {
 		public const string ChildIdLabel = "ChildId";
 	}
 
+	public class PolygonMeshCreateBySurfaceLabels
+	{
+		public const string CommandNameLabel = "PolygonMeshCreateBySurface";
+		public const string SurfacesLabel = "Surfaces";
+		public const string NewIdLabel = "NewId";
+	}
+
 	public class PolygonMeshCreateLabels
 	{
-		public const string CommandNameLabel = "ParticleSystemAdd";
+		public const string CommandNameLabel = "PolygonMeshCreate";
 		public const string PositionsLabel = "Positions";
 		public const string NormalsLabel = "Normals";
 		public const string TexCoordsLabel = "TexCoords";

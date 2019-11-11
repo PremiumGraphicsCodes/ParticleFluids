@@ -118,6 +118,9 @@
     <ClInclude Include="PolygonMeshCreateBySurfaceCommand.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
+    <ClInclude Include="Public\PolygonMeshCreateBySurfaceLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

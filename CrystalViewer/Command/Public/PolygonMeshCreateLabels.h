@@ -4,7 +4,7 @@
 
 namespace PolygonMeshCreateLabels
 {
-	PublicLabel CommandNameLabel = "ParticleSystemAdd";
+	PublicLabel CommandNameLabel = "PolygonMeshCreate";
 	PublicLabel PositionsLabel = "Positions";
 	PublicLabel NormalsLabel = "Normals";
 	PublicLabel TexCoordsLabel = "TexCoords";

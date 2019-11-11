@@ -232,11 +232,24 @@ Crystal::Math::Space3d PG::CLI::Converter::toCpp(PG::Core::Math::Space3d^ src)
 	return Crystal::Math::Space3d();
 }
 
+Crystal::Math::ISurface3d* PG::CLI::Converter::toCpp(PG::Core::Math::ISurface3d^ src)
+{
+	if (src->GetType() == PG::Core::Math::Sphere3d::typeid) {
+		auto s = (PG::Core::Math::Sphere3d^)(src);
+		 Crystal::Math::Sphere3d* ss = new Crystal::Math::Sphere3d();
+		*ss = toCpp(s);
+		return ss;
+	}
+	return nullptr;
+}
+
 Crystal::Math::IVolume3d* PG::CLI::Converter::toCpp(PG::Core::Math::IVolume3d^ src)
 {
 	if (src->GetType() == PG::Core::Math::Sphere3d::typeid) {
 		auto s = (PG::Core::Math::Sphere3d^)(src);
-		toCpp(s);
+		Crystal::Math::Sphere3d* ss = new Crystal::Math::Sphere3d();
+		*ss = toCpp(s);
+		return ss;		
 	}
 	return nullptr;
 }

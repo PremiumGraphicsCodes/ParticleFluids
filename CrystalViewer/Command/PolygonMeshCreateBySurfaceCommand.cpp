@@ -5,64 +5,46 @@
 #include "../../Crystal/Scene/PolygonMesh.h"
 #include "../../Crystal/Scene/PolygonMeshBuilder.h"
 
+#include "Public/PolygonMeshCreateBySurfaceLabels.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-/*
 PolygonMeshCreateBySurfaceCommand::Args::Args() :
-	surfaces(PolygonMeshCreateLabels::PositionsLabel, {}),
-	normals(PolygonMeshCreateLabels::NormalsLabel, {}),
-	texCoords(PolygonMeshCreateLabels::TexCoordsLabel, {}),
-	vertices(PolygonMeshCreateLabels::VerticesLabel, {}),
-	faces(PolygonMeshCreateLabels::FacesLabel, {}),
-	name(PolygonMeshCreateLabels::NameLabel, std::string(""))
+	surfaces(PolygonMeshCreateBySurfaceLabels::SurfacesLabel, {}),
+	uDivNum("UDivNum", 24),
+	vDivNum("VDivNum", 24),
+	name("Name", std::string(""))
 {
-	add(&positions);
-	add(&normals);
-	add(&texCoords);
-	add(&vertices);
-	add(&faces);
+	add(&surfaces);
+	add(&uDivNum);
+	add(&vDivNum);
 	add(&name);
 }
 
 PolygonMeshCreateBySurfaceCommand::Results::Results() :
-	newId(PolygonMeshCreateLabels::NewIdLabel, -1)
+	newId(PolygonMeshCreateBySurfaceLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
 
 std::string PolygonMeshCreateBySurfaceCommand::getName()
 {
-	return ::PolygonMeshCreateLabels::CommandNameLabel;
+	return PolygonMeshCreateBySurfaceLabels::CommandNameLabel;
 }
 
 void PolygonMeshCreateBySurfaceCommand::execute(World* scene)
 {
-	const auto& positions = args.positions.getValue();
-	const auto& normals = args.normals.getValue();
-	const auto& texCoords = args.texCoords.getValue();
-	const auto& vertices = args.vertices.getValue();
-	const auto& faces = args.faces.getValue();
-	PolygonMesh* mesh = new PolygonMesh();
-	for (const auto& p : positions) {
-		mesh->createPosition(p);
-	}
-	for (const auto& n : normals) {
-		mesh->createNormal(n);
-	}
-	for (const auto& tc : texCoords) {
-		mesh->createTexCoord(tc);
-	}
-	for (const auto& v : vertices) {
-		mesh->createVertex(v.positionId, v.normalId, v.texCoordId);
-	}
-	for (const auto& f : faces) {
-		mesh->createFace(f.getV1(), f.getV2(), f.getV3());
+	PolygonMeshBuilder builder;
+	const auto& surfaces = std::any_cast<std::vector<Math::ISurface3d*>>(args.surfaces.getValue());
+	const auto uNum = std::any_cast<int>( args.uDivNum.getValue() );
+	const auto vNum = std::any_cast<int>( args.vDivNum.getValue() );
+	for (auto s : surfaces) {
+		builder.add(*s, uNum, vNum);
 	}
 
-	auto shape = scene->getObjectFactory()->createPolygonMeshScene(mesh, args.name.getValue());
+	auto shape = scene->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), args.name.getValue());
 	const auto newId = shape->getId();
 
 	results.newId.setValue(newId);
 }
-*/

@@ -50,26 +50,35 @@ std::any AnyConverter::toCpp(System::Object^ object)
 	else if(System::Collections::Generic::IEnumerable<Object^>::typeid->IsAssignableFrom(type)){
 		auto values = (System::Collections::Generic::IEnumerable<Object^>^)object;
 		auto first = System::Linq::Enumerable::FirstOrDefault(values);
-		if (first->GetType() == PG::Core::Math::Vector3d::typeid) {
+		auto contentType = first->GetType();
+		if (contentType == PG::Core::Math::Vector3d::typeid) {
 			std::vector<Crystal::Math::Vector3dd> dest;
 			for each (Core::Math::Vector3d ^ v in values) {
 				dest.push_back(Converter::toCpp(v));
 			}
 			return std::any(dest);
 		}
-		else if (first->GetType() == Core::Math::Line3d::typeid) {
+		else if (contentType == Core::Math::Line3d::typeid) {
 			std::vector<Crystal::Math::Line3dd> dest;
 			for each (Core::Math::Line3d^ l in values) {
 				dest.push_back( Converter::toCpp(l) );
 			}
 			return std::any(dest);
 		}
-		else if (first->GetType() == Core::Math::Sphere3d::typeid) {
+		else if (contentType == Core::Math::Sphere3d::typeid) {
 			std::vector<Crystal::Math::Sphere3d> dest;
 			for each (Core::Math::Sphere3d ^ s in values) {
 				dest.push_back(Converter::toCpp(s));
 			}
 			return std::any(dest);
+		}
+		else if (contentType == Core::Math::ISurface3d::typeid) {
+			std::vector<Crystal::Math::ISurface3d*> dest;
+			for each (Core::Math::ISurface3d ^ s in values) {
+				dest.push_back(Converter::toCpp(s));
+			}
+			return std::any(dest);
+
 		}
 
 	}
