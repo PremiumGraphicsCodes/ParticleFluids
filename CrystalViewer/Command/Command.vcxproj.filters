@@ -23,9 +23,6 @@
     <ClInclude Include="TranslateCommand.h">
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshAddCommand.h">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="SetCommand.h" />
     <ClInclude Include="CameraRotateCommand.h">
       <Filter>Camera</Filter>
@@ -109,6 +106,15 @@
     <ClInclude Include="Public\ParticleSystemCreateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleSystemCreateByCurveCommand.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemCreateBySurfaceCommand.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshCreateCommand.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -127,9 +133,6 @@
     </ClCompile>
     <ClCompile Include="TransformCommand.cpp">
       <Filter>Scene\Shape\Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMeshAddCommand.cpp">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="CameraRotateCommand.cpp">
@@ -180,6 +183,9 @@
     </ClCompile>
     <ClCompile Include="ParticleSystemCreateCommand.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshCreateCommand.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

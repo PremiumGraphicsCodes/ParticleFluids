@@ -1,4 +1,4 @@
-#include "PolygonMeshAddCommand.h"
+#include "PolygonMeshCreateCommand.h"
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
@@ -10,7 +10,7 @@
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-PolygonMeshAddCommand::Args::Args() :
+PolygonMeshCreateCommand::Args::Args() :
 	positions(PolygonMeshAddLabels::PositionsLabel, {}),
 	normals(PolygonMeshAddLabels::NormalsLabel, {}),
 	texCoords(PolygonMeshAddLabels::TexCoordsLabel, {}),
@@ -26,18 +26,18 @@ PolygonMeshAddCommand::Args::Args() :
 	add(&name);
 }
 
-PolygonMeshAddCommand::Results::Results() :
+PolygonMeshCreateCommand::Results::Results() :
 	newId(PolygonMeshAddLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
 
-std::string PolygonMeshAddCommand::getName()
+std::string PolygonMeshCreateCommand::getName()
 {
 	return ::PolygonMeshAddLabels::CommandNameLabel;
 }
 
-void PolygonMeshAddCommand::execute(World* scene)
+void PolygonMeshCreateCommand::execute(World* scene)
 {
 	const auto& positions = args.positions.getValue();
 	const auto& normals = args.normals.getValue();

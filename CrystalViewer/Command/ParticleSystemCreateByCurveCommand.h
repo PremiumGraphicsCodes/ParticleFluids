@@ -1,19 +1,17 @@
 #pragma once
 
 #include "ICommand.h"
-#include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Math/ICurve3d.h"
 #include "../../Crystal/Graphics/ColorRGBA.h"
-#include "../../Crystal/Scene/Vertex.h"
-#include "../../Crystal/Scene/Face.h"
 #include <vector>
 
 namespace Crystal {
 	namespace Command {
 
-class PolygonMeshAddCommand : public ICommand
+class ParticleSystemCreateByCurveCommand : public ICommand
 {
 public:
-	PolygonMeshAddCommand() :
+	ParticleSystemCreateByCurveCommand() :
 		ICommand(&args, &results)
 	{}
 
@@ -21,12 +19,13 @@ public:
 	{
 		Args();
 
-		Arg< std::vector<Math::Vector3dd> > positions;
-		Arg< std::vector<Math::Vector3dd> > normals;
-		Arg< std::vector<Math::Vector2dd> > texCoords;
-		Arg< std::vector<Scene::Vertex > > vertices;
-		Arg< std::vector<Scene::Face > > faces;
+		Arg< std::vector<std::unique_ptr<Math::ICurve3d>> > curves;
+		Arg< int > uCount;
+
+		Arg< float > pointSize;
+		Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;
+		Arg< bool > isItem;
 	};
 
 	struct Results : IResults
@@ -44,5 +43,6 @@ private:
 	Args args;
 	Results results;
 };
+
 	}
 }

@@ -5,7 +5,7 @@
 #include "FileExportCommand.h"
 #include "ParticleSystemCreateCommand.h"
 #include "WireFrameCreateCommand.h"
-#include "PolygonMeshAddCommand.h"
+#include "PolygonMeshCreateCommand.h"
 #include "CameraFitCommand.h"
 #include "CameraTranslateCommand.h"
 #include "CameraRotateCommand.h"
@@ -36,8 +36,8 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == WireFrameCreateCommand::getName()) {
 		return std::make_unique<WireFrameCreateCommand>();
 	}
-	else if (name == PolygonMeshAddCommand::getName()) {
-		return std::make_unique<PolygonMeshAddCommand>();
+	else if (name == PolygonMeshCreateCommand::getName()) {
+		return std::make_unique<PolygonMeshCreateCommand>();
 	}
 	else if (name == CameraFitCommand::getName()) {
 		return std::make_unique<CameraFitCommand>();
