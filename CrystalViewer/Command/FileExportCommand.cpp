@@ -11,22 +11,22 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 FileExportCommand::Args::Args() :
-	id(::IdLabel, -1),
-	filePath(::FilePathLabel, "")
+	id(FileExportLabels::IdLabel, -1),
+	filePath(FileExportLabels::FilePathLabel, "")
 {
 	add(&id);
 	add(&filePath);
 }
 
 FileExportCommand::Results::Results() :
-	isOk(::IsOkLabel, false)
+	isOk(FileExportLabels::IsOkLabel, false)
 {
 	add(&isOk);
 }
 
 std::string FileExportCommand::getName()
 {
-	return ::FileExportCommandLabel;
+	return FileExportLabels::FileExportCommandLabel;
 }
 
 void FileExportCommand::execute(World* scene)

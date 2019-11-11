@@ -11,7 +11,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 TrimCommand::Args::Args() :
-	shapeId(::ShapeIdLabel, -1),
+	shapeId(TrimLabels::ShapeIdLabel, -1),
 	spheres("Spheres", std::vector<Sphere3d>())
 //	space(::SpaceLabel, Math::Space3d())
 {
@@ -20,14 +20,14 @@ TrimCommand::Args::Args() :
 };
 
 TrimCommand::Results::Results() :
-	newId(::NewIdLabel, -1)
+	newId(TrimLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
 
 std::string TrimCommand::getName()
 {
-	return ::TrimCommandLabel;
+	return TrimLabels::TrimCommandLabel;
 }
 
 void TrimCommand::execute(World* world)

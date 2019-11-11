@@ -8,8 +8,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 RotateCommand::Args::Args() :
-	id(::IdLabel, -1),
-	matrix(::MatrixLabel, Math::Matrix3dd())
+	id(TransformLabels::IdLabel, -1),
+	matrix(TransformLabels::MatrixLabel, Math::Matrix3dd())
 {
 	add(&id);
 	add(&matrix);
@@ -17,7 +17,7 @@ RotateCommand::Args::Args() :
 
 std::string RotateCommand::getName()
 {
-	return ::RotateCommandLabel;
+	return TransformLabels::RotateCommandLabel;
 }
 
 void RotateCommand::execute(World* world)

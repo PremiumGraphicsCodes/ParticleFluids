@@ -11,13 +11,13 @@ using namespace Crystal::Command;
 void IWFAddView::addWireFrame(const std::vector<Line3dd>& lines)
 {
 	const auto& attribute = attributeView.getValue();
-	Command::Command command(::WireFrameAddLabel);
-	command.setArg(::LinesLabel, lines);
-	command.setArg(::LineWidthLabel, attribute.width);
-	command.setArg(::ColorLabel, attribute.color);
-	command.setArg(::NameLabel, nameView.getValue());
+	Command::Command command(WireFrameAddLabels::WireFrameAddLabel);
+	command.setArg(WireFrameAddLabels::LinesLabel, lines);
+	command.setArg(WireFrameAddLabels::LineWidthLabel, attribute.width);
+	command.setArg(WireFrameAddLabels::ColorLabel, attribute.color);
+	command.setArg(WireFrameAddLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
 
-	command.create(::CameraFitCommandLabel);
+	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 }

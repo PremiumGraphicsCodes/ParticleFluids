@@ -7,14 +7,14 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 PickCommand::Args::Args() :
-	position(::PositionLabel, Vector2dd())
+	position(PickLabels::PositionLabel, Vector2dd())
 {
 	add(&position);
 }
 
 PickCommand::Results::Results() :
-	parentId(::ParentIdLabel, -1),
-	childId(::ChildIdLabel,-1)
+	parentId(PickLabels::ParentIdLabel, -1),
+	childId(PickLabels::ChildIdLabel,-1)
 {
 	add(&parentId);
 	add(&childId);
@@ -22,7 +22,7 @@ PickCommand::Results::Results() :
 
 std::string PickCommand::getName()
 {
-	return ::PickCommandLabel;
+	return PickLabels::PickCommandLabel;
 }
 
 void PickCommand::execute(World* world)

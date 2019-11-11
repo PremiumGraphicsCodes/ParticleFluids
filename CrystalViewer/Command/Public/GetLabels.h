@@ -2,7 +2,8 @@
 
 #include "PublicLabel.h"
 
-namespace {
+namespace GetLabels
+{
 	PublicLabel CameraPositionLabel = "CameraPosition";
 	PublicLabel CameraProjectionMatrixLabel = "CameraProjectionMatrix";
 	PublicLabel PositionLabel = "Position";

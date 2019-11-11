@@ -8,7 +8,7 @@ using namespace Crystal::Command;
 
 std::string CameraFitCommand::getName()
 {
-	return ::CameraFitCommandLabel;
+	return CameraFitCommandLabels::CameraFitCommandLabel;
 }
 
 void CameraFitCommand::execute(World* world)
@@ -24,7 +24,7 @@ void CameraFitCommand::execute(World* world)
 
 std::string CameraXYCommand::getName()
 {
-	return ::CameraXYCommandLabel;
+	return CameraFitCommandLabels::CameraXYCommandLabel;
 }
 
 void CameraXYCommand::execute(World* world)
@@ -45,7 +45,7 @@ void CameraXYCommand::execute(World* world)
 
 std::string CameraYZCommand::getName()
 {
-	return ::CameraYZCommandLabel;
+	return CameraFitCommandLabels::CameraYZCommandLabel;
 }
 
 void CameraYZCommand::execute(World* world)
@@ -58,7 +58,7 @@ void CameraYZCommand::execute(World* world)
 
 std::string CameraZXCommand::getName()
 {
-	return ::CameraZXCommandLabel;
+	return CameraFitCommandLabels::CameraZXCommandLabel;
 }
 
 void CameraZXCommand::execute(World* world)

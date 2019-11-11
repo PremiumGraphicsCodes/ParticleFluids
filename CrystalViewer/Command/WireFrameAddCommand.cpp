@@ -10,11 +10,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 WireFrameAddCommand::Args::Args() :
-	lines(::LinesLabel, {}),
-	lineWidth(::LineWidthLabel, 1.0f),
-	color(::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
-	name(::NameLabel, std::string("")),
-	isItem(::IsItemLabel, false)
+	lines(WireFrameAddLabels::LinesLabel, {}),
+	lineWidth(WireFrameAddLabels::LineWidthLabel, 1.0f),
+	color(WireFrameAddLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
+	name(WireFrameAddLabels::NameLabel, std::string("")),
+	isItem(WireFrameAddLabels::IsItemLabel, false)
 {
 	add(&lines);
 	add(&lineWidth);
@@ -24,14 +24,14 @@ WireFrameAddCommand::Args::Args() :
 }
 
 WireFrameAddCommand::Results::Results() :
-	newId(::NewIdLabel, -1)
+	newId(WireFrameAddLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
 
 std::string WireFrameAddCommand::getName()
 {
-	return ::WireFrameAddLabel;
+	return WireFrameAddLabels::WireFrameAddLabel;
 }
 
 void WireFrameAddCommand::execute(World* world)

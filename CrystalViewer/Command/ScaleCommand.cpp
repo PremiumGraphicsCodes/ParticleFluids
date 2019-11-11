@@ -8,8 +8,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 ScaleCommand::Args::Args() :
-	id(::IdLabel, -1),
-	ratio(::ScaleRatioLabel, Math::Vector3dd())
+	id(TransformLabels::IdLabel, -1),
+	ratio(TransformLabels::ScaleRatioLabel, Math::Vector3dd())
 {
 	add(&id);
 	add(&ratio);
@@ -18,7 +18,7 @@ ScaleCommand::Args::Args() :
 
 std::string ScaleCommand::getName()
 {
-	return ::ScaleCommandLabel;
+	return TransformLabels::ScaleCommandLabel;
 }
 
 void ScaleCommand::execute(World* world)

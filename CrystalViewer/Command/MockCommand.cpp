@@ -6,7 +6,7 @@ using namespace Crystal::Command;
 
 std::string MockCommand::getName()
 {
-	return ::MockCommandLabel;
+	return MockLabels::MockCommandLabel;
 }
 
 void MockCommand::execute(Crystal::Scene::World* world)

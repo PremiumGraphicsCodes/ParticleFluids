@@ -2,7 +2,8 @@
 
 #include "PublicLabel.h"
 
-namespace {
+namespace TrimLabels
+{
 	PublicLabel TrimCommandLabel = "Trim";
 	PublicLabel ShapeIdLabel = "ShapeId";
 	PublicLabel SpaceLabel = "Space";

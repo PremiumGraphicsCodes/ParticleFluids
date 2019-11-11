@@ -31,7 +31,7 @@ void PMSphereView::onOk()
 	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
 	getWorld()->getObjects()->addScene(scene);
 
-	Command::Command cameraFitCommand(::CameraFitCommandLabel);
+	Command::Command cameraFitCommand(CameraFitCommandLabels::CameraFitCommandLabel);
 	cameraFitCommand.execute(getWorld());
 	getWorld()->updateViewModel();
 }

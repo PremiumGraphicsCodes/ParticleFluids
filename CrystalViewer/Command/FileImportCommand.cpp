@@ -12,20 +12,20 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 FileImportCommand::Args::Args() :
-	filePath(::FilePathLabel, "")
+	filePath(FileImportLabels::FilePathLabel, "")
 {
 	add(&filePath);
 }
 
 FileImportCommand::Results::Results() :
-	isOk(::IsOkLabel, false)
+	isOk(FileImportLabels::IsOkLabel, false)
 {
 	add(&isOk);
 }
 
 std::string FileImportCommand::getName()
 {
-	return ::FileImportCommandLabel;
+	return FileImportLabels::FileImportCommandLabel;
 }
 
 void FileImportCommand::execute(World* scene)

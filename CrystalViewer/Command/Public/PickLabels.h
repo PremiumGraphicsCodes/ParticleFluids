@@ -1,6 +1,7 @@
 #include "PublicLabel.h"
 
-namespace {
+namespace PickLabels
+{
 	PublicLabel PickCommandLabel = "Pick";
 	PublicLabel PositionLabel = "Position";
 	PublicLabel ParentIdLabel = "ParentId";

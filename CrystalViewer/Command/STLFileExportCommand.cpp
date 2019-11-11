@@ -12,9 +12,9 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 STLFileExportCommand::Args::Args() :
-	id(::IdLabel, -1),
-	isBinary(::IsBinaryLabel, false),
-	filePath(::FilePathLabel, "")
+	id(FileExportLabels::IdLabel, -1),
+	isBinary(FileExportLabels::IsBinaryLabel, false),
+	filePath(FileExportLabels::FilePathLabel, "")
 {
 	add(&id);
 	add(&isBinary);
@@ -22,14 +22,14 @@ STLFileExportCommand::Args::Args() :
 }
 
 STLFileExportCommand::Results::Results() :
-	isOk(::IsOkLabel, false)
+	isOk(FileExportLabels::IsOkLabel, false)
 {
 	add(&isOk);
 }
 
 std::string STLFileExportCommand::getName()
 {
-	return ::STLFileExportCommandLabel;
+	return FileExportLabels::STLFileExportCommandLabel;
 }
 
 void STLFileExportCommand::execute(World* scene)

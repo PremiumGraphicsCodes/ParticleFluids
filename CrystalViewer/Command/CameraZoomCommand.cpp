@@ -5,14 +5,14 @@ using namespace Crystal::Math;
 using namespace Crystal::Command;
 
 CameraZoomCommand::Args::Args() :
-	ratio(::ZoomRatioLabel, 1.0)
+	ratio(CameraZoomCommandLabels::ZoomRatioLabel, 1.0)
 {
 	add(&ratio);
 }
 
 std::string CameraZoomCommand::getName()
 {
-	return ::CameraZoomCommandLabel;
+	return CameraZoomCommandLabels::CameraZoomCommandLabel;
 }
 
 void CameraZoomCommand::execute(Crystal::Scene::World* scene)

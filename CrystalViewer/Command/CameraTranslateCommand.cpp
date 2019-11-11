@@ -6,14 +6,14 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 CameraTranslateCommand::Args::Args() :
-	translate(::TranslateLabel, Vector3dd())
+	translate(CameraTranslateCommandLabels::TranslateLabel, Vector3dd())
 {
 	add(&translate);
 }
 
 std::string CameraTranslateCommand::getName()
 {
-	return ::CameraTranslateCommandLabel;
+	return CameraTranslateCommandLabels::CameraTranslateCommandLabel;
 }
 
 void CameraTranslateCommand::execute(World* scene)

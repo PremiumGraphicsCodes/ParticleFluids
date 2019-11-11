@@ -10,18 +10,18 @@ using namespace Crystal::Command;
 
 std::any GetCommand::Get(World* world, const std::string& name)
 {
-	if (name == ::CameraPositionLabel) {
+	if (name == GetLabels::CameraPositionLabel) {
 		const auto& pos = world->getRenderer()->getCamera()->getPosition();
 		return std::any(pos);
 	}
-	else if (name == ::CameraProjectionMatrixLabel) {
+	else if (name == GetLabels::CameraProjectionMatrixLabel) {
 		const auto& rot = world->getRenderer()->getCamera()->getProjectionMatrix();
 		return std::any(rot);
 	}
-	else if (name == ::SceneCountLabel) {
+	else if (name == GetLabels::SceneCountLabel) {
 		return static_cast<int>( world->getObjects()->getRoot()->getChildren().size() );
 	}
-	else if (name == ::SceneListIdsLabel) {
+	else if (name == GetLabels::SceneListIdsLabel) {
 		const auto& children = world->getObjects()->getRoot()->getChildren();
 		std::vector<int> ids;
 		for (auto child : children) {
@@ -39,10 +39,10 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 	if (name == "SceneType") {
 		return std::any(scene->getType());
 	}
-	else if (name == ::NameLabel) {
+	else if (name == GetLabels::NameLabel) {
 		return std::string(scene->getName());
 	}
-	else if (name == ::IsVisibleLabel) {
+	else if (name == GetLabels::IsVisibleLabel) {
 		return std::any(scene->isVisible());
 	}
 	assert(false);
@@ -51,7 +51,7 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 
 std::any GetCommand::Get(World* world, int parentId, int childId, const std::string& name)
 {
-	if (name == ::PositionLabel) {
+	if (name == GetLabels::PositionLabel) {
 		auto scene = world->getObjects()->findSceneById<Crystal::Scene::IShapeScene*>(parentId);
 		return std::any( scene->getPosition(childId) );
 	}

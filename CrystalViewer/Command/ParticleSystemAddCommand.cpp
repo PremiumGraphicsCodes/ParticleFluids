@@ -10,11 +10,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 ParticleSystemAddCommand::Args::Args() :
-	positions(::PositionsLabel, {}),
-	pointSize(::PointSizeLabel, 1.0f),
-	color(::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
-	name(::NameLabel, std::string("")),
-	isItem(::IsItemLabel, false)
+	positions(ParticleSystemAddLabels::PositionsLabel, {}),
+	pointSize(ParticleSystemAddLabels::PointSizeLabel, 1.0f),
+	color(ParticleSystemAddLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
+	name(ParticleSystemAddLabels::NameLabel, std::string("")),
+	isItem(ParticleSystemAddLabels::IsItemLabel, false)
 {
 	add(&positions);
 	add(&pointSize);
@@ -24,7 +24,7 @@ ParticleSystemAddCommand::Args::Args() :
 }
 
 ParticleSystemAddCommand::Results::Results() :
-	newId(::NewIdLabel, -1)
+	newId(ParticleSystemAddLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
@@ -32,7 +32,7 @@ ParticleSystemAddCommand::Results::Results() :
 
 std::string ParticleSystemAddCommand::getName()
 {
-	return ::ParticleSystemAddLabel;
+	return ParticleSystemAddLabels::ParticleSystemAddLabel;
 }
 
 void ParticleSystemAddCommand::execute(World* world)

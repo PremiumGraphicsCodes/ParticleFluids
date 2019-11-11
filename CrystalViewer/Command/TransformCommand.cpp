@@ -8,8 +8,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 TransformCommand::Args::Args() :
-	id(::IdLabel, -1),
-	matrix(::MatrixLabel, Math::Matrix4dd())
+	id(TransformLabels::IdLabel, -1),
+	matrix(TransformLabels::MatrixLabel, Math::Matrix4dd())
 {
 	add(&id);
 	add(&matrix);
@@ -17,7 +17,7 @@ TransformCommand::Args::Args() :
 
 std::string TransformCommand::getName()
 {
-	return ::TransformCommandLabel;
+	return TransformLabels::TransformCommandLabel;
 }
 
 void TransformCommand::execute(World* world)

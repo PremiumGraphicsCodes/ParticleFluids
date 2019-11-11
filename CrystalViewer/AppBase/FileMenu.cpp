@@ -7,7 +7,7 @@
 #include "../../Crystal/Scene/World.h"
 #include "../Command/CameraFitCommand.h"
 #include "../Command/Command.h"
-//#include "../Command/Public/FileImportLabels.h"
+#include "../Command/Public/FileImportLabels.h"
 #include "../Command/Public/FileExportLabels.h"
 
 #include <iostream>
@@ -36,9 +36,9 @@ void FileMenu::onShow()
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
 				Crystal::Command::Command command("FileImport");
-				command.setArg(::FilePathLabel, std::filesystem::path(filename));
+				command.setArg(FileImportLabels::FilePathLabel, std::filesystem::path(filename));
 				command.execute(model);
-				bool isOk = std::any_cast<bool>(command.getResult(::IsOkLabel));
+				bool isOk = std::any_cast<bool>(command.getResult(FileImportLabels::IsOkLabel));
 				if (!isOk) {
 					std::cout << "import failed." << std::endl;
 				}
@@ -54,10 +54,10 @@ void FileMenu::onShow()
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
-				Crystal::Command::Command command(::FileExportCommandLabel);
-				command.setArg(::FilePathLabel, std::filesystem::path(filename));
+				Crystal::Command::Command command(FileExportLabels::FileExportCommandLabel);
+				command.setArg(FileExportLabels::FilePathLabel, std::filesystem::path(filename));
 				command.execute(model);
-				bool isOk = std::any_cast<bool>( command.getResult(::IsOkLabel) );
+				bool isOk = std::any_cast<bool>( command.getResult(FileExportLabels::IsOkLabel) );
 				if (!isOk) {
 					std::cout << "export failed." << std::endl;
 				}

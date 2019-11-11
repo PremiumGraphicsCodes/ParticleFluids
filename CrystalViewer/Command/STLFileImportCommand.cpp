@@ -14,22 +14,22 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 STLFileImportCommand::Args::Args() :
-	filePath(::FilePathLabel, ""),
-	isBinary(::IsBinaryLabel, false)
+	filePath(FileImportLabels::FilePathLabel, ""),
+	isBinary(FileImportLabels::IsBinaryLabel, false)
 {
 	add(&filePath);
 	add(&isBinary);
 }
 
 STLFileImportCommand::Results::Results() :
-	isOk(::IsOkLabel, false)
+	isOk(FileImportLabels::IsOkLabel, false)
 {
 	add(&isOk);
 }
 
 std::string STLFileImportCommand::getName()
 {
-	return ::FileImportCommandLabel;
+	return FileImportLabels::FileImportCommandLabel;
 }
 
 void STLFileImportCommand::execute(Crystal::Scene::World* scene)

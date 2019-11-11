@@ -10,20 +10,20 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 PCDFileImportCommand::Args::Args() :
-	filePath(::FilePathLabel, "")
+	filePath(FileImportLabels::FilePathLabel, "")
 {
 	add(&filePath);
 }
 
 PCDFileImportCommand::Results::Results() :
-	isOk(::IsOkLabel, false)
+	isOk(FileImportLabels::IsOkLabel, false)
 {
 	add(&isOk);
 }
 
 std::string PCDFileImportCommand::getName()
 {
-	return ::PCDFileImportCommandLabel;
+	return FileImportLabels::PCDFileImportCommandLabel;
 }
 
 void PCDFileImportCommand::execute(Crystal::Scene::World* scene)

@@ -2,7 +2,8 @@
 
 #include "PublicLabel.h"
 
-namespace {
+namespace FileExportLabels
+{
 	PublicLabel FileExportCommandLabel = "FileExport";
 	PublicLabel FilePathLabel = "FilePath";
 	PublicLabel IsOkLabel = "IsOk";

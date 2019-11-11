@@ -2,7 +2,8 @@
 
 #include "PublicLabel.h"
 
-namespace {
+namespace TransformLabels
+{
 	PublicLabel TransformCommandLabel = "Transform";
 	PublicLabel ScaleCommandLabel = "Scale";
 	PublicLabel RotateCommandLabel = "Rotate";

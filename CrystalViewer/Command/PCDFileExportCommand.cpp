@@ -10,22 +10,22 @@ using namespace Crystal::Command;
 using namespace Crystal::IO;
 
 PCDFileExportCommand::Args::Args() :
-	id(::IdLabel, -1),
-	filePath(::FilePathLabel, "")
+	id(FileExportLabels::IdLabel, -1),
+	filePath(FileExportLabels::FilePathLabel, "")
 {
 	add(&id);
 	add(&filePath);
 }
 
 PCDFileExportCommand::Results::Results() :
-	isOk(::IsOkLabel, false)
+	isOk(FileExportLabels::IsOkLabel, false)
 {
 	add(&isOk);
 }
 
 std::string PCDFileExportCommand::getName()
 {
-	return ::PCDFileExportCommandLabel;
+	return FileExportLabels::PCDFileExportCommandLabel;
 }
 
 void PCDFileExportCommand::execute(World* scene)

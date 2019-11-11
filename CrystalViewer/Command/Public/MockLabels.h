@@ -1,5 +1,6 @@
 #include "PublicLabel.h"
 
-namespace {
+namespace MockLabels
+{
 	PublicLabel MockCommandLabel = "Mock";
 }

@@ -2,7 +2,8 @@
 
 #include "PublicLabel.h"
 
-namespace {
+namespace WireFrameAddLabels
+{
 	PublicLabel WireFrameAddLabel = "WireFrameAdd";
 	PublicLabel LinesLabel = "Lines";
 	PublicLabel LineWidthLabel = "LineWidth";

@@ -2,7 +2,8 @@
 
 #include "PublicLabel.h"
 
-namespace {
+namespace ParticleSystemAddLabels
+{
 	PublicLabel ParticleSystemAddLabel = "ParticleSystemAdd";
 	PublicLabel PositionsLabel = "Positions";
 	PublicLabel PointSizeLabel = "PointSize";
