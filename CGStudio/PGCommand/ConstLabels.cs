@@ -72,7 +72,7 @@ namespace PG {
 		public const string ChildIdLabel = "ChildId";
 	}
 
-	public class PolygonMeshAddLabels
+	public class PolygonMeshCreateLabels
 	{
 		public const string CommandNameLabel = "ParticleSystemAdd";
 		public const string PositionsLabel = "Positions";

@@ -76,9 +76,6 @@
     <ClInclude Include="Public\SetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="Public\PolygonMeshAddLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="PCDFileExportCommand.h">
       <Filter>File\PCD</Filter>
     </ClInclude>
@@ -113,6 +110,12 @@
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshCreateCommand.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\PolygonMeshCreateLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshCreateBySurfaceCommand.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
@@ -185,6 +188,9 @@
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshCreateCommand.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshCreateBySurfaceCommand.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,17 +1,16 @@
-#include "PolygonMeshCreateCommand.h"
+#include "PolygonMeshCreateBySurfaceCommand.h"
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../../Crystal/Scene/PolygonMesh.h"
 #include "../../Crystal/Scene/PolygonMeshBuilder.h"
 
-#include "Public/PolygonMeshCreateLabels.h"
-
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-PolygonMeshCreateCommand::Args::Args() :
-	positions(PolygonMeshCreateLabels::PositionsLabel, {}),
+/*
+PolygonMeshCreateBySurfaceCommand::Args::Args() :
+	surfaces(PolygonMeshCreateLabels::PositionsLabel, {}),
 	normals(PolygonMeshCreateLabels::NormalsLabel, {}),
 	texCoords(PolygonMeshCreateLabels::TexCoordsLabel, {}),
 	vertices(PolygonMeshCreateLabels::VerticesLabel, {}),
@@ -26,18 +25,18 @@ PolygonMeshCreateCommand::Args::Args() :
 	add(&name);
 }
 
-PolygonMeshCreateCommand::Results::Results() :
+PolygonMeshCreateBySurfaceCommand::Results::Results() :
 	newId(PolygonMeshCreateLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
 
-std::string PolygonMeshCreateCommand::getName()
+std::string PolygonMeshCreateBySurfaceCommand::getName()
 {
 	return ::PolygonMeshCreateLabels::CommandNameLabel;
 }
 
-void PolygonMeshCreateCommand::execute(World* scene)
+void PolygonMeshCreateBySurfaceCommand::execute(World* scene)
 {
 	const auto& positions = args.positions.getValue();
 	const auto& normals = args.normals.getValue();
@@ -66,3 +65,4 @@ void PolygonMeshCreateCommand::execute(World* scene)
 
 	results.newId.setValue(newId);
 }
+*/

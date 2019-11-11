@@ -175,6 +175,7 @@
     <ClInclude Include="PCDFileExportCommand.h" />
     <ClInclude Include="PCDFileImportCommand.h" />
     <ClInclude Include="PickCommand.h" />
+    <ClInclude Include="PolygonMeshCreateBySurfaceCommand.h" />
     <ClInclude Include="PolygonMeshCreateCommand.h" />
     <ClInclude Include="Public\CameraLabels.h" />
     <ClInclude Include="Public\FileExportLabels.h" />
@@ -182,7 +183,7 @@
     <ClInclude Include="Public\MockLabels.h" />
     <ClInclude Include="Public\ParticleSystemCreateLabels.h" />
     <ClInclude Include="Public\PickLabels.h" />
-    <ClInclude Include="Public\PolygonMeshAddLabels.h" />
+    <ClInclude Include="Public\PolygonMeshCreateLabels.h" />
     <ClInclude Include="Public\PublicLabel.h" />
     <ClInclude Include="Public\SetLabels.h" />
     <ClInclude Include="Public\TransformLabels.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="PCDFileExportCommand.cpp" />
     <ClCompile Include="PCDFileImportCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />
+    <ClCompile Include="PolygonMeshCreateBySurfaceCommand.cpp" />
     <ClCompile Include="PolygonMeshCreateCommand.cpp" />
     <ClCompile Include="RotateCommand.cpp" />
     <ClCompile Include="ScaleCommand.cpp" />

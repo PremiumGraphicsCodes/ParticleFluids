@@ -2,7 +2,7 @@
 
 #include "PublicLabel.h"
 
-namespace PolygonMeshAddLabels
+namespace PolygonMeshCreateLabels
 {
 	PublicLabel CommandNameLabel = "ParticleSystemAdd";
 	PublicLabel PositionsLabel = "Positions";
