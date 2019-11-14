@@ -23,7 +23,7 @@ PMBoxView::PMBoxView(World* model, Canvas* canvas) :
 void PMBoxView::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.add(boxView.getValue());
+	builder.add(boxView.getValue(), 1, 1, 1);
 	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), nameView.getValue());
 	getWorld()->getObjects()->addScene(scene);
 	getWorld()->updateViewModel();

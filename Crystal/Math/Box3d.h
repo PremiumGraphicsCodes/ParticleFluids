@@ -10,7 +10,7 @@ namespace Crystal {
 		class Line3d;
 		class Sphere3d;
 
-class Box3d : IVolume3d
+class Box3d : public IVolume3d
 {
 public:
 	Box3d();

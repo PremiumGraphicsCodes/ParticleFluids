@@ -121,6 +121,9 @@
     <ClInclude Include="Public\PolygonMeshCreateBySurfaceLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="PolygonMeshCreateByVolumeCommand.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -194,6 +197,9 @@
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshCreateBySurfaceCommand.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshCreateByVolumeCommand.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>

@@ -36,9 +36,9 @@ std::string PolygonMeshCreateBySurfaceCommand::getName()
 void PolygonMeshCreateBySurfaceCommand::execute(World* scene)
 {
 	PolygonMeshBuilder builder;
-	auto surface = std::any_cast<std::shared_ptr<Math::ISurface3d>>(args.surface.getValue());
-	const auto uNum = std::any_cast<int>( args.uDivNum.getValue() );
-	const auto vNum = std::any_cast<int>( args.vDivNum.getValue() );
+	auto surface = args.surface.getValue();
+	const auto uNum = args.uDivNum.getValue();
+	const auto vNum = args.vDivNum.getValue();
 	builder.add(*surface, uNum, vNum);
 
 	auto shape = scene->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), args.name.getValue());

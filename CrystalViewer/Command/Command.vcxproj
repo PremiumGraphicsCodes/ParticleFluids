@@ -176,6 +176,7 @@
     <ClInclude Include="PCDFileImportCommand.h" />
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PolygonMeshCreateBySurfaceCommand.h" />
+    <ClInclude Include="PolygonMeshCreateByVolumeCommand.h" />
     <ClInclude Include="PolygonMeshCreateCommand.h" />
     <ClInclude Include="Public\CameraLabels.h" />
     <ClInclude Include="Public\FileExportLabels.h" />
@@ -220,6 +221,7 @@
     <ClCompile Include="PCDFileImportCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="PolygonMeshCreateBySurfaceCommand.cpp" />
+    <ClCompile Include="PolygonMeshCreateByVolumeCommand.cpp" />
     <ClCompile Include="PolygonMeshCreateCommand.cpp" />
     <ClCompile Include="RotateCommand.cpp" />
     <ClCompile Include="ScaleCommand.cpp" />

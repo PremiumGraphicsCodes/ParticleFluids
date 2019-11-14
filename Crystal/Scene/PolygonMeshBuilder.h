@@ -20,9 +20,9 @@ public:
 
 	void add(const Math::Triangle3d& triangle);
 
-	void add(const Math::Box3d& box);
+	void add(const Math::ISurface3d& surface, const int udiv, const int vdiv);
 
-	void add(const Math::ISurface3d& sphere, const int udiv, const int vdiv);
+	void add(const Math::IVolume3d& volume, const int udiv, const int vdiv, const int wdiv);
 
 	void add(const Math::Quad3d& quad);
 

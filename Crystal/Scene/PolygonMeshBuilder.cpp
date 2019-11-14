@@ -26,17 +26,41 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 	polygonMesh->createFace( v0, v1, v2 );
 }
 
-void PolygonMeshBuilder::add(const Box3d& box)
+void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const int vnum)
 {
-	auto p0 = polygonMesh->createPosition(box.getPosition(0, 0, 0));
-	auto p1 = polygonMesh->createPosition(box.getPosition(1, 0, 0));
-	auto p2 = polygonMesh->createPosition(box.getPosition(1, 1, 0));
-	auto p3 = polygonMesh->createPosition(box.getPosition(0, 1, 0));
+	std::vector<std::vector<int>> grid2d;
+	for (int i = 0; i < unum; ++i) {
+		const auto u = i / static_cast<double>(unum);
+		std::vector<int> grid1d;
+		for (int j = 0; j < vnum; ++j) {
+			const auto v = j / static_cast<double>(vnum);
+			const auto p = polygonMesh->createPosition( surface.getPosition( u, v) );
+			const auto n = polygonMesh->createNormal( surface.getNormal(u, v) );
+			const auto tx = polygonMesh->createTexCoord(Vector2dd( u,v) );
+			const auto id = polygonMesh->createVertex(p, n, tx);
+			grid1d.push_back(id);
+		}
+		grid2d.push_back(grid1d);
+	}
+	for (int i = 0; i < grid2d.size()-1; ++i) {
+		for (int j = 0; j < grid2d[i].size() - 1; ++j) {
+			polygonMesh->createFace( grid2d[i][j], grid2d[i + 1][j], grid2d[i][j + 1] );
+			polygonMesh->createFace( grid2d[i][j + 1], grid2d[i + 1][j], grid2d[i + 1][j + 1] );
+		}
+	}
+}
 
-	auto p4 = polygonMesh->createPosition(box.getPosition(0, 0, 1));
-	auto p5 = polygonMesh->createPosition(box.getPosition(1, 0, 1));
-	auto p6 = polygonMesh->createPosition(box.getPosition(1, 1, 1));
-	auto p7 = polygonMesh->createPosition(box.getPosition(0, 1, 1));
+void PolygonMeshBuilder::add(const IVolume3d& volume, const int unum, const int vnum, const int wnum)
+{
+	auto p0 = polygonMesh->createPosition(volume.getPosition(0, 0, 0));
+	auto p1 = polygonMesh->createPosition(volume.getPosition(1, 0, 0));
+	auto p2 = polygonMesh->createPosition(volume.getPosition(1, 1, 0));
+	auto p3 = polygonMesh->createPosition(volume.getPosition(0, 1, 0));
+
+	auto p4 = polygonMesh->createPosition(volume.getPosition(0, 0, 1));
+	auto p5 = polygonMesh->createPosition(volume.getPosition(1, 0, 1));
+	auto p6 = polygonMesh->createPosition(volume.getPosition(1, 1, 1));
+	auto p7 = polygonMesh->createPosition(volume.getPosition(0, 1, 1));
 
 	add(p0, p1, p2, p3); // front
 	add(p7, p6, p5, p4); // back
@@ -44,30 +68,24 @@ void PolygonMeshBuilder::add(const Box3d& box)
 	add(p0, p1, p5, p4); // bottom
 	add(p0, p4, p7, p3); // left
 	add(p1, p5, p6, p2); // right
-}
-
-void PolygonMeshBuilder::add(const ISurface3d& sphere, const int unum, const int vnum)
-{
-	const auto du = 1.0 / (double)unum;
-	const auto dv = 1.0 / (double)vnum;
-	std::vector<std::vector<int>> grid;
-	for (double u = 0.0; u < 1.0; u +=du) {
-		std::vector<int> vs;
-		for (double v = 0.0; v < 1.0; v+=dv) {
-			const auto p = polygonMesh->createPosition( sphere.getPosition( u, v) );
-			const auto n = polygonMesh->createNormal( sphere.getNormal(u, v) );
-			const auto tx = polygonMesh->createTexCoord(Vector2dd( u,v) );
-			const auto id = polygonMesh->createVertex(p, n, tx);
-			vs.push_back(id);
+	/*
+	std::vector<std::vector<std::vector<int>>> grid3d;
+	for (int i = 0; i <= unum; ++i) {
+		const auto u = i / static_cast<double>(unum);
+		std::vector<std::vector<int>> grid2d;
+		for (int j = 0; j <= vnum; ++j) {
+			const auto v = j / static_cast<double>(vnum);
+			std::vector<int> grid1d;
+			for (int k = 0; k <= wnum; ++k) {
+				const auto w = j / static_cast<double>(wnum);
+				const auto p = polygonMesh->createPosition(volume.getPosition(u, v, w));
+				grid1d.push_back(p);
+			}
+			grid2d.push_back(grid1d);
 		}
-		grid.push_back(vs);
+		grid3d.push_back(grid2d);
 	}
-	for (int i = 0; i < grid.size()-1; ++i) {
-		for (int j = 0; j < grid[i].size() - 1; ++j) {
-			polygonMesh->createFace( grid[i][j], grid[i + 1][j], grid[i][j + 1] );
-			polygonMesh->createFace( grid[i][j + 1], grid[i + 1][j], grid[i + 1][j + 1] );
-		}
-	}
+	*/
 }
 
 void PolygonMeshBuilder::add(const Quad3d& quad)
@@ -82,24 +100,6 @@ void PolygonMeshBuilder::add(const Quad3d& quad)
 	polygonMesh->createFace(v00,v01,v10);
 	polygonMesh->createFace(v11,v10,v01);
 }
-
-/*
-void PolygonMeshBuilder::add(const TriangleMesh& mesh)
-{
-	const auto& fs = mesh.getFaces();
-	for (const auto& f : fs) {
-		const auto& vs = f.getVertices();
-		const auto& normal = f.getNormal();
-		auto n = polygonMesh->createNormal(normal);
-		std::array<int,3> ids;
-		for (int i = 0; i < 3; ++i ) {
-			auto p = polygonMesh->createPosition(vs[i]);
-			ids[i] = polygonMesh->createVertex(p, n);
-		}
-		polygonMesh->createFace(ids[0], ids[1], ids[2]);
-	}
-}
-*/
 
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
 {
