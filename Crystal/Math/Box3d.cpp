@@ -115,12 +115,12 @@ Box3d Box3d::getOverlapped(const Box3d& rhs) const
 	return Box3d(min_, max_);
 }
 
-Vector3dd Box3d::getPosition(const Vector3dd& param) const
+Vector3dd Box3d::getPosition(const double u, const double v, const double w) const
 {
 	const auto& length = getLength();
-	const auto x = start.x + length.x * param.x;
-	const auto y = start.y + length.y * param.y;
-	const auto z = start.z + length.z * param.z;
+	const auto x = start.x + length.x * u;
+	const auto y = start.y + length.y * v;
+	const auto z = start.z + length.z * w;
 	return Vector3dd(x, y, z);
 }
 

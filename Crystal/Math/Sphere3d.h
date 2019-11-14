@@ -8,7 +8,7 @@ namespace Crystal {
 	namespace Math {
 		class Box3d;
 
-class Sphere3d : public IVolume3d, public ISurface3d
+class Sphere3d : public ISurface3d, public IVolume3d
 {
 public:
 	Sphere3d() :
@@ -25,15 +25,10 @@ public:
 
 	Vector3dd getPosition(const double u, const double v) const override
 	{
-		return getPosition(Vector3dd( u, v, 1.0));
+		return getPosition(u, v, 1.0);
 	}
 
-	Vector3dd getPosition(const Vector3dd& p) const override;
-
-	Vector3dd getNormal(const Math::Vector2dd& p) const override
-	{
-		return getPosition(Vector3dd(p, 1.0) - Vector3dd(p, 0.0));
-	}
+	Vector3dd getPosition(const double u, const double v, const double w) const override;
 
 	Vector3dd getNormal(const double u, const double v) const override;
 

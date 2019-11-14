@@ -22,12 +22,7 @@ public:
 	{
 	}
 
-	Vector3dd getPosition(const Vector3dd& p) const override;
-
-	Vector3dd getNormal(const Math::Vector2dd& p) const override
-	{
-		return getPosition(Vector3dd(p, 1.0) - Vector3dd(p, 0.0));
-	}
+	Vector3dd getPosition(const double u, const double v, const double w) const override;
 
 	Vector3dd getBottom() const { return bottom; }
 

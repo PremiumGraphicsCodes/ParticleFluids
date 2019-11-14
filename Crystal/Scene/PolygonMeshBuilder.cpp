@@ -28,15 +28,15 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 
 void PolygonMeshBuilder::add(const Box3d& box)
 {
-	auto p0 = polygonMesh->createPosition(box.getPosition(Vector3dd(0, 0, 0)));
-	auto p1 = polygonMesh->createPosition(box.getPosition(Vector3dd(1, 0, 0)));
-	auto p2 = polygonMesh->createPosition(box.getPosition(Vector3dd(1, 1, 0)));
-	auto p3 = polygonMesh->createPosition(box.getPosition(Vector3dd(0, 1, 0)));
+	auto p0 = polygonMesh->createPosition(box.getPosition(0, 0, 0));
+	auto p1 = polygonMesh->createPosition(box.getPosition(1, 0, 0));
+	auto p2 = polygonMesh->createPosition(box.getPosition(1, 1, 0));
+	auto p3 = polygonMesh->createPosition(box.getPosition(0, 1, 0));
 
-	auto p4 = polygonMesh->createPosition(box.getPosition(Vector3dd(0, 0, 1)));
-	auto p5 = polygonMesh->createPosition(box.getPosition(Vector3dd(1, 0, 1)));
-	auto p6 = polygonMesh->createPosition(box.getPosition(Vector3dd(1, 1, 1)));
-	auto p7 = polygonMesh->createPosition(box.getPosition(Vector3dd(0, 1, 1)));
+	auto p4 = polygonMesh->createPosition(box.getPosition(0, 0, 1));
+	auto p5 = polygonMesh->createPosition(box.getPosition(1, 0, 1));
+	auto p6 = polygonMesh->createPosition(box.getPosition(1, 1, 1));
+	auto p7 = polygonMesh->createPosition(box.getPosition(0, 1, 1));
 
 	add(p0, p1, p2, p3); // front
 	add(p7, p6, p5, p4); // back

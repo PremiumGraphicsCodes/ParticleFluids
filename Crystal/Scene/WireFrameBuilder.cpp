@@ -13,14 +13,14 @@ using namespace Crystal::Scene;
 void WireFrameBuilder::build(const Box3d& box)
 {
 	std::vector<Vector3dd> vertices;
-	vertices.push_back(box.getPosition(Vector3dd(0, 0, 0)));
-	vertices.push_back(box.getPosition(Vector3dd(1, 0, 0)));
-	vertices.push_back(box.getPosition(Vector3dd(1, 1, 0)));
-	vertices.push_back(box.getPosition(Vector3dd(0, 1, 0)));
-	vertices.push_back(box.getPosition(Vector3dd(0, 0, 1)));
-	vertices.push_back(box.getPosition(Vector3dd(1, 0, 1)));
-	vertices.push_back(box.getPosition(Vector3dd(1, 1, 1)));
-	vertices.push_back(box.getPosition(Vector3dd(0, 1, 1)));
+	vertices.push_back(box.getPosition(0, 0, 0));
+	vertices.push_back(box.getPosition(1, 0, 0));
+	vertices.push_back(box.getPosition(1, 1, 0));
+	vertices.push_back(box.getPosition(0, 1, 0));
+	vertices.push_back(box.getPosition(0, 0, 1));
+	vertices.push_back(box.getPosition(1, 0, 1));
+	vertices.push_back(box.getPosition(1, 1, 1));
+	vertices.push_back(box.getPosition(0, 1, 1));
 
 	std::vector<std::vector<Vector3dd>> grid;
 	lines.push_back(Line3dd::fromPoints(vertices[0], vertices[1]));
@@ -71,7 +71,7 @@ void WireFrameBuilder::build(const IVolume3d& curve, const int unum, const int v
 	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
 		std::vector<Math::Vector3dd> g;
 		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
-			g.push_back(curve.getPosition(Vector3dd( u, v, 1.0)));
+			g.push_back(curve.getPosition( u, v, 1.0));
 		}
 		grid.push_back(g);
 	}

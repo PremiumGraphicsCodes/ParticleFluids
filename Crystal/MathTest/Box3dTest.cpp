@@ -65,10 +65,10 @@ TEST(Box3dTest, TestAdd)
 TEST(Box3dTest, TestGetPosition)
 {
 	const Box3d b1(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2));
-	EXPECT_EQ(Vector3dd(0,0,0), b1.getPosition(Vector3dd(0, 0, 0)));
-	EXPECT_EQ(Vector3dd(2,0,0), b1.getPosition(Vector3dd(1, 0, 0)));
-	EXPECT_EQ(Vector3dd(2,2,0), b1.getPosition(Vector3dd(1, 1, 0)));
-	EXPECT_EQ(Vector3dd(0,2,0), b1.getPosition(Vector3dd(0, 1, 0)));
+	EXPECT_EQ(Vector3dd(0,0,0), b1.getPosition(0, 0, 0));
+	EXPECT_EQ(Vector3dd(2,0,0), b1.getPosition(1, 0, 0));
+	EXPECT_EQ(Vector3dd(2,2,0), b1.getPosition(1, 1, 0));
+	EXPECT_EQ(Vector3dd(0,2,0), b1.getPosition(0, 1, 0));
 }
 
 TEST(Box3dTest, TestIsInside)

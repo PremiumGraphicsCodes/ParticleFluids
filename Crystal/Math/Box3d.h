@@ -62,12 +62,7 @@ public:
 
 	Box3d getOverlapped(const Box3d& rhs) const;
 
-	Vector3dd getPosition(const Vector3dd& param) const;
-
-	Vector3dd getNormal(const Math::Vector2dd& p) const override
-	{
-		return getPosition(Vector3dd(p, 1.0) - Vector3dd(p, 0.0));
-	}
+	Vector3dd getPosition(const double u, const double v, const double w) const override;
 
 	Sphere3d getBoundintSphere() const;
 

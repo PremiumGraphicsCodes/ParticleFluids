@@ -11,9 +11,7 @@ class IVolume3d
 public:
 	virtual ~IVolume3d() = default;
 
-	virtual Vector3dd getPosition(const Math::Vector3dd& p) const = 0;
-
-	virtual Vector3dd getNormal(const Math::Vector2dd& p) const = 0;
+	virtual Vector3dd getPosition(const double u, const double v, const double w) const = 0;
 
 	virtual bool isInside(const Math::Vector3dd& position) const = 0;
 
