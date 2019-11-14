@@ -32,14 +32,14 @@ void PSBoxView::onOk()
 			const auto u = dist(mt);
 			const auto v = dist(mt);
 			const auto w = dist(mt);
-			positions.push_back(b.getPosition(Vector3dd(u, v, w)));
+			positions.push_back(b.getPosition(u, v, w));
 		}
 	}
 	else {
 		for (int i = 0; i < count.getValue(); ++i) {
 			const auto u = dist(mt);
 			const auto v = dist(mt);
-			positions.push_back(b.getPosition(Vector3dd(1.0, u, v)));
+			positions.push_back(b.getPosition(1.0, u, v));
 		}
 	}
 	IPSAddView::addParticleSystem(positions);

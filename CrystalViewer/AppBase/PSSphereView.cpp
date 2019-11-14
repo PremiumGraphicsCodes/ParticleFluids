@@ -31,7 +31,7 @@ void PSSphereView::onOk()
 	for (int i = 0; i < count.getValue(); ++i) {
 		const auto u = dist(mt);
 		const auto v = dist(mt);
-		positions.push_back(shape.getPosition(Vector3dd(u, v, 1.0)));
+		positions.push_back(shape.getPosition(u, v, 1.0));
 	}
 	IPSAddView::addParticleSystem(positions);
 	
