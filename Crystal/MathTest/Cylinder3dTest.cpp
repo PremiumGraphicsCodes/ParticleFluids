@@ -9,21 +9,25 @@ namespace {
 	double tolerance = 1.0e-12;
 }
 
-TEST(Cylinder3dTest, TestGetPosition)
+/*
+TEST(Cylinder3dTest, TestGetPositionByUV)
 {
 	const Cylinder3d cylinder;
 
 	{
-		const auto& actual = cylinder.getPosition(0, 0, 1.0);
+		const auto& actual = cylinder.getPosition(0, 0);
 		const Vector3dd expected(1, 0, -0.5);
 		EXPECT_EQ(expected, actual);
 	}
+}
+*/
 
-	{
-		const auto& actual = cylinder.getPosition(0.5, 0, 1.0);
-		const Vector3dd expected(-1, 0, -0.5);
-		EXPECT_TRUE( areSame( expected, actual, tolerance) );
-	}
+TEST(Cylinder3dTest, TestGetPositionByUVW)
+{
+	const Cylinder3d cylinder;
+
+	EXPECT_TRUE( areSame( Vector3dd(1, 0, -0.5), cylinder.getPosition(0.0, 0.0, 1.0), tolerance) );
+	EXPECT_TRUE( areSame(Vector3dd(-1, 0, -0.5), cylinder.getPosition(0.5, 0.0, 1.0), tolerance) );
 
 	{
 		const auto& actual = cylinder.getPosition(0, 1.0, 1.0);
