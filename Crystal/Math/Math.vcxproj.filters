@@ -45,15 +45,6 @@
     <ClInclude Include="Torus3d.h">
       <Filter>Primitive3d</Filter>
     </ClInclude>
-    <ClInclude Include="IVolume3d.h">
-      <Filter>Primitive3d</Filter>
-    </ClInclude>
-    <ClInclude Include="ISurface3d.h">
-      <Filter>Primitive3d</Filter>
-    </ClInclude>
-    <ClInclude Include="ICurve3d.h">
-      <Filter>Primitive3d</Filter>
-    </ClInclude>
     <ClInclude Include="Circle2d.h">
       <Filter>Primitive2d</Filter>
     </ClInclude>
@@ -70,6 +61,15 @@
       <Filter>Primitive3d</Filter>
     </ClInclude>
     <ClInclude Include="Space3d.h" />
+    <ClInclude Include="ICurve3d.h">
+      <Filter>Primitive3d\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ISurface3d.h">
+      <Filter>Primitive3d\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="IVolume3d.h">
+      <Filter>Primitive3d\Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Matrix">
@@ -83,6 +83,9 @@
     </Filter>
     <Filter Include="Primitive2d">
       <UniqueIdentifier>{6345ad72-c8fd-4e79-82f5-c72584a1e0d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Primitive3d\Interface">
+      <UniqueIdentifier>{3de7be59-319c-4b1a-af3e-1cd59d2b5f53}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -1,28 +1,24 @@
 #pragma once
 
+#include "ISurface3d.h"
 #include "IVolume3d.h"
 #include "Vector3d.h"
 
 namespace Crystal {
 	namespace Math {
 
-class Cone3d : public IVolume3d
+class Cone3d : public ISurface3d, public IVolume3d
 {
 public:
-	Cone3d() :
-		bottom(0,0,0),
-		radius(1.0),
-		height(1.0)
-	{}
+	Cone3d();
 
-	Cone3d(const Vector3dd& bottom, const double radius, const double height) :
-		bottom(bottom),
-		radius(radius),
-		height(height)
-	{
-	}
+	Cone3d(const Vector3dd& bottom, const double radius, const double height);
+
+	Vector3dd getPosition(const double u, const double v) const override;
 
 	Vector3dd getPosition(const double u, const double v, const double w) const override;
+
+	Vector3dd getNormal(const double u, const double v) const override;
 
 	Vector3dd getBottom() const { return bottom; }
 

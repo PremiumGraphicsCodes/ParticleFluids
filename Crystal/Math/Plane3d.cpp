@@ -2,6 +2,18 @@
 
 using namespace Crystal::Math;
 
+Plane3d::Plane3d() :
+	origin(0, 0, 0),
+	normal(0, 0, 1)
+{
+}
+
+Plane3d::Plane3d(const Vector3dd& origin, const Vector3dd& normal) :
+	origin(origin),
+	normal(normal)
+{
+}
+
 double Plane3d::getDistance(const Vector3dd& position) const
 {
 	const auto& v = position - origin;

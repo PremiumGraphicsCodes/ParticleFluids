@@ -10,6 +10,11 @@ Sphere3d::Sphere3d(const Box3d& boundingBox)
 	radius = std::min<double>(std::min<double>(length.x, length.y), length.z) * 0.5;
 }
 
+Vector3dd Sphere3d::getPosition(const double u, const double v) const
+{
+	return getPosition(u, v, 1.0);
+}
+
 Vector3dd Sphere3d::getPosition(const double u, const double v, const double w) const
 {
 	const auto theta = 2.0 * u * PI;

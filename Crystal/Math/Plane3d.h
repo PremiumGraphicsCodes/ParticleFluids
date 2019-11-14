@@ -8,17 +8,9 @@ namespace Crystal {
 class Plane3d
 {
 public:
-	Plane3d() :
-		origin(0, 0, 0),
-		normal(0, 0, 1)
-	{
-	}
+	Plane3d();
 
-	Plane3d(const Vector3dd& origin, const Vector3dd& normal) :
-		origin(origin),
-		normal(normal)
-	{
-	}
+	Plane3d(const Vector3dd& origin, const Vector3dd& normal);
 
 	Vector3dd getOrigin() const { return origin; }
 
