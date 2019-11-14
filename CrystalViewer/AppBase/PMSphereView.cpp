@@ -4,6 +4,7 @@
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../Command/Command.h"
+#include "../Command/Public/PolygonMeshCreateBySurfaceLabels.h"
 #include "../Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
@@ -26,12 +27,17 @@ PMSphereView::PMSphereView(World* model, Canvas* canvas) :
 
 void PMSphereView::onOk()
 {
-	PolygonMeshBuilder builder;
-	builder.add(sphere.getValue(), unum.getValue(), vnum.getValue());
-	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
-	getWorld()->getObjects()->addScene(scene);
+	std::shared_ptr<ISurface3d> surface = std::make_shared<Sphere3d>(sphere.getValue());
 
-	Command::Command cameraFitCommand(CameraFitCommandLabels::CameraFitCommandLabel);
-	cameraFitCommand.execute(getWorld());
+	Command::Command command;
+	command.create(PolygonMeshCreateBySurfaceLabels::CommandNameLabel);
+	command.setArg(PolygonMeshCreateBySurfaceLabels::SurfaceLabel, surface);
+	command.setArg(PolygonMeshCreateBySurfaceLabels::UDivLabel, unum.getValue());
+	command.setArg(PolygonMeshCreateBySurfaceLabels::VDivLabel, vnum.getValue());
+	command.setArg(PolygonMeshCreateBySurfaceLabels::NameLabel, name.getValue());
+	command.execute(getWorld());
+
+	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
+	command.execute(getWorld());
 	getWorld()->updateViewModel();
 }
