@@ -11,26 +11,15 @@ namespace Crystal {
 class Quad3d : ISurface3d
 {
 public:
-	Quad3d(const Vector3dd& origin, const Vector3dd& uvec, const Vector3dd& vvec) :
-		origin(origin),
-		uvec(uvec),
-		vvec(vvec)
-	{
-	}
+	Quad3d();
 
-	Vector3dd getPosition(const double u, const double v) const override
-	{
-		return origin + uvec * u + vvec * v;
-	}
+	Quad3d(const Vector3dd& origin, const Vector3dd& uvec, const Vector3dd& vvec);
 
-	Vector3dd getNormal() const
-	{
-		return glm::normalize( glm::cross(uvec, vvec) );
-	}
+	Vector3dd getPosition(const double u, const double v) const override;
 
-	Vector3dd getNormal(const double u, const double v) const {
-		return getNormal();
-	}
+	Vector3dd getNormal(const double u, const double v) const;
+
+	Vector3dd getNormal() const;
 
 	bool isInside(const Vector3dd& p) const;
 

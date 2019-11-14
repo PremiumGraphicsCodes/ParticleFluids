@@ -4,6 +4,32 @@
 
 using namespace Crystal::Math;
 
+Quad3d::Quad3d() :
+	Quad3d(Vector3dd(0,0,0), Vector3dd(1,0,0), Vector3dd(0,1,0))
+{}
+
+Quad3d::Quad3d(const Vector3dd& origin, const Vector3dd& uvec, const Vector3dd& vvec) :
+	origin(origin),
+	uvec(uvec),
+	vvec(vvec)
+{
+}
+
+Vector3dd Quad3d::getPosition(const double u, const double v) const
+{
+	return origin + uvec * u + vvec * v;
+}
+
+Vector3dd Quad3d::getNormal() const
+{
+	return glm::normalize(glm::cross(uvec, vvec));
+}
+
+Vector3dd Quad3d::getNormal(const double u, const double v) const
+{
+	return getNormal();
+}
+
 bool Quad3d::isInside(const Vector3dd& p) const
 {
 	const auto& n = getNormal();
