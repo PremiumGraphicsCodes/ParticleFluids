@@ -44,23 +44,24 @@ void PolygonMeshCreateCommand::execute(World* scene)
 	const auto& texCoords = args.texCoords.getValue();
 	const auto& vertices = args.vertices.getValue();
 	const auto& faces = args.faces.getValue();
-	PolygonMesh* mesh = new PolygonMesh();
+	PolygonMeshBuilder builder;
 	for (const auto& p : positions) {
-		mesh->createPosition(p);
+		builder.createPosition(p);
 	}
 	for (const auto& n : normals) {
-		mesh->createNormal(n);
+		builder.createNormal(n);
 	}
 	for (const auto& tc : texCoords) {
-		mesh->createTexCoord(tc);
+		builder.createTexCoord(tc);
 	}
 	for (const auto& v : vertices) {
-		mesh->createVertex(v.positionId, v.normalId, v.texCoordId);
+		builder.createVertex(v.positionId, v.normalId, v.texCoordId);
 	}
 	for (const auto& f : faces) {
-		mesh->createFace(f.getV1(), f.getV2(), f.getV3());
+		builder.createFace(f.getV1(), f.getV2(), f.getV3());
 	}
 
+	auto mesh = builder.getPolygonMesh();
 	auto shape = scene->getObjectFactory()->createPolygonMeshScene(mesh, args.name.getValue());
 	const auto newId = shape->getId();
 

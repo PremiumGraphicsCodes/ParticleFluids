@@ -28,10 +28,28 @@ public:
 
 	PolygonMesh* getPolygonMesh();
 
+	int createPosition(const Math::Vector3dd& v);
+
+	int createNormal(const Math::Vector3dd& v);
+
+	int createTexCoord(const Math::Vector2dd& v);
+
+	int createVertex(const int positionId, const int normalId = -1, const int texCoordId = -1);
+
+	int createFace(int v0, int v1, int v2);
+
 private:
 	void add(const int v0, const int v1, const int v2, const int v3);
 
-	PolygonMesh* polygonMesh;
+	std::vector<Math::Vector3dd> positions;
+	std::vector<Math::Vector3dd> normals;
+	std::vector<Math::Vector2dd> texCoords;
+
+	std::vector<Vertex> vertices;
+	std::vector<Face> faces;
+
+	int nextVertexId;
+	int nextFaceId;
 };
 
 	}

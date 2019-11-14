@@ -26,21 +26,18 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 		const auto& normals = obj.normals;
 		const auto& texCoords = obj.texCoords;
 
-		PolygonMesh* polygonMesh = new PolygonMesh();
+		PolygonMeshBuilder builder;
 		for (const auto& p : positions) {
-			polygonMesh->createPosition(p);
+			builder.createPosition(p);
 		}
 		for (const auto& n : normals) {
-			polygonMesh->createNormal(n);
+			builder.createNormal(n);
 		}
 		for (const auto& tc : texCoords) {
-			polygonMesh->createTexCoord(tc);
+			builder.createTexCoord(tc);
 		}
 
-		const auto& positionTable = polygonMesh->getPositions();
-		const auto& normalTable = polygonMesh->getNormals();
-		const auto& texCoordTable = polygonMesh->getTexCoords();
-
+		auto polygonMesh = builder.getPolygonMesh();
 		auto meshScene = world->getObjectFactory()->createPolygonMeshScene(polygonMesh, "PolygonMesh");
 
 		std::vector< std::vector<int> > indices;
@@ -51,7 +48,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 					const auto p = f.positionIndices[i] - 1;
 					const auto n = f.normalIndices[i] - 1;
 					const auto tc = f.texCoordIndices[i] - 1;
-					const auto v = polygonMesh->createVertex(p, n, tc);
+					const auto v = builder.createVertex(p, n, tc);
 					indices.push_back(v);
 				}
 				//indices.push_back(eachIndices);
@@ -59,7 +56,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 				int i1 = 1;
 				int i2 = 2;
 				for (int i = 0; i2 < indices.size(); i++) {
-					polygonMesh->createFace(origin, indices[i1], indices[i2]);
+					builder.createFace(origin, indices[i1], indices[i2]);
 					i1++;
 					i2++;
 				}

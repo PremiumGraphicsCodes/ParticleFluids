@@ -45,30 +45,18 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
-	int createPosition(const Math::Vector3dd& v);
-
-	int createNormal(const Math::Vector3dd& v);
-
-	int createTexCoord(const Math::Vector2dd& v);
-
-	int createVertex(const int positionId, const int normalId = -1, const int texCoordId = -1);
-
-	int createFace(int v0, int v1, int v2);
-
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
 	std::vector<Math::Vector3dd> getNormals() const { return normals; }
 
 	std::vector<Math::Vector2dd> getTexCoords() const { return texCoords; }
 
-private:
+public:
 	std::vector<Math::Vector3dd> positions;
 	std::vector<Math::Vector3dd> normals;
 	std::vector<Math::Vector2dd> texCoords;
 	std::vector<Vertex> vertices;
 	std::vector<Face> faces;
-	int nextVertexId;
-	int nextFaceId;
 };
 
 	}
