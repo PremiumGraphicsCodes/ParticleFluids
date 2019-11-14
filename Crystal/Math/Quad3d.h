@@ -8,7 +8,7 @@ namespace Crystal {
 	namespace Math {
 		class Plane3d;
 
-class Quad3d : ISurface3d
+class Quad3d : public ISurface3d
 {
 public:
 	Quad3d();

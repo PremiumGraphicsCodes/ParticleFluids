@@ -26,13 +26,13 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 	polygonMesh->createFace( v0, v1, v2 );
 }
 
-void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const int vnum)
+void PolygonMeshBuilder::addOpen(const ISurface3d& surface, const int unum, const int vnum)
 {
 	std::vector<std::vector<int>> grid2d;
-	for (int i = 0; i < unum; ++i) {
+	for (int i = 0; i <= unum; ++i) {
 		const auto u = i / static_cast<double>(unum);
 		std::vector<int> grid1d;
-		for (int j = 0; j < vnum; ++j) {
+		for (int j = 0; j <= vnum; ++j) {
 			const auto v = j / static_cast<double>(vnum);
 			const auto p = polygonMesh->createPosition( surface.getPosition( u, v) );
 			const auto n = polygonMesh->createNormal( surface.getNormal(u, v) );
@@ -46,6 +46,32 @@ void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const in
 		for (int j = 0; j < grid2d[i].size() - 1; ++j) {
 			polygonMesh->createFace( grid2d[i][j], grid2d[i + 1][j], grid2d[i][j + 1] );
 			polygonMesh->createFace( grid2d[i][j + 1], grid2d[i + 1][j], grid2d[i + 1][j + 1] );
+		}
+	}
+}
+
+void PolygonMeshBuilder::addClosed(const ISurface3d& surface, const int unum, const int vnum)
+{
+	std::vector<std::vector<int>> grid2d;
+	for (int i = 0; i <= unum; ++i) {
+		const auto u = i / static_cast<double>(unum);
+		std::vector<int> grid1d;
+		for (int j = 0; j <= vnum; ++j) {
+			const auto v = j / static_cast<double>(vnum);
+			const auto p = polygonMesh->createPosition(surface.getPosition(u, v));
+			const auto n = polygonMesh->createNormal(surface.getNormal(u, v));
+			const auto tx = polygonMesh->createTexCoord(Vector2dd(u, v));
+			const auto id = polygonMesh->createVertex(p, n, tx);
+			grid1d.push_back(id);
+		}
+		grid2d.push_back(grid1d);
+	}
+	for (int i = 0; i < grid2d.size()-1; ++i) {
+		for (int j = 0; j < grid2d[i].size()-1; ++j) {
+			const auto ii = (i + 1);// % grid2d.size();
+			const auto jj = (j + 1);// % grid2d[i].size();
+			polygonMesh->createFace(grid2d[i][j], grid2d[ii][j], grid2d[i][jj]);
+			polygonMesh->createFace(grid2d[i][jj], grid2d[ii][j], grid2d[ii][jj]);
 		}
 	}
 }
@@ -86,19 +112,6 @@ void PolygonMeshBuilder::add(const IVolume3d& volume, const int unum, const int 
 		grid3d.push_back(grid2d);
 	}
 	*/
-}
-
-void PolygonMeshBuilder::add(const Quad3d& quad)
-{
-	auto normal = polygonMesh->createNormal( quad.getNormal() );
-
-	auto v00 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(0, 0) ), normal, polygonMesh->createTexCoord( Vector2dd(0, 0)) );
-	auto v01 = polygonMesh->createVertex(polygonMesh->createPosition(quad.getPosition(0, 1)), normal, polygonMesh->createTexCoord(Vector2dd(0, 1)));
-	auto v10 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(1, 0) ), normal, polygonMesh->createTexCoord( Vector2dd(1, 0)) );
-	auto v11 = polygonMesh->createVertex( polygonMesh->createPosition( quad.getPosition(1, 1) ), normal, polygonMesh->createTexCoord( Vector2dd(1, 1)) );
-
-	polygonMesh->createFace(v00,v01,v10);
-	polygonMesh->createFace(v11,v10,v01);
 }
 
 PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
