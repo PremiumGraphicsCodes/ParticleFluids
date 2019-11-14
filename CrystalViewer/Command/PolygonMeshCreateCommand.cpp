@@ -39,30 +39,15 @@ std::string PolygonMeshCreateCommand::getName()
 
 void PolygonMeshCreateCommand::execute(World* scene)
 {
-	const auto& positions = args.positions.getValue();
-	const auto& normals = args.normals.getValue();
-	const auto& texCoords = args.texCoords.getValue();
-	const auto& vertices = args.vertices.getValue();
-	const auto& faces = args.faces.getValue();
-	PolygonMeshBuilder builder;
-	for (const auto& p : positions) {
-		builder.createPosition(p);
-	}
-	for (const auto& n : normals) {
-		builder.createNormal(n);
-	}
-	for (const auto& tc : texCoords) {
-		builder.createTexCoord(tc);
-	}
-	for (const auto& v : vertices) {
-		builder.createVertex(v.positionId, v.normalId, v.texCoordId);
-	}
-	for (const auto& f : faces) {
-		builder.createFace(f.getV1(), f.getV2(), f.getV3());
-	}
+	auto mesh = new PolygonMesh();
+	mesh->positions = args.positions.getValue();
+	mesh->normals = args.normals.getValue();
+	mesh->texCoords = args.texCoords.getValue();
+	mesh->vertices = args.vertices.getValue();
+	mesh->faces = args.faces.getValue();
 
-	auto mesh = builder.getPolygonMesh();
 	auto shape = scene->getObjectFactory()->createPolygonMeshScene(mesh, args.name.getValue());
+	scene->getObjects()->addScene(shape);
 	const auto newId = shape->getId();
 
 	results.newId.setValue(newId);

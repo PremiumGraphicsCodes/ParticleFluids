@@ -37,7 +37,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 			builder.createTexCoord(tc);
 		}
 
-		auto polygonMesh = builder.getPolygonMesh();
+		auto polygonMesh = builder.build();
 		auto meshScene = world->getObjectFactory()->createPolygonMeshScene(polygonMesh, "PolygonMesh");
 
 		std::vector< std::vector<int> > indices;

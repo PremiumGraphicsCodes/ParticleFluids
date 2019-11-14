@@ -26,7 +26,7 @@ public:
 
 	//void add(const TriangleMesh& mesh);
 
-	PolygonMesh* getPolygonMesh();
+	PolygonMesh* build();
 
 	int createPosition(const Math::Vector3dd& v);
 
@@ -37,6 +37,16 @@ public:
 	int createVertex(const int positionId, const int normalId = -1, const int texCoordId = -1);
 
 	int createFace(int v0, int v1, int v2);
+
+	std::vector<Math::Vector3dd> getPositions() const { return positions; }
+
+	std::vector<Math::Vector3dd> getNormals() const { return normals; }
+
+	std::vector<Math::Vector2dd> getTexCoords() const { return texCoords; }
+
+	std::vector<Vertex> getVertices() const { return vertices; }
+	
+	std::vector<Face> getFaces() const { return faces; }
 
 private:
 	void add(const int v0, const int v1, const int v2, const int v3);

@@ -44,7 +44,7 @@ void PolygonMeshCreateByVolumeCommand::execute(World* scene)
 	const auto wNum = args.wDivNum.getValue();
 	builder.add(*volume, uNum, vNum, wNum);
 
-	auto shape = scene->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), args.name.getValue());
+	auto shape = scene->getObjectFactory()->createPolygonMeshScene(builder.build(), args.name.getValue());
 	scene->getObjects()->addScene(shape);
 
 	const auto newId = shape->getId();

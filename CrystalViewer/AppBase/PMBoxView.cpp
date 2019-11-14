@@ -4,7 +4,9 @@
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 #include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
-#include "../Command/CameraFitCommand.h"
+#include "../Command/Command.h"
+#include "../Command/Public/PolygonMeshCreateLabels.h"
+#include "../Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -24,10 +26,18 @@ void PMBoxView::onOk()
 {
 	PolygonMeshBuilder builder;
 	builder.add(boxView.getValue(), 1, 1, 1);
-	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), nameView.getValue());
-	getWorld()->getObjects()->addScene(scene);
-	getWorld()->updateViewModel();
 
-	CameraFitCommand command;
-	command.execute(model);
+	Command::Command command;
+	command.create(PolygonMeshCreateLabels::CommandNameLabel);
+	command.setArg(PolygonMeshCreateLabels::PositionsLabel, builder.getPositions());
+	command.setArg(PolygonMeshCreateLabels::NormalsLabel, builder.getNormals());
+	command.setArg(PolygonMeshCreateLabels::TexCoordsLabel, builder.getTexCoords());
+	command.setArg(PolygonMeshCreateLabels::VerticesLabel, builder.getVertices());
+	command.setArg(PolygonMeshCreateLabels::FacesLabel, builder.getFaces());
+	command.setArg(PolygonMeshCreateLabels::NameLabel, nameView.getValue());
+	command.execute(getWorld());
+
+	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
+	command.execute(getWorld());
+	getWorld()->updateViewModel();
 }

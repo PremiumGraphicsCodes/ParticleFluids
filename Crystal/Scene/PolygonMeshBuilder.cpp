@@ -91,7 +91,7 @@ void PolygonMeshBuilder::add(const IVolume3d& volume, const int unum, const int 
 	*/
 }
 
-PolygonMesh* PolygonMeshBuilder::getPolygonMesh()
+PolygonMesh* PolygonMeshBuilder::build()
 {
 	auto mesh = new PolygonMesh();
 	mesh->positions = positions;
