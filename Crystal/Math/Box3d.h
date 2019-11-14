@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_MATH_BOX_3D_H__
-#define __CRYSTAL_MATH_BOX_3D_H__
+#pragma once
 
 #include "Vector3d.h"
 #include "IVolume3d.h"
@@ -73,5 +72,3 @@ private:
 
 	}
 }
-
-#endif

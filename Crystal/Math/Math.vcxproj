@@ -173,6 +173,7 @@
     <ClCompile Include="Ray3d.cpp" />
     <ClCompile Include="Space3d.cpp" />
     <ClCompile Include="Sphere3d.cpp" />
+    <ClCompile Include="Torus3d.cpp" />
     <ClCompile Include="Triangle3d.cpp" />
     <ClCompile Include="Vector3d.cpp" />
   </ItemGroup>

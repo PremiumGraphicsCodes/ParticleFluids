@@ -3,6 +3,16 @@
 
 using namespace Crystal::Math;
 
+Sphere3d::Sphere3d() :
+	center(Vector3dd(0, 0, 0)),
+	radius(1.0)
+{}
+
+Sphere3d::Sphere3d(const Vector3dd& center, const double radius) :
+	center(center),
+	radius(radius)
+{}
+
 Sphere3d::Sphere3d(const Box3d& boundingBox)
 {
 	center = boundingBox.getCenter();

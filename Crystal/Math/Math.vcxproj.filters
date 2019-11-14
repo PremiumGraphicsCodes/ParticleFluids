@@ -124,5 +124,8 @@
       <Filter>Primitive3d</Filter>
     </ClCompile>
     <ClCompile Include="Space3d.cpp" />
+    <ClCompile Include="Torus3d.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

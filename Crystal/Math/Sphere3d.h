@@ -11,15 +11,9 @@ namespace Crystal {
 class Sphere3d : public ISurface3d, public IVolume3d
 {
 public:
-	Sphere3d() :
-		center(Vector3dd(0, 0, 0)),
-		radius(1.0f)
-	{}
+	Sphere3d();
 
-	Sphere3d(const Vector3dd& center, const double radius) :
-		center(center),
-		radius(radius)
-	{}
+	Sphere3d(const Vector3dd& center, const double radius);
 
 	explicit Sphere3d(const Math::Box3d& boundingBox);
 

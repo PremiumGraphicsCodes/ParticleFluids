@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_MATH_TOLERANCE_H__
-#define __CRYSTAL_MATH_TOLERANCE_H__
+#pragma once
 
 #include <cmath>
 
@@ -12,5 +11,3 @@ static bool isEqual(const double x, const double y, const double tolerance) { re
 
 	}
 }
-
-#endif
