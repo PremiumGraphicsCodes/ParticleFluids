@@ -27,7 +27,7 @@ PMQuadView::PMQuadView(World* model, Canvas* canvas) :
 void PMQuadView::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.addOpen(quad.getValue(), 1, 1);
+	builder.add(quad.getValue(), 1, 1);
 	auto scene = getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), name.getValue());
 	getWorld()->getObjects()->addScene(scene);
 	getWorld()->updateViewModel();

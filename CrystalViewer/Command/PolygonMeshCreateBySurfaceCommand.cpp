@@ -39,7 +39,7 @@ void PolygonMeshCreateBySurfaceCommand::execute(World* scene)
 	auto surface = args.surface.getValue();
 	const auto uNum = args.uDivNum.getValue();
 	const auto vNum = args.vDivNum.getValue();
-	builder.addClosed(*surface, uNum, vNum);
+	builder.add(*surface, uNum, vNum);
 
 	auto shape = scene->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), args.name.getValue());
 	scene->getObjects()->addScene(shape);
