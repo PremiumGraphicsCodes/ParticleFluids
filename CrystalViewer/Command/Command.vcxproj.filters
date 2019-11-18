@@ -103,26 +103,14 @@
     <ClInclude Include="Public\ParticleSystemCreateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemCreateByCurveCommand.h">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleSystemCreateBySurfaceCommand.h">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMeshCreateCommand.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="Public\PolygonMeshCreateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshCreateBySurfaceCommand.h">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="Public\PolygonMeshCreateBySurfaceLabels.h">
       <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonMeshCreateByVolumeCommand.h">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -194,12 +182,6 @@
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshCreateCommand.cpp">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMeshCreateBySurfaceCommand.cpp">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMeshCreateByVolumeCommand.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
