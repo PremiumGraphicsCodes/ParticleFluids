@@ -88,18 +88,30 @@ namespace PG.CGStudio.Scene
 
         public int AddMaterialScene(PG.Core.Graphics.Material material, string name)
         {
-            var command = new PG.CLI.Command("MaterialAdd");
+            var command = new PG.CLI.Command(PG.MaterialCreateLabels.CommandNameLabel);
+            command.SetArg(PG.MaterialCreateLabels.AmbientLabel, material.Ambient);
+            command.SetArg(PG.MaterialCreateLabels.DiffuseLabel, material.Diffuse);
+            command.SetArg(PG.MaterialCreateLabels.SpecularLabel, material.Specular);
+            command.SetArg(PG.MaterialCreateLabels.ShininessLabel, material.Shininess);
+            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.TextureId);
+            command.SetArg(PG.MaterialCreateLabels.NameLabel, name);
+//            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.)
             command.Execute(adapter);
-            var newId = command.GetResult<int>("NewId");
+            var newId = command.GetResult<int>(PG.MaterialCreateLabels.NewIdLabel);
             Sync();
             return newId;
         }
 
         public int AddLightScene(PG.Core.Graphics.PointLight light, string name)
         {
-            var command = new PG.CLI.Command("LightAdd");
+            var command = new PG.CLI.Command(PG.LightCreateLabels.CommandNameLabel);
+            command.SetArg(PG.LightCreateLabels.PositionLabel, light.Position);
+            command.SetArg(PG.LightCreateLabels.AmbientLabel, light.Ambient);
+            command.SetArg(PG.LightCreateLabels.DiffuseLabel, light.Diffuse);
+            command.SetArg(PG.LightCreateLabels.SpecularLabel, light.Specular);
+            command.SetArg(PG.LightCreateLabels.NameLabel, name);
             command.Execute(adapter);
-            var newId = command.GetResult<int>("NewId");
+            var newId = command.GetResult<int>(PG.LightCreateLabels.NewIdLabel);
             Sync();
             return newId;
         }

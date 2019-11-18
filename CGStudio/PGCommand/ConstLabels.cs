@@ -48,6 +48,29 @@ namespace PG {
 		public const string SceneTypeIdLabel = "SceneTypeId";
 	}
 
+	public class LightCreateLabels
+	{
+		public const string CommandNameLabel = "LightCreate";
+		public const string PositionLabel = "Position";
+		public const string AmbientLabel = "Ambient";
+		public const string DiffuseLabel = "Diffuse";
+		public const string SpecularLabel = "Specular";
+		public const string NameLabel = "Name";
+		public const string NewIdLabel = "NewId";
+	}
+
+	public class MaterialCreateLabels
+	{
+		public const string CommandNameLabel = "MaterialCreate";
+		public const string AmbientLabel = "Ambient";
+		public const string DiffuseLabel = "Diffuse";
+		public const string SpecularLabel = "Specular";
+		public const string ShininessLabel = "Shininess";
+		public const string TextureIdLabel = "TextureId";
+		public const string NameLabel = "Name";
+		public const string NewIdLabel = "NewId";
+	}
+
 	public class MockLabels
 	{
 		public const string MockCommandLabel = "Mock";

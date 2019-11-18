@@ -9,5 +9,6 @@ namespace PG.Core.Graphics
         public ColorRGBA Diffuse { get; set; }
         public ColorRGBA Specular { get; set; }
         public float Shininess { get; set; }
+        public int TextureId { get; set; }
     }
 }
