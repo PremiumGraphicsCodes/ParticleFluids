@@ -28,7 +28,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
         {
             var builder = new PolygonMeshBuilder();
             builder.Build(CylinderViewModel.Value, UNum.Value, VNum.Value);
-            MainModel.Instance.World.Scenes.AddPolygonMeshScene(builder.PolygonMesh, "PMCylinder");
+            MainModel.Instance.World.Scenes.AddPolygonMeshScene(builder, "PMCylinder");
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
         }

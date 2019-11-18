@@ -62,6 +62,13 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 			}
 			return std::any(dest);
 		}
+		else if (contentType == PG::Core::Math::Vector2d::typeid) {
+			std::vector<Crystal::Math::Vector2dd> dest;
+			for each (Core::Math::Vector2d ^ v in values) {
+				dest.push_back(Converter::toCpp2d(v));
+				return std::any(dest);
+			}
+		}
 		else if (contentType == Core::Math::Line3d::typeid) {
 			std::vector<Crystal::Math::Line3dd> dest;
 			for each (Core::Math::Line3d^ l in values) {
@@ -84,8 +91,9 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 			return std::any(dest);
 
 		}
-
+		assert(false);
 	}
+	assert(false);
 
 	return std::any(0);
 }

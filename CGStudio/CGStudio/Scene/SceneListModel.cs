@@ -64,26 +64,15 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
-        public int AddPolygonMeshScene(PolygonMesh polygonMesh, string name)
+        public int AddPolygonMeshScene(PolygonMeshBuilder builder, string name)
         {
-            var command = new PG.CLI.Command("PolygonMeshAdd");
-            //            command.SetArg("Lines", lines);
-            //            command.SetArg("Name", name);
+            var command = new PG.CLI.Command(PG.PolygonMeshCreateLabels.CommandNameLabel);
+            command.SetArg(PG.PolygonMeshCreateLabels.PositionsLabel, builder.Positions);
+            command.SetArg(PG.PolygonMeshCreateLabels.NormalsLabel, builder.Normals);
+            command.SetArg(PG.PolygonMeshCreateLabels.TexCoordsLabel, builder.TexCoords);
+            command.SetArg(PG.PolygonMeshCreateLabels.NameLabel, name);
             command.Execute(adapter);
-            var newId = command.GetResult<int>("NewId");
-            Sync();
-            return newId;
-        }
-
-        public int AddPolygonMeshScene(ISurface3d surface, int unum, int vnum, string name)
-        {
-            var command = new PG.CLI.Command(PG.PolygonMeshCreateBySurfaceLabels.CommandNameLabel);
-            command.SetArg(PG.PolygonMeshCreateBySurfaceLabels.SurfaceLabel, surface);
-            command.SetArg(PG.PolygonMeshCreateBySurfaceLabels.UDivLabel, unum);
-            command.SetArg(PG.PolygonMeshCreateBySurfaceLabels.VDivLabel, vnum);
-            command.SetArg(PG.PolygonMeshCreateBySurfaceLabels.NameLabel, name);
-            command.Execute(adapter);
-            var newId = command.GetResult<int>(PG.PolygonMeshCreateBySurfaceLabels.NewIdLabel);
+            var newId = command.GetResult<int>(PG.PolygonMeshCreateLabels.NewIdLabel);
             command.Clear();
             Sync();
             return newId;

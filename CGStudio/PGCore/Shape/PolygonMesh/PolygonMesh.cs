@@ -10,8 +10,6 @@ namespace PG.Core.Shape
         private List<Vector3d> positions;
         private List<Vector3d> normals;
         private List<Vector2d> texCoords;
-        private int nextVertexId;
-        private int nextFaceId;
 
         public List<Vector3d> Positions
         {
@@ -45,47 +43,6 @@ namespace PG.Core.Shape
             this.texCoords = new List<Vector2d>();
             this.vertices = new List<Vertex>();
             this.faces = new List<PolygonFace>();
-            this.nextVertexId = 0;
-            this.nextFaceId = 0;
-        }
-
-        public int CreatePosition(Vector3d position)
-        {
-            positions.Add(position);
-            return positions.Count - 1;
-        }
-
-        public int CreateNormal(Vector3d normal)
-        {
-            normals.Add(normal);
-            return normals.Count - 1;
-        }
-
-        public int CreateTexCoord(Vector2d texCoord)
-        {
-            texCoords.Add(texCoord);
-            return texCoords.Count - 1;
-        }
-
-        public int CreateVertex(int positionId, int normalId)
-        {
-            var v = new Vertex(positionId, normalId, -1, nextVertexId++);
-            vertices.Add(v);
-            return v.Id;
-        }
-
-        public int CreateVertex(int positionId, int normalId, int texCoordId)
-        {
-            var v = new Vertex(positionId, normalId, texCoordId, nextVertexId++);
-            vertices.Add(v);
-            return v.Id;
-        }
-
-        public int CreateFace(int v0, int v1, int v2)
-        {
-            var f = new PolygonFace(v0, v1, v2, nextFaceId++);
-            faces.Add(f);
-            return f.Id;
         }
     }
 }
