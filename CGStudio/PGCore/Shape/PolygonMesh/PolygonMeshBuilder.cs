@@ -131,10 +131,15 @@ namespace PG.Core.Shape
             var normal = (p1 - p0).Cross(p2 - p0);
             var n0 = CreateNormal(normal);
 
-            var vv0 = CreateVertex(v0, n0);
-            var vv1 = CreateVertex(v1, n0);
-            var vv2 = CreateVertex(v2, n0);
-            var vv3 = CreateVertex(v3, n0);
+            var t0 = CreateTexCoord(new Vector2d(0.0, 0.0));
+            var t1 = CreateTexCoord(new Vector2d(1.0, 0.0));
+            var t2 = CreateTexCoord(new Vector2d(1.0, 1.0));
+            var t3 = CreateTexCoord(new Vector2d(0.0, 1.0));
+
+            var vv0 = CreateVertex(v0, n0, t0);
+            var vv1 = CreateVertex(v1, n0, t1);
+            var vv2 = CreateVertex(v2, n0, t2);
+            var vv3 = CreateVertex(v3, n0, t3);
 
             CreateFace(vv0, vv1, vv2);
             CreateFace(vv3, vv2, vv0);
@@ -156,13 +161,6 @@ namespace PG.Core.Shape
         {
             texCoords.Add(texCoord);
             return texCoords.Count - 1;
-        }
-
-        public int CreateVertex(int positionId, int normalId)
-        {
-            var v = new Vertex(positionId, normalId, -1, nextVertexId++);
-            vertices.Add(v);
-            return v.Id;
         }
 
         public int CreateVertex(int positionId, int normalId, int texCoordId)
