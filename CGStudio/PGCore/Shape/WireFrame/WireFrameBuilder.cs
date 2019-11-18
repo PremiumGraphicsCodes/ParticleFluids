@@ -14,6 +14,45 @@ namespace PG.Core.Shape
             this.edges = new List<Line3d>();
         }
 
+        public void Build(Cylinder3d cylinder, int udiv)
+        {
+            // create side.
+            var topCenter = cylinder.GetPosition(0.0, 0.0, 1.0);
+            var topVertices = new Vector3d[udiv + 1];
+            for (int i = 0; i <= udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                topVertices[i] = CreateVertex( cylinder.GetPosition(1.0, u, 1.0) );
+            }
+
+            for (int i = 0; i < udiv; ++i)
+            {
+                edges.Add(new Line3d(topCenter, topVertices[i]));
+            }
+
+            // create bottom.
+            var bottomCenter = cylinder.GetPosition(0.0, 0.0, 0.0);
+            var bottomVertices = new Vector3d[udiv + 1];
+            for (int i = 0; i <= udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                bottomVertices[i] = CreateVertex( cylinder.GetPosition(1.0, u, 0.0) );
+            }
+
+            for (int i = 0; i <= udiv; ++i)
+            {
+                edges.Add(new Line3d(bottomCenter, bottomVertices[i]));
+            }
+
+            for (int i = 0; i < udiv; ++i)
+            {
+                edges.Add(new Line3d(bottomVertices[i], bottomVertices[i+1]));
+                edges.Add(new Line3d(bottomVertices[i+1], topVertices[i + 1]));
+                edges.Add(new Line3d(topVertices[i + 1], topVertices[i]));
+            }
+
+        }
+
         public void Build(ISurface3d surface, int udiv, int vdiv)
         {
             var vertices = new Vector3d[udiv+1, vdiv+1];
@@ -61,6 +100,12 @@ namespace PG.Core.Shape
             CreateEdge(1, 5);
             CreateEdge(2, 6);
             CreateEdge(3, 7);
+        }
+
+        private Vector3d CreateVertex(Vector3d position)
+        {
+            vertices.Add(position);
+            return position;
         }
 
         private void CreateEdge(int originIndex, int destIndex)
