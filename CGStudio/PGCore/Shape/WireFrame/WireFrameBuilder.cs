@@ -5,13 +5,11 @@ namespace PG.Core.Shape
 {
     public class WireFrameBuilder
     {
-        private readonly List<Vector3d> vertices;
-        private readonly List<Line3d> edges;
+        private readonly List<Vector3d> vertices = new List<Vector3d>();
+        private readonly List<Line3d> edges = new List<Line3d>();
 
         public WireFrameBuilder()
         {
-            this.vertices = new List<Vector3d>();
-            this.edges = new List<Line3d>();
         }
 
         public void Build(Cylinder3d cylinder, int udiv)

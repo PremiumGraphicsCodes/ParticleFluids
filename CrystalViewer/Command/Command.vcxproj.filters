@@ -14,9 +14,6 @@
       <Filter>File</Filter>
     </ClInclude>
     <ClInclude Include="GetCommand.h" />
-    <ClInclude Include="LightAddCommand.h">
-      <Filter>Scene\Appearance</Filter>
-    </ClInclude>
     <ClInclude Include="TransformCommand.h">
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
@@ -113,6 +110,9 @@
     <ClInclude Include="Public\NewLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="LightCreateCommand.h">
+      <Filter>Scene\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -126,9 +126,6 @@
       <Filter>File</Filter>
     </ClCompile>
     <ClCompile Include="GetCommand.cpp" />
-    <ClCompile Include="LightAddCommand.cpp">
-      <Filter>Scene\Appearance</Filter>
-    </ClCompile>
     <ClCompile Include="TransformCommand.cpp">
       <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
@@ -186,6 +183,9 @@
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="NewCommand.cpp" />
+    <ClCompile Include="LightCreateCommand.cpp">
+      <Filter>Scene\Appearance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
