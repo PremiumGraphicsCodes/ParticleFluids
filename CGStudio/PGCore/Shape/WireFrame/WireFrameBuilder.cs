@@ -75,7 +75,7 @@ namespace PG.Core.Shape
             }
         }
 
-        public void Build(IVolume3d box)
+        public void Build(Box3d box)
         {
             vertices.Add(box.GetPosition(0.0, 0.0, 0.0));
             vertices.Add(box.GetPosition(1.0, 0.0, 0.0));

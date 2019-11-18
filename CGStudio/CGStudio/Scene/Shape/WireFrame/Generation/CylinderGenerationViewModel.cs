@@ -8,22 +8,19 @@ namespace PG.CGStudio.Generation.WireFrame
     public class CylinderGenerationViewModel : BindableBase
     {
         public Cylinder3dViewModel CylinderViewModel { get; }
+            = new Cylinder3dViewModel();
 
         public ReactiveProperty<int> UNum { get; }
-
-        public ReactiveProperty<int> VNum { get; }
+            = new ReactiveProperty<int>(36);
 
         public AppearanceViewModel AppearanceViewModel { get; }
+            = new AppearanceViewModel();
 
         public ReactiveCommand GenerationCommand { get; }
+            = new ReactiveCommand();
 
         public CylinderGenerationViewModel()
         {
-            this.CylinderViewModel = new Cylinder3dViewModel();
-            this.UNum = new ReactiveProperty<int>(36);
-            this.VNum = new ReactiveProperty<int>(36);
-            this.AppearanceViewModel = new AppearanceViewModel();
-            this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 
