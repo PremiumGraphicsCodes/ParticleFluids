@@ -92,25 +92,50 @@ namespace PG.Core.Shape
             }
         }
 
-        public void Build(Cylinder3d cylinder, int u, int v)
+        public void Build(Cylinder3d cylinder, int u)
         {
-            var vertices = new int[u, v];
+            // create top
+            var vertices = new int[u, 2];
+
+            var bottomPosition = CreatePosition(cylinder.GetPosition(0.0, 0.0, 0.0));
+            var bottomNormal = CreateNormal(new Vector3d(0.0, -1.0, 0.0));
+            var bottomTexCoord = CreateTexCoord(new Vector2d(0.0, 0.0));
+            var bottomVertex = CreateVertex(bottomPosition, bottomNormal, bottomTexCoord);
             for (int i = 0; i < u; ++i)
             {
                 var uu = i / (double)u;
-                for (int j = 0; j < v; ++j)
-                {
-                    var vv = j / (double)v;
-                    var p = CreatePosition(cylinder.GetPosition(1.0, uu, vv));
-                    var n = CreateNormal(cylinder.GetNormal(uu, vv));
-                    var t = CreateTexCoord(new Vector2d(uu, vv));
-                    vertices[i, j] = CreateVertex(p, n, t);
-                }
+                var p = CreatePosition(cylinder.GetPosition(1.0, uu, 0.0));
+                var n = CreateNormal(cylinder.GetNormal(uu, 0.0));
+                var t = CreateTexCoord(new Vector2d(uu, 0.0));
+                vertices[i, 0] = CreateVertex(p, n, t);
             }
 
             for (int i = 0; i < u - 1; ++i)
             {
-                for (int j = 0; j < v - 1; ++j)
+                CreateFace(bottomVertex, vertices[i, 0], vertices[i + 1, 0]);
+            }
+
+            var topPosition= CreatePosition( cylinder.GetPosition(0.0, 0.0, 1.0) );
+            var topNormal = CreateNormal(new Vector3d(0.0, 1.0, 0.0));
+            var topTexCoord = CreateTexCoord(new Vector2d(0.0, 0.0));
+            var topVertex = CreateVertex(topPosition, topNormal, topTexCoord);
+            for (int i = 0; i < u; ++i)
+            {
+                var uu = i / (double)u;
+                var p = CreatePosition(cylinder.GetPosition(1.0, uu, 1.0));
+                var n = CreateNormal(cylinder.GetNormal(uu, 1.0));
+                var t = CreateTexCoord(new Vector2d(uu, 1.0));
+                vertices[i, 1] = CreateVertex(p, n, t);
+            }
+            for (int i = 0; i < u - 1; ++i)
+            {
+                CreateFace(topVertex, vertices[i, 0], vertices[i + 1, 0]);
+            }
+
+
+            for (int i = 0; i < u - 1; ++i)
+            {
+                for (int j = 0; j < 1; ++j)
                 {
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
