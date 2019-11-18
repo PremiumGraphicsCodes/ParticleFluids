@@ -76,6 +76,11 @@ namespace PG.CGStudio.Scene
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.PolygonMeshCreateLabels.NewIdLabel);
             command.Clear();
+
+            command.Create(PG.CameraLabels.CameraFitCommandLabel);
+            command.Execute(adapter);
+            command.Clear();
+
             Sync();
             return newId;
 

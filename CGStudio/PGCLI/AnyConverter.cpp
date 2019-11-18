@@ -28,7 +28,7 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 	}
 	else if (type == Core::Math::Vector2d::typeid) {
 		auto v = (Core::Math::Vector2d^)(object);
-		auto vv = Converter::toCpp2d(v);
+		auto vv = Converter::toCpp(v);
 		return std::any(vv);
 	}
 	else if (type == Core::Math::Vector3d::typeid) {
@@ -127,7 +127,7 @@ std::any AnyConverter::toCpp(System::Collections::Generic::IEnumerable<Object^>^
 	else if (contentType == PG::Core::Math::Vector2d::typeid) {
 		std::vector<Crystal::Math::Vector2dd> dest;
 		for each (Core::Math::Vector2d ^ v in values) {
-			dest.push_back(Converter::toCpp2d(v));
+			dest.push_back(Converter::toCpp(v));
 		}
 		return std::any(dest);
 	}

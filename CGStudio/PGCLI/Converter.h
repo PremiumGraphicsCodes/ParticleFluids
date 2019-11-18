@@ -27,7 +27,7 @@ public:
 
 	static System::String^ fromCpp(const std::string& src);
 
-	static Crystal::Math::Vector2dd toCpp2d(PG::Core::Math::Vector2d^ src);
+	static Crystal::Math::Vector2dd toCpp(PG::Core::Math::Vector2d^ src);
 
 	static PG::Core::Math::Vector2d^ fromCpp2d(const Crystal::Math::Vector2dd& src);
 

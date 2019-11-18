@@ -37,7 +37,7 @@ std::string PolygonMeshCreateCommand::getName()
 	return ::PolygonMeshCreateLabels::CommandNameLabel;
 }
 
-void PolygonMeshCreateCommand::execute(World* scene)
+void PolygonMeshCreateCommand::execute(World* world)
 {
 	auto mesh = new PolygonMesh();
 	mesh->positions = args.positions.getValue();
@@ -46,9 +46,11 @@ void PolygonMeshCreateCommand::execute(World* scene)
 	mesh->vertices = args.vertices.getValue();
 	mesh->faces = args.faces.getValue();
 
-	auto shape = scene->getObjectFactory()->createPolygonMeshScene(mesh, args.name.getValue());
-	scene->getObjects()->addScene(shape);
+	auto shape = world->getObjectFactory()->createPolygonMeshScene(mesh, args.name.getValue());
+	world->getObjects()->addScene(shape);
 	const auto newId = shape->getId();
+
+	world->updateViewModel();
 
 	results.newId.setValue(newId);
 }

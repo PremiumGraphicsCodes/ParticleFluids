@@ -13,7 +13,7 @@ System::String^ PG::CLI::Converter::fromCpp(const std::string& src)
 	return msclr::interop::marshal_as<System::String^>(src);
 }
 
-Crystal::Math::Vector2dd PG::CLI::Converter::toCpp2d(PG::Core::Math::Vector2d^ src)
+Crystal::Math::Vector2dd PG::CLI::Converter::toCpp(PG::Core::Math::Vector2d^ src)
 {
 	return Crystal::Math::Vector2dd(src->X, src->Y);
 }
