@@ -12,19 +12,12 @@ using namespace Crystal::UI;
 using namespace Crystal::Command;
 
 LightAddView::LightAddView(const std::string& name, World* model, Canvas* canvas) :
-	IPanel(name, model, canvas),
+	IOkCancelView(name, model, canvas),
 	light("LAdd"),
-	name("Name", "Light01"),
-	ok("Ok")
+	name("Name", "Light01")
 {
-	ok.setFunction([=]() { onOk(); });
-}
-
-void LightAddView::onShow()
-{
-	light.show();
-	name.show();
-	ok.show();
+	add(&light);
+	add(&this->name);
 }
 
 void LightAddView::onOk()

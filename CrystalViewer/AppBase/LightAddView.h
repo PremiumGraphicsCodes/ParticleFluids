@@ -1,4 +1,4 @@
-#include "IPanel.h"
+#include "IOkCancelView.h"
 
 #include "LightView.h"
 #include "Button.h"
@@ -6,12 +6,10 @@
 namespace Crystal {
 	namespace UI {
 
-class LightAddView : public IPanel
+class LightAddView : public IOkCancelView
 {
 public:
 	LightAddView(const std::string& name, Scene::World* model, Canvas* canvas);
-
-	void onShow() override;
 
 private:
 	void onOk();
@@ -19,7 +17,6 @@ private:
 private:
 	LightView light;
 	StringView name;
-	Button ok;
 };
 
 	}

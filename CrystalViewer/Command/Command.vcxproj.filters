@@ -116,6 +116,12 @@
     <ClInclude Include="Public\LightCreateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="MaterialCreateCommand.h">
+      <Filter>Scene\Appearance\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\MaterialCreateLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -189,6 +195,9 @@
     <ClCompile Include="LightCreateCommand.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
+    <ClCompile Include="MaterialCreateCommand.cpp">
+      <Filter>Scene\Appearance\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -235,6 +244,9 @@
     </Filter>
     <Filter Include="Scene\Appearance\Light">
       <UniqueIdentifier>{fae99320-b54d-4a67-8088-c4ba6adc8bf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Material">
+      <UniqueIdentifier>{f2fa3de0-28d9-4239-9bbe-b253d1c9d10e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -18,6 +18,7 @@
 #include "ScaleCommand.h"
 #include "TrimCommand.h"
 #include "LightCreateCommand.h"
+#include "MaterialCreateCommand.h"
 
 using namespace Crystal::Command;
 
@@ -85,6 +86,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == LightCreateCommand::getName()) {
 		return std::make_unique<LightCreateCommand>();
+	}
+	else if (name == MaterialCreateCommand::getName()) {
+		return std::make_unique<MaterialCreateCommand>();
 	}
 
 	assert(false);

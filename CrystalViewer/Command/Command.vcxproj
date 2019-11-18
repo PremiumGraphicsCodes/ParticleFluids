@@ -166,6 +166,7 @@
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IResults.h" />
     <ClInclude Include="LightCreateCommand.h" />
+    <ClInclude Include="MaterialCreateCommand.h" />
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="NewCommand.h" />
     <ClInclude Include="OBJFileExportCommand.h" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Public\FileExportLabels.h" />
     <ClInclude Include="Public\FileImportLabels.h" />
     <ClInclude Include="Public\LightCreateLabels.h" />
+    <ClInclude Include="Public\MaterialCreateLabels.h" />
     <ClInclude Include="Public\MockLabels.h" />
     <ClInclude Include="Public\NewLabels.h" />
     <ClInclude Include="Public\ParticleSystemCreateLabels.h" />
@@ -211,6 +213,7 @@
     <ClCompile Include="GetCommand.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="LightCreateCommand.cpp" />
+    <ClCompile Include="MaterialCreateCommand.cpp" />
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="NewCommand.cpp" />
     <ClCompile Include="OBJFileExportCommand.cpp" />
