@@ -16,6 +16,7 @@ public:
 		Arg<Graphics::ColorRGBAf> ambient;
 		Arg<Graphics::ColorRGBAf> diffuse;
 		Arg<Graphics::ColorRGBAf> specular;
+		Arg<std::string> name;
 	};
 
 	struct Results : IResults
@@ -28,6 +29,8 @@ public:
 	LightCreateCommand() :
 		ICommand(&args, &results)
 	{}
+
+	static std::string getName();
 
 	void execute(Scene::World* world) override;
 
