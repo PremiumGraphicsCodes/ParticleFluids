@@ -263,3 +263,9 @@ Crystal::Scene::Vertex PG::CLI::Converter::toCpp(PG::Core::Shape::Vertex^ src)
 	dest.texCoordId = src->TexCoordId;
 	return dest;
 }
+
+Crystal::Scene::Face PG::CLI::Converter::toCpp(PG::Core::Shape::PolygonFace^ src)
+{
+	return Crystal::Scene::Face(src->V0, src->V1, src->V2, src->Id);
+}
+

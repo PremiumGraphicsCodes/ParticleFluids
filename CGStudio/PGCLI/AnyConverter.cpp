@@ -53,51 +53,7 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 	}
 	else if(System::Collections::Generic::IEnumerable<Object^>::typeid->IsAssignableFrom(type)){
 		auto values = (System::Collections::Generic::IEnumerable<Object^>^)object;
-		auto first = System::Linq::Enumerable::FirstOrDefault(values);
-		auto contentType = first->GetType();
-		if (contentType == PG::Core::Math::Vector3d::typeid) {
-			std::vector<Crystal::Math::Vector3dd> dest;
-			for each (Core::Math::Vector3d ^ v in values) {
-				dest.push_back(Converter::toCpp(v));
-			}
-			return std::any(dest);
-		}
-		else if (contentType == PG::Core::Math::Vector2d::typeid) {
-			std::vector<Crystal::Math::Vector2dd> dest;
-			for each (Core::Math::Vector2d ^ v in values) {
-				dest.push_back(Converter::toCpp2d(v));
-				return std::any(dest);
-			}
-		}
-		else if (contentType == Core::Math::Line3d::typeid) {
-			std::vector<Crystal::Math::Line3dd> dest;
-			for each (Core::Math::Line3d^ l in values) {
-				dest.push_back( Converter::toCpp(l) );
-			}
-			return std::any(dest);
-		}
-		else if (contentType == Core::Math::Sphere3d::typeid) {
-			std::vector<Crystal::Math::Sphere3d> dest;
-			for each (Core::Math::Sphere3d ^ s in values) {
-				dest.push_back(Converter::toCpp(s));
-			}
-			return std::any(dest);
-		}
-		else if (contentType == Core::Math::ISurface3d::typeid) {
-			std::vector<Crystal::Math::ISurface3d*> dest;
-			for each (Core::Math::ISurface3d ^ s in values) {
-				dest.push_back(Converter::toCpp(s));
-			}
-			return std::any(dest);
-		}
-		else if (contentType == Core::Shape::Vertex::typeid) {
-			std::vector<Crystal::Scene::Vertex> dest;
-			for each (Core::Shape::Vertex ^ s in values) {
-				dest.push_back(Converter::toCpp(s));
-			}
-			return std::any(dest);
-		}
-		assert(false);
+		return toCpp(values);
 	}
 	assert(false);
 
@@ -154,4 +110,56 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 	}
 
 	return nullptr;
+}
+
+std::any AnyConverter::toCpp(System::Collections::Generic::IEnumerable<Object^>^ object)
+{
+	auto values = object;
+	auto first = System::Linq::Enumerable::FirstOrDefault(values);
+	auto contentType = first->GetType();
+	if (contentType == PG::Core::Math::Vector3d::typeid) {
+		std::vector<Crystal::Math::Vector3dd> dest;
+		for each (Core::Math::Vector3d ^ v in values) {
+			dest.push_back(Converter::toCpp(v));
+		}
+		return std::any(dest);
+	}
+	else if (contentType == PG::Core::Math::Vector2d::typeid) {
+		std::vector<Crystal::Math::Vector2dd> dest;
+		for each (Core::Math::Vector2d ^ v in values) {
+			dest.push_back(Converter::toCpp2d(v));
+			return std::any(dest);
+		}
+	}
+	else if (contentType == Core::Math::Line3d::typeid) {
+		std::vector<Crystal::Math::Line3dd> dest;
+		for each (Core::Math::Line3d ^ l in values) {
+			dest.push_back(Converter::toCpp(l));
+		}
+		return std::any(dest);
+	}
+	else if (contentType == Core::Math::Sphere3d::typeid) {
+		std::vector<Crystal::Math::Sphere3d> dest;
+		for each (Core::Math::Sphere3d ^ s in values) {
+			dest.push_back(Converter::toCpp(s));
+		}
+		return std::any(dest);
+	}
+	else if (contentType == Core::Math::ISurface3d::typeid) {
+		std::vector<Crystal::Math::ISurface3d*> dest;
+		for each (Core::Math::ISurface3d ^ s in values) {
+			dest.push_back(Converter::toCpp(s));
+		}
+		return std::any(dest);
+	}
+	else if (contentType == Core::Shape::Vertex::typeid) {
+		std::vector<Crystal::Scene::Vertex> dest;
+		for each (Core::Shape::Vertex ^ s in values) {
+			dest.push_back(Converter::toCpp(s));
+		}
+		return std::any(dest);
+	}
+	assert(false);
+
+	return std::any(0);
 }

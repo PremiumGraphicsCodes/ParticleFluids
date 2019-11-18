@@ -81,7 +81,7 @@ public:
 
 	static Crystal::Scene::Vertex toCpp(PG::Core::Shape::Vertex^ src);
 
-
+	static Crystal::Scene::Face toCpp(PG::Core::Shape::PolygonFace^ src);
 };
 
 	}
