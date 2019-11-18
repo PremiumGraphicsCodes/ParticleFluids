@@ -167,6 +167,7 @@
     <ClInclude Include="IResults.h" />
     <ClInclude Include="LightAddCommand.h" />
     <ClInclude Include="MockCommand.h" />
+    <ClInclude Include="NewCommand.h" />
     <ClInclude Include="OBJFileExportCommand.h" />
     <ClInclude Include="OBJFileImportCommand.h" />
     <ClInclude Include="ParticleSystemCreateCommand.h" />
@@ -178,9 +179,9 @@
     <ClInclude Include="Public\FileExportLabels.h" />
     <ClInclude Include="Public\FileImportLabels.h" />
     <ClInclude Include="Public\MockLabels.h" />
+    <ClInclude Include="Public\NewLabels.h" />
     <ClInclude Include="Public\ParticleSystemCreateLabels.h" />
     <ClInclude Include="Public\PickLabels.h" />
-    <ClInclude Include="Public\PolygonMeshCreateBySurfaceLabels.h" />
     <ClInclude Include="Public\PolygonMeshCreateLabels.h" />
     <ClInclude Include="Public\PublicLabel.h" />
     <ClInclude Include="Public\SetLabels.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="LightAddCommand.cpp" />
     <ClCompile Include="MockCommand.cpp" />
+    <ClCompile Include="NewCommand.cpp" />
     <ClCompile Include="OBJFileExportCommand.cpp" />
     <ClCompile Include="OBJFileImportCommand.cpp" />
     <ClCompile Include="ParticleSystemCreateCommand.cpp" />

@@ -1,6 +1,7 @@
 #include "CommandFactory.h"
 
 #include "MockCommand.h"
+#include "NewCommand.h"
 #include "FileImportCommand.h"
 #include "FileExportCommand.h"
 #include "ParticleSystemCreateCommand.h"
@@ -23,6 +24,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 {
 	if (name == MockCommand::getName()) {
 		return std::make_unique<MockCommand>();
+	}
+	else if (name == NewCommand::getName()) {
+		return std::make_unique<NewCommand>();
 	}
 	else if (name == FileImportCommand::getName()) {
 		return std::make_unique<FileImportCommand>();

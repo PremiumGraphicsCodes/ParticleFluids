@@ -9,6 +9,8 @@
 #include "../Command/Command.h"
 #include "../Command/Public/FileImportLabels.h"
 #include "../Command/Public/FileExportLabels.h"
+#include "../Command/Public/NewLabels.h"
+#include "../Command/NewCommand.h"
 
 #include <iostream>
 
@@ -22,11 +24,8 @@ void FileMenu::onShow()
 	const auto& n = name.c_str();
 	if (ImGui::BeginMenu(n)) {
 		if (ImGui::MenuItem("New")) {
-			model->clear();
-			model->init();
-			model->getRenderer()->build();
-
-			model->updateViewModel();
+			Crystal::Command::Command command(NewLabels::CommandNameLabel);
+			command.execute(model);
 		}
 		if (ImGui::MenuItem("Import")) {
 			FileOpenView view("");
