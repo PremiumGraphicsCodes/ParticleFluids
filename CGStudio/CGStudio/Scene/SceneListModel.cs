@@ -71,6 +71,7 @@ namespace PG.CGStudio.Scene
             command.SetArg(PG.PolygonMeshCreateLabels.NormalsLabel, polygon.Normals);
             command.SetArg(PG.PolygonMeshCreateLabels.TexCoordsLabel, polygon.TexCoords);
             command.SetArg(PG.PolygonMeshCreateLabels.VerticesLabel, polygon.Vertices);
+            command.SetArg(PG.PolygonMeshCreateLabels.FacesLabel, polygon.Faces);
             command.SetArg(PG.PolygonMeshCreateLabels.NameLabel, name);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.PolygonMeshCreateLabels.NewIdLabel);
