@@ -24,6 +24,8 @@ void FileMenu::onShow()
 		if (ImGui::MenuItem("New")) {
 			model->clear();
 			model->init();
+			model->getRenderer()->build();
+
 			model->updateViewModel();
 		}
 		if (ImGui::MenuItem("Import")) {
