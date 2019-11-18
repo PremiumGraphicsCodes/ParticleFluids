@@ -52,6 +52,8 @@ namespace PG.Core.Shape
             var p6 = CreatePosition(box.GetPosition(1, 1, 1));
             var p7 = CreatePosition(box.GetPosition(0, 1, 1));
 
+
+
 	        Add(p0, p1, p2, p3); // front
 	        Add(p7, p6, p5, p4); // back
 	        Add(p3, p2, p6, p7); // top
@@ -101,7 +103,8 @@ namespace PG.Core.Shape
                     var vv = j / (double)v;
                     var p = CreatePosition(cylinder.GetPosition(1.0, uu, vv));
                     var n = CreateNormal(cylinder.GetNormal(uu, vv));
-                    vertices[i, j] = CreateVertex(p, n, -1);
+                    var t = CreateTexCoord(new Vector2d(uu, vv));
+                    vertices[i, j] = CreateVertex(p, n, t);
                 }
             }
 
