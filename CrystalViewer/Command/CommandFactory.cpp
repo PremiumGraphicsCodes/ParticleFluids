@@ -17,6 +17,7 @@
 #include "RotateCommand.h"
 #include "ScaleCommand.h"
 #include "TrimCommand.h"
+#include "LightCreateCommand.h"
 
 using namespace Crystal::Command;
 
@@ -81,6 +82,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == TrimCommand::getName()) {
 		return std::make_unique<TrimCommand>();
+	}
+	else if (name == LightCreateCommand::getName()) {
+		return std::make_unique<LightCreateCommand>();
 	}
 
 	assert(false);

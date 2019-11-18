@@ -2,7 +2,8 @@
 
 #include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
-#include "../Command/CameraFitCommand.h"
+#include "../Command/Command.h"
+#include "../Command/Public/LightCreateLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -28,10 +29,14 @@ void LightAddView::onShow()
 
 void LightAddView::onOk()
 {
-	getWorld()->getObjects()->addScene( getWorld()->getObjectFactory()->createLightScene(light.getValue(), name.getValue()) );
-	getWorld()->updateViewModel();
+	const auto& l = light.getValue();
 
-	CameraFitCommand command;
-	command.execute(model);
-
+	Crystal::Command::Command command(LightCreateLabels::CommandNameLabel);
+	command.setArg(LightCreateLabels::PositionLabel, Vector3dd( l.getPosition() ));
+	command.setArg(LightCreateLabels::DiffuseLabel, ColorRGBAf( l.getDiffuse()));
+	command.setArg(LightCreateLabels::SpecularLabel, ColorRGBAf( l.getSpecular()));
+	command.setArg(LightCreateLabels::AmbientLabel, ColorRGBAf(l.getAmbient()));
+	command.setArg(LightCreateLabels::NameLabel, name.getValue());
+	command.execute(getWorld());
+	const auto newId = command.getResult(LightCreateLabels::NewIdLabel);
 }

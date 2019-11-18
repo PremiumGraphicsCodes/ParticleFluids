@@ -1,5 +1,7 @@
 #include "LightCreateCommand.h"
 
+#include "Public/LightCreateLabels.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
@@ -7,15 +9,15 @@ using namespace Crystal::Command;
 
 std::string LightCreateCommand::getName()
 {
-	return "LightCreateCommand";
+	return LightCreateLabels::CommandNameLabel;
 }
 
 LightCreateCommand::Args::Args() :
-	position("Position", Vector3dd(0,0,0)),
-	ambient("Ambient", Graphics::ColorRGBAf(0,0,0,0)),
-	diffuse("Diffuse", Graphics::ColorRGBAf(0,0,0,0)),
-	specular("Specular", Graphics::ColorRGBAf(0, 0, 0, 0)),
-	name("name", std::string(""))
+	position(LightCreateLabels::PositionLabel, Vector3dd(0,0,0)),
+	ambient(LightCreateLabels::AmbientLabel, Graphics::ColorRGBAf(0,0,0,0)),
+	diffuse(LightCreateLabels::DiffuseLabel, Graphics::ColorRGBAf(0,0,0,0)),
+	specular(LightCreateLabels::SpecularLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
+	name(LightCreateLabels::NameLabel, std::string(""))
 {
 	add(&position);
 	add(&ambient);
@@ -25,7 +27,7 @@ LightCreateCommand::Args::Args() :
 }
 
 LightCreateCommand::Results::Results() :
-	newId("NewId", -1)
+	newId(LightCreateLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
@@ -38,4 +40,6 @@ void LightCreateCommand::execute(World* world)
 	l.setDiffuse(args.diffuse.getValue());
 	l.setSpecular(args.specular.getValue());
 	auto scene = world->getObjectFactory()->createLightScene(l, args.name.getValue());
+	world->getObjects()->addScene(scene);
+	results.newId.setValue(scene->getId());
 }

@@ -178,6 +178,7 @@
     <ClInclude Include="Public\CameraLabels.h" />
     <ClInclude Include="Public\FileExportLabels.h" />
     <ClInclude Include="Public\FileImportLabels.h" />
+    <ClInclude Include="Public\LightCreateLabels.h" />
     <ClInclude Include="Public\MockLabels.h" />
     <ClInclude Include="Public\NewLabels.h" />
     <ClInclude Include="Public\ParticleSystemCreateLabels.h" />

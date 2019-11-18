@@ -111,7 +111,10 @@
       <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="LightCreateCommand.h">
-      <Filter>Scene\Appearance</Filter>
+      <Filter>Scene\Appearance\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\LightCreateLabels.h">
+      <Filter>Public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -184,7 +187,7 @@
     </ClCompile>
     <ClCompile Include="NewCommand.cpp" />
     <ClCompile Include="LightCreateCommand.cpp">
-      <Filter>Scene\Appearance</Filter>
+      <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +232,9 @@
     </Filter>
     <Filter Include="Scene\Shape\Trim">
       <UniqueIdentifier>{d9be7589-1db5-4cd6-8ea1-d013ea4f6881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Light">
+      <UniqueIdentifier>{fae99320-b54d-4a67-8088-c4ba6adc8bf9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
