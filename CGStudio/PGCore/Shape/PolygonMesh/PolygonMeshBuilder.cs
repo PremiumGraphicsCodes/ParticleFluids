@@ -64,11 +64,11 @@ namespace PG.Core.Shape
 
         public void Build(Sphere3d sphere, int u, int v)
         {
-            var vertices = new int[u, v];
-            for (int i = 0; i < u; ++i)
+            var vertices = new int[u+1, v+1];
+            for (int i = 0; i <= u; ++i)
             {
                 var uu = i / (double)u;
-                for (int j = 0; j < v; ++j)
+                for (int j = 0; j <= v; ++j)
                 {
                     var vv = j / (double)v;
                     var p = CreatePosition(sphere.GetPosition(1.0, uu, vv));
@@ -78,9 +78,9 @@ namespace PG.Core.Shape
                 }
             }
 
-            for (int i = 0; i < u - 1; ++i)
+            for (int i = 0; i < u; ++i)
             {
-                for (int j = 0; j < v - 1; ++j)
+                for (int j = 0; j < v; ++j)
                 {
                     var v1 = vertices[i, j];
                     var v2 = vertices[i + 1, j];
@@ -120,6 +120,8 @@ namespace PG.Core.Shape
                     CreateFace(v4, v3, v2);
                 }
             }
+
+            // Todo : create bottom faces.
         }
 
         private void Add(int v0, int v1, int v2, int v3)
