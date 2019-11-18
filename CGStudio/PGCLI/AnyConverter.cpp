@@ -89,7 +89,13 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 				dest.push_back(Converter::toCpp(s));
 			}
 			return std::any(dest);
-
+		}
+		else if (contentType == Core::Shape::Vertex::typeid) {
+			std::vector<Crystal::Scene::Vertex> dest;
+			for each (Core::Shape::Vertex ^ s in values) {
+				dest.push_back(Converter::toCpp(s));
+			}
+			return std::any(dest);
 		}
 		assert(false);
 	}

@@ -64,12 +64,13 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
-        public int AddPolygonMeshScene(PolygonMeshBuilder builder, string name)
+        public int AddPolygonMeshScene(PolygonMesh polygon, string name)
         {
             var command = new PG.CLI.Command(PG.PolygonMeshCreateLabels.CommandNameLabel);
-            command.SetArg(PG.PolygonMeshCreateLabels.PositionsLabel, builder.Positions);
-            command.SetArg(PG.PolygonMeshCreateLabels.NormalsLabel, builder.Normals);
-            command.SetArg(PG.PolygonMeshCreateLabels.TexCoordsLabel, builder.TexCoords);
+            command.SetArg(PG.PolygonMeshCreateLabels.PositionsLabel, polygon.Positions);
+            command.SetArg(PG.PolygonMeshCreateLabels.NormalsLabel, polygon.Normals);
+            command.SetArg(PG.PolygonMeshCreateLabels.TexCoordsLabel, polygon.TexCoords);
+            command.SetArg(PG.PolygonMeshCreateLabels.VerticesLabel, polygon.Vertices);
             command.SetArg(PG.PolygonMeshCreateLabels.NameLabel, name);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.PolygonMeshCreateLabels.NewIdLabel);

@@ -253,3 +253,13 @@ Crystal::Math::IVolume3d* PG::CLI::Converter::toCpp(PG::Core::Math::IVolume3d^ s
 	}
 	return nullptr;
 }
+
+Crystal::Scene::Vertex PG::CLI::Converter::toCpp(PG::Core::Shape::Vertex^ src)
+{
+	Crystal::Scene::Vertex dest;
+	dest.id = src->Id;
+	dest.positionId = src->PositionId;
+	dest.normalId = src->NormalId;
+	dest.texCoordId = src->TexCoordId;
+	return dest;
+}

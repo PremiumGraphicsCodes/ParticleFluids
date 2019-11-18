@@ -27,6 +27,19 @@ namespace PG.Core.Shape
         {
         }
 
+        public PolygonMesh Build()
+        {
+            var polygon = new PolygonMesh
+            {
+                Positions = positions,
+                Normals = normals,
+                TexCoords = texCoords,
+                Vertices = vertices,
+                Faces = faces
+            };
+            return polygon;
+        }
+
         public void Build(Box3d box)
         {
             var p0 = CreatePosition(box.GetPosition(0, 0, 0));

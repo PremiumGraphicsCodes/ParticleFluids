@@ -12,6 +12,8 @@
 #include "../../Crystal/Graphics/PointLight.h"
 #include "../../Crystal/Graphics/Material.h"
 #include "../../Crystal/Scene/SceneType.h"
+#include "../../Crystal/Scene/Vertex.h"
+#include "../../Crystal/Scene/Face.h"
 
 using namespace System;
 
@@ -76,6 +78,8 @@ public:
 	static Crystal::Math::ISurface3d* toCpp(PG::Core::Math::ISurface3d^ src);
 
 	static Crystal::Math::IVolume3d* toCpp(PG::Core::Math::IVolume3d^ src);
+
+	static Crystal::Scene::Vertex toCpp(PG::Core::Shape::Vertex^ src);
 
 
 };
