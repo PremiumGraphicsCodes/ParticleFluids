@@ -23,7 +23,12 @@ namespace PG.CGStudio
 
         public void New()
         {
-            this.adapter.Clear();
+            var command = new PG.CLI.Command(NewLabels.CommandNameLabel);
+
+            Canvas3d.Instance.Renderer.Bind();
+            command.Execute(adapter);
+            Canvas3d.Instance.Renderer.UnBind();
+
             this.Scenes.Sync();
         }
 

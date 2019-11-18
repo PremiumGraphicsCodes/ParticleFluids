@@ -18,11 +18,7 @@ public:
 
 	~WorldAdapter(void);
 
-	void Clear();
-
 	void ClearItems();
-
-	void Init();
 
 internal:
 	Crystal::Scene::World* instance;

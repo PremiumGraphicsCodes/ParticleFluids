@@ -53,6 +53,11 @@ namespace PG {
 		public const string MockCommandLabel = "Mock";
 	}
 
+	public class NewLabels
+	{
+		public const string CommandNameLabel = "NewCommand";
+	}
+
 	public class ParticleSystemCreateLabels
 	{
 		public const string ParticleSystemAddLabel = "ParticleSystemAdd";
@@ -70,16 +75,6 @@ namespace PG {
 		public const string PositionLabel = "Position";
 		public const string ParentIdLabel = "ParentId";
 		public const string ChildIdLabel = "ChildId";
-	}
-
-	public class PolygonMeshCreateBySurfaceLabels
-	{
-		public const string CommandNameLabel = "PolygonMeshCreateBySurface";
-		public const string SurfaceLabel = "Surface";
-		public const string UDivLabel = "UDivNum";
-		public const string VDivLabel = "VDivNum";
-		public const string NameLabel = "Name";
-		public const string NewIdLabel = "NewId";
 	}
 
 	public class PolygonMeshCreateLabels

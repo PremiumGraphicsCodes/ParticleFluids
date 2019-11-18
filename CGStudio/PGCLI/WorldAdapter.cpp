@@ -18,17 +18,7 @@ WorldAdapter::~WorldAdapter()
 	delete instance;
 }
 
-void WorldAdapter::Clear()
-{
-	instance->clear();
-}
-
 void WorldAdapter::ClearItems()
 {
 	instance->getItems()->clear();
-}
-
-void WorldAdapter::Init()
-{
-	instance->init();
 }
