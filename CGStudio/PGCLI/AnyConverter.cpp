@@ -166,6 +166,13 @@ std::any AnyConverter::toCpp(System::Collections::Generic::IEnumerable<Object^>^
 		}
 		return std::any(dest);
 	}
+	else if (contentType == Core::Shape::WireFrameEdge::typeid) {
+		std::vector<Crystal::Scene::WireFrameEdge> dest;
+		for each (Core::Shape::WireFrameEdge ^ s in values) {
+			dest.push_back(Converter::toCpp(s));
+		}
+		return std::any(dest);
+	}
 	assert(false);
 
 	return std::any(0);

@@ -45,10 +45,11 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
-        public int AddWireFrameScene(List<Line3d> lines, string name, Core.UI.WireAppearance appearance)
+        public int AddWireFrameScene(WireFrame wireFrame, string name, Core.UI.WireAppearance appearance)
         {
             var command = new PG.CLI.Command(PG.WireFrameCreateLabels.WireFrameAddLabel);
-            command.SetArg(PG.WireFrameCreateLabels.LinesLabel, lines);
+            command.SetArg(PG.WireFrameCreateLabels.PositionsLabel, wireFrame.Positions);
+            command.SetArg(PG.WireFrameCreateLabels.EdgesLabel, wireFrame.Edges);
             command.SetArg(PG.WireFrameCreateLabels.NameLabel, name);
             command.SetArg(PG.WireFrameCreateLabels.ColorLabel, appearance.Color);
             command.SetArg(PG.WireFrameCreateLabels.LineWidthLabel, appearance.Width);

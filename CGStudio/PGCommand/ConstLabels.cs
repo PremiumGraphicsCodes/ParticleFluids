@@ -150,7 +150,8 @@ namespace PG {
 	public class WireFrameCreateLabels
 	{
 		public const string WireFrameAddLabel = "WireFrameAdd";
-		public const string LinesLabel = "Lines";
+		public const string PositionsLabel = "Positions";
+		public const string EdgesLabel = "Edges";
 		public const string LineWidthLabel = "LineWidth";
 		public const string ColorLabel = "Color";
 		public const string NameLabel = "Name";

@@ -269,3 +269,7 @@ Crystal::Scene::Face PG::CLI::Converter::toCpp(PG::Core::Shape::PolygonFace^ src
 	return Crystal::Scene::Face(src->V0, src->V1, src->V2, src->Id);
 }
 
+Crystal::Scene::WireFrameEdge PG::CLI::Converter::toCpp(PG::Core::Shape::WireFrameEdge^ src)
+{
+	return Crystal::Scene::WireFrameEdge(src->OriginId, src->DestId);
+}

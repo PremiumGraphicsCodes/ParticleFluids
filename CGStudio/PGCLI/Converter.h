@@ -14,6 +14,7 @@
 #include "../../Crystal/Scene/SceneType.h"
 #include "../../Crystal/Scene/Vertex.h"
 #include "../../Crystal/Scene/Face.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
 
 using namespace System;
 
@@ -82,6 +83,8 @@ public:
 	static Crystal::Scene::Vertex toCpp(PG::Core::Shape::Vertex^ src);
 
 	static Crystal::Scene::Face toCpp(PG::Core::Shape::PolygonFace^ src);
+
+	static Crystal::Scene::WireFrameEdge toCpp(PG::Core::Shape::WireFrameEdge^ src);
 };
 
 	}
