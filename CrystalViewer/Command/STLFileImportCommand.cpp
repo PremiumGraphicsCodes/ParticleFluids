@@ -1,6 +1,6 @@
 #include "STLFileImportCommand.h"
 
-#include "../../Crystal/Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Scene/TriangleMeshScene.h"
 
 #include "../../Crystal/IO/STLAsciiFileReader.h"

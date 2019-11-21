@@ -1,12 +1,13 @@
 #include "PMBoxView.h"
 
-#include "../../Crystal/Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 #include "../../Crystal/Scene/World.h"
-#include "Canvas.h"
 #include "../Command/Command.h"
 #include "../Command/Public/PolygonMeshCreateLabels.h"
 #include "../Command/Public/CameraLabels.h"
+
+#include "Canvas.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

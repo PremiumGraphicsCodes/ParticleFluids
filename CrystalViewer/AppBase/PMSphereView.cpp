@@ -1,6 +1,6 @@
 #include "PMSphereView.h"
 
-#include "../../Crystal/Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../Command/Command.h"

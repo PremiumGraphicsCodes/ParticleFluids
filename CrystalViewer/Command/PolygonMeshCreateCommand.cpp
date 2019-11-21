@@ -2,8 +2,8 @@
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "../../Crystal/Scene/PolygonMesh.h"
-#include "../../Crystal/Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/Shape/PolygonMesh.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
 #include "Public/PolygonMeshCreateLabels.h"
 
