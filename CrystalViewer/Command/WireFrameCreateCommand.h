@@ -19,7 +19,8 @@ public:
 	{
 		Args();
 
-		Arg< std::vector<Math::Line3dd> > lines;
+		Arg< std::vector<Math::Vector3dd> > positions;
+		Arg< std::vector<Scene::WireFrameEdge> > edges;
 		Arg< float > lineWidth;
 		Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;

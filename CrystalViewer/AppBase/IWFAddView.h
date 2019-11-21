@@ -19,7 +19,7 @@ public:
 	}
 
 protected:
-	void addWireFrame(const std::vector<Math::Line3dd>& lines);
+	void addWireFrame(const std::vector<Math::Vector3dd>& positions, const std::vector<Scene::WireFrameEdge>& edges);
 
 private:
 	WFAttributeView attributeView;

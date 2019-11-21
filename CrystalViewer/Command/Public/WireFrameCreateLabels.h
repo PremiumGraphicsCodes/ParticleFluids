@@ -5,7 +5,8 @@
 namespace WireFrameCreateLabels
 {
 	PublicLabel WireFrameAddLabel = "WireFrameAdd";
-	PublicLabel LinesLabel = "Lines";
+	PublicLabel PositionsLabel = "Positions";
+	PublicLabel EdgesLabel = "Edges";
 	PublicLabel LineWidthLabel = "LineWidth";
 	PublicLabel ColorLabel = "Color";
 	PublicLabel NameLabel = "Name";

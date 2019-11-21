@@ -3,6 +3,7 @@
 #include "../Math/ICurve3d.h"
 #include "../Math/ISurface3d.h"
 #include "../Math/IVolume3d.h"
+#include "WireFrameScene.h"
 
 namespace Crystal {
 	namespace Math {
@@ -22,13 +23,18 @@ public:
 
 	void build(const Math::IVolume3d& curve, const int unum, const int vnum, const int wnum);
 
-	std::vector<Math::Line3dd> getWireFrame() const { return lines; }
+	std::vector<Math::Vector3dd> getPositions() const { return positions; }
+
+	std::vector<WireFrameEdge> getVertexIndices() const { return edges; }
+
+	int createPosition(const Math::Vector3dd& v);
 
 private:
-	void build(const std::vector<std::vector<Math::Vector3dd>>& grid);
+	void build(const std::vector<std::vector<int>>& grid);
 
 private:
-	std::vector<Math::Line3dd> lines;
+	std::vector<Math::Vector3dd> positions;
+	std::vector<WireFrameEdge> edges;
 };
 	}
 }

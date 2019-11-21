@@ -11,54 +11,41 @@ using namespace Crystal::Scene;
 
 void WireFrameScene::translate(const Vector3dd& v)
 {
-	for (auto& l : lines) {
-		l.move(v);
+	for (auto& l : positions) {
+		l += v;
 	}
 }
 
 void WireFrameScene::transform(const Matrix3dd& m)
 {
-	for (auto& l : lines) {
-		l.transform(m);
+	for (auto& l : positions) {
+		l = m * l;
 	}
 }
 
 void WireFrameScene::transform(const Matrix4dd& m)
 {
-	for (auto& l : lines) {
-		l.transform(m);
+	for (auto& l : positions) {
+		l = m * glm::vec4(l, 1.0);
 	}
 }
 
 std::vector<Vector3dd> WireFrameScene::getAllVertices() const
 {
-	if (lines.empty()) {
-		return std::vector<Vector3dd>();
-	}
-
-	std::vector<Vector3dd> vertices;
-	for (const auto& l : lines) {
-		vertices.push_back(l.getStart());
-	}
-	vertices.push_back(lines.back().getEnd());
-	return vertices;
+	return positions;
 }
 
 void WireFrameScene::getBoundingBox(Box3d& box) const
 {
-	if (lines.empty()) {
+	if (positions.empty()) {
 		return;
 	}
-
-	const auto& vertices = getAllVertices();
-	Box3d bb(vertices.front());
-	for (const auto& v : vertices) {
+	Box3d bb(positions.front());
+	for (const auto& v : positions) {
 		bb.add(v);
 	}
 	box.add(bb);
 }
-
-
 
 void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 {
@@ -68,25 +55,25 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 	const auto& color = getAttribute().color;
 	if(!isSelected())
 	{
-		int index = 0;
 		LineBuffer buffer(getAttribute().width);
-		for (const auto& l : lines) {
-			buffer.addVertex(l.getStart(), color);
-			buffer.addVertex(l.getEnd(), color);
-			buffer.addIndex(index++);
-			buffer.addIndex(index++);
+		for (const auto& l : positions) {
+			buffer.addVertex(l, color);
+		}
+		for(const auto& e : edges) {
+			buffer.addIndex(e.originId);
+			buffer.addIndex(e.destId);
 		}
 		viewModel.lineBuffers.push_back(buffer);
 	}
 	else
 	{
-		int index = 0;
 		LineBuffer buffer(getAttribute().width * 10.0f);
-		for (const auto& l : lines) {
-			buffer.addVertex(l.getStart(), ColorRGBAf(1,0,0,0));
-			buffer.addVertex(l.getEnd(), ColorRGBAf(1,0,0,0));
-			buffer.addIndex(index++);
-			buffer.addIndex(index++);
+		for (const auto& l : positions) {
+			buffer.addVertex(l, ColorRGBAf(1, 0, 0, 0));
+		}
+		for (const auto& e : edges) {
+			buffer.addIndex(e.originId);
+			buffer.addIndex(e.destId);
 		}
 		viewModel.lineBuffers.push_back(buffer);
 	}
@@ -102,9 +89,9 @@ void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
 	int index = 0;
 
 	LineBuffer lineBuffer(getAttribute().width);
-	for (const auto& l : lines) {
+	for (const auto& l : positions) {
 		Graphics::DrawableID did(objectId, childId++);
-		lineBuffer.addVertex(l.getStart(), did.toColor());
+		lineBuffer.addVertex(l, did.toColor());
 		lineBuffer.addIndex(index++);
 	}
 	viewModel.lineIdBuffers.push_back(lineBuffer);
@@ -112,7 +99,7 @@ void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
 
 Vector3dd WireFrameScene::getPosition(const int index) const
 {
-	return lines[index].getStart();
+	return positions[index];
 }
 
 IShapeScene* WireFrameScene::clone() const

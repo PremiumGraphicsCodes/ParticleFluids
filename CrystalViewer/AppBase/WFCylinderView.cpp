@@ -23,5 +23,5 @@ void WFCylinderView::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(cylinder.getValue(), unum.getValue(), vnum.getValue(), 10);
-	IWFAddView::addWireFrame(builder.getWireFrame());
+	IWFAddView::addWireFrame(builder.getPositions(), builder.getVertexIndices());
 }

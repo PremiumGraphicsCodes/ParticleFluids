@@ -18,6 +18,7 @@ namespace Crystal {
 		class CameraScene;
 		class ParticleSystemScene;
 		struct ParticleAttribute;
+		class WireFrameEdge;
 		class WireFrameScene;
 		struct WireFrameAttribute;
 		class PolygonMeshScene;
@@ -44,7 +45,7 @@ public:
 
 	ParticleSystemScene* createParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
-	WireFrameScene* createWireFrameScene(const std::vector<Math::Line3dd>& lines, const WireFrameAttribute& attribute, const std::string& name);
+	WireFrameScene* createWireFrameScene(const std::vector<Math::Vector3dd>& positions, const std::vector<WireFrameEdge>& edges, const WireFrameAttribute& attribute, const std::string& name);
 
 	PolygonMeshScene* createPolygonMeshScene(PolygonMesh* mesh, const std::string& name);
 

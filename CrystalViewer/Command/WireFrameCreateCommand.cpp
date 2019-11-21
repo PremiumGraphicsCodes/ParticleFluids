@@ -10,13 +10,15 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 WireFrameCreateCommand::Args::Args() :
-	lines(WireFrameCreateLabels::LinesLabel, {}),
+	positions(WireFrameCreateLabels::PositionsLabel, {}),
+	edges(WireFrameCreateLabels::EdgesLabel, {}),
 	lineWidth(WireFrameCreateLabels::LineWidthLabel, 1.0f),
 	color(WireFrameCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
 	name(WireFrameCreateLabels::NameLabel, std::string("")),
 	isItem(WireFrameCreateLabels::IsItemLabel, false)
 {
-	add(&lines);
+	add(&positions);
+	add(&edges);
 	add(&lineWidth);
 	add(&color);
 	add(&name);
@@ -36,18 +38,19 @@ std::string WireFrameCreateCommand::getName()
 
 void WireFrameCreateCommand::execute(World* world)
 {
-	const auto& lines = args.lines.getValue();
+	const auto& positions = args.positions.getValue();
+	const auto& edges = args.edges.getValue();
 	WireFrameAttribute attr;
 	attr.color = args.color.getValue();
 	attr.width = args.lineWidth.getValue();
 	const auto& name = args.name.getValue();
 	if (args.isItem.getValue()) {
-		auto scene = world->getItemFactory()->createWireFrameScene(lines, attr, name);
+		auto scene = world->getItemFactory()->createWireFrameScene(positions, edges, attr, name);
 		world->getItems()->addScene(scene);
 		results.newId.setValue(scene->getId());
 	}
 	else {
-		auto scene = world->getObjectFactory()->createWireFrameScene(lines, attr, name);
+		auto scene = world->getObjectFactory()->createWireFrameScene(positions, edges, attr, name);
 		world->getObjects()->addScene(scene);
 		results.newId.setValue(scene->getId());
 	}

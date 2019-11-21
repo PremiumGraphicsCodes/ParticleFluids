@@ -8,6 +8,20 @@
 namespace Crystal {
 	namespace Scene {
 
+class WireFrameEdge
+{
+public:
+	WireFrameEdge() {}
+
+	WireFrameEdge(const int originId, const int destId) :
+		originId(originId),
+		destId(destId)
+	{}
+
+	int originId;
+	int destId;
+};
+
 class WireFrameScene : public IShapeScene
 {
 public:
@@ -15,15 +29,14 @@ public:
 		IShapeScene(-1)
 	{}
 
-	WireFrameScene(const int id, const std::string& name, const std::vector<Math::Line3dd>& lines, const WireFrameAttribute& attribute) :
+	WireFrameScene(const int id, const std::string& name, const std::vector<Math::Vector3dd>& positions, const std::vector<WireFrameEdge>& edges, const WireFrameAttribute& attribute) :
 		IShapeScene(id, name),
-		lines(lines),
+		positions(positions),
+		edges(edges),
 		attribute(attribute)
 	{}
 
 	~WireFrameScene() {};
-
-	std::vector<Math::Line3dd> getLines() const { return lines; }
 
 	WireFrameAttribute getAttribute() const { return attribute; }
 
@@ -35,7 +48,10 @@ public:
 
 	SceneType getType() const override { return SceneType::WireFrameScene; }
 
-	void onClear() override { lines.clear(); }
+	void onClear() override {
+		positions.clear();
+		edges.clear();
+	}
 
 	Math::Box3d getBoundingBox() const;
 
@@ -52,7 +68,8 @@ public:
 	IShapeScene* clone() const override;
 
 private:
-	std::vector<Math::Line3dd> lines;
+	std::vector<Math::Vector3dd> positions;
+	std::vector<WireFrameEdge> edges;
 	WireFrameAttribute attribute;
 };
 

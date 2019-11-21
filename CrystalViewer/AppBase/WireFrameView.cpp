@@ -17,5 +17,5 @@ void WireFrameView::onShow()
 
 void WireFrameView::setValue(WireFrameScene* value)
 {
-	edgeCount.setValue(value->getLines().size());
+	//edgeCount.setValue(value->getPositions().size());
 }

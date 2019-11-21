@@ -23,5 +23,5 @@ void WFConeView::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(cone.getValue(), unum.getValue(), vnum.getValue(), 10);
-	IWFAddView::addWireFrame(builder.getWireFrame());
+	IWFAddView::addWireFrame(builder.getPositions(), builder.getVertexIndices());
 }
