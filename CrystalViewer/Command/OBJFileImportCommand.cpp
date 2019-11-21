@@ -1,6 +1,6 @@
 #include "OBJFileImportCommand.h"
 
-#include "../../Crystal/Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/IO/OBJFileReader.h"
 #include "../../Crystal/IO/MTLFileReader.h"
 
