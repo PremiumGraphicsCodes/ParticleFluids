@@ -7,7 +7,7 @@
 #include "../Math/Triangle3d.h"
 #include "../Math/Line3d.h"
 
-#include "Vertex.h"
+#include "../Shape/Vertex.h"
 #include "Face.h"
 
 #include "../Shape/IShape.h"

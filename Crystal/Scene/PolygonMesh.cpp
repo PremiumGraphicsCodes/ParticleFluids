@@ -1,7 +1,7 @@
 #include "PolygonMesh.h"
 
 #include "../Math/Vector3d.h"
-#include "Vertex.h"
+#include "../Shape/Vertex.h"
 #include "Face.h"
 
 using namespace Crystal::Math;
