@@ -74,29 +74,30 @@ namespace PG.Core.Shape
 
         public void Build(Box3d box)
         {
-            CreatePosition(box.GetPosition(0.0, 0.0, 0.0));
-            CreatePosition(box.GetPosition(1.0, 0.0, 0.0));
-            CreatePosition(box.GetPosition(1.0, 1.0, 0.0));
-            CreatePosition(box.GetPosition(0.0, 1.0, 0.0));
-            CreatePosition(box.GetPosition(0.0, 0.0, 1.0));
-            CreatePosition(box.GetPosition(1.0, 0.0, 1.0));
-            CreatePosition(box.GetPosition(1.0, 1.0, 1.0));
-            CreatePosition(box.GetPosition(0.0, 1.0, 1.0));
+            var vertices = new int[8];
+            vertices[0] = CreatePosition(box.GetPosition(0.0, 0.0, 0.0));
+            vertices[1] = CreatePosition(box.GetPosition(1.0, 0.0, 0.0));
+            vertices[2] = CreatePosition(box.GetPosition(1.0, 1.0, 0.0));
+            vertices[3] = CreatePosition(box.GetPosition(0.0, 1.0, 0.0));
+            vertices[4] = CreatePosition(box.GetPosition(0.0, 0.0, 1.0));
+            vertices[5] = CreatePosition(box.GetPosition(1.0, 0.0, 1.0));
+            vertices[6] = CreatePosition(box.GetPosition(1.0, 1.0, 1.0));
+            vertices[7] = CreatePosition(box.GetPosition(0.0, 1.0, 1.0));
 
-            CreateEdge(0, 1);
-            CreateEdge(1, 2);
-            CreateEdge(2, 3);
-            CreateEdge(3, 0);
+            CreateEdge(vertices[0], vertices[1]);
+            CreateEdge(vertices[1], vertices[2]);
+            CreateEdge(vertices[2], vertices[3]);
+            CreateEdge(vertices[3], vertices[0]);
 
-            CreateEdge(4, 5);
-            CreateEdge(5, 6);
-            CreateEdge(6, 7);
-            CreateEdge(7, 4);
+            CreateEdge(vertices[4], vertices[5]);
+            CreateEdge(vertices[5], vertices[6]);
+            CreateEdge(vertices[6], vertices[7]);
+            CreateEdge(vertices[7], vertices[4]);
 
-            CreateEdge(0, 4);
-            CreateEdge(1, 5);
-            CreateEdge(2, 6);
-            CreateEdge(3, 7);
+            CreateEdge(vertices[0], vertices[4]);
+            CreateEdge(vertices[1], vertices[5]);
+            CreateEdge(vertices[2], vertices[6]);
+            CreateEdge(vertices[3], vertices[7]);
         }
 
         private void CreateEdge(int originId, int destId)
@@ -109,7 +110,6 @@ namespace PG.Core.Shape
             positions.Add(position);
             return positions.Count - 1;
         }
-
 
         public WireFrame WireFrame { get { return new WireFrame(positions, edges); } }
     }

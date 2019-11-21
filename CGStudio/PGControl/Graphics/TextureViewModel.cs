@@ -21,6 +21,7 @@ namespace PG.Control.Graphics
         private void OnFileSelect()
         {
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image Files(*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|すべてのファイル(*.*)|*.*";
             if(DialogResult.OK == dialog.ShowDialog() )
             {
                 ImagePath.Value = dialog.FileName;
