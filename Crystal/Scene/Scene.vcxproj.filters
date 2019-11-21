@@ -121,6 +121,9 @@
     <ClInclude Include="CameraScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="TextureScene.h">
+      <Filter>Scene\Appearance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -204,6 +207,9 @@
     </ClCompile>
     <ClCompile Include="FaceGroupScene.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureScene.cpp">
+      <Filter>Scene\Appearance</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

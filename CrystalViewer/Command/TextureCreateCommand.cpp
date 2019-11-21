@@ -35,9 +35,7 @@ void TextureCreateCommand::execute(World* world)
 	if (!isOk) {
 		return;
 	}
-	/*
 	auto scene = world->getObjectFactory()->create(m, args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
-	*/
 }

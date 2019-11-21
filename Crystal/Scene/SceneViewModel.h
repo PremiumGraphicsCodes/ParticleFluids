@@ -5,6 +5,7 @@
 #include "SmoothRenderer.h"
 #include "../Graphics/PointLight.h"
 #include "../Graphics/Material.h"
+#include "../Shader/TextureObject.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -22,12 +23,15 @@ public:
 
 	std::vector<Graphics::Material> getMaterials() const { return materials; }
 
+
 public:
 	std::list<PointBuffer> pointBuffers;
 	std::list<LineBuffer> lineBuffers;
 	std::list<SmoothTriangleBuffer> triangleBuffers;
 	std::vector<Graphics::PointLight> lights;
 	std::vector<Graphics::Material> materials;
+	std::vector<Shader::TextureObject> textures;
+
 };
 
 	}
