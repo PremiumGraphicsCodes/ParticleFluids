@@ -13,6 +13,11 @@ TextureScene::TextureScene(const int id, const std::string& name, const Image& i
 	texture(image)
 {}
 
+void TextureScene::onClear()
+{
+	texture.clear();
+};
+
 void TextureScene::toViewModel(SceneViewModel& viewModel) const
 {
 	viewModel.textures.push_back(texture);

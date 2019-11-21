@@ -188,6 +188,7 @@
     <ClInclude Include="Public\PolygonMeshCreateLabels.h" />
     <ClInclude Include="Public\PublicLabel.h" />
     <ClInclude Include="Public\SetLabels.h" />
+    <ClInclude Include="Public\TextureCreateLabels.h" />
     <ClInclude Include="Public\TransformLabels.h" />
     <ClInclude Include="Public\TrimLabels.h" />
     <ClInclude Include="Public\WireFrameCreateLabels.h" />

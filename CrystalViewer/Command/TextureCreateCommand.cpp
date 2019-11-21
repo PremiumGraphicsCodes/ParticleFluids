@@ -2,7 +2,7 @@
 
 #include "../../Crystal/IO/ImageFileReader.h"
 
-//#include "Public/MaterialCreateLabels.h"
+#include "Public/TextureCreateLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -12,18 +12,19 @@ using namespace Crystal::Command;
 
 std::string TextureCreateCommand::getName()
 {
-	return "TextureCreate"; //MaterialCreateLabels::CommandNameLabel;
+	return TextureCreateLabels::CommandNameLabel; //MaterialCreateLabels::CommandNameLabel;
 }
 
 TextureCreateCommand::Args::Args() :
-	filePath("FilePath", std::string("")),
-	name("Name", std::string(""))
+	filePath(TextureCreateLabels::FilePathLabel, std::string("")),
+	name(TextureCreateLabels::NameLabel, std::string(""))
 {
 	add(&filePath);
+	add(&name);
 }
 
 TextureCreateCommand::Results::Results() :
-	newId("NewId", -1) //MaterialCreateLabels::NewIdLabel, -1)
+	newId(TextureCreateLabels::NewIdLabel, -1)
 {
 	add(&newId);
 }
@@ -35,7 +36,7 @@ void TextureCreateCommand::execute(World* world)
 	if (!isOk) {
 		return;
 	}
-	auto scene = world->getObjectFactory()->create(m, args.name.getValue());
+	auto scene = world->getObjectFactory()->createTextureScene(reader.getImage(), args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
 }

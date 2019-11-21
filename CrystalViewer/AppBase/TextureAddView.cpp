@@ -5,6 +5,9 @@
 
 #include "../../Crystal/IO/ImageFileReader.h"
 
+#include "../Command/Command.h"
+#include "../Command/Public/TextureCreateLabels.h"
+
 #include "imgui.h"
 
 using namespace Crystal::Graphics;
@@ -16,6 +19,7 @@ TextureAddView::TextureAddView(const std::string& name, World* model, Canvas* ca
 	IPanel(name, model, canvas),
 	image("Image", Graphics::Image(256,256,255)),
 	name("Name", "Image01"),
+	filePathView("FilePath", std::string()),
 	ok("Ok")
 {
 	ok.setFunction([=]() { onOk(); });
@@ -32,6 +36,7 @@ void TextureAddView::onShow()
 			ImageFileReader reader;
 			if (reader.read(filename)) {
 				image.setValue(reader.getImage());
+				filePathView.setValue(filename);
 			}
 		}
 		//canvas->update();
@@ -41,5 +46,8 @@ void TextureAddView::onShow()
 
 void TextureAddView::onOk()
 {
-	//getWorld()->getObjects()->addScene( getWorld()->getObjectFactory()->createTextureScene( image.getValue(), name.getValue()) );
+	Command::Command command(TextureCreateLabels::CommandNameLabel);
+	command.setArg(TextureCreateLabels::FilePathLabel, filePathView.getValue());
+	command.setArg(TextureCreateLabels::NameLabel, name.getValue());
+	command.execute(getWorld());
 }

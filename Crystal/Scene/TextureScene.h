@@ -15,7 +15,7 @@ public:
 
 	Graphics::Image getImage() { return image; }
 
-	void onClear() override {};
+	void onClear() override;
 
 	//void setMaterial(const Graphics::Material& material) { this->material = material; }
 

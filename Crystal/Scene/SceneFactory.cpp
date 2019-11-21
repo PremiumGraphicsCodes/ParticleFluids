@@ -80,6 +80,11 @@ MaterialScene* SceneFactory::createMaterialScene(const Material& material, const
 	return new MaterialScene(getNextId(), name, material);
 }
 
+TextureScene* SceneFactory::createTextureScene(const Image& image, const std::string& name)
+{
+	return new TextureScene(getNextId(), name, image);
+}
+
 /*
 ShaderScene* SceneFactory::createShaderScene(const std::string& name)
 {

@@ -20,6 +20,7 @@ private:
 private:
 	TextureView image;
 	StringView name;
+	StringView filePathView;
 	Button ok;
 };
 
