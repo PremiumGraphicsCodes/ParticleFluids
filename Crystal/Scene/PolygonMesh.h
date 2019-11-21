@@ -10,7 +10,7 @@
 #include "Vertex.h"
 #include "Face.h"
 
-#include "IShape.h"
+#include "../Shape/IShape.h"
 
 #include <list>
 

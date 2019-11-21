@@ -28,7 +28,7 @@ public:
 		}
 		particles.clear();
 	}
-	
+
 	void add(const Math::Vector3dd& position, const Attr& attr) {
 		particles.push_back(new Particle<Attr>(position, attr));
 	}

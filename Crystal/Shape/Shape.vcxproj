@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -18,92 +18,12 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CameraScene.h" />
-    <ClInclude Include="Face.h" />
-    <ClInclude Include="FaceGroupScene.h" />
-    <ClInclude Include="IPoint.h" />
-    <ClInclude Include="IScene.h" />
-    <ClInclude Include="IShapeScene.h" />
-    <ClInclude Include="LineRenderer.h" />
-    <ClInclude Include="PolygonMesh.h" />
-    <ClInclude Include="PolygonMeshBuilder.h" />
-    <ClInclude Include="SceneIdRenderer.h" />
-    <ClInclude Include="SceneRenderer.h" />
-    <ClInclude Include="PointRenderer.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="TextureScene.h" />
-    <ClInclude Include="TriangleFace.h" />
-    <ClInclude Include="TriangleMeshScene.h" />
-    <ClInclude Include="Vertex.h" />
-    <ClInclude Include="WireFrameBuilder.h" />
-    <ClInclude Include="World.h" />
-    <ClInclude Include="SmoothRenderer.h" />
-    <ClInclude Include="TransformScene.h" />
-    <ClInclude Include="LightScene.h" />
-    <ClInclude Include="MaterialScene.h" />
-    <ClInclude Include="SceneIdViewModel.h" />
-    <ClInclude Include="SceneViewModel.h" />
-    <ClInclude Include="SceneId.h" />
-    <ClInclude Include="SceneIdProvider.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneType.h" />
-    <ClInclude Include="ParticleAttribute.h" />
-    <ClInclude Include="ParticleSystemScene.h" />
-    <ClInclude Include="PolygonMeshScene.h" />
-    <ClInclude Include="SceneFactory.h" />
-    <ClInclude Include="IRenderer.h" />
-    <ClInclude Include="TriangleRenderer.h" />
-    <ClInclude Include="UUID.h" />
-    <ClInclude Include="ViewModel.h" />
-    <ClInclude Include="VolumeScene.h" />
-    <ClInclude Include="WireFrameAttribute.h" />
-    <ClInclude Include="WireFrameScene.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Face.cpp" />
-    <ClCompile Include="FaceGroupScene.cpp" />
-    <ClCompile Include="IScene.cpp" />
-    <ClCompile Include="LightScene.cpp" />
-    <ClCompile Include="LineRenderer.cpp" />
-    <ClCompile Include="MaterialScene.cpp" />
-    <ClCompile Include="PolygonMesh.cpp" />
-    <ClCompile Include="PolygonMeshBuilder.cpp" />
-    <ClCompile Include="SceneIdRenderer.cpp" />
-    <ClCompile Include="SceneRenderer.cpp" />
-    <ClCompile Include="ParticleSystemScene.cpp" />
-    <ClCompile Include="PointRenderer.cpp" />
-    <ClCompile Include="PolygonMeshScene.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="TextureScene.cpp" />
-    <ClCompile Include="TriangleFace.cpp" />
-    <ClCompile Include="TriangleMeshScene.cpp" />
-    <ClCompile Include="Vertex.cpp" />
-    <ClCompile Include="VolumeScene.cpp" />
-    <ClCompile Include="WireFrameBuilder.cpp" />
-    <ClCompile Include="World.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneFactory.cpp" />
-    <ClCompile Include="IRenderer.cpp" />
-    <ClCompile Include="SmoothRenderer.cpp" />
-    <ClCompile Include="TransformScene.cpp" />
-    <ClCompile Include="TriangleRenderer.cpp" />
-    <ClCompile Include="WireFrameScene.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Shape\Shape.vcxproj">
-      <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{59C5EA30-1E57-417C-9416-17B592E8724E}</ProjectGuid>
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{ED61B745-9F00-48C2-B309-F1DBB37F03E3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>UI</RootNamespace>
+    <RootNamespace>Shape</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Scene</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -150,29 +70,43 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -181,42 +115,53 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Math\Math.vcxproj">
+      <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IShape.h" />
+    <ClInclude Include="ParticleSystem.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets" Condition="Exists('..\packages\glew.redist.1.9.0.1\build\native\glew.redist.targets')" />
-    <Import Project="..\packages\glew.1.9.0.1\build\native\glew.targets" Condition="Exists('..\packages\glew.1.9.0.1\build\native\glew.targets')" />
   </ImportGroup>
 </Project>

@@ -97,9 +97,6 @@
     <ClInclude Include="VolumeScene.h">
       <Filter>Scene\Shape\Volume</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystem.h">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClInclude>
     <ClInclude Include="IPoint.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
@@ -114,9 +111,6 @@
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
-    <ClInclude Include="IShape.h">
-      <Filter>Scene\Shape</Filter>
     </ClInclude>
     <ClInclude Include="CameraScene.h">
       <Filter>Scene\Appearance</Filter>
@@ -189,9 +183,6 @@
     </ClCompile>
     <ClCompile Include="TriangleFace.cpp">
       <Filter>Scene\Shape\TriangleMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystem.cpp">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="Face.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>

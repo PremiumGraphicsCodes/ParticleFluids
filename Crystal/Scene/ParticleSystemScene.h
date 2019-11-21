@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IShapeScene.h"
-#include "ParticleSystem.h"
+#include "../Shape/ParticleSystem.h"
 #include "ParticleAttribute.h"
 
 namespace Crystal {
