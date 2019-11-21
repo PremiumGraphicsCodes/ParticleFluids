@@ -20,5 +20,5 @@ void WFBoxView::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(box.getValue());
-	IWFAddView::addWireFrame(builder.getPositions(), builder.getVertexIndices());
+	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

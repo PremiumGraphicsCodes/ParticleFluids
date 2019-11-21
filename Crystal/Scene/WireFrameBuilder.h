@@ -25,7 +25,7 @@ public:
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
-	std::vector<WireFrameEdge> getVertexIndices() const { return edges; }
+	std::vector<WireFrameEdge> getEdges() const { return edges; }
 
 	int createPosition(const Math::Vector3dd& v);
 

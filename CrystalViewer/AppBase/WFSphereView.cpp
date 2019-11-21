@@ -23,5 +23,5 @@ void WFSphereView::onOk()
 {
 	WireFrameBuilder builder;
 	builder.build(sphere.getValue(), unum.getValue(), vnum.getValue());
-	IWFAddView::addWireFrame(builder.getPositions(), builder.getVertexIndices());
+	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }
