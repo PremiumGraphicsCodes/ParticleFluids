@@ -1,6 +1,6 @@
 #include "WFBoxView.h"
 
-#include "../../Crystal/Scene/WireFrameBuilder.h"
+#include "../../Crystal/Shape/WireFrameBuilder.h"
 #include "../../Crystal/Scene/World.h"
 #include "../../Crystal/Scene/WireFrameScene.h"
 #include "Canvas.h"

@@ -1,7 +1,7 @@
 #include "WFSphereView.h"
 
 #include "../../Crystal/Math/Sphere3d.h"
-#include "../../Crystal/Scene/WireFrameBuilder.h"
+#include "../../Crystal/Shape/WireFrameBuilder.h"
 #include "../../Crystal/Scene/WireFrameScene.h"
 
 using namespace Crystal::Math;

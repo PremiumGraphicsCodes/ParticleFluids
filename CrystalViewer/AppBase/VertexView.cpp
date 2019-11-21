@@ -1,7 +1,7 @@
 #include "VertexView.h"
 
 #include "../../Crystal/Scene/Face.h"
-#include "../../Crystal/Scene/Vertex.h"
+#include "../../Crystal/Shape/Vertex.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

@@ -3,7 +3,7 @@
 #include "ICommand.h"
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Graphics/ColorRGBA.h"
-#include "../../Crystal/Scene/Vertex.h"
+#include "../../Crystal/Shape/Vertex.h"
 #include "../../Crystal/Scene/Face.h"
 #include <vector>
 
