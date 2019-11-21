@@ -117,6 +117,21 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
+        public int AddTextureScene(string imageFilePath, string name)
+        {
+            var command = new PG.CLI.Command(PG.TextureCreateLabels.CommandNameLabel);
+            command.SetArg(PG.TextureCreateLabels.FilePathLabel, imageFilePath);
+            command.SetArg(PG.TextureCreateLabels.NameLabel, name);
+
+            Canvas3d.Instance.Renderer.Bind();
+            command.Execute(adapter);
+            Canvas3d.Instance.Renderer.UnBind();
+
+            var newId = command.GetResult<int>(PG.TextureCreateLabels.NewIdLabel);
+            Sync();
+            return newId;
+        }
+
         public void Sync()
         {
             var ids = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel);

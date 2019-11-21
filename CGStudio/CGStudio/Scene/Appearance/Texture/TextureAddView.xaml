@@ -10,9 +10,8 @@
         <local:TextureAddViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <TextBlock Text="{Binding Id.Value}"/>
         <TextBox Text="{Binding Name.Value}"/>
         <graphics:TextureView DataContext="{Binding TextureViewModel}"/>
-        <Button Content="OK" Command="{Binding OKCommand}"/>
+        <Button Content="OK" Command="{Binding OkCommand}"/>
     </StackPanel>
 </UserControl>

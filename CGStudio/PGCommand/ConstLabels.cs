@@ -127,6 +127,14 @@ namespace PG {
 		public const string NameLabel = "Name";
 	}
 
+	public class TextureCreateLabels
+	{
+		public const string CommandNameLabel = "TextureCreate";
+		public const string FilePathLabel = "FilePath";
+		public const string NameLabel = "Name";
+		public const string NewIdLabel = "NewId";
+	}
+
 	public class TransformLabels
 	{
 		public const string TransformCommandLabel = "Transform";
