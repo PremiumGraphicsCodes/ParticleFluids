@@ -21,10 +21,10 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 	const auto p1 = createPosition(vs[1]);
 	const auto p2 = createPosition(vs[2]);
 	const auto n = createNormal(triangle.getNormal());
-	const auto v0 = createVertex( p0, n, -1);
-	const auto v1 = createVertex( p1, n, -1);
-	const auto v2 = createVertex( p2, n, -1);
-	createFace( v0, v1, v2 );
+	const auto v0 = createVertex(p0, n, -1);
+	const auto v1 = createVertex(p1, n, -1);
+	const auto v2 = createVertex(p2, n, -1);
+	createFace(v0, v1, v2);
 }
 
 void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const int vnum)
@@ -35,20 +35,20 @@ void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const in
 		std::vector<int> grid1d;
 		for (int j = 0; j <= vnum; ++j) {
 			const auto v = j / static_cast<double>(vnum);
-			const auto p = createPosition( surface.getPosition( u, v) );
-			const auto n = createNormal( surface.getNormal(u, v) );
-			const auto tx = createTexCoord(Vector2dd( u,v) );
+			const auto p = createPosition(surface.getPosition(u, v));
+			const auto n = createNormal(surface.getNormal(u, v));
+			const auto tx = createTexCoord(Vector2dd(u, v));
 			const auto id = createVertex(p, n, tx);
 			grid1d.push_back(id);
 		}
 		grid2d.push_back(grid1d);
 	}
-	for (int i = 0; i < grid2d.size()-1; ++i) {
+	for (int i = 0; i < grid2d.size() - 1; ++i) {
 		for (int j = 0; j < grid2d[i].size() - 1; ++j) {
 			const auto ii = (i + 1);// % grid2d.size();
 			const auto jj = (j + 1);// % grid2d[i].size();
-			createFace( grid2d[i][j], grid2d[i + 1][j], grid2d[i][j + 1] );
-			createFace( grid2d[i][j + 1], grid2d[i + 1][j], grid2d[i + 1][j + 1] );
+			createFace(grid2d[i][j], grid2d[i + 1][j], grid2d[i][j + 1]);
+			createFace(grid2d[i][j + 1], grid2d[i + 1][j], grid2d[i + 1][j + 1]);
 		}
 	}
 }
@@ -116,8 +116,8 @@ void PolygonMeshBuilder::add(const int v0, const int v1, const int v2, const int
 	auto vv2 = createVertex(v2, n0);
 	auto vv3 = createVertex(v3, n0);
 
-	createFace( vv0, vv1, vv2 );
-	createFace( vv0, vv2, vv3) ;
+	createFace(vv0, vv1, vv2);
+	createFace(vv0, vv2, vv3);
 }
 
 int PolygonMeshBuilder::createPosition(const Vector3dd& v)

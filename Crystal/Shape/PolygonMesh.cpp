@@ -31,7 +31,7 @@ Vector3dd PolygonMesh::getCenter() const
 	Vector3dd center;
 	const auto& vs = this->getVertices();
 	for (const auto& v : vs) {
-		const auto p = positions[ v.positionId ];
+		const auto p = positions[v.positionId];
 		center += p / static_cast<double>(vs.size());
 	}
 	return center;
@@ -59,7 +59,7 @@ void PolygonMesh::transform(const Matrix4dd& m)
 	const auto& vs = vertices;
 	for (auto v : vs) {
 		auto& p = positions[v.positionId];
-		p = glm::vec4(p,1.0) * m;
+		p = glm::vec4(p, 1.0) * m;
 	}
 }
 

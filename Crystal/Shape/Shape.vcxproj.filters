@@ -17,6 +17,12 @@
     <ClInclude Include="Face.h">
       <Filter>PolygonMesh</Filter>
     </ClInclude>
+    <ClInclude Include="PolygonMesh.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshBuilder.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
@@ -34,6 +40,12 @@
       <Filter>WireFrame</Filter>
     </ClCompile>
     <ClCompile Include="Face.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMesh.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshBuilder.cpp">
       <Filter>PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>

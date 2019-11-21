@@ -97,12 +97,6 @@
     <ClInclude Include="IPoint.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMesh.h">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonMeshBuilder.h">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="CameraScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
@@ -171,12 +165,6 @@
     </ClCompile>
     <ClCompile Include="TriangleFace.cpp">
       <Filter>Scene\Shape\TriangleMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMesh.cpp">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMeshBuilder.cpp">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="FaceGroupScene.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
