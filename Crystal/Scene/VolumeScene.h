@@ -3,7 +3,7 @@
 #include <vector>
 #include <functional>
 #include "../../Crystal/Math/Box3d.h"
-#include "../../Crystal/Scene/Particle.h"
+#include "../../Crystal/Shape/Particle.h"
 #include "../../Crystal/Util/UnCopyable.h"
 
 namespace Crystal {

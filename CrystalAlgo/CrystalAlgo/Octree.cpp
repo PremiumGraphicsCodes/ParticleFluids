@@ -1,6 +1,6 @@
 #include "Octree.h"
 
-#include "../../Crystal/Scene/IPoint.h"
+#include "../../Crystal/Shape/IPoint.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

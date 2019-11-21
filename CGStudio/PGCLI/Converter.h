@@ -13,7 +13,7 @@
 #include "../../Crystal/Graphics/Material.h"
 #include "../../Crystal/Scene/SceneType.h"
 #include "../../Crystal/Shape/Vertex.h"
-#include "../../Crystal/Scene/Face.h"
+#include "../../Crystal/Shape/Face.h"
 #include "../../Crystal/Scene/WireFrameScene.h"
 
 using namespace System;

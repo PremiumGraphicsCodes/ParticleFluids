@@ -27,16 +27,16 @@ namespace PGCommandTest
 
         private int CreateParticleSystemScene(WorldAdapter world)
         {
-            var command = new Command(PG.ParticleSystemAddLabels.ParticleSystemAddLabel);
+            var command = new Command(PG.ParticleSystemCreateLabels.ParticleSystemAddLabel);
             command.Execute(world);
-            return command.GetResult<int>(PG.ParticleSystemAddLabels.NewIdLabel);
+            return command.GetResult<int>(PG.ParticleSystemCreateLabels.NewIdLabel);
         }
 
         private int CreateWireFrameScene(WorldAdapter world)
         {
-            var command = new Command(PG.WireFrameAddLabels.WireFrameAddLabel);
+            var command = new Command(PG.WireFrameCreateLabels.WireFrameAddLabel);
             command.Execute(world);
-            return command.GetResult<int>(PG.WireFrameAddLabels.NewIdLabel);
+            return command.GetResult<int>(PG.WireFrameCreateLabels.NewIdLabel);
         }
 
         /*

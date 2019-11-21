@@ -1,7 +1,7 @@
 #include "BooleanAlgo.h"
 
-#include "../../Crystal/Scene/PolygonMesh.h"
-#include "../../Crystal/Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/Shape/PolygonMesh.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
 #define CSGJS_HEADER_ONLY
 #include "csgjs.h"
