@@ -12,14 +12,14 @@ using namespace Crystal::Scene;
 
 void WireFrameBuilder::build(const Box3d& box)
 {
-	const auto p0 = createPosition( box.getPosition(0, 0, 0) );
-	const auto p1 = createPosition( box.getPosition(1, 0, 0) );
-	const auto p2 = createPosition( box.getPosition(1, 1, 0) );
-	const auto p3 = createPosition( box.getPosition(0, 1, 0) );
-	const auto p4 = createPosition( box.getPosition(0, 0, 1) );
-	const auto p5 = createPosition( box.getPosition(1, 0, 1) );
-	const auto p6 = createPosition( box.getPosition(1, 1, 1) );
-	const auto p7 = createPosition( box.getPosition(0, 1, 1) );
+	const auto p0 = createPosition(box.getPosition(0, 0, 0));
+	const auto p1 = createPosition(box.getPosition(1, 0, 0));
+	const auto p2 = createPosition(box.getPosition(1, 1, 0));
+	const auto p3 = createPosition(box.getPosition(0, 1, 0));
+	const auto p4 = createPosition(box.getPosition(0, 0, 1));
+	const auto p5 = createPosition(box.getPosition(1, 0, 1));
+	const auto p6 = createPosition(box.getPosition(1, 1, 1));
+	const auto p7 = createPosition(box.getPosition(0, 1, 1));
 
 	edges.push_back(WireFrameEdge(p0, p1));
 	edges.push_back(WireFrameEdge(p1, p2));
@@ -39,8 +39,8 @@ void WireFrameBuilder::build(const Box3d& box)
 
 void WireFrameBuilder::build(const ICurve3d& line)
 {
-	auto p0 = createPosition( line.getPosition(0.0) );
-	auto p1 = createPosition( line.getPosition(1.0) );
+	auto p0 = createPosition(line.getPosition(0.0));
+	auto p1 = createPosition(line.getPosition(1.0));
 	edges.push_back(WireFrameEdge(p0, p1));
 }
 
@@ -52,7 +52,7 @@ void WireFrameBuilder::build(const ISurface3d& curve, const int unum, const int 
 	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
 		std::vector<int> g;
 		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
-			g.push_back( createPosition( curve.getPosition(u, v) ) );
+			g.push_back(createPosition(curve.getPosition(u, v)));
 		}
 		grid.push_back(g);
 	}
@@ -68,7 +68,7 @@ void WireFrameBuilder::build(const IVolume3d& curve, const int unum, const int v
 	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
 		std::vector<int> g;
 		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
-			g.push_back( createPosition( curve.getPosition( u, v, 1.0)) );
+			g.push_back(createPosition(curve.getPosition(u, v, 1.0)));
 		}
 		grid.push_back(g);
 	}

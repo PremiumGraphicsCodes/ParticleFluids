@@ -8,6 +8,12 @@
     <ClInclude Include="Vertex.h">
       <Filter>PolygonMesh</Filter>
     </ClInclude>
+    <ClInclude Include="WireFrameBuilder.h">
+      <Filter>WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFrameEdge.h">
+      <Filter>WireFrame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
@@ -19,5 +25,10 @@
     <Filter Include="PolygonMesh">
       <UniqueIdentifier>{83be5bb4-42ba-4424-93cc-44177186141d}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WireFrameBuilder.cpp">
+      <Filter>WireFrame</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

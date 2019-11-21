@@ -38,7 +38,6 @@
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TriangleFace.h" />
     <ClInclude Include="TriangleMeshScene.h" />
-    <ClInclude Include="WireFrameBuilder.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="SmoothRenderer.h" />
     <ClInclude Include="TransformScene.h" />
@@ -81,7 +80,6 @@
     <ClCompile Include="TriangleFace.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
     <ClCompile Include="VolumeScene.cpp" />
-    <ClCompile Include="WireFrameBuilder.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneFactory.cpp" />

@@ -161,6 +161,11 @@
     <ClInclude Include="IShape.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="WireFrameBuilder.h" />
+    <ClInclude Include="WireFrameEdge.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WireFrameBuilder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
