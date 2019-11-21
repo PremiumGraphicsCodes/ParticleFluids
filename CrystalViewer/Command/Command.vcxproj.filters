@@ -198,6 +198,12 @@
     <ClCompile Include="MaterialCreateCommand.cpp">
       <Filter>Scene\Appearance\Material</Filter>
     </ClCompile>
+    <ClCompile Include="TextureCreateCommand.h">
+      <Filter>Scene\Appearance\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCreateCommand.cpp">
+      <Filter>Scene\Appearance\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -247,6 +253,9 @@
     </Filter>
     <Filter Include="Scene\Appearance\Material">
       <UniqueIdentifier>{f2fa3de0-28d9-4239-9bbe-b253d1c9d10e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Texture">
+      <UniqueIdentifier>{0488bdbf-75e0-4a40-aa75-75a3de41e196}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

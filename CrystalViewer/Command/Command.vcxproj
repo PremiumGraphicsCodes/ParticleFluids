@@ -228,6 +228,8 @@
     <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="STLFileExportCommand.cpp" />
     <ClCompile Include="STLFileImportCommand.cpp" />
+    <ClCompile Include="TextureCreateCommand.cpp" />
+    <ClCompile Include="TextureCreateCommand.h" />
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="TranslateCommand.cpp" />
     <ClCompile Include="TrimCommand.cpp" />
