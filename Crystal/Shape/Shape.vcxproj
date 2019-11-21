@@ -158,6 +158,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Face.h" />
     <ClInclude Include="IShape.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="Vertex.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="WireFrameEdge.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Face.cpp" />
     <ClCompile Include="WireFrameBuilder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

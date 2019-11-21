@@ -23,7 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraScene.h" />
-    <ClInclude Include="Face.h" />
     <ClInclude Include="FaceGroupScene.h" />
     <ClInclude Include="IPoint.h" />
     <ClInclude Include="IScene.h" />
@@ -62,7 +61,6 @@
     <ClInclude Include="WireFrameScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Face.cpp" />
     <ClCompile Include="FaceGroupScene.cpp" />
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="LightScene.cpp" />

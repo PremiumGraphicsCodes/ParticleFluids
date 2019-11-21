@@ -2,7 +2,7 @@
 
 #include "../Math/Vector3d.h"
 #include "../Shape/Vertex.h"
-#include "Face.h"
+#include "../Shape/Face.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

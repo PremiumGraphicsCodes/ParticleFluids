@@ -6,7 +6,7 @@
 
 #include "../Math/Vector3d.h"
 #include "../Shape/Vertex.h"
-#include "../Scene/Face.h"
+#include "../Shape/Face.h"
 //#include "../Scene/PolygonMesh.h"
 
 #include "Helper.h"

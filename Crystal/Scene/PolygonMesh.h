@@ -8,7 +8,7 @@
 #include "../Math/Line3d.h"
 
 #include "../Shape/Vertex.h"
-#include "Face.h"
+#include "../Shape/Face.h"
 
 #include "../Shape/IShape.h"
 
