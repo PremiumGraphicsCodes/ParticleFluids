@@ -1,6 +1,6 @@
 #include "PolygonMeshView.h"
 
-#include "../../Crystal/Scene/PolygonMesh.h"
+#include "../../Crystal/Shape/PolygonMesh.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
