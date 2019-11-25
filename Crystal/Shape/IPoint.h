@@ -5,7 +5,7 @@
 #include "../Math/Matrix4d.h"
 
 namespace Crystal {
-	namespace Scene {
+	namespace Shape {
 
 class IPoint
 {

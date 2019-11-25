@@ -15,14 +15,14 @@ public:
 		shape(nullptr)
 	{}
 
-	ParticleSystemScene(const int id, const std::string& name, ParticleSystem<ParticleAttribute>* shape) :
+	ParticleSystemScene(const int id, const std::string& name, Shape::ParticleSystem<ParticleAttribute>* shape) :
 		IShapeScene(id, name),
 		shape(shape)
 	{}
 
 	~ParticleSystemScene() {};
 
-	ParticleSystem<ParticleAttribute>* getShape() const { return shape; }
+	Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape; }
 
 	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 
@@ -52,7 +52,7 @@ public:
 	void setAttribute(const ParticleAttribute& attribute);
 
 private:
-	ParticleSystem<ParticleAttribute>* shape;
+	Shape::ParticleSystem<ParticleAttribute>* shape;
 };
 
 	}

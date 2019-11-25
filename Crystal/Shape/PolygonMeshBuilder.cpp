@@ -7,7 +7,7 @@
 #include "../Math/Box3d.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 
 PolygonMeshBuilder::PolygonMeshBuilder() :
 	nextVertexId(0),

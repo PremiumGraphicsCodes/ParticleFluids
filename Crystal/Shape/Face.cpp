@@ -3,7 +3,7 @@
 #include "../Math/Triangle3d.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 
 Triangle3d Face::toTriangle(const std::vector<Vector3dd>& positions) const
 {

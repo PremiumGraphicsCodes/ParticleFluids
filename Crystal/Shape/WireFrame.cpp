@@ -1,7 +1,7 @@
 #include "WireFrame.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 
 void WireFrame::move(const Vector3dd& v)
 {

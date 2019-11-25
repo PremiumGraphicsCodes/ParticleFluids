@@ -10,7 +10,7 @@ namespace Crystal {
 		class Line3dd;
 		class Box3d;
 	}
-	namespace Scene {
+	namespace Shape {
 
 		class WireFrameBuilder
 		{

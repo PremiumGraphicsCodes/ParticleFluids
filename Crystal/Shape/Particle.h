@@ -3,7 +3,7 @@
 #include "IPoint.h"
 
 namespace Crystal {
-	namespace Scene {
+	namespace Shape {
 
 template<typename Attr>
 class Particle : public IPoint

@@ -7,7 +7,7 @@
 #include "../Math/Box3d.h"
 
 namespace Crystal {
-	namespace Scene {
+	namespace Shape {
 
 class IShape : private UnCopyable
 {

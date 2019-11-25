@@ -10,7 +10,7 @@
 #include "../Math/Matrix4d.h"
 
 namespace Crystal {
-	namespace Scene {
+	namespace Shape {
 
 template<typename Attr>
 class ParticleSystem

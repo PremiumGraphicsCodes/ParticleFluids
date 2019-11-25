@@ -16,7 +16,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
-using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
 bool OBJFileReader::read(const std::filesystem::path& filePath)

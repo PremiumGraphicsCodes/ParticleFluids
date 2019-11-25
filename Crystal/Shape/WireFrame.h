@@ -6,7 +6,7 @@
 #include "WireFrameEdge.h"
 
 namespace Crystal {
-	namespace Scene {
+	namespace Shape {
 
 class WireFrame : public IShape
 {

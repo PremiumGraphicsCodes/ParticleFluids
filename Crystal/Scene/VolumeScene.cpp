@@ -3,6 +3,7 @@
 #include "../../Crystal/Math/Sphere3d.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 
 Volume::Volume(const int unum, const int vnum, const int wnum, const Box3d& box) :

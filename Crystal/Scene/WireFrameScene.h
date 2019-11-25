@@ -17,7 +17,7 @@ public:
 		IShapeScene(-1)
 	{}
 
-	WireFrameScene(const int id, const std::string& name, WireFrame* shape, const WireFrameAttribute& attribute) :
+	WireFrameScene(const int id, const std::string& name, Shape::WireFrame* shape, const WireFrameAttribute& attribute) :
 		IShapeScene(id, name),
 		shape(shape),
 		attribute(attribute)
@@ -54,7 +54,7 @@ public:
 	IShapeScene* clone() const override;
 
 private:
-	WireFrame* shape;
+	Shape::WireFrame* shape;
 	WireFrameAttribute attribute;
 };
 

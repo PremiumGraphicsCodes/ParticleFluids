@@ -8,7 +8,7 @@
 #include "../Math/Cylinder3d.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 
 void WireFrameBuilder::build(const Box3d& box)
 {

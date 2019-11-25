@@ -13,9 +13,9 @@ public:
 		IScene(id, name)
 	{}
 
-	void addFace(Face f) { this->faces.push_back(f); }
+	void addFace(Shape::Face f) { this->faces.push_back(f); }
 
-	std::vector<Face> getFaces() const { return faces; }
+	std::vector<Shape::Face> getFaces() const { return faces; }
 
 	//int getId() const { return id; }
 
@@ -35,7 +35,7 @@ public:
 
 private:
 	std::string materialName;
-	std::vector<Face> faces;
+	std::vector<Shape::Face> faces;
 
 };
 

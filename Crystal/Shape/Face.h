@@ -10,7 +10,7 @@ namespace Crystal {
 	namespace Math {
 		class Triangle3d;
 	}
-	namespace Scene {
+	namespace Shape {
 
 		class Face
 		{

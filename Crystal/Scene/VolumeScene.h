@@ -33,7 +33,7 @@ public:
 	//std::vector<Shape::Particle<double>> toParticles() const;
 
 private:
-	std::vector< std::vector< std::vector< Particle<double> > > > nodes;
+	std::vector< std::vector< std::vector< Shape::Particle<double> > > > nodes;
 	const int unum;
 	const int vnum;
 	const int wnum;
