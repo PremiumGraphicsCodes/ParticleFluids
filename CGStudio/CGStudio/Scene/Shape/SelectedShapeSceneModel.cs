@@ -1,11 +1,6 @@
 ﻿using PG.Core.Math;
 using PG.Core.Shape;
 using PG.Core.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PG.CGStudio.Scene.Shape
 {
@@ -18,6 +13,8 @@ namespace PG.CGStudio.Scene.Shape
             var bb = PG.CLI.Command.Get<Box3d>(world.Adapter, PG.GetLabels.BoundingBoxLabel, id);
             CreateBoundingBoxItem(bb);
             CreateAxesX(bb);
+            CreateAxesY(bb);
+            CreateAxesZ(bb);
         }
 
         private void CreateBoundingBoxItem(Box3d bb)
@@ -46,6 +43,36 @@ namespace PG.CGStudio.Scene.Shape
             };
             this.xAxisItemId = world.Items.AddWireFrameScene(builder.Build(), "", appearance);
         }
+
+        private void CreateAxesY(Box3d bb)
+        {
+            var world = MainModel.Instance.World;
+            var xline = new Line3d(bb.GetPosition(0.5, 0.5, 0.5), bb.GetPosition(0.5, 1.5, 0.5));
+            var builder = new WireFrameBuilder();
+            builder.Add(xline);
+            var appearance = new WireAppearance
+            {
+                Color = new Core.Graphics.ColorRGBA(0.0f, 1.0f, 0.0f, 0.0f),
+                Width = 1.0f
+            };
+            this.yAxisItemId = world.Items.AddWireFrameScene(builder.Build(), "", appearance);
+        }
+
+        private void CreateAxesZ(Box3d bb)
+        {
+            var world = MainModel.Instance.World;
+            var xline = new Line3d(bb.GetPosition(0.5, 0.5, 0.5), bb.GetPosition(0.5, 0.5, 1.5));
+            var builder = new WireFrameBuilder();
+            builder.Add(xline);
+            var appearance = new WireAppearance
+            {
+                Color = new Core.Graphics.ColorRGBA(0.0f, 0.0f, 1.0f, 0.0f),
+                Width = 1.0f
+            };
+            this.zAxisItemId = world.Items.AddWireFrameScene(builder.Build(), "", appearance);
+
+        }
+
 
         private int id;
         private int boundingBoxItemId;

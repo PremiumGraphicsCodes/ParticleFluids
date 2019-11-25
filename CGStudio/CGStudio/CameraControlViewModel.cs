@@ -37,11 +37,16 @@ namespace PG.CGStudio
 
         private void OnYZ()
         {
-
+            var command = new PG.CLI.Command(CameraLabels.CameraYZCommandLabel);
+            command.Execute(MainModel.Instance.World.Adapter);
+            Canvas3d.Instance.Render();
         }
 
         private void OnZX()
         {
+            var command = new PG.CLI.Command(CameraLabels.CameraZXCommandLabel);
+            command.Execute(MainModel.Instance.World.Adapter);
+            Canvas3d.Instance.Render();
 
         }
 
