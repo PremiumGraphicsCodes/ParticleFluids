@@ -59,6 +59,9 @@
     <ProjectReference Include="..\..\Crystal\Shader\Shader.vcxproj">
       <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
+      <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Command\Command.vcxproj">
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
     </ProjectReference>

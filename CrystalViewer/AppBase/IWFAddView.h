@@ -2,6 +2,7 @@
 
 #include "IOkCancelView.h"
 #include "WFAttributeView.h"
+#include "../../Crystal/Shape/WireFrameEdge.h"
 
 namespace Crystal {
 	namespace UI {

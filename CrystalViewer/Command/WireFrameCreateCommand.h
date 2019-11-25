@@ -2,6 +2,7 @@
 
 #include "ICommand.h"
 #include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Shape/WireFrameEdge.h"
 #include "../../Crystal/Graphics/ColorRGBA.h"
 #include <vector>
 
