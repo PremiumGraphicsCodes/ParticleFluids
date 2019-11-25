@@ -127,6 +127,13 @@ namespace PG {
 		public const string NameLabel = "Name";
 	}
 
+	public class ShapeSelectLabels
+	{
+		public const string CommandNameLabel = "ShapeSelectCommand";
+		public const string ShapeIdLabel = "ShapeId";
+		public const string BoundingBoxItemIdLabel = "BoundingBoxItemId";
+	}
+
 	public class TextureCreateLabels
 	{
 		public const string CommandNameLabel = "TextureCreate";

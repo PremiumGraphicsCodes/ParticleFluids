@@ -43,6 +43,12 @@ namespace PG.CGStudio.UICtrl
 
             if (parentId != 0)
             {
+                command.Create(PG.ShapeSelectLabels.CommandNameLabel);
+                command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
+                command.Execute(model);
+                Canvas3d.Instance.Update(MainModel.Instance.World);
+                Canvas3d.Instance.Render();
+
 //                var selectedType = CLI.Command.Get(model, "SceneTypeId", parentId);// model.GetTypeById(id.parentId);
                 var pickedId = new ObjectId();
                 pickedId.parentId = parentId;
@@ -62,6 +68,7 @@ namespace PG.CGStudio.UICtrl
 
                 */
             }
+        
         }
     }
 }
