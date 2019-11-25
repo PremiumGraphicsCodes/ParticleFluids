@@ -42,7 +42,7 @@ namespace PG.CGStudio
         {
             this.renderer = new PG.CLI.Renderer(Panel.Handle, MainModel.Instance.World.Adapter);
             this.renderer.Build(MainModel.Instance.World.Adapter);
-            this.ctrl = new UICtrl.CameraUICtrl();
+            this.ctrl = new UICtrl.CameraAndPickUICtrl();
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;

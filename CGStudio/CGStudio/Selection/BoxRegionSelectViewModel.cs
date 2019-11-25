@@ -61,7 +61,7 @@ namespace PG.CGStudio.Selection
 
             boxes.Add(box);
 
-            Canvas3d.Instance.UICtrl = new CameraUICtrl();
+            Canvas3d.Instance.UICtrl = new CameraAndPickUICtrl();
         }
     }
 }
