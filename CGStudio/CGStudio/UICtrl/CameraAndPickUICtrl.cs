@@ -15,18 +15,13 @@ namespace PG.CGStudio.UICtrl
         {
             var model = MainModel.Instance.World.Adapter;
 
-            Canvas3d.Instance.Renderer.Bind();
-            var command = new PG.CLI.Command(PG.PickLabels.PickCommandLabel);
-            command.SetArg(PG.PickLabels.PositionLabel, new Vector2d(position.X, 1.0 - position.Y));
-            command.Execute(model);
-            var parentId = command.GetResult<int>(PG.PickLabels.ParentIdLabel);
-            var childId = command.GetResult<int>(PG.PickLabels.ChildIdLabel);
-            Canvas3d.Instance.Renderer.UnBind();
+            var objectId = Canvas3d.Instance.GetObjectId(position);
 
-            if (parentId != 0)
+            if (objectId.parentId != 0)
             {
+                var command = new PG.CLI.Command();
                 command.Create(PG.ShapeSelectLabels.CommandNameLabel);
-                command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
+                command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, objectId.parentId);
                 command.Execute(model);
                 Canvas3d.Instance.Update(MainModel.Instance.World);
                 Canvas3d.Instance.Render();

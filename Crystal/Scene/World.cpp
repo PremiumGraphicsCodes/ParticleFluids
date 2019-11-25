@@ -40,6 +40,7 @@ void World::init()
 void World::clear()
 {
 	objects.clear();
+	items.clear();
 	//shaders.clear();
 }
 

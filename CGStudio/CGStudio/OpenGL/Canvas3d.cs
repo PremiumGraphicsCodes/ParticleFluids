@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Forms.Integration;
 using HwndExtensions.Host;
 using PG.Core.Math;
+using PG.Core;
 
 namespace PG.CGStudio
 {
@@ -167,6 +168,19 @@ namespace PG.CGStudio
                 if (host != null)
                     host.Dispose();
             }
+        }
+
+        public ObjectId GetObjectId(Vector2d position)
+        {
+            var model = MainModel.Instance;
+            Canvas3d.Instance.Renderer.Bind();
+            var command = new PG.CLI.Command(PG.PickLabels.PickCommandLabel);
+            command.SetArg(PG.PickLabels.PositionLabel, new Vector2d(position.X, 1.0 - position.Y));
+            command.Execute(model.World.Adapter);
+            var parentId = command.GetResult<int>(PG.PickLabels.ParentIdLabel);
+            var childId = command.GetResult<int>(PG.PickLabels.ChildIdLabel);
+            Canvas3d.Instance.Renderer.UnBind();
+            return new ObjectId(parentId, childId);
         }
     }
 }
