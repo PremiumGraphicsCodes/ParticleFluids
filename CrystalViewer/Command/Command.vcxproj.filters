@@ -134,6 +134,9 @@
     <ClInclude Include="DeleteCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Public\DeleteLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

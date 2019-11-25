@@ -247,6 +247,9 @@
     <ClCompile Include="IWFAddView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
+    <ClCompile Include="DeleteView.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -548,6 +551,9 @@
     </ClInclude>
     <ClInclude Include="glfw3.h">
       <Filter>ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteView.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,17 +1,21 @@
 #include "DeleteCommand.h"
 
+#include "Public/DeleteLabels.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 std::string DeleteCommand::getName()
 {
-	return "DeleteCommand";
+	return DeleteLabels::CommandNameLabel;
 }
 
 DeleteCommand::Args::Args() :
-	sceneId("SceneId", -1)
+	id(DeleteLabels::IdLabel, -1),
+	isItem(DeleteLabels::IsItemLabel, false)
 {
-	add(&sceneId);
+	add(&id);
+	add(&isItem);
 }
 
 DeleteCommand::DeleteCommand() :
@@ -20,9 +24,18 @@ DeleteCommand::DeleteCommand() :
 
 void DeleteCommand::execute(World* world)
 {
-	auto scene = world->getObjects()->findSceneById(args.sceneId.getValue());
-	if (scene == nullptr) {
-		return;
+	if (args.isItem.getValue()) {
+		auto scene = world->getItems()->findSceneById(args.id.getValue());
+		if (scene == nullptr) {
+			return;
+		}
+		world->getItems()->deleteSceneById(args.id.getValue());
 	}
-	world->getObjects()->deleteSceneById(args.sceneId.getValue());
+	else {
+		auto scene = world->getObjects()->findSceneById(args.id.getValue());
+		if (scene == nullptr) {
+			return;
+		}
+		world->getObjects()->deleteSceneById(args.id.getValue());
+	}
 }

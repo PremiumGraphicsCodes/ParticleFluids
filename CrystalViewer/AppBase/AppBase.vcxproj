@@ -30,6 +30,7 @@
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="Cylinder3dView.cpp" />
+    <ClCompile Include="DeleteView.cpp" />
     <ClCompile Include="Double4View.cpp" />
     <ClCompile Include="DoubleView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
@@ -108,6 +109,7 @@
     <ClInclude Include="AppearanceMenu.h" />
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="DeleteView.h" />
     <ClInclude Include="Double4View.h" />
     <ClInclude Include="glfw3.h" />
     <ClInclude Include="IOkCancelView.h" />

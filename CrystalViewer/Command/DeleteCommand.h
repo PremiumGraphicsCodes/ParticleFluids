@@ -12,7 +12,8 @@ public:
 	{
 		Args();
 
-		Arg<int> sceneId;
+		Arg<int> id;
+		Arg<bool> isItem;
 	};
 
 	static std::string getName();

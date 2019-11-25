@@ -25,6 +25,8 @@
 #include "TransformView.h"
 #include "RotateView.h"
 
+#include "DeleteView.h"
+
 using namespace Crystal::UI;
 
 void ShapeMenu::onShow()
@@ -100,6 +102,14 @@ void ShapeMenu::onShow()
 			}
 
 			ImGui::EndMenu();
+		}
+
+		if (ImGui::BeginMenu("Global")) {
+			if (ImGui::MenuItem("Delete")) {
+				control->setWindow(new DeleteView("Delete", getModel(), canvas));
+			}
+			ImGui::EndMenu();
+
 		}
 
 
