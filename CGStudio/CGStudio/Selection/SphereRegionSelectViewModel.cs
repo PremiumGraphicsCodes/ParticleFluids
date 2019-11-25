@@ -44,14 +44,14 @@ namespace PG.CGStudio.Selection
 
             var sphere = new Sphere3d(Radius.Value, position);
             var builder = new WireFrameBuilder();
-            builder.Build(sphere, 24, 24);
+            builder.Add(sphere, 24, 24);
             var appearance = new WireAppearance
             {
                 Width = 1.0f,
                 Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f)
             };
 
-            MainModel.Instance.World.Items.AddWireFrameScene(builder.WireFrame, "Item",appearance);
+            MainModel.Instance.World.Items.AddWireFrameScene(builder.Build(), "Item",appearance);
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();

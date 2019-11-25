@@ -12,7 +12,7 @@ namespace PG.Core.Shape
         {
         }
 
-        public void Build(Cylinder3d cylinder, int udiv)
+        public void Add(Cylinder3d cylinder, int udiv)
         {
             // create side.
             var topCenter = CreatePosition( cylinder.GetPosition(0.0, 0.0, 1.0) );
@@ -50,7 +50,7 @@ namespace PG.Core.Shape
             }
         }
 
-        public void Build(ISurface3d surface, int udiv, int vdiv)
+        public void Add(ISurface3d surface, int udiv, int vdiv)
         {
             var vertices = new int[udiv+1, vdiv+1];
             for (int i = 0; i <= udiv; ++i)
@@ -72,7 +72,7 @@ namespace PG.Core.Shape
             }
         }
 
-        public void Build(Box3d box)
+        public void Add(Box3d box)
         {
             var vertices = new int[8];
             vertices[0] = CreatePosition(box.GetPosition(0.0, 0.0, 0.0));
@@ -105,12 +105,15 @@ namespace PG.Core.Shape
             edges.Add(new WireFrameEdge(originId, destId));
         }
 
-        public int CreatePosition(Vector3d position)
+        private int CreatePosition(Vector3d position)
         {
             positions.Add(position);
             return positions.Count - 1;
         }
 
-        public WireFrame WireFrame { get { return new WireFrame(positions, edges); } }
+        public WireFrame Build()
+        {
+            return new WireFrame(positions, edges);
+        }
     }
 }

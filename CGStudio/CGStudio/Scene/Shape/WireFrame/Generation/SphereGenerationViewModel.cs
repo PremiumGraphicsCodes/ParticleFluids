@@ -30,8 +30,8 @@ namespace PG.CGStudio.Generation.WireFrame
         private void OnExecute()
         {
             var builder = new WireFrameBuilder();
-            builder.Build(SphereViewModel.Value, UNum.Value, VNum.Value);
-            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.WireFrame, "WFSphere", AppearanceViewModel.Value);
+            builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);
+            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.Build(), "WFSphere", AppearanceViewModel.Value);
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
         }

@@ -13,7 +13,7 @@ namespace PGCoreTest.Shape
         {
             var builder = new WireFrameBuilder();
             var sphere = new Sphere3d(1.0, new Vector3d(0,0,0));
-            builder.Build(sphere, 10, 10);
+            builder.Add(sphere, 10, 10);
             var actual = builder.WireFrame;
 //            Assert.AreEqual()
         }

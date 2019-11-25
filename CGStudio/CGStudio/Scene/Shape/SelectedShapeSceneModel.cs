@@ -15,6 +15,7 @@ namespace PG.CGStudio.Scene.Shape
         {
             this.id = id;
             CreateBoundingBoxItem();
+            CreateAxes();
         }
 
         private void CreateBoundingBoxItem()
@@ -22,11 +23,24 @@ namespace PG.CGStudio.Scene.Shape
             var world = MainModel.Instance.World;
             var bb = PG.CLI.Command.Get<Box3d>(world.Adapter, PG.GetLabels.BoundingBoxLabel, id);
             var builder = new WireFrameBuilder();
-            builder.Build(bb);
-            var appearance = new WireAppearance();
-            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
-            appearance.Width = 1.0f;
-            this.boundingBoxItemId = MainModel.Instance.World.Items.AddWireFrameScene(builder.WireFrame, "", appearance);
+            builder.Add(bb);
+            var appearance = new WireAppearance
+            {
+                Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f),
+                Width = 1.0f
+            };
+            this.boundingBoxItemId = world.Items.AddWireFrameScene(builder.Build(), "", appearance);
+        }
+
+        private void CreateAxes()
+        {
+            /*
+            var world = MainModel.Instance.World;
+            var bb = PG.CLI.Command.Get<Box3d>(world.Adapter, PG.GetLabels.BoundingBoxLabel, id);
+            var xwire = new Core.Shape.WireFrame()
+            world.Items.AddWireFrameScene()
+            */
+
         }
 
         private int id;

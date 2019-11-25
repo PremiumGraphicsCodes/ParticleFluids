@@ -47,14 +47,14 @@ namespace PG.CGStudio.Selection
 
             var box = new Box3d(pickedPositions);
             var builder = new WireFrameBuilder();
-            builder.Build(box);
+            builder.Add(box);
             var appearance = new WireAppearance
             {
                 Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f),
                 Width = 1.0f
             };
 
-            MainModel.Instance.World.Items.AddWireFrameScene(builder.WireFrame, "", appearance);
+            MainModel.Instance.World.Items.AddWireFrameScene(builder.Build(), "", appearance);
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
