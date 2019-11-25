@@ -29,7 +29,11 @@ ShapeSelectCommand::Results::Results() :
 
 void ShapeSelectCommand::execute(World* scene)
 {
-	auto shape = scene->getObjects()->findSceneById<IShapeScene*>(args.shapeId.getValue());
+	const auto shapeId = args.shapeId.getValue();
+	if (shapeId == 0) {
+		return;
+	}
+	auto shape = scene->getObjects()->findSceneById<IShapeScene*>(shapeId);
 	if (shape == nullptr) {
 		return;
 	}

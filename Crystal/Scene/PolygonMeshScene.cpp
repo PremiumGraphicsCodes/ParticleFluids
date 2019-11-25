@@ -17,65 +17,27 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 		return;
 	}
 
-	{
-		const auto& faces = shape->getFaces();
-		const auto& vertices = shape->getVertices();
-		const auto& ps = shape->getPositions();
-		const auto& ns = shape->getNormals();
-		const auto& tcs = shape->getTexCoords();
+	const auto& faces = shape->getFaces();
+	const auto& vertices = shape->getVertices();
+	const auto& ps = shape->getPositions();
+	const auto& ns = shape->getNormals();
+	const auto& tcs = shape->getTexCoords();
 
-		SmoothTriangleBuffer buffer;
-		for (const auto& f : faces) {
-			const auto& vIds = f.getVertexIds();
-			for(const auto vId : vIds) {
-				const auto& v = vertices[vId];
-				const auto& p = ps[v.positionId];
-				const auto& n = ns[v.normalId];
-				Math::Vector2df texCoord(0, 0);
-				if (v.texCoordId != -1) {
-					texCoord = tcs[v.texCoordId];
-				}
-				buffer.addVertex(p, n, texCoord, f.materialId);
+	SmoothTriangleBuffer buffer;
+	for (const auto& f : faces) {
+		const auto& vIds = f.getVertexIds();
+		for(const auto vId : vIds) {
+			const auto& v = vertices[vId];
+			const auto& p = ps[v.positionId];
+			const auto& n = ns[v.normalId];
+			Math::Vector2df texCoord(0, 0);
+			if (v.texCoordId != -1) {
+				texCoord = tcs[v.texCoordId];
 			}
+			buffer.addVertex(p, n, texCoord, f.materialId);
 		}
-		viewModel.triangleBuffers.push_back(buffer);
 	}
-	if (isSelected()) {
-		LineBuffer buffer(10.0f);
-		const auto& faces = shape->getFaces();
-		const auto& ps = shape->getPositions();
-		const auto& vertices = shape->getVertices();
-
-		std::vector<Line3dd> lines;
-		for (const auto& f : faces) {
-			const auto& vIds = f.getVertexIds();
-			{
-				const auto& start = ps[vertices[vIds[0]].positionId];
-				const auto& end = ps[vertices[vIds[1]].positionId];
-				lines.push_back(Line3dd(start, end - start));
-			}
-			{
-				const auto& start = ps[vertices[vIds[1]].positionId];
-				const auto& end = ps[vertices[vIds[2]].positionId];
-				lines.push_back(Line3dd(start, end - start));
-			}
-			{
-				const auto& start = ps[vertices[vIds[2]].positionId];
-				const auto& end = ps[vertices[vIds[0]].positionId];
-				lines.push_back(Line3dd(start, end - start));
-			}
-
-		}
-		int index = 0;
-		for (const auto& l : lines) {
-			buffer.addVertex(l.getStart(), ColorRGBAf(1, 0, 0, 0));
-			buffer.addVertex(l.getEnd(), ColorRGBAf(1, 0, 0, 0));
-			buffer.addIndex(index++);
-			buffer.addIndex(index++);
-		}
-
-		viewModel.lineBuffers.push_back(buffer);
-	}
+	viewModel.triangleBuffers.push_back(buffer);
 }
 
 void PolygonMeshScene::toIdViewModel(SceneIdViewModel& viewModel) const

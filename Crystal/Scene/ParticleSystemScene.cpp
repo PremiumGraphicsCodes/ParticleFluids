@@ -17,20 +17,11 @@ void ParticleSystemScene::toViewModel(SceneViewModel& viewModel) const
 		return;
 	}
 	const auto& particles = getShape()->getParticles();
-	if(!isSelected()) {
-		PointBuffer pointBuffer;
-		for (auto p : particles) {
-			pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
-		}
-		viewModel.pointBuffers.push_back(pointBuffer);
+	PointBuffer pointBuffer;
+	for (auto p : particles) {
+		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
-	else {
-		PointBuffer pointBuffer;
-		for (auto p : particles) {
-			pointBuffer.add(p->getPosition(), ColorRGBAf(1, 0, 0, 0), p->getAttribute().size * 2.0f);
-		}
-		viewModel.pointBuffers.push_back(pointBuffer);
-	}
+	viewModel.pointBuffers.push_back(pointBuffer);
 }
 
 void ParticleSystemScene::toIdViewModel(SceneIdViewModel& viewModel) const

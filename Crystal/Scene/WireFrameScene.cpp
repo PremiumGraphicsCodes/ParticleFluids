@@ -51,30 +51,15 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 	const auto& edges = shape->getEdges();
 
 	const auto& color = getAttribute().color;
-	if(!isSelected())
-	{
-		LineBuffer buffer(getAttribute().width);
-		for (const auto& l : positions) {
-			buffer.addVertex(l, color);
-		}
-		for(const auto& e : edges) {
-			buffer.addIndex(e.originId);
-			buffer.addIndex(e.destId);
-		}
-		viewModel.lineBuffers.push_back(buffer);
+	LineBuffer buffer(getAttribute().width);
+	for (const auto& l : positions) {
+		buffer.addVertex(l, color);
 	}
-	else
-	{
-		LineBuffer buffer(getAttribute().width * 10.0f);
-		for (const auto& l : positions) {
-			buffer.addVertex(l, ColorRGBAf(1, 0, 0, 0));
-		}
-		for (const auto& e : edges) {
-			buffer.addIndex(e.originId);
-			buffer.addIndex(e.destId);
-		}
-		viewModel.lineBuffers.push_back(buffer);
+	for(const auto& e : edges) {
+		buffer.addIndex(e.originId);
+		buffer.addIndex(e.destId);
 	}
+	viewModel.lineBuffers.push_back(buffer);
 }
 
 void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
