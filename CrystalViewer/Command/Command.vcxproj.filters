@@ -128,6 +128,9 @@
     <ClInclude Include="ShapeSelectCommand.h">
       <Filter>Scene\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="Public\ShapeSelectLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

@@ -1,6 +1,9 @@
 #include "ShapeSelectCommand.h"
 #include "../../Crystal/Scene/IShapeScene.h"
 #include "../../Crystal/Shape/WireFrameBuilder.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
+
+#include "Public/ShapeSelectLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -9,17 +12,19 @@ using namespace Crystal::Command;
 
 std::string ShapeSelectCommand::getName()
 {
-	return "ShapeSelectCommand";
+	return ShapeSelectLabels::CommandNameLabel;
 }
 
 ShapeSelectCommand::Args::Args() :
-	shapeId("ShapeId", -1)
+	shapeId(ShapeSelectLabels::ShapeIdLabel, -1)
 {
+	add(&shapeId);
 }
 
 ShapeSelectCommand::Results::Results() :
-	boundingBoxItemId("BoundingBoxItemId", -1)
+	boundingBoxItemId(ShapeSelectLabels::BoundingBoxItemIdLabel, -1)
 {
+	add(&boundingBoxItemId);
 }
 
 void ShapeSelectCommand::execute(World* scene)
@@ -29,13 +34,16 @@ void ShapeSelectCommand::execute(World* scene)
 		return;
 	}
 	auto isSelected = shape->isSelected();
-	if (isSelected) {
+	if (!isSelected) {
 		Box3d bb;
 		shape->getBoundingBox(bb);
 		WireFrameBuilder builder;
 		builder.build(bb);
-//		scene->getItemFactory()->createWireFrameScene()
-
+		WireFrameAttribute attribute;
+		attribute.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+		attribute.width = 1.0f;
+		auto shape = scene->getItemFactory()->createWireFrameScene(builder.createWireFrame(),attribute,"BoundingBox");
+		scene->getItems()->addScene(shape);
 		shape->setSelected(true);
 	}
 }

@@ -7,6 +7,8 @@
 #include "../Math/Cone3d.h"
 #include "../Math/Cylinder3d.h"
 
+#include "WireFrame.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
@@ -91,4 +93,9 @@ int WireFrameBuilder::createPosition(const Vector3dd& v)
 {
 	positions.push_back(v);
 	return static_cast<int>(positions.size() - 1);
+}
+
+WireFrame* WireFrameBuilder::createWireFrame()
+{
+	return new WireFrame(positions, edges);
 }

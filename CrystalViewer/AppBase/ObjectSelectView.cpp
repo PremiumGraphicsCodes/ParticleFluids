@@ -4,8 +4,12 @@
 #include "PickUICtrl.h"
 #include "CameraUICtrl.h"
 
+#include "../Command/Public/ShapeSelectLabels.h"
+#include "../Command/Command.h"
+
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
+using namespace Crystal::Command;
 
 ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas* canvas) :
 	ObjectSelectView(name, model, canvas, Scene::SceneType::All)
@@ -21,7 +25,12 @@ ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas
 	pickButton.setFunction([=] {
 		auto ctrl = new PickUICtrl(model, canvas, type);
 		auto func = [=](int parentId, int childId) {
-			model->getObjects()->findSceneById(parentId)->setSelected(true);
+			Command::Command command(ShapeSelectLabels::CommandNameLabel);
+			command.setArg(ShapeSelectLabels::ShapeIdLabel, parentId);
+			command.execute(model);
+
+			//model->getObjects()->findSceneById(parentId)->setSelected(true);
+
 			model->updateViewModel();
 			return this->idView.setValue(parentId);
 		};

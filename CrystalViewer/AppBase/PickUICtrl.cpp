@@ -2,6 +2,7 @@
 
 #include "../../Crystal/Scene/World.h"
 #include "../Command/Command.h"
+#include "../Command/Public/PickLabels.h"
 
 #include <iostream>
 
@@ -27,11 +28,11 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 
 	std::cout << x << " " << y << std::endl;
 
-	Crystal::Command::Command command("PickCommand");
-	command.setArg("Position", Vector2dd(position));
+	Crystal::Command::Command command(PickLabels::PickCommandLabel);
+	command.setArg(PickLabels::PositionLabel, Vector2dd(position));
 	command.execute(model);
-	const auto parentId = std::any_cast<int>( command.getResult("ParentId") );
-	const auto childId = std::any_cast<int>(command.getResult("ChildId"));
+	const auto parentId = std::any_cast<int>( command.getResult(PickLabels::ParentIdLabel) );
+	const auto childId = std::any_cast<int>(command.getResult(PickLabels::ChildIdLabel));
 
 	auto object = model->getObjects()->findSceneById(parentId);
 	if (object != nullptr) {
