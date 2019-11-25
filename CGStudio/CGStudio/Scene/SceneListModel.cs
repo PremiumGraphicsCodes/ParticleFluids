@@ -1,6 +1,7 @@
 ﻿using PG.Core;
 using PG.Core.Math;
 using PG.Core.Shape;
+using PG.Core.UI;
 using Reactive.Bindings;
 using System.Collections.Generic;
 
@@ -136,13 +137,17 @@ namespace PG.CGStudio.Scene
 
         public int Select(int id)
         {
-            var command = new PG.CLI.Command();
-            command.Create(PG.ShapeSelectLabels.CommandNameLabel);
-            command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, id);
-            command.Execute(adapter);
+            var bb = PG.CLI.Command.Get<Box3d>(this.adapter, PG.GetLabels.BoundingBoxLabel, id);
+            var builder = new WireFrameBuilder();
+            builder.Build(bb);
+            var appearance = new WireAppearance();
+            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
+            appearance.Width = 1.0f;
+            var wireId = MainModel.Instance.World.Items.AddWireFrameScene(builder.WireFrame, "BB", appearance);
+            selectedIds.Add(id);
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
-            return command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
+            return wireId;
         }
 
         public void Sync()

@@ -45,7 +45,9 @@ namespace PG {
 		public const string SceneListIdsLabel = "SceneListIds";
 		public const string IsVisibleLabel = "IsVisible";
 		public const string NameLabel = "Name";
+		public const string SceneTypeLabel = "SceneType";
 		public const string SceneTypeIdLabel = "SceneTypeId";
+		public const string BoundingBoxLabel = "BoundingBox";
 	}
 
 	public class LightCreateLabels
