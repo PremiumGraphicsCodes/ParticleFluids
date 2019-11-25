@@ -28,7 +28,7 @@
             this.center = center;
         }
 
-        public Vector2d GetPosition(double u, double v)
+        public Vector2d GetPosition(double u)
         {
             var angle = u * 2.0 * System.Math.PI;
             var x = radius * System.Math.Cos(angle);

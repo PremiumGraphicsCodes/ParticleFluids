@@ -167,6 +167,7 @@
       <DependentUpon>PolygonMeshEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditViewModel.cs" />
+    <Compile Include="Scene\Shape\SelectedShapeSceneModel.cs" />
     <Compile Include="Scene\Shape\Transform\Rotate\RotateUICtrl.cs" />
     <Compile Include="Scene\Shape\Transform\Rotate\RotateView.xaml.cs">
       <DependentUpon>RotateView.xaml</DependentUpon>

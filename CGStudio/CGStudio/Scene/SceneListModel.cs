@@ -1,4 +1,5 @@
-﻿using PG.Core;
+﻿using PG.CGStudio.Scene.Shape;
+using PG.Core;
 using PG.Core.Math;
 using PG.Core.Shape;
 using PG.Core.UI;
@@ -13,7 +14,7 @@ namespace PG.CGStudio.Scene
 
         public ReactiveCollection<SceneModel> Scenes;
 
-        private List<int> selectedIds = new List<int>();
+        private List<SelectedShapeSceneModel> selectedShapes = new List<SelectedShapeSceneModel>();
 
         public SceneListModel(PG.CLI.WorldAdapter adapter)
         {
@@ -135,19 +136,11 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
-        public int Select(int id)
+        public void Select(int id)
         {
-            var bb = PG.CLI.Command.Get<Box3d>(this.adapter, PG.GetLabels.BoundingBoxLabel, id);
-            var builder = new WireFrameBuilder();
-            builder.Build(bb);
-            var appearance = new WireAppearance();
-            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
-            appearance.Width = 1.0f;
-            var wireId = MainModel.Instance.World.Items.AddWireFrameScene(builder.WireFrame, "BB", appearance);
-            selectedIds.Add(id);
+            selectedShapes.Add(new SelectedShapeSceneModel(id));
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
-            return wireId;
         }
 
         public void Sync()
