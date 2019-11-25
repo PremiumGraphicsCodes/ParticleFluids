@@ -166,6 +166,7 @@
     <ClInclude Include="PolygonMesh.h" />
     <ClInclude Include="PolygonMeshBuilder.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="WireFrame.h" />
     <ClInclude Include="WireFrameBuilder.h" />
     <ClInclude Include="WireFrameEdge.h" />
   </ItemGroup>
@@ -173,6 +174,7 @@
     <ClCompile Include="Face.cpp" />
     <ClCompile Include="PolygonMesh.cpp" />
     <ClCompile Include="PolygonMeshBuilder.cpp" />
+    <ClCompile Include="WireFrame.cpp" />
     <ClCompile Include="WireFrameBuilder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
