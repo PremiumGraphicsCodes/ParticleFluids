@@ -12,6 +12,13 @@ namespace PG.Core.Shape
         {
         }
 
+        public void Add(Line3d line)
+        {
+            var v1 = CreatePosition(line.GetPosition(0.0));
+            var v2 = CreatePosition(line.GetPosition(1.0));
+            CreateEdge(v1, v2);
+        }
+
         public void Add(Cylinder3d cylinder, int udiv)
         {
             // create side.

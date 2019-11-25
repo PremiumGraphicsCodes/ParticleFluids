@@ -29,7 +29,7 @@
 
         public Vector3d GetPosition(double u)
         {
-            var dir = Dir.Normalized;
+            var dir = Dir;//.Normalized;
             return start + dir * u;
         }
     }
