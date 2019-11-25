@@ -125,6 +125,9 @@
     <ClInclude Include="Public\TextureCreateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="ShapeSelectCommand.h">
+      <Filter>Scene\Shape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -206,6 +209,9 @@
     </ClCompile>
     <ClCompile Include="TextureCreateCommand.cpp">
       <Filter>Scene\Appearance\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeSelectCommand.cpp">
+      <Filter>Scene\Shape</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

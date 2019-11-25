@@ -195,6 +195,7 @@
     <ClInclude Include="RotateCommand.h" />
     <ClInclude Include="ScaleCommand.h" />
     <ClInclude Include="SetCommand.h" />
+    <ClInclude Include="ShapeSelectCommand.h" />
     <ClInclude Include="STLFileExportCommand.h" />
     <ClInclude Include="STLFileImportCommand.h" />
     <ClInclude Include="TransformCommand.h" />
@@ -227,6 +228,7 @@
     <ClCompile Include="RotateCommand.cpp" />
     <ClCompile Include="ScaleCommand.cpp" />
     <ClCompile Include="SetCommand.cpp" />
+    <ClCompile Include="ShapeSelectCommand.cpp" />
     <ClCompile Include="STLFileExportCommand.cpp" />
     <ClCompile Include="STLFileImportCommand.cpp" />
     <ClCompile Include="TextureCreateCommand.cpp" />
