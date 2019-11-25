@@ -10,7 +10,10 @@
 #include "TransformScene.h"
 #include "FaceGroupScene.h"
 
+#include "../Shape/WireFrame.h"
+
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
@@ -60,9 +63,9 @@ ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<V
 	return new ParticleSystemScene(getNextId(), name, particles);
 }
 
-WireFrameScene* SceneFactory::createWireFrameScene(const std::vector<Vector3dd>& positions, const std::vector<WireFrameEdge>& edges, const WireFrameAttribute& attribute, const std::string& name)
+WireFrameScene* SceneFactory::createWireFrameScene(WireFrame* shape, const WireFrameAttribute& attribute, const std::string& name)
 {
-	return new WireFrameScene(getNextId(), name, positions, edges, attribute);
+	return new WireFrameScene(getNextId(), name, shape, attribute);
 }
 
 PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh,  const std::string& name)

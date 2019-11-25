@@ -13,20 +13,21 @@ namespace Crystal {
 	namespace Shader {
 		class ShaderObject;
 	}
+	namespace Shape {
+	}
 	namespace Scene {
 		class Scene;
 		class IRenderer;
 		class CameraScene;
 		class ParticleSystemScene;
 		struct ParticleAttribute;
-		class WireFrameEdge;
 		class WireFrameScene;
 		struct WireFrameAttribute;
 		class PolygonMeshScene;
 		class FaceGroupScene;
 		class TransformScene;
-		class WireFrame;
 		class PolygonMesh;
+		class WireFrame;
 
 
 class SceneFactory
@@ -46,7 +47,7 @@ public:
 
 	ParticleSystemScene* createParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
-	WireFrameScene* createWireFrameScene(const std::vector<Math::Vector3dd>& positions, const std::vector<WireFrameEdge>& edges, const WireFrameAttribute& attribute, const std::string& name);
+	WireFrameScene* createWireFrameScene(WireFrame* shape, const WireFrameAttribute& attribute, const std::string& name);
 
 	PolygonMeshScene* createPolygonMeshScene(PolygonMesh* mesh, const std::string& name);
 

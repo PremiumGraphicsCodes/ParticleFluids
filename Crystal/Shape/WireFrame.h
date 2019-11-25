@@ -32,6 +32,10 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
+	std::vector<Math::Vector3dd> getPositions() const { return positions; }
+
+	std::vector<WireFrameEdge> getEdges() const { return edges; }
+
 private:
 	std::vector<Math::Vector3dd> positions;
 	std::vector<WireFrameEdge> edges;

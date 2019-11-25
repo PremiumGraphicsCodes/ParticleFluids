@@ -4,7 +4,7 @@
 #include "WireFrameAttribute.h"
 
 #include "../Math/Line3d.h"
-#include "../Shape/WireFrameEdge.h"
+#include "../Shape/WireFrame.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -17,10 +17,9 @@ public:
 		IShapeScene(-1)
 	{}
 
-	WireFrameScene(const int id, const std::string& name, const std::vector<Math::Vector3dd>& positions, const std::vector<WireFrameEdge>& edges, const WireFrameAttribute& attribute) :
+	WireFrameScene(const int id, const std::string& name, WireFrame* shape, const WireFrameAttribute& attribute) :
 		IShapeScene(id, name),
-		positions(positions),
-		edges(edges),
+		shape(shape),
 		attribute(attribute)
 	{}
 
@@ -37,8 +36,7 @@ public:
 	SceneType getType() const override { return SceneType::WireFrameScene; }
 
 	void onClear() override {
-		positions.clear();
-		edges.clear();
+		delete shape;
 	}
 
 	Math::Box3d getBoundingBox() const;
@@ -56,8 +54,7 @@ public:
 	IShapeScene* clone() const override;
 
 private:
-	std::vector<Math::Vector3dd> positions;
-	std::vector<WireFrameEdge> edges;
+	WireFrame* shape;
 	WireFrameAttribute attribute;
 };
 
