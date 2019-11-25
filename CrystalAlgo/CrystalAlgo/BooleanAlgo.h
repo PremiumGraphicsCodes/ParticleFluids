@@ -2,7 +2,7 @@
 
 
 namespace Crystal {
-	namespace Scene {
+	namespace Shape {
 		class PolygonMesh;
 	}
 	namespace Algo {
@@ -10,16 +10,16 @@ namespace Crystal {
 class BooleanAlgo
 {
 public:
-	void calculateUnion(const Scene::PolygonMesh& lhs, const Scene::PolygonMesh& rhs);
+	void calculateUnion(const Shape::PolygonMesh& lhs, const Shape::PolygonMesh& rhs);
 
-	void calculateDifference(const Scene::PolygonMesh& lhs, const Scene::PolygonMesh& rhs);
+	void calculateDifference(const Shape::PolygonMesh& lhs, const Shape::PolygonMesh& rhs);
 
-	void calculateIntersection(const Scene::PolygonMesh& lhs, const Scene::PolygonMesh& rhs);
+	void calculateIntersection(const Shape::PolygonMesh& lhs, const Shape::PolygonMesh& rhs);
 
-	Scene::PolygonMesh* getResult() { return result; }
+	Shape::PolygonMesh* getResult() { return result; }
 
 private:
-	Scene::PolygonMesh* result;
+	Shape::PolygonMesh* result;
 };
 	}
 }

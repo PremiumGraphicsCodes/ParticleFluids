@@ -2,11 +2,12 @@
 
 #include "../CrystalAlgo/MarchingCubesAlgo.h"
 #include "../../Crystal/Scene/VolumeScene.h"
-#include "../../Crystal/Scene/PolygonMeshBuilder.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Math/Gaussian.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
 
@@ -78,6 +79,6 @@ void MarchingCubesView::onOk()
 		builder.add(t);
 	}
 	//builder.pushCurrentFaceGroup();
-	getWorld()->getObjectFactory()->createPolygonMeshScene(builder.getPolygonMesh(), "MarchingCubes");
+	//getWorld()->getObjectFactory()->createPolygonMeshScene(builder.(), "MarchingCubes");
 	getWorld()->updateViewModel();
 }

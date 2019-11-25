@@ -13,7 +13,7 @@
 //#include "../../Crystal/ThirdParty/glm-0.9.9.3/glm/gtx/intersect.hpp"
 
 using namespace Crystal::Math;
-using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 
 bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Sphere3d& sphere, const double tolerance)

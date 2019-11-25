@@ -11,7 +11,7 @@ namespace Crystal {
 		class Triangle3d;
 		class Quad3d;
 	}
-	namespace Scene {
+	namespace Shape {
 		class PolygonMesh;
 	}
 	namespace Algo {
@@ -55,7 +55,7 @@ public:
 
 	bool calculateIntersection(const Math::Triangle3d& lhs, const Math::Triangle3d& rhs, const double tolerance);
 
-	bool calculateIntersection(const Scene::PolygonMesh& lhs, const Scene::PolygonMesh& rhs, const double tolerance);
+	bool calculateIntersection(const Shape::PolygonMesh& lhs, const Shape::PolygonMesh& rhs, const double tolerance);
 
 	std::vector<Intersection> getIntersections() const { return intersections; }
 

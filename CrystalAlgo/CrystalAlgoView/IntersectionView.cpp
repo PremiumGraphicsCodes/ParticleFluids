@@ -1,10 +1,11 @@
 #include "IntersectionView.h"
 
 #include "../CrystalAlgo/IntersectionAlgo.h"
-#include "../../Crystal/Scene/WireFrameBuilder.h"
+#include "../../Crystal/Shape/WireFrameBuilder.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
+using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;

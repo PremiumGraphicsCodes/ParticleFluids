@@ -7,7 +7,7 @@
 #include "csgjs.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 
 namespace {
