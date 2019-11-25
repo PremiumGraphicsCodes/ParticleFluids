@@ -13,7 +13,7 @@ namespace Crystal {
 	namespace Shape {
 
 template<typename Attr>
-class ParticleSystem
+class ParticleSystem : public IShape
 {
 public:
 	ParticleSystem() {}

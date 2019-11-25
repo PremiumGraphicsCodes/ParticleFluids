@@ -37,17 +37,14 @@ void ShapeSelectCommand::execute(World* scene)
 	if (shape == nullptr) {
 		return;
 	}
-	auto isSelected = shape->isSelected();
-	if (!isSelected) {
-		Box3d bb;
-		shape->getBoundingBox(bb);
-		WireFrameBuilder builder;
-		builder.build(bb);
-		WireFrameAttribute attribute;
-		attribute.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-		attribute.width = 1.0f;
-		auto shape = scene->getItemFactory()->createWireFrameScene(builder.createWireFrame(),attribute,"BoundingBox");
-		scene->getItems()->addScene(shape);
-		shape->setSelected(true);
-	}
+	
+	Box3d bb;
+	shape->getBoundingBox(bb);
+	WireFrameBuilder builder;
+	builder.build(bb);
+	WireFrameAttribute attribute;
+	attribute.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+	attribute.width = 1.0f;
+	auto bbshape = scene->getItemFactory()->createWireFrameScene(builder.createWireFrame(),attribute,"BoundingBox");
+	scene->getItems()->addScene(bbshape);
 }

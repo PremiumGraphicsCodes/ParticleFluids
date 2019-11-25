@@ -50,10 +50,6 @@ public:
 
 	virtual SceneType getType() const = 0;
 
-	bool isSelected() const { return _isSelected; }
-
-	void setSelected(bool b) { this->_isSelected = b; }
-
 	void addScene(IScene* scene) {
 		scene->parent = this;
 		this->children.push_back(scene);
@@ -99,7 +95,6 @@ protected:
 protected:
 	std::string name;
 	int id;
-	bool _isSelected;
 	std::list<IScene*> children;
 	IScene* parent;
 };

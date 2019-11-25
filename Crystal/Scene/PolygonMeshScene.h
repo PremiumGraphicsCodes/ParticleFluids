@@ -14,12 +14,12 @@ class PolygonMeshScene : public IShapeScene
 {
 public:
 	PolygonMeshScene() :
-		IShapeScene(-1),
+		IShapeScene(-1, nullptr),
 		shape(nullptr)
 	{}
 
 	PolygonMeshScene(const int id, const std::string& name, Shape::PolygonMesh* shape) :
-		IShapeScene(id, name),
+		IShapeScene(id, name, shape),
 		shape(shape)
 	{}
 

@@ -11,5 +11,7 @@ namespace GetLabels
 	PublicLabel SceneListIdsLabel = "SceneListIds";
 	PublicLabel IsVisibleLabel = "IsVisible";
 	PublicLabel NameLabel = "Name";
+	PublicLabel SceneTypeLabel = "SceneType";
 	PublicLabel SceneTypeIdLabel = "SceneTypeId";
+	PublicLabel BoundingBoxLabel = "BoundingBox";
 }

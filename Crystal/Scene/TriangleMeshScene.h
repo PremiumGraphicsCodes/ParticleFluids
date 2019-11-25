@@ -10,11 +10,11 @@ class TriangleMeshScene : public IShapeScene
 {
 public:
 	explicit TriangleMeshScene(const int id)
-		: IShapeScene(id)
+		: IShapeScene(id, nullptr)
 	{}
 
 	TriangleMeshScene(const int id, const std::string& name) :
-		IShapeScene(id, name)
+		IShapeScene(id, name, nullptr)
 	{}
 
 	void translate(const Math::Vector3dd& v) override;

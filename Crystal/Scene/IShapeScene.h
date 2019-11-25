@@ -2,6 +2,8 @@
 
 #include "IScene.h"
 
+#include "../Shape/IShape.h"
+
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
 
@@ -11,12 +13,14 @@ namespace Crystal {
 class IShapeScene : public IScene
 {
 public:
-	explicit IShapeScene(const int id) :
-		IScene(id)
+	explicit IShapeScene(const int id, Shape::IShape* shape) :
+		IScene(id),
+		shape(shape)
 	{}
 
-	IShapeScene(const int id, const std::string& name) :
-		IScene(id, name)
+	IShapeScene(const int id, const std::string& name, Shape::IShape* shape) :
+		IScene(id, name),
+		shape(shape)
 	{}
 
 	virtual ~IShapeScene() {};
@@ -31,11 +35,16 @@ public:
 
 	virtual IShapeScene* clone() const = 0;
 
+	Shape::IShape* getShape() { return shape; }
+
+
 	/*
 	virtual Math::Box3d getBoundingBox() const = 0;
 
 	virtual std::list<Math::Vector3dd> getAllVertices() const = 0;
 	*/
+private:
+	Shape::IShape* shape;
 };
 	}
 }

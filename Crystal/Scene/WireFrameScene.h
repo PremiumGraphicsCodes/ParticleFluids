@@ -14,11 +14,11 @@ class WireFrameScene : public IShapeScene
 {
 public:
 	WireFrameScene() :
-		IShapeScene(-1)
+		IShapeScene(-1, nullptr)
 	{}
 
 	WireFrameScene(const int id, const std::string& name, Shape::WireFrame* shape, const WireFrameAttribute& attribute) :
-		IShapeScene(id, name),
+		IShapeScene(id, name, shape),
 		shape(shape),
 		attribute(attribute)
 	{}

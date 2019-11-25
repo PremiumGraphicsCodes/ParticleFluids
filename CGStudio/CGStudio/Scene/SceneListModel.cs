@@ -12,6 +12,8 @@ namespace PG.CGStudio.Scene
 
         public ReactiveCollection<SceneModel> Scenes;
 
+        private List<int> selectedIds = new List<int>();
+
         public SceneListModel(PG.CLI.WorldAdapter adapter)
         {
             this.adapter = adapter;

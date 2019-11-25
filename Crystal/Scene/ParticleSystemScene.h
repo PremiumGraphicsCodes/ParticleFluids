@@ -11,12 +11,12 @@ class ParticleSystemScene : public IShapeScene
 {
 public:
 	ParticleSystemScene() :
-		IShapeScene(-1),
+		IShapeScene(-1, nullptr),
 		shape(nullptr)
 	{}
 
 	ParticleSystemScene(const int id, const std::string& name, Shape::ParticleSystem<ParticleAttribute>* shape) :
-		IShapeScene(id, name),
+		IShapeScene(id, name, shape),
 		shape(shape)
 	{}
 
