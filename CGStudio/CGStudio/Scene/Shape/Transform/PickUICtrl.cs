@@ -33,16 +33,12 @@ namespace PG.CGStudio.UICtrl
         {
             var model = MainModel.Instance.World.Adapter;
 
-            Canvas3d.Instance.Renderer.Bind();
-            var command = new PG.CLI.Command(Labels.PickCommandLabel);
-            command.SetArg(Labels.PositionLabel, new Vector2d( position.X, 1.0 - position.Y) );
-            command.Execute(model);
-            var parentId = command.GetResult<int>(Labels.ParentIdLabel);
-            var childId = command.GetResult<int>(Labels.ChildIdLabel);
-            Canvas3d.Instance.Renderer.UnBind();
+            var pickedId = Canvas3d.Instance.GetObjectId(position);
+            var parentId = pickedId.parentId;
 
             if (parentId != 0)
             {
+                var command = new PG.CLI.Command();
                 command.Create(PG.ShapeSelectLabels.CommandNameLabel);
                 command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
                 command.Execute(model);
@@ -50,9 +46,6 @@ namespace PG.CGStudio.UICtrl
                 Canvas3d.Instance.Render();
 
 //                var selectedType = CLI.Command.Get(model, "SceneTypeId", parentId);// model.GetTypeById(id.parentId);
-                var pickedId = new ObjectId();
-                pickedId.parentId = parentId;
-                pickedId.childId = childId;
                 pickedIds.Add(pickedId);
 
                 if (action != null)

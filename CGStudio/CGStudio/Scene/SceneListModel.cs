@@ -132,6 +132,17 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
+        public int Select(int id)
+        {
+            var command = new PG.CLI.Command();
+            command.Create(PG.ShapeSelectLabels.CommandNameLabel);
+            command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, id);
+            command.Execute(adapter);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Render();
+            return command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
+        }
+
         public void Sync()
         {
             var ids = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel);

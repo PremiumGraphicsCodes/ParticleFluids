@@ -19,12 +19,7 @@ namespace PG.CGStudio.UICtrl
 
             if (objectId.parentId != 0)
             {
-                var command = new PG.CLI.Command();
-                command.Create(PG.ShapeSelectLabels.CommandNameLabel);
-                command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, objectId.parentId);
-                command.Execute(model);
-                Canvas3d.Instance.Update(MainModel.Instance.World);
-                Canvas3d.Instance.Render();
+                MainModel.Instance.World.Scenes.Select(objectId.parentId);
                 return;
             }
 
