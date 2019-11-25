@@ -3,8 +3,9 @@
 #include "../../Crystal/Shape/WireFrameBuilder.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Command;
 using namespace Crystal::Scene;
+using namespace Crystal::Shape;
+using namespace Crystal::Command;
 
 std::string ShapeSelectCommand::getName()
 {

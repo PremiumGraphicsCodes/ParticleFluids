@@ -7,6 +7,7 @@
 
 #include "Public/PolygonMeshCreateLabels.h"
 
+using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 

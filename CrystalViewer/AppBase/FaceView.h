@@ -8,7 +8,7 @@
 #include "VertexView.h"
 
 namespace Crystal {
-	namespace Scene {
+	namespace Shape {
 		class Face;
 	}
 	namespace UI {
@@ -18,11 +18,11 @@ class FaceView : public IWindow
 public:
 	explicit FaceView(const std::string& name);
 
-	FaceView(const std::string& name, const Scene::Face& value);
+	FaceView(const std::string& name, const Shape::Face& value);
 
 	void onShow() override;
 
-	void setValue(const Scene::Face& value);
+	void setValue(const Shape::Face& value);
 
 private:
 	IntView id;

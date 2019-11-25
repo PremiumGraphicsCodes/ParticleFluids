@@ -20,7 +20,7 @@ public:
 	}
 
 protected:
-	void addWireFrame(const std::vector<Math::Vector3dd>& positions, const std::vector<Scene::WireFrameEdge>& edges);
+	void addWireFrame(const std::vector<Math::Vector3dd>& positions, const std::vector<Shape::WireFrameEdge>& edges);
 
 private:
 	WFAttributeView attributeView;

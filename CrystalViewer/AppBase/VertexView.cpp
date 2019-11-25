@@ -3,7 +3,7 @@
 #include "../../Crystal/Shape/Face.h"
 #include "../../Crystal/Shape/Vertex.h"
 
-using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
 VertexView::VertexView(const std::string& name) :

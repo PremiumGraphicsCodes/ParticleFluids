@@ -1,5 +1,6 @@
 #include "PolygonMeshEditView.h"
 
+using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 

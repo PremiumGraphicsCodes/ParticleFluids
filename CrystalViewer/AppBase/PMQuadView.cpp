@@ -14,6 +14,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 using namespace Crystal::UI;
 using namespace Crystal::Command;
 

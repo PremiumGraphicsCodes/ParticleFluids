@@ -9,6 +9,7 @@
 
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;
+using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 

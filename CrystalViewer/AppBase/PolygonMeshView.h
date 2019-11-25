@@ -5,7 +5,7 @@
 #include "IntView.h"
 
 namespace Crystal {
-	namespace Scene {
+	namespace Shape {
 		class PolygonMesh;
 	}
 	namespace UI {
@@ -17,7 +17,7 @@ public:
 
 	void onShow() override;
 
-	void setValue(Scene::PolygonMesh* value);
+	void setValue(Shape::PolygonMesh* value);
 
 private:
 	IntView vertexCount;

@@ -24,8 +24,8 @@ public:
 		Arg< std::vector<Math::Vector3dd> > positions;
 		Arg< std::vector<Math::Vector3dd> > normals;
 		Arg< std::vector<Math::Vector2dd> > texCoords;
-		Arg< std::vector<Scene::Vertex > > vertices;
-		Arg< std::vector<Scene::Face > > faces;
+		Arg< std::vector<Shape::Vertex > > vertices;
+		Arg< std::vector<Shape::Face > > faces;
 		Arg< std::string > name;
 	};
 
