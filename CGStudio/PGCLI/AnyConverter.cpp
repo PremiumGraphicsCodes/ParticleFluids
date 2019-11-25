@@ -153,21 +153,21 @@ std::any AnyConverter::toCpp(System::Collections::Generic::IEnumerable<Object^>^
 		return std::any(dest);
 	}
 	else if (contentType == Core::Shape::Vertex::typeid) {
-		std::vector<Crystal::Scene::Vertex> dest;
+		std::vector<Crystal::Shape::Vertex> dest;
 		for each (Core::Shape::Vertex ^ s in values) {
 			dest.push_back(Converter::toCpp(s));
 		}
 		return std::any(dest);
 	}
 	else if (contentType == Core::Shape::PolygonFace::typeid) {
-		std::vector<Crystal::Scene::Face> dest;
+		std::vector<Crystal::Shape::Face> dest;
 		for each (Core::Shape::PolygonFace ^ s in values) {
 			dest.push_back(Converter::toCpp(s));
 		}
 		return std::any(dest);
 	}
 	else if (contentType == Core::Shape::WireFrameEdge::typeid) {
-		std::vector<Crystal::Scene::WireFrameEdge> dest;
+		std::vector<Crystal::Shape::WireFrameEdge> dest;
 		for each (Core::Shape::WireFrameEdge ^ s in values) {
 			dest.push_back(Converter::toCpp(s));
 		}

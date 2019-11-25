@@ -254,9 +254,9 @@ Crystal::Math::IVolume3d* PG::CLI::Converter::toCpp(PG::Core::Math::IVolume3d^ s
 	return nullptr;
 }
 
-Crystal::Scene::Vertex PG::CLI::Converter::toCpp(PG::Core::Shape::Vertex^ src)
+Crystal::Shape::Vertex PG::CLI::Converter::toCpp(PG::Core::Shape::Vertex^ src)
 {
-	Crystal::Scene::Vertex dest;
+	Crystal::Shape::Vertex dest;
 	dest.id = src->Id;
 	dest.positionId = src->PositionId;
 	dest.normalId = src->NormalId;
@@ -264,12 +264,12 @@ Crystal::Scene::Vertex PG::CLI::Converter::toCpp(PG::Core::Shape::Vertex^ src)
 	return dest;
 }
 
-Crystal::Scene::Face PG::CLI::Converter::toCpp(PG::Core::Shape::PolygonFace^ src)
+Crystal::Shape::Face PG::CLI::Converter::toCpp(PG::Core::Shape::PolygonFace^ src)
 {
-	return Crystal::Scene::Face(src->V0, src->V1, src->V2, src->Id);
+	return Crystal::Shape::Face(src->V0, src->V1, src->V2, src->Id);
 }
 
-Crystal::Scene::WireFrameEdge PG::CLI::Converter::toCpp(PG::Core::Shape::WireFrameEdge^ src)
+Crystal::Shape::WireFrameEdge PG::CLI::Converter::toCpp(PG::Core::Shape::WireFrameEdge^ src)
 {
-	return Crystal::Scene::WireFrameEdge(src->OriginId, src->DestId);
+	return Crystal::Shape::WireFrameEdge(src->OriginId, src->DestId);
 }
