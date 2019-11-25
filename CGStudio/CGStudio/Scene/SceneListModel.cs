@@ -143,6 +143,31 @@ namespace PG.CGStudio.Scene
             Canvas3d.Instance.Render();
         }
 
+        public bool IsSelected(int id)
+        {
+            foreach(var s in selectedShapes)
+            {
+                if(s.Id == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /*
+        public void UnSelect(int id)
+        {
+            foreach (var s in selectedShapes)
+            {
+                if (s.Id == id)
+                {
+                    s.RemoveItems();
+                }
+            }
+        }
+        */
+
         public void Sync()
         {
             var ids = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel);

@@ -59,6 +59,8 @@ public:
 
 	IScene* findSceneByName(const std::string& name);
 
+	void deleteSceneById(int id);
+
 	template<class T>
 	T findSceneById(int id) { return static_cast<T>( findSceneById(id) ); }
 

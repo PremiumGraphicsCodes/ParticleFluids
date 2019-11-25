@@ -131,6 +131,9 @@
     <ClInclude Include="Public\ShapeSelectLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="DeleteCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -215,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="ShapeSelectCommand.cpp">
       <Filter>Scene\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="DeleteCommand.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

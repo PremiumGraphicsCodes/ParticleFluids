@@ -17,6 +17,16 @@ namespace PG.CGStudio.Scene.Shape
             CreateAxesZ(bb);
         }
 
+        /*
+        public void ClearItems()
+        {
+            var world = MainModel.Instance.World;
+            world.Items.Remove(boundingBoxItemId);
+        }
+        */
+
+        public int Id { get { return id; } }
+
         private void CreateBoundingBoxItem(Box3d bb)
         {
             var world = MainModel.Instance.World;

@@ -35,6 +35,17 @@ IScene* IScene::findSceneById(int id)
 	return nullptr;
 }
 
+void IScene::deleteSceneById(int id)
+{	
+	for (auto c : children) {
+		if (c->getId() == id) {
+			children.remove(c);
+			delete c;
+			return;
+		}
+	}
+}
+
 IScene* IScene::findSceneByName(const std::string& name)
 {
 	if (name == this->name) {

@@ -159,6 +159,7 @@
     <ClInclude Include="CameraZoomCommand.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="DeleteCommand.h" />
     <ClInclude Include="FileExportCommand.h" />
     <ClInclude Include="FileImportCommand.h" />
     <ClInclude Include="GetCommand.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="CameraZoomCommand.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="DeleteCommand.cpp" />
     <ClCompile Include="FileExportCommand.cpp" />
     <ClCompile Include="FileImportCommand.cpp" />
     <ClCompile Include="GetCommand.cpp" />
