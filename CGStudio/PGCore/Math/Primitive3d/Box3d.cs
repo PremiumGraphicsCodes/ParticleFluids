@@ -39,7 +39,7 @@ namespace PG.Core.Math
         public Box3d(IEnumerable<Vector3d> positions) :
             this(positions.FirstOrDefault())
         {
-            foreach(var p in positions)
+            foreach (var p in positions)
             {
                 Add(p);
             }
@@ -68,6 +68,11 @@ namespace PG.Core.Math
         public Vector3d Length
         {
             get { return max - min; }
+        }
+
+        public Vector3d Center
+        {
+            get { return GetPosition(0.5, 0.5, 0.5); }
         }
 
         public Vector3d GetPosition(double u, double v, double w)

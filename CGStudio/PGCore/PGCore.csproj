@@ -91,6 +91,7 @@
     <Compile Include="Math\Matrix\Matrix2d.cs" />
     <Compile Include="Math\Matrix\Matrix3d.cs" />
     <Compile Include="Math\Matrix\Matrix4d.cs" />
+    <Compile Include="Math\Primitive3d\Quad3d.cs" />
     <Compile Include="Math\Quaternion.cs" />
     <Compile Include="Math\Primitive3d\Space3d.cs" />
     <Compile Include="Math\Primitive3d\Sphere3d.cs" />

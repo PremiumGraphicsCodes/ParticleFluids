@@ -31,6 +31,11 @@
             var y = vvec * System.Math.Sin(angle);
             return center + x + y;
         }
+
+        public Vector3d Normal()
+        {
+            return uvec.Normalized.Cross(vvec.Normalized);
+        }
     }
 }
 
