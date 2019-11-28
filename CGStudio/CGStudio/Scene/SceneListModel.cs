@@ -14,7 +14,9 @@ namespace PG.CGStudio.Scene
 
         public ReactiveCollection<SceneModel> Scenes;
 
-        private List<SelectedShapeSceneModel> selectedShapes = new List<SelectedShapeSceneModel>();
+        private readonly List<SelectedShapeSceneModel> selectedShapes = new List<SelectedShapeSceneModel>();
+
+        public IEnumerable<SelectedShapeSceneModel> SelectedShapes { get { return selectedShapes; } }
 
         public SceneListModel(PG.CLI.WorldAdapter adapter)
         {
@@ -173,20 +175,6 @@ namespace PG.CGStudio.Scene
             Sync();
         }
 
-
-
-        /*
-        public void UnSelect(int id)
-        {
-            foreach (var s in selectedShapes)
-            {
-                if (s.Id == id)
-                {
-                    s.RemoveItems();
-                }
-            }
-        }
-        */
 
         public void Sync()
         {

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PG.CGStudio"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Loaded="UserControl_Loaded">
         <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                    FontSize="50" Foreground="DarkRed" >
         </Label>

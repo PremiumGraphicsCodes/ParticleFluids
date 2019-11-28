@@ -73,8 +73,17 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnKeyDown(Key key)
         {
-            var model = MainModel.Instance.World;
-//            model.Scenes.SelectedIds;
+            if (key == Key.Delete)
+            {
+                var model = MainModel.Instance.World;
+                var selecteds = model.Scenes.SelectedShapes;
+                foreach (var shape in selecteds)
+                {
+                    model.Scenes.UnSelect(shape.Id);
+                    model.Scenes.Delete(shape.Id);
+                    return;
+                }
+            }
         }
     }
 }
