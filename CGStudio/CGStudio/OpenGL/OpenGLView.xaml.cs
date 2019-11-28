@@ -4,9 +4,9 @@ using System.Windows.Input;
 
 namespace PG.CGStudio
 {
-    public partial class OpenGLAdornment : System.Windows.Controls.UserControl
+    public partial class OpenGLView : System.Windows.Controls.UserControl
     {
-        public OpenGLAdornment()
+        public OpenGLView()
         {
             InitializeComponent();
 

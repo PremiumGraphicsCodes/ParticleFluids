@@ -131,7 +131,7 @@
                 <Grid Margin="0,0,0,0">
                     <local:Canvas3d>
                         <local:Canvas3d.Adornment>
-                            <local:OpenGLAdornment/>
+                            <local:OpenGLView/>
                         </local:Canvas3d.Adornment>
                     </local:Canvas3d>
                 </Grid>

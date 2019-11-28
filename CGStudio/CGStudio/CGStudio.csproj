@@ -232,8 +232,8 @@
       <DependentUpon>SceneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\SceneViewModel.cs" />
-    <Compile Include="OpenGL\OpenGLAdornment.xaml.cs">
-      <DependentUpon>OpenGLAdornment.xaml</DependentUpon>
+    <Compile Include="OpenGL\OpenGLView.xaml.cs">
+      <DependentUpon>OpenGLView.xaml</DependentUpon>
     </Compile>
     <Compile Include="OpenGL\Canvas3d.cs">
       <SubType>Component</SubType>
@@ -426,7 +426,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OpenGL\OpenGLAdornment.xaml">
+    <Page Include="OpenGL\OpenGLView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
