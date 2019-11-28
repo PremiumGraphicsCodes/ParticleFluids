@@ -27,7 +27,7 @@ namespace PG.Core.Shape
         {
         }
 
-        public PolygonMesh Build()
+        public PolygonMesh ToPolygonMesh()
         {
             var polygon = new PolygonMesh
             {
@@ -40,7 +40,7 @@ namespace PG.Core.Shape
             return polygon;
         }
 
-        public void Build(Box3d box)
+        public void Add(Box3d box)
         {
             var p0 = CreatePosition(box.GetPosition(0, 0, 0));
             var p1 = CreatePosition(box.GetPosition(1, 0, 0));
@@ -62,7 +62,7 @@ namespace PG.Core.Shape
 	        Add(p1, p5, p6, p2); // right
         }
 
-        public void Build(Sphere3d sphere, int u, int v)
+        public void Add(Sphere3d sphere, int u, int v)
         {
             var vertices = new int[u+1, v+1];
             for (int i = 0; i <= u; ++i)
@@ -92,7 +92,7 @@ namespace PG.Core.Shape
             }
         }
 
-        public void Build(Cylinder3d cylinder, int u)
+        public void Add(Cylinder3d cylinder, int u)
         {
             // create top
             var vertices = new int[u, 2];
@@ -172,32 +172,32 @@ namespace PG.Core.Shape
             CreateFace(vv3, vv2, vv0);
         }
 
-        public int CreatePosition(Vector3d position)
+        private int CreatePosition(Vector3d position)
         {
             positions.Add(position);
             return positions.Count - 1;
         }
 
-        public int CreateNormal(Vector3d normal)
+        private int CreateNormal(Vector3d normal)
         {
             normals.Add(normal);
             return normals.Count - 1;
         }
 
-        public int CreateTexCoord(Vector2d texCoord)
+        private int CreateTexCoord(Vector2d texCoord)
         {
             texCoords.Add(texCoord);
             return texCoords.Count - 1;
         }
 
-        public int CreateVertex(int positionId, int normalId, int texCoordId)
+        private int CreateVertex(int positionId, int normalId, int texCoordId)
         {
             var v = new Vertex(positionId, normalId, texCoordId, nextVertexId++);
             vertices.Add(v);
             return v.Id;
         }
 
-        public int CreateFace(int v0, int v1, int v2)
+        private int CreateFace(int v0, int v1, int v2)
         {
             var f = new PolygonFace(v0, v1, v2, nextFaceId++);
             faces.Add(f);

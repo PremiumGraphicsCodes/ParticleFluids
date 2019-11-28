@@ -35,6 +35,19 @@ namespace PG.Core.Shape
             CreateEdge(vs.LastOrDefault(), vs.FirstOrDefault());
         }
 
+        private void Add(Quad3d quad)
+        {
+            var v1 = CreatePosition(quad.GetPosition(0.0, 0.0));
+            var v2 = CreatePosition(quad.GetPosition(1.0, 0.0));
+            var v3 = CreatePosition(quad.GetPosition(1.0, 1.0));
+            var v4 = CreatePosition(quad.GetPosition(0.0, 1.0));
+
+            CreateEdge(v1, v2);
+            CreateEdge(v2, v3);
+            CreateEdge(v3, v4);
+            CreateEdge(v4, v1);
+        }
+
         public void Add(Cylinder3d cylinder, int udiv)
         {
             // create side.
