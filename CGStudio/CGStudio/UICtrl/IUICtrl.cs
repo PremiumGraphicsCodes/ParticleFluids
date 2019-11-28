@@ -1,4 +1,5 @@
 ﻿using PG.Core.Math;
+using System.Windows.Input;
 
 namespace PG.CGStudio.UICtrl
 {
@@ -23,6 +24,10 @@ namespace PG.CGStudio.UICtrl
         public virtual void OnMiddleButtonUp(Vector2d position) { }
 
         public virtual void OnWheel(double dx) { }
+
+        public virtual void OnKeyDown(Key key) { }
+
+        public virtual void OnKeyUp(Key key) { }
     }
 
 }

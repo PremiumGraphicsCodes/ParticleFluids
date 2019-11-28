@@ -40,6 +40,16 @@ namespace PG.CGStudio.Scene.Item
             return newId;
         }
 
+        public void Delete(int id)
+        {
+            var command = new PG.CLI.Command(PG.DeleteLabels.CommandNameLabel);
+            command.SetArg(PG.DeleteLabels.IdLabel, id);
+            command.SetArg(PG.DeleteLabels.IsItemLabel, true);
+            command.Execute(adapter);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Render();
+        }
+
         public void Clear()
         {
             adapter.ClearItems();

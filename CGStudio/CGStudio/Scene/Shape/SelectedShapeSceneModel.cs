@@ -17,13 +17,14 @@ namespace PG.CGStudio.Scene.Shape
             CreateAxesZ(bb);
         }
 
-        /*
         public void ClearItems()
         {
             var world = MainModel.Instance.World;
-            world.Items.Remove(boundingBoxItemId);
+            world.Items.Delete(boundingBoxItemId);
+            world.Items.Delete(xAxisItemId);
+            world.Items.Delete(yAxisItemId);
+            world.Items.Delete(zAxisItemId);
         }
-        */
 
         public int Id { get { return id; } }
 

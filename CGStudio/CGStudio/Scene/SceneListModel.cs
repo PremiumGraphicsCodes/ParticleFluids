@@ -155,6 +155,13 @@ namespace PG.CGStudio.Scene
             return false;
         }
 
+        public void UnSelect(int id)
+        {
+            var selected = selectedShapes.Find((x) => x.Id == id);
+            selected.ClearItems();
+            selectedShapes.Remove(selected);
+        }
+
         public void Delete(int id)
         {
             var command = new PG.CLI.Command(PG.DeleteLabels.CommandNameLabel);
@@ -165,6 +172,8 @@ namespace PG.CGStudio.Scene
             Canvas3d.Instance.Render();
             Sync();
         }
+
+
 
         /*
         public void UnSelect(int id)

@@ -1,4 +1,5 @@
-﻿using PG.Core.Math;
+﻿using System.Windows.Input;
+using PG.Core.Math;
 
 namespace PG.CGStudio.UICtrl
 {
@@ -19,7 +20,14 @@ namespace PG.CGStudio.UICtrl
 
             if (objectId.parentId != 0)
             {
-                MainModel.Instance.World.Scenes.Select(objectId.parentId);
+                if (MainModel.Instance.World.Scenes.IsSelected(objectId.parentId))
+                {
+                    MainModel.Instance.World.Scenes.UnSelect(objectId.parentId);
+                }
+                else
+                {
+                    MainModel.Instance.World.Scenes.Select(objectId.parentId);
+                }
                 return;
             }
 
@@ -61,6 +69,12 @@ namespace PG.CGStudio.UICtrl
             command.SetArg(PG.CameraLabels.ZoomRatioLabel, (float)dx);
             command.Execute(model);
             Canvas3d.Instance.Render();
+        }
+
+        public override void OnKeyDown(Key key)
+        {
+            var model = MainModel.Instance.World;
+//            model.Scenes.SelectedIds;
         }
     }
 }
