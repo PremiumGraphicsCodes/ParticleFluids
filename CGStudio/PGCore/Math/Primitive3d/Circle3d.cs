@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PG.Core.Math.Primitive3d
+﻿namespace PG.Core.Math
 {
     public class Circle3d
     {
@@ -18,27 +12,25 @@ namespace PG.Core.Math.Primitive3d
             set { this.center = value; }
         }
 
-        /*
         public Circle3d() :
-            this(1.0, new Vector3d())
+            this(new Vector3d(0,0,0), new Vector3d(1,0,0), new Vector3d(0,1,0))
         {
         }
 
-        public Circle2d(double radius, Vector2d center)
+        public Circle3d(Vector3d center, Vector3d uvec, Vector3d vvec)
         {
-            this.radius = radius;
             this.center = center;
+            this.uvec = uvec;
+            this.vvec = vvec;
         }
-
 
         public Vector3d GetPosition(double u)
         {
             var angle = u * 2.0 * System.Math.PI;
             var x = uvec * System.Math.Cos(angle);
             var y = vvec * System.Math.Sin(angle);
-            return x + y;
+            return center + x + y;
         }
-        */
     }
 }
 

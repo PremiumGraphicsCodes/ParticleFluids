@@ -130,6 +130,10 @@
       <DependentUpon>Box3dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Math\Box3dViewModel.cs" />
+    <Compile Include="Math\Circle3dView.xaml.cs">
+      <DependentUpon>Circle3dView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Math\Circle3dViewModel.cs" />
     <Compile Include="Math\Cylinder3dView.xaml.cs">
       <DependentUpon>Cylinder3dView.xaml</DependentUpon>
     </Compile>
@@ -187,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Math\Box3dView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Math\Circle3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
