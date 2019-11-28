@@ -5,14 +5,13 @@ namespace PG.Core.Shape
 {
     public class ParticleSystemBuilder
     {
-        private List<Vector3d> positions;
+        private readonly List<Vector3d> positions = new List<Vector3d>();
 
         public ParticleSystemBuilder()
         {
-            positions = new List<Vector3d>();
         }
 
-        public void Build(ICurve3d curve, int udiv)
+        public void Add(ICurve3d curve, int udiv)
         {
             for (int i = 0; i < udiv; ++i)
             {
@@ -21,7 +20,7 @@ namespace PG.Core.Shape
             }
         }
 
-        public void Build(ISurface3d surface, int udiv, int vdiv)
+        public void Add(ISurface3d surface, int udiv, int vdiv)
         {
             for (int i = 0; i < udiv; ++i)
             {
@@ -34,7 +33,7 @@ namespace PG.Core.Shape
             }
         }
 
-        public void Build(IVolume3d volume, int udiv, int vdiv)
+        public void Add(IVolume3d volume, int udiv, int vdiv)
         {
             for (int i = 0; i < udiv; ++i)
             {
@@ -92,6 +91,9 @@ namespace PG.Core.Shape
             }
         }
 
-        public ParticleSystem ParticleSystem { get { return new ParticleSystem(positions); } }
+        public ParticleSystem ToParticleSystem()
+        {
+            return new ParticleSystem(positions);
+        }
     }
 }
