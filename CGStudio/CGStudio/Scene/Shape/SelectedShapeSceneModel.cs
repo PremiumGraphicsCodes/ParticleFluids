@@ -16,6 +16,7 @@ namespace PG.CGStudio.Scene.Shape
             CreateAxesY(bb);
             CreateAxesZ(bb);
             CreateCircleU(bb);
+            CreateCircleV(bb);
         }
 
         public void ClearItems()
@@ -26,6 +27,7 @@ namespace PG.CGStudio.Scene.Shape
             world.Items.Delete(yAxisItemId);
             world.Items.Delete(zAxisItemId);
             world.Items.Delete(uCircleItemId);
+            world.Items.Delete(vCircleItemId);
         }
 
         public int Id { get { return id; } }
@@ -88,7 +90,7 @@ namespace PG.CGStudio.Scene.Shape
         private void CreateCircleU(Box3d bb)
         {
             var world = MainModel.Instance.World;
-            var length = System.Math.Max( bb.Length.X, bb.Length.Y );
+            var length = bb.Length.Max();
             var circle = new Circle3d(bb.GetPosition(0.5, 0.5, 0.5), new Vector3d(length, 0.0, 0.0), new Vector3d(0.0, length, 0.0));
             var builder = new WireFrameBuilder();
             builder.Add(circle, 36);
@@ -99,6 +101,22 @@ namespace PG.CGStudio.Scene.Shape
             };
             this.uCircleItemId = world.Items.AddWireFrameScene(builder.ToWireFrame(), "", appearance);
         }
+
+        private void CreateCircleV(Box3d bb)
+        {
+            var world = MainModel.Instance.World;
+            var length = bb.Length.Max();
+            var circle = new Circle3d(bb.GetPosition(0.5, 0.5, 0.5), new Vector3d(length, 0.0, 0.0), new Vector3d(0.0, 0.0, length));
+            var builder = new WireFrameBuilder();
+            builder.Add(circle, 36);
+            var appearance = new WireAppearance
+            {
+                Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 1.0f, 0.0f),
+                Width = 1.0f
+            };
+            this.vCircleItemId = world.Items.AddWireFrameScene(builder.ToWireFrame(), "", appearance);
+        }
+
 
 
         private int id;

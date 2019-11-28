@@ -147,5 +147,16 @@
         {
             return DistanceSquared(rhs) < tolerance * tolerance;
         }
+
+        public double Max()
+        {
+            return System.Math.Max( System.Math.Max(X, Y), Z);
+        }
+
+        public double Min()
+        {
+            return System.Math.Min(System.Math.Min(X, Y), Z);
+        }
+
     }
 }
