@@ -155,6 +155,17 @@ namespace PG.CGStudio.Scene
             return false;
         }
 
+        public void Delete(int id)
+        {
+            var command = new PG.CLI.Command(PG.DeleteLabels.CommandNameLabel);
+            command.SetArg(PG.DeleteLabels.IdLabel, id);
+            command.SetArg(PG.DeleteLabels.IsItemLabel, false);
+            command.Execute(adapter);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Render();
+            Sync();
+        }
+
         /*
         public void UnSelect(int id)
         {

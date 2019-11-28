@@ -15,6 +15,13 @@ namespace PG {
 		public const string ZoomRatioLabel = "Ratio";
 	}
 
+	public class DeleteLabels
+	{
+		public const string CommandNameLabel = "DeleteCommand";
+		public const string IdLabel = "Id";
+		public const string IsItemLabel = "IsItem";
+	}
+
 	public class FileExportLabels
 	{
 		public const string FileExportCommandLabel = "FileExport";

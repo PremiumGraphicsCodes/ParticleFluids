@@ -11,11 +11,31 @@ namespace PG.CGStudio.Object
         protected override void OnAttached()
         {
             this.AssociatedObject.MouseDoubleClick += this.ItemDoubleClicked;
+            this.AssociatedObject.KeyDown += this.KeyDowned;
         }
 
         protected override void OnDetaching()
         {
             this.AssociatedObject.MouseDoubleClick -= this.ItemDoubleClicked;
+            this.AssociatedObject.KeyDown -= this.KeyDowned;
+        }
+
+        private void KeyDowned(object sender, KeyEventArgs e)
+        {
+            var treeView = e.Source as TreeView;
+            if (treeView == null)
+            {
+                return;
+            }
+            var selectedItem = treeView.SelectedItem as SceneModel;
+            if (selectedItem == null)
+            {
+                return;
+            }
+            if (e.Key == Key.Delete)
+            {
+                MainModel.Instance.World.Scenes.Delete(selectedItem.Id.Value);
+            }
         }
 
         private void ItemDoubleClicked(object sender, MouseButtonEventArgs e)
