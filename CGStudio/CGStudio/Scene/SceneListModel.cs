@@ -16,7 +16,17 @@ namespace PG.CGStudio.Scene
 
         private readonly List<SelectedShapeSceneModel> selectedShapes = new List<SelectedShapeSceneModel>();
 
-        public IEnumerable<SelectedShapeSceneModel> SelectedShapes { get { return selectedShapes; } }
+        public IEnumerable<int> SelectedIds
+        {
+            get {
+                var ids = new List<int>();
+                foreach(var shape in selectedShapes)
+                {
+                    ids.Add(shape.Id);
+                }
+                return ids;
+            }
+        }
 
         public SceneListModel(PG.CLI.WorldAdapter adapter)
         {

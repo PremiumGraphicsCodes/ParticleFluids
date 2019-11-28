@@ -76,12 +76,11 @@ namespace PG.CGStudio.UICtrl
             if (key == Key.Delete)
             {
                 var model = MainModel.Instance.World;
-                var selecteds = model.Scenes.SelectedShapes;
-                foreach (var shape in selecteds)
+                var selecteds = model.Scenes.SelectedIds;
+                foreach (var id in selecteds)
                 {
-                    model.Scenes.UnSelect(shape.Id);
-                    model.Scenes.Delete(shape.Id);
-                    return;
+                    model.Scenes.UnSelect(id);
+                    model.Scenes.Delete(id);
                 }
             }
         }
