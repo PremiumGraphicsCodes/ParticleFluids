@@ -6,7 +6,13 @@
              xmlns:local="clr-namespace:PG.CGStudio.Generation.WireFrame"
              xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
              mc:Ignorable="d">
+    <UserControl.DataContext>
+        <local:CircleGenerationViewModel/>
+    </UserControl.DataContext>
     <StackPanel>
-        <math:Circle3dView/>
+        <math:Circle3dView DataContext="{Binding CircleViewModel}"/>
+        <TextBox Text="{Binding UNum.Value}"/>
+        <local:AppearanceView DataContext="{Binding AppearanceViewModel}"/>
+        <Button Content="OK" Command="{Binding OkCommand}"/>
     </StackPanel>
 </UserControl>

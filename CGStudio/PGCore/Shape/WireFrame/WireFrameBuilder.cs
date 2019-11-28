@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PG.Core.Math;
 
 namespace PG.Core.Shape
@@ -17,6 +18,21 @@ namespace PG.Core.Shape
             var v1 = CreatePosition(line.GetPosition(0.0));
             var v2 = CreatePosition(line.GetPosition(1.0));
             CreateEdge(v1, v2);
+        }
+
+        public void Add(Circle3d circle, int udiv)
+        {
+            var vs = new int[udiv];
+            for(int i = 0; i < udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                vs[i] = CreatePosition(circle.GetPosition(u));
+            }
+            for(int i = 0; i < udiv-1; ++i)
+            {
+                CreateEdge(vs[i], vs[i + 1]);
+            }
+            CreateEdge(vs.LastOrDefault(), vs.FirstOrDefault());
         }
 
         public void Add(Cylinder3d cylinder, int udiv)

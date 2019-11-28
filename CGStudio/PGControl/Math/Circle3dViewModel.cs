@@ -10,13 +10,13 @@ namespace PG.Control.Math
     public class Circle3dViewModel
     {
         public Vector3dViewModel CenterViewModel { get; }
-            = new Vector3dViewModel();
+            = new Vector3dViewModel(new Vector3d(0,0,0));
 
         public Vector3dViewModel UVecViewModel { get; }
-            = new Vector3dViewModel();
+            = new Vector3dViewModel(new Vector3d(1,0,0));
 
         public Vector3dViewModel VVecViewModel { get; }
-            = new Vector3dViewModel();
+            = new Vector3dViewModel(new Vector3d(0,1,0));
 
         public Circle3d Value
         {

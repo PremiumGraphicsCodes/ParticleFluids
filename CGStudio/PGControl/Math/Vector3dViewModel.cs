@@ -19,6 +19,11 @@ namespace PG.Control.Math
         {
         }
 
+        public Vector3dViewModel(Vector3d value)
+        {
+            Value = value;
+        }
+
         public Vector3d Value
         {
             get { return new Vector3d(X.Value, Y.Value, Z.Value); ; }

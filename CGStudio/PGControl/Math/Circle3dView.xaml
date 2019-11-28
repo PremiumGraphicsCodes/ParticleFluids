@@ -9,8 +9,17 @@
         <local:Circle3dViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <local:Vector3dView DataContext="{Binding CenterViewModel}"/>
-        <local:Vector3dView DataContext="{Binding UVecViewModel}"/>
-        <local:Vector3dView DataContext="{Binding VVecViewModel}"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Center"/>
+            <local:Vector3dView DataContext="{Binding CenterViewModel}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="UVec"/>
+            <local:Vector3dView DataContext="{Binding UVecViewModel}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="VVec"/>
+            <local:Vector3dView DataContext="{Binding VVecViewModel}"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>
