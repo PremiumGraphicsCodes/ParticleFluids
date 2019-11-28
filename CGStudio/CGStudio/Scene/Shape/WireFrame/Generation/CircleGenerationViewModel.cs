@@ -29,7 +29,7 @@ namespace PG.CGStudio.Generation.WireFrame
             var circle = CircleViewModel.Value;
             var builder = new WireFrameBuilder();
             builder.Add(circle, UNum.Value);
-            var shape = builder.Build();
+            var shape = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
             MainModel.Instance.World.Scenes.AddWireFrameScene(shape, "WFCircle", appearance);
             Canvas3d.Instance.Update(MainModel.Instance.World);

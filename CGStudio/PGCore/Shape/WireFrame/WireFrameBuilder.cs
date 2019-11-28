@@ -134,7 +134,7 @@ namespace PG.Core.Shape
             return positions.Count - 1;
         }
 
-        public WireFrame Build()
+        public WireFrame ToWireFrame()
         {
             return new WireFrame(positions, edges);
         }
