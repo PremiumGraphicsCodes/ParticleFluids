@@ -160,6 +160,9 @@
     <ClCompile Include="Viewer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
+      <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Crystal\IO\IO.vcxproj">
       <Project>{198160cc-5ed1-499d-ad45-90dbac4852f8}</Project>
     </ProjectReference>
