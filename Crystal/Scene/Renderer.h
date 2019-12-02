@@ -37,6 +37,7 @@ private:
 
 	SceneRenderer objectRenderer;
 	SceneIdRenderer objectIdRenderer;
+	SceneIdRenderer itemIdRenderer;
 
 	bool showOffScreen;
 

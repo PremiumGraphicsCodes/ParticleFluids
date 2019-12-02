@@ -33,6 +33,9 @@ bool Renderer::build()
 	if (!objectIdRenderer.build()) {
 		return false;
 	}
+	if (!itemIdRenderer.build()) {
+		return false;
+	}
 
 	if (!renderer.build()) {
 		return false;
@@ -45,6 +48,7 @@ void Renderer::render(const int width, const int height, const ViewModel& vm)
 {
 	objectRenderer.render(camera.get(), vm.object);
 	objectIdRenderer.render(camera.get(), vm.objectId);
+	itemIdRenderer.render(camera.get(), vm.itemId);
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);

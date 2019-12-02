@@ -51,6 +51,7 @@ void World::updateViewModel()
 	objects.toIdViewModel(vm.objectId);
 
 	items.toViewModel(vm.object);
+	items.toIdViewModel(vm.itemId);
 
 	this->viewModel = vm;
 }

@@ -13,6 +13,8 @@ public:
 
 	SceneViewModel object;
 	SceneIdViewModel objectId;
+
+	SceneIdViewModel itemId;
 };
 	}
 }
