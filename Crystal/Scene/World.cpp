@@ -6,10 +6,10 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-World::World() :
-	objects(0, "Root"),
-	items(0, "Item")
+World::World()
 {
+	scenes[0] = std::make_unique<Scene>(0, "Item");
+	scenes[1] = std::make_unique<Scene>(0, "Root");
 }
 
 World::~World()
@@ -24,14 +24,14 @@ void World::init()
 	light.setAmbient(ColorRGBAf(1, 1, 1, 1));
 	light.setDiffuse(ColorRGBAf(1, 1, 1, 1));
 	light.setSpecular(ColorRGBAf(1, 1, 1, 1));
-	objects.addScene(objectFactory.createLightScene(light, "Light0"));
+	scenes[1]->addScene(objectFactory.createLightScene(light, "Light0"));
 
 	Material material;
 	material.ambient = ColorRGBAf(1, 1, 1, 1);
 	material.diffuse = ColorRGBAf(1, 1, 1, 1);
 	material.specular = ColorRGBAf(1, 1, 1, 1);
 	material.shininess = 1.0;
-	objects.addScene(objectFactory.createMaterialScene(material, "Material0"));
+	scenes[1]->addScene(objectFactory.createMaterialScene(material, "Material0"));
 
 	renderer = std::make_unique<UI::Renderer>();
 
@@ -39,24 +39,23 @@ void World::init()
 
 void World::clear()
 {
-	objects.clear();
-	items.clear();
-	//shaders.clear();
+	for (auto& s : scenes) {
+		s->clear();
+	}
 }
 
 void World::updateViewModel()
 {
 	ViewModel vm;
-	objects.toViewModel(vm.object);
-	objects.toIdViewModel(vm.parentId, vm.childId);
-
-	items.toViewModel(vm.object);
-	items.toIdViewModel(vm.parentId, vm.childId);
+	for (auto& s : scenes) {
+		s->toViewModel(vm.object);
+		s->toIdViewModel(vm.parentId, vm.childId);
+	}
 
 	this->viewModel = vm;
 }
 
 Box3d World::getBoundingBox() const
 {
-	return objects.getBoundingBox();
+	return scenes[1]->getBoundingBox();
 }

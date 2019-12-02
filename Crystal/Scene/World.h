@@ -24,9 +24,9 @@ public:
 
 	void clear();
 
-	Scene* getObjects() { return &objects; }
+	Scene* getObjects() { return scenes[1].get(); }
 
-	Scene* getItems() { return &items; }
+	Scene* getItems() { return scenes[0].get(); }
 
 	SceneFactory* getObjectFactory() { return &objectFactory; }
 
@@ -43,13 +43,11 @@ public:
 	UI::Renderer* getRenderer() { return renderer.get(); }
 
 private:
-	Scene objects;
-	Scene items;
+	std::array<std::unique_ptr<Scene>, 2> scenes;
 	ViewModel viewModel;
 
 	SceneFactory objectFactory;
 	SceneFactory itemFactory;
-
 
 	std::unique_ptr<UI::Renderer> renderer;
 
