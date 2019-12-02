@@ -43,12 +43,12 @@ void ParticleSystemCreateCommand::execute(World* world)
 	attr.size = args.pointSize.getValue();
 	auto name = args.name.getValue();
 	if (args.isItem.getValue()) {
-		auto scene = world->getItemFactory()->createParticleSystemScene(positions, attr, name);
+		auto scene = world->getSceneFactory()->createParticleSystemScene(positions, attr, name);
 		world->getItems()->addScene(scene);
 		results.newId.setValue(scene->getId());
 	}
 	else {
-		auto scene = world->getObjectFactory()->createParticleSystemScene(positions, attr, name);
+		auto scene = world->getSceneFactory()->createParticleSystemScene(positions, attr, name);
 		world->getObjects()->addScene(scene);
 		results.newId.setValue(scene->getId());
 	}

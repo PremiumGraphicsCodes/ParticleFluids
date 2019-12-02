@@ -24,14 +24,14 @@ void World::init()
 	light.setAmbient(ColorRGBAf(1, 1, 1, 1));
 	light.setDiffuse(ColorRGBAf(1, 1, 1, 1));
 	light.setSpecular(ColorRGBAf(1, 1, 1, 1));
-	scenes[1]->addScene(objectFactory.createLightScene(light, "Light0"));
+	scenes[1]->addScene(sceneFactory.createLightScene(light, "Light0"));
 
 	Material material;
 	material.ambient = ColorRGBAf(1, 1, 1, 1);
 	material.diffuse = ColorRGBAf(1, 1, 1, 1);
 	material.specular = ColorRGBAf(1, 1, 1, 1);
 	material.shininess = 1.0;
-	scenes[1]->addScene(objectFactory.createMaterialScene(material, "Material0"));
+	scenes[1]->addScene(sceneFactory.createMaterialScene(material, "Material0"));
 
 	renderer = std::make_unique<UI::Renderer>();
 
@@ -39,9 +39,15 @@ void World::init()
 
 void World::clear()
 {
+	sceneFactory.clear();
 	for (auto& s : scenes) {
 		s->clear();
 	}
+}
+
+void World::addScene(int layer, IScene* scene)
+{
+	scenes[layer]->addScene(scene);
 }
 
 void World::updateViewModel()

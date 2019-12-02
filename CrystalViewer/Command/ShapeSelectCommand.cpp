@@ -45,6 +45,6 @@ void ShapeSelectCommand::execute(World* scene)
 	WireFrameAttribute attribute;
 	attribute.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 	attribute.width = 1.0f;
-	auto bbshape = scene->getItemFactory()->createWireFrameScene(builder.createWireFrame(),attribute,"BoundingBox");
+	auto bbshape = scene->getSceneFactory()->createWireFrameScene(builder.createWireFrame(),attribute,"BoundingBox");
 	scene->getItems()->addScene(bbshape);
 }

@@ -42,7 +42,7 @@ void MaterialCreateCommand::execute(World* world)
 	m.specular = args.specular.getValue();
 	m.shininess = args.shininess.getValue();
 	m.textureId = args.textureId.getValue();
-	auto scene = world->getObjectFactory()->createMaterialScene(m, args.name.getValue());
+	auto scene = world->getSceneFactory()->createMaterialScene(m, args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
 }

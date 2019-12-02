@@ -47,12 +47,12 @@ void WireFrameCreateCommand::execute(World* world)
 	const auto& name = args.name.getValue();
 	WireFrame* shape = new WireFrame(positions, edges);
 	if (args.isItem.getValue()) {
-		auto scene = world->getItemFactory()->createWireFrameScene(shape, attr, name);
+		auto scene = world->getSceneFactory()->createWireFrameScene(shape, attr, name);
 		world->getItems()->addScene(scene);
 		results.newId.setValue(scene->getId());
 	}
 	else {
-		auto scene = world->getObjectFactory()->createWireFrameScene(shape, attr, name);
+		auto scene = world->getSceneFactory()->createWireFrameScene(shape, attr, name);
 		world->getObjects()->addScene(scene);
 		results.newId.setValue(scene->getId());
 	}

@@ -47,7 +47,7 @@ void PolygonMeshCreateCommand::execute(World* world)
 	mesh->vertices = args.vertices.getValue();
 	mesh->faces = args.faces.getValue();
 
-	auto shape = world->getObjectFactory()->createPolygonMeshScene(mesh, args.name.getValue());
+	auto shape = world->getSceneFactory()->createPolygonMeshScene(mesh, args.name.getValue());
 	world->getObjects()->addScene(shape);
 	const auto newId = shape->getId();
 

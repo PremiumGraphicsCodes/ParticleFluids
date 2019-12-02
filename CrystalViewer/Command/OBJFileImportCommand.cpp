@@ -39,7 +39,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 		}
 
 		auto polygonMesh = builder.build();
-		auto meshScene = world->getObjectFactory()->createPolygonMeshScene(polygonMesh, "PolygonMesh");
+		auto meshScene = world->getSceneFactory()->createPolygonMeshScene(polygonMesh, "PolygonMesh");
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
@@ -62,7 +62,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 					i2++;
 				}
 			}
-			auto faceGroup = world->getObjectFactory()->createFaceGroupScene(meshScene, g.name);
+			auto faceGroup = world->getSceneFactory()->createFaceGroupScene(meshScene, g.name);
 			faceGroup->setMaterialName(g.usemtl);
 		}
 		world->getObjects()->addScene(meshScene);
@@ -83,7 +83,7 @@ bool OBJFileImportCommand::importMTL(const std::filesystem::path& filePath, Worl
 			mat.diffuse = m.diffuse;
 			mat.specular = m.specular;
 			mat.shininess = m.specularExponent;
-			world->getObjects()->addScene(world->getObjectFactory()->createMaterialScene(mat, m.name));
+			world->getObjects()->addScene(world->getSceneFactory()->createMaterialScene(mat, m.name));
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;
@@ -97,7 +97,7 @@ bool OBJFileImportCommand::importOBJWithMTL(const std::filesystem::path& filePat
 	auto filename = filePath.parent_path() / filePath.stem();
 	filename.concat(".mtl");
 
-	auto scene = world->getObjectFactory()->createScene("OBJ");
+	auto scene = world->getSceneFactory()->createScene("OBJ");
 
 	// mtl ファイルを読み込む．
 	if (!importMTL(filename, world)) {

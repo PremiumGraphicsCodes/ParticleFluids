@@ -34,7 +34,7 @@ void PCDFileImportCommand::execute(Crystal::Scene::World* scene)
 		ParticleAttribute attr;
 		attr.color = glm::vec4(0, 0, 0, 0);
 		attr.size = 1.0;
-		scene->getObjects()->addScene(scene->getObjectFactory()->createParticleSystemScene(positions, attr, "PCD"));
+		scene->getObjects()->addScene(scene->getSceneFactory()->createParticleSystemScene(positions, attr, "PCD"));
 		results.isOk.setValue( true );
 	}
 }

@@ -28,9 +28,9 @@ public:
 
 	Scene* getItems() { return scenes[0].get(); }
 
-	SceneFactory* getObjectFactory() { return &objectFactory; }
+	void addScene(int layer, IScene* scene);
 
-	SceneFactory* getItemFactory() { return &itemFactory; }
+	SceneFactory* getSceneFactory() { return &sceneFactory; }
 
 	//ViewModel toViewModel();
 
@@ -46,8 +46,7 @@ private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
 	ViewModel viewModel;
 
-	SceneFactory objectFactory;
-	SceneFactory itemFactory;
+	SceneFactory sceneFactory;
 
 	std::unique_ptr<UI::Renderer> renderer;
 

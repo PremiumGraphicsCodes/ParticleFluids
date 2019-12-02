@@ -39,7 +39,7 @@ void LightCreateCommand::execute(World* world)
 	l.setAmbient(args.ambient.getValue());
 	l.setDiffuse(args.diffuse.getValue());
 	l.setSpecular(args.specular.getValue());
-	auto scene = world->getObjectFactory()->createLightScene(l, args.name.getValue());
+	auto scene = world->getSceneFactory()->createLightScene(l, args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
 }
