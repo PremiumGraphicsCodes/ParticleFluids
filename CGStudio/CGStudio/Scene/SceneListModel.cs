@@ -54,10 +54,13 @@ namespace PG.CGStudio.Scene
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.ParticleSystemCreateLabels.NewIdLabel);
 
-            command.Create(PG.CameraLabels.CameraFitCommandLabel);
-            command.Execute(adapter);
-            command.Clear();
-            Sync();
+            if (layer > 0)
+            {
+                command.Create(PG.CameraLabels.CameraFitCommandLabel);
+                command.Execute(adapter);
+                command.Clear();
+                Sync();
+            }
             return newId;
         }
 
@@ -73,11 +76,14 @@ namespace PG.CGStudio.Scene
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.WireFrameCreateLabels.NewIdLabel);
 
-            command.Create(PG.CameraLabels.CameraFitCommandLabel);
-            command.Execute(adapter);
-            command.Clear();
+            if (layer > 0)
+            {
+                command.Create(PG.CameraLabels.CameraFitCommandLabel);
+                command.Execute(adapter);
+                command.Clear();
 
-            Sync();
+                Sync();
+            }
             return newId;
         }
 
@@ -95,11 +101,13 @@ namespace PG.CGStudio.Scene
             var newId = command.GetResult<int>(PG.PolygonMeshCreateLabels.NewIdLabel);
             command.Clear();
 
-            command.Create(PG.CameraLabels.CameraFitCommandLabel);
-            command.Execute(adapter);
-            command.Clear();
+            if (layer > 0) {
+                command.Create(PG.CameraLabels.CameraFitCommandLabel);
+                command.Execute(adapter);
+                command.Clear();
 
-            Sync();
+                Sync();
+            }
             return newId;
 
         }

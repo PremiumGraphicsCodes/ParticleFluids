@@ -14,12 +14,12 @@ namespace PGCoreTest.Math
         {
             {
                 var matrix = Matrix4d.Identity();
-                Assert.AreEqual(1.0, matrix.Determinant, tolerance);
+                Assert.AreEqual(1.0, matrix.Determinant(), tolerance);
             }
 
             {
                 var matrix = Matrix4d.Zero();
-                Assert.AreEqual(0.0, matrix.Determinant, tolerance);
+                Assert.AreEqual(0.0, matrix.Determinant(), tolerance);
             }
 
             {
@@ -30,7 +30,7 @@ namespace PGCoreTest.Math
                     1, 1, 1, 1,
                     1, 1, 1, 1
                     );
-                Assert.AreEqual(0.0, matrix.Determinant, tolerance);
+                Assert.AreEqual(0.0, matrix.Determinant(), tolerance);
             }
         }
 
@@ -39,7 +39,7 @@ namespace PGCoreTest.Math
         {
             {
                 var matrix = Matrix4d.Identity();
-                var actual = matrix.Transposed;
+                var actual = matrix.Transposed();
                 var expected = Matrix4d.Identity();
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
@@ -52,7 +52,7 @@ namespace PGCoreTest.Math
                     20, 21, 22, 23,
                     30, 31, 32, 33
                     );
-                var actual = matrix.Transposed;
+                var actual = matrix.Transposed();
                 var expected = new Matrix4d
                     (
                     0, 10, 20, 30,
@@ -69,7 +69,7 @@ namespace PGCoreTest.Math
         {
             {
                 var matrix = new Matrix4d();
-                var actual = matrix.Inverse;
+                var actual = matrix.Inverse();
                 var expected = Matrix4d.Identity();
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }

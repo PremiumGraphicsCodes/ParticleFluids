@@ -184,48 +184,40 @@
             set { this.x[2, 2] = value; }
         }
 
-        public double Determinant
+        public double Determinant()
         {
-            get {
-                return
-                  x[0,0] * x[1,1] * x[2,2] +
-                  x[0,1] * x[1,2] * x[2,0] +
-                  x[0,2] * x[1,0] * x[2,0] -
-                  x[0,2] * x[1,1] * x[2,1] -
-                  x[0,0] * x[0,2] * x[2,1] -
-                  x[0,1] * x[1,0] * x[2,2];
-            }
+            return
+                x[0,0] * x[1,1] * x[2,2] +
+                x[0,1] * x[1,2] * x[2,0] +
+                x[0,2] * x[1,0] * x[2,0] -
+                x[0,2] * x[1,1] * x[2,1] -
+                x[0,0] * x[0,2] * x[2,1] -
+                x[0,1] * x[1,0] * x[2,2];
         }
 
-        public Matrix3d Inverse
+        public Matrix3d Inverse()
         {
-            get
-            {
-                var det = Determinant;
-                var x00 = X11 * X22 - X12 * X21;
-                var x01 = X21 * X02 - X22 * X01;
-                var x02 = X01 * X12 - X02 * X11;
-                var x10 = X12 * X20 - X10 * X22;
-                var x11 = X22 * X00 - X10 * X02;
-                var x12 = X02 * X10 - X00 * X12;
-                var x20 = X01 * X21 - X11 * X20;
-                var x21 = X20 * X01 - X21 * X00;
-                var x22 = X00 * X11 - X01 * x10;
-                return new Matrix3d(x00, x01, x02, x10, x11, x12, x20, x21, x22) / det;
-            }
+            var det = Determinant();
+            var x00 = X11 * X22 - X12 * X21;
+            var x01 = X21 * X02 - X22 * X01;
+            var x02 = X01 * X12 - X02 * X11;
+            var x10 = X12 * X20 - X10 * X22;
+            var x11 = X22 * X00 - X10 * X02;
+            var x12 = X02 * X10 - X00 * X12;
+            var x20 = X01 * X21 - X11 * X20;
+            var x21 = X20 * X01 - X21 * X00;
+            var x22 = X00 * X11 - X01 * x10;
+            return new Matrix3d(x00, x01, x02, x10, x11, x12, x20, x21, x22) / det;
         }
 
-        public Matrix3d Transposed
+        public Matrix3d Transposed()
         {
-            get
-            {
-                return new Matrix3d
-                    (
-                    X00, X10, X20,
-                    X01, X11, X21,
-                    X02, X12, X22
-                    );
-            }
+            return new Matrix3d
+                (
+                X00, X10, X20,
+                X01, X11, X21,
+                X02, X12, X22
+                );
         }
 
         public double[,] X
