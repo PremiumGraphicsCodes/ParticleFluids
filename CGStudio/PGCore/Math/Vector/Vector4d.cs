@@ -31,6 +31,14 @@
             set { this.w = value; }
         }
 
+        public Vector4d(Vector3d v, double w)
+        {
+            this.x = v.X;
+            this.y = v.Y;
+            this.z = v.Z;
+            this.w = w;
+        }
+
         public Vector4d(double x, double y, double z, double w)
         {
             this.x = x;
