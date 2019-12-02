@@ -43,14 +43,14 @@ namespace PG.CGStudio.Scene
             return root;
         }
 
-        public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance)
+        public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance, int layer)
         {
             var command = new PG.CLI.Command(PG.ParticleSystemCreateLabels.ParticleSystemAddLabel);
             command.SetArg(PG.ParticleSystemCreateLabels.PositionsLabel, positions);
             command.SetArg(PG.ParticleSystemCreateLabels.NameLabel, name);
             command.SetArg(PG.ParticleSystemCreateLabels.PointSizeLabel, appearance.Size);
             command.SetArg(PG.ParticleSystemCreateLabels.ColorLabel, appearance.Color);
-            command.SetArg(PG.ParticleSystemCreateLabels.IsItemLabel, false);
+            command.SetArg(PG.ParticleSystemCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.ParticleSystemCreateLabels.NewIdLabel);
 
@@ -61,7 +61,7 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
-        public int AddWireFrameScene(WireFrame wireFrame, string name, Core.UI.WireAppearance appearance)
+        public int AddWireFrameScene(WireFrame wireFrame, string name, Core.UI.WireAppearance appearance, int layer)
         {
             var command = new PG.CLI.Command(PG.WireFrameCreateLabels.WireFrameAddLabel);
             command.SetArg(PG.WireFrameCreateLabels.PositionsLabel, wireFrame.Positions);
@@ -69,7 +69,7 @@ namespace PG.CGStudio.Scene
             command.SetArg(PG.WireFrameCreateLabels.NameLabel, name);
             command.SetArg(PG.WireFrameCreateLabels.ColorLabel, appearance.Color);
             command.SetArg(PG.WireFrameCreateLabels.LineWidthLabel, appearance.Width);
-            command.SetArg(PG.WireFrameCreateLabels.IsItemLabel, false);
+            command.SetArg(PG.WireFrameCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.WireFrameCreateLabels.NewIdLabel);
 
@@ -81,7 +81,7 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
-        public int AddPolygonMeshScene(PolygonMesh polygon, string name)
+        public int AddPolygonMeshScene(PolygonMesh polygon, string name, int layer)
         {
             var command = new PG.CLI.Command(PG.PolygonMeshCreateLabels.CommandNameLabel);
             command.SetArg(PG.PolygonMeshCreateLabels.PositionsLabel, polygon.Positions);
@@ -90,6 +90,7 @@ namespace PG.CGStudio.Scene
             command.SetArg(PG.PolygonMeshCreateLabels.VerticesLabel, polygon.Vertices);
             command.SetArg(PG.PolygonMeshCreateLabels.FacesLabel, polygon.Faces);
             command.SetArg(PG.PolygonMeshCreateLabels.NameLabel, name);
+            command.SetArg(PG.PolygonMeshCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.PolygonMeshCreateLabels.NewIdLabel);
             command.Clear();

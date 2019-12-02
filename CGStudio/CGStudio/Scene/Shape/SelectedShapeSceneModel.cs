@@ -22,12 +22,12 @@ namespace PG.CGStudio.Scene.Shape
         public void ClearItems()
         {
             var world = MainModel.Instance.World;
-            world.Items.Delete(boundingBoxItemId);
-            world.Items.Delete(xAxisItemId);
-            world.Items.Delete(yAxisItemId);
-            world.Items.Delete(zAxisItemId);
-            world.Items.Delete(uCircleItemId);
-            world.Items.Delete(vCircleItemId);
+            world.Scenes.Delete(boundingBoxItemId);
+            world.Scenes.Delete(xAxisItemId);
+            world.Scenes.Delete(yAxisItemId);
+            world.Scenes.Delete(zAxisItemId);
+            world.Scenes.Delete(uCircleItemId);
+            world.Scenes.Delete(vCircleItemId);
         }
 
         public int Id { get { return id; } }
@@ -42,7 +42,7 @@ namespace PG.CGStudio.Scene.Shape
                 Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f),
                 Width = 1.0f
             };
-            this.boundingBoxItemId = world.Items.AddWireFrameScene(builder.ToWireFrame(), "", appearance);
+            this.boundingBoxItemId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
         }
 
         private void CreateAxesX(Box3d bb)
@@ -56,7 +56,7 @@ namespace PG.CGStudio.Scene.Shape
                 Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f),
                 Width = 1.0f
             };
-            this.xAxisItemId = world.Items.AddWireFrameScene(builder.ToWireFrame(), "", appearance);
+            this.xAxisItemId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
         }
 
         private void CreateAxesY(Box3d bb)
@@ -70,7 +70,7 @@ namespace PG.CGStudio.Scene.Shape
                 Color = new Core.Graphics.ColorRGBA(0.0f, 1.0f, 0.0f, 0.0f),
                 Width = 1.0f
             };
-            this.yAxisItemId = world.Items.AddWireFrameScene(builder.ToWireFrame(), "", appearance);
+            this.yAxisItemId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
         }
 
         private void CreateAxesZ(Box3d bb)
@@ -84,7 +84,7 @@ namespace PG.CGStudio.Scene.Shape
                 Color = new Core.Graphics.ColorRGBA(0.0f, 0.0f, 1.0f, 0.0f),
                 Width = 1.0f
             };
-            this.zAxisItemId = world.Items.AddWireFrameScene(builder.ToWireFrame(), "", appearance);
+            this.zAxisItemId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
         }
 
         private void CreateCircleU(Box3d bb)
@@ -99,7 +99,7 @@ namespace PG.CGStudio.Scene.Shape
                 Color = new Core.Graphics.ColorRGBA(1.0f, 1.0f, 0.0f, 0.0f),
                 Width = 1.0f
             };
-            this.uCircleItemId = world.Items.AddWireFrameScene(builder.ToWireFrame(), "", appearance);
+            this.uCircleItemId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
         }
 
         private void CreateCircleV(Box3d bb)
@@ -114,10 +114,8 @@ namespace PG.CGStudio.Scene.Shape
                 Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 1.0f, 0.0f),
                 Width = 1.0f
             };
-            this.vCircleItemId = world.Items.AddWireFrameScene(builder.ToWireFrame(), "", appearance);
+            this.vCircleItemId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
         }
-
-
 
         private int id;
         private int boundingBoxItemId;

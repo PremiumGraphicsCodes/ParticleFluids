@@ -33,7 +33,7 @@ namespace PG.CGStudio.Scene.Shape.Trim
             command.Execute(MainModel.Instance.World.Adapter);
             var newId = command.GetResult<int>(Label.NewIdLabel);
 
-            MainModel.Instance.World.Items.Clear();
+            //MainModel.Instance.World.Items.Clear();
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();

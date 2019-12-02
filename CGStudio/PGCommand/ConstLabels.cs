@@ -97,7 +97,7 @@ namespace PG {
 		public const string PointSizeLabel = "PointSize";
 		public const string ColorLabel = "Color";
 		public const string NameLabel = "Name";
-		public const string IsItemLabel = "IsItem";
+		public const string LayerLabel = "Layer";
 		public const string NewIdLabel = "NewId";
 	}
 
@@ -118,6 +118,7 @@ namespace PG {
 		public const string VerticesLabel = "Vertices";
 		public const string FacesLabel = "Faces";
 		public const string NameLabel = "Name";
+		public const string LayerLabel = "Layer";
 		public const string NewIdLabel = "NewId";
 	}
 
@@ -179,7 +180,7 @@ namespace PG {
 		public const string LineWidthLabel = "LineWidth";
 		public const string ColorLabel = "Color";
 		public const string NameLabel = "Name";
-		public const string IsItemLabel = "IsItem";
+		public const string LayerLabel = "Layer";
 		public const string NewIdLabel = "NewId";
 	}
 

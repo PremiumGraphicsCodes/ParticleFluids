@@ -22,7 +22,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var builder = new PolygonMeshBuilder();
             var box = BoxViewModel.Value;
             builder.Add(box);
-            MainModel.Instance.World.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMBox");
+            MainModel.Instance.World.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMBox", 1);
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
         }

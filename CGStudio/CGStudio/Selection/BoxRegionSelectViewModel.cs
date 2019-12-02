@@ -54,7 +54,7 @@ namespace PG.CGStudio.Selection
                 Width = 1.0f
             };
 
-            MainModel.Instance.World.Items.AddWireFrameScene(builder.ToWireFrame(), "", appearance);
+            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();

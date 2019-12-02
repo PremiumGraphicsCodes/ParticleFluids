@@ -51,7 +51,7 @@ namespace PG.CGStudio.Selection
                 Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f)
             };
 
-            MainModel.Instance.World.Items.AddWireFrameScene(builder.ToWireFrame(), "Item",appearance);
+            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.ToWireFrame(), "Item",appearance, 0);
 
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();

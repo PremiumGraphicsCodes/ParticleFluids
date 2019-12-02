@@ -149,7 +149,6 @@
       <DependentUpon>TextureAddView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Appearance\Texture\TextureAddViewModel.cs" />
-    <Compile Include="Scene\Item\ItemListModel.cs" />
     <Compile Include="Scene\SceneExportView.xaml.cs">
       <DependentUpon>SceneExportView.xaml</DependentUpon>
     </Compile>
