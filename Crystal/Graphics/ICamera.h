@@ -4,7 +4,6 @@
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
 
-#include "../ThirdParty/glm-0.9.9.3/glm/gtc/matrix_transform.hpp"
 
 namespace Crystal {
 	namespace Graphics {
@@ -46,10 +45,7 @@ public:
 
 	Math::Matrix4df getRotation() const { return this->rotation; }
 
-	void rotate(const float azimuth, const float elevation) {
-		rotation = glm::rotate(rotation, azimuth, getRight());
-		rotation = glm::rotate(rotation, elevation, getUp());
-	}
+	void rotate(const float azimuth, const float elevation);
 
 	void zoom(const float s) { this->scale *= (1.0f + s); }
 

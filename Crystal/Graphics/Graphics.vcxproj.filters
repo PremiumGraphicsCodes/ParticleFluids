@@ -51,5 +51,8 @@
     <ClCompile Include="OrthogonalCamera.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
+    <ClCompile Include="PerspectiveCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

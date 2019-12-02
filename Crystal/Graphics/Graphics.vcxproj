@@ -41,6 +41,7 @@
     <ClCompile Include="DrawableId.cpp" />
     <ClCompile Include="ICamera.cpp" />
     <ClCompile Include="OrthogonalCamera.cpp" />
+    <ClCompile Include="PerspectiveCamera.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{227E5411-92CB-4E30-A67B-043D8B04A9BC}</ProjectGuid>
