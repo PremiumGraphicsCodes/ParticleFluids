@@ -48,10 +48,10 @@ void World::updateViewModel()
 {
 	ViewModel vm;
 	objects.toViewModel(vm.object);
-	objects.toIdViewModel(vm.objectId);
+	objects.toIdViewModel(vm.parentId, vm.childId);
 
 	items.toViewModel(vm.object);
-	items.toIdViewModel(vm.itemId);
+	items.toIdViewModel(vm.parentId, vm.childId);
 
 	this->viewModel = vm;
 }

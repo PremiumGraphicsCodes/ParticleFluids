@@ -8,8 +8,3 @@ void MaterialScene::toViewModel(SceneViewModel& viewModel) const
 {
 	viewModel.materials.push_back(material);
 }
-
-void MaterialScene::toIdViewModel(SceneIdViewModel& viewModel) const
-{
-
-}

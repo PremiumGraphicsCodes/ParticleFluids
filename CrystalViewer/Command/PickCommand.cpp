@@ -28,8 +28,8 @@ std::string PickCommand::getName()
 void PickCommand::execute(World* world)
 {
 	const auto& p = args.position.getValue();
-	const auto id = world->getRenderer()->getObjectIdRenderer()->getId(p.x, p.y);
-	results.parentId.setValue( id.getParentId() );
-	results.childId.setValue( id.getChildId() );
+	const auto parentId = world->getRenderer()->getParentIdRenderer()->getId(p.x, p.y);
+	results.parentId.setValue( parentId.getId() );
+//	results.childId.setValue( id.getChildId() );
 }
 

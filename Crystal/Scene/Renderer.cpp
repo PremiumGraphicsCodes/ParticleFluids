@@ -30,10 +30,10 @@ bool Renderer::build()
 	if (!objectRenderer.build()) {
 		return false;
 	}
-	if (!objectIdRenderer.build()) {
+	if (!parentIdRenderer.build()) {
 		return false;
 	}
-	if (!itemIdRenderer.build()) {
+	if (!childIdRenderer.build()) {
 		return false;
 	}
 
@@ -47,8 +47,8 @@ bool Renderer::build()
 void Renderer::render(const int width, const int height, const ViewModel& vm)
 {
 	objectRenderer.render(camera.get(), vm.object);
-	objectIdRenderer.render(camera.get(), vm.objectId);
-	itemIdRenderer.render(camera.get(), vm.itemId);
+	parentIdRenderer.render(camera.get(), vm.parentId);
+	childIdRenderer.render(camera.get(), vm.childId);
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);

@@ -23,8 +23,6 @@ public:
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
-	void toIdViewModel(SceneIdViewModel& viewModel) const override;
-
 	bool build();
 
 private:

@@ -22,8 +22,3 @@ void TextureScene::toViewModel(SceneViewModel& viewModel) const
 {
 	viewModel.textures.push_back(texture);
 }
-
-void TextureScene::toIdViewModel(SceneIdViewModel& viewModel) const
-{
-
-}

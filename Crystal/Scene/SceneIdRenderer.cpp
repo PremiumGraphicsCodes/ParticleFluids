@@ -28,9 +28,9 @@ bool SceneIdRenderer::build()
 
 void SceneIdRenderer::render(ICamera* camera, const SceneIdViewModel& vm)
 {
-	const auto& pointBuffers = vm.getPointIdBuffers();
-	const auto& lineBuffers = vm.getLindIdBuffers();
-	const auto& triangleBuffers = vm.getTriangleIdBuffers();
+	const auto& pointBuffers = vm.pointIdBuffers;
+	const auto& lineBuffers = vm.lineIdBuffers;
+	const auto& triangleBuffers = vm.triangleIdBuffers;
 
 	frameBufferObject.setTexture(texture);
 	//texture.bind();

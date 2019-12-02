@@ -10,7 +10,3 @@ void LightScene::toViewModel(SceneViewModel& viewModel) const
 {
 	viewModel.lights.push_back(light);
 }
-
-void LightScene::toIdViewModel(SceneIdViewModel& viewModel) const
-{
-}

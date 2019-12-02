@@ -38,10 +38,10 @@ void Scene::toViewModel(SceneViewModel& viewModel) const
 	}
 }
 
-void Scene::toIdViewModel(SceneIdViewModel& viewModel) const
+void Scene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
 {
 	for (auto c : children) {
-		c->toIdViewModel(viewModel);
+		c->toIdViewModel(parentIdViewModel, childIdViewModel);
 	}
 }
 

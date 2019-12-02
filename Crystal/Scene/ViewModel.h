@@ -9,12 +9,9 @@ namespace Crystal {
 class ViewModel
 {
 public:
-	ViewModel() {}
-
 	SceneViewModel object;
-	SceneIdViewModel objectId;
-
-	SceneIdViewModel itemId;
+	SceneIdViewModel parentId;
+	SceneIdViewModel childId;
 };
 	}
 }

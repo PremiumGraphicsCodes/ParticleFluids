@@ -37,8 +37,6 @@ public:
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
-	void toIdViewModel(SceneIdViewModel& viewModel) const override;
-
 
 private:
 	Math::Vector3dd translate;

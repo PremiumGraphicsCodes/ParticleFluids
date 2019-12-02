@@ -26,7 +26,9 @@ public:
 
 	SceneRenderer* getObjectRenderer() { return &objectRenderer; }
 
-	SceneIdRenderer* getObjectIdRenderer() { return &objectIdRenderer; }
+	SceneIdRenderer* getParentIdRenderer() { return &parentIdRenderer; }
+
+	SceneIdRenderer* getChildIdRenderer() { return &childIdRenderer; }
 
 	void setShowOffScreen(const bool b) { this->showOffScreen = b; }
 
@@ -36,8 +38,8 @@ private:
 	Shader::OnScreenRenderer renderer;
 
 	SceneRenderer objectRenderer;
-	SceneIdRenderer objectIdRenderer;
-	SceneIdRenderer itemIdRenderer;
+	SceneIdRenderer parentIdRenderer;
+	SceneIdRenderer childIdRenderer;
 
 	bool showOffScreen;
 

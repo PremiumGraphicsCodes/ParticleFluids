@@ -40,7 +40,7 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 	viewModel.triangleBuffers.push_back(buffer);
 }
 
-void PolygonMeshScene::toIdViewModel(SceneIdViewModel& viewModel) const
+void PolygonMeshScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
 {
 	const auto objectId = getId();
 	const auto& vertices = getShape()->getVertices();
@@ -51,8 +51,9 @@ void PolygonMeshScene::toIdViewModel(SceneIdViewModel& viewModel) const
 
 	LineBuffer buffer;
 	for (auto f : faces) {
-		Graphics::DrawableID did(objectId, childId++);
-		const auto& idColor = did.toColor();
+		Graphics::DrawableID parentDid(objectId);
+		Graphics::DrawableID childDid(childId++);
+		const auto& idColor = parentDid.toColor();
 		const auto& vIds = f.getVertexIds();
 
 		buffer.addVertex( positions[ vertices[vIds[0]].positionId ], idColor);
@@ -62,7 +63,7 @@ void PolygonMeshScene::toIdViewModel(SceneIdViewModel& viewModel) const
 		buffer.addIndex(index++);
 		buffer.addIndex(index++);
 	}
-	viewModel.triangleIdBuffers.push_back(buffer);
+	parentIdViewModel.triangleIdBuffers.push_back(buffer);
 }
 
 void PolygonMeshScene::getBoundingBox(Crystal::Math::Box3d& boundingBox) const

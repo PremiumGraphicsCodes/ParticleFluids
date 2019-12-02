@@ -62,7 +62,7 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 	viewModel.lineBuffers.push_back(buffer);
 }
 
-void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
+void WireFrameScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
 {
 	if (!isVisible()) {
 		return;
@@ -74,11 +74,12 @@ void WireFrameScene::toIdViewModel(SceneIdViewModel& viewModel) const
 	const auto& positions = shape->getPositions();
 	LineBuffer lineBuffer(getAttribute().width);
 	for (const auto& l : positions) {
-		Graphics::DrawableID did(objectId, childId++);
-		lineBuffer.addVertex(l, did.toColor());
+		Graphics::DrawableID parentDid(objectId);
+		Graphics::DrawableID childDid(childId++);
+		lineBuffer.addVertex(l, parentDid.toColor());
 		lineBuffer.addIndex(index++);
 	}
-	viewModel.lineIdBuffers.push_back(lineBuffer);
+	parentIdViewModel.lineIdBuffers.push_back(lineBuffer);
 }
 
 Vector3dd WireFrameScene::getPosition(const int index) const

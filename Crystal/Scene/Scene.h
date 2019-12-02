@@ -22,7 +22,7 @@ public:
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
-	void toIdViewModel(SceneIdViewModel& viewModel) const override;
+	void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
 private:
 };

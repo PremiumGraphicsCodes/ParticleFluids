@@ -8,7 +8,7 @@ namespace Crystal {
 class DrawableID
 {
 public:
-	DrawableID(const unsigned char parentId, const unsigned int childId);
+	explicit DrawableID(const unsigned int id);
 
 	explicit DrawableID(const ColorRGBAf& c);
 
@@ -18,18 +18,9 @@ public:
 
 	void fromColor(const ColorRGBAuc& c);
 
-	ColorRGBAf toColor() const {
-		const float red = (childId % 256) / 255.0f;
-		const float green = ((childId / 256) % 256) / 255.0f;
-		const float blue = ((childId / 256 / 256) % (256 * 256)) / 255.0f;
-		const float alpha = getParentId() / 255.0f;
-		return ColorRGBAf(red, green, blue, alpha);
-	}
+	ColorRGBAf toColor() const;
 
-	bool equals(const DrawableID& rhs) const {
-		return this->childId == rhs.childId &&
-			this->parentId == rhs.parentId;
-	}
+	bool equals(const DrawableID& rhs) const;
 
 	bool operator==(const DrawableID& rhs) const { return equals(rhs); }
 
@@ -39,12 +30,9 @@ public:
 
 	bool operator>(const DrawableID& rhs) const { return childId > rhs.childId; }
 
-	unsigned int getParentId() const { return parentId; }
-
-	unsigned int getChildId() const { return childId; }
+	unsigned int getId() const { return childId; }
 
 private:
-	unsigned int parentId;
 	unsigned int childId;
 };
 

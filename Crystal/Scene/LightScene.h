@@ -38,8 +38,6 @@ public:
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
-	void toIdViewModel(SceneIdViewModel& viewModel) const override;
-
 private:
 	Graphics::PointLight light;
 };
