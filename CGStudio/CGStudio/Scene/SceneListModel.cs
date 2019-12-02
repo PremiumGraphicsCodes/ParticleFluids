@@ -194,6 +194,15 @@ namespace PG.CGStudio.Scene
             Sync();
         }
 
+        public void Clear(int layer)
+        {
+            var command = new PG.CLI.Command(PG.ClearLabels.CommandNameLabel);
+            command.SetArg(PG.ClearLabels.LayerLabel, layer);
+            command.Execute(adapter);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Render();
+            Sync();
+        }
 
         public void Sync()
         {
