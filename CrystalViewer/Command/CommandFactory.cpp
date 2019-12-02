@@ -22,6 +22,7 @@
 #include "TextureCreateCommand.h"
 #include "ShapeSelectCommand.h"
 #include "DeleteCommand.h"
+#include "ClearCommand.h"
 
 using namespace Crystal::Command;
 
@@ -101,6 +102,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == DeleteCommand::getName()) {
 		return std::make_unique<DeleteCommand>();
+	}
+	else if (name == ClearCommand::getName()) {
+		return std::make_unique<ClearCommand>();
 	}
 
 	assert(false);

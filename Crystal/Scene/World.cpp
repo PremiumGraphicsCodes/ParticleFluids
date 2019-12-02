@@ -45,6 +45,11 @@ void World::clear()
 	}
 }
 
+void World::clear(int layer)
+{
+	scenes[layer]->clear();
+}
+
 void World::addScene(int layer, IScene* scene)
 {
 	scenes[layer]->addScene(scene);

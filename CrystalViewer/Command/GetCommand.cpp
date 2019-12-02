@@ -49,6 +49,9 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 		auto shapeScene = world->getObjects()->findSceneById<IShapeScene*>(id);		
 		return std::any(shapeScene->getShape()->getBoundingBox());
 	}
+	else if (name == GetLabels::IsPickableLabel) {
+		return std::any(scene->isPickable());
+	}
 	assert(false);
 	return std::any(0);
 }

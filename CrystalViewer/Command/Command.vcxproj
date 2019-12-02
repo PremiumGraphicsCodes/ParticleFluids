@@ -157,6 +157,7 @@
     <ClInclude Include="CameraRotateCommand.h" />
     <ClInclude Include="CameraTranslateCommand.h" />
     <ClInclude Include="CameraZoomCommand.h" />
+    <ClInclude Include="ClearCommand.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="DeleteCommand.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="CameraRotateCommand.cpp" />
     <ClCompile Include="CameraTranslateCommand.cpp" />
     <ClCompile Include="CameraZoomCommand.cpp" />
+    <ClCompile Include="ClearCommand.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="DeleteCommand.cpp" />

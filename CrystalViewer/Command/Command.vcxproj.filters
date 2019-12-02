@@ -137,6 +137,9 @@
     <ClInclude Include="Public\DeleteLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="ClearCommand.h">
+      <Filter>World</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -225,6 +228,9 @@
     <ClCompile Include="DeleteCommand.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="ClearCommand.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -277,6 +283,9 @@
     </Filter>
     <Filter Include="Scene\Appearance\Texture">
       <UniqueIdentifier>{0488bdbf-75e0-4a40-aa75-75a3de41e196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World">
+      <UniqueIdentifier>{fec791a6-45c4-43d2-a4c3-8aa0990ce47a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

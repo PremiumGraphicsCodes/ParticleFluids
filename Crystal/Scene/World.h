@@ -24,6 +24,8 @@ public:
 
 	void clear();
 
+	void clear(int layer);
+
 	Scene* getObjects() { return scenes[1].get(); }
 
 	Scene* getItems() { return scenes[0].get(); }

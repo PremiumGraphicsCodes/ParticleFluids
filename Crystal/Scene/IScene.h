@@ -50,6 +50,8 @@ public:
 
 	bool _isPickable;
 
+	bool isPickable() const { return _isPickable; }
+
 	virtual SceneType getType() const = 0;
 
 	void addScene(IScene* scene) {
