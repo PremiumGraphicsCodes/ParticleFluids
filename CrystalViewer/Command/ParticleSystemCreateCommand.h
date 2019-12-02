@@ -23,7 +23,7 @@ public:
 		Arg< float > pointSize;
 		Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;
-		Arg< bool > isItem;
+		Arg< int > layer;
 	};
 
 	struct Results : IResults

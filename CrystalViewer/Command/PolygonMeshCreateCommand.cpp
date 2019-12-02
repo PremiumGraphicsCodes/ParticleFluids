@@ -17,7 +17,8 @@ PolygonMeshCreateCommand::Args::Args() :
 	texCoords(PolygonMeshCreateLabels::TexCoordsLabel, {}),
 	vertices(PolygonMeshCreateLabels::VerticesLabel, {}),
 	faces(PolygonMeshCreateLabels::FacesLabel, {}),
-	name(PolygonMeshCreateLabels::NameLabel, std::string(""))
+	name(PolygonMeshCreateLabels::NameLabel, std::string("")),
+	layer(PolygonMeshCreateLabels::LayerLabel, 1)
 {
 	add(&positions);
 	add(&normals);
@@ -25,6 +26,7 @@ PolygonMeshCreateCommand::Args::Args() :
 	add(&vertices);
 	add(&faces);
 	add(&name);
+	add(&layer);
 }
 
 PolygonMeshCreateCommand::Results::Results() :
@@ -48,7 +50,7 @@ void PolygonMeshCreateCommand::execute(World* world)
 	mesh->faces = args.faces.getValue();
 
 	auto shape = world->getSceneFactory()->createPolygonMeshScene(mesh, args.name.getValue());
-	world->getObjects()->addScene(shape);
+	world->addScene(args.layer.getValue(), shape);
 	const auto newId = shape->getId();
 
 	world->updateViewModel();

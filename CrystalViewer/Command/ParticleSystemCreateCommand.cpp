@@ -14,13 +14,13 @@ ParticleSystemCreateCommand::Args::Args() :
 	pointSize(ParticleSystemCreateLabels::PointSizeLabel, 1.0f),
 	color(ParticleSystemCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
 	name(ParticleSystemCreateLabels::NameLabel, std::string("")),
-	isItem(ParticleSystemCreateLabels::IsItemLabel, false)
+	layer(ParticleSystemCreateLabels::LayerLabel, 1)
 {
 	add(&positions);
 	add(&pointSize);
 	add(&color);
 	add(&name);
-	add(&isItem);
+	add(&layer);
 }
 
 ParticleSystemCreateCommand::Results::Results() :
@@ -42,15 +42,8 @@ void ParticleSystemCreateCommand::execute(World* world)
 	attr.color = args.color.getValue();
 	attr.size = args.pointSize.getValue();
 	auto name = args.name.getValue();
-	if (args.isItem.getValue()) {
-		auto scene = world->getSceneFactory()->createParticleSystemScene(positions, attr, name);
-		world->getItems()->addScene(scene);
-		results.newId.setValue(scene->getId());
-	}
-	else {
-		auto scene = world->getSceneFactory()->createParticleSystemScene(positions, attr, name);
-		world->getObjects()->addScene(scene);
-		results.newId.setValue(scene->getId());
-	}
+	auto scene = world->getSceneFactory()->createParticleSystemScene(positions, attr, name);
+	world->addScene(args.layer.getValue(), scene);
+	results.newId.setValue(scene->getId());
 	world->updateViewModel();
 }

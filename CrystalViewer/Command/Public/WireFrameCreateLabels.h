@@ -10,6 +10,6 @@ namespace WireFrameCreateLabels
 	PublicLabel LineWidthLabel = "LineWidth";
 	PublicLabel ColorLabel = "Color";
 	PublicLabel NameLabel = "Name";
-	PublicLabel IsItemLabel = "IsItem";
+	PublicLabel LayerLabel = "Layer";
 	PublicLabel NewIdLabel = "NewId";
 }

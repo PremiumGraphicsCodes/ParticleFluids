@@ -27,6 +27,7 @@ public:
 		Arg< std::vector<Shape::Vertex > > vertices;
 		Arg< std::vector<Shape::Face > > faces;
 		Arg< std::string > name;
+		Arg< int > layer;
 	};
 
 	struct Results : IResults

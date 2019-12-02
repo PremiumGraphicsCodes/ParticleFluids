@@ -11,5 +11,6 @@ namespace PolygonMeshCreateLabels
 	PublicLabel VerticesLabel = "Vertices";
 	PublicLabel FacesLabel = "Faces";
 	PublicLabel NameLabel = "Name";
+	PublicLabel LayerLabel = "Layer";
 	PublicLabel NewIdLabel = "NewId";
 }

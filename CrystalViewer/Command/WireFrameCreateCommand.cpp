@@ -16,14 +16,14 @@ WireFrameCreateCommand::Args::Args() :
 	lineWidth(WireFrameCreateLabels::LineWidthLabel, 1.0f),
 	color(WireFrameCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
 	name(WireFrameCreateLabels::NameLabel, std::string("")),
-	isItem(WireFrameCreateLabels::IsItemLabel, false)
+	layer(WireFrameCreateLabels::LayerLabel, 1)
 {
 	add(&positions);
 	add(&edges);
 	add(&lineWidth);
 	add(&color);
 	add(&name);
-	add(&isItem);
+	add(&layer);
 }
 
 WireFrameCreateCommand::Results::Results() :
@@ -46,16 +46,8 @@ void WireFrameCreateCommand::execute(World* world)
 	attr.width = args.lineWidth.getValue();
 	const auto& name = args.name.getValue();
 	WireFrame* shape = new WireFrame(positions, edges);
-	if (args.isItem.getValue()) {
-		auto scene = world->getSceneFactory()->createWireFrameScene(shape, attr, name);
-		world->getItems()->addScene(scene);
-		results.newId.setValue(scene->getId());
-	}
-	else {
-		auto scene = world->getSceneFactory()->createWireFrameScene(shape, attr, name);
-		world->getObjects()->addScene(scene);
-		results.newId.setValue(scene->getId());
-	}
+	auto scene = world->getSceneFactory()->createWireFrameScene(shape, attr, name);
+	world->addScene(args.layer.getValue(), scene);
+	results.newId.setValue(scene->getId());
 	world->updateViewModel();
-
 }
