@@ -15,6 +15,12 @@ namespace PG {
 		public const string ZoomRatioLabel = "Ratio";
 	}
 
+	public class ClearLabels
+	{
+		public const string CommandNameLabel = "ClearCommand";
+		public const string LayerLabel = "Layer";
+	}
+
 	public class DeleteLabels
 	{
 		public const string CommandNameLabel = "DeleteCommand";
@@ -55,6 +61,7 @@ namespace PG {
 		public const string SceneTypeLabel = "SceneType";
 		public const string SceneTypeIdLabel = "SceneTypeId";
 		public const string BoundingBoxLabel = "BoundingBox";
+		public const string IsPickableLabel = "IsPickable";
 	}
 
 	public class LightCreateLabels
