@@ -11,7 +11,7 @@ void SetCommand::Set(World* world, const std::string& name, std::any value)
 {
 	if (name == SetLabels::CameraPositionLabel) {
 		const auto& pos = std::any_cast<Vector3dd>(value);
-		world->getRenderer()->getCamera()->moveTo(pos);
+		world->getRenderer()->getCamera()->setEye(pos);
 	}
 	else if (name == SetLabels::CameraProjectionMatrixLabel ) {
 		const auto& pos = std::any_cast<Matrix4dd>(value);

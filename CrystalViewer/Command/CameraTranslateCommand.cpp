@@ -19,5 +19,6 @@ std::string CameraTranslateCommand::getName()
 void CameraTranslateCommand::execute(World* scene)
 {
 	auto camera = scene->getRenderer()->getCamera();
-	camera->move(args.translate.getValue());
+	camera->moveEye(args.translate.getValue());
+	camera->moveTarget(args.translate.getValue());
 }

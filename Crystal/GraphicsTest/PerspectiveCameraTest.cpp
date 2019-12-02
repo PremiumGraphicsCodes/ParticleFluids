@@ -7,7 +7,7 @@ using namespace Crystal::Graphics;
 TEST(PerspectiveCameraTest, TestGetModelViewMatrix)
 {
 	PerspectiveCamera c;
-	c.moveTo(glm::vec3(0, 0, 10));
+	c.setEye(glm::vec3(0, 0, 10));
 	const auto& actual = c.getModelviewMatrix();
 	glm::mat4x4 expected(
 		1.0f, 0.0f, 0.0f, 0.0f,

@@ -45,5 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DrawableId.cpp" />
+    <ClCompile Include="ICamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="OrthogonalCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

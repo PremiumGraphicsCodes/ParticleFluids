@@ -19,7 +19,7 @@ void CameraFitCommand::execute(World* world)
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
 	camera->setTarget(boundingBox.getCenter());
-	camera->moveTo(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0));
+	camera->setEye(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0));
 }
 
 std::string CameraXYCommand::getName()
