@@ -1,15 +1,17 @@
 #include "ClearCommand.h"
 
+#include "Public/ClearLabels.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 std::string ClearCommand::getName()
 {
-	return "Clear";
+	return ClearLabels::CommandNameLabel;
 }
 
 ClearCommand::Args::Args() :
-	layer("Layer", 0)
+	layer(ClearLabels::LayerLabel, 0)
 {
 	add(&layer);
 }

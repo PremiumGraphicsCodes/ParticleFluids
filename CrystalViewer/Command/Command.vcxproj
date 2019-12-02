@@ -179,6 +179,7 @@
     <ClInclude Include="PickCommand.h" />
     <ClInclude Include="PolygonMeshCreateCommand.h" />
     <ClInclude Include="Public\CameraLabels.h" />
+    <ClInclude Include="Public\ClearLabels.h" />
     <ClInclude Include="Public\DeleteLabels.h" />
     <ClInclude Include="Public\FileExportLabels.h" />
     <ClInclude Include="Public\FileImportLabels.h" />

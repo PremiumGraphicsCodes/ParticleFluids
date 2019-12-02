@@ -140,6 +140,9 @@
     <ClInclude Include="ClearCommand.h">
       <Filter>World</Filter>
     </ClInclude>
+    <ClInclude Include="Public\ClearLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
