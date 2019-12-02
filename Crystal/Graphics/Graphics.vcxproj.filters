@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="ColorRGBA.h" />
-    <ClInclude Include="IImage.h" />
-    <ClInclude Include="Imagef.h" />
-    <ClInclude Include="Image.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Buffer1d.h">
       <Filter>Buffer</Filter>
@@ -32,8 +28,24 @@
     </ClInclude>
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="DrawableId.h" />
-    <ClInclude Include="ColorMap.h" />
-    <ClInclude Include="ColorHSV.h" />
+    <ClInclude Include="ColorHSV.h">
+      <Filter>Color</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorMap.h">
+      <Filter>Color</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorRGBA.h">
+      <Filter>Color</Filter>
+    </ClInclude>
+    <ClInclude Include="IImage.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Imagef.h">
+      <Filter>Image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffer">
@@ -41,6 +53,12 @@
     </Filter>
     <Filter Include="Camera">
       <UniqueIdentifier>{ec04ed76-8573-4453-ad52-821848307972}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Color">
+      <UniqueIdentifier>{bdfbf505-5f9d-4167-8c0a-736ee5e49df5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image">
+      <UniqueIdentifier>{1da5f409-1c9b-47a6-aaed-500963934114}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +71,9 @@
     </ClCompile>
     <ClCompile Include="PerspectiveCamera.cpp">
       <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorHSV.cpp">
+      <Filter>Color</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

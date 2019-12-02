@@ -38,6 +38,7 @@
     <ClInclude Include="PointLight.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ColorHSV.cpp" />
     <ClCompile Include="DrawableId.cpp" />
     <ClCompile Include="ICamera.cpp" />
     <ClCompile Include="OrthogonalCamera.cpp" />
