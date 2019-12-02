@@ -8,43 +8,20 @@ namespace Crystal {
 class DrawableID
 {
 public:
-	DrawableID(const unsigned char parentId, const unsigned int childId)
-	{
-		this->parentId = parentId;
-		this->childId = childId;
-	}
+	DrawableID(const unsigned char parentId, const unsigned int childId);
 
-	explicit DrawableID(const ColorRGBAf& c)
-	{
-		fromColor(c);
-	}
+	explicit DrawableID(const ColorRGBAf& c);
 
-	explicit DrawableID(const ColorRGBAuc& c)
-	{
-		fromColor(c);
-	}
+	explicit DrawableID(const ColorRGBAuc& c);
 
-	void fromColor(const ColorRGBAf& c) {
-		ColorRGBAuc uc(c.r * 255, c.g * 255, c.b * 255, c.a * 255);
-		fromColor(uc);
+	void fromColor(const ColorRGBAf& c);
 
-	}
-
-	void fromColor(const ColorRGBAuc& c) {
-		parentId = 0;
-		childId = 0;
-		parentId = c.a;
-		childId |= c.b;
-		childId <<= 8;
-		childId |= c.g;
-		childId <<= 8;
-		childId |= c.r;
-	}
+	void fromColor(const ColorRGBAuc& c);
 
 	ColorRGBAf toColor() const {
 		const float red = (childId % 256) / 255.0f;
 		const float green = ((childId / 256) % 256) / 255.0f;
-		const float blue = ((childId / 256 / 256) % (265 * 256)) / 255.0f;
+		const float blue = ((childId / 256 / 256) % (256 * 256)) / 255.0f;
 		const float alpha = getParentId() / 255.0f;
 		return ColorRGBAf(red, green, blue, alpha);
 	}

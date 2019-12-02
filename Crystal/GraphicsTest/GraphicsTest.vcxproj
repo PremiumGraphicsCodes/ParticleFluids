@@ -40,6 +40,14 @@
     <ClCompile Include="GraphicsTest.cpp" />
     <ClCompile Include="PerspectiveCameraTest.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Graphics\Graphics.vcxproj">
+      <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Math\Math.vcxproj">
+      <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

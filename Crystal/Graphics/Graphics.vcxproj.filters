@@ -43,4 +43,7 @@
       <UniqueIdentifier>{ec04ed76-8573-4453-ad52-821848307972}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DrawableId.cpp" />
+  </ItemGroup>
 </Project>
