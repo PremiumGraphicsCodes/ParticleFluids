@@ -48,6 +48,8 @@ public:
 
 	bool _isVisible;
 
+	bool _isPickable;
+
 	virtual SceneType getType() const = 0;
 
 	void addScene(IScene* scene) {

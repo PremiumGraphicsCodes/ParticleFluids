@@ -5,12 +5,14 @@ using namespace Crystal::Scene;
 IScene::IScene() :
 	id(-1),
 	_isVisible(false),
+	_isPickable(true),
 	parent(nullptr)
 {}
 
 IScene::IScene(const int id) :
 	id(id),
 	_isVisible(true),
+	_isPickable(true),
 	parent(nullptr)
 {}
 
@@ -18,6 +20,7 @@ IScene::IScene(const int id, const std::string& name) :
 	id(id),
 	name(name),
 	_isVisible(true),
+	_isPickable(true),
 	parent(nullptr)
 {}
 
