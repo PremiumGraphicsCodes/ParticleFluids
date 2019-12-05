@@ -46,6 +46,9 @@
     <ClInclude Include="Imagef.h">
       <Filter>Image</Filter>
     </ClInclude>
+    <ClInclude Include="ColorRGB.h">
+      <Filter>Color</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffer">
@@ -73,6 +76,9 @@
       <Filter>Camera</Filter>
     </ClCompile>
     <ClCompile Include="ColorHSV.cpp">
+      <Filter>Color</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorMap.cpp">
       <Filter>Color</Filter>
     </ClCompile>
   </ItemGroup>

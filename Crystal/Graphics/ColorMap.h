@@ -1,55 +1,29 @@
-#ifndef __CRYSTAL_GRAPHICS_COLOR_MAP_H__
-#define __CRYSTAL_GRAPHICS_COLOR_MAP_H__
+#pragma once
 
 #include <vector>
-#include "ColorRGBA.h"
-#include "../Util/UnCopyable.h"
 #include <cassert>
+#include "ColorRGBA.h"
 
 namespace Crystal {
 	namespace Graphics {
 
 class ColorMap {
 public:
-	ColorMap() :
-		min_(0.0),
-		max_(1.0)
-	{}
+	ColorMap();
 
-	ColorMap(const float min, const float max, const int resolution) :
-		min_(min),
-		max_(max),
-		colors(resolution)
-	{
-	}
+	ColorMap(const float min, const float max, const int resolution);
 
-	//ColorMap(const std::vector<ColorRGBAf >& colors);
+	void setColor(const int index, const Graphics::ColorRGBAf& color);
 
-	void setColor(const int index, const Graphics::ColorRGBAf& color) { colors[index] = color; }
+	int getResolution() const;
 
-	int getResolution() const { return static_cast<int>(colors.size()); }
+	float getNormalized(const float value) const;
 
-	//float getNormalized( const float v ) const { return range.getNormalized( v ); }
+	int getIndex(const float value) const;
 
-	float getNormalized(const float value) const {
-		return (value - min_) / (max_ - min_);
-	}
+	Graphics::ColorRGBAf getColorFromIndex(const int i) const;
 
-	int getIndex(const float value) const {
-		return static_cast<int>(getNormalized(value) * (getResolution() - 1));
-	}
-
-	Graphics::ColorRGBAf getColorFromIndex(const int i) const {
-		if (i >= colors.size()) {
-			colors.back();
-		}
-		return colors[i];
-	}
-
-	Graphics::ColorRGBAf getColor(const float v) const {
-		const int index = getIndex(v);
-		return getColorFromIndex(index);
-	}
+	Graphics::ColorRGBAf getColor(const float v) const;
 
 	Graphics::ColorRGBAf getInterpolatedColor(const float v) const {
 		if (v <= min_) {
@@ -119,5 +93,3 @@ private:
 
 	}
 }
-
-#endif

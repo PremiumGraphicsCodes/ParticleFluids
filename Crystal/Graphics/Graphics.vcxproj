@@ -25,6 +25,7 @@
     <ClInclude Include="Buffer4d.h" />
     <ClInclude Include="ColorHSV.h" />
     <ClInclude Include="ColorMap.h" />
+    <ClInclude Include="ColorRGB.h" />
     <ClInclude Include="ColorRGBA.h" />
     <ClInclude Include="DrawableId.h" />
     <ClInclude Include="IBuffer.h" />
@@ -39,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColorHSV.cpp" />
+    <ClCompile Include="ColorMap.cpp" />
     <ClCompile Include="DrawableId.cpp" />
     <ClCompile Include="ICamera.cpp" />
     <ClCompile Include="OrthogonalCamera.cpp" />

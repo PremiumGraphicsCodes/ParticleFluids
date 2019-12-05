@@ -36,6 +36,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ColorHSVTest.cpp" />
     <ClCompile Include="DrawableIdTest.cpp" />
     <ClCompile Include="GraphicsTest.cpp" />
     <ClCompile Include="PerspectiveCameraTest.cpp" />
