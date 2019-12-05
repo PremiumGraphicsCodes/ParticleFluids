@@ -37,9 +37,6 @@
     <ClInclude Include="ColorRGBA.h">
       <Filter>Color</Filter>
     </ClInclude>
-    <ClInclude Include="IImage.h">
-      <Filter>Image</Filter>
-    </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Image</Filter>
     </ClInclude>

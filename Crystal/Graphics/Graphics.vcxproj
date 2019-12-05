@@ -30,7 +30,6 @@
     <ClInclude Include="DrawableId.h" />
     <ClInclude Include="IBuffer.h" />
     <ClInclude Include="ICamera.h" />
-    <ClInclude Include="IImage.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Imagef.h" />
     <ClInclude Include="Material.h" />

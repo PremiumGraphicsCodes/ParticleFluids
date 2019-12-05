@@ -1,15 +1,15 @@
 #pragma once
 
-#include "IImage.h"
+#include <vector>
+#include "ColorRGBA.h"
 
 namespace Crystal {
 	namespace Graphics {
 
-class Imagef : public IImage
+class Imagef
 {
 public:
-	Imagef()
-	{}
+	Imagef();
 
 	Imagef(const int width, const int height);
 
@@ -73,7 +73,15 @@ public:
 		return dest;
 	}
 
+	int getWidth() const { return width; }
+
+	int getHeight() const { return height; }
+
+	int getIndex1d(const int x, const int y) const { return (y * width + x) * 4; }
+
 private:
+	int width;
+	int height;
 	std::vector< float > values;
 };
 

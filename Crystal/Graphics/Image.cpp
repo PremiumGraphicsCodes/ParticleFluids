@@ -2,20 +2,28 @@
 
 using namespace Crystal::Graphics;
 
+Image::Image() :
+	width(0),
+	height(0)
+{}
+
 Image::Image(const int width, const int height) :
-	IImage(width, height),
+	width(width),
+	height(height),
 	values(width* height * 4)
 {}
 
 Image::Image(const int width, const int height, const std::vector< unsigned char >& values) :
-	IImage(width, height),
+	width(width),
+	height(height),
 	values(values)
 {
 	assert(isValid());
 }
 
 Image::Image(const int width, const int height, const unsigned char v) :
-	IImage(width, height)
+	width(width),
+	height(height)
 {
 	values.resize(width * height * 4);
 	std::fill(values.begin(), values.end(), v);

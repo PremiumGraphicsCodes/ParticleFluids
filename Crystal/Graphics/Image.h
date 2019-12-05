@@ -1,15 +1,15 @@
 #pragma once
 
-#include "IImage.h"
+#include <vector>
+#include "ColorRGBA.h"
 
 namespace Crystal {
 	namespace Graphics {
 
-class Image : public IImage
+class Image
 {
 public:
-	Image()
-	{}
+	Image();
 
 	Image(const int width, const int height);
 
@@ -43,9 +43,16 @@ public:
 
 	Image reversed() const;
 
+	int getIndex1d(const int x, const int y) const { return (y * width + x) * 4; }
+
+	int getWidth() const { return width; }
+
+	int getHeight() const { return height; }
+
 private:
+	int width;
+	int height;
 	std::vector< unsigned char > values;
 };
-
 	}
 }

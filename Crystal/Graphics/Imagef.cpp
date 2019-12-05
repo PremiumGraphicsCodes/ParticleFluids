@@ -2,20 +2,28 @@
 
 using namespace Crystal::Graphics;
 
+Imagef::Imagef() :
+	width(0),
+	height(0)
+{}
+
 Imagef::Imagef(const int width, const int height) :
-	IImage(width, height),
+	width(width),
+	height(height),
 	values(width* height * 4)
 {}
 
 Imagef::Imagef(const int width, const int height, const std::vector< float >& values) :
-	IImage(width, height),
+	width(width),
+	height(height),
 	values(values)
 {
 	assert(isValid());
 }
 
 Imagef::Imagef(const int width, const int height, const float v) :
-	IImage(width, height)
+	width(width),
+	height(height)
 {
 	values.resize(width * height * 4);
 	std::fill(values.begin(), values.end(), v);
