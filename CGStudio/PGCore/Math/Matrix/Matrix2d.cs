@@ -80,6 +80,18 @@
             return new Vector2d(x, y);
         }
 
+        public Vector2d Row(int index)
+        {
+            System.Diagnostics.Debug.Assert(0 <= index && index <= 1);
+            return new Vector2d(x[index, 0], x[index, 1]);
+        }
+
+        public Vector2d Column(int index)
+        {
+            System.Diagnostics.Debug.Assert(0 <= index && index <= 1);
+            return new Vector2d(x[0, index], x[1, index]);
+        }
+
         public static Matrix2d operator/(Matrix2d m, double s)
         {
             return m * (1.0 / s);

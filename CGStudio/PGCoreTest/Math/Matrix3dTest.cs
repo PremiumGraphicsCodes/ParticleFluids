@@ -79,13 +79,11 @@ namespace PGCoreTest.Math
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
 
-            /*
             {
                 var actual = v * m;
-                var expected = new Vector2d(20, 23);
+                var expected = new Vector3d(80, 86, 92);
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
-            */
         }
 
     }

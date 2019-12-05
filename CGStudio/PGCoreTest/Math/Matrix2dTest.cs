@@ -41,6 +41,26 @@ namespace PGCoreTest.Math
         }
 
         [TestMethod]
+        public void TestRow()
+        {
+            var m = new Matrix2d
+                (
+                00, 01,
+                10, 11
+                );
+            {
+                var actual = m.Row(0);
+                var expected = new Vector2d(0, 1);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+            {
+                var actual = m.Row(1);
+                var expected = new Vector2d(10, 11);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+        }
+
+        [TestMethod]
         public void TestMutiply()
         {
             {

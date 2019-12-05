@@ -7,7 +7,7 @@ namespace PGCoreTest.Math
     [TestClass]
     public class Vector2dTest
     {
-        private double tolerance = 1.0e-9;
+        private readonly double tolerance = 1.0e-9;
 
         [TestMethod]
         public void TestLengthSquared()

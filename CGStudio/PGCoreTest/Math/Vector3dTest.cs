@@ -7,7 +7,7 @@ namespace PGCoreTest
     [TestClass]
     public class Vector3dTest
     {
-        private double tolerance = 1.0e-6;
+        private readonly double tolerance = 1.0e-6;
 
         [TestMethod]
         public void TestLengthSquard()
