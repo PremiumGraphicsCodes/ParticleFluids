@@ -35,7 +35,7 @@ PG::Core::Math::Vector3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Vecto
 
 Crystal::Math::Line3dd PG::CLI::Converter::toCpp(PG::Core::Math::Line3d^ src)
 {
-	return Crystal::Math::Line3dd(toCpp(src->Start), toCpp(src->Dir));
+	return Crystal::Math::Line3dd(toCpp(src->Start), toCpp(src->Direction));
 }
 
 PG::Core::Math::Line3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Line3dd& src)
