@@ -121,7 +121,7 @@
 
         public Vector4d Column(int index)
         {
-            System.Diagnostics.Debug.Assert(0 <= index && index <= 2);
+            System.Diagnostics.Debug.Assert(0 <= index && index <= 3);
             return new Vector4d(x[0, index], x[1, index], x[2, index], x[3, index]);
         }
 

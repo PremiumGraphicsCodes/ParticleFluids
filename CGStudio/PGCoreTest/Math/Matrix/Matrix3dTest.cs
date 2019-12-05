@@ -34,7 +34,12 @@ namespace PGCoreTest.Math
             }
 
             {
-                var matrix = new Matrix3d(0, 1, 2, 10, 11, 12, 20, 21, 22);
+                var matrix = new Matrix3d
+                    (
+                    0, 1, 2,
+                    10, 11, 12,
+                    20, 21, 22
+                    );
                 var actual = matrix.Transposed();
                 var expected = new Matrix3d(0, 10, 20, 1, 11, 21, 2, 12, 22);
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
@@ -55,9 +60,19 @@ namespace PGCoreTest.Math
         [TestMethod]
         public void TestMultipy()
         {
-            var matrix = new Matrix3d(2, 1, 3, 1, -1, 2, 1, 2, 1);
+            var matrix = new Matrix3d
+                (
+                2, 1, 3,
+                1,-1, 2,
+                1, 2, 1
+                );
             var actual = matrix * matrix;
-            var expected = new Matrix3d(8, 7, 11, 3, 6, 3, 5, 1, 8);
+            var expected = new Matrix3d
+                (
+                8, 7, 11,
+                3, 6, 3,
+                5, 1, 8
+                );
             Assert.IsTrue(expected.IsSame(actual, tolerance));
         }
 
@@ -85,6 +100,5 @@ namespace PGCoreTest.Math
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
         }
-
     }
 }

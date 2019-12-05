@@ -124,5 +124,30 @@ namespace PGCoreTest.Math
             Assert.IsTrue(expected.IsSame(actual, tolerance));
         }
 
+        [TestMethod]
+        public void TestMutiplyWithVector()
+        {
+            var m = new Matrix4d
+                (
+                00, 01, 02, 03,
+                10, 11, 12, 13,
+                20, 21, 22, 23,
+                30, 31, 32, 33
+                );
+
+            var v = new Vector4d(1, 2, 3, 4);
+
+            {
+                var actual = m * v;
+                var expected = new Vector4d(20, 120, 220, 320);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+
+            {
+                var actual = v * m;
+                var expected = new Vector4d(200, 210, 220, 230);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+        }
     }
 }
