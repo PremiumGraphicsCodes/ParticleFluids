@@ -76,6 +76,75 @@ namespace PGCoreTest.Math
         }
 
         [TestMethod]
+        public void TestRow()
+        {
+            var m = new Matrix4d
+                (
+                00, 01, 02, 03,
+                10, 11, 12, 13,
+                20, 21, 22, 23,
+                30, 31, 32, 33
+                );
+
+            {
+                var actual = m.Row(0);
+                var expected = new Vector4d(0, 1, 2, 3);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+            {
+                var actual = m.Row(1);
+                var expected = new Vector4d(10, 11, 12, 13);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+            {
+                var actual = m.Row(2);
+                var expected = new Vector4d(20, 21, 22, 23);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+            {
+                var actual = m.Row(3);
+                var expected = new Vector4d(30, 31, 32, 33);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+        }
+
+        [TestMethod]
+        public void TestColumn()
+        {
+            var m = new Matrix4d
+                (
+                00, 01, 02, 03,
+                10, 11, 12, 13,
+                20, 21, 22, 23,
+                30, 31, 32, 33
+                );
+
+            {
+                var actual = m.Column(0);
+                var expected = new Vector4d(0, 10, 20, 30);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+
+            {
+                var actual = m.Column(1);
+                var expected = new Vector4d(1, 11, 21, 31);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+
+            {
+                var actual = m.Column(2);
+                var expected = new Vector4d(2, 12, 22, 32);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+
+            {
+                var actual = m.Column(3);
+                var expected = new Vector4d(3, 13, 23, 33);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+        }
+
+        [TestMethod]
         public void TestMultipyByScalar()
         {
             var matrix = new Matrix4d
