@@ -113,6 +113,18 @@
             return m;
         }
 
+        public Vector4d Row(int index)
+        {
+            System.Diagnostics.Debug.Assert(0 <= index && index <= 3);
+            return new Vector4d(x[index, 0], x[index, 1], x[index, 2], x[index,3]);
+        }
+
+        public Vector4d Column(int index)
+        {
+            System.Diagnostics.Debug.Assert(0 <= index && index <= 2);
+            return new Vector4d(x[0, index], x[1, index], x[2, index], x[3, index]);
+        }
+
         /*
         public static Matrix4d operator*(Matrix4d m, Vector4d v)
         {
@@ -136,6 +148,24 @@
         public static Matrix4d operator /(Matrix4d m, double s)
         {
             return m * (1.0 / s);
+        }
+
+        public static Vector4d operator *(Vector4d v, Matrix4d m)
+        {
+            var x = v.Dot(m.Column(0));
+            var y = v.Dot(m.Column(1));
+            var z = v.Dot(m.Column(2));
+            var w = v.Dot(m.Column(3));
+            return new Vector4d(x, y, z, w);
+        }
+
+        public static Vector4d operator *(Matrix4d m, Vector4d v)
+        {
+            var x = v.Dot(m.Row(0));
+            var y = v.Dot(m.Row(1));
+            var z = v.Dot(m.Row(2));
+            var w = v.Dot(m.Row(3));
+            return new Vector4d(x, y, z, w);
         }
 
         public bool IsSame(Matrix4d rhs, double tolerance)

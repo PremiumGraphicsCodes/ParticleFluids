@@ -68,15 +68,15 @@
 
         public static Vector2d operator *(Vector2d v, Matrix2d m)
         {
-            var x = v.X * m.x[0, 0] + v.Y * m.X[1, 0];
-            var y = v.X * m.x[0, 1] + v.Y * m.X[1, 1];
+            var x = v.Dot( m.Column(0) );
+            var y = v.Dot( m.Column(1) );
             return new Vector2d(x, y);
         }
 
         public static Vector2d operator *(Matrix2d m, Vector2d v)
         {
-            var x = m.x[0, 0] * v.X + m.x[0, 1] * v.Y;
-            var y = m.x[1, 0] * v.X + m.X[1, 1] * v.Y;
+            var x = v.Dot( m.Row(0) );
+            var y = v.Dot( m.Row(1) );
             return new Vector2d(x, y);
         }
 
