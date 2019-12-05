@@ -29,6 +29,8 @@ public:
 
 	ColorRGBf toColorRGBf() const;
 
+	ColorRGBuc toColorRGBuc() const;
+
 private:
 	float h;
 	float s;

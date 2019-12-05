@@ -43,6 +43,7 @@
     <ClCompile Include="ColorMap.cpp" />
     <ClCompile Include="DrawableId.cpp" />
     <ClCompile Include="ICamera.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="OrthogonalCamera.cpp" />
     <ClCompile Include="PerspectiveCamera.cpp" />
   </ItemGroup>

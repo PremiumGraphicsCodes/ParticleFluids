@@ -81,5 +81,8 @@
     <ClCompile Include="ColorMap.cpp">
       <Filter>Color</Filter>
     </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

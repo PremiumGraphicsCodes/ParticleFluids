@@ -48,3 +48,13 @@ ColorRGBf ColorHSV::toColorRGBf() const
 		return ColorRGBf(0.0f, 0.0f, 0.0f);
 	}
 }
+
+ColorRGBuc ColorHSV::toColorRGBuc() const
+{
+	const auto c = toColorRGBf();
+	const auto r = c.r * 255;
+	const auto g = c.g * 255;
+	const auto b = c.b * 255;
+	return ColorRGBuc(r, g, b);
+}
+
