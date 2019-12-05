@@ -70,23 +70,23 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Math\Line3dTest.cs" />
-    <Compile Include="Math\Sphere3dTest.cs" />
-    <Compile Include="Math\Box3dTest.cs" />
+    <Compile Include="Math\Primitive3d\Line3dTest.cs" />
+    <Compile Include="Math\Primitive3d\Sphere3dTest.cs" />
+    <Compile Include="Math\Primitive3d\Box3dTest.cs" />
     <Compile Include="Math\Matrix\Matrix3dTest.cs" />
     <Compile Include="Math\Matrix\Matrix2dTest.cs" />
-    <Compile Include="Math\Cylinder3dTest.cs" />
+    <Compile Include="Math\Primitive3d\Cylinder3dTest.cs" />
     <Compile Include="Math\Matrix\Matrix4dTest.cs" />
     <Compile Include="Math\Circle2dTest.cs" />
     <Compile Include="Math\QuaternionTest.cs" />
-    <Compile Include="Math\Circle3dTest.cs" />
+    <Compile Include="Math\Primitive3d\Circle3dTest.cs" />
     <Compile Include="Math\Vector\Vector4dTest.cs" />
     <Compile Include="Math\Vector\Vector2dTest.cs" />
     <Compile Include="Math\Vector\Vector3dTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shape\WireFrameTest.cs" />
     <Compile Include="Shape\WireFrameBuilderTest.cs" />
-    <Compile Include="Math\Quad3dTest.cs" />
+    <Compile Include="Math\Primitive3d\Quad3dTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -97,6 +97,9 @@
       <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
       <Name>PGCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Graphics\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

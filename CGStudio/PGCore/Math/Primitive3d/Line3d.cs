@@ -15,7 +15,7 @@
 
         public Vector3d End { get { return end; } }
 
-        public Vector3d Dir { get { return end - start; } }
+        public Vector3d Direction { get { return end - start; } }
 
         public double Length
         {
@@ -29,7 +29,7 @@
 
         public Vector3d GetPosition(double u)
         {
-            var dir = Dir;//.Normalized;
+            var dir = Direction;//.Normalized;
             return start + dir * u;
         }
     }
