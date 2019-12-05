@@ -60,5 +60,33 @@ namespace PGCoreTest.Math
             var expected = new Matrix3d(8, 7, 11, 3, 6, 3, 5, 1, 8);
             Assert.IsTrue(expected.IsSame(actual, tolerance));
         }
+
+        [TestMethod]
+        public void TestMutiplyWithVector()
+        {
+            var m = new Matrix3d
+                (
+                00, 01, 02,
+                10, 11, 12,
+                20, 21, 22
+                );
+
+            var v = new Vector3d(1, 2, 3);
+
+            {
+                var actual = m * v;
+                var expected = new Vector3d(8, 68, 128);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+
+            /*
+            {
+                var actual = v * m;
+                var expected = new Vector2d(20, 23);
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+            */
+        }
+
     }
 }

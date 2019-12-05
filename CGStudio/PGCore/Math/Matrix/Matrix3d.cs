@@ -125,6 +125,22 @@
             return result;
         }
 
+        public static Vector3d operator *(Vector3d v, Matrix3d m)
+        {
+            var x = v.X * m.x[0, 0] + v.Y * m.X[1, 0] + v.Z * m.X[2, 0];
+            var y = v.X * m.x[0, 1] + v.Y * m.X[1, 1] + v.Z * m.X[2, 1];
+            var z = v.X * m.X[0, 2] + v.Y * m.X[1, 2] + v.Z * m.X[2, 2];
+            return new Vector3d(x, y, z);
+        }
+
+        public static Vector3d operator *(Matrix3d m, Vector3d v)
+        {
+            var x = m.x[0, 0] * v.X + m.x[0, 1] * v.Y + m.X[0, 2] * v.Z;
+            var y = m.x[1, 0] * v.X + m.X[1, 1] * v.Y + m.X[1, 2] * v.Z;
+            var z = m.x[2, 0] * v.X + m.X[2, 1] * v.Y + m.X[2, 2] * v.Z;
+            return new Vector3d(x, y, z);
+        }
+
         public static Matrix3d operator/(Matrix3d m, double s)
         {
             return m * (1.0 / s);

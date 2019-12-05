@@ -97,7 +97,6 @@
                 );
         }
 
-
         public static Matrix4d operator*(Matrix4d lhs, Matrix4d rhs)
         {
             var m = Matrix4d.Zero();
@@ -113,6 +112,13 @@
             }
             return m;
         }
+
+        /*
+        public static Matrix4d operator*(Matrix4d m, Vector4d v)
+        {
+            var result =
+        }
+        */
 
         public static Matrix4d operator*(Matrix4d m, double s)
         {
