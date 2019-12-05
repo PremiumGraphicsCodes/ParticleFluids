@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_GRAPHICS_IMAGE_F_H__
-#define __CRYSTAL_GRAPHICS_IMAGE_F_H__
+#pragma once
 
 #include "IImage.h"
 
@@ -12,77 +11,23 @@ public:
 	Imagef()
 	{}
 
-	Imagef(const int width, const int height) :
-		IImage(width, height),
-		values(width * height * 4)
-	{}
+	Imagef(const int width, const int height);
 
-	Imagef(const int width, const int height, const std::vector< float >& values) :
-		IImage(width, height),
-		values(values)
-	{
-		assert(isValid());
-	}
+	Imagef(const int width, const int height, const std::vector< float >& values);
 
-	Imagef(const int width, const int height, const float v) :
-		IImage(width, height)
-	{
-		values.resize(width * height * 4);
-		std::fill(values.begin(), values.end(), v);
-		assert(isValid());
-	}
+	Imagef(const int width, const int height, const float v);
 
-	static Imagef White(const int width, const int height) {
-		std::vector<float> values(width * height * 4);
-		for (int i = 0; i < width * height; ++i) {
-			values[i * 4] = 1.0f;
-			values[i * 4 + 1] = 1.0f;
-			values[i * 4 + 2] = 1.0f;
-			values[i * 4 + 3] = 1.0f;
+	static Imagef White(const int width, const int height);
 
-		}
-		return Imagef(width, height, values);
-	}
+	static Imagef Black(const int width, const int height);
 
-	static Imagef Black(const int width, const int height) {
-		std::vector<float> values(width * height * 4);
-		for (int i = 0; i < width * height; ++i) {
-			values[i * 4] = 0;
-			values[i * 4 + 1] = 0;
-			values[i * 4 + 2] = 0;
-			values[i * 4 + 3] = 1.0f;
-		}
-		return Imagef(width, height, values);
-	}
+	static Imagef Red(const int width, const int height);
 
-	static Imagef Red(const int width, const int height) {
-		std::vector<float> values(width * height * 4);
-		for (int i = 0; i < width * height; ++i) {
-			values[i * 4] = 1.0f;
-			values[i * 4 + 3] = 1.0f;
-		}
-		return Imagef(width, height, values);
-	}
+	static Imagef Green(const int width, const int height);
 
-	static Imagef Green(const int width, const int height) {
-		std::vector<float> values(width * height * 4);
-		for (int i = 0; i < width * height; ++i) {
-			values[i * 4 + 1] = 1.0f;
-			values[i * 4 + 3] = 1.0f;
-		}
-		return Imagef(width, height, values);
-	}
+	static Imagef Blue(const int width, const int height);
 
-	static Imagef Blue(const int width, const int height) {
-		std::vector<float> values(width * height * 4);
-		for (int i = 0; i < width * height; ++i) {
-			values[i * 4 + 2] = 1.0f;
-			values[i * 4 + 3] = 1.0f;
-		}
-		return Imagef(width, height, values);
-	}
-
-	bool isValid() const { return ((getWidth() * getHeight() * 4) == values.size()); }
+	bool isValid() const;
 
 	void setColor(const int i, const int j, const ColorRGBAf& c) {
 		const auto index = getIndex1d(i, j);
@@ -114,6 +59,7 @@ public:
 	bool operator==(const Imagef& rhs) const { return equals(rhs); }
 
 	bool operator!=(const Imagef& rhs) const { return !equals(rhs); }
+
 	Imagef reversed()
 	{
 		Imagef dest(getWidth(), getHeight());
@@ -127,12 +73,9 @@ public:
 		return dest;
 	}
 
-
 private:
 	std::vector< float > values;
 };
 
 	}
 }
-
-#endif

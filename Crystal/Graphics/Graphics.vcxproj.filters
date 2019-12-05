@@ -84,5 +84,8 @@
     <ClCompile Include="Image.cpp">
       <Filter>Image</Filter>
     </ClCompile>
+    <ClCompile Include="Imagef.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
