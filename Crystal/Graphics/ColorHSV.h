@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ColorRGBA.h"
+#include "ColorRGB.h"
 #include <cassert>
 
 namespace Crystal {
@@ -27,7 +27,7 @@ public:
 
 	//bool isSame(const ColorHSV& rhs, const double tolerance) const;
 
-	ColorRGBAf toColorRGBA() const;
+	ColorRGBf toColorRGBf() const;
 
 private:
 	float h;

@@ -14,37 +14,37 @@ ColorHSV::ColorHSV(const float h, const float s, const float v) :
 	v(v)
 {}
 
-ColorRGBAf ColorHSV::toColorRGBA() const
+ColorRGBf ColorHSV::toColorRGBf() const
 {
 	const auto max = v;
 	const auto min = max - (s / 1.0f) * max;
 
 	if (0 <= h && h <= 60) {
 		const auto g = h / 60.0f * (max - min) + min;
-		return ColorRGBAf(max, g, min, 1.0f);
+		return ColorRGBf(max, g, min);
 	}
 	else if (h <= 120.0f) {
 		const auto r = (120.0f - h) / 60.0f * (max - min) + min;
-		return ColorRGBAf(r, max, min, 1.0f);
+		return ColorRGBf(r, max, min);
 	}
 	else if (h <= 180.0f) {
 		const auto b = (h - 120.0f) / 60.0f * (max - min) + min;
-		return ColorRGBAf(min, max, b, 1.0f);
+		return ColorRGBf(min, max, b);
 	}
 	else if (h <= 240.0f) {
 		const auto g = (240.0f - h) / 60.0f * (max - min) + min;
-		return ColorRGBAf(min, g, max, 1.0f);
+		return ColorRGBf(min, g, max);
 	}
 	else if (h <= 300.0f) {
 		const auto r = (h - 240.0f) / 60.0f * (max - min) + min;
-		return ColorRGBAf(r, min, max, 1.0f);
+		return ColorRGBf(r, min, max);
 	}
 	else if (h <= 360.0f) {
 		const auto b = (360.0f - h) / 60.0f * (max - min) + min;
-		return ColorRGBAf(max, min, b, 1.0f);
+		return ColorRGBf(max, min, b);
 	}
 	else {
 		assert(false);
-		return ColorRGBAf(0.0f, 0.0f, 0.0f, 1.0f);
+		return ColorRGBf(0.0f, 0.0f, 0.0f);
 	}
 }
