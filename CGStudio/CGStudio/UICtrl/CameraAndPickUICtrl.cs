@@ -40,8 +40,9 @@ namespace PG.CGStudio.UICtrl
             var matrix = PG.CLI.Command.Get<Matrix4d>(model, PG.GetLabels.CameraProjectionMatrixLabel);
 
             var diff = position - prevPosition;
+            var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix;
             var command = new PG.CLI.Command(PG.CameraLabels.CameraTranslateCommandLabel);
-            command.SetArg(PG.CameraLabels.TranslateLabel, new Vector3d(diff.X, diff.Y, 0.0));
+            command.SetArg(PG.CameraLabels.TranslateLabel, new Vector3d(v.X, v.Y, v.Z));
             command.Execute(model);
             Canvas3d.Instance.Render();
             prevPosition = position;
@@ -55,10 +56,13 @@ namespace PG.CGStudio.UICtrl
         public override void OnRightButtonDragging(Vector2d position)
         {
             var model = MainModel.Instance.World.Adapter;
+            var matrix = PG.CLI.Command.Get<Matrix4d>(model, PG.GetLabels.CameraProjectionMatrixLabel);
+
             var diff = position - prevPosition;
+            var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix;
             var command = new PG.CLI.Command(PG.CameraLabels.CameraRotateCommandLabel);
-            command.SetArg(PG.CameraLabels.RxLabel, (float)diff.X);
-            command.SetArg(PG.CameraLabels.RyLabel, (float)diff.Y);
+            command.SetArg(PG.CameraLabels.RxLabel, (float)v.X);
+            command.SetArg(PG.CameraLabels.RyLabel, (float)v.Y);
             command.Execute(model);
             Canvas3d.Instance.Render();
             prevPosition = position;
