@@ -79,6 +79,7 @@
     <Compile Include="Math\Matrix\Matrix4dTest.cs" />
     <Compile Include="Math\Circle2dTest.cs" />
     <Compile Include="Math\Primitive3d\Cone3dTest.cs" />
+    <Compile Include="Math\Primitive3d\Circle3dTest.cs" />
     <Compile Include="Math\QuaternionTest.cs" />
     <Compile Include="Math\Primitive3d\Ellipse3dTest.cs" />
     <Compile Include="Math\Vector\Vector4dTest.cs" />

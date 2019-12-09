@@ -31,12 +31,8 @@ namespace PG.Core.Math
 
         public Vector3d GetPosition(double u, double v, double w)
         {
-            var uu = u * 2.0 * System.Math.PI;
-            var r = w * Radius * (1.0 - v);
-            var x = r * System.Math.Cos(uu);
-            var y = r * System.Math.Sin(uu);
-            var z = v * Height;
-            return Bottom + new Vector3d(x, y, z);
+            var circle = ToCircleAt(w);
+            return circle.GetPosition(u, v);
         }
 
         public bool IsInside(Vector3d position)
@@ -44,14 +40,12 @@ namespace PG.Core.Math
             throw new NotImplementedException();
         }
 
-        /*
-        public Circle3d ToCircle(double p)
+        public Circle3d ToCircleAt(double p)
         {
             var radius = Radius * (1.0 - p);
             var z = p * Height;
             var center = Bottom + new Vector3d(0,0,z);
-            return new Circle3d(center, radius);
+            return new Circle3d(radius, center);
         }
-        */
     }
 }

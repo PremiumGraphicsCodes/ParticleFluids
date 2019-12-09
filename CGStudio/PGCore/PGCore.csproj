@@ -105,6 +105,7 @@
     <Compile Include="Math\Curve\ICurve3d.cs" />
     <Compile Include="Math\Curve\ISurface3d.cs" />
     <Compile Include="Math\Curve\IVolume3d.cs" />
+    <Compile Include="Math\Primitive3d\Circle3d.cs" />
     <Compile Include="Math\Primitive3d\Ellipse3d.cs" />
     <Compile Include="Math\Primitive3d\Cone3d.cs" />
     <Compile Include="Math\Primitive3d\Cylinder3d.cs" />
