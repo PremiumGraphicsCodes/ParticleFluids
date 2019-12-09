@@ -86,6 +86,29 @@ namespace PG.Core.Shape
             }
         }
 
+        public void Add(Cone3d cone, int udiv)
+        {
+            var topCenter = CreatePosition(cone.GetPosition(0.0, 0.0, 1.0));
+
+            // create bottom.
+            var bottomCenter = CreatePosition(cone.GetPosition(0.0, 0.0, 0.0));
+            var bottomVertices = new int[udiv + 1];
+            for (int i = 0; i <= udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                bottomVertices[i] = CreatePosition(cone.GetPosition(1.0, u, 0.0));
+            }
+            for (int i = 0; i <= udiv; ++i)
+            {
+                CreateEdge(bottomCenter, bottomVertices[i]);
+            }
+
+            for (int i = 0; i <= udiv; ++i)
+            {
+                CreateEdge(topCenter, bottomVertices[i]);
+            }
+        }
+
         public void Add(ISurface3d surface, int udiv, int vdiv)
         {
             var vertices = new int[udiv+1, vdiv+1];
