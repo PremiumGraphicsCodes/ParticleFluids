@@ -3,7 +3,7 @@
 #include "../../Crystal/Scene/IScene.h"
 #include "../../Crystal/Scene/IRenderer.h"
 
-#include "../Graphics/PerspectiveCamera.h"
+#include "../Graphics/ICamera.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -15,9 +15,7 @@ using namespace Crystal::UI;
 
 Renderer::Renderer() :
 	showOffScreen(false),
-	camera(new PerspectiveCamera(
-		1.0,
-		0.5f * PI,
+	camera(new ICamera(
 		Vector3df(0, 0, 0),
 		Vector3df(0, 0, -10.0),
 		1.0f, 10.0f))

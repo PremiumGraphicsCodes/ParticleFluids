@@ -39,7 +39,7 @@ public:
 
 	float getNear() const { return near_; }
 
-	virtual Math::Matrix4df getProjectionMatrix() const = 0;
+	Math::Matrix4df getProjectionMatrix() const;
 
 	void setRotation(const Math::Matrix4df& rotation) { this->rotation = rotation; }
 
@@ -66,6 +66,7 @@ protected:
 	float near_;
 	float far_;
 	float scale;
+	bool isOrtho;
 };
 
 	}

@@ -20,12 +20,6 @@
     <ClInclude Include="ICamera.h">
       <Filter>Camera</Filter>
     </ClInclude>
-    <ClInclude Include="OrthogonalCamera.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="PerspectiveCamera.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="DrawableId.h" />
     <ClInclude Include="ColorHSV.h">
@@ -64,12 +58,6 @@
   <ItemGroup>
     <ClCompile Include="DrawableId.cpp" />
     <ClCompile Include="ICamera.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="OrthogonalCamera.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="PerspectiveCamera.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
     <ClCompile Include="ColorHSV.cpp">
