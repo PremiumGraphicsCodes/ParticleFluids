@@ -41,6 +41,13 @@ void ICamera::setTarget(const Vector3df& target)
 	this->rotation = glm::lookAt(eye, target, up);
 }
 
+void ICamera::lookAt(const Vector3df& eye, const Vector3df& target, const Vector3df& up)
+{
+	this->eye = eye;
+	this->rotation = glm::lookAt(eye, target, up);
+}
+
+
 Matrix4df ICamera::getModelviewMatrix() const
 {
 	glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), eye);

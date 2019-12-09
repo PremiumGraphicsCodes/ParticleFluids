@@ -32,7 +32,7 @@ void CameraXYCommand::execute(World* world)
 	CameraFitCommand fitCommand;
 	fitCommand.execute(world);
 	auto camera = world->getRenderer()->getCamera();
-	camera->setRotation(
+	camera->setRotationMatrix(
 		Math::Matrix4dd
 		(
 			1,0,0,0,

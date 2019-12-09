@@ -15,7 +15,7 @@ void SetCommand::Set(World* world, const std::string& name, std::any value)
 	}
 	else if (name == SetLabels::CameraProjectionMatrixLabel ) {
 		const auto& pos = std::any_cast<Matrix4dd>(value);
-		world->getRenderer()->getCamera()->setRotation(pos);
+		world->getRenderer()->getCamera()->setRotationMatrix(pos);
 	}
 }
 

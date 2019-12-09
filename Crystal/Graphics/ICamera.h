@@ -23,6 +23,8 @@ public:
 
 	void setTarget(const Math::Vector3df& target);
 
+	void lookAt(const Math::Vector3df& eye, const Math::Vector3df& target, const Math::Vector3df& up);
+
 	Math::Vector3df getEye() const { return eye; }
 
 	Math::Matrix4df getModelviewMatrix() const;
@@ -36,10 +38,6 @@ public:
 	float getNear() const { return near_; }
 
 	Math::Matrix4df getProjectionMatrix() const;
-
-	void setRotation(const Math::Matrix4df& rotation) { this->rotation = rotation; }
-
-	Math::Matrix4df getRotation() const { return this->rotation; }
 
 	void rotate(const float azimuth, const float elevation);
 
