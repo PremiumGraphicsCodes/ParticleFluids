@@ -1,4 +1,5 @@
-﻿using PG.Core.Math;
+﻿using PG.Control.Math;
+using PG.Core.Math;
 
 namespace PG.CGStudio.UICtrl
 {
@@ -6,16 +7,15 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos;
 
-        private int ObjectId;
+        private Vector3dViewModel vectorViewModel;
 
         public ScaleUICtrl()
         {
-            ObjectId = -1;
         }
 
-        public ScaleUICtrl(int objectId)
+        public ScaleUICtrl(Vector3dViewModel vectorViewModel)
         {
-            this.ObjectId = objectId;
+            this.vectorViewModel = vectorViewModel;
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -30,17 +30,8 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
-            var canvas = Canvas3d.Instance;
-
             var v = (position - prevPos) * 0.1;
-            var command = new PG.CLI.Command("Scale");
-            command.SetArg("Id", ObjectId);
-            command.SetArg("Ratio", new Vector3d( v.X + 1.0, v.Y + 1.0, 1.0) );
-            command.Execute(MainModel.Instance.World.Adapter);
-
-            canvas.Update(MainModel.Instance.World);
-            canvas.Render();
+            vectorViewModel.Value += new Vector3d(v.X, v.Y, 0.0);
         }
-
     }
 }

@@ -53,7 +53,7 @@ namespace PG.CGStudio.Object.Transform
 
         private void OnScale()
         {
-            Canvas3d.Instance.UICtrl = new ScaleUICtrl(SelectViewModel.Id.Value);
+            //Canvas3d.Instance.UICtrl = new ScaleUICtrl(SelectViewModel.Id.Value);
         }
 
         private void OnRotate()
