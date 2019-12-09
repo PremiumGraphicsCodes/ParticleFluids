@@ -18,6 +18,10 @@ std::any GetCommand::Get(World* world, const std::string& name)
 		const auto& rot = world->getRenderer()->getCamera()->getProjectionMatrix();
 		return std::any(rot);
 	}
+	else if (name == GetLabels::CameraRotationMatrixLabel) {
+		const auto& rot = world->getRenderer()->getCamera()->getRotationMatrix();
+		return std::any(rot);
+	}
 	else if (name == GetLabels::SceneCountLabel) {
 		return static_cast<int>( world->getObjects()->getRoot()->getChildren().size() );
 	}

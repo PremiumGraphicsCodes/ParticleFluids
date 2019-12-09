@@ -53,6 +53,7 @@ namespace PG {
 	{
 		public const string CameraPositionLabel = "CameraPosition";
 		public const string CameraProjectionMatrixLabel = "CameraProjectionMatrix";
+		public const string CameraRotationMatrixLabel = "CameraRotationMatrix";
 		public const string PositionLabel = "Position";
 		public const string SceneCountLabel = "SceneCount";
 		public const string SceneListIdsLabel = "SceneListIds";

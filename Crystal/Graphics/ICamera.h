@@ -55,6 +55,8 @@ public:
 
 	Math::Vector3df getForward() const { return target - eye; }
 
+	Math::Matrix4df getRotationMatrix() const { return rotation; }
+
 protected:
 	Math::Vector3df target;
 	Math::Vector3df eye;
