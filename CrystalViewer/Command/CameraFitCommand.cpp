@@ -53,7 +53,14 @@ void CameraYZCommand::execute(World* world)
 	CameraFitCommand fitCommand;
 	fitCommand.execute(world);
 	auto camera = world->getRenderer()->getCamera();
-	camera->rotate(glm::radians(90.0f), 0.0);
+	const Matrix4df matrix
+	(
+		0, 0, 1, 0,
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 0, 1
+	);
+	camera->setRotationMatrix(matrix);
 }
 
 std::string CameraZXCommand::getName()
@@ -66,5 +73,12 @@ void CameraZXCommand::execute(World* world)
 	CameraFitCommand fitCommand;
 	fitCommand.execute(world);
 	auto camera = world->getRenderer()->getCamera();
-	camera->rotate(0.0, glm::radians(90.0f));
+	const Matrix4df matrix
+	(
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		1, 0, 0, 0,
+		0, 0, 0, 1
+	);
+	camera->setRotationMatrix(matrix);
 }

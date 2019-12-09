@@ -57,6 +57,8 @@ public:
 
 	Math::Matrix4df getRotationMatrix() const { return rotation; }
 
+	void setRotationMatrix(const Math::Matrix4df& matrix) { this->rotation = matrix; }
+
 protected:
 	Math::Vector3df target;
 	Math::Vector3df eye;
