@@ -45,6 +45,7 @@
                     <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="WFSphereGeneration"/>
                     <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="WFCylinderGeneration"/>
                     <Fluent:Button Header="Circle" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="WFCircleGeneration"/>
+                    <Fluent:Button Header="Cone" Command="{Binding NavigateCommand}" CommandParameter="WFConeGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="PolygonMesh" KeyTip="B">
                     <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMBoxGeneration"/>

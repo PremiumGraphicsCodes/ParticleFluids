@@ -43,5 +43,15 @@ namespace PG.Core.Math
         {
             throw new NotImplementedException();
         }
+
+        /*
+        public Circle3d ToCircle(double p)
+        {
+            var radius = Radius * (1.0 - p);
+            var z = p * Height;
+            var center = Bottom + new Vector3d(0,0,z);
+            return new Circle3d(center, radius);
+        }
+        */
     }
 }

@@ -188,6 +188,9 @@
       <DependentUpon>CircleGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\WireFrame\Generation\CircleGenerationViewModel.cs" />
+    <Compile Include="Scene\Shape\WireFrame\Generation\ConeGenerationView.xaml.cs">
+      <DependentUpon>ConeGenerationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scene\Shape\WireFrame\Generation\ConeGenerationViewModel.cs" />
     <Compile Include="Scene\Shape\WireFrame\WireFrameEditView.xaml.cs">
       <DependentUpon>WireFrameEditView.xaml</DependentUpon>
@@ -363,6 +366,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Shape\WireFrame\Generation\CircleGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Shape\WireFrame\Generation\ConeGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,6 +12,7 @@ using PG.CGStudio.Scene.Shape.Transform.Rotate;
 using PG.CGStudio.Scene.Shape.Transform.Scale;
 using PG.CGStudio.Scene.Shape.Trim;
 using PG.CGStudio.Scene.Shape.WireFrame;
+using PG.CGStudio.Scene.Shape.WireFrame.Generation;
 using PG.CGStudio.Selection;
 using PG.CGStudio.Texture;
 using Prism.Ioc;
@@ -40,6 +41,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Generation.WireFrame.SphereGenerationView>("WFSphereGeneration");
             containerRegistry.RegisterForNavigation<Generation.WireFrame.CylinderGenerationView>("WFCylinderGeneration");
             containerRegistry.RegisterForNavigation<Generation.WireFrame.CircleGenerationView>("WFCircleGeneration");
+            containerRegistry.RegisterForNavigation<ConeGenerationView>("WFConeGeneration");
 
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.BoxGenerationView>("PMBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMSphereGeneration");

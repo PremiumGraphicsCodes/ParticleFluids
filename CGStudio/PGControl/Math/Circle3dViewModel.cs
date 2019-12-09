@@ -18,11 +18,11 @@ namespace PG.Control.Math
         public Vector3dViewModel VVecViewModel { get; }
             = new Vector3dViewModel(new Vector3d(0,1,0));
 
-        public Circle3d Value
+        public Ellipse3d Value
         {
             get        
             {
-                return new Circle3d(CenterViewModel.Value, UVecViewModel.Value, VVecViewModel.Value);
+                return new Ellipse3d(CenterViewModel.Value, UVecViewModel.Value, VVecViewModel.Value);
             }
         }
     }

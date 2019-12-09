@@ -20,7 +20,7 @@ namespace PG.Core.Shape
             CreateEdge(v1, v2);
         }
 
-        public void Add(Circle3d circle, int udiv)
+        public void Add(Ellipse3d circle, int udiv)
         {
             var vs = new int[udiv];
             for(int i = 0; i < udiv; ++i)
@@ -88,7 +88,7 @@ namespace PG.Core.Shape
 
         public void Add(Cone3d cone, int udiv)
         {
-            var topCenter = CreatePosition(cone.GetPosition(0.0, 0.0, 1.0));
+            var topCenter = CreatePosition(cone.GetPosition(0.0, 1.0, 1.0));
 
             // create bottom.
             var bottomCenter = CreatePosition(cone.GetPosition(0.0, 0.0, 0.0));
@@ -96,7 +96,7 @@ namespace PG.Core.Shape
             for (int i = 0; i <= udiv; ++i)
             {
                 var u = i / (double)udiv;
-                bottomVertices[i] = CreatePosition(cone.GetPosition(1.0, u, 0.0));
+                bottomVertices[i] = CreatePosition(cone.GetPosition(u, 0.0, 0.0));
             }
             for (int i = 0; i <= udiv; ++i)
             {

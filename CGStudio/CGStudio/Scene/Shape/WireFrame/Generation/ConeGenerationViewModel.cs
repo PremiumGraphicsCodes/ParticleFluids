@@ -4,7 +4,7 @@ using Reactive.Bindings;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
-    class ConeGenerationViewModel
+    public class ConeGenerationViewModel
     {
         public Cone3dViewModel ConeViewModel { get; }
 

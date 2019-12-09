@@ -1,6 +1,6 @@
 ﻿namespace PG.Core.Math
 {
-    public class Circle3d
+    public class Ellipse3d
     {
         private Vector3d center;
         private Vector3d uvec;
@@ -12,12 +12,12 @@
             set { this.center = value; }
         }
 
-        public Circle3d() :
+        public Ellipse3d() :
             this(new Vector3d(0,0,0), new Vector3d(1,0,0), new Vector3d(0,1,0))
         {
         }
 
-        public Circle3d(Vector3d center, Vector3d uvec, Vector3d vvec)
+        public Ellipse3d(Vector3d center, Vector3d uvec, Vector3d vvec)
         {
             this.center = center;
             this.uvec = uvec;

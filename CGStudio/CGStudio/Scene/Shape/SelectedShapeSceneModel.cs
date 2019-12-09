@@ -91,7 +91,7 @@ namespace PG.CGStudio.Scene.Shape
         {
             var world = MainModel.Instance.World;
             var length = bb.Length.Max();
-            var circle = new Circle3d(bb.GetPosition(0.5, 0.5, 0.5), new Vector3d(length, 0.0, 0.0), new Vector3d(0.0, length, 0.0));
+            var circle = new Ellipse3d(bb.GetPosition(0.5, 0.5, 0.5), new Vector3d(length, 0.0, 0.0), new Vector3d(0.0, length, 0.0));
             var builder = new WireFrameBuilder();
             builder.Add(circle, 36);
             var appearance = new WireAppearance
@@ -106,7 +106,7 @@ namespace PG.CGStudio.Scene.Shape
         {
             var world = MainModel.Instance.World;
             var length = bb.Length.Max();
-            var circle = new Circle3d(bb.GetPosition(0.5, 0.5, 0.5), new Vector3d(length, 0.0, 0.0), new Vector3d(0.0, 0.0, length));
+            var circle = new Ellipse3d(bb.GetPosition(0.5, 0.5, 0.5), new Vector3d(length, 0.0, 0.0), new Vector3d(0.0, 0.0, length));
             var builder = new WireFrameBuilder();
             builder.Add(circle, 36);
             var appearance = new WireAppearance
