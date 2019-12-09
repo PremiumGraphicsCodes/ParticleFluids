@@ -51,7 +51,8 @@ namespace PG {
 
 	public class GetLabels
 	{
-		public const string CameraPositionLabel = "CameraPosition";
+		public const string CameraEyePositionLabel = "CameraEyePosition";
+		public const string CameraTargetPositionLabel = "CameraTargetPosition";
 		public const string CameraProjectionMatrixLabel = "CameraProjectionMatrix";
 		public const string CameraRotationMatrixLabel = "CameraRotationMatrix";
 		public const string PositionLabel = "Position";

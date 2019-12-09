@@ -137,6 +137,7 @@
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
+    <Compile Include="Scene\Appearance\Camera\CameraTransformViewModel.cs" />
     <Compile Include="Scene\Appearance\Light\LightAddView.xaml.cs">
       <DependentUpon>LightAddView.xaml</DependentUpon>
     </Compile>

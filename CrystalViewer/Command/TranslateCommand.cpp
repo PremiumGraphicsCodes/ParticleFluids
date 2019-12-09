@@ -17,7 +17,7 @@ TranslateCommand::Args::Args() :
 
 std::string TranslateCommand::getName()
 {
-	return TransformLabels::TransformCommandLabel;
+	return TransformLabels::TranslateCommandLabel;
 }
 
 void TranslateCommand::execute(World* world)
