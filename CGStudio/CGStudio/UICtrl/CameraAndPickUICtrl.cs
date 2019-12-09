@@ -40,7 +40,7 @@ namespace PG.CGStudio.UICtrl
             var matrix = PG.CLI.Command.Get<Matrix4d>(model, PG.GetLabels.CameraProjectionMatrixLabel);
 
             var diff = position - prevPosition;
-            var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix;
+            var v = new Vector4d(-diff.X, diff.Y, 0.0, 0.0) * matrix;
             var command = new PG.CLI.Command(PG.CameraLabels.CameraTranslateCommandLabel);
             command.SetArg(PG.CameraLabels.TranslateLabel, new Vector3d(v.X, v.Y, v.Z));
             command.Execute(model);
