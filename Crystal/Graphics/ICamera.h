@@ -19,15 +19,11 @@ public:
 
 	void moveEye(const glm::vec3& v);
 
-	void moveTarget(const glm::vec3& v);
-
 	void setEye(const glm::vec3& p);
 
 	void setTarget(const Math::Vector3df& target);
 
 	Math::Vector3df getEye() const { return eye; }
-
-	Math::Vector3df getTarget() const { return target; }
 
 	Math::Matrix4df getModelviewMatrix() const;
 
@@ -53,14 +49,13 @@ public:
 
 	Math::Vector3df getUp() const { return rotation * glm::vec4(0, 1, 0, 1); }
 
-	Math::Vector3df getForward() const { return target - eye; }
+	Math::Vector3df getForward() const { return rotation * glm::vec4(0,0,1,1); }
 
 	Math::Matrix4df getRotationMatrix() const { return rotation; }
 
 	void setRotationMatrix(const Math::Matrix4df& matrix) { this->rotation = matrix; }
 
 protected:
-	Math::Vector3df target;
 	Math::Vector3df eye;
 	Math::Matrix4df rotation;
 	float near_;

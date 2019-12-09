@@ -16,23 +16,18 @@ ICamera::ICamera() :
 
 ICamera::ICamera(const glm::vec3& eye, const glm::vec3& target, const float near_, const float far_) :
 	eye(eye),
-	target(target),
 	near_(near_),
 	far_(far_),
 	scale(1.0f),
 	rotation(1.0f),
 	isOrtho(false)
 {
+	setTarget(target);
 }
 
 void ICamera::moveEye(const glm::vec3& v)
 {
 	this->eye += v;
-}
-
-void ICamera::moveTarget(const glm::vec3& v)
-{
-	this->target += v;
 }
 
 void ICamera::setEye(const glm::vec3& p)
@@ -42,7 +37,8 @@ void ICamera::setEye(const glm::vec3& p)
 
 void ICamera::setTarget(const Vector3df& target)
 {
-	this->target = target;
+	const auto& up = getUp();
+	this->rotation = glm::lookAt(eye, target, up);
 }
 
 Matrix4df ICamera::getModelviewMatrix() const
