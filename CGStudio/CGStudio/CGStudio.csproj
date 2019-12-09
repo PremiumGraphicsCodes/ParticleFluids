@@ -184,10 +184,10 @@
       <DependentUpon>TrimView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\Trim\TrimViewModel.cs" />
-    <Compile Include="Scene\Shape\WireFrame\Generation\CircleGenerationView.xaml.cs">
-      <DependentUpon>CircleGenerationView.xaml</DependentUpon>
+    <Compile Include="Scene\Shape\WireFrame\Generation\EllipseGenerationView.xaml.cs">
+      <DependentUpon>EllipseGenerationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scene\Shape\WireFrame\Generation\CircleGenerationViewModel.cs" />
+    <Compile Include="Scene\Shape\WireFrame\Generation\EllipseGenerationViewModel.cs" />
     <Compile Include="Scene\Shape\WireFrame\Generation\ConeGenerationView.xaml.cs">
       <DependentUpon>ConeGenerationView.xaml</DependentUpon>
     </Compile>
@@ -365,7 +365,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Scene\Shape\WireFrame\Generation\CircleGenerationView.xaml">
+    <Page Include="Scene\Shape\WireFrame\Generation\EllipseGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

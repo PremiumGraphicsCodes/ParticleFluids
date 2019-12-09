@@ -5,7 +5,7 @@ using Reactive.Bindings;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
-    public class CircleGenerationViewModel : BindableBase
+    public class EllipseGenerationViewModel : BindableBase
     {
         public Circle3dViewModel CircleViewModel { get; }
             = new Circle3dViewModel();
@@ -19,7 +19,7 @@ namespace PG.CGStudio.Generation.WireFrame
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        public CircleGenerationViewModel()
+        public EllipseGenerationViewModel()
         {
             OkCommand.Subscribe(OnOk);
         }
