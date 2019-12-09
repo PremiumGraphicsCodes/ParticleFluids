@@ -96,7 +96,7 @@ namespace PG.Core.Shape
             for (int i = 0; i <= udiv; ++i)
             {
                 var u = i / (double)udiv;
-                bottomVertices[i] = CreatePosition(cone.GetPosition(u, 0.0, 0.0));
+                bottomVertices[i] = CreatePosition(cone.GetPosition(u, 1.0, 0.0));
             }
             for (int i = 0; i <= udiv; ++i)
             {
@@ -107,6 +107,12 @@ namespace PG.Core.Shape
             {
                 CreateEdge(topCenter, bottomVertices[i]);
             }
+
+            for (int i = 0; i < udiv; ++i)
+            {
+                CreateEdge(bottomVertices[i], bottomVertices[i+1]);
+            }
+
         }
 
         public void Add(ISurface3d surface, int udiv, int vdiv)

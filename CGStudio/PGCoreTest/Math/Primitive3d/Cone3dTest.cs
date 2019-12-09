@@ -12,7 +12,7 @@ namespace PGCoreTest.Math.Primitive3d
         [TestMethod]
         public void TestToCircleAt()
         {
-            var cone = new Cone3d(10.0, 100.0, new Vector3d(0,0,0));
+            var cone = new Cone3d(10.0, 100.0, new Vector3d(0, 0, 0));
 
             {
                 var actual = cone.ToCircleAt(0.0);
@@ -29,6 +29,18 @@ namespace PGCoreTest.Math.Primitive3d
             {
                 var actual = cone.ToCircleAt(1.0);
                 var expected = new Circle3d(0.0, new Vector3d(0, 0, 100));
+                Assert.IsTrue(expected.IsSame(actual, tolerance));
+            }
+        }
+
+        [TestMethod]
+        public void TestGetPosition()
+        {
+            var cone = new Cone3d(10.0, 100.0, new Vector3d(0, 0, 0));
+
+            {
+                var actual = cone.GetPosition(1.0, 1.0, 1.0);
+                var expected = new Vector3d(0, 0, 100);
                 Assert.IsTrue(expected.IsSame(actual, tolerance));
             }
         }
