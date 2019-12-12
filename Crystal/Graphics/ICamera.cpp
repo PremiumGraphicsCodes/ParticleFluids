@@ -67,7 +67,18 @@ Matrix4df ICamera::getProjectionMatrix() const
 	}
 }
 
+Vector3df ICamera::getRight() const
+{
+	const auto& f = getForward();
+	return glm::cross(up, f);
+}
+
 Vector3df ICamera::getUp() const
 {
 	return up;
+}
+
+Vector3df ICamera::getForward() const
+{
+	return glm::normalize(target - eye);
 }

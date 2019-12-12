@@ -15,6 +15,10 @@ public:
 
 	ICamera(const glm::vec3& eye, const glm::vec3& target, const glm::vec3& up, const float near_, const float far_);
 
+	void setOrtho() { this->isOrtho = true; }
+
+	void setPerspective() { this->isOrtho = false; }
+
 	void moveEye(const glm::vec3& v);
 
 	void setEye(const glm::vec3& p);
@@ -41,11 +45,11 @@ public:
 
 	void zoom(const float s) { this->scale *= (1.0f + s); }
 
-	Math::Vector3df getRight() const { return rotation * glm::vec4(1, 0, 0, 1); }
+	Math::Vector3df getRight() const;
 
 	Math::Vector3df getUp() const;
 
-	Math::Vector3df getForward() const { return rotation * glm::vec4(0,1,0,1); }
+	Math::Vector3df getForward() const;
 
 	Math::Matrix4df getRotationMatrix() const { return rotation; }
 
