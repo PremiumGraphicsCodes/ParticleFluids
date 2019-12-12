@@ -13,9 +13,27 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
+OBJFileImportCommand::Args::Args() :
+	filePath("FilePath", std::string(""))
+{
+	add(&filePath);
+}
+
+OBJFileImportCommand::Results::Results() :
+	isOk("IsOk", false)
+{
+	add(&isOk);
+}
+
+std::string OBJFileImportCommand::getName()
+{
+	return "OBJFileImport";
+}
+
 void OBJFileImportCommand::execute(World* scene)
 {
-
+	const auto result = importOBJ(args.filePath.getValue(), scene);
+	results.isOk.setValue(result);
 }
 
 bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, World* world)
@@ -43,6 +61,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
+			auto faceGroup = world->getSceneFactory()->createFaceGroupScene(meshScene, g.name);
 			for (const auto& f : g.faces) {
 				std::vector<int> indices;
 				for (int i = 0; i < f.positionIndices.size(); i++) {
@@ -61,8 +80,8 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 					i1++;
 					i2++;
 				}
+//				faceGroup->addFace(f);
 			}
-			auto faceGroup = world->getSceneFactory()->createFaceGroupScene(meshScene, g.name);
 			faceGroup->setMaterialName(g.usemtl);
 		}
 		world->getObjects()->addScene(meshScene);

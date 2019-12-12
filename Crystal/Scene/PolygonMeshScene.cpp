@@ -23,6 +23,10 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 	const auto& ns = shape->getNormals();
 	const auto& tcs = shape->getTexCoords();
 
+	for (auto g : groups) {
+		g->toViewModel(viewModel);
+	}
+	/*
 	SmoothTriangleBuffer buffer;
 	for (const auto& f : faces) {
 		const auto& vIds = f.getVertexIds();
@@ -38,6 +42,7 @@ void PolygonMeshScene::toViewModel(SceneViewModel& viewModel) const
 		}
 	}
 	viewModel.triangleBuffers.push_back(buffer);
+	*/
 }
 
 void PolygonMeshScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const

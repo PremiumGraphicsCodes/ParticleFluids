@@ -109,7 +109,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;../ThirdParty/nativefiledialog/build/lib/$(Configuration)/x64;../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../ThirdParty/glfw-3.3/lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../ThirdParty/nativefiledialog/build/lib/$(Configuration)/x64;../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../ThirdParty/glfw-3.3/lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\Crystal\ThirdParty\glew-2.1.0\bin\Release\x64\glew32.dll .\</Command>
@@ -183,6 +183,8 @@
     </ProjectReference>
     <ProjectReference Include="..\Command\Command.vcxproj">
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -23,6 +23,12 @@
 #include "ShapeSelectCommand.h"
 #include "DeleteCommand.h"
 #include "ClearCommand.h"
+#include "OBJFileImportCommand.h"
+#include "STLFileImportCommand.h"
+#include "PCDFileImportCommand.h"
+#include "OBJFileExportCommand.h"
+#include "STLFileExportCommand.h"
+#include "PCDFileExportCommand.h"
 
 using namespace Crystal::Command;
 
@@ -105,6 +111,24 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == ClearCommand::getName()) {
 		return std::make_unique<ClearCommand>();
+	}
+	else if (name == OBJFileImportCommand::getName()) {
+		return std::make_unique<OBJFileImportCommand>();
+	}
+	else if (name == STLFileImportCommand::getName()) {
+		return std::make_unique<STLFileImportCommand>();
+	}
+	else if (name == PCDFileImportCommand::getName()) {
+		return std::make_unique<PCDFileImportCommand>();
+	}
+	else if (name == OBJFileExportCommand::getName()) {
+		return std::make_unique<OBJFileExportCommand>();
+	}
+	else if (name == STLFileExportCommand::getName()) {
+		return std::make_unique<STLFileExportCommand>();
+	}
+	else if (name == PCDFileExportCommand::getName()) {
+		return std::make_unique<PCDFileExportCommand>();
 	}
 
 	assert(false);

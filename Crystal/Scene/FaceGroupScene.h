@@ -27,6 +27,8 @@ public:
 
 	void toViewModel(SceneViewModel& viewModel) const;
 
+	//void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const;
+
 	void onClear() override {
 		faces.clear();
 	}

@@ -50,7 +50,8 @@ public:
 
 	void addGroup(FaceGroupScene* group) {
 		groups.push_back(group);
-		children.push_back(group);
+		addScene(group);
+//		children.push_back(group);
 	}
 
 	IShapeScene* clone() const override;

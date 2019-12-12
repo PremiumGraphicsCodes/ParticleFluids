@@ -39,3 +39,10 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 		viewModel.triangleBuffers.push_back(buffer);
 	}
 }
+
+/*
+void FaceGroupScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
+{
+
+}
+*/

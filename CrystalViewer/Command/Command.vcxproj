@@ -251,6 +251,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Crystal\Scene\Scene.vcxproj">
       <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

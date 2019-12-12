@@ -12,7 +12,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 FileImportCommand::Args::Args() :
-	filePath(FileImportLabels::FilePathLabel, "")
+	filePath(FileImportLabels::FilePathLabel, std::string(""))
 {
 	add(&filePath);
 }

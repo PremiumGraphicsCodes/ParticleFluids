@@ -37,7 +37,7 @@ void FileMenu::onShow()
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
 				Crystal::Command::Command command("FileImport");
-				command.setArg(FileImportLabels::FilePathLabel, std::filesystem::path(filename));
+				command.setArg(FileImportLabels::FilePathLabel, std::string(filename));
 				command.execute(model);
 				bool isOk = std::any_cast<bool>(command.getResult(FileImportLabels::IsOkLabel));
 				if (!isOk) {
