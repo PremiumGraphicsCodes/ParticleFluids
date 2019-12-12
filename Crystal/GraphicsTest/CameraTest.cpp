@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../Graphics/ICamera.h"
+#include "../Graphics/Camera.h"
 
 #include "../Math/Matrix4d.h"
 #include "../ThirdParty/glm-0.9.9.3/glm/gtc/matrix_transform.hpp"
@@ -27,7 +27,7 @@ TEST(CameraTest, TestGetModelViewMatrix)
 
 TEST(CameraTest, TestGetForward)
 {
-	ICamera c;
+	Camera c;
 	c.lookAt(glm::vec3(0, 0, -10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	const auto& actual = c.getForward();
 	const Vector3df expected(0, 0, 1);
@@ -36,7 +36,7 @@ TEST(CameraTest, TestGetForward)
 
 TEST(CameraTest, TestGetUp)
 {
-	ICamera c;
+	Camera c;
 	c.lookAt(glm::vec3(0, 0, -10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	const auto& actual = c.getUp();
 	const Vector3df expected(0, 1, 0);
@@ -45,7 +45,7 @@ TEST(CameraTest, TestGetUp)
 
 TEST(CameraTest, TestGetRight)
 {
-	ICamera c;
+	Camera c;
 	c.lookAt(glm::vec3(0, 0, -10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	const auto& actual = c.getRight();
 	const Vector3df expected(1, 0, 0);
@@ -54,7 +54,7 @@ TEST(CameraTest, TestGetRight)
 
 TEST(CameraTest, TestRotate)
 {
-	ICamera c;
+	Camera c;
 	c.lookAt(glm::vec3(0, 0, -10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	c.rotate( Matrix3df(rotationMatrixY(Crystal::Math::PI)));
 	{
