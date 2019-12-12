@@ -140,6 +140,9 @@
     <ClInclude Include="Public\ClearLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="CameraRotateCommand.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -227,6 +230,9 @@
     </ClCompile>
     <ClCompile Include="ClearCommand.cpp">
       <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraRotateCommand.cpp">
+      <Filter>Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

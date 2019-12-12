@@ -9,6 +9,7 @@
 #include "PolygonMeshCreateCommand.h"
 #include "CameraFitCommand.h"
 #include "CameraTranslateCommand.h"
+#include "CameraRotateCommand.h"
 #include "CameraZoomCommand.h"
 #include "PickCommand.h"
 #include "TransformCommand.h"
@@ -68,6 +69,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == CameraTranslateCommand::getName()) {
 		return std::make_unique<CameraTranslateCommand>();
+	}
+	else if (name == CameraRotateCommand::getName()) {
+		return std::make_unique<CameraRotateCommand>();
 	}
 	else if (name == CameraZoomCommand::getName()) {
 		return std::make_unique<CameraZoomCommand>();

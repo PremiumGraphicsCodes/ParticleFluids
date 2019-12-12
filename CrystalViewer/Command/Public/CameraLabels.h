@@ -11,9 +11,7 @@ namespace CameraFitCommandLabels
 namespace CameraRotateCommandLabels
 {
 	PublicLabel CameraRotateCommandLabel = "CameraRotate";
-	PublicLabel RxLabel = "Rx";
-	PublicLabel RyLabel = "Ry";
-	PublicLabel RzLabel = "Rz";
+	PublicLabel MatrixLabel = "Matrix";
 }
 
 namespace CameraTranslateCommandLabels

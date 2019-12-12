@@ -1,5 +1,6 @@
 #include "CameraUICtrl.h"
 #include "../Command/Command.h"
+#include "../Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -52,9 +53,10 @@ void CameraUICtrl::onRightButtonUp(const Vector2df& position)
 void CameraUICtrl::onRightDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
-	Crystal::Command::Command command("CameraRotate");
-	command.setArg("Rx", diff.x);
-	command.setArg("Ry", diff.y);
+	Crystal::Command::Command command(CameraRotateCommandLabels::CameraRotateCommandLabel);
+	const auto matrixY = rotationMatrixY(diff.x);
+	const auto matrixX = rotationMatrixX(diff.y);
+	command.setArg(CameraRotateCommandLabels::MatrixLabel, matrixY * matrixX);
 	command.execute(world);
 	//camera->rotate(diff.y, diff.x);
 	this->prevPosition = position;
