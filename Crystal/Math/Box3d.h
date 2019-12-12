@@ -21,6 +21,8 @@ public:
 
 	Box3d getBoundingBox() const { return *this; }
 
+	static Box3d createDegeneratedBox() { return Box3d(Vector3dd(0, 0, 0), Vector3dd(0, 0, 0)); }
+
 	void add(const Vector3dd& v);
 
 	void add(const Box3d& b);
@@ -64,6 +66,8 @@ public:
 	Vector3dd getPosition(const double u, const double v, const double w) const override;
 
 	Sphere3d getBoundintSphere() const;
+
+	bool isDegenerated(const double tolerance) { return getVolume() < tolerance; }
 
 private:
 	Vector3dd start;

@@ -44,9 +44,9 @@ void ParticleSystemScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, Sce
 	childIdViewModel.pointIdBuffers.push_back(childIdBuffer);
 }
 
-void ParticleSystemScene::getBoundingBox(Crystal::Math::Box3d& box) const
+Crystal::Math::Box3d ParticleSystemScene::getBoundingBox() const
 {
-	box.add(getShape()->getBoundingBox());
+	return getShape()->getBoundingBox();
 }
 
 Vector3dd ParticleSystemScene::getPosition(const int index) const

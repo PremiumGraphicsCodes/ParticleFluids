@@ -44,7 +44,7 @@ public:
 
 	void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
-	void getBoundingBox(Math::Box3d& boundingBox) const override;
+	Math::Box3d getBoundingBox() const override;
 
 	Math::Vector3dd getPosition(const int index) const override;
 

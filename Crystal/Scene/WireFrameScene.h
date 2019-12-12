@@ -39,11 +39,7 @@ public:
 		delete shape;
 	}
 
-	//Math::Box3d getBoundingBox() const;
-
-	//void getBoundingBox(Math::Box3d& box) const override;
-
-	virtual void getBoundingBox(Math::Box3d& box) const override;
+	Math::Box3d getBoundingBox() const override;
 
 	std::vector<Math::Vector3dd> getAllVertices() const;
 

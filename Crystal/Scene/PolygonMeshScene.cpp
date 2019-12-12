@@ -71,9 +71,9 @@ void PolygonMeshScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneI
 	parentIdViewModel.triangleIdBuffers.push_back(buffer);
 }
 
-void PolygonMeshScene::getBoundingBox(Crystal::Math::Box3d& boundingBox) const
+Box3d PolygonMeshScene::getBoundingBox() const
 {
-	boundingBox.add(getShape()->getBoundingBox());
+	return getShape()->getBoundingBox();
 }
 
 Vector3dd PolygonMeshScene::getPosition(const int index) const

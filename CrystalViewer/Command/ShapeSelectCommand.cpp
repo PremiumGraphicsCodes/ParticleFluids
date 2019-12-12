@@ -38,8 +38,7 @@ void ShapeSelectCommand::execute(World* scene)
 		return;
 	}
 	
-	Box3d bb;
-	shape->getBoundingBox(bb);
+	const auto bb = shape->getBoundingBox();
 	WireFrameBuilder builder;
 	builder.build(bb);
 	WireFrameAttribute attribute;

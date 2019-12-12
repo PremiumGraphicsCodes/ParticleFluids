@@ -51,6 +51,11 @@ void PolygonMeshCreateCommand::execute(World* world)
 
 	auto shape = world->getSceneFactory()->createPolygonMeshScene(mesh, args.name.getValue());
 	world->addScene(args.layer.getValue(), shape);
+	auto group = world->getSceneFactory()->createFaceGroupScene(shape, "");
+	for (auto f : mesh->faces) {
+		group->addFace(f);
+	}
+	shape->addGroup(group);
 	const auto newId = shape->getId();
 
 	world->updateViewModel();

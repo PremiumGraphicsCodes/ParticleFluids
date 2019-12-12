@@ -77,7 +77,7 @@ public:
 
 	virtual void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const {}
 
-	virtual void getBoundingBox(Math::Box3d& box) const {}
+	virtual Math::Box3d getBoundingBox() const { return Math::Box3d::createDegeneratedBox(); }
 
 	bool isRoot() const { return parent == nullptr; }
 

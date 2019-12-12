@@ -29,17 +29,9 @@ std::vector<Vector3dd> WireFrameScene::getAllVertices() const
 	return shape->getPositions();
 }
 
-void WireFrameScene::getBoundingBox(Box3d& box) const
+Box3d WireFrameScene::getBoundingBox() const
 {
-	const auto& positions = shape->getPositions();
-	if (positions.empty()) {
-		return;
-	}
-	Box3d bb(positions.front());
-	for (const auto& v : positions) {
-		bb.add(v);
-	}
-	box.add(bb);
+	return shape->getBoundingBox();
 }
 
 void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
