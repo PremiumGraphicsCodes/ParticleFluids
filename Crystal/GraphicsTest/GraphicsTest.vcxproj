@@ -39,7 +39,7 @@
     <ClCompile Include="ColorHSVTest.cpp" />
     <ClCompile Include="DrawableIdTest.cpp" />
     <ClCompile Include="GraphicsTest.cpp" />
-    <ClCompile Include="PerspectiveCameraTest.cpp" />
+    <ClCompile Include="CameraTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graphics\Graphics.vcxproj">

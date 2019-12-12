@@ -4,9 +4,12 @@
 #include "../Math/Matrix4d.h"
 #include "../ThirdParty/glm-0.9.9.3/glm/gtc/matrix_transform.hpp"
 
+#include "../Math/Tolerance.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 
+/*
 TEST(CameraTest, TestGetModelViewMatrix)
 {
 	ICamera c;
@@ -20,6 +23,7 @@ TEST(CameraTest, TestGetModelViewMatrix)
 	);
 	//EXPECT_TRUE( areSame(expected, actual);
 }
+*/
 
 TEST(CameraTest, TestGetForward)
 {
@@ -48,7 +52,27 @@ TEST(CameraTest, TestGetRight)
 	EXPECT_EQ(expected, actual);
 }
 
-
+TEST(CameraTest, TestRotate)
+{
+	ICamera c;
+	c.lookAt(glm::vec3(0, 0, -10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+	c.rotate( Matrix3df(rotationMatrixY(Crystal::Math::PI)));
+	{
+		const auto& actual = c.getEye();
+		const Vector3df expected(0, 0, 10);
+		EXPECT_TRUE( areSame( expected, actual, 1.0e-9));
+	}
+	{
+		const auto& actual = c.getUp();
+		const Vector3df expected(0, 1, 0);
+		EXPECT_TRUE(areSame(expected, actual, 1.0e-9));
+	}
+	{
+		const auto& actual = c.getRight();
+		const Vector3df expected(-1, 0, 0);
+		EXPECT_TRUE(areSame(expected, actual, 1.0e-9));
+	}
+}
 
 /*
 TEST(CameraTest, TestGetProjectionMatrix)

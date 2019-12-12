@@ -51,13 +51,15 @@ public:
 
 	Math::Vector3df getForward() const;
 
-	Math::Matrix4df getRotationMatrix() const { return rotation; }
+	Math::Matrix4df getRotationMatrix() const;
+
+	void rotate(const Math::Matrix3df& matrix);
+
 
 private:
 	Math::Vector3df eye;
 	Math::Vector3df target;
 	Math::Vector3df up;
-	Math::Matrix4df rotation;
 	float near_;
 	float far_;
 	float scale;
