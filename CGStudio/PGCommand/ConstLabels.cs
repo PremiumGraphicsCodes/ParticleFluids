@@ -6,9 +6,7 @@ namespace PG {
 		public const string CameraYZCommandLabel = "CameraYZ";
 		public const string CameraZXCommandLabel = "CameraZX";
 		public const string CameraRotateCommandLabel = "CameraRotate";
-		public const string RxLabel = "Rx";
-		public const string RyLabel = "Ry";
-		public const string RzLabel = "Rz";
+		public const string MatrixLabel = "Matrix";
 		public const string TranslateLabel = "Translate";
 		public const string CameraTranslateCommandLabel = "CameraTranslate";
 		public const string CameraZoomCommandLabel = "CameraZoom";

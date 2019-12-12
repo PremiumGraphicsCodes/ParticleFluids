@@ -36,6 +36,11 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 		auto vv = Converter::toCpp(v);
 		return std::any(vv);
 	}
+	else if (type == Core::Math::Matrix3d::typeid) {
+		auto v = (Core::Math::Matrix3d^)(object);
+		auto vv = Converter::toCpp(v);
+		return std::any(vv);
+	}
 	else if (type == Core::Math::Matrix4d::typeid) {
 		auto v = (Core::Math::Matrix4d^)(object);
 		auto vv = Converter::toCpp(v);

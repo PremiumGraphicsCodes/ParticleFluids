@@ -61,8 +61,9 @@ namespace PG.CGStudio.UICtrl
             var diff = position - prevPosition;
             var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix;
             var command = new PG.CLI.Command(PG.CameraLabels.CameraRotateCommandLabel);
-            command.SetArg(PG.CameraLabels.RxLabel, (float)v.Y);
-            command.SetArg(PG.CameraLabels.RyLabel, (float)v.X);
+            var matrix1 = Matrix3d.RotationX(v.Y);
+            var matrix2 = Matrix3d.RotationY(v.X);
+            command.SetArg(PG.CameraLabels.MatrixLabel, matrix2 * matrix1);
             command.Execute(model);
             Canvas3d.Instance.Render();
             prevPosition = position;

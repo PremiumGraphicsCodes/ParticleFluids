@@ -54,9 +54,10 @@ void CameraUICtrl::onRightDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
 	Crystal::Command::Command command(CameraRotateCommandLabels::CameraRotateCommandLabel);
-	const auto matrixY = rotationMatrixY(diff.x);
-	const auto matrixX = rotationMatrixX(diff.y);
-	command.setArg(CameraRotateCommandLabels::MatrixLabel, matrixY * matrixX);
+	const auto matrix1 = rotationMatrixY(diff.x);
+	const auto matrix2 = rotationMatrixX(diff.y);
+//	const auto matrix3 = rota
+	command.setArg(CameraRotateCommandLabels::MatrixLabel, matrix2 * matrix1);
 	command.execute(world);
 	//camera->rotate(diff.y, diff.x);
 	this->prevPosition = position;
