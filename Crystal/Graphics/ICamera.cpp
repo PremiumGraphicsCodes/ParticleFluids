@@ -27,12 +27,16 @@ ICamera::ICamera(const glm::vec3& eye, const glm::vec3& target, const float near
 
 void ICamera::moveEye(const glm::vec3& v)
 {
+	const auto& up = getUp();
 	this->eye += v;
+	this->rotation = glm::lookAt(eye, target, up);
 }
 
 void ICamera::setEye(const glm::vec3& p)
 {
+	const auto& up = getUp();
 	this->eye = p;
+	this->rotation = glm::lookAt(eye, target, up);
 }
 
 void ICamera::setTarget(const Vector3df& target)

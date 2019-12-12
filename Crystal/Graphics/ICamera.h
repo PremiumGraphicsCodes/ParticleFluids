@@ -53,8 +53,9 @@ public:
 
 	void setRotationMatrix(const Math::Matrix4df& matrix) { this->rotation = matrix; }
 
-protected:
+private:
 	Math::Vector3df eye;
+	Math::Vector3df target;
 	Math::Matrix4df rotation;
 	float near_;
 	float far_;
