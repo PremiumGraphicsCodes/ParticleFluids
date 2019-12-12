@@ -28,7 +28,7 @@ public:
 
 	bool build();
 
-	void render(Graphics::ICamera* camera, const Scene::SceneIdViewModel& vm);
+	void render(Graphics::Camera* camera, const Scene::SceneIdViewModel& vm);
 
 	Graphics::DrawableID getId(const double x, const double y);
 
@@ -45,7 +45,7 @@ private:
 
 	Shader::FrameBufferObject frameBufferObject;
 
-	Graphics::ICamera* camera;
+	Graphics::Camera* camera;
 };
 	}
 }

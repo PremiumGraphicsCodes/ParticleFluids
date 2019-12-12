@@ -1,7 +1,7 @@
 #ifndef __CRYSTAL_SHADER_ON_SCREEN_RENDERER_H__
 #define __CRYSTAL_SHADER_ON_SCREEN_RENDERER_H__
 
-#include "../Graphics/ICamera.h"
+#include "../Graphics/Camera.h"
 #include "ITextureObject.h"
 #include "ShaderObject.h"
 #include "IShader.h"

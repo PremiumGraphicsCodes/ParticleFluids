@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Graphics/ICamera.h"
+#include "../Graphics/Camera.h"
 #include "../Shader/ShaderObject.h"
 
 #include <memory>
@@ -17,7 +17,7 @@ public:
 
 	virtual bool build();
 
-	virtual void render(const Graphics::ICamera& camera) = 0;
+	virtual void render(const Graphics::Camera& camera) = 0;
 
 	void setVertexShaderSource(const std::string& vsSource) { this->vsSource = vsSource; }
 
@@ -33,7 +33,7 @@ public:
 
 	Shader::ShaderObject* getShader() { return shader.get(); }
 
-	//void render(const Graphics::ICamera& camera) {};
+	//void render(const Graphics::Camera& camera) {};
 
 private:
 	std::unique_ptr<Shader::ShaderObject> shader;

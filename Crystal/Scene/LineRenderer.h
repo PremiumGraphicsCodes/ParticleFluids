@@ -4,7 +4,7 @@
 
 #include "../Shader/ShaderObject.h"
 
-#include "../Graphics/ICamera.h"
+#include "../Graphics/Camera.h"
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer3d.h"
 #include "../Graphics/Buffer4d.h"
@@ -53,7 +53,7 @@ class LineRenderer : public IRenderer
 public:
 	LineRenderer();
 
-	void render(const Graphics::ICamera& camera) override;
+	void render(const Graphics::Camera& camera) override;
 
 	void setBuffer(const LineBuffer& buffer) {
 		this->buffer = buffer;

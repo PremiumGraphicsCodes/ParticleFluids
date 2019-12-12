@@ -1,5 +1,5 @@
 #include <memory>
-#include "../../Crystal/Graphics/ICamera.h"
+#include "../../Crystal/Graphics/Camera.h"
 #include "Canvas.h"
 #include "IUICtrl.h"
 

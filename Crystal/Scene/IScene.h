@@ -5,7 +5,7 @@
 #include "SceneType.h"
 
 #include "../Math/Box3d.h"
-#include "../Graphics/ICamera.h"
+#include "../Graphics/Camera.h"
 
 namespace Crystal {
 	namespace Shader {

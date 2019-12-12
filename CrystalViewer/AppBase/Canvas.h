@@ -3,7 +3,7 @@
 
 #include "../../Crystal/Math/Vector2d.h"
 #include "../../Crystal/Math/Box3d.h"
-#include "../../Crystal/Graphics/ICamera.h"
+#include "../../Crystal/Graphics/Camera.h"
 #include <memory>
 #include <list>
 
@@ -24,7 +24,7 @@ class Canvas : public IMouseListener
 public:
 	Canvas();
 
-	//explicit Canvas(Graphics::ICamera* camera);
+	//explicit Canvas(Graphics::Camera* camera);
 
 	virtual ~Canvas() {}
 

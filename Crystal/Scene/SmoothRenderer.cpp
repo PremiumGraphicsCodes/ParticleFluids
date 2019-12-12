@@ -38,7 +38,7 @@ SmoothRenderer::SmoothRenderer()
 	//shader.findAttribLocation("texCoord");
 }
 
-void SmoothRenderer::render(const ICamera& camera)
+void SmoothRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
 

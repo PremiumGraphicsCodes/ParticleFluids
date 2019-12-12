@@ -1,11 +1,11 @@
-#include "ICamera.h"
+#include "Camera.h"
 
 #include "../ThirdParty/glm-0.9.9.3/glm/gtc/matrix_transform.hpp"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 
-ICamera::ICamera() :
+Camera::Camera() :
 	near_(1.0f),
 	far_(10.0f),
 	scale(1.0f),
@@ -13,7 +13,7 @@ ICamera::ICamera() :
 {
 }
 
-ICamera::ICamera(const glm::vec3& eye, const glm::vec3& target, const glm::vec3& up, const float near_, const float far_) :
+Camera::Camera(const glm::vec3& eye, const glm::vec3& target, const glm::vec3& up, const float near_, const float far_) :
 	near_(near_),
 	far_(far_),
 	scale(1.0f),
@@ -22,29 +22,29 @@ ICamera::ICamera(const glm::vec3& eye, const glm::vec3& target, const glm::vec3&
 	lookAt(eye, target, up);
 }
 
-void ICamera::moveEye(const glm::vec3& v)
+void Camera::moveEye(const glm::vec3& v)
 {
 	this->eye += v;
 }
 
-void ICamera::setEye(const glm::vec3& p)
+void Camera::setEye(const glm::vec3& p)
 {
 	this->eye = p;
 }
 
-void ICamera::setTarget(const Vector3df& target)
+void Camera::setTarget(const Vector3df& target)
 {
 	this->target = target;
 }
 
-void ICamera::lookAt(const Vector3df& eye, const Vector3df& target, const Vector3df& up)
+void Camera::lookAt(const Vector3df& eye, const Vector3df& target, const Vector3df& up)
 {
 	this->eye = eye;
 	this->target = target;
 	this->up = up;
 }
 
-Matrix4df ICamera::getModelViewMatrix() const
+Matrix4df Camera::getModelViewMatrix() const
 {
 	const auto rotation = getRotationMatrix();
 	//glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), eye);
@@ -52,7 +52,7 @@ Matrix4df ICamera::getModelViewMatrix() const
 	return rotation * scaleMatrix;
 }
 
-Matrix4df ICamera::getProjectionMatrix() const
+Matrix4df Camera::getProjectionMatrix() const
 {
 	if (isOrtho) {
 		return glm::ortho(-0.5f, 0.5f, -0.5f, 0.5f, near_, far_);
@@ -62,28 +62,28 @@ Matrix4df ICamera::getProjectionMatrix() const
 	}
 }
 
-Vector3df ICamera::getRight() const
+Vector3df Camera::getRight() const
 {
 	const auto& f = getForward();
 	return glm::cross(up, f);
 }
 
-Vector3df ICamera::getUp() const
+Vector3df Camera::getUp() const
 {
 	return up;
 }
 
-Vector3df ICamera::getForward() const
+Vector3df Camera::getForward() const
 {
 	return glm::normalize(target - eye);
 }
 
-Matrix4df ICamera::getRotationMatrix() const
+Matrix4df Camera::getRotationMatrix() const
 {
 	return glm::lookAt(eye, target, up); 
 }
 
-void ICamera::rotate(const Matrix3df& matrix)
+void Camera::rotate(const Matrix3df& matrix)
 {
 	up = matrix * up;
 	eye -= target;

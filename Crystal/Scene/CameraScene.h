@@ -2,7 +2,7 @@
 
 #include "IScene.h"
 #include "../Graphics/ColorRGBA.h"
-#include "../Graphics/ICamera.h"
+#include "../Graphics/Camera.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -10,14 +10,14 @@ namespace Crystal {
 class CameraScene : public IScene
 {
 public:
-	CameraScene(const int id, const std::string& name, Graphics::ICamera* camera) :
+	CameraScene(const int id, const std::string& name, Graphics::Camera* camera) :
 		IScene(id, name),
 		camera(camera)
 	{}
 
 	~CameraScene() {};
 
-	Graphics::ICamera* getCamera() const { return camera.get(); }
+	Graphics::Camera* getCamera() const { return camera.get(); }
 
 	/*
 	void move(const Math::Vector3dd& v) override { light->move(v); }
@@ -39,7 +39,7 @@ public:
 	void toIdViewModel(SceneIdViewModel& viewModel) const override {}
 
 private:
-	std::unique_ptr< Graphics::ICamera > camera;
+	std::unique_ptr< Graphics::Camera > camera;
 };
 
 	}

@@ -18,7 +18,7 @@ PointRenderer::PointRenderer()
 	addAttribute("pointSize");
 }
 
-void PointRenderer::render(const ICamera& camera)
+void PointRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
 

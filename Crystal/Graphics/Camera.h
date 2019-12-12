@@ -8,12 +8,12 @@
 namespace Crystal {
 	namespace Graphics {
 
-class ICamera
+class Camera
 {
 public:
-	ICamera();
+	Camera();
 
-	ICamera(const glm::vec3& eye, const glm::vec3& target, const glm::vec3& up, const float near_, const float far_);
+	Camera(const glm::vec3& eye, const glm::vec3& target, const glm::vec3& up, const float near_, const float far_);
 
 	void setOrtho() { this->isOrtho = true; }
 

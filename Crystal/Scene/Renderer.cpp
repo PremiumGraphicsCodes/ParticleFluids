@@ -3,7 +3,7 @@
 #include "../../Crystal/Scene/IScene.h"
 #include "../../Crystal/Scene/IRenderer.h"
 
-#include "../Graphics/ICamera.h"
+#include "../Graphics/Camera.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -15,7 +15,7 @@ using namespace Crystal::UI;
 
 Renderer::Renderer() :
 	showOffScreen(false),
-	camera(new ICamera(
+	camera(new Camera(
 		Vector3df(0, 0, 0),
 		Vector3df(0, 0, -10.0),
 		Vector3df(0, 0, 1),

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Graphics/ICamera.h"
+#include "../Graphics/Camera.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -12,7 +12,7 @@ public:
 
 	virtual bool build() = 0;
 
-	virtual void render(const Graphics::ICamera& camera) = 0;
+	virtual void render(const Graphics::Camera& camera) = 0;
 
 	//virtual ShaderObject* getShader() = 0;
 };

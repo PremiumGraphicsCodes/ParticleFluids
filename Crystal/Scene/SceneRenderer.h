@@ -29,7 +29,7 @@ public:
 
 	bool build();
 
-	void render(Graphics::ICamera* camera, const Scene::SceneViewModel& vm);
+	void render(Graphics::Camera* camera, const Scene::SceneViewModel& vm);
 
 	struct Mask
 	{
@@ -57,7 +57,7 @@ private:
 
 	Mask mask;
 
-	Graphics::ICamera* camera;
+	Graphics::Camera* camera;
 
 	Shader::TextureObject texture;
 	Shader::FrameBufferObject frameBufferObject;

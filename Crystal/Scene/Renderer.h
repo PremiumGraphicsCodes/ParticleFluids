@@ -32,7 +32,7 @@ public:
 
 	void setShowOffScreen(const bool b) { this->showOffScreen = b; }
 
-	Graphics::ICamera* getCamera() { return camera.get(); }
+	Graphics::Camera* getCamera() { return camera.get(); }
 
 private:
 	Shader::OnScreenRenderer renderer;
@@ -43,7 +43,7 @@ private:
 
 	bool showOffScreen;
 
-	std::unique_ptr<Graphics::ICamera> camera;
+	std::unique_ptr<Graphics::Camera> camera;
 };
 
 	}

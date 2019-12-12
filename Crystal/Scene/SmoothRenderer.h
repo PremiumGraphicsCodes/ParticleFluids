@@ -46,7 +46,7 @@ class SmoothRenderer : public IRenderer
 public:
 	SmoothRenderer();
 
-	void render(const Graphics::ICamera& camera) override;
+	void render(const Graphics::Camera& camera) override;
 
 	void setBuffer(const SmoothTriangleBuffer& buffer) {
 		this->buffer = buffer;

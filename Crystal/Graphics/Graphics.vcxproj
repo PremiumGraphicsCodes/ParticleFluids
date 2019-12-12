@@ -29,7 +29,7 @@
     <ClInclude Include="ColorRGBA.h" />
     <ClInclude Include="DrawableId.h" />
     <ClInclude Include="IBuffer.h" />
-    <ClInclude Include="ICamera.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Imagef.h" />
     <ClInclude Include="Material.h" />
@@ -39,7 +39,7 @@
     <ClCompile Include="ColorHSV.cpp" />
     <ClCompile Include="ColorMap.cpp" />
     <ClCompile Include="DrawableId.cpp" />
-    <ClCompile Include="ICamera.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Imagef.cpp" />
   </ItemGroup>

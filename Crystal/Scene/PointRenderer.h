@@ -2,7 +2,7 @@
 
 #include "IRenderer.h"
 
-#include "../Graphics/ICamera.h"
+#include "../Graphics/Camera.h"
 #include "../Shader/ShaderObject.h"
 
 namespace Crystal {
@@ -49,7 +49,7 @@ class PointRenderer : public IRenderer
 public:
 	PointRenderer();
 
-	void render(const Graphics::ICamera& camera) override;
+	void render(const Graphics::Camera& camera) override;
 
 	void setBuffer(const PointBuffer& buffer) { this->buffer = buffer; }
 
