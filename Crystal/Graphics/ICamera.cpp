@@ -43,7 +43,7 @@ void ICamera::setTarget(const Vector3df& target)
 
 void ICamera::lookAt(const Vector3df& eye, const Vector3df& target, const Vector3df& up)
 {
-	this->eye = eye;
+//	this->eye = eye;
 	this->rotation = glm::lookAt(eye, target, up);
 }
 

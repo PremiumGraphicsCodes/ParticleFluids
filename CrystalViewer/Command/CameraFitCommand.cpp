@@ -18,8 +18,7 @@ void CameraFitCommand::execute(World* world)
 	const auto& dist = static_cast<float>(glm::distance(boundingBox.getMin(), boundingBox.getMax()));
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
-	camera->setTarget(boundingBox.getCenter());
-	camera->setEye(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0));
+	camera->lookAt(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0), boundingBox.getCenter(), Vector3dd(0,1,0));
 }
 
 std::string CameraXYCommand::getName()
@@ -29,18 +28,12 @@ std::string CameraXYCommand::getName()
 
 void CameraXYCommand::execute(World* world)
 {
-	CameraFitCommand fitCommand;
-	fitCommand.execute(world);
+	const auto boundingBox = world->getBoundingBox();
 	auto camera = world->getRenderer()->getCamera();
-	camera->setRotationMatrix(
-		Math::Matrix4dd
-		(
-			1,0,0,0,
-			0,1,0,0,
-			0,0,1,0,
-			0,0,0,1
-		)
-	);
+	const auto& dist = static_cast<float>(glm::distance(boundingBox.getMin(), boundingBox.getMax()));
+	camera->setNear(dist * 0.1f);
+	camera->setFar(dist * 10.0f);
+	camera->lookAt(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0), boundingBox.getCenter(), Vector3dd(0, 1, 0));
 }
 
 std::string CameraYZCommand::getName()
@@ -50,17 +43,12 @@ std::string CameraYZCommand::getName()
 
 void CameraYZCommand::execute(World* world)
 {
-	CameraFitCommand fitCommand;
-	fitCommand.execute(world);
+	const auto boundingBox = world->getBoundingBox();
 	auto camera = world->getRenderer()->getCamera();
-	const Matrix4df matrix
-	(
-		0, 0, 1, 0,
-		1, 0, 0, 0,
-		0, 1, 0, 0,
-		0, 0, 0, 1
-	);
-	camera->setRotationMatrix(matrix);
+	const auto& dist = static_cast<float>(glm::distance(boundingBox.getMin(), boundingBox.getMax()));
+	camera->setNear(dist * 0.1f);
+	camera->setFar(dist * 10.0f);
+	camera->lookAt(boundingBox.getCenter() - Vector3dd(dist * 2.0, 0, 0), boundingBox.getCenter(), Vector3dd(0, 0, 1));
 }
 
 std::string CameraZXCommand::getName()
@@ -70,15 +58,10 @@ std::string CameraZXCommand::getName()
 
 void CameraZXCommand::execute(World* world)
 {
-	CameraFitCommand fitCommand;
-	fitCommand.execute(world);
+	const auto boundingBox = world->getBoundingBox();
 	auto camera = world->getRenderer()->getCamera();
-	const Matrix4df matrix
-	(
-		0, 1, 0, 0,
-		0, 0, 1, 0,
-		1, 0, 0, 0,
-		0, 0, 0, 1
-	);
-	camera->setRotationMatrix(matrix);
+	const auto& dist = static_cast<float>(glm::distance(boundingBox.getMin(), boundingBox.getMax()));
+	camera->setNear(dist * 0.1f);
+	camera->setFar(dist * 10.0f);
+	camera->lookAt(boundingBox.getCenter() - Vector3dd(0, dist * 2.0, 0), boundingBox.getCenter(), Vector3dd(1, 0, 0));
 }
