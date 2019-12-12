@@ -32,9 +32,12 @@ void CameraUICtrl::onLeftDragging(const Vector2df& position)
 	const auto bb = world->getBoundingBox();
 	const auto scale = glm::distance(bb.getMin(), bb.getMax()) * 0.1;
 
+	const auto& matrix = world->getRenderer()->getCamera()->getRotationMatrix();
+	const auto v = glm::transpose( Matrix3dd( matrix ) ) * Vector3dd( diff, 0.0);
+
 	Crystal::Command::Command command("CameraTranslate");
-	Math::Vector3dd v(diff.x * scale, diff.y * scale, 0.0);
-	command.setArg("Translate", v);
+	Math::Vector3dd t(v.x * scale, v.y * scale, v.z*scale);
+	command.setArg("Translate", t);
 	command.execute(world);
 
 	this->prevPosition = position;
@@ -54,10 +57,13 @@ void CameraUICtrl::onRightDragging(const Vector2df& position)
 {
 	const auto diff = prevPosition - position;
 	Crystal::Command::Command command(CameraRotateCommandLabels::CameraRotateCommandLabel);
-	const auto matrix1 = rotationMatrixY(diff.x);
-	const auto matrix2 = rotationMatrixX(diff.y);
-//	const auto matrix3 = rota
-	command.setArg(CameraRotateCommandLabels::MatrixLabel, matrix2 * matrix1);
+
+	const auto& matrix = world->getRenderer()->getCamera()->getRotationMatrix();
+	const auto v = glm::transpose(Matrix3dd(matrix)) * Vector3dd(diff.y, diff.x, 0.0);
+	const auto matrix1 = rotationMatrixX(v.x);
+	const auto matrix2 = rotationMatrixY(v.y);
+	const auto matrix3 = rotationMatrixZ(v.z);
+	command.setArg(CameraRotateCommandLabels::MatrixLabel, matrix3 * matrix2 * matrix1);
 	command.execute(world);
 	//camera->rotate(diff.y, diff.x);
 	this->prevPosition = position;
