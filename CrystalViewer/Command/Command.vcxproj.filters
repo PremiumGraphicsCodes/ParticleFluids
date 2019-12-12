@@ -21,9 +21,6 @@
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
     <ClInclude Include="SetCommand.h" />
-    <ClInclude Include="CameraRotateCommand.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
     <ClInclude Include="CameraFitCommand.h">
       <Filter>Camera</Filter>
     </ClInclude>
@@ -160,9 +157,6 @@
       <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
     <ClCompile Include="SetCommand.cpp" />
-    <ClCompile Include="CameraRotateCommand.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
     <ClCompile Include="CameraFitCommand.cpp">
       <Filter>Camera</Filter>
     </ClCompile>

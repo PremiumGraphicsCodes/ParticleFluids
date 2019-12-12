@@ -31,7 +31,7 @@ void PointRenderer::render(const ICamera& camera)
 	}
 
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelviewMatrix();
+	const auto& modelviewMatrix = camera.getModelViewMatrix();
 
 	shader->bind();
 

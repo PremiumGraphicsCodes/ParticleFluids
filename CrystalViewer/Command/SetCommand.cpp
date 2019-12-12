@@ -13,10 +13,6 @@ void SetCommand::Set(World* world, const std::string& name, std::any value)
 		const auto& pos = std::any_cast<Vector3dd>(value);
 		world->getRenderer()->getCamera()->setEye(pos);
 	}
-	else if (name == SetLabels::CameraProjectionMatrixLabel ) {
-		const auto& pos = std::any_cast<Matrix4dd>(value);
-		world->getRenderer()->getCamera()->setRotationMatrix(pos);
-	}
 }
 
 void SetCommand::Set(World* world, int id, const std::string& name, std::any value)

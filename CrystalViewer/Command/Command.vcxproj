@@ -155,7 +155,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CameraFitCommand.h" />
-    <ClInclude Include="CameraRotateCommand.h" />
     <ClInclude Include="CameraTranslateCommand.h" />
     <ClInclude Include="CameraZoomCommand.h" />
     <ClInclude Include="ClearCommand.h" />
@@ -211,7 +210,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraFitCommand.cpp" />
-    <ClCompile Include="CameraRotateCommand.cpp" />
     <ClCompile Include="CameraTranslateCommand.cpp" />
     <ClCompile Include="CameraZoomCommand.cpp" />
     <ClCompile Include="ClearCommand.cpp" />

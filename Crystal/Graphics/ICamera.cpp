@@ -14,45 +14,43 @@ ICamera::ICamera() :
 {
 }
 
-ICamera::ICamera(const glm::vec3& eye, const glm::vec3& target, const float near_, const float far_) :
-	eye(eye),
+ICamera::ICamera(const glm::vec3& eye, const glm::vec3& target, const glm::vec3& up, const float near_, const float far_) :
 	near_(near_),
 	far_(far_),
 	scale(1.0f),
 	rotation(1.0f),
 	isOrtho(false)
 {
-	setTarget(target);
+	lookAt(eye, target, up);
 }
 
 void ICamera::moveEye(const glm::vec3& v)
 {
-	const auto& up = getUp();
 	this->eye += v;
 	this->rotation = glm::lookAt(eye, target, up);
 }
 
 void ICamera::setEye(const glm::vec3& p)
 {
-	const auto& up = getUp();
 	this->eye = p;
 	this->rotation = glm::lookAt(eye, target, up);
 }
 
 void ICamera::setTarget(const Vector3df& target)
 {
-	const auto& up = getUp();
+	this->target = target;
 	this->rotation = glm::lookAt(eye, target, up);
 }
 
 void ICamera::lookAt(const Vector3df& eye, const Vector3df& target, const Vector3df& up)
 {
 	this->eye = eye;
+	this->target = target;
+	this->up = up;
 	this->rotation = glm::lookAt(eye, target, up);
 }
 
-
-Matrix4df ICamera::getModelviewMatrix() const
+Matrix4df ICamera::getModelViewMatrix() const
 {
 	//glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), eye);
 	glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), glm::vec3(scale));
@@ -69,9 +67,7 @@ Matrix4df ICamera::getProjectionMatrix() const
 	}
 }
 
-
-void ICamera::rotate(const float azimuth, const float elevation)
+Vector3df ICamera::getUp() const
 {
-	rotation = glm::rotate(rotation, azimuth, getRight());
-	rotation = glm::rotate(rotation, elevation, getUp());
+	return up;
 }

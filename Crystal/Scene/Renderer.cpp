@@ -18,6 +18,7 @@ Renderer::Renderer() :
 	camera(new ICamera(
 		Vector3df(0, 0, 0),
 		Vector3df(0, 0, -10.0),
+		Vector3df(0, 0, 1),
 		1.0f, 10.0f))
 {
 

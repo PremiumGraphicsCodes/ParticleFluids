@@ -28,9 +28,11 @@ void CameraUICtrl::onLeftDragging(const Vector2df& position)
 	auto camera = world->getRenderer()->getCamera();
 
 	const auto diff = prevPosition - position;
+	const auto bb = world->getBoundingBox();
+	const auto scale = glm::distance(bb.getMin(), bb.getMax()) * 0.1;
 
 	Crystal::Command::Command command("CameraTranslate");
-	Math::Vector3dd v(diff.x, diff.y, 0.0);
+	Math::Vector3dd v(diff.x * scale, diff.y * scale, 0.0);
 	command.setArg("Translate", v);
 	command.execute(world);
 
