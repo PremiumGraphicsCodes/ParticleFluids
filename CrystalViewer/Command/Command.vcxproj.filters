@@ -143,6 +143,9 @@
     <ClInclude Include="CameraRotateCommand.h">
       <Filter>Camera</Filter>
     </ClInclude>
+    <ClInclude Include="TextureCreateCommand.h">
+      <Filter>Scene\Appearance\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -216,12 +219,6 @@
     <ClCompile Include="MaterialCreateCommand.cpp">
       <Filter>Scene\Appearance\Material</Filter>
     </ClCompile>
-    <ClCompile Include="TextureCreateCommand.h">
-      <Filter>Scene\Appearance\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureCreateCommand.cpp">
-      <Filter>Scene\Appearance\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="ShapeSelectCommand.cpp">
       <Filter>Scene\Shape</Filter>
     </ClCompile>
@@ -233,6 +230,9 @@
     </ClCompile>
     <ClCompile Include="CameraRotateCommand.cpp">
       <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCreateCommand.cpp">
+      <Filter>Scene\Appearance\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

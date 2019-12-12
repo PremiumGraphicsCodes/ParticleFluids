@@ -205,6 +205,7 @@
     <ClInclude Include="ShapeSelectCommand.h" />
     <ClInclude Include="STLFileExportCommand.h" />
     <ClInclude Include="STLFileImportCommand.h" />
+    <ClInclude Include="TextureCreateCommand.h" />
     <ClInclude Include="TransformCommand.h" />
     <ClInclude Include="TranslateCommand.h" />
     <ClInclude Include="TrimCommand.h" />
@@ -241,7 +242,6 @@
     <ClCompile Include="STLFileExportCommand.cpp" />
     <ClCompile Include="STLFileImportCommand.cpp" />
     <ClCompile Include="TextureCreateCommand.cpp" />
-    <ClCompile Include="TextureCreateCommand.h" />
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="TranslateCommand.cpp" />
     <ClCompile Include="TrimCommand.cpp" />
