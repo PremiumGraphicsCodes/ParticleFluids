@@ -58,14 +58,15 @@ namespace PG.CGStudio.UICtrl
         public override void OnRightButtonDragging(Vector2d position)
         {
             var model = MainModel.Instance.World.Adapter;
-            var matrix = PG.CLI.Command.Get<Matrix4d>(model, PG.GetLabels.CameraProjectionMatrixLabel);
+            var matrix = PG.CLI.Command.Get<Matrix4d>(model, PG.GetLabels.CameraRotationMatrixLabel);
 
             var diff = position - prevPosition;
-            var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix;
+            var v = new Vector4d(diff.Y, diff.X, 0.0, 0.0) * matrix.Transposed();
             var command = new PG.CLI.Command(PG.CameraLabels.CameraRotateCommandLabel);
-            var matrix1 = Matrix3d.RotationX(v.Y);
-            var matrix2 = Matrix3d.RotationY(v.X);
-            command.SetArg(PG.CameraLabels.MatrixLabel, matrix2 * matrix1);
+            var matrix1 = Matrix3d.RotationX(v.X);
+            var matrix2 = Matrix3d.RotationY(v.Y);
+            var matrix3 = Matrix3d.RotationZ(v.Z);
+            command.SetArg(PG.CameraLabels.MatrixLabel, matrix3 * matrix2 * matrix1);
             command.Execute(model);
             Canvas3d.Instance.Render();
             prevPosition = position;
