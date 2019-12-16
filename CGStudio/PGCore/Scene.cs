@@ -13,6 +13,7 @@ namespace PG.Core
         Material = 0x10,
         PointLight = 0x20,
         Texture = 0x40,
+        FaceGroup = 0x80,
         AllScene = 0xFF,
     }
 

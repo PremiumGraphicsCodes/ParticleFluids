@@ -66,6 +66,10 @@ namespace PG.CGStudio.Object
                     parameters.Add("PolygonMeshEdit", selectedItem);
                     MainWindowViewModel.Instance.NavigateWithParam("PolygonMeshEdit", parameters);
                     break;
+                case SceneType.FaceGroup:
+                    parameters.Add("FaceGroupEdit", selectedItem);
+                    MainWindowViewModel.Instance.NavigateWithParam("FaceGroupEdit", parameters);
+                    break;
                 case SceneType.PointLight:
                     parameters.Add("LightEdit", selectedItem);
                     MainWindowViewModel.Instance.NavigateWithParam("LightEdit", parameters);

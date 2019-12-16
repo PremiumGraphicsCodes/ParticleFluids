@@ -1,7 +1,9 @@
 #include "SetCommand.h"
 
-#include "../../Crystal/Scene/ParticleAttribute.h"
 #include "Public/SetLabels.h"
+
+#include "../../Crystal/Scene/ParticleAttribute.h"
+#include "../../Crystal/Scene/FaceGroupScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -40,6 +42,12 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 		}
 		else if (name == SetLabels::NameLabel) {
 			scene->setName(std::any_cast<std::string>(value));
+		}
+	}
+	else if (scene->getType() == SceneType::FaceGroupScene) {
+		auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id);
+		if (name == SetLabels::MaterialNameLabel) {
+			faceGroup->setMaterialName(std::any_cast<std::string>(value));
 		}
 	}
 }

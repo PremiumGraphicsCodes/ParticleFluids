@@ -60,6 +60,18 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 	else if (name == GetLabels::IsPickableLabel) {
 		return std::any(scene->isPickable());
 	}
+	else if (name == GetLabels::SceneCountLabel) {
+		return static_cast<int>(scene->getChildren().size());
+	}
+	else if (name == GetLabels::SceneListIdsLabel) {
+		const auto& children = scene->getChildren();
+		std::vector<int> ids;
+		for (auto child : children) {
+			ids.push_back(child->getId());
+		}
+		return std::any(ids);
+	}
+
 	assert(false);
 	return std::any(0);
 }

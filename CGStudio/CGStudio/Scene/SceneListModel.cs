@@ -215,6 +215,15 @@ namespace PG.CGStudio.Scene
                 s.Id.Value = id;
                 s.Name.Value = PG.CLI.Command.Get<string>(adapter, GetLabels.NameLabel, id);
                 s.IsVisible.Value = PG.CLI.Command.Get<bool>(adapter, GetLabels.IsVisibleLabel, id);
+                var childIds = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel, id);
+                foreach(var childId in childIds)
+                {
+                    var ss = new SceneModel();
+                    ss.Id.Value = childId;
+                    ss.Name.Value = PG.CLI.Command.Get<string>(adapter, GetLabels.NameLabel, childId);
+                    ss.IsVisible.Value = PG.CLI.Command.Get<bool>(adapter, GetLabels.IsVisibleLabel, childId);
+                    s.Children.Add(ss);
+                }
                 root.Children.Add(s);
             }
             Scenes.Add( root );

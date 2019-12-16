@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="PG.CGStudio.Scene.Shape.PolygonMesh.FaceGroupEditView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PG.CGStudio.Scene.Shape.PolygonMesh"
+             mc:Ignorable="d">
+    <UserControl.DataContext>
+        <local:FaceGroupEditViewModel/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <TextBlock Text="Id"/>
+        <TextBox Text="{Binding Id.Value}"/>
+        <TextBlock Text="Name"/>
+        <TextBox Text="{Binding Name.Value}"/>
+    </StackPanel>
+</UserControl>

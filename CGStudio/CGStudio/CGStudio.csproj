@@ -164,6 +164,10 @@
       <DependentUpon>ParticleSystemEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\ParticleSystem\ParticleSystemEditViewModel.cs" />
+    <Compile Include="Scene\Shape\PolygonMesh\FaceGroupEditView.xaml.cs">
+      <DependentUpon>FaceGroupEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Shape\PolygonMesh\FaceGroupEditViewModel.cs" />
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditView.xaml.cs">
       <DependentUpon>PolygonMeshEditView.xaml</DependentUpon>
     </Compile>
@@ -332,6 +336,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Shape\ParticleSystem\ParticleSystemEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Shape\PolygonMesh\FaceGroupEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

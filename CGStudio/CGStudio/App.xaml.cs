@@ -50,6 +50,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<ParticleSystemEditView>("ParticleSystemEdit");
             containerRegistry.RegisterForNavigation<WireFrameEditView>("WireFrameEdit");
             containerRegistry.RegisterForNavigation<PolygonMeshEditView>("PolygonMeshEdit");
+            containerRegistry.RegisterForNavigation<FaceGroupEditView>("FaceGroupEdit");
 
             containerRegistry.RegisterForNavigation<MaterialAddView>("MaterialAdd");
             containerRegistry.RegisterForNavigation<MaterialEditView>("MaterialEdit");

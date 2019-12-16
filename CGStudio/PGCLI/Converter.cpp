@@ -194,6 +194,8 @@ Crystal::Scene::SceneType PG::CLI::Converter::toCpp(PG::Core::SceneType src)
 		return Crystal::Scene::SceneType::WireFrameScene;
 	case PG::Core::SceneType::PolygonMesh:
 		return Crystal::Scene::SceneType::PolygonMeshScene;
+	case PG::Core::SceneType::FaceGroup:
+		return Crystal::Scene::SceneType::FaceGroupScene;
 	case PG::Core::SceneType::PointLight:
 		return Crystal::Scene::SceneType::LightScene;
 	case PG::Core::SceneType::Material :
@@ -218,6 +220,8 @@ PG::Core::SceneType PG::CLI::Converter::fromCpp(Crystal::Scene::SceneType src)
 		return PG::Core::SceneType::WireFrame;
 	case Crystal::Scene::SceneType::PolygonMeshScene:
 		return PG::Core::SceneType::PolygonMesh;
+	case Crystal::Scene::SceneType::FaceGroupScene:
+		return PG::Core::SceneType::FaceGroup;
 	case Crystal::Scene::SceneType::LightScene:
 		return PG::Core::SceneType::PointLight;
 	case Crystal::Scene::SceneType::MaterialScene:

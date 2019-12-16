@@ -1,10 +1,15 @@
 ﻿using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace PG.CGStudio.Scene.Shape.PolygonMesh
 {
-    public class PolygonMeshEditViewModel : BindableBase, INavigationAware
+    public class FaceGroupEditViewModel : BindableBase, INavigationAware
     {
         public ReactiveProperty<int> Id { get; }
             = new ReactiveProperty<int>();
@@ -12,9 +17,8 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>();
 
-        public PolygonMeshEditViewModel()
-        {
-        }
+        public ReactiveProperty<string> MaterialName { get; }
+            = new ReactiveProperty<string>();
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
@@ -28,7 +32,7 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["PolygonMeshEdit"] as PG.Core.Scene;
+            var item = navigationContext.Parameters["FaceGroupEdit"] as PG.Core.Scene;
             if (item == null)
             {
                 return;
@@ -36,5 +40,6 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
             Id.Value = item.Id;
             Name.Value = item.Name;
         }
+
     }
 }
