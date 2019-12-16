@@ -5,8 +5,17 @@
 
 #include <sstream>
 
+using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
+
+void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId)
+{
+	positions.add(position);
+	normals.add(normal);
+	texCoords.add(texCoord);
+	materialIds.add(materialId);
+}
 
 SmoothRenderer::SmoothRenderer()
 {

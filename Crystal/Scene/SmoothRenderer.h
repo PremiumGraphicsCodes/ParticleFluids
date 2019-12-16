@@ -16,13 +16,7 @@ class SmoothTriangleBuffer
 public:
 	SmoothTriangleBuffer() {}
 
-	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialId)
-	{
-		positions.add(position);
-		normals.add(normal);
-		texCoords.add(texCoord);
-		materialIds.add(materialId);
-	}
+	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialId);
 
 	Graphics::Buffer3d<float> getPositions() const { return positions; }
 

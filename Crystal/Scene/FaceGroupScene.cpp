@@ -33,7 +33,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 					texCoord = tcs[v.texCoordId];
 				}
 				*/
-				buffer.addVertex(p, n, texCoord, 0);
+				buffer.addVertex(p, n, texCoord, f.materialId);
 			}
 		}
 		viewModel.triangleBuffers.push_back(buffer);
