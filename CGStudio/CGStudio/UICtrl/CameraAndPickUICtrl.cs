@@ -37,10 +37,12 @@ namespace PG.CGStudio.UICtrl
         public override void OnLeftButtonDragging(Vector2d position)
         {
             var model = MainModel.Instance.World.Adapter;
-            var matrix = PG.CLI.Command.Get<Matrix4d>(model, PG.GetLabels.CameraProjectionMatrixLabel);
+            var matrix = PG.CLI.Command.Get<Matrix4d>(model, PG.GetLabels.CameraRotationMatrixLabel);
 
             var diff = position - prevPosition;
-            var v = new Vector4d(-diff.X, diff.Y, 0.0, 0.0) * matrix;
+            var bb = PG.CLI.Command.Get<Box3d>(model, PG.GetLabels.BoundingBoxLabel);
+            var scale = bb.Min.Distance(bb.Max) * 0.1;
+            var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix.Transposed();
             var command = new PG.CLI.Command(PG.CameraLabels.CameraTranslateCommandLabel);
             command.SetArg(PG.CameraLabels.TranslateLabel, new Vector3d(v.X, v.Y, v.Z));
             command.Execute(model);
