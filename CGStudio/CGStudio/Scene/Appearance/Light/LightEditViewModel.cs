@@ -44,15 +44,13 @@ namespace PG.CGStudio.Light
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["LightEdit"] as PG.Core.Scene;
-            if (item == null)
-            {
-                return;
-            }
-            this.Id.Value = item.Id;
-            this.Name.Value = item.Name;
-//            var light = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindLightById( item.Id );
-//            this.PointLightViewModel.Value = light;
+            var id = (int)navigationContext.Parameters["Id"];
+            var name = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.NameLabel, id);
+            Id.Value = id;
+            Name.Value = name;
+            
+            //            var light = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindLightById( item.Id );
+            //            this.PointLightViewModel.Value = light;
         }
     }
 }

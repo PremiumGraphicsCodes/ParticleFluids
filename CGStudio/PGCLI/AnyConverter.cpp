@@ -94,6 +94,10 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 		const auto& v = std::any_cast<Crystal::Math::Box3d>(any);
 		return Converter::fromCpp(v);
 	}
+	else if (type == typeid(Crystal::Graphics::ColorRGBAf)) {
+		const auto& v = std::any_cast<Crystal::Graphics::ColorRGBAf>(any);
+		return Converter::fromCpp(v);
+	}
 	else if (type == typeid(std::string)) {
 		const auto& v = std::any_cast<std::string>(any);
 		return Converter::fromCpp(v);

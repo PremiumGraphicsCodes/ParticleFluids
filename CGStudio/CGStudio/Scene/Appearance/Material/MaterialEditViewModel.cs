@@ -1,4 +1,5 @@
 ﻿using PG.Control.Graphics;
+using PG.Core.Graphics;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -34,13 +35,11 @@ namespace PG.CGStudio.Material
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["MaterialEdit"] as PG.Core.Scene;
-            if (item == null)
-            {
-                return;
-            }
-            Id.Value = item.Id;
-            Name.Value = item.Name;
+            var id = (int)navigationContext.Parameters["Id"];
+            var name = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.NameLabel, id);
+            Id.Value = id;
+            Name.Value = name;
+            var ambient = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.AmbientLabel, id);
            // var material = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindMaterialByid(item.Id);
            // this.MaterialViewModel.Value = material;
         }

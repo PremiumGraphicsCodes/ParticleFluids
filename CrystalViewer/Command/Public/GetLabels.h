@@ -16,5 +16,8 @@ namespace GetLabels
 	PublicLabel SceneTypeIdLabel = "SceneTypeId";
 	PublicLabel BoundingBoxLabel = "BoundingBox";
 	PublicLabel MaterialNameLabel = "MaterialName";
+	PublicLabel AmbientLabel = "Ambient";
+	PublicLabel DiffuseLabel = "Diffuse";
+	PublicLabel SpecularLabel = "Specular";
 	PublicLabel IsPickableLabel = "IsPickable";
 }

@@ -4,6 +4,7 @@
 
 #include "../../Crystal/Scene/IShapeScene.h"
 #include "../../Crystal/Scene/FaceGroupScene.h"
+#include "../../Crystal/Scene/MaterialScene.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
@@ -72,10 +73,24 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 		}
 		return std::any(ids);
 	}
-	if (scene->getType() == SceneType::FaceGroupScene) {
+	else if (scene->getType() == SceneType::FaceGroupScene) {
 		auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id);
 		return std::any( faceGroup->getMaterialName() );
 	}
+	else if (scene->getType() == SceneType::MaterialScene) {
+		auto material = world->getObjects()->findSceneById<MaterialScene*>(id);
+		if (name == GetLabels::AmbientLabel) {
+			return std::any(material->getMaterial().ambient);
+		}
+		else if (name == GetLabels::DiffuseLabel) {
+			return std::any(material->getMaterial().diffuse);
+		}
+		else if (name == GetLabels::SpecularLabel) {
+			return std::any(material->getMaterial().specular);
+		}
+
+	}
+
 
 	assert(false);
 	return std::any(0);
