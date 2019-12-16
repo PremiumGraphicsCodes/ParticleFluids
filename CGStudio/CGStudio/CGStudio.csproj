@@ -257,7 +257,7 @@
     <Compile Include="Scene\Appearance\Texture\TextureEditViewModel.cs" />
     <Compile Include="UICommand\UICommand.cs" />
     <Compile Include="UICtrlViewModel.cs" />
-    <Compile Include="UICtrl\CameraAndPickUICtrl.cs" />
+    <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Scene\Shape\ParticleSystem\Generation\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
@@ -297,7 +297,7 @@
     <Compile Include="World.cs" />
     <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="Scene\Shape\Transform\Translate\TranslateUICtrl.cs" />
-    <Compile Include="Scene\Shape\Transform\PickUICtrl.cs" />
+    <Compile Include="UICtrl\PickUICtrl.cs" />
     <Compile Include="Scene\Shape\Transform\Scale\ScaleUICtrl.cs" />
     <Page Include="Scene\Appearance\Light\LightAddView.xaml">
       <SubType>Designer</SubType>
