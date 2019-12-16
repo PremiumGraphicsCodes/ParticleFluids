@@ -30,6 +30,7 @@ private:
 	Scene::World* world;
 	IntView id;
 	StringView name;
+	StringView materialName;
 	Button edit;
 };
 

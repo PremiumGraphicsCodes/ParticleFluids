@@ -17,6 +17,10 @@ FaceGroupScene::FaceGroupScene(const int id, const std::string& name) :
 void FaceGroupScene::setMaterialName(const std::string& name)
 {
 	this->materialName = name;
+	auto scene = getRoot()->findSceneByName<MaterialScene*>(this->materialName);
+	if (scene != nullptr) {
+		this->materialId = scene->getMaterialId();
+	}
 }
 
 
@@ -45,7 +49,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 					texCoord = tcs[v.texCoordId];
 				}
 				*/
-				buffer.addVertex(p, n, texCoord, f.materialId);
+				buffer.addVertex(p, n, texCoord, this->materialId);
 			}
 		}
 		viewModel.triangleBuffers.push_back(buffer);

@@ -15,6 +15,7 @@ void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df&
 	normals.add(normal);
 	texCoords.add(texCoord);
 	materialIds.add(materialId);
+//	materialIds.add(1);
 }
 
 SmoothRenderer::SmoothRenderer()
