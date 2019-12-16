@@ -9,6 +9,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 CameraUICtrl::CameraUICtrl(World* world) :
+	prevPosition(0.0f,0.0f),
 	world(world)
 {
 }
@@ -35,9 +36,9 @@ void CameraUICtrl::onLeftDragging(const Vector2df& position)
 	const auto& matrix = world->getRenderer()->getCamera()->getRotationMatrix();
 	const auto v = glm::transpose( Matrix3dd( matrix ) ) * Vector3dd( diff, 0.0);
 
-	Crystal::Command::Command command("CameraTranslate");
+	Crystal::Command::Command command(CameraTranslateCommandLabels::CameraTranslateCommandLabel);
 	Math::Vector3dd t(v.x * scale, v.y * scale, v.z*scale);
-	command.setArg("Translate", t);
+	command.setArg(CameraTranslateCommandLabels::TranslateLabel, t);
 	command.execute(world);
 
 	this->prevPosition = position;
@@ -72,7 +73,7 @@ void CameraUICtrl::onRightDragging(const Vector2df& position)
 void CameraUICtrl::onWheel(const float dx)
 {
 	auto camera = world->getRenderer()->getCamera();
-	Crystal::Command::Command command("CameraZoom");
-	command.setArg("Ratio", dx / 100.0f);
+	Crystal::Command::Command command(CameraZoomCommandLabels::CameraZoomCommandLabel);
+	command.setArg(CameraZoomCommandLabels::ZoomRatioLabel, dx / 100.0f);
 	command.execute(world);
 }
