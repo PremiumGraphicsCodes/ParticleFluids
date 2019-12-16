@@ -3,6 +3,7 @@
 #include "Public/GetLabels.h"
 
 #include "../../Crystal/Scene/IShapeScene.h"
+#include "../../Crystal/Scene/FaceGroupScene.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
@@ -70,6 +71,10 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 			ids.push_back(child->getId());
 		}
 		return std::any(ids);
+	}
+	if (scene->getType() == SceneType::FaceGroupScene) {
+		auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id);
+		return std::any( faceGroup->getMaterialName() );
 	}
 
 	assert(false);

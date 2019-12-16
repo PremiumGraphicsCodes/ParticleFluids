@@ -32,13 +32,12 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["FaceGroupEdit"] as PG.Core.Scene;
-            if (item == null)
-            {
-                return;
-            }
-            Id.Value = item.Id;
-            Name.Value = item.Name;
+            var id = (int)navigationContext.Parameters["Id"];
+            Id.Value = id;
+            var name = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.NameLabel, id);
+            Name.Value = name;
+            var materialName = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.MaterialNameLabel, id);
+            MaterialName.Value = materialName;
         }
 
     }

@@ -60,6 +60,7 @@ namespace PG {
 		public const string SceneTypeLabel = "SceneType";
 		public const string SceneTypeIdLabel = "SceneTypeId";
 		public const string BoundingBoxLabel = "BoundingBox";
+		public const string MaterialNameLabel = "MaterialName";
 		public const string IsPickableLabel = "IsPickable";
 	}
 
@@ -140,6 +141,7 @@ namespace PG {
 		public const string PointSizeLabel = "PointSize";
 		public const string IsVisibleLabel = "IsVisible";
 		public const string ColorLabel = "Color";
+		public const string MaterialNameLabel = "MaterialName";
 		public const string NameLabel = "Name";
 	}
 

@@ -51,6 +51,7 @@ namespace PG.CGStudio.Object
                 return;
             }
             var parameters = new NavigationParameters();
+            parameters.Add("Id", selectedItem.Id.Value);
             var type = PG.CLI.Command.Get<SceneType>(MainModel.Instance.World.Adapter, "SceneType", selectedItem.Id.Value);
             switch(type)
             {
