@@ -60,10 +60,6 @@
       <Project>{b2fcf247-2dcb-43ff-b179-c21d15c48500}</Project>
       <Name>PGCLI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PGCommand\PGCommand.csproj">
-      <Project>{b3ab885d-feda-476a-848f-515c34f1b2aa}</Project>
-      <Name>PGCommand</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PGCore\PGCore.csproj">
       <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
       <Name>PGCore</Name>
