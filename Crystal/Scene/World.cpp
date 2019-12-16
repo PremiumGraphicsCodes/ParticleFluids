@@ -1,6 +1,8 @@
 #include "World.h"
 
 #include "PointRenderer.h"
+#include "LightScene.h"
+#include "MaterialScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

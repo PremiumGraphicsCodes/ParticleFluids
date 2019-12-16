@@ -9,6 +9,7 @@
 #include "PolygonMeshScene.h"
 #include "TransformScene.h"
 #include "FaceGroupScene.h"
+#include "TextureScene.h"
 
 #include "../Shape/WireFrame.h"
 
@@ -18,7 +19,9 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-SceneFactory::SceneFactory()
+SceneFactory::SceneFactory() :
+	idProvider(1),
+	materialIdProvider(0)
 {
 }
 
@@ -29,7 +32,8 @@ SceneFactory::~SceneFactory()
 
 void SceneFactory::clear()
 {
-	idProvider.reset();
+	idProvider.reset(1);
+	materialIdProvider.reset(0);
 }
 
 Scene* SceneFactory::createScene(const std::string& name)
@@ -80,7 +84,7 @@ LightScene* SceneFactory::createLightScene(const PointLight& light, const std::s
 
 MaterialScene* SceneFactory::createMaterialScene(const Material& material, const std::string& name)
 {
-	return new MaterialScene(getNextId(), name, material);
+	return new MaterialScene(getNextId(), name, material, materialIdProvider.getNextId());
 }
 
 TextureScene* SceneFactory::createTextureScene(const Image& image, const std::string& name)

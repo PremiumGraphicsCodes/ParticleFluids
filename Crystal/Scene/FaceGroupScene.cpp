@@ -8,6 +8,18 @@
 
 using namespace Crystal::Scene;
 
+FaceGroupScene::FaceGroupScene(const int id, const std::string& name) :
+	IScene(id, name),
+	materialId(0),
+	faces({})
+{}
+
+void FaceGroupScene::setMaterialName(const std::string& name)
+{
+	this->materialName = name;
+}
+
+
 void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 {
 	if (!isVisible()) {

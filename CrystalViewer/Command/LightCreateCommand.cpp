@@ -2,6 +2,8 @@
 
 #include "Public/LightCreateLabels.h"
 
+#include "../../Crystal/Scene/LightScene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;

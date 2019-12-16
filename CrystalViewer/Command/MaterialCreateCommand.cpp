@@ -1,6 +1,7 @@
 #include "MaterialCreateCommand.h"
 
 #include "Public/MaterialCreateLabels.h"
+#include "../../Crystal/Scene/MaterialScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

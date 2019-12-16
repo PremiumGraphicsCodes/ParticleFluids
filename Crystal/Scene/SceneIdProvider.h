@@ -8,13 +8,13 @@ namespace Crystal {
 class SceneIdProvider : private UnCopyable
 {
 public:
-	SceneIdProvider() :
-		nextId(1)
+	explicit SceneIdProvider(int startId) :
+		nextId(startId)
 	{}
 
 	int getNextId() { return nextId++; }
 
-	void reset() { this->nextId = 1; }
+	void reset(int startId) { this->nextId = startId; }
 
 private:
 	int nextId;

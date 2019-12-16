@@ -1,14 +1,16 @@
 #pragma once
 
 #include "SceneIdProvider.h"
-#include "LightScene.h"
-#include "MaterialScene.h"
-#include "TextureScene.h"
-#include "../Math/Line3d.h"
+
+#include <string>
+#include "../Math/Vector3d.h"
 
 namespace Crystal {
 	namespace Graphics {
+		class Image;
 		class Camera;
+		class PointLight;
+		struct Material;
 	}
 	namespace Shader {
 		class ShaderObject;
@@ -28,7 +30,9 @@ namespace Crystal {
 		class PolygonMeshScene;
 		class FaceGroupScene;
 		class TransformScene;
-
+		class TextureScene;
+		class LightScene;
+		class MaterialScene;
 
 class SceneFactory
 {
@@ -68,6 +72,7 @@ public:
 	int getNextId() { return idProvider.getNextId(); }
 
 private:
+	SceneIdProvider materialIdProvider;
 	SceneIdProvider idProvider;
 };
 

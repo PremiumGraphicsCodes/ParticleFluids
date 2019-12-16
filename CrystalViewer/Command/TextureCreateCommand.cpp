@@ -1,8 +1,9 @@
 #include "TextureCreateCommand.h"
 
-#include "../../Crystal/IO/ImageFileReader.h"
-
 #include "Public/TextureCreateLabels.h"
+
+#include "../../Crystal/Scene/TextureScene.h"
+#include "../../Crystal/IO/ImageFileReader.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

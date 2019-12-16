@@ -9,17 +9,13 @@ namespace Crystal {
 class FaceGroupScene : public IScene
 {
 public:
-	FaceGroupScene(const int id, const std::string& name) :
-		IScene(id, name)
-	{}
+	FaceGroupScene(const int id, const std::string& name);
 
 	void addFace(Shape::Face f) { this->faces.push_back(f); }
 
 	std::vector<Shape::Face> getFaces() const { return faces; }
 
-	//int getId() const { return id; }
-
-	void setMaterialName(const std::string& name) { this->materialName = name; }
+	void setMaterialName(const std::string& name);
 
 	std::string getMaterialName() const { return materialName; }
 
@@ -35,6 +31,7 @@ public:
 
 private:
 	std::string materialName;
+	int materialId;
 	std::vector<Shape::Face> faces;
 
 };
