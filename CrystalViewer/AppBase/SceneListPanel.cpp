@@ -5,6 +5,7 @@
 #include "ParticleSystemEditView.h"
 #include "WireFrameEditView.h"
 #include "PolygonMeshEditView.h"
+#include "FaceGroupEditView.h"
 #include "MaterialEditView.h"
 #include "LightEditView.h"
 #include "TextureEditView.h"
@@ -71,6 +72,15 @@ void SceneListPanel::show(IScene* scene)
 				{
 					auto editView = new PolygonMeshEditView("PolygonMeshEdit", model, canvas);
 					auto s = scene->findSceneById<PolygonMeshScene*>(id);
+					editView->setValue(s);
+					control->clear();
+					control->add(editView);
+					break;
+				}
+				case SceneType::FaceGroupScene:
+				{
+					auto editView = new FaceGroupEditView("FaceGroupEdit", model, canvas);
+					auto s = scene->findSceneById<FaceGroupScene*>(id);
 					editView->setValue(s);
 					control->clear();
 					control->add(editView);
