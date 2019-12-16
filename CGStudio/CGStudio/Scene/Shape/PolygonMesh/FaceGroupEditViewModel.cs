@@ -20,6 +20,22 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         public ReactiveProperty<string> MaterialName { get; }
             = new ReactiveProperty<string>();
 
+        public ReactiveCommand ApplyCommand { get; }
+            = new ReactiveCommand();
+
+        public FaceGroupEditViewModel()
+        {
+            ApplyCommand.Subscribe(OnApply);
+        }
+
+        private void OnApply()
+        {
+            PG.CLI.Command.Set(MainModel.Instance.World.Adapter, PG.SetLabels.NameLabel, Id.Value, Name.Value);
+            PG.CLI.Command.Set(MainModel.Instance.World.Adapter, PG.SetLabels.MaterialNameLabel, Id.Value, MaterialName.Value);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Render();
+        }
+
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return true;
