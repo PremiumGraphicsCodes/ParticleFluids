@@ -34,6 +34,9 @@ MaterialUpdateCommand::Args::Args() :
 void MaterialUpdateCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<MaterialScene*>(args.id.getValue());
+	if (scene == nullptr) {
+		return;
+	}
 	auto m = scene->getMaterial();
 	m.ambient = args.ambient.getValue();
 	m.diffuse = args.diffuse.getValue();

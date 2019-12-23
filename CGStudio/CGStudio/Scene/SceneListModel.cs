@@ -1,5 +1,6 @@
 ﻿using PG.CGStudio.Scene.Shape;
 using PG.Core;
+using PG.Core.Graphics;
 using PG.Core.Math;
 using PG.Core.Shape;
 using PG.Core.UI;
@@ -112,6 +113,21 @@ namespace PG.CGStudio.Scene
             var newId = command.GetResult<int>(PG.MaterialCreateLabels.NewIdLabel);
             Sync();
             return newId;
+        }
+
+        public PG.Core.Graphics.Material GetMaterialScene(int id)
+        {
+            var command = new PG.CLI.Command(PG.MaterialGetLabels.CommandNameLabel);
+            command.SetArg(PG.MaterialGetLabels.IdLabel, id);
+            command.Execute(MainModel.Instance.World.Adapter);
+            var m = new PG.Core.Graphics.Material
+            {
+                Ambient = command.GetResult<ColorRGBA>(PG.MaterialGetLabels.AmbientLabel),
+                Diffuse = command.GetResult<ColorRGBA>(PG.MaterialGetLabels.DiffuseLabel),
+                Specular = command.GetResult<ColorRGBA>(PG.MaterialGetLabels.SpecularLabel),
+                Shininess = command.GetResult<float>(PG.MaterialGetLabels.ShininessLabel)
+            };
+            return m;
         }
 
         public void UpdateMaterialScene(PG.Core.Graphics.Material material, string name, int id)
