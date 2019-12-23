@@ -18,6 +18,7 @@
 #include "ScaleCommand.h"
 #include "TrimCommand.h"
 #include "LightCreateCommand.h"
+#include "LightUpdateCommand.h"
 #include "MaterialCreateCommand.h"
 #include "TextureCreateCommand.h"
 #include "ShapeSelectCommand.h"
@@ -129,6 +130,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == PCDFileExportCommand::getName()) {
 		return std::make_unique<PCDFileExportCommand>();
+	}
+	else if (name == LightUpdateCommand::getName()) {
+		return std::make_unique<LightUpdateCommand>();
 	}
 
 	assert(false);

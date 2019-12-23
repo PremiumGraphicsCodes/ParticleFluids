@@ -78,6 +78,17 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
+	public class LightUpdateLabels
+	{
+		public const string CommandNameLabel = "LightUpdate";
+		public const string IdLabel = "Id";
+		public const string PositionLabel = "Position";
+		public const string AmbientLabel = "Ambient";
+		public const string DiffuseLabel = "Diffuse";
+		public const string SpecularLabel = "Specular";
+		public const string NameLabel = "Name";
+	}
+
 	public class MaterialCreateLabels
 	{
 		public const string CommandNameLabel = "MaterialCreate";

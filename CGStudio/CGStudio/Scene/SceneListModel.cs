@@ -130,11 +130,14 @@ namespace PG.CGStudio.Scene
 
         public void UpdateLightScene(PG.Core.Graphics.PointLight light, string name, int id)
         {
-            PG.CLI.Command.Set(adapter, PG.SetLabels.NameLabel, id, name);
-            PG.CLI.Command.Set(adapter, PG.SetLabels.AmbientLabel, id, light.Ambient);
-            PG.CLI.Command.Set(adapter, PG.SetLabels.DiffuseLabel, id, light.Diffuse);
-            PG.CLI.Command.Set(adapter, PG.SetLabels.SpecularLabel, id, light.Specular);
-            PG.CLI.Command.Set(adapter, PG.SetLabels.PositionLabel, id, light.Position);
+            var command = new PG.CLI.Command(PG.LightUpdateLabels.CommandNameLabel);
+            command.SetArg(PG.LightUpdateLabels.IdLabel, id);
+            command.SetArg(PG.LightUpdateLabels.AmbientLabel, light.Ambient);
+            command.SetArg(PG.LightUpdateLabels.DiffuseLabel, light.Diffuse);
+            command.SetArg(PG.LightUpdateLabels.SpecularLabel, light.Specular);
+            command.SetArg(PG.LightUpdateLabels.PositionLabel, light.Position);
+            command.SetArg(PG.LightUpdateLabels.NameLabel, name);
+            command.Execute(adapter);
         }
 
         public int AddTextureScene(string imageFilePath, string name)
