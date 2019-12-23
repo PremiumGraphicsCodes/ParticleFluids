@@ -11,5 +11,8 @@ namespace SetLabels
 	PublicLabel IsVisibleLabel = "IsVisible";
 	PublicLabel ColorLabel = "Color";
 	PublicLabel MaterialNameLabel = "MaterialName";
+	PublicLabel AmbientLabel = "Ambient";
+	PublicLabel DiffuseLabel = "Diffuse";
+	PublicLabel SpecularLabel = "Specular";
 	PublicLabel NameLabel = "Name";
 }

@@ -128,6 +128,15 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
+        public void UpdateLightScene(PG.Core.Graphics.PointLight light, string name, int id)
+        {
+            PG.CLI.Command.Set(adapter, PG.SetLabels.NameLabel, id, name);
+            PG.CLI.Command.Set(adapter, PG.SetLabels.AmbientLabel, id, light.Ambient);
+            PG.CLI.Command.Set(adapter, PG.SetLabels.DiffuseLabel, id, light.Diffuse);
+            PG.CLI.Command.Set(adapter, PG.SetLabels.SpecularLabel, id, light.Specular);
+            PG.CLI.Command.Set(adapter, PG.SetLabels.PositionLabel, id, light.Position);
+        }
+
         public int AddTextureScene(string imageFilePath, string name)
         {
             var command = new PG.CLI.Command(PG.TextureCreateLabels.CommandNameLabel);

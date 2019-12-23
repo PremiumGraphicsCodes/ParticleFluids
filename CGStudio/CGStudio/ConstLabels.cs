@@ -145,6 +145,9 @@ namespace PG {
 		public const string IsVisibleLabel = "IsVisible";
 		public const string ColorLabel = "Color";
 		public const string MaterialNameLabel = "MaterialName";
+		public const string AmbientLabel = "Ambient";
+		public const string DiffuseLabel = "Diffuse";
+		public const string SpecularLabel = "Specular";
 		public const string NameLabel = "Name";
 	}
 
