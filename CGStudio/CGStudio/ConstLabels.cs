@@ -101,6 +101,18 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
+	public class MaterialGetLabels
+	{
+		public const string CommandNameLabel = "MaterialGet";
+		public const string IdLabel = "Id";
+		public const string AmbientLabel = "Ambient";
+		public const string DiffuseLabel = "Diffuse";
+		public const string SpecularLabel = "Specular";
+		public const string ShininessLabel = "Shininess";
+		public const string TextureIdLabel = "TextureId";
+		public const string NameLabel = "Name";
+	}
+
 	public class MaterialUpdateLabels
 	{
 		public const string CommandNameLabel = "MaterialUpdate";

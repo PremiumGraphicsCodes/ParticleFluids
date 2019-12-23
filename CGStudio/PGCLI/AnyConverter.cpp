@@ -74,6 +74,12 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 	else if (type == typeid(bool)) {
 		return std::any_cast<bool>(any);
 	}
+	else if (type == typeid(float)) {
+		return std::any_cast<float>(any);
+	}
+	else if (type == typeid(double)) {
+		return std::any_cast<double>(any);
+	}
 	else if (type == typeid(Crystal::Math::Vector3df)) {
 		const auto& v = std::any_cast<Crystal::Math::Vector3df>(any);
 		return Converter::fromCpp(v);

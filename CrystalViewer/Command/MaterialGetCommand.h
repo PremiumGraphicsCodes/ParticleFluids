@@ -28,7 +28,7 @@ public:
 	};
 
 	MaterialGetCommand() :
-		ICommand(&args, nullptr)
+		ICommand(&args, &results)
 	{}
 
 	static std::string getName();
