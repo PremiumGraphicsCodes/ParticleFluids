@@ -51,24 +51,4 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 			faceGroup->setMaterialName(std::any_cast<std::string>(value));
 		}
 	}
-	else if (scene->getType() == SceneType::LightScene) {
-		auto light = world->getObjects()->findSceneById<LightScene*>(id);
-		auto l = light->getLight();
-		if (name == SetLabels::AmbientLabel) {
-			l.setAmbient(std::any_cast<Graphics::ColorRGBAf>(value));
-			light->setLight(l);
-		}
-		else if (name == SetLabels::DiffuseLabel) {
-			l.setDiffuse(std::any_cast<Graphics::ColorRGBAf>(value));
-			light->setLight(l);
-		}
-		else if (name == SetLabels::SpecularLabel) {
-			l.setSpecular(std::any_cast<Graphics::ColorRGBAf>(value));
-			light->setLight(l);
-		}
-		else if (name == SetLabels::PositionLabel) {
-			l.setPosition(std::any_cast<Vector3dd>(value));
-			light->setLight(l);
-		}
-	}
 }
