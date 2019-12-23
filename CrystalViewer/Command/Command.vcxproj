@@ -172,6 +172,7 @@
     <ClInclude Include="LightCreateCommand.h" />
     <ClInclude Include="LightUpdateCommand.h" />
     <ClInclude Include="MaterialCreateCommand.h" />
+    <ClInclude Include="MaterialGetCommand.h" />
     <ClInclude Include="MaterialUpdateCommand.h" />
     <ClInclude Include="MockCommand.h" />
     <ClInclude Include="NewCommand.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Public\LightCreateLabels.h" />
     <ClInclude Include="Public\LightUpdateLabels.h" />
     <ClInclude Include="Public\MaterialCreateLabels.h" />
+    <ClInclude Include="Public\MaterialGetLabels.h" />
     <ClInclude Include="Public\MaterialUpdateLabels.h" />
     <ClInclude Include="Public\MockLabels.h" />
     <ClInclude Include="Public\NewLabels.h" />
@@ -231,6 +233,7 @@
     <ClCompile Include="LightCreateCommand.cpp" />
     <ClCompile Include="LightUpdateCommand.cpp" />
     <ClCompile Include="MaterialCreateCommand.cpp" />
+    <ClCompile Include="MaterialGetCommand.cpp" />
     <ClCompile Include="MaterialUpdateCommand.cpp" />
     <ClCompile Include="MockCommand.cpp" />
     <ClCompile Include="NewCommand.cpp" />

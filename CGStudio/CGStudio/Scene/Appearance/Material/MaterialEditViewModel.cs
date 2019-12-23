@@ -40,6 +40,9 @@ namespace PG.CGStudio.Material
             Id.Value = id;
             Name.Value = name;
             var ambient = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.AmbientLabel, id);
+            var diffuse = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.DiffuseLabel, id);
+            var specular = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.SpecularLabel, id);
+//            var shininess = PG.CLI.Command.Get<float>(MainModel.Instance.World.Adapter, PG.GetLabels.Shininess)
            // var material = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindMaterialByid(item.Id);
            // this.MaterialViewModel.Value = material;
         }
