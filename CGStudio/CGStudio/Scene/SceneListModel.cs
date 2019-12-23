@@ -130,15 +130,15 @@ namespace PG.CGStudio.Scene
             return m;
         }
 
-        public void UpdateMaterialScene(PG.Core.Graphics.Material material, string name, int id)
+        public void SetMaterialScene(PG.Core.Graphics.Material material, string name, int id)
         {
-            var command = new PG.CLI.Command(PG.MaterialUpdateLabels.CommandNameLabel);
-            command.SetArg(PG.MaterialUpdateLabels.IdLabel, id);
-            command.SetArg(PG.MaterialUpdateLabels.AmbientLabel, material.Ambient);
-            command.SetArg(PG.MaterialUpdateLabels.DiffuseLabel, material.Diffuse);
-            command.SetArg(PG.MaterialUpdateLabels.SpecularLabel, material.Specular);
-            command.SetArg(PG.MaterialUpdateLabels.ShininessLabel, material.Shininess);
-            command.SetArg(PG.MaterialUpdateLabels.NameLabel, name);
+            var command = new PG.CLI.Command(PG.MaterialSetLabels.CommandNameLabel);
+            command.SetArg(PG.MaterialSetLabels.IdLabel, id);
+            command.SetArg(PG.MaterialSetLabels.AmbientLabel, material.Ambient);
+            command.SetArg(PG.MaterialSetLabels.DiffuseLabel, material.Diffuse);
+            command.SetArg(PG.MaterialSetLabels.SpecularLabel, material.Specular);
+            command.SetArg(PG.MaterialSetLabels.ShininessLabel, material.Shininess);
+            command.SetArg(PG.MaterialSetLabels.NameLabel, name);
             command.Execute(adapter);
         }
 

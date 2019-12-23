@@ -113,9 +113,9 @@ namespace PG {
 		public const string NameLabel = "Name";
 	}
 
-	public class MaterialUpdateLabels
+	public class MaterialSetLabels
 	{
-		public const string CommandNameLabel = "MaterialUpdate";
+		public const string CommandNameLabel = "MaterialSet";
 		public const string IdLabel = "Id";
 		public const string AmbientLabel = "Ambient";
 		public const string DiffuseLabel = "Diffuse";

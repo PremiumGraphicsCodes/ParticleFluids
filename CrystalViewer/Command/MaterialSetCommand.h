@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Command {
 
-class MaterialUpdateCommand : public ICommand
+class MaterialSetCommand : public ICommand
 {
 public:
 	struct Args : IArgs
@@ -21,7 +21,7 @@ public:
 		Arg<std::string> name;
 	};
 
-	MaterialUpdateCommand() :
+	MaterialSetCommand() :
 		ICommand(&args, nullptr)
 	{}
 

@@ -28,7 +28,7 @@ namespace PG.CGStudio.Material
         private void OnOk()
         {
             var world = MainModel.Instance.World;
-            world.Scenes.UpdateMaterialScene(MaterialViewModel.Value, Name.Value, Id.Value );
+            world.Scenes.SetMaterialScene(MaterialViewModel.Value, Name.Value, Id.Value );
             Canvas3d.Instance.Update(world);
             Canvas3d.Instance.Render();
         }

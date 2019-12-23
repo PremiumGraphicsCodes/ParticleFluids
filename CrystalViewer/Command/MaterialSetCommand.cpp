@@ -1,6 +1,6 @@
-#include "MaterialUpdateCommand.h"
+#include "MaterialSetCommand.h"
 
-#include "Public/MaterialUpdateLabels.h"
+#include "Public/MaterialSetLabels.h"
 #include "../../Crystal/Scene/MaterialScene.h"
 
 using namespace Crystal::Math;
@@ -8,19 +8,19 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-std::string MaterialUpdateCommand::getName()
+std::string MaterialSetCommand::getName()
 {
-	return MaterialUpdateLabels::CommandNameLabel;
+	return MaterialSetLabels::CommandNameLabel;
 }
 
-MaterialUpdateCommand::Args::Args() :
-	id(MaterialUpdateLabels::IdLabel, -1),
-	ambient(MaterialUpdateLabels::AmbientLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
-	diffuse(MaterialUpdateLabels::DiffuseLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
-	specular(MaterialUpdateLabels::SpecularLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
-	shininess(MaterialUpdateLabels::ShininessLabel, 1.0f),
-	textureId(MaterialUpdateLabels::TextureIdLabel, -1),
-	name(MaterialUpdateLabels::NameLabel, std::string(""))
+MaterialSetCommand::Args::Args() :
+	id(MaterialSetLabels::IdLabel, -1),
+	ambient(MaterialSetLabels::AmbientLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
+	diffuse(MaterialSetLabels::DiffuseLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
+	specular(MaterialSetLabels::SpecularLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
+	shininess(MaterialSetLabels::ShininessLabel, 1.0f),
+	textureId(MaterialSetLabels::TextureIdLabel, -1),
+	name(MaterialSetLabels::NameLabel, std::string(""))
 {
 	add(&id);
 	add(&ambient);
@@ -31,7 +31,7 @@ MaterialUpdateCommand::Args::Args() :
 	add(&name);
 }
 
-void MaterialUpdateCommand::execute(World* world)
+void MaterialSetCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<MaterialScene*>(args.id.getValue());
 	if (scene == nullptr) {

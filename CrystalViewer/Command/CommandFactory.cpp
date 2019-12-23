@@ -21,7 +21,7 @@
 #include "LightUpdateCommand.h"
 #include "MaterialCreateCommand.h"
 #include "MaterialGetCommand.h"
-#include "MaterialUpdateCommand.h"
+#include "MaterialSetCommand.h"
 #include "TextureCreateCommand.h"
 #include "ShapeSelectCommand.h"
 #include "DeleteCommand.h"
@@ -136,8 +136,8 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == LightUpdateCommand::getName()) {
 		return std::make_unique<LightUpdateCommand>();
 	}
-	else if (name == MaterialUpdateCommand::getName()) {
-		return std::make_unique<MaterialUpdateCommand>();
+	else if (name == MaterialSetCommand::getName()) {
+		return std::make_unique<MaterialSetCommand>();
 	}
 	else if (name == MaterialGetCommand::getName()) {
 		return std::make_unique<MaterialGetCommand>();

@@ -2,9 +2,9 @@
 
 #include "PublicLabel.h"
 
-namespace MaterialUpdateLabels
+namespace MaterialSetLabels
 {
-	PublicLabel CommandNameLabel = "MaterialUpdate";
+	PublicLabel CommandNameLabel = "MaterialSet";
 
 	PublicLabel IdLabel = "Id";
 	PublicLabel AmbientLabel = "Ambient";
