@@ -66,5 +66,9 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 			l.setSpecular(std::any_cast<Graphics::ColorRGBAf>(value));
 			light->setLight(l);
 		}
+		else if (name == SetLabels::PositionLabel) {
+			l.setPosition(std::any_cast<Vector3dd>(value));
+			light->setLight(l);
+		}
 	}
 }
