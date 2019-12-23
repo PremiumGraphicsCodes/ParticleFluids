@@ -146,6 +146,12 @@
     <ClInclude Include="TextureCreateCommand.h">
       <Filter>Scene\Appearance\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="LightUpdateCommand.h">
+      <Filter>Scene\Appearance\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\LightUpdateLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -233,6 +239,9 @@
     </ClCompile>
     <ClCompile Include="TextureCreateCommand.cpp">
       <Filter>Scene\Appearance\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="LightUpdateCommand.cpp">
+      <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
