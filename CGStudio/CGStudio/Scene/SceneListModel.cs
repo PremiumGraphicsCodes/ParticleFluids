@@ -14,20 +14,6 @@ namespace PG.CGStudio.Scene
 
         public ReactiveCollection<SceneModel> Scenes;
 
-        private readonly List<SelectedShapeSceneModel> selectedShapes = new List<SelectedShapeSceneModel>();
-
-        public IEnumerable<int> SelectedIds
-        {
-            get {
-                var ids = new List<int>();
-                foreach(var shape in selectedShapes)
-                {
-                    ids.Add(shape.Id);
-                }
-                return ids;
-            }
-        }
-
         public SceneListModel(PG.CLI.WorldAdapter adapter)
         {
             this.adapter = adapter;
@@ -155,32 +141,6 @@ namespace PG.CGStudio.Scene
             var newId = command.GetResult<int>(PG.TextureCreateLabels.NewIdLabel);
             Sync();
             return newId;
-        }
-
-        public void Select(int id)
-        {
-            selectedShapes.Add(new SelectedShapeSceneModel(id));
-            Canvas3d.Instance.Update(MainModel.Instance.World);
-            Canvas3d.Instance.Render();
-        }
-
-        public bool IsSelected(int id)
-        {
-            foreach(var s in selectedShapes)
-            {
-                if(s.Id == id)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public void UnSelect(int id)
-        {
-            var selected = selectedShapes.Find((x) => x.Id == id);
-            selected.ClearItems();
-            selectedShapes.Remove(selected);
         }
 
         public void Delete(int id)
