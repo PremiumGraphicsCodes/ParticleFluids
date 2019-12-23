@@ -1,4 +1,6 @@
 ﻿using PG.Control.Graphics;
+using PG.Core.Graphics;
+using PG.Core.Math;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -48,9 +50,16 @@ namespace PG.CGStudio.Light
             var name = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.NameLabel, id);
             Id.Value = id;
             Name.Value = name;
-            
-            //            var light = MainModel.Instance.Repository.Adapter.GetSceneAdapter().FindLightById( item.Id );
-            //            this.PointLightViewModel.Value = light;
+
+            var light = new PointLight
+            {
+                Ambient = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.AmbientLabel, id),
+                Diffuse = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.DiffuseLabel, id),
+                Specular = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.SpecularLabel, id),
+                Position = PG.CLI.Command.Get<Vector3d>(MainModel.Instance.World.Adapter, PG.GetLabels.PositionLabel, id),
+            };
+
+            PointLightViewModel.Value = light;
         }
     }
 }

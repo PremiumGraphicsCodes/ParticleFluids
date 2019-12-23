@@ -4,6 +4,7 @@
 
 #include "../../Crystal/Scene/IShapeScene.h"
 #include "../../Crystal/Scene/FaceGroupScene.h"
+#include "../../Crystal/Scene/LightScene.h"
 #include "../../Crystal/Scene/MaterialScene.h"
 
 using namespace Crystal::Scene;
@@ -77,6 +78,22 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 		auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id);
 		return std::any( faceGroup->getMaterialName() );
 	}
+	else if (scene->getType() == SceneType::LightScene) {
+		auto light = world->getObjects()->findSceneById<LightScene*>(id);
+		if (name == GetLabels::AmbientLabel) {
+			return std::any(light->getLight().getAmbient());
+		}
+		else if (name == GetLabels::DiffuseLabel) {
+			return std::any(light->getLight().getDiffuse());
+		}
+		else if (name == GetLabels::SpecularLabel) {
+			return std::any(light->getLight().getSpecular());
+		}
+		else if (name == GetLabels::PositionLabel) {
+			return std::any(light->getLight().getPosition());
+		}
+	}
+
 	else if (scene->getType() == SceneType::MaterialScene) {
 		auto material = world->getObjects()->findSceneById<MaterialScene*>(id);
 		if (name == GetLabels::AmbientLabel) {
@@ -88,7 +105,6 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 		else if (name == GetLabels::SpecularLabel) {
 			return std::any(material->getMaterial().specular);
 		}
-
 	}
 
 
