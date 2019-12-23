@@ -114,6 +114,18 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
+        public void UpdateMaterialScene(PG.Core.Graphics.Material material, string name, int id)
+        {
+            var command = new PG.CLI.Command(PG.MaterialUpdateLabels.CommandNameLabel);
+            command.SetArg(PG.MaterialUpdateLabels.IdLabel, id);
+            command.SetArg(PG.MaterialUpdateLabels.AmbientLabel, material.Ambient);
+            command.SetArg(PG.MaterialUpdateLabels.DiffuseLabel, material.Diffuse);
+            command.SetArg(PG.MaterialUpdateLabels.SpecularLabel, material.Specular);
+            command.SetArg(PG.MaterialUpdateLabels.ShininessLabel, material.Shininess);
+            command.SetArg(PG.MaterialUpdateLabels.NameLabel, name);
+            command.Execute(adapter);
+        }
+
         public int AddLightScene(PG.Core.Graphics.PointLight light, string name)
         {
             var command = new PG.CLI.Command(PG.LightCreateLabels.CommandNameLabel);
