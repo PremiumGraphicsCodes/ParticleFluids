@@ -152,6 +152,12 @@
     <ClInclude Include="Public\LightUpdateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="MaterialUpdateCommand.h">
+      <Filter>Scene\Appearance\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\MaterialUpdateLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -242,6 +248,9 @@
     </ClCompile>
     <ClCompile Include="LightUpdateCommand.cpp">
       <Filter>Scene\Appearance\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialUpdateCommand.cpp">
+      <Filter>Scene\Appearance\Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
