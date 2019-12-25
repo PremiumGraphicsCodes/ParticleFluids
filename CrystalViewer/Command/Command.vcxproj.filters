@@ -164,6 +164,12 @@
     <ClInclude Include="Public\LightSetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="LightGetCommand.h">
+      <Filter>Scene\Appearance\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\LightGetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -259,6 +265,9 @@
       <Filter>Scene\Appearance\Material</Filter>
     </ClCompile>
     <ClCompile Include="LightSetCommand.cpp">
+      <Filter>Scene\Appearance\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="LightGetCommand.cpp">
       <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
   </ItemGroup>
