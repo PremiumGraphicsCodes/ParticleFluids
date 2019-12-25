@@ -40,15 +40,6 @@ namespace PG.CGStudio.UICtrl
             vectorViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
 
             this.prevPos = position;
-
-            var canvas = Canvas3d.Instance;
-            var command = new PG.CLI.Command(TransformLabels.ScaleCommandLabel);
-            command.SetArg(TransformLabels.IdLabel, shapeId);
-            command.SetArg(TransformLabels.ScaleRatioLabel, vectorViewModel.Value);
-            command.Execute(MainModel.Instance.World.Adapter);
-
-            canvas.Update(MainModel.Instance.World);
-            canvas.Render();
         }
     }
 }
