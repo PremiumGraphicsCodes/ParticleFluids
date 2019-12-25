@@ -36,7 +36,7 @@ namespace PG.CGStudio.UICtrl
             var model = MainModel.Instance;
             var diff = (position - prevPos) * 0.1;
             var matrix = PG.CLI.Command.Get<Matrix4d>(model.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
-            var v = matrix * new Vector4d(diff.X, diff.Y, 0.0, 0.0);
+            var v = matrix * new Vector4d(diff.X, diff.Y, 0.0, 1.0);
             vectorViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
 
             this.prevPos = position;

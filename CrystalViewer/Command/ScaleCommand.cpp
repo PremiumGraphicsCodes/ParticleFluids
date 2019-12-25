@@ -29,5 +29,5 @@ void ScaleCommand::execute(World* world)
 		ratio.x, 0.0, 0.0,
 		0.0, ratio.y, 0.0,
 		0.0, 0.0, ratio.z);
-	scene->transform(m);
+	scene->setMatrix(m);
 }

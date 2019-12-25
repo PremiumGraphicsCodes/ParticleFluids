@@ -32,7 +32,7 @@ void PointRenderer::render(const Camera& camera)
 	}
 
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto modelviewMatrix = Matrix4df( buffer.getMatrix() ) * camera.getModelViewMatrix();
+	const auto modelviewMatrix = camera.getModelViewMatrix() * Matrix4df(buffer.getMatrix());
 
 	shader->bind();
 
