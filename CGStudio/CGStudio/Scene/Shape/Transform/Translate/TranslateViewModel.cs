@@ -3,6 +3,7 @@ using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using Prism.Regions;
 using Reactive.Bindings;
+using System;
 
 namespace PG.CGStudio.Scene.Shape.Transform
 {
@@ -44,11 +45,14 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         private void OnTranslate()
         {
-            var moveCtrl = new TranslateUICtrl(ShapeSelectViewModel.Id.Value);
+            var moveCtrl = new TranslateUICtrl(VectorViewModel);
             Canvas3d.Instance.UICtrl = moveCtrl;
+            VectorViewModel.X.Subscribe(OnChanged);
+            VectorViewModel.Y.Subscribe(OnChanged);
+            VectorViewModel.Z.Subscribe(OnChanged);
         }
 
-        private void OnApply()
+        private void OnChanged(double x)
         {
             var canvas = Canvas3d.Instance;
             var command = new PG.CLI.Command(PG.TransformLabels.TranslateCommandLabel);
@@ -58,6 +62,11 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
             canvas.Update(MainModel.Instance.World);
             canvas.Render();
+        }
+
+
+        private void OnApply()
+        {
         }
     }
 }

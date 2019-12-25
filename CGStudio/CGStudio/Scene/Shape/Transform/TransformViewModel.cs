@@ -48,7 +48,7 @@ namespace PG.CGStudio.Object.Transform
 
         private void OnMove()
         {
-            Canvas3d.Instance.UICtrl = new TranslateUICtrl(SelectViewModel.Id.Value);
+            //Canvas3d.Instance.UICtrl = new TranslateUICtrl(SelectViewModel.Id.Value);
         }
 
         private void OnScale()

@@ -1,4 +1,5 @@
-﻿using PG.Core.Math;
+﻿using PG.Control.Math;
+using PG.Core.Math;
 using System.Collections.Generic;
 
 namespace PG.CGStudio.UICtrl
@@ -7,16 +8,15 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos;
 
-        private int ObjectId;
+        private Vector3dViewModel vectorViewModel;
 
         public TranslateUICtrl()
         {
-            ObjectId = -1;
         }
 
-        public TranslateUICtrl(int objectId)
+        public TranslateUICtrl(Vector3dViewModel vectorViewModel)
         {
-            ObjectId = objectId;
+            this.vectorViewModel = vectorViewModel;
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -31,16 +31,13 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
-            var canvas = Canvas3d.Instance;
+            var model = MainModel.Instance;
+            var diff = (position - prevPos) * 0.1;
+            var matrix = PG.CLI.Command.Get<Matrix4d>(model.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
+            var v = matrix * new Vector4d(diff.X, diff.Y, 0.0, 0.0);
+            vectorViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
 
-            var v = (position - prevPos) * 0.1;
-            var command = new PG.CLI.Command("Translate");
-            command.SetArg("Id", ObjectId);
-            command.SetArg("Vector", new Vector3d( v.X, v.Y, 0.0) );
-            command.Execute(MainModel.Instance.World.Adapter);
-
-            canvas.Update(MainModel.Instance.World);
-            canvas.Render();
+            this.prevPos = position;
         }
 
     }
