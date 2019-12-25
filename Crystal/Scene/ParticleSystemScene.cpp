@@ -18,6 +18,7 @@ void ParticleSystemScene::toViewModel(SceneViewModel& viewModel) const
 	}
 	const auto& particles = getShape()->getParticles();
 	PointBuffer pointBuffer;
+	pointBuffer.setMatrix(getMatrix());
 	for (auto p : particles) {
 		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
@@ -33,7 +34,9 @@ void ParticleSystemScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, Sce
 	const auto& particles = getShape()->getParticles();
 	int particleId = 0;
 	PointBuffer parentIdBuffer;
+	parentIdBuffer.setMatrix(getMatrix());
 	PointBuffer childIdBuffer;
+	childIdBuffer.setMatrix(getMatrix());
 	for (auto p : particles) {
 		Graphics::DrawableID parentDid(objectId);
 		parentIdBuffer.add(p->getPosition(), parentDid.toColor(), p->getAttribute().size);

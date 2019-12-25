@@ -16,6 +16,7 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	command.setArg(ParticleSystemCreateLabels::PointSizeLabel, attributeView.getValue().size);
 	command.setArg(ParticleSystemCreateLabels::ColorLabel, attributeView.getValue().color);
 	command.setArg(ParticleSystemCreateLabels::NameLabel, attributeView.getName());
+	command.setArg(ParticleSystemCreateLabels::MatrixLabel, matrixView.getValue());
 	command.execute(getWorld());
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);

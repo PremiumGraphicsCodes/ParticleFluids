@@ -6,7 +6,7 @@ using namespace Crystal::UI;
 Matrix4dView::Matrix4dView(const std::string& name, const Matrix4dd& value) :
 	IView(name),
 	row1View("Row1"),
-	row2View("Row1"),
+	row2View("Row2"),
 	row3View("Row3"),
 	row4View("Row4")
 {

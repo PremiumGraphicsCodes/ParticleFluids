@@ -24,6 +24,7 @@ public:
 		Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;
 		Arg< int > layer;
+		Arg< Math::Matrix4dd > matrix;
 	};
 
 	struct Results : IResults

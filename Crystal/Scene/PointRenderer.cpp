@@ -2,6 +2,7 @@
 
 #include <sstream>
 
+using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
@@ -31,7 +32,7 @@ void PointRenderer::render(const Camera& camera)
 	}
 
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix();
+	const auto modelviewMatrix = Matrix4df( buffer.getMatrix() ) * camera.getModelViewMatrix();
 
 	shader->bind();
 

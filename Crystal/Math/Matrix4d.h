@@ -11,6 +11,17 @@ namespace Crystal {
 using Matrix4df = glm::mat4;
 using Matrix4dd = glm::dmat4;
 
+static Matrix4dd Identity()
+{
+	return Matrix4dd
+	(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	);
+}
+
 static Matrix4dd operator*(const Matrix4dd& lhs, const Matrix4dd& rhs)
 {
 	Matrix4dd result(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);

@@ -14,13 +14,15 @@ ParticleSystemCreateCommand::Args::Args() :
 	pointSize(ParticleSystemCreateLabels::PointSizeLabel, 1.0f),
 	color(ParticleSystemCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
 	name(ParticleSystemCreateLabels::NameLabel, std::string("")),
-	layer(ParticleSystemCreateLabels::LayerLabel, 1)
+	layer(ParticleSystemCreateLabels::LayerLabel, 1),
+	matrix(ParticleSystemCreateLabels::MatrixLabel, Identity())
 {
 	add(&positions);
 	add(&pointSize);
 	add(&color);
 	add(&name);
 	add(&layer);
+	add(&matrix);
 }
 
 ParticleSystemCreateCommand::Results::Results() :
@@ -43,6 +45,7 @@ void ParticleSystemCreateCommand::execute(World* world)
 	attr.size = args.pointSize.getValue();
 	auto name = args.name.getValue();
 	auto scene = world->getSceneFactory()->createParticleSystemScene(positions, attr, name);
+	scene->setMatrix(args.matrix.getValue());
 	world->addScene(args.layer.getValue(), scene);
 	results.newId.setValue(scene->getId());
 	world->updateViewModel();
