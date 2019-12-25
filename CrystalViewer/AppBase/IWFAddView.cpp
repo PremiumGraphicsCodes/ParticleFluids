@@ -20,6 +20,7 @@ void IWFAddView::addWireFrame(const std::vector<Vector3dd>& positions, const std
 	command.setArg(WireFrameCreateLabels::EdgesLabel, edges);
 	command.setArg(WireFrameCreateLabels::LineWidthLabel, attribute.width);
 	command.setArg(WireFrameCreateLabels::ColorLabel, attribute.color);
+	command.setArg(WireFrameCreateLabels::MatrixLabel, matrixView.getValue());
 	command.setArg(WireFrameCreateLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
 

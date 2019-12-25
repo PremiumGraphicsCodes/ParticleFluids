@@ -16,11 +16,13 @@ class LineBuffer
 {
 public:
 	LineBuffer() :
-		width(1.0f)
+		width(1.0f),
+		matrix(Math::Identity())
 	{}
 
 	explicit LineBuffer(const float width) :
-		width(width)
+		width(width),
+		matrix(Math::Identity())
 	{};
 
 	void addVertex(const Math::Vector3df& position, const Graphics::ColorRGBAf& color) {
@@ -40,7 +42,12 @@ public:
 
 	Graphics::Buffer1d<unsigned int> getIndices() const { return indices; }
 
+	void setMatrix(const Math::Matrix4dd& matrix) { this->matrix = matrix; }
+
+	Math::Matrix4dd getMatrix() const { return matrix; }
+
 private:
+	Math::Matrix4dd matrix;
 	float width;
 	Graphics::Buffer3d<float> positions;
 	Graphics::Buffer4d<float> colors;

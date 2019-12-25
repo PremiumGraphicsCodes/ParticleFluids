@@ -30,7 +30,7 @@ void LineRenderer::render(const Camera& camera)
 	}
 
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix();
+	const auto& modelviewMatrix = camera.getModelViewMatrix() * Math::Matrix4df(buffer.getMatrix());
 
 	//assert(GL_NO_ERROR == glGetError());
 

@@ -44,6 +44,7 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 
 	const auto& color = getAttribute().color;
 	LineBuffer buffer(getAttribute().width);
+	buffer.setMatrix(getMatrix());
 	for (const auto& l : positions) {
 		buffer.addVertex(l, color);
 	}
@@ -65,6 +66,7 @@ void WireFrameScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdV
 
 	const auto& positions = shape->getPositions();
 	LineBuffer lineBuffer(getAttribute().width);
+	lineBuffer.setMatrix(getMatrix());
 	for (const auto& l : positions) {
 		Graphics::DrawableID parentDid(objectId);
 		Graphics::DrawableID childDid(childId++);

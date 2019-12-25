@@ -25,6 +25,7 @@ public:
 		Arg< float > lineWidth;
 		Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;
+		Arg< Math::Matrix4dd > matrix;
 		Arg< int > layer;
 	};
 

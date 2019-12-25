@@ -16,6 +16,7 @@ WireFrameCreateCommand::Args::Args() :
 	lineWidth(WireFrameCreateLabels::LineWidthLabel, 1.0f),
 	color(WireFrameCreateLabels::ColorLabel, Graphics::ColorRGBAf(1, 1, 1, 1)),
 	name(WireFrameCreateLabels::NameLabel, std::string("")),
+	matrix(WireFrameCreateLabels::MatrixLabel, Identity()),
 	layer(WireFrameCreateLabels::LayerLabel, 1)
 {
 	add(&positions);
@@ -23,6 +24,7 @@ WireFrameCreateCommand::Args::Args() :
 	add(&lineWidth);
 	add(&color);
 	add(&name);
+	add(&matrix);
 	add(&layer);
 }
 
@@ -47,6 +49,7 @@ void WireFrameCreateCommand::execute(World* world)
 	const auto& name = args.name.getValue();
 	WireFrame* shape = new WireFrame(positions, edges);
 	auto scene = world->getSceneFactory()->createWireFrameScene(shape, attr, name);
+	scene->setMatrix(args.matrix.getValue());
 	world->addScene(args.layer.getValue(), scene);
 	results.newId.setValue(scene->getId());
 	world->updateViewModel();
