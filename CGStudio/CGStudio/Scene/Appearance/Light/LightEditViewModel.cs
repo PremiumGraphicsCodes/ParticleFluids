@@ -1,6 +1,4 @@
 ﻿using PG.Control.Graphics;
-using PG.Core.Graphics;
-using PG.Core.Math;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -29,7 +27,7 @@ namespace PG.CGStudio.Light
         private void OnOk()
         {
             var world = MainModel.Instance.World;
-            world.Scenes.UpdateLightScene(PointLightViewModel.Value, Name.Value, Id.Value);
+            world.Scenes.SetLightScene(PointLightViewModel.Value, Name.Value, Id.Value);
             Canvas3d.Instance.Update(world);
             Canvas3d.Instance.Render();
         }
@@ -51,14 +49,7 @@ namespace PG.CGStudio.Light
             Id.Value = id;
             Name.Value = name;
 
-            var light = new PointLight
-            {
-                Ambient = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.AmbientLabel, id),
-                Diffuse = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.DiffuseLabel, id),
-                Specular = PG.CLI.Command.Get<ColorRGBA>(MainModel.Instance.World.Adapter, PG.GetLabels.SpecularLabel, id),
-                Position = PG.CLI.Command.Get<Vector3d>(MainModel.Instance.World.Adapter, PG.GetLabels.PositionLabel, id),
-            };
-
+            var light = MainModel.Instance.World.Scenes.GetLightScene(id);
             PointLightViewModel.Value = light;
         }
     }

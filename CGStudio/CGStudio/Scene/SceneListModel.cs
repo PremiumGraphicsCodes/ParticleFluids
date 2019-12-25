@@ -156,16 +156,32 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
-        public void UpdateLightScene(PG.Core.Graphics.PointLight light, string name, int id)
+        public void SetLightScene(PointLight light, string name, int id)
         {
-            var command = new PG.CLI.Command(PG.LightUpdateLabels.CommandNameLabel);
-            command.SetArg(PG.LightUpdateLabels.IdLabel, id);
-            command.SetArg(PG.LightUpdateLabels.AmbientLabel, light.Ambient);
-            command.SetArg(PG.LightUpdateLabels.DiffuseLabel, light.Diffuse);
-            command.SetArg(PG.LightUpdateLabels.SpecularLabel, light.Specular);
-            command.SetArg(PG.LightUpdateLabels.PositionLabel, light.Position);
-            command.SetArg(PG.LightUpdateLabels.NameLabel, name);
+            var command = new PG.CLI.Command(PG.LightSetLabels.CommandNameLabel);
+            command.SetArg(PG.LightSetLabels.IdLabel, id);
+            command.SetArg(PG.LightSetLabels.AmbientLabel, light.Ambient);
+            command.SetArg(PG.LightSetLabels.DiffuseLabel, light.Diffuse);
+            command.SetArg(PG.LightSetLabels.SpecularLabel, light.Specular);
+            command.SetArg(PG.LightSetLabels.PositionLabel, light.Position);
+            command.SetArg(PG.LightSetLabels.NameLabel, name);
             command.Execute(adapter);
+        }
+
+        public PointLight GetLightScene(int id)
+        {
+            var command = new PG.CLI.Command(PG.LightGetLabels.CommandNameLabel);
+            command.SetArg(PG.LightGetLabels.IdLabel, id);
+            command.Execute(adapter);
+
+            var light = new PointLight
+            {
+                Position = command.GetResult<Vector3d>(PG.LightGetLabels.PositionLabel),
+                Ambient = command.GetResult<ColorRGBA>(PG.LightGetLabels.AmbientLabel),
+                Diffuse = command.GetResult<ColorRGBA>(PG.LightGetLabels.DiffuseLabel),
+                Specular = command.GetResult<ColorRGBA>(PG.LightGetLabels.SpecularLabel)
+            };
+            return light;
         }
 
         public int AddTextureScene(string imageFilePath, string name)

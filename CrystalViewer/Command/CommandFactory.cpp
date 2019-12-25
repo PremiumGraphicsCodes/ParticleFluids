@@ -19,6 +19,7 @@
 #include "TrimCommand.h"
 #include "LightCreateCommand.h"
 #include "LightSetCommand.h"
+#include "LightGetCommand.h"
 #include "MaterialCreateCommand.h"
 #include "MaterialGetCommand.h"
 #include "MaterialSetCommand.h"
@@ -135,6 +136,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == LightSetCommand::getName()) {
 		return std::make_unique<LightSetCommand>();
+	}
+	else if (name == LightGetCommand::getName()) {
+		return std::make_unique<LightGetCommand>();
 	}
 	else if (name == MaterialSetCommand::getName()) {
 		return std::make_unique<MaterialSetCommand>();
