@@ -146,12 +146,6 @@
     <ClInclude Include="TextureCreateCommand.h">
       <Filter>Scene\Appearance\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="LightUpdateCommand.h">
-      <Filter>Scene\Appearance\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\LightUpdateLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialGetCommand.h">
       <Filter>Scene\Appearance\Material</Filter>
     </ClInclude>
@@ -162,6 +156,12 @@
       <Filter>Scene\Appearance\Material</Filter>
     </ClInclude>
     <ClInclude Include="Public\MaterialSetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="LightSetCommand.h">
+      <Filter>Scene\Appearance\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\LightSetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
   </ItemGroup>
@@ -252,14 +252,14 @@
     <ClCompile Include="TextureCreateCommand.cpp">
       <Filter>Scene\Appearance\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="LightUpdateCommand.cpp">
-      <Filter>Scene\Appearance\Light</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialGetCommand.cpp">
       <Filter>Scene\Appearance\Material</Filter>
     </ClCompile>
     <ClCompile Include="MaterialSetCommand.cpp">
       <Filter>Scene\Appearance\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="LightSetCommand.cpp">
+      <Filter>Scene\Appearance\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

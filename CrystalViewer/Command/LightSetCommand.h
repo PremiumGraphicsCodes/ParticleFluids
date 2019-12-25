@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Command {
 
-class LightUpdateCommand : public ICommand
+class LightSetCommand : public ICommand
 {
 public:
 	struct Args : IArgs
@@ -20,7 +20,7 @@ public:
 		Arg<std::string> name;
 	};
 
-	LightUpdateCommand() :
+	LightSetCommand() :
 		ICommand(&args, nullptr)
 	{}
 

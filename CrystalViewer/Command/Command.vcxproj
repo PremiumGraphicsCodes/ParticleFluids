@@ -170,7 +170,7 @@
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IResults.h" />
     <ClInclude Include="LightCreateCommand.h" />
-    <ClInclude Include="LightUpdateCommand.h" />
+    <ClInclude Include="LightSetCommand.h" />
     <ClInclude Include="MaterialCreateCommand.h" />
     <ClInclude Include="MaterialGetCommand.h" />
     <ClInclude Include="MaterialSetCommand.h" />
@@ -189,7 +189,7 @@
     <ClInclude Include="Public\FileExportLabels.h" />
     <ClInclude Include="Public\FileImportLabels.h" />
     <ClInclude Include="Public\LightCreateLabels.h" />
-    <ClInclude Include="Public\LightUpdateLabels.h" />
+    <ClInclude Include="Public\LightSetLabels.h" />
     <ClInclude Include="Public\MaterialCreateLabels.h" />
     <ClInclude Include="Public\MaterialGetLabels.h" />
     <ClInclude Include="Public\MaterialSetLabels.h" />
@@ -231,7 +231,7 @@
     <ClCompile Include="GetCommand.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="LightCreateCommand.cpp" />
-    <ClCompile Include="LightUpdateCommand.cpp" />
+    <ClCompile Include="LightSetCommand.cpp" />
     <ClCompile Include="MaterialCreateCommand.cpp" />
     <ClCompile Include="MaterialGetCommand.cpp" />
     <ClCompile Include="MaterialSetCommand.cpp" />

@@ -2,9 +2,9 @@
 
 #include "PublicLabel.h"
 
-namespace LightUpdateLabels
+namespace LightSetLabels
 {
-	PublicLabel CommandNameLabel = "LightUpdate";
+	PublicLabel CommandNameLabel = "LightSet";
 
 	PublicLabel IdLabel = "Id";
 	PublicLabel PositionLabel = "Position";
