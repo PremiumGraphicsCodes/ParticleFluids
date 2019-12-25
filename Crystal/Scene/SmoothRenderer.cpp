@@ -61,7 +61,7 @@ void SmoothRenderer::render(const Camera& camera)
 	}
 
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix();
+	const auto& modelviewMatrix = camera.getModelViewMatrix() * Math::Matrix4df( buffer.getMatrix() );
 	const auto& eyePos = camera.getEye();
 
 	shader->bind();

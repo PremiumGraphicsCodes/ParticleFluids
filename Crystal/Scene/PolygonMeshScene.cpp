@@ -55,6 +55,7 @@ void PolygonMeshScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneI
 	int index = 0;
 
 	LineBuffer buffer;
+	buffer.setMatrix(getMatrix());
 	for (auto f : faces) {
 		Graphics::DrawableID parentDid(objectId);
 		Graphics::DrawableID childDid(childId++);

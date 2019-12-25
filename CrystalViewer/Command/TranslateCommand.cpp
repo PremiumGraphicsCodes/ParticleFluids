@@ -3,6 +3,7 @@
 #include "../../Crystal/Scene/IShapeScene.h"
 #include "Public/TransformLabels.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
@@ -23,5 +24,13 @@ std::string TranslateCommand::getName()
 void TranslateCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<Scene::IShapeScene*>(args.id.getValue());
-	scene->translate(args.vector.getValue());
+	const auto& v = args.vector.getValue();
+	const Matrix4dd matrix
+	(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		v.x, v.y, v.z, 1
+	);
+	scene->setMatrix(matrix);
 }

@@ -35,8 +35,10 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 	const auto& vs = shape->getVertices();
 	const auto& ps = shape->getPositions();
 	const auto& ns = shape->getNormals();
+	const auto& matrix = parent->getMatrix();
 	{
 		SmoothTriangleBuffer buffer;
+		buffer.setMatrix(matrix);
 		for (const auto& f : faces) {
 			const auto& vIds = f.getVertexIds();
 			for (const auto vId : vIds) {
