@@ -5,7 +5,9 @@ namespace PG.CGStudio.UICtrl
 {
     public class ScaleUICtrl : IUICtrl
     {
-        private Vector2d prevPos;
+        private Vector2d prevPos = new Vector2d(0,0);
+
+        private int shapeId = -1;
 
         private Vector3dViewModel vectorViewModel;
 
@@ -13,8 +15,9 @@ namespace PG.CGStudio.UICtrl
         {
         }
 
-        public ScaleUICtrl(Vector3dViewModel vectorViewModel)
+        public ScaleUICtrl(int shapeId, Vector3dViewModel vectorViewModel)
         {
+            this.shapeId = shapeId;
             this.vectorViewModel = vectorViewModel;
         }
 
@@ -35,6 +38,17 @@ namespace PG.CGStudio.UICtrl
             var matrix = PG.CLI.Command.Get<Matrix4d>(model.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
             var v = matrix * new Vector4d(diff.X, diff.Y, 0.0, 0.0);
             vectorViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
+
+            this.prevPos = position;
+
+            var canvas = Canvas3d.Instance;
+            var command = new PG.CLI.Command(TransformLabels.ScaleCommandLabel);
+            command.SetArg(TransformLabels.IdLabel, shapeId);
+            command.SetArg(TransformLabels.ScaleRatioLabel, vectorViewModel.Value);
+            command.Execute(MainModel.Instance.World.Adapter);
+
+            canvas.Update(MainModel.Instance.World);
+            canvas.Render();
         }
     }
 }
