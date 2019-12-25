@@ -1,4 +1,6 @@
-﻿using PG.Core.Math;
+﻿
+using PG.Control.Math;
+using PG.Core.Math;
 
 namespace PG.CGStudio.UICtrl
 {
@@ -6,16 +8,15 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos;
 
-        private int ObjectId;
+        private Vector3dViewModel rotationViewModel;
 
         public RotateUICtrl()
         {
-            ObjectId = -1;
         }
 
-        public RotateUICtrl(int objectId)
+        public RotateUICtrl(Vector3dViewModel rotationViewModel)
         {
-            this.ObjectId = objectId;
+            this.rotationViewModel = rotationViewModel;
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -30,18 +31,14 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
-            /*
-            var canvas = Canvas3d.Instance;
+            var model = MainModel.Instance;
+            var diff = (position - prevPos) * 10.0;
+            var matrix = PG.CLI.Command.Get<Matrix4d>(model.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
+            var v = matrix * new Vector4d(diff.Y, diff.X, 0.0, 1.0);
+            rotationViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
 
-            var v = (position - prevPos) * 0.1;
-            var command = new PG.CLI.Command("Scale");
-            command.SetArg("Id", ObjectId);
-            command.SetArg("Ratio", new Vector3d(v.X + 1.0, v.Y + 1.0, 1.0));
-            command.Execute(MainModel.Instance.Repository.Adapter);
+            this.prevPos = position;
 
-            canvas.Update(MainModel.Instance.Repository);
-            canvas.Render();
-            */
         }
 
     }

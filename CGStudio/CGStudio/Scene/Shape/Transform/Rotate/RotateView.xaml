@@ -13,7 +13,7 @@
     </UserControl.DataContext>
     <StackPanel>
         <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
-        <math:Vector3dView DataContext="{Binding RatioViewModel}"/>
+        <math:Vector3dView DataContext="{Binding AngleViewModel}"/>
         <Button Content="Rotate" Command="{Binding RotateCommand}"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
     </StackPanel>

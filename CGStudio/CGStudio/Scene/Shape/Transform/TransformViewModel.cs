@@ -58,7 +58,7 @@ namespace PG.CGStudio.Object.Transform
 
         private void OnRotate()
         {
-            Canvas3d.Instance.UICtrl = new RotateUICtrl(SelectViewModel.Id.Value);
+            //Canvas3d.Instance.UICtrl = new RotateUICtrl(SelectViewModel.Id.Value);
         }
 
         private void OnOk()
