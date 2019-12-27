@@ -13,10 +13,6 @@
 #include "CameraZoomCommand.h"
 #include "PickCommand.h"
 #include "TransformCommand.h"
-#include "TranslateCommand.h"
-#include "SetMatrixCommand.h"
-#include "RotateCommand.h"
-#include "ScaleCommand.h"
 #include "TrimCommand.h"
 #include "LightCreateCommand.h"
 #include "LightSetCommand.h"
@@ -86,18 +82,6 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == TransformCommand::getName()) {
 		return std::make_unique<TransformCommand>();
-	}
-	else if (name == TranslateCommand::getName()) {
-		return std::make_unique<TranslateCommand>();
-	}
-	else if (name == SetMatrixCommand::getName()) {
-		return std::make_unique<SetMatrixCommand>();
-	}
-	else if (name == RotateCommand::getName()) {
-		return std::make_unique<RotateCommand>();
-	}
-	else if (name == ScaleCommand::getName()) {
-		return std::make_unique<ScaleCommand>();
 	}
 	else if (name == TrimCommand::getName()) {
 		return std::make_unique<TrimCommand>();

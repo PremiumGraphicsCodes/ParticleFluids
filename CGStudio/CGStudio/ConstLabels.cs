@@ -227,13 +227,8 @@ namespace PG {
 	public class TransformLabels
 	{
 		public const string TransformCommandLabel = "Transform";
-		public const string ScaleCommandLabel = "Scale";
-		public const string RotateCommandLabel = "Rotate";
-		public const string TranslateCommandLabel = "Translate";
 		public const string IdLabel = "Id";
 		public const string MatrixLabel = "Matrix";
-		public const string TranslateLabel = "Vector";
-		public const string ScaleRatioLabel = "Ratio";
 	}
 
 	public class TrimLabels

@@ -17,9 +17,6 @@
     <ClInclude Include="TransformCommand.h">
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="TranslateCommand.h">
-      <Filter>Scene\Shape\Transform</Filter>
-    </ClInclude>
     <ClInclude Include="SetCommand.h" />
     <ClInclude Include="CameraFitCommand.h">
       <Filter>Camera</Filter>
@@ -31,12 +28,6 @@
       <Filter>Camera</Filter>
     </ClInclude>
     <ClInclude Include="PickCommand.h" />
-    <ClInclude Include="RotateCommand.h">
-      <Filter>Scene\Shape\Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="ScaleCommand.h">
-      <Filter>Scene\Shape\Transform</Filter>
-    </ClInclude>
     <ClInclude Include="PCDFileImportCommand.h">
       <Filter>File\PCD</Filter>
     </ClInclude>
@@ -209,15 +200,6 @@
       <Filter>Camera</Filter>
     </ClCompile>
     <ClCompile Include="PickCommand.cpp" />
-    <ClCompile Include="TranslateCommand.cpp">
-      <Filter>Scene\Shape\Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="RotateCommand.cpp">
-      <Filter>Scene\Shape\Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="ScaleCommand.cpp">
-      <Filter>Scene\Shape\Transform</Filter>
-    </ClCompile>
     <ClCompile Include="PCDFileImportCommand.cpp">
       <Filter>File\PCD</Filter>
     </ClCompile>
