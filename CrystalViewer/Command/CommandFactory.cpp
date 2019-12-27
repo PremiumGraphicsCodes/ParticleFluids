@@ -30,6 +30,7 @@
 #include "OBJFileExportCommand.h"
 #include "STLFileExportCommand.h"
 #include "PCDFileExportCommand.h"
+#include "SetMatrixCommand.h"
 
 using namespace Crystal::Command;
 
@@ -134,6 +135,10 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == MaterialGetCommand::getName()) {
 		return std::make_unique<MaterialGetCommand>();
 	}
+	else if (name == SetMatrixCommand::getName()) {
+		return std::make_unique<SetMatrixCommand>();
+	}
+
 
 	assert(false);
 	return nullptr;
