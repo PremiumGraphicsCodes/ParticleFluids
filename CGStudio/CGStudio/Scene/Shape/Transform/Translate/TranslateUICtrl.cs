@@ -8,7 +8,11 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos;
 
+        private double sensivitiy = 0.1;
+
         private Vector3dViewModel vectorViewModel;
+
+        public double Sensivity { set { this.sensivitiy = value; } }
 
         public TranslateUICtrl()
         {
@@ -32,7 +36,7 @@ namespace PG.CGStudio.UICtrl
         public override void OnLeftButtonDragging(Vector2d position)
         {
             var model = MainModel.Instance;
-            var diff = (position - prevPos) * 0.1;
+            var diff = (position - prevPos) * sensivitiy;
             var matrix = PG.CLI.Command.Get<Matrix4d>(model.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
             var v = matrix * new Vector4d(diff.X, diff.Y, 0.0, 0.0);
             vectorViewModel.Value += new Vector3d(v.X, v.Y, v.Z);

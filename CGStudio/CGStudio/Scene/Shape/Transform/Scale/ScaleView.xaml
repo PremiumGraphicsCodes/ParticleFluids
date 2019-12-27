@@ -14,7 +14,7 @@
         <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
         <math:Vector3dView DataContext="{Binding RatioViewModel}"/>
         <Button Content="Scale" Command="{Binding ScaleCommand}"/>
-        <Button Content="Apply" Command="{Binding ApplyCommand}"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
+        <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>
 </UserControl>

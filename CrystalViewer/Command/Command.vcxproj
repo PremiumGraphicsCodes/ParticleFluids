@@ -166,6 +166,7 @@
     <ClInclude Include="FileExportCommand.h" />
     <ClInclude Include="FileImportCommand.h" />
     <ClInclude Include="GetCommand.h" />
+    <ClInclude Include="GetMatrixCommand.h" />
     <ClInclude Include="IArgs.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IResults.h" />
@@ -189,6 +190,7 @@
     <ClInclude Include="Public\DeleteLabels.h" />
     <ClInclude Include="Public\FileExportLabels.h" />
     <ClInclude Include="Public\FileImportLabels.h" />
+    <ClInclude Include="Public\GetMatrixLabels.h" />
     <ClInclude Include="Public\LightCreateLabels.h" />
     <ClInclude Include="Public\LightGetLabels.h" />
     <ClInclude Include="Public\LightSetLabels.h" />

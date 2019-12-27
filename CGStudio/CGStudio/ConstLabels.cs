@@ -67,6 +67,13 @@ namespace PG {
 		public const string IsPickableLabel = "IsPickable";
 	}
 
+	public class GetMatrixLabels
+	{
+		public const string CommandLabel = "SetMatrix";
+		public const string IdLabel = "Id";
+		public const string MatrixLabel = "Matrix";
+	}
+
 	public class LightCreateLabels
 	{
 		public const string CommandNameLabel = "LightCreate";
@@ -193,6 +200,13 @@ namespace PG {
 		public const string ColorLabel = "Color";
 		public const string MaterialNameLabel = "MaterialName";
 		public const string NameLabel = "Name";
+	}
+
+	public class SetMatrixLabels
+	{
+		public const string CommandLabel = "SetMatrix";
+		public const string IdLabel = "Id";
+		public const string MatrixLabel = "Matrix";
 	}
 
 	public class ShapeSelectLabels

@@ -1,6 +1,7 @@
 ﻿using PG.CGStudio.Object.Select;
 using PG.CGStudio.UICtrl;
 using PG.Control.Math;
+using PG.Core.Math;
 using Prism.Regions;
 using Reactive.Bindings;
 using System;
@@ -18,16 +19,17 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand TranslateCommand { get; }
             = new ReactiveCommand();
 
-        public ReactiveCommand ApplyCommand { get; }
+        public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        public ReactiveCommand OkCommand { get; }
+        public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
         public TranslateViewModel()
         {
             this.TranslateCommand.Subscribe(OnTranslate);
-            this.ApplyCommand.Subscribe(OnApply);
+            this.OkCommand.Subscribe(OnOk);
+            this.CancelCommand.Subscribe(OnCancel);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -46,6 +48,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
         private void OnTranslate()
         {
             var moveCtrl = new TranslateUICtrl(VectorViewModel);
+            moveCtrl.Sensivity = 1.0;
             Canvas3d.Instance.UICtrl = moveCtrl;
             VectorViewModel.X.Subscribe(OnChanged);
             VectorViewModel.Y.Subscribe(OnChanged);
@@ -55,18 +58,40 @@ namespace PG.CGStudio.Scene.Shape.Transform
         private void OnChanged(double x)
         {
             var canvas = Canvas3d.Instance;
-            var command = new PG.CLI.Command(PG.TransformLabels.TranslateCommandLabel);
-            command.SetArg(PG.TransformLabels.IdLabel, ShapeSelectViewModel.Id.Value);
-            command.SetArg(PG.TransformLabels.TranslateLabel, VectorViewModel.Value);
+            var command = new PG.CLI.Command(SetMatrixLabels.CommandLabel);
+            command.SetArg(SetMatrixLabels.IdLabel, ShapeSelectViewModel.Id.Value);
+            command.SetArg(SetMatrixLabels.MatrixLabel, ToMatrix());
             command.Execute(MainModel.Instance.World.Adapter);
 
             canvas.Update(MainModel.Instance.World);
             canvas.Render();
         }
 
-
-        private void OnApply()
+        private void OnOk()
         {
+            var command = new PG.CLI.Command(TransformLabels.TransformCommandLabel);
+            command.SetArg(TransformLabels.IdLabel, ShapeSelectViewModel.Id.Value);
+            command.SetArg(TransformLabels.MatrixLabel, ToMatrix());
+            command.Execute(MainModel.Instance.World.Adapter);
+
+            OnCancel();
         }
+
+        private void OnCancel()
+        {
+            VectorViewModel.Value = new Vector3d(0, 0, 0);
+        }
+
+        private Matrix4d ToMatrix()
+        {
+            return new Matrix4d
+                (
+                1.0, 0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                VectorViewModel.X.Value, VectorViewModel.Y.Value, VectorViewModel.Z.Value, 1.0
+                );
+        }
+
     }
 }

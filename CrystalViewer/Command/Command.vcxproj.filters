@@ -176,6 +176,12 @@
     <ClInclude Include="Public\SetMatrixLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="Public\GetMatrixLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="GetMatrixCommand.h">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

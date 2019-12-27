@@ -1,6 +1,7 @@
 ﻿using PG.CGStudio.Object.Select;
 using PG.CGStudio.UICtrl;
 using PG.Control.Math;
+using PG.Core.Math;
 using Prism.Regions;
 using Reactive.Bindings;
 using System;
@@ -19,17 +20,28 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public ReactiveCommand ScaleCommand { get; }
             = new ReactiveCommand();
 
-        public ReactiveCommand ApplyCommand { get; }
-            = new ReactiveCommand();
-
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
+
+        public ReactiveCommand CancelCommand { get; }
+            = new ReactiveCommand();
+
+        private Matrix4d ToMatrix()
+        {
+            return new Matrix4d
+                (
+                RatioViewModel.X.Value, 0.0, 0.0, 0.0,
+                0.0, RatioViewModel.Y.Value, 0.0, 0.0,
+                0.0, 0.0, RatioViewModel.Z.Value, 0.0,
+                0.0, 0.0, 0.0, 1.0
+                );
+        }
 
         public ScaleViewModel()
         {
             this.ScaleCommand.Subscribe(OnScale);
-            this.ApplyCommand.Subscribe(OnApply);
             this.OkCommand.Subscribe(OnOk);
+            this.CancelCommand.Subscribe(OnCancel);
         }
 
         private void OnScale()
@@ -44,22 +56,28 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         private void OnChanged(double x)
         {
             var canvas = Canvas3d.Instance;
-            var command = new PG.CLI.Command(TransformLabels.ScaleCommandLabel);
-            command.SetArg(TransformLabels.IdLabel, ShapeSelectViewModel.Id.Value);
-            command.SetArg(TransformLabels.ScaleRatioLabel, RatioViewModel.Value);
+            var command = new PG.CLI.Command(SetMatrixLabels.CommandLabel);
+            command.SetArg(SetMatrixLabels.IdLabel, ShapeSelectViewModel.Id.Value);
+            command.SetArg(SetMatrixLabels.MatrixLabel, ToMatrix());
             command.Execute(MainModel.Instance.World.Adapter);
 
             canvas.Update(MainModel.Instance.World);
             canvas.Render();
         }
 
-        private void OnApply()
-        {
-        }
-
         private void OnOk()
         {
+            var command = new PG.CLI.Command(TransformLabels.TransformCommandLabel);
+            command.SetArg(TransformLabels.IdLabel, ShapeSelectViewModel.Id.Value);
+            command.SetArg(TransformLabels.MatrixLabel, ToMatrix());
+            command.Execute(MainModel.Instance.World.Adapter);
 
+            OnCancel();
+        }
+
+        private void OnCancel()
+        {
+            RatioViewModel.Value = new Vector3d(1, 1, 1);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
