@@ -96,7 +96,24 @@ namespace PG.CGStudio.Scene
                 Sync();
             }
             return newId;
+        }
 
+        public void SetMatrix(int id, Matrix4d matrix)
+        {
+            var canvas = Canvas3d.Instance;
+            var command = new PG.CLI.Command(SetMatrixLabels.CommandLabel);
+            command.SetArg(SetMatrixLabels.IdLabel, id);
+            command.SetArg(SetMatrixLabels.MatrixLabel, matrix);
+            command.Execute(MainModel.Instance.World.Adapter);
+        }
+
+        public void Transform(int id, Matrix4d matrix)
+        {
+            var canvas = Canvas3d.Instance;
+            var command = new PG.CLI.Command(TransformLabels.TransformCommandLabel);
+            command.SetArg(TransformLabels.IdLabel, id);
+            command.SetArg(TransformLabels.MatrixLabel, matrix);
+            command.Execute(MainModel.Instance.World.Adapter);
         }
 
         public int AddMaterialScene(PG.Core.Graphics.Material material, string name)

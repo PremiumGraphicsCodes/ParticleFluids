@@ -56,10 +56,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         private void OnChanged(double x)
         {
             var canvas = Canvas3d.Instance;
-            var command = new PG.CLI.Command(SetMatrixLabels.CommandLabel);
-            command.SetArg(SetMatrixLabels.IdLabel, ShapeSelectViewModel.Id.Value);
-            command.SetArg(SetMatrixLabels.MatrixLabel, ToMatrix());
-            command.Execute(MainModel.Instance.World.Adapter);
+            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             canvas.Update(MainModel.Instance.World);
             canvas.Render();
@@ -67,10 +64,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         private void OnOk()
         {
-            var command = new PG.CLI.Command(TransformLabels.TransformCommandLabel);
-            command.SetArg(TransformLabels.IdLabel, ShapeSelectViewModel.Id.Value);
-            command.SetArg(TransformLabels.MatrixLabel, ToMatrix());
-            command.Execute(MainModel.Instance.World.Adapter);
+            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             OnCancel();
         }
