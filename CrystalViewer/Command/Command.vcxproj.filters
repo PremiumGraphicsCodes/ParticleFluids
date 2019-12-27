@@ -170,6 +170,12 @@
     <ClInclude Include="Public\LightGetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="SetMatrixCommand.h">
+      <Filter>Scene\Shape\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\SetMatrixLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -269,6 +275,9 @@
     </ClCompile>
     <ClCompile Include="LightGetCommand.cpp">
       <Filter>Scene\Appearance\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="SetMatrixCommand.cpp">
+      <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
