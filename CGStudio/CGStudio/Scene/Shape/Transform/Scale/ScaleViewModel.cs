@@ -26,19 +26,13 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
+        private ScaleUICtrl scaleUICtrl = new ScaleUICtrl();
+
         public ScaleViewModel()
         {
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
             this.ShapeSelectViewModel.Id.Subscribe(OnSelected);
-
-            this.RatioViewModel.X.Subscribe(OnChanged);
-            this.RatioViewModel.Y.Subscribe(OnChanged);
-            this.RatioViewModel.Z.Subscribe(OnChanged);
-
-            this.CenterViewModel.X.Subscribe(OnChanged);
-            this.CenterViewModel.Y.Subscribe(OnChanged);
-            this.CenterViewModel.Z.Subscribe(OnChanged);
         }
 
         private void OnSelected(int id)
@@ -46,21 +40,14 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             var center = MainModel.Instance.World.Scenes.GetCenter(id);
             this.CenterViewModel.Value = center;
 
-            Canvas3d.Instance.UICtrl = new ScaleUICtrl(ShapeSelectViewModel.Id.Value, RatioViewModel);
-        }
-
-        private void OnChanged(double x)
-        {
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
-
-            var canvas = Canvas3d.Instance;
-            canvas.Update(MainModel.Instance.World);
-            canvas.Render();
+            scaleUICtrl.ShapeId = id;
+            scaleUICtrl.Center = center;
+            Canvas3d.Instance.UICtrl = scaleUICtrl;
         }
 
         private void OnOk()
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
+            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, scaleUICtrl.ToMatrix());
 
             //OnCancel();
         }
@@ -83,35 +70,6 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         {
         }
 
-        private Matrix4d ToMatrix()
-        {
-            var center = CenterViewModel.Value;
-            var m1 = new Matrix4d
-                (
-                1.0, 0.0, 0.0, 0.0,
-                0.0, 1.0, 0.0, 0.0,
-                0.0, 0.0, 1.0, 0.0,
-                -center.X, -center.Y, -center.Z, 1.0
-                );
-
-            var m2 = new Matrix4d
-                (
-                RatioViewModel.X.Value, 0.0, 0.0, 0.0,
-                0.0, RatioViewModel.Y.Value, 0.0, 0.0,
-                0.0, 0.0, RatioViewModel.Z.Value, 0.0,
-                0.0, 0.0, 0.0, 1.0
-                );
-
-            var m3 = new Matrix4d
-                (
-                1.0, 0.0, 0.0, 0.0,
-                0.0, 1.0, 0.0, 0.0,
-                0.0, 0.0, 1.0, 0.0,
-                center.X, center.Y, center.Z, 1.0
-                );
-
-            return m1 * m2 * m3;
-        }
 
     }
 }

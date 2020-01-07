@@ -1,15 +1,37 @@
 ﻿using PG.CGStudio.UICtrl;
+using PG.Control.Math;
 using PG.Core;
 using PG.Core.Math;
 using Prism.Regions;
 using Reactive.Bindings;
+using System;
 
 namespace PG.CGStudio.Scene.Shape.Transform
 {
+    public class TranslateModel
+    {
+        public ReactiveProperty<int> Id { get; }
+            = new ReactiveProperty<int>();
+
+        public Vector3dViewModel Translate { get; }
+            = new Vector3dViewModel();
+
+        public Matrix4d ToMatrix()
+        {
+            var t = Translate.Value;
+            return new Matrix4d
+                (
+                1.0, 0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                t.X, t.Y, t.Z, 1.0
+                );
+        }
+    }
+
     public class TranslateViewModel : INavigationAware
     {
-        public ReactiveProperty<int> ShapeId { get; }
-            = new ReactiveProperty<int>();
+        public ReactiveProperty<int> ShapeId { get { return model.Id; } }
 
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
@@ -18,6 +40,10 @@ namespace PG.CGStudio.Scene.Shape.Transform
             = new ReactiveCommand();
 
         private TranslateUICtrl translateUiCtrl;
+
+        private readonly TranslateModel model = new TranslateModel();
+
+        public Vector3dViewModel Translate { get { return model.Translate; } }
 
         public TranslateViewModel()
         {
@@ -49,15 +75,15 @@ namespace PG.CGStudio.Scene.Shape.Transform
             {
                 return;
             }
-            this.translateUiCtrl = new TranslateUICtrl(id.parentId);
             this.ShapeId.Value = id.parentId;
+            this.translateUiCtrl = new TranslateUICtrl(model);
             this.translateUiCtrl.Sensivity = 1.0;
             Canvas3d.Instance.UICtrl = this.translateUiCtrl;
         }
 
         private void OnOk()
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeId.Value, translateUiCtrl.ToMatrix());
+            MainModel.Instance.World.Scenes.Transform(ShapeId.Value, model.ToMatrix());
             OnCancel();
         }
 

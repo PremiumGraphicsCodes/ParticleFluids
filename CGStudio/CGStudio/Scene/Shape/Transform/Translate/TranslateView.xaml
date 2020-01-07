@@ -13,6 +13,7 @@
     </UserControl.DataContext>
     <StackPanel>
         <TextBlock Text="{Binding ShapeId.Value}"/>
+        <math:Vector3dView DataContext="{Binding Translate}"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>

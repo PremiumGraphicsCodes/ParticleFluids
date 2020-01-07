@@ -1,4 +1,5 @@
-﻿using PG.Control.Math;
+﻿using PG.CGStudio.Scene.Shape.Transform;
+using PG.Control.Math;
 using PG.Core.Math;
 using System.Collections.Generic;
 
@@ -10,15 +11,13 @@ namespace PG.CGStudio.UICtrl
 
         private double sensivitiy = 0.1;
 
-        private readonly int id;
-
-        private Vector3d translate = new Vector3d(0,0,0);
+        private readonly TranslateModel model;
 
         public double Sensivity { set { this.sensivitiy = value; } }
 
-        public TranslateUICtrl(int id)
+        public TranslateUICtrl(TranslateModel model)
         {
-            this.id = id;
+            this.model = model;
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -33,12 +32,12 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
-            var model = MainModel.Instance;
+            var mainModel = MainModel.Instance;
             var diff = (position - prevPos) * sensivitiy;
-            var matrix = PG.CLI.Command.Get<Matrix4d>(model.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
+            var matrix = PG.CLI.Command.Get<Matrix4d>(mainModel.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
             var v = matrix * new Vector4d(-diff.X, diff.Y, 0.0, 0.0);
-            translate += new Vector3d(v.X, v.Y, v.Z);
-            MainModel.Instance.World.Scenes.SetMatrix(id, ToMatrix());
+            model.Translate.Value += new Vector3d(v.X, v.Y, v.Z);
+            MainModel.Instance.World.Scenes.SetMatrix(model.Id.Value, model.ToMatrix());
 
             var canvas = Canvas3d.Instance;
             canvas.Update(MainModel.Instance.World);
@@ -47,16 +46,6 @@ namespace PG.CGStudio.UICtrl
             this.prevPos = position;
         }
 
-        public Matrix4d ToMatrix()
-        {
-            return new Matrix4d
-                (
-                1.0, 0.0, 0.0, 0.0,
-                0.0, 1.0, 0.0, 0.0,
-                0.0, 0.0, 1.0, 0.0,
-                translate.X, translate.Y, translate.Z, 1.0
-                );
-        }
 
     }
 }
