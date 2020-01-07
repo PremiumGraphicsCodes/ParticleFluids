@@ -12,7 +12,14 @@
     </UserControl.DataContext>
     <StackPanel>
         <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
-        <math:Vector3dView DataContext="{Binding RatioViewModel}"/>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Scale"/>
+            <math:Vector3dView DataContext="{Binding RatioViewModel}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Center"/>
+            <math:Vector3dView DataContext="{Binding CenterViewModel}"/>
+        </StackPanel>
         <Button Content="Scale" Command="{Binding ScaleCommand}"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>

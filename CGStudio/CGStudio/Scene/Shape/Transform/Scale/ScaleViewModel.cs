@@ -14,6 +14,9 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
             = new ShapeSelectViewModel();
 
+        public Vector3dViewModel CenterViewModel { get; }
+            = new Vector3dViewModel(new Vector3d(0, 0, 0));
+
         public Vector3dViewModel RatioViewModel { get; }
             = new Vector3dViewModel(new Vector3d(1,1,1));
 
@@ -28,13 +31,32 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         private Matrix4d ToMatrix()
         {
-            return new Matrix4d
+            var center = CenterViewModel.Value;
+            var m1 = new Matrix4d
+                (
+                1.0, 0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                -center.X, -center.Y, -center.Z, 1.0
+                );
+
+            var m2 = new Matrix4d
                 (
                 RatioViewModel.X.Value, 0.0, 0.0, 0.0,
                 0.0, RatioViewModel.Y.Value, 0.0, 0.0,
                 0.0, 0.0, RatioViewModel.Z.Value, 0.0,
                 0.0, 0.0, 0.0, 1.0
                 );
+
+            var m3 = new Matrix4d
+                (
+                1.0, 0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                center.X, center.Y, center.Z, 1.0
+                );
+
+            return m1 * m2 * m3;
         }
 
         public ScaleViewModel()
@@ -55,31 +77,9 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         private void OnChanged(double x)
         {
-            var center = MainModel.Instance.World.Scenes.GetCenter(ShapeSelectViewModel.Id.Value);
-
-            var m1 = new Matrix4d
-                (
-                1.0, 0.0, 0.0, 0.0,
-                0.0, 1.0, 0.0, 0.0,
-                0.0, 0.0, 1.0, 0.0,
-                -center.X, -center.Y, -center.Z, 1.0
-                );
-
-            var m2 = ToMatrix();
-
-            var m3 = new Matrix4d
-                (
-                1.0, 0.0, 0.0, 0.0,
-                0.0, 1.0, 0.0, 0.0,
-                0.0, 0.0, 1.0, 0.0,
-                center.X, center.Y, center.Z, 1.0
-                );
-
-            var m = m1 * m2 * m3;
+            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             var canvas = Canvas3d.Instance;
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, m);
-
             canvas.Update(MainModel.Instance.World);
             canvas.Render();
         }
