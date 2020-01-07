@@ -14,25 +14,26 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
             = new ShapeSelectViewModel();
 
-        public Vector3dViewModel CenterViewModel { get; }
-            = new Vector3dViewModel(new Vector3d(0, 0, 0));
+        private readonly ScaleModel model = new ScaleModel();
 
-        public Vector3dViewModel RatioViewModel { get; }
-            = new Vector3dViewModel(new Vector3d(1,1,1));
+        public Vector3dViewModel CenterViewModel { get { return model.Center; } }
 
+        public Vector3dViewModel RatioViewModel { get { return model.Scale; } }
+        
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private ScaleUICtrl scaleUICtrl = new ScaleUICtrl();
+        private readonly ScaleUICtrl scaleUICtrl;
 
         public ScaleViewModel()
         {
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
             this.ShapeSelectViewModel.Id.Subscribe(OnSelected);
+            this.scaleUICtrl = new ScaleUICtrl(model);
         }
 
         private void OnSelected(int id)
@@ -40,14 +41,14 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             var center = MainModel.Instance.World.Scenes.GetCenter(id);
             this.CenterViewModel.Value = center;
 
-            scaleUICtrl.ShapeId = id;
-            scaleUICtrl.Center = center;
+            model.Id.Value = id;
+            model.Center.Value = center;
             Canvas3d.Instance.UICtrl = scaleUICtrl;
         }
 
         private void OnOk()
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, scaleUICtrl.ToMatrix());
+            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, model.ToMatrix());
 
             //OnCancel();
         }
