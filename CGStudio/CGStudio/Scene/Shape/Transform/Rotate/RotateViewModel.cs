@@ -25,7 +25,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private RotateUICtrl UICtrl;
+        private RotateUICtrl uiCtrl;
 
         public RotateViewModel()
         {
@@ -43,7 +43,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
             model.Id.Value = id.parentId;
             model.CenterViewModel.Value = center;
-            Canvas3d.Instance.UICtrl = UICtrl;
+            Canvas3d.Instance.UICtrl = uiCtrl;
         }
 
 
@@ -83,7 +83,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
 
-            UICtrl = new RotateUICtrl(model);
+            uiCtrl = new RotateUICtrl(model);
         }
     }
 }

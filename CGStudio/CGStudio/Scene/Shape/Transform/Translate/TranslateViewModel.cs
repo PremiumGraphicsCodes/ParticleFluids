@@ -18,7 +18,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private TranslateUICtrl translateUiCtrl;
+        private TranslateUICtrl uiCtrl;
 
         private readonly TranslateModel model = new TranslateModel();
 
@@ -47,7 +47,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
 
-            this.translateUiCtrl = new TranslateUICtrl(model);
+            this.uiCtrl = new TranslateUICtrl(model);
         }
 
         private void OnSelected(ObjectId id)
@@ -57,8 +57,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
                 return;
             }
             this.ShapeId.Value = id.parentId;
-            this.translateUiCtrl.Sensivity = 1.0;
-            Canvas3d.Instance.UICtrl = this.translateUiCtrl;
+            this.uiCtrl.Sensivity = 1.0;
+            Canvas3d.Instance.UICtrl = this.uiCtrl;
         }
 
         private void OnOk()

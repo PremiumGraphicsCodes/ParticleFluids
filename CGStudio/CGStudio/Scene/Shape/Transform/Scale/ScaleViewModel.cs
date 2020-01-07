@@ -23,7 +23,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private ScaleUICtrl scaleUICtrl;
+        private ScaleUICtrl uiCtrl;
 
         public ScaleViewModel()
         {
@@ -41,7 +41,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             model.Id.Value = id.parentId;
             model.Center.Value = center;
-            Canvas3d.Instance.UICtrl = scaleUICtrl;
+            Canvas3d.Instance.UICtrl = uiCtrl;
         }
 
         private void OnOk()
@@ -79,7 +79,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
-            this.scaleUICtrl = new ScaleUICtrl(model);
+            this.uiCtrl = new ScaleUICtrl(model);
         }
     }
 }
