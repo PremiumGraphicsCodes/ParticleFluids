@@ -182,6 +182,7 @@
       <DependentUpon>ScaleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\Transform\Scale\ScaleViewModel.cs" />
+    <Compile Include="Scene\Shape\Transform\Translate\TranslateModel.cs" />
     <Compile Include="Scene\Shape\Transform\Translate\TranslateView.xaml.cs">
       <DependentUpon>TranslateView.xaml</DependentUpon>
     </Compile>
