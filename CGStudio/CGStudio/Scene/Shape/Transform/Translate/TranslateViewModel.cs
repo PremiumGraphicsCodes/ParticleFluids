@@ -16,9 +16,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public Vector3dViewModel VectorViewModel { get; }
             = new Vector3dViewModel();
 
-        public ReactiveCommand TranslateCommand { get; }
-            = new ReactiveCommand();
-
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
@@ -27,9 +24,13 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public TranslateViewModel()
         {
-            this.TranslateCommand.Subscribe(OnTranslate);
+            this.ShapeSelectViewModel.Id.Subscribe(OnSelected);
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
+
+            this.VectorViewModel.X.Subscribe(OnChanged);
+            this.VectorViewModel.Y.Subscribe(OnChanged);
+            this.VectorViewModel.Z.Subscribe(OnChanged);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -45,14 +46,11 @@ namespace PG.CGStudio.Scene.Shape.Transform
         {
         }
 
-        private void OnTranslate()
+        private void OnSelected(int id)
         {
-            var moveCtrl = new TranslateUICtrl(VectorViewModel);
+            var moveCtrl = new TranslateUICtrl(id);
             moveCtrl.Sensivity = 1.0;
             Canvas3d.Instance.UICtrl = moveCtrl;
-            VectorViewModel.X.Subscribe(OnChanged);
-            VectorViewModel.Y.Subscribe(OnChanged);
-            VectorViewModel.Z.Subscribe(OnChanged);
         }
 
         private void OnChanged(double x)
@@ -62,7 +60,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
             var canvas = Canvas3d.Instance;
             canvas.Update(MainModel.Instance.World);
             canvas.Render();
-
         }
 
         private void OnOk()

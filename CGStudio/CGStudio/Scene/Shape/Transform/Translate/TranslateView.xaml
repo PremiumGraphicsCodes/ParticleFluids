@@ -14,7 +14,6 @@
     <StackPanel>
         <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
         <math:Vector3dView DataContext="{Binding VectorViewModel}"/>
-        <Button Content="Translate" Command="{Binding TranslateCommand}"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>
