@@ -23,17 +23,10 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private readonly ScaleUICtrl scaleUICtrl;
+        private ScaleUICtrl scaleUICtrl;
 
         public ScaleViewModel()
         {
-            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
-            picker.AddAction(OnSelected);
-            Canvas3d.Instance.UICtrl = picker;
-
-            this.OkCommand.Subscribe(OnOk);
-            this.CancelCommand.Subscribe(OnCancel);
-            this.scaleUICtrl = new ScaleUICtrl(model);
         }
 
         private void OnSelected(ObjectId id)
@@ -65,6 +58,8 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             canvas.Render();
 
             model.Scale.Value = new Vector3d(1, 1, 1);
+
+            Canvas3d.Instance.UICtrl = new CameraUICtrl();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -78,6 +73,13 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
+            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
+            picker.AddAction(OnSelected);
+            Canvas3d.Instance.UICtrl = picker;
+
+            this.OkCommand.Subscribe(OnOk);
+            this.CancelCommand.Subscribe(OnCancel);
+            this.scaleUICtrl = new ScaleUICtrl(model);
         }
     }
 }

@@ -28,18 +28,10 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private readonly RotateUICtrl UICtrl;
+        private RotateUICtrl UICtrl;
 
         public RotateViewModel()
         {
-            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
-            picker.AddAction(OnSelected);
-            Canvas3d.Instance.UICtrl = picker;
-
-            this.OkCommand.Subscribe(OnOk);
-            this.CancelCommand.Subscribe(OnCancel);
-
-            UICtrl = new RotateUICtrl(model);
         }
 
         private void OnSelected(ObjectId id)
@@ -82,6 +74,14 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
+            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
+            picker.AddAction(OnSelected);
+            Canvas3d.Instance.UICtrl = picker;
+
+            this.OkCommand.Subscribe(OnOk);
+            this.CancelCommand.Subscribe(OnCancel);
+
+            UICtrl = new RotateUICtrl(model);
         }
     }
 }

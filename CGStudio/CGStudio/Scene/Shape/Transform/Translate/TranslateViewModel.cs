@@ -18,7 +18,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private readonly TranslateUICtrl translateUiCtrl;
+        private TranslateUICtrl translateUiCtrl;
 
         private readonly TranslateModel model = new TranslateModel();
 
@@ -26,15 +26,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public TranslateViewModel()
         {
-            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
-            picker.AddAction(OnSelected);
-            Canvas3d.Instance.UICtrl = picker;
-           
-            //this.ShapeId.Subscribe(OnSelected);
-            this.OkCommand.Subscribe(OnOk);
-            this.CancelCommand.Subscribe(OnCancel);
-
-            this.translateUiCtrl = new TranslateUICtrl(model);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -48,6 +39,15 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
+            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
+            picker.AddAction(OnSelected);
+            Canvas3d.Instance.UICtrl = picker;
+
+            //this.ShapeId.Subscribe(OnSelected);
+            this.OkCommand.Subscribe(OnOk);
+            this.CancelCommand.Subscribe(OnCancel);
+
+            this.translateUiCtrl = new TranslateUICtrl(model);
         }
 
         private void OnSelected(ObjectId id)
@@ -75,6 +75,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
             canvas.Render();
 
             model.Translate.Value = new Vector3d(0, 0, 0);
+            Canvas3d.Instance.UICtrl = new CameraUICtrl();
         }
     }
 }
