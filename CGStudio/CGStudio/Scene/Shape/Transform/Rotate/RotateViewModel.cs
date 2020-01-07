@@ -15,6 +15,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public Vector3dViewModel AngleViewModel { get { return model.AngleViewModel; } }
 
+        public Vector3dViewModel CenterViewModel { get { return model.CenterViewModel; } }
+
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
             = new ShapeSelectViewModel();
 
@@ -26,7 +28,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        public RotateUICtrl UICtrl { get; }
+        private readonly RotateUICtrl UICtrl;
 
         public RotateViewModel()
         {
@@ -51,7 +53,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
             //this.CenterViewModel.Value = center;
 
             model.Id.Value = id.parentId;
-            //model.Center.Value = center;
+            model.CenterViewModel.Value = center;
             Canvas3d.Instance.UICtrl = UICtrl;
         }
 

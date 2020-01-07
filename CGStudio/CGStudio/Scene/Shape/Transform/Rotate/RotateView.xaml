@@ -14,6 +14,7 @@
     <StackPanel>
         <TextBlock Text="{Binding ShapeId.Value}"/>
         <math:Vector3dView DataContext="{Binding AngleViewModel}"/>
+        <math:Vector3dView DataContext="{Binding CenterViewModel}"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>
