@@ -21,13 +21,12 @@ namespace PG.CGStudio.Object.Select
         {
             PickCommand.Subscribe(OnPickUI);
             Picker = new PickUICtrl(10, Core.SceneType.AllScene);
-            Picker.Action = OnPicked;
+            Picker.AddAction( OnPicked );
         }
 
         private void OnPickUI()
         {
             Canvas3d.Instance.UICtrl = Picker;
-            Picker.Action = OnPicked;
         }
 
         private void OnPicked(ObjectId id)

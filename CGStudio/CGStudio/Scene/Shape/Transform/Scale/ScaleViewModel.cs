@@ -64,6 +64,13 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             this.ScaleCommand.Subscribe(OnScale);
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
+            this.ShapeSelectViewModel.Id.Subscribe(OnSelected);
+        }
+
+        private void OnSelected(int id)
+        {
+            var center = MainModel.Instance.World.Scenes.GetCenter(id);
+            this.CenterViewModel.Value = center;
         }
 
         private void OnScale()
