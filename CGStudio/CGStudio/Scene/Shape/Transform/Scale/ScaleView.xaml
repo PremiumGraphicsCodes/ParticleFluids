@@ -11,7 +11,7 @@
         <local:ScaleViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
+        <TextBlock Text="{Binding ShapeId.Value}"/>
         <StackPanel Orientation="Horizontal">
             <Label Content="Scale"/>
             <math:Vector3dView DataContext="{Binding RatioViewModel}"/>
