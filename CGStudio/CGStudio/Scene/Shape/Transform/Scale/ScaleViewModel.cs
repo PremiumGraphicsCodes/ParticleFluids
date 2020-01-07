@@ -1,12 +1,9 @@
-﻿using PG.CGStudio.Object.Select;
-using PG.CGStudio.UICtrl;
+﻿using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
 using PG.Core.Math;
 using Prism.Regions;
 using Reactive.Bindings;
-using System;
-using System.Reactive.Linq;
 
 namespace PG.CGStudio.Scene.Shape.Transform.Scale
 {
@@ -41,6 +38,11 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         private void OnSelected(ObjectId id)
         {
+            if (id.parentId == 0)
+            {
+                return;
+            }
+
             var center = MainModel.Instance.World.Scenes.GetCenter(id.parentId);
             this.CenterViewModel.Value = center;
 
@@ -61,6 +63,8 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             var canvas = Canvas3d.Instance;
             canvas.Update(MainModel.Instance.World);
             canvas.Render();
+
+            model.Scale.Value = new Vector3d(1, 1, 1);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
