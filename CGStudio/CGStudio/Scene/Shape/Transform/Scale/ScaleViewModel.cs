@@ -20,14 +20,68 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public Vector3dViewModel RatioViewModel { get; }
             = new Vector3dViewModel(new Vector3d(1,1,1));
 
-        public ReactiveCommand ScaleCommand { get; }
-            = new ReactiveCommand();
-
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
+
+        public ScaleViewModel()
+        {
+            this.OkCommand.Subscribe(OnOk);
+            this.CancelCommand.Subscribe(OnCancel);
+            this.ShapeSelectViewModel.Id.Subscribe(OnSelected);
+
+            this.RatioViewModel.X.Subscribe(OnChanged);
+            this.RatioViewModel.Y.Subscribe(OnChanged);
+            this.RatioViewModel.Z.Subscribe(OnChanged);
+
+            this.CenterViewModel.X.Subscribe(OnChanged);
+            this.CenterViewModel.Y.Subscribe(OnChanged);
+            this.CenterViewModel.Z.Subscribe(OnChanged);
+        }
+
+        private void OnSelected(int id)
+        {
+            var center = MainModel.Instance.World.Scenes.GetCenter(id);
+            this.CenterViewModel.Value = center;
+
+            Canvas3d.Instance.UICtrl = new ScaleUICtrl(ShapeSelectViewModel.Id.Value, RatioViewModel);
+        }
+
+        private void OnChanged(double x)
+        {
+            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
+
+            var canvas = Canvas3d.Instance;
+            canvas.Update(MainModel.Instance.World);
+            canvas.Render();
+        }
+
+        private void OnOk()
+        {
+            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
+
+            //OnCancel();
+        }
+
+        private void OnCancel()
+        {
+            RatioViewModel.Value = new Vector3d(1, 1, 1);
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+        }
 
         private Matrix4d ToMatrix()
         {
@@ -59,61 +113,5 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             return m1 * m2 * m3;
         }
 
-        public ScaleViewModel()
-        {
-            this.ScaleCommand.Subscribe(OnScale);
-            this.OkCommand.Subscribe(OnOk);
-            this.CancelCommand.Subscribe(OnCancel);
-            this.ShapeSelectViewModel.Id.Subscribe(OnSelected);
-        }
-
-        private void OnSelected(int id)
-        {
-            var center = MainModel.Instance.World.Scenes.GetCenter(id);
-            this.CenterViewModel.Value = center;
-        }
-
-        private void OnScale()
-        {
-            Canvas3d.Instance.UICtrl = new ScaleUICtrl(ShapeSelectViewModel.Id.Value, RatioViewModel);
-
-            RatioViewModel.X.Subscribe(OnChanged);
-            RatioViewModel.Y.Subscribe(OnChanged);
-            RatioViewModel.Z.Subscribe(OnChanged);
-        }
-
-        private void OnChanged(double x)
-        {
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
-
-            var canvas = Canvas3d.Instance;
-            canvas.Update(MainModel.Instance.World);
-            canvas.Render();
-        }
-
-        private void OnOk()
-        {
-            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
-
-            OnCancel();
-        }
-
-        private void OnCancel()
-        {
-            RatioViewModel.Value = new Vector3d(1, 1, 1);
-        }
-
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-        }
     }
 }

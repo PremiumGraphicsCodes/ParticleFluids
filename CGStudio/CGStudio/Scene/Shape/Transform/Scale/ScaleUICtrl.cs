@@ -7,7 +7,7 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos = new Vector2d(0,0);
 
-        private int shapeId = -1;
+        private readonly int shapeId = -1;
 
         private Vector3dViewModel vectorViewModel;
 
