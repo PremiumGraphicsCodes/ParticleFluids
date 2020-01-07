@@ -17,9 +17,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public Vector3dViewModel CenterViewModel { get { return model.CenterViewModel; } }
 
-        public ShapeSelectViewModel ShapeSelectViewModel { get; }
-            = new ShapeSelectViewModel();
-
         public ReactiveProperty<int> ShapeId { get { return model.Id; } }
 
         public ReactiveCommand OkCommand { get; }
@@ -52,13 +49,18 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         private void OnOk()
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, model.ToMatrix());
+            MainModel.Instance.World.Scenes.Transform(ShapeId.Value, model.ToMatrix());
 
             OnCancel();
         }
 
         private void OnCancel()
         {
+            MainModel.Instance.World.Scenes.SetMatrix(ShapeId.Value, Matrix4d.Identity());
+            var canvas = Canvas3d.Instance;
+            canvas.Update(MainModel.Instance.World);
+            canvas.Render();
+
             model.AngleViewModel.Value = new Vector3d(0, 0, 0);
         }
 
