@@ -1,4 +1,5 @@
 ﻿
+using PG.CGStudio.Scene.Shape.Transform;
 using PG.Control.Math;
 using PG.Core.Math;
 
@@ -8,15 +9,15 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos;
 
-        private Vector3dViewModel rotationViewModel;
+        private readonly RotateModel model;
 
         public RotateUICtrl()
         {
         }
 
-        public RotateUICtrl(Vector3dViewModel rotationViewModel)
+        public RotateUICtrl(RotateModel model)
         {
-            this.rotationViewModel = rotationViewModel;
+            this.model = model;
         }
 
         public override void OnLeftButtonDown(Vector2d position)
@@ -31,11 +32,17 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
-            var model = MainModel.Instance;
+            var mainModel = MainModel.Instance;
             var diff = (position - prevPos) * 10.0;
-            var matrix = PG.CLI.Command.Get<Matrix4d>(model.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
+            var matrix = PG.CLI.Command.Get<Matrix4d>(mainModel.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
             var v = matrix * new Vector4d(diff.Y, diff.X, 0.0, 1.0);
-            rotationViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
+            model.AngleViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
+
+            MainModel.Instance.World.Scenes.SetMatrix(model.Id.Value, model.ToMatrix());
+
+            var canvas = Canvas3d.Instance;
+            canvas.Update(MainModel.Instance.World);
+            canvas.Render();
 
             this.prevPos = position;
 

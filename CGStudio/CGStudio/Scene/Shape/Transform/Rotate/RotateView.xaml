@@ -12,9 +12,8 @@
         <transform:RotateViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
+        <TextBlock Text="{Binding ShapeId.Value}"/>
         <math:Vector3dView DataContext="{Binding AngleViewModel}"/>
-        <Button Content="Rotate" Command="{Binding RotateCommand}"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>
