@@ -176,6 +176,9 @@
     <ClInclude Include="SceneGetCommand.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Public\SceneGetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

@@ -216,6 +216,19 @@ namespace PG.CGStudio.Scene
             return newId;
         }
 
+        public Box3d GetBoundingBox(int id)
+        {
+            var command = new PG.CLI.Command(PG.SceneGetLabels.CommandLabel);
+            command.SetArg(PG.SceneGetLabels.IdLabel, id);
+            command.Execute(adapter);
+            return command.GetResult<Box3d>(PG.SceneGetLabels.BoundingBoxLabel);
+        }
+
+        public Vector3d GetCenter(int id)
+        {
+            return GetBoundingBox(id).Center;
+        }
+
         public void Delete(int id)
         {
             var command = new PG.CLI.Command(PG.DeleteLabels.CommandNameLabel);

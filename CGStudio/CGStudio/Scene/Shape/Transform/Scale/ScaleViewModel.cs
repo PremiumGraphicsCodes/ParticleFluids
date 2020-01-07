@@ -55,8 +55,30 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         private void OnChanged(double x)
         {
+            var center = MainModel.Instance.World.Scenes.GetCenter(ShapeSelectViewModel.Id.Value);
+
+            var m1 = new Matrix4d
+                (
+                1.0, 0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                -center.X, -center.Y, -center.Z, 1.0
+                );
+
+            var m2 = ToMatrix();
+
+            var m3 = new Matrix4d
+                (
+                1.0, 0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                center.X, center.Y, center.Z, 1.0
+                );
+
+            var m = m1 * m2 * m3;
+
             var canvas = Canvas3d.Instance;
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
+            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, m);
 
             canvas.Update(MainModel.Instance.World);
             canvas.Render();

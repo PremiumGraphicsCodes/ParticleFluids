@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Command {
 
-class SceneGetCommand : ICommand
+class SceneGetCommand : public ICommand
 {
 public:
 	struct Args : IArgs

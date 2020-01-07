@@ -190,6 +190,13 @@ namespace PG {
 	{
 	}
 
+	public class SceneGetLabels
+	{
+		public const string CommandLabel = "SceneGet";
+		public const string IdLabel = "Id";
+		public const string BoundingBoxLabel = "BoundingBox";
+	}
+
 	public class SetLabels
 	{
 		public const string CameraPositionLabel = "CameraPosition";

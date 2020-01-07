@@ -1,18 +1,20 @@
 #include "SceneGetCommand.h"
 
+#include "Public/SceneGetLabels.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 SceneGetCommand::Args::Args() :
-	id("Id", -1)
+	id(SceneGetLabels::IdLabel, -1)
 {
 	add(&id);
 }
 
 SceneGetCommand::Results::Results() :
 	//center("Center", Vector3dd(0,0,0)),
-	boundingBox("BoundingBox", Box3d())
+	boundingBox(SceneGetLabels::BoundingBoxLabel, Box3d())
 {
 	//add(&center);
 	add(&boundingBox);
@@ -20,7 +22,7 @@ SceneGetCommand::Results::Results() :
 
 std::string SceneGetCommand::getName()
 {
-	return "SceneGet";
+	return SceneGetLabels::CommandLabel;
 }
 
 SceneGetCommand::SceneGetCommand() :
