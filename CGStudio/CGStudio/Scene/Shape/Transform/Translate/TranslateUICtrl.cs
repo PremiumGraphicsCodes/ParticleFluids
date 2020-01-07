@@ -37,11 +37,7 @@ namespace PG.CGStudio.UICtrl
             var matrix = PG.CLI.Command.Get<Matrix4d>(mainModel.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
             var v = matrix * new Vector4d(-diff.X, diff.Y, 0.0, 0.0);
             model.Translate.Value += new Vector3d(v.X, v.Y, v.Z);
-            MainModel.Instance.World.Scenes.SetMatrix(model.Id.Value, model.ToMatrix());
-
-            var canvas = Canvas3d.Instance;
-            canvas.Update(MainModel.Instance.World);
-            canvas.Render();
+            model.SetMatrix(true);
 
             this.prevPos = position;
         }

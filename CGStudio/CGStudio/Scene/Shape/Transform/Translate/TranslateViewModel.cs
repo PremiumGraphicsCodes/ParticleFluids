@@ -63,19 +63,16 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         private void OnOk()
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeId.Value, model.ToMatrix());
-            OnCancel();
+            model.Transform(false);
+
+            model.Translate.Value = new Vector3d(0, 0, 0);
+            model.SetMatrix(true);
         }
 
         private void OnCancel()
         {
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeId.Value, Matrix4d.Identity());
-            var canvas = Canvas3d.Instance;
-            canvas.Update(MainModel.Instance.World);
-            canvas.Render();
-
             model.Translate.Value = new Vector3d(0, 0, 0);
-            Canvas3d.Instance.UICtrl = new CameraUICtrl();
+            model.SetMatrix(true);
         }
     }
 }
