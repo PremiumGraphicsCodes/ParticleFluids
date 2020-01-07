@@ -1,20 +1,15 @@
-﻿using PG.CGStudio.Object.Select;
-using PG.CGStudio.UICtrl;
-using PG.Control.Math;
+﻿using PG.CGStudio.UICtrl;
+using PG.Core;
 using PG.Core.Math;
 using Prism.Regions;
 using Reactive.Bindings;
-using System;
 
 namespace PG.CGStudio.Scene.Shape.Transform
 {
     public class TranslateViewModel : INavigationAware
     {
-        public ShapeSelectViewModel ShapeSelectViewModel { get; }
-            = new ShapeSelectViewModel();
-
-        public Vector3dViewModel VectorViewModel { get; }
-            = new Vector3dViewModel();
+        public ReactiveProperty<int> ShapeId { get; }
+            = new ReactiveProperty<int>();
 
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
@@ -22,15 +17,17 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
+        private TranslateUICtrl translateUiCtrl;
+
         public TranslateViewModel()
         {
-            this.ShapeSelectViewModel.Id.Subscribe(OnSelected);
+            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
+            picker.AddAction(OnSelected);
+            Canvas3d.Instance.UICtrl = picker;
+           
+            //this.ShapeId.Subscribe(OnSelected);
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
-
-            this.VectorViewModel.X.Subscribe(OnChanged);
-            this.VectorViewModel.Y.Subscribe(OnChanged);
-            this.VectorViewModel.Z.Subscribe(OnChanged);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -46,44 +43,31 @@ namespace PG.CGStudio.Scene.Shape.Transform
         {
         }
 
-        private void OnSelected(int id)
+        private void OnSelected(ObjectId id)
         {
-            var moveCtrl = new TranslateUICtrl(id);
-            moveCtrl.Sensivity = 1.0;
-            Canvas3d.Instance.UICtrl = moveCtrl;
-        }
-
-        private void OnChanged(double x)
-        {
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
-
-            var canvas = Canvas3d.Instance;
-            canvas.Update(MainModel.Instance.World);
-            canvas.Render();
+            if(id.parentId == 0)
+            {
+                return;
+            }
+            this.translateUiCtrl = new TranslateUICtrl(id.parentId);
+            this.ShapeId.Value = id.parentId;
+            this.translateUiCtrl.Sensivity = 1.0;
+            Canvas3d.Instance.UICtrl = this.translateUiCtrl;
         }
 
         private void OnOk()
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
-
+            MainModel.Instance.World.Scenes.Transform(ShapeId.Value, translateUiCtrl.ToMatrix());
             OnCancel();
         }
 
         private void OnCancel()
         {
-            VectorViewModel.Value = new Vector3d(0, 0, 0);
-        }
+            MainModel.Instance.World.Scenes.SetMatrix(ShapeId.Value, Matrix4d.Identity());
+            var canvas = Canvas3d.Instance;
+            canvas.Update(MainModel.Instance.World);
+            canvas.Render();
 
-        private Matrix4d ToMatrix()
-        {
-            return new Matrix4d
-                (
-                1.0, 0.0, 0.0, 0.0,
-                0.0, 1.0, 0.0, 0.0,
-                0.0, 0.0, 1.0, 0.0,
-                VectorViewModel.X.Value, VectorViewModel.Y.Value, VectorViewModel.Z.Value, 1.0
-                );
         }
-
     }
 }

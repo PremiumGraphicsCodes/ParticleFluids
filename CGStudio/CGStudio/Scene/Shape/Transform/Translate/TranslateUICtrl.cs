@@ -47,8 +47,7 @@ namespace PG.CGStudio.UICtrl
             this.prevPos = position;
         }
 
-
-        private Matrix4d ToMatrix()
+        public Matrix4d ToMatrix()
         {
             return new Matrix4d
                 (
