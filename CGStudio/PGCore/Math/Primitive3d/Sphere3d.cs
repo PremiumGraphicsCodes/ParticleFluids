@@ -31,7 +31,7 @@
             var x = radius * System.Math.Sin(theta) * System.Math.Cos(phi);
             var y = radius * System.Math.Sin(theta) * System.Math.Sin(phi);
             var z = radius * System.Math.Cos(theta);
-            return new Vector3d(x, y, z);
+            return center + new Vector3d(x, y, z);
         }
 
         public Vector3d GetPosition(double r, double u, double v)
@@ -42,7 +42,7 @@
             var x = r * radius * System.Math.Sin(theta) * System.Math.Cos(phi);
             var y = r * radius * System.Math.Sin(theta) * System.Math.Sin(phi);
             var z = r * radius * System.Math.Cos(theta);
-            return new Vector3d(x, y, z);
+            return center + new Vector3d(x, y, z);
         }
 
         public Vector3d GetNormal(double u, double v)

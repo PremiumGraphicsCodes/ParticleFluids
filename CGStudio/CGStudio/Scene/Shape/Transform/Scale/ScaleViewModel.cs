@@ -15,7 +15,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             = new ShapeSelectViewModel();
 
         public Vector3dViewModel RatioViewModel { get; }
-            = new Vector3dViewModel(new Core.Math.Vector3d(1,1,1));
+            = new Vector3dViewModel(new Vector3d(1,1,1));
 
         public ReactiveCommand ScaleCommand { get; }
             = new ReactiveCommand();

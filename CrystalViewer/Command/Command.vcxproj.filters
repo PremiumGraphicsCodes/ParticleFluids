@@ -173,6 +173,9 @@
     <ClInclude Include="GetMatrixCommand.h">
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="SceneGetCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -266,6 +269,9 @@
     </ClCompile>
     <ClCompile Include="SetMatrixCommand.cpp">
       <Filter>Scene\Shape\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGetCommand.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

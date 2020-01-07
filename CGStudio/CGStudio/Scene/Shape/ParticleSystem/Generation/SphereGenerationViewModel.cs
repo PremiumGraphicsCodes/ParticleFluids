@@ -33,11 +33,9 @@ namespace PG.CGStudio.Generation.ParticleSystem
             for (int i = 0; i < Count.Value; ++i) {
                 var u = random.NextDouble();
                 var v = random.NextDouble();
-                var pos = SphereViewModel.Value.GetPosition(1.0,u,v);
+                var pos = sphere.GetPosition(1.0,u,v);
                 positions.Add(pos);
             }
-            var particles = new PG.Core.Shape.ParticleSystem(positions);
-            //MainModel.Instance.Repository.AddParticleSystemScene(positions, "PSSphere");
             MainModel.Instance.World.Scenes.AddParticleSystemScene(positions, "PSSphere", Appearance.Value, 1);//, Appearance.Value, "PSBox");
 
             //MainModel.Instance.Repository.Objects.Add(particles, Appearance.Value, "PSSphere");
