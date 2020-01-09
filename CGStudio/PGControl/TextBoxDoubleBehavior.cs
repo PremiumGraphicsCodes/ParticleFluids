@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
-namespace PG.Control.Math
+namespace PG.Control
 {
-    class Vector3dViewBehavior : Behavior<TextBox>
+    class TextBoxDoubleBehavior: Behavior<TextBoxDouble>
     {
         protected override void OnAttached()
         {
@@ -30,8 +24,8 @@ namespace PG.Control.Math
             if (e.Key == Key.Enter)
             {
                 // エンターキーが押されたら BindingをUpdateする
-                var view = (TextBox)sender;
-                DependencyProperty prop = TextBox.TextProperty;
+                var view = (TextBoxDouble)sender;
+                DependencyProperty prop = TextBoxDouble.TextProperty;
                 BindingExpression binding
                  = BindingOperations.GetBindingExpression(view, prop);
                 if (binding != null)
@@ -40,5 +34,6 @@ namespace PG.Control.Math
                 }
             }
         }
+
     }
 }

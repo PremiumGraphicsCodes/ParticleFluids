@@ -154,7 +154,6 @@
       <DependentUpon>Matrix4dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Math\Matrix4dViewModel.cs" />
-    <Compile Include="Math\Vector3dViewBehavior.cs" />
     <Compile Include="Shape\ParticleSystem\ParticleSystemViewModel.cs" />
     <Compile Include="Shape\ParticleSystem\ParticleSystemView.xaml.cs">
       <DependentUpon>ParticleSystemView.xaml</DependentUpon>
@@ -170,6 +169,10 @@
     <Compile Include="Shape\WireFrameView.xaml.cs">
       <DependentUpon>WireFrameView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TextBoxDouble.xaml.cs">
+      <DependentUpon>TextBoxDouble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TextBoxDoubleBehavior.cs" />
     <Compile Include="UI\ObjectSelectView.xaml.cs">
       <DependentUpon>ObjectSelectView.xaml</DependentUpon>
     </Compile>
@@ -247,6 +250,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Shape\WireFrameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TextBoxDouble.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

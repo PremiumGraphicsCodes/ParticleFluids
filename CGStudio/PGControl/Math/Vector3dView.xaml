@@ -5,22 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.Control.Math"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:control="clr-namespace:PG.Control"
              mc:Ignorable="d">
     <StackPanel Orientation="Horizontal">
-        <TextBox HorizontalAlignment="Left" Text="{Binding X.Value}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50">
-            <i:Interaction.Behaviors>
-                <local:Vector3dViewBehavior/>
-            </i:Interaction.Behaviors>
-        </TextBox>
-        <TextBox HorizontalAlignment="Center" Text="{Binding Y.Value}"  Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50">
-            <i:Interaction.Behaviors>
-                <local:Vector3dViewBehavior/>
-            </i:Interaction.Behaviors>
-        </TextBox>
-        <TextBox HorizontalAlignment="Right" Text="{Binding Z.Value}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50">
-            <i:Interaction.Behaviors>
-                <local:Vector3dViewBehavior/>
-            </i:Interaction.Behaviors>
-        </TextBox>
+        <control:TextBoxDouble HorizontalAlignment="Left" Text="{Binding X.Value}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <control:TextBoxDouble HorizontalAlignment="Center" Text="{Binding Y.Value}"  Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <control:TextBoxDouble HorizontalAlignment="Right" Text="{Binding Z.Value}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
     </StackPanel>
 </UserControl>
