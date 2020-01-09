@@ -22,6 +22,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         private readonly TranslateModel model = new TranslateModel();
 
+        public TranslateModel Model { get { return model; } }
+
         public Vector3dViewModel Translate { get { return model.Translate; } }
 
         public TranslateViewModel()

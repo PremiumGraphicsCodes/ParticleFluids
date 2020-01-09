@@ -7,13 +7,18 @@
              xmlns:ui="clr-namespace:PG.Control.UI;assembly=PGControl"
              xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
              xmlns:select="clr-namespace:PG.CGStudio.Object.Select"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d">
     <UserControl.DataContext>
         <local:TranslateViewModel/>
     </UserControl.DataContext>
+    <i:Interaction.Behaviors>
+        <local:TranslateViewBehavior/>
+    </i:Interaction.Behaviors>
     <StackPanel>
         <TextBlock Text="{Binding ShapeId.Value}"/>
-        <math:Vector3dView DataContext="{Binding Translate}"/>
+        <math:Vector3dView DataContext="{Binding Translate}">
+        </math:Vector3dView>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>
