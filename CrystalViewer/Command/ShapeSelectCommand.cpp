@@ -46,4 +46,5 @@ void ShapeSelectCommand::execute(World* scene)
 	attribute.width = 1.0f;
 	auto bbshape = scene->getSceneFactory()->createWireFrameScene(builder.createWireFrame(),attribute,"BoundingBox");
 	scene->getItems()->addScene(bbshape);
+	results.boundingBoxItemId.setValue(bbshape->getId());
 }

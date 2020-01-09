@@ -18,6 +18,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
+        private PickUICtrl picker;
+
         private TranslateUICtrl uiCtrl;
 
         private readonly TranslateModel model = new TranslateModel();
@@ -41,7 +43,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
+            picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
             picker.AddAction(OnSelected);
             Canvas3d.Instance.UICtrl = picker;
 
@@ -69,12 +71,16 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
             model.Translate.Value = new Vector3d(0, 0, 0);
             model.SetMatrix(true);
+
+            picker.Clear();
         }
 
         private void OnCancel()
         {
             model.Translate.Value = new Vector3d(0, 0, 0);
             model.SetMatrix(true);
+
+            picker.Clear();
         }
     }
 }

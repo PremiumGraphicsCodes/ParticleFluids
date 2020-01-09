@@ -23,5 +23,8 @@ std::string TransformCommand::getName()
 void TransformCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<Scene::IShapeScene*>(args.id.getValue());
+	if (scene == nullptr) {
+		return;
+	}
 	scene->transform(args.matrix.getValue());
 }

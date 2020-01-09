@@ -229,11 +229,11 @@ namespace PG.CGStudio.Scene
             return GetBoundingBox(id).Center;
         }
 
-        public void Delete(int id)
+        public void Delete(int id, bool isItem = false)
         {
             var command = new PG.CLI.Command(PG.DeleteLabels.CommandNameLabel);
             command.SetArg(PG.DeleteLabels.IdLabel, id);
-            command.SetArg(PG.DeleteLabels.IsItemLabel, false);
+            command.SetArg(PG.DeleteLabels.IsItemLabel, isItem);
             command.Execute(adapter);
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();

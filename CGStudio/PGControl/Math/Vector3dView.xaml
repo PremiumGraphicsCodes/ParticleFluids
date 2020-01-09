@@ -8,8 +8,8 @@
              xmlns:control="clr-namespace:PG.Control"
              mc:Ignorable="d">
     <StackPanel Orientation="Horizontal">
-        <control:TextBoxDouble HorizontalAlignment="Left" Text="{Binding X.Value}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-        <control:TextBoxDouble HorizontalAlignment="Center" Text="{Binding Y.Value}"  Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
-        <control:TextBoxDouble HorizontalAlignment="Right" Text="{Binding Z.Value}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <control:TextBoxDouble HorizontalAlignment="Left" Text="{Binding X.Value, StringFormat={}{0:N3}}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <control:TextBoxDouble HorizontalAlignment="Center" Text="{Binding Y.Value, StringFormat={}{0:N3}}"  Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <control:TextBoxDouble HorizontalAlignment="Right" Text="{Binding Z.Value, StringFormat={}{0:N3}}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
     </StackPanel>
 </UserControl>

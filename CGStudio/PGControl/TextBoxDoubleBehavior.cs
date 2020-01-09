@@ -11,12 +11,14 @@ namespace PG.Control
         {
             base.OnAttached();
             this.AssociatedObject.PreviewKeyDown += OnPreviewKeyDown;
+            this.AssociatedObject.GotFocus += OnGotFocus;
         }
 
         protected override void OnDetaching()
         {
             base.OnDetaching();
             this.AssociatedObject.PreviewKeyDown -= OnPreviewKeyDown;
+            this.AssociatedObject.GotFocus += OnGotFocus;
         }
 
         private void OnPreviewKeyDown(object sender, KeyEventArgs e)
@@ -35,5 +37,10 @@ namespace PG.Control
             }
         }
 
+        private void OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            var view = (TextBoxDouble)sender;
+            view.SelectAll();
+        }
     }
 }
