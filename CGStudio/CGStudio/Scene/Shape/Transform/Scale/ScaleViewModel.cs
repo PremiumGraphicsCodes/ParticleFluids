@@ -11,6 +11,8 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
     {
         private readonly ScaleModel model = new ScaleModel();
 
+        public ScaleModel Model { get { return model; } }
+
         public ReactiveProperty<int> ShapeId { get { return model.Id; } }
 
         public Vector3dViewModel CenterViewModel { get { return model.Center; } }

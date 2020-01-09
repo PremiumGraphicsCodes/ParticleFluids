@@ -50,7 +50,7 @@ void PolygonMesh::transform(const Matrix3dd& m)
 	const auto& vs = vertices;
 	for (auto v : vs) {
 		auto& p = positions[v.positionId];
-		p = p * m;
+		p = m * p;
 	}
 }
 
@@ -59,7 +59,7 @@ void PolygonMesh::transform(const Matrix4dd& m)
 	const auto& vs = vertices;
 	for (auto v : vs) {
 		auto& p = positions[v.positionId];
-		p = glm::vec4(p, 1.0) * m;
+		p = m * glm::vec4(p, 1.0);
 	}
 }
 

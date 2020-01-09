@@ -188,7 +188,6 @@
     <Compile Include="Scene\Shape\Transform\Translate\TranslateView.xaml.cs">
       <DependentUpon>TranslateView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scene\Shape\Transform\Translate\TranslateViewBehavior.cs" />
     <Compile Include="Scene\Shape\Transform\Translate\TranslateViewModel.cs" />
     <Compile Include="Scene\Shape\Trim\TrimView.xaml.cs">
       <DependentUpon>TrimView.xaml</DependentUpon>

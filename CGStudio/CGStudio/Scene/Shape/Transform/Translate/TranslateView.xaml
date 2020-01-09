@@ -12,13 +12,9 @@
     <UserControl.DataContext>
         <local:TranslateViewModel/>
     </UserControl.DataContext>
-    <i:Interaction.Behaviors>
-        <local:TranslateViewBehavior/>
-    </i:Interaction.Behaviors>
     <StackPanel>
         <TextBlock Text="{Binding ShapeId.Value}"/>
-        <math:Vector3dView DataContext="{Binding Translate}">
-        </math:Vector3dView>
+        <math:Vector3dView DataContext="{Binding Translate}" KeyDown="Vector3dView_KeyDown"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>

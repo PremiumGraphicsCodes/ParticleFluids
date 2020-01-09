@@ -14,7 +14,7 @@
         <TextBlock Text="{Binding ShapeId.Value}"/>
         <StackPanel Orientation="Horizontal">
             <Label Content="Scale"/>
-            <math:Vector3dView DataContext="{Binding RatioViewModel}"/>
+            <math:Vector3dView DataContext="{Binding RatioViewModel}" KeyDown="Vector3dView_KeyDown"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Content="Center"/>
