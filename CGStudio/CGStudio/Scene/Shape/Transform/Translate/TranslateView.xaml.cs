@@ -16,8 +16,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 var vm = DataContext as TranslateViewModel;
-                var model = vm.Model;
-                model.SetMatrix(true);
+                vm.SetMatrix(true);
             }
         }
     }

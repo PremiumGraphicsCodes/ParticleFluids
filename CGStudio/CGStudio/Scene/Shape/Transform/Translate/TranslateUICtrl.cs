@@ -7,15 +7,15 @@ namespace PG.CGStudio.UICtrl
 {
     public class TranslateUICtrl : IUICtrl
     {
-        private Vector2d prevPos;
+        private Vector2d prevPos = new Vector2d(0,0);
 
         private double sensivitiy = 0.1;
 
-        private readonly TranslateModel model;
+        private readonly TranslateViewModel model;
 
         public double Sensivity { set { this.sensivitiy = value; } }
 
-        public TranslateUICtrl(TranslateModel model)
+        public TranslateUICtrl(TranslateViewModel model)
         {
             this.model = model;
         }
