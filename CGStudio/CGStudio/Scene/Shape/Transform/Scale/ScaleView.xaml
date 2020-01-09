@@ -18,7 +18,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Content="Center"/>
-            <math:Vector3dView DataContext="{Binding CenterViewModel}"/>
+            <math:Vector3dView DataContext="{Binding CenterViewModel}" KeyDown="Vector3dView_KeyDown"/>
         </StackPanel>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>

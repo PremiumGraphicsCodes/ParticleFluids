@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using PG.Control.Math;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace PG.CGStudio.Scene.Shape.Transform
 {
@@ -11,9 +13,12 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         private void Vector3dView_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            var vm = DataContext as TranslateViewModel;
-            var model = vm.Model;
-            model.SetMatrix(true);
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                var vm = DataContext as TranslateViewModel;
+                var model = vm.Model;
+                model.SetMatrix(true);
+            }
         }
     }
 }

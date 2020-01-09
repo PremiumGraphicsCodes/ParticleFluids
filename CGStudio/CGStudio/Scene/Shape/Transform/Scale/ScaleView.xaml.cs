@@ -11,9 +11,12 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         private void Vector3dView_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            var vm = DataContext as ScaleViewModel;
-            var model = vm.Model;
-//            model.SetMatrix(true);
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                var vm = DataContext as ScaleViewModel;
+                var model = vm.Model;
+                model.SetMatrix(true);
+            }
         }
     }
 }
