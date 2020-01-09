@@ -20,6 +20,30 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public Vector3dViewModel AngleViewModel { get; }
             = new Vector3dViewModel();
 
+        public void SetMatrix(bool doRender)
+        {
+            MainModel.Instance.World.Scenes.SetMatrix(Id.Value, ToMatrix());
+
+            if (doRender)
+            {
+                var canvas = Canvas3d.Instance;
+                canvas.Update(MainModel.Instance.World);
+                canvas.Render();
+            }
+        }
+
+        public void Transform(bool doRender)
+        {
+            MainModel.Instance.World.Scenes.Transform(Id.Value, ToMatrix());
+
+            if (doRender)
+            {
+                var canvas = Canvas3d.Instance;
+                canvas.Update(MainModel.Instance.World);
+                canvas.Render();
+            }
+        }
+
         public Matrix4d ToMatrix()
         {
             var center = CenterViewModel.Value;

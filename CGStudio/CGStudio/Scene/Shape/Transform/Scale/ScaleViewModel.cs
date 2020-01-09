@@ -25,6 +25,8 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
+        private PickUICtrl picker;
+
         private ScaleUICtrl uiCtrl;
 
         public ScaleViewModel()
@@ -73,7 +75,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
+            picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
             picker.AddAction(OnSelected);
             Canvas3d.Instance.UICtrl = picker;
 

@@ -13,8 +13,8 @@
     </UserControl.DataContext>
     <StackPanel>
         <TextBlock Text="{Binding ShapeId.Value}"/>
-        <math:Vector3dView DataContext="{Binding AngleViewModel}"/>
-        <math:Vector3dView DataContext="{Binding CenterViewModel}"/>
+        <math:Vector3dView DataContext="{Binding AngleViewModel}" KeyDown="Vector3dView_KeyDown"/>
+        <math:Vector3dView DataContext="{Binding CenterViewModel}" KeyDown="Vector3dView_KeyDown"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>

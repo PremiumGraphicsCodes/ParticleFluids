@@ -13,6 +13,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
     {
         private readonly RotateModel model = new RotateModel();
 
+        public RotateModel Model { get { return model; } }
+
         public Vector3dViewModel AngleViewModel { get { return model.AngleViewModel; } }
 
         public Vector3dViewModel CenterViewModel { get { return model.CenterViewModel; } }

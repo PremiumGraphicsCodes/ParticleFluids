@@ -8,24 +8,16 @@ namespace PG.CGStudio.UICtrl
 {
     public class PickUICtrl : IUICtrl
     {
-        private List<ObjectId> pickedIds;
+        private List<ObjectId> pickedIds = new List<ObjectId>();
         private int mergin;
         private List<Action<ObjectId>> actions = new List<Action<ObjectId>>();
         private SceneType type;
 
-        private int bbId = -1;
-
-        public void Clear()
-        {
-            if (bbId != -1) {
-                MainModel.Instance.World.Scenes.Delete(this.bbId, true);
-             }
-        }
+        public int bbId = -1;
 
         public PickUICtrl(int mergin, SceneType type)
         {
             this.mergin = mergin;
-            this.pickedIds = new List<ObjectId>();
             this.type = type;
         }
 

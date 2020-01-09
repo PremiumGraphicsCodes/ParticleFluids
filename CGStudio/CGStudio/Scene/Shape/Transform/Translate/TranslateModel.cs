@@ -6,15 +6,14 @@ namespace PG.CGStudio.Scene.Shape.Transform
 {
     public class TranslateModel
     {
-        public ReactiveProperty<int> Id { get; }
-            = new ReactiveProperty<int>();
+        public int Id { get; set; }
 
         public Vector3dViewModel Translate { get; }
             = new Vector3dViewModel();
 
         public void SetMatrix(bool doRender)
         {
-            MainModel.Instance.World.Scenes.SetMatrix(Id.Value, ToMatrix());
+            MainModel.Instance.World.Scenes.SetMatrix(Id, ToMatrix());
 
             if (doRender)
             {
@@ -26,7 +25,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void Transform(bool doRender)
         {
-            MainModel.Instance.World.Scenes.Transform(Id.Value, ToMatrix());
+            MainModel.Instance.World.Scenes.Transform(Id, ToMatrix());
 
             if (doRender)
             {

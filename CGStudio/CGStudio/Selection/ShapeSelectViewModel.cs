@@ -15,7 +15,7 @@ namespace PG.CGStudio.Object.Select
         public ReactiveCommand PickCommand { get; }
             = new ReactiveCommand();
 
-        private PickUICtrl Picker { get; }
+        public PickUICtrl Picker { get; }
 
         public ShapeSelectViewModel()
         {

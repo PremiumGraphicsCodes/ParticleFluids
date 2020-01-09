@@ -13,7 +13,7 @@
         <local:TranslateViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <TextBlock Text="{Binding ShapeId.Value}"/>
+        <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
         <math:Vector3dView DataContext="{Binding Translate}" KeyDown="Vector3dView_KeyDown"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
