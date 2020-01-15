@@ -9,7 +9,7 @@ using System;
 
 namespace PG.CGStudio.Scene.Shape.Transform.Scale
 {
-    public class ScaleViewModel : INavigationAware
+    public class ScaleViewModel
     {
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
             = new ShapeSelectViewModel();
@@ -65,19 +65,6 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             RatioViewModel.Value = new Vector3d(1, 1, 1);
             CenterViewModel.Value = new Vector3d(0, 0, 0);
             SetMatrix(true);
-        }
-
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
         }
 
         public void SetMatrix(bool doRender)

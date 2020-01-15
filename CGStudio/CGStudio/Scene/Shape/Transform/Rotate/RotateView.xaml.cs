@@ -15,8 +15,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Rotate
             if (e.Key == Key.Enter)
             {
                 var vm = DataContext as RotateViewModel;
-                var model = vm.Model;
-                model.SetMatrix(true);
+                vm.SetMatrix(true);
             }
         }
     }

@@ -9,13 +9,13 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos;
 
-        private readonly RotateModel model;
+        private readonly RotateViewModel model;
 
         public RotateUICtrl()
         {
         }
 
-        public RotateUICtrl(RotateModel model)
+        public RotateUICtrl(RotateViewModel model)
         {
             this.model = model;
         }
@@ -38,7 +38,7 @@ namespace PG.CGStudio.UICtrl
             var v = matrix * new Vector4d(diff.Y, diff.X, 0.0, 1.0);
             model.AngleViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
 
-            MainModel.Instance.World.Scenes.SetMatrix(model.Id.Value, model.ToMatrix());
+            MainModel.Instance.World.Scenes.SetMatrix(model.ShapeId.Value, model.ToMatrix());
 
             var canvas = Canvas3d.Instance;
             canvas.Update(MainModel.Instance.World);
