@@ -33,13 +33,7 @@ std::any GetCommand::Get(World* world, const std::string& name)
 std::any GetCommand::Get(World* world, int id, const std::string& name)
 {
 	auto scene = world->getObjects()->findSceneById(id);
-	if (name == GetLabels::SceneTypeLabel) {
-		return std::any(scene->getType());
-	}
-	else if (name == GetLabels::IsPickableLabel) {
-		return std::any(scene->isPickable());
-	}
-	else if (name == GetLabels::SceneCountLabel) {
+	if (name == GetLabels::SceneCountLabel) {
 		return static_cast<int>(scene->getChildren().size());
 	}
 	else if (name == GetLabels::SceneListIdsLabel) {

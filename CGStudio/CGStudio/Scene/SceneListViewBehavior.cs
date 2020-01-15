@@ -52,7 +52,10 @@ namespace PG.CGStudio.Object
             }
             var parameters = new NavigationParameters();
             parameters.Add("Id", selectedItem.Id.Value);
-            var type = PG.CLI.Command.Get<SceneType>(MainModel.Instance.World.Adapter, "SceneType", selectedItem.Id.Value);
+            var command = new PG.CLI.Command(SceneGetLabels.CommandLabel);
+            command.SetArg(SceneGetLabels.IdLabel, selectedItem.Id.Value);
+            command.Execute(MainModel.Instance.World.Adapter);
+            var type = command.GetResult<SceneType>(SceneGetLabels.TypeLabel);
             switch(type)
             {
                 case SceneType.ParticleSystem:

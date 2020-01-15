@@ -74,14 +74,8 @@ namespace PG {
 		public const string PositionLabel = "Position";
 		public const string SceneCountLabel = "SceneCount";
 		public const string SceneListIdsLabel = "SceneListIds";
-		public const string SceneTypeLabel = "SceneType";
-		public const string SceneTypeIdLabel = "SceneTypeId";
 		public const string BoundingBoxLabel = "BoundingBox";
 		public const string MaterialNameLabel = "MaterialName";
-		public const string AmbientLabel = "Ambient";
-		public const string DiffuseLabel = "Diffuse";
-		public const string SpecularLabel = "Specular";
-		public const string IsPickableLabel = "IsPickable";
 	}
 
 	public class GetMatrixLabels
@@ -212,8 +206,10 @@ namespace PG {
 		public const string CommandLabel = "SceneGet";
 		public const string IdLabel = "Id";
 		public const string BoundingBoxLabel = "BoundingBox";
+		public const string IsPickableLabel = "IsPickable";
 		public const string IsVisibleLabel = "IsVisible";
 		public const string NameLabel = "Name";
+		public const string TypeLabel = "Type";
 	}
 
 	public class SetLabels
