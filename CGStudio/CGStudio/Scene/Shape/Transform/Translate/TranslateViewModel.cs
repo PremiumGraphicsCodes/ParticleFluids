@@ -5,13 +5,11 @@ using PG.Core;
 using PG.Core.Math;
 using PG.Core.Shape;
 using PG.Core.UI;
-using Prism.Regions;
 using Reactive.Bindings;
-using System;
 
 namespace PG.CGStudio.Scene.Shape.Transform
 {
-    public class TranslateViewModel : INavigationAware
+    public class TranslateViewModel
     {
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
             = new ShapeSelectViewModel();
@@ -25,7 +23,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public Vector3dViewModel Translate { get; }
             = new Vector3dViewModel();
 
-        private TranslateUICtrl uiCtrl;
+        private readonly TranslateUICtrl uiCtrl;
 
         private int bbId = -1;
 
@@ -39,19 +37,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
             this.CancelCommand.Subscribe(OnCancel);
 
             this.uiCtrl = new TranslateUICtrl(this);
-        }
-
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
         }
 
         private void OnSelected(ObjectId id)
