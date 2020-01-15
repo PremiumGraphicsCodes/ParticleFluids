@@ -106,6 +106,9 @@ namespace PG.CGStudio.Scene.Shape.Transform
             Translate.Value = new Vector3d(0, 0, 0);
             SetMatrix(true);
 
+            MainModel.Instance.World.Scenes.Clear(0);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Render();
             /*
             MainModel.Instance.World.Scenes.Delete(bbId, true);
             Canvas3d.Instance.Update(MainModel.Instance.World);

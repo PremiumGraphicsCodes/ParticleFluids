@@ -17,6 +17,8 @@ public:
 
 	static std::string getName();
 
+	ClearCommand();
+
 	void execute(Scene::World* world) override;
 
 private:
