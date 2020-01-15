@@ -31,6 +31,14 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public TranslateViewModel()
         {
+            Canvas3d.Instance.UICtrl = ShapeSelectViewModel.Picker;
+            ShapeSelectViewModel.Picker.AddAction(OnSelected);
+
+            //this.ShapeId.Subscribe(OnSelected);
+            this.OkCommand.Subscribe(OnOk);
+            this.CancelCommand.Subscribe(OnCancel);
+
+            this.uiCtrl = new TranslateUICtrl(this);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -44,14 +52,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            Canvas3d.Instance.UICtrl = ShapeSelectViewModel.Picker;
-            ShapeSelectViewModel.Picker.AddAction(OnSelected);
-
-            //this.ShapeId.Subscribe(OnSelected);
-            this.OkCommand.Subscribe(OnOk);
-            this.CancelCommand.Subscribe(OnCancel);
-
-            this.uiCtrl = new TranslateUICtrl(this);
         }
 
         private void OnSelected(ObjectId id)

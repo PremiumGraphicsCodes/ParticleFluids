@@ -6,17 +6,16 @@
         xmlns:local="clr-namespace:PG.CGStudio.Object.Transform"
         xmlns:select="clr-namespace:PG.CGStudio.Object.Select"
              xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
+             xmlns:transform="clr-namespace:PG.CGStudio.Scene.Shape.Transform"
+             xmlns:scale="clr-namespace:PG.CGStudio.Scene.Shape.Transform.Scale"
+             xmlns:rotate="clr-namespace:PG.CGStudio.Scene.Shape.Transform.Rotate"
              mc:Ignorable="d">
     <UserControl.DataContext>
         <local:TransformViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <select:SceneSelectView DataContext="{Binding SelectViewModel}"/>
-        <Button Content="Move" Command="{Binding MoveCommand}"/>
-        <Button Content="Scale" Command="{Binding ScaleCommand}"/>
-        <Button Content="Rotate" Command="{Binding RotateCommand}"/>
-        <math:Matrix4dView DataContext="{Binding MatrixViewModel}"/>
-        <Button Content="OK" Command="{Binding OKCommand}"/>
-        <Button Content="Cancel" Command="{Binding CancelCommand}"/>
+        <transform:TranslateView DataContext="{Binding TranslateViewModel}"/>
+        <scale:ScaleView DataContext="{Binding ScaleViewModel}"/>
+        <rotate:RotateView DataContext="{Binding RotateViewModel}"/>
     </StackPanel>
 </UserControl>
