@@ -7,4 +7,5 @@ namespace CameraSetCommandLabels
 	PublicLabel FarLabel = "Far";
 	PublicLabel EyePositionLabel = "EyePosition";
 	PublicLabel TargetPositionLabel = "TargetPosition";
+	PublicLabel UpVector = "UpVector";
 }

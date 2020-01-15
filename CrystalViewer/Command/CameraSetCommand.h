@@ -16,6 +16,7 @@ public:
 		Arg< double > far;
 		Arg< Math::Vector3dd > eyePosition;
 		Arg< Math::Vector3dd > targetPosition;
+		Arg< Math::Vector3dd > upVector;
 	};
 
 	CameraSetCommand() :

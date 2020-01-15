@@ -11,6 +11,7 @@ CameraGetCommand::Results::Results() :
 	far(CameraGetCommandLabels::FarLabel, 1.0),
 	eyePosition(CameraGetCommandLabels::EyePositionLabel, Vector3dd(1,1,1)),
 	targetPosition(CameraGetCommandLabels::TargetPositionLabel, Vector3dd(0,0,0)),
+	upVector(CameraGetCommandLabels::UpVectorLabel, Vector3dd(0,1,0)),
 	projectionMatrix(CameraGetCommandLabels::ProjectionMatrixLabel, Matrix4dd()),
 	rotationMatrix(CameraGetCommandLabels::RotationMatrixLabel, Matrix4dd())
 {
@@ -18,6 +19,7 @@ CameraGetCommand::Results::Results() :
 	add(&far);
 	add(&eyePosition);
 	add(&targetPosition);
+	add(&upVector);
 	add(&projectionMatrix);
 	add(&rotationMatrix);
 }
@@ -34,6 +36,7 @@ void CameraGetCommand::execute(World* scene)
 	results.far.setValue(camera->getFar());
 	results.eyePosition.setValue(camera->getEye());
 	results.targetPosition.setValue(camera->getTarget());
+	results.upVector.setValue(camera->getUp());
 	results.projectionMatrix.setValue(camera->getProjectionMatrix());
 	results.rotationMatrix.setValue(camera->getRotationMatrix());
 }
