@@ -6,6 +6,7 @@ namespace PG {
 		public const string FarLabel = "Far";
 		public const string EyePositionLabel = "EyePosition";
 		public const string TargetPositionLabel = "TargetPosition";
+		public const string UpVectorLabel = "UpVector";
 		public const string ProjectionMatrixLabel = "ProjectionMatrix";
 		public const string RotationMatrixLabel = "RotationMatrix";
 	}
@@ -31,6 +32,7 @@ namespace PG {
 		public const string FarLabel = "Far";
 		public const string EyePositionLabel = "EyePosition";
 		public const string TargetPositionLabel = "TargetPosition";
+		public const string UpVector = "UpVector";
 	}
 
 	public class ClearLabels
@@ -72,8 +74,6 @@ namespace PG {
 		public const string PositionLabel = "Position";
 		public const string SceneCountLabel = "SceneCount";
 		public const string SceneListIdsLabel = "SceneListIds";
-		public const string IsVisibleLabel = "IsVisible";
-		public const string NameLabel = "Name";
 		public const string SceneTypeLabel = "SceneType";
 		public const string SceneTypeIdLabel = "SceneTypeId";
 		public const string BoundingBoxLabel = "BoundingBox";
@@ -212,6 +212,8 @@ namespace PG {
 		public const string CommandLabel = "SceneGet";
 		public const string IdLabel = "Id";
 		public const string BoundingBoxLabel = "BoundingBox";
+		public const string IsVisibleLabel = "IsVisible";
+		public const string NameLabel = "Name";
 	}
 
 	public class SetLabels

@@ -14,9 +14,13 @@ SceneGetCommand::Args::Args() :
 
 SceneGetCommand::Results::Results() :
 	//center("Center", Vector3dd(0,0,0)),
+	isVisible(SceneGetLabels::IsVisibleLabel, false),
+	name(SceneGetLabels::NameLabel, std::string()),
 	boundingBox(SceneGetLabels::BoundingBoxLabel, Box3d())
 {
 	//add(&center);
+	add(&name);
+	add(&isVisible);
 	add(&boundingBox);
 }
 
@@ -37,4 +41,6 @@ void SceneGetCommand::execute(World* world)
 		return;
 	}
 	results.boundingBox.setValue( scene->getBoundingBox() );
+	results.isVisible.setValue(scene->isVisible());
+	results.name.setValue(scene->getName());
 }

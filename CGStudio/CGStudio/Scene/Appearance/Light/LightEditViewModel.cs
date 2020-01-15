@@ -45,7 +45,10 @@ namespace PG.CGStudio.Light
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             var id = (int)navigationContext.Parameters["Id"];
-            var name = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.NameLabel, id);
+            var command = new PG.CLI.Command();
+            command.SetArg(PG.SceneGetLabels.IdLabel, id);
+            command.Execute(MainModel.Instance.World.Adapter);
+            var name = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
             Id.Value = id;
             Name.Value = name;
 

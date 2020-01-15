@@ -30,7 +30,10 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         {
             var id = (int)navigationContext.Parameters["Id"];
             Id.Value = id;
-            var name = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.NameLabel, id);
+            var command = new PG.CLI.Command(PG.SceneGetLabels.CommandLabel);
+            command.SetArg(PG.SceneGetLabels.IdLabel, id);
+            command.Execute(MainModel.Instance.World.Adapter);
+            var name = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
             Name.Value = name;
             /*
             if (item == null)

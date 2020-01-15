@@ -20,7 +20,10 @@ public:
 		Results();
 
 		//Result<Math::Vector3dd> center;
+		Result<bool> isVisible;
+		Result<std::string> name;
 		Result<Math::Box3d> boundingBox;
+
 	};
 
 	static std::string getName();

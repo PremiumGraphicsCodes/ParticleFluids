@@ -39,7 +39,10 @@ namespace PG.CGStudio.Material
             this.Id.Value = id;
             var material = MainModel.Instance.World.Scenes.GetMaterialScene(id);
             this.MaterialViewModel.Value = material;
-            this.Name.Value = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.NameLabel, id);
+            var command = new PG.CLI.Command();
+            command.SetArg(PG.SceneGetLabels.IdLabel, id);
+            command.Execute(MainModel.Instance.World.Adapter);
+            this.Name.Value = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

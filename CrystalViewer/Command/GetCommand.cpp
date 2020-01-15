@@ -36,16 +36,6 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 	if (name == GetLabels::SceneTypeLabel) {
 		return std::any(scene->getType());
 	}
-	else if (name == GetLabels::NameLabel) {
-		return std::string(scene->getName());
-	}
-	else if (name == GetLabels::IsVisibleLabel) {
-		return std::any(scene->isVisible());
-	}
-	else if (name == GetLabels::BoundingBoxLabel) {
-		auto shapeScene = world->getObjects()->findSceneById<IShapeScene*>(id);		
-		return std::any(shapeScene->getShape()->getBoundingBox());
-	}
 	else if (name == GetLabels::IsPickableLabel) {
 		return std::any(scene->isPickable());
 	}
