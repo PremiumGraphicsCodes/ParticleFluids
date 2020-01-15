@@ -15,7 +15,7 @@
     <StackPanel>
         <select:ShapeSelectView DataContext="{Binding ShapeSelectViewModel}"/>
         <math:Vector3dView DataContext="{Binding Translate}" KeyDown="Vector3dView_KeyDown"/>
-        <Button Content="OK" Command="{Binding OkCommand}"/>
+        <Button Content="Apply" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>
 </UserControl>

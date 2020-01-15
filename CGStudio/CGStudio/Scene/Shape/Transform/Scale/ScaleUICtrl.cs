@@ -31,6 +31,7 @@ namespace PG.CGStudio.UICtrl
         {
             var diff = (position - prevPos) * Sensitivity;
             var command = new PG.CLI.Command(PG.CameraGetLabels.CommandNameLabel);
+            command.Execute(MainModel.Instance.World.Adapter);
             var matrix = command.GetResult<Matrix4d>(PG.CameraGetLabels.RotationMatrixLabel);
             var v = matrix * new Vector4d(diff.X, diff.Y, 0.0, 1.0);
             model.RatioViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
