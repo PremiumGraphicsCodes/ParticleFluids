@@ -11,19 +11,7 @@ using namespace Crystal::Command;
 
 std::any GetCommand::Get(World* world, const std::string& name)
 {
-	if (name == GetLabels::CameraEyePositionLabel) {
-		const auto& pos = world->getRenderer()->getCamera()->getEye();
-		return std::any(pos);
-	}
-	else if (name == GetLabels::CameraProjectionMatrixLabel) {
-		const auto& rot = world->getRenderer()->getCamera()->getProjectionMatrix();
-		return std::any(rot);
-	}
-	else if (name == GetLabels::CameraRotationMatrixLabel) {
-		const auto& rot = world->getRenderer()->getCamera()->getRotationMatrix();
-		return std::any(rot);
-	}
-	else if (name == GetLabels::BoundingBoxLabel) {
+	if (name == GetLabels::BoundingBoxLabel) {
 		const auto& bb = world->getBoundingBox();
 		return std::any(bb);
 	}

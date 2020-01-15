@@ -291,6 +291,9 @@
     <ClCompile Include="CameraSetCommand.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
+    <ClCompile Include="CameraGetCommand.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

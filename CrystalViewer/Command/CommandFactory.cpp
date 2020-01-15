@@ -32,6 +32,8 @@
 #include "PCDFileExportCommand.h"
 #include "SetMatrixCommand.h"
 #include "SceneGetCommand.h"
+#include "CameraGetCommand.h"
+#include "CameraSetCommand.h"
 
 using namespace Crystal::Command;
 
@@ -141,6 +143,12 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == SceneGetCommand::getName()) {
 		return std::make_unique<SceneGetCommand>();
+	}
+	else if (name == CameraGetCommand::getName()) {
+		return std::make_unique<CameraGetCommand>();
+	}
+	else if (name == CameraSetCommand::getName()) {
+		return std::make_unique<CameraSetCommand>();
 	}
 
 	assert(false);

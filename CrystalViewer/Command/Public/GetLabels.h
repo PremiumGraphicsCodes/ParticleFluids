@@ -4,9 +4,6 @@
 
 namespace GetLabels
 {
-	PublicLabel CameraEyePositionLabel = "CameraEyePosition";
-	PublicLabel CameraProjectionMatrixLabel = "CameraProjectionMatrix";
-	PublicLabel CameraRotationMatrixLabel = "CameraRotationMatrix";
 	PublicLabel PositionLabel = "Position";
 	PublicLabel SceneCountLabel = "SceneCount";
 	PublicLabel SceneListIdsLabel = "SceneListIds";

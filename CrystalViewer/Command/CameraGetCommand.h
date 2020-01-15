@@ -16,6 +16,8 @@ public:
 		Result< double > far;
 		Result< Math::Vector3dd > eyePosition;
 		Result< Math::Vector3dd > targetPosition;
+		Result< Math::Matrix4dd > projectionMatrix;
+		Result< Math::Matrix4dd > rotationMatrix;
 	};
 
 	CameraGetCommand() :
