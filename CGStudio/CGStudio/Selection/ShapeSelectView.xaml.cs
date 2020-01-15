@@ -2,9 +2,9 @@
 
 namespace PG.CGStudio.Object.Select
 {
-    public partial class SceneSelectView : UserControl
+    public partial class ShapeSelectView : UserControl
     {
-        public SceneSelectView()
+        public ShapeSelectView()
         {
             InitializeComponent();
         }

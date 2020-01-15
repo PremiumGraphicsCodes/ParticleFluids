@@ -53,7 +53,6 @@
                     <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMCylinderGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox>
-                    <Fluent:Button Header="Rotate" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Rotate"/>
                     <Fluent:Button Header="Transform" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Transform"/>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>

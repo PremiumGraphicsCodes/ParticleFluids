@@ -10,7 +10,7 @@
         <local:SceneExportViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
+        <select:ShapeSelectView DataContext="{Binding ShapeSelectViewModel}"/>
         <StackPanel Orientation="Horizontal">
            <TextBox Text="{Binding FilePath.Value}"/>
            <Button Content="Select" Command="{Binding FileSelectCommand}"/>

@@ -9,7 +9,7 @@ using System;
 
 namespace PG.CGStudio.Scene.Shape.Transform
 {
-    public class RotateViewModel : INavigationAware
+    public class RotateViewModel
     {
         public Vector3dViewModel AngleViewModel { get; }
             = new Vector3dViewModel();
@@ -17,8 +17,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public Vector3dViewModel CenterViewModel { get; }
             = new Vector3dViewModel();
 
-        public ReactiveProperty<int> ShapeId { get; }
-            = new ReactiveProperty<int>();
+        public ShapeSelectViewModel ShapeSelectViewModel { get; }
+            = new ShapeSelectViewModel();
 
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
@@ -26,38 +26,38 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private RotateUICtrl uiCtrl;
-
         public RotateViewModel()
         {
+            this.OkCommand.Subscribe(OnOk);
+            this.CancelCommand.Subscribe(OnCancel);
+
+            this.ShapeSelectViewModel.Id.Subscribe(OnSelected);
+
         }
 
-        private void OnSelected(ObjectId id)
+        private void OnSelected(int id)
         {
-            if (id.parentId == 0)
+            if (id == 0)
             {
                 return;
             }
 
-            var center = MainModel.Instance.World.Scenes.GetCenter(id.parentId);
-            //this.CenterViewModel.Value = center;
-
-            ShapeId.Value = id.parentId;
+            var center = MainModel.Instance.World.Scenes.GetCenter(id);
             CenterViewModel.Value = center;
-            Canvas3d.Instance.UICtrl = uiCtrl;
+            Canvas3d.Instance.UICtrl = new RotateUICtrl(this);
         }
 
 
         private void OnOk()
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeId.Value, ToMatrix());
+            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             OnCancel();
         }
 
         private void OnCancel()
         {
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeId.Value, Matrix4d.Identity());
+            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, Matrix4d.Identity());
             var canvas = Canvas3d.Instance;
             canvas.Update(MainModel.Instance.World);
             canvas.Render();
@@ -65,31 +65,9 @@ namespace PG.CGStudio.Scene.Shape.Transform
             AngleViewModel.Value = new Vector3d(0, 0, 0);
         }
 
-
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            var picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
-            picker.AddAction(OnSelected);
-            Canvas3d.Instance.UICtrl = picker;
-
-            this.OkCommand.Subscribe(OnOk);
-            this.CancelCommand.Subscribe(OnCancel);
-
-            uiCtrl = new RotateUICtrl(this);
-        }
-
         public void SetMatrix(bool doRender)
         {
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeId.Value, ToMatrix());
+            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {
@@ -101,7 +79,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void Transform(bool doRender)
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeId.Value, ToMatrix());
+            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {

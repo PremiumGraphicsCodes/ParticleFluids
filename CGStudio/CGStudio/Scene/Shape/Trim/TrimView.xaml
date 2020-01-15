@@ -11,7 +11,7 @@
         <local:TrimViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <select:SceneSelectView DataContext="{Binding ShapeSelectViewModel}"/>
+        <select:ShapeSelectView DataContext="{Binding ShapeSelectViewModel}"/>
         <selection:SphereRegionSelectView DataContext="{Binding RegionSelectViewModel}"/>
         <Button Content="OK" Command="{Binding OkCommand}"/>
     </StackPanel>
