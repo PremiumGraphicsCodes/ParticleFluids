@@ -11,11 +11,7 @@ using namespace Crystal::Command;
 
 std::any GetCommand::Get(World* world, const std::string& name)
 {
-	if (name == GetLabels::BoundingBoxLabel) {
-		const auto& bb = world->getBoundingBox();
-		return std::any(bb);
-	}
-	else if (name == GetLabels::SceneCountLabel) {
+	if (name == GetLabels::SceneCountLabel) {
 		return static_cast<int>( world->getObjects()->getRoot()->getChildren().size() );
 	}
 	else if (name == GetLabels::SceneListIdsLabel) {

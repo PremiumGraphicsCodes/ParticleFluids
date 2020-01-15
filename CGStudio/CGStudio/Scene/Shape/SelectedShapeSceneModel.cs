@@ -9,8 +9,7 @@ namespace PG.CGStudio.Scene.Shape
         public SelectedShapeSceneModel(int id)
         {
             this.id = id;
-            var world = MainModel.Instance.World;
-            var bb = PG.CLI.Command.Get<Box3d>(world.Adapter, PG.GetLabels.BoundingBoxLabel, id);
+            var bb = MainModel.Instance.World.Scenes.GetBoundingBox(id);
             CreateBoundingBoxItem(bb);
             CreateAxesX(bb);
             CreateAxesY(bb);

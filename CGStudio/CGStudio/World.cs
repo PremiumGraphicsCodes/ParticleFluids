@@ -42,5 +42,6 @@ namespace PG.CGStudio
         {
             return PG.CLI.Command.Get<Vector3d>(adapter, PG.GetLabels.PositionLabel, id.parentId, id.childId);
         }
+
     }
 }

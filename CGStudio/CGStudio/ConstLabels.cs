@@ -74,7 +74,6 @@ namespace PG {
 		public const string PositionLabel = "Position";
 		public const string SceneCountLabel = "SceneCount";
 		public const string SceneListIdsLabel = "SceneListIds";
-		public const string BoundingBoxLabel = "BoundingBox";
 		public const string MaterialNameLabel = "MaterialName";
 	}
 
