@@ -13,8 +13,6 @@ namespace PG.CGStudio.UICtrl
         private List<Action<ObjectId>> actions = new List<Action<ObjectId>>();
         private SceneType type;
 
-        public int bbId = -1;
-
         public PickUICtrl(int mergin, SceneType type)
         {
             this.mergin = mergin;
@@ -44,7 +42,7 @@ namespace PG.CGStudio.UICtrl
                 command.Create(PG.ShapeSelectLabels.CommandNameLabel);
                 command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
                 command.Execute(model);
-                bbId = command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
+                command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
                 Canvas3d.Instance.Update(MainModel.Instance.World);
                 Canvas3d.Instance.Render();
 

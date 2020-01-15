@@ -250,6 +250,18 @@ namespace PG.CGStudio.Scene
             Sync();
         }
 
+        public void ShowBoundingBox(int id)
+        {
+            var bb = MainModel.Instance.World.Scenes.GetBoundingBox(id);
+            var builder = new WireFrameBuilder();
+            builder.Add(bb);
+            var appearance = new WireAppearance();
+            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
+            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Render();
+        }
+
         public void Sync()
         {
             var ids = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel);

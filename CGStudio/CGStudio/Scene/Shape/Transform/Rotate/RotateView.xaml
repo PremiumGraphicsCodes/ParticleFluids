@@ -13,8 +13,14 @@
     </UserControl.DataContext>
     <StackPanel>
         <select:ShapeSelectView DataContext="{Binding ShapeSelectViewModel}"/>
-        <math:Vector3dView DataContext="{Binding AngleViewModel}" KeyDown="Vector3dView_KeyDown"/>
-        <math:Vector3dView DataContext="{Binding CenterViewModel}" KeyDown="Vector3dView_KeyDown"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Angle"/>
+            <math:Vector3dView DataContext="{Binding AngleViewModel}" KeyDown="Vector3dView_KeyDown"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Center"/>
+            <math:Vector3dView DataContext="{Binding CenterViewModel}" KeyDown="Vector3dView_KeyDown"/>
+        </StackPanel>
         <Button Content="Apply" Command="{Binding OkCommand}"/>
         <Button Content="Cancel" Command="{Binding CancelCommand}"/>
     </StackPanel>

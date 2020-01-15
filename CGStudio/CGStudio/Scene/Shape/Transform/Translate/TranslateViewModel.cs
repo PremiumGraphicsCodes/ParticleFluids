@@ -85,14 +85,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
             SetMatrix(true);
 
             MainModel.Instance.World.Scenes.Clear(0);
-            var bb = MainModel.Instance.World.Scenes.GetBoundingBox(ShapeSelectViewModel.Id.Value);
-            var builder = new WireFrameBuilder();
-            builder.Add(bb);
-            var appearance = new WireAppearance();
-            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
-            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
-            Canvas3d.Instance.Update(MainModel.Instance.World);
-            Canvas3d.Instance.Render();
+            MainModel.Instance.World.Scenes.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
         }
 
         private void OnCancel()

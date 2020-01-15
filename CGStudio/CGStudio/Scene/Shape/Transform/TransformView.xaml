@@ -14,8 +14,17 @@
         <local:TransformViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <transform:TranslateView DataContext="{Binding TranslateViewModel}"/>
-        <scale:ScaleView DataContext="{Binding ScaleViewModel}"/>
-        <rotate:RotateView DataContext="{Binding RotateViewModel}"/>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Translate"/>
+            <transform:TranslateView DataContext="{Binding TranslateViewModel}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Scale"/>
+            <scale:ScaleView DataContext="{Binding ScaleViewModel}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Rotate"/>
+            <rotate:RotateView DataContext="{Binding RotateViewModel}"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

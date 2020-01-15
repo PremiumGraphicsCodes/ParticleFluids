@@ -3,9 +3,6 @@ using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
 using PG.Core.Math;
-using PG.Core.Shape;
-using PG.Core.UI;
-using Prism.Regions;
 using Reactive.Bindings;
 using System;
 
@@ -28,29 +25,24 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private readonly ScaleUICtrl uiCtrl;
-
         public ScaleViewModel()
         {
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
-            this.uiCtrl = new ScaleUICtrl(this);
 
-            ShapeSelectViewModel.Id.Subscribe(OnSelected);
+            this.ShapeSelectViewModel.Picker.AddAction(OnSelected);
         }
 
-        private void OnSelected(int id)
+        private void OnSelected(ObjectId id)
         {
-            if (id == 0)
+            if (id.parentId == 0)
             {
                 return;
             }
 
-            var center = MainModel.Instance.World.Scenes.GetCenter(id);
+            var center = MainModel.Instance.World.Scenes.GetCenter(id.parentId);
             this.CenterViewModel.Value = center;
-
-            CenterViewModel.Value = center;
-            Canvas3d.Instance.UICtrl = uiCtrl;
+            Canvas3d.Instance.UICtrl = new ScaleUICtrl(this);
         }
 
         private void OnOk()
@@ -62,14 +54,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             SetMatrix(true);
 
             MainModel.Instance.World.Scenes.Clear(0);
-            var bb = MainModel.Instance.World.Scenes.GetBoundingBox(ShapeSelectViewModel.Id.Value);
-            var builder = new WireFrameBuilder();
-            builder.Add(bb);
-            var appearance = new WireAppearance();
-            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
-            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
-            Canvas3d.Instance.Update(MainModel.Instance.World);
-            Canvas3d.Instance.Render();
+            MainModel.Instance.World.Scenes.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
         }
 
         private void OnCancel()
