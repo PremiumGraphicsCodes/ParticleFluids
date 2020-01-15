@@ -1,67 +1,70 @@
-﻿using PG.CGStudio.UICtrl;
+﻿using PG.CGStudio.Object.Select;
+using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
 using PG.Core.Math;
 using Prism.Regions;
 using Reactive.Bindings;
+using System;
 
 namespace PG.CGStudio.Scene.Shape.Transform.Scale
 {
     public class ScaleViewModel : INavigationAware
     {
-        private readonly ScaleModel model = new ScaleModel();
+        public ShapeSelectViewModel ShapeSelectViewModel { get; }
+            = new ShapeSelectViewModel();
 
-        public ScaleModel Model { get { return model; } }
+        public Vector3dViewModel CenterViewModel { get; }
+            = new Vector3dViewModel();
 
-        public ReactiveProperty<int> ShapeId { get { return model.Id; } }
+        public Vector3dViewModel RatioViewModel { get; }
+            = new Vector3dViewModel(new Vector3d(1,1,1));
 
-        public Vector3dViewModel CenterViewModel { get { return model.Center; } }
-
-        public Vector3dViewModel RatioViewModel { get { return model.Scale; } }
-        
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private PickUICtrl picker;
-
-        private ScaleUICtrl uiCtrl;
+        private readonly ScaleUICtrl uiCtrl;
 
         public ScaleViewModel()
         {
+            this.OkCommand.Subscribe(OnOk);
+            this.CancelCommand.Subscribe(OnCancel);
+            this.uiCtrl = new ScaleUICtrl(this);
+
+            ShapeSelectViewModel.Id.Subscribe(OnSelected);
         }
 
-        private void OnSelected(ObjectId id)
+        private void OnSelected(int id)
         {
-            if (id.parentId == 0)
+            if (id == 0)
             {
                 return;
             }
 
-            var center = MainModel.Instance.World.Scenes.GetCenter(id.parentId);
+            var center = MainModel.Instance.World.Scenes.GetCenter(id);
             this.CenterViewModel.Value = center;
 
-            model.Id.Value = id.parentId;
-            model.Center.Value = center;
+            CenterViewModel.Value = center;
             Canvas3d.Instance.UICtrl = uiCtrl;
         }
 
         private void OnOk()
         {
-            model.Transform(false);
+            Transform(false);
 
-            model.Scale.Value = new Vector3d(1, 1, 1);
-            model.Center.Value = new Vector3d(0, 0, 0);
-            model.SetMatrix(true);
+            RatioViewModel.Value = new Vector3d(1, 1, 1);
+            CenterViewModel.Value = new Vector3d(0, 0, 0);
+            SetMatrix(true);
         }
 
         private void OnCancel()
         {
-            model.Scale.Value = new Vector3d(1, 1, 1);
-            model.Center.Value = new Vector3d(0, 0, 0);
-            model.SetMatrix(true);
+            RatioViewModel.Value = new Vector3d(1, 1, 1);
+            CenterViewModel.Value = new Vector3d(0, 0, 0);
+            SetMatrix(true);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -75,13 +78,62 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            picker = new PickUICtrl(10, Core.SceneType.ShapeScene);
-            picker.AddAction(OnSelected);
-            Canvas3d.Instance.UICtrl = picker;
+        }
 
-            this.OkCommand.Subscribe(OnOk);
-            this.CancelCommand.Subscribe(OnCancel);
-            this.uiCtrl = new ScaleUICtrl(model);
+        public void SetMatrix(bool doRender)
+        {
+            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
+
+            if (doRender)
+            {
+                var canvas = Canvas3d.Instance;
+                canvas.Update(MainModel.Instance.World);
+                canvas.Render();
+            }
+        }
+
+        public void Transform(bool doRender)
+        {
+            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
+
+            if (doRender)
+            {
+                var canvas = Canvas3d.Instance;
+                canvas.Update(MainModel.Instance.World);
+                canvas.Render();
+            }
+        }
+
+        public Matrix4d ToMatrix()
+        {
+            var center = CenterViewModel.Value;
+            var scale = RatioViewModel.Value;
+
+            var m1 = new Matrix4d
+                (
+                1.0, 0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                -center.X, -center.Y, -center.Z, 1.0
+                );
+
+            var m2 = new Matrix4d
+                (
+                scale.X, 0.0, 0.0, 0.0,
+                0.0, scale.Y, 0.0, 0.0,
+                0.0, 0.0, scale.Z, 0.0,
+                0.0, 0.0, 0.0, 1.0
+                );
+
+            var m3 = new Matrix4d
+                (
+                1.0, 0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                center.X, center.Y, center.Z, 1.0
+                );
+
+            return m1 * m2 * m3;
         }
     }
 }

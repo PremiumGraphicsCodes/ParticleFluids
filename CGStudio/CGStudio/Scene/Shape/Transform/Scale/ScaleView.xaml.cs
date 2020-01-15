@@ -14,8 +14,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 var vm = DataContext as ScaleViewModel;
-                var model = vm.Model;
-                model.SetMatrix(true);
+                vm.SetMatrix(true);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using PG.CGStudio.Scene.Shape.Transform;
+using PG.CGStudio.Scene.Shape.Transform.Scale;
 using PG.Core.Math;
 
 namespace PG.CGStudio.UICtrl
@@ -7,11 +8,11 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPos = new Vector2d(0,0);
 
-        private readonly ScaleModel model;
+        private readonly ScaleViewModel model;
 
         public double Sensitivity { get; set; } = 1.0;
 
-        public ScaleUICtrl(ScaleModel model)
+        public ScaleUICtrl(ScaleViewModel model)
         {
             this.model = model;
         }
@@ -32,13 +33,8 @@ namespace PG.CGStudio.UICtrl
             var diff = (position - prevPos) * Sensitivity;
             var matrix = PG.CLI.Command.Get<Matrix4d>(mainModel.World.Adapter, PG.GetLabels.CameraRotationMatrixLabel);
             var v = matrix * new Vector4d(diff.X, diff.Y, 0.0, 1.0);
-            model.Scale.Value += new Vector3d(v.X, v.Y, v.Z);
-
-            MainModel.Instance.World.Scenes.SetMatrix(model.Id.Value, model.ToMatrix());
-
-            var canvas = Canvas3d.Instance;
-            canvas.Update(MainModel.Instance.World);
-            canvas.Render();
+            model.RatioViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
+            model.SetMatrix(true);
 
             this.prevPos = position;
         }

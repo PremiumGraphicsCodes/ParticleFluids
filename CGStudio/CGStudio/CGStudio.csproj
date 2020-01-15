@@ -179,7 +179,6 @@
       <DependentUpon>RotateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\Transform\Rotate\RotateViewModel.cs" />
-    <Compile Include="Scene\Shape\Transform\Scale\ScaleModel.cs" />
     <Compile Include="Scene\Shape\Transform\Scale\ScaleView.xaml.cs">
       <DependentUpon>ScaleView.xaml</DependentUpon>
     </Compile>
