@@ -155,6 +155,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CameraSetCommand.h" />
+    <ClInclude Include="Public\CameraSetLabels.h" />
     <ClInclude Include="Public\SceneGetLabels.h" />
     <ClInclude Include="SceneGetCommand.h" />
     <ClInclude Include="CameraFitCommand.h" />
@@ -225,6 +227,7 @@
   <ItemGroup>
     <ClCompile Include="CameraFitCommand.cpp" />
     <ClCompile Include="CameraRotateCommand.cpp" />
+    <ClCompile Include="CameraSetCommand.cpp" />
     <ClCompile Include="CameraTranslateCommand.cpp" />
     <ClCompile Include="CameraZoomCommand.cpp" />
     <ClCompile Include="ClearCommand.cpp" />

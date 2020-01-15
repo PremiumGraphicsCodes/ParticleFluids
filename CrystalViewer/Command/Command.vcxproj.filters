@@ -179,6 +179,12 @@
     <ClInclude Include="Public\SceneGetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="CameraSetCommand.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\CameraSetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -275,6 +281,9 @@
     </ClCompile>
     <ClCompile Include="SceneGetCommand.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraSetCommand.cpp">
+      <Filter>Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

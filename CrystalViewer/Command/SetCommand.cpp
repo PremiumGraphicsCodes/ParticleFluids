@@ -10,14 +10,6 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-void SetCommand::Set(World* world, const std::string& name, std::any value)
-{
-	if (name == SetLabels::CameraPositionLabel) {
-		const auto& pos = std::any_cast<Vector3dd>(value);
-		world->getRenderer()->getCamera()->setEye(pos);
-	}
-}
-
 void SetCommand::Set(World* world, int id, const std::string& name, std::any value)
 {
 	auto scene = world->getObjects()->findSceneById(id);
