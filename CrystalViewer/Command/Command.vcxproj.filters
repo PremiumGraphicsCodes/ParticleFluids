@@ -185,6 +185,12 @@
     <ClInclude Include="Public\CameraSetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="Public\CameraGetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraGetCommand.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

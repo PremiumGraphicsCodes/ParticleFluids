@@ -155,7 +155,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CameraGetCommand.h" />
     <ClInclude Include="CameraSetCommand.h" />
+    <ClInclude Include="Public\CameraGetLabels.h" />
     <ClInclude Include="Public\CameraSetLabels.h" />
     <ClInclude Include="Public\SceneGetLabels.h" />
     <ClInclude Include="SceneGetCommand.h" />

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "IArgs.h"
 #include "ICommand.h"
 
 namespace Crystal {
@@ -13,7 +12,10 @@ public:
 	{
 		Args();
 
+		Arg< double > near;
+		Arg< double > far;
 		Arg< Math::Vector3dd > eyePosition;
+		Arg< Math::Vector3dd > targetPosition;
 	};
 
 	CameraSetCommand() :

@@ -1,8 +1,8 @@
 #include "PublicLabel.h"
 
-namespace CameraSetCommandLabels
+namespace CameraGetCommandLabels
 {
-	PublicLabel CommandLabel = "CameraSet";
+	PublicLabel CommandLabel = "CameraGet";
 	PublicLabel NearLabel = "Near";
 	PublicLabel FarLabel = "Far";
 	PublicLabel EyePositionLabel = "EyePosition";
