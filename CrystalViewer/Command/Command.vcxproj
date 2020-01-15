@@ -157,8 +157,10 @@
   <ItemGroup>
     <ClInclude Include="CameraGetCommand.h" />
     <ClInclude Include="CameraSetCommand.h" />
+    <ClInclude Include="PositionGetCommand.h" />
     <ClInclude Include="Public\CameraGetLabels.h" />
     <ClInclude Include="Public\CameraSetLabels.h" />
+    <ClInclude Include="Public\PositionGetLabels.h" />
     <ClInclude Include="Public\SceneGetLabels.h" />
     <ClInclude Include="SceneGetCommand.h" />
     <ClInclude Include="CameraFitCommand.h" />
@@ -256,6 +258,7 @@
     <ClCompile Include="PCDFileImportCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />
     <ClCompile Include="PolygonMeshCreateCommand.cpp" />
+    <ClCompile Include="PositionGetCommand.cpp" />
     <ClCompile Include="SceneGetCommand.cpp" />
     <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="SetMatrixCommand.cpp" />

@@ -38,7 +38,7 @@ namespace PG.CGStudio.Selection
         private void OnPicked(ObjectId id)
         {
             var model = MainModel.Instance.World.Adapter;
-            var position = PG.CLI.Command.Get<Vector3d>(model, PG.GetLabels.PositionLabel, id.parentId, id.childId);
+            var position = MainModel.Instance.World.Scenes.GetPosition( id );
 
             var sphere = new Sphere3d(Radius.Value, position);
             var builder = new WireFrameBuilder();

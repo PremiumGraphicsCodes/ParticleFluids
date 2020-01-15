@@ -48,13 +48,3 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 	assert(false);
 	return std::any(0);
 }
-
-std::any GetCommand::Get(World* world, int parentId, int childId, const std::string& name)
-{
-	if (name == GetLabels::PositionLabel) {
-		auto scene = world->getObjects()->findSceneById<Crystal::Scene::IShapeScene*>(parentId);
-		return std::any( scene->getPosition(childId) );
-	}
-	return std::any(0);
-}
-

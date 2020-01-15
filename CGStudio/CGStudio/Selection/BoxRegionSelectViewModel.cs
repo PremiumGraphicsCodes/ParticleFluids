@@ -35,7 +35,7 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
-            var position = MainModel.Instance.World.GetPosition(id);
+            var position = MainModel.Instance.World.Scenes.GetPosition(id);
             pickedPositions.Add(position);
 
             if(pickedPositions.Count < 2)

@@ -34,6 +34,7 @@
 #include "SceneGetCommand.h"
 #include "CameraGetCommand.h"
 #include "CameraSetCommand.h"
+#include "PositionGetCommand.h"
 
 using namespace Crystal::Command;
 
@@ -149,6 +150,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == CameraSetCommand::getName()) {
 		return std::make_unique<CameraSetCommand>();
+	}
+	else if (name == PositionGetCommand::getName()) {
+		return std::make_unique<PositionGetCommand>();
 	}
 
 	assert(false);

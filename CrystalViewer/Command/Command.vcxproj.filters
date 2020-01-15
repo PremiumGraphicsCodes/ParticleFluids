@@ -191,6 +191,12 @@
     <ClInclude Include="CameraGetCommand.h">
       <Filter>Camera</Filter>
     </ClInclude>
+    <ClInclude Include="PositionGetCommand.h">
+      <Filter>Scene\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\PositionGetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -293,6 +299,9 @@
     </ClCompile>
     <ClCompile Include="CameraGetCommand.cpp">
       <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionGetCommand.cpp">
+      <Filter>Scene\Shape</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

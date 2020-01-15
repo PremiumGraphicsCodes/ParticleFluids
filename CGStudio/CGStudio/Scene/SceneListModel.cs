@@ -262,6 +262,15 @@ namespace PG.CGStudio.Scene
             Canvas3d.Instance.Render();
         }
 
+        public Vector3d GetPosition(ObjectId id)
+        {
+            var command = new PG.CLI.Command(PG.PositionGetLabels.CommandNameLabel);
+            command.SetArg(PG.PositionGetLabels.ParentIdLabel, id.parentId);
+            command.SetArg(PG.PositionGetLabels.ChildIdLabel, id.childId);
+            command.Execute(adapter);
+            return command.GetResult<Vector3d>(PG.PositionGetLabels.PositionLabel);
+        }
+
         public void Sync()
         {
             var ids = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel);

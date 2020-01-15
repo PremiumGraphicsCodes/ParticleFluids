@@ -75,14 +75,6 @@ T Command::Get(WorldAdapter^ objects, System::String^ name, int id)
 }
 
 generic <class T>
-T Command::Get(WorldAdapter^ objects, System::String^ name, int parentId, int childId)
-{
-	const auto& str = PG::CLI::Converter::toCpp(name);
-	auto value = Crystal::Command::GetCommand::Get(objects->instance, parentId, childId, str);
-	return (T)AnyConverter::fromCpp(value);
-}
-
-generic <class T>
 void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, T value)
 {
 	const auto& str = PG::CLI::Converter::toCpp(name);

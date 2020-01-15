@@ -13,8 +13,6 @@ public:
 	static std::any Get(Scene::World* world, const std::string& name);
 
 	static std::any Get(Scene::World* world, int id, const std::string& name);
-
-	static std::any Get(Scene::World* world, int parentId, int childId, const std::string& name);
 };
 
 	}
