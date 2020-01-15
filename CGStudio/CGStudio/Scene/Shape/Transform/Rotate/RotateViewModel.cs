@@ -3,6 +3,8 @@ using PG.CGStudio.UICtrl;
 using PG.Control.Math;
 using PG.Core;
 using PG.Core.Math;
+using PG.Core.Shape;
+using PG.Core.UI;
 using Prism.Regions;
 using Reactive.Bindings;
 using System;
@@ -53,6 +55,16 @@ namespace PG.CGStudio.Scene.Shape.Transform
             MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             OnCancel();
+
+            MainModel.Instance.World.Scenes.Clear(0);
+            var bb = MainModel.Instance.World.Scenes.GetBoundingBox(ShapeSelectViewModel.Id.Value);
+            var builder = new WireFrameBuilder();
+            builder.Add(bb);
+            var appearance = new WireAppearance();
+            appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
+            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
+            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Render();
         }
 
         private void OnCancel()
