@@ -21,7 +21,9 @@ namespace PG.CGStudio.UICtrl
         public override void OnLeftButtonDragging(Vector2d position)
         {
             var model = MainModel.Instance.World.Adapter;
-            var matrix = PG.CLI.Command.Get<Matrix4d>(model, PG.GetLabels.CameraRotationMatrixLabel);
+            var gcommand = new PG.CLI.Command(PG.CameraGetLabels.CommandNameLabel);
+            gcommand.Execute(MainModel.Instance.World.Adapter);
+            var matrix = gcommand.GetResult<Matrix4d>(PG.CameraGetLabels.RotationMatrixLabel);
 
             var diff = position - prevPosition;
             var bb = PG.CLI.Command.Get<Box3d>(model, PG.GetLabels.BoundingBoxLabel);
@@ -42,7 +44,9 @@ namespace PG.CGStudio.UICtrl
         public override void OnRightButtonDragging(Vector2d position)
         {
             var model = MainModel.Instance.World.Adapter;
-            var matrix = PG.CLI.Command.Get<Matrix4d>(model, PG.GetLabels.CameraRotationMatrixLabel);
+            var gcommand = new PG.CLI.Command(PG.CameraGetLabels.CommandNameLabel);
+            gcommand.Execute(MainModel.Instance.World.Adapter);
+            var matrix = gcommand.GetResult<Matrix4d>(PG.CameraGetLabels.RotationMatrixLabel);
 
             var diff = position - prevPosition;
             var v = new Vector4d(diff.Y, diff.X, 0.0, 0.0) * matrix.Transposed();

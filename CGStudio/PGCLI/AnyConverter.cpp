@@ -96,6 +96,10 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 		const auto& v = std::any_cast<Crystal::Math::Matrix4df>(any);
 		return Converter::fromCpp(v);
 	}
+	else if (type == typeid(Crystal::Math::Matrix4dd)) {
+		const auto& v = std::any_cast<Crystal::Math::Matrix4dd>(any);
+		return Converter::fromCpp(v);
+	}
 	else if (type == typeid(Crystal::Math::Box3d)) {
 		const auto& v = std::any_cast<Crystal::Math::Box3d>(any);
 		return Converter::fromCpp(v);

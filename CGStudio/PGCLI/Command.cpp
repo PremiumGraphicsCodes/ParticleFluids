@@ -83,14 +83,6 @@ T Command::Get(WorldAdapter^ objects, System::String^ name, int parentId, int ch
 }
 
 generic <class T>
-void Command::Set(WorldAdapter^ objects, System::String^ name, T value)
-{
-	const auto& str = PG::CLI::Converter::toCpp(name);
-	auto v = AnyConverter::toCpp(value, T::typeid);
-	Crystal::Command::SetCommand::Set(objects->instance, str, v);
-}
-
-generic <class T>
 void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, T value)
 {
 	const auto& str = PG::CLI::Converter::toCpp(name);

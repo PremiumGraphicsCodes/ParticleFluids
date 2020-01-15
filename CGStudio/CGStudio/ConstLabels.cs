@@ -1,4 +1,15 @@
 namespace PG {
+	public class CameraGetLabels
+	{
+		public const string CommandNameLabel = "CameraGet";
+		public const string NearLabel = "Near";
+		public const string FarLabel = "Far";
+		public const string EyePositionLabel = "EyePosition";
+		public const string TargetPositionLabel = "TargetPosition";
+		public const string ProjectionMatrixLabel = "ProjectionMatrix";
+		public const string RotationMatrixLabel = "RotationMatrix";
+	}
+
 	public class CameraLabels
 	{
 		public const string CameraFitCommandLabel = "CameraFit";
@@ -11,6 +22,15 @@ namespace PG {
 		public const string CameraTranslateCommandLabel = "CameraTranslate";
 		public const string CameraZoomCommandLabel = "CameraZoom";
 		public const string ZoomRatioLabel = "Ratio";
+	}
+
+	public class CameraSetLabels
+	{
+		public const string CommandLabel = "CameraSet";
+		public const string NearLabel = "Near";
+		public const string FarLabel = "Far";
+		public const string EyePositionLabel = "EyePosition";
+		public const string TargetPositionLabel = "TargetPosition";
 	}
 
 	public class ClearLabels
@@ -49,9 +69,6 @@ namespace PG {
 
 	public class GetLabels
 	{
-		public const string CameraEyePositionLabel = "CameraEyePosition";
-		public const string CameraProjectionMatrixLabel = "CameraProjectionMatrix";
-		public const string CameraRotationMatrixLabel = "CameraRotationMatrix";
 		public const string PositionLabel = "Position";
 		public const string SceneCountLabel = "SceneCount";
 		public const string SceneListIdsLabel = "SceneListIds";
@@ -199,9 +216,6 @@ namespace PG {
 
 	public class SetLabels
 	{
-		public const string CameraPositionLabel = "CameraPosition";
-		public const string CameraProjectionMatrixLabel = "CameraProjectionMatrix";
-		public const string PositionLabel = "Position";
 		public const string PointSizeLabel = "PointSize";
 		public const string IsVisibleLabel = "IsVisible";
 		public const string ColorLabel = "Color";

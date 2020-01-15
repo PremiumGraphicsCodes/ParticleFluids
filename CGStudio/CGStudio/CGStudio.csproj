@@ -138,7 +138,6 @@
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="ConstLabels.cs" />
     <Compile Include="FileIOViewModel.cs" />
-    <Compile Include="Scene\Appearance\Camera\CameraTransformViewModel.cs" />
     <Compile Include="Scene\Appearance\Light\LightAddView.xaml.cs">
       <DependentUpon>LightAddView.xaml</DependentUpon>
     </Compile>
@@ -510,6 +509,8 @@
       <Name>HwndExtensions</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scene\Appearance\Camera\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
