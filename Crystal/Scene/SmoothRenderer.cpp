@@ -198,7 +198,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	vec3 v = normalize(vPosition - eyePosition);" << std::endl
 		<< "	vec3 r = reflect( -s, normal );" << std::endl
 		<< "	vec3 ambient = light.La * material.Ka;" << std::endl
-//		<< "	ambient = ambient * texture2D(texture, vTexCoord).rgb;" << std::endl
+		<< "	ambient = ambient * getTextureColor();" << std::endl
 		<< "	float innerProduct = max( dot(s,normal), 0.0);" << std::endl
 		<< "	vec3 diffuse = light.Ld * material.Kd * innerProduct;" << std::endl
 		<< "	vec3 specular = vec3(0.0);" << std::endl
@@ -208,7 +208,8 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	return ambient + diffuse + specular;" << std::endl
 		<< "}"
 		<< "void main(void) {" << std::endl
-		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal) * getTextureColor();" << std::endl
+		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal);" << std::endl
+//		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal) * getTextureColor();" << std::endl
 		<< "	fragColor.a = 1.0;" << std::endl
 		<< "}" << std::endl;
 	return stream.str();

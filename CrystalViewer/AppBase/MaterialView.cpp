@@ -30,7 +30,7 @@ void MaterialView::setValue(const Material& m)
 	specular.setValue(m.specular);
 	shininess.setValue(m.shininess);
 
-	//ambientTexture.setValue(m.a)
+	ambientTexture.setValue(m.ambientTextureName);
 }
 
 Material MaterialView::getValue() const
@@ -40,5 +40,6 @@ Material MaterialView::getValue() const
 	m.diffuse = (diffuse.getValue());
 	m.specular = (specular.getValue());
 	m.shininess = (shininess.getValue());
+	m.ambientTextureName = ambientTexture.getValue();
 	return m;
 }

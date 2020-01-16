@@ -32,6 +32,7 @@ public:
 private:
 	std::string materialName;
 	int materialId;
+	int ambientTextureId;
 	std::vector<Shape::Face> faces;
 
 };

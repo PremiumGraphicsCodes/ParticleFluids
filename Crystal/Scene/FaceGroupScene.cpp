@@ -5,6 +5,7 @@
 #include "SceneViewModel.h"
 
 #include "PolygonMeshScene.h"
+#include "TextureScene.h"
 
 using namespace Crystal::Scene;
 
@@ -20,6 +21,11 @@ void FaceGroupScene::setMaterialName(const std::string& name)
 	auto scene = getRoot()->findSceneByName<MaterialScene*>(this->materialName);
 	if (scene != nullptr) {
 		this->materialId = scene->getMaterialId();
+		const auto& ambientTexName = scene->getMaterial().ambientTextureName;
+		if (!ambientTexName.empty()) {
+			auto ambientTextureScene = getRoot()->findSceneByName<TextureScene*>(ambientTexName);
+			this->ambientTextureId = ambientTextureScene->getTextureObject().getId();
+		}
 	}
 }
 

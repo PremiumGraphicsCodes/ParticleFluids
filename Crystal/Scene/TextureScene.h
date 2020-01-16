@@ -21,6 +21,8 @@ public:
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
+	Shader::TextureObject getTextureObject() const { return texture; }
+
 private:
 	Shader::TextureObject texture;
 };
