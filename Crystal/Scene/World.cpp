@@ -3,6 +3,7 @@
 #include "PointRenderer.h"
 #include "LightScene.h"
 #include "MaterialScene.h"
+#include "TextureScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -54,6 +55,13 @@ void World::init()
 		material.specular = ColorRGBAf(0, 0, 0, 1);
 		material.shininess = 1.0;
 		scenes[1]->addScene(sceneFactory.createMaterialScene(material, "Black"));
+	}
+
+	{
+//		TextureScene;
+		Image image(1,1);
+		image.setColor(0, 0, ColorRGBAuc(1, 1, 1, 1));
+		scenes[1]->addScene(sceneFactory.createTextureScene(image, "WhiteMat"));
 	}
 
 
