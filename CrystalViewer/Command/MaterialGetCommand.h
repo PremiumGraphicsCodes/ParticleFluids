@@ -23,7 +23,7 @@ public:
 		Result<Graphics::ColorRGBAf> diffuse;
 		Result<Graphics::ColorRGBAf> specular;
 		Result<float> shininess;
-		Result<int> textureId;
+		Result<std::string> textureName;
 		Result<std::string> name;
 	};
 

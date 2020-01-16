@@ -9,7 +9,7 @@ using namespace Crystal::UI;
 
 MaterialEditView::MaterialEditView(const std::string& name, World* model, Canvas* canvas) :
 	IWindow(name),
-	repository(model),
+	world(model),
 	canvas(canvas),
 	id("Id", 0),
 	material("Material"),
@@ -18,7 +18,7 @@ MaterialEditView::MaterialEditView(const std::string& name, World* model, Canvas
 {
 	auto func = [=]()
 	{
-		auto mat = model->getObjects()->findSceneById<MaterialScene*>(id.getValue());
+		auto mat = world->getObjects()->findSceneById<MaterialScene*>(id.getValue());
 		mat->setMaterial(material.getValue());
 		mat->setName(this->name.getValue());
 	};

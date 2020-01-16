@@ -24,14 +24,14 @@ MaterialGetCommand::Results::Results() :
 	diffuse(MaterialGetLabels::DiffuseLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
 	specular(MaterialGetLabels::SpecularLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
 	shininess(MaterialGetLabels::ShininessLabel, 1.0f),
-	textureId(MaterialGetLabels::TextureIdLabel, -1),
+	textureName(MaterialGetLabels::TextureNameLabel, std::string("")),
 	name(MaterialGetLabels::NameLabel, std::string(""))
 {
 	add(&ambient);
 	add(&diffuse);
 	add(&specular);
 	add(&shininess);
-	add(&textureId);
+	add(&textureName);
 	add(&name);
 }
 
@@ -46,6 +46,6 @@ void MaterialGetCommand::execute(World* world)
 	results.diffuse.setValue(Graphics::ColorRGBAf(m.diffuse));
 	results.specular.setValue(Graphics::ColorRGBAf(m.specular));
 	results.shininess.setValue(m.shininess);
-	results.textureId.setValue(m.textureId);
+	results.textureName.setValue(m.ambientTextureName);
 	results.name.setValue(scene->getName());
 }

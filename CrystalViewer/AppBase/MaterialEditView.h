@@ -22,7 +22,7 @@ private:
 	IntView id;
 	MaterialView material;
 	StringView name;
-	Scene::World* repository;
+	Scene::World* world;
 	Canvas* canvas;
 	Button editButton;
 };

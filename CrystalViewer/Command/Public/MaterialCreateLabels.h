@@ -10,7 +10,7 @@ namespace MaterialCreateLabels
 	PublicLabel DiffuseLabel = "Diffuse";
 	PublicLabel SpecularLabel = "Specular";
 	PublicLabel ShininessLabel = "Shininess";
-	PublicLabel TextureIdLabel = "TextureId";
+	PublicLabel TextureNameLabel = "TextureName";
 	PublicLabel NameLabel = "Name";
 
 	PublicLabel NewIdLabel = "NewId";

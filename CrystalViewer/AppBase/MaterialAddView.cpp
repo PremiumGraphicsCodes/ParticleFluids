@@ -36,7 +36,7 @@ void MaterialAddView::onOk()
 	command.setArg(MaterialCreateLabels::DiffuseLabel, Graphics::ColorRGBAf(m.diffuse));
 	command.setArg(MaterialCreateLabels::SpecularLabel, Graphics::ColorRGBAf(m.specular));
 	command.setArg(MaterialCreateLabels::ShininessLabel, m.shininess);
-	command.setArg(MaterialCreateLabels::TextureIdLabel, m.textureId);
+	command.setArg(MaterialCreateLabels::TextureNameLabel, m.ambientTextureName);
 	command.setArg(MaterialCreateLabels::NameLabel, name.getValue());
 	command.execute(getWorld());
 	const auto newId = command.getResult(MaterialCreateLabels::NewIdLabel);

@@ -5,20 +5,22 @@ using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 MaterialView::MaterialView(const std::string& name) :
-	IWindow(name),
+	IView(name),
 	ambient("Ambient", glm::vec4(0, 0, 0, 0)),
 	diffuse("Diffuse", glm::vec4(0, 0, 0, 0)),
 	specular("Specular", glm::vec4(0, 0, 0, 0)),
-	shininess("Shininess", 1.0f)
+	shininess("Shininess", 1.0f),
+	ambientTexture("AmbientTex", std::string()),
+	diffuseTexture("DiffuseTex", std::string()),
+	specularTexture("SpecularTex", std::string())
 {
-}
-
-void MaterialView::onShow()
-{
-	ambient.show();
-	diffuse.show();
-	specular.show();
-	shininess.show();
+	add(&ambient);
+	add(&diffuse);
+	add(&specular);
+	add(&shininess);
+	add(&ambientTexture);
+	add(&diffuseTexture);
+	add(&specularTexture);
 }
 
 void MaterialView::setValue(const Material& m)
@@ -27,6 +29,8 @@ void MaterialView::setValue(const Material& m)
 	diffuse.setValue(m.diffuse);
 	specular.setValue(m.specular);
 	shininess.setValue(m.shininess);
+
+	//ambientTexture.setValue(m.a)
 }
 
 Material MaterialView::getValue() const

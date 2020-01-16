@@ -6,6 +6,7 @@
 #include "../Graphics/PointLight.h"
 #include "../Graphics/Material.h"
 #include "../Shader/TextureObject.h"
+#include <list>
 
 namespace Crystal {
 	namespace Scene {

@@ -19,7 +19,7 @@ MaterialSetCommand::Args::Args() :
 	diffuse(MaterialSetLabels::DiffuseLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
 	specular(MaterialSetLabels::SpecularLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
 	shininess(MaterialSetLabels::ShininessLabel, 1.0f),
-	textureId(MaterialSetLabels::TextureIdLabel, -1),
+	textureName(MaterialSetLabels::TextureNameLabel, std::string("")),
 	name(MaterialSetLabels::NameLabel, std::string(""))
 {
 	add(&id);
@@ -27,7 +27,7 @@ MaterialSetCommand::Args::Args() :
 	add(&diffuse);
 	add(&specular);
 	add(&shininess);
-	add(&textureId);
+	add(&textureName);
 	add(&name);
 }
 
@@ -42,7 +42,7 @@ void MaterialSetCommand::execute(World* world)
 	m.diffuse = args.diffuse.getValue();
 	m.specular = args.specular.getValue();
 	m.shininess = args.shininess.getValue();
-	m.textureId = args.textureId.getValue();
+	m.ambientTextureName = args.textureName.getValue();
 	scene->setMaterial(m);
 	scene->setName(args.name.getValue());
 }

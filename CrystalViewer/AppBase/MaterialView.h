@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 
 #include "Vector3dView.h"
 
@@ -13,12 +13,12 @@
 namespace Crystal {
 	namespace UI {
 
-class MaterialView : public IWindow
+class MaterialView : public IView
 {
 public:
 	explicit MaterialView(const std::string& name);
 
-	void onShow() override;
+	//void onShow() override;
 
 	void setValue(const Graphics::Material& m);
 
@@ -29,6 +29,9 @@ private:
 	Float4View diffuse;
 	Float4View specular;
 	FloatView shininess;
+	StringView ambientTexture;
+	StringView diffuseTexture;
+	StringView specularTexture;
 };
 	}
 }

@@ -18,14 +18,14 @@ MaterialCreateCommand::Args::Args() :
 	diffuse(MaterialCreateLabels::DiffuseLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
 	specular(MaterialCreateLabels::SpecularLabel, Graphics::ColorRGBAf(0, 0, 0, 0)),
 	shininess(MaterialCreateLabels::ShininessLabel, 1.0f),
-	textureId(MaterialCreateLabels::TextureIdLabel, -1),
+	textureName(MaterialCreateLabels::TextureNameLabel, ""),
 	name(MaterialCreateLabels::NameLabel, std::string(""))
 {
 	add(&ambient);
 	add(&diffuse);
 	add(&specular);
 	add(&shininess);
-	add(&textureId);
+	add(&textureName);
 	add(&name);
 }
 
@@ -42,7 +42,7 @@ void MaterialCreateCommand::execute(World* world)
 	m.diffuse = args.diffuse.getValue();
 	m.specular = args.specular.getValue();
 	m.shininess = args.shininess.getValue();
-	m.textureId = args.textureId.getValue();
+	m.ambientTextureName = args.textureName.getValue();
 	auto scene = world->getSceneFactory()->createMaterialScene(m, args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());

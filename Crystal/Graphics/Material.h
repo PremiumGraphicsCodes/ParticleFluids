@@ -1,21 +1,20 @@
 #pragma once
 
-#include <list>
 #include <string>
-#include <memory>
 
 #include "ColorRGBA.h"
-//#include "Texture.h"
 
 namespace Crystal {
 	namespace Graphics {
-
 
 struct Material
 {
 public:
 	Material() :
-		shininess(1.0f)
+		shininess(1.0f),
+		ambientTextureName(""),
+		diffuseTextureName(""),
+		specularTextureName("")
 	{}
 
 	glm::vec4 ambient;
@@ -23,7 +22,9 @@ public:
 	glm::vec4 specular;
 	float shininess;
 
-	int textureId;
+	std::string ambientTextureName;
+	std::string diffuseTextureName;
+	std::string specularTextureName;
 };
 
 	}
