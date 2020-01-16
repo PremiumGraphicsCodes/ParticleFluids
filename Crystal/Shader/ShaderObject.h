@@ -85,6 +85,8 @@ public:
 
 	void sendVertexAttribute1df(const std::string& name, const std::vector<float>& data);
 
+	void sendVertexAttribute2df(const std::string& name, const std::vector<float>& data);
+
 	void sendVertexAttribute3df(const std::string& name, const std::vector<float>& data);
 
 	void sendVertexAttribute4df(const std::string& name, const std::vector<float>& data);
