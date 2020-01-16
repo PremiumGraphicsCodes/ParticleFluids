@@ -40,7 +40,7 @@ SmoothRenderer::SmoothRenderer()
 		addUniform(prefix + ".Ks");
 		addUniform(prefix + ".shininess");
 	}
-	//addUniform("texture");
+	addUniform("texture");
 	//shader.findUniformLocation("texture1");
 
 	addAttribute("position");
@@ -166,7 +166,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		//<< "in vec2 vTexCoord;" << std::endl
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
-		//<< "uniform sampler2D texture;" << std::endl
+		<< "uniform sampler2D texture;" << std::endl
 		<< "struct LightInfo {" << std::endl
 		<< "	vec3 position;" << std::endl
 		<< "	vec3 La;" << std::endl
@@ -188,7 +188,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	vec3 v = normalize(vPosition - eyePosition);" << std::endl
 		<< "	vec3 r = reflect( -s, normal );" << std::endl
 		<< "	vec3 ambient = light.La * material.Ka;" << std::endl
-		//<< "	ambient = ambient * texture(texture1, vTexCoord).rgb;" << std::endl
+		<< "	ambient = ambient * texture2D(texture, vec2(0,0)).rgb;" << std::endl
 		<< "	float innerProduct = max( dot(s,normal), 0.0);" << std::endl
 		<< "	vec3 diffuse = light.Ld * material.Kd * innerProduct;" << std::endl
 		<< "	vec3 specular = vec3(0.0);" << std::endl
