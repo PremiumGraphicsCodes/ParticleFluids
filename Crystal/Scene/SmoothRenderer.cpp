@@ -189,7 +189,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "};"
 		<< "uniform MaterialInfo materials[256];"
 		<< "vec3 getTextureColor(){ "
-		<< "	return texture2D(textures[1], vTexCoord).rgb;" << std::endl
+		<< "	return texture2D(textures[0], vTexCoord).rgb;" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
 		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl
@@ -208,8 +208,8 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	return ambient + diffuse + specular;" << std::endl
 		<< "}"
 		<< "void main(void) {" << std::endl
-		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal);" << std::endl
-//		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal) * getTextureColor();" << std::endl
+//		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal);" << std::endl
+		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal) * getTextureColor();" << std::endl
 		<< "	fragColor.a = 1.0;" << std::endl
 		<< "}" << std::endl;
 	return stream.str();
