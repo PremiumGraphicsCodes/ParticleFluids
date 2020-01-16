@@ -40,7 +40,10 @@ SmoothRenderer::SmoothRenderer()
 		addUniform(prefix + ".Ks");
 		addUniform(prefix + ".shininess");
 	}
-	addUniform("texture");
+	for (int i = 0; i < 8; ++i) {
+		const auto prefix = "textures[" + std::to_string(i) + "]";
+		addUniform(prefix);
+	}
 	//shader.findUniformLocation("texture1");
 
 	addAttribute("position");
@@ -112,14 +115,18 @@ void SmoothRenderer::render(const Camera& camera)
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 	}
 
-	textures[0].bind();
-	auto loc = glGetUniformLocation(shader->getId(), "texture");
-	glUniform1i(loc, textures[0].getId());
+	for (int i = 0; i < textures.size(); ++i) {
+		const auto prefix = "textures[" + std::to_string(i) + "]";
+		textures[i].bind();
+		auto loc = glGetUniformLocation(shader->getId(), prefix.c_str());
+		glUniform1i(loc, textures[i].getId());
+	}
+
 
 	const int count = positions.size() / 3;
 	shader->drawTriangles(count);
 
-	textures[0].unbind();
+	//textures[0].unbind();
 
 	shader->disableVertexAttribute("texCoord");
 	shader->disableVertexAttribute("materialId");
@@ -166,7 +173,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "in vec2 vTexCoord;" << std::endl
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
-		<< "uniform sampler2D texture;" << std::endl
+		<< "uniform sampler2D textures[8];" << std::endl
 		<< "struct LightInfo {" << std::endl
 		<< "	vec3 position;" << std::endl
 		<< "	vec3 La;" << std::endl
@@ -182,7 +189,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "};"
 		<< "uniform MaterialInfo materials[256];"
 		<< "vec3 getTextureColor(){ "
-		<< "	return texture2D(texture, vTexCoord).rgb;" << std::endl
+		<< "	return texture2D(textures[1], vTexCoord).rgb;" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
 		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl
