@@ -43,6 +43,8 @@
     <ClInclude Include="glew.h">
       <Filter>ThirdParty</Filter>
     </ClInclude>
+    <ClInclude Include="GLObjectFactory.h" />
+    <ClInclude Include="TextureObjectFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
@@ -80,6 +82,7 @@
     <ClCompile Include="IShaderCommand.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
+    <ClCompile Include="TextureObjectFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Texture">

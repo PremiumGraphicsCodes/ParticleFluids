@@ -15,6 +15,6 @@ void NewCommand::execute(World* model)
 {
 	model->clear();
 	model->init();
-	model->getRenderer()->build();
+	model->getRenderer()->build(*model->getGLFactory());
 	model->updateViewModel();
 }

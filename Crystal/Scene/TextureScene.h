@@ -9,11 +9,9 @@ namespace Crystal {
 class TextureScene : public IScene
 {
 public:
-	TextureScene(const int id, const Shader::TextureObject& texture, const std::string& name, const Graphics::Image& image);
+	TextureScene(const int id, const Shader::TextureObject& texture, const std::string& name);
 
 	~TextureScene() {};
-
-	Graphics::Image getImage() { return image; }
 
 	void onClear() override;
 
@@ -24,7 +22,6 @@ public:
 	void toViewModel(SceneViewModel& viewModel) const override;
 
 private:
-	Graphics::Image image;
 	Shader::TextureObject texture;
 };
 

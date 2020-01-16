@@ -140,6 +140,7 @@
     <ClInclude Include="DepthTextureObject.h" />
     <ClInclude Include="FrameBufferObject.h" />
     <ClInclude Include="glew.h" />
+    <ClInclude Include="GLObjectFactory.h" />
     <ClInclude Include="IShader.h" />
     <ClInclude Include="IShaderCommand.h" />
     <ClInclude Include="ITextureObject.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="ShaderUnit.h" />
     <ClInclude Include="TextureObject.h" />
+    <ClInclude Include="TextureObjectFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CubeMapTextureObject.cpp" />
@@ -165,6 +167,7 @@
     <ClCompile Include="ShaderUniform.cpp" />
     <ClCompile Include="ShaderUnit.cpp" />
     <ClCompile Include="TextureObject.cpp" />
+    <ClCompile Include="TextureObjectFactory.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

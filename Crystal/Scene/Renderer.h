@@ -11,6 +11,9 @@
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace UI {
 
 class Renderer : private UnCopyable
@@ -20,7 +23,7 @@ public:
 
 	~Renderer() {}
 
-	bool build();
+	bool build(Shader::GLObjectFactory& factory);
 
 	void render(const int width, const int height, const Scene::ViewModel& vm);
 

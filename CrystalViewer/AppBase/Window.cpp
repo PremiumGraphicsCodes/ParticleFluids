@@ -146,7 +146,7 @@ bool Window::init()
 	//canvas->addUICommand(new CameraUICtrl());
 
 	world->init();
-	world->getRenderer()->build();
+	world->getRenderer()->build(*world->getGLFactory());
 
 	canvas->setUICtrl(new CameraUICtrl(world));
 

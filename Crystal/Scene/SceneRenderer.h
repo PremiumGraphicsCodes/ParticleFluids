@@ -15,6 +15,9 @@ namespace Crystal {
 	namespace Scene {
 		class SceneViewModel;
 	}
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace UI {
 
 
@@ -27,7 +30,7 @@ public:
 
 	~SceneRenderer() {}
 
-	bool build();
+	bool build(Shader::GLObjectFactory& factory);
 
 	void render(Graphics::Camera* camera, const Scene::SceneViewModel& vm);
 

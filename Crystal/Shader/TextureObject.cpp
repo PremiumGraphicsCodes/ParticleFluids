@@ -3,22 +3,6 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-/*
-TextureObject TextureObjectFactory::createTextureObject(const Image& image)
-{
-	TextureObject object;
-	object.create(image, nextId++);
-	return object;
-}
-
-TextureObject TextureObjectFactory::createTextureObject(const Imagef& image)
-{
-	TextureObject object;
-	object.create(image, nextId++);
-	return object;
-}
-*/
-
 void TextureObject::create(const Image& image, const int id)
 {
 	this->id = id;

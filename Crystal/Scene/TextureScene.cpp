@@ -7,9 +7,8 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-TextureScene::TextureScene(const int id, const TextureObject& texture, const std::string& name, const Image& image) :
+TextureScene::TextureScene(const int id, const TextureObject& texture, const std::string& name) :
 	IScene(id, name),
-	image(image),
 	texture(texture)
 {
 }

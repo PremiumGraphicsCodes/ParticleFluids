@@ -8,6 +8,8 @@
 
 #include "Renderer.h"
 
+#include "../Shader/GLObjectFactory.h"
+
 #include <filesystem>
 
 namespace Crystal {
@@ -34,6 +36,8 @@ public:
 
 	SceneFactory* getSceneFactory() { return &sceneFactory; }
 
+	Shader::GLObjectFactory* getGLFactory() { return &glFactory; }
+
 	//ViewModel toViewModel();
 
 	void updateViewModel();
@@ -49,6 +53,7 @@ private:
 	ViewModel viewModel;
 
 	SceneFactory sceneFactory;
+	Shader::GLObjectFactory glFactory;
 
 	std::unique_ptr<UI::Renderer> renderer;
 

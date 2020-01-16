@@ -9,24 +9,6 @@
 namespace Crystal {
 	namespace Shader {
 
-		/*
-class TextureObject;
-
-class TextureObjectFactory : private UnCopyable
-{
-public:
-	TextureObjectFactory() :
-		nextId(0)
-	{}
-
-	TextureObject createTextureObject(const Graphics::Image& image);
-
-	TextureObject createTextureObject(const Graphics::Imagef& image);
-
-private:
-	int nextId;
-};
-*/
 
 class TextureObject : public ITextureObject
 {

@@ -1,6 +1,8 @@
 #include "SceneRenderer.h"
 #include "../../Crystal/Scene/SceneViewModel.h"
 
+#include "../Shader/GLObjectFactory.h"
+
 #include "../ThirdParty/stb/stb_image.h"
 
 using namespace Crystal::Graphics;
@@ -8,7 +10,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-bool SceneRenderer::build()
+bool SceneRenderer::build(GLObjectFactory& factory)
 {
 	if (!pointRenderer.build()) {
 		return false;
@@ -20,7 +22,8 @@ bool SceneRenderer::build()
 		return false;
 	}
 
-	texture.create(Image(512, 512), 1);
+	texture = factory.getTextureFactory()->createTextureObject(Image(512, 512));
+	//texture.create(, 1);
 	frameBufferObject.build(512, 512);
 	return true;
 }

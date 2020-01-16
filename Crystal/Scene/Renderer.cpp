@@ -5,6 +5,8 @@
 
 #include "../Graphics/Camera.h"
 
+#include "../Shader/GLObjectFactory.h"
+
 #include "../ThirdParty/stb/stb_image.h"
 
 using namespace Crystal::Math;
@@ -24,9 +26,9 @@ Renderer::Renderer() :
 
 }
 
-bool Renderer::build()
+bool Renderer::build(GLObjectFactory& factory)
 {
-	if (!objectRenderer.build()) {
+	if (!objectRenderer.build(factory)) {
 		return false;
 	}
 	if (!parentIdRenderer.build()) {

@@ -14,6 +14,7 @@ namespace Crystal {
 	}
 	namespace Shader {
 		class ShaderObject;
+		class TextureObject;
 	}
 	namespace Shape {
 		class WireFrame;
@@ -59,7 +60,7 @@ public:
 
 	MaterialScene* createMaterialScene(const Graphics::Material& material, const std::string& name);
 
-	TextureScene* createTextureScene(const Graphics::Image& image, const int textureId, const std::string& name);
+	TextureScene* createTextureScene(const Shader::TextureObject& texture, const std::string& name);
 
 	//ShaderScene* createShaderScene(const std::string& name);
 
