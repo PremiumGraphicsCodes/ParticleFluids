@@ -3,10 +3,21 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-TextureObject::TextureObject(const Image& image, const int id)
+/*
+TextureObject TextureObjectFactory::createTextureObject(const Image& image)
 {
-	create(image, id);
+	TextureObject object;
+	object.create(image, nextId++);
+	return object;
 }
+
+TextureObject TextureObjectFactory::createTextureObject(const Imagef& image)
+{
+	TextureObject object;
+	object.create(image, nextId++);
+	return object;
+}
+*/
 
 void TextureObject::create(const Image& image, const int id)
 {
@@ -34,12 +45,6 @@ void TextureObject::unbind() const
 {
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glActiveTexture(GL_TEXTURE0);
-}
-
-
-TextureObject::TextureObject(const Imagef& image, const int id)
-{
-	create(image, id);
 }
 
 void TextureObject::create(const Imagef& image, const int id)

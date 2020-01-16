@@ -21,7 +21,7 @@ bool SceneIdRenderer::build()
 
 	frameBufferObject.build(512, 512);
 
-	texture.create(Imagef(512, 512));
+	texture.create(Imagef(512, 512), 0);
 
 	return true;
 }

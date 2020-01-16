@@ -4,25 +4,42 @@
 #include "../Graphics/Image.h"
 #include "../Graphics/Imagef.h"
 #include "ITextureObject.h"
+#include "../Util/UnCopyable.h"
 
 namespace Crystal {
 	namespace Shader {
 
+		/*
+class TextureObject;
+
+class TextureObjectFactory : private UnCopyable
+{
+public:
+	TextureObjectFactory() :
+		nextId(0)
+	{}
+
+	TextureObject createTextureObject(const Graphics::Image& image);
+
+	TextureObject createTextureObject(const Graphics::Imagef& image);
+
+private:
+	int nextId;
+};
+*/
 
 class TextureObject : public ITextureObject
 {
 public:
-	TextureObject(const int id = 0) :
+	/*
+	TextureObject(const int id) :
 		ITextureObject(id)
 	{}
+	*/
 
-	TextureObject(const Graphics::Image& image, const int id = 0);
+	void create(const Graphics::Image& image, const int id);
 
-	TextureObject(const Graphics::Imagef& image, const int id = 0);
-
-	void create(const Graphics::Image& image, const int id = 0);
-
-	void create(const Graphics::Imagef& image, const int id = 0);
+	void create(const Graphics::Imagef& image, const int id);
 
 	void clear();
 

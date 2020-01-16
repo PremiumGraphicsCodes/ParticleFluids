@@ -9,7 +9,7 @@ namespace Crystal {
 class TextureScene : public IScene
 {
 public:
-	TextureScene(const int id, const int textureId, const std::string& name, const Graphics::Image& image);
+	TextureScene(const int id, const Shader::TextureObject& texture, const std::string& name, const Graphics::Image& image);
 
 	~TextureScene() {};
 

@@ -20,7 +20,7 @@ bool SceneRenderer::build()
 		return false;
 	}
 
-	texture.create(Image(512, 512));
+	texture.create(Image(512, 512), 1);
 	frameBufferObject.build(512, 512);
 	return true;
 }

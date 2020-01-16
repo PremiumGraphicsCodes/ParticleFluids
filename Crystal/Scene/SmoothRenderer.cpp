@@ -112,14 +112,14 @@ void SmoothRenderer::render(const Camera& camera)
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 	}
 
-	textures[1].bind();
+	textures[0].bind();
 	auto loc = glGetUniformLocation(shader->getId(), "texture");
-	glUniform1i(loc, textures[1].getId());
+	glUniform1i(loc, textures[0].getId());
 
 	const int count = positions.size() / 3;
 	shader->drawTriangles(count);
 
-	textures[1].unbind();
+	textures[0].unbind();
 
 	shader->disableVertexAttribute("texCoord");
 	shader->disableVertexAttribute("materialId");
