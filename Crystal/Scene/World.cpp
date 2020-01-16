@@ -58,10 +58,15 @@ void World::init()
 	}
 
 	{
-//		TextureScene;
 		Image image(1,1);
-		image.setColor(0, 0, ColorRGBAuc(1, 1, 1, 1));
+		image.setColor(0, 0, ColorRGBAuc(255, 255, 255, 255));
 		scenes[1]->addScene(sceneFactory.createTextureScene(image, "WhiteMat"));
+	}
+
+	{
+		Image image(1, 1);
+		image.setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
+		scenes[1]->addScene(sceneFactory.createTextureScene(image, "BlackMat"));
 	}
 
 
