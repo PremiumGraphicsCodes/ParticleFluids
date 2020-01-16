@@ -52,9 +52,9 @@ public:
 
 	void render(const Graphics::Camera& camera) override;
 
-	void setBuffer(const SmoothTriangleBuffer& buffer, Shader::TextureObject texture) {
+	void setBuffer(const SmoothTriangleBuffer& buffer, const std::vector<Shader::TextureObject>& textures) {
 		this->buffer = buffer;
-		this->texture = texture;
+		this->textures = textures;
 	}
 
 	void setLights(const std::vector<Graphics::PointLight>& lights) { this->lights = lights; }
@@ -69,7 +69,7 @@ private:
 	SmoothTriangleBuffer buffer;
 	std::vector<Graphics::PointLight> lights;
 	std::vector<Graphics::Material> materials;
-	Shader::TextureObject texture;
+	std::vector<Shader::TextureObject> textures;
 };
 
 	}

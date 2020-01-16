@@ -85,7 +85,6 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->enableVertexAttribute("normal");
 	shader->enableVertexAttribute("materialId");
 
-	texture.bind();
 
 	for (int i = 0; i < lights.size(); ++i) {
 		const auto light = lights[i];
@@ -112,10 +111,16 @@ void SmoothRenderer::render(const Camera& camera)
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 	}
 
+	for (const auto& t : textures) {
+		t.bind();
+	}
+
 	const int count = positions.size() / 3;
 	shader->drawTriangles(count);
 
-	texture.unbind();
+	for (const auto& t : textures) {
+		t.unbind();
+	}
 
 	shader->disableVertexAttribute("materialId");
 	shader->disableVertexAttribute("position");

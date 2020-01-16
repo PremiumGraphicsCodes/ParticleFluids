@@ -55,7 +55,7 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 		smoothRenderer.setMaterials(materials);
 		smoothRenderer.setLights(lights);
 		for (const auto& b : smoothBuffers) {
-			smoothRenderer.setBuffer(b, vm.getTextures()[0]);
+			smoothRenderer.setBuffer(b, vm.getTextures());
 			smoothRenderer.render(*camera);
 		}
 	}
