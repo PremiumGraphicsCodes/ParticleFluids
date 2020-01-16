@@ -59,7 +59,7 @@ public:
 
 	MaterialScene* createMaterialScene(const Graphics::Material& material, const std::string& name);
 
-	TextureScene* createTextureScene(const Graphics::Image& image, const std::string& name);
+	TextureScene* createTextureScene(const Graphics::Image& image, const int textureId, const std::string& name);
 
 	//ShaderScene* createShaderScene(const std::string& name);
 
@@ -73,6 +73,7 @@ public:
 
 private:
 	SceneIdProvider materialIdProvider;
+	//SceneIdProvider textureIdProvier;
 	SceneIdProvider idProvider;
 };
 

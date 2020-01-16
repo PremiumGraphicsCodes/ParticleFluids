@@ -87,9 +87,9 @@ MaterialScene* SceneFactory::createMaterialScene(const Material& material, const
 	return new MaterialScene(getNextId(), name, material, materialIdProvider.getNextId());
 }
 
-TextureScene* SceneFactory::createTextureScene(const Image& image, const std::string& name)
+TextureScene* SceneFactory::createTextureScene(const Image& image, const int textureId, const std::string& name)
 {
-	return new TextureScene(getNextId(), name, image);
+	return new TextureScene(getNextId(), textureId, name, image);
 }
 
 /*

@@ -9,7 +9,7 @@ namespace Crystal {
 class TextureScene : public IScene
 {
 public:
-	TextureScene(const int id, const std::string& name, const Graphics::Image& image);
+	TextureScene(const int id, const int textureId, const std::string& name, const Graphics::Image& image);
 
 	~TextureScene() {};
 
@@ -22,8 +22,6 @@ public:
 	SceneType getType() const override { return SceneType::TextureScene; }
 
 	void toViewModel(SceneViewModel& viewModel) const override;
-
-	bool build();
 
 private:
 	Graphics::Image image;
