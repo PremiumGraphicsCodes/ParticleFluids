@@ -10,6 +10,8 @@
 
 #include "../Math/Matrix4d.h"
 
+#include "../Shader/TextureObject.h"
+
 namespace Crystal {
 	namespace Scene {
 
@@ -50,8 +52,9 @@ public:
 
 	void render(const Graphics::Camera& camera) override;
 
-	void setBuffer(const SmoothTriangleBuffer& buffer) {
+	void setBuffer(const SmoothTriangleBuffer& buffer, Shader::TextureObject texture) {
 		this->buffer = buffer;
+		this->texture = texture;
 	}
 
 	void setLights(const std::vector<Graphics::PointLight>& lights) { this->lights = lights; }
@@ -66,6 +69,7 @@ private:
 	SmoothTriangleBuffer buffer;
 	std::vector<Graphics::PointLight> lights;
 	std::vector<Graphics::Material> materials;
+	Shader::TextureObject texture;
 };
 
 	}

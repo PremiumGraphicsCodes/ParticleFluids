@@ -85,7 +85,7 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->enableVertexAttribute("normal");
 	shader->enableVertexAttribute("materialId");
 
-	//texture.bind();
+	texture.bind();
 
 	for (int i = 0; i < lights.size(); ++i) {
 		const auto light = lights[i];
@@ -115,8 +115,7 @@ void SmoothRenderer::render(const Camera& camera)
 	const int count = positions.size() / 3;
 	shader->drawTriangles(count);
 
-
-	//texture.unbind();
+	texture.unbind();
 
 	shader->disableVertexAttribute("materialId");
 	shader->disableVertexAttribute("position");

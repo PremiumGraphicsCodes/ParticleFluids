@@ -24,6 +24,7 @@ public:
 
 	std::vector<Graphics::Material> getMaterials() const { return materials; }
 
+	std::vector<Shader::TextureObject> getTextures() const { return textures; }
 
 public:
 	std::list<PointBuffer> pointBuffers;
