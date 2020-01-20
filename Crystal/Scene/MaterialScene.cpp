@@ -15,11 +15,21 @@ void MaterialScene::setMaterial(const Material& material)
 		auto scene = getRoot()->findSceneByName<TextureScene*>(material.ambientTextureName);
 		this->ambientTexture = scene;
 	}
+
+	if (!material.diffuseTextureName.empty()) {
+		auto scene = getRoot()->findSceneByName<TextureScene*>(material.diffuseTextureName);
+		this->diffuseTexture = scene;
+	}
 }
 
 TextureScene* MaterialScene::getAmbientTexture() const
 {
 	return ambientTexture;
+}
+
+TextureScene* MaterialScene::getDiffuseTexture() const
+{
+	return diffuseTexture;
 }
 
 void MaterialScene::toViewModel(SceneViewModel& viewModel) const

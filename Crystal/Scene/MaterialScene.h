@@ -23,6 +23,8 @@ public:
 
 	TextureScene* getAmbientTexture() const;
 
+	TextureScene* getDiffuseTexture() const;
+
 	void onClear() override {};
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
@@ -34,6 +36,7 @@ public:
 private:
 	Graphics::Material material;
 	TextureScene* ambientTexture;
+	TextureScene* diffuseTexture;
 	int materialId;
 };
 

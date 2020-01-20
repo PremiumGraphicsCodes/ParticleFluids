@@ -15,7 +15,9 @@ public:
 		ambient(0.0f, 0.0f, 0.0f, 0.0f),
 		diffuse(0.0f, 0.0f, 0.0f, 0.0f),
 		specular(0.0f, 0.0f, 0.0f, 0.0f),
-		ambientTextureName("")
+		ambientTextureName(""),
+		diffuseTextureName(""),
+		specularTextureName("")
 	{}
 
 	glm::vec4 ambient;
@@ -25,6 +27,7 @@ public:
 
 	std::string ambientTextureName;
 	std::string diffuseTextureName;
+	std::string specularTextureName;
 };
 
 	}
