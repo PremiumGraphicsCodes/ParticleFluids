@@ -22,14 +22,8 @@ void FaceGroupScene::setMaterialName(const std::string& name)
 	if (scene != nullptr) {
 		this->materialId = scene->getMaterialId();
 		auto material = scene->getMaterial();
-		const auto& ambientTexName = material.ambientTextureName;
-		if (!ambientTexName.empty()) {
-			auto ambientTextureScene = getRoot()->findSceneByName<TextureScene*>(ambientTexName);
-			this->ambientTextureId = ambientTextureScene->getTextureObject().getId();
-		}
 	}
 }
-
 
 void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 {

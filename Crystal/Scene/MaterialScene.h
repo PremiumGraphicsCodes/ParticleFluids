@@ -19,9 +19,9 @@ public:
 
 	Graphics::Material getMaterial() { return material; }
 
-	void onClear() override {};
+	void setMaterial(const Graphics::Material& material);
 
-	void setMaterial(const Graphics::Material& material) { this->material = material; }
+	void onClear() override {};
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
 
@@ -32,6 +32,7 @@ public:
 private:
 	Graphics::Material material;
 	int materialId;
+	int ambientTexHandle;
 };
 
 	}
