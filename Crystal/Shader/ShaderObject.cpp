@@ -59,14 +59,6 @@ ShaderObject::ShaderObject(void) :
 {
 }
 
-ShaderObject::ShaderObject(const std::string& vFile, const std::string& fFile) :
-	handle(-1)
-{
-	assert(glGetError() == GL_NO_ERROR);
-	build(vFile, fFile);
-}
-
-
 ShaderObject::~ShaderObject(void)
 {
 	clear();
@@ -205,7 +197,6 @@ void ShaderObject::findUniformLocation(const std::string& str)
 	assert(location != -1);
 	uniformMap[str] = location;
 }
-
 
 void ShaderObject::findAttribLocation(const std::string& str)
 {
@@ -375,7 +366,6 @@ void ShaderObject::sendVertexAttribute3df(const std::string& name, const std::ve
 	const auto location = getAttribLocation(name);
 	glVertexAttribPointer(getAttribLocation(name), 3, GL_FLOAT, GL_FALSE, 0, data.data());
 	//	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
-
 }
 
 void ShaderObject::sendVertexAttribute4df(const std::string& name, const std::vector<float>& data)
@@ -391,7 +381,6 @@ void ShaderObject::sendVertexAttribute1di(const std::string& name, const std::ve
 	glVertexAttribIPointer(getAttribLocation(name), 1, GL_INT, 0, data.data());
 	//	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
 }
-
 
 void ShaderObject::enableVertexAttribute(const std::string& name)
 {

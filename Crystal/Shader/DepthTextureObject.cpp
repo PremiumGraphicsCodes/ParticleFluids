@@ -16,8 +16,8 @@ void DepthTextureObject::create(const Imagef& image, const int id)
 	this->height = image.getHeight();
 
 	glActiveTexture(GL_TEXTURE0 + id);
-	glGenTextures(1, &texHandle);
-	glBindTexture(GL_TEXTURE_2D, texHandle);
+	glGenTextures(1, &handle);
+	glBindTexture(GL_TEXTURE_2D, handle);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, image.getWidth(), image.getHeight(), 0, GL_DEPTH_COMPONENT, GL_FLOAT, image.getValues().data());
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -34,7 +34,7 @@ void DepthTextureObject::create(const Imagef& image, const int id)
 void DepthTextureObject::bind() const
 {
 	glActiveTexture(GL_TEXTURE0 + id);
-	glBindTexture(GL_TEXTURE_2D, texHandle);
+	glBindTexture(GL_TEXTURE_2D, handle);
 }
 
 void DepthTextureObject::unbind() const
@@ -45,5 +45,5 @@ void DepthTextureObject::unbind() const
 
 void DepthTextureObject::clear()
 {
-	glDeleteTextures(1, &texHandle);
+	glDeleteTextures(1, &handle);
 }

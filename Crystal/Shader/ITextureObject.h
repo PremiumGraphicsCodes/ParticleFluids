@@ -15,8 +15,8 @@ public:
 		id(id)
 	{}
 
-	virtual ~ITextureObject() {
-	}
+	virtual ~ITextureObject()
+	{}
 
 	virtual void bind() const = 0;
 
@@ -24,7 +24,7 @@ public:
 
 	int getId() const { return id; }
 
-	GLuint getTexHandle() const { return texHandle; }
+	GLuint getHandle() const { return handle; }
 
 	int getWidth() const { return width; }
 
@@ -33,7 +33,7 @@ public:
 
 protected:
 	int id;
-	GLuint texHandle;
+	GLuint handle;
 	int width;
 	int height;
 };

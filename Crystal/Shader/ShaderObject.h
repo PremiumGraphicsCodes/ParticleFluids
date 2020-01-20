@@ -26,8 +26,6 @@ class ShaderObject
 public:
 	ShaderObject(void);
 
-	ShaderObject(const std::string& vFile, const std::string& fFile);
-
 	~ShaderObject(void);
 
 	void clear();

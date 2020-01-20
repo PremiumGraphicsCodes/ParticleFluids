@@ -10,19 +10,19 @@ void TextureObject::create(const Image& image, const int id)
 	this->height = image.getHeight();
 
 	glActiveTexture(GL_TEXTURE0 + id);
-	glGenTextures(1, &texHandle);
+	glGenTextures(1, &handle);
 	send(image);
 }
 
 void TextureObject::clear()
 {
-	glDeleteTextures(1, &texHandle);
+	glDeleteTextures(1, &handle);
 }
 
 void TextureObject::bind() const
 {
 	glActiveTexture(GL_TEXTURE0 + id);
-	glBindTexture(GL_TEXTURE_2D, texHandle);
+	glBindTexture(GL_TEXTURE_2D, handle);
 }
 
 void TextureObject::unbind() const
@@ -38,13 +38,13 @@ void TextureObject::create(const Imagef& image, const int id)
 	this->height = image.getHeight();
 
 	glActiveTexture(GL_TEXTURE0 + id);
-	glGenTextures(1, &texHandle);
+	glGenTextures(1, &handle);
 	send(image);
 }
 
 void TextureObject::send(const Image& image)
 {
-	glBindTexture(GL_TEXTURE_2D, texHandle);
+	glBindTexture(GL_TEXTURE_2D, handle);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getWidth(), image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getValues().data());
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -62,7 +62,7 @@ void TextureObject::send(const Image& image)
 
 void TextureObject::send(const Imagef& image)
 {
-	glBindTexture(GL_TEXTURE_2D, texHandle);
+	glBindTexture(GL_TEXTURE_2D, handle);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, image.getWidth(), image.getHeight(), 0, GL_RGBA, GL_FLOAT, image.getValues().data());
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
