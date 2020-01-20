@@ -139,6 +139,7 @@
     <ClInclude Include="DepthRenderer.h" />
     <ClInclude Include="DepthTextureObject.h" />
     <ClInclude Include="FrameBufferObject.h" />
+    <ClInclude Include="FrameBufferObjectFactory.h" />
     <ClInclude Include="glew.h" />
     <ClInclude Include="GLObjectFactory.h" />
     <ClInclude Include="IShader.h" />

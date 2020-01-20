@@ -1,9 +1,9 @@
-#ifndef __CRYSTAL_SHADER_TEXTURE_H__
-#define __CRYSTAL_SHADER_TEXTURE_H__
+#pragma once
+
+#include "ITextureObject.h"
 
 #include "../Graphics/Image.h"
 #include "../Graphics/Imagef.h"
-#include "ITextureObject.h"
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
@@ -12,6 +12,9 @@ namespace Crystal {
 
 class TextureObject : public ITextureObject
 {
+//private:
+//	TextureObject() {};
+
 public:
 	/*
 	TextureObject(const int id) :
@@ -37,12 +40,11 @@ public:
 
 	std::string getName() const { return name; }
 
+	friend class TextureObjectFactory;
+
 private:
 	std::string name;
 };
 
-
 	}
 }
-
-#endif

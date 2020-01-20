@@ -7,16 +7,18 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-TextureObject TextureObjectFactory::createTextureObject(const Image& image)
+TextureObject* TextureObjectFactory::createTextureObject(const Image& image)
 {
-	TextureObject object;
-	object.create(image, nextId++);
-	return object;
+	auto object = std::make_unique<TextureObject>();
+	object->create(image, nextId++);
+	textures.push_back(std::move( object ));
+	return textures.back().get();
 }
 
-TextureObject TextureObjectFactory::createTextureObject(const Imagef& image)
+TextureObject* TextureObjectFactory::createTextureObject(const Imagef& image)
 {
-	TextureObject object;
-	object.create(image, nextId++);
-	return object;
+	auto object = std::make_unique<TextureObject>();
+	object->create(image, nextId++);
+	textures.push_back(std::move(object));
+	return textures.back().get();
 }

@@ -44,7 +44,12 @@
       <Filter>ThirdParty</Filter>
     </ClInclude>
     <ClInclude Include="GLObjectFactory.h" />
-    <ClInclude Include="TextureObjectFactory.h" />
+    <ClInclude Include="TextureObjectFactory.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameBufferObjectFactory.h">
+      <Filter>FrameBufferObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
@@ -82,7 +87,9 @@
     <ClCompile Include="IShaderCommand.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
-    <ClCompile Include="TextureObjectFactory.cpp" />
+    <ClCompile Include="TextureObjectFactory.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Texture">
@@ -96,6 +103,9 @@
     </Filter>
     <Filter Include="ThirdParty">
       <UniqueIdentifier>{82cfef0e-80f9-455c-98ef-e769624a9550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameBufferObject">
+      <UniqueIdentifier>{0eb75a70-24db-4e2c-a2a8-5bb54cfc44e7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
