@@ -21,7 +21,8 @@ void FaceGroupScene::setMaterialName(const std::string& name)
 	auto scene = getRoot()->findSceneByName<MaterialScene*>(this->materialName);
 	if (scene != nullptr) {
 		this->materialId = scene->getMaterialId();
-		const auto& ambientTexName = scene->getMaterial().ambientTextureName;
+		auto material = scene->getMaterial();
+		const auto& ambientTexName = material.ambientTextureName;
 		if (!ambientTexName.empty()) {
 			auto ambientTextureScene = getRoot()->findSceneByName<TextureScene*>(ambientTexName);
 			this->ambientTextureId = ambientTextureScene->getTextureObject().getId();
@@ -59,7 +60,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 				if (v.texCoordId != -1) {
 				}
 				*/
-				buffer.addVertex(p, n, texCoord, this->materialId);
+				buffer.addVertex(p, n, texCoord, this->materialId, 0);
 			}
 		}
 		viewModel.triangleBuffers.push_back(buffer);

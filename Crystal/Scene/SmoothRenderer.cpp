@@ -9,12 +9,13 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId)
+void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId, const int ambientTexId)
 {
 	positions.add(position);
 	normals.add(normal);
 	texCoords.add(texCoord);
 	materialIds.add(materialId);
+	ambientTexIds.add(ambientTexId);
 //	materialIds.add(1);
 }
 
@@ -49,6 +50,7 @@ SmoothRenderer::SmoothRenderer()
 	addAttribute("position");
 	addAttribute("normal");
 	addAttribute("materialId");
+	addAttribute("ambientTexId");
 	addAttribute("texCoord");
 }
 
@@ -59,6 +61,7 @@ void SmoothRenderer::render(const Camera& camera)
 	const auto& positions = buffer.getPositions().get();// buffers[0].get();
 	const auto& normals = buffer.getNormals().get();//buffers[1].get();
 	const auto& texCoords = buffer.getTexCoords().get();
+	const auto& ambientTexIds = buffer.getAmbientTexIds().get();
 	const auto& materialIds = buffer.getMaterialIds().get();
 	if (positions.empty()) {
 		return;
@@ -81,6 +84,7 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->sendVertexAttribute3df("position", positions);
 	shader->sendVertexAttribute3df("normal", normals);
 	shader->sendVertexAttribute1di("materialId", materialIds);
+	shader->sendVertexAttribute1di("ambientTexId", ambientTexIds);
 	shader->sendVertexAttribute2df("texCoord", texCoords);
 	//glVertexAttribPointer(shader->getAttribLocation("texCoord"), 2, GL_FLOAT, GL_FALSE, 0, texCoords.data());
 
@@ -129,6 +133,7 @@ void SmoothRenderer::render(const Camera& camera)
 	//textures[0].unbind();
 
 	shader->disableVertexAttribute("texCoord");
+	shader->disableVertexAttribute("ambientTexId");
 	shader->disableVertexAttribute("materialId");
 	shader->disableVertexAttribute("position");
 	shader->disableVertexAttribute("normal");
@@ -145,10 +150,12 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "in vec3 position;" << std::endl
 		<< "in vec3 normal;" << std::endl
 		<< "in int materialId;" << std::endl
+		<< "in int ambientTexId;" << std::endl
 		<< "in vec2 texCoord;" << std::endl
 		<< "out vec3 vNormal;" << std::endl
 		<< "out vec3 vPosition;" << std::endl
 		<< "flat out int vMaterialId;" << std::endl
+		<< "flat out int vAmbientTexId;" << std::endl
 		<< "out vec2 vTexCoord;" << std::endl
 		<< "uniform mat4 projectionMatrix;"
 		<< "uniform mat4 modelviewMatrix;"
@@ -157,6 +164,7 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "	vNormal = normalize(normal);" << std::endl
 		<< "	vPosition = position;" << std::endl
 		<< "	vMaterialId = materialId;" << std::endl
+		<< "	vAmbientTexId = ambientTexId;" << std::endl
 		<< "	vTexCoord = texCoord;" << std::endl
 		<< "}" << std::endl;
 	return stream.str();
@@ -170,6 +178,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "in vec3 vNormal;" << std::endl
 		<< "in vec3 vPosition;" << std::endl
 		<< "flat in int vMaterialId;" << std::endl
+		<< "flat in int vAmbientTexId;" << std::endl
 		<< "in vec2 vTexCoord;" << std::endl
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
@@ -189,7 +198,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "};"
 		<< "uniform MaterialInfo materials[256];"
 		<< "vec3 getTextureColor(){ "
-		<< "	return texture2D(textures[0], vTexCoord).rgb;" << std::endl
+		<< "	return texture2D(textures[vAmbientTexId], vTexCoord).rgb;" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
 		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl
@@ -208,8 +217,8 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	return ambient + diffuse + specular;" << std::endl
 		<< "}"
 		<< "void main(void) {" << std::endl
-//		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal);" << std::endl
-		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal) * getTextureColor();" << std::endl
+		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal);" << std::endl
+//		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal) * getTextureColor();" << std::endl
 		<< "	fragColor.a = 1.0;" << std::endl
 		<< "}" << std::endl;
 	return stream.str();
