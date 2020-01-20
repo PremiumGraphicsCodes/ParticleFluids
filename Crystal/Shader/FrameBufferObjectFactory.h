@@ -3,19 +3,25 @@
 #include "../Util/UnCopyable.h"
 #include "FrameBufferObject.h"
 
+#include <list>
+
 namespace Crystal {
 	namespace Shader {
 
 class FrameBufferObjectFactory : private UnCopyable
 {
-	void clear() { nextId = 0; }
+public:
+	void clear();
 
-	FrameBufferObject create();
+	FrameBufferObject* create(const int width, const int height);
+
+	//FrameBufferObject create();
 
 	//FrameBufferObject create(const Graphics::Imagef& image);
 
 private:
-	int nextId;
+	std::list<std::unique_ptr<FrameBufferObject>> buffers;
+	//int nextId;
 
 };
 	}

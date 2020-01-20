@@ -24,7 +24,7 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 
 	texture = factory.getTextureFactory()->createTextureObject(Image(512, 512));
 	//texture.create(, 1);
-	frameBufferObject.build(512, 512);
+	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 	return true;
 }
 
@@ -36,9 +36,9 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	const auto& materials = vm.getMaterials();
 	const auto& lights = vm.getLights();
 
-	frameBufferObject.setTexture(*texture);
+	frameBufferObject->setTexture(*texture);
 	//texture.bind();
-	frameBufferObject.bind();
+	frameBufferObject->bind();
 	glViewport(0, 0, texture->getWidth(), texture->getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -63,5 +63,5 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 		}
 	}
 	//texture.unbind();
-	frameBufferObject.unbind();
+	frameBufferObject->unbind();
 }

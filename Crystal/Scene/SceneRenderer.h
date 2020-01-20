@@ -63,7 +63,7 @@ private:
 	Graphics::Camera* camera;
 
 	Shader::TextureObject* texture;
-	Shader::FrameBufferObject frameBufferObject;
+	Shader::FrameBufferObject* frameBufferObject;
 };
 	}
 }

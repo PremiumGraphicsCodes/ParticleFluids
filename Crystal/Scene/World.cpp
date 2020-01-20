@@ -44,7 +44,7 @@ void World::init()
 		material.diffuse = ColorRGBAf(0, 0, 0, 1);
 		material.specular = ColorRGBAf(0, 0, 0, 1);
 		material.shininess = 1.0;
-		scenes[1]->addScene(sceneFactory.createMaterialScene(material, "Red"));
+		scenes[1]->addScene(sceneFactory.createMaterialScene(material, "RedMat"));
 	}
 
 
@@ -54,7 +54,7 @@ void World::init()
 		material.diffuse = ColorRGBAf(0, 0, 0, 1);
 		material.specular = ColorRGBAf(0, 0, 0, 1);
 		material.shininess = 1.0;
-		scenes[1]->addScene(sceneFactory.createMaterialScene(material, "Black"));
+		scenes[1]->addScene(sceneFactory.createMaterialScene(material, "BlackMat"));
 	}
 
 	{
@@ -65,14 +65,14 @@ void World::init()
 		image.setColor(1, 1, ColorRGBAuc(0, 0, 0, 255));
 
 		auto tex = glFactory.getTextureFactory()->createTextureObject(image);
-		scenes[1]->addScene(sceneFactory.createTextureScene(*tex, "WhiteMat"));
+		scenes[1]->addScene(sceneFactory.createTextureScene(*tex, "WhiteTex"));
 	}
 
 	{
 		Image image(1, 1);
 		image.setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
 		auto tex = glFactory.getTextureFactory()->createTextureObject(image);
-		scenes[1]->addScene(sceneFactory.createTextureScene(*tex, "BlackMat"));
+		scenes[1]->addScene(sceneFactory.createTextureScene(*tex, "BlackTex"));
 	}
 
 

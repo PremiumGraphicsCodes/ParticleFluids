@@ -21,10 +21,7 @@ public:
 		nextId(0)
 	{}
 
-	void clear() {
-		textures.clear();
-		nextId = 0;
-	}
+	void clear();
 
 	TextureObject* createTextureObject(const Graphics::Image& image);
 

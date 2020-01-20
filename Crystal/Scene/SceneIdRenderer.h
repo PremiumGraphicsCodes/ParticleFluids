@@ -45,8 +45,7 @@ private:
 	Scene::TriangleRenderer triangleIdRenderer;
 
 	Shader::TextureObject* texture;
-
-	Shader::FrameBufferObject frameBufferObject;
+	Shader::FrameBufferObject* frameBufferObject;
 
 	Graphics::Camera* camera;
 };

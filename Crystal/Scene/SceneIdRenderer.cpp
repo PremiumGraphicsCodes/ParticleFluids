@@ -21,7 +21,7 @@ bool SceneIdRenderer::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	frameBufferObject.build(512, 512);
+	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 
 	texture = factory.getTextureFactory()->createTextureObject(Imagef(512, 512));
 
@@ -34,9 +34,9 @@ void SceneIdRenderer::render(Camera* camera, const SceneIdViewModel& vm)
 	const auto& lineBuffers = vm.lineIdBuffers;
 	const auto& triangleBuffers = vm.triangleIdBuffers;
 
-	frameBufferObject.setTexture(*texture);
+	frameBufferObject->setTexture(*texture);
 	//texture.bind();
-	frameBufferObject.bind();
+	frameBufferObject->bind();
 	glViewport(0, 0, texture->getWidth(), texture->getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 
@@ -55,7 +55,7 @@ void SceneIdRenderer::render(Camera* camera, const SceneIdViewModel& vm)
 		triangleIdRenderer.render(*camera);
 	}
 
-	frameBufferObject.unbind();
+	frameBufferObject->unbind();
 }
 
 DrawableID SceneIdRenderer::getId(const double x, const double y)
@@ -65,9 +65,9 @@ DrawableID SceneIdRenderer::getId(const double x, const double y)
 
 DrawableID SceneIdRenderer::getIdInTexCoord(const int x, const int y)
 {
-	frameBufferObject.bind();
+	frameBufferObject->bind();
 	glViewport(0, 0, texture->getWidth(), texture->getHeight());
-	const auto& color = frameBufferObject.getColor(x, y);
-	frameBufferObject.unbind();
+	const auto& color = frameBufferObject->getColor(x, y);
+	frameBufferObject->unbind();
 	return DrawableID(color);
 }

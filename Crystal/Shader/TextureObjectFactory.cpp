@@ -7,6 +7,15 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
+void TextureObjectFactory::clear()
+{
+	for (const auto& t : textures) {
+		t->clear();
+	}
+	textures.clear();
+	nextId = 0;
+}
+
 TextureObject* TextureObjectFactory::createTextureObject(const Image& image)
 {
 	auto object = std::make_unique<TextureObject>();

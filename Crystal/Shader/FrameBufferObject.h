@@ -12,6 +12,9 @@ namespace Crystal {
 
 class FrameBufferObject
 {
+//private:
+//	FrameBufferObject() {};
+
 public:
 	void build(int width, int height);
 

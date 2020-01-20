@@ -90,6 +90,9 @@
     <ClCompile Include="TextureObjectFactory.cpp">
       <Filter>Texture</Filter>
     </ClCompile>
+    <ClCompile Include="FrameBufferObjectFactory.cpp">
+      <Filter>FrameBufferObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Texture">

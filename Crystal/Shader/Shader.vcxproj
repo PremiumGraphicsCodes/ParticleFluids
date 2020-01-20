@@ -160,6 +160,7 @@
     <ClCompile Include="DepthRenderer.cpp" />
     <ClCompile Include="DepthTextureObject.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
+    <ClCompile Include="FrameBufferObjectFactory.cpp" />
     <ClCompile Include="IShaderCommand.cpp" />
     <ClCompile Include="OnScreenRenderer.cpp" />
     <ClCompile Include="ShaderAttribute.cpp" />
