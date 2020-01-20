@@ -4,6 +4,11 @@ using namespace Crystal::Shader;
 
 void FrameBufferObjectFactory::clear()
 {
+	/*
+	for (auto& b : buffers) {
+		b->clear();
+	}
+	*/
 	buffers.clear();
 }
 

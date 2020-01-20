@@ -19,6 +19,12 @@ void FrameBufferObject::build(int width, int height)
 	assert(GL_NO_ERROR == glGetError());
 }
 
+void FrameBufferObject::clear()
+{
+	glDeleteRenderbuffers(1, &depthBuffer);
+	glDeleteFramebuffers(1, &frameBuffer);
+}
+
 void FrameBufferObject::setTexture(const ITextureObject& texture)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);

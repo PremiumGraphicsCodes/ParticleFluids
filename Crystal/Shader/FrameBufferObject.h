@@ -4,19 +4,22 @@
 #include "../Graphics/Image.h"
 #include "TextureObject.h"
 #include "DepthTextureObject.h"
+#include "IGLObject.h"
 #include <cassert>
 #include <vector>
 
 namespace Crystal {
 	namespace Shader {
 
-class FrameBufferObject
+class FrameBufferObject : IGLObject
 {
 //private:
 //	FrameBufferObject() {};
 
 public:
 	void build(int width, int height);
+
+	void clear() override;
 
 	void setTexture(const ITextureObject& texture);
 
