@@ -11,6 +11,9 @@
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace Scene {
 		class IScene;
 		class SceneFactory;
@@ -26,7 +29,7 @@ public:
 
 	~SceneIdRenderer() {}
 
-	bool build();
+	bool build(Shader::GLObjectFactory& factory);
 
 	void render(Graphics::Camera* camera, const Scene::SceneIdViewModel& vm);
 
@@ -41,7 +44,7 @@ private:
 	Scene::LineRenderer lineIdRenderer;
 	Scene::TriangleRenderer triangleIdRenderer;
 
-	Shader::TextureObject texture;
+	Shader::TextureObject* texture;
 
 	Shader::FrameBufferObject frameBufferObject;
 

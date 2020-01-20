@@ -40,7 +40,7 @@ public:
 
 	std::string getName() const { return name; }
 
-	friend class TextureObjectFactory;
+//	friend class TextureObjectFactory;
 
 private:
 	std::string name;

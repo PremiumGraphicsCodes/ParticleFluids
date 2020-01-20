@@ -31,10 +31,10 @@ bool Renderer::build(GLObjectFactory& factory)
 	if (!objectRenderer.build(factory)) {
 		return false;
 	}
-	if (!parentIdRenderer.build()) {
+	if (!parentIdRenderer.build(factory)) {
 		return false;
 	}
-	if (!childIdRenderer.build()) {
+	if (!childIdRenderer.build(factory)) {
 		return false;
 	}
 
