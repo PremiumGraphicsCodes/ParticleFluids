@@ -7,22 +7,19 @@
 #include "PolygonMeshScene.h"
 #include "TextureScene.h"
 
+#include "MaterialScene.h"
+
 using namespace Crystal::Scene;
 
 FaceGroupScene::FaceGroupScene(const int id, const std::string& name) :
 	IScene(id, name),
-	materialId(0),
+	material(nullptr),
 	faces({})
 {}
 
-void FaceGroupScene::setMaterialName(const std::string& name)
+void FaceGroupScene::setMaterial(MaterialScene* material)
 {
-	this->materialName = name;
-	auto scene = getRoot()->findSceneByName<MaterialScene*>(this->materialName);
-	if (scene != nullptr) {
-		this->materialId = scene->getMaterialId();
-		auto material = scene->getMaterial();
-	}
+	this->material = material;
 }
 
 void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
@@ -38,6 +35,14 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 	const auto& tcs = shape->getTexCoords();
 	const auto& ns = shape->getNormals();
 	const auto& matrix = parent->getMatrix();
+
+	int materialId = 0;
+	int ambientTexId = 0;
+	if (material != nullptr) {
+		materialId = material->getMaterialId();
+		ambientTexId = material->getMabientTexId();
+	}
+
 	{
 		SmoothTriangleBuffer buffer;
 		buffer.setMatrix(matrix);
@@ -48,13 +53,12 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 				const auto& p = ps[v.positionId];
 				const auto& n = ns[v.normalId];
 				auto texCoord = tcs[v.texCoordId];
-
 //				Math::Vector2df texCoord(0, 0);
 				/*
 				if (v.texCoordId != -1) {
 				}
 				*/
-				buffer.addVertex(p, n, texCoord, this->materialId, this->ambientTextureId, 0);
+				buffer.addVertex(p, n, texCoord, materialId, ambientTexId, 0);
 			}
 		}
 		viewModel.triangleBuffers.push_back(buffer);

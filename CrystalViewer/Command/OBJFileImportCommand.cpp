@@ -82,7 +82,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 				}
 //				faceGroup->addFace(f);
 			}
-			faceGroup->setMaterialName(g.usemtl);
+			//faceGroup->setMaterialName(g.usemtl);
 		}
 		world->getObjects()->addScene(meshScene);
 

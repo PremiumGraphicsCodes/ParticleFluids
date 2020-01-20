@@ -30,12 +30,12 @@ void FaceGroupEditView::setValue(FaceGroupScene* value)
 {
 	id.setValue(value->getId());
 	name.setValue(value->getName());
-	materialName.setValue(value->getMaterialName());
+//	materialName.setValue(value->getMaterial().getName());
 }
 
 void FaceGroupEditView::onEdit()
 {
 	auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id.getValue());
 	faceGroup->setName(name.getValue());
-	faceGroup->setMaterialName(materialName.getValue());
+//	faceGroup->setMaterialName(materialName.getValue());
 }

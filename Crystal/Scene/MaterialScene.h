@@ -29,6 +29,8 @@ public:
 	
 	int getMaterialId() const { return materialId; }
 
+	int getMabientTexId() const { return ambientTexHandle; }
+
 private:
 	Graphics::Material material;
 	int materialId;

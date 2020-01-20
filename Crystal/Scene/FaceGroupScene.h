@@ -5,6 +5,7 @@
 
 namespace Crystal {
 	namespace Scene {
+		class MaterialScene;
 
 class FaceGroupScene : public IScene
 {
@@ -15,9 +16,9 @@ public:
 
 	std::vector<Shape::Face> getFaces() const { return faces; }
 
-	void setMaterialName(const std::string& name);
+	void setMaterial(MaterialScene* material);
 
-	std::string getMaterialName() const { return materialName; }
+	MaterialScene* getMaterial() const { return material; }
 
 	SceneType getType() const override { return SceneType::FaceGroupScene; }
 
@@ -30,9 +31,7 @@ public:
 	}
 
 private:
-	std::string materialName;
-	int materialId;
-	int ambientTextureId;
+	MaterialScene* material;
 	std::vector<Shape::Face> faces;
 
 };

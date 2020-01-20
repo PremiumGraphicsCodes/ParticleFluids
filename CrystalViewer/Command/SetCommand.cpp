@@ -5,6 +5,7 @@
 #include "../../Crystal/Scene/ParticleAttribute.h"
 #include "../../Crystal/Scene/FaceGroupScene.h"
 #include "../../Crystal/Scene/LightScene.h"
+#include "../../Crystal/Scene/MaterialScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -40,7 +41,8 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 	else if (scene->getType() == SceneType::FaceGroupScene) {
 		auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id);
 		if (name == SetLabels::MaterialNameLabel) {
-			faceGroup->setMaterialName(std::any_cast<std::string>(value));
+			auto mat = world->getObjects()->findSceneByName<MaterialScene*>(std::any_cast<std::string>(value));
+			faceGroup->setMaterial(mat);
 		}
 	}
 }
