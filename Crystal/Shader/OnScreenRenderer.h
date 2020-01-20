@@ -1,18 +1,18 @@
-#ifndef __CRYSTAL_SHADER_ON_SCREEN_RENDERER_H__
-#define __CRYSTAL_SHADER_ON_SCREEN_RENDERER_H__
+#pragma once
 
-#include "../Graphics/Camera.h"
 #include "ITextureObject.h"
 #include "ShaderObject.h"
 #include "IShader.h"
+#include "GLObjectFactory.h"
 
 namespace Crystal {
 	namespace Shader {
+		class GLObjectFactory;
 
 class OnScreenRenderer
 {
 public:
-	bool build();
+	bool build(GLObjectFactory& factory);
 
 	void render(const ITextureObject& texture);
 
@@ -29,5 +29,3 @@ private:
 
 	}
 }
-
-#endif

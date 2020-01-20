@@ -38,7 +38,7 @@ bool Renderer::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	if (!renderer.build()) {
+	if (!renderer.build(factory)) {
 		return false;
 	}
 

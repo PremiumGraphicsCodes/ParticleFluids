@@ -15,7 +15,7 @@ public:
 
 	virtual ~IRenderer() {};
 
-	virtual bool build();
+	bool build();
 
 	virtual void render(const Graphics::Camera& camera) = 0;
 

@@ -1,7 +1,6 @@
 #ifndef __CRYSTAL_SHADER_SHADER_OBJECT_H__
 #define __CRYSTAL_SHADER_SHADER_OBJECT_H__
 
-
 #include <vector>
 #include <map>
 #include <string>
@@ -12,6 +11,7 @@
 #include "glew.h"
 
 #include "ShaderUnit.h"
+#include "IGLObject.h"
 
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer2d.h"
@@ -21,14 +21,16 @@
 namespace Crystal {
 	namespace Shader {
 
-class ShaderObject
+class ShaderObject : IGLObject
 {
+private:
+
 public:
 	ShaderObject(void);
 
 	~ShaderObject(void);
 
-	void clear();
+	void clear() override;
 
 	bool link(const ShaderUnit& vertexShader, const ShaderUnit& fragmentShader);
 
@@ -116,9 +118,10 @@ public:
 	void setLineWidth(const float width);
 
 public:
-	unsigned int handle;
+	GLuint handle;
 
 private:
+	bool isBuildOk;
 	std::string log;
 	std::map< std::string, unsigned int > uniformMap;
 	std::map< std::string, unsigned int > attribMap;

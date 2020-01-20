@@ -55,7 +55,8 @@ stream <<
 
 
 ShaderObject::ShaderObject(void) :
-	handle(-1)
+	handle(-1),
+	isBuildOk(false)
 {
 }
 
@@ -150,6 +151,7 @@ bool ShaderObject::build(const std::string& vSource, const std::string& fSource)
 		return false;
 	}
 
+	isBuildOk = true;
 	return true;
 	//positionLocation = glGetUniformLocation( shader.getId(), "position" );
 }

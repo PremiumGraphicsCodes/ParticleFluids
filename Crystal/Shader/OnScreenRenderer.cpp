@@ -9,12 +9,12 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-bool OnScreenRenderer::build()
+bool OnScreenRenderer::build(GLObjectFactory& factory)
 {
 	const auto vsSource = getBuildinVertexShaderSource();
 	const auto fsSource = getBuildinFragmentShaderSource();
-	this->shader = new ShaderObject();
-	if (!this->shader->build(vsSource, fsSource)) {
+	this->shader = factory.getShaderFactory()->create(vsSource, fsSource);
+	if (this->shader->getHandle() == -1) {
 		return false;
 	}
 	findLocation();
