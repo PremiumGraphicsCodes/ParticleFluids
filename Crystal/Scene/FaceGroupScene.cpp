@@ -60,7 +60,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 				if (v.texCoordId != -1) {
 				}
 				*/
-				buffer.addVertex(p, n, texCoord, this->materialId, 0);
+				buffer.addVertex(p, n, texCoord, this->materialId, this->ambientTextureId, 0);
 			}
 		}
 		viewModel.triangleBuffers.push_back(buffer);

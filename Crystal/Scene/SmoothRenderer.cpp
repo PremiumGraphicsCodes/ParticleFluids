@@ -9,13 +9,14 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId, const int ambientTexId)
+void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId, const int ambientTexId, const int diffuseTexId)
 {
 	positions.add(position);
 	normals.add(normal);
 	texCoords.add(texCoord);
 	materialIds.add(materialId);
 	ambientTexIds.add(ambientTexId);
+	diffuseTexIds.add(diffuseTexId);
 //	materialIds.add(1);
 }
 
@@ -51,6 +52,7 @@ SmoothRenderer::SmoothRenderer()
 	addAttribute("normal");
 	addAttribute("materialId");
 	addAttribute("ambientTexId");
+	addAttribute("diffuseTexId");
 	addAttribute("texCoord");
 }
 
@@ -62,6 +64,7 @@ void SmoothRenderer::render(const Camera& camera)
 	const auto& normals = buffer.getNormals().get();//buffers[1].get();
 	const auto& texCoords = buffer.getTexCoords().get();
 	const auto& ambientTexIds = buffer.getAmbientTexIds().get();
+	const auto& diffseTexIds = buffer.getDiffuseTexIds().get();
 	const auto& materialIds = buffer.getMaterialIds().get();
 	if (positions.empty()) {
 		return;
@@ -85,6 +88,7 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->sendVertexAttribute3df("normal", normals);
 	shader->sendVertexAttribute1di("materialId", materialIds);
 	shader->sendVertexAttribute1di("ambientTexId", ambientTexIds);
+	shader->sendVertexAttribute1di("diffuseTexId", diffseTexIds);
 	shader->sendVertexAttribute2df("texCoord", texCoords);
 	//glVertexAttribPointer(shader->getAttribLocation("texCoord"), 2, GL_FLOAT, GL_FALSE, 0, texCoords.data());
 
@@ -133,6 +137,7 @@ void SmoothRenderer::render(const Camera& camera)
 	//textures[0].unbind();
 
 	shader->disableVertexAttribute("texCoord");
+	shader->disableVertexAttribute("diffuseTexId");
 	shader->disableVertexAttribute("ambientTexId");
 	shader->disableVertexAttribute("materialId");
 	shader->disableVertexAttribute("position");
@@ -151,11 +156,13 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "in vec3 normal;" << std::endl
 		<< "in int materialId;" << std::endl
 		<< "in int ambientTexId;" << std::endl
+		<< "in int diffuseTexId;" << std::endl
 		<< "in vec2 texCoord;" << std::endl
 		<< "out vec3 vNormal;" << std::endl
 		<< "out vec3 vPosition;" << std::endl
 		<< "flat out int vMaterialId;" << std::endl
 		<< "flat out int vAmbientTexId;" << std::endl
+		<< "flat out int vDiffuseTexId;" << std::endl
 		<< "out vec2 vTexCoord;" << std::endl
 		<< "uniform mat4 projectionMatrix;"
 		<< "uniform mat4 modelviewMatrix;"
@@ -165,6 +172,7 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "	vPosition = position;" << std::endl
 		<< "	vMaterialId = materialId;" << std::endl
 		<< "	vAmbientTexId = ambientTexId;" << std::endl
+		<< "	vDiffuseTexId = diffuseTexId;" << std::endl
 		<< "	vTexCoord = texCoord;" << std::endl
 		<< "}" << std::endl;
 	return stream.str();
@@ -179,6 +187,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "in vec3 vPosition;" << std::endl
 		<< "flat in int vMaterialId;" << std::endl
 		<< "flat in int vAmbientTexId;" << std::endl
+		<< "flat in int vDiffuseTexId;" << std::endl
 		<< "in vec2 vTexCoord;" << std::endl
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
@@ -197,8 +206,8 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	float shininess;" << std::endl
 		<< "};"
 		<< "uniform MaterialInfo materials[256];"
-		<< "vec3 getTextureColor(){ "
-		<< "	return texture2D(textures[vAmbientTexId], vTexCoord).rgb;" << std::endl
+		<< "vec3 getTextureColor(int id){ "
+		<< "	return texture2D(textures[id], vTexCoord).rgb;" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
 		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl
@@ -207,9 +216,10 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	vec3 v = normalize(vPosition - eyePosition);" << std::endl
 		<< "	vec3 r = reflect( -s, normal );" << std::endl
 		<< "	vec3 ambient = light.La * material.Ka;" << std::endl
-		<< "	ambient = ambient * getTextureColor();" << std::endl
+		<< "	ambient = ambient * getTextureColor(vAmbientTexId);" << std::endl
 		<< "	float innerProduct = max( dot(s,normal), 0.0);" << std::endl
 		<< "	vec3 diffuse = light.Ld * material.Kd * innerProduct;" << std::endl
+		<< "	diffuse *= getTextureColor(vDiffuseTexId);" << std::endl
 		<< "	vec3 specular = vec3(0.0);" << std::endl
 		<< "	if(innerProduct > 0.0) {" << std::endl
 		<< "		specular = light.Ls * material.Ks * pow( max( dot(r,v), 0.0 ), material.shininess );" << std::endl

@@ -22,7 +22,7 @@ public:
 		matrix(Math::Identity())
 	{}
 
-	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialId, const int ambientTexId);
+	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialId, const int ambientTexId, const int diffuseTexId);
 
 	Graphics::Buffer3d<float> getPositions() const { return positions; }
 
@@ -33,6 +33,8 @@ public:
 	Graphics::Buffer1d<int> getMaterialIds() const { return materialIds; }
 
 	Graphics::Buffer1d<int> getAmbientTexIds() const { return ambientTexIds; }
+
+	Graphics::Buffer1d<int> getDiffuseTexIds() const { return diffuseTexIds; }
 
 	void setMatrix(const Math::Matrix4dd& matrix) { this->matrix = matrix; }
 
@@ -45,6 +47,7 @@ private:
 	Graphics::Buffer2d<float> texCoords;
 	Graphics::Buffer1d<int> materialIds;
 	Graphics::Buffer1d<int> ambientTexIds;
+	Graphics::Buffer1d<int> diffuseTexIds;
 };
 
 
