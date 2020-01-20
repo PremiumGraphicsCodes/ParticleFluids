@@ -111,7 +111,7 @@ TransformScene* SceneFactory::createTransformScene(const std::string& name)
 
 FaceGroupScene* SceneFactory::createFaceGroupScene(PolygonMeshScene* parent, const std::string& name)
 {
-	auto g= new FaceGroupScene(getNextId(), name);
+	auto g= new FaceGroupScene(getNextId(), name, parent);
 	parent->addGroup(g);
 	return g;
 }

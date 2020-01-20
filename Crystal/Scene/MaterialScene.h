@@ -12,8 +12,7 @@ class MaterialScene : public IScene
 public:
 	MaterialScene(const int id, const std::string& name, const Graphics::Material& material, const int materialId) :
 		IScene(id, name),
-		material(material),
-		ambientTexture(nullptr)
+		material(material)
 	{}
 
 	~MaterialScene() {};
@@ -22,9 +21,7 @@ public:
 
 	void setMaterial(const Graphics::Material& material);
 
-	TextureScene* getAmbientTexture() { return ambientTexture; }
-
-	void setAmbientTexture(TextureScene* tex) { this->ambientTexture = tex; }
+	TextureScene* getAmbientTexture() const;
 
 	void onClear() override {};
 

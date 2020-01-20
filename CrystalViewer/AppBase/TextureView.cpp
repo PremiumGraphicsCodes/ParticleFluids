@@ -7,10 +7,16 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
+TextureView::TextureView(const std::string& name) :
+	TextureView(name, Graphics::Image(0, 0))
+{
+}
+
 TextureView::TextureView(const std::string& name, const Image& image) :
 	IWindow(name),
 	image(image),
-	textureId(-1)
+	textureId(-1),
+	nameView("TextureName")
 {
 	glGenTextures(1, &textureId);
 
@@ -24,6 +30,7 @@ TextureView::~TextureView()
 
 void TextureView::onShow()
 {
+	nameView.show();
 	// Turn the RGBA pixel data into an OpenGL texture:
 	glBindTexture(GL_TEXTURE_2D, textureId);
 	ImGui::Image((void*)(intptr_t)textureId, ImVec2(image.getWidth(), image.getHeight()));

@@ -5,12 +5,13 @@
 
 namespace Crystal {
 	namespace Scene {
+		class PolygonMeshScene;
 		class MaterialScene;
 
 class FaceGroupScene : public IScene
 {
 public:
-	FaceGroupScene(const int id, const std::string& name);
+	FaceGroupScene(const int id, const std::string& name, PolygonMeshScene* polygonMesh);
 
 	void addFace(Shape::Face f) { this->faces.push_back(f); }
 
@@ -31,6 +32,7 @@ public:
 	}
 
 private:
+	PolygonMeshScene* polygonMesh;
 	MaterialScene* material;
 	std::vector<Shape::Face> faces;
 

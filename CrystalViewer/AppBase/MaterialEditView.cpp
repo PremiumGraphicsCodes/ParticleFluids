@@ -8,7 +8,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 MaterialEditView::MaterialEditView(const std::string& name, World* model, Canvas* canvas) :
-	IWindow(name),
+	IView(name),
 	world(model),
 	canvas(canvas),
 	id("Id", 0),
@@ -16,6 +16,9 @@ MaterialEditView::MaterialEditView(const std::string& name, World* model, Canvas
 	name("Name", "Material1"),
 	editButton("Edit")
 {
+	add(&id);
+	add(&material);
+	add(&this->name);
 	auto func = [=]()
 	{
 		auto mat = world->getObjects()->findSceneById<MaterialScene*>(id.getValue());
@@ -23,6 +26,7 @@ MaterialEditView::MaterialEditView(const std::string& name, World* model, Canvas
 		mat->setName(this->name.getValue());
 	};
 	editButton.setFunction(func);
+	add(&editButton);
 }
 
 void MaterialEditView::setValue(MaterialScene* value)
@@ -30,12 +34,4 @@ void MaterialEditView::setValue(MaterialScene* value)
 	this->id.setValue(value->getId());
 	this->name.setValue(value->getName());
 	this->material.setValue(value->getMaterial());
-}
-
-void MaterialEditView::onShow()
-{
-	id.show();
-	material.show();
-	name.show();
-	editButton.show();
 }

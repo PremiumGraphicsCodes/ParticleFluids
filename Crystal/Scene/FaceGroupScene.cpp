@@ -11,10 +11,11 @@
 
 using namespace Crystal::Scene;
 
-FaceGroupScene::FaceGroupScene(const int id, const std::string& name) :
+FaceGroupScene::FaceGroupScene(const int id, const std::string& name, PolygonMeshScene* polygonMesh) :
 	IScene(id, name),
 	material(nullptr),
-	faces({})
+	faces({}),
+	polygonMesh(polygonMesh)
 {}
 
 void FaceGroupScene::setMaterial(MaterialScene* material)
@@ -28,7 +29,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 		return;
 	}
 
-	PolygonMeshScene* parent = static_cast<PolygonMeshScene*>( getParent() );
+	PolygonMeshScene* parent = polygonMesh;
 	const auto& shape = parent->getShape();
 	const auto& vs = shape->getVertices();
 	const auto& ps = shape->getPositions();
@@ -40,7 +41,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 	int ambientTexId = 0;
 	if (material != nullptr) {
 		materialId = material->getMaterialId();
-	//	ambientTexId = material->getMabientTexId();
+		ambientTexId = material->getAmbientTexture()->getTextureObject().getHandle();
 	}
 
 	{

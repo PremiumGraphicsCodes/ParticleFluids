@@ -1,6 +1,7 @@
 #include "FaceGroupEditView.h"
 
 #include "../../Crystal/Scene/FaceGroupScene.h"
+#include "../../Crystal/Scene/MaterialScene.h"
 #include "../../Crystal/Scene/World.h"
 
 using namespace Crystal::Shape;
@@ -12,7 +13,7 @@ FaceGroupEditView::FaceGroupEditView(const std::string& name, World* repository,
 	world(repository),
 	id("Id"),
 	name("Name"),
-	materialName("MaterialName"),
+	materialName("Material"),
 	edit("Edit")
 {
 	edit.setFunction([=]() { onEdit(); });
@@ -37,5 +38,6 @@ void FaceGroupEditView::onEdit()
 {
 	auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id.getValue());
 	faceGroup->setName(name.getValue());
-//	faceGroup->setMaterialName(materialName.getValue());
+	auto material = world->getObjects()->findSceneByName<MaterialScene*>(materialName.getValue());
+	faceGroup->setMaterial(material);
 }

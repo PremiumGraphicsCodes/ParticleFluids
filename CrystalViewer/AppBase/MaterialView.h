@@ -18,8 +18,6 @@ class MaterialView : public IView
 public:
 	explicit MaterialView(const std::string& name);
 
-	//void onShow() override;
-
 	void setValue(const Graphics::Material& m);
 
 	Graphics::Material getValue() const;
@@ -29,9 +27,10 @@ private:
 	Float4View diffuse;
 	Float4View specular;
 	FloatView shininess;
-//	StringView ambientTexture;
-//	StringView diffuseTexture;
-//	StringView specularTexture;
+
+	StringView ambientTexture;
+	StringView diffuseTexture;
+	StringView specularTexture;
 };
 	}
 }

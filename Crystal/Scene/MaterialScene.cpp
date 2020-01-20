@@ -11,14 +11,15 @@ void MaterialScene::setMaterial(const Material& material)
 {
 	this->material = material;
 
-	/*
 	if (!material.ambientTextureName.empty()) {
 		auto scene = getRoot()->findSceneByName<TextureScene*>(material.ambientTextureName);
-		if (scene != nullptr) {
-			this->ambientTexHandle = scene->getTextureObject().getHandle();
-		}
+		this->ambientTexture = scene;
 	}
-	*/
+}
+
+TextureScene* MaterialScene::getAmbientTexture() const
+{
+	return ambientTexture;
 }
 
 void MaterialScene::toViewModel(SceneViewModel& viewModel) const

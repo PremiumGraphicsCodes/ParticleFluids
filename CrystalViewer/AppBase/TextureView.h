@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IWindow.h"
+#include "StringView.h"
 #include "../../Crystal/Graphics/Image.h"
 
 namespace Crystal {
@@ -9,9 +10,7 @@ namespace Crystal {
 class TextureView : public IWindow
 {
 public:
-	explicit TextureView(const std::string& name) :
-		TextureView(name, Graphics::Image(0,0))
-	{}
+	explicit TextureView(const std::string& name);
 
 	TextureView(const std::string& name, const Graphics::Image& image);
 
@@ -25,6 +24,7 @@ public:
 
 private:
 	Graphics::Image image;
+	StringView nameView;
 	unsigned int textureId;
 };
 

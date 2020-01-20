@@ -6,6 +6,7 @@
 #include "StringView.h"
 #include "Button.h"
 #include "Canvas.h"
+#include "MaterialView.h"
 
 namespace Crystal {
 	namespace Scene {
