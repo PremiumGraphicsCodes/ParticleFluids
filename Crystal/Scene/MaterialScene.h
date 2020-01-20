@@ -5,6 +5,7 @@
 
 namespace Crystal {
 	namespace Scene {
+		class TextureScene;
 
 class MaterialScene : public IScene
 {
@@ -12,7 +13,7 @@ public:
 	MaterialScene(const int id, const std::string& name, const Graphics::Material& material, const int materialId) :
 		IScene(id, name),
 		material(material),
-		materialId(materialId)
+		ambientTexture(nullptr)
 	{}
 
 	~MaterialScene() {};
@@ -20,6 +21,10 @@ public:
 	Graphics::Material getMaterial() { return material; }
 
 	void setMaterial(const Graphics::Material& material);
+
+	TextureScene* getAmbientTexture() { return ambientTexture; }
+
+	void setAmbientTexture(TextureScene* tex) { this->ambientTexture = tex; }
 
 	void onClear() override {};
 
@@ -29,12 +34,10 @@ public:
 	
 	int getMaterialId() const { return materialId; }
 
-	int getMabientTexId() const { return ambientTexHandle; }
-
 private:
 	Graphics::Material material;
+	TextureScene* ambientTexture;
 	int materialId;
-	int ambientTexHandle;
 };
 
 	}

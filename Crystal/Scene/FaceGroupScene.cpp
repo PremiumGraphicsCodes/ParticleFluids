@@ -40,7 +40,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 	int ambientTexId = 0;
 	if (material != nullptr) {
 		materialId = material->getMaterialId();
-		ambientTexId = material->getMabientTexId();
+	//	ambientTexId = material->getMabientTexId();
 	}
 
 	{

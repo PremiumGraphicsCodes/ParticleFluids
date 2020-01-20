@@ -29,9 +29,9 @@ private:
 	Float4View diffuse;
 	Float4View specular;
 	FloatView shininess;
-	StringView ambientTexture;
-	StringView diffuseTexture;
-	StringView specularTexture;
+//	StringView ambientTexture;
+//	StringView diffuseTexture;
+//	StringView specularTexture;
 };
 	}
 }

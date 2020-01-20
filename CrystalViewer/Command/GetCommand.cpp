@@ -40,10 +40,12 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 		}
 		return std::any(ids);
 	}
+	/*
 	else if (scene->getType() == SceneType::FaceGroupScene) {
 		auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id);
-		return std::any( faceGroup->getMaterialName() );
+		return std::any( faceGroup->getMaterial()->get Name() );
 	}
+	*/
 
 	assert(false);
 	return std::any(0);
