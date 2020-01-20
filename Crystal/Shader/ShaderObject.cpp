@@ -55,12 +55,12 @@ stream <<
 
 
 ShaderObject::ShaderObject(void) :
-	id(-1)
+	handle(-1)
 {
 }
 
 ShaderObject::ShaderObject(const std::string& vFile, const std::string& fFile) :
-	id(-1)
+	handle(-1)
 {
 	assert(glGetError() == GL_NO_ERROR);
 	build(vFile, fFile);
@@ -75,8 +75,8 @@ ShaderObject::~ShaderObject(void)
 void ShaderObject::clear()
 {
 	glUseProgram(0);
-	if (id != -1) {
-		glDeleteProgram(id);
+	if (handle != -1) {
+		glDeleteProgram(handle);
 	}
 }
 
@@ -86,16 +86,16 @@ bool ShaderObject::link(const ShaderUnit& vertexShader, const ShaderUnit& fragme
 
 	assert(glGetError() == GL_NO_ERROR);
 
-	id = glCreateProgram();
-	glAttachShader(id, vertexShader.getID());
-	glAttachShader(id, fragmentShader.getID());
+	handle = glCreateProgram();
+	glAttachShader(handle, vertexShader.getID());
+	glAttachShader(handle, fragmentShader.getID());
 
 	GLint success;
-	glLinkProgram(id);
-	glGetProgramiv(id, GL_LINK_STATUS, &success);
+	glLinkProgram(handle);
+	glGetProgramiv(handle, GL_LINK_STATUS, &success);
 
 	GLchar infoLog[2048];
-	glGetProgramInfoLog(id, 2048, NULL, infoLog);
+	glGetProgramInfoLog(handle, 2048, NULL, infoLog);
 	log += infoLog;
 
 	if (success == 0) {
@@ -113,17 +113,17 @@ bool ShaderObject::link(const ShaderUnit& vertexShader, const ShaderUnit& fragme
 
 	assert(glGetError() == GL_NO_ERROR);
 
-	id = glCreateProgram();
-	glAttachShader(id, vertexShader.getID());
-	glAttachShader(id, fragmentShader.getID());
-	glAttachShader(id, geometryShader.getID());
+	handle = glCreateProgram();
+	glAttachShader(handle, vertexShader.getID());
+	glAttachShader(handle, fragmentShader.getID());
+	glAttachShader(handle, geometryShader.getID());
 
 	GLint success;
-	glLinkProgram(id);
-	glGetProgramiv(id, GL_LINK_STATUS, &success);
+	glLinkProgram(handle);
+	glGetProgramiv(handle, GL_LINK_STATUS, &success);
 
 	GLchar infoLog[2048];
-	glGetProgramInfoLog(id, 2048, NULL, infoLog);
+	glGetProgramInfoLog(handle, 2048, NULL, infoLog);
 	log += infoLog;
 
 	if (success == 0) {
@@ -201,7 +201,7 @@ bool ShaderObject::buildFromFile(const std::string& vFile, const std::string& gF
 
 void ShaderObject::findUniformLocation(const std::string& str)
 {
-	const auto location = glGetUniformLocation(id, str.c_str());
+	const auto location = glGetUniformLocation(handle, str.c_str());
 	assert(location != -1);
 	uniformMap[str] = location;
 }
@@ -209,7 +209,7 @@ void ShaderObject::findUniformLocation(const std::string& str)
 
 void ShaderObject::findAttribLocation(const std::string& str)
 {
-	const auto location = glGetAttribLocation(id, str.c_str());
+	const auto location = glGetAttribLocation(handle, str.c_str());
 	assert(location != -1);
 	attribMap[str] = location;
 }
@@ -217,16 +217,16 @@ void ShaderObject::findAttribLocation(const std::string& str)
 std::vector<IShaderUniform*> ShaderObject::getActiveUniforms()
 {
 	GLsizei maxLength = 0;
-	glGetProgramiv(id, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
+	glGetProgramiv(handle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
 	int count = 0;
-	glGetProgramiv(id, GL_ACTIVE_UNIFORMS, &count);
+	glGetProgramiv(handle, GL_ACTIVE_UNIFORMS, &count);
 	GLchar* name = (GLchar*)malloc(maxLength);
 	std::vector<IShaderUniform*> uniforms;
 	for (auto i = 0; i < count; ++i) {
 		GLsizei written;
 		GLint size;
 		GLenum type;
-		glGetActiveUniform(id, i, maxLength, &written, &size, &type, name);
+		glGetActiveUniform(handle, i, maxLength, &written, &size, &type, name);
 		switch (type) {
 		case GL_FLOAT:
 			uniforms.push_back(new ShaderUniform1f(name));
@@ -290,16 +290,16 @@ std::vector<IShaderUniform*> ShaderObject::getActiveUniforms()
 std::vector<IShaderAttribute*> ShaderObject::getActiveAttributes()
 {
 	GLsizei maxLength = 0;
-	glGetProgramiv(id, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
+	glGetProgramiv(handle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
 	int count = 0;
-	glGetProgramiv(id, GL_ACTIVE_ATTRIBUTES, &count);
+	glGetProgramiv(handle, GL_ACTIVE_ATTRIBUTES, &count);
 	GLchar* name = (GLchar*)malloc(maxLength);
 	std::vector<IShaderAttribute*> attributes;
 	for (auto i = 0; i < count; ++i) {
 		GLsizei written;
 		GLint size;
 		GLenum type;
-		glGetActiveAttrib(id, i, maxLength, &written, &size, &type, name);
+		glGetActiveAttrib(handle, i, maxLength, &written, &size, &type, name);
 		switch (type) {
 		case GL_FLOAT:
 			attributes.push_back(new ShaderAttribute1f(name));
@@ -450,7 +450,7 @@ void ShaderObject::drawTriangles(const std::vector<unsigned int>& indices)
 void ShaderObject::bindOutput(const std::string& name)
 {
 	auto str = name.c_str();
-	glBindFragDataLocation(getId(), 0, str);
+	glBindFragDataLocation(getHandle(), 0, str);
 }
 
 void ShaderObject::setLineWidth(const float width)

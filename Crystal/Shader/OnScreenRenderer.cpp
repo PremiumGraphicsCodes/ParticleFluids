@@ -66,7 +66,7 @@ void OnScreenRenderer::render(const ITextureObject& texture)
 
 	//glEnable(GL_DEPTH_TEST);
 
-	glUseProgram(shader->getId());
+	glUseProgram(shader->getHandle());
 
 	texture.bind();
 
@@ -78,7 +78,7 @@ void OnScreenRenderer::render(const ITextureObject& texture)
 	glDrawArrays(GL_QUADS, 0, static_cast<GLsizei>(positions.size() / 2));
 	glDisableVertexAttribArray(0);
 
-	glBindFragDataLocation(shader->getId(), 0, "fragColor");
+	glBindFragDataLocation(shader->getHandle(), 0, "fragColor");
 
 	texture.unbind();
 	//glDisable(GL_DEPTH_TEST);

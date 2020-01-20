@@ -54,14 +54,14 @@ public:
 
 	std::string getLog() const { return log; }
 
-	unsigned int getId() const { return id; }
+	unsigned int getHandle() const { return handle; }
 
 	unsigned int getUniformLocation(const std::string& str);
 
 	unsigned int getAttribLocation(const std::string& str);
 
 	void bind() {
-		glUseProgram(getId());
+		glUseProgram(getHandle());
 	}
 
 	void unbind()
@@ -118,7 +118,8 @@ public:
 	void setLineWidth(const float width);
 
 public:
-	unsigned int id;
+	unsigned int handle;
+
 private:
 	std::string log;
 	std::map< std::string, unsigned int > uniformMap;

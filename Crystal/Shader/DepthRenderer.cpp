@@ -64,7 +64,7 @@ void DepthRenderer::render(const DepthTextureObject& depthTexture)
 	positions.push_back(1.0f);
 	positions.push_back(1.0f);
 
-	glUseProgram(shader.getId());
+	glUseProgram(shader.getHandle());
 
 	depthTexture.bind();
 
@@ -74,7 +74,7 @@ void DepthRenderer::render(const DepthTextureObject& depthTexture)
 	glEnableVertexAttribArray(0);
 	glDrawArrays(GL_QUADS, 0, static_cast<GLsizei>(positions.size()) / 2);
 	glDisableVertexAttribArray(0);
-	glBindFragDataLocation(shader.getId(), 0, "fragColor");
+	glBindFragDataLocation(shader.getHandle(), 0, "fragColor");
 
 	depthTexture.unbind();
 

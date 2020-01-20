@@ -126,7 +126,7 @@ void SmoothRenderer::render(const Camera& camera)
 	for (int i = 0; i < textures.size(); ++i) {
 		const auto prefix = "textures[" + std::to_string(i) + "]";
 		textures[i].bind();
-		auto loc = glGetUniformLocation(shader->getId(), prefix.c_str());
+		auto loc = glGetUniformLocation(shader->getHandle(), prefix.c_str());
 		glUniform1i(loc, textures[i].getId());
 	}
 
