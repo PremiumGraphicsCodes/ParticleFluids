@@ -42,3 +42,8 @@ void DepthTextureObject::unbind() const
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glActiveTexture(GL_TEXTURE0);
 }
+
+void DepthTextureObject::clear()
+{
+	glDeleteTextures(1, &texHandle);
+}

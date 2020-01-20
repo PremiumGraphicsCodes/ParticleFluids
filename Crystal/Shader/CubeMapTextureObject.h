@@ -30,6 +30,8 @@ public:
 
 	void unbind() const override;
 
+	void clear() override;
+
 private:
 };
 

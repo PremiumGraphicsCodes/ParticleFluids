@@ -8,22 +8,23 @@
 namespace Crystal {
 	namespace Shader {
 
-		class DepthTextureObject : public ITextureObject
-		{
-		public:
-			DepthTextureObject(const int id = 0) :
-				ITextureObject(id)
-			{}
+class DepthTextureObject : public ITextureObject
+{
+public:
+	DepthTextureObject(const int id = 0) :
+		ITextureObject(id)
+	{}
 
-			DepthTextureObject(const Graphics::Imagef& image, const int id = 0);
+	DepthTextureObject(const Graphics::Imagef& image, const int id = 0);
 
-			void create(const Graphics::Imagef& image, const int id = 0);
+	void create(const Graphics::Imagef& image, const int id = 0);
 
-			void bind() const override;
+	void bind() const override;
 
-			void unbind() const override;
+	void unbind() const override;
 
-		};
+	void clear() override;
+};
 
 	}
 }

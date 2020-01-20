@@ -3,39 +3,40 @@
 
 #include "glew.h"
 
+#include "IGLObject.h"
+
 namespace Crystal {
 	namespace Shader {
 
-		class ITextureObject
-		{
-		public:
-			ITextureObject(const int id = 0) :
-				id(id)
-			{}
+class ITextureObject : public IGLObject
+{
+public:
+	ITextureObject(const int id = 0) :
+		id(id)
+	{}
 
-			virtual ~ITextureObject() {
-			}
+	virtual ~ITextureObject() {
+	}
 
-			virtual void bind() const = 0;
+	virtual void bind() const = 0;
 
-			virtual void unbind() const = 0;
+	virtual void unbind() const = 0;
 
-			int getId() const { return id; }
+	int getId() const { return id; }
 
-			GLuint getTexHandle() const { return texHandle; }
+	GLuint getTexHandle() const { return texHandle; }
 
-			int getWidth() const { return width; }
+	int getWidth() const { return width; }
 
-			int getHeight() const { return height; }
+	int getHeight() const { return height; }
 
 
-		protected:
-			int id;
-			GLuint texHandle;
-			int width;
-			int height;
-
-		};
+protected:
+	int id;
+	GLuint texHandle;
+	int width;
+	int height;
+};
 
 	}
 }

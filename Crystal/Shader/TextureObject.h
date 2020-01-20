@@ -26,7 +26,7 @@ public:
 
 	void create(const Graphics::Imagef& image, const int id);
 
-	void clear();
+	void clear() override;
 
 	void send(const Graphics::Image& image);
 

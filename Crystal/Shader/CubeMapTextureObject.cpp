@@ -84,3 +84,8 @@ void CubeMapTextureObject::setNegativeZ(const Imagef& image)
 	glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGBA, image.getWidth(), image.getHeight(), 0, GL_RGBA, GL_FLOAT, image.getValues().data());
 	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 }
+
+void CubeMapTextureObject::clear()
+{
+	glDeleteTextures(1, &texHandle);
+}
