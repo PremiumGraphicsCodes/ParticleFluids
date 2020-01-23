@@ -22,9 +22,9 @@ public:
 	void onEdit() override;
 
 private:
-	IntView id;
-	LightView light;
-	StringView name;
+	IntView idView;
+	LightView lightView;
+	StringView nameView;
 };
 
 	}

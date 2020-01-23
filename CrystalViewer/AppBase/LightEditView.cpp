@@ -5,26 +5,31 @@ using namespace Crystal::UI;
 
 LightEditView::LightEditView(const std::string& name, World* world, Canvas* canvas) :
 	IEditCancelView(name, world, canvas),
-	id("Id", 0),
-	light("Light"),
-	name("Name", "")
+	idView("Id", 0),
+	lightView("Light"),
+	nameView("Name", "")
 {
-	add(&id);
-	add(&light);
-	add(&this->name);
+	add(&idView);
+	add(&lightView);
+	add(&nameView);
 }
 
 void LightEditView::setValue(LightScene* value)
 {
-	this->id.setValue(value->getId());
-	this->light.position.setValue(value->getLight()->getPosition());
-	this->light.ambient.setValue( value->getLight()->getAmbient() );
-	this->light.diffuse.setValue( value->getLight()->getDiffuse() );
-	this->light.specular.setValue( value->getLight()->getSpecular() );
-	this->name.setValue(value->getName());
+	this->idView.setValue(value->getId());
+	this->nameView.setValue(value->getName());
+	this->lightView.position.setValue(value->getLight()->getPosition());
+	this->lightView.ambient.setValue(value->getLight()->getAmbient());
+	this->lightView.diffuse.setValue(value->getLight()->getDiffuse());
+	this->lightView.specular.setValue(value->getLight()->getSpecular());
 }
 
 void LightEditView::onEdit()
 {
-	// Todo.
+	auto light = getWorld()->getObjects()->findSceneById<LightScene*>(idView.getValue());
+	auto l = light->getLight();
+	l->setPosition(lightView.position.getValue());
+	l->setAmbient(lightView.ambient.getValue());
+	l->setDiffuse(lightView.diffuse.getValue());
+	l->setSpecular(lightView.specular.getValue());
 }
