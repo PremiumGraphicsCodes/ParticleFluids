@@ -561,6 +561,9 @@
     <ClInclude Include="FaceGroupEditView.h">
       <Filter>Scene\Shape\PolygonMesh\Edit</Filter>
     </ClInclude>
+    <ClInclude Include="IEditCancelView.h">
+      <Filter>Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">

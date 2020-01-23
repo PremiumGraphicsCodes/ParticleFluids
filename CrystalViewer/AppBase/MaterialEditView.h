@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IView.h"
+#include "IEditCancelView.h"
 #include "IPopupButton.h"
 #include "MaterialView.h"
 #include "IntView.h"
@@ -10,7 +10,7 @@
 namespace Crystal {
 	namespace UI {
 
-class MaterialEditView : public IView
+class MaterialEditView : public IEditCancelView
 {
 public:
 	MaterialEditView(const std::string& name, Scene::World* model, Canvas* canvas);
@@ -18,12 +18,11 @@ public:
 	void setValue(Scene::MaterialScene* value);
 
 private:
+	void onEdit() override;
+
 	IntView id;
 	MaterialView material;
 	StringView name;
-	Scene::World* world;
-	Canvas* canvas;
-	Button editButton;
 };
 
 	}

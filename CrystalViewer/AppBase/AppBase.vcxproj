@@ -114,6 +114,7 @@
     <ClInclude Include="Double4View.h" />
     <ClInclude Include="FaceGroupEditView.h" />
     <ClInclude Include="glfw3.h" />
+    <ClInclude Include="IEditCancelView.h" />
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="IPSAddView.h" />
     <ClInclude Include="IUICtrl.h" />

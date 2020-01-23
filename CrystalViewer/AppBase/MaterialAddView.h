@@ -3,6 +3,7 @@
 #include "IOkCancelView.h"
 
 #include "MaterialView.h"
+#include "StringView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -10,16 +11,14 @@ namespace Crystal {
 class MaterialAddView : public IOkCancelView
 {
 public:
-	MaterialAddView(const std::string& name, Scene::World* model, Canvas* canvas);
-
-	//void onShow() override;
+	MaterialAddView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	MaterialView material;
-	StringView name;
+	MaterialView materialView;
+	StringView nameView;
 };
 
 	}
