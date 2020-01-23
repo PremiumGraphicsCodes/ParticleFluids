@@ -256,6 +256,12 @@
     <ClCompile Include="FileOpenView.cpp">
       <Filter>File</Filter>
     </ClCompile>
+    <ClCompile Include="FilePathView.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSaveView.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -566,6 +572,9 @@
     </ClInclude>
     <ClInclude Include="IEditCancelView.h">
       <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="FilePathView.h">
+      <Filter>File</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
