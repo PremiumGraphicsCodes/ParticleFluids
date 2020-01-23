@@ -124,7 +124,9 @@ namespace PG {
 		public const string DiffuseLabel = "Diffuse";
 		public const string SpecularLabel = "Specular";
 		public const string ShininessLabel = "Shininess";
-		public const string TextureIdLabel = "TextureId";
+		public const string AmbientTextureNameLabel = "AmbientTextureName";
+		public const string DiffuseTextureNameLabel = "DiffuseTextureName";
+		public const string SpecularTextureNameLabel = "SpecularTextureName";
 		public const string NameLabel = "Name";
 		public const string NewIdLabel = "NewId";
 	}
@@ -137,7 +139,7 @@ namespace PG {
 		public const string DiffuseLabel = "Diffuse";
 		public const string SpecularLabel = "Specular";
 		public const string ShininessLabel = "Shininess";
-		public const string TextureIdLabel = "TextureId";
+		public const string TextureNameLabel = "TextureName";
 		public const string NameLabel = "Name";
 	}
 
@@ -149,7 +151,7 @@ namespace PG {
 		public const string DiffuseLabel = "Diffuse";
 		public const string SpecularLabel = "Specular";
 		public const string ShininessLabel = "Shininess";
-		public const string TextureIdLabel = "TextureId";
+		public const string TextureNameLabel = "TextureName";
 		public const string NameLabel = "Name";
 	}
 

@@ -123,7 +123,7 @@ namespace PG.CGStudio.Scene
             command.SetArg(PG.MaterialCreateLabels.DiffuseLabel, material.Diffuse);
             command.SetArg(PG.MaterialCreateLabels.SpecularLabel, material.Specular);
             command.SetArg(PG.MaterialCreateLabels.ShininessLabel, material.Shininess);
-            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.TextureId);
+//            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.TextureId);
             command.SetArg(PG.MaterialCreateLabels.NameLabel, name);
 //            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.)
             command.Execute(adapter);
