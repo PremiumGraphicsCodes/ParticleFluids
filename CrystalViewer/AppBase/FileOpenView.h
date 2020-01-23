@@ -4,32 +4,19 @@
 #include <string>
 #include <vector>
 
-#include "tinyfiledialogs.h"
-
 namespace Crystal {
 	namespace UI {
 
 class FileOpenView : public IWindow
 {
 public:
-	explicit FileOpenView(const std::string& name) :
-		IWindow(name)
-	{}
+	explicit FileOpenView(const std::string& name);
 
-	void addFilter(char const* filter) { filters.push_back(filter); }
+	void addFilter(char const* filter);
 
-	void onShow() override
-	{
-		//char const * lFilterPatterns[2] = { "*.stl", "*.obj" };
-		filename = tinyfd_openFileDialog("Open", "", filters.size(), filters.data(), nullptr, 0);
-	}
+	void onShow() override;
 
-	std::string getFileName() const {
-		if (filename == nullptr) {
-			return "";
-		}
-		return filename;
-	}
+	std::string getFileName() const;
 
 private:
 	std::vector< char const* > filters;

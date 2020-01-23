@@ -9,25 +9,25 @@ using namespace Crystal::UI;
 
 MaterialEditView::MaterialEditView(const std::string& name, World* world, Canvas* canvas) :
 	IEditCancelView(name, world, canvas),
-	id("Id", 0),
-	material("Material"),
-	name("Name", "Material1")
+	idView("Id", 0),
+	materialView("Material"),
+	nameView("Name", "Material1")
 {
-	add(&id);
-	add(&material);
-	add(&this->name);
+	add(&idView);
+	add(&materialView);
+	add(&nameView);
 }
 
 void MaterialEditView::setValue(MaterialScene* value)
 {
-	this->id.setValue(value->getId());
-	this->name.setValue(value->getName());
-	this->material.setValue(value->getMaterial());
+	this->idView.setValue(value->getId());
+	this->nameView.setValue(value->getName());
+	this->materialView.setValue(value->getMaterial());
 }
 
 void MaterialEditView::onEdit()
 {
-	auto mat = getWorld()->getObjects()->findSceneById<MaterialScene*>(id.getValue());
-	mat->setMaterial(material.getValue());
-	mat->setName(this->name.getValue());
+	auto mat = getWorld()->getObjects()->findSceneById<MaterialScene*>(idView.getValue());
+	mat->setMaterial(materialView.getValue());
+	mat->setName(nameView.getValue());
 }

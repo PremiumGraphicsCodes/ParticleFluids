@@ -20,9 +20,9 @@ public:
 private:
 	void onEdit() override;
 
-	IntView id;
-	MaterialView material;
-	StringView name;
+	IntView idView;
+	MaterialView materialView;
+	StringView nameView;
 };
 
 	}

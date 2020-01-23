@@ -35,6 +35,7 @@
     <ClCompile Include="DoubleView.cpp" />
     <ClCompile Include="FaceGroupEditView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
+    <ClCompile Include="FileOpenView.cpp" />
     <ClCompile Include="Float4View.cpp" />
     <ClCompile Include="FloatView.cpp" />
     <ClCompile Include="IntView.cpp" />

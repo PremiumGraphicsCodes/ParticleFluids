@@ -253,6 +253,9 @@
     <ClCompile Include="FaceGroupEditView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Edit</Filter>
     </ClCompile>
+    <ClCompile Include="FileOpenView.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
