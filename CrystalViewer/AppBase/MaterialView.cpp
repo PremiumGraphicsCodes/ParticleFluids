@@ -32,17 +32,19 @@ void MaterialView::setValue(const Material& m)
 
 	ambientTexture.setValue(m.ambientTextureName);
 	diffuseTexture.setValue(m.diffuseTextureName);
+	specularTexture.setValue(m.specularTextureName);
 }
 
 Material MaterialView::getValue() const
 {
 	Graphics::Material m;
-	m.ambient = (ambient.getValue());
-	m.diffuse = (diffuse.getValue());
-	m.specular = (specular.getValue());
-	m.shininess = (shininess.getValue());
+	m.ambient = ambient.getValue();
+	m.diffuse = diffuse.getValue();
+	m.specular = specular.getValue();
+	m.shininess = shininess.getValue();
 	
 	m.ambientTextureName = ambientTexture.getValue();
 	m.diffuseTextureName = diffuseTexture.getValue();
+	m.specularTextureName = specularTexture.getValue();
 	return m;
 }

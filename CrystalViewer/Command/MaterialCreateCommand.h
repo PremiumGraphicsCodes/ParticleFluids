@@ -16,7 +16,9 @@ public:
 		Arg<Graphics::ColorRGBAf> diffuse;
 		Arg<Graphics::ColorRGBAf> specular;
 		Arg<float> shininess;
-		//Arg<std::string> textureName;
+		Arg<std::string> ambientTextureName;
+		Arg<std::string> diffuseTextureName;
+		Arg<std::string> specularTextureName;
 		Arg<std::string> name;
 	};
 
