@@ -1,12 +1,14 @@
 #include "IRenderer.h"
 
+#include "../Shader/GLObjectFactory.h"
+
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-bool IRenderer::build()
+bool IRenderer::build(GLObjectFactory& factory)
 {
-	this->shader = std::make_unique<ShaderObject>();
-	if (!shader->build(vsSource, fsSource)) {
+	this->shader = factory.getShaderFactory()->create(vsSource, fsSource); //std::make_unique<ShaderObject>();
+	if (!shader->isBuildOK()) {
 		return false;
 	}
 	for (const auto& u : uniforms) {

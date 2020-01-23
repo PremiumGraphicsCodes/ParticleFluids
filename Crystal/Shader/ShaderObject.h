@@ -118,9 +118,13 @@ public:
 	void setLineWidth(const float width);
 
 public:
-	GLuint handle;
+	//GLuint getHandle() const { return handle; }
+
+	bool isBuildOK() const { return isBuildOk; }
 
 private:
+	GLuint handle;
+
 	bool isBuildOk;
 	std::string log;
 	std::map< std::string, unsigned int > uniformMap;

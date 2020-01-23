@@ -6,6 +6,9 @@
 #include <memory>
 
 namespace Crystal {
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace Scene {
 
 class IRenderer
@@ -15,7 +18,7 @@ public:
 
 	virtual ~IRenderer() {};
 
-	bool build();
+	bool build(Shader::GLObjectFactory& factory);
 
 	virtual void render(const Graphics::Camera& camera) = 0;
 
@@ -31,12 +34,12 @@ public:
 
 	std::string getFragmentShaderSource() const { return fsSource; }
 
-	Shader::ShaderObject* getShader() { return shader.get(); }
+	Shader::ShaderObject* getShader() { return shader; }
 
 	//void render(const Graphics::Camera& camera) {};
 
 private:
-	std::unique_ptr<Shader::ShaderObject> shader;
+	Shader::ShaderObject* shader;
 	std::string vsSource;
 	std::string fsSource;
 	std::vector<std::string> uniforms;
