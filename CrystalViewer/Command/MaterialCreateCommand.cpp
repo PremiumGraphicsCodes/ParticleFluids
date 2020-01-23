@@ -41,18 +41,18 @@ MaterialCreateCommand::Results::Results() :
 
 void MaterialCreateCommand::execute(World* world)
 {
-	Material m;
+	auto m = std::make_unique<Material>();
 
-	m.ambient = args.ambient.getValue();
-	m.diffuse = args.diffuse.getValue();
-	m.specular = args.specular.getValue();
-	m.shininess = args.shininess.getValue();
+	m->ambient = args.ambient.getValue();
+	m->diffuse = args.diffuse.getValue();
+	m->specular = args.specular.getValue();
+	m->shininess = args.shininess.getValue();
 
 	//m.ambientTextureName = args.ambientTextureName.getValue();
 	//m.diffuseTextureName = args.diffuseTextureName.getValue();
 	//m.specularTextureName = args.specularTextureName.getValue();
 
-	auto scene = world->getSceneFactory()->createMaterialScene(m, args.name.getValue());
+	auto scene = world->getSceneFactory()->createMaterialScene(std::move(m), args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
 }

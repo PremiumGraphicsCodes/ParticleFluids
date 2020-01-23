@@ -82,9 +82,9 @@ LightScene* SceneFactory::createLightScene(const PointLight& light, const std::s
 	return new LightScene(getNextId(), name, light);
 }
 
-MaterialScene* SceneFactory::createMaterialScene(const Material& material, const std::string& name)
+MaterialScene* SceneFactory::createMaterialScene(std::unique_ptr<Material> material, const std::string& name)
 {
-	return new MaterialScene(getNextId(), name, material, materialIdProvider.getNextId());
+	return new MaterialScene(getNextId(), name, std::move(material), materialIdProvider.getNextId());
 }
 
 TextureScene* SceneFactory::createTextureScene(const TextureObject& texture, const std::string& name)

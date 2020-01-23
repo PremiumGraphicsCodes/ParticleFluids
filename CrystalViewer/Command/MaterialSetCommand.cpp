@@ -38,11 +38,9 @@ void MaterialSetCommand::execute(World* world)
 		return;
 	}
 	auto m = scene->getMaterial();
-	m.ambient = args.ambient.getValue();
-	m.diffuse = args.diffuse.getValue();
-	m.specular = args.specular.getValue();
-	m.shininess = args.shininess.getValue();
-	//m.ambientTextureName = args.textureName.getValue();
-	scene->setMaterial(m);
+	m->ambient = args.ambient.getValue();
+	m->diffuse = args.diffuse.getValue();
+	m->specular = args.specular.getValue();
+	m->shininess = args.shininess.getValue();
 	scene->setName(args.name.getValue());
 }

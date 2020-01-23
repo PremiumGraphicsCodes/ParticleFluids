@@ -97,12 +97,12 @@ bool OBJFileImportCommand::importMTL(const std::filesystem::path& filePath, Worl
 	if (reader.read(filePath)) {
 		const auto& mtl = reader.getMTL();
 		for (const auto& m : mtl.materials) {
-			Material mat;
-			mat.ambient = m.ambient;
-			mat.diffuse = m.diffuse;
-			mat.specular = m.specular;
-			mat.shininess = m.specularExponent;
-			world->getObjects()->addScene(world->getSceneFactory()->createMaterialScene(mat, m.name));
+			auto mat = std::make_unique<Material>();
+			mat->ambient = m.ambient;
+			mat->diffuse = m.diffuse;
+			mat->specular = m.specular;
+			mat->shininess = m.specularExponent;
+			world->getObjects()->addScene(world->getSceneFactory()->createMaterialScene(std::move(mat), m.name));
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;

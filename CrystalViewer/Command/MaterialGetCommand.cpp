@@ -42,10 +42,10 @@ void MaterialGetCommand::execute(World* world)
 		return;
 	}
 	auto m = scene->getMaterial();
-	results.ambient.setValue(Graphics::ColorRGBAf(m.ambient));
-	results.diffuse.setValue(Graphics::ColorRGBAf(m.diffuse));
-	results.specular.setValue(Graphics::ColorRGBAf(m.specular));
-	results.shininess.setValue(m.shininess);
+	results.ambient.setValue(Graphics::ColorRGBAf(m->ambient));
+	results.diffuse.setValue(Graphics::ColorRGBAf(m->diffuse));
+	results.specular.setValue(Graphics::ColorRGBAf(m->specular));
+	results.shininess.setValue(m->shininess);
 //	results.textureName.setValue(m.ambientTextureName);
 	results.name.setValue(scene->getName());
 }

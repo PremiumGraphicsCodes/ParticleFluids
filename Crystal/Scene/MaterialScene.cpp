@@ -7,19 +7,14 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-MaterialScene::MaterialScene(const int id, const std::string& name, const Material& material, const int materialId) :
+MaterialScene::MaterialScene(const int id, const std::string& name, std::unique_ptr<Material> material, const int materialId) :
 	IScene(id, name),
-	material(material),
+	material(std::move(material)),
 	ambientTexture(nullptr),
 	diffuseTexture(nullptr),
 	specularTexture(nullptr),
 	materialId(materialId)
 {}
-
-void MaterialScene::setMaterial(const Material& material)
-{
-	this->material = material;
-}
 
 TextureScene* MaterialScene::getAmbientTexture() const
 {
@@ -53,5 +48,5 @@ void MaterialScene::setSpecularTexture(TextureScene* texture)
 
 void MaterialScene::toViewModel(SceneViewModel& viewModel) const
 {
-	viewModel.materials.push_back(material);
+	viewModel.materials.push_back(*material);
 }

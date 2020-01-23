@@ -30,31 +30,31 @@ void World::init()
 	scenes[1]->addScene(sceneFactory.createLightScene(light, "Light0"));
 
 	{
-		Material material;
-		material.ambient = ColorRGBAf(1, 1, 1, 1);
-		material.diffuse = ColorRGBAf(1, 1, 1, 1);
-		material.specular = ColorRGBAf(1, 1, 1, 1);
-		material.shininess = 1.0;
-		scenes[1]->addScene(sceneFactory.createMaterialScene(material, "White"));
+		auto material = std::make_unique<Material>();
+		material->ambient = ColorRGBAf(1, 1, 1, 1);
+		material->diffuse = ColorRGBAf(1, 1, 1, 1);
+		material->specular = ColorRGBAf(1, 1, 1, 1);
+		material->shininess = 1.0;
+		scenes[1]->addScene(sceneFactory.createMaterialScene(std::move(material), "WhiteMat"));
 	}
 
 	{
-		Material material;
-		material.ambient = ColorRGBAf(1, 0, 0, 1);
-		material.diffuse = ColorRGBAf(0, 0, 0, 1);
-		material.specular = ColorRGBAf(0, 0, 0, 1);
-		material.shininess = 1.0;
-		scenes[1]->addScene(sceneFactory.createMaterialScene(material, "RedMat"));
+		auto material = std::make_unique<Material>();
+		material->ambient = ColorRGBAf(1, 0, 0, 1);
+		material->diffuse = ColorRGBAf(0, 0, 0, 1);
+		material->specular = ColorRGBAf(0, 0, 0, 1);
+		material->shininess = 1.0;
+		scenes[1]->addScene(sceneFactory.createMaterialScene(std::move(material), "RedMat"));
 	}
 
 
 	{
-		Material material;
-		material.ambient = ColorRGBAf(0, 0, 0, 1);
-		material.diffuse = ColorRGBAf(0, 0, 0, 1);
-		material.specular = ColorRGBAf(0, 0, 0, 1);
-		material.shininess = 1.0;
-		scenes[1]->addScene(sceneFactory.createMaterialScene(material, "BlackMat"));
+		auto material = std::make_unique<Material>();
+		material->ambient = ColorRGBAf(0, 0, 0, 1);
+		material->diffuse = ColorRGBAf(0, 0, 0, 1);
+		material->specular = ColorRGBAf(0, 0, 0, 1);
+		material->shininess = 1.0;
+		scenes[1]->addScene(sceneFactory.createMaterialScene(std::move(material), "BlackMat"));
 	}
 
 	{

@@ -5,12 +5,13 @@
 #include <string>
 #include "../Math/Vector3d.h"
 
+#include "../Graphics/Material.h"
+
 namespace Crystal {
 	namespace Graphics {
 		class Image;
 		class Camera;
 		class PointLight;
-		struct Material;
 	}
 	namespace Shader {
 		class ShaderObject;
@@ -58,7 +59,7 @@ public:
 
 	LightScene* createLightScene(const Graphics::PointLight& light, const std::string& name);
 
-	MaterialScene* createMaterialScene(const Graphics::Material& material, const std::string& name);
+	MaterialScene* createMaterialScene(std::unique_ptr<Graphics::Material> material, const std::string& name);
 
 	TextureScene* createTextureScene(const Shader::TextureObject& texture, const std::string& name);
 

@@ -29,10 +29,10 @@ MaterialView::MaterialView(const std::string& name) :
 
 void MaterialView::setValue(MaterialScene* m)
 {
-	ambient.setValue(m->getMaterial().ambient);
-	diffuse.setValue(m->getMaterial().diffuse);
-	specular.setValue(m->getMaterial().specular);
-	shininess.setValue(m->getMaterial().shininess);
+	ambient.setValue(m->getMaterial()->ambient);
+	diffuse.setValue(m->getMaterial()->diffuse);
+	specular.setValue(m->getMaterial()->specular);
+	shininess.setValue(m->getMaterial()->shininess);
 
 	ambientTexture.setValue(m->getAmbientTexture()->getName());
 	diffuseTexture.setValue(m->getDiffuseTexture()->getName());
