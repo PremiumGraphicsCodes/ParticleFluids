@@ -1,7 +1,11 @@
 #include "MaterialView.h"
 
+#include "../../Crystal/Scene/MaterialScene.h"
+#include "../../Crystal/Scene/TextureScene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 MaterialView::MaterialView(const std::string& name) :
@@ -23,28 +27,14 @@ MaterialView::MaterialView(const std::string& name) :
 	add(&specularTexture);
 }
 
-void MaterialView::setValue(const Material& m)
+void MaterialView::setValue(MaterialScene* m)
 {
-	ambient.setValue(m.ambient);
-	diffuse.setValue(m.diffuse);
-	specular.setValue(m.specular);
-	shininess.setValue(m.shininess);
+	ambient.setValue(m->getMaterial().ambient);
+	diffuse.setValue(m->getMaterial().diffuse);
+	specular.setValue(m->getMaterial().specular);
+	shininess.setValue(m->getMaterial().shininess);
 
-	ambientTexture.setValue(m.ambientTextureName);
-	diffuseTexture.setValue(m.diffuseTextureName);
-	specularTexture.setValue(m.specularTextureName);
-}
-
-Material MaterialView::getValue() const
-{
-	Graphics::Material m;
-	m.ambient = ambient.getValue();
-	m.diffuse = diffuse.getValue();
-	m.specular = specular.getValue();
-	m.shininess = shininess.getValue();
-	
-	m.ambientTextureName = ambientTexture.getValue();
-	m.diffuseTextureName = diffuseTexture.getValue();
-	m.specularTextureName = specularTexture.getValue();
-	return m;
+	ambientTexture.setValue(m->getAmbientTexture()->getName());
+	diffuseTexture.setValue(m->getDiffuseTexture()->getName());
+	specularTexture.setValue(m->getSpecularTexture()->getName());
 }

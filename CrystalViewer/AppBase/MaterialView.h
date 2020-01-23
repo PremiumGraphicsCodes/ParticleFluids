@@ -11,6 +11,9 @@
 #include "../../Crystal/Graphics/Material.h"
 
 namespace Crystal {
+	namespace Scene {
+		class MaterialScene;
+	}
 	namespace UI {
 
 class MaterialView : public IView
@@ -18,11 +21,9 @@ class MaterialView : public IView
 public:
 	explicit MaterialView(const std::string& name);
 
-	void setValue(const Graphics::Material& m);
+	void setValue(Scene::MaterialScene* m);
 
-	Graphics::Material getValue() const;
-
-private:
+public:
 	Float4View ambient;
 	Float4View diffuse;
 	Float4View specular;

@@ -48,9 +48,9 @@ void MaterialCreateCommand::execute(World* world)
 	m.specular = args.specular.getValue();
 	m.shininess = args.shininess.getValue();
 
-	m.ambientTextureName = args.ambientTextureName.getValue();
-	m.diffuseTextureName = args.diffuseTextureName.getValue();
-	m.specularTextureName = args.specularTextureName.getValue();
+	//m.ambientTextureName = args.ambientTextureName.getValue();
+	//m.diffuseTextureName = args.diffuseTextureName.getValue();
+	//m.specularTextureName = args.specularTextureName.getValue();
 
 	auto scene = world->getSceneFactory()->createMaterialScene(m, args.name.getValue());
 	world->getObjects()->addScene(scene);

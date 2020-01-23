@@ -22,12 +22,12 @@ void MaterialEditView::setValue(MaterialScene* value)
 {
 	this->idView.setValue(value->getId());
 	this->nameView.setValue(value->getName());
-	this->materialView.setValue(value->getMaterial());
+	this->materialView.setValue(value);
 }
 
 void MaterialEditView::onEdit()
 {
 	auto mat = getWorld()->getObjects()->findSceneById<MaterialScene*>(idView.getValue());
-	mat->setMaterial(materialView.getValue());
-	mat->setName(nameView.getValue());
+	//mat->setMaterial(materialView.getValue());
+	//mat->setName(nameView.getValue());
 }

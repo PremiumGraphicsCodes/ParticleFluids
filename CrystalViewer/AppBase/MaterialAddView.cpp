@@ -22,15 +22,14 @@ MaterialAddView::MaterialAddView(const std::string& name, World* world, Canvas* 
 
 void MaterialAddView::onOk()
 {
-	const auto& m = materialView.getValue();
 	Crystal::Command::Command command(MaterialCreateLabels::CommandNameLabel);
-	command.setArg(MaterialCreateLabels::AmbientLabel, Graphics::ColorRGBAf( m.ambient) );
-	command.setArg(MaterialCreateLabels::DiffuseLabel, Graphics::ColorRGBAf(m.diffuse));
-	command.setArg(MaterialCreateLabels::SpecularLabel, Graphics::ColorRGBAf(m.specular));
-	command.setArg(MaterialCreateLabels::ShininessLabel, m.shininess);
-	command.setArg(MaterialCreateLabels::AmbientTextureNameLabel, m.ambientTextureName);
-	command.setArg(MaterialCreateLabels::DiffuseTextureNameLabel, m.diffuseTextureName);
-	command.setArg(MaterialCreateLabels::SpecularTextureNameLabel, m.specularTextureName);
+	command.setArg(MaterialCreateLabels::AmbientLabel, materialView.ambient.getValue());
+	command.setArg(MaterialCreateLabels::DiffuseLabel, materialView.diffuse.getValue());
+	command.setArg(MaterialCreateLabels::SpecularLabel, materialView.specular.getValue());
+	command.setArg(MaterialCreateLabels::ShininessLabel, materialView.shininess.getValue());
+	//command.setArg(MaterialCreateLabels::AmbientTextureNameLabel, m.ambientTextureName);
+	//command.setArg(MaterialCreateLabels::DiffuseTextureNameLabel, m.diffuseTextureName);
+	//command.setArg(MaterialCreateLabels::SpecularTextureNameLabel, m.specularTextureName);
 	command.setArg(MaterialCreateLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
 	const auto newId = command.getResult(MaterialCreateLabels::NewIdLabel);

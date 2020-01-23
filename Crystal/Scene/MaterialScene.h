@@ -12,7 +12,10 @@ class MaterialScene : public IScene
 public:
 	MaterialScene(const int id, const std::string& name, const Graphics::Material& material, const int materialId) :
 		IScene(id, name),
-		material(material)
+		material(material),
+		ambientTexture(nullptr),
+		diffuseTexture(nullptr),
+		specularTexture(nullptr)
 	{}
 
 	~MaterialScene() {};
@@ -20,6 +23,12 @@ public:
 	Graphics::Material getMaterial() { return material; }
 
 	void setMaterial(const Graphics::Material& material);
+
+	void setAmbientTexture(TextureScene* texture) { this->ambientTexture = texture; }
+
+	void setDiffuseTexture(TextureScene* texture) { this->diffuseTexture = texture; }
+
+	void setSpecularTexture(TextureScene* texture) { this->specularTexture = texture; }
 
 	TextureScene* getAmbientTexture() const;
 
