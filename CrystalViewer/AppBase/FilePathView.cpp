@@ -21,6 +21,10 @@ void FilePathView::addFilter(const char* filter)
 
 void FilePathView::onSelect()
 {
-	fileNameView.setValue( tinyfd_openFileDialog("Open", "", filters.size(), filters.data(), nullptr, 0) );
+	auto fileName = tinyfd_openFileDialog("Open", "", filters.size(), filters.data(), nullptr, 0);
+	if (fileName == nullptr) {
+		return;
+	}
+	fileNameView.setValue( fileName );
 };
 

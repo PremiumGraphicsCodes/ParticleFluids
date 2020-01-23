@@ -1,31 +1,25 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 #include "StringView.h"
-#include "../../Crystal/Graphics/Image.h"
+#include "FilePathView.h"
+#include "../../Crystal/Shader/TextureObject.h"
 
 namespace Crystal {
 	namespace UI {
 
-class TextureView : public IWindow
+class TextureView : public IView
 {
 public:
 	explicit TextureView(const std::string& name);
 
-	TextureView(const std::string& name, const Graphics::Image& image);
+	TextureView(const std::string& name, const std::string& filePath);
 
-	~TextureView();
-
-	void onShow() override;
-
-	void setValue(const Graphics::Image& image);
-
-	Graphics::Image getValue() const { return image; }
+	void setValue(const Shader::TextureObject& texture);
 
 private:
-	Graphics::Image image;
+	FilePathView filePathView;
 	StringView nameView;
-	unsigned int textureId;
 };
 
 	}

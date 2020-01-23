@@ -12,7 +12,7 @@ class FileSaveView : public IWindow
 public:
 	explicit FileSaveView(const std::string& name);
 
-	void addFilter(char const* filter) { filters.push_back(filter); }
+	void addFilter(char const* filter);
 
 	void onShow() override;
 

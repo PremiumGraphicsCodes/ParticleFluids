@@ -40,6 +40,7 @@
     <ClCompile Include="FileSaveView.cpp" />
     <ClCompile Include="Float4View.cpp" />
     <ClCompile Include="FloatView.cpp" />
+    <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="IntView.cpp" />
     <ClCompile Include="IPSAddView.cpp" />
     <ClCompile Include="IWFAddView.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="FilePathView.h" />
     <ClInclude Include="glfw3.h" />
     <ClInclude Include="IEditCancelView.h" />
+    <ClInclude Include="ImageView.h" />
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="IPSAddView.h" />
     <ClInclude Include="IUICtrl.h" />
