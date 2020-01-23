@@ -8,36 +8,30 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-FaceGroupEditView::FaceGroupEditView(const std::string& name, World* repository, Canvas* canvas) :
-	IWindow(name),
-	world(repository),
-	id("Id"),
-	name("Name"),
-	materialName("Material"),
-	edit("Edit")
+FaceGroupEditView::FaceGroupEditView(const std::string& name, World* world, Canvas* canvas) :
+	IEditCancelView(name, world, canvas),
+	idView("Id"),
+	nameView("Name"),
+	materialNameView("Material")
 {
-	edit.setFunction([=]() { onEdit(); });
-}
-
-void FaceGroupEditView::onShow()
-{
-	id.show();
-	name.show();
-	materialName.show();
-	edit.show();
+	add(&idView);
+	add(&nameView);
+	add(&materialNameView);
 }
 
 void FaceGroupEditView::setValue(FaceGroupScene* value)
 {
-	id.setValue(value->getId());
-	name.setValue(value->getName());
-//	materialName.setValue(value->getMaterial().getName());
+	idView.setValue(value->getId());
+	nameView.setValue(value->getName());
+	if (value->getMaterial() != nullptr) {
+		materialNameView.setValue(value->getMaterial()->getName());
+	}
 }
 
 void FaceGroupEditView::onEdit()
 {
-	auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id.getValue());
-	faceGroup->setName(name.getValue());
-	auto material = world->getObjects()->findSceneByName<MaterialScene*>(materialName.getValue());
+	auto faceGroup = getWorld()->getObjects()->findSceneById<FaceGroupScene*>(idView.getValue());
+	faceGroup->setName(nameView.getValue());
+	auto material = getWorld()->getObjects()->findSceneByName<MaterialScene*>(materialNameView.getValue());
 	faceGroup->setMaterial(material);
 }
