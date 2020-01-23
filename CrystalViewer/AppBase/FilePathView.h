@@ -14,6 +14,8 @@ public:
 
 	void addFilter(const char* filter);
 
+	std::string getFileName() const { return fileNameView.getValue(); }
+
 protected:
 	void onSelect();
 

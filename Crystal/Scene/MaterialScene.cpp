@@ -20,6 +20,11 @@ void MaterialScene::setMaterial(const Material& material)
 		auto scene = getRoot()->findSceneByName<TextureScene*>(material.diffuseTextureName);
 		this->diffuseTexture = scene;
 	}
+
+	if (!material.specularTextureName.empty()) {
+		auto scene = getRoot()->findSceneByName<TextureScene*>(material.specularTextureName);
+		this->specularTexture = scene;
+	}
 }
 
 TextureScene* MaterialScene::getAmbientTexture() const
@@ -30,6 +35,11 @@ TextureScene* MaterialScene::getAmbientTexture() const
 TextureScene* MaterialScene::getDiffuseTexture() const
 {
 	return diffuseTexture;
+}
+
+TextureScene* MaterialScene::getSpecularTexture() const
+{
+	return specularTexture;
 }
 
 void MaterialScene::toViewModel(SceneViewModel& viewModel) const

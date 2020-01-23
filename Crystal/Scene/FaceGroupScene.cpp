@@ -40,6 +40,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 	int materialId = 0;
 	int ambientTexId = 0;
 	int diffuseTexId = 0;
+	int specularTexId = 0;
 	if (material != nullptr) {
 		materialId = material->getMaterialId();
 		auto ambientTexture = material->getAmbientTexture();
@@ -49,6 +50,10 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 		auto diffuseTexture = material->getDiffuseTexture();
 		if (diffuseTexture != nullptr) {
 			diffuseTexId = diffuseTexture->getTextureObject().getHandle();
+		}
+		auto specularTexture = material->getSpecularTexture();
+		if (specularTexture != nullptr) {
+			specularTexId = specularTexture->getTextureObject().getHandle();
 		}
 	}
 
@@ -67,7 +72,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 				if (v.texCoordId != -1) {
 				}
 				*/
-				buffer.addVertex(p, n, texCoord, materialId, ambientTexId, diffuseTexId, 0);
+				buffer.addVertex(p, n, texCoord, materialId, ambientTexId, diffuseTexId, specularTexId);
 			}
 		}
 		viewModel.triangleBuffers.push_back(buffer);

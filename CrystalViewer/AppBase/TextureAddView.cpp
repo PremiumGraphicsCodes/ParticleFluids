@@ -17,18 +17,17 @@ using namespace Crystal::UI;
 
 TextureAddView::TextureAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	filePathView("FilePath")
+	filePathView("FilePath"),
+	nameView("Name", std::string("TextureXXX"))
 {
 	add(&filePathView);
+	add(&nameView);
 }
-
 
 void TextureAddView::onOk()
 {
-	/*
 	Command::Command command(TextureCreateLabels::CommandNameLabel);
-	command.setArg(TextureCreateLabels::FilePathLabel, filePathView.getValue());
-	command.setArg(TextureCreateLabels::NameLabel, name.getValue());
+	command.setArg(TextureCreateLabels::FilePathLabel, filePathView.getFileName());
+	command.setArg(TextureCreateLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
-	*/
 }

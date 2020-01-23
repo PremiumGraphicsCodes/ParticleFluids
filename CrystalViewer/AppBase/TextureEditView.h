@@ -1,27 +1,25 @@
 #pragma once
 
-/*
-#include "IWindow.h"
+#include "IEditCancelView.h"
 #include "TextureView.h"
 #include "IntView.h"
-#include "StringView.h"
-#include "../../Crystal/Scene/TextureScene.h"
-#include "../../Crystal/Scene/World.h"
-#include "Canvas.h"
 
 namespace Crystal {
+	namespace Scene {
+		class TextureScene;
+	}
 	namespace UI {
 
-class TextureEditView : public IWindow
+class TextureEditView : public IEditCancelView
 {
 public:
-	TextureEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
-
-	void show() override;
+	explicit TextureEditView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 	void setValue(Scene::TextureScene* value);
 
 private:
+	void onEdit() override;
+
 	TextureView texture;
 	IntView id;
 	StringView name;
@@ -29,4 +27,3 @@ private:
 
 	}
 }
-*/

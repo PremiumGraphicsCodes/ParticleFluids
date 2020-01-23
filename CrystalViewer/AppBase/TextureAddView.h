@@ -16,6 +16,7 @@ private:
 private:
 	//TextureView image;
 	FilePathView filePathView;
+	StringView nameView;
 };
 
 	}

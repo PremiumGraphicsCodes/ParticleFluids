@@ -25,6 +25,8 @@ public:
 
 	TextureScene* getDiffuseTexture() const;
 
+	TextureScene* getSpecularTexture() const;
+
 	void onClear() override {};
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
@@ -37,6 +39,7 @@ private:
 	Graphics::Material material;
 	TextureScene* ambientTexture;
 	TextureScene* diffuseTexture;
+	TextureScene* specularTexture;
 	int materialId;
 };
 
