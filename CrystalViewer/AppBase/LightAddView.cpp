@@ -22,13 +22,11 @@ LightAddView::LightAddView(const std::string& name, World* model, Canvas* canvas
 
 void LightAddView::onOk()
 {
-	const auto& l = light.getValue();
-
 	Crystal::Command::Command command(LightCreateLabels::CommandNameLabel);
-	command.setArg(LightCreateLabels::PositionLabel, Vector3dd( l.getPosition() ));
-	command.setArg(LightCreateLabels::DiffuseLabel, ColorRGBAf( l.getDiffuse()));
-	command.setArg(LightCreateLabels::SpecularLabel, ColorRGBAf( l.getSpecular()));
-	command.setArg(LightCreateLabels::AmbientLabel, ColorRGBAf(l.getAmbient()));
+	command.setArg(LightCreateLabels::PositionLabel, Vector3dd( light.position.getValue() ));
+	command.setArg(LightCreateLabels::DiffuseLabel, ColorRGBAf( light.diffuse.getValue() ));
+	command.setArg(LightCreateLabels::SpecularLabel, ColorRGBAf( light.specular.getValue() ));
+	command.setArg(LightCreateLabels::AmbientLabel, ColorRGBAf(light.ambient.getValue()));
 	command.setArg(LightCreateLabels::NameLabel, name.getValue());
 	command.execute(getWorld());
 	const auto newId = command.getResult(LightCreateLabels::NewIdLabel);

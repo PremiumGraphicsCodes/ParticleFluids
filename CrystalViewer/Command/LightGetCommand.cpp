@@ -40,9 +40,9 @@ void LightGetCommand::execute(World* world)
 		return;
 	}
 	auto m = scene->getLight();
-	results.position.setValue(m.getPosition());
-	results.ambient.setValue(Graphics::ColorRGBAf(m.getAmbient()));
-	results.diffuse.setValue(Graphics::ColorRGBAf(m.getDiffuse()));
-	results.specular.setValue(Graphics::ColorRGBAf(m.getSpecular()));
+	results.position.setValue(m->getPosition());
+	results.ambient.setValue(Graphics::ColorRGBAf(m->getAmbient()));
+	results.diffuse.setValue(Graphics::ColorRGBAf(m->getDiffuse()));
+	results.specular.setValue(Graphics::ColorRGBAf(m->getSpecular()));
 	results.name.setValue(scene->getName());
 }

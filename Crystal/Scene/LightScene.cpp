@@ -6,7 +6,12 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
+LightScene::LightScene(const int id, const std::string& name, std::unique_ptr<PointLight> light) :
+	IScene(id, name),
+	light(std::move(light))
+{}
+
 void LightScene::toViewModel(SceneViewModel& viewModel) const
 {
-	viewModel.lights.push_back(light);
+	viewModel.lights.push_back(*light);
 }

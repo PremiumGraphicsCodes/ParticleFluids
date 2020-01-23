@@ -3,36 +3,28 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-LightEditView::LightEditView(const std::string& name, World* repository, Canvas* canvas) :
-	IWindow(name),
+LightEditView::LightEditView(const std::string& name, World* world, Canvas* canvas) :
+	IEditCancelView(name, world, canvas),
 	id("Id", 0),
 	light("Light"),
-	name("Name", ""),
-	repository(repository),
-	canvas(canvas),
-	editButton("Edit")
+	name("Name", "")
 {
-	auto func = [=]()
-	{
-		auto light = repository->getObjects()->findSceneById<LightScene*>(id.getValue());
-		light->setLight(this->light.getValue());
-		light->setName(this->name.getValue());
-	};
-	editButton.setFunction(func);
-}
-
-void LightEditView::onShow()
-{
-	id.show();
-	light.show();
-	name.show();
-	editButton.show();
+	add(&id);
+	add(&light);
+	add(&this->name);
 }
 
 void LightEditView::setValue(LightScene* value)
 {
 	this->id.setValue(value->getId());
-	this->light.setValue(value->getLight());
+	this->light.position.setValue(value->getLight()->getPosition());
+	this->light.ambient.setValue( value->getLight()->getAmbient() );
+	this->light.diffuse.setValue( value->getLight()->getDiffuse() );
+	this->light.specular.setValue( value->getLight()->getSpecular() );
 	this->name.setValue(value->getName());
 }
 
+void LightEditView::onEdit()
+{
+	// Todo.
+}

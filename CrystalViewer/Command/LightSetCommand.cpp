@@ -34,10 +34,9 @@ void LightSetCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<LightScene*>(args.id.getValue());
 	auto l = scene->getLight();
-	l.setPosition(args.position.getValue());
-	l.setAmbient(args.ambient.getValue());
-	l.setDiffuse(args.diffuse.getValue());
-	l.setSpecular(args.specular.getValue());
-	scene->setLight(l);
+	l->setPosition(args.position.getValue());
+	l->setAmbient(args.ambient.getValue());
+	l->setDiffuse(args.diffuse.getValue());
+	l->setSpecular(args.specular.getValue());
 	scene->setName(args.name.getValue());
 }

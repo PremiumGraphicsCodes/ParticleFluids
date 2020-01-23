@@ -36,12 +36,12 @@ LightCreateCommand::Results::Results() :
 
 void LightCreateCommand::execute(World* world)
 {
-	PointLight l;
-	l.setPosition(args.position.getValue());
-	l.setAmbient(args.ambient.getValue());
-	l.setDiffuse(args.diffuse.getValue());
-	l.setSpecular(args.specular.getValue());
-	auto scene = world->getSceneFactory()->createLightScene(l, args.name.getValue());
+	auto l = std::make_unique<PointLight>();
+	l->setPosition(args.position.getValue());
+	l->setAmbient(args.ambient.getValue());
+	l->setDiffuse(args.diffuse.getValue());
+	l->setSpecular(args.specular.getValue());
+	auto scene = world->getSceneFactory()->createLightScene(std::move(l), args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
 }

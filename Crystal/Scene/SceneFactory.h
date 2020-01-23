@@ -6,12 +6,12 @@
 #include "../Math/Vector3d.h"
 
 #include "../Graphics/Material.h"
+#include "../Graphics/PointLight.h"
 
 namespace Crystal {
 	namespace Graphics {
 		class Image;
 		class Camera;
-		class PointLight;
 	}
 	namespace Shader {
 		class ShaderObject;
@@ -57,7 +57,7 @@ public:
 
 	PolygonMeshScene* createPolygonMeshScene(Shape::PolygonMesh* mesh, const std::string& name);
 
-	LightScene* createLightScene(const Graphics::PointLight& light, const std::string& name);
+	LightScene* createLightScene(std::unique_ptr<Graphics::PointLight> light, const std::string& name);
 
 	MaterialScene* createMaterialScene(std::unique_ptr<Graphics::Material> material, const std::string& name);
 

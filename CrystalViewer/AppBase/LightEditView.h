@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IEditCancelView.h"
 #include "LightView.h"
 #include "IntView.h"
 #include "StringView.h"
@@ -12,24 +12,19 @@
 namespace Crystal {
 	namespace UI {
 
-class LightEditView : public IWindow
+class LightEditView : public IEditCancelView
 {
 public:
-	LightEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
+	LightEditView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 	void setValue(Scene::LightScene* value);
 
-	void onShow() override;
-
-	//void setVisible(const bool isVisible) { this->isVisible = isVisible; }
+	void onEdit() override;
 
 private:
 	IntView id;
 	LightView light;
 	StringView name;
-	Button editButton;
-	Scene::World* repository;
-	Canvas* canvas;
 };
 
 	}

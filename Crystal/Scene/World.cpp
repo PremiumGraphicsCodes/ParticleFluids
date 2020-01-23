@@ -22,12 +22,14 @@ World::~World()
 
 void World::init()
 {
-	PointLight light;
-	light.setPosition(Vector3dd(100, 100, 100));
-	light.setAmbient(ColorRGBAf(1, 1, 1, 1));
-	light.setDiffuse(ColorRGBAf(1, 1, 1, 1));
-	light.setSpecular(ColorRGBAf(1, 1, 1, 1));
-	scenes[1]->addScene(sceneFactory.createLightScene(light, "Light0"));
+	{
+		auto light = std::make_unique<PointLight>();
+		light->setPosition(Vector3dd(100, 100, 100));
+		light->setAmbient(ColorRGBAf(1, 1, 1, 1));
+		light->setDiffuse(ColorRGBAf(1, 1, 1, 1));
+		light->setSpecular(ColorRGBAf(1, 1, 1, 1));
+		scenes[1]->addScene(sceneFactory.createLightScene(std::move(light), "Light0"));
+	}
 
 	{
 		auto material = std::make_unique<Material>();
