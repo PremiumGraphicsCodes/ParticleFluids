@@ -10,13 +10,7 @@ namespace Crystal {
 class MaterialScene : public IScene
 {
 public:
-	MaterialScene(const int id, const std::string& name, const Graphics::Material& material, const int materialId) :
-		IScene(id, name),
-		material(material),
-		ambientTexture(nullptr),
-		diffuseTexture(nullptr),
-		specularTexture(nullptr)
-	{}
+	MaterialScene(const int id, const std::string& name, const Graphics::Material& material, const int materialId);
 
 	~MaterialScene() {};
 
@@ -24,17 +18,17 @@ public:
 
 	void setMaterial(const Graphics::Material& material);
 
-	void setAmbientTexture(TextureScene* texture) { this->ambientTexture = texture; }
-
-	void setDiffuseTexture(TextureScene* texture) { this->diffuseTexture = texture; }
-
-	void setSpecularTexture(TextureScene* texture) { this->specularTexture = texture; }
-
 	TextureScene* getAmbientTexture() const;
 
 	TextureScene* getDiffuseTexture() const;
 
 	TextureScene* getSpecularTexture() const;
+
+	void setAmbientTexture(TextureScene* texture);
+
+	void setDiffuseTexture(TextureScene* texture);
+
+	void setSpecularTexture(TextureScene* texture);
 
 	void onClear() override {};
 
@@ -49,7 +43,7 @@ private:
 	TextureScene* ambientTexture;
 	TextureScene* diffuseTexture;
 	TextureScene* specularTexture;
-	int materialId;
+	const int materialId;
 };
 
 	}
