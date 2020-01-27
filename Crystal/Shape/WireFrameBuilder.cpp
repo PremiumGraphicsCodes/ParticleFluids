@@ -95,7 +95,7 @@ int WireFrameBuilder::createPosition(const Vector3dd& v)
 	return static_cast<int>(positions.size() - 1);
 }
 
-WireFrame* WireFrameBuilder::createWireFrame()
+std::unique_ptr<WireFrame> WireFrameBuilder::createWireFrame()
 {
-	return new WireFrame(positions, edges);
+	return std::make_unique<WireFrame>(positions, edges);
 }

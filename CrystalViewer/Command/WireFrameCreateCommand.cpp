@@ -47,8 +47,8 @@ void WireFrameCreateCommand::execute(World* world)
 	attr.color = args.color.getValue();
 	attr.width = args.lineWidth.getValue();
 	const auto& name = args.name.getValue();
-	WireFrame* shape = new WireFrame(positions, edges);
-	auto scene = world->getSceneFactory()->createWireFrameScene(shape, attr, name);
+	auto shape = std::make_unique<WireFrame>(positions, edges);
+	auto scene = world->getSceneFactory()->createWireFrameScene(std::move(shape), attr, name);
 	scene->setMatrix(args.matrix.getValue());
 	world->addScene(args.layer.getValue(), scene);
 	results.newId.setValue(scene->getId());

@@ -30,7 +30,7 @@ public:
 
 	int createPosition(const Math::Vector3dd& v);
 
-	WireFrame* createWireFrame();
+	std::unique_ptr<WireFrame> createWireFrame();
 
 private:
 	void build(const std::vector<std::vector<int>>& grid);

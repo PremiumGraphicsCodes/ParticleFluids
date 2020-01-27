@@ -9,19 +9,12 @@
 namespace Crystal {
 	namespace Scene {
 
-
 class WireFrameScene : public IShapeScene
 {
 public:
-	WireFrameScene() :
-		IShapeScene(-1, nullptr)
-	{}
+	WireFrameScene();
 
-	WireFrameScene(const int id, const std::string& name, Shape::WireFrame* shape, const WireFrameAttribute& attribute) :
-		IShapeScene(id, name, shape),
-		shape(shape),
-		attribute(attribute)
-	{}
+	WireFrameScene(const int id, const std::string& name, std::unique_ptr<Shape::WireFrame> shape, const WireFrameAttribute& attribute);
 
 	~WireFrameScene() {};
 
@@ -35,9 +28,7 @@ public:
 
 	SceneType getType() const override { return SceneType::WireFrameScene; }
 
-	void onClear() override {
-		delete shape;
-	}
+	void onClear() override {}
 
 	Math::Box3d getBoundingBox() const override;
 
@@ -52,7 +43,7 @@ public:
 	IShapeScene* clone() const override;
 
 private:
-	Shape::WireFrame* shape;
+	std::unique_ptr<Shape::WireFrame> shape;
 	WireFrameAttribute attribute;
 };
 

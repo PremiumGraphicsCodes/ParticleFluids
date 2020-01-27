@@ -6,8 +6,19 @@
 #include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
+
+WireFrameScene::WireFrameScene() :
+	IShapeScene(-1, nullptr)
+{}
+
+WireFrameScene::WireFrameScene(const int id, const std::string& name, std::unique_ptr<WireFrame> shape, const WireFrameAttribute& attribute) :
+	IShapeScene(id, name, shape.get()),
+	shape(std::move(shape)),
+	attribute(attribute)
+{}
 
 void WireFrameScene::translate(const Vector3dd& v)
 {

@@ -67,9 +67,9 @@ ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<V
 	return new ParticleSystemScene(getNextId(), name, std::move(particles));
 }
 
-WireFrameScene* SceneFactory::createWireFrameScene(WireFrame* shape, const WireFrameAttribute& attribute, const std::string& name)
+WireFrameScene* SceneFactory::createWireFrameScene(std::unique_ptr<WireFrame> shape, const WireFrameAttribute& attribute, const std::string& name)
 {
-	return new WireFrameScene(getNextId(), name, shape, attribute);
+	return new WireFrameScene(getNextId(), name, std::move(shape), attribute);
 }
 
 PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh,  const std::string& name)
