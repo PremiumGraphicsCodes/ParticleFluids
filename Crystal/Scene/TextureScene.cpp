@@ -22,3 +22,8 @@ void TextureScene::toViewModel(SceneViewModel& viewModel) const
 {
 	viewModel.textures.push_back(texture);
 }
+
+void TextureScene::update(const Image& image)
+{
+	texture.send(image);
+}

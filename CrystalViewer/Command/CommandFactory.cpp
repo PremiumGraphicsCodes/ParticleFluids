@@ -21,6 +21,7 @@
 #include "MaterialGetCommand.h"
 #include "MaterialSetCommand.h"
 #include "TextureCreateCommand.h"
+#include "TextureSetCommand.h"
 #include "ShapeSelectCommand.h"
 #include "DeleteCommand.h"
 #include "ClearCommand.h"
@@ -99,6 +100,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == TextureCreateCommand::getName()) {
 		return std::make_unique<TextureCreateCommand>();
+	}
+	else if (name == TextureSetCommand::getName()) {
+		return std::make_unique<TextureSetCommand>();
 	}
 	else if (name == ShapeSelectCommand::getName()) {
 		return std::make_unique<ShapeSelectCommand>();

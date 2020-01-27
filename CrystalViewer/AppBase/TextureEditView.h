@@ -1,8 +1,8 @@
 #pragma once
 
 #include "IEditCancelView.h"
-#include "TextureView.h"
 #include "IntView.h"
+#include "FilePathView.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -20,9 +20,8 @@ public:
 private:
 	void onEdit() override;
 
-	TextureView texture;
-	IntView id;
-	StringView name;
+	IntView idView;
+	FilePathView filePathView;
 };
 
 	}

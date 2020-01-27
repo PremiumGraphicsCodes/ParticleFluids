@@ -162,6 +162,7 @@
     <ClInclude Include="Public\CameraSetLabels.h" />
     <ClInclude Include="Public\PositionGetLabels.h" />
     <ClInclude Include="Public\SceneGetLabels.h" />
+    <ClInclude Include="Public\TextureSetLabels.h" />
     <ClInclude Include="SceneGetCommand.h" />
     <ClInclude Include="CameraFitCommand.h" />
     <ClInclude Include="CameraRotateCommand.h" />
@@ -224,6 +225,7 @@
     <ClInclude Include="STLFileExportCommand.h" />
     <ClInclude Include="STLFileImportCommand.h" />
     <ClInclude Include="TextureCreateCommand.h" />
+    <ClInclude Include="TextureSetCommand.h" />
     <ClInclude Include="TransformCommand.h" />
     <ClInclude Include="TrimCommand.h" />
     <ClInclude Include="WireFrameCreateCommand.h" />
@@ -266,6 +268,7 @@
     <ClCompile Include="STLFileExportCommand.cpp" />
     <ClCompile Include="STLFileImportCommand.cpp" />
     <ClCompile Include="TextureCreateCommand.cpp" />
+    <ClCompile Include="TextureSetCommand.cpp" />
     <ClCompile Include="TransformCommand.cpp" />
     <ClCompile Include="TrimCommand.cpp" />
     <ClCompile Include="WireFrameCreateCommand.cpp" />

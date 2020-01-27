@@ -197,6 +197,12 @@
     <ClInclude Include="Public\PositionGetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="TextureSetCommand.h">
+      <Filter>Scene\Appearance\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\TextureSetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -302,6 +308,9 @@
     </ClCompile>
     <ClCompile Include="PositionGetCommand.cpp">
       <Filter>Scene\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureSetCommand.cpp">
+      <Filter>Scene\Appearance\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

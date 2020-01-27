@@ -23,6 +23,8 @@ public:
 
 	Shader::TextureObject getTextureObject() const { return texture; }
 
+	void update(const Graphics::Image& image);
+
 private:
 	Shader::TextureObject texture;
 };
