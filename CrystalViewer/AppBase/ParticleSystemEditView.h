@@ -1,10 +1,9 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IEditCancelView.h"
 #include "ParticleSystemView.h"
 #include "IntView.h"
 #include "PSAttributeView.h"
-#include "Button.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
@@ -12,12 +11,10 @@
 namespace Crystal {
 	namespace UI {
 
-class ParticleSystemEditView : public IWindow
+class ParticleSystemEditView : public IEditCancelView
 {
 public:
-	ParticleSystemEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
-
-	void onShow() override;
+	ParticleSystemEditView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 	void setValue(Scene::ParticleSystemScene* value);
 
@@ -25,12 +22,9 @@ private:
 	void onEdit();
 
 private:
-	ParticleSystemView particleSystemView;
-	Scene::World* world;
-	Canvas* canvas;
 	IntView idView;
+	ParticleSystemView particleSystemView;
 	PSAttributeView attributeView;
-	Button edit;
 };
 
 	}

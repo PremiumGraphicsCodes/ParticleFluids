@@ -1,40 +1,28 @@
-
 #include "ParticleSystemEditView.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-ParticleSystemEditView::ParticleSystemEditView(const std::string& name, World* repository, Canvas* canvas) :
-	IWindow(name),
-	world(repository),
-	canvas(canvas),
+ParticleSystemEditView::ParticleSystemEditView(const std::string& name, World* world, Canvas* canvas) :
+	IEditCancelView(name, world, canvas),
 	particleSystemView("ParticleSystem"),
 	idView("Id"),
-	attributeView("Attribute"),
-	edit("Edit")
+	attributeView("Attribute")
 {
-	edit.setFunction([=] { onEdit(); });
-}
-
-void ParticleSystemEditView::onShow()
-{
-	particleSystemView.show();
-	idView.show();
-	attributeView.show();
-	edit.show();
 }
 
 void ParticleSystemEditView::setValue(ParticleSystemScene* value)
 {
 	this->idView.setValue(value->getId());
-	//this->name.setValue(value->getName());
+	this->particleSystemView.setValue(value);
+//	this->attributeView.setName(value.getAtt)
 }
 
 void ParticleSystemEditView::onEdit()
 {
-	auto particleSystem = world->getObjects()->findSceneById<ParticleSystemScene*>( idView.getValue() );
+	auto particleSystem = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>( idView.getValue() );
 	particleSystem->setName(attributeView.getName());
 	particleSystem->setAttribute(attributeView.getValue());
-	world->updateViewModel();
+	getWorld()->updateViewModel();
 	//particleSystem->setAttribute();
 }
