@@ -24,25 +24,25 @@ void AlgoMenu::onShow()
 {
 	if (ImGui::BeginMenu("Algo")) {
 		if (ImGui::MenuItem("Boolean")) {
-			control->setWindow(new BooleanView(getModel(), getCanvas()));
+			control->setWindow(new BooleanView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("SpaceHash")) {
-			control->setWindow(new SpaceHashView(getModel(), getCanvas()));
+			control->setWindow(new SpaceHashView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("Octree")) {
-			control->setWindow(new OctreeView(getModel(), getCanvas()));
+			control->setWindow(new OctreeView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("Intersection")) {
-			control->setWindow(new IntersectionView(getModel(), getCanvas()));
+			control->setWindow(new IntersectionView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("Volume")) {
-			control->setWindow(new VolumeView(getModel(), getCanvas()));
+			control->setWindow(new VolumeView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("VolumeConvert")) {
-			control->setWindow(new VolumeConvertView(getModel(), getCanvas()));
+			control->setWindow(new VolumeConvertView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("MarchingCubes")) {
-			control->setWindow(new MarchingCubesView(getModel(), getCanvas()));
+			control->setWindow(new MarchingCubesView(getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}

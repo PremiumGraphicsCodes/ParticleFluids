@@ -45,7 +45,7 @@ void IntersectionView::onOk()
 		ParticleAttribute attr;
 		attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 		attr.size = 1.0f;
-		repository->getObjectFactory()->createParticleSystemScene(positions, attr, "intersections");
+		repository->getSceneFactory()->createParticleSystemScene(positions, attr, "intersections");
 		getWorld()->updateViewModel();
 	}
 }
