@@ -9,20 +9,20 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFSphereView::WFSphereView(World* repository, Canvas* canvas) :
-	IWFAddView("WFSphere", repository, canvas),
-	sphere("Sphere"),
-	unum("UNum", 12),
-	vnum("VNum", 12)
+WFSphereView::WFSphereView(World* world, Canvas* canvas) :
+	IWFAddView("WFSphere", world, canvas),
+	sphereView("Sphere"),
+	unumView("UNum", 12),
+	vnumView("VNum", 12)
 {
-	add(&sphere);
-	add(&unum);
-	add(&vnum);
+	add(&sphereView);
+	add(&unumView);
+	add(&vnumView);
 }
 
 void WFSphereView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(sphere.getValue(), unum.getValue(), vnum.getValue());
+	builder.build(sphereView.getValue(), unumView.getValue(), vnumView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

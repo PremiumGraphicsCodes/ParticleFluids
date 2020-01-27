@@ -9,20 +9,20 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFConeView::WFConeView(World* model, Canvas* canvas) :
-	IWFAddView("WFCone", model, canvas),
-	cone("Cone"),
-	unum("UNum", 12),
-	vnum("VNum", 12)
+WFConeView::WFConeView(const std::string& name, World* world, Canvas* canvas) :
+	IWFAddView(name, world, canvas),
+	coneView("Cone"),
+	unumView("UNum", 12),
+	vnumView("VNum", 12)
 {
-	add(&unum);
-	add(&vnum);
-	add(&cone);
+	add(&unumView);
+	add(&vnumView);
+	add(&coneView);
 }
 
 void WFConeView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(cone.getValue(), unum.getValue(), vnum.getValue(), 10);
+	builder.build(coneView.getValue(), unumView.getValue(), vnumView.getValue(), 10);
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

@@ -64,19 +64,40 @@ void WFGenerationMenu::onShow()
 
 	if (ImGui::BeginMenu("WireFrame")) {
 		if (ImGui::MenuItem("WFBox")) {
-			control->setWindow(new WFBoxView(getWorld(), canvas));
+			control->setWindow(new WFBoxView("WFBox", world, canvas));
 		}
 		if (ImGui::MenuItem("WFCone")) {
-			control->setWindow(new WFConeView(getWorld(), canvas));
+			control->setWindow(new WFConeView("WFCone", world, canvas));
 		}
 		if (ImGui::MenuItem("WFCylinder")) {
-			control->setWindow(new WFCylinderView(getWorld(), canvas));
+			control->setWindow(new WFCylinderView("WFCylinder", world, canvas));
 		}
 		if (ImGui::MenuItem("WFSphere")) {
-			control->setWindow(new WFSphereView(getWorld(), canvas));
+			control->setWindow(new WFSphereView(world, canvas));
 		}
 		if (ImGui::MenuItem("WFTorus")) {
-			control->setWindow(new WFTorusView(getWorld(), canvas));
+			control->setWindow(new WFTorusView(world, canvas));
+		}
+		ImGui::EndMenu();
+	}
+}
+
+void PMGenerationMenu::onShow()
+{
+	auto world = getWorld();
+	auto canvas = getCanvas();
+
+	const auto& c = name.c_str();
+
+	if (ImGui::BeginMenu("PolygonMesh")) {
+		if (ImGui::MenuItem("PMBox")) {
+			control->setWindow(new PMBoxView("PMBox", world, canvas));
+		}
+		if (ImGui::MenuItem("PMQuad")) {
+			control->setWindow(new PMQuadView("PMQuad", world, canvas));
+		}
+		if (ImGui::MenuItem("PMSphere")) {
+			control->setWindow(new PMSphereView("PMSphere", world, canvas));
 		}
 		ImGui::EndMenu();
 	}
@@ -91,19 +112,7 @@ void ShapeMenu::onShow()
 	if (ImGui::BeginMenu(c)) {
 		pointCloudMenu.show();
 		wireFrameMenu.show();
-
-		if (ImGui::BeginMenu("PolygonMesh")) {
-			if (ImGui::MenuItem("PMBox")) {
-				control->setWindow(new PMBoxView("PMBox", world, canvas));
-			}
-			if (ImGui::MenuItem("PMQuad")) {
-				control->setWindow(new PMQuadView("PMQuad", world, canvas));
-			}
-			if (ImGui::MenuItem("PMSphere")) {
-				control->setWindow(new PMSphereView("PMSphere", world, canvas));
-			}
-			ImGui::EndMenu();
-		}
+		polygonMeshMenu.show();
 
 		if (ImGui::BeginMenu("Transform")) {
 			if (ImGui::MenuItem("Scale")) {

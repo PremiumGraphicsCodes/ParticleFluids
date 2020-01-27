@@ -9,20 +9,20 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFCylinderView::WFCylinderView(World* model, Canvas* canvas) :
-	IWFAddView("WFCylinder", model, canvas),
-	cylinder("Cylinder"),
-	unum("UNum", 12),
-	vnum("VNum", 12)
+WFCylinderView::WFCylinderView(const std::string& name, World* world, Canvas* canvas) :
+	IWFAddView(name, world, canvas),
+	cylinderView("Cylinder"),
+	unumView("UNum", 12),
+	vnumView("VNum", 12)
 {
-	add(&cylinder);
-	add(&unum);
-	add(&vnum);
+	add(&cylinderView);
+	add(&unumView);
+	add(&vnumView);
 }
 
 void WFCylinderView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(cylinder.getValue(), unum.getValue(), vnum.getValue(), 10);
+	builder.build(cylinderView.getValue(), unumView.getValue(), vnumView.getValue(), 10);
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

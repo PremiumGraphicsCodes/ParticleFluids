@@ -34,14 +34,30 @@ private:
 	ControlPanel* control;
 };
 
+class PMGenerationMenu : public IMenu
+{
+public:
+	PMGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control) :
+		IMenu(name, world, canvas),
+		control(control)
+	{}
+
+	void onShow() override;
+
+private:
+	ControlPanel* control;
+
+};
+
 class ShapeMenu : public IMenu
 {
 public:
-	ShapeMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
-		IMenu(name, model, canvas),
+	ShapeMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control) :
+		IMenu(name, world, canvas),
 		control(control),
-		pointCloudMenu("PointCloud", model, canvas, control),
-		wireFrameMenu("WireFrame", model, canvas, control)
+		pointCloudMenu("PointCloud", world, canvas, control),
+		wireFrameMenu("WireFrame", world, canvas, control),
+		polygonMeshMenu("PolygonMesh", world, canvas, control)
 	{}
 
 	void onShow() override;
@@ -49,7 +65,8 @@ public:
 private:
 	ControlPanel* control;
 	PCGenerationMenu pointCloudMenu;
-	PCGenerationMenu wireFrameMenu;
+	WFGenerationMenu wireFrameMenu;
+	PMGenerationMenu polygonMeshMenu;
 };
 
 	}

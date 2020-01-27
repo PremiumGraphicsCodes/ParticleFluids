@@ -2,7 +2,6 @@
 
 #include "IWFAddView.h"
 #include "Box3dView.h"
-#include "WFAttributeView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -10,13 +9,13 @@ namespace Crystal {
 class WFBoxView : public IWFAddView
 {
 public:
-	WFBoxView(Scene::World* model, Canvas* canvas);
+	WFBoxView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	Box3dView box;
+	Box3dView boxView;
 };
 
 

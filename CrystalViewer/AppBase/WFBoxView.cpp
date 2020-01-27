@@ -10,16 +10,16 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFBoxView::WFBoxView(World* model, Canvas* canvas) :
-	IWFAddView("WFBox", model, canvas),
-	box("Box")
+WFBoxView::WFBoxView(const std::string& name, World* world, Canvas* canvas) :
+	IWFAddView(name, world, canvas),
+	boxView("Box")
 {
-	add(&box);
+	add(&boxView);
 }
 
 void WFBoxView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(box.getValue());
+	builder.build(boxView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

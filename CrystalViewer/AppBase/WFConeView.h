@@ -12,15 +12,15 @@ namespace Crystal {
 class WFConeView : public IWFAddView
 {
 public:
-	WFConeView(Scene::World* model, Canvas* canvas);
+	WFConeView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	IntView unum;
-	IntView vnum;
-	Cone3dView cone;
+	IntView unumView;
+	IntView vnumView;
+	Cone3dView coneView;
 };
 
 	}

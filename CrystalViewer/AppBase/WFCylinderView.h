@@ -10,15 +10,15 @@ namespace Crystal {
 class WFCylinderView : public IWFAddView
 {
 public:
-	WFCylinderView(Scene::World* model, Canvas* canvas);
+	WFCylinderView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	IntView unum;
-	IntView vnum;
-	Cylinder3dView cylinder;
+	IntView unumView;
+	IntView vnumView;
+	Cylinder3dView cylinderView;
 };
 
 	}

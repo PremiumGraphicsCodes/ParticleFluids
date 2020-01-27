@@ -11,15 +11,15 @@ namespace Crystal {
 class WFSphereView : public IWFAddView
 {
 public:
-	WFSphereView(Scene::World* repository, Canvas* canvas);
+	WFSphereView(Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	IntView unum;
-	IntView vnum;
-	Sphere3dView sphere;
+	IntView unumView;
+	IntView vnumView;
+	Sphere3dView sphereView;
 };
 
 	}
