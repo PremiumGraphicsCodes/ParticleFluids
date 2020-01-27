@@ -12,15 +12,15 @@ namespace Crystal {
 class PSBoxView : public IPSAddView
 {
 public:
-	PSBoxView(Scene::World* model, Canvas* canvas);
+	PSBoxView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	Box3dView box;
-	IntView count;
-	BoolView isVolume;
+	Box3dView boxView;
+	IntView countView;
+	BoolView isVolumeView;
 };
 
 	}

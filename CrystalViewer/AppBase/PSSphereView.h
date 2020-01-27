@@ -2,7 +2,6 @@
 
 #include "IPSAddView.h"
 #include "Sphere3dView.h"
-#include "PSAttributeView.h"
 #include "IntView.h"
 
 namespace Crystal {
@@ -11,7 +10,7 @@ namespace Crystal {
 class PSSphereView : public IPSAddView
 {
 public:
-	PSSphereView(Scene::World* model, Canvas* canvas);
+	PSSphereView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;

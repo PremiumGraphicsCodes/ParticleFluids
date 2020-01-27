@@ -38,16 +38,16 @@ void ShapeMenu::onShow()
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::BeginMenu("ParticleSystem")) {
 			if (ImGui::MenuItem("PSSphere")) {
-				control->setWindow(new PSSphereView(getWorld(), canvas));
+				control->setWindow(new PSSphereView("PSSphere", world, canvas));
 			}
 			if (ImGui::MenuItem("PSBox")) {
-				control->setWindow(new PSBoxView(getWorld(), canvas));
+				control->setWindow(new PSBoxView("PSBox", world, canvas));
 			}
 			if (ImGui::MenuItem("PSCone")) {
-				control->setWindow(new PSConeView(getWorld(), canvas));
+				control->setWindow(new PSConeView("PSCone", world, canvas));
 			}
 			if (ImGui::MenuItem("PSCylinder")) {
-				control->setWindow(new PSCylinderView(getWorld(), canvas));
+				control->setWindow(new PSCylinderView("PSCylinder", world, canvas));
 			}
 			if (ImGui::MenuItem("PSTorus")) {
 				control->setWindow(new PSTorusView(getWorld(), canvas));
@@ -76,42 +76,40 @@ void ShapeMenu::onShow()
 
 		if (ImGui::BeginMenu("PolygonMesh")) {
 			if (ImGui::MenuItem("PMBox")) {
-				control->setWindow(new PMBoxView("PMBox", getWorld(), canvas));
+				control->setWindow(new PMBoxView("PMBox", world, canvas));
 			}
 			if (ImGui::MenuItem("PMQuad")) {
-				control->setWindow(new PMQuadView("PMQuad", getWorld(), canvas));
+				control->setWindow(new PMQuadView("PMQuad", world, canvas));
 			}
 			if (ImGui::MenuItem("PMSphere")) {
-				control->setWindow(new PMSphereView(getWorld(), canvas));
+				control->setWindow(new PMSphereView("PMSphere", world, canvas));
 			}
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Transform")) {
 			if (ImGui::MenuItem("Scale")) {
-				control->setWindow(new ScaleView("Scale", getWorld(), canvas));
+				control->setWindow(new ScaleView("Scale", world, canvas));
 			}
 			if (ImGui::MenuItem("Translate")) {
-				control->setWindow(new TranslateView("Translate", getWorld(), canvas));
+				control->setWindow(new TranslateView("Translate", world, canvas));
 			}
 			if (ImGui::MenuItem("Rotate")) {
-				control->setWindow(new RotateView("Rotate", getWorld(), canvas));
+				control->setWindow(new RotateView("Rotate", world, canvas));
 			}
 			if (ImGui::MenuItem("Transform")) {
-				control->setWindow(new TransformView("Transform", getWorld(), canvas));
+				control->setWindow(new TransformView("Transform", world, canvas));
 			}
-
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Global")) {
 			if (ImGui::MenuItem("Delete")) {
-				control->setWindow(new DeleteView("Delete", getWorld(), canvas));
+				control->setWindow(new DeleteView("Delete", world, canvas));
 			}
 			ImGui::EndMenu();
 
 		}
-
 
 		ImGui::EndMenu();
 	}

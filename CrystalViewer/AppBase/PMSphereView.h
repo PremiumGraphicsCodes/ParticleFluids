@@ -11,16 +11,16 @@ namespace Crystal {
 class PMSphereView : public IOkCancelView
 {
 public:
-	PMSphereView(Scene::World* world, Canvas* canvas);
+	PMSphereView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	Sphere3dView sphere;
-	IntView unum;
-	IntView vnum;
-	StringView name;
+	Sphere3dView sphereView;
+	IntView unumView;
+	IntView vnumView;
+	StringView nameView;
 };
 
 	}

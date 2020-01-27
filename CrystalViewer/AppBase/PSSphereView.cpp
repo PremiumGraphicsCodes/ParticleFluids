@@ -13,8 +13,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 using namespace Crystal::UI;
 
-PSSphereView::PSSphereView(World* model, Canvas* canvas) :
-	IPSAddView("PSSphere", model, canvas),
+PSSphereView::PSSphereView(const std::string& name, World* world, Canvas* canvas) :
+	IPSAddView(name, world, canvas),
 	sphere("Sphere"),
 	count("Count", 10000)
 {
@@ -34,5 +34,4 @@ void PSSphereView::onOk()
 		positions.push_back(shape.getPosition(u, v, 1.0));
 	}
 	IPSAddView::addParticleSystem(positions);
-	
 }

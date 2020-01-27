@@ -9,14 +9,14 @@ namespace Crystal {
 class PSCylinderView : public IPSAddView
 {
 public:
-	PSCylinderView(Scene::World* model, Canvas* canvas);
+	PSCylinderView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	Cylinder3dView cylinder;
-	IntView count;
+	Cylinder3dView cylinderView;
+	IntView countView;
 };
 
 	}

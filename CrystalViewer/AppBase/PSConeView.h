@@ -4,7 +4,6 @@
 
 #include "Cone3dView.h"
 #include "IntView.h"
-#include "StringView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -12,14 +11,14 @@ namespace Crystal {
 class PSConeView : public IPSAddView
 {
 public:
-	PSConeView(Scene::World* model, Canvas* canvas);
+	PSConeView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	Cone3dView cone;
-	IntView count;
+	Cone3dView coneView;
+	IntView countView;
 };
 
 	}

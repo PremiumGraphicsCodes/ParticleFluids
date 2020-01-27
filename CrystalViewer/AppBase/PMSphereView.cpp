@@ -13,23 +13,23 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Command;
 
-PMSphereView::PMSphereView(World* model, Canvas* canvas) :
-	IOkCancelView("PMSphere", model, canvas),
-	sphere("Sphere"),
-	unum("UNum", 36),
-	vnum("VNum", 36),
-	name("Name", "PMSphere")
+PMSphereView::PMSphereView(const std::string& name, World* world, Canvas* canvas) :
+	IOkCancelView(name, world, canvas),
+	sphereView("Sphere"),
+	unumView("UNum", 36),
+	vnumView("VNum", 36),
+	nameView("Name", "PMSphere")
 {
-	add(&sphere);
-	add(&unum);
-	add(&vnum);
-	add(&name);
+	add(&sphereView);
+	add(&unumView);
+	add(&vnumView);
+	add(&nameView);
 }
 
 void PMSphereView::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.add( sphere.getValue(), unum.getValue(), vnum.getValue() );
+	builder.add( sphereView.getValue(), unumView.getValue(), vnumView.getValue() );
 
 	Command::Command command;
 	command.create(PolygonMeshCreateLabels::CommandNameLabel);
@@ -38,7 +38,7 @@ void PMSphereView::onOk()
 	command.setArg(PolygonMeshCreateLabels::TexCoordsLabel, builder.getTexCoords());
 	command.setArg(PolygonMeshCreateLabels::VerticesLabel, builder.getVertices());
 	command.setArg(PolygonMeshCreateLabels::FacesLabel, builder.getFaces());
-	command.setArg(PolygonMeshCreateLabels::NameLabel, name.getValue());
+	command.setArg(PolygonMeshCreateLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
