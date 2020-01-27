@@ -9,8 +9,8 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFSphereView::WFSphereView(World* world, Canvas* canvas) :
-	IWFAddView("WFSphere", world, canvas),
+WFSphereView::WFSphereView(const std::string& name, World* world, Canvas* canvas) :
+	IWFAddView(name, world, canvas),
 	sphereView("Sphere"),
 	unumView("UNum", 12),
 	vnumView("VNum", 12)

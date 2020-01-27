@@ -9,20 +9,20 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-WFTorusView::WFTorusView(World* model, Canvas* canvas) :
-	IWFAddView("WFTorus", model, canvas),
-	torus("Torus"),
-	unum("UNum", 24),
-	vnum("VNum", 12)
+WFTorusView::WFTorusView(const std::string& name, World* world, Canvas* canvas) :
+	IWFAddView(name, world, canvas),
+	torusView("Torus"),
+	unumView("UNum", 24),
+	vnumView("VNum", 12)
 {
-	add(&unum);
-	add(&vnum);
-	add(&torus);
+	add(&unumView);
+	add(&vnumView);
+	add(&torusView);
 }
 
 void WFTorusView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(torus.getValue(), unum.getValue(), vnum.getValue());
+	builder.build(torusView.getValue(), unumView.getValue(), vnumView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

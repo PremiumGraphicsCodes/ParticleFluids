@@ -11,7 +11,7 @@ namespace Crystal {
 class WFSphereView : public IWFAddView
 {
 public:
-	WFSphereView(Scene::World* world, Canvas* canvas);
+	WFSphereView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;

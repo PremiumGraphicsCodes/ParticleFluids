@@ -73,10 +73,10 @@ void WFGenerationMenu::onShow()
 			control->setWindow(new WFCylinderView("WFCylinder", world, canvas));
 		}
 		if (ImGui::MenuItem("WFSphere")) {
-			control->setWindow(new WFSphereView(world, canvas));
+			control->setWindow(new WFSphereView("WFSphere", world, canvas));
 		}
 		if (ImGui::MenuItem("WFTorus")) {
-			control->setWindow(new WFTorusView(world, canvas));
+			control->setWindow(new WFTorusView("WFTorus", world, canvas));
 		}
 		ImGui::EndMenu();
 	}

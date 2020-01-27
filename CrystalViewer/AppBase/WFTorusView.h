@@ -2,9 +2,8 @@
 
 #include "IWFAddView.h"
 
-#include "Torus3dView.h"
-#include "WFAttributeView.h"
 #include "IntView.h"
+#include "Torus3dView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -12,15 +11,15 @@ namespace Crystal {
 class WFTorusView : public IWFAddView
 {
 public:
-	WFTorusView(Scene::World* model, Canvas* canvas);
+	WFTorusView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk();
 
 private:
-	IntView unum;
-	IntView vnum;
-	TorusView torus;
+	IntView unumView;
+	IntView vnumView;
+	TorusView torusView;
 };
 
 	}

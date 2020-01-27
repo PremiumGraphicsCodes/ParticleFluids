@@ -16,8 +16,8 @@ private:
 	void onOk() override;
 
 private:
-	Sphere3dView sphere;
-	IntView count;
+	Sphere3dView sphereView;
+	IntView countView;
 };
 
 	}
