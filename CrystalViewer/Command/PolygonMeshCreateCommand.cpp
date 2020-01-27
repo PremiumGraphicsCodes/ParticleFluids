@@ -42,17 +42,18 @@ std::string PolygonMeshCreateCommand::getName()
 
 void PolygonMeshCreateCommand::execute(World* world)
 {
-	auto mesh = new PolygonMesh();
+	auto mesh = std::make_unique<PolygonMesh>();
 	mesh->positions = args.positions.getValue();
 	mesh->normals = args.normals.getValue();
 	mesh->texCoords = args.texCoords.getValue();
 	mesh->vertices = args.vertices.getValue();
 	mesh->faces = args.faces.getValue();
 
-	auto shape = world->getSceneFactory()->createPolygonMeshScene(mesh, args.name.getValue());
+	auto shape = world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
 	world->addScene(args.layer.getValue(), shape);
 	auto group = world->getSceneFactory()->createFaceGroupScene(shape, "FaceGroup");
-	for (auto f : mesh->faces) {
+	const auto& faces = shape->getShape()->faces;
+	for (auto f : faces) {
 		group->addFace(f);
 	}
 	//shape->addGroup(group);

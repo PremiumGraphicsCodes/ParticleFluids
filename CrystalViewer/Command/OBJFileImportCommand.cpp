@@ -57,7 +57,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 		}
 
 		auto polygonMesh = builder.build();
-		auto meshScene = world->getSceneFactory()->createPolygonMeshScene(polygonMesh, "PolygonMesh");
+		auto meshScene = world->getSceneFactory()->createPolygonMeshScene(std::move(polygonMesh), "PolygonMesh");
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {

@@ -13,19 +13,13 @@ namespace Crystal {
 class PolygonMeshScene : public IShapeScene
 {
 public:
-	PolygonMeshScene() :
-		IShapeScene(-1, nullptr),
-		shape(nullptr)
-	{}
+	PolygonMeshScene();
 
-	PolygonMeshScene(const int id, const std::string& name, Shape::PolygonMesh* shape) :
-		IShapeScene(id, name, shape),
-		shape(shape)
-	{}
+	PolygonMeshScene(const int id, const std::string& name, std::unique_ptr<Shape::PolygonMesh> shape);
 
 	~PolygonMeshScene() {};
 
-	Shape::PolygonMesh* getShape() const { return shape; }
+	Shape::PolygonMesh* getShape() const { return shape.get(); }
 
 	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 
@@ -35,10 +29,7 @@ public:
 
 	SceneType getType() const override { return SceneType::PolygonMeshScene; }
 
-	void onClear() override
-	{
-		delete shape;
-	}
+	void onClear() override{}
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
@@ -57,7 +48,7 @@ public:
 	IShapeScene* clone() const override;
 
 private:
-	Shape::PolygonMesh* shape;
+	std::unique_ptr<Shape::PolygonMesh> shape;
 	std::vector<FaceGroupScene*> groups;
 };
 

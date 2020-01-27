@@ -72,9 +72,9 @@ WireFrameScene* SceneFactory::createWireFrameScene(std::unique_ptr<WireFrame> sh
 	return new WireFrameScene(getNextId(), name, std::move(shape), attribute);
 }
 
-PolygonMeshScene* SceneFactory::createPolygonMeshScene(PolygonMesh* mesh,  const std::string& name)
+PolygonMeshScene* SceneFactory::createPolygonMeshScene(std::unique_ptr<PolygonMesh> mesh,  const std::string& name)
 {
-	return new PolygonMeshScene(getNextId(), name, mesh);
+	return new PolygonMeshScene(getNextId(), name, std::move(mesh));
 }
 
 LightScene* SceneFactory::createLightScene(std::unique_ptr<PointLight> light, const std::string& name)

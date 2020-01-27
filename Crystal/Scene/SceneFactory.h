@@ -55,7 +55,7 @@ public:
 
 	WireFrameScene* createWireFrameScene(std::unique_ptr<Shape::WireFrame> shape, const WireFrameAttribute& attribute, const std::string& name);
 
-	PolygonMeshScene* createPolygonMeshScene(Shape::PolygonMesh* mesh, const std::string& name);
+	PolygonMeshScene* createPolygonMeshScene(std::unique_ptr<Shape::PolygonMesh> mesh, const std::string& name);
 
 	LightScene* createLightScene(std::unique_ptr<Graphics::PointLight> light, const std::string& name);
 

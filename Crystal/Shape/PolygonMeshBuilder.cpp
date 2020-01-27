@@ -91,15 +91,15 @@ void PolygonMeshBuilder::add(const IVolume3d& volume, const int unum, const int 
 	*/
 }
 
-PolygonMesh* PolygonMeshBuilder::build()
+std::unique_ptr<PolygonMesh> PolygonMeshBuilder::build()
 {
-	auto mesh = new PolygonMesh();
+	auto mesh = std::make_unique<PolygonMesh>();
 	mesh->positions = positions;
 	mesh->normals = normals;
 	mesh->texCoords = texCoords;
 	mesh->vertices = vertices;
 	mesh->faces = faces;
-	return mesh;
+	return std::move(mesh);
 }
 
 void PolygonMeshBuilder::add(const int v0, const int v1, const int v2, const int v3)
