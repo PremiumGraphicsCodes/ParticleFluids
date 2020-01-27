@@ -1,12 +1,32 @@
 #include "TextureEditView.h"
 
+#include "../Command/Command.h"
+#include "../Command/Public/TextureSetLabels.h"
+
+#include "../../Crystal/Scene/TextureScene.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-/*
-TextureEditView::TextureEditView(const std::string& name, World* world, Canvas* canvas) :
-	IEditCancelView(name, world, canvas)
-{}
+TextureEditView::TextureEditView(const std::string& name, World* model, Canvas* canvas) :
+	IEditCancelView(name, model, canvas),
+	idView("Id"),
+	filePathView("FilePath")
+{
+	add(&idView);
+	add(&filePathView);
+}
 
-void setValue(Scene::TextureScene* value);
-*/
+void TextureEditView::setValue(TextureScene* value)
+{
+	this->idView.setValue(value->getId());
+//	this->filePathView.set
+}
+
+void TextureEditView::onEdit()
+{
+	Command::Command command(TextureSetLabels::CommandNameLabel);
+	command.setArg(TextureSetLabels::IdLabel, idView.getValue());
+	command.setArg(TextureSetLabels::FilePathLabel, filePathView.getFileName());
+	command.execute(getWorld());
+}

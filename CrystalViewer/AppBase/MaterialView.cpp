@@ -34,7 +34,13 @@ void MaterialView::setValue(MaterialScene* m)
 	specular.setValue(m->getMaterial()->specular);
 	shininess.setValue(m->getMaterial()->shininess);
 
-	ambientTexture.setValue(m->getAmbientTexture()->getName());
-	diffuseTexture.setValue(m->getDiffuseTexture()->getName());
-	specularTexture.setValue(m->getSpecularTexture()->getName());
+	if (m->getAmbientTexture()) {
+		ambientTexture.setValue(m->getAmbientTexture()->getName());
+	}
+	if (m->getDiffuseTexture()) {
+		diffuseTexture.setValue(m->getDiffuseTexture()->getName());
+	}
+	if (m->getSpecularTexture()) {
+		specularTexture.setValue(m->getSpecularTexture()->getName());
+	}
 }

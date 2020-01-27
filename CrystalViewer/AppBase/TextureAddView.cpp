@@ -1,17 +1,8 @@
 #include "TextureAddView.h"
 
-#include "tinyfiledialogs.h"
-#include "../../Crystal/Scene/World.h"
-
-#include "../../Crystal/IO/ImageFileReader.h"
-
 #include "../Command/Command.h"
 #include "../Command/Public/TextureCreateLabels.h"
 
-#include "imgui.h"
-
-using namespace Crystal::Graphics;
-using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 

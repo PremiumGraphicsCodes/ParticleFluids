@@ -10,6 +10,8 @@
 #include "LightEditView.h"
 #include "TextureEditView.h"
 
+#include "../../Crystal/Scene/TextureScene.h"
+
 #include "imgui.h"
 
 using namespace Crystal::Scene;
@@ -104,7 +106,6 @@ void SceneListPanel::show(IScene* scene)
 					control->add(editView);
 					break;
 				}
-				/*
 				case SceneType::TextureScene:
 				{
 					auto editView = new TextureEditView("TextureEdit", model, canvas);
@@ -114,7 +115,6 @@ void SceneListPanel::show(IScene* scene)
 					control->add(editView);
 					break;
 				}
-				*/
 			}
 		}
 	}
