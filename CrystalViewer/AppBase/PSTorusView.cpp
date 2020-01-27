@@ -7,13 +7,13 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PSTorusView::PSTorusView(World* model, Canvas* canvas) :
-	IPSAddView("PSTorus", model, canvas),
+PSTorusView::PSTorusView(const std::string& name, World* world, Canvas* canvas) :
+	IPSAddView("PSTorus", world, canvas),
 	torusView("Torus"),
-	count("Count", 10000)
+	countView("Count", 10000)
 {
 	add(&torusView);
-	add(&count);
+	add(&countView);
 }
 
 void PSTorusView::onOk()
@@ -22,7 +22,7 @@ void PSTorusView::onOk()
 	std::mt19937 mt{ std::random_device{}() };
 	std::uniform_real_distribution<double> dist(0.0, 1.0);
 	std::vector<Vector3dd> positions;
-	for (int i = 0; i < count.getValue(); ++i) {
+	for (int i = 0; i < countView.getValue(); ++i) {
 		const auto u = dist(mt);
 		const auto v = dist(mt);
 		positions.push_back(shape.getPosition(u, v));

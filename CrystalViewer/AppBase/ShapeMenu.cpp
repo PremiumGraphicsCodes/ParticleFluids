@@ -29,6 +29,59 @@
 
 using namespace Crystal::UI;
 
+void PCGenerationMenu::onShow()
+{
+	auto world = getWorld();
+	auto canvas = getCanvas();
+
+	const auto& c = name.c_str();
+	if (ImGui::BeginMenu(c)) {
+		if (ImGui::MenuItem("PSSphere")) {
+			control->setWindow(new PSSphereView("PSSphere", world, canvas));
+		}
+		if (ImGui::MenuItem("PSBox")) {
+			control->setWindow(new PSBoxView("PSBox", world, canvas));
+		}
+		if (ImGui::MenuItem("PSCone")) {
+			control->setWindow(new PSConeView("PSCone", world, canvas));
+		}
+		if (ImGui::MenuItem("PSCylinder")) {
+			control->setWindow(new PSCylinderView("PSCylinder", world, canvas));
+		}
+		if (ImGui::MenuItem("PSTorus")) {
+			control->setWindow(new PSTorusView("PSTorus", world, canvas));
+		}
+		ImGui::EndMenu();
+	}
+}
+
+void WFGenerationMenu::onShow()
+{
+	auto world = getWorld();
+	auto canvas = getCanvas();
+
+	const auto& c = name.c_str();
+
+	if (ImGui::BeginMenu("WireFrame")) {
+		if (ImGui::MenuItem("WFBox")) {
+			control->setWindow(new WFBoxView(getWorld(), canvas));
+		}
+		if (ImGui::MenuItem("WFCone")) {
+			control->setWindow(new WFConeView(getWorld(), canvas));
+		}
+		if (ImGui::MenuItem("WFCylinder")) {
+			control->setWindow(new WFCylinderView(getWorld(), canvas));
+		}
+		if (ImGui::MenuItem("WFSphere")) {
+			control->setWindow(new WFSphereView(getWorld(), canvas));
+		}
+		if (ImGui::MenuItem("WFTorus")) {
+			control->setWindow(new WFTorusView(getWorld(), canvas));
+		}
+		ImGui::EndMenu();
+	}
+}
+
 void ShapeMenu::onShow()
 {
 	auto world = getWorld();
@@ -36,43 +89,8 @@ void ShapeMenu::onShow()
 
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
-		if (ImGui::BeginMenu("ParticleSystem")) {
-			if (ImGui::MenuItem("PSSphere")) {
-				control->setWindow(new PSSphereView("PSSphere", world, canvas));
-			}
-			if (ImGui::MenuItem("PSBox")) {
-				control->setWindow(new PSBoxView("PSBox", world, canvas));
-			}
-			if (ImGui::MenuItem("PSCone")) {
-				control->setWindow(new PSConeView("PSCone", world, canvas));
-			}
-			if (ImGui::MenuItem("PSCylinder")) {
-				control->setWindow(new PSCylinderView("PSCylinder", world, canvas));
-			}
-			if (ImGui::MenuItem("PSTorus")) {
-				control->setWindow(new PSTorusView(getWorld(), canvas));
-			}
-			ImGui::EndMenu();
-		}
-
-		if (ImGui::BeginMenu("WireFrame")) {
-			if (ImGui::MenuItem("WFBox")) {
-				control->setWindow(new WFBoxView(getWorld(), canvas));
-			}
-			if (ImGui::MenuItem("WFCone")) {
-				control->setWindow(new WFConeView(getWorld(), canvas));
-			}
-			if (ImGui::MenuItem("WFCylinder")) {
-				control->setWindow(new WFCylinderView(getWorld(), canvas));
-			}
-			if (ImGui::MenuItem("WFSphere")) {
-				control->setWindow(new WFSphereView(getWorld(), canvas));
-			}
-			if (ImGui::MenuItem("WFTorus")) {
-				control->setWindow(new WFTorusView(getWorld(), canvas));
-			}
-			ImGui::EndMenu();
-		}
+		pointCloudMenu.show();
+		wireFrameMenu.show();
 
 		if (ImGui::BeginMenu("PolygonMesh")) {
 			if (ImGui::MenuItem("PMBox")) {

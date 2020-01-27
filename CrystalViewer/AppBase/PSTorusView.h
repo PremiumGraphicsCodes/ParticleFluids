@@ -11,14 +11,14 @@ namespace Crystal {
 class PSTorusView : public IPSAddView
 {
 public:
-	PSTorusView(Scene::World* model, Canvas* canvas);
+	PSTorusView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
 	TorusView torusView;
-	IntView count;
+	IntView countView;
 };
 
 	}
