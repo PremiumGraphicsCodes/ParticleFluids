@@ -28,11 +28,13 @@ std::string FileImportCommand::getName()
 	return FileImportLabels::FileImportCommandLabel;
 }
 
-void FileImportCommand::execute(World* scene)
+bool FileImportCommand::execute(World* scene)
 {
 	if (!importFile(args.filePath.getValue(), scene)) {
 		results.isOk.value = false;
+		return false;
 	}
+	return true;
 	//scene->getObjects()
 }
 

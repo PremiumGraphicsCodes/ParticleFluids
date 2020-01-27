@@ -29,7 +29,7 @@ public:
 
 	static std::string getName();
 
-	void execute(Scene::World* world) override;
+	bool execute(Scene::World* world) override;
 
 private:
 	Args args;

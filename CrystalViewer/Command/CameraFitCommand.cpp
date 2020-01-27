@@ -11,7 +11,7 @@ std::string CameraFitCommand::getName()
 	return CameraFitCommandLabels::CameraFitCommandLabel;
 }
 
-void CameraFitCommand::execute(World* world)
+bool CameraFitCommand::execute(World* world)
 {
 	const auto boundingBox = world->getBoundingBox();
 	auto camera = world->getRenderer()->getCamera();
@@ -19,6 +19,7 @@ void CameraFitCommand::execute(World* world)
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
 	camera->lookAt(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0), boundingBox.getCenter(), Vector3dd(0,1,0));
+	return true;
 }
 
 std::string CameraXYCommand::getName()
@@ -26,7 +27,7 @@ std::string CameraXYCommand::getName()
 	return CameraFitCommandLabels::CameraXYCommandLabel;
 }
 
-void CameraXYCommand::execute(World* world)
+bool CameraXYCommand::execute(World* world)
 {
 	const auto boundingBox = world->getBoundingBox();
 	auto camera = world->getRenderer()->getCamera();
@@ -34,6 +35,7 @@ void CameraXYCommand::execute(World* world)
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
 	camera->lookAt(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0), boundingBox.getCenter(), Vector3dd(0, 1, 0));
+	return true;
 }
 
 std::string CameraYZCommand::getName()
@@ -41,7 +43,7 @@ std::string CameraYZCommand::getName()
 	return CameraFitCommandLabels::CameraYZCommandLabel;
 }
 
-void CameraYZCommand::execute(World* world)
+bool CameraYZCommand::execute(World* world)
 {
 	const auto boundingBox = world->getBoundingBox();
 	auto camera = world->getRenderer()->getCamera();
@@ -49,6 +51,7 @@ void CameraYZCommand::execute(World* world)
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
 	camera->lookAt(boundingBox.getCenter() - Vector3dd(dist * 2.0, 0, 0), boundingBox.getCenter(), Vector3dd(0, 0, 1));
+	return true;
 }
 
 std::string CameraZXCommand::getName()
@@ -56,7 +59,7 @@ std::string CameraZXCommand::getName()
 	return CameraFitCommandLabels::CameraZXCommandLabel;
 }
 
-void CameraZXCommand::execute(World* world)
+bool CameraZXCommand::execute(World* world)
 {
 	const auto boundingBox = world->getBoundingBox();
 	auto camera = world->getRenderer()->getCamera();
@@ -64,4 +67,5 @@ void CameraZXCommand::execute(World* world)
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
 	camera->lookAt(boundingBox.getCenter() - Vector3dd(0, dist * 2.0, 0), boundingBox.getCenter(), Vector3dd(1, 0, 0));
+	return true;
 }

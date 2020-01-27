@@ -27,8 +27,12 @@ std::string PositionGetCommand::getName()
 	return PositionGetLabels::CommandNameLabel;
 }
 
-void PositionGetCommand::execute(World* world)
+bool PositionGetCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<Crystal::Scene::IShapeScene*>(args.parentId.getValue());
+	if (scene == nullptr) {
+		return false;
+	}
 	results.position.setValue( scene->getPosition(args.childId.getValue()));
+	return true;
 }

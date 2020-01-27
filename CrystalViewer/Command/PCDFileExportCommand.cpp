@@ -28,12 +28,12 @@ std::string PCDFileExportCommand::getName()
 	return FileExportLabels::PCDFileExportCommandLabel;
 }
 
-void PCDFileExportCommand::execute(World* scene)
+bool PCDFileExportCommand::execute(World* scene)
 {
 	auto particles = scene->getObjects()->findSceneById<ParticleSystemScene*>(args.id.getValue());
 	if (particles == nullptr) {
 		results.isOk.setValue(false);
-		return;
+		return false;
 	}
 	PCDFile file;
 	const auto& ps = particles->getShape()->getParticles();
@@ -44,4 +44,5 @@ void PCDFileExportCommand::execute(World* scene)
 	std::filesystem::path filePath(args.filePath.getValue());
 	bool isOk = writer.write(filePath, file);
 	this->results.isOk.setValue( isOk );
+	return true;
 }

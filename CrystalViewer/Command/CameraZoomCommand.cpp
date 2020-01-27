@@ -15,9 +15,10 @@ std::string CameraZoomCommand::getName()
 	return CameraZoomCommandLabels::CameraZoomCommandLabel;
 }
 
-void CameraZoomCommand::execute(Crystal::Scene::World* scene)
+bool CameraZoomCommand::execute(Crystal::Scene::World* scene)
 {
 	auto camera = scene->getRenderer()->getCamera();
 	camera->zoom(args.ratio.getValue());
+	return true;
 }
 

@@ -29,11 +29,12 @@ std::string FileExportCommand::getName()
 	return FileExportLabels::FileExportCommandLabel;
 }
 
-void FileExportCommand::execute(World* scene)
+bool FileExportCommand::execute(World* scene)
 {
 	const auto filePath(args.filePath.getValue());
 	const auto format = Crystal::IO::getFileFormat(filePath);
 	exportFile(filePath, format, scene);
+	return true;
 }
 
 void FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format, World* world)

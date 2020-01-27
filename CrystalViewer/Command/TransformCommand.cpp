@@ -20,11 +20,12 @@ std::string TransformCommand::getName()
 	return TransformLabels::TransformCommandLabel;
 }
 
-void TransformCommand::execute(World* world)
+bool TransformCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<Scene::IShapeScene*>(args.id.getValue());
 	if (scene == nullptr) {
-		return;
+		return false;
 	}
 	scene->transform(args.matrix.getValue());
+	return true;
 }

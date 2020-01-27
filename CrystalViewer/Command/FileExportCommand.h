@@ -34,7 +34,7 @@ public:
 
 	static std::string getName();
 
-	void execute(Scene::World* scene) override;
+	bool execute(Scene::World* scene) override;
 
 private:
 	void exportFile(const std::filesystem::path& filePath, const IO::FileFormat format, Scene::World* world);

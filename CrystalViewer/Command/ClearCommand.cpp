@@ -20,7 +20,8 @@ ClearCommand::ClearCommand() :
 	ICommand(&args, nullptr)
 {}
 
-void ClearCommand::execute(World* world)
+bool ClearCommand::execute(World* world)
 {
 	world->clear(args.layer.getValue());
+	return true;
 }

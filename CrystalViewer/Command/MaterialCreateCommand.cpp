@@ -39,7 +39,7 @@ MaterialCreateCommand::Results::Results() :
 	add(&newId);
 }
 
-void MaterialCreateCommand::execute(World* world)
+bool MaterialCreateCommand::execute(World* world)
 {
 	auto m = std::make_unique<Material>();
 
@@ -55,4 +55,6 @@ void MaterialCreateCommand::execute(World* world)
 	auto scene = world->getSceneFactory()->createMaterialScene(std::move(m), args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
+
+	return true;
 }

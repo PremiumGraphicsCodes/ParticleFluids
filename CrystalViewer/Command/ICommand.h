@@ -33,7 +33,7 @@ public:
 
 	const std::type_info& getArgType(const std::string& name) { return args->getType(name); }
 
-	virtual void execute(Scene::World* scene) = 0;
+	virtual bool execute(Scene::World* scene) = 0;
 
 	std::any getResult(const std::string& name) { return results->getValue(name); }
 

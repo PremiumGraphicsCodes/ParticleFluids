@@ -29,7 +29,7 @@ public:
 
 	static std::string getName();
 
-	void execute(Scene::World* scene) override;
+	bool execute(Scene::World* scene) override;
 
 private:
 	bool importOBJ(const std::filesystem::path& filePath, Scene::World* world);

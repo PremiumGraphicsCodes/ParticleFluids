@@ -25,11 +25,12 @@ std::string PickCommand::getName()
 	return PickLabels::PickCommandLabel;
 }
 
-void PickCommand::execute(World* world)
+bool PickCommand::execute(World* world)
 {
 	const auto& p = args.position.getValue();
 	const auto parentId = world->getRenderer()->getParentIdRenderer()->getId(p.x, p.y);
 	results.parentId.setValue( parentId.getId() );
 //	results.childId.setValue( id.getChildId() );
+	return true;
 }
 

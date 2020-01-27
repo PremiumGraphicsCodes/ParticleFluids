@@ -30,15 +30,16 @@ TextureCreateCommand::Results::Results() :
 	add(&newId);
 }
 
-void TextureCreateCommand::execute(World* world)
+bool TextureCreateCommand::execute(World* world)
 {
 	ImageFileReader reader;
 	const auto isOk = reader.read(args.filePath.getValue());
 	if (!isOk) {
-		return;
+		return false;
 	}
 	auto tex = world->getGLFactory()->getTextureFactory()->createTextureObject(reader.getImage());
 	auto scene = world->getSceneFactory()->createTextureScene(*tex, args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
+	return true;
 }

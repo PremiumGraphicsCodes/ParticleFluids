@@ -35,11 +35,11 @@ MaterialGetCommand::Results::Results() :
 	add(&name);
 }
 
-void MaterialGetCommand::execute(World* world)
+bool MaterialGetCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<MaterialScene*>(args.id.getValue());
 	if (scene == nullptr) {
-		return;
+		return false;
 	}
 	auto m = scene->getMaterial();
 	results.ambient.setValue(Graphics::ColorRGBAf(m->ambient));
@@ -48,4 +48,6 @@ void MaterialGetCommand::execute(World* world)
 	results.shininess.setValue(m->shininess);
 //	results.textureName.setValue(m.ambientTextureName);
 	results.name.setValue(scene->getName());
+
+	return true;
 }

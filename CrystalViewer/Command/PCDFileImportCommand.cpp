@@ -26,7 +26,7 @@ std::string PCDFileImportCommand::getName()
 	return FileImportLabels::PCDFileImportCommandLabel;
 }
 
-void PCDFileImportCommand::execute(Crystal::Scene::World* scene)
+bool PCDFileImportCommand::execute(Crystal::Scene::World* scene)
 {
 	PCDFileReader reader;
 	if (reader.read(args.filePath.getValue())) {
@@ -36,5 +36,7 @@ void PCDFileImportCommand::execute(Crystal::Scene::World* scene)
 		attr.size = 1.0;
 		scene->getObjects()->addScene(scene->getSceneFactory()->createParticleSystemScene(positions, attr, "PCD"));
 		results.isOk.setValue( true );
+		return false;
 	}
+	return true;
 }

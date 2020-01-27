@@ -30,20 +30,21 @@ TextureSetCommand::Results::Results() :
 	add(&isOk);
 }
 
-void TextureSetCommand::execute(World* world)
+bool TextureSetCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<TextureScene*>(args.id.getValue());
 	if (scene == nullptr) {
 		results.isOk.setValue(false);
-		return;
+		return false;
 	}
 
 	ImageFileReader reader;
 	const auto isOk = reader.read(args.filePath.getValue());
 	if (!isOk) {
 		results.isOk.setValue(false);
-		return;
+		return false;
 	}
 	scene->update(reader.getImage());
 	results.isOk.setValue(true);
+	return true;
 }

@@ -30,10 +30,11 @@ std::string OBJFileImportCommand::getName()
 	return "OBJFileImport";
 }
 
-void OBJFileImportCommand::execute(World* scene)
+bool OBJFileImportCommand::execute(World* scene)
 {
 	const auto result = importOBJ(args.filePath.getValue(), scene);
 	results.isOk.setValue(result);
+	return result;
 }
 
 bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, World* world)

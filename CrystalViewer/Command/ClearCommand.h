@@ -19,7 +19,7 @@ public:
 
 	ClearCommand();
 
-	void execute(Scene::World* world) override;
+	bool execute(Scene::World* world) override;
 
 private:
 	Args args;

@@ -33,7 +33,7 @@ std::string STLFileImportCommand::getName()
 	return FileImportLabels::FileImportCommandLabel;
 }
 
-void STLFileImportCommand::execute(Crystal::Scene::World* scene)
+bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 {
 	if (!args.isBinary.getValue()) {
 		STLASCIIFileReader reader;
@@ -59,4 +59,5 @@ void STLFileImportCommand::execute(Crystal::Scene::World* scene)
 			*/
 		}
 	}
+	return true;
 }

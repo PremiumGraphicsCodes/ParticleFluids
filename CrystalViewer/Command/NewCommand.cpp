@@ -11,10 +11,12 @@ std::string NewCommand::getName()
 	return ::NewLabels::CommandNameLabel;
 }
 
-void NewCommand::execute(World* model)
+bool NewCommand::execute(World* model)
 {
 	model->clear();
 	model->init();
 	model->getRenderer()->build(*model->getGLFactory());
 	model->updateViewModel();
+
+	return true;
 }

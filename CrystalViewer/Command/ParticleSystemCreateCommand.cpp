@@ -37,7 +37,7 @@ std::string ParticleSystemCreateCommand::getName()
 	return ParticleSystemCreateLabels::ParticleSystemAddLabel;
 }
 
-void ParticleSystemCreateCommand::execute(World* world)
+bool ParticleSystemCreateCommand::execute(World* world)
 {
 	const auto& positions = args.positions.getValue();
 	ParticleAttribute attr;
@@ -49,4 +49,5 @@ void ParticleSystemCreateCommand::execute(World* world)
 	world->addScene(args.layer.getValue(), scene);
 	results.newId.setValue(scene->getId());
 	world->updateViewModel();
+	return true;
 }

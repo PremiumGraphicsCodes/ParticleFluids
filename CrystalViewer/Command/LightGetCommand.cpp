@@ -33,11 +33,11 @@ LightGetCommand::Results::Results() :
 	add(&name);
 }
 
-void LightGetCommand::execute(World* world)
+bool LightGetCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<LightScene*>(args.id.getValue());
 	if (scene == nullptr) {
-		return;
+		return false;
 	}
 	auto m = scene->getLight();
 	results.position.setValue(m->getPosition());
@@ -45,4 +45,5 @@ void LightGetCommand::execute(World* world)
 	results.diffuse.setValue(Graphics::ColorRGBAf(m->getDiffuse()));
 	results.specular.setValue(Graphics::ColorRGBAf(m->getSpecular()));
 	results.name.setValue(scene->getName());
+	return true;
 }

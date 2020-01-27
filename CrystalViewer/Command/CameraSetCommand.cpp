@@ -25,7 +25,7 @@ std::string CameraSetCommand::getName()
 	return CameraSetCommandLabels::CommandLabel;
 }
 
-void CameraSetCommand::execute(World* world)
+bool CameraSetCommand::execute(World* world)
 {
 	auto camera = world->getRenderer()->getCamera();
 	camera->setNear( std::any_cast<float>(args.near) );
@@ -36,4 +36,5 @@ void CameraSetCommand::execute(World* world)
 	const auto& targetPosition = std::any_cast<Vector3dd>(args.targetPosition);
 	const auto& upVector = std::any_cast<Vector3dd>(args.upVector);
 	camera->lookAt(eyePosition, targetPosition, upVector);
+	return true;
 }

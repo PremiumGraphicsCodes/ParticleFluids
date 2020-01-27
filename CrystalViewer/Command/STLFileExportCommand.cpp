@@ -32,7 +32,7 @@ std::string STLFileExportCommand::getName()
 	return FileExportLabels::STLFileExportCommandLabel;
 }
 
-void STLFileExportCommand::execute(World* scene)
+bool STLFileExportCommand::execute(World* scene)
 {
 	auto mesh = scene->getObjects()->findSceneById<PolygonMeshScene*>(args.id.getValue());
 	if (args.isBinary.getValue()) {
@@ -41,6 +41,7 @@ void STLFileExportCommand::execute(World* scene)
 	else {
 		exportAscii(*mesh);
 	}
+	return true;
 }
 
 void STLFileExportCommand::exportAscii(PolygonMeshScene& polygonMesh)

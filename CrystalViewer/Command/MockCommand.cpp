@@ -9,7 +9,8 @@ std::string MockCommand::getName()
 	return MockLabels::MockCommandLabel;
 }
 
-void MockCommand::execute(Crystal::Scene::World* world)
+bool MockCommand::execute(Crystal::Scene::World* world)
 {
 	results.value.setValue( args.lhs.getValue() + args.rhs.getValue() );
+	return true;
 }

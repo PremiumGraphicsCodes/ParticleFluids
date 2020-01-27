@@ -40,7 +40,7 @@ std::string PolygonMeshCreateCommand::getName()
 	return ::PolygonMeshCreateLabels::CommandNameLabel;
 }
 
-void PolygonMeshCreateCommand::execute(World* world)
+bool PolygonMeshCreateCommand::execute(World* world)
 {
 	auto mesh = std::make_unique<PolygonMesh>();
 	mesh->positions = args.positions.getValue();
@@ -62,4 +62,6 @@ void PolygonMeshCreateCommand::execute(World* world)
 	world->updateViewModel();
 
 	results.newId.setValue(newId);
+
+	return true;
 }

@@ -29,7 +29,7 @@ std::string CameraGetCommand::getName()
 	return CameraGetCommandLabels::CommandNameLabel;
 }
 
-void CameraGetCommand::execute(World* scene)
+bool CameraGetCommand::execute(World* scene)
 {
 	auto camera = scene->getRenderer()->getCamera();
 	results.near.setValue(camera->getNear());
@@ -39,4 +39,6 @@ void CameraGetCommand::execute(World* scene)
 	results.upVector.setValue(camera->getUp());
 	results.projectionMatrix.setValue(camera->getProjectionMatrix());
 	results.rotationMatrix.setValue(camera->getRotationMatrix());
+
+	return true;
 }

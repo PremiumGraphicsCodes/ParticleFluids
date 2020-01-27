@@ -27,15 +27,15 @@ ShapeSelectCommand::Results::Results() :
 	add(&boundingBoxItemId);
 }
 
-void ShapeSelectCommand::execute(World* scene)
+bool ShapeSelectCommand::execute(World* scene)
 {
 	const auto shapeId = args.shapeId.getValue();
 	if (shapeId == 0) {
-		return;
+		return false;
 	}
 	auto shape = scene->getObjects()->findSceneById<IShapeScene*>(shapeId);
 	if (shape == nullptr) {
-		return;
+		return false;
 	}
 	
 	const auto bb = shape->getBoundingBox();
@@ -47,4 +47,6 @@ void ShapeSelectCommand::execute(World* scene)
 	auto bbshape = scene->getSceneFactory()->createWireFrameScene(builder.createWireFrame(),attribute,"BoundingBox");
 	scene->getItems()->addScene(bbshape);
 	results.boundingBoxItemId.setValue(bbshape->getId());
+
+	return true;
 }

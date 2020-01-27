@@ -34,7 +34,7 @@ LightCreateCommand::Results::Results() :
 	add(&newId);
 }
 
-void LightCreateCommand::execute(World* world)
+bool LightCreateCommand::execute(World* world)
 {
 	auto l = std::make_unique<PointLight>();
 	l->setPosition(args.position.getValue());
@@ -44,4 +44,5 @@ void LightCreateCommand::execute(World* world)
 	auto scene = world->getSceneFactory()->createLightScene(std::move(l), args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
+	return true;
 }

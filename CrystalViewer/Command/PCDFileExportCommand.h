@@ -30,9 +30,8 @@ public:
 
 	static std::string getName();
 
-	void execute(Scene::World* scene) override;
+	bool execute(Scene::World* scene) override;
 
-private:
 private:
 	Args args;
 	Results results;

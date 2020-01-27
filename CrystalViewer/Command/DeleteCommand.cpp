@@ -22,20 +22,21 @@ DeleteCommand::DeleteCommand() :
 	ICommand(&args, nullptr)
 {}
 
-void DeleteCommand::execute(World* world)
+bool DeleteCommand::execute(World* world)
 {
 	if (args.isItem.getValue()) {
 		auto scene = world->getItems()->findSceneById(args.id.getValue());
 		if (scene == nullptr) {
-			return;
+			return false;
 		}
 		world->getItems()->deleteSceneById(args.id.getValue());
 	}
 	else {
 		auto scene = world->getObjects()->findSceneById(args.id.getValue());
 		if (scene == nullptr) {
-			return;
+			return false;
 		}
 		world->getObjects()->deleteSceneById(args.id.getValue());
 	}
+	return true;
 }

@@ -16,7 +16,7 @@ std::string CameraTranslateCommand::getName()
 	return CameraTranslateCommandLabels::CameraTranslateCommandLabel;
 }
 
-void CameraTranslateCommand::execute(World* scene)
+bool CameraTranslateCommand::execute(World* scene)
 {
 	auto camera = scene->getRenderer()->getCamera();
 	const Vector3df t = args.translate.getValue();
@@ -25,4 +25,5 @@ void CameraTranslateCommand::execute(World* scene)
 	const auto& up = camera->getUp();
 	camera->lookAt(eye + t, target + t, up);
 	//camera->moveTarget(args.translate.getValue());
+	return true;
 }

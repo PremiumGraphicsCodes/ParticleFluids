@@ -26,9 +26,9 @@ std::string OBJFileExportCommand::getName()
 	return "OBJFileExport";
 }
 
-void OBJFileExportCommand::execute(World* scene)
+bool OBJFileExportCommand::execute(World* scene)
 {
-	;
+	return false;
 }
 
 bool OBJFileExportCommand::exportOBJ(const std::filesystem::path& filePath, PolygonMeshScene& polygon)

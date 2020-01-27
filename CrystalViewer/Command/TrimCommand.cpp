@@ -30,9 +30,12 @@ std::string TrimCommand::getName()
 	return TrimLabels::TrimCommandLabel;
 }
 
-void TrimCommand::execute(World* world)
+bool TrimCommand::execute(World* world)
 {
 	auto shape = world->getObjects()->findSceneById<IShapeScene*>(args.shapeId.getValue());
+	if (shape == nullptr) {
+		return false;
+	}
 	Space3d space;
 	auto spheres = args.spheres.getValue();
 	for (auto& s : spheres) {
@@ -56,4 +59,5 @@ void TrimCommand::execute(World* world)
 		world->getObjects()->addScene(newObj);
 		results.newId.setValue(newObj->getId());
 	}
+	return true;
 }

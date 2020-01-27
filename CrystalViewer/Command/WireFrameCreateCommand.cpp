@@ -39,7 +39,7 @@ std::string WireFrameCreateCommand::getName()
 	return WireFrameCreateLabels::WireFrameAddLabel;
 }
 
-void WireFrameCreateCommand::execute(World* world)
+bool WireFrameCreateCommand::execute(World* world)
 {
 	const auto& positions = args.positions.getValue();
 	const auto& edges = args.edges.getValue();
@@ -53,4 +53,5 @@ void WireFrameCreateCommand::execute(World* world)
 	world->addScene(args.layer.getValue(), scene);
 	results.newId.setValue(scene->getId());
 	world->updateViewModel();
+	return true;
 }

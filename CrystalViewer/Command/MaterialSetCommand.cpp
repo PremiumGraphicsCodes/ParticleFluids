@@ -31,11 +31,11 @@ MaterialSetCommand::Args::Args() :
 	add(&name);
 }
 
-void MaterialSetCommand::execute(World* world)
+bool MaterialSetCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<MaterialScene*>(args.id.getValue());
 	if (scene == nullptr) {
-		return;
+		return false;
 	}
 	auto m = scene->getMaterial();
 	m->ambient = args.ambient.getValue();
@@ -43,4 +43,5 @@ void MaterialSetCommand::execute(World* world)
 	m->specular = args.specular.getValue();
 	m->shininess = args.shininess.getValue();
 	scene->setName(args.name.getValue());
+	return true;
 }

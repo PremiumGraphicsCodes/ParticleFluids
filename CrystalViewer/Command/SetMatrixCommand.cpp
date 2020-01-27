@@ -20,8 +20,10 @@ std::string SetMatrixCommand::getName()
 	return SetMatrixLabels::CommandLabel;
 }
 
-void SetMatrixCommand::execute(World* world)
+bool SetMatrixCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById<Scene::IShapeScene*>(args.id.getValue());
 	scene->setMatrix(args.matrix.getValue());
+
+	return true;
 }

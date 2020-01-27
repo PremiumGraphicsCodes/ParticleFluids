@@ -38,15 +38,16 @@ SceneGetCommand::SceneGetCommand() :
 {
 }
 
-void SceneGetCommand::execute(World* world)
+bool SceneGetCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById(args.id.getValue());
 	if (scene == nullptr) {
-		return;
+		return false;
 	}
 	results.boundingBox.setValue( scene->getBoundingBox() );
 	results.isVisible.setValue(scene->isVisible());
 	results.isPickable.setValue(scene->isPickable());
 	results.name.setValue(scene->getName());
 	results.type.setValue(scene->getType());
+	return true;
 }

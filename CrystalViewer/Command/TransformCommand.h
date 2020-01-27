@@ -23,7 +23,7 @@ public:
 		ICommand(&args)
 	{}
 
-	void execute(Scene::World* world) override;
+	bool execute(Scene::World* world) override;
 
 private:
 	Args args;
