@@ -24,14 +24,14 @@ public:
 	void setValue(Scene::MaterialScene* m);
 
 public:
-	Float4View ambient;
-	Float4View diffuse;
-	Float4View specular;
-	FloatView shininess;
+	Float4View ambientView;
+	Float4View diffuseView;
+	Float4View specularView;
+	FloatView shininessView;
 
-	StringView ambientTexture;
-	StringView diffuseTexture;
-	StringView specularTexture;
+	StringView ambientTextureView;
+	StringView diffuseTextureView;
+	StringView specularTextureView;
 };
 	}
 }

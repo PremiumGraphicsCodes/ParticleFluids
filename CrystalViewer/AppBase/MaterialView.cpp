@@ -10,37 +10,37 @@ using namespace Crystal::UI;
 
 MaterialView::MaterialView(const std::string& name) :
 	IView(name),
-	ambient("Ambient", glm::vec4(0, 0, 0, 0)),
-	diffuse("Diffuse", glm::vec4(0, 0, 0, 0)),
-	specular("Specular", glm::vec4(0, 0, 0, 0)),
-	shininess("Shininess", 1.0f),
-	ambientTexture("AmbientTexture"),
-	diffuseTexture("DiffuseTexture"),
-	specularTexture("SpecularTexture")
+	ambientView("Ambient", glm::vec4(0, 0, 0, 0)),
+	diffuseView("Diffuse", glm::vec4(0, 0, 0, 0)),
+	specularView("Specular", glm::vec4(0, 0, 0, 0)),
+	shininessView("Shininess", 1.0f),
+	ambientTextureView("AmbientTexture"),
+	diffuseTextureView("DiffuseTexture"),
+	specularTextureView("SpecularTexture")
 {
-	add(&ambient);
-	add(&diffuse);
-	add(&specular);
-	add(&shininess);
-	add(&ambientTexture);
-	add(&diffuseTexture);
-	add(&specularTexture);
+	add(&ambientView);
+	add(&diffuseView);
+	add(&specularView);
+	add(&shininessView);
+	add(&ambientTextureView);
+	add(&diffuseTextureView);
+	add(&specularTextureView);
 }
 
 void MaterialView::setValue(MaterialScene* m)
 {
-	ambient.setValue(m->getMaterial()->ambient);
-	diffuse.setValue(m->getMaterial()->diffuse);
-	specular.setValue(m->getMaterial()->specular);
-	shininess.setValue(m->getMaterial()->shininess);
+	ambientView.setValue(m->getMaterial()->ambient);
+	diffuseView.setValue(m->getMaterial()->diffuse);
+	specularView.setValue(m->getMaterial()->specular);
+	shininessView.setValue(m->getMaterial()->shininess);
 
 	if (m->getAmbientTexture()) {
-		ambientTexture.setValue(m->getAmbientTexture()->getName());
+		ambientTextureView.setValue(m->getAmbientTexture()->getName());
 	}
 	if (m->getDiffuseTexture()) {
-		diffuseTexture.setValue(m->getDiffuseTexture()->getName());
+		diffuseTextureView.setValue(m->getDiffuseTexture()->getName());
 	}
 	if (m->getSpecularTexture()) {
-		specularTexture.setValue(m->getSpecularTexture()->getName());
+		specularTextureView.setValue(m->getSpecularTexture()->getName());
 	}
 }
