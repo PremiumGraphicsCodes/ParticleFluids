@@ -43,28 +43,28 @@ Scene* SceneFactory::createScene(const std::string& name)
 
 ParticleSystemScene* SceneFactory::createParticleSystemScene(const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name)
 {
-	auto particles = new ParticleSystem<ParticleAttribute>();
+	auto particles = std::make_unique<ParticleSystem<ParticleAttribute>>();
 	particles->add(position, attribute);
-	return new ParticleSystemScene(getNextId(), name, particles);
+	return new ParticleSystemScene(getNextId(), name, std::move(particles));
 }
 
 ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name)
 {
-	auto particles = new ParticleSystem<ParticleAttribute>();
+	auto particles = std::make_unique<ParticleSystem<ParticleAttribute>>();
 	for (const auto& p : positions) {
 		particles->add(p, attribute);
 	}
-	return new ParticleSystemScene(getNextId(), name, particles);
+	return new ParticleSystemScene(getNextId(), name, std::move(particles));
 }
 
 ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
 {
 	assert(positions.size() == attributes.size());
-	auto particles = new ParticleSystem<ParticleAttribute>();
+	auto particles = std::make_unique<ParticleSystem<ParticleAttribute>>();
 	for (int i = 0; i < positions.size(); ++i) {
 		particles->add(positions[i], attributes[i]);
 	}
-	return new ParticleSystemScene(getNextId(), name, particles);
+	return new ParticleSystemScene(getNextId(), name, std::move(particles));
 }
 
 WireFrameScene* SceneFactory::createWireFrameScene(WireFrame* shape, const WireFrameAttribute& attribute, const std::string& name)

@@ -10,19 +10,13 @@ namespace Crystal {
 class ParticleSystemScene : public IShapeScene
 {
 public:
-	ParticleSystemScene() :
-		IShapeScene(-1, nullptr),
-		shape(nullptr)
-	{}
+	ParticleSystemScene();
 
-	ParticleSystemScene(const int id, const std::string& name, Shape::ParticleSystem<ParticleAttribute>* shape) :
-		IShapeScene(id, name, shape),
-		shape(shape)
-	{}
+	ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<Shape::ParticleSystem<ParticleAttribute>> shape);
 
 	~ParticleSystemScene() {};
 
-	Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape; }
+	Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape.get(); }
 
 	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 
@@ -32,10 +26,7 @@ public:
 
 	SceneType getType() const override { return SceneType::ParticleSystemScene; }
 
-	void onClear() override
-	{
-		delete shape;
-	}
+	void onClear() override {};
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
@@ -52,7 +43,7 @@ public:
 	void setAttribute(const ParticleAttribute& attribute);
 
 private:
-	Shape::ParticleSystem<ParticleAttribute>* shape;
+	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
 };
 
 	}
