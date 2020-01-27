@@ -13,17 +13,17 @@ using namespace Crystal::UI;
 
 void SelectionMenu::onShow()
 {
-	auto model = getModel();
+	auto model = getWorld();
 	auto canvas = getCanvas();
 
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 
 		if (ImGui::MenuItem("Object")) {
-			control->setWindow(new ObjectSelectView("ObjectSelect", getModel(), canvas));
+			control->setWindow(new ObjectSelectView("ObjectSelect", getWorld(), canvas));
 		}
 		if (ImGui::MenuItem("Position")) {
-			control->setWindow(new PositionSelectView("PositionSelect", getModel(), canvas));
+			control->setWindow(new PositionSelectView("PositionSelect", getWorld(), canvas));
 		}
 		/*
 		if (ImGui::MenuItem("SphereRegion")) {

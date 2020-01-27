@@ -31,74 +31,74 @@ using namespace Crystal::UI;
 
 void ShapeMenu::onShow()
 {
-	auto model = getModel();
+	auto world = getWorld();
 	auto canvas = getCanvas();
 
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::BeginMenu("ParticleSystem")) {
 			if (ImGui::MenuItem("PSSphere")) {
-				control->setWindow(new PSSphereView(getModel(), canvas));
+				control->setWindow(new PSSphereView(getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("PSBox")) {
-				control->setWindow(new PSBoxView(getModel(), canvas));
+				control->setWindow(new PSBoxView(getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("PSCone")) {
-				control->setWindow(new PSConeView(getModel(), canvas));
+				control->setWindow(new PSConeView(getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("PSCylinder")) {
-				control->setWindow(new PSCylinderView(getModel(), canvas));
+				control->setWindow(new PSCylinderView(getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("PSTorus")) {
-				control->setWindow(new PSTorusView(getModel(), canvas));
+				control->setWindow(new PSTorusView(getWorld(), canvas));
 			}
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("WireFrame")) {
 			if (ImGui::MenuItem("WFBox")) {
-				control->setWindow(new WFBoxView(getModel(), canvas));
+				control->setWindow(new WFBoxView(getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("WFCone")) {
-				control->setWindow(new WFConeView(getModel(), canvas));
+				control->setWindow(new WFConeView(getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("WFCylinder")) {
-				control->setWindow(new WFCylinderView(getModel(), canvas));
+				control->setWindow(new WFCylinderView(getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("WFSphere")) {
-				control->setWindow(new WFSphereView(getModel(), canvas));
+				control->setWindow(new WFSphereView(getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("WFTorus")) {
-				control->setWindow(new WFTorusView(getModel(), canvas));
+				control->setWindow(new WFTorusView(getWorld(), canvas));
 			}
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("PolygonMesh")) {
 			if (ImGui::MenuItem("PMBox")) {
-				control->setWindow(new PMBoxView(getModel(), canvas));
+				control->setWindow(new PMBoxView("PMBox", getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("PMQuad")) {
-				control->setWindow(new PMQuadView(getModel(), canvas));
+				control->setWindow(new PMQuadView("PMQuad", getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("PMSphere")) {
-				control->setWindow(new PMSphereView(getModel(), canvas));
+				control->setWindow(new PMSphereView(getWorld(), canvas));
 			}
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Transform")) {
 			if (ImGui::MenuItem("Scale")) {
-				control->setWindow(new ScaleView("Scale", getModel(), canvas));
+				control->setWindow(new ScaleView("Scale", getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("Translate")) {
-				control->setWindow(new TranslateView("Translate", getModel(), canvas));
+				control->setWindow(new TranslateView("Translate", getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("Rotate")) {
-				control->setWindow(new RotateView("Rotate", getModel(), canvas));
+				control->setWindow(new RotateView("Rotate", getWorld(), canvas));
 			}
 			if (ImGui::MenuItem("Transform")) {
-				control->setWindow(new TransformView("Transform", getModel(), canvas));
+				control->setWindow(new TransformView("Transform", getWorld(), canvas));
 			}
 
 			ImGui::EndMenu();
@@ -106,7 +106,7 @@ void ShapeMenu::onShow()
 
 		if (ImGui::BeginMenu("Global")) {
 			if (ImGui::MenuItem("Delete")) {
-				control->setWindow(new DeleteView("Delete", getModel(), canvas));
+				control->setWindow(new DeleteView("Delete", getWorld(), canvas));
 			}
 			ImGui::EndMenu();
 

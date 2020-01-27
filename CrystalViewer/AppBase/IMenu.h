@@ -21,7 +21,7 @@ public:
 	virtual ~IMenu() {};
 
 protected:
-	Scene::World* getModel() { return model; }
+	Scene::World* getWorld() { return model; }
 
 	Canvas* getCanvas() { return canvas; }
 

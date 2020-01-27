@@ -18,19 +18,19 @@ using namespace Crystal::Shape;
 using namespace Crystal::UI;
 using namespace Crystal::Command;
 
-PMQuadView::PMQuadView(World* model, Canvas* canvas) :
-	IOkCancelView("PMQuad", model, canvas),
-	quad("Quad"),
-	name("Name", "PMPlane")
+PMQuadView::PMQuadView(const std::string& name, World* world, Canvas* canvas) :
+	IOkCancelView(name, world, canvas),
+	quadView("Quad"),
+	nameView("Name", "PMPlane")
 {
-	add(&quad);
-	add(&name);
+	add(&quadView);
+	add(&nameView);
 }
 
 void PMQuadView::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.add(quad.getValue(), 1, 1);
+	builder.add(quadView.getValue(), 1, 1);
 
 	Command::Command command;
 	command.create(PolygonMeshCreateLabels::CommandNameLabel);
@@ -39,7 +39,7 @@ void PMQuadView::onOk()
 	command.setArg(PolygonMeshCreateLabels::TexCoordsLabel, builder.getTexCoords());
 	command.setArg(PolygonMeshCreateLabels::VerticesLabel, builder.getVertices());
 	command.setArg(PolygonMeshCreateLabels::FacesLabel, builder.getFaces());
-	command.setArg(PolygonMeshCreateLabels::NameLabel, name.getValue());
+	command.setArg(PolygonMeshCreateLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);

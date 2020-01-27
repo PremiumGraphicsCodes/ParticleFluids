@@ -19,7 +19,7 @@ using namespace Crystal::Command;
 
 void FileMenu::onShow()
 {
-	auto model = getModel();
+	auto model = getWorld();
 
 	const auto& n = name.c_str();
 	if (ImGui::BeginMenu(n)) {

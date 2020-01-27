@@ -9,14 +9,14 @@ namespace Crystal {
 class LightAddView : public IOkCancelView
 {
 public:
-	LightAddView(const std::string& name, Scene::World* model, Canvas* canvas);
+	LightAddView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk();
 
 private:
-	LightView light;
-	StringView name;
+	LightView lightView;
+	StringView nameView;
 };
 
 	}

@@ -15,8 +15,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Command;
 
-PMBoxView::PMBoxView(World* model, Canvas* canvas) :
-	IOkCancelView("PMBox", model, canvas),
+PMBoxView::PMBoxView(const std::string& name, World* world, Canvas* canvas) :
+	IOkCancelView(name, world, canvas),
 	boxView("Box"),
 	nameView("Name", "PMBox")
 {

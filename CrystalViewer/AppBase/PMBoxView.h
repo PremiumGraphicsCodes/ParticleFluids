@@ -12,7 +12,7 @@ namespace Crystal {
 class PMBoxView : public IOkCancelView
 {
 public:
-	PMBoxView(Scene::World* model, Canvas* canvas);
+	PMBoxView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;

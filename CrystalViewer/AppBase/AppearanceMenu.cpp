@@ -14,23 +14,23 @@ using namespace Crystal::UI;
 
 void AppearanceMenu::onShow()
 {
-	auto model = getModel();
+	auto model = getWorld();
 	auto canvas = getCanvas();
 
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 
 		if (ImGui::MenuItem("Light")) {
-			control->setWindow(new LightAddView("Light", getModel(), canvas));
+			control->setWindow(new LightAddView("Light", getWorld(), canvas));
 		}
 		if (ImGui::MenuItem("Material")) {
-			control->setWindow(new MaterialAddView("Material", getModel(), canvas));
+			control->setWindow(new MaterialAddView("Material", getWorld(), canvas));
 		}
 		if (ImGui::MenuItem("Texture")) {
-			control->setWindow(new TextureAddView("Texture", getModel(), canvas));
+			control->setWindow(new TextureAddView("Texture", getWorld(), canvas));
 		}
 		if (ImGui::MenuItem("Shader")) {
-			control->setWindow(new ShaderAddView("Shader", getModel(), canvas));
+			control->setWindow(new ShaderAddView("Shader", getWorld(), canvas));
 		}
 
 		ImGui::EndMenu();

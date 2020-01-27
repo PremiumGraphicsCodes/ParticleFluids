@@ -3,9 +3,7 @@
 #include "IOkCancelView.h"
 
 #include "Quad3dView.h"
-#include "IntView.h"
 #include "StringView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
@@ -13,14 +11,14 @@ namespace Crystal {
 class PMQuadView : public IOkCancelView
 {
 public:
-	PMQuadView(Scene::World* model, Canvas* canvas);
+	PMQuadView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	Quad3dView quad;
-	StringView name;
+	Quad3dView quadView;
+	StringView nameView;
 };
 
 	}

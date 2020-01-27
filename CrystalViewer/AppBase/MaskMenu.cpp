@@ -7,7 +7,7 @@ using namespace Crystal::UI;
 
 void MaskMenu::onShow()
 {
-	auto model = getModel();
+	auto model = getWorld();
 	auto canvas = getCanvas();
 
 	const auto& c = name.c_str();

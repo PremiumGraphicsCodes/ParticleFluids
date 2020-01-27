@@ -10,7 +10,7 @@ using namespace Crystal::Scene;
 
 void CtrlMenu::onShow()
 {
-	auto model = getModel();
+	auto model = getWorld();
 	auto canvas = getCanvas();
 
 	const auto& c = name.c_str();

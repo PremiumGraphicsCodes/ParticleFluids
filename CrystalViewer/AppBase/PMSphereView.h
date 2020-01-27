@@ -11,7 +11,7 @@ namespace Crystal {
 class PMSphereView : public IOkCancelView
 {
 public:
-	PMSphereView(Scene::World* model, Canvas* canvas);
+	PMSphereView(Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;
