@@ -46,6 +46,20 @@ public:
 
 private:
 	ControlPanel* control;
+};
+
+class TransformMenu : public IMenu
+{
+public:
+	TransformMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control) :
+		IMenu(name, world, canvas),
+		control(control)
+	{}
+	
+	void onShow() override;
+
+private:
+	ControlPanel* control;
 
 };
 
@@ -57,7 +71,8 @@ public:
 		control(control),
 		pointCloudMenu("PointCloud", world, canvas, control),
 		wireFrameMenu("WireFrame", world, canvas, control),
-		polygonMeshMenu("PolygonMesh", world, canvas, control)
+		polygonMeshMenu("PolygonMesh", world, canvas, control),
+		transformMenu("Transform", world, canvas, control)
 	{}
 
 	void onShow() override;
@@ -67,6 +82,7 @@ private:
 	PCGenerationMenu pointCloudMenu;
 	WFGenerationMenu wireFrameMenu;
 	PMGenerationMenu polygonMeshMenu;
+	TransformMenu transformMenu;
 };
 
 	}

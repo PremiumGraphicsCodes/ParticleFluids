@@ -62,7 +62,7 @@ void WFGenerationMenu::onShow()
 
 	const auto& c = name.c_str();
 
-	if (ImGui::BeginMenu("WireFrame")) {
+	if (ImGui::BeginMenu(c)) {
 		if (ImGui::MenuItem("WFBox")) {
 			control->setWindow(new WFBoxView("WFBox", world, canvas));
 		}
@@ -89,7 +89,7 @@ void PMGenerationMenu::onShow()
 
 	const auto& c = name.c_str();
 
-	if (ImGui::BeginMenu("PolygonMesh")) {
+	if (ImGui::BeginMenu(c)) {
 		if (ImGui::MenuItem("PMBox")) {
 			control->setWindow(new PMBoxView("PMBox", world, canvas));
 		}
@@ -98,6 +98,30 @@ void PMGenerationMenu::onShow()
 		}
 		if (ImGui::MenuItem("PMSphere")) {
 			control->setWindow(new PMSphereView("PMSphere", world, canvas));
+		}
+		ImGui::EndMenu();
+	}
+}
+
+void TransformMenu::onShow()
+{
+	auto world = getWorld();
+	auto canvas = getCanvas();
+
+	const auto& c = name.c_str();
+
+	if (ImGui::BeginMenu(c)) {
+		if (ImGui::MenuItem("Scale")) {
+			control->setWindow(new ScaleView("Scale", world, canvas));
+		}
+		if (ImGui::MenuItem("Translate")) {
+			control->setWindow(new TranslateView("Translate", world, canvas));
+		}
+		if (ImGui::MenuItem("Rotate")) {
+			control->setWindow(new RotateView("Rotate", world, canvas));
+		}
+		if (ImGui::MenuItem("Transform")) {
+			control->setWindow(new TransformView("Transform", world, canvas));
 		}
 		ImGui::EndMenu();
 	}
@@ -113,22 +137,7 @@ void ShapeMenu::onShow()
 		pointCloudMenu.show();
 		wireFrameMenu.show();
 		polygonMeshMenu.show();
-
-		if (ImGui::BeginMenu("Transform")) {
-			if (ImGui::MenuItem("Scale")) {
-				control->setWindow(new ScaleView("Scale", world, canvas));
-			}
-			if (ImGui::MenuItem("Translate")) {
-				control->setWindow(new TranslateView("Translate", world, canvas));
-			}
-			if (ImGui::MenuItem("Rotate")) {
-				control->setWindow(new RotateView("Rotate", world, canvas));
-			}
-			if (ImGui::MenuItem("Transform")) {
-				control->setWindow(new TransformView("Transform", world, canvas));
-			}
-			ImGui::EndMenu();
-		}
+		transformMenu.show();
 
 		if (ImGui::BeginMenu("Global")) {
 			if (ImGui::MenuItem("Delete")) {
