@@ -1,5 +1,6 @@
 #include "IScene.h"
 
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 IScene::IScene() :
@@ -23,6 +24,25 @@ IScene::IScene(const int id, const std::string& name) :
 	_isPickable(true),
 	parent(nullptr)
 {}
+
+IScene::~IScene()
+{
+}
+
+void IScene::clear()
+{
+	for (const auto& c : children) {
+		c->clear();
+	}
+	children.clear();
+	onClear();
+}
+
+void IScene::addScene(IScene* scene)
+{
+	scene->parent = this;
+	this->children.push_back(scene);
+}
 
 IScene* IScene::findSceneById(int id)
 {
@@ -62,6 +82,15 @@ IScene* IScene::findSceneByName(const std::string& name)
 	return nullptr;
 }
 
+IScene* IScene::getRoot()
+{
+	auto p = this;
+	while (!p->isRoot()) {
+		p = p->getParent();
+	}
+	return p;
+}
+
 std::list<IScene*> IScene::findScenes(const SceneType type)
 {
 	std::list<IScene*> scenes;
@@ -76,3 +105,10 @@ std::list<IScene*> IScene::findScenes(const SceneType type)
 	return scenes;
 }
 
+void IScene::build(GLObjectFactory& factory)
+{
+	onBuild(factory);
+	for (auto c : children) {
+		c->build(factory);
+	}
+};

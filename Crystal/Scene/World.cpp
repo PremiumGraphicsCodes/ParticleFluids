@@ -68,15 +68,18 @@ void World::init()
 		image.setColor(1, 0, ColorRGBAuc(0, 255, 255, 255));
 		image.setColor(1, 1, ColorRGBAuc(0, 0, 0, 255));
 
-		auto tex = glFactory.getTextureFactory()->createTextureObject(image);
-		scenes[1]->addScene(sceneFactory.createTextureScene(*tex, "WhiteTex"));
+//		auto tex = glFactory.getTextureFactory()->createTextureObject(image);
+		auto s = sceneFactory.createTextureScene(image, "WhiteTex");
+		s->build(glFactory);
+		scenes[1]->addScene(s);
 	}
 
 	{
 		Image image(1, 1);
 		image.setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
-		auto tex = glFactory.getTextureFactory()->createTextureObject(image);
-		scenes[1]->addScene(sceneFactory.createTextureScene(*tex, "BlackTex"));
+		auto s = sceneFactory.createTextureScene(image, "BlackTex");
+		s->build(glFactory);
+		scenes[1]->addScene(s);
 	}
 
 

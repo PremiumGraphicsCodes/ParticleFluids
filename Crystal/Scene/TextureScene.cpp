@@ -7,28 +7,27 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-TextureScene::TextureScene(const int id, const TextureObject& texture, const std::string& name) :
+TextureScene::TextureScene(const int id, const Image& image, const std::string& name) :
 	IScene(id, name),
-	texture(texture)
+	image(image)
 {
 }
 
 void TextureScene::onClear()
 {
-	texture.clear();
 };
 
 void TextureScene::onBuild(GLObjectFactory& factory)
 {
-
+	texture = factory.getTextureFactory()->createTextureObject(image);
 }
 
 void TextureScene::toViewModel(SceneViewModel& viewModel) const
 {
-	viewModel.textures.push_back(texture);
+	viewModel.textures.push_back(*texture);
 }
 
 void TextureScene::update(const Image& image)
 {
-	texture.send(image);
+	texture->send(image);
 }

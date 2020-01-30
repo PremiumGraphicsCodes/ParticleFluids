@@ -9,7 +9,7 @@ namespace Crystal {
 class TextureScene : public IScene
 {
 public:
-	TextureScene(const int id, const Shader::TextureObject& texture, const std::string& name);
+	TextureScene(const int id, const Graphics::Image& image, const std::string& name);
 
 	~TextureScene() {};
 
@@ -17,18 +17,17 @@ public:
 
 	void onClear() override;
 
-	//void setMaterial(const Graphics::Material& material) { this->material = material; }
-
 	SceneType getType() const override { return SceneType::TextureScene; }
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
-	Shader::TextureObject getTextureObject() const { return texture; }
+	Shader::TextureObject getTextureObject() const { return *texture; }
 
 	void update(const Graphics::Image& image);
 
 private:
-	Shader::TextureObject texture;
+	Graphics::Image image;
+	Shader::TextureObject* texture;
 };
 
 	}

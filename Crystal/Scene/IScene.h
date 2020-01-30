@@ -25,15 +25,9 @@ public:
 
 	IScene(const int id, const std::string& name);
 
-	virtual ~IScene() {};
+	virtual ~IScene();
 
-	void clear() {
-		for (const auto& c : children) {
-			c->clear();
-		}
-		children.clear();
-		onClear();
-	}
+	void clear();
 
 	void setName(const std::string& name) { this->name = name; }
 
@@ -55,10 +49,7 @@ public:
 
 	virtual SceneType getType() const = 0;
 
-	void addScene(IScene* scene) {
-		scene->parent = this;
-		this->children.push_back(scene);
-	}
+	void addScene(IScene* scene);
 
 	IScene* findSceneById(int id);
 
@@ -84,29 +75,18 @@ public:
 
 	IScene* getParent() const { return parent; }
 
-	IScene* getRoot() {
-		auto p = this;
-		while (!p->isRoot()) {
-			p = p->getParent();
-		}
-		return p;
-	}
+	IScene* getRoot();
 
 	std::list<IScene*> getChildren() const { return children; }
 
 	bool isLeaf() const { return children.empty(); }
 
-	void build(Shader::GLObjectFactory& factory) {
-		build(factory);
-		for (auto c : children) {
-			c->build(factory);
-		}
-	};
-
-	virtual void onBuild(Shader::GLObjectFactory& factory) {};
+	void build(Shader::GLObjectFactory& factory);
 
 protected:
 	virtual void onClear() = 0;
+
+	virtual void onBuild(Shader::GLObjectFactory& factory) {};
 
 protected:
 	std::string name;
