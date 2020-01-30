@@ -112,6 +112,9 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstLabels.cs" />
+    <Compile Include="SceneListModel.cs" />
+    <Compile Include="SceneModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Graphics\ColorRGBAView.xaml.cs">
       <DependentUpon>ColorRGBAView.xaml</DependentUpon>
@@ -193,6 +196,7 @@
       <DependentUpon>Vector3dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Math\Vector3dViewModel.cs" />
+    <Compile Include="World.cs" />
     <Page Include="Graphics\ColorRGBAView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -310,10 +314,6 @@
     <ProjectReference Include="..\PGCore\PGCore.csproj">
       <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
       <Name>PGCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PGScene\PGScene.csproj">
-      <Project>{f6ac95d7-6d58-4d20-a54a-cfa5f9520cd4}</Project>
-      <Name>PGScene</Name>
     </ProjectReference>
     <ProjectReference Include="..\ThirdParty\hwnd-adorner\HwndExtensions\HwndExtensions.csproj">
       <Project>{529fe5b9-fac5-4222-8170-c8c0b911a588}</Project>

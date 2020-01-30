@@ -57,8 +57,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGConstCSFileGenerator", "P
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shape", "..\Crystal\Shape\Shape.vcxproj", "{ED61B745-9F00-48C2-B309-F1DBB37F03E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGScene", "PGScene\PGScene.csproj", "{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -243,18 +241,6 @@ Global
 		{ED61B745-9F00-48C2-B309-F1DBB37F03E3}.Release|x64.Build.0 = Release|x64
 		{ED61B745-9F00-48C2-B309-F1DBB37F03E3}.Release|x86.ActiveCfg = Release|Win32
 		{ED61B745-9F00-48C2-B309-F1DBB37F03E3}.Release|x86.Build.0 = Release|Win32
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Debug|x64.Build.0 = Debug|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Debug|x86.Build.0 = Debug|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Release|x64.ActiveCfg = Release|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Release|x64.Build.0 = Release|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Release|x86.ActiveCfg = Release|Any CPU
-		{F6AC95D7-6D58-4D20-A54A-CFA5F9520CD4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
