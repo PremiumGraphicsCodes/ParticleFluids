@@ -35,11 +35,9 @@ namespace PG.CGStudio
         {
             var command = new PG.CLI.Command(NewLabels.CommandNameLabel);
 
-            /*
-            Canvas3d.Instance.Renderer.Bind();
+            Renderer.Bind();
             command.Execute(adapter);
-            Canvas3d.Instance.Renderer.UnBind();
-            */
+            Renderer.UnBind();
 
             this.Scenes.Sync();
         }

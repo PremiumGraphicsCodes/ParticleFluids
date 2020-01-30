@@ -112,6 +112,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CameraUICtrl.cs" />
     <Compile Include="Graphics\ColorRGBAView.xaml.cs">
       <DependentUpon>ColorRGBAView.xaml</DependentUpon>
     </Compile>

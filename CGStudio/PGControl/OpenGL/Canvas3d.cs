@@ -42,7 +42,7 @@ namespace PG.CGStudio
         private void Host_Initialized(object sender, EventArgs e)
         {
             World.Instance.CreateRenderer(Panel.Handle);
-//            this.ctrl = new UICtrl.CameraUICtrl();
+            this.ctrl = new UICtrl.CameraUICtrl();
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;

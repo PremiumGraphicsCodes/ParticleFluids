@@ -14,17 +14,16 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDown(Vector2d position)
         {
-            var model = MainModel.Instance.World.Adapter;
             prevPosition = position;
         }
 
         public override void OnLeftButtonDragging(Vector2d position)
         {
-            var model = MainModel.Instance.World.Adapter;
+            var model = World.Instance.Adapter;
             var matrix = Canvas3d.Instance.GetCameraRotationMatrix();
 
             var diff = position - prevPosition;
-            var bb = MainModel.Instance.World.Scenes.GetBoundingBox(0);
+            var bb = World.Instance.Scenes.GetBoundingBox(0);
             var scale = bb.Min.Distance(bb.Max) * 0.1;
             var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix.Transposed();
             var command = new PG.CLI.Command(PG.CameraLabels.CameraTranslateCommandLabel);
@@ -41,9 +40,9 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnRightButtonDragging(Vector2d position)
         {
-            var model = MainModel.Instance.World.Adapter;
+            var model = World.Instance.Adapter;
             var gcommand = new PG.CLI.Command(PG.CameraGetLabels.CommandNameLabel);
-            gcommand.Execute(MainModel.Instance.World.Adapter);
+            gcommand.Execute(World.Instance.Adapter);
             var matrix = gcommand.GetResult<Matrix4d>(PG.CameraGetLabels.RotationMatrixLabel);
 
             var diff = position - prevPosition;
@@ -60,7 +59,7 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnWheel(double dx)
         {
-            var model = MainModel.Instance.World.Adapter;
+            var model = World.Instance.Adapter;
             var command = new PG.CLI.Command(PG.CameraLabels.CameraZoomCommandLabel);
             command.SetArg(PG.CameraLabels.ZoomRatioLabel, (float)dx);
             command.Execute(model);
