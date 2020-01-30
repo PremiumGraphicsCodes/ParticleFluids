@@ -252,6 +252,14 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
+	public class TextureSetLabels
+	{
+		public const string CommandNameLabel = "TextureSet";
+		public const string IdLabel = "Id";
+		public const string FilePathLabel = "FilePath";
+		public const string IsOkLabel = "IsOk";
+	}
+
 	public class TransformLabels
 	{
 		public const string TransformCommandLabel = "Transform";

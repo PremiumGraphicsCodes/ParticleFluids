@@ -1,13 +1,10 @@
-﻿using PG.Core.Math;
-using PG.Core.Shape;
-using Prism.Mvvm;
-using Reactive.Bindings;
+﻿using Reactive.Bindings;
 using System;
 using System.Collections.Generic;
 
 namespace PG.CGStudio
 {
-    public class SceneModel : BindableBase
+    public class SceneModel
     {
         public ReactiveProperty<int> Id { get; }
 
@@ -38,18 +35,20 @@ namespace PG.CGStudio
 
         private void OnNameChanged(string str)
         {
-//            Adapter.SetName(str);
+            //            Adapter.SetName(str);
         }
 
         private void OnVisibleChanged(bool b)
         {
-            if(Canvas3d.Instance == null)
+            /*
+            if (Canvas3d.Instance == null)
             {
                 return;
             }
-//            PG.CLI.Command.Set(MainModel.Instance.World.Adapter, PG.GetLabels.IsVisibleLabel, Id.Value, b);
+            //            PG.CLI.Command.Set(MainModel.Instance.World.Adapter, PG.GetLabels.IsVisibleLabel, Id.Value, b);
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
+            */
         }
 
     }

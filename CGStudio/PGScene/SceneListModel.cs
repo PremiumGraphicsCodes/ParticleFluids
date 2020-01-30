@@ -1,5 +1,4 @@
-﻿using PG.CGStudio.Scene.Shape;
-using PG.Core;
+﻿using PG.Core;
 using PG.Core.Graphics;
 using PG.Core.Math;
 using PG.Core.Shape;
@@ -19,7 +18,7 @@ namespace PG.CGStudio.Scene
         {
             this.adapter = adapter;
             this.Scenes = new ReactiveCollection<SceneModel>();
-            this.Scenes.Add( CreateRoot() );
+            this.Scenes.Add(CreateRoot());
         }
 
         private SceneModel CreateRoot()
@@ -88,7 +87,8 @@ namespace PG.CGStudio.Scene
             var newId = command.GetResult<int>(PG.PolygonMeshCreateLabels.NewIdLabel);
             command.Clear();
 
-            if (layer > 0) {
+            if (layer > 0)
+            {
                 command.Create(PG.CameraLabels.CameraFitCommandLabel);
                 command.Execute(adapter);
                 command.Clear();
@@ -100,20 +100,18 @@ namespace PG.CGStudio.Scene
 
         public void SetMatrix(int id, Matrix4d matrix)
         {
-            var canvas = Canvas3d.Instance;
             var command = new PG.CLI.Command(SetMatrixLabels.CommandLabel);
             command.SetArg(SetMatrixLabels.IdLabel, id);
             command.SetArg(SetMatrixLabels.MatrixLabel, matrix);
-            command.Execute(MainModel.Instance.World.Adapter);
+            command.Execute(adapter);
         }
 
         public void Transform(int id, Matrix4d matrix)
         {
-            var canvas = Canvas3d.Instance;
             var command = new PG.CLI.Command(TransformLabels.TransformCommandLabel);
             command.SetArg(TransformLabels.IdLabel, id);
             command.SetArg(TransformLabels.MatrixLabel, matrix);
-            command.Execute(MainModel.Instance.World.Adapter);
+            command.Execute(adapter);
         }
 
         public int AddMaterialScene(PG.Core.Graphics.Material material, string name)
@@ -123,9 +121,9 @@ namespace PG.CGStudio.Scene
             command.SetArg(PG.MaterialCreateLabels.DiffuseLabel, material.Diffuse);
             command.SetArg(PG.MaterialCreateLabels.SpecularLabel, material.Specular);
             command.SetArg(PG.MaterialCreateLabels.ShininessLabel, material.Shininess);
-//            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.TextureId);
+            //            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.TextureId);
             command.SetArg(PG.MaterialCreateLabels.NameLabel, name);
-//            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.)
+            //            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.)
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.MaterialCreateLabels.NewIdLabel);
             Sync();
@@ -136,7 +134,7 @@ namespace PG.CGStudio.Scene
         {
             var command = new PG.CLI.Command(PG.MaterialGetLabels.CommandNameLabel);
             command.SetArg(PG.MaterialGetLabels.IdLabel, id);
-            command.Execute(MainModel.Instance.World.Adapter);
+            command.Execute(adapter);
             var m = new PG.Core.Graphics.Material
             {
                 Ambient = command.GetResult<ColorRGBA>(PG.MaterialGetLabels.AmbientLabel),
@@ -207,9 +205,11 @@ namespace PG.CGStudio.Scene
             command.SetArg(PG.TextureCreateLabels.FilePathLabel, imageFilePath);
             command.SetArg(PG.TextureCreateLabels.NameLabel, name);
 
+            /*
             Canvas3d.Instance.Renderer.Bind();
             command.Execute(adapter);
             Canvas3d.Instance.Renderer.UnBind();
+            */
 
             var newId = command.GetResult<int>(PG.TextureCreateLabels.NewIdLabel);
             Sync();
@@ -235,8 +235,6 @@ namespace PG.CGStudio.Scene
             command.SetArg(PG.DeleteLabels.IdLabel, id);
             command.SetArg(PG.DeleteLabels.IsItemLabel, isItem);
             command.Execute(adapter);
-            Canvas3d.Instance.Update(MainModel.Instance.World);
-            Canvas3d.Instance.Render();
             Sync();
         }
 
@@ -245,21 +243,21 @@ namespace PG.CGStudio.Scene
             var command = new PG.CLI.Command(PG.ClearLabels.CommandNameLabel);
             command.SetArg(PG.ClearLabels.LayerLabel, layer);
             command.Execute(adapter);
-            Canvas3d.Instance.Update(MainModel.Instance.World);
-            Canvas3d.Instance.Render();
             Sync();
         }
 
         public void ShowBoundingBox(int id)
         {
-            var bb = MainModel.Instance.World.Scenes.GetBoundingBox(id);
+            var bb = GetBoundingBox(id);
             var builder = new WireFrameBuilder();
             builder.Add(bb);
             var appearance = new WireAppearance();
             appearance.Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f);
-            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
+            AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
+            /*
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
+            */
         }
 
         public Vector3d GetPosition(ObjectId id)
@@ -282,20 +280,20 @@ namespace PG.CGStudio.Scene
 
                 var command = new PG.CLI.Command(PG.SceneGetLabels.CommandLabel);
                 command.SetArg(PG.SceneGetLabels.IdLabel, id);
-                command.Execute(MainModel.Instance.World.Adapter);
+                command.Execute(adapter);
 
                 s.Id.Value = id;
                 s.Name.Value = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
                 s.IsVisible.Value = command.GetResult<bool>(PG.SceneGetLabels.IsVisibleLabel);
                 var childIds = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel, id);
-                foreach(var childId in childIds)
+                foreach (var childId in childIds)
                 {
                     var ss = new SceneModel();
                     ss.Id.Value = childId;
 
                     var command2 = new PG.CLI.Command(PG.SceneGetLabels.CommandLabel);
                     command2.SetArg(PG.SceneGetLabels.IdLabel, id);
-                    command2.Execute(MainModel.Instance.World.Adapter);
+                    command2.Execute(adapter);
 
                     ss.Name.Value = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
                     ss.IsVisible.Value = command.GetResult<bool>(PG.SceneGetLabels.IsVisibleLabel);
@@ -303,7 +301,7 @@ namespace PG.CGStudio.Scene
                 }
                 root.Children.Add(s);
             }
-            Scenes.Add( root );
+            Scenes.Add(root);
 
             //var newScene = this.adapter.GetSceneAdapter().ToScene();
         }
