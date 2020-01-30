@@ -48,5 +48,19 @@ namespace PG.Control
             command.Execute(adapter);
             return command.GetResult<Matrix4d>(PG.CameraGetLabels.RotationMatrixLabel);
         }
+
+        public void Rotate(Matrix3d matrix)
+        {
+            var command = new PG.CLI.Command(PG.CameraLabels.CameraRotateCommandLabel);
+            command.SetArg(PG.CameraLabels.MatrixLabel, matrix);
+            command.Execute(adapter);
+        }
+
+        public void Zoom(float dx)
+        {
+            var command = new PG.CLI.Command(PG.CameraLabels.CameraZoomCommandLabel);
+            command.SetArg(PG.CameraLabels.ZoomRatioLabel, dx);
+            command.Execute(adapter);
+        }
     }
 }
