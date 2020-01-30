@@ -64,6 +64,7 @@ namespace PG.Scene
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.WireFrameCreateLabels.NewIdLabel);
 
+            /*
             if (layer > 0)
             {
                 command.Create(PG.CameraLabels.CameraFitCommandLabel);
@@ -72,6 +73,7 @@ namespace PG.Scene
 
                 Sync();
             }
+            */
             return newId;
         }
 
