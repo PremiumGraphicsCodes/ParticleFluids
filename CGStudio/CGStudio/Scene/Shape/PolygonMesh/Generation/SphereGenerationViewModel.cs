@@ -33,6 +33,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
             builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);
 
             World.Instance.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMSphere", 1);
+            World.Instance.Scenes.Sync();
             World.Instance.Camera.Fit();
 
             Canvas3d.Instance.Update(World.Instance);

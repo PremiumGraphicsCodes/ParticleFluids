@@ -33,7 +33,7 @@ namespace PG.CGStudio.UICtrl
         public override void OnLeftButtonDragging(Vector2d position)
         {
             var diff = (position - prevPos) * sensivitiy;
-            var matrix = Canvas3d.Instance.GetCameraRotationMatrix();
+            var matrix = World.Instance.Camera.GetRotationMatrix();
             var v = matrix * new Vector4d(-diff.X, diff.Y, 0.0, 0.0);
             model.Translate.Value += new Vector3d(v.X, v.Y, v.Z);
             model.SetMatrix(true);

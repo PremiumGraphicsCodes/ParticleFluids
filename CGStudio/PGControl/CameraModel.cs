@@ -1,4 +1,6 @@
-﻿namespace PG.Control
+﻿using PG.Core.Math;
+
+namespace PG.Control
 {
     public class CameraModel
     {
@@ -31,6 +33,20 @@
         {
             var command = new PG.CLI.Command(CameraLabels.CameraFitCommandLabel);
             command.Execute(adapter);
+        }
+
+        public void Translate(Vector3d v)
+        {
+            var command = new PG.CLI.Command(CameraLabels.CameraTranslateCommandLabel);
+            command.SetArg(PG.CameraLabels.TranslateLabel, new Vector3d(v.X, v.Y, v.Z));
+            command.Execute(adapter);
+        }
+
+        public Matrix4d GetRotationMatrix()
+        {
+            var command = new PG.CLI.Command(PG.CameraGetLabels.CommandNameLabel);
+            command.Execute(adapter);
+            return command.GetResult<Matrix4d>(PG.CameraGetLabels.RotationMatrixLabel);
         }
     }
 }

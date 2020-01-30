@@ -39,16 +39,6 @@ namespace PG.Scene
             command.SetArg(PG.ParticleSystemCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.ParticleSystemCreateLabels.NewIdLabel);
-
-            /*
-            if (layer > 0)
-            {
-                command.Create(PG.CameraLabels.CameraFitCommandLabel);
-                command.Execute(adapter);
-                command.Clear();
-                Sync();
-            }
-            */
             return newId;
         }
 
@@ -63,17 +53,6 @@ namespace PG.Scene
             command.SetArg(PG.WireFrameCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.WireFrameCreateLabels.NewIdLabel);
-
-            /*
-            if (layer > 0)
-            {
-                command.Create(PG.CameraLabels.CameraFitCommandLabel);
-                command.Execute(adapter);
-                command.Clear();
-
-                Sync();
-            }
-            */
             return newId;
         }
 
@@ -89,16 +68,6 @@ namespace PG.Scene
             command.SetArg(PG.PolygonMeshCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.PolygonMeshCreateLabels.NewIdLabel);
-            command.Clear();
-
-            if (layer > 0)
-            {
-                command.Create(PG.CameraLabels.CameraFitCommandLabel);
-                command.Execute(adapter);
-                command.Clear();
-
-                Sync();
-            }
             return newId;
         }
 
@@ -134,7 +103,7 @@ namespace PG.Scene
             return newId;
         }
 
-        public PG.Core.Graphics.Material GetMaterialScene(int id)
+        public Material GetMaterialScene(int id)
         {
             var command = new PG.CLI.Command(PG.MaterialGetLabels.CommandNameLabel);
             command.SetArg(PG.MaterialGetLabels.IdLabel, id);

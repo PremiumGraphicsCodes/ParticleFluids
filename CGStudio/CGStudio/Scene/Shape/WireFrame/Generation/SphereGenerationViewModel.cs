@@ -33,6 +33,7 @@ namespace PG.CGStudio.Generation.WireFrame
             builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);
 
             World.Instance.Scenes.AddWireFrameScene(builder.ToWireFrame(), "WFSphere", AppearanceViewModel.Value, 1);
+            World.Instance.Scenes.Sync();
             World.Instance.Camera.Fit();
 
             Canvas3d.Instance.Update(World.Instance);

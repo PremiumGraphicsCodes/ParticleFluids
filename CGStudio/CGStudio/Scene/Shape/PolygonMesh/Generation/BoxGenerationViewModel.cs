@@ -24,6 +24,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
             builder.Add(box);
 
             World.Instance.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMBox", 1);
+            World.Instance.Scenes.Sync();
             World.Instance.Camera.Fit();
 
             Canvas3d.Instance.Update(World.Instance);

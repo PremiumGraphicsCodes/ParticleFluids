@@ -177,12 +177,5 @@ namespace PG.CGStudio
             World.Instance.Renderer.UnBind();
             return new ObjectId(parentId, childId);
         }
-
-        public Matrix4d GetCameraRotationMatrix()
-        {
-            var command = new PG.CLI.Command(PG.CameraGetLabels.CommandNameLabel);
-            command.Execute(World.Instance.Adapter);
-            return command.GetResult<Matrix4d>(PG.CameraGetLabels.RotationMatrixLabel);
-        }
     }
 }

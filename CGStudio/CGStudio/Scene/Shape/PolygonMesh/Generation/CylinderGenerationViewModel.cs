@@ -30,6 +30,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
             builder.Add(CylinderViewModel.Value, UNum.Value);
 
             World.Instance.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCylinder", 1);
+            World.Instance.Scenes.Sync();
             World.Instance.Camera.Fit();
 
             Canvas3d.Instance.Update(World.Instance);

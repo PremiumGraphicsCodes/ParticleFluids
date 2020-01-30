@@ -32,6 +32,7 @@ namespace PG.CGStudio.Generation.WireFrame
             var wireFrame = builder.ToWireFrame();
 
             World.Instance.Scenes.AddWireFrameScene(wireFrame, "WFCylinder", AppearanceViewModel.Value, 1);
+            World.Instance.Scenes.Sync();
             World.Instance.Camera.Fit();
 
             Canvas3d.Instance.Update(World.Instance);
