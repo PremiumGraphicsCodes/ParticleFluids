@@ -112,7 +112,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CameraUICtrl.cs" />
+    <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Graphics\ColorRGBAView.xaml.cs">
       <DependentUpon>ColorRGBAView.xaml</DependentUpon>
     </Compile>
@@ -129,7 +129,7 @@
       <DependentUpon>TextureView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Graphics\TextureViewModel.cs" />
-    <Compile Include="IUICtrl.cs" />
+    <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="Math\Box3dView.xaml.cs">
       <DependentUpon>Box3dView.xaml</DependentUpon>
     </Compile>
@@ -183,6 +183,7 @@
       <DependentUpon>TextBoxDouble.xaml</DependentUpon>
     </Compile>
     <Compile Include="TextBoxDoubleBehavior.cs" />
+    <Compile Include="UICtrl\PickUICtrl.cs" />
     <Compile Include="UI\ObjectSelectView.xaml.cs">
       <DependentUpon>ObjectSelectView.xaml</DependentUpon>
     </Compile>

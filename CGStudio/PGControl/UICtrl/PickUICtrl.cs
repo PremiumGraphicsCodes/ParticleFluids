@@ -48,12 +48,12 @@ namespace PG.CGStudio.UICtrl
 
                 pickedIds.Add(pickedId);
 
-                foreach(var a in actions)
+                foreach (var a in actions)
                 {
                     a(pickedId);
                 }
             }
-        
+
         }
     }
 }
