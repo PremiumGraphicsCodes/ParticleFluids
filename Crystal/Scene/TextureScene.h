@@ -9,7 +9,7 @@ namespace Crystal {
 class TextureScene : public IScene
 {
 public:
-	TextureScene(const int id, const Graphics::Image& image, const std::string& name);
+	TextureScene(const int id, std::unique_ptr<Graphics::Image> image, const std::string& name);
 
 	~TextureScene() {};
 
@@ -23,10 +23,12 @@ public:
 
 	Shader::TextureObject getTextureObject() const { return *texture; }
 
-	void update(const Graphics::Image& image);
+	void send();
+
+	void setImage(std::unique_ptr<Graphics::Image> image) { this->image = std::move(image); }
 
 private:
-	Graphics::Image image;
+	std::unique_ptr<Graphics::Image> image;
 	Shader::TextureObject* texture;
 };
 

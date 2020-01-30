@@ -37,7 +37,9 @@ bool TextureCreateCommand::execute(World* world)
 	if (!isOk) {
 		return false;
 	}
-	auto scene = world->getSceneFactory()->createTextureScene(reader.getImage(), args.name.getValue());
+	auto image = std::make_unique<Image>();
+	*image = reader.getImage();
+	auto scene = world->getSceneFactory()->createTextureScene(std::move(image), args.name.getValue());
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
 	return true;

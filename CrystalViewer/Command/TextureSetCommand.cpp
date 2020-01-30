@@ -44,7 +44,9 @@ bool TextureSetCommand::execute(World* world)
 		results.isOk.setValue(false);
 		return false;
 	}
-	scene->update(reader.getImage());
+	auto image = std::make_unique<Image>();
+	*image = reader.getImage();
+	scene->setImage(std::move(image));
 	results.isOk.setValue(true);
 	return true;
 }

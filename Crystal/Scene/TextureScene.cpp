@@ -7,9 +7,9 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-TextureScene::TextureScene(const int id, const Image& image, const std::string& name) :
+TextureScene::TextureScene(const int id, std::unique_ptr<Image> image, const std::string& name) :
 	IScene(id, name),
-	image(image)
+	image(std::move(image))
 {
 }
 
@@ -19,7 +19,7 @@ void TextureScene::onClear()
 
 void TextureScene::onBuild(GLObjectFactory& factory)
 {
-	texture = factory.getTextureFactory()->createTextureObject(image);
+	texture = factory.getTextureFactory()->createTextureObject(*image);
 }
 
 void TextureScene::toViewModel(SceneViewModel& viewModel) const
@@ -27,7 +27,7 @@ void TextureScene::toViewModel(SceneViewModel& viewModel) const
 	viewModel.textures.push_back(*texture);
 }
 
-void TextureScene::update(const Image& image)
+void TextureScene::send()
 {
-	texture->send(image);
+	texture->send(*image);
 }

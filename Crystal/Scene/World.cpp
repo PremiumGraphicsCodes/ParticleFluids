@@ -62,22 +62,22 @@ void World::init()
 	}
 
 	{
-		Image image(2,2);
-		image.setColor(0, 0, ColorRGBAuc(255, 0, 0, 255));
-		image.setColor(0, 1, ColorRGBAuc(0, 255, 0, 255));
-		image.setColor(1, 0, ColorRGBAuc(0, 255, 255, 255));
-		image.setColor(1, 1, ColorRGBAuc(0, 0, 0, 255));
+		auto image = std::make_unique<Image>(2,2);
+		image->setColor(0, 0, ColorRGBAuc(255, 0, 0, 255));
+		image->setColor(0, 1, ColorRGBAuc(0, 255, 0, 255));
+		image->setColor(1, 0, ColorRGBAuc(0, 255, 255, 255));
+		image->setColor(1, 1, ColorRGBAuc(0, 0, 0, 255));
 
 //		auto tex = glFactory.getTextureFactory()->createTextureObject(image);
-		auto s = sceneFactory.createTextureScene(image, "WhiteTex");
+		auto s = sceneFactory.createTextureScene(std::move(image), "WhiteTex");
 		s->build(glFactory);
 		scenes[1]->addScene(s);
 	}
 
 	{
-		Image image(1, 1);
-		image.setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
-		auto s = sceneFactory.createTextureScene(image, "BlackTex");
+		auto image = std::make_unique<Image>(1, 1);
+		image->setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
+		auto s = sceneFactory.createTextureScene(std::move(image), "BlackTex");
 		s->build(glFactory);
 		scenes[1]->addScene(s);
 	}
