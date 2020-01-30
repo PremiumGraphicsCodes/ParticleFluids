@@ -14,15 +14,17 @@ namespace PG.CGStudio
 
         public PG.CLI.Renderer Renderer { get { return renderer; } }
 
-
         public static World Instance;
 
-        public World()
+        private World()
         {
             this.adapter = new PG.CLI.WorldAdapter();
             this.Scenes = new SceneListModel(adapter);
+        }
 
-            Instance = this;
+        public static void CreateInstance()
+        { 
+            Instance = new World();
         }
 
         public void CreateRenderer(System.IntPtr handle)
