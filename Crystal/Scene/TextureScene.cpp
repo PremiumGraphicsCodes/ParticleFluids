@@ -18,6 +18,11 @@ void TextureScene::onClear()
 	texture.clear();
 };
 
+void TextureScene::onBuild(GLObjectFactory& factory)
+{
+
+}
+
 void TextureScene::toViewModel(SceneViewModel& viewModel) const
 {
 	viewModel.textures.push_back(texture);

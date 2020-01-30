@@ -6,6 +6,7 @@
 
 #include "../Math/Box3d.h"
 #include "../Graphics/Camera.h"
+#include "../Shader/GLObjectFactory.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -94,6 +95,15 @@ public:
 	std::list<IScene*> getChildren() const { return children; }
 
 	bool isLeaf() const { return children.empty(); }
+
+	void build(Shader::GLObjectFactory& factory) {
+		build(factory);
+		for (auto c : children) {
+			c->build(factory);
+		}
+	};
+
+	virtual void onBuild(Shader::GLObjectFactory& factory) {};
 
 protected:
 	virtual void onClear() = 0;
