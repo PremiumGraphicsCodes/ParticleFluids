@@ -47,5 +47,16 @@ namespace PGControlTest
             var id = scene.AddPolygonMeshScene(polygonMesh, "PM", 1);
             Assert.AreEqual(1, id);
         }
+
+        /*
+        [TestMethod]
+        public void TestAddTextureScene()
+        {
+            var adapter = new WorldAdapter();
+            var scene = new SceneListModel(adapter);
+            var id = scene.AddTextureScene("TestTexture.bmp", "Texture");
+
+        }
+        */
     }
 }

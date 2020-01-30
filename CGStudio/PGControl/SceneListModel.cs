@@ -208,7 +208,7 @@ namespace PG.Scene
             var command = new PG.CLI.Command(PG.TextureCreateLabels.CommandNameLabel);
             command.SetArg(PG.TextureCreateLabels.FilePathLabel, imageFilePath);
             command.SetArg(PG.TextureCreateLabels.NameLabel, name);
-
+            command.Execute(adapter);
             /*
             Canvas3d.Instance.Renderer.Bind();
             command.Execute(adapter);
