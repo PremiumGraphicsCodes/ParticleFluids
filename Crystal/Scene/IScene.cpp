@@ -112,3 +112,11 @@ void IScene::build(GLObjectFactory& factory)
 		c->build(factory);
 	}
 };
+
+void IScene::send()
+{
+	onSend();
+	for (auto c : children) {
+		c->send();
+	}
+}

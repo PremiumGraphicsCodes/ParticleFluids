@@ -83,10 +83,14 @@ public:
 
 	void build(Shader::GLObjectFactory& factory);
 
+	void send();
+
 protected:
 	virtual void onClear() = 0;
 
 	virtual void onBuild(Shader::GLObjectFactory& factory) {};
+
+	virtual void onSend() {};
 
 protected:
 	std::string name;

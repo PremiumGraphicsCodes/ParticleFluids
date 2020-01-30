@@ -23,7 +23,7 @@ public:
 
 	Shader::TextureObject getTextureObject() const { return *texture; }
 
-	void send();
+	void onSend() override;
 
 	void setImage(std::unique_ptr<Graphics::Image> image) { this->image = std::move(image); }
 
