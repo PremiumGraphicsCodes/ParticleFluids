@@ -1,4 +1,5 @@
 ﻿using Reactive.Bindings;
+using PG.Scene;
 
 namespace PG.CGStudio
 {

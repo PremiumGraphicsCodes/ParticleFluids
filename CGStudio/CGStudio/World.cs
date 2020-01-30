@@ -1,6 +1,4 @@
-﻿using PG.CGStudio.Scene;
-using PG.Core;
-using PG.Core.Math;
+﻿using PG.Scene;
 
 namespace PG.CGStudio
 {

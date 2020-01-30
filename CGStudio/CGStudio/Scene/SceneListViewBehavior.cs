@@ -1,8 +1,11 @@
-﻿using PG.Core;
-using Prism.Regions;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
+
+using Prism.Regions;
+
+using PG.Core;
+using PG.Scene;
 
 namespace PG.CGStudio.Object
 {

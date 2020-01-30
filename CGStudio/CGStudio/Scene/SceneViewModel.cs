@@ -1,6 +1,7 @@
 ﻿using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
+using PG.Scene;
 
 namespace PG.CGStudio.Object
 {

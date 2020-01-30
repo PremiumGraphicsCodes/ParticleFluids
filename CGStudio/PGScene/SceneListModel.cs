@@ -6,7 +6,7 @@ using PG.Core.UI;
 using Reactive.Bindings;
 using System.Collections.Generic;
 
-namespace PG.CGStudio.Scene
+namespace PG.Scene
 {
     public class SceneListModel
     {

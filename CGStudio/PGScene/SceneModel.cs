@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PG.CGStudio
+namespace PG.Scene
 {
     public class SceneModel
     {
