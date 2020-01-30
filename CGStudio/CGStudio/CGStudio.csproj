@@ -249,7 +249,6 @@
       <DependentUpon>TextureEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Appearance\Texture\TextureEditViewModel.cs" />
-    <Compile Include="UICommand\UICommand.cs" />
     <Compile Include="UICtrlViewModel.cs" />
     <Compile Include="Scene\Shape\ParticleSystem\Generation\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>

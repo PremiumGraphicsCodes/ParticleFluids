@@ -9,19 +9,19 @@ namespace PG.CGStudio.Generation.ParticleSystem
     public class BoxGenerationViewModel : BindableBase
     {
         public ReactiveProperty<int> Count { get; }
+            = new ReactiveProperty<int>(10000);
 
         public Box3dViewModel BoxViewModel { get; }
-
-        public ReactiveCommand GenerationCommand { get; }
+            = new Box3dViewModel();
 
         public AppearanceViewModel Appearance { get; }
+            = new AppearanceViewModel();
+
+        public ReactiveCommand GenerationCommand { get; }
+            = new ReactiveCommand();
 
         public BoxGenerationViewModel()
         {
-            this.BoxViewModel = new Box3dViewModel();
-            this.Appearance = new AppearanceViewModel();
-            this.Count = new ReactiveProperty<int>(10000);
-            this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 

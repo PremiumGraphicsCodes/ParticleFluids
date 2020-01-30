@@ -8,8 +8,10 @@ namespace PG.CGStudio.Generation.WireFrame
     public class SphereGenerationViewModel : BindableBase
     {
         public ReactiveProperty<int> UNum { get; }
+            = new ReactiveProperty<int>(36);
 
         public ReactiveProperty<int> VNum { get; }
+            = new ReactiveProperty<int>(36);
 
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
@@ -18,12 +20,10 @@ namespace PG.CGStudio.Generation.WireFrame
             = new Sphere3dViewModel();
 
         public AppearanceViewModel AppearanceViewModel { get; }
+            = new AppearanceViewModel();
 
         public SphereGenerationViewModel()
         {
-            this.UNum = new ReactiveProperty<int>(36);
-            this.VNum = new ReactiveProperty<int>(36);
-            this.AppearanceViewModel = new AppearanceViewModel();
             this.GenerationCommand.Subscribe(OnExecute);
         }
 

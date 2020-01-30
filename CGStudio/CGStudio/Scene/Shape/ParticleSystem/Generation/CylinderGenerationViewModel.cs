@@ -9,7 +9,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
     public class CylinderGenerationViewModel : BindableBase
     {
         public ReactiveProperty<int> Count { get; }
-            = new ReactiveProperty<int>();
+            = new ReactiveProperty<int>(10000);
 
         public Cylinder3dViewModel CylinderViewModel { get; }
             = new Cylinder3dViewModel();
@@ -18,11 +18,10 @@ namespace PG.CGStudio.Generation.ParticleSystem
             = new ReactiveCommand();
 
         public AppearanceViewModel Appearance { get; }
+            = new AppearanceViewModel();
 
         public CylinderGenerationViewModel()
         {
-            this.Appearance = new AppearanceViewModel();
-            this.Count.Value = 10000;
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 

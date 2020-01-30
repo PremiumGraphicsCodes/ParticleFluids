@@ -7,13 +7,13 @@ namespace PG.CGStudio.Generation.PolygonMesh
     public class BoxGenerationViewModel
     {
         public Box3dViewModel BoxViewModel { get; }
+            = new Box3dViewModel();
 
         public ReactiveCommand GenerationCommand { get; }
+            = new ReactiveCommand();
 
         public BoxGenerationViewModel()
         {
-            BoxViewModel = new Box3dViewModel();
-            GenerationCommand = new ReactiveCommand();
             GenerationCommand.Subscribe(OnGenerate);
         }
 

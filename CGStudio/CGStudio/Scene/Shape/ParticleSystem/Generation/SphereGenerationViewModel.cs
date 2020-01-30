@@ -8,21 +8,21 @@ namespace PG.CGStudio.Generation.ParticleSystem
 {
     public class SphereGenerationViewModel : BindableBase
     {
-        public ReactiveCommand GenerationCommand { get; }
-
         public ReactiveProperty<int> Count { get; }
+            = new ReactiveProperty<int>(10000);
 
         public Sphere3dViewModel SphereViewModel { get; }
+            = new Sphere3dViewModel();
 
         public AppearanceViewModel Appearance { get; }
+            = new AppearanceViewModel();
+
+        public ReactiveCommand GenerationCommand { get; }
+            = new ReactiveCommand();
 
         public SphereGenerationViewModel()
         {
-            this.SphereViewModel = new Sphere3dViewModel();
-            this.Count = new ReactiveProperty<int>(10000);
-            this.GenerationCommand = new ReactiveCommand();
             this.GenerationCommand.Subscribe(OnGenerate);
-            this.Appearance = new AppearanceViewModel();
         }
 
         private void OnGenerate()
