@@ -241,12 +241,6 @@
       <DependentUpon>SceneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\SceneViewModel.cs" />
-    <Compile Include="OpenGL\OpenGLView.xaml.cs">
-      <DependentUpon>OpenGLView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="OpenGL\Canvas3d.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Selection\SphereRegionSelectView.xaml.cs">
       <DependentUpon>SphereRegionSelectView.xaml</DependentUpon>
     </Compile>
@@ -294,8 +288,6 @@
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\WireFrame\Generation\SphereGenerationViewModel.cs" />
-    <Compile Include="World.cs" />
-    <Compile Include="UICtrl\IUICtrl.cs" />
     <Compile Include="Scene\Shape\Transform\Translate\TranslateUICtrl.cs" />
     <Compile Include="UICtrl\PickUICtrl.cs" />
     <Compile Include="Scene\Shape\Transform\Scale\ScaleUICtrl.cs" />
@@ -444,10 +436,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\SceneView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="OpenGL\OpenGLView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

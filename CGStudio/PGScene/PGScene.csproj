@@ -76,6 +76,7 @@
     <Compile Include="ConstLabels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SceneModel.cs" />
+    <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PGCLI\PGCLI.vcxproj">

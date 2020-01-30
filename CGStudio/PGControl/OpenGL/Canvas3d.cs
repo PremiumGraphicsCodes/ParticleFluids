@@ -41,9 +41,8 @@ namespace PG.CGStudio
 
         private void Host_Initialized(object sender, EventArgs e)
         {
-            this.renderer = new PG.CLI.Renderer(Panel.Handle, MainModel.Instance.World.Adapter);
-            this.renderer.Build(MainModel.Instance.World.Adapter);
-            this.ctrl = new UICtrl.CameraUICtrl();
+            World.Instance.CreateRenderer(Panel.Handle);
+//            this.ctrl = new UICtrl.CameraUICtrl();
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;
@@ -68,17 +67,13 @@ namespace PG.CGStudio
 
         public void Render()
         {
-            renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.World.Adapter);
+            World.Instance.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
         }
 
         public void Update(World model)
         {
-            renderer.Update(model.Adapter);
+            World.Instance.Renderer.Update(model.Adapter);
         }
-
-        private PG.CLI.Renderer renderer;
-
-        public PG.CLI.Renderer Renderer { get { return renderer; } }
 
         /*
         public Canvas3dView()
@@ -142,12 +137,12 @@ namespace PG.CGStudio
 
         private void OnResize(object sender, EventArgs e)
         {
-            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.World.Adapter);
+            World.Instance.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            this.renderer.Render(Panel.Width, Panel.Height, MainModel.Instance.World.Adapter);
+            World.Instance.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
         }
 
         private void RegisterToAppShutdown()
@@ -172,21 +167,21 @@ namespace PG.CGStudio
 
         public ObjectId GetObjectId(Vector2d position)
         {
-            var model = MainModel.Instance;
-            Canvas3d.Instance.Renderer.Bind();
+            //var model = MainModel.Instance;
+            World.Instance.Renderer.Bind();
             var command = new PG.CLI.Command(PG.PickLabels.PickCommandLabel);
             command.SetArg(PG.PickLabels.PositionLabel, new Vector2d(position.X, 1.0 - position.Y));
-            command.Execute(model.World.Adapter);
+            command.Execute(World.Instance.Adapter);
             var parentId = command.GetResult<int>(PG.PickLabels.ParentIdLabel);
             var childId = command.GetResult<int>(PG.PickLabels.ChildIdLabel);
-            Canvas3d.Instance.Renderer.UnBind();
+            World.Instance.Renderer.UnBind();
             return new ObjectId(parentId, childId);
         }
 
         public Matrix4d GetCameraRotationMatrix()
         {
             var command = new PG.CLI.Command(PG.CameraGetLabels.CommandNameLabel);
-            command.Execute(MainModel.Instance.World.Adapter);
+            command.Execute(World.Instance.Adapter);
             return command.GetResult<Matrix4d>(PG.CameraGetLabels.RotationMatrixLabel);
         }
     }

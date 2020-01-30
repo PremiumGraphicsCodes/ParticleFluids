@@ -11,6 +11,7 @@
     xmlns:material="clr-namespace:PG.CGStudio.Material"
     xmlns:texture="clr-namespace:PG.CGStudio.Texture"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:cgstudio="clr-namespace:PG.CGStudio;assembly=PGControl"
     prism:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -128,11 +129,11 @@
 
             <host:HwndHostManager Grid.Column="1">
                 <Grid Margin="0,0,0,0">
-                    <local:Canvas3d>
-                        <local:Canvas3d.Adornment>
-                            <local:OpenGLView/>
-                        </local:Canvas3d.Adornment>
-                    </local:Canvas3d>
+                    <cgstudio:Canvas3d>
+                        <cgstudio:Canvas3d.Adornment>
+                            <cgstudio:OpenGLView/>
+                        </cgstudio:Canvas3d.Adornment>
+                    </cgstudio:Canvas3d>
                 </Grid>
             </host:HwndHostManager>
 

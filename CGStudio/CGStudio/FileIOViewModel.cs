@@ -36,7 +36,7 @@ namespace PG.CGStudio
         private void OnNew()
         {
             MainModel.Instance.World.New();
-            Canvas3d.Instance.Renderer.Build(MainModel.Instance.World.Adapter);
+            World.Instance.Renderer.Build(MainModel.Instance.World.Adapter);
             Canvas3d.Instance.Update(MainModel.Instance.World);
             Canvas3d.Instance.Render();
         }
