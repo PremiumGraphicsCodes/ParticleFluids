@@ -31,7 +31,10 @@ namespace PG.CGStudio.Generation.WireFrame
             builder.Add(circle, UNum.Value);
             var shape = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
+
             World.Instance.Scenes.AddWireFrameScene(shape, "WFCircle", appearance, 1);
+            World.Instance.Camera.Fit();
+
             Canvas3d.Instance.Update(World.Instance);
             Canvas3d.Instance.Render();
         }

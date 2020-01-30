@@ -28,7 +28,6 @@ namespace PGControlTest
         {
             var adapter = new WorldAdapter();
             var scene = new SceneListModel(adapter);
-            var positions = new List<Vector3d>();
             var builder = new WireFrameBuilder();
             builder.Add(new Line3d(new Vector3d(0,0,0), new Vector3d(1,0,0)));
             var wireFrame = builder.ToWireFrame();
@@ -37,5 +36,16 @@ namespace PGControlTest
             Assert.AreEqual(1, id);
         }
 
+        [TestMethod]
+        public void TestAddPolygonMeshScene()
+        {
+            var adapter = new WorldAdapter();
+            var scene = new SceneListModel(adapter);
+            var builder = new PolygonMeshBuilder();
+            builder.Add(new Box3d(new Vector3d(0, 0, 0), new Vector3d(1, 1, 1)));
+            var polygonMesh = builder.ToPolygonMesh();
+            var id = scene.AddPolygonMeshScene(polygonMesh, "PM", 1);
+            Assert.AreEqual(1, id);
+        }
     }
 }

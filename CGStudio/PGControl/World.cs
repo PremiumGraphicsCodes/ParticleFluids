@@ -1,4 +1,5 @@
 ﻿using PG.Scene;
+using PG.Control;
 
 namespace PG.CGStudio
 {
@@ -10,6 +11,8 @@ namespace PG.CGStudio
 
         public SceneListModel Scenes { get; }
 
+        public CameraModel Camera { get; }
+
         private PG.CLI.Renderer renderer;
 
         public PG.CLI.Renderer Renderer { get { return renderer; } }
@@ -20,6 +23,7 @@ namespace PG.CGStudio
         {
             this.adapter = new PG.CLI.WorldAdapter();
             this.Scenes = new SceneListModel(adapter);
+            this.Camera = new CameraModel(adapter);
         }
 
         public static void CreateInstance()

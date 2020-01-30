@@ -13,6 +13,8 @@ World::World()
 {
 	scenes[0] = std::make_unique<Scene>(0, "Item");
 	scenes[1] = std::make_unique<Scene>(0, "Root");
+
+	renderer = std::make_unique<UI::Renderer>();
 }
 
 World::~World()

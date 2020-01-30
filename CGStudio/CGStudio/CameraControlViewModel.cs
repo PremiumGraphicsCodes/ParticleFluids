@@ -30,8 +30,7 @@ namespace PG.CGStudio
 
         private void OnXY()
         {
-            var command = new PG.CLI.Command(CameraLabels.CameraXYCommandLabel);
-            command.Execute(World.Instance.Adapter);
+            World.Instance.Camera.SetXY();
             Canvas3d.Instance.Render();
         }
 
@@ -57,8 +56,7 @@ namespace PG.CGStudio
 
         private void OnFit()
         {
-            var command = new PG.CLI.Command(CameraLabels.CameraFitCommandLabel);
-            command.Execute(World.Instance.Adapter);
+            World.Instance.Camera.Fit();
             Canvas3d.Instance.Render();
         }
     }
