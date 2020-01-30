@@ -9,7 +9,7 @@ namespace PG.CGStudio.Scene.Shape
         public SelectedShapeSceneModel(int id)
         {
             this.id = id;
-            var bb = MainModel.Instance.World.Scenes.GetBoundingBox(id);
+            var bb = World.Instance.Scenes.GetBoundingBox(id);
             CreateBoundingBoxItem(bb);
             CreateAxesX(bb);
             CreateAxesY(bb);
@@ -20,7 +20,7 @@ namespace PG.CGStudio.Scene.Shape
 
         public void ClearItems()
         {
-            var world = MainModel.Instance.World;
+            var world = World.Instance;
             world.Scenes.Delete(boundingBoxItemId);
             world.Scenes.Delete(xAxisItemId);
             world.Scenes.Delete(yAxisItemId);
@@ -33,7 +33,7 @@ namespace PG.CGStudio.Scene.Shape
 
         private void CreateBoundingBoxItem(Box3d bb)
         {
-            var world = MainModel.Instance.World;
+            var world = World.Instance;
             var builder = new WireFrameBuilder();
             builder.Add(bb);
             var appearance = new WireAppearance
@@ -46,7 +46,7 @@ namespace PG.CGStudio.Scene.Shape
 
         private void CreateAxesX(Box3d bb)
         {
-            var world = MainModel.Instance.World;
+            var world = World.Instance;
             var xline = new Line3d(bb.GetPosition(0.5, 0.5, 0.5), bb.GetPosition(1.5, 0.5, 0.5));
             var builder = new WireFrameBuilder();
             builder.Add(xline);
@@ -60,7 +60,7 @@ namespace PG.CGStudio.Scene.Shape
 
         private void CreateAxesY(Box3d bb)
         {
-            var world = MainModel.Instance.World;
+            var world = World.Instance;
             var xline = new Line3d(bb.GetPosition(0.5, 0.5, 0.5), bb.GetPosition(0.5, 1.5, 0.5));
             var builder = new WireFrameBuilder();
             builder.Add(xline);
@@ -74,7 +74,7 @@ namespace PG.CGStudio.Scene.Shape
 
         private void CreateAxesZ(Box3d bb)
         {
-            var world = MainModel.Instance.World;
+            var world = World.Instance;
             var xline = new Line3d(bb.GetPosition(0.5, 0.5, 0.5), bb.GetPosition(0.5, 0.5, 1.5));
             var builder = new WireFrameBuilder();
             builder.Add(xline);
@@ -88,7 +88,7 @@ namespace PG.CGStudio.Scene.Shape
 
         private void CreateCircleU(Box3d bb)
         {
-            var world = MainModel.Instance.World;
+            var world = World.Instance;
             var length = bb.Length.Max();
             var circle = new Ellipse3d(bb.GetPosition(0.5, 0.5, 0.5), new Vector3d(length, 0.0, 0.0), new Vector3d(0.0, length, 0.0));
             var builder = new WireFrameBuilder();
@@ -103,7 +103,7 @@ namespace PG.CGStudio.Scene.Shape
 
         private void CreateCircleV(Box3d bb)
         {
-            var world = MainModel.Instance.World;
+            var world = World.Instance;
             var length = bb.Length.Max();
             var circle = new Ellipse3d(bb.GetPosition(0.5, 0.5, 0.5), new Vector3d(length, 0.0, 0.0), new Vector3d(0.0, 0.0, length));
             var builder = new WireFrameBuilder();

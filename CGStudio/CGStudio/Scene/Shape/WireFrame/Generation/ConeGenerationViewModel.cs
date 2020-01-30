@@ -27,8 +27,8 @@ namespace PG.CGStudio.Generation.WireFrame
             builder.Add(cone, 24);
             var wireFrame = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
-            MainModel.Instance.World.Scenes.AddWireFrameScene(wireFrame, "WFCone", appearance, 1);
-            Canvas3d.Instance.Update(MainModel.Instance.World);
+            World.Instance.Scenes.AddWireFrameScene(wireFrame, "WFCone", appearance, 1);
+            Canvas3d.Instance.Update(World.Instance);
             Canvas3d.Instance.Render();
         }
 

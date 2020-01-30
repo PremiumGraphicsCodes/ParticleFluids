@@ -35,9 +35,9 @@ namespace PG.CGStudio
 
         private void OnNew()
         {
-            MainModel.Instance.World.New();
-            World.Instance.Renderer.Build(MainModel.Instance.World.Adapter);
-            Canvas3d.Instance.Update(MainModel.Instance.World);
+            World.Instance.New();
+            World.Instance.Renderer.Build(World.Instance.Adapter);
+            Canvas3d.Instance.Update(World.Instance);
             Canvas3d.Instance.Render();
         }
 
@@ -49,7 +49,7 @@ namespace PG.CGStudio
             };
             if ( DialogResult.OK == dialog.ShowDialog() )
             {
-                var model = MainModel.Instance.World;
+                var model = World.Instance;
                 model.Open(dialog.FileName);
             }
         }
@@ -62,7 +62,7 @@ namespace PG.CGStudio
             };
             if ( DialogResult.OK == dialog.ShowDialog() )
             {
-                var model = MainModel.Instance.World;
+                var model = World.Instance;
                 model.Save(dialog.FileName);
             }
         }
@@ -75,7 +75,7 @@ namespace PG.CGStudio
             };
             if (DialogResult.OK == dialog.ShowDialog())
             {
-                var model = MainModel.Instance.World;
+                var model = World.Instance;
                 model.Save(dialog.FileName);
             }
         }
@@ -91,8 +91,8 @@ namespace PG.CGStudio
             {
                 if(Import(dialog.FileName))
                 {
-                    MainModel.Instance.World.Scenes.Sync();
-                    Canvas3d.Instance.Update(MainModel.Instance.World);
+                    World.Instance.Scenes.Sync();
+                    Canvas3d.Instance.Update(World.Instance);
                     Canvas3d.Instance.Render();
                     MessageBox.Show("Import Suceeded");                    
                 }
@@ -105,7 +105,7 @@ namespace PG.CGStudio
 
         private bool Import(string filePath)
         {
-            var model = MainModel.Instance.World;
+            var model = World.Instance;
             var command = new PG.CLI.Command(PG.FileImportLabels.FileImportCommandLabel);
             command.SetArg(PG.FileImportLabels.FilePathLabel, filePath);
             command.Execute(model.Adapter);
@@ -135,7 +135,7 @@ namespace PG.CGStudio
 
         private bool Export(string filePath)
         {
-            var model = MainModel.Instance.World;
+            var model = World.Instance;
             var command = new PG.CLI.Command("FileExport");
             command.SetArg("FilePath", filePath);
             command.Execute(model.Adapter);

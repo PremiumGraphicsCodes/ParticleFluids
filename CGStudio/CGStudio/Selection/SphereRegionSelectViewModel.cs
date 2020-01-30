@@ -37,8 +37,8 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
-            var model = MainModel.Instance.World.Adapter;
-            var position = MainModel.Instance.World.Scenes.GetPosition( id );
+            var model = World.Instance.Adapter;
+            var position = World.Instance.Scenes.GetPosition( id );
 
             var sphere = new Sphere3d(Radius.Value, position);
             var builder = new WireFrameBuilder();
@@ -49,9 +49,9 @@ namespace PG.CGStudio.Selection
                 Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f)
             };
 
-            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.ToWireFrame(), "Item",appearance, 0);
+            World.Instance.Scenes.AddWireFrameScene(builder.ToWireFrame(), "Item",appearance, 0);
 
-            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Update(World.Instance);
             Canvas3d.Instance.Render();
 
             spheres.Add(sphere);

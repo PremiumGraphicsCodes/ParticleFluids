@@ -35,7 +35,7 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
-            var position = MainModel.Instance.World.Scenes.GetPosition(id);
+            var position = World.Instance.Scenes.GetPosition(id);
             pickedPositions.Add(position);
 
             if(pickedPositions.Count < 2)
@@ -52,9 +52,9 @@ namespace PG.CGStudio.Selection
                 Width = 1.0f
             };
 
-            MainModel.Instance.World.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
+            World.Instance.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
 
-            Canvas3d.Instance.Update(MainModel.Instance.World);
+            Canvas3d.Instance.Update(World.Instance);
             Canvas3d.Instance.Render();
 
             boxes.Add(box);

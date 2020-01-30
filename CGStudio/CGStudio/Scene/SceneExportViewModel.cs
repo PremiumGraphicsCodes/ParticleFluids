@@ -39,7 +39,7 @@ namespace PG.CGStudio.Scene
 
         private void OnExport()
         {
-            var world = MainModel.Instance.World;
+            var world = World.Instance;
             var command = new PG.CLI.Command(PG.FileExportLabels.FileExportCommandLabel);
             command.SetArg(PG.FileExportLabels.IdLabel, ShapeSelectViewModel.Id.Value);
             command.SetArg(PG.FileExportLabels.FilePathLabel, FilePath.Value);

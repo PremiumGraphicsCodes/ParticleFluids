@@ -30,9 +30,9 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
 
         private void OnApply()
         {
-            PG.CLI.Command.Set(MainModel.Instance.World.Adapter, PG.SetLabels.NameLabel, Id.Value, Name.Value);
-            PG.CLI.Command.Set(MainModel.Instance.World.Adapter, PG.SetLabels.MaterialNameLabel, Id.Value, MaterialName.Value);
-            Canvas3d.Instance.Update(MainModel.Instance.World);
+            PG.CLI.Command.Set(World.Instance.Adapter, PG.SetLabels.NameLabel, Id.Value, Name.Value);
+            PG.CLI.Command.Set(World.Instance.Adapter, PG.SetLabels.MaterialNameLabel, Id.Value, MaterialName.Value);
+            Canvas3d.Instance.Update(World.Instance);
             Canvas3d.Instance.Render();
         }
 
@@ -51,9 +51,9 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
             /*
             var id = (int)navigationContext.Parameters["Id"];
             Id.Value = id;
-            var name = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.NameLabel, id);
+            var name = PG.CLI.Command.Get<string>(World.Instance.Adapter, PG.GetLabels.NameLabel, id);
             Name.Value = name;
-            var materialName = PG.CLI.Command.Get<string>(MainModel.Instance.World.Adapter, PG.GetLabels.MaterialNameLabel, id);
+            var materialName = PG.CLI.Command.Get<string>(World.Instance.Adapter, PG.GetLabels.MaterialNameLabel, id);
             MaterialName.Value = materialName;
             */
         }

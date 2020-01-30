@@ -42,24 +42,24 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void SetMatrix(bool doRender)
         {
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
+            World.Instance.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {
                 var canvas = Canvas3d.Instance;
-                canvas.Update(MainModel.Instance.World);
+                canvas.Update(World.Instance);
                 canvas.Render();
             }
         }
 
         public void Transform(bool doRender)
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
+            World.Instance.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {
                 var canvas = Canvas3d.Instance;
-                canvas.Update(MainModel.Instance.World);
+                canvas.Update(World.Instance);
                 canvas.Render();
             }
         }
@@ -84,8 +84,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
             Translate.Value = new Vector3d(0, 0, 0);
             SetMatrix(true);
 
-            MainModel.Instance.World.Scenes.Clear(0);
-            MainModel.Instance.World.Scenes.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
+            World.Instance.Scenes.Clear(0);
+            World.Instance.Scenes.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
         }
 
         private void OnCancel()

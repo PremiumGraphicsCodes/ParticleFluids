@@ -37,7 +37,7 @@ namespace PG.CGStudio.Object
             }
             if (e.Key == Key.Delete)
             {
-                MainModel.Instance.World.Scenes.Delete(selectedItem.Id.Value);
+                World.Instance.Scenes.Delete(selectedItem.Id.Value);
             }
         }
 
@@ -57,7 +57,7 @@ namespace PG.CGStudio.Object
             parameters.Add("Id", selectedItem.Id.Value);
             var command = new PG.CLI.Command(SceneGetLabels.CommandLabel);
             command.SetArg(SceneGetLabels.IdLabel, selectedItem.Id.Value);
-            command.Execute(MainModel.Instance.World.Adapter);
+            command.Execute(World.Instance.Adapter);
             var type = command.GetResult<SceneType>(SceneGetLabels.TypeLabel);
             switch(type)
             {

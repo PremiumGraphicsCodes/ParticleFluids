@@ -40,7 +40,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
                 return;
             }
 
-            var center = MainModel.Instance.World.Scenes.GetCenter(id.parentId);
+            var center = World.Instance.Scenes.GetCenter(id.parentId);
             CenterViewModel.Value = center;
             Canvas3d.Instance.UICtrl = new RotateUICtrl(this);
         }
@@ -48,19 +48,19 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         private void OnOk()
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
+            World.Instance.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             OnCancel();
 
-            MainModel.Instance.World.Scenes.Clear(0);
-            MainModel.Instance.World.Scenes.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
+            World.Instance.Scenes.Clear(0);
+            World.Instance.Scenes.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
         }
 
         private void OnCancel()
         {
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, Matrix4d.Identity());
+            World.Instance.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, Matrix4d.Identity());
             var canvas = Canvas3d.Instance;
-            canvas.Update(MainModel.Instance.World);
+            canvas.Update(World.Instance);
             canvas.Render();
 
             AngleViewModel.Value = new Vector3d(0, 0, 0);
@@ -68,24 +68,24 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void SetMatrix(bool doRender)
         {
-            MainModel.Instance.World.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
+            World.Instance.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {
                 var canvas = Canvas3d.Instance;
-                canvas.Update(MainModel.Instance.World);
+                canvas.Update(World.Instance);
                 canvas.Render();
             }
         }
 
         public void Transform(bool doRender)
         {
-            MainModel.Instance.World.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
+            World.Instance.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {
                 var canvas = Canvas3d.Instance;
-                canvas.Update(MainModel.Instance.World);
+                canvas.Update(World.Instance);
                 canvas.Render();
             }
         }

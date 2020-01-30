@@ -44,8 +44,8 @@ namespace PG.CGStudio.Scene.Shape.WireFrame
 
         private void OnEdit()
         {
-            PG.CLI.Command.Set<string>(MainModel.Instance.World.Adapter, "Name", Id.Value, Name.Value);
-            MainModel.Instance.World.Scenes.Sync();
+            PG.CLI.Command.Set<string>(World.Instance.Adapter, "Name", Id.Value, Name.Value);
+            World.Instance.Scenes.Sync();
         }
     }
 }

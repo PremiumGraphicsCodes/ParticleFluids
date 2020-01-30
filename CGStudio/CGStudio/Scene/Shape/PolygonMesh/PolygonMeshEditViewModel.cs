@@ -32,7 +32,7 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
             Id.Value = id;
             var command = new PG.CLI.Command(PG.SceneGetLabels.CommandLabel);
             command.SetArg(PG.SceneGetLabels.IdLabel, id);
-            command.Execute(MainModel.Instance.World.Adapter);
+            command.Execute(World.Instance.Adapter);
             var name = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
             Name.Value = name;
             /*

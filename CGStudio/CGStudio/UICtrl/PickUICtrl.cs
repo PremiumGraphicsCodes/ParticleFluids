@@ -31,7 +31,7 @@ namespace PG.CGStudio.UICtrl
 
         public override void OnLeftButtonDown(Vector2d position)
         {
-            var model = MainModel.Instance.World.Adapter;
+            var model = World.Instance.Adapter;
 
             var pickedId = Canvas3d.Instance.GetObjectId(position);
             var parentId = pickedId.parentId;
@@ -43,7 +43,7 @@ namespace PG.CGStudio.UICtrl
                 command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
                 command.Execute(model);
                 command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
-                Canvas3d.Instance.Update(MainModel.Instance.World);
+                Canvas3d.Instance.Update(World.Instance);
                 Canvas3d.Instance.Render();
 
                 pickedIds.Add(pickedId);

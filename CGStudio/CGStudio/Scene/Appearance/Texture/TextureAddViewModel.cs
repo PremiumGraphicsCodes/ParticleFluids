@@ -23,7 +23,7 @@ namespace PG.CGStudio.Scene.Appearance.Texture
 
         private void OnOk()
         {
-            MainModel.Instance.World.Scenes.AddTextureScene(TextureViewModel.ImagePath.Value, Name.Value);
+            World.Instance.Scenes.AddTextureScene(TextureViewModel.ImagePath.Value, Name.Value);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
