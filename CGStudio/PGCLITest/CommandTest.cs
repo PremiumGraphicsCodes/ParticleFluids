@@ -18,6 +18,7 @@ namespace PGCLITest
             Assert.AreEqual(3, actual);
         }
 
+        /*
         [TestMethod]
         public void TestSetGet()
         {
@@ -29,5 +30,6 @@ namespace PGCLITest
             var actual = Command.Get<string>(world, "Name", id);
             Assert.AreEqual("AAA", actual);
         }
+        */
     }
 }

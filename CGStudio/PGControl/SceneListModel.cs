@@ -40,6 +40,7 @@ namespace PG.Scene
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.ParticleSystemCreateLabels.NewIdLabel);
 
+            /*
             if (layer > 0)
             {
                 command.Create(PG.CameraLabels.CameraFitCommandLabel);
@@ -47,6 +48,7 @@ namespace PG.Scene
                 command.Clear();
                 Sync();
             }
+            */
             return newId;
         }
 
