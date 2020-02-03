@@ -13,7 +13,7 @@ bool OnScreenRenderer::build(GLObjectFactory& factory)
 {
 	const auto vsSource = getBuildinVertexShaderSource();
 	const auto fsSource = getBuildinFragmentShaderSource();
-	this->shader = factory.getShaderFactory()->create(vsSource, fsSource);
+	this->shader = std::move( factory.getShaderFactory()->create(vsSource, fsSource) );
 	if (this->shader->getHandle() == -1) {
 		return false;
 	}

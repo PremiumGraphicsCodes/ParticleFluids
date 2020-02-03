@@ -34,12 +34,12 @@ public:
 
 	std::string getFragmentShaderSource() const { return fsSource; }
 
-	Shader::ShaderObject* getShader() { return shader; }
+	Shader::ShaderObject* getShader() { return shader.get(); }
 
 	//void render(const Graphics::Camera& camera) {};
 
 private:
-	Shader::ShaderObject* shader;
+	std::unique_ptr<Shader::ShaderObject> shader;
 	std::string vsSource;
 	std::string fsSource;
 	std::vector<std::string> uniforms;

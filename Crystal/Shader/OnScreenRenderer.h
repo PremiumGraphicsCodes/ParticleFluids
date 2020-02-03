@@ -24,7 +24,7 @@ private:
 	void findLocation();
 
 private:
-	ShaderObject* shader;
+	std::unique_ptr<ShaderObject> shader;
 };
 
 	}
