@@ -24,6 +24,7 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	addAttribute("pointSize");
 
 	glGenBuffers(1, &vertex_vbo);
+	glGenBuffers(1, &size_vbo);
 	glGenBuffers(1, &color_vbo);
 	glGenVertexArrays(1, &vao);
 
@@ -46,6 +47,9 @@ void PointRenderer::send(const PointBuffer& buffer)
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertex_vbo); //GLコンテキストにvertex_vboをGL_ARRAY_BUFFERでバインド。
 	glBufferData(GL_ARRAY_BUFFER, sizeof(positions[0]) * positions.size(), positions.data(), GL_STATIC_DRAW); //実データを格納
+
+	glBindBuffer(GL_ARRAY_BUFFER, size_vbo); //GLコンテキストにvertex_vboをGL_ARRAY_BUFFERでバインド。
+	glBufferData(GL_ARRAY_BUFFER, sizeof(sizes[0]) * sizes.size(), sizes.data(), GL_STATIC_DRAW); //実データを格納
 
 	glBindBuffer(GL_ARRAY_BUFFER, color_vbo); //GLコンテキストにvertex_vboをGL_ARRAY_BUFFERでバインド。
 	glBufferData(GL_ARRAY_BUFFER, sizeof(colors[0]) * colors.size(), colors.data(), GL_STATIC_DRAW); //実データを格納
@@ -70,6 +74,14 @@ void PointRenderer::send(const PointBuffer& buffer)
 	}
 
 	{
+		glBindBuffer(GL_ARRAY_BUFFER, size_vbo); //以下よりvertex_vboでバインドされているバッファが処理される
+		auto location = shader->getAttribLocation("pointSize");
+		glEnableVertexAttribArray(location);
+		glVertexAttribPointer(location, 1, GL_FLOAT, GL_FALSE, 1 * sizeof(GLfloat), (GLvoid*)0);
+	}
+
+
+	{
 		glBindBuffer(GL_ARRAY_BUFFER, color_vbo); //以下よりcolor_vboでバインドされているバッファが処理される
 		auto location = shader->getAttribLocation("color");
 		glEnableVertexAttribArray(location);
@@ -81,7 +93,7 @@ void PointRenderer::send(const PointBuffer& buffer)
 	glBindVertexArray(0);
 
 	//shader->sendVertexAttribute4df("color", colors);
-	shader->sendVertexAttribute1df("pointSize", sizes);
+	//shader->sendVertexAttribute1df("pointSize", sizes);
 
 	/*
 	shader->enableVertexAttribute("position");
@@ -121,16 +133,16 @@ void PointRenderer::render(const Camera& camera)
 
 	//shader->enableVertexAttribute("position");
 	//shader->enableVertexAttribute("color");
-	shader->enableVertexAttribute("pointSize");
+	//shader->enableVertexAttribute("pointSize");
 
 	//glDrawArrays()
 	glBindVertexArray(vao);
 	shader->drawPoints(positions.size() / 3);
 	glBindVertexArray(0);
 
-	shader->disableVertexAttribute("pointSize");
-	shader->disableVertexAttribute("color");
-	shader->disableVertexAttribute("position");
+	//shader->disableVertexAttribute("pointSize");
+	//shader->disableVertexAttribute("color");
+	//shader->disableVertexAttribute("position");
 
 	shader->bindOutput("fragColor");
 

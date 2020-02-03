@@ -63,6 +63,7 @@ private:
 
 	PointBuffer buffer;
 	GLuint vertex_vbo;
+	GLuint size_vbo;
 	GLuint color_vbo;
 	GLuint vao;
 };
