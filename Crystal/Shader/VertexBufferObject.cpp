@@ -16,12 +16,12 @@ void VertexBufferObject::send(const std::vector<float>& values)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void VertexBufferObject::bind()
+void VertexBufferObject::bind() const
 {
 	glBindBuffer(GL_ARRAY_BUFFER, handle);
 }
 
-void VertexBufferObject::unbind()
+void VertexBufferObject::unbind() const
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

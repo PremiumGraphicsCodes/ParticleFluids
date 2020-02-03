@@ -15,9 +15,9 @@ public:
 
 	GLuint getHandle() const { return handle; }
 
-	void bind();
+	void bind() const;
 
-	void unbind();
+	void unbind() const;
 
 private:
 	GLuint handle;

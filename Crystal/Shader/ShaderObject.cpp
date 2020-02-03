@@ -11,6 +11,8 @@
 
 #include "glew.h"
 
+#include "VertexBufferObject.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
@@ -382,6 +384,24 @@ void ShaderObject::sendVertexAttribute1di(const std::string& name, const std::ve
 	const auto location = getAttribLocation(name);
 	glVertexAttribIPointer(getAttribLocation(name), 1, GL_INT, 0, data.data());
 	//	glVertexAttribPointer(shader->getAttribLocation("position"), 3, GL_FLOAT, GL_FALSE, 0, positions.data());
+}
+
+void ShaderObject::sendVertexAttribute1df(const std::string& name, const VertexBufferObject& vbo)
+{
+	vbo.bind();
+	auto location = getAttribLocation(name);
+	glEnableVertexAttribArray(location);
+	glVertexAttribPointer(location, 1, GL_FLOAT, GL_FALSE, 1 * sizeof(GLfloat), (GLvoid*)0);
+	vbo.unbind();
+}
+
+void ShaderObject::sendVertexAttribute3df(const std::string& name, const VertexBufferObject& vbo)
+{
+	vbo.bind();
+	auto location = getAttribLocation(name);
+	glEnableVertexAttribArray(location);
+	glVertexAttribPointer(location, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+	vbo.unbind();
 }
 
 void ShaderObject::enableVertexAttribute(const std::string& name)

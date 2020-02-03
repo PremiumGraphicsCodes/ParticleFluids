@@ -20,6 +20,7 @@
 
 namespace Crystal {
 	namespace Shader {
+		class VertexBufferObject;
 
 class ShaderObject : IGLObject
 {
@@ -92,6 +93,10 @@ public:
 	void sendVertexAttribute4df(const std::string& name, const std::vector<float>& data);
 
 	void sendVertexAttribute1di(const std::string& name, const std::vector<int>& data);
+
+	void sendVertexAttribute1df(const std::string& name, const VertexBufferObject& vbo);
+
+	void sendVertexAttribute3df(const std::string& name, const VertexBufferObject& vbo);
 
 	void enableVertexAttribute(const std::string& name);
 
