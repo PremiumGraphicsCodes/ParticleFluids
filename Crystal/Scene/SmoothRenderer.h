@@ -61,12 +61,9 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void render(const Graphics::Camera& camera) override;
+	void send(const SmoothTriangleBuffer& buffer, const std::vector<Shader::TextureObject>& textures);
 
-	void setBuffer(const SmoothTriangleBuffer& buffer, const std::vector<Shader::TextureObject>& textures) {
-		this->buffer = buffer;
-		this->textures = textures;
-	}
+	void render(const Graphics::Camera& camera) override;
 
 	void setLights(const std::vector<Graphics::PointLight>& lights) { this->lights = lights; }
 

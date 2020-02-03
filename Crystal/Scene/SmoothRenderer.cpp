@@ -65,6 +65,12 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
+void SmoothRenderer::send(const SmoothTriangleBuffer& buffer, const std::vector<TextureObject>& textures)
+{
+	this->buffer = buffer;
+	this->textures = textures;
+}
+
 void SmoothRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
