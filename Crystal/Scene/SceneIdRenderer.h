@@ -46,9 +46,7 @@ private:
 	Scene::TriangleRenderer triangleIdRenderer;
 
 	std::unique_ptr<Shader::TextureObject> texture;
-	Shader::FrameBufferObject* frameBufferObject;
-
-	Graphics::Camera* camera;
+	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
 };
 	}
 }

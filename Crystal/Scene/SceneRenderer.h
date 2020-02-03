@@ -63,7 +63,7 @@ private:
 	Graphics::Camera* camera;
 
 	std::unique_ptr< Shader::TextureObject > texture;
-	Shader::FrameBufferObject* frameBufferObject;
+	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
 };
 	}
 }

@@ -15,7 +15,6 @@ public:
 	void clear() {
 		shaderFactory.clear();
 		textureFactory.clear();
-		frameBufferFactory.clear();
 	}
 
 	ShaderObjectFactory* getShaderFactory() { return &shaderFactory; }
