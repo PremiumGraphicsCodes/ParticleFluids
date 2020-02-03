@@ -23,6 +23,11 @@ bool TriangleRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
+void TriangleRenderer::send(const LineBuffer& buffer)
+{
+	this->buffer = buffer;
+}
+
 void TriangleRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();

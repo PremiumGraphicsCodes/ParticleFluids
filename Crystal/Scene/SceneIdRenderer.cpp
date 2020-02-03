@@ -51,7 +51,7 @@ void SceneIdRenderer::render(Camera* camera, const SceneIdViewModel& vm)
 		lineIdRenderer.render(*camera);
 	}
 	for (const auto& b : triangleBuffers) {
-		triangleIdRenderer.setBuffer(b);
+		triangleIdRenderer.send(b);
 		triangleIdRenderer.render(*camera);
 	}
 
