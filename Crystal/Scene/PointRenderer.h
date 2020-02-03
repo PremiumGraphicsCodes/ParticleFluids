@@ -4,6 +4,7 @@
 
 #include "../Graphics/Camera.h"
 #include "../Shader/ShaderObject.h"
+#include "../Shader/VertexBufferObject.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -63,9 +64,9 @@ private:
 
 	GLuint count;
 	PointBuffer buffer;
-	GLuint vertex_vbo;
-	GLuint size_vbo;
-	GLuint color_vbo;
+	Shader::VertexBufferObject vertex_vbo;
+	Shader::VertexBufferObject size_vbo;
+	Shader::VertexBufferObject color_vbo;
 	GLuint vao;
 };
 
