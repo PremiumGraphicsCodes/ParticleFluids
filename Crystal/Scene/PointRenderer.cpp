@@ -28,7 +28,8 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	vertex_vbo.build();
 	size_vbo.build();
 	color_vbo.build();
-	glGenVertexArrays(1, &vao);
+	
+	vao.build();
 
 	return build_(factory);
 }
@@ -37,9 +38,9 @@ void PointRenderer::send(const PointBuffer& buffer)
 {
 	auto shader = getShader();
 
-	const auto positions = buffer.getPosition().get();
-	const auto colors = buffer.getColor().get();
-	const auto sizes = buffer.getSize().get();
+	const auto& positions = buffer.getPosition().get();
+	const auto& colors = buffer.getColor().get();
+	const auto& sizes = buffer.getSize().get();
 
 	if (positions.empty()) {
 		return;
@@ -49,20 +50,12 @@ void PointRenderer::send(const PointBuffer& buffer)
 	size_vbo.send(sizes);
 	color_vbo.send(colors);
 
-	glBindVertexArray(vao);
 
+	vao.bind();
 	shader->sendVertexAttribute3df("position", vertex_vbo);
 	shader->sendVertexAttribute1df("pointSize", size_vbo);
-
-	{
-		color_vbo.bind();
-		auto location = shader->getAttribLocation("color");
-		glEnableVertexAttribArray(location);
-		glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
-		color_vbo.unbind();
-	}
-
-	glBindVertexArray(0);
+	shader->sendVertexAttribute4df("color", color_vbo);
+	vao.unbind();
 
 	this->count = positions.size() / 3;
 	this->matrix = buffer.getMatrix();
@@ -83,9 +76,9 @@ void PointRenderer::render(const Camera& camera)
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
-	glBindVertexArray(vao);
+	vao.bind();
 	shader->drawPoints(count);
-	glBindVertexArray(0);
+	vao.unbind();
 
 	shader->bindOutput("fragColor");
 

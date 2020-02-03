@@ -5,6 +5,7 @@
 #include "../Graphics/Camera.h"
 #include "../Shader/ShaderObject.h"
 #include "../Shader/VertexBufferObject.h"
+#include "../Shader/VertexArrayObject.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -66,7 +67,7 @@ private:
 	Shader::VertexBufferObject vertex_vbo;
 	Shader::VertexBufferObject size_vbo;
 	Shader::VertexBufferObject color_vbo;
-	GLuint vao;
+	Shader::VertexArrayObject vao;
 	Math::Matrix4df matrix;
 };
 

@@ -155,6 +155,7 @@
     <ClInclude Include="ShaderUnit.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="TextureObjectFactory.h" />
+    <ClInclude Include="VertexArrayObject.h" />
     <ClInclude Include="VertexBufferObject.h" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +175,7 @@
     <ClCompile Include="ShaderUnit.cpp" />
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="TextureObjectFactory.cpp" />
+    <ClCompile Include="VertexArrayObject.cpp" />
     <ClCompile Include="VertexBufferObject.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

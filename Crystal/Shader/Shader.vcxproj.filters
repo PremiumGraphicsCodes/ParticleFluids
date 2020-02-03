@@ -57,6 +57,7 @@
       <Filter>Shader</Filter>
     </ClInclude>
     <ClInclude Include="VertexBufferObject.h" />
+    <ClInclude Include="VertexArrayObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
@@ -106,6 +107,7 @@
       <Filter>Shader</Filter>
     </ClCompile>
     <ClCompile Include="VertexBufferObject.cpp" />
+    <ClCompile Include="VertexArrayObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Texture">
