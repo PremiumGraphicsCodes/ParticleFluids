@@ -50,7 +50,7 @@ class PointRenderer : public IRenderer
 public:
 	PointRenderer();
 
-	void build() override;
+	bool build(Shader::GLObjectFactory& factory) override;
 
 	void send(const PointBuffer& buffer);
 

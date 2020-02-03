@@ -7,6 +7,10 @@ using namespace Crystal::Scene;
 
 LineRenderer::LineRenderer()
 {
+}
+
+bool LineRenderer::build(GLObjectFactory& factory)
+{
 	setVertexShaderSource(getBuiltInVsSource());
 	setFragmentShaderSource(getBuiltInFsSource());
 
@@ -15,11 +19,8 @@ LineRenderer::LineRenderer()
 
 	addAttribute("position");
 	addAttribute("color");
-}
 
-void LineRenderer::build()
-{
-
+	return build_(factory);
 }
 
 void LineRenderer::render(const Camera& camera)

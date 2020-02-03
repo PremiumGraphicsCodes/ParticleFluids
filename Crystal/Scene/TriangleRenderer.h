@@ -9,7 +9,7 @@ class TriangleRenderer : public IRenderer
 public:
 	TriangleRenderer();
 
-	void build() override;
+	bool build(Shader::GLObjectFactory& factory) override;
 
 	void render(const Graphics::Camera& camera) override;
 

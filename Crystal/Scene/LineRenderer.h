@@ -60,7 +60,7 @@ class LineRenderer : public IRenderer
 public:
 	LineRenderer();
 
-	void build() override;
+	bool build(Shader::GLObjectFactory& factory) override;
 
 	void render(const Graphics::Camera& camera) override;
 

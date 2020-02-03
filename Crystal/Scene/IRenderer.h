@@ -18,9 +18,7 @@ public:
 
 	virtual ~IRenderer() {};
 
-	bool build_(Shader::GLObjectFactory& factory);
-
-	virtual void build() = 0;
+	virtual bool build(Shader::GLObjectFactory& factory) = 0;
 
 	virtual void render(const Graphics::Camera& camera) = 0;
 
@@ -39,6 +37,9 @@ public:
 	Shader::ShaderObject* getShader() { return shader.get(); }
 
 	//void render(const Graphics::Camera& camera) {};
+
+protected:
+	bool build_(Shader::GLObjectFactory& factory);
 
 private:
 	std::unique_ptr<Shader::ShaderObject> shader;

@@ -59,7 +59,7 @@ class SmoothRenderer : public IRenderer
 public:
 	SmoothRenderer();
 
-	void build() override;
+	bool build(Shader::GLObjectFactory& factory) override;
 
 	void render(const Graphics::Camera& camera) override;
 

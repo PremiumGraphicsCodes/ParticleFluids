@@ -7,6 +7,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId, const int ambientTexId, const int diffuseTexId, const int specularTexId)
@@ -22,6 +23,10 @@ void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df&
 }
 
 SmoothRenderer::SmoothRenderer()
+{
+}
+
+bool SmoothRenderer::build(GLObjectFactory& factory)
 {
 	setVertexShaderSource(getBuildInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
@@ -56,11 +61,8 @@ SmoothRenderer::SmoothRenderer()
 	addAttribute("diffuseTexId");
 	addAttribute("specularTexId");
 	addAttribute("texCoord");
-}
 
-void SmoothRenderer::build()
-{
-
+	return build_(factory);
 }
 
 void SmoothRenderer::render(const Camera& camera)

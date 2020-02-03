@@ -4,8 +4,13 @@
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
+using namespace Crystal::Shader;
 
 TriangleRenderer::TriangleRenderer()
+{
+}
+
+bool TriangleRenderer::build(GLObjectFactory& factory)
 {
 	setVertexShaderSource(getBuildInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
@@ -15,11 +20,7 @@ TriangleRenderer::TriangleRenderer()
 
 	addAttribute("position");
 	addAttribute("color");
-}
-
-void TriangleRenderer::build()
-{
-	;
+	return build_(factory);
 }
 
 void TriangleRenderer::render(const Camera& camera)

@@ -4,24 +4,26 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 PointRenderer::PointRenderer()
+{
+}
+
+bool PointRenderer::build(GLObjectFactory& factory)
 {
 	setVertexShaderSource(getBuiltInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
 
 	addUniform("projectionMatrix");
 	addUniform("modelviewMatrix");
-	
+
 	addAttribute("position");
 	addAttribute("color");
 	addAttribute("pointSize");
-}
 
-void PointRenderer::build()
-{
-
+	return build_(factory);
 }
 
 void PointRenderer::send(const PointBuffer& buffer)
