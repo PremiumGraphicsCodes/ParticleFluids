@@ -9,6 +9,9 @@
 #include "../Graphics/Buffer3d.h"
 #include "../Graphics/Buffer4d.h"
 
+#include "../Shader/VertexBufferObject.h"
+#include "../Shader/VertexArrayObject.h"
+
 namespace Crystal {
 	namespace Scene {
 
@@ -72,6 +75,10 @@ private:
 	std::string getBuiltInFsSource() const;
 
 	LineBuffer buffer;
+
+	Shader::VertexBufferObject vertex_vbo;
+	Shader::VertexBufferObject color_vbo;
+	Shader::VertexArrayObject vao;
 };
 
 	}

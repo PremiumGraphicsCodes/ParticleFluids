@@ -20,12 +20,33 @@ bool LineRenderer::build(GLObjectFactory& factory)
 	addAttribute("position");
 	addAttribute("color");
 
+	vertex_vbo.build();
+	color_vbo.build();
+
+	vao.build();
+
 	return build_(factory);
 }
 
 void LineRenderer::send(const LineBuffer& buffer)
 {
 	this->buffer = buffer;
+
+	const auto positions = buffer.getPositions().get();
+	const auto colors = buffer.getColors().get();
+	if (positions.empty()) {
+		return;
+	}
+
+	vertex_vbo.send(positions);
+	color_vbo.send(colors);
+
+	auto shader = getShader();
+
+	vao.bind();
+	shader->sendVertexAttribute3df("position", vertex_vbo);
+	shader->sendVertexAttribute4df("color", color_vbo);
+	vao.unbind();
 
 	/*
 	auto shader = getShader();
@@ -65,17 +86,12 @@ void LineRenderer::render(const Camera& camera)
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
-	shader->sendVertexAttribute3df("position", positions);
-	shader->sendVertexAttribute4df("color", colors);
-
-
-	shader->enableVertexAttribute("position");
-	shader->enableVertexAttribute("color");
-
+	vao.bind();
 	shader->drawLines(indices);
+	vao.unbind();
 
-	shader->disableVertexAttribute("color");
-	shader->disableVertexAttribute("position");
+	//shader->disableVertexAttribute("color");
+	//shader->disableVertexAttribute("position");
 
 	shader->bindOutput("fragColor");
 
