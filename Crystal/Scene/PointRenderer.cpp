@@ -23,6 +23,10 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	addAttribute("color");
 	addAttribute("pointSize");
 
+	glGenBuffers(1, &vertex_vbo);
+	glGenBuffers(1, &color_vbo);
+	glGenVertexArrays(1, &vao);
+
 	return build_(factory);
 }
 
@@ -40,8 +44,43 @@ void PointRenderer::send(const PointBuffer& buffer)
 		return;
 	}
 
+	glBindBuffer(GL_ARRAY_BUFFER, vertex_vbo); //GLコンテキストにvertex_vboをGL_ARRAY_BUFFERでバインド。
+	glBufferData(GL_ARRAY_BUFFER, sizeof(positions[0]) * positions.size(), positions.data(), GL_STATIC_DRAW); //実データを格納
+
+	glBindBuffer(GL_ARRAY_BUFFER, color_vbo); //GLコンテキストにvertex_vboをGL_ARRAY_BUFFERでバインド。
+	glBufferData(GL_ARRAY_BUFFER, sizeof(colors[0]) * colors.size(), colors.data(), GL_STATIC_DRAW); //実データを格納
+
+
+	/*
+
+	glBindBuffer(GL_ARRAY_BUFFER, vertex_vbo); //以下よりvertex_vboでバインドされているバッファが処理される
+	glEnableVertexAttribArray(0);
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 	shader->sendVertexAttribute3df("position", positions);
-	shader->sendVertexAttribute4df("color", colors);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	*/
+	glBindVertexArray(vao);
+
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, vertex_vbo); //以下よりvertex_vboでバインドされているバッファが処理される
+		auto location = shader->getAttribLocation("position");
+		glEnableVertexAttribArray(location);
+		glVertexAttribPointer(location, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+	}
+
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, color_vbo); //以下よりcolor_vboでバインドされているバッファが処理される
+		auto location = shader->getAttribLocation("color");
+		glEnableVertexAttribArray(location);
+		glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
+	}
+//	shader->sendVertexAttribute3df()
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+	//shader->sendVertexAttribute4df("color", colors);
 	shader->sendVertexAttribute1df("pointSize", sizes);
 
 	/*
@@ -56,7 +95,7 @@ void PointRenderer::render(const Camera& camera)
 	auto shader = getShader();
 
 	const auto positions = buffer.getPosition().get();
-	const auto colors = buffer.getColor().get();
+	//const auto colors = buffer.getColor().get();
 	const auto sizes = buffer.getSize().get();
 
 	if (positions.empty()) {
@@ -80,11 +119,14 @@ void PointRenderer::render(const Camera& camera)
 	shader->sendVertexAttribute1df("pointSize", sizes);
 	*/
 
-	shader->enableVertexAttribute("position");
-	shader->enableVertexAttribute("color");
+	//shader->enableVertexAttribute("position");
+	//shader->enableVertexAttribute("color");
 	shader->enableVertexAttribute("pointSize");
 
+	//glDrawArrays()
+	glBindVertexArray(vao);
 	shader->drawPoints(positions.size() / 3);
+	glBindVertexArray(0);
 
 	shader->disableVertexAttribute("pointSize");
 	shader->disableVertexAttribute("color");
