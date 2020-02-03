@@ -50,9 +50,9 @@ class PointRenderer : public IRenderer
 public:
 	PointRenderer();
 
-	void render(const Graphics::Camera& camera) override;
+	void send(const PointBuffer& buffer);
 
-	void setBuffer(const PointBuffer& buffer) { this->buffer = buffer; }
+	void render(const Graphics::Camera& camera) override;
 
 private:
 	std::string getBuiltInVertexShaderSource() const;

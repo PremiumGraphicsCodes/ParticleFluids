@@ -43,7 +43,7 @@ void SceneIdRenderer::render(Camera* camera, const SceneIdViewModel& vm)
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	for (const auto& b : pointBuffers) {
-		pointIdRenderer.setBuffer(b);
+		pointIdRenderer.send(b);
 		pointIdRenderer.render(*camera);
 	}
 	for (const auto& b : lineBuffers) {
