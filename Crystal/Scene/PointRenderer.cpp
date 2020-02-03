@@ -21,7 +21,27 @@ PointRenderer::PointRenderer()
 
 void PointRenderer::send(const PointBuffer& buffer)
 {
+	auto shader = getShader();
+
 	this->buffer = buffer;
+
+	const auto positions = buffer.getPosition().get();
+	const auto colors = buffer.getColor().get();
+	const auto sizes = buffer.getSize().get();
+
+	if (positions.empty()) {
+		return;
+	}
+
+	shader->sendVertexAttribute3df("position", positions);
+	shader->sendVertexAttribute4df("color", colors);
+	shader->sendVertexAttribute1df("pointSize", sizes);
+
+	/*
+	shader->enableVertexAttribute("position");
+	shader->enableVertexAttribute("color");
+	shader->enableVertexAttribute("pointSize");
+	*/
 }
 
 void PointRenderer::render(const Camera& camera)
@@ -47,9 +67,11 @@ void PointRenderer::render(const Camera& camera)
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
+	/*
 	shader->sendVertexAttribute3df("position", positions);
 	shader->sendVertexAttribute4df("color", colors);
 	shader->sendVertexAttribute1df("pointSize", sizes);
+	*/
 
 	shader->enableVertexAttribute("position");
 	shader->enableVertexAttribute("color");
