@@ -29,7 +29,7 @@ public:
 
 private:
 	std::unique_ptr<Graphics::Image> image;
-	Shader::TextureObject* texture;
+	std::unique_ptr<Shader::TextureObject> texture;
 };
 
 	}

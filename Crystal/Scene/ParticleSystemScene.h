@@ -1,7 +1,8 @@
 #pragma once
 
-#include "IShapeScene.h"
 #include "../Shape/ParticleSystem.h"
+
+#include "IShapeScene.h"
 #include "ParticleAttribute.h"
 
 namespace Crystal {
@@ -17,6 +18,8 @@ public:
 	~ParticleSystemScene() {};
 
 	Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape.get(); }
+
+	void onBuild(Shader::GLObjectFactory& factory) override;
 
 	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 

@@ -51,7 +51,7 @@ public:
 
 	Mask getMask() const { return mask; }
 
-	Shader::TextureObject* getTexture() { return texture; }
+	Shader::TextureObject* getTexture() { return texture.get(); }
 
 private:
 	Scene::PointRenderer pointRenderer;
@@ -62,7 +62,7 @@ private:
 
 	Graphics::Camera* camera;
 
-	Shader::TextureObject* texture;
+	std::unique_ptr< Shader::TextureObject > texture;
 	Shader::FrameBufferObject* frameBufferObject;
 };
 	}

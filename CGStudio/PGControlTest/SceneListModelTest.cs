@@ -48,15 +48,13 @@ namespace PGControlTest
             Assert.AreEqual(1, id);
         }
 
-        /*
         [TestMethod]
         public void TestAddTextureScene()
         {
             var adapter = new WorldAdapter();
             var scene = new SceneListModel(adapter);
             var id = scene.AddTextureScene("TestTexture.bmp", "Texture");
-
+            Assert.AreEqual(1, id);
         }
-        */
     }
 }

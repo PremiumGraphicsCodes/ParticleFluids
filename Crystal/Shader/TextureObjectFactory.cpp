@@ -9,25 +9,19 @@ using namespace Crystal::Shader;
 
 void TextureObjectFactory::clear()
 {
-	for (const auto& t : textures) {
-		t->clear();
-	}
-	textures.clear();
 	nextId = 0;
 }
 
-TextureObject* TextureObjectFactory::createTextureObject(const Image& image)
+std::unique_ptr<TextureObject> TextureObjectFactory::createTextureObject(const Image& image)
 {
 	auto object = std::make_unique<TextureObject>();
 	object->create(image, nextId++);
-	textures.push_back(std::move( object ));
-	return textures.back().get();
+	return std::move( object );
 }
 
-TextureObject* TextureObjectFactory::createTextureObject(const Imagef& image)
+std::unique_ptr<TextureObject> TextureObjectFactory::createTextureObject(const Imagef& image)
 {
 	auto object = std::make_unique<TextureObject>();
 	object->create(image, nextId++);
-	textures.push_back(std::move(object));
-	return textures.back().get();
+	return std::move(object);
 }

@@ -22,6 +22,10 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 	shape(std::move(shape))
 {}
 
+void ParticleSystemScene::onBuild(GLObjectFactory& factory)
+{
+	//factory.getShaderFactory()->create()
+}
 
 void ParticleSystemScene::toViewModel(SceneViewModel& viewModel) const
 {

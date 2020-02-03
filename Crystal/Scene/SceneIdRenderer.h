@@ -4,6 +4,7 @@
 
 #include "../Scene/TriangleRenderer.h"
 #include "../Shader/FrameBufferObject.h"
+#include "../Shader/TextureObject.h"
 
 #include "../Scene/PointRenderer.h"
 #include "../Scene/LineRenderer.h"
@@ -44,7 +45,7 @@ private:
 	Scene::LineRenderer lineIdRenderer;
 	Scene::TriangleRenderer triangleIdRenderer;
 
-	Shader::TextureObject* texture;
+	std::unique_ptr<Shader::TextureObject> texture;
 	Shader::FrameBufferObject* frameBufferObject;
 
 	Graphics::Camera* camera;

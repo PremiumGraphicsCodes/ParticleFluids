@@ -23,12 +23,11 @@ public:
 
 	void clear();
 
-	TextureObject* createTextureObject(const Graphics::Image& image);
+	std::unique_ptr<TextureObject> createTextureObject(const Graphics::Image& image);
 
-	TextureObject* createTextureObject(const Graphics::Imagef& image);
+	std::unique_ptr<TextureObject> createTextureObject(const Graphics::Imagef& image);
 
 private:
-	std::list<std::unique_ptr<TextureObject>> textures;
 	int nextId;
 };
 	}

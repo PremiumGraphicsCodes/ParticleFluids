@@ -22,7 +22,7 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	texture = factory.getTextureFactory()->createTextureObject(Image(512, 512));
+	texture = std::move( factory.getTextureFactory()->createTextureObject(Image(512, 512)) );
 	//texture.create(, 1);
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 	return true;
