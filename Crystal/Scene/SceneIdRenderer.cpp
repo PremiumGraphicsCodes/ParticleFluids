@@ -47,7 +47,7 @@ void SceneIdRenderer::render(Camera* camera, const SceneIdViewModel& vm)
 		pointIdRenderer.render(*camera);
 	}
 	for (const auto& b : lineBuffers) {
-		lineIdRenderer.setBuffer(b);
+		lineIdRenderer.send(b);
 		lineIdRenderer.render(*camera);
 	}
 	for (const auto& b : triangleBuffers) {

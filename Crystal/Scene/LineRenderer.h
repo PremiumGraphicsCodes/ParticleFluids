@@ -62,11 +62,9 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void render(const Graphics::Camera& camera) override;
+	void send(const LineBuffer& buffer);
 
-	void setBuffer(const LineBuffer& buffer) {
-		this->buffer = buffer;
-	}
+	void render(const Graphics::Camera& camera) override;
 
 private:
 	std::string getBuiltInVsSource() const;

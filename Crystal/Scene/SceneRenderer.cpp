@@ -50,7 +50,7 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	}
 	if (mask.showLines) {
 		for (const auto& b : lineBuffers) {
-			wireRenderer.setBuffer(b);
+			wireRenderer.send(b);
 			wireRenderer.render(*camera);
 		}
 	}

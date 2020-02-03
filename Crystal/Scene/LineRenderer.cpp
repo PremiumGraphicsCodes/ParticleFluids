@@ -23,13 +23,30 @@ bool LineRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
+void LineRenderer::send(const LineBuffer& buffer)
+{
+	this->buffer = buffer;
+
+	/*
+	auto shader = getShader();
+
+	const auto indices = buffer.getIndices().get();
+	const auto positions = buffer.getPositions().get();
+	const auto colors = buffer.getColors().get();
+
+	if (positions.empty()) {
+		return;
+	}
+	*/
+}
+
 void LineRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
 
-	const auto& indices = buffer.getIndices().get();
-	const auto& positions = buffer.getPositions().get();
-	const auto& colors = buffer.getColors().get();
+	const auto indices = buffer.getIndices().get();
+	const auto positions = buffer.getPositions().get();
+	const auto colors = buffer.getColors().get();
 
 	if (positions.empty()) {
 		return;
@@ -50,6 +67,7 @@ void LineRenderer::render(const Camera& camera)
 
 	shader->sendVertexAttribute3df("position", positions);
 	shader->sendVertexAttribute4df("color", colors);
+
 
 	shader->enableVertexAttribute("position");
 	shader->enableVertexAttribute("color");
