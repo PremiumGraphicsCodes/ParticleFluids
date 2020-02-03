@@ -457,6 +457,11 @@ void ShaderObject::drawLines(const std::vector<unsigned int>& indices)
 	glDrawElements(GL_LINES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, indices.data());
 }
 
+void ShaderObject::drawLines(const int count)
+{
+	glDrawArrays(GL_LINES, 0, count);
+}
+
 void ShaderObject::drawTriangles(const int count)
 {
 	glDrawArrays(GL_TRIANGLES, 0, count);

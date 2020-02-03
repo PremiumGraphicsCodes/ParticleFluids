@@ -30,8 +30,6 @@ bool LineRenderer::build(GLObjectFactory& factory)
 
 void LineRenderer::send(const LineBuffer& buffer)
 {
-	this->buffer = buffer;
-
 	const auto positions = buffer.getPositions().get();
 	const auto colors = buffer.getColors().get();
 	if (positions.empty()) {
@@ -48,39 +46,21 @@ void LineRenderer::send(const LineBuffer& buffer)
 	shader->sendVertexAttribute4df("color", color_vbo);
 	vao.unbind();
 
-	/*
-	auto shader = getShader();
-
-	const auto indices = buffer.getIndices().get();
-	const auto positions = buffer.getPositions().get();
-	const auto colors = buffer.getColors().get();
-
-	if (positions.empty()) {
-		return;
-	}
-	*/
+	this->indices = buffer.getIndices().get();
+	this->matrix = buffer.getMatrix();
+	this->lineWidth = buffer.getWidth();
 }
 
 void LineRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
 
-	const auto indices = buffer.getIndices().get();
-	const auto positions = buffer.getPositions().get();
-	const auto colors = buffer.getColors().get();
-
-	if (positions.empty()) {
-		return;
-	}
-
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix() * Math::Matrix4df(buffer.getMatrix());
-
-	//assert(GL_NO_ERROR == glGetError());
+	const auto& modelviewMatrix = camera.getModelViewMatrix() * matrix;
 
 	shader->bind();
 
-	shader->setLineWidth(buffer.getWidth());
+	shader->setLineWidth(lineWidth);
 	shader->enableDepthTest();
 
 	shader->sendUniform("projectionMatrix", projectionMatrix);
@@ -99,6 +79,8 @@ void LineRenderer::render(const Camera& camera)
 	shader->disableDepthTest();
 
 	shader->unbind();
+
+	assert(GL_NO_ERROR == glGetError());
 }
 
 std::string LineRenderer::getBuiltInVsSource() const

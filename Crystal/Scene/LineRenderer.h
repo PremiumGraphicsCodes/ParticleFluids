@@ -74,11 +74,12 @@ private:
 
 	std::string getBuiltInFsSource() const;
 
-	LineBuffer buffer;
-
 	Shader::VertexBufferObject vertex_vbo;
 	Shader::VertexBufferObject color_vbo;
 	Shader::VertexArrayObject vao;
+	std::vector<unsigned int> indices;
+	Math::Matrix4df matrix;
+	float lineWidth;
 };
 
 	}
