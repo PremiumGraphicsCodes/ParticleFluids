@@ -17,6 +17,11 @@ LineRenderer::LineRenderer()
 	addAttribute("color");
 }
 
+void LineRenderer::build()
+{
+
+}
+
 void LineRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();

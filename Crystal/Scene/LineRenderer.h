@@ -60,6 +60,8 @@ class LineRenderer : public IRenderer
 public:
 	LineRenderer();
 
+	void build() override;
+
 	void render(const Graphics::Camera& camera) override;
 
 	void setBuffer(const LineBuffer& buffer) {

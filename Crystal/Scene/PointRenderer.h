@@ -50,6 +50,8 @@ class PointRenderer : public IRenderer
 public:
 	PointRenderer();
 
+	void build() override;
+
 	void send(const PointBuffer& buffer);
 
 	void render(const Graphics::Camera& camera) override;

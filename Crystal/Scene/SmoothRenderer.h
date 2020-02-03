@@ -59,6 +59,8 @@ class SmoothRenderer : public IRenderer
 public:
 	SmoothRenderer();
 
+	void build() override;
+
 	void render(const Graphics::Camera& camera) override;
 
 	void setBuffer(const SmoothTriangleBuffer& buffer, const std::vector<Shader::TextureObject>& textures) {

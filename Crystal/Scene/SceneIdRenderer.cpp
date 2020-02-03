@@ -11,13 +11,13 @@ using namespace Crystal::UI;
 
 bool SceneIdRenderer::build(GLObjectFactory& factory)
 {
-	if (!pointIdRenderer.build(factory)) {
+	if (!pointIdRenderer.build_(factory)) {
 		return false;
 	}
-	if (!lineIdRenderer.build(factory)) {
+	if (!lineIdRenderer.build_(factory)) {
 		return false;
 	}
-	if (!triangleIdRenderer.build(factory)) {
+	if (!triangleIdRenderer.build_(factory)) {
 		return false;
 	}
 

@@ -17,6 +17,11 @@ TriangleRenderer::TriangleRenderer()
 	addAttribute("color");
 }
 
+void TriangleRenderer::build()
+{
+	;
+}
+
 void TriangleRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();

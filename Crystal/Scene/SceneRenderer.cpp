@@ -12,13 +12,13 @@ using namespace Crystal::UI;
 
 bool SceneRenderer::build(GLObjectFactory& factory)
 {
-	if (!pointRenderer.build(factory)) {
+	if (!pointRenderer.build_(factory)) {
 		return false;
 	}
-	if (!wireRenderer.build(factory)) {
+	if (!wireRenderer.build_(factory)) {
 		return false;
 	}
-	if (!smoothRenderer.build(factory)) {
+	if (!smoothRenderer.build_(factory)) {
 		return false;
 	}
 

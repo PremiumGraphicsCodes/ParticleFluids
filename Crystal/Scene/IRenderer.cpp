@@ -5,7 +5,7 @@
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-bool IRenderer::build(GLObjectFactory& factory)
+bool IRenderer::build_(GLObjectFactory& factory)
 {
 	this->shader = factory.getShaderFactory()->create(vsSource, fsSource); //std::make_unique<ShaderObject>();
 	if (!shader->isBuildOK()) {

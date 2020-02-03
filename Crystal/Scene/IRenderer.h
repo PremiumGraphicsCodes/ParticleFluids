@@ -18,7 +18,9 @@ public:
 
 	virtual ~IRenderer() {};
 
-	bool build(Shader::GLObjectFactory& factory);
+	bool build_(Shader::GLObjectFactory& factory);
+
+	virtual void build() = 0;
 
 	virtual void render(const Graphics::Camera& camera) = 0;
 

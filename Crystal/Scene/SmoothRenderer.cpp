@@ -58,6 +58,11 @@ SmoothRenderer::SmoothRenderer()
 	addAttribute("texCoord");
 }
 
+void SmoothRenderer::build()
+{
+
+}
+
 void SmoothRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
