@@ -61,6 +61,7 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
+	GLuint count;
 	PointBuffer buffer;
 	GLuint vertex_vbo;
 	GLuint size_vbo;

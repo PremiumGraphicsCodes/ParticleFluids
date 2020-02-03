@@ -7,7 +7,8 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-PointRenderer::PointRenderer()
+PointRenderer::PointRenderer() :
+	count(0)
 {
 }
 
@@ -92,6 +93,7 @@ void PointRenderer::send(const PointBuffer& buffer)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
+	this->count = positions.size() / 3;
 	//shader->sendVertexAttribute4df("color", colors);
 	//shader->sendVertexAttribute1df("pointSize", sizes);
 
@@ -106,11 +108,11 @@ void PointRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
 
-	const auto positions = buffer.getPosition().get();
+	//const auto positions = buffer.getPosition().get();
 	//const auto colors = buffer.getColor().get();
-	const auto sizes = buffer.getSize().get();
+	//const auto sizes = buffer.getSize().get();
 
-	if (positions.empty()) {
+	if (count == 0) {
 		return;
 	}
 
@@ -137,7 +139,7 @@ void PointRenderer::render(const Camera& camera)
 
 	//glDrawArrays()
 	glBindVertexArray(vao);
-	shader->drawPoints(positions.size() / 3);
+	shader->drawPoints(count);
 	glBindVertexArray(0);
 
 	//shader->disableVertexAttribute("pointSize");
