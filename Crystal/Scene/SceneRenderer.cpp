@@ -22,7 +22,6 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	lineBuffer.build();
 	smoothBuffer.build();
 
 	texture = factory.getTextureFactory()->createTextureObject(Image(512, 512));
@@ -53,8 +52,7 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	}
 	if (mask.showLines) {
 		for (const auto& b : lineBuffers) {
-			lineBuffer.send(b);
-			wireRenderer.setBuffer(lineBuffer);
+			wireRenderer.setBuffer(b);
 			wireRenderer.render(*camera);
 		}
 	}

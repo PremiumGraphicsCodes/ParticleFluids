@@ -63,7 +63,10 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 		buffer.addIndex(e.originId);
 		buffer.addIndex(e.destId);
 	}
-	viewModel.lineBuffers.push_back(buffer);
+	LineRenderer::LineRenderer::GLBuffer glBuffer;
+	glBuffer.build();
+	glBuffer.send(buffer);
+	viewModel.lineBuffers.push_back(glBuffer);
 }
 
 void WireFrameScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const

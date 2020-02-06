@@ -18,12 +18,15 @@ public:
 		for (auto& pb : pointBuffers) {
 			pb.release();
 		}
+		for (auto& lb : lineBuffers) {
+			lb.release();
+		}
 		pointBuffers.clear();
 	}
 
 	std::list<PointRenderer::GLBuffer> getPointBuffers() const { return pointBuffers; }
 
-	std::list<LineBuffer> getLineBuffers() const { return lineBuffers; }
+	std::list<LineRenderer::GLBuffer> getLineBuffers() const { return lineBuffers; }
 
 	std::list<SmoothTriangleBuffer> getTriangleBuffers() const { return triangleBuffers; }
 
@@ -35,7 +38,7 @@ public:
 
 public:
 	std::list<PointRenderer::GLBuffer> pointBuffers;
-	std::list<LineBuffer> lineBuffers;
+	std::list<LineRenderer::GLBuffer> lineBuffers;
 	std::list<SmoothTriangleBuffer> triangleBuffers;
 	std::vector<Graphics::PointLight> lights;
 	std::vector<Graphics::Material> materials;

@@ -18,6 +18,14 @@ void LineRenderer::GLBuffer::build()
 	vao.build();
 }
 
+void LineRenderer::GLBuffer::release()
+{
+	vbo.position.release();
+	vbo.color.release();
+	
+	vao.release();
+}
+
 void LineRenderer::GLBuffer::send(const LineBuffer& buffer)
 {
 	const auto positions = buffer.getPositions().get();
