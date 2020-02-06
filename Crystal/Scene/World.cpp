@@ -108,6 +108,7 @@ void World::addScene(int layer, IScene* scene)
 
 void World::updateViewModel()
 {
+	this->viewModel.object.clear();
 	ViewModel vm;
 	for (auto& s : scenes) {
 		s->toViewModel(vm.object);

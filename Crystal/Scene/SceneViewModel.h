@@ -14,6 +14,13 @@ namespace Crystal {
 class SceneViewModel
 {
 public:
+	void clear() {
+		for (auto& pb : pointBuffers) {
+			pb.release();
+		}
+		pointBuffers.clear();
+	}
+
 	std::list<PointRenderer::GLBuffer> getPointBuffers() const { return pointBuffers; }
 
 	std::list<LineBuffer> getLineBuffers() const { return lineBuffers; }

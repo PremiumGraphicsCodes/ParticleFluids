@@ -66,6 +66,8 @@ public:
 
 		void build();
 
+		void release();
+
 		void send(const PointBuffer& buffer);
 	};
 

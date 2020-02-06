@@ -22,6 +22,16 @@ void PointRenderer::GLBuffer::build()
 	vao.build();
 }
 
+void PointRenderer::GLBuffer::release()
+{
+	vbo.position.release();
+	vbo.size.release();
+	vbo.color.release();
+
+	vao.release();
+}
+
+
 void PointRenderer::GLBuffer::send(const PointBuffer& buffer)
 {
 	const auto& positions = buffer.getPosition().get();
