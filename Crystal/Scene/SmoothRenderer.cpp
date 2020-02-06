@@ -66,6 +66,9 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	glBuffer.normal.build();
 	glBuffer.texCoord.build();
 	glBuffer.materialId.build();
+	glBuffer.ambientTexId.build();
+	glBuffer.diffuseTexId.build();
+	glBuffer.specularTexId.build();
 
 	return build_(factory);
 }
@@ -79,6 +82,9 @@ void SmoothRenderer::send(const SmoothTriangleBuffer& buffer, const std::vector<
 	glBuffer.normal.send(buffer.getNormals().get());
 	glBuffer.texCoord.send(buffer.getTexCoords().get());
 	glBuffer.materialId.send(buffer.getMaterialIds().get());
+	glBuffer.ambientTexId.send(buffer.getAmbientTexIds().get());
+	glBuffer.diffuseTexId.send(buffer.getDiffuseTexIds().get());
+	glBuffer.specularTexId.send(buffer.getSpecularTexIds().get());
 }
 
 void SmoothRenderer::render(const Camera& camera)
@@ -86,10 +92,6 @@ void SmoothRenderer::render(const Camera& camera)
 	auto shader = getShader();
 
 	const auto& positions = buffer.getPositions().get();// buffers[0].get();
-	const auto& ambientTexIds = buffer.getAmbientTexIds().get();
-	const auto& diffseTexIds = buffer.getDiffuseTexIds().get();
-	const auto& specularTexIds = buffer.getSpecularTexIds().get();
-	const auto& materialIds = buffer.getMaterialIds().get();
 	if (positions.empty()) {
 		return;
 	}
@@ -112,9 +114,9 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->sendVertexAttribute3df("normal", glBuffer.normal);
 	shader->sendVertexAttribute2df("texCoord", glBuffer.texCoord);
 	shader->sendVertexAttribute1di("materialId", glBuffer.materialId);
-	shader->sendVertexAttribute1di("ambientTexId", ambientTexIds);
-	shader->sendVertexAttribute1di("diffuseTexId", diffseTexIds);
-	shader->sendVertexAttribute1di("specularTexId", specularTexIds);
+	shader->sendVertexAttribute1di("ambientTexId", glBuffer.ambientTexId);
+	shader->sendVertexAttribute1di("diffuseTexId", glBuffer.diffuseTexId);
+	shader->sendVertexAttribute1di("specularTexId", glBuffer.specularTexId);
 
 
 	shader->enableVertexAttribute("position");

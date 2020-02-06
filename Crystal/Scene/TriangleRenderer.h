@@ -1,6 +1,8 @@
 #include "IRenderer.h"
 #include "LineRenderer.h"
 
+#include "../Shader/VertexBufferObject.h"
+
 namespace Crystal {
 	namespace Scene {
 
@@ -21,6 +23,16 @@ private:
 	std::string getBuiltInFragmentShaderSource() const;
 
 	LineBuffer buffer;
+
+	struct GLBuffer
+	{
+		struct VBO {
+			Shader::VertexBufferObject position;
+			Shader::VertexBufferObject color;
+		};
+		VBO vbo;
+	};
+	GLBuffer glBuffer;
 };
 
 	}

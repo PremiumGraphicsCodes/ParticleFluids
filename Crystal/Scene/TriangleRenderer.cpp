@@ -2,9 +2,15 @@
 
 #include <sstream>
 
+#include "../Shader/VertexBufferObject.h"
+
+
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::Shader;
+
+namespace {
+}
 
 TriangleRenderer::TriangleRenderer()
 {
@@ -20,12 +26,21 @@ bool TriangleRenderer::build(GLObjectFactory& factory)
 
 	addAttribute("position");
 	addAttribute("color");
+
+	glBuffer.vbo.position.build();
+	glBuffer.vbo.color.build();
+
 	return build_(factory);
 }
 
 void TriangleRenderer::send(const LineBuffer& buffer)
 {
 	this->buffer = buffer;
+
+	auto shader = getShader();
+
+	glBuffer.vbo.position.send(buffer.getPositions().get());
+	glBuffer.vbo.color.send(buffer.getColors().get());
 }
 
 void TriangleRenderer::render(const Camera& camera)
@@ -51,8 +66,8 @@ void TriangleRenderer::render(const Camera& camera)
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
-	shader->sendVertexAttribute3df("position", positions);
-	shader->sendVertexAttribute4df("color", colors);
+	shader->sendVertexAttribute3df("position", glBuffer.vbo.position);
+	shader->sendVertexAttribute4df("color", glBuffer.vbo.color);
 
 	shader->enableVertexAttribute("position");
 	shader->enableVertexAttribute("color");

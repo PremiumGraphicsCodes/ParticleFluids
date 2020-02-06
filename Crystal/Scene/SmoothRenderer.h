@@ -85,6 +85,9 @@ private:
 		Shader::VertexBufferObject normal;
 		Shader::VertexBufferObject texCoord;
 		Shader::VertexBufferObject materialId;
+		Shader::VertexBufferObject ambientTexId;
+		Shader::VertexBufferObject diffuseTexId;
+		Shader::VertexBufferObject specularTexId;
 	};
 	GLBuffer glBuffer;
 };
