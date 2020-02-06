@@ -5,6 +5,11 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+namespace {
+	constexpr const char* positionLabel = "position";
+	constexpr const char* colorLabel = "color";
+}
+
 LineRenderer::LineRenderer()
 {
 }
@@ -17,10 +22,10 @@ bool LineRenderer::build(GLObjectFactory& factory)
 	addUniform("projectionMatrix");
 	addUniform("modelviewMatrix");
 
-	addAttribute("position");
-	addAttribute("color");
+	addAttribute(positionLabel);
+	addAttribute(colorLabel);
 
-	glBuffer.vbo.vertex.build();
+	glBuffer.vbo.position.build();
 	glBuffer.vbo.color.build();
 
 	glBuffer.vao.build();
@@ -36,14 +41,14 @@ void LineRenderer::send(const LineBuffer& buffer)
 		return;
 	}
 
-	glBuffer.vbo.vertex.send(positions);
+	glBuffer.vbo.position.send(positions);
 	glBuffer.vbo.color.send(colors);
 
 	auto shader = getShader();
 
 	glBuffer.vao.bind();
-	shader->sendVertexAttribute3df("position", glBuffer.vbo.vertex);
-	shader->sendVertexAttribute4df("color", glBuffer.vbo.color);
+	shader->sendVertexAttribute3df(positionLabel, glBuffer.vbo.position);
+	shader->sendVertexAttribute4df(colorLabel, glBuffer.vbo.color);
 	glBuffer.vao.unbind();
 
 	this->indices = buffer.getIndices().get();

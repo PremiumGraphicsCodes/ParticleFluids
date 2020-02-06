@@ -77,7 +77,7 @@ private:
 	struct GLBuffer
 	{
 		struct {
-			Shader::VertexBufferObject vertex;
+			Shader::VertexBufferObject position;
 			Shader::VertexBufferObject color;
 		} vbo;
 		Shader::VertexArrayObject vao;
