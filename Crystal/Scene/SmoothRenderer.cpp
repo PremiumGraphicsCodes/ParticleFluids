@@ -26,6 +26,20 @@ SmoothRenderer::SmoothRenderer()
 {
 }
 
+void SmoothRenderer::GLBuffer::send(const SmoothTriangleBuffer& buffer)
+{
+	position.send(buffer.getPositions().get());
+	normal.send(buffer.getNormals().get());
+	texCoord.send(buffer.getTexCoords().get());
+	materialId.send(buffer.getMaterialIds().get());
+	ambientTexId.send(buffer.getAmbientTexIds().get());
+	diffuseTexId.send(buffer.getDiffuseTexIds().get());
+	specularTexId.send(buffer.getSpecularTexIds().get());
+
+	count = buffer.getPositions().get().size() / 3;
+	matrix = buffer.getMatrix();
+}
+
 bool SmoothRenderer::build(GLObjectFactory& factory)
 {
 	setVertexShaderSource(getBuildInVertexShaderSource());
@@ -71,20 +85,6 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	glBuffer.specularTexId.build();
 
 	return build_(factory);
-}
-
-void SmoothRenderer::send(const SmoothTriangleBuffer& buffer)
-{
-	glBuffer.position.send(buffer.getPositions().get());
-	glBuffer.normal.send(buffer.getNormals().get());
-	glBuffer.texCoord.send(buffer.getTexCoords().get());
-	glBuffer.materialId.send(buffer.getMaterialIds().get());
-	glBuffer.ambientTexId.send(buffer.getAmbientTexIds().get());
-	glBuffer.diffuseTexId.send(buffer.getDiffuseTexIds().get());
-	glBuffer.specularTexId.send(buffer.getSpecularTexIds().get());
-
-	glBuffer.count = buffer.getPositions().get().size() / 3;
-	glBuffer.matrix = buffer.getMatrix();
 }
 
 void SmoothRenderer::setTextures(const std::vector<TextureObject>& textures)

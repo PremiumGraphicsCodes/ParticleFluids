@@ -58,11 +58,25 @@ private:
 class SmoothRenderer : public IRenderer
 {
 public:
+	struct GLBuffer {
+		Shader::VertexBufferObject position;
+		Shader::VertexBufferObject normal;
+		Shader::VertexBufferObject texCoord;
+		Shader::VertexBufferObject materialId;
+		Shader::VertexBufferObject ambientTexId;
+		Shader::VertexBufferObject diffuseTexId;
+		Shader::VertexBufferObject specularTexId;
+		int count = 0;
+		Math::Matrix4df matrix;
+
+		void send(const SmoothTriangleBuffer& buffer);
+	};
+
 	SmoothRenderer();
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void send(const SmoothTriangleBuffer& buffer);
+	void send(const SmoothTriangleBuffer& buffer) { glBuffer.send(buffer); }
 
 	void render(const Graphics::Camera& camera) override;
 
@@ -81,17 +95,6 @@ private:
 	std::vector<Graphics::Material> materials;
 	std::vector<Shader::TextureObject> textures;
 
-	struct GLBuffer {
-		Shader::VertexBufferObject position;
-		Shader::VertexBufferObject normal;
-		Shader::VertexBufferObject texCoord;
-		Shader::VertexBufferObject materialId;
-		Shader::VertexBufferObject ambientTexId;
-		Shader::VertexBufferObject diffuseTexId;
-		Shader::VertexBufferObject specularTexId;
-		int count = 0;
-		Math::Matrix4df matrix;
-	};
 	GLBuffer glBuffer;
 };
 
