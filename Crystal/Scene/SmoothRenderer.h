@@ -80,9 +80,13 @@ private:
 	std::vector<Graphics::Material> materials;
 	std::vector<Shader::TextureObject> textures;
 
-	Shader::VertexBufferObject positionVBO;
-	Shader::VertexBufferObject normalVBO;
-	Shader::VertexBufferObject texCoordVBO;
+	struct GLBuffer {
+		Shader::VertexBufferObject position;
+		Shader::VertexBufferObject normal;
+		Shader::VertexBufferObject texCoord;
+		Shader::VertexBufferObject materialId;
+	};
+	GLBuffer glBuffer;
 };
 
 	}

@@ -94,6 +94,8 @@ public:
 
 	void sendVertexAttribute1di(const std::string& name, const std::vector<int>& data);
 
+	void sendVertexAttribute1di(const std::string& name, const VertexBufferObject& vbo);
+
 	void sendVertexAttribute1df(const std::string& name, const VertexBufferObject& vbo);
 
 	void sendVertexAttribute2df(const std::string& name, const VertexBufferObject& vbo);

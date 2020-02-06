@@ -27,6 +27,14 @@ void VertexBufferObject::release()
 	}
 }
 
+void VertexBufferObject::send(const std::vector<int>& values)
+{
+	assert(handle != 0);
+	glBindBuffer(GL_ARRAY_BUFFER, handle);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(values[0]) * values.size(), values.data(), GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
 void VertexBufferObject::send(const std::vector<float>& values)
 {
 	assert(handle != 0);

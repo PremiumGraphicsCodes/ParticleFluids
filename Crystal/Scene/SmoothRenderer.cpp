@@ -62,9 +62,10 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	addAttribute("specularTexId");
 	addAttribute("texCoord");
 
-	positionVBO.build();
-	normalVBO.build();
-	texCoordVBO.build();
+	glBuffer.position.build();
+	glBuffer.normal.build();
+	glBuffer.texCoord.build();
+	glBuffer.materialId.build();
 
 	return build_(factory);
 }
@@ -74,9 +75,10 @@ void SmoothRenderer::send(const SmoothTriangleBuffer& buffer, const std::vector<
 	this->buffer = buffer;
 	this->textures = textures;
 
-	positionVBO.send(buffer.getPositions().get());
-	normalVBO.send(buffer.getNormals().get());
-	texCoordVBO.send(buffer.getTexCoords().get());
+	glBuffer.position.send(buffer.getPositions().get());
+	glBuffer.normal.send(buffer.getNormals().get());
+	glBuffer.texCoord.send(buffer.getTexCoords().get());
+	glBuffer.materialId.send(buffer.getMaterialIds().get());
 }
 
 void SmoothRenderer::render(const Camera& camera)
@@ -84,8 +86,6 @@ void SmoothRenderer::render(const Camera& camera)
 	auto shader = getShader();
 
 	const auto& positions = buffer.getPositions().get();// buffers[0].get();
-	const auto& normals = buffer.getNormals().get();//buffers[1].get();
-	const auto& texCoords = buffer.getTexCoords().get();
 	const auto& ambientTexIds = buffer.getAmbientTexIds().get();
 	const auto& diffseTexIds = buffer.getDiffuseTexIds().get();
 	const auto& specularTexIds = buffer.getSpecularTexIds().get();
@@ -108,10 +108,10 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->sendUniform("eyePosition", eyePos);
 
 
-	shader->sendVertexAttribute3df("position", positionVBO);
-	shader->sendVertexAttribute3df("normal", normalVBO);
-	shader->sendVertexAttribute2df("texCoord", texCoordVBO);
-	shader->sendVertexAttribute1di("materialId", materialIds);
+	shader->sendVertexAttribute3df("position", glBuffer.position);
+	shader->sendVertexAttribute3df("normal", glBuffer.normal);
+	shader->sendVertexAttribute2df("texCoord", glBuffer.texCoord);
+	shader->sendVertexAttribute1di("materialId", glBuffer.materialId);
 	shader->sendVertexAttribute1di("ambientTexId", ambientTexIds);
 	shader->sendVertexAttribute1di("diffuseTexId", diffseTexIds);
 	shader->sendVertexAttribute1di("specularTexId", specularTexIds);

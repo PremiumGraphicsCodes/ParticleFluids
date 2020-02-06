@@ -17,6 +17,8 @@ public:
 
 	void release();
 
+	void send(const std::vector<int>& values);
+
 	void send(const std::vector<float>& values);
 
 	GLuint getHandle() const { return handle; }
