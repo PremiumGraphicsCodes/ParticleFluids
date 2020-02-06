@@ -61,19 +61,6 @@ private:
 class LineRenderer : public IRenderer
 {
 public:
-	LineRenderer();
-
-	bool build(Shader::GLObjectFactory& factory) override;
-
-	void send(const LineBuffer& buffer);
-
-	void render(const Graphics::Camera& camera) override;
-
-private:
-	std::string getBuiltInVsSource() const;
-
-	std::string getBuiltInFsSource() const;
-
 	struct GLBuffer
 	{
 		struct {
@@ -85,7 +72,24 @@ private:
 		std::vector<unsigned int> indices;
 		Math::Matrix4df matrix;
 		float lineWidth;
+
+		void build();
+
+		void send(const LineBuffer& buffer);
 	};
+
+	LineRenderer();
+
+	bool build(Shader::GLObjectFactory& factory) override;
+
+	void setBuffer(const GLBuffer& buffer) { this->glBuffer = buffer; }
+
+	void render(const Graphics::Camera& camera) override;
+
+private:
+	std::string getBuiltInVsSource() const;
+
+	std::string getBuiltInFsSource() const;
 
 	GLBuffer glBuffer;
 };

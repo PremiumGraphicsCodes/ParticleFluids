@@ -10,6 +10,30 @@ namespace {
 	constexpr const char* colorLabel = "color";
 }
 
+void LineRenderer::GLBuffer::build()
+{
+	vbo.position.build();
+	vbo.color.build();
+
+	vao.build();
+}
+
+void LineRenderer::GLBuffer::send(const LineBuffer& buffer)
+{
+	const auto positions = buffer.getPositions().get();
+	const auto colors = buffer.getColors().get();
+	if (positions.empty()) {
+		return;
+	}
+
+	vbo.position.send(positions);
+	vbo.color.send(colors);
+
+	indices = buffer.getIndices().get();
+	matrix = buffer.getMatrix();
+	lineWidth = buffer.getWidth();
+}
+
 LineRenderer::LineRenderer()
 {
 }
@@ -25,35 +49,7 @@ bool LineRenderer::build(GLObjectFactory& factory)
 	addAttribute(positionLabel);
 	addAttribute(colorLabel);
 
-	glBuffer.vbo.position.build();
-	glBuffer.vbo.color.build();
-
-	glBuffer.vao.build();
-
 	return build_(factory);
-}
-
-void LineRenderer::send(const LineBuffer& buffer)
-{
-	const auto positions = buffer.getPositions().get();
-	const auto colors = buffer.getColors().get();
-	if (positions.empty()) {
-		return;
-	}
-
-	glBuffer.vbo.position.send(positions);
-	glBuffer.vbo.color.send(colors);
-
-	auto shader = getShader();
-
-	glBuffer.vao.bind();
-	shader->sendVertexAttribute3df(positionLabel, glBuffer.vbo.position);
-	shader->sendVertexAttribute4df(colorLabel, glBuffer.vbo.color);
-	glBuffer.vao.unbind();
-
-	glBuffer.indices = buffer.getIndices().get();
-	glBuffer.matrix = buffer.getMatrix();
-	glBuffer.lineWidth = buffer.getWidth();
 }
 
 void LineRenderer::render(const Camera& camera)
@@ -70,6 +66,11 @@ void LineRenderer::render(const Camera& camera)
 
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
+
+	glBuffer.vao.bind();
+	shader->sendVertexAttribute3df(positionLabel, glBuffer.vbo.position);
+	shader->sendVertexAttribute4df(colorLabel, glBuffer.vbo.color);
+	glBuffer.vao.unbind();
 
 	glBuffer.vao.bind();
 	shader->drawLines(glBuffer.indices);

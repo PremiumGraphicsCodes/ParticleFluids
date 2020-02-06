@@ -42,6 +42,7 @@ public:
 
 private:
 	Scene::PointRenderer::GLBuffer pointBuffer;
+	Scene::LineRenderer::GLBuffer lineBuffer;
 
 	Scene::PointRenderer pointIdRenderer;
 	Scene::LineRenderer lineIdRenderer;

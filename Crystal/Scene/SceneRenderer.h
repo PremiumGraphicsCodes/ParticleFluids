@@ -59,6 +59,7 @@ private:
 	Scene::SmoothRenderer smoothRenderer;
 
 	Scene::PointRenderer::GLBuffer pointBuffer;
+	Scene::LineRenderer::GLBuffer lineBuffer;
 
 	Mask mask;
 
