@@ -62,8 +62,9 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	if (mask.showTrianlges) {
 		smoothRenderer.setMaterials(materials);
 		smoothRenderer.setLights(lights);
+		smoothRenderer.setTextures(vm.getTextures());
 		for (const auto& b : smoothBuffers) {
-			smoothRenderer.send(b, vm.getTextures());
+			smoothRenderer.send(b);
 			smoothRenderer.render(*camera);
 		}
 	}

@@ -62,13 +62,15 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void send(const SmoothTriangleBuffer& buffer, const std::vector<Shader::TextureObject>& textures);
+	void send(const SmoothTriangleBuffer& buffer);
 
 	void render(const Graphics::Camera& camera) override;
 
 	void setLights(const std::vector<Graphics::PointLight>& lights) { this->lights = lights; }
 
 	void setMaterials(const std::vector<Graphics::Material>& materials) { this->materials = materials; }
+
+	void setTextures(const std::vector<Shader::TextureObject>& textures);
 
 private:
 	std::string getBuildInVertexShaderSource() const;

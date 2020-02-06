@@ -73,10 +73,8 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
-void SmoothRenderer::send(const SmoothTriangleBuffer& buffer, const std::vector<TextureObject>& textures)
+void SmoothRenderer::send(const SmoothTriangleBuffer& buffer)
 {
-	this->textures = textures;
-
 	glBuffer.position.send(buffer.getPositions().get());
 	glBuffer.normal.send(buffer.getNormals().get());
 	glBuffer.texCoord.send(buffer.getTexCoords().get());
@@ -88,6 +86,12 @@ void SmoothRenderer::send(const SmoothTriangleBuffer& buffer, const std::vector<
 	glBuffer.count = buffer.getPositions().get().size() / 3;
 	glBuffer.matrix = buffer.getMatrix();
 }
+
+void SmoothRenderer::setTextures(const std::vector<TextureObject>& textures)
+{
+	this->textures = textures;
+}
+
 
 void SmoothRenderer::render(const Camera& camera)
 {
