@@ -35,25 +35,17 @@ bool TriangleRenderer::build(GLObjectFactory& factory)
 
 void TriangleRenderer::send(const LineBuffer& buffer)
 {
-	this->buffer = buffer;
-
 	auto shader = getShader();
 
 	glBuffer.vbo.position.send(buffer.getPositions().get());
 	glBuffer.vbo.color.send(buffer.getColors().get());
+
+	glBuffer.indices = buffer.getIndices().get();
 }
 
 void TriangleRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
-
-	const auto& indices = buffer.getIndices().get();
-	const auto& positions = buffer.getPositions().get();
-	const auto& colors = buffer.getColors().get();
-
-	if (positions.empty()) {
-		return;
-	}
 
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto& modelviewMatrix = camera.getModelViewMatrix();
@@ -72,7 +64,7 @@ void TriangleRenderer::render(const Camera& camera)
 	shader->enableVertexAttribute("position");
 	shader->enableVertexAttribute("color");
 
-	shader->drawTriangles(indices);
+	shader->drawTriangles(glBuffer.indices);
 
 	shader->disableVertexAttribute("color");
 	shader->disableVertexAttribute("position");

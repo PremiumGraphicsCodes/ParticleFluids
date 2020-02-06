@@ -75,7 +75,6 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	SmoothTriangleBuffer buffer;
 	std::vector<Graphics::PointLight> lights;
 	std::vector<Graphics::Material> materials;
 	std::vector<Shader::TextureObject> textures;
@@ -88,6 +87,8 @@ private:
 		Shader::VertexBufferObject ambientTexId;
 		Shader::VertexBufferObject diffuseTexId;
 		Shader::VertexBufferObject specularTexId;
+		int count = 0;
+		Math::Matrix4df matrix;
 	};
 	GLBuffer glBuffer;
 };

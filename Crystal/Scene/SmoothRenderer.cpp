@@ -75,7 +75,6 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 
 void SmoothRenderer::send(const SmoothTriangleBuffer& buffer, const std::vector<TextureObject>& textures)
 {
-	this->buffer = buffer;
 	this->textures = textures;
 
 	glBuffer.position.send(buffer.getPositions().get());
@@ -85,19 +84,17 @@ void SmoothRenderer::send(const SmoothTriangleBuffer& buffer, const std::vector<
 	glBuffer.ambientTexId.send(buffer.getAmbientTexIds().get());
 	glBuffer.diffuseTexId.send(buffer.getDiffuseTexIds().get());
 	glBuffer.specularTexId.send(buffer.getSpecularTexIds().get());
+
+	glBuffer.count = buffer.getPositions().get().size() / 3;
+	glBuffer.matrix = buffer.getMatrix();
 }
 
 void SmoothRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
 
-	const auto& positions = buffer.getPositions().get();// buffers[0].get();
-	if (positions.empty()) {
-		return;
-	}
-
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix() * Math::Matrix4df( buffer.getMatrix() );
+	const auto& modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
 	const auto& eyePos = camera.getEye();
 
 	shader->bind();
@@ -157,8 +154,7 @@ void SmoothRenderer::render(const Camera& camera)
 	}
 
 
-	const int count = positions.size() / 3;
-	shader->drawTriangles(count);
+	shader->drawTriangles(glBuffer.count);
 
 	//textures[0].unbind();
 

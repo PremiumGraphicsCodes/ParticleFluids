@@ -22,8 +22,6 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	LineBuffer buffer;
-
 	struct GLBuffer
 	{
 		struct VBO {
@@ -31,6 +29,7 @@ private:
 			Shader::VertexBufferObject color;
 		};
 		VBO vbo;
+		std::vector<unsigned int> indices;
 	};
 	GLBuffer glBuffer;
 };
