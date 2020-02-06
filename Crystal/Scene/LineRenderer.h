@@ -74,9 +74,17 @@ private:
 
 	std::string getBuiltInFsSource() const;
 
-	Shader::VertexBufferObject vertex_vbo;
-	Shader::VertexBufferObject color_vbo;
-	Shader::VertexArrayObject vao;
+	struct GLBuffer
+	{
+		struct {
+			Shader::VertexBufferObject vertex;
+			Shader::VertexBufferObject color;
+		} vbo;
+		Shader::VertexArrayObject vao;
+	};
+
+	GLBuffer glBuffer;
+
 	std::vector<unsigned int> indices;
 	Math::Matrix4df matrix;
 	float lineWidth;

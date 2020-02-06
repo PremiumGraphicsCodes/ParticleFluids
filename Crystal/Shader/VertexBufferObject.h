@@ -15,7 +15,7 @@ public:
 
 	void build();
 
-	void clear();
+	void release();
 
 	void send(const std::vector<float>& values);
 

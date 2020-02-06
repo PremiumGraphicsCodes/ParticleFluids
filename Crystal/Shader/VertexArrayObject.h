@@ -8,7 +8,13 @@ namespace Crystal {
 class VertexArrayObject
 {
 public:
+	VertexArrayObject();
+
+	~VertexArrayObject();
+
 	void build();
+
+	void release();
 
 	void bind();
 

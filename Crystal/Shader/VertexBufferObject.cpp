@@ -11,7 +11,7 @@ VertexBufferObject::VertexBufferObject() :
 
 VertexBufferObject::~VertexBufferObject()
 {
-	clear();
+	release();
 }
 
 void VertexBufferObject::build()
@@ -20,7 +20,7 @@ void VertexBufferObject::build()
 	glGenBuffers(1, &handle);
 }
 
-void VertexBufferObject::clear()
+void VertexBufferObject::release()
 {
 	if (handle != 0) {
 		glDeleteBuffers(1, &handle);

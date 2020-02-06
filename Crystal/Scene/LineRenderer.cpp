@@ -20,10 +20,10 @@ bool LineRenderer::build(GLObjectFactory& factory)
 	addAttribute("position");
 	addAttribute("color");
 
-	vertex_vbo.build();
-	color_vbo.build();
+	glBuffer.vbo.vertex.build();
+	glBuffer.vbo.color.build();
 
-	vao.build();
+	glBuffer.vao.build();
 
 	return build_(factory);
 }
@@ -36,15 +36,15 @@ void LineRenderer::send(const LineBuffer& buffer)
 		return;
 	}
 
-	vertex_vbo.send(positions);
-	color_vbo.send(colors);
+	glBuffer.vbo.vertex.send(positions);
+	glBuffer.vbo.color.send(colors);
 
 	auto shader = getShader();
 
-	vao.bind();
-	shader->sendVertexAttribute3df("position", vertex_vbo);
-	shader->sendVertexAttribute4df("color", color_vbo);
-	vao.unbind();
+	glBuffer.vao.bind();
+	shader->sendVertexAttribute3df("position", glBuffer.vbo.vertex);
+	shader->sendVertexAttribute4df("color", glBuffer.vbo.color);
+	glBuffer.vao.unbind();
 
 	this->indices = buffer.getIndices().get();
 	this->matrix = buffer.getMatrix();
@@ -66,9 +66,9 @@ void LineRenderer::render(const Camera& camera)
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
-	vao.bind();
+	glBuffer.vao.bind();
 	shader->drawLines(indices);
-	vao.unbind();
+	glBuffer.vao.unbind();
 
 	//shader->disableVertexAttribute("color");
 	//shader->disableVertexAttribute("position");
