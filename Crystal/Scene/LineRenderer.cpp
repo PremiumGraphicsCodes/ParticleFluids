@@ -51,9 +51,9 @@ void LineRenderer::send(const LineBuffer& buffer)
 	shader->sendVertexAttribute4df(colorLabel, glBuffer.vbo.color);
 	glBuffer.vao.unbind();
 
-	this->indices = buffer.getIndices().get();
-	this->matrix = buffer.getMatrix();
-	this->lineWidth = buffer.getWidth();
+	glBuffer.indices = buffer.getIndices().get();
+	glBuffer.matrix = buffer.getMatrix();
+	glBuffer.lineWidth = buffer.getWidth();
 }
 
 void LineRenderer::render(const Camera& camera)
@@ -61,18 +61,18 @@ void LineRenderer::render(const Camera& camera)
 	auto shader = getShader();
 
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix() * matrix;
+	const auto& modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
 
 	shader->bind();
 
-	shader->setLineWidth(lineWidth);
+	shader->setLineWidth(glBuffer.lineWidth);
 	shader->enableDepthTest();
 
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
 	glBuffer.vao.bind();
-	shader->drawLines(indices);
+	shader->drawLines(glBuffer.indices);
 	glBuffer.vao.unbind();
 
 	//shader->disableVertexAttribute("color");

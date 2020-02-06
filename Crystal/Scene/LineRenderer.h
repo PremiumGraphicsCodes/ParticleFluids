@@ -81,13 +81,13 @@ private:
 			Shader::VertexBufferObject color;
 		} vbo;
 		Shader::VertexArrayObject vao;
+
+		std::vector<unsigned int> indices;
+		Math::Matrix4df matrix;
+		float lineWidth;
 	};
 
 	GLBuffer glBuffer;
-
-	std::vector<unsigned int> indices;
-	Math::Matrix4df matrix;
-	float lineWidth;
 };
 
 	}
