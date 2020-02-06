@@ -64,10 +64,20 @@ private:
 	std::string getBuiltInFragmentShaderSource() const;
 
 	GLuint count;
-	Shader::VertexBufferObject vertex_vbo;
-	Shader::VertexBufferObject size_vbo;
-	Shader::VertexBufferObject color_vbo;
-	Shader::VertexArrayObject vao;
+
+	struct GLBuffer
+	{
+		struct VBO
+		{
+			Shader::VertexBufferObject vertex;
+			Shader::VertexBufferObject size;
+			Shader::VertexBufferObject color;
+		};
+		Shader::VertexArrayObject vao;
+		VBO vbo;
+	};
+
+	GLBuffer glBuffer;
 	Math::Matrix4df matrix;
 };
 
