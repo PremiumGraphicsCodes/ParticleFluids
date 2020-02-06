@@ -22,6 +22,8 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 		return false;
 	}
 
+	pointBuffer.build();
+
 	texture = factory.getTextureFactory()->createTextureObject(Image(512, 512));
 	//texture.create(, 1);
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
@@ -44,7 +46,8 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {
 		for (const auto& b : pointBuffers) {
-			pointRenderer.send(b);
+			pointBuffer.send(b);
+			pointRenderer.setBuffer(pointBuffer);
 			pointRenderer.render(*camera);
 		}
 	}

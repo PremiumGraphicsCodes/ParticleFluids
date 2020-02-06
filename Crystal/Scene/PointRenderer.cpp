@@ -13,6 +13,34 @@ namespace {
 	constexpr char* sizeLabel = "pointSize";
 }
 
+void PointRenderer::GLBuffer::build()
+{
+	vbo.position.build();
+	vbo.size.build();
+	vbo.color.build();
+
+	vao.build();
+}
+
+void PointRenderer::GLBuffer::send(const PointBuffer& buffer)
+{
+	const auto& positions = buffer.getPosition().get();
+	const auto& colors = buffer.getColor().get();
+	const auto& sizes = buffer.getSize().get();
+
+	if (positions.empty()) {
+		return;
+	}
+
+	vbo.position.send(positions);
+	vbo.size.send(sizes);
+	vbo.color.send(colors);
+
+	count = positions.size() / 3;
+	matrix = buffer.getMatrix();
+}
+
+
 PointRenderer::PointRenderer()
 {
 }
@@ -29,41 +57,10 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	addAttribute(::colorLabel);
 	addAttribute(::sizeLabel);
 
-	glBuffer.vbo.position.build();
-	glBuffer.vbo.size.build();
-	glBuffer.vbo.color.build();
-	
-	glBuffer.vao.build();
 
 	return build_(factory);
 }
 
-void PointRenderer::send(const PointBuffer& buffer)
-{
-	auto shader = getShader();
-
-	const auto& positions = buffer.getPosition().get();
-	const auto& colors = buffer.getColor().get();
-	const auto& sizes = buffer.getSize().get();
-
-	if (positions.empty()) {
-		return;
-	}
-
-	glBuffer.vbo.position.send(positions);
-	glBuffer.vbo.size.send(sizes);
-	glBuffer.vbo.color.send(colors);
-
-
-	glBuffer.vao.bind();
-	shader->sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
-	shader->sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
-	shader->sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
-	glBuffer.vao.unbind();
-
-	glBuffer.count = positions.size() / 3;
-	glBuffer.matrix = buffer.getMatrix();
-}
 
 void PointRenderer::render(const Camera& camera)
 {
@@ -79,6 +76,12 @@ void PointRenderer::render(const Camera& camera)
 
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
+
+	glBuffer.vao.bind();
+	shader->sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
+	shader->sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
+	shader->sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
+	glBuffer.vao.unbind();
 
 	glBuffer.vao.bind();
 	shader->drawPoints(glBuffer.count);

@@ -21,6 +21,8 @@ bool SceneIdRenderer::build(GLObjectFactory& factory)
 		return false;
 	}
 
+	pointBuffer.build();
+
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 
 	texture = factory.getTextureFactory()->createTextureObject(Imagef(512, 512));
@@ -43,7 +45,8 @@ void SceneIdRenderer::render(Camera* camera, const SceneIdViewModel& vm)
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	for (const auto& b : pointBuffers) {
-		pointIdRenderer.send(b);
+		pointBuffer.send(b);
+		pointIdRenderer.setBuffer(pointBuffer);
 		pointIdRenderer.render(*camera);
 	}
 	for (const auto& b : lineBuffers) {

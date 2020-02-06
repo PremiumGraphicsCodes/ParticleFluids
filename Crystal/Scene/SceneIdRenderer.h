@@ -41,6 +41,8 @@ public:
 	//Shader::TextureObject* getTexture() { return texture; }
 
 private:
+	Scene::PointRenderer::GLBuffer pointBuffer;
+
 	Scene::PointRenderer pointIdRenderer;
 	Scene::LineRenderer lineIdRenderer;
 	Scene::TriangleRenderer triangleIdRenderer;

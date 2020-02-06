@@ -50,19 +50,6 @@ private:
 class PointRenderer : public IRenderer
 {
 public:
-	PointRenderer();
-
-	bool build(Shader::GLObjectFactory& factory) override;
-
-	void send(const PointBuffer& buffer);
-
-	void render(const Graphics::Camera& camera) override;
-
-private:
-	std::string getBuiltInVertexShaderSource() const;
-
-	std::string getBuiltInFragmentShaderSource() const;
-
 	struct GLBuffer
 	{
 		struct VBO
@@ -71,11 +58,29 @@ private:
 			Shader::VertexBufferObject size;
 			Shader::VertexBufferObject color;
 		};
+
 		Shader::VertexArrayObject vao;
 		VBO vbo;
 		GLuint count;
 		Math::Matrix4df matrix;
+
+		void build();
+
+		void send(const PointBuffer& buffer);
 	};
+
+	PointRenderer();
+
+	bool build(Shader::GLObjectFactory& factory) override;
+
+	void setBuffer(const GLBuffer& buffer) { this->glBuffer = buffer; }
+
+	void render(const Graphics::Camera& camera) override;
+
+private:
+	std::string getBuiltInVertexShaderSource() const;
+
+	std::string getBuiltInFragmentShaderSource() const;
 
 	GLBuffer glBuffer;
 };
