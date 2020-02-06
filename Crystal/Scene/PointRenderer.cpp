@@ -13,8 +13,7 @@ namespace {
 	constexpr char* sizeLabel = "pointSize";
 }
 
-PointRenderer::PointRenderer() :
-	count(0)
+PointRenderer::PointRenderer()
 {
 }
 
@@ -62,8 +61,8 @@ void PointRenderer::send(const PointBuffer& buffer)
 	shader->sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
 	glBuffer.vao.unbind();
 
-	this->count = positions.size() / 3;
-	this->matrix = buffer.getMatrix();
+	glBuffer.count = positions.size() / 3;
+	glBuffer.matrix = buffer.getMatrix();
 }
 
 void PointRenderer::render(const Camera& camera)
@@ -71,7 +70,7 @@ void PointRenderer::render(const Camera& camera)
 	auto shader = getShader();
 
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto modelviewMatrix = camera.getModelViewMatrix() * matrix;
+	const auto modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
 
 	shader->bind();
 
@@ -82,7 +81,7 @@ void PointRenderer::render(const Camera& camera)
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 
 	glBuffer.vao.bind();
-	shader->drawPoints(count);
+	shader->drawPoints(glBuffer.count);
 	glBuffer.vao.unbind();
 
 	shader->bindOutput("fragColor");
