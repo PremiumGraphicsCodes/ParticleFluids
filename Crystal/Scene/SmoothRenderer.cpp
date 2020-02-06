@@ -26,6 +26,17 @@ SmoothRenderer::SmoothRenderer()
 {
 }
 
+void SmoothRenderer::GLBuffer::build()
+{
+	position.build();
+	normal.build();
+	texCoord.build();
+	materialId.build();
+	ambientTexId.build();
+	diffuseTexId.build();
+	specularTexId.build();
+}
+
 void SmoothRenderer::GLBuffer::send(const SmoothTriangleBuffer& buffer)
 {
 	position.send(buffer.getPositions().get());
@@ -76,13 +87,7 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	addAttribute("specularTexId");
 	addAttribute("texCoord");
 
-	glBuffer.position.build();
-	glBuffer.normal.build();
-	glBuffer.texCoord.build();
-	glBuffer.materialId.build();
-	glBuffer.ambientTexId.build();
-	glBuffer.diffuseTexId.build();
-	glBuffer.specularTexId.build();
+	glBuffer.build();
 
 	return build_(factory);
 }
@@ -109,7 +114,6 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->sendUniform("projectionMatrix", projectionMatrix);
 	shader->sendUniform("modelviewMatrix", modelviewMatrix);
 	shader->sendUniform("eyePosition", eyePos);
-
 
 	shader->sendVertexAttribute3df("position", glBuffer.position);
 	shader->sendVertexAttribute3df("normal", glBuffer.normal);

@@ -69,6 +69,8 @@ public:
 		int count = 0;
 		Math::Matrix4df matrix;
 
+		void build();
+
 		void send(const SmoothTriangleBuffer& buffer);
 	};
 

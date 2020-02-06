@@ -70,9 +70,7 @@ void LineRenderer::render(const Camera& camera)
 	glBuffer.vao.bind();
 	shader->sendVertexAttribute3df(positionLabel, glBuffer.vbo.position);
 	shader->sendVertexAttribute4df(colorLabel, glBuffer.vbo.color);
-	glBuffer.vao.unbind();
 
-	glBuffer.vao.bind();
 	shader->drawLines(glBuffer.indices);
 	glBuffer.vao.unbind();
 
