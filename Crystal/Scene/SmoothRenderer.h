@@ -11,6 +11,7 @@
 #include "../Math/Matrix4d.h"
 
 #include "../Shader/TextureObject.h"
+#include "../Shader/VertexBufferObject.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -78,6 +79,10 @@ private:
 	std::vector<Graphics::PointLight> lights;
 	std::vector<Graphics::Material> materials;
 	std::vector<Shader::TextureObject> textures;
+
+	Shader::VertexBufferObject positionVBO;
+	Shader::VertexBufferObject normalVBO;
+	Shader::VertexBufferObject texCoordVBO;
 };
 
 	}

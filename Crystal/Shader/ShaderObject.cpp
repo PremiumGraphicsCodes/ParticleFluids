@@ -395,6 +395,15 @@ void ShaderObject::sendVertexAttribute1df(const std::string& name, const VertexB
 	vbo.unbind();
 }
 
+void ShaderObject::sendVertexAttribute2df(const std::string& name, const VertexBufferObject& vbo)
+{
+	vbo.bind();
+	auto location = getAttribLocation(name);
+	glEnableVertexAttribArray(location);
+	glVertexAttribPointer(location, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
+	vbo.unbind();
+}
+
 void ShaderObject::sendVertexAttribute3df(const std::string& name, const VertexBufferObject& vbo)
 {
 	vbo.bind();

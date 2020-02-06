@@ -62,6 +62,10 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	addAttribute("specularTexId");
 	addAttribute("texCoord");
 
+	positionVBO.build();
+	normalVBO.build();
+	texCoordVBO.build();
+
 	return build_(factory);
 }
 
@@ -69,6 +73,10 @@ void SmoothRenderer::send(const SmoothTriangleBuffer& buffer, const std::vector<
 {
 	this->buffer = buffer;
 	this->textures = textures;
+
+	positionVBO.send(buffer.getPositions().get());
+	normalVBO.send(buffer.getNormals().get());
+	texCoordVBO.send(buffer.getTexCoords().get());
 }
 
 void SmoothRenderer::render(const Camera& camera)
@@ -100,13 +108,13 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->sendUniform("eyePosition", eyePos);
 
 
-	shader->sendVertexAttribute3df("position", positions);
-	shader->sendVertexAttribute3df("normal", normals);
+	shader->sendVertexAttribute3df("position", positionVBO);
+	shader->sendVertexAttribute3df("normal", normalVBO);
+	shader->sendVertexAttribute2df("texCoord", texCoordVBO);
 	shader->sendVertexAttribute1di("materialId", materialIds);
 	shader->sendVertexAttribute1di("ambientTexId", ambientTexIds);
 	shader->sendVertexAttribute1di("diffuseTexId", diffseTexIds);
 	shader->sendVertexAttribute1di("specularTexId", specularTexIds);
-	shader->sendVertexAttribute2df("texCoord", texCoords);
 
 
 	shader->enableVertexAttribute("position");

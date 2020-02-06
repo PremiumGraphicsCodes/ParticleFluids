@@ -9,7 +9,13 @@ namespace Crystal {
 class VertexBufferObject
 {
 public:
+	VertexBufferObject();
+
+	~VertexBufferObject();
+
 	void build();
+
+	void clear();
 
 	void send(const std::vector<float>& values);
 
