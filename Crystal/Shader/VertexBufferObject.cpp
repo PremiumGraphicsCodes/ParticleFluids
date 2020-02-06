@@ -11,7 +11,9 @@ VertexBufferObject::VertexBufferObject() :
 
 VertexBufferObject::~VertexBufferObject()
 {
+	/*
 	release();
+	*/
 }
 
 void VertexBufferObject::build()

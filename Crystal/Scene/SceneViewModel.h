@@ -14,7 +14,7 @@ namespace Crystal {
 class SceneViewModel
 {
 public:
-	std::list<PointBuffer> getPointBuffers() const { return pointBuffers; }
+	std::list<PointRenderer::GLBuffer> getPointBuffers() const { return pointBuffers; }
 
 	std::list<LineBuffer> getLineBuffers() const { return lineBuffers; }
 
@@ -27,7 +27,7 @@ public:
 	std::vector<Shader::TextureObject> getTextures() const { return textures; }
 
 public:
-	std::list<PointBuffer> pointBuffers;
+	std::list<PointRenderer::GLBuffer> pointBuffers;
 	std::list<LineBuffer> lineBuffers;
 	std::list<SmoothTriangleBuffer> triangleBuffers;
 	std::vector<Graphics::PointLight> lights;

@@ -10,7 +10,7 @@ VertexArrayObject::VertexArrayObject() :
 
 VertexArrayObject::~VertexArrayObject()
 {
-	release();
+	//release();
 }
 
 void VertexArrayObject::build()

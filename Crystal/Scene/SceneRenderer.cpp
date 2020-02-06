@@ -22,7 +22,6 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	pointBuffer.build();
 	lineBuffer.build();
 	smoothBuffer.build();
 
@@ -48,8 +47,7 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {
 		for (const auto& b : pointBuffers) {
-			pointBuffer.send(b);
-			pointRenderer.setBuffer(pointBuffer);
+			pointRenderer.setBuffer(b);
 			pointRenderer.render(*camera);
 		}
 	}

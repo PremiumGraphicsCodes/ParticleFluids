@@ -38,7 +38,10 @@ void ParticleSystemScene::toViewModel(SceneViewModel& viewModel) const
 	for (auto p : particles) {
 		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
-	viewModel.pointBuffers.push_back(pointBuffer);
+	PointRenderer::GLBuffer buffer;
+	buffer.build();
+	buffer.send(pointBuffer);
+	viewModel.pointBuffers.push_back(buffer);
 }
 
 void ParticleSystemScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const

@@ -58,7 +58,6 @@ private:
 	Scene::LineRenderer wireRenderer;
 	Scene::SmoothRenderer smoothRenderer;
 
-	Scene::PointRenderer::GLBuffer pointBuffer;
 	Scene::LineRenderer::GLBuffer lineBuffer;
 	Scene::SmoothRenderer::GLBuffer smoothBuffer;
 
