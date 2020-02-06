@@ -24,6 +24,7 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 
 	pointBuffer.build();
 	lineBuffer.build();
+	smoothBuffer.build();
 
 	texture = factory.getTextureFactory()->createTextureObject(Image(512, 512));
 	//texture.create(, 1);
@@ -64,7 +65,8 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 		smoothRenderer.setLights(lights);
 		smoothRenderer.setTextures(vm.getTextures());
 		for (const auto& b : smoothBuffers) {
-			smoothRenderer.send(b);
+			smoothBuffer.send(b);
+			smoothRenderer.setBuffer(smoothBuffer);
 			smoothRenderer.render(*camera);
 		}
 	}

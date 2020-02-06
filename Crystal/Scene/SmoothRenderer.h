@@ -78,7 +78,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void send(const SmoothTriangleBuffer& buffer) { glBuffer.send(buffer); }
+	void setBuffer(const GLBuffer& buffer) { glBuffer = buffer; }
 
 	void render(const Graphics::Camera& camera) override;
 

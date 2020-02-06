@@ -87,8 +87,6 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	addAttribute("specularTexId");
 	addAttribute("texCoord");
 
-	glBuffer.build();
-
 	return build_(factory);
 }
 
