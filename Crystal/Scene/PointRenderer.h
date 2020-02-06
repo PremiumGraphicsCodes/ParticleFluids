@@ -69,7 +69,7 @@ private:
 	{
 		struct VBO
 		{
-			Shader::VertexBufferObject vertex;
+			Shader::VertexBufferObject position;
 			Shader::VertexBufferObject size;
 			Shader::VertexBufferObject color;
 		};

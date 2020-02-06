@@ -7,6 +7,11 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+namespace {
+	constexpr char* positionLabel = "position";
+	constexpr char* colorLabel = "color";
+	constexpr char* sizeLabel = "pointSize";
+}
 
 PointRenderer::PointRenderer() :
 	count(0)
@@ -21,11 +26,11 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	addUniform("projectionMatrix");
 	addUniform("modelviewMatrix");
 
-	addAttribute("position");
-	addAttribute("color");
-	addAttribute("pointSize");
+	addAttribute(::positionLabel);
+	addAttribute(::colorLabel);
+	addAttribute(::sizeLabel);
 
-	glBuffer.vbo.vertex.build();
+	glBuffer.vbo.position.build();
 	glBuffer.vbo.size.build();
 	glBuffer.vbo.color.build();
 	
@@ -46,15 +51,15 @@ void PointRenderer::send(const PointBuffer& buffer)
 		return;
 	}
 
-	glBuffer.vbo.vertex.send(positions);
+	glBuffer.vbo.position.send(positions);
 	glBuffer.vbo.size.send(sizes);
 	glBuffer.vbo.color.send(colors);
 
 
 	glBuffer.vao.bind();
-	shader->sendVertexAttribute3df("position", glBuffer.vbo.vertex);
-	shader->sendVertexAttribute1df("pointSize", glBuffer.vbo.size);
-	shader->sendVertexAttribute4df("color", glBuffer.vbo.color);
+	shader->sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
+	shader->sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
+	shader->sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
 	glBuffer.vao.unbind();
 
 	this->count = positions.size() / 3;
