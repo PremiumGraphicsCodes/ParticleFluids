@@ -29,9 +29,9 @@ public:
 	Float4View specularView;
 	FloatView shininessView;
 
-	StringView ambientTextureView;
-	StringView diffuseTextureView;
-	StringView specularTextureView;
+	StringView ambientTextureNameView;
+	StringView diffuseTextureNameView;
+	StringView specularTextureNameView;
 };
 	}
 }

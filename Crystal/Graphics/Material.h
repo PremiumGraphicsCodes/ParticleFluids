@@ -16,8 +16,8 @@ public:
 		diffuse(0.0f, 0.0f, 0.0f, 0.0f),
 		specular(0.0f, 0.0f, 0.0f, 0.0f),
 		ambientTexName(""),
-		diffuseTexId(0),
-		specularTexId(0)
+		diffuseTexName(""),
+		specularTexName("")
 	{}
 
 	glm::vec4 ambient;
@@ -26,8 +26,8 @@ public:
 	float shininess;
 
 	std::string ambientTexName;
-	int diffuseTexId;
-	int specularTexId;
+	std::string diffuseTexName;
+	std::string specularTexName;
 };
 
 	}
