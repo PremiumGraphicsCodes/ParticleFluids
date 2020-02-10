@@ -15,13 +15,13 @@ void TextureObjectFactory::clear()
 TextureObject TextureObjectFactory::createTextureObject(const std::string& name, const Image& image)
 {
 	auto object = TextureObject();
-	object.create(image, nextId++);
+	object.create(name, image, nextId++);
 	return object;
 }
 
 TextureObject TextureObjectFactory::createTextureObject(const std::string& name, const Imagef& image)
 {
 	auto object = TextureObject();
-	object.create(image, nextId++);
+	object.create(name, image, nextId++);
 	return object;
 }

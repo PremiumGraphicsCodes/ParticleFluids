@@ -30,7 +30,7 @@ public:
 	TextureObject createTextureObject(const std::string& name, const Graphics::Imagef& image);
 
 private:
-	std::map<std::string, TextureObject> textures;
+	//std::map<std::string, TextureObject> textures;
 	int nextId;
 };
 	}

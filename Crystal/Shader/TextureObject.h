@@ -22,9 +22,9 @@ public:
 	{}
 	*/
 
-	void create(const Graphics::Image& image, const int id);
+	void create(const std::string& name, const Graphics::Image& image, const int id);
 
-	void create(const Graphics::Imagef& image, const int id);
+	void create(const std::string& name, const Graphics::Imagef& image, const int id);
 
 	void clear() override;
 

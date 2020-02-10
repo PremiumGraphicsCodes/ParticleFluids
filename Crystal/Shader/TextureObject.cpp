@@ -3,8 +3,9 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-void TextureObject::create(const Image& image, const int id)
+void TextureObject::create(const std::string& name, const Image& image, const int id)
 {
+	this->name = name;
 	this->id = id;
 	this->width = image.getWidth();
 	this->height = image.getHeight();
@@ -31,8 +32,10 @@ void TextureObject::unbind() const
 	glActiveTexture(GL_TEXTURE0);
 }
 
-void TextureObject::create(const Imagef& image, const int id)
+void TextureObject::create(const std::string& name, const Imagef& image, const int id)
 {
+	this->name = name;
+
 	this->id = id;
 	this->width = image.getWidth();
 	this->height = image.getHeight();
