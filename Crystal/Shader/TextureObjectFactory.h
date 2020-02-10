@@ -2,8 +2,10 @@
 
 #include "../Util/UnCopyable.h"
 
+#include <string>
 #include <list>
 #include <memory>
+#include <map>
 
 namespace Crystal {
 	namespace Graphics {
@@ -23,11 +25,12 @@ public:
 
 	void clear();
 
-	std::unique_ptr<TextureObject> createTextureObject(const Graphics::Image& image);
+	TextureObject createTextureObject(const std::string& name, const Graphics::Image& image);
 
-	std::unique_ptr<TextureObject> createTextureObject(const Graphics::Imagef& image);
+	TextureObject createTextureObject(const std::string& name, const Graphics::Imagef& image);
 
 private:
+	std::map<std::string, TextureObject> textures;
 	int nextId;
 };
 	}

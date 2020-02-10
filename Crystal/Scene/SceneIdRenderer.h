@@ -49,7 +49,7 @@ private:
 	Scene::LineRenderer lineIdRenderer;
 	Scene::TriangleRenderer triangleIdRenderer;
 
-	std::unique_ptr<Shader::TextureObject> texture;
+	Shader::TextureObject texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
 };
 	}

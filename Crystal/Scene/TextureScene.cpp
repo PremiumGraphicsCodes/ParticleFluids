@@ -19,15 +19,15 @@ void TextureScene::onClear()
 
 void TextureScene::onBuild(GLObjectFactory& factory)
 {
-	texture = factory.getTextureFactory()->createTextureObject(*image);
+	texture = factory.getTextureFactory()->createTextureObject(getName(),*image);
 }
 
 void TextureScene::toViewModel(SceneViewModel& viewModel) const
 {
-	viewModel.textures.push_back(*texture);
+	viewModel.textures.push_back(texture);
 }
 
 void TextureScene::onSend()
 {
-	texture->send(*image);
+	texture.send(*image);
 }

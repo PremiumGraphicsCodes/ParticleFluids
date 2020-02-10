@@ -22,7 +22,7 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	texture = factory.getTextureFactory()->createTextureObject(Image(512, 512));
+	texture = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
 	//texture.create(, 1);
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 	return true;
@@ -36,10 +36,10 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	const auto& materials = vm.getMaterials();
 	const auto& lights = vm.getLights();
 
-	frameBufferObject->setTexture(*texture);
+	frameBufferObject->setTexture(texture);
 	//texture.bind();
 	frameBufferObject->bind();
-	glViewport(0, 0, texture->getWidth(), texture->getHeight());
+	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {

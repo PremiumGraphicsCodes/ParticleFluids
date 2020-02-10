@@ -21,7 +21,7 @@ public:
 
 	void toViewModel(SceneViewModel& viewModel) const override;
 
-	Shader::TextureObject getTextureObject() const { return *texture; }
+	Shader::TextureObject getTextureObject() const { return texture; }
 
 	void onSend() override;
 
@@ -29,7 +29,7 @@ public:
 
 private:
 	std::unique_ptr<Graphics::Image> image;
-	std::unique_ptr<Shader::TextureObject> texture;
+	Shader::TextureObject texture;
 };
 
 	}

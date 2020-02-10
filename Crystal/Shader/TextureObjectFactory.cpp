@@ -12,16 +12,16 @@ void TextureObjectFactory::clear()
 	nextId = 0;
 }
 
-std::unique_ptr<TextureObject> TextureObjectFactory::createTextureObject(const Image& image)
+TextureObject TextureObjectFactory::createTextureObject(const std::string& name, const Image& image)
 {
-	auto object = std::make_unique<TextureObject>();
-	object->create(image, nextId++);
-	return std::move( object );
+	auto object = TextureObject();
+	object.create(image, nextId++);
+	return object;
 }
 
-std::unique_ptr<TextureObject> TextureObjectFactory::createTextureObject(const Imagef& image)
+TextureObject TextureObjectFactory::createTextureObject(const std::string& name, const Imagef& image)
 {
-	auto object = std::make_unique<TextureObject>();
-	object->create(image, nextId++);
-	return std::move(object);
+	auto object = TextureObject();
+	object.create(image, nextId++);
+	return object;
 }

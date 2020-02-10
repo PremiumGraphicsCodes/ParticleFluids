@@ -64,5 +64,5 @@ void Renderer::render(const int width, const int height, const ViewModel& vm)
 	}
 	*/
 	auto texture = objectRenderer.getTexture();
-	renderer.render(*texture);
+	renderer.render(texture);
 }
