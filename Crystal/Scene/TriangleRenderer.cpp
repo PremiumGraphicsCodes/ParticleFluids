@@ -10,6 +10,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
 namespace {
+	constexpr char* projectionMatrixLabel = "projectionMatrix";
+	constexpr char* modelViewMatrixLabel = "modelviewMatrix";
 }
 
 void TriangleRenderer::GLBuffer::build()
@@ -41,8 +43,8 @@ bool TriangleRenderer::build(GLObjectFactory& factory)
 	setVertexShaderSource(getBuildInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
 
-	addUniform("projectionMatrix");
-	addUniform("modelviewMatrix");
+	addUniform(::projectionMatrixLabel);
+	addUniform(::modelViewMatrixLabel);
 
 	addAttribute("position");
 	addAttribute("color");
@@ -62,8 +64,8 @@ void TriangleRenderer::render(const Camera& camera)
 
 	shader->enableDepthTest();
 
-	shader->sendUniform("projectionMatrix", projectionMatrix);
-	shader->sendUniform("modelviewMatrix", modelviewMatrix);
+	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader->sendUniform(::modelViewMatrixLabel, modelviewMatrix);
 
 	shader->sendVertexAttribute3df("position", glBuffer.vbo.position);
 	shader->sendVertexAttribute4df("color", glBuffer.vbo.color);

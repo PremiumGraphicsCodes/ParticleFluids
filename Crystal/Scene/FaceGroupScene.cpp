@@ -38,22 +38,8 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 	const auto& matrix = parent->getMatrix();
 
 	int materialId = 0;
-	int diffuseTexId = 0;
-	int specularTexId = 0;
 	if (material != nullptr) {
 		materialId = material->getMaterialId();
-		auto ambientTexture = material->getAmbientTexture();
-		if (ambientTexture != nullptr) {
-			auto ambientTexId = ambientTexture->getTextureObject().getHandle();
-		}
-		auto diffuseTexture = material->getDiffuseTexture();
-		if (diffuseTexture != nullptr) {
-			diffuseTexId = diffuseTexture->getTextureObject().getHandle();
-		}
-		auto specularTexture = material->getSpecularTexture();
-		if (specularTexture != nullptr) {
-			specularTexId = specularTexture->getTextureObject().getHandle();
-		}
 	}
 
 	{
