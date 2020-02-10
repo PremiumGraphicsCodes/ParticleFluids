@@ -23,7 +23,7 @@ public:
 		matrix(Math::Identity())
 	{}
 
-	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialId, const int specularId);
+	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialId);
 
 	Graphics::Buffer3d<float> getPositions() const { return positions; }
 
@@ -32,8 +32,6 @@ public:
 	Graphics::Buffer2d<float> getTexCoords() const { return texCoords; }
 
 	Graphics::Buffer1d<int> getMaterialIds() const { return materialIds; }
-
-	Graphics::Buffer1d<int> getSpecularTexIds() const { return specularTexIds; }
 
 	void setMatrix(const Math::Matrix4dd& matrix) { this->matrix = matrix; }
 
@@ -45,7 +43,6 @@ private:
 	Graphics::Buffer3d<float> normals;
 	Graphics::Buffer2d<float> texCoords;
 	Graphics::Buffer1d<int> materialIds;
-	Graphics::Buffer1d<int> specularTexIds;
 };
 
 

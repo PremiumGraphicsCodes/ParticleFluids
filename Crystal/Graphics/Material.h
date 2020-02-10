@@ -16,7 +16,8 @@ public:
 		diffuse(0.0f, 0.0f, 0.0f, 0.0f),
 		specular(0.0f, 0.0f, 0.0f, 0.0f),
 		ambientTexId(0),
-		diffuseTexId(0)
+		diffuseTexId(0),
+		specularTexId(0)
 	{}
 
 	glm::vec4 ambient;
@@ -26,6 +27,7 @@ public:
 
 	int ambientTexId;
 	int diffuseTexId;
+	int specularTexId;
 };
 
 	}

@@ -10,14 +10,12 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId, const int specularTexId)
+void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId)
 {
 	positions.add(position);
 	normals.add(normal);
 	texCoords.add(texCoord);
 	materialIds.add(materialId);
-	specularTexIds.add(specularTexId);
-//	materialIds.add(1);
 }
 
 void SmoothRenderer::GLBuffer::build()
@@ -26,7 +24,6 @@ void SmoothRenderer::GLBuffer::build()
 	normal.build();
 	texCoord.build();
 	materialId.build();
-	specularTexId.build();
 }
 
 void SmoothRenderer::GLBuffer::release()
@@ -35,7 +32,6 @@ void SmoothRenderer::GLBuffer::release()
 	normal.release();
 	texCoord.release();
 	materialId.release();
-	specularTexId.release();
 }
 
 void SmoothRenderer::GLBuffer::send(const SmoothTriangleBuffer& buffer)
@@ -44,7 +40,6 @@ void SmoothRenderer::GLBuffer::send(const SmoothTriangleBuffer& buffer)
 	normal.send(buffer.getNormals().get());
 	texCoord.send(buffer.getTexCoords().get());
 	materialId.send(buffer.getMaterialIds().get());
-	specularTexId.send(buffer.getSpecularTexIds().get());
 
 	count = buffer.getPositions().get().size() / 3;
 	matrix = buffer.getMatrix();
@@ -77,6 +72,7 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 		addUniform(prefix + ".shininess");
 		addUniform(prefix + ".ambientTexId");
 		addUniform(prefix + ".diffuseTexId");
+		addUniform(prefix + ".specularTexId");
 	}
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "textures[" + std::to_string(i) + "]";
@@ -87,7 +83,6 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	addAttribute("position");
 	addAttribute("normal");
 	addAttribute("materialId");
-	addAttribute("specularTexId");
 	addAttribute("texCoord");
 
 	return build_(factory);
@@ -120,7 +115,6 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->sendVertexAttribute3df("normal", glBuffer.normal);
 	shader->sendVertexAttribute2df("texCoord", glBuffer.texCoord);
 	shader->sendVertexAttribute1di("materialId", glBuffer.materialId);
-	shader->sendVertexAttribute1di("specularTexId", glBuffer.specularTexId);
 
 
 	shader->enableVertexAttribute("position");
@@ -152,6 +146,7 @@ void SmoothRenderer::render(const Camera& camera)
 		shader->sendUniform(prefix + ".shininess", m.shininess);
 		shader->sendUniform(prefix + ".ambientTexId", m.ambientTexId);
 		shader->sendUniform(prefix + ".diffuseTexId", m.diffuseTexId);
+		shader->sendUniform(prefix + ".specularTexId", m.specularTexId);
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 	}
 
@@ -168,7 +163,6 @@ void SmoothRenderer::render(const Camera& camera)
 	//textures[0].unbind();
 
 	shader->disableVertexAttribute("texCoord");
-	shader->disableVertexAttribute("specularTexId");
 	shader->disableVertexAttribute("materialId");
 	shader->disableVertexAttribute("position");
 	shader->disableVertexAttribute("normal");
@@ -235,6 +229,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	float shininess;" << std::endl
 		<< "	int ambientTexId;" << std::endl
 		<< "	int diffuseTexId;" << std::endl
+		<< "	int specularTexId;" << std::endl
 		<< "};"
 		<< "uniform MaterialInfo materials[256];"
 		<< "vec3 getTextureColor(int id){ " << std::endl
@@ -264,7 +259,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	if(innerProduct > 0.0) {" << std::endl
 		<< "		specular = light.Ls * material.Ks * pow( max( dot(r,v), 0.0 ), material.shininess );" << std::endl
 		<< "	}" << std::endl
-		<< "	specular *= getTextureColor(vSpecularTexId);" << std::endl
+		<< "	specular *= getTextureColor(material.specularTexId);" << std::endl
 		<< "	return ambient + diffuse + specular;" << std::endl
 		<< "}"
 		<< "void main(void) {" << std::endl
