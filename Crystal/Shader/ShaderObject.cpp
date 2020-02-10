@@ -347,6 +347,11 @@ void ShaderObject::sendUniform(const std::string& name, const Vector3df& v)
 	glUniform3fv(getUniformLocation(name), 1, &v[0]);
 }
 
+void ShaderObject::sendUniform(const std::string& name, const int value)
+{
+	glUniform1i(getUniformLocation(name), value);
+}
+
 void ShaderObject::sendUniform(const std::string& name, const float value)
 {
 	glUniform1f(getUniformLocation(name), value);

@@ -73,7 +73,7 @@ public:
 
 	void render(const Graphics::Camera& camera) override;
 
-	void setLights(const std::vector<Graphics::PointLight>& lights) { this->lights = lights; }
+	void setLights(const std::vector<Graphics::PointLight>& lights);
 
 	void setMaterials(const std::vector<Graphics::Material>& materials) { this->materials = materials; }
 

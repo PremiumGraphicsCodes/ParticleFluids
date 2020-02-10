@@ -88,16 +88,40 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
+void SmoothRenderer::setLights(const std::vector<PointLight>& lights)
+{
+	auto shader = getShader();
+
+	shader->bind();
+	for (int i = 0; i < lights.size(); ++i) {
+		const auto light = lights[i];
+		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
+		const auto& ambient = light.getAmbient();
+		const auto& diffuse = light.getDiffuse();
+		const auto& specular = light.getSpecular();
+
+		const auto prefix = "lights[" + std::to_string(i) + "]";
+
+		shader->sendUniform(prefix + ".position", lightPos);
+		shader->sendUniform(prefix + ".La", ambient);
+		shader->sendUniform(prefix + ".Ld", diffuse);
+		shader->sendUniform(prefix + ".Ls", specular);
+	}
+	shader->unbind();
+}
+
 void SmoothRenderer::setTextures(const std::vector<TextureObject>& textures)
 {
 	auto shader = getShader();
 
+	shader->bind();
 	for (int i = 0; i < textures.size(); ++i) {
 		const auto prefix = "textures[" + std::to_string(i) + "]";
 		textures[i].bind();
 		auto loc = glGetUniformLocation(shader->getHandle(), prefix.c_str());
 		glUniform1i(loc, textures[i].getId());
 	}
+	shader->unbind();
 }
 
 void SmoothRenderer::render(const Camera& camera)
@@ -128,21 +152,6 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->enableVertexAttribute("materialId");
 	shader->enableVertexAttribute("texCoord");
 
-	for (int i = 0; i < lights.size(); ++i) {
-		const auto light = lights[i];
-		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
-		const auto& ambient = light.getAmbient();
-		const auto& diffuse = light.getDiffuse();
-		const auto& specular = light.getSpecular();
-
-		const auto prefix = "lights[" + std::to_string(i) + "]";
-
-		shader->sendUniform(prefix + ".position", lightPos);
-		shader->sendUniform(prefix + ".La", ambient);
-		shader->sendUniform(prefix + ".Ld", diffuse);
-		shader->sendUniform(prefix + ".Ls", specular);
-	}
-
 	for (int i = 0; i < materials.size(); ++i) {
 		const auto m = materials[i];
 		const auto prefix = "materials[" + std::to_string(i) + "]";
@@ -150,12 +159,15 @@ void SmoothRenderer::render(const Camera& camera)
 		shader->sendUniform(prefix + ".Kd", m.diffuse);
 		shader->sendUniform(prefix + ".Ks", m.specular);
 		shader->sendUniform(prefix + ".shininess", m.shininess);
-		shader->sendUniform(prefix + ".ambientTexId", m.ambientTexId);
-		shader->sendUniform(prefix + ".diffuseTexId", m.diffuseTexId);
-		shader->sendUniform(prefix + ".specularTexId", m.specularTexId);
+		shader->sendUniform(prefix + ".ambientTexId", 0);// m.ambientTexId);
+		shader->sendUniform(prefix + ".diffuseTexId", 0);// m.diffuseTexId);
+		shader->sendUniform(prefix + ".specularTexId", 0);// m.specularTexId);
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 	}
-
+	{
+		const auto error = glGetError();
+		assert(error == GL_NO_ERROR);
+	}
 
 
 	shader->drawTriangles(glBuffer.count);
@@ -167,8 +179,10 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->disableVertexAttribute("position");
 	shader->disableVertexAttribute("normal");
 
-	const auto error = glGetError();
-	assert(error != GL_NO_ERROR);
+	{
+		const auto error = glGetError();
+		assert(error == GL_NO_ERROR);
+	}
 
 	shader->disableDepthTest();
 	shader->unbind();
@@ -233,8 +247,8 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "};"
 		<< "uniform MaterialInfo materials[256];"
 		<< "vec3 getTextureColor(int id){ " << std::endl
-		<< "	if( id == 0 ) { " << std::endl
-		<< "		return vec3(1.0f,1.0f,1.0f);" << std::endl
+		<< "	if(id == -1) {" << std::endl
+		<< "		return vec3(1,1,1);" << std::endl
 		<< "	}" << std::endl
 		<< "	return texture2D(textures[id], vTexCoord).rgb;" << std::endl
 		<< "};" << std::endl
