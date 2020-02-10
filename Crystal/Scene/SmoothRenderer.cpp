@@ -10,13 +10,12 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId, const int diffuseTexId, const int specularTexId)
+void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId, const int specularTexId)
 {
 	positions.add(position);
 	normals.add(normal);
 	texCoords.add(texCoord);
 	materialIds.add(materialId);
-	diffuseTexIds.add(diffuseTexId);
 	specularTexIds.add(specularTexId);
 //	materialIds.add(1);
 }
@@ -27,7 +26,6 @@ void SmoothRenderer::GLBuffer::build()
 	normal.build();
 	texCoord.build();
 	materialId.build();
-	diffuseTexId.build();
 	specularTexId.build();
 }
 
@@ -37,7 +35,6 @@ void SmoothRenderer::GLBuffer::release()
 	normal.release();
 	texCoord.release();
 	materialId.release();
-	diffuseTexId.release();
 	specularTexId.release();
 }
 
@@ -47,7 +44,6 @@ void SmoothRenderer::GLBuffer::send(const SmoothTriangleBuffer& buffer)
 	normal.send(buffer.getNormals().get());
 	texCoord.send(buffer.getTexCoords().get());
 	materialId.send(buffer.getMaterialIds().get());
-	diffuseTexId.send(buffer.getDiffuseTexIds().get());
 	specularTexId.send(buffer.getSpecularTexIds().get());
 
 	count = buffer.getPositions().get().size() / 3;
@@ -80,6 +76,7 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 		addUniform(prefix + ".Ks");
 		addUniform(prefix + ".shininess");
 		addUniform(prefix + ".ambientTexId");
+		addUniform(prefix + ".diffuseTexId");
 	}
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "textures[" + std::to_string(i) + "]";
@@ -90,7 +87,6 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	addAttribute("position");
 	addAttribute("normal");
 	addAttribute("materialId");
-	addAttribute("diffuseTexId");
 	addAttribute("specularTexId");
 	addAttribute("texCoord");
 
@@ -124,7 +120,6 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->sendVertexAttribute3df("normal", glBuffer.normal);
 	shader->sendVertexAttribute2df("texCoord", glBuffer.texCoord);
 	shader->sendVertexAttribute1di("materialId", glBuffer.materialId);
-	shader->sendVertexAttribute1di("diffuseTexId", glBuffer.diffuseTexId);
 	shader->sendVertexAttribute1di("specularTexId", glBuffer.specularTexId);
 
 
@@ -156,6 +151,7 @@ void SmoothRenderer::render(const Camera& camera)
 		shader->sendUniform(prefix + ".Ks", m.specular);
 		shader->sendUniform(prefix + ".shininess", m.shininess);
 		shader->sendUniform(prefix + ".ambientTexId", m.ambientTexId);
+		shader->sendUniform(prefix + ".diffuseTexId", m.diffuseTexId);
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 	}
 
@@ -173,7 +169,6 @@ void SmoothRenderer::render(const Camera& camera)
 
 	shader->disableVertexAttribute("texCoord");
 	shader->disableVertexAttribute("specularTexId");
-	shader->disableVertexAttribute("diffuseTexId");
 	shader->disableVertexAttribute("materialId");
 	shader->disableVertexAttribute("position");
 	shader->disableVertexAttribute("normal");
@@ -193,13 +188,11 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "in vec3 position;" << std::endl
 		<< "in vec3 normal;" << std::endl
 		<< "in int materialId;" << std::endl
-		<< "in int diffuseTexId;" << std::endl
 		<< "in int specularTexId;" << std::endl
 		<< "in vec2 texCoord;" << std::endl
 		<< "out vec3 vNormal;" << std::endl
 		<< "out vec3 vPosition;" << std::endl
 		<< "flat out int vMaterialId;" << std::endl
-		<< "flat out int vDiffuseTexId;" << std::endl
 		<< "flat out int vSpecularTexId;" << std::endl
 		<< "out vec2 vTexCoord;" << std::endl
 		<< "uniform mat4 projectionMatrix;"
@@ -209,7 +202,6 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "	vNormal = normalize(normal);" << std::endl
 		<< "	vPosition = position;" << std::endl
 		<< "	vMaterialId = materialId;" << std::endl
-		<< "	vDiffuseTexId = diffuseTexId;" << std::endl
 		<< "	vSpecularTexId = specularTexId;" << std::endl
 		<< "	vTexCoord = texCoord;" << std::endl
 		<< "}" << std::endl;
@@ -224,7 +216,6 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "in vec3 vNormal;" << std::endl
 		<< "in vec3 vPosition;" << std::endl
 		<< "flat in int vMaterialId;" << std::endl
-		<< "flat in int vDiffuseTexId;" << std::endl
 		<< "flat in int vSpecularTexId;" << std::endl
 		<< "in vec2 vTexCoord;" << std::endl
 		<< "out vec4 fragColor;" << std::endl
@@ -243,9 +234,13 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	vec3 Ks;" << std::endl
 		<< "	float shininess;" << std::endl
 		<< "	int ambientTexId;" << std::endl
+		<< "	int diffuseTexId;" << std::endl
 		<< "};"
 		<< "uniform MaterialInfo materials[256];"
-		<< "vec3 getTextureColor(int id){ "
+		<< "vec3 getTextureColor(int id){ " << std::endl
+		<< "	if( id == 0 ) { " << std::endl
+		<< "		return vec3(1.0f,1.0f,1.0f);" << std::endl
+		<< "	}" << std::endl
 		<< "	return texture2D(textures[id], vTexCoord).rgb;" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getAmbientColor(LightInfo light, MaterialInfo material){" << std::endl
@@ -254,7 +249,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "};" << std::endl
 		<< "vec3 getDiffuseColor(LightInfo light, MaterialInfo material, float innerProduct){" << std::endl
 		<< "	vec3 diffuse = light.Ld * material.Kd * innerProduct;" << std::endl
-		<< "	return diffuse * getTextureColor(vDiffuseTexId);" << std::endl
+		<< "	return diffuse * getTextureColor(material.diffuseTexId);" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
 		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl

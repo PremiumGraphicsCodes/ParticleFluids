@@ -71,7 +71,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 				if (v.texCoordId != -1) {
 				}
 				*/
-				buffer.addVertex(p, n, texCoord, materialId, diffuseTexId, specularTexId);
+				buffer.addVertex(p, n, texCoord, materialId, specularTexId);
 			}
 		}
 		SmoothRenderer::GLBuffer glBuffer;
