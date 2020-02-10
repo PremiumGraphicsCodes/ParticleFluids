@@ -17,18 +17,6 @@ public:
 
 	Graphics::Material* getMaterial() { return material.get(); }
 
-	TextureScene* getAmbientTexture() const;
-
-	TextureScene* getDiffuseTexture() const;
-
-	TextureScene* getSpecularTexture() const;
-
-	void setAmbientTexture(TextureScene* texture);
-
-	void setDiffuseTexture(TextureScene* texture);
-
-	void setSpecularTexture(TextureScene* texture);
-
 	void onClear() override {};
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
@@ -39,9 +27,6 @@ public:
 
 private:
 	std::unique_ptr<Graphics::Material> material;
-	TextureScene* ambientTexture;
-	TextureScene* diffuseTexture;
-	TextureScene* specularTexture;
 	const int materialId;
 };
 
