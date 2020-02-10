@@ -120,6 +120,8 @@ void SmoothRenderer::setTextures(const std::vector<TextureObject>& textures)
 		shader->sendUniform(prefix, textures[i]);
 	}
 	shader->unbind();
+
+	this->textures = textures;
 }
 
 void SmoothRenderer::setMaterials(const std::vector<Material>& materials)
@@ -174,7 +176,15 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->enableVertexAttribute("materialId");
 	shader->enableVertexAttribute("texCoord");
 
+	for (const auto& t : textures) {
+		t.bind();
+	}
+
 	shader->drawTriangles(glBuffer.count);
+
+	for (const auto& t : textures) {
+		t.unbind();
+	}
 
 	//textures[0].unbind();
 

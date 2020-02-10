@@ -363,7 +363,7 @@ void ShaderObject::sendUniform(const std::string& name, const TextureObject& tex
 	texture.bind();
 	const auto location = getUniformLocation(name);
 	glUniform1i(location, texture.getId());
-	//texture.unbind();
+	texture.unbind();
 }
 
 void ShaderObject::sendVertexAttribute1df(const std::string& name, const std::vector<float>& data)

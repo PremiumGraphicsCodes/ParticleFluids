@@ -85,8 +85,8 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-
 	GLBuffer glBuffer;
+	std::vector<Shader::TextureObject> textures;
 };
 
 	}
