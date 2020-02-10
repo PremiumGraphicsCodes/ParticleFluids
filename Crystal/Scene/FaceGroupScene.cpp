@@ -38,14 +38,13 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 	const auto& matrix = parent->getMatrix();
 
 	int materialId = 0;
-	int ambientTexId = 0;
 	int diffuseTexId = 0;
 	int specularTexId = 0;
 	if (material != nullptr) {
 		materialId = material->getMaterialId();
 		auto ambientTexture = material->getAmbientTexture();
 		if (ambientTexture != nullptr) {
-			ambientTexId = ambientTexture->getTextureObject().getHandle();
+			auto ambientTexId = ambientTexture->getTextureObject().getHandle();
 		}
 		auto diffuseTexture = material->getDiffuseTexture();
 		if (diffuseTexture != nullptr) {
@@ -72,7 +71,7 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 				if (v.texCoordId != -1) {
 				}
 				*/
-				buffer.addVertex(p, n, texCoord, materialId, ambientTexId, diffuseTexId, specularTexId);
+				buffer.addVertex(p, n, texCoord, materialId, diffuseTexId, specularTexId);
 			}
 		}
 		SmoothRenderer::GLBuffer glBuffer;
