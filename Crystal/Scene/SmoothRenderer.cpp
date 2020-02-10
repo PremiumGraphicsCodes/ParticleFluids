@@ -136,7 +136,8 @@ void SmoothRenderer::setMaterials(const std::vector<Material>& materials)
 		shader->sendUniform(prefix + ".Kd", m.diffuse);
 		shader->sendUniform(prefix + ".Ks", m.specular);
 		shader->sendUniform(prefix + ".shininess", m.shininess);
-		shader->sendUniform(prefix + ".ambientTexId", 0);// m.ambientTexId);
+		auto index = findIndex(m.ambientTexName);
+		shader->sendUniform(prefix + ".ambientTexId", index);
 		shader->sendUniform(prefix + ".diffuseTexId", 0);// m.diffuseTexId);
 		shader->sendUniform(prefix + ".specularTexId", 0);// m.specularTexId);
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
@@ -147,6 +148,17 @@ void SmoothRenderer::setMaterials(const std::vector<Material>& materials)
 	const auto error = glGetError();
 	assert(error == GL_NO_ERROR);
 }
+
+int SmoothRenderer::findIndex(const std::string& name)
+{
+	for (int i = 0; i < textures.size(); ++i) {
+		if (textures[i].getName() == name) {
+			return i;
+		}
+	}
+	return -1;
+}
+
 
 void SmoothRenderer::render(const Camera& camera)
 {

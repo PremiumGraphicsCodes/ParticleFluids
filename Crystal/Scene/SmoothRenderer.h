@@ -87,6 +87,8 @@ private:
 
 	GLBuffer glBuffer;
 	std::vector<Shader::TextureObject> textures;
+
+	int findIndex(const std::string& name);
 };
 
 	}

@@ -39,6 +39,7 @@ void World::init()
 		material->diffuse = ColorRGBAf(1, 1, 1, 1);
 		material->specular = ColorRGBAf(1, 1, 1, 1);
 		material->shininess = 1.0;
+		material->ambientTexName = "WhiteTex";
 		scenes[1]->addScene(sceneFactory.createMaterialScene(std::move(material), "WhiteMat"));
 	}
 
