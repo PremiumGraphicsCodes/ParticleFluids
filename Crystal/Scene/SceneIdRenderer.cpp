@@ -23,6 +23,7 @@ bool SceneIdRenderer::build(GLObjectFactory& factory)
 
 	pointBuffer.build();
 	lineBuffer.build();
+	triangleBuffer.build();
 
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 
@@ -56,7 +57,8 @@ void SceneIdRenderer::render(Camera* camera, const SceneIdViewModel& vm)
 		lineIdRenderer.render(*camera);
 	}
 	for (const auto& b : triangleBuffers) {
-		triangleIdRenderer.send(b);
+		triangleBuffer.send(b);
+		triangleIdRenderer.setBuffer(triangleBuffer);
 		triangleIdRenderer.render(*camera);
 	}
 

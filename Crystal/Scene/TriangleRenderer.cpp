@@ -12,6 +12,20 @@ using namespace Crystal::Shader;
 namespace {
 }
 
+void TriangleRenderer::GLBuffer::build()
+{
+	vbo.position.build();
+	vbo.color.build();
+}
+
+void TriangleRenderer::GLBuffer::send(const LineBuffer& buffer)
+{
+	vbo.position.send(buffer.getPositions().get());
+	vbo.color.send(buffer.getColors().get());
+
+	indices = buffer.getIndices().get();
+}
+
 TriangleRenderer::TriangleRenderer()
 {
 }
@@ -27,20 +41,7 @@ bool TriangleRenderer::build(GLObjectFactory& factory)
 	addAttribute("position");
 	addAttribute("color");
 
-	glBuffer.vbo.position.build();
-	glBuffer.vbo.color.build();
-
 	return build_(factory);
-}
-
-void TriangleRenderer::send(const LineBuffer& buffer)
-{
-	auto shader = getShader();
-
-	glBuffer.vbo.position.send(buffer.getPositions().get());
-	glBuffer.vbo.color.send(buffer.getColors().get());
-
-	glBuffer.indices = buffer.getIndices().get();
 }
 
 void TriangleRenderer::render(const Camera& camera)

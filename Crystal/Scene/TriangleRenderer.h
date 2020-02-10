@@ -9,19 +9,6 @@ namespace Crystal {
 class TriangleRenderer : public IRenderer
 {
 public:
-	TriangleRenderer();
-
-	bool build(Shader::GLObjectFactory& factory) override;
-
-	void send(const LineBuffer& buffer);
-
-	void render(const Graphics::Camera& camera) override;
-
-private:
-	std::string getBuildInVertexShaderSource() const;
-
-	std::string getBuiltInFragmentShaderSource() const;
-
 	struct GLBuffer
 	{
 		struct VBO {
@@ -30,7 +17,25 @@ private:
 		};
 		VBO vbo;
 		std::vector<unsigned int> indices;
+
+		void build();
+
+		void send(const LineBuffer& buffer);
 	};
+
+	TriangleRenderer();
+
+	bool build(Shader::GLObjectFactory& factory) override;
+
+	void setBuffer(const GLBuffer& glBuffer) { this->glBuffer = glBuffer; }
+
+	void render(const Graphics::Camera& camera) override;
+
+private:
+	std::string getBuildInVertexShaderSource() const;
+
+	std::string getBuiltInFragmentShaderSource() const;
+
 	GLBuffer glBuffer;
 };
 

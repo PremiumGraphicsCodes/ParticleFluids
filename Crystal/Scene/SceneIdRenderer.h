@@ -43,6 +43,7 @@ public:
 private:
 	Scene::PointRenderer::GLBuffer pointBuffer;
 	Scene::LineRenderer::GLBuffer lineBuffer;
+	Scene::TriangleRenderer::GLBuffer triangleBuffer;
 
 	Scene::PointRenderer pointIdRenderer;
 	Scene::LineRenderer lineIdRenderer;
