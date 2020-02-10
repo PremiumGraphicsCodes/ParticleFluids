@@ -70,6 +70,7 @@
     <ClCompile Include="PointRenderer.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="SceneViewModel.cpp" />
     <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="TriangleFace.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />

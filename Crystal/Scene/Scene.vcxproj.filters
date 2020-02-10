@@ -172,6 +172,9 @@
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
+    <ClCompile Include="SceneViewModel.cpp">
+      <Filter>ViewModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

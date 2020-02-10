@@ -18,6 +18,12 @@ void TriangleRenderer::GLBuffer::build()
 	vbo.color.build();
 }
 
+void TriangleRenderer::GLBuffer::release()
+{
+	vbo.position.release();
+	vbo.color.release();
+}
+
 void TriangleRenderer::GLBuffer::send(const LineBuffer& buffer)
 {
 	vbo.position.send(buffer.getPositions().get());

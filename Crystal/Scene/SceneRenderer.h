@@ -58,8 +58,6 @@ private:
 	Scene::LineRenderer wireRenderer;
 	Scene::SmoothRenderer smoothRenderer;
 
-	Scene::SmoothRenderer::GLBuffer smoothBuffer;
-
 	Mask mask;
 
 	Graphics::Camera* camera;

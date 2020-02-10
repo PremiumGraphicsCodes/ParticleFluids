@@ -71,6 +71,8 @@ public:
 
 		void build();
 
+		void release();
+
 		void send(const SmoothTriangleBuffer& buffer);
 	};
 

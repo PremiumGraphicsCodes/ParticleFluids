@@ -20,6 +20,8 @@ public:
 
 		void build();
 
+		void release();
+
 		void send(const LineBuffer& buffer);
 	};
 

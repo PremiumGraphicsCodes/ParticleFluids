@@ -22,10 +22,6 @@ void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df&
 //	materialIds.add(1);
 }
 
-SmoothRenderer::SmoothRenderer()
-{
-}
-
 void SmoothRenderer::GLBuffer::build()
 {
 	position.build();
@@ -35,6 +31,17 @@ void SmoothRenderer::GLBuffer::build()
 	ambientTexId.build();
 	diffuseTexId.build();
 	specularTexId.build();
+}
+
+void SmoothRenderer::GLBuffer::release()
+{
+	position.release();
+	normal.release();
+	texCoord.release();
+	materialId.release();
+	ambientTexId.release();
+	diffuseTexId.release();
+	specularTexId.release();
 }
 
 void SmoothRenderer::GLBuffer::send(const SmoothTriangleBuffer& buffer)
@@ -49,6 +56,10 @@ void SmoothRenderer::GLBuffer::send(const SmoothTriangleBuffer& buffer)
 
 	count = buffer.getPositions().get().size() / 3;
 	matrix = buffer.getMatrix();
+}
+
+SmoothRenderer::SmoothRenderer()
+{
 }
 
 bool SmoothRenderer::build(GLObjectFactory& factory)

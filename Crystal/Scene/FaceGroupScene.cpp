@@ -75,7 +75,10 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 				buffer.addVertex(p, n, texCoord, materialId, ambientTexId, diffuseTexId, specularTexId);
 			}
 		}
-		viewModel.triangleBuffers.push_back(buffer);
+		SmoothRenderer::GLBuffer glBuffer;
+		glBuffer.build();
+		glBuffer.send(buffer);
+		viewModel.triangleBuffers.push_back(glBuffer);
 	}
 }
 

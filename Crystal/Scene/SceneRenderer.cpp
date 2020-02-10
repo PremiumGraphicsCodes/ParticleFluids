@@ -22,8 +22,6 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	smoothBuffer.build();
-
 	texture = factory.getTextureFactory()->createTextureObject(Image(512, 512));
 	//texture.create(, 1);
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
@@ -61,8 +59,7 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 		smoothRenderer.setLights(lights);
 		smoothRenderer.setTextures(vm.getTextures());
 		for (const auto& b : smoothBuffers) {
-			smoothBuffer.send(b);
-			smoothRenderer.setBuffer(smoothBuffer);
+			smoothRenderer.setBuffer(b);
 			smoothRenderer.render(*camera);
 		}
 	}
