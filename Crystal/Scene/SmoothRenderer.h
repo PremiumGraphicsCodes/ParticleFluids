@@ -75,17 +75,16 @@ public:
 
 	void setLights(const std::vector<Graphics::PointLight>& lights);
 
-	void setMaterials(const std::vector<Graphics::Material>& materials) { this->materials = materials; }
-
 	void setTextures(const std::vector<Shader::TextureObject>& textures);
+
+	void setMaterials(const std::vector<Graphics::Material>& materials);
+
 
 private:
 	std::string getBuildInVertexShaderSource() const;
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	std::vector<Graphics::PointLight> lights;
-	std::vector<Graphics::Material> materials;
 
 	GLBuffer glBuffer;
 };

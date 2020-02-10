@@ -124,6 +124,30 @@ void SmoothRenderer::setTextures(const std::vector<TextureObject>& textures)
 	shader->unbind();
 }
 
+void SmoothRenderer::setMaterials(const std::vector<Material>& materials)
+{
+	auto shader = getShader();
+	shader->bind();
+
+	for (int i = 0; i < materials.size(); ++i) {
+		const auto m = materials[i];
+		const auto prefix = "materials[" + std::to_string(i) + "]";
+		shader->sendUniform(prefix + ".Ka", m.ambient);
+		shader->sendUniform(prefix + ".Kd", m.diffuse);
+		shader->sendUniform(prefix + ".Ks", m.specular);
+		shader->sendUniform(prefix + ".shininess", m.shininess);
+		shader->sendUniform(prefix + ".ambientTexId", 0);// m.ambientTexId);
+		shader->sendUniform(prefix + ".diffuseTexId", 0);// m.diffuseTexId);
+		shader->sendUniform(prefix + ".specularTexId", 0);// m.specularTexId);
+		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
+	}
+
+	shader->unbind();
+
+	const auto error = glGetError();
+	assert(error == GL_NO_ERROR);
+}
+
 void SmoothRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
@@ -152,24 +176,6 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->enableVertexAttribute("materialId");
 	shader->enableVertexAttribute("texCoord");
 
-	for (int i = 0; i < materials.size(); ++i) {
-		const auto m = materials[i];
-		const auto prefix = "materials[" + std::to_string(i) + "]";
-		shader->sendUniform(prefix + ".Ka", m.ambient);
-		shader->sendUniform(prefix + ".Kd", m.diffuse);
-		shader->sendUniform(prefix + ".Ks", m.specular);
-		shader->sendUniform(prefix + ".shininess", m.shininess);
-		shader->sendUniform(prefix + ".ambientTexId", 0);// m.ambientTexId);
-		shader->sendUniform(prefix + ".diffuseTexId", 0);// m.diffuseTexId);
-		shader->sendUniform(prefix + ".specularTexId", 0);// m.specularTexId);
-		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
-	}
-	{
-		const auto error = glGetError();
-		assert(error == GL_NO_ERROR);
-	}
-
-
 	shader->drawTriangles(glBuffer.count);
 
 	//textures[0].unbind();
@@ -196,12 +202,10 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "in vec3 position;" << std::endl
 		<< "in vec3 normal;" << std::endl
 		<< "in int materialId;" << std::endl
-		<< "in int specularTexId;" << std::endl
 		<< "in vec2 texCoord;" << std::endl
 		<< "out vec3 vNormal;" << std::endl
 		<< "out vec3 vPosition;" << std::endl
 		<< "flat out int vMaterialId;" << std::endl
-		<< "flat out int vSpecularTexId;" << std::endl
 		<< "out vec2 vTexCoord;" << std::endl
 		<< "uniform mat4 projectionMatrix;"
 		<< "uniform mat4 modelviewMatrix;"
@@ -210,7 +214,6 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "	vNormal = normalize(normal);" << std::endl
 		<< "	vPosition = position;" << std::endl
 		<< "	vMaterialId = materialId;" << std::endl
-		<< "	vSpecularTexId = specularTexId;" << std::endl
 		<< "	vTexCoord = texCoord;" << std::endl
 		<< "}" << std::endl;
 	return stream.str();
@@ -224,7 +227,6 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "in vec3 vNormal;" << std::endl
 		<< "in vec3 vPosition;" << std::endl
 		<< "flat in int vMaterialId;" << std::endl
-		<< "flat in int vSpecularTexId;" << std::endl
 		<< "in vec2 vTexCoord;" << std::endl
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
