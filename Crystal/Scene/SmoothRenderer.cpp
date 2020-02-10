@@ -117,9 +117,7 @@ void SmoothRenderer::setTextures(const std::vector<TextureObject>& textures)
 	shader->bind();
 	for (int i = 0; i < textures.size(); ++i) {
 		const auto prefix = "textures[" + std::to_string(i) + "]";
-		textures[i].bind();
-		auto loc = glGetUniformLocation(shader->getHandle(), prefix.c_str());
-		glUniform1i(loc, textures[i].getId());
+		shader->sendUniform(prefix, textures[i]);
 	}
 	shader->unbind();
 }

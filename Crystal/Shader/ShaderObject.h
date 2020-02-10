@@ -21,6 +21,7 @@
 namespace Crystal {
 	namespace Shader {
 		class VertexBufferObject;
+		class TextureObject;
 
 class ShaderObject : IGLObject
 {
@@ -81,6 +82,8 @@ public:
 	void sendUniform(const std::string& name, const Math::Matrix4df& matrix);
 
 	void sendUniform(const std::string& name, const Math::Vector3df& vector);
+
+	void sendUniform(const std::string& name, const TextureObject& texture);
 
 	void sendUniform(const std::string& name, const int value);
 

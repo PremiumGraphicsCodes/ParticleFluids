@@ -12,6 +12,7 @@
 #include "glew.h"
 
 #include "VertexBufferObject.h"
+#include "TextureObject.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -355,6 +356,14 @@ void ShaderObject::sendUniform(const std::string& name, const int value)
 void ShaderObject::sendUniform(const std::string& name, const float value)
 {
 	glUniform1f(getUniformLocation(name), value);
+}
+
+void ShaderObject::sendUniform(const std::string& name, const TextureObject& texture)
+{
+	texture.bind();
+	const auto location = getUniformLocation(name);
+	glUniform1i(location, texture.getId());
+	//texture.unbind();
 }
 
 void ShaderObject::sendVertexAttribute1df(const std::string& name, const std::vector<float>& data)
