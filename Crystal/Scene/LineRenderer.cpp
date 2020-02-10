@@ -8,6 +8,9 @@ using namespace Crystal::Scene;
 namespace {
 	constexpr const char* positionLabel = "position";
 	constexpr const char* colorLabel = "color";
+	constexpr const char* projectionMatrixLabel = "projectionMatrix";
+	constexpr const char* modelViewMatrixLabel = "modelviewMatrix";
+	constexpr const char* fragColorLabel = "fragColor";
 }
 
 void LineRenderer::GLBuffer::build()
@@ -51,11 +54,11 @@ bool LineRenderer::build(GLObjectFactory& factory)
 	setVertexShaderSource(getBuiltInVsSource());
 	setFragmentShaderSource(getBuiltInFsSource());
 
-	addUniform("projectionMatrix");
-	addUniform("modelviewMatrix");
+	addUniform(::projectionMatrixLabel);
+	addUniform(::modelViewMatrixLabel);
 
-	addAttribute(positionLabel);
-	addAttribute(colorLabel);
+	addAttribute(::positionLabel);
+	addAttribute(::colorLabel);
 
 	return build_(factory);
 }
@@ -72,8 +75,8 @@ void LineRenderer::render(const Camera& camera)
 	shader->setLineWidth(glBuffer.lineWidth);
 	shader->enableDepthTest();
 
-	shader->sendUniform("projectionMatrix", projectionMatrix);
-	shader->sendUniform("modelviewMatrix", modelviewMatrix);
+	shader->sendUniform(projectionMatrixLabel, projectionMatrix);
+	shader->sendUniform(modelViewMatrixLabel, modelviewMatrix);
 
 	glBuffer.vao.bind();
 	shader->sendVertexAttribute3df(positionLabel, glBuffer.vbo.position);
@@ -85,7 +88,7 @@ void LineRenderer::render(const Camera& camera)
 	//shader->disableVertexAttribute("color");
 	//shader->disableVertexAttribute("position");
 
-	shader->bindOutput("fragColor");
+	shader->bindOutput(::fragColorLabel);
 
 	shader->setLineWidth(1);
 	shader->disableDepthTest();
