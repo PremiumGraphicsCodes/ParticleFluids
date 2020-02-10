@@ -11,6 +11,9 @@ namespace {
 	constexpr char* positionLabel = "position";
 	constexpr char* colorLabel = "color";
 	constexpr char* sizeLabel = "pointSize";
+	constexpr char* projectionMatrixLabel = "projectionMatrix";
+	constexpr char* modelViewMatrixLabel = "modelviewMatrix";
+	constexpr char* fragColorLabel = "fragColor";
 }
 
 void PointRenderer::GLBuffer::build()
@@ -60,8 +63,8 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	setVertexShaderSource(getBuiltInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
 
-	addUniform("projectionMatrix");
-	addUniform("modelviewMatrix");
+	addUniform(::projectionMatrixLabel);
+	addUniform(::modelViewMatrixLabel);
 
 	addAttribute(::positionLabel);
 	addAttribute(::colorLabel);
@@ -84,20 +87,18 @@ void PointRenderer::render(const Camera& camera)
 	shader->enableDepthTest();
 	shader->enablePointSprite();
 
-	shader->sendUniform("projectionMatrix", projectionMatrix);
-	shader->sendUniform("modelviewMatrix", modelviewMatrix);
+	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader->sendUniform(::modelViewMatrixLabel, modelviewMatrix);
 
 	glBuffer.vao.bind();
 	shader->sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
 	shader->sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
 	shader->sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
-	glBuffer.vao.unbind();
 
-	glBuffer.vao.bind();
 	shader->drawPoints(glBuffer.count);
 	glBuffer.vao.unbind();
 
-	shader->bindOutput("fragColor");
+	shader->bindOutput(::fragColorLabel);
 
 	shader->disablePointSprite();
 	shader->disableDepthTest();
