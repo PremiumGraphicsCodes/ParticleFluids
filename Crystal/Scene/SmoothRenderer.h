@@ -86,7 +86,6 @@ private:
 
 	std::vector<Graphics::PointLight> lights;
 	std::vector<Graphics::Material> materials;
-	std::vector<Shader::TextureObject> textures;
 
 	GLBuffer glBuffer;
 };

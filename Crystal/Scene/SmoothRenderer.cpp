@@ -90,9 +90,15 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 
 void SmoothRenderer::setTextures(const std::vector<TextureObject>& textures)
 {
-	this->textures = textures;
-}
+	auto shader = getShader();
 
+	for (int i = 0; i < textures.size(); ++i) {
+		const auto prefix = "textures[" + std::to_string(i) + "]";
+		textures[i].bind();
+		auto loc = glGetUniformLocation(shader->getHandle(), prefix.c_str());
+		glUniform1i(loc, textures[i].getId());
+	}
+}
 
 void SmoothRenderer::render(const Camera& camera)
 {
@@ -150,12 +156,6 @@ void SmoothRenderer::render(const Camera& camera)
 		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
 	}
 
-	for (int i = 0; i < textures.size(); ++i) {
-		const auto prefix = "textures[" + std::to_string(i) + "]";
-		textures[i].bind();
-		auto loc = glGetUniformLocation(shader->getHandle(), prefix.c_str());
-		glUniform1i(loc, textures[i].getId());
-	}
 
 
 	shader->drawTriangles(glBuffer.count);
