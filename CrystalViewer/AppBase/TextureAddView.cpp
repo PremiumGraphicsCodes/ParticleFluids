@@ -11,6 +11,11 @@ TextureAddView::TextureAddView(const std::string& name, World* model, Canvas* ca
 	filePathView("FilePath"),
 	nameView("Name", std::string("TextureXXX"))
 {
+	filePathView.addFilter("*.bmp");
+	filePathView.addFilter("*.png");
+	filePathView.addFilter("*.jpg");
+	filePathView.addFilter("*.jpeg");
+
 	add(&filePathView);
 	add(&nameView);
 }
