@@ -21,7 +21,9 @@ class MaterialView : public IView
 public:
 	explicit MaterialView(const std::string& name);
 
-	void setValue(Scene::MaterialScene* m);
+	void setValue(const Graphics::Material& m);
+
+	Graphics::Material getValue() const;
 
 public:
 	Float4View ambientView;

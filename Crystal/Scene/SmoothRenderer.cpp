@@ -289,6 +289,10 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "vec3 getV() {" << std::endl
 		<< "	return normalize(vPosition - eyePosition);" << std::endl
 		<< "};" << std::endl
+		<< "vec3 getR(LightInfo light, vec3 normal) {" << std::endl
+		<< "	vec3 s = getS(light);" << std::endl
+		<< "	return reflect( -s, normal );" << std::endl
+		<< "};" << std::endl
 		<< "vec3 getDiffuseColor(LightInfo light, MaterialInfo material, float innerProduct){" << std::endl
 		<< "	vec3 diffuse = light.Ld * material.Kd * innerProduct;" << std::endl
 		<< "	return diffuse * getTextureColor(material.diffuseTexId);" << std::endl
@@ -307,8 +311,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl
 		<< "	LightInfo light = lights[0];" << std::endl
 		<< "	vec3 s = getS(light);" << std::endl
-		<< "	vec3 v = getV();" << std::endl
-		<< "	vec3 r = reflect( -s, normal );" << std::endl
+		<< "	vec3 r = getR(light, normal);" << std::endl
 		<< "	vec3 ambient = getAmbientColor(light, material);" << std::endl
 		<< "	float innerProduct = max( dot(s,normal), 0.0);" << std::endl
 		<< "	vec3 diffuse = getDiffuseColor(light, material, innerProduct);" << std::endl

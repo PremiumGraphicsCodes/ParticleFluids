@@ -27,14 +27,28 @@ MaterialView::MaterialView(const std::string& name) :
 	add(&specularTextureNameView);
 }
 
-void MaterialView::setValue(MaterialScene* m)
+void MaterialView::setValue(const Material& m)
 {
-	ambientView.setValue(m->getMaterial()->ambient);
-	diffuseView.setValue(m->getMaterial()->diffuse);
-	specularView.setValue(m->getMaterial()->specular);
-	shininessView.setValue(m->getMaterial()->shininess);
+	ambientView.setValue(m.ambient);
+	diffuseView.setValue(m.diffuse);
+	specularView.setValue(m.specular);
+	shininessView.setValue(m.shininess);
 
-	ambientTextureNameView.setValue(m->getMaterial()->ambientTexName);
-	diffuseTextureNameView.setValue(m->getMaterial()->diffuseTexName);
-	specularTextureNameView.setValue(m->getMaterial()->specularTexName);
+	ambientTextureNameView.setValue(m.ambientTexName);
+	diffuseTextureNameView.setValue(m.diffuseTexName);
+	specularTextureNameView.setValue(m.specularTexName);
+}
+
+Material MaterialView::getValue() const
+{
+	Material m;
+	m.ambient = ambientView.getValue();
+	m.diffuse = diffuseView.getValue();
+	m.specular = specularView.getValue();
+	m.shininess = shininessView.getValue();
+
+	m.ambientTexName = ambientTextureNameView.getValue();
+	m.diffuseTexName = diffuseTextureNameView.getValue();
+	m.specularTexName = specularTextureNameView.getValue();
+	return m;
 }
