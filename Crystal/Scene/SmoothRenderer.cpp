@@ -10,6 +10,14 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+namespace {
+	constexpr char* projectionMatrixLabel = "projectionMatrix";
+	constexpr char* modelviewMatrixLabel = "modelviewMatrix";
+	constexpr char* eyePositionLabel = "eyePosition";
+	constexpr char* positionLabel = "position";
+	constexpr char* normalLabel = "normal";
+}
+
 void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId)
 {
 	positions.add(position);
@@ -54,9 +62,9 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	setVertexShaderSource(getBuildInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
 
-	addUniform("projectionMatrix");
-	addUniform("modelviewMatrix");
-	addUniform("eyePosition");
+	addUniform(::projectionMatrixLabel);
+	addUniform(::modelviewMatrixLabel);
+	addUniform(::eyePositionLabel);
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "lights[" + std::to_string(i) + "]";
 		addUniform(prefix + ".position");
@@ -80,8 +88,8 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	}
 	//shader.findUniformLocation("texture1");
 
-	addAttribute("position");
-	addAttribute("normal");
+	addAttribute(::positionLabel);
+	addAttribute(::normalLabel);
 	addAttribute("materialId");
 	addAttribute("texCoord");
 
@@ -173,18 +181,18 @@ void SmoothRenderer::render(const Camera& camera)
 
 	shader->enableDepthTest();
 
-	shader->sendUniform("projectionMatrix", projectionMatrix);
-	shader->sendUniform("modelviewMatrix", modelviewMatrix);
-	shader->sendUniform("eyePosition", eyePos);
+	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader->sendUniform(::modelviewMatrixLabel, modelviewMatrix);
+	shader->sendUniform(::eyePositionLabel, eyePos);
 
-	shader->sendVertexAttribute3df("position", glBuffer.position);
-	shader->sendVertexAttribute3df("normal", glBuffer.normal);
+	shader->sendVertexAttribute3df(::positionLabel, glBuffer.position);
+	shader->sendVertexAttribute3df(::normalLabel, glBuffer.normal);
 	shader->sendVertexAttribute2df("texCoord", glBuffer.texCoord);
 	shader->sendVertexAttribute1di("materialId", glBuffer.materialId);
 
 
-	shader->enableVertexAttribute("position");
-	shader->enableVertexAttribute("normal");
+	shader->enableVertexAttribute(::positionLabel);
+	shader->enableVertexAttribute(::normalLabel);
 	shader->enableVertexAttribute("materialId");
 	shader->enableVertexAttribute("texCoord");
 
@@ -202,13 +210,10 @@ void SmoothRenderer::render(const Camera& camera)
 
 	shader->disableVertexAttribute("texCoord");
 	shader->disableVertexAttribute("materialId");
-	shader->disableVertexAttribute("position");
-	shader->disableVertexAttribute("normal");
+	shader->disableVertexAttribute(::normalLabel);
+	shader->disableVertexAttribute(::positionLabel);
 
-	{
-		const auto error = glGetError();
-		assert(error == GL_NO_ERROR);
-	}
+	assert(GL_NO_ERROR == glGetError());
 
 	shader->disableDepthTest();
 	shader->unbind();

@@ -29,15 +29,19 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 
 void PolygonMeshBuilder::add(const Quad3d& quad)
 {
-	const auto& p0 = createPosition(quad.getPosition(0.0, 0.0));
-	const auto& p1 = createPosition(quad.getPosition(1.0, 0.0));
-	const auto& p2 = createPosition(quad.getPosition(0.0, 1.0));
-	const auto& p3 = createPosition(quad.getPosition(1.0, 1.0));
+	const auto p0 = createPosition(quad.getPosition(0.0, 0.0));
+	const auto p1 = createPosition(quad.getPosition(1.0, 0.0));
+	const auto p2 = createPosition(quad.getPosition(0.0, 1.0));
+	const auto p3 = createPosition(quad.getPosition(1.0, 1.0));
 	const auto n = createNormal(quad.getNormal());
-	const auto v0 = createVertex(p0, n, -1);
-	const auto v1 = createVertex(p1, n, -1);
-	const auto v2 = createVertex(p2, n, -1);
-	const auto v3 = createVertex(p3, n, -1);
+	const auto t0 = createTexCoord(Vector2dd(0.0, 0.0));
+	const auto t1 = createTexCoord(Vector2dd(1.0, 0.0));
+	const auto t2 = createTexCoord(Vector2dd(0.0, 1.0));
+	const auto t3 = createTexCoord(Vector2dd(1.0, 1.0));
+	const auto v0 = createVertex(p0, n, t0);
+	const auto v1 = createVertex(p1, n, t1);
+	const auto v2 = createVertex(p2, n, t2);
+	const auto v3 = createVertex(p3, n, t3);
 	createFace(v0, v1, v2);
 	createFace(v3, v2, v1);
 }
