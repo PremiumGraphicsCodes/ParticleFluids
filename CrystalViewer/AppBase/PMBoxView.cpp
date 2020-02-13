@@ -27,7 +27,7 @@ PMBoxView::PMBoxView(const std::string& name, World* world, Canvas* canvas) :
 void PMBoxView::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.add(boxView.getValue(), 1, 1, 1);
+	builder.add(boxView.getValue());
 
 	Command::Command command;
 	command.create(PolygonMeshCreateLabels::CommandNameLabel);

@@ -22,7 +22,7 @@ public:
 
 	void add(const Math::Quad3d& surface);
 
-	void add(const Math::IVolume3d& volume, const int udiv, const int vdiv, const int wdiv);
+	void add(const Math::Box3d& box);
 
 	//void add(const TriangleMesh& mesh);
 

@@ -42,17 +42,17 @@ void PolygonMeshBuilder::add(const Quad3d& quad)
 	createFace(v3, v2, v1);
 }
 
-void PolygonMeshBuilder::add(const IVolume3d& volume, const int unum, const int vnum, const int wnum)
+void PolygonMeshBuilder::add(const Box3d& box)
 {
-	auto p0 = createPosition(volume.getPosition(0, 0, 0));
-	auto p1 = createPosition(volume.getPosition(1, 0, 0));
-	auto p2 = createPosition(volume.getPosition(1, 1, 0));
-	auto p3 = createPosition(volume.getPosition(0, 1, 0));
+	auto p0 = createPosition(box.getPosition(0, 0, 0));
+	auto p1 = createPosition(box.getPosition(1, 0, 0));
+	auto p2 = createPosition(box.getPosition(1, 1, 0));
+	auto p3 = createPosition(box.getPosition(0, 1, 0));
 
-	auto p4 = createPosition(volume.getPosition(0, 0, 1));
-	auto p5 = createPosition(volume.getPosition(1, 0, 1));
-	auto p6 = createPosition(volume.getPosition(1, 1, 1));
-	auto p7 = createPosition(volume.getPosition(0, 1, 1));
+	auto p4 = createPosition(box.getPosition(0, 0, 1));
+	auto p5 = createPosition(box.getPosition(1, 0, 1));
+	auto p6 = createPosition(box.getPosition(1, 1, 1));
+	auto p7 = createPosition(box.getPosition(0, 1, 1));
 
 	add(p0, p1, p2, p3); // front
 	add(p7, p6, p5, p4); // back
@@ -60,24 +60,6 @@ void PolygonMeshBuilder::add(const IVolume3d& volume, const int unum, const int 
 	add(p0, p1, p5, p4); // bottom
 	add(p0, p4, p7, p3); // left
 	add(p1, p5, p6, p2); // right
-	/*
-	std::vector<std::vector<std::vector<int>>> grid3d;
-	for (int i = 0; i <= unum; ++i) {
-		const auto u = i / static_cast<double>(unum);
-		std::vector<std::vector<int>> grid2d;
-		for (int j = 0; j <= vnum; ++j) {
-			const auto v = j / static_cast<double>(vnum);
-			std::vector<int> grid1d;
-			for (int k = 0; k <= wnum; ++k) {
-				const auto w = j / static_cast<double>(wnum);
-				const auto p = createPosition(volume.getPosition(u, v, w));
-				grid1d.push_back(p);
-			}
-			grid2d.push_back(grid1d);
-		}
-		grid3d.push_back(grid2d);
-	}
-	*/
 }
 
 std::unique_ptr<PolygonMesh> PolygonMeshBuilder::build()
