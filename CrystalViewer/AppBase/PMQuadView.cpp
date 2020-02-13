@@ -30,7 +30,7 @@ PMQuadView::PMQuadView(const std::string& name, World* world, Canvas* canvas) :
 void PMQuadView::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.add(quadView.getValue(), 1, 1);
+	builder.add(quadView.getValue());
 
 	Command::Command command;
 	command.create(PolygonMeshCreateLabels::CommandNameLabel);

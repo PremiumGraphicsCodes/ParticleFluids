@@ -27,30 +27,19 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 	createFace(v0, v1, v2);
 }
 
-void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const int vnum)
+void PolygonMeshBuilder::add(const Quad3d& quad)
 {
-	std::vector<std::vector<int>> grid2d;
-	for (int i = 0; i <= unum; ++i) {
-		const auto u = i / static_cast<double>(unum);
-		std::vector<int> grid1d;
-		for (int j = 0; j <= vnum; ++j) {
-			const auto v = j / static_cast<double>(vnum);
-			const auto p = createPosition(surface.getPosition(u, v));
-			const auto n = createNormal(surface.getNormal(u, v));
-			const auto tx = createTexCoord(Vector2dd(u, v));
-			const auto id = createVertex(p, n, tx);
-			grid1d.push_back(id);
-		}
-		grid2d.push_back(grid1d);
-	}
-	for (int i = 0; i < grid2d.size() - 1; ++i) {
-		for (int j = 0; j < grid2d[i].size() - 1; ++j) {
-			const auto ii = (i + 1);// % grid2d.size();
-			const auto jj = (j + 1);// % grid2d[i].size();
-			createFace(grid2d[i][j], grid2d[i + 1][j], grid2d[i][j + 1]);
-			createFace(grid2d[i][j + 1], grid2d[i + 1][j], grid2d[i + 1][j + 1]);
-		}
-	}
+	const auto& p0 = createPosition(quad.getPosition(0.0, 0.0));
+	const auto& p1 = createPosition(quad.getPosition(1.0, 0.0));
+	const auto& p2 = createPosition(quad.getPosition(0.0, 1.0));
+	const auto& p3 = createPosition(quad.getPosition(1.0, 1.0));
+	const auto n = createNormal(quad.getNormal());
+	const auto v0 = createVertex(p0, n, -1);
+	const auto v1 = createVertex(p1, n, -1);
+	const auto v2 = createVertex(p2, n, -1);
+	const auto v3 = createVertex(p3, n, -1);
+	createFace(v0, v1, v2);
+	createFace(v3, v2, v1);
 }
 
 void PolygonMeshBuilder::add(const IVolume3d& volume, const int unum, const int vnum, const int wnum)
