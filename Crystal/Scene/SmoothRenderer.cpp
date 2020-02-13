@@ -287,6 +287,16 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	vec3 diffuse = light.Ld * material.Kd * innerProduct;" << std::endl
 		<< "	return diffuse * getTextureColor(material.diffuseTexId);" << std::endl
 		<< "};" << std::endl
+		<< "vec3 getSpecularColor(LightInfo light, MaterialInfo material, float innerProduct, vec3 normal){" << std::endl
+		<< "	vec3 s = normalize(light.position - vPosition);" << std::endl
+		<< "	vec3 v = normalize(vPosition - eyePosition);" << std::endl
+		<< "	vec3 r = reflect( -s, normal );" << std::endl
+		<< "	vec3 specular = vec3(0.0);" << std::endl
+		<< "	if(innerProduct > 0.0) {" << std::endl
+		<< "		specular = light.Ls * material.Ks * pow( max( dot(r,v), 0.0 ), material.shininess );" << std::endl
+		<< "	}" << std::endl
+		<< "	return specular * getTextureColor(material.specularTexId);" << std::endl
+		<< "};" << std::endl
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
 		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl
 		<< "	LightInfo light = lights[0];" << std::endl
@@ -296,11 +306,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	vec3 ambient = getAmbientColor(light, material);" << std::endl
 		<< "	float innerProduct = max( dot(s,normal), 0.0);" << std::endl
 		<< "	vec3 diffuse = getDiffuseColor(light, material, innerProduct);" << std::endl
-		<< "	vec3 specular = vec3(0.0);" << std::endl
-		<< "	if(innerProduct > 0.0) {" << std::endl
-		<< "		specular = light.Ls * material.Ks * pow( max( dot(r,v), 0.0 ), material.shininess );" << std::endl
-		<< "	}" << std::endl
-		<< "	specular *= getTextureColor(material.specularTexId);" << std::endl
+		<< "	vec3 specular = getSpecularColor(light, material, innerProduct, normal);" << std::endl
 		<< "	return ambient + diffuse + specular;" << std::endl
 		<< "}"
 		<< "void main(void) {" << std::endl
