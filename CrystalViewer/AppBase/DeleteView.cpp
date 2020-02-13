@@ -10,6 +10,7 @@ using namespace Crystal::UI;
 DeleteView::DeleteView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	idView("Id", -1)
+
 {
 	add(&idView);
 }

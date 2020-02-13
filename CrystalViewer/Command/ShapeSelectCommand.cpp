@@ -21,10 +21,10 @@ ShapeSelectCommand::Args::Args() :
 	add(&shapeId);
 }
 
-ShapeSelectCommand::Results::Results() :
-	boundingBoxItemId(ShapeSelectLabels::BoundingBoxItemIdLabel, -1)
+ShapeSelectCommand::Results::Results() // :
+//	boundingBoxItemId(ShapeSelectLabels::BoundingBoxItemIdLabel, -1)
 {
-	add(&boundingBoxItemId);
+//	add(&boundingBoxItemId);
 }
 
 bool ShapeSelectCommand::execute(World* scene)
@@ -37,16 +37,6 @@ bool ShapeSelectCommand::execute(World* scene)
 	if (shape == nullptr) {
 		return false;
 	}
-	
-	const auto bb = shape->getBoundingBox();
-	WireFrameBuilder builder;
-	builder.build(bb);
-	WireFrameAttribute attribute;
-	attribute.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-	attribute.width = 1.0f;
-	auto bbshape = scene->getSceneFactory()->createWireFrameScene(builder.createWireFrame(),attribute,"BoundingBox");
-	scene->getItems()->addScene(bbshape);
-	results.boundingBoxItemId.setValue(bbshape->getId());
 
 	return true;
 }

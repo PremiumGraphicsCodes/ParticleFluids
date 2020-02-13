@@ -7,6 +7,9 @@
 #include "ICommand.h"
 
 namespace Crystal {
+	namespace Scene {
+		class World;
+	}
 	namespace Command {
 
 class Command
@@ -26,7 +29,7 @@ public:
 
 	const std::type_info& getArgType(const std::string& name);
 
-	void execute(Scene::World* scene);
+	bool execute(Scene::World* scene);
 
 	std::any getResult(const std::string& name);
 

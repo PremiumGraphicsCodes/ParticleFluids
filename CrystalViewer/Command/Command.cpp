@@ -33,10 +33,9 @@ const std::type_info& Command::getArgType(const std::string& name)
 	return command->getArgType(name);
 }
 
-
-void Command::execute(Crystal::Scene::World* scene)
+bool Command::execute(Crystal::Scene::World* scene)
 {
-	command->execute(scene);
+	return command->execute(scene);
 }
 
 std::any Command::getResult(const std::string& name)

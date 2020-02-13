@@ -221,11 +221,6 @@
     <ClInclude Include="WireFrameEditView.h" />
     <ClInclude Include="WireFrameView.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Command\Command.vcxproj">
-      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8BCD40A1-4223-4E7A-A84A-93FBF1B6FFD8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

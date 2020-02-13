@@ -6,7 +6,10 @@
 
 #include "../Command/Public/ShapeSelectLabels.h"
 #include "../Command/Command.h"
+#include "../../Crystal/Shape/WireFrameBuilder.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
 
+using namespace Crystal::Shape;
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
@@ -27,7 +30,17 @@ ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas
 		auto func = [=](int parentId, int childId) {
 			Command::Command command(ShapeSelectLabels::CommandNameLabel);
 			command.setArg(ShapeSelectLabels::ShapeIdLabel, parentId);
-			command.execute(model);
+			if (command.execute(model)) {
+				const auto bb = model->getObjects()->findSceneById( parentId )->getBoundingBox();
+				WireFrameBuilder builder;
+				builder.build(bb);
+				WireFrameAttribute attribute;
+				attribute.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+				attribute.width = 1.0f;
+				auto bbshape = model->getSceneFactory()->createWireFrameScene(builder.createWireFrame(), attribute, "BoundingBox");
+				model->getItems()->addScene(bbshape);
+//				results.boundingBoxItemId.setValue(bbshape->getId());
+			}
 
 			//model->getObjects()->findSceneById(parentId)->setSelected(true);
 

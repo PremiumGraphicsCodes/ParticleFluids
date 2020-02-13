@@ -26,7 +26,7 @@ public:
 	{
 		Results();
 
-		Result<int> boundingBoxItemId;
+		//Result<int> boundingBoxItemId;
 	};
 
 	static std::string getName();
