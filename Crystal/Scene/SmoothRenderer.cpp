@@ -16,6 +16,8 @@ namespace {
 	constexpr char* eyePositionLabel = "eyePosition";
 	constexpr char* positionLabel = "position";
 	constexpr char* normalLabel = "normal";
+	constexpr char* materialIdLabel = "materialId";
+	constexpr char* texCoordLabel = "texCoord";
 }
 
 void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId)
@@ -90,8 +92,8 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 
 	addAttribute(::positionLabel);
 	addAttribute(::normalLabel);
-	addAttribute("materialId");
-	addAttribute("texCoord");
+	addAttribute(::materialIdLabel);
+	addAttribute(::texCoordLabel);
 
 	return build_(factory);
 }
@@ -144,11 +146,9 @@ void SmoothRenderer::setMaterials(const std::vector<Material>& materials)
 		shader->sendUniform(prefix + ".Kd", m.diffuse);
 		shader->sendUniform(prefix + ".Ks", m.specular);
 		shader->sendUniform(prefix + ".shininess", m.shininess);
-		auto index = findIndex(m.ambientTexName);
-		shader->sendUniform(prefix + ".ambientTexId", index);
-		shader->sendUniform(prefix + ".diffuseTexId", 0);// m.diffuseTexId);
-		shader->sendUniform(prefix + ".specularTexId", 0);// m.specularTexId);
-		//glUniform1i(shader->getUniformLocation("texture1"), texture.getId());
+		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
+		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
+		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
 	}
 
 	shader->unbind();
@@ -187,14 +187,14 @@ void SmoothRenderer::render(const Camera& camera)
 
 	shader->sendVertexAttribute3df(::positionLabel, glBuffer.position);
 	shader->sendVertexAttribute3df(::normalLabel, glBuffer.normal);
-	shader->sendVertexAttribute2df("texCoord", glBuffer.texCoord);
-	shader->sendVertexAttribute1di("materialId", glBuffer.materialId);
+	shader->sendVertexAttribute2df(::texCoordLabel, glBuffer.texCoord);
+	shader->sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
 
 
 	shader->enableVertexAttribute(::positionLabel);
 	shader->enableVertexAttribute(::normalLabel);
-	shader->enableVertexAttribute("materialId");
-	shader->enableVertexAttribute("texCoord");
+	shader->enableVertexAttribute(::texCoordLabel);
+	shader->enableVertexAttribute(::materialIdLabel);
 
 	for (const auto& t : textures) {
 		t.bind();
@@ -208,8 +208,8 @@ void SmoothRenderer::render(const Camera& camera)
 
 	//textures[0].unbind();
 
-	shader->disableVertexAttribute("texCoord");
-	shader->disableVertexAttribute("materialId");
+	shader->disableVertexAttribute(::materialIdLabel);
+	shader->disableVertexAttribute(::texCoordLabel);
 	shader->disableVertexAttribute(::normalLabel);
 	shader->disableVertexAttribute(::positionLabel);
 
@@ -283,13 +283,19 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	vec3 ambient = light.La * material.Ka;" << std::endl
 		<< "	return ambient * getTextureColor(material.ambientTexId);" << std::endl
 		<< "};" << std::endl
+		<< "vec3 getS(LightInfo light){" << std::endl
+		<< "	return normalize(light.position - vPosition);" << std::endl
+		<< "};" << std::endl
+		<< "vec3 getV() {" << std::endl
+		<< "	return normalize(vPosition - eyePosition);" << std::endl
+		<< "};" << std::endl
 		<< "vec3 getDiffuseColor(LightInfo light, MaterialInfo material, float innerProduct){" << std::endl
 		<< "	vec3 diffuse = light.Ld * material.Kd * innerProduct;" << std::endl
 		<< "	return diffuse * getTextureColor(material.diffuseTexId);" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getSpecularColor(LightInfo light, MaterialInfo material, float innerProduct, vec3 normal){" << std::endl
-		<< "	vec3 s = normalize(light.position - vPosition);" << std::endl
-		<< "	vec3 v = normalize(vPosition - eyePosition);" << std::endl
+		<< "	vec3 s = getS(light);" << std::endl
+		<< "	vec3 v = getV();" << std::endl
 		<< "	vec3 r = reflect( -s, normal );" << std::endl
 		<< "	vec3 specular = vec3(0.0);" << std::endl
 		<< "	if(innerProduct > 0.0) {" << std::endl
@@ -300,8 +306,8 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
 		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl
 		<< "	LightInfo light = lights[0];" << std::endl
-		<< "	vec3 s = normalize(light.position - vPosition);" << std::endl
-		<< "	vec3 v = normalize(vPosition - eyePosition);" << std::endl
+		<< "	vec3 s = getS(light);" << std::endl
+		<< "	vec3 v = getV();" << std::endl
 		<< "	vec3 r = reflect( -s, normal );" << std::endl
 		<< "	vec3 ambient = getAmbientColor(light, material);" << std::endl
 		<< "	float innerProduct = max( dot(s,normal), 0.0);" << std::endl
