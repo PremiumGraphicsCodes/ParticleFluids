@@ -62,6 +62,46 @@ void PolygonMeshBuilder::add(const Box3d& box)
 	add(p1, p5, p6, p2); // right
 }
 
+void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int vnum)
+{
+	std::vector<std::vector<int>> positions;
+	std::vector<std::vector<int>> normals;
+	std::vector<std::vector<int>> texCoords;
+
+	positions.resize(unum);
+	normals.resize(unum);
+	texCoords.resize(unum);
+
+	for (int i = 0; i < unum; ++i) {
+		positions[i].resize(vnum);
+		normals[i].resize(vnum);
+		texCoords[i].resize(vnum);
+
+		const auto u = i / (double)unum;
+		for (int j = 0; j < vnum; ++j) {
+			const auto v = j / (double)vnum;
+			positions[i][j] = createPosition(sphere.getPosition( u, v ));
+			normals[i][j] = createNormal(sphere.getNormal(u, v));
+			texCoords[i][j] = createTexCoord(Vector2dd(u, v));
+		}
+	}
+
+	std::vector<std::vector<int>> vertices;
+	vertices.resize(unum);
+	for (int i = 0; i < unum; ++i) {
+		vertices[i].resize(vnum);
+		for (int j = 0; j < vnum; ++j) {
+			vertices[i][j] = createVertex(positions[i][j], normals[i][j], texCoords[i][j]);
+		}
+	}
+	for (int i = 0; i < unum-1; ++i) {
+		for (int j = 0; j < vnum-1; ++j) {
+			createFace(vertices[i][j], vertices[i+1][j], vertices[i][j+1]);
+			createFace(vertices[i+1][j+1], vertices[i][j+1], vertices[i+1][j]);
+		}
+	}
+}
+
 std::unique_ptr<PolygonMesh> PolygonMeshBuilder::build()
 {
 	auto mesh = std::make_unique<PolygonMesh>();

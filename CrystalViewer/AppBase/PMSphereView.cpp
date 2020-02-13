@@ -28,7 +28,6 @@ PMSphereView::PMSphereView(const std::string& name, World* world, Canvas* canvas
 
 void PMSphereView::onOk()
 {
-	/*
 	PolygonMeshBuilder builder;
 	builder.add( sphereView.getValue(), unumView.getValue(), vnumView.getValue() );
 
@@ -45,5 +44,4 @@ void PMSphereView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 	getWorld()->updateViewModel();
-	*/
 }

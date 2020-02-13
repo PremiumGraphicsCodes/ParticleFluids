@@ -20,11 +20,11 @@ public:
 
 	void add(const Math::Triangle3d& triangle);
 
-	void add(const Math::Quad3d& surface);
+	void add(const Math::Quad3d& quad);
 
 	void add(const Math::Box3d& box);
 
-	//void add(const TriangleMesh& mesh);
+	void add(const Math::Sphere3d& sphere, const int unum, const int vnum);
 
 	std::unique_ptr<PolygonMesh> build();
 
