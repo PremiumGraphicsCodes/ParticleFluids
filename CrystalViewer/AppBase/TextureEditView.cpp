@@ -13,6 +13,11 @@ TextureEditView::TextureEditView(const std::string& name, World* model, Canvas* 
 	idView("Id"),
 	filePathView("FilePath")
 {
+	filePathView.addFilter("*.bmp");
+	filePathView.addFilter("*.png");
+	filePathView.addFilter("*.jpg");
+	filePathView.addFilter("*.jpeg");
+
 	add(&idView);
 	add(&filePathView);
 }

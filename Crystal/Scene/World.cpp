@@ -112,6 +112,7 @@ void World::updateViewModel()
 	this->viewModel.object.clear();
 	ViewModel vm;
 	for (auto& s : scenes) {
+		s->send();
 		s->toViewModel(vm.object);
 		s->toIdViewModel(vm.parentId, vm.childId);
 	}
