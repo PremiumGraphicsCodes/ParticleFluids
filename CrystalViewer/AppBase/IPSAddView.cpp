@@ -5,8 +5,18 @@
 #include "../Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Command;
+
+IPSAddView::IPSAddView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
+	matrixView("Matrix", Math::Identity()),
+	attributeView("PSAttribute")
+{
+	add(&matrixView);
+	add(&attributeView);
+}
 
 void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 {

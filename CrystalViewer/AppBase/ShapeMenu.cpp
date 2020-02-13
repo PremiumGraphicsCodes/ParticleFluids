@@ -19,6 +19,7 @@
 #include "PMBoxView.h"
 #include "PMQuadView.h"
 #include "PMSphereView.h"
+#include "PMConeView.h"
 
 #include "ScaleView.h"
 #include "TranslateView.h"
@@ -98,6 +99,9 @@ void PMGenerationMenu::onShow()
 		}
 		if (ImGui::MenuItem("PMSphere")) {
 			control->setWindow(new PMSphereView("PMSphere", world, canvas));
+		}
+		if (ImGui::MenuItem("PMCone")) {
+			control->setWindow(new PMConeView("PMCone", world, canvas));
 		}
 		ImGui::EndMenu();
 	}

@@ -20,7 +20,6 @@ private:
 private:
 	Box3dView boxView;
 	IntView countView;
-	BoolView isVolumeView;
 };
 
 	}

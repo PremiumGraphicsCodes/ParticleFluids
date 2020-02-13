@@ -13,12 +13,10 @@ using namespace Crystal::UI;
 PSBoxView::PSBoxView(const std::string& name, World* world, Canvas* canvas) :
 	IPSAddView("PSBox", world, canvas),
 	boxView("Box"),
-	countView("Count", 10000),
-	isVolumeView("Volume", false)
+	countView("Count", 10000)
 {
 	add(&boxView);
 	add(&countView);
-	add(&isVolumeView);
 };
 
 void PSBoxView::onOk()
@@ -27,20 +25,11 @@ void PSBoxView::onOk()
 	std::mt19937 mt{ std::random_device{}() };
 	std::uniform_real_distribution<double> dist(0.0, 1.0);
 	std::vector<Vector3dd> positions;
-	if (isVolumeView.getValue()) {
-		for (int i = 0; i < countView.getValue(); ++i) {
-			const auto u = dist(mt);
-			const auto v = dist(mt);
-			const auto w = dist(mt);
-			positions.push_back(b.getPosition(u, v, w));
-		}
-	}
-	else {
-		for (int i = 0; i < countView.getValue(); ++i) {
-			const auto u = dist(mt);
-			const auto v = dist(mt);
-			positions.push_back(b.getPosition(1.0, u, v));
-		}
+	for (int i = 0; i < countView.getValue(); ++i) {
+		const auto u = dist(mt);
+		const auto v = dist(mt);
+		const auto w = dist(mt);
+		positions.push_back(b.getPosition(u, v, w));
 	}
 	IPSAddView::addParticleSystem(positions);
 }

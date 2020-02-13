@@ -51,12 +51,10 @@ void FaceGroupScene::toViewModel(SceneViewModel& viewModel) const
 				const auto& v = vs[vId];
 				const auto& p = ps[v.positionId];
 				const auto& n = ns[v.normalId];
-				auto texCoord = tcs[v.texCoordId];
-//				Math::Vector2df texCoord(0, 0);
-				/*
+				Math::Vector2df texCoord(0, 0);
 				if (v.texCoordId != -1) {
+					texCoord = tcs[v.texCoordId];
 				}
-				*/
 				buffer.addVertex(p, n, texCoord, materialId);
 			}
 		}

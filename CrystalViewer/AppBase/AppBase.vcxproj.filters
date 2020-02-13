@@ -263,6 +263,9 @@
       <Filter>File</Filter>
     </ClCompile>
     <ClCompile Include="ImageView.cpp" />
+    <ClCompile Include="PMConeView.cpp">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -578,6 +581,9 @@
       <Filter>File</Filter>
     </ClInclude>
     <ClInclude Include="ImageView.h" />
+    <ClInclude Include="PMConeView.h">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">

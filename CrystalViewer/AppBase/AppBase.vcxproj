@@ -49,6 +49,7 @@
     <ClCompile Include="Matrix4dView.cpp" />
     <ClCompile Include="PickUICtrl.cpp" />
     <ClCompile Include="Plane3dView.cpp" />
+    <ClCompile Include="PMConeView.cpp" />
     <ClCompile Include="Quad3dView.cpp" />
     <ClCompile Include="Ray3dView.cpp" />
     <ClCompile Include="RotateView.cpp" />
@@ -129,6 +130,7 @@
     <ClInclude Include="Matrix2dView.h" />
     <ClInclude Include="Matrix4dView.h" />
     <ClInclude Include="PickUICtrl.h" />
+    <ClInclude Include="PMConeView.h" />
     <ClInclude Include="RotateView.h" />
     <ClInclude Include="ScaleView.h" />
     <ClInclude Include="SelectionMenu.h" />
