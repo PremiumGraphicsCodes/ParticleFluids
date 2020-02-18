@@ -97,7 +97,7 @@ std::list<IScene*> IScene::findScenes(const SceneType type)
 	if (this->getType() == type) {
 		scenes.push_back(this);
 	}
-	scenes.push_back(this);
+	//scenes.push_back(this);
 	for (auto c : children) {
 		auto ss = c->findScenes(type);
 		scenes.splice(scenes.end(), ss);

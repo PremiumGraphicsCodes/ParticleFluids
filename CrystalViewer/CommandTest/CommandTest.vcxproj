@@ -38,6 +38,7 @@
   <ItemGroup>
     <ClCompile Include="CommandFactoryTest.cpp" />
     <ClCompile Include="CommandTest.cpp" />
+    <ClCompile Include="FileExportCommand.cpp" />
     <ClCompile Include="ParticleSystemCreateCommand.cpp" />
     <ClCompile Include="PCDFileExportCommandTest.cpp" />
     <ClCompile Include="test.cpp" />

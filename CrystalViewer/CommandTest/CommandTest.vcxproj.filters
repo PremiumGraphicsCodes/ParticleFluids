@@ -11,6 +11,9 @@
     <ClCompile Include="ParticleSystemCreateCommand.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="FileExportCommand.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

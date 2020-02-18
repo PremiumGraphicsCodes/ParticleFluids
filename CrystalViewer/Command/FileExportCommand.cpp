@@ -11,10 +11,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 FileExportCommand::Args::Args() :
-	ids(FileExportLabels::IdsLabel, {}),
 	filePath(FileExportLabels::FilePathLabel, "")
 {
-	add(&ids);
 	add(&filePath);
 }
 
@@ -68,7 +66,12 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	case FileFormat::PCD :
 	{
 		PCDFileExportCommand command;
-		command.setArg(::FileExportLabels::IdsLabel, args.ids.getValue());
+		std::vector<int> ids;
+		auto scenes = world->getObjects()->findScenes(SceneType::ParticleSystemScene);
+		for (auto s : scenes) {
+			ids.push_back(s->getId());
+		}
+		command.setArg(::FileExportLabels::IdsLabel, ids);
 		command.setArg(::FileExportLabels::FilePathLabel, args.filePath.getValue());
 		return command.execute(world);
 	}

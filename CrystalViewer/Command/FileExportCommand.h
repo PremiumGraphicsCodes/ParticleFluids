@@ -16,7 +16,6 @@ public:
 	{
 		Args();
 
-		Arg< std::vector<int> > ids;
 		Arg< std::string > filePath;
 	};
 
