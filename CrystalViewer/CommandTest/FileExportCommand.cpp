@@ -1,7 +1,9 @@
 #include "pch.h"
 
-#include "../Command/CommandFactory.h"
-#include "../Command/Public/ParticleSystemCreateLabels.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/ParticleAttribute.h"
+
+#include "../Command/Command.h"
 #include "../Command/Public/FileExportLabels.h"
 
 using namespace Crystal::Math;
@@ -10,18 +12,15 @@ using namespace Crystal::Command;
 
 TEST(FileExportCommand, TestExportPCD)
 {
-	CommandFactory factory;
 	World world;
 
 	const std::vector<Vector3dd> positions = { Vector3dd(0,0,0) };
-	auto command = factory.create(ParticleSystemCreateLabels::ParticleSystemAddLabel);
-	command->setArg(ParticleSystemCreateLabels::PositionsLabel, positions);
-	EXPECT_TRUE(command->execute(&world));
-//	const auto newId = std::any_cast<int>(command->getResult(ParticleSystemCreateLabels::NewIdLabel));
+	auto ps = world.getSceneFactory()->createParticleSystemScene(positions, ParticleAttribute(), "");
+	world.getObjects()->addScene(ps);
 
 	const std::string filePath = "./TestExport.pcd";
-	command = factory.create(::FileExportLabels::FileExportCommandLabel);
+	Crystal::Command::Command command(::FileExportLabels::FileExportCommandLabel);
 	//command->setArg(::FileExportLabels::IdsLabel, ids);
-	command->setArg(::FileExportLabels::FilePathLabel, filePath);
-	EXPECT_TRUE(command->execute(&world));
+	command.setArg(::FileExportLabels::FilePathLabel, filePath);
+	EXPECT_TRUE(command.execute(&world));
 }
