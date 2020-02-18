@@ -14,12 +14,18 @@
     <ClCompile Include="FileExportCommand.cpp">
       <Filter>File</Filter>
     </ClCompile>
+    <ClCompile Include="PCDFileImportCommandTest.cpp">
+      <Filter>File\PCD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="PCDFileImportTest.pcd">
+      <Filter>File\PCD</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="File">
