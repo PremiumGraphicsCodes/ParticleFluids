@@ -8,6 +8,7 @@ namespace FileImportLabels
 	PublicLabel FilePathLabel = "FilePath";
 	PublicLabel IsOkLabel = "IsOk";
 	PublicLabel IsBinaryLabel = "IsBinary";
+	PublicLabel NewIdLabel = "NewId";
 
 	PublicLabel PCDFileImportCommandLabel = "PCDFileImport";
 	PublicLabel OBJFileImportCommandLabel = "OBJFileImport";

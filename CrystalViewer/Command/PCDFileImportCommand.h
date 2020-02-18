@@ -20,7 +20,8 @@ public:
 	{
 		Results();
 
-		Result< bool > isOk;
+		Result<int> newId;
+		//Result< int > newId;
 	};
 
 	PCDFileImportCommand() :

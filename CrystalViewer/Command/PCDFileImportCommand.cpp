@@ -16,9 +16,9 @@ PCDFileImportCommand::Args::Args() :
 }
 
 PCDFileImportCommand::Results::Results() :
-	isOk(FileImportLabels::IsOkLabel, false)
+	newId(FileImportLabels::NewIdLabel, -1)
 {
-	add(&isOk);
+	add(&newId);
 }
 
 std::string PCDFileImportCommand::getName()
@@ -34,9 +34,11 @@ bool PCDFileImportCommand::execute(Crystal::Scene::World* scene)
 		ParticleAttribute attr;
 		attr.color = glm::vec4(0, 0, 0, 0);
 		attr.size = 1.0;
-		scene->getObjects()->addScene(scene->getSceneFactory()->createParticleSystemScene(positions, attr, "PCD"));
-		results.isOk.setValue( true );
-		return false;
+		auto s = scene->getSceneFactory()->createParticleSystemScene(positions, attr, "PCD");
+		scene->getObjects()->addScene(s);
+		results.newId.setValue(s->getId());
+		//results.isOk.setValue( true );
+		return true;
 	}
-	return true;
+	return false;
 }
