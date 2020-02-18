@@ -40,6 +40,8 @@ bool PCDFileExportCommand::execute(World* world)
 			file.data.positions.push_back(p->getPosition());
 		}
 	}
+	file.header.width = file.data.positions.size();
+	file.header.points = file.data.positions.size();
 	PCDFileWriter writer;
 	std::filesystem::path filePath(args.filePath.getValue());
 	const auto isOk = writer.write(filePath, file);
