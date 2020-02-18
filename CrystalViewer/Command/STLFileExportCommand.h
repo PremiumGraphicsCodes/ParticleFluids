@@ -15,7 +15,7 @@ public:
 
 		Arg< std::vector<int> > ids;
 		Arg< bool > isBinary;
-		Arg< std::filesystem::path > filePath;
+		Arg< std::string > filePath;
 	};
 
 	struct Results : IResults

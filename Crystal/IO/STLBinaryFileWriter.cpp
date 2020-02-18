@@ -17,7 +17,7 @@ namespace {
 bool STLBinaryFileWriter::write(const std::filesystem::path& filePath, const STLFile& stl)
 {
 	std::ofstream stream(filePath, std::ios::binary);
-	if (stream.is_open()) {
+	if (!stream.is_open()) {
 		return false;
 	}
 	return write(stream, stl);
