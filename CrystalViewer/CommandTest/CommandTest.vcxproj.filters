@@ -17,11 +17,11 @@
     <ClCompile Include="PCDFileImportCommandTest.cpp">
       <Filter>File\PCD</Filter>
     </ClCompile>
-    <ClCompile Include="STLFileExportCommand.cpp">
-      <Filter>File\STL</Filter>
-    </ClCompile>
     <ClCompile Include="PolygonMeshCreateCommandTest.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="STLFileExportCommandTest.cpp">
+      <Filter>File\STL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +31,9 @@
     <None Include="packages.config" />
     <None Include="PCDFileImportTest.pcd">
       <Filter>File\PCD</Filter>
+    </None>
+    <None Include="STLFileImportTest.stl">
+      <Filter>File\STL</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

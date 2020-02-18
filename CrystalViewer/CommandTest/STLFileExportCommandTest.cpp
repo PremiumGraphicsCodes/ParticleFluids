@@ -12,7 +12,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-TEST(STLFileExportCommand, TestExecute)
+TEST(STLFileExportCommandTest, TestExecute)
 {
 	World world;
 
