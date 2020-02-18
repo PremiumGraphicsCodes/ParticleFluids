@@ -29,9 +29,7 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	command.setArg(ParticleSystemCreateLabels::MatrixLabel, matrixView.getValue());
 	command.execute(getWorld());
 
+	getWorld()->updateViewModel();
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
-
-	//getCanvas()->fitCamera(getWorld()->getBoundingBox());
-
 }
