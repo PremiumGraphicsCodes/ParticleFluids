@@ -13,7 +13,7 @@ public:
 	{
 		Args();
 
-		Arg< int > id;
+		Arg< std::vector<int> > ids;
 		Arg< bool > isBinary;
 		Arg< std::filesystem::path > filePath;
 	};
@@ -22,7 +22,7 @@ public:
 	{
 		Results();
 
-		Result< bool > isOk;
+//		Result< bool > isOk;
 	};
 
 	STLFileExportCommand() :
@@ -32,11 +32,6 @@ public:
 	static std::string getName();
 
 	bool execute(Scene::World* scene) override;
-
-private:
-	void exportAscii(Scene::PolygonMeshScene& polygon);
-
-	void exportBinary(Scene::PolygonMeshScene& polygon);
 
 private:
 	Args args;

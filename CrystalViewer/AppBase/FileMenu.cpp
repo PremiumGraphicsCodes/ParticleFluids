@@ -56,9 +56,8 @@ void FileMenu::onShow()
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
 				Crystal::Command::Command command(FileExportLabels::FileExportCommandLabel);
-				command.setArg(FileExportLabels::FilePathLabel, std::filesystem::path(filename));
-				command.execute(model);
-				bool isOk = std::any_cast<bool>( command.getResult(FileExportLabels::IsOkLabel) );
+				command.setArg(FileExportLabels::FilePathLabel, filename);
+				const auto isOk = command.execute(model);
 				if (!isOk) {
 					std::cout << "export failed." << std::endl;
 				}

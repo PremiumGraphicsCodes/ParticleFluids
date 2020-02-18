@@ -2,7 +2,6 @@
 
 #include "IArgs.h"
 #include "ICommand.h"
-#include <filesystem>
 #include <vector>
 
 #include "../../Crystal/IO/FileFormat.h"
@@ -17,15 +16,13 @@ public:
 	{
 		Args();
 
-		Arg< int > id;
+		Arg< std::vector<int> > ids;
 		Arg< std::string > filePath;
 	};
 
 	struct Results : IResults
 	{
 		Results();
-
-		Result< bool > isOk;
 	};
 
 	FileExportCommand() :
@@ -37,8 +34,7 @@ public:
 	bool execute(Scene::World* scene) override;
 
 private:
-	void exportFile(const std::filesystem::path& filePath, const IO::FileFormat format, Scene::World* world);
-
+	bool exportFile(const std::filesystem::path& filePath, const IO::FileFormat format, Scene::World* world);
 
 private:
 	Args args;

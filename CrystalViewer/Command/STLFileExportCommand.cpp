@@ -12,19 +12,19 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 STLFileExportCommand::Args::Args() :
-	id(FileExportLabels::IdLabel, -1),
+	ids(FileExportLabels::IdsLabel, {}),
 	isBinary(FileExportLabels::IsBinaryLabel, false),
 	filePath(FileExportLabels::FilePathLabel, "")
 {
-	add(&id);
+	add(&ids);
 	add(&isBinary);
 	add(&filePath);
 }
 
-STLFileExportCommand::Results::Results() :
-	isOk(FileExportLabels::IsOkLabel, false)
+STLFileExportCommand::Results::Results()// :
+//	isOk(FileExportLabels::IsOkLabel, false)
 {
-	add(&isOk);
+//	add(&isOk);
 }
 
 std::string STLFileExportCommand::getName()
@@ -32,65 +32,42 @@ std::string STLFileExportCommand::getName()
 	return FileExportLabels::STLFileExportCommandLabel;
 }
 
-bool STLFileExportCommand::execute(World* scene)
+bool STLFileExportCommand::execute(World* world)
 {
-	auto mesh = scene->getObjects()->findSceneById<PolygonMeshScene*>(args.id.getValue());
-	if (args.isBinary.getValue()) {
-		exportBinary(*mesh);
-	}
-	else {
-		exportAscii(*mesh);
-	}
-	return true;
-}
+	const auto ids = args.ids.getValue();
 
-void STLFileExportCommand::exportAscii(PolygonMeshScene& polygonMesh)
-{
+	STLFile stl;
 	std::vector<Scene::TriangleFace> fs;
-	const auto& positions = polygonMesh.getShape()->getPositions();
-	const auto& faces = polygonMesh.getShape()->getFaces();
-	for (const auto& f : faces) {
-		/*
-		if (f->isDegenerated(1.0e-12f)) {
-			continue;
+	for (const auto& id : ids) {
+		auto polygonMesh = world->getObjects()->findSceneById<PolygonMeshScene*>(id);
+		const auto& positions = polygonMesh->getShape()->getPositions();
+		const auto& faces = polygonMesh->getShape()->getFaces();
+		for (const auto& f : faces) {
+			/*
+			if (f.isDegenerated(1.0e-12f)) {
+				continue;
+			}
+			*/
+			const auto& vIds = f.getVertexIds();
+			const auto v1 = positions[vIds[0]];
+			const auto v2 = positions[vIds[1]];
+			const auto v3 = positions[vIds[2]];
+			TriangleFace ff({ v1,v2,v3 });
+			//const auto area = ff.toTriangle().getArea();
+			fs.push_back(ff);
 		}
-		*/
-		const auto& vIds = f.getVertexIds();
-		const auto v1 = positions[ vIds[0] ];
-		const auto v2 = positions[ vIds[1] ];
-		const auto v3 = positions[ vIds[2] ];
-		TriangleFace ff({ v1,v2,v3 });
-		//const auto area = ff.toTriangle().getArea();
-		fs.push_back(ff);
 	}
-	STLASCIIFileWriter writer;
-	STLFile stl;
-	stl.faces = fs;
-	writer.write(args.filePath.getValue(), stl);
-}
-
-void STLFileExportCommand::exportBinary(PolygonMeshScene& polygonMesh)
-{
-	std::vector<TriangleFace> fs;
-	const auto& positions = polygonMesh.getShape()->getPositions();
-	const auto& faces = polygonMesh.getShape()->getFaces();
-	for (const auto& f : faces) {
-		/*
-		if (f->isDegenerated(1.0e-12f)) {
-			continue;
-		}
-		*/
-		const auto& vIds = f.getVertexIds();
-		const auto v1 = positions[vIds[0]];
-		const auto v2 = positions[vIds[1]];
-		const auto v3 = positions[vIds[2]];
-		TriangleFace ff({ v1,v2,v3 });
-		//const auto area = ff.toTriangle().getArea();
-		fs.push_back(ff);
-	}
-	STLFile stl;
 	stl.faces = fs;
 	stl.faceCount = fs.size();
-	STLBinaryFileWriter writer;
-	writer.write(args.filePath.getValue(), stl);
+	const auto scenes = world->getObjects()->findScenes(SceneType::PolygonMeshScene);
+
+	if (args.isBinary.getValue()) {
+		STLASCIIFileWriter writer;
+		return writer.write(args.filePath.getValue(), stl);
+	}
+	for (auto scene : scenes) {
+		STLBinaryFileWriter writer;
+		return writer.write(args.filePath.getValue(), stl);
+	}
+	return false;
 }

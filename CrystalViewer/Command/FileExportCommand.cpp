@@ -11,17 +11,16 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 FileExportCommand::Args::Args() :
-	id(FileExportLabels::IdLabel, -1),
+	ids(FileExportLabels::IdsLabel, {}),
 	filePath(FileExportLabels::FilePathLabel, "")
 {
-	add(&id);
+	add(&ids);
 	add(&filePath);
 }
 
-FileExportCommand::Results::Results() :
-	isOk(FileExportLabels::IsOkLabel, false)
+FileExportCommand::Results::Results()
 {
-	add(&isOk);
+	//add(&isOk);
 }
 
 std::string FileExportCommand::getName()
@@ -33,20 +32,17 @@ bool FileExportCommand::execute(World* scene)
 {
 	const auto filePath(args.filePath.getValue());
 	const auto format = Crystal::IO::getFileFormat(filePath);
-	exportFile(filePath, format, scene);
-	return true;
+	return exportFile(filePath, format, scene);
 }
 
-void FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format, World* world)
+bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format, World* world)
 {
 	switch (format) {
 	case FileFormat::OBJ :
 	{
 		OBJFileExportCommand command;
-		command.setArg("filePath", args.filePath.getValue());
-		command.execute(world);
-		this->results.isOk.setValue( std::any_cast<bool>( command.getResult("IsOk") ) );
-		break;
+		command.setArg(::FileExportLabels::FilePathLabel, args.filePath.getValue());
+		return command.execute(world);
 	}
 	/*
 	case FileFormat::MTL :
@@ -60,31 +56,26 @@ void FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 		STLFileExportCommand command;
 		command.setArg("filePath", args.filePath.getValue());
 		command.setArg("isBinary", false);
-		command.execute(world);
-		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
-		break;
+		return command.execute(world);
 	}
 	case FileFormat::STL_BINARY :
 	{
 		STLFileExportCommand command;
 		command.setArg("filePath", args.filePath.getValue());
 		command.setArg("isBinary", true);
-
-		command.execute(world);
-		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
-		break;
+		return command.execute(world);
 	}
 	case FileFormat::PCD :
 	{
 		PCDFileExportCommand command;
-		command.setArg("Id", args.id.getValue());
-		command.setArg("FilePath", args.filePath.getValue());
-		command.execute(world);
-		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
-		break;
+		command.setArg(::FileExportLabels::IdsLabel, args.ids.getValue());
+		command.setArg(::FileExportLabels::FilePathLabel, args.filePath.getValue());
+		return command.execute(world);
 	}
 	default :
 		assert(false);
+		return false;
 	}
+	return false;
 }
 

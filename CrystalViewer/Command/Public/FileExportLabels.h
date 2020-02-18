@@ -6,8 +6,7 @@ namespace FileExportLabels
 {
 	PublicLabel FileExportCommandLabel = "FileExport";
 	PublicLabel FilePathLabel = "FilePath";
-	PublicLabel IsOkLabel = "IsOk";
-	PublicLabel IdLabel = "Id";
+	PublicLabel IdsLabel = "Ids";
 	PublicLabel IsBinaryLabel = "IsBinary";
 
 	PublicLabel STLFileExportCommandLabel = "STLFileExport";

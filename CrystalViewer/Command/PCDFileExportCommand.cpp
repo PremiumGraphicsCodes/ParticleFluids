@@ -10,17 +10,16 @@ using namespace Crystal::Command;
 using namespace Crystal::IO;
 
 PCDFileExportCommand::Args::Args() :
-	id(FileExportLabels::IdLabel, -1),
+	ids(FileExportLabels::IdsLabel, {}),
 	filePath(FileExportLabels::FilePathLabel, "")
 {
-	add(&id);
+	add(&ids);
 	add(&filePath);
 }
 
-PCDFileExportCommand::Results::Results() :
-	isOk(FileExportLabels::IsOkLabel, false)
+PCDFileExportCommand::Results::Results()
 {
-	add(&isOk);
+//	add(&isOk);
 }
 
 std::string PCDFileExportCommand::getName()
@@ -28,21 +27,22 @@ std::string PCDFileExportCommand::getName()
 	return FileExportLabels::PCDFileExportCommandLabel;
 }
 
-bool PCDFileExportCommand::execute(World* scene)
+bool PCDFileExportCommand::execute(World* world)
 {
-	auto particles = scene->getObjects()->findSceneById<ParticleSystemScene*>(args.id.getValue());
-	if (particles == nullptr) {
-		results.isOk.setValue(false);
-		return false;
-	}
+	const auto& ids = args.ids.getValue();
+	auto scenes = world->getObjects()->findScenes(SceneType::ParticleSystemScene);
+
 	PCDFile file;
-	const auto& ps = particles->getShape()->getParticles();
-	for (auto p : ps) {
-		file.data.positions.push_back( p->getPosition() );
+	for (const auto& id : ids) {
+		auto scene = world->getObjects()->findSceneById<ParticleSystemScene*>(id);
+		const auto& ps = scene->getShape()->getParticles();
+		for (auto p : ps) {
+			file.data.positions.push_back(p->getPosition());
+		}
 	}
 	PCDFileWriter writer;
 	std::filesystem::path filePath(args.filePath.getValue());
-	bool isOk = writer.write(filePath, file);
-	this->results.isOk.setValue( isOk );
-	return true;
+	const auto isOk = writer.write(filePath, file);
+	//this->results.isOk.setValue( isOk );
+	return isOk;
 }
