@@ -9,6 +9,7 @@ namespace FileExportLabels
 	PublicLabel IdsLabel = "Ids";
 	PublicLabel IsBinaryLabel = "IsBinary";
 
-	PublicLabel STLFileExportCommandLabel = "STLFileExport";
 	PublicLabel PCDFileExportCommandLabel = "PCDFileExport";
+	PublicLabel STLFileExportCommandLabel = "STLFileExport";
+	PublicLabel OBJFileExportCommandLabel = "OBJFileExport";
 }

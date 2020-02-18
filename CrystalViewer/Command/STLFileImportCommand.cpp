@@ -30,7 +30,7 @@ STLFileImportCommand::Results::Results() :
 
 std::string STLFileImportCommand::getName()
 {
-	return FileImportLabels::FileImportCommandLabel;
+	return FileImportLabels::STLFileImportCommandLabel;
 }
 
 bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
@@ -38,9 +38,13 @@ bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 	if (!args.isBinary.getValue()) {
 		STLASCIIFileReader reader;
 		if (reader.read(args.filePath.getValue())) {
+			/*
 			PolygonMeshBuilder builder;
 			const auto& stl = reader.getSTL();
-			/*
+			scene->getSceneFactory()->createPolygonMeshScene()
+			scene->addScene( )
+			builder.add(stl.)
+			scene->addScene()
 			TriangleMesh mesh(stl.faces);
 			builder.add(mesh);
 			parent->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );

@@ -39,11 +39,13 @@
     <ClCompile Include="CommandFactoryTest.cpp" />
     <ClCompile Include="CommandTest.cpp" />
     <ClCompile Include="FileExportCommand.cpp" />
+    <ClCompile Include="OBJFileExportCommandTest.cpp" />
     <ClCompile Include="ParticleSystemCreateCommand.cpp" />
     <ClCompile Include="PCDFileExportCommandTest.cpp" />
     <ClCompile Include="PCDFileImportCommandTest.cpp" />
     <ClCompile Include="PolygonMeshCreateCommandTest.cpp" />
     <ClCompile Include="STLFileExportCommandTest.cpp" />
+    <ClCompile Include="STLFileImportCommandTest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -23,6 +23,12 @@
     <ClCompile Include="STLFileExportCommandTest.cpp">
       <Filter>File\STL</Filter>
     </ClCompile>
+    <ClCompile Include="STLFileImportCommandTest.cpp">
+      <Filter>File\STL</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFileExportCommandTest.cpp">
+      <Filter>File\OBJ</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -57,6 +63,9 @@
     </Filter>
     <Filter Include="Scene\Shape\PolygonMesh">
       <UniqueIdentifier>{f940af74-3d6a-4090-aada-c00af6316b1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File\OBJ">
+      <UniqueIdentifier>{783b3d5b-826f-4410-8836-479ca81c3286}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

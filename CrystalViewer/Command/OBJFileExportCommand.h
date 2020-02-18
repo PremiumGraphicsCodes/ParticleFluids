@@ -13,6 +13,7 @@ public:
 	{
 		Args();
 
+		Arg< std::vector<int> > ids;
 		Arg< std::filesystem::path > filePath;
 	};
 
@@ -20,7 +21,7 @@ public:
 	{
 		Results();
 
-		Result< bool > isOk;
+		//Result< bool > isOk;
 	};
 
 	OBJFileExportCommand() :

@@ -5,25 +5,27 @@
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
+#include "Public/FileExportLabels.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::IO;
 using namespace Crystal::Command;
 
 OBJFileExportCommand::Args::Args() :
-	filePath("FilePath", "")
+	ids(FileExportLabels::IdsLabel, {}),
+	filePath(FileExportLabels::FilePathLabel, "")
 {
+	add(&ids);
 	add(&filePath);
 }
 
-OBJFileExportCommand::Results::Results() :
-	isOk("IsOk", false)
+OBJFileExportCommand::Results::Results()
 {
-	add(&isOk);
 }
 
 std::string OBJFileExportCommand::getName()
 {
-	return "OBJFileExport";
+	return FileExportLabels::OBJFileExportCommandLabel;
 }
 
 bool OBJFileExportCommand::execute(World* scene)
