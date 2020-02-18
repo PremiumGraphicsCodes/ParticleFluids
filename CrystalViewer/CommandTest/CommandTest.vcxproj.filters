@@ -8,6 +8,9 @@
     <ClCompile Include="PCDFileExportCommandTest.cpp">
       <Filter>File\PCD</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleSystemCreateCommand.cpp">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -24,6 +27,15 @@
     </Filter>
     <Filter Include="File\PCD">
       <UniqueIdentifier>{75b5c49a-2979-4e74-8593-e9ba6ed3d6e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{2b2dda4a-30a9-4df2-ac65-537c412f2345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape">
+      <UniqueIdentifier>{5bf87c77-4692-43d1-aa1e-d0f6d1b65837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\ParticleSystem">
+      <UniqueIdentifier>{bc71f262-541d-49cb-aa90-01b8b2551aa1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

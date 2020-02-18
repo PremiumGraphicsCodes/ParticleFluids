@@ -17,14 +17,13 @@ TEST(PCDFileExportCommand, TestExecute)
 	const std::vector<Vector3dd> positions = { Vector3dd(0,0,0) };
 	auto command = factory.create(ParticleSystemCreateLabels::ParticleSystemAddLabel);
 	command->setArg(ParticleSystemCreateLabels::PositionsLabel, positions);
-	command->execute(&world);
+	EXPECT_TRUE( command->execute(&world) );
 
-	const auto newId = std::any_cast<int>( command->getResult(ParticleSystemCreateLabels::NewIdLabel) );
-	
+	const auto newId = std::any_cast<int>( command->getResult(ParticleSystemCreateLabels::NewIdLabel) );	
 	const std::vector<int> newIds = { newId };
 	const std::string filePath = "./PCDFileExportTest.pcd";
 	command = factory.create(FileExportLabels::PCDFileExportCommandLabel);
 	command->setArg(FileExportLabels::IdsLabel, newIds);
 	command->setArg(FileExportLabels::FilePathLabel, filePath);
-	command->execute(&world);
+	EXPECT_TRUE( command->execute(&world) );
 }
