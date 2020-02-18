@@ -38,6 +38,7 @@
   <ItemGroup>
     <ClCompile Include="CommandFactoryTest.cpp" />
     <ClCompile Include="CommandTest.cpp" />
+    <ClCompile Include="PCDFileExportCommandTest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
