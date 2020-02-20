@@ -8,9 +8,6 @@
     <ClCompile Include="PCDFileExportCommandTest.cpp">
       <Filter>File\PCD</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleSystemCreateCommand.cpp">
-      <Filter>Scene\Shape\ParticleSystem</Filter>
-    </ClCompile>
     <ClCompile Include="FileExportCommand.cpp">
       <Filter>File</Filter>
     </ClCompile>
@@ -28,6 +25,12 @@
     </ClCompile>
     <ClCompile Include="OBJFileExportCommandTest.cpp">
       <Filter>File\OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrameCreateCommandTest.cpp">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemCreateCommandTest.cpp">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +69,9 @@
     </Filter>
     <Filter Include="File\OBJ">
       <UniqueIdentifier>{783b3d5b-826f-4410-8836-479ca81c3286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\WireFrame">
+      <UniqueIdentifier>{8ecc9919-d7eb-4bda-97eb-1dbae90c367c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

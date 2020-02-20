@@ -10,7 +10,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-TEST(PolygonMeshCreateCommand, TestExecute)
+TEST(PolygonMeshCreateCommandTest, TestExecute)
 {
 	World world;
 

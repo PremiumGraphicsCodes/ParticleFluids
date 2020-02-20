@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-TEST(ParticleSystemCreateCommand, TestExecute)
+TEST(ParticleSystemCreateCommandTest, TestExecute)
 {
 	World world;
 
