@@ -60,7 +60,6 @@ void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int v
 		grid.push_back(g);
 	}
 	build(grid);
-
 }
 
 void WireFrameBuilder::build(const Cone3d& cone, const int unum)
@@ -77,6 +76,37 @@ void WireFrameBuilder::build(const Cone3d& cone, const int unum)
 	for (int i = 0; i < vertices.size() - 1; ++i) {
 		edges.push_back(WireFrameEdge(vertices[i], vertices[i + 1]));
 	}
+}
+
+void WireFrameBuilder::build(const Cylinder3d& cylinder, const int unum)
+{
+	const auto bottomCenter = createPosition(cylinder.getPosition(0.0, 0.0, 0.0));
+	const auto topCenter = createPosition(cylinder.getPosition(0.0, 0.0, 1.0));
+
+	std::vector<int> bottoms;
+	std::vector<int> tops;
+	for (auto u = 0; u < unum; ++u) {
+		const auto p = (double)u / (double)unum;
+		bottoms.push_back(createPosition(cylinder.getPosition(1.0, p, 0.0)));
+		tops.push_back(createPosition(cylinder.getPosition(1.0, p, 1.0)));
+	}
+	// create bottom circle.
+	for (auto u = 0; u < unum; ++u) {
+		edges.push_back(WireFrameEdge(bottomCenter, bottoms[u]));
+	}
+	// create top circle.
+	for (auto u = 0; u < unum; ++u) {
+		edges.push_back(WireFrameEdge(topCenter, tops[u]));
+	}
+	// create side.
+	for (auto u = 0; u < unum; ++u) {
+		edges.push_back(WireFrameEdge(bottoms[u], tops[u]));
+	}
+}
+
+void WireFrameBuilder::build(const Torus3d& torus, const int unu, const int vnum)
+{
+
 }
 
 void WireFrameBuilder::build(const std::vector<std::vector<int>>& grid)

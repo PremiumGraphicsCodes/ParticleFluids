@@ -12,6 +12,8 @@ namespace Crystal {
 		class Box3d;
 		class Sphere3d;
 		class Cone3d;
+		class Cylinder3d;
+		class Torus3d;
 	}
 	namespace Shape {
 		class WireFrame;
@@ -26,6 +28,10 @@ public:
 	void build(const Math::Sphere3d& sphere, const int unum, const int vnum);
 
 	void build(const Math::Cone3d& cone, const int unum);
+
+	void build(const Math::Cylinder3d& cylinder, const int unum);
+
+	void build(const Math::Torus3d& torus, const int unu, const int vnum);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
