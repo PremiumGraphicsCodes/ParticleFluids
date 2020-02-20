@@ -12,17 +12,15 @@ using namespace Crystal::UI;
 WFConeView::WFConeView(const std::string& name, World* world, Canvas* canvas) :
 	IWFAddView(name, world, canvas),
 	coneView("Cone"),
-	unumView("UNum", 12),
-	vnumView("VNum", 12)
+	unumView("UNum", 12)
 {
 	add(&unumView);
-	add(&vnumView);
 	add(&coneView);
 }
 
 void WFConeView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(coneView.getValue(), unumView.getValue(), vnumView.getValue(), 10);
+	builder.build(coneView.getValue(), unumView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

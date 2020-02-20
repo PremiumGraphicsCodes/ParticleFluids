@@ -22,7 +22,9 @@ WFCylinderView::WFCylinderView(const std::string& name, World* world, Canvas* ca
 
 void WFCylinderView::onOk()
 {
+	/*
 	WireFrameBuilder builder;
 	builder.build(cylinderView.getValue(), unumView.getValue(), vnumView.getValue(), 10);
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
+	*/
 }

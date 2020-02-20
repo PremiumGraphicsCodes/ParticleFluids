@@ -19,7 +19,6 @@ private:
 
 private:
 	IntView unumView;
-	IntView vnumView;
 	Cone3dView coneView;
 };
 

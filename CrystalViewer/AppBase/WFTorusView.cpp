@@ -22,7 +22,9 @@ WFTorusView::WFTorusView(const std::string& name, World* world, Canvas* canvas) 
 
 void WFTorusView::onOk()
 {
+	/*
 	WireFrameBuilder builder;
 	builder.build(torusView.getValue(), unumView.getValue(), vnumView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
+	*/
 }
