@@ -1,14 +1,17 @@
 #pragma once
 
-#include "../Math/ICurve3d.h"
-#include "../Math/ISurface3d.h"
-#include "../Math/IVolume3d.h"
+#include <vector>
+#include <memory>
+
+#include "../Math/Vector3d.h"
 #include "WireFrameEdge.h"
 
 namespace Crystal {
 	namespace Math {
 		class Line3dd;
 		class Box3d;
+		class Sphere3d;
+		class Cone3d;
 	}
 	namespace Shape {
 		class WireFrame;
@@ -16,13 +19,13 @@ namespace Crystal {
 class WireFrameBuilder
 {
 public:
+	void build(const Math::Line3dd& line);
+
 	void build(const Math::Box3d& box);
 
-	void build(const Math::ICurve3d& curve);
+	void build(const Math::Sphere3d& sphere, const int unum, const int vnum);
 
-	void build(const Math::ISurface3d& curve, const int unum, const int vnum);
-
-	void build(const Math::IVolume3d& curve, const int unum, const int vnum, const int wnum);
+	void build(const Math::Cone3d& cone, const int unum, const int vnum, const int wnum);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 

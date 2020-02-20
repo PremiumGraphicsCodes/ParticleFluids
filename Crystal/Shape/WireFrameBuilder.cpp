@@ -12,6 +12,14 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
+void WireFrameBuilder::build(const Line3dd& line)
+{
+	const auto p0 = createPosition( line.getStart() );
+	const auto p1 = createPosition( line.getEnd() );
+
+	edges.push_back(WireFrameEdge(p0, p1));
+}
+
 void WireFrameBuilder::build(const Box3d& box)
 {
 	const auto p0 = createPosition(box.getPosition(0, 0, 0));
@@ -39,22 +47,15 @@ void WireFrameBuilder::build(const Box3d& box)
 	edges.push_back(WireFrameEdge(p3, p7));
 }
 
-void WireFrameBuilder::build(const ICurve3d& line)
+void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int vnum)
 {
-	auto p0 = createPosition(line.getPosition(0.0));
-	auto p1 = createPosition(line.getPosition(1.0));
-	edges.push_back(WireFrameEdge(p0, p1));
-}
-
-void WireFrameBuilder::build(const ISurface3d& curve, const int unum, const int vnum)
-{
-	const auto du = 1.0 / unum;
-	const auto dv = 1.0 / vnum;
 	std::vector<std::vector<int>> grid;
-	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
+	for (auto u = 0; u < unum; ++u) {
+		const auto uu = (double)u / (double)unum;
 		std::vector<int> g;
-		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
-			g.push_back(createPosition(curve.getPosition(u, v)));
+		for (auto v = 0; v < vnum; ++v) {
+			const auto vv = (double)v / (double)vnum;
+			g.push_back(createPosition(sphere.getPosition(uu, vv)));
 		}
 		grid.push_back(g);
 	}
@@ -62,7 +63,7 @@ void WireFrameBuilder::build(const ISurface3d& curve, const int unum, const int 
 
 }
 
-void WireFrameBuilder::build(const IVolume3d& curve, const int unum, const int vnum, const int wnum)
+void WireFrameBuilder::build(const Cone3d& curve, const int unum, const int vnum, const int wnum)
 {
 	const auto du = 1.0 / unum;
 	const auto dv = 1.0 / vnum;
