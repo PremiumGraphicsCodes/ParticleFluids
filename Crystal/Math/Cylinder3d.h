@@ -20,7 +20,7 @@ public:
 
 	Vector3dd getPosition(const double u, const double v) const override;
 
-	Vector3dd getPosition(const double u, const double v, const double w) const override;
+	Vector3dd getPosition(const double r, const double h, const double w) const override;
 
 	Vector3dd getNormal(const double u, const double v) const override;
 

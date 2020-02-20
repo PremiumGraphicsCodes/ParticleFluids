@@ -17,7 +17,6 @@ private:
 
 private:
 	IntView unumView;
-	IntView vnumView;
 	Cylinder3dView cylinderView;
 };
 

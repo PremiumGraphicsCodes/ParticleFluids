@@ -81,23 +81,32 @@ void WireFrameBuilder::build(const Cone3d& cone, const int unum)
 void WireFrameBuilder::build(const Cylinder3d& cylinder, const int unum)
 {
 	const auto bottomCenter = createPosition(cylinder.getPosition(0.0, 0.0, 0.0));
-	const auto topCenter = createPosition(cylinder.getPosition(0.0, 0.0, 1.0));
+	const auto topCenter = createPosition(cylinder.getPosition(0.0, 1.0, 0.0));
 
 	std::vector<int> bottoms;
 	std::vector<int> tops;
 	for (auto u = 0; u < unum; ++u) {
 		const auto p = (double)u / (double)unum;
-		bottoms.push_back(createPosition(cylinder.getPosition(1.0, p, 0.0)));
-		tops.push_back(createPosition(cylinder.getPosition(1.0, p, 1.0)));
+		bottoms.push_back(createPosition(cylinder.getPosition(p, 0.0, 1.0)));
+		tops.push_back(createPosition(cylinder.getPosition(p, 1.0, 1.0)));
 	}
+
 	// create bottom circle.
 	for (auto u = 0; u < unum; ++u) {
 		edges.push_back(WireFrameEdge(bottomCenter, bottoms[u]));
 	}
+	for (auto u = 0; u < unum-1; ++u) {
+		edges.push_back(WireFrameEdge(bottoms[u], bottoms[u+1]));
+	}
+
 	// create top circle.
 	for (auto u = 0; u < unum; ++u) {
 		edges.push_back(WireFrameEdge(topCenter, tops[u]));
 	}
+	for (auto u = 0; u < unum-1; ++u) {
+		edges.push_back(WireFrameEdge(tops[u], tops[u+1]));
+	}
+
 	// create side.
 	for (auto u = 0; u < unum; ++u) {
 		edges.push_back(WireFrameEdge(bottoms[u], tops[u]));

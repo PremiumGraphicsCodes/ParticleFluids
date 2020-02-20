@@ -29,12 +29,12 @@ Vector3dd Cylinder3d::getPosition(const double u, const double v) const
 	return getPosition(u, v, 1.0);
 }
 
-Vector3dd Cylinder3d::getPosition(const double u, const double v, const double w) const
+Vector3dd Cylinder3d::getPosition(const double r, const double h, const double w) const
 {
-	const auto theta = u * 2.0 * PI;
+	const auto theta = r * 2.0 * PI;
 	const auto x = w * radius * ::cos(theta);
 	const auto y = w * radius * ::sin(theta);
-	const auto z = height * v - height * 0.5;
+	const auto z = height * h - height * 0.5;
 	return center + Vector3dd(x, y, z);
 }
 
