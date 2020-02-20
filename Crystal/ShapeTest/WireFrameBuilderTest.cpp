@@ -5,6 +5,7 @@
 #include "../Math/Line3d.h"
 #include "../Math/Box3d.h"
 #include "../Math/Sphere3d.h"
+#include "../Math/Cone3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -30,4 +31,12 @@ TEST(WireFrameBuilderTest, TestBuildBySphere)
 	WireFrameBuilder builder;
 	builder.build(Sphere3d(Vector3dd(0,0,0), 1.0), 10, 10);
 	EXPECT_EQ(100, builder.getPositions().size());
+}
+
+TEST(WireFrameBuilderTest, TestBuildByCone)
+{
+	WireFrameBuilder builder;
+	const Cone3d cone(Vector3dd(0, 0, 0), 10, 10);
+	builder.build(cone, 10);
+	EXPECT_EQ(11, builder.getPositions().size());
 }

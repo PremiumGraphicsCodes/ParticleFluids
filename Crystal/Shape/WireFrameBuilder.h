@@ -25,7 +25,7 @@ public:
 
 	void build(const Math::Sphere3d& sphere, const int unum, const int vnum);
 
-	void build(const Math::Cone3d& cone, const int unum, const int vnum, const int wnum);
+	void build(const Math::Cone3d& cone, const int unum);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 

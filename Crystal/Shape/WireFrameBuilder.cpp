@@ -63,19 +63,20 @@ void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int v
 
 }
 
-void WireFrameBuilder::build(const Cone3d& curve, const int unum, const int vnum, const int wnum)
+void WireFrameBuilder::build(const Cone3d& cone, const int unum)
 {
-	const auto du = 1.0 / unum;
-	const auto dv = 1.0 / vnum;
-	std::vector<std::vector<int>> grid;
-	for (auto u = 0.0; u < 1.0 + 1.0e-12; u += du) {
-		std::vector<int> g;
-		for (auto v = 0.0; v < 1.0 + 1.0e-12; v += dv) {
-			g.push_back(createPosition(curve.getPosition(u, v, 1.0)));
-		}
-		grid.push_back(g);
+	const auto top = createPosition( cone.getPosition(0.0, 1.0) );
+	std::vector<int> vertices;
+	for (auto u = 0; u < unum; ++u) {
+		const auto uu = (double)u / (double)unum;
+		vertices.push_back(createPosition(cone.getPosition(uu, 0.0)));
 	}
-	build(grid);
+	for (const auto v : vertices) {
+		edges.push_back(WireFrameEdge(top, v));
+	}
+	for (int i = 0; i < vertices.size() - 1; ++i) {
+		edges.push_back(WireFrameEdge(vertices[i], vertices[i + 1]));
+	}
 }
 
 void WireFrameBuilder::build(const std::vector<std::vector<int>>& grid)
