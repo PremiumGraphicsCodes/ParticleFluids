@@ -52,6 +52,6 @@ bool WireFrameCreateCommand::execute(World* world)
 	scene->setMatrix(args.matrix.getValue());
 	world->addScene(args.layer.getValue(), scene);
 	results.newId.setValue(scene->getId());
-	world->updateViewModel();
+	//world->updateViewModel();
 	return true;
 }
