@@ -58,12 +58,57 @@ void PolygonMeshBuilder::add(const Box3d& box)
 	auto p6 = createPosition(box.getPosition(1, 1, 1));
 	auto p7 = createPosition(box.getPosition(0, 1, 1));
 
+	auto n0 = createNormal(Vector3dd( 1, 0, 0));
+	auto n1 = createNormal(Vector3dd(-1, 0, 0));
+	auto n2 = createNormal(Vector3dd( 0, 1, 0));
+	auto n3 = createNormal(Vector3dd( 0,-1, 0));
+	auto n4 = createNormal(Vector3dd( 0, 0, 1));
+	auto n5 = createNormal(Vector3dd( 0, 0,-1));
+
+	/*
+	auto t0 = createTexCoord(Vector2dd(0, 0));
+	auto t1 = createTexCoord(Vector2dd(1, 0));
+	auto t2 = createTexCoord(Vector2dd(1, 1));
+	auto t3 = createTexCoord(Vector2dd(0, 1));
+
+	auto t4 = createTexCoord(Vector2dd(0, 0));
+	auto t5 = createTexCoord(Vector2dd(1, 0));
+	auto t6 = createTexCoord(Vector2dd(1, 1));
+	auto t7 = createTexCoord(Vector2dd(0, 1));
+
+	auto t8 = createTexCoord(Vector2dd(0, 0));
+	auto t9 = createTexCoord(Vector2dd(1, 0));
+	auto t10 = createTexCoord(Vector2dd(1, 1));
+	auto t11 = createTexCoord(Vector2dd(0, 1));
+
+	auto t12 = createTexCoord(Vector2dd(0, 0));
+	auto t13 = createTexCoord(Vector2dd(1, 0));
+	auto t14 = createTexCoord(Vector2dd(1, 1));
+	auto t15 = createTexCoord(Vector2dd(0, 1));
+	*/
+
+	auto v0 = createVertex(p0, n5);
+	auto v1 = createVertex(p1, n5);
+	auto v2 = createVertex(p2, n5);
+	auto v3 = createVertex(p3, n5);
+	auto v4 = createVertex(p4, n4);
+	auto v5 = createVertex(p5, n4);
+	auto v6 = createVertex(p5, n4);
+	auto v7 = createVertex(p5, n4);
+
+	createFace(v0, v1, v2); // front
+	createFace(v3, v2, v1);
+	createFace(v4, v5, v6);
+	createFace(v7, v4, v5);
+
+	/*
 	add(p0, p1, p2, p3); // front
 	add(p7, p6, p5, p4); // back
 	add(p3, p2, p6, p7); // top
 	add(p0, p1, p5, p4); // bottom
 	add(p0, p4, p7, p3); // left
 	add(p1, p5, p6, p2); // right
+	*/
 }
 
 void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int vnum)
@@ -133,6 +178,15 @@ void PolygonMeshBuilder::add(const int v0, const int v1, const int v2, const int
 
 	createFace(vv0, vv1, vv2);
 	createFace(vv0, vv2, vv3);
+}
+
+Vector3dd PolygonMeshBuilder::calculateNormal(const int v0, const int v1, const int v2)
+{
+	const auto& p0 = positions[v0];
+	const auto& p1 = positions[v1];
+	const auto& p2 = positions[v2];
+
+	return glm::normalize( glm::cross(p1 - p0, p2 - p0) );
 }
 
 int PolygonMeshBuilder::createPosition(const Vector3dd& v)

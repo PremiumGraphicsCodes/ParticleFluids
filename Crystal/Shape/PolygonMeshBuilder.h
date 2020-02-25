@@ -51,6 +51,8 @@ public:
 private:
 	void add(const int v0, const int v1, const int v2, const int v3);
 
+	Math::Vector3dd calculateNormal(const int v0, const int v1, const int v2);
+
 	std::vector<Math::Vector3dd> positions;
 	std::vector<Math::Vector3dd> normals;
 	std::vector<Math::Vector2dd> texCoords;
