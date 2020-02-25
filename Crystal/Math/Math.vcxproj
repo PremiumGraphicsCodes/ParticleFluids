@@ -136,6 +136,7 @@
     <ClInclude Include="Box2d.h" />
     <ClInclude Include="Box3d.h" />
     <ClInclude Include="Circle2d.h" />
+    <ClInclude Include="Circle3d.h" />
     <ClInclude Include="Cone3d.h" />
     <ClInclude Include="Cylinder3d.h" />
     <ClInclude Include="Gaussian.h" />
@@ -164,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="Box2d.cpp" />
     <ClCompile Include="Box3d.cpp" />
+    <ClCompile Include="Circle3d.cpp" />
     <ClCompile Include="Cone3d.cpp" />
     <ClCompile Include="Cylinder3d.cpp" />
     <ClCompile Include="Line2d.cpp" />

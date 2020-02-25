@@ -32,6 +32,7 @@ TEST(WireFrameBuilderTest, TestBuildBySphere)
 	WireFrameBuilder builder;
 	builder.build(Sphere3d(Vector3dd(0,0,0), 1.0), 10, 10);
 	EXPECT_EQ(100, builder.getPositions().size());
+	EXPECT_EQ(200, builder.getEdges().size());
 }
 
 TEST(WireFrameBuilderTest, TestBuildByCone)

@@ -4,10 +4,12 @@
 #include "../Math/Sphere3d.h"
 #include "../Math/Ray3d.h"
 #include "../Math/Box3d.h"
+#include "../Math/Circle3d.h"
 #include "../Math/Cone3d.h"
 #include "../Math/Cylinder3d.h"
 
 #include "WireFrame.h"
+#include "CircularBuffer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -47,19 +49,39 @@ void WireFrameBuilder::build(const Box3d& box)
 	edges.push_back(WireFrameEdge(p3, p7));
 }
 
-void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int vnum)
+void WireFrameBuilder::build(const Circle3d& circle, const int unum)
 {
-	std::vector<std::vector<int>> grid;
+	/*
+	CircularBuffer<int> grid(unum);
 	for (auto u = 0; u < unum; ++u) {
 		const auto uu = (double)u / (double)unum;
-		std::vector<int> g;
+		grid[u] = createPosition(circle.getPosition(uu));
+	}
+	for (int i = 0; i < unum; ++i) {
+	}
+	*/
+}
+
+void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int vnum)
+{
+	CircularBuffer<CircularBuffer<int>> grid(unum);
+	for (auto u = 0; u < unum; ++u) {
+		grid[u].resize(vnum);
+		const auto uu = (double)u / (double)unum;
 		for (auto v = 0; v < vnum; ++v) {
 			const auto vv = (double)v / (double)vnum;
-			g.push_back(createPosition(sphere.getPosition(uu, vv)));
+			grid[u][v] = createPosition(sphere.getPosition(uu, vv));
 		}
-		grid.push_back(g);
 	}
-	build(grid);
+	for (int i = 0; i < unum; ++i) {
+		for (int j = 0; j < vnum; ++j) {
+			edges.push_back(WireFrameEdge(grid[i][j], grid[i + 1][j]));
+			edges.push_back(WireFrameEdge(grid[i][j], grid[i][j + 1]));
+			//lines.push_back(Math::Line3dd(grid[i+1][j], grid[i+1][j + 1]));
+			//lines.push_back(Math::Line3dd(grid[i][j+1], grid[i+1][j + 1]));
+		}
+	}
+	//build(grid);
 }
 
 void WireFrameBuilder::build(const Cone3d& cone, const int unum)

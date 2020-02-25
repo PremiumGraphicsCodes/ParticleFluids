@@ -133,8 +133,7 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 		}
 	}
 
-	CircularBuffer<CircularBuffer<int>> vertices;
-	vertices.resize(unum);
+	CircularBuffer<CircularBuffer<int>> vertices(unum);
 	for (int i = 0; i < unum; ++i) {
 		vertices[i].resize(vnum);
 		for (int j = 0; j < vnum; ++j) {
@@ -147,13 +146,6 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 			createFace(vertices[i+1][j+1], vertices[i][j+1], vertices[i+1][j]);
 		}
 	}
-	/*
-	{
-		createFace(vertices[unum][vnum], vertices[0][vnum], vertices[i][j + 1]);
-	}
-	*/
-	// u ‚ÌÅŒã‚ÆÅ‰‚ð‚Â‚È‚®
-	// v ‚ÌÅŒã‚ÆÅ‰‚ð‚Â‚È‚®
 }
 
 std::unique_ptr<PolygonMesh> PolygonMeshBuilder::build()
