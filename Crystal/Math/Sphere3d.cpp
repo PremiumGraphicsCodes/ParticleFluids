@@ -27,8 +27,8 @@ Vector3dd Sphere3d::getPosition(const double u, const double v) const
 
 Vector3dd Sphere3d::getPosition(const double u, const double v, const double w) const
 {
-	const auto theta = 2.0 * u * PI;
-	const auto phi = v * PI;
+	const auto theta = u * PI;
+	const auto phi = 2.0 * v * PI;
 	const auto x = w * radius * std::sin(theta) * std::cos(phi);
 	const auto y = w * radius * std::sin(theta) * std::sin(phi);
 	const auto z = w * radius * std::cos(theta);

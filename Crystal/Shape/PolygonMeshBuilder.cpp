@@ -124,9 +124,9 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 		normals[i].resize(vnum);
 		texCoords[i].resize(vnum);
 
-		const auto u = i / (double)unum;
+		const auto u = i / (double)(unum-1);
 		for (int j = 0; j < vnum; ++j) {
-			const auto v = j / (double)vnum;
+			const auto v = j / (double)(vnum-1);
 			positions[i][j] = createPosition(sphere.getPosition( u, v ));
 			normals[i][j] = createNormal(sphere.getNormal(u, v));
 			texCoords[i][j] = createTexCoord(Vector2dd(u, v));

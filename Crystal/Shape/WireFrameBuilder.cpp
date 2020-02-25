@@ -66,9 +66,9 @@ void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int v
 	CircularBuffer<CircularBuffer<int>> grid(unum);
 	for (auto u = 0; u < unum; ++u) {
 		grid[u].resize(vnum);
-		const auto uu = (double)u / (double)unum;
+		const auto uu = (double)u / (double)(unum-1);
 		for (auto v = 0; v < vnum; ++v) {
-			const auto vv = (double)v / (double)vnum;
+			const auto vv = (double)v / (double)(vnum-1);
 			grid[u][v] = createPosition(sphere.getPosition(uu, vv));
 		}
 	}
@@ -76,11 +76,8 @@ void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int v
 		for (int j = 0; j < vnum; ++j) {
 			edges.push_back(WireFrameEdge(grid[i][j], grid[i + 1][j]));
 			edges.push_back(WireFrameEdge(grid[i][j], grid[i][j + 1]));
-			//lines.push_back(Math::Line3dd(grid[i+1][j], grid[i+1][j + 1]));
-			//lines.push_back(Math::Line3dd(grid[i][j+1], grid[i+1][j + 1]));
 		}
 	}
-	//build(grid);
 }
 
 void WireFrameBuilder::build(const Cone3d& cone, const int unum)
