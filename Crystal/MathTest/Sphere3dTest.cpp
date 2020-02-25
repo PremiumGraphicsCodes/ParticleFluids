@@ -33,25 +33,18 @@ TEST(Sphere3dTest, TestIsInside)
 TEST(Sphere3dTest, TestGetPosition)
 {
 	const Sphere3d s(Vector3dd(0.0, 0.0, 0.0), 1.0);
-	EXPECT_TRUE( areSame( Vector3dd( 0, 0, 1), s.getPosition( 0.0, 0.0,  1.0) , tolerance) );
-	EXPECT_TRUE( areSame( Vector3dd( 0, 0, 1), s.getPosition( 0.0, 0.25, 1.0), tolerance) );
+
+	EXPECT_TRUE( areSame( Vector3dd( 0, 0, 1), s.getPosition( 0.0, 0.0,  1.0), tolerance) );
 	EXPECT_TRUE( areSame( Vector3dd( 0, 0, 1), s.getPosition( 0.0, 0.5,  1.0), tolerance) );
-	EXPECT_TRUE( areSame( Vector3dd( 0, 0, 1), s.getPosition( 0.0, 0.75, 1.0), tolerance) );
 	EXPECT_TRUE( areSame( Vector3dd( 0, 0, 1), s.getPosition( 0.0, 1.0,  1.0), tolerance) );
 
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 0.0, 0.5, 1.0 ), tolerance) );
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 0.25, 0.5, 1.0 ), tolerance) );
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 0.5, 0.5, 1.0 ), tolerance) );
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 0.75, 0.5, 1.0 ), tolerance) );
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 1.0, 0.5, 1.0 ), tolerance) );
+	EXPECT_TRUE( areSame( Vector3dd( 0, 0, 1), s.getPosition( 0.0, 0.5, 1.0 ), tolerance) );
+	EXPECT_TRUE( areSame( Vector3dd(-1, 0, 0), s.getPosition( 0.5, 0.5, 1.0 ), tolerance) );
+	EXPECT_TRUE( areSame( Vector3dd( 0, 0,-1), s.getPosition( 1.0, 0.5, 1.0 ), tolerance) );
 
-	/*
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 1.0, 0.0, 1.0 ), tolerance) );
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 1.0, 0.25,1.0 ), tolerance) );
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 1.0, 0.5, 1.0 ), tolerance) );
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 1.0, 0.75,1.0 ), tolerance) );
-	EXPECT_TRUE( areSame(Vector3dd( 0, 0, 1), s.getPosition( 1.0, 1.0, 1.0 ), tolerance) );
-	*/
+	EXPECT_TRUE( areSame( Vector3dd( 0, 0,-1), s.getPosition( 1.0, 0.0, 1.0 ), tolerance) );
+	EXPECT_TRUE( areSame( Vector3dd( 0, 0,-1), s.getPosition( 1.0, 0.5, 1.0 ), tolerance) );
+	EXPECT_TRUE( areSame( Vector3dd( 0, 0,-1), s.getPosition( 1.0, 1.0, 1.0 ), tolerance) );
 }
 
 TEST(Sphere3dTest, TestGetNormal)
@@ -59,5 +52,6 @@ TEST(Sphere3dTest, TestGetNormal)
 	const Sphere3d s(Vector3dd(0.0, 0.0, 0.0), 1.0);
 
 	EXPECT_TRUE(areSame(Vector3dd(0, 0, 1), s.getNormal(0.0, 0.0), tolerance));
-	EXPECT_TRUE(areSame(Vector3dd(0, 0,-1), s.getNormal(0.5, 0.0), tolerance));
+	EXPECT_TRUE(areSame(Vector3dd(1, 0, 0), s.getNormal(0.5, 0.0), tolerance));
+	EXPECT_TRUE(areSame(Vector3dd(0, 0,-1), s.getNormal(1.0, 0.0), tolerance));
 }
