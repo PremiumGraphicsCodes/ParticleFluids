@@ -12,18 +12,26 @@ public:
 	explicit CircularBuffer(size_t size) :
 		buffer(size),
 		size(size)
-	{}
+	{
+		buffer.resize(size);
+	}
 
-	T operator[](size_t index) { return buffer[getActualIndex(index)]; }
+	void resize(size_t size)
+	{
+		buffer.resize(size);
+		this->size = size;
+	}
 
-	T& operator[](size_t index) { return &buffer[getActualIndex(index); ] }
+	T operator[](size_t index) const { return buffer[getActualIndex(index)]; }
 
-	void set(size_t index, T value) { buffer[getActualIndex()] = value; }
+	T& operator[](size_t index) { return buffer[getActualIndex(index)]; }
 
-	T get(size_t index) { return buffer[getActualIndex()]; }
+	void set(size_t index, T value) { buffer[getActualIndex(index)] = value; }
+
+	T get(size_t index) { return buffer[getActualIndex(index)]; }
 
 private:
-	size_t getActualIndex() const { return index % size; }
+	size_t getActualIndex(size_t index) const { return index % size; }
 
 	std::vector<T> buffer;
 	size_t size;

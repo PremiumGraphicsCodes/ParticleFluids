@@ -6,6 +6,8 @@
 #include "../Math/Quad3d.h"
 #include "../Math/Box3d.h"
 
+#include "CircularBuffer.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
@@ -113,13 +115,9 @@ void PolygonMeshBuilder::add(const Box3d& box)
 
 void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int vnum)
 {
-	std::vector<std::vector<int>> positions;
-	std::vector<std::vector<int>> normals;
-	std::vector<std::vector<int>> texCoords;
-
-	positions.resize(unum);
-	normals.resize(unum);
-	texCoords.resize(unum);
+	std::vector<std::vector<int>> positions(unum);
+	std::vector<std::vector<int>> normals(unum);
+	std::vector<std::vector<int>> texCoords(unum);
 
 	for (int i = 0; i < unum; ++i) {
 		positions[i].resize(vnum);
@@ -135,7 +133,7 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 		}
 	}
 
-	std::vector<std::vector<int>> vertices;
+	CircularBuffer<CircularBuffer<int>> vertices;
 	vertices.resize(unum);
 	for (int i = 0; i < unum; ++i) {
 		vertices[i].resize(vnum);
@@ -143,8 +141,8 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 			vertices[i][j] = createVertex(positions[i][j], normals[i][j], texCoords[i][j]);
 		}
 	}
-	for (int i = 0; i < unum-1; ++i) {
-		for (int j = 0; j < vnum-1; ++j) {
+	for (int i = 0; i < unum; ++i) {
+		for (int j = 0; j < vnum; ++j) {
 			createFace(vertices[i][j], vertices[i+1][j], vertices[i][j+1]);
 			createFace(vertices[i+1][j+1], vertices[i][j+1], vertices[i+1][j]);
 		}

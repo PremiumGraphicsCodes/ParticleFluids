@@ -25,7 +25,7 @@ TEST(PolygonMeshBuilderTest, TestBuildBySphere)
     EXPECT_EQ(4, builder.getPositions().size());
     EXPECT_EQ(4, builder.getTexCoords().size());
     EXPECT_EQ(4, builder.getNormals().size());
-    EXPECT_EQ(6, builder.getFaces().size());
+    EXPECT_EQ(8, builder.getFaces().size());
 }
 
 /*
