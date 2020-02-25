@@ -266,6 +266,12 @@
     <ClCompile Include="PMConeView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
+    <ClCompile Include="Circle3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="WFCircleView.cpp">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -583,6 +589,12 @@
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="PMConeView.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="WFCircleView.h">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle3dView.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

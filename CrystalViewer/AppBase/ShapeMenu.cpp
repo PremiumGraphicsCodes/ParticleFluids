@@ -11,6 +11,7 @@
 #include "PSTorusView.h"
 
 #include "WFBoxView.h"
+#include "WFCircleView.h"
 #include "WFConeView.h"
 #include "WFCylinderView.h"
 #include "WFSphereView.h"
@@ -64,6 +65,9 @@ void WFGenerationMenu::onShow()
 	const auto& c = name.c_str();
 
 	if (ImGui::BeginMenu(c)) {
+		if (ImGui::MenuItem("WFCircle")) {
+			control->setWindow(new WFCircleView("WFCircle", world, canvas));
+		}
 		if (ImGui::MenuItem("WFBox")) {
 			control->setWindow(new WFBoxView("WFBox", world, canvas));
 		}

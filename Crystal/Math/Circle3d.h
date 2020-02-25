@@ -16,6 +16,12 @@ public:
 
 	Vector3dd getNormal() const;
 
+	Vector3dd getCenter() const { return center; }
+
+	Vector3dd getUVec() const { return uvec; }
+
+	Vector3dd getVVec() const { return vvec; }
+
 private:
 	Vector3dd center;
 	Vector3dd uvec;

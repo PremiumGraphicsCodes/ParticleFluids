@@ -26,6 +26,7 @@
     <ClCompile Include="CameraMenu.cpp" />
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="Canvas.cpp" />
+    <ClCompile Include="Circle3dView.cpp" />
     <ClCompile Include="Cone3dView.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
@@ -103,6 +104,7 @@
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="TransformView.cpp" />
     <ClCompile Include="WFBoxView.cpp" />
+    <ClCompile Include="WFCircleView.cpp" />
     <ClCompile Include="WFConeView.cpp" />
     <ClCompile Include="WFCylinderView.cpp" />
     <ClCompile Include="WFSphereView.cpp" />
@@ -115,6 +117,7 @@
     <ClInclude Include="AppearanceMenu.h" />
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="Circle3dView.h" />
     <ClInclude Include="DeleteView.h" />
     <ClInclude Include="Double4View.h" />
     <ClInclude Include="FaceGroupEditView.h" />
@@ -213,6 +216,7 @@
     <ClInclude Include="Vector3dView.h" />
     <ClInclude Include="WFAttributeView.h" />
     <ClInclude Include="WFBoxView.h" />
+    <ClInclude Include="WFCircleView.h" />
     <ClInclude Include="WFConeView.h" />
     <ClInclude Include="WFCylinderView.h" />
     <ClInclude Include="WFSphereView.h" />
