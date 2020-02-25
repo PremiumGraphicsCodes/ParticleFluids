@@ -10,6 +10,7 @@ namespace Crystal {
 		class Quad3d;
 		class Box3d;
 		class Sphere3d;
+		class Cone3d;
 	}
 	namespace Shape {
 
@@ -25,6 +26,8 @@ public:
 	void add(const Math::Box3d& box);
 
 	void add(const Math::Sphere3d& sphere, const int unum, const int vnum);
+
+	void add(const Math::Cone3d& cone, int unum);
 
 	std::unique_ptr<PolygonMesh> build();
 

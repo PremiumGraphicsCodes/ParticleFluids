@@ -83,15 +83,15 @@ void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int v
 void WireFrameBuilder::build(const Cone3d& cone, const int unum)
 {
 	const auto top = createPosition( cone.getPosition(0.0, 1.0) );
-	std::vector<int> vertices;
+	CircularBuffer<int> vertices(unum);
 	for (auto u = 0; u < unum; ++u) {
-		const auto uu = (double)u / (double)unum;
-		vertices.push_back(createPosition(cone.getPosition(uu, 0.0)));
+		const auto uu = (double)u / (double)(unum-1);
+		vertices[u] = createPosition(cone.getPosition(uu, 0.0));
 	}
-	for (const auto v : vertices) {
-		edges.push_back(WireFrameEdge(top, v));
+	for (auto u = 0; u < unum; ++u) {
+		edges.push_back(WireFrameEdge(top, vertices[u]));
 	}
-	for (int i = 0; i < vertices.size() - 1; ++i) {
+	for (int i = 0; i < unum; ++i) {
 		edges.push_back(WireFrameEdge(vertices[i], vertices[i + 1]));
 	}
 }
@@ -101,19 +101,19 @@ void WireFrameBuilder::build(const Cylinder3d& cylinder, const int unum)
 	const auto bottomCenter = createPosition(cylinder.getPosition(0.0, 0.0, 0.0));
 	const auto topCenter = createPosition(cylinder.getPosition(0.0, 1.0, 0.0));
 
-	std::vector<int> bottoms;
-	std::vector<int> tops;
+	CircularBuffer<int> bottoms(unum);
+	CircularBuffer<int> tops(unum);
 	for (auto u = 0; u < unum; ++u) {
-		const auto p = (double)u / (double)unum;
-		bottoms.push_back(createPosition(cylinder.getPosition(p, 0.0, 1.0)));
-		tops.push_back(createPosition(cylinder.getPosition(p, 1.0, 1.0)));
+		const auto p = (double)u / (double)(unum-1);
+		bottoms[u] = createPosition(cylinder.getPosition(p, 0.0, 1.0));
+		tops[u] = createPosition(cylinder.getPosition(p, 1.0, 1.0));
 	}
 
 	// create bottom circle.
 	for (auto u = 0; u < unum; ++u) {
 		edges.push_back(WireFrameEdge(bottomCenter, bottoms[u]));
 	}
-	for (auto u = 0; u < unum-1; ++u) {
+	for (auto u = 0; u < unum; ++u) {
 		edges.push_back(WireFrameEdge(bottoms[u], bottoms[u+1]));
 	}
 
@@ -121,7 +121,7 @@ void WireFrameBuilder::build(const Cylinder3d& cylinder, const int unum)
 	for (auto u = 0; u < unum; ++u) {
 		edges.push_back(WireFrameEdge(topCenter, tops[u]));
 	}
-	for (auto u = 0; u < unum-1; ++u) {
+	for (auto u = 0; u < unum; ++u) {
 		edges.push_back(WireFrameEdge(tops[u], tops[u+1]));
 	}
 

@@ -5,6 +5,7 @@
 #include "../Math/Plane3d.h"
 #include "../Math/Quad3d.h"
 #include "../Math/Box3d.h"
+#include "../Math/Cone3d.h"
 
 #include "CircularBuffer.h"
 
@@ -147,6 +148,12 @@ void PolygonMeshBuilder::add(const Sphere3d& sphere, const int unum, const int v
 		}
 	}
 }
+
+void PolygonMeshBuilder::add(const Cone3d& cone, int unum)
+{
+	assert(false);
+}
+
 
 std::unique_ptr<PolygonMesh> PolygonMeshBuilder::build()
 {

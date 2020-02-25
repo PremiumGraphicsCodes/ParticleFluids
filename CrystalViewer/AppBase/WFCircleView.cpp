@@ -10,7 +10,7 @@ using namespace Crystal::UI;
 WFCircleView::WFCircleView(const std::string& name, World* world, Canvas* canvas) :
 	IWFAddView(name, world, canvas),
 	circleView("Circle"),
-	unumView("UNum")
+	unumView("UNum", 12)
 {
 	add(&circleView);
 	add(&unumView);

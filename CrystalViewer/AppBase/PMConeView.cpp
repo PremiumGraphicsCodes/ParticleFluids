@@ -26,9 +26,8 @@ PMConeView::PMConeView(const std::string& name, World* world, Canvas* canvas) :
 
 void PMConeView::onOk()
 {
-	/*
 	PolygonMeshBuilder builder;
-	builder.add(coneView.getValue(), 1, 1, 1);
+	//builder.add(coneView.getValue(), 1, 1, 1);
 
 	Command::Command command;
 	command.create(PolygonMeshCreateLabels::CommandNameLabel);
@@ -43,5 +42,4 @@ void PMConeView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 	getWorld()->updateViewModel();
-	*/
 }
