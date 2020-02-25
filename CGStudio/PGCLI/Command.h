@@ -16,7 +16,7 @@ public:
 	generic <class T>
 	void SetArg(System::String^ name, T value);
 
-	void Execute(WorldAdapter^ objects);
+	bool Execute(WorldAdapter^ objects);
 	
 	generic <class T>
 	T GetResult(System::String^ name);

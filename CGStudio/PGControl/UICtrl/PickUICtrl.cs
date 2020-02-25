@@ -42,7 +42,7 @@ namespace PG.CGStudio.UICtrl
                 command.Create(PG.ShapeSelectLabels.CommandNameLabel);
                 command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
                 command.Execute(model);
-                command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
+                //command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
                 Canvas3d.Instance.Update(World.Instance);
                 Canvas3d.Instance.Render();
 

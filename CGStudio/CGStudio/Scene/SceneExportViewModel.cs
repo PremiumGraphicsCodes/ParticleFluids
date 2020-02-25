@@ -1,5 +1,6 @@
 ﻿using PG.CGStudio.Object.Select;
 using Reactive.Bindings;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace PG.CGStudio.Scene
@@ -41,10 +42,13 @@ namespace PG.CGStudio.Scene
         {
             var world = World.Instance;
             var command = new PG.CLI.Command(PG.FileExportLabels.FileExportCommandLabel);
-            command.SetArg(PG.FileExportLabels.IdLabel, ShapeSelectViewModel.Id.Value);
+            var ids = new List<int>
+            {
+                ShapeSelectViewModel.Id.Value
+            };
+            command.SetArg(PG.FileExportLabels.IdsLabel, ids);
             command.SetArg(PG.FileExportLabels.FilePathLabel, FilePath.Value);
-            command.Execute(world.Adapter);
-            var isOk = command.GetResult<bool>(PG.FileExportLabels.IsOkLabel);
+            var isOk = command.Execute(world.Adapter);
         }
     }
 }

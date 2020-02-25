@@ -52,11 +52,11 @@ namespace PG {
 	{
 		public const string FileExportCommandLabel = "FileExport";
 		public const string FilePathLabel = "FilePath";
-		public const string IsOkLabel = "IsOk";
-		public const string IdLabel = "Id";
+		public const string IdsLabel = "Ids";
 		public const string IsBinaryLabel = "IsBinary";
-		public const string STLFileExportCommandLabel = "STLFileExport";
 		public const string PCDFileExportCommandLabel = "PCDFileExport";
+		public const string STLFileExportCommandLabel = "STLFileExport";
+		public const string OBJFileExportCommandLabel = "OBJFileExport";
 	}
 
 	public class FileImportLabels
@@ -65,7 +65,9 @@ namespace PG {
 		public const string FilePathLabel = "FilePath";
 		public const string IsOkLabel = "IsOk";
 		public const string IsBinaryLabel = "IsBinary";
+		public const string NewIdLabel = "NewId";
 		public const string PCDFileImportCommandLabel = "PCDFileImport";
+		public const string STLFileImportCommandLabel = "STLFileImport";
 		public const string OBJFileImportCommandLabel = "OBJFileImport";
 	}
 
@@ -241,7 +243,6 @@ namespace PG {
 	{
 		public const string CommandNameLabel = "ShapeSelectCommand";
 		public const string ShapeIdLabel = "ShapeId";
-		public const string BoundingBoxItemIdLabel = "BoundingBoxItemId";
 	}
 
 	public class TextureCreateLabels

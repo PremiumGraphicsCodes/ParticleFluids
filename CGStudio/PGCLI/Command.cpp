@@ -39,9 +39,9 @@ void Command::SetArg(System::String^ name, T value)
 	::instance.setArg(str, v);
 }
 
-void Command::Execute(WorldAdapter^ objects)
+bool Command::Execute(WorldAdapter^ objects)
 {
-	::instance.execute(objects->instance);
+	return ::instance.execute(objects->instance);
 }
 
 generic <class T>
