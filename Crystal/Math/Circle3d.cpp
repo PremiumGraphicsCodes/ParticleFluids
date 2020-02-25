@@ -17,11 +17,10 @@ Circle3d::Circle3d(const Vector3dd& center, const Vector3dd& uvec, const Vector3
 	vvec(vvec)
 {}
 
-Vector3dd Circle3d::getPosition(const double u, const double v) const
+Vector3dd Circle3d::getPosition(const double u) const
 {
 	const auto uu = u * 2.0 * PI;
-	const auto vv = v * 2.0 * PI;
-	return center + ::cos(uu) * uvec + ::sin(vv) * vvec;
+	return center + ::cos(uu) * uvec + ::sin(uu) * vvec;
 }
 
 Vector3dd Circle3d::getNormal() const

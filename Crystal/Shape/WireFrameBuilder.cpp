@@ -51,15 +51,14 @@ void WireFrameBuilder::build(const Box3d& box)
 
 void WireFrameBuilder::build(const Circle3d& circle, const int unum)
 {
-	/*
 	CircularBuffer<int> grid(unum);
 	for (auto u = 0; u < unum; ++u) {
 		const auto uu = (double)u / (double)unum;
 		grid[u] = createPosition(circle.getPosition(uu));
 	}
 	for (int i = 0; i < unum; ++i) {
+		edges.push_back(WireFrameEdge(grid[i], grid[i + 1]));
 	}
-	*/
 }
 
 void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int vnum)

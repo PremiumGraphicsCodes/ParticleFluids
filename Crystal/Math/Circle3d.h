@@ -12,7 +12,7 @@ public:
 
 	Circle3d(const Vector3dd& center, const Vector3dd& uvec, const Vector3dd& vvec);
 
-	Vector3dd getPosition(const double u, const double v) const;
+	Vector3dd getPosition(const double u) const;
 
 	Vector3dd getNormal() const;
 

@@ -5,6 +5,7 @@
 #include "../Math/Line3d.h"
 #include "../Math/Box3d.h"
 #include "../Math/Sphere3d.h"
+#include "../Math/Circle3d.h"
 #include "../Math/Cone3d.h"
 #include "../Math/Cylinder3d.h"
 
@@ -25,6 +26,14 @@ TEST(WireFrameBuilderTest, TestBuildByBox)
 	builder.build(Box3d(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1)));
 	EXPECT_EQ(8, builder.getPositions().size());
 	EXPECT_EQ(12, builder.getEdges().size());
+}
+
+TEST(WireFrameBuilderTest, TestBuildByCircle)
+{
+	WireFrameBuilder builder;
+	builder.build(Circle3d(Vector3dd(0, 0, 0), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0)), 2);
+	EXPECT_EQ(2, builder.getPositions().size());
+	EXPECT_EQ(2, builder.getEdges().size());
 }
 
 TEST(WireFrameBuilderTest, TestBuildBySphere)
