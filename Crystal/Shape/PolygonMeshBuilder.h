@@ -6,10 +6,10 @@
 
 namespace Crystal {
 	namespace Math {
-		class Box3d;
-		class Sphere3d;
 		class Triangle3d;
 		class Quad3d;
+		class Box3d;
+		class Sphere3d;
 	}
 	namespace Shape {
 
@@ -37,6 +37,8 @@ public:
 	int createVertex(const int positionId, const int normalId = -1, const int texCoordId = -1);
 
 	int createFace(int v0, int v1, int v2);
+
+	void createFaces(int v0, int v1, int v2, int v3);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 

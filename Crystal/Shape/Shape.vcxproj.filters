@@ -32,6 +32,7 @@
     <ClInclude Include="WireFrame.h">
       <Filter>WireFrame</Filter>
     </ClInclude>
+    <ClInclude Include="CircularBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
