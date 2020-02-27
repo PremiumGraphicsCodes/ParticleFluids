@@ -93,7 +93,7 @@ namespace PG.Core.Shape
         public void Add(Cylinder3d cylinder, int unum)
         {
             // create bottom
-            var bottomVertices = new CircularBuffer<int>(unum, 0);
+            var bottomVertices = new CircularBuffer1d<int>(unum, 0);
 
             var bottomPosition = CreatePosition(cylinder.GetPosition(0.0, 0.0, 0.0));
             var bottomNormal = CreateNormal(new Vector3d(0.0, -1.0, 0.0));
@@ -115,7 +115,7 @@ namespace PG.Core.Shape
             }
 
             // create top
-            var topVertices = new CircularBuffer<int>(unum, 0);
+            var topVertices = new CircularBuffer1d<int>(unum, 0);
 
             var topPosition = CreatePosition( cylinder.GetPosition(0.0, 0.0, 1.0) );
             var topNormal = CreateNormal(new Vector3d(0.0, 1.0, 0.0));

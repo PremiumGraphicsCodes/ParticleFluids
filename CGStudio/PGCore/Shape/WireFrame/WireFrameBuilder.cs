@@ -52,7 +52,7 @@ namespace PG.Core.Shape
         {
             // create top.
             var topCenter = CreatePosition( cylinder.GetPosition(0.0, 0.0, 1.0) );
-            var topVertices = new CircularBuffer<int>(udiv, 0);
+            var topVertices = new CircularBuffer1d<int>(udiv, 0);
             for (int i = 0; i < udiv; ++i)
             {
                 var u = i / (double)udiv;
@@ -66,7 +66,7 @@ namespace PG.Core.Shape
 
             // create bottom.
             var bottomCenter = CreatePosition( cylinder.GetPosition(0.0, 0.0, 0.0) );
-            var bottomVertices = new CircularBuffer<int>(udiv, 0);
+            var bottomVertices = new CircularBuffer1d<int>(udiv, 0);
             for (int i = 0; i < udiv; ++i)
             {
                 var u = i / (double)udiv;

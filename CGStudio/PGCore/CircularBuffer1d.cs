@@ -3,17 +3,14 @@ using System.Collections.Generic;
 
 namespace PG.Core
 {
-    public class CircularBuffer<T> : IEnumerable<T>
+    public class CircularBuffer1d<T> : IEnumerable<T>
     {
-        private List<T> buffer;
+        private readonly List<T> buffer;
 
         public int Count => this.buffer.Count;
 
-        public int MaxCapacity { get; private set; }
-
-        public CircularBuffer(int maxCapacity, T value)
+        public CircularBuffer1d(int maxCapacity, T value)
         {
-            this.MaxCapacity = maxCapacity;
             this.buffer = new List<T>();
             for(int i = 0; i < maxCapacity; ++i)
             {
@@ -51,7 +48,7 @@ namespace PG.Core
 
         private int GetActualIndex(int index)
         {
-            return index % MaxCapacity;
+            return index % Count;
         }
     }
 }
