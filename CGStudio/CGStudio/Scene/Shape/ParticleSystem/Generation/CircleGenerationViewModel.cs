@@ -27,25 +27,21 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
 
         private void OnGenerate()
         {
-            /*
             var random = new System.Random();
             var positions = new List<Vector3d>();
-            var box = BoxViewModel.Value;
+            var circle = CircleViewModel.Value;
             for (int i = 0; i < Count.Value; ++i)
             {
                 var u = random.NextDouble();
-                var v = random.NextDouble();
-                var w = random.NextDouble();
-                var pos = box.GetPosition(u, v, w);
+                var pos = circle.GetPosition(u);
                 positions.Add(pos);
             }
-            World.Instance.Scenes.AddParticleSystemScene(positions, "PSBox", Appearance.Value, 1);
+            World.Instance.Scenes.AddParticleSystemScene(positions, "PSCircle", AppearanceViewModel.Value, 1);
             World.Instance.Scenes.Sync();
             World.Instance.Camera.Fit();
 
             Canvas3d.Instance.Update(World.Instance);
             Canvas3d.Instance.Render();
-            */
         }
     }
 }

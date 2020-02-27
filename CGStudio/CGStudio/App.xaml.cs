@@ -36,6 +36,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.CylinderGenerationView>("PSCylinderGeneration");
             containerRegistry.RegisterForNavigation<Scene.Shape.ParticleSystem.Generation.CircleGenerationView>("PSCircleGeneration");
+            containerRegistry.RegisterForNavigation<Scene.Shape.ParticleSystem.Generation.ConeGenerationView>("PSConeGeneration");
 
             containerRegistry.RegisterForNavigation<Generation.WireFrame.BoxGenerationView>("WFBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.WireFrame.SphereGenerationView>("WFSphereGeneration");

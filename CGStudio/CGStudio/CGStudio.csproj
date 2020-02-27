@@ -161,6 +161,10 @@
       <DependentUpon>CircleGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\ParticleSystem\Generation\CircleGenerationViewModel.cs" />
+    <Compile Include="Scene\Shape\ParticleSystem\Generation\ConeGenerationView.xaml.cs">
+      <DependentUpon>ConeGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Shape\ParticleSystem\Generation\ConeGenerationViewModel.cs" />
     <Compile Include="Scene\Shape\ParticleSystem\ParticleSystemEditView.xaml.cs">
       <DependentUpon>ParticleSystemEditView.xaml</DependentUpon>
     </Compile>
@@ -325,6 +329,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Shape\ParticleSystem\Generation\CircleGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Shape\ParticleSystem\Generation\ConeGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
