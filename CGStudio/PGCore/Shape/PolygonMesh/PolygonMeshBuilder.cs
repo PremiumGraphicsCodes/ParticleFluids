@@ -5,11 +5,11 @@ namespace PG.Core.Shape
 {
     public class PolygonMeshBuilder
     {
-        private List<Vector3d> positions = new List<Vector3d>();
-        private List<Vector3d> normals = new List<Vector3d>();
-        private List<Vector2d> texCoords = new List<Vector2d>();
-        private List<Vertex> vertices = new List<Vertex>();
-        private List<PolygonFace> faces = new List<PolygonFace>();
+        private readonly List<Vector3d> positions = new List<Vector3d>();
+        private readonly List<Vector3d> normals = new List<Vector3d>();
+        private readonly List<Vector2d> texCoords = new List<Vector2d>();
+        private readonly List<Vertex> vertices = new List<Vertex>();
+        private readonly List<PolygonFace> faces = new List<PolygonFace>();
         private int nextVertexId = 0;
         private int nextFaceId = 0;
 
@@ -52,8 +52,6 @@ namespace PG.Core.Shape
             var p6 = CreatePosition(box.GetPosition(1, 1, 1));
             var p7 = CreatePosition(box.GetPosition(0, 1, 1));
 
-
-
 	        Add(p0, p1, p2, p3); // front
 	        Add(p7, p6, p5, p4); // back
 	        Add(p3, p2, p6, p7); // top
@@ -92,61 +90,57 @@ namespace PG.Core.Shape
             }
         }
 
-        public void Add(Cylinder3d cylinder, int u)
+        public void Add(Cylinder3d cylinder, int unum)
         {
-            // create top
-            var vertices = new int[u, 2];
+            // create bottom
+            var bottomVertices = new CircularBuffer<int>(unum, 0);
 
             var bottomPosition = CreatePosition(cylinder.GetPosition(0.0, 0.0, 0.0));
             var bottomNormal = CreateNormal(new Vector3d(0.0, -1.0, 0.0));
             var bottomTexCoord = CreateTexCoord(new Vector2d(0.0, 0.0));
             var bottomVertex = CreateVertex(bottomPosition, bottomNormal, bottomTexCoord);
-            for (int i = 0; i < u; ++i)
+
+            for (int i = 0; i < unum; ++i)
             {
-                var uu = i / (double)u;
+                var uu = i / (double)unum;
                 var p = CreatePosition(cylinder.GetPosition(1.0, uu, 0.0));
                 var n = CreateNormal(cylinder.GetNormal(uu, 0.0));
                 var t = CreateTexCoord(new Vector2d(uu, 0.0));
-                vertices[i, 0] = CreateVertex(p, n, t);
+                bottomVertices[i] = CreateVertex(p, n, t);
             }
 
-            for (int i = 0; i < u - 1; ++i)
+            for (int i = 0; i < unum; ++i)
             {
-                CreateFace(bottomVertex, vertices[i, 0], vertices[i + 1, 0]);
+                CreateFace(bottomVertex, bottomVertices[i], bottomVertices[i + 1]);
             }
 
-            var topPosition= CreatePosition( cylinder.GetPosition(0.0, 0.0, 1.0) );
+            // create top
+            var topVertices = new CircularBuffer<int>(unum, 0);
+
+            var topPosition = CreatePosition( cylinder.GetPosition(0.0, 0.0, 1.0) );
             var topNormal = CreateNormal(new Vector3d(0.0, 1.0, 0.0));
             var topTexCoord = CreateTexCoord(new Vector2d(0.0, 0.0));
             var topVertex = CreateVertex(topPosition, topNormal, topTexCoord);
-            for (int i = 0; i < u; ++i)
+
+            for (int i = 0; i < unum; ++i)
             {
-                var uu = i / (double)u;
+                var uu = i / (double)unum;
                 var p = CreatePosition(cylinder.GetPosition(1.0, uu, 1.0));
                 var n = CreateNormal(cylinder.GetNormal(uu, 1.0));
                 var t = CreateTexCoord(new Vector2d(uu, 1.0));
-                vertices[i, 1] = CreateVertex(p, n, t);
+                topVertices[i] = CreateVertex(p, n, t);
             }
-            for (int i = 0; i < u - 1; ++i)
+
+            for (int i = 0; i < unum; ++i)
             {
-                CreateFace(topVertex, vertices[i, 0], vertices[i + 1, 0]);
+                CreateFace(topVertex, topVertices[i], topVertices[i + 1]);
             }
 
-
-            for (int i = 0; i < u - 1; ++i)
+            for (int i = 0; i < unum; ++i)
             {
-                for (int j = 0; j < 1; ++j)
-                {
-                    var v1 = vertices[i, j];
-                    var v2 = vertices[i + 1, j];
-                    var v3 = vertices[i, j + 1];
-                    var v4 = vertices[i + 1, j + 1];
-                    CreateFace(v1, v2, v3);
-                    CreateFace(v4, v3, v2);
-                }
+                CreateFace(bottomVertices[i], bottomVertices[i + 1], topVertices[i]);
+                CreateFace(topVertices[i + 1], topVertices[i], bottomVertices[i+1]);
             }
-
-            // Todo : create bottom faces.
         }
 
         private void Add(int v0, int v1, int v2, int v3)
