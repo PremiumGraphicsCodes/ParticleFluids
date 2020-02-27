@@ -165,6 +165,10 @@
       <DependentUpon>FaceGroupEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\PolygonMesh\FaceGroupEditViewModel.cs" />
+    <Compile Include="Scene\Shape\PolygonMesh\Generation\CircleGenerationView.xaml.cs">
+      <DependentUpon>CircleGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Shape\PolygonMesh\Generation\CircleGenerationViewModel.cs" />
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditView.xaml.cs">
       <DependentUpon>PolygonMeshEditView.xaml</DependentUpon>
     </Compile>
@@ -329,6 +333,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Shape\PolygonMesh\Generation\BoxGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Shape\PolygonMesh\Generation\CircleGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

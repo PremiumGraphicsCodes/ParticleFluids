@@ -40,6 +40,54 @@ namespace PG.Core.Shape
             return polygon;
         }
 
+        public void Add(Ellipse3d ellipse, int unum)
+        {
+            var normal = CreateNormal(ellipse.Normal());
+
+            // create center
+            var centerPosition = CreatePosition(ellipse.Center);
+            var centerTexCoord = CreateTexCoord(new Vector2d(0, 0));
+            var centerVertex = CreateVertex(centerPosition, normal, centerTexCoord);
+
+            // create outer.
+            var positions = new CircularBuffer1d<int>(unum, 0);
+            var texCoords = new CircularBuffer1d<int>(unum, 0);
+            for (int i = 0; i < unum; ++i)
+            {
+                var u = i / (double)(unum);
+                positions[i] = CreatePosition(ellipse.GetPosition(u));
+                texCoords[i] = CreateTexCoord(new Vector2d(1.0, u));
+            }
+
+            var vertices = new CircularBuffer1d<int>(unum, 0);
+            for (int i = 0; i < unum; ++i)
+            {
+                vertices[i] = CreateVertex(positions[i], normal, texCoords[i]);
+            }
+
+            // create faces.
+            var faces = new CircularBuffer1d<int>(unum, 0);
+            for (int i = 0; i < unum; ++i)
+            {
+                faces[i] = CreateFace(centerVertex, vertices[i], vertices[i+1]);
+            }
+        }
+
+        /*
+        public void Add(Circle3d circle, int unum)
+        {
+            var positions = new CircularBuffer1d<int>(unum, 0);
+            for(int i = 0; i < unum; ++i)
+            {
+                var u = i / (double)(unum);
+                positions[i] = CreatePosition( circle.GetPosition(i) );
+            }
+//            var normal = CreateNormal( circle.N)
+        }
+        */
+
+
+
         public void Add(Box3d box)
         {
             var p0 = CreatePosition(box.GetPosition(0, 0, 0));
