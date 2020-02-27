@@ -157,6 +157,10 @@
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\ParticleSystem\AppearanceViewModel.cs" />
+    <Compile Include="Scene\Shape\ParticleSystem\Generation\CircleGenerationView.xaml.cs">
+      <DependentUpon>CircleGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Shape\ParticleSystem\Generation\CircleGenerationViewModel.cs" />
     <Compile Include="Scene\Shape\ParticleSystem\ParticleSystemEditView.xaml.cs">
       <DependentUpon>ParticleSystemEditView.xaml</DependentUpon>
     </Compile>
@@ -169,6 +173,10 @@
       <DependentUpon>CircleGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\PolygonMesh\Generation\CircleGenerationViewModel.cs" />
+    <Compile Include="Scene\Shape\PolygonMesh\Generation\ConeGenerationView.xaml.cs">
+      <DependentUpon>ConeGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\Shape\PolygonMesh\Generation\ConeGenerationViewModel.cs" />
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditView.xaml.cs">
       <DependentUpon>PolygonMeshEditView.xaml</DependentUpon>
     </Compile>
@@ -316,6 +324,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Scene\Shape\ParticleSystem\Generation\CircleGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Scene\Shape\ParticleSystem\Generation\CylinderGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -337,6 +349,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Shape\PolygonMesh\Generation\CircleGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Shape\PolygonMesh\Generation\ConeGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

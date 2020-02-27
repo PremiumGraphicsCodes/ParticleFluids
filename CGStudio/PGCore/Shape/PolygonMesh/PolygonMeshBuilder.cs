@@ -191,6 +191,34 @@ namespace PG.Core.Shape
             }
         }
 
+        public void Add(Cone3d cone, int unum)
+        {
+            var topPosition = CreatePosition( cone.GetPosition(0.0, 0.0, 1.0) );
+            var topNormal = CreateNormal(new Vector3d(0.0, 1.0, 0.0));
+            var topTexCoord = CreateTexCoord(new Vector2d(0.0, 0.0));
+            var topVertex = CreateVertex(topPosition, topNormal, topTexCoord);
+
+            var bottomPositions = new CircularBuffer1d<int>(unum, 0);
+            var bottomNormals = new CircularBuffer1d<int>(unum, 0);
+            var bottomTexCoords = new CircularBuffer1d<int>(unum, 0);
+ //           var bottomCenter = cone.Bottom;
+
+            for(int i = 0; i < unum; ++i)
+            {
+                var uu = i / (double)unum;
+                bottomPositions[i] = CreatePosition(cone.GetPosition(1.0, uu));
+                var normal = (cone.GetPosition(1.0, uu) - cone.Bottom).Normalized;
+                bottomNormals[i] = CreateNormal(normal);
+                bottomTexCoords[i] = CreateTexCoord(new Vector2d(1.0, uu));
+            }
+
+            var bottomVertices = new CircularBuffer1d<int>(unum, 0);
+            for (int i = 0; i < unum; ++i)
+            {
+                bottomVertices[i] = CreateVertex(bottomPositions[i], bottomNormals[i], bottomTexCoords[i]);
+            }
+        }
+
         private void Add(int v0, int v1, int v2, int v3)
         {
             var p0 = positions[v0];

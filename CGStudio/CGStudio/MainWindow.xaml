@@ -37,9 +37,10 @@
 
             <Fluent:RibbonTabItem Header="Shape" KeyTip="T1">
                 <Fluent:RibbonGroupBox Header="ParticleSystem" KeyTip="B">
-                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCBoxGeneration"/>
-                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCSphereGeneration"/>
-                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PCCylinderGeneration"/>
+                    <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PSBoxGeneration"/>
+                    <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PSSphereGeneration"/>
+                    <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PSCylinderGeneration"/>
+                    <Fluent:Button Header="Circle" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PSCircleGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="WireFrame" KeyTip="B">
                     <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="WFBoxGeneration"/>
@@ -53,6 +54,7 @@
                     <Fluent:Button Header="Sphere" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMSphereGeneration"/>
                     <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMCylinderGeneration"/>
                     <Fluent:Button Header="Circle" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMCircleGeneration"/>
+                    <Fluent:Button Header="Cone" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMConeGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox>
                     <Fluent:Button Header="Transform" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Transform"/>

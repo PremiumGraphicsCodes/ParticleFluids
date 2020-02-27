@@ -32,20 +32,22 @@ namespace PG.CGStudio
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<Generation.ParticleSystem.BoxGenerationView>("PCBoxGeneration");
-            containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PCSphereGeneration");
-            containerRegistry.RegisterForNavigation<Generation.ParticleSystem.CylinderGenerationView>("PCCylinderGeneration");
+            containerRegistry.RegisterForNavigation<Generation.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
+            containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
+            containerRegistry.RegisterForNavigation<Generation.ParticleSystem.CylinderGenerationView>("PSCylinderGeneration");
+            containerRegistry.RegisterForNavigation<Scene.Shape.ParticleSystem.Generation.CircleGenerationView>("PSCircleGeneration");
 
             containerRegistry.RegisterForNavigation<Generation.WireFrame.BoxGenerationView>("WFBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.WireFrame.SphereGenerationView>("WFSphereGeneration");
             containerRegistry.RegisterForNavigation<Generation.WireFrame.CylinderGenerationView>("WFCylinderGeneration");
             containerRegistry.RegisterForNavigation<Generation.WireFrame.EllipseGenerationView>("WFCircleGeneration");
-            containerRegistry.RegisterForNavigation<ConeGenerationView>("WFConeGeneration");
+            containerRegistry.RegisterForNavigation<Scene.Shape.WireFrame.Generation.ConeGenerationView>("WFConeGeneration");
 
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.BoxGenerationView>("PMBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMSphereGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.CylinderGenerationView>("PMCylinderGeneration");
             containerRegistry.RegisterForNavigation<CircleGenerationView>("PMCircleGeneration");
+            containerRegistry.RegisterForNavigation<Scene.Shape.PolygonMesh.Generation.ConeGenerationView>("PMConeGeneration");
 
             containerRegistry.RegisterForNavigation<ParticleSystemEditView>("ParticleSystemEdit");
             containerRegistry.RegisterForNavigation<WireFrameEditView>("WireFrameEdit");
