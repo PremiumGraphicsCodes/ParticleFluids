@@ -33,6 +33,18 @@ namespace PG.Core
             buffer[ai] = value;
         }
 
+        public T this[int index]
+        {
+            get
+            {
+                return Get(index);
+            }
+            set
+            {
+                Set(index, value);
+            }
+        }
+
         public IEnumerator<T> GetEnumerator() => this.buffer.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => this.buffer.GetEnumerator();
