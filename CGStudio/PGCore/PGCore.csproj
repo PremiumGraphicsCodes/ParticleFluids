@@ -94,6 +94,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CircularBuffer.cs" />
     <Compile Include="Graphics\ColorRGB.cs" />
     <Compile Include="Graphics\ColorRGBA.cs" />
     <Compile Include="Graphics\PointLight.cs" />

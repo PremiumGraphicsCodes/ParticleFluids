@@ -89,6 +89,7 @@
     <Compile Include="Shape\WireFrameTest.cs" />
     <Compile Include="Shape\WireFrameBuilderTest.cs" />
     <Compile Include="Math\Primitive3d\Quad3dTest.cs" />
+    <Compile Include="CircularBufferTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
