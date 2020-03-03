@@ -2,7 +2,24 @@
 
 #include "Plane3d.h"
 
+#include "Matrix3d.h"
+#include "Matrix4d.h"
+
 using namespace Crystal::Math;
+
+Triangle3d::Triangle3d() :
+	vertices(
+		{
+			Vector3dd(0,0,0),
+			Vector3dd(1,0,0),
+			Vector3dd(0,1,0)
+		}
+	)
+{}
+
+Triangle3d::Triangle3d(const std::array<Vector3dd, 3>& vertices) :
+	vertices(vertices)
+{}
 
 Vector3dd Triangle3d::getNormal() const
 {
@@ -50,3 +67,23 @@ Plane3d Triangle3d::toPlane() const
 	return Plane3d(vertices[0], getNormal());
 }
 
+void Triangle3d::translate(const Vector3dd& v)
+{
+	for (auto& vv : vertices) {
+		vv += v;
+	}
+}
+
+void Triangle3d::transform(const Matrix3dd& matrix)
+{
+	for (auto& vv : vertices) {
+		vv = vv * matrix;
+	}
+}
+
+void Triangle3d::transform(const Matrix4dd& matrix)
+{
+	for (auto& vv : vertices) {
+		vv = glm::vec4( vv, 1.0) * matrix;
+	}
+}

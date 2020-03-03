@@ -2,6 +2,8 @@
 
 #include <array>
 #include "Vector3d.h"
+#include "Matrix3d.h"
+#include "Matrix4d.h"
 
 namespace Crystal {
 	namespace Math {
@@ -10,9 +12,9 @@ namespace Crystal {
 class Triangle3d
 {
 public:
-	explicit Triangle3d(const std::array<Vector3dd, 3>& vertices) :
-		vertices(vertices)
-	{}
+	Triangle3d();
+
+	explicit Triangle3d(const std::array<Vector3dd, 3>& vertices);
 
 	Vector3dd getNormal() const;
 
@@ -23,6 +25,12 @@ public:
 	Plane3d toPlane() const;
 
 	std::array<Vector3dd, 3> getVertices() const { return vertices; }
+
+	void translate(const Math::Vector3dd& v);
+
+	void transform(const Math::Matrix3dd& matrix);
+
+	void transform(const Math::Matrix4dd& matrix);
 
 private:
 	std::array<Vector3dd, 3> vertices;

@@ -33,6 +33,9 @@
       <Filter>WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="CircularBuffer.h" />
+    <ClInclude Include="TriangleMesh.h">
+      <Filter>TriangleMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
@@ -43,6 +46,9 @@
     </Filter>
     <Filter Include="PolygonMesh">
       <UniqueIdentifier>{83be5bb4-42ba-4424-93cc-44177186141d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TriangleMesh">
+      <UniqueIdentifier>{0a38f2d4-10b7-4b60-a11b-6014bc66487d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="WireFrame.cpp">
       <Filter>WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleMesh.cpp">
+      <Filter>TriangleMesh</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

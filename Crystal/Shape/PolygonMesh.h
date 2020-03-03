@@ -17,47 +17,47 @@
 namespace Crystal {
 	namespace Shape {
 
-		class Vertex;
-		class Face;
+class Vertex;
+class Face;
 
-		class PolygonMesh : public IShape
-		{
-		public:
-			PolygonMesh();
+class PolygonMesh : public IShape
+{
+public:
+	PolygonMesh();
 
-			~PolygonMesh();
+	~PolygonMesh();
 
-			std::vector<Vertex> getVertices() const;
+	std::vector<Vertex> getVertices() const;
 
-			std::vector<Face> getFaces() const { return faces; }
+	std::vector<Face> getFaces() const { return faces; }
 
-			void clear();
+	void clear();
 
-			Math::Vector3dd getCenter() const;
+	Math::Vector3dd getCenter() const;
 
-			void move(const Math::Vector3dd& v) override;
+	void move(const Math::Vector3dd& v) override;
 
-			void transform(const Math::Matrix3dd& m) override;
+	void transform(const Math::Matrix3dd& m) override;
 
-			void transform(const Math::Matrix4dd& m) override;
+	void transform(const Math::Matrix4dd& m) override;
 
-			//Face* findFaceById(const int id);
+	//Face* findFaceById(const int id);
 
-			Math::Box3d getBoundingBox() const override;
+	Math::Box3d getBoundingBox() const override;
 
-			std::vector<Math::Vector3dd> getPositions() const { return positions; }
+	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
-			std::vector<Math::Vector3dd> getNormals() const { return normals; }
+	std::vector<Math::Vector3dd> getNormals() const { return normals; }
 
-			std::vector<Math::Vector2dd> getTexCoords() const { return texCoords; }
+	std::vector<Math::Vector2dd> getTexCoords() const { return texCoords; }
 
-		public:
-			std::vector<Math::Vector3dd> positions;
-			std::vector<Math::Vector3dd> normals;
-			std::vector<Math::Vector2dd> texCoords;
-			std::vector<Vertex> vertices;
-			std::vector<Face> faces;
-		};
+public:
+	std::vector<Math::Vector3dd> positions;
+	std::vector<Math::Vector3dd> normals;
+	std::vector<Math::Vector2dd> texCoords;
+	std::vector<Vertex> vertices;
+	std::vector<Face> faces;
+};
 
 	}
 }

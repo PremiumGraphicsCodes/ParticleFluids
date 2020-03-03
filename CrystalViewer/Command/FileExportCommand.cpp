@@ -59,6 +59,14 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	*/
 	case FileFormat::STL_ASCII :
 	{
+		/*
+		std::vector<int> ids;
+		auto scenes = world->getObjects()->findScenes(SceneType::TriangleMeshScene);
+		for (auto s : scenes) {
+			ids.push_back(s->getId());
+		}
+		*/
+
 		Crystal::Command::Command command(::OBJFileExportLabels::CommandNameLabel);
 		command.setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
 		command.setArg(::STLFileExportLabels::IsBinaryLabel, false);

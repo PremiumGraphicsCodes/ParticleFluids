@@ -25,3 +25,17 @@ TEST(Triangle3dTest, TestGetArea)
 	Triangle3d triangle(vertices);
 	EXPECT_DOUBLE_EQ(0.5, triangle.getArea());
 }
+
+/*
+TEST(Triangle3dTest, TestTransform)
+{
+	std::array<Vector3dd, 3> vertices = {
+		Vector3dd(0,0,0),
+		Vector3dd(1,0,0),
+		Vector3dd(0,1,0)
+	};
+	Triangle3d triangle(vertices);
+	triangle.transform(Matrix3dd)
+
+}
+*/
