@@ -8,6 +8,7 @@
 namespace Crystal {
 	namespace Math {
 		class Plane3d;
+		class Box3d;
 
 class Triangle3d
 {
@@ -31,6 +32,8 @@ public:
 	void transform(const Math::Matrix3dd& matrix);
 
 	void transform(const Math::Matrix4dd& matrix);
+
+	Box3d getBoundingBox() const;
 
 private:
 	std::array<Vector3dd, 3> vertices;

@@ -1,6 +1,7 @@
 #include "Triangle3d.h"
 
 #include "Plane3d.h"
+#include "Box3d.h"
 
 #include "Matrix3d.h"
 #include "Matrix4d.h"
@@ -86,4 +87,12 @@ void Triangle3d::transform(const Matrix4dd& matrix)
 	for (auto& vv : vertices) {
 		vv = glm::vec4( vv, 1.0) * matrix;
 	}
+}
+
+Box3d Triangle3d::getBoundingBox() const
+{
+	Box3d bb(vertices[0]);
+	bb.add(vertices[1]);
+	bb.add(vertices[2]);
+	return bb;
 }

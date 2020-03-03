@@ -42,16 +42,13 @@ void TriangleMesh::transform(const Matrix4dd& m)
 	}
 }
 
-//Face* findFaceById(const int id);
-
 Box3d TriangleMesh::getBoundingBox() const
 {
-	/*
+	auto bb = faces.front().triangle.getBoundingBox();
 	for (auto& f : faces) {
-		f.triangle.transform(m);
+		bb.add( f.triangle.getBoundingBox() );
 	}
-	*/
-	return Box3d();
+	return bb;
 }
 
 void TriangleMesh::addFace(const TriangleFace& face)
