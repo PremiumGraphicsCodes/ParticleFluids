@@ -1,5 +1,6 @@
 #include "PolygonMeshBuilder.h"
 
+#include "../Math/Triangle3d.h"
 #include "../Math/Line3d.h"
 #include "../Math/Sphere3d.h"
 #include "../Math/Plane3d.h"

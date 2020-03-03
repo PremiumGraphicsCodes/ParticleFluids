@@ -1,12 +1,5 @@
 #pragma once
 
-#include "../Util/UnCopyable.h"
-#include "../Math/Quaternion.h"
-#include "../Math/Matrix3d.h"
-#include "../Math/Matrix4d.h"
-#include "../Math/Triangle3d.h"
-#include "../Math/Line3d.h"
-
 #include "../Shape/Vertex.h"
 #include "../Shape/Face.h"
 
@@ -40,8 +33,6 @@ public:
 	void transform(const Math::Matrix3dd& m) override;
 
 	void transform(const Math::Matrix4dd& m) override;
-
-	//Face* findFaceById(const int id);
 
 	Math::Box3d getBoundingBox() const override;
 

@@ -1,6 +1,7 @@
 #include "PolygonMesh.h"
 
 #include "../Math/Vector3d.h"
+
 #include "../Shape/Vertex.h"
 #include "../Shape/Face.h"
 
@@ -28,7 +29,7 @@ std::vector<Vertex> PolygonMesh::getVertices() const
 
 Vector3dd PolygonMesh::getCenter() const
 {
-	Vector3dd center;
+	Vector3dd center(0,0,0);
 	const auto& vs = this->getVertices();
 	for (const auto& v : vs) {
 		const auto p = positions[v.positionId];
