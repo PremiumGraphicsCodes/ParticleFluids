@@ -17,6 +17,8 @@ public:
 
 	explicit Triangle3d(const std::array<Vector3dd, 3>& vertices);
 
+	Triangle3d(const Vector3dd& v1, const Vector3dd& v2, const Vector3dd& v3);
+
 	Vector3dd getNormal() const;
 
 	double getArea() const;
@@ -34,6 +36,8 @@ public:
 	void transform(const Math::Matrix4dd& matrix);
 
 	Box3d getBoundingBox() const;
+
+	bool isSame(const Triangle3d& rhs, const double tolerance) const;
 
 private:
 	std::array<Vector3dd, 3> vertices;

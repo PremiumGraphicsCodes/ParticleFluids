@@ -9,18 +9,19 @@
 using namespace Crystal::Math;
 
 Triangle3d::Triangle3d() :
-	vertices(
-		{
-			Vector3dd(0,0,0),
-			Vector3dd(1,0,0),
-			Vector3dd(0,1,0)
-		}
-	)
+	Triangle3d(Vector3dd(0,0,0),Vector3dd(1,0,0),Vector3dd(0,1,0))
 {}
 
 Triangle3d::Triangle3d(const std::array<Vector3dd, 3>& vertices) :
 	vertices(vertices)
 {}
+
+Triangle3d::Triangle3d(const Vector3dd& v1, const Vector3dd& v2, const Vector3dd& v3)
+{
+	vertices[0] = v1;
+	vertices[1] = v2;
+	vertices[2] = v3;
+}
 
 Vector3dd Triangle3d::getNormal() const
 {
@@ -95,4 +96,12 @@ Box3d Triangle3d::getBoundingBox() const
 	bb.add(vertices[1]);
 	bb.add(vertices[2]);
 	return bb;
+}
+
+bool Triangle3d::isSame(const Triangle3d& rhs, const double tolerance) const
+{
+	return
+		::areSame(vertices[0], rhs.vertices[0], tolerance) &&
+		::areSame(vertices[1], rhs.vertices[1], tolerance) &&
+		::areSame(vertices[2], rhs.vertices[2], tolerance);
 }
