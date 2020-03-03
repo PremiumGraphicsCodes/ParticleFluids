@@ -203,6 +203,9 @@
     <ClInclude Include="Public\TextureSetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="Public\OBJFileExportLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

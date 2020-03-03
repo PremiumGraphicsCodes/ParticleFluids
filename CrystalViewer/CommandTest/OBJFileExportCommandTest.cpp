@@ -1,11 +1,11 @@
 #include "pch.h"
 
 #include "../Command/Command.h"
+#include "../Command/Public/OBJFileExportLabels.h"
 
 #include "../../Crystal/Math/Quad3d.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
-#include "../Command/Public/FileExportLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -24,8 +24,8 @@ TEST(OBJFileExportCommand, TestExecute)
 
 	const std::vector<int> newIds = { scene->getId() };
 	const std::string filePath = "./OBJFileExportTest.obj";
-	Command command(FileExportLabels::OBJFileExportCommandLabel);
-	command.setArg(FileExportLabels::IdsLabel, newIds);
-	command.setArg(FileExportLabels::FilePathLabel, filePath);
+	Command command(OBJFileExportLabels::CommandNameLabel);
+	command.setArg(OBJFileExportLabels::IdsLabel, newIds);
+	command.setArg(OBJFileExportLabels::FilePathLabel, filePath);
 	EXPECT_TRUE(command.execute(&world));
 }

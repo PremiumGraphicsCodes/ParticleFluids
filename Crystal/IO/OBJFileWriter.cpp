@@ -47,5 +47,5 @@ bool OBJFileWriter::write(std::ostream& stream, const OBJFile& obj)
 			stream << std::endl;
 		}
 	}
-	return false;
+	return true;
 }

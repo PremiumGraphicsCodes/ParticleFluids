@@ -14,7 +14,7 @@ public:
 		Args();
 
 		Arg< std::vector<int> > ids;
-		Arg< std::filesystem::path > filePath;
+		Arg< std::string > filePath;
 	};
 
 	struct Results : IResults
@@ -30,10 +30,10 @@ public:
 
 	static std::string getName();
 
-	bool execute(Scene::World* scene) override;
+	bool execute(Scene::World* world) override;
 
 private:
-	bool exportOBJ(const std::filesystem::path& filePath, Scene::PolygonMeshScene& polygon);
+	bool exportOBJ(const std::filesystem::path& filePath, const std::vector<Scene::PolygonMeshScene*>& polygons);
 
 	bool exportMTL(const std::filesystem::path& filePath, Scene::PolygonMeshScene& appearances);
 

@@ -11,5 +11,4 @@ namespace FileExportLabels
 
 	PublicLabel PCDFileExportCommandLabel = "PCDFileExport";
 	PublicLabel STLFileExportCommandLabel = "STLFileExport";
-	PublicLabel OBJFileExportCommandLabel = "OBJFileExport";
 }

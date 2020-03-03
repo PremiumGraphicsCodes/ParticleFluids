@@ -5,6 +5,7 @@
 #include "PCDFileExportCommand.h"
 
 #include "Public/FileExportLabels.h"
+#include "Public/OBJFileExportLabels.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
@@ -26,11 +27,11 @@ std::string FileExportCommand::getName()
 	return FileExportLabels::FileExportCommandLabel;
 }
 
-bool FileExportCommand::execute(World* scene)
+bool FileExportCommand::execute(World* world)
 {
 	const auto filePath(args.filePath.getValue());
 	const auto format = Crystal::IO::getFileFormat(filePath);
-	return exportFile(filePath, format, scene);
+	return exportFile(filePath, format, world);
 }
 
 bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const FileFormat format, World* world)
@@ -38,8 +39,15 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	switch (format) {
 	case FileFormat::OBJ :
 	{
+		std::vector<int> ids;
+		auto scenes = world->getObjects()->findScenes(SceneType::PolygonMeshScene);
+		for (auto s : scenes) {
+			ids.push_back(s->getId());
+		}
+
 		OBJFileExportCommand command;
-		command.setArg(::FileExportLabels::FilePathLabel, args.filePath.getValue());
+		command.setArg(::OBJFileExportLabels::FilePathLabel, args.filePath.getValue());
+		command.setArg(::OBJFileExportLabels::IdsLabel, ids);
 		return command.execute(world);
 	}
 	/*
