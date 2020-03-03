@@ -14,6 +14,8 @@ public:
 	TriangleFace()
 	{}
 
+	explicit TriangleFace(const Math::Triangle3d& triangle);
+
 	TriangleFace(const Math::Triangle3d& triangle, const Math::Vector3dd& normal) :
 		triangle(triangle),
 		normal(normal)

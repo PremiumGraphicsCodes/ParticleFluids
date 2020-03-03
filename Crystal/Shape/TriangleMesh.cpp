@@ -3,6 +3,12 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
+TriangleFace::TriangleFace(const Triangle3d& triangle) :
+	triangle(triangle),
+	normal(triangle.getNormal())
+{
+}
+
 TriangleMesh::TriangleMesh()
 {
 }

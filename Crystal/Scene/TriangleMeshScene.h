@@ -26,7 +26,7 @@ public:
 	Math::Vector3dd getPosition(const int index) const override;
 
 private:
-	std::vector<Shape::TriangleFace> faces;
+	Shape::TriangleMesh* shape;
 };
 
 	}
