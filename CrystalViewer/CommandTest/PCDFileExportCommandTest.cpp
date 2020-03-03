@@ -3,7 +3,7 @@
 #include "../Command/Command.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../Command/Public/FileExportLabels.h"
+#include "../Command/Public/PCDFileExportLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -19,8 +19,8 @@ TEST(PCDFileExportCommand, TestExecute)
 
 	const std::vector<int> newIds = { ps->getId() };
 	const std::string filePath = "./PCDFileExportTest.pcd";
-	Command command(FileExportLabels::PCDFileExportCommandLabel);
-	command.setArg(FileExportLabels::IdsLabel, newIds);
-	command.setArg(FileExportLabels::FilePathLabel, filePath);
+	Command command(PCDFileExportLabels::CommandNameLabel);
+	command.setArg(PCDFileExportLabels::IdsLabel, newIds);
+	command.setArg(PCDFileExportLabels::FilePathLabel, filePath);
 	EXPECT_TRUE( command.execute(&world) );
 }

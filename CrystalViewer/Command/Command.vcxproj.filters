@@ -209,6 +209,9 @@
     <ClInclude Include="Public\STLFileExportLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="Public\PCDFileExportLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

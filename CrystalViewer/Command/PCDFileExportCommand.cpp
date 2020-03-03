@@ -3,15 +3,15 @@
 #include "../../Crystal/IO/PCDFileWriter.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
-#include "Public/FileExportLabels.h"
+#include "Public/PCDFileExportLabels.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 using namespace Crystal::IO;
 
 PCDFileExportCommand::Args::Args() :
-	ids(FileExportLabels::IdsLabel, {}),
-	filePath(FileExportLabels::FilePathLabel, "")
+	ids(PCDFileExportLabels::IdsLabel, {}),
+	filePath(PCDFileExportLabels::FilePathLabel, "")
 {
 	add(&ids);
 	add(&filePath);
@@ -24,7 +24,7 @@ PCDFileExportCommand::Results::Results()
 
 std::string PCDFileExportCommand::getName()
 {
-	return FileExportLabels::PCDFileExportCommandLabel;
+	return PCDFileExportLabels::CommandNameLabel;
 }
 
 bool PCDFileExportCommand::execute(World* world)

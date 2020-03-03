@@ -2,9 +2,9 @@
 
 #include "PublicLabel.h"
 
-namespace FileExportLabels
+namespace PCDFileExportLabels
 {
-	PublicLabel FileExportCommandLabel = "FileExport";
+	PublicLabel CommandNameLabel = "PCDFileExport";
 	PublicLabel FilePathLabel = "FilePath";
 	PublicLabel IdsLabel = "Ids";
 	PublicLabel IsBinaryLabel = "IsBinary";
