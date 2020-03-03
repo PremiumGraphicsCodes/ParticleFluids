@@ -5,7 +5,7 @@
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
-#include "../Command/Public/FileExportLabels.h"
+#include "../Command/Public/STLFileExportLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -23,8 +23,8 @@ TEST(STLFileExportCommandTest, TestExecute)
 
 	const std::vector<int> newIds = { scene->getId() };
 	const std::string filePath = "./STLFileExportTest.stl";
-	Command command(FileExportLabels::STLFileExportCommandLabel);
-	command.setArg(FileExportLabels::IdsLabel, newIds);
-	command.setArg(FileExportLabels::FilePathLabel, filePath);
+	Command command(STLFileExportLabels::CommandNameLabel);
+	command.setArg(STLFileExportLabels::IdsLabel, newIds);
+	command.setArg(STLFileExportLabels::FilePathLabel, filePath);
 	EXPECT_TRUE(command.execute(&world));
 }

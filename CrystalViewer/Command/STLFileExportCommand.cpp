@@ -5,16 +5,16 @@
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "Public/FileExportLabels.h"
+#include "Public/STLFileExportLabels.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 STLFileExportCommand::Args::Args() :
-	ids(FileExportLabels::IdsLabel, {}),
-	isBinary(FileExportLabels::IsBinaryLabel, false),
-	filePath(FileExportLabels::FilePathLabel, "")
+	ids(STLFileExportLabels::IdsLabel, {}),
+	isBinary(STLFileExportLabels::IsBinaryLabel, false),
+	filePath(STLFileExportLabels::FilePathLabel, "")
 {
 	add(&ids);
 	add(&isBinary);
@@ -29,7 +29,7 @@ STLFileExportCommand::Results::Results()// :
 
 std::string STLFileExportCommand::getName()
 {
-	return FileExportLabels::STLFileExportCommandLabel;
+	return STLFileExportLabels::CommandNameLabel;
 }
 
 bool STLFileExportCommand::execute(World* world)

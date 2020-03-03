@@ -163,6 +163,7 @@
     <ClInclude Include="Public\OBJFileExportLabels.h" />
     <ClInclude Include="Public\PositionGetLabels.h" />
     <ClInclude Include="Public\SceneGetLabels.h" />
+    <ClInclude Include="Public\STLFileExportLabels.h" />
     <ClInclude Include="Public\TextureSetLabels.h" />
     <ClInclude Include="SceneGetCommand.h" />
     <ClInclude Include="CameraFitCommand.h" />

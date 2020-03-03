@@ -2,12 +2,10 @@
 
 #include "PublicLabel.h"
 
-namespace FileExportLabels
+namespace STLFileExportLabels
 {
-	PublicLabel FileExportCommandLabel = "FileExport";
+	PublicLabel CommandNameLabel = "STLFileExport";
 	PublicLabel FilePathLabel = "FilePath";
 	PublicLabel IdsLabel = "Ids";
 	PublicLabel IsBinaryLabel = "IsBinary";
-
-	PublicLabel PCDFileExportCommandLabel = "PCDFileExport";
 }

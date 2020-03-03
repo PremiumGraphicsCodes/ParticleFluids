@@ -6,6 +6,7 @@
 
 #include "Public/FileExportLabels.h"
 #include "Public/OBJFileExportLabels.h"
+#include "Public/STLFileExportLabels.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
@@ -60,15 +61,15 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	case FileFormat::STL_ASCII :
 	{
 		STLFileExportCommand command;
-		command.setArg("filePath", args.filePath.getValue());
-		command.setArg("isBinary", false);
+		command.setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
+		command.setArg(::STLFileExportLabels::IsBinaryLabel, false);
 		return command.execute(world);
 	}
 	case FileFormat::STL_BINARY :
 	{
 		STLFileExportCommand command;
-		command.setArg("filePath", args.filePath.getValue());
-		command.setArg("isBinary", true);
+		command.setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
+		command.setArg(::STLFileExportLabels::IsBinaryLabel, true);
 		return command.execute(world);
 	}
 	case FileFormat::PCD :
