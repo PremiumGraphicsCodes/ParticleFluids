@@ -20,6 +20,9 @@
     <ClCompile Include="STLASCIIFileWriterTest.cpp">
       <Filter>STL</Filter>
     </ClCompile>
+    <ClCompile Include="OBJFileWriterTest.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
