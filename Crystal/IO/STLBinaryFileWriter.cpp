@@ -32,9 +32,9 @@ bool STLBinaryFileWriter::write(std::ostream& stream, const STLFile& stl)
 	stream.write((char *)&howMany, sizeof(unsigned int));
 
 	for (const auto& cell : stl.faces) {
-		const auto& normal = toArrayf(cell.getNormal());
+		const auto& normal = toArrayf(cell.normal);
 		stream.write((char *)&(normal.front()), sizeof(float) * 3);
-		const auto& vertices = cell.getVertices();
+		const auto& vertices = cell.triangle.getVertices();
 		for (const auto& pos : vertices) {
 			const auto& p = toArrayf(pos);
 			stream.write((char *)&(p.front()), sizeof(float) * 3);

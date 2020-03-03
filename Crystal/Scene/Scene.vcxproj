@@ -33,7 +33,6 @@
     <ClInclude Include="PointRenderer.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="TextureScene.h" />
-    <ClInclude Include="TriangleFace.h" />
     <ClInclude Include="TriangleMeshScene.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="SmoothRenderer.h" />
@@ -72,7 +71,6 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneViewModel.cpp" />
     <ClCompile Include="TextureScene.cpp" />
-    <ClCompile Include="TriangleFace.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
     <ClCompile Include="VolumeScene.cpp" />
     <ClCompile Include="World.cpp" />

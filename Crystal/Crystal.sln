@@ -24,6 +24,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphicsTest", "GraphicsTest\GraphicsTest.vcxproj", "{9CCB715C-1430-4553-926B-E9997EF22EB5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IOTest", "IOTest\IOTest.vcxproj", "{82BC86BD-D6A1-495A-BF01-C106C4324E9D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ED61B745-9F00-48C2-B309-F1DBB37F03E3} = {ED61B745-9F00-48C2-B309-F1DBB37F03E3}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shape", "Shape\Shape.vcxproj", "{ED61B745-9F00-48C2-B309-F1DBB37F03E3}"
 EndProject

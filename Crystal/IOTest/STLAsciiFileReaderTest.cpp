@@ -41,14 +41,14 @@ TEST(STLASCIIFileReaderTest, TestRead)
 	EXPECT_EQ(2, faces.size());
 
 	const auto& face1 = faces[0];
-	EXPECT_EQ( Vector3dd(0,0,1), face1.getNormal() );
-	EXPECT_EQ( Vector3dd(0,0,1), face1.getVertices()[0]);
-	EXPECT_EQ( Vector3dd(1,0,1), face1.getVertices()[1]);
-	EXPECT_EQ( Vector3dd(0,1,1), face1.getVertices()[2]);
+	EXPECT_EQ( Vector3dd(0,0,1), face1.normal );
+	EXPECT_EQ( Vector3dd(0,0,1), face1.triangle.getVertices()[0]);
+	EXPECT_EQ( Vector3dd(1,0,1), face1.triangle.getVertices()[1]);
+	EXPECT_EQ( Vector3dd(0,1,1), face1.triangle.getVertices()[2]);
 
 	const auto& face2 = faces[1];
-	EXPECT_EQ( Vector3dd(0,0,1), face2.getNormal());
-	EXPECT_EQ( Vector3dd(1,1,1), face2.getVertices()[0]);
-	EXPECT_EQ( Vector3dd(0,1,1), face2.getVertices()[1]);
-	EXPECT_EQ( Vector3dd(1,0,1), face2.getVertices()[2]);
+	EXPECT_EQ( Vector3dd(0,0,1), face2.normal);
+	EXPECT_EQ( Vector3dd(1,1,1), face2.triangle.getVertices()[0]);
+	EXPECT_EQ( Vector3dd(0,1,1), face2.triangle.getVertices()[1]);
+	EXPECT_EQ( Vector3dd(1,0,1), face2.triangle.getVertices()[2]);
 }

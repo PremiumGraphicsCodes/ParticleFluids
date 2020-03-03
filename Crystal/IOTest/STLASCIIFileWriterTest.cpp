@@ -3,8 +3,8 @@
 #include "../IO/STLASCIIFileWriter.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::IO;
-using namespace Crystal::Scene;
 
 TEST(STLASCIILFileWriterTest, TestWrite)
 {

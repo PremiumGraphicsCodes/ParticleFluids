@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IShapeScene.h"
-#include "TriangleFace.h"
+#include "../Shape/TriangleMesh.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -26,7 +26,7 @@ public:
 	Math::Vector3dd getPosition(const int index) const override;
 
 private:
-	std::vector<TriangleFace> faces;
+	std::vector<Shape::TriangleFace> faces;
 };
 
 	}

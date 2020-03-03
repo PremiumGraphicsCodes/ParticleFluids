@@ -11,8 +11,16 @@ namespace Crystal {
 class TriangleFace
 {
 public:
-	Math::Vector3dd normal;
+	TriangleFace()
+	{}
+
+	TriangleFace(const Math::Triangle3d& triangle, const Math::Vector3dd& normal) :
+		triangle(triangle),
+		normal(normal)
+	{}
+
 	Math::Triangle3d triangle;
+	Math::Vector3dd normal;
 };
 
 class TriangleMesh : public IShape

@@ -36,6 +36,9 @@
     <ProjectReference Include="..\IO\IO.vcxproj">
       <Project>{198160cc-5ed1-499d-ad45-90dbac4852f8}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Shape\Shape.vcxproj">
+      <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

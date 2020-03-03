@@ -1,10 +1,10 @@
 #pragma once
 
 #include <string>
-
 #include <array>
-#include "../Scene/TriangleFace.h"
+
 #include "../Math/Triangle3d.h"
+#include "../Shape/TriangleMesh.h"
 
 namespace Crystal {
 	namespace IO {
@@ -13,7 +13,7 @@ struct STLFile
 {
 	std::string header;
 	size_t faceCount = 0;
-	std::vector<Scene::TriangleFace> faces;
+	std::vector<Shape::TriangleFace> faces;
 };
 
 	}

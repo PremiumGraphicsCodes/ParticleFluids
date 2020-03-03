@@ -3,7 +3,7 @@
 #include <cassert>
 
 using namespace Crystal::Math;
-using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
 bool STLBinaryFileReader::read(const std::filesystem::path& filePath)
@@ -46,7 +46,7 @@ bool STLBinaryFileReader::read(std::istream& stream)
 			Vector3dd(pos1[0], pos1[1], pos1[2]),
 			Vector3dd(pos2[0], pos2[1], pos2[2]),
 		};
-		TriangleFace face(vertices, fn);
+		TriangleFace face(Triangle3d(vertices), fn);
 		stl.faces.push_back(face);
 	}
 	return stream.good();

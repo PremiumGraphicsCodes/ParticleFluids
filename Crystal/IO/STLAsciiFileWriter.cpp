@@ -19,10 +19,10 @@ bool STLASCIIFileWriter::write(std::ostream& stream, const STLFile& stl)
 	const auto& faces = stl.faces;
 	for (const auto& face : faces) {
 		stream << "facet" << " ";
-		const auto& normal = face.getNormal();
+		const auto& normal = face.normal;
 		stream << "normal" << " " << normal.x << " " << normal.y << " " << normal.z << std::endl;
 		stream << "outer loop" << std::endl;
-		const auto& positions = face.getVertices();
+		const auto& positions = face.triangle.getVertices();
 		for (const auto& pos : positions) {
 			stream << "vertex" << " " << pos.x << " " << pos.y << " " << pos.z << std::endl;
 		}
