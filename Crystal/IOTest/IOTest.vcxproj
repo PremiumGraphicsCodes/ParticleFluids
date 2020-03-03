@@ -46,7 +46,8 @@
     <ClCompile Include="OBJFileReaderTest.cpp" />
     <ClCompile Include="PCDFileReaderTest.cpp" />
     <ClCompile Include="PCDFileWriterTest.cpp" />
-    <ClCompile Include="STLAsciiFileReaderTest.cpp" />
+    <ClCompile Include="STLASCIIFileReaderTest.cpp" />
+    <ClCompile Include="STLASCIIFileWriterTest.cpp" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

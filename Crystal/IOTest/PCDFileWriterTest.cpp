@@ -14,5 +14,5 @@ TEST(PCDFileWriterTest, TestWriter)
 	pcd.data.positions.push_back(Vector3dd(3, 4, 5));
 
 	PCDFileWriter writer;
-	EXPECT_TRUE( writer.write("../PCDFileWriterTest.pcd", pcd) );
+	EXPECT_TRUE( writer.write("PCDFileWriterTest.pcd", pcd) );
 }

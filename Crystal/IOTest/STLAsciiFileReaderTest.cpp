@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "../Math/Vector3d.h"
-#include "../IO/STLAsciiFileReader.h"
+#include "../IO/STLASCIIFileReader.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::IO;
@@ -30,7 +30,7 @@ namespace {
 	}
 }
 
-TEST(STLAsciiFileReaderTest, TestReadAscii)
+TEST(STLASCIIFileReaderTest, TestRead)
 {
 	auto stream = getSampleAscii();
 

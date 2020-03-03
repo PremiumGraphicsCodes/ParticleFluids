@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="IOTest.cpp" />
-    <ClCompile Include="STLAsciiFileReaderTest.cpp" />
     <ClCompile Include="PCDFileReaderTest.cpp">
       <Filter>PCD</Filter>
     </ClCompile>
@@ -15,6 +14,12 @@
     <ClCompile Include="PCDFileWriterTest.cpp">
       <Filter>PCD</Filter>
     </ClCompile>
+    <ClCompile Include="STLASCIIFileReaderTest.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
+    <ClCompile Include="STLASCIIFileWriterTest.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -25,6 +30,9 @@
     </Filter>
     <Filter Include="OBJ">
       <UniqueIdentifier>{408c8216-741f-408f-964a-a8118a7c0110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL">
+      <UniqueIdentifier>{4c949bac-5d6c-4dc7-a794-96f94ea89520}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
