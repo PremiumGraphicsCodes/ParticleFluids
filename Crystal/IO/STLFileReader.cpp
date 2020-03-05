@@ -24,14 +24,11 @@ bool STLFileReader::isBinary(std::istream& in)
 	char head[80];
 	in.read(head, 80);
 
-	unsigned int NumFaces;
-	in.read((char*)&NumFaces, sizeof(unsigned int));
+	unsigned int faceCount = 0;
+	in.read((char*)&faceCount, sizeof(unsigned int));
 
-	const size_t expectedBinaryFileSize = NumFaces * 50 + 84;
+	const auto expectedBinaryFileSize = faceCount * 50 + 84;
 	in.seekg(0, std::ios::beg);
 
-	if (expectedBinaryFileSize != fileSize)
-		return false;
-
-	return true;
+	return (expectedBinaryFileSize == fileSize);
 }

@@ -2,9 +2,7 @@
 
 #include "Helper.h"
 
-
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
 bool STLASCIIFileReader::read(const std::filesystem::path& filePath)
@@ -60,7 +58,7 @@ bool STLASCIIFileReader::read(std::istream& stream)
 			vertices[i] = Helper::readVector<double>(stream);
 		}
 
-		stl.faces.push_back(TriangleFace(Triangle3d(vertices), normal));
+		stl.faces.push_back(STLFace(Triangle3d(vertices), normal));
 
 		str = Helper::read<std::string>(stream);
 		if (str != "endloop") {

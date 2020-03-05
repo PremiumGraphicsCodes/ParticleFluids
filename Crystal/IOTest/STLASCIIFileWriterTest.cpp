@@ -3,7 +3,6 @@
 #include "../IO/STLASCIIFileWriter.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::IO;
 
 TEST(STLASCIILFileWriterTest, TestWrite)
@@ -31,9 +30,9 @@ TEST(STLASCIILFileWriterTest, TestWrite)
 	STLFile stl;
 	stl.header = "";
 	stl.faceCount = 3;
-	stl.faces.push_back(TriangleFace(t1, Vector3dd(0,0,1)));
-	stl.faces.push_back(TriangleFace(t2, Vector3dd(0,0,1)));
-	stl.faces.push_back(TriangleFace(t3, Vector3dd(0,0,1)));
+	stl.faces.push_back(STLFace(t1, Vector3dd(0,0,1)));
+	stl.faces.push_back(STLFace(t2, Vector3dd(0,0,1)));
+	stl.faces.push_back(STLFace(t3, Vector3dd(0,0,1)));
 
 	STLASCIIFileWriter writer;
 	writer.write("STLASCIIFileWriterTest.stl", stl);
