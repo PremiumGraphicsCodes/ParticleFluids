@@ -16,13 +16,15 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 OBJFileImportCommand::Args::Args() :
-	filePath(OBJFileImportLabels::CommandNameLabel, std::string(""))
+	filePath(OBJFileImportLabels::FilePathLabel, std::string(""))
 {
 	add(&filePath);
 }
 
-OBJFileImportCommand::Results::Results()
+OBJFileImportCommand::Results::Results() :
+	newId(OBJFileImportLabels::NewIdLabel, -1)
 {
+	add(&newId);
 }
 
 std::string OBJFileImportCommand::getName()
@@ -32,7 +34,8 @@ std::string OBJFileImportCommand::getName()
 
 bool OBJFileImportCommand::execute(World* scene)
 {
-	const auto isOk = importOBJ(args.filePath.getValue(), scene);
+	const std::string filePath(args.filePath.getValue());
+	const auto isOk = importOBJ(filePath, scene);
 	return isOk;
 }
 
@@ -85,6 +88,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 			//faceGroup->setMaterialName(g.usemtl);
 		}
 		world->getObjects()->addScene(meshScene);
+		results.newId.setValue(meshScene->getId());
 
 		return true;
 	}

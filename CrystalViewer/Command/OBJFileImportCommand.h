@@ -19,6 +19,8 @@ public:
 	struct Results : IResults
 	{
 		Results();
+
+		Result<int> newId;
 	};
 
 	OBJFileImportCommand() :
