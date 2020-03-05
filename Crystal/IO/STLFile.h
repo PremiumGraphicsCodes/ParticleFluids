@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <array>
 
 #include "../Math/Triangle3d.h"
 
@@ -12,6 +11,10 @@ struct STLFace
 {
 	STLFace()
 	{};
+
+	explicit STLFace(const Math::Triangle3d& triangle) :
+		STLFace(triangle, triangle.getNormal())
+	{}
 
 	STLFace(const Math::Triangle3d& triangle, const Math::Vector3dd& normal) : 
 		triangle(triangle),

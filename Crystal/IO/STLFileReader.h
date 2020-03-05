@@ -8,7 +8,9 @@ namespace Crystal {
 class STLFileReader
 {
 public:
-	bool isBinary(std::istream& in);
+	static bool isBinary(const std::filesystem::path& filePath);
+
+	static bool isBinary(std::istream& in);
 
 	//bool isBinaryFile(const std::filesystem::path& path);
 };

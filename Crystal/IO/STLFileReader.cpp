@@ -17,6 +17,15 @@ namespace {
 	}
 }
 
+bool STLFileReader::isBinary(const std::filesystem::path& filePath)
+{
+	std::ifstream stream(filePath);
+	if (!stream.is_open()) {
+		return false;
+	}
+	return isBinary(stream);
+}
+
 bool STLFileReader::isBinary(std::istream& in)
 {
 	size_t fileSize = getStreamSize(in);

@@ -37,7 +37,7 @@ bool STLFileExportCommand::execute(World* world)
 	const auto ids = args.ids.getValue();
 
 	STLFile stl;
-	std::vector<Shape::TriangleFace> fs;
+	std::vector<STLFace> fs;
 	for (const auto id : ids) {
 		auto polygonMesh = world->getObjects()->findSceneById<PolygonMeshScene*>(id);
 		const auto& positions = polygonMesh->getShape()->getPositions();
@@ -53,7 +53,7 @@ bool STLFileExportCommand::execute(World* world)
 			const auto v1 = positions[ vertices[vIds[0]].positionId ];
 			const auto v2 = positions[ vertices[vIds[1]].positionId ];
 			const auto v3 = positions[ vertices[vIds[2]].positionId ];
-			Shape::TriangleFace ff({ v1,v2,v3 });
+			STLFace ff({ v1,v2,v3 });
 			//const auto area = ff.toTriangle().getArea();
 			fs.push_back(ff);
 		}

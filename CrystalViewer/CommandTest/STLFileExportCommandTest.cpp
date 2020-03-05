@@ -22,7 +22,7 @@ TEST(STLFileExportCommandTest, TestExecute)
 	world.getObjects()->addScene(scene);
 
 	const std::vector<int> newIds = { scene->getId() };
-	const std::string filePath = "./STLFileExportTest.stl";
+	const std::string filePath = "STLFileExportTest.stl";
 	Command command(STLFileExportLabels::CommandNameLabel);
 	command.setArg(STLFileExportLabels::IdsLabel, newIds);
 	command.setArg(STLFileExportLabels::FilePathLabel, filePath);

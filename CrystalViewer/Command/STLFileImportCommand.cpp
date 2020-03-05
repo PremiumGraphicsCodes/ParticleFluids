@@ -3,6 +3,7 @@
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Scene/TriangleMeshScene.h"
 
+#include "../../Crystal/IO/STLFileReader.h"
 #include "../../Crystal/IO/STLAsciiFileReader.h"
 #include "../../Crystal/IO/STLBinaryFileReader.h"
 
@@ -33,34 +34,36 @@ std::string STLFileImportCommand::getName()
 
 bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 {
-	//if (!args.isBinary.getValue()) {
-	//	STLASCIIFileReader reader;
-	//	if (reader.read(args.filePath.getValue())) {
-	//		/*
-	//		PolygonMeshBuilder builder;
-	//		const auto& stl = reader.getSTL();
-	//		scene->getSceneFactory()->createPolygonMeshScene()
-	//		scene->addScene( )
-	//		builder.add(stl.)
-	//		scene->addScene()
-	//		TriangleMesh mesh(stl.faces);
-	//		builder.add(mesh);
-	//		parent->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );
-	//		*/
-	//	}
-	//}
-	//else {
-	//	STLBinaryFileReader reader;
-	//	if (reader.read(args.filePath.getValue())) {
-	//		PolygonMeshBuilder builder;
-	//		const auto& stl = reader.getSTL();
-	//		/*
-	//		TriangleMesh mesh(stl.faces);
-	//		builder.add(mesh);
-	//		parent->addScene(sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh"));
-	//		*/
-	//	}
-	//}
-	//return true;
+	const auto isBinary = STLFileReader::isBinary(args.filePath.getValue());
+	if (!isBinary) {
+		STLASCIIFileReader reader;
+		if (reader.read(args.filePath.getValue())) {
+			PolygonMeshBuilder builder;
+			const auto& stl = reader.getSTL();
+			/*
+			scene->getSceneFactory()->createPolygonMeshScene()
+			scene->addScene( )
+			builder.add(stl.)
+			scene->addScene()
+			TriangleMesh mesh(stl.faces);
+			builder.add(mesh);
+			parent->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );
+			*/
+			return true;
+		}
+	}
+	else {
+		STLBinaryFileReader reader;
+		if (reader.read(args.filePath.getValue())) {
+			PolygonMeshBuilder builder;
+			const auto& stl = reader.getSTL();
+			/*
+			TriangleMesh mesh(stl.faces);
+			builder.add(mesh);
+			parent->addScene(sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh"));
+			*/
+			return true;
+		}
+	}
 	return false;
 }
