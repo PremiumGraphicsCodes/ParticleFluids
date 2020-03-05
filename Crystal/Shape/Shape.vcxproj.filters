@@ -36,6 +36,9 @@
     <ClInclude Include="TriangleMesh.h">
       <Filter>TriangleMesh</Filter>
     </ClInclude>
+    <ClInclude Include="TriangleMeshBuilder.h">
+      <Filter>TriangleMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
@@ -68,6 +71,9 @@
       <Filter>WireFrame</Filter>
     </ClCompile>
     <ClCompile Include="TriangleMesh.cpp">
+      <Filter>TriangleMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleMeshBuilder.cpp">
       <Filter>TriangleMesh</Filter>
     </ClCompile>
   </ItemGroup>

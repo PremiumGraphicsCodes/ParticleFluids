@@ -2,7 +2,6 @@
 
 #include "PolygonMesh.h"
 #include "../Util/UnCopyable.h"
-#include "../Math/ISurface3d.h"
 
 namespace Crystal {
 	namespace Math {
