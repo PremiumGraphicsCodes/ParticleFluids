@@ -22,10 +22,10 @@ TEST(OBJFileExportCommand, TestExecute)
 	auto scene = world.getSceneFactory()->createPolygonMeshScene(builder.build(), "");
 	world.getObjects()->addScene(scene);
 
-	const std::vector<int> newIds = { scene->getId() };
+	const std::vector<int> ids = { scene->getId() };
 	const std::string filePath = "./OBJFileExportTest.obj";
 	Command command(OBJFileExportLabels::CommandNameLabel);
-	command.setArg(OBJFileExportLabels::IdsLabel, newIds);
+	command.setArg(OBJFileExportLabels::IdsLabel, ids);
 	command.setArg(OBJFileExportLabels::FilePathLabel, filePath);
 	EXPECT_TRUE(command.execute(&world));
 }

@@ -87,8 +87,8 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 		for (auto s : scenes) {
 			ids.push_back(s->getId());
 		}
-		command.setArg(::FileExportLabels::IdsLabel, ids);
-		command.setArg(::FileExportLabels::FilePathLabel, args.filePath.getValue());
+		command.setArg(::PCDFileExportLabels::IdsLabel, ids);
+		command.setArg(::PCDFileExportLabels::FilePathLabel, args.filePath.getValue());
 		return command.execute(world);
 	}
 	default :
