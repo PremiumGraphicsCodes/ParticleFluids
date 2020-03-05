@@ -22,19 +22,16 @@ TEST(FileExportCommand, TestExportPCD)
 	const std::vector<Vector3dd> positions = { Vector3dd(0,0,0) };
 	auto ps = world.getSceneFactory()->createParticleSystemScene(positions, ParticleAttribute(), "");
 	world.getObjects()->addScene(ps);
-	const std::vector<int> ids = { ps->getId() };
 
 	const std::string filePath = "TestFileExport.pcd";
 	Crystal::Command::Command command(::FileExportLabels::FileExportCommandLabel);
 	command.setArg(::FileExportLabels::FilePathLabel, filePath);
-	EXPECT_TRUE(command.execute(&world));
+	const auto isOk = command.execute(&world);
+	EXPECT_TRUE(isOk);
 }
 
-/*
 TEST(FileExportCommand, TestExportOBJ)
 {
-	World world;
-
 	World world;
 
 	Quad3d quad(Vector3dd(0, 0, 0), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0));
@@ -42,5 +39,11 @@ TEST(FileExportCommand, TestExportOBJ)
 	builder.add(quad);
 	auto scene = world.getSceneFactory()->createPolygonMeshScene(builder.build(), "");
 	world.getObjects()->addScene(scene);
+
+	const std::string filePath = "TestFileExport.obj";
+	Crystal::Command::Command command(::FileExportLabels::FileExportCommandLabel);
+	command.setArg(::FileExportLabels::FilePathLabel, filePath);
+	const auto isOk = command.execute(&world);
+	EXPECT_TRUE(isOk);
+
 }
-*/
