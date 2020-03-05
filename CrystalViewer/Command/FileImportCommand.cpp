@@ -2,10 +2,10 @@
 #include "Public/FileImportLabels.h"
 
 #include "../../Crystal/IO/FileFormat.h"
-#include "STLFileImportCommand.h"
 
 #include "Public/OBJFileImportLabels.h"
 #include "Public/PCDFileImportLabels.h"
+#include "Public/STLFileImportLabels.h"
 
 #include "Command.h"
 
@@ -64,29 +64,12 @@ bool FileImportCommand::importFile(const std::filesystem::path& filePath, World*
 //		return importer.importMTL(filePath, parent);
 		return false;
 	}
-	case FileFormat::STL_ASCII:
+	case FileFormat::STL:
 	{
-		STLFileImportCommand command;
-		STLFileImportCommand::Args args;
-		args.filePath = this->args.filePath;
-		args.isBinary.setValue(true);
-		command.setArg("FilePath", this->args.filePath.getValue());
-		command.setArg("IsBinary", true);
-		command.execute(world);
-		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
-		return true;
-	}
-	case FileFormat::STL_BINARY:
-	{
-		STLFileImportCommand command;
-		STLFileImportCommand::Args args;
-		args.filePath = this->args.filePath;
-		args.isBinary.setValue(true);
-		command.setArg("FilePath", this->args.filePath.getValue());
-		command.setArg("IsBinary", true);
-		command.execute(world);
-		this->results.isOk.setValue( std::any_cast<bool>( command.getResult("IsOk") ) );
-		return true;
+		Command command(STLFileImportLabels::CommandNameLabel);
+		command.setArg(STLFileImportLabels::FilePathLabel, this->args.filePath.getValue());
+		const auto isOk = command.execute(world);
+		return isOk;
 	}
 	case FileFormat::PCD:
 	{

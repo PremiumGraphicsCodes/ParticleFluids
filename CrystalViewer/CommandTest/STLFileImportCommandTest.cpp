@@ -8,7 +8,6 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-/*
 TEST(STLFileImportCommand, TestExecute)
 {
 	World world;
@@ -21,4 +20,3 @@ TEST(STLFileImportCommand, TestExecute)
 	const auto id = std::any_cast<int>(command.getResult(FileImportLabels::NewIdLabel));
 	EXPECT_EQ(1, id);
 }
-*/

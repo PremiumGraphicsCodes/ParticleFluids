@@ -13,7 +13,6 @@ public:
 	{
 		Args();
 
-		Arg< bool > isBinary;
 		Arg< std::string > filePath;
 	};
 
@@ -21,7 +20,7 @@ public:
 	{
 		Results();
 
-		Result< bool > isOk;
+		Result< int > newId;
 	};
 
 	STLFileImportCommand() :

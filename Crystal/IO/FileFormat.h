@@ -8,6 +8,7 @@ namespace Crystal {
 
 enum class FileFormat
 {
+	STL,
 	STL_ASCII,
 	STL_BINARY,
 	OBJ,

@@ -6,7 +6,7 @@
 #include "../../Crystal/IO/STLAsciiFileReader.h"
 #include "../../Crystal/IO/STLBinaryFileReader.h"
 
-#include "Public/FileImportLabels.h"
+#include "Public/STLFileImportLabels.h"
 
 
 using namespace Crystal::IO;
@@ -15,53 +15,52 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 STLFileImportCommand::Args::Args() :
-	filePath(FileImportLabels::FilePathLabel, ""),
-	isBinary(FileImportLabels::IsBinaryLabel, false)
+	filePath(STLFileImportLabels::FilePathLabel, "")
 {
 	add(&filePath);
-	add(&isBinary);
 }
 
 STLFileImportCommand::Results::Results() :
-	isOk(FileImportLabels::IsOkLabel, false)
+	newId(STLFileImportLabels::NewIdLabel, -1)
 {
-	add(&isOk);
+	add(&newId);
 }
 
 std::string STLFileImportCommand::getName()
 {
-	return FileImportLabels::STLFileImportCommandLabel;
+	return STLFileImportLabels::CommandNameLabel;
 }
 
 bool STLFileImportCommand::execute(Crystal::Scene::World* scene)
 {
-	if (!args.isBinary.getValue()) {
-		STLASCIIFileReader reader;
-		if (reader.read(args.filePath.getValue())) {
-			/*
-			PolygonMeshBuilder builder;
-			const auto& stl = reader.getSTL();
-			scene->getSceneFactory()->createPolygonMeshScene()
-			scene->addScene( )
-			builder.add(stl.)
-			scene->addScene()
-			TriangleMesh mesh(stl.faces);
-			builder.add(mesh);
-			parent->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );
-			*/
-		}
-	}
-	else {
-		STLBinaryFileReader reader;
-		if (reader.read(args.filePath.getValue())) {
-			PolygonMeshBuilder builder;
-			const auto& stl = reader.getSTL();
-			/*
-			TriangleMesh mesh(stl.faces);
-			builder.add(mesh);
-			parent->addScene(sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh"));
-			*/
-		}
-	}
-	return true;
+	//if (!args.isBinary.getValue()) {
+	//	STLASCIIFileReader reader;
+	//	if (reader.read(args.filePath.getValue())) {
+	//		/*
+	//		PolygonMeshBuilder builder;
+	//		const auto& stl = reader.getSTL();
+	//		scene->getSceneFactory()->createPolygonMeshScene()
+	//		scene->addScene( )
+	//		builder.add(stl.)
+	//		scene->addScene()
+	//		TriangleMesh mesh(stl.faces);
+	//		builder.add(mesh);
+	//		parent->addScene( sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh") );
+	//		*/
+	//	}
+	//}
+	//else {
+	//	STLBinaryFileReader reader;
+	//	if (reader.read(args.filePath.getValue())) {
+	//		PolygonMeshBuilder builder;
+	//		const auto& stl = reader.getSTL();
+	//		/*
+	//		TriangleMesh mesh(stl.faces);
+	//		builder.add(mesh);
+	//		parent->addScene(sceneFactory->createPolygonMeshScene(builder.getPolygonMesh(), "Mesh"));
+	//		*/
+	//	}
+	//}
+	//return true;
+	return false;
 }
