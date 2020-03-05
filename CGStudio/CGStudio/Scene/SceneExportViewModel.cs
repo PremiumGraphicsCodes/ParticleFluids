@@ -46,7 +46,7 @@ namespace PG.CGStudio.Scene
             {
                 ShapeSelectViewModel.Id.Value
             };
-            command.SetArg(PG.FileExportLabels.IdsLabel, ids);
+            //command.SetArg(PG.FileExportLabels.IdsLabel, ids);
             command.SetArg(PG.FileExportLabels.FilePathLabel, FilePath.Value);
             var isOk = command.Execute(world.Adapter);
         }

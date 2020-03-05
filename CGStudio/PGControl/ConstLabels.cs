@@ -52,11 +52,6 @@ namespace PG {
 	{
 		public const string FileExportCommandLabel = "FileExport";
 		public const string FilePathLabel = "FilePath";
-		public const string IdsLabel = "Ids";
-		public const string IsBinaryLabel = "IsBinary";
-		public const string PCDFileExportCommandLabel = "PCDFileExport";
-		public const string STLFileExportCommandLabel = "STLFileExport";
-		public const string OBJFileExportCommandLabel = "OBJFileExport";
 	}
 
 	public class FileImportLabels
@@ -64,11 +59,8 @@ namespace PG {
 		public const string FileImportCommandLabel = "FileImport";
 		public const string FilePathLabel = "FilePath";
 		public const string IsOkLabel = "IsOk";
-		public const string IsBinaryLabel = "IsBinary";
 		public const string NewIdLabel = "NewId";
-		public const string PCDFileImportCommandLabel = "PCDFileImport";
 		public const string STLFileImportCommandLabel = "STLFileImport";
-		public const string OBJFileImportCommandLabel = "OBJFileImport";
 	}
 
 	public class GetLabels
@@ -167,6 +159,20 @@ namespace PG {
 		public const string CommandNameLabel = "NewCommand";
 	}
 
+	public class OBJFileExportLabels
+	{
+		public const string CommandNameLabel = "OBJFileExport";
+		public const string FilePathLabel = "FilePath";
+		public const string IdsLabel = "Ids";
+	}
+
+	public class OBJFileImportLabels
+	{
+		public const string CommandNameLabel = "OBJFileImport";
+		public const string FilePathLabel = "FilePath";
+		public const string NewIdLabel = "NewId";
+	}
+
 	public class ParticleSystemCreateLabels
 	{
 		public const string ParticleSystemAddLabel = "ParticleSystemAdd";
@@ -176,6 +182,21 @@ namespace PG {
 		public const string NameLabel = "Name";
 		public const string LayerLabel = "Layer";
 		public const string MatrixLabel = "Matrix";
+		public const string NewIdLabel = "NewId";
+	}
+
+	public class PCDFileExportLabels
+	{
+		public const string CommandNameLabel = "PCDFileExport";
+		public const string FilePathLabel = "FilePath";
+		public const string IdsLabel = "Ids";
+		public const string IsBinaryLabel = "IsBinary";
+	}
+
+	public class PCDFileImportLabels
+	{
+		public const string CommandNameLabel = "PCDFileImport";
+		public const string FilePathLabel = "FilePath";
 		public const string NewIdLabel = "NewId";
 	}
 
@@ -243,6 +264,21 @@ namespace PG {
 	{
 		public const string CommandNameLabel = "ShapeSelectCommand";
 		public const string ShapeIdLabel = "ShapeId";
+	}
+
+	public class STLFileExportLabels
+	{
+		public const string CommandNameLabel = "STLFileExport";
+		public const string FilePathLabel = "FilePath";
+		public const string IdsLabel = "Ids";
+		public const string IsBinaryLabel = "IsBinary";
+	}
+
+	public class STLFileImportLabels
+	{
+		public const string CommandNameLabel = "STLFileImport";
+		public const string FilePathLabel = "FilePath";
+		public const string NewIdLabel = "NewId";
 	}
 
 	public class TextureCreateLabels
