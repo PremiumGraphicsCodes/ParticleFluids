@@ -46,6 +46,7 @@
   <ItemGroup>
     <ClCompile Include="IOTest.cpp" />
     <ClCompile Include="MTLFileReaderTest.cpp" />
+    <ClCompile Include="MTLFileWriterTest.cpp" />
     <ClCompile Include="OBJFileReaderTest.cpp" />
     <ClCompile Include="OBJFileWriterTest.cpp" />
     <ClCompile Include="PCDFileReaderTest.cpp" />

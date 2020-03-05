@@ -23,6 +23,9 @@
     <ClCompile Include="OBJFileWriterTest.cpp">
       <Filter>OBJ</Filter>
     </ClCompile>
+    <ClCompile Include="MTLFileWriterTest.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
