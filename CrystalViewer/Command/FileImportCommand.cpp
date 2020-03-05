@@ -3,9 +3,9 @@
 
 #include "../../Crystal/IO/FileFormat.h"
 #include "STLFileImportCommand.h"
-#include "PCDFileImportCommand.h"
 
 #include "Public/OBJFileImportLabels.h"
+#include "Public/PCDFileImportLabels.h"
 
 #include "Command.h"
 
@@ -90,11 +90,10 @@ bool FileImportCommand::importFile(const std::filesystem::path& filePath, World*
 	}
 	case FileFormat::PCD:
 	{
-		PCDFileImportCommand command;
-		command.setArg("FilePath", this->args.filePath.getValue());
-		command.execute(world);
-		this->results.isOk.setValue(std::any_cast<bool>(command.getResult("IsOk")));
-		return true;
+		Command command(::PCDFileImportLabels::CommandNameLabel);
+		command.setArg(::PCDFileImportLabels::FilePathLabel, this->args.filePath.getValue());
+		const auto isOk = command.execute(world);
+		return isOk;
 	}
 	default:
 		assert(false);

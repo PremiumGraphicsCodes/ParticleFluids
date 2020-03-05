@@ -215,6 +215,9 @@
     <ClInclude Include="Public\OBJFileImportLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="Public\PCDFileImportLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />

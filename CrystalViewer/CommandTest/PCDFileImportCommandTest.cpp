@@ -2,7 +2,7 @@
 
 #include "../Command/Command.h"
 
-#include "../Command/Public/FileImportLabels.h"
+#include "../Command/Public/PCDFileImportLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -13,10 +13,11 @@ TEST(PCDFileImportCommand, TestExecute)
 	World world;
 
 	const std::string filePath = "./PCDFileImportTest.pcd";
-	Command command(FileImportLabels::PCDFileImportCommandLabel);
-	command.setArg(FileImportLabels::FilePathLabel, filePath);
-	EXPECT_TRUE( command.execute(&world) );
+	Command command(PCDFileImportLabels::CommandNameLabel);
+	command.setArg(PCDFileImportLabels::FilePathLabel, filePath);
+	const auto isOk = command.execute(&world);
+	EXPECT_TRUE(isOk);
 
-	const auto id = std::any_cast<int>( command.getResult(FileImportLabels::NewIdLabel) );
+	const auto id = std::any_cast<int>( command.getResult(PCDFileImportLabels::NewIdLabel) );
 	EXPECT_EQ(1, id);
 }

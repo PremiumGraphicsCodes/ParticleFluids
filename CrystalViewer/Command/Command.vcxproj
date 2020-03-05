@@ -163,6 +163,7 @@
     <ClInclude Include="Public\OBJFileExportLabels.h" />
     <ClInclude Include="Public\OBJFileImportLabels.h" />
     <ClInclude Include="Public\PCDFileExportLabels.h" />
+    <ClInclude Include="Public\PCDFileImportLabels.h" />
     <ClInclude Include="Public\PositionGetLabels.h" />
     <ClInclude Include="Public\SceneGetLabels.h" />
     <ClInclude Include="Public\STLFileExportLabels.h" />

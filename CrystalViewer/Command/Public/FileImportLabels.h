@@ -10,6 +10,5 @@ namespace FileImportLabels
 	PublicLabel IsBinaryLabel = "IsBinary";
 	PublicLabel NewIdLabel = "NewId";
 
-	PublicLabel PCDFileImportCommandLabel = "PCDFileImport";
 	PublicLabel STLFileImportCommandLabel = "STLFileImport";
 }
