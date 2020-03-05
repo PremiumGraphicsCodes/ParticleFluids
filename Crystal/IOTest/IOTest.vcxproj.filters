@@ -26,6 +26,9 @@
     <ClCompile Include="MTLFileWriterTest.cpp">
       <Filter>OBJ</Filter>
     </ClCompile>
+    <ClCompile Include="STLFileReaderTest.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

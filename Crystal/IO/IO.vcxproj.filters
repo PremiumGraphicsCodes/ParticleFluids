@@ -51,6 +51,9 @@
       <Filter>OBJ\MTL</Filter>
     </ClInclude>
     <ClInclude Include="FileFormat.h" />
+    <ClInclude Include="STLFileReader.h">
+      <Filter>STL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
@@ -88,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="MTLFileReader.cpp">
       <Filter>OBJ\MTL</Filter>
+    </ClCompile>
+    <ClCompile Include="STLFileReader.cpp">
+      <Filter>STL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
