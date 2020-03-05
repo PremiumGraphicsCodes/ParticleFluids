@@ -13,8 +13,9 @@ public:
 		: IShapeScene(id, nullptr)
 	{}
 
-	TriangleMeshScene(const int id, const std::string& name) :
-		IShapeScene(id, name, nullptr)
+	TriangleMeshScene(const int id, const std::string& name, std::unique_ptr<Shape::TriangleMesh> shape) :
+		IShapeScene(id, name, shape.get()),
+		shape(std::move(shape))
 	{}
 
 	void translate(const Math::Vector3dd& v) override;
@@ -25,8 +26,20 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
+	std::vector<Math::Vector3dd> getAllVertices() const { return {}; }
+
+	void toViewModel(SceneViewModel& viewModel) const override {}
+
+	void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override {}
+
+	IShapeScene* clone() const override { return nullptr; }
+
+	SceneType getType() const override { return SceneType::TriangleMeshScene; }
+
+	void onClear() override {}
+
 private:
-	Shape::TriangleMesh* shape;
+	std::unique_ptr<Shape::TriangleMesh> shape;
 };
 
 	}

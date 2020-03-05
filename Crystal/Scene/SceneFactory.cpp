@@ -6,6 +6,7 @@
 #include "LightScene.h"
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
+#include "TriangleMeshScene.h"
 #include "PolygonMeshScene.h"
 #include "TransformScene.h"
 #include "FaceGroupScene.h"
@@ -70,6 +71,11 @@ ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<V
 WireFrameScene* SceneFactory::createWireFrameScene(std::unique_ptr<WireFrame> shape, const WireFrameAttribute& attribute, const std::string& name)
 {
 	return new WireFrameScene(getNextId(), name, std::move(shape), attribute);
+}
+
+TriangleMeshScene* SceneFactory::createTriangleMeshScene(std::unique_ptr<TriangleMesh> shape, const std::string name)
+{
+	return new TriangleMeshScene(getNextId(), name, std::move(shape));
 }
 
 PolygonMeshScene* SceneFactory::createPolygonMeshScene(std::unique_ptr<PolygonMesh> mesh,  const std::string& name)

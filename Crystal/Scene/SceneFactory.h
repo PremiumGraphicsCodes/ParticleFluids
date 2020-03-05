@@ -19,6 +19,7 @@ namespace Crystal {
 	}
 	namespace Shape {
 		class WireFrame;
+		class TriangleMesh;
 		class PolygonMesh;
 	}
 	namespace Scene {
@@ -29,6 +30,7 @@ namespace Crystal {
 		struct ParticleAttribute;
 		class WireFrameScene;
 		struct WireFrameAttribute;
+		class TriangleMeshScene;
 		class PolygonMeshScene;
 		class FaceGroupScene;
 		class TransformScene;
@@ -54,6 +56,8 @@ public:
 	ParticleSystemScene* createParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
 	WireFrameScene* createWireFrameScene(std::unique_ptr<Shape::WireFrame> shape, const WireFrameAttribute& attribute, const std::string& name);
+
+	TriangleMeshScene* createTriangleMeshScene(std::unique_ptr<Shape::TriangleMesh> shape, const std::string name);
 
 	PolygonMeshScene* createPolygonMeshScene(std::unique_ptr<Shape::PolygonMesh> mesh, const std::string& name);
 
