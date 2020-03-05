@@ -5,6 +5,8 @@
 #include "STLFileImportCommand.h"
 #include "PCDFileImportCommand.h"
 
+#include "Public/OBJFileImportLabels.h"
+
 #include "Command.h"
 
 using namespace Crystal::IO;
@@ -49,12 +51,12 @@ bool FileImportCommand::importFile(const std::filesystem::path& filePath, World*
 	switch (format) {
 	case FileFormat::OBJ:
 	{
-		Command command("OBJFileImport");
-		command.setArg("FilePath", args.filePath.getValue());
-		command.execute(world);
+		Command command(::OBJFileImportLabels::CommandNameLabel);
+		command.setArg(::OBJFileImportLabels::FilePathLabel, args.filePath.getValue());
+		const auto isOk = command.execute(world);
 		//OBJFileImporter importer(factory);
 		//return importer.importOBJWithMTL(filePath, parent);
-		return false;
+		return isOk;
 	}
 	case FileFormat::MTL:
 	{

@@ -32,6 +32,9 @@
     <ClCompile Include="ParticleSystemCreateCommandTest.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="OBJFileImportCommandTest.cpp">
+      <Filter>File\OBJ</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

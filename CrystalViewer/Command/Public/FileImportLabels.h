@@ -12,5 +12,4 @@ namespace FileImportLabels
 
 	PublicLabel PCDFileImportCommandLabel = "PCDFileImport";
 	PublicLabel STLFileImportCommandLabel = "STLFileImport";
-	PublicLabel OBJFileImportCommandLabel = "OBJFileImport";
 }

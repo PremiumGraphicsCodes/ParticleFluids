@@ -19,8 +19,6 @@ public:
 	struct Results : IResults
 	{
 		Results();
-
-		Result< bool > isOk;
 	};
 
 	OBJFileImportCommand() :

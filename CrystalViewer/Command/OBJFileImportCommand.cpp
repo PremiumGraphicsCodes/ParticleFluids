@@ -1,5 +1,7 @@
 #include "OBJFileImportCommand.h"
 
+#include "Public/OBJFileImportLabels.h"
+
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/IO/OBJFileReader.h"
 #include "../../Crystal/IO/MTLFileReader.h"
@@ -14,27 +16,24 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 OBJFileImportCommand::Args::Args() :
-	filePath("FilePath", std::string(""))
+	filePath(OBJFileImportLabels::CommandNameLabel, std::string(""))
 {
 	add(&filePath);
 }
 
-OBJFileImportCommand::Results::Results() :
-	isOk("IsOk", false)
+OBJFileImportCommand::Results::Results()
 {
-	add(&isOk);
 }
 
 std::string OBJFileImportCommand::getName()
 {
-	return "OBJFileImport";
+	return OBJFileImportLabels::CommandNameLabel;
 }
 
 bool OBJFileImportCommand::execute(World* scene)
 {
-	const auto result = importOBJ(args.filePath.getValue(), scene);
-	results.isOk.setValue(result);
-	return result;
+	const auto isOk = importOBJ(args.filePath.getValue(), scene);
+	return isOk;
 }
 
 bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, World* world)
