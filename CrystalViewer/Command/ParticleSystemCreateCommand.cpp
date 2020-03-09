@@ -46,7 +46,6 @@ bool ParticleSystemCreateCommand::execute(World* world)
 	auto name = args.name.getValue();
 	auto scene = world->getSceneFactory()->createParticleSystemScene(positions, attr, name);
 	scene->setMatrix(args.matrix.getValue());
-	scene->build(*world->getGLFactory());
 	world->addScene(args.layer.getValue(), scene);
 	results.newId.setValue(scene->getId());
 	//world->updateViewModel();

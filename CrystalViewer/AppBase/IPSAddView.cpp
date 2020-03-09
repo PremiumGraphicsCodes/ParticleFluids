@@ -2,6 +2,7 @@
 
 #include "../Command/Command.h"
 #include "../Command/Public/ParticleSystemCreateLabels.h"
+#include "../Command/Public/BuildLabels.h"
 #include "../Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
@@ -27,6 +28,12 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	command.setArg(ParticleSystemCreateLabels::ColorLabel, attributeView.getValue().color);
 	command.setArg(ParticleSystemCreateLabels::NameLabel, attributeView.getName());
 	command.setArg(ParticleSystemCreateLabels::MatrixLabel, matrixView.getValue());
+	command.execute(getWorld());
+	auto newId = std::any_cast<int>( command.getResult(ParticleSystemCreateLabels::NewIdLabel) );
+
+	command.create(BuildLabels::CommandNameLabel);
+	command.setArg(BuildLabels::LayerLabel, 1);
+	command.setArg(BuildLabels::IdLabel, newId);
 	command.execute(getWorld());
 
 	getWorld()->updateViewModel();
