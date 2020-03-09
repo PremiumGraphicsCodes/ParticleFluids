@@ -106,8 +106,3 @@ IShapeScene* WireFrameScene::clone() const
 	return nullptr;
 	//return new WireFrameScene();
 }
-void WireFrameScene::onRender(const Crystal::Graphics::Camera& camera)
-{
-	renderer->setBuffer(glBuffer);
-	renderer->render(camera);
-}

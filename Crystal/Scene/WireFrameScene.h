@@ -46,9 +46,7 @@ public:
 
 	IShapeScene* clone() const override;
 
-	void onRender(const Graphics::Camera& camera) override;
-
-	void setRenderer(LineRenderer* renderer) { this->renderer = renderer; }
+	LineRenderer::LineRenderer::GLBuffer getGLBuffer() const { return glBuffer; }
 
 private:
 	LineRenderer* renderer;

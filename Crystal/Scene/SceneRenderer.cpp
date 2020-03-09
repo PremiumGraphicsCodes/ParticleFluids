@@ -4,6 +4,7 @@
 #include "../Shader/GLObjectFactory.h"
 
 #include "ParticleSystemScene.h"
+#include "WireFrameScene.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -33,7 +34,7 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 {
 //	const auto& pointBuffers = vm.getPointBuffers();
-	const auto& lineBuffers = vm.getLineBuffers();
+//	const auto& lineBuffers = vm.getLineBuffers();
 	const auto& smoothBuffers = vm.getTriangleBuffers();
 	const auto& materials = vm.getMaterials();
 	const auto& lights = vm.getLights();
@@ -45,16 +46,15 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {
-		const auto& scenes = particleScenes;
-		for (auto s : scenes) {
+		for (auto s : particleScenes) {
 			pointRenderer.setBuffer(s->getGLBuffer());
 			pointRenderer.render(*camera);
 
 		}
 	}
 	if (mask.showLines) {
-		for (const auto& b : lineBuffers) {
-			wireRenderer.setBuffer(b);
+		for (auto s : wfScenes) {
+			wireRenderer.setBuffer(s->getGLBuffer());
 			wireRenderer.render(*camera);
 		}
 	}
