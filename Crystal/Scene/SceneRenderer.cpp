@@ -3,6 +3,8 @@
 
 #include "../Shader/GLObjectFactory.h"
 
+#include "ParticleSystemScene.h"
+
 #include "../ThirdParty/stb/stb_image.h"
 
 using namespace Crystal::Graphics;
@@ -30,7 +32,7 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 
 void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 {
-	const auto& pointBuffers = vm.getPointBuffers();
+//	const auto& pointBuffers = vm.getPointBuffers();
 	const auto& lineBuffers = vm.getLineBuffers();
 	const auto& smoothBuffers = vm.getTriangleBuffers();
 	const auto& materials = vm.getMaterials();
@@ -43,9 +45,11 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {
-		for (const auto& b : pointBuffers) {
-			pointRenderer.setBuffer(b);
+		const auto& scenes = particleScenes;
+		for (auto s : scenes) {
+			pointRenderer.setBuffer(s->getGLBuffer());
 			pointRenderer.render(*camera);
+
 		}
 	}
 	if (mask.showLines) {

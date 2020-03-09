@@ -13,6 +13,8 @@
 
 namespace Crystal {
 	namespace Scene {
+		class ParticleSystemScene;
+		class WireFrameScene;
 		class SceneViewModel;
 	}
 	namespace Shader {
@@ -53,6 +55,10 @@ public:
 
 	Shader::TextureObject getTexture() { return texture; }
 
+	void add(Scene::ParticleSystemScene* scene) { this->particleScenes.push_back(scene); }
+
+	void add(Scene::WireFrameScene* scene) { this->wfScenes.push_back(scene); }
+
 private:
 	Scene::PointRenderer pointRenderer;
 	Scene::LineRenderer wireRenderer;
@@ -64,6 +70,10 @@ private:
 
 	Shader::TextureObject texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
+
+	std::vector<Scene::ParticleSystemScene*> particleScenes;
+	std::vector<Scene::WireFrameScene*> wfScenes;
+
 };
 	}
 }
