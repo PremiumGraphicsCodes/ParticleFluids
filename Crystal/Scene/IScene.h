@@ -65,9 +65,9 @@ public:
 
 	std::list<IScene*> findScenes(SceneType type);
 
-	virtual void toViewModel(SceneViewModel& viewModel) const = 0;
+	virtual void send(SceneViewModel& viewModel) const = 0;
 
-	virtual void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const {}
+	virtual void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const {}
 
 	virtual Math::Box3d getBoundingBox() const { return Math::Box3d::createDegeneratedBox(); }
 

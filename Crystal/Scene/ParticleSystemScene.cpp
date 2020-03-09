@@ -27,7 +27,7 @@ void ParticleSystemScene::onBuild(GLObjectFactory& factory)
 	//factory.getShaderFactory()->create()
 }
 
-void ParticleSystemScene::toViewModel(SceneViewModel& viewModel) const
+void ParticleSystemScene::send(SceneViewModel& viewModel) const
 {
 	if (!isVisible()) {
 		return;
@@ -44,7 +44,7 @@ void ParticleSystemScene::toViewModel(SceneViewModel& viewModel) const
 	viewModel.pointBuffers.push_back(buffer);
 }
 
-void ParticleSystemScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
+void ParticleSystemScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
 {
 	if (!isVisible()) {
 		return;

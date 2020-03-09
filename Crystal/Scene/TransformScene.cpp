@@ -3,7 +3,3 @@
 #include "SceneIdViewModel.h"
 
 using namespace Crystal::Scene;
-
-void TransformScene::toViewModel(SceneViewModel& viewModel) const
-{
-}

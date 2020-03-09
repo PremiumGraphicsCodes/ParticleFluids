@@ -45,7 +45,7 @@ Box3d WireFrameScene::getBoundingBox() const
 	return shape->getBoundingBox();
 }
 
-void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
+void WireFrameScene::send(SceneViewModel& viewModel) const
 {
 	if (!isVisible()) {
 		return;
@@ -69,7 +69,7 @@ void WireFrameScene::toViewModel(SceneViewModel& viewModel) const
 	viewModel.lineBuffers.push_back(glBuffer);
 }
 
-void WireFrameScene::toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
+void WireFrameScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
 {
 	if (!isVisible()) {
 		return;

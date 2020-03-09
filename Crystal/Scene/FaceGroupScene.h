@@ -23,7 +23,7 @@ public:
 
 	SceneType getType() const override { return SceneType::FaceGroupScene; }
 
-	void toViewModel(SceneViewModel& viewModel) const;
+	void send(SceneViewModel& viewModel) const;
 
 	//void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const;
 

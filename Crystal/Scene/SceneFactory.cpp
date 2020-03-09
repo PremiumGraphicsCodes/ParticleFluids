@@ -108,12 +108,13 @@ CameraScene* SceneFactory::createCameraScene(ICamera* camera, const std::string&
 {
 	return new CameraScene(getNextId(), name, camera);
 }
-*/
 
 TransformScene* SceneFactory::createTransformScene(const std::string& name)
 {
 	return new TransformScene(getNextId(), name);
 }
+*/
+
 
 FaceGroupScene* SceneFactory::createFaceGroupScene(PolygonMeshScene* parent, const std::string& name)
 {

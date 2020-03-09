@@ -34,9 +34,9 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const;
 
-	void toViewModel(SceneViewModel& viewModel) const override;
+	void send(SceneViewModel& viewModel) const override;
 
-	void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
+	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
 	Math::Vector3dd getPosition(const int index) const override;
 

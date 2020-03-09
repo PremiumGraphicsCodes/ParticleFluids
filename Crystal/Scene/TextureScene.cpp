@@ -22,7 +22,7 @@ void TextureScene::onBuild(GLObjectFactory& factory)
 	texture = factory.getTextureFactory()->createTextureObject(getName(),*image);
 }
 
-void TextureScene::toViewModel(SceneViewModel& viewModel) const
+void TextureScene::send(SceneViewModel& viewModel) const
 {
 	viewModel.textures.push_back(texture);
 }

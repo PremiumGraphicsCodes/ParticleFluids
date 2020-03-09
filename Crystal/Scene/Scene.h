@@ -20,9 +20,9 @@ public:
 
 	virtual void onClear() override;
 
-	void toViewModel(SceneViewModel& viewModel) const override;
+	void send(SceneViewModel& viewModel) const override;
 
-	void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
+	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
 
 private:
