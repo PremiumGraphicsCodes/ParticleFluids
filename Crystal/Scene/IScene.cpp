@@ -120,3 +120,11 @@ void IScene::send()
 		c->send();
 	}
 }
+
+void IScene::render()
+{
+	onRender();
+	for (auto c : children) {
+		c->render();
+	}
+}

@@ -85,12 +85,16 @@ public:
 
 	void send();
 
+	void render();
+
 protected:
 	virtual void onClear() = 0;
 
 	virtual void onBuild(Shader::GLObjectFactory& factory) {};
 
 	virtual void onSend() {};
+
+	virtual void onRender() {};
 
 protected:
 	std::string name;

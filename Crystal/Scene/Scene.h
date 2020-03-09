@@ -24,6 +24,7 @@ public:
 
 	void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
+
 private:
 };
 	}
