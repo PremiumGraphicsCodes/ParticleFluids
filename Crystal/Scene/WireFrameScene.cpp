@@ -8,6 +8,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 WireFrameScene::WireFrameScene() :
@@ -45,6 +46,11 @@ Box3d WireFrameScene::getBoundingBox() const
 	return shape->getBoundingBox();
 }
 
+void WireFrameScene::onBuild(GLObjectFactory& factory)
+{
+	glBuffer.build();
+}
+
 void WireFrameScene::send(SceneViewModel& viewModel)
 {
 	if (!isVisible()) {
@@ -63,8 +69,6 @@ void WireFrameScene::send(SceneViewModel& viewModel)
 		buffer.addIndex(e.originId);
 		buffer.addIndex(e.destId);
 	}
-	LineRenderer::LineRenderer::GLBuffer glBuffer;
-	glBuffer.build();
 	glBuffer.send(buffer);
 	viewModel.lineBuffers.push_back(glBuffer);
 }

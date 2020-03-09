@@ -6,6 +6,8 @@
 #include "../Math/Line3d.h"
 #include "../Shape/WireFrame.h"
 
+#include "LineRenderer.h"
+
 namespace Crystal {
 	namespace Scene {
 
@@ -34,6 +36,8 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const;
 
+	void onBuild(Shader::GLObjectFactory& factory) override;
+
 	void send(SceneViewModel& viewModel) override;
 
 	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
@@ -43,6 +47,8 @@ public:
 	IShapeScene* clone() const override;
 
 private:
+	LineRenderer::LineRenderer::GLBuffer glBuffer;
+
 	std::unique_ptr<Shape::WireFrame> shape;
 	WireFrameAttribute attribute;
 };
