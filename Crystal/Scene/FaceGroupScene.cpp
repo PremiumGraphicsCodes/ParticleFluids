@@ -9,6 +9,7 @@
 
 #include "MaterialScene.h"
 
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 FaceGroupScene::FaceGroupScene(const int id, const std::string& name, PolygonMeshScene* polygonMesh) :
@@ -21,6 +22,11 @@ FaceGroupScene::FaceGroupScene(const int id, const std::string& name, PolygonMes
 void FaceGroupScene::setMaterial(MaterialScene* material)
 {
 	this->material = material;
+}
+
+void FaceGroupScene::onBuild(GLObjectFactory& factory)
+{
+	glBuffer.build();
 }
 
 void FaceGroupScene::send(SceneViewModel& viewModel)
@@ -58,8 +64,6 @@ void FaceGroupScene::send(SceneViewModel& viewModel)
 				buffer.addVertex(p, n, texCoord, materialId);
 			}
 		}
-		SmoothRenderer::GLBuffer glBuffer;
-		glBuffer.build();
 		glBuffer.send(buffer);
 		viewModel.triangleBuffers.push_back(glBuffer);
 	}

@@ -2,6 +2,7 @@
 
 #include "IScene.h"
 #include "../Shape/Face.h"
+#include "SmoothRenderer.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -23,6 +24,8 @@ public:
 
 	SceneType getType() const override { return SceneType::FaceGroupScene; }
 
+	void onBuild(Shader::GLObjectFactory& factory) override;
+
 	void send(SceneViewModel& viewModel) override;
 
 	//void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const;
@@ -35,6 +38,7 @@ private:
 	PolygonMeshScene* polygonMesh;
 	MaterialScene* material;
 	std::vector<Shape::Face> faces;
+	SmoothRenderer::GLBuffer glBuffer;
 
 };
 
