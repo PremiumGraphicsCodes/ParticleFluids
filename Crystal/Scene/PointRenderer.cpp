@@ -104,6 +104,9 @@ void PointRenderer::render(const Camera& camera)
 	shader->disableDepthTest();
 
 	shader->unbind();
+
+	assert(GL_NO_ERROR == glGetError());
+
 }
 
 std::string PointRenderer::getBuiltInVertexShaderSource() const
