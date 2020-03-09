@@ -85,7 +85,7 @@ public:
 
 	void send();
 
-	void render();
+	void render(const Graphics::Camera& camera);
 
 protected:
 	virtual void onClear() = 0;
@@ -94,7 +94,7 @@ protected:
 
 	virtual void onSend() {};
 
-	virtual void onRender() {};
+	virtual void onRender(const Graphics::Camera& camera) {};
 
 protected:
 	std::string name;

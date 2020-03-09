@@ -46,7 +46,12 @@ public:
 
 	IShapeScene* clone() const override;
 
+	void onRender(const Graphics::Camera& camera) override;
+
+	void setRenderer(LineRenderer* renderer) { this->renderer = renderer; }
+
 private:
+	LineRenderer* renderer;
 	LineRenderer::LineRenderer::GLBuffer glBuffer;
 
 	std::unique_ptr<Shape::WireFrame> shape;

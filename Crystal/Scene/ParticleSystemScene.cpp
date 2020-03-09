@@ -88,3 +88,9 @@ void ParticleSystemScene::setAttribute(const ParticleAttribute& attribute)
 		p->setAttribute(attribute);
 	}
 }
+
+void ParticleSystemScene::onRender(const Crystal::Graphics::Camera& camera)
+{
+	renderer->setBuffer(buffer);
+	renderer->render(camera);
+}

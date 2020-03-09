@@ -49,6 +49,7 @@ Box3d WireFrameScene::getBoundingBox() const
 void WireFrameScene::onBuild(GLObjectFactory& factory)
 {
 	glBuffer.build();
+	assert(GL_NO_ERROR == glGetError());
 }
 
 void WireFrameScene::send(SceneViewModel& viewModel)
@@ -104,4 +105,9 @@ IShapeScene* WireFrameScene::clone() const
 {
 	return nullptr;
 	//return new WireFrameScene();
+}
+void WireFrameScene::onRender(const Crystal::Graphics::Camera& camera)
+{
+	renderer->setBuffer(glBuffer);
+	renderer->render(camera);
 }

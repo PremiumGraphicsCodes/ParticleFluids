@@ -47,8 +47,13 @@ public:
 
 	void setAttribute(const ParticleAttribute& attribute);
 
+	void onRender(const Graphics::Camera& camera) override;
+
+	void setRenderer(PointRenderer* renderer) { this->renderer = renderer; }
+
 private:
 	PointRenderer::GLBuffer buffer;
+	PointRenderer* renderer;
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
 };
 
