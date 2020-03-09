@@ -5,6 +5,8 @@
 #include "IShapeScene.h"
 #include "ParticleAttribute.h"
 
+#include "PointRenderer.h"
+
 namespace Crystal {
 	namespace Scene {
 
@@ -46,6 +48,7 @@ public:
 	void setAttribute(const ParticleAttribute& attribute);
 
 private:
+	PointRenderer::GLBuffer buffer;
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
 };
 

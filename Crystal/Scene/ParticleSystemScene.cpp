@@ -24,6 +24,7 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 
 void ParticleSystemScene::onBuild(GLObjectFactory& factory)
 {
+	buffer.build();
 	//factory.getShaderFactory()->create()
 }
 
@@ -38,8 +39,6 @@ void ParticleSystemScene::send(SceneViewModel& viewModel)
 	for (auto p : particles) {
 		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
-	PointRenderer::GLBuffer buffer;
-	buffer.build();
 	buffer.send(pointBuffer);
 	viewModel.pointBuffers.push_back(buffer);
 }
