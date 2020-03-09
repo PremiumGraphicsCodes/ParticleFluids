@@ -67,7 +67,7 @@ public:
 			Shader::VertexBufferObject position;
 			Shader::VertexBufferObject color;
 		} vbo;
-		Shader::VertexArrayObject vao;
+		//Shader::VertexArrayObject vao;
 
 		std::vector<unsigned int> indices;
 		Math::Matrix4df matrix;

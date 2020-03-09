@@ -18,7 +18,7 @@ void LineRenderer::GLBuffer::build()
 	vbo.position.build();
 	vbo.color.build();
 
-	vao.build();
+	//vao.build();
 }
 
 void LineRenderer::GLBuffer::release()
@@ -26,7 +26,7 @@ void LineRenderer::GLBuffer::release()
 	vbo.position.release();
 	vbo.color.release();
 	
-	vao.release();
+	//vao.release();
 }
 
 void LineRenderer::GLBuffer::send(const LineBuffer& buffer)
@@ -78,12 +78,12 @@ void LineRenderer::render(const Camera& camera)
 	shader->sendUniform(projectionMatrixLabel, projectionMatrix);
 	shader->sendUniform(modelViewMatrixLabel, modelviewMatrix);
 
-	glBuffer.vao.bind();
+	//glBuffer.vao.bind();
 	shader->sendVertexAttribute3df(positionLabel, glBuffer.vbo.position);
 	shader->sendVertexAttribute4df(colorLabel, glBuffer.vbo.color);
 
 	shader->drawLines(glBuffer.indices);
-	glBuffer.vao.unbind();
+	//glBuffer.vao.unbind();
 
 	//shader->disableVertexAttribute("color");
 	//shader->disableVertexAttribute("position");

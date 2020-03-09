@@ -59,7 +59,7 @@ public:
 			Shader::VertexBufferObject color;
 		};
 
-		Shader::VertexArrayObject vao;
+		//Shader::VertexArrayObject vao;
 		VBO vbo;
 		GLuint count;
 		Math::Matrix4df matrix;

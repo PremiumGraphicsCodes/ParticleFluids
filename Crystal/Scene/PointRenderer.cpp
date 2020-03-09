@@ -22,7 +22,7 @@ void PointRenderer::GLBuffer::build()
 	vbo.size.build();
 	vbo.color.build();
 
-	vao.build();
+	//vao.build();
 }
 
 void PointRenderer::GLBuffer::release()
@@ -31,7 +31,7 @@ void PointRenderer::GLBuffer::release()
 	vbo.size.release();
 	vbo.color.release();
 
-	vao.release();
+	//vao.release();
 }
 
 
@@ -45,9 +45,11 @@ void PointRenderer::GLBuffer::send(const PointBuffer& buffer)
 		return;
 	}
 
+	//vao.bind();
 	vbo.position.send(positions);
 	vbo.size.send(sizes);
 	vbo.color.send(colors);
+	//vao.unbind();
 
 	count = positions.size() / 3;
 	matrix = buffer.getMatrix();
@@ -90,13 +92,13 @@ void PointRenderer::render(const Camera& camera)
 	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
 	shader->sendUniform(::modelViewMatrixLabel, modelviewMatrix);
 
-	glBuffer.vao.bind();
+	//glBuffer.vao.bind();
 	shader->sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
 	shader->sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
 	shader->sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
 
 	shader->drawPoints(glBuffer.count);
-	glBuffer.vao.unbind();
+	//glBuffer.vao.unbind();
 
 	shader->bindOutput(::fragColorLabel);
 
