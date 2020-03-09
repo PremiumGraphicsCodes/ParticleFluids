@@ -23,7 +23,7 @@ PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::u
 {}
 
 
-void PolygonMeshScene::send(SceneViewModel& viewModel) const
+void PolygonMeshScene::send(SceneViewModel& viewModel)
 {
 	if (!isVisible()) {
 		return;

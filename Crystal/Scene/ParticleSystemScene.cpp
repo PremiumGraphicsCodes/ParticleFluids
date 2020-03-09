@@ -27,7 +27,7 @@ void ParticleSystemScene::onBuild(GLObjectFactory& factory)
 	//factory.getShaderFactory()->create()
 }
 
-void ParticleSystemScene::send(SceneViewModel& viewModel) const
+void ParticleSystemScene::send(SceneViewModel& viewModel)
 {
 	if (!isVisible()) {
 		return;

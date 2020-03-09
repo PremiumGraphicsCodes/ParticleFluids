@@ -23,7 +23,7 @@ void FaceGroupScene::setMaterial(MaterialScene* material)
 	this->material = material;
 }
 
-void FaceGroupScene::send(SceneViewModel& viewModel) const
+void FaceGroupScene::send(SceneViewModel& viewModel)
 {
 	if (!isVisible()) {
 		return;

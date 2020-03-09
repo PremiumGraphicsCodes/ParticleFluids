@@ -19,7 +19,7 @@ public:
 
 	SceneType getType() const override { return SceneType::TextureScene; }
 
-	void send(SceneViewModel& viewModel) const override;
+	void send(SceneViewModel& viewModel) override;
 
 	Shader::TextureObject getTextureObject() const { return texture; }
 

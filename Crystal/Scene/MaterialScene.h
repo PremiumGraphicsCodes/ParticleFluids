@@ -21,7 +21,7 @@ public:
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
 
-	void send(SceneViewModel& viewModel) const override;
+	void send(SceneViewModel& viewModel) override;
 	
 	int getMaterialId() const { return materialId; }
 

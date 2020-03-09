@@ -31,7 +31,7 @@ public:
 
 	}
 
-	void send(SceneViewModel& viewModel) const override;
+	void send(SceneViewModel& viewModel) override;
 
 private:
 	std::unique_ptr<Graphics::PointLight> light;

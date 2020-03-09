@@ -65,7 +65,7 @@ public:
 
 	std::list<IScene*> findScenes(SceneType type);
 
-	virtual void send(SceneViewModel& viewModel) const = 0;
+	virtual void send(SceneViewModel& viewModel) = 0;
 
 	virtual void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const {}
 

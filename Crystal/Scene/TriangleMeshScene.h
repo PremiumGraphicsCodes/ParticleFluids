@@ -28,7 +28,7 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const { return {}; }
 
-	void send(SceneViewModel& viewModel) const override {}
+	void send(SceneViewModel& viewModel) override{}
 
 	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override {}
 
