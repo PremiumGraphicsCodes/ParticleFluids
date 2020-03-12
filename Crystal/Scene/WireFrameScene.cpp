@@ -1,5 +1,7 @@
 #include "WireFrameScene.h"
 
+#include "SceneRenderer.h"
+
 #include "SceneIdViewModel.h"
 
 #include "../Graphics/DrawableId.h"
@@ -103,4 +105,11 @@ IShapeScene* WireFrameScene::clone() const
 {
 	return nullptr;
 	//return new WireFrameScene();
+}
+
+void WireFrameScene::onRender(SceneRenderer* renderer)
+{
+	auto lineRenderer = renderer->getLineRenderer();
+	lineRenderer->setBuffer(glBuffer);
+	lineRenderer->render(*renderer->getCamera());
 }

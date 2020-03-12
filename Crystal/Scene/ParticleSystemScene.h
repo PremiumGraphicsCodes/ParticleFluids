@@ -47,8 +47,6 @@ public:
 
 	void setAttribute(const ParticleAttribute& attribute);
 
-	PointRenderer::GLBuffer getGLBuffer() const { return buffer; }
-
 	void onRender(SceneRenderer* renderer) override;
 
 private:

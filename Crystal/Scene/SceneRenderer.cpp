@@ -46,8 +46,7 @@ void SceneRenderer::render(Camera* camera)
 	}
 	if (mask.showLines) {
 		for (auto s : wfScenes) {
-			wireRenderer.setBuffer(s->getGLBuffer());
-			wireRenderer.render(*camera);
+			s->render(this);
 		}
 	}
 	if (mask.showTrianlges) {

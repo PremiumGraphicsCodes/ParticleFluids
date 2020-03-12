@@ -48,6 +48,8 @@ public:
 
 	LineRenderer::LineRenderer::GLBuffer getGLBuffer() const { return glBuffer; }
 
+	void onRender(SceneRenderer* renderer) override;
+
 private:
 	LineRenderer* renderer;
 	LineRenderer::LineRenderer::GLBuffer glBuffer;

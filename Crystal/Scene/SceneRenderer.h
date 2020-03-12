@@ -70,6 +70,8 @@ public:
 
 	PointRenderer* getPointRenderer() { return &pointRenderer; }
 
+	LineRenderer* getLineRenderer() { return &wireRenderer; }
+
 	Graphics::Camera* getCamera() { return camera; }
 
 private:
