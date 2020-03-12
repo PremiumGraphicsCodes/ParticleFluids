@@ -13,8 +13,8 @@ namespace Crystal {
 		class IShaderCommand;
 	}
 	namespace Scene {
-		class SceneViewModel;
 		class SceneIdViewModel;
+		class SceneRenderer;
 
 class IScene
 {
@@ -83,7 +83,7 @@ public:
 
 	virtual void send();
 
-	void render(const Graphics::Camera& camera);
+	void render(SceneRenderer* renderer);
 
 protected:
 	virtual void onClear() = 0;
@@ -92,7 +92,7 @@ protected:
 
 	virtual void onSend() {};
 
-	virtual void onRender(const Graphics::Camera& camera) {};
+	virtual void onRender(SceneRenderer* renderer) {};
 
 protected:
 	std::string name;

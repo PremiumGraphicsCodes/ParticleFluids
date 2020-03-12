@@ -32,6 +32,7 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 
 void SceneRenderer::render(Camera* camera)
 {
+	this->camera = camera;
 	frameBufferObject->setTexture(texture);
 	//texture.bind();
 	frameBufferObject->bind();
@@ -40,9 +41,7 @@ void SceneRenderer::render(Camera* camera)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {
 		for (auto s : particleScenes) {
-			pointRenderer.setBuffer(s->getGLBuffer());
-			pointRenderer.render(*camera);
-
+			s->render(this);
 		}
 	}
 	if (mask.showLines) {

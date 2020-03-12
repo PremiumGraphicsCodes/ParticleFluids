@@ -3,7 +3,7 @@
 #include "SceneIdViewModel.h"
 
 #include "../Graphics/DrawableId.h"
-#include "IRenderer.h"
+#include "Renderer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -85,4 +85,11 @@ void ParticleSystemScene::setAttribute(const ParticleAttribute& attribute)
 	for (auto p : particles) {
 		p->setAttribute(attribute);
 	}
+}
+
+void ParticleSystemScene::onRender(SceneRenderer* renderer)
+{
+	auto pointRenderer = renderer->getPointRenderer();
+	pointRenderer->setBuffer(buffer);
+	pointRenderer->render(*renderer->getCamera());
 }

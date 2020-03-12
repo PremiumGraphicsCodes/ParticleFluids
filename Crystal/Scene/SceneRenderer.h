@@ -68,6 +68,10 @@ public:
 
 	void add(LightScene* scene) { this->lightScenes.push_back(scene); }
 
+	PointRenderer* getPointRenderer() { return &pointRenderer; }
+
+	Graphics::Camera* getCamera() { return camera; }
+
 private:
 	PointRenderer pointRenderer;
 	LineRenderer wireRenderer;

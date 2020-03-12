@@ -121,10 +121,10 @@ void IScene::send()
 	}
 }
 
-void IScene::render(const Crystal::Graphics::Camera& camera)
+void IScene::render(SceneRenderer* renderer)
 {
-	onRender(camera);
+	onRender(renderer);
 	for (auto c : children) {
-		c->render(camera);
+		c->render(renderer);
 	}
 }

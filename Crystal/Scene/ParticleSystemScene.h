@@ -49,6 +49,8 @@ public:
 
 	PointRenderer::GLBuffer getGLBuffer() const { return buffer; }
 
+	void onRender(SceneRenderer* renderer) override;
+
 private:
 	PointRenderer::GLBuffer buffer;
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
