@@ -22,10 +22,6 @@ void TextureScene::onBuild(GLObjectFactory& factory)
 	texture = factory.getTextureFactory()->createTextureObject(getName(),*image);
 }
 
-void TextureScene::send(SceneViewModel& viewModel)
-{
-}
-
 void TextureScene::onSend()
 {
 	texture.send(*image);

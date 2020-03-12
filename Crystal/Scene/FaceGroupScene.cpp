@@ -29,7 +29,7 @@ void FaceGroupScene::onBuild(GLObjectFactory& factory)
 	glBuffer.build();
 }
 
-void FaceGroupScene::send(SceneViewModel& viewModel)
+void FaceGroupScene::onSend()
 {
 	if (!isVisible()) {
 		return;

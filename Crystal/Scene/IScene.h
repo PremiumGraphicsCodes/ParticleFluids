@@ -65,8 +65,6 @@ public:
 
 	std::list<IScene*> findScenes(SceneType type);
 
-	virtual void send(SceneViewModel& viewModel) = 0;
-
 	virtual void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const {}
 
 	virtual Math::Box3d getBoundingBox() const { return Math::Box3d::createDegeneratedBox(); }
@@ -83,7 +81,7 @@ public:
 
 	void build(Shader::GLObjectFactory& factory);
 
-	void send();
+	virtual void send();
 
 	void render(const Graphics::Camera& camera);
 

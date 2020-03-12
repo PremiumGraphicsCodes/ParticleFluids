@@ -111,8 +111,7 @@ void World::updateViewModel()
 {
 	ViewModel vm;
 	for (auto& s : scenes) {
-//		s->send();
-		s->send(vm.object);
+		s->send();
 		s->send(vm.parentId, vm.childId);
 	}
 

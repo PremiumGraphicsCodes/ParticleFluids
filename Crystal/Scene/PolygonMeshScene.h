@@ -31,7 +31,7 @@ public:
 
 	void onClear() override{}
 
-	void send(SceneViewModel& viewModel) override;
+	void onSend() override;
 
 	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 

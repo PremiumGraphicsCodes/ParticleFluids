@@ -11,7 +11,6 @@ LightScene::LightScene(const int id, const std::string& name, std::unique_ptr<Po
 	light(std::move(light))
 {}
 
-void LightScene::send(SceneViewModel& viewModel)
+void LightScene::onSend()
 {
-	viewModel.lights.push_back(*light);
 }

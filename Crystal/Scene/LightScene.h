@@ -31,7 +31,7 @@ public:
 
 	}
 
-	void send(SceneViewModel& viewModel) override;
+	void onSend() override;
 
 private:
 	std::unique_ptr<Graphics::PointLight> light;

@@ -52,7 +52,7 @@ void WireFrameScene::onBuild(GLObjectFactory& factory)
 	assert(GL_NO_ERROR == glGetError());
 }
 
-void WireFrameScene::send(SceneViewModel& viewModel)
+void WireFrameScene::onSend()
 {
 	if (!isVisible()) {
 		return;

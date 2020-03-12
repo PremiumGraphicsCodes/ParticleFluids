@@ -23,7 +23,7 @@ PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::u
 {}
 
 
-void PolygonMeshScene::send(SceneViewModel& viewModel)
+void PolygonMeshScene::onSend()
 {
 	if (!isVisible()) {
 		return;
@@ -36,7 +36,7 @@ void PolygonMeshScene::send(SceneViewModel& viewModel)
 	const auto& tcs = shape->getTexCoords();
 
 	for (auto g : groups) {
-		g->send(viewModel);
+		g->send();
 	}
 	/*
 	SmoothTriangleBuffer buffer;

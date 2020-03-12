@@ -26,7 +26,7 @@ public:
 
 	void onBuild(Shader::GLObjectFactory& factory) override;
 
-	void send(SceneViewModel& viewModel) override;
+	void onSend() override;
 
 	//void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const;
 

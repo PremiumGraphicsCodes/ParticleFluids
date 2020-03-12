@@ -13,7 +13,6 @@ MaterialScene::MaterialScene(const int id, const std::string& name, std::unique_
 	materialId(materialId)
 {}
 
-void MaterialScene::send(SceneViewModel& viewModel)
+void MaterialScene::onSend()
 {
-	viewModel.materials.push_back(*material);
 }
