@@ -71,7 +71,6 @@ void WireFrameScene::send(SceneViewModel& viewModel)
 		buffer.addIndex(e.destId);
 	}
 	glBuffer.send(buffer);
-	viewModel.lineBuffers.push_back(glBuffer);
 }
 
 void WireFrameScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const

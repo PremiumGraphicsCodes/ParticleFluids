@@ -24,7 +24,6 @@ void TextureScene::onBuild(GLObjectFactory& factory)
 
 void TextureScene::send(SceneViewModel& viewModel)
 {
-	viewModel.textures.push_back(texture);
 }
 
 void TextureScene::onSend()

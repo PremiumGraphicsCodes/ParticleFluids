@@ -40,8 +40,10 @@ bool TextureCreateCommand::execute(World* world)
 	auto image = std::make_unique<Image>();
 	*image = reader.getImage();
 	auto scene = world->getSceneFactory()->createTextureScene(std::move(image), args.name.getValue());
-	//scene->build(*world->getGLFactory());
+//	scene->build(*world->getGLFactory());
+//	scene->send();
 	world->getObjects()->addScene(scene);
+	world->getRenderer()->getObjectRenderer()->add(scene);
 	results.newId.setValue(scene->getId());
 	return true;
 }

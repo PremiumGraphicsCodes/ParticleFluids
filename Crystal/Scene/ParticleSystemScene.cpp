@@ -40,7 +40,6 @@ void ParticleSystemScene::send(SceneViewModel& viewModel)
 		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
 	buffer.send(pointBuffer);
-	viewModel.pointBuffers.push_back(buffer);
 }
 
 void ParticleSystemScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const

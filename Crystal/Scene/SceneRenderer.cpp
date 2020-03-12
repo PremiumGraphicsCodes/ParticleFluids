@@ -6,6 +6,7 @@
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
 #include "PolygonMeshScene.h"
+#include "TextureScene.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -62,7 +63,12 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 	if (mask.showTrianlges) {
 		smoothRenderer.setMaterials(materials);
 		smoothRenderer.setLights(lights);
-		smoothRenderer.setTextures(vm.getTextures());
+		//smoothRenderer.setTextures(vm.getTextures());
+		std::vector<TextureObject> textures;
+		for (auto tex : textureScenes) {
+			textures.push_back(tex->getTextureObject());
+		}
+		smoothRenderer.setTextures(textures);
 		for (auto pm : pmScenes) {
 			const auto& bs = pm->getGLBuffers();
 			for (auto b : bs) {

@@ -65,7 +65,6 @@ void FaceGroupScene::send(SceneViewModel& viewModel)
 			}
 		}
 		glBuffer.send(buffer);
-		viewModel.triangleBuffers.push_back(glBuffer);
 	}
 }
 
