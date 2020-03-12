@@ -11,7 +11,6 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
-using namespace Crystal::UI;
 
 bool SceneRenderer::build(GLObjectFactory& factory)
 {

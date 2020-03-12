@@ -12,6 +12,9 @@
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace Scene {
 		class ParticleSystemScene;
 		class WireFrameScene;
@@ -20,12 +23,6 @@ namespace Crystal {
 		class MaterialScene;
 		class LightScene;
 		class SceneViewModel;
-	}
-	namespace Shader {
-		class GLObjectFactory;
-	}
-	namespace UI {
-
 
 class SceneRenderer : private UnCopyable
 {
@@ -59,22 +56,22 @@ public:
 
 	Shader::TextureObject getTexture() { return texture; }
 
-	void add(Scene::ParticleSystemScene* scene) { this->particleScenes.push_back(scene); }
+	void add(ParticleSystemScene* scene) { this->particleScenes.push_back(scene); }
 
-	void add(Scene::WireFrameScene* scene) { this->wfScenes.push_back(scene); }
+	void add(WireFrameScene* scene) { this->wfScenes.push_back(scene); }
 
-	void add(Scene::PolygonMeshScene* scene) { this->pmScenes.push_back(scene); }
+	void add(PolygonMeshScene* scene) { this->pmScenes.push_back(scene); }
 
-	void add(Scene::TextureScene* scene) { this->textureScenes.push_back(scene); }
+	void add(TextureScene* scene) { this->textureScenes.push_back(scene); }
 
-	void add(Scene::MaterialScene* scene) { this->materialScenes.push_back(scene); }
+	void add(MaterialScene* scene) { this->materialScenes.push_back(scene); }
 
-	void add(Scene::LightScene* scene) { this->lightScenes.push_back(scene); }
+	void add(LightScene* scene) { this->lightScenes.push_back(scene); }
 
 private:
-	Scene::PointRenderer pointRenderer;
-	Scene::LineRenderer wireRenderer;
-	Scene::SmoothRenderer smoothRenderer;
+	PointRenderer pointRenderer;
+	LineRenderer wireRenderer;
+	SmoothRenderer smoothRenderer;
 
 	Mask mask;
 
@@ -83,12 +80,12 @@ private:
 	Shader::TextureObject texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
 
-	std::vector<Scene::ParticleSystemScene*> particleScenes;
-	std::vector<Scene::WireFrameScene*> wfScenes;
-	std::vector<Scene::PolygonMeshScene*> pmScenes;
-	std::vector<Scene::TextureScene*> textureScenes;
-	std::vector<Scene::MaterialScene*> materialScenes;
-	std::vector<Scene::LightScene*> lightScenes;
+	std::vector<ParticleSystemScene*> particleScenes;
+	std::vector<WireFrameScene*> wfScenes;
+	std::vector<PolygonMeshScene*> pmScenes;
+	std::vector<TextureScene*> textureScenes;
+	std::vector<MaterialScene*> materialScenes;
+	std::vector<LightScene*> lightScenes;
 };
 	}
 }

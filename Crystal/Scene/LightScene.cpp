@@ -1,6 +1,5 @@
 #include "LightScene.h"
 
-#include "SceneViewModel.h"
 #include "SceneIdViewModel.h"
 
 using namespace Crystal::Graphics;

@@ -19,8 +19,6 @@ namespace Crystal {
 		class IScene;
 		class SceneFactory;
 		class SceneIdViewModel;
-	}
-	namespace UI {
 
 class SceneIdRenderer : private UnCopyable
 {
@@ -32,7 +30,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory);
 
-	void render(Graphics::Camera* camera, const Scene::SceneIdViewModel& vm);
+	void render(Graphics::Camera* camera, const SceneIdViewModel& vm);
 
 	Graphics::DrawableID getId(const double x, const double y);
 
@@ -41,13 +39,13 @@ public:
 	//Shader::TextureObject* getTexture() { return texture; }
 
 private:
-	Scene::PointRenderer::GLBuffer pointBuffer;
-	Scene::LineRenderer::GLBuffer lineBuffer;
-	Scene::TriangleRenderer::GLBuffer triangleBuffer;
+	PointRenderer::GLBuffer pointBuffer;
+	LineRenderer::GLBuffer lineBuffer;
+	TriangleRenderer::GLBuffer triangleBuffer;
 
-	Scene::PointRenderer pointIdRenderer;
-	Scene::LineRenderer lineIdRenderer;
-	Scene::TriangleRenderer triangleIdRenderer;
+	PointRenderer pointIdRenderer;
+	LineRenderer lineIdRenderer;
+	TriangleRenderer triangleIdRenderer;
 
 	Shader::TextureObject texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;

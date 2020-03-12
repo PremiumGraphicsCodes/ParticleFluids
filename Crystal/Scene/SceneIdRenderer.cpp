@@ -7,7 +7,6 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
-using namespace Crystal::UI;
 
 bool SceneIdRenderer::build(GLObjectFactory& factory)
 {

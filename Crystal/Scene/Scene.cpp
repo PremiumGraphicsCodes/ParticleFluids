@@ -1,6 +1,5 @@
 #include "Scene.h"
 
-#include "SceneViewModel.h"
 #include "SceneIdViewModel.h"
 
 using namespace Crystal::Math;

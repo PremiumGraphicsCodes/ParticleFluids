@@ -14,7 +14,7 @@ namespace Crystal {
 	namespace Shader {
 		class GLObjectFactory;
 	}
-	namespace UI {
+	namespace Scene {
 
 class Renderer : private UnCopyable
 {
@@ -25,7 +25,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory);
 
-	void render(const int width, const int height, const Scene::ViewModel& vm);
+	void render(const int width, const int height, const ViewModel& vm);
 
 	SceneRenderer* getObjectRenderer() { return &objectRenderer; }
 

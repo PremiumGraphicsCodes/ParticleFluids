@@ -3,7 +3,6 @@
 #include "Public/NewLabels.h"
 
 using namespace Crystal::Scene;
-using namespace Crystal::UI;
 using namespace Crystal::Command;
 
 std::string NewCommand::getName()

@@ -46,7 +46,7 @@ public:
 
 	Math::Box3d getBoundingBox() const;
 
-	UI::Renderer* getRenderer() { return renderer.get(); }
+	Renderer* getRenderer() { return renderer.get(); }
 
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
@@ -55,7 +55,7 @@ private:
 	SceneFactory sceneFactory;
 	Shader::GLObjectFactory glFactory;
 
-	std::unique_ptr<UI::Renderer> renderer;
+	std::unique_ptr<Renderer> renderer;
 
 };
 	}

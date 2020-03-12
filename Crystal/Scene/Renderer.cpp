@@ -5,13 +5,10 @@
 
 #include "../Shader/GLObjectFactory.h"
 
-#include "../ThirdParty/stb/stb_image.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
-using namespace Crystal::UI;
 
 Renderer::Renderer() :
 	showOffScreen(false),
