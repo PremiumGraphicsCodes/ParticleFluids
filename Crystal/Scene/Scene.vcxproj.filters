@@ -27,9 +27,6 @@
     <ClInclude Include="SceneIdProvider.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneViewModel.h">
-      <Filter>ViewModel</Filter>
-    </ClInclude>
     <ClInclude Include="SceneIdViewModel.h">
       <Filter>ViewModel</Filter>
     </ClInclude>
@@ -165,9 +162,6 @@
     </ClCompile>
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneViewModel.cpp">
-      <Filter>ViewModel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

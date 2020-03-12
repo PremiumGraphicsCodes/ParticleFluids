@@ -1,6 +1,5 @@
 #include "ParticleSystemScene.h"
 
-#include "SceneViewModel.h"
 #include "SceneIdViewModel.h"
 
 #include "../Graphics/DrawableId.h"

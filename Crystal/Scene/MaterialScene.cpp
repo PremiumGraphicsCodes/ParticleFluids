@@ -1,5 +1,4 @@
 #include "MaterialScene.h"
-#include "SceneViewModel.h"
 #include "SceneIdViewModel.h"
 
 #include "TextureScene.h"

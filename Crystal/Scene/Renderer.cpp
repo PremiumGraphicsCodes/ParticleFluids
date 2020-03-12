@@ -1,6 +1,4 @@
 #include "Renderer.h"
-#include "../../Crystal/Scene/SceneViewModel.h"
-#include "../../Crystal/Scene/IScene.h"
 #include "../../Crystal/Scene/IRenderer.h"
 
 #include "../Graphics/Camera.h"

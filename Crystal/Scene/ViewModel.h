@@ -1,6 +1,5 @@
 #pragma once
 
-#include "SceneViewModel.h"
 #include "SceneIdViewModel.h"
 
 namespace Crystal {
@@ -9,7 +8,6 @@ namespace Crystal {
 class ViewModel
 {
 public:
-	SceneViewModel object;
 	SceneIdViewModel parentId;
 	SceneIdViewModel childId;
 };

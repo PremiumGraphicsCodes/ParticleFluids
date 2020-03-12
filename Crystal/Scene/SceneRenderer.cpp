@@ -1,5 +1,4 @@
 #include "SceneRenderer.h"
-#include "../../Crystal/Scene/SceneViewModel.h"
 
 #include "../Shader/GLObjectFactory.h"
 
