@@ -47,7 +47,7 @@ bool Renderer::build(GLObjectFactory& factory)
 
 void Renderer::render(const int width, const int height, const ViewModel& vm)
 {
-	objectRenderer.render(camera.get(), vm.object);
+	objectRenderer.render(camera.get());
 	parentIdRenderer.render(camera.get(), vm.parentId);
 	childIdRenderer.render(camera.get(), vm.childId);
 

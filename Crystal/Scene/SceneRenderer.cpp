@@ -7,8 +7,7 @@
 #include "WireFrameScene.h"
 #include "PolygonMeshScene.h"
 #include "TextureScene.h"
-
-#include "../ThirdParty/stb/stb_image.h"
+#include "LightScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
@@ -33,14 +32,8 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 	return true;
 }
 
-void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
+void SceneRenderer::render(Camera* camera)
 {
-//	const auto& pointBuffers = vm.getPointBuffers();
-//	const auto& lineBuffers = vm.getLineBuffers();
-//	const auto& smoothBuffers = vm.getTriangleBuffers();
-	const auto& materials = vm.getMaterials();
-	const auto& lights = vm.getLights();
-
 	frameBufferObject->setTexture(texture);
 	//texture.bind();
 	frameBufferObject->bind();
@@ -61,9 +54,16 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 		}
 	}
 	if (mask.showTrianlges) {
+		std::vector<Material> materials;
+		for (auto mat : materialScenes) {
+			materials.push_back(*mat->getMaterial());
+		}
 		smoothRenderer.setMaterials(materials);
+		std::vector<PointLight> lights;
+		for (auto l : lightScenes) {
+			lights.push_back(*l->getLight());
+		}
 		smoothRenderer.setLights(lights);
-		//smoothRenderer.setTextures(vm.getTextures());
 		std::vector<TextureObject> textures;
 		for (auto tex : textureScenes) {
 			textures.push_back(tex->getTextureObject());

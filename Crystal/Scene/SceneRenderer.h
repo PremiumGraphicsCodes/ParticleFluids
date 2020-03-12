@@ -17,6 +17,8 @@ namespace Crystal {
 		class WireFrameScene;
 		class PolygonMeshScene;
 		class TextureScene;
+		class MaterialScene;
+		class LightScene;
 		class SceneViewModel;
 	}
 	namespace Shader {
@@ -36,7 +38,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory);
 
-	void render(Graphics::Camera* camera, const Scene::SceneViewModel& vm);
+	void render(Graphics::Camera* camera);
 
 	struct Mask
 	{
@@ -65,6 +67,10 @@ public:
 
 	void add(Scene::TextureScene* scene) { this->textureScenes.push_back(scene); }
 
+	void add(Scene::MaterialScene* scene) { this->materialScenes.push_back(scene); }
+
+	void add(Scene::LightScene* scene) { this->lightScenes.push_back(scene); }
+
 private:
 	Scene::PointRenderer pointRenderer;
 	Scene::LineRenderer wireRenderer;
@@ -81,6 +87,8 @@ private:
 	std::vector<Scene::WireFrameScene*> wfScenes;
 	std::vector<Scene::PolygonMeshScene*> pmScenes;
 	std::vector<Scene::TextureScene*> textureScenes;
+	std::vector<Scene::MaterialScene*> materialScenes;
+	std::vector<Scene::LightScene*> lightScenes;
 };
 	}
 }
