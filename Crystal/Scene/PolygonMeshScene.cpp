@@ -99,3 +99,12 @@ IShapeScene* PolygonMeshScene::clone() const
 {
 	return nullptr;
 }
+
+std::vector<SmoothRenderer::GLBuffer> PolygonMeshScene::getGLBuffers() const
+{
+	std::vector<SmoothRenderer::GLBuffer> buffers;
+	for (auto group : groups) {
+		buffers.push_back( group->getGLBuffer() );
+	}
+	return buffers;
+}

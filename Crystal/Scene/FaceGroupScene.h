@@ -34,6 +34,8 @@ public:
 		faces.clear();
 	}
 
+	SmoothRenderer::GLBuffer getGLBuffer() const { return glBuffer; }
+
 private:
 	PolygonMeshScene* polygonMesh;
 	MaterialScene* material;

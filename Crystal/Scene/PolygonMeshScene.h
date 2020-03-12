@@ -47,6 +47,8 @@ public:
 
 	IShapeScene* clone() const override;
 
+	std::vector<SmoothRenderer::GLBuffer> getGLBuffers() const;
+
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
 	std::vector<FaceGroupScene*> groups;

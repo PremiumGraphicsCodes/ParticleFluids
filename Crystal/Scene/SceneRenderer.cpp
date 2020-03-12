@@ -5,6 +5,7 @@
 
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
+#include "PolygonMeshScene.h"
 
 #include "../ThirdParty/stb/stb_image.h"
 
@@ -35,7 +36,7 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 {
 //	const auto& pointBuffers = vm.getPointBuffers();
 //	const auto& lineBuffers = vm.getLineBuffers();
-	const auto& smoothBuffers = vm.getTriangleBuffers();
+//	const auto& smoothBuffers = vm.getTriangleBuffers();
 	const auto& materials = vm.getMaterials();
 	const auto& lights = vm.getLights();
 
@@ -62,9 +63,12 @@ void SceneRenderer::render(Camera* camera, const SceneViewModel& vm)
 		smoothRenderer.setMaterials(materials);
 		smoothRenderer.setLights(lights);
 		smoothRenderer.setTextures(vm.getTextures());
-		for (const auto& b : smoothBuffers) {
-			smoothRenderer.setBuffer(b);
-			smoothRenderer.render(*camera);
+		for (auto pm : pmScenes) {
+			const auto& bs = pm->getGLBuffers();
+			for (auto b : bs) {
+				smoothRenderer.setBuffer(b);
+				smoothRenderer.render(*camera);
+			}
 		}
 	}
 	//texture.unbind();
