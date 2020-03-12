@@ -72,6 +72,8 @@ public:
 
 	LineRenderer* getLineRenderer() { return &wireRenderer; }
 
+	SmoothRenderer* getSmoothRenderer() { return &smoothRenderer; }
+
 	Graphics::Camera* getCamera() { return camera; }
 
 private:

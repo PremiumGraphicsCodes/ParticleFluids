@@ -28,13 +28,11 @@ public:
 
 	void onSend() override;
 
-	//void toIdViewModel(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const;
+	void onRender(SceneRenderer* renderer) override;
 
 	void onClear() override {
 		faces.clear();
 	}
-
-	SmoothRenderer::GLBuffer getGLBuffer() const { return glBuffer; }
 
 private:
 	PolygonMeshScene* polygonMesh;

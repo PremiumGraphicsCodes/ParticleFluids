@@ -66,11 +66,7 @@ void SceneRenderer::render(Camera* camera)
 		}
 		smoothRenderer.setTextures(textures);
 		for (auto pm : pmScenes) {
-			const auto& bs = pm->getGLBuffers();
-			for (auto b : bs) {
-				smoothRenderer.setBuffer(b);
-				smoothRenderer.render(*camera);
-			}
+			pm->render(this);
 		}
 	}
 	//texture.unbind();

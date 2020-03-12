@@ -21,7 +21,6 @@ PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::u
 	shape(std::move(shape))
 {}
 
-
 void PolygonMeshScene::onSend()
 {
 	if (!isVisible()) {
@@ -99,11 +98,9 @@ IShapeScene* PolygonMeshScene::clone() const
 	return nullptr;
 }
 
-std::vector<SmoothRenderer::GLBuffer> PolygonMeshScene::getGLBuffers() const
+void PolygonMeshScene::onRender(SceneRenderer* renderer)
 {
-	std::vector<SmoothRenderer::GLBuffer> buffers;
 	for (auto group : groups) {
-		buffers.push_back( group->getGLBuffer() );
+		group->render(renderer);
 	}
-	return buffers;
 }

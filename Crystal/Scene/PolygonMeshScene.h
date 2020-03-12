@@ -33,6 +33,8 @@ public:
 
 	void onSend() override;
 
+	void onRender(SceneRenderer* renderer);
+
 	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
 	Math::Box3d getBoundingBox() const override;
@@ -46,8 +48,6 @@ public:
 	}
 
 	IShapeScene* clone() const override;
-
-	std::vector<SmoothRenderer::GLBuffer> getGLBuffers() const;
 
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
