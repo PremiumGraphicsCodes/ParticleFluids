@@ -61,9 +61,9 @@ SmoothRenderer::SmoothRenderer()
 
 bool SmoothRenderer::build(GLObjectFactory& factory)
 {
-	lightRenderer.build(this);
+	lightBuffer.build(this);
 	materialRenderer.build(this);
-	textureRenderer.build(this);
+	textureBuffer.build(this);
 
 	setVertexShaderSource(getBuildInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
@@ -186,7 +186,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
 		<< "uniform sampler2D textures[8];" << std::endl
-		<< lightRenderer.getBuiltInFragmentShaderSource()
+		<< lightBuffer.getBuiltInFragmentShaderSource()
 		<< materialRenderer.getBuiltInFragmentShaderSource()
 		<< "vec3 getTextureColor(int id){ " << std::endl
 		<< "	if(id == -1) {" << std::endl

@@ -14,6 +14,7 @@
 #include "../Shader/VertexBufferObject.h"
 
 #include "MaterialBuffer.h"
+#include "MaterialRenderer.h"
 #include "LightBuffer.h"
 #include "TextureRenderer.h"
 
@@ -67,6 +68,8 @@ public:
 		void send(const SmoothTriangleBuffer& buffer);
 
 		void release();
+
+		MaterialBuffer materialBuffer;
 	};
 
 	SmoothRenderer();
@@ -77,20 +80,18 @@ public:
 
 	void render(const Graphics::Camera& camera) override;
 
-	MaterialBuffer* getMaterialRenderer() { return &materialRenderer; }
+	LightBuffer* getLightRenderer() { return &lightBuffer; }
 
-	LightBuffer* getLightRenderer() { return &lightRenderer; }
-
-	TextureRenderer* getTextureRenderer() { return &textureRenderer; }
+	TextureRenderer* getTextureRenderer() { return &textureBuffer; }
 
 private:
 	std::string getBuildInVertexShaderSource() const;
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	MaterialBuffer materialRenderer;
-	LightBuffer lightRenderer;
-	TextureRenderer textureRenderer;
+	MaterialRenderer materialRenderer;
+	LightBuffer lightBuffer;
+	TextureRenderer textureBuffer;
 	Math::Matrix4df matrix;
 	int count;
 };
