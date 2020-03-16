@@ -22,7 +22,7 @@ bool LightRenderer::build(IRenderer* parent)
 	return true;
 }
 
-void LightRenderer::GLBuffer::add(const PointLight& light)
+void LightRenderer::add(const PointLight& light)
 {
 	lights.push_back(light);
 }
@@ -30,8 +30,8 @@ void LightRenderer::GLBuffer::add(const PointLight& light)
 void LightRenderer::send(ShaderObject* shader)
 {
 	shader->bind();
-	for (int i = 0; i < glBuffer.lights.size(); ++i) {
-		const auto& light = glBuffer.lights[i];
+	for (int i = 0; i < lights.size(); ++i) {
+		const auto& light = lights[i];
 		const auto prefix = "lights[" + std::to_string(i) + "]";
 
 		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };

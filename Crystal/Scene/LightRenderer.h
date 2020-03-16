@@ -10,25 +10,18 @@ namespace Crystal {
 class LightRenderer
 {
 public:
-	struct GLBuffer
-	{
-		void add(const Graphics::PointLight& l);
-
-		std::vector<Graphics::PointLight> lights;
-	};
-
 	LightRenderer();
 
 	bool build(IRenderer* parent);
 
-	void setBuffer(const GLBuffer& buffer) { this->glBuffer = buffer; }
+	void add(const Graphics::PointLight& l);
 
 	void send(Shader::ShaderObject* shader);
 
 	std::string getBuiltInFragmentShaderSource() const;
 
 private:
-	GLBuffer glBuffer;
+	std::vector<Graphics::PointLight> lights;
 };
 
 	}
