@@ -2,6 +2,8 @@
 
 #include "../Graphics/Material.h"
 
+#include <sstream>
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
@@ -30,52 +32,19 @@ bool MaterialRenderer::build(IRenderer* parent)
 	return true;
 }
 
-/*
-void MaterialRenderer::send()
+std::string MaterialRenderer::getBuiltInFragmentShaderSource() const
 {
-	auto shader = getShader();
-	shader->bind();
-
-	for (int i = 0; i < materials.size(); ++i) {
-		const auto m = materials[i];
-		const auto prefix = "materials[" + std::to_string(i) + "]";
-		shader->sendUniform(prefix + ".Ka", m.ambient);
-		shader->sendUniform(prefix + ".Kd", m.diffuse);
-		shader->sendUniform(prefix + ".Ks", m.specular);
-		shader->sendUniform(prefix + ".shininess", m.shininess);
-		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
-		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
-		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
-	}
-
-	shader->unbind();
-
-	const auto error = glGetError();
-	assert(error == GL_NO_ERROR);
+	std::ostringstream stream;
+	stream
+		<< "struct MaterialInfo {" << std::endl
+		<< "	vec3 Ka;" << std::endl
+		<< "	vec3 Kd;" << std::endl
+		<< "	vec3 Ks;" << std::endl
+		<< "	float shininess;" << std::endl
+		<< "	int ambientTexId;" << std::endl
+		<< "	int diffuseTexId;" << std::endl
+		<< "	int specularTexId;" << std::endl
+		<< "};"
+		<< "uniform MaterialInfo materials[256];" << std::endl;
+	return stream.str();
 }
-
-void MaterialRenderer::render(const Camera& camera)
-{
-	auto shader = getShader();
-
-	shader->sendVertexAttribute1di(::materialIdLabel, glBuffer.vbo.materialId);
-
-
-	shader->enableVertexAttribute(::positionLabel);
-	shader->enableVertexAttribute(::normalLabel);
-	shader->enableVertexAttribute(::texCoordLabel);
-	shader->enableVertexAttribute(::materialIdLabel);
-
-	//textures[0].unbind();
-
-	shader->disableVertexAttribute(::materialIdLabel);
-	shader->disableVertexAttribute(::texCoordLabel);
-	shader->disableVertexAttribute(::normalLabel);
-	shader->disableVertexAttribute(::positionLabel);
-
-	assert(GL_NO_ERROR == glGetError());
-
-	shader->disableDepthTest();
-	shader->unbind();
-}
-*/

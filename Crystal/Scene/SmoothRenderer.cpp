@@ -254,16 +254,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	vec3 Ls;" << std::endl
 		<< "};"
 		<< "uniform LightInfo lights[8];"
-		<< "struct MaterialInfo {" << std::endl
-		<< "	vec3 Ka;" << std::endl
-		<< "	vec3 Kd;" << std::endl
-		<< "	vec3 Ks;" << std::endl
-		<< "	float shininess;" << std::endl
-		<< "	int ambientTexId;" << std::endl
-		<< "	int diffuseTexId;" << std::endl
-		<< "	int specularTexId;" << std::endl
-		<< "};"
-		<< "uniform MaterialInfo materials[256];"
+		<< materialRenderer.getBuiltInFragmentShaderSource()
 		<< "vec3 getTextureColor(int id){ " << std::endl
 		<< "	if(id == -1) {" << std::endl
 		<< "		return vec3(1,1,1);" << std::endl
