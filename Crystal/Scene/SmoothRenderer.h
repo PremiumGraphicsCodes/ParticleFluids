@@ -76,7 +76,7 @@ public:
 
 	void render(const Graphics::Camera& camera) override;
 
-	void setLights(const std::vector<Graphics::PointLight>& lights);
+	void setLights(const std::vector<Graphics::PointLight>& lights) { lightRenderer.setLights(lights, getShader()); }
 
 	void setTextures(const std::vector<Shader::TextureObject>& textures);
 

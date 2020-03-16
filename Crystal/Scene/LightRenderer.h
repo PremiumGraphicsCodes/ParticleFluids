@@ -2,10 +2,7 @@
 
 #include "IRenderer.h"
 
-#include "../Graphics/Camera.h"
-#include "../Shader/ShaderObject.h"
-#include "../Shader/VertexBufferObject.h"
-#include "../Shader/VertexArrayObject.h"
+#include "../Graphics/PointLight.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -17,6 +14,8 @@ public:
 	LightRenderer();
 
 	bool build(IRenderer* parent);
+
+	void setLights(const std::vector<Graphics::PointLight>& lights, Shader::ShaderObject* shader);
 
 	//void setBuffer(const GLBuffer& buffer) { this->glBuffer = buffer; }
 

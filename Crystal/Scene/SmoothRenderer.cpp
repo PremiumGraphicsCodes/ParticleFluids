@@ -83,27 +83,6 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
-void SmoothRenderer::setLights(const std::vector<PointLight>& lights)
-{
-	auto shader = getShader();
-
-	shader->bind();
-	for (int i = 0; i < lights.size(); ++i) {
-		const auto light = lights[i];
-		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
-		const auto& ambient = light.getAmbient();
-		const auto& diffuse = light.getDiffuse();
-		const auto& specular = light.getSpecular();
-
-		const auto prefix = "lights[" + std::to_string(i) + "]";
-
-		shader->sendUniform(prefix + ".position", lightPos);
-		shader->sendUniform(prefix + ".La", ambient);
-		shader->sendUniform(prefix + ".Ld", diffuse);
-		shader->sendUniform(prefix + ".Ls", specular);
-	}
-	shader->unbind();
-}
 
 void SmoothRenderer::setTextures(const std::vector<TextureObject>& textures)
 {
