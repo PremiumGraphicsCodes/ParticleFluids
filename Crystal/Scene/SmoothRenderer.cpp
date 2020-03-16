@@ -67,13 +67,7 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	addUniform(::projectionMatrixLabel);
 	addUniform(::modelviewMatrixLabel);
 	addUniform(::eyePositionLabel);
-	for (int i = 0; i < 8; ++i) {
-		const auto prefix = "lights[" + std::to_string(i) + "]";
-		addUniform(prefix + ".position");
-		addUniform(prefix + ".La");
-		addUniform(prefix + ".Ld");
-		addUniform(prefix + ".Ls");
-	}
+	lightRenderer.build(this);
 	materialRenderer.build(this);
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "textures[" + std::to_string(i) + "]";

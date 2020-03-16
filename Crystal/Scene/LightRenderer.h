@@ -10,11 +10,11 @@
 namespace Crystal {
 	namespace Scene {
 
-class MaterialRenderer
+class LightRenderer
 {
 public:
 
-	MaterialRenderer();
+	LightRenderer();
 
 	bool build(IRenderer* parent);
 

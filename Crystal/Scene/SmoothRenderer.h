@@ -14,6 +14,7 @@
 #include "../Shader/VertexBufferObject.h"
 
 #include "MaterialRenderer.h"
+#include "LightRenderer.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -93,6 +94,7 @@ private:
 	int findIndex(const std::string& name);
 
 	MaterialRenderer materialRenderer;
+	LightRenderer lightRenderer;
 };
 
 	}

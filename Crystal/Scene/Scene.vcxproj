@@ -27,6 +27,7 @@
     <ClInclude Include="IPoint.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="IShapeScene.h" />
+    <ClInclude Include="LightRenderer.h" />
     <ClInclude Include="LineRenderer.h" />
     <ClInclude Include="MaterialRenderer.h" />
     <ClInclude Include="SceneIdRenderer.h" />
@@ -60,6 +61,7 @@
   <ItemGroup>
     <ClCompile Include="FaceGroupScene.cpp" />
     <ClCompile Include="IScene.cpp" />
+    <ClCompile Include="LightRenderer.cpp" />
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="LineRenderer.cpp" />
     <ClCompile Include="MaterialRenderer.cpp" />
