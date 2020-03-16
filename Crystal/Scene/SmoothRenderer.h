@@ -77,12 +77,11 @@ public:
 
 	void render(const Graphics::Camera& camera) override;
 
-	void setLights(const std::vector<Graphics::PointLight>& lights) { lightRenderer.setLights(lights, getShader()); }
+	MaterialRenderer* getMaterialRenderer() { return &materialRenderer; }
 
-	void setTextures(const std::vector<Shader::TextureObject>& textures);
+	LightRenderer* getLightRenderer() { return &lightRenderer; }
 
-	void setMaterials(const std::vector<Graphics::Material>& materials);
-
+	TextureRenderer* getTextureRenderer() { return &textureRenderer; }
 
 private:
 	std::string getBuildInVertexShaderSource() const;
@@ -90,9 +89,6 @@ private:
 	std::string getBuiltInFragmentShaderSource() const;
 
 	GLBuffer glBuffer;
-	std::vector<Shader::TextureObject> textures;
-
-	int findIndex(const std::string& name);
 
 	MaterialRenderer materialRenderer;
 	LightRenderer lightRenderer;

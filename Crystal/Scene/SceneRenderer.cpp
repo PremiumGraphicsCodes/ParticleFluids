@@ -54,17 +54,17 @@ void SceneRenderer::render(Camera* camera)
 		for (auto mat : materialScenes) {
 			materials.push_back(*mat->getMaterial());
 		}
-		smoothRenderer.setMaterials(materials);
+		smoothRenderer.getMaterialRenderer()->setMaterials(materials, smoothRenderer.getShader());
 		std::vector<PointLight> lights;
 		for (auto l : lightScenes) {
 			lights.push_back(*l->getLight());
 		}
-		smoothRenderer.setLights(lights);
+		smoothRenderer.getLightRenderer()->setLights(lights, smoothRenderer.getShader());
 		std::vector<TextureObject> textures;
 		for (auto tex : textureScenes) {
 			textures.push_back(tex->getTextureObject());
 		}
-		smoothRenderer.setTextures(textures);
+		smoothRenderer.getTextureRenderer()->setTextures(textures, smoothRenderer.getShader());
 		for (auto pm : pmScenes) {
 			pm->render(this);
 		}

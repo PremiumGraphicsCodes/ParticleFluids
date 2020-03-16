@@ -2,10 +2,10 @@
 
 #include "IRenderer.h"
 
-#include "../Graphics/Camera.h"
+#include "TextureRenderer.h"
+
+#include "../Graphics/Material.h"
 #include "../Shader/ShaderObject.h"
-#include "../Shader/VertexBufferObject.h"
-#include "../Shader/VertexArrayObject.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -18,6 +18,7 @@ public:
 
 	bool build(IRenderer* parent);
 
+	void setMaterials(const std::vector<Graphics::Material>& materials, Shader::ShaderObject* shader);
 	//void setBuffer(const GLBuffer& buffer) { this->glBuffer = buffer; }
 
 	//void render(const Graphics::Camera& camera) override;
