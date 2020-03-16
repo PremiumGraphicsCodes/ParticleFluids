@@ -1,4 +1,4 @@
-#include "MaterialRenderer.h"
+#include "MaterialBuffer.h"
 
 #include "../Graphics/Material.h"
 

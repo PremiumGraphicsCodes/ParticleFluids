@@ -13,7 +13,7 @@
 #include "../Shader/TextureObject.h"
 #include "../Shader/VertexBufferObject.h"
 
-#include "MaterialRenderer.h"
+#include "MaterialBuffer.h"
 #include "LightBuffer.h"
 #include "TextureRenderer.h"
 
