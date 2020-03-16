@@ -77,7 +77,7 @@ public:
 
 	void render(const Graphics::Camera& camera) override;
 
-	MaterialRenderer* getMaterialRenderer() { return &materialRenderer; }
+	MaterialBuffer* getMaterialRenderer() { return &materialRenderer; }
 
 	LightBuffer* getLightRenderer() { return &lightRenderer; }
 
@@ -88,7 +88,7 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	MaterialRenderer materialRenderer;
+	MaterialBuffer materialRenderer;
 	LightBuffer lightRenderer;
 	TextureRenderer textureRenderer;
 	Math::Matrix4df matrix;
