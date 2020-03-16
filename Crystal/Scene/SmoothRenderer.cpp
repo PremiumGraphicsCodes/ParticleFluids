@@ -81,12 +81,23 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
+void SmoothRenderer::send(const GLBuffer& glBuffer)
+{
+	auto shader = getShader();
+	shader->sendVertexAttribute3df(::positionLabel, glBuffer.position);
+	shader->sendVertexAttribute3df(::normalLabel, glBuffer.normal);
+	shader->sendVertexAttribute2df(::texCoordLabel, glBuffer.texCoord);
+	shader->sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
+	this->matrix = glBuffer.matrix;
+	this->count = glBuffer.count;
+}
+
 void SmoothRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
 
 	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
+	const auto& modelviewMatrix = camera.getModelViewMatrix() * matrix;
 	const auto& eyePos = camera.getEye();
 
 	shader->bind();
@@ -97,12 +108,6 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
 	shader->sendUniform(::modelviewMatrixLabel, modelviewMatrix);
 	shader->sendUniform(::eyePositionLabel, eyePos);
-
-	shader->sendVertexAttribute3df(::positionLabel, glBuffer.position);
-	shader->sendVertexAttribute3df(::normalLabel, glBuffer.normal);
-	shader->sendVertexAttribute2df(::texCoordLabel, glBuffer.texCoord);
-	shader->sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
-
 
 	shader->enableVertexAttribute(::positionLabel);
 	shader->enableVertexAttribute(::normalLabel);
@@ -116,7 +121,7 @@ void SmoothRenderer::render(const Camera& camera)
 	}
 	*/
 
-	shader->drawTriangles(glBuffer.count);
+	shader->drawTriangles(count);
 
 	/*
 	for (const auto& t : textures) {

@@ -64,16 +64,16 @@ public:
 
 		void build();
 
-		void release();
-
 		void send(const SmoothTriangleBuffer& buffer);
+
+		void release();
 	};
 
 	SmoothRenderer();
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void setBuffer(const GLBuffer& buffer) { glBuffer = buffer; }
+	void send(const GLBuffer& buffer);
 
 	void render(const Graphics::Camera& camera) override;
 
@@ -88,11 +88,11 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	GLBuffer glBuffer;
-
 	MaterialRenderer materialRenderer;
 	LightBuffer lightRenderer;
 	TextureRenderer textureRenderer;
+	Math::Matrix4df matrix;
+	int count;
 };
 
 	}

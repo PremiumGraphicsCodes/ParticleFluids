@@ -70,6 +70,6 @@ void FaceGroupScene::onSend()
 void FaceGroupScene::onRender(SceneRenderer* renderer)
 {
 	auto smoothRenderer = renderer->getSmoothRenderer();
-	smoothRenderer->setBuffer(glBuffer);
+	smoothRenderer->send(glBuffer);
 	smoothRenderer->render(*renderer->getCamera());
 }
