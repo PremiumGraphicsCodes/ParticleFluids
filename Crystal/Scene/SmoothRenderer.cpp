@@ -220,13 +220,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
 		<< "uniform sampler2D textures[8];" << std::endl
-		<< "struct LightInfo {" << std::endl
-		<< "	vec3 position;" << std::endl
-		<< "	vec3 La;" << std::endl
-		<< "	vec3 Ld;" << std::endl
-		<< "	vec3 Ls;" << std::endl
-		<< "};"
-		<< "uniform LightInfo lights[8];"
+		<< lightRenderer.getBuiltInFragmentShaderSource()
 		<< materialRenderer.getBuiltInFragmentShaderSource()
 		<< "vec3 getTextureColor(int id){ " << std::endl
 		<< "	if(id == -1) {" << std::endl

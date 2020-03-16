@@ -1,5 +1,7 @@
 #include "LightRenderer.h"
 
+#include <sstream>
+
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
@@ -38,4 +40,18 @@ void LightRenderer::setLights(const std::vector<PointLight>& lights, ShaderObjec
 		shader->sendUniform(prefix + ".Ls", specular);
 	}
 	shader->unbind();
+}
+
+std::string LightRenderer::getBuiltInFragmentShaderSource() const
+{
+	std::ostringstream stream;
+	stream
+		<< "struct LightInfo {" << std::endl
+		<< "	vec3 position;" << std::endl
+		<< "	vec3 La;" << std::endl
+		<< "	vec3 Ld;" << std::endl
+		<< "	vec3 Ls;" << std::endl
+		<< "};"
+		<< "uniform LightInfo lights[8];";
+	return stream.str();
 }
