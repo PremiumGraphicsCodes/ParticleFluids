@@ -81,13 +81,27 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
-void SmoothRenderer::send(const GLBuffer& glBuffer)
+void SmoothRenderer::send(const GLBuffer& glBuffer, const Camera& camera)
 {
+	const auto& projectionMatrix = camera.getProjectionMatrix();
+	const auto& modelviewMatrix = camera.getModelViewMatrix() * matrix;
+	const auto& eyePos = camera.getEye();
+
 	auto shader = getShader();
+
+	shader->bind();
+
+	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader->sendUniform(::modelviewMatrixLabel, modelviewMatrix);
+	shader->sendUniform(::eyePositionLabel, eyePos);
+
 	shader->sendVertexAttribute3df(::positionLabel, glBuffer.position);
 	shader->sendVertexAttribute3df(::normalLabel, glBuffer.normal);
 	shader->sendVertexAttribute2df(::texCoordLabel, glBuffer.texCoord);
 	shader->sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
+
+	shader->unbind();
+
 	this->matrix = glBuffer.matrix;
 	this->count = glBuffer.count;
 }
@@ -96,18 +110,11 @@ void SmoothRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
 
-	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix() * matrix;
-	const auto& eyePos = camera.getEye();
-
 	shader->bind();
 	shader->bindOutput("fragColor");
 
 	shader->enableDepthTest();
 
-	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
-	shader->sendUniform(::modelviewMatrixLabel, modelviewMatrix);
-	shader->sendUniform(::eyePositionLabel, eyePos);
 
 	shader->enableVertexAttribute(::positionLabel);
 	shader->enableVertexAttribute(::normalLabel);

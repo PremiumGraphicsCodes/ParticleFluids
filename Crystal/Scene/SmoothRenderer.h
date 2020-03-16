@@ -73,7 +73,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void send(const GLBuffer& buffer);
+	void send(const GLBuffer& buffer, const Graphics::Camera& camera);
 
 	void render(const Graphics::Camera& camera) override;
 
