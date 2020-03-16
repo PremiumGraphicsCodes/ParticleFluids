@@ -34,6 +34,7 @@
     <ClInclude Include="SceneRenderer.h" />
     <ClInclude Include="PointRenderer.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="TextureRenderer.h" />
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TriangleMeshScene.h" />
     <ClInclude Include="World.h" />
@@ -72,6 +73,7 @@
     <ClCompile Include="PointRenderer.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="TextureRenderer.cpp" />
     <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
     <ClCompile Include="VolumeScene.cpp" />

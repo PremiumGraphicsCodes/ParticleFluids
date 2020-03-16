@@ -15,6 +15,7 @@
 
 #include "MaterialRenderer.h"
 #include "LightRenderer.h"
+#include "TextureRenderer.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -95,6 +96,7 @@ private:
 
 	MaterialRenderer materialRenderer;
 	LightRenderer lightRenderer;
+	TextureRenderer textureRenderer;
 };
 
 	}

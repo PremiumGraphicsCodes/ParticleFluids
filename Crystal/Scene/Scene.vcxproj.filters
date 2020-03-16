@@ -103,6 +103,9 @@
     <ClInclude Include="LightRenderer.h">
       <Filter>Renderer\Light</Filter>
     </ClInclude>
+    <ClInclude Include="TextureRenderer.h">
+      <Filter>Renderer\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -175,6 +178,9 @@
     <ClCompile Include="LightRenderer.cpp">
       <Filter>Renderer\Light</Filter>
     </ClCompile>
+    <ClCompile Include="TextureRenderer.cpp">
+      <Filter>Renderer\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -224,6 +230,9 @@
     </Filter>
     <Filter Include="Renderer\Light">
       <UniqueIdentifier>{57a9a0ba-a738-4702-8009-f5cab1a18663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Texture">
+      <UniqueIdentifier>{6d8ae239-acec-4572-b8bd-d3012d17dfc5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

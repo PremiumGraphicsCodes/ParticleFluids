@@ -61,18 +61,16 @@ SmoothRenderer::SmoothRenderer()
 
 bool SmoothRenderer::build(GLObjectFactory& factory)
 {
+	lightRenderer.build(this);
+	materialRenderer.build(this);
+	textureRenderer.build(this);
+
 	setVertexShaderSource(getBuildInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
 
 	addUniform(::projectionMatrixLabel);
 	addUniform(::modelviewMatrixLabel);
 	addUniform(::eyePositionLabel);
-	lightRenderer.build(this);
-	materialRenderer.build(this);
-	for (int i = 0; i < 8; ++i) {
-		const auto prefix = "textures[" + std::to_string(i) + "]";
-		addUniform(prefix);
-	}
 	//shader.findUniformLocation("texture1");
 
 	addAttribute(::positionLabel);
@@ -86,14 +84,7 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 
 void SmoothRenderer::setTextures(const std::vector<TextureObject>& textures)
 {
-	auto shader = getShader();
-
-	shader->bind();
-	for (int i = 0; i < textures.size(); ++i) {
-		const auto prefix = "textures[" + std::to_string(i) + "]";
-		shader->sendUniform(prefix, textures[i]);
-	}
-	shader->unbind();
+	textureRenderer.setTextures(textures, getShader());
 
 	this->textures = textures;
 }
