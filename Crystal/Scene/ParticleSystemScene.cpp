@@ -90,6 +90,6 @@ void ParticleSystemScene::setAttribute(const ParticleAttribute& attribute)
 void ParticleSystemScene::onRender(SceneRenderer* renderer)
 {
 	auto pointRenderer = renderer->getPointRenderer();
-	pointRenderer->setBuffer(buffer);
+	pointRenderer->send(buffer, *renderer->getCamera());
 	pointRenderer->render(*renderer->getCamera());
 }

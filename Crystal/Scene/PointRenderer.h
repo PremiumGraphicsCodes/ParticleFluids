@@ -75,7 +75,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void setBuffer(const GLBuffer& buffer) { this->glBuffer = buffer; }
+	void send(const GLBuffer& buffer, const Graphics::Camera& camera);
 
 	void render(const Graphics::Camera& camera) override;
 
@@ -84,7 +84,7 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	GLBuffer glBuffer;
+	int count;
 };
 
 	}

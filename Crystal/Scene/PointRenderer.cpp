@@ -76,29 +76,36 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
+void PointRenderer::send(const GLBuffer& glBuffer, const Camera& camera)
+{
+	const auto& projectionMatrix = camera.getProjectionMatrix();
+	const auto modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
+
+	auto shader = getShader();
+	shader->bind();
+
+	shader->sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
+	shader->sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
+	shader->sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
+
+	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader->sendUniform(::modelViewMatrixLabel, modelviewMatrix);
+
+	shader->unbind();
+
+	this->count = glBuffer.count;
+}
 
 void PointRenderer::render(const Camera& camera)
 {
 	auto shader = getShader();
-
-	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
 
 	shader->bind();
 
 	shader->enableDepthTest();
 	shader->enablePointSprite();
 
-	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
-	shader->sendUniform(::modelViewMatrixLabel, modelviewMatrix);
-
-	//glBuffer.vao.bind();
-	shader->sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
-	shader->sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
-	shader->sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
-
-	shader->drawPoints(glBuffer.count);
-	//glBuffer.vao.unbind();
+	shader->drawPoints(count);
 
 	shader->bindOutput(::fragColorLabel);
 
@@ -108,7 +115,6 @@ void PointRenderer::render(const Camera& camera)
 	shader->unbind();
 
 	assert(GL_NO_ERROR == glGetError());
-
 }
 
 std::string PointRenderer::getBuiltInVertexShaderSource() const
