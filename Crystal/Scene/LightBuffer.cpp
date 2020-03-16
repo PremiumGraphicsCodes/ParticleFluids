@@ -1,4 +1,4 @@
-#include "LightRenderer.h"
+#include "LightBuffer.h"
 
 #include <sstream>
 
@@ -6,11 +6,11 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-LightRenderer::LightRenderer()
+LightBuffer::LightBuffer()
 {
 }
 
-bool LightRenderer::build(IRenderer* parent)
+bool LightBuffer::build(IRenderer* parent)
 {
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "lights[" + std::to_string(i) + "]";
@@ -22,12 +22,12 @@ bool LightRenderer::build(IRenderer* parent)
 	return true;
 }
 
-void LightRenderer::add(const PointLight& light)
+void LightBuffer::add(const PointLight& light)
 {
 	lights.push_back(light);
 }
 
-void LightRenderer::send(ShaderObject* shader)
+void LightBuffer::send(ShaderObject* shader)
 {
 	shader->bind();
 	for (int i = 0; i < lights.size(); ++i) {
@@ -47,7 +47,7 @@ void LightRenderer::send(ShaderObject* shader)
 	shader->unbind();
 }
 
-std::string LightRenderer::getBuiltInFragmentShaderSource() const
+std::string LightBuffer::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

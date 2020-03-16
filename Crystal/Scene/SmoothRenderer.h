@@ -14,7 +14,7 @@
 #include "../Shader/VertexBufferObject.h"
 
 #include "MaterialRenderer.h"
-#include "LightRenderer.h"
+#include "LightBuffer.h"
 #include "TextureRenderer.h"
 
 namespace Crystal {
@@ -79,7 +79,7 @@ public:
 
 	MaterialRenderer* getMaterialRenderer() { return &materialRenderer; }
 
-	LightRenderer* getLightRenderer() { return &lightRenderer; }
+	LightBuffer* getLightRenderer() { return &lightRenderer; }
 
 	TextureRenderer* getTextureRenderer() { return &textureRenderer; }
 
@@ -91,7 +91,7 @@ private:
 	GLBuffer glBuffer;
 
 	MaterialRenderer materialRenderer;
-	LightRenderer lightRenderer;
+	LightBuffer lightRenderer;
 	TextureRenderer textureRenderer;
 };
 

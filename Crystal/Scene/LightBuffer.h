@@ -7,10 +7,10 @@
 namespace Crystal {
 	namespace Scene {
 
-class LightRenderer
+class LightBuffer
 {
 public:
-	LightRenderer();
+	LightBuffer();
 
 	bool build(IRenderer* parent);
 

@@ -100,11 +100,11 @@
     <ClInclude Include="MaterialRenderer.h">
       <Filter>Renderer\Material</Filter>
     </ClInclude>
-    <ClInclude Include="LightRenderer.h">
-      <Filter>Renderer\Light</Filter>
-    </ClInclude>
     <ClInclude Include="TextureRenderer.h">
       <Filter>Renderer\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="LightBuffer.h">
+      <Filter>Renderer\Light</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -175,11 +175,11 @@
     <ClCompile Include="MaterialRenderer.cpp">
       <Filter>Renderer\Material</Filter>
     </ClCompile>
-    <ClCompile Include="LightRenderer.cpp">
-      <Filter>Renderer\Light</Filter>
-    </ClCompile>
     <ClCompile Include="TextureRenderer.cpp">
       <Filter>Renderer\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="LightBuffer.cpp">
+      <Filter>Renderer\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
