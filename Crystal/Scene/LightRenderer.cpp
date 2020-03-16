@@ -22,17 +22,22 @@ bool LightRenderer::build(IRenderer* parent)
 	return true;
 }
 
-void LightRenderer::setLights(const std::vector<PointLight>& lights, ShaderObject* shader)
+void LightRenderer::GLBuffer::add(const PointLight& light)
+{
+	lights.push_back(light);
+}
+
+void LightRenderer::send(ShaderObject* shader)
 {
 	shader->bind();
-	for (int i = 0; i < lights.size(); ++i) {
-		const auto light = lights[i];
+	for (int i = 0; i < glBuffer.lights.size(); ++i) {
+		const auto& light = glBuffer.lights[i];
+		const auto prefix = "lights[" + std::to_string(i) + "]";
+
 		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
 		const auto& ambient = light.getAmbient();
 		const auto& diffuse = light.getDiffuse();
 		const auto& specular = light.getSpecular();
-
-		const auto prefix = "lights[" + std::to_string(i) + "]";
 
 		shader->sendUniform(prefix + ".position", lightPos);
 		shader->sendUniform(prefix + ".La", ambient);

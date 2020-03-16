@@ -50,16 +50,14 @@ void SceneRenderer::render(Camera* camera)
 		}
 	}
 	if (mask.showTrianlges) {
-		std::vector<Material> materials;
-		for (auto mat : materialScenes) {
-			materials.push_back(*mat->getMaterial());
+		MaterialRenderer::GLBuffer mBuffer;
+		for (auto m : materialScenes) {
+			mBuffer.add(*m->getMaterial());
 		}
-		smoothRenderer.getMaterialRenderer()->setMaterials(materials, smoothRenderer.getShader());
-		std::vector<PointLight> lights;
+		LightRenderer::GLBuffer lBuffer;
 		for (auto l : lightScenes) {
-			lights.push_back(*l->getLight());
+			lBuffer.add(*l->getLight());
 		}
-		smoothRenderer.getLightRenderer()->setLights(lights, smoothRenderer.getShader());
 		std::vector<TextureObject> textures;
 		for (auto tex : textureScenes) {
 			textures.push_back(tex->getTextureObject());
