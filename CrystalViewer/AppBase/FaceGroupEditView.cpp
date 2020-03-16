@@ -34,4 +34,5 @@ void FaceGroupEditView::onEdit()
 	faceGroup->setName(nameView.getValue());
 	auto material = getWorld()->getObjects()->findSceneByName<MaterialScene*>(materialNameView.getValue());
 	faceGroup->setMaterial(material);
+	faceGroup->send();
 }

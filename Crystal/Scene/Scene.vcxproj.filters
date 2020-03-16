@@ -97,6 +97,9 @@
     <ClInclude Include="TextureScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
+    <ClInclude Include="MaterialRenderer.h">
+      <Filter>Renderer\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -163,6 +166,9 @@
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
+    <ClCompile Include="MaterialRenderer.cpp">
+      <Filter>Renderer\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -206,6 +212,9 @@
     </Filter>
     <Filter Include="Scene\Shape\Volume">
       <UniqueIdentifier>{e4eec2bb-f092-4b14-864c-f47953c88957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Material">
+      <UniqueIdentifier>{363a07b6-7afd-440f-9c77-f97050ccf20d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

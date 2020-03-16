@@ -13,6 +13,8 @@
 #include "../Shader/TextureObject.h"
 #include "../Shader/VertexBufferObject.h"
 
+#include "MaterialRenderer.h"
+
 namespace Crystal {
 	namespace Scene {
 
@@ -89,6 +91,8 @@ private:
 	std::vector<Shader::TextureObject> textures;
 
 	int findIndex(const std::string& name);
+
+	MaterialRenderer materialRenderer;
 };
 
 	}

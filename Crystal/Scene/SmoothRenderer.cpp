@@ -74,16 +74,7 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 		addUniform(prefix + ".Ld");
 		addUniform(prefix + ".Ls");
 	}
-	for (int i = 0; i < 256; ++i) {
-		const auto prefix = "materials[" + std::to_string(i) + "]";
-		addUniform(prefix + ".Ka");
-		addUniform(prefix + ".Kd");
-		addUniform(prefix + ".Ks");
-		addUniform(prefix + ".shininess");
-		addUniform(prefix + ".ambientTexId");
-		addUniform(prefix + ".diffuseTexId");
-		addUniform(prefix + ".specularTexId");
-	}
+	materialRenderer.build(this);
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "textures[" + std::to_string(i) + "]";
 		addUniform(prefix);
