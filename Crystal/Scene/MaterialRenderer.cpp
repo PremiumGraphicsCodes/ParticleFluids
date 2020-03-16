@@ -32,7 +32,7 @@ bool MaterialRenderer::build(IRenderer* parent)
 	return true;
 }
 
-void MaterialRenderer::GLBuffer::add(const Material& m)
+void MaterialRenderer::add(const Material& m)
 {
 	this->materials.push_back(m);
 }
@@ -40,8 +40,8 @@ void MaterialRenderer::GLBuffer::add(const Material& m)
 void MaterialRenderer::send(ShaderObject* shader)
 {
 	shader->bind();
-	for (int i = 0; i < glBuffer.materials.size(); ++i) {
-		const auto m = glBuffer.materials[i];
+	for (int i = 0; i < materials.size(); ++i) {
+		const auto m = materials[i];
 		const auto prefix = "materials[" + std::to_string(i) + "]";
 		shader->sendUniform(prefix + ".Ka", m.ambient);
 		shader->sendUniform(prefix + ".Kd", m.diffuse);

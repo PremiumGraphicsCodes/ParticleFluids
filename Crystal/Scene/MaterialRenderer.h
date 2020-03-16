@@ -13,25 +13,18 @@ namespace Crystal {
 class MaterialRenderer
 {
 public:
-	struct GLBuffer
-	{
-		void add(const Graphics::Material& m);
-
-		std::vector<Graphics::Material> materials;
-	};
-
 	MaterialRenderer();
 
-	bool build(IRenderer* parent);
+	void add(const Graphics::Material& m);
 
-	void setBuffer(const GLBuffer& buffer) { this->glBuffer = buffer; }
+	bool build(IRenderer* parent);
 
 	void send(Shader::ShaderObject* shader);
 
 	std::string getBuiltInFragmentShaderSource() const;
 
 private:
-	GLBuffer glBuffer;
+	std::vector<Graphics::Material> materials;
 };
 
 	}
