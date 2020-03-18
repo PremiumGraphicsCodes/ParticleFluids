@@ -98,7 +98,7 @@ IShapeScene* PolygonMeshScene::clone() const
 	return nullptr;
 }
 
-void PolygonMeshScene::onRender(SceneRenderer* renderer)
+void PolygonMeshScene::onRender(ScreenShaderScene* renderer)
 {
 	for (auto group : groups) {
 		group->render(renderer);

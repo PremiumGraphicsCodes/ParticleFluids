@@ -6,7 +6,7 @@
 
 #include "MaterialScene.h"
 
-#include "SceneRenderer.h"
+#include "ScreenShaderScene.h"
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
@@ -67,7 +67,7 @@ void FaceGroupScene::onSend()
 	}
 }
 
-void FaceGroupScene::onRender(SceneRenderer* renderer)
+void FaceGroupScene::onRender(ScreenShaderScene* renderer)
 {
 	auto smoothRenderer = renderer->getSmoothRenderer();
 	smoothRenderer->send(glBuffer, *renderer->getCamera());

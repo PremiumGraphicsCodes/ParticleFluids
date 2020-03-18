@@ -1,6 +1,6 @@
 #include "WireFrameScene.h"
 
-#include "SceneRenderer.h"
+#include "ScreenShaderScene.h"
 
 #include "SceneIdViewModel.h"
 
@@ -107,7 +107,7 @@ IShapeScene* WireFrameScene::clone() const
 	//return new WireFrameScene();
 }
 
-void WireFrameScene::onRender(SceneRenderer* renderer)
+void WireFrameScene::onRender(ScreenShaderScene* renderer)
 {
 	auto lineRenderer = renderer->getLineRenderer();
 	lineRenderer->setBuffer(glBuffer);

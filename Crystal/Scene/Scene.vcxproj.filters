@@ -57,9 +57,6 @@
     <ClInclude Include="Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="SceneRenderer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="SceneIdRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -112,6 +109,9 @@
     <ClInclude Include="MaterialShaderBuffer.h">
       <Filter>Renderer\Material</Filter>
     </ClInclude>
+    <ClInclude Include="ScreenShaderScene.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -142,9 +142,6 @@
       <Filter>Scene\Transform</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="SceneIdRenderer.cpp">
@@ -192,6 +189,9 @@
     </ClCompile>
     <ClCompile Include="MaterialShaderBuffer.cpp">
       <Filter>Renderer\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenShaderScene.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

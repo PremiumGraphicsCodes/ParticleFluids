@@ -28,7 +28,7 @@ public:
 
 	void onSend() override;
 
-	void onRender(SceneRenderer* renderer) override;
+	void onRender(ScreenShaderScene* renderer) override;
 
 	void onClear() override {
 		faces.clear();

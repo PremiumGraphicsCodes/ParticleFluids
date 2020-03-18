@@ -48,7 +48,7 @@ public:
 
 	LineShaderBuffer getGLBuffer() const { return glBuffer; }
 
-	void onRender(SceneRenderer* renderer) override;
+	void onRender(ScreenShaderScene* renderer) override;
 
 private:
 	LineShaderScene* renderer;

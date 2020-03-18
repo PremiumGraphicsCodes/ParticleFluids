@@ -2,7 +2,6 @@
 
 #include "Scene.h"
 
-#include "IRenderer.h"
 #include "LightScene.h"
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"

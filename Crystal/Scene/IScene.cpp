@@ -121,7 +121,7 @@ void IScene::send()
 	}
 }
 
-void IScene::render(SceneRenderer* renderer)
+void IScene::render(ScreenShaderScene* renderer)
 {
 	onRender(renderer);
 	for (auto c : children) {

@@ -14,7 +14,7 @@ namespace Crystal {
 	}
 	namespace Scene {
 		class SceneIdViewModel;
-		class SceneRenderer;
+		class ScreenShaderScene;
 
 class IScene
 {
@@ -83,7 +83,7 @@ public:
 
 	virtual void send();
 
-	void render(SceneRenderer* renderer);
+	void render(ScreenShaderScene* renderer);
 
 protected:
 	virtual void onClear() = 0;
@@ -92,7 +92,7 @@ protected:
 
 	virtual void onSend() {};
 
-	virtual void onRender(SceneRenderer* renderer) {};
+	virtual void onRender(ScreenShaderScene* renderer) {};
 
 protected:
 	std::string name;

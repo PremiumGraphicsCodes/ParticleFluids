@@ -24,14 +24,14 @@ namespace Crystal {
 		class LightScene;
 		class SceneViewModel;
 
-class SceneRenderer : private UnCopyable
+class ScreenShaderScene : private UnCopyable
 {
 public:
-	SceneRenderer()
+	ScreenShaderScene()
 	{
 	}
 
-	~SceneRenderer() {}
+	~ScreenShaderScene() {}
 
 	bool build(Shader::GLObjectFactory& factory);
 
