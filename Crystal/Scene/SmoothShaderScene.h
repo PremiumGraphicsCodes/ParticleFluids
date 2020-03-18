@@ -51,7 +51,7 @@ private:
 };
 
 
-class SmoothShaderScene : public IRenderer
+class SmoothShaderScene
 {
 public:
 	struct GLBuffer {
@@ -74,15 +74,17 @@ public:
 
 	SmoothShaderScene();
 
-	bool build(Shader::GLObjectFactory& factory) override;
+	bool build();
 
 	void send(const GLBuffer& buffer, const Graphics::Camera& camera);
 
-	void render(const Graphics::Camera& camera) override;
+	void render(const Graphics::Camera& camera);
 
 	LightShaderScene* getLightRenderer() { return &lightBuffer; }
 
 	TextureShaderScene* getTextureRenderer() { return &textureBuffer; }
+
+	Shader::ShaderObject* getShader() { return &shader; }
 
 private:
 	std::string getBuildInVertexShaderSource() const;
@@ -94,6 +96,7 @@ private:
 	TextureShaderScene textureBuffer;
 	Math::Matrix4df matrix;
 	int count;
+	Shader::ShaderObject shader;
 };
 
 	}

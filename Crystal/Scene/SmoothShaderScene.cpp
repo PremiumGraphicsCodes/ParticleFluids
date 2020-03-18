@@ -59,26 +59,26 @@ SmoothShaderScene::SmoothShaderScene()
 {
 }
 
-bool SmoothShaderScene::build(GLObjectFactory& factory)
+bool SmoothShaderScene::build()
 {
-	setVertexShaderSource(getBuildInVertexShaderSource());
-	setFragmentShaderSource(getBuiltInFragmentShaderSource());
+	const auto& vsSource = getBuildInVertexShaderSource();
+	const auto& fsSource = getBuiltInFragmentShaderSource();
 
-	addUniform(::projectionMatrixLabel);
-	addUniform(::modelviewMatrixLabel);
-	addUniform(::eyePositionLabel);
+	const auto isOk = shader.build(vsSource, fsSource);
+
+	shader.findUniformLocation(::projectionMatrixLabel);
+	shader.findUniformLocation(::modelviewMatrixLabel);
+	shader.findUniformLocation(::eyePositionLabel);
 	//shader.findUniformLocation("texture1");
 
-	addAttribute(::positionLabel);
-	addAttribute(::normalLabel);
-	addAttribute(::materialIdLabel);
-	addAttribute(::texCoordLabel);
+	shader.findAttribLocation(::positionLabel);
+	shader.findAttribLocation(::normalLabel);
+	shader.findAttribLocation(::materialIdLabel);
+	shader.findAttribLocation(::texCoordLabel);
 
-	const auto isOk = build_(factory);
-
-	lightBuffer.build(getShader());
-	materialRenderer.build(getShader());
-	textureBuffer.build(getShader());
+	lightBuffer.build(&shader);
+	materialRenderer.build(&shader);
+	textureBuffer.build(&shader);
 
 	return isOk;
 }
@@ -89,20 +89,18 @@ void SmoothShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
 	const auto& modelviewMatrix = camera.getModelViewMatrix() * matrix;
 	const auto& eyePos = camera.getEye();
 
-	auto shader = getShader();
+	shader.bind();
 
-	shader->bind();
+	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader.sendUniform(::modelviewMatrixLabel, modelviewMatrix);
+	shader.sendUniform(::eyePositionLabel, eyePos);
 
-	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
-	shader->sendUniform(::modelviewMatrixLabel, modelviewMatrix);
-	shader->sendUniform(::eyePositionLabel, eyePos);
+	shader.sendVertexAttribute3df(::positionLabel, glBuffer.position);
+	shader.sendVertexAttribute3df(::normalLabel, glBuffer.normal);
+	shader.sendVertexAttribute2df(::texCoordLabel, glBuffer.texCoord);
+	shader.sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
 
-	shader->sendVertexAttribute3df(::positionLabel, glBuffer.position);
-	shader->sendVertexAttribute3df(::normalLabel, glBuffer.normal);
-	shader->sendVertexAttribute2df(::texCoordLabel, glBuffer.texCoord);
-	shader->sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
-
-	shader->unbind();
+	shader.unbind();
 
 	this->matrix = glBuffer.matrix;
 	this->count = glBuffer.count;
@@ -110,18 +108,16 @@ void SmoothShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
 
 void SmoothShaderScene::render(const Camera& camera)
 {
-	auto shader = getShader();
+	shader.bind();
+	shader.bindOutput("fragColor");
 
-	shader->bind();
-	shader->bindOutput("fragColor");
-
-	shader->enableDepthTest();
+	shader.enableDepthTest();
 
 
-	shader->enableVertexAttribute(::positionLabel);
-	shader->enableVertexAttribute(::normalLabel);
-	shader->enableVertexAttribute(::texCoordLabel);
-	shader->enableVertexAttribute(::materialIdLabel);
+	shader.enableVertexAttribute(::positionLabel);
+	shader.enableVertexAttribute(::normalLabel);
+	shader.enableVertexAttribute(::texCoordLabel);
+	shader.enableVertexAttribute(::materialIdLabel);
 
 
 	/*
@@ -130,7 +126,7 @@ void SmoothShaderScene::render(const Camera& camera)
 	}
 	*/
 
-	shader->drawTriangles(count);
+	shader.drawTriangles(count);
 
 	/*
 	for (const auto& t : textures) {
@@ -140,15 +136,15 @@ void SmoothShaderScene::render(const Camera& camera)
 
 	//textures[0].unbind();
 
-	shader->disableVertexAttribute(::materialIdLabel);
-	shader->disableVertexAttribute(::texCoordLabel);
-	shader->disableVertexAttribute(::normalLabel);
-	shader->disableVertexAttribute(::positionLabel);
+	shader.disableVertexAttribute(::materialIdLabel);
+	shader.disableVertexAttribute(::texCoordLabel);
+	shader.disableVertexAttribute(::normalLabel);
+	shader.disableVertexAttribute(::positionLabel);
 
 	assert(GL_NO_ERROR == glGetError());
 
-	shader->disableDepthTest();
-	shader->unbind();
+	shader.disableDepthTest();
+	shader.unbind();
 }
 
 std::string SmoothShaderScene::getBuildInVertexShaderSource() const
