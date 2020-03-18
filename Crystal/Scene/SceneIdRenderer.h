@@ -6,7 +6,7 @@
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
 
-#include "../Scene/PointRenderer.h"
+#include "../Scene/PointShaderScene.h"
 #include "../Scene/LineShaderScene.h"
 
 #include "../Util/UnCopyable.h"
@@ -39,11 +39,11 @@ public:
 	//Shader::TextureObject* getTexture() { return texture; }
 
 private:
-	PointRenderer::GLBuffer pointBuffer;
+	PointShaderScene::GLBuffer pointBuffer;
 	LineShaderScene::GLBuffer lineBuffer;
 	TriangleRenderer::GLBuffer triangleBuffer;
 
-	PointRenderer pointIdRenderer;
+	PointShaderScene pointIdRenderer;
 	LineShaderScene lineIdRenderer;
 	TriangleRenderer triangleIdRenderer;
 

@@ -1,4 +1,4 @@
-#include "PointRenderer.h"
+#include "PointShaderScene.h"
 
 #include <sstream>
 
@@ -16,7 +16,7 @@ namespace {
 	constexpr char* fragColorLabel = "fragColor";
 }
 
-void PointRenderer::GLBuffer::build()
+void PointShaderScene::GLBuffer::build()
 {
 	vbo.position.build();
 	vbo.size.build();
@@ -25,7 +25,7 @@ void PointRenderer::GLBuffer::build()
 	//vao.build();
 }
 
-void PointRenderer::GLBuffer::release()
+void PointShaderScene::GLBuffer::release()
 {
 	vbo.position.release();
 	vbo.size.release();
@@ -35,7 +35,7 @@ void PointRenderer::GLBuffer::release()
 }
 
 
-void PointRenderer::GLBuffer::send(const PointBuffer& buffer)
+void PointShaderScene::GLBuffer::send(const PointBuffer& buffer)
 {
 	const auto& positions = buffer.getPosition().get();
 	const auto& colors = buffer.getColor().get();
@@ -56,11 +56,11 @@ void PointRenderer::GLBuffer::send(const PointBuffer& buffer)
 }
 
 
-PointRenderer::PointRenderer()
+PointShaderScene::PointShaderScene()
 {
 }
 
-bool PointRenderer::build(GLObjectFactory& factory)
+bool PointShaderScene::build(GLObjectFactory& factory)
 {
 	setVertexShaderSource(getBuiltInVertexShaderSource());
 	setFragmentShaderSource(getBuiltInFragmentShaderSource());
@@ -76,7 +76,7 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
-void PointRenderer::send(const GLBuffer& glBuffer, const Camera& camera)
+void PointShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
 {
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
@@ -96,7 +96,7 @@ void PointRenderer::send(const GLBuffer& glBuffer, const Camera& camera)
 	this->count = glBuffer.count;
 }
 
-void PointRenderer::render(const Camera& camera)
+void PointShaderScene::render(const Camera& camera)
 {
 	auto shader = getShader();
 
@@ -117,7 +117,7 @@ void PointRenderer::render(const Camera& camera)
 	assert(GL_NO_ERROR == glGetError());
 }
 
-std::string PointRenderer::getBuiltInVertexShaderSource() const
+std::string PointShaderScene::getBuiltInVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -136,7 +136,7 @@ std::string PointRenderer::getBuiltInVertexShaderSource() const
 	return stream.str();
 }
 
-std::string PointRenderer::getBuiltInFragmentShaderSource() const
+std::string PointShaderScene::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

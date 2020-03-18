@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Scene/PointRenderer.h"
+#include "../Scene/PointShaderScene.h"
 #include "../Scene/LineShaderScene.h"
 #include "../Scene/SmoothShaderScene.h"
 
@@ -68,7 +68,7 @@ public:
 
 	void add(LightScene* scene) { this->lightScenes.push_back(scene); }
 
-	PointRenderer* getPointRenderer() { return &pointRenderer; }
+	PointShaderScene* getPointRenderer() { return &pointRenderer; }
 
 	LineShaderScene* getLineRenderer() { return &wireRenderer; }
 
@@ -77,7 +77,7 @@ public:
 	Graphics::Camera* getCamera() { return camera; }
 
 private:
-	PointRenderer pointRenderer;
+	PointShaderScene pointRenderer;
 	LineShaderScene wireRenderer;
 	SmoothShaderScene smoothRenderer;
 

@@ -33,7 +33,7 @@
     <ClInclude Include="MaterialRenderer.h" />
     <ClInclude Include="SceneIdRenderer.h" />
     <ClInclude Include="SceneRenderer.h" />
-    <ClInclude Include="PointRenderer.h" />
+    <ClInclude Include="PointShaderScene.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="TextureRenderer.h" />
     <ClInclude Include="TextureScene.h" />
@@ -72,7 +72,7 @@
     <ClCompile Include="SceneIdRenderer.cpp" />
     <ClCompile Include="SceneRenderer.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
-    <ClCompile Include="PointRenderer.cpp" />
+    <ClCompile Include="PointShaderScene.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="TextureRenderer.cpp" />

@@ -1,6 +1,6 @@
 #include "World.h"
 
-#include "PointRenderer.h"
+#include "PointShaderScene.h"
 #include "LightScene.h"
 #include "MaterialScene.h"
 #include "TextureScene.h"

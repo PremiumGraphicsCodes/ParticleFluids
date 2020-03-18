@@ -5,7 +5,7 @@
 #include "IShapeScene.h"
 #include "ParticleAttribute.h"
 
-#include "PointRenderer.h"
+#include "PointShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -50,7 +50,7 @@ public:
 	void onRender(SceneRenderer* renderer) override;
 
 private:
-	PointRenderer::GLBuffer buffer;
+	PointShaderScene::GLBuffer buffer;
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
 };
 

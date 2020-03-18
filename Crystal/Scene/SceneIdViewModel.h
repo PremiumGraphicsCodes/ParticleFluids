@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PointRenderer.h"
+#include "PointShaderScene.h"
 #include "LineShaderScene.h"
 
 namespace Crystal {

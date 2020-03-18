@@ -64,9 +64,6 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="World.h" />
-    <ClInclude Include="PointRenderer.h">
-      <Filter>Renderer\Point</Filter>
-    </ClInclude>
     <ClInclude Include="IRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -109,6 +106,9 @@
     <ClInclude Include="LineShaderScene.h">
       <Filter>Renderer\Line</Filter>
     </ClInclude>
+    <ClInclude Include="PointShaderScene.h">
+      <Filter>Renderer\Point</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -148,9 +148,6 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="PointRenderer.cpp">
-      <Filter>Renderer\Point</Filter>
-    </ClCompile>
     <ClCompile Include="IRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -186,6 +183,9 @@
     </ClCompile>
     <ClCompile Include="LineShaderScene.cpp">
       <Filter>Renderer\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="PointShaderScene.cpp">
+      <Filter>Renderer\Point</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

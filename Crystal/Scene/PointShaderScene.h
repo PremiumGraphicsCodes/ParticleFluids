@@ -47,7 +47,7 @@ private:
 };
 
 
-class PointRenderer : public IRenderer
+class PointShaderScene : public IRenderer
 {
 public:
 	struct GLBuffer
@@ -71,7 +71,7 @@ public:
 		void send(const PointBuffer& buffer);
 	};
 
-	PointRenderer();
+	PointShaderScene();
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
