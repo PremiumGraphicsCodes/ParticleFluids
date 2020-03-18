@@ -96,7 +96,7 @@ void PointShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
 	this->count = glBuffer.count;
 }
 
-void PointShaderScene::render(const Camera& camera)
+void PointShaderScene::render()
 {
 	shader.bind();
 

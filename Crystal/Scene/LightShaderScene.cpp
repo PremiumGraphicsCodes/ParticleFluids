@@ -1,4 +1,6 @@
-#include "LightBuffer.h"
+#include "LightShaderScene.h"
+
+#include "../Shader/ShaderObject.h"
 
 #include <sstream>
 
@@ -6,28 +8,28 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-LightBuffer::LightBuffer()
+LightShaderScene::LightShaderScene()
 {
 }
 
-bool LightBuffer::build(IRenderer* parent)
+bool LightShaderScene::build(ShaderObject* shader)
 {
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "lights[" + std::to_string(i) + "]";
-		parent->addUniform(prefix + ".position");
-		parent->addUniform(prefix + ".La");
-		parent->addUniform(prefix + ".Ld");
-		parent->addUniform(prefix + ".Ls");
+		shader->findUniformLocation(prefix + ".position");
+		shader->findUniformLocation(prefix + ".La");
+		shader->findUniformLocation(prefix + ".Ld");
+		shader->findUniformLocation(prefix + ".Ls");
 	}
 	return true;
 }
 
-void LightBuffer::add(const PointLight& light)
+void LightShaderScene::add(const PointLight& light)
 {
 	lights.push_back(light);
 }
 
-void LightBuffer::send(ShaderObject* shader)
+void LightShaderScene::send(ShaderObject* shader)
 {
 	shader->bind();
 	for (int i = 0; i < lights.size(); ++i) {
@@ -47,7 +49,7 @@ void LightBuffer::send(ShaderObject* shader)
 	shader->unbind();
 }
 
-std::string LightBuffer::getBuiltInFragmentShaderSource() const
+std::string LightShaderScene::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

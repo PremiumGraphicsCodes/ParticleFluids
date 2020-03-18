@@ -61,7 +61,6 @@ SmoothShaderScene::SmoothShaderScene()
 
 bool SmoothShaderScene::build(GLObjectFactory& factory)
 {
-	lightBuffer.build(this);
 	materialRenderer.build(this);
 	textureBuffer.build(this);
 
@@ -78,7 +77,11 @@ bool SmoothShaderScene::build(GLObjectFactory& factory)
 	addAttribute(::materialIdLabel);
 	addAttribute(::texCoordLabel);
 
-	return build_(factory);
+	const auto isOk = build_(factory);
+
+	lightBuffer.build(getShader());
+
+	return isOk;
 }
 
 void SmoothShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)

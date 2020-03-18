@@ -15,7 +15,7 @@
 
 #include "MaterialBuffer.h"
 #include "MaterialRenderer.h"
-#include "LightBuffer.h"
+#include "LightShaderScene.h"
 #include "TextureRenderer.h"
 
 namespace Crystal {
@@ -80,7 +80,7 @@ public:
 
 	void render(const Graphics::Camera& camera) override;
 
-	LightBuffer* getLightRenderer() { return &lightBuffer; }
+	LightShaderScene* getLightRenderer() { return &lightBuffer; }
 
 	TextureRenderer* getTextureRenderer() { return &textureBuffer; }
 
@@ -90,7 +90,7 @@ private:
 	std::string getBuiltInFragmentShaderSource() const;
 
 	MaterialRenderer materialRenderer;
-	LightBuffer lightBuffer;
+	LightShaderScene lightBuffer;
 	TextureRenderer textureBuffer;
 	Math::Matrix4df matrix;
 	int count;

@@ -54,7 +54,7 @@ void SceneRenderer::render(Camera* camera)
 		for (auto m : materialScenes) {
 			mBuffer.add(*m->getMaterial());
 		}
-		LightBuffer lBuffer;
+		LightShaderScene lBuffer;
 		for (auto l : lightScenes) {
 			lBuffer.add(*l->getLight());
 		}

@@ -75,7 +75,7 @@ public:
 
 	void send(const GLBuffer& buffer, const Graphics::Camera& camera);
 
-	void render(const Graphics::Camera& camera);
+	void render();
 
 private:
 	std::string getBuiltInVertexShaderSource() const;

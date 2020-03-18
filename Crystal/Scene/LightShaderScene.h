@@ -1,18 +1,19 @@
 #pragma once
 
-#include "IRenderer.h"
-
 #include "../Graphics/PointLight.h"
 
 namespace Crystal {
+	namespace Shader {
+		class ShaderObject;
+	}
 	namespace Scene {
 
-class LightBuffer
+class LightShaderScene
 {
 public:
-	LightBuffer();
+	LightShaderScene();
 
-	bool build(IRenderer* parent);
+	bool build(Shader::ShaderObject* shader);
 
 	void add(const Graphics::PointLight& l);
 

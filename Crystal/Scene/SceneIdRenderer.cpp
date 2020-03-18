@@ -48,7 +48,7 @@ void SceneIdRenderer::render(Camera* camera, const SceneIdViewModel& vm)
 	for (const auto& b : pointBuffers) {
 		pointBuffer.send(b);
 		pointIdRenderer.send(pointBuffer, *camera);
-		pointIdRenderer.render(*camera);
+		pointIdRenderer.render();
 	}
 	for (const auto& b : lineBuffers) {
 		lineBuffer.send(b);
