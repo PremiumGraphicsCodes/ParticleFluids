@@ -20,13 +20,13 @@ namespace Crystal {
 		class SceneFactory;
 		class SceneIdViewModel;
 
-class SceneIdRenderer : private UnCopyable
+class ScreenIdShaderScene : private UnCopyable
 {
 public:
-	SceneIdRenderer()
+	ScreenIdShaderScene()
 	{}
 
-	~SceneIdRenderer() {}
+	~ScreenIdShaderScene() {}
 
 	bool build(Shader::GLObjectFactory& factory);
 

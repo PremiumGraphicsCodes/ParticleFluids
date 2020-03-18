@@ -57,9 +57,6 @@
     <ClInclude Include="Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="SceneIdRenderer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="World.h" />
     <ClInclude Include="FaceGroupScene.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
@@ -112,6 +109,9 @@
     <ClInclude Include="ScreenShaderScene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="ScreenIdShaderScene.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -142,9 +142,6 @@
       <Filter>Scene\Transform</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneIdRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
@@ -191,6 +188,9 @@
       <Filter>Renderer\Material</Filter>
     </ClCompile>
     <ClCompile Include="ScreenShaderScene.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenIdShaderScene.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
