@@ -77,7 +77,7 @@ public:
 
 	void send(const GLBuffer& buffer, const Graphics::Camera& camera);
 
-	void render(const Graphics::Camera& camera);
+	void render();
 
 	LightShaderScene* getLightRenderer() { return &lightShader; }
 

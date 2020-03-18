@@ -109,6 +109,9 @@
     <ClInclude Include="PointShaderBuffer.h">
       <Filter>Renderer\Point</Filter>
     </ClInclude>
+    <ClInclude Include="LineShaderBuffer.h">
+      <Filter>Renderer\Line</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -186,6 +189,9 @@
     </ClCompile>
     <ClCompile Include="PointShaderBuffer.cpp">
       <Filter>Renderer\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="LineShaderBuffer.cpp">
+      <Filter>Renderer\Line</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

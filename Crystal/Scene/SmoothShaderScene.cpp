@@ -106,7 +106,7 @@ void SmoothShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
 	this->count = glBuffer.count;
 }
 
-void SmoothShaderScene::render(const Camera& camera)
+void SmoothShaderScene::render()
 {
 	shader.bind();
 	shader.bindOutput("fragColor");
