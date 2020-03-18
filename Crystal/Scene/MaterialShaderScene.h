@@ -1,5 +1,7 @@
 #pragma once
 
+#include "MaterialShaderBuffer.h"
+
 #include <string>
 
 namespace Crystal {
@@ -12,6 +14,8 @@ class MaterialShaderScene
 {
 public:
 	bool build(Shader::ShaderObject* shader);
+
+	void send(Shader::ShaderObject* shader, const MaterialShaderBuffer& buffer);
 
 	std::string getBuiltInFragmentShaderSource() const;
 };

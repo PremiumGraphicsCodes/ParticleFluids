@@ -11,8 +11,8 @@ class MaterialShaderBuffer
 public:
 	void add(const Graphics::Material& m);
 
-	void send(Shader::ShaderObject* shader);
-
+	std::vector<Graphics::Material> getMaterials() const { return materials; }
+	
 private:
 	std::vector<Graphics::Material> materials;
 };
