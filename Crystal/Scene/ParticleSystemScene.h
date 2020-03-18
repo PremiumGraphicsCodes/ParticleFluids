@@ -50,7 +50,7 @@ public:
 	void onRender(SceneRenderer* renderer) override;
 
 private:
-	PointShaderScene::GLBuffer buffer;
+	PointShaderBuffer buffer;
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
 };
 

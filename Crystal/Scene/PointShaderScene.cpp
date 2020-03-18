@@ -16,7 +16,7 @@ namespace {
 	constexpr char* fragColorLabel = "fragColor";
 }
 
-void PointShaderScene::GLBuffer::build()
+void PointShaderBuffer::build()
 {
 	vbo.position.build();
 	vbo.size.build();
@@ -25,7 +25,7 @@ void PointShaderScene::GLBuffer::build()
 	//vao.build();
 }
 
-void PointShaderScene::GLBuffer::release()
+void PointShaderBuffer::release()
 {
 	vbo.position.release();
 	vbo.size.release();
@@ -34,8 +34,7 @@ void PointShaderScene::GLBuffer::release()
 	//vao.release();
 }
 
-
-void PointShaderScene::GLBuffer::send(const PointBuffer& buffer)
+void PointShaderBuffer::send(const PointBuffer& buffer)
 {
 	const auto& positions = buffer.getPosition().get();
 	const auto& colors = buffer.getColor().get();
@@ -77,7 +76,7 @@ bool PointShaderScene::build()
 	return isOk;
 }
 
-void PointShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
+void PointShaderScene::send(const PointShaderBuffer& glBuffer, const Camera& camera)
 {
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;

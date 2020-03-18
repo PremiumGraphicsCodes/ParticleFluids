@@ -44,36 +44,35 @@ private:
 	Graphics::Buffer1d<float> sizes;
 };
 
+struct PointShaderBuffer
+{
+	struct VBO
+	{
+		Shader::VertexBufferObject position;
+		Shader::VertexBufferObject size;
+		Shader::VertexBufferObject color;
+	};
+
+	//Shader::VertexArrayObject vao;
+	VBO vbo;
+	GLuint count;
+	Math::Matrix4df matrix;
+
+	void build();
+
+	void release();
+
+	void send(const PointBuffer& buffer);
+};
 
 class PointShaderScene
 {
 public:
-	struct GLBuffer
-	{
-		struct VBO
-		{
-			Shader::VertexBufferObject position;
-			Shader::VertexBufferObject size;
-			Shader::VertexBufferObject color;
-		};
-
-		//Shader::VertexArrayObject vao;
-		VBO vbo;
-		GLuint count;
-		Math::Matrix4df matrix;
-
-		void build();
-
-		void release();
-
-		void send(const PointBuffer& buffer);
-	};
-
 	PointShaderScene();
 
 	bool build();
 
-	void send(const GLBuffer& buffer, const Graphics::Camera& camera);
+	void send(const PointShaderBuffer& buffer, const Graphics::Camera& camera);
 
 	void render();
 
