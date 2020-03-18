@@ -82,9 +82,6 @@
     <ClInclude Include="TextureScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialBuffer.h">
-      <Filter>Renderer\Material</Filter>
-    </ClInclude>
     <ClInclude Include="SmoothShaderScene.h">
       <Filter>Renderer\Triangle</Filter>
     </ClInclude>
@@ -111,6 +108,9 @@
     </ClInclude>
     <ClInclude Include="LineShaderBuffer.h">
       <Filter>Renderer\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialShaderBuffer.h">
+      <Filter>Renderer\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +163,6 @@
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialBuffer.cpp">
-      <Filter>Renderer\Material</Filter>
-    </ClCompile>
     <ClCompile Include="SmoothShaderScene.cpp">
       <Filter>Renderer\Triangle</Filter>
     </ClCompile>
@@ -192,6 +189,9 @@
     </ClCompile>
     <ClCompile Include="LineShaderBuffer.cpp">
       <Filter>Renderer\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialShaderBuffer.cpp">
+      <Filter>Renderer\Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -50,7 +50,7 @@ void SceneRenderer::render(Camera* camera)
 		}
 	}
 	if (mask.showTrianlges) {
-		MaterialBuffer mBuffer;
+		MaterialShaderBuffer mBuffer;
 		for (auto m : materialScenes) {
 			mBuffer.add(*m->getMaterial());
 		}

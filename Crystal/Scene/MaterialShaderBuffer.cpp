@@ -1,4 +1,4 @@
-#include "MaterialBuffer.h"
+#include "MaterialShaderBuffer.h"
 
 #include "../Graphics/Material.h"
 
@@ -11,12 +11,12 @@ namespace {
 	constexpr char* materialIdLabel = "materialId";
 }
 
-void MaterialBuffer::add(const Material& m)
+void MaterialShaderBuffer::add(const Material& m)
 {
 	this->materials.push_back(m);
 }
 
-void MaterialBuffer::send(ShaderObject* shader)
+void MaterialShaderBuffer::send(ShaderObject* shader)
 {
 	shader->bind();
 	for (int i = 0; i < materials.size(); ++i) {

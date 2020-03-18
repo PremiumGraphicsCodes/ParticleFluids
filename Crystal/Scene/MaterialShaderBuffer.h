@@ -6,7 +6,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class MaterialBuffer
+class MaterialShaderBuffer
 {
 public:
 	void add(const Graphics::Material& m);

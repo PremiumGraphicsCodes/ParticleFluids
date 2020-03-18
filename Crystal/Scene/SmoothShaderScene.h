@@ -12,7 +12,7 @@
 #include "../Shader/TextureObject.h"
 #include "../Shader/VertexBufferObject.h"
 
-#include "MaterialBuffer.h"
+#include "MaterialShaderBuffer.h"
 #include "MaterialShaderScene.h"
 #include "LightShaderScene.h"
 #include "TextureShaderScene.h"
@@ -68,7 +68,7 @@ public:
 
 		void release();
 
-		MaterialBuffer materialBuffer;
+		MaterialShaderBuffer materialBuffer;
 	};
 
 	SmoothShaderScene();
