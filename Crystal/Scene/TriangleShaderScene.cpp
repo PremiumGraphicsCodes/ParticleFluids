@@ -38,49 +38,49 @@ TriangleShaderScene::TriangleShaderScene()
 {
 }
 
-bool TriangleShaderScene::build(GLObjectFactory& factory)
+bool TriangleShaderScene::build()
 {
-	setVertexShaderSource(getBuildInVertexShaderSource());
-	setFragmentShaderSource(getBuiltInFragmentShaderSource());
+	const auto& vsSource = getBuildInVertexShaderSource();
+	const auto& fsSource = getBuiltInFragmentShaderSource();
 
-	addUniform(::projectionMatrixLabel);
-	addUniform(::modelViewMatrixLabel);
+	const auto isOk = shader.build(vsSource, fsSource);
 
-	addAttribute("position");
-	addAttribute("color");
+	shader.findUniformLocation(::projectionMatrixLabel);
+	shader.findUniformLocation(::modelViewMatrixLabel);
 
-	return build_(factory);
+	shader.findAttribLocation("position");
+	shader.findAttribLocation("color");
+
+	return isOk;
 }
 
 void TriangleShaderScene::render(const Camera& camera)
 {
-	auto shader = getShader();
-
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto& modelviewMatrix = camera.getModelViewMatrix();
 
-	shader->bind();
-	shader->bindOutput("fragColor");
+	shader.bind();
+	shader.bindOutput("fragColor");
 
-	shader->enableDepthTest();
+	shader.enableDepthTest();
 
-	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
-	shader->sendUniform(::modelViewMatrixLabel, modelviewMatrix);
+	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader.sendUniform(::modelViewMatrixLabel, modelviewMatrix);
 
-	shader->sendVertexAttribute3df("position", glBuffer.vbo.position);
-	shader->sendVertexAttribute4df("color", glBuffer.vbo.color);
+	shader.sendVertexAttribute3df("position", glBuffer.vbo.position);
+	shader.sendVertexAttribute4df("color", glBuffer.vbo.color);
 
-	shader->enableVertexAttribute("position");
-	shader->enableVertexAttribute("color");
+	shader.enableVertexAttribute("position");
+	shader.enableVertexAttribute("color");
 
-	shader->drawTriangles(glBuffer.indices);
+	shader.drawTriangles(glBuffer.indices);
 
-	shader->disableVertexAttribute("color");
-	shader->disableVertexAttribute("position");
+	shader.disableVertexAttribute("color");
+	shader.disableVertexAttribute("position");
 
-	shader->disableDepthTest();
+	shader.disableDepthTest();
 
-	shader->unbind();
+	shader.unbind();
 }
 
 std::string TriangleShaderScene::getBuildInVertexShaderSource() const

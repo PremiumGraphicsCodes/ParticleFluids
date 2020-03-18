@@ -1,4 +1,3 @@
-#include "IRenderer.h"
 #include "LineShaderScene.h"
 
 #include "../Shader/VertexBufferObject.h"
@@ -6,7 +5,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class TriangleShaderScene : public IRenderer
+class TriangleShaderScene
 {
 public:
 	struct GLBuffer
@@ -27,11 +26,11 @@ public:
 
 	TriangleShaderScene();
 
-	bool build(Shader::GLObjectFactory& factory) override;
+	bool build();
 
 	void setBuffer(const GLBuffer& glBuffer) { this->glBuffer = glBuffer; }
 
-	void render(const Graphics::Camera& camera) override;
+	void render(const Graphics::Camera& camera);
 
 private:
 	std::string getBuildInVertexShaderSource() const;
@@ -39,6 +38,7 @@ private:
 	std::string getBuiltInFragmentShaderSource() const;
 
 	GLBuffer glBuffer;
+	Shader::ShaderObject shader;
 };
 
 	}
