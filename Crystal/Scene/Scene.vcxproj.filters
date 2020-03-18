@@ -64,9 +64,6 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="World.h" />
-    <ClInclude Include="IRenderer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="FaceGroupScene.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClInclude>
@@ -148,9 +145,6 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
-    <ClCompile Include="IRenderer.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="TriangleMeshScene.cpp">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClCompile>

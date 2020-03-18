@@ -1,7 +1,5 @@
 #pragma once
 
-#include "IRenderer.h"
-
 #include "../Graphics/Material.h"
 #include "../Shader/ShaderObject.h"
 

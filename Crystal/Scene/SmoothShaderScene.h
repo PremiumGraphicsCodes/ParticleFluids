@@ -1,12 +1,11 @@
 #pragma once
 
-#include "IRenderer.h"
-
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer2d.h"
 #include "../Graphics/Buffer3d.h"
 #include "../Graphics/PointLight.h"
 #include "../Graphics/Material.h"
+#include "../Graphics/Camera.h"
 
 #include "../Math/Matrix4d.h"
 

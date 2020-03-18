@@ -1,5 +1,7 @@
 #include "MaterialShaderScene.h"
 
+#include "../Shader/ShaderObject.h"
+
 #include <sstream>
 
 using namespace Crystal::Shader;

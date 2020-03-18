@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IPanel.h"
-#include "../../Crystal/Scene/IRenderer.h"
+#include <string>
 
 namespace Crystal {
 	namespace UI {
@@ -13,7 +13,7 @@ public:
 
 	void onShow() override;
 
-	void setValue(const Scene::IRenderer& scene);
+	//void setValue(const Scene::IRenderer& scene);
 
 private:
 	std::string vsSource;

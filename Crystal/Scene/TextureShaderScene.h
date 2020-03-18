@@ -1,8 +1,6 @@
 #pragma once
 
-#include "IRenderer.h"
-
-#include "../Graphics/Camera.h"
+#include <string>
 #include "../Shader/ShaderObject.h"
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/VertexArrayObject.h"
