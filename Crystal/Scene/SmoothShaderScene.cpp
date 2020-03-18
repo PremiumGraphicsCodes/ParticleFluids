@@ -76,9 +76,9 @@ bool SmoothShaderScene::build()
 	shader.findAttribLocation(::materialIdLabel);
 	shader.findAttribLocation(::texCoordLabel);
 
-	lightBuffer.build(&shader);
-	materialRenderer.build(&shader);
-	textureBuffer.build(&shader);
+	lightShader.build(&shader);
+	materialShader.build(&shader);
+	textureShader.build(&shader);
 
 	return isOk;
 }
@@ -184,8 +184,8 @@ std::string SmoothShaderScene::getBuiltInFragmentShaderSource() const
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
 		<< "uniform sampler2D textures[8];" << std::endl
-		<< lightBuffer.getBuiltInFragmentShaderSource()
-		<< materialRenderer.getBuiltInFragmentShaderSource()
+		<< lightShader.getBuiltInFragmentShaderSource()
+		<< materialShader.getBuiltInFragmentShaderSource()
 		<< "vec3 getTextureColor(int id){ " << std::endl
 		<< "	if(id == -1) {" << std::endl
 		<< "		return vec3(1,1,1);" << std::endl

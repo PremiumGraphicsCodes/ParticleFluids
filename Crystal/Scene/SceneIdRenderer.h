@@ -2,12 +2,12 @@
 
 #include "../Graphics/DrawableId.h"
 
-#include "../Scene/TriangleRenderer.h"
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
 
 #include "../Scene/PointShaderScene.h"
 #include "../Scene/LineShaderScene.h"
+#include "../Scene/TriangleShaderScene.h"
 
 #include "../Util/UnCopyable.h"
 
@@ -41,11 +41,11 @@ public:
 private:
 	PointShaderScene::GLBuffer pointBuffer;
 	LineShaderScene::GLBuffer lineBuffer;
-	TriangleRenderer::GLBuffer triangleBuffer;
+	TriangleShaderScene::GLBuffer triangleBuffer;
 
 	PointShaderScene pointIdRenderer;
 	LineShaderScene lineIdRenderer;
-	TriangleRenderer triangleIdRenderer;
+	TriangleShaderScene triangleIdRenderer;
 
 	Shader::TextureObject texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;

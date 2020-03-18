@@ -6,7 +6,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class TriangleRenderer : public IRenderer
+class TriangleShaderScene : public IRenderer
 {
 public:
 	struct GLBuffer
@@ -25,7 +25,7 @@ public:
 		void send(const LineBuffer& buffer);
 	};
 
-	TriangleRenderer();
+	TriangleShaderScene();
 
 	bool build(Shader::GLObjectFactory& factory) override;
 

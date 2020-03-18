@@ -80,9 +80,9 @@ public:
 
 	void render(const Graphics::Camera& camera);
 
-	LightShaderScene* getLightRenderer() { return &lightBuffer; }
+	LightShaderScene* getLightRenderer() { return &lightShader; }
 
-	TextureShaderScene* getTextureRenderer() { return &textureBuffer; }
+	TextureShaderScene* getTextureRenderer() { return &textureShader; }
 
 	Shader::ShaderObject* getShader() { return &shader; }
 
@@ -91,9 +91,9 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	MaterialShaderScene materialRenderer;
-	LightShaderScene lightBuffer;
-	TextureShaderScene textureBuffer;
+	MaterialShaderScene materialShader;
+	LightShaderScene lightShader;
+	TextureShaderScene textureShader;
 	Math::Matrix4df matrix;
 	int count;
 	Shader::ShaderObject shader;
