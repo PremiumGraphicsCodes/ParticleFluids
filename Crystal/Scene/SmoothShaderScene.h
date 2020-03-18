@@ -16,7 +16,7 @@
 #include "MaterialBuffer.h"
 #include "MaterialShaderScene.h"
 #include "LightShaderScene.h"
-#include "TextureRenderer.h"
+#include "TextureShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -82,7 +82,7 @@ public:
 
 	LightShaderScene* getLightRenderer() { return &lightBuffer; }
 
-	TextureRenderer* getTextureRenderer() { return &textureBuffer; }
+	TextureShaderScene* getTextureRenderer() { return &textureBuffer; }
 
 private:
 	std::string getBuildInVertexShaderSource() const;
@@ -91,7 +91,7 @@ private:
 
 	MaterialShaderScene materialRenderer;
 	LightShaderScene lightBuffer;
-	TextureRenderer textureBuffer;
+	TextureShaderScene textureBuffer;
 	Math::Matrix4df matrix;
 	int count;
 };

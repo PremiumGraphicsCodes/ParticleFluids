@@ -1,4 +1,4 @@
-#include "TextureRenderer.h"
+#include "TextureShaderScene.h"
 
 #include "../Shader/TextureObject.h"
 
@@ -9,20 +9,20 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-TextureRenderer::TextureRenderer()
+TextureShaderScene::TextureShaderScene()
 {
 }
 
-bool TextureRenderer::build(IRenderer* parent)
+bool TextureShaderScene::build(ShaderObject* shader)
 {
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "textures[" + std::to_string(i) + "]";
-		parent->addUniform(prefix);
+		shader->findUniformLocation(prefix);
 	}
 	return true;
 }
 
-void TextureRenderer::setTextures(const std::vector<TextureObject>& textures, ShaderObject* shader)
+void TextureShaderScene::setTextures(const std::vector<TextureObject>& textures, ShaderObject* shader)
 {
 	shader->bind();
 	for (int i = 0; i < textures.size(); ++i) {

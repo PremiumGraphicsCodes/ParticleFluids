@@ -10,12 +10,12 @@
 namespace Crystal {
 	namespace Scene {
 
-class TextureRenderer
+class TextureShaderScene
 {
 public:
-	TextureRenderer();
+	TextureShaderScene();
 
-	bool build(IRenderer* parent);
+	bool build(Shader::ShaderObject* shader);
 
 	void setTextures(const std::vector<Shader::TextureObject>& textures, Shader::ShaderObject* shader);
 

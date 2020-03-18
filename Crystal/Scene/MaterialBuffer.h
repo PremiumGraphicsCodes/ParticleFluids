@@ -2,8 +2,6 @@
 
 #include "IRenderer.h"
 
-#include "TextureRenderer.h"
-
 #include "../Graphics/Material.h"
 #include "../Shader/ShaderObject.h"
 
