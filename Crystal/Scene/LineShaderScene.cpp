@@ -13,7 +13,7 @@ namespace {
 	constexpr const char* fragColorLabel = "fragColor";
 }
 
-void LineShaderScene::GLBuffer::build()
+void LineShaderBuffer::build()
 {
 	vbo.position.build();
 	vbo.color.build();
@@ -21,7 +21,7 @@ void LineShaderScene::GLBuffer::build()
 	//vao.build();
 }
 
-void LineShaderScene::GLBuffer::release()
+void LineShaderBuffer::release()
 {
 	vbo.position.release();
 	vbo.color.release();
@@ -29,7 +29,7 @@ void LineShaderScene::GLBuffer::release()
 	//vao.release();
 }
 
-void LineShaderScene::GLBuffer::send(const LineBuffer& buffer)
+void LineShaderBuffer::send(const LineBuffer& buffer)
 {
 	const auto positions = buffer.getPositions().get();
 	const auto colors = buffer.getColors().get();

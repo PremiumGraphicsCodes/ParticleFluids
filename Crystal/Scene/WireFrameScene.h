@@ -46,13 +46,13 @@ public:
 
 	IShapeScene* clone() const override;
 
-	LineShaderScene::LineShaderScene::GLBuffer getGLBuffer() const { return glBuffer; }
+	LineShaderBuffer getGLBuffer() const { return glBuffer; }
 
 	void onRender(SceneRenderer* renderer) override;
 
 private:
 	LineShaderScene* renderer;
-	LineShaderScene::LineShaderScene::GLBuffer glBuffer;
+	LineShaderBuffer glBuffer;
 
 	std::unique_ptr<Shape::WireFrame> shape;
 	WireFrameAttribute attribute;

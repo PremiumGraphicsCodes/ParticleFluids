@@ -55,34 +55,33 @@ private:
 	Graphics::Buffer1d<unsigned int> indices;
 };
 
+struct LineShaderBuffer
+{
+	struct {
+		Shader::VertexBufferObject position;
+		Shader::VertexBufferObject color;
+	} vbo;
+	//Shader::VertexArrayObject vao;
+
+	std::vector<unsigned int> indices;
+	Math::Matrix4df matrix;
+	float lineWidth;
+
+	void build();
+
+	void release();
+
+	void send(const LineBuffer& buffer);
+};
 
 class LineShaderScene
 {
 public:
-	struct GLBuffer
-	{
-		struct {
-			Shader::VertexBufferObject position;
-			Shader::VertexBufferObject color;
-		} vbo;
-		//Shader::VertexArrayObject vao;
-
-		std::vector<unsigned int> indices;
-		Math::Matrix4df matrix;
-		float lineWidth;
-
-		void build();
-
-		void release();
-
-		void send(const LineBuffer& buffer);
-	};
-
 	LineShaderScene();
 
 	bool build();
 
-	void setBuffer(const GLBuffer& buffer) { this->glBuffer = buffer; }
+	void setBuffer(const LineShaderBuffer& buffer) { this->glBuffer = buffer; }
 
 	void render(const Graphics::Camera& camera);
 
@@ -91,7 +90,7 @@ private:
 
 	std::string getBuiltInFsSource() const;
 
-	GLBuffer glBuffer;
+	LineShaderBuffer glBuffer;
 	Shader::ShaderObject shader;
 };
 
