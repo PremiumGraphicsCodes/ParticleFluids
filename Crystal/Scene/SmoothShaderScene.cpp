@@ -1,4 +1,4 @@
-#include "SmoothRenderer.h"
+#include "SmoothShaderScene.h"
 
 #include "../Graphics/Material.h"
 #include "../Graphics/PointLight.h"
@@ -28,7 +28,7 @@ void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df&
 	materialIds.add(materialId);
 }
 
-void SmoothRenderer::GLBuffer::build()
+void SmoothShaderScene::GLBuffer::build()
 {
 	position.build();
 	normal.build();
@@ -36,7 +36,7 @@ void SmoothRenderer::GLBuffer::build()
 	materialId.build();
 }
 
-void SmoothRenderer::GLBuffer::release()
+void SmoothShaderScene::GLBuffer::release()
 {
 	position.release();
 	normal.release();
@@ -44,7 +44,7 @@ void SmoothRenderer::GLBuffer::release()
 	materialId.release();
 }
 
-void SmoothRenderer::GLBuffer::send(const SmoothTriangleBuffer& buffer)
+void SmoothShaderScene::GLBuffer::send(const SmoothTriangleBuffer& buffer)
 {
 	position.send(buffer.getPositions().get());
 	normal.send(buffer.getNormals().get());
@@ -55,11 +55,11 @@ void SmoothRenderer::GLBuffer::send(const SmoothTriangleBuffer& buffer)
 	matrix = buffer.getMatrix();
 }
 
-SmoothRenderer::SmoothRenderer()
+SmoothShaderScene::SmoothShaderScene()
 {
 }
 
-bool SmoothRenderer::build(GLObjectFactory& factory)
+bool SmoothShaderScene::build(GLObjectFactory& factory)
 {
 	lightBuffer.build(this);
 	materialRenderer.build(this);
@@ -81,7 +81,7 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
-void SmoothRenderer::send(const GLBuffer& glBuffer, const Camera& camera)
+void SmoothShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
 {
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto& modelviewMatrix = camera.getModelViewMatrix() * matrix;
@@ -106,7 +106,7 @@ void SmoothRenderer::send(const GLBuffer& glBuffer, const Camera& camera)
 	this->count = glBuffer.count;
 }
 
-void SmoothRenderer::render(const Camera& camera)
+void SmoothShaderScene::render(const Camera& camera)
 {
 	auto shader = getShader();
 
@@ -149,7 +149,7 @@ void SmoothRenderer::render(const Camera& camera)
 	shader->unbind();
 }
 
-std::string SmoothRenderer::getBuildInVertexShaderSource() const
+std::string SmoothShaderScene::getBuildInVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -174,7 +174,7 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 	return stream.str();
 }
 
-std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
+std::string SmoothShaderScene::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

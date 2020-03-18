@@ -51,7 +51,7 @@ private:
 };
 
 
-class SmoothRenderer : public IRenderer
+class SmoothShaderScene : public IRenderer
 {
 public:
 	struct GLBuffer {
@@ -72,7 +72,7 @@ public:
 		MaterialBuffer materialBuffer;
 	};
 
-	SmoothRenderer();
+	SmoothShaderScene();
 
 	bool build(Shader::GLObjectFactory& factory) override;
 

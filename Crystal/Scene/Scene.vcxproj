@@ -39,7 +39,7 @@
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TriangleMeshScene.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="SmoothRenderer.h" />
+    <ClInclude Include="SmoothShaderScene.h" />
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
@@ -83,7 +83,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneFactory.cpp" />
     <ClCompile Include="IRenderer.cpp" />
-    <ClCompile Include="SmoothRenderer.cpp" />
+    <ClCompile Include="SmoothShaderScene.cpp" />
     <ClCompile Include="TransformScene.cpp" />
     <ClCompile Include="TriangleRenderer.cpp" />
     <ClCompile Include="WireFrameScene.cpp" />

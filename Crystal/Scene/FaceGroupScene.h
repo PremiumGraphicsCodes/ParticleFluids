@@ -2,7 +2,7 @@
 
 #include "IScene.h"
 #include "../Shape/Face.h"
-#include "SmoothRenderer.h"
+#include "SmoothShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -38,7 +38,7 @@ private:
 	PolygonMeshScene* polygonMesh;
 	MaterialScene* material;
 	std::vector<Shape::Face> faces;
-	SmoothRenderer::GLBuffer glBuffer;
+	SmoothShaderScene::GLBuffer glBuffer;
 
 };
 

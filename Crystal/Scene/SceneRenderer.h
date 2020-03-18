@@ -2,7 +2,7 @@
 
 #include "../Scene/PointRenderer.h"
 #include "../Scene/LineRenderer.h"
-#include "../Scene/SmoothRenderer.h"
+#include "../Scene/SmoothShaderScene.h"
 
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
@@ -72,14 +72,14 @@ public:
 
 	LineRenderer* getLineRenderer() { return &wireRenderer; }
 
-	SmoothRenderer* getSmoothRenderer() { return &smoothRenderer; }
+	SmoothShaderScene* getSmoothRenderer() { return &smoothRenderer; }
 
 	Graphics::Camera* getCamera() { return camera; }
 
 private:
 	PointRenderer pointRenderer;
 	LineRenderer wireRenderer;
-	SmoothRenderer smoothRenderer;
+	SmoothShaderScene smoothRenderer;
 
 	Mask mask;
 
