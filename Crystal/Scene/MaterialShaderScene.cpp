@@ -1,26 +1,26 @@
-#include "MaterialRenderer.h"
+#include "MaterialShaderScene.h"
 
 #include <sstream>
 
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-bool MaterialRenderer::build(IRenderer* parent)
+bool MaterialShaderScene::build(ShaderObject* shader)
 {
 	for (int i = 0; i < 256; ++i) {
 		const auto prefix = "materials[" + std::to_string(i) + "]";
-		parent->addUniform(prefix + ".Ka");
-		parent->addUniform(prefix + ".Kd");
-		parent->addUniform(prefix + ".Ks");
-		parent->addUniform(prefix + ".shininess");
-		parent->addUniform(prefix + ".ambientTexId");
-		parent->addUniform(prefix + ".diffuseTexId");
-		parent->addUniform(prefix + ".specularTexId");
+		shader->findUniformLocation(prefix + ".Ka");
+		shader->findUniformLocation(prefix + ".Kd");
+		shader->findUniformLocation(prefix + ".Ks");
+		shader->findUniformLocation(prefix + ".shininess");
+		shader->findUniformLocation(prefix + ".ambientTexId");
+		shader->findUniformLocation(prefix + ".diffuseTexId");
+		shader->findUniformLocation(prefix + ".specularTexId");
 	}
 	return true;
 }
 
-
-std::string MaterialRenderer::getBuiltInFragmentShaderSource() const
+std::string MaterialShaderScene::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

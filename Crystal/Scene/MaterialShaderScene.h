@@ -3,12 +3,15 @@
 #include "IRenderer.h"
 
 namespace Crystal {
+	namespace Shader {
+		class ShaderObject;
+	}
 	namespace Scene {
 
-class MaterialRenderer
+class MaterialShaderScene
 {
 public:
-	bool build(IRenderer* parent);
+	bool build(Shader::ShaderObject* shader);
 
 	std::string getBuiltInFragmentShaderSource() const;
 };

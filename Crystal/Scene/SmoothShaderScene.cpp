@@ -61,7 +61,6 @@ SmoothShaderScene::SmoothShaderScene()
 
 bool SmoothShaderScene::build(GLObjectFactory& factory)
 {
-	materialRenderer.build(this);
 	textureBuffer.build(this);
 
 	setVertexShaderSource(getBuildInVertexShaderSource());
@@ -80,6 +79,7 @@ bool SmoothShaderScene::build(GLObjectFactory& factory)
 	const auto isOk = build_(factory);
 
 	lightBuffer.build(getShader());
+	materialRenderer.build(getShader());
 
 	return isOk;
 }
