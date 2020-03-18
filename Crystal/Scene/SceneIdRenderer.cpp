@@ -10,7 +10,7 @@ using namespace Crystal::Scene;
 
 bool SceneIdRenderer::build(GLObjectFactory& factory)
 {
-	if (!pointIdRenderer.build(factory)) {
+	if (!pointIdRenderer.build()) {
 		return false;
 	}
 	if (!lineIdRenderer.build(factory)) {

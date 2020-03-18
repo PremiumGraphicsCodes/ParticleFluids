@@ -1,7 +1,5 @@
 #pragma once
 
-#include "IRenderer.h"
-
 #include "../Graphics/Camera.h"
 #include "../Shader/ShaderObject.h"
 #include "../Shader/VertexBufferObject.h"
@@ -47,7 +45,7 @@ private:
 };
 
 
-class PointShaderScene : public IRenderer
+class PointShaderScene
 {
 public:
 	struct GLBuffer
@@ -73,16 +71,18 @@ public:
 
 	PointShaderScene();
 
-	bool build(Shader::GLObjectFactory& factory) override;
+	bool build();
 
 	void send(const GLBuffer& buffer, const Graphics::Camera& camera);
 
-	void render(const Graphics::Camera& camera) override;
+	void render(const Graphics::Camera& camera);
 
 private:
 	std::string getBuiltInVertexShaderSource() const;
 
 	std::string getBuiltInFragmentShaderSource() const;
+
+	Shader::ShaderObject shader;
 
 	int count;
 };

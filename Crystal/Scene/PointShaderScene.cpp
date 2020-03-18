@@ -60,20 +60,21 @@ PointShaderScene::PointShaderScene()
 {
 }
 
-bool PointShaderScene::build(GLObjectFactory& factory)
+bool PointShaderScene::build()
 {
-	setVertexShaderSource(getBuiltInVertexShaderSource());
-	setFragmentShaderSource(getBuiltInFragmentShaderSource());
+	const auto& vsSource = getBuiltInVertexShaderSource();
+	const auto& fsSource = getBuiltInFragmentShaderSource();
 
-	addUniform(::projectionMatrixLabel);
-	addUniform(::modelViewMatrixLabel);
+	const auto isOk = shader.build(vsSource, fsSource);
 
-	addAttribute(::positionLabel);
-	addAttribute(::colorLabel);
-	addAttribute(::sizeLabel);
+	shader.findUniformLocation(::projectionMatrixLabel);
+	shader.findUniformLocation(::modelViewMatrixLabel);
 
+	shader.findAttribLocation(::positionLabel);
+	shader.findAttribLocation(::colorLabel);
+	shader.findAttribLocation(::sizeLabel);
 
-	return build_(factory);
+	return isOk;
 }
 
 void PointShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
@@ -81,38 +82,35 @@ void PointShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
 
-	auto shader = getShader();
-	shader->bind();
+	shader.bind();
 
-	shader->sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
-	shader->sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
-	shader->sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
+	shader.sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
+	shader.sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
+	shader.sendVertexAttribute1df(::sizeLabel, glBuffer.vbo.size);
 
-	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
-	shader->sendUniform(::modelViewMatrixLabel, modelviewMatrix);
+	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader.sendUniform(::modelViewMatrixLabel, modelviewMatrix);
 
-	shader->unbind();
+	shader.unbind();
 
 	this->count = glBuffer.count;
 }
 
 void PointShaderScene::render(const Camera& camera)
 {
-	auto shader = getShader();
+	shader.bind();
 
-	shader->bind();
+	shader.enableDepthTest();
+	shader.enablePointSprite();
 
-	shader->enableDepthTest();
-	shader->enablePointSprite();
+	shader.drawPoints(count);
 
-	shader->drawPoints(count);
+	shader.bindOutput(::fragColorLabel);
 
-	shader->bindOutput(::fragColorLabel);
+	shader.disablePointSprite();
+	shader.disableDepthTest();
 
-	shader->disablePointSprite();
-	shader->disableDepthTest();
-
-	shader->unbind();
+	shader.unbind();
 
 	assert(GL_NO_ERROR == glGetError());
 }

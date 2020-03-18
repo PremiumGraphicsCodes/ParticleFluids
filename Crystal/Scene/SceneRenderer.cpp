@@ -14,7 +14,7 @@ using namespace Crystal::Scene;
 
 bool SceneRenderer::build(GLObjectFactory& factory)
 {
-	if (!pointRenderer.build(factory)) {
+	if (!pointRenderer.build()) {
 		return false;
 	}
 	if (!wireRenderer.build(factory)) {
