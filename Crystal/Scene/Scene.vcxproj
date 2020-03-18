@@ -36,7 +36,7 @@
     <ClInclude Include="ScreenIdShaderScene.h" />
     <ClInclude Include="ScreenShaderScene.h" />
     <ClInclude Include="PointShaderScene.h" />
-    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="ShaderScene.h" />
     <ClInclude Include="TextureShaderScene.h" />
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TriangleMeshScene.h" />
@@ -77,7 +77,7 @@
     <ClCompile Include="ParticleSystemScene.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="ShaderScene.cpp" />
     <ClCompile Include="TextureShaderScene.cpp" />
     <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />

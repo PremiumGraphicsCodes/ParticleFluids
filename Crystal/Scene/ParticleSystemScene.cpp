@@ -3,7 +3,7 @@
 #include "SceneIdViewModel.h"
 
 #include "../Graphics/DrawableId.h"
-#include "Renderer.h"
+#include "ShaderScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

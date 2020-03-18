@@ -1,4 +1,4 @@
-#include "Renderer.h"
+#include "ShaderScene.h"
 
 #include "../Graphics/Camera.h"
 
@@ -9,7 +9,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-Renderer::Renderer() :
+ShaderScene::ShaderScene() :
 	showOffScreen(false),
 	camera(new Camera(
 		Vector3df(0, 0, 0),
@@ -20,7 +20,7 @@ Renderer::Renderer() :
 
 }
 
-bool Renderer::build(GLObjectFactory& factory)
+bool ShaderScene::build(GLObjectFactory& factory)
 {
 	if (!objectRenderer.build(factory)) {
 		return false;
@@ -39,7 +39,7 @@ bool Renderer::build(GLObjectFactory& factory)
 	return true;
 }
 
-void Renderer::render(const int width, const int height, const ViewModel& vm)
+void ShaderScene::render(const int width, const int height, const ViewModel& vm)
 {
 	objectRenderer.render(camera.get());
 	parentIdRenderer.render(camera.get(), vm.parentId);

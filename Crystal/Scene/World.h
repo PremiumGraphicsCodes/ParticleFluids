@@ -6,7 +6,7 @@
 #include "SceneFactory.h"
 #include "ViewModel.h"
 
-#include "Renderer.h"
+#include "ShaderScene.h"
 
 #include "../Shader/GLObjectFactory.h"
 
@@ -46,7 +46,7 @@ public:
 
 	Math::Box3d getBoundingBox() const;
 
-	Renderer* getRenderer() { return renderer.get(); }
+	ShaderScene* getRenderer() { return renderer.get(); }
 
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
@@ -55,7 +55,7 @@ private:
 	SceneFactory sceneFactory;
 	Shader::GLObjectFactory glFactory;
 
-	std::unique_ptr<Renderer> renderer;
+	std::unique_ptr<ShaderScene> renderer;
 
 };
 	}

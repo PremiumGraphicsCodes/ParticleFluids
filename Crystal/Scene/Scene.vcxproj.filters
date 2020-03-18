@@ -54,9 +54,6 @@
     <ClInclude Include="TransformScene.h">
       <Filter>Scene\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="World.h" />
     <ClInclude Include="FaceGroupScene.h">
       <Filter>Scene\Shape\PolygonMesh</Filter>
@@ -112,6 +109,9 @@
     <ClInclude Include="ScreenIdShaderScene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderScene.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -140,9 +140,6 @@
     </ClCompile>
     <ClCompile Include="TransformScene.cpp">
       <Filter>Scene\Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp">
@@ -191,6 +188,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="ScreenIdShaderScene.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderScene.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>

@@ -16,12 +16,12 @@ namespace Crystal {
 	}
 	namespace Scene {
 
-class Renderer : private UnCopyable
+class ShaderScene : private UnCopyable
 {
 public:
-	Renderer();
+	ShaderScene();
 
-	~Renderer() {}
+	~ShaderScene() {}
 
 	bool build(Shader::GLObjectFactory& factory);
 
