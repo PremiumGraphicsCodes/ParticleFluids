@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Scene/PointRenderer.h"
-#include "../Scene/LineRenderer.h"
+#include "../Scene/LineShaderScene.h"
 #include "../Scene/SmoothShaderScene.h"
 
 #include "../Shader/FrameBufferObject.h"
@@ -70,7 +70,7 @@ public:
 
 	PointRenderer* getPointRenderer() { return &pointRenderer; }
 
-	LineRenderer* getLineRenderer() { return &wireRenderer; }
+	LineShaderScene* getLineRenderer() { return &wireRenderer; }
 
 	SmoothShaderScene* getSmoothRenderer() { return &smoothRenderer; }
 
@@ -78,7 +78,7 @@ public:
 
 private:
 	PointRenderer pointRenderer;
-	LineRenderer wireRenderer;
+	LineShaderScene wireRenderer;
 	SmoothShaderScene smoothRenderer;
 
 	Mask mask;

@@ -6,7 +6,7 @@
 #include "../Math/Line3d.h"
 #include "../Shape/WireFrame.h"
 
-#include "LineRenderer.h"
+#include "LineShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -46,13 +46,13 @@ public:
 
 	IShapeScene* clone() const override;
 
-	LineRenderer::LineRenderer::GLBuffer getGLBuffer() const { return glBuffer; }
+	LineShaderScene::LineShaderScene::GLBuffer getGLBuffer() const { return glBuffer; }
 
 	void onRender(SceneRenderer* renderer) override;
 
 private:
-	LineRenderer* renderer;
-	LineRenderer::LineRenderer::GLBuffer glBuffer;
+	LineShaderScene* renderer;
+	LineShaderScene::LineShaderScene::GLBuffer glBuffer;
 
 	std::unique_ptr<Shape::WireFrame> shape;
 	WireFrameAttribute attribute;

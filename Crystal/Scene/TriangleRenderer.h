@@ -1,5 +1,5 @@
 #include "IRenderer.h"
-#include "LineRenderer.h"
+#include "LineShaderScene.h"
 
 #include "../Shader/VertexBufferObject.h"
 

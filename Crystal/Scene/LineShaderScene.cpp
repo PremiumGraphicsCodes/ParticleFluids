@@ -1,4 +1,4 @@
-#include "LineRenderer.h"
+#include "LineShaderScene.h"
 #include <sstream>
 
 using namespace Crystal::Graphics;
@@ -13,7 +13,7 @@ namespace {
 	constexpr const char* fragColorLabel = "fragColor";
 }
 
-void LineRenderer::GLBuffer::build()
+void LineShaderScene::GLBuffer::build()
 {
 	vbo.position.build();
 	vbo.color.build();
@@ -21,7 +21,7 @@ void LineRenderer::GLBuffer::build()
 	//vao.build();
 }
 
-void LineRenderer::GLBuffer::release()
+void LineShaderScene::GLBuffer::release()
 {
 	vbo.position.release();
 	vbo.color.release();
@@ -29,7 +29,7 @@ void LineRenderer::GLBuffer::release()
 	//vao.release();
 }
 
-void LineRenderer::GLBuffer::send(const LineBuffer& buffer)
+void LineShaderScene::GLBuffer::send(const LineBuffer& buffer)
 {
 	const auto positions = buffer.getPositions().get();
 	const auto colors = buffer.getColors().get();
@@ -45,11 +45,11 @@ void LineRenderer::GLBuffer::send(const LineBuffer& buffer)
 	lineWidth = buffer.getWidth();
 }
 
-LineRenderer::LineRenderer()
+LineShaderScene::LineShaderScene()
 {
 }
 
-bool LineRenderer::build(GLObjectFactory& factory)
+bool LineShaderScene::build(GLObjectFactory& factory)
 {
 	setVertexShaderSource(getBuiltInVsSource());
 	setFragmentShaderSource(getBuiltInFsSource());
@@ -63,7 +63,7 @@ bool LineRenderer::build(GLObjectFactory& factory)
 	return build_(factory);
 }
 
-void LineRenderer::render(const Camera& camera)
+void LineShaderScene::render(const Camera& camera)
 {
 	auto shader = getShader();
 
@@ -98,7 +98,7 @@ void LineRenderer::render(const Camera& camera)
 	assert(GL_NO_ERROR == glGetError());
 }
 
-std::string LineRenderer::getBuiltInVsSource() const
+std::string LineShaderScene::getBuiltInVsSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -116,7 +116,7 @@ std::string LineRenderer::getBuiltInVsSource() const
 	return stream.str();
 }
 
-std::string LineRenderer::getBuiltInFsSource() const
+std::string LineShaderScene::getBuiltInFsSource() const
 {
 	std::ostringstream stream;
 	stream

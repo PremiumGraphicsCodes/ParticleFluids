@@ -58,7 +58,7 @@ private:
 };
 
 
-class LineRenderer : public IRenderer
+class LineShaderScene : public IRenderer
 {
 public:
 	struct GLBuffer
@@ -80,7 +80,7 @@ public:
 		void send(const LineBuffer& buffer);
 	};
 
-	LineRenderer();
+	LineShaderScene();
 
 	bool build(Shader::GLObjectFactory& factory) override;
 

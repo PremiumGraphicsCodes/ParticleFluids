@@ -7,7 +7,7 @@
 #include "../Shader/TextureObject.h"
 
 #include "../Scene/PointRenderer.h"
-#include "../Scene/LineRenderer.h"
+#include "../Scene/LineShaderScene.h"
 
 #include "../Util/UnCopyable.h"
 
@@ -40,11 +40,11 @@ public:
 
 private:
 	PointRenderer::GLBuffer pointBuffer;
-	LineRenderer::GLBuffer lineBuffer;
+	LineShaderScene::GLBuffer lineBuffer;
 	TriangleRenderer::GLBuffer triangleBuffer;
 
 	PointRenderer pointIdRenderer;
-	LineRenderer lineIdRenderer;
+	LineShaderScene lineIdRenderer;
 	TriangleRenderer triangleIdRenderer;
 
 	Shader::TextureObject texture;
