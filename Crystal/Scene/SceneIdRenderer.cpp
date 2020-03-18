@@ -13,7 +13,7 @@ bool SceneIdRenderer::build(GLObjectFactory& factory)
 	if (!pointIdRenderer.build()) {
 		return false;
 	}
-	if (!lineIdRenderer.build(factory)) {
+	if (!lineIdRenderer.build()) {
 		return false;
 	}
 	if (!triangleIdRenderer.build(factory)) {

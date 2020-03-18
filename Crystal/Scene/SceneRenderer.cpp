@@ -17,7 +17,7 @@ bool SceneRenderer::build(GLObjectFactory& factory)
 	if (!pointRenderer.build()) {
 		return false;
 	}
-	if (!wireRenderer.build(factory)) {
+	if (!wireRenderer.build()) {
 		return false;
 	}
 	if (!smoothRenderer.build(factory)) {

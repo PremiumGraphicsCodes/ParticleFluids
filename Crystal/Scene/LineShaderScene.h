@@ -1,7 +1,5 @@
 #pragma once
 
-#include "IRenderer.h"
-
 #include "../Shader/ShaderObject.h"
 
 #include "../Graphics/Camera.h"
@@ -58,7 +56,7 @@ private:
 };
 
 
-class LineShaderScene : public IRenderer
+class LineShaderScene
 {
 public:
 	struct GLBuffer
@@ -82,11 +80,11 @@ public:
 
 	LineShaderScene();
 
-	bool build(Shader::GLObjectFactory& factory) override;
+	bool build();
 
 	void setBuffer(const GLBuffer& buffer) { this->glBuffer = buffer; }
 
-	void render(const Graphics::Camera& camera) override;
+	void render(const Graphics::Camera& camera);
 
 private:
 	std::string getBuiltInVsSource() const;
@@ -94,6 +92,7 @@ private:
 	std::string getBuiltInFsSource() const;
 
 	GLBuffer glBuffer;
+	Shader::ShaderObject shader;
 };
 
 	}
