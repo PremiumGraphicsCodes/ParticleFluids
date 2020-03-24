@@ -24,10 +24,6 @@ public:
 
 	SceneType getType() const override { return SceneType::FaceGroupScene; }
 
-	void onClear() override {
-		faces.clear();
-	}
-
 private:
 	PolygonMeshScene* polygonMesh;
 	MaterialScene* material;

@@ -16,10 +16,6 @@ Scene::~Scene()
 {
 }
 
-void Scene::onClear()
-{
-}
-
 Box3d Scene::getBoundingBox() const
 {
 	Box3d bb = Box3d::createDegeneratedBox();

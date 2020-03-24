@@ -80,9 +80,6 @@ public:
 	bool isLeaf() const { return children.empty(); }
 
 protected:
-	virtual void onClear() = 0;
-
-protected:
 	std::string name;
 	int id;
 	std::list<IScene*> children;

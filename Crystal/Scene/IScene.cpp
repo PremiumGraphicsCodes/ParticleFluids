@@ -35,7 +35,6 @@ void IScene::clear()
 		c->clear();
 	}
 	children.clear();
-	onClear();
 }
 
 void IScene::addScene(IScene* scene)

@@ -13,8 +13,6 @@ public:
 
 	~TextureScene() {};
 
-	void onClear() override;
-
 	SceneType getType() const override { return SceneType::TextureScene; }
 
 	Shader::TextureObject getTextureObject() const { return texture; }

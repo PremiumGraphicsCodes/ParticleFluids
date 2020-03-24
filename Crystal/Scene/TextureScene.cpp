@@ -11,7 +11,3 @@ TextureScene::TextureScene(const int id, std::unique_ptr<Image> image, const std
 	image(std::move(image))
 {
 }
-
-void TextureScene::onClear()
-{
-};

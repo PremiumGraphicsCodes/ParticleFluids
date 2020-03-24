@@ -29,8 +29,6 @@ public:
 
 	SceneType getType() const override { return SceneType::ParticleSystemScene; }
 
-	void onClear() override {};
-
 	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
 	Math::Box3d getBoundingBox() const override;

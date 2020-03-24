@@ -31,11 +31,6 @@ public:
 
 	SceneType getType() const override { return SceneType::TransformScene; }
 
-	void onClear() override
-	{
-	}
-
-
 private:
 	Math::Vector3dd translate;
 	Math::Matrix3dd rotation;

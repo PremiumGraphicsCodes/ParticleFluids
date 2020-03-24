@@ -17,8 +17,6 @@ public:
 
 	Graphics::Material* getMaterial() { return material.get(); }
 
-	void onClear() override {};
-
 	SceneType getType() const override { return SceneType::MaterialScene; }
 	
 	int getMaterialId() const { return materialId; }

@@ -18,8 +18,6 @@ public:
 
 	virtual SceneType getType() const { return SceneType::Root; }
 
-	virtual void onClear() override;
-
 	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
 private:

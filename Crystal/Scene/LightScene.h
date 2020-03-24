@@ -26,10 +26,6 @@ public:
 
 	SceneType getType() const override { return SceneType::LightScene; }
 
-	void onClear() override
-	{
-	}
-
 private:
 	std::unique_ptr<Graphics::PointLight> light;
 };

@@ -34,8 +34,6 @@ public:
 
 	SceneType getType() const override { return SceneType::TriangleMeshScene; }
 
-	void onClear() override {}
-
 private:
 	std::unique_ptr<Shape::TriangleMesh> shape;
 };

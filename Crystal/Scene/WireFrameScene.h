@@ -30,8 +30,6 @@ public:
 
 	SceneType getType() const override { return SceneType::WireFrameScene; }
 
-	void onClear() override {}
-
 	Math::Box3d getBoundingBox() const override;
 
 	std::vector<Math::Vector3dd> getAllVertices() const;
