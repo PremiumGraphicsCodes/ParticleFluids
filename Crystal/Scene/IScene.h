@@ -79,7 +79,7 @@ public:
 
 	bool isLeaf() const { return children.empty(); }
 
-	void build(Shader::GLObjectFactory& factory);
+	void build();
 
 	virtual void send();
 

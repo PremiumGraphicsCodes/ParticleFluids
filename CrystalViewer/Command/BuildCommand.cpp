@@ -25,6 +25,6 @@ BuildCommand::BuildCommand() :
 bool BuildCommand::execute(World* world)
 {
 	auto scene = world->getObjects()->findSceneById(args.id.getValue());
-	scene->build(*world->getGLFactory());
+	scene->build();
 	return true;
 }
