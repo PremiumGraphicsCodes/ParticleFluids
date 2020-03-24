@@ -111,5 +111,5 @@ void WireFrameScene::onRender(ScreenShaderScene* renderer)
 {
 	auto lineRenderer = renderer->getLineRenderer();
 	lineRenderer->setBuffer(glBuffer);
-	lineRenderer->render(*renderer->getCamera());
+	lineRenderer->render();
 }

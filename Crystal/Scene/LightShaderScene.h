@@ -9,6 +9,25 @@ namespace Crystal {
 	}
 	namespace Scene {
 
+class LightShaderBuffer : public IShaderScene
+{
+public:
+	bool build() override;
+
+	void add(const Graphics::PointLight& l);
+
+	void release() override {}
+
+	void send();
+
+	void render() override {}
+
+	std::vector<Graphics::PointLight> getLights() const { return lights; }
+
+private:
+	std::vector<Graphics::PointLight> lights;
+};
+
 class LightShaderScene : public IShaderScene
 {
 public:
@@ -16,11 +35,11 @@ public:
 
 	void setShader(Shader::ShaderObject* shader);
 
+	void setBuffer(const LightShaderBuffer& buffer) { this->buffer = buffer; }
+
 	bool build() override;
 
 	void release() override {}
-
-	void add(const Graphics::PointLight& l);
 
 	void send();
 
@@ -30,7 +49,7 @@ public:
 
 private:
 	Shader::ShaderObject* shader;
-	std::vector<Graphics::PointLight> lights;
+	LightShaderBuffer buffer;
 };
 
 	}

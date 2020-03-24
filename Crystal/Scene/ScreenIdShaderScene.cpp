@@ -53,7 +53,7 @@ void ScreenIdShaderScene::render(Camera* camera, const SceneIdViewModel& vm)
 	for (const auto& b : lineBuffers) {
 		lineBuffer.send(b);
 		lineIdRenderer.setBuffer(lineBuffer);
-		lineIdRenderer.render(*camera);
+		lineIdRenderer.render();
 	}
 	for (const auto& b : triangleBuffers) {
 		triangleBuffer.send(b);

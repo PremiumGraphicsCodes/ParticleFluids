@@ -8,6 +8,22 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+bool LightShaderBuffer::build()
+{
+	return true;
+}
+
+void LightShaderBuffer::send()
+{
+
+}
+
+
+void LightShaderBuffer::add(const PointLight& light)
+{
+	lights.push_back(light);
+}
+
 LightShaderScene::LightShaderScene()
 {
 }
@@ -29,13 +45,11 @@ bool LightShaderScene::build()
 	return true;
 }
 
-void LightShaderScene::add(const PointLight& light)
-{
-	lights.push_back(light);
-}
 
 void LightShaderScene::send()
 {
+	const auto& lights = buffer.getLights();
+
 	shader->bind();
 	for (int i = 0; i < lights.size(); ++i) {
 		const auto& light = lights[i];
