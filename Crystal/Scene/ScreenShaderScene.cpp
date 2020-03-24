@@ -41,14 +41,19 @@ void ScreenShaderScene::render(Camera* camera)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {
 		for (auto s : particleScenes) {
-			s->render(this);
+			pointRenderer.send(s->getBuffer(), *camera);
+			pointRenderer.render();
 		}
 	}
 	if (mask.showLines) {
 		for (auto s : wfScenes) {
-			s->render(this);
+			auto bf = s->getGLBuffer();
+			bf.camera = *camera;
+			wireRenderer.setBuffer(bf);
+			wireRenderer.render();
 		}
 	}
+	/*
 	if (mask.showTrianlges) {
 		MaterialShaderBuffer mBuffer;
 		for (auto m : materialScenes) {
@@ -67,6 +72,7 @@ void ScreenShaderScene::render(Camera* camera)
 			pm->render(this);
 		}
 	}
+	*/
 	//texture.unbind();
 	frameBufferObject->unbind();
 }

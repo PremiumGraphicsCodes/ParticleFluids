@@ -83,16 +83,12 @@ public:
 
 	virtual void send();
 
-	void render(ScreenShaderScene* renderer);
-
 protected:
 	virtual void onClear() = 0;
 
 	virtual void onBuild(Shader::GLObjectFactory& factory) {};
 
 	virtual void onSend() {};
-
-	virtual void onRender(ScreenShaderScene* renderer) {};
 
 protected:
 	std::string name;

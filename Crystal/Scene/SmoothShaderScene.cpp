@@ -49,6 +49,11 @@ bool SmoothShaderScene::build()
 	return isOk;
 }
 
+void SmoothShaderScene::release()
+{
+	shader.release();
+}
+
 void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer, const Camera& camera)
 {
 	const auto& projectionMatrix = camera.getProjectionMatrix();

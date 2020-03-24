@@ -86,10 +86,3 @@ void ParticleSystemScene::setAttribute(const ParticleAttribute& attribute)
 		p->setAttribute(attribute);
 	}
 }
-
-void ParticleSystemScene::onRender(ScreenShaderScene* renderer)
-{
-	auto pointRenderer = renderer->getPointRenderer();
-	pointRenderer->send(buffer, *renderer->getCamera());
-	pointRenderer->render();
-}

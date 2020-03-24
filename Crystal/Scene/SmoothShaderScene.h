@@ -12,19 +12,23 @@
 #include "LightShaderScene.h"
 #include "TextureShaderScene.h"
 
+#include "IShaderScene.h"
+
 namespace Crystal {
 	namespace Scene {
 
-class SmoothShaderScene
+class SmoothShaderScene : public IShaderScene
 {
 public:
 	SmoothShaderScene();
 
-	bool build();
+	bool build() override;
+
+	void release() override;
 
 	void send(const SmoothShaderBuffer& buffer, const Graphics::Camera& camera);
 
-	void render();
+	void render() override;
 
 	LightShaderScene* getLightRenderer() { return &lightShader; }
 

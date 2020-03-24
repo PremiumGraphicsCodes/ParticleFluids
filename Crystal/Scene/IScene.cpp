@@ -120,11 +120,3 @@ void IScene::send()
 		c->send();
 	}
 }
-
-void IScene::render(ScreenShaderScene* renderer)
-{
-	onRender(renderer);
-	for (auto c : children) {
-		c->render(renderer);
-	}
-}

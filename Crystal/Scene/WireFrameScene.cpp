@@ -106,10 +106,3 @@ IShapeScene* WireFrameScene::clone() const
 	return nullptr;
 	//return new WireFrameScene();
 }
-
-void WireFrameScene::onRender(ScreenShaderScene* renderer)
-{
-	auto lineRenderer = renderer->getLineRenderer();
-	lineRenderer->setBuffer(glBuffer);
-	lineRenderer->render();
-}

@@ -47,7 +47,7 @@ public:
 
 	void setAttribute(const ParticleAttribute& attribute);
 
-	void onRender(ScreenShaderScene* renderer) override;
+	PointShaderBuffer getBuffer() const { return buffer; }
 
 private:
 	PointShaderBuffer buffer;
