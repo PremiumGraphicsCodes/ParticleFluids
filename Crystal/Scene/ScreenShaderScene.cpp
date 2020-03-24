@@ -67,6 +67,47 @@ void ScreenShaderScene::add(WireFrameScene* scene)
 	lineBuffers.push_back(lb);
 }
 
+void ScreenShaderScene::add(PolygonMeshScene* parent)
+{
+	const auto& shape = parent->getShape();
+	const auto& vs = shape->getVertices();
+	const auto& ps = shape->getPositions();
+	const auto& tcs = shape->getTexCoords();
+	const auto& ns = shape->getNormals();
+	const auto& matrix = parent->getMatrix();
+
+	for (auto child : parent->getChildren()) {
+		int materialId = 0;
+		auto scene = static_cast<FaceGroupScene*>(child);
+		if (scene->getMaterial() != nullptr) {
+			materialId = scene->getMaterial()->getMaterialId();
+		}
+
+		auto faces = scene->getFaces();
+		{
+			SmoothBuffer buffer;
+			buffer.setMatrix(matrix);
+			for (const auto& f : faces) {
+				const auto& vIds = f.getVertexIds();
+				for (const auto vId : vIds) {
+					const auto& v = vs[vId];
+					const auto& p = ps[v.positionId];
+					const auto& n = ns[v.normalId];
+					Math::Vector2df texCoord(0, 0);
+					if (v.texCoordId != -1) {
+						texCoord = tcs[v.texCoordId];
+					}
+					buffer.addVertex(p, n, texCoord, materialId);
+				}
+			}
+			SmoothShaderBuffer glBuffer;
+			glBuffer.build();
+			glBuffer.send(buffer);
+			pmScenes.push_back(glBuffer);
+		}
+	}
+}
+
 void ScreenShaderScene::render(Camera* camera)
 {
 	this->camera = camera;

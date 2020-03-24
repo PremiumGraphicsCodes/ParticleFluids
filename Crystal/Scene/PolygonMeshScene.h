@@ -33,8 +33,6 @@ public:
 
 	void onSend() override;
 
-	void onRender(ScreenShaderScene* renderer);
-
 	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
 	Math::Box3d getBoundingBox() const override;

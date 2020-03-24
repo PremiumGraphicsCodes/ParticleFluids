@@ -23,36 +23,6 @@ PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::u
 
 void PolygonMeshScene::onSend()
 {
-	if (!isVisible()) {
-		return;
-	}
-
-	const auto& faces = shape->getFaces();
-	const auto& vertices = shape->getVertices();
-	const auto& ps = shape->getPositions();
-	const auto& ns = shape->getNormals();
-	const auto& tcs = shape->getTexCoords();
-
-	for (auto g : groups) {
-		g->send();
-	}
-	/*
-	SmoothTriangleBuffer buffer;
-	for (const auto& f : faces) {
-		const auto& vIds = f.getVertexIds();
-		for(const auto vId : vIds) {
-			const auto& v = vertices[vId];
-			const auto& p = ps[v.positionId];
-			const auto& n = ns[v.normalId];
-			Math::Vector2df texCoord(0, 0);
-			if (v.texCoordId != -1) {
-				texCoord = tcs[v.texCoordId];
-			}
-			buffer.addVertex(p, n, texCoord, f.materialId);
-		}
-	}
-	viewModel.triangleBuffers.push_back(buffer);
-	*/
 }
 
 void PolygonMeshScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const

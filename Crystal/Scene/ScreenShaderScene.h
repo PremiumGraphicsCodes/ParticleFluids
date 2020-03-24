@@ -60,7 +60,7 @@ public:
 
 	void add(WireFrameScene* scene);
 
-	void add(PolygonMeshScene* scene) { this->pmScenes.push_back(scene); }
+	void add(PolygonMeshScene* scene);
 
 	void add(TextureScene* scene) { this->textureScenes.push_back(scene); }
 
@@ -90,7 +90,7 @@ private:
 
 	std::vector<PointShaderBuffer> pointBuffers;
 	std::vector<LineShaderBuffer> lineBuffers;
-	std::vector<PolygonMeshScene*> pmScenes;
+	std::vector<SmoothShaderBuffer> pmScenes;
 	std::vector<TextureScene*> textureScenes;
 	std::vector<MaterialScene*> materialScenes;
 	std::vector<LightScene*> lightScenes;
