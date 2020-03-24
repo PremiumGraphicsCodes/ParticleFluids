@@ -37,6 +37,11 @@ bool PointShaderScene::build()
 	return isOk;
 }
 
+void PointShaderScene::release()
+{
+	shader.release();
+}
+
 void PointShaderScene::send(const PointShaderBuffer& glBuffer, const Camera& camera)
 {
 	const auto& projectionMatrix = camera.getProjectionMatrix();

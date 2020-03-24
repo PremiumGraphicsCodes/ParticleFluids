@@ -46,6 +46,8 @@ public:
 
 	bool buildFromFile(const std::string& vFile, const std::string& gFile, const std::string& fFile);
 
+	void release();
+
 	void findUniformLocation(const std::string& str);
 
 	void findAttribLocation(const std::string& str);

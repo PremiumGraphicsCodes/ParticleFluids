@@ -195,6 +195,10 @@ bool ShaderObject::buildFromFile(const std::string& vFile, const std::string& gF
 	return build(::getStrFromFile(vFile), ::getStrFromFile(gFile), ::getStrFromFile(fFile));
 }
 
+void ShaderObject::release()
+{
+	glDeleteProgram(handle);
+}
 
 void ShaderObject::findUniformLocation(const std::string& str)
 {

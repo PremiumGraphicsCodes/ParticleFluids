@@ -112,6 +112,9 @@
     <ClInclude Include="ShaderScene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="IShaderScene.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">

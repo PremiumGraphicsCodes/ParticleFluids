@@ -4,20 +4,23 @@
 #include "../Shader/ShaderObject.h"
 
 #include "PointShaderBuffer.h"
+#include "IShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
 
-class PointShaderScene
+class PointShaderScene : public IShaderScene
 {
 public:
 	PointShaderScene();
 
-	bool build();
+	bool build() override;
+
+	void release() override;
 
 	void send(const PointShaderBuffer& buffer, const Graphics::Camera& camera);
 
-	void render();
+	void render() override;
 
 private:
 	std::string getBuiltInVertexShaderSource() const;
