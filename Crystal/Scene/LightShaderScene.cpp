@@ -12,7 +12,12 @@ LightShaderScene::LightShaderScene()
 {
 }
 
-bool LightShaderScene::build(ShaderObject* shader)
+void LightShaderScene::setShader(ShaderObject* shader)
+{
+	this->shader = shader;
+}
+
+bool LightShaderScene::build()
 {
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "lights[" + std::to_string(i) + "]";
@@ -29,7 +34,7 @@ void LightShaderScene::add(const PointLight& light)
 	lights.push_back(light);
 }
 
-void LightShaderScene::send(ShaderObject* shader)
+void LightShaderScene::send()
 {
 	shader->bind();
 	for (int i = 0; i < lights.size(); ++i) {

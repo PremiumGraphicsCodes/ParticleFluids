@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Graphics/PointLight.h"
+#include "IShaderScene.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -8,20 +9,27 @@ namespace Crystal {
 	}
 	namespace Scene {
 
-class LightShaderScene
+class LightShaderScene : public IShaderScene
 {
 public:
 	LightShaderScene();
 
-	bool build(Shader::ShaderObject* shader);
+	void setShader(Shader::ShaderObject* shader);
+
+	bool build() override;
+
+	void release() override {}
 
 	void add(const Graphics::PointLight& l);
 
-	void send(Shader::ShaderObject* shader);
+	void send();
+
+	void render() override {}
 
 	std::string getBuiltInFragmentShaderSource() const;
 
 private:
+	Shader::ShaderObject* shader;
 	std::vector<Graphics::PointLight> lights;
 };
 

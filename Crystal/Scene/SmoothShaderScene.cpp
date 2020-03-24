@@ -76,7 +76,8 @@ bool SmoothShaderScene::build()
 	shader.findAttribLocation(::materialIdLabel);
 	shader.findAttribLocation(::texCoordLabel);
 
-	lightShader.build(&shader);
+	lightShader.setShader(&shader);
+	lightShader.build();
 	materialShader.build(&shader);
 	textureShader.build(&shader);
 
@@ -101,6 +102,8 @@ void SmoothShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
 	shader.sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
 
 	shader.unbind();
+
+	lightShader.send();
 
 	this->matrix = glBuffer.matrix;
 	this->count = glBuffer.count;
