@@ -32,10 +32,15 @@ bool LineShaderScene::build()
 	return isOk;
 }
 
-void LineShaderScene::render(const Camera& camera)
+void LineShaderScene::release()
 {
-	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
+	shader.release();
+}
+
+void LineShaderScene::render()
+{
+	const auto& projectionMatrix = glBuffer.camera.getProjectionMatrix();
+	const auto& modelviewMatrix = glBuffer.camera.getModelViewMatrix() * glBuffer.matrix;
 
 	shader.bind();
 

@@ -2,6 +2,8 @@
 
 #include "../Shader/ShaderObject.h"
 
+#include "IShaderScene.h"
+
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer3d.h"
 #include "../Graphics/Buffer4d.h"
@@ -11,16 +13,18 @@
 namespace Crystal {
 	namespace Scene {
 
-class LineShaderScene
+class LineShaderScene : public IShaderScene
 {
 public:
 	LineShaderScene();
 
-	bool build();
+	bool build() override;
+
+	void release() override;
 
 	void setBuffer(const LineShaderBuffer& buffer) { this->glBuffer = buffer; }
 
-	void render(const Graphics::Camera& camera);
+	void render() override;
 
 private:
 	std::string getBuiltInVsSource() const;
