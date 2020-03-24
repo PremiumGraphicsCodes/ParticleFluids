@@ -15,13 +15,3 @@ TextureScene::TextureScene(const int id, std::unique_ptr<Image> image, const std
 void TextureScene::onClear()
 {
 };
-
-void TextureScene::onBuild()
-{
-	//texture = factory.getTextureFactory()->createTextureObject(getName(),*image);
-}
-
-void TextureScene::onSend()
-{
-	//texture.send(*image);
-}

@@ -21,8 +21,6 @@ public:
 
 	Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape.get(); }
 
-	void onBuild() override;
-
 	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 
 	void transform(const Math::Matrix3dd& m) { shape->transform(m); }
@@ -32,8 +30,6 @@ public:
 	SceneType getType() const override { return SceneType::ParticleSystemScene; }
 
 	void onClear() override {};
-
-	void onSend() override;
 
 	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 

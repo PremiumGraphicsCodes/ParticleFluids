@@ -20,8 +20,6 @@ public:
 	void onClear() override {};
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
-
-	void onSend() override;
 	
 	int getMaterialId() const { return materialId; }
 

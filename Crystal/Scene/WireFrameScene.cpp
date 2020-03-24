@@ -47,14 +47,6 @@ Box3d WireFrameScene::getBoundingBox() const
 	return shape->getBoundingBox();
 }
 
-void WireFrameScene::onBuild()
-{
-}
-
-void WireFrameScene::onSend()
-{
-}
-
 void WireFrameScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
 {
 	if (!isVisible()) {

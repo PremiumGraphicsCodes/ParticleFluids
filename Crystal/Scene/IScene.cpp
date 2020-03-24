@@ -104,19 +104,3 @@ std::list<IScene*> IScene::findScenes(const SceneType type)
 	}
 	return scenes;
 }
-
-void IScene::build()
-{
-	onBuild();
-	for (auto c : children) {
-		c->build();
-	}
-};
-
-void IScene::send()
-{
-	onSend();
-	for (auto c : children) {
-		c->send();
-	}
-}

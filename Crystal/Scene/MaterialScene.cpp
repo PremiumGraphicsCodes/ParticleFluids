@@ -11,7 +11,3 @@ MaterialScene::MaterialScene(const int id, const std::string& name, std::unique_
 	material(std::move(material)),
 	materialId(materialId)
 {}
-
-void MaterialScene::onSend()
-{
-}

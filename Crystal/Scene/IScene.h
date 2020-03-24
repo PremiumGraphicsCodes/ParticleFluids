@@ -79,16 +79,8 @@ public:
 
 	bool isLeaf() const { return children.empty(); }
 
-	void build();
-
-	virtual void send();
-
 protected:
 	virtual void onClear() = 0;
-
-	virtual void onBuild() {};
-
-	virtual void onSend() {};
 
 protected:
 	std::string name;

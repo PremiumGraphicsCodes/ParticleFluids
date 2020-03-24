@@ -41,17 +41,6 @@ Box3d Scene::getBoundingBox() const
 	return bb;
 }
 
-
-void Scene::send()
-{
-	IScene::send();
-	/*
-	for (auto c : children) {
-		c->send(viewModel);
-	}
-	*/
-}
-
 void Scene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
 {
 	for (auto c : children) {

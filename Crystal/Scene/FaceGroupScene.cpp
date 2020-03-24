@@ -22,11 +22,3 @@ void FaceGroupScene::setMaterial(MaterialScene* material)
 {
 	this->material = material;
 }
-
-void FaceGroupScene::onBuild()
-{
-}
-
-void FaceGroupScene::onSend()
-{
-}

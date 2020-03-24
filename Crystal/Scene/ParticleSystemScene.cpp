@@ -21,14 +21,6 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 	shape(std::move(shape))
 {}
 
-void ParticleSystemScene::onBuild()
-{
-}
-
-void ParticleSystemScene::onSend()
-{
-}
-
 void ParticleSystemScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
 {
 	if (!isVisible()) {

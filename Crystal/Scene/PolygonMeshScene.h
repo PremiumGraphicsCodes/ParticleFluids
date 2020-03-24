@@ -31,8 +31,6 @@ public:
 
 	void onClear() override{}
 
-	void onSend() override;
-
 	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
 
 	Math::Box3d getBoundingBox() const override;

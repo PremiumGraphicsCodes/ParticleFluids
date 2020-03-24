@@ -71,7 +71,7 @@ void World::init()
 
 //		auto tex = glFactory.getTextureFactory()->createTextureObject(image);
 		auto s = sceneFactory.createTextureScene(std::move(image), "WhiteTex");
-		s->build();
+//		s->build();
 		scenes[1]->addScene(s);
 	}
 
@@ -79,7 +79,7 @@ void World::init()
 		auto image = std::make_unique<Image>(1, 1);
 		image->setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
 		auto s = sceneFactory.createTextureScene(std::move(image), "BlackTex");
-		s->build();
+//		s->build();
 		scenes[1]->addScene(s);
 	}
 
@@ -111,7 +111,6 @@ void World::updateViewModel()
 {
 	ViewModel vm;
 	for (auto& s : scenes) {
-		s->send();
 		s->send(vm.parentId, vm.childId);
 	}
 

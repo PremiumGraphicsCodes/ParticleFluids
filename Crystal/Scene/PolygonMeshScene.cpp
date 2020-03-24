@@ -21,10 +21,6 @@ PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::u
 	shape(std::move(shape))
 {}
 
-void PolygonMeshScene::onSend()
-{
-}
-
 void PolygonMeshScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
 {
 	const auto objectId = getId();

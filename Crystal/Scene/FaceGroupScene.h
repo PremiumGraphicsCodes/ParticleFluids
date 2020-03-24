@@ -24,10 +24,6 @@ public:
 
 	SceneType getType() const override { return SceneType::FaceGroupScene; }
 
-	void onBuild() override;
-
-	void onSend() override;
-
 	void onClear() override {
 		faces.clear();
 	}
