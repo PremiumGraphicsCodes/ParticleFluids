@@ -58,7 +58,7 @@ public:
 
 	void add(ParticleSystemScene* scene);
 
-	void add(WireFrameScene* scene) { this->wfScenes.push_back(scene); }
+	void add(WireFrameScene* scene);
 
 	void add(PolygonMeshScene* scene) { this->pmScenes.push_back(scene); }
 
@@ -89,7 +89,7 @@ private:
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
 
 	std::vector<PointShaderBuffer> pointBuffers;
-	std::vector<WireFrameScene*> wfScenes;
+	std::vector<LineShaderBuffer> lineBuffers;
 	std::vector<PolygonMeshScene*> pmScenes;
 	std::vector<TextureScene*> textureScenes;
 	std::vector<MaterialScene*> materialScenes;

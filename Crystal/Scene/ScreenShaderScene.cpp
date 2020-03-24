@@ -37,11 +37,34 @@ void ScreenShaderScene::add(ParticleSystemScene* scene)
 	for (auto p : ps) {
 		pb.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
+	pb.setMatrix(scene->getMatrix());
 
 	PointShaderBuffer buffer;
 	buffer.build();
 	buffer.send(pb);
 	pointBuffers.push_back(buffer);
+}
+
+void ScreenShaderScene::add(WireFrameScene* scene)
+{
+	const auto& shape = scene->getShape();
+	const auto& positions = shape->getPositions();
+	const auto& edges = shape->getEdges();
+
+	const auto& color = scene->getAttribute().color;
+	LineBuffer buffer(scene->getAttribute().width);
+	buffer.setMatrix(scene->getMatrix());
+	for (const auto& l : positions) {
+		buffer.addVertex(l, color);
+	}
+	for (const auto& e : edges) {
+		buffer.addIndex(e.originId);
+		buffer.addIndex(e.destId);
+	}
+	LineShaderBuffer lb;
+	lb.build();
+	lb.send(buffer);
+	lineBuffers.push_back(lb);
 }
 
 void ScreenShaderScene::render(Camera* camera)
@@ -60,10 +83,9 @@ void ScreenShaderScene::render(Camera* camera)
 		}
 	}
 	if (mask.showLines) {
-		for (auto s : wfScenes) {
-			auto bf = s->getGLBuffer();
-			bf.camera = *camera;
-			wireRenderer.setBuffer(bf);
+		for (auto lb : lineBuffers) {
+			lb.camera = *camera;
+			wireRenderer.setBuffer(lb);
 			wireRenderer.render();
 		}
 	}

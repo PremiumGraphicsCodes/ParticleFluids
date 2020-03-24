@@ -49,29 +49,10 @@ Box3d WireFrameScene::getBoundingBox() const
 
 void WireFrameScene::onBuild()
 {
-	glBuffer.build();
-	//assert(GL_NO_ERROR == glGetError());
 }
 
 void WireFrameScene::onSend()
 {
-	if (!isVisible()) {
-		return;
-	}
-	const auto& positions = shape->getPositions();
-	const auto& edges = shape->getEdges();
-
-	const auto& color = getAttribute().color;
-	LineBuffer buffer(getAttribute().width);
-	buffer.setMatrix(getMatrix());
-	for (const auto& l : positions) {
-		buffer.addVertex(l, color);
-	}
-	for(const auto& e : edges) {
-		buffer.addIndex(e.originId);
-		buffer.addIndex(e.destId);
-	}
-	glBuffer.send(buffer);
 }
 
 void WireFrameScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
