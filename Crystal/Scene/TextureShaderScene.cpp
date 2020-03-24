@@ -13,7 +13,7 @@ TextureShaderScene::TextureShaderScene()
 {
 }
 
-bool TextureShaderScene::build(ShaderObject* shader)
+bool TextureShaderScene::build()
 {
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "textures[" + std::to_string(i) + "]";
@@ -22,7 +22,7 @@ bool TextureShaderScene::build(ShaderObject* shader)
 	return true;
 }
 
-void TextureShaderScene::setTextures(const std::vector<TextureObject>& textures, ShaderObject* shader)
+void TextureShaderScene::setTextures(const std::vector<TextureObject>& textures)
 {
 	shader->bind();
 	for (int i = 0; i < textures.size(); ++i) {

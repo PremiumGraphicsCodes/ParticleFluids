@@ -44,7 +44,8 @@ bool SmoothShaderScene::build()
 	lightShader.setShader(&shader);
 	lightShader.build();
 	materialShader.build(&shader);
-	textureShader.build(&shader);
+	textureShader.setShader(&shader);
+	textureShader.build();
 
 	return isOk;
 }

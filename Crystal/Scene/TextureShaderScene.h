@@ -4,22 +4,36 @@
 #include "../Shader/ShaderObject.h"
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/VertexArrayObject.h"
+#include "IShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
+
+class TextureShaderBuffer : public IShaderScene
+{
+public:
+	bool build() override { return true; }
+
+	void release() override {}
+
+	void render() override {}
+};
 
 class TextureShaderScene
 {
 public:
 	TextureShaderScene();
 
-	bool build(Shader::ShaderObject* shader);
+	void setShader(Shader::ShaderObject* shader) { this->shader = shader; }
 
-	void setTextures(const std::vector<Shader::TextureObject>& textures, Shader::ShaderObject* shader);
+	bool build();
+
+	void setTextures(const std::vector<Shader::TextureObject>& textures);
 
 	std::string getBuiltInFragmentShaderSource() const;
 
 private:
+	Shader::ShaderObject* shader;
 	//GLBuffer glBuffer;
 };
 
