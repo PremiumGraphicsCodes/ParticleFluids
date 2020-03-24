@@ -1,0 +1,32 @@
+#pragma once
+
+#include "IShaderScene.h"
+
+#include "../Graphics/PointLight.h"
+
+#include <vector>
+
+namespace Crystal {
+	namespace Scene {
+
+class LightShaderBuffer : public IShaderScene
+{
+public:
+	bool build() override;
+
+	void add(const Graphics::PointLight& l);
+
+	void release() override {}
+
+	void send();
+
+	void render() override {}
+
+	std::vector<Graphics::PointLight> getLights() const { return lights; }
+
+private:
+	std::vector<Graphics::PointLight> lights;
+};
+
+	}
+}

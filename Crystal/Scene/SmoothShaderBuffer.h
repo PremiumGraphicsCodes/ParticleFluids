@@ -7,6 +7,7 @@
 
 #include "../Shader/VertexBufferObject.h"
 #include "MaterialShaderBuffer.h"
+#include "LightShaderBuffer.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -58,6 +59,7 @@ public:
 	void release();
 
 	MaterialShaderBuffer materialBuffer;
+	LightShaderBuffer lightBuffer;
 };
 
 	}

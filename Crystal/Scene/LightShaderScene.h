@@ -2,31 +2,13 @@
 
 #include "../Graphics/PointLight.h"
 #include "IShaderScene.h"
+#include "LightShaderBuffer.h"
 
 namespace Crystal {
 	namespace Shader {
 		class ShaderObject;
 	}
 	namespace Scene {
-
-class LightShaderBuffer : public IShaderScene
-{
-public:
-	bool build() override;
-
-	void add(const Graphics::PointLight& l);
-
-	void release() override {}
-
-	void send();
-
-	void render() override {}
-
-	std::vector<Graphics::PointLight> getLights() const { return lights; }
-
-private:
-	std::vector<Graphics::PointLight> lights;
-};
 
 class LightShaderScene : public IShaderScene
 {

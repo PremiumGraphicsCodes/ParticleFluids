@@ -118,6 +118,9 @@
     <ClInclude Include="SmoothShaderBuffer.h">
       <Filter>Renderer\Triangle</Filter>
     </ClInclude>
+    <ClInclude Include="LightShaderBuffer.h">
+      <Filter>Renderer\Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -201,6 +204,9 @@
     </ClCompile>
     <ClCompile Include="SmoothShaderBuffer.cpp">
       <Filter>Renderer\Triangle</Filter>
+    </ClCompile>
+    <ClCompile Include="LightShaderBuffer.cpp">
+      <Filter>Renderer\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
