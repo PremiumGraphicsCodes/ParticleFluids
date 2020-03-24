@@ -30,6 +30,20 @@ bool ScreenShaderScene::build(GLObjectFactory& factory)
 	return true;
 }
 
+void ScreenShaderScene::add(ParticleSystemScene* scene)
+{
+	const auto& ps = scene->getShape()->getParticles();
+	PointBuffer pb;
+	for (auto p : ps) {
+		pb.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
+	}
+
+	PointShaderBuffer buffer;
+	buffer.build();
+	buffer.send(pb);
+	pointBuffers.push_back(buffer);
+}
+
 void ScreenShaderScene::render(Camera* camera)
 {
 	this->camera = camera;
@@ -40,8 +54,8 @@ void ScreenShaderScene::render(Camera* camera)
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {
-		for (auto s : particleScenes) {
-			pointRenderer.send(s->getBuffer(), *camera);
+		for (auto s : pointBuffers) {
+			pointRenderer.send(s, *camera);
 			pointRenderer.render();
 		}
 	}

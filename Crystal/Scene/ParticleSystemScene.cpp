@@ -23,21 +23,10 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 
 void ParticleSystemScene::onBuild()
 {
-	buffer.build();
 }
 
 void ParticleSystemScene::onSend()
 {
-	if (!isVisible()) {
-		return;
-	}
-	const auto& particles = getShape()->getParticles();
-	PointBuffer pointBuffer;
-	pointBuffer.setMatrix(getMatrix());
-	for (auto p : particles) {
-		pointBuffer.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
-	}
-	buffer.send(pointBuffer);
 }
 
 void ParticleSystemScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const

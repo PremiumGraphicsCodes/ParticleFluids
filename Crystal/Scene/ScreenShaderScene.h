@@ -56,7 +56,7 @@ public:
 
 	Shader::TextureObject getTexture() { return texture; }
 
-	void add(ParticleSystemScene* scene) { this->particleScenes.push_back(scene); }
+	void add(ParticleSystemScene* scene);
 
 	void add(WireFrameScene* scene) { this->wfScenes.push_back(scene); }
 
@@ -88,7 +88,7 @@ private:
 	Shader::TextureObject texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
 
-	std::vector<ParticleSystemScene*> particleScenes;
+	std::vector<PointShaderBuffer> pointBuffers;
 	std::vector<WireFrameScene*> wfScenes;
 	std::vector<PolygonMeshScene*> pmScenes;
 	std::vector<TextureScene*> textureScenes;

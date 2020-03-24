@@ -47,10 +47,7 @@ public:
 
 	void setAttribute(const ParticleAttribute& attribute);
 
-	PointShaderBuffer getBuffer() const { return buffer; }
-
 private:
-	PointShaderBuffer buffer;
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
 };
 
