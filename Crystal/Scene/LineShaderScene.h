@@ -2,7 +2,6 @@
 
 #include "../Shader/ShaderObject.h"
 
-#include "../Graphics/Camera.h"
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer3d.h"
 #include "../Graphics/Buffer4d.h"

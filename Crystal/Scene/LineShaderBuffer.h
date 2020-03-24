@@ -8,6 +8,7 @@
 #include "../Graphics/Buffer4d.h"
 
 #include "../Shader/VertexBufferObject.h"
+#include "../Graphics/Camera.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -64,6 +65,7 @@ struct LineShaderBuffer
 
 	std::vector<unsigned int> indices;
 	Math::Matrix4df matrix;
+	Graphics::Camera camera;
 	float lineWidth;
 
 	void build();
