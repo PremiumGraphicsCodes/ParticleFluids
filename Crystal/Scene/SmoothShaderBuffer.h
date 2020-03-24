@@ -4,10 +4,12 @@
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer2d.h"
 #include "../Graphics/Buffer3d.h"
+#include "../Graphics/Camera.h"
 
 #include "../Shader/VertexBufferObject.h"
 #include "MaterialShaderBuffer.h"
 #include "LightShaderBuffer.h"
+#include "TextureShaderBuffer.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -51,6 +53,7 @@ public:
 	Shader::VertexBufferObject specularTexId;
 	int count = 0;
 	Math::Matrix4df matrix;
+	Graphics::Camera camera;
 
 	void build();
 
@@ -60,6 +63,7 @@ public:
 
 	MaterialShaderBuffer materialBuffer;
 	LightShaderBuffer lightBuffer;
+	TextureShaderBuffer textureButter;
 };
 
 	}

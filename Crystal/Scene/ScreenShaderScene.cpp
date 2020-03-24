@@ -53,7 +53,6 @@ void ScreenShaderScene::render(Camera* camera)
 			wireRenderer.render();
 		}
 	}
-	/*
 	if (mask.showTrianlges) {
 		MaterialShaderBuffer mBuffer;
 		for (auto m : materialScenes) {
@@ -63,16 +62,15 @@ void ScreenShaderScene::render(Camera* camera)
 		for (auto l : lightScenes) {
 			lBuffer.add(*l->getLight());
 		}
-		std::vector<TextureObject> textures;
+		TextureShaderBuffer texBuffer;
 		for (auto tex : textureScenes) {
-			textures.push_back(tex->getTextureObject());
+			texBuffer.add(tex->getTextureObject());
 		}
-		smoothRenderer.getTextureRenderer()->setTextures(textures, smoothRenderer.getShader());
 		for (auto pm : pmScenes) {
-			pm->render(this);
+	//		smoothRenderer.send();
+			smoothRenderer.render();
 		}
 	}
-	*/
 	//texture.unbind();
 	frameBufferObject->unbind();
 }

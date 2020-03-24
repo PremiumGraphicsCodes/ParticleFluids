@@ -55,11 +55,11 @@ void SmoothShaderScene::release()
 	shader.release();
 }
 
-void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer, const Camera& camera)
+void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer)
 {
-	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix() * matrix;
-	const auto& eyePos = camera.getEye();
+	const auto& projectionMatrix = glBuffer.camera.getProjectionMatrix();
+	const auto& modelviewMatrix = glBuffer.camera.getModelViewMatrix() * matrix;
+	const auto& eyePos = glBuffer.camera.getEye();
 
 	shader.bind();
 

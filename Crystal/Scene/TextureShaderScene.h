@@ -9,16 +9,6 @@
 namespace Crystal {
 	namespace Scene {
 
-class TextureShaderBuffer : public IShaderScene
-{
-public:
-	bool build() override { return true; }
-
-	void release() override {}
-
-	void render() override {}
-};
-
 class TextureShaderScene
 {
 public:

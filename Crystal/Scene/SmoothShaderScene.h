@@ -26,15 +26,9 @@ public:
 
 	void release() override;
 
-	void send(const SmoothShaderBuffer& buffer, const Graphics::Camera& camera);
+	void send(const SmoothShaderBuffer& buffer);
 
 	void render() override;
-
-	LightShaderScene* getLightRenderer() { return &lightShader; }
-
-	TextureShaderScene* getTextureRenderer() { return &textureShader; }
-
-	Shader::ShaderObject* getShader() { return &shader; }
 
 private:
 	std::string getBuildInVertexShaderSource() const;
