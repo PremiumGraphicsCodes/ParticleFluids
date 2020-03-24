@@ -20,7 +20,7 @@ namespace {
 	constexpr char* texCoordLabel = "texCoord";
 }
 
-void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId)
+void SmoothBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId)
 {
 	positions.add(position);
 	normals.add(normal);
@@ -28,7 +28,7 @@ void SmoothTriangleBuffer::addVertex(const Vector3df& position, const Vector3df&
 	materialIds.add(materialId);
 }
 
-void SmoothShaderScene::GLBuffer::build()
+void SmoothShaderBuffer::build()
 {
 	position.build();
 	normal.build();
@@ -36,7 +36,7 @@ void SmoothShaderScene::GLBuffer::build()
 	materialId.build();
 }
 
-void SmoothShaderScene::GLBuffer::release()
+void SmoothShaderBuffer::release()
 {
 	position.release();
 	normal.release();
@@ -44,7 +44,7 @@ void SmoothShaderScene::GLBuffer::release()
 	materialId.release();
 }
 
-void SmoothShaderScene::GLBuffer::send(const SmoothTriangleBuffer& buffer)
+void SmoothShaderBuffer::send(const SmoothBuffer& buffer)
 {
 	position.send(buffer.getPositions().get());
 	normal.send(buffer.getNormals().get());
@@ -84,7 +84,7 @@ bool SmoothShaderScene::build()
 	return isOk;
 }
 
-void SmoothShaderScene::send(const GLBuffer& glBuffer, const Camera& camera)
+void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer, const Camera& camera)
 {
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto& modelviewMatrix = camera.getModelViewMatrix() * matrix;

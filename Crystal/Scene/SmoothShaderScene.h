@@ -20,10 +20,10 @@
 namespace Crystal {
 	namespace Scene {
 
-class SmoothTriangleBuffer
+class SmoothBuffer
 {
 public:
-	SmoothTriangleBuffer() :
+	SmoothBuffer() :
 		matrix(Math::Identity())
 	{}
 
@@ -49,33 +49,34 @@ private:
 	Graphics::Buffer1d<int> materialIds;
 };
 
+class SmoothShaderBuffer
+{
+public:
+	Shader::VertexBufferObject position;
+	Shader::VertexBufferObject normal;
+	Shader::VertexBufferObject texCoord;
+	Shader::VertexBufferObject materialId;
+	Shader::VertexBufferObject specularTexId;
+	int count = 0;
+	Math::Matrix4df matrix;
+
+	void build();
+
+	void send(const SmoothBuffer& buffer);
+
+	void release();
+
+	MaterialShaderBuffer materialBuffer;
+};
 
 class SmoothShaderScene
 {
 public:
-	struct GLBuffer {
-		Shader::VertexBufferObject position;
-		Shader::VertexBufferObject normal;
-		Shader::VertexBufferObject texCoord;
-		Shader::VertexBufferObject materialId;
-		Shader::VertexBufferObject specularTexId;
-		int count = 0;
-		Math::Matrix4df matrix;
-
-		void build();
-
-		void send(const SmoothTriangleBuffer& buffer);
-
-		void release();
-
-		MaterialShaderBuffer materialBuffer;
-	};
-
 	SmoothShaderScene();
 
 	bool build();
 
-	void send(const GLBuffer& buffer, const Graphics::Camera& camera);
+	void send(const SmoothShaderBuffer& buffer, const Graphics::Camera& camera);
 
 	void render();
 

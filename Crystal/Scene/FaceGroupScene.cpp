@@ -48,7 +48,7 @@ void FaceGroupScene::onSend()
 	}
 
 	{
-		SmoothTriangleBuffer buffer;
+		SmoothBuffer buffer;
 		buffer.setMatrix(matrix);
 		for (const auto& f : faces) {
 			const auto& vIds = f.getVertexIds();
