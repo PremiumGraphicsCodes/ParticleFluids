@@ -86,7 +86,7 @@ public:
 protected:
 	virtual void onClear() = 0;
 
-	virtual void onBuild(Shader::GLObjectFactory& factory) {};
+	virtual void onBuild() {};
 
 	virtual void onSend() {};
 

@@ -23,7 +23,7 @@ void FaceGroupScene::setMaterial(MaterialScene* material)
 	this->material = material;
 }
 
-void FaceGroupScene::onBuild(GLObjectFactory& factory)
+void FaceGroupScene::onBuild()
 {
 	glBuffer.build();
 }

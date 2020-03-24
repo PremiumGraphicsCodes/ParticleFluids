@@ -107,7 +107,7 @@ std::list<IScene*> IScene::findScenes(const SceneType type)
 
 void IScene::build(GLObjectFactory& factory)
 {
-	onBuild(factory);
+	onBuild();
 	for (auto c : children) {
 		c->build(factory);
 	}

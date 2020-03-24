@@ -36,7 +36,7 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const;
 
-	void onBuild(Shader::GLObjectFactory& factory) override;
+	void onBuild() override;
 
 	void onSend() override;
 

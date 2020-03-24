@@ -47,10 +47,10 @@ Box3d WireFrameScene::getBoundingBox() const
 	return shape->getBoundingBox();
 }
 
-void WireFrameScene::onBuild(GLObjectFactory& factory)
+void WireFrameScene::onBuild()
 {
 	glBuffer.build();
-	assert(GL_NO_ERROR == glGetError());
+	//assert(GL_NO_ERROR == glGetError());
 }
 
 void WireFrameScene::onSend()

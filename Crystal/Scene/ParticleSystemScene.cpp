@@ -21,10 +21,9 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 	shape(std::move(shape))
 {}
 
-void ParticleSystemScene::onBuild(GLObjectFactory& factory)
+void ParticleSystemScene::onBuild()
 {
 	buffer.build();
-	//factory.getShaderFactory()->create()
 }
 
 void ParticleSystemScene::onSend()

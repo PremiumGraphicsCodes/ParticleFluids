@@ -16,12 +16,12 @@ void TextureScene::onClear()
 {
 };
 
-void TextureScene::onBuild(GLObjectFactory& factory)
+void TextureScene::onBuild()
 {
-	texture = factory.getTextureFactory()->createTextureObject(getName(),*image);
+	//texture = factory.getTextureFactory()->createTextureObject(getName(),*image);
 }
 
 void TextureScene::onSend()
 {
-	texture.send(*image);
+	//texture.send(*image);
 }

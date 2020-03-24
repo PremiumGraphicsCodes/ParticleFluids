@@ -21,7 +21,7 @@ public:
 
 	Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape.get(); }
 
-	void onBuild(Shader::GLObjectFactory& factory) override;
+	void onBuild() override;
 
 	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 

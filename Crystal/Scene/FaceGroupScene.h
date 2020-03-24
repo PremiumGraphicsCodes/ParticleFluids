@@ -24,7 +24,7 @@ public:
 
 	SceneType getType() const override { return SceneType::FaceGroupScene; }
 
-	void onBuild(Shader::GLObjectFactory& factory) override;
+	void onBuild() override;
 
 	void onSend() override;
 

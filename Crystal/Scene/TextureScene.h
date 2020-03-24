@@ -13,7 +13,7 @@ public:
 
 	~TextureScene() {};
 
-	void onBuild(Shader::GLObjectFactory& factory) override;
+	void onBuild() override;
 
 	void onClear() override;
 
