@@ -61,9 +61,10 @@ bool SmoothShaderScene::build()
 		shader.findUniformLocation(prefix + ".Ls");
 	}
 
-
-	textureShader.setShader(&shader);
-	textureShader.build();
+	for (int i = 0; i < 8; ++i) {
+		const auto prefix = "textures[" + std::to_string(i) + "]";
+		shader.findUniformLocation(prefix);
+	}
 
 	return isOk;
 }
@@ -133,8 +134,18 @@ void SmoothShaderScene::send(const std::vector<PointLight>& lights)
 		shader.sendUniform(prefix + ".Ls", specular);
 	}
 	shader.unbind();
-
 }
+
+void SmoothShaderScene::send(const std::vector<TextureObject>& textures)
+{
+	shader.bind();
+	for (int i = 0; i < textures.size(); ++i) {
+		const auto prefix = "textures[" + std::to_string(i) + "]";
+		shader.sendUniform(prefix, textures[i]);
+	}
+	shader.unbind();
+}
+
 void SmoothShaderScene::render()
 {
 	shader.bind();

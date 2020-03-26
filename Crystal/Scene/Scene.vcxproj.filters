@@ -74,16 +74,10 @@
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
     <ClInclude Include="SmoothShaderScene.h">
-      <Filter>Renderer\Triangle</Filter>
+      <Filter>Renderer\Smooth</Filter>
     </ClInclude>
     <ClInclude Include="LineShaderScene.h">
       <Filter>Renderer\Line</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureShaderScene.h">
-      <Filter>Renderer\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="TriangleShaderScene.h">
-      <Filter>Renderer\Triangle</Filter>
     </ClInclude>
     <ClInclude Include="PointShaderBuffer.h">
       <Filter>Renderer\Point</Filter>
@@ -101,10 +95,7 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="SmoothShaderBuffer.h">
-      <Filter>Renderer\Triangle</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureShaderBuffer.h">
-      <Filter>Renderer\Texture</Filter>
+      <Filter>Renderer\Smooth</Filter>
     </ClInclude>
     <ClInclude Include="PointBuffer.h">
       <Filter>Renderer\Point</Filter>
@@ -117,6 +108,9 @@
     </ClInclude>
     <ClInclude Include="ScreenShaderBuffer.h">
       <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleShaderScene.h">
+      <Filter>Renderer\Triangle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -161,16 +155,10 @@
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
     <ClCompile Include="SmoothShaderScene.cpp">
-      <Filter>Renderer\Triangle</Filter>
+      <Filter>Renderer\Smooth</Filter>
     </ClCompile>
     <ClCompile Include="LineShaderScene.cpp">
       <Filter>Renderer\Line</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureShaderScene.cpp">
-      <Filter>Renderer\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="TriangleShaderScene.cpp">
-      <Filter>Renderer\Triangle</Filter>
     </ClCompile>
     <ClCompile Include="PointShaderBuffer.cpp">
       <Filter>Renderer\Point</Filter>
@@ -188,16 +176,16 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="SmoothShaderBuffer.cpp">
-      <Filter>Renderer\Triangle</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureShaderBuffer.cpp">
-      <Filter>Renderer\Texture</Filter>
+      <Filter>Renderer\Smooth</Filter>
     </ClCompile>
     <ClCompile Include="PointShader.cpp">
       <Filter>Renderer\Point</Filter>
     </ClCompile>
     <ClCompile Include="ScreenShaderBuffer.cpp">
       <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleShaderScene.cpp">
+      <Filter>Renderer\Triangle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -234,17 +222,17 @@
     <Filter Include="Renderer\Line">
       <UniqueIdentifier>{f769a1c5-59b7-4df8-baee-b951b683673b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Renderer\Triangle">
-      <UniqueIdentifier>{ab71925f-3edc-4808-b231-7094ef2b8fc1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Shape\TriangleMesh">
       <UniqueIdentifier>{74600514-a3cc-49be-8c9f-04f5fab37c08}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\Shape\Volume">
       <UniqueIdentifier>{e4eec2bb-f092-4b14-864c-f47953c88957}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Renderer\Texture">
-      <UniqueIdentifier>{6d8ae239-acec-4572-b8bd-d3012d17dfc5}</UniqueIdentifier>
+    <Filter Include="Renderer\Smooth">
+      <UniqueIdentifier>{ab71925f-3edc-4808-b231-7094ef2b8fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Triangle">
+      <UniqueIdentifier>{88b8dc67-ef55-415e-8748-bdd81864b242}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

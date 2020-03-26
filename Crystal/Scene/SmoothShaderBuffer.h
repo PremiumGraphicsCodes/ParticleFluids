@@ -8,7 +8,6 @@
 #include "../Graphics/Material.h"
 
 #include "../Shader/VertexBufferObject.h"
-#include "TextureShaderBuffer.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -59,8 +58,6 @@ public:
 	void send(const SmoothBuffer& buffer);
 
 	void release();
-
-	TextureShaderBuffer textureButter;
 };
 
 	}

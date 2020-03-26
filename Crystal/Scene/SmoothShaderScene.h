@@ -7,8 +7,7 @@
 
 #include "../Shader/TextureObject.h"
 #include "../Shader/VertexBufferObject.h"
-
-#include "TextureShaderScene.h"
+#include "../Shader/ShaderObject.h"
 
 #include "IShader.h"
 
@@ -30,6 +29,8 @@ public:
 
 	void send(const std::vector<Graphics::PointLight>& lights);
 
+	void send(const std::vector<Shader::TextureObject>& texture);
+
 	void render() override;
 
 private:
@@ -37,7 +38,6 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	TextureShaderScene textureShader;
 	Math::Matrix4df matrix;
 	int count;
 	Shader::ShaderObject shader;
