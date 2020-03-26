@@ -43,7 +43,18 @@ bool SmoothShaderScene::build()
 
 	lightShader.setShader(&shader);
 	lightShader.build();
-	materialShader.build(&shader);
+	//materialShader.build(&shader);
+	for (int i = 0; i < 256; ++i) {
+		const auto prefix = "materials[" + std::to_string(i) + "]";
+		shader.findUniformLocation(prefix + ".Ka");
+		shader.findUniformLocation(prefix + ".Kd");
+		shader.findUniformLocation(prefix + ".Ks");
+		shader.findUniformLocation(prefix + ".shininess");
+		shader.findUniformLocation(prefix + ".ambientTexId");
+		shader.findUniformLocation(prefix + ".diffuseTexId");
+		shader.findUniformLocation(prefix + ".specularTexId");
+	}
+
 	textureShader.setShader(&shader);
 	textureShader.build();
 
@@ -72,9 +83,21 @@ void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer)
 	shader.sendVertexAttribute2df(::texCoordLabel, glBuffer.texCoord);
 	shader.sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
 
-	shader.unbind();
+	const auto& materials = glBuffer.materialBuffer.getMaterials();
+	for (int i = 0; i < materials.size(); ++i) {
+		const auto m = materials[i];
+		const auto prefix = "materials[" + std::to_string(i) + "]";
+		shader.sendUniform(prefix + ".Ka", m.ambient);
+		shader.sendUniform(prefix + ".Kd", m.diffuse);
+		shader.sendUniform(prefix + ".Ks", m.specular);
+		shader.sendUniform(prefix + ".shininess", m.shininess);
+		//		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
+		//		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
+		//		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
+	}
 
 	lightShader.send();
+	shader.unbind();
 
 	this->matrix = glBuffer.matrix;
 	this->count = glBuffer.count;
@@ -158,8 +181,17 @@ std::string SmoothShaderScene::getBuiltInFragmentShaderSource() const
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
 		<< "uniform sampler2D textures[8];" << std::endl
-		<< lightShader.getBuiltInFragmentShaderSource()
-		<< materialShader.getBuiltInFragmentShaderSource()
+		<< lightShader.getBuiltInFragmentShaderSource() << std::endl
+		<< "struct MaterialInfo {" << std::endl
+		<< "	vec3 Ka;" << std::endl
+		<< "	vec3 Kd;" << std::endl
+		<< "	vec3 Ks;" << std::endl
+		<< "	float shininess;" << std::endl
+		<< "	int ambientTexId;" << std::endl
+		<< "	int diffuseTexId;" << std::endl
+		<< "	int specularTexId;" << std::endl
+		<< "};"
+		<< "uniform MaterialInfo materials[256];" << std::endl
 		<< "vec3 getTextureColor(int id){ " << std::endl
 		<< "	if(id == -1) {" << std::endl
 		<< "		return vec3(1,1,1);" << std::endl

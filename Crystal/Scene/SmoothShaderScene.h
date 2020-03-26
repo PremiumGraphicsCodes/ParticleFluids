@@ -8,7 +8,6 @@
 #include "../Shader/VertexBufferObject.h"
 
 #include "MaterialShaderBuffer.h"
-#include "MaterialShaderScene.h"
 #include "LightShaderScene.h"
 #include "TextureShaderScene.h"
 
@@ -35,7 +34,6 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	MaterialShaderScene materialShader;
 	LightShaderScene lightShader;
 	TextureShaderScene textureShader;
 	Math::Matrix4df matrix;
