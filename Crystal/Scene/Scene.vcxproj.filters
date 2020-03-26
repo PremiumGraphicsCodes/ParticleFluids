@@ -79,9 +79,6 @@
     <ClInclude Include="LineShaderScene.h">
       <Filter>Renderer\Line</Filter>
     </ClInclude>
-    <ClInclude Include="LightShaderScene.h">
-      <Filter>Renderer\Light</Filter>
-    </ClInclude>
     <ClInclude Include="TextureShaderScene.h">
       <Filter>Renderer\Texture</Filter>
     </ClInclude>
@@ -169,9 +166,6 @@
     <ClCompile Include="LineShaderScene.cpp">
       <Filter>Renderer\Line</Filter>
     </ClCompile>
-    <ClCompile Include="LightShaderScene.cpp">
-      <Filter>Renderer\Light</Filter>
-    </ClCompile>
     <ClCompile Include="TextureShaderScene.cpp">
       <Filter>Renderer\Texture</Filter>
     </ClCompile>
@@ -248,9 +242,6 @@
     </Filter>
     <Filter Include="Scene\Shape\Volume">
       <UniqueIdentifier>{e4eec2bb-f092-4b14-864c-f47953c88957}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Light">
-      <UniqueIdentifier>{57a9a0ba-a738-4702-8009-f5cab1a18663}</UniqueIdentifier>
     </Filter>
     <Filter Include="Renderer\Texture">
       <UniqueIdentifier>{6d8ae239-acec-4572-b8bd-d3012d17dfc5}</UniqueIdentifier>

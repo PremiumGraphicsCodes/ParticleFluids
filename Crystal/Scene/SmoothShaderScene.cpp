@@ -41,8 +41,6 @@ bool SmoothShaderScene::build()
 	shader.findAttribLocation(::materialIdLabel);
 	shader.findAttribLocation(::texCoordLabel);
 
-	lightShader.setShader(&shader);
-	lightShader.build();
 	//materialShader.build(&shader);
 	for (int i = 0; i < 256; ++i) {
 		const auto prefix = "materials[" + std::to_string(i) + "]";
@@ -54,6 +52,15 @@ bool SmoothShaderScene::build()
 		shader.findUniformLocation(prefix + ".diffuseTexId");
 		shader.findUniformLocation(prefix + ".specularTexId");
 	}
+
+	for (int i = 0; i < 8; ++i) {
+		const auto prefix = "lights[" + std::to_string(i) + "]";
+		shader.findUniformLocation(prefix + ".position");
+		shader.findUniformLocation(prefix + ".La");
+		shader.findUniformLocation(prefix + ".Ld");
+		shader.findUniformLocation(prefix + ".Ls");
+	}
+
 
 	textureShader.setShader(&shader);
 	textureShader.build();
@@ -84,7 +91,7 @@ void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer)
 	shader.sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
 
 
-	lightShader.send();
+	//lightShader.send();
 	shader.unbind();
 
 	this->matrix = glBuffer.matrix;
@@ -108,6 +115,26 @@ void SmoothShaderScene::send(const std::vector<Material>& materials)
 	shader.unbind();
 }
 
+void SmoothShaderScene::send(const std::vector<PointLight>& lights)
+{
+	shader.bind();
+	for (int i = 0; i < lights.size(); ++i) {
+		const auto& light = lights[i];
+		const auto prefix = "lights[" + std::to_string(i) + "]";
+
+		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
+		const auto& ambient = light.getAmbient();
+		const auto& diffuse = light.getDiffuse();
+		const auto& specular = light.getSpecular();
+
+		shader.sendUniform(prefix + ".position", lightPos);
+		shader.sendUniform(prefix + ".La", ambient);
+		shader.sendUniform(prefix + ".Ld", diffuse);
+		shader.sendUniform(prefix + ".Ls", specular);
+	}
+	shader.unbind();
+
+}
 void SmoothShaderScene::render()
 {
 	shader.bind();
@@ -186,7 +213,13 @@ std::string SmoothShaderScene::getBuiltInFragmentShaderSource() const
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
 		<< "uniform sampler2D textures[8];" << std::endl
-		<< lightShader.getBuiltInFragmentShaderSource() << std::endl
+		<< "struct LightInfo {" << std::endl
+		<< "	vec3 position;" << std::endl
+		<< "	vec3 La;" << std::endl
+		<< "	vec3 Ld;" << std::endl
+		<< "	vec3 Ls;" << std::endl
+		<< "};"
+		<< "uniform LightInfo lights[8];" << std::endl
 		<< "struct MaterialInfo {" << std::endl
 		<< "	vec3 Ka;" << std::endl
 		<< "	vec3 Kd;" << std::endl

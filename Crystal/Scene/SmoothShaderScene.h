@@ -3,11 +3,11 @@
 #include "SmoothShaderBuffer.h"
 
 #include "../Graphics/Camera.h"
+#include "../Graphics/PointLight.h"
 
 #include "../Shader/TextureObject.h"
 #include "../Shader/VertexBufferObject.h"
 
-#include "LightShaderScene.h"
 #include "TextureShaderScene.h"
 
 #include "IShader.h"
@@ -28,6 +28,8 @@ public:
 
 	void send(const std::vector<Graphics::Material>& materials);
 
+	void send(const std::vector<Graphics::PointLight>& lights);
+
 	void render() override;
 
 private:
@@ -35,7 +37,6 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	LightShaderScene lightShader;
 	TextureShaderScene textureShader;
 	Math::Matrix4df matrix;
 	int count;

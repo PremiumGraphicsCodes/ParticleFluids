@@ -29,7 +29,6 @@
     <ClInclude Include="IShader.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LineShaderBuffer.h" />
-    <ClInclude Include="LightShaderScene.h" />
     <ClInclude Include="LineShaderScene.h" />
     <ClInclude Include="PointBuffer.h" />
     <ClInclude Include="PointShaderBuffer.h" />
@@ -67,7 +66,6 @@
   <ItemGroup>
     <ClCompile Include="FaceGroupScene.cpp" />
     <ClCompile Include="IScene.cpp" />
-    <ClCompile Include="LightShaderScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="LineShaderBuffer.cpp" />
     <ClCompile Include="LineShaderScene.cpp" />
