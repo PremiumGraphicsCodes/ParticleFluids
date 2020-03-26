@@ -288,6 +288,7 @@ std::string SmoothShaderScene::getBuiltInFragmentShaderSource() const
 		<< "}"
 		<< "void main(void) {" << std::endl
 		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal);" << std::endl
+//		<< "	fragColor.r = vNormal.r;" << std::endl
 //		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal) * getTextureColor();" << std::endl
 		<< "	fragColor.a = 1.0;" << std::endl
 		<< "}" << std::endl;
