@@ -1,7 +1,5 @@
 #include "WireFrameScene.h"
 
-#include "ScreenShaderScene.h"
-
 #include "SceneIdViewModel.h"
 
 #include "../Graphics/DrawableId.h"

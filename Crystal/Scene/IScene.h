@@ -14,7 +14,7 @@ namespace Crystal {
 	}
 	namespace Scene {
 		class SceneIdViewModel;
-		class ScreenShaderScene;
+		class ScreenShader;
 
 class IScene
 {

@@ -6,8 +6,6 @@
 
 #include "MaterialScene.h"
 
-#include "ScreenShaderScene.h"
-
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 

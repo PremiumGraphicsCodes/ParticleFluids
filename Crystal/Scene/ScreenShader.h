@@ -18,14 +18,14 @@ namespace Crystal {
 	namespace Scene {
 		class ScreenShaderBuffer;
 
-class ScreenShaderScene : private UnCopyable
+class ScreenShader : private UnCopyable
 {
 public:
-	ScreenShaderScene()
+	ScreenShader()
 	{
 	}
 
-	~ScreenShaderScene() {}
+	~ScreenShader() {}
 
 	bool build(Shader::GLObjectFactory& factory);
 

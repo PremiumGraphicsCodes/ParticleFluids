@@ -82,9 +82,6 @@
     <ClInclude Include="LineShaderBuffer.h">
       <Filter>Renderer\Line</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenShaderScene.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenIdShaderScene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -111,6 +108,9 @@
     </ClInclude>
     <ClInclude Include="SmoothShader.h">
       <Filter>Renderer\Smooth</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenShader.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +163,6 @@
     <ClCompile Include="LineShaderBuffer.cpp">
       <Filter>Renderer\Line</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenShaderScene.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenIdShaderScene.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -186,6 +183,9 @@
     </ClCompile>
     <ClCompile Include="SmoothShader.cpp">
       <Filter>Renderer\Smooth</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenShader.cpp">
+      <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

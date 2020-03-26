@@ -3,7 +3,7 @@
 #include "../Shader/TextureObject.h"
 #include "../Shader/OnScreenRenderer.h"
 
-#include "ScreenShaderScene.h"
+#include "ScreenShader.h"
 #include "ScreenIdShaderScene.h"
 
 #include "ScreenShaderBuffer.h"
@@ -34,7 +34,7 @@ public:
 
 	void render(const int width, const int height, const ViewModel& vm);
 
-	ScreenShaderScene* getObjectRenderer() { return &objectRenderer; }
+	ScreenShader* getObjectRenderer() { return &objectRenderer; }
 
 	ScreenIdShaderScene* getParentIdRenderer() { return &parentIdRenderer; }
 
@@ -49,7 +49,7 @@ public:
 private:
 	Shader::OnScreenRenderer renderer;
 
-	ScreenShaderScene objectRenderer;
+	ScreenShader objectRenderer;
 	ScreenIdShaderScene parentIdRenderer;
 	ScreenIdShaderScene childIdRenderer;
 

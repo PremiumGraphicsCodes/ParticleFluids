@@ -1,4 +1,4 @@
-#include "ScreenShaderScene.h"
+#include "ScreenShader.h"
 
 #include "../Shader/GLObjectFactory.h"
 
@@ -14,7 +14,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-bool ScreenShaderScene::build(GLObjectFactory& factory)
+bool ScreenShader::build(GLObjectFactory& factory)
 {
 	if (!pointRenderer.build()) {
 		return false;
@@ -32,7 +32,7 @@ bool ScreenShaderScene::build(GLObjectFactory& factory)
 	return true;
 }
 
-void ScreenShaderScene::render(Camera* camera, const ScreenShaderBuffer& buffer)
+void ScreenShader::render(Camera* camera, const ScreenShaderBuffer& buffer)
 {
 	this->camera = camera;
 	frameBufferObject->setTexture(texture);

@@ -34,7 +34,7 @@
     <ClInclude Include="PointShaderBuffer.h" />
     <ClInclude Include="ScreenIdShaderScene.h" />
     <ClInclude Include="ScreenShaderBuffer.h" />
-    <ClInclude Include="ScreenShaderScene.h" />
+    <ClInclude Include="ScreenShader.h" />
     <ClInclude Include="PointShader.h" />
     <ClInclude Include="ShaderScene.h" />
     <ClInclude Include="SmoothShaderBuffer.h" />
@@ -71,7 +71,7 @@
     <ClCompile Include="PointShaderBuffer.cpp" />
     <ClCompile Include="ScreenIdShaderScene.cpp" />
     <ClCompile Include="ScreenShaderBuffer.cpp" />
-    <ClCompile Include="ScreenShaderScene.cpp" />
+    <ClCompile Include="ScreenShader.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
     <ClCompile Include="PointShader.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
