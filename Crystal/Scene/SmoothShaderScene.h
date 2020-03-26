@@ -17,7 +17,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class SmoothShaderScene : public IShaderScene
+class SmoothShaderScene : public IShader
 {
 public:
 	SmoothShaderScene();

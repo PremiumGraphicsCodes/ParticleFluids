@@ -10,7 +10,7 @@ namespace Crystal {
 	}
 	namespace Scene {
 
-class LightShaderScene : public IShaderScene
+class LightShaderScene : public IShader
 {
 public:
 	LightShaderScene();

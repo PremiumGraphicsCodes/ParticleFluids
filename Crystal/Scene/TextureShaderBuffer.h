@@ -7,7 +7,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class TextureShaderBuffer : public IShaderScene
+class TextureShaderBuffer : public IShader
 {
 public:
 	bool build() override { return true; }

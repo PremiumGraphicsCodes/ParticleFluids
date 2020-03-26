@@ -3,10 +3,10 @@
 namespace Crystal {
 	namespace Scene {
 
-class IShaderScene
+class IShader
 {
 public:
-	virtual ~IShaderScene() {}
+	virtual ~IShader() {}
 
 	virtual bool build() = 0;
 
