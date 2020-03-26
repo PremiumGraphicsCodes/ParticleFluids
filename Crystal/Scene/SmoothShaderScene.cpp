@@ -83,7 +83,7 @@ void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer)
 	shader.sendVertexAttribute2df(::texCoordLabel, glBuffer.texCoord);
 	shader.sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
 
-	const auto& materials = glBuffer.materialBuffer.getMaterials();
+	const auto& materials = glBuffer.materials;
 	for (int i = 0; i < materials.size(); ++i) {
 		const auto m = materials[i];
 		const auto prefix = "materials[" + std::to_string(i) + "]";

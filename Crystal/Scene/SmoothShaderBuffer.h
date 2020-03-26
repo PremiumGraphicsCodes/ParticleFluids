@@ -5,9 +5,9 @@
 #include "../Graphics/Buffer2d.h"
 #include "../Graphics/Buffer3d.h"
 #include "../Graphics/Camera.h"
+#include "../Graphics/Material.h"
 
 #include "../Shader/VertexBufferObject.h"
-#include "MaterialShaderBuffer.h"
 #include "LightShaderBuffer.h"
 #include "TextureShaderBuffer.h"
 
@@ -61,7 +61,7 @@ public:
 
 	void release();
 
-	MaterialShaderBuffer materialBuffer;
+	std::vector<Graphics::Material> materials;
 	LightShaderBuffer lightBuffer;
 	TextureShaderBuffer textureButter;
 };
