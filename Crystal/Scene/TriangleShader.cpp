@@ -1,4 +1,4 @@
-#include "TriangleShaderScene.h"
+#include "TriangleShader.h"
 
 #include <sstream>
 
@@ -14,19 +14,19 @@ namespace {
 	constexpr char* modelViewMatrixLabel = "modelviewMatrix";
 }
 
-void TriangleShaderScene::GLBuffer::build()
+void TriangleShader::GLBuffer::build()
 {
 	vbo.position.build();
 	vbo.color.build();
 }
 
-void TriangleShaderScene::GLBuffer::release()
+void TriangleShader::GLBuffer::release()
 {
 	vbo.position.release();
 	vbo.color.release();
 }
 
-void TriangleShaderScene::GLBuffer::send(const LineBuffer& buffer)
+void TriangleShader::GLBuffer::send(const LineBuffer& buffer)
 {
 	vbo.position.send(buffer.getPositions().get());
 	vbo.color.send(buffer.getColors().get());
@@ -34,11 +34,11 @@ void TriangleShaderScene::GLBuffer::send(const LineBuffer& buffer)
 	indices = buffer.getIndices().get();
 }
 
-TriangleShaderScene::TriangleShaderScene()
+TriangleShader::TriangleShader()
 {
 }
 
-bool TriangleShaderScene::build()
+bool TriangleShader::build()
 {
 	const auto& vsSource = getBuildInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
@@ -54,7 +54,7 @@ bool TriangleShaderScene::build()
 	return isOk;
 }
 
-void TriangleShaderScene::render(const Camera& camera)
+void TriangleShader::render(const Camera& camera)
 {
 	const auto& projectionMatrix = camera.getProjectionMatrix();
 	const auto& modelviewMatrix = camera.getModelViewMatrix();
@@ -83,7 +83,7 @@ void TriangleShaderScene::render(const Camera& camera)
 	shader.unbind();
 }
 
-std::string TriangleShaderScene::getBuildInVertexShaderSource() const
+std::string TriangleShader::getBuildInVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -102,7 +102,7 @@ std::string TriangleShaderScene::getBuildInVertexShaderSource() const
 
 }
 
-std::string TriangleShaderScene::getBuiltInFragmentShaderSource() const
+std::string TriangleShader::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

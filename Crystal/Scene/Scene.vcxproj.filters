@@ -91,9 +91,6 @@
     <ClInclude Include="PointShader.h">
       <Filter>Renderer\Point</Filter>
     </ClInclude>
-    <ClInclude Include="TriangleShaderScene.h">
-      <Filter>Renderer\Triangle</Filter>
-    </ClInclude>
     <ClInclude Include="SmoothShader.h">
       <Filter>Renderer\Smooth</Filter>
     </ClInclude>
@@ -114,6 +111,9 @@
     </ClInclude>
     <ClInclude Include="ScreenIdShaderBuffer.h">
       <Filter>Renderer\ScreenId</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleShader.h">
+      <Filter>Renderer\Triangle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -172,9 +172,6 @@
     <ClCompile Include="PointShader.cpp">
       <Filter>Renderer\Point</Filter>
     </ClCompile>
-    <ClCompile Include="TriangleShaderScene.cpp">
-      <Filter>Renderer\Triangle</Filter>
-    </ClCompile>
     <ClCompile Include="SmoothShader.cpp">
       <Filter>Renderer\Smooth</Filter>
     </ClCompile>
@@ -189,6 +186,9 @@
     </ClCompile>
     <ClCompile Include="ScreenIdShader.cpp">
       <Filter>Renderer\ScreenId</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleShader.cpp">
+      <Filter>Renderer\Triangle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

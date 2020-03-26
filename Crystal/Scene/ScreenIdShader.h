@@ -7,7 +7,7 @@
 
 #include "../Scene/PointShader.h"
 #include "../Scene/LineShader.h"
-#include "../Scene/TriangleShaderScene.h"
+#include "../Scene/TriangleShader.h"
 
 #include "../Util/UnCopyable.h"
 
@@ -41,11 +41,11 @@ public:
 private:
 	PointShaderBuffer pointBuffer;
 	LineShaderBuffer lineBuffer;
-	TriangleShaderScene::GLBuffer triangleBuffer;
+	TriangleShader::GLBuffer triangleBuffer;
 
 	PointShader pointIdRenderer;
 	LineShader lineIdRenderer;
-	TriangleShaderScene triangleIdRenderer;
+	TriangleShader triangleIdRenderer;
 
 	Shader::TextureObject texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;

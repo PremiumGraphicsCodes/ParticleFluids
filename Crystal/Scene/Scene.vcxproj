@@ -55,7 +55,7 @@
     <ClInclude Include="ParticleSystemScene.h" />
     <ClInclude Include="PolygonMeshScene.h" />
     <ClInclude Include="SceneFactory.h" />
-    <ClInclude Include="TriangleShaderScene.h" />
+    <ClInclude Include="TriangleShader.h" />
     <ClInclude Include="UUID.h" />
     <ClInclude Include="ViewModel.h" />
     <ClInclude Include="VolumeScene.h" />
@@ -86,7 +86,7 @@
     <ClCompile Include="SceneFactory.cpp" />
     <ClCompile Include="SmoothShader.cpp" />
     <ClCompile Include="TransformScene.cpp" />
-    <ClCompile Include="TriangleShaderScene.cpp" />
+    <ClCompile Include="TriangleShader.cpp" />
     <ClCompile Include="WireFrameScene.cpp" />
   </ItemGroup>
   <ItemGroup>

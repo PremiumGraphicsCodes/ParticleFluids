@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class TriangleShaderScene
+class TriangleShader
 {
 public:
 	struct GLBuffer
@@ -24,7 +24,7 @@ public:
 		void send(const LineBuffer& buffer);
 	};
 
-	TriangleShaderScene();
+	TriangleShader();
 
 	bool build();
 
