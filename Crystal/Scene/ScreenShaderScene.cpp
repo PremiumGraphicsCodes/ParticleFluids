@@ -136,6 +136,7 @@ void ScreenShaderScene::render(Camera* camera)
 		for (auto m : materialScenes) {
 			mBuffer.push_back(*m->getMaterial());
 		}
+		smoothRenderer.send(mBuffer);
 		LightShaderBuffer lBuffer;
 		for (auto l : lightScenes) {
 			lBuffer.add(*l->getLight());

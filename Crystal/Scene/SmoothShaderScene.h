@@ -26,6 +26,8 @@ public:
 
 	void send(const SmoothShaderBuffer& buffer);
 
+	void send(const std::vector<Graphics::Material>& materials);
+
 	void render() override;
 
 private:

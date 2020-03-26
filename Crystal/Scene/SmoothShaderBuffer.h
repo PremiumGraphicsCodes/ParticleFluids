@@ -61,7 +61,6 @@ public:
 
 	void release();
 
-	std::vector<Graphics::Material> materials;
 	LightShaderBuffer lightBuffer;
 	TextureShaderBuffer textureButter;
 };

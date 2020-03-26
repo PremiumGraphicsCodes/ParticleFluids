@@ -83,7 +83,17 @@ void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer)
 	shader.sendVertexAttribute2df(::texCoordLabel, glBuffer.texCoord);
 	shader.sendVertexAttribute1di(::materialIdLabel, glBuffer.materialId);
 
-	const auto& materials = glBuffer.materials;
+
+	lightShader.send();
+	shader.unbind();
+
+	this->matrix = glBuffer.matrix;
+	this->count = glBuffer.count;
+}
+
+void SmoothShaderScene::send(const std::vector<Material>& materials)
+{
+	shader.bind();
 	for (int i = 0; i < materials.size(); ++i) {
 		const auto m = materials[i];
 		const auto prefix = "materials[" + std::to_string(i) + "]";
@@ -95,12 +105,7 @@ void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer)
 		//		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
 		//		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
 	}
-
-	lightShader.send();
 	shader.unbind();
-
-	this->matrix = glBuffer.matrix;
-	this->count = glBuffer.count;
 }
 
 void SmoothShaderScene::render()
