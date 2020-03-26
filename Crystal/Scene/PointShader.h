@@ -9,10 +9,10 @@
 namespace Crystal {
 	namespace Scene {
 
-class PointShaderScene : public IShader
+class PointShader : public IShader
 {
 public:
-	PointShaderScene();
+	PointShader();
 
 	bool build() override;
 

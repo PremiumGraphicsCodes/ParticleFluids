@@ -1,4 +1,4 @@
-#include "PointShaderScene.h"
+#include "PointShader.h"
 
 #include <sstream>
 
@@ -16,11 +16,11 @@ namespace {
 	constexpr char* fragColorLabel = "fragColor";
 }
 
-PointShaderScene::PointShaderScene()
+PointShader::PointShader()
 {
 }
 
-bool PointShaderScene::build()
+bool PointShader::build()
 {
 	const auto& vsSource = getBuiltInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
@@ -37,12 +37,12 @@ bool PointShaderScene::build()
 	return isOk;
 }
 
-void PointShaderScene::release()
+void PointShader::release()
 {
 	shader.release();
 }
 
-void PointShaderScene::send(const PointShaderBuffer& glBuffer)
+void PointShader::send(const PointShaderBuffer& glBuffer)
 {
 	const auto& projectionMatrix = glBuffer.camera.getProjectionMatrix();
 	const auto modelviewMatrix = glBuffer.camera.getModelViewMatrix() * glBuffer.matrix;
@@ -61,7 +61,7 @@ void PointShaderScene::send(const PointShaderBuffer& glBuffer)
 	this->count = glBuffer.count;
 }
 
-void PointShaderScene::render()
+void PointShader::render()
 {
 	shader.bind();
 
@@ -80,7 +80,7 @@ void PointShaderScene::render()
 	assert(GL_NO_ERROR == glGetError());
 }
 
-std::string PointShaderScene::getBuiltInVertexShaderSource() const
+std::string PointShader::getBuiltInVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -99,7 +99,7 @@ std::string PointShaderScene::getBuiltInVertexShaderSource() const
 	return stream.str();
 }
 
-std::string PointShaderScene::getBuiltInFragmentShaderSource() const
+std::string PointShader::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

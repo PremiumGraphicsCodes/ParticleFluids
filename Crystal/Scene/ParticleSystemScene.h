@@ -5,7 +5,7 @@
 #include "IShapeScene.h"
 #include "ParticleAttribute.h"
 
-#include "PointShaderScene.h"
+#include "PointShader.h"
 
 namespace Crystal {
 	namespace Scene {

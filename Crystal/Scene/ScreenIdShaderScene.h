@@ -5,7 +5,7 @@
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
 
-#include "../Scene/PointShaderScene.h"
+#include "../Scene/PointShader.h"
 #include "../Scene/LineShaderScene.h"
 #include "../Scene/TriangleShaderScene.h"
 
@@ -43,7 +43,7 @@ private:
 	LineShaderBuffer lineBuffer;
 	TriangleShaderScene::GLBuffer triangleBuffer;
 
-	PointShaderScene pointIdRenderer;
+	PointShader pointIdRenderer;
 	LineShaderScene lineIdRenderer;
 	TriangleShaderScene triangleIdRenderer;
 
