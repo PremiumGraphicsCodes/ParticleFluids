@@ -42,10 +42,10 @@ void PointShaderScene::release()
 	shader.release();
 }
 
-void PointShaderScene::send(const PointShaderBuffer& glBuffer, const Camera& camera)
+void PointShaderScene::send(const PointShaderBuffer& glBuffer)
 {
-	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto modelviewMatrix = camera.getModelViewMatrix() * glBuffer.matrix;
+	const auto& projectionMatrix = glBuffer.camera.getProjectionMatrix();
+	const auto modelviewMatrix = glBuffer.camera.getModelViewMatrix() * glBuffer.matrix;
 
 	shader.bind();
 

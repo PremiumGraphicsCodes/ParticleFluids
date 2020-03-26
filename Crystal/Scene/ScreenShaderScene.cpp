@@ -118,8 +118,9 @@ void ScreenShaderScene::render(Camera* camera)
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {
-		for (auto s : pointBuffers) {
-			pointRenderer.send(s, *camera);
+		for (auto buffer : pointBuffers) {
+			buffer.camera = *camera;
+			pointRenderer.send(buffer);
 			pointRenderer.render();
 		}
 	}

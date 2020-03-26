@@ -18,7 +18,7 @@ public:
 
 	void release() override;
 
-	void send(const PointShaderBuffer& buffer, const Graphics::Camera& camera);
+	void send(const PointShaderBuffer& buffer);
 
 	void render() override;
 

@@ -3,6 +3,7 @@
 #include "PointBuffer.h"
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/VertexArrayObject.h"
+#include "../Graphics/Camera.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -20,6 +21,7 @@ struct PointShaderBuffer
 	VBO vbo;
 	GLuint count;
 	Math::Matrix4df matrix;
+	Graphics::Camera camera;
 
 	void build();
 
