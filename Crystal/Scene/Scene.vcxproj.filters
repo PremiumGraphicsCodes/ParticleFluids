@@ -190,6 +190,9 @@
     <ClCompile Include="TriangleShader.cpp">
       <Filter>Renderer\Triangle</Filter>
     </ClCompile>
+    <ClCompile Include="ScreenIdShaderBuffer.cpp">
+      <Filter>Renderer\ScreenId</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

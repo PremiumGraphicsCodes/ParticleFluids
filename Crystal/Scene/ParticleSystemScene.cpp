@@ -21,28 +21,6 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 	shape(std::move(shape))
 {}
 
-void ParticleSystemScene::send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const
-{
-	if (!isVisible()) {
-		return;
-	}
-	const auto objectId = getId();
-	const auto& particles = getShape()->getParticles();
-	int particleId = 0;
-	PointBuffer parentIdBuffer;
-	parentIdBuffer.setMatrix(getMatrix());
-	PointBuffer childIdBuffer;
-	childIdBuffer.setMatrix(getMatrix());
-	for (auto p : particles) {
-		Graphics::DrawableID parentDid(objectId);
-		parentIdBuffer.add(p->getPosition(), parentDid.toColor(), p->getAttribute().size);
-		Graphics::DrawableID childDid(particleId++);
-		childIdBuffer.add(p->getPosition(), childDid.toColor(), p->getAttribute().size);
-	}
-	parentIdViewModel.pointIdBuffers.push_back(parentIdBuffer);
-	childIdViewModel.pointIdBuffers.push_back(childIdBuffer);
-}
-
 Crystal::Math::Box3d ParticleSystemScene::getBoundingBox() const
 {
 	return getShape()->getBoundingBox();

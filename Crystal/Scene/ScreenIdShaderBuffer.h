@@ -5,10 +5,19 @@
 
 namespace Crystal {
 	namespace Scene {
+		class ParticleSystemScene;
+		class WireFrameScene;
+		class PolygonMeshScene;
 
 class ScreenIdShaderBuffer
 {
 public:
+	void add(ParticleSystemScene* scene);
+
+	void add(WireFrameScene* scene);
+
+	void add(PolygonMeshScene* scene);
+
 	std::vector<PointBuffer> pointIdBuffers;
 	std::vector<LineBuffer> lineIdBuffers;
 	std::vector<LineBuffer> triangleIdBuffers;

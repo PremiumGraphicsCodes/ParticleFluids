@@ -9,12 +9,7 @@
 #include "../Shader/GLObjectFactory.h"
 
 namespace Crystal {
-	namespace Shader {
-		class IShaderCommand;
-	}
 	namespace Scene {
-		class ScreenIdShaderBuffer;
-		class ScreenShader;
 
 class IScene
 {
@@ -64,8 +59,6 @@ public:
 	T findSceneByName(const std::string& name) { return static_cast<T>(findSceneByName(name)); }
 
 	std::list<IScene*> findScenes(SceneType type);
-
-	virtual void send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const {}
 
 	virtual Math::Box3d getBoundingBox() const { return Math::Box3d::createDegeneratedBox(); }
 

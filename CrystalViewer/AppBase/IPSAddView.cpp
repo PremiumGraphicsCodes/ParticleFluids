@@ -30,7 +30,7 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	command.execute(getWorld());
 	auto newId = std::any_cast<int>( command.getResult(ParticleSystemCreateLabels::NewIdLabel) );
 
-	getWorld()->updateViewModel();
+	//getWorld()->updateViewModel();
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 }

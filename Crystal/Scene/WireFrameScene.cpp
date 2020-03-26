@@ -45,27 +45,6 @@ Box3d WireFrameScene::getBoundingBox() const
 	return shape->getBoundingBox();
 }
 
-void WireFrameScene::send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const
-{
-	if (!isVisible()) {
-		return;
-	}
-	const auto objectId = getId();
-	int childId = 0;
-	int index = 0;
-
-	const auto& positions = shape->getPositions();
-	LineBuffer lineBuffer(getAttribute().width);
-	lineBuffer.setMatrix(getMatrix());
-	for (const auto& l : positions) {
-		Graphics::DrawableID parentDid(objectId);
-		Graphics::DrawableID childDid(childId++);
-		lineBuffer.addVertex(l, parentDid.toColor());
-		lineBuffer.addIndex(index++);
-	}
-	parentIdViewModel.lineIdBuffers.push_back(lineBuffer);
-}
-
 Vector3dd WireFrameScene::getPosition(const int index) const
 {
 	const auto& positions = shape->getPositions();

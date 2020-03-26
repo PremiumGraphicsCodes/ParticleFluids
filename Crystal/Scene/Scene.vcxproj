@@ -71,6 +71,7 @@
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="PointShaderBuffer.cpp" />
     <ClCompile Include="ScreenIdShader.cpp" />
+    <ClCompile Include="ScreenIdShaderBuffer.cpp" />
     <ClCompile Include="ScreenShaderBuffer.cpp" />
     <ClCompile Include="ScreenShader.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />

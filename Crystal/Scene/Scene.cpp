@@ -37,12 +37,5 @@ Box3d Scene::getBoundingBox() const
 	return bb;
 }
 
-void Scene::send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const
-{
-	for (auto c : children) {
-		c->send(parentIdViewModel, childIdViewModel);
-	}
-}
-
 
 

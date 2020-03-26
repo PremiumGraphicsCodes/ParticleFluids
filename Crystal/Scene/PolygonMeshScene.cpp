@@ -21,33 +21,6 @@ PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::u
 	shape(std::move(shape))
 {}
 
-void PolygonMeshScene::send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const
-{
-	const auto objectId = getId();
-	const auto& vertices = getShape()->getVertices();
-	const auto& positions = getShape()->getPositions();
-	const auto& faces = getShape()->getFaces();
-	int childId = 0;
-	int index = 0;
-
-	LineBuffer buffer;
-	buffer.setMatrix(getMatrix());
-	for (auto f : faces) {
-		Graphics::DrawableID parentDid(objectId);
-		Graphics::DrawableID childDid(childId++);
-		const auto& idColor = parentDid.toColor();
-		const auto& vIds = f.getVertexIds();
-
-		buffer.addVertex( positions[ vertices[vIds[0]].positionId ], idColor);
-		buffer.addVertex( positions[ vertices[vIds[1]].positionId ], idColor);
-		buffer.addVertex( positions[ vertices[vIds[2]].positionId ], idColor);
-		buffer.addIndex(index++);
-		buffer.addIndex(index++);
-		buffer.addIndex(index++);
-	}
-	parentIdViewModel.triangleIdBuffers.push_back(buffer);
-}
-
 Box3d PolygonMeshScene::getBoundingBox() const
 {
 	return getShape()->getBoundingBox();

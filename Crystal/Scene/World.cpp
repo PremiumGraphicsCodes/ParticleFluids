@@ -109,12 +109,14 @@ void World::addScene(int layer, IScene* scene)
 
 void World::updateViewModel()
 {
+	/*
 	ViewModel vm;
 	for (auto& s : scenes) {
 		s->send(vm.parentId, vm.childId);
 	}
 
 	this->viewModel = vm;
+	*/
 }
 
 Box3d World::getBoundingBox() const

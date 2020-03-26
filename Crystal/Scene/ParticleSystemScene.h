@@ -29,8 +29,6 @@ public:
 
 	SceneType getType() const override { return SceneType::ParticleSystemScene; }
 
-	void send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const override;
-
 	Math::Box3d getBoundingBox() const override;
 
 	Math::Vector3dd getPosition(const int index) const override;

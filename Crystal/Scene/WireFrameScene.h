@@ -32,8 +32,6 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const;
 
-	void send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const override;
-
 	Math::Vector3dd getPosition(const int index) const override;
 
 	IShapeScene* clone() const override;
