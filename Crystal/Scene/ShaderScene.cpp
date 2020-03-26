@@ -41,7 +41,7 @@ bool ShaderScene::build(GLObjectFactory& factory)
 
 void ShaderScene::render(const int width, const int height, const ViewModel& vm)
 {
-	objectRenderer.render(camera.get());
+	objectRenderer.render(camera.get(), buffer.screen);
 	parentIdRenderer.render(camera.get(), vm.parentId);
 	childIdRenderer.render(camera.get(), vm.childId);
 

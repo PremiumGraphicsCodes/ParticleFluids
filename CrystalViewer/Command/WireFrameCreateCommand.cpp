@@ -51,7 +51,7 @@ bool WireFrameCreateCommand::execute(World* world)
 	auto scene = world->getSceneFactory()->createWireFrameScene(std::move(shape), attr, name);
 	scene->setMatrix(args.matrix.getValue());
 	world->addScene(args.layer.getValue(), scene);
-	world->getRenderer()->getObjectRenderer()->add(scene);
+	world->getRenderer()->getBuffer()->screen.add(scene);
 	results.newId.setValue(scene->getId());
 	//world->updateViewModel();
 	return true;

@@ -30,7 +30,7 @@ bool ScreenShaderScene::build(GLObjectFactory& factory)
 	return true;
 }
 
-void ScreenShaderScene::add(ParticleSystemScene* scene)
+void ScreenShaderBuffer::add(ParticleSystemScene* scene)
 {
 	const auto& ps = scene->getShape()->getParticles();
 	PointBuffer pb;
@@ -45,7 +45,7 @@ void ScreenShaderScene::add(ParticleSystemScene* scene)
 	pointBuffers.push_back(buffer);
 }
 
-void ScreenShaderScene::add(WireFrameScene* scene)
+void ScreenShaderBuffer::add(WireFrameScene* scene)
 {
 	const auto& shape = scene->getShape();
 	const auto& positions = shape->getPositions();
@@ -67,7 +67,7 @@ void ScreenShaderScene::add(WireFrameScene* scene)
 	lineBuffers.push_back(lb);
 }
 
-void ScreenShaderScene::add(PolygonMeshScene* parent)
+void ScreenShaderBuffer::add(PolygonMeshScene* parent)
 {
 	const auto& shape = parent->getShape();
 	const auto& vs = shape->getVertices();
@@ -108,7 +108,7 @@ void ScreenShaderScene::add(PolygonMeshScene* parent)
 	}
 }
 
-void ScreenShaderScene::render(Camera* camera)
+void ScreenShaderScene::render(Camera* camera, const ScreenShaderBuffer& buffer)
 {
 	this->camera = camera;
 	frameBufferObject->setTexture(texture);
@@ -118,14 +118,14 @@ void ScreenShaderScene::render(Camera* camera)
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (mask.showPoints) {
-		for (auto buffer : pointBuffers) {
+		for (auto buffer : buffer.pointBuffers) {
 			buffer.camera = *camera;
 			pointRenderer.send(buffer);
 			pointRenderer.render();
 		}
 	}
 	if (mask.showLines) {
-		for (auto lb : lineBuffers) {
+		for (auto lb : buffer.lineBuffers) {
 			lb.camera = *camera;
 			wireRenderer.setBuffer(lb);
 			wireRenderer.render();
@@ -133,19 +133,19 @@ void ScreenShaderScene::render(Camera* camera)
 	}
 	if (mask.showTrianlges) {
 		std::vector<Material> mBuffer;
-		for (auto m : materialScenes) {
+		for (auto m : buffer.materialScenes) {
 			mBuffer.push_back(*m->getMaterial());
 		}
 		smoothRenderer.send(mBuffer);
 		LightShaderBuffer lBuffer;
-		for (auto l : lightScenes) {
+		for (auto l : buffer.lightScenes) {
 			lBuffer.add(*l->getLight());
 		}
 		TextureShaderBuffer texBuffer;
-		for (auto tex : textureScenes) {
+		for (auto tex : buffer.textureScenes) {
 			texBuffer.add(tex->getTextureObject());
 		}
-		for (auto pm : pmScenes) {
+		for (auto pm : buffer.pmScenes) {
 	//		smoothRenderer.send();
 			smoothRenderer.render();
 		}

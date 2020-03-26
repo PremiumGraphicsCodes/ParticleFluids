@@ -43,7 +43,7 @@ bool TextureCreateCommand::execute(World* world)
 //	scene->build(*world->getGLFactory());
 //	scene->send();
 	world->getObjects()->addScene(scene);
-	world->getRenderer()->getObjectRenderer()->add(scene);
+	world->getRenderer()->getBuffer()->screen.add(scene);
 	results.newId.setValue(scene->getId());
 	return true;
 }

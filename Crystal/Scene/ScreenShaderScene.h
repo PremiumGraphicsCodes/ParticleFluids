@@ -24,6 +24,32 @@ namespace Crystal {
 		class LightScene;
 		class SceneViewModel;
 
+struct ScreenShaderBuffer
+{
+	void add(ParticleSystemScene* scene);
+
+	void add(WireFrameScene* scene);
+
+	void add(PolygonMeshScene* scene);
+
+	void add(TextureScene* scene) { this->textureScenes.push_back(scene); }
+
+	void add(MaterialScene* scene) { this->materialScenes.push_back(scene); }
+
+	void add(LightScene* scene) { this->lightScenes.push_back(scene); }
+
+	//void build();
+
+	//void release();
+
+	std::vector<PointShaderBuffer> pointBuffers;
+	std::vector<LineShaderBuffer> lineBuffers;
+	std::vector<SmoothShaderBuffer> pmScenes;
+	std::vector<TextureScene*> textureScenes;
+	std::vector<MaterialScene*> materialScenes;
+	std::vector<LightScene*> lightScenes;
+};
+
 class ScreenShaderScene : private UnCopyable
 {
 public:
@@ -35,7 +61,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory);
 
-	void render(Graphics::Camera* camera);
+	void render(Graphics::Camera* camera, const ScreenShaderBuffer& buffer);
 
 	struct Mask
 	{
@@ -56,24 +82,6 @@ public:
 
 	Shader::TextureObject getTexture() { return texture; }
 
-	void add(ParticleSystemScene* scene);
-
-	void add(WireFrameScene* scene);
-
-	void add(PolygonMeshScene* scene);
-
-	void add(TextureScene* scene) { this->textureScenes.push_back(scene); }
-
-	void add(MaterialScene* scene) { this->materialScenes.push_back(scene); }
-
-	void add(LightScene* scene) { this->lightScenes.push_back(scene); }
-
-	PointShader* getPointRenderer() { return &pointRenderer; }
-
-	LineShaderScene* getLineRenderer() { return &wireRenderer; }
-
-	SmoothShaderScene* getSmoothRenderer() { return &smoothRenderer; }
-
 	Graphics::Camera* getCamera() { return camera; }
 
 private:
@@ -88,12 +96,6 @@ private:
 	Shader::TextureObject texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
 
-	std::vector<PointShaderBuffer> pointBuffers;
-	std::vector<LineShaderBuffer> lineBuffers;
-	std::vector<SmoothShaderBuffer> pmScenes;
-	std::vector<TextureScene*> textureScenes;
-	std::vector<MaterialScene*> materialScenes;
-	std::vector<LightScene*> lightScenes;
 };
 	}
 }

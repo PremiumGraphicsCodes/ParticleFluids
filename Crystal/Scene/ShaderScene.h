@@ -16,6 +16,11 @@ namespace Crystal {
 	}
 	namespace Scene {
 
+struct ShaderBuffer
+{
+	ScreenShaderBuffer screen;
+};
+
 class ShaderScene : private UnCopyable
 {
 public:
@@ -37,12 +42,16 @@ public:
 
 	Graphics::Camera* getCamera() { return camera.get(); }
 
+	ShaderBuffer* getBuffer() { return &buffer; }
+
 private:
 	Shader::OnScreenRenderer renderer;
 
 	ScreenShaderScene objectRenderer;
 	ScreenIdShaderScene parentIdRenderer;
 	ScreenIdShaderScene childIdRenderer;
+
+	ShaderBuffer buffer;
 
 	bool showOffScreen;
 
