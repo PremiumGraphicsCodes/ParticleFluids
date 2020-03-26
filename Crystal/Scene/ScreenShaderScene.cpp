@@ -70,7 +70,7 @@ void ScreenShaderScene::render(Camera* camera, const ScreenShaderBuffer& buffer)
 			textures.push_back(tex->getTextureObject());
 		}
 		for (auto pm : buffer.pmScenes) {
-	//		smoothRenderer.send();
+			smoothRenderer.send(pm);
 			smoothRenderer.render();
 		}
 	}
