@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Graphics/PointLight.h"
-#include "IShaderScene.h"
+#include "IShader.h"
 #include "LightShaderBuffer.h"
 
 namespace Crystal {

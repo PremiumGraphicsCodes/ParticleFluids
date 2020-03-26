@@ -2,7 +2,7 @@
 
 #include "../Shader/ShaderObject.h"
 
-#include "IShaderScene.h"
+#include "IShader.h"
 
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer3d.h"

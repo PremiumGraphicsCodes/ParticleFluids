@@ -12,7 +12,7 @@
 #include "LightShaderScene.h"
 #include "TextureShaderScene.h"
 
-#include "IShaderScene.h"
+#include "IShader.h"
 
 namespace Crystal {
 	namespace Scene {

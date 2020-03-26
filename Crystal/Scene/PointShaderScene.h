@@ -4,7 +4,7 @@
 #include "../Shader/ShaderObject.h"
 
 #include "PointShaderBuffer.h"
-#include "IShaderScene.h"
+#include "IShader.h"
 
 namespace Crystal {
 	namespace Scene {

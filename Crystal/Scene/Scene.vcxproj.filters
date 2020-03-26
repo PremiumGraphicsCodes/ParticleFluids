@@ -112,9 +112,6 @@
     <ClInclude Include="ShaderScene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="IShaderScene.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="SmoothShaderBuffer.h">
       <Filter>Renderer\Triangle</Filter>
     </ClInclude>
@@ -126,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="PointBuffer.h">
       <Filter>Renderer\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="IShader.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

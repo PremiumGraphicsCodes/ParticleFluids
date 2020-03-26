@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IShaderScene.h"
+#include "IShader.h"
 
 #include "../Graphics/PointLight.h"
 
