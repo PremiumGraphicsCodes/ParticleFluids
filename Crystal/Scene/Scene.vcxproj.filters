@@ -112,6 +112,9 @@
     <ClInclude Include="LineShader.h">
       <Filter>Renderer\Line</Filter>
     </ClInclude>
+    <ClInclude Include="LineBuffer.h">
+      <Filter>Renderer\Line</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
