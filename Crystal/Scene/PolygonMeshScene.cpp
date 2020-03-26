@@ -1,5 +1,5 @@
 #include "PolygonMeshScene.h"
-#include "SceneIdViewModel.h"
+#include "SceneIdShaderBuffer.h"
 
 #include "../Graphics/DrawableId.h"
 #include "../Math/Line3d.h"
@@ -21,7 +21,7 @@ PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::u
 	shape(std::move(shape))
 {}
 
-void PolygonMeshScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
+void PolygonMeshScene::send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const
 {
 	const auto objectId = getId();
 	const auto& vertices = getShape()->getVertices();

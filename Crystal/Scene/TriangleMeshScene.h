@@ -28,7 +28,7 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const { return {}; }
 
-	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override {}
+	void send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const override {}
 
 	IShapeScene* clone() const override { return nullptr; }
 

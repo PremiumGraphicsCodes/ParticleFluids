@@ -36,7 +36,7 @@ public:
 
 	void toViewModel(SceneViewModel& viewModel) const override {}
 
-	void toIdViewModel(SceneIdViewModel& viewModel) const override {}
+	void toIdViewModel(ScreenIdShaderBuffer& viewModel) const override {}
 
 private:
 	std::unique_ptr< Graphics::Camera > camera;

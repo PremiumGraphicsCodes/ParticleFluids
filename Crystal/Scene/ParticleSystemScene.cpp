@@ -1,6 +1,6 @@
 #include "ParticleSystemScene.h"
 
-#include "SceneIdViewModel.h"
+#include "SceneIdShaderBuffer.h"
 
 #include "../Graphics/DrawableId.h"
 #include "ShaderScene.h"
@@ -21,7 +21,7 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 	shape(std::move(shape))
 {}
 
-void ParticleSystemScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
+void ParticleSystemScene::send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const
 {
 	if (!isVisible()) {
 		return;

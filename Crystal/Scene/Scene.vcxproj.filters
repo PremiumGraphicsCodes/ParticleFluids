@@ -27,9 +27,6 @@
     <ClInclude Include="SceneIdProvider.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneIdViewModel.h">
-      <Filter>ViewModel</Filter>
-    </ClInclude>
     <ClInclude Include="LightScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
@@ -113,6 +110,9 @@
       <Filter>Renderer\Line</Filter>
     </ClInclude>
     <ClInclude Include="ScreenIdShader.h">
+      <Filter>Renderer\ScreenId</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneIdShaderBuffer.h">
       <Filter>Renderer\ScreenId</Filter>
     </ClInclude>
   </ItemGroup>

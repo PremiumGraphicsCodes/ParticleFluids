@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-#include "SceneIdViewModel.h"
+#include "SceneIdShaderBuffer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -37,7 +37,7 @@ Box3d Scene::getBoundingBox() const
 	return bb;
 }
 
-void Scene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
+void Scene::send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const
 {
 	for (auto c : children) {
 		c->send(parentIdViewModel, childIdViewModel);

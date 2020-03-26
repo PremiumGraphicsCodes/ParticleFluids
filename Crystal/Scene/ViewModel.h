@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SceneIdViewModel.h"
+#include "SceneIdShaderBuffer.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -8,8 +8,8 @@ namespace Crystal {
 class ViewModel
 {
 public:
-	SceneIdViewModel parentId;
-	SceneIdViewModel childId;
+	ScreenIdShaderBuffer parentId;
+	ScreenIdShaderBuffer childId;
 };
 	}
 }

@@ -18,7 +18,7 @@ public:
 
 	virtual SceneType getType() const { return SceneType::Root; }
 
-	void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const override;
+	void send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const override;
 
 private:
 };

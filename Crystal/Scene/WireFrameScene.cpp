@@ -1,6 +1,6 @@
 #include "WireFrameScene.h"
 
-#include "SceneIdViewModel.h"
+#include "SceneIdShaderBuffer.h"
 
 #include "../Graphics/DrawableId.h"
 
@@ -45,7 +45,7 @@ Box3d WireFrameScene::getBoundingBox() const
 	return shape->getBoundingBox();
 }
 
-void WireFrameScene::send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const
+void WireFrameScene::send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const
 {
 	if (!isVisible()) {
 		return;

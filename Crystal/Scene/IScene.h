@@ -13,7 +13,7 @@ namespace Crystal {
 		class IShaderCommand;
 	}
 	namespace Scene {
-		class SceneIdViewModel;
+		class ScreenIdShaderBuffer;
 		class ScreenShader;
 
 class IScene
@@ -65,7 +65,7 @@ public:
 
 	std::list<IScene*> findScenes(SceneType type);
 
-	virtual void send(SceneIdViewModel& parentIdViewModel, SceneIdViewModel& childIdViewModel) const {}
+	virtual void send(ScreenIdShaderBuffer& parentIdViewModel, ScreenIdShaderBuffer& childIdViewModel) const {}
 
 	virtual Math::Box3d getBoundingBox() const { return Math::Box3d::createDegeneratedBox(); }
 

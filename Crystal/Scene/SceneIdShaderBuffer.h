@@ -6,7 +6,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class SceneIdViewModel
+class ScreenIdShaderBuffer
 {
 public:
 	std::vector<PointBuffer> pointIdBuffers;

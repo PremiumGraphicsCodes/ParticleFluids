@@ -46,7 +46,7 @@
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
-    <ClInclude Include="SceneIdViewModel.h" />
+    <ClInclude Include="SceneIdShaderBuffer.h" />
     <ClInclude Include="SceneId.h" />
     <ClInclude Include="SceneIdProvider.h" />
     <ClInclude Include="Scene.h" />

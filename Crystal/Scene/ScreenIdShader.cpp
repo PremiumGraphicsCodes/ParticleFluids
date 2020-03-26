@@ -1,6 +1,5 @@
 #include "ScreenIdShader.h"
-#include "../../Crystal/Scene/Scene.h"
-#include "../../Crystal/Scene/SceneIdViewModel.h"
+#include "../../Crystal/Scene/SceneIdShaderBuffer.h"
 
 #include "../Shader/GLObjectFactory.h"
 
@@ -31,7 +30,7 @@ bool ScreenIdShader::build(GLObjectFactory& factory)
 	return true;
 }
 
-void ScreenIdShader::render(Camera* camera, const SceneIdViewModel& vm)
+void ScreenIdShader::render(Camera* camera, const ScreenIdShaderBuffer& vm)
 {
 	const auto& pointBuffers = vm.pointIdBuffers;
 	const auto& lineBuffers = vm.lineIdBuffers;
