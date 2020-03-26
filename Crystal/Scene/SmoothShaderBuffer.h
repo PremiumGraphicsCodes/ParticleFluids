@@ -8,7 +8,6 @@
 #include "../Graphics/Material.h"
 
 #include "../Shader/VertexBufferObject.h"
-#include "LightShaderBuffer.h"
 #include "TextureShaderBuffer.h"
 
 namespace Crystal {
@@ -61,7 +60,6 @@ public:
 
 	void release();
 
-	LightShaderBuffer lightBuffer;
 	TextureShaderBuffer textureButter;
 };
 

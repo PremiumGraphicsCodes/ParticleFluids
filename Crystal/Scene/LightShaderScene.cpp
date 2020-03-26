@@ -32,8 +32,6 @@ bool LightShaderScene::build()
 
 void LightShaderScene::send()
 {
-	const auto& lights = buffer.getLights();
-
 	shader->bind();
 	for (int i = 0; i < lights.size(); ++i) {
 		const auto& light = lights[i];

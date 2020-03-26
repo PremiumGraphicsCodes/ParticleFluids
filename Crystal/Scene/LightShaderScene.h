@@ -2,7 +2,6 @@
 
 #include "../Graphics/PointLight.h"
 #include "IShader.h"
-#include "LightShaderBuffer.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -17,7 +16,7 @@ public:
 
 	void setShader(Shader::ShaderObject* shader);
 
-	void setBuffer(const LightShaderBuffer& buffer) { this->buffer = buffer; }
+	void setBuffer(const std::vector<Graphics::PointLight>& buffer) { this->lights = buffer; }
 
 	bool build() override;
 
@@ -31,7 +30,7 @@ public:
 
 private:
 	Shader::ShaderObject* shader;
-	LightShaderBuffer buffer;
+	std::vector<Graphics::PointLight> lights;
 };
 
 	}

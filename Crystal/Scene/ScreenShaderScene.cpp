@@ -61,9 +61,9 @@ void ScreenShaderScene::render(Camera* camera, const ScreenShaderBuffer& buffer)
 			mBuffer.push_back(*m->getMaterial());
 		}
 		smoothRenderer.send(mBuffer);
-		LightShaderBuffer lBuffer;
+		std::vector<PointLight> lBuffer;
 		for (auto l : buffer.lightScenes) {
-			lBuffer.add(*l->getLight());
+			lBuffer.push_back(*l->getLight());
 		}
 		TextureShaderBuffer texBuffer;
 		for (auto tex : buffer.textureScenes) {
