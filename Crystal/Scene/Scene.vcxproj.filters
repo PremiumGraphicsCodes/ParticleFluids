@@ -94,9 +94,6 @@
     <ClInclude Include="LineShaderBuffer.h">
       <Filter>Renderer\Line</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialShaderBuffer.h">
-      <Filter>Renderer\Material</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenShaderScene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -187,9 +184,6 @@
     <ClCompile Include="LineShaderBuffer.cpp">
       <Filter>Renderer\Line</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialShaderBuffer.cpp">
-      <Filter>Renderer\Material</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenShaderScene.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -254,9 +248,6 @@
     </Filter>
     <Filter Include="Scene\Shape\Volume">
       <UniqueIdentifier>{e4eec2bb-f092-4b14-864c-f47953c88957}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Material">
-      <UniqueIdentifier>{363a07b6-7afd-440f-9c77-f97050ccf20d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Renderer\Light">
       <UniqueIdentifier>{57a9a0ba-a738-4702-8009-f5cab1a18663}</UniqueIdentifier>

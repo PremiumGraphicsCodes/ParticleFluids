@@ -7,7 +7,6 @@
 #include "../Shader/TextureObject.h"
 #include "../Shader/VertexBufferObject.h"
 
-#include "MaterialShaderBuffer.h"
 #include "LightShaderScene.h"
 #include "TextureShaderScene.h"
 

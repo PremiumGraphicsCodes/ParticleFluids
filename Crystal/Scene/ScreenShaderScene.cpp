@@ -132,9 +132,9 @@ void ScreenShaderScene::render(Camera* camera)
 		}
 	}
 	if (mask.showTrianlges) {
-		MaterialShaderBuffer mBuffer;
+		std::vector<Material> mBuffer;
 		for (auto m : materialScenes) {
-			mBuffer.add(*m->getMaterial());
+			mBuffer.push_back(*m->getMaterial());
 		}
 		LightShaderBuffer lBuffer;
 		for (auto l : lightScenes) {
