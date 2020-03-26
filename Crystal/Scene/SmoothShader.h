@@ -14,10 +14,10 @@
 namespace Crystal {
 	namespace Scene {
 
-class SmoothShaderScene : public IShader
+class SmoothShader : public IShader
 {
 public:
-	SmoothShaderScene();
+	SmoothShader();
 
 	bool build() override;
 

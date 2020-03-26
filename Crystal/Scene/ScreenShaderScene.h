@@ -2,7 +2,7 @@
 
 #include "../Scene/PointShader.h"
 #include "../Scene/LineShaderScene.h"
-#include "../Scene/SmoothShaderScene.h"
+#include "../Scene/SmoothShader.h"
 
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
@@ -55,7 +55,7 @@ public:
 private:
 	PointShader pointRenderer;
 	LineShaderScene wireRenderer;
-	SmoothShaderScene smoothRenderer;
+	SmoothShader smoothRenderer;
 
 	Mask mask;
 

@@ -1,4 +1,4 @@
-#include "SmoothShaderScene.h"
+#include "SmoothShader.h"
 
 #include "../Graphics/Material.h"
 #include "../Graphics/PointLight.h"
@@ -20,11 +20,11 @@ namespace {
 	constexpr char* texCoordLabel = "texCoord";
 }
 
-SmoothShaderScene::SmoothShaderScene()
+SmoothShader::SmoothShader()
 {
 }
 
-bool SmoothShaderScene::build()
+bool SmoothShader::build()
 {
 	const auto& vsSource = getBuildInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
@@ -69,12 +69,12 @@ bool SmoothShaderScene::build()
 	return isOk;
 }
 
-void SmoothShaderScene::release()
+void SmoothShader::release()
 {
 	shader.release();
 }
 
-void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer)
+void SmoothShader::send(const SmoothShaderBuffer& glBuffer)
 {
 	const auto& projectionMatrix = glBuffer.camera.getProjectionMatrix();
 	const auto& modelviewMatrix = glBuffer.camera.getModelViewMatrix() * matrix;
@@ -99,7 +99,7 @@ void SmoothShaderScene::send(const SmoothShaderBuffer& glBuffer)
 	this->count = glBuffer.count;
 }
 
-void SmoothShaderScene::send(const std::vector<Material>& materials)
+void SmoothShader::send(const std::vector<Material>& materials)
 {
 	shader.bind();
 	for (int i = 0; i < materials.size(); ++i) {
@@ -116,7 +116,7 @@ void SmoothShaderScene::send(const std::vector<Material>& materials)
 	shader.unbind();
 }
 
-void SmoothShaderScene::send(const std::vector<PointLight>& lights)
+void SmoothShader::send(const std::vector<PointLight>& lights)
 {
 	shader.bind();
 	for (int i = 0; i < lights.size(); ++i) {
@@ -136,7 +136,7 @@ void SmoothShaderScene::send(const std::vector<PointLight>& lights)
 	shader.unbind();
 }
 
-void SmoothShaderScene::send(const std::vector<TextureObject>& textures)
+void SmoothShader::send(const std::vector<TextureObject>& textures)
 {
 	shader.bind();
 	for (int i = 0; i < textures.size(); ++i) {
@@ -146,7 +146,7 @@ void SmoothShaderScene::send(const std::vector<TextureObject>& textures)
 	shader.unbind();
 }
 
-void SmoothShaderScene::render()
+void SmoothShader::render()
 {
 	shader.bind();
 	shader.bindOutput("fragColor");
@@ -187,7 +187,7 @@ void SmoothShaderScene::render()
 	shader.unbind();
 }
 
-std::string SmoothShaderScene::getBuildInVertexShaderSource() const
+std::string SmoothShader::getBuildInVertexShaderSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -212,7 +212,7 @@ std::string SmoothShaderScene::getBuildInVertexShaderSource() const
 	return stream.str();
 }
 
-std::string SmoothShaderScene::getBuiltInFragmentShaderSource() const
+std::string SmoothShader::getBuiltInFragmentShaderSource() const
 {
 	std::ostringstream stream;
 	stream

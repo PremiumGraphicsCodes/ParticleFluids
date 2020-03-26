@@ -1,5 +1,5 @@
 #include "FaceGroupScene.h"
-#include "SmoothShaderScene.h"
+#include "SmoothShader.h"
 
 #include "PolygonMeshScene.h"
 #include "TextureScene.h"
