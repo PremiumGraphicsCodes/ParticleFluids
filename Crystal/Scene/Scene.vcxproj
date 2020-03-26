@@ -29,7 +29,7 @@
     <ClInclude Include="IShader.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LineShaderBuffer.h" />
-    <ClInclude Include="LineShaderScene.h" />
+    <ClInclude Include="LineShader.h" />
     <ClInclude Include="PointBuffer.h" />
     <ClInclude Include="PointShaderBuffer.h" />
     <ClInclude Include="ScreenIdShaderScene.h" />
@@ -66,7 +66,7 @@
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="LineShaderBuffer.cpp" />
-    <ClCompile Include="LineShaderScene.cpp" />
+    <ClCompile Include="LineShader.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="PointShaderBuffer.cpp" />
     <ClCompile Include="ScreenIdShaderScene.cpp" />

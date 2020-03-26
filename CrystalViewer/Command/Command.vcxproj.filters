@@ -221,12 +221,6 @@
     <ClInclude Include="Public\STLFileImportLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="BuildCommand.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\BuildLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -335,9 +329,6 @@
     </ClCompile>
     <ClCompile Include="TextureSetCommand.cpp">
       <Filter>Scene\Appearance\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="BuildCommand.cpp">
-      <Filter>World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

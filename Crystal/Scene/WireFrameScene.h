@@ -6,8 +6,6 @@
 #include "../Math/Line3d.h"
 #include "../Shape/WireFrame.h"
 
-#include "LineShaderScene.h"
-
 namespace Crystal {
 	namespace Scene {
 

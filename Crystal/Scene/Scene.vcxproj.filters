@@ -73,9 +73,6 @@
     <ClInclude Include="TextureScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="LineShaderScene.h">
-      <Filter>Renderer\Line</Filter>
-    </ClInclude>
     <ClInclude Include="PointShaderBuffer.h">
       <Filter>Renderer\Point</Filter>
     </ClInclude>
@@ -100,9 +97,6 @@
     <ClInclude Include="PointShader.h">
       <Filter>Renderer\Point</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenShaderBuffer.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="TriangleShaderScene.h">
       <Filter>Renderer\Triangle</Filter>
     </ClInclude>
@@ -110,7 +104,13 @@
       <Filter>Renderer\Smooth</Filter>
     </ClInclude>
     <ClInclude Include="ScreenShader.h">
-      <Filter>Renderer</Filter>
+      <Filter>Renderer\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenShaderBuffer.h">
+      <Filter>Renderer\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="LineShader.h">
+      <Filter>Renderer\Line</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -154,9 +154,6 @@
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="LineShaderScene.cpp">
-      <Filter>Renderer\Line</Filter>
-    </ClCompile>
     <ClCompile Include="PointShaderBuffer.cpp">
       <Filter>Renderer\Point</Filter>
     </ClCompile>
@@ -175,9 +172,6 @@
     <ClCompile Include="PointShader.cpp">
       <Filter>Renderer\Point</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenShaderBuffer.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="TriangleShaderScene.cpp">
       <Filter>Renderer\Triangle</Filter>
     </ClCompile>
@@ -185,7 +179,13 @@
       <Filter>Renderer\Smooth</Filter>
     </ClCompile>
     <ClCompile Include="ScreenShader.cpp">
-      <Filter>Renderer</Filter>
+      <Filter>Renderer\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenShaderBuffer.cpp">
+      <Filter>Renderer\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="LineShader.cpp">
+      <Filter>Renderer\Line</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +233,9 @@
     </Filter>
     <Filter Include="Renderer\Triangle">
       <UniqueIdentifier>{88b8dc67-ef55-415e-8748-bdd81864b242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Screen">
+      <UniqueIdentifier>{047ecd1c-8082-4ba8-865d-2104aa99fc07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

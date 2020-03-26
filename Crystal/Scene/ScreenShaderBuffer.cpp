@@ -7,6 +7,26 @@
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 
+void ScreenShaderBuffer::release()
+{
+	for (auto& pb : pointBuffers) {
+		pb.release();
+	}
+	pointBuffers.clear();
+	for (auto& lb : lineBuffers) {
+		lb.release();
+	}
+	lineBuffers.clear();
+	for (auto& pm : pmScenes) {
+		pm.release();
+	}
+	pmScenes.clear();
+
+	textureScenes.clear();
+	materialScenes.clear();
+	lightScenes.clear();
+}
+
 void ScreenShaderBuffer::add(ParticleSystemScene* scene)
 {
 	const auto& ps = scene->getShape()->getParticles();

@@ -13,10 +13,10 @@
 namespace Crystal {
 	namespace Scene {
 
-class LineShaderScene : public IShader
+class LineShader : public IShader
 {
 public:
-	LineShaderScene();
+	LineShader();
 
 	bool build() override;
 

@@ -30,7 +30,7 @@ public:
 
 	//void build();
 
-	//void release();
+	void release();
 
 	std::vector<PointShaderBuffer> pointBuffers;
 	std::vector<LineShaderBuffer> lineBuffers;

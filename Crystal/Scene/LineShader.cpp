@@ -1,4 +1,4 @@
-#include "LineShaderScene.h"
+#include "LineShader.h"
 #include <sstream>
 
 using namespace Crystal::Graphics;
@@ -13,11 +13,11 @@ namespace {
 	constexpr const char* fragColorLabel = "fragColor";
 }
 
-LineShaderScene::LineShaderScene()
+LineShader::LineShader()
 {
 }
 
-bool LineShaderScene::build()
+bool LineShader::build()
 {
 	const auto& vsSource = getBuiltInVsSource();
 	const auto& fsSource = getBuiltInFsSource();
@@ -32,12 +32,12 @@ bool LineShaderScene::build()
 	return isOk;
 }
 
-void LineShaderScene::release()
+void LineShader::release()
 {
 	shader.release();
 }
 
-void LineShaderScene::render()
+void LineShader::render()
 {
 	const auto& projectionMatrix = glBuffer.camera.getProjectionMatrix();
 	const auto& modelviewMatrix = glBuffer.camera.getModelViewMatrix() * glBuffer.matrix;
@@ -68,7 +68,7 @@ void LineShaderScene::render()
 	assert(GL_NO_ERROR == glGetError());
 }
 
-std::string LineShaderScene::getBuiltInVsSource() const
+std::string LineShader::getBuiltInVsSource() const
 {
 	std::ostringstream stream;
 	stream
@@ -86,7 +86,7 @@ std::string LineShaderScene::getBuiltInVsSource() const
 	return stream.str();
 }
 
-std::string LineShaderScene::getBuiltInFsSource() const
+std::string LineShader::getBuiltInFsSource() const
 {
 	std::ostringstream stream;
 	stream

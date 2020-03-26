@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Scene/PointShader.h"
-#include "../Scene/LineShaderScene.h"
+#include "../Scene/LineShader.h"
 #include "../Scene/SmoothShader.h"
 
 #include "../Shader/FrameBufferObject.h"
@@ -54,7 +54,7 @@ public:
 
 private:
 	PointShader pointRenderer;
-	LineShaderScene wireRenderer;
+	LineShader wireRenderer;
 	SmoothShader smoothRenderer;
 
 	Mask mask;

@@ -4,7 +4,6 @@
 
 #include "../Command/Command.h"
 #include "../Command/Public/WireFrameCreateLabels.h"
-#include "../Command/Public/BuildLabels.h"
 #include "../Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
@@ -25,11 +24,6 @@ void IWFAddView::addWireFrame(const std::vector<Vector3dd>& positions, const std
 	command.setArg(WireFrameCreateLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
 	const auto newId = std::any_cast<int>(command.getResult(WireFrameCreateLabels::NewIdLabel));
-
-	command.create(BuildLabels::CommandNameLabel);
-	command.setArg(BuildLabels::LayerLabel, 1);
-	command.setArg(BuildLabels::IdLabel, newId);
-	command.execute(getWorld());
 
 	getWorld()->updateViewModel();
 

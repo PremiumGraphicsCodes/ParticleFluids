@@ -1,4 +1,4 @@
-#include "LineShaderScene.h"
+#include "LineShader.h"
 
 #include "../Shader/VertexBufferObject.h"
 

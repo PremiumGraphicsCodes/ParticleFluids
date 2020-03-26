@@ -8,7 +8,6 @@
 
 #include "../Command/Command.h"
 #include "../Command/Public/PolygonMeshCreateLabels.h"
-#include "../Command/Public/BuildLabels.h"
 #include "../Command/Public/CameraLabels.h"
 
 #include "Canvas.h"
@@ -43,11 +42,6 @@ void PMQuadView::onOk()
 	command.setArg(PolygonMeshCreateLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
 	const auto newId = std::any_cast<int>(command.getResult(PolygonMeshCreateLabels::NewIdLabel));
-
-	command.create(BuildLabels::CommandNameLabel);
-	command.setArg(BuildLabels::LayerLabel, 1);
-	command.setArg(BuildLabels::IdLabel, newId);
-	command.execute(getWorld());
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
