@@ -79,9 +79,6 @@
     <ClInclude Include="LineShaderBuffer.h">
       <Filter>Renderer\Line</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenIdShaderScene.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderScene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -114,6 +111,9 @@
     </ClInclude>
     <ClInclude Include="LineBuffer.h">
       <Filter>Renderer\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenIdShader.h">
+      <Filter>Renderer\ScreenId</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +163,6 @@
     <ClCompile Include="LineShaderBuffer.cpp">
       <Filter>Renderer\Line</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenIdShaderScene.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderScene.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -189,6 +186,9 @@
     </ClCompile>
     <ClCompile Include="LineShader.cpp">
       <Filter>Renderer\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenIdShader.cpp">
+      <Filter>Renderer\ScreenId</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +239,9 @@
     </Filter>
     <Filter Include="Renderer\Screen">
       <UniqueIdentifier>{047ecd1c-8082-4ba8-865d-2104aa99fc07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\ScreenId">
+      <UniqueIdentifier>{10586be7-6032-4329-8d9f-49fb8c1d71a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

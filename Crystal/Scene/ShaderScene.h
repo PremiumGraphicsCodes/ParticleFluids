@@ -4,7 +4,7 @@
 #include "../Shader/OnScreenRenderer.h"
 
 #include "ScreenShader.h"
-#include "ScreenIdShaderScene.h"
+#include "ScreenIdShader.h"
 
 #include "ScreenShaderBuffer.h"
 
@@ -36,9 +36,9 @@ public:
 
 	ScreenShader* getObjectRenderer() { return &objectRenderer; }
 
-	ScreenIdShaderScene* getParentIdRenderer() { return &parentIdRenderer; }
+	ScreenIdShader* getParentIdRenderer() { return &parentIdRenderer; }
 
-	ScreenIdShaderScene* getChildIdRenderer() { return &childIdRenderer; }
+	ScreenIdShader* getChildIdRenderer() { return &childIdRenderer; }
 
 	void setShowOffScreen(const bool b) { this->showOffScreen = b; }
 
@@ -50,8 +50,8 @@ private:
 	Shader::OnScreenRenderer renderer;
 
 	ScreenShader objectRenderer;
-	ScreenIdShaderScene parentIdRenderer;
-	ScreenIdShaderScene childIdRenderer;
+	ScreenIdShader parentIdRenderer;
+	ScreenIdShader childIdRenderer;
 
 	ShaderBuffer buffer;
 

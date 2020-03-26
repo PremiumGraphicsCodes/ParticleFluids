@@ -1,4 +1,4 @@
-#include "ScreenIdShaderScene.h"
+#include "ScreenIdShader.h"
 #include "../../Crystal/Scene/Scene.h"
 #include "../../Crystal/Scene/SceneIdViewModel.h"
 
@@ -8,7 +8,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-bool ScreenIdShaderScene::build(GLObjectFactory& factory)
+bool ScreenIdShader::build(GLObjectFactory& factory)
 {
 	if (!pointIdRenderer.build()) {
 		return false;
@@ -31,7 +31,7 @@ bool ScreenIdShaderScene::build(GLObjectFactory& factory)
 	return true;
 }
 
-void ScreenIdShaderScene::render(Camera* camera, const SceneIdViewModel& vm)
+void ScreenIdShader::render(Camera* camera, const SceneIdViewModel& vm)
 {
 	const auto& pointBuffers = vm.pointIdBuffers;
 	const auto& lineBuffers = vm.lineIdBuffers;
@@ -65,12 +65,12 @@ void ScreenIdShaderScene::render(Camera* camera, const SceneIdViewModel& vm)
 	frameBufferObject->unbind();
 }
 
-DrawableID ScreenIdShaderScene::getId(const double x, const double y)
+DrawableID ScreenIdShader::getId(const double x, const double y)
 {
 	return getIdInTexCoord(x * texture.getWidth(), y * texture.getHeight());
 }
 
-DrawableID ScreenIdShaderScene::getIdInTexCoord(const int x, const int y)
+DrawableID ScreenIdShader::getIdInTexCoord(const int x, const int y)
 {
 	frameBufferObject->bind();
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
