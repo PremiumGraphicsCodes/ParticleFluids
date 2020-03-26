@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SceneIdShaderBuffer.h"
+#include "ScreenIdShaderBuffer.h"
 
 namespace Crystal {
 	namespace Scene {

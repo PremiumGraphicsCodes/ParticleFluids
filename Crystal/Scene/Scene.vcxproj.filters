@@ -112,7 +112,7 @@
     <ClInclude Include="ScreenIdShader.h">
       <Filter>Renderer\ScreenId</Filter>
     </ClInclude>
-    <ClInclude Include="SceneIdShaderBuffer.h">
+    <ClInclude Include="ScreenIdShaderBuffer.h">
       <Filter>Renderer\ScreenId</Filter>
     </ClInclude>
   </ItemGroup>

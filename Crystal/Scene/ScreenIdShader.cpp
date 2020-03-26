@@ -1,5 +1,5 @@
 #include "ScreenIdShader.h"
-#include "../../Crystal/Scene/SceneIdShaderBuffer.h"
+#include "../../Crystal/Scene/ScreenIdShaderBuffer.h"
 
 #include "../Shader/GLObjectFactory.h"
 
