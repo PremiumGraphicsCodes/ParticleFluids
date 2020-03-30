@@ -79,9 +79,6 @@
     <ClInclude Include="SmoothShaderBuffer.h">
       <Filter>Renderer\Smooth</Filter>
     </ClInclude>
-    <ClInclude Include="PointBuffer.h">
-      <Filter>Renderer\Point</Filter>
-    </ClInclude>
     <ClInclude Include="IShader.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -100,9 +97,6 @@
     <ClInclude Include="LineShader.h">
       <Filter>Renderer\Line</Filter>
     </ClInclude>
-    <ClInclude Include="LineBuffer.h">
-      <Filter>Renderer\Line</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenIdShader.h">
       <Filter>Renderer\ScreenId</Filter>
     </ClInclude>
@@ -114,6 +108,15 @@
     </ClInclude>
     <ClInclude Include="TextureShaderBuffer.h">
       <Filter>Renderer\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="PointBuffer.h">
+      <Filter>Renderer\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="LineBuffer.h">
+      <Filter>Renderer\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemController.h">
+      <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +199,9 @@
     <ClCompile Include="TextureShaderBuffer.cpp">
       <Filter>Renderer\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleSystemController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -248,6 +254,9 @@
     </Filter>
     <Filter Include="Renderer\Texture">
       <UniqueIdentifier>{571391d4-42bd-4ef6-90ca-d2ae252713fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{6c2a936a-2655-454e-9870-3306dae4a9ea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

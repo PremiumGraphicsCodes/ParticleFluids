@@ -8,8 +8,9 @@
 namespace Crystal {
 	namespace Scene {
 
-struct PointShaderBuffer
+class PointShaderBuffer
 {
+public:
 	struct VBO
 	{
 		Shader::VertexBufferObject position;

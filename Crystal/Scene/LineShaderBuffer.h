@@ -11,8 +11,9 @@
 namespace Crystal {
 	namespace Scene {
 
-struct LineShaderBuffer
+class LineShaderBuffer
 {
+public:
 	struct {
 		Shader::VertexBufferObject position;
 		Shader::VertexBufferObject color;

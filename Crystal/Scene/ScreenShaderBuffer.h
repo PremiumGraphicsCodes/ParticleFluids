@@ -16,6 +16,7 @@ namespace Crystal {
 class ScreenShaderBuffer
 {
 public:
+	// Model ‚ª•Ï‚í‚Á‚½‚Æ‚«‚¾‚¯”½‰f‚³‚¹‚éD
 	void add(ParticleSystemScene* scene);
 
 	void add(WireFrameScene* scene);
