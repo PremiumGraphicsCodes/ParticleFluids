@@ -65,7 +65,7 @@ void ScreenShaderScene::add(WireFrameScene* scene, GLObjectFactory& glFactory)
 	lineBuffers.push_back(lb);
 }
 
-void ScreenShaderScene::add(PolygonMeshScene* parent)
+void ScreenShaderScene::add(PolygonMeshScene* parent, GLObjectFactory& glFactory)
 {
 	const auto& shape = parent->getShape();
 	const auto& vs = shape->getVertices();
@@ -99,7 +99,7 @@ void ScreenShaderScene::add(PolygonMeshScene* parent)
 				}
 			}
 			SmoothShaderScene glBuffer;
-			glBuffer.build();
+			glBuffer.build(glFactory);
 			glBuffer.send(buffer);
 			pmScenes.push_back(glBuffer);
 		}

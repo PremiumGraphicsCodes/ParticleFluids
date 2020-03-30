@@ -20,8 +20,8 @@ public:
 		screen.add(scene, glFactory);
 	}
 
-	void add(PolygonMeshScene* scene) {
-		screen.add(scene);
+	void add(PolygonMeshScene* scene, Shader::GLObjectFactory& glFactory) {
+		screen.add(scene, glFactory);
 	}
 
 	//void add(TextureScene* scene) { this->textureScenes.push_back(scene); }

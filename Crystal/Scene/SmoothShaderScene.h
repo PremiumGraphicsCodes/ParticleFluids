@@ -8,9 +8,14 @@
 #include "../Graphics/Material.h"
 
 #include "../Shader/VertexBufferObject.h"
+#include "IShaderScene.h"
 
 namespace Crystal {
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace Scene {
+		class SmoothShader;
 
 class SmoothBuffer
 {
@@ -41,7 +46,7 @@ private:
 	Graphics::Buffer1d<int> materialIds;
 };
 
-class SmoothShaderScene
+class SmoothShaderScene : public IShaderScene
 {
 public:
 	Shader::VertexBufferObject position;
@@ -53,11 +58,18 @@ public:
 	Math::Matrix4df matrix;
 	Graphics::Camera camera;
 
-	void build();
+	bool build(Shader::GLObjectFactory& glFactory) override;
 
 	void send(const SmoothBuffer& buffer);
 
-	void release();
+	void release() override;
+
+	void render() override;
+
+	void setShader(SmoothShader* shader) { this->shader = shader; }
+
+private:
+	SmoothShader* shader;
 };
 
 	}

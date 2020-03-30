@@ -21,7 +21,7 @@ public:
 
 	void add(WireFrameScene* scene, Shader::GLObjectFactory& glFactory);
 
-	void add(PolygonMeshScene* scene);
+	void add(PolygonMeshScene* scene, Shader::GLObjectFactory& glFactory);
 
 	void add(TextureScene* scene) { this->textureScenes.push_back(scene); }
 

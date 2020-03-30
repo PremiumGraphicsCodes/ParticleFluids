@@ -1,6 +1,8 @@
 #include "SmoothShaderScene.h"
+#include "SmoothShader.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 void SmoothBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId)
@@ -11,12 +13,13 @@ void SmoothBuffer::addVertex(const Vector3df& position, const Vector3df& normal,
 	materialIds.add(materialId);
 }
 
-void SmoothShaderScene::build()
+bool SmoothShaderScene::build(GLObjectFactory& glFactory)
 {
 	position.build();
 	normal.build();
 	texCoord.build();
 	materialId.build();
+	return true;
 }
 
 void SmoothShaderScene::release()
@@ -36,4 +39,10 @@ void SmoothShaderScene::send(const SmoothBuffer& buffer)
 
 	count = buffer.getPositions().get().size() / 3;
 	matrix = buffer.getMatrix();
+}
+
+void SmoothShaderScene::render()
+{
+	shader->send(*this);
+	shader->render();
 }
