@@ -14,7 +14,7 @@ class PointShader : public IShader
 public:
 	PointShader();
 
-	bool build() override;
+	bool build(Shader::GLObjectFactory& factory) override;
 
 	void release() override;
 

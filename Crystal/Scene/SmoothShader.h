@@ -19,7 +19,7 @@ class SmoothShader : public IShader
 public:
 	SmoothShader();
 
-	bool build() override;
+	bool build(Shader::GLObjectFactory& factory) override;
 
 	void release() override;
 

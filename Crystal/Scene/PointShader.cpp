@@ -20,7 +20,7 @@ PointShader::PointShader()
 {
 }
 
-bool PointShader::build()
+bool PointShader::build(GLObjectFactory& factory)
 {
 	const auto& vsSource = getBuiltInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();

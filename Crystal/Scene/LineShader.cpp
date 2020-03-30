@@ -17,7 +17,7 @@ LineShader::LineShader()
 {
 }
 
-bool LineShader::build()
+bool LineShader::build(GLObjectFactory& factory)
 {
 	const auto& vsSource = getBuiltInVsSource();
 	const auto& fsSource = getBuiltInFsSource();

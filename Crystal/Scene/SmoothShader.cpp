@@ -3,6 +3,8 @@
 #include "../Graphics/Material.h"
 #include "../Graphics/PointLight.h"
 
+#include "../Shader/GLObjectFactory.h"
+
 #include <sstream>
 
 using namespace Crystal::Math;
@@ -24,7 +26,7 @@ SmoothShader::SmoothShader()
 {
 }
 
-bool SmoothShader::build()
+bool SmoothShader::build(GLObjectFactory& factory)
 {
 	const auto& vsSource = getBuildInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
@@ -62,6 +64,7 @@ bool SmoothShader::build()
 	}
 
 	for (int i = 0; i < 8; ++i) {
+//		factory.getTextureFactory()->createTextureObject()
 		const auto prefix = "textures[" + std::to_string(i) + "]";
 		shader.findUniformLocation(prefix);
 	}

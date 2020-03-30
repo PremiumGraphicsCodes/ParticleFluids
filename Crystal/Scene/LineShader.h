@@ -18,7 +18,7 @@ class LineShader : public IShader
 public:
 	LineShader();
 
-	bool build() override;
+	bool build(Shader::GLObjectFactory& factory) override;
 
 	void release() override;
 
