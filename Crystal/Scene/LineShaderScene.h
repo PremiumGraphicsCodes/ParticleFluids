@@ -28,7 +28,7 @@ public:
 	Graphics::Camera camera;
 	float lineWidth;
 
-	void build() override;
+	bool build(Shader::GLObjectFactory& glFactory) override;
 
 	void release() override;
 

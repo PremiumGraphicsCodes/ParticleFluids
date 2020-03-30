@@ -3,14 +3,16 @@
 
 #include "LineShader.h"
 
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-void LineShaderScene::build()
+bool LineShaderScene::build(GLObjectFactory& glFactory)
 {
 	vbo.position.build();
 	vbo.color.build();
 
 	//vao.build();
+	return true;
 }
 
 void LineShaderScene::release()

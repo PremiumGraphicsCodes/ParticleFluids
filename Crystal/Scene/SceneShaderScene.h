@@ -14,10 +14,10 @@ public:
 	ScreenIdShaderScene childId;
 
 	// Model ‚ª•Ï‚í‚Á‚½‚Æ‚«‚¾‚¯”½‰f‚³‚¹‚éD
-	void add(ParticleSystemScene* scene);
+	void add(ParticleSystemScene* scene, Shader::GLObjectFactory& glFactory);
 
-	void add(WireFrameScene* scene) {
-		screen.add(scene);
+	void add(WireFrameScene* scene, Shader::GLObjectFactory& glFactory) {
+		screen.add(scene, glFactory);
 	}
 
 	void add(PolygonMeshScene* scene) {

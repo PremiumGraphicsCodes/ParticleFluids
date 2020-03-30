@@ -3,15 +3,17 @@
 #include "PointShader.h"
 
 using namespace Crystal::Graphics;
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-void PointShaderScene::build()
+bool PointShaderScene::build(GLObjectFactory& glFactory)
 {
 	vbo.position.build();
 	vbo.size.build();
 	vbo.color.build();
 
 	//vao.build();
+	return true;
 }
 
 void PointShaderScene::release()

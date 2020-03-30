@@ -26,7 +26,7 @@ public:
 	Math::Matrix4df matrix;
 	Graphics::Camera camera;
 
-	void build() override;
+	bool build(Shader::GLObjectFactory& glFactory) override;
 
 	void release() override;
 

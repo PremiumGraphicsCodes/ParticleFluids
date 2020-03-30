@@ -19,8 +19,8 @@ bool ScreenIdShader::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	pointBuffer.build();
-	lineBuffer.build();
+	pointBuffer.build(factory);
+	lineBuffer.build(factory);
 	triangleBuffer.build();
 
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);

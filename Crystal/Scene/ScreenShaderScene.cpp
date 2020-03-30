@@ -5,6 +5,7 @@
 #include "PolygonMeshScene.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 void ScreenShaderScene::release()
@@ -27,7 +28,7 @@ void ScreenShaderScene::release()
 	lightScenes.clear();
 }
 
-void ScreenShaderScene::add(ParticleSystemScene* scene)
+void ScreenShaderScene::add(ParticleSystemScene* scene, GLObjectFactory& glFactory)
 {
 	const auto& ps = scene->getShape()->getParticles();
 	PointBuffer pb;
@@ -37,12 +38,12 @@ void ScreenShaderScene::add(ParticleSystemScene* scene)
 	pb.setMatrix(scene->getMatrix());
 
 	PointShaderScene buffer;
-	buffer.build();
+	buffer.build(glFactory);
 	buffer.send(pb);
 	pointBuffers.push_back(buffer);
 }
 
-void ScreenShaderScene::add(WireFrameScene* scene)
+void ScreenShaderScene::add(WireFrameScene* scene, GLObjectFactory& glFactory)
 {
 	const auto& shape = scene->getShape();
 	const auto& positions = shape->getPositions();
@@ -59,7 +60,7 @@ void ScreenShaderScene::add(WireFrameScene* scene)
 		buffer.addIndex(e.destId);
 	}
 	LineShaderScene lb;
-	lb.build();
+	lb.build(glFactory);
 	lb.send(buffer);
 	lineBuffers.push_back(lb);
 }
