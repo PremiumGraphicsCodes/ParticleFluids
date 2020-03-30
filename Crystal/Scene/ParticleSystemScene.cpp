@@ -1,10 +1,5 @@
 #include "ParticleSystemScene.h"
 
-#include "ScreenIdShaderScene.h"
-
-#include "../Graphics/DrawableId.h"
-#include "ShaderScene.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;

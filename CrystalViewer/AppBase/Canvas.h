@@ -4,11 +4,11 @@
 #include "../../Crystal/Math/Vector2d.h"
 #include "../../Crystal/Math/Box3d.h"
 #include "../../Crystal/Graphics/Camera.h"
+#include "../../Crystal/Graphics/Image.h"
 #include <memory>
 #include <list>
 
 #include "IUICtrl.h"
-#include "../../Crystal/Scene/ShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {

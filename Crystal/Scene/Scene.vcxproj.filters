@@ -67,59 +67,59 @@
     <ClInclude Include="TextureScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderScene.h">
-      <Filter>Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="IShader.h">
-      <Filter>Renderer</Filter>
+      <Filter>SceneShader</Filter>
     </ClInclude>
     <ClInclude Include="PointShader.h">
-      <Filter>Renderer\Point</Filter>
+      <Filter>SceneShader\Point</Filter>
     </ClInclude>
     <ClInclude Include="SmoothShader.h">
-      <Filter>Renderer\Smooth</Filter>
+      <Filter>SceneShader\Smooth</Filter>
     </ClInclude>
     <ClInclude Include="ScreenShader.h">
-      <Filter>Renderer\Screen</Filter>
+      <Filter>SceneShader\Screen</Filter>
     </ClInclude>
     <ClInclude Include="LineShader.h">
-      <Filter>Renderer\Line</Filter>
+      <Filter>SceneShader\Line</Filter>
     </ClInclude>
     <ClInclude Include="ScreenIdShader.h">
-      <Filter>Renderer\ScreenId</Filter>
+      <Filter>SceneShader\ScreenId</Filter>
     </ClInclude>
     <ClInclude Include="TriangleShader.h">
-      <Filter>Renderer\Triangle</Filter>
+      <Filter>SceneShader\Triangle</Filter>
     </ClInclude>
     <ClInclude Include="TextureShaderBuffer.h">
-      <Filter>Renderer\Texture</Filter>
+      <Filter>SceneShader\Texture</Filter>
     </ClInclude>
     <ClInclude Include="PointBuffer.h">
-      <Filter>Renderer\Point</Filter>
+      <Filter>SceneShader\Point</Filter>
     </ClInclude>
     <ClInclude Include="LineBuffer.h">
-      <Filter>Renderer\Line</Filter>
+      <Filter>SceneShader\Line</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemController.h">
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="ShaderBuffer.h">
-      <Filter>Renderer</Filter>
+      <Filter>SceneShader</Filter>
     </ClInclude>
     <ClInclude Include="PointShaderScene.h">
-      <Filter>Renderer\Point</Filter>
+      <Filter>SceneShader\Point</Filter>
     </ClInclude>
     <ClInclude Include="LineShaderScene.h">
-      <Filter>Renderer\Line</Filter>
+      <Filter>SceneShader\Line</Filter>
     </ClInclude>
     <ClInclude Include="ScreenShaderScene.h">
-      <Filter>Renderer\Screen</Filter>
+      <Filter>SceneShader\Screen</Filter>
     </ClInclude>
     <ClInclude Include="ScreenIdShaderScene.h">
-      <Filter>Renderer\ScreenId</Filter>
+      <Filter>SceneShader\ScreenId</Filter>
     </ClInclude>
     <ClInclude Include="SmoothShaderScene.h">
-      <Filter>Renderer\Smooth</Filter>
+      <Filter>SceneShader\Smooth</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneShader.h">
+      <Filter>SceneShader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,47 +163,47 @@
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderScene.cpp">
-      <Filter>Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="PointShader.cpp">
-      <Filter>Renderer\Point</Filter>
+      <Filter>SceneShader\Point</Filter>
     </ClCompile>
     <ClCompile Include="SmoothShader.cpp">
-      <Filter>Renderer\Smooth</Filter>
+      <Filter>SceneShader\Smooth</Filter>
     </ClCompile>
     <ClCompile Include="ScreenShader.cpp">
-      <Filter>Renderer\Screen</Filter>
+      <Filter>SceneShader\Screen</Filter>
     </ClCompile>
     <ClCompile Include="LineShader.cpp">
-      <Filter>Renderer\Line</Filter>
+      <Filter>SceneShader\Line</Filter>
     </ClCompile>
     <ClCompile Include="ScreenIdShader.cpp">
-      <Filter>Renderer\ScreenId</Filter>
+      <Filter>SceneShader\ScreenId</Filter>
     </ClCompile>
     <ClCompile Include="TriangleShader.cpp">
-      <Filter>Renderer\Triangle</Filter>
+      <Filter>SceneShader\Triangle</Filter>
     </ClCompile>
     <ClCompile Include="TextureShaderBuffer.cpp">
-      <Filter>Renderer\Texture</Filter>
+      <Filter>SceneShader\Texture</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
     <ClCompile Include="PointShaderScene.cpp">
-      <Filter>Renderer\Point</Filter>
+      <Filter>SceneShader\Point</Filter>
     </ClCompile>
     <ClCompile Include="LineShaderScene.cpp">
-      <Filter>Renderer\Line</Filter>
+      <Filter>SceneShader\Line</Filter>
     </ClCompile>
     <ClCompile Include="ScreenShaderScene.cpp">
-      <Filter>Renderer\Screen</Filter>
+      <Filter>SceneShader\Screen</Filter>
     </ClCompile>
     <ClCompile Include="ScreenIdShaderScene.cpp">
-      <Filter>Renderer\ScreenId</Filter>
+      <Filter>SceneShader\ScreenId</Filter>
     </ClCompile>
     <ClCompile Include="SmoothShaderScene.cpp">
-      <Filter>Renderer\Smooth</Filter>
+      <Filter>SceneShader\Smooth</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneShader.cpp">
+      <Filter>SceneShader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,38 +228,38 @@
     <Filter Include="Scene\Transform">
       <UniqueIdentifier>{cc2dee8e-1aa8-4b36-971f-d59b4361fad8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Renderer">
-      <UniqueIdentifier>{442dc2c7-873a-40c4-a519-d8ff2e247cb4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Point">
-      <UniqueIdentifier>{49b90fdf-90d4-4783-b57f-e098b1691c16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Line">
-      <UniqueIdentifier>{f769a1c5-59b7-4df8-baee-b951b683673b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Shape\TriangleMesh">
       <UniqueIdentifier>{74600514-a3cc-49be-8c9f-04f5fab37c08}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\Shape\Volume">
       <UniqueIdentifier>{e4eec2bb-f092-4b14-864c-f47953c88957}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Renderer\Smooth">
-      <UniqueIdentifier>{ab71925f-3edc-4808-b231-7094ef2b8fc1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Triangle">
-      <UniqueIdentifier>{88b8dc67-ef55-415e-8748-bdd81864b242}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Screen">
-      <UniqueIdentifier>{047ecd1c-8082-4ba8-865d-2104aa99fc07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\ScreenId">
-      <UniqueIdentifier>{10586be7-6032-4329-8d9f-49fb8c1d71a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Renderer\Texture">
-      <UniqueIdentifier>{571391d4-42bd-4ef6-90ca-d2ae252713fd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Controller">
       <UniqueIdentifier>{6c2a936a-2655-454e-9870-3306dae4a9ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader">
+      <UniqueIdentifier>{442dc2c7-873a-40c4-a519-d8ff2e247cb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\Point">
+      <UniqueIdentifier>{49b90fdf-90d4-4783-b57f-e098b1691c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\Line">
+      <UniqueIdentifier>{f769a1c5-59b7-4df8-baee-b951b683673b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\Smooth">
+      <UniqueIdentifier>{ab71925f-3edc-4808-b231-7094ef2b8fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\Triangle">
+      <UniqueIdentifier>{88b8dc67-ef55-415e-8748-bdd81864b242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\Screen">
+      <UniqueIdentifier>{047ecd1c-8082-4ba8-865d-2104aa99fc07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\ScreenId">
+      <UniqueIdentifier>{10586be7-6032-4329-8d9f-49fb8c1d71a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\Texture">
+      <UniqueIdentifier>{571391d4-42bd-4ef6-90ca-d2ae252713fd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

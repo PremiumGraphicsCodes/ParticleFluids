@@ -14,7 +14,7 @@ World::World()
 	scenes[0] = std::make_unique<Scene>(0, "Item");
 	scenes[1] = std::make_unique<Scene>(0, "Root");
 
-	renderer = std::make_unique<ShaderScene>();
+	renderer = std::make_unique<SceneShader>();
 }
 
 World::~World()
@@ -84,7 +84,7 @@ void World::init()
 	}
 
 
-	renderer = std::make_unique<ShaderScene>();
+	renderer = std::make_unique<SceneShader>();
 
 }
 
