@@ -2,7 +2,7 @@
 
 #include "../Shader/GLObjectFactory.h"
 
-#include "ScreenShaderBuffer.h"
+#include "ScreenShaderScene.h"
 
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
@@ -32,7 +32,7 @@ bool ScreenShader::build(GLObjectFactory& factory)
 	return true;
 }
 
-void ScreenShader::render(Camera* camera, const ScreenShaderBuffer& buffer)
+void ScreenShader::render(Camera* camera, const ScreenShaderScene& buffer)
 {
 	this->camera = camera;
 	frameBufferObject->setTexture(texture);

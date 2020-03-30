@@ -13,7 +13,7 @@ namespace Crystal {
 		class MaterialScene;
 		class LightScene;
 
-class ScreenShaderBuffer
+class ScreenShaderScene
 {
 public:
 	// Model ‚ª•Ï‚í‚Á‚½‚Æ‚«‚¾‚¯”½‰f‚³‚¹‚éD

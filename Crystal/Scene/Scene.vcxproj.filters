@@ -85,9 +85,6 @@
     <ClInclude Include="ScreenShader.h">
       <Filter>Renderer\Screen</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenShaderBuffer.h">
-      <Filter>Renderer\Screen</Filter>
-    </ClInclude>
     <ClInclude Include="LineShader.h">
       <Filter>Renderer\Line</Filter>
     </ClInclude>
@@ -120,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="LineShaderScene.h">
       <Filter>Renderer\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenShaderScene.h">
+      <Filter>Renderer\Screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -178,9 +178,6 @@
     <ClCompile Include="ScreenShader.cpp">
       <Filter>Renderer\Screen</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenShaderBuffer.cpp">
-      <Filter>Renderer\Screen</Filter>
-    </ClCompile>
     <ClCompile Include="LineShader.cpp">
       <Filter>Renderer\Line</Filter>
     </ClCompile>
@@ -204,6 +201,9 @@
     </ClCompile>
     <ClCompile Include="LineShaderScene.cpp">
       <Filter>Renderer\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenShaderScene.cpp">
+      <Filter>Renderer\Screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

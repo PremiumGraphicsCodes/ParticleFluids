@@ -35,7 +35,7 @@
     <ClInclude Include="PointBuffer.h" />
     <ClInclude Include="PointShaderScene.h" />
     <ClInclude Include="ScreenIdShader.h" />
-    <ClInclude Include="ScreenShaderBuffer.h" />
+    <ClInclude Include="ScreenShaderScene.h" />
     <ClInclude Include="ScreenShader.h" />
     <ClInclude Include="PointShader.h" />
     <ClInclude Include="ShaderBuffer.h" />
@@ -75,7 +75,7 @@
     <ClCompile Include="PointShaderScene.cpp" />
     <ClCompile Include="ScreenIdShader.cpp" />
     <ClCompile Include="ScreenIdShaderBuffer.cpp" />
-    <ClCompile Include="ScreenShaderBuffer.cpp" />
+    <ClCompile Include="ScreenShaderScene.cpp" />
     <ClCompile Include="ScreenShader.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
     <ClCompile Include="PointShader.cpp" />

@@ -1,4 +1,4 @@
-#include "ScreenShaderBuffer.h"
+#include "ScreenShaderScene.h"
 
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
@@ -7,7 +7,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 
-void ScreenShaderBuffer::release()
+void ScreenShaderScene::release()
 {
 	for (auto& pb : pointBuffers) {
 		pb.release();
@@ -27,7 +27,7 @@ void ScreenShaderBuffer::release()
 	lightScenes.clear();
 }
 
-void ScreenShaderBuffer::add(ParticleSystemScene* scene)
+void ScreenShaderScene::add(ParticleSystemScene* scene)
 {
 	const auto& ps = scene->getShape()->getParticles();
 	PointBuffer pb;
@@ -42,7 +42,7 @@ void ScreenShaderBuffer::add(ParticleSystemScene* scene)
 	pointBuffers.push_back(buffer);
 }
 
-void ScreenShaderBuffer::add(WireFrameScene* scene)
+void ScreenShaderScene::add(WireFrameScene* scene)
 {
 	const auto& shape = scene->getShape();
 	const auto& positions = shape->getPositions();
@@ -64,7 +64,7 @@ void ScreenShaderBuffer::add(WireFrameScene* scene)
 	lineBuffers.push_back(lb);
 }
 
-void ScreenShaderBuffer::add(PolygonMeshScene* parent)
+void ScreenShaderScene::add(PolygonMeshScene* parent)
 {
 	const auto& shape = parent->getShape();
 	const auto& vs = shape->getVertices();

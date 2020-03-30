@@ -16,7 +16,7 @@ namespace Crystal {
 		class GLObjectFactory;
 	}
 	namespace Scene {
-		class ScreenShaderBuffer;
+		class ScreenShaderScene;
 
 class ScreenShader : private UnCopyable
 {
@@ -29,7 +29,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory);
 
-	void render(Graphics::Camera* camera, const ScreenShaderBuffer& buffer);
+	void render(Graphics::Camera* camera, const ScreenShaderScene& buffer);
 
 	struct Mask
 	{
