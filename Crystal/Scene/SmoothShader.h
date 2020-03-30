@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SmoothShaderBuffer.h"
+#include "SmoothShaderScene.h"
 
 #include "../Graphics/Camera.h"
 #include "../Graphics/PointLight.h"
@@ -17,8 +17,6 @@ namespace Crystal {
 	namespace Scene {
 		class TextureScene;
 
-
-
 class SmoothShader : public IShader
 {
 public:
@@ -28,7 +26,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory) override;
 
-	void send(const SmoothShaderBuffer& buffer);
+	void send(const SmoothShaderScene& buffer);
 
 	void send(const std::vector<Graphics::Material>& materials);
 

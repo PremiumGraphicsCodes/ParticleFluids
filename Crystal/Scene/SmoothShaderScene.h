@@ -41,7 +41,7 @@ private:
 	Graphics::Buffer1d<int> materialIds;
 };
 
-class SmoothShaderBuffer
+class SmoothShaderScene
 {
 public:
 	Shader::VertexBufferObject position;

@@ -97,7 +97,7 @@ void ScreenShaderScene::add(PolygonMeshScene* parent)
 					buffer.addVertex(p, n, texCoord, materialId);
 				}
 			}
-			SmoothShaderBuffer glBuffer;
+			SmoothShaderScene glBuffer;
 			glBuffer.build();
 			glBuffer.send(buffer);
 			pmScenes.push_back(glBuffer);

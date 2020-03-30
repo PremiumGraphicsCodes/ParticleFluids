@@ -2,7 +2,7 @@
 
 #include "PointShaderScene.h"
 #include "LineShaderScene.h"
-#include "SmoothShaderBuffer.h"
+#include "SmoothShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -35,7 +35,7 @@ public:
 
 	std::vector<PointShaderScene> pointBuffers;
 	std::vector<LineShaderScene> lineBuffers;
-	std::vector<SmoothShaderBuffer> pmScenes;
+	std::vector<SmoothShaderScene> pmScenes;
 	std::vector<TextureScene*> textureScenes;
 	std::vector<MaterialScene*> materialScenes;
 	std::vector<LightScene*> lightScenes;

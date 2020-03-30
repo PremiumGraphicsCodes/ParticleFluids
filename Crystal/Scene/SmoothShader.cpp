@@ -81,7 +81,7 @@ void SmoothShader::release(GLObjectFactory& factory)
 	shader.release();
 }
 
-void SmoothShader::send(const SmoothShaderBuffer& glBuffer)
+void SmoothShader::send(const SmoothShaderScene& glBuffer)
 {
 	const auto& projectionMatrix = glBuffer.camera.getProjectionMatrix();
 	const auto& modelviewMatrix = glBuffer.camera.getModelViewMatrix() * matrix;
