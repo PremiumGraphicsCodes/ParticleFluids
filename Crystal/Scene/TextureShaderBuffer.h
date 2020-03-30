@@ -3,12 +3,15 @@
 #include <vector>
 
 namespace Crystal {
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace Scene {
 		class TextureScene;
 
 struct TextureShaderBuffer
 {
-	void build();
+	bool build(Shader::GLObjectFactory& factory);
 
 	void send();
 

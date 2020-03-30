@@ -112,9 +112,6 @@
     <ClInclude Include="TriangleShader.h">
       <Filter>Renderer\Triangle</Filter>
     </ClInclude>
-    <ClInclude Include="TextureShader.h">
-      <Filter>Renderer\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="TextureShaderBuffer.h">
       <Filter>Renderer\Texture</Filter>
     </ClInclude>
@@ -196,7 +193,7 @@
     <ClCompile Include="ScreenIdShaderBuffer.cpp">
       <Filter>Renderer\ScreenId</Filter>
     </ClCompile>
-    <ClCompile Include="TextureShader.cpp">
+    <ClCompile Include="TextureShaderBuffer.cpp">
       <Filter>Renderer\Texture</Filter>
     </ClCompile>
   </ItemGroup>
