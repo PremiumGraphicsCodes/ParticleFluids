@@ -20,7 +20,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void release() override;
+	void release(Shader::GLObjectFactory& factory) override;
 
 	void setBuffer(const LineShaderBuffer& buffer) { this->glBuffer = buffer; }
 

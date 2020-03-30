@@ -37,7 +37,7 @@ bool PointShader::build(GLObjectFactory& factory)
 	return isOk;
 }
 
-void PointShader::release()
+void PointShader::release(GLObjectFactory& factory)
 {
 	shader.release();
 }

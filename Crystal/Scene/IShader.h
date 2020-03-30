@@ -13,7 +13,7 @@ public:
 
 	virtual bool build(Shader::GLObjectFactory& factory) = 0;
 
-	virtual void release() = 0;
+	virtual void release(Shader::GLObjectFactory& factory) = 0;
 
 	virtual void render() = 0;
 };

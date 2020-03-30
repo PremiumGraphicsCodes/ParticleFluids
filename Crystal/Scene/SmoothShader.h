@@ -13,6 +13,32 @@
 
 namespace Crystal {
 	namespace Scene {
+		class TextureScene;
+
+		/*
+struct TextureShaderBuffer
+{
+	void add(TextureScene* scenes)
+	{
+
+	}
+
+};
+
+class TextureShader : public IShader
+{
+public:
+	TextureShader();
+
+	bool build(Shader::GLObjectFactory& factory) override;
+
+	void release() override;
+
+	void send(const TextureScene& texture);
+
+};
+*/
+
 
 class SmoothShader : public IShader
 {
@@ -21,7 +47,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void release() override;
+	void release(Shader::GLObjectFactory& factory) override;
 
 	void send(const SmoothShaderBuffer& buffer);
 
@@ -29,7 +55,7 @@ public:
 
 	void send(const std::vector<Graphics::PointLight>& lights);
 
-	void send(const std::vector<Shader::TextureObject>& texture);
+	void send(const std::vector<TextureScene>& texture);
 
 	void render() override;
 

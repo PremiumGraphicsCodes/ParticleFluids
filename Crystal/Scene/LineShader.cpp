@@ -32,7 +32,7 @@ bool LineShader::build(GLObjectFactory& factory)
 	return isOk;
 }
 
-void LineShader::release()
+void LineShader::release(GLObjectFactory& factory)
 {
 	shader.release();
 }

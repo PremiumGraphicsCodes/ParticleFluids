@@ -16,7 +16,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
-	void release() override;
+	void release(Shader::GLObjectFactory& factory) override;
 
 	void send(const PointShaderBuffer& buffer);
 
