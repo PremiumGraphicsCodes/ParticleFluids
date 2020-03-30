@@ -1,6 +1,8 @@
 
 #include "LineShaderScene.h"
 
+#include "LineShader.h"
+
 using namespace Crystal::Scene;
 
 void LineShaderScene::build()
@@ -33,4 +35,10 @@ void LineShaderScene::send(const LineBuffer& buffer)
 	indices = buffer.getIndices().get();
 	matrix = buffer.getMatrix();
 	lineWidth = buffer.getWidth();
+}
+
+void LineShaderScene::render()
+{
+	shader->setBuffer(*this);
+	shader->render();
 }

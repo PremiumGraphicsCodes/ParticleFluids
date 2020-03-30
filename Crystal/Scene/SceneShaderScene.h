@@ -14,9 +14,7 @@ public:
 	ScreenIdShaderScene childId;
 
 	// Model ‚ª•Ï‚í‚Á‚½‚Æ‚«‚¾‚¯”½‰f‚³‚¹‚éD
-	void add(ParticleSystemScene* scene) {
-		screen.add(scene);
-	}
+	void add(ParticleSystemScene* scene);
 
 	void add(WireFrameScene* scene) {
 		screen.add(scene);

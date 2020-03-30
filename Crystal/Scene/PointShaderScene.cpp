@@ -1,5 +1,7 @@
 #include "PointShaderScene.h"
 
+#include "PointShader.h"
+
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
@@ -39,4 +41,15 @@ void PointShaderScene::send(const PointBuffer& buffer)
 
 	count = positions.size() / 3;
 	matrix = buffer.getMatrix();
+}
+
+void PointShaderScene::render()
+{
+	shader->send(*this);
+	shader->render();
+}
+
+void PointShaderScene::setShader(PointShader* shader)
+{
+	this->shader = shader;
 }

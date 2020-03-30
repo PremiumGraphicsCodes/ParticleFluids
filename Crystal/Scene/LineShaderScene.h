@@ -8,10 +8,13 @@
 
 #include "LineBuffer.h"
 
+#include "IShaderScene.h"
+
 namespace Crystal {
 	namespace Scene {
+		class LineShader;
 
-class LineShaderScene
+class LineShaderScene : public IShaderScene
 {
 public:
 	struct {
@@ -25,11 +28,18 @@ public:
 	Graphics::Camera camera;
 	float lineWidth;
 
-	void build();
+	void build() override;
 
-	void release();
+	void release() override;
+
+	void render() override;
 
 	void send(const LineBuffer& buffer);
+
+	void setShader(LineShader* shader) { this->shader = shader; }
+
+private:
+	LineShader* shader;
 };
 
 	}

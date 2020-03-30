@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraScene.h" />
+    <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="ParticleSystemController.h" />
     <ClInclude Include="FaceGroupScene.h" />
     <ClInclude Include="IPoint.h" />
@@ -73,6 +74,7 @@
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="ParticleSystemController.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
+    <ClCompile Include="SceneShaderScene.cpp" />
     <ClCompile Include="ScreenIdShader.cpp" />
     <ClCompile Include="ScreenIdShaderScene.cpp" />
     <ClCompile Include="ScreenShaderScene.cpp" />

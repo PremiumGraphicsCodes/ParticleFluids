@@ -121,6 +121,9 @@
     <ClInclude Include="SceneShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
+    <ClInclude Include="IShaderScene.h">
+      <Filter>SceneShader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -203,6 +206,9 @@
       <Filter>SceneShader\Smooth</Filter>
     </ClCompile>
     <ClCompile Include="SceneShader.cpp">
+      <Filter>SceneShader</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneShaderScene.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
   </ItemGroup>

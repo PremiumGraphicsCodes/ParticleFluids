@@ -1,5 +1,6 @@
 #pragma once
 
+#include "IShaderScene.h"
 #include "PointBuffer.h"
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/VertexArrayObject.h"
@@ -7,8 +8,9 @@
 
 namespace Crystal {
 	namespace Scene {
+		class PointShader;
 
-class PointShaderScene
+class PointShaderScene : public IShaderScene
 {
 public:
 	struct VBO
@@ -24,11 +26,18 @@ public:
 	Math::Matrix4df matrix;
 	Graphics::Camera camera;
 
-	void build();
+	void build() override;
 
-	void release();
+	void release() override;
+
+	void render() override;
 
 	void send(const PointBuffer& buffer);
+
+	void setShader(PointShader* shader);
+
+private:
+	PointShader* shader;
 };
 
 	}
