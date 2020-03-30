@@ -1,6 +1,6 @@
 #include "ParticleSystemScene.h"
 
-#include "ScreenIdShaderBuffer.h"
+#include "ScreenIdShaderScene.h"
 
 #include "../Graphics/DrawableId.h"
 #include "ShaderScene.h"

@@ -4,7 +4,7 @@
 
 #include "Scene.h"
 #include "SceneFactory.h"
-#include "ScreenIdShaderBuffer.h"
+#include "ScreenIdShaderScene.h"
 
 #include "ShaderScene.h"
 

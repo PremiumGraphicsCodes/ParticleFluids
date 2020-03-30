@@ -9,7 +9,7 @@ namespace Crystal {
 		class WireFrameScene;
 		class PolygonMeshScene;
 
-class ScreenIdShaderBuffer
+class ScreenIdShaderScene
 {
 public:
 	void add(ParticleSystemScene* scene);

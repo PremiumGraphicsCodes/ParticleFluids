@@ -7,7 +7,7 @@
 #include "ScreenIdShader.h"
 
 #include "ScreenShaderScene.h"
-#include "ScreenIdShaderBuffer.h"
+#include "ScreenIdShaderScene.h"
 
 #include "ShaderBuffer.h"
 

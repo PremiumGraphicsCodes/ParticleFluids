@@ -1,6 +1,6 @@
 #include "WireFrameScene.h"
 
-#include "ScreenIdShaderBuffer.h"
+#include "ScreenIdShaderScene.h"
 
 #include "../Graphics/DrawableId.h"
 

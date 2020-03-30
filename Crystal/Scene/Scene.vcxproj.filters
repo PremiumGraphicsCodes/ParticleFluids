@@ -91,9 +91,6 @@
     <ClInclude Include="ScreenIdShader.h">
       <Filter>Renderer\ScreenId</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenIdShaderBuffer.h">
-      <Filter>Renderer\ScreenId</Filter>
-    </ClInclude>
     <ClInclude Include="TriangleShader.h">
       <Filter>Renderer\Triangle</Filter>
     </ClInclude>
@@ -120,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="ScreenShaderScene.h">
       <Filter>Renderer\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenIdShaderScene.h">
+      <Filter>Renderer\ScreenId</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -187,9 +187,6 @@
     <ClCompile Include="TriangleShader.cpp">
       <Filter>Renderer\Triangle</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenIdShaderBuffer.cpp">
-      <Filter>Renderer\ScreenId</Filter>
-    </ClCompile>
     <ClCompile Include="TextureShaderBuffer.cpp">
       <Filter>Renderer\Texture</Filter>
     </ClCompile>
@@ -204,6 +201,9 @@
     </ClCompile>
     <ClCompile Include="ScreenShaderScene.cpp">
       <Filter>Renderer\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenIdShaderScene.cpp">
+      <Filter>Renderer\ScreenId</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

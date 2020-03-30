@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-#include "ScreenIdShaderBuffer.h"
+#include "ScreenIdShaderScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

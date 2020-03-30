@@ -49,7 +49,7 @@
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
-    <ClInclude Include="ScreenIdShaderBuffer.h" />
+    <ClInclude Include="ScreenIdShaderScene.h" />
     <ClInclude Include="SceneId.h" />
     <ClInclude Include="SceneIdProvider.h" />
     <ClInclude Include="Scene.h" />
@@ -74,7 +74,7 @@
     <ClCompile Include="ParticleSystemController.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
     <ClCompile Include="ScreenIdShader.cpp" />
-    <ClCompile Include="ScreenIdShaderBuffer.cpp" />
+    <ClCompile Include="ScreenIdShaderScene.cpp" />
     <ClCompile Include="ScreenShaderScene.cpp" />
     <ClCompile Include="ScreenShader.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />

@@ -1,4 +1,4 @@
-#include "ScreenIdShaderBuffer.h"
+#include "ScreenIdShaderScene.h"
 
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
@@ -8,7 +8,7 @@
 
 using namespace Crystal::Scene;
 
-void ScreenIdShaderBuffer::add(ParticleSystemScene* scene)
+void ScreenIdShaderScene::add(ParticleSystemScene* scene)
 {
 	const auto objectId = scene->getId();
 	const auto& particles = scene->getShape()->getParticles();
@@ -28,7 +28,7 @@ void ScreenIdShaderBuffer::add(ParticleSystemScene* scene)
 
 }
 
-void ScreenIdShaderBuffer::add(WireFrameScene* scene)
+void ScreenIdShaderScene::add(WireFrameScene* scene)
 {
 	const auto objectId = scene->getId();
 	int childId = 0;
@@ -46,7 +46,7 @@ void ScreenIdShaderBuffer::add(WireFrameScene* scene)
 	//parentIdViewModel.lineIdBuffers.push_back(lineBuffer);
 }
 
-void ScreenIdShaderBuffer::add(PolygonMeshScene* scene)
+void ScreenIdShaderScene::add(PolygonMeshScene* scene)
 {
 	const auto objectId = scene->getId();
 	const auto& vertices = scene->getShape()->getVertices();

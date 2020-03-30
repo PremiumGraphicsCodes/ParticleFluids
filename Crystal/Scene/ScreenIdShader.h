@@ -18,7 +18,7 @@ namespace Crystal {
 	namespace Scene {
 		class IScene;
 		class SceneFactory;
-		class ScreenIdShaderBuffer;
+		class ScreenIdShaderScene;
 
 class ScreenIdShader : private UnCopyable
 {
@@ -30,7 +30,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory);
 
-	void render(Graphics::Camera* camera, const ScreenIdShaderBuffer& vm);
+	void render(Graphics::Camera* camera, const ScreenIdShaderScene& vm);
 
 	Graphics::DrawableID getId(const double x, const double y);
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ScreenShaderScene.h"
-#include "ScreenIdShaderBuffer.h"
+#include "ScreenIdShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -10,8 +10,8 @@ class ShaderBuffer
 {
 public:
 	ScreenShaderScene screen;
-	ScreenIdShaderBuffer parentId;
-	ScreenIdShaderBuffer childId;
+	ScreenIdShaderScene parentId;
+	ScreenIdShaderScene childId;
 
 	// Model ‚ª•Ï‚í‚Á‚½‚Æ‚«‚¾‚¯”½‰f‚³‚¹‚éD
 	void add(ParticleSystemScene* scene) {

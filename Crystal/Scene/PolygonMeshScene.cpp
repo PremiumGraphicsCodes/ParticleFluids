@@ -1,5 +1,4 @@
 #include "PolygonMeshScene.h"
-#include "ScreenIdShaderBuffer.h"
 
 #include "../Graphics/DrawableId.h"
 #include "../Math/Line3d.h"
