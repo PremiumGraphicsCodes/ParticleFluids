@@ -15,9 +15,6 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="SceneId.h" />
-    <ClInclude Include="ViewModel.h">
-      <Filter>ViewModel</Filter>
-    </ClInclude>
     <ClInclude Include="SceneFactory.h">
       <Filter>Scene</Filter>
     </ClInclude>

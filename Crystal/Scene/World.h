@@ -4,7 +4,7 @@
 
 #include "Scene.h"
 #include "SceneFactory.h"
-#include "ViewModel.h"
+#include "ScreenIdShaderBuffer.h"
 
 #include "ShaderScene.h"
 
@@ -42,7 +42,7 @@ public:
 
 	void updateViewModel();
 
-	ViewModel getViewModel() const { return viewModel; }
+	ShaderBuffer getViewModel() const { return viewModel; }
 
 	Math::Box3d getBoundingBox() const;
 
@@ -50,7 +50,7 @@ public:
 
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
-	ViewModel viewModel;
+	ShaderBuffer viewModel;
 
 	SceneFactory sceneFactory;
 	Shader::GLObjectFactory glFactory;

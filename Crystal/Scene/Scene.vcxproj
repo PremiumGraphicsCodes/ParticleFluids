@@ -57,7 +57,6 @@
     <ClInclude Include="SceneFactory.h" />
     <ClInclude Include="TriangleShader.h" />
     <ClInclude Include="UUID.h" />
-    <ClInclude Include="ViewModel.h" />
     <ClInclude Include="VolumeScene.h" />
     <ClInclude Include="WireFrameAttribute.h" />
     <ClInclude Include="WireFrameScene.h" />

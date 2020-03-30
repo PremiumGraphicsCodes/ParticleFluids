@@ -7,8 +7,7 @@
 #include "ScreenIdShader.h"
 
 #include "ScreenShaderBuffer.h"
-
-#include "../Scene/ViewModel.h"
+#include "ScreenIdShaderBuffer.h"
 
 #include "../Util/UnCopyable.h"
 
@@ -21,6 +20,8 @@ namespace Crystal {
 struct ShaderBuffer
 {
 	ScreenShaderBuffer screen;
+	ScreenIdShaderBuffer parentId;
+	ScreenIdShaderBuffer childId;
 };
 
 class ShaderScene : private UnCopyable
@@ -32,7 +33,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory);
 
-	void render(const int width, const int height, const ViewModel& vm);
+	void render(const int width, const int height);
 
 	ScreenShader* getObjectRenderer() { return &objectRenderer; }
 

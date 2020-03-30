@@ -39,11 +39,11 @@ bool ShaderScene::build(GLObjectFactory& factory)
 	return true;
 }
 
-void ShaderScene::render(const int width, const int height, const ViewModel& vm)
+void ShaderScene::render(const int width, const int height)
 {
 	objectRenderer.render(camera.get(), buffer.screen);
-	parentIdRenderer.render(camera.get(), vm.parentId);
-	childIdRenderer.render(camera.get(), vm.childId);
+	parentIdRenderer.render(camera.get(), buffer.parentId);
+	childIdRenderer.render(camera.get(), buffer.childId);
 
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);

@@ -179,7 +179,7 @@ void Window::show()
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		world->getRenderer()->render(width, height, world->getViewModel());
+		world->getRenderer()->render(width, height);
 
 		glFlush();
 
