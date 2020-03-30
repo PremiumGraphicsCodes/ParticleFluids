@@ -7,7 +7,7 @@ namespace Crystal {
 		class ParticleSystemScene;
 		class PointShaderScene;
 		class WireFrameScene;
-		class LineShaderBuffer;
+		class LineShaderScene;
 
 class ParticleSystemController
 {
@@ -24,7 +24,7 @@ class WireFrameController
 {
 private:
 	WireFrameScene* model;
-	LineShaderBuffer* view;
+	LineShaderScene* view;
 };
 
 /*

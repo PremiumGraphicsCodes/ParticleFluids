@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PointShaderScene.h"
-#include "LineShaderBuffer.h"
+#include "LineShaderScene.h"
 #include "SmoothShaderBuffer.h"
 
 namespace Crystal {
@@ -34,7 +34,7 @@ public:
 	void release();
 
 	std::vector<PointShaderScene> pointBuffers;
-	std::vector<LineShaderBuffer> lineBuffers;
+	std::vector<LineShaderScene> lineBuffers;
 	std::vector<SmoothShaderBuffer> pmScenes;
 	std::vector<TextureScene*> textureScenes;
 	std::vector<MaterialScene*> materialScenes;

@@ -67,9 +67,6 @@
     <ClInclude Include="TextureScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="LineShaderBuffer.h">
-      <Filter>Renderer\Line</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderScene.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -121,6 +118,9 @@
     <ClInclude Include="PointShaderScene.h">
       <Filter>Renderer\Point</Filter>
     </ClInclude>
+    <ClInclude Include="LineShaderScene.h">
+      <Filter>Renderer\Line</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -163,9 +163,6 @@
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="LineShaderBuffer.cpp">
-      <Filter>Renderer\Line</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderScene.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -204,6 +201,9 @@
     </ClCompile>
     <ClCompile Include="PointShaderScene.cpp">
       <Filter>Renderer\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="LineShaderScene.cpp">
+      <Filter>Renderer\Line</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

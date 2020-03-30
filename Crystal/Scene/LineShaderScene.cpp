@@ -1,9 +1,9 @@
 
-#include "LineShaderBuffer.h"
+#include "LineShaderScene.h"
 
 using namespace Crystal::Scene;
 
-void LineShaderBuffer::build()
+void LineShaderScene::build()
 {
 	vbo.position.build();
 	vbo.color.build();
@@ -11,7 +11,7 @@ void LineShaderBuffer::build()
 	//vao.build();
 }
 
-void LineShaderBuffer::release()
+void LineShaderScene::release()
 {
 	vbo.position.release();
 	vbo.color.release();
@@ -19,7 +19,7 @@ void LineShaderBuffer::release()
 	//vao.release();
 }
 
-void LineShaderBuffer::send(const LineBuffer& buffer)
+void LineShaderScene::send(const LineBuffer& buffer)
 {
 	const auto positions = buffer.getPositions().get();
 	const auto colors = buffer.getColors().get();

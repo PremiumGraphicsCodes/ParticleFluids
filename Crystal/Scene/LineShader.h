@@ -8,7 +8,7 @@
 #include "../Graphics/Buffer3d.h"
 #include "../Graphics/Buffer4d.h"
 
-#include "LineShaderBuffer.h"
+#include "LineShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -22,7 +22,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory) override;
 
-	void setBuffer(const LineShaderBuffer& buffer) { this->glBuffer = buffer; }
+	void setBuffer(const LineShaderScene& buffer) { this->glBuffer = buffer; }
 
 	void render() override;
 
@@ -31,7 +31,7 @@ private:
 
 	std::string getBuiltInFsSource() const;
 
-	LineShaderBuffer glBuffer;
+	LineShaderScene glBuffer;
 	Shader::ShaderObject shader;
 };
 

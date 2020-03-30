@@ -58,7 +58,7 @@ void ScreenShaderBuffer::add(WireFrameScene* scene)
 		buffer.addIndex(e.originId);
 		buffer.addIndex(e.destId);
 	}
-	LineShaderBuffer lb;
+	LineShaderScene lb;
 	lb.build();
 	lb.send(buffer);
 	lineBuffers.push_back(lb);

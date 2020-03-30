@@ -40,7 +40,7 @@ public:
 
 private:
 	PointShaderScene pointBuffer;
-	LineShaderBuffer lineBuffer;
+	LineShaderScene lineBuffer;
 	TriangleShader::GLBuffer triangleBuffer;
 
 	PointShader pointIdRenderer;

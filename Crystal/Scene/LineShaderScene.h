@@ -11,7 +11,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class LineShaderBuffer
+class LineShaderScene
 {
 public:
 	struct {
