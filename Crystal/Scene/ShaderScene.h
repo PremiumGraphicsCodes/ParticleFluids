@@ -9,6 +9,8 @@
 #include "ScreenShaderBuffer.h"
 #include "ScreenIdShaderBuffer.h"
 
+#include "ShaderBuffer.h"
+
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
@@ -16,13 +18,6 @@ namespace Crystal {
 		class GLObjectFactory;
 	}
 	namespace Scene {
-
-struct ShaderBuffer
-{
-	ScreenShaderBuffer screen;
-	ScreenIdShaderBuffer parentId;
-	ScreenIdShaderBuffer childId;
-};
 
 class ShaderScene : private UnCopyable
 {
