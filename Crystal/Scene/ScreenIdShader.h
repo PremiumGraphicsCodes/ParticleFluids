@@ -39,7 +39,7 @@ public:
 	//Shader::TextureObject* getTexture() { return texture; }
 
 private:
-	PointShaderBuffer pointBuffer;
+	PointShaderScene pointBuffer;
 	LineShaderBuffer lineBuffer;
 	TriangleShader::GLBuffer triangleBuffer;
 

@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Scene {
 		class ParticleSystemScene;
-		class PointShaderBuffer;
+		class PointShaderScene;
 		class WireFrameScene;
 		class LineShaderBuffer;
 
@@ -17,7 +17,7 @@ public:
 	void updateBuffer(ParticleSystemScene* src);
 
 private:
-	PointShaderBuffer* view;
+	PointShaderScene* view;
 };
 
 class WireFrameController

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PointShaderBuffer.h"
+#include "PointShaderScene.h"
 #include "LineShaderBuffer.h"
 #include "SmoothShaderBuffer.h"
 
@@ -33,7 +33,7 @@ public:
 
 	void release();
 
-	std::vector<PointShaderBuffer> pointBuffers;
+	std::vector<PointShaderScene> pointBuffers;
 	std::vector<LineShaderBuffer> lineBuffers;
 	std::vector<SmoothShaderBuffer> pmScenes;
 	std::vector<TextureScene*> textureScenes;

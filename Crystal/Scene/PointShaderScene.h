@@ -8,7 +8,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class PointShaderBuffer
+class PointShaderScene
 {
 public:
 	struct VBO

@@ -3,7 +3,7 @@
 #include "../Graphics/Camera.h"
 #include "../Shader/ShaderObject.h"
 
-#include "PointShaderBuffer.h"
+#include "PointShaderScene.h"
 #include "IShader.h"
 
 namespace Crystal {
@@ -18,7 +18,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory) override;
 
-	void send(const PointShaderBuffer& buffer);
+	void send(const PointShaderScene& buffer);
 
 	void render() override;
 

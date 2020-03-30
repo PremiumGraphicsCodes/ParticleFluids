@@ -36,7 +36,7 @@ void ScreenShaderBuffer::add(ParticleSystemScene* scene)
 	}
 	pb.setMatrix(scene->getMatrix());
 
-	PointShaderBuffer buffer;
+	PointShaderScene buffer;
 	buffer.build();
 	buffer.send(pb);
 	pointBuffers.push_back(buffer);

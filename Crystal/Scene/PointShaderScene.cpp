@@ -1,9 +1,9 @@
-#include "PointShaderBuffer.h"
+#include "PointShaderScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-void PointShaderBuffer::build()
+void PointShaderScene::build()
 {
 	vbo.position.build();
 	vbo.size.build();
@@ -12,7 +12,7 @@ void PointShaderBuffer::build()
 	//vao.build();
 }
 
-void PointShaderBuffer::release()
+void PointShaderScene::release()
 {
 	vbo.position.release();
 	vbo.size.release();
@@ -21,7 +21,7 @@ void PointShaderBuffer::release()
 	//vao.release();
 }
 
-void PointShaderBuffer::send(const PointBuffer& buffer)
+void PointShaderScene::send(const PointBuffer& buffer)
 {
 	const auto& positions = buffer.getPosition().get();
 	const auto& colors = buffer.getColor().get();
