@@ -44,7 +44,7 @@ ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas
 
 			//model->getObjects()->findSceneById(parentId)->setSelected(true);
 
-			model->updateViewModel();
+			//model->updateViewModel();
 			return this->idView.setValue(parentId);
 		};
 		ctrl->setFunction(func);

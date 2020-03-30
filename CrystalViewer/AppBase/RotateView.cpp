@@ -22,5 +22,5 @@ void RotateView::onOk()
 	}
 	const auto& matrix = matrixView.getValue();
 	shape->transform(matrix);
-	model->updateViewModel();
+	//model->updateViewModel();
 }

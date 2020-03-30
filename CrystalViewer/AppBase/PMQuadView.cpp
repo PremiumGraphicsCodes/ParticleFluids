@@ -45,5 +45,5 @@ void PMQuadView::onOk()
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
-	getWorld()->updateViewModel();
+	//getWorld()->updateViewModel();
 }

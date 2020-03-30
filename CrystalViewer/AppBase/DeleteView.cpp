@@ -20,5 +20,5 @@ void DeleteView::onOk()
 	Command::Command command(DeleteLabels::CommandNameLabel);
 	command.setArg(DeleteLabels::IdLabel, idView.getValue());
 	command.execute(getWorld());
-	getWorld()->updateViewModel();
+//	getWorld()->updateViewModel();
 }

@@ -29,5 +29,5 @@ void TransformView::onOk()
 	const auto& matrix = matrixView.getValue();
 	scene->transform(matrix);
 	*/
-	getWorld()->updateViewModel();
+	//getWorld()->updateViewModel();
 }

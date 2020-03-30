@@ -15,7 +15,7 @@ bool NewCommand::execute(World* model)
 	model->clear();
 	model->init();
 	model->getRenderer()->build(*model->getGLFactory());
-	model->updateViewModel();
+//	model->updateViewModel();
 
 	return true;
 }

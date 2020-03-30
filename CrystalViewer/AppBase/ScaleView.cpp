@@ -27,6 +27,6 @@ void ScaleView::onOk()
 		0.0, 0.0, 0.0, 1.0
 	);
 	scene->transform(matrix);
-	getWorld()->updateViewModel();
+	//getWorld()->updateViewModel();
 
 }
