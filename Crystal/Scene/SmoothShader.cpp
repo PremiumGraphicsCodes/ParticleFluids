@@ -63,17 +63,17 @@ bool SmoothShader::build(GLObjectFactory& factory)
 		shader.findUniformLocation(prefix + ".Ls");
 	}
 
-	for (int i = 0; i < 8; ++i) {
-		factory.getTextureFactory()->createTextureObject("SmoothTex01", Imagef(512, 512));
-		const auto prefix = "textures[" + std::to_string(i) + "]";
-		shader.findUniformLocation(prefix);
-	}
+	textureShader.setShader(&shader);
+	textureShader.build(factory);
 
 	return isOk;
 }
 
 void SmoothShader::release(GLObjectFactory& factory)
 {
+	for (int i = 0; i < 8; ++i) {
+//		textures[i].release();
+	}
 	shader.release();
 }
 
@@ -139,16 +139,10 @@ void SmoothShader::send(const std::vector<PointLight>& lights)
 	shader.unbind();
 }
 
-void SmoothShader::send(const std::vector<TextureScene>& textures)
+void SmoothShader::send(const TextureShaderBuffer& buffer)
 {
-	/*
-	shader.bind();
-	for (int i = 0; i < textures.size(); ++i) {
-		const auto prefix = "textures[" + std::to_string(i) + "]";
-		shader.sendUniform(prefix, textures[i]);
-	}
-	shader.unbind();
-	*/
+	textureShader.send();
+	//textureShader.send(buffer);
 }
 
 void SmoothShader::render()

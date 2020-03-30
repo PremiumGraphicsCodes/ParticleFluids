@@ -9,35 +9,15 @@
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/ShaderObject.h"
 
+#include "TextureShader.h"
+#include "TextureShaderBuffer.h"
+
 #include "IShader.h"
 
 namespace Crystal {
 	namespace Scene {
 		class TextureScene;
 
-		/*
-struct TextureShaderBuffer
-{
-	void add(TextureScene* scenes)
-	{
-
-	}
-
-};
-
-class TextureShader : public IShader
-{
-public:
-	TextureShader();
-
-	bool build(Shader::GLObjectFactory& factory) override;
-
-	void release() override;
-
-	void send(const TextureScene& texture);
-
-};
-*/
 
 
 class SmoothShader : public IShader
@@ -55,7 +35,7 @@ public:
 
 	void send(const std::vector<Graphics::PointLight>& lights);
 
-	void send(const std::vector<TextureScene>& texture);
+	void send(const TextureShaderBuffer& textureBuffer);
 
 	void render() override;
 
@@ -64,9 +44,13 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
+	TextureShader textureShader;
+	TextureShaderBuffer textureShaderBuffer;
+
 	Math::Matrix4df matrix;
 	int count;
 	Shader::ShaderObject shader;
+
 };
 
 	}

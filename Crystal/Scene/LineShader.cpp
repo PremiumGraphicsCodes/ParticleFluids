@@ -1,4 +1,7 @@
 #include "LineShader.h"
+
+#include "../Shader/GLObjectFactory.h"
+
 #include <sstream>
 
 using namespace Crystal::Graphics;
@@ -21,6 +24,7 @@ bool LineShader::build(GLObjectFactory& factory)
 {
 	const auto& vsSource = getBuiltInVsSource();
 	const auto& fsSource = getBuiltInFsSource();
+//	factory.getShaderFactory()->create()
 	const auto isOk = shader.build(vsSource, fsSource);
 
 	shader.findUniformLocation(::projectionMatrixLabel);
