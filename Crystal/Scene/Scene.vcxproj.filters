@@ -198,9 +198,6 @@
     <Filter Include="Scene\Shape">
       <UniqueIdentifier>{27b37c2d-3ec6-4cde-8dbe-4e0905e7cd52}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ViewModel">
-      <UniqueIdentifier>{b4af8391-a4b7-4fb7-84d7-1c71fb361279}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Appearance">
       <UniqueIdentifier>{b3e58cb2-98f8-4ebd-af48-c18db3dce8fd}</UniqueIdentifier>
     </Filter>
