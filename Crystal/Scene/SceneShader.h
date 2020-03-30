@@ -9,7 +9,7 @@
 #include "ScreenShaderScene.h"
 #include "ScreenIdShaderScene.h"
 
-#include "ShaderBuffer.h"
+#include "SceneShaderScene.h"
 
 #include "../Util/UnCopyable.h"
 
