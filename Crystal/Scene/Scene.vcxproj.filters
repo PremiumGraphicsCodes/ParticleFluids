@@ -100,9 +100,6 @@
     <ClInclude Include="ParticleSystemController.h">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderBuffer.h">
-      <Filter>SceneShader</Filter>
-    </ClInclude>
     <ClInclude Include="PointShaderScene.h">
       <Filter>SceneShader\Point</Filter>
     </ClInclude>
@@ -119,6 +116,9 @@
       <Filter>SceneShader\Smooth</Filter>
     </ClInclude>
     <ClInclude Include="SceneShader.h">
+      <Filter>SceneShader</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
   </ItemGroup>

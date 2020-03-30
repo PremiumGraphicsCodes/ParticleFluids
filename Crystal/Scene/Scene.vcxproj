@@ -38,7 +38,7 @@
     <ClInclude Include="ScreenShaderScene.h" />
     <ClInclude Include="ScreenShader.h" />
     <ClInclude Include="PointShader.h" />
-    <ClInclude Include="ShaderBuffer.h" />
+    <ClInclude Include="SceneShaderScene.h" />
     <ClInclude Include="SceneShader.h" />
     <ClInclude Include="SmoothShaderScene.h" />
     <ClInclude Include="TextureScene.h" />

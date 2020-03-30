@@ -40,7 +40,7 @@ public:
 
 	//ViewModel toViewModel();
 
-	ShaderBuffer* getShaderBuffer() { return &shaderBuffer; }
+	SceneShaderScene* getShaderBuffer() { return &shaderBuffer; }
 
 	Math::Box3d getBoundingBox() const;
 
@@ -48,7 +48,7 @@ public:
 
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
-	ShaderBuffer shaderBuffer;
+	SceneShaderScene shaderBuffer;
 
 	SceneFactory sceneFactory;
 	Shader::GLObjectFactory glFactory;

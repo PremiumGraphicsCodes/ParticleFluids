@@ -6,7 +6,7 @@
 namespace Crystal {
 	namespace Scene {
 
-class ShaderBuffer
+class SceneShaderScene
 {
 public:
 	ScreenShaderScene screen;
