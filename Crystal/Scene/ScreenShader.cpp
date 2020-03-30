@@ -32,9 +32,19 @@ bool ScreenShader::build(GLObjectFactory& factory)
 	return true;
 }
 
-void ScreenShader::render(Camera* camera, const ScreenShaderScene& buffer)
+void ScreenShader::release(GLObjectFactory& factory)
+{
+	//TODO;
+}
+
+void ScreenShader::setBuffer(Camera* camera, const ScreenShaderScene& buffer)
 {
 	this->camera = camera;
+	this->buffer = buffer;
+}
+
+void ScreenShader::render()
+{
 	frameBufferObject->setTexture(texture);
 	//texture.bind();
 	frameBufferObject->bind();

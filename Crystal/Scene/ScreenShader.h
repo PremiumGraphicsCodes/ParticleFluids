@@ -1,11 +1,15 @@
 #pragma once
 
+#include "IShader.h"
+
 #include "../Scene/PointShader.h"
 #include "../Scene/LineShader.h"
 #include "../Scene/SmoothShader.h"
 
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
+
+#include "ScreenShaderScene.h"
 
 //#include "TextureObjectRepository.h"
 
@@ -18,7 +22,7 @@ namespace Crystal {
 	namespace Scene {
 		class ScreenShaderScene;
 
-class ScreenShader : private UnCopyable
+class ScreenShader : public IShader
 {
 public:
 	ScreenShader()
@@ -29,7 +33,11 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory);
 
-	void render(Graphics::Camera* camera, const ScreenShaderScene& buffer);
+	void release(Shader::GLObjectFactory& factory);
+
+	void setBuffer(Graphics::Camera* camera, const ScreenShaderScene& buffer);
+
+	void render();
 
 	struct Mask
 	{
@@ -63,7 +71,7 @@ private:
 
 	Shader::TextureObject texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
-
+	ScreenShaderScene buffer;
 };
 	}
 }
