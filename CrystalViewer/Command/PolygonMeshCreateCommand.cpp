@@ -58,7 +58,6 @@ bool PolygonMeshCreateCommand::execute(World* world)
 	}
 	//shape->addGroup(group);
 	const auto newId = shape->getId();
-	world->getRenderer()->getBuffer()->add(shape, *world->getGLFactory());
 
 	//world->updateViewModel();
 

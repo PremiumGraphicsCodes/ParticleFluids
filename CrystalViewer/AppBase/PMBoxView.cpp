@@ -41,6 +41,8 @@ void PMBoxView::onOk()
 	command.execute(getWorld());
 	const auto newId = std::any_cast<int>( command.getResult(PolygonMeshCreateLabels::NewIdLabel) );
 
+	//world->getRenderer()->getBuffer()->add(shape, *world->getGLFactory());
+
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 	//getWorld()->updateViewModel();

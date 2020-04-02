@@ -25,6 +25,9 @@ void IWFAddView::addWireFrame(const std::vector<Vector3dd>& positions, const std
 	command.execute(getWorld());
 	const auto newId = std::any_cast<int>(command.getResult(WireFrameCreateLabels::NewIdLabel));
 
+	auto scene = getWorld()->getObjects()->findSceneById<WireFrameScene*>(newId);
+	getWorld()->getRenderer()->getBuffer()->screen.add(scene, *getWorld()->getGLFactory());
+
 	//getWorld()->updateViewModel();
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
