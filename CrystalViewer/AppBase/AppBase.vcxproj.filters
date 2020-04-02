@@ -272,6 +272,9 @@
     <ClCompile Include="WFCircleView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
+    <ClCompile Include="IPMAddView.cpp">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -595,6 +598,9 @@
     </ClInclude>
     <ClInclude Include="Circle3dView.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="IPMAddView.h">
+      <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

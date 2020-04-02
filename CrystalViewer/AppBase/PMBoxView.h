@@ -1,5 +1,5 @@
 #pragma once
-#include "IOkCancelView.h"
+#include "IPMAddView.h"
 
 #include "Box3dView.h"
 #include "IntView.h"
@@ -9,7 +9,7 @@
 namespace Crystal {
 	namespace UI {
 
-class PMBoxView : public IOkCancelView
+class PMBoxView : public IPMAddView
 {
 public:
 	PMBoxView(const std::string& name, Scene::World* world, Canvas* canvas);

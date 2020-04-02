@@ -43,6 +43,7 @@
     <ClCompile Include="FloatView.cpp" />
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="IntView.cpp" />
+    <ClCompile Include="IPMAddView.cpp" />
     <ClCompile Include="IPSAddView.cpp" />
     <ClCompile Include="IWFAddView.cpp" />
     <ClCompile Include="Matrix2dView.cpp" />
@@ -126,6 +127,7 @@
     <ClInclude Include="IEditCancelView.h" />
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="IOkCancelView.h" />
+    <ClInclude Include="IPMAddView.h" />
     <ClInclude Include="IPSAddView.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="IView.h" />
