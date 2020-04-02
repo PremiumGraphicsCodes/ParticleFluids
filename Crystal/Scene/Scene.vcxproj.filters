@@ -124,6 +124,9 @@
     <ClInclude Include="IShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
+    <ClInclude Include="WireFrameController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -210,6 +213,9 @@
     </ClCompile>
     <ClCompile Include="SceneShaderScene.cpp">
       <Filter>SceneShader</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFrameController.cpp">
+      <Filter>Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

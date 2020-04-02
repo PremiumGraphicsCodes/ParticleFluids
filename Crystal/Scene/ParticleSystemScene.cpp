@@ -8,12 +8,14 @@ using namespace Crystal::Scene;
 
 ParticleSystemScene::ParticleSystemScene() :
 	IShapeScene(-1, nullptr),
-	shape(nullptr)
+	shape(nullptr),
+	controller(this)
 {}
 
 ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<ParticleSystem<ParticleAttribute>> shape) :
 	IShapeScene(id, name, shape.get()),
-	shape(std::move(shape))
+	shape(std::move(shape)),
+	controller(this)
 {}
 
 Crystal::Math::Box3d ParticleSystemScene::getBoundingBox() const

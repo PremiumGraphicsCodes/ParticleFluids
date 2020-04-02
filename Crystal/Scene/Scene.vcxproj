@@ -45,6 +45,7 @@
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TextureShaderBuffer.h" />
     <ClInclude Include="TriangleMeshScene.h" />
+    <ClInclude Include="WireFrameController.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="SmoothShader.h" />
     <ClInclude Include="TransformScene.h" />
@@ -88,6 +89,7 @@
     <ClCompile Include="TextureShaderBuffer.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
     <ClCompile Include="VolumeScene.cpp" />
+    <ClCompile Include="WireFrameController.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneFactory.cpp" />

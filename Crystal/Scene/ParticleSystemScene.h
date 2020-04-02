@@ -6,6 +6,7 @@
 #include "ParticleAttribute.h"
 
 #include "PointShader.h"
+#include "ParticleSystemController.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -39,8 +40,11 @@ public:
 
 	void setAttribute(const ParticleAttribute& attribute);
 
+	ParticleSystemController getController() { return controller; }
+
 private:
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
+	ParticleSystemController controller;
 };
 
 	}
