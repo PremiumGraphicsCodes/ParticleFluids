@@ -4,6 +4,8 @@
 #include "LineShaderScene.h"
 #include "SmoothShaderScene.h"
 
+#include <list>
+
 namespace Crystal {
 	namespace Scene {
 		class ParticleSystemScene;
@@ -13,7 +15,7 @@ namespace Crystal {
 		class MaterialScene;
 		class LightScene;
 
-class ScreenShaderScene
+class ScreenShaderScene : public IShaderScene
 {
 public:
 	// Model ‚ª•Ï‚í‚Á‚½‚Æ‚«‚¾‚¯”½‰f‚³‚¹‚éD
@@ -29,9 +31,11 @@ public:
 
 	void add(LightScene* scene) { this->lightScenes.push_back(scene); }
 
-	//void build();
+	bool build(Shader::GLObjectFactory& glFactory) override;
 
-	void release();
+	void release(Shader::GLObjectFactory& glFactory) override;
+
+	void render() override;
 
 	std::vector<PointShaderScene> pointBuffers;
 	std::vector<LineShaderScene> lineBuffers;
@@ -39,6 +43,9 @@ public:
 	std::vector<TextureScene*> textureScenes;
 	std::vector<MaterialScene*> materialScenes;
 	std::vector<LightScene*> lightScenes;
+
+private:
+	std::list<IShaderScene*> children;
 };
 
 	}

@@ -62,7 +62,7 @@ public:
 
 	void send(const SmoothBuffer& buffer);
 
-	void release() override;
+	void release(Shader::GLObjectFactory& glFactory) override;
 
 	void render() override;
 

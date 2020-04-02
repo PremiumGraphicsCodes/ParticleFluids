@@ -15,7 +15,7 @@ bool LineShaderScene::build(GLObjectFactory& glFactory)
 	return true;
 }
 
-void LineShaderScene::release()
+void LineShaderScene::release(GLObjectFactory& glFactory)
 {
 	vbo.position.release();
 	vbo.color.release();

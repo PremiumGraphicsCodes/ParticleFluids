@@ -30,7 +30,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& glFactory) override;
 
-	void release() override;
+	void release(Shader::GLObjectFactory& glFactory) override;
 
 	void render() override;
 

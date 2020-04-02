@@ -22,7 +22,7 @@ bool SmoothShaderScene::build(GLObjectFactory& glFactory)
 	return true;
 }
 
-void SmoothShaderScene::release()
+void SmoothShaderScene::release(GLObjectFactory& glFactory)
 {
 	position.release();
 	normal.release();

@@ -16,7 +16,7 @@ bool PointShaderScene::build(GLObjectFactory& glFactory)
 	return true;
 }
 
-void PointShaderScene::release()
+void PointShaderScene::release(GLObjectFactory& glFactory)
 {
 	vbo.position.release();
 	vbo.size.release();

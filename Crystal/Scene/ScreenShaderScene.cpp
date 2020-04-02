@@ -8,24 +8,34 @@ using namespace Crystal::Math;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-void ScreenShaderScene::release()
+bool ScreenShaderScene::build(GLObjectFactory& glFactory)
+{
+	return true;
+}
+
+void ScreenShaderScene::release(GLObjectFactory& glFactory)
 {
 	for (auto& pb : pointBuffers) {
-		pb.release();
+		pb.release(glFactory);
 	}
 	pointBuffers.clear();
 	for (auto& lb : lineBuffers) {
-		lb.release();
+		lb.release(glFactory);
 	}
 	lineBuffers.clear();
 	for (auto& pm : pmScenes) {
-		pm.release();
+		pm.release(glFactory);
 	}
 	pmScenes.clear();
 
 	textureScenes.clear();
 	materialScenes.clear();
 	lightScenes.clear();
+}
+
+void ScreenShaderScene::render()
+{
+	;
 }
 
 void ScreenShaderScene::add(ParticleSystemScene* scene, GLObjectFactory& glFactory)
