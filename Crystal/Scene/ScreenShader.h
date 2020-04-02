@@ -60,6 +60,8 @@ public:
 
 	Graphics::Camera* getCamera() { return camera; }
 
+	PointShader* getPointShader() { return &pointRenderer; }
+
 private:
 	PointShader pointRenderer;
 	LineShader wireRenderer;
