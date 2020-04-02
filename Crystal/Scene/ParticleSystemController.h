@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
 namespace Crystal {
 	namespace Scene {
@@ -8,25 +9,42 @@ namespace Crystal {
 		class PointShaderScene;
 		class WireFrameScene;
 		class LineShaderScene;
+		class PointShader;
 
-class ParticleSystemController
-{
-public:
-	ParticleSystemController();
 
-	void updateBuffer(ParticleSystemScene* src);
+		class ParticleSystemController
+		{
+		public:
+			explicit ParticleSystemController(ParticleSystemScene* model);
 
-private:
-	PointShaderScene* view;
-};
+			void createView(PointShader* renderer);
 
-class WireFrameController
-{
-private:
-	WireFrameScene* model;
-	LineShaderScene* view;
-};
+			void updateView();
 
+		private:
+			ParticleSystemScene* model;
+			std::shared_ptr<PointShaderScene> view;
+		};
+
+		class WireFrameController
+		{
+		private:
+			WireFrameScene* model;
+			LineShaderScene* view;
+		};
+
+		/*
+		class SceneController
+		{
+
+		private:
+			std::vector<ParticleSystemController> psController;
+
+			//std::map
+		};
+		*/
+	}
+}
 /*
 class SceneController
 {
@@ -37,5 +55,3 @@ private:
 	//std::map
 };
 */
-	}
-}
