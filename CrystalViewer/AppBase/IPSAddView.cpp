@@ -4,6 +4,8 @@
 #include "../Command/Public/ParticleSystemCreateLabels.h"
 #include "../Command/Public/CameraLabels.h"
 
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -30,7 +32,8 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	command.execute(getWorld());
 	auto newId = std::any_cast<int>( command.getResult(ParticleSystemCreateLabels::NewIdLabel) );
 
-	//getWorld()->updateViewModel();
+	auto scene = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>(newId);
+	getWorld()->getRenderer()->getBuffer()->screen.add(scene, *getWorld()->getGLFactory());
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 }

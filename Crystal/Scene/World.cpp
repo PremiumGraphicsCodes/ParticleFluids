@@ -14,7 +14,6 @@ World::World()
 	scenes[0] = std::make_unique<Scene>(0, "Item");
 	scenes[1] = std::make_unique<Scene>(0, "Root");
 
-	renderer = std::make_unique<SceneShader>();
 }
 
 World::~World()
@@ -24,6 +23,8 @@ World::~World()
 
 void World::init()
 {
+	renderer = std::make_unique<SceneShader>();
+
 	{
 		auto light = std::make_unique<PointLight>();
 		light->setPosition(Vector3dd(100, 100, 100));
