@@ -51,13 +51,11 @@ void ScreenShader::render()
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	if (mask.showPoints) {
-		for (auto buffer : buffer.pointBuffers) {
-			buffer.camera = *camera;
-			pointRenderer.send(buffer);
-			pointRenderer.render();
-		}
+	const auto& children = buffer.getChildren();
+	for (auto buffer : children) {
+		buffer->render();
 	}
+
 	if (mask.showLines) {
 		for (auto lb : buffer.lineBuffers) {
 			lb.camera = *camera;

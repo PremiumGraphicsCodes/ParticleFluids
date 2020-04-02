@@ -3,7 +3,11 @@
 #include <vector>
 #include <memory>
 
+
 namespace Crystal {
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace Scene {
 		class ParticleSystemScene;
 		class PointShaderScene;
@@ -15,7 +19,7 @@ class ParticleSystemController
 public:
 	explicit ParticleSystemController(ParticleSystemScene* model);
 
-	void createView(SceneShader* sceneShader);
+	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory);
 
 	void updateView();
 

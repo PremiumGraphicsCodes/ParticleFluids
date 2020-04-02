@@ -19,8 +19,6 @@ class ScreenShaderScene : public IShaderScene
 {
 public:
 	// Model ‚ª•Ï‚í‚Á‚½‚Æ‚«‚¾‚¯”½‰f‚³‚¹‚éD
-	void add(ParticleSystemScene* scene, Shader::GLObjectFactory& glFactory);
-
 	void add(WireFrameScene* scene, Shader::GLObjectFactory& glFactory);
 
 	void add(PolygonMeshScene* scene, Shader::GLObjectFactory& glFactory);
@@ -37,15 +35,11 @@ public:
 
 	void render() override;
 
-	std::vector<PointShaderScene> pointBuffers;
 	std::vector<LineShaderScene> lineBuffers;
 	std::vector<SmoothShaderScene> pmScenes;
 	std::vector<TextureScene*> textureScenes;
 	std::vector<MaterialScene*> materialScenes;
 	std::vector<LightScene*> lightScenes;
-
-private:
-	std::list<IShaderScene*> children;
 };
 
 	}

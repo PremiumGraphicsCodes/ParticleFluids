@@ -10,15 +10,21 @@ using namespace Crystal::Scene;
 
 bool ScreenShaderScene::build(GLObjectFactory& glFactory)
 {
+	const auto& children = getChildren();
+	for (auto c : children) {
+		c->build(glFactory);
+	}
+
 	return true;
 }
 
 void ScreenShaderScene::release(GLObjectFactory& glFactory)
 {
-	for (auto& pb : pointBuffers) {
-		pb.release(glFactory);
+	const auto& children = getChildren();
+	for (auto c : children) {
+		c->release(glFactory);
 	}
-	pointBuffers.clear();
+
 	for (auto& lb : lineBuffers) {
 		lb.release(glFactory);
 	}
@@ -35,22 +41,10 @@ void ScreenShaderScene::release(GLObjectFactory& glFactory)
 
 void ScreenShaderScene::render()
 {
-	;
-}
-
-void ScreenShaderScene::add(ParticleSystemScene* scene, GLObjectFactory& glFactory)
-{
-	const auto& ps = scene->getShape()->getParticles();
-	PointBuffer pb;
-	for (auto p : ps) {
-		pb.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
+	const auto& children = getChildren();
+	for (auto c : children) {
+		c->render();
 	}
-	pb.setMatrix(scene->getMatrix());
-
-	PointShaderScene buffer;
-	buffer.build(glFactory);
-	buffer.send(pb);
-	pointBuffers.push_back(buffer);
 }
 
 void ScreenShaderScene::add(WireFrameScene* scene, GLObjectFactory& glFactory)

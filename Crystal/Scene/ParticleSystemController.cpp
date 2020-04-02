@@ -3,14 +3,16 @@
 #include "ParticleSystemScene.h"
 #include "SceneShader.h"
 
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 ParticleSystemController::ParticleSystemController(ParticleSystemScene* model) :
-	model(model)
+	model(model),
+	view(nullptr)
 {
 }
 
-void ParticleSystemController::createView(SceneShader* sceneShader)
+void ParticleSystemController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	const auto& ps = model->getShape()->getParticles();
 	PointBuffer pb;
@@ -22,6 +24,7 @@ void ParticleSystemController::createView(SceneShader* sceneShader)
 	view = new PointShaderScene();
 	view->setShader(sceneShader->getObjectRenderer()->getPointShader());
 	view->camera = *(sceneShader->getCamera());
+	view->build(glFactory);
 	view->send(pb);
 	//sceneShader->getBuffer()->screen.add(view);
 }
