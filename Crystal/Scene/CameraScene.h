@@ -19,25 +19,6 @@ public:
 
 	Graphics::Camera* getCamera() const { return camera.get(); }
 
-	/*
-	void move(const Math::Vector3dd& v) override { light->move(v); }
-
-	void transform(const Math::Matrix3dd& m) { light->transform(m); }
-
-	void transform(const Math::Matrix4dd& m) { light->transform(m); }
-	*/
-
-	SceneType getType() const override { return SceneType::CameraScene; }
-
-	void onClear() override
-	{
-
-	}
-
-	void toViewModel(SceneViewModel& viewModel) const override {}
-
-	void toIdViewModel(ScreenIdShaderBuffer& viewModel) const override {}
-
 private:
 	std::unique_ptr< Graphics::Camera > camera;
 };

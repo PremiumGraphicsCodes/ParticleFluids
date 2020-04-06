@@ -217,6 +217,9 @@
     <ClCompile Include="WireFrameController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
+    <ClCompile Include="CameraScene.cpp">
+      <Filter>Scene\Appearance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

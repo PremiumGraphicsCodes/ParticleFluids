@@ -6,6 +6,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
+/*
 void CameraScene::fitCamera(const Box3d& boundingBox)
 {
 	const auto& dist = static_cast<float>(glm::distance(boundingBox.getMin(), boundingBox.getMax()));
@@ -33,3 +34,4 @@ void CameraScene::setCameraZX(const Box3d& boundingBox)
 	camera->rotate(0.0, glm::radians(90.0f));
 }
 
+*/
