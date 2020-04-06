@@ -37,7 +37,8 @@ ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas
 				WireFrameAttribute attribute;
 				attribute.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
 				attribute.width = 1.0f;
-				auto bbshape = model->getSceneFactory()->createWireFrameScene(builder.createWireFrame(), attribute, "BoundingBox");
+				const auto newId = model->getSceneFactory()->getNextId();
+				auto bbshape = new WireFrameScene(newId, "BoundingBox", builder.createWireFrame(), attribute);
 				model->getItems()->addScene(bbshape);
 //				results.boundingBoxItemId.setValue(bbshape->getId());
 			}
