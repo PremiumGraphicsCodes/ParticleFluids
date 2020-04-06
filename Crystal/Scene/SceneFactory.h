@@ -57,8 +57,6 @@ public:
 
 	PolygonMeshScene* createPolygonMeshScene(std::unique_ptr<Shape::PolygonMesh> mesh, const std::string& name);
 
-	LightScene* createLightScene(std::unique_ptr<Graphics::PointLight> light, const std::string& name);
-
 	MaterialScene* createMaterialScene(std::unique_ptr<Graphics::Material> material, const std::string& name);
 
 	FaceGroupScene* createFaceGroupScene(PolygonMeshScene* parent, const std::string& name);

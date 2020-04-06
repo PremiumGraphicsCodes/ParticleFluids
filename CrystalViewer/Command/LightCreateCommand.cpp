@@ -41,7 +41,8 @@ bool LightCreateCommand::execute(World* world)
 	l->setAmbient(args.ambient.getValue());
 	l->setDiffuse(args.diffuse.getValue());
 	l->setSpecular(args.specular.getValue());
-	auto scene = world->getSceneFactory()->createLightScene(std::move(l), args.name.getValue());
+//	auto scene = world->getSceneFactory()->createLightScene(std::move(l), args.name.getValue());
+	auto scene = new LightScene(world->getSceneFactory()->getNextId(), args.name.getValue(), std::move(l));
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
 	return true;

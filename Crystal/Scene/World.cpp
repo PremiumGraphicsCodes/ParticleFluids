@@ -31,7 +31,8 @@ void World::init()
 		light->setAmbient(ColorRGBAf(1, 1, 1, 1));
 		light->setDiffuse(ColorRGBAf(1, 1, 1, 1));
 		light->setSpecular(ColorRGBAf(1, 1, 1, 1));
-		scenes[1]->addScene(sceneFactory.createLightScene(std::move(light), "Light0"));
+		scenes[1]->addScene(new LightScene(sceneFactory.getNextId(), "Light0", std::move(light)));
+		//scenes[1]->addScene(sceneFactory.createLightScene(std::move(light), "Light0"));
 	}
 
 	{
