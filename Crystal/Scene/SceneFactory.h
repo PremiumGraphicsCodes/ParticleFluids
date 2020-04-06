@@ -55,19 +55,11 @@ public:
 
 	ParticleSystemScene* createParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
-	TriangleMeshScene* createTriangleMeshScene(std::unique_ptr<Shape::TriangleMesh> shape, const std::string name);
-
 	PolygonMeshScene* createPolygonMeshScene(std::unique_ptr<Shape::PolygonMesh> mesh, const std::string& name);
 
 	LightScene* createLightScene(std::unique_ptr<Graphics::PointLight> light, const std::string& name);
 
 	MaterialScene* createMaterialScene(std::unique_ptr<Graphics::Material> material, const std::string& name);
-
-	//ShaderScene* createShaderScene(const std::string& name);
-
-	//CameraScene* createCameraScene(Graphics::Camera* camera, const std::string& name);
-
-	TransformScene* createTransformScene(const std::string& name);
 
 	FaceGroupScene* createFaceGroupScene(PolygonMeshScene* parent, const std::string& name);
 

@@ -67,11 +67,6 @@ ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<V
 	return new ParticleSystemScene(getNextId(), name, std::move(particles));
 }
 
-TriangleMeshScene* SceneFactory::createTriangleMeshScene(std::unique_ptr<TriangleMesh> shape, const std::string name)
-{
-	return new TriangleMeshScene(getNextId(), name, std::move(shape));
-}
-
 PolygonMeshScene* SceneFactory::createPolygonMeshScene(std::unique_ptr<PolygonMesh> mesh,  const std::string& name)
 {
 	return new PolygonMeshScene(getNextId(), name, std::move(mesh));
@@ -86,24 +81,6 @@ MaterialScene* SceneFactory::createMaterialScene(std::unique_ptr<Material> mater
 {
 	return new MaterialScene(getNextId(), name, std::move(material), materialIdProvider.getNextId());
 }
-
-/*
-ShaderScene* SceneFactory::createShaderScene(const std::string& name)
-{
-	return new ShaderScene(getNextId(), name);
-}
-
-CameraScene* SceneFactory::createCameraScene(ICamera* camera, const std::string& name)
-{
-	return new CameraScene(getNextId(), name, camera);
-}
-
-TransformScene* SceneFactory::createTransformScene(const std::string& name)
-{
-	return new TransformScene(getNextId(), name);
-}
-*/
-
 
 FaceGroupScene* SceneFactory::createFaceGroupScene(PolygonMeshScene* parent, const std::string& name)
 {

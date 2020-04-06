@@ -52,8 +52,19 @@ void ScreenShader::render()
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	const auto& children = buffer.getChildren();
+	/*
 	for (auto buffer : children) {
 		buffer->render();
+	}
+	*/
+	if (mask.showPoints) {
+		for (auto pb : buffer.pointBuffers) {
+			//pb.csetCamera( *camera;
+			CameraShaderScene cameraScene;
+			cameraScene.update(*camera);
+			pb.setCamera(&cameraScene);
+			pb.render();
+		}
 	}
 
 	if (mask.showLines) {
