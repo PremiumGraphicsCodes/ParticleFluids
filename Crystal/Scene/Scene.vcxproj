@@ -23,6 +23,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraScene.h" />
+    <ClInclude Include="CameraSceneController.h" />
+    <ClInclude Include="CameraShaderScene.h" />
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="ParticleSystemController.h" />
     <ClInclude Include="FaceGroupScene.h" />
@@ -68,6 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraScene.cpp" />
+    <ClCompile Include="CameraSceneController.cpp" />
+    <ClCompile Include="CameraShaderScene.cpp" />
     <ClCompile Include="FaceGroupScene.cpp" />
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="LightScene.cpp" />
