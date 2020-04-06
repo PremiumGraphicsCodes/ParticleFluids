@@ -44,12 +44,14 @@ void ScreenIdShader::render(Camera* camera, const ScreenIdShaderScene& vm)
 
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	/*
 	for (const auto& b : pointBuffers) {
 		pointBuffer.camera = *camera;
 		pointBuffer.send(b);
 		pointIdRenderer.send(pointBuffer);
 		pointIdRenderer.render();
 	}
+	*/
 	for (const auto& b : lineBuffers) {
 		lineBuffer.send(b);
 		lineIdRenderer.setBuffer(lineBuffer);

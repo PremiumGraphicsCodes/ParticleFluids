@@ -5,6 +5,7 @@
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/VertexArrayObject.h"
 #include "../Graphics/Camera.h"
+#include "CameraShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -24,7 +25,6 @@ public:
 	VBO vbo;
 	GLuint count;
 	Math::Matrix4df matrix;
-	Graphics::Camera camera;
 
 	bool build(Shader::GLObjectFactory& glFactory) override;
 
@@ -36,8 +36,11 @@ public:
 
 	void setShader(PointShader* shader);
 
+	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
+
 private:
 	PointShader* shader;
+	CameraShaderScene* camera;
 };
 
 	}

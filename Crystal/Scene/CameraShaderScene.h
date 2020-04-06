@@ -3,17 +3,24 @@
 #include "../Graphics/Camera.h"
 
 namespace Crystal {
-	namespace Shader {
+	namespace Scene {
 
 class CameraShaderScene
 {
 public:
-	CameraShaderScene(Graphics::Camera* camera);
+	void update(const Graphics::Camera& camera)
+	{
+		this->projectionMatrix = camera.getProjectionMatrix();
+		this->modelViewMatrix = camera.getModelViewMatrix();
+	}
 
-	Graphics::Camera* getCamera() { return camera; }
+	Math::Matrix4df getProjectionMatrix() const { return projectionMatrix; }
+
+	Math::Matrix4df getModelViewMatrix() const { return modelViewMatrix; }
 
 private:
-	Graphics::Camera* camera;
+	Math::Matrix4df projectionMatrix;
+	Math::Matrix4df modelViewMatrix;
 };
 	}
 }

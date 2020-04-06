@@ -8,6 +8,7 @@
 
 namespace Crystal {
 	namespace Scene {
+		class CameraShaderScene;
 
 class PointShader : public IShader
 {
@@ -19,6 +20,8 @@ public:
 	void release(Shader::GLObjectFactory& factory) override;
 
 	void send(const PointShaderScene& buffer);
+
+	void send(const CameraShaderScene& camera);
 
 	void render() override;
 
