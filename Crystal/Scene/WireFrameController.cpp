@@ -3,6 +3,7 @@
 #include "WireFrameScene.h"
 #include "LineBuffer.h"
 
+using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 WireFrameController::WireFrameController(WireFrameScene* model) :
@@ -10,7 +11,7 @@ WireFrameController::WireFrameController(WireFrameScene* model) :
 {
 }
 
-void WireFrameController::createView(LineShader* renderer)
+void WireFrameController::createView(LineShader* renderer, GLObjectFactory& factory)
 {
 	const auto& shape = model->getShape();
 	const auto& positions = shape->getPositions();

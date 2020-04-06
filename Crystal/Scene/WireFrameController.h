@@ -1,6 +1,9 @@
 #pragma once
 
 namespace Crystal {
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace Scene {
 		class WireFrameScene;
 		class LineShaderScene;
@@ -11,7 +14,7 @@ class WireFrameController
 public:
 	explicit WireFrameController(WireFrameScene* model);
 
-	void createView(LineShader* renderer);
+	void createView(LineShader* renderer, Shader::GLObjectFactory& factory);
 
 	void updateView();
 
