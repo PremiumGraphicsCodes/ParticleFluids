@@ -71,7 +71,9 @@ void World::init()
 		image->setColor(1, 1, ColorRGBAuc(0, 0, 0, 255));
 
 //		auto tex = glFactory.getTextureFactory()->createTextureObject(image);
-		auto s = sceneFactory.createTextureScene(std::move(image), "WhiteTex");
+//		auto s = sceneFactory.createTextureScene(std::move(image), "WhiteTex");
+		auto s = new TextureScene(sceneFactory.getNextId(), std::move(image), "WhiteTex");
+
 //		s->build();
 		scenes[1]->addScene(s);
 	}
@@ -79,7 +81,7 @@ void World::init()
 	{
 		auto image = std::make_unique<Image>(1, 1);
 		image->setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
-		auto s = sceneFactory.createTextureScene(std::move(image), "BlackTex");
+		auto s = new TextureScene(sceneFactory.getNextId(), std::move(image), "BlackTex");
 //		s->build();
 		scenes[1]->addScene(s);
 	}

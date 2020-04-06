@@ -87,11 +87,6 @@ MaterialScene* SceneFactory::createMaterialScene(std::unique_ptr<Material> mater
 	return new MaterialScene(getNextId(), name, std::move(material), materialIdProvider.getNextId());
 }
 
-TextureScene* SceneFactory::createTextureScene(std::unique_ptr<Image> image, const std::string& name)
-{
-	return new TextureScene(getNextId(), std::move(image), name);
-}
-
 /*
 ShaderScene* SceneFactory::createShaderScene(const std::string& name)
 {
