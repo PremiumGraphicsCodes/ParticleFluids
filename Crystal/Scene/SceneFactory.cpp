@@ -67,11 +67,6 @@ ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<V
 	return new ParticleSystemScene(getNextId(), name, std::move(particles));
 }
 
-PolygonMeshScene* SceneFactory::createPolygonMeshScene(std::unique_ptr<PolygonMesh> mesh,  const std::string& name)
-{
-	return new PolygonMeshScene(getNextId(), name, std::move(mesh));
-}
-
 FaceGroupScene* SceneFactory::createFaceGroupScene(PolygonMeshScene* parent, const std::string& name)
 {
 	auto g= new FaceGroupScene(getNextId(), name, parent);
