@@ -6,6 +6,7 @@
 #include "Public/ParticleSystemCreateLabels.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
@@ -44,7 +45,8 @@ bool ParticleSystemCreateCommand::execute(World* world)
 	attr.color = args.color.getValue();
 	attr.size = args.pointSize.getValue();
 	auto name = args.name.getValue();
-	auto scene = new ParticleSystemScene(world->getSceneFactory()->getNextId(), positions, attr, name);
+	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>();
+	auto scene = new ParticleSystemScene(world->getSceneFactory()->getNextId(), name, std::move(shape));
 	scene->setMatrix(args.matrix.getValue());
 	world->addScene(args.layer.getValue(), scene);
 	//world->getRenderer()->getBuffer()->screen.add(scene, *world->getGLFactory());

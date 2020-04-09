@@ -18,6 +18,13 @@ class ParticleSystem : public IShape
 public:
 	ParticleSystem() {}
 
+	ParticleSystem(const std::vector<Math::Vector3dd>& positions, const Attr& attr)
+	{
+		for (const auto& p : positions) {
+			particles.push_back(new Particle<Attr>(p, attr));
+		}
+	}
+
 	~ParticleSystem() {
 		clear();
 	}

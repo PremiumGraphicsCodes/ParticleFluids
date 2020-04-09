@@ -6,6 +6,7 @@
 #include "../Command/Public/PCDFileExportLabels.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
@@ -13,8 +14,9 @@ TEST(PCDFileExportCommand, TestExecute)
 {
 	World world;
 
-	const std::vector<Vector3dd> positions = { Vector3dd(0,0,0) };
-	auto ps = new ParticleSystemScene(1, positions, ParticleAttribute(), "");
+	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>();
+	shape->add(Vector3dd(0, 0, 0), ParticleAttribute());
+	auto ps = new ParticleSystemScene(1, "", std::move(shape));
 	world.getObjects()->addScene(ps);
 
 	const std::vector<int> newIds = { ps->getId() };

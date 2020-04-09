@@ -5,6 +5,7 @@
 
 #include "Public/PCDFileImportLabels.h"
 
+using namespace Crystal::Shape;
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
@@ -34,7 +35,8 @@ bool PCDFileImportCommand::execute(Crystal::Scene::World* scene)
 		ParticleAttribute attr;
 		attr.color = glm::vec4(0, 0, 0, 0);
 		attr.size = 1.0;
-		auto s = new ParticleSystemScene(scene->getSceneFactory()->getNextId(), positions, attr, "PCD");
+		auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
+		auto s = new ParticleSystemScene(scene->getSceneFactory()->getNextId(), "PCD", std::move(shape));
 		scene->getObjects()->addScene(s);
 		results.newId.setValue(s->getId());
 		//results.isOk.setValue( true );

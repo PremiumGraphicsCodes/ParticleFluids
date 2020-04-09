@@ -17,13 +17,13 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 	shape(std::move(shape)),
 	controller(this)
 {}
-
+/*
 ParticleSystemScene::ParticleSystemScene(const int id, const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name) :
 	IShapeScene(id, name, shape.get()),
 	shape(std::move(shape)),
 	controller(this)
 {
-	shape->add(position, attribute);
+	getShape()->add(position, attribute);
 }
 
 ParticleSystemScene::ParticleSystemScene(const int id, const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name) :
@@ -32,9 +32,10 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::vector<Vector3
 	controller(this)
 {
 	for (const auto& p : positions) {
-		shape->add(p, attribute);
+		getShape()->add(p, attribute);
 	}
 }
+*/
 
 Crystal::Math::Box3d ParticleSystemScene::getBoundingBox() const
 {
