@@ -57,11 +57,11 @@ public:
 
 	PolygonMeshScene* createPolygonMeshScene(std::unique_ptr<Shape::PolygonMesh> mesh, const std::string& name);
 
-	MaterialScene* createMaterialScene(std::unique_ptr<Graphics::Material> material, const std::string& name);
-
 	FaceGroupScene* createFaceGroupScene(PolygonMeshScene* parent, const std::string& name);
 
 	int getNextId() { return idProvider.getNextId(); }
+
+	int getNextMaterialId() { return materialIdProvider.getNextId(); }
 
 private:
 	SceneIdProvider materialIdProvider;

@@ -72,11 +72,6 @@ PolygonMeshScene* SceneFactory::createPolygonMeshScene(std::unique_ptr<PolygonMe
 	return new PolygonMeshScene(getNextId(), name, std::move(mesh));
 }
 
-MaterialScene* SceneFactory::createMaterialScene(std::unique_ptr<Material> material, const std::string& name)
-{
-	return new MaterialScene(getNextId(), name, std::move(material), materialIdProvider.getNextId());
-}
-
 FaceGroupScene* SceneFactory::createFaceGroupScene(PolygonMeshScene* parent, const std::string& name)
 {
 	auto g= new FaceGroupScene(getNextId(), name, parent);
