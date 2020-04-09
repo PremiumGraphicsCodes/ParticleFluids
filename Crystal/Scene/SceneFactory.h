@@ -47,8 +47,6 @@ public:
 
 	void clear();
 
-	Scene* createScene(const std::string& name);
-
 	ParticleSystemScene* createParticleSystemScene(const Math::Vector3dd& position, const ParticleAttribute& attribute, const std::string& name);
 
 	ParticleSystemScene* createParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name);

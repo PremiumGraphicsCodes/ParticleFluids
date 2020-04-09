@@ -120,7 +120,7 @@ bool OBJFileImportCommand::importOBJWithMTL(const std::filesystem::path& filePat
 	auto filename = filePath.parent_path() / filePath.stem();
 	filename.concat(".mtl");
 
-	auto scene = world->getSceneFactory()->createScene("OBJ");
+	auto scene = new Crystal::Scene::Scene(world->getSceneFactory()->getNextId(), "OBJ");//world->getSceneFactory()->createScene("OBJ");
 
 	// mtl ファイルを読み込む．
 	if (!importMTL(filename, world)) {
