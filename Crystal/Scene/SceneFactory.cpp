@@ -36,16 +36,6 @@ void SceneFactory::clear()
 	materialIdProvider.reset(0);
 }
 
-
-ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name)
-{
-	auto particles = std::make_unique<ParticleSystem<ParticleAttribute>>();
-	for (const auto& p : positions) {
-		particles->add(p, attribute);
-	}
-	return new ParticleSystemScene(getNextId(), name, std::move(particles));
-}
-
 ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name)
 {
 	assert(positions.size() == attributes.size());

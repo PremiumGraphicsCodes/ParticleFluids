@@ -44,7 +44,7 @@ bool ParticleSystemCreateCommand::execute(World* world)
 	attr.color = args.color.getValue();
 	attr.size = args.pointSize.getValue();
 	auto name = args.name.getValue();
-	auto scene = world->getSceneFactory()->createParticleSystemScene(positions, attr, name);
+	auto scene = new ParticleSystemScene(world->getSceneFactory()->getNextId(), positions, attr, name);
 	scene->setMatrix(args.matrix.getValue());
 	world->addScene(args.layer.getValue(), scene);
 	//world->getRenderer()->getBuffer()->screen.add(scene, *world->getGLFactory());

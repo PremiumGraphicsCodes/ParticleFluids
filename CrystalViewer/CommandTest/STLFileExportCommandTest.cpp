@@ -18,7 +18,7 @@ TEST(STLFileExportCommandTest, TestExecute)
 
 	PolygonMeshBuilder builder;
 	builder.add(Box3d());
-	auto scene = world.getSceneFactory()->createPolygonMeshScene(builder.build(), "");
+	auto scene = new PolygonMeshScene(1, "", builder.build());
 	world.getObjects()->addScene(scene);
 
 	const std::vector<int> newIds = { scene->getId() };

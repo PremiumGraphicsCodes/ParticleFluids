@@ -14,7 +14,7 @@ TEST(PCDFileExportCommand, TestExecute)
 	World world;
 
 	const std::vector<Vector3dd> positions = { Vector3dd(0,0,0) };
-	auto ps = world.getSceneFactory()->createParticleSystemScene(positions, ParticleAttribute(), "");
+	auto ps = new ParticleSystemScene(1, positions, ParticleAttribute(), "");
 	world.getObjects()->addScene(ps);
 
 	const std::vector<int> newIds = { ps->getId() };

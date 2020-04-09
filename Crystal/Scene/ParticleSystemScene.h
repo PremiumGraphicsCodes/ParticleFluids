@@ -20,6 +20,8 @@ public:
 
 	ParticleSystemScene(const int id, const Math::Vector3dd& position, const ParticleAttribute& attribute, const std::string& name);
 
+	ParticleSystemScene(const int id, const std::vector<Math::Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name);
+
 	~ParticleSystemScene() {};
 
 	Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape.get(); }

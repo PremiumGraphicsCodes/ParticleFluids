@@ -55,7 +55,7 @@ bool TrimCommand::execute(World* world)
 		ParticleAttribute attr;
 		attr.color = Crystal::Graphics::ColorRGBAf(1.0, 0.0, 0.0, 0.0);
 		attr.size = 1.0f;
-		auto newObj = world->getSceneFactory()->createParticleSystemScene(positions, attr, "Trimmed");
+		auto newObj = new ParticleSystemScene(world->getSceneFactory()->getNextId(), positions, attr, "Trimmed");
 		world->getObjects()->addScene(newObj);
 		results.newId.setValue(newObj->getId());
 	}
