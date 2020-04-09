@@ -64,7 +64,10 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
-			auto faceGroup = world->getSceneFactory()->createFaceGroupScene(meshScene, g.name);
+			//auto faceGroup = world->getSceneFactory()->createFaceGroupScene(meshScene, g.name);
+			auto groupScene = new FaceGroupScene(world->getSceneFactory()->getNextId(), g.name, meshScene);
+			meshScene->addGroup(groupScene);
+
 			for (const auto& f : g.faces) {
 				std::vector<int> indices;
 				for (int i = 0; i < f.positionIndices.size(); i++) {

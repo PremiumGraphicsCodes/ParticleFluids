@@ -53,8 +53,6 @@ public:
 
 	ParticleSystemScene* createParticleSystemScene(const std::vector<Math::Vector3dd>& positions, const std::vector<ParticleAttribute>& attributes, const std::string& name);
 
-	FaceGroupScene* createFaceGroupScene(PolygonMeshScene* parent, const std::string& name);
-
 	int getNextId() { return idProvider.getNextId(); }
 
 	int getNextMaterialId() { return materialIdProvider.getNextId(); }

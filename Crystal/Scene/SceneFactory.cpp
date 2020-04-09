@@ -61,10 +61,3 @@ ParticleSystemScene* SceneFactory::createParticleSystemScene(const std::vector<V
 	}
 	return new ParticleSystemScene(getNextId(), name, std::move(particles));
 }
-
-FaceGroupScene* SceneFactory::createFaceGroupScene(PolygonMeshScene* parent, const std::string& name)
-{
-	auto g= new FaceGroupScene(getNextId(), name, parent);
-	parent->addGroup(g);
-	return g;
-}
