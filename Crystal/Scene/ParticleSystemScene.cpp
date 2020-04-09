@@ -18,6 +18,14 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 	controller(this)
 {}
 
+ParticleSystemScene::ParticleSystemScene(const int id, const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name) :
+	IShapeScene(id, name, shape.get()),
+	shape(std::move(shape)),
+	controller(this)
+{
+	shape->add(position, attribute);
+}
+
 Crystal::Math::Box3d ParticleSystemScene::getBoundingBox() const
 {
 	return getShape()->getBoundingBox();
