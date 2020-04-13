@@ -3,8 +3,8 @@
 #include "../Util/UnCopyable.h"
 
 #include "Scene.h"
-#include "SceneFactory.h"
 #include "ScreenIdShaderScene.h"
+#include "SceneIdProvider.h"
 
 #include "SceneShader.h"
 

@@ -2,7 +2,6 @@
 
 #include "../Util/UnCopyable.h"
 #include "IScene.h"
-#include "SceneFactory.h"
 
 namespace Crystal {
 	namespace Scene {

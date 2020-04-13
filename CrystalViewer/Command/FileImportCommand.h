@@ -6,7 +6,6 @@
 #include <vector>
 
 #include "../../Crystal/Scene/Scene.h"
-#include "../../Crystal/Scene/SceneFactory.h"
 #include "../../Crystal/IO/FileFormat.h"
 
 namespace Crystal {

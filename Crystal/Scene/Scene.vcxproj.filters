@@ -15,9 +15,6 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="SceneId.h" />
-    <ClInclude Include="SceneFactory.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -136,9 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneFactory.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
