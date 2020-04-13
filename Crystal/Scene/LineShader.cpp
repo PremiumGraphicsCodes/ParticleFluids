@@ -1,6 +1,7 @@
 #include "LineShader.h"
 
 #include "../Shader/GLObjectFactory.h"
+#include "CameraShaderScene.h"
 
 #include <sstream>
 
@@ -43,16 +44,10 @@ void LineShader::release(GLObjectFactory& factory)
 
 void LineShader::render()
 {
-	const auto& projectionMatrix = glBuffer.camera.getProjectionMatrix();
-	const auto& modelviewMatrix = glBuffer.camera.getModelViewMatrix() * glBuffer.matrix;
-
 	shader.bind();
 
 	shader.setLineWidth(glBuffer.lineWidth);
 	shader.enableDepthTest();
-
-	shader.sendUniform(projectionMatrixLabel, projectionMatrix);
-	shader.sendUniform(modelViewMatrixLabel, modelviewMatrix);
 
 	shader.sendVertexAttribute3df(positionLabel, glBuffer.vbo.position);
 	shader.sendVertexAttribute4df(colorLabel, glBuffer.vbo.color);
@@ -71,6 +66,20 @@ void LineShader::render()
 
 	assert(GL_NO_ERROR == glGetError());
 }
+
+void LineShader::setCamera(const CameraShaderScene& camera)
+{
+	const auto& projectionMatrix = camera.getProjectionMatrix();
+	const auto& modelviewMatrix = camera.getModelViewMatrix();
+
+	shader.bind();
+
+	shader.sendUniform(projectionMatrixLabel, projectionMatrix);
+	shader.sendUniform(modelViewMatrixLabel, modelviewMatrix);
+
+	shader.unbind();
+}
+
 
 std::string LineShader::getBuiltInVsSource() const
 {

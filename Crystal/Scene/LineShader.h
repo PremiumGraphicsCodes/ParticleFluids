@@ -12,6 +12,7 @@
 
 namespace Crystal {
 	namespace Scene {
+		class CameraShaderScene;
 
 class LineShader : public IShader
 {
@@ -23,6 +24,8 @@ public:
 	void release(Shader::GLObjectFactory& factory) override;
 
 	void setBuffer(const LineShaderScene& buffer) { this->glBuffer = buffer; }
+
+	void setCamera(const CameraShaderScene& camera);
 
 	void render() override;
 

@@ -69,8 +69,11 @@ void ScreenShader::render()
 
 	if (mask.showLines) {
 		for (auto lb : buffer.lineBuffers) {
-			lb.camera = *camera;
+			CameraShaderScene cameraScene;
+			cameraScene.update(*camera);
+
 			wireRenderer.setBuffer(lb);
+			wireRenderer.setCamera(cameraScene);
 			wireRenderer.render();
 		}
 	}
