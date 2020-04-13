@@ -11,13 +11,15 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 WireFrameScene::WireFrameScene() :
-	IShapeScene(-1, nullptr)
+	IShapeScene(-1, nullptr),
+	controller(this)
 {}
 
 WireFrameScene::WireFrameScene(const int id, const std::string& name, std::unique_ptr<WireFrame> shape, const WireFrameAttribute& attribute) :
 	IShapeScene(id, name, shape.get()),
 	shape(std::move(shape)),
-	attribute(attribute)
+	attribute(attribute),
+	controller(this)
 {}
 
 void WireFrameScene::translate(const Vector3dd& v)

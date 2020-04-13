@@ -2,6 +2,7 @@
 
 #include "IShapeScene.h"
 #include "WireFrameAttribute.h"
+#include "WireFrameController.h"
 
 #include "../Math/Line3d.h"
 #include "../Shape/WireFrame.h"
@@ -38,9 +39,12 @@ public:
 
 	Shape::WireFrame* getShape() { return shape.get(); }
 
+	WireFrameController getController() { return controller; }
+
 private:
 	std::unique_ptr<Shape::WireFrame> shape;
 	WireFrameAttribute attribute;
+	WireFrameController controller;
 };
 
 	}

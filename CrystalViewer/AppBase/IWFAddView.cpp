@@ -26,7 +26,12 @@ void IWFAddView::addWireFrame(const std::vector<Vector3dd>& positions, const std
 	const auto newId = std::any_cast<int>(command.getResult(WireFrameCreateLabels::NewIdLabel));
 
 	auto scene = getWorld()->getObjects()->findSceneById<WireFrameScene*>(newId);
-	getWorld()->getRenderer()->getBuffer()->screen.add(scene, *getWorld()->getGLFactory());
+
+	auto controller = scene->getController();
+	controller.createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	getWorld()->getRenderer()->getBuffer()->screen.addChild(controller.getView());
+
+	//getWorld()->getRenderer()->getBuffer()->screen.add(scene, *getWorld()->getGLFactory());
 
 	//getWorld()->updateViewModel();
 

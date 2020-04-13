@@ -8,15 +8,18 @@ namespace Crystal {
 		class WireFrameScene;
 		class LineShaderScene;
 		class LineShader;
+		class SceneShader;
 
 class WireFrameController
 {
 public:
 	explicit WireFrameController(WireFrameScene* model);
 
-	void createView(LineShader* renderer, Shader::GLObjectFactory& factory);
+	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory);
 
 	void updateView();
+
+	LineShaderScene* getView() { return view; }
 
 private:
 	WireFrameScene* model;
