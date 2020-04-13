@@ -1,5 +1,7 @@
 #pragma once
 
+#include "IShaderScene.h"
+
 #include <vector>
 
 namespace Crystal {
@@ -9,21 +11,16 @@ namespace Crystal {
 	namespace Scene {
 		class TextureScene;
 
-struct TextureShaderBuffer
+class TextureShaderScene : public IShaderScene
 {
+public:
 	bool build(Shader::GLObjectFactory& factory);
 
-	void send();
+	void release(Shader::GLObjectFactory& glFactory);
 
-	void release();
-
-	void add(TextureScene* scenes)
-	{
-
-	}
+	virtual void render() = 0;
 
 private:
-	std::vector<TextureScene*> textureObjects;
 };
 
 	}

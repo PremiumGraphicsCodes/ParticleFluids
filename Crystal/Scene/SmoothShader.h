@@ -9,7 +9,7 @@
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/ShaderObject.h"
 
-#include "TextureShaderBuffer.h"
+#include "TextureShaderScene.h"
 
 #include "IShader.h"
 

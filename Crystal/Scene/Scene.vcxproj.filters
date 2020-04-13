@@ -85,9 +85,6 @@
     <ClInclude Include="TriangleShader.h">
       <Filter>SceneShader\Triangle</Filter>
     </ClInclude>
-    <ClInclude Include="TextureShaderBuffer.h">
-      <Filter>SceneShader\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="PointBuffer.h">
       <Filter>SceneShader\Point</Filter>
     </ClInclude>
@@ -138,6 +135,9 @@
     </ClInclude>
     <ClInclude Include="MaterialShaderScene.h">
       <Filter>SceneShader\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureShaderScene.h">
+      <Filter>SceneShader\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -196,9 +196,6 @@
     <ClCompile Include="TriangleShader.cpp">
       <Filter>SceneShader\Triangle</Filter>
     </ClCompile>
-    <ClCompile Include="TextureShaderBuffer.cpp">
-      <Filter>SceneShader\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleSystemController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
@@ -243,6 +240,9 @@
     </ClCompile>
     <ClCompile Include="MaterialShaderScene.cpp">
       <Filter>SceneShader\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureShaderScene.cpp">
+      <Filter>SceneShader\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
