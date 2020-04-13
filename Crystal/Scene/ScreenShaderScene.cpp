@@ -81,9 +81,11 @@ void ScreenShaderScene::add(PolygonMeshScene* parent, GLObjectFactory& glFactory
 	for (auto child : parent->getChildren()) {
 		int materialId = 0;
 		auto scene = static_cast<FaceGroupScene*>(child);
+		/*
 		if (scene->getMaterial() != nullptr) {
 			materialId = scene->getMaterial()->getMaterialId();
 		}
+		*/
 
 		auto faces = scene->getFaces();
 		{

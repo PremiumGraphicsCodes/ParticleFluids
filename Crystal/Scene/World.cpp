@@ -42,7 +42,7 @@ void World::init()
 		material->specular = ColorRGBAf(1, 1, 1, 1);
 		material->shininess = 1.0;
 		material->ambientTexName = "WhiteTex";
-		scenes[1]->addScene(new MaterialScene(sceneFactory.getNextId(), "WhiteMat", std::move(material), sceneFactory.getNextMaterialId()));
+		scenes[1]->addScene(new MaterialScene(sceneFactory.getNextId(), "WhiteMat", std::move(material)));
 	}
 
 	{
@@ -51,7 +51,7 @@ void World::init()
 		material->diffuse = ColorRGBAf(0, 0, 0, 1);
 		material->specular = ColorRGBAf(0, 0, 0, 1);
 		material->shininess = 1.0;
-		scenes[1]->addScene(new MaterialScene(sceneFactory.getNextId(),"RedMat", std::move(material), sceneFactory.getNextMaterialId()));
+		scenes[1]->addScene(new MaterialScene(sceneFactory.getNextId(),"RedMat", std::move(material)));
 	}
 
 
@@ -61,7 +61,7 @@ void World::init()
 		material->diffuse = ColorRGBAf(0, 0, 0, 1);
 		material->specular = ColorRGBAf(0, 0, 0, 1);
 		material->shininess = 1.0;
-		scenes[1]->addScene(new MaterialScene(sceneFactory.getNextId(), "BlackMat", std::move(material), sceneFactory.getNextMaterialId()));
+		scenes[1]->addScene(new MaterialScene(sceneFactory.getNextId(), "BlackMat", std::move(material)));
 	}
 
 	{

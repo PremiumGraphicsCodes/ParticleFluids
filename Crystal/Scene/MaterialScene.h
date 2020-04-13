@@ -11,7 +11,7 @@ namespace Crystal {
 class MaterialScene : public IScene
 {
 public:
-	MaterialScene(const int id, const std::string& name, std::unique_ptr<Graphics::Material> material, const int materialId);
+	MaterialScene(const int id, const std::string& name, std::unique_ptr<Graphics::Material> material);
 
 	~MaterialScene() {};
 
@@ -19,11 +19,8 @@ public:
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
 	
-	int getMaterialId() const { return materialId; }
-
 private:
 	std::unique_ptr<Graphics::Material> material;
-	const int materialId;
 };
 
 	}

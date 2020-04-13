@@ -49,10 +49,7 @@ public:
 
 	int getNextId() { return idProvider.getNextId(); }
 
-	int getNextMaterialId() { return materialIdProvider.getNextId(); }
-
 private:
-	SceneIdProvider materialIdProvider;
 	//SceneIdProvider textureIdProvier;
 	SceneIdProvider idProvider;
 };

@@ -109,7 +109,7 @@ bool OBJFileImportCommand::importMTL(const std::filesystem::path& filePath, Worl
 			mat->diffuse = m.diffuse;
 			mat->specular = m.specular;
 			mat->shininess = m.specularExponent;
-			world->getObjects()->addScene(new MaterialScene(world->getSceneFactory()->getNextId(), m.name, std::move(mat), world->getSceneFactory()->getNextMaterialId()));
+			world->getObjects()->addScene(new MaterialScene(world->getSceneFactory()->getNextId(), m.name, std::move(mat)));
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;
