@@ -64,6 +64,8 @@ public:
 
 	LineShader* getWireShader() { return &wireRenderer; }
 
+	SmoothShader* getSmoothShader() { return &smoothRenderer; }
+
 private:
 	PointShader pointRenderer;
 	LineShader wireRenderer;
