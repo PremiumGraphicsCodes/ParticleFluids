@@ -81,6 +81,7 @@
     <ClCompile Include="LineShader.cpp" />
     <ClCompile Include="MaterialController.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
+    <ClCompile Include="MaterialShaderScene.cpp" />
     <ClCompile Include="ParticleSystemController.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
     <ClCompile Include="PolygonMeshController.cpp" />

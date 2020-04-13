@@ -241,6 +241,9 @@
     <ClCompile Include="MaterialController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
+    <ClCompile Include="MaterialShaderScene.cpp">
+      <Filter>SceneShader\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

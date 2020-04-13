@@ -9,11 +9,11 @@ namespace Crystal {
 class MaterialShaderScene : public IShaderScene
 {
 public:
-	bool build(Shader::GLObjectFactory& glFactory) = 0;
+	bool build(Shader::GLObjectFactory& glFactory) { return true; }
 
-	void release(Shader::GLObjectFactory& glFactory) = 0;
+	void release(Shader::GLObjectFactory& glFactory) { }
 
-	void render() = 0;
+	void render() {}
 
 	glm::vec4 ambient;
 	glm::vec4 diffuse;
