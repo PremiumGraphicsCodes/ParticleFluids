@@ -1,8 +1,10 @@
+
 #pragma once
 
 #include "IShapeScene.h"
 #include "MaterialScene.h"
 #include "FaceGroupScene.h"
+#include "PolygonMeshController.h"
 
 #include "../Shape/PolygonMesh.h"
 #include "../Graphics/ColorRGBA.h"
@@ -41,9 +43,12 @@ public:
 
 	IShapeScene* clone() const override;
 
+	PolygonMeshController getController() { return controller; }
+
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
 	std::vector<FaceGroupScene*> groups;
+	PolygonMeshController controller;
 };
 
 	}

@@ -19,8 +19,6 @@ class ScreenShaderScene : public IShaderScene
 {
 public:
 	// Model ‚ª•Ï‚í‚Á‚½‚Æ‚«‚¾‚¯”½‰f‚³‚¹‚éD
-	void add(PolygonMeshScene* scene, Shader::GLObjectFactory& glFactory);
-
 	void add(TextureScene* scene) { this->textureScenes.push_back(scene); }
 
 	void add(MaterialScene* scene) { this->materialScenes.push_back(scene); }

@@ -18,6 +18,8 @@ public:
 
 	void updateView();
 
+	SmoothShaderScene* getView() { return view; }
+
 private:
 	PolygonMeshScene* model;
 	SmoothShaderScene* view;
