@@ -38,7 +38,7 @@ void IPMAddView::addPolygonMesh(const PolygonMeshBuilder& builder)
 	auto scene = getWorld()->getObjects()->findSceneById<PolygonMeshScene*>(newId);
 	auto controller = scene->getController();
 	controller.createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	getWorld()->getRenderer()->getBuffer()->screen.addChild(controller.getView());
+	getWorld()->getRenderer()->getScene()->screen.addChild(controller.getView());
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
