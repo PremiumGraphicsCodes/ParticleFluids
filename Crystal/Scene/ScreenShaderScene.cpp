@@ -47,28 +47,6 @@ void ScreenShaderScene::render()
 	}
 }
 
-void ScreenShaderScene::add(WireFrameScene* scene, GLObjectFactory& glFactory)
-{
-	const auto& shape = scene->getShape();
-	const auto& positions = shape->getPositions();
-	const auto& edges = shape->getEdges();
-
-	const auto& color = scene->getAttribute().color;
-	LineBuffer buffer(scene->getAttribute().width);
-	buffer.setMatrix(scene->getMatrix());
-	for (const auto& l : positions) {
-		buffer.addVertex(l, color);
-	}
-	for (const auto& e : edges) {
-		buffer.addIndex(e.originId);
-		buffer.addIndex(e.destId);
-	}
-	LineShaderScene lb;
-	lb.build(glFactory);
-	lb.send(buffer);
-	lineBuffers.push_back(lb);
-}
-
 void ScreenShaderScene::add(PolygonMeshScene* parent, GLObjectFactory& glFactory)
 {
 	const auto& shape = parent->getShape();

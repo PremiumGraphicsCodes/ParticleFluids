@@ -1,23 +1,26 @@
 #pragma once
 
 namespace Crystal {
+	namespace Shader {
+		class GLObjectFactory;
+	}
 	namespace Scene {
 		class PolygonMeshScene;
 		class SmoothShaderScene;
-		class LineShader;
+		class SceneShader;
 
 class PolygonMeshController
 {
 public:
-	explicit PolygonMeshController(WireFrameScene* model);
+	explicit PolygonMeshController(PolygonMeshScene* model);
 
-	void createView(LineShader* renderer);
+	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory);
 
 	void updateView();
 
 private:
 	PolygonMeshScene* model;
-	LineShaderScene* view;
+	SmoothShaderScene* view;
 };
 
 	}

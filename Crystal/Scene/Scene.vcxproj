@@ -37,6 +37,7 @@
     <ClInclude Include="LineShader.h" />
     <ClInclude Include="PointBuffer.h" />
     <ClInclude Include="PointShaderScene.h" />
+    <ClInclude Include="PolygonMeshController.h" />
     <ClInclude Include="ScreenIdShader.h" />
     <ClInclude Include="ScreenShaderScene.h" />
     <ClInclude Include="ScreenShader.h" />
@@ -79,6 +80,7 @@
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="ParticleSystemController.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
+    <ClCompile Include="PolygonMeshController.cpp" />
     <ClCompile Include="SceneShaderScene.cpp" />
     <ClCompile Include="ScreenIdShader.cpp" />
     <ClCompile Include="ScreenIdShaderScene.cpp" />
