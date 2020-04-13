@@ -26,6 +26,8 @@
     <ClInclude Include="CameraSceneController.h" />
     <ClInclude Include="CameraShaderScene.h" />
     <ClInclude Include="IShaderScene.h" />
+    <ClInclude Include="LightController.h" />
+    <ClInclude Include="LightShaderScene.h" />
     <ClInclude Include="MaterialController.h" />
     <ClInclude Include="MaterialShaderScene.h" />
     <ClInclude Include="ParticleSystemController.h" />
@@ -76,7 +78,9 @@
     <ClCompile Include="CameraShaderScene.cpp" />
     <ClCompile Include="FaceGroupScene.cpp" />
     <ClCompile Include="IScene.cpp" />
+    <ClCompile Include="LightController.cpp" />
     <ClCompile Include="LightScene.cpp" />
+    <ClCompile Include="LightShaderScene.cpp" />
     <ClCompile Include="LineShaderScene.cpp" />
     <ClCompile Include="LineShader.cpp" />
     <ClCompile Include="MaterialController.cpp" />

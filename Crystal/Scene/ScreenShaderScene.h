@@ -4,6 +4,7 @@
 #include "LineShaderScene.h"
 #include "SmoothShaderScene.h"
 #include "MaterialShaderScene.h"
+#include "LightShaderScene.h"
 
 #include <list>
 
@@ -22,8 +23,6 @@ public:
 	// Model ‚ª•Ï‚í‚Á‚½‚Æ‚«‚¾‚¯”½‰f‚³‚¹‚éD
 	void add(TextureScene* scene) { this->textureScenes.push_back(scene); }
 
-	void add(LightScene* scene) { this->lightScenes.push_back(scene); }
-
 	bool build(Shader::GLObjectFactory& glFactory) override;
 
 	void release(Shader::GLObjectFactory& glFactory) override;
@@ -35,7 +34,7 @@ public:
 	std::vector<SmoothShaderScene> pmScenes;
 	std::vector<TextureScene*> textureScenes;
 	std::vector<MaterialShaderScene> materialScenes;
-	std::vector<LightScene*> lightScenes;
+	std::vector<LightShaderScene> lightScenes;
 };
 
 	}

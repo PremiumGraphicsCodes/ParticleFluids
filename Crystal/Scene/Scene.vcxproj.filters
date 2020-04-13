@@ -139,6 +139,12 @@
     <ClInclude Include="TextureShaderScene.h">
       <Filter>SceneShader\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="LightShaderScene.h">
+      <Filter>SceneShader\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -244,6 +250,12 @@
     <ClCompile Include="TextureShaderScene.cpp">
       <Filter>SceneShader\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="LightShaderScene.cpp">
+      <Filter>SceneShader\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -302,6 +314,9 @@
     </Filter>
     <Filter Include="SceneShader\Material">
       <UniqueIdentifier>{93841530-8c62-4481-8aa8-3ed6d07ab127}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\Light">
+      <UniqueIdentifier>{f7aa0911-b632-4f3c-97f4-5ad344f49c16}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

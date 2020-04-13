@@ -75,10 +75,6 @@ void ScreenShader::render()
 		}
 	}
 	if (mask.showTrianlges) {
-		std::vector<PointLight> lBuffer;
-		for (auto l : buffer.lightScenes) {
-			lBuffer.push_back(*l->getLight());
-		}
 		for (auto pm : buffer.pmScenes) {
 			pm.camera = *camera;
 			smoothRenderer.send(pm);
