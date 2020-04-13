@@ -51,7 +51,7 @@ void PolygonMeshController::createView(SceneShader* sceneShader, GLObjectFactory
 			glBuffer.setShader(sceneShader->getObjectRenderer()->getSmoothShader());
 			glBuffer.build(glFactory);
 			glBuffer.send(buffer);
-			sceneShader->getBuffer()->screen.pmScenes.push_back(glBuffer);
+			sceneShader->getScene()->screen.pmScenes.push_back(glBuffer);
 		}
 	}
 }

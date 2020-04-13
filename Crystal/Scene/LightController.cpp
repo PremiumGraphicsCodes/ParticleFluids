@@ -20,7 +20,7 @@ void LightController::createView(SceneShader* sceneShader, GLObjectFactory& fact
 	mScene->ambient = l->getAmbient();
 	mScene->specular = l->getSpecular();
 	mScene->diffuse = l->getDiffuse();
-	sceneShader->getBuffer()->screen.lightScenes.push_back(*mScene);
+	sceneShader->getScene()->screen.lightScenes.push_back(*mScene);
 	this->view = mScene;
 }
 

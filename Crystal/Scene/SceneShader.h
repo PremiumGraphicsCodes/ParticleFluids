@@ -40,7 +40,7 @@ public:
 
 	Graphics::Camera* getCamera() { return camera.get(); }
 
-	SceneShaderScene* getBuffer() { return &buffer; }
+	SceneShaderScene* getScene() { return &scene; }
 
 private:
 	Shader::OnScreenRenderer renderer;
@@ -49,7 +49,7 @@ private:
 	ScreenIdShader parentIdRenderer;
 	ScreenIdShader childIdRenderer;
 
-	SceneShaderScene buffer;
+	SceneShaderScene scene;
 
 	bool showOffScreen;
 

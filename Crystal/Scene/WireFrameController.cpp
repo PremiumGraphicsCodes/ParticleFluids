@@ -36,7 +36,7 @@ void WireFrameController::createView(SceneShader* sceneShader, GLObjectFactory& 
 	//view->camera = *(sceneShader->getCamera());
 	view->build(glFactory);
 	view->send(buffer);
-	sceneShader->getBuffer()->screen.lineBuffers.push_back(*view);
+	sceneShader->getScene()->screen.lineBuffers.push_back(*view);
 }
 
 void WireFrameController::updateView()
