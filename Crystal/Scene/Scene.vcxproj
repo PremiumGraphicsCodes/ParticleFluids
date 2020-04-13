@@ -27,6 +27,7 @@
     <ClInclude Include="CameraShaderScene.h" />
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="MaterialController.h" />
+    <ClInclude Include="MaterialShaderScene.h" />
     <ClInclude Include="ParticleSystemController.h" />
     <ClInclude Include="FaceGroupScene.h" />
     <ClInclude Include="IPoint.h" />

@@ -16,6 +16,7 @@
 namespace Crystal {
 	namespace Scene {
 		class TextureScene;
+		class MaterialShaderScene;
 
 class SmoothShader : public IShader
 {
@@ -28,7 +29,7 @@ public:
 
 	void send(const SmoothShaderScene& buffer);
 
-	void send(const std::vector<Graphics::Material>& materials);
+	void setMaterialScene(const int index, const MaterialShaderScene& material);
 
 	void send(const std::vector<Graphics::PointLight>& lights);
 

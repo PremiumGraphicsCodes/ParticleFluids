@@ -7,6 +7,7 @@ namespace Crystal {
 	namespace Scene {
 		class MaterialScene;
 		class SceneShader;
+		class MaterialShaderScene;
 
 class MaterialController
 {
@@ -19,6 +20,7 @@ public:
 
 private:
 	MaterialScene* model;
+	MaterialShaderScene* view;
 };
 	}
 }

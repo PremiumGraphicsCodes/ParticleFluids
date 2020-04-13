@@ -5,6 +5,8 @@
 
 #include "../Shader/GLObjectFactory.h"
 
+#include "MaterialShaderScene.h"
+
 #include <sstream>
 
 using namespace Crystal::Math;
@@ -106,11 +108,11 @@ void SmoothShader::send(const SmoothShaderScene& glBuffer)
 	this->count = glBuffer.count;
 }
 
-void SmoothShader::send(const std::vector<Material>& materials)
+void SmoothShader::setMaterialScene(const int index, const MaterialShaderScene& m)
 {
 	shader.bind();
-	for (int i = 0; i < materials.size(); ++i) {
-		const auto m = materials[i];
+	//for (int i = 0; i < materials.size(); ++i) {
+		const auto i = index;
 		const auto prefix = "materials[" + std::to_string(i) + "]";
 		shader.sendUniform(prefix + ".Ka", m.ambient);
 		shader.sendUniform(prefix + ".Kd", m.diffuse);
@@ -119,7 +121,7 @@ void SmoothShader::send(const std::vector<Material>& materials)
 		//		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
 		//		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
 		//		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
-	}
+	//}
 	shader.unbind();
 }
 

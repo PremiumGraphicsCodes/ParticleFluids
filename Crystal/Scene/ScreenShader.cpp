@@ -75,11 +75,6 @@ void ScreenShader::render()
 		}
 	}
 	if (mask.showTrianlges) {
-		std::vector<Material> mBuffer;
-		for (auto m : buffer.materialScenes) {
-			mBuffer.push_back(*m->getMaterial());
-		}
-		smoothRenderer.send(mBuffer);
 		std::vector<PointLight> lBuffer;
 		for (auto l : buffer.lightScenes) {
 			lBuffer.push_back(*l->getLight());
