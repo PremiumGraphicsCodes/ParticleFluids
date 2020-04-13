@@ -48,7 +48,7 @@ bool WireFrameCreateCommand::execute(World* world)
 	attr.width = args.lineWidth.getValue();
 	const auto& name = args.name.getValue();
 	auto shape = std::make_unique<WireFrame>(positions, edges);
-	auto newId = world->getSceneFactory()->getNextId();
+	auto newId = world->getNextSceneId();
 	auto scene = new WireFrameScene(newId, name, std::move(shape), attr);
 	world->getObjects()->addScene(scene);
 	scene->setMatrix(args.matrix.getValue());

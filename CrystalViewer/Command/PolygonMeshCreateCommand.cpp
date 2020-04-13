@@ -49,10 +49,10 @@ bool PolygonMeshCreateCommand::execute(World* world)
 	mesh->vertices = args.vertices.getValue();
 	mesh->faces = args.faces.getValue();
 
-	auto shape = new PolygonMeshScene(world->getSceneFactory()->getNextId(), args.name.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
+	auto shape = new PolygonMeshScene(world->getNextSceneId(), args.name.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
 	world->addScene(args.layer.getValue(), shape);
 	//auto group = (shape, "FaceGroup");
-	auto group = new FaceGroupScene(world->getSceneFactory()->getNextId(), "FaceGroup", shape);
+	auto group = new FaceGroupScene(world->getNextSceneId(), "FaceGroup", shape);
 	shape->addGroup(group);
 	const auto& faces = shape->getShape()->faces;
 	for (auto f : faces) {

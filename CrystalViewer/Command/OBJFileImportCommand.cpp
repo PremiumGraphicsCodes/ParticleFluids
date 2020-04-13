@@ -60,12 +60,12 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 		}
 
 		auto polygonMesh = builder.build();
-		auto meshScene = new PolygonMeshScene(world->getSceneFactory()->getNextId(), "PolygonMesh", std::move(polygonMesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(polygonMesh), "PolygonMesh");
+		auto meshScene = new PolygonMeshScene(world->getNextSceneId(), "PolygonMesh", std::move(polygonMesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(polygonMesh), "PolygonMesh");
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
 			//auto faceGroup = world->getSceneFactory()->createFaceGroupScene(meshScene, g.name);
-			auto groupScene = new FaceGroupScene(world->getSceneFactory()->getNextId(), g.name, meshScene);
+			auto groupScene = new FaceGroupScene(world->getNextSceneId(), g.name, meshScene);
 			meshScene->addGroup(groupScene);
 
 			for (const auto& f : g.faces) {
@@ -109,7 +109,7 @@ bool OBJFileImportCommand::importMTL(const std::filesystem::path& filePath, Worl
 			mat->diffuse = m.diffuse;
 			mat->specular = m.specular;
 			mat->shininess = m.specularExponent;
-			world->getObjects()->addScene(new MaterialScene(world->getSceneFactory()->getNextId(), m.name, std::move(mat)));
+			world->getObjects()->addScene(new MaterialScene(world->getNextSceneId(), m.name, std::move(mat)));
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;
@@ -123,7 +123,7 @@ bool OBJFileImportCommand::importOBJWithMTL(const std::filesystem::path& filePat
 	auto filename = filePath.parent_path() / filePath.stem();
 	filename.concat(".mtl");
 
-	auto scene = new Crystal::Scene::Scene(world->getSceneFactory()->getNextId(), "OBJ");//world->getSceneFactory()->createScene("OBJ");
+	auto scene = new Crystal::Scene::Scene(world->getNextSceneId(), "OBJ");//world->getSceneFactory()->createScene("OBJ");
 
 	// mtl ファイルを読み込む．
 	if (!importMTL(filename, world)) {

@@ -9,11 +9,11 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-World::World()
+World::World() :
+	sceneIdProvider(1)
 {
 	scenes[0] = std::make_unique<Scene>(0, "Item");
 	scenes[1] = std::make_unique<Scene>(0, "Root");
-
 }
 
 World::~World()
@@ -31,7 +31,7 @@ void World::init()
 		light->setAmbient(ColorRGBAf(1, 1, 1, 1));
 		light->setDiffuse(ColorRGBAf(1, 1, 1, 1));
 		light->setSpecular(ColorRGBAf(1, 1, 1, 1));
-		scenes[1]->addScene(new LightScene(sceneFactory.getNextId(), "Light0", std::move(light)));
+		scenes[1]->addScene(new LightScene(getNextSceneId(), "Light0", std::move(light)));
 		//scenes[1]->addScene(sceneFactory.createLightScene(std::move(light), "Light0"));
 	}
 
@@ -42,7 +42,7 @@ void World::init()
 		material->specular = ColorRGBAf(1, 1, 1, 1);
 		material->shininess = 1.0;
 		material->ambientTexName = "WhiteTex";
-		scenes[1]->addScene(new MaterialScene(sceneFactory.getNextId(), "WhiteMat", std::move(material)));
+		scenes[1]->addScene(new MaterialScene(getNextSceneId(), "WhiteMat", std::move(material)));
 	}
 
 	{
@@ -51,9 +51,8 @@ void World::init()
 		material->diffuse = ColorRGBAf(0, 0, 0, 1);
 		material->specular = ColorRGBAf(0, 0, 0, 1);
 		material->shininess = 1.0;
-		scenes[1]->addScene(new MaterialScene(sceneFactory.getNextId(),"RedMat", std::move(material)));
+		scenes[1]->addScene(new MaterialScene(getNextSceneId(),"RedMat", std::move(material)));
 	}
-
 
 	{
 		auto material = std::make_unique<Material>();
@@ -61,7 +60,7 @@ void World::init()
 		material->diffuse = ColorRGBAf(0, 0, 0, 1);
 		material->specular = ColorRGBAf(0, 0, 0, 1);
 		material->shininess = 1.0;
-		scenes[1]->addScene(new MaterialScene(sceneFactory.getNextId(), "BlackMat", std::move(material)));
+		scenes[1]->addScene(new MaterialScene(getNextSceneId(), "BlackMat", std::move(material)));
 	}
 
 	{
@@ -73,7 +72,7 @@ void World::init()
 
 //		auto tex = glFactory.getTextureFactory()->createTextureObject(image);
 //		auto s = sceneFactory.createTextureScene(std::move(image), "WhiteTex");
-		auto s = new TextureScene(sceneFactory.getNextId(), std::move(image), "WhiteTex");
+		auto s = new TextureScene(getNextSceneId(), std::move(image), "WhiteTex");
 
 //		s->build();
 		scenes[1]->addScene(s);
@@ -82,7 +81,7 @@ void World::init()
 	{
 		auto image = std::make_unique<Image>(1, 1);
 		image->setColor(0, 0, ColorRGBAuc(0, 0, 0, 0));
-		auto s = new TextureScene(sceneFactory.getNextId(), std::move(image), "BlackTex");
+		auto s = new TextureScene(getNextSceneId(), std::move(image), "BlackTex");
 //		s->build();
 		scenes[1]->addScene(s);
 	}
@@ -95,7 +94,7 @@ void World::init()
 void World::clear()
 {
 	glFactory.clear();
-	sceneFactory.clear();
+	sceneIdProvider.reset(1);
 	for (auto& s : scenes) {
 		s->clear();
 	}

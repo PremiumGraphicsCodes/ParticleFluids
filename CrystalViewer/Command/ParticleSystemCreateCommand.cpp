@@ -46,7 +46,7 @@ bool ParticleSystemCreateCommand::execute(World* world)
 	attr.size = args.pointSize.getValue();
 	auto name = args.name.getValue();
 	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
-	auto scene = new ParticleSystemScene(world->getSceneFactory()->getNextId(), name, std::move(shape));
+	auto scene = new ParticleSystemScene(world->getNextSceneId(), name, std::move(shape));
 	scene->setMatrix(args.matrix.getValue());
 	world->addScene(args.layer.getValue(), scene);
 	//world->getRenderer()->getBuffer()->screen.add(scene, *world->getGLFactory());

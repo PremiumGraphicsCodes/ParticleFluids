@@ -34,7 +34,7 @@ public:
 
 	void addScene(int layer, IScene* scene);
 
-	SceneFactory* getSceneFactory() { return &sceneFactory; }
+	int getNextSceneId() { return sceneIdProvider.getNextId(); }
 
 	Shader::GLObjectFactory* getGLFactory() { return &glFactory; }
 
@@ -48,7 +48,7 @@ private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
 	SceneShaderScene shaderScene;
 
-	SceneFactory sceneFactory;
+	SceneIdProvider sceneIdProvider;
 	Shader::GLObjectFactory glFactory;
 	
 	std::unique_ptr<SceneShader> renderer;

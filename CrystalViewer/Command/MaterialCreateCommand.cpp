@@ -52,7 +52,7 @@ bool MaterialCreateCommand::execute(World* world)
 	//m.diffuseTextureName = args.diffuseTextureName.getValue();
 	//m.specularTextureName = args.specularTextureName.getValue();
 
-	auto scene = new MaterialScene(world->getSceneFactory()->getNextId(), "BlackMat", std::move(m) );
+	auto scene = new MaterialScene(world->getNextSceneId(), "BlackMat", std::move(m) );
 	world->getObjects()->addScene(scene);
 	results.newId.setValue(scene->getId());
 
