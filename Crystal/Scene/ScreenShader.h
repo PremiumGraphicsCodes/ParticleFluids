@@ -25,9 +25,7 @@ namespace Crystal {
 class ScreenShader : public IShader
 {
 public:
-	ScreenShader()
-	{
-	}
+	ScreenShader() {};
 
 	~ScreenShader() {}
 

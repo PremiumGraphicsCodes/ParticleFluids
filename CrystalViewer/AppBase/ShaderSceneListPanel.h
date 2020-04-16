@@ -16,7 +16,7 @@ public:
 	void onShow() override;
 
 private:
-	//void show(Scene::IShaderScene* scene);
+	void show(Scene::IShaderScene* scene);
 
 	IPanel* control;
 };

@@ -17,27 +17,22 @@ ShaderSceneListPanel::ShaderSceneListPanel(const std::string& name, World* model
 void ShaderSceneListPanel::onShow()
 {
 	ImGui::Begin("SceneList");
-	//show(model->getShaderScene());
+	show(model->getShaderScene());
 	ImGui::End();
 }
 
-/*
-void SceneListPanel::show(IScene* scene)
+void ShaderSceneListPanel::show(IShaderScene* scene)
 {
-	const auto type = scene->getType();
+	//const auto type = scene->getType();
 
 	const auto& name = scene->getName();
 	const auto str = name.c_str();
-	const auto id = scene->getId();
 
-	if (!scene->isLeaf()) {
-		if (ImGui::TreeNode(str)) {
-			const auto& children = scene->getChildren();
-			for (auto child : children) {
-				show(child);
-			}
-			ImGui::TreePop();
+	if (ImGui::TreeNode(str)) {
+		const auto& children = scene->getChildren();
+		for (auto child : children) {
+			show(child);
 		}
+		ImGui::TreePop();
 	}
 }
-*/
