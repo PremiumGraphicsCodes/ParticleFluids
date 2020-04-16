@@ -2,6 +2,8 @@
 
 #include "IShaderScene.h"
 
+#include "../Shader/TextureObject.h"
+
 #include <vector>
 
 namespace Crystal {
@@ -26,6 +28,7 @@ public:
 	void send(const Graphics::Image& image);
 
 private:
+	Shader::TextureObject textureObject;
 };
 
 	}

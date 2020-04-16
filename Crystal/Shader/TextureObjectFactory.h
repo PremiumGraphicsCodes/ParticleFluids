@@ -25,6 +25,8 @@ public:
 
 	void clear();
 
+	TextureObject createTextureObject(const std::string& name);
+
 	TextureObject createTextureObject(const std::string& name, const Graphics::Image& image);
 
 	TextureObject createTextureObject(const std::string& name, const Graphics::Imagef& image);

@@ -21,6 +21,7 @@ public:
 		ITextureObject(id)
 	{}
 	*/
+	void create(const std::string& name, const int id);
 
 	void create(const std::string& name, const Graphics::Image& image, const int id);
 

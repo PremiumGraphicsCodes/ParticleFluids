@@ -3,6 +3,13 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
+void TextureObject::create(const std::string& name, const int id)
+{
+	this->name = name;
+	glActiveTexture(GL_TEXTURE0 + id);
+	glGenTextures(1, &handle);
+}
+
 void TextureObject::create(const std::string& name, const Image& image, const int id)
 {
 	this->name = name;

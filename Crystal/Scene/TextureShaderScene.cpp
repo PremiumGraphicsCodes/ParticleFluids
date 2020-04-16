@@ -9,13 +9,13 @@ using namespace Crystal::Scene;
 
 bool TextureShaderScene::build(GLObjectFactory& factory)
 {
-	//factory.getTextureFactory()->createTextureObject("SmoothTex01", Imagef(512, 512));
+	this->textureObject = factory.getTextureFactory()->createTextureObject("SmoothTex01");
 	return true;
 }
 
 void TextureShaderScene::release(GLObjectFactory& glFactory)
 {
-
+	this->textureObject.clear();
 }
 
 void TextureShaderScene::render()
@@ -25,15 +25,5 @@ void TextureShaderScene::render()
 
 void TextureShaderScene::send(const Image& image)
 {
-
+	this->textureObject.send(image);
 }
-
-/*
-bool TextureShaderBuffer::build(GLObjectFactory& factory)
-{
-	for (int i = 0; i < 8; ++i) {
-		factory.getTextureFactory()->createTextureObject("SmoothTex01", Imagef(512, 512));
-	}
-	return false;
-}
-*/
