@@ -25,7 +25,7 @@ void ParticleSystemController::createView(SceneShader* sceneShader, GLObjectFact
 	this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
 	this->view->build(glFactory);
 	this->view->send(pb);
-	sceneShader->getScene()->screen.pointBuffers.push_back(this->view);
+	sceneShader->getScene()->screen.add(this->view);
 }
 
 void ParticleSystemController::updateView()

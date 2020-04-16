@@ -2,3 +2,10 @@
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
+
+SceneShaderScene::SceneShaderScene(const std::string& name) :
+	IShaderScene(name),
+	screen("ScreenScene")
+{
+	addChild(&screen);
+}

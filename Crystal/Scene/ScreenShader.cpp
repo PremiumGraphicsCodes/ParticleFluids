@@ -58,7 +58,8 @@ void ScreenShader::render()
 	}
 	*/
 	if (mask.showPoints) {
-		for (auto pb : buffer.pointBuffers) {
+		const auto& pointBuffers = buffer.getPointBuffers();
+		for (auto pb : pointBuffers) {
 			//pb.csetCamera( *camera;
 			CameraShaderScene cameraScene("Camera");
 			cameraScene.update(*camera);
