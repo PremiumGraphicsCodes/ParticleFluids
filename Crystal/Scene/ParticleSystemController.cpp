@@ -21,7 +21,7 @@ void ParticleSystemController::createView(SceneShader* sceneShader, GLObjectFact
 	}
 	pb.setMatrix(model->getMatrix());
 
-	this->view = new PointShaderScene();
+	this->view = new PointShaderScene(model->getName());
 	this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
 	this->view->build(glFactory);
 	this->view->send(pb);

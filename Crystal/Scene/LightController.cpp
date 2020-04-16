@@ -16,7 +16,7 @@ LightController::LightController(LightScene* model) :
 void LightController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
 {
 	const auto& l = model->getLight();
-	this->view = new LightShaderScene();
+	this->view = new LightShaderScene(model->getName());
 	this->view->position = l->getPosition();
 	this->view->ambient = l->getAmbient();
 	this->view->specular = l->getSpecular();

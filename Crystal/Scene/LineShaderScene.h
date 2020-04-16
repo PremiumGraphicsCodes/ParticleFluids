@@ -28,6 +28,12 @@ public:
 	Graphics::Camera camera;
 	float lineWidth;
 
+	LineShaderScene() {}
+
+	explicit LineShaderScene(const std::string& name) :
+		IShaderScene(name)
+	{}
+
 	bool build(Shader::GLObjectFactory& glFactory) override;
 
 	void release(Shader::GLObjectFactory& glFactory) override;

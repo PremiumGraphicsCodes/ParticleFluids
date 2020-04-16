@@ -60,7 +60,7 @@ void ScreenShader::render()
 	if (mask.showPoints) {
 		for (auto pb : buffer.pointBuffers) {
 			//pb.csetCamera( *camera;
-			CameraShaderScene cameraScene;
+			CameraShaderScene cameraScene("Camera");
 			cameraScene.update(*camera);
 			pb->setCamera(&cameraScene);
 			pb->render();
@@ -69,7 +69,7 @@ void ScreenShader::render()
 
 	if (mask.showLines) {
 		for (auto lb : buffer.lineBuffers) {
-			CameraShaderScene cameraScene;
+			CameraShaderScene cameraScene("Camera");
 			cameraScene.update(*camera);
 
 			wireRenderer.setBuffer(*lb);

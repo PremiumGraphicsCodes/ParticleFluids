@@ -26,6 +26,10 @@ public:
 	GLuint count;
 	Math::Matrix4df matrix;
 
+	explicit PointShaderScene(const std::string& name) :
+		IShaderScene(name)
+	{}
+
 	bool build(Shader::GLObjectFactory& glFactory) override;
 
 	void release(Shader::GLObjectFactory& glFactory) override;

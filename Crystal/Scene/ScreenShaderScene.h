@@ -15,6 +15,10 @@ namespace Crystal {
 class ScreenShaderScene : public IShaderScene
 {
 public:
+	explicit ScreenShaderScene(const std::string& name) :
+		IShaderScene(name)
+	{}
+
 	bool build(Shader::GLObjectFactory& glFactory) override;
 
 	void release(Shader::GLObjectFactory& glFactory) override;

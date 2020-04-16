@@ -9,6 +9,11 @@ namespace Crystal {
 class SceneShaderScene : public IShaderScene
 {
 public:
+	explicit SceneShaderScene(const std::string& name) :
+		IShaderScene(name),
+		screen("ScreenScene")
+	{}
+
 	bool build(Shader::GLObjectFactory& glFactory) { return true; }
 
 	void release(Shader::GLObjectFactory& glFactory) {}

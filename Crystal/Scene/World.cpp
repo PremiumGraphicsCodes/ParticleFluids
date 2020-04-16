@@ -10,7 +10,8 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
 World::World() :
-	sceneIdProvider(1)
+	sceneIdProvider(1),
+	shaderScene("Root")
 {
 	scenes[0] = std::make_unique<Scene>(0, "Item");
 	scenes[1] = std::make_unique<Scene>(0, "Root");

@@ -28,7 +28,6 @@ private:
 	PolygonMeshScene* polygonMesh;
 	MaterialScene* material;
 	std::vector<Shape::Face> faces;
-	SmoothShaderScene glBuffer;
 
 };
 
