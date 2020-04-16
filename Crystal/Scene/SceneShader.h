@@ -11,6 +11,8 @@
 
 #include "SceneShaderScene.h"
 
+#include "IShaderScene.h"
+
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
@@ -19,14 +21,18 @@ namespace Crystal {
 	}
 	namespace Scene {
 
-class SceneShader : private UnCopyable
+class SceneShader : public IShaderScene
 {
 public:
 	SceneShader();
 
 	~SceneShader() {}
 
-	bool build(Shader::GLObjectFactory& factory);
+	bool build(Shader::GLObjectFactory& factory) override;
+
+	void release(Shader::GLObjectFactory& factory) override {};
+
+	void render() override;
 
 	void render(const int width, const int height);
 

@@ -40,13 +40,18 @@ bool SceneShader::build(GLObjectFactory& factory)
 	return true;
 }
 
-void SceneShader::render(const int width, const int height)
+void SceneShader::render()
 {
 	objectRenderer.setBuffer(camera.get(), scene.screen);
 	objectRenderer.render();
 	parentIdRenderer.render(camera.get(), scene.parentId);
 	childIdRenderer.render(camera.get(), scene.childId);
+}
 
+
+void SceneShader::render(const int width, const int height)
+{
+	render();
 	glViewport(0, 0, width, height);
 	//glClearColor(0.0, 0.0, 1.0, 0.0);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
