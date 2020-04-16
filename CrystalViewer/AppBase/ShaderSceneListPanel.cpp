@@ -16,7 +16,7 @@ ShaderSceneListPanel::ShaderSceneListPanel(const std::string& name, World* model
 
 void ShaderSceneListPanel::onShow()
 {
-	ImGui::Begin("SceneList");
+	ImGui::Begin("ShaderSceneList");
 	show(model->getShaderScene());
 	ImGui::End();
 }
