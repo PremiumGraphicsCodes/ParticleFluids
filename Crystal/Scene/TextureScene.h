@@ -17,6 +17,8 @@ public:
 
 	void setImage(std::unique_ptr<Graphics::Image> image) { this->image = std::move(image); }
 
+	Graphics::Image* getImage() { return image.get(); }
+
 private:
 	std::unique_ptr<Graphics::Image> image;
 };

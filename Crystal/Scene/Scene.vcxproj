@@ -49,6 +49,7 @@
     <ClInclude Include="SceneShaderScene.h" />
     <ClInclude Include="SceneShader.h" />
     <ClInclude Include="SmoothShaderScene.h" />
+    <ClInclude Include="TextureController.h" />
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TextureShaderScene.h" />
     <ClInclude Include="TriangleMeshScene.h" />
@@ -99,6 +100,7 @@
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="SceneShader.cpp" />
     <ClCompile Include="SmoothShaderScene.cpp" />
+    <ClCompile Include="TextureController.cpp" />
     <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="TextureShaderScene.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />

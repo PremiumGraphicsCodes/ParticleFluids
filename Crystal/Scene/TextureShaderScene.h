@@ -5,6 +5,9 @@
 #include <vector>
 
 namespace Crystal {
+	namespace Graphics {
+		class Image;
+	}
 	namespace Shader {
 		class GLObjectFactory;
 	}
@@ -18,7 +21,9 @@ public:
 
 	void release(Shader::GLObjectFactory& glFactory);
 
-	virtual void render() = 0;
+	void render();
+
+	void send(const Graphics::Image& image);
 
 private:
 };

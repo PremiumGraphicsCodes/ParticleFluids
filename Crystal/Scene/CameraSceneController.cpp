@@ -12,7 +12,7 @@ CameraSceneController::CameraSceneController(CameraScene* model) :
 
 void CameraSceneController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
 {
-	//sceneShader->getObjectRenderer()->
+	//sceneShader->getScene()->screen.cameraScene()
 }
 
 void CameraSceneController::updateView()

@@ -1,7 +1,7 @@
 #include "TextureShaderScene.h"
 
 #include "../Shader/GLObjectFactory.h"
-#include "../Graphics/Imagef.h"
+#include "../Graphics/Image.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
@@ -9,10 +9,21 @@ using namespace Crystal::Scene;
 
 bool TextureShaderScene::build(GLObjectFactory& factory)
 {
+	//factory.getTextureFactory()->createTextureObject("SmoothTex01", Imagef(512, 512));
 	return true;
 }
 
 void TextureShaderScene::release(GLObjectFactory& glFactory)
+{
+
+}
+
+void TextureShaderScene::render()
+{
+
+}
+
+void TextureShaderScene::send(const Image& image)
 {
 
 }

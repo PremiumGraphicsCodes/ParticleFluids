@@ -145,6 +145,9 @@
     <ClInclude Include="LightController.h">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="TextureController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -254,6 +257,9 @@
       <Filter>SceneShader\Light</Filter>
     </ClCompile>
     <ClCompile Include="LightController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,7 +9,8 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 LightController::LightController(LightScene* model) :
-	model(model)
+	model(model),
+	view(nullptr)
 {}
 
 void LightController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
