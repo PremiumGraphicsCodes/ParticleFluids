@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IShader.h"
+#include "IShaderScene.h"
 
 #include "../Scene/PointShader.h"
 #include "../Scene/LineShader.h"
@@ -22,7 +22,7 @@ namespace Crystal {
 	namespace Scene {
 		class ScreenShaderScene;
 
-class ScreenShader : public IShader
+class ScreenShader : public IShaderScene
 {
 public:
 	ScreenShader() : buffer("ScreenBuffer") {};
