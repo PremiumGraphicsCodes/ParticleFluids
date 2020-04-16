@@ -58,6 +58,7 @@
     <ClCompile Include="ScaleView.cpp" />
     <ClCompile Include="SelectionMenu.cpp" />
     <ClCompile Include="ShaderAddView.cpp" />
+    <ClCompile Include="ShaderSceneListPanel.cpp" />
     <ClCompile Include="ShaderView.cpp" />
     <ClCompile Include="ShapeCloneView.cpp" />
     <ClCompile Include="ShapeMenu.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="RotateView.h" />
     <ClInclude Include="ScaleView.h" />
     <ClInclude Include="SelectionMenu.h" />
+    <ClInclude Include="ShaderSceneListPanel.h" />
     <ClInclude Include="ShaderView.h" />
     <ClInclude Include="ShapeCloneView.h" />
     <ClInclude Include="ShapeMenu.h" />
