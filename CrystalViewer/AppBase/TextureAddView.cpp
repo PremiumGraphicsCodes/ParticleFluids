@@ -3,6 +3,8 @@
 #include "../Command/Command.h"
 #include "../Command/Public/TextureCreateLabels.h"
 
+#include "../../Crystal/Scene/TextureScene.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
@@ -26,4 +28,10 @@ void TextureAddView::onOk()
 	command.setArg(TextureCreateLabels::FilePathLabel, filePathView.getFileName());
 	command.setArg(TextureCreateLabels::NameLabel, nameView.getValue());
 	command.execute(getWorld());
+	const auto newId = std::any_cast<int>( command.getResult(TextureCreateLabels::NewIdLabel) );
+	
+	auto scene = getWorld()->getObjects()->findSceneById<TextureScene*>(newId);
+	auto controller = scene->getController();
+	controller.createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	//getWorld()->getRenderer()->getScene()->screen.addChild(controller.getView());
 }

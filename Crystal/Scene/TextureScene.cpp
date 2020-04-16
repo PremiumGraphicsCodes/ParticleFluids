@@ -8,6 +8,7 @@ using namespace Crystal::Scene;
 
 TextureScene::TextureScene(const int id, std::unique_ptr<Image> image, const std::string& name) :
 	IScene(id, name),
-	image(std::move(image))
+	image(std::move(image)),
+	controller(this)
 {
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "TextureController.h"
+
 #include "IScene.h"
 #include "../Graphics/Image.h"
 
@@ -19,8 +21,11 @@ public:
 
 	Graphics::Image* getImage() { return image.get(); }
 
+	TextureController getController() { return controller; }
+
 private:
 	std::unique_ptr<Graphics::Image> image;
+	TextureController controller;
 };
 
 	}
