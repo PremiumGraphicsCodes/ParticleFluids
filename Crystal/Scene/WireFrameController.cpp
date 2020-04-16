@@ -10,7 +10,8 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 WireFrameController::WireFrameController(WireFrameScene* model) :
-	model(model)
+	model(model),
+	view(nullptr)
 {
 }
 
@@ -36,7 +37,7 @@ void WireFrameController::createView(SceneShader* sceneShader, GLObjectFactory& 
 	//view->camera = *(sceneShader->getCamera());
 	view->build(glFactory);
 	view->send(buffer);
-	sceneShader->getScene()->screen.lineBuffers.push_back(*view);
+	sceneShader->getScene()->screen.lineBuffers.push_back(view);
 }
 
 void WireFrameController::updateView()

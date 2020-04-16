@@ -62,8 +62,8 @@ void ScreenShader::render()
 			//pb.csetCamera( *camera;
 			CameraShaderScene cameraScene;
 			cameraScene.update(*camera);
-			pb.setCamera(&cameraScene);
-			pb.render();
+			pb->setCamera(&cameraScene);
+			pb->render();
 		}
 	}
 
@@ -72,15 +72,15 @@ void ScreenShader::render()
 			CameraShaderScene cameraScene;
 			cameraScene.update(*camera);
 
-			wireRenderer.setBuffer(lb);
+			wireRenderer.setBuffer(*lb);
 			wireRenderer.setCamera(cameraScene);
 			wireRenderer.render();
 		}
 	}
 	if (mask.showTrianlges) {
 		for (auto pm : buffer.pmScenes) {
-			pm.camera = *camera;
-			smoothRenderer.send(pm);
+			pm->camera = *camera;
+			smoothRenderer.send(*pm);
 			smoothRenderer.render();
 		}
 	}

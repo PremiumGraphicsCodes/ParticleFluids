@@ -8,7 +8,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
 PolygonMeshController::PolygonMeshController(PolygonMeshScene* model) :
-	model(model)
+	model(model),
+	view(nullptr)
 {
 }
 
@@ -47,10 +48,10 @@ void PolygonMeshController::createView(SceneShader* sceneShader, GLObjectFactory
 					buffer.addVertex(p, n, texCoord, materialId);
 				}
 			}
-			SmoothShaderScene glBuffer;
-			glBuffer.setShader(sceneShader->getObjectRenderer()->getSmoothShader());
-			glBuffer.build(glFactory);
-			glBuffer.send(buffer);
+			SmoothShaderScene* glBuffer = new SmoothShaderScene();
+			glBuffer->setShader(sceneShader->getObjectRenderer()->getSmoothShader());
+			glBuffer->build(glFactory);
+			glBuffer->send(buffer);
 			sceneShader->getScene()->screen.pmScenes.push_back(glBuffer);
 		}
 	}

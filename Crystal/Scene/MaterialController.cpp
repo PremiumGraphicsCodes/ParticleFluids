@@ -9,7 +9,8 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 MaterialController::MaterialController(MaterialScene* model) :
-	model(model)
+	model(model),
+	view(nullptr)
 {}
 
 void MaterialController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
@@ -20,7 +21,7 @@ void MaterialController::createView(SceneShader* sceneShader, GLObjectFactory& f
 	mScene->ambient = m->ambient;
 	mScene->specular = m->specular;
 	mScene->diffuse = m->diffuse;
-	sceneShader->getScene()->screen.materialScenes.push_back(*mScene);
+	sceneShader->getScene()->screen.materialScenes.push_back(mScene);
 	this->view = mScene;
 }
 

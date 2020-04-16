@@ -26,11 +26,11 @@ void ScreenShaderScene::release(GLObjectFactory& glFactory)
 	}
 
 	for (auto& lb : lineBuffers) {
-		lb.release(glFactory);
+		lb->release(glFactory);
 	}
 	lineBuffers.clear();
 	for (auto& pm : pmScenes) {
-		pm.release(glFactory);
+		pm->release(glFactory);
 	}
 	pmScenes.clear();
 

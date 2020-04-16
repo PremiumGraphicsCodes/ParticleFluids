@@ -29,12 +29,12 @@ public:
 
 	void render() override;
 
-	std::vector<PointShaderScene> pointBuffers;
-	std::vector<LineShaderScene> lineBuffers;
-	std::vector<SmoothShaderScene> pmScenes;
+	std::vector<PointShaderScene*> pointBuffers;
+	std::vector<LineShaderScene*> lineBuffers;
+	std::vector<SmoothShaderScene*> pmScenes;
 	std::vector<TextureScene*> textureScenes;
-	std::vector<MaterialShaderScene> materialScenes;
-	std::vector<LightShaderScene> lightScenes;
+	std::vector<MaterialShaderScene*> materialScenes;
+	std::vector<LightShaderScene*> lightScenes;
 };
 
 	}

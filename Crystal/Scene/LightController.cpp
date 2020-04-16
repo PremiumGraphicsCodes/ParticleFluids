@@ -15,22 +15,19 @@ LightController::LightController(LightScene* model) :
 void LightController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
 {
 	const auto& l = model->getLight();
-	LightShaderScene* mScene = new LightShaderScene();
-	mScene->position = l->getPosition();
-	mScene->ambient = l->getAmbient();
-	mScene->specular = l->getSpecular();
-	mScene->diffuse = l->getDiffuse();
-	sceneShader->getScene()->screen.lightScenes.push_back(*mScene);
-	this->view = mScene;
+	this->view = new LightShaderScene();
+	this->view->position = l->getPosition();
+	this->view->ambient = l->getAmbient();
+	this->view->specular = l->getSpecular();
+	this->view->diffuse = l->getDiffuse();
+	sceneShader->getScene()->screen.lightScenes.push_back(this->view);
 }
 
 void LightController::updateView()
 {
-	/*
-	const auto& m = model->getMaterial();
-	this->view->shininess = m->shininess;
-	this->view->ambient = m->ambient;
-	this->view->specular = m->specular;
-	this->view->diffuse = m->diffuse;
-	*/
+	const auto& l = model->getLight();
+	this->view->position = l->getPosition();
+	this->view->ambient = l->getAmbient();
+	this->view->specular = l->getSpecular();
+	this->view->diffuse = l->getDiffuse();
 }
