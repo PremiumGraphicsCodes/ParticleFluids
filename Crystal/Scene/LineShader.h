@@ -2,7 +2,7 @@
 
 #include "../Shader/ShaderObject.h"
 
-#include "IShader.h"
+#include "IShaderScene.h"
 
 #include "../Graphics/Buffer1d.h"
 #include "../Graphics/Buffer3d.h"
@@ -14,7 +14,7 @@ namespace Crystal {
 	namespace Scene {
 		class CameraShaderScene;
 
-class LineShader : public IShader
+class LineShader : public IShaderScene
 {
 public:
 	LineShader();

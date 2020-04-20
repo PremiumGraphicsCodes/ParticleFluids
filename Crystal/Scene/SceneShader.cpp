@@ -16,9 +16,14 @@ SceneShader::SceneShader() :
 		Vector3df(0, 0, -10.0),
 		Vector3df(0, 0, 1),
 		1.0f, 10.0f)),
-	scene("Scene")
+	scene("Scene"),
+	IShaderScene("SceneShader"),
+	objectRenderer("ObjectRenderer")
 {
-
+	//addChild(&renderer);
+	addChild(&objectRenderer);
+	//addChild(&parentIdRenderer);
+	//addChild(&childIdRenderer);
 }
 
 bool SceneShader::build(GLObjectFactory& factory)

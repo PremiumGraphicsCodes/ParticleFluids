@@ -4,13 +4,13 @@
 #include "../Shader/ShaderObject.h"
 
 #include "PointShaderScene.h"
-#include "IShader.h"
+#include "IShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
 		class CameraShaderScene;
 
-class PointShader : public IShader
+class PointShader : public IShaderScene
 {
 public:
 	PointShader();
