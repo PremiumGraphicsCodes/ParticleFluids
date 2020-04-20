@@ -64,9 +64,6 @@
     <ClInclude Include="TextureScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="IShader.h">
-      <Filter>SceneShader</Filter>
-    </ClInclude>
     <ClInclude Include="PointShader.h">
       <Filter>SceneShader\Point</Filter>
     </ClInclude>

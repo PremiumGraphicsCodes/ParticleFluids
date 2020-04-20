@@ -12,12 +12,11 @@ namespace Crystal {
 class IShaderScene
 {
 public:
-	IShaderScene()
-	{}
-
-	IShaderScene(const std::string& name) :
+	explicit IShaderScene(const std::string& name) :
 		name(name)
 	{}
+
+	virtual ~IShaderScene() {};
 
 	virtual bool build(Shader::GLObjectFactory& glFactory) = 0;
 

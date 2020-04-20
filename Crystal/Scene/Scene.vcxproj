@@ -34,7 +34,6 @@
     <ClInclude Include="FaceGroupScene.h" />
     <ClInclude Include="IPoint.h" />
     <ClInclude Include="IScene.h" />
-    <ClInclude Include="IShader.h" />
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LineBuffer.h" />
     <ClInclude Include="LineShaderScene.h" />
