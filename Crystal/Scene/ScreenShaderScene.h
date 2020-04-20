@@ -15,9 +15,7 @@ namespace Crystal {
 class ScreenShaderScene : public IShaderScene
 {
 public:
-	explicit ScreenShaderScene(const std::string& name) :
-		IShaderScene(name)
-	{}
+	explicit ScreenShaderScene(const std::string& name);
 
 	bool build(Shader::GLObjectFactory& glFactory) override;
 
@@ -26,14 +24,17 @@ public:
 	void render() override;
 
 	std::vector<TextureShaderScene*> textureScenes;
-	std::vector<MaterialShaderScene*> materialScenes;
-	std::vector<LightShaderScene*> lightScenes;
+	//std::vector<MaterialShaderScene*> materialScenes;
 
 	void add(PointShaderScene* point);
 
 	void add(LineShaderScene* line);
 
 	void add(SmoothShaderScene* smooth);
+
+	void add(LightShaderScene* light);
+
+	void add(MaterialShaderScene* material);
 
 	std::vector<PointShaderScene*> getPointBuffers() const { return pointBuffers; }
 

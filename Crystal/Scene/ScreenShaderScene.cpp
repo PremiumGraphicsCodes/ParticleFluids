@@ -8,6 +8,10 @@ using namespace Crystal::Math;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+ScreenShaderScene::ScreenShaderScene(const std::string& name) :
+	IShaderScene(name)
+{}
+
 bool ScreenShaderScene::build(GLObjectFactory& glFactory)
 {
 	const auto& children = getChildren();
@@ -35,8 +39,8 @@ void ScreenShaderScene::release(GLObjectFactory& glFactory)
 	pmScenes.clear();
 
 	textureScenes.clear();
-	materialScenes.clear();
-	lightScenes.clear();
+	//materialScenes.clear();
+	//lightScenes.clear();
 }
 
 void ScreenShaderScene::render()
@@ -63,4 +67,15 @@ void ScreenShaderScene::add(SmoothShaderScene* smooth)
 {
 	this->pmScenes.push_back(smooth);
 	addChild(smooth);
+}
+
+void ScreenShaderScene::add(LightShaderScene* light)
+{
+	//this->lineBuffers.push_back(light);
+	addChild(light);
+}
+
+void ScreenShaderScene::add(MaterialShaderScene* material)
+{
+	addChild(material);
 }

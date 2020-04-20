@@ -21,7 +21,7 @@ void MaterialController::createView(SceneShader* sceneShader, GLObjectFactory& f
 	this->view->ambient = m->ambient;
 	this->view->specular = m->specular;
 	this->view->diffuse = m->diffuse;
-	sceneShader->getScene()->screen.materialScenes.push_back(this->view);
+	sceneShader->getScene()->screen.add(this->view);
 }
 
 void MaterialController::updateView()
