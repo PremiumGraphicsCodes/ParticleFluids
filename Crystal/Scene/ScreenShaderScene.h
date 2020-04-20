@@ -30,15 +30,9 @@ public:
 	std::vector<MaterialShaderScene*> materialScenes;
 	std::vector<LightShaderScene*> lightScenes;
 
-	void add(PointShaderScene* point) {
-		this->pointBuffers.push_back(point);
-		addChild(point);
-	}
+	void add(PointShaderScene* point);
 
-	void add(LineShaderScene* line) {
-		this->lineBuffers.push_back(line);
-		addChild(line);
-	}
+	void add(LineShaderScene* line);
 
 	std::vector<PointShaderScene*> getPointBuffers() const { return pointBuffers; }
 

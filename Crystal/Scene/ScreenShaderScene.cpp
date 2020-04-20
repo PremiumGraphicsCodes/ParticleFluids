@@ -46,3 +46,15 @@ void ScreenShaderScene::render()
 		c->render();
 	}
 }
+
+void ScreenShaderScene::add(PointShaderScene* point)
+{
+	this->pointBuffers.push_back(point);
+	addChild(point);
+}
+
+void ScreenShaderScene::add(LineShaderScene* line)
+{
+	this->lineBuffers.push_back(line);
+	addChild(line);
+}
