@@ -13,7 +13,7 @@ TextureShaderScene::TextureShaderScene(const std::string& name) :
 
 bool TextureShaderScene::build(GLObjectFactory& factory)
 {
-	this->textureObject = factory.getTextureFactory()->createTextureObject("SmoothTex01");
+	this->textureObject = factory.getTextureFactory()->createTextureObject(getName());
 	return true;
 }
 
