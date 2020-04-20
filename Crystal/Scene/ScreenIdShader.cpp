@@ -10,7 +10,8 @@ using namespace Crystal::Scene;
 ScreenIdShader::ScreenIdShader() :
 	pointBuffer("PointIdBuffer"),
 	lineBuffer("LineIdBuffer"),
-	pointIdRenderer("PointIdRenderer")
+	pointIdRenderer("PointIdRenderer"),
+	lineIdRenderer("LineIdRenderer")
 {}
 
 bool ScreenIdShader::build(GLObjectFactory& factory)
@@ -57,12 +58,13 @@ void ScreenIdShader::render(Camera* camera, const ScreenIdShaderScene& vm)
 		pointIdRenderer.send(pointBuffer);
 		pointIdRenderer.render();
 	}
-	*/
 	for (const auto& b : lineBuffers) {
 		lineBuffer.send(b);
 		lineIdRenderer.setBuffer(lineBuffer);
 		lineIdRenderer.render();
 	}
+		*/
+
 	for (const auto& b : triangleBuffers) {
 		triangleBuffer.send(b);
 		triangleIdRenderer.setBuffer(triangleBuffer);

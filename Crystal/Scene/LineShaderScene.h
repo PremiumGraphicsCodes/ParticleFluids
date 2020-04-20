@@ -28,8 +28,6 @@ public:
 	Graphics::Camera camera;
 	float lineWidth;
 
-	LineShaderScene() {}
-
 	explicit LineShaderScene(const std::string& name) :
 		IShaderScene(name)
 	{}

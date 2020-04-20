@@ -32,12 +32,12 @@ void WireFrameController::createView(SceneShader* sceneShader, GLObjectFactory& 
 		buffer.addIndex(e.destId);
 	}
 
-	this->view = new LineShaderScene();
+	this->view = new LineShaderScene(model->getName());
 	this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
 	//view->camera = *(sceneShader->getCamera());
 	this->view->build(glFactory);
 	this->view->send(buffer);
-	sceneShader->getScene()->screen.lineBuffers.push_back(this->view);
+	sceneShader->getScene()->screen.add(this->view);
 }
 
 void WireFrameController::updateView()

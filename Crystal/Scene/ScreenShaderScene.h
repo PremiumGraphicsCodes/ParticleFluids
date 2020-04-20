@@ -25,7 +25,6 @@ public:
 
 	void render() override;
 
-	std::vector<LineShaderScene*> lineBuffers;
 	std::vector<SmoothShaderScene*> pmScenes;
 	std::vector<TextureShaderScene*> textureScenes;
 	std::vector<MaterialShaderScene*> materialScenes;
@@ -36,10 +35,18 @@ public:
 		addChild(point);
 	}
 
+	void add(LineShaderScene* line) {
+		this->lineBuffers.push_back(line);
+		addChild(line);
+	}
+
 	std::vector<PointShaderScene*> getPointBuffers() const { return pointBuffers; }
+
+	std::vector<LineShaderScene*> getLineBuffers() const { return lineBuffers; }
 
 private:
 	std::vector<PointShaderScene*> pointBuffers;
+	std::vector<LineShaderScene*> lineBuffers;
 
 };
 

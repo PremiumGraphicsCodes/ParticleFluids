@@ -17,6 +17,7 @@ using namespace Crystal::Scene;
 ScreenShader::ScreenShader(const std::string& name) :
 	IShaderScene(name),
 	pointRenderer("PointRenderer"),
+	wireRenderer("LineRenderer"),
 	buffer("ScreenBuffer")
 {
 	addChild(&pointRenderer);
@@ -78,11 +79,11 @@ void ScreenShader::render()
 	}
 
 	if (mask.showLines) {
-		for (auto lb : buffer.lineBuffers) {
+		const auto& lineBuffers = buffer.getLineBuffers();
+		for (auto lb : lineBuffers) {
 			CameraShaderScene cameraScene("Camera");
 			cameraScene.update(*camera);
-
-			wireRenderer.setBuffer(*lb);
+			wireRenderer.setBuffer(lb);
 			wireRenderer.setCamera(cameraScene);
 			wireRenderer.render();
 		}

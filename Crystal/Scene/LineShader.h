@@ -17,13 +17,13 @@ namespace Crystal {
 class LineShader : public IShaderScene
 {
 public:
-	LineShader();
+	explicit LineShader(const std::string& name);
 
 	bool build(Shader::GLObjectFactory& factory) override;
 
 	void release(Shader::GLObjectFactory& factory) override;
 
-	void setBuffer(const LineShaderScene& buffer) { this->glBuffer = buffer; }
+	void setBuffer(LineShaderScene* buffer) { this->glBuffer = buffer; }
 
 	void setCamera(const CameraShaderScene& camera);
 
@@ -34,7 +34,7 @@ private:
 
 	std::string getBuiltInFsSource() const;
 
-	LineShaderScene glBuffer;
+	LineShaderScene* glBuffer;
 	Shader::ShaderObject shader;
 };
 

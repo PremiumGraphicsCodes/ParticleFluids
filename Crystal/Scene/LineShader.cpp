@@ -17,7 +17,8 @@ namespace {
 	constexpr const char* fragColorLabel = "fragColor";
 }
 
-LineShader::LineShader()
+LineShader::LineShader(const std::string& name) :
+	IShaderScene(name)
 {
 }
 
@@ -46,13 +47,13 @@ void LineShader::render()
 {
 	shader.bind();
 
-	shader.setLineWidth(glBuffer.lineWidth);
+	shader.setLineWidth(glBuffer->lineWidth);
 	shader.enableDepthTest();
 
-	shader.sendVertexAttribute3df(positionLabel, glBuffer.vbo.position);
-	shader.sendVertexAttribute4df(colorLabel, glBuffer.vbo.color);
+	shader.sendVertexAttribute3df(positionLabel, glBuffer->vbo.position);
+	shader.sendVertexAttribute4df(colorLabel, glBuffer->vbo.color);
 
-	shader.drawLines(glBuffer.indices);
+	shader.drawLines(glBuffer->indices);
 
 	//shader->disableVertexAttribute("color");
 	//shader->disableVertexAttribute("position");
