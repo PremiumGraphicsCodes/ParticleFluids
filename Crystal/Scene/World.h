@@ -38,15 +38,12 @@ public:
 
 	Shader::GLObjectFactory* getGLFactory() { return &glFactory; }
 
-	SceneShaderScene* getShaderScene() { return &shaderScene; }
-
 	Math::Box3d getBoundingBox() const;
 
 	SceneShader* getRenderer() { return renderer.get(); }
 
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
-	SceneShaderScene shaderScene;
 
 	SceneIdProvider sceneIdProvider;
 	Shader::GLObjectFactory glFactory;

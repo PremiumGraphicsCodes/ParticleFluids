@@ -22,6 +22,7 @@ SceneShader::SceneShader() :
 {
 	//addChild(&renderer);
 	addChild(&objectRenderer);
+	addChild(&scene);
 	//addChild(&parentIdRenderer);
 	//addChild(&childIdRenderer);
 }
