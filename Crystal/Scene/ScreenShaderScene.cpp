@@ -58,3 +58,9 @@ void ScreenShaderScene::add(LineShaderScene* line)
 	this->lineBuffers.push_back(line);
 	addChild(line);
 }
+
+void ScreenShaderScene::add(SmoothShaderScene* smooth)
+{
+	this->pmScenes.push_back(smooth);
+	addChild(smooth);
+}

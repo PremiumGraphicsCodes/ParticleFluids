@@ -25,7 +25,6 @@ public:
 
 	void render() override;
 
-	std::vector<SmoothShaderScene*> pmScenes;
 	std::vector<TextureShaderScene*> textureScenes;
 	std::vector<MaterialShaderScene*> materialScenes;
 	std::vector<LightShaderScene*> lightScenes;
@@ -34,13 +33,18 @@ public:
 
 	void add(LineShaderScene* line);
 
+	void add(SmoothShaderScene* smooth);
+
 	std::vector<PointShaderScene*> getPointBuffers() const { return pointBuffers; }
 
 	std::vector<LineShaderScene*> getLineBuffers() const { return lineBuffers; }
 
+	std::vector<SmoothShaderScene*> getSmoothBuffers() const { return pmScenes; }
+
 private:
 	std::vector<PointShaderScene*> pointBuffers;
 	std::vector<LineShaderScene*> lineBuffers;
+	std::vector<SmoothShaderScene*> pmScenes;
 
 };
 

@@ -6,6 +6,12 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+PointShaderScene::PointShaderScene(const std::string& name) :
+	IShaderScene(name),
+	shader(nullptr),
+	camera(nullptr)
+{}
+
 bool PointShaderScene::build(GLObjectFactory& glFactory)
 {
 	vbo.position.build();

@@ -16,7 +16,7 @@ MaterialController::MaterialController(MaterialScene* model) :
 void MaterialController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
 {
 	const auto& m = model->getMaterial();
-	this->view = new MaterialShaderScene();
+	this->view = new MaterialShaderScene(model->getName());
 	this->view->shininess = m->shininess;
 	this->view->ambient = m->ambient;
 	this->view->specular = m->specular;

@@ -5,6 +5,11 @@ using namespace Crystal::Math;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+SmoothShaderScene::SmoothShaderScene(const std::string& name) :
+	IShaderScene(name),
+	shader(nullptr)
+{}
+
 void SmoothBuffer::addVertex(const Vector3df& position, const Vector3df& normal, const Vector2df& texCoord, const int materialId)
 {
 	positions.add(position);

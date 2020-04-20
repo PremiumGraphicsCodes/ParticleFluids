@@ -89,7 +89,8 @@ void ScreenShader::render()
 		}
 	}
 	if (mask.showTrianlges) {
-		for (auto pm : buffer.pmScenes) {
+		const auto& pmScenes = buffer.getSmoothBuffers();
+		for (auto pm : pmScenes) {
 			pm->camera = *camera;
 			smoothRenderer.send(*pm);
 			smoothRenderer.render();

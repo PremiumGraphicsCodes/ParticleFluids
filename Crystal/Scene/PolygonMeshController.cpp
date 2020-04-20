@@ -48,11 +48,11 @@ void PolygonMeshController::createView(SceneShader* sceneShader, GLObjectFactory
 					buffer.addVertex(p, n, texCoord, materialId);
 				}
 			}
-			SmoothShaderScene* glBuffer = new SmoothShaderScene();
+			SmoothShaderScene* glBuffer = new SmoothShaderScene("");
 			glBuffer->setShader(sceneShader->getObjectRenderer()->getSmoothShader());
 			glBuffer->build(glFactory);
 			glBuffer->send(buffer);
-			sceneShader->getScene()->screen.pmScenes.push_back(glBuffer);
+			sceneShader->getScene()->screen.add(glBuffer);
 		}
 	}
 }

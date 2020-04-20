@@ -58,6 +58,8 @@ public:
 	Math::Matrix4df matrix;
 	Graphics::Camera camera;
 
+	explicit SmoothShaderScene(const std::string& name);
+
 	bool build(Shader::GLObjectFactory& glFactory) override;
 
 	void send(const SmoothBuffer& buffer);

@@ -28,9 +28,7 @@ public:
 	Graphics::Camera camera;
 	float lineWidth;
 
-	explicit LineShaderScene(const std::string& name) :
-		IShaderScene(name)
-	{}
+	explicit LineShaderScene(const std::string& name);
 
 	bool build(Shader::GLObjectFactory& glFactory) override;
 

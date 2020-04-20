@@ -6,6 +6,11 @@
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+LineShaderScene::LineShaderScene(const std::string& name) :
+	IShaderScene(name),
+	shader(nullptr)
+{}
+
 bool LineShaderScene::build(GLObjectFactory& glFactory)
 {
 	vbo.position.build();
