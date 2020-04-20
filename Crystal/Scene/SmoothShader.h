@@ -11,17 +11,17 @@
 
 #include "TextureShaderScene.h"
 
-#include "IShader.h"
+#include "IShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
 		class TextureScene;
 		class MaterialShaderScene;
 
-class SmoothShader : public IShader
+class SmoothShader : public IShaderScene
 {
 public:
-	SmoothShader();
+	explicit SmoothShader(const std::string& name);
 
 	bool build(Shader::GLObjectFactory& factory) override;
 

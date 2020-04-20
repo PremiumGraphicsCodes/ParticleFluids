@@ -18,10 +18,12 @@ ScreenShader::ScreenShader(const std::string& name) :
 	IShaderScene(name),
 	pointRenderer("PointRenderer"),
 	wireRenderer("LineRenderer"),
+	smoothRenderer("SmoothRenderer"),
 	buffer("ScreenBuffer")
 {
 	addChild(&pointRenderer);
 	addChild(&wireRenderer);
+	addChild(&smoothRenderer);
 }
 
 bool ScreenShader::build(GLObjectFactory& factory)

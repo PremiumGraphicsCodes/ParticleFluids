@@ -24,7 +24,8 @@ namespace {
 	constexpr char* texCoordLabel = "texCoord";
 }
 
-SmoothShader::SmoothShader()
+SmoothShader::SmoothShader(const std::string& name) :
+	IShaderScene(name)
 {
 }
 
