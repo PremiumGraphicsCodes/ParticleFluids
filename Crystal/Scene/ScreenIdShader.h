@@ -9,6 +9,7 @@
 #include "../Scene/LineShader.h"
 #include "../Scene/TriangleShader.h"
 
+#include "IShaderScene.h"
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
@@ -20,16 +21,20 @@ namespace Crystal {
 		class SceneFactory;
 		class ScreenIdShaderScene;
 
-class ScreenIdShader : private UnCopyable
+class ScreenIdShader : public IShaderScene
 {
 public:
-	ScreenIdShader();
+	explicit ScreenIdShader(const std::string& name);
 
 	~ScreenIdShader() {}
 
-	bool build(Shader::GLObjectFactory& factory);
+	bool build(Shader::GLObjectFactory& factory) override;
+
+	void release(Shader::GLObjectFactory& factory) override;
 
 	void render(Graphics::Camera* camera, const ScreenIdShaderScene& vm);
+
+	void render() override;
 
 	Graphics::DrawableID getId(const double x, const double y);
 

@@ -7,7 +7,8 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-ScreenIdShader::ScreenIdShader() :
+ScreenIdShader::ScreenIdShader(const std::string& name) :
+	IShaderScene(name),
 	pointBuffer("PointIdBuffer"),
 	lineBuffer("LineIdBuffer"),
 	pointIdRenderer("PointIdRenderer"),
@@ -37,6 +38,11 @@ bool ScreenIdShader::build(GLObjectFactory& factory)
 	return true;
 }
 
+void ScreenIdShader::release(GLObjectFactory& factory)
+{
+
+}
+
 void ScreenIdShader::render(Camera* camera, const ScreenIdShaderScene& vm)
 {
 	const auto& pointBuffers = vm.pointIdBuffers;
@@ -63,15 +69,19 @@ void ScreenIdShader::render(Camera* camera, const ScreenIdShaderScene& vm)
 		lineIdRenderer.setBuffer(lineBuffer);
 		lineIdRenderer.render();
 	}
-		*/
-
 	for (const auto& b : triangleBuffers) {
 		triangleBuffer.send(b);
 		triangleIdRenderer.setBuffer(triangleBuffer);
 		triangleIdRenderer.render(*camera);
 	}
+	*/
 
 	frameBufferObject->unbind();
+}
+
+void ScreenIdShader::render()
+{
+
 }
 
 DrawableID ScreenIdShader::getId(const double x, const double y)

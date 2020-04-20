@@ -18,13 +18,15 @@ SceneShader::SceneShader() :
 		1.0f, 10.0f)),
 	scene("Scene"),
 	IShaderScene("SceneShader"),
-	objectRenderer("ObjectRenderer")
+	objectRenderer("ObjectRenderer"),
+	parentIdRenderer("ParentIdRenderer"),
+	childIdRenderer("ChildIdRenderer")
 {
 	//addChild(&renderer);
 	addChild(&objectRenderer);
 	addChild(&scene);
-	//addChild(&parentIdRenderer);
-	//addChild(&childIdRenderer);
+	addChild(&parentIdRenderer);
+	addChild(&childIdRenderer);
 }
 
 bool SceneShader::build(GLObjectFactory& factory)
