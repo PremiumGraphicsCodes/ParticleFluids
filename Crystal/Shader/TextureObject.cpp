@@ -54,6 +54,8 @@ void TextureObject::create(const std::string& name, const Imagef& image, const i
 
 void TextureObject::send(const Image& image)
 {
+	this->width = image.getWidth();
+	this->height = image.getHeight();
 	glBindTexture(GL_TEXTURE_2D, handle);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getWidth(), image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getValues().data());
 

@@ -54,7 +54,7 @@ public:
 
 	Mask getMask() const { return mask; }
 
-	Shader::TextureObject getTexture() { return texture; }
+	//Shader::TextureObject getTexture() { return texture; }
 
 	Graphics::Camera* getCamera() { return camera; }
 
@@ -63,6 +63,8 @@ public:
 	LineShader* getWireShader() { return &wireRenderer; }
 
 	SmoothShader* getSmoothShader() { return &smoothRenderer; }
+
+	TextureShaderScene* getTextureScene() { return texture; }
 
 private:
 	PointShader pointRenderer;
@@ -73,7 +75,7 @@ private:
 
 	Graphics::Camera* camera;
 
-	Shader::TextureObject texture;
+	TextureShaderScene* texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
 	ScreenShaderScene buffer;
 };

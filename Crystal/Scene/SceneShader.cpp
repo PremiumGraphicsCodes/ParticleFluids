@@ -72,6 +72,6 @@ void SceneShader::render(const int width, const int height)
 		renderer.render(*tex);
 	}
 	*/
-	auto texture = objectRenderer.getTexture();
-	renderer.render(texture);
+	auto texture = objectRenderer.getTextureScene()->getTextureObject();
+	renderer.render(*texture);
 }

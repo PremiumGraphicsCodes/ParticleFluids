@@ -19,6 +19,8 @@ namespace Crystal {
 class TextureShaderScene : public IShaderScene
 {
 public:
+	explicit TextureShaderScene(const std::string& name);
+
 	bool build(Shader::GLObjectFactory& factory);
 
 	void release(Shader::GLObjectFactory& glFactory);
@@ -26,6 +28,8 @@ public:
 	void render();
 
 	void send(const Graphics::Image& image);
+
+	Shader::TextureObject* getTextureObject() { return &textureObject; }
 
 private:
 	Shader::TextureObject textureObject;

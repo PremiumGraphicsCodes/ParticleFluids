@@ -7,6 +7,10 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+TextureShaderScene::TextureShaderScene(const std::string& name) :
+	IShaderScene(name)
+{}
+
 bool TextureShaderScene::build(GLObjectFactory& factory)
 {
 	this->textureObject = factory.getTextureFactory()->createTextureObject("SmoothTex01");

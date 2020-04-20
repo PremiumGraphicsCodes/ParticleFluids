@@ -24,6 +24,9 @@ ScreenShader::ScreenShader(const std::string& name) :
 	addChild(&pointRenderer);
 	addChild(&wireRenderer);
 	addChild(&smoothRenderer);
+
+	texture = new TextureShaderScene("ScreenTex");// = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
+	addChild(texture);
 }
 
 bool ScreenShader::build(GLObjectFactory& factory)
@@ -38,7 +41,8 @@ bool ScreenShader::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	texture = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
+	texture->build(factory);
+	texture->send(Image(512, 512));
 	//texture.create(, 1);
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 	return true;
@@ -57,6 +61,7 @@ void ScreenShader::setBuffer(Camera* camera, const ScreenShaderScene& buffer)
 
 void ScreenShader::render()
 {
+	auto texture = *this->texture->getTextureObject();
 	frameBufferObject->setTexture(texture);
 	//texture.bind();
 	frameBufferObject->bind();
