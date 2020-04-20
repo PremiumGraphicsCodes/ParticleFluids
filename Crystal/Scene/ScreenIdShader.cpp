@@ -7,6 +7,12 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+ScreenIdShader::ScreenIdShader() :
+	pointBuffer("PointIdBuffer"),
+	lineBuffer("LineIdBuffer"),
+	pointIdRenderer("PointIdRenderer")
+{}
+
 bool ScreenIdShader::build(GLObjectFactory& factory)
 {
 	if (!pointIdRenderer.build(factory)) {

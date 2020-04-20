@@ -14,6 +14,15 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+ScreenShader::ScreenShader(const std::string& name) :
+	IShaderScene(name),
+	pointRenderer("PointRenderer"),
+	buffer("ScreenBuffer")
+{
+	addChild(&pointRenderer);
+	addChild(&wireRenderer);
+}
+
 bool ScreenShader::build(GLObjectFactory& factory)
 {
 	if (!pointRenderer.build(factory)) {

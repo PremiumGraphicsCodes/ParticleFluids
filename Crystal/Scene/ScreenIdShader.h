@@ -23,10 +23,7 @@ namespace Crystal {
 class ScreenIdShader : private UnCopyable
 {
 public:
-	ScreenIdShader() :
-		pointBuffer("PointIdBuffer"),
-		lineBuffer("LineIdBuffer")
-	{}
+	ScreenIdShader();
 
 	~ScreenIdShader() {}
 

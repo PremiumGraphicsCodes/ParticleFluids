@@ -18,7 +18,8 @@ namespace {
 	constexpr char* fragColorLabel = "fragColor";
 }
 
-PointShader::PointShader()
+PointShader::PointShader(const std::string& name) :
+	IShaderScene(name)
 {
 }
 

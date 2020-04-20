@@ -13,7 +13,7 @@ namespace Crystal {
 class PointShader : public IShaderScene
 {
 public:
-	PointShader();
+	explicit PointShader(const std::string& name);
 
 	bool build(Shader::GLObjectFactory& factory) override;
 

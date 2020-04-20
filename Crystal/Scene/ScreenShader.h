@@ -25,9 +25,7 @@ namespace Crystal {
 class ScreenShader : public IShaderScene
 {
 public:
-	explicit ScreenShader(const std::string& name) :
-		IShaderScene(name),
-		buffer("ScreenBuffer") {};
+	explicit ScreenShader(const std::string& name);
 
 	~ScreenShader() {}
 
