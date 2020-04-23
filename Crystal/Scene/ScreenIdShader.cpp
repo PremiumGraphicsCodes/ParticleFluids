@@ -9,9 +9,7 @@ using namespace Crystal::Scene;
 
 ScreenIdShader::ScreenIdShader(const std::string& name) :
 	IShaderScene(name),
-	pointBuffer("PointIdBuffer"),
 	lineBuffer("LineIdBuffer"),
-	pointIdRenderer("PointIdRenderer"),
 	lineIdRenderer("LineIdRenderer")
 {
 	texture = new TextureShaderScene("IdTexture");
@@ -20,9 +18,6 @@ ScreenIdShader::ScreenIdShader(const std::string& name) :
 
 bool ScreenIdShader::build(GLObjectFactory& factory)
 {
-	if (!pointIdRenderer.build(factory)) {
-		return false;
-	}
 	if (!lineIdRenderer.build(factory)) {
 		return false;
 	}
@@ -30,7 +25,6 @@ bool ScreenIdShader::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	pointBuffer.build(factory);
 	lineBuffer.build(factory);
 	triangleBuffer.build();
 
@@ -62,13 +56,16 @@ void ScreenIdShader::render(Camera* camera, const ScreenIdShaderScene& vm)
 
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	/*
-	for (const auto& b : pointBuffers) {
-		pointBuffer.camera = *camera;
-		pointBuffer.send(b);
-		pointIdRenderer.send(pointBuffer);
-		pointIdRenderer.render();
+
+	const auto& pbs = vm.getPointScenes();
+	for (auto pb : pbs) {
+		//pb.csetCamera( *camera;
+		CameraShaderScene cameraScene("Camera");
+		cameraScene.update(*camera);
+		pb->setCamera(&cameraScene);
+		pb->render();
 	}
+	/*
 	for (const auto& b : lineBuffers) {
 		lineBuffer.send(b);
 		lineIdRenderer.setBuffer(lineBuffer);

@@ -44,11 +44,9 @@ public:
 	TextureShaderScene* getTextureScene() { return texture; }
 
 private:
-	PointShaderScene pointBuffer;
 	LineShaderScene lineBuffer;
 	TriangleShader::GLBuffer triangleBuffer;
 
-	PointShader pointIdRenderer;
 	LineShader lineIdRenderer;
 	TriangleShader triangleIdRenderer;
 

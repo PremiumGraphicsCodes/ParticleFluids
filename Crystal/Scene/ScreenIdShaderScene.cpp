@@ -13,6 +13,14 @@ ScreenIdShaderScene::ScreenIdShaderScene(const std::string& name) :
 {
 }
 
+void ScreenIdShaderScene::render()
+{
+	const auto& children = getChildren();
+	for (auto c : children) {
+		c->render();
+	}
+}
+
 
 void ScreenIdShaderScene::add(PointShaderScene* scene)
 {

@@ -10,4 +10,5 @@ SceneShaderScene::SceneShaderScene(const std::string& name) :
 	childId("ChildIdScene")
 {
 	addChild(&screen);
+	addChild(&parentId);
 }

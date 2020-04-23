@@ -5,6 +5,7 @@
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
+using namespace Crystal::Graphics;
 
 ParticleSystemController::ParticleSystemController(ParticleSystemScene* model) :
 	model(model),
@@ -51,18 +52,15 @@ void ParticleSystemController::updateParentIdView()
 	const auto objectId = model->getId();
 	const auto& particles = model->getShape()->getParticles();
 	int particleId = 0;
-	//parentView->setMatrix(model->getMatrix());
-	/*
 	PointBuffer parentIdBuffer;
+	parentIdBuffer.setMatrix(model->getMatrix());
 	for (auto p : particles) {
 		DrawableID parentDid(objectId);
 		parentIdBuffer.add(p->getPosition(), parentDid.toColor(), p->getAttribute().size);
 		//Graphics::DrawableID childDid(particleId++);
 		//childIdBuffer.add(p->getPosition(), childDid.toColor(), p->getAttribute().size);
 	}
-	parentView->send(parentIdBuffer);
-	sceneShader->getScene()->parentId.pointIdBuffers.push_back(parentIdBuffer);
-	*/
+	parentIdView->send(parentIdBuffer);
 }
 
 void ParticleSystemController::updateChildIdView()

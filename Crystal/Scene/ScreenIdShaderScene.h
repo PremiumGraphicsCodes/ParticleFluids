@@ -9,22 +9,24 @@ namespace Crystal {
 		class WireFrameScene;
 		class PolygonMeshScene;
 
-class ScreenIdShaderScene : IShaderScene
+class ScreenIdShaderScene : public IShaderScene
 {
 public:
-	ScreenIdShaderScene(const std::string& name);
+	explicit ScreenIdShaderScene(const std::string& name);
 
 	bool build(Shader::GLObjectFactory& glFactory) { return true; }
 
 	void release(Shader::GLObjectFactory& glFactory) {}
 
-	void render() override {}
+	void render() override;
 
 	void add(PointShaderScene* scene);
 
 	void add(WireFrameScene* scene);
 
 	void add(PolygonMeshScene* scene);
+
+	std::vector<PointShaderScene*> getPointScenes() const { return pointScenes; }
 
 private:
 	std::vector<PointShaderScene*> pointScenes;
