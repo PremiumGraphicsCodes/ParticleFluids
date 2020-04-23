@@ -10,6 +10,7 @@
 #include "../Scene/TriangleShader.h"
 
 #include "IShaderScene.h"
+#include "TextureShaderScene.h"
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
@@ -51,7 +52,7 @@ private:
 	LineShader lineIdRenderer;
 	TriangleShader triangleIdRenderer;
 
-	Shader::TextureObject texture;
+	TextureShaderScene texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
 };
 	}

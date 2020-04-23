@@ -64,14 +64,11 @@ void SceneShader::render(const int width, const int height)
 	//glClearColor(0.0, 0.0, 1.0, 0.0);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	/*
 	if (showOffScreen) {
-		renderer.render(*objectIdRenderer.getTexture());// *tex);
+		//renderer.render(*objectIdRenderer.getTexture());// *tex);
 	}
 	else {
-		renderer.render(*tex);
+		auto texture = objectRenderer.getTextureScene()->getTextureObject();
+		renderer.render(*texture);
 	}
-	*/
-	auto texture = objectRenderer.getTextureScene()->getTextureObject();
-	renderer.render(*texture);
 }
