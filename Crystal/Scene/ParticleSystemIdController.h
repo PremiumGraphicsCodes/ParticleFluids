@@ -7,20 +7,21 @@ namespace Crystal {
 		class ParticleSystemScene;
 		class PointShaderScene;
 
-class ParticleSystemController : public IController
+class ParticleSystemIdController : public IController
 {
 public:
-	explicit ParticleSystemController(ParticleSystemScene* model);
+	explicit ParticleSystemIdController(ParticleSystemScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
 	void updateView() override;
 
-	PointShaderScene* getView() { return view; }
+	//PointShaderScene* getView() { return view; }
 
 private:
 	ParticleSystemScene* model;
-	PointShaderScene* view;
+	PointShaderScene* parentView;
+	PointShaderScene* childView;
 };
 
 	}
