@@ -1,23 +1,20 @@
 #pragma once
 
+#include "IController.h"
+
 namespace Crystal {
-	namespace Shader {
-		class GLObjectFactory;
-	}
 	namespace Scene {
 		class WireFrameScene;
 		class LineShaderScene;
-		class LineShader;
-		class SceneShader;
 
-class WireFrameController
+class WireFrameController : public IController
 {
 public:
 	explicit WireFrameController(WireFrameScene* model);
 
-	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory);
+	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
-	void updateView();
+	void updateView() override;
 
 	LineShaderScene* getView() { return view; }
 

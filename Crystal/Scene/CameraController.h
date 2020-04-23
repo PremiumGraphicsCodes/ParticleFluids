@@ -1,5 +1,7 @@
 #pragma once
 
+#include "IController.h"
+
 namespace Crystal {
 	namespace Shader {
 		class GLObjectFactory;
@@ -9,14 +11,14 @@ namespace Crystal {
 		class CameraShaderScene;
 		class SceneShader;
 
-class CameraController
+class CameraController : public IController
 {
 public:
 	explicit CameraController(CameraScene* model);
 
-	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory);
+	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
-	void updateView();
+	void updateView() override;
 
 	CameraShaderScene* getView() { return view; }
 

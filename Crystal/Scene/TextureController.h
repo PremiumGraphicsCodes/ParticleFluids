@@ -1,15 +1,13 @@
 #pragma once
 
+#include "IController.h"
+
 namespace Crystal {
-	namespace Shader {
-		class GLObjectFactory;
-	}
 	namespace Scene {
 		class TextureScene;
-		class SceneShader;
 		class TextureShaderScene;
 
-class TextureController
+class TextureController : public IController
 {
 public:
 	explicit TextureController(TextureScene* model);
@@ -17,6 +15,8 @@ public:
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory);
 
 	void updateView();
+
+	TextureShaderScene* getView() { return view; }
 
 private:
 	TextureScene* model;

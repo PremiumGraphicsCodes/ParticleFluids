@@ -1,27 +1,21 @@
 #pragma once
 
-#include <vector>
-#include <memory>
-
+#include "IController.h"
 
 namespace Crystal {
-	namespace Shader {
-		class GLObjectFactory;
-	}
 	namespace Scene {
 		class ParticleSystemScene;
 		class PointShaderScene;
-		class IShaderScene;
 		class SceneShader;
 
-class ParticleSystemController
+class ParticleSystemController : public IController
 {
 public:
 	explicit ParticleSystemController(ParticleSystemScene* model);
 
-	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory);
+	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
-	void updateView();
+	void updateView() override;
 
 	PointShaderScene* getView() { return view; }
 

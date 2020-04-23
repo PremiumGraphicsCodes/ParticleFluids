@@ -145,6 +145,9 @@
     <ClInclude Include="CameraController.h">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="IController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">

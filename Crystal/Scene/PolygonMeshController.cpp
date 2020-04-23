@@ -56,3 +56,8 @@ void PolygonMeshController::createView(SceneShader* sceneShader, GLObjectFactory
 		}
 	}
 }
+
+void PolygonMeshController::updateView()
+{
+
+}

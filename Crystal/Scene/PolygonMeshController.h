@@ -1,22 +1,20 @@
 #pragma once
 
+#include "IController.h"
+
 namespace Crystal {
-	namespace Shader {
-		class GLObjectFactory;
-	}
 	namespace Scene {
 		class PolygonMeshScene;
 		class SmoothShaderScene;
-		class SceneShader;
 
-class PolygonMeshController
+class PolygonMeshController : public IController
 {
 public:
 	explicit PolygonMeshController(PolygonMeshScene* model);
 
-	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory);
+	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
-	void updateView();
+	void updateView() override;
 
 	SmoothShaderScene* getView() { return view; }
 
