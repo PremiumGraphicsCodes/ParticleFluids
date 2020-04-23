@@ -23,7 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraScene.h" />
-    <ClInclude Include="CameraSceneController.h" />
+    <ClInclude Include="CameraController.h" />
     <ClInclude Include="CameraShaderScene.h" />
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="LightController.h" />
@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraScene.cpp" />
-    <ClCompile Include="CameraSceneController.cpp" />
+    <ClCompile Include="CameraController.cpp" />
     <ClCompile Include="CameraShaderScene.cpp" />
     <ClCompile Include="FaceGroupScene.cpp" />
     <ClCompile Include="IScene.cpp" />

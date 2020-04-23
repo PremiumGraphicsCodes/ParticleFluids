@@ -3,7 +3,7 @@
 #include "IScene.h"
 #include "../Graphics/Camera.h"
 
-#include "CameraSceneController.h"
+#include "CameraController.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -21,11 +21,11 @@ public:
 
 	Graphics::Camera* getCamera() const { return camera.get(); }
 
-	CameraSceneController getController() { return controller; }
+	CameraController getController() { return controller; }
 
 private:
 	std::unique_ptr< Graphics::Camera > camera;
-	CameraSceneController controller;
+	CameraController controller;
 
 };
 

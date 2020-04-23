@@ -121,9 +121,6 @@
     <ClInclude Include="CameraShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
-    <ClInclude Include="CameraSceneController.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMeshController.h">
       <Filter>Controller</Filter>
     </ClInclude>
@@ -143,6 +140,9 @@
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="TextureController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController.h">
       <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
@@ -235,9 +235,6 @@
     <ClCompile Include="CameraShaderScene.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
-    <ClCompile Include="CameraSceneController.cpp">
-      <Filter>Controller</Filter>
-    </ClCompile>
     <ClCompile Include="PolygonMeshController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
@@ -257,6 +254,9 @@
       <Filter>Controller</Filter>
     </ClCompile>
     <ClCompile Include="TextureController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraController.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
   </ItemGroup>
