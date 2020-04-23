@@ -65,7 +65,8 @@ void SceneShader::render(const int width, const int height)
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	if (showOffScreen) {
-		//renderer.render(*objectIdRenderer.getTexture());// *tex);
+		auto texture = parentIdRenderer.getTextureScene()->getTextureObject();
+		renderer.render(*texture);
 	}
 	else {
 		auto texture = objectRenderer.getTextureScene()->getTextureObject();

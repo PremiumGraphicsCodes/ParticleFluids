@@ -7,25 +7,19 @@ using namespace Crystal::UI;
 
 void ScreenMenu::onShow()
 {
-	/*
-	auto model = getModel();
+	auto model = getWorld();
 	auto canvas = getCanvas();
 
-	const auto& textures = model->getShaders()->getTextures()->getTextures();
+	//const auto& textures = model->getShaders()->getTextures()->getTextures();
 
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
-		auto mask = canvas->getMask();
-
-		for (const auto& t : textures) {
-			const auto str = t->getName();
-			const auto c_str = str.c_str();
-			if (ImGui::MenuItem(c_str)) {
-				model->getShaders()->getTextures()->setOnScreenTexture(t);
-			}
+		if (ImGui::MenuItem("OnScreen")) {
+			model->getRenderer()->setShowOffScreen(false);
 		}
-
+		if (ImGui::MenuItem("ParentId")) {
+			model->getRenderer()->setShowOffScreen(true);
+		}
 		ImGui::EndMenu();
 	}
-	*/
 }

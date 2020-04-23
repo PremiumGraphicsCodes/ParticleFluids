@@ -41,7 +41,7 @@ public:
 
 	Graphics::DrawableID getIdInTexCoord(const int x, const int y);
 
-	//Shader::TextureObject* getTexture() { return texture; }
+	TextureShaderScene* getTextureScene() { return texture; }
 
 private:
 	PointShaderScene pointBuffer;
@@ -52,7 +52,7 @@ private:
 	LineShader lineIdRenderer;
 	TriangleShader triangleIdRenderer;
 
-	TextureShaderScene texture;
+	TextureShaderScene* texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
 };
 	}
