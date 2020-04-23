@@ -8,24 +8,16 @@
 
 using namespace Crystal::Scene;
 
-void ScreenIdShaderScene::add(ParticleSystemScene* scene)
+ScreenIdShaderScene::ScreenIdShaderScene(const std::string& name) :
+	IShaderScene(name)
 {
-	const auto objectId = scene->getId();
-	const auto& particles = scene->getShape()->getParticles();
-	int particleId = 0;
-	PointBuffer parentIdBuffer;
-	parentIdBuffer.setMatrix(scene->getMatrix());
-	PointBuffer childIdBuffer;
-	childIdBuffer.setMatrix(scene->getMatrix());
-	for (auto p : particles) {
-		Graphics::DrawableID parentDid(objectId);
-		parentIdBuffer.add(p->getPosition(), parentDid.toColor(), p->getAttribute().size);
-		Graphics::DrawableID childDid(particleId++);
-		childIdBuffer.add(p->getPosition(), childDid.toColor(), p->getAttribute().size);
-	}
-	//parentIdViewModel.pointIdBuffers.push_back(parentIdBuffer);
-	//childIdViewModel.pointIdBuffers.push_back(childIdBuffer);
+}
 
+
+void ScreenIdShaderScene::add(PointShaderScene* scene)
+{
+	this->pointScenes.push_back(scene);
+	addChild(scene);
 }
 
 void ScreenIdShaderScene::add(WireFrameScene* scene)

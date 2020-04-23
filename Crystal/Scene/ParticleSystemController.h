@@ -16,11 +16,18 @@ public:
 
 	void updateView() override;
 
-	PointShaderScene* getView() { return view; }
+private:
+	void updateScreenView();
+
+	void updateParentIdView();
+
+	void updateChildIdView();
 
 private:
 	ParticleSystemScene* model;
 	PointShaderScene* view;
+	PointShaderScene* parentIdView;
+	PointShaderScene* childIdView;
 };
 
 	}

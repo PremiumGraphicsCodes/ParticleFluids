@@ -50,9 +50,9 @@ void ScreenIdShader::release(GLObjectFactory& factory)
 
 void ScreenIdShader::render(Camera* camera, const ScreenIdShaderScene& vm)
 {
-	const auto& pointBuffers = vm.pointIdBuffers;
-	const auto& lineBuffers = vm.lineIdBuffers;
-	const auto& triangleBuffers = vm.triangleIdBuffers;
+	//const auto& pointBuffers = vm.pointIdBuffers;
+	//const auto& lineBuffers = vm.lineIdBuffers;
+	//const auto& triangleBuffers = vm.triangleIdBuffers;
 
 	frameBufferObject->setTexture(*texture->getTextureObject());
 	//texture.bind();
