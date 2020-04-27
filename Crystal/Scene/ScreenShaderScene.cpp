@@ -82,3 +82,9 @@ void ScreenShaderScene::add(MaterialShaderScene* material)
 {
 	addChild(material);
 }
+
+void ScreenShaderScene::add(TextureShaderScene* texture)
+{
+	this->textureScenes.push_back(texture);
+	addChild(texture);
+}

@@ -16,7 +16,7 @@ void TextureController::createView(SceneShader* sceneShader, GLObjectFactory& fa
 	this->view = new TextureShaderScene(model->getName());
 	this->view->build(factory);
 	this->view->send(*model->getImage());
-	sceneShader->getScene()->screen.textureScenes.push_back(this->view);
+	sceneShader->getScene()->screen.add(this->view);
 }
 
 void TextureController::updateView()

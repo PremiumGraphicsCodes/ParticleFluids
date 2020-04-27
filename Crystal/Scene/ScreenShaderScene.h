@@ -22,8 +22,6 @@ public:
 	void release(Shader::GLObjectFactory& glFactory) override;
 
 	void render() override;
-
-	std::vector<TextureShaderScene*> textureScenes;
 	//std::vector<MaterialShaderScene*> materialScenes;
 
 	void add(PointShaderScene* point);
@@ -35,6 +33,8 @@ public:
 	void add(LightShaderScene* light);
 
 	void add(MaterialShaderScene* material);
+
+	void add(TextureShaderScene* texture);
 
 	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
 
@@ -48,6 +48,7 @@ private:
 	std::vector<PointShaderScene*> pointBuffers;
 	std::vector<LineShaderScene*> lineBuffers;
 	std::vector<SmoothShaderScene*> pmScenes;
+	std::vector<TextureShaderScene*> textureScenes;
 	CameraShaderScene* camera;
 };
 

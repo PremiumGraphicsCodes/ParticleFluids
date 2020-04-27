@@ -9,9 +9,7 @@ namespace Crystal {
 class CameraShaderScene : public IShaderScene
 {
 public:
-	explicit CameraShaderScene(const std::string& name) :
-		IShaderScene(name)
-	{}
+	explicit CameraShaderScene(const std::string& name);
 
 	bool build(Shader::GLObjectFactory& glFactory) { return true; }
 
@@ -19,12 +17,7 @@ public:
 
 	void render() {}
 
-	void update(const Graphics::Camera& camera)
-	{
-		this->projectionMatrix = camera.getProjectionMatrix();
-		this->modelViewMatrix = camera.getModelViewMatrix();
-		this->eyePosition = camera.getEye();
-	}
+	void update(const Graphics::Camera& camera);
 
 	Math::Matrix4df getProjectionMatrix() const { return projectionMatrix; }
 

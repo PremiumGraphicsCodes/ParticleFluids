@@ -17,7 +17,7 @@ void CameraController::createView(SceneShader* sceneShader, GLObjectFactory& fac
 	const auto& m = model->getCamera();
 	this->view = new CameraShaderScene(model->getName());
 	this->view->update(*m);
-	sceneShader->getScene()->screen.setCamera(this->view);
+	sceneShader->getScene()->setCamera(this->view);
 
 	//sceneShader->getScene()->screen.cameraScene()
 }

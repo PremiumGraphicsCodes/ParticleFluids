@@ -11,4 +11,12 @@ SceneShaderScene::SceneShaderScene(const std::string& name) :
 {
 	addChild(&screen);
 	addChild(&parentId);
+	addChild(&childId);
+}
+
+void SceneShaderScene::setCamera(CameraShaderScene* camera)
+{
+	screen.setCamera(camera);
+	parentId.setCamera(camera);
+	//addChild(camera);
 }

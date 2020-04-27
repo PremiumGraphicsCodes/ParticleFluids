@@ -18,10 +18,6 @@ public:
 
 	ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<Shape::ParticleSystem<ParticleAttribute>> shape);
 
-	//ParticleSystemScene(const int id, const Math::Vector3dd& position, const ParticleAttribute& attribute, const std::string& name);
-
-	//ParticleSystemScene(const int id, const std::vector<Math::Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name);
-
 	~ParticleSystemScene() {};
 
 	Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape.get(); }
@@ -40,15 +36,13 @@ public:
 
 	IShapeScene* clone() const override;
 
-	//ParticleAttribute getAttribute() const { return shape->getA}
-
 	void setAttribute(const ParticleAttribute& attribute);
 
-	ParticleSystemController getController() { return controller; }
+	ParticleSystemController* getController() { return controller.get(); }
 
 private:
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
-	ParticleSystemController controller;
+	std::unique_ptr< ParticleSystemController > controller;
 };
 
 	}

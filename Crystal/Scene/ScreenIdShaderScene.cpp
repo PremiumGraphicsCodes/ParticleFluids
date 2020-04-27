@@ -24,6 +24,7 @@ void ScreenIdShaderScene::render()
 
 void ScreenIdShaderScene::add(PointShaderScene* scene)
 {
+	scene->setCamera(camera);
 	this->pointScenes.push_back(scene);
 	addChild(scene);
 }
@@ -72,4 +73,9 @@ void ScreenIdShaderScene::add(PolygonMeshScene* scene)
 	}
 	//parentIdViewModel.triangleIdBuffers.push_back(buffer);
 
+}
+
+void ScreenIdShaderScene::setCamera(CameraShaderScene* camera)
+{
+	this->camera = camera;
 }

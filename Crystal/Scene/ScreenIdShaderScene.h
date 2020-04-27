@@ -28,10 +28,13 @@ public:
 
 	std::vector<PointShaderScene*> getPointScenes() const { return pointScenes; }
 
+	void setCamera(CameraShaderScene* camera);
+
 private:
 	std::vector<PointShaderScene*> pointScenes;
 	std::vector<LineBuffer> lineIdBuffers;
 	std::vector<LineBuffer> triangleIdBuffers;
+	CameraShaderScene* camera;
 };
 
 	}

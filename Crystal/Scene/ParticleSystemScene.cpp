@@ -8,34 +8,17 @@ using namespace Crystal::Scene;
 
 ParticleSystemScene::ParticleSystemScene() :
 	IShapeScene(-1, nullptr),
-	shape(nullptr),
-	controller(this)
-{}
+	shape(nullptr)
+{
+	controller = std::make_unique<ParticleSystemController>(this);
+}
 
 ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<ParticleSystem<ParticleAttribute>> shape) :
 	IShapeScene(id, name, shape.get()),
-	shape(std::move(shape)),
-	controller(this)
-{}
-/*
-ParticleSystemScene::ParticleSystemScene(const int id, const Vector3dd& position, const ParticleAttribute& attribute, const std::string& name) :
-	IShapeScene(id, name, shape.get()),
-	shape(std::move(shape)),
-	controller(this)
+	shape(std::move(shape))
 {
-	getShape()->add(position, attribute);
+	controller = std::make_unique<ParticleSystemController>(this);
 }
-
-ParticleSystemScene::ParticleSystemScene(const int id, const std::vector<Vector3dd>& positions, const ParticleAttribute& attribute, const std::string& name) :
-	IShapeScene(id, name, shape.get()),
-	shape(std::move(shape)),
-	controller(this)
-{
-	for (const auto& p : positions) {
-		getShape()->add(p, attribute);
-	}
-}
-*/
 
 Crystal::Math::Box3d ParticleSystemScene::getBoundingBox() const
 {
