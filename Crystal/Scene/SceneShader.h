@@ -51,9 +51,9 @@ public:
 private:
 	Shader::OnScreenRenderer renderer;
 
-	ScreenShader objectRenderer;
-	ScreenIdShader parentIdRenderer;
-	ScreenIdShader childIdRenderer;
+	ScreenShader* objectRenderer;
+	ScreenIdShader* parentIdRenderer;
+	ScreenIdShader* childIdRenderer;
 
 	SceneShaderScene scene;
 

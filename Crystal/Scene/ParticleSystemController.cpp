@@ -30,6 +30,13 @@ void ParticleSystemController::createView(SceneShader* sceneShader, GLObjectFact
 		this->parentIdView->build(glFactory);
 		sceneShader->getScene()->parentId.add(this->parentIdView);
 	}
+
+	{
+		this->childIdView = new PointShaderScene(model->getName());
+		this->childIdView->setShader(sceneShader->getObjectRenderer()->getPointShader());
+		this->childIdView->build(glFactory);
+		sceneShader->getScene()->childId.add(this->childIdView);
+	}
 	updateView();
 }
 
@@ -57,14 +64,20 @@ void ParticleSystemController::updateParentIdView()
 	for (auto p : particles) {
 		DrawableID parentDid(objectId);
 		parentIdBuffer.add(p->getPosition(), parentDid.toColor(), p->getAttribute().size);
-		//Graphics::DrawableID childDid(particleId++);
-		//childIdBuffer.add(p->getPosition(), childDid.toColor(), p->getAttribute().size);
 	}
 	parentIdView->send(parentIdBuffer);
 }
 
 void ParticleSystemController::updateChildIdView()
 {
-
+	const auto objectId = model->getId();
+	const auto& particles = model->getShape()->getParticles();
+	int particleId = 0;
+	PointBuffer buffer;
+	buffer.setMatrix(model->getMatrix());
+	for (auto p : particles) {
+		DrawableID childDid(particleId++);
+		buffer.add(p->getPosition(), childDid.toColor(), p->getAttribute().size);
+	}
+	childIdView->send(buffer);
 }
-

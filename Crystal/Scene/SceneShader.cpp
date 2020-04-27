@@ -10,6 +10,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 SceneShader::SceneShader() :
+	IShaderScene("SceneShader"),
 	showOffScreen(false),
 	camera(new Camera(
 		Vector3df(0, 0, 0),
@@ -17,27 +18,26 @@ SceneShader::SceneShader() :
 		Vector3df(0, 0, 1),
 		1.0f, 10.0f)),
 	scene("Scene"),
-	IShaderScene("SceneShader"),
-	objectRenderer("ObjectRenderer"),
-	parentIdRenderer("ParentIdRenderer"),
-	childIdRenderer("ChildIdRenderer")
+	objectRenderer(new ScreenShader("ObjectRenderer")),
+	parentIdRenderer(new ScreenIdShader("ParentIdRenderer")),
+	childIdRenderer(new ScreenIdShader("ChildIdRenderer"))
 {
 	//addChild(&renderer);
-	addChild(&objectRenderer);
+	addChild(objectRenderer);
 	addChild(&scene);
-	addChild(&parentIdRenderer);
-	addChild(&childIdRenderer);
+	addChild(parentIdRenderer);
+	addChild(childIdRenderer);
 }
 
 bool SceneShader::build(GLObjectFactory& factory)
 {
-	if (!objectRenderer.build(factory)) {
+	if (!objectRenderer->build(factory)) {
 		return false;
 	}
-	if (!parentIdRenderer.build(factory)) {
+	if (!parentIdRenderer->build(factory)) {
 		return false;
 	}
-	if (!childIdRenderer.build(factory)) {
+	if (!childIdRenderer->build(factory)) {
 		return false;
 	}
 
@@ -50,12 +50,11 @@ bool SceneShader::build(GLObjectFactory& factory)
 
 void SceneShader::render()
 {
-	objectRenderer.setBuffer(camera.get(), scene.screen);
-	objectRenderer.render();
-	parentIdRenderer.render(camera.get(), scene.parentId);
-	childIdRenderer.render(camera.get(), scene.childId);
+	objectRenderer->setBuffer(camera.get(), scene.screen);
+	objectRenderer->render();
+	parentIdRenderer->render(camera.get(), scene.parentId);
+	childIdRenderer->render(camera.get(), scene.childId);
 }
-
 
 void SceneShader::render(const int width, const int height)
 {
@@ -65,11 +64,11 @@ void SceneShader::render(const int width, const int height)
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	if (showOffScreen) {
-		auto texture = parentIdRenderer.getTextureScene()->getTextureObject();
+		auto texture = parentIdRenderer->getTextureScene()->getTextureObject();
 		renderer.render(*texture);
 	}
 	else {
-		auto texture = objectRenderer.getTextureScene()->getTextureObject();
+		auto texture = objectRenderer->getTextureScene()->getTextureObject();
 		renderer.render(*texture);
 	}
 }
