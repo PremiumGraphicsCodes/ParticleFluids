@@ -42,6 +42,8 @@ public:
 
 	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
 
+	CameraShaderScene* getCamera() const { return camera; }
+
 private:
 	LineShader* shader;
 	CameraShaderScene* camera;

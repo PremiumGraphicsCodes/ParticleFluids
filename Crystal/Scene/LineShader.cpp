@@ -45,7 +45,13 @@ void LineShader::release(GLObjectFactory& factory)
 
 void LineShader::render()
 {
+	const auto& projectionMatrix = glBuffer->getCamera()->getProjectionMatrix();
+	const auto& modelviewMatrix = glBuffer->getCamera()->getModelViewMatrix();
+
 	shader.bind();
+
+	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader.sendUniform(::modelViewMatrixLabel, modelviewMatrix);
 
 	shader.setLineWidth(glBuffer->lineWidth);
 	shader.enableDepthTest();
