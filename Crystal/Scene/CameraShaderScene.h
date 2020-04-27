@@ -23,15 +23,19 @@ public:
 	{
 		this->projectionMatrix = camera.getProjectionMatrix();
 		this->modelViewMatrix = camera.getModelViewMatrix();
+		this->eyePosition = camera.getEye();
 	}
 
 	Math::Matrix4df getProjectionMatrix() const { return projectionMatrix; }
 
 	Math::Matrix4df getModelViewMatrix() const { return modelViewMatrix; }
 
+	Math::Vector3df getEyePosition() const { return eyePosition; }
+
 private:
 	Math::Matrix4df projectionMatrix;
 	Math::Matrix4df modelViewMatrix;
+	Math::Vector3df eyePosition;
 };
 	}
 }

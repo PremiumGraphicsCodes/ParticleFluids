@@ -33,7 +33,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory) override;
 
-	void render(Graphics::Camera* camera, const ScreenIdShaderScene& vm);
+	void render(const ScreenIdShaderScene& vm);
 
 	void render() override;
 

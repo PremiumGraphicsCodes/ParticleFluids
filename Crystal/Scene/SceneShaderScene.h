@@ -17,6 +17,8 @@ public:
 
 	void render() {};
 
+	void setCamera(CameraShaderScene* camera) { screen.setCamera(camera); }
+
 	ScreenShaderScene screen;
 	ScreenIdShaderScene parentId;
 	ScreenIdShaderScene childId;

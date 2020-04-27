@@ -16,14 +16,14 @@ using namespace Crystal::Scene;
 
 ScreenShader::ScreenShader(const std::string& name) :
 	IShaderScene(name),
-	pointRenderer("PointRenderer"),
-	wireRenderer("LineRenderer"),
-	smoothRenderer("SmoothRenderer"),
+	pointRenderer(new PointShader("PointRenderer")),
+	wireRenderer(new LineShader("LineRenderer")),
+	smoothRenderer(new SmoothShader("SmoothRenderer")),
 	buffer("ScreenBuffer")
 {
-	addChild(&pointRenderer);
-	addChild(&wireRenderer);
-	addChild(&smoothRenderer);
+	addChild(pointRenderer);
+	addChild(wireRenderer);
+	addChild(smoothRenderer);
 
 	texture = new TextureShaderScene("ScreenTex");// = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
 	addChild(texture);
@@ -31,13 +31,13 @@ ScreenShader::ScreenShader(const std::string& name) :
 
 bool ScreenShader::build(GLObjectFactory& factory)
 {
-	if (!pointRenderer.build(factory)) {
+	if (!pointRenderer->build(factory)) {
 		return false;
 	}
-	if (!wireRenderer.build(factory)) {
+	if (!wireRenderer->build(factory)) {
 		return false;
 	}
-	if (!smoothRenderer.build(factory)) {
+	if (!smoothRenderer->build(factory)) {
 		return false;
 	}
 
@@ -53,9 +53,8 @@ void ScreenShader::release(GLObjectFactory& factory)
 	//TODO;
 }
 
-void ScreenShader::setBuffer(Camera* camera, const ScreenShaderScene& buffer)
+void ScreenShader::setBuffer(const ScreenShaderScene& buffer)
 {
-	this->camera = camera;
 	this->buffer = buffer;
 }
 
@@ -77,10 +76,6 @@ void ScreenShader::render()
 	if (mask.showPoints) {
 		const auto& pointBuffers = buffer.getPointBuffers();
 		for (auto pb : pointBuffers) {
-			//pb.csetCamera( *camera;
-			CameraShaderScene cameraScene("Camera");
-			cameraScene.update(*camera);
-			pb->setCamera(&cameraScene);
 			pb->render();
 		}
 	}
@@ -88,19 +83,15 @@ void ScreenShader::render()
 	if (mask.showLines) {
 		const auto& lineBuffers = buffer.getLineBuffers();
 		for (auto lb : lineBuffers) {
-			CameraShaderScene cameraScene("Camera");
-			cameraScene.update(*camera);
-			wireRenderer.setBuffer(lb);
-			wireRenderer.setCamera(cameraScene);
-			wireRenderer.render();
+			wireRenderer->setBuffer(lb);
+			wireRenderer->render();
 		}
 	}
 	if (mask.showTrianlges) {
 		const auto& pmScenes = buffer.getSmoothBuffers();
 		for (auto pm : pmScenes) {
-			pm->camera = *camera;
-			smoothRenderer.send(*pm);
-			smoothRenderer.render();
+			smoothRenderer->send(*pm);
+			smoothRenderer->render();
 		}
 	}
 	//texture.unbind();

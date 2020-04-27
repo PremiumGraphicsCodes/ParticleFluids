@@ -42,7 +42,7 @@ void ScreenIdShader::release(GLObjectFactory& factory)
 
 }
 
-void ScreenIdShader::render(Camera* camera, const ScreenIdShaderScene& vm)
+void ScreenIdShader::render(const ScreenIdShaderScene& vm)
 {
 	//const auto& pointBuffers = vm.pointIdBuffers;
 	//const auto& lineBuffers = vm.lineIdBuffers;
@@ -61,7 +61,7 @@ void ScreenIdShader::render(Camera* camera, const ScreenIdShaderScene& vm)
 	for (auto pb : pbs) {
 		//pb.csetCamera( *camera;
 		CameraShaderScene cameraScene("Camera");
-		cameraScene.update(*camera);
+		//cameraScene.update(*camera);
 		pb->setCamera(&cameraScene);
 		pb->render();
 	}

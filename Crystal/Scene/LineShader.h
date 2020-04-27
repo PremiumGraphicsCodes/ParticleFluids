@@ -25,8 +25,6 @@ public:
 
 	void setBuffer(LineShaderScene* buffer) { this->glBuffer = buffer; }
 
-	void setCamera(const CameraShaderScene& camera);
-
 	void render() override;
 
 private:

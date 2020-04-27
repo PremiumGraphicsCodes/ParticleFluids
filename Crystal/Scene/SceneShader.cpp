@@ -12,11 +12,6 @@ using namespace Crystal::Scene;
 SceneShader::SceneShader() :
 	IShaderScene("SceneShader"),
 	showOffScreen(false),
-	camera(new Camera(
-		Vector3df(0, 0, 0),
-		Vector3df(0, 0, -10.0),
-		Vector3df(0, 0, 1),
-		1.0f, 10.0f)),
 	scene("Scene"),
 	objectRenderer(new ScreenShader("ObjectRenderer")),
 	parentIdRenderer(new ScreenIdShader("ParentIdRenderer")),
@@ -45,15 +40,16 @@ bool SceneShader::build(GLObjectFactory& factory)
 		return false;
 	}
 
+
 	return true;
 }
 
 void SceneShader::render()
 {
-	objectRenderer->setBuffer(camera.get(), scene.screen);
+	objectRenderer->setBuffer(scene.screen);
 	objectRenderer->render();
-	parentIdRenderer->render(camera.get(), scene.parentId);
-	childIdRenderer->render(camera.get(), scene.childId);
+	parentIdRenderer->render(scene.parentId);
+	childIdRenderer->render(scene.childId);
 }
 
 void SceneShader::render(const int width, const int height)

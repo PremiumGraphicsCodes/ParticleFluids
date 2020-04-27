@@ -6,6 +6,14 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
+CameraScene::CameraScene(const int id, const std::string& name, Camera* camera) :
+	IScene(id, name),
+	camera(camera)
+{
+	controller = std::make_unique<CameraController>(this);
+}
+
+
 /*
 void CameraScene::fitCamera(const Box3d& boundingBox)
 {

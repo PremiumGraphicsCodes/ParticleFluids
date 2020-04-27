@@ -13,6 +13,7 @@
 namespace Crystal {
 	namespace Scene {
 		class LineShader;
+		class CameraShaderScene;
 
 class LineShaderScene : public IShaderScene
 {
@@ -25,7 +26,6 @@ public:
 
 	std::vector<unsigned int> indices;
 	Math::Matrix4df matrix;
-	Graphics::Camera camera;
 	float lineWidth;
 
 	explicit LineShaderScene(const std::string& name);
@@ -40,8 +40,11 @@ public:
 
 	void setShader(LineShader* shader) { this->shader = shader; }
 
+	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
+
 private:
 	LineShader* shader;
+	CameraShaderScene* camera;
 };
 
 	}

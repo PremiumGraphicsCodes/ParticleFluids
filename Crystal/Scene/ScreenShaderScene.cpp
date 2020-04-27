@@ -53,18 +53,21 @@ void ScreenShaderScene::render()
 
 void ScreenShaderScene::add(PointShaderScene* point)
 {
+	point->setCamera(camera);
 	this->pointBuffers.push_back(point);
 	addChild(point);
 }
 
 void ScreenShaderScene::add(LineShaderScene* line)
 {
+	line->setCamera(camera);
 	this->lineBuffers.push_back(line);
 	addChild(line);
 }
 
 void ScreenShaderScene::add(SmoothShaderScene* smooth)
 {
+	smooth->setCamera(camera);
 	this->pmScenes.push_back(smooth);
 	addChild(smooth);
 }

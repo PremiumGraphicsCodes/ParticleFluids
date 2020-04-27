@@ -19,7 +19,8 @@ std::string CameraRotateCommand::getName()
 bool CameraRotateCommand::execute(World* scene)
 {
 	Matrix3df matrix = args.matrix.getValue();
-	auto camera = scene->getRenderer()->getCamera();
+	auto camera = scene->getCamera()->getCamera();
 	camera->rotate(matrix);
+	scene->getCamera()->getController()->updateView();
 	return true;
 }

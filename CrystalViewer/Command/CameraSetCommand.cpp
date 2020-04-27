@@ -27,7 +27,7 @@ std::string CameraSetCommand::getName()
 
 bool CameraSetCommand::execute(World* world)
 {
-	auto camera = world->getRenderer()->getCamera();
+	auto camera = world->getCamera()->getCamera();
 	camera->setNear( std::any_cast<float>(args.near) );
 	camera->setFar( std::any_cast<float>(args.far) );
 	//camera->setTarget(  );

@@ -16,6 +16,7 @@ namespace Crystal {
 	}
 	namespace Scene {
 		class SmoothShader;
+		class CameraShaderScene;
 
 class SmoothBuffer
 {
@@ -56,7 +57,6 @@ public:
 	Shader::VertexBufferObject specularTexId;
 	int count = 0;
 	Math::Matrix4df matrix;
-	Graphics::Camera camera;
 
 	explicit SmoothShaderScene(const std::string& name);
 
@@ -70,8 +70,13 @@ public:
 
 	void setShader(SmoothShader* shader) { this->shader = shader; }
 
+	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
+
+	CameraShaderScene* getCamera() const { return camera; }
+
 private:
 	SmoothShader* shader;
+	CameraShaderScene* camera;
 };
 
 	}

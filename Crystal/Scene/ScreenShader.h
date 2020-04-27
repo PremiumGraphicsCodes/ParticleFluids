@@ -33,7 +33,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory);
 
-	void setBuffer(Graphics::Camera* camera, const ScreenShaderScene& buffer);
+	void setBuffer(const ScreenShaderScene& buffer);
 
 	void render();
 
@@ -56,24 +56,20 @@ public:
 
 	//Shader::TextureObject getTexture() { return texture; }
 
-	Graphics::Camera* getCamera() { return camera; }
+	PointShader* getPointShader() { return pointRenderer; }
 
-	PointShader* getPointShader() { return &pointRenderer; }
+	LineShader* getWireShader() { return wireRenderer; }
 
-	LineShader* getWireShader() { return &wireRenderer; }
-
-	SmoothShader* getSmoothShader() { return &smoothRenderer; }
+	SmoothShader* getSmoothShader() { return smoothRenderer; }
 
 	TextureShaderScene* getTextureScene() { return texture; }
 
 private:
-	PointShader pointRenderer;
-	LineShader wireRenderer;
-	SmoothShader smoothRenderer;
+	PointShader* pointRenderer;
+	LineShader* wireRenderer;
+	SmoothShader* smoothRenderer;
 
 	Mask mask;
-
-	Graphics::Camera* camera;
 
 	TextureShaderScene* texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;

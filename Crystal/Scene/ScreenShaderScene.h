@@ -36,6 +36,8 @@ public:
 
 	void add(MaterialShaderScene* material);
 
+	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
+
 	std::vector<PointShaderScene*> getPointBuffers() const { return pointBuffers; }
 
 	std::vector<LineShaderScene*> getLineBuffers() const { return lineBuffers; }
@@ -46,7 +48,7 @@ private:
 	std::vector<PointShaderScene*> pointBuffers;
 	std::vector<LineShaderScene*> lineBuffers;
 	std::vector<SmoothShaderScene*> pmScenes;
-
+	CameraShaderScene* camera;
 };
 
 	}

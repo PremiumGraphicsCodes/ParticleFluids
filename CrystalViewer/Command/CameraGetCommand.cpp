@@ -31,7 +31,7 @@ std::string CameraGetCommand::getName()
 
 bool CameraGetCommand::execute(World* scene)
 {
-	auto camera = scene->getRenderer()->getCamera();
+	auto camera = scene->getCamera()->getCamera();
 	results.near.setValue(camera->getNear());
 	results.far.setValue(camera->getFar());
 	results.eyePosition.setValue(camera->getEye());

@@ -36,15 +36,13 @@ public:
 
 	void render(const int width, const int height);
 
-	ScreenShader* getObjectRenderer() { return &objectRenderer; }
+	ScreenShader* getObjectRenderer() { return objectRenderer; }
 
-	ScreenIdShader* getParentIdRenderer() { return &parentIdRenderer; }
+	ScreenIdShader* getParentIdRenderer() { return parentIdRenderer; }
 
-	ScreenIdShader* getChildIdRenderer() { return &childIdRenderer; }
+	ScreenIdShader* getChildIdRenderer() { return childIdRenderer; }
 
 	void setShowOffScreen(const bool b) { this->showOffScreen = b; }
-
-	Graphics::Camera* getCamera() { return camera.get(); }
 
 	SceneShaderScene* getScene() { return &scene; }
 
@@ -58,8 +56,6 @@ private:
 	SceneShaderScene scene;
 
 	bool showOffScreen;
-
-	std::unique_ptr<Graphics::Camera> camera;
 };
 
 	}

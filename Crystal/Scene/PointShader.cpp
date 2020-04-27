@@ -47,7 +47,13 @@ void PointShader::release(GLObjectFactory& factory)
 
 void PointShader::send(const PointShaderScene& glBuffer)
 {
+	const auto& projectionMatrix = glBuffer.getCamera()->getProjectionMatrix();
+	const auto& modelviewMatrix = glBuffer.getCamera()->getModelViewMatrix();
+
 	shader.bind();
+
+	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader.sendUniform(::modelViewMatrixLabel, modelviewMatrix);
 
 	shader.sendVertexAttribute3df(::positionLabel, glBuffer.vbo.position);
 	shader.sendVertexAttribute4df(::colorLabel, glBuffer.vbo.color);
@@ -56,19 +62,6 @@ void PointShader::send(const PointShaderScene& glBuffer)
 	shader.unbind();
 
 	this->count = glBuffer.count;
-}
-
-void PointShader::send(const CameraShaderScene& camera)
-{
-	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix();
-
-	shader.bind();
-
-	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
-	shader.sendUniform(::modelViewMatrixLabel, modelviewMatrix);
-
-	shader.unbind();
 }
 
 void PointShader::render()

@@ -86,6 +86,16 @@ void World::init()
 		scenes[1]->addScene(s);
 	}
 
+	{
+		auto c = new Camera(
+			Vector3df(0, 0, 0),
+			Vector3df(0, 0, -10.0),
+			Vector3df(0, 0, 1),
+			1.0f, 10.0f);
+		camera = new CameraScene(getNextSceneId(), "MainCamera", c);
+
+		scenes[1]->addScene(camera);
+	}
 
 	renderer = std::make_unique<SceneShader>();
 

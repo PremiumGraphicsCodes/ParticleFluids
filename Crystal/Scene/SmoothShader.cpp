@@ -5,6 +5,8 @@
 
 #include "../Shader/GLObjectFactory.h"
 
+#include "CameraShaderScene.h"
+
 #include "MaterialShaderScene.h"
 
 #include <sstream>
@@ -86,9 +88,9 @@ void SmoothShader::release(GLObjectFactory& factory)
 
 void SmoothShader::send(const SmoothShaderScene& glBuffer)
 {
-	const auto& projectionMatrix = glBuffer.camera.getProjectionMatrix();
-	const auto& modelviewMatrix = glBuffer.camera.getModelViewMatrix() * matrix;
-	const auto& eyePos = glBuffer.camera.getEye();
+	const auto& projectionMatrix = glBuffer.getCamera()->getProjectionMatrix();
+	const auto& modelviewMatrix = glBuffer.getCamera()->getModelViewMatrix();
+	const auto& eyePos = glBuffer.getCamera()->getEyePosition();
 
 	shader.bind();
 

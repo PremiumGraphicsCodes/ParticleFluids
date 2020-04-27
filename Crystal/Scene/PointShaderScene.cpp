@@ -54,7 +54,6 @@ void PointShaderScene::send(const PointBuffer& buffer)
 void PointShaderScene::render()
 {
 	shader->send(*this);
-	shader->send(*camera);
 	shader->render();
 }
 

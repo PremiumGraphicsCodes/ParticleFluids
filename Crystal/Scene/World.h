@@ -8,6 +8,8 @@
 
 #include "SceneShader.h"
 
+#include "CameraScene.h"
+
 #include "../Shader/GLObjectFactory.h"
 
 #include <filesystem>
@@ -42,8 +44,11 @@ public:
 
 	SceneShader* getRenderer() { return renderer.get(); }
 
+	CameraScene* getCamera() { return camera; }
+
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
+	CameraScene* camera;
 
 	SceneIdProvider sceneIdProvider;
 	Shader::GLObjectFactory glFactory;

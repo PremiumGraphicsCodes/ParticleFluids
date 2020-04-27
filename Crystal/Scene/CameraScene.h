@@ -11,21 +11,19 @@ namespace Crystal {
 class CameraScene : public IScene
 {
 public:
-	CameraScene(const int id, const std::string& name, Graphics::Camera* camera) :
-		IScene(id, name),
-		camera(camera),
-		controller(this)
-	{}
+	CameraScene(const int id, const std::string& name, Graphics::Camera* camera);
 
 	~CameraScene() {};
 
 	Graphics::Camera* getCamera() const { return camera.get(); }
 
-	CameraController getController() { return controller; }
+	CameraController* getController() { return controller.get(); }
+
+	SceneType getType() const { return SceneType::CameraScene; }
 
 private:
 	std::unique_ptr< Graphics::Camera > camera;
-	CameraController controller;
+	std::unique_ptr< CameraController > controller;
 
 };
 

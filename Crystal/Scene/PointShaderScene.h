@@ -40,6 +40,8 @@ public:
 
 	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
 
+	CameraShaderScene* getCamera() const { return camera; }
+
 private:
 	PointShader* shader;
 	CameraShaderScene* camera;

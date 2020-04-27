@@ -18,12 +18,14 @@ std::string CameraTranslateCommand::getName()
 
 bool CameraTranslateCommand::execute(World* scene)
 {
-	auto camera = scene->getRenderer()->getCamera();
+	auto camera = scene->getCamera()->getCamera();
 	const Vector3df t = args.translate.getValue();
 	const auto& eye = camera->getEye();
 	const auto& target = camera->getTarget();
 	const auto& up = camera->getUp();
 	camera->lookAt(eye + t, target + t, up);
+	scene->getCamera()->getController()->updateView();
+
 	//camera->moveTarget(args.translate.getValue());
 	return true;
 }

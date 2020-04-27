@@ -21,8 +21,6 @@ public:
 
 	void send(const PointShaderScene& buffer);
 
-	void send(const CameraShaderScene& camera);
-
 	void render() override;
 
 private:
