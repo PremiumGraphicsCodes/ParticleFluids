@@ -46,6 +46,6 @@ void LineShaderScene::send(const LineBuffer& buffer)
 
 void LineShaderScene::render()
 {
-	shader->setBuffer(this);
+	shader->setScene(this);
 	shader->render();
 }

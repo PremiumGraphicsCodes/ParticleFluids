@@ -83,15 +83,15 @@ void ScreenShader::render()
 	if (mask.showLines) {
 		const auto& lineBuffers = buffer.getLineBuffers();
 		for (auto lb : lineBuffers) {
-			wireRenderer->setBuffer(lb);
-			wireRenderer->render();
+			lb->render();
 		}
 	}
 	if (mask.showTrianlges) {
 		const auto& pmScenes = buffer.getSmoothBuffers();
 		for (auto pm : pmScenes) {
-			smoothRenderer->send(*pm);
-			smoothRenderer->render();
+			pm->render();
+//			smoothRenderer->send(*pm);
+//			smoothRenderer->render();
 		}
 	}
 	//texture.unbind();

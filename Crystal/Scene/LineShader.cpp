@@ -45,21 +45,21 @@ void LineShader::release(GLObjectFactory& factory)
 
 void LineShader::render()
 {
-	const auto& projectionMatrix = glBuffer->getCamera()->getProjectionMatrix();
-	const auto& modelviewMatrix = glBuffer->getCamera()->getModelViewMatrix();
+	const auto& projectionMatrix = scene->getCamera()->getProjectionMatrix();
+	const auto& modelviewMatrix = scene->getCamera()->getModelViewMatrix();
 
 	shader.bind();
 
 	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
 	shader.sendUniform(::modelViewMatrixLabel, modelviewMatrix);
 
-	shader.setLineWidth(glBuffer->lineWidth);
+	shader.setLineWidth(scene->lineWidth);
 	shader.enableDepthTest();
 
-	shader.sendVertexAttribute3df(positionLabel, glBuffer->vbo.position);
-	shader.sendVertexAttribute4df(colorLabel, glBuffer->vbo.color);
+	shader.sendVertexAttribute3df(positionLabel, scene->vbo.position);
+	shader.sendVertexAttribute4df(colorLabel, scene->vbo.color);
 
-	shader.drawLines(glBuffer->indices);
+	shader.drawLines(scene->indices);
 
 	//shader->disableVertexAttribute("color");
 	//shader->disableVertexAttribute("position");

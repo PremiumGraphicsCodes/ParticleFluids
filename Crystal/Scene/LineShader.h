@@ -23,7 +23,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory) override;
 
-	void setBuffer(LineShaderScene* buffer) { this->glBuffer = buffer; }
+	void setScene(LineShaderScene* buffer) { this->scene = buffer; }
 
 	void render() override;
 
@@ -32,7 +32,7 @@ private:
 
 	std::string getBuiltInFsSource() const;
 
-	LineShaderScene* glBuffer;
+	LineShaderScene* scene;
 	Shader::ShaderObject shader;
 };
 
