@@ -21,11 +21,11 @@ namespace PG.CGStudio
         }
     }
 
-    public class Canvas3d : HwndHostPresenter
+    public class HwndHostPresenter3d : HwndHostPresenter
     {
         private System.Windows.Forms.Panel Panel { get; }
 
-        public Canvas3d()
+        public HwndHostPresenter3d()
         {
             var host = new WindowsFormsHost();
             Panel = new Panel3d();
@@ -51,7 +51,7 @@ namespace PG.CGStudio
             Panel.MouseWheel += Panel_MouseWheel;
         }
 
-        private static Canvas3d instance;
+        private static HwndHostPresenter3d instance;
         private UICtrl.IUICtrl ctrl;
 
         public UICtrl.IUICtrl UICtrl
@@ -60,7 +60,7 @@ namespace PG.CGStudio
             set { this.ctrl = value; }
         }
 
-        public static Canvas3d Instance
+        public static HwndHostPresenter3d Instance
         {
             get { return instance; }
         }
@@ -86,16 +86,7 @@ namespace PG.CGStudio
             World.Instance.Renderer.UnBind();
         }
 
-    /*
-    public Canvas3dView()
-    {
-        instance = this;
-        InitializeComponent();
-    }
-    */
-
-
-    private void Panel_MouseWheel(object sender, MouseEventArgs e)
+        private void Panel_MouseWheel(object sender, MouseEventArgs e)
         {
             ctrl.OnWheel(e.Delta / 1200.0f);
         }

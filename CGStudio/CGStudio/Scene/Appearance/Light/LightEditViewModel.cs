@@ -28,8 +28,8 @@ namespace PG.CGStudio.Light
         {
             var world = World.Instance;
             world.Scenes.SetLightScene(PointLightViewModel.Value, Name.Value, Id.Value);
-            Canvas3d.Instance.Update(world);
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Update(world);
+            HwndHostPresenter3d.Instance.Render();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

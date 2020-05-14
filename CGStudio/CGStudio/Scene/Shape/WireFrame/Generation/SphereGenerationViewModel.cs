@@ -22,22 +22,21 @@ namespace PG.CGStudio.Generation.WireFrame
         public AppearanceViewModel AppearanceViewModel { get; }
             = new AppearanceViewModel();
 
-        public SphereGenerationViewModel()
+        public SphereGenerationViewModel(World world)
         {
-            this.GenerationCommand.Subscribe(OnExecute);
+            this.GenerationCommand.Subscribe(() => OnExecute(world));
         }
 
-        private void OnExecute()
+        private void OnExecute(World world)
         {
             var builder = new WireFrameBuilder();
             builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);
 
-            var newId = World.Instance.Scenes.AddWireFrameScene(builder.ToWireFrame(), "WFSphere", AppearanceViewModel.Value, 1);
-//            World.Instance.
-            World.Instance.Camera.Fit();
+            var newId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "WFSphere", AppearanceViewModel.Value, 1);
+            world.Camera.Fit();
 
-            Canvas3d.Instance.BuildShader(World.Instance, newId);
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.BuildShader(world, newId);
+            HwndHostPresenter3d.Instance.Render();
         }
     }
 }

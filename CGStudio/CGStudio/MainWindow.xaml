@@ -133,11 +133,11 @@
 
             <host:HwndHostManager Grid.Column="1">
                 <Grid Margin="0,0,0,0">
-                    <cgstudio:Canvas3d>
-                        <cgstudio:Canvas3d.Adornment>
+                    <cgstudio:HwndHostPresenter3d>
+                        <cgstudio:HwndHostPresenter3d.Adornment>
                             <cgstudio:OpenGLView/>
-                        </cgstudio:Canvas3d.Adornment>
-                    </cgstudio:Canvas3d>
+                        </cgstudio:HwndHostPresenter3d.Adornment>
+                    </cgstudio:HwndHostPresenter3d>
                 </Grid>
             </host:HwndHostManager>
 

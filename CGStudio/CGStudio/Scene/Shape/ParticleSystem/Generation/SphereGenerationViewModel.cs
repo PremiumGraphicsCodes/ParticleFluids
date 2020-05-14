@@ -39,9 +39,9 @@ namespace PG.CGStudio.Generation.ParticleSystem
             var id = world.Scenes.AddParticleSystemScene(positions, "PSSphere", Appearance.Value, 1);
             world.Camera.Fit();
 
-            Canvas3d.Instance.BuildShader(World.Instance, id);
+            HwndHostPresenter3d.Instance.BuildShader(World.Instance, id);
 
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Render();
         }
     }
 }

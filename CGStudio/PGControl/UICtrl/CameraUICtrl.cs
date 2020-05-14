@@ -27,7 +27,7 @@ namespace PG.CGStudio.UICtrl
             //var scale = bb.Min.Distance(bb.Max) * 0.1;
             var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix.Transposed();
             World.Instance.Camera.Translate(new Vector3d(v.X, v.Y, v.Z));
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Render();
             prevPosition = position;
         }
 
@@ -49,14 +49,14 @@ namespace PG.CGStudio.UICtrl
             var m = matrix3 * matrix2 * matrix1;
             World.Instance.Camera.Rotate(m);
 
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Render();
             prevPosition = position;
         }
 
         public override void OnWheel(double dx)
         {
             World.Instance.Camera.Zoom((float)dx);
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Render();
         }
     }
 }

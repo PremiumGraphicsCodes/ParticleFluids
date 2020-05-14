@@ -37,8 +37,8 @@ namespace PG.CGStudio
         {
             World.Instance.New();
             World.Instance.Renderer.Build(World.Instance.Adapter);
-            Canvas3d.Instance.Update(World.Instance);
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Update(World.Instance);
+            HwndHostPresenter3d.Instance.Render();
         }
 
         private void OnOpen()
@@ -92,8 +92,8 @@ namespace PG.CGStudio
                 if(Import(dialog.FileName))
                 {
                     World.Instance.Scenes.Sync();
-                    Canvas3d.Instance.Update(World.Instance);
-                    Canvas3d.Instance.Render();
+                    HwndHostPresenter3d.Instance.Update(World.Instance);
+                    HwndHostPresenter3d.Instance.Render();
                     MessageBox.Show("Import Suceeded");                    
                 }
                 else

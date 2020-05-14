@@ -33,7 +33,7 @@ namespace PG.CGStudio.UICtrl
         {
             var model = World.Instance.Adapter;
 
-            var pickedId = Canvas3d.Instance.GetObjectId(position);
+            var pickedId = HwndHostPresenter3d.Instance.GetObjectId(position);
             var parentId = pickedId.parentId;
 
             if (parentId != 0)
@@ -43,8 +43,8 @@ namespace PG.CGStudio.UICtrl
                 command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
                 command.Execute(model);
                 //command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
-                Canvas3d.Instance.Update(World.Instance);
-                Canvas3d.Instance.Render();
+                HwndHostPresenter3d.Instance.Update(World.Instance);
+                HwndHostPresenter3d.Instance.Render();
 
                 pickedIds.Add(pickedId);
 

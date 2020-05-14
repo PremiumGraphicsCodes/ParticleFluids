@@ -35,8 +35,8 @@ namespace PG.CGStudio.Generation.WireFrame
             World.Instance.Scenes.Sync();
             World.Instance.Camera.Fit();
 
-            Canvas3d.Instance.Update(World.Instance);
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Update(World.Instance);
+            HwndHostPresenter3d.Instance.Render();
         }
     }
 }

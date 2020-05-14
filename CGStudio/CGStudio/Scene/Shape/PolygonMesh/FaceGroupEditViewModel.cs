@@ -32,8 +32,8 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         {
             PG.CLI.Command.Set(World.Instance.Adapter, PG.SetLabels.NameLabel, Id.Value, Name.Value);
             PG.CLI.Command.Set(World.Instance.Adapter, PG.SetLabels.MaterialNameLabel, Id.Value, MaterialName.Value);
-            Canvas3d.Instance.Update(World.Instance);
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Update(World.Instance);
+            HwndHostPresenter3d.Instance.Render();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

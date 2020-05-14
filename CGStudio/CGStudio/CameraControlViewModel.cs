@@ -31,21 +31,21 @@ namespace PG.CGStudio
         private void OnXY()
         {
             World.Instance.Camera.SetXY();
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Render();
         }
 
         private void OnYZ()
         {
             var command = new PG.CLI.Command(CameraLabels.CameraYZCommandLabel);
             command.Execute(World.Instance.Adapter);
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Render();
         }
 
         private void OnZX()
         {
             var command = new PG.CLI.Command(CameraLabels.CameraZXCommandLabel);
             command.Execute(World.Instance.Adapter);
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Render();
 
         }
 
@@ -57,7 +57,7 @@ namespace PG.CGStudio
         private void OnFit()
         {
             World.Instance.Camera.Fit();
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Render();
         }
     }
 }

@@ -35,8 +35,8 @@ namespace PG.CGStudio.Scene.Shape.Trim
 
             //World.Instance.Items.Clear();
 
-            Canvas3d.Instance.Update(World.Instance);
-            Canvas3d.Instance.Render();
+            HwndHostPresenter3d.Instance.Update(World.Instance);
+            HwndHostPresenter3d.Instance.Render();
 
             World.Instance.Scenes.Sync();
         }
