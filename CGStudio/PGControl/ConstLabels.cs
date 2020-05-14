@@ -260,6 +260,12 @@ namespace PG {
 		public const string MatrixLabel = "Matrix";
 	}
 
+	public class ShaderBuildLabels
+	{
+		public const string CommandNameLabel = "ShaderBuild";
+		public const string IdLabel = "Id";
+	}
+
 	public class ShapeSelectLabels
 	{
 		public const string CommandNameLabel = "ShapeSelectCommand";

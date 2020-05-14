@@ -36,11 +36,11 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 var pos = sphere.GetPosition(1.0,u,v);
                 positions.Add(pos);
             }
-            World.Instance.Scenes.AddParticleSystemScene(positions, "PSSphere", Appearance.Value, 1);
-            World.Instance.Scenes.Sync();
+            var id = World.Instance.Scenes.AddParticleSystemScene(positions, "PSSphere", Appearance.Value, 1);
             World.Instance.Camera.Fit();
 
-            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.BuildShader(World.Instance, id);
+
             Canvas3d.Instance.Render();
         }
     }

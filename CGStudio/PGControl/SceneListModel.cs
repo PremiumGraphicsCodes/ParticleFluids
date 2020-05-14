@@ -39,6 +39,15 @@ namespace PG.Scene
             command.SetArg(PG.ParticleSystemCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.ParticleSystemCreateLabels.NewIdLabel);
+
+            //command.Create(PG.ShaderBuildLabels.CommandNameLabel);
+            //command.SetArg(PG.ShaderBuildLabels.IdLabel, newId);
+            //command.Execute(adapter);
+
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            Scenes.Add(scene);
             return newId;
         }
 

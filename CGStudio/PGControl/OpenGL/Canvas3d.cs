@@ -75,16 +75,27 @@ namespace PG.CGStudio
             World.Instance.Renderer.Update(model.Adapter);
         }
 
-        /*
-        public Canvas3dView()
+        public void BuildShader(World world, int id)
         {
-            instance = this;
-            InitializeComponent();
+            var command = new PG.CLI.Command();
+            command.Create(PG.ShaderBuildLabels.CommandNameLabel);
+            command.SetArg(PG.ShaderBuildLabels.IdLabel, id);
+
+            World.Instance.Renderer.Bind();
+            command.Execute(world.Adapter);
+            World.Instance.Renderer.UnBind();
         }
-        */
+
+    /*
+    public Canvas3dView()
+    {
+        instance = this;
+        InitializeComponent();
+    }
+    */
 
 
-        private void Panel_MouseWheel(object sender, MouseEventArgs e)
+    private void Panel_MouseWheel(object sender, MouseEventArgs e)
         {
             ctrl.OnWheel(e.Delta / 1200.0f);
         }
