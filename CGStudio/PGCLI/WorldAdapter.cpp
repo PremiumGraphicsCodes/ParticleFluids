@@ -10,6 +10,8 @@ using namespace PG::CLI;
 WorldAdapter::WorldAdapter() :
 	instance(new Crystal::Scene::World())
 {
+
+//	instance->getCamera()->getController()->createView();
 }
 
 WorldAdapter::~WorldAdapter()
