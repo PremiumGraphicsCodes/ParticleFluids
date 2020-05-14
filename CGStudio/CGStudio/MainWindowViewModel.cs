@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+using Unity;
 
 namespace PG.CGStudio
 {
@@ -20,7 +21,7 @@ namespace PG.CGStudio
             }
         }
 
-        public MainWindowViewModel(IRegionManager regionManager)
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
         {
             instance = this;
 

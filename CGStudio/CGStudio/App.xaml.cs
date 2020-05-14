@@ -22,16 +22,16 @@ namespace PG.CGStudio
 {
     public partial class App : PrismApplication
     {
-        private MainModel model;
-
         protected override Window CreateShell()
         {
-            this.model = new MainModel();
             return Container.Resolve<MainWindow>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            World.CreateInstance();
+            containerRegistry.RegisterInstance<World>(World.Instance);
+
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.CylinderGenerationView>("PSCylinderGeneration");

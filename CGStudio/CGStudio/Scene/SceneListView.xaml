@@ -6,11 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PG.CGStudio"
              xmlns:object="clr-namespace:PG.CGStudio.Object"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
         Width="300">
-    <UserControl.DataContext>
-        <local:SceneListViewModel/>
-    </UserControl.DataContext>
     <TreeView ItemsSource="{Binding Items}">
         <i:Interaction.Behaviors>
             <object:SceneListViewBehavior/>

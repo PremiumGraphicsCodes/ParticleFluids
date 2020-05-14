@@ -20,8 +20,11 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public SphereGenerationViewModel()
+        private readonly World world;
+
+        public SphereGenerationViewModel(World world)
         {
+            this.world = world;
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 
