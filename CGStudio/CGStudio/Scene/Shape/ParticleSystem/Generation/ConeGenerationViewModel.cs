@@ -14,12 +14,12 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public ConeGenerationViewModel()
+        public ConeGenerationViewModel(World world)
         {
-            GenerationCommand.Subscribe(OnGenerate);
+            GenerationCommand.Subscribe(() => OnGenerate(world));
         }
 
-        private void OnGenerate()
+        private void OnGenerate(World world)
         {
             var cone = ConeViewModel.Value;
         }

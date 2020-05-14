@@ -20,12 +20,12 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public AppearanceViewModel Appearance { get; }
             = new AppearanceViewModel();
 
-        public CylinderGenerationViewModel()
+        public CylinderGenerationViewModel(World world)
         {
-            this.GenerationCommand.Subscribe(OnGenerate);
+            this.GenerationCommand.Subscribe(() => OnGenerate(world));
         }
 
-        private void OnGenerate()
+        private void OnGenerate(World world)
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();
@@ -38,11 +38,10 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-            World.Instance.Scenes.AddParticleSystemScene(positions, "PSCylinder", Appearance.Value, 1);//, Appearance.Value, "PSCylinder");
-            World.Instance.Scenes.Sync();
-            World.Instance.Camera.Fit();
+            var newId = world.Scenes.AddParticleSystemScene(positions, "PSCylinder", Appearance.Value, 1);//, Appearance.Value, "PSCylinder");
+            world.Camera.Fit();
 
-            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.BuildShader(world, newId);
             Canvas3d.Instance.Render();
         }
     }

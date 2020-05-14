@@ -5,11 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Scene.Shape.ParticleSystem.Generation"
              xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
-             xmlns:ps="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
+             xmlns:ps="clr-namespace:PG.CGStudio.Generation.ParticleSystem"             
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
-    <UserControl.DataContext>
-        <local:CircleGenerationViewModel/>
-    </UserControl.DataContext>
     <StackPanel>
         <math:Circle3dView DataContext="{Binding CircleViewModel}"/>
         <StackPanel Orientation="Horizontal">

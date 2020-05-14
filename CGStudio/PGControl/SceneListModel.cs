@@ -62,6 +62,11 @@ namespace PG.Scene
             command.SetArg(PG.WireFrameCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.WireFrameCreateLabels.NewIdLabel);
+
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            Scenes.Add(scene);
             return newId;
         }
 

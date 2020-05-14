@@ -23,7 +23,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
 
         public BoxGenerationViewModel(World world)
         {
-            this.GenerationCommand.Subscribe(_ => OnGenerate(world));
+            this.GenerationCommand.Subscribe(() => OnGenerate(world));
         }
 
         private void OnGenerate(World world)

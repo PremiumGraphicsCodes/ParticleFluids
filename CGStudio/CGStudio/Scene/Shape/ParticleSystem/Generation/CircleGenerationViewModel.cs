@@ -20,12 +20,12 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
         public AppearanceViewModel AppearanceViewModel { get; }
             = new AppearanceViewModel();
 
-        public CircleGenerationViewModel()
+        public CircleGenerationViewModel(World world)
         {
-            GenerationCommand.Subscribe(OnGenerate);
+            GenerationCommand.Subscribe(() => OnGenerate(world));
         }
 
-        private void OnGenerate()
+        private void OnGenerate(World world)
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();
@@ -36,11 +36,10 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
                 var pos = circle.GetPosition(u);
                 positions.Add(pos);
             }
-            World.Instance.Scenes.AddParticleSystemScene(positions, "PSCircle", AppearanceViewModel.Value, 1);
-            World.Instance.Scenes.Sync();
-            World.Instance.Camera.Fit();
+            var newId = world.Scenes.AddParticleSystemScene(positions, "PSCircle", AppearanceViewModel.Value, 1);
+            world.Camera.Fit();
 
-            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.BuildShader(world, newId);
             Canvas3d.Instance.Render();
         }
     }
