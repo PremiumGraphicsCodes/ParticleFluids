@@ -227,6 +227,7 @@
     <ClInclude Include="Public\WireFrameCreateLabels.h" />
     <ClInclude Include="SetCommand.h" />
     <ClInclude Include="SetMatrixCommand.h" />
+    <ClInclude Include="ShaderSendCommand.h" />
     <ClInclude Include="ShapeSelectCommand.h" />
     <ClInclude Include="STLFileExportCommand.h" />
     <ClInclude Include="STLFileImportCommand.h" />
@@ -270,6 +271,7 @@
     <ClCompile Include="SceneGetCommand.cpp" />
     <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="SetMatrixCommand.cpp" />
+    <ClCompile Include="ShaderSendCommand.cpp" />
     <ClCompile Include="ShapeSelectCommand.cpp" />
     <ClCompile Include="STLFileExportCommand.cpp" />
     <ClCompile Include="STLFileImportCommand.cpp" />
