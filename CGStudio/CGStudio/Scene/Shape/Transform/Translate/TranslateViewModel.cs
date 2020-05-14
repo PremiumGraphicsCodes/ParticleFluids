@@ -25,7 +25,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public TranslateViewModel()
         {
-            HwndHostPresenter3d.Instance.UICtrl = ShapeSelectViewModel.Picker;
+            HwndHostPresenter3d.Instance.Canvas.UICtrl = ShapeSelectViewModel.Picker;
             ShapeSelectViewModel.Picker.AddAction(OnSelected);
 
             //this.ShapeId.Subscribe(OnSelected);
@@ -37,7 +37,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
         {
             var uiCtrl = new TranslateUICtrl(this);
             uiCtrl.Sensivity = 1.0;
-            HwndHostPresenter3d.Instance.UICtrl = uiCtrl;
+            HwndHostPresenter3d.Instance.Canvas.UICtrl = uiCtrl;
         }
 
         public void SetMatrix(bool doRender)

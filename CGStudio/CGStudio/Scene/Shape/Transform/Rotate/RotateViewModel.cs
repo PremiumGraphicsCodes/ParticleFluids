@@ -42,7 +42,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
             var center = World.Instance.Scenes.GetCenter(id.parentId);
             CenterViewModel.Value = center;
-            HwndHostPresenter3d.Instance.UICtrl = new RotateUICtrl(this);
+            HwndHostPresenter3d.Instance.Canvas.UICtrl = new RotateUICtrl(this);
         }
 
 

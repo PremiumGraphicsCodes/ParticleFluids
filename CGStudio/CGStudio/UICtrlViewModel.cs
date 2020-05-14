@@ -19,12 +19,12 @@ namespace PG.CGStudio
 
         private void OnCameraUICtrl()
         {
-            HwndHostPresenter3d.Instance.UICtrl = new CameraUICtrl();
+            HwndHostPresenter3d.Instance.Canvas.UICtrl = new CameraUICtrl();
         }
 
         private void OnPickUICtrl()
         {
-            HwndHostPresenter3d.Instance.UICtrl = new PickUICtrl(10, Core.SceneType.AllScene);
+            HwndHostPresenter3d.Instance.Canvas.UICtrl = new PickUICtrl(10, Core.SceneType.AllScene);
         }
     }
 }

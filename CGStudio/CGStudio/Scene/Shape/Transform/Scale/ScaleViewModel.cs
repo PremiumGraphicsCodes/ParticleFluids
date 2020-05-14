@@ -42,7 +42,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             var center = World.Instance.Scenes.GetCenter(id.parentId);
             this.CenterViewModel.Value = center;
-            HwndHostPresenter3d.Instance.UICtrl = new ScaleUICtrl(this);
+            HwndHostPresenter3d.Instance.Canvas.UICtrl = new ScaleUICtrl(this);
         }
 
         private void OnOk()

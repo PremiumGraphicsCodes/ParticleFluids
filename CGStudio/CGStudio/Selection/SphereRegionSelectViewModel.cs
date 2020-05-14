@@ -32,7 +32,7 @@ namespace PG.CGStudio.Selection
         {
             var picker = new PickUICtrl(10, SceneType.AllScene);
             picker.AddAction(OnPicked);
-            HwndHostPresenter3d.Instance.UICtrl = picker;
+            HwndHostPresenter3d.Instance.Canvas.UICtrl = picker;
         }
 
         private void OnPicked(ObjectId id)
@@ -56,7 +56,7 @@ namespace PG.CGStudio.Selection
 
             spheres.Add(sphere);
 
-            HwndHostPresenter3d.Instance.UICtrl = new CameraUICtrl();
+            HwndHostPresenter3d.Instance.Canvas.UICtrl = new CameraUICtrl();
         }
     }
 }

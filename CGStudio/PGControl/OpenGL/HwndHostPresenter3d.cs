@@ -21,9 +21,27 @@ namespace PG.CGStudio
         }
     }
 
+    public class Canvas3d
+    {
+        private UICtrl.IUICtrl ctrl;
+        public UICtrl.IUICtrl UICtrl
+        {
+            get { return ctrl; }
+            set { this.ctrl = value; }
+        }
+
+        public Canvas3d()
+        {
+            this.ctrl = new UICtrl.CameraUICtrl();
+        }
+    }
+
     public class HwndHostPresenter3d : HwndHostPresenter
     {
         private System.Windows.Forms.Panel Panel { get; }
+
+        public Canvas3d Canvas { get; }
+            = new Canvas3d();
 
         public HwndHostPresenter3d()
         {
@@ -42,7 +60,6 @@ namespace PG.CGStudio
         private void Host_Initialized(object sender, EventArgs e)
         {
             World.Instance.CreateRenderer(Panel.Handle);
-            this.ctrl = new UICtrl.CameraUICtrl();
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;
@@ -52,13 +69,6 @@ namespace PG.CGStudio
         }
 
         private static HwndHostPresenter3d instance;
-        private UICtrl.IUICtrl ctrl;
-
-        public UICtrl.IUICtrl UICtrl
-        {
-            get { return ctrl; }
-            set { this.ctrl = value; }
-        }
 
         public static HwndHostPresenter3d Instance
         {
@@ -88,7 +98,7 @@ namespace PG.CGStudio
 
         private void Panel_MouseWheel(object sender, MouseEventArgs e)
         {
-            ctrl.OnWheel(e.Delta / 1200.0f);
+            Canvas.UICtrl.OnWheel(e.Delta / 1200.0f);
         }
 
         private void Panel_MouseUp(object sender, MouseEventArgs e)
@@ -96,11 +106,11 @@ namespace PG.CGStudio
             var p = PositionInScreen(e.Location);
             if (e.Button == MouseButtons.Left)
             {
-                ctrl.OnLeftButtonUp(p);
+                Canvas.UICtrl.OnLeftButtonUp(p);
             }
             else if (e.Button == MouseButtons.Right)
             {
-                ctrl.OnRightButtonUp(p);
+                Canvas.UICtrl.OnRightButtonUp(p);
             }
         }
 
@@ -109,11 +119,11 @@ namespace PG.CGStudio
             var p = PositionInScreen(e.Location);
             if (e.Button == MouseButtons.Left)
             {
-                ctrl.OnLeftButtonDragging(p);
+                Canvas.UICtrl.OnLeftButtonDragging(p);
             }
             else if (e.Button == MouseButtons.Right)
             {
-                ctrl.OnRightButtonDragging(p);
+                Canvas.UICtrl.OnRightButtonDragging(p);
             }
         }
 
@@ -122,11 +132,11 @@ namespace PG.CGStudio
             var p = PositionInScreen(e.Location);
             if (e.Button == MouseButtons.Left)
             {
-                ctrl.OnLeftButtonDown(p);
+                Canvas.UICtrl.OnLeftButtonDown(p);
             }
             else if (e.Button == MouseButtons.Right)
             {
-                ctrl.OnRightButtonDown(p);
+                Canvas.UICtrl.OnRightButtonDown(p);
             }
         }
 

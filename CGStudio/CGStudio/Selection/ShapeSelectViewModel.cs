@@ -26,7 +26,7 @@ namespace PG.CGStudio.Object.Select
 
         private void OnPickUI()
         {
-            HwndHostPresenter3d.Instance.UICtrl = Picker;
+            HwndHostPresenter3d.Instance.Canvas.UICtrl = Picker;
         }
 
         private void OnPicked(ObjectId id)
