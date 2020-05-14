@@ -8,6 +8,8 @@
 #include "../Graphics/Camera.h"
 #include "../Shader/GLObjectFactory.h"
 
+#include "IController.h"
+
 namespace Crystal {
 	namespace Scene {
 
@@ -71,6 +73,8 @@ public:
 	std::list<IScene*> getChildren() const { return children; }
 
 	bool isLeaf() const { return children.empty(); }
+
+	virtual IController* getController() = 0;
 
 protected:
 	std::string name;

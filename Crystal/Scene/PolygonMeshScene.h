@@ -43,7 +43,7 @@ public:
 
 	IShapeScene* clone() const override;
 
-	PolygonMeshController getController() { return controller; }
+	IController* getController() override { return &controller; }
 
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;

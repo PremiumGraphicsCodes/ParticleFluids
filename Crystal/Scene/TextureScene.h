@@ -21,7 +21,8 @@ public:
 
 	Graphics::Image* getImage() { return image.get(); }
 
-	TextureController getController() { return controller; }
+	//TextureController getController() { return controller; }
+	IController* getController() override { return &controller; }
 
 private:
 	std::unique_ptr<Graphics::Image> image;
