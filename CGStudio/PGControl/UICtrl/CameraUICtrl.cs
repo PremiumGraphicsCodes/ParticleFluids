@@ -12,12 +12,22 @@ namespace PG.CGStudio.UICtrl
             this.prevPosition = new Vector2d();
         }
 
-        public override void OnLeftButtonDown(Vector2d position)
+        public void OnKeyDown(Key key)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnKeyUp(Key key)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnLeftButtonDown(Vector2d position)
         {
             prevPosition = position;
         }
 
-        public override void OnLeftButtonDragging(Vector2d position)
+        public void OnLeftButtonDragging(Vector2d position)
         {
             var matrix = World.Instance.Camera.GetRotationMatrix();
 
@@ -31,12 +41,32 @@ namespace PG.CGStudio.UICtrl
             prevPosition = position;
         }
 
-        public override void OnRightButtonDown(Vector2d position)
+        public void OnLeftButtonUp(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnMiddleButtonDown(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnMiddleButtonDragging(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnMiddleButtonUp(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnRightButtonDown(Vector2d position)
         {
             this.prevPosition = position;
         }
 
-        public override void OnRightButtonDragging(Vector2d position)
+        public void OnRightButtonDragging(Vector2d position)
         {
             var matrix = World.Instance.Camera.GetRotationMatrix();
 
@@ -53,7 +83,12 @@ namespace PG.CGStudio.UICtrl
             prevPosition = position;
         }
 
-        public override void OnWheel(double dx)
+        public void OnRightButtonUp(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnWheel(double dx)
         {
             World.Instance.Camera.Zoom((float)dx);
             HwndHostPresenter3d.Instance.Render();

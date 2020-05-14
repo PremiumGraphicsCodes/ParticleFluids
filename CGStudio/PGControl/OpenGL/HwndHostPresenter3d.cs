@@ -6,6 +6,8 @@ using System.Windows.Forms.Integration;
 using HwndExtensions.Host;
 using PG.Core.Math;
 using PG.Core;
+using PG.CGStudio.UICtrl;
+using System.Windows.Input;
 
 namespace PG.CGStudio
 {
@@ -21,7 +23,7 @@ namespace PG.CGStudio
         }
     }
 
-    public class Canvas3d
+    public class Canvas3d : IUICtrl
     {
         private UICtrl.IUICtrl ctrl;
         public UICtrl.IUICtrl UICtrl
@@ -33,6 +35,66 @@ namespace PG.CGStudio
         public Canvas3d()
         {
             this.ctrl = new UICtrl.CameraUICtrl();
+        }
+
+        public void OnLeftButtonDown(Vector2d position)
+        {
+            this.ctrl.OnLeftButtonDown(position);
+        }
+
+        public void OnLeftButtonDragging(Vector2d position)
+        {
+            this.ctrl.OnLeftButtonDragging(position);
+        }
+
+        public void OnLeftButtonUp(Vector2d position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnRightButtonDown(Vector2d position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnRightButtonDragging(Vector2d position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnRightButtonUp(Vector2d position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnMiddleButtonDown(Vector2d position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnMiddleButtonDragging(Vector2d position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnMiddleButtonUp(Vector2d position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnWheel(double dx)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnKeyDown(Key key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnKeyUp(Key key)
+        {
+            this.UICtrl.OnKeyUp(key);
         }
     }
 
@@ -96,12 +158,12 @@ namespace PG.CGStudio
             World.Instance.Renderer.UnBind();
         }
 
-        private void Panel_MouseWheel(object sender, MouseEventArgs e)
+        private void Panel_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             Canvas.UICtrl.OnWheel(e.Delta / 1200.0f);
         }
 
-        private void Panel_MouseUp(object sender, MouseEventArgs e)
+        private void Panel_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             var p = PositionInScreen(e.Location);
             if (e.Button == MouseButtons.Left)
@@ -114,7 +176,7 @@ namespace PG.CGStudio
             }
         }
 
-        private void Panel_MouseMove(object sender, MouseEventArgs e)
+        private void Panel_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             var p = PositionInScreen(e.Location);
             if (e.Button == MouseButtons.Left)
@@ -127,7 +189,7 @@ namespace PG.CGStudio
             }
         }
 
-        private void Panel_MouseDown(object sender, MouseEventArgs e)
+        private void Panel_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             var p = PositionInScreen(e.Location);
             if (e.Button == MouseButtons.Left)

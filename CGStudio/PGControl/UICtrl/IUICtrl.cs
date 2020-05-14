@@ -3,31 +3,31 @@ using System.Windows.Input;
 
 namespace PG.CGStudio.UICtrl
 {
-    public abstract class IUICtrl
+    public interface IUICtrl
     {
-        public virtual void OnLeftButtonDown(Vector2d position) { }
+        void OnLeftButtonDown(Vector2d position);
 
-        public virtual void OnLeftButtonDragging(Vector2d position) { }
+        void OnLeftButtonDragging(Vector2d position);
 
-        public virtual void OnLeftButtonUp(Vector2d position) { }
+        void OnLeftButtonUp(Vector2d position);
 
-        public virtual void OnRightButtonDown(Vector2d position) { }
+        void OnRightButtonDown(Vector2d position);
 
-        public virtual void OnRightButtonDragging(Vector2d position) { }
+        void OnRightButtonDragging(Vector2d position);
 
-        public virtual void OnRightButtonUp(Vector2d position) { }
+        void OnRightButtonUp(Vector2d position);
 
-        public virtual void OnMiddleButtonDown(Vector2d position) { }
+        void OnMiddleButtonDown(Vector2d position);
 
-        public virtual void OnMiddleButtonDragging(Vector2d position) { }
+        void OnMiddleButtonDragging(Vector2d position);
 
-        public virtual void OnMiddleButtonUp(Vector2d position) { }
+        void OnMiddleButtonUp(Vector2d position);
 
-        public virtual void OnWheel(double dx) { }
+        void OnWheel(double dx);
 
-        public virtual void OnKeyDown(Key key) { }
+        void OnKeyDown(Key key);
 
-        public virtual void OnKeyUp(Key key) { }
+        void OnKeyUp(Key key);
     }
 
 }

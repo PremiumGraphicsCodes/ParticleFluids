@@ -2,6 +2,7 @@
 using PG.Core.Math;
 using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using Labels = PG.PickLabels;
 
 namespace PG.CGStudio.UICtrl
@@ -29,7 +30,17 @@ namespace PG.CGStudio.UICtrl
             actions.Add(action);
         }
 
-        public override void OnLeftButtonDown(Vector2d position)
+        public void OnKeyDown(Key key)
+        {
+            ;
+        }
+
+        public void OnKeyUp(Key key)
+        {
+            ;
+        }
+
+        public void OnLeftButtonDown(Vector2d position)
         {
             var model = World.Instance.Adapter;
 
@@ -54,6 +65,51 @@ namespace PG.CGStudio.UICtrl
                 }
             }
 
+        }
+
+        public void OnLeftButtonDragging(Vector2d position)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnLeftButtonUp(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnMiddleButtonDown(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnMiddleButtonDragging(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnMiddleButtonUp(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnRightButtonDown(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnRightButtonDragging(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnRightButtonUp(Vector2d position)
+        {
+            ;
+        }
+
+        public void OnWheel(double dx)
+        {
+            ;
         }
     }
 }
