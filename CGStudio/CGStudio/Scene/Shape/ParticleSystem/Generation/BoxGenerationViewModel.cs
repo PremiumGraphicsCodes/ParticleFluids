@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Collections.Generic;
 using PG.Control.Math;
+using System;
 
 namespace PG.CGStudio.Generation.ParticleSystem
 {
@@ -20,12 +21,12 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public BoxGenerationViewModel()
+        public BoxGenerationViewModel(World world)
         {
-            this.GenerationCommand.Subscribe(OnGenerate);
+            this.GenerationCommand.Subscribe(_ => OnGenerate(world));
         }
 
-        private void OnGenerate()
+        private void OnGenerate(World world)
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();
@@ -38,11 +39,10 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 var pos = box.GetPosition(u, v, w);
                 positions.Add(pos);
             }
-            World.Instance.Scenes.AddParticleSystemScene(positions, "PSBox", Appearance.Value, 1);
-            World.Instance.Scenes.Sync();
-            World.Instance.Camera.Fit();
+            var newId = world.Scenes.AddParticleSystemScene(positions, "PSBox", Appearance.Value, 1);
+            world.Camera.Fit();
 
-            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.BuildShader(world, newId);
             Canvas3d.Instance.Render();
         }
     }
