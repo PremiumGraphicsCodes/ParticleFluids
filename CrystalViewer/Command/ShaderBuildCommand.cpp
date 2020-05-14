@@ -1,21 +1,23 @@
-#include "ShaderSendCommand.h"
+#include "ShaderBuildCommand.h"
+
+#include "Public/ShaderBuildLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
-ShaderSendCommand::Args::Args() :
-	id("Id", 0)
+ShaderBuildCommand::Args::Args() :
+	id(ShaderBuildLabels::IdLabel, 0)
 {
 	add(&id);
 }
 
-std::string ShaderSendCommand::getName()
+std::string ShaderBuildCommand::getName()
 {
-	return "ShaderSend";
+	return ShaderBuildLabels::CommandNameLabel;
 }
 
-bool ShaderSendCommand::execute(World* world)
+bool ShaderBuildCommand::execute(World* world)
 {
 	auto s = world->getObjects()->findSceneById(std::any_cast<int>(args.id.getValue()));
 	s->getController()->createView(world->getRenderer(), *world->getGLFactory());

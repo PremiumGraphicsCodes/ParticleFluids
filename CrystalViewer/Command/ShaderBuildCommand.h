@@ -5,10 +5,10 @@
 namespace Crystal {
 	namespace Command {
 
-class ShaderSendCommand : public ICommand
+class ShaderBuildCommand : public ICommand
 {
 public:
-	ShaderSendCommand() :
+	ShaderBuildCommand() :
 		ICommand(&args, nullptr)
 	{}
 

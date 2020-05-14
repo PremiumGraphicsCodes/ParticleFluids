@@ -2,6 +2,7 @@
 
 #include "../Command/Command.h"
 #include "../Command/Public/ParticleSystemCreateLabels.h"
+#include "../Command/Public/ShaderBuildLabels.h"
 #include "../Command/Public/CameraLabels.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
@@ -32,9 +33,12 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	command.execute(getWorld());
 	auto newId = std::any_cast<int>( command.getResult(ParticleSystemCreateLabels::NewIdLabel) );
 
-	auto scene = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>(newId);
-	auto controller = scene->getController();
-	controller->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	command.create(ShaderBuildLabels::CommandNameLabel);
+	command.setArg(ShaderBuildLabels::IdLabel, newId);
+	command.execute(getWorld());
+	//auto scene = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>(newId);
+	//auto controller = scene->getController();
+	//controller->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	//getWorld()->getRenderer()->getScene()->screen.addChild(controller.getView());
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
