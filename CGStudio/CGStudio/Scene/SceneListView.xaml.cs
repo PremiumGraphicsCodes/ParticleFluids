@@ -2,9 +2,9 @@
 
 namespace PG.CGStudio
 {
-    public partial class ObjectListView : UserControl
+    public partial class SceneListView : UserControl
     {
-        public ObjectListView()
+        public SceneListView()
         {
             InitializeComponent();
         }
