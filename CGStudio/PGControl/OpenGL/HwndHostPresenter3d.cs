@@ -32,9 +32,18 @@ namespace PG.CGStudio
             set { this.ctrl = value; }
         }
 
+        private PG.CLI.Renderer renderer;
+        public PG.CLI.Renderer Renderer { get { return renderer; } }
+
         public Canvas3d()
         {
             this.ctrl = new UICtrl.CameraUICtrl();
+        }
+
+        public void CreateRenderer(System.IntPtr handle, World world)
+        {
+            renderer = new PG.CLI.Renderer(handle, World.Instance.Adapter);
+            this.renderer.Build(world.Adapter);
         }
 
         public void OnLeftButtonDown(Vector2d position)
@@ -121,7 +130,7 @@ namespace PG.CGStudio
 
         private void Host_Initialized(object sender, EventArgs e)
         {
-            World.Instance.CreateRenderer(Panel.Handle);
+            Canvas.CreateRenderer(Panel.Handle, World.Instance);
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;
@@ -139,12 +148,12 @@ namespace PG.CGStudio
 
         public void Render()
         {
-            World.Instance.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
+            Canvas.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
         }
 
         public void Update(World model)
         {
-            World.Instance.Renderer.Update(model.Adapter);
+            Canvas.Renderer.Update(model.Adapter);
         }
 
         public void BuildShader(World world, int id)
@@ -153,9 +162,9 @@ namespace PG.CGStudio
             command.Create(PG.ShaderBuildLabels.CommandNameLabel);
             command.SetArg(PG.ShaderBuildLabels.IdLabel, id);
 
-            World.Instance.Renderer.Bind();
+            Canvas.Renderer.Bind();
             command.Execute(world.Adapter);
-            World.Instance.Renderer.UnBind();
+            Canvas.Renderer.UnBind();
         }
 
         private void Panel_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -211,12 +220,12 @@ namespace PG.CGStudio
 
         private void OnResize(object sender, EventArgs e)
         {
-            World.Instance.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
+            Canvas.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            World.Instance.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
+            Canvas.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
         }
 
         private void RegisterToAppShutdown()
@@ -242,13 +251,13 @@ namespace PG.CGStudio
         public ObjectId GetObjectId(Vector2d position)
         {
             //var model = MainModel.Instance;
-            World.Instance.Renderer.Bind();
+            Canvas.Renderer.Bind();
             var command = new PG.CLI.Command(PG.PickLabels.PickCommandLabel);
             command.SetArg(PG.PickLabels.PositionLabel, new Vector2d(position.X, 1.0 - position.Y));
             command.Execute(World.Instance.Adapter);
             var parentId = command.GetResult<int>(PG.PickLabels.ParentIdLabel);
             var childId = command.GetResult<int>(PG.PickLabels.ChildIdLabel);
-            World.Instance.Renderer.UnBind();
+            Canvas.Renderer.UnBind();
             return new ObjectId(parentId, childId);
         }
     }

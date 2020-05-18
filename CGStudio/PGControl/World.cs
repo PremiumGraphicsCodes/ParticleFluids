@@ -13,10 +13,6 @@ namespace PG.CGStudio
 
         public CameraModel Camera { get; }
 
-        private PG.CLI.Renderer renderer;
-
-        public PG.CLI.Renderer Renderer { get { return renderer; } }
-
         public static World Instance;
 
         private World()
@@ -31,14 +27,9 @@ namespace PG.CGStudio
             Instance = new World();
         }
 
-        public void CreateRenderer(System.IntPtr handle)
-        {
-            renderer = new PG.CLI.Renderer(handle, World.Instance.Adapter);
-            this.renderer.Build(Adapter);
-        }
-
         public void New()
         {
+            /*
             var command = new PG.CLI.Command(NewLabels.CommandNameLabel);
 
             Renderer.Bind();
@@ -46,6 +37,7 @@ namespace PG.CGStudio
             Renderer.UnBind();
 
             this.Scenes.Sync();
+            */
         }
 
         public bool Open(string filename)
