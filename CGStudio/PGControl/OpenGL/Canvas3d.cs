@@ -30,8 +30,16 @@ namespace PG.Control.OpenGL
         public Canvas3d()
         {
             this.ctrl = new CGStudio.UICtrl.CameraUICtrl();
-            instance = this;
         }
+
+        public static void CreateInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Canvas3d();
+            }
+        }
+
 
         public void CreateRenderer(System.IntPtr handle, World world)
         {

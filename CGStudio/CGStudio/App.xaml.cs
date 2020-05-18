@@ -14,6 +14,7 @@ using PG.CGStudio.Scene.Shape.WireFrame;
 using PG.CGStudio.Scene.Shape.WireFrame.Generation;
 using PG.CGStudio.Selection;
 using PG.CGStudio.Texture;
+using PG.Control.OpenGL;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
@@ -31,6 +32,9 @@ namespace PG.CGStudio
         {
             World.CreateInstance();
             containerRegistry.RegisterInstance<World>(World.Instance);
+            Canvas3d.CreateInstance();
+            //containerRegistry.RegisterInstance<Canvas3d>(Canvas3d.Instance);
+
 
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PSSphereGeneration");

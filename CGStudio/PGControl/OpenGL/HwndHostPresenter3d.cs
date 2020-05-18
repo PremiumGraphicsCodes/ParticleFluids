@@ -28,8 +28,7 @@ namespace PG.CGStudio
     {
         private System.Windows.Forms.Panel Panel { get; }
 
-        public Canvas3d Canvas { get; }
-            = new Canvas3d();
+        public Canvas3d Canvas { get { return Canvas3d.Instance; } }
 
         public HwndHostPresenter3d()
         {

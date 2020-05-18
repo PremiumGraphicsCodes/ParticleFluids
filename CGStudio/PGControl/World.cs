@@ -20,8 +20,11 @@ namespace PG.CGStudio
         }
 
         public static void CreateInstance()
-        { 
-            Instance = new World();
+        {
+            if (Instance == null)
+            {
+                Instance = new World();
+            }
         }
 
         public void New()
