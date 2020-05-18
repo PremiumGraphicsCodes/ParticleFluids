@@ -22,12 +22,12 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public BoxGenerationViewModel(World world)
+        public BoxGenerationViewModel(World world, Canvas3d canvas)
         {
-            this.GenerationCommand.Subscribe(() => OnGenerate(world));
+            this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
-        private void OnGenerate(World world)
+        private void OnGenerate(World world, Canvas3d canvas)
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();
@@ -41,10 +41,9 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var newId = world.Scenes.AddParticleSystemScene(positions, "PSBox", Appearance.Value, 1);
-            Canvas3d.Instance.Camera.Fit();
-
-            Canvas3d.Instance.BuildShader(world, newId);
-            Canvas3d.Instance.Render();
+            canvas.Camera.Fit();
+            canvas.BuildShader(world, newId);
+            canvas.Render();
         }
     }
 }
