@@ -4,6 +4,7 @@ using Reactive.Bindings;
 using System.Collections.Generic;
 using PG.Control.Math;
 using System;
+using PG.Control.OpenGL;
 
 namespace PG.CGStudio.Generation.ParticleSystem
 {
@@ -42,8 +43,8 @@ namespace PG.CGStudio.Generation.ParticleSystem
             var newId = world.Scenes.AddParticleSystemScene(positions, "PSBox", Appearance.Value, 1);
             world.Camera.Fit();
 
-            HwndHostPresenter3d.Instance.BuildShader(world, newId);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.BuildShader(world, newId);
+            Canvas3d.Instance.Render();
         }
     }
 }

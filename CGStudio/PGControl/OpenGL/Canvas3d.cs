@@ -1,5 +1,6 @@
 ﻿using PG.CGStudio;
 using PG.CGStudio.UICtrl;
+using PG.Core;
 using PG.Core.Math;
 using System;
 using System.Windows.Input;
@@ -18,9 +19,16 @@ namespace PG.Control.OpenGL
         private PG.CLI.Renderer renderer;
         public PG.CLI.Renderer Renderer { get { return renderer; } }
 
+        private static Canvas3d instance;
+        public static Canvas3d Instance
+        {
+            get { return instance; }
+        }
+
         public Canvas3d()
         {
             this.ctrl = new CGStudio.UICtrl.CameraUICtrl();
+            instance = this;
         }
 
         public void CreateRenderer(System.IntPtr handle, World world)
@@ -41,22 +49,22 @@ namespace PG.Control.OpenGL
 
         public void OnLeftButtonUp(Vector2d position)
         {
-            throw new NotImplementedException();
+            this.ctrl.OnLeftButtonUp(position);
         }
 
         public void OnRightButtonDown(Vector2d position)
         {
-            throw new NotImplementedException();
+            this.ctrl.OnRightButtonDown(position);
         }
 
         public void OnRightButtonDragging(Vector2d position)
         {
-            throw new NotImplementedException();
+            this.ctrl.OnRightButtonDragging(position);
         }
 
         public void OnRightButtonUp(Vector2d position)
         {
-            throw new NotImplementedException();
+            this.ctrl.OnRightButtonUp(position);
         }
 
         public void OnMiddleButtonDown(Vector2d position)
@@ -81,13 +89,57 @@ namespace PG.Control.OpenGL
 
         public void OnKeyDown(Key key)
         {
-            throw new NotImplementedException();
+            this.ctrl.OnKeyDown(key);
         }
 
         public void OnKeyUp(Key key)
         {
             this.UICtrl.OnKeyUp(key);
         }
+
+        public void Render()
+        {
+            Renderer.Render(width, height, World.Instance.Adapter);
+        }
+
+        public void Update(World model)
+        {
+            Renderer.Update(model.Adapter);
+        }
+
+        private int width;
+        private int height;
+
+        public void ChangeSize(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+        }
+
+        public ObjectId GetObjectId(Vector2d position)
+        {
+            //var model = MainModel.Instance;
+            Renderer.Bind();
+            var command = new PG.CLI.Command(PG.PickLabels.PickCommandLabel);
+            command.SetArg(PG.PickLabels.PositionLabel, new Vector2d(position.X, 1.0 - position.Y));
+            command.Execute(World.Instance.Adapter);
+            var parentId = command.GetResult<int>(PG.PickLabels.ParentIdLabel);
+            var childId = command.GetResult<int>(PG.PickLabels.ChildIdLabel);
+            Renderer.UnBind();
+            return new ObjectId(parentId, childId);
+        }
+
+        public void BuildShader(World world, int id)
+        {
+            var command = new PG.CLI.Command();
+            command.Create(PG.ShaderBuildLabels.CommandNameLabel);
+            command.SetArg(PG.ShaderBuildLabels.IdLabel, id);
+
+            Renderer.Bind();
+            command.Execute(world.Adapter);
+            Renderer.UnBind();
+        }
+
     }
 
 }

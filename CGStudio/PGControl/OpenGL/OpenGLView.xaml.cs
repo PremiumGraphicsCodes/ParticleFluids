@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PG.Control.OpenGL;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -21,7 +22,7 @@ namespace PG.CGStudio
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
-            HwndHostPresenter3d.Instance.Canvas.UICtrl.OnKeyDown(e.Key);
+            Canvas3d.Instance.UICtrl.OnKeyDown(e.Key);
             //Do work
         }
     }

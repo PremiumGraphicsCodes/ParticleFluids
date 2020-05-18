@@ -1,4 +1,5 @@
 ﻿using PG.CGStudio.UICtrl;
+using PG.Control.OpenGL;
 using PG.Core;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -26,7 +27,7 @@ namespace PG.CGStudio.Object.Select
 
         private void OnPickUI()
         {
-            HwndHostPresenter3d.Instance.Canvas.UICtrl = Picker;
+            Canvas3d.Instance.UICtrl = Picker;
         }
 
         private void OnPicked(ObjectId id)

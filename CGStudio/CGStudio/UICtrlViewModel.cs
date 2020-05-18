@@ -1,4 +1,5 @@
 ﻿using PG.CGStudio.UICtrl;
+using PG.Control.OpenGL;
 using Reactive.Bindings;
 
 namespace PG.CGStudio
@@ -19,12 +20,12 @@ namespace PG.CGStudio
 
         private void OnCameraUICtrl()
         {
-            HwndHostPresenter3d.Instance.Canvas.UICtrl = new CameraUICtrl();
+            Canvas3d.Instance.UICtrl = new CameraUICtrl();
         }
 
         private void OnPickUICtrl()
         {
-            HwndHostPresenter3d.Instance.Canvas.UICtrl = new PickUICtrl(10, Core.SceneType.AllScene);
+            Canvas3d.Instance.UICtrl = new PickUICtrl(10, Core.SceneType.AllScene);
         }
     }
 }

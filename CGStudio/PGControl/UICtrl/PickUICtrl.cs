@@ -1,4 +1,5 @@
-﻿using PG.Core;
+﻿using PG.Control.OpenGL;
+using PG.Core;
 using PG.Core.Math;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,7 @@ namespace PG.CGStudio.UICtrl
         {
             var model = World.Instance.Adapter;
 
-            var pickedId = HwndHostPresenter3d.Instance.GetObjectId(position);
+            var pickedId = Canvas3d.Instance.GetObjectId(position);
             var parentId = pickedId.parentId;
 
             if (parentId != 0)
@@ -54,8 +55,8 @@ namespace PG.CGStudio.UICtrl
                 command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
                 command.Execute(model);
                 //command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
-                HwndHostPresenter3d.Instance.Update(World.Instance);
-                HwndHostPresenter3d.Instance.Render();
+                Canvas3d.Instance.Update(World.Instance);
+                Canvas3d.Instance.Render();
 
                 pickedIds.Add(pickedId);
 

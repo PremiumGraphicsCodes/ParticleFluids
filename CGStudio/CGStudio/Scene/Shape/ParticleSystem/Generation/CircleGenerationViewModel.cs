@@ -1,5 +1,6 @@
 ﻿using PG.CGStudio.Generation.ParticleSystem;
 using PG.Control.Math;
+using PG.Control.OpenGL;
 using PG.Core.Math;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -39,8 +40,8 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
             var newId = world.Scenes.AddParticleSystemScene(positions, "PSCircle", AppearanceViewModel.Value, 1);
             world.Camera.Fit();
 
-            HwndHostPresenter3d.Instance.BuildShader(world, newId);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.BuildShader(world, newId);
+            Canvas3d.Instance.Render();
         }
     }
 }

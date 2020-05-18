@@ -5,6 +5,7 @@ using PG.Control.Math;
 using Prism.Mvvm;
 using PG.Core.UI;
 using PG.Core.Graphics;
+using PG.Control.OpenGL;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
@@ -36,8 +37,8 @@ namespace PG.CGStudio.Generation.WireFrame
             World.Instance.Scenes.Sync();
             World.Instance.Camera.Fit();
 
-            HwndHostPresenter3d.Instance.Update(World.Instance);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.Render();
         }
     }
 }

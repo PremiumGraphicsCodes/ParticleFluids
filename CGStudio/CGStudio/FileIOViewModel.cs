@@ -1,4 +1,5 @@
-﻿using Reactive.Bindings;
+﻿using PG.Control.OpenGL;
+using Reactive.Bindings;
 using System.Windows.Forms;
 
 namespace PG.CGStudio
@@ -36,9 +37,9 @@ namespace PG.CGStudio
         private void OnNew()
         {
             World.Instance.New();
-            HwndHostPresenter3d.Instance.Canvas.Renderer.Build(World.Instance.Adapter);
-            HwndHostPresenter3d.Instance.Update(World.Instance);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Renderer.Build(World.Instance.Adapter);
+            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.Render();
         }
 
         private void OnOpen()
@@ -92,8 +93,8 @@ namespace PG.CGStudio
                 if(Import(dialog.FileName))
                 {
                     World.Instance.Scenes.Sync();
-                    HwndHostPresenter3d.Instance.Update(World.Instance);
-                    HwndHostPresenter3d.Instance.Render();
+                    Canvas3d.Instance.Update(World.Instance);
+                    Canvas3d.Instance.Render();
                     MessageBox.Show("Import Suceeded");                    
                 }
                 else

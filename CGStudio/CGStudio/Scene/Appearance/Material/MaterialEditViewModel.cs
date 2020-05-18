@@ -1,4 +1,5 @@
 ﻿using PG.Control.Graphics;
+using PG.Control.OpenGL;
 using PG.Core.Graphics;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -29,8 +30,8 @@ namespace PG.CGStudio.Material
         {
             var world = World.Instance;
             world.Scenes.SetMaterialScene(MaterialViewModel.Value, Name.Value, Id.Value );
-            HwndHostPresenter3d.Instance.Update(world);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Update(world);
+            Canvas3d.Instance.Render();
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

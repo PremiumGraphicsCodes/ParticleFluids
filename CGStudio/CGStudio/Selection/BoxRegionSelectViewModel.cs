@@ -1,5 +1,6 @@
 ﻿using PG.CGStudio.UICtrl;
 using PG.Control.Math;
+using PG.Control.OpenGL;
 using PG.Core;
 using PG.Core.Math;
 using PG.Core.Shape;
@@ -30,7 +31,7 @@ namespace PG.CGStudio.Selection
         {
             var picker = new PickUICtrl(10, SceneType.AllScene);
             picker.AddAction(OnPicked);
-            HwndHostPresenter3d.Instance.Canvas.UICtrl = picker;
+            Canvas3d.Instance.UICtrl = picker;
         }
 
         private void OnPicked(ObjectId id)
@@ -54,12 +55,12 @@ namespace PG.CGStudio.Selection
 
             World.Instance.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
 
-            HwndHostPresenter3d.Instance.Update(World.Instance);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.Render();
 
             boxes.Add(box);
 
-            HwndHostPresenter3d.Instance.Canvas.UICtrl = new CameraUICtrl();
+            Canvas3d.Instance.UICtrl = new CameraUICtrl();
         }
     }
 }

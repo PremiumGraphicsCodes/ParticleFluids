@@ -1,5 +1,6 @@
 ﻿using PG.CGStudio.Object.Select;
 using PG.CGStudio.Selection;
+using PG.Control.OpenGL;
 using PG.Core.Math;
 using Prism.Mvvm;
 using Reactive.Bindings;
@@ -35,8 +36,8 @@ namespace PG.CGStudio.Scene.Shape.Trim
 
             //World.Instance.Items.Clear();
 
-            HwndHostPresenter3d.Instance.Update(World.Instance);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.Render();
 
             World.Instance.Scenes.Sync();
         }

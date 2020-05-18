@@ -1,4 +1,5 @@
 ﻿using PG.Control.Math;
+using PG.Control.OpenGL;
 using PG.Core.Shape;
 using Prism.Mvvm;
 using Reactive.Bindings;
@@ -35,8 +36,8 @@ namespace PG.CGStudio.Generation.WireFrame
             var newId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "WFSphere", AppearanceViewModel.Value, 1);
             world.Camera.Fit();
 
-            HwndHostPresenter3d.Instance.BuildShader(world, newId);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.BuildShader(world, newId);
+            Canvas3d.Instance.Render();
         }
     }
 }

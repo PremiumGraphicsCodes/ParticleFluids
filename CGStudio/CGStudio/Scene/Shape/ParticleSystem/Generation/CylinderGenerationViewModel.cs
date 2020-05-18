@@ -1,4 +1,5 @@
 ﻿using PG.Control.Math;
+using PG.Control.OpenGL;
 using PG.Core.Math;
 using Prism.Mvvm;
 using Reactive.Bindings;
@@ -41,8 +42,8 @@ namespace PG.CGStudio.Generation.ParticleSystem
             var newId = world.Scenes.AddParticleSystemScene(positions, "PSCylinder", Appearance.Value, 1);//, Appearance.Value, "PSCylinder");
             world.Camera.Fit();
 
-            HwndHostPresenter3d.Instance.BuildShader(world, newId);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.BuildShader(world, newId);
+            Canvas3d.Instance.Render();
         }
     }
 }

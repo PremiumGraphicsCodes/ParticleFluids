@@ -1,6 +1,7 @@
 ﻿using PG.CGStudio.Object.Select;
 using PG.CGStudio.UICtrl;
 using PG.Control.Math;
+using PG.Control.OpenGL;
 using PG.Core;
 using PG.Core.Math;
 using Reactive.Bindings;
@@ -42,7 +43,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             var center = World.Instance.Scenes.GetCenter(id.parentId);
             this.CenterViewModel.Value = center;
-            HwndHostPresenter3d.Instance.Canvas.UICtrl = new ScaleUICtrl(this);
+            Canvas3d.Instance.UICtrl = new ScaleUICtrl(this);
         }
 
         private void OnOk()
@@ -70,7 +71,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             if (doRender)
             {
-                var canvas = HwndHostPresenter3d.Instance;
+                var canvas = Canvas3d.Instance;
                 canvas.Update(World.Instance);
                 canvas.Render();
             }
@@ -82,7 +83,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             if (doRender)
             {
-                var canvas = HwndHostPresenter3d.Instance;
+                var canvas = Canvas3d.Instance;
                 canvas.Update(World.Instance);
                 canvas.Render();
             }

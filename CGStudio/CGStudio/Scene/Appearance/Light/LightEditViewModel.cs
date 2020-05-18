@@ -1,4 +1,5 @@
 ﻿using PG.Control.Graphics;
+using PG.Control.OpenGL;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -28,8 +29,8 @@ namespace PG.CGStudio.Light
         {
             var world = World.Instance;
             world.Scenes.SetLightScene(PointLightViewModel.Value, Name.Value, Id.Value);
-            HwndHostPresenter3d.Instance.Update(world);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Update(world);
+            Canvas3d.Instance.Render();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

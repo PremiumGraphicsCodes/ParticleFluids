@@ -1,5 +1,6 @@
 ﻿using PG.Control;
 using PG.Control.Math;
+using PG.Control.OpenGL;
 using PG.Core.Shape;
 using Prism.Mvvm;
 using Reactive.Bindings;
@@ -36,8 +37,8 @@ namespace PG.CGStudio.Generation.PolygonMesh
             World.Instance.Scenes.Sync();
             World.Instance.Camera.Fit();
 
-            HwndHostPresenter3d.Instance.Update(World.Instance);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.Render();
         }
     }
 }

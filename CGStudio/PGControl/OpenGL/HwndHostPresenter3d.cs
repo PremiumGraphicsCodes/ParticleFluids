@@ -42,7 +42,6 @@ namespace PG.CGStudio
             HwndHost = host;
             RegisterToAppShutdown();
 
-            instance = this;
         }
 
         private void Host_Initialized(object sender, EventArgs e)
@@ -54,34 +53,6 @@ namespace PG.CGStudio
             Panel.MouseUp += Panel_MouseUp;
             Panel.MouseMove += Panel_MouseMove;
             Panel.MouseWheel += Panel_MouseWheel;
-        }
-
-        private static HwndHostPresenter3d instance;
-
-        public static HwndHostPresenter3d Instance
-        {
-            get { return instance; }
-        }
-
-        public void Render()
-        {
-            Canvas.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
-        }
-
-        public void Update(World model)
-        {
-            Canvas.Renderer.Update(model.Adapter);
-        }
-
-        public void BuildShader(World world, int id)
-        {
-            var command = new PG.CLI.Command();
-            command.Create(PG.ShaderBuildLabels.CommandNameLabel);
-            command.SetArg(PG.ShaderBuildLabels.IdLabel, id);
-
-            Canvas.Renderer.Bind();
-            command.Execute(world.Adapter);
-            Canvas.Renderer.UnBind();
         }
 
         private void Panel_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -137,12 +108,13 @@ namespace PG.CGStudio
 
         private void OnResize(object sender, EventArgs e)
         {
-            Canvas.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
+            Canvas.ChangeSize(Panel.Width, Panel.Height);
+            Canvas.Render();
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            Canvas.Renderer.Render(Panel.Width, Panel.Height, World.Instance.Adapter);
+            Canvas.Render();
         }
 
         private void RegisterToAppShutdown()
@@ -165,17 +137,5 @@ namespace PG.CGStudio
             }
         }
 
-        public ObjectId GetObjectId(Vector2d position)
-        {
-            //var model = MainModel.Instance;
-            Canvas.Renderer.Bind();
-            var command = new PG.CLI.Command(PG.PickLabels.PickCommandLabel);
-            command.SetArg(PG.PickLabels.PositionLabel, new Vector2d(position.X, 1.0 - position.Y));
-            command.Execute(World.Instance.Adapter);
-            var parentId = command.GetResult<int>(PG.PickLabels.ParentIdLabel);
-            var childId = command.GetResult<int>(PG.PickLabels.ChildIdLabel);
-            Canvas.Renderer.UnBind();
-            return new ObjectId(parentId, childId);
-        }
     }
 }

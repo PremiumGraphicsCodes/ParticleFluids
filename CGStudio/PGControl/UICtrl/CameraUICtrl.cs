@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using PG.Control.OpenGL;
 using PG.Core.Math;
 
 namespace PG.CGStudio.UICtrl
@@ -37,7 +38,7 @@ namespace PG.CGStudio.UICtrl
             //var scale = bb.Min.Distance(bb.Max) * 0.1;
             var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix.Transposed();
             World.Instance.Camera.Translate(new Vector3d(v.X, v.Y, v.Z));
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Render();
             prevPosition = position;
         }
 
@@ -79,7 +80,7 @@ namespace PG.CGStudio.UICtrl
             var m = matrix3 * matrix2 * matrix1;
             World.Instance.Camera.Rotate(m);
 
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Render();
             prevPosition = position;
         }
 
@@ -91,7 +92,7 @@ namespace PG.CGStudio.UICtrl
         public void OnWheel(double dx)
         {
             World.Instance.Camera.Zoom((float)dx);
-            HwndHostPresenter3d.Instance.Render();
+            Canvas3d.Instance.Render();
         }
     }
 }
