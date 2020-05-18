@@ -116,6 +116,7 @@
   <ItemGroup>
     <Compile Include="CameraModel.cs" />
     <Compile Include="ConstLabels.cs" />
+    <Compile Include="OpenGL\Canvas3d.cs" />
     <Compile Include="SceneListModel.cs" />
     <Compile Include="SceneModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
