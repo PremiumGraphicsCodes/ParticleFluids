@@ -1,5 +1,6 @@
 ﻿using PG.CGStudio.Scene.Shape.Transform;
 using PG.Control.Math;
+using PG.Control.OpenGL;
 using PG.Core.Math;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -34,7 +35,7 @@ namespace PG.CGStudio.UICtrl
         public void OnLeftButtonDragging(Vector2d position)
         {
             var diff = (position - prevPos) * sensivitiy;
-            var matrix = World.Instance.Camera.GetRotationMatrix();
+            var matrix = Canvas3d.Instance.Camera.GetRotationMatrix();
             var v = matrix * new Vector4d(-diff.X, diff.Y, 0.0, 0.0);
             model.Translate.Value += new Vector3d(v.X, v.Y, v.Z);
             model.SetMatrix(true);

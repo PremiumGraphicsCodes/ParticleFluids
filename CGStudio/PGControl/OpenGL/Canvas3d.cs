@@ -25,6 +25,8 @@ namespace PG.Control.OpenGL
             get { return instance; }
         }
 
+        public CameraModel Camera { get; private set; }
+
         public Canvas3d()
         {
             this.ctrl = new CGStudio.UICtrl.CameraUICtrl();
@@ -35,6 +37,7 @@ namespace PG.Control.OpenGL
         {
             renderer = new PG.CLI.Renderer(handle, World.Instance.Adapter);
             this.renderer.Build(world.Adapter);
+            this.Camera = new CameraModel(world.Adapter);
         }
 
         public void OnLeftButtonDown(Vector2d position)

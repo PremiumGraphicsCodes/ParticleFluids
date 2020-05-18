@@ -30,14 +30,14 @@ namespace PG.CGStudio.UICtrl
 
         public void OnLeftButtonDragging(Vector2d position)
         {
-            var matrix = World.Instance.Camera.GetRotationMatrix();
+            var matrix = Canvas3d.Instance.Camera.GetRotationMatrix();
 
             var diff = position - prevPosition;
             //
             var bb = World.Instance.Scenes.GetBoundingBox(0);
             //var scale = bb.Min.Distance(bb.Max) * 0.1;
             var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix.Transposed();
-            World.Instance.Camera.Translate(new Vector3d(v.X, v.Y, v.Z));
+            Canvas3d.Instance.Camera.Translate(new Vector3d(v.X, v.Y, v.Z));
             Canvas3d.Instance.Render();
             prevPosition = position;
         }
@@ -69,7 +69,7 @@ namespace PG.CGStudio.UICtrl
 
         public void OnRightButtonDragging(Vector2d position)
         {
-            var matrix = World.Instance.Camera.GetRotationMatrix();
+            var matrix = Canvas3d.Instance.Camera.GetRotationMatrix();
 
             var diff = position - prevPosition;
             var v = new Vector4d(diff.Y, diff.X, 0.0, 0.0) * matrix.Transposed();
@@ -78,7 +78,7 @@ namespace PG.CGStudio.UICtrl
             var matrix3 = Matrix3d.RotationZ(v.Z);
 
             var m = matrix3 * matrix2 * matrix1;
-            World.Instance.Camera.Rotate(m);
+            Canvas3d.Instance.Camera.Rotate(m);
 
             Canvas3d.Instance.Render();
             prevPosition = position;
@@ -91,7 +91,7 @@ namespace PG.CGStudio.UICtrl
 
         public void OnWheel(double dx)
         {
-            World.Instance.Camera.Zoom((float)dx);
+            Canvas3d.Instance.Camera.Zoom((float)dx);
             Canvas3d.Instance.Render();
         }
     }

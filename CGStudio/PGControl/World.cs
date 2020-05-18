@@ -11,15 +11,12 @@ namespace PG.CGStudio
 
         public SceneListModel Scenes { get; }
 
-        public CameraModel Camera { get; }
-
         public static World Instance;
 
         private World()
         {
             this.adapter = new PG.CLI.WorldAdapter();
             this.Scenes = new SceneListModel(adapter);
-            this.Camera = new CameraModel(adapter);
         }
 
         public static void CreateInstance()

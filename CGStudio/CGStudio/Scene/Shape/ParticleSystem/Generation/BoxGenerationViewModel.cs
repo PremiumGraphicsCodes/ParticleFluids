@@ -41,7 +41,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var newId = world.Scenes.AddParticleSystemScene(positions, "PSBox", Appearance.Value, 1);
-            world.Camera.Fit();
+            Canvas3d.Instance.Camera.Fit();
 
             Canvas3d.Instance.BuildShader(world, newId);
             Canvas3d.Instance.Render();

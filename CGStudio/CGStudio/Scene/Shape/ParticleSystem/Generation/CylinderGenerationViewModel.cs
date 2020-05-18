@@ -40,7 +40,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
             var newId = world.Scenes.AddParticleSystemScene(positions, "PSCylinder", Appearance.Value, 1);//, Appearance.Value, "PSCylinder");
-            world.Camera.Fit();
+            Canvas3d.Instance.Camera.Fit();
 
             Canvas3d.Instance.BuildShader(world, newId);
             Canvas3d.Instance.Render();

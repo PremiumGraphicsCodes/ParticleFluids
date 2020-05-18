@@ -31,7 +31,7 @@ namespace PG.CGStudio
 
         private void OnXY()
         {
-            World.Instance.Camera.SetXY();
+            Canvas3d.Instance.Camera.SetXY();
             Canvas3d.Instance.Render();
         }
 
@@ -56,7 +56,7 @@ namespace PG.CGStudio
 
         private void OnFit()
         {
-            World.Instance.Camera.Fit();
+            Canvas3d.Instance.Camera.Fit();
             Canvas3d.Instance.Render();
         }
     }

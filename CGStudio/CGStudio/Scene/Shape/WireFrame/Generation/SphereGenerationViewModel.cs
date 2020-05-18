@@ -34,7 +34,7 @@ namespace PG.CGStudio.Generation.WireFrame
             builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);
 
             var newId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "WFSphere", AppearanceViewModel.Value, 1);
-            world.Camera.Fit();
+            Canvas3d.Instance.Camera.Fit();
 
             Canvas3d.Instance.BuildShader(world, newId);
             Canvas3d.Instance.Render();
