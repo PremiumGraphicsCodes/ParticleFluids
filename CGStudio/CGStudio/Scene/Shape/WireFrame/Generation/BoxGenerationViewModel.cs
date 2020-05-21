@@ -17,8 +17,14 @@ namespace PG.CGStudio.Generation.WireFrame
 
         public ReactiveCommand GenerationCommand { get; }
 
-        public BoxGenerationViewModel()
+        private readonly World world;
+
+        private readonly Canvas3d canvas;
+
+        public BoxGenerationViewModel(World world, Canvas3d canvas)
         {
+            this.world = world;
+            this.canvas = canvas;
             this.BoxViewModel = new Box3dViewModel();
             this.AppearanceViewModel = new AppearanceViewModel();
             this.GenerationCommand = new ReactiveCommand();
@@ -33,12 +39,12 @@ namespace PG.CGStudio.Generation.WireFrame
             var wireFrame = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
 
-            World.Instance.Scenes.AddWireFrameScene(wireFrame, "WFBox", appearance, 1);
-            World.Instance.Scenes.Sync();
-            Canvas3d.Instance.Camera.Fit();
+            world.Scenes.AddWireFrameScene(wireFrame, "WFBox", appearance, 1);
+            world.Scenes.Sync();
 
-            Canvas3d.Instance.Update(World.Instance);
-            Canvas3d.Instance.Render();
+            canvas.Camera.Fit();
+            canvas.Update(World.Instance);
+            canvas.Render();
         }
     }
 }

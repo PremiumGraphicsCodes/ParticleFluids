@@ -18,9 +18,12 @@ namespace PG.CGStudio.Light
 
         private readonly World world;
 
-        public LightEditViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public LightEditViewModel(World world, Canvas3d canvas)
         {
             this.world = world;
+            this.canvas = canvas;
             this.Id = new ReactiveProperty<int>();
             this.Name = new ReactiveProperty<string>();
             this.PointLightViewModel = new PointLightViewModel();
@@ -31,8 +34,8 @@ namespace PG.CGStudio.Light
         private void OnOk()
         {
             world.Scenes.SetLightScene(PointLightViewModel.Value, Name.Value, Id.Value);
-            Canvas3d.Instance.Update(world);
-            Canvas3d.Instance.Render();
+            canvas.Update(world);
+            canvas.Render();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

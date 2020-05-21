@@ -20,6 +20,7 @@ namespace PG.Control.OpenGL
         public PG.CLI.Renderer Renderer { get { return renderer; } }
 
         private static Canvas3d instance;
+
         public static Canvas3d Instance
         {
             get { return instance; }

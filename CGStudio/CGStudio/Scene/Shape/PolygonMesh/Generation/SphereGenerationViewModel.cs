@@ -21,8 +21,14 @@ namespace PG.CGStudio.Generation.PolygonMesh
         public Sphere3dViewModel SphereViewModel { get; }
             = new Sphere3dViewModel();
 
-        public SphereGenerationViewModel()
+        private World world;
+
+        private Canvas3d canvas;
+
+        public SphereGenerationViewModel(World world, Canvas3d canvas)
         {
+            this.world = world;
+            this.canvas = canvas;
             this.UNum.Value = 24;
             this.VNum.Value = 24;
             this.GenerateCommand.Subscribe(OnExecute);
@@ -33,12 +39,12 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var builder = new PolygonMeshBuilder();
             builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);
 
-            World.Instance.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMSphere", 1);
-            World.Instance.Scenes.Sync();
-            Canvas3d.Instance.Camera.Fit();
+            world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMSphere", 1);
+            world.Scenes.Sync();
 
-            Canvas3d.Instance.Update(World.Instance);
-            Canvas3d.Instance.Render();
+            canvas.Camera.Fit();
+            canvas.Update(World.Instance);
+            canvas.Render();
         }
     }
 }

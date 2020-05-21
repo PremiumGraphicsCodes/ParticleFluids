@@ -22,7 +22,7 @@ namespace PG.CGStudio
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
-            Canvas3d.Instance.UICtrl.OnKeyDown(e.Key);
+            //Canvas3d.Instance.UICtrl.OnKeyDown(e.Key);
             //Do work
         }
     }

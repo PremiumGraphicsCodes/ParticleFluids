@@ -42,7 +42,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         private void OnSelected(ObjectId id)
         {
-            var uiCtrl = new TranslateUICtrl(this);
+            var uiCtrl = new TranslateUICtrl(this, canvas);
             uiCtrl.Sensivity = 1.0;
             canvas.UICtrl = uiCtrl;
         }

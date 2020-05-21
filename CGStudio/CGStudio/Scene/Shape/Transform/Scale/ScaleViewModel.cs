@@ -27,8 +27,12 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
         private readonly World world;
 
-        public ScaleViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public ScaleViewModel(World world, Canvas3d canvas)
         {
+            this.world = world;
+            this.canvas = canvas;
             this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
             this.world = world;
             this.OkCommand.Subscribe(OnOk);
@@ -46,7 +50,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             var center = world.Scenes.GetCenter(id.parentId);
             this.CenterViewModel.Value = center;
-            Canvas3d.Instance.UICtrl = new ScaleUICtrl(this);
+            canvas.UICtrl = new ScaleUICtrl(this);
         }
 
         private void OnOk()
@@ -74,7 +78,6 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             if (doRender)
             {
-                var canvas = Canvas3d.Instance;
                 canvas.Update(world);
                 canvas.Render();
             }
@@ -86,7 +89,6 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             if (doRender)
             {
-                var canvas = Canvas3d.Instance;
                 canvas.Update(world);
                 canvas.Render();
             }

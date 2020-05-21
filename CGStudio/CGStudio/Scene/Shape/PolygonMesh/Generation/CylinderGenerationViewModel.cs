@@ -16,8 +16,14 @@ namespace PG.CGStudio.Generation.PolygonMesh
 
         public ReactiveProperty<int> VNum { get; }
 
-        public CylinderGenerationViewModel()
+        private readonly World world;
+
+        private readonly Canvas3d canvas;
+
+        public CylinderGenerationViewModel(World world, Canvas3d canvas)
         {
+            this.world = world;
+            this.canvas = canvas;
             CylinderViewModel = new Cylinder3dViewModel();
             GenerateCommand = new ReactiveCommand();
             GenerateCommand.Subscribe(OnGenerate);
@@ -30,12 +36,12 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var builder = new PolygonMeshBuilder();
             builder.Add(CylinderViewModel.Value, UNum.Value);
 
-            World.Instance.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCylinder", 1);
-            World.Instance.Scenes.Sync();
-            Canvas3d.Instance.Camera.Fit();
+            world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCylinder", 1);
+            world.Scenes.Sync();
 
-            Canvas3d.Instance.Update(World.Instance);
-            Canvas3d.Instance.Render();
+            canvas.Camera.Fit();
+            canvas.Update(World.Instance);
+            canvas.Render();
         }
     }
 }

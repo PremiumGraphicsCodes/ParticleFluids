@@ -15,11 +15,14 @@ namespace PG.CGStudio.UICtrl
 
         private readonly TranslateViewModel model;
 
+        private readonly Canvas3d canvas;
+
         public double Sensivity { set { this.sensivitiy = value; } }
 
-        public TranslateUICtrl(TranslateViewModel model)
+        public TranslateUICtrl(TranslateViewModel model, Canvas3d canvas)
         {
             this.model = model;
+            this.canvas = canvas;
         }
 
         public void OnLeftButtonDown(Vector2d position)
@@ -35,7 +38,7 @@ namespace PG.CGStudio.UICtrl
         public void OnLeftButtonDragging(Vector2d position)
         {
             var diff = (position - prevPos) * sensivitiy;
-            var matrix = Canvas3d.Instance.Camera.GetRotationMatrix();
+            var matrix = canvas.Camera.GetRotationMatrix();
             var v = matrix * new Vector4d(-diff.X, diff.Y, 0.0, 0.0);
             model.Translate.Value += new Vector3d(v.X, v.Y, v.Z);
             model.SetMatrix(true);
