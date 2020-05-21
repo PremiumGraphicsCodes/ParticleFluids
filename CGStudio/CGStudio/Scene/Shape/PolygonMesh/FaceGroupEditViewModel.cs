@@ -24,8 +24,11 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         public ReactiveCommand ApplyCommand { get; }
             = new ReactiveCommand();
 
-        public FaceGroupEditViewModel()
+        private Canvas3d canvas;
+
+        public FaceGroupEditViewModel(Canvas3d canvas)
         {
+            this.canvas = canvas;
             ApplyCommand.Subscribe(OnApply);
         }
 
@@ -33,8 +36,8 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         {
             PG.CLI.Command.Set(World.Instance.Adapter, PG.SetLabels.NameLabel, Id.Value, Name.Value);
             PG.CLI.Command.Set(World.Instance.Adapter, PG.SetLabels.MaterialNameLabel, Id.Value, MaterialName.Value);
-            Canvas3d.Instance.Update(World.Instance);
-            Canvas3d.Instance.Render();
+            canvas.Update(World.Instance);
+            canvas.Render();
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

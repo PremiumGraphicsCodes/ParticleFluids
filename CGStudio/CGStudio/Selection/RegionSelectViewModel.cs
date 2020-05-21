@@ -1,4 +1,5 @@
-﻿using PG.Core.Math;
+﻿using PG.Control.OpenGL;
+using PG.Core.Math;
 using Reactive.Bindings;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,11 +37,11 @@ namespace PG.CGStudio.Selection
             }
         }
 
-        public RegionSelectViewModel(World world)
+        public RegionSelectViewModel(World world, Canvas3d canvas)
         {
-            this.SphereRegionSelectViewModel = new SphereRegionSelectViewModel(world);
-            this.BoxRegionSelectViewModel = new BoxRegionSelectViewModel(world);
-            this.CylinderRegionSelectViewModel = new CylinderRegionSelectViewModel(world);
+            this.SphereRegionSelectViewModel = new SphereRegionSelectViewModel(world, canvas);
+            this.BoxRegionSelectViewModel = new BoxRegionSelectViewModel(world, canvas);
+            this.CylinderRegionSelectViewModel = new CylinderRegionSelectViewModel(world, canvas);
         }
     }
 }

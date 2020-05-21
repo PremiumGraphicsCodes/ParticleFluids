@@ -20,8 +20,14 @@ namespace PG.CGStudio.Generation.WireFrame
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public CylinderGenerationViewModel()
+        private readonly World world;
+
+        private readonly Canvas3d canvas;
+
+        public CylinderGenerationViewModel(World world, Canvas3d canvas)
         {
+            this.world = world;
+            this.canvas = canvas;
             this.GenerationCommand.Subscribe(OnGenerate);
         }
 
@@ -32,12 +38,12 @@ namespace PG.CGStudio.Generation.WireFrame
             builder.Add(cylinder, this.UNum.Value);
             var wireFrame = builder.ToWireFrame();
 
-            World.Instance.Scenes.AddWireFrameScene(wireFrame, "WFCylinder", AppearanceViewModel.Value, 1);
-            World.Instance.Scenes.Sync();
-            Canvas3d.Instance.Camera.Fit();
+            world.Scenes.AddWireFrameScene(wireFrame, "WFCylinder", AppearanceViewModel.Value, 1);
+            world.Scenes.Sync();
 
-            Canvas3d.Instance.Update(World.Instance);
-            Canvas3d.Instance.Render();
+            canvas.Camera.Fit();
+            canvas.Update(World.Instance);
+            canvas.Render();
         }
     }
 }

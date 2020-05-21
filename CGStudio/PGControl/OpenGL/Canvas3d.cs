@@ -29,7 +29,7 @@ namespace PG.Control.OpenGL
 
         public Canvas3d()
         {
-            this.ctrl = new CGStudio.UICtrl.CameraUICtrl();
+            this.ctrl = new CGStudio.UICtrl.CameraUICtrl(this);
         }
 
         public static void CreateInstance()
@@ -39,7 +39,6 @@ namespace PG.Control.OpenGL
                 instance = new Canvas3d();
             }
         }
-
 
         public void CreateRenderer(System.IntPtr handle, World world)
         {

@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using PG.Control.OpenGL;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using Unity;
@@ -27,15 +28,15 @@ namespace PG.CGStudio
             }
         }
 
-        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container, World world)
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container, World world, Canvas3d canvas)
         {
             instance = this;
 
             this.regionManager = regionManager;
             NavigateCommand = new DelegateCommand<string>(OnNavigate);// (name => );
-            this.FileIOViewModel = new FileIOViewModel(world);
-            this.CameraControlViewModel = new CameraControlViewModel(world);
-            this.UIControlViewModel = new UIControlViewModel(world);
+            this.FileIOViewModel = new FileIOViewModel(world, canvas);
+            this.CameraControlViewModel = new CameraControlViewModel(world, canvas);
+            this.UIControlViewModel = new UIControlViewModel(world, canvas);
         }
 
         private void OnNavigate(string name)

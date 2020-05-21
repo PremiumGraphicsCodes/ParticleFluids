@@ -23,9 +23,12 @@ namespace PG.CGStudio.Selection
 
         private readonly World world;
 
-        public CylinderRegionSelectViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public CylinderRegionSelectViewModel(World world, Canvas3d canvas)
         {
             this.world = world;
+            this.canvas = canvas;
             PickCommand.Subscribe(OnPickUI);
         }
 
@@ -33,7 +36,7 @@ namespace PG.CGStudio.Selection
         {
             var picker = new PickUICtrl(world, 10, SceneType.AllScene);
             picker.AddAction(OnPicked);
-            Canvas3d.Instance.UICtrl = picker;
+            canvas.UICtrl = picker;
         }
 
         private void OnPicked(ObjectId id)
@@ -51,12 +54,12 @@ namespace PG.CGStudio.Selection
 
             world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
 
-            Canvas3d.Instance.Update(world);
-            Canvas3d.Instance.Render();
+            canvas.Update(world);
+            canvas.Render();
 
             cylinders.Add( cylinder );
 
-            Canvas3d.Instance.UICtrl = new CameraUICtrl();
+            canvas.UICtrl = new CameraUICtrl(canvas);
         }
     }
 }

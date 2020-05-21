@@ -24,9 +24,12 @@ namespace PG.CGStudio.Selection
 
         private readonly World world;
 
-        public BoxRegionSelectViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public BoxRegionSelectViewModel(World world, Canvas3d canvas)
         {
             this.world = world;
+            this.canvas = canvas;
             this.PickCommand.Subscribe(OnPickUI);
         }
 
@@ -58,12 +61,12 @@ namespace PG.CGStudio.Selection
 
             world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
 
-            Canvas3d.Instance.Update(world);
-            Canvas3d.Instance.Render();
+            canvas.Update(world);
+            canvas.Render();
 
             boxes.Add(box);
 
-            Canvas3d.Instance.UICtrl = new CameraUICtrl();
+            canvas.UICtrl = new CameraUICtrl(canvas);
         }
     }
 }

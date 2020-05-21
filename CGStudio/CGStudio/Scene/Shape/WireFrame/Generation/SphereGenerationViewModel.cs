@@ -23,8 +23,14 @@ namespace PG.CGStudio.Generation.WireFrame
         public AppearanceViewModel AppearanceViewModel { get; }
             = new AppearanceViewModel();
 
-        public SphereGenerationViewModel(World world)
+        private readonly World world;
+
+        private readonly Canvas3d canvas;
+
+        public SphereGenerationViewModel(World world, Canvas3d canvas)
         {
+            this.world = world;
+            this.canvas = canvas;
             this.GenerationCommand.Subscribe(() => OnExecute(world));
         }
 
@@ -34,10 +40,10 @@ namespace PG.CGStudio.Generation.WireFrame
             builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);
 
             var newId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "WFSphere", AppearanceViewModel.Value, 1);
-            Canvas3d.Instance.Camera.Fit();
+            canvas.Camera.Fit();
 
-            Canvas3d.Instance.BuildShader(world, newId);
-            Canvas3d.Instance.Render();
+            canvas.BuildShader(world, newId);
+            canvas.Render();
         }
     }
 }

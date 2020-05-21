@@ -26,9 +26,12 @@ namespace PG.CGStudio
 
         private readonly World world;
 
-        public FileIOViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public FileIOViewModel(World world, Canvas3d canvas)
         {
             this.world = world;
+            this.canvas = canvas;
             NewCommand.Subscribe(OnNew);
             OpenCommand.Subscribe(OnOpen);
             SaveCommand.Subscribe(OnSave);
@@ -40,9 +43,9 @@ namespace PG.CGStudio
         private void OnNew()
         {
             world.New();
-            Canvas3d.Instance.Renderer.Build(world.Adapter);
-            Canvas3d.Instance.Update(world);
-            Canvas3d.Instance.Render();
+            canvas.Renderer.Build(world.Adapter);
+            canvas.Update(world);
+            canvas.Render();
         }
 
         private void OnOpen()
@@ -93,8 +96,8 @@ namespace PG.CGStudio
                 if(Import(dialog.FileName))
                 {
                     world.Scenes.Sync();
-                    Canvas3d.Instance.Update(world);
-                    Canvas3d.Instance.Render();
+                    canvas.Update(world);
+                    canvas.Render();
                     MessageBox.Show("Import Suceeded");                    
                 }
                 else

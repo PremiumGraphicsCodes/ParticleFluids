@@ -20,11 +20,14 @@ namespace PG.CGStudio.Scene.Shape.Trim
 
         private readonly World world;
 
-        public TrimViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public TrimViewModel(World world, Canvas3d canvas)
         {
             this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
-            this.RegionSelectViewModel = new SphereRegionSelectViewModel(world);
+            this.RegionSelectViewModel = new SphereRegionSelectViewModel(world, canvas);
             this.world = world;
+            this.canvas = canvas;
             OkCommand.Subscribe(OnOk);
         }
 
@@ -39,8 +42,8 @@ namespace PG.CGStudio.Scene.Shape.Trim
 
             //World.Instance.Items.Clear();
 
-            Canvas3d.Instance.Update(world);
-            Canvas3d.Instance.Render();
+            canvas.Update(world);
+            canvas.Render();
 
             world.Scenes.Sync();
         }

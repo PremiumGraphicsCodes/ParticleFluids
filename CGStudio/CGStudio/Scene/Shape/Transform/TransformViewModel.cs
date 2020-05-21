@@ -1,6 +1,7 @@
 ﻿using PG.CGStudio.Object.Select;
 using PG.CGStudio.Scene.Shape.Transform;
 using PG.CGStudio.Scene.Shape.Transform.Scale;
+using PG.Control.OpenGL;
 using Prism.Mvvm;
 using Prism.Regions;
 
@@ -16,12 +17,12 @@ namespace PG.CGStudio.Object.Transform
 
         public RotateViewModel RotateViewModel { get; }
         
-        public TransformViewModel(World world)
+        public TransformViewModel(World world, Canvas3d canvas)
         {
             this.SelectViewModel = new ShapeSelectViewModel(world);
-            this.TranslateViewModel = new TranslateViewModel(world);
+            this.TranslateViewModel = new TranslateViewModel(world, canvas);
             this.ScaleViewModel = new ScaleViewModel(world);
-            this.RotateViewModel = new RotateViewModel(world);
+            this.RotateViewModel = new RotateViewModel(world, canvas);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

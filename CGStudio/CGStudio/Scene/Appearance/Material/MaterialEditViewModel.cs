@@ -19,9 +19,12 @@ namespace PG.CGStudio.Material
 
         private readonly World world;
 
-        public MaterialEditViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public MaterialEditViewModel(World world, Canvas3d canvas)
         {
             this.world = world;
+            this.canvas = canvas;
             this.Id = new ReactiveProperty<int>();
             this.Name = new ReactiveProperty<string>();
             this.MaterialViewModel = new MaterialViewModel();
@@ -32,8 +35,8 @@ namespace PG.CGStudio.Material
         private void OnOk()
         {
             world.Scenes.SetMaterialScene(MaterialViewModel.Value, Name.Value, Id.Value );
-            Canvas3d.Instance.Update(world);
-            Canvas3d.Instance.Render();
+            canvas.Update(world);
+            canvas.Render();
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

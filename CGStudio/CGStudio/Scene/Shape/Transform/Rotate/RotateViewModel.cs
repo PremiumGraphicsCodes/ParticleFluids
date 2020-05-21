@@ -27,9 +27,12 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         private readonly World world;
 
-        public RotateViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public RotateViewModel(World world, Canvas3d canvas)
         {
             this.world = world;
+            this.canvas = canvas;
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
 
@@ -47,7 +50,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
             var center = world.Scenes.GetCenter(id.parentId);
             CenterViewModel.Value = center;
-            Canvas3d.Instance.UICtrl = new RotateUICtrl(this);
+            canvas.UICtrl = new RotateUICtrl(this, canvas);
         }
 
 
@@ -64,7 +67,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
         private void OnCancel()
         {
             world.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, Matrix4d.Identity());
-            var canvas = Canvas3d.Instance;
             canvas.Update(world);
             canvas.Render();
 
@@ -77,7 +79,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
             if (doRender)
             {
-                var canvas = Canvas3d.Instance;
                 canvas.Update(world);
                 canvas.Render();
             }
@@ -89,7 +90,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
             if (doRender)
             {
-                var canvas = Canvas3d.Instance;
                 canvas.Update(world);
                 canvas.Render();
             }

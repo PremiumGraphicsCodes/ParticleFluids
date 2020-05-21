@@ -22,9 +22,12 @@ namespace PG.CGStudio
 
         private readonly World world;
 
-        public CameraControlViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public CameraControlViewModel(World world, Canvas3d canvas)
         {
             this.world = world;
+            this.canvas = canvas;
             XYCommand.Subscribe(OnXY);
             YZCommand.Subscribe(OnYZ);
             ZXCommand.Subscribe(OnZX);
@@ -34,22 +37,22 @@ namespace PG.CGStudio
 
         private void OnXY()
         {
-            Canvas3d.Instance.Camera.SetXY();
-            Canvas3d.Instance.Render();
+            canvas.Camera.SetXY();
+            canvas.Render();
         }
 
         private void OnYZ()
         {
             var command = new PG.CLI.Command(CameraLabels.CameraYZCommandLabel);
             command.Execute(world.Adapter);
-            Canvas3d.Instance.Render();
+            canvas.Render();
         }
 
         private void OnZX()
         {
             var command = new PG.CLI.Command(CameraLabels.CameraZXCommandLabel);
             command.Execute(world.Adapter);
-            Canvas3d.Instance.Render();
+            canvas.Render();
         }
 
         private void OnXYZ()
@@ -59,8 +62,8 @@ namespace PG.CGStudio
 
         private void OnFit()
         {
-            Canvas3d.Instance.Camera.Fit();
-            Canvas3d.Instance.Render();
+            canvas.Camera.Fit();
+            canvas.Render();
         }
     }
 }
