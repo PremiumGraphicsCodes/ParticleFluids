@@ -10,12 +10,12 @@ namespace PG.CGStudio
 
         public ReactiveCommand PickUICtrlCommand { get; }
 
-        public UIControlViewModel()
+        public UIControlViewModel(World world)
         {
             this.CameraUICtrlCommand = new ReactiveCommand();
             this.CameraUICtrlCommand.Subscribe(OnCameraUICtrl);
             this.PickUICtrlCommand = new ReactiveCommand();
-            this.PickUICtrlCommand.Subscribe(OnPickUICtrl);
+            this.PickUICtrlCommand.Subscribe(() => OnPickUICtrl(world));
         }
 
         private void OnCameraUICtrl()
@@ -23,9 +23,9 @@ namespace PG.CGStudio
             Canvas3d.Instance.UICtrl = new CameraUICtrl();
         }
 
-        private void OnPickUICtrl()
+        private void OnPickUICtrl(World world)
         {
-            Canvas3d.Instance.UICtrl = new PickUICtrl(10, Core.SceneType.AllScene);
+            Canvas3d.Instance.UICtrl = new PickUICtrl(world, 10, Core.SceneType.AllScene);
         }
     }
 }

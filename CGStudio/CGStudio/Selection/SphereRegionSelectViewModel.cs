@@ -24,22 +24,24 @@ namespace PG.CGStudio.Selection
         public ReactiveCommand PickCommand { get; }
             = new ReactiveCommand();
 
-        public SphereRegionSelectViewModel()
+        private readonly World world;
+
+        public SphereRegionSelectViewModel(World world)
         {
+            this.world = world;
             PickCommand.Subscribe(OnPickUI);
         }
 
         private void OnPickUI()
         {
-            var picker = new PickUICtrl(10, SceneType.AllScene);
+            var picker = new PickUICtrl(world, 10, SceneType.AllScene);
             picker.AddAction(OnPicked);
             Canvas3d.Instance.UICtrl = picker;
         }
 
         private void OnPicked(ObjectId id)
         {
-            var model = World.Instance.Adapter;
-            var position = World.Instance.Scenes.GetPosition( id );
+            var position = world.Scenes.GetPosition( id );
 
             var sphere = new Sphere3d(Radius.Value, position);
             var builder = new WireFrameBuilder();
@@ -50,9 +52,9 @@ namespace PG.CGStudio.Selection
                 Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f)
             };
 
-            World.Instance.Scenes.AddWireFrameScene(builder.ToWireFrame(), "Item",appearance, 0);
+            world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "Item",appearance, 0);
 
-            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.Update(world);
             Canvas3d.Instance.Render();
 
             spheres.Add(sphere);

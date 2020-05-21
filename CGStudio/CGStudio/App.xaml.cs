@@ -35,7 +35,6 @@ namespace PG.CGStudio
             Canvas3d.CreateInstance();
             containerRegistry.RegisterInstance<Canvas3d>(Canvas3d.Instance);
 
-
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.CylinderGenerationView>("PSCylinderGeneration");

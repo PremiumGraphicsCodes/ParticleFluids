@@ -16,8 +16,11 @@ namespace PG.CGStudio.Light
 
         public ReactiveCommand OKCommand { get; }
 
-        public LightEditViewModel()
+        private readonly World world;
+
+        public LightEditViewModel(World world)
         {
+            this.world = world;
             this.Id = new ReactiveProperty<int>();
             this.Name = new ReactiveProperty<string>();
             this.PointLightViewModel = new PointLightViewModel();
@@ -27,7 +30,6 @@ namespace PG.CGStudio.Light
 
         private void OnOk()
         {
-            var world = World.Instance;
             world.Scenes.SetLightScene(PointLightViewModel.Value, Name.Value, Id.Value);
             Canvas3d.Instance.Update(world);
             Canvas3d.Instance.Render();
@@ -48,12 +50,12 @@ namespace PG.CGStudio.Light
             var id = (int)navigationContext.Parameters["Id"];
             var command = new PG.CLI.Command();
             command.SetArg(PG.SceneGetLabels.IdLabel, id);
-            command.Execute(World.Instance.Adapter);
+            command.Execute(world.Adapter);
             var name = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
             Id.Value = id;
             Name.Value = name;
 
-            var light = World.Instance.Scenes.GetLightScene(id);
+            var light = world.Scenes.GetLightScene(id);
             PointLightViewModel.Value = light;
         }
     }

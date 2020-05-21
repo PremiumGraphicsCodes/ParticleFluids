@@ -9,19 +9,19 @@ namespace PG.CGStudio.Object.Transform
     public class TransformViewModel : BindableBase, INavigationAware
     {
         public ShapeSelectViewModel SelectViewModel { get; }
-            = new ShapeSelectViewModel();
 
         public TranslateViewModel TranslateViewModel { get; }
-            = new TranslateViewModel();
 
         public ScaleViewModel ScaleViewModel { get; }
-            = new ScaleViewModel();
 
         public RotateViewModel RotateViewModel { get; }
-            = new RotateViewModel();
-
-        public TransformViewModel()
+        
+        public TransformViewModel(World world)
         {
+            this.SelectViewModel = new ShapeSelectViewModel(world);
+            this.TranslateViewModel = new TranslateViewModel(world);
+            this.ScaleViewModel = new ScaleViewModel(world);
+            this.RotateViewModel = new RotateViewModel(world);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

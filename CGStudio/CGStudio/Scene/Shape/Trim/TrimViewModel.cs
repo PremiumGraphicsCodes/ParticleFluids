@@ -12,16 +12,19 @@ namespace PG.CGStudio.Scene.Shape.Trim
     public class TrimViewModel : BindableBase
     {
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
-            = new ShapeSelectViewModel();
 
         public SphereRegionSelectViewModel RegionSelectViewModel { get; }
-            = new SphereRegionSelectViewModel();
 
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        public TrimViewModel()
+        private readonly World world;
+
+        public TrimViewModel(World world)
         {
+            this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
+            this.RegionSelectViewModel = new SphereRegionSelectViewModel(world);
+            this.world = world;
             OkCommand.Subscribe(OnOk);
         }
 
@@ -31,15 +34,15 @@ namespace PG.CGStudio.Scene.Shape.Trim
             var command = new PG.CLI.Command(Label.TrimCommandLabel);
             command.SetArg(Label.ShapeIdLabel, ShapeSelectViewModel.Id.Value);
             command.SetArg("Spheres", regions);
-            command.Execute(World.Instance.Adapter);
+            command.Execute(world.Adapter);
             var newId = command.GetResult<int>(Label.NewIdLabel);
 
             //World.Instance.Items.Clear();
 
-            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.Update(world);
             Canvas3d.Instance.Render();
 
-            World.Instance.Scenes.Sync();
+            world.Scenes.Sync();
         }
     }
 }

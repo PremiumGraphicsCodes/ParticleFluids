@@ -11,6 +11,12 @@ namespace PG.CGStudio
 
         private IRegionManager regionManager;
 
+        public FileIOViewModel FileIOViewModel { get; }
+
+        public CameraControlViewModel CameraControlViewModel { get; }
+
+        public UIControlViewModel UIControlViewModel { get; }
+
         private static MainWindowViewModel instance;
 
         public static MainWindowViewModel Instance
@@ -21,12 +27,15 @@ namespace PG.CGStudio
             }
         }
 
-        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container, World world)
         {
             instance = this;
 
             this.regionManager = regionManager;
             NavigateCommand = new DelegateCommand<string>(OnNavigate);// (name => );
+            this.FileIOViewModel = new FileIOViewModel(world);
+            this.CameraControlViewModel = new CameraControlViewModel(world);
+            this.UIControlViewModel = new UIControlViewModel(world);
         }
 
         private void OnNavigate(string name)

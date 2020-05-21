@@ -8,13 +8,10 @@ namespace PG.CGStudio.Selection
     public class RegionSelectViewModel
     {
         public SphereRegionSelectViewModel SphereRegionSelectViewModel { get; }
-            = new SphereRegionSelectViewModel();
 
         public BoxRegionSelectViewModel BoxRegionSelectViewModel { get; }
-            = new BoxRegionSelectViewModel();
 
         public CylinderRegionSelectViewModel CylinderRegionSelectViewModel { get; }
-            = new CylinderRegionSelectViewModel();
 
         public Space3d Space
         {
@@ -39,8 +36,11 @@ namespace PG.CGStudio.Selection
             }
         }
 
-        public RegionSelectViewModel()
+        public RegionSelectViewModel(World world)
         {
+            this.SphereRegionSelectViewModel = new SphereRegionSelectViewModel(world);
+            this.BoxRegionSelectViewModel = new BoxRegionSelectViewModel(world);
+            this.CylinderRegionSelectViewModel = new CylinderRegionSelectViewModel(world);
         }
     }
 }

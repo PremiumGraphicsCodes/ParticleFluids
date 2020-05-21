@@ -20,12 +20,12 @@ namespace PG.CGStudio.Generation.WireFrame
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        public EllipseGenerationViewModel()
+        public EllipseGenerationViewModel(World world)
         {
-            OkCommand.Subscribe(OnOk);
+            OkCommand.Subscribe(() => OnOk(world));
         }
 
-        private void OnOk()
+        private void OnOk(World world)
         {
             var circle = CircleViewModel.Value;
             var builder = new WireFrameBuilder();
@@ -33,11 +33,11 @@ namespace PG.CGStudio.Generation.WireFrame
             var shape = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
 
-            World.Instance.Scenes.AddWireFrameScene(shape, "WFCircle", appearance, 1);
-            World.Instance.Scenes.Sync();
+            world.Scenes.AddWireFrameScene(shape, "WFCircle", appearance, 1);
+            world.Scenes.Sync();
             Canvas3d.Instance.Camera.Fit();
 
-            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.Update(world);
             Canvas3d.Instance.Render();
         }
     }

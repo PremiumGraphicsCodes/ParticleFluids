@@ -18,10 +18,10 @@ namespace PG.CGStudio.Object.Select
 
         public PickUICtrl Picker { get; }
 
-        public ShapeSelectViewModel()
+        public ShapeSelectViewModel(World world)
         {
             PickCommand.Subscribe(OnPickUI);
-            Picker = new PickUICtrl(10, Core.SceneType.AllScene);
+            Picker = new PickUICtrl(world, 10, Core.SceneType.AllScene);
             Picker.AddAction( OnPicked );
         }
 

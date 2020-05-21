@@ -20,8 +20,11 @@ namespace PG.CGStudio
         public ReactiveCommand FitCommand { get; }
             = new ReactiveCommand();
 
-        public CameraControlViewModel()
+        private readonly World world;
+
+        public CameraControlViewModel(World world)
         {
+            this.world = world;
             XYCommand.Subscribe(OnXY);
             YZCommand.Subscribe(OnYZ);
             ZXCommand.Subscribe(OnZX);
@@ -38,14 +41,14 @@ namespace PG.CGStudio
         private void OnYZ()
         {
             var command = new PG.CLI.Command(CameraLabels.CameraYZCommandLabel);
-            command.Execute(World.Instance.Adapter);
+            command.Execute(world.Adapter);
             Canvas3d.Instance.Render();
         }
 
         private void OnZX()
         {
             var command = new PG.CLI.Command(CameraLabels.CameraZXCommandLabel);
-            command.Execute(World.Instance.Adapter);
+            command.Execute(world.Adapter);
             Canvas3d.Instance.Render();
         }
 

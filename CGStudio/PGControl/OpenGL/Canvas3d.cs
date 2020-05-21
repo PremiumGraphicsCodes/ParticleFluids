@@ -43,7 +43,7 @@ namespace PG.Control.OpenGL
 
         public void CreateRenderer(System.IntPtr handle, World world)
         {
-            renderer = new PG.CLI.Renderer(handle, World.Instance.Adapter);
+            renderer = new PG.CLI.Renderer(handle, world.Adapter);
             this.renderer.Build(world.Adapter);
             this.Camera = new CameraModel(world.Adapter);
         }

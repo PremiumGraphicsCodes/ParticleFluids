@@ -8,7 +8,6 @@ namespace PG.CGStudio.Scene
     public class SceneExportViewModel
     {
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
-            = new ShapeSelectViewModel();
 
         public ReactiveProperty<string> FilePath { get; }
             = new ReactiveProperty<string>();
@@ -19,8 +18,9 @@ namespace PG.CGStudio.Scene
         public ReactiveCommand ExportCommand { get; }
             = new ReactiveCommand();
 
-        public SceneExportViewModel()
+        public SceneExportViewModel(World world)
         {
+            this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
             this.FileSelectCommand.Subscribe(OnFileSelect);
             this.ExportCommand.Subscribe(OnExport);
         }

@@ -16,21 +16,21 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh.Generation
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public CircleGenerationViewModel()
+        public CircleGenerationViewModel(World world)
         {
-            GenerationCommand.Subscribe(OnGenerate);
+            GenerationCommand.Subscribe(() => OnGenerate(world));
         }
 
-        private void OnGenerate()
+        private void OnGenerate(World world)
         {
             var builder = new PolygonMeshBuilder();
             builder.Add(CircleViewModel.Value, UNum.Value);
 
-            World.Instance.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCircle", 1);
-            World.Instance.Scenes.Sync();
+            world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCircle", 1);
+            world.Scenes.Sync();
             Canvas3d.Instance.Camera.Fit();
 
-            Canvas3d.Instance.Update(World.Instance);
+            Canvas3d.Instance.Update(world);
             Canvas3d.Instance.Render();
         }
     }

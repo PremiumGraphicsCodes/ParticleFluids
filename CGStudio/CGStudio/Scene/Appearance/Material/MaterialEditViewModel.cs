@@ -17,8 +17,11 @@ namespace PG.CGStudio.Material
 
         public ReactiveCommand OKCommand { get; }
 
-        public MaterialEditViewModel()
+        private readonly World world;
+
+        public MaterialEditViewModel(World world)
         {
+            this.world = world;
             this.Id = new ReactiveProperty<int>();
             this.Name = new ReactiveProperty<string>();
             this.MaterialViewModel = new MaterialViewModel();
@@ -28,7 +31,6 @@ namespace PG.CGStudio.Material
 
         private void OnOk()
         {
-            var world = World.Instance;
             world.Scenes.SetMaterialScene(MaterialViewModel.Value, Name.Value, Id.Value );
             Canvas3d.Instance.Update(world);
             Canvas3d.Instance.Render();
@@ -38,11 +40,11 @@ namespace PG.CGStudio.Material
         {
             var id = (int)navigationContext.Parameters["Id"];
             this.Id.Value = id;
-            var material = World.Instance.Scenes.GetMaterialScene(id);
+            var material = world.Scenes.GetMaterialScene(id);
             this.MaterialViewModel.Value = material;
             var command = new PG.CLI.Command();
             command.SetArg(PG.SceneGetLabels.IdLabel, id);
-            command.Execute(World.Instance.Adapter);
+            command.Execute(world.Adapter);
             this.Name.Value = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
         }
 

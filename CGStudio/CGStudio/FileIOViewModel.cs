@@ -24,8 +24,11 @@ namespace PG.CGStudio
         public ReactiveCommand ExportCommand { get; }
             = new ReactiveCommand();
 
-        public FileIOViewModel()
+        private readonly World world;
+
+        public FileIOViewModel(World world)
         {
+            this.world = world;
             NewCommand.Subscribe(OnNew);
             OpenCommand.Subscribe(OnOpen);
             SaveCommand.Subscribe(OnSave);
@@ -36,9 +39,9 @@ namespace PG.CGStudio
 
         private void OnNew()
         {
-            World.Instance.New();
-            Canvas3d.Instance.Renderer.Build(World.Instance.Adapter);
-            Canvas3d.Instance.Update(World.Instance);
+            world.New();
+            Canvas3d.Instance.Renderer.Build(world.Adapter);
+            Canvas3d.Instance.Update(world);
             Canvas3d.Instance.Render();
         }
 
@@ -50,8 +53,7 @@ namespace PG.CGStudio
             };
             if ( DialogResult.OK == dialog.ShowDialog() )
             {
-                var model = World.Instance;
-                model.Open(dialog.FileName);
+                world.Open(dialog.FileName);
             }
         }
 
@@ -63,8 +65,7 @@ namespace PG.CGStudio
             };
             if ( DialogResult.OK == dialog.ShowDialog() )
             {
-                var model = World.Instance;
-                model.Save(dialog.FileName);
+                world.Save(dialog.FileName);
             }
         }
 
@@ -76,8 +77,7 @@ namespace PG.CGStudio
             };
             if (DialogResult.OK == dialog.ShowDialog())
             {
-                var model = World.Instance;
-                model.Save(dialog.FileName);
+                world.Save(dialog.FileName);
             }
         }
 
@@ -92,8 +92,8 @@ namespace PG.CGStudio
             {
                 if(Import(dialog.FileName))
                 {
-                    World.Instance.Scenes.Sync();
-                    Canvas3d.Instance.Update(World.Instance);
+                    world.Scenes.Sync();
+                    Canvas3d.Instance.Update(world);
                     Canvas3d.Instance.Render();
                     MessageBox.Show("Import Suceeded");                    
                 }
@@ -106,10 +106,9 @@ namespace PG.CGStudio
 
         private bool Import(string filePath)
         {
-            var model = World.Instance;
             var command = new PG.CLI.Command(PG.FileImportLabels.FileImportCommandLabel);
             command.SetArg(PG.FileImportLabels.FilePathLabel, filePath);
-            command.Execute(model.Adapter);
+            command.Execute(world.Adapter);
             var isOk = command.GetResult<bool>(PG.FileImportLabels.IsOkLabel);
             return isOk;
         }
@@ -136,10 +135,9 @@ namespace PG.CGStudio
 
         private bool Export(string filePath)
         {
-            var model = World.Instance;
             var command = new PG.CLI.Command("FileExport");
             command.SetArg("FilePath", filePath);
-            command.Execute(model.Adapter);
+            command.Execute(world.Adapter);
             var isOk = command.GetResult<bool>("IsOk");
             return false;
         }

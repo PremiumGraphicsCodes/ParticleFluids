@@ -22,10 +22,7 @@
         </Grid.RowDefinitions>
         <Fluent:Ribbon Grid.Row="0">
             <Fluent:Ribbon.Menu>
-                <Fluent:ApplicationMenu Header="File">
-                    <Fluent:ApplicationMenu.DataContext>
-                        <local:FileIOViewModel/>
-                    </Fluent:ApplicationMenu.DataContext>
+                <Fluent:ApplicationMenu Header="File" DataContext="{Binding FileIOViewModel}">
                     <Fluent:MenuItem Header="New" Command="{Binding NewCommand}"/>
                     <Fluent:MenuItem Header="Open" Command="{Binding OpenCommand}"/>
                     <Fluent:MenuItem Header="Save" Command="{Binding SaveCommand}"/>
@@ -63,20 +60,14 @@
             </Fluent:RibbonTabItem>
 
             <Fluent:RibbonTabItem Header="View" KeyTip="T1">
-                <Fluent:RibbonGroupBox Header="Camera" KeyTip="B">
-                    <Fluent:RibbonGroupBox.DataContext>
-                        <local:CameraControlViewModel/>
-                    </Fluent:RibbonGroupBox.DataContext>
+                <Fluent:RibbonGroupBox Header="Camera" KeyTip="B" DataContext="{Binding CameraControlViewModel}">
                     <Fluent:Button Header="XY" KeyTip="BI" Command="{Binding XYCommand}"/>
                     <Fluent:Button Header="YZ" KeyTip="BI" Command="{Binding YZCommand}"/>
                     <Fluent:Button Header="ZX" KeyTip="BI" Command="{Binding ZXCommand}"/>
                     <Fluent:Button Header="XYZ" KeyTip="BI" Command="{Binding XYZCommand}"/>
                     <Fluent:Button Header="Fit" KeyTip="BI" Command="{Binding FitCommand}"/>
                 </Fluent:RibbonGroupBox>
-                <Fluent:RibbonGroupBox Header="UICtrl" KeyTip="B">
-                    <Fluent:RibbonGroupBox.DataContext>
-                        <local:UIControlViewModel/>
-                    </Fluent:RibbonGroupBox.DataContext>
+                <Fluent:RibbonGroupBox Header="UICtrl" KeyTip="B" DataContext="{Binding UIControlViewModel}">
                     <Fluent:Button Header="Camera" KeyTip="BI" Command="{Binding CameraUICtrlCommand}"/>
                     <Fluent:Button Header="Pick" KeyTip="BI" Command="{Binding PickUICtrlCommand}"/>
                 </Fluent:RibbonGroupBox>

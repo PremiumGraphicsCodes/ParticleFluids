@@ -13,7 +13,6 @@ namespace PG.CGStudio.Scene.Shape.Transform
     public class TranslateViewModel
     {
         public ShapeSelectViewModel ShapeSelectViewModel { get; }
-            = new ShapeSelectViewModel();
 
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
@@ -24,8 +23,12 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public Vector3dViewModel Translate { get; }
             = new Vector3dViewModel();
 
-        public TranslateViewModel()
+        private readonly World world;
+
+        public TranslateViewModel(World world)
         {
+            this.world = world;
+            this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
             Canvas3d.Instance.UICtrl = ShapeSelectViewModel.Picker;
             ShapeSelectViewModel.Picker.AddAction(OnSelected);
 
@@ -43,24 +46,24 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void SetMatrix(bool doRender)
         {
-            World.Instance.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
+            world.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {
                 var canvas = Canvas3d.Instance;
-                canvas.Update(World.Instance);
+                canvas.Update(world);
                 canvas.Render();
             }
         }
 
         public void Transform(bool doRender)
         {
-            World.Instance.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
+            world.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {
                 var canvas = Canvas3d.Instance;
-                canvas.Update(World.Instance);
+                canvas.Update(world);
                 canvas.Render();
             }
         }
@@ -85,8 +88,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
             Translate.Value = new Vector3d(0, 0, 0);
             SetMatrix(true);
 
-            World.Instance.Scenes.Clear(0);
-            World.Instance.Scenes.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
+            world.Scenes.Clear(0);
+            world.Scenes.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
         }
 
         private void OnCancel()
