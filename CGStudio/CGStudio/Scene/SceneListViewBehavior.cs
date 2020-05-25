@@ -45,11 +45,13 @@ namespace PG.CGStudio.Object
 
         private void ItemDoubleClicked(object sender, MouseButtonEventArgs e)
         {
+            var view = sender as TreeView;
             var treeView = e.Source as TreeView;
             if (treeView == null)
             {
                 return;
             }
+            var viewModel = treeView.DataContext as SceneListViewModel;
             var selectedItem = treeView.SelectedItem as SceneModel;
             if (selectedItem == null)
             {
@@ -65,15 +67,15 @@ namespace PG.CGStudio.Object
             {
                 case SceneType.ParticleSystem:
                     parameters.Add("ParticleSystemEdit", selectedItem);
-                    RequestNavigate("ParticleSystemEdit", parameters);
+                    viewModel.NavigateView("ParticleSystemEdit", parameters);
                     break;
                 case SceneType.WireFrame:
                     parameters.Add("WireFrameEdit", selectedItem);
-                    RequestNavigate("WireFrameEdit", parameters);
+                    viewModel.NavigateView("WireFrameEdit", parameters);
                     break;
                 case SceneType.PolygonMesh:
                     parameters.Add("PolygonMeshEdit", selectedItem);
-                    RequestNavigate("PolygonMeshEdit", parameters);
+                    viewModel.NavigateView("PolygonMeshEdit", parameters);
                     break;
                 case SceneType.FaceGroup:
                     parameters.Add("FaceGroupEdit", selectedItem);
