@@ -17,6 +17,18 @@ namespace PG.CGStudio
                 dialog.Show();
             };
             */
-        }        
+        }
+
+        private void Grid_Initialized(object sender, System.EventArgs e)
+        {
+        }
+
+        private void RibbonWindow_Initialized(object sender, System.EventArgs e)
+        {
+            var dataContext = this.DataContext as MainWindowViewModel;
+            var canvas = dataContext.Canvas;
+            HwndHostPresenter.SetCanvas(canvas);
+
+        }
     }
 }

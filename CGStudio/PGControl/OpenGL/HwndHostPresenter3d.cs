@@ -28,7 +28,7 @@ namespace PG.CGStudio
     {
         private System.Windows.Forms.Panel Panel { get; }
 
-        public Canvas3d Canvas { get { return Canvas3d.Instance; } }
+        public Canvas3d Canvas;
 
         public HwndHostPresenter3d()
         {
@@ -43,9 +43,14 @@ namespace PG.CGStudio
 
         }
 
+        public void SetCanvas(Canvas3d canvas)
+        {
+            this.Canvas = canvas;
+            Canvas.CreateRenderer(Panel.Handle);
+        }
+
         private void Host_Initialized(object sender, EventArgs e)
         {
-            Canvas.CreateRenderer(Panel.Handle);
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;
