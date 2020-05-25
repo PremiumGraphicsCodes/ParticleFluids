@@ -11,13 +11,13 @@ namespace PG.CGStudio
 
         public SceneListModel Scenes { get; }
 
-        public static World Instance;
+//        public static World Instance;
 
         public World()
         {
             this.adapter = new PG.CLI.WorldAdapter();
             this.Scenes = new SceneListModel(adapter);
-            Instance = this;
+            //Instance = this;
         }
 
         /*

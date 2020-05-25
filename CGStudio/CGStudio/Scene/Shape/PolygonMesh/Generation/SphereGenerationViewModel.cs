@@ -21,9 +21,9 @@ namespace PG.CGStudio.Generation.PolygonMesh
         public Sphere3dViewModel SphereViewModel { get; }
             = new Sphere3dViewModel();
 
-        private World world;
+        private readonly World world;
 
-        private Canvas3d canvas;
+        private readonly Canvas3d canvas;
 
         public SphereGenerationViewModel(World world, Canvas3d canvas)
         {
@@ -43,7 +43,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
             world.Scenes.Sync();
 
             canvas.Camera.Fit();
-            canvas.Update(World.Instance);
+            canvas.Update(world);
             canvas.Render();
         }
     }

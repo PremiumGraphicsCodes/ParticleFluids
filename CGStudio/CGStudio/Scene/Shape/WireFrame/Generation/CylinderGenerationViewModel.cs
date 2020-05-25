@@ -42,7 +42,7 @@ namespace PG.CGStudio.Generation.WireFrame
             world.Scenes.Sync();
 
             canvas.Camera.Fit();
-            canvas.Update(World.Instance);
+            canvas.Update(world);
             canvas.Render();
         }
     }

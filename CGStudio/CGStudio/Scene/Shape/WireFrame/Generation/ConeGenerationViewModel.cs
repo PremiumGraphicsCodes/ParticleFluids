@@ -13,10 +13,13 @@ namespace PG.CGStudio.Generation.WireFrame
 
         public ReactiveCommand GenerationCommand { get; }
 
-        private Canvas3d canvas;
+        private readonly World world;
 
-        public ConeGenerationViewModel(Canvas3d canvas)
+        private readonly Canvas3d canvas;
+
+        public ConeGenerationViewModel(World world, Canvas3d canvas)
         {
+            this.world = world;
             this.canvas = canvas;
             this.ConeViewModel = new Cone3dViewModel();
             this.AppearanceViewModel = new AppearanceViewModel();
@@ -32,11 +35,11 @@ namespace PG.CGStudio.Generation.WireFrame
             var wireFrame = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
 
-            World.Instance.Scenes.AddWireFrameScene(wireFrame, "WFCone", appearance, 1);
-            World.Instance.Scenes.Sync();
+            world.Scenes.AddWireFrameScene(wireFrame, "WFCone", appearance, 1);
+            world.Scenes.Sync();
             canvas.Camera.Fit();
 
-            canvas.Update(World.Instance);
+            canvas.Update(world);
             canvas.Render();
         }
 

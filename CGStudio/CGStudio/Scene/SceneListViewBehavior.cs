@@ -53,49 +53,8 @@ namespace PG.CGStudio.Object
             }
             var viewModel = treeView.DataContext as SceneListViewModel;
             var selectedItem = treeView.SelectedItem as SceneModel;
-            if (selectedItem == null)
-            {
-                return;
-            }
-            var parameters = new NavigationParameters();
-            parameters.Add("Id", selectedItem.Id.Value);
-            var command = new PG.CLI.Command(SceneGetLabels.CommandLabel);
-            command.SetArg(SceneGetLabels.IdLabel, selectedItem.Id.Value);
-            command.Execute(World.Instance.Adapter);
-            var type = command.GetResult<SceneType>(SceneGetLabels.TypeLabel);
-            switch(type)
-            {
-                case SceneType.ParticleSystem:
-                    parameters.Add("ParticleSystemEdit", selectedItem);
-                    viewModel.NavigateView("ParticleSystemEdit", parameters);
-                    break;
-                case SceneType.WireFrame:
-                    parameters.Add("WireFrameEdit", selectedItem);
-                    viewModel.NavigateView("WireFrameEdit", parameters);
-                    break;
-                case SceneType.PolygonMesh:
-                    parameters.Add("PolygonMeshEdit", selectedItem);
-                    viewModel.NavigateView("PolygonMeshEdit", parameters);
-                    break;
-                case SceneType.FaceGroup:
-                    parameters.Add("FaceGroupEdit", selectedItem);
-                    viewModel.NavigateView("FaceGroupEdit", parameters);
-                    break;
-                case SceneType.PointLight:
-                    parameters.Add("LightEdit", selectedItem);
-                    viewModel.NavigateView("LightEdit", parameters);
-                    break;
-                case SceneType.Material:
-                    parameters.Add("MaterialEdit", selectedItem);
-                    viewModel.NavigateView("MaterialEdit", parameters);
-                    break;
-                case SceneType.Texture:
-                    parameters.Add("TextureEdit", selectedItem);
-                    viewModel.NavigateView("TextureEdit", parameters);
-                    break;
-                default:
-                    break;
-            }
+
+            viewModel.ChangeView(selectedItem);
         }
     }
 }
