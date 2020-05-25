@@ -20,19 +20,8 @@ namespace PG.CGStudio
 
         public Canvas3d Canvas { get; }
 
-        private static MainWindowViewModel instance;
-
-        public static MainWindowViewModel Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container, World world, Canvas3d canvas)
         {
-            instance = this;
             this.Canvas = canvas;
 
             this.regionManager = regionManager;

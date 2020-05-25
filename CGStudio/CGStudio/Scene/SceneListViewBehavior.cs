@@ -79,28 +79,23 @@ namespace PG.CGStudio.Object
                     break;
                 case SceneType.FaceGroup:
                     parameters.Add("FaceGroupEdit", selectedItem);
-                    RequestNavigate("FaceGroupEdit", parameters);
+                    viewModel.NavigateView("FaceGroupEdit", parameters);
                     break;
                 case SceneType.PointLight:
                     parameters.Add("LightEdit", selectedItem);
-                    RequestNavigate("LightEdit", parameters);
+                    viewModel.NavigateView("LightEdit", parameters);
                     break;
                 case SceneType.Material:
                     parameters.Add("MaterialEdit", selectedItem);
-                    RequestNavigate("MaterialEdit", parameters);
+                    viewModel.NavigateView("MaterialEdit", parameters);
                     break;
                 case SceneType.Texture:
                     parameters.Add("TextureEdit", selectedItem);
-                    RequestNavigate("TextureEdit", parameters);
+                    viewModel.NavigateView("TextureEdit", parameters);
                     break;
                 default:
                     break;
             }
-        }
-
-        private void RequestNavigate(string name, NavigationParameters parameters)
-        {
-            MainWindowViewModel.Instance.NavigateWithParam(name, parameters);
         }
     }
 }
