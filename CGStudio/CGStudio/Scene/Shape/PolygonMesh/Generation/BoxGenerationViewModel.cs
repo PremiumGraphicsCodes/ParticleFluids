@@ -13,10 +13,13 @@ namespace PG.CGStudio.Generation.PolygonMesh
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
+        private readonly World world;
+
         private readonly Canvas3d canvas;
 
-        public BoxGenerationViewModel(Canvas3d canvas)
+        public BoxGenerationViewModel(World world, Canvas3d canvas)
         {
+            this.world = world;
             this.canvas = canvas;
             GenerationCommand.Subscribe(OnGenerate);
         }
@@ -27,11 +30,11 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var box = BoxViewModel.Value;
             builder.Add(box);
 
-            World.Instance.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMBox", 1);
-            World.Instance.Scenes.Sync();
+            world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMBox", 1);
+            world.Scenes.Sync();
             canvas.Camera.Fit();
 
-            canvas.Update(World.Instance);
+            canvas.Update(world);
             canvas.Render();
         }
     }

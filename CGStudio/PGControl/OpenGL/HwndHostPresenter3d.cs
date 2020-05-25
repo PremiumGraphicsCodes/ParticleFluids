@@ -45,7 +45,7 @@ namespace PG.CGStudio
 
         private void Host_Initialized(object sender, EventArgs e)
         {
-            Canvas.CreateRenderer(Panel.Handle, World.Instance);
+            Canvas.CreateRenderer(Panel.Handle);
             Panel.Paint += OnPaint;
             Panel.Resize += OnResize;
             Panel.MouseDown += Panel_MouseDown;

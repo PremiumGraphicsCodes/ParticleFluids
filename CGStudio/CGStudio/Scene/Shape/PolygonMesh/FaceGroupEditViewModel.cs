@@ -2,11 +2,6 @@
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PG.CGStudio.Scene.Shape.PolygonMesh
 {
@@ -24,19 +19,22 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         public ReactiveCommand ApplyCommand { get; }
             = new ReactiveCommand();
 
-        private Canvas3d canvas;
+        private readonly World world;
 
-        public FaceGroupEditViewModel(Canvas3d canvas)
+        private readonly Canvas3d canvas;
+
+        public FaceGroupEditViewModel(World world, Canvas3d canvas)
         {
+            this.world = world;
             this.canvas = canvas;
             ApplyCommand.Subscribe(OnApply);
         }
 
         private void OnApply()
         {
-            PG.CLI.Command.Set(World.Instance.Adapter, PG.SetLabels.NameLabel, Id.Value, Name.Value);
-            PG.CLI.Command.Set(World.Instance.Adapter, PG.SetLabels.MaterialNameLabel, Id.Value, MaterialName.Value);
-            canvas.Update(World.Instance);
+            PG.CLI.Command.Set(world.Adapter, PG.SetLabels.NameLabel, Id.Value, Name.Value);
+            PG.CLI.Command.Set(world.Adapter, PG.SetLabels.MaterialNameLabel, Id.Value, MaterialName.Value);
+            canvas.Update(world);
             canvas.Render();
         }
 

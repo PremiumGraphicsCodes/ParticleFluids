@@ -26,7 +26,7 @@ namespace PG.CGStudio
 
         private void OnCameraUICtrl()
         {
-            canvas.UICtrl = new CameraUICtrl(canvas);
+            canvas.UICtrl = new CameraUICtrl(world, canvas);
         }
 
         private void OnPickUICtrl()

@@ -62,7 +62,7 @@ namespace PG.CGStudio.Selection
 
             spheres.Add(sphere);
 
-            canvas.UICtrl = new CameraUICtrl(canvas);
+            canvas.UICtrl = new CameraUICtrl(world, canvas);
         }
     }
 }

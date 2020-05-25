@@ -26,22 +26,25 @@ namespace PG.Control.OpenGL
             get { return instance; }
         }
 
+        private readonly World world;
+
         public CameraModel Camera { get; private set; }
 
-        public Canvas3d()
+        public Canvas3d(World world)
         {
-            this.ctrl = new CGStudio.UICtrl.CameraUICtrl(this);
+            this.world = world;
+            this.ctrl = new CGStudio.UICtrl.CameraUICtrl(world, this);
         }
 
-        public static void CreateInstance()
+        public static void CreateInstance(World world)
         {
             if (instance == null)
             {
-                instance = new Canvas3d();
+                instance = new Canvas3d(world);
             }
         }
 
-        public void CreateRenderer(System.IntPtr handle, World world)
+        public void CreateRenderer(System.IntPtr handle)
         {
             renderer = new PG.CLI.Renderer(handle, world.Adapter);
             this.renderer.Build(world.Adapter);
@@ -110,7 +113,7 @@ namespace PG.Control.OpenGL
 
         public void Render()
         {
-            Renderer.Render(width, height, World.Instance.Adapter);
+            Renderer.Render(width, height, world.Adapter);
         }
 
         public void Update(World model)
@@ -133,7 +136,7 @@ namespace PG.Control.OpenGL
             Renderer.Bind();
             var command = new PG.CLI.Command(PG.PickLabels.PickCommandLabel);
             command.SetArg(PG.PickLabels.PositionLabel, new Vector2d(position.X, 1.0 - position.Y));
-            command.Execute(World.Instance.Adapter);
+            command.Execute(world.Adapter);
             var parentId = command.GetResult<int>(PG.PickLabels.ParentIdLabel);
             var childId = command.GetResult<int>(PG.PickLabels.ChildIdLabel);
             Renderer.UnBind();

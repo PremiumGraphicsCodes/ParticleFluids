@@ -12,8 +12,11 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>();
 
-        public PolygonMeshEditViewModel()
+        private readonly World world;
+
+        public PolygonMeshEditViewModel(World world)
         {
+            this.world = world;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -32,7 +35,7 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
             Id.Value = id;
             var command = new PG.CLI.Command(PG.SceneGetLabels.CommandLabel);
             command.SetArg(PG.SceneGetLabels.IdLabel, id);
-            command.Execute(World.Instance.Adapter);
+            command.Execute(world.Adapter);
             var name = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
             Name.Value = name;
             /*

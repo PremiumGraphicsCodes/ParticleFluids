@@ -18,8 +18,11 @@ namespace PG.CGStudio.Scene
         public ReactiveCommand ExportCommand { get; }
             = new ReactiveCommand();
 
+        private readonly World world;
+
         public SceneExportViewModel(World world)
         {
+            this.world = world;
             this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
             this.FileSelectCommand.Subscribe(OnFileSelect);
             this.ExportCommand.Subscribe(OnExport);
@@ -40,7 +43,6 @@ namespace PG.CGStudio.Scene
 
         private void OnExport()
         {
-            var world = World.Instance;
             var command = new PG.CLI.Command(PG.FileExportLabels.FileExportCommandLabel);
             var ids = new List<int>
             {

@@ -35,10 +35,12 @@ namespace PG.CGStudio.Object
             {
                 return;
             }
+            /*
             if (e.Key == Key.Delete)
             {
                 World.Instance.Scenes.Delete(selectedItem.Id.Value);
             }
+            */
         }
 
         private void ItemDoubleClicked(object sender, MouseButtonEventArgs e)

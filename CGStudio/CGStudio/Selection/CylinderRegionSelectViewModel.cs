@@ -59,7 +59,7 @@ namespace PG.CGStudio.Selection
 
             cylinders.Add( cylinder );
 
-            canvas.UICtrl = new CameraUICtrl(canvas);
+            canvas.UICtrl = new CameraUICtrl(world, canvas);
         }
     }
 }

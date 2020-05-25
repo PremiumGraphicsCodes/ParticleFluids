@@ -13,12 +13,14 @@ namespace PG.CGStudio
 
         public static World Instance;
 
-        private World()
+        public World()
         {
             this.adapter = new PG.CLI.WorldAdapter();
             this.Scenes = new SceneListModel(adapter);
+            Instance = this;
         }
 
+        /*
         public static void CreateInstance()
         {
             if (Instance == null)
@@ -26,6 +28,7 @@ namespace PG.CGStudio
                 Instance = new World();
             }
         }
+        */
 
         public void New()
         {

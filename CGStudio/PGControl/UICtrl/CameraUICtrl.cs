@@ -8,10 +8,13 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPosition;
 
+        private readonly World world;
+
         private readonly Canvas3d canvas;
 
-        public CameraUICtrl(Canvas3d canvas)
+        public CameraUICtrl(World world, Canvas3d canvas)
         {
+            this.world = world;
             this.canvas = canvas;
             this.prevPosition = new Vector2d();
         }
@@ -37,7 +40,7 @@ namespace PG.CGStudio.UICtrl
 
             var diff = position - prevPosition;
             //
-            var bb = World.Instance.Scenes.GetBoundingBox(0);
+            var bb = world.Scenes.GetBoundingBox(0);
             //var scale = bb.Min.Distance(bb.Max) * 0.1;
             var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix.Transposed();
             canvas.Camera.Translate(new Vector3d(v.X, v.Y, v.Z));
