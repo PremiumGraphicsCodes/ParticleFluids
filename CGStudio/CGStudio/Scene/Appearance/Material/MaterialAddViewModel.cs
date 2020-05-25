@@ -11,8 +11,11 @@ namespace PG.CGStudio.Scene.Appearance.Material
 
         public ReactiveCommand OKCommand { get; }
 
-        public MaterialAddViewModel()
+        private readonly World world;
+
+        public MaterialAddViewModel(World world)
         {
+            this.world = world;
             this.MaterialViewModel = new MaterialViewModel();
             this.OKCommand = new ReactiveCommand();
             this.OKCommand.Subscribe(OnOk);
@@ -20,7 +23,7 @@ namespace PG.CGStudio.Scene.Appearance.Material
 
         private void OnOk()
         {
-            World.Instance.Scenes.AddMaterialScene(MaterialViewModel.Value, "Material");
+            world.Scenes.AddMaterialScene(MaterialViewModel.Value, "Material");
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

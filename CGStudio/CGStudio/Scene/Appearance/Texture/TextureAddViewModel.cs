@@ -16,14 +16,17 @@ namespace PG.CGStudio.Scene.Appearance.Texture
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        public TextureAddViewModel()
+        private readonly World world;
+
+        public TextureAddViewModel(World world)
         {
+            this.world = world;
             OkCommand.Subscribe(OnOk);
         }
 
         private void OnOk()
         {
-            World.Instance.Scenes.AddTextureScene(TextureViewModel.ImagePath.Value, Name.Value);
+            world.Scenes.AddTextureScene(TextureViewModel.ImagePath.Value, Name.Value);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

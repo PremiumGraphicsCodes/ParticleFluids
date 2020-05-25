@@ -5,11 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Material"
              xmlns:graphics="clr-namespace:PG.Control.Graphics;assembly=PGControl"
-             mc:Ignorable="d" 
-             d:DesignWidth="300">
-    <UserControl.DataContext>
-        <local:MaterialEditViewModel/>
-    </UserControl.DataContext>
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+             >
     <StackPanel>
         <TextBlock Text="{Binding Id.Value}"/>
         <TextBox Text="{Binding Name.Value}"/>

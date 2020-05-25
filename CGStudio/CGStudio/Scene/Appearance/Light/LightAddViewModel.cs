@@ -13,8 +13,11 @@ namespace PG.CGStudio.Scene.Appearance.Light
 
         public ReactiveCommand OKCommand { get; }
 
-        public LightAddViewModel()
+        private readonly World world;
+
+        public LightAddViewModel(World world)
         {
+            this.world = world;
             this.Name = new ReactiveProperty<string>("Light");
             this.PointLightViewModel = new PointLightViewModel();
             this.OKCommand = new ReactiveCommand();
@@ -23,7 +26,7 @@ namespace PG.CGStudio.Scene.Appearance.Light
 
         private void OnOk()
         {
-            World.Instance.Scenes.AddLightScene(PointLightViewModel.Value, Name.Value);
+            world.Scenes.AddLightScene(PointLightViewModel.Value, Name.Value);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
