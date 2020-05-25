@@ -63,35 +63,40 @@ namespace PG.CGStudio.Object
             {
                 case SceneType.ParticleSystem:
                     parameters.Add("ParticleSystemEdit", selectedItem);
-                    MainWindowViewModel.Instance.NavigateWithParam("ParticleSystemEdit", parameters);
+                    RequestNavigate("ParticleSystemEdit", parameters);
                     break;
                 case SceneType.WireFrame:
                     parameters.Add("WireFrameEdit", selectedItem);
-                    MainWindowViewModel.Instance.NavigateWithParam("WireFrameEdit", parameters);
+                    RequestNavigate("WireFrameEdit", parameters);
                     break;
                 case SceneType.PolygonMesh:
                     parameters.Add("PolygonMeshEdit", selectedItem);
-                    MainWindowViewModel.Instance.NavigateWithParam("PolygonMeshEdit", parameters);
+                    RequestNavigate("PolygonMeshEdit", parameters);
                     break;
                 case SceneType.FaceGroup:
                     parameters.Add("FaceGroupEdit", selectedItem);
-                    MainWindowViewModel.Instance.NavigateWithParam("FaceGroupEdit", parameters);
+                    RequestNavigate("FaceGroupEdit", parameters);
                     break;
                 case SceneType.PointLight:
                     parameters.Add("LightEdit", selectedItem);
-                    MainWindowViewModel.Instance.NavigateWithParam("LightEdit", parameters);
+                    RequestNavigate("LightEdit", parameters);
                     break;
                 case SceneType.Material:
                     parameters.Add("MaterialEdit", selectedItem);
-                    MainWindowViewModel.Instance.NavigateWithParam("MaterialEdit", parameters);
+                    RequestNavigate("MaterialEdit", parameters);
                     break;
                 case SceneType.Texture:
                     parameters.Add("TextureEdit", selectedItem);
-                    MainWindowViewModel.Instance.NavigateWithParam("TextureEdit", parameters);
+                    RequestNavigate("TextureEdit", parameters);
                     break;
                 default:
                     break;
             }
+        }
+
+        private void RequestNavigate(string name, NavigationParameters parameters)
+        {
+            MainWindowViewModel.Instance.NavigateWithParam(name, parameters);
         }
     }
 }
