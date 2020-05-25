@@ -19,7 +19,7 @@ namespace PG.CGStudio.Object.Transform
         
         public TransformViewModel(World world, Canvas3d canvas)
         {
-            this.SelectViewModel = new ShapeSelectViewModel(world);
+            this.SelectViewModel = new ShapeSelectViewModel(world, canvas);
             this.TranslateViewModel = new TranslateViewModel(world, canvas);
             this.ScaleViewModel = new ScaleViewModel(world, canvas);
             this.RotateViewModel = new RotateViewModel(world, canvas);

@@ -12,11 +12,14 @@ namespace PG.CGStudio.UICtrl
 
         private readonly ScaleViewModel model;
 
+        private readonly Canvas3d canvas;
+
         public double Sensitivity { get; set; } = 1.0;
 
-        public ScaleUICtrl(ScaleViewModel model)
+        public ScaleUICtrl(ScaleViewModel model, Canvas3d canvas)
         {
             this.model = model;
+            this.canvas = canvas;
         }
 
         public void OnLeftButtonDown(Vector2d position)
@@ -32,7 +35,7 @@ namespace PG.CGStudio.UICtrl
         public void OnLeftButtonDragging(Vector2d position)
         {
             var diff = (position - prevPos) * Sensitivity;
-            var matrix = Canvas3d.Instance.Camera.GetRotationMatrix();
+            var matrix = canvas.Camera.GetRotationMatrix();
             var v = matrix * new Vector4d(diff.X, diff.Y, 0.0, 1.0);
             model.RatioViewModel.Value += new Vector3d(v.X, v.Y, v.Z);
             model.SetMatrix(true);

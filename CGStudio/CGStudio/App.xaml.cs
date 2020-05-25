@@ -24,6 +24,7 @@ namespace PG.CGStudio
     public partial class App : PrismApplication
     {
         private World world;
+        private Canvas3d canvas;
 
         protected override Window CreateShell()
         {
@@ -34,8 +35,8 @@ namespace PG.CGStudio
         {
             this.world = new World();
             containerRegistry.RegisterInstance<World>(world);
-            Canvas3d.CreateInstance(world);
-            containerRegistry.RegisterInstance<Canvas3d>(Canvas3d.Instance);
+            this.canvas = new Canvas3d(world);
+            containerRegistry.RegisterInstance<Canvas3d>(canvas);
 
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.ParticleSystem.SphereGenerationView>("PSSphereGeneration");

@@ -19,13 +19,6 @@ namespace PG.Control.OpenGL
         private PG.CLI.Renderer renderer;
         public PG.CLI.Renderer Renderer { get { return renderer; } }
 
-        private static Canvas3d instance;
-
-        public static Canvas3d Instance
-        {
-            get { return instance; }
-        }
-
         private readonly World world;
 
         public CameraModel Camera { get; private set; }
@@ -34,14 +27,6 @@ namespace PG.Control.OpenGL
         {
             this.world = world;
             this.ctrl = new CGStudio.UICtrl.CameraUICtrl(world, this);
-        }
-
-        public static void CreateInstance(World world)
-        {
-            if (instance == null)
-            {
-                instance = new Canvas3d(world);
-            }
         }
 
         public void CreateRenderer(System.IntPtr handle)

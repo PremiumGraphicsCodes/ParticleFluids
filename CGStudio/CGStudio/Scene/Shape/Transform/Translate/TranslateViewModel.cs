@@ -31,7 +31,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
         {
             this.world = world;
             this.canvas = canvas;
-            this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
+            this.ShapeSelectViewModel = new ShapeSelectViewModel(world, canvas);
             canvas.UICtrl = ShapeSelectViewModel.Picker;
             ShapeSelectViewModel.Picker.AddAction(OnSelected);
 

@@ -1,4 +1,5 @@
 ﻿using PG.CGStudio.Object.Select;
+using PG.Control.OpenGL;
 using Reactive.Bindings;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -20,10 +21,10 @@ namespace PG.CGStudio.Scene
 
         private readonly World world;
 
-        public SceneExportViewModel(World world)
+        public SceneExportViewModel(World world, Canvas3d canvas)
         {
             this.world = world;
-            this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
+            this.ShapeSelectViewModel = new ShapeSelectViewModel(world, canvas);
             this.FileSelectCommand.Subscribe(OnFileSelect);
             this.ExportCommand.Subscribe(OnExport);
         }

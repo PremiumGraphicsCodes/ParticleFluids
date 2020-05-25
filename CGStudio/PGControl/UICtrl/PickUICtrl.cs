@@ -15,10 +15,12 @@ namespace PG.CGStudio.UICtrl
         private List<Action<ObjectId>> actions = new List<Action<ObjectId>>();
         private SceneType type;
         private readonly World world;
+        private readonly Canvas3d canvas;
 
-        public PickUICtrl(World world, int mergin, SceneType type)
+        public PickUICtrl(World world, Canvas3d canvas, int mergin, SceneType type)
         {
             this.world = world;
+            this.canvas = canvas;
             this.mergin = mergin;
             this.type = type;
         }
@@ -45,7 +47,7 @@ namespace PG.CGStudio.UICtrl
 
         public void OnLeftButtonDown(Vector2d position)
         {
-            var pickedId = Canvas3d.Instance.GetObjectId(position);
+            var pickedId = canvas.GetObjectId(position);
             var parentId = pickedId.parentId;
 
             if (parentId != 0)
@@ -55,8 +57,8 @@ namespace PG.CGStudio.UICtrl
                 command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
                 command.Execute(world.Adapter);
                 //command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
-                Canvas3d.Instance.Update(world);
-                Canvas3d.Instance.Render();
+                canvas.Update(world);
+                canvas.Render();
 
                 pickedIds.Add(pickedId);
 

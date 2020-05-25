@@ -18,16 +18,18 @@ namespace PG.CGStudio.Object.Select
 
         public PickUICtrl Picker { get; }
 
-        public ShapeSelectViewModel(World world)
+        private readonly Canvas3d canvas;
+
+        public ShapeSelectViewModel(World world, Canvas3d canvas)
         {
             PickCommand.Subscribe(OnPickUI);
-            Picker = new PickUICtrl(world, 10, Core.SceneType.AllScene);
+            Picker = new PickUICtrl(world, canvas, 10, Core.SceneType.AllScene);
             Picker.AddAction( OnPicked );
         }
 
         private void OnPickUI()
         {
-            Canvas3d.Instance.UICtrl = Picker;
+            canvas.UICtrl = Picker;
         }
 
         private void OnPicked(ObjectId id)

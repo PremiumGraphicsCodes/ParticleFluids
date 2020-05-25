@@ -34,7 +34,7 @@ namespace PG.CGStudio.Selection
 
         private void OnPickUI()
         {
-            var picker = new PickUICtrl(world, 10, SceneType.AllScene);
+            var picker = new PickUICtrl(world, canvas, 10, SceneType.AllScene);
             picker.AddAction(OnPicked);
             canvas.UICtrl = picker;
         }

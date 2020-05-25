@@ -24,7 +24,7 @@ namespace PG.CGStudio.Scene.Shape.Trim
 
         public TrimViewModel(World world, Canvas3d canvas)
         {
-            this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
+            this.ShapeSelectViewModel = new ShapeSelectViewModel(world, canvas);
             this.RegionSelectViewModel = new SphereRegionSelectViewModel(world, canvas);
             this.world = world;
             this.canvas = canvas;

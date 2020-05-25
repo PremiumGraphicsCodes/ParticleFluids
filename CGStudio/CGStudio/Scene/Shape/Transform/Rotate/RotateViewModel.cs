@@ -36,7 +36,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
 
-            this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
+            this.ShapeSelectViewModel = new ShapeSelectViewModel(world, canvas);
 
             this.ShapeSelectViewModel.Picker.AddAction(OnSelected);
         }

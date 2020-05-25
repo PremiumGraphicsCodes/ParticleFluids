@@ -33,7 +33,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
         {
             this.world = world;
             this.canvas = canvas;
-            this.ShapeSelectViewModel = new ShapeSelectViewModel(world);
+            this.ShapeSelectViewModel = new ShapeSelectViewModel(world, canvas);
             this.world = world;
             this.OkCommand.Subscribe(OnOk);
             this.CancelCommand.Subscribe(OnCancel);
@@ -50,7 +50,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
 
             var center = world.Scenes.GetCenter(id.parentId);
             this.CenterViewModel.Value = center;
-            canvas.UICtrl = new ScaleUICtrl(this);
+            canvas.UICtrl = new ScaleUICtrl(this, canvas);
         }
 
         private void OnOk()

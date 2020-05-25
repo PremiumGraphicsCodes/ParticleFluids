@@ -31,7 +31,7 @@ namespace PG.CGStudio
 
         private void OnPickUICtrl()
         {
-            canvas.UICtrl = new PickUICtrl(world, 10, Core.SceneType.AllScene);
+            canvas.UICtrl = new PickUICtrl(world, canvas, 10, Core.SceneType.AllScene);
         }
     }
 }
