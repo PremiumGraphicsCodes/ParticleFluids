@@ -1,4 +1,5 @@
 ﻿using PG.Control.OpenGL;
+using PG.Scene;
 using Reactive.Bindings;
 using System.Windows.Forms;
 
@@ -24,11 +25,11 @@ namespace PG.CGStudio
         public ReactiveCommand ExportCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public FileIOViewModel(World world, Canvas3d canvas)
+        public FileIOViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -42,9 +43,9 @@ namespace PG.CGStudio
 
         private void OnNew()
         {
-            world.New();
+            world.Scenes.Clear();
             canvas.Renderer.Build(world.Adapter);
-            canvas.Update(world);
+            canvas.Update();
             canvas.Render();
         }
 
@@ -56,7 +57,7 @@ namespace PG.CGStudio
             };
             if ( DialogResult.OK == dialog.ShowDialog() )
             {
-                world.Open(dialog.FileName);
+                //world.Open(dialog.FileName);
             }
         }
 
@@ -68,7 +69,7 @@ namespace PG.CGStudio
             };
             if ( DialogResult.OK == dialog.ShowDialog() )
             {
-                world.Save(dialog.FileName);
+                //world.Save(dialog.FileName);
             }
         }
 
@@ -80,7 +81,7 @@ namespace PG.CGStudio
             };
             if (DialogResult.OK == dialog.ShowDialog())
             {
-                world.Save(dialog.FileName);
+                //world.Save(dialog.FileName);
             }
         }
 
@@ -95,8 +96,8 @@ namespace PG.CGStudio
             {
                 if(Import(dialog.FileName))
                 {
-                    world.Scenes.Sync();
-                    canvas.Update(world);
+                    world.Sync();
+                    canvas.Update();
                     canvas.Render();
                     MessageBox.Show("Import Suceeded");                    
                 }

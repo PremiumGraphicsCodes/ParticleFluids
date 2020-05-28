@@ -2,6 +2,7 @@
 using PG.CGStudio.Selection;
 using PG.Control.OpenGL;
 using PG.Core.Math;
+using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -18,11 +19,11 @@ namespace PG.CGStudio.Scene.Shape.Trim
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public TrimViewModel(World world, Canvas3d canvas)
+        public TrimViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.ShapeSelectViewModel = new ShapeSelectViewModel(world, canvas);
             this.RegionSelectViewModel = new SphereRegionSelectViewModel(world, canvas);
@@ -42,10 +43,10 @@ namespace PG.CGStudio.Scene.Shape.Trim
 
             //World.Instance.Items.Clear();
 
-            canvas.Update(world);
+            canvas.Update();
             canvas.Render();
 
-            world.Scenes.Sync();
+            world.Sync();
         }
     }
 }

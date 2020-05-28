@@ -1,6 +1,7 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Shape;
+using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
 
@@ -20,11 +21,11 @@ namespace PG.CGStudio.Generation.WireFrame
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public EllipseGenerationViewModel(World world, Canvas3d canvas)
+        public EllipseGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -39,7 +40,7 @@ namespace PG.CGStudio.Generation.WireFrame
             var shape = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
 
-            var newId = world.Scenes.AddWireFrameScene(shape, "WFEllipse", appearance, 1);
+            var newId = world.AddWireFrameScene(shape, "WFEllipse", appearance, 1);
             canvas.Camera.Fit();
 
             canvas.BuildShader(world, newId);

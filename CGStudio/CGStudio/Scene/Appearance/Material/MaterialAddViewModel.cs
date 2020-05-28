@@ -1,4 +1,5 @@
 ﻿using PG.Control.Graphics;
+using PG.Scene;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -11,9 +12,9 @@ namespace PG.CGStudio.Scene.Appearance.Material
 
         public ReactiveCommand OKCommand { get; }
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
-        public MaterialAddViewModel(World world)
+        public MaterialAddViewModel(SceneListModel world)
         {
             this.world = world;
             this.MaterialViewModel = new MaterialViewModel();
@@ -23,7 +24,7 @@ namespace PG.CGStudio.Scene.Appearance.Material
 
         private void OnOk()
         {
-            world.Scenes.AddMaterialScene(MaterialViewModel.Value, "Material");
+            world.AddMaterialScene(MaterialViewModel.Value, "Material");
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

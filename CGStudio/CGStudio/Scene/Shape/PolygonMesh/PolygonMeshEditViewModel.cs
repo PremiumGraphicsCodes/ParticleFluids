@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using PG.Scene;
+using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
 
@@ -12,9 +13,9 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
-        public PolygonMeshEditViewModel(World world)
+        public PolygonMeshEditViewModel(SceneListModel world)
         {
             this.world = world;
         }

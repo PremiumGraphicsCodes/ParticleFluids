@@ -1,6 +1,7 @@
 ﻿using PG.Control.OpenGL;
 using PG.Core;
 using PG.Core.Math;
+using PG.Scene;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -14,10 +15,10 @@ namespace PG.CGStudio.UICtrl
         private int mergin;
         private List<Action<ObjectId>> actions = new List<Action<ObjectId>>();
         private SceneType type;
-        private readonly World world;
+        private readonly SceneListModel world;
         private readonly Canvas3d canvas;
 
-        public PickUICtrl(World world, Canvas3d canvas, int mergin, SceneType type)
+        public PickUICtrl(SceneListModel world, Canvas3d canvas, int mergin, SceneType type)
         {
             this.world = world;
             this.canvas = canvas;
@@ -57,7 +58,7 @@ namespace PG.CGStudio.UICtrl
                 command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
                 command.Execute(world.Adapter);
                 //command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
-                canvas.Update(world);
+                canvas.Update();
                 canvas.Render();
 
                 pickedIds.Add(pickedId);

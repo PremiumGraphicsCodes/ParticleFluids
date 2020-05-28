@@ -1,6 +1,7 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Math;
+using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -21,12 +22,12 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public AppearanceViewModel Appearance { get; }
             = new AppearanceViewModel();
 
-        public CylinderGenerationViewModel(World world, Canvas3d canvas)
+        public CylinderGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
-        private void OnGenerate(World world, Canvas3d canvas)
+        private void OnGenerate(SceneListModel world, Canvas3d canvas)
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();
@@ -39,7 +40,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 positions.Add(pos);
             }
             var particles = new PG.Core.Shape.ParticleSystem(positions);
-            var newId = world.Scenes.AddParticleSystemScene(positions, "PSCylinder", Appearance.Value, 1);//, Appearance.Value, "PSCylinder");
+            var newId = world.AddParticleSystemScene(positions, "PSCylinder", Appearance.Value, 1);//, Appearance.Value, "PSCylinder");
             canvas.Camera.Fit();
             canvas.BuildShader(world, newId);
             canvas.Render();

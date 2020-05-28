@@ -1,6 +1,7 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Shape;
+using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
 
@@ -16,11 +17,11 @@ namespace PG.CGStudio.Generation.PolygonMesh
 
         public ReactiveProperty<int> VNum { get; }
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public CylinderGenerationViewModel(World world, Canvas3d canvas)
+        public CylinderGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -36,11 +37,11 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var builder = new PolygonMeshBuilder();
             builder.Add(CylinderViewModel.Value, UNum.Value);
 
-            world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCylinder", 1);
-            world.Scenes.Sync();
+            world.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCylinder", 1);
+            world.Sync();
 
             canvas.Camera.Fit();
-            canvas.Update(world);
+            canvas.Update();
             canvas.Render();
         }
     }

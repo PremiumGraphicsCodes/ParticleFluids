@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Reactive.Bindings;
 using PG.Control.Math;
 using PG.Control.OpenGL;
+using PG.Scene;
 
 namespace PG.CGStudio.Generation.ParticleSystem
 {
@@ -21,12 +22,12 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public SphereGenerationViewModel(World world, Canvas3d canvas)
+        public SphereGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
-        private void OnGenerate(World world, Canvas3d canvas)
+        private void OnGenerate(SceneListModel world, Canvas3d canvas)
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();
@@ -37,7 +38,7 @@ namespace PG.CGStudio.Generation.ParticleSystem
                 var pos = sphere.GetPosition(1.0,u,v);
                 positions.Add(pos);
             }
-            var id = world.Scenes.AddParticleSystemScene(positions, "PSSphere", Appearance.Value, 1);
+            var id = world.AddParticleSystemScene(positions, "PSSphere", Appearance.Value, 1);
             canvas.Camera.Fit();
             canvas.BuildShader(world, id);
             canvas.Render();

@@ -1,6 +1,7 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Shape;
+using PG.Scene;
 using Reactive.Bindings;
 
 namespace PG.CGStudio.Scene.Shape.PolygonMesh.Generation
@@ -16,11 +17,11 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh.Generation
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public CircleGenerationViewModel(World world, Canvas3d canvas)
+        public CircleGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -32,7 +33,7 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh.Generation
             var builder = new PolygonMeshBuilder();
             builder.Add(CircleViewModel.Value, UNum.Value);
 
-            var newId = world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCircle", 1);
+            var newId = world.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCircle", 1);
 
             canvas.Camera.Fit();
             canvas.BuildShader(world, newId);

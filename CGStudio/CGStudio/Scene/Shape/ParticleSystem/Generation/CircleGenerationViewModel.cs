@@ -2,6 +2,7 @@
 using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Math;
+using PG.Scene;
 using Reactive.Bindings;
 using System.Collections.Generic;
 
@@ -21,12 +22,12 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
         public AppearanceViewModel AppearanceViewModel { get; }
             = new AppearanceViewModel();
 
-        public CircleGenerationViewModel(World world, Canvas3d canvas)
+        public CircleGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
-        private void OnGenerate(World world, Canvas3d canvas)
+        private void OnGenerate(SceneListModel world, Canvas3d canvas)
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();
@@ -37,7 +38,7 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
                 var pos = circle.GetPosition(u);
                 positions.Add(pos);
             }
-            var newId = world.Scenes.AddParticleSystemScene(positions, "PSCircle", AppearanceViewModel.Value, 1);
+            var newId = world.AddParticleSystemScene(positions, "PSCircle", AppearanceViewModel.Value, 1);
             canvas.Camera.Fit();
             canvas.BuildShader(world, newId);
             canvas.Render();

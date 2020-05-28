@@ -6,6 +6,7 @@ using Prism.Mvvm;
 using PG.Core.UI;
 using PG.Core.Graphics;
 using PG.Control.OpenGL;
+using PG.Scene;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
@@ -17,11 +18,11 @@ namespace PG.CGStudio.Generation.WireFrame
 
         public ReactiveCommand GenerationCommand { get; }
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public BoxGenerationViewModel(World world, Canvas3d canvas)
+        public BoxGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -39,7 +40,7 @@ namespace PG.CGStudio.Generation.WireFrame
             var wireFrame = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
 
-            var newId = world.Scenes.AddWireFrameScene(wireFrame, "WFBox", appearance, 1);
+            var newId = world.AddWireFrameScene(wireFrame, "WFBox", appearance, 1);
 
             canvas.Camera.Fit();
 

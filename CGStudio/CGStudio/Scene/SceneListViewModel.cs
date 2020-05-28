@@ -12,13 +12,13 @@ namespace PG.CGStudio
 
         private readonly IRegionManager regionManager;
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
-        public SceneListViewModel(IRegionManager regionManager, World world)
+        public SceneListViewModel(IRegionManager regionManager, SceneListModel world)
         {
             this.world = world;
             this.regionManager = regionManager;
-            Items = world.Scenes.Scenes.ToReadOnlyReactiveCollection();
+            Items = world.Scenes.ToReadOnlyReactiveCollection();
         }
 
         private void NavigateView(string name, NavigationParameters navigationParameters)

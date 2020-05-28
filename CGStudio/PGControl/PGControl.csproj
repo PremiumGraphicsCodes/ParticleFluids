@@ -200,7 +200,6 @@
       <DependentUpon>Vector3dView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Math\Vector3dViewModel.cs" />
-    <Compile Include="World.cs" />
     <Page Include="Graphics\ColorRGBAView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

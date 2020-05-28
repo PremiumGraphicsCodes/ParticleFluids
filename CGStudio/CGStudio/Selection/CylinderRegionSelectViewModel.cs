@@ -6,6 +6,7 @@ using PG.Core;
 using PG.Core.Math;
 using PG.Core.Shape;
 using PG.Core.UI;
+using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -21,11 +22,11 @@ namespace PG.CGStudio.Selection
         public ReactiveCommand PickCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public CylinderRegionSelectViewModel(World world, Canvas3d canvas)
+        public CylinderRegionSelectViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -41,7 +42,7 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
-            var position = world.Scenes.GetPosition(id);
+            var position = world.GetPosition(id);
 
             var cylinder = new Cylinder3d();
             var builder = new WireFrameBuilder();
@@ -52,9 +53,9 @@ namespace PG.CGStudio.Selection
                 Width = 1.0f
             };
 
-            world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
+            world.AddWireFrameScene(builder.ToWireFrame(), "", appearance, 0);
 
-            canvas.Update(world);
+            canvas.Update();
             canvas.Render();
 
             cylinders.Add( cylinder );

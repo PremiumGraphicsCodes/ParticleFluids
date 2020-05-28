@@ -3,6 +3,7 @@ using Reactive.Bindings;
 using PG.Control.Math;
 using Prism.Mvvm;
 using PG.Control.OpenGL;
+using PG.Scene;
 
 namespace PG.CGStudio.Generation.WireFrame
 {
@@ -20,11 +21,11 @@ namespace PG.CGStudio.Generation.WireFrame
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public CylinderGenerationViewModel(World world, Canvas3d canvas)
+        public CylinderGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -37,7 +38,7 @@ namespace PG.CGStudio.Generation.WireFrame
             var cylinder = CylinderViewModel.Value;
             builder.Add(cylinder, this.UNum.Value);
             var wireFrame = builder.ToWireFrame();
-            var newId = world.Scenes.AddWireFrameScene(wireFrame, "WFCylinder", AppearanceViewModel.Value, 1);
+            var newId = world.AddWireFrameScene(wireFrame, "WFCylinder", AppearanceViewModel.Value, 1);
             canvas.Camera.Fit();
 
             canvas.BuildShader(world, newId);

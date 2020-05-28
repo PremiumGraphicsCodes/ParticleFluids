@@ -6,6 +6,7 @@ using PG.Core;
 using PG.Core.Math;
 using PG.Core.Shape;
 using PG.Core.UI;
+using PG.Scene;
 using Reactive.Bindings;
 
 namespace PG.CGStudio.Scene.Shape.Transform
@@ -23,11 +24,11 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public Vector3dViewModel Translate { get; }
             = new Vector3dViewModel();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public TranslateViewModel(World world, Canvas3d canvas)
+        public TranslateViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -49,22 +50,22 @@ namespace PG.CGStudio.Scene.Shape.Transform
 
         public void SetMatrix(bool doRender)
         {
-            world.Scenes.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
+            world.SetMatrix(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {
-                canvas.Update(world);
+                canvas.Update();
                 canvas.Render();
             }
         }
 
         public void Transform(bool doRender)
         {
-            world.Scenes.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
+            world.Transform(ShapeSelectViewModel.Id.Value, ToMatrix());
 
             if (doRender)
             {
-                canvas.Update(world);
+                canvas.Update();
                 canvas.Render();
             }
         }
@@ -89,8 +90,8 @@ namespace PG.CGStudio.Scene.Shape.Transform
             Translate.Value = new Vector3d(0, 0, 0);
             SetMatrix(true);
 
-            world.Scenes.Clear(0);
-            world.Scenes.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
+            world.Clear(0);
+            world.ShowBoundingBox(ShapeSelectViewModel.Id.Value);
         }
 
         private void OnCancel()

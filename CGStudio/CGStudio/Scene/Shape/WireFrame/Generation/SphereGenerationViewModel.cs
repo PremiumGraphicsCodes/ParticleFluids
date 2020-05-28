@@ -1,6 +1,7 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Shape;
+using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
 
@@ -23,23 +24,23 @@ namespace PG.CGStudio.Generation.WireFrame
         public AppearanceViewModel AppearanceViewModel { get; }
             = new AppearanceViewModel();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public SphereGenerationViewModel(World world, Canvas3d canvas)
+        public SphereGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
             this.GenerationCommand.Subscribe(() => OnExecute(world));
         }
 
-        private void OnExecute(World world)
+        private void OnExecute(SceneListModel world)
         {
             var builder = new WireFrameBuilder();
             builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);
 
-            var newId = world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "WFSphere", AppearanceViewModel.Value, 1);
+            var newId = world.AddWireFrameScene(builder.ToWireFrame(), "WFSphere", AppearanceViewModel.Value, 1);
             canvas.Camera.Fit();
 
             canvas.BuildShader(world, newId);

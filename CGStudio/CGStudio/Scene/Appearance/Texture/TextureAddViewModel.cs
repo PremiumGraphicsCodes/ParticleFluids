@@ -1,4 +1,5 @@
 ﻿using PG.Control.Graphics;
+using PG.Scene;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -16,9 +17,9 @@ namespace PG.CGStudio.Scene.Appearance.Texture
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
-        public TextureAddViewModel(World world)
+        public TextureAddViewModel(SceneListModel world)
         {
             this.world = world;
             OkCommand.Subscribe(OnOk);
@@ -26,7 +27,7 @@ namespace PG.CGStudio.Scene.Appearance.Texture
 
         private void OnOk()
         {
-            world.Scenes.AddTextureScene(TextureViewModel.ImagePath.Value, Name.Value);
+            world.AddTextureScene(TextureViewModel.ImagePath.Value, Name.Value);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

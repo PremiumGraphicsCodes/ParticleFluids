@@ -15,6 +15,7 @@ using PG.CGStudio.Scene.Shape.WireFrame.Generation;
 using PG.CGStudio.Selection;
 using PG.CGStudio.Texture;
 using PG.Control.OpenGL;
+using PG.Scene;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
@@ -23,7 +24,7 @@ namespace PG.CGStudio
 {
     public partial class App : PrismApplication
     {
-        private World world;
+        private SceneListModel world;
         private Canvas3d canvas;
 
         protected override Window CreateShell()
@@ -33,8 +34,8 @@ namespace PG.CGStudio
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            this.world = new World();
-            containerRegistry.RegisterInstance<World>(world);
+            this.world = new SceneListModel();
+            containerRegistry.RegisterInstance<SceneListModel>(world);
             this.canvas = new Canvas3d(world);
             containerRegistry.RegisterInstance<Canvas3d>(canvas);
 

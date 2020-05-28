@@ -1,5 +1,6 @@
 ﻿using PG.CGStudio.UICtrl;
 using PG.Control.OpenGL;
+using PG.Scene;
 using Reactive.Bindings;
 
 namespace PG.CGStudio
@@ -10,11 +11,11 @@ namespace PG.CGStudio
 
         public ReactiveCommand PickUICtrlCommand { get; }
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public UIControlViewModel(World world, Canvas3d canvas)
+        public UIControlViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

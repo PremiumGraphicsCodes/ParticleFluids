@@ -1,4 +1,5 @@
 ﻿using PG.Control.OpenGL;
+using PG.Scene;
 using Reactive.Bindings;
 
 namespace PG.CGStudio
@@ -20,11 +21,11 @@ namespace PG.CGStudio
         public ReactiveCommand FitCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public CameraControlViewModel(World world, Canvas3d canvas)
+        public CameraControlViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

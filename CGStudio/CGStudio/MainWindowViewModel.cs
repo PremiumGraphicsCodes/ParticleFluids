@@ -1,4 +1,5 @@
 ﻿using PG.Control.OpenGL;
+using PG.Scene;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -20,7 +21,7 @@ namespace PG.CGStudio
 
         public Canvas3d Canvas { get; }
 
-        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container, World world, Canvas3d canvas)
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container, SceneListModel world, Canvas3d canvas)
         {
             this.Canvas = canvas;
 

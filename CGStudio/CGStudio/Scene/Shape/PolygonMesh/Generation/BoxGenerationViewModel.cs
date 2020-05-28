@@ -1,6 +1,7 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Shape;
+using PG.Scene;
 using Reactive.Bindings;
 
 namespace PG.CGStudio.Generation.PolygonMesh
@@ -13,11 +14,11 @@ namespace PG.CGStudio.Generation.PolygonMesh
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public BoxGenerationViewModel(World world, Canvas3d canvas)
+        public BoxGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -30,7 +31,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var box = BoxViewModel.Value;
             builder.Add(box);
 
-            var newId = world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMBox", 1);
+            var newId = world.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMBox", 1);
             canvas.Camera.Fit();
             canvas.BuildShader(world, newId);
             canvas.Render();

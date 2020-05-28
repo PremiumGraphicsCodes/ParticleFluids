@@ -14,9 +14,11 @@ namespace PG.Scene
 
         public ReactiveCollection<SceneModel> Scenes;
 
-        public SceneListModel(PG.CLI.WorldAdapter adapter)
+        public PG.CLI.WorldAdapter Adapter { get { return adapter; } }
+
+        public SceneListModel()
         {
-            this.adapter = adapter;
+            this.adapter = new PG.CLI.WorldAdapter();
             this.Scenes = new ReactiveCollection<SceneModel>();
             this.Scenes.Add(CreateRoot());
         }

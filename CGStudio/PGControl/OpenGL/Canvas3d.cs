@@ -2,6 +2,7 @@
 using PG.CGStudio.UICtrl;
 using PG.Core;
 using PG.Core.Math;
+using PG.Scene;
 using System;
 using System.Windows.Input;
 
@@ -19,11 +20,11 @@ namespace PG.Control.OpenGL
         private PG.CLI.Renderer renderer;
         public PG.CLI.Renderer Renderer { get { return renderer; } }
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         public CameraModel Camera { get; private set; }
 
-        public Canvas3d(World world)
+        public Canvas3d(SceneListModel world)
         {
             this.world = world;
             this.ctrl = new CGStudio.UICtrl.CameraUICtrl(world, this);
@@ -101,9 +102,9 @@ namespace PG.Control.OpenGL
             Renderer.Render(width, height, world.Adapter);
         }
 
-        public void Update(World model)
+        public void Update()
         {
-            Renderer.Update(model.Adapter);
+            Renderer.Update(world.Adapter);
         }
 
         private int width;
@@ -128,7 +129,7 @@ namespace PG.Control.OpenGL
             return new ObjectId(parentId, childId);
         }
 
-        public void BuildShader(World world, int id)
+        public void BuildShader(SceneListModel world, int id)
         {
             var command = new PG.CLI.Command();
             command.Create(PG.ShaderBuildLabels.CommandNameLabel);

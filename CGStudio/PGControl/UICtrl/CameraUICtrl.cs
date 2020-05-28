@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using PG.Control.OpenGL;
 using PG.Core.Math;
+using PG.Scene;
 
 namespace PG.CGStudio.UICtrl
 {
@@ -8,11 +9,11 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPosition;
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public CameraUICtrl(World world, Canvas3d canvas)
+        public CameraUICtrl(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -40,7 +41,7 @@ namespace PG.CGStudio.UICtrl
 
             var diff = position - prevPosition;
             //
-            var bb = world.Scenes.GetBoundingBox(0);
+            var bb = world.GetBoundingBox(0);
             //var scale = bb.Min.Distance(bb.Max) * 0.1;
             var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix.Transposed();
             canvas.Camera.Translate(new Vector3d(v.X, v.Y, v.Z));

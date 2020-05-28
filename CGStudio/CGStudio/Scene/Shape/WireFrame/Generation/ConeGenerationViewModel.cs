@@ -1,6 +1,7 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Shape;
+using PG.Scene;
 using Reactive.Bindings;
 
 namespace PG.CGStudio.Generation.WireFrame
@@ -13,11 +14,11 @@ namespace PG.CGStudio.Generation.WireFrame
 
         public ReactiveCommand GenerationCommand { get; }
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public ConeGenerationViewModel(World world, Canvas3d canvas)
+        public ConeGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -35,11 +36,11 @@ namespace PG.CGStudio.Generation.WireFrame
             var wireFrame = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
 
-            world.Scenes.AddWireFrameScene(wireFrame, "WFCone", appearance, 1);
-            world.Scenes.Sync();
+            world.AddWireFrameScene(wireFrame, "WFCone", appearance, 1);
+            world.Sync();
             canvas.Camera.Fit();
 
-            canvas.Update(world);
+            canvas.Update();
             canvas.Render();
         }
 

@@ -6,6 +6,7 @@ using PG.Core;
 using PG.Core.Math;
 using PG.Core.Shape;
 using PG.Core.UI;
+using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -24,11 +25,11 @@ namespace PG.CGStudio.Selection
         public ReactiveCommand PickCommand { get; }
             = new ReactiveCommand();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public SphereRegionSelectViewModel(World world, Canvas3d canvas)
+        public SphereRegionSelectViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -44,7 +45,7 @@ namespace PG.CGStudio.Selection
 
         private void OnPicked(ObjectId id)
         {
-            var position = world.Scenes.GetPosition( id );
+            var position = world.GetPosition( id );
 
             var sphere = new Sphere3d(Radius.Value, position);
             var builder = new WireFrameBuilder();
@@ -55,9 +56,9 @@ namespace PG.CGStudio.Selection
                 Color = new Core.Graphics.ColorRGBA(1.0f, 0.0f, 0.0f, 0.0f)
             };
 
-            world.Scenes.AddWireFrameScene(builder.ToWireFrame(), "Item",appearance, 0);
+            world.AddWireFrameScene(builder.ToWireFrame(), "Item",appearance, 0);
 
-            canvas.Update(world);
+            canvas.Update();
             canvas.Render();
 
             spheres.Add(sphere);

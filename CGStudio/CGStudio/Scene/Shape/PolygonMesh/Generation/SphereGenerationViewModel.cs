@@ -2,6 +2,7 @@
 using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Shape;
+using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
 
@@ -21,11 +22,11 @@ namespace PG.CGStudio.Generation.PolygonMesh
         public Sphere3dViewModel SphereViewModel { get; }
             = new Sphere3dViewModel();
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public SphereGenerationViewModel(World world, Canvas3d canvas)
+        public SphereGenerationViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -39,7 +40,7 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var builder = new PolygonMeshBuilder();
             builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);
 
-            var newId = world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMSphere", 1);
+            var newId = world.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMSphere", 1);
 
             canvas.Camera.Fit();
             canvas.BuildShader(world, newId);

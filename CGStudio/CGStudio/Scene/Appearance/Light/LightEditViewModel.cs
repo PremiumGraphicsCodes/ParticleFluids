@@ -1,5 +1,6 @@
 ﻿using PG.Control.Graphics;
 using PG.Control.OpenGL;
+using PG.Scene;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -16,11 +17,11 @@ namespace PG.CGStudio.Light
 
         public ReactiveCommand OKCommand { get; }
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public LightEditViewModel(World world, Canvas3d canvas)
+        public LightEditViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -33,8 +34,8 @@ namespace PG.CGStudio.Light
 
         private void OnOk()
         {
-            world.Scenes.SetLightScene(PointLightViewModel.Value, Name.Value, Id.Value);
-            canvas.Update(world);
+            world.SetLightScene(PointLightViewModel.Value, Name.Value, Id.Value);
+            canvas.Update();
             canvas.Render();
         }
 
@@ -58,7 +59,7 @@ namespace PG.CGStudio.Light
             Id.Value = id;
             Name.Value = name;
 
-            var light = world.Scenes.GetLightScene(id);
+            var light = world.GetLightScene(id);
             PointLightViewModel.Value = light;
         }
     }

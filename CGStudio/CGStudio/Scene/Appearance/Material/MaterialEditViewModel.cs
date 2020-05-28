@@ -1,6 +1,7 @@
 ﻿using PG.Control.Graphics;
 using PG.Control.OpenGL;
 using PG.Core.Graphics;
+using PG.Scene;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
@@ -17,11 +18,11 @@ namespace PG.CGStudio.Material
 
         public ReactiveCommand OKCommand { get; }
 
-        private readonly World world;
+        private readonly SceneListModel world;
 
         private readonly Canvas3d canvas;
 
-        public MaterialEditViewModel(World world, Canvas3d canvas)
+        public MaterialEditViewModel(SceneListModel world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
@@ -34,8 +35,8 @@ namespace PG.CGStudio.Material
 
         private void OnOk()
         {
-            world.Scenes.SetMaterialScene(MaterialViewModel.Value, Name.Value, Id.Value );
-            canvas.Update(world);
+            world.SetMaterialScene(MaterialViewModel.Value, Name.Value, Id.Value );
+            canvas.Update();
             canvas.Render();
         }
 
@@ -43,7 +44,7 @@ namespace PG.CGStudio.Material
         {
             var id = (int)navigationContext.Parameters["Id"];
             this.Id.Value = id;
-            var material = world.Scenes.GetMaterialScene(id);
+            var material = world.GetMaterialScene(id);
             this.MaterialViewModel.Value = material;
             var command = new PG.CLI.Command();
             command.SetArg(PG.SceneGetLabels.IdLabel, id);
