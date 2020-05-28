@@ -32,6 +32,7 @@ namespace PG.CGStudio
 
         public void New()
         {
+            Scenes.Scenes.Clear();
             /*
             var command = new PG.CLI.Command(NewLabels.CommandNameLabel);
 
