@@ -116,6 +116,10 @@
   <ItemGroup>
     <Compile Include="CameraModel.cs" />
     <Compile Include="ConstLabels.cs" />
+    <Compile Include="Math\Torus3dView.xaml.cs">
+      <DependentUpon>Torus3dView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Math\Torus3dViewModel.cs" />
     <Compile Include="OpenGL\Canvas3d.cs" />
     <Compile Include="SceneListModel.cs" />
     <Compile Include="SceneModel.cs" />
@@ -251,6 +255,10 @@
     <Compile Include="Math\Sphere3dView.xaml.cs">
       <DependentUpon>Sphere3dView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Math\Torus3dView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Math\Vector3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
