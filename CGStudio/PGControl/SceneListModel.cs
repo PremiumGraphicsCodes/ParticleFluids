@@ -121,7 +121,12 @@ namespace PG.Scene
             //            command.SetArg(PG.MaterialCreateLabels.TextureIdLabel, material.)
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.MaterialCreateLabels.NewIdLabel);
-            Sync();
+
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            Scenes.Add(scene);
+
             return newId;
         }
 
@@ -152,7 +157,7 @@ namespace PG.Scene
             command.Execute(adapter);
         }
 
-        public int AddLightScene(PG.Core.Graphics.PointLight light, string name)
+        public int AddLightScene(PointLight light, string name)
         {
             var command = new PG.CLI.Command(PG.LightCreateLabels.CommandNameLabel);
             command.SetArg(PG.LightCreateLabels.PositionLabel, light.Position);
@@ -162,7 +167,12 @@ namespace PG.Scene
             command.SetArg(PG.LightCreateLabels.NameLabel, name);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.LightCreateLabels.NewIdLabel);
-            Sync();
+
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            Scenes.Add(scene);
+
             return newId;
         }
 
@@ -207,7 +217,12 @@ namespace PG.Scene
             */
 
             var newId = command.GetResult<int>(PG.TextureCreateLabels.NewIdLabel);
-            Sync();
+
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            Scenes.Add(scene);
+
             return newId;
         }
 
