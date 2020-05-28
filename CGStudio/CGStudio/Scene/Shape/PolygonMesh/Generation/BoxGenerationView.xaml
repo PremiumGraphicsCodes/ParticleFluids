@@ -6,11 +6,9 @@
              xmlns:local="clr-namespace:PG.CGStudio.Generation.PolygonMesh"
              xmlns:Control="clr-namespace:PG.Control;assembly=PGControl"
              xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="300">
-    <UserControl.DataContext>
-        <local:BoxGenerationViewModel/>
-    </UserControl.DataContext>
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
     <StackPanel>
         <math:Box3dView DataContext="{Binding BoxViewModel}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>

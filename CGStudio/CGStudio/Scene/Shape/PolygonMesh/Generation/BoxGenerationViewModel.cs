@@ -30,11 +30,9 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var box = BoxViewModel.Value;
             builder.Add(box);
 
-            world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMBox", 1);
-            world.Scenes.Sync();
+            var newId = world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMBox", 1);
             canvas.Camera.Fit();
-
-            canvas.Update(world);
+            canvas.BuildShader(world, newId);
             canvas.Render();
         }
     }

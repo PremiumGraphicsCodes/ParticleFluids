@@ -39,10 +39,10 @@ namespace PG.CGStudio.Generation.WireFrame
             var shape = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
 
-            world.Scenes.AddWireFrameScene(shape, "WFCircle", appearance, 1);
-            world.Scenes.Sync();
+            var newId = world.Scenes.AddWireFrameScene(shape, "WFEllipse", appearance, 1);
             canvas.Camera.Fit();
-            canvas.Update(world);
+
+            canvas.BuildShader(world, newId);
             canvas.Render();
         }
     }

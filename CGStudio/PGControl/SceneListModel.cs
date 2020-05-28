@@ -82,6 +82,12 @@ namespace PG.Scene
             command.SetArg(PG.PolygonMeshCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.PolygonMeshCreateLabels.NewIdLabel);
+
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            Scenes.Add(scene);
+
             return newId;
         }
 
