@@ -5,11 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PG.CGStudio.Generation.PolygonMesh"
              xmlns:control="clr-namespace:PG.Control;assembly=PGControl"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="300">
-    <UserControl.DataContext>
-        <local:CylinderGenerationViewModel/>
-    </UserControl.DataContext>
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
     <StackPanel>
         <control:Cylinder3dView/>
         <Label Content="UNum"/>

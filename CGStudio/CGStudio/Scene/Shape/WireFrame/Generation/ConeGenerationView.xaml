@@ -6,10 +6,9 @@
              xmlns:local="clr-namespace:PG.CGStudio.Scene.Shape.WireFrame.Generation"
              xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
              xmlns:wireframe="clr-namespace:PG.CGStudio.Generation.WireFrame"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
-    <UserControl.DataContext>
-        <wireframe:ConeGenerationViewModel/>
-    </UserControl.DataContext>
     <StackPanel>
         <math:Cone3dView DataContext="{Binding ConeViewModel}"/>
         <Button Content="OK" Command="{Binding GenerationCommand}"/>

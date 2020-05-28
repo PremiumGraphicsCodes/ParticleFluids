@@ -37,11 +37,10 @@ namespace PG.CGStudio.Generation.PolygonMesh
             var builder = new PolygonMeshBuilder();
             builder.Add(CylinderViewModel.Value, UNum.Value);
 
-            world.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCylinder", 1);
-            world.Sync();
+            var newId = world.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCylinder", 1);
 
             canvas.Camera.Fit();
-            canvas.Update();
+            canvas.BuildShader(world, newId);
             canvas.Render();
         }
     }

@@ -1,10 +1,11 @@
-﻿using PG.Control.Math;
+﻿using PG.CGStudio.Generation.WireFrame;
+using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Shape;
 using PG.Scene;
 using Reactive.Bindings;
 
-namespace PG.CGStudio.Generation.WireFrame
+namespace PG.CGStudio.Scene.Shape.WireFrame.Generation
 {
     public class ConeGenerationViewModel
     {
@@ -36,11 +37,10 @@ namespace PG.CGStudio.Generation.WireFrame
             var wireFrame = builder.ToWireFrame();
             var appearance = AppearanceViewModel.Value;
 
-            world.AddWireFrameScene(wireFrame, "WFCone", appearance, 1);
-            world.Sync();
+            var newId = world.AddWireFrameScene(wireFrame, "WFCone", appearance, 1);
             canvas.Camera.Fit();
 
-            canvas.Update();
+            canvas.BuildShader(world, newId);
             canvas.Render();
         }
 
