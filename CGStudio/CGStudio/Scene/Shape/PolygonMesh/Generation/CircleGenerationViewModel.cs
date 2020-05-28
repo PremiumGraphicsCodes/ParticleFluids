@@ -32,11 +32,10 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh.Generation
             var builder = new PolygonMeshBuilder();
             builder.Add(CircleViewModel.Value, UNum.Value);
 
-            world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCircle", 1);
-            world.Scenes.Sync();
+            var newId = world.Scenes.AddPolygonMeshScene(builder.ToPolygonMesh(), "PMCircle", 1);
 
             canvas.Camera.Fit();
-            canvas.Update(world);
+            canvas.BuildShader(world, newId);
             canvas.Render();
         }
     }
