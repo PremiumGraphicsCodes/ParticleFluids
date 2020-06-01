@@ -11,6 +11,9 @@
 
 #include "IShaderScene.h"
 #include "TextureShaderScene.h"
+
+#include "ScreenIdShaderScene.h"
+
 #include "../Util/UnCopyable.h"
 
 namespace Crystal {
@@ -33,7 +36,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory) override;
 
-	void render(const ScreenIdShaderScene& vm);
+	void setBuffer(const ScreenIdShaderScene& buffer);
 
 	void render() override;
 
@@ -52,6 +55,8 @@ private:
 
 	TextureShaderScene* texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
+
+	ScreenIdShaderScene buffer;
 };
 	}
 }

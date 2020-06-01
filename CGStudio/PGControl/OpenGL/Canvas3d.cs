@@ -4,6 +4,7 @@ using PG.Core;
 using PG.Core.Math;
 using PG.Scene;
 using System;
+using System.Drawing;
 using System.Windows.Input;
 
 namespace PG.Control.OpenGL
@@ -121,6 +122,20 @@ namespace PG.Control.OpenGL
             var xx = x / (double)width;
             var yy = y / (double)height;
             return GetObjectId(x, y);
+        }
+
+        public Point ToScreenCoord(Vector2d position)
+        {
+            var x = (int)(position.X * width);
+            var y = (int)(position.Y * height);
+            return new Point(x, y);
+        }
+
+        public Vector2d FromScreenCoord(Point point)
+        {
+            var xx = (double)(point.X / width);
+            var yy = (double)(point.Y / height);
+            return new Vector2d(xx, yy);
         }
 
         public SceneId GetObjectId(Vector2d position)

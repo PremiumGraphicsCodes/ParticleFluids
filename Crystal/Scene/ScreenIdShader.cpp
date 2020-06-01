@@ -10,7 +10,8 @@ using namespace Crystal::Scene;
 ScreenIdShader::ScreenIdShader(const std::string& name) :
 	IShaderScene(name),
 	lineBuffer("LineIdBuffer"),
-	lineIdRenderer("LineIdRenderer")
+	lineIdRenderer("LineIdRenderer"),
+	buffer("ScreenIdBuffer")
 {
 	texture = new TextureShaderScene("IdTexture");
 	addChild(texture);
@@ -42,7 +43,12 @@ void ScreenIdShader::release(GLObjectFactory& factory)
 
 }
 
-void ScreenIdShader::render(const ScreenIdShaderScene& vm)
+void ScreenIdShader::setBuffer(const ScreenIdShaderScene& vm)
+{
+	this->buffer = vm;
+}
+
+void ScreenIdShader::render()
 {
 	//const auto& pointBuffers = vm.pointIdBuffers;
 	//const auto& lineBuffers = vm.lineIdBuffers;
@@ -57,12 +63,10 @@ void ScreenIdShader::render(const ScreenIdShaderScene& vm)
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	const auto& pbs = vm.getPointScenes();
+
+	const auto& pbs = buffer.getPointScenes();
 	for (auto pb : pbs) {
-		//pb.csetCamera( *camera;
-		CameraShaderScene cameraScene("Camera");
-		//cameraScene.update(*camera);
-		pb->setCamera(&cameraScene);
+		//pb->setCamera(&cameraScene);
 		pb->render();
 	}
 	/*
@@ -79,11 +83,6 @@ void ScreenIdShader::render(const ScreenIdShaderScene& vm)
 	*/
 
 	frameBufferObject->unbind();
-}
-
-void ScreenIdShader::render()
-{
-
 }
 
 DrawableID ScreenIdShader::getId(const double x, const double y)

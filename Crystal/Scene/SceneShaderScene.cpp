@@ -18,5 +18,6 @@ void SceneShaderScene::setCamera(CameraShaderScene* camera)
 {
 	screen.setCamera(camera);
 	parentId.setCamera(camera);
+	childId.setCamera(camera);
 	//addChild(camera);
 }

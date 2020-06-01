@@ -48,29 +48,31 @@ namespace PG.CGStudio.UICtrl
 
         public void OnLeftButtonDown(Vector2d position)
         {
+            var p = canvas.ToScreenCoord(position);
 //            var x = position.X * canvas.Width;
 
-            var pickedId = canvas.GetObjectId(position);
-            var parentId = pickedId.parentId;
-
-            if (parentId != 0)
+            for(var x = p.X - mergin; x <= p.X + mergin; ++x)
             {
-                var command = new PG.CLI.Command();
-                command.Create(PG.ShapeSelectLabels.CommandNameLabel);
-                command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
-                command.Execute(scene.Adapter);
-                //command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
-                canvas.Update();
-                canvas.Render();
-
-                pickedIds.Add(pickedId);
-
-                foreach (var a in actions)
+                for(var y = p.Y - mergin; y<= p.Y + mergin; ++y)
                 {
-                    a(pickedId);
+                    var pp = canvas.FromScreenCoord(new System.Drawing.Point(x, y));
+
+                    var pickedId = canvas.GetObjectId(pp);
+                    var parentId = pickedId.parentId;
+
+                    if (parentId != 0)
+                    {
+                        //pickedIds.Add(pickedId);
+
+                        foreach (var a in actions)
+                        {
+                            a(pickedId);
+                        }
+                    }
+
+
                 }
             }
-
         }
 
         public void OnLeftButtonDragging(Vector2d position)
