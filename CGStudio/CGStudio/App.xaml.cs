@@ -51,6 +51,7 @@ namespace PG.CGStudio
             containerRegistry.RegisterForNavigation<Generation.WireFrame.CylinderGenerationView>("WFCylinderGeneration");
             containerRegistry.RegisterForNavigation<Generation.WireFrame.EllipseGenerationView>("WFCircleGeneration");
             containerRegistry.RegisterForNavigation<Scene.Shape.WireFrame.Generation.ConeGenerationView>("WFConeGeneration");
+            containerRegistry.RegisterForNavigation<Scene.Shape.WireFrame.Generation.TorusGenerationView>("WFTorusGeneration");
 
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.BoxGenerationView>("PMBoxGeneration");
             containerRegistry.RegisterForNavigation<Generation.PolygonMesh.SphereGenerationView>("PMSphereGeneration");
