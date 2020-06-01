@@ -133,8 +133,8 @@ namespace PG.Control.OpenGL
 
         public Vector2d FromScreenCoord(Point point)
         {
-            var xx = (double)(point.X / width);
-            var yy = (double)(point.Y / height);
+            var xx = (point.X / (double)width);
+            var yy = (point.Y / (double)height);
             return new Vector2d(xx, yy);
         }
 

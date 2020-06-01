@@ -68,6 +68,7 @@ namespace PG.CGStudio.UICtrl
                         {
                             a(pickedId);
                         }
+                        return;
                     }
 
 
