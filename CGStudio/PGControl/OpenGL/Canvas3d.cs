@@ -69,22 +69,22 @@ namespace PG.Control.OpenGL
 
         public void OnMiddleButtonDown(Vector2d position)
         {
-            throw new NotImplementedException();
+            this.ctrl.OnMiddleButtonDown(position);
         }
 
         public void OnMiddleButtonDragging(Vector2d position)
         {
-            throw new NotImplementedException();
+            this.ctrl.OnMiddleButtonDragging(position);
         }
 
         public void OnMiddleButtonUp(Vector2d position)
         {
-            throw new NotImplementedException();
+            this.ctrl.OnMiddleButtonUp(position);
         }
 
         public void OnWheel(double dx)
         {
-            throw new NotImplementedException();
+            this.ctrl.OnWheel(dx);
         }
 
         public void OnKeyDown(Key key)
@@ -116,7 +116,14 @@ namespace PG.Control.OpenGL
             this.height = height;
         }
 
-        public ObjectId GetObjectId(Vector2d position)
+        public SceneId GetObjectId(int x, int y)
+        {
+            var xx = x / (double)width;
+            var yy = y / (double)height;
+            return GetObjectId(x, y);
+        }
+
+        public SceneId GetObjectId(Vector2d position)
         {
             //var model = MainModel.Instance;
             Renderer.Bind();
@@ -126,7 +133,7 @@ namespace PG.Control.OpenGL
             var parentId = command.GetResult<int>(PG.PickLabels.ParentIdLabel);
             var childId = command.GetResult<int>(PG.PickLabels.ChildIdLabel);
             Renderer.UnBind();
-            return new ObjectId(parentId, childId);
+            return new SceneId(parentId, childId);
         }
 
         public void BuildShader(SceneList world, int id)

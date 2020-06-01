@@ -40,7 +40,7 @@ namespace PG.CGStudio.Selection
             canvas.UICtrl = picker;
         }
 
-        private void OnPicked(ObjectId id)
+        private void OnPicked(SceneId id)
         {
             var position = world.GetPosition(id);
 

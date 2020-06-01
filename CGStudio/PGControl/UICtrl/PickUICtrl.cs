@@ -11,9 +11,9 @@ namespace PG.CGStudio.UICtrl
 {
     public class PickUICtrl : IUICtrl
     {
-        private List<ObjectId> pickedIds = new List<ObjectId>();
+        private List<SceneId> pickedIds = new List<SceneId>();
         private int mergin;
-        private List<Action<ObjectId>> actions = new List<Action<ObjectId>>();
+        private List<Action<SceneId>> actions = new List<Action<SceneId>>();
         private SceneType type;
         private readonly SceneList scene;
         private readonly Canvas3d canvas;
@@ -26,12 +26,12 @@ namespace PG.CGStudio.UICtrl
             this.type = type;
         }
 
-        public List<ObjectId> PickedIds
+        public List<SceneId> PickedIds
         {
             get { return pickedIds; }
         }
 
-        public void AddAction(Action<ObjectId> action)
+        public void AddAction(Action<SceneId> action)
         {
             actions.Add(action);
         }
@@ -48,6 +48,8 @@ namespace PG.CGStudio.UICtrl
 
         public void OnLeftButtonDown(Vector2d position)
         {
+//            var x = position.X * canvas.Width;
+
             var pickedId = canvas.GetObjectId(position);
             var parentId = pickedId.parentId;
 

@@ -33,7 +33,7 @@ namespace PG.CGStudio.Object.Select
             canvas.UICtrl = Picker;
         }
 
-        private void OnPicked(ObjectId id)
+        private void OnPicked(SceneId id)
         {
             this.Id.Value = id.parentId;
         }

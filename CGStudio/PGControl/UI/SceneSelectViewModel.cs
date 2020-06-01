@@ -32,9 +32,9 @@ namespace PG.Control.UI
             this.canvas.UICtrl = picker;
         }
 
-        private void OnPick(ObjectId id)
+        private void OnPick(SceneId id)
         {
-
+            this.Id.Value = id.parentId;
         }
     }
 }

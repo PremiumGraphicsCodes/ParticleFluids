@@ -42,7 +42,7 @@ namespace PG.CGStudio.Scene.Shape.Transform.Scale
             this.ShapeSelectViewModel.Picker.AddAction(OnSelected);
         }
 
-        private void OnSelected(ObjectId id)
+        private void OnSelected(SceneId id)
         {
             if (id.parentId == 0)
             {

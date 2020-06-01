@@ -270,7 +270,7 @@ namespace PG.Scene
             */
         }
 
-        public Vector3d GetPosition(ObjectId id)
+        public Vector3d GetPosition(SceneId id)
         {
             var command = new PG.CLI.Command(PG.PositionGetLabels.CommandNameLabel);
             command.SetArg(PG.PositionGetLabels.ParentIdLabel, id.parentId);

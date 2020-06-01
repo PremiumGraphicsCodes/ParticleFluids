@@ -1,14 +1,14 @@
 ﻿namespace PG.Core
 {
-    public class ObjectId
+    public class SceneId
     {
         public int parentId;
         public int childId;
 
-        public ObjectId()
+        public SceneId()
         { }
 
-        public ObjectId(int parentId, int childId)
+        public SceneId(int parentId, int childId)
         {
             this.parentId = parentId;
             this.childId = childId;

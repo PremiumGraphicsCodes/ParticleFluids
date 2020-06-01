@@ -41,7 +41,7 @@ namespace PG.CGStudio.Scene.Shape.Transform
             this.CancelCommand.Subscribe(OnCancel);
         }
 
-        private void OnSelected(ObjectId id)
+        private void OnSelected(SceneId id)
         {
             var uiCtrl = new TranslateUICtrl(this, canvas);
             uiCtrl.Sensivity = 1.0;
