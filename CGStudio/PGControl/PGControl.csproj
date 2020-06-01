@@ -195,8 +195,8 @@
     </Compile>
     <Compile Include="TextBoxDoubleBehavior.cs" />
     <Compile Include="UICtrl\PickUICtrl.cs" />
-    <Compile Include="UI\ObjectSelectView.xaml.cs">
-      <DependentUpon>ObjectSelectView.xaml</DependentUpon>
+    <Compile Include="UI\SceneSelectView.xaml.cs">
+      <DependentUpon>SceneSelectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\ShapeSelectBehaviour.cs" />
     <Compile Include="Math\Sphere3dViewModel.cs" />
@@ -287,7 +287,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\ObjectSelectView.xaml">
+    <Page Include="UI\SceneSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
