@@ -21,11 +21,11 @@ namespace PG.CGStudio.Generation.WireFrame
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public EllipseGenerationViewModel(SceneListModel world, Canvas3d canvas)
+        public EllipseGenerationViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

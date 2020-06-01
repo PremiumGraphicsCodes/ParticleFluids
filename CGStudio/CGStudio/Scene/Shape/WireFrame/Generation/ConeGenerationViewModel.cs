@@ -15,11 +15,11 @@ namespace PG.CGStudio.Scene.Shape.WireFrame.Generation
 
         public ReactiveCommand GenerationCommand { get; }
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public ConeGenerationViewModel(SceneListModel world, Canvas3d canvas)
+        public ConeGenerationViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

@@ -21,7 +21,7 @@ namespace PG.CGStudio.Object.Select
 
         private readonly Canvas3d canvas;
 
-        public ShapeSelectViewModel(SceneListModel world, Canvas3d canvas)
+        public ShapeSelectViewModel(SceneList world, Canvas3d canvas)
         {
             PickCommand.Subscribe(OnPickUI);
             Picker = new PickUICtrl(world, canvas, 10, Core.SceneType.AllScene);

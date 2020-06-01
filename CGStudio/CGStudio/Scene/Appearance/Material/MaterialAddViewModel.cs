@@ -12,9 +12,9 @@ namespace PG.CGStudio.Scene.Appearance.Material
 
         public ReactiveCommand OKCommand { get; }
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
-        public MaterialAddViewModel(SceneListModel world)
+        public MaterialAddViewModel(SceneList world)
         {
             this.world = world;
             this.MaterialViewModel = new MaterialViewModel();

@@ -22,11 +22,11 @@ namespace PG.CGStudio.Selection
         public ReactiveCommand PickCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public CylinderRegionSelectViewModel(SceneListModel world, Canvas3d canvas)
+        public CylinderRegionSelectViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

@@ -26,11 +26,11 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public ReactiveCommand CancelCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public RotateViewModel(SceneListModel world, Canvas3d canvas)
+        public RotateViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

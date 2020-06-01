@@ -16,9 +16,9 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem
         public ReactiveCommand EditCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
-        public ParticleSystemEditViewModel(SceneListModel world)
+        public ParticleSystemEditViewModel(SceneList world)
         {
             this.world = world;
             EditCommand.Subscribe(OnEdit);

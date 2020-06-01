@@ -17,11 +17,11 @@ namespace PG.CGStudio.Light
 
         public ReactiveCommand OKCommand { get; }
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public LightEditViewModel(SceneListModel world, Canvas3d canvas)
+        public LightEditViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

@@ -23,12 +23,12 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public BoxGenerationViewModel(SceneListModel world, Canvas3d canvas)
+        public BoxGenerationViewModel(SceneList world, Canvas3d canvas)
         {
             this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
-        private void OnGenerate(SceneListModel world, Canvas3d canvas)
+        private void OnGenerate(SceneList world, Canvas3d canvas)
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();

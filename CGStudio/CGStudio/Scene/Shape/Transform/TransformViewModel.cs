@@ -18,7 +18,7 @@ namespace PG.CGStudio.Object.Transform
 
         public RotateViewModel RotateViewModel { get; }
         
-        public TransformViewModel(SceneListModel world, Canvas3d canvas)
+        public TransformViewModel(SceneList world, Canvas3d canvas)
         {
             this.SelectViewModel = new ShapeSelectViewModel(world, canvas);
             this.TranslateViewModel = new TranslateViewModel(world, canvas);

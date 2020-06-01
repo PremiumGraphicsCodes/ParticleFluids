@@ -21,11 +21,11 @@ namespace PG.CGStudio
         public ReactiveCommand FitCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public CameraControlViewModel(SceneListModel world, Canvas3d canvas)
+        public CameraControlViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

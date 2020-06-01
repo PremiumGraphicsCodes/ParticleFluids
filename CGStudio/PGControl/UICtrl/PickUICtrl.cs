@@ -15,10 +15,10 @@ namespace PG.CGStudio.UICtrl
         private int mergin;
         private List<Action<ObjectId>> actions = new List<Action<ObjectId>>();
         private SceneType type;
-        private readonly SceneListModel world;
+        private readonly SceneList world;
         private readonly Canvas3d canvas;
 
-        public PickUICtrl(SceneListModel world, Canvas3d canvas, int mergin, SceneType type)
+        public PickUICtrl(SceneList world, Canvas3d canvas, int mergin, SceneType type)
         {
             this.world = world;
             this.canvas = canvas;

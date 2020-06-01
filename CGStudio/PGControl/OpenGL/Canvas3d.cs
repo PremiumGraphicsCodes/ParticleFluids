@@ -20,11 +20,11 @@ namespace PG.Control.OpenGL
         private PG.CLI.Renderer renderer;
         public PG.CLI.Renderer Renderer { get { return renderer; } }
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         public CameraModel Camera { get; private set; }
 
-        public Canvas3d(SceneListModel world)
+        public Canvas3d(SceneList world)
         {
             this.world = world;
             this.ctrl = new CGStudio.UICtrl.CameraUICtrl(world, this);
@@ -129,7 +129,7 @@ namespace PG.Control.OpenGL
             return new ObjectId(parentId, childId);
         }
 
-        public void BuildShader(SceneListModel world, int id)
+        public void BuildShader(SceneList world, int id)
         {
             var command = new PG.CLI.Command();
             command.Create(PG.ShaderBuildLabels.CommandNameLabel);

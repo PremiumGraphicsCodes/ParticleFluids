@@ -24,7 +24,7 @@ namespace PG.CGStudio
 {
     public partial class App : PrismApplication
     {
-        private SceneListModel world;
+        private SceneList world;
         private Canvas3d canvas;
 
         protected override Window CreateShell()
@@ -34,8 +34,8 @@ namespace PG.CGStudio
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            this.world = new SceneListModel();
-            containerRegistry.RegisterInstance<SceneListModel>(world);
+            this.world = new SceneList();
+            containerRegistry.RegisterInstance<SceneList>(world);
             this.canvas = new Canvas3d(world);
             containerRegistry.RegisterInstance<Canvas3d>(canvas);
 

@@ -20,11 +20,11 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         public ReactiveCommand ApplyCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public FaceGroupEditViewModel(SceneListModel world, Canvas3d canvas)
+        public FaceGroupEditViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

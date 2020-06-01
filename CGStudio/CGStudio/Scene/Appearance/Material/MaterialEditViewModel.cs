@@ -18,11 +18,11 @@ namespace PG.CGStudio.Material
 
         public ReactiveCommand OKCommand { get; }
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public MaterialEditViewModel(SceneListModel world, Canvas3d canvas)
+        public MaterialEditViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

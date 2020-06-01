@@ -14,7 +14,7 @@ namespace PGControlTest
         [TestMethod]
         public void TestAddParticleSystemScene()
         {
-            var scene = new SceneListModel();
+            var scene = new SceneList();
             var positions = new List<Vector3d>();
             positions.Add(new Vector3d(0, 0, 0));
             var appearance = new PG.Core.UI.ParticleAppearance();
@@ -25,7 +25,7 @@ namespace PGControlTest
         [TestMethod]
         public void TestAddWireFrameScene()
         {
-            var scene = new SceneListModel();
+            var scene = new SceneList();
             var builder = new WireFrameBuilder();
             builder.Add(new Line3d(new Vector3d(0,0,0), new Vector3d(1,0,0)));
             var wireFrame = builder.ToWireFrame();
@@ -37,7 +37,7 @@ namespace PGControlTest
         [TestMethod]
         public void TestAddPolygonMeshScene()
         {
-            var scene = new SceneListModel();
+            var scene = new SceneList();
             var builder = new PolygonMeshBuilder();
             builder.Add(new Box3d(new Vector3d(0, 0, 0), new Vector3d(1, 1, 1)));
             var polygonMesh = builder.ToPolygonMesh();
@@ -48,7 +48,7 @@ namespace PGControlTest
         [TestMethod]
         public void TestAddTextureScene()
         {
-            var scene = new SceneListModel();
+            var scene = new SceneList();
             var id = scene.AddTextureScene("TestTexture.bmp", "Texture");
             Assert.AreEqual(1, id);
         }

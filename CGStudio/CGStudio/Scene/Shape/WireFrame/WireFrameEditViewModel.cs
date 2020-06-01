@@ -16,9 +16,9 @@ namespace PG.CGStudio.Scene.Shape.WireFrame
         public ReactiveCommand EditCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
-        public WireFrameEditViewModel(SceneListModel world)
+        public WireFrameEditViewModel(SceneList world)
         {
             this.world = world;
             EditCommand.Subscribe(OnEdit);

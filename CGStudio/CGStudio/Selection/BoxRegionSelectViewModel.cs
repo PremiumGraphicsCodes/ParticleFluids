@@ -23,11 +23,11 @@ namespace PG.CGStudio.Selection
 
         private List<Vector3d> pickedPositions = new List<Vector3d>();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public BoxRegionSelectViewModel(SceneListModel world, Canvas3d canvas)
+        public BoxRegionSelectViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

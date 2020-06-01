@@ -38,7 +38,7 @@ namespace PG.CGStudio.Selection
             }
         }
 
-        public RegionSelectViewModel(SceneListModel world, Canvas3d canvas)
+        public RegionSelectViewModel(SceneList world, Canvas3d canvas)
         {
             this.SphereRegionSelectViewModel = new SphereRegionSelectViewModel(world, canvas);
             this.BoxRegionSelectViewModel = new BoxRegionSelectViewModel(world, canvas);

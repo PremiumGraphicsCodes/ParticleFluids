@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace PG.Scene
 {
-    public class SceneListModel
+    public class SceneList
     {
         private PG.CLI.WorldAdapter adapter;
 
@@ -16,7 +16,7 @@ namespace PG.Scene
 
         public PG.CLI.WorldAdapter Adapter { get { return adapter; } }
 
-        public SceneListModel()
+        public SceneList()
         {
             this.adapter = new PG.CLI.WorldAdapter();
             this.Scenes = new ReactiveCollection<SceneModel>();

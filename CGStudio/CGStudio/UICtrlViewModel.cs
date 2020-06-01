@@ -11,11 +11,11 @@ namespace PG.CGStudio
 
         public ReactiveCommand PickUICtrlCommand { get; }
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public UIControlViewModel(SceneListModel world, Canvas3d canvas)
+        public UIControlViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

@@ -21,7 +21,7 @@ namespace PG.CGStudio
 
         public Canvas3d Canvas { get; }
 
-        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container, SceneListModel world, Canvas3d canvas)
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container, SceneList world, Canvas3d canvas)
         {
             this.Canvas = canvas;
 

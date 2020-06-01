@@ -9,11 +9,11 @@ namespace PG.CGStudio.UICtrl
     {
         private Vector2d prevPosition;
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public CameraUICtrl(SceneListModel world, Canvas3d canvas)
+        public CameraUICtrl(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

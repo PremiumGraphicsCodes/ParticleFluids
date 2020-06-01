@@ -22,11 +22,11 @@ namespace PG.CGStudio.Generation.PolygonMesh
         public Sphere3dViewModel SphereViewModel { get; }
             = new Sphere3dViewModel();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public SphereGenerationViewModel(SceneListModel world, Canvas3d canvas)
+        public SphereGenerationViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

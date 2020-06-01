@@ -14,9 +14,9 @@ namespace PG.CGStudio.Scene.Appearance.Light
 
         public ReactiveCommand OKCommand { get; }
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
-        public LightAddViewModel(SceneListModel world)
+        public LightAddViewModel(SceneList world)
         {
             this.world = world;
             this.Name = new ReactiveProperty<string>("Light");

@@ -7,9 +7,9 @@ namespace PG.CGStudio.Scene.Shape
 {
     public class SelectedShapeSceneModel
     {
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
-        public SelectedShapeSceneModel(SceneListModel world, int id)
+        public SelectedShapeSceneModel(SceneList world, int id)
         {
             this.id = id;
             var bb = world.GetBoundingBox(id);

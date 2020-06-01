@@ -17,9 +17,9 @@ namespace PG.CGStudio.Scene.Appearance.Texture
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
-        public TextureAddViewModel(SceneListModel world)
+        public TextureAddViewModel(SceneList world)
         {
             this.world = world;
             OkCommand.Subscribe(OnOk);

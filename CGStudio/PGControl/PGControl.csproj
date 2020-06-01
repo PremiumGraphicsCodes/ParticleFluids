@@ -121,7 +121,7 @@
     </Compile>
     <Compile Include="Math\Torus3dViewModel.cs" />
     <Compile Include="OpenGL\Canvas3d.cs" />
-    <Compile Include="SceneListModel.cs" />
+    <Compile Include="SceneList.cs" />
     <Compile Include="SceneModel.cs" />
     <Compile Include="UICtrl\CameraUICtrl.cs" />
     <Compile Include="Graphics\ColorRGBAView.xaml.cs">

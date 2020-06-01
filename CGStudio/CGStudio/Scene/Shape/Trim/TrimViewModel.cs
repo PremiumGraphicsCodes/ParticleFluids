@@ -19,11 +19,11 @@ namespace PG.CGStudio.Scene.Shape.Trim
         public ReactiveCommand OkCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public TrimViewModel(SceneListModel world, Canvas3d canvas)
+        public TrimViewModel(SceneList world, Canvas3d canvas)
         {
             this.ShapeSelectViewModel = new ShapeSelectViewModel(world, canvas);
             this.RegionSelectViewModel = new SphereRegionSelectViewModel(world, canvas);

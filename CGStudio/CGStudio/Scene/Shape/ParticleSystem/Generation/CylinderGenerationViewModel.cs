@@ -22,12 +22,12 @@ namespace PG.CGStudio.Generation.ParticleSystem
         public AppearanceViewModel Appearance { get; }
             = new AppearanceViewModel();
 
-        public CylinderGenerationViewModel(SceneListModel world, Canvas3d canvas)
+        public CylinderGenerationViewModel(SceneList world, Canvas3d canvas)
         {
             this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
-        private void OnGenerate(SceneListModel world, Canvas3d canvas)
+        private void OnGenerate(SceneList world, Canvas3d canvas)
         {
             var random = new System.Random();
             var positions = new List<Vector3d>();

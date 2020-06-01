@@ -14,11 +14,11 @@ namespace PG.CGStudio.Generation.PolygonMesh
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public BoxGenerationViewModel(SceneListModel world, Canvas3d canvas)
+        public BoxGenerationViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

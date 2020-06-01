@@ -25,11 +25,11 @@ namespace PG.CGStudio
         public ReactiveCommand ExportCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public FileIOViewModel(SceneListModel world, Canvas3d canvas)
+        public FileIOViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;

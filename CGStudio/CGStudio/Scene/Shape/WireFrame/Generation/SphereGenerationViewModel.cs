@@ -24,18 +24,18 @@ namespace PG.CGStudio.Generation.WireFrame
         public AppearanceViewModel AppearanceViewModel { get; }
             = new AppearanceViewModel();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public SphereGenerationViewModel(SceneListModel world, Canvas3d canvas)
+        public SphereGenerationViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
             this.GenerationCommand.Subscribe(() => OnExecute(world));
         }
 
-        private void OnExecute(SceneListModel world)
+        private void OnExecute(SceneList world)
         {
             var builder = new WireFrameBuilder();
             builder.Add(SphereViewModel.Value, UNum.Value, VNum.Value);

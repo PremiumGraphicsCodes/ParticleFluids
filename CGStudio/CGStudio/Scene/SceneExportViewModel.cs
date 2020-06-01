@@ -20,9 +20,9 @@ namespace PG.CGStudio.Scene
         public ReactiveCommand ExportCommand { get; }
             = new ReactiveCommand();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
-        public SceneExportViewModel(SceneListModel world, Canvas3d canvas)
+        public SceneExportViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.ShapeSelectViewModel = new ShapeSelectViewModel(world, canvas);

@@ -12,9 +12,9 @@ namespace PG.CGStudio
 
         private readonly IRegionManager regionManager;
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
-        public SceneListViewModel(IRegionManager regionManager, SceneListModel world)
+        public SceneListViewModel(IRegionManager regionManager, SceneList world)
         {
             this.world = world;
             this.regionManager = regionManager;

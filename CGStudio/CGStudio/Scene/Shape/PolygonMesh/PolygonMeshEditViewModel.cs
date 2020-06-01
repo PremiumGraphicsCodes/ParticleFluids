@@ -13,9 +13,9 @@ namespace PG.CGStudio.Scene.Shape.PolygonMesh
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
-        public PolygonMeshEditViewModel(SceneListModel world)
+        public PolygonMeshEditViewModel(SceneList world)
         {
             this.world = world;
         }

@@ -115,7 +115,7 @@ namespace PG.Core.Shape
 
         }
 
-        public void Add(ISurface3d surface, int udiv, int vdiv)
+        public void Add(Sphere3d surface, int udiv, int vdiv)
         {
             var vertices = new int[udiv+1, vdiv+1];
             for (int i = 0; i <= udiv; ++i)
@@ -136,6 +136,29 @@ namespace PG.Core.Shape
                 }
             }
         }
+
+        public void Add(Cylinder3d surface, int udiv, int vdiv)
+        {
+            var vertices = new int[udiv + 1, vdiv + 1];
+            for (int i = 0; i <= udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                for (int j = 0; j <= vdiv; ++j)
+                {
+                    var v = j / (double)vdiv;
+                    vertices[i, j] = CreatePosition(surface.GetPosition(u, v));
+                }
+            }
+            for (int i = 0; i < udiv; ++i)
+            {
+                for (int j = 0; j < vdiv; ++j)
+                {
+                    CreateEdge(vertices[i, j], vertices[i + 1, j]);
+                    CreateEdge(vertices[i, j], vertices[i, j + 1]);
+                }
+            }
+        }
+
 
         public void Add(Box3d box)
         {

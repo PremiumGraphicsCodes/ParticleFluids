@@ -24,11 +24,11 @@ namespace PG.CGStudio.Scene.Shape.Transform
         public Vector3dViewModel Translate { get; }
             = new Vector3dViewModel();
 
-        private readonly SceneListModel world;
+        private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public TranslateViewModel(SceneListModel world, Canvas3d canvas)
+        public TranslateViewModel(SceneList world, Canvas3d canvas)
         {
             this.world = world;
             this.canvas = canvas;
