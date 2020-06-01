@@ -40,6 +40,7 @@
                     <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PSCylinderGeneration"/>
                     <Fluent:Button Header="Circle" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PSCircleGeneration"/>
                     <Fluent:Button Header="Cone" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PSConeGeneration"/>
+                    <Fluent:Button Header="Torus" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PSTorusGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="WireFrame" KeyTip="B">
                     <Fluent:Button Header="Box" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="WFBoxGeneration"/>

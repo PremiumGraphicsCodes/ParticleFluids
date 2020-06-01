@@ -1,21 +1,20 @@
-﻿<UserControl xmlns:Control="clr-namespace:PG.Control;assembly=PGControl"
-             x:Class="PG.CGStudio.Generation.ParticleSystem.SphereGenerationView"
+﻿<UserControl x:Class="PG.CGStudio.Scene.Shape.ParticleSystem.Generation.TorusGenerationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
-             xmlns:graphics="clr-namespace:PG.Control.Graphics;assembly=PGControl"
+             xmlns:local="clr-namespace:PG.CGStudio.Scene.Shape.ParticleSystem.Generation"
+             xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
+             xmlns:ps="clr-namespace:PG.CGStudio.Generation.ParticleSystem"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             mc:Ignorable="d"
-             >
+             mc:Ignorable="d">
     <StackPanel>
-        <Control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
+        <math:Torus3dView DataContext="{Binding TorusViewModel}"/>
         <TextBox Text="{Binding Count.Value}"/>
         <StackPanel>
             <TextBlock Text="Appearance"/>
-            <local:AppearanceView DataContext="{Binding Appearance}"/>
+            <ps:AppearanceView DataContext="{Binding Appearance}"/>
         </StackPanel>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>

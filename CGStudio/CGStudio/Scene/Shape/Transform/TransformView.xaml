@@ -10,9 +10,6 @@
              xmlns:scale="clr-namespace:PG.CGStudio.Scene.Shape.Transform.Scale"
              xmlns:rotate="clr-namespace:PG.CGStudio.Scene.Shape.Transform.Rotate"
              mc:Ignorable="d">
-    <UserControl.DataContext>
-        <local:TransformViewModel/>
-    </UserControl.DataContext>
     <StackPanel>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Translate"/>
