@@ -15,12 +15,12 @@ namespace PG.CGStudio.UICtrl
         private int mergin;
         private List<Action<ObjectId>> actions = new List<Action<ObjectId>>();
         private SceneType type;
-        private readonly SceneList world;
+        private readonly SceneList scene;
         private readonly Canvas3d canvas;
 
-        public PickUICtrl(SceneList world, Canvas3d canvas, int mergin, SceneType type)
+        public PickUICtrl(SceneList scene, Canvas3d canvas, int mergin, SceneType type)
         {
-            this.world = world;
+            this.scene = scene;
             this.canvas = canvas;
             this.mergin = mergin;
             this.type = type;
@@ -56,7 +56,7 @@ namespace PG.CGStudio.UICtrl
                 var command = new PG.CLI.Command();
                 command.Create(PG.ShapeSelectLabels.CommandNameLabel);
                 command.SetArg(PG.ShapeSelectLabels.ShapeIdLabel, parentId);
-                command.Execute(world.Adapter);
+                command.Execute(scene.Adapter);
                 //command.GetResult<int>(PG.ShapeSelectLabels.BoundingBoxItemIdLabel);
                 canvas.Update();
                 canvas.Render();

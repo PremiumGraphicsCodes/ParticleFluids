@@ -198,6 +198,7 @@
     <Compile Include="UI\SceneSelectView.xaml.cs">
       <DependentUpon>SceneSelectView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\SceneSelectViewModel.cs" />
     <Compile Include="UI\ShapeSelectBehaviour.cs" />
     <Compile Include="Math\Sphere3dViewModel.cs" />
     <Compile Include="Math\Vector3dView.xaml.cs">

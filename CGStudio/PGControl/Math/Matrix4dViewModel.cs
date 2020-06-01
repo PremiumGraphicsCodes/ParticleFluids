@@ -39,25 +39,25 @@ namespace PG.Control.Math
 
         public Matrix4dViewModel()
         {
-            X00 = new ReactiveProperty<double>();
-            X01 = new ReactiveProperty<double>();
-            X02 = new ReactiveProperty<double>();
-            X03 = new ReactiveProperty<double>();
+            X00 = new ReactiveProperty<double>(1);
+            X01 = new ReactiveProperty<double>(0);
+            X02 = new ReactiveProperty<double>(0);
+            X03 = new ReactiveProperty<double>(0);
 
-            X10 = new ReactiveProperty<double>();
-            X11 = new ReactiveProperty<double>();
-            X12 = new ReactiveProperty<double>();
-            X13 = new ReactiveProperty<double>();
+            X10 = new ReactiveProperty<double>(0);
+            X11 = new ReactiveProperty<double>(1);
+            X12 = new ReactiveProperty<double>(0);
+            X13 = new ReactiveProperty<double>(0);
 
-            X20 = new ReactiveProperty<double>();
-            X21 = new ReactiveProperty<double>();
-            X22 = new ReactiveProperty<double>();
-            X23 = new ReactiveProperty<double>();
+            X20 = new ReactiveProperty<double>(0);
+            X21 = new ReactiveProperty<double>(0);
+            X22 = new ReactiveProperty<double>(1);
+            X23 = new ReactiveProperty<double>(0);
 
-            X30 = new ReactiveProperty<double>();
-            X31 = new ReactiveProperty<double>();
-            X32 = new ReactiveProperty<double>();
-            X33 = new ReactiveProperty<double>();
+            X30 = new ReactiveProperty<double>(0);
+            X31 = new ReactiveProperty<double>(0);
+            X32 = new ReactiveProperty<double>(0);
+            X33 = new ReactiveProperty<double>(1);
         }
 
         public Matrix4d Value

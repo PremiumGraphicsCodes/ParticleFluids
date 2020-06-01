@@ -14,7 +14,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
     <StackPanel>
-        <ui:SceneSelectView/>
+        <ui:SceneSelectView DataContext="{Binding SceneSelectViewModel}"/>
         <math:Matrix4dView DataContext="{Binding MatrixViewModel}"/>
     </StackPanel>
 </UserControl>
