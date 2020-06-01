@@ -5,7 +5,6 @@ using PG.Scene;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
-using Labels = PG.PickLabels;
 
 namespace PG.CGStudio.UICtrl
 {
@@ -78,7 +77,7 @@ namespace PG.CGStudio.UICtrl
 
         public void OnLeftButtonDragging(Vector2d position)
         {
-            throw new NotImplementedException();
+            ;
         }
 
         public void OnLeftButtonUp(Vector2d position)

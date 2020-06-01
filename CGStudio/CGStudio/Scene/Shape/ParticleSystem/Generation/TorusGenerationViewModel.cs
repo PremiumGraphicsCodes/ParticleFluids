@@ -1,9 +1,11 @@
 ﻿using PG.CGStudio.Generation.ParticleSystem;
 using PG.Control.Math;
 using PG.Control.OpenGL;
+using PG.Core.Math;
 using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
+using System.Collections.Generic;
 
 namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
 {
@@ -34,22 +36,20 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
 
         private void OnGenerate()
         {
-            /*
             var random = new System.Random();
             var positions = new List<Vector3d>();
-            var sphere = SphereViewModel.Value;
+            var torus = TorusViewModel.Value;
             for (int i = 0; i < Count.Value; ++i)
             {
                 var u = random.NextDouble();
                 var v = random.NextDouble();
-                var pos = sphere.GetPosition(1.0, u, v);
+                var pos = torus.GetPosition(u, v);
                 positions.Add(pos);
             }
-            var id = world.AddParticleSystemScene(positions, "PSSphere", Appearance.Value, 1);
+            var id = world.AddParticleSystemScene(positions, "PSTorus", Appearance.Value, 1);
             canvas.Camera.Fit();
             canvas.BuildShader(world, id);
             canvas.Render();
-            */
         }
     }
 }

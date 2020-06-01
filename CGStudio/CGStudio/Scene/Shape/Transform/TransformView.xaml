@@ -16,5 +16,6 @@
     <StackPanel>
         <ui:SceneSelectView DataContext="{Binding SceneSelectViewModel}"/>
         <math:Matrix4dView DataContext="{Binding MatrixViewModel}"/>
+        <Button Content="Apply" Command="{Binding ApplyCommand}"/>
     </StackPanel>
 </UserControl>

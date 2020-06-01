@@ -9,7 +9,7 @@
         <local:Torus3dViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <local:Vector3dView DataContext="{Binding BottomViewModel}"/>
+        <local:Vector3dView DataContext="{Binding CenterViewModel}"/>
         <StackPanel Orientation="Horizontal">
             <Label Content="BigRadius"/>
             <TextBox Text="{Binding BigRadius.Value}" Width="50"/>
