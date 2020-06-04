@@ -42,7 +42,8 @@ namespace PG.CGStudio.Scene.Shape.ParticleSystem.Generation
             {
                 var u = random.NextDouble();
                 var v = random.NextDouble();
-                var pos = torus.GetPosition(1.0, u, v);
+                var w = random.NextDouble();
+                var pos = torus.GetPosition(u, v, w);
                 positions.Add(pos);
             }
             var id = scene.AddParticleSystemScene(positions, "PSCone", AppearanceViewModel.Value, 1);
