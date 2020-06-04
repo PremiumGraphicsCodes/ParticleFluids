@@ -84,7 +84,7 @@ void WireFrameController::updateParentIdView()
 		buffer.addIndex(e.originId);
 		buffer.addIndex(e.destId);
 	}
-
+	this->parentIdView->send(buffer);
 }
 
 void WireFrameController::updateChildIdView()

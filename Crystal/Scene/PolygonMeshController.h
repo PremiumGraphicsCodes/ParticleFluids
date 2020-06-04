@@ -19,6 +19,13 @@ public:
 	SmoothShaderScene* getView() { return view; }
 
 private:
+	void updateScreenView();
+
+	void updateParentIdView();
+
+	void updateChildIdView();
+
+
 	PolygonMeshScene* model;
 	SmoothShaderScene* view;
 };

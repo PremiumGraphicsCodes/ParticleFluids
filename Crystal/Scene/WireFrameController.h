@@ -18,8 +18,6 @@ public:
 
 	void updateView() override;
 
-	//LineShaderScene* getView() { return view; }
-
 private:
 	void updateScreenView();
 

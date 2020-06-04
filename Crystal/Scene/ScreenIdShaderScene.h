@@ -28,6 +28,8 @@ public:
 
 	std::vector<PointShaderScene*> getPointScenes() const { return pointScenes; }
 
+	std::vector<LineShaderScene*> getLineScenes() const { return lineScenes; }
+
 	void setCamera(CameraShaderScene* camera);
 
 private:

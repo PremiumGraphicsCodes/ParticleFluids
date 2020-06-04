@@ -69,6 +69,10 @@ void ScreenIdShader::render()
 		//pb->setCamera(&cameraScene);
 		pb->render();
 	}
+	const auto& lbs = buffer.getLineScenes();
+	for (auto lb : lbs) {
+		lb->render();
+	}
 	/*
 	for (const auto& b : lineBuffers) {
 		lineBuffer.send(b);

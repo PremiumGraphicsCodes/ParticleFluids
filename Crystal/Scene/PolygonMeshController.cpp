@@ -59,5 +59,22 @@ void PolygonMeshController::createView(SceneShader* sceneShader, GLObjectFactory
 
 void PolygonMeshController::updateView()
 {
+	updateScreenView();
+	updateParentIdView();
+	updateChildIdView();
+}
+
+void PolygonMeshController::updateScreenView()
+{
+
+}
+
+void PolygonMeshController::updateParentIdView()
+{
+
+}
+
+void PolygonMeshController::updateChildIdView()
+{
 
 }
