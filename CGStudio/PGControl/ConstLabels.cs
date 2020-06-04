@@ -266,6 +266,12 @@ namespace PG {
 		public const string IdLabel = "Id";
 	}
 
+	public class ShaderSendLabels
+	{
+		public const string CommandNameLabel = "ShaderSend";
+		public const string IdLabel = "Id";
+	}
+
 	public class ShapeSelectLabels
 	{
 		public const string CommandNameLabel = "ShapeSelectCommand";

@@ -34,7 +34,8 @@ namespace PG.CGStudio.Object.Transform
             var id = SceneSelectViewModel.Id.Value;
             var matrix = MatrixViewModel.Value;
             world.Transform(id, matrix);
-            canvas.Update();
+            canvas.SendShader(world, id);
+//            canvas.Update();
             canvas.Render();
         }
     }

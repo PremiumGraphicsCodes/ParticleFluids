@@ -164,10 +164,14 @@ namespace PG.Control.OpenGL
 
         public void SendShader(SceneList world, int id)
         {
-//            var command = new PG.CLI.Command();
-//            command.Create(PG.Se)
-        }
+            var command = new PG.CLI.Command();
+            command.Create(PG.ShaderSendLabels.CommandNameLabel);
+            command.SetArg(PG.ShaderSendLabels.IdLabel, id);
 
+            Renderer.Bind();
+            command.Execute(world.Adapter);
+            Renderer.UnBind();
+        }
     }
 
 }
