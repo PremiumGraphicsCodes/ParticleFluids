@@ -56,6 +56,7 @@
                     <Fluent:Button Header="Cylinder" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMCylinderGeneration"/>
                     <Fluent:Button Header="Circle" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMCircleGeneration"/>
                     <Fluent:Button Header="Cone" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMConeGeneration"/>
+                    <Fluent:Button Header="Torus" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="PMTorusGeneration"/>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox>
                     <Fluent:Button Header="Transform" KeyTip="BI" Command="{Binding NavigateCommand}" CommandParameter="Transform"/>

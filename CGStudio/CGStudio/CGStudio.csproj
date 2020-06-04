@@ -188,6 +188,7 @@
     <Compile Include="Scene\Shape\PolygonMesh\Generation\TorusGenerationView.xaml.cs">
       <DependentUpon>TorusGenerationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Scene\Shape\PolygonMesh\Generation\TorusGenerationViewModel.cs" />
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditView.xaml.cs">
       <DependentUpon>PolygonMeshEditView.xaml</DependentUpon>
     </Compile>
