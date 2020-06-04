@@ -1,8 +1,9 @@
 #include "TransformView.h"
 
-#include "../../Crystal/Scene/IShapeScene.h"
 #include "../Command/Command.h"
-//#include "../Command/Public/"
+
+#include "../Command/Public/TransformLabels.h"
+#include "../Command/Public/ShaderSendLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -19,15 +20,12 @@ TransformView::TransformView(const std::string& name, World* model, Canvas* canv
 
 void TransformView::onOk()
 {
-	Crystal::Command::Command command("Transform");
-	command.setArg("Id", objectSelectView.getId());
-	command.setArg("Matrix", matrixView.getValue());
+	Crystal::Command::Command command(::TransformLabels::TransformCommandLabel);
+	command.setArg(::TransformLabels::IdLabel, objectSelectView.getId());
+	command.setArg(::TransformLabels::MatrixLabel, matrixView.getValue());
 	command.execute(getWorld());
-	/*
-	const auto id = objectSelectView.getId();
-	auto scene = getWorld()->getObjects()->findSceneById<IShapeScene*>(id);
-	const auto& matrix = matrixView.getValue();
-	scene->transform(matrix);
-	*/
-	//getWorld()->updateViewModel();
+
+	command.create(::ShaderSendLabels::CommandNameLabel);
+	command.setArg(::ShaderSendLabels::IdLabel, objectSelectView.getId());
+	command.execute(getWorld());
 }

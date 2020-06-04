@@ -167,6 +167,7 @@
     <ClInclude Include="Public\PositionGetLabels.h" />
     <ClInclude Include="Public\SceneGetLabels.h" />
     <ClInclude Include="Public\ShaderBuildLabels.h" />
+    <ClInclude Include="Public\ShaderSendLabels.h" />
     <ClInclude Include="Public\STLFileExportLabels.h" />
     <ClInclude Include="Public\STLFileImportLabels.h" />
     <ClInclude Include="Public\TextureSetLabels.h" />
@@ -229,6 +230,7 @@
     <ClInclude Include="SetCommand.h" />
     <ClInclude Include="SetMatrixCommand.h" />
     <ClInclude Include="ShaderBuildCommand.h" />
+    <ClInclude Include="ShaderSendCommand.h" />
     <ClInclude Include="ShapeSelectCommand.h" />
     <ClInclude Include="STLFileExportCommand.h" />
     <ClInclude Include="STLFileImportCommand.h" />
@@ -273,6 +275,7 @@
     <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="SetMatrixCommand.cpp" />
     <ClCompile Include="ShaderBuildCommand.cpp" />
+    <ClCompile Include="ShaderSendCommand.cpp" />
     <ClCompile Include="ShapeSelectCommand.cpp" />
     <ClCompile Include="STLFileExportCommand.cpp" />
     <ClCompile Include="STLFileImportCommand.cpp" />

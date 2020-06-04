@@ -227,6 +227,12 @@
     <ClInclude Include="Public\ShaderBuildLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderSendCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\ShaderSendLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -337,6 +343,9 @@
       <Filter>Scene\Appearance\Texture</Filter>
     </ClCompile>
     <ClCompile Include="ShaderBuildCommand.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderSendCommand.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>

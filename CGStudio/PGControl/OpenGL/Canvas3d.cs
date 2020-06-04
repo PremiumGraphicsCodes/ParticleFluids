@@ -162,6 +162,12 @@ namespace PG.Control.OpenGL
             Renderer.UnBind();
         }
 
+        public void SendShader(SceneList world, int id)
+        {
+//            var command = new PG.CLI.Command();
+//            command.Create(PG.Se)
+        }
+
     }
 
 }
