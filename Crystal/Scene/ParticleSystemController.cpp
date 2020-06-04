@@ -42,6 +42,13 @@ void ParticleSystemController::createView(SceneShader* sceneShader, GLObjectFact
 
 void ParticleSystemController::updateView()
 {
+	updateScreenView();
+	updateParentIdView();
+	updateChildIdView();
+}
+
+void ParticleSystemController::updateScreenView()
+{
 	const auto& ps = model->getShape()->getParticles();
 	PointBuffer pb;
 	for (auto p : ps) {
@@ -49,9 +56,6 @@ void ParticleSystemController::updateView()
 	}
 	pb.setMatrix(model->getMatrix());
 	this->view->send(pb);
-
-	updateParentIdView();
-	updateChildIdView();
 }
 
 void ParticleSystemController::updateParentIdView()

@@ -2,6 +2,8 @@
 
 #include "IController.h"
 
+//#include "LineShaderScene.h"
+
 namespace Crystal {
 	namespace Scene {
 		class WireFrameScene;
@@ -16,11 +18,19 @@ public:
 
 	void updateView() override;
 
-	LineShaderScene* getView() { return view; }
+	//LineShaderScene* getView() { return view; }
+
+private:
+	void updateScreenView();
+
+	void updateParentIdView();
+
+	void updateChildIdView();
 
 private:
 	WireFrameScene* model;
 	LineShaderScene* view;
+	LineShaderScene* parentIdView;
 };
 
 	}

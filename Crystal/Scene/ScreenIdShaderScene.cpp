@@ -29,6 +29,14 @@ void ScreenIdShaderScene::add(PointShaderScene* scene)
 	addChild(scene);
 }
 
+void ScreenIdShaderScene::add(LineShaderScene* scene)
+{
+	scene->setCamera(camera);
+	this->lineScenes.push_back(scene);
+	addChild(scene);
+}
+
+/*
 void ScreenIdShaderScene::add(WireFrameScene* scene)
 {
 	const auto objectId = scene->getId();
@@ -46,6 +54,7 @@ void ScreenIdShaderScene::add(WireFrameScene* scene)
 	}
 	//parentIdViewModel.lineIdBuffers.push_back(lineBuffer);
 }
+*/
 
 void ScreenIdShaderScene::add(PolygonMeshScene* scene)
 {

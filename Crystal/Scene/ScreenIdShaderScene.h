@@ -22,7 +22,7 @@ public:
 
 	void add(PointShaderScene* scene);
 
-	void add(WireFrameScene* scene);
+	void add(LineShaderScene* scene);
 
 	void add(PolygonMeshScene* scene);
 
@@ -32,7 +32,7 @@ public:
 
 private:
 	std::vector<PointShaderScene*> pointScenes;
-	std::vector<LineBuffer> lineIdBuffers;
+	std::vector<LineShaderScene*> lineScenes;
 	std::vector<LineBuffer> triangleIdBuffers;
 	CameraShaderScene* camera;
 };
