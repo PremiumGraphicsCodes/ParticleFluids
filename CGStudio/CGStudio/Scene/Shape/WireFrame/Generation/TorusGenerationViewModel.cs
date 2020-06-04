@@ -1,6 +1,7 @@
 ﻿using PG.CGStudio.Generation.WireFrame;
 using PG.Control.Math;
 using PG.Control.OpenGL;
+using PG.Core.Shape;
 using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
@@ -37,7 +38,16 @@ namespace PG.CGStudio.Scene.Shape.WireFrame.Generation
 
         private void OnGenerate()
         {
+            var torus = TorusViewModel.Value;
+            var builder = new WireFrameBuilder();
+            builder.Add(torus, UNum.Value, VNum.Value);
+            var shape = builder.ToWireFrame();
+            var newId = scene.AddWireFrameScene(shape, "WFTorus", AppearanceViewModel.Value, 1);
 
+            canvas.Camera.Fit();
+
+            canvas.BuildShader(scene, newId);
+            canvas.Render();
         }
     }
 }

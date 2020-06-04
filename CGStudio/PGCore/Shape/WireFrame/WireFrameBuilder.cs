@@ -159,7 +159,6 @@ namespace PG.Core.Shape
             }
         }
 
-
         public void Add(Box3d box)
         {
             var vertices = new int[8];
@@ -186,6 +185,28 @@ namespace PG.Core.Shape
             CreateEdge(vertices[1], vertices[5]);
             CreateEdge(vertices[2], vertices[6]);
             CreateEdge(vertices[3], vertices[7]);
+        }
+
+        public void Add(Torus3d torus, int udiv, int vdiv)
+        {
+            var vertices = new int[udiv + 1, vdiv + 1];
+            for (int i = 0; i <= udiv; ++i)
+            {
+                var u = i / (double)udiv;
+                for (int j = 0; j <= vdiv; ++j)
+                {
+                    var v = j / (double)vdiv;
+                    vertices[i, j] = CreatePosition(torus.GetPosition(u, v));
+                }
+            }
+            for (int i = 0; i < udiv; ++i)
+            {
+                for (int j = 0; j < vdiv; ++j)
+                {
+                    CreateEdge(vertices[i, j], vertices[i + 1, j]);
+                    CreateEdge(vertices[i, j], vertices[i, j + 1]);
+                }
+            }
         }
 
         private void CreateEdge(int originId, int destId)
