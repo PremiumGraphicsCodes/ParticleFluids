@@ -29,5 +29,18 @@
             var z = SmallRadius * System.Math.Sin(p);
             return Center + new Vector3d(x, y, z);
         }
+
+        public Vector3d GetNormal(double u, double v)
+        {
+            var pos = GetPosition(u, v);
+
+            var t = u * 2.0 * System.Math.PI;
+            var p = v * 2.0 * System.Math.PI;
+            var smallRadius = 0.0;
+            var x = BigRadius * System.Math.Cos(t) + smallRadius * System.Math.Cos(p) * System.Math.Cos(t);
+            var y = BigRadius * System.Math.Sin(t) + smallRadius * System.Math.Cos(p) * System.Math.Sin(t);
+            var z = smallRadius * System.Math.Sin(p);
+            return (pos - new Vector3d(x,y,z)).Normalized;
+        }
     }
 }

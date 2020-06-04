@@ -219,6 +219,37 @@ namespace PG.Core.Shape
             }
         }
 
+        public void Add(Torus3d torus, int u, int v)
+        {
+            var vertices = new int[u + 1, v + 1];
+            for (int i = 0; i <= u; ++i)
+            {
+                var uu = i / (double)u;
+                for (int j = 0; j <= v; ++j)
+                {
+                    var vv = j / (double)v;
+                    var p = CreatePosition(torus.GetPosition(uu, vv));
+                    var n = CreateNormal(torus.GetNormal(uu, vv));
+                    var t = CreateTexCoord(new Vector2d(uu, vv));
+                    vertices[i, j] = CreateVertex(p, n, t);
+                }
+            }
+
+            for (int i = 0; i < u; ++i)
+            {
+                for (int j = 0; j < v; ++j)
+                {
+                    var v1 = vertices[i, j];
+                    var v2 = vertices[i + 1, j];
+                    var v3 = vertices[i, j + 1];
+                    var v4 = vertices[i + 1, j + 1];
+                    CreateFace(v1, v2, v3);
+                    CreateFace(v4, v3, v2);
+                }
+            }
+        }
+
+
         private void Add(int v0, int v1, int v2, int v3)
         {
             var p0 = positions[v0];

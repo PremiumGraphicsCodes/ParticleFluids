@@ -185,6 +185,9 @@
       <DependentUpon>ConeGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\Shape\PolygonMesh\Generation\ConeGenerationViewModel.cs" />
+    <Compile Include="Scene\Shape\PolygonMesh\Generation\TorusGenerationView.xaml.cs">
+      <DependentUpon>TorusGenerationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scene\Shape\PolygonMesh\PolygonMeshEditView.xaml.cs">
       <DependentUpon>PolygonMeshEditView.xaml</DependentUpon>
     </Compile>
@@ -380,6 +383,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\Shape\PolygonMesh\Generation\SphereGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\Shape\PolygonMesh\Generation\TorusGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
