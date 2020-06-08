@@ -25,6 +25,9 @@
     <ClInclude Include="MCCell.h">
       <Filter>MarchingCubes</Filter>
     </ClInclude>
+    <ClInclude Include="FluidSimulator.h">
+      <Filter>Fluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -48,6 +51,9 @@
     <ClCompile Include="VolumeConvertAlgo.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
+    <ClCompile Include="FluidSimulator.cpp">
+      <Filter>Fluid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">
@@ -64,6 +70,9 @@
     </Filter>
     <Filter Include="Volume">
       <UniqueIdentifier>{aa657a9f-2f54-427f-a595-70f197e46c21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fluid">
+      <UniqueIdentifier>{53d5fdba-eb87-4bac-a977-c7d1e983be5d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

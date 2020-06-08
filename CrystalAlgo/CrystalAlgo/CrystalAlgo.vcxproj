@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BooleanAlgo.h" />
+    <ClInclude Include="FluidSimulator.h" />
     <ClInclude Include="IntersectionAlgo.h" />
     <ClInclude Include="MarchingCubesAlgo.h" />
     <ClInclude Include="MarchingCubesTable.h" />
@@ -161,6 +162,7 @@
   <ItemGroup>
     <ClCompile Include="BooleanAlgo.cpp" />
     <ClCompile Include="csgjs.h" />
+    <ClCompile Include="FluidSimulator.cpp" />
     <ClCompile Include="IntersectionAlgo.cpp" />
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />
