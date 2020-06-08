@@ -5,14 +5,11 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Shape/IPoint.h"
 
+#include "MicroParticle.h"
+
 namespace Crystal {
 	namespace Algo {
-
-class MicroPoint : public Shape::IPoint
-{
-	Math::Vector3dd vector;
-
-};
+		namespace Physics {
 
 class MacroParticle
 {
@@ -25,15 +22,15 @@ public:
 
 	void calculateDensity();
 
-//	void calculatePressure();
+	//	void calculatePressure();
 
-//	void calculateViscosity();
+	//	void calculateViscosity();
 
-//	void stepTime(double dt);
+	//	void stepTime(double dt);
 
 	double getRadius() const { return radius; }
 
-	std::vector<MicroPoint*> getPoints() { return points; }
+	std::vector<MicroParticle*> getPoints() { return points; }
 
 	void setInnerPoints(const std::list<Shape::IPoint*>& inners) { this->innerPoints; }
 
@@ -41,12 +38,19 @@ public:
 
 private:
 	double radius;
-	std::vector<MicroPoint*> points;
+	std::vector<MicroParticle*> points;
 	std::list<Shape::IPoint*> innerPoints;
 	Math::Vector3dd force;
 	Math::Vector3dd position;
 	Math::Vector3dd velocity;
 };
+
+/*
+class FluidParticleSystem : public Scene::IScene
+{
+
+};
+*/
 
 class FluidSimulator
 {
@@ -67,5 +71,7 @@ private:
 private:
 	std::list<MacroParticle*> particles;
 };
+
+		}
 	}
 }
