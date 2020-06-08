@@ -10,8 +10,8 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 	const auto dy = 1.0 / (double)vnum;
 
 	const double tolerance = 1.0e-12;
-	for (double x = 0.0; x <= 1.0 + tolerance; x += dx) {
-		for (double y = 0.0; y < 1.0 + tolerance; y += dy) {
+	for (double x = -0.5; x <= 0.5 + tolerance; x += dx) {
+		for (double y = -0.5; y < 0.5 + tolerance; y += dy) {
 			const Vector3dd v(Vector3dd(x, y, 0.0));
 			if (Math::getLengthSquared(v) > 0.5 * 0.5) {
 				points.push_back(new MicroParticle(this, v));
