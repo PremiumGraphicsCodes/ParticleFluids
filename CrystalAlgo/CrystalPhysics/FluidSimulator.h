@@ -11,33 +11,18 @@
 namespace Crystal {
 	namespace Algo {
 		namespace Physics {
+			class FluidScene;
 
-			/*
-			class FluidParticleSystem : public Scene::IScene
-			{
+class FluidSimulator
+{
+public:
+	void add(FluidScene* fluid) { this->fluids.push_back(fluid); }
 
-			};
-			*/
+	void simulate(const double dt);
 
-			class FluidSimulator
-			{
-			public:
-				void addParticle(MacroParticle* particle) {
-					this->particles.push_back(particle);
-				}
-
-				void simulate(const double dt);
-
-			private:
-				void calculateDensity();
-
-				void calculatePressure();
-
-				void calculateViscosity();
-
-			private:
-				std::list<MacroParticle*> particles;
-			};
+private:
+	std::list<FluidScene*> fluids;
+};
 
 		}
 	}

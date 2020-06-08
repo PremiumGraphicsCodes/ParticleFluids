@@ -27,7 +27,7 @@ void FluidSimulationView::onOk()
 	auto world = getWorld();
 
 	auto mp = new MacroParticle(1.0);
-//	mp->distributePoints(10, 10);
+	mp->distributePoints(10, 10);
 	//FluidSimulator simulator;
 	//simulator.addParticle(mp);
 	//simulator.simulate(0.01);
