@@ -16,7 +16,10 @@ private:
 
 private:
 	Algo::Physics::FluidSimulator simulator;
+	Button startButton;
 	Button nextButton;
+	int newId;
+
 	//ObjectSelectView mesh1;
 	//ObjectSelectView mesh2;
 	//DoubleView tolerance;

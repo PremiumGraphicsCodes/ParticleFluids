@@ -21,9 +21,17 @@ using namespace Crystal::Algo::Physics;
 
 FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("FluidSimulation", model, canvas),
+	startButton("Start"),
 	nextButton("Next")
 {
-	//nextButton.setFunction()
+	auto func = [=]() {
+		simulator.simulate(0.01);
+		Command::Command command;
+		command.create(ShaderSendLabels::CommandNameLabel);
+		command.setArg(ShaderSendLabels::IdLabel, newId);
+		command.execute(getWorld());
+	};
+	nextButton.setFunction(func);
 	add(&nextButton);
 }
 
@@ -42,7 +50,7 @@ void FluidSimulationView::onOk()
 	fps->addParticle(mp1);
 	fps->addParticle(mp2);
 	getWorld()->getObjects()->addScene(fps);
-	auto newId = fps->getId();
+	this->newId = fps->getId();
 
 	Command::Command command;
 	command.create(ShaderBuildLabels::CommandNameLabel);
@@ -63,4 +71,3 @@ void FluidSimulationView::onOk()
 	}
 	*/
 }
-

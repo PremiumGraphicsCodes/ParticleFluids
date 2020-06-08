@@ -20,7 +20,7 @@ void FluidSimulator::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash spaceHash(particles.front()->getRadius() * 2.0, static_cast<int>(particles.size()));
+	SpaceHash spaceHash(particles.front()->getRadius(), static_cast<int>(particles.size()));
 	for (auto particle : particles) {
 		const auto& points = particle->getPoints();
 		for (auto point : points) {
@@ -40,9 +40,11 @@ void FluidSimulator::simulate(const double dt)
 		particle->calculatePressure();
 	}
 
+	/*
 	for (auto particle : particles) {
 		particle->calculateViscosity();
 	}
+	*/
 
 	for (auto particle : particles) {
 		particle->addForce(Vector3dd(0.0,-9.8,0.0));

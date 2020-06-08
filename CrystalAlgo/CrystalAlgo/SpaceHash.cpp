@@ -45,7 +45,13 @@ std::list<IPoint*> SpaceHash::getNeighbors(const Vector3dd& position)
 				std::array<int, 3> index{ i,j,k };
 				const auto& hash = toHash(index);
 				const auto& points = table[hash];
-				results.insert(results.end(), points.begin(), points.end());
+				for (auto p : points) {
+					const auto d2 = Math::getDistanceSquared(p->getPosition(), position);
+					if (d2 < divideLength * divideLength) {
+						results.push_back(p);
+					}
+				}
+//				results.insert(results.end(), points.begin(), points.end());
 			}
 		}
 	}
