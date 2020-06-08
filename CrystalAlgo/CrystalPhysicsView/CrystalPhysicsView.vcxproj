@@ -152,6 +152,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CrystalPhysicsView.cpp" />
+    <ClCompile Include="FluidSimulationView.cpp" />
+    <ClCompile Include="PhysicsMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CrystalViewer\AppBase\AppBase.vcxproj">
@@ -184,6 +186,10 @@
     <ProjectReference Include="..\CrystalPhysics\CrystalPhysics.vcxproj">
       <Project>{4c0efd78-680e-45c9-9828-9b674ee70df0}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FluidSimulationView.h" />
+    <ClInclude Include="PhysicsMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

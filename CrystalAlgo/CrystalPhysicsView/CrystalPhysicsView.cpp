@@ -10,7 +10,7 @@
 
 #include "../../Crystal/Scene/World.h"
 
-//#include "AlgoMenu.h"
+#include "PhysicsMenu.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -36,7 +36,7 @@ int main(int, char**)
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 	window.add(new ShapeMenu("Shape", &model, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &model, &canvas, control));
-	//window.add(new AlgoMenu("Algo", &model, &canvas, control));
+	window.add(new PhysicsMenu("Physics", &model, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 
