@@ -15,7 +15,10 @@
     <ClInclude Include="FluidSimulator.h">
       <Filter>Fluid</Filter>
     </ClInclude>
-    <ClInclude Include="FluidParticleSystem.h">
+    <ClInclude Include="FluidScene.h">
+      <Filter>Fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidSceneController.h">
       <Filter>Fluid</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,7 +32,7 @@
     <ClCompile Include="FluidSimulator.cpp">
       <Filter>Fluid</Filter>
     </ClCompile>
-    <ClCompile Include="FluidParticleSystem.cpp">
+    <ClCompile Include="FluidScene.cpp">
       <Filter>Fluid</Filter>
     </ClCompile>
   </ItemGroup>

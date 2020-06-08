@@ -147,13 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="FluidParticleSystem.h" />
+    <ClInclude Include="FluidScene.h" />
+    <ClInclude Include="FluidSceneController.h" />
     <ClInclude Include="FluidSimulator.h" />
     <ClInclude Include="MacroParticle.h" />
     <ClInclude Include="MicroParticle.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FluidParticleSystem.cpp" />
+    <ClCompile Include="FluidScene.cpp" />
     <ClCompile Include="FluidSimulator.cpp" />
     <ClCompile Include="MacroParticle.cpp" />
     <ClCompile Include="MicroParticle.cpp" />

@@ -1,6 +1,6 @@
 #include "FluidSimulationView.h"
 
-#include "../CrystalPhysics/FluidParticleSystem.h"
+#include "../CrystalPhysics/FluidScene.h"
 #include "../CrystalPhysics/FluidSimulator.h"
 #include "../../Crystal/Shape/WireFrameBuilder.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
@@ -24,7 +24,7 @@ void FluidSimulationView::onOk()
 	//simulator.addParticle()
 	simulator.simulate(0.01);
 
-	//FluidParticleSystem fps(getWorld()->getNextSceneId(), "Fluid");
+	//FluidScene fps(getWorld()->getNextSceneId(), "Fluid");
 
 	/*
 	getWorld()->addScene(1, )
