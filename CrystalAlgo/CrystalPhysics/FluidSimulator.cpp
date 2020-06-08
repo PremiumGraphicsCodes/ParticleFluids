@@ -1,6 +1,6 @@
 #include "FluidSimulator.h"
 
-#include "SpaceHash.h"
+#include "../CrystalAlgo/SpaceHash.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Algo;
