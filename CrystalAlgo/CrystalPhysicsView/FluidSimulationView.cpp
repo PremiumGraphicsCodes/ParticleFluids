@@ -6,9 +6,15 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
+#include "../../CrystalViewer/Command/Command.h"
+
+#include "../../CrystalViewer/Command/Public/ShaderBuildLabels.h"
+#include "../../CrystalViewer/Command/Public/CameraLabels.h"
+
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
+using namespace Crystal::Command;
 using namespace Crystal::Algo::Physics;
 
 FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
@@ -18,13 +24,27 @@ FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
 
 void FluidSimulationView::onOk()
 {
-	auto repository = getWorld();
+	auto world = getWorld();
 
-	FluidSimulator simulator;
-	//simulator.addParticle()
-	simulator.simulate(0.01);
+	auto mp = new MacroParticle(1.0);
+//	mp->distributePoints(10, 10);
+	//FluidSimulator simulator;
+	//simulator.addParticle(mp);
+	//simulator.simulate(0.01);
 
-	//FluidScene fps(getWorld()->getNextSceneId(), "Fluid");
+	FluidScene* fps = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
+	fps->addParticle(mp);
+	getWorld()->getObjects()->addScene(fps);
+	auto newId = fps->getId();
+
+	Command::Command command;
+	command.create(ShaderBuildLabels::CommandNameLabel);
+	command.setArg(ShaderBuildLabels::IdLabel, newId);
+	command.execute(getWorld());
+
+	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
+	command.execute(getWorld());
+
 
 	/*
 	getWorld()->addScene(1, )

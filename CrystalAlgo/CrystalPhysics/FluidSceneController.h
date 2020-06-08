@@ -13,6 +13,8 @@ namespace Crystal {
 class FluidSceneController : public Scene::IController
 {
 public:
+	explicit FluidSceneController(FluidScene* model);
+
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
 	void updateView() override;

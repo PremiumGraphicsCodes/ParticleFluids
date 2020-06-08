@@ -13,18 +13,19 @@ namespace Crystal {
 class FluidScene : public Scene::IScene
 {
 public:
-	FluidScene(const int id, const std::string& name)
-	{
-
-	}
+	FluidScene(const int id, const std::string& name);
 
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
-	Scene::IController* getController() { return controller; }
+	Scene::IController* getController() { return controller.get(); }
+
+	void addParticle(MacroParticle* mp) { particles.push_back(mp); }
+
+	std::list<MacroParticle*> getParticles() const { return particles; }
 
 private:
 	std::list<MacroParticle*> particles;
-	FluidSceneController* controller;
+	std::unique_ptr<FluidSceneController> controller;
 };
 
 		}

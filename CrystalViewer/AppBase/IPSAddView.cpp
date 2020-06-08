@@ -36,10 +36,7 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	command.create(ShaderBuildLabels::CommandNameLabel);
 	command.setArg(ShaderBuildLabels::IdLabel, newId);
 	command.execute(getWorld());
-	//auto scene = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>(newId);
-	//auto controller = scene->getController();
-	//controller->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	//getWorld()->getRenderer()->getScene()->screen.addChild(controller.getView());
+
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 }

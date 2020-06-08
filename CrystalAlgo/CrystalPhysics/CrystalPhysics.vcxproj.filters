@@ -35,5 +35,8 @@
     <ClCompile Include="FluidScene.cpp">
       <Filter>Fluid</Filter>
     </ClCompile>
+    <ClCompile Include="FluidSceneController.cpp">
+      <Filter>Fluid</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
