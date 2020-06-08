@@ -16,6 +16,10 @@ void FluidSimulator::simulate(const double dt)
 		particles.insert(particles.end(), ps.begin(), ps.end());
 	}
 
+	for (auto particle : particles) {
+		particle->reset();
+	}
+
 	SpaceHash spaceHash(particles.front()->getRadius() * 2.0, static_cast<int>(particles.size()));
 	for (auto particle : particles) {
 		const auto& points = particle->getPoints();
@@ -26,7 +30,9 @@ void FluidSimulator::simulate(const double dt)
 
 	for (auto particle : particles) {
 		const auto& position = particle->getPosition();
-		const auto& neighbors = spaceHash.getNeighbors(position);
+		auto neighbors = spaceHash.getNeighbors(position);
+		neighbors.sort();
+		neighbors.unique();
 		particle->setInnerPoints(neighbors);
 	}
 

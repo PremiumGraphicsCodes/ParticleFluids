@@ -9,8 +9,10 @@
 #include "../../CrystalViewer/Command/Command.h"
 
 #include "../../CrystalViewer/Command/Public/ShaderBuildLabels.h"
+#include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
 #include "../../CrystalViewer/Command/Public/CameraLabels.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -18,22 +20,27 @@ using namespace Crystal::Command;
 using namespace Crystal::Algo::Physics;
 
 FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
-	IOkCancelView("FluidSimulation", model, canvas)
+	IOkCancelView("FluidSimulation", model, canvas),
+	nextButton("Next")
 {
+	//nextButton.setFunction()
+	add(&nextButton);
 }
 
 void FluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	auto mp = new MacroParticle(1.0);
-	mp->distributePoints(10, 10);
-	//FluidSimulator simulator;
-	//simulator.addParticle(mp);
-	//simulator.simulate(0.01);
+	auto mp1 = new MacroParticle(0.5, Vector3dd(0,0,0));
+	mp1->distributePoints(10, 10);
+	mp1->setStatic(true);
+
+	auto mp2 = new MacroParticle(0.5, Vector3dd(0,1.0,0));
+	mp2->distributePoints(10, 10);
 
 	FluidScene* fps = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
-	fps->addParticle(mp);
+	fps->addParticle(mp1);
+	fps->addParticle(mp2);
 	getWorld()->getObjects()->addScene(fps);
 	auto newId = fps->getId();
 
@@ -45,30 +52,14 @@ void FluidSimulationView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
+	simulator.add(fps);
 
 	/*
-	getWorld()->addScene(1, )
-
-	auto obj1 = repository->getObjects()->findSceneById<PolygonMeshScene*>(mesh1.getId());
-	auto obj2 = repository->getObjects()->findSceneById<PolygonMeshScene*>(mesh2.getId());
-	if (obj1 == nullptr || obj2 == nullptr) {
-		return;
-	}
-
-	IntersectionAlgo algo;
-	const auto isFound = algo.calculateIntersection(*obj1->getShape(), *obj2->getShape(), tolerance.getValue());
-	if (isFound) {
-		const auto& intersections = algo.getIntersections();
-		std::vector<Math::Vector3dd> positions;
-		for (const auto& i : intersections) {
-			const auto& p = i.position;
-			positions.push_back(p);
-		}
-		ParticleAttribute attr;
-		attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-		attr.size = 1.0f;
-		//repository->getSceneFactory()->createParticleSystemScene(positions, attr, "intersections");
-		//getWorld()->updateViewModel();
+	for (int i = 0; i < 1; ++i) {
+		simulator.simulate(0.01);
+		command.create(ShaderSendLabels::CommandNameLabel);
+		command.setArg(ShaderSendLabels::IdLabel, newId);
+		command.execute(getWorld());
 	}
 	*/
 }

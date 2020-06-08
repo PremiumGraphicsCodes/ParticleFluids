@@ -12,13 +12,16 @@ namespace Crystal {
 class MacroParticle
 {
 public:
-	explicit MacroParticle(const double radius) :
-		radius(radius)
+	MacroParticle(const double radius, const Math::Vector3dd& position) :
+		radius(radius),
+		position(position)
 	{}
 
 	void distributePoints(const int unum, const int vnum);
 
 	//void calculateDensity();
+
+	void reset() { this->force = Math::Vector3dd(0, 0, 0); }
 
 	void calculatePressure();
 
@@ -30,7 +33,7 @@ public:
 
 	std::vector<MicroParticle*> getPoints() { return points; }
 
-	void setInnerPoints(const std::list<Shape::IPoint*>& inners) { this->innerPoints; }
+	void setInnerPoints(const std::list<Shape::IPoint*>& inners) { this->innerPoints = inners; }
 
 	Math::Vector3dd getPosition() const { return position; }
 

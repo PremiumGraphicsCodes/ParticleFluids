@@ -47,7 +47,7 @@ void MacroParticle::calculateViscosity()
 		averagedVelocity += mp->getVelocity();
 	}
 	averagedVelocity /= (double)innerPoints.size();
-	this->force = this->velocity - averagedVelocity;
+	this->force += this->velocity - averagedVelocity;
 	//byCenter /= (double)innerPoints.size();
 
 }
