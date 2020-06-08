@@ -20,17 +20,25 @@ void FluidSimulator::calculateDensity()
 		const auto& neighbors = spaceHash.getNeighbors(position);
 		particle->setInnerPoints(neighbors);
 	}
-
 }
 
 void FluidSimulator::calculatePressure()
 {
-
+	for (auto particle : particles) {
+		particle->calculatePressure();
+	}
 }
 
+void FluidSimulator::calculateViscosity()
+{
+	for (auto particle : particles) {
+		particle->calculateViscosity();
+	}
+}
 
 void FluidSimulator::simulate(const double dt)
 {
 	calculateDensity();
-
+	calculatePressure();
+	calculateViscosity();
 }

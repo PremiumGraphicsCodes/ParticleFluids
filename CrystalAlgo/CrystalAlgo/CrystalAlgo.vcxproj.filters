@@ -34,6 +34,9 @@
     <ClInclude Include="MacroParticle.h">
       <Filter>Fluid</Filter>
     </ClInclude>
+    <ClInclude Include="FluidParticleSystem.h">
+      <Filter>Fluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -61,6 +64,12 @@
       <Filter>Fluid</Filter>
     </ClCompile>
     <ClCompile Include="MacroParticle.cpp">
+      <Filter>Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="FluidParticleSystem.cpp">
+      <Filter>Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MicroParticle.cpp">
       <Filter>Fluid</Filter>
     </ClCompile>
   </ItemGroup>

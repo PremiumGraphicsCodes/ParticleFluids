@@ -20,9 +20,9 @@ public:
 
 	double calculateDensity();
 
-	//	void calculatePressure();
+	void calculatePressure();
 
-	//	void calculateViscosity();
+	void calculateViscosity();
 
 	//	void stepTime(double dt);
 
@@ -33,6 +33,8 @@ public:
 	void setInnerPoints(const std::list<Shape::IPoint*>& inners) { this->innerPoints; }
 
 	Math::Vector3dd getPosition() const { return position; }
+
+	Math::Vector3dd getVelocity() const { return velocity; }
 
 private:
 	double radius;

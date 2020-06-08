@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BooleanAlgo.h" />
+    <ClInclude Include="FluidParticleSystem.h" />
     <ClInclude Include="FluidSimulator.h" />
     <ClInclude Include="IntersectionAlgo.h" />
     <ClInclude Include="MacroParticle.h" />
@@ -164,10 +165,12 @@
   <ItemGroup>
     <ClCompile Include="BooleanAlgo.cpp" />
     <ClCompile Include="csgjs.h" />
+    <ClCompile Include="FluidParticleSystem.cpp" />
     <ClCompile Include="FluidSimulator.cpp" />
     <ClCompile Include="IntersectionAlgo.cpp" />
     <ClCompile Include="MacroParticle.cpp" />
     <ClCompile Include="MarchingCubesAlgo.cpp" />
+    <ClCompile Include="MicroParticle.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
     <ClCompile Include="VolumeConvertAlgo.cpp" />
