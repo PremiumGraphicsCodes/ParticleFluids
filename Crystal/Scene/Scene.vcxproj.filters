@@ -148,6 +148,9 @@
     <ClInclude Include="IController.h">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="IAnimator.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">

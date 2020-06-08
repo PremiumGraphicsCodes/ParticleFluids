@@ -7,6 +7,10 @@ using namespace Crystal::Math;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::Physics;
 
+void FluidSimulator::step()
+{
+	simulate(timeStep);
+}
 
 void FluidSimulator::simulate(const double dt)
 {

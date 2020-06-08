@@ -8,20 +8,25 @@
 #include "MicroParticle.h"
 #include "MacroParticle.h"
 
+#include "../../Crystal/Scene/IAnimator.h"
+
 namespace Crystal {
 	namespace Algo {
 		namespace Physics {
 			class FluidScene;
 
-class FluidSimulator
+class FluidSimulator : public Scene::IAnimator
 {
 public:
 	void add(FluidScene* fluid) { this->fluids.push_back(fluid); }
 
 	void simulate(const double dt);
 
+	void step() override;
+
 private:
 	std::list<FluidScene*> fluids;
+	double timeStep;
 };
 
 		}
