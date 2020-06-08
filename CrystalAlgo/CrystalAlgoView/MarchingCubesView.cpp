@@ -80,5 +80,5 @@ void MarchingCubesView::onOk()
 	}
 	//builder.pushCurrentFaceGroup();
 	//getWorld()->getObjectFactory()->createPolygonMeshScene(builder.(), "MarchingCubes");
-	getWorld()->updateViewModel();
+	//getWorld()->updateViewModel();
 }
