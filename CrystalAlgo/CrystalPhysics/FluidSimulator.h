@@ -18,6 +18,8 @@ namespace Crystal {
 class FluidSimulator : public Scene::IAnimator
 {
 public:
+	FluidSimulator();
+
 	void add(FluidScene* fluid) { this->fluids.push_back(fluid); }
 
 	void simulate(const double dt);
@@ -26,7 +28,7 @@ public:
 
 private:
 	std::list<FluidScene*> fluids;
-	double timeStep;
+	double timeStep = 0.01;
 };
 
 		}

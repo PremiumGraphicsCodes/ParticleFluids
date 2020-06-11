@@ -11,11 +11,13 @@
 #include "CameraScene.h"
 
 #include "../Shader/GLObjectFactory.h"
+#include "IAnimator.h"
 
 #include <filesystem>
 
 namespace Crystal {
 	namespace Scene {
+		class IAnimator;
 
 class World : private UnCopyable
 {
@@ -46,8 +48,13 @@ public:
 
 	CameraScene* getCamera() { return camera; }
 
+	std::list<IAnimator*> getAnimations() const { return animations; }
+
+	void addAnimation(IAnimator* a) { this->animations.push_back(a); }
+
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
+	std::list<IAnimator*> animations;
 	CameraScene* camera;
 
 	SceneIdProvider sceneIdProvider;

@@ -60,7 +60,11 @@ void FluidSimulationView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
-	simulator.add(fps);
+	//simulator.add(fps);
+
+	auto simulator = new FluidSimulator();
+	simulator->add(fps);
+	getWorld()->addAnimation(simulator);
 
 	/*
 	for (int i = 0; i < 1; ++i) {

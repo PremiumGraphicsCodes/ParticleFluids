@@ -7,6 +7,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::Physics;
 
+FluidSimulator::FluidSimulator()
+{}
+
 void FluidSimulator::step()
 {
 	simulate(timeStep);
@@ -54,4 +57,9 @@ void FluidSimulator::simulate(const double dt)
 		particle->addForce(Vector3dd(0.0,-9.8,0.0));
 		particle->stepTime(dt);
 	}
+
+	for (auto fluid : fluids) {
+		fluid->getController()->updateView();
+	}
+
 }

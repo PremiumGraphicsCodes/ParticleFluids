@@ -183,6 +183,10 @@ void Window::show()
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
 		world->getRenderer()->render(width, height);
+		const auto animations = world->getAnimations();
+		for (auto& a : animations) {
+			a->step();
+		}
 
 		glFlush();
 
