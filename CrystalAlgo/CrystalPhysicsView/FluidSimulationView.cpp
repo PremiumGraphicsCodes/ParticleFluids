@@ -39,16 +39,19 @@ void FluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	auto mp1 = new MacroParticle(0.5, Vector3dd(0,0,0));
-	mp1->distributePoints(20, 20);
 //	mp1->setStatic(true);
 
-	auto mp2 = new MacroParticle(0.5, Vector3dd(0,1.0,0));
-	mp2->distributePoints(20, 20);
+	//auto mp2 = new MacroParticle(0.5, Vector3dd(0,1.0,0));
+	//mp2->distributePoints(20, 20);
 
 	FluidScene* fps = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
-	fps->addParticle(mp1);
-	fps->addParticle(mp2);
+	for (int i = 0; i < 5; ++i) {
+		for (int j = 0; j < 2; ++j) {
+			auto mp = new MacroParticle(0.5, Vector3dd(i, j, 0));
+			mp->distributePoints(20, 20);
+			fps->addParticle(mp);
+		}
+	}
 	getWorld()->getObjects()->addScene(fps);
 	this->newId = fps->getId();
 

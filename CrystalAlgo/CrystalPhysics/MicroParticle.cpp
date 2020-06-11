@@ -7,7 +7,7 @@ using namespace Crystal::Algo::Physics;
 
 Vector3dd MicroParticle::getPosition() const
 {
-	return parent->getPosition() + parent->getRadius() * vector;
+	return parent->getPosition() + parent->getRadius() * 1.0 * vector;
 }
 
 Vector3dd MicroParticle::getVelocity() const

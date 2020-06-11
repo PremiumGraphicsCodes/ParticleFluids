@@ -7,7 +7,8 @@ using namespace Crystal::Math;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::Physics;
 
-FluidSimulator::FluidSimulator()
+FluidSimulator::FluidSimulator() :
+	timeStep(0.001)
 {}
 
 void FluidSimulator::step()
@@ -27,7 +28,7 @@ void FluidSimulator::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash spaceHash(particles.front()->getRadius(), static_cast<int>(particles.size()));
+	SpaceHash spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size()));
 	for (auto particle : particles) {
 		const auto& points = particle->getPoints();
 		for (auto point : points) {
@@ -47,11 +48,9 @@ void FluidSimulator::simulate(const double dt)
 		particle->calculatePressure();
 	}
 
-	/*
 	for (auto particle : particles) {
 		particle->calculateViscosity();
 	}
-	*/
 
 	for (auto particle : particles) {
 		auto position = particle->getPosition();

@@ -30,7 +30,7 @@ public:
 
 private:
 	std::list<FluidScene*> fluids;
-	double timeStep = 0.01;
+	double timeStep;
 };
 
 		}

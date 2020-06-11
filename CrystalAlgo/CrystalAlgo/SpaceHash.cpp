@@ -11,7 +11,7 @@ namespace {
 	constexpr long int p3 = 83492791;
 }
 
-SpaceHash::SpaceHash(const float divideLength, const int tableSize) :
+SpaceHash::SpaceHash(const double divideLength, const int tableSize) :
 	divideLength(divideLength),
 	table(tableSize)
 {
@@ -46,7 +46,7 @@ std::list<IPoint*> SpaceHash::getNeighbors(const Vector3dd& position)
 				const auto& hash = toHash(index);
 				const auto& points = table[hash];
 				for (auto p : points) {
-					const auto d2 = Math::getDistanceSquared(p->getPosition(), position);
+					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
 					if (d2 < divideLength * divideLength) {
 						results.push_back(p);
 					}

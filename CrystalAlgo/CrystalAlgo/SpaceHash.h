@@ -11,7 +11,7 @@ namespace Crystal {
 class SpaceHash : private UnCopyable
 {
 public:
-	SpaceHash(const float divideLength, const int tableSize);
+	SpaceHash(const double divideLength, const int tableSize);
 
 	//void add(const Shape::IParticleSystem& particles);
 
@@ -28,7 +28,7 @@ private:
 
 	std::array<int, 3> toIndex(const Math::Vector3df& pos);
 
-	const float divideLength;
+	const double divideLength;
 
 
 };
