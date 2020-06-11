@@ -46,8 +46,8 @@ void FluidSimulationView::onOk()
 
 	FluidScene* fps = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
 	for (int i = 0; i < 2; ++i) {
-		for (int j = 0; j < 2; ++j) {
-			auto mp = new MacroParticle(1.0, Vector3dd(i, j, 0));
+		for (int j = 0; j < 5; ++j) {
+			auto mp = new MacroParticle(0.5, Vector3dd(i, j, 0));
 			mp->distributePoints(10, 10);
 			fps->addParticle(mp);
 		}

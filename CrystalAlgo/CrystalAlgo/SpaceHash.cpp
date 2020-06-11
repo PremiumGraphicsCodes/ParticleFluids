@@ -39,9 +39,9 @@ std::list<IPoint*> SpaceHash::getNeighbors(const Vector3dd& position)
 	std::list<IPoint*> results;
 
 	const auto& index = toIndex(position);
-	for (int i = index[0] - 1; i < index[0] + 1; ++i) {
-		for (int j = index[1] - 1; j < index[1] + 1; ++j) {
-			for (int k = index[2] - 1; k < index[2] + 1; ++k) {
+	for (int i = index[0] - 1; i <= index[0] + 1; ++i) {
+		for (int j = index[1] - 1; j <= index[1] + 1; ++j) {
+			for (int k = index[2] - 1; k <= index[2] + 1; ++k) {
 				std::array<int, 3> index{ i,j,k };
 				const auto& hash = toHash(index);
 				const auto& points = table[hash];

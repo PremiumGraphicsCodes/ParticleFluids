@@ -21,7 +21,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 		for (int y = 0; y <= vnum; ++y) {
 			const auto xx = x / (double)unum;
 			const auto yy = y / (double)vnum;
-			const Vector3dd v(xx-r, yy-r, 0.0);
+			const Vector3dd v(xx-0.5, yy-0.5, 0.0);
 			const auto length2 = Math::getLengthSquared(v);
 			if (length2 < r * r) {
 				/*
@@ -56,7 +56,7 @@ void MacroParticle::calculatePressure()
 	}
 	byCenter += (double)preCount * getPosition();
 	byCenter /= (double)count;
-	this->force += (this->position - byCenter) * 100.0;
+	this->force += (this->position - byCenter) * 1000.0;
 }
 
 void MacroParticle::calculateViscosity()
