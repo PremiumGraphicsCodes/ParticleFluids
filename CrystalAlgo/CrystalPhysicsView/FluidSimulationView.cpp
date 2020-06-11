@@ -52,11 +52,11 @@ void FluidSimulationView::onOk()
 	const auto length = radius * 2.0;
 	for (int i = -50; i < 50; ++i) {
 		for (int j = 0; j < 10; ++j) {
-//			for (int k = 0; k < 10; ++k) {
-				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, 0.0));
-				mp->distributePoints(5, 5);
+			for (int k = 0; k < 10; ++k) {
+				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k*length));
+				mp->distributePoints(5, 5, 5);
 				fps->addParticle(mp);
-//			}
+			}
 		}
 	}
 	getWorld()->getObjects()->addScene(fps);

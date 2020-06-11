@@ -88,7 +88,7 @@ void MacroParticle::calculatePressure()
 	}
 	byCenter += (double)preCount * getPosition();
 	byCenter /= (double)count;
-	this->force += (this->position - byCenter) * 10000.0;
+	this->force += (this->position - byCenter) * 5000.0;
 }
 
 void MacroParticle::calculateViscosity()
