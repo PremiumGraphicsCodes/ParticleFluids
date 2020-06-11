@@ -10,6 +10,33 @@ MacroParticle::MacroParticle(const double radius, const Vector3dd& position) :
 {}
 
 // MicroParticleを遠くに配置する->探索では自分に入らない．
+void MacroParticle::distributePoints(const int unum, const int vnum)
+{
+	// 左上から右下に向かって均等分割する．->内外判定する．
+	const auto dx = 1.0 / (double)unum;
+	const auto dy = 1.0 / (double)vnum;
+
+	const double tolerance = 1.0e-12;
+
+	const auto r = 0.5;
+	for (int x = 0; x <= unum; x++) {
+		for (int y = 0; y <= vnum; ++y) {
+			const auto xx = x / (double)unum;
+			const auto yy = y / (double)vnum;
+			const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);
+			const auto length2 = Math::getLengthSquared(v);
+			if (length2 < r * r) {
+				if (length2 < 0.4 * 0.4) {
+					preCount++;
+				}
+				else {
+					points.push_back(new MicroParticle(this, v));
+				}
+			}
+		}
+	}
+}
+
 
 void MacroParticle::distributePoints(const int unum, const int vnum, const int wnum)
 {
