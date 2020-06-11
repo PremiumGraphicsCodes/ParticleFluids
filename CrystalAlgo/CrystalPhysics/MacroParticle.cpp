@@ -3,6 +3,12 @@
 using namespace Crystal::Math;
 using namespace Crystal::Algo::Physics;
 
+MacroParticle::MacroParticle(const double radius, const Vector3dd& position) :
+	radius(radius),
+	position(position),
+	preCount(0)
+{}
+
 void MacroParticle::distributePoints(const int unum, const int vnum)
 {
 	// 左上から右下に向かって均等分割する．->内外判定する．
@@ -10,13 +16,13 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 	const auto dy = 1.0 / (double)vnum;
 
 	const double tolerance = 1.0e-12;
-	const auto ratio = 0.5;
-	for (double x = -0.5 + tolerance; x < 0.5 - tolerance; x += dx) {
-		for (double y = -0.5 + tolerance; y < 0.5 - tolerance; y += dy) {
+	const auto r = 0.5;
+	for (double x = -r + tolerance; x < r - tolerance; x += dx) {
+		for (double y = -r + tolerance; y < r - tolerance; y += dy) {
 			//			for (double z = -0.5; z < 0.5 + tolerance; z += dy) {
 			const Vector3dd v(Vector3dd(x, y, 0.0));
 			const auto length2 = Math::getLengthSquared(v);
-			if (length2 < 0.5 * 0.5) {
+			if (length2 < r * r) {
 				/*
 				if (length2 < 0.5 * 0.5) {
 					preCount++;
@@ -49,7 +55,7 @@ void MacroParticle::calculatePressure()
 	}
 	byCenter += (double)preCount * getPosition();
 	byCenter /= (double)count;
-	this->force += (this->position - byCenter) * 5000.0;
+	this->force += (this->position - byCenter) * 100.0;
 }
 
 void MacroParticle::calculateViscosity()

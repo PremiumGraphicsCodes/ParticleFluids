@@ -12,10 +12,7 @@ namespace Crystal {
 class MacroParticle
 {
 public:
-	MacroParticle(const double radius, const Math::Vector3dd& position) :
-		radius(radius),
-		position(position)
-	{}
+	MacroParticle(const double radius, const Math::Vector3dd& position);
 
 	void distributePoints(const int unum, const int vnum);
 

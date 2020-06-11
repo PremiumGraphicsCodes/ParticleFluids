@@ -28,7 +28,7 @@ void FluidSimulator::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size()));
+	SpaceHash spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size()*100));
 	for (auto particle : particles) {
 		const auto& points = particle->getPoints();
 		for (auto point : points) {
@@ -55,7 +55,7 @@ void FluidSimulator::simulate(const double dt)
 	for (auto particle : particles) {
 		auto position = particle->getPosition();
 		if (position.y < 0.0) {
-			const auto overlap = Vector3dd(0, -position.y, 0) * 0.99;
+			const auto overlap = Vector3dd(0, -position.y, 0);
 			particle->addForce( overlap / dt / dt );
 		}
 
