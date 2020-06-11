@@ -18,7 +18,7 @@ void FluidSimulator::step()
 
 void FluidSimulator::simulate(const double dt)
 {
-	std::list<MacroParticle*> particles;
+	std::vector<MacroParticle*> particles;
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
 		particles.insert(particles.end(), ps.begin(), ps.end());
@@ -36,7 +36,10 @@ void FluidSimulator::simulate(const double dt)
 		}
 	}
 
-	for (auto particle : particles) {
+#pragma omp parallel for
+	for(int i = 0; i < particles.size(); ++i) {
+		const auto particle = particles[i];
+//	for (auto particle : particles) {
 		const auto& position = particle->getPosition();
 		auto neighbors = spaceHash.getNeighbors(position);
 		neighbors.sort();
