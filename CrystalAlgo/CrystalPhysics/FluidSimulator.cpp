@@ -8,7 +8,7 @@ using namespace Crystal::Algo;
 using namespace Crystal::Algo::Physics;
 
 FluidSimulator::FluidSimulator() :
-	timeStep(0.001)
+	timeStep(0.01)
 {}
 
 void FluidSimulator::step()
@@ -28,7 +28,7 @@ void FluidSimulator::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size()*100));
+	SpaceHash spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size()*10));
 	for (auto particle : particles) {
 		const auto& points = particle->getPoints();
 		for (auto point : points) {
@@ -48,11 +48,9 @@ void FluidSimulator::simulate(const double dt)
 		particle->calculatePressure();
 	}
 
-	/*
 	for (auto particle : particles) {
 		particle->calculateViscosity();
 	}
-	*/
 
 	for (auto particle : particles) {
 		auto position = particle->getPosition();
@@ -60,14 +58,23 @@ void FluidSimulator::simulate(const double dt)
 			const auto overlap = Vector3dd(0, -position.y, 0);
 			particle->addForce( overlap / dt / dt );
 		}
-		if (position.x > 5.0) {
-			const auto overlap = Vector3dd(5.0 - position.x, 0, 0);
+		if (position.x > 20.0) {
+			const auto overlap = Vector3dd(20.0 - position.x, 0, 0);
 			particle->addForce(overlap / dt / dt);
 		}
-		if (position.x < -10.0) {
-			const auto overlap = Vector3dd(-10.0 - position.x, 0, 0);
+		if (position.x < -20.0) {
+			const auto overlap = Vector3dd(-20.0 - position.x, 0, 0);
 			particle->addForce(overlap / dt / dt);
 		}
+		if (position.z > 20.0) {
+			const auto overlap = Vector3dd(0, 0, 20.0 - position.z);
+			particle->addForce(overlap / dt / dt);
+		}
+		if (position.z < -20.0) {
+			const auto overlap = Vector3dd(0, 0, -20.0 - position.x);
+			particle->addForce(overlap / dt / dt);
+		}
+
 
 
 	}

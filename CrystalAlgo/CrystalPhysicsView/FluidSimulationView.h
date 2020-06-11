@@ -17,6 +17,7 @@ private:
 private:
 	Algo::Physics::FluidSimulator simulator;
 	Button startButton;
+	Button resetButton;
 	Button nextButton;
 	int newId;
 

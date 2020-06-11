@@ -14,7 +14,7 @@ class MacroParticle
 public:
 	MacroParticle(const double radius, const Math::Vector3dd& position);
 
-	void distributePoints(const int unum, const int vnum);
+	void distributePoints(const int unum, const int vnum, const int wnum);
 
 	//void calculateDensity();
 

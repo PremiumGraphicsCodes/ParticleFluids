@@ -22,6 +22,7 @@ using namespace Crystal::Algo::Physics;
 FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("FluidSimulation", model, canvas),
 	startButton("Start"),
+	resetButton("Reset"),
 	nextButton("Next")
 {
 	auto func = [=]() {
@@ -33,6 +34,8 @@ FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
 	};
 	nextButton.setFunction(func);
 	add(&nextButton);
+
+	add(&resetButton);
 }
 
 void FluidSimulationView::onOk()
@@ -45,11 +48,15 @@ void FluidSimulationView::onOk()
 	//mp2->distributePoints(20, 20);
 
 	FluidScene* fps = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
-	for (int i = -5; i < 5; ++i) {
-		for (int j = 0; j < 5; ++j) {
-			auto mp = new MacroParticle(0.5, Vector3dd(i, j, 0));
-			mp->distributePoints(10, 10);
-			fps->addParticle(mp);
+	const auto radius = 0.1;
+	const auto length = radius * 2.0;
+	for (int i = -50; i < 50; ++i) {
+		for (int j = 0; j < 10; ++j) {
+			for (int k = 0; k < 1; ++k) {
+				auto mp = new MacroParticle(radius, Vector3dd(i * length, j + length, k));
+				mp->distributePoints(10, 10, 10);
+				fps->addParticle(mp);
+			}
 		}
 	}
 	getWorld()->getObjects()->addScene(fps);
@@ -68,13 +75,4 @@ void FluidSimulationView::onOk()
 	auto simulator = new FluidSimulator();
 	simulator->add(fps);
 	getWorld()->addAnimation(simulator);
-
-	/*
-	for (int i = 0; i < 1; ++i) {
-		simulator.simulate(0.01);
-		command.create(ShaderSendLabels::CommandNameLabel);
-		command.setArg(ShaderSendLabels::IdLabel, newId);
-		command.execute(getWorld());
-	}
-	*/
 }
