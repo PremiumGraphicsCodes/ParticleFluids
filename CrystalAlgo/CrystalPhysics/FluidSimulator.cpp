@@ -48,9 +48,11 @@ void FluidSimulator::simulate(const double dt)
 		particle->calculatePressure();
 	}
 
+	/*
 	for (auto particle : particles) {
 		particle->calculateViscosity();
 	}
+	*/
 
 	for (auto particle : particles) {
 		auto position = particle->getPosition();

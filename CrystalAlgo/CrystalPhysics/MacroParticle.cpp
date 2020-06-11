@@ -17,10 +17,11 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 
 	const double tolerance = 1.0e-12;
 	const auto r = 0.5;
-	for (double x = -r + tolerance; x < r - tolerance; x += dx) {
-		for (double y = -r + tolerance; y < r - tolerance; y += dy) {
-			//			for (double z = -0.5; z < 0.5 + tolerance; z += dy) {
-			const Vector3dd v(Vector3dd(x, y, 0.0));
+	for (int x = 0; x <= unum; x++) {
+		for (int y = 0; y <= vnum; ++y) {
+			const auto xx = x / (double)unum;
+			const auto yy = y / (double)vnum;
+			const Vector3dd v(xx-r, yy-r, 0.0);
 			const auto length2 = Math::getLengthSquared(v);
 			if (length2 < r * r) {
 				/*
