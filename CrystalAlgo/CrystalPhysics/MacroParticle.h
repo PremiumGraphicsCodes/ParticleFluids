@@ -50,6 +50,7 @@ private:
 	Math::Vector3dd force;
 	Math::Vector3dd position;
 	Math::Vector3dd velocity;
+	int preCount;
 	//double density;
 	bool isStatic = false;
 };

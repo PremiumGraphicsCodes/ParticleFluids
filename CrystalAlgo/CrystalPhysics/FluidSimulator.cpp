@@ -54,6 +54,15 @@ void FluidSimulator::simulate(const double dt)
 	*/
 
 	for (auto particle : particles) {
+		auto position = particle->getPosition();
+		if (position.y < 0.0) {
+			const auto overlap = Vector3dd(0, -position.y, 0) * 0.99;
+			particle->addForce( overlap / dt / dt );
+		}
+
+	}
+
+	for (auto particle : particles) {
 		particle->addForce(Vector3dd(0.0,-9.8,0.0));
 		particle->stepTime(dt);
 	}

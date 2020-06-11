@@ -26,6 +26,8 @@ public:
 
 	void step() override;
 
+	//void addBoundary()
+
 private:
 	std::list<FluidScene*> fluids;
 	double timeStep = 0.01;
