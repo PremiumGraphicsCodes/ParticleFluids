@@ -21,6 +21,9 @@
     <ClInclude Include="FluidSceneController.h">
       <Filter>Fluid</Filter>
     </ClInclude>
+    <ClInclude Include="SpaceHash.h">
+      <Filter>Fluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -36,6 +39,9 @@
       <Filter>Fluid</Filter>
     </ClCompile>
     <ClCompile Include="FluidSceneController.cpp">
+      <Filter>Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceHash.cpp">
       <Filter>Fluid</Filter>
     </ClCompile>
   </ItemGroup>

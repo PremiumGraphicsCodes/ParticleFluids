@@ -1,7 +1,7 @@
 #include "FluidSimulator.h"
 
 #include "FluidScene.h"
-#include "../CrystalAlgo/SpaceHash.h"
+#include "SpaceHash.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Algo;
@@ -41,7 +41,7 @@ void FluidSimulator::simulate(const double dt)
 		const auto particle = particles[i];
 //	for (auto particle : particles) {
 		const auto& position = particle->getPosition();
-		auto neighbors = spaceHash.getNeighbors(position);
+		auto neighbors = spaceHash.getNeighbors(position, particle);
 		neighbors.sort();
 		neighbors.unique();
 		particle->setInnerPoints(neighbors);

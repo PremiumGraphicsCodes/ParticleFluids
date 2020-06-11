@@ -32,7 +32,7 @@ public:
 
 	std::vector<MicroParticle*> getPoints() { return points; }
 
-	void setInnerPoints(const std::list<Shape::IPoint*>& inners) { this->innerPoints = inners; }
+	void setInnerPoints(const std::list<MicroParticle*>& inners) { this->innerPoints = inners; }
 
 	Math::Vector3dd getPosition() const { return position; }
 
@@ -45,7 +45,7 @@ public:
 private:
 	double radius;
 	std::vector<MicroParticle*> points;
-	std::list<Shape::IPoint*> innerPoints;
+	std::list<MicroParticle*> innerPoints;
 	Math::Vector3dd force;
 	Math::Vector3dd position;
 	Math::Vector3dd velocity;

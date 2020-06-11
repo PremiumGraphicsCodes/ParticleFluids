@@ -31,6 +31,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 				}
 				else {
 					points.push_back(new MicroParticle(this, v));
+					preCount++;
 				}
 			}
 		}

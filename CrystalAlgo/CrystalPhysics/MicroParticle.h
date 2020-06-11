@@ -26,6 +26,8 @@ namespace Crystal {
 
 				void transform(const Math::Matrix4dd& m) override {};
 
+				MacroParticle* getParent() { return parent; }
+
 			private:
 				MacroParticle* parent;
 				Math::Vector3dd vector;
