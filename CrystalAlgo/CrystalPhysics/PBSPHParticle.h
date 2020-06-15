@@ -105,6 +105,7 @@ private:
 	Math::Vector3df normal;
 
 	Math::Vector3df position;
+	float radius;
 	float density;
 
 	SPHConstant* constant;

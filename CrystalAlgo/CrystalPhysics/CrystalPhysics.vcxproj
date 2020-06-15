@@ -158,6 +158,7 @@
     <ClInclude Include="MacroParticle.h" />
     <ClInclude Include="MicroParticle.h" />
     <ClInclude Include="PBSPHParticle.h" />
+    <ClInclude Include="PBSPHSolver.h" />
     <ClInclude Include="SpaceHash.h" />
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
@@ -168,6 +169,8 @@
     <ClCompile Include="FluidSimulator.cpp" />
     <ClCompile Include="MacroParticle.cpp" />
     <ClCompile Include="MicroParticle.cpp" />
+    <ClCompile Include="PBSPHParticle.cpp" />
+    <ClCompile Include="PBSPHSolver.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
     <ClCompile Include="SPHKernel.cpp" />
   </ItemGroup>

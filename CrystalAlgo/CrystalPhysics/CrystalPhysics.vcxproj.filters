@@ -36,6 +36,9 @@
     <ClInclude Include="SPHKernel.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
+    <ClInclude Include="PBSPHSolver.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -57,6 +60,12 @@
       <Filter>Fluid</Filter>
     </ClCompile>
     <ClCompile Include="SPHKernel.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBSPHParticle.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBSPHSolver.cpp">
       <Filter>PBSPH</Filter>
     </ClCompile>
   </ItemGroup>

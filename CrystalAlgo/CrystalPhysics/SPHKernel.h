@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Matrix3d.h"
 
