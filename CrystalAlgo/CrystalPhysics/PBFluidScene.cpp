@@ -6,5 +6,5 @@ using namespace Crystal::Physics;
 PBFluidScene::PBFluidScene(const int id, const std::string& name) :
 	IScene(id, name)
 {
-	//this->controller = std::make_unique<FluidSceneController>(this);
+	this->controller = std::make_unique<PBFluidSceneController>(this);
 }

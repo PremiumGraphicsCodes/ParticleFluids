@@ -158,6 +158,7 @@
     <ClInclude Include="MacroParticle.h" />
     <ClInclude Include="MicroParticle.h" />
     <ClInclude Include="PBFluidScene.h" />
+    <ClInclude Include="PBFluidSceneController.h" />
     <ClInclude Include="PBSPHBoundarySolver.h" />
     <ClInclude Include="PBSPHParticle.h" />
     <ClInclude Include="PBSPHSolver.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="MacroParticle.cpp" />
     <ClCompile Include="MicroParticle.cpp" />
     <ClCompile Include="PBFluidScene.cpp" />
+    <ClCompile Include="PBFluidSceneController.cpp" />
     <ClCompile Include="PBSPHBoundarySolver.cpp" />
     <ClCompile Include="PBSPHParticle.cpp" />
     <ClCompile Include="PBSPHSolver.cpp" />

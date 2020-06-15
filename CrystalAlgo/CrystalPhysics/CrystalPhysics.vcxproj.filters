@@ -45,6 +45,9 @@
     <ClInclude Include="PBFluidScene.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
+    <ClInclude Include="PBFluidSceneController.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -78,6 +81,9 @@
       <Filter>PBSPH</Filter>
     </ClCompile>
     <ClCompile Include="PBFluidScene.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBFluidSceneController.cpp">
       <Filter>PBSPH</Filter>
     </ClCompile>
   </ItemGroup>
