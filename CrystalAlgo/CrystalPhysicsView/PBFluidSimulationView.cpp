@@ -1,7 +1,8 @@
-#include "FluidSimulationView.h"
+#include "PBFluidSimulationView.h"
 
-#include "../CrystalPhysics/FluidScene.h"
-#include "../CrystalPhysics/FluidSimulator.h"
+#include "../CrystalPhysics/PBFluidScene.h"
+#include "../CrystalPhysics/PBSPHSolver.h"
+#include "../CrystalPhysics/PBSPHParticle.h"
 
 #include "../../CrystalViewer/Command/Command.h"
 
@@ -14,10 +15,14 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Command;
-using namespace Crystal::Algo::Physics;
+using namespace Crystal::Physics;
 
-FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
-	IOkCancelView("FluidSimulation", model, canvas),
+namespace {
+	SPHConstant sphConstant;
+}
+
+PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
+	IOkCancelView("PBFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
 	nextButton("Next")
@@ -35,18 +40,17 @@ FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
 	add(&resetButton);
 }
 
-void FluidSimulationView::onOk()
+void PBFluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	FluidScene* fps = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
+	auto fps = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
 	const auto radius = 0.1;
 	const auto length = radius * 2.0;
 	for (int i = -50; i < 50; ++i) {
 		for (int j = 0; j < 10; ++j) {
 			for (int k = 0; k < 10; ++k) {
-				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k*length));
-				mp->distributePoints(5, 5, 5);
+				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
 				fps->addParticle(mp);
 			}
 		}
@@ -62,7 +66,7 @@ void FluidSimulationView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
-	auto simulator = new FluidSimulator();
-	simulator->add(fps);
-	getWorld()->addAnimation(simulator);
+	//auto simulator = new PBSPHSolver();
+	//simulator->add(fps);
+	//getWorld()->addAnimation(simulator);
 }

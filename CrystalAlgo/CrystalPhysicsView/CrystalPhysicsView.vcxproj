@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClCompile Include="CrystalPhysicsView.cpp" />
     <ClCompile Include="FluidSimulationView.cpp" />
+    <ClCompile Include="PBFluidSimulationView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationView.h" />
+    <ClInclude Include="PBFluidSimulationView.h" />
     <ClInclude Include="PhysicsMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
