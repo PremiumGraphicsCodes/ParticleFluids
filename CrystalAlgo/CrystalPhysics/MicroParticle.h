@@ -8,30 +8,24 @@ namespace Crystal {
 		namespace Physics {
 			class MacroParticle;
 
-			class MicroParticle : public Shape::IPoint
-			{
-			public:
-				MicroParticle(MacroParticle* parent, const Math::Vector3dd& point) :
-					parent(parent),
-					vector(point)
-				{}
+class MicroParticle : public Shape::IPoint
+{
+public:
+	MicroParticle(MacroParticle* parent, const Math::Vector3dd& point) :
+		parent(parent),
+		vector(point)
+	{}
 
-				Math::Vector3dd getPosition() const override;
+	Math::Vector3dd getPosition() const override;
 
-				Math::Vector3dd getVelocity() const;
+	Math::Vector3dd getVelocity() const;
 
-				void move(const Math::Vector3dd& v) override {};
+	MacroParticle* getParent() { return parent; }
 
-				void transform(const Math::Matrix3dd& m) override {};
-
-				void transform(const Math::Matrix4dd& m) override {};
-
-				MacroParticle* getParent() { return parent; }
-
-			private:
-				MacroParticle* parent;
-				Math::Vector3dd vector;
-			};
+private:
+	MacroParticle* parent;
+	Math::Vector3dd vector;
+};
 
 		}
 	}
