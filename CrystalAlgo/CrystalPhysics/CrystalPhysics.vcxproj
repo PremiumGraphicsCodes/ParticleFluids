@@ -157,7 +157,10 @@
     <ClInclude Include="FluidSimulator.h" />
     <ClInclude Include="MacroParticle.h" />
     <ClInclude Include="MicroParticle.h" />
+    <ClInclude Include="PBSPHParticle.h" />
     <ClInclude Include="SpaceHash.h" />
+    <ClInclude Include="SPHConstant.h" />
+    <ClInclude Include="SPHKernel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FluidScene.cpp" />
@@ -166,6 +169,7 @@
     <ClCompile Include="MacroParticle.cpp" />
     <ClCompile Include="MicroParticle.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
+    <ClCompile Include="SPHKernel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

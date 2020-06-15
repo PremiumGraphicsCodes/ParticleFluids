@@ -4,6 +4,9 @@
     <Filter Include="Fluid">
       <UniqueIdentifier>{78ff2e95-a432-49fc-8ca9-4c386fae1a97}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PBSPH">
+      <UniqueIdentifier>{51e44d13-c0a6-4c44-b8d2-140b0cc53e0a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MicroParticle.h">
@@ -24,6 +27,15 @@
     <ClInclude Include="SpaceHash.h">
       <Filter>Fluid</Filter>
     </ClInclude>
+    <ClInclude Include="PBSPHParticle.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHConstant.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="SPHKernel.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -43,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="SpaceHash.cpp">
       <Filter>Fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHKernel.cpp">
+      <Filter>PBSPH</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
