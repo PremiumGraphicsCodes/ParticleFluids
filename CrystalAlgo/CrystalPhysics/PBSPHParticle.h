@@ -5,6 +5,8 @@
 #include <memory>
 
 #include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Shape/IPoint.h"
+
 #include "SPHKernel.h"
 //#include "ISPHParticle.h"
 #include "SPHConstant.h"
@@ -12,7 +14,7 @@
 namespace Crystal {
 	namespace Physics {
 
-class PBSPHParticle //: public ISPHParticle
+class PBSPHParticle : public Shape::IPoint
 {
 public:
 	PBSPHParticle(const Math::Vector3df& center, float radius, SPHConstant* constant);
@@ -80,7 +82,7 @@ public:
 
 	Math::Vector3df getPredictPosition() const { return predictPosition; }
 
-	Math::Vector3df getPosition() const { return position; }
+	Math::Vector3dd getPosition() const { return position; }
 
 	void calculatePressure(const PBSPHParticle& rhs);
 
