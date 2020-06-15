@@ -5,17 +5,21 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Box3d.h"
 
+#include "../../Crystal/Scene/IAnimator.h"
+
 namespace Crystal {
 	namespace Physics {
 
 class PBSPHParticle;
 class PBSPHObject;
 
-class PBSPHSolver
+class PBSPHSolver : public Scene::IAnimator
 {
 public:
 	PBSPHSolver()
 	{}
+
+	void step() override;
 
 	void add(PBSPHParticle* particle) { this->particles.push_back(particle); }
 

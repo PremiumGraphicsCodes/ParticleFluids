@@ -15,6 +15,7 @@
 #include "ScreenIdShaderScene.h"
 
 #include "../Util/UnCopyable.h"
+#include <memory>
 
 namespace Crystal {
 	namespace Shader {

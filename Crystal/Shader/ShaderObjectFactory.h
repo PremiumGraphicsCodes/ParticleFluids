@@ -4,6 +4,7 @@
 #include "ShaderObject.h"
 
 #include <list>
+#include <memory>
 
 namespace Crystal {
 	namespace Shader {

@@ -8,6 +8,11 @@ using namespace Crystal::Math;
 using namespace Crystal::Algo;
 using namespace Crystal::Physics;
 
+void PBSPHSolver::step()
+{
+	simulate(0.01, 1.25, 1.5, 3);
+}
+
 void PBSPHSolver::simulate(const float dt, const float effectLength, const float searchLength, const int maxIter)
 {
 	for (auto p : particles) {

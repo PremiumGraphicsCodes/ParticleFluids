@@ -5,6 +5,7 @@
 #include "../Graphics/Image.h"
 #include "../Graphics/Imagef.h"
 #include "../Util/UnCopyable.h"
+#include <string>
 
 namespace Crystal {
 	namespace Shader {
