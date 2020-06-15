@@ -25,6 +25,12 @@
     <ClInclude Include="MCCell.h">
       <Filter>MarchingCubes</Filter>
     </ClInclude>
+    <ClInclude Include="IndexedParticle.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedFinder.h">
+      <Filter>Search</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -47,6 +53,12 @@
     </ClCompile>
     <ClCompile Include="VolumeConvertAlgo.cpp">
       <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexedParticle.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexedFinder.cpp">
+      <Filter>Search</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

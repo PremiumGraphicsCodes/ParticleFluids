@@ -39,6 +39,9 @@
     <ClInclude Include="PBSPHSolver.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
+    <ClInclude Include="PBSPHBoundarySolver.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -66,6 +69,9 @@
       <Filter>PBSPH</Filter>
     </ClCompile>
     <ClCompile Include="PBSPHSolver.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBSPHBoundarySolver.cpp">
       <Filter>PBSPH</Filter>
     </ClCompile>
   </ItemGroup>

@@ -150,6 +150,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BooleanAlgo.h" />
+    <ClInclude Include="IndexedFinder.h" />
+    <ClInclude Include="IndexedParticle.h" />
     <ClInclude Include="IntersectionAlgo.h" />
     <ClInclude Include="MarchingCubesAlgo.h" />
     <ClInclude Include="MarchingCubesTable.h" />
@@ -161,6 +163,8 @@
   <ItemGroup>
     <ClCompile Include="BooleanAlgo.cpp" />
     <ClCompile Include="csgjs.h" />
+    <ClCompile Include="IndexedFinder.cpp" />
+    <ClCompile Include="IndexedParticle.cpp" />
     <ClCompile Include="IntersectionAlgo.cpp" />
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />
