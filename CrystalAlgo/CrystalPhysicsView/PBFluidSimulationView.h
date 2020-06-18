@@ -4,6 +4,9 @@
 #include "../CrystalPhysics/FluidSimulator.h"
 
 namespace Crystal {
+	namespace Physics {
+		class PBFluidScene;
+	}
 	namespace UI {
 
 class PBFluidSimulationView : public IOkCancelView
@@ -14,8 +17,11 @@ public:
 private:
 	void onOk() override;
 
+	void reset();
+
 private:
 	Algo::Physics::FluidSimulator simulator;
+	Physics::PBFluidScene* fluidScene;
 	Button startButton;
 	Button resetButton;
 	Button nextButton;

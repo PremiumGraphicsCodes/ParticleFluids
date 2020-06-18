@@ -45,19 +45,10 @@ void PBFluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	auto fps = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
-	const auto radius = 1.0;
-	const auto length = radius * 2.0;
-	for (int i = -10; i < 10; ++i) {
-		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 1; ++k) {
-				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
-				fps->addParticle(mp);
-			}
-		}
-	}
-	getWorld()->getObjects()->addScene(fps);
-	this->newId = fps->getId();
+	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
+	reset();
+	getWorld()->getObjects()->addScene(this->fluidScene);
+	this->newId = this->fluidScene->getId();
 
 	Command::Command command;
 	command.create(ShaderBuildLabels::CommandNameLabel);
@@ -68,8 +59,22 @@ void PBFluidSimulationView::onOk()
 	command.execute(getWorld());
 
 	auto simulator = new PBSPHSolver();
-	simulator->add(fps);
+	simulator->add(this->fluidScene);
 	simulator->setBoundary(Box3d(Vector3dd(-100.0, -1.0, -100.0), Vector3dd(100.0, 100.0, 100.0)));
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 	getWorld()->addAnimation(simulator);
+}
+
+void PBFluidSimulationView::reset()
+{
+	const auto radius = 1.0;
+	const auto length = radius * 2.0;
+	for (int i = -10; i < 10; ++i) {
+		for (int j = 0; j < 10; ++j) {
+			for (int k = 0; k < 1; ++k) {
+				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
+				this->fluidScene->addParticle(mp);
+			}
+		}
+	}
 }
