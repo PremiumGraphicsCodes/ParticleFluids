@@ -34,6 +34,9 @@
     <ClInclude Include="ZIndexedSearchAlgo.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="ZOrderCurve.h">
+      <Filter>Search</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">

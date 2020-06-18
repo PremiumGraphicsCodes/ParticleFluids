@@ -160,6 +160,7 @@
     <ClInclude Include="SpaceHash.h" />
     <ClInclude Include="VolumeConvertAlgo.h" />
     <ClInclude Include="ZIndexedSearchAlgo.h" />
+    <ClInclude Include="ZOrderCurve.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BooleanAlgo.cpp" />
