@@ -3,6 +3,7 @@
 #include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
 #include "../Command/Command.h"
+#include "../Command/Public/CameraLabels.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -17,7 +18,7 @@ void CameraMenu::onShow()
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::MenuItem("Fit")) {
 			Command::Command command;
-			command.create("CameraFit");
+			command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 			command.execute(getWorld());
 		}
 		if (ImGui::MenuItem("XY")) {

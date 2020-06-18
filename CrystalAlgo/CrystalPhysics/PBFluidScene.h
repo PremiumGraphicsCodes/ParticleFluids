@@ -6,8 +6,8 @@
 #include "PBFluidSceneController.h"
 
 namespace Crystal {
-		namespace Physics {
-			class PBSPHParticle;
+	namespace Physics {
+		class PBSPHParticle;
 
 class PBFluidScene : public Scene::IScene
 {
@@ -21,6 +21,8 @@ public:
 	void addParticle(PBSPHParticle* mp) { particles.push_back(mp); }
 
 	std::list<PBSPHParticle*> getParticles() const { return particles; }
+
+	Math::Box3d getBoundingBox() const override;
 
 private:
 	std::list<PBSPHParticle*> particles;

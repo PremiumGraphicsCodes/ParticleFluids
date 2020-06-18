@@ -23,6 +23,8 @@ public:
 
 	static Box3d createDegeneratedBox() { return Box3d(Vector3dd(0, 0, 0), Vector3dd(0, 0, 0)); }
 
+	bool isDegenerated() { return start == Vector3dd(0, 0, 0) && end == Vector3dd(0, 0, 0); }
+
 	void add(const Vector3dd& v);
 
 	void add(const Box3d& b);
