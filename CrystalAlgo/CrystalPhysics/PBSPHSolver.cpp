@@ -1,4 +1,5 @@
 #include "PBSPHSolver.h"
+#include "PBFluidScene.h"
 #include "PBSPHParticle.h"
 
 #include "../CrystalAlgo/IndexedFinder.h"
@@ -10,18 +11,20 @@ using namespace Crystal::Physics;
 
 void PBSPHSolver::step()
 {
-	simulate(0.01, 1.25, 1.5, 3);
+	simulate(0.01, 2.25, 2.5, 3);
 }
 
 void PBSPHSolver::simulate(const float dt, const float effectLength, const float searchLength, const int maxIter)
 {
+	std::vector<PBSPHParticle*> particles;
+	for (auto fluid : fluids) {
+		const auto ps = fluid->getParticles();
+		particles.insert(particles.end(), ps.begin(), ps.end());
+	}
+
 	for (auto p : particles) {
 		p->init();
 	}
-
-	//static int i;
-	//i++;
-	//const auto bb = Box3d( this->boundary.getMin(), this->boundary.getMax() + Vector3dd( std::sin(i * 0.1f ) * 20.0, 0.0, 0.0) );
 
 	PBSPHBoundarySolver boundarySolver(boundary);
 	for (auto p : particles) {
@@ -98,4 +101,7 @@ void PBSPHSolver::simulate(const float dt, const float effectLength, const float
 		//	p->integrate(dt);
 	}
 
+	for (auto fluid : fluids) {
+		fluid->getController()->updateView();
+	}
 }

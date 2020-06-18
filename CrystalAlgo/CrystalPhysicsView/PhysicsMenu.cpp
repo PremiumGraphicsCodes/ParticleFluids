@@ -1,6 +1,7 @@
 #include "PhysicsMenu.h"
 
 #include "FluidSimulationView.h"
+#include "PBFluidSimulationView.h"
 
 /*
 #include "IntersectionView.h"
@@ -26,9 +27,12 @@ PhysicsMenu::PhysicsMenu(const std::string& name, World* model, Canvas* canvas, 
 
 void PhysicsMenu::onShow()
 {
-	if (ImGui::BeginMenu("Algo")) {
+	if (ImGui::BeginMenu("Physics")) {
 		if (ImGui::MenuItem("Fluid")) {
 			control->setWindow(new FluidSimulationView(getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("PBFluid")) {
+			control->setWindow(new PBFluidSimulationView(getWorld(), getCanvas()));
 		}
 		/*
 		if (ImGui::MenuItem("SpaceHash")) {

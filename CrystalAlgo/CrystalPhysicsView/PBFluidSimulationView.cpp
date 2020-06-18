@@ -18,7 +18,8 @@ using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
 namespace {
-	SPHConstant sphConstant;
+	SPHConstant sphConstant(1.0f, 1000.0f, 100.0f, 0.0f, 2.25f);
+	//sphConstant.
 }
 
 PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
@@ -45,11 +46,11 @@ void PBFluidSimulationView::onOk()
 	auto world = getWorld();
 
 	auto fps = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
-	const auto radius = 0.1;
+	const auto radius = 1.0;
 	const auto length = radius * 2.0;
-	for (int i = -50; i < 50; ++i) {
+	for (int i = -10; i < 10; ++i) {
 		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 10; ++k) {
+			for (int k = 0; k < 1; ++k) {
 				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
 				fps->addParticle(mp);
 			}
@@ -66,7 +67,9 @@ void PBFluidSimulationView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
-	//auto simulator = new PBSPHSolver();
-	//simulator->add(fps);
-	//getWorld()->addAnimation(simulator);
+	auto simulator = new PBSPHSolver();
+	simulator->add(fps);
+	simulator->setBoundary(Box3d(Vector3dd(-100.0, -1.0, -100.0), Vector3dd(100.0, 100.0, 100.0)));
+	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
+	getWorld()->addAnimation(simulator);
 }

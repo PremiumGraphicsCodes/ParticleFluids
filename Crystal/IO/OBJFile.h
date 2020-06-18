@@ -2,6 +2,7 @@
 
 #include "../Math/Vector2d.h"
 #include "../Math/Vector3d.h"
+#include <string>
 
 namespace Crystal {
 	namespace IO {

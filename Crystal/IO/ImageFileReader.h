@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Graphics/Image.h"
+#include <string>
 
 namespace Crystal {
 	namespace IO {

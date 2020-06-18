@@ -11,7 +11,7 @@ namespace Crystal {
 	namespace Physics {
 
 class PBSPHParticle;
-class PBSPHObject;
+class PBFluidScene;
 
 class PBSPHSolver : public Scene::IAnimator
 {
@@ -21,7 +21,7 @@ public:
 
 	void step() override;
 
-	void add(PBSPHParticle* particle) { this->particles.push_back(particle); }
+	void add(PBFluidScene* fluid) { this->fluids.push_back(fluid); }
 
 	void simulate(const float dt, const float effectRadius, const float searchRadius, const int maxIter);
 
@@ -29,10 +29,10 @@ public:
 
 	void setExternalForce(const Math::Vector3df& force) { this->externalForce = force; }
 
-	std::vector<PBSPHParticle*> getParticles() const { return particles; }
+	//std::vector<PBSPHParticle*> getParticles() const { return particles; }
 
 private:
-	std::vector<PBSPHParticle*> particles;
+	std::vector<PBFluidScene*> fluids;
 	Math::Box3d boundary;
 	Math::Vector3df externalForce;
 };

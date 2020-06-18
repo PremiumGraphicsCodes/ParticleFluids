@@ -2,6 +2,8 @@
 
 #include "../Graphics/Imagef.h"
 
+#include <string>
+
 namespace Crystal {
 	namespace IO {
 
