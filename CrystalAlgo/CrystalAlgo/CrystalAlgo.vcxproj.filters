@@ -31,6 +31,9 @@
     <ClInclude Include="IndexedFinder.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="ZIndexedSearchAlgo.h">
+      <Filter>Search</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -58,6 +61,9 @@
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="IndexedFinder.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="ZIndexedSearchAlgo.cpp">
       <Filter>Search</Filter>
     </ClCompile>
   </ItemGroup>

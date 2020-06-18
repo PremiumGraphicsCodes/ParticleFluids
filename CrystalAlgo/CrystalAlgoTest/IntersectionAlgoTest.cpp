@@ -1,4 +1,3 @@
-#include "pch.h"
 #include <gtest/gtest.h>
 
 #include "../../Crystal/Math/Line3d.h"

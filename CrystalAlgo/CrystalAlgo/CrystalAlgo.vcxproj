@@ -159,6 +159,7 @@
     <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash.h" />
     <ClInclude Include="VolumeConvertAlgo.h" />
+    <ClInclude Include="ZIndexedSearchAlgo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BooleanAlgo.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
     <ClCompile Include="VolumeConvertAlgo.cpp" />
+    <ClCompile Include="ZIndexedSearchAlgo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

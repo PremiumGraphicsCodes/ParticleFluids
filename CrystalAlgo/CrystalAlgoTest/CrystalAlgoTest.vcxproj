@@ -35,6 +35,7 @@
   <ItemGroup>
     <ClCompile Include="IntersectionAlgoTest.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="ZIndexedSearchAlgoTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
