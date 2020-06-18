@@ -18,7 +18,7 @@ void ZIndexedSearchAlgo::add(IPoint* point)
 	const auto ix = static_cast<int>( position.x / searchRadius );
 	const auto iy = static_cast<int>( position.y / searchRadius );
 	const auto iz = static_cast<int>( position.z / searchRadius );
-	const auto index = toIndex1d(ix, iy, iz);
+	const auto index = ZOrderCurve3d::encode({ ix, iy, iz });
 	ZIndexedParticle zip(index, point);
 	points.push_back(zip);
 }
@@ -28,6 +28,7 @@ void ZIndexedSearchAlgo::sort()
 	std::sort(points.begin(), points.end());
 }
 
+/*
 int ZIndexedSearchAlgo::toIndex1d(unsigned int x, unsigned int y, unsigned int z)
 {
 	const auto xi = ZOrderCurve::toMortonIndex2d(x);

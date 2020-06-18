@@ -69,6 +69,9 @@
     <ClCompile Include="ZIndexedSearchAlgo.cpp">
       <Filter>Search</Filter>
     </ClCompile>
+    <ClCompile Include="ZOrderCurve.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">

@@ -173,6 +173,7 @@
     <ClCompile Include="SpaceHash.cpp" />
     <ClCompile Include="VolumeConvertAlgo.cpp" />
     <ClCompile Include="ZIndexedSearchAlgo.cpp" />
+    <ClCompile Include="ZOrderCurve.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
