@@ -28,6 +28,7 @@ PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
 	resetButton("Reset"),
 	nextButton("Next")
 {
+	/*
 	auto func = [=]() {
 		simulator.simulate(0.01);
 		Command::Command command;
@@ -35,9 +36,14 @@ PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
 		command.setArg(ShaderSendLabels::IdLabel, newId);
 		command.execute(getWorld());
 	};
-	nextButton.setFunction(func);
+	*/
+	//nextButton.setFunction(func);
 	add(&nextButton);
 
+	auto resetFunc = [=]() {
+		reset();
+	};
+	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 }
 
@@ -46,6 +52,9 @@ void PBFluidSimulationView::onOk()
 	auto world = getWorld();
 
 	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
+	this->simulator = new PBSPHSolver();
+
+
 	reset();
 	getWorld()->getObjects()->addScene(this->fluidScene);
 	this->newId = this->fluidScene->getId();
@@ -58,15 +67,20 @@ void PBFluidSimulationView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
-	auto simulator = new PBSPHSolver();
+
 	simulator->add(this->fluidScene);
+
 	simulator->setBoundary(Box3d(Vector3dd(-100.0, -1.0, -100.0), Vector3dd(100.0, 100.0, 100.0)));
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
+
 	getWorld()->addAnimation(simulator);
 }
 
 void PBFluidSimulationView::reset()
 {
+	//this->simulator->clear();
+	this->fluidScene->clearParticles();
+
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	for (int i = -10; i < 10; ++i) {

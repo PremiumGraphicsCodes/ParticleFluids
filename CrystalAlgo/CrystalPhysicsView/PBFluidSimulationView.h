@@ -6,6 +6,7 @@
 namespace Crystal {
 	namespace Physics {
 		class PBFluidScene;
+		class PBSPHSolver;
 	}
 	namespace UI {
 
@@ -20,7 +21,7 @@ private:
 	void reset();
 
 private:
-	Algo::Physics::FluidSimulator simulator;
+	Physics::PBSPHSolver* simulator;
 	Physics::PBFluidScene* fluidScene;
 	Button startButton;
 	Button resetButton;

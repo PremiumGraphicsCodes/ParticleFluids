@@ -12,6 +12,11 @@ PBFluidScene::PBFluidScene(const int id, const std::string& name) :
 	this->controller = std::make_unique<PBFluidSceneController>(this);
 }
 
+void PBFluidScene::clearParticles()
+{
+	particles.clear();
+}
+
 Box3d PBFluidScene::getBoundingBox() const
 {
 	Box3d bb(particles.front()->getPosition());

@@ -21,6 +21,8 @@ public:
 
 	void step() override;
 
+	void clear() { this->fluids.clear(); }
+
 	void add(PBFluidScene* fluid) { this->fluids.push_back(fluid); }
 
 	void simulate(const float dt, const float effectRadius, const float searchRadius, const int maxIter);
