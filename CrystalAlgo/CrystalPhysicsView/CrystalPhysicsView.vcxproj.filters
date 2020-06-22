@@ -5,10 +5,12 @@
     <ClCompile Include="PhysicsMenu.cpp" />
     <ClCompile Include="FluidSimulationView.cpp" />
     <ClCompile Include="PBFluidSimulationView.cpp" />
+    <ClCompile Include="CSPHFluidSimulationView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
     <ClInclude Include="FluidSimulationView.h" />
     <ClInclude Include="PBFluidSimulationView.h" />
+    <ClInclude Include="CSPHFluidSimulationView.h" />
   </ItemGroup>
 </Project>

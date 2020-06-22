@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CrystalPhysicsView.cpp" />
+    <ClCompile Include="CSPHFluidSimulationView.cpp" />
     <ClCompile Include="FluidSimulationView.cpp" />
     <ClCompile Include="PBFluidSimulationView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
@@ -191,6 +192,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CSPHFluidSimulationView.h" />
     <ClInclude Include="FluidSimulationView.h" />
     <ClInclude Include="PBFluidSimulationView.h" />
     <ClInclude Include="PhysicsMenu.h" />

@@ -8,7 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Algo;
 using namespace Crystal::Physics;
 
-void STSPHSolver::clear()
+void CSPHSolver::clear()
 {
 	timeStep = 0;
 	for (auto p : particles) {
@@ -17,7 +17,7 @@ void STSPHSolver::clear()
 	particles.clear();
 }
 
-void STSPHSolver::simulate(const float effectLength, const float timeStep)
+void CSPHSolver::simulate(const float effectLength, const float timeStep)
 {
 	this->timeStep++;
 

@@ -2,6 +2,7 @@
 
 #include "SPHKernel.h"
 #include "../../Crystal/Math/Box3d.h"
+#include "../../Crystal/Scene/IAnimator.h"
 //#include "ISPHSolver.h"
 #include <vector>
 
@@ -9,10 +10,10 @@ namespace Crystal {
 	namespace Physics {
 		class CSPHParticle;
 
-class STSPHSolver
+class CSPHSolver : public Scene::IAnimator
 {
 public:
-	STSPHSolver() : timeStep(0)
+	CSPHSolver() : timeStep(0)
 	{}
 
 	void add(CSPHParticle* particle) {
@@ -21,7 +22,9 @@ public:
 
 	void clear();
 
-	void simulate(const float effectLength, const float timeStep);
+	void step() override;
+
+	void simulate(const float timeStep);
 
 	int getTimeStep() const { return timeStep; }
 
@@ -29,6 +32,7 @@ public:
 
 private:
 	int timeStep;
+	float effectLength = 1.25f;
 	SPHKernel kernel;
 	std::vector<CSPHParticle*> particles;
 	Math::Vector3df externalForce;
