@@ -101,7 +101,7 @@ void MacroParticle::calculateViscosity()
 	}
 	averagedVelocity += (double)preCount * getVelocity();
 	averagedVelocity /= (double)count;
-	this->force -= (this->velocity - averagedVelocity) * 100.0;
+	this->force -= (this->velocity - averagedVelocity) * 50.0;
 	//byCenter /= (double)innerPoints.size();
 
 }
@@ -111,6 +111,12 @@ void MacroParticle::stepTime(const double dt)
 	if (isStatic) {
 		return;
 	}
-	this->velocity += (force) * dt;
+	const auto acc = (force) / getDensity();
+	this->velocity += acc * dt;
 	this->position += this->velocity * dt;
+}
+
+double MacroParticle::getDensity() const
+{
+	return (innerPoints.size() + preCount) / (double)preCount;
 }

@@ -28,7 +28,7 @@ void FluidSimulator::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash spaceHash(particles.front()->getRadius() * 1.00, static_cast<int>(particles.size()*10));
+	SpaceHash spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size()*10));
 	for (auto particle : particles) {
 		const auto& points = particle->getPoints();
 		for (auto point : points) {

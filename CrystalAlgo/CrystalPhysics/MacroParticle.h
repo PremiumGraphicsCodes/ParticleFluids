@@ -42,6 +42,8 @@ public:
 
 	void setStatic(const bool isStatic) { this->isStatic = isStatic; }
 
+	double getDensity() const;
+
 private:
 	double radius;
 	std::vector<MicroParticle*> points;
