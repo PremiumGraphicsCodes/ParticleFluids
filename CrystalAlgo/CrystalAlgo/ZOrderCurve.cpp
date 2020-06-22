@@ -2,6 +2,14 @@
 
 using namespace Crystal::Search;
 
+namespace {
+	const auto mask1 = 0b01010101010101010101010101010101;
+	const auto mask2 = 0b00110011001100110011001100110011;
+	const auto mask4 = 0b00001111000011110000111100001111;
+	const auto mask8 = 0b00000000111111110000000011111111;
+	const auto mask16 = 0b00000000000000001111111111111111;
+}
+
 int ZOrderCurve2d::encode(const std::array<int, 2>& index)
 {
 	const auto ei1 = encode(index[0]);
@@ -11,13 +19,22 @@ int ZOrderCurve2d::encode(const std::array<int, 2>& index)
 
 int ZOrderCurve2d::encode(int n)
 {
-	n = (n | (n << 16)) & 0b00000000000000001111111111111111; // 0x0000ffff;
-	n = (n | (n << 8))  & 0b00000000111111110000000011111111; // 0x00ff00ff;
-	n = (n | (n << 4))  & 0b00001111000011110000111100001111; // 0x0f0f0f0f;
-	n = (n | (n << 2))  & 0b00110011001100110011001100110011; // 0x33333333;
-	n = (n | (n << 1))  & 0b01010101010101010101010101010101; // 0x55555555;
+	n = (n | (n << 16)) & mask16; // 0x0000ffff;
+	n = (n | (n << 8))  & mask8; // 0x00ff00ff;
+	n = (n | (n << 4))  & mask4; // 0x0f0f0f0f;
+	n = (n | (n << 2))  & mask2; // 0x33333333;
+	n = (n | (n << 1))  & mask1; // 0x55555555;
 	return n;
 }
+
+int ZOrderCurve2d::decode_(int x)
+{
+	x = (x ^ (x >> 1)) & mask2;
+	x = (x ^ (x >> 2)) & mask4;
+	x = (x ^ (x >> 4)) & mask16;
+	return x;
+}
+
 
 int ZOrderCurve3d::encode(const std::array<int, 3>& index)
 {

@@ -12,6 +12,8 @@ public:
 
 private:
 	static int encode(int n);
+
+	static int decode_(int x);
 };
 
 class ZOrderCurve3d
