@@ -34,7 +34,10 @@
     <ClInclude Include="ZIndexedSearchAlgo.h">
       <Filter>Search</Filter>
     </ClInclude>
-    <ClInclude Include="ZOrderCurve.h">
+    <ClInclude Include="ZOrderCurve2d.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="ZOrderCurve3d.h">
       <Filter>Search</Filter>
     </ClInclude>
   </ItemGroup>
@@ -69,7 +72,10 @@
     <ClCompile Include="ZIndexedSearchAlgo.cpp">
       <Filter>Search</Filter>
     </ClCompile>
-    <ClCompile Include="ZOrderCurve.cpp">
+    <ClCompile Include="ZOrderCurve2d.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="ZOrderCurve3d.cpp">
       <Filter>Search</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #include "ZIndexedSearchAlgo.h"
 
-#include "ZOrderCurve.h"
+#include "ZOrderCurve3d.h"
 
 #include "../../Crystal/Shape/IPoint.h"
 

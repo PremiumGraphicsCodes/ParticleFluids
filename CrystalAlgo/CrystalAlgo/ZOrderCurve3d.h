@@ -5,17 +5,6 @@
 namespace Crystal {
 	namespace Search {
 
-class ZOrderCurve2d
-{
-public:
-	static int encode(const std::array<int,2>& index);
-
-private:
-	static int encode(int n);
-
-	static int decode_(int x);
-};
-
 class ZOrderCurve3d
 {
 public:
