@@ -1,6 +1,6 @@
 #include "CSPHSolver.h"
 #include "CSPHParticle.h"
-//#include "BoundarySolver.h"
+#include "CSPHBoundarySolver.h"
 
 #include "../CrystalAlgo/IndexedFinder.h"
 
@@ -17,7 +17,12 @@ void CSPHSolver::clear()
 	particles.clear();
 }
 
-void CSPHSolver::simulate(const float effectLength, const float timeStep)
+void CSPHSolver::step()
+{
+	simulate(1.25f);
+}
+
+void CSPHSolver::simulate(const float timeStep)
 {
 	this->timeStep++;
 
@@ -58,9 +63,8 @@ void CSPHSolver::simulate(const float effectLength, const float timeStep)
 		p->addExternalForce(externalForce);
 	}
 
-	//BoundarySolver boundarySolver(timeStep, boundary);
-	//boundarySolver.solve(particles);
-
+	CSPHBoundarySolver boundarySolver(timeStep, boundary);
+	boundarySolver.solve(particles);
 
 	for (auto p : particles) {
 		p->forwardTime(timeStep);

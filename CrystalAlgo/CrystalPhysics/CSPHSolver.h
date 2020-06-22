@@ -36,6 +36,7 @@ private:
 	SPHKernel kernel;
 	std::vector<CSPHParticle*> particles;
 	Math::Vector3df externalForce;
+	Math::Box3d boundary;
 };
 
 	}

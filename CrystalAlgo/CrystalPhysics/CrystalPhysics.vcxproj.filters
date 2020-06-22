@@ -57,6 +57,9 @@
     <ClInclude Include="CSPHParticle.h">
       <Filter>CSPH</Filter>
     </ClInclude>
+    <ClInclude Include="CSPHBoundarySolver.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -99,6 +102,9 @@
       <Filter>CSPH</Filter>
     </ClCompile>
     <ClCompile Include="CSPHSolver.cpp">
+      <Filter>CSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="CSPHBoundarySolver.cpp">
       <Filter>CSPH</Filter>
     </ClCompile>
   </ItemGroup>
