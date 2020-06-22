@@ -43,18 +43,19 @@ private:
 class ZIndexedSearchAlgo : private UnCopyable
 {
 public:
-	explicit ZIndexedSearchAlgo(const double searchRadius);
+	explicit ZIndexedSearchAlgo(const double searchRadius, const Math::Vector3dd& minPosition);
 
 	void add(Shape::IPoint* point);
 
 	void sort();
 
-	std::list<Shape::IPoint*> findNeighbors(Shape::IPoint* searchPoint);
+	std::list<Shape::IPoint*> findNeighbors(const Math::Vector3dd& position);
 
 	std::array<unsigned int, 3> toIndex(const Math::Vector3dd& position) const;
 
 private:
 	double searchRadius;
+	Math::Vector3dd minPosition;
 	std::list<ZIndexedParticle> points;
 	ZOrderCurve3d curve;
 };
