@@ -4,6 +4,8 @@
 
 #include "../../Crystal/Util/UnCopyable.h"
 
+#include "ZOrderCurve3d.h"
+
 #include <vector>
 #include <list>
 
@@ -16,17 +18,25 @@ namespace Crystal {
 class ZIndexedParticle
 {
 public:
-	ZIndexedParticle(const int zIndex, Shape::IPoint* point) :
+	ZIndexedParticle(const unsigned int zIndex, Shape::IPoint* point) :
 		zIndex(zIndex),
 		point(point)
 	{}
 
-	bool operator<(const ZIndexedParticle& rhs) {
+	bool operator<(const ZIndexedParticle& rhs) const {
 		return this->zIndex < rhs.zIndex;
 	}
 
+	/*
+	bool operator==(const ZIndexedParticle& rhs) {
+		return this->zIndex == rhs.zIndex;
+	}
+	*/
+
+	Shape::IPoint* getPoint() { return point; }
+
 private:
-	int zIndex;
+	unsigned int zIndex;
 	Shape::IPoint* point;
 };
 
@@ -46,6 +56,7 @@ public:
 private:
 	double searchRadius;
 	std::list<ZIndexedParticle> points;
+	ZOrderCurve3d curve;
 };
 	}
 }
