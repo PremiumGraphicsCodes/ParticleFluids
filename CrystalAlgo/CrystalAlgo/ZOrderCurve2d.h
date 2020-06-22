@@ -8,14 +8,14 @@ namespace Crystal {
 class ZOrderCurve2d
 {
 public:
-	int encode(const std::array<int,2>& index);
+	unsigned int encode(const std::array<unsigned int,2>& index) const;
 
-	std::array<int,2> decode(int x);
+	std::array<unsigned int,2> decode(unsigned int x) const;
 
 private:
-	int encode(int n);
+	unsigned int encode(unsigned int n) const;
 
-	int decode_(int x);
+	unsigned int decode_(unsigned int x) const;
 };
 
 	}

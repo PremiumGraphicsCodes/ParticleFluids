@@ -4,9 +4,11 @@
 
 #include "../../Crystal/Shape/IPoint.h"
 
+#include <algorithm>
+
+using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Search;
-
 
 ZIndexedSearchAlgo::ZIndexedSearchAlgo(const double searchRadius) :
 	searchRadius(searchRadius)
@@ -14,28 +16,33 @@ ZIndexedSearchAlgo::ZIndexedSearchAlgo(const double searchRadius) :
 
 void ZIndexedSearchAlgo::add(IPoint* point)
 {
-	const auto position = point->getPosition();
-	const auto ix = static_cast<unsigned int>( position.x / searchRadius );
-	const auto iy = static_cast<unsigned int>( position.y / searchRadius );
-	const auto iz = static_cast<unsigned int>( position.z / searchRadius );
+	const auto ix = toIndex( point->getPosition() );
 	const ZOrderCurve3d curve;
-	const auto index = curve.encode({ ix, iy, iz });
+	const auto index = curve.encode(ix);
 	ZIndexedParticle zip(index, point);
 	points.push_back(zip);
 }
 
 void ZIndexedSearchAlgo::sort()
 {
-	std::sort(points.begin(), points.end());
+	points.sort();
+	//std::sort(points.begin(), points.end());
 }
 
-/*
-int ZIndexedSearchAlgo::toIndex1d(unsigned int x, unsigned int y, unsigned int z)
+std::list<IPoint*> ZIndexedSearchAlgo::findNeighbors(IPoint* searchPoint)
 {
-	const auto xi = ZOrderCurve::toMortonIndex2d(x);
-	const auto yi = ZOrderCurve::toMortonIndex2d(y);
-	const auto zi = ZOrderCurve::toMortonIndex2d(z);
-	return (xi | (yi << 1) | (zi << 2));
+	return {};
+	//std::find(points.begin(), points.end(), [=]
+}
+
+
+std::array<unsigned int,3> ZIndexedSearchAlgo::toIndex(const Vector3dd& position) const
+{
+	const auto ix = static_cast<unsigned int>(position.x / searchRadius);
+	const auto iy = static_cast<unsigned int>(position.y / searchRadius);
+	const auto iz = static_cast<unsigned int>(position.z / searchRadius);
+
+	return { ix, iy, iz };
 }
 
 /*

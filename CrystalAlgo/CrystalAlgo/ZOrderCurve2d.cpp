@@ -11,14 +11,14 @@ namespace {
 	//const auto mask32 = 0b11111111111111111111111111111111;
 }
 
-int ZOrderCurve2d::encode(const std::array<int, 2>& index)
+unsigned int ZOrderCurve2d::encode(const std::array<unsigned int, 2>& index) const
 {
 	const auto ei1 = encode(index[0]);
 	const auto ei2 = encode(index[1]);
 	return (ei1 | (ei2 << 1));
 }
 
-int ZOrderCurve2d::encode(int n)
+unsigned int ZOrderCurve2d::encode(unsigned int n) const
 {
 	n = (n | (n << 16)) & mask16; // 0x0000ffff;
 	n = (n | (n << 8))  & mask8; // 0x00ff00ff;
@@ -28,14 +28,14 @@ int ZOrderCurve2d::encode(int n)
 	return n;
 }
 
-std::array<int,2> ZOrderCurve2d::decode(int x)
+std::array<unsigned int,2> ZOrderCurve2d::decode(unsigned int x) const
 {
 	const auto ix = decode_(x);
 	const auto iy = decode_(x >> 1);
 	return { ix, iy };
 }
 
-int ZOrderCurve2d::decode_(int x)
+unsigned int ZOrderCurve2d::decode_(unsigned int x) const
 {
 	x = x & mask1;
 	x = (x ^ (x >> 1)) & mask2;

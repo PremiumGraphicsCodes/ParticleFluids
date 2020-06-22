@@ -1,5 +1,9 @@
 #pragma once
 
+#include "../../Crystal/Math/Vector3d.h"
+
+#include "../../Crystal/Util/UnCopyable.h"
+
 #include <vector>
 #include <list>
 
@@ -26,7 +30,7 @@ private:
 	Shape::IPoint* point;
 };
 
-class ZIndexedSearchAlgo
+class ZIndexedSearchAlgo : private UnCopyable
 {
 public:
 	explicit ZIndexedSearchAlgo(const double searchRadius);
@@ -35,13 +39,13 @@ public:
 
 	void sort();
 
-	int toIndex1d(unsigned int x, unsigned int y, unsigned int z);
+	std::list<Shape::IPoint*> findNeighbors(Shape::IPoint* searchPoint);
 
-	//std::list<Shape::IPoint*> findNeighbors(Shape::IPoint* searchPoint);
+	std::array<unsigned int, 3> toIndex(const Math::Vector3dd& position) const;
 
 private:
 	double searchRadius;
-	std::vector<ZIndexedParticle> points;
+	std::list<ZIndexedParticle> points;
 };
 	}
 }

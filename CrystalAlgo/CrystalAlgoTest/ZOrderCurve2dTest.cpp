@@ -6,7 +6,7 @@ using namespace Crystal::Search;
 
 TEST(ZOrderCurve2dTest, TestEncode)
 {
-	ZOrderCurve2d curve;
+	const ZOrderCurve2d curve;
 	EXPECT_EQ(0, curve.encode({ 0,0 }));
 	EXPECT_EQ(1, curve.encode({ 1,0 }));
 	EXPECT_EQ(2, curve.encode({ 0,1 }));
@@ -21,7 +21,7 @@ TEST(ZOrderCurve2dTest, TestEncode)
 
 TEST(ZOrderCurve2dTest, TestDecode)
 {
-	ZOrderCurve2d curve;
+	const ZOrderCurve2d curve;
 	auto actual = curve.decode(0);
 	EXPECT_EQ(0, actual[0]);
 	EXPECT_EQ(0, actual[1]);
@@ -34,4 +34,7 @@ TEST(ZOrderCurve2dTest, TestDecode)
 	EXPECT_EQ(0, actual[0]);
 	EXPECT_EQ(1, actual[1]);
 
+	actual = curve.decode(3);
+	EXPECT_EQ(1, actual[0]);
+	EXPECT_EQ(1, actual[1]);
 }
