@@ -23,6 +23,8 @@ public:
 
 	std::list<MacroParticle*> getParticles() const { return particles; }
 
+	void clearParticles() { particles.clear(); }
+
 private:
 	std::list<MacroParticle*> particles;
 	std::unique_ptr<FluidSceneController> controller;

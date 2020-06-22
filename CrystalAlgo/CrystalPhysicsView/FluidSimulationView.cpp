@@ -32,6 +32,10 @@ FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
 	nextButton.setFunction(func);
 	add(&nextButton);
 
+	auto resetFunc = [=]() {
+		reset();
+	};
+	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 }
 
@@ -39,20 +43,12 @@ void FluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	FluidScene* fps = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
-	const auto radius = 0.1;
-	const auto length = radius * 2.0;
-	for (int i = -50; i < 50; ++i) {
-		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 10; ++k) {
-				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k*length));
-				mp->distributePoints(5, 5, 5);
-				fps->addParticle(mp);
-			}
-		}
-	}
-	getWorld()->getObjects()->addScene(fps);
-	this->newId = fps->getId();
+	fluidScene = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
+	getWorld()->getObjects()->addScene(fluidScene);
+
+	this->reset();
+
+	this->newId = fluidScene->getId();
 
 	Command::Command command;
 	command.create(ShaderBuildLabels::CommandNameLabel);
@@ -63,6 +59,23 @@ void FluidSimulationView::onOk()
 	command.execute(getWorld());
 
 	auto simulator = new FluidSimulator();
-	simulator->add(fps);
+	simulator->add(this->fluidScene);
 	getWorld()->addAnimation(simulator);
+}
+
+void FluidSimulationView::reset()
+{
+	this->fluidScene->clearParticles();
+
+	const auto radius = 0.1;
+	const auto length = radius * 2.0;
+	for (int i = -50; i < 50; ++i) {
+		for (int j = 0; j < 10; ++j) {
+			for (int k = 0; k < 1; ++k) {
+				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k * length));
+				mp->distributePoints(10, 10);
+				fluidScene->addParticle(mp);
+			}
+		}
+	}
 }
