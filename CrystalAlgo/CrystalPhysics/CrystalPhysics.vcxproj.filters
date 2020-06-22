@@ -7,6 +7,9 @@
     <Filter Include="PBSPH">
       <UniqueIdentifier>{51e44d13-c0a6-4c44-b8d2-140b0cc53e0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CSPH">
+      <UniqueIdentifier>{77488121-418f-48ac-9822-6b51cce96a7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MicroParticle.h">
@@ -48,6 +51,12 @@
     <ClInclude Include="PBFluidSceneController.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
+    <ClInclude Include="CSPHSolver.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="CSPHParticle.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -85,6 +94,12 @@
     </ClCompile>
     <ClCompile Include="PBFluidSceneController.cpp">
       <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="CSPHParticle.cpp">
+      <Filter>CSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="CSPHSolver.cpp">
+      <Filter>CSPH</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

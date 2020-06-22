@@ -152,6 +152,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CSPHParticle.h" />
+    <ClInclude Include="CSPHSolver.h" />
     <ClInclude Include="FluidScene.h" />
     <ClInclude Include="FluidSceneController.h" />
     <ClInclude Include="FluidSimulator.h" />
@@ -167,6 +169,8 @@
     <ClInclude Include="SPHKernel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CSPHParticle.cpp" />
+    <ClCompile Include="CSPHSolver.cpp" />
     <ClCompile Include="FluidScene.cpp" />
     <ClCompile Include="FluidSceneController.cpp" />
     <ClCompile Include="FluidSimulator.cpp" />
