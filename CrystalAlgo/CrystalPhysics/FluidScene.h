@@ -15,6 +15,8 @@ class FluidScene : public Scene::IScene
 public:
 	FluidScene(const int id, const std::string& name);
 
+	~FluidScene();
+
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
 	Scene::IController* getController() { return controller.get(); }
@@ -23,7 +25,9 @@ public:
 
 	std::list<MacroParticle*> getParticles() const { return particles; }
 
-	void clearParticles() { particles.clear(); }
+	void clearParticles();
+
+	Math::Box3d getBoundingBox() const override;
 
 private:
 	std::list<MacroParticle*> particles;
