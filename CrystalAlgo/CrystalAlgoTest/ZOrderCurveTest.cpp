@@ -17,3 +17,10 @@ TEST(ZOrderCurve2dTest, TestEncode)
 	EXPECT_EQ(8, ZOrderCurve2d::encode({ 0,2 }));
 	EXPECT_EQ(9, ZOrderCurve2d::encode({ 1,2 }));
 }
+
+TEST(ZOrderCurve3dTest, TestEncode)
+{
+	EXPECT_EQ(0, ZOrderCurve3d::encode({ 0,0,0 }));
+	EXPECT_EQ(1, ZOrderCurve3d::encode({ 1,0,0 }));
+	EXPECT_EQ(2, ZOrderCurve3d::encode({ 0,1,0 }));
+}
