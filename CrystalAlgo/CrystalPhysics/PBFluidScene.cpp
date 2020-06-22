@@ -12,8 +12,16 @@ PBFluidScene::PBFluidScene(const int id, const std::string& name) :
 	this->controller = std::make_unique<PBFluidSceneController>(this);
 }
 
+PBFluidScene::~PBFluidScene()
+{
+	clearParticles();
+}
+
 void PBFluidScene::clearParticles()
 {
+	for (auto p : particles) {
+		delete p;
+	}
 	particles.clear();
 }
 

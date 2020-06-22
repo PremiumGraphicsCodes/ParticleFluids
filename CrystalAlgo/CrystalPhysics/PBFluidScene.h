@@ -14,6 +14,8 @@ class PBFluidScene : public Scene::IScene
 public:
 	PBFluidScene(const int id, const std::string& name);
 
+	~PBFluidScene();
+
 	void clearParticles();
 
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
