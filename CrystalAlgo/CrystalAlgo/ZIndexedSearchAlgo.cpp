@@ -15,10 +15,10 @@ ZIndexedSearchAlgo::ZIndexedSearchAlgo(const double searchRadius) :
 void ZIndexedSearchAlgo::add(IPoint* point)
 {
 	const auto position = point->getPosition();
-	const auto ix = static_cast<int>( position.x / searchRadius );
-	const auto iy = static_cast<int>( position.y / searchRadius );
-	const auto iz = static_cast<int>( position.z / searchRadius );
-	ZOrderCurve3d curve;
+	const auto ix = static_cast<unsigned int>( position.x / searchRadius );
+	const auto iy = static_cast<unsigned int>( position.y / searchRadius );
+	const auto iz = static_cast<unsigned int>( position.z / searchRadius );
+	const ZOrderCurve3d curve;
 	const auto index = curve.encode({ ix, iy, iz });
 	ZIndexedParticle zip(index, point);
 	points.push_back(zip);

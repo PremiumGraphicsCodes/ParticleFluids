@@ -9,7 +9,7 @@ namespace {
 	const auto mask2  = 0b1001001001001001001001001001001001;//0x9249249;
 }
 
-int ZOrderCurve3d::encode(const std::array<int, 3>& index)
+unsigned int ZOrderCurve3d::encode(const std::array<unsigned int, 3>& index) const
 {
 	const auto ei1 = encode(index[0]);
 	const auto ei2 = encode(index[1]);
@@ -18,23 +18,30 @@ int ZOrderCurve3d::encode(const std::array<int, 3>& index)
 	return (ei1 | (ei2 << 1) | (ei3 << 2));
 }
 
-int ZOrderCurve3d::encode(int x)
+std::array<unsigned int, 3> ZOrderCurve3d::decode(const unsigned int x) const
 {
-	//	x = x | 0x000003ff;
-	x = (x | (x << 16))& mask16;//0b11111111000000000000000011111111; // ;
+	const auto ix = decode_(x);
+	const auto iy = decode_(x >> 1);
+	const auto iz = decode_(x >> 2);
+	return { ix, iy, iz };
+}
+
+unsigned int ZOrderCurve3d::encode(unsigned int x) const
+{
+	x = (x | (x << 16))& mask16;
 	x = (x | (x << 8)) & mask8;
 	x = (x | (x << 4)) & mask4;
 	x = (x | (x << 2)) & mask2; 
 	return x;
 }
 
-int ZOrderCurve3d::decode_(int x)
+unsigned int ZOrderCurve3d::decode_(unsigned int x) const
 {
 	x = x & mask2;
 	x = (x ^ (x >> 2)) & mask4;
 	x = (x ^ (x >> 4)) & mask8;
 	x = (x ^ (x >> 8)) & mask16;
-	x = (x ^ (x >> 16)) & mask16;
+//	x = (x ^ (x >> 16)) & mask16;
 	return x;
 }
 
