@@ -95,8 +95,5 @@
     <Filter Include="Volume">
       <UniqueIdentifier>{aa657a9f-2f54-427f-a595-70f197e46c21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fluid">
-      <UniqueIdentifier>{53d5fdba-eb87-4bac-a977-c7d1e983be5d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

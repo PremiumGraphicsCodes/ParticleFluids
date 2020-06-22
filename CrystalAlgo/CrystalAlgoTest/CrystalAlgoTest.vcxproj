@@ -37,7 +37,7 @@
     <ClCompile Include="test.cpp" />
     <ClCompile Include="ZIndexedSearchAlgoTest.cpp" />
     <ClCompile Include="ZOrderCurve3dTest.cpp" />
-    <ClCompile Include="ZOrderCurveTest.cpp" />
+    <ClCompile Include="ZOrderCurve2dTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">

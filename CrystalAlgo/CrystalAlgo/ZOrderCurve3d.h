@@ -8,10 +8,12 @@ namespace Crystal {
 class ZOrderCurve3d
 {
 public:
-	static int encode(const std::array<int, 3>& index);
+	int encode(const std::array<int, 3>& index);
 
 private:
-	static int encode(int x);
+	int encode(int x);
+
+	int decode_(int x);
 };
 
 	}
