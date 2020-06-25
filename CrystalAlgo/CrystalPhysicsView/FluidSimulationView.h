@@ -22,8 +22,8 @@ private:
 	void reset();
 
 private:
-	Algo::Physics::FluidScene* fluidScene;
-	Algo::Physics::KFFluidSolver simulator;
+	Physics::FluidScene* fluidScene;
+	Physics::KFFluidSolver simulator;
 	Button startButton;
 	Button resetButton;
 	Button nextButton;

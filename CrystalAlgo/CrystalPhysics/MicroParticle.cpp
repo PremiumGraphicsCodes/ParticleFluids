@@ -3,7 +3,7 @@
 #include "MacroParticle.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Algo::Physics;
+using namespace Crystal::Physics;
 
 Vector3dd MicroParticle::getPosition() const
 {

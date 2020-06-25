@@ -6,7 +6,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Algo::Physics;
+using namespace Crystal::Physics;
 
 namespace {
 	constexpr long int p1 = 73856093;

@@ -4,9 +4,8 @@
 #include "../../Crystal/Shape/IPoint.h"
 
 namespace Crystal {
-	namespace Algo {
-		namespace Physics {
-			class MacroParticle;
+	namespace Physics {
+		class MacroParticle;
 
 class MicroParticle : public Shape::IPoint
 {
@@ -27,6 +26,5 @@ private:
 	Math::Vector3dd vector;
 };
 
-		}
 	}
 }

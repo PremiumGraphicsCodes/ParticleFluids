@@ -2,7 +2,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
-using namespace Crystal::Algo::Physics;
+using namespace Crystal::Physics;
 
 FluidScene::FluidScene(const int id, const std::string& name) :
 	IScene(id, name)

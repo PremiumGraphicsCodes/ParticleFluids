@@ -14,7 +14,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Command;
-using namespace Crystal::Algo::Physics;
+using namespace Crystal::Physics;
 
 FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("FluidSimulation", model, canvas),

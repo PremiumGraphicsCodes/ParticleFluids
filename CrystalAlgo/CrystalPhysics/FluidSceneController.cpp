@@ -4,7 +4,7 @@
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
-using namespace Crystal::Algo::Physics;
+using namespace Crystal::Physics;
 
 FluidSceneController::FluidSceneController(FluidScene* model) :
 	model(model),

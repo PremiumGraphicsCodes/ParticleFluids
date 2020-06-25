@@ -6,9 +6,8 @@
 #include "../../Crystal/Scene/PointShaderScene.h"
 
 namespace Crystal {
-	namespace Algo {
-		namespace Physics {
-			class FluidScene;
+	namespace Physics {
+		class FluidScene;
 
 class FluidSceneController : public Scene::IController
 {
@@ -24,6 +23,5 @@ private:
 	Scene::PointShaderScene* view;
 };
 
-		}
 	}
 }

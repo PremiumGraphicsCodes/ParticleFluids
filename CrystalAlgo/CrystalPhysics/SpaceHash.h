@@ -6,10 +6,9 @@
 #include <list>
 
 namespace Crystal {
-	namespace Algo {
-		namespace Physics {
-			class MicroParticle;
-			class MacroParticle;
+	namespace Physics {
+		class MicroParticle;
+		class MacroParticle;
 
 class SpaceHash : private UnCopyable
 {
@@ -34,6 +33,5 @@ private:
 	const double divideLength;
 };
 
-		}
 	}
 }

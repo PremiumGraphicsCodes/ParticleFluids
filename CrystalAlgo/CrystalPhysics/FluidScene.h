@@ -6,9 +6,8 @@
 #include "FluidSceneController.h"
 
 namespace Crystal {
-	namespace Algo {
-		namespace Physics {
-			class FluidSceneController;
+	namespace Physics {
+		class FluidSceneController;
 
 class FluidScene : public Scene::IScene
 {
@@ -34,6 +33,5 @@ private:
 	std::unique_ptr<FluidSceneController> controller;
 };
 
-		}
 	}
 }

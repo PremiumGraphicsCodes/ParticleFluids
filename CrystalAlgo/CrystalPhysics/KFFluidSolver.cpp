@@ -1,11 +1,13 @@
 #include "KFFluidSolver.h"
 
+#include "MicroParticle.h"
+#include "MacroParticle.h"
+
 #include "FluidScene.h"
 #include "SpaceHash.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Algo;
-using namespace Crystal::Algo::Physics;
+using namespace Crystal::Physics;
 
 KFFluidSolver::KFFluidSolver() :
 	timeStep(0.01)
@@ -72,9 +74,6 @@ void KFFluidSolver::simulate(const double dt)
 			const auto overlap = Vector3dd(0, 0, -20.0 - position.x);
 			particle->addForce(overlap / dt / dt);
 		}
-
-
-
 	}
 
 	for (auto particle : particles) {

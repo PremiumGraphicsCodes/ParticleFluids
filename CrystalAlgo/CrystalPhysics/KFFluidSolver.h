@@ -2,18 +2,15 @@
 
 #include <vector>
 #include <list>
+
 #include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Math/Box3d.h"
 #include "../../Crystal/Shape/IPoint.h"
-
-#include "MicroParticle.h"
-#include "MacroParticle.h"
-
 #include "../../Crystal/Scene/IAnimator.h"
 
 namespace Crystal {
-	namespace Algo {
-		namespace Physics {
-			class FluidScene;
+	namespace Physics {
+		class FluidScene;
 
 class KFFluidSolver : public Scene::IAnimator
 {
@@ -26,13 +23,13 @@ public:
 
 	void step() override;
 
-	//void addBoundary()
+	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
 
 private:
 	std::list<FluidScene*> fluids;
+	Math::Box3d boundary;
 	double timeStep;
 };
 
-		}
 	}
 }

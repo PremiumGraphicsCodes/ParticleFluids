@@ -1,7 +1,7 @@
 #include "MacroParticle.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Algo::Physics;
+using namespace Crystal::Physics;
 
 MacroParticle::MacroParticle(const double radius, const Vector3dd& position) :
 	radius(radius),

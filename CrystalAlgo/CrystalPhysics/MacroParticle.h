@@ -6,8 +6,7 @@
 #include <list>
 
 namespace Crystal {
-	namespace Algo {
-		namespace Physics {
+	namespace Physics {
 
 class MacroParticle
 {
@@ -60,6 +59,5 @@ private:
 	bool isStatic = false;
 };
 
-		}
 	}
 }
