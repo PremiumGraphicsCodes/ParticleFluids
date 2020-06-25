@@ -110,5 +110,5 @@ void MacroParticle::stepTime(const double dt)
 
 double MacroParticle::getDensity() const
 {
-	return microCount / (double)100.0f;//preCount;
+	return microCount / (double)preCount;
 }
