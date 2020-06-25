@@ -26,8 +26,13 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 			const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);
 			const auto length2 = Math::getLengthSquared(v);
 			if (length2 < r * r) {
-				points.push_back(new MicroParticle(this, v));
-				preCount++;
+				if (length2 < 0.4 * 0.4) {
+					preCount++;
+				}
+				else {
+					points.push_back(new MicroParticle(this, v));
+					preCount++;
+				}
 			}
 		}
 	}
@@ -52,8 +57,13 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto length2 = Math::getLengthSquared(v);
 				if (length2 < r * r) {
-					points.push_back(new MicroParticle(this, v));
-					preCount++;
+					if (length2 < 0.4 * 0.4) {
+						preCount++;
+					}
+					else {
+						points.push_back(new MicroParticle(this, v));
+						preCount++;
+					}
 				}
 			}
 		}
@@ -88,13 +98,15 @@ void MacroParticle::calculatePressure()
 	if (isStatic) {
 		return;
 	}
-	averagedCenter /= (double)microCount;
+	averagedCenter += position * (double)preCount;
+	averagedCenter /= (double)(microCount + preCount);
 	this->force += (this->position - averagedCenter) * 5000.0;
 }
 
 void MacroParticle::calculateViscosity()
 {
-	averagedVelocity /= (double)microCount;
+	averagedVelocity += velocity * (double)preCount;
+	averagedVelocity /= (double)(microCount + preCount);
 	this->force -= (this->velocity - averagedVelocity) * 50.0;
 }
 
