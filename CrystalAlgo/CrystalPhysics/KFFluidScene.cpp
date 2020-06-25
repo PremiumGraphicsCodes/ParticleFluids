@@ -5,7 +5,9 @@ using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
 KFFluidScene::KFFluidScene(const int id, const std::string& name) :
-	IScene(id, name)
+	IScene(id, name),
+	pressureCoe(10000.0),
+	viscosityCoe(50.0)
 {
 	this->controller = std::make_unique<FluidSceneController>(this);
 }

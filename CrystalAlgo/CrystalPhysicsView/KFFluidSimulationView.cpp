@@ -22,8 +22,8 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	resetButton("Reset"),
 	nextButton("Next"),
 	boundaryView("Boundary"),
-	pressureCoeView("PressureCoe"),
-	viscosityCoeView("ViscosityCoe")
+	pressureCoeView("PressureCoe", 10000),
+	viscosityCoeView("ViscosityCoe", 50.0)
 {
 	auto func = [=]() {
 		simulator.simulate(0.01);
@@ -73,6 +73,9 @@ void KFFluidSimulationView::onOk()
 void KFFluidSimulationView::reset()
 {
 	this->fluidScene->clearParticles();
+
+	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
+	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
 
 	const auto radius = 0.1;
 	const auto length = radius * 2.0;

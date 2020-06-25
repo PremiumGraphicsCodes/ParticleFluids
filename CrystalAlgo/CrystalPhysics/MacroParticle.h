@@ -7,6 +7,7 @@
 
 namespace Crystal {
 	namespace Physics {
+		class KFFluidScene;
 
 class MacroParticle
 {
@@ -16,6 +17,8 @@ public:
 	void distributePoints(const int unum, const int vnum);
 
 	void distributePoints(const int unum, const int vnum, const int wnum);
+
+	void setScene(KFFluidScene* scene) { this->scene = scene; }
 
 	//void calculateDensity();
 
@@ -50,6 +53,7 @@ private:
 	Math::Vector3dd force;
 	Math::Vector3dd position;
 	Math::Vector3dd velocity;
+	KFFluidScene* scene;
 
 	Math::Vector3dd averagedCenter;
 	Math::Vector3dd averagedVelocity;

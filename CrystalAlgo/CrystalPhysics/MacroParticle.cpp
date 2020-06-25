@@ -1,5 +1,7 @@
 #include "MacroParticle.h"
 
+#include "KFFluidScene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
@@ -100,14 +102,14 @@ void MacroParticle::calculatePressure()
 	}
 	averagedCenter += position * (double)preCount;
 	averagedCenter /= (double)(microCount + preCount);
-	this->force += (this->position - averagedCenter) * 10000.0;
+	this->force += (this->position - averagedCenter) * scene->getPressureCoe();// 10000.0;
 }
 
 void MacroParticle::calculateViscosity()
 {
 	averagedVelocity += velocity * (double)preCount;
 	averagedVelocity /= (double)(microCount + preCount);
-	this->force -= (this->velocity - averagedVelocity) * 50.0;
+	this->force -= (this->velocity - averagedVelocity) * scene->getViscosityCoe();//50.0;
 }
 
 void MacroParticle::stepTime(const double dt)
