@@ -4,6 +4,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include <array>
 #include <list>
+#include <functional>
 
 namespace Crystal {
 	namespace Shape {
@@ -18,7 +19,7 @@ public:
 
 	void add(Shape::IPoint* particle);
 
-	//void getNeighbors(MicroParticle* micro);
+	void solveInteractions(Shape::IPoint* micro, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
 
 private:
 	std::array<std::array<std::array<std::list<Shape::IPoint*>, 128>,128>, 128> grid;
