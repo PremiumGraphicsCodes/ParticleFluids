@@ -24,6 +24,9 @@
       <Filter>Volume</Filter>
     </ClCompile>
     <ClCompile Include="AlgoMenu.cpp" />
+    <ClCompile Include="ZOrderSearchView.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h">
@@ -47,6 +50,9 @@
     <ClInclude Include="AlgoMenu.h" />
     <ClInclude Include="VolumeConvertView.h">
       <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="ZOrderSearchView.h">
+      <Filter>Search</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

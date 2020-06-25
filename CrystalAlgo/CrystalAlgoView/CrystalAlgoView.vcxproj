@@ -167,6 +167,7 @@
     <ClCompile Include="SpaceHashView.cpp" />
     <ClCompile Include="VolumeView.cpp" />
     <ClCompile Include="VolumeConvertView.cpp" />
+    <ClCompile Include="ZOrderSearchView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlgoMenu.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="SpaceHashView.h" />
     <ClInclude Include="VolumeView.h" />
     <ClInclude Include="VolumeConvertView.h" />
+    <ClInclude Include="ZOrderSearchView.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CrystalViewer\AppBase\AppBase.vcxproj">
