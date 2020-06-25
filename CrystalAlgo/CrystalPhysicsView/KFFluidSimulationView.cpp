@@ -20,7 +20,10 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("FluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	nextButton("Next")
+	nextButton("Next"),
+	boundaryView("Boundary"),
+	pressureCoeView("PressureCoe"),
+	viscosityCoeView("ViscosityCoe")
 {
 	auto func = [=]() {
 		simulator.simulate(0.01);
@@ -37,6 +40,11 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	};
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
+
+	boundaryView.setValue(Box3d(Vector3dd(0.0, 0.0, -20.0), Vector3dd(20.0, 1000.0, 20.0)));
+	add(&boundaryView);
+	add(&pressureCoeView);
+	add(&viscosityCoeView);
 }
 
 void KFFluidSimulationView::onOk()
@@ -58,10 +66,8 @@ void KFFluidSimulationView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
-	auto simulator = new KFFluidSolver();
-	simulator->setBoundary(Box3d(Vector3dd(-20.0, 0.0, -20.0), Vector3dd(20.0, 1000.0, 20.0)));
-	simulator->add(this->fluidScene);
-	getWorld()->addAnimation(simulator);
+	simulator.add(this->fluidScene);
+	getWorld()->addAnimation(&simulator);
 }
 
 void KFFluidSimulationView::reset()
@@ -71,7 +77,7 @@ void KFFluidSimulationView::reset()
 	const auto radius = 0.1;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 50; ++i) {
-		for (int j = 0; j < 10; ++j) {
+		for (int j = 0; j < 50; ++j) {
 			for (int k = 0; k < 1; ++k) {
 				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(10, 10);
@@ -79,4 +85,6 @@ void KFFluidSimulationView::reset()
 			}
 		}
 	}
+
+	simulator.setBoundary(this->boundaryView.getValue());
 }

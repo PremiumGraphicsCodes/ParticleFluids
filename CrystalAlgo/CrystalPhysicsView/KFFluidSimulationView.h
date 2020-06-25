@@ -1,6 +1,8 @@
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
+#include "../../CrystalViewer/AppBase/Box3dView.h"
 #include "../../CrystalViewer/AppBase/DoubleView.h"
+
 #include "../CrystalPhysics/KFFluidSolver.h"
 
 namespace Crystal {
@@ -22,6 +24,9 @@ private:
 private:
 	Physics::KFFluidScene* fluidScene;
 	Physics::KFFluidSolver simulator;
+	Box3dView boundaryView;
+	DoubleView pressureCoeView;
+	DoubleView viscosityCoeView;
 	Button startButton;
 	Button resetButton;
 	Button nextButton;
