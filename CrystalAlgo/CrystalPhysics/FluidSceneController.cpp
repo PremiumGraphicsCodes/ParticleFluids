@@ -1,12 +1,12 @@
 #include "FluidSceneController.h"
 
-#include "FluidScene.h"
+#include "KFFluidScene.h"
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-FluidSceneController::FluidSceneController(FluidScene* model) :
+FluidSceneController::FluidSceneController(KFFluidScene* model) :
 	model(model),
 	view(nullptr)
 {}

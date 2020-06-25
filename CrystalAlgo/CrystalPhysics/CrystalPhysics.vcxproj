@@ -155,7 +155,7 @@
     <ClInclude Include="CSPHBoundarySolver.h" />
     <ClInclude Include="CSPHParticle.h" />
     <ClInclude Include="CSPHSolver.h" />
-    <ClInclude Include="FluidScene.h" />
+    <ClInclude Include="KFFluidScene.h" />
     <ClInclude Include="FluidSceneController.h" />
     <ClInclude Include="KFFluidSolver.h" />
     <ClInclude Include="MacroParticle.h" />
@@ -174,7 +174,7 @@
     <ClCompile Include="CSPHBoundarySolver.cpp" />
     <ClCompile Include="CSPHParticle.cpp" />
     <ClCompile Include="CSPHSolver.cpp" />
-    <ClCompile Include="FluidScene.cpp" />
+    <ClCompile Include="KFFluidScene.cpp" />
     <ClCompile Include="FluidSceneController.cpp" />
     <ClCompile Include="KFFluidSolver.cpp" />
     <ClCompile Include="MacroParticle.cpp" />

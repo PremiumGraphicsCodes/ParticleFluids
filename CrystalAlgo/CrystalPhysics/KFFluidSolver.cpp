@@ -3,7 +3,7 @@
 #include "MicroParticle.h"
 #include "MacroParticle.h"
 
-#include "FluidScene.h"
+#include "KFFluidScene.h"
 #include "SpaceHash.h"
 
 using namespace Crystal::Math;
@@ -54,8 +54,8 @@ void KFFluidSolver::simulate(const double dt)
 
 	for (auto particle : particles) {
 		auto position = particle->getPosition();
-		if (position.y < 0.0) {
-			const auto overlap = Vector3dd(0, -position.y, 0);
+		if (position.y < boundary.getMinY()) {
+			const auto overlap = Vector3dd(0, boundary.getMinY() -position.y, 0);
 			particle->addForce( overlap / dt / dt );
 		}
 		if (position.x > boundary.getMaxX()) {

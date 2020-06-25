@@ -1,7 +1,5 @@
 #include "CSPHFluidSimulationView.h"
 
-#include "../CrystalPhysics/FluidScene.h"
-
 #include "../../CrystalViewer/Command/Command.h"
 
 #include "../../CrystalViewer/Command/Public/ShaderBuildLabels.h"
@@ -9,7 +7,7 @@
 #include "../../CrystalViewer/Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
+//using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Command;

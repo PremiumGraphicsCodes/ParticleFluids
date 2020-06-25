@@ -18,9 +18,6 @@
     <ClInclude Include="MacroParticle.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
-    <ClInclude Include="FluidScene.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
     <ClInclude Include="FluidSceneController.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
@@ -63,15 +60,15 @@
     <ClInclude Include="UniformGrid3d.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="KFFluidScene.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="MacroParticle.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="FluidScene.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="FluidSceneController.cpp">
@@ -111,6 +108,9 @@
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="UniformGrid3d.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="KFFluidScene.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>

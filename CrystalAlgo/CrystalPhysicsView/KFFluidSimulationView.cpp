@@ -1,6 +1,6 @@
 #include "KFFluidSimulationView.h"
 
-#include "../CrystalPhysics/FluidScene.h"
+#include "../CrystalPhysics/KFFluidScene.h"
 #include "../CrystalPhysics/KFFluidSolver.h"
 
 #include "../../CrystalViewer/Command/Command.h"
@@ -43,7 +43,7 @@ void KFFluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	fluidScene = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
+	fluidScene = new KFFluidScene(getWorld()->getNextSceneId(), "KFFluid");
 	getWorld()->getObjects()->addScene(fluidScene);
 
 	this->reset();

@@ -9,12 +9,12 @@ namespace Crystal {
 	namespace Physics {
 		class FluidSceneController;
 
-class FluidScene : public Scene::IScene
+class KFFluidScene : public Scene::IScene
 {
 public:
-	FluidScene(const int id, const std::string& name);
+	KFFluidScene(const int id, const std::string& name);
 
-	~FluidScene();
+	~KFFluidScene();
 
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 

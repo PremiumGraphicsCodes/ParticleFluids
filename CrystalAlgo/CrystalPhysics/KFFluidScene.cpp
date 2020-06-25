@@ -1,21 +1,21 @@
-#include "FluidScene.h"
+#include "KFFluidScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-FluidScene::FluidScene(const int id, const std::string& name) :
+KFFluidScene::KFFluidScene(const int id, const std::string& name) :
 	IScene(id, name)
 {
 	this->controller = std::make_unique<FluidSceneController>(this);
 }
 
-FluidScene::~FluidScene()
+KFFluidScene::~KFFluidScene()
 {
 	clearParticles();
 }
 
-void FluidScene::clearParticles()
+void KFFluidScene::clearParticles()
 {
 	for (auto p : particles) {
 		delete p;
@@ -23,7 +23,7 @@ void FluidScene::clearParticles()
 	particles.clear();
 }
 
-Box3d FluidScene::getBoundingBox() const
+Box3d KFFluidScene::getBoundingBox() const
 {
 	Box3d bb(particles.front()->getPosition());
 	for (auto p : particles) {

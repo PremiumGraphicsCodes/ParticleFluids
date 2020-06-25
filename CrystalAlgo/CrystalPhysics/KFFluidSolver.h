@@ -10,14 +10,14 @@
 
 namespace Crystal {
 	namespace Physics {
-		class FluidScene;
+		class KFFluidScene;
 
 class KFFluidSolver : public Scene::IAnimator
 {
 public:
 	KFFluidSolver();
 
-	void add(FluidScene* fluid) { this->fluids.push_back(fluid); }
+	void add(KFFluidScene* fluid) { this->fluids.push_back(fluid); }
 
 	void simulate(const double dt);
 
@@ -26,7 +26,7 @@ public:
 	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
 
 private:
-	std::list<FluidScene*> fluids;
+	std::list<KFFluidScene*> fluids;
 	Math::Box3d boundary;
 	double timeStep;
 };

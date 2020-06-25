@@ -4,10 +4,8 @@
 #include "../CrystalPhysics/KFFluidSolver.h"
 
 namespace Crystal {
-	namespace Algo {
-		namespace Physics {
-			class FluidScene;
-		}
+	namespace Physics {
+		class KFFluidScene;
 	}
 	namespace UI {
 
@@ -22,7 +20,7 @@ private:
 	void reset();
 
 private:
-	Physics::FluidScene* fluidScene;
+	Physics::KFFluidScene* fluidScene;
 	Physics::KFFluidSolver simulator;
 	Button startButton;
 	Button resetButton;
