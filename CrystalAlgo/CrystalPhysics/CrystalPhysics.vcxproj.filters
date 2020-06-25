@@ -1,34 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Fluid">
-      <UniqueIdentifier>{78ff2e95-a432-49fc-8ca9-4c386fae1a97}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PBSPH">
       <UniqueIdentifier>{51e44d13-c0a6-4c44-b8d2-140b0cc53e0a}</UniqueIdentifier>
     </Filter>
     <Filter Include="CSPH">
       <UniqueIdentifier>{77488121-418f-48ac-9822-6b51cce96a7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="KFFluid">
+      <UniqueIdentifier>{78ff2e95-a432-49fc-8ca9-4c386fae1a97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MicroParticle.h">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="MacroParticle.h">
-      <Filter>Fluid</Filter>
-    </ClInclude>
-    <ClInclude Include="FluidSimulator.h">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="FluidScene.h">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="FluidSceneController.h">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="SpaceHash.h">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="PBSPHParticle.h">
       <Filter>PBSPH</Filter>
@@ -60,25 +57,25 @@
     <ClInclude Include="CSPHBoundarySolver.h">
       <Filter>CSPH</Filter>
     </ClInclude>
+    <ClInclude Include="KFFluidSolver.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="MacroParticle.cpp">
-      <Filter>Fluid</Filter>
-    </ClCompile>
-    <ClCompile Include="FluidSimulator.cpp">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="FluidScene.cpp">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="FluidSceneController.cpp">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="SpaceHash.cpp">
-      <Filter>Fluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="SPHKernel.cpp">
       <Filter>PBSPH</Filter>
@@ -106,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="CSPHBoundarySolver.cpp">
       <Filter>CSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="KFFluidSolver.cpp">
+      <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

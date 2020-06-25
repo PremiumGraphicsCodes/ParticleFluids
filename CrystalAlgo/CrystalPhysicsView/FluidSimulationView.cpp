@@ -1,7 +1,7 @@
 #include "FluidSimulationView.h"
 
 #include "../CrystalPhysics/FluidScene.h"
-#include "../CrystalPhysics/FluidSimulator.h"
+#include "../CrystalPhysics/KFFluidSolver.h"
 
 #include "../../CrystalViewer/Command/Command.h"
 
@@ -58,7 +58,7 @@ void FluidSimulationView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
-	auto simulator = new FluidSimulator();
+	auto simulator = new KFFluidSolver();
 	simulator->add(this->fluidScene);
 	getWorld()->addAnimation(simulator);
 }

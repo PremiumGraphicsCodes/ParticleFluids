@@ -15,10 +15,10 @@ namespace Crystal {
 		namespace Physics {
 			class FluidScene;
 
-class FluidSimulator : public Scene::IAnimator
+class KFFluidSolver : public Scene::IAnimator
 {
 public:
-	FluidSimulator();
+	KFFluidSolver();
 
 	void add(FluidScene* fluid) { this->fluids.push_back(fluid); }
 

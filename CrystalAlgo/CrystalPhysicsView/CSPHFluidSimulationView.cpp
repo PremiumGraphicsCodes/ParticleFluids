@@ -1,7 +1,6 @@
 #include "CSPHFluidSimulationView.h"
 
 #include "../CrystalPhysics/FluidScene.h"
-#include "../CrystalPhysics/FluidSimulator.h"
 
 #include "../../CrystalViewer/Command/Command.h"
 

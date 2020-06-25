@@ -1,7 +1,7 @@
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/DoubleView.h"
-#include "../CrystalPhysics/FluidSimulator.h"
+#include "../CrystalPhysics/KFFluidSolver.h"
 
 namespace Crystal {
 	namespace Algo {
@@ -23,7 +23,7 @@ private:
 
 private:
 	Algo::Physics::FluidScene* fluidScene;
-	Algo::Physics::FluidSimulator simulator;
+	Algo::Physics::KFFluidSolver simulator;
 	Button startButton;
 	Button resetButton;
 	Button nextButton;

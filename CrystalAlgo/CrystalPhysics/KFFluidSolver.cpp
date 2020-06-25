@@ -1,4 +1,4 @@
-#include "FluidSimulator.h"
+#include "KFFluidSolver.h"
 
 #include "FluidScene.h"
 #include "SpaceHash.h"
@@ -7,16 +7,16 @@ using namespace Crystal::Math;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::Physics;
 
-FluidSimulator::FluidSimulator() :
+KFFluidSolver::KFFluidSolver() :
 	timeStep(0.01)
 {}
 
-void FluidSimulator::step()
+void KFFluidSolver::step()
 {
 	simulate(timeStep);
 }
 
-void FluidSimulator::simulate(const double dt)
+void KFFluidSolver::simulate(const double dt)
 {
 	std::vector<MacroParticle*> particles;
 	for (auto fluid : fluids) {

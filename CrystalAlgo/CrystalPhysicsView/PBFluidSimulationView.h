@@ -1,7 +1,6 @@
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/DoubleView.h"
-#include "../CrystalPhysics/FluidSimulator.h"
 
 namespace Crystal {
 	namespace Physics {
