@@ -1,6 +1,6 @@
 #include "PhysicsMenu.h"
 
-#include "FluidSimulationView.h"
+#include "KFFluidSimulationView.h"
 #include "PBFluidSimulationView.h"
 
 /*
@@ -28,8 +28,8 @@ PhysicsMenu::PhysicsMenu(const std::string& name, World* model, Canvas* canvas, 
 void PhysicsMenu::onShow()
 {
 	if (ImGui::BeginMenu("Physics")) {
-		if (ImGui::MenuItem("Fluid")) {
-			control->setWindow(new FluidSimulationView(getWorld(), getCanvas()));
+		if (ImGui::MenuItem("KFFluid")) {
+			control->setWindow(new KFFluidSimulationView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("PBFluid")) {
 			control->setWindow(new PBFluidSimulationView(getWorld(), getCanvas()));

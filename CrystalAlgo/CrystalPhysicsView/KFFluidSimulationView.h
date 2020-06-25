@@ -11,10 +11,10 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class FluidSimulationView : public IOkCancelView
+class KFFluidSimulationView : public IOkCancelView
 {
 public:
-	FluidSimulationView(Scene::World* model, Canvas* canvas);
+	KFFluidSimulationView(Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

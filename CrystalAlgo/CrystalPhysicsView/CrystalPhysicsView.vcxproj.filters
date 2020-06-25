@@ -3,14 +3,14 @@
   <ItemGroup>
     <ClCompile Include="CrystalPhysicsView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
-    <ClCompile Include="FluidSimulationView.cpp" />
     <ClCompile Include="PBFluidSimulationView.cpp" />
     <ClCompile Include="CSPHFluidSimulationView.cpp" />
+    <ClCompile Include="KFFluidSimulationView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
-    <ClInclude Include="FluidSimulationView.h" />
     <ClInclude Include="PBFluidSimulationView.h" />
     <ClInclude Include="CSPHFluidSimulationView.h" />
+    <ClInclude Include="KFFluidSimulationView.h" />
   </ItemGroup>
 </Project>

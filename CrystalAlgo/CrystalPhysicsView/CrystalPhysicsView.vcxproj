@@ -155,7 +155,7 @@
   <ItemGroup>
     <ClCompile Include="CrystalPhysicsView.cpp" />
     <ClCompile Include="CSPHFluidSimulationView.cpp" />
-    <ClCompile Include="FluidSimulationView.cpp" />
+    <ClCompile Include="KFFluidSimulationView.cpp" />
     <ClCompile Include="PBFluidSimulationView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
   </ItemGroup>
@@ -193,7 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CSPHFluidSimulationView.h" />
-    <ClInclude Include="FluidSimulationView.h" />
+    <ClInclude Include="KFFluidSimulationView.h" />
     <ClInclude Include="PBFluidSimulationView.h" />
     <ClInclude Include="PhysicsMenu.h" />
   </ItemGroup>

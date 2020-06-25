@@ -1,4 +1,4 @@
-#include "FluidSimulationView.h"
+#include "KFFluidSimulationView.h"
 
 #include "../CrystalPhysics/FluidScene.h"
 #include "../CrystalPhysics/KFFluidSolver.h"
@@ -16,7 +16,7 @@ using namespace Crystal::UI;
 using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
-FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
+KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("FluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
@@ -39,7 +39,7 @@ FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
 	add(&resetButton);
 }
 
-void FluidSimulationView::onOk()
+void KFFluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
@@ -59,21 +59,22 @@ void FluidSimulationView::onOk()
 	command.execute(getWorld());
 
 	auto simulator = new KFFluidSolver();
+	simulator->setBoundary(Box3d(Vector3dd(-20.0, 0.0, -20.0), Vector3dd(20.0, 1000.0, 20.0)));
 	simulator->add(this->fluidScene);
 	getWorld()->addAnimation(simulator);
 }
 
-void FluidSimulationView::reset()
+void KFFluidSimulationView::reset()
 {
 	this->fluidScene->clearParticles();
 
 	const auto radius = 0.1;
 	const auto length = radius * 2.0;
-	for (int i = 0; i < 50; ++i) {
+	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 10; ++k) {
+			for (int k = 0; k < 1; ++k) {
 				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(5, 5, 5);
+				mp->distributePoints(5, 5);
 				fluidScene->addParticle(mp);
 			}
 		}
