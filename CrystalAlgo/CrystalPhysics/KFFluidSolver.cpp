@@ -77,7 +77,7 @@ void KFFluidSolver::simulate(const double dt)
 	}
 
 	for (auto particle : particles) {
-		particle->addForce(Vector3dd(0.0,-9.8,0.0));
+		particle->addForce(Vector3dd(0.0,-9.8 * particle->getDensity(),0.0));
 		particle->stepTime(dt);
 	}
 

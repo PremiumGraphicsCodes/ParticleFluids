@@ -74,7 +74,7 @@ void KFFluidSimulationView::reset()
 		for (int j = 0; j < 10; ++j) {
 			for (int k = 0; k < 1; ++k) {
 				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(5, 5);
+				mp->distributePoints(10, 10);
 				fluidScene->addParticle(mp);
 			}
 		}

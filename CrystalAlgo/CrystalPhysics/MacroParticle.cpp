@@ -100,14 +100,14 @@ void MacroParticle::calculatePressure()
 	}
 	averagedCenter += position * (double)preCount;
 	averagedCenter /= (double)(microCount + preCount);
-	this->force += (this->position - averagedCenter) * 5000.0;
+	this->force += (this->position - averagedCenter) * 10000.0;
 }
 
 void MacroParticle::calculateViscosity()
 {
 	averagedVelocity += velocity * (double)preCount;
 	averagedVelocity /= (double)(microCount + preCount);
-	this->force -= (this->velocity - averagedVelocity) * 50.0;
+	this->force -= (this->velocity - averagedVelocity) * 100.0;
 }
 
 void MacroParticle::stepTime(const double dt)
@@ -122,5 +122,6 @@ void MacroParticle::stepTime(const double dt)
 
 double MacroParticle::getDensity() const
 {
-	return microCount / (double)preCount;
+	return (microCount + preCount) / (double)preCount;
+	//return microCount / (double)(microCount + preCount);
 }
