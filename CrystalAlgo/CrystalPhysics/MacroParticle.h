@@ -34,9 +34,6 @@ public:
 
 	std::vector<MicroParticle*> getPoints() { return points; }
 
-	//void setInnerPoints(const std::list<MicroParticle*>& inners) { this->innerPoints = inners; }
-
-
 	Math::Vector3dd getPosition() const { return position; }
 
 	Math::Vector3dd getVelocity() const { return velocity; }

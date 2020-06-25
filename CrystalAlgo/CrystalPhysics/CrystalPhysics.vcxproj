@@ -168,6 +168,7 @@
     <ClInclude Include="SpaceHash.h" />
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
+    <ClInclude Include="UniformGrid3d.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CSPHBoundarySolver.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="PBSPHSolver.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
     <ClCompile Include="SPHKernel.cpp" />
+    <ClCompile Include="UniformGrid3d.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

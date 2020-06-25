@@ -11,28 +11,29 @@ namespace Crystal {
 			class MicroParticle;
 			class MacroParticle;
 
-	class SpaceHash : private UnCopyable
-	{
-	public:
-		SpaceHash(const double divideLength, const int tableSize);
+class SpaceHash : private UnCopyable
+{
+public:
+	SpaceHash(const double divideLength, const int tableSize);
 
-		//void add(const Shape::IParticleSystem& particles);
+	//void add(const Shape::IParticleSystem& particles);
 
-		void add(MacroParticle* particle);
+	void add(MacroParticle* particle);
 
-		void getNeighbors(MicroParticle* micro, MacroParticle* macro);
+	void getNeighbors(MicroParticle* micro);
 
-	private:
-		std::vector<std::list<MacroParticle*>> table;
+private:
+	std::vector<std::list<MacroParticle*>> table;
 
-		int toHash(const Math::Vector3df& pos);
+	int toHash(const Math::Vector3df& pos);
 
-		int toHash(const std::array<int, 3>& index);
+	int toHash(const std::array<int, 3>& index);
 
-		std::array<int, 3> toIndex(const Math::Vector3df& pos);
+	std::array<int, 3> toIndex(const Math::Vector3df& pos);
 
-		const double divideLength;
-	};
+	const double divideLength;
+};
+
 		}
 	}
 }

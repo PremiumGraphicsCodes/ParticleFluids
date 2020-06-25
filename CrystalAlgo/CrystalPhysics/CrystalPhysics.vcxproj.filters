@@ -60,6 +60,9 @@
     <ClInclude Include="KFFluidSolver.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="UniformGrid3d.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -105,6 +108,9 @@
       <Filter>CSPH</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidSolver.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformGrid3d.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>

@@ -37,7 +37,7 @@ void SpaceHash::add(MacroParticle* particle)
 	table[hashIndex].push_back(particle);
 }
 
-void SpaceHash::getNeighbors(MicroParticle* micro, MacroParticle* macro)
+void SpaceHash::getNeighbors(MicroParticle* micro)
 {
 	const auto position = micro->getPosition();
 	const auto& index = toIndex(position);

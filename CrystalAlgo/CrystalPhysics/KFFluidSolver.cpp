@@ -38,14 +38,8 @@ void KFFluidSolver::simulate(const double dt)
 		const auto particle = particles[i];
 		const auto& microParticles = particle->getPoints();
 		for (auto mp : microParticles) {
-			spaceHash.getNeighbors(mp, particle);
+			spaceHash.getNeighbors(mp);
 		}
-//	for (auto particle : particles) {
-//		const auto& position = particle->getPosition();
-//		auto neighbors = spaceHash.getNeighbors(position, particle);
-//		neighbors.sort();
-//		neighbors.unique();
-//		particle->setInnerPoints(neighbors);
 	}
 
 	for (auto particle : particles) {
