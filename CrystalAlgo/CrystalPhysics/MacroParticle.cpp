@@ -107,7 +107,7 @@ void MacroParticle::calculateViscosity()
 {
 	averagedVelocity += velocity * (double)preCount;
 	averagedVelocity /= (double)(microCount + preCount);
-	this->force -= (this->velocity - averagedVelocity) * 100.0;
+	this->force -= (this->velocity - averagedVelocity) * 500.0;
 }
 
 void MacroParticle::stepTime(const double dt)

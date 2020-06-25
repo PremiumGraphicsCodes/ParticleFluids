@@ -58,20 +58,20 @@ void KFFluidSolver::simulate(const double dt)
 			const auto overlap = Vector3dd(0, -position.y, 0);
 			particle->addForce( overlap / dt / dt );
 		}
-		if (position.x > 20.0) {
-			const auto overlap = Vector3dd(20.0 - position.x, 0, 0);
+		if (position.x > boundary.getMaxX()) {
+			const auto overlap = Vector3dd(boundary.getMaxX() - position.x, 0, 0);
 			particle->addForce(overlap / dt / dt);
 		}
-		if (position.x < -20.0) {
-			const auto overlap = Vector3dd(-20.0 - position.x, 0, 0);
+		if (position.x < boundary.getMinX()) {
+			const auto overlap = Vector3dd(boundary.getMinX() - position.x, 0, 0);
 			particle->addForce(overlap / dt / dt);
 		}
-		if (position.z > 20.0) {
-			const auto overlap = Vector3dd(0, 0, 20.0 - position.z);
+		if (position.z > boundary.getMaxZ()) {
+			const auto overlap = Vector3dd(0, 0, boundary.getMaxZ() - position.z);
 			particle->addForce(overlap / dt / dt);
 		}
-		if (position.z < -20.0) {
-			const auto overlap = Vector3dd(0, 0, -20.0 - position.x);
+		if (position.z < boundary.getMinZ()) {
+			const auto overlap = Vector3dd(0, 0, boundary.getMinZ() - position.z);
 			particle->addForce(overlap / dt / dt);
 		}
 	}
