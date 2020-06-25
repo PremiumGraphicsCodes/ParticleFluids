@@ -28,23 +28,24 @@ void FluidSimulator::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size()*10));
+	SpaceHash spaceHash(particles.front()->getRadius() * 2.0, static_cast<int>(particles.size()));
 	for (auto particle : particles) {
-		const auto& points = particle->getPoints();
-		for (auto point : points) {
-			spaceHash.add(point);
-		}
+		spaceHash.add(particle);
 	}
 
 #pragma omp parallel for
 	for(int i = 0; i < particles.size(); ++i) {
 		const auto particle = particles[i];
+		const auto& microParticles = particle->getPoints();
+		for (auto mp : microParticles) {
+			spaceHash.getNeighbors(mp, particle);
+		}
 //	for (auto particle : particles) {
-		const auto& position = particle->getPosition();
-		auto neighbors = spaceHash.getNeighbors(position, particle);
-		neighbors.sort();
-		neighbors.unique();
-		particle->setInnerPoints(neighbors);
+//		const auto& position = particle->getPosition();
+//		auto neighbors = spaceHash.getNeighbors(position, particle);
+//		neighbors.sort();
+//		neighbors.unique();
+//		particle->setInnerPoints(neighbors);
 	}
 
 	for (auto particle : particles) {

@@ -30,17 +30,16 @@ void SpaceHash::add(const IParticleSystem& particles)
 }
 */
 
-void SpaceHash::add(MicroParticle* particle)
+void SpaceHash::add(MacroParticle* particle)
 {
 	const auto& index = toIndex(particle->getPosition());
 	const auto hashIndex = toHash(index);
 	table[hashIndex].push_back(particle);
 }
 
-std::list<MicroParticle*> SpaceHash::getNeighbors(const Vector3dd& position, MacroParticle* macro)
+void SpaceHash::getNeighbors(MicroParticle* micro, MacroParticle* macro)
 {
-	std::list<MicroParticle*> results;
-
+	const auto position = micro->getPosition();
 	const auto& index = toIndex(position);
 	for (int i = index[0] - 1; i <= index[0] + 1; ++i) {
 		for (int j = index[1] - 1; j <= index[1] + 1; ++j) {
@@ -49,20 +48,24 @@ std::list<MicroParticle*> SpaceHash::getNeighbors(const Vector3dd& position, Mac
 				const auto& hash = toHash(index);
 				const auto& points = table[hash];
 				for (auto p : points) {
+					const auto ix = toIndex(p->getPosition());
+					if (ix != index) {
+						continue;
+					}
+					/*
 					if (p->getParent() == macro) {
 						continue;
 					}
+					*/
 					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
 					if (d2 < divideLength * divideLength) {
-						results.push_back(p);
+						p->addMicro(micro);
 					}
 				}
 				//				results.insert(results.end(), points.begin(), points.end());
 			}
 		}
 	}
-
-	return results;
 }
 
 std::array<int, 3> SpaceHash::toIndex(const Vector3df& pos)

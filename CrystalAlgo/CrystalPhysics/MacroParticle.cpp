@@ -26,13 +26,8 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 			const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);
 			const auto length2 = Math::getLengthSquared(v);
 			if (length2 < r * r) {
-				if (length2 < 0.4 * 0.4) {
-					preCount++;
-				}
-				else {
-					points.push_back(new MicroParticle(this, v));
-					preCount++;
-				}
+				points.push_back(new MicroParticle(this, v));
+				preCount++;
 			}
 		}
 	}
@@ -57,17 +52,22 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto length2 = Math::getLengthSquared(v);
 				if (length2 < r * r) {
-					if (length2 < 0.4 * 0.4) {
-						preCount++;
-					}
-					else {
-						points.push_back(new MicroParticle(this, v));
-					}
+					points.push_back(new MicroParticle(this, v));
+					preCount++;
 				}
 			}
 		}
 	}
 }
+
+void MacroParticle::reset()
+{
+	this->microCount = 0;
+	this->averagedCenter = Math::Vector3dd(0, 0, 0);
+	this->averagedVelocity = Math::Vector3dd(0, 0, 0);
+	this->force = Math::Vector3dd(0, 0, 0);
+}
+
 
 /*
 void MacroParticle::calculateDensity()
@@ -76,34 +76,26 @@ void MacroParticle::calculateDensity()
 }
 */
 
+void MacroParticle::addMicro(MicroParticle* microParticle)
+{
+	averagedCenter += microParticle->getPosition();
+	averagedVelocity += microParticle->getVelocity();
+	microCount++;
+}
+
 void MacroParticle::calculatePressure()
 {
 	if (isStatic) {
 		return;
 	}
-	Vector3dd byCenter(0.0, 0.0, 0.0);
-	const auto count = (double)(innerPoints.size() + preCount);
-	for (const auto& ip : innerPoints) {
-		byCenter += ip->getPosition();
-	}
-	byCenter += (double)preCount * getPosition();
-	byCenter /= (double)count;
-	this->force += (this->position - byCenter) * 5000.0;
+	averagedCenter /= (double)microCount;
+	this->force += (this->position - averagedCenter) * 5000.0;
 }
 
 void MacroParticle::calculateViscosity()
 {
-	Vector3dd averagedVelocity(0.0, 0.0, 0.0);
-	const auto count = (double)(innerPoints.size() + preCount);
-	for (const auto& ip : innerPoints) {
-		auto mp = static_cast<MicroParticle*>(ip);
-		averagedVelocity += mp->getVelocity();
-	}
-	averagedVelocity += (double)preCount * getVelocity();
-	averagedVelocity /= (double)count;
+	averagedVelocity /= (double)microCount;
 	this->force -= (this->velocity - averagedVelocity) * 50.0;
-	//byCenter /= (double)innerPoints.size();
-
 }
 
 void MacroParticle::stepTime(const double dt)
@@ -118,5 +110,5 @@ void MacroParticle::stepTime(const double dt)
 
 double MacroParticle::getDensity() const
 {
-	return (innerPoints.size() + preCount) / (double)preCount;
+	return microCount / (double)100.0f;//preCount;
 }

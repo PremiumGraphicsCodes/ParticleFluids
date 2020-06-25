@@ -20,7 +20,9 @@ public:
 
 	//void calculateDensity();
 
-	void reset() { this->force = Math::Vector3dd(0, 0, 0); }
+	void reset();
+
+	void addMicro(MicroParticle* microParticle);
 
 	void calculatePressure();
 
@@ -32,7 +34,8 @@ public:
 
 	std::vector<MicroParticle*> getPoints() { return points; }
 
-	void setInnerPoints(const std::list<MicroParticle*>& inners) { this->innerPoints = inners; }
+	//void setInnerPoints(const std::list<MicroParticle*>& inners) { this->innerPoints = inners; }
+
 
 	Math::Vector3dd getPosition() const { return position; }
 
@@ -47,10 +50,14 @@ public:
 private:
 	double radius;
 	std::vector<MicroParticle*> points;
-	std::list<MicroParticle*> innerPoints;
+	//std::list<MicroParticle*> innerPoints;
 	Math::Vector3dd force;
 	Math::Vector3dd position;
 	Math::Vector3dd velocity;
+
+	Math::Vector3dd averagedCenter;
+	Math::Vector3dd averagedVelocity;
+	int microCount;
 	int preCount;
 	//double density;
 	bool isStatic = false;
