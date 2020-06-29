@@ -12,6 +12,8 @@ public:
 
 	std::array<unsigned int,3> decode(const unsigned int x) const;
 
+	unsigned int getParent(unsigned int ltd, unsigned int rbd) const;
+
 private:
 	unsigned int encode(unsigned int x) const;
 

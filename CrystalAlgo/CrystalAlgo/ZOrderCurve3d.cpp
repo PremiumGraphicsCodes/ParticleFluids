@@ -45,4 +45,28 @@ unsigned int ZOrderCurve3d::decode_(unsigned int x) const
 	return x;
 }
 
+// see https://edom18.hateblo.jp/entry/2017/07/28/083153.
+unsigned int ZOrderCurve3d::getParent(unsigned int ltd, unsigned int rbd) const
+{
+	auto xor_ = ltd ^ rbd; // 2点の位置のXOR
+	int i = 0;
+	int shift = 0;
+	unsigned int spaceIndex = 0;
+
+	while (xor_ != 0)
+	{
+		// 下位3bitずつマスクして値をチェックする
+		if ((xor_ &0x7) != 0)
+		{
+			// 空間シフト数を採用
+			spaceIndex = (i + 1);
+			shift = spaceIndex * 3;
+		}
+
+		// 3bitシフトさせて再チェック
+		xor_ >>= 3;
+		i++;
+	}
+	return spaceIndex;
+}
 

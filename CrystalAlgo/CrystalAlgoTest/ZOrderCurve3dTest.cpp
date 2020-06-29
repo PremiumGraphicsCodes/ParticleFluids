@@ -42,3 +42,10 @@ TEST(ZOrderCurve3dTest, TestDecode)
 	EXPECT_EQ(1, actual[1]);
 	EXPECT_EQ(0, actual[2]);
 }
+
+TEST(ZOrderCurve3dTest, TestGetParent)
+{
+	const ZOrderCurve3d curve;
+	EXPECT_EQ(2, curve.getParent(32, 47));
+
+}
