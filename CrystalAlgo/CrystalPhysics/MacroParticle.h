@@ -30,7 +30,7 @@ public:
 
 	void calculatePressure(const double pressureCoe);
 
-	void calculateViscosity();
+	void calculateViscosity(const double viscosityCoe);
 
 	void stepTime(double dt);
 

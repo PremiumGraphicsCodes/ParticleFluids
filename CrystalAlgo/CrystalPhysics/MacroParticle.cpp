@@ -105,11 +105,11 @@ void MacroParticle::calculatePressure(const double pressureCoe)
 	this->force += (this->position - averagedCenter) * pressureCoe;// 10000.0;
 }
 
-void MacroParticle::calculateViscosity()
+void MacroParticle::calculateViscosity(const double viscosityCoe)
 {
 	averagedVelocity += velocity * (double)preCount;
 	averagedVelocity /= (double)(microCount + preCount);
-	this->force -= (this->velocity - averagedVelocity) * scene->getViscosityCoe();//50.0;
+	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
 }
 
 void MacroParticle::stepTime(const double dt)

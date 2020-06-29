@@ -58,7 +58,7 @@ void KFFluidSolver::simulate(const double dt)
 	}
 
 	for (auto particle : particles) {
-		particle->calculateViscosity();
+		particle->calculateViscosity(particle->getScene()->getViscosityCoe());
 	}
 
 	for (auto particle : particles) {
@@ -91,6 +91,7 @@ void KFFluidSolver::simulate(const double dt)
 	}
 
 	// solve incompressibility.
+	double relaxationCoe = 0.5;
 	for (int i = 0; i < 2; ++i) {
 		for (auto particle : particles) {
 			particle->reset();
@@ -105,11 +106,12 @@ void KFFluidSolver::simulate(const double dt)
 			}
 		}
 
-		const auto relaxationCoe = (2-i) / 2.0;
 		for (auto particle : particles) {
 			particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
+			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
 			particle->stepTime(dt);
 		}
+		relaxationCoe /= 2.0;
 	}
 
 	for (auto fluid : fluids) {
