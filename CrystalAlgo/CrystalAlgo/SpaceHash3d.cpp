@@ -35,9 +35,9 @@ void SpaceHash3d::add(IPoint* particle)
 	table[hashIndex].push_back(particle);
 }
 
-void SpaceHash3d::solveInteractions(IPoint* micro, const std::function<void(IPoint*, IPoint*)>& func)
+void SpaceHash3d::solveInteractions(IPoint* particle, const std::function<void(IPoint*, IPoint*)>& func)
 {
-	const auto position = micro->getPosition();
+	const auto position = particle->getPosition();
 	const auto& index = toIndex(position);
 	for (int i = index[0] - 1; i <= index[0] + 1; ++i) {
 		for (int j = index[1] - 1; j <= index[1] + 1; ++j) {
@@ -46,6 +46,9 @@ void SpaceHash3d::solveInteractions(IPoint* micro, const std::function<void(IPoi
 				const auto& hash = toHash(index);
 				const auto& points = table[hash];
 				for (auto p : points) {
+					if (p == particle) {
+						continue;
+					}
 					const auto ix = toIndex(p->getPosition());
 					if (ix != index) {
 						continue;
@@ -57,7 +60,7 @@ void SpaceHash3d::solveInteractions(IPoint* micro, const std::function<void(IPoi
 					*/
 					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
 					if (d2 < divideLength * divideLength) {
-						func(p, micro);
+						func(p, particle);
 					}
 				}
 				//				results.insert(results.end(), points.begin(), points.end());

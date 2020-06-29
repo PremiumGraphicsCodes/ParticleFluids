@@ -21,7 +21,7 @@ public:
 
 	void add(Shape::IPoint* particle);
 
-	void solveInteractions(Shape::IPoint* micro, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
+	void solveInteractions(Shape::IPoint* particle, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
 
 private:
 	std::vector<std::list<Shape::IPoint*>> table;
