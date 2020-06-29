@@ -37,7 +37,7 @@ void SpaceHash::add(MacroParticle* particle)
 	table[hashIndex].push_back(particle);
 }
 
-void SpaceHash::getNeighbors(MicroParticle* micro)
+void SpaceHash::solveInteractions(MicroParticle* micro, const std::function<void(MacroParticle*, IPoint*)>& func)
 {
 	const auto position = micro->getPosition();
 	const auto& index = toIndex(position);
@@ -59,7 +59,7 @@ void SpaceHash::getNeighbors(MicroParticle* micro)
 					*/
 					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
 					if (d2 < divideLength * divideLength) {
-						p->addMicro(micro);
+						func(p, micro);
 					}
 				}
 				//				results.insert(results.end(), points.begin(), points.end());

@@ -35,12 +35,20 @@ void KFFluidSolver::simulate(const double dt)
 		spaceHash.add(particle);
 	}
 
+	auto func = [](Shape::IPoint* macro, Shape::IPoint* micro) {
+		MacroParticle* mp = static_cast<MacroParticle*>(macro);
+		MicroParticle* microP = static_cast<MicroParticle*>(micro);
+		mp->addMicro(microP);
+	};
+	//						p->addMicro(micro);
+
+
 #pragma omp parallel for
 	for(int i = 0; i < particles.size(); ++i) {
 		const auto particle = particles[i];
 		const auto& microParticles = particle->getPoints();
 		for (auto mp : microParticles) {
-			spaceHash.getNeighbors(mp);
+			spaceHash.solveInteractions(mp, func);
 		}
 	}
 

@@ -9,7 +9,7 @@ namespace Crystal {
 	namespace Physics {
 		class KFFluidScene;
 
-class MacroParticle
+class MacroParticle : public Shape::IPoint
 {
 public:
 	MacroParticle(const double radius, const Math::Vector3dd& position);
@@ -36,7 +36,7 @@ public:
 
 	std::vector<MicroParticle*> getPoints() { return points; }
 
-	Math::Vector3dd getPosition() const { return position; }
+	Math::Vector3dd getPosition() const override { return position; }
 
 	Math::Vector3dd getVelocity() const { return velocity; }
 

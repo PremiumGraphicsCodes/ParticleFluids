@@ -4,6 +4,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 #include <list>
+#include <functional>
 
 namespace Crystal {
 	namespace Physics {
@@ -19,7 +20,7 @@ public:
 
 	void add(MacroParticle* particle);
 
-	void getNeighbors(MicroParticle* micro);
+	void solveInteractions(MicroParticle* micro, const std::function<void(MacroParticle*, Shape::IPoint*)>& func);
 
 private:
 	std::vector<std::list<MacroParticle*>> table;
