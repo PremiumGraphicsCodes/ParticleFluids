@@ -48,6 +48,8 @@ public:
 
 	double getDensity() const;
 
+	void addMicroCount(int count) { this->microCount+=count; }
+
 private:
 	double radius;
 	std::vector<MicroParticle*> points;

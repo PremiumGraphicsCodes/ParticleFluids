@@ -64,7 +64,10 @@ void KFFluidSolver::simulate(const double dt)
 	for (auto particle : particles) {
 		auto position = particle->getPosition();
 		if (position.y < boundary.getMinY()) {
-			const auto overlap = Vector3dd(0, boundary.getMinY() -position.y, 0);
+			const auto distance = boundary.getMinY() - position.y;
+			const auto overlap = Vector3dd(0, distance, 0);
+			const auto count = (distance) / (particle->getRadius() * 0.1);
+			particle->addMicroCount(count * 10);
 			particle->addForce( overlap / dt / dt );
 		}
 		if (position.x > boundary.getMaxX()) {
