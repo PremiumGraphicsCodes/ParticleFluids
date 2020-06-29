@@ -157,7 +157,7 @@
     <ClInclude Include="MarchingCubesTable.h" />
     <ClInclude Include="MCCell.h" />
     <ClInclude Include="Octree.h" />
-    <ClInclude Include="SpaceHash.h" />
+    <ClInclude Include="SpaceHash3d.h" />
     <ClInclude Include="UniformGrid3d.h" />
     <ClInclude Include="VolumeConvertAlgo.h" />
     <ClInclude Include="ZIndexedSearchAlgo.h" />
@@ -172,7 +172,7 @@
     <ClCompile Include="IntersectionAlgo.cpp" />
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />
-    <ClCompile Include="SpaceHash.cpp" />
+    <ClCompile Include="SpaceHash3d.cpp" />
     <ClCompile Include="UniformGrid3d.cpp" />
     <ClCompile Include="VolumeConvertAlgo.cpp" />
     <ClCompile Include="ZIndexedSearchAlgo.cpp" />

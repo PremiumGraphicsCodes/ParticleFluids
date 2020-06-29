@@ -4,9 +4,6 @@
     <ClInclude Include="Octree.h">
       <Filter>Search</Filter>
     </ClInclude>
-    <ClInclude Include="SpaceHash.h">
-      <Filter>Search</Filter>
-    </ClInclude>
     <ClInclude Include="IntersectionAlgo.h">
       <Filter>Intersection</Filter>
     </ClInclude>
@@ -43,12 +40,12 @@
     <ClInclude Include="UniformGrid3d.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="SpaceHash3d.h">
+      <Filter>Search</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
-      <Filter>Search</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceHash.cpp">
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="IntersectionAlgo.cpp">
@@ -82,6 +79,9 @@
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="UniformGrid3d.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceHash3d.cpp">
       <Filter>Search</Filter>
     </ClCompile>
   </ItemGroup>

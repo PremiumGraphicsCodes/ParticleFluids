@@ -12,10 +12,10 @@ namespace Crystal {
 	}
 	namespace Search {
 
-class SpaceHash : private UnCopyable
+class SpaceHash3d : private UnCopyable
 {
 public:
-	SpaceHash(const double divideLength, const int tableSize);
+	SpaceHash3d(const double divideLength, const int tableSize);
 
 	//void add(const Shape::IParticleSystem& particles);
 

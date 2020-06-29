@@ -1,49 +1,44 @@
 #include "SpaceHashView.h"
 
-#include "../CrystalAlgo/SpaceHash.h"
+#include "../CrystalAlgo/SpaceHash3d.h"
+#include "../../Crystal/Shape/ParticleSystem.h"
+
+#include <iostream>
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Search;
 
 SpaceHashView::SpaceHashView(World* model, Canvas* canvas) :
 	IOkCancelView("SpaceHash", model, canvas),
-	positionButton("Position", model, canvas),
-	searchRadius("SearchRadius", 1.0),
-	objectButton("Object", model, canvas, SceneType::ParticleSystemScene)
+	searchRadius("SearchRadius", 1.0)
 {
-}
-
-void SpaceHashView::onShow()
-{
-	positionButton.show();
-	searchRadius.show();
-	objectButton.show();
+	add(&searchRadius);
 }
 
 void SpaceHashView::onOk()
 {
-	/*
-	auto object = getModel()->getObjects()->getFactory()->getParticleSystems()->findObjectById(objectButton.getId());
-	if (object == nullptr) {
+	ParticleSystem<void*> ps;
+	for (int i = 0; i < 100; ++i) {
+		for (int j = 0; j < 100; ++j) {
+			for (int k = 0; k < 100; ++k) {
+				ps.add(Vector3dd(i, j, k), nullptr);
+			}
+		}
+	}
+
+	SpaceHash3d grid(searchRadius.getValue(), 10000000);
+	const auto particles = ps.getIParticles();
+	for (auto p : particles) {
+		grid.add(p);
+	}
+	auto func = [](IPoint* lhs, IPoint* rhs) {
 		return;
+	};
+	for (auto p : particles) {
+		grid.solveInteractions(p, func);
 	}
-
-	SpaceHash space(searchRadius.getValue(), object->getShape()->getParticles().size());
-	space.add(*object->getShape());
-
-	const auto& neighbors = space.getNeighbors(positionButton.getPosition());
-
-	std::vector<Vector3dd> positions;
-	ParticleAttribute attr;
-	attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-	attr.size = 1.0;
-	for (auto n : neighbors) {
-		positions.push_back(n->getPosition());
-	}
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "");
-	getCanvas()->setViewModel(getModel()->toViewModel());
-	*/
+	std::cout << "Search Completed" << std::endl;
 }
-

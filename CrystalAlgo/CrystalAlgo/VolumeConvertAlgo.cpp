@@ -2,7 +2,7 @@
 
 #include "Octree.h"
 #include "../../Crystal/Math/Gaussian.h"
-#include "../CrystalAlgo/SpaceHash.h"
+#include "../CrystalAlgo/SpaceHash3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -15,7 +15,7 @@ void VolumeConvertAlgo::convert(Volume& volume, const ParticleSystem<double>& pa
 	Gaussian kernel;
 
 	const auto& particles = particleSystem.getParticles();
-	SpaceHash spaceHash(searchRadius, particles.size());
+	SpaceHash3d spaceHash(searchRadius, particles.size());
 	//spaceHash.add(particleSystem);
 
 	/*
