@@ -62,7 +62,7 @@ private:
 	Math::Vector3dd averagedCenter;
 	Math::Vector3dd averagedVelocity;
 	int microCount;
-	int preCount;
+	int selfCount;
 	//double density;
 	bool isStatic = false;
 };

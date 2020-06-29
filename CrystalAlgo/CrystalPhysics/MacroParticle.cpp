@@ -8,7 +8,7 @@ using namespace Crystal::Physics;
 MacroParticle::MacroParticle(const double radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
-	preCount(0)
+	selfCount(0)
 {}
 
 // MicroParticle‚ğ‰“‚­‚É”z’u‚·‚é->’Tõ‚Å‚Í©•ª‚É“ü‚ç‚È‚¢D
@@ -20,7 +20,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 
 	const double tolerance = 1.0e-12;
 
-	const auto r = 0.5;
+	const auto r = 1.0;
 	for (int x = 0; x <= unum; x++) {
 		for (int y = 0; y <= vnum; ++y) {
 			const auto xx = x / (double)unum;
@@ -28,12 +28,12 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 			const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);
 			const auto length2 = Math::getLengthSquared(v);
 			if (length2 < r * r) {
-				if (length2 < 0.4 * 0.4) {
-					preCount++;
+				if (length2 < 0.6 * 0.6) {
+					selfCount++;
 				}
 				else {
 					points.push_back(new MicroParticle(this, v * 2.0));
-					preCount++;
+					selfCount++;
 				}
 			}
 		}
@@ -60,11 +60,11 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 				const auto length2 = Math::getLengthSquared(v);
 				if (length2 < r * r) {
 					if (length2 < 0.4 * 0.4) {
-						preCount++;
+						selfCount++;
 					}
 					else {
 						points.push_back(new MicroParticle(this, v));
-						preCount++;
+						selfCount++;
 					}
 				}
 			}
@@ -100,15 +100,15 @@ void MacroParticle::calculatePressure(const double pressureCoe)
 	if (isStatic) {
 		return;
 	}
-	averagedCenter += position * (double)preCount;
-	averagedCenter /= (double)(microCount + preCount);
+	averagedCenter += position * (double)selfCount;
+	averagedCenter /= (double)(microCount + selfCount);
 	this->force += (this->position - averagedCenter) * pressureCoe;// 10000.0;
 }
 
 void MacroParticle::calculateViscosity(const double viscosityCoe)
 {
-	averagedVelocity += velocity * (double)preCount;
-	averagedVelocity /= (double)(microCount + preCount);
+	averagedVelocity += velocity * (double)selfCount;
+	averagedVelocity /= (double)(microCount + selfCount);
 	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
 }
 
@@ -124,6 +124,6 @@ void MacroParticle::stepTime(const double dt)
 
 double MacroParticle::getDensity() const
 {
-	return (microCount + preCount) / (double)preCount;
+	return (microCount + selfCount) / (double)selfCount;
 	//return microCount / (double)(microCount + preCount);
 }

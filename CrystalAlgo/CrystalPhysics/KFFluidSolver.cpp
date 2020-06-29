@@ -31,17 +31,20 @@ void KFFluidSolver::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash3d spaceHash(particles.front()->getRadius() * 2.00, static_cast<int>(particles.size() * 10));
+	SpaceHash3d spaceHash(particles.front()->getRadius() * 2.0, static_cast<int>(particles.size() * 10));
 	for (auto particle : particles) {
 		spaceHash.add(particle);
 	}
 
+	// é©ï™é©êgÇÕí«â¡ÇµÇ»Ç¢ÅD
 	auto func = [](Shape::IPoint* macro, Shape::IPoint* micro) {
-		MacroParticle* mp = static_cast<MacroParticle*>(macro);
+		MacroParticle* macroP = static_cast<MacroParticle*>(macro);
 		MicroParticle* microP = static_cast<MicroParticle*>(micro);
-		mp->addMicro(microP);
+		if (microP->getParent() == macroP) {
+			return;
+		}
+		macroP->addMicro(microP);
 	};
-	//						p->addMicro(micro);
 
 
 #pragma omp parallel for
