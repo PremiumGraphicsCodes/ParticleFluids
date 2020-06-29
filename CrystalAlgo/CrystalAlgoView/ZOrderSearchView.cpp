@@ -2,10 +2,17 @@
 
 #include "../CrystalAlgo/SpaceHash.h"
 
+#include "../CrystalAlgo/ZIndexedSearchAlgo.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+
+#include <iostream>
+
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Algo;
+using namespace Crystal::Search;
 
 ZOrderSearchView::ZOrderSearchView(World* model, Canvas* canvas) :
 	IOkCancelView("ZOrderSearch", model, canvas),
@@ -13,37 +20,37 @@ ZOrderSearchView::ZOrderSearchView(World* model, Canvas* canvas) :
 	searchRadius("SearchRadius", 1.0),
 	objectButton("Object", model, canvas, SceneType::ParticleSystemScene)
 {
-}
-
-void ZOrderSearchView::onShow()
-{
-	positionButton.show();
-	searchRadius.show();
-	objectButton.show();
+	add(&positionButton);
+	add(&searchRadius);
+	add(&objectButton);
 }
 
 void ZOrderSearchView::onOk()
 {
 	/*
-	auto object = getModel()->getObjects()->getFactory()->getParticleSystems()->findObjectById(objectButton.getId());
+	auto object = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>(objectButton.getId());
 	if (object == nullptr) {
 		return;
 	}
-
-	SpaceHash space(searchRadius.getValue(), object->getShape()->getParticles().size());
-	space.add(*object->getShape());
-
-	const auto& neighbors = space.getNeighbors(positionButton.getPosition());
-
-	std::vector<Vector3dd> positions;
-	ParticleAttribute attr;
-	attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-	attr.size = 1.0;
-	for (auto n : neighbors) {
-		positions.push_back(n->getPosition());
-	}
-	getModel()->getObjects()->getParticleSystems()->addObject(positions, attr, "");
-	getCanvas()->setViewModel(getModel()->toViewModel());
 	*/
+	ParticleSystem<void*> ps;
+	for (int i = 0; i < 100; ++i) {
+		for (int j = 0; j < 100; ++j) {
+			for (int k = 0; k < 100; ++k) {
+				ps.add(Vector3dd(i, j, k), nullptr);
+			}
+		}
+	}
+
+	ZIndexedSearchAlgo algo(searchRadius.getValue(), ps.getBoundingBox().getMin());
+	const auto particles = ps.getIParticles();
+	for (auto p : particles) {
+		algo.add(p);
+	}
+	algo.sort();
+	for (auto p : particles) {
+		algo.findNeighbors(p->getPosition());
+	}
+	std::cout << "Search Completed" << std::endl;
 }
 

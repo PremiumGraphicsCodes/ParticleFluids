@@ -45,7 +45,10 @@ std::list<IPoint*> ZIndexedSearchAlgo::findNeighbors(const Vector3dd& position)
 				auto firstIter = std::lower_bound(points.begin(), points.end(), dummy);
 				auto secondIter = std::upper_bound(firstIter, points.end(), dummy);
 				for (auto iter = firstIter; iter != secondIter; ++iter) {
-					results.push_back(iter->getPoint());
+					const auto distanceSquared = ::getDistanceSquared(position, iter->getPoint()->getPosition());
+					if (distanceSquared < searchRadius * searchRadius) {
+						results.push_back(iter->getPoint());
+					}
 				}
  			}
 		}
