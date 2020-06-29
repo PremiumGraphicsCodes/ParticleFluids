@@ -32,7 +32,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 					preCount++;
 				}
 				else {
-					points.push_back(new MicroParticle(this, v));
+					points.push_back(new MicroParticle(this, v * 2.0));
 					preCount++;
 				}
 			}

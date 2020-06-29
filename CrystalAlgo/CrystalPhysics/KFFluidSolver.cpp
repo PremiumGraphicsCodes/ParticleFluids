@@ -31,7 +31,7 @@ void KFFluidSolver::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash3d spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size() * 10));
+	SpaceHash3d spaceHash(particles.front()->getRadius() * 2.00, static_cast<int>(particles.size() * 10));
 	for (auto particle : particles) {
 		spaceHash.add(particle);
 	}
