@@ -95,14 +95,14 @@ void MacroParticle::addMicro(MicroParticle* microParticle)
 	microCount++;
 }
 
-void MacroParticle::calculatePressure()
+void MacroParticle::calculatePressure(const double pressureCoe)
 {
 	if (isStatic) {
 		return;
 	}
 	averagedCenter += position * (double)preCount;
 	averagedCenter /= (double)(microCount + preCount);
-	this->force += (this->position - averagedCenter) * scene->getPressureCoe();// 10000.0;
+	this->force += (this->position - averagedCenter) * pressureCoe;// 10000.0;
 }
 
 void MacroParticle::calculateViscosity()

@@ -54,7 +54,7 @@ void KFFluidSolver::simulate(const double dt)
 	}
 
 	for (auto particle : particles) {
-		particle->calculatePressure();
+		particle->calculatePressure(particle->getScene()->getPressureCoe());
 	}
 
 	for (auto particle : particles) {
@@ -88,6 +88,28 @@ void KFFluidSolver::simulate(const double dt)
 	for (auto particle : particles) {
 		particle->addForce(Vector3dd(0.0,-9.8 * particle->getDensity(),0.0));
 		particle->stepTime(dt);
+	}
+
+	// solve incompressibility.
+	for (int i = 0; i < 2; ++i) {
+		for (auto particle : particles) {
+			particle->reset();
+		}
+
+#pragma omp parallel for
+		for (int i = 0; i < particles.size(); ++i) {
+			const auto particle = particles[i];
+			const auto& microParticles = particle->getPoints();
+			for (auto mp : microParticles) {
+				spaceHash.solveInteractions(mp, func);
+			}
+		}
+
+		const auto relaxationCoe = (2-i) / 2.0;
+		for (auto particle : particles) {
+			particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
+			particle->stepTime(dt);
+		}
 	}
 
 	for (auto fluid : fluids) {

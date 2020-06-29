@@ -20,13 +20,15 @@ public:
 
 	void setScene(KFFluidScene* scene) { this->scene = scene; }
 
+	KFFluidScene* getScene() { return scene; }
+
 	//void calculateDensity();
 
 	void reset();
 
 	void addMicro(MicroParticle* microParticle);
 
-	void calculatePressure();
+	void calculatePressure(const double pressureCoe);
 
 	void calculateViscosity();
 
