@@ -3,11 +3,11 @@
 #include "../../Crystal/Scene/IScene.h"
 
 #include "MacroParticle.h"
-#include "FluidSceneController.h"
+#include "KFFluidSceneController.h"
 
 namespace Crystal {
 	namespace Physics {
-		class FluidSceneController;
+		class KFFluidSceneController;
 
 class KFFluidScene : public Scene::IScene
 {
@@ -43,7 +43,7 @@ private:
 	std::list<MacroParticle*> particles;
 	double pressureCoe;
 	double viscosityCoe;
-	std::unique_ptr<FluidSceneController> controller;
+	std::unique_ptr<KFFluidSceneController> controller;
 };
 
 	}

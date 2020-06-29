@@ -9,10 +9,10 @@ namespace Crystal {
 	namespace Physics {
 		class KFFluidScene;
 
-class FluidSceneController : public Scene::IController
+class KFFluidSceneController : public Scene::IController
 {
 public:
-	explicit FluidSceneController(KFFluidScene* model);
+	explicit KFFluidSceneController(KFFluidScene* model);
 
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 

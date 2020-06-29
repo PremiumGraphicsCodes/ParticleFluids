@@ -1,4 +1,4 @@
-#include "FluidSceneController.h"
+#include "KFFluidSceneController.h"
 
 #include "KFFluidScene.h"
 
@@ -6,12 +6,12 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-FluidSceneController::FluidSceneController(KFFluidScene* model) :
+KFFluidSceneController::KFFluidSceneController(KFFluidScene* model) :
 	model(model),
 	view(nullptr)
 {}
 
-void FluidSceneController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void KFFluidSceneController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
@@ -22,7 +22,7 @@ void FluidSceneController::createView(SceneShader* sceneShader, GLObjectFactory&
 	updateView();
 }
 
-void FluidSceneController::updateView()
+void KFFluidSceneController::updateView()
 {
 	const auto& ps = model->getParticles();
 	PointBuffer pb;

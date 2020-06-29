@@ -9,7 +9,7 @@ KFFluidScene::KFFluidScene(const int id, const std::string& name) :
 	pressureCoe(10000.0),
 	viscosityCoe(50.0)
 {
-	this->controller = std::make_unique<FluidSceneController>(this);
+	this->controller = std::make_unique<KFFluidSceneController>(this);
 }
 
 KFFluidScene::~KFFluidScene()
