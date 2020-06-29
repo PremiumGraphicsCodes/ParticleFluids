@@ -57,9 +57,6 @@
     <ClInclude Include="KFFluidSolver.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
-    <ClInclude Include="UniformGrid3d.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
     <ClInclude Include="KFFluidScene.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
@@ -105,9 +102,6 @@
       <Filter>CSPH</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidSolver.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="UniformGrid3d.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidScene.cpp">

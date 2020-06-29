@@ -4,7 +4,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Physics;
+using namespace Crystal::Search;
 
 UniformGrid3d::UniformGrid3d(const double divideLength, const Vector3dd& min) :
 	divideLength(divideLength)
@@ -14,7 +14,7 @@ UniformGrid3d::UniformGrid3d(const double divideLength, const Vector3dd& min) :
 void UniformGrid3d::add(IPoint* particle)
 {
 	const auto& index = toIndex(particle->getPosition());
-	grid[index[0]][index[1]][index[2]].push_back( particle );
+	grid[index[0]][index[1]][index[2]].push_back(particle);
 }
 
 void UniformGrid3d::solveInteractions(IPoint* micro, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func)

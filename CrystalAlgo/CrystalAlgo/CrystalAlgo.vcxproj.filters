@@ -40,6 +40,9 @@
     <ClInclude Include="ZOrderCurve3d.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="UniformGrid3d.h">
+      <Filter>Search</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -76,6 +79,9 @@
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="ZOrderCurve3d.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformGrid3d.cpp">
       <Filter>Search</Filter>
     </ClCompile>
   </ItemGroup>
