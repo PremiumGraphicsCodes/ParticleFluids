@@ -4,9 +4,10 @@
 #include "MacroParticle.h"
 
 #include "KFFluidScene.h"
-#include "SpaceHash.h"
+#include "../CrystalAlgo/SpaceHash3d.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
 KFFluidSolver::KFFluidSolver() :
@@ -30,7 +31,7 @@ void KFFluidSolver::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size()));
+	SpaceHash3d spaceHash(particles.front()->getRadius() * 1.25, static_cast<int>(particles.size() * 10));
 	for (auto particle : particles) {
 		spaceHash.add(particle);
 	}
