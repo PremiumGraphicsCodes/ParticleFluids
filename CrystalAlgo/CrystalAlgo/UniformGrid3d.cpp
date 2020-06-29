@@ -9,6 +9,13 @@ using namespace Crystal::Search;
 UniformGrid3d::UniformGrid3d(const double divideLength, const Vector3dd& min) :
 	divideLength(divideLength)
 {
+	grid.resize(128);
+	for (int i = 0; i < 128; ++i) {
+		grid[i].resize(128);
+		for (int j = 0; j < 128; ++j) {
+			grid[i][j].resize(128);
+		}
+	}
 }
 
 void UniformGrid3d::add(IPoint* particle)

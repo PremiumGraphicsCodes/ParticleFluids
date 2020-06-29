@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Util/UnCopyable.h"
 #include "../../Crystal/Math/Vector3d.h"
-#include <array>
+#include <vector>
 #include <list>
 #include <functional>
 
@@ -22,7 +22,7 @@ public:
 	void solveInteractions(Shape::IPoint* micro, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
 
 private:
-	std::array<std::array<std::array<std::list<Shape::IPoint*>, 128>, 128>, 128> grid;
+	std::vector<std::vector<std::vector<std::list<Shape::IPoint*>>>> grid;
 
 	std::array<int, 3> toIndex(const Math::Vector3df& pos);
 

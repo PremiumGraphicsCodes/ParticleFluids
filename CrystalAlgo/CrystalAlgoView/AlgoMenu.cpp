@@ -9,6 +9,7 @@
 #include "VolumeConvertView.h"
 #include "OctreeView.h"
 #include "SpaceHashView.h"
+#include "UniformGrid3dView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 
@@ -47,6 +48,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("MarchingCubes")) {
 			control->setWindow(new MarchingCubesView(getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("UniformGrid")) {
+			control->setWindow(new UniformGrid3dView(getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}

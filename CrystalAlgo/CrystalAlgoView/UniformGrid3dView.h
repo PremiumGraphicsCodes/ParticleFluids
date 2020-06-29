@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace UI {
 
-class ZOrderSearchView : public IOkCancelView
+class UniformGrid3dView : public IOkCancelView
 {
 public:
-	ZOrderSearchView(Scene::World* model, Canvas* canvas);
+	UniformGrid3dView(Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

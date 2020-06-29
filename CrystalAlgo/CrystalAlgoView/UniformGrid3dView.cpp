@@ -1,6 +1,6 @@
-#include "ZOrderSearchView.h"
+#include "UniformGrid3dView.h"
 
-#include "../CrystalAlgo/ZIndexedSearchAlgo.h"
+#include "../CrystalAlgo/UniformGrid3d.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include <iostream>
@@ -11,14 +11,14 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Search;
 
-ZOrderSearchView::ZOrderSearchView(World* model, Canvas* canvas) :
-	IOkCancelView("ZOrderSearch", model, canvas),
+UniformGrid3dView::UniformGrid3dView(World* model, Canvas* canvas) :
+	IOkCancelView("UniformGrid", model, canvas),
 	searchRadius("SearchRadius", 1.0)
 {
 	add(&searchRadius);
 }
 
-void ZOrderSearchView::onOk()
+void UniformGrid3dView::onOk()
 {
 	ParticleSystem<void*> ps;
 	for (int i = 0; i < 100; ++i) {
@@ -29,14 +29,16 @@ void ZOrderSearchView::onOk()
 		}
 	}
 
-	ZIndexedSearchAlgo algo(searchRadius.getValue(), ps.getBoundingBox().getMin());
+	UniformGrid3d grid(searchRadius.getValue(), ps.getBoundingBox().getMin());
 	const auto particles = ps.getIParticles();
 	for (auto p : particles) {
-		algo.add(p->getPosition());
+		grid.add(p);
 	}
-	algo.sort();
+	auto func = [](IPoint* lhs, IPoint* rhs) {
+		return;
+	};
 	for (auto p : particles) {
-		algo.findNeighbors(p->getPosition());
+		grid.solveInteractions(p, func);
 	}
 	std::cout << "Search Completed" << std::endl;
 }
