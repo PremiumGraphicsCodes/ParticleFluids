@@ -21,9 +21,6 @@
     <ClInclude Include="FluidSceneController.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
-    <ClInclude Include="SpaceHash.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
     <ClInclude Include="PBSPHParticle.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
@@ -69,9 +66,6 @@
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="FluidSceneController.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceHash.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="SPHKernel.cpp">

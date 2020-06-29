@@ -2,11 +2,12 @@
 
 #include "Octree.h"
 #include "../../Crystal/Math/Gaussian.h"
-#include "SpaceHash.h"
+#include "../CrystalAlgo/SpaceHash.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
+using namespace Crystal::Search;
 using namespace Crystal::Algo;
 
 void VolumeConvertAlgo::convert(Volume& volume, const ParticleSystem<double>& particleSystem, const double searchRadius)
@@ -17,6 +18,7 @@ void VolumeConvertAlgo::convert(Volume& volume, const ParticleSystem<double>& pa
 	SpaceHash spaceHash(searchRadius, particles.size());
 	//spaceHash.add(particleSystem);
 
+	/*
 	const auto unum = volume.getUNum();
 	const auto vnum = volume.getVNum();
 	const auto wnum = volume.getWNum();
@@ -36,4 +38,5 @@ void VolumeConvertAlgo::convert(Volume& volume, const ParticleSystem<double>& pa
 			}
 		}
 	}
+	*/
 }

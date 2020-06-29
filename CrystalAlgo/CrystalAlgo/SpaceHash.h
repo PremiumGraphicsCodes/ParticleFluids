@@ -4,9 +4,13 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 #include <list>
+#include <functional>
 
 namespace Crystal {
-	namespace Algo {
+	namespace Shape {
+		class IPoint;
+	}
+	namespace Search {
 
 class SpaceHash : private UnCopyable
 {
@@ -17,7 +21,7 @@ public:
 
 	void add(Shape::IPoint* particle);
 
-	std::list<Shape::IPoint*> getNeighbors(const Math::Vector3dd& position);
+	void solveInteractions(Shape::IPoint* micro, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
 
 private:
 	std::vector<std::list<Shape::IPoint*>> table;
@@ -29,8 +33,7 @@ private:
 	std::array<int, 3> toIndex(const Math::Vector3df& pos);
 
 	const double divideLength;
-
-
 };
+
 	}
 }

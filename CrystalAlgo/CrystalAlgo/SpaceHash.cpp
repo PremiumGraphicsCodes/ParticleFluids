@@ -1,9 +1,10 @@
 #include "SpaceHash.h"
+
 #include <bitset>
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Algo;
+using namespace Crystal::Search;
 
 namespace {
 	constexpr long int p1 = 73856093;
@@ -31,13 +32,12 @@ void SpaceHash::add(IPoint* particle)
 {
 	const auto& index = toIndex(particle->getPosition());
 	const auto hashIndex = toHash(index);
-	table[hashIndex].push_back( particle );
+	table[hashIndex].push_back(particle);
 }
 
-std::list<IPoint*> SpaceHash::getNeighbors(const Vector3dd& position)
+void SpaceHash::solveInteractions(IPoint* micro, const std::function<void(IPoint*, IPoint*)>& func)
 {
-	std::list<IPoint*> results;
-
+	const auto position = micro->getPosition();
 	const auto& index = toIndex(position);
 	for (int i = index[0] - 1; i <= index[0] + 1; ++i) {
 		for (int j = index[1] - 1; j <= index[1] + 1; ++j) {
@@ -46,20 +46,27 @@ std::list<IPoint*> SpaceHash::getNeighbors(const Vector3dd& position)
 				const auto& hash = toHash(index);
 				const auto& points = table[hash];
 				for (auto p : points) {
+					const auto ix = toIndex(p->getPosition());
+					if (ix != index) {
+						continue;
+					}
+					/*
+					if (p->getParent() == macro) {
+						continue;
+					}
+					*/
 					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
 					if (d2 < divideLength * divideLength) {
-						results.push_back(p);
+						func(p, micro);
 					}
 				}
-//				results.insert(results.end(), points.begin(), points.end());
+				//				results.insert(results.end(), points.begin(), points.end());
 			}
 		}
 	}
-
-	return results;
 }
 
-std::array<int,3> SpaceHash::toIndex(const Vector3df& pos)
+std::array<int, 3> SpaceHash::toIndex(const Vector3df& pos)
 {
 	const int ix = static_cast<int>((pos[0]) / divideLength);
 	const int iy = static_cast<int>((pos[1]) / divideLength);
@@ -72,7 +79,7 @@ int SpaceHash::toHash(const Vector3df& pos)
 	return toHash(toIndex(pos));
 }
 
-int SpaceHash::toHash(const std::array<int,3>& index)
+int SpaceHash::toHash(const std::array<int, 3>& index)
 {
 	std::bitset<32> x = index[0] * p1;
 	std::bitset<32> y = index[1] * p2;

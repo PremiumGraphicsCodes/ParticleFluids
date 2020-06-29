@@ -5,7 +5,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Algo;
+using namespace Crystal::Search;
 
 SpaceHashView::SpaceHashView(World* model, Canvas* canvas) :
 	IOkCancelView("SpaceHash", model, canvas),
