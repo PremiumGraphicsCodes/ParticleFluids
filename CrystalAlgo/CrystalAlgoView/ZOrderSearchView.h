@@ -17,9 +17,7 @@ private:
 	void onOk() override;
 
 private:
-	PositionSelectView positionButton;
 	DoubleView searchRadius;
-	ObjectSelectView objectButton;
 };
 
 	}

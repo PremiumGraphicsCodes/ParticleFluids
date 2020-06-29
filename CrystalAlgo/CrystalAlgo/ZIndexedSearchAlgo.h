@@ -18,9 +18,9 @@ namespace Crystal {
 class ZIndexedParticle
 {
 public:
-	ZIndexedParticle(const unsigned int zIndex, Shape::IPoint* point) :
+	ZIndexedParticle(const unsigned int zIndex, const Math::Vector3dd& position) :
 		zIndex(zIndex),
-		point(point)
+		position(position)
 	{}
 
 	bool operator<(const ZIndexedParticle& rhs) const {
@@ -33,11 +33,13 @@ public:
 	}
 	*/
 
-	Shape::IPoint* getPoint() { return point; }
+	Math::Vector3dd getPosition() { return position; }
+
+	int index;
 
 private:
 	unsigned int zIndex;
-	Shape::IPoint* point;
+	Math::Vector3dd position;
 };
 
 class ZIndexedSearchAlgo : private UnCopyable
@@ -45,18 +47,18 @@ class ZIndexedSearchAlgo : private UnCopyable
 public:
 	explicit ZIndexedSearchAlgo(const double searchRadius, const Math::Vector3dd& minPosition);
 
-	void add(Shape::IPoint* point);
+	void add(const Math::Vector3dd& position);
 
 	void sort();
 
-	std::list<Shape::IPoint*> findNeighbors(const Math::Vector3dd& position);
+	std::list<int> findNeighbors(const Math::Vector3dd& position);
 
 	std::array<unsigned int, 3> toIndex(const Math::Vector3dd& position) const;
 
 private:
 	double searchRadius;
 	Math::Vector3dd minPosition;
-	std::list<ZIndexedParticle> points;
+	std::vector<ZIndexedParticle> points;
 	ZOrderCurve3d curve;
 };
 	}

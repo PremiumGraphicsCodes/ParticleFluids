@@ -15,24 +15,41 @@ ZIndexedSearchAlgo::ZIndexedSearchAlgo(const double searchRadius, const Vector3d
 	minPosition(minPosition)
 {}
 
-void ZIndexedSearchAlgo::add(IPoint* point)
+void ZIndexedSearchAlgo::add(const Vector3dd& position)
 {
-	const auto ix = toIndex( point->getPosition() );
+	const auto ix = toIndex( position );
 	const auto index = curve.encode(ix);
-	ZIndexedParticle zip(index, point);
+	ZIndexedParticle zip(index, position);
 	points.push_back(zip);
 }
 
 void ZIndexedSearchAlgo::sort()
 {
-	points.sort();
-	//std::sort(points.begin(), points.end());
+	//points.sort();
+	for (int i = 0; i < points.size(); ++i) {
+		points[i].index = i;
+	}
+	std::sort(points.begin(), points.end());
 }
 
-std::list<IPoint*> ZIndexedSearchAlgo::findNeighbors(const Vector3dd& position)
+std::list<int> ZIndexedSearchAlgo::findNeighbors(const Math::Vector3dd& position)
 {
+	//const auto position = points[ix].getPosition();
 	const auto index = toIndex(position);
-	std::list<IPoint*> results;
+
+	//auto iter = points.front();
+	//std::advance(iter, ix);
+
+	const auto curveStartIndex = curve.encode({ index[0] - 1, index[1] - 1, index[2] - 1 });
+	ZIndexedParticle dummyStart(curveStartIndex, Vector3dd(0,0,0));
+	const auto rangedFirstIter = std::lower_bound(points.begin(), points.end(), dummyStart);
+
+	const auto curveEndIndex = curve.encode({ index[0] + 1, index[1] + 1, index[2] + 1 });
+	ZIndexedParticle dummyEnd(curveEndIndex, Vector3dd(0,0,0));
+	const auto rangedEndIter = std::lower_bound(rangedFirstIter, points.end(), dummyEnd);
+
+	std::list<int> results;
+
 	for (int i = -1; i <= 1; ++i) {
 		for (int j = -1; j <= 1; ++j) {
 			for (int k = -1; k <= 1; ++k) {
@@ -41,13 +58,13 @@ std::list<IPoint*> ZIndexedSearchAlgo::findNeighbors(const Vector3dd& position)
 				const auto kk = index[2]+k;
 				const auto rawIndex = toIndex({ ii, jj, kk });
 				const auto curveIndex = curve.encode(rawIndex);
-				ZIndexedParticle dummy(curveIndex, nullptr);
-				auto firstIter = std::lower_bound(points.begin(), points.end(), dummy);
-				auto secondIter = std::upper_bound(firstIter, points.end(), dummy);
+				ZIndexedParticle dummy(curveIndex, Vector3dd(0,0,0));
+				auto firstIter = std::lower_bound(rangedFirstIter, rangedEndIter, dummy);
+				auto secondIter = std::upper_bound(firstIter, rangedEndIter, dummy);
 				for (auto iter = firstIter; iter != secondIter; ++iter) {
-					const auto distanceSquared = ::getDistanceSquared(position, iter->getPoint()->getPosition());
+					const auto distanceSquared = ::getDistanceSquared(position, iter->getPosition());
 					if (distanceSquared < searchRadius * searchRadius) {
-						results.push_back(iter->getPoint());
+						results.push_back(iter->index);
 					}
 				}
  			}

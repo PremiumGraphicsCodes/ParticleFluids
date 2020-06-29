@@ -16,13 +16,9 @@ using namespace Crystal::Search;
 
 ZOrderSearchView::ZOrderSearchView(World* model, Canvas* canvas) :
 	IOkCancelView("ZOrderSearch", model, canvas),
-	positionButton("Position", model, canvas),
-	searchRadius("SearchRadius", 1.0),
-	objectButton("Object", model, canvas, SceneType::ParticleSystemScene)
+	searchRadius("SearchRadius", 1.0)
 {
-	add(&positionButton);
 	add(&searchRadius);
-	add(&objectButton);
 }
 
 void ZOrderSearchView::onOk()
@@ -45,7 +41,7 @@ void ZOrderSearchView::onOk()
 	ZIndexedSearchAlgo algo(searchRadius.getValue(), ps.getBoundingBox().getMin());
 	const auto particles = ps.getIParticles();
 	for (auto p : particles) {
-		algo.add(p);
+		algo.add(p->getPosition());
 	}
 	algo.sort();
 	for (auto p : particles) {
