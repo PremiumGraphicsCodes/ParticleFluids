@@ -43,7 +43,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 
 	const double tolerance = 1.0e-12;
 
-	const auto r = 0.5;
+	const auto r = 0.35;
 	for (int x = 0; x <= unum; x++) {
 		for (int y = 0; y <= vnum; ++y) {
 			for (int z = 0; z <= wnum; ++z) {
@@ -51,16 +51,10 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 				const auto yy = y / (double)vnum;
 				const auto zz = z / (double)wnum;
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
-				const auto length2 = Math::getLengthSquared(v);
-				if (length2 < r * r) {
-					if (length2 < 0.4 * 0.4) {
-						selfCount++;
-					}
-					else {
-						points.push_back(new MicroParticle(this, v*2.0));
-						selfCount++;
-					}
+				if (v.x > -r && v.x < r && v.y > -r && v.y < r && v.z < -r && v.z < r) {
+					points.push_back(new MicroParticle(this, v * 1.0));
 				}
+				selfCount++;
 			}
 		}
 	}
