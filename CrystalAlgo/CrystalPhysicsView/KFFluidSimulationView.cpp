@@ -41,7 +41,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 
-	boundaryView.setValue(Box3d(Vector3dd(0.0, 0.0, -50.0), Vector3dd(20.0, 1000.0, 50.0)));
+	boundaryView.setValue(Box3d(Vector3dd(-100, 0.0, -100.0), Vector3dd(100.0, 1000.0, 100.0)));
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
@@ -77,13 +77,13 @@ void KFFluidSimulationView::reset()
 	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
 
-	const auto radius = 0.1;
+	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 50; ++i) {
-		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 50; ++k) {
+		for (int j = 0; j < 50; ++j) {
+			for (int k = 0; k < 1; ++k) {
 				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(5, 5, 5);
+				mp->distributePoints(5, 5);
 				fluidScene->addParticle(mp);
 			}
 		}

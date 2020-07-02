@@ -20,22 +20,16 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 
 	const double tolerance = 1.0e-12;
 
-	const auto r = 1.0;
+	const auto r = 0.35;
 	for (int x = 0; x <= unum; x++) {
 		for (int y = 0; y <= vnum; ++y) {
 			const auto xx = x / (double)unum;
 			const auto yy = y / (double)vnum;
 			const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);
-			const auto length2 = Math::getLengthSquared(v);
-			if (length2 < r * r) {
-				if (length2 < 0.6 * 0.6) {
-					selfCount++;
-				}
-				else {
-					points.push_back(new MicroParticle(this, v * 2.0));
-					selfCount++;
-				}
+			if (v.x > -r && v.x < r && v.y > -r && v.y < r) {
+				points.push_back(new MicroParticle(this, v * 1.0));
 			}
+			selfCount++;
 		}
 	}
 }

@@ -31,7 +31,8 @@ void KFFluidSolver::simulate(const double dt)
 		particle->reset();
 	}
 
-	CompactSpaceHash3d spaceHash(particles.front()->getRadius() * 2.0, static_cast<int>(particles.size()));
+	const auto hashSize = particles.front()->getPoints().size() * particles.size();
+	CompactSpaceHash3d spaceHash(particles.front()->getRadius() * 2.0, hashSize);
 	for (auto particle : particles) {
 		const auto& microParticles = particle->getPoints();
 		for (auto mp : microParticles) {
@@ -47,10 +48,22 @@ void KFFluidSolver::simulate(const double dt)
 		if (microP->getParent() == macroP) {
 			return;
 		}
-		const double d2 = Math::getDistanceSquared(macroP->getPosition(), microP->getPosition());
-		if (d2 < searchRdius * searchRdius) {
-			macroP->addMicro(microP);
+		const auto macroPosition = macroP->getPosition();
+		const auto microPosition = microP->getPosition();
+		if (::fabs(microPosition.x - macroPosition.x) > searchRdius) {
+			return;
 		}
+		if (::fabs(microPosition.y - macroPosition.y) > searchRdius) {
+			return;
+		}
+		if (::fabs(microPosition.z - macroPosition.z) > searchRdius) {
+			return;
+		}
+		macroP->addMicro(microP);
+
+		//const double d2 = Math::getDistanceSquared(macroP->getPosition(), microP->getPosition());
+		//if (d2 < searchRdius * searchRdius) {
+		//}
 
 		/*
 		*/
