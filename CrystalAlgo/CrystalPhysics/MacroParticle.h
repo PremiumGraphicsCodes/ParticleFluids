@@ -46,6 +46,8 @@ public:
 
 	void setStatic(const bool isStatic) { this->isStatic = isStatic; }
 
+	void addBoundaryCount(const int count) { this->boundaryCount += count; }
+
 	double getDensity() const;
 
 	//void addMicroCount(int count) { this->microCount+=count; }
@@ -58,6 +60,7 @@ private:
 	Math::Vector3dd position;
 	Math::Vector3dd velocity;
 	KFFluidScene* scene;
+	int boundaryCount;
 
 	//int microCount;
 	int selfCount;

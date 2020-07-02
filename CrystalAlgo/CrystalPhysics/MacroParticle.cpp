@@ -74,6 +74,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 
 void MacroParticle::reset()
 {
+	this->boundaryCount = 0;
 	this->microPoints.clear();
 	this->microPoints.reserve(64);
 	this->force = Math::Vector3dd(0, 0, 0);
@@ -134,6 +135,6 @@ void MacroParticle::stepTime(const double dt)
 
 double MacroParticle::getDensity() const
 {
-	return (microPoints.size() + selfCount) / (double)selfCount;
+	return (microPoints.size() + selfCount + boundaryCount) / (double)selfCount;
 	//return microCount / (double)(microCount + preCount);
 }
