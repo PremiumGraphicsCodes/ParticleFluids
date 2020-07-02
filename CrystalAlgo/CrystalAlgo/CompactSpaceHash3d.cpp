@@ -39,7 +39,20 @@ void CompactSpaceHash3d::add(IPoint* particle)
 	const auto& index = toIndex(particle->getPosition());
 	const auto hashIndex = toHash(index);
 	const auto cellId = toZIndex(index);
-//	table[hashIndex].push_back(particle);
+
+	auto& cells = table[hashIndex];
+	auto iter = std::find_if(cells.begin(), cells.end(), [cellId](CompactSpaceCell* cell) {
+		return cell->cellId == cellId;
+	});
+	if (iter == cells.end()) {
+		auto cell = new CompactSpaceCell();
+		cell->cellId = cellId;
+		cell->particles.push_back(particle);
+		cells.push_back(cell);
+	}
+	else {
+		(*iter)->particles.push_back(particle);
+	}
 }
 
 void CompactSpaceHash3d::solveInteractions(IPoint* particle, const std::function<void(IPoint*, IPoint*)>& func)

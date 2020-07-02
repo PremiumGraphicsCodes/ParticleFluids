@@ -16,7 +16,7 @@ class CompactSpaceCell
 {
 public:
 	unsigned int cellId;
-	std::vector<Shape::IPoint> particles;
+	std::vector<Shape::IPoint*> particles;
 };
 
 class CompactSpaceHash3d : private UnCopyable
