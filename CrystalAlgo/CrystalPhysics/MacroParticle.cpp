@@ -100,7 +100,7 @@ void MacroParticle::calculatePressure(const double pressureCoe)
 	averagedCenter += position * (double)selfCount;
 	averagedCenter /= (double)(microPoints.size() + selfCount);
 	const auto ratio = ((microPoints.size() + selfCount + boundaryCount) / (double)selfCount) - 1.0;
-	this->force += (this->position - averagedCenter) * pressureCoe;// 10000.0;
+	this->force += (this->position - averagedCenter) * ratio * pressureCoe;// 10000.0;
 }
 
 void MacroParticle::calculateViscosity(const double viscosityCoe)
