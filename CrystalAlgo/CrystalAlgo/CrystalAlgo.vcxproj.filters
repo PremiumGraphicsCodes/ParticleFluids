@@ -46,6 +46,7 @@
     <ClInclude Include="CompactSpaceHash3d.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="StopWatch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">

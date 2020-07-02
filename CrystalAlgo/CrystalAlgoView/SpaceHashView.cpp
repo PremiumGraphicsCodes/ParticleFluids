@@ -1,6 +1,7 @@
 #include "SpaceHashView.h"
 
 #include "../CrystalAlgo/SpaceHash3d.h"
+#include "../CrystalAlgo/StopWatch.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 
 #include <iostream>
@@ -29,6 +30,9 @@ void SpaceHashView::onOk()
 		}
 	}
 
+	Crystal::Algo::StopWatch sw;
+	sw.start();
+
 	SpaceHash3d grid(searchRadius.getValue(), 10000000);
 	const auto particles = ps.getIParticles();
 	for (auto p : particles) {
@@ -40,5 +44,8 @@ void SpaceHashView::onOk()
 	for (auto p : particles) {
 		grid.solveInteractions(p, func);
 	}
-	std::cout << "Search Completed" << std::endl;
+
+	sw.stop();
+
+	std::cout << "Search Completed " << sw.getElapsed() << "[ms]" << std::endl;
 }
