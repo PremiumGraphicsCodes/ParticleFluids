@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClCompile Include="AlgoMenu.cpp" />
     <ClCompile Include="BooleanView.cpp" />
+    <ClCompile Include="CompactSpaceHash3dView.cpp" />
     <ClCompile Include="CrystalAlgoView.cpp" />
     <ClCompile Include="IntersectionView.cpp" />
     <ClCompile Include="MarchingCubesView.cpp" />
@@ -173,6 +174,7 @@
   <ItemGroup>
     <ClInclude Include="AlgoMenu.h" />
     <ClInclude Include="BooleanView.h" />
+    <ClInclude Include="CompactSpaceHash3dView.h" />
     <ClInclude Include="IntersectionView.h" />
     <ClInclude Include="MarchingCubesView.h" />
     <ClInclude Include="OctreeView.h" />

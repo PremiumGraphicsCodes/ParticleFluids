@@ -1,6 +1,6 @@
-#include "SpaceHashView.h"
+#include "CompactSpaceHash3dView.h"
 
-#include "../CrystalAlgo/SpaceHash3d.h"
+#include "../CrystalAlgo/CompactSpaceHash3d.h"
 #include "../CrystalAlgo/StopWatch.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 
@@ -12,14 +12,14 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Search;
 
-SpaceHashView::SpaceHashView(World* model, Canvas* canvas) :
-	IOkCancelView("SpaceHash", model, canvas),
+CompactSpaceHash3dView::CompactSpaceHash3dView(World* model, Canvas* canvas) :
+	IOkCancelView("CompactSpaceHash", model, canvas),
 	searchRadius("SearchRadius", 1.0)
 {
 	add(&searchRadius);
 }
 
-void SpaceHashView::onOk()
+void CompactSpaceHash3dView::onOk()
 {
 	ParticleSystem<void*> ps;
 	for (int i = 0; i < 100; ++i) {
@@ -33,7 +33,7 @@ void SpaceHashView::onOk()
 	Crystal::Algo::StopWatch sw;
 	sw.start();
 
-	SpaceHash3d grid(searchRadius.getValue(), 10000000);
+	CompactSpaceHash3d grid(searchRadius.getValue(), 10000000);
 	const auto particles = ps.getIParticles();
 	for (auto p : particles) {
 		grid.add(p);

@@ -3,6 +3,7 @@
 #include "IntersectionView.h"
 #include "BooleanView.h"
 #include "SpaceHashView.h"
+#include "CompactSpaceHash3dView.h"
 #include "ZOrderSearchView.h"
 #include "MarchingCubesView.h"
 #include "VolumeView.h"
@@ -30,6 +31,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("SpaceHash")) {
 			control->setWindow(new SpaceHashView(getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("CompactSpaceHash")) {
+			control->setWindow(new CompactSpaceHash3dView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("ZOrderSearch")) {
 			control->setWindow(new ZOrderSearchView(getWorld(), getCanvas()));
