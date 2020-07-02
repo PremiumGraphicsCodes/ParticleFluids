@@ -75,6 +75,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 void MacroParticle::reset()
 {
 	this->microPoints.clear();
+	this->microPoints.reserve(64);
 	this->force = Math::Vector3dd(0, 0, 0);
 }
 

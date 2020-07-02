@@ -53,7 +53,7 @@ public:
 private:
 	double radius;
 	std::vector<MicroParticle*> points;
-	std::list<MicroParticle*> microPoints;
+	std::vector<MicroParticle*> microPoints;
 	Math::Vector3dd force;
 	Math::Vector3dd position;
 	Math::Vector3dd velocity;
