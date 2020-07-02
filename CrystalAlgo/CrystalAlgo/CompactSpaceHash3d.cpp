@@ -48,6 +48,7 @@ void CompactSpaceHash3d::add(IPoint* particle)
 		auto cell = new CompactSpaceCell();
 		cell->cellId = cellId;
 		cell->particles.push_back(particle);
+		this->cells.push_back(cell);
 		cells.push_back(cell);
 	}
 	else {
@@ -61,10 +62,10 @@ void CompactSpaceHash3d::solveInteractions(IPoint* particle, const std::function
 
 	const auto index = toIndex(position);
 
-	for (unsigned int i = index[0] - 1; i <= index[0] + 1; ++i) {
-		for (unsigned int j = index[1] - 1; j <= index[1] + 1; ++j) {
-			for (unsigned int k = index[2] - 1; k <= index[2] + 1; ++k) {
-				std::array<unsigned int, 3> ix{ i,j,k };
+	for (int i = - 1; i <= 1; ++i) {
+		for (int j = - 1; j <= 1; ++j) {
+			for (int k = -1; k <= 1; ++k) {
+				std::array<unsigned int, 3> ix{ i + index[0],j + index[1],k + index[2] };
 				const auto hash = toHash(ix);
 				const auto& cells = table[hash];
 				const auto cellId = toZIndex(ix);

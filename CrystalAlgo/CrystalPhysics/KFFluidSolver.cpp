@@ -4,7 +4,7 @@
 #include "MacroParticle.h"
 
 #include "KFFluidScene.h"
-#include "../CrystalAlgo/SpaceHash3d.h"
+#include "../CrystalAlgo/CompactSpaceHash3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Search;
@@ -31,13 +31,13 @@ void KFFluidSolver::simulate(const double dt)
 		particle->reset();
 	}
 
-	SpaceHash3d spaceHash(particles.front()->getRadius() * 2.0, static_cast<int>(particles.size() * 10));
+	CompactSpaceHash3d spaceHash(particles.front()->getRadius() * 2.0, static_cast<int>(particles.size()));
 	for (auto particle : particles) {
 		spaceHash.add(particle);
 	}
 
 	// é©ï™é©êgÇÕí«â¡ÇµÇ»Ç¢ÅD
-	auto func = [](Shape::IPoint* macro, Shape::IPoint* micro) {
+	auto func = [](Shape::IPoint* micro, Shape::IPoint* macro) {
 		MacroParticle* macroP = static_cast<MacroParticle*>(macro);
 		MicroParticle* microP = static_cast<MicroParticle*>(micro);
 		if (microP->getParent() == macroP) {
