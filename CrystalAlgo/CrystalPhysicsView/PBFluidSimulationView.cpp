@@ -70,7 +70,7 @@ void PBFluidSimulationView::onOk()
 
 	simulator->add(this->fluidScene);
 
-	simulator->setBoundary(Box3d(Vector3dd(-100.0, -1.0, -100.0), Vector3dd(100.0, 100.0, 100.0)));
+	simulator->setBoundary(Box3d(Vector3dd(-100.0, -1.0, -100.0), Vector3dd(100.0, 1000.0, 100.0)));
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
 	getWorld()->addAnimation(simulator);
@@ -84,8 +84,8 @@ void PBFluidSimulationView::reset()
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 50; ++i) {
-		for (int j = 0; j < 50; ++j) {
-			for (int k = 0; k < 10; ++k) {
+		for (int j = 0; j < 100; ++j) {
+			for (int k = 0; k < 1; ++k) {
 				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
 				this->fluidScene->addParticle(mp);
 			}
