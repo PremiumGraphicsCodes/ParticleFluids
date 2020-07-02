@@ -78,13 +78,7 @@ void CompactSpaceHash3d::solveInteractions(IPoint* particle, const std::function
 				}
 				const auto& particles = (*iter)->particles;
 				for (auto p : particles) {
-					if (p == particle) {
-						continue; // self.
-					}
-					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
-					if (d2 < divideLength * divideLength) {
-						func(particle, p);
-					}
+					func(particle, p);
 				}
 			}
 		}

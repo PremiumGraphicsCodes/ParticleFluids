@@ -40,13 +40,20 @@ void KFFluidSolver::simulate(const double dt)
 	}
 
 	// Ž©•ªŽ©g‚Í’Ç‰Á‚µ‚È‚¢D
-	auto func = [](Shape::IPoint* macro, Shape::IPoint* micro) {
+	const auto searchRdius = particles.front()->getRadius() * 2.0;
+	auto func = [searchRdius](Shape::IPoint* macro, Shape::IPoint* micro) {
 		MacroParticle* macroP = static_cast<MacroParticle*>(macro);
 		MicroParticle* microP = static_cast<MicroParticle*>(micro);
 		if (microP->getParent() == macroP) {
 			return;
 		}
-		macroP->addMicro(microP);
+		const double d2 = Math::getDistanceSquared(macroP->getPosition(), microP->getPosition());
+		if (d2 < searchRdius * searchRdius) {
+			macroP->addMicro(microP);
+		}
+
+		/*
+		*/
 	};
 
 
