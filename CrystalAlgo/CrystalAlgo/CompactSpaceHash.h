@@ -11,10 +11,17 @@ namespace Crystal {
 	}
 	namespace Search {
 
-class SpaceHash3d : private UnCopyable
+class CompactSpaceCell
 {
 public:
-	SpaceHash3d(const double divideLength, const int tableSize);
+	unsigned int cellId;
+	std::vector<Shape::IPoint> particles;
+};
+
+class CompactSpaceHash : private UnCopyable
+{
+public:
+	CompactSpaceHash(const double divideLength, const int tableSize);
 
 	//void add(const Shape::IParticleSystem& particles);
 
@@ -23,7 +30,9 @@ public:
 	void solveInteractions(Shape::IPoint* particle, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
 
 private:
-	std::vector<std::list<Shape::IPoint*>> table;
+	std::vector<CompactSpaceCell*> table;
+
+	std::vector<CompactSpaceCell*> cells;
 
 	int toHash(const Math::Vector3df& pos);
 

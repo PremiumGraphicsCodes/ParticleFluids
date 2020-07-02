@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BooleanAlgo.h" />
+    <ClInclude Include="CompactSpaceHash.h" />
     <ClInclude Include="IndexedFinder.h" />
     <ClInclude Include="IndexedParticle.h" />
     <ClInclude Include="IntersectionAlgo.h" />
@@ -166,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BooleanAlgo.cpp" />
+    <ClCompile Include="CompactSpaceHash.cpp" />
     <ClCompile Include="csgjs.h" />
     <ClCompile Include="IndexedFinder.cpp" />
     <ClCompile Include="IndexedParticle.cpp" />

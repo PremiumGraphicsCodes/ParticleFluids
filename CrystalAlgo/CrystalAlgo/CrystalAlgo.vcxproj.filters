@@ -43,6 +43,9 @@
     <ClInclude Include="SpaceHash3d.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="CompactSpaceHash.h">
+      <Filter>Search</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -82,6 +85,9 @@
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="SpaceHash3d.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="CompactSpaceHash.cpp">
       <Filter>Search</Filter>
     </ClCompile>
   </ItemGroup>

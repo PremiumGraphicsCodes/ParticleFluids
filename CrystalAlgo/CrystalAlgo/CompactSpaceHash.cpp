@@ -1,4 +1,4 @@
-#include "SpaceHash3d.h"
+#include "CompactSpaceHash.h"
 
 #include <bitset>
 
@@ -14,36 +14,29 @@ namespace {
 	constexpr long int p3 = 83492791;
 }
 
-SpaceHash3d::SpaceHash3d(const double divideLength, const int tableSize) :
+CompactSpaceHash::CompactSpaceHash(const double divideLength, const int tableSize) :
 	divideLength(divideLength),
 	table(tableSize)
 {
 }
 
-/*
-void SpaceHash::add(const IParticleSystem& particles)
+void CompactSpaceHash::add(IPoint* particle)
 {
-	const auto& points = particles.getIParticles();
-	for (auto p : points) {
-		add(p);
-	}
-}
-*/
-
-void SpaceHash3d::add(IPoint* particle)
-{
+	/*
 	const auto& index = toIndex(particle->getPosition());
 	const auto hashIndex = toHash(index);
 	table[hashIndex].push_back(particle);
+	*/
 }
 
-void SpaceHash3d::solveInteractions(IPoint* particle, const std::function<void(IPoint*, IPoint*)>& func)
+void CompactSpaceHash::solveInteractions(IPoint* particle, const std::function<void(IPoint*, IPoint*)>& func)
 {
 	const auto position = particle->getPosition();
 	const auto& index = toIndex(position);
 	for (int i = index[0] - 1; i <= index[0] + 1; ++i) {
 		for (int j = index[1] - 1; j <= index[1] + 1; ++j) {
 			for (int k = index[2] - 1; k <= index[2] + 1; ++k) {
+				/*
 				std::array<int, 3> index{ i,j,k };
 				const auto& hash = toHash(index);
 				const auto& points = table[hash];
@@ -55,23 +48,18 @@ void SpaceHash3d::solveInteractions(IPoint* particle, const std::function<void(I
 					if (ix != index) {
 						continue;
 					}
-					/*
-					if (p->getParent() == macro) {
-						continue;
-					}
-					*/
 					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
 					if (d2 < divideLength * divideLength) {
 						func(p, particle);
 					}
 				}
-				//				results.insert(results.end(), points.begin(), points.end());
+				*/
 			}
 		}
 	}
 }
 
-std::array<int, 3> SpaceHash3d::toIndex(const Vector3df& pos)
+std::array<int, 3> CompactSpaceHash::toIndex(const Vector3df& pos)
 {
 	const int ix = static_cast<int>((pos[0]) / divideLength);
 	const int iy = static_cast<int>((pos[1]) / divideLength);
@@ -79,12 +67,12 @@ std::array<int, 3> SpaceHash3d::toIndex(const Vector3df& pos)
 	return { ix, iy, iz };
 }
 
-int SpaceHash3d::toHash(const Vector3df& pos)
+int CompactSpaceHash::toHash(const Vector3df& pos)
 {
 	return toHash(toIndex(pos));
 }
 
-int SpaceHash3d::toHash(const std::array<int, 3>& index)
+int CompactSpaceHash::toHash(const std::array<int, 3>& index)
 {
 	std::bitset<32> x = index[0] * p1;
 	std::bitset<32> y = index[1] * p2;
