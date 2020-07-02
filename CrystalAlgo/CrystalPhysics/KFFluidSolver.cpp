@@ -33,11 +33,14 @@ void KFFluidSolver::simulate(const double dt)
 
 	CompactSpaceHash3d spaceHash(particles.front()->getRadius() * 2.0, static_cast<int>(particles.size()));
 	for (auto particle : particles) {
-		spaceHash.add(particle);
+		const auto& microParticles = particle->getPoints();
+		for (auto mp : microParticles) {
+			spaceHash.add(mp);
+		}
 	}
 
 	// é©ï™é©êgÇÕí«â¡ÇµÇ»Ç¢ÅD
-	auto func = [](Shape::IPoint* micro, Shape::IPoint* macro) {
+	auto func = [](Shape::IPoint* macro, Shape::IPoint* micro) {
 		MacroParticle* macroP = static_cast<MacroParticle*>(macro);
 		MicroParticle* microP = static_cast<MicroParticle*>(micro);
 		if (microP->getParent() == macroP) {
@@ -50,10 +53,7 @@ void KFFluidSolver::simulate(const double dt)
 #pragma omp parallel for
 	for(int i = 0; i < particles.size(); ++i) {
 		const auto particle = particles[i];
-		const auto& microParticles = particle->getPoints();
-		for (auto mp : microParticles) {
-			spaceHash.solveInteractions(mp, func);
-		}
+		spaceHash.solveInteractions(particle, func);
 	}
 
 	for (auto particle : particles) {
@@ -70,7 +70,7 @@ void KFFluidSolver::simulate(const double dt)
 			const auto distance = boundary.getMinY() - position.y;
 			const auto overlap = Vector3dd(0, distance, 0);
 			const auto count = (distance) / (particle->getRadius() * 0.1);
-			particle->addMicroCount(count * 10);
+			//particle->addMicroCount(count * 10);
 			particle->addForce( overlap / dt / dt );
 		}
 		if (position.x > boundary.getMaxX()) {
@@ -101,15 +101,6 @@ void KFFluidSolver::simulate(const double dt)
 	for (int i = 0; i < 2; ++i) {
 		for (auto particle : particles) {
 			particle->reset();
-		}
-
-#pragma omp parallel for
-		for (int i = 0; i < particles.size(); ++i) {
-			const auto particle = particles[i];
-			const auto& microParticles = particle->getPoints();
-			for (auto mp : microParticles) {
-				spaceHash.solveInteractions(mp, func);
-			}
 		}
 
 		for (auto particle : particles) {

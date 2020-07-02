@@ -48,20 +48,18 @@ public:
 
 	double getDensity() const;
 
-	void addMicroCount(int count) { this->microCount+=count; }
+	//void addMicroCount(int count) { this->microCount+=count; }
 
 private:
 	double radius;
 	std::vector<MicroParticle*> points;
-	//std::list<MicroParticle*> innerPoints;
+	std::list<MicroParticle*> microPoints;
 	Math::Vector3dd force;
 	Math::Vector3dd position;
 	Math::Vector3dd velocity;
 	KFFluidScene* scene;
 
-	Math::Vector3dd averagedCenter;
-	Math::Vector3dd averagedVelocity;
-	int microCount;
+	//int microCount;
 	int selfCount;
 	//double density;
 	bool isStatic = false;
