@@ -24,7 +24,7 @@ public:
 
 	//void calculateDensity();
 
-	void reset();
+	void reset(bool resetMicro);
 
 	void addMicro(MicroParticle* microParticle);
 

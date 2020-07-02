@@ -60,12 +60,14 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 	}
 }
 
-void MacroParticle::reset()
+void MacroParticle::reset(bool resetMicro)
 {
 	this->boundaryCount = 0;
-	this->microPoints.clear();
-	this->microPoints.reserve(64);
 	this->force = Math::Vector3dd(0, 0, 0);
+	if (resetMicro) {
+		this->microPoints.clear();
+		this->microPoints.reserve(64);
+	}
 }
 
 

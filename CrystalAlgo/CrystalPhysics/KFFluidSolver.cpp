@@ -28,7 +28,7 @@ void KFFluidSolver::simulate(const double dt)
 	}
 
 	for (auto particle : particles) {
-		particle->reset();
+		particle->reset(true);
 	}
 
 	const auto hashSize = particles.front()->getPoints().size() * particles.size();
@@ -120,7 +120,7 @@ void KFFluidSolver::simulate(const double dt)
 	double relaxationCoe = 0.5;
 	for (int i = 0; i < 2; ++i) {
 		for (auto particle : particles) {
-			particle->reset();
+			particle->reset(false);
 		}
 
 		for (auto particle : particles) {
