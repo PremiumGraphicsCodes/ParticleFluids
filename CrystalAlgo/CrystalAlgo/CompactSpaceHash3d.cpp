@@ -1,4 +1,4 @@
-#include "CompactSpaceHash.h"
+#include "CompactSpaceHash3d.h"
 
 #include <bitset>
 
@@ -14,22 +14,35 @@ namespace {
 	constexpr long int p3 = 83492791;
 }
 
-CompactSpaceHash::CompactSpaceHash(const double divideLength, const int tableSize) :
+CompactSpaceHash3d::CompactSpaceHash3d(const double divideLength, const int tableSize) :
 	divideLength(divideLength),
-	table(tableSize)
+	table(tableSize),
+	zCurve()
 {
 }
 
-void CompactSpaceHash::add(IPoint* particle)
+CompactSpaceHash3d::~CompactSpaceHash3d()
 {
-	/*
+	clear();
+}
+
+void CompactSpaceHash3d::clear()
+{
+	for (auto cell : cells) {
+		delete cell;
+	}
+	cells.clear();
+}
+
+void CompactSpaceHash3d::add(IPoint* particle)
+{
 	const auto& index = toIndex(particle->getPosition());
 	const auto hashIndex = toHash(index);
-	table[hashIndex].push_back(particle);
-	*/
+	const auto cellId = toZIndex(index);
+//	table[hashIndex].push_back(particle);
 }
 
-void CompactSpaceHash::solveInteractions(IPoint* particle, const std::function<void(IPoint*, IPoint*)>& func)
+void CompactSpaceHash3d::solveInteractions(IPoint* particle, const std::function<void(IPoint*, IPoint*)>& func)
 {
 	const auto position = particle->getPosition();
 	const auto& index = toIndex(position);
@@ -59,20 +72,20 @@ void CompactSpaceHash::solveInteractions(IPoint* particle, const std::function<v
 	}
 }
 
-std::array<int, 3> CompactSpaceHash::toIndex(const Vector3df& pos)
+std::array<unsigned int, 3> CompactSpaceHash3d::toIndex(const Vector3df& pos) const
 {
-	const int ix = static_cast<int>((pos[0]) / divideLength);
-	const int iy = static_cast<int>((pos[1]) / divideLength);
-	const int iz = static_cast<int>((pos[2]) / divideLength);
+	const auto ix = static_cast<unsigned int>((pos[0]) / divideLength);
+	const auto iy = static_cast<unsigned int>((pos[1]) / divideLength);
+	const auto iz = static_cast<unsigned int>((pos[2]) / divideLength);
 	return { ix, iy, iz };
 }
 
-int CompactSpaceHash::toHash(const Vector3df& pos)
+unsigned int CompactSpaceHash3d::toHash(const Vector3df& pos) const
 {
 	return toHash(toIndex(pos));
 }
 
-int CompactSpaceHash::toHash(const std::array<int, 3>& index)
+unsigned int CompactSpaceHash3d::toHash(const std::array<unsigned int, 3>& index) const
 {
 	std::bitset<32> x = index[0] * p1;
 	std::bitset<32> y = index[1] * p2;
@@ -82,4 +95,9 @@ int CompactSpaceHash::toHash(const std::array<int, 3>& index)
 	//assert(z >= 0);
 	const auto value = (x ^ y ^ z).to_ulong();
 	return value % table.size();
+}
+
+unsigned int CompactSpaceHash3d::toZIndex(const std::array<unsigned int, 3>& index) const
+{
+	return zCurve.encode(index);
 }

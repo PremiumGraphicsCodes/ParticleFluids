@@ -2,6 +2,7 @@
 
 #include "../../Crystal/Util/UnCopyable.h"
 #include "../../Crystal/Math/Vector3d.h"
+#include "ZOrderCurve3d.h"
 #include <list>
 #include <functional>
 
@@ -18,10 +19,14 @@ public:
 	std::vector<Shape::IPoint> particles;
 };
 
-class CompactSpaceHash : private UnCopyable
+class CompactSpaceHash3d : private UnCopyable
 {
 public:
-	CompactSpaceHash(const double divideLength, const int tableSize);
+	CompactSpaceHash3d(const double divideLength, const int tableSize);
+
+	~CompactSpaceHash3d();
+
+	void clear();
 
 	//void add(const Shape::IParticleSystem& particles);
 
@@ -30,17 +35,21 @@ public:
 	void solveInteractions(Shape::IPoint* particle, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
 
 private:
-	std::vector<CompactSpaceCell*> table;
+	std::vector<std::vector<CompactSpaceCell*>> table;
 
 	std::vector<CompactSpaceCell*> cells;
 
-	int toHash(const Math::Vector3df& pos);
+	unsigned int toHash(const Math::Vector3df& pos) const;
 
-	int toHash(const std::array<int, 3>& index);
+	unsigned int toHash(const std::array<unsigned int, 3>& index) const;
 
-	std::array<int, 3> toIndex(const Math::Vector3df& pos);
+	std::array<unsigned int, 3> toIndex(const Math::Vector3df& pos) const;
+
+	unsigned int toZIndex(const std::array<unsigned int, 3>& index) const;
 
 	const double divideLength;
+	
+	const ZOrderCurve3d zCurve;
 };
 
 	}
