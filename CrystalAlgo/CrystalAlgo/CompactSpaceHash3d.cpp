@@ -58,28 +58,32 @@ void CompactSpaceHash3d::add(IPoint* particle)
 void CompactSpaceHash3d::solveInteractions(IPoint* particle, const std::function<void(IPoint*, IPoint*)>& func)
 {
 	const auto position = particle->getPosition();
-	const auto& index = toIndex(position);
-	for (int i = index[0] - 1; i <= index[0] + 1; ++i) {
-		for (int j = index[1] - 1; j <= index[1] + 1; ++j) {
-			for (int k = index[2] - 1; k <= index[2] + 1; ++k) {
-				/*
-				std::array<int, 3> index{ i,j,k };
-				const auto& hash = toHash(index);
-				const auto& points = table[hash];
-				for (auto p : points) {
+
+	const auto index = toIndex(position);
+
+	for (unsigned int i = index[0] - 1; i <= index[0] + 1; ++i) {
+		for (unsigned int j = index[1] - 1; j <= index[1] + 1; ++j) {
+			for (unsigned int k = index[2] - 1; k <= index[2] + 1; ++k) {
+				std::array<unsigned int, 3> ix{ i,j,k };
+				const auto hash = toHash(ix);
+				const auto& cells = table[hash];
+				const auto cellId = toZIndex(ix);
+				auto iter = std::find_if(cells.begin(), cells.end(), [cellId](CompactSpaceCell* cell) {
+					return cell->cellId == cellId;
+				});
+				if (iter == cells.end()) {
+					continue;
+				}
+				const auto& particles = (*iter)->particles;
+				for (auto p : particles) {
 					if (p == particle) {
-						continue;
-					}
-					const auto ix = toIndex(p->getPosition());
-					if (ix != index) {
-						continue;
+						continue; // self.
 					}
 					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
 					if (d2 < divideLength * divideLength) {
-						func(p, particle);
+						func(particle, p);
 					}
 				}
-				*/
 			}
 		}
 	}
