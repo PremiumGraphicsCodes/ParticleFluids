@@ -70,7 +70,7 @@ void KFFluidSolver::simulate()
 
 	// solve incompressibility.
 	double relaxationCoe = 0.5;
-	for (int i = 0; i < 2; ++i) {
+	for (int i = 0; i < 1; ++i) {
 		for (auto particle : particles) {
 			particle->reset(false);
 			particle->updateMicros();
@@ -101,11 +101,17 @@ void KFFluidSolver::solveBoundary(MacroParticle* particle)
 		particle->addForce(overlap / dt / dt);
 	}
 	if (position.x > boundary.getMaxX()) {
-		const auto overlap = Vector3dd(boundary.getMaxX() - position.x, 0, 0);
+		const auto distance = boundary.getMaxX() - position.x;
+		const auto overlap = Vector3dd(distance, 0, 0);
+		const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
+		particle->addBoundaryCount(count * 10);
 		particle->addForce(overlap / dt / dt);
 	}
 	if (position.x < boundary.getMinX()) {
-		const auto overlap = Vector3dd(boundary.getMinX() - position.x, 0, 0);
+		const auto distance = boundary.getMinX() - position.x;
+		const auto overlap = Vector3dd(distance, 0, 0);
+		const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
+		particle->addBoundaryCount(count * 10);
 		particle->addForce(overlap / dt / dt);
 	}
 	if (position.z > boundary.getMaxZ()) {
