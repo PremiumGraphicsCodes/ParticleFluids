@@ -10,6 +10,7 @@
 
 namespace Crystal {
 	namespace Physics {
+		class MacroParticle;
 		class KFFluidScene;
 
 class KFFluidSolver : public Scene::IAnimator
@@ -31,6 +32,9 @@ private:
 	std::list<KFFluidScene*> fluids;
 	Math::Box3d boundary;
 	double dt;
+
+private:
+	void solveBoundary(MacroParticle* particle);
 };
 
 	}

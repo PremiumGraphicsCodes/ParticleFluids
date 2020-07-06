@@ -16,8 +16,7 @@ class PBFluidScene;
 class PBSPHSolver : public Scene::IAnimator
 {
 public:
-	PBSPHSolver()
-	{}
+	PBSPHSolver();
 
 	void step() override;
 
@@ -33,10 +32,13 @@ public:
 
 	//std::vector<PBSPHParticle*> getParticles() const { return particles; }
 
+	void setTimeStep(const double dt) { this->dt = dt; }
+
 private:
 	std::vector<PBFluidScene*> fluids;
 	Math::Box3d boundary;
 	Math::Vector3df externalForce;
+	double dt;
 };
 
 	}

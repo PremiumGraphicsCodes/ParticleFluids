@@ -58,30 +58,7 @@ void KFFluidSolver::simulate()
 	}
 
 	for (auto particle : particles) {
-		auto position = particle->getPosition();
-		if (position.y < boundary.getMinY()) {
-			const auto distance = boundary.getMinY() - position.y;
-			const auto overlap = Vector3dd(0, distance, 0);
-			const auto count = (distance) / (particle->getRadius() * 0.1);
-			particle->addBoundaryCount(count * 10);
-			particle->addForce( overlap / dt / dt );
-		}
-		if (position.x > boundary.getMaxX()) {
-			const auto overlap = Vector3dd(boundary.getMaxX() - position.x, 0, 0);
-			particle->addForce(overlap / dt / dt);
-		}
-		if (position.x < boundary.getMinX()) {
-			const auto overlap = Vector3dd(boundary.getMinX() - position.x, 0, 0);
-			particle->addForce(overlap / dt / dt);
-		}
-		if (position.z > boundary.getMaxZ()) {
-			const auto overlap = Vector3dd(0, 0, boundary.getMaxZ() - position.z);
-			particle->addForce(overlap / dt / dt);
-		}
-		if (position.z < boundary.getMinZ()) {
-			const auto overlap = Vector3dd(0, 0, boundary.getMinZ() - position.z);
-			particle->addForce(overlap / dt / dt);
-		}
+		solveBoundary(particle);
 	}
 
 	for (auto particle : particles) {
@@ -98,6 +75,7 @@ void KFFluidSolver::simulate()
 
 		for (auto particle : particles) {
 			particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
+			solveBoundary(particle);
 			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
 			particle->stepTime(dt);
 		}
@@ -107,5 +85,33 @@ void KFFluidSolver::simulate()
 	for (auto fluid : fluids) {
 		fluid->getController()->updateView();
 	}
-
 }
+
+void KFFluidSolver::solveBoundary(MacroParticle* particle)
+{
+	auto position = particle->getPosition();
+	if (position.y < boundary.getMinY()) {
+		const auto distance = boundary.getMinY() - position.y;
+		const auto overlap = Vector3dd(0, distance, 0);
+		const auto count = (distance) / (particle->getRadius() * 0.1);
+		particle->addBoundaryCount(count * 10);
+		particle->addForce(overlap / dt / dt);
+	}
+	if (position.x > boundary.getMaxX()) {
+		const auto overlap = Vector3dd(boundary.getMaxX() - position.x, 0, 0);
+		particle->addForce(overlap / dt / dt);
+	}
+	if (position.x < boundary.getMinX()) {
+		const auto overlap = Vector3dd(boundary.getMinX() - position.x, 0, 0);
+		particle->addForce(overlap / dt / dt);
+	}
+	if (position.z > boundary.getMaxZ()) {
+		const auto overlap = Vector3dd(0, 0, boundary.getMaxZ() - position.z);
+		particle->addForce(overlap / dt / dt);
+	}
+	if (position.z < boundary.getMinZ()) {
+		const auto overlap = Vector3dd(0, 0, boundary.getMinZ() - position.z);
+		particle->addForce(overlap / dt / dt);
+	}
+}
+

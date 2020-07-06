@@ -24,7 +24,7 @@ private:
 	Physics::PBFluidScene* fluidScene;
 	Button startButton;
 	Button resetButton;
-	Button nextButton;
+	DoubleView timeStepView;
 	int newId;
 };
 

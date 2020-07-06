@@ -9,9 +9,13 @@ using namespace Crystal::Math;
 using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
+PBSPHSolver::PBSPHSolver() :
+	dt(0.01)
+{}
+
 void PBSPHSolver::step()
 {
-	simulate(0.01, 2.25, 2.5, 3);
+	simulate(dt, 2.25, 2.5, 3);
 }
 
 void PBSPHSolver::simulate(const float dt, const float effectLength, const float searchLength, const int maxIter)

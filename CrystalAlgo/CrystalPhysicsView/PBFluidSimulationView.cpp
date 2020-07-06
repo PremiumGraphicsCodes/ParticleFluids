@@ -26,25 +26,16 @@ PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("PBFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	nextButton("Next")
+	timeStepView("TimeStep", 0.01)
 {
-	/*
-	auto func = [=]() {
-		simulator.simulate(0.01);
-		Command::Command command;
-		command.create(ShaderSendLabels::CommandNameLabel);
-		command.setArg(ShaderSendLabels::IdLabel, newId);
-		command.execute(getWorld());
-	};
-	*/
-	//nextButton.setFunction(func);
-	add(&nextButton);
 
 	auto resetFunc = [=]() {
 		reset();
 	};
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
+
+	add(&timeStepView);
 }
 
 void PBFluidSimulationView::onOk()
@@ -91,4 +82,5 @@ void PBFluidSimulationView::reset()
 			}
 		}
 	}
+	simulator->setTimeStep(timeStepView.getValue());
 }
