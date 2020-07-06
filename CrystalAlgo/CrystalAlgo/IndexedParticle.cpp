@@ -3,7 +3,7 @@
 //#include "SPHParticle.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Algo;
+using namespace Crystal::Search;
 
 void IndexedParticle::setGridID(const float effectLength)
 {

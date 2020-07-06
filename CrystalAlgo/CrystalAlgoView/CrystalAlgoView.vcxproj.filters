@@ -33,6 +33,9 @@
     <ClCompile Include="CompactSpaceHash3dView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
+    <ClCompile Include="IndexedSortSearchAlgoView.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h">
@@ -64,6 +67,9 @@
       <Filter>Search</Filter>
     </ClInclude>
     <ClInclude Include="CompactSpaceHash3dView.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedSortSearchAlgoView.h">
       <Filter>Search</Filter>
     </ClInclude>
   </ItemGroup>

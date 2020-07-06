@@ -4,7 +4,7 @@
 #include "../../Crystal/Shape/IPoint.h"
 
 namespace Crystal {
-	namespace Algo {
+	namespace Search {
 
 class IndexedParticle
 {

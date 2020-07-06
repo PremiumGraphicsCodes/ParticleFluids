@@ -2,10 +2,10 @@
 #include "CSPHParticle.h"
 #include "CSPHBoundarySolver.h"
 
-#include "../CrystalAlgo/IndexedFinder.h"
+#include "../CrystalAlgo/IndexedSortSearchAlgo.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Algo;
+using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
 void CSPHSolver::clear()
@@ -30,7 +30,7 @@ void CSPHSolver::simulate(const float timeStep)
 		particle->init();
 	}
 
-	IndexedFinder algo(effectLength);
+	IndexedSortSearchAlgo algo(effectLength);
 	for (auto p : particles) {
 		algo.add(p);
 	}

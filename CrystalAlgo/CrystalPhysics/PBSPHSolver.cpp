@@ -2,11 +2,11 @@
 #include "PBFluidScene.h"
 #include "PBSPHParticle.h"
 
-#include "../CrystalAlgo/IndexedFinder.h"
+#include "../CrystalAlgo/IndexedSortSearchAlgo.h"
 #include "PBSPHBoundarySolver.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Algo;
+using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
 void PBSPHSolver::step()
@@ -32,7 +32,7 @@ void PBSPHSolver::simulate(const float dt, const float effectLength, const float
 		p->predictPosition_(dt);
 	}
 
-	IndexedFinder finder(searchLength);
+	IndexedSortSearchAlgo finder(searchLength);
 	for (auto p : particles) {
 		finder.add(p);
 	}

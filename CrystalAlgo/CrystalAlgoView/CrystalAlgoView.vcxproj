@@ -162,6 +162,7 @@
     <ClCompile Include="BooleanView.cpp" />
     <ClCompile Include="CompactSpaceHash3dView.cpp" />
     <ClCompile Include="CrystalAlgoView.cpp" />
+    <ClCompile Include="IndexedSortSearchAlgoView.cpp" />
     <ClCompile Include="IntersectionView.cpp" />
     <ClCompile Include="MarchingCubesView.cpp" />
     <ClCompile Include="OctreeView.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="AlgoMenu.h" />
     <ClInclude Include="BooleanView.h" />
     <ClInclude Include="CompactSpaceHash3dView.h" />
+    <ClInclude Include="IndexedSortSearchAlgoView.h" />
     <ClInclude Include="IntersectionView.h" />
     <ClInclude Include="MarchingCubesView.h" />
     <ClInclude Include="OctreeView.h" />

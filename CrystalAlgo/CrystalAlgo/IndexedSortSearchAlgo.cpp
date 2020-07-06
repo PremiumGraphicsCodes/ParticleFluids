@@ -1,18 +1,18 @@
-#include "IndexedFinder.h"
+#include "IndexedSortSearchAlgo.h"
 #include "IndexedParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Algo;
+using namespace Crystal::Search;
 
-void IndexedFinder::add(IPoint* particle)
+void IndexedSortSearchAlgo::add(IPoint* particle)
 {
 	IndexedParticle ip(particle);
 	ip.setGridID(effectLength);
 	iparticles.push_back(ip);
 }
 
-void IndexedFinder::createPairs()
+void IndexedSortSearchAlgo::createPairs()
 {
 	std::sort(iparticles.begin(), iparticles.end());
 	// optimization for quad core.
@@ -46,7 +46,7 @@ void IndexedFinder::createPairs()
 	}
 }
 
-std::vector<ParticlePair> IndexedFinder::search1(const std::vector<IndexedParticle>& particles, std::vector<IndexedParticle>::const_iterator startIter, std::vector<IndexedParticle>::const_iterator endIter, const float effectLengthSquared)
+std::vector<ParticlePair> IndexedSortSearchAlgo::search1(const std::vector<IndexedParticle>& particles, std::vector<IndexedParticle>::const_iterator startIter, std::vector<IndexedParticle>::const_iterator endIter, const float effectLengthSquared)
 {
 	std::vector<ParticlePair> pairs;
 	for (auto xIter = startIter; xIter != endIter; ++xIter) {
@@ -72,7 +72,7 @@ std::vector<ParticlePair> IndexedFinder::search1(const std::vector<IndexedPartic
 	return pairs;
 }
 
-std::vector<ParticlePair> IndexedFinder::search2(const std::vector<IndexedParticle>& particles, std::vector<IndexedParticle>::const_iterator startIter, std::vector<IndexedParticle>::const_iterator endIter, const float effectLengthSquared)
+std::vector<ParticlePair> IndexedSortSearchAlgo::search2(const std::vector<IndexedParticle>& particles, std::vector<IndexedParticle>::const_iterator startIter, std::vector<IndexedParticle>::const_iterator endIter, const float effectLengthSquared)
 {
 	std::vector<ParticlePair> pairs;
 
@@ -83,7 +83,7 @@ std::vector<ParticlePair> IndexedFinder::search2(const std::vector<IndexedPartic
 	offsetIds.push_back(1048575);
 	offsetIds.push_back(1049599);
 
-	for (std::vector<IndexedParticle>::const_iterator xIter = startIter; xIter != endIter; ++xIter) {
+	for (auto xIter = startIter; xIter != endIter; ++xIter) {
 		for (size_t i = 0; i < 4; ++i) {
 			const auto baseID = xIter->getGridID() + offsetIds[i];
 			while (yIter[i] != particles.end() && (yIter[i]->getGridID() < baseID)) {

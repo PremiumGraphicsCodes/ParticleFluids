@@ -7,13 +7,13 @@
 //#include "ParticlePair.h"
 
 namespace Crystal {
-	namespace Algo {
+	namespace Search {
 
 using ParticlePair = std::pair<Shape::IPoint*, Shape::IPoint*>;
 
-class IndexedFinder final : private UnCopyable {
+class IndexedSortSearchAlgo : private UnCopyable {
 public:
-	IndexedFinder(const float effectLength) :
+	IndexedSortSearchAlgo(const float effectLength) :
 		effectLength(effectLength)
 	{}
 
