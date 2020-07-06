@@ -70,11 +70,11 @@ void KFFluidSimulationView::reset()
 
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
-	for (int i = 0; i < 50; ++i) {
-		for (int j = 0; j < 50; ++j) {
+	for (int i = 0; i < 1; ++i) {
+		for (int j = 0; j < 2; ++j) {
 			for (int k = 0; k < 1; ++k) {
 				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(5, 5);
+				mp->distributePoints(5, 5, 5);
 				fluidScene->addParticle(mp);
 			}
 		}
