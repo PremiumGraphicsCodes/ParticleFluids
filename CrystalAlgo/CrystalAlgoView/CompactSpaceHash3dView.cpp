@@ -33,20 +33,18 @@ void CompactSpaceHash3dView::onOk()
 	Crystal::Algo::StopWatch sw;
 	sw.start();
 
-	CompactSpaceHash3d grid(searchRadius.getValue(), 10000000);
+	CompactSpaceHash3d spaceHash(searchRadius.getValue(), 10000000);
 	const auto particles = ps.getIParticles();
 	for (auto p : particles) {
-		grid.add(p);
+		spaceHash.add(p);
 	}
-	unsigned int pairCount = 0;
-	auto func = [&pairCount](IPoint* lhs, IPoint* rhs) {
-		pairCount++;
-	};
+	unsigned int count = 0;
 	for (auto p : particles) {
-		grid.solveInteractions(p, func);
+		const auto& neighbors = spaceHash.findNeighbors(p);
+		count += neighbors.size();
 	}
 	sw.stop();
 
-	std::cout << "Pairs " << pairCount << std::endl;
+	std::cout << "Pairs " << count << std::endl;
 	std::cout << "Search Completed " << sw.getElapsed() << "[ms]" << std::endl;
 }

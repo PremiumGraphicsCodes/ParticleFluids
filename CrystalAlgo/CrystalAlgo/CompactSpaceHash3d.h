@@ -32,7 +32,7 @@ public:
 
 	void add(Shape::IPoint* particle);
 
-	void solveInteractions(Shape::IPoint* particle, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
+	std::vector<Shape::IPoint*> findNeighbors(Shape::IPoint* particle);
 
 private:
 	std::vector<std::vector<CompactSpaceCell*>> table;

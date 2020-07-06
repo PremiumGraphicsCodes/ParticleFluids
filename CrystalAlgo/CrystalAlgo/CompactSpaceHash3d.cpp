@@ -57,11 +57,14 @@ void CompactSpaceHash3d::add(IPoint* particle)
 	}
 }
 
-void CompactSpaceHash3d::solveInteractions(IPoint* particle, const std::function<void(IPoint*, IPoint*)>& func)
+std::vector<IPoint*> CompactSpaceHash3d::findNeighbors(IPoint* particle)
 {
 	const auto position = particle->getPosition();
 
 	const auto index = toIndex(position);
+
+	std::vector<IPoint*> neighbors;
+	neighbors.reserve(64);
 
 	for (int i = - 1; i <= 1; ++i) {
 		for (int j = - 1; j <= 1; ++j) {
@@ -78,11 +81,18 @@ void CompactSpaceHash3d::solveInteractions(IPoint* particle, const std::function
 				}
 				const auto& particles = (*iter)->particles;
 				for (auto p : particles) {
-					func(particle, p);
+					if (p == particle) {
+						continue;
+					}
+					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
+					if (d2 < divideLength * divideLength) {
+						neighbors.push_back(p);
+					}
 				}
 			}
 		}
 	}
+	return neighbors;
 }
 
 std::array<unsigned int, 3> CompactSpaceHash3d::toIndex(const Vector3df& pos) const
