@@ -10,9 +10,10 @@ namespace Crystal {
 class MicroParticle : public Shape::IPoint
 {
 public:
-	MicroParticle(MacroParticle* parent, const Math::Vector3dd& point) :
+	MicroParticle(MacroParticle* parent, const Math::Vector3dd& point, const double weight) :
 		parent(parent),
-		vector(point)
+		vector(point),
+		weight(weight)
 	{
 		updatePosition();
 	}
@@ -29,6 +30,7 @@ private:
 	MacroParticle* parent;
 	Math::Vector3dd position;
 	Math::Vector3dd vector;
+	double weight;
 };
 
 	}

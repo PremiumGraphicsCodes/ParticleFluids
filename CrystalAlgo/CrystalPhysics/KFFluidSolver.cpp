@@ -35,6 +35,7 @@ void KFFluidSolver::simulate()
 	const auto searchRadius = particles.front()->getRadius() * 2.25;
 	CompactSpaceHash3d spaceHash(searchRadius, hashSize);
 	for (auto particle : particles) {
+		particle->updateMicros();
 		const auto& microParticles = particle->getPoints();
 		for (auto mp : microParticles) {
 			spaceHash.add(mp);
