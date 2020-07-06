@@ -99,9 +99,8 @@ void MacroParticle::calculatePressure(const double pressureCoe)
 	for (auto mp : microPoints) {
 		averagedCenter += mp->getPosition() * mp->getWeight();
 	}
-	averagedCenter += position * (double)selfCount;
-	averagedCenter /= (double)(microPoints.size() + selfCount);
-	const auto ratio = ((microPoints.size() + selfCount + boundaryCount) / (double)selfCount) - 1.0;
+	averagedCenter /= (double)(microPoints.size());
+	const auto ratio = ((microPoints.size() + boundaryCount) / (double)selfCount) - 1.0;
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe;// 10000.0;
 }
 
@@ -111,8 +110,7 @@ void MacroParticle::calculateViscosity(const double viscosityCoe)
 	for (auto mp : microPoints) {
 		averagedVelocity += mp->getVelocity() * mp->getWeight();
 	}
-	averagedVelocity += velocity * (double)selfCount;
-	averagedVelocity /= (double)(microPoints.size() + selfCount);
+	averagedVelocity /= (double)(microPoints.size());
 	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
 }
 
