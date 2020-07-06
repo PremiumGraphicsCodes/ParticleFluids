@@ -30,25 +30,18 @@ void IndexedSortSearchAlgoView::onOk()
 		}
 	}
 
-	/*
 	Crystal::Algo::StopWatch sw;
 	sw.start();
 
-	CompactSpaceHash3d grid(searchRadius.getValue(), 10000000);
+	IndexedSortSearchAlgo searchAlgo(searchRadius.getValue());
 	const auto particles = ps.getIParticles();
 	for (auto p : particles) {
-		grid.add(p);
+		searchAlgo.add(p);
 	}
-	unsigned int pairCount = 0;
-	auto func = [&pairCount](IPoint* lhs, IPoint* rhs) {
-		pairCount++;
-	};
-	for (auto p : particles) {
-		grid.solveInteractions(p, func);
-	}
+	searchAlgo.createPairs();
+	const auto pairs = searchAlgo.getPairs();
 	sw.stop();
 
-	std::cout << "Pairs " << pairCount << std::endl;
+	std::cout << "Pairs " << pairs.size() << std::endl;
 	std::cout << "Search Completed " << sw.getElapsed() << "[ms]" << std::endl;
-	*/
 }

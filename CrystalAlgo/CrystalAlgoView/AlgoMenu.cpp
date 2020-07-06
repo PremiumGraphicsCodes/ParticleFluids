@@ -2,6 +2,7 @@
 
 #include "IntersectionView.h"
 #include "BooleanView.h"
+#include "IndexedSortSearchAlgoView.h"
 #include "SpaceHashView.h"
 #include "CompactSpaceHash3dView.h"
 #include "ZOrderSearchView.h"
@@ -34,6 +35,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("CompactSpaceHash")) {
 			control->setWindow(new CompactSpaceHash3dView(getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("IndexedSortSearch")) {
+			control->setWindow(new IndexedSortSearchAlgoView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("ZOrderSearch")) {
 			control->setWindow(new ZOrderSearchView(getWorld(), getCanvas()));
