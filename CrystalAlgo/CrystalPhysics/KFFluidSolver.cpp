@@ -32,7 +32,7 @@ void KFFluidSolver::simulate()
 	}
 
 	const auto hashSize = particles.front()->getPoints().size() * particles.size();
-	CompactSpaceHash3d spaceHash(particles.front()->getRadius() * 2.0, hashSize);
+	CompactSpaceHash3d spaceHash(particles.front()->getRadius() * 1.5, hashSize);
 	for (auto particle : particles) {
 		const auto& microParticles = particle->getPoints();
 		for (auto mp : microParticles) {
