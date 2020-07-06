@@ -26,10 +26,11 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 			const auto xx = x / (double)unum;
 			const auto yy = y / (double)vnum;
 			const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);
-			if (v.x > -r && v.x < r && v.y > -r && v.y < r) {
-				points.push_back(new MicroParticle(this, v * 3.0, 1.0));
+			const auto d = Math::getLengthSquared(v);
+			if (d < 0.5) {
+				points.push_back(new MicroParticle(this, v * 2.0, 1.0));
+				selfCount++;
 			}
-			selfCount++;
 		}
 	}
 }
@@ -101,7 +102,7 @@ void MacroParticle::calculatePressure(const double pressureCoe)
 	}
 	Vector3dd averagedCenter(0, 0, 0);
 	for (auto mp : microPoints) {
-		averagedCenter += mp->getPosition();
+		averagedCenter += mp->getPosition() * mp->getWeight();
 	}
 	averagedCenter += position * (double)selfCount;
 	averagedCenter /= (double)(microPoints.size() + selfCount);
@@ -113,7 +114,7 @@ void MacroParticle::calculateViscosity(const double viscosityCoe)
 {
 	Vector3dd averagedVelocity(0, 0, 0);
 	for (auto mp : microPoints) {
-		averagedVelocity += mp->getVelocity();
+		averagedVelocity += mp->getVelocity() * mp->getWeight();
 	}
 	averagedVelocity += velocity * (double)selfCount;
 	averagedVelocity /= (double)(microPoints.size() + selfCount);

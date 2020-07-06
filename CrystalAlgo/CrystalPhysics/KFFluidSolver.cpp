@@ -44,11 +44,13 @@ void KFFluidSolver::simulate()
 
 	const auto divideLength = searchRadius;
 	auto checkFunc = [divideLength](Shape::IPoint* p1, Shape::IPoint* p2) {
+		/*
 		auto macro = static_cast<MacroParticle*>(p1);
 		auto micro = static_cast<MicroParticle*>(p2);
 		if (micro->getParent() == macro) {
 			return false;
 		}
+		*/
 		const double d2 = Math::getDistanceSquared(p1->getPosition(), p2->getPosition());
 		return (d2 < divideLength* divideLength);
 	};

@@ -26,6 +26,8 @@ public:
 
 	void updatePosition();
 
+	double getWeight() const { return weight; }
+
 private:
 	MacroParticle* parent;
 	Math::Vector3dd position;
