@@ -11,15 +11,15 @@ using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
 KFFluidSolver::KFFluidSolver() :
-	timeStep(0.01)
+	dt(0.03)
 {}
 
 void KFFluidSolver::step()
 {
-	simulate(timeStep);
+	simulate();
 }
 
-void KFFluidSolver::simulate(const double dt)
+void KFFluidSolver::simulate()
 {
 	std::vector<MacroParticle*> particles;
 	for (auto fluid : fluids) {
@@ -40,40 +40,13 @@ void KFFluidSolver::simulate(const double dt)
 		}
 	}
 
-	// Ž©•ªŽ©g‚Í’Ç‰Á‚µ‚È‚¢D
-	const auto searchRdius = particles.front()->getRadius() * 2.0;
-	auto func = [searchRdius](Shape::IPoint* macro, Shape::IPoint* micro) {
-		MacroParticle* macroP = static_cast<MacroParticle*>(macro);
-		MicroParticle* microP = static_cast<MicroParticle*>(micro);
-		if (microP->getParent() == macroP) {
-			return;
-		}
-		const auto macroPosition = macroP->getPosition();
-		const auto microPosition = microP->getPosition();
-		if (::fabs(microPosition.x - macroPosition.x) > searchRdius) {
-			return;
-		}
-		if (::fabs(microPosition.y - macroPosition.y) > searchRdius) {
-			return;
-		}
-		if (::fabs(microPosition.z - macroPosition.z) > searchRdius) {
-			return;
-		}
-		macroP->addMicro(microP);
-
-		//const double d2 = Math::getDistanceSquared(macroP->getPosition(), microP->getPosition());
-		//if (d2 < searchRdius * searchRdius) {
-		//}
-
-		/*
-		*/
-	};
-
-
 #pragma omp parallel for
 	for(int i = 0; i < particles.size(); ++i) {
 		const auto particle = particles[i];
-		spaceHash.solveInteractions(particle, func);
+		const auto& neighbors = spaceHash.findNeighbors(particle);
+		for (auto n : neighbors) {
+			particle->addMicro(static_cast<MicroParticle*>(n));
+		}
 	}
 
 	for (auto particle : particles) {

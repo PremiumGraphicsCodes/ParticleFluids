@@ -39,7 +39,9 @@ void CompactSpaceHash3dView::onOk()
 		spaceHash.add(p);
 	}
 	unsigned int count = 0;
-	for (auto p : particles) {
+#pragma omp parallel for
+	for (int i = 0; i < particles.size(); ++i) {
+		auto p = particles[i];
 		const auto& neighbors = spaceHash.findNeighbors(p);
 		count += neighbors.size();
 	}

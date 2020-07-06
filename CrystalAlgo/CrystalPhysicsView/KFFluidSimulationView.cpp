@@ -20,21 +20,11 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("FluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	nextButton("Next"),
 	boundaryView("Boundary"),
 	pressureCoeView("PressureCoe", 1000),
-	viscosityCoeView("ViscosityCoe", 100.0)
+	viscosityCoeView("ViscosityCoe", 100.0),
+	timeStepView("TimeStep", 0.03)
 {
-	auto func = [=]() {
-		simulator.simulate(0.01);
-		Command::Command command;
-		command.create(ShaderSendLabels::CommandNameLabel);
-		command.setArg(ShaderSendLabels::IdLabel, newId);
-		command.execute(getWorld());
-	};
-	nextButton.setFunction(func);
-	add(&nextButton);
-
 	auto resetFunc = [=]() {
 		reset();
 	};
@@ -45,6 +35,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
+	add(&timeStepView);
 }
 
 void KFFluidSimulationView::onOk()
@@ -90,4 +81,5 @@ void KFFluidSimulationView::reset()
 	}
 
 	simulator.setBoundary(this->boundaryView.getValue());
+	simulator.setTimeStep(timeStepView.getValue());
 }

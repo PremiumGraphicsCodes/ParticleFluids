@@ -19,16 +19,18 @@ public:
 
 	void add(KFFluidScene* fluid) { this->fluids.push_back(fluid); }
 
-	void simulate(const double dt);
+	void simulate();
 
 	void step() override;
 
 	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
 
+	void setTimeStep(const double dt) { this->dt = dt; }
+
 private:
 	std::list<KFFluidScene*> fluids;
 	Math::Box3d boundary;
-	double timeStep;
+	double dt;
 };
 
 	}
