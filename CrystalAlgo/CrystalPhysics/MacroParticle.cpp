@@ -135,3 +135,10 @@ double MacroParticle::getDensity() const
 	return (microPoints.size() + selfCount + boundaryCount) / (double)selfCount;
 	//return microCount / (double)(microCount + preCount);
 }
+
+void MacroParticle::updateMicros()
+{
+	for (auto mp : this->microPoints) {
+		mp->updatePosition();
+	}
+}

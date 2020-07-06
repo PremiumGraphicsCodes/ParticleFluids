@@ -84,6 +84,7 @@ void KFFluidSolver::simulate()
 	for (int i = 0; i < 2; ++i) {
 		for (auto particle : particles) {
 			particle->reset(false);
+			particle->updateMicros();
 		}
 
 		for (auto particle : particles) {

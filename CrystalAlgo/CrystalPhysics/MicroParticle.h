@@ -13,7 +13,9 @@ public:
 	MicroParticle(MacroParticle* parent, const Math::Vector3dd& point) :
 		parent(parent),
 		vector(point)
-	{}
+	{
+		updatePosition();
+	}
 
 	Math::Vector3dd getPosition() const override;
 
@@ -21,8 +23,11 @@ public:
 
 	MacroParticle* getParent() { return parent; }
 
+	void updatePosition();
+
 private:
 	MacroParticle* parent;
+	Math::Vector3dd position;
 	Math::Vector3dd vector;
 };
 

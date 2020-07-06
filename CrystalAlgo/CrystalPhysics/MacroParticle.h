@@ -50,6 +50,8 @@ public:
 
 	double getDensity() const;
 
+	void updateMicros();
+
 	//void addMicroCount(int count) { this->microCount+=count; }
 
 private:

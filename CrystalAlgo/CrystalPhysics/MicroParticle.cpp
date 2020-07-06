@@ -7,10 +7,15 @@ using namespace Crystal::Physics;
 
 Vector3dd MicroParticle::getPosition() const
 {
-	return parent->getPosition() + parent->getRadius() * vector;
+	return position;
 }
 
 Vector3dd MicroParticle::getVelocity() const
 {
 	return parent->getVelocity();
+}
+
+void MicroParticle::updatePosition()
+{
+	this->position = parent->getPosition() + parent->getRadius() * vector;
 }
