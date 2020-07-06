@@ -34,6 +34,8 @@ public:
 
 	std::vector<Shape::IPoint*> findNeighbors(Shape::IPoint* particle);
 
+	void setCheckFunc(std::function<bool(Shape::IPoint*, Shape::IPoint*)> func) { this->checkFunc = func; }
+
 private:
 	std::vector<std::vector<CompactSpaceCell*>> table;
 
@@ -50,6 +52,8 @@ private:
 	const double divideLength;
 	
 	const ZOrderCurve3d zCurve;
+
+	std::function<bool(Shape::IPoint* point1, Shape::IPoint* point2)> checkFunc;
 };
 
 	}

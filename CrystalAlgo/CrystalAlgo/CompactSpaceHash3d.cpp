@@ -19,6 +19,10 @@ CompactSpaceHash3d::CompactSpaceHash3d(const double divideLength, const int tabl
 	table(tableSize),
 	zCurve()
 {
+	checkFunc = [divideLength](auto p1, auto p2) {
+		const double d2 = Math::getDistanceSquared(p1->getPosition(), p2->getPosition());
+		return (d2 < divideLength* divideLength);
+	};
 }
 
 CompactSpaceHash3d::~CompactSpaceHash3d()
@@ -84,8 +88,7 @@ std::vector<IPoint*> CompactSpaceHash3d::findNeighbors(IPoint* particle)
 					if (p == particle) {
 						continue;
 					}
-					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
-					if (d2 < divideLength * divideLength) {
+					if (checkFunc(particle, p)) {
 						neighbors.push_back(p);
 					}
 				}
