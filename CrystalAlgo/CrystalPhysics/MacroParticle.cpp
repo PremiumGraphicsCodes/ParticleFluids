@@ -11,6 +11,14 @@ MacroParticle::MacroParticle(const double radius, const Vector3dd& position) :
 	selfCount(0)
 {}
 
+MacroParticle::~MacroParticle()
+{
+	for (auto p : points) {
+		delete p;
+	}
+	//points.clear();
+}
+
 // MicroParticle‚ğ‰“‚­‚É”z’u‚·‚é->’Tõ‚Å‚Í©•ª‚É“ü‚ç‚È‚¢D
 void MacroParticle::distributePoints(const int unum, const int vnum)
 {

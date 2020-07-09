@@ -18,9 +18,11 @@ public:
 		boundary(boundary)
 	{}
 
+	void clear() { macros.clear(); }
+
 	void solve(MacroParticle* particle, const double dt);
 
-	void createMacro(const Math::Vector3dd& position);
+	void createMacro(MacroParticle* mp, const Math::Vector3dd& position);
 
 private:
 	Math::Box3d boundary;

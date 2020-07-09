@@ -14,6 +14,8 @@ class MacroParticle : public Shape::IPoint
 public:
 	MacroParticle(const double radius, const Math::Vector3dd& position);
 
+	~MacroParticle();
+
 	void distributePoints(const int unum, const int vnum);
 
 	void distributePoints(const int unum, const int vnum, const int wnum);
@@ -25,6 +27,8 @@ public:
 	//void calculateDensity();
 
 	void reset(bool resetMicro);
+
+	void addSelfMicro(MicroParticle* mp) { this->points.push_back(mp); }
 
 	void addMicro(MicroParticle* microParticle);
 
