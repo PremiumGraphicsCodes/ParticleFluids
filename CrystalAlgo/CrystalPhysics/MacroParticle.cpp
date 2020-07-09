@@ -27,7 +27,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 			const auto yy = y / (double)vnum;
 			const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);
 			const auto d = Math::getLengthSquared(v);
-			if (d < 0.5) {
+			if (d < 0.5 * 0.5) {
 				points.push_back(new MicroParticle(this, v * 2.0, 1.0));
 				selfCount++;
 			}
@@ -53,7 +53,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 				const auto zz = z / (double)wnum;
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto d = Math::getLengthSquared(v);
-				if (d < 0.5) {
+				if (d < 0.5 * 0.5) {
 					points.push_back(new MicroParticle(this, v * 2.0, 1.0));
 					selfCount++;
 				}
