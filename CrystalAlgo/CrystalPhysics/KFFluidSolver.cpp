@@ -4,6 +4,7 @@
 #include "MacroParticle.h"
 
 #include "KFFluidScene.h"
+#include "KFFBoundarySolver.h"
 #include "../CrystalAlgo/CompactSpaceHash3d.h"
 
 using namespace Crystal::Math;
@@ -59,9 +60,7 @@ void KFFluidSolver::simulate()
 		particle->calculateViscosity(particle->getScene()->getViscosityCoe());
 	}
 
-	for (auto particle : particles) {
-		solveBoundary(particle);
-	}
+	solveBoundary(particles);
 
 	for (auto particle : particles) {
 		particle->addForce(Vector3dd(0.0,-9.8 * particle->getDensity(),0.0));
@@ -78,7 +77,11 @@ void KFFluidSolver::simulate()
 
 		for (auto particle : particles) {
 			particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
-			solveBoundary(particle);
+		}
+
+		solveBoundary(particles);
+
+		for(auto particle : particles) {
 			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
 			particle->stepTime(dt);
 		}
@@ -90,43 +93,11 @@ void KFFluidSolver::simulate()
 	}
 }
 
-void KFFluidSolver::solveBoundary(MacroParticle* particle)
+void KFFluidSolver::solveBoundary(const std::vector<MacroParticle*>& particles)
 {
-	auto position = particle->getPosition();
-	if (position.y < boundary.getMinY()) {
-		const auto distance = boundary.getMinY() - position.y;
-		const auto overlap = Vector3dd(0, distance, 0);
-		const auto count = (distance) / (particle->getRadius() * 0.1);
-		particle->addBoundaryCount(count * 10);
-		particle->addForce(overlap / dt / dt);
-	}
-	if (position.x > boundary.getMaxX()) {
-		const auto distance = boundary.getMaxX() - position.x;
-		const auto overlap = Vector3dd(distance, 0, 0);
-		const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
-		particle->addBoundaryCount(count * 10);
-		particle->addForce(overlap / dt / dt);
-	}
-	if (position.x < boundary.getMinX()) {
-		const auto distance = boundary.getMinX() - position.x;
-		const auto overlap = Vector3dd(distance, 0, 0);
-		const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
-		particle->addBoundaryCount(count * 10);
-		particle->addForce(overlap / dt / dt);
-	}
-	if (position.z > boundary.getMaxZ()) {
-		const auto distance = boundary.getMaxZ() - position.z;
-		const auto overlap = Vector3dd(0, 0, distance);
-		const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
-		particle->addBoundaryCount(count * 10);
-		particle->addForce(overlap / dt / dt);
-	}
-	if (position.z < boundary.getMinZ()) {
-		const auto distance = boundary.getMinZ() - position.z;
-		const auto overlap = Vector3dd(0, 0, distance);
-		const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
-		particle->addBoundaryCount(count * 10);
-		particle->addForce(overlap / dt / dt);
+	KFFBoundarySolver boundarySolver(boundary);
+	for (auto particle : particles) {
+		boundarySolver.solve(particle, dt);
 	}
 }
 

@@ -57,6 +57,9 @@
     <ClInclude Include="KFFluidSceneController.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="KFFBoundarySolver.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -99,6 +102,9 @@
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidSceneController.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="KFFBoundarySolver.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>
