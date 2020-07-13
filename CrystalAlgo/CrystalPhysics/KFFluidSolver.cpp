@@ -12,7 +12,7 @@ using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
 KFFluidSolver::KFFluidSolver() :
-	dt(0.03)
+	maxTimeStep(0.03)
 {}
 
 void KFFluidSolver::step()
@@ -31,6 +31,8 @@ void KFFluidSolver::simulate()
 	for (auto particle : particles) {
 		particle->reset(true);
 	}
+
+	const auto dt = calculateTimeStep(particles);
 
 	const auto hashSize = particles.front()->getPoints().size() * particles.size();
 	const auto searchRadius = particles.front()->getRadius() * 2.25;
@@ -106,4 +108,18 @@ void KFFluidSolver::simulate()
 	for (auto fluid : fluids) {
 		fluid->getController()->updateView();
 	}
+}
+
+double KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& particles)
+{
+	double maxVelocity = 0.0;
+	for (auto p : particles) {
+		maxVelocity = std::max<double>(maxVelocity, Math::getLengthSquared( p->getVelocity() ) );
+	}
+	if (maxVelocity < 1.0e-3) {
+		return maxTimeStep;
+	}
+	maxVelocity = std::sqrt(maxVelocity);
+	const auto dt = 0.1 * particles.front()->getRadius() * 2.0 / maxVelocity;
+	return std::min(dt, maxVelocity);
 }

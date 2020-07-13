@@ -10,15 +10,15 @@ using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
 PBSPHSolver::PBSPHSolver() :
-	dt(0.01)
+	maxTimeStep(0.01)
 {}
 
 void PBSPHSolver::step()
 {
-	simulate(dt, 2.25, 2.5, 3);
+	simulate(maxTimeStep, 2.25, 2.5, 3);
 }
 
-void PBSPHSolver::simulate(const float dt, const float effectLength, const float searchLength, const int maxIter)
+void PBSPHSolver::simulate(const float maxTimeStep, const float effectLength, const float searchLength, const int maxIter)
 {
 	std::vector<PBSPHParticle*> particles;
 	for (auto fluid : fluids) {
@@ -29,6 +29,8 @@ void PBSPHSolver::simulate(const float dt, const float effectLength, const float
 	for (auto p : particles) {
 		p->init();
 	}
+
+	const auto dt = calculateTimeStep(particles);
 
 	PBSPHBoundarySolver boundarySolver(boundary);
 	for (auto p : particles) {
@@ -108,4 +110,18 @@ void PBSPHSolver::simulate(const float dt, const float effectLength, const float
 	for (auto fluid : fluids) {
 		fluid->getController()->updateView();
 	}
+}
+
+double PBSPHSolver::calculateTimeStep(const std::vector<PBSPHParticle*>& particles)
+{
+	double maxVelocity = 0.0;
+	for (auto p : particles) {
+		maxVelocity = std::max<double>(maxVelocity, Math::getLengthSquared(p->getVelocity()));
+	}
+	if (maxVelocity < 1.0e-3) {
+		return maxTimeStep;
+	}
+	maxVelocity = std::sqrt(maxVelocity);
+	const auto dt = 0.4 * particles.front()->getRadius() * 2.0 / maxVelocity;
+	return std::min(dt, maxTimeStep);
 }

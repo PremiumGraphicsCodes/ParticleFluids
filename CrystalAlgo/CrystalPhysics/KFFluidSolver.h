@@ -26,14 +26,16 @@ public:
 
 	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
 
-	void setTimeStep(const double dt) { this->dt = dt; }
+	void setTimeStep(const double dt) { this->maxTimeStep = dt; }
 
 private:
 	std::list<KFFluidScene*> fluids;
 	Math::Box3d boundary;
-	double dt;
+	double maxTimeStep;
 
 private:
+	double calculateTimeStep(const std::vector<KFMacroParticle*>& particles);
+
 	//void solveBoundary(const std::vector<MacroParticle*>& particles);
 };
 

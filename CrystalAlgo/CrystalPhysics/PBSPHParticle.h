@@ -97,6 +97,7 @@ public:
 
 	void setDensity(const float d) { this->density = d; }
 
+	double getRadius() const { return radius; }
 
 private:
 	Math::Vector3df getDiff(const PBSPHParticle& rhs) const;
