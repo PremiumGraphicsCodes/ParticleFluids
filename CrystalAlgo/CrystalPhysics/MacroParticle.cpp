@@ -36,7 +36,8 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 			const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);
 			const auto d = Math::getLengthSquared(v);
 			if (d < 0.5 * 0.5) {
-				points.push_back(new MicroParticle(this, v * 3.0, 1.0));
+//				const auto weight = (1.0 - std::sqrt(d) * 2.0);
+				points.push_back(new MicroParticle(this, v * 3.0, 1.0)); //weight));////d));
 				selfCount++;
 			}
 		}
@@ -103,22 +104,23 @@ void MacroParticle::calculatePressure(const double pressureCoe)
 	if (isStatic) {
 		return;
 	}
+
 	Vector3dd averagedCenter(0, 0, 0);
-	for (auto mp : microPoints) {
+	for (auto mp : innerPoints) {
 		averagedCenter += mp->getPosition() * mp->getWeight();
 	}
-	averagedCenter /= (double)(microPoints.size());
-	const auto ratio = ((microPoints.size() + boundaryCount) / (double)selfCount) - 1.0;
+	averagedCenter /= (double)(innerPoints.size());
+	const auto ratio = ((innerPoints.size() + boundaryCount) / (double)selfCount) - 1.0;
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe;// 10000.0;
 }
 
 void MacroParticle::calculateViscosity(const double viscosityCoe)
 {
 	Vector3dd averagedVelocity(0, 0, 0);
-	for (auto mp : microPoints) {
+	for (auto mp : innerPoints) {
 		averagedVelocity += mp->getVelocity() * mp->getWeight();
 	}
-	averagedVelocity /= (double)(microPoints.size());
+	averagedVelocity /= (double)(innerPoints.size());
 	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
 }
 
@@ -142,5 +144,17 @@ void MacroParticle::updateMicros()
 {
 	for (auto mp : this->microPoints) {
 		mp->updatePosition();
+	}
+}
+
+void MacroParticle::updateInnerPoints()
+{
+	const auto r = this->radius * 2.0;
+	innerPoints.clear();
+	for (auto mp : this->microPoints) {
+		const auto distanceSquared = Math::getDistanceSquared(mp->getPosition(), this->getPosition());
+		if (distanceSquared < r * r) {
+			innerPoints.push_back(mp);
+		}
 	}
 }

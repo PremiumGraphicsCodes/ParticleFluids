@@ -11,21 +11,21 @@ void KFFBoundarySolver::solve(MacroParticle* particle, const double dt)
 	if (position.y < boundary.getMinY()) {
 		const auto distance = boundary.getMinY() - position.y;
 		const auto overlap = Vector3dd(0, distance, 0);
-		const auto count = (distance) / (particle->getRadius() * 0.1);
-		particle->addBoundaryCount(count * 10);
+		//const auto count = (distance) / (particle->getRadius() * 0.1);
+		//particle->addBoundaryCount(count * 10);
 		particle->addForce(overlap / dt / dt);
 	}
 	if (position.x > boundary.getMaxX()) {
 		const auto distance = boundary.getMaxX() - position.x;
 		const auto overlap = Vector3dd(distance, 0, 0);
-		const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
+		//const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
 		//particle->addBoundaryCount(count * 10);
 		particle->addForce(overlap / dt / dt);
 	}
 	if (position.x < boundary.getMinX()) {
 		const auto distance = boundary.getMinX() - position.x;
 		const auto overlap = Vector3dd(distance, 0, 0);
-		const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
+		//const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
 		//particle->addBoundaryCount(count * 10);
 		particle->addForce(overlap / dt / dt);
 	}

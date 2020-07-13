@@ -53,6 +53,10 @@ void KFFluidSolver::simulate()
 	}
 
 	for (auto particle : particles) {
+		particle->updateInnerPoints();
+	}
+
+	for (auto particle : particles) {
 		particle->calculatePressure(particle->getScene()->getPressureCoe());
 	}
 
@@ -77,6 +81,10 @@ void KFFluidSolver::simulate()
 		for (auto particle : particles) {
 			particle->reset(false);
 			particle->updateMicros();
+		}
+
+		for (auto particle : particles) {
+			particle->updateInnerPoints();
 		}
 
 		for (auto particle : particles) {

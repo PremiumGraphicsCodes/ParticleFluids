@@ -58,9 +58,12 @@ public:
 
 	//void addMicroCount(int count) { this->microCount+=count; }
 
+	void updateInnerPoints();
+
 private:
 	double radius;
 	std::vector<MicroParticle*> points;
+	std::vector<MicroParticle*> innerPoints;
 	std::vector<MicroParticle*> microPoints;
 	Math::Vector3dd force;
 	Math::Vector3dd position;
