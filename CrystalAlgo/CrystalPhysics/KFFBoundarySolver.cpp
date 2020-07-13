@@ -14,6 +14,7 @@ void KFFBoundarySolver::solve(KFMacroParticle* particle, const double dt)
 		const auto count = (distance) / (particle->getRadius() * 0.1);
 		particle->addBoundaryCount(count * 10);
 		particle->addForce(overlap / dt / dt);
+		//particle->addForce(-particle->getVelocity() * ::fabs(distance) * 20.0);
 	}
 	if (position.x > boundary.getMaxX()) {
 		const auto distance = boundary.getMaxX() - position.x;

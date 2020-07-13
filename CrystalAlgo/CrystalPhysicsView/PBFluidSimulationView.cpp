@@ -36,7 +36,7 @@ PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 
-	boundaryView.setValue(Box3d(Vector3dd(-100, 0.0, -100.0), Vector3dd(100.0, 1000.0, 100.0)));
+	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
 
 
 	add(&timeStepView);
@@ -78,9 +78,9 @@ void PBFluidSimulationView::reset()
 
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
-	for (int i = 0; i < 50; ++i) {
-		for (int j = 0; j < 50; ++j) {
-			for (int k = 0; k < 10; ++k) {
+	for (int i = 0; i < 20; ++i) {
+		for (int j = 0; j < 20; ++j) {
+			for (int k = 0; k < 20; ++k) {
 				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
 				this->fluidScene->addParticle(mp);
 			}
