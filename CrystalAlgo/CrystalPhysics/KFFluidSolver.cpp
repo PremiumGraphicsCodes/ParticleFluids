@@ -120,6 +120,6 @@ double KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& par
 		return maxTimeStep;
 	}
 	maxVelocity = std::sqrt(maxVelocity);
-	const auto dt = 0.1 * particles.front()->getRadius() * 2.0 / maxVelocity;
-	return std::min(dt, maxVelocity);
+	const auto dt = 0.4 * particles.front()->getRadius() * 2.0 / maxVelocity;
+	return std::min(dt, maxTimeStep);
 }
