@@ -139,7 +139,7 @@ void KFMacroParticle::stepTime(const double dt)
 
 double KFMacroParticle::getDensity() const
 {
-	return (microPoints.size() + selfCount + boundaryCount) / (double)selfCount;
+	return (microPoints.size() + boundaryCount) / (double)selfCount;
 	//return microCount / (double)(microCount + preCount);
 }
 

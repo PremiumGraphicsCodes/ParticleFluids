@@ -5,6 +5,8 @@
 #include "../CrystalAlgo/IndexedSortSearchAlgo.h"
 #include "PBSPHBoundarySolver.h"
 
+#include <iostream>
+
 using namespace Crystal::Math;
 using namespace Crystal::Search;
 using namespace Crystal::Physics;
@@ -106,6 +108,13 @@ void PBSPHSolver::simulate(const float maxTimeStep, const float effectLength, co
 		p->updatePosition();
 		//	p->integrate(dt);
 	}
+
+	auto densityError = 0.0;
+	for (auto particle : particles) {
+		densityError += particle->getDensity() / (double)particles.size();
+	}
+	std::cout << densityError << std::endl;
+
 
 	for (auto fluid : fluids) {
 		fluid->getController()->updateView();

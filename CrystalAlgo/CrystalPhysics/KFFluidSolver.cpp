@@ -7,6 +7,8 @@
 #include "KFFBoundarySolver.h"
 #include "../CrystalAlgo/CompactSpaceHash3d.h"
 
+#include <iostream>
+
 using namespace Crystal::Math;
 using namespace Crystal::Search;
 using namespace Crystal::Physics;
@@ -64,6 +66,7 @@ void KFFluidSolver::simulate()
 			particle->calculatePressure(particle->getScene()->getPressureCoe());
 			particle->calculateViscosity(particle->getScene()->getViscosityCoe());
 		}
+		
 
 		KFFBoundarySolver boundarySolver(boundary);
 		for (auto particle : particles) {
@@ -78,7 +81,7 @@ void KFFluidSolver::simulate()
 
 		// solve incompressibility.
 		double relaxationCoe = 0.5;
-		for (int i = 0; i < 1; ++i) {
+		for (int i = 0; i < 2; ++i) {
 			for (auto particle : particles) {
 				particle->reset(false);
 				particle->updateMicros();
@@ -105,6 +108,13 @@ void KFFluidSolver::simulate()
 
 		time += dt;
 	}
+
+	auto densityError = 0.0;
+	for (auto particle : particles) {
+		densityError += particle->getDensity() / (double)particles.size();
+	}
+	std::cout << densityError << std::endl;
+
 
 	for (auto fluid : fluids) {
 		fluid->getController()->updateView();
