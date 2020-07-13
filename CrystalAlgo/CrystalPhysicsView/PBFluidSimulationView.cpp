@@ -78,8 +78,8 @@ void PBFluidSimulationView::reset()
 
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
-	for (int i = 0; i < 10; ++i) {
-		for (int j = 0; j < 100; ++j) {
+	for (int i = 0; i < 50; ++i) {
+		for (int j = 0; j < 50; ++j) {
 			for (int k = 0; k < 10; ++k) {
 				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
 				this->fluidScene->addParticle(mp);

@@ -112,7 +112,8 @@ void KFMacroParticle::calculatePressure(const double pressureCoe)
 		averagedCenter += mp->getPosition() * mp->getWeight();
 	}
 	averagedCenter /= (double)(innerPoints.size());
-	const auto ratio = ((innerPoints.size() + boundaryCount) / (double)selfCount) - 1.0;
+	auto ratio = ((innerPoints.size() + boundaryCount) / (double)selfCount) - 1.0;
+	ratio = std::max(0.0, ratio);
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe;// 10000.0;
 }
 
