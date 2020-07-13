@@ -57,15 +57,11 @@ void KFFluidSolver::simulate()
 	while (time < maxTimeStep) {
 		const auto dt = calculateTimeStep(particles);
 
-		for (auto particle : particles) {
+#pragma omp parallel for
+		for (int i = 0; i < particles.size(); ++i) {
+			const auto particle = particles[i];
 			particle->updateInnerPoints();
-		}
-
-		for (auto particle : particles) {
 			particle->calculatePressure(particle->getScene()->getPressureCoe());
-		}
-
-		for (auto particle : particles) {
 			particle->calculateViscosity(particle->getScene()->getViscosityCoe());
 		}
 
