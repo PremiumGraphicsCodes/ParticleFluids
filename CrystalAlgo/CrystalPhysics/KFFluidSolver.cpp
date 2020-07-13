@@ -32,7 +32,6 @@ void KFFluidSolver::simulate()
 		particle->reset(true);
 	}
 
-	const auto dt = calculateTimeStep(particles);
 
 	const auto hashSize = particles.front()->getPoints().size() * particles.size();
 	const auto searchRadius = particles.front()->getRadius() * 2.25;
@@ -54,55 +53,62 @@ void KFFluidSolver::simulate()
 		}
 	}
 
-	for (auto particle : particles) {
-		particle->updateInnerPoints();
-	}
-
-	for (auto particle : particles) {
-		particle->calculatePressure(particle->getScene()->getPressureCoe());
-	}
-
-	for (auto particle : particles) {
-		particle->calculateViscosity(particle->getScene()->getViscosityCoe());
-	}
-
-	KFFBoundarySolver boundarySolver(boundary);
-	for (auto particle : particles) {
-		//boundarySolver.createMacro(particle);
-		boundarySolver.solve(particle, dt);
-	}
-
-	for (auto particle : particles) {
-		particle->addForce(Vector3dd(0.0,-9.8 * particle->getDensity(),0.0));
-		particle->stepTime(dt);
-	}
-
-	// solve incompressibility.
-	double relaxationCoe = 0.5;
-	for (int i = 0; i < 2; ++i) {
-		for (auto particle : particles) {
-			particle->reset(false);
-			particle->updateMicros();
-		}
+	double time = 0.0;
+	while (time < maxTimeStep) {
+		const auto dt = calculateTimeStep(particles);
 
 		for (auto particle : particles) {
 			particle->updateInnerPoints();
 		}
 
 		for (auto particle : particles) {
-			particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
+			particle->calculatePressure(particle->getScene()->getPressureCoe());
 		}
 
 		for (auto particle : particles) {
+			particle->calculateViscosity(particle->getScene()->getViscosityCoe());
+		}
+
+		KFFBoundarySolver boundarySolver(boundary);
+		for (auto particle : particles) {
+			//boundarySolver.createMacro(particle);
 			boundarySolver.solve(particle, dt);
 		}
-	//	solveBoundary(particles);
 
-		for(auto particle : particles) {
-			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
+		for (auto particle : particles) {
+			particle->addForce(Vector3dd(0.0, -9.8 * particle->getDensity(), 0.0));
 			particle->stepTime(dt);
 		}
-		relaxationCoe /= 2.0;
+
+		// solve incompressibility.
+		double relaxationCoe = 0.5;
+		for (int i = 0; i < 2; ++i) {
+			for (auto particle : particles) {
+				particle->reset(false);
+				particle->updateMicros();
+			}
+
+			for (auto particle : particles) {
+				particle->updateInnerPoints();
+			}
+
+			for (auto particle : particles) {
+				particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
+			}
+
+			for (auto particle : particles) {
+				boundarySolver.solve(particle, dt);
+			}
+			//	solveBoundary(particles);
+
+			for (auto particle : particles) {
+				//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
+				particle->stepTime(dt);
+			}
+			relaxationCoe /= 2.0;
+		}
+
+		time += dt;
 	}
 
 	for (auto fluid : fluids) {
