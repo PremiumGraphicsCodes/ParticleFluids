@@ -38,10 +38,11 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 			if (d < 0.5 * 0.5) {
 //				const auto weight = (1.0 - std::sqrt(d) * 2.0);
 				points.push_back(new MicroParticle(this, v * 3.0, 1.0)); //weight));////d));
-				selfCount++;
+//				selfCount++;
 			}
 		}
 	}
+	selfCount = unum * vnum;
 }
 
 
@@ -69,6 +70,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 			}
 		}
 	}
+	selfCount = unum * vnum * wnum;
 }
 
 void MacroParticle::reset(bool resetMicro)
