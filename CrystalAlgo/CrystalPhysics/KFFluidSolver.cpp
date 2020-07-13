@@ -78,17 +78,16 @@ void KFFluidSolver::simulate()
 
 		// solve incompressibility.
 		double relaxationCoe = 0.5;
-		for (int i = 0; i < 2; ++i) {
+		for (int i = 0; i < 1; ++i) {
 			for (auto particle : particles) {
 				particle->reset(false);
 				particle->updateMicros();
 			}
 
-			for (auto particle : particles) {
+#pragma omp parallel for
+			for (int i = 0; i < particles.size(); ++i) {
+				const auto particle = particles[i];
 				particle->updateInnerPoints();
-			}
-
-			for (auto particle : particles) {
 				particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
 			}
 
