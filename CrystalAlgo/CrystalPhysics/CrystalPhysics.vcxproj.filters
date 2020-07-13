@@ -10,6 +10,9 @@
     <Filter Include="KFFluid">
       <UniqueIdentifier>{78ff2e95-a432-49fc-8ca9-4c386fae1a97}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DFFluid">
+      <UniqueIdentifier>{80bcb3ac-b523-4050-8667-f3e7ed2ffc4d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MicroParticle.h">
@@ -60,6 +63,15 @@
     <ClInclude Include="KFFBoundarySolver.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="DFFluidSolver.h">
+      <Filter>DFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="DFFluidParticle.h">
+      <Filter>DFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="DFFluidScene.h">
+      <Filter>DFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -106,6 +118,15 @@
     </ClCompile>
     <ClCompile Include="KFFBoundarySolver.cpp">
       <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="DFFluidSolver.cpp">
+      <Filter>DFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="DFFluidParticle.cpp">
+      <Filter>DFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="DFFluidScene.cpp">
+      <Filter>DFFluid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
