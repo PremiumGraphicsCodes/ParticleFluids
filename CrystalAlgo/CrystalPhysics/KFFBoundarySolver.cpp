@@ -14,10 +14,6 @@ void KFFBoundarySolver::solve(MacroParticle* particle, const double dt)
 		const auto count = (distance) / (particle->getRadius() * 0.1);
 		particle->addBoundaryCount(count * 10);
 		particle->addForce(overlap / dt / dt);
-		/*
-		const auto pp = Vector3dd(position.x, boundary.getMinY() - particle->getRadius(), position.z);
-		createMacro(particle, pp);
-		*/
 	}
 	if (position.x > boundary.getMaxX()) {
 		const auto distance = boundary.getMaxX() - position.x;
@@ -50,10 +46,23 @@ void KFFBoundarySolver::solve(MacroParticle* particle, const double dt)
 
 }
 
+void KFFBoundarySolver::createMacro(MacroParticle* mp)
+{
+	auto position = mp->getPosition();
+	const auto radius = mp->getRadius();
+	if (position.y < boundary.getMinY() + radius * 2.0) {
+		auto bp = std::make_unique<MacroParticle>(radius, position);
+		const Vector3dd p1(position.x, boundary.getMinY(), position.z);
+		const Vector3dd p2(position.x, boundary.getMinY() - radius, position.z);
+		createMacro(mp, p1);
+		createMacro(mp, p2);
+	}
+}
+
 void KFFBoundarySolver::createMacro(MacroParticle* mp, const Vector3dd& position)
 {
-	const auto radius = mp->getRadius();
-	auto macro = std::make_unique<MacroParticle>(radius, position);
+	auto bp = std::make_unique<MacroParticle>(mp->getRadius(), position);
+	const auto radius = mp->getRadius() * 2.0;
 
 	const int unum = 3;
 	const int vnum = 3;
@@ -65,15 +74,15 @@ void KFFBoundarySolver::createMacro(MacroParticle* mp, const Vector3dd& position
 				const auto yy = y / (double)vnum;
 				const auto zz = z / (double)wnum;
 				const Vector3dd v(xx - 0.5, yy - 0.5, zz - 0.5);
-				auto micro = new MicroParticle(macro.get(), v * 2.0, 1.0);
+				auto micro = new MicroParticle(mp, v * 2.0, 1.0);
 				if (Math::getDistanceSquared(micro->getPosition(), mp->getPosition()) < radius * radius) {
 					mp->addMicro(micro);
-					macro->addSelfMicro(micro);
+					bp->addSelfMicro(micro);
 				}
 			}
 		}
 	}
 
 	//macro->addMicro()
-	macros.push_back(std::move(macro));
+	macros.push_back(std::move(bp));
 }

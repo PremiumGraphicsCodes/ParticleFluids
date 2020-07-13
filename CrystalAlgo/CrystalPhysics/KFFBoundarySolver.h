@@ -22,7 +22,11 @@ public:
 
 	void solve(MacroParticle* particle, const double dt);
 
+	void createMacro(MacroParticle* mp);
+
+private:
 	void createMacro(MacroParticle* mp, const Math::Vector3dd& position);
+
 
 private:
 	Math::Box3d boundary;
