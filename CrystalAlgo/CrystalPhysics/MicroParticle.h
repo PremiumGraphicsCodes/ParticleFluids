@@ -5,12 +5,12 @@
 
 namespace Crystal {
 	namespace Physics {
-		class MacroParticle;
+		class KFMacroParticle;
 
 class MicroParticle : public Shape::IPoint
 {
 public:
-	MicroParticle(MacroParticle* parent, const Math::Vector3dd& point, const double weight) :
+	MicroParticle(KFMacroParticle* parent, const Math::Vector3dd& point, const double weight) :
 		parent(parent),
 		vector(point),
 		weight(weight)
@@ -22,14 +22,14 @@ public:
 
 	Math::Vector3dd getVelocity() const;
 
-	MacroParticle* getParent() { return parent; }
+	KFMacroParticle* getParent() { return parent; }
 
 	void updatePosition();
 
 	double getWeight() const { return weight; }
 
 private:
-	MacroParticle* parent;
+	KFMacroParticle* parent;
 	Math::Vector3dd position;
 	Math::Vector3dd vector;
 	double weight;

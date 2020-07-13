@@ -26,7 +26,8 @@ PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("PBFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	timeStepView("TimeStep", 0.01)
+	timeStepView("TimeStep", 0.01),
+	boundaryView("Boundary")
 {
 
 	auto resetFunc = [=]() {
@@ -35,7 +36,11 @@ PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 
+	boundaryView.setValue(Box3d(Vector3dd(-100, 0.0, -100.0), Vector3dd(100.0, 1000.0, 100.0)));
+
+
 	add(&timeStepView);
+	add(&boundaryView);
 }
 
 void PBFluidSimulationView::onOk()
@@ -45,7 +50,7 @@ void PBFluidSimulationView::onOk()
 	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
 	this->simulator = new PBSPHSolver();
 
-
+	
 	reset();
 	getWorld()->getObjects()->addScene(this->fluidScene);
 	this->newId = this->fluidScene->getId();
@@ -61,7 +66,6 @@ void PBFluidSimulationView::onOk()
 
 	simulator->add(this->fluidScene);
 
-	simulator->setBoundary(Box3d(Vector3dd(-100.0, -1.0, -100.0), Vector3dd(100.0, 1000.0, 100.0)));
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
 	getWorld()->addAnimation(simulator);
@@ -82,5 +86,6 @@ void PBFluidSimulationView::reset()
 			}
 		}
 	}
+	simulator->setBoundary(boundaryView.getValue());
 	simulator->setTimeStep(timeStepView.getValue());
 }

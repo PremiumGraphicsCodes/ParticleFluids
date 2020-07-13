@@ -1,11 +1,11 @@
 #include "KFFBoundarySolver.h"
 
-#include "MacroParticle.h"
+#include "KFMacroParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
-void KFFBoundarySolver::solve(MacroParticle* particle, const double dt)
+void KFFBoundarySolver::solve(KFMacroParticle* particle, const double dt)
 {
 	auto position = particle->getPosition();
 	if (position.y < boundary.getMinY()) {
@@ -46,12 +46,12 @@ void KFFBoundarySolver::solve(MacroParticle* particle, const double dt)
 
 }
 
-void KFFBoundarySolver::createMacro(MacroParticle* mp)
+void KFFBoundarySolver::createMacro(KFMacroParticle* mp)
 {
 	const auto position = mp->getPosition();
 	const auto radius = mp->getRadius();
 	if (position.y < boundary.getMinY() + radius * 2.0) {
-		auto bp = std::make_unique<MacroParticle>(radius, position);
+		auto bp = std::make_unique<KFMacroParticle>(radius, position);
 		const Vector3dd p1(position.x, boundary.getMinY() + radius, position.z);
 		const Vector3dd p2(position.x, boundary.getMinY(), position.z);
 		createMacro(mp, p1);
@@ -59,9 +59,9 @@ void KFFBoundarySolver::createMacro(MacroParticle* mp)
 	}
 }
 
-void KFFBoundarySolver::createMacro(MacroParticle* mp, const Vector3dd& position)
+void KFFBoundarySolver::createMacro(KFMacroParticle* mp, const Vector3dd& position)
 {
-	auto bp = std::make_unique<MacroParticle>(mp->getRadius(), position);
+	auto bp = std::make_unique<KFMacroParticle>(mp->getRadius(), position);
 	const auto radius = mp->getRadius() * 2.0;
 
 	const int unum = 3;

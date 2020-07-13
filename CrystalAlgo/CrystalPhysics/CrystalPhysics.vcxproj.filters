@@ -18,9 +18,6 @@
     <ClInclude Include="MicroParticle.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
-    <ClInclude Include="MacroParticle.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
     <ClInclude Include="PBSPHParticle.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
@@ -72,12 +69,12 @@
     <ClInclude Include="DFFluidScene.h">
       <Filter>DFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="KFMacroParticle.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="MacroParticle.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="SPHKernel.cpp">
@@ -127,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="DFFluidScene.cpp">
       <Filter>DFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="KFMacroParticle.cpp">
+      <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

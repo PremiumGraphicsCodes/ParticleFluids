@@ -1,6 +1,6 @@
 #include "MicroParticle.h"
 
-#include "MacroParticle.h"
+#include "KFMacroParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

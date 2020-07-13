@@ -1,17 +1,17 @@
-#include "MacroParticle.h"
+#include "KFMacroParticle.h"
 
 #include "KFFluidScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
-MacroParticle::MacroParticle(const double radius, const Vector3dd& position) :
+KFMacroParticle::KFMacroParticle(const double radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
 	selfCount(0)
 {}
 
-MacroParticle::~MacroParticle()
+KFMacroParticle::~KFMacroParticle()
 {
 	for (auto p : points) {
 		delete p;
@@ -20,7 +20,7 @@ MacroParticle::~MacroParticle()
 }
 
 // MicroParticleを遠くに配置する->探索では自分に入らない．
-void MacroParticle::distributePoints(const int unum, const int vnum)
+void KFMacroParticle::distributePoints(const int unum, const int vnum)
 {
 	// 左上から右下に向かって均等分割する．->内外判定する．
 	const auto dx = 1.0 / (double)unum;
@@ -46,7 +46,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum)
 }
 
 
-void MacroParticle::distributePoints(const int unum, const int vnum, const int wnum)
+void KFMacroParticle::distributePoints(const int unum, const int vnum, const int wnum)
 {
 	// 左上から右下に向かって均等分割する．->内外判定する．
 	const auto dx = 1.0 / (double)unum;
@@ -73,7 +73,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 	selfCount = unum * vnum * wnum;
 }
 
-void MacroParticle::reset(bool resetMicro)
+void KFMacroParticle::reset(bool resetMicro)
 {
 	this->boundaryCount = 0;
 	this->force = Math::Vector3dd(0, 0, 0);
@@ -91,7 +91,7 @@ void MacroParticle::calculateDensity()
 }
 */
 
-void MacroParticle::addMicro(MicroParticle* microParticle)
+void KFMacroParticle::addMicro(MicroParticle* microParticle)
 {
 	microPoints.push_back(microParticle);
 	/*
@@ -101,7 +101,7 @@ void MacroParticle::addMicro(MicroParticle* microParticle)
 	*/
 }
 
-void MacroParticle::calculatePressure(const double pressureCoe)
+void KFMacroParticle::calculatePressure(const double pressureCoe)
 {
 	if (isStatic) {
 		return;
@@ -116,7 +116,7 @@ void MacroParticle::calculatePressure(const double pressureCoe)
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe;// 10000.0;
 }
 
-void MacroParticle::calculateViscosity(const double viscosityCoe)
+void KFMacroParticle::calculateViscosity(const double viscosityCoe)
 {
 	Vector3dd averagedVelocity(0, 0, 0);
 	for (auto mp : innerPoints) {
@@ -126,7 +126,7 @@ void MacroParticle::calculateViscosity(const double viscosityCoe)
 	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
 }
 
-void MacroParticle::stepTime(const double dt)
+void KFMacroParticle::stepTime(const double dt)
 {
 	if (isStatic) {
 		return;
@@ -136,20 +136,20 @@ void MacroParticle::stepTime(const double dt)
 	this->position += this->velocity * dt;
 }
 
-double MacroParticle::getDensity() const
+double KFMacroParticle::getDensity() const
 {
 	return (microPoints.size() + selfCount + boundaryCount) / (double)selfCount;
 	//return microCount / (double)(microCount + preCount);
 }
 
-void MacroParticle::updateMicros()
+void KFMacroParticle::updateMicros()
 {
 	for (auto mp : this->microPoints) {
 		mp->updatePosition();
 	}
 }
 
-void MacroParticle::updateInnerPoints()
+void KFMacroParticle::updateInnerPoints()
 {
 	const auto r = this->radius * 2.0;
 	innerPoints.clear();

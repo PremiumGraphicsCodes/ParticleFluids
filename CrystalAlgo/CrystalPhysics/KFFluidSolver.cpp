@@ -1,7 +1,7 @@
 #include "KFFluidSolver.h"
 
 #include "MicroParticle.h"
-#include "MacroParticle.h"
+#include "KFMacroParticle.h"
 
 #include "KFFluidScene.h"
 #include "KFFBoundarySolver.h"
@@ -22,7 +22,7 @@ void KFFluidSolver::step()
 
 void KFFluidSolver::simulate()
 {
-	std::vector<MacroParticle*> particles;
+	std::vector<KFMacroParticle*> particles;
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
 		particles.insert(particles.end(), ps.begin(), ps.end());

@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Scene/IScene.h"
 
-#include "MacroParticle.h"
+#include "KFMacroParticle.h"
 #include "KFFluidSceneController.h"
 
 namespace Crystal {
@@ -20,12 +20,12 @@ public:
 
 	Scene::IController* getController() { return controller.get(); }
 
-	void addParticle(MacroParticle* mp) {
+	void addParticle(KFMacroParticle* mp) {
 		mp->setScene(this);
 		particles.push_back(mp);
 	}
 
-	std::list<MacroParticle*> getParticles() const { return particles; }
+	std::list<KFMacroParticle*> getParticles() const { return particles; }
 
 	void clearParticles();
 
@@ -40,7 +40,7 @@ public:
 	double getViscosityCoe() const { return this->viscosityCoe; }
 
 private:
-	std::list<MacroParticle*> particles;
+	std::list<KFMacroParticle*> particles;
 	double pressureCoe;
 	double viscosityCoe;
 	std::unique_ptr<KFFluidSceneController> controller;

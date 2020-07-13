@@ -7,7 +7,7 @@
 
 namespace Crystal {
 	namespace Physics {
-		class MacroParticle;
+		class KFMacroParticle;
 
 class KFFBoundarySolver : private UnCopyable
 {
@@ -22,17 +22,17 @@ public:
 
 	void clear() { macros.clear(); }
 
-	void solve(MacroParticle* particle, const double dt);
+	void solve(KFMacroParticle* particle, const double dt);
 
-	void createMacro(MacroParticle* mp);
+	void createMacro(KFMacroParticle* mp);
 
 private:
-	void createMacro(MacroParticle* mp, const Math::Vector3dd& position);
+	void createMacro(KFMacroParticle* mp, const Math::Vector3dd& position);
 
 
 private:
 	Math::Box3d boundary;
-	std::vector<std::unique_ptr<MacroParticle>> macros;
+	std::vector<std::unique_ptr<KFMacroParticle>> macros;
 };
 	}
 }

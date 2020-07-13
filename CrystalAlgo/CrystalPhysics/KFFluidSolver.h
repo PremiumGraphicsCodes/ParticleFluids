@@ -10,7 +10,7 @@
 
 namespace Crystal {
 	namespace Physics {
-		class MacroParticle;
+		class KFMacroParticle;
 		class KFFluidScene;
 
 class KFFluidSolver : public Scene::IAnimator
