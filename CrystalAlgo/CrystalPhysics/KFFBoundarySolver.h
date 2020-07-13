@@ -18,6 +18,8 @@ public:
 		boundary(boundary)
 	{}
 
+	~KFFBoundarySolver() { clear(); }
+
 	void clear() { macros.clear(); }
 
 	void solve(MacroParticle* particle, const double dt);

@@ -60,7 +60,11 @@ void KFFluidSolver::simulate()
 		particle->calculateViscosity(particle->getScene()->getViscosityCoe());
 	}
 
-	solveBoundary(particles);
+	KFFBoundarySolver boundarySolver(boundary);
+	for (auto particle : particles) {
+		//boundarySolver.createMacro(particle);
+		boundarySolver.solve(particle, dt);
+	}
 
 	for (auto particle : particles) {
 		particle->addForce(Vector3dd(0.0,-9.8 * particle->getDensity(),0.0));
@@ -79,7 +83,10 @@ void KFFluidSolver::simulate()
 			particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
 		}
 
-		solveBoundary(particles);
+		for (auto particle : particles) {
+			boundarySolver.solve(particle, dt);
+		}
+	//	solveBoundary(particles);
 
 		for(auto particle : particles) {
 			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
@@ -92,12 +99,3 @@ void KFFluidSolver::simulate()
 		fluid->getController()->updateView();
 	}
 }
-
-void KFFluidSolver::solveBoundary(const std::vector<MacroParticle*>& particles)
-{
-	KFFBoundarySolver boundarySolver(boundary);
-	for (auto particle : particles) {
-		boundarySolver.solve(particle, dt);
-	}
-}
-

@@ -34,7 +34,7 @@ private:
 	double dt;
 
 private:
-	void solveBoundary(const std::vector<MacroParticle*>& particles);
+	//void solveBoundary(const std::vector<MacroParticle*>& particles);
 };
 
 	}

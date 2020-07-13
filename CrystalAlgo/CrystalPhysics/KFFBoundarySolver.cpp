@@ -48,12 +48,12 @@ void KFFBoundarySolver::solve(MacroParticle* particle, const double dt)
 
 void KFFBoundarySolver::createMacro(MacroParticle* mp)
 {
-	auto position = mp->getPosition();
+	const auto position = mp->getPosition();
 	const auto radius = mp->getRadius();
 	if (position.y < boundary.getMinY() + radius * 2.0) {
 		auto bp = std::make_unique<MacroParticle>(radius, position);
-		const Vector3dd p1(position.x, boundary.getMinY(), position.z);
-		const Vector3dd p2(position.x, boundary.getMinY() - radius, position.z);
+		const Vector3dd p1(position.x, boundary.getMinY() + radius, position.z);
+		const Vector3dd p2(position.x, boundary.getMinY(), position.z);
 		createMacro(mp, p1);
 		createMacro(mp, p2);
 	}
@@ -69,18 +69,18 @@ void KFFBoundarySolver::createMacro(MacroParticle* mp, const Vector3dd& position
 	const int wnum = 3;
 	for (int x = 0; x <= unum; x++) {
 		for (int y = 0; y <= vnum; ++y) {
-			for (int z = 0; z <= wnum; ++z) {
+//			for (int z = 0; z <= wnum; ++z) {
 				const auto xx = x / (double)unum;
 				const auto yy = y / (double)vnum;
-				const auto zz = z / (double)wnum;
-				const Vector3dd v(xx - 0.5, yy - 0.5, zz - 0.5);
+//				const auto zz = z / (double)wnum;
+				const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);// zz - 0.5);
 				auto micro = new MicroParticle(mp, v * 2.0, 1.0);
 				if (Math::getDistanceSquared(micro->getPosition(), mp->getPosition()) < radius * radius) {
 					mp->addMicro(micro);
 					bp->addSelfMicro(micro);
 				}
 			}
-		}
+//		}
 	}
 
 	//macro->addMicro()
