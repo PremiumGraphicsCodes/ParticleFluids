@@ -63,7 +63,7 @@ void MacroParticle::distributePoints(const int unum, const int vnum, const int w
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto d = Math::getLengthSquared(v);
 				if (d < 0.5 * 0.5) {
-					points.push_back(new MicroParticle(this, v * 2.0, 1.0));
+					points.push_back(new MicroParticle(this, v * 3.0, 1.0));
 					selfCount++;
 				}
 			}

@@ -77,7 +77,7 @@ void KFFluidSolver::simulate()
 
 	// solve incompressibility.
 	double relaxationCoe = 0.5;
-	for (int i = 0; i < 1; ++i) {
+	for (int i = 0; i < 2; ++i) {
 		for (auto particle : particles) {
 			particle->reset(false);
 			particle->updateMicros();
