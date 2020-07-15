@@ -2,6 +2,7 @@
 //#include "PBFluidScene.h"
 //#include "PBSPHParticle.h"
 #include "DFFluidParticle.h"
+#include "DFFluidScene.h"
 
 #include "../CrystalAlgo/CompactSpaceHash3d.h"
 
@@ -23,24 +24,17 @@ void DFFluidSolver::step()
 
 void DFFluidSolver::simulate(const float dt, const float effectLength, const float searchLength, const int maxIter)
 {
-	/*
 	std::vector<DFFluidParticle*> particles;
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
 		particles.insert(particles.end(), ps.begin(), ps.end());
 	}
-	*/
 
-	/*
-	const auto hashSize = particles.front()->getPoints().size() * particles.size();
+	const auto hashSize = static_cast<int>(particles.size()) * 2;
 	const auto searchRadius = particles.front()->getRadius() * 2.25;
 	CompactSpaceHash3d spaceHash(searchRadius, hashSize);
 	for (auto particle : particles) {
-		particle->updateMicros();
-		const auto& microParticles = particle->getPoints();
-		for (auto mp : microParticles) {
-			spaceHash.add(mp);
-		}
+		spaceHash.add(particle);
 	}
 
 #pragma omp parallel for
@@ -48,14 +42,8 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		const auto particle = particles[i];
 		const auto& neighbors = spaceHash.findNeighbors(particle);
 	}
-	*/
 
 	/*
-	std::vector<PBSPHParticle*> particles;
-	for (auto fluid : fluids) {
-		const auto ps = fluid->getParticles();
-		particles.insert(particles.end(), ps.begin(), ps.end());
-	}
 
 	for (auto p : particles) {
 		p->init();
