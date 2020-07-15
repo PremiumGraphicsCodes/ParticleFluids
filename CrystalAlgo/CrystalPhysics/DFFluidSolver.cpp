@@ -1,7 +1,5 @@
 #include "DFFluidSolver.h"
-//#include "PBFluidScene.h"
-//#include "PBSPHParticle.h"
-#include "DFFluidParticle.h"
+#include "DFSPHParticle.h"
 #include "DFFluidScene.h"
 
 #include "../CrystalAlgo/CompactSpaceHash3d.h"
@@ -24,7 +22,7 @@ void DFFluidSolver::step()
 
 void DFFluidSolver::simulate(const float dt, const float effectLength, const float searchLength, const int maxIter)
 {
-	std::vector<DFFluidParticle*> particles;
+	std::vector<DFSPHParticle*> particles;
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
 		particles.insert(particles.end(), ps.begin(), ps.end());

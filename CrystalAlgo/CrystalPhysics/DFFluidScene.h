@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Scene/IScene.h"
 
-#include "DFFluidParticle.h"
+#include "DFSPHParticle.h"
 //#include "KFFluidSceneController.h"
 
 namespace Crystal {
@@ -22,12 +22,12 @@ public:
 		return nullptr;
 	}//controller.get(); }
 
-	void addParticle(DFFluidParticle* mp) {
+	void addParticle(DFSPHParticle* mp) {
 		//mp->setScene(this);
 		particles.push_back(mp);
 	}
 
-	std::list<DFFluidParticle*> getParticles() const { return particles; }
+	std::list<DFSPHParticle*> getParticles() const { return particles; }
 
 	void clearParticles();
 
@@ -42,7 +42,7 @@ public:
 	double getViscosityCoe() const { return this->viscosityCoe; }
 
 private:
-	std::list<DFFluidParticle*> particles;
+	std::list<DFSPHParticle*> particles;
 	double pressureCoe;
 	double viscosityCoe;
 	//std::unique_ptr<KFFluidSceneController> controller;

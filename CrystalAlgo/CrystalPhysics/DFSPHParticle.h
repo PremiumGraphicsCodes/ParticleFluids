@@ -7,10 +7,10 @@ namespace Crystal {
 	namespace Physics {
 		class SPHConstant;
 
-class DFFluidParticle : public Shape::IPoint
+class DFSPHParticle : public Shape::IPoint
 {
 public:
-	DFFluidParticle(const Math::Vector3dd& position, const double radius, SPHConstant* constant) :
+	DFSPHParticle(const Math::Vector3dd& position, const double radius, SPHConstant* constant) :
 		position(position),
 		radius(radius),
 		constant(constant),
@@ -21,20 +21,20 @@ public:
 
 	double getRadius() const { return radius; }
 
-	void setNeighbors(const std::vector<DFFluidParticle*>& neighbors) { this->neighbors = neighbors; }
+	void setNeighbors(const std::vector<DFSPHParticle*>& neighbors) { this->neighbors = neighbors; }
 
 	double getMass() const;
 
 	void addSelfDensity();
 
-	void addDensity(const DFFluidParticle& rhs);
+	void addDensity(const DFSPHParticle& rhs);
 
 	void addDensity(const float distance, const float mass);
 
 private:
 	Math::Vector3dd position;
 	const double radius;
-	std::vector<DFFluidParticle*> neighbors;
+	std::vector<DFSPHParticle*> neighbors;
 	SPHKernel* kernel;
 	SPHConstant* constant;
 	double density;
