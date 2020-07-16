@@ -10,11 +10,12 @@ namespace Crystal {
 class DFSPHParticle : public Shape::IPoint
 {
 public:
-	DFSPHParticle(const Math::Vector3df& position, const float radius, SPHConstant* constant) :
+	DFSPHParticle(const Math::Vector3df& position, const float radius, SPHConstant* constant, SPHKernel* kernel) :
 		position(position),
 		velocity(0,0,0),
 		radius(radius),
 		constant(constant),
+		kernel(kernel),
 		density(0.0),
 		alpha(0.0)
 	{}
@@ -44,6 +45,8 @@ public:
 	void calculateVelocityInDivergenceError(const float dt);
 
 	void calculateVelocityInDensityError(const float dt);
+
+	void setKernel(SPHKernel* kernel) { this->kernel = kernel; }
 
 	Math::Vector3df force;
 	Math::Vector3df velocity;

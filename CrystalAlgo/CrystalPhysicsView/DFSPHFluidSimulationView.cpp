@@ -20,6 +20,7 @@ using namespace Crystal::Physics;
 
 namespace {
 	SPHConstant sphConstant(1.0f, 1000.0f, 100.0f, 0.0f, 2.25f);
+	SPHKernel sphKernel;
 	//sphConstant.
 }
 
@@ -77,7 +78,7 @@ void DFSPHFluidSimulationView::reset()
 	//this->simulator->clear();
 	this->fluidScene->clearParticles();
 
-	auto mp = new DFSPHParticle(Vector3dd(0,0,0), 1.0, &sphConstant);
+	auto mp = new DFSPHParticle(Vector3dd(0,0,0), 1.0, &sphConstant, &sphKernel);
 	this->fluidScene->addParticle(mp);
 
 	/*

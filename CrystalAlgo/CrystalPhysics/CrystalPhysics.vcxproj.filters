@@ -68,6 +68,9 @@
     <ClInclude Include="DFSPHParticle.h">
       <Filter>DFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="DFFluidSceneController.h">
+      <Filter>DFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MicroParticle.cpp">
@@ -120,6 +123,9 @@
     </ClCompile>
     <ClCompile Include="SPHKernel.cpp" />
     <ClCompile Include="DFSPHParticle.cpp">
+      <Filter>DFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="DFFluidSceneController.cpp">
       <Filter>DFFluid</Filter>
     </ClCompile>
   </ItemGroup>

@@ -28,6 +28,12 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		particles.insert(particles.end(), ps.begin(), ps.end());
 	}
 
+	SPHKernel kernel(effectLength);
+	for (auto p : particles) {
+		p->setKernel(&kernel);
+	}
+
+
 	/*
 	for (auto p : particles) {
 		p->init();
@@ -97,6 +103,8 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		}
 
 		correctDivergenceError(particles, dt);
+
+		time += dt;
 	}
 }
 
@@ -112,6 +120,7 @@ void DFFluidSolver::correctDivergenceError(const std::vector<DFSPHParticle*>& pa
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->calculateVelocityInDivergenceError(dt);
 		}
+		iter++;
 	}
 }
 
@@ -125,6 +134,7 @@ void DFFluidSolver::correctDensityError(const std::vector<DFSPHParticle*>& parti
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->calculateVelocityInDensityError(dt);
 		}
+		iter++;
 	}
 }
 
