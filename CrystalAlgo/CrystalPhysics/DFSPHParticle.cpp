@@ -62,7 +62,7 @@ void DFSPHParticle::calculateVelocityInDivergenceError(const float dt)
 		const auto v = this->position - n->position;
 		dv += n->getMass()* (k_i / density + k_j / n->density) * kernel->getCubicSplineGradient(v, kernel->getEffectLength());
 	}
-	this->velocity -= dv;
+	this->velocity -= dt * dv;
 }
 
 void DFSPHParticle::calculateVelocityInDensityError(const float dt)
@@ -74,5 +74,5 @@ void DFSPHParticle::calculateVelocityInDensityError(const float dt)
 		const auto v = this->position - n->position;
 		dv += n->getMass() * (k_i / density + k_j / n->density) * kernel->getCubicSplineGradient(v, kernel->getEffectLength());
 	}
-	this->velocity -= dv;
+	this->velocity -= dt * dv;
 }
