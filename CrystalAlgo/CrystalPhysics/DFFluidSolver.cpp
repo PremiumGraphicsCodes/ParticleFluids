@@ -69,100 +69,64 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->velocity += dt * particles[i]->force / particles[i]->getMass();
 		}
+		correctDensityError(particles);
 
-	}
-	/*
-
-
-	PBSPHBoundarySolver boundarySolver(boundary);
-	for (auto p : particles) {
-		p->addExternalForce(externalForce);
-		p->predictPosition_(dt);
-	}
-
-	IndexedSortSearchAlgo finder(searchLength);
-	for (auto p : particles) {
-		finder.add(p);
-	}
-	finder.createPairs();
-
-	const auto& pairs = finder.getPairs();
-
-	SPHKernel kernel(effectLength);
-	for (auto p : particles) {
-		p->setKernel(&kernel);
-	}
-
-	for (int iter = 0; iter < maxIter; ++iter) {
 		for (int i = 0; i < particles.size(); ++i) {
-			const auto p = static_cast<PBSPHParticle*>(particles[i]);
-			p->setDensity(0.0f);
-			p->dx = Math::Vector3df(0, 0, 0);
+			particles[i]->position += dt * particles[i]->getVelocity();
 		}
 
-		boundarySolver.addDX(particles, dt);
-
+		spaceHash.clear();
 		for (int i = 0; i < particles.size(); ++i) {
-			const auto p = static_cast<PBSPHParticle*>(particles[i]);
-			p->addSelfDensity();
+			spaceHash.add(particles[i]);
 		}
 
 #pragma omp parallel for
-		for (int i = 0; i < pairs.size(); ++i) {
-			const auto p1 = static_cast<PBSPHParticle*>(pairs[i].first);
-			const auto p2 = static_cast<PBSPHParticle*>(pairs[i].second);
-			p1->addDensity(*p2);
-			p2->addDensity(*p1);
+		for (int i = 0; i < particles.size(); ++i) {
+			auto particle = particles[i];
+			const auto& neighbors = spaceHash.findNeighbors(particle);
+			for (auto mp : neighbors) {
+				particle->addNeighbor(static_cast<DFSPHParticle*>(mp));
+			}
 		}
 
 #pragma omp parallel for
-		for (int i = 0; i < pairs.size(); ++i) {
-			const auto p1 = static_cast<PBSPHParticle*>(pairs[i].first);
-			const auto p2 = static_cast<PBSPHParticle*>(pairs[i].second);
-			p1->calculatePressure(*p2);
-			p2->calculatePressure(*p1);
+		for (int i = 0; i < particles.size(); ++i) {
+			particles[i]->calculateDensity();
+			particles[i]->calculateAlpha();
 		}
 
-		boundarySolver.calculatePressure(particles);
+		correctDivergenceError(particles);
+	}
+}
+
+void DFFluidSolver::correctDivergenceError(const std::vector<DFSPHParticle*>& particles)
+{
+	int iter = 0;
+	while (iter < 1) {
 
 		for (int i = 0; i < particles.size(); ++i) {
-			const auto p = particles[i];
-			p->updatePredictPosition();
+			particles[i]->calculateDpDt();
+		}
+
+		for (int i = 0; i < particles.size(); ++i) {
+			particles[i]->calculateVelocityInDivergenceError();
 		}
 	}
-
-	for (int i = 0; i < particles.size(); ++i) {
-		particles[i]->xvisc = Vector3df(0, 0, 0);
-	}
-	boundarySolver.calculateViscosity(particles);
-	for (int i = 0; i < pairs.size(); ++i) {
-		const auto p1 = static_cast<PBSPHParticle*>(pairs[i].first);
-		const auto p2 = static_cast<PBSPHParticle*>(pairs[i].second);
-		p1->calculateViscosity(*p2);
-		p2->calculateViscosity(*p1);
-	}
-
-	for (auto p : particles) {
-		p->updateVelocity(dt);
-		p->addVelocity(p->xvisc);
-		p->updatePosition();
-		//	p->integrate(dt);
-	}
-
-	for (auto fluid : fluids) {
-		fluid->getController()->updateView();
-	}
-	*/
 }
 
-void DFFluidSolver::correctDivergenceError()
+void DFFluidSolver::correctDensityError(const std::vector<DFSPHParticle*>& particles)
 {
+	int iter = 0;
+	while (iter < 2) {
+		for (int i = 0; i < particles.size(); ++i) {
 
-}
-
-void DFFluidSolver::correctDensityError()
-{
-
+			// predict density
+			//particles[i]->dp();
+		}
+		for (int i = 0; i < particles.size(); ++i) {
+			particles[i]->calculateVelocityInDensityError();
+		}
+	}
 }
 
 double DFFluidSolver::calculateTimeStep(const std::vector<DFSPHParticle*>& particles)

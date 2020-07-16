@@ -41,9 +41,9 @@ private:
 	double maxTimeStep;
 
 private:
-	void correctDivergenceError();
+	void correctDivergenceError(const std::vector<DFSPHParticle*>& particles);
 
-	void correctDensityError();
+	void correctDensityError(const std::vector<DFSPHParticle*>& particles);
 
 	double calculateTimeStep(const std::vector<DFSPHParticle*>& particles);
 

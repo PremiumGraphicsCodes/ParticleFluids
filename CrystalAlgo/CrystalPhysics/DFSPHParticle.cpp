@@ -27,11 +27,27 @@ void DFSPHParticle::calculateAlpha()
 	Vector3dd a(0,0,0);
 	double b = 0.0;
 	for (auto n : neighbors) {
-		const auto v = n->getPosition() - this->getPosition();
+		const auto v = this->getPosition() - n->position;
 		const auto weight = (kernel->getCubicSplineGradient(v, kernel->getEffectLength()) * (float)n->getMass());
 		a += weight;
 		b += Math::getLengthSquared(weight);
 	}
 
 	this->alpha += Math::getLengthSquared(a) + b;
+}
+
+double DFSPHParticle::calculateDpDt()
+{
+	this->dpdt = 0.0;
+	for (auto n : neighbors) {
+		const auto v = this->position - n->getPosition();
+		//const auto grad = kernel->getCubicSplineGradient(velocity, kernel->getEffectLength());
+		//dpdt += Math::getLengthSquared(glm::dot(this->velocity, grad));
+	}
+	this->dpdt *= -density;
+}
+
+void DFSPHParticle::calculateVelocityInDivergenceError()
+{
+
 }

@@ -27,6 +27,8 @@ public:
 
 	void addNeighbor(DFSPHParticle* neighbor) { this->neighbors.push_back( neighbor ); }
 
+	void clearNeighbors() { this->neighbors.clear(); }
+
 	std::vector<DFSPHParticle*> getNeighbors() const { return neighbors; }
 
 	double getMass() const;
@@ -34,6 +36,12 @@ public:
 	void calculateDensity();
 
 	void calculateAlpha();
+
+	double calculateDpDt();
+
+	void calculateVelocityInDivergenceError();
+
+	void calculateVelocityInDensityError();
 
 	Math::Vector3dd force;
 	Math::Vector3dd velocity;
@@ -46,6 +54,7 @@ private:
 	SPHConstant* constant;
 	double density;
 	double alpha;
+	double dpdt;
 };
 	}
 }
