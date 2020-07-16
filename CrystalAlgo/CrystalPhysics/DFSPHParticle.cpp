@@ -67,10 +67,10 @@ void DFSPHParticle::calculateVelocityInDivergenceError(const float dt)
 
 void DFSPHParticle::calculateVelocityInDensityError(const float dt)
 {
-	const auto k_i = this->predictedDensity - constant->getDensity() / dt / dt * alpha;
+	const auto k_i = (this->predictedDensity - constant->getDensity()) / dt / dt * alpha;
 	Vector3df dv(0, 0, 0);
 	for (auto n : neighbors) {
-		const auto k_j = n->predictedDensity - constant->getDensity() / dt / dt * n->alpha;
+		const auto k_j = (n->predictedDensity - constant->getDensity()) / dt / dt * n->alpha;
 		const auto v = this->position - n->position;
 		dv += n->getMass() * (k_i / density + k_j / n->density) * kernel->getCubicSplineGradient(v, kernel->getEffectLength());
 	}

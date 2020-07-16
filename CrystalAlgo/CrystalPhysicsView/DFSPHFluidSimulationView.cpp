@@ -28,7 +28,7 @@ DFSPHFluidSimulationView::DFSPHFluidSimulationView(World* model, Canvas* canvas)
 	IOkCancelView("DFSPHFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	timeStepView("TimeStep", 0.01),
+	timeStepView("TimeStep", 0.0001),
 	boundaryView("Boundary")
 {
 
@@ -83,8 +83,8 @@ void DFSPHFluidSimulationView::reset()
 
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
-	for (int i = 0; i < 2; ++i) {
-		for (int j = 0; j < 1; ++j) {
+	for (int i = 0; i < 10; ++i) {
+		for (int j = 0; j < 10; ++j) {
 			for (int k = 0; k < 1; ++k) {
 				auto mp = new DFSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, &sphKernel);
 				this->fluidScene->addParticle(mp);

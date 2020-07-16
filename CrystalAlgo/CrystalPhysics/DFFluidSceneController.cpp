@@ -28,7 +28,7 @@ void DFFluidSceneController::updateView()
 	const auto& ps = model->getParticles();
 	PointBuffer pb;
 	for (auto p : ps) {
-		pb.add(p->getPosition(), glm::vec4(1, 1, 1, 1), 10.0);
+		pb.add(p->getPosition(), glm::vec4(1, 1, 1, 1), 50.0);
 		/*
 		const auto& pts = p->getPoints();
 		for (auto pp : pts) {

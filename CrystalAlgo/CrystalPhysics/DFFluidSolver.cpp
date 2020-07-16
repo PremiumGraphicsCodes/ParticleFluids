@@ -83,6 +83,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 			particles[i]->position += dt * particles[i]->getVelocity();
 		}
 
+		/*
 		spaceHash.clear();
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->clearNeighbors();
@@ -105,8 +106,13 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		}
 
 		correctDivergenceError(particles, dt);
+		*/
 
 		time += dt;
+	}
+
+	for (auto fluid : fluids) {
+		fluid->getController()->updateView();
 	}
 }
 
