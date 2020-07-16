@@ -32,6 +32,11 @@ void CompactSpaceHash3d::clear()
 		delete cell;
 	}
 	cells.clear();
+
+	for (auto t : table) {
+		t.clear();
+	}
+	table.clear();
 }
 
 void CompactSpaceHash3d::add(IPoint* particle)

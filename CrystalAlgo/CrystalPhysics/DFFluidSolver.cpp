@@ -42,16 +42,16 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 
 	const auto hashSize = static_cast<int>(particles.size()) * 2;
 	const auto searchRadius = particles.front()->getRadius() * 2.25;
-	CompactSpaceHash3d spaceHash(searchRadius, hashSize);
+	CompactSpaceHash3d spaceHash1(searchRadius, hashSize);
 	for (auto particle : particles) {
 		particle->clearNeighbors();
-		spaceHash.add(particle);
+		spaceHash1.add(particle);
 	}
 
 #pragma omp parallel for
 	for (int i = 0; i < particles.size(); ++i) {
 		auto particle = particles[i];
-		const auto& neighbors = spaceHash.findNeighbors(particle);
+		const auto& neighbors = spaceHash1.findNeighbors(particle);
 		for (auto mp : neighbors) {
 			particle->addNeighbor(static_cast<DFSPHParticle*>(mp));
 		}
@@ -83,17 +83,16 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 			particles[i]->position += dt * particles[i]->getVelocity();
 		}
 
-		/*
-		spaceHash.clear();
+		CompactSpaceHash3d spaceHash2(searchRadius, hashSize);
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->clearNeighbors();
-			spaceHash.add(particles[i]);
+			spaceHash2.add(particles[i]);
 		}
 
 #pragma omp parallel for
 		for (int i = 0; i < particles.size(); ++i) {
 			auto particle = particles[i];
-			const auto& neighbors = spaceHash.findNeighbors(particle);
+			const auto& neighbors = spaceHash2.findNeighbors(particle);
 			for (auto mp : neighbors) {
 				particle->addNeighbor(static_cast<DFSPHParticle*>(mp));
 			}
@@ -106,7 +105,6 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		}
 
 		correctDivergenceError(particles, dt);
-		*/
 
 		time += dt;
 	}
