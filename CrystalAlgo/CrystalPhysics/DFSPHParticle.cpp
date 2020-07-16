@@ -36,7 +36,7 @@ void DFSPHParticle::calculateAlpha()
 	this->alpha += Math::getLengthSquared(a) + b;
 }
 
-double DFSPHParticle::calculateDpDt()
+void DFSPHParticle::calculateDpDt()
 {
 	this->dpdt = 0.0;
 	for (auto n : neighbors) {

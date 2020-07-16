@@ -37,7 +37,7 @@ public:
 
 	void calculateAlpha();
 
-	double calculateDpDt();
+	void calculateDpDt();
 
 	void predictDensity(const double dt);
 

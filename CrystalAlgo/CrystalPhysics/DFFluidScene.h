@@ -12,9 +12,11 @@ namespace Crystal {
 class DFFluidScene : public Scene::IScene
 {
 public:
-	DFFluidScene(const int id, const std::string& name);
+	DFFluidScene(const int id, const std::string& name) :
+		Scene::IScene(id, name)
+	{}
 
-	~DFFluidScene();
+	~DFFluidScene() {}
 
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
@@ -33,18 +35,9 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
-	void setPressureCoe(const double coe) { this->pressureCoe = coe; }
-
-	double getPressureCoe() const { return this->pressureCoe; }
-
-	void setViscosityCoe(const double coe) { this->viscosityCoe = coe; }
-
-	double getViscosityCoe() const { return this->viscosityCoe; }
 
 private:
 	std::list<DFSPHParticle*> particles;
-	double pressureCoe;
-	double viscosityCoe;
 	//std::unique_ptr<KFFluidSceneController> controller;
 };
 
