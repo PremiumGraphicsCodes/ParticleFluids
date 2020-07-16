@@ -40,16 +40,17 @@ void DFSPHParticle::calculateDpDt()
 {
 	this->dpdt = 0.0;
 	for (auto n : neighbors) {
-		const auto v = this->velocity - n->velocity;
+		const auto v = this->position - n->position;
 		const auto grad = kernel->getCubicSplineGradient(v, kernel->getEffectLength());
-		dpdt += glm::length(grad);
+		dpdt += glm::dot(this->velocity, grad);
 	}
 	this->dpdt *= -density;
 }
 
 void DFSPHParticle::predictDensity(const double dt)
 {
-	predictedDensity = density * dt * dpdt;
+	calculateDpDt();
+	predictedDensity = density + dt * dpdt;
 }
 
 void DFSPHParticle::calculateVelocityInDivergenceError(const float dt)
@@ -59,19 +60,19 @@ void DFSPHParticle::calculateVelocityInDivergenceError(const float dt)
 	for (auto n : neighbors) {
 		const auto k_j = 1.0f / dt * n->dpdt * n->alpha;
 		const auto v = this->position - n->position;
-		dv += n->getMass()* (k_i / density + k_j / density) * kernel->getCubicSplineGradient(v, kernel->getEffectLength());
+		dv += n->getMass()* (k_i / density + k_j / n->density) * kernel->getCubicSplineGradient(v, kernel->getEffectLength());
 	}
 	this->velocity -= dv;
 }
 
 void DFSPHParticle::calculateVelocityInDensityError(const float dt)
 {
-	const auto k_i = this->density - constant->getDensity() / dt / dt * alpha;
+	const auto k_i = this->predictedDensity - constant->getDensity() / dt / dt * alpha;
 	Vector3df dv(0, 0, 0);
 	for (auto n : neighbors) {
-		const auto k_j = n->density - constant->getDensity() / dt / dt * n->alpha;
+		const auto k_j = n->predictedDensity - constant->getDensity() / dt / dt * n->alpha;
 		const auto v = this->position - n->position;
-		dv += n->getMass() * (k_i / density + k_j / density) * kernel->getCubicSplineGradient(v, kernel->getEffectLength());
+		dv += n->getMass() * (k_i / density + k_j / n->density) * kernel->getCubicSplineGradient(v, kernel->getEffectLength());
 	}
 	this->velocity -= dv;
 }

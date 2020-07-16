@@ -78,21 +78,19 @@ void DFSPHFluidSimulationView::reset()
 	//this->simulator->clear();
 	this->fluidScene->clearParticles();
 
-	auto mp = new DFSPHParticle(Vector3dd(0,0,0), 1.0, &sphConstant, &sphKernel);
-	this->fluidScene->addParticle(mp);
+	//auto mp = new DFSPHParticle(Vector3dd(0,0,0), 1.0, &sphConstant, &sphKernel);
+	//this->fluidScene->addParticle(mp);
 
-	/*
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
-	for (int i = 0; i < 20; ++i) {
-		for (int j = 0; j < 20; ++j) {
-			for (int k = 0; k < 20; ++k) {
-				auto mp = new DFSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
+	for (int i = 0; i < 2; ++i) {
+		for (int j = 0; j < 1; ++j) {
+			for (int k = 0; k < 1; ++k) {
+				auto mp = new DFSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, &sphKernel);
 				this->fluidScene->addParticle(mp);
 			}
 		}
 	}
-	*/
 	simulator->setBoundary(boundaryView.getValue());
 	simulator->setTimeStep(timeStepView.getValue());
 }

@@ -44,6 +44,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 	const auto searchRadius = particles.front()->getRadius() * 2.25;
 	CompactSpaceHash3d spaceHash(searchRadius, hashSize);
 	for (auto particle : particles) {
+		particle->clearNeighbors();
 		spaceHash.add(particle);
 	}
 
@@ -68,7 +69,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 	while (time < maxTimeStep) {
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->force = Vector3df(0.0f, 0.0f, 0.0f);
-			particles[i]->force += Vector3df(0.0, -9.8, 0.0) * particles[i]->getMass();
+			//particles[i]->force += Vector3df(0.0, -9.8, 0.0) * particles[i]->getMass();
 		}
 
 		const auto dt = calculateTimeStep(particles);
@@ -84,6 +85,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 
 		spaceHash.clear();
 		for (int i = 0; i < particles.size(); ++i) {
+			particles[i]->clearNeighbors();
 			spaceHash.add(particles[i]);
 		}
 
