@@ -38,14 +38,14 @@ private:
 	std::vector<DFFluidScene*> fluids;
 	Math::Box3d boundary;
 	Math::Vector3df externalForce;
-	double maxTimeStep;
+	float maxTimeStep;
 
 private:
-	void correctDivergenceError(const std::vector<DFSPHParticle*>& particles);
+	void correctDivergenceError(const std::vector<DFSPHParticle*>& particles, const float dt);
 
-	void correctDensityError(const std::vector<DFSPHParticle*>& particles);
+	void correctDensityError(const std::vector<DFSPHParticle*>& particles, const float dt);
 
-	double calculateTimeStep(const std::vector<DFSPHParticle*>& particles);
+	float calculateTimeStep(const std::vector<DFSPHParticle*>& particles);
 
 };
 

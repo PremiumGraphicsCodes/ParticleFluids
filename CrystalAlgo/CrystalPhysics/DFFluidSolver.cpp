@@ -61,7 +61,8 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 	auto time = 0.0;
 	while (time < maxTimeStep) {
 		for (int i = 0; i < particles.size(); ++i) {
-			particles[i]->force += Vector3dd(0.0, -9.8, 0.0) * particles[i]->getMass();
+			particles[i]->force = Vector3df(0.0f, 0.0f, 0.0f);
+			particles[i]->force += Vector3df(0.0, -9.8, 0.0) * particles[i]->getMass();
 		}
 
 		const auto dt = calculateTimeStep(particles);
@@ -69,7 +70,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->velocity += dt * particles[i]->force / particles[i]->getMass();
 		}
-		correctDensityError(particles);
+		correctDensityError(particles, dt);
 
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->position += dt * particles[i]->getVelocity();
@@ -95,11 +96,11 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 			particles[i]->calculateAlpha();
 		}
 
-		correctDivergenceError(particles);
+		correctDivergenceError(particles, dt);
 	}
 }
 
-void DFFluidSolver::correctDivergenceError(const std::vector<DFSPHParticle*>& particles)
+void DFFluidSolver::correctDivergenceError(const std::vector<DFSPHParticle*>& particles, const float dt)
 {
 	int iter = 0;
 	while (iter < 1) {
@@ -109,27 +110,25 @@ void DFFluidSolver::correctDivergenceError(const std::vector<DFSPHParticle*>& pa
 		}
 
 		for (int i = 0; i < particles.size(); ++i) {
-			particles[i]->calculateVelocityInDivergenceError();
+			particles[i]->calculateVelocityInDivergenceError(dt);
 		}
 	}
 }
 
-void DFFluidSolver::correctDensityError(const std::vector<DFSPHParticle*>& particles)
+void DFFluidSolver::correctDensityError(const std::vector<DFSPHParticle*>& particles, const float dt)
 {
 	int iter = 0;
 	while (iter < 2) {
 		for (int i = 0; i < particles.size(); ++i) {
-
-			// predict density
-			//particles[i]->dp();
+			particles[i]->predictDensity(dt);
 		}
 		for (int i = 0; i < particles.size(); ++i) {
-			particles[i]->calculateVelocityInDensityError();
+			particles[i]->calculateVelocityInDensityError(dt);
 		}
 	}
 }
 
-double DFFluidSolver::calculateTimeStep(const std::vector<DFSPHParticle*>& particles)
+float DFFluidSolver::calculateTimeStep(const std::vector<DFSPHParticle*>& particles)
 {
 	double maxVelocity = 0.0;
 	for (auto p : particles) {
