@@ -10,23 +10,28 @@ double DFSPHParticle::getMass() const
 	return constant->getDensity() * diameter * diameter * diameter;
 }
 
-void DFSPHParticle::addSelfDensity()
+void DFSPHParticle::calculateDensity()
 {
-	this->density += (kernel->getPoly6Kernel(0.0, kernel->getEffectLength()) * this->getMass());
+	this->density = 0.0;
+	this->density += (kernel->getCubicSpline(0.0, kernel->getEffectLength()) * this->getMass());
+	for (auto n : neighbors) {
+		const auto distance = glm::distance(this->getPosition(), n->getPosition());
+		this->density += (kernel->getCubicSpline(distance, kernel->getEffectLength()) * n->getMass());
+	}
 }
 
-void DFSPHParticle::addDensity(const DFSPHParticle& rhs)
+void DFSPHParticle::calculateAlpha()
 {
-	const auto distance = glm::distance(this->getPosition(), rhs.getPosition());
-	this->density += (kernel->getPoly6Kernel(distance, kernel->getEffectLength()) * rhs.getMass());
-}
+	this->alpha = 0.0;
 
-void DFSPHParticle::addDensity(const float distance, const float mass)
-{
-	this->density += (kernel->getPoly6Kernel(distance, kernel->getEffectLength()) * mass);
-}
+	Vector3dd a(0,0,0);
+	double b = 0.0;
+	for (auto n : neighbors) {
+		const auto v = n->getPosition() - this->getPosition();
+		const auto weight = (kernel->getCubicSplineGradient(v, kernel->getEffectLength()) * (float)n->getMass());
+		a += weight;
+		b += Math::getLengthSquared(weight);
+	}
 
-void DFSPHParticle::addExternalForce(const Vector3dd& externalForce)
-{
-	this->force += externalForce * density;
+	this->alpha += Math::getLengthSquared(a) + b;
 }

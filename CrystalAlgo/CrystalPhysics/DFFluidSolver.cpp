@@ -52,21 +52,16 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 
 #pragma omp parallel for
 	for (int i = 0; i < particles.size(); ++i) {
-		const auto p = static_cast<DFSPHParticle*>(particles[i]);
-		p->addSelfDensity();
-		const auto& neighbors = p->getNeighbors();
-		for (auto n : neighbors) {
-			p->addDensity(*n);
-		}
+		particles[i]->calculateDensity();
+		particles[i]->calculateAlpha();
 	}
-
 
 	// compute factor alpha.
 
 	auto time = 0.0;
 	while (time < maxTimeStep) {
 		for (int i = 0; i < particles.size(); ++i) {
-			particles[i]->addExternalForce(Vector3dd(0.0, -9.8, 0.0));
+			particles[i]->force += Vector3dd(0.0, -9.8, 0.0) * particles[i]->getMass();
 		}
 
 		const auto dt = calculateTimeStep(particles);

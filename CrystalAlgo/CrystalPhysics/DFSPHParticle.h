@@ -15,7 +15,8 @@ public:
 		velocity(0,0,0),
 		radius(radius),
 		constant(constant),
-		density(0.0)
+		density(0.0),
+		alpha(0.0)
 	{}
 
 	Math::Vector3dd getPosition() const override { return position; }
@@ -30,13 +31,9 @@ public:
 
 	double getMass() const;
 
-	void addSelfDensity();
+	void calculateDensity();
 
-	void addDensity(const DFSPHParticle& rhs);
-
-	void addDensity(const float distance, const float mass);
-
-	void addExternalForce(const Math::Vector3dd& externalForce);
+	void calculateAlpha();
 
 	Math::Vector3dd force;
 	Math::Vector3dd velocity;
@@ -48,6 +45,7 @@ private:
 	SPHKernel* kernel;
 	SPHConstant* constant;
 	double density;
+	double alpha;
 };
 	}
 }
