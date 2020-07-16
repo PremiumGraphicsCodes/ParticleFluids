@@ -32,18 +32,21 @@ public:
 
 	//std::vector<PBSPHParticle*> getParticles() const { return particles; }
 
-	void setTimeStep(const double dt) { this->dt = dt; }
+	void setTimeStep(const double dt) { this->maxTimeStep = dt; }
 
 private:
 	std::vector<DFFluidScene*> fluids;
 	Math::Box3d boundary;
 	Math::Vector3df externalForce;
-	double dt;
+	double maxTimeStep;
 
 private:
 	void correctDivergenceError();
 
 	void correctDensityError();
+
+	double calculateTimeStep(const std::vector<DFSPHParticle*>& particles);
+
 };
 
 	}

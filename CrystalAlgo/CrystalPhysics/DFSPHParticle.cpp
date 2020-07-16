@@ -1,6 +1,7 @@
 #include "DFSPHParticle.h"
 #include "SPHConstant.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
 double DFSPHParticle::getMass() const
@@ -16,11 +17,16 @@ void DFSPHParticle::addSelfDensity()
 
 void DFSPHParticle::addDensity(const DFSPHParticle& rhs)
 {
-	const float distance = glm::distance(this->getPosition(), rhs.getPosition());
+	const auto distance = glm::distance(this->getPosition(), rhs.getPosition());
 	this->density += (kernel->getPoly6Kernel(distance, kernel->getEffectLength()) * rhs.getMass());
 }
 
 void DFSPHParticle::addDensity(const float distance, const float mass)
 {
 	this->density += (kernel->getPoly6Kernel(distance, kernel->getEffectLength()) * mass);
+}
+
+void DFSPHParticle::addExternalForce(const Vector3dd& externalForce)
+{
+	this->force += externalForce * density;
 }

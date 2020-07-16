@@ -12,12 +12,12 @@ using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
 DFFluidSolver::DFFluidSolver() :
-	dt(0.01)
+	maxTimeStep(0.01)
 {}
 
 void DFFluidSolver::step()
 {
-	simulate(dt, 2.25, 2.5, 3);
+	simulate(maxTimeStep, 2.25, 2.5, 3);
 }
 
 void DFFluidSolver::simulate(const float dt, const float effectLength, const float searchLength, const int maxIter)
@@ -28,6 +28,12 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		particles.insert(particles.end(), ps.begin(), ps.end());
 	}
 
+	/*
+	for (auto p : particles) {
+		p->init();
+	}
+	*/
+
 	const auto hashSize = static_cast<int>(particles.size()) * 2;
 	const auto searchRadius = particles.front()->getRadius() * 2.25;
 	CompactSpaceHash3d spaceHash(searchRadius, hashSize);
@@ -37,15 +43,41 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 
 #pragma omp parallel for
 	for (int i = 0; i < particles.size(); ++i) {
-		const auto particle = particles[i];
+		auto particle = particles[i];
 		const auto& neighbors = spaceHash.findNeighbors(particle);
+		for (auto mp : neighbors) {
+			particle->addNeighbor(static_cast<DFSPHParticle*>(mp));
+		}
 	}
 
+#pragma omp parallel for
+	for (int i = 0; i < particles.size(); ++i) {
+		const auto p = static_cast<DFSPHParticle*>(particles[i]);
+		p->addSelfDensity();
+		const auto& neighbors = p->getNeighbors();
+		for (auto n : neighbors) {
+			p->addDensity(*n);
+		}
+	}
+
+
+	// compute factor alpha.
+
+	auto time = 0.0;
+	while (time < maxTimeStep) {
+		for (int i = 0; i < particles.size(); ++i) {
+			particles[i]->addExternalForce(Vector3dd(0.0, -9.8, 0.0));
+		}
+
+		const auto dt = calculateTimeStep(particles);
+
+		for (int i = 0; i < particles.size(); ++i) {
+			particles[i]->velocity += dt * particles[i]->force / particles[i]->getMass();
+		}
+
+	}
 	/*
 
-	for (auto p : particles) {
-		p->init();
-	}
 
 	PBSPHBoundarySolver boundarySolver(boundary);
 	for (auto p : particles) {
@@ -136,4 +168,19 @@ void DFFluidSolver::correctDivergenceError()
 void DFFluidSolver::correctDensityError()
 {
 
+}
+
+double DFFluidSolver::calculateTimeStep(const std::vector<DFSPHParticle*>& particles)
+{
+	double maxVelocity = 0.0;
+	for (auto p : particles) {
+		maxVelocity = std::max<double>(maxVelocity, Math::getLengthSquared(p->getVelocity()));
+	}
+	if (maxVelocity < 1.0e-3) {
+		return maxTimeStep;
+	}
+	maxVelocity = std::sqrt(maxVelocity);
+	const auto dt = 0.4 * particles.front()->getRadius() * 2.0 / maxVelocity;
+	return maxTimeStep;
+	//return std::min(dt, maxTimeStep);
 }
