@@ -10,7 +10,7 @@
     <Filter Include="KFFluid">
       <UniqueIdentifier>{78ff2e95-a432-49fc-8ca9-4c386fae1a97}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DFFluid">
+    <Filter Include="DFSPH">
       <UniqueIdentifier>{80bcb3ac-b523-4050-8667-f3e7ed2ffc4d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -55,10 +55,10 @@
       <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="DFFluidSolver.h">
-      <Filter>DFFluid</Filter>
+      <Filter>DFSPH</Filter>
     </ClInclude>
     <ClInclude Include="DFFluidScene.h">
-      <Filter>DFFluid</Filter>
+      <Filter>DFSPH</Filter>
     </ClInclude>
     <ClInclude Include="KFMacroParticle.h">
       <Filter>KFFluid</Filter>
@@ -66,10 +66,13 @@
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
     <ClInclude Include="DFSPHParticle.h">
-      <Filter>DFFluid</Filter>
+      <Filter>DFSPH</Filter>
     </ClInclude>
     <ClInclude Include="DFFluidSceneController.h">
-      <Filter>DFFluid</Filter>
+      <Filter>DFSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="DFSPHBoundarySolver.h">
+      <Filter>DFSPH</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,20 +116,23 @@
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="DFFluidSolver.cpp">
-      <Filter>DFFluid</Filter>
+      <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="DFFluidScene.cpp">
-      <Filter>DFFluid</Filter>
+      <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="KFMacroParticle.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="SPHKernel.cpp" />
     <ClCompile Include="DFSPHParticle.cpp">
-      <Filter>DFFluid</Filter>
+      <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="DFFluidSceneController.cpp">
-      <Filter>DFFluid</Filter>
+      <Filter>DFSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="DFSPHBoundarySolver.cpp">
+      <Filter>DFSPH</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

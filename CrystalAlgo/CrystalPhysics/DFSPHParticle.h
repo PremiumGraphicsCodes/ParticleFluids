@@ -48,6 +48,8 @@ public:
 
 	void setKernel(SPHKernel* kernel) { this->kernel = kernel; }
 
+	float getDensity() const { return density; }
+
 	Math::Vector3df force;
 	Math::Vector3df velocity;
 	Math::Vector3df position;
