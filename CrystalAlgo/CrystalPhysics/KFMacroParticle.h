@@ -32,17 +32,19 @@ public:
 
 	void addMicro(MicroParticle* microParticle);
 
-	void calculatePressure(const double pressureCoe);
+	void calculatePressure(const float pressureCoe);
 
-	void calculateViscosity(const double viscosityCoe);
+	void calculateViscosity(const float viscosityCoe);
 
-	void stepTime(double dt);
+	void stepTime(const float dt);
 
-	double getRadius() const { return radius; }
+	float getRadius() const { return radius; }
 
 	std::vector<MicroParticle*> getPoints() { return points; }
 
 	Math::Vector3dd getPosition() const override { return position; }
+
+	Math::Vector3df getPositionf() const { return position; }
 
 	Math::Vector3dd getVelocity() const { return velocity; }
 
@@ -52,7 +54,7 @@ public:
 
 	void addBoundaryCount(const int count) { this->boundaryCount += count; }
 
-	double getDensity() const;
+	float getDensity() const;
 
 	void updateMicros();
 
@@ -61,13 +63,13 @@ public:
 	void updateInnerPoints();
 
 private:
-	double radius;
+	float radius;
 	std::vector<MicroParticle*> points;
 	std::vector<MicroParticle*> innerPoints;
 	std::vector<MicroParticle*> microPoints;
-	Math::Vector3dd force;
-	Math::Vector3dd position;
-	Math::Vector3dd velocity;
+	Math::Vector3df force;
+	Math::Vector3df position;
+	Math::Vector3df velocity;
 	KFFluidScene* scene;
 	int boundaryCount;
 

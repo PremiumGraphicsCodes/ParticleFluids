@@ -101,33 +101,33 @@ void KFMacroParticle::addMicro(MicroParticle* microParticle)
 	*/
 }
 
-void KFMacroParticle::calculatePressure(const double pressureCoe)
+void KFMacroParticle::calculatePressure(const float pressureCoe)
 {
 	if (isStatic) {
 		return;
 	}
 
-	Vector3dd averagedCenter(0, 0, 0);
+	Vector3df averagedCenter(0, 0, 0);
 	for (auto mp : innerPoints) {
-		averagedCenter += mp->getPosition() * mp->getWeight();
+		averagedCenter += mp->getPosition();// *mp->getWeight();
 	}
-	averagedCenter /= (double)(innerPoints.size());
-	auto ratio = ((innerPoints.size() + boundaryCount) / (double)selfCount) - 1.0;
-	ratio = std::max(0.0, ratio);
+	averagedCenter /= (float)(innerPoints.size());
+	auto ratio = ((innerPoints.size() + boundaryCount) / (float)selfCount) - 1.0f;
+	ratio = std::max(0.0f, ratio);
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe;// 10000.0;
 }
 
-void KFMacroParticle::calculateViscosity(const double viscosityCoe)
+void KFMacroParticle::calculateViscosity(const float viscosityCoe)
 {
-	Vector3dd averagedVelocity(0, 0, 0);
+	Vector3df averagedVelocity(0, 0, 0);
 	for (auto mp : innerPoints) {
 		averagedVelocity += mp->getVelocity() * mp->getWeight();
 	}
-	averagedVelocity /= (double)(innerPoints.size());
+	averagedVelocity /= (float)(innerPoints.size());
 	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
 }
 
-void KFMacroParticle::stepTime(const double dt)
+void KFMacroParticle::stepTime(const float dt)
 {
 	if (isStatic) {
 		return;
@@ -137,7 +137,7 @@ void KFMacroParticle::stepTime(const double dt)
 	this->position += this->velocity * dt;
 }
 
-double KFMacroParticle::getDensity() const
+float KFMacroParticle::getDensity() const
 {
 	return (microPoints.size() + boundaryCount) / (double)selfCount;
 	//return microCount / (double)(microCount + preCount);

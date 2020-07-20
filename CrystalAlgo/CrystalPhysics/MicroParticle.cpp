@@ -10,12 +10,12 @@ Vector3dd MicroParticle::getPosition() const
 	return position;
 }
 
-Vector3dd MicroParticle::getVelocity() const
+Vector3df MicroParticle::getVelocity() const
 {
 	return parent->getVelocity();
 }
 
 void MicroParticle::updatePosition()
 {
-	this->position = parent->getPosition() + parent->getRadius() * vector;
+	this->position = parent->getPositionf() + parent->getRadius() * vector;
 }
