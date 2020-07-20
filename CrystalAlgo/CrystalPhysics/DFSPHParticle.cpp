@@ -34,6 +34,10 @@ void DFSPHParticle::calculateAlpha()
 	}
 
 	this->alpha += Math::getLengthSquared(a) + b;
+
+	if (this->alpha < 1.0e-6) {
+		this->alpha = 0.0;
+	}
 }
 
 void DFSPHParticle::calculateDpDt()

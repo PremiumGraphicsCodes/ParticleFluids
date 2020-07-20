@@ -42,7 +42,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 	*/
 
 	const auto hashSize = static_cast<int>(particles.size()) * 2;
-	const auto searchRadius = particles.front()->getRadius() * 2.1;
+	const auto searchRadius = particles.front()->getRadius() * 2.25;
 	CompactSpaceHash3d spaceHash1(searchRadius, hashSize);
 	for (auto particle : particles) {
 		particle->clearNeighbors();
@@ -90,6 +90,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 			particles[i]->position += dt * particles[i]->getVelocity();
 		}
 
+		/*
 		CompactSpaceHash3d spaceHash2(searchRadius, hashSize);
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->clearNeighbors();
@@ -104,6 +105,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 				particle->addNeighbor(static_cast<DFSPHParticle*>(mp));
 			}
 		}
+		*/
 
 #pragma omp parallel for
 		for (int i = 0; i < particles.size(); ++i) {

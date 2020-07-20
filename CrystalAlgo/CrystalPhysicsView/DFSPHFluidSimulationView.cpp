@@ -85,8 +85,8 @@ void DFSPHFluidSimulationView::reset()
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 20; ++i) {
-		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 1; ++k) {
+		for (int j = 0; j < 20; ++j) {
+			for (int k = 0; k < 20; ++k) {
 				auto mp = new DFSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, &sphKernel);
 				this->fluidScene->addParticle(mp);
 			}
