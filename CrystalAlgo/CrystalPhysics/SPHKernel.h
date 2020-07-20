@@ -43,6 +43,8 @@ public:
 
 	float getEffectLength() const { return effectLength; }
 
+	void setEffectLength(const float el) { this->effectLength = el; }
+
 private:
 	float effectLength;
 	float poly6KernelConstant;

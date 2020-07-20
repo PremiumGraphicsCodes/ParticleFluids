@@ -13,13 +13,12 @@
 
 namespace Crystal {
 	namespace Physics {
+		class PBFluidScene;
 
 class PBSPHParticle : public Shape::IPoint
 {
 public:
-	PBSPHParticle(const Math::Vector3df& center, float radius, SPHConstant* constant);
-
-	void setKernel(SPHKernel* kernel) { this->kernel = kernel; }
+	PBSPHParticle(const Math::Vector3df& center, float radius, SPHConstant* constant, PBFluidScene* scene);
 
 	virtual ~PBSPHParticle() {};
 
@@ -112,7 +111,9 @@ private:
 	float density;
 
 	SPHConstant* constant;
-	SPHKernel* kernel;
+	PBFluidScene* scene;
+
+	SPHKernel* getKernel();
 };
 
 	}

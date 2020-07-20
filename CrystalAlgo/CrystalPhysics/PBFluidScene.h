@@ -4,6 +4,7 @@
 
 //#include "MacroParticle.h"
 #include "PBFluidSceneController.h"
+#include "SPHKernel.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -12,7 +13,7 @@ namespace Crystal {
 class PBFluidScene : public Scene::IScene
 {
 public:
-	PBFluidScene(const int id, const std::string& name);
+	PBFluidScene(const int id, const std::string& name, const SPHKernel& kernel);
 
 	~PBFluidScene();
 
@@ -28,9 +29,12 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
+	SPHKernel* getKernel() { return &kernel; }
+
 private:
 	std::list<PBSPHParticle*> particles;
 	std::unique_ptr<PBFluidSceneController> controller;
+	SPHKernel kernel;
 };
 
 	}

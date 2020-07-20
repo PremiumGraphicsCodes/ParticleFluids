@@ -6,8 +6,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-PBFluidScene::PBFluidScene(const int id, const std::string& name) :
-	IScene(id, name)
+PBFluidScene::PBFluidScene(const int id, const std::string& name, const SPHKernel& kernel) :
+	IScene(id, name),
+	kernel(kernel)
 {
 	this->controller = std::make_unique<PBFluidSceneController>(this);
 }

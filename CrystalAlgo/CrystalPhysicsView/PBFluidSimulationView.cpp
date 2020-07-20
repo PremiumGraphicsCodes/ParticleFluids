@@ -19,6 +19,7 @@ using namespace Crystal::Physics;
 
 namespace {
 	SPHConstant sphConstant(1.0f, 1000.0f, 100.0f, 0.0f, 2.25f);
+	SPHKernel kernel;
 	//sphConstant.
 }
 
@@ -47,7 +48,8 @@ void PBFluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
+	kernel.setEffectLength(2.25);
+	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid", kernel);
 	this->simulator = new PBSPHSolver();
 
 	
@@ -81,7 +83,7 @@ void PBFluidSimulationView::reset()
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
-				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
+				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, this->fluidScene);
 				this->fluidScene->addParticle(mp);
 			}
 		}

@@ -2,15 +2,18 @@
 
 #include "SPHKernel.h"
 
+#include "PBFluidScene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
 
-PBSPHParticle::PBSPHParticle(const Vector3df& center, float radius, SPHConstant* constant) :
+PBSPHParticle::PBSPHParticle(const Vector3df& center, float radius, SPHConstant* constant, PBFluidScene* scene) :
 	position(center),
 	radius(radius),
 //	ISPHParticle(center, radius),
-	constant(constant)
+	constant(constant),
+	scene(scene)
 {
 	this->density = constant->getDensity();
 }
@@ -59,18 +62,18 @@ void PBSPHParticle::addExternalForce(const Vector3df& externalForce)
 
 void PBSPHParticle::addSelfDensity()
 {
-	this->addDensity(kernel->getPoly6Kernel(0.0, kernel->getEffectLength()) * this->getMass());
+	this->addDensity(getKernel()->getPoly6Kernel(0.0, getKernel()->getEffectLength()) * this->getMass());
 }
 
 void PBSPHParticle::addDensity(const PBSPHParticle& rhs)
 {
 	const float distance = glm::distance(this->getPredictPosition(), rhs.getPredictPosition());
-	this->addDensity(kernel->getPoly6Kernel(distance, kernel->getEffectLength()) * rhs.getMass());
+	this->addDensity(scene->getKernel()->getPoly6Kernel(distance, getKernel()->getEffectLength()) * rhs.getMass());
 }
 
 void PBSPHParticle::addDensity(const float distance, const float mass)
 {
-	this->addDensity(kernel->getPoly6Kernel(distance, kernel->getEffectLength()) * mass);
+	this->addDensity(getKernel()->getPoly6Kernel(distance, getKernel()->getEffectLength()) * mass);
 }
 
 void PBSPHParticle::predictPosition_(const float dt)
@@ -111,14 +114,14 @@ Vector3df PBSPHParticle::getDiff(const PBSPHParticle& rhs) const
 void PBSPHParticle::calculatePressure(const PBSPHParticle& rhs)
 {
 	const auto v = this->getPredictPosition() - rhs.getPredictPosition();
-	const auto weight = kernel->getPoly6KernelGradient(v, kernel->getEffectLength());
+	const auto weight = getKernel()->getPoly6KernelGradient(v, getKernel()->getEffectLength());
 	const auto c = this->getConstraint() + rhs.getConstraint();
 	dx += c * weight / this->getDensity() * 0.05f;
 }
 
 void PBSPHParticle::calculatePressure(const Vector3df& v)
 {
-	const auto weight = kernel->getPoly6KernelGradient(v, kernel->getEffectLength());
+	const auto weight = getKernel()->getPoly6KernelGradient(v, getKernel()->getEffectLength());
 	const auto c = this->getConstraint() + this->getConstraint();
 	dx += c * weight / this->getDensity() * 0.5f;
 }
@@ -127,11 +130,16 @@ void PBSPHParticle::calculateViscosity(const PBSPHParticle& rhs)
 {
 	const auto v = this->getPredictPosition() - rhs.getPredictPosition();
 	const auto vel = rhs.getVelocity() - this->velocity;
-	const auto weight = kernel->getViscosityKernelLaplacian(glm::length(v), kernel->getEffectLength());
+	const auto weight = getKernel()->getViscosityKernelLaplacian(glm::length(v), getKernel()->getEffectLength());
 	this->xvisc += vel * weight * 0.1f;
 }
 
 float PBSPHParticle::getConstraint() const
 {
 	return std::max(getDensityRatio() - 1.0f, 0.0f);
+}
+
+SPHKernel* PBSPHParticle::getKernel()
+{
+	return scene->getKernel();
 }

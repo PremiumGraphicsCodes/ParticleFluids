@@ -48,10 +48,6 @@ void PBSPHSolver::simulate(const float maxTimeStep, const float effectLength, co
 
 	const auto& pairs = finder.getPairs();
 
-	SPHKernel kernel(effectLength);
-	for (auto p : particles) {
-		p->setKernel(&kernel);
-	}
 
 	for (int iter = 0; iter < maxIter; ++iter) {
 		for (int i = 0; i < particles.size(); ++i) {
