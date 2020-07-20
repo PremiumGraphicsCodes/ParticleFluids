@@ -73,6 +73,10 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 			particles[i]->force += Vector3df(0.0, -9.8, 0.0) * particles[i]->getMass();
 		}
 
+		for (int i = 0; i < particles.size(); ++i) {
+			particles[i]->calculateViscosity();
+		}
+
 		const auto dt = calculateTimeStep(particles);
 		DFSPHBoundarySolver boundarySolver(dt, boundary);
 		boundarySolver.solve(particles);
@@ -148,15 +152,14 @@ void DFFluidSolver::correctDensityError(const std::vector<DFSPHParticle*>& parti
 
 float DFFluidSolver::calculateTimeStep(const std::vector<DFSPHParticle*>& particles)
 {
-	double maxVelocity = 0.0;
+	float maxVelocity = 0.0;
 	for (auto p : particles) {
-		maxVelocity = std::max<double>(maxVelocity, Math::getLengthSquared(p->getVelocity()));
+		maxVelocity = std::max<float>(maxVelocity, Math::getLengthSquared(p->getVelocity()));
 	}
 	if (maxVelocity < 1.0e-3) {
 		return maxTimeStep;
 	}
 	maxVelocity = std::sqrt(maxVelocity);
-	const auto dt = 0.4 * particles.front()->getRadius() * 2.0 / maxVelocity;
-	return maxTimeStep;
-	//return std::min(dt, maxTimeStep);
+	const auto dt = 0.4f * particles.front()->getRadius() * 2.0f / maxVelocity;
+	return std::min(dt, maxTimeStep);
 }

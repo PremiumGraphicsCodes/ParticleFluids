@@ -19,7 +19,7 @@ using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
 namespace {
-	SPHConstant sphConstant(1.0f, 1000.0f, 100.0f, 0.0f, 2.25f);
+	SPHConstant sphConstant(1.0f, 1000.0f, 0.0f, 0.0f, 2.25f);
 	SPHKernel sphKernel;
 	//sphConstant.
 }
@@ -29,6 +29,7 @@ DFSPHFluidSimulationView::DFSPHFluidSimulationView(World* model, Canvas* canvas)
 	startButton("Start"),
 	resetButton("Reset"),
 	timeStepView("TimeStep", 0.001),
+	viscosityCoeView("ViscosityCoe", 1000.0f),
 	boundaryView("Boundary")
 {
 
@@ -39,8 +40,8 @@ DFSPHFluidSimulationView::DFSPHFluidSimulationView(World* model, Canvas* canvas)
 	add(&resetButton);
 
 	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
-
-
+	
+	add(&viscosityCoeView);
 	add(&timeStepView);
 	add(&boundaryView);
 }
@@ -83,14 +84,15 @@ void DFSPHFluidSimulationView::reset()
 
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
-	for (int i = 0; i < 5; ++i) {
-		for (int j = 0; j < 2; ++j) {
+	for (int i = 0; i < 20; ++i) {
+		for (int j = 0; j < 10; ++j) {
 			for (int k = 0; k < 1; ++k) {
 				auto mp = new DFSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, &sphKernel);
 				this->fluidScene->addParticle(mp);
 			}
 		}
 	}
+	sphConstant.viscosityCoe = viscosityCoeView.getValue();
 	simulator->setBoundary(boundaryView.getValue());
 	simulator->setTimeStep(timeStepView.getValue());
 }

@@ -38,9 +38,10 @@ public:
 
 	bool isBoundary;
 
+	float viscosityCoe;
+
 private:
 	float pressureCoe;
-	float viscosityCoe;
 	float tensionCoe;
 	float effectLength;
 	float density;

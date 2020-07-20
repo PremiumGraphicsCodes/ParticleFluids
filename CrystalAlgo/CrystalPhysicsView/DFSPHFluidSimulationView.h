@@ -26,6 +26,7 @@ private:
 	Button startButton;
 	Button resetButton;
 	DoubleView timeStepView;
+	DoubleView viscosityCoeView;
 	Box3dView boundaryView;
 	int newId;
 };

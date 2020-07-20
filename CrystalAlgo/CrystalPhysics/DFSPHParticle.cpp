@@ -76,3 +76,19 @@ void DFSPHParticle::calculateVelocityInDensityError(const float dt)
 	}
 	this->velocity -= dt * dv;
 }
+
+void DFSPHParticle::calculateViscosity()
+{
+	for (auto n : neighbors) {
+		const auto viscosityCoe = (this->constant->getViscosityCoe() + n->constant->getViscosityCoe()) * 0.5f;
+		const auto velocityDiff = (n->velocity - this->velocity);
+		const auto distance = glm::distance(getPosition(), n->getPosition());
+		this->force += viscosityCoe * velocityDiff * kernel->getCubicSpline(distance, constant->getEffectLength());
+
+		/*
+		const auto vel = n->getVelocity() - this->velocity;
+		const auto weight = kernel->getViscosityKernelLaplacian(glm::length(v), kernel->getEffectLength());
+		this->xvisc += vel * weight * 0.1f;
+		*/
+	}
+}

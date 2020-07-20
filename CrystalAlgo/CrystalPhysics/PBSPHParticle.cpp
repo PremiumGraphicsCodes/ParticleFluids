@@ -123,7 +123,6 @@ void PBSPHParticle::calculatePressure(const Vector3df& v)
 	dx += c * weight / this->getDensity() * 0.5f;
 }
 
-
 void PBSPHParticle::calculateViscosity(const PBSPHParticle& rhs)
 {
 	const auto v = this->getPredictPosition() - rhs.getPredictPosition();
@@ -131,7 +130,6 @@ void PBSPHParticle::calculateViscosity(const PBSPHParticle& rhs)
 	const auto weight = kernel->getViscosityKernelLaplacian(glm::length(v), kernel->getEffectLength());
 	this->xvisc += vel * weight * 0.1f;
 }
-
 
 float PBSPHParticle::getConstraint() const
 {
