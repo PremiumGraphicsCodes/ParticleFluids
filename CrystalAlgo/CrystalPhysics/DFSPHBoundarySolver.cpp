@@ -14,7 +14,7 @@ DFSPHBoundarySolver::DFSPHBoundarySolver(const float timeStep, const Box3d& boun
 void DFSPHBoundarySolver::solve(const std::vector<DFSPHParticle*>& particles) {
 	for (int i = 0; i < static_cast<int>(particles.size()); ++i) {
 		const auto force = getBoundaryForce(particles[i]->getPosition());
-		particles[i]->force += (force * particles[i]->getDensity());
+		particles[i]->force += (force * particles[i]->getMass());
 	}
 }
 

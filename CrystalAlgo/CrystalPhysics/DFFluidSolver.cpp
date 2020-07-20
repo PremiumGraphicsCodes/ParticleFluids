@@ -1,10 +1,11 @@
 #include "DFFluidSolver.h"
 #include "DFSPHParticle.h"
 #include "DFFluidScene.h"
+#include "DFSPHBoundarySolver.h"
 
 #include "../CrystalAlgo/CompactSpaceHash3d.h"
 
-#include "../CrystalAlgo/IndexedSortSearchAlgo.h"
+
 //#include "PBSPHBoundarySolver.h"
 
 using namespace Crystal::Math;
@@ -41,7 +42,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 	*/
 
 	const auto hashSize = static_cast<int>(particles.size()) * 2;
-	const auto searchRadius = particles.front()->getRadius() * 2.25;
+	const auto searchRadius = particles.front()->getRadius() * 2.1;
 	CompactSpaceHash3d spaceHash1(searchRadius, hashSize);
 	for (auto particle : particles) {
 		particle->clearNeighbors();
@@ -69,10 +70,12 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 	while (time < maxTimeStep) {
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->force = Vector3df(0.0f, 0.0f, 0.0f);
-			//particles[i]->force += Vector3df(0.0, -9.8, 0.0) * particles[i]->getMass();
+			particles[i]->force += Vector3df(0.0, -9.8, 0.0) * particles[i]->getMass();
 		}
 
 		const auto dt = calculateTimeStep(particles);
+		DFSPHBoundarySolver boundarySolver(dt, boundary);
+		boundarySolver.solve(particles);
 
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->velocity += dt * particles[i]->force / particles[i]->getMass();
@@ -105,7 +108,6 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		}
 
 		correctDivergenceError(particles, dt);
-
 		time += dt;
 	}
 
