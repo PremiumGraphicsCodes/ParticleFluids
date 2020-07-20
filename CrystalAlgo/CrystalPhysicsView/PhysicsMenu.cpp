@@ -1,7 +1,7 @@
 #include "PhysicsMenu.h"
 
 #include "KFFluidSimulationView.h"
-#include "PBFluidSimulationView.h"
+#include "PBSPHFluidSimulationView.h"
 #include "DFSPHFluidSimulationView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
@@ -21,8 +21,8 @@ void PhysicsMenu::onShow()
 		if (ImGui::MenuItem("KFFluid")) {
 			control->setWindow(new KFFluidSimulationView(getWorld(), getCanvas()));
 		}
-		if (ImGui::MenuItem("PBFluid")) {
-			control->setWindow(new PBFluidSimulationView(getWorld(), getCanvas()));
+		if (ImGui::MenuItem("PBSPHFluid")) {
+			control->setWindow(new PBSPHFluidSimulationView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("DFSPHFluid")) {
 			control->setWindow(new DFSPHFluidSimulationView(getWorld(), getCanvas()));

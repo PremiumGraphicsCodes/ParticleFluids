@@ -3,16 +3,16 @@
   <ItemGroup>
     <ClCompile Include="CrystalPhysicsView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
-    <ClCompile Include="PBFluidSimulationView.cpp" />
     <ClCompile Include="CSPHFluidSimulationView.cpp" />
     <ClCompile Include="KFFluidSimulationView.cpp" />
     <ClCompile Include="DFSPHFluidSimulationView.cpp" />
+    <ClCompile Include="PBSPHFluidSimulationView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
-    <ClInclude Include="PBFluidSimulationView.h" />
     <ClInclude Include="CSPHFluidSimulationView.h" />
     <ClInclude Include="KFFluidSimulationView.h" />
     <ClInclude Include="DFSPHFluidSimulationView.h" />
+    <ClInclude Include="PBSPHFluidSimulationView.h" />
   </ItemGroup>
 </Project>

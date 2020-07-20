@@ -18,7 +18,7 @@ namespace Crystal {
 class PBSPHParticle : public Shape::IPoint
 {
 public:
-	PBSPHParticle(const Math::Vector3df& center, float radius, SPHConstant* constant, PBFluidScene* scene);
+	PBSPHParticle(const Math::Vector3df& center, const float radius, PBFluidScene* scene);
 
 	virtual ~PBSPHParticle() {};
 
@@ -36,7 +36,7 @@ public:
 
 	Math::Vector3df getForce() const { return force; }
 
-	void setDefaultDensity() { this->density = constant->getDensity(); }
+	void setDefaultDensity();
 
 	float getDensity() const { return density; }
 
@@ -75,9 +75,9 @@ public:
 
 	void addPositionCorrection(const Math::Vector3df& pc);
 
-	void solveViscosity(const float distance);
+	//void solveViscosity(const float distance);
 
-	float getEffectLength() const { return constant->getEffectLength(); }
+	float getEffectLength() const;
 
 	Math::Vector3df getPredictPosition() const { return predictPosition; }
 
@@ -110,7 +110,6 @@ private:
 	float radius;
 	float density;
 
-	SPHConstant* constant;
 	PBFluidScene* scene;
 
 	SPHKernel* getKernel();

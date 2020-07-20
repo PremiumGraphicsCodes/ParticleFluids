@@ -1,4 +1,4 @@
-#include "PBFluidSimulationView.h"
+#include "PBSPHFluidSimulationView.h"
 
 #include "../CrystalPhysics/PBFluidScene.h"
 #include "../CrystalPhysics/PBSPHSolver.h"
@@ -23,7 +23,7 @@ namespace {
 	//sphConstant.
 }
 
-PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
+PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("PBFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
@@ -44,12 +44,12 @@ PBFluidSimulationView::PBFluidSimulationView(World* model, Canvas* canvas) :
 	add(&boundaryView);
 }
 
-void PBFluidSimulationView::onOk()
+void PBSPHFluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
 	kernel.setEffectLength(2.25);
-	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid", kernel);
+	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid", kernel, sphConstant);
 	this->simulator = new PBSPHSolver();
 
 	
@@ -73,7 +73,7 @@ void PBFluidSimulationView::onOk()
 	getWorld()->addAnimation(simulator);
 }
 
-void PBFluidSimulationView::reset()
+void PBSPHFluidSimulationView::reset()
 {
 	//this->simulator->clear();
 	this->fluidScene->clearParticles();
@@ -83,7 +83,7 @@ void PBFluidSimulationView::reset()
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
-				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, this->fluidScene);
+				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->fluidScene);
 				this->fluidScene->addParticle(mp);
 			}
 		}

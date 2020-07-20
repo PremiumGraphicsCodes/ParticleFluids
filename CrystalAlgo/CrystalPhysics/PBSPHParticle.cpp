@@ -8,14 +8,13 @@ using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
 
-PBSPHParticle::PBSPHParticle(const Vector3df& center, float radius, SPHConstant* constant, PBFluidScene* scene) :
+PBSPHParticle::PBSPHParticle(const Vector3df& center, const float radius, PBFluidScene* scene) :
 	position(center),
 	radius(radius),
 //	ISPHParticle(center, radius),
-	constant(constant),
 	scene(scene)
 {
-	this->density = constant->getDensity();
+	this->density = scene->getConstant()->getDensity();
 }
 
 void PBSPHParticle::init()
@@ -29,13 +28,13 @@ void PBSPHParticle::init()
 
 float PBSPHParticle::getDensityRatio() const
 {
-	return density / constant->getDensity();
+	return density / scene->getConstant()->getDensity();
 }
 
 float PBSPHParticle::getMass() const
 {
 	const auto diameter = radius * 2.0;
-	return constant->getDensity() * diameter * diameter * diameter;
+	return scene->getConstant()->getDensity() * diameter * diameter * diameter;
 }
 
 float PBSPHParticle::getVolume() const
@@ -45,7 +44,12 @@ float PBSPHParticle::getVolume() const
 
 float PBSPHParticle::getRestVolume() const
 {
-	return getMass() / constant->getDensity();
+	return getMass() / scene->getConstant()->getDensity();
+}
+
+void PBSPHParticle::setDefaultDensity()
+{
+	this->density = scene->getConstant()->getDensity();
 }
 
 void PBSPHParticle::forwardTime(const float timeStep)
@@ -109,6 +113,11 @@ Vector3df PBSPHParticle::getDiff(const PBSPHParticle& rhs) const
 {
 	//return this->getPosition() - rhs.getPosition();
 	return rhs.getPosition() - this->getPosition();
+}
+
+float PBSPHParticle::getEffectLength() const
+{
+	return scene->getConstant()->getEffectLength();
 }
 
 void PBSPHParticle::calculatePressure(const PBSPHParticle& rhs)
