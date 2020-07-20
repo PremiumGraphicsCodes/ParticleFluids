@@ -7,10 +7,10 @@ namespace Crystal {
 	namespace Physics {
 		class KFMacroParticle;
 
-class MicroParticle : public Shape::IPoint
+class KFMicroParticle : public Shape::IPoint
 {
 public:
-	MicroParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float weight) :
+	KFMicroParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float weight) :
 		parent(parent),
 		vector(point),
 		weight(weight)

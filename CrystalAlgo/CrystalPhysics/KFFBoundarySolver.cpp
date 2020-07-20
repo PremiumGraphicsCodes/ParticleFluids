@@ -75,7 +75,7 @@ void KFFBoundarySolver::createMacro(KFMacroParticle* mp, const Vector3dd& positi
 				const auto yy = y / (double)vnum;
 //				const auto zz = z / (double)wnum;
 				const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);// zz - 0.5);
-				auto micro = new MicroParticle(mp, v * 2.0, 1.0);
+				auto micro = new KFMicroParticle(mp, v * 2.0, 1.0);
 				if (Math::getDistanceSquared(micro->getPosition(), mp->getPosition()) < radius * radius) {
 					mp->addMicro(micro);
 					bp->addSelfMicro(micro);

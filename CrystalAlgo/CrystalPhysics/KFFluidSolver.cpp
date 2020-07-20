@@ -1,7 +1,7 @@
 #include "KFFluidSolver.h"
 
-#include "MicroParticle.h"
 #include "KFMacroParticle.h"
+#include "KFMicroParticle.h"
 
 #include "KFFluidScene.h"
 #include "KFFBoundarySolver.h"
@@ -51,7 +51,7 @@ void KFFluidSolver::simulate()
 		const auto particle = particles[i];
 		const auto& neighbors = spaceHash.findNeighbors(particle);
 		for (auto n : neighbors) {
-			particle->addMicro(static_cast<MicroParticle*>(n));
+			particle->addMicro(static_cast<KFMicroParticle*>(n));
 		}
 	}
 

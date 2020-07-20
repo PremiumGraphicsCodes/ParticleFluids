@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MicroParticle.h"
+#include "KFMicroParticle.h"
 
 #include <vector>
 #include <list>
@@ -28,9 +28,9 @@ public:
 
 	void reset(bool resetMicro);
 
-	void addSelfMicro(MicroParticle* mp) { this->points.push_back(mp); }
+	void addSelfMicro(KFMicroParticle* mp) { this->points.push_back(mp); }
 
-	void addMicro(MicroParticle* microParticle);
+	void addMicro(KFMicroParticle* microParticle);
 
 	void calculatePressure(const float pressureCoe);
 
@@ -40,7 +40,7 @@ public:
 
 	float getRadius() const { return radius; }
 
-	std::vector<MicroParticle*> getPoints() { return points; }
+	std::vector<KFMicroParticle*> getPoints() { return points; }
 
 	Math::Vector3dd getPosition() const override { return position; }
 
@@ -64,9 +64,9 @@ public:
 
 private:
 	float radius;
-	std::vector<MicroParticle*> points;
-	std::vector<MicroParticle*> innerPoints;
-	std::vector<MicroParticle*> microPoints;
+	std::vector<KFMicroParticle*> points;
+	std::vector<KFMicroParticle*> innerPoints;
+	std::vector<KFMicroParticle*> microPoints;
 	Math::Vector3df force;
 	Math::Vector3df position;
 	Math::Vector3df velocity;

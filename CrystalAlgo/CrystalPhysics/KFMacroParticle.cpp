@@ -37,7 +37,7 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum)
 			const auto d = Math::getLengthSquared(v);
 			if (d < 0.5 * 0.5) {
 //				const auto weight = (1.0 - std::sqrt(d) * 2.0);
-				points.push_back(new MicroParticle(this, v * 3.0, 1.0)); //weight));////d));
+				points.push_back(new KFMicroParticle(this, v * 3.0, 1.0)); //weight));////d));
 //				selfCount++;
 			}
 		}
@@ -64,7 +64,7 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto d = Math::getLengthSquared(v);
 				if (d < 0.5 * 0.5) {
-					points.push_back(new MicroParticle(this, v * 3.0, 1.0));
+					points.push_back(new KFMicroParticle(this, v * 3.0, 1.0));
 					selfCount++;
 				}
 			}
@@ -91,7 +91,7 @@ void MacroParticle::calculateDensity()
 }
 */
 
-void KFMacroParticle::addMicro(MicroParticle* microParticle)
+void KFMacroParticle::addMicro(KFMicroParticle* microParticle)
 {
 	microPoints.push_back(microParticle);
 	/*

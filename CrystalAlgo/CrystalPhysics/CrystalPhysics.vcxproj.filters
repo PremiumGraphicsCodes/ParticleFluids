@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MicroParticle.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
     <ClInclude Include="PBSPHParticle.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
@@ -74,11 +71,11 @@
     <ClInclude Include="DFSPHBoundarySolver.h">
       <Filter>DFSPH</Filter>
     </ClInclude>
+    <ClInclude Include="KFMicroParticle.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MicroParticle.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
     <ClCompile Include="PBSPHParticle.cpp">
       <Filter>PBSPH</Filter>
     </ClCompile>
@@ -133,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="DFSPHBoundarySolver.cpp">
       <Filter>DFSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="KFMicroParticle.cpp">
+      <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
