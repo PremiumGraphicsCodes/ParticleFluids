@@ -140,14 +140,23 @@ void DFFluidSolver::correctDivergenceError(const std::vector<DFSPHParticle*>& pa
 
 void DFFluidSolver::correctDensityError(const std::vector<DFSPHParticle*>& particles, const float dt)
 {
-	int iter = 0;
-	while (iter < 2) {
+	bool isErrorOk = false;
+	auto iter = 0;
+	while ((!isErrorOk || iter < 2) && iter < 100) {
+		const auto restDensity = particles.front()->getDensity();
+
+		//particles.front()->getDensity()
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->predictDensity(dt);
 		}
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->calculateVelocityInDensityError(dt);
 		}
+
+		const auto averageDensity = calculateAverageDensity(particles);
+		const auto densityErrorRatio = ::fabs(averageDensity - restDensity) / restDensity;
+		isErrorOk = densityErrorRatio < 0.05;
+
 		iter++;
 	}
 }
@@ -164,4 +173,14 @@ float DFFluidSolver::calculateTimeStep(const std::vector<DFSPHParticle*>& partic
 	maxVelocity = std::sqrt(maxVelocity);
 	const auto dt = 0.4f * particles.front()->getRadius() * 2.0f / maxVelocity;
 	return std::min(dt, maxTimeStep);
+}
+
+float DFFluidSolver::calculateAverageDensity(const std::vector<DFSPHParticle*>& particles)
+{
+	//const auto particleCount = particles.size();
+	float totalDensity = 0.0f;
+	for (auto p : particles) {
+		totalDensity += p->getPredictedDensity();
+	}
+	return totalDensity / (float)particles.size();
 }

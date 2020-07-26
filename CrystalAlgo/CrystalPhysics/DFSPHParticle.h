@@ -50,6 +50,8 @@ public:
 
 	float getDensity() const { return density; }
 
+	float getPredictedDensity() const { return predictedDensity; }
+
 	void calculateViscosity();
 
 	Math::Vector3df force;
