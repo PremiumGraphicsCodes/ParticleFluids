@@ -12,25 +12,64 @@
 namespace Crystal {
 	namespace Shape {
 
+template<typename T>
 class Volume : public IShape
 {
 public:
-	Volume() {}
+	explicit Volume(const Math::Box3d& box) :
+		box(box)
+	{}
+
+	/*
+	Volume(const int unum, const int vnum, const int wnum)
+	{
+		build(unum, vnum, wnum);
+	}
+	*/
 
 	~Volume() {
 		//clear();
 	}
 
-	void move(const Math::Vector3dd& v) override;
+	void build(const int unum, const int vnum, const int wnum)
+	{
+		nodes.resize(unum);
+		for (int i = 0; i < unum; ++i) {
+			nodes[i].resize(vnum);
+			for (int j = 0; j < vnum; ++j) {
+				nodes[i][j].resize(wnum);
+				/*
+				for (int k = 0; k < wnum; ++k) {
+					nodes[i][j][k] = new Particle<T>();
+				}
+				*/
+			}
+		}
+	}
 
-	void transform(const Math::Matrix3dd& m) override;
+	void move(const Math::Vector3dd& v) override {
+		box.translate(v);
+	}
 
-	void transform(const Math::Matrix4dd& m) override;
+	void transform(const Math::Matrix3dd& m) override {
 
-	Math::Box3d getBoundingBox() const override { box; }
+	}
+
+	void transform(const Math::Matrix4dd& m) override {
+
+	}
+
+	Math::Box3d getBoundingBox() const override { return box; }
+
+	size_t getUNum() const { return nodes.size(); }
+
+	size_t getVNum() const { return nodes[0].size(); }
+
+	size_t getWNum() const { return nodes[0][0].size(); }
 
 private:
 	Math::Box3d box;
+	std::vector<std::vector<std::vector<Particle<T>>>> nodes;
 };
 
 	}

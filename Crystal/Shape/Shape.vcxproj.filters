@@ -82,5 +82,8 @@
     <ClCompile Include="TriangleMeshBuilder.cpp">
       <Filter>TriangleMesh</Filter>
     </ClCompile>
+    <ClCompile Include="Volume.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

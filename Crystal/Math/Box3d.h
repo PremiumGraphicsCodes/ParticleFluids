@@ -5,9 +5,6 @@
 
 namespace Crystal {
 	namespace Math {
-		class Space3d;
-		class Quad3d;
-		class Line3d;
 		class Sphere3d;
 
 class Box3d : public IVolume3d
@@ -70,6 +67,8 @@ public:
 	Sphere3d getBoundintSphere() const;
 
 	bool isDegenerated(const double tolerance) { return getVolume() < tolerance; }
+
+	void translate(const Math::Vector3dd& v);
 
 private:
 	Vector3dd start;

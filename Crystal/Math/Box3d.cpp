@@ -80,8 +80,8 @@ bool Box3d::isInside(const Vector3dd& point) const
 bool Box3d::isSame(const Box3d& rhs, const double tolerance) const
 {
 	return
-		start == rhs.getStart() &&
-		end == rhs.getEnd();
+		areSame( start, rhs.getStart(), tolerance ) &&
+		areSame( end, rhs.getEnd(), tolerance );
 }
 
 bool Box3d::hasIntersection(const Box3d& rhs) const
@@ -129,4 +129,10 @@ Sphere3d Box3d::getBoundintSphere() const
 	const auto& halfLength = getLength() * 0.5;
 	const auto radius = glm::length(halfLength);
 	return Sphere3d(getCenter(), radius);
+}
+
+void Box3d::translate(const Math::Vector3dd& v)
+{
+	this->start += v;
+	this->end += v;
 }

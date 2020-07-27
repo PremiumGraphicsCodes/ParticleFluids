@@ -1,7 +1,8 @@
 #pragma once
 
-#include "../../Crystal/Scene/VolumeScene.h"
+#include "../../Crystal/Shape/Volume.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "CompactSpaceHash3d.h"
 
 namespace Crystal {
 	namespace Algo {
@@ -16,7 +17,8 @@ public:
 	void build();
 
 private:
-	//Volume volume;
+	Shape::Volume<double> volume;
+	Search::CompactSpaceHash3d spaceHash;
 };
 	}
 }

@@ -180,6 +180,7 @@
     <ClCompile Include="PolygonMeshBuilder.cpp" />
     <ClCompile Include="TriangleMesh.cpp" />
     <ClCompile Include="TriangleMeshBuilder.cpp" />
+    <ClCompile Include="Volume.cpp" />
     <ClCompile Include="WireFrame.cpp" />
     <ClCompile Include="WireFrameBuilder.cpp" />
   </ItemGroup>

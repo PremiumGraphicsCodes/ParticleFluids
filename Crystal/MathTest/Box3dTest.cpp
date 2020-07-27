@@ -77,3 +77,11 @@ TEST(Box3dTest, TestIsInside)
 	EXPECT_TRUE( b1.isInside(Vector3dd(1, 1, 1)) );
 	EXPECT_FALSE(b1.isInside(Vector3dd(5, 1, 1)) );
 }
+
+TEST(Box3dTest, TestTranslate)
+{
+	Box3d b1(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2));
+	b1.translate(Vector3dd(1, 2, 3));
+	const Box3d expected(Vector3dd(1, 2, 3), Vector3dd(3, 4, 5));
+	EXPECT_TRUE( b1.isSame(expected, 1.0e-12) );
+}
