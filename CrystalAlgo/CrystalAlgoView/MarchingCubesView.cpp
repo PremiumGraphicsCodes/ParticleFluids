@@ -62,14 +62,16 @@ void MarchingCubesView::onOk()
 	}
 	*/
 
-	Volume volume(32, 32, 32, box);
+	std::array<size_t, 3> resolutions{ 32,32,32 };
+	Volume<double> volume(box, resolutions);
 
+	/*
 	auto function = [](double distance) {
 		Gaussian gaussian;
 		return gaussian.getValue(distance);
 	};
 	volume.add(function);
-
+	*/
 
 	MarchingCubesAlgo algo;
 	algo.build(volume, 0.30);

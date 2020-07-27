@@ -10,6 +10,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
 VolumeView::VolumeView(World* model, Canvas* canvas) :
@@ -25,8 +26,10 @@ void VolumeView::onShow()
 
 void VolumeView::onOk()
 {
-	Volume volume(32, 32, 32, box.getValue());
+	std::array<size_t, 3> resolutions{ 32,32,32 };
+	Volume<double> volume(box.getValue(), resolutions);
 
+	/*
 	auto function = [](double distance) {
 		Gaussian gaussian;
 		return gaussian.getValue(distance);

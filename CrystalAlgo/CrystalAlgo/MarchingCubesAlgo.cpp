@@ -7,41 +7,42 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::MarchingCubesTable;
 
-int MarchingCubesAlgo::build(const Volume& volume, const double isoLevel)
+int MarchingCubesAlgo::build(const Volume<double>& volume, const double isoLevel)
 {
-	const auto unum = volume.getUNum();
-	const auto vnum = volume.getVNum();
-	const auto wnum = volume.getWNum();
+	const auto unum = volume.getResolutions()[0];
+	const auto vnum = volume.getResolutions()[1];
+	const auto wnum = volume.getResolutions()[2];
 	for (int i = 0; i < unum-1; ++i) {
 		for (int j = 0; j < vnum-1; ++j) {
 			for (int k = 0; k < wnum-1; ++k) {
 				std::array<MCCell::Vertex, 8> vertices;
 
-				vertices[0].position = volume.getPosition(i, j, k);
+				vertices[0].position = volume.getCellPosition(i, j, k);
 				vertices[0].value = volume.getValue(i,j,k);
 
-				vertices[1].position = volume.getPosition(i+1, j, k);
+				vertices[1].position = volume.getCellPosition(i+1, j, k);
 				vertices[1].value = volume.getValue(i+1, j, k);
 
-				vertices[2].position = volume.getPosition(i+1, j+1, k);
+				vertices[2].position = volume.getCellPosition(i+1, j+1, k);
 				vertices[2].value = volume.getValue(i+1, j+1, k);
 
-				vertices[3].position = volume.getPosition(i, j + 1, k);
+				vertices[3].position = volume.getCellPosition(i, j + 1, k);
 				vertices[3].value = volume.getValue(i, j+1, k);
 
-				vertices[4].position = volume.getPosition(i, j, k+1);
+				vertices[4].position = volume.getCellPosition(i, j, k+1);
 				vertices[4].value = volume.getValue(i, j, k+1);
 
-				vertices[5].position = volume.getPosition(i + 1, j, k+1);
+				vertices[5].position = volume.getCellPosition(i + 1, j, k+1);
 				vertices[5].value = volume.getValue(i + 1, j, k+1);
 
-				vertices[6].position = volume.getPosition(i + 1, j + 1, k+1);
+				vertices[6].position = volume.getCellPosition(i + 1, j + 1, k+1);
 				vertices[6].value = volume.getValue(i + 1, j + 1, k+1);
 
-				vertices[7].position = volume.getPosition(i, j + 1, k+1);
+				vertices[7].position = volume.getCellPosition(i, j + 1, k+1);
 				vertices[7].value = volume.getValue(i, j + 1, k+1);
 
 				MCCell cell(vertices);

@@ -4,7 +4,7 @@
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Math/Box3d.h"
 #include "MCCell.h"
-#include "../../Crystal/Scene/VolumeScene.h"
+#include "../../Crystal/Shape/Volume.h"
 
 namespace Crystal {
 	namespace Algo {
@@ -13,7 +13,7 @@ class MarchingCubesAlgo
 {
 public:
 
-	int build(const Scene::Volume& volume, const double isoLevel);
+	int build(const Shape::Volume<double>& volume, const double isoLevel);
 
 	int march(const MCCell& cell, const double isoLevel);
 

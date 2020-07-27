@@ -22,8 +22,8 @@ void VolumeConvertView::onOk()
 	auto id = particleSystemSelectView.getId();
 	auto particleSystem = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>(id);
 
-	Math::Box3d box;
-	Volume volume(32, 32, 32, box);
+	//Math::Box3d box;
+	//Volume volume(32, 32, 32, box);
 
 	//VolumeConvertAlgo converter;
 	//converter.convert(volume, particleSystem.getShape(),);

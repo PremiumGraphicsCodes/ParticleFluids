@@ -10,15 +10,9 @@ using namespace Crystal::Scene;
 using namespace Crystal::Search;
 using namespace Crystal::Algo;
 
-VolumeConvertAlgo::VolumeConvertAlgo(const Box3d& box, const double divideLength) : 
-	volume(box)
+VolumeConvertAlgo::VolumeConvertAlgo(const Box3d& box, const std::array<size_t, 3>& resolutions) :
+	volume(box, resolutions)
 {
-	const auto& length = box.getLength();
-	const auto xnum = static_cast<int>( length.x / divideLength );
-	const auto ynum = static_cast<int>( length.y / divideLength );
-	const auto znum = static_cast<int>( length.z / divideLength );
-	volume.build(xnum, ynum, znum);
-	//Volume()
 }
 
 void VolumeConvertAlgo::add(IParticle* particle)
@@ -32,13 +26,11 @@ void VolumeConvertAlgo::build(const double searchRadius)
 
 	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
 
-	const auto unum = volume.getUNum();
-	const auto vnum = volume.getVNum();
-	const auto wnum = volume.getWNum();
+	const auto resolutions = volume.getResolutions();
 
-	for (int u = 0; u < unum; ++u) {
-		for (int v = 0; v < vnum; ++v) {
-			for (int w = 0; w < wnum; ++w) {
+	for (int u = 0; u < resolutions[0]; ++u) {
+		for (int v = 0; v < resolutions[1]; ++v) {
+			for (int w = 0; w < resolutions[2]; ++w) {
 				const auto& p = volume.getCellPosition(u, v, w);
 				const auto& neighbors = spaceHash.findNeighbors(p);
 				for (auto n : neighbors) {
