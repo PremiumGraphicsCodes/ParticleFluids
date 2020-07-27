@@ -71,12 +71,12 @@ public:
 
 	size_t getWNum() const { return wnum; }
 
-	Math::Vector3dd getPosition(int i, int j, int k) const {
+	Math::Vector3dd getCellPosition(int i, int j, int k) const {
 		const auto& length = getCellLength();
 		const auto cx = length.x * i;
 		const auto cy = length.y * j;
 		const auto cz = length.z * k;
-		return box.getMin() + Vector3dd(cx, cy, cz);
+		return box.getMin() + length * 0.5 + Vector3dd(cx, cy, cz);
 	}
 
 	Math::Vector3dd getCellLength() const {
