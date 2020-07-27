@@ -39,14 +39,14 @@ void VolumeConvertAlgo::build(const double searchRadius)
 	for (int u = 0; u < unum; ++u) {
 		for (int v = 0; v < vnum; ++v) {
 			for (int w = 0; w < wnum; ++w) {
-				const auto& p = volume.getPosition(u, v, w);
+				const auto& p = volume.getCellPosition(u, v, w);
 				const auto& neighbors = spaceHash.findNeighbors(p);
 				for (auto n : neighbors) {
 					const auto distanceSquared = Crystal::Math::getDistanceSquared(p, n->getPosition());
 					if (distanceSquared > searchRadius * searchRadius) {
 						const auto distance = ::sqrt(distanceSquared);
 						const auto value = kernel.getValue(distance / searchRadius) + volume.getValue(u,v,w);
-						volume.set(u, v, w, value);
+						volume.setValue(u, v, w, value);
 					}
 				}
 			}

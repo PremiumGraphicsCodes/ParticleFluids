@@ -87,6 +87,9 @@ public:
 		return Vector3dd(dx, dy, dz);
 	}
 
+	T getValue(const int i, const int j, const int k) { return nodes[i][j][k]; }
+
+	void setValue(const int i, const int j, const int k, const T value) { nodes[i][j][k] = value; }
 	/*
 	const double getDU() const { return box.getLength().x / static_cast<double>(unum); }
 
@@ -100,7 +103,7 @@ private:
 	size_t unum;
 	size_t vnum;
 	size_t wnum;
-	std::vector<std::vector<std::vector<Particle<T>>>> nodes;
+	std::vector<std::vector<std::vector<T>>> nodes;
 };
 
 	}

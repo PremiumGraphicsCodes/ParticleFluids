@@ -1,43 +1,34 @@
 #pragma once
 
-#include <vector>
-#include <functional>
-#include "../../Crystal/Math/Box3d.h"
-#include "../../Crystal/Shape/Particle.h"
-#include "../../Crystal/Util/UnCopyable.h"
+#include "../Shape/Volume.h"
+
+#include "IShapeScene.h"
+#include <memory>
 
 namespace Crystal {
 	namespace Scene {
 
-class Volume : private UnCopyable
+class VolumeScene : public IShapeScene
 {
 public:
-	Volume(const int unum, const int vnum, const int wnum, const Math::Box3d& box);
+	VolumeScene(const int id, const std::string& name, std::unique_ptr<Shape::Volume<double>> shape);
 
-	void set(const int u, const int v, const int w, const double value);
+	virtual void translate(const Math::Vector3dd& v) { shape->move(v); }
 
-	void add(const std::function<double(double)>& function);
+	virtual void transform(const Math::Matrix3dd& m) { shape->transform(m); }
 
-	int getUNum() const { return unum; }
+	virtual void transform(const Math::Matrix4dd& m) { shape->transform(m); }
 
-	int getVNum() const { return vnum; }
+	virtual Math::Vector3dd getPosition(const int index) const { return Math::Vector3dd(0, 0, 0); };
 
-	int getWNum() const { return wnum; }
+	virtual IShapeScene* clone() const = 0;
 
-	Math::Vector3dd getPosition(const int i, const int j, const int k) const { return nodes[i][j][k].getPosition(); }
-
-	double getValue(const int i, const int j, const int k) const { return nodes[i][j][k].getAttribute(); }
-
-	Math::Box3d getBoundingBox() const { return boundingBox; }
+	Math::Box3d getBoundingBox() const { return shape->getBoundingBox(); }
 
 	//std::vector<Shape::Particle<double>> toParticles() const;
 
 private:
-	std::vector< std::vector< std::vector< Shape::Particle<double> > > > nodes;
-	const int unum;
-	const int vnum;
-	const int wnum;
-	const Math::Box3d boundingBox;
+	std::unique_ptr<Shape::Volume<double>> shape;
 };
 
 	}
