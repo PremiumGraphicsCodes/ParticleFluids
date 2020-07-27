@@ -34,6 +34,8 @@ public:
 
 	std::vector<Shape::IPoint*> findNeighbors(Shape::IPoint* particle);
 
+	std::vector<Shape::IPoint*> findNeighbors(const Math::Vector3dd& position);
+
 	void setCheckFunc(std::function<bool(Shape::IPoint*, Shape::IPoint*)> func) { this->checkFunc = func; }
 
 private:

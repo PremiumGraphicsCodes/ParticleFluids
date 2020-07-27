@@ -169,6 +169,7 @@
     <ClInclude Include="TriangleMesh.h" />
     <ClInclude Include="TriangleMeshBuilder.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Volume.h" />
     <ClInclude Include="WireFrame.h" />
     <ClInclude Include="WireFrameBuilder.h" />
     <ClInclude Include="WireFrameEdge.h" />

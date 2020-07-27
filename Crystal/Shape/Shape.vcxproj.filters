@@ -39,6 +39,9 @@
     <ClInclude Include="TriangleMeshBuilder.h">
       <Filter>TriangleMesh</Filter>
     </ClInclude>
+    <ClInclude Include="Volume.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
@@ -52,6 +55,9 @@
     </Filter>
     <Filter Include="TriangleMesh">
       <UniqueIdentifier>{0a38f2d4-10b7-4b60-a11b-6014bc66487d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volume">
+      <UniqueIdentifier>{250a25a8-1979-467a-b40c-8164c5e4ea41}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

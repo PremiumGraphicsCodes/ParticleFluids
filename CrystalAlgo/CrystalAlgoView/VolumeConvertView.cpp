@@ -10,23 +10,23 @@ using namespace Crystal::Algo;
 
 VolumeConvertView::VolumeConvertView(World* model, Canvas* canvas) :
 	IOkCancelView("VolumeConvert", model, canvas),
-	objectButton("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
-	searchRadius("SearchRadius", 1.0)
+	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
+	searchRadiusView("SearchRadius", 1.0)
 {
-}
-
-void VolumeConvertView::onShow()
-{
-	objectButton.show();
+	add(&particleSystemSelectView);
+	add(&searchRadiusView);
 }
 
 void VolumeConvertView::onOk()
 {
+	auto id = particleSystemSelectView.getId();
+	auto particleSystem = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>(id);
+
 	Math::Box3d box;
 	Volume volume(32, 32, 32, box);
 
-	VolumeConvertAlgo converter;
-	//converter.convert(volume, );
+	//VolumeConvertAlgo converter;
+	//converter.convert(volume, particleSystem.getShape(),);
 
 	/*
 	const auto& particles = volume.toParticles();

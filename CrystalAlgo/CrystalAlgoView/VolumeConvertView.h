@@ -13,13 +13,11 @@ public:
 	VolumeConvertView(Scene::World* model, Canvas* canvas);
 
 private:
-	void onShow() override;
-
 	void onOk() override;
 
 private:
-	ObjectSelectView objectButton;
-	DoubleView searchRadius;
+	ObjectSelectView particleSystemSelectView;
+	DoubleView searchRadiusView;
 };
 
 	}

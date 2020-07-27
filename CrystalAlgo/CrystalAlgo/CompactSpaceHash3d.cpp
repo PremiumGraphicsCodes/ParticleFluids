@@ -100,6 +100,39 @@ std::vector<IPoint*> CompactSpaceHash3d::findNeighbors(IPoint* particle)
 	return neighbors;
 }
 
+std::vector<IPoint*> CompactSpaceHash3d::findNeighbors(const Vector3dd& position)
+{
+	const auto index = toIndex(position);
+
+	std::vector<IPoint*> neighbors;
+	neighbors.reserve(64);
+
+	for (int i = -1; i <= 1; ++i) {
+		for (int j = -1; j <= 1; ++j) {
+			for (int k = -1; k <= 1; ++k) {
+				std::array<unsigned int, 3> ix{ i + index[0],j + index[1],k + index[2] };
+				const auto hash = toHash(ix);
+				const auto& cells = table[hash];
+				const auto cellId = toZIndex(ix);
+				auto iter = std::find_if(cells.begin(), cells.end(), [cellId](CompactSpaceCell* cell) {
+					return cell->cellId == cellId;
+				});
+				if (iter == cells.end()) {
+					continue;
+				}
+				const auto& particles = (*iter)->particles;
+				for (auto p : particles) {
+					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
+					if (d2 < divideLength * divideLength) {
+						neighbors.push_back(p);
+					}
+				}
+			}
+		}
+	}
+	return neighbors;
+}
+
 std::array<unsigned int, 3> CompactSpaceHash3d::toIndex(const Vector3df& pos) const
 {
 	const auto ix = static_cast<unsigned int>((pos[0]) / divideLength);
