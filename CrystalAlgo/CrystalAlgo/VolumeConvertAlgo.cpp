@@ -1,4 +1,5 @@
 #include "VolumeConvertAlgo.h"
+#include "CompactSpaceHash3d.h"
 
 #include "Octree.h"
 #include "../../Crystal/Math/Gaussian.h"
@@ -10,8 +11,7 @@ using namespace Crystal::Search;
 using namespace Crystal::Algo;
 
 VolumeConvertAlgo::VolumeConvertAlgo(const Box3d& box, const double divideLength) : 
-	volume(box),
-	spaceHash(divideLength, 1000)
+	volume(box)
 {
 	const auto& length = box.getLength();
 	const auto xnum = static_cast<int>( length.x / divideLength );
@@ -23,19 +23,19 @@ VolumeConvertAlgo::VolumeConvertAlgo(const Box3d& box, const double divideLength
 
 void VolumeConvertAlgo::add(IParticle* particle)
 {
-	spaceHash.add(particle);
+	particles.push_back(particle);
 }
 
-
-void VolumeConvertAlgo::build()
+void VolumeConvertAlgo::build(const double searchRadius)
 {
 	Gaussian kernel;
 
+	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
 
 	const auto unum = volume.getUNum();
 	const auto vnum = volume.getVNum();
 	const auto wnum = volume.getWNum();
-	/*
+
 	for (int u = 0; u < unum; ++u) {
 		for (int v = 0; v < vnum; ++v) {
 			for (int w = 0; w < wnum; ++w) {
@@ -52,5 +52,4 @@ void VolumeConvertAlgo::build()
 			}
 		}
 	}
-	*/
 }

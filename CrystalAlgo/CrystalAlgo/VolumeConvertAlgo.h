@@ -2,7 +2,6 @@
 
 #include "../../Crystal/Shape/Volume.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "CompactSpaceHash3d.h"
 
 namespace Crystal {
 	namespace Algo {
@@ -14,11 +13,11 @@ public:
 
 	void add(Shape::IParticle* particle);
 
-	void build();
+	void build(const double searchRadius);
 
 private:
 	Shape::Volume<double> volume;
-	Search::CompactSpaceHash3d spaceHash;
+	std::list<Shape::IParticle*> particles;
 };
 	}
 }

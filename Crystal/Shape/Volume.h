@@ -33,6 +33,10 @@ public:
 
 	void build(const int unum, const int vnum, const int wnum)
 	{
+		this->unum = unum;
+		this->vnum = vnum;
+		this->wnum = wnum;
+
 		nodes.resize(unum);
 		for (int i = 0; i < unum; ++i) {
 			nodes[i].resize(vnum);
@@ -61,14 +65,41 @@ public:
 
 	Math::Box3d getBoundingBox() const override { return box; }
 
-	size_t getUNum() const { return nodes.size(); }
+	size_t getUNum() const { return unum; }
 
-	size_t getVNum() const { return nodes[0].size(); }
+	size_t getVNum() const { return vnum; }
 
-	size_t getWNum() const { return nodes[0][0].size(); }
+	size_t getWNum() const { return wnum; }
+
+	Math::Vector3dd getPosition(int i, int j, int k) const {
+		const auto& length = getCellLength();
+		const auto cx = length.x * i;
+		const auto cy = length.y * j;
+		const auto cz = length.z * k;
+		return box.getMin() + Vector3dd(cx, cy, cz);
+	}
+
+	Math::Vector3dd getCellLength() const {
+		const auto& length = box.getLength();
+		const auto dx = length.x / static_cast<double>(unum);
+		const auto dy = length.y / static_cast<double>(vnum);
+		const auto dz = length.z / static_cast<double>(wnum);
+		return Vector3dd(dx, dy, dz);
+	}
+
+	/*
+	const double getDU() const { return box.getLength().x / static_cast<double>(unum); }
+
+	const double getDV() const { return box.getLength().y / static_cast<double>(vnum); }
+
+	const double getDW() const { return box.getLength().z / static_cast<double>(wnum); }
+	*/
 
 private:
 	Math::Box3d box;
+	size_t unum;
+	size_t vnum;
+	size_t wnum;
 	std::vector<std::vector<std::vector<Particle<T>>>> nodes;
 };
 
