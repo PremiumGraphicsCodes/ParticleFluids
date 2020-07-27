@@ -124,16 +124,17 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 
 void DFFluidSolver::correctDivergenceError(const std::vector<DFSPHParticle*>& particles, const float dt)
 {
+	bool isErrorOk = false;
 	int iter = 0;
-	while (iter < 1) {
-
+	while ((!isErrorOk || iter < 1) && iter < 100) {
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->calculateDpDt();
 		}
-
 		for (int i = 0; i < particles.size(); ++i) {
 			particles[i]->calculateVelocityInDivergenceError(dt);
 		}
+		const auto averageDpDt = calculateAverageDpDt(particles);
+		isErrorOk = averageDpDt < 2.0f;
 		iter++;
 	}
 }
@@ -184,3 +185,13 @@ float DFFluidSolver::calculateAverageDensity(const std::vector<DFSPHParticle*>& 
 	}
 	return totalDensity / (float)particles.size();
 }
+
+float DFFluidSolver::calculateAverageDpDt(const std::vector<DFSPHParticle*>& particles)
+{
+	float totalDensity = 0.0f;
+	for (auto p : particles) {
+		totalDensity += p->getDpDt();
+	}
+	return totalDensity / (float)particles.size();
+}
+

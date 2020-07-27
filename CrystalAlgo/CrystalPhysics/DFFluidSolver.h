@@ -48,6 +48,8 @@ private:
 	float calculateTimeStep(const std::vector<DFSPHParticle*>& particles);
 
 	float calculateAverageDensity(const std::vector<DFSPHParticle*>& particles);
+
+	float calculateAverageDpDt(const std::vector<DFSPHParticle*>& particles);
 };
 
 	}
