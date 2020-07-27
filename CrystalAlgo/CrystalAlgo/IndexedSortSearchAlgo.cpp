@@ -5,7 +5,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Search;
 
-void IndexedSortSearchAlgo::add(IPoint* particle)
+void IndexedSortSearchAlgo::add(IParticle* particle)
 {
 	IndexedParticle ip(particle);
 	ip.setGridID(effectLength);

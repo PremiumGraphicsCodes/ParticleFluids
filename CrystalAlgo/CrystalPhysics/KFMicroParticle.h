@@ -1,13 +1,13 @@
 #pragma once
 
 #include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 
 namespace Crystal {
 	namespace Physics {
 		class KFMacroParticle;
 
-class KFMicroParticle : public Shape::IPoint
+class KFMicroParticle : public Shape::IParticle
 {
 public:
 	KFMicroParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float weight) :

@@ -8,7 +8,7 @@
 
 namespace Crystal {
 	namespace Shape {
-		class IPoint;
+		class IParticle;
 	}
 	namespace Search {
 
@@ -16,7 +16,7 @@ class CompactSpaceCell
 {
 public:
 	unsigned int cellId;
-	std::vector<Shape::IPoint*> particles;
+	std::vector<Shape::IParticle*> particles;
 };
 
 class CompactSpaceHash3d : private UnCopyable
@@ -30,13 +30,13 @@ public:
 
 	//void add(const Shape::IParticleSystem& particles);
 
-	void add(Shape::IPoint* particle);
+	void add(Shape::IParticle* particle);
 
-	std::vector<Shape::IPoint*> findNeighbors(Shape::IPoint* particle);
+	std::vector<Shape::IParticle*> findNeighbors(Shape::IParticle* particle);
 
-	std::vector<Shape::IPoint*> findNeighbors(const Math::Vector3dd& position);
+	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
 
-	void setCheckFunc(std::function<bool(Shape::IPoint*, Shape::IPoint*)> func) { this->checkFunc = func; }
+	void setCheckFunc(std::function<bool(Shape::IParticle*, Shape::IParticle*)> func) { this->checkFunc = func; }
 
 private:
 	std::vector<std::vector<CompactSpaceCell*>> table;
@@ -55,7 +55,7 @@ private:
 	
 	const ZOrderCurve3d zCurve;
 
-	std::function<bool(Shape::IPoint* point1, Shape::IPoint* point2)> checkFunc;
+	std::function<bool(Shape::IParticle* point1, Shape::IParticle* point2)> checkFunc;
 };
 
 	}

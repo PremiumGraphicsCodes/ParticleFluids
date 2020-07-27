@@ -2,7 +2,7 @@
 
 #include <bitset>
 
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -30,14 +30,14 @@ void SpaceHash::add(const IParticleSystem& particles)
 }
 */
 
-void SpaceHash3d::add(IPoint* particle)
+void SpaceHash3d::add(IParticle* particle)
 {
 	const auto& index = toIndex(particle->getPosition());
 	const auto hashIndex = toHash(index);
 	table[hashIndex].push_back(particle);
 }
 
-void SpaceHash3d::solveInteractions(IPoint* particle, const std::function<void(IPoint*, IPoint*)>& func)
+void SpaceHash3d::solveInteractions(IParticle* particle, const std::function<void(IParticle*, IParticle*)>& func)
 {
 	const auto position = particle->getPosition();
 	const auto& index = toIndex(position);

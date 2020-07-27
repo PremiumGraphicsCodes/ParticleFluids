@@ -34,7 +34,7 @@ void UniformGrid3dView::onOk()
 	for (auto p : particles) {
 		grid.add(p);
 	}
-	auto func = [](IPoint* lhs, IPoint* rhs) {
+	auto func = [](IParticle* lhs, IParticle* rhs) {
 		return;
 	};
 	for (auto p : particles) {

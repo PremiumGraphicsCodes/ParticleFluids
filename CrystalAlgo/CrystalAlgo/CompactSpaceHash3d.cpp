@@ -2,7 +2,7 @@
 
 #include <bitset>
 
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -39,7 +39,7 @@ void CompactSpaceHash3d::clear()
 	table.clear();
 }
 
-void CompactSpaceHash3d::add(IPoint* particle)
+void CompactSpaceHash3d::add(IParticle* particle)
 {
 	const auto& index = toIndex(particle->getPosition());
 	const auto hashIndex = toHash(index);
@@ -62,13 +62,13 @@ void CompactSpaceHash3d::add(IPoint* particle)
 	}
 }
 
-std::vector<IPoint*> CompactSpaceHash3d::findNeighbors(IPoint* particle)
+std::vector<IParticle*> CompactSpaceHash3d::findNeighbors(IParticle* particle)
 {
 	const auto position = particle->getPosition();
 
 	const auto index = toIndex(position);
 
-	std::vector<IPoint*> neighbors;
+	std::vector<IParticle*> neighbors;
 	neighbors.reserve(64);
 
 	for (int i = - 1; i <= 1; ++i) {
@@ -100,11 +100,11 @@ std::vector<IPoint*> CompactSpaceHash3d::findNeighbors(IPoint* particle)
 	return neighbors;
 }
 
-std::vector<IPoint*> CompactSpaceHash3d::findNeighbors(const Vector3dd& position)
+std::vector<IParticle*> CompactSpaceHash3d::findNeighbors(const Vector3dd& position)
 {
 	const auto index = toIndex(position);
 
-	std::vector<IPoint*> neighbors;
+	std::vector<IParticle*> neighbors;
 	neighbors.reserve(64);
 
 	for (int i = -1; i <= 1; ++i) {

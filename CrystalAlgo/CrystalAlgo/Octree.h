@@ -9,7 +9,7 @@
 
 namespace Crystal {
 	namespace Shape {
-		class IPoint;
+		class IParticle;
 	}
 	namespace Algo {
 
@@ -20,7 +20,7 @@ public:
 
 	Octree(const Math::Box3d& space);
 
-	void add(Shape::IPoint* particle);
+	void add(Shape::IParticle* particle);
 
 	std::vector<Octree> createChildren() const;
 
@@ -30,10 +30,10 @@ public:
 
 	bool equals(const Octree& rhs, const double tolerance) const;
 
-	std::vector<Shape::IPoint*> getParticles() const { return particles; }
+	std::vector<Shape::IParticle*> getParticles() const { return particles; }
 
 private:
-	std::vector<Shape::IPoint*> particles;
+	std::vector<Shape::IParticle*> particles;
 	Math::Box3d space;
 };
 

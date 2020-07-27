@@ -11,7 +11,7 @@ class VolumeConvertAlgo
 public:
 	VolumeConvertAlgo(const Math::Box3d& box, const double divideLength);
 
-	void add(Shape::IPoint* particle);
+	void add(Shape::IParticle* particle);
 
 	void build();
 

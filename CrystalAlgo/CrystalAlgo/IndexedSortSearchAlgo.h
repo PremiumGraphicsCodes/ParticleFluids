@@ -9,7 +9,7 @@
 namespace Crystal {
 	namespace Search {
 
-using ParticlePair = std::pair<Shape::IPoint*, Shape::IPoint*>;
+using ParticlePair = std::pair<Shape::IParticle*, Shape::IParticle*>;
 
 class IndexedSortSearchAlgo : private UnCopyable {
 public:
@@ -17,7 +17,7 @@ public:
 		effectLength(effectLength)
 	{}
 
-	void add(Shape::IPoint* particle);
+	void add(Shape::IParticle* particle);
 
 	void createPairs();
 

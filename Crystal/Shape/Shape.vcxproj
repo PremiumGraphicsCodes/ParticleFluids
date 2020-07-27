@@ -160,7 +160,7 @@
   <ItemGroup>
     <ClInclude Include="CircularBuffer.h" />
     <ClInclude Include="Face.h" />
-    <ClInclude Include="IPoint.h" />
+    <ClInclude Include="IParticle.h" />
     <ClInclude Include="IShape.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleSystem.h" />

@@ -1,13 +1,13 @@
 #pragma once
 
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 #include "SPHKernel.h"
 
 namespace Crystal {
 	namespace Physics {
 		class SPHConstant;
 
-class DFSPHParticle : public Shape::IPoint
+class DFSPHParticle : public Shape::IParticle
 {
 public:
 	DFSPHParticle(const Math::Vector3df& position, const float radius, SPHConstant* constant, SPHKernel* kernel) :

@@ -9,7 +9,7 @@ namespace Crystal {
 	namespace Physics {
 		class KFFluidScene;
 
-class KFMacroParticle : public Shape::IPoint
+class KFMacroParticle : public Shape::IParticle
 {
 public:
 	KFMacroParticle(const double radius, const Math::Vector3dd& position);

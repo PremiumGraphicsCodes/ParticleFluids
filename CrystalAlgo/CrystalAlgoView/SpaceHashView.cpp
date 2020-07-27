@@ -39,7 +39,7 @@ void SpaceHashView::onOk()
 		grid.add(p);
 	}
 	unsigned int pairCount = 0;
-	auto func = [&pairCount](IPoint* lhs, IPoint* rhs) {
+	auto func = [&pairCount](IParticle* lhs, IParticle* rhs) {
 		pairCount++;
 	};
 	for (auto p : particles) {

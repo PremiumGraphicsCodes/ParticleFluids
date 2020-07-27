@@ -1,6 +1,6 @@
 #include "UniformGrid3d.h"
 
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -18,13 +18,13 @@ UniformGrid3d::UniformGrid3d(const double divideLength, const Vector3dd& min) :
 	}
 }
 
-void UniformGrid3d::add(IPoint* particle)
+void UniformGrid3d::add(IParticle* particle)
 {
 	const auto& index = toIndex(particle->getPosition());
 	grid[index[0]][index[1]][index[2]].push_back(particle);
 }
 
-void UniformGrid3d::solveInteractions(IPoint* micro, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func)
+void UniformGrid3d::solveInteractions(IParticle* micro, const std::function<void(Shape::IParticle*, Shape::IParticle*)>& func)
 {
 	const auto position = micro->getPosition();
 	const auto& index = toIndex(position);

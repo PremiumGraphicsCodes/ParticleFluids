@@ -2,13 +2,13 @@
 
 #include "../CrystalAlgo/CompactSpaceHash3d.h"
 
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Search;
 
-class TestPoint : public IPoint
+class TestPoint : public IParticle
 {
 public:
 	TestPoint(const Vector3dd& position) :

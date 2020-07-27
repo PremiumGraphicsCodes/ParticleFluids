@@ -7,7 +7,7 @@
 
 namespace Crystal {
 	namespace Shape {
-		class IPoint;
+		class IParticle;
 	}
 	namespace Search {
 
@@ -18,12 +18,12 @@ public:
 
 	//void add(const Shape::IParticleSystem& particles);
 
-	void add(Shape::IPoint* particle);
+	void add(Shape::IParticle* particle);
 
-	void solveInteractions(Shape::IPoint* particle, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
+	void solveInteractions(Shape::IParticle* particle, const std::function<void(Shape::IParticle*, Shape::IParticle*)>& func);
 
 private:
-	std::vector<std::list<Shape::IPoint*>> table;
+	std::vector<std::list<Shape::IParticle*>> table;
 
 	int toHash(const Math::Vector3df& pos);
 

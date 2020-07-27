@@ -2,7 +2,7 @@
 
 #include "gtest/gtest.h"
 
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Search;
@@ -16,7 +16,7 @@ TEST(ZIndexedSearchAlgoTest, TestToIndex1d)
 	EXPECT_EQ(3, i[2]);
 }
 
-class TestPoint : public Crystal::Shape::IPoint
+class TestPoint : public Crystal::Shape::IParticle
 {
 public:
 	TestPoint(const Vector3dd& p) :

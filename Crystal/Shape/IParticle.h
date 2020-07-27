@@ -7,10 +7,10 @@
 namespace Crystal {
 	namespace Shape {
 
-class IPoint
+class IParticle
 {
 public:
-	~IPoint()
+	~IParticle()
 	{}
 
 	virtual Math::Vector3dd getPosition() const = 0;

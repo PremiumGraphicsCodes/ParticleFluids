@@ -11,7 +11,7 @@
 
 namespace Crystal {
 	namespace Shape {
-		class IPoint;
+		class IParticle;
 	}
 	namespace Search {
 

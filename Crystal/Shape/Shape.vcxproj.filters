@@ -23,9 +23,6 @@
     <ClInclude Include="PolygonMeshBuilder.h">
       <Filter>PolygonMesh</Filter>
     </ClInclude>
-    <ClInclude Include="IPoint.h">
-      <Filter>ParticleSystem</Filter>
-    </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>ParticleSystem</Filter>
     </ClInclude>
@@ -41,6 +38,9 @@
     </ClInclude>
     <ClInclude Include="Volume.h">
       <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="IParticle.h">
+      <Filter>ParticleSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

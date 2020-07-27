@@ -60,9 +60,9 @@ public:
 
 	std::vector<Particle<Attr>*> getParticles() const { return particles; }
 
-	std::vector<IPoint*> getIParticles() const
+	std::vector<IParticle*> getIParticles() const
 	{
-		std::vector<IPoint*> ps;
+		std::vector<IParticle*> ps;
 		for (auto p : particles) {
 			ps.push_back(p);
 		}

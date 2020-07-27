@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 
 namespace Crystal {
 	namespace Search {
@@ -13,7 +13,7 @@ public:
 		particle(nullptr)
 	{}
 
-	IndexedParticle(Shape::IPoint* particle) :
+	IndexedParticle(Shape::IParticle* particle) :
 		particle(particle)
 	{
 	}
@@ -33,13 +33,13 @@ public:
 		return this->getGridID() < rhs.getGridID();
 	}
 
-	Shape::IPoint* getParticle() const { return particle; }
+	Shape::IParticle* getParticle() const { return particle; }
 
 private:
 	static int toIdX(std::array<int, 3> index);
 
 private:
-	Shape::IPoint* particle;
+	Shape::IParticle* particle;
 	int gridID;
 };
 

@@ -8,7 +8,7 @@
 
 namespace Crystal {
 	namespace Shape {
-		class IPoint;
+		class IParticle;
 	}
 	namespace Search {
 
@@ -17,12 +17,12 @@ class UniformGrid3d : private UnCopyable
 public:
 	UniformGrid3d(const double divideLength, const Math::Vector3dd& min);
 
-	void add(Shape::IPoint* particle);
+	void add(Shape::IParticle* particle);
 
-	void solveInteractions(Shape::IPoint* micro, const std::function<void(Shape::IPoint*, Shape::IPoint*)>& func);
+	void solveInteractions(Shape::IParticle* micro, const std::function<void(Shape::IParticle*, Shape::IParticle*)>& func);
 
 private:
-	std::vector<std::vector<std::vector<std::list<Shape::IPoint*>>>> grid;
+	std::vector<std::vector<std::vector<std::list<Shape::IParticle*>>>> grid;
 
 	std::array<int, 3> toIndex(const Math::Vector3df& pos);
 

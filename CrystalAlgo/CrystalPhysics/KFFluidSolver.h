@@ -5,7 +5,7 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Box3d.h"
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 #include "../../Crystal/Scene/IAnimator.h"
 
 namespace Crystal {

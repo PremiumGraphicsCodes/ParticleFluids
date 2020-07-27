@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 
 #include "SPHKernel.h"
 //#include "ISPHParticle.h"
@@ -15,7 +15,7 @@ namespace Crystal {
 	namespace Physics {
 		class PBFluidScene;
 
-class PBSPHParticle : public Shape::IPoint
+class PBSPHParticle : public Shape::IParticle
 {
 public:
 	PBSPHParticle(const Math::Vector3df& center, const float radius, PBFluidScene* scene);

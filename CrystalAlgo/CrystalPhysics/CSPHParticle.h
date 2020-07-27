@@ -5,14 +5,14 @@
 #include <memory>
 
 #include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 #include "../../Crystal/Util/UnCopyable.h"
 #include "SPHConstant.h"
 
 namespace Crystal {
 	namespace Physics {
 
-class CSPHParticle : public Shape::IPoint
+class CSPHParticle : public Shape::IParticle
 {
 public:
 	CSPHParticle(const Math::Vector3df& center, const float radius, SPHConstant* constant);

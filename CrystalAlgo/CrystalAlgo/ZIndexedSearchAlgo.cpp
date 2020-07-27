@@ -2,7 +2,7 @@
 
 #include "ZOrderCurve3d.h"
 
-#include "../../Crystal/Shape/IPoint.h"
+#include "../../Crystal/Shape/IParticle.h"
 
 #include <algorithm>
 
