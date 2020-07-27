@@ -25,6 +25,9 @@ public:
 
 	Math::Box3d getBoundingBox() const { return shape->getBoundingBox(); }
 
+	Shape::Volume<double>* getShape() const { return shape.get(); }
+
+
 	//std::vector<Shape::Particle<double>> toParticles() const;
 
 private:
