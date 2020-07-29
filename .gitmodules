@@ -1,3 +1,6 @@
 [submodule "CrystalAlgo/ThirdParty/openvdb"]
 	path = CrystalAlgo/ThirdParty/openvdb
 	url = https://premiumgraphics@bitbucket.org/premiumgraphics/openvdb.git
+[submodule "CrystalAlgo/ThirdParty/vcpkg"]
+	path = CrystalAlgo/ThirdParty/vcpkg
+	url = https://premiumgraphics@bitbucket.org/premiumgraphics/vcpkg.git
