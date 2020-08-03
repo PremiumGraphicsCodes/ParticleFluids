@@ -39,7 +39,7 @@ void MeshToParticleAlgoView::onOk()
 	command.setArg(ParticleSystemCreateLabels::PositionsLabel, positions);
 	//command.setArg(ParticleSystemCreateLabels::PointSizeLabel, 1.0f);
 	//command.setArg(ParticleSystemCreateLabels::ColorLabel, glm::vec4);
-	command.setArg(ParticleSystemCreateLabels::NameLabel, "MeshToParticle");
+	command.setArg(ParticleSystemCreateLabels::NameLabel, std::string("MeshToParticle"));
 //	command.setArg(ParticleSystemCreateLabels::MatrixLabel, matrixView.getValue());
 	command.execute(getWorld());
 	auto newId = std::any_cast<int>(command.getResult(ParticleSystemCreateLabels::NewIdLabel));

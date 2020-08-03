@@ -12,6 +12,7 @@
 #include "OctreeView.h"
 #include "SpaceHashView.h"
 #include "UniformGrid3dView.h"
+#include "MeshToParticleAlgoView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 
@@ -59,6 +60,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("UniformGrid")) {
 			control->setWindow(new UniformGrid3dView(getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("MeshToParticle")) {
+			control->setWindow(new MeshToParticleAlgoView("MeshToParticle",getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}

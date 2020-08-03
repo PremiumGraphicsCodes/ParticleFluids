@@ -30,9 +30,9 @@ void MeshToParticleAlgo::subdivide(const Triangle3d& triangle, const double divi
 	const auto v1 = vertices[1];
 	const auto v2 = vertices[2];
 
-	const Line3dd e01(v0, v1);
-	const Line3dd e12(v1, v2);
-	const Line3dd e20(v2, v0);
+	const Line3dd e01(v0, v1-v0);
+	const Line3dd e12(v1, v2-v1);
+	const Line3dd e20(v2, v0-v2);
 	const auto& v01 = e01.getPosition(0.5);
 	const auto& v12 = e12.getPosition(0.5);
 	const auto& v20 = e20.getPosition(0.5);

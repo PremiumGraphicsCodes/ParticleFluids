@@ -47,6 +47,7 @@
     <ClInclude Include="IndexedSortSearchAlgo.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="MeshToParticleAlgo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -91,6 +92,7 @@
     <ClCompile Include="IndexedSortSearchAlgo.cpp">
       <Filter>Search</Filter>
     </ClCompile>
+    <ClCompile Include="MeshToParticleAlgo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">

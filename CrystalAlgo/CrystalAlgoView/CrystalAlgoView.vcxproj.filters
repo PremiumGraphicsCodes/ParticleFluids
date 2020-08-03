@@ -36,6 +36,7 @@
     <ClCompile Include="IndexedSortSearchAlgoView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
+    <ClCompile Include="MeshToParticleAlgoView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h">
@@ -72,6 +73,7 @@
     <ClInclude Include="IndexedSortSearchAlgoView.h">
       <Filter>Search</Filter>
     </ClInclude>
+    <ClInclude Include="MeshToParticleAlgoView.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">
