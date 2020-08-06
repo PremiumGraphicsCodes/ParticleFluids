@@ -24,6 +24,7 @@ void MeshToParticleAlgo::subdivide(const Triangle3d& triangle, const double divi
 	const auto distanceSquared = getDistanceSquared(box.getMin(), box.getMax());
 	if (distanceSquared < divideLength * divideLength) {
 		positions.push_back(box.getCenter());
+		normals.push_back(triangle.getNormal());
 		return;
 	}
 	const auto v0 = vertices[0];

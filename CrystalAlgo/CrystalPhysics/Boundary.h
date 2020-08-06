@@ -13,8 +13,9 @@ namespace Crystal {
 class Boundary : private UnCopyable
 {
 public:
-
 	void build(const Shape::PolygonMesh& mesh, const double divideLength);
+
+	std::vector<Shape::Particle<Math::Vector3dd>> getParticles() const { return positionWithNormal; }
 
 private:
 	std::vector<Shape::Particle<Math::Vector3dd>> positionWithNormal;

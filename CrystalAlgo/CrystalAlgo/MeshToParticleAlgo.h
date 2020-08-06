@@ -16,9 +16,12 @@ public:
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
-private:
+	std::vector<Math::Vector3dd> getNormals() const { return normals; }
 
+private:
 	std::vector<Math::Vector3dd> positions;
+
+	std::vector<Math::Vector3dd> normals;
 	
 };
 	}

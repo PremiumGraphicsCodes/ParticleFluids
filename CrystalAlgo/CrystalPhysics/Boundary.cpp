@@ -1,7 +1,11 @@
 #include "Boundary.h"
 
+#include "../../Crystal/Math/Triangle3d.h"
 #include "../CrystalAlgo/MeshToParticleAlgo.h"
 
+#include <cassert>
+
+using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 using namespace Crystal::Physics;
@@ -12,5 +16,16 @@ void Boundary::build(const PolygonMesh& mesh, const double divideLength)
 	const auto& faces = mesh.getFaces();
 
 	MeshToParticleAlgo particleConverter;
-	//particleConverter.subdivide()
+	for (const auto& f : faces) {
+		particleConverter.subdivide(f.toTriangle(positions), divideLength);
+	}
+	const auto& positions = particleConverter.getPositions();
+	const auto& normals = particleConverter.getNormals();
+	assert(positions.size() == normals.size());
+
+	for (int i = 0; i < positions.size(); ++i) {		
+		Particle<Vector3dd> pn(positions[i], normals[i]);		
+		positionWithNormal.push_back(pn);
+	}
+
 }

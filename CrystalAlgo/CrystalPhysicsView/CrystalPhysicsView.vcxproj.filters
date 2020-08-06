@@ -7,6 +7,7 @@
     <ClCompile Include="KFFluidSimulationView.cpp" />
     <ClCompile Include="DFSPHFluidSimulationView.cpp" />
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
+    <ClCompile Include="BoundaryView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
