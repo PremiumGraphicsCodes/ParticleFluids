@@ -75,6 +75,9 @@
       <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="Boundary.h" />
+    <ClInclude Include="CSPHFluidScene.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -136,5 +139,8 @@
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="Boundary.cpp" />
+    <ClCompile Include="CSPHFluidScene.cpp">
+      <Filter>CSPH</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

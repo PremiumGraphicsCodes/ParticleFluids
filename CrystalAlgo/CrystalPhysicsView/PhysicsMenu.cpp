@@ -1,5 +1,6 @@
 #include "PhysicsMenu.h"
 
+#include "CSPHFluidSimulationView.h"
 #include "KFFluidSimulationView.h"
 #include "PBSPHFluidSimulationView.h"
 #include "DFSPHFluidSimulationView.h"
@@ -18,6 +19,9 @@ PhysicsMenu::PhysicsMenu(const std::string& name, World* model, Canvas* canvas, 
 void PhysicsMenu::onShow()
 {
 	if (ImGui::BeginMenu("Physics")) {
+		if (ImGui::MenuItem("CSPH")) {
+			control->setWindow(new CSPHFluidSimulationView(getWorld(), getCanvas()));
+		}
 		if (ImGui::MenuItem("KFFluid")) {
 			control->setWindow(new KFFluidSimulationView(getWorld(), getCanvas()));
 		}

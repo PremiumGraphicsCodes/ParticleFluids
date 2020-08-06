@@ -10,7 +10,7 @@ namespace Crystal {
 	}
 	namespace Physics {
 
-class Boundary : private UnCopyable
+class Boundary //: private UnCopyable
 {
 public:
 	void build(const Shape::PolygonMesh& mesh, const double divideLength);
