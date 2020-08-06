@@ -29,6 +29,7 @@ protected:
 
 	Canvas* getCanvas() { return canvas; }
 
+private:
 	Scene::World* model;
 
 	Canvas* canvas;

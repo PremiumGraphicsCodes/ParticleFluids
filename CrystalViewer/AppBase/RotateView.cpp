@@ -7,7 +7,7 @@ using namespace Crystal::UI;
 
 RotateView::RotateView(const std::string& name, World* scene, Canvas* canvas) :
 	IOkCancelView(name, scene, canvas),
-	objectSelectView("Object", model, canvas),
+	objectSelectView("Object", scene, canvas),
 	matrixView("Matrix")
 {
 	add(&objectSelectView);
@@ -16,7 +16,7 @@ RotateView::RotateView(const std::string& name, World* scene, Canvas* canvas) :
 
 void RotateView::onOk()
 {
-	auto shape = model->getObjects()->findSceneById<IShapeScene*>( objectSelectView.getId() );
+	auto shape = getWorld()->getObjects()->findSceneById<IShapeScene*>( objectSelectView.getId() );
 	if (shape == nullptr) {
 		return;
 	}

@@ -26,7 +26,7 @@ SceneListPanel::SceneListPanel(const std::string& name, World* model, Canvas* ca
 void SceneListPanel::onShow()
 {
 	ImGui::Begin("SceneList");
-	show(model->getObjects());
+	show(getWorld()->getObjects());
 	ImGui::End();
 }
 
@@ -54,7 +54,7 @@ void SceneListPanel::show(IScene* scene)
 			switch (type) {
 				case SceneType::ParticleSystemScene:
 				{
-					auto editView = new ParticleSystemEditView("ParticleSystemEdit", model, canvas);
+					auto editView = new ParticleSystemEditView("ParticleSystemEdit", getWorld(), getCanvas());
 					auto s = scene->findSceneById<ParticleSystemScene*>(id);
 					editView->setValue(s);
 					control->clear();
@@ -63,7 +63,7 @@ void SceneListPanel::show(IScene* scene)
 				}
 				case SceneType::WireFrameScene:
 				{
-					auto editView = new WireFrameEditView("WireFrameEdit", model, canvas);
+					auto editView = new WireFrameEditView("WireFrameEdit", getWorld(), getCanvas());
 					auto s = scene->findSceneById<WireFrameScene*>(id);
 					editView->setValue(s);
 					control->clear();
@@ -72,7 +72,7 @@ void SceneListPanel::show(IScene* scene)
 				}
 				case SceneType::PolygonMeshScene:
 				{
-					auto editView = new PolygonMeshEditView("PolygonMeshEdit", model, canvas);
+					auto editView = new PolygonMeshEditView("PolygonMeshEdit", getWorld(), getCanvas());
 					auto s = scene->findSceneById<PolygonMeshScene*>(id);
 					editView->setValue(s);
 					control->clear();
@@ -81,7 +81,7 @@ void SceneListPanel::show(IScene* scene)
 				}
 				case SceneType::FaceGroupScene:
 				{
-					auto editView = new FaceGroupEditView("FaceGroupEdit", model, canvas);
+					auto editView = new FaceGroupEditView("FaceGroupEdit", getWorld(), getCanvas());
 					auto s = scene->findSceneById<FaceGroupScene*>(id);
 					editView->setValue(s);
 					control->clear();
@@ -90,7 +90,7 @@ void SceneListPanel::show(IScene* scene)
 				}
 				case SceneType::LightScene:
 				{
-					auto editView = new LightEditView("LightEdit", model, canvas);
+					auto editView = new LightEditView("LightEdit", getWorld(), getCanvas());
 					auto lightScene = scene->findSceneById<LightScene*>(id);
 					editView->setValue(lightScene);
 					control->clear();
@@ -99,7 +99,7 @@ void SceneListPanel::show(IScene* scene)
 				}
 				case SceneType::MaterialScene:
 				{
-					auto editView = new MaterialEditView("MaterialEdit", model, canvas);
+					auto editView = new MaterialEditView("MaterialEdit", getWorld(), getCanvas());
 					auto materialScene = scene->findSceneById<MaterialScene*>(id);
 					editView->setValue(materialScene);
 					control->clear();
@@ -108,7 +108,7 @@ void SceneListPanel::show(IScene* scene)
 				}
 				case SceneType::TextureScene:
 				{
-					auto editView = new TextureEditView("TextureEdit", model, canvas);
+					auto editView = new TextureEditView("TextureEdit", getWorld(), getCanvas());
 					auto textureScene = scene->findSceneById<TextureScene*>(id);
 					editView->setValue(textureScene);
 					control->clear();

@@ -19,12 +19,12 @@ void Boundary::build(const PolygonMesh& mesh, const double divideLength)
 	for (const auto& f : faces) {
 		particleConverter.subdivide(f.toTriangle(positions), divideLength);
 	}
-	const auto& positions = particleConverter.getPositions();
+	const auto& divPositions = particleConverter.getPositions();
 	const auto& normals = particleConverter.getNormals();
-	assert(positions.size() == normals.size());
+	assert(divPositions.size() == normals.size());
 
-	for (int i = 0; i < positions.size(); ++i) {		
-		Particle<Vector3dd> pn(positions[i], normals[i]);		
+	for (int i = 0; i < divPositions.size(); ++i) {		
+		Particle<Vector3dd> pn(divPositions[i], normals[i]);		
 		positionWithNormal.push_back(pn);
 	}
 
