@@ -13,7 +13,7 @@ using namespace Crystal::Command;
 
 void SetCommand::Set(World* world, int id, const std::string& name, std::any value)
 {
-	auto scene = world->getObjects()->findSceneById(id);
+	auto scene = world->getScenes()->findSceneById(id);
 	if (scene->getType() == SceneType::ParticleSystemScene) {
 		ParticleAttribute attr;
 //		std::string name = scene->getName();
@@ -39,9 +39,9 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 		}
 	}
 	else if (scene->getType() == SceneType::FaceGroupScene) {
-		auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id);
+		auto faceGroup = world->getScenes()->findSceneById<FaceGroupScene*>(id);
 		if (name == SetLabels::MaterialNameLabel) {
-			auto mat = world->getObjects()->findSceneByName<MaterialScene*>(std::any_cast<std::string>(value));
+			auto mat = world->getScenes()->findSceneByName<MaterialScene*>(std::any_cast<std::string>(value));
 			faceGroup->setMaterial(mat);
 		}
 	}

@@ -32,7 +32,7 @@ LightSetCommand::Args::Args() :
 
 bool LightSetCommand::execute(World* world)
 {
-	auto scene = world->getObjects()->findSceneById<LightScene*>(args.id.getValue());
+	auto scene = world->getScenes()->findSceneById<LightScene*>(args.id.getValue());
 	if (scene == nullptr) {
 		return false;
 	}

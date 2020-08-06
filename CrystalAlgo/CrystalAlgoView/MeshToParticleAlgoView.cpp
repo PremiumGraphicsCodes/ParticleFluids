@@ -27,7 +27,7 @@ MeshToParticleAlgoView::MeshToParticleAlgoView(const std::string& name, World* m
 void MeshToParticleAlgoView::onOk()
 {
 	auto id = polygonMeshSelectView.getId();
-	auto scene = getWorld()->getObjects()->findSceneById<PolygonMeshScene*>(id);
+	auto scene = getWorld()->getScenes()->findSceneById<PolygonMeshScene*>(id);
 	auto mesh = scene->getShape();
 
 	MeshToParticleAlgo algo;

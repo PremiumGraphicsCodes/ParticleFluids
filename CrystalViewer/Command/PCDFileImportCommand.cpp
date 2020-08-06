@@ -37,7 +37,7 @@ bool PCDFileImportCommand::execute(Crystal::Scene::World* scene)
 		attr.size = 1.0;
 		auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
 		auto s = new ParticleSystemScene(scene->getNextSceneId(), "PCD", std::move(shape));
-		scene->getObjects()->addScene(s);
+		scene->getScenes()->addScene(s);
 		results.newId.setValue(s->getId());
 		//results.isOk.setValue( true );
 		return true;

@@ -50,7 +50,7 @@ bool WireFrameCreateCommand::execute(World* world)
 	auto shape = std::make_unique<WireFrame>(positions, edges);
 	auto newId = world->getNextSceneId();
 	auto scene = new WireFrameScene(newId, name, std::move(shape), attr);
-	world->getObjects()->addScene(scene);
+	world->getScenes()->addScene(scene);
 	scene->setMatrix(args.matrix.getValue());
 	world->addScene(args.layer.getValue(), scene);
 	results.newId.setValue(scene->getId());

@@ -16,7 +16,7 @@ RotateView::RotateView(const std::string& name, World* scene, Canvas* canvas) :
 
 void RotateView::onOk()
 {
-	auto shape = getWorld()->getObjects()->findSceneById<IShapeScene*>( objectSelectView.getId() );
+	auto shape = getWorld()->getScenes()->findSceneById<IShapeScene*>( objectSelectView.getId() );
 	if (shape == nullptr) {
 		return;
 	}

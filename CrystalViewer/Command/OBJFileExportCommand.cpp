@@ -30,7 +30,7 @@ std::string OBJFileExportCommand::getName()
 
 bool OBJFileExportCommand::execute(World* world)
 {
-	const auto& scenes = world->getObjects()->findScenes(SceneType::PolygonMeshScene);
+	const auto& scenes = world->getScenes()->findScenes(SceneType::PolygonMeshScene);
 	std::vector<PolygonMeshScene*> polygons;
 	for (const auto& scene : scenes) {
 		polygons.push_back( static_cast<PolygonMeshScene*>( scene) );

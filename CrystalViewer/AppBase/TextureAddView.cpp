@@ -30,7 +30,7 @@ void TextureAddView::onOk()
 	command.execute(getWorld());
 	const auto newId = std::any_cast<int>( command.getResult(TextureCreateLabels::NewIdLabel) );
 	
-	auto scene = getWorld()->getObjects()->findSceneById<TextureScene*>(newId);
+	auto scene = getWorld()->getScenes()->findSceneById<TextureScene*>(newId);
 	auto controller = scene->getController();
 	controller->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	//getWorld()->getRenderer()->getScene()->screen.addChild(controller.getView());

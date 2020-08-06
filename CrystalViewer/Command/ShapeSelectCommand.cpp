@@ -33,7 +33,7 @@ bool ShapeSelectCommand::execute(World* scene)
 	if (shapeId == 0) {
 		return false;
 	}
-	auto shape = scene->getObjects()->findSceneById<IShapeScene*>(shapeId);
+	auto shape = scene->getScenes()->findSceneById<IShapeScene*>(shapeId);
 	if (shape == nullptr) {
 		return false;
 	}

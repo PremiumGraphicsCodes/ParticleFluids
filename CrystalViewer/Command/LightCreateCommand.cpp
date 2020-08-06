@@ -43,7 +43,7 @@ bool LightCreateCommand::execute(World* world)
 	l->setSpecular(args.specular.getValue());
 //	auto scene = world->getSceneFactory()->createLightScene(std::move(l), args.name.getValue());
 	auto scene = new LightScene(world->getNextSceneId(), args.name.getValue(), std::move(l));
-	world->getObjects()->addScene(scene);
+	world->getScenes()->addScene(scene);
 	results.newId.setValue(scene->getId());
 	return true;
 }

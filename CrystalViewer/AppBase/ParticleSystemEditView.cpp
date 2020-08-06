@@ -20,7 +20,7 @@ void ParticleSystemEditView::setValue(ParticleSystemScene* value)
 
 void ParticleSystemEditView::onEdit()
 {
-	auto particleSystem = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>( idView.getValue() );
+	auto particleSystem = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>( idView.getValue() );
 	particleSystem->setName(attributeView.getName());
 	particleSystem->setAttribute(attributeView.getValue());
 	//getWorld()->updateViewModel();

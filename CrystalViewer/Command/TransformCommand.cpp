@@ -22,7 +22,7 @@ std::string TransformCommand::getName()
 
 bool TransformCommand::execute(World* world)
 {
-	auto scene = world->getObjects()->findSceneById<Scene::IShapeScene*>(args.id.getValue());
+	auto scene = world->getScenes()->findSceneById<Scene::IShapeScene*>(args.id.getValue());
 	if (scene == nullptr) {
 		return false;
 	}

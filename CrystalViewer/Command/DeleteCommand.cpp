@@ -32,11 +32,11 @@ bool DeleteCommand::execute(World* world)
 		world->getItems()->deleteSceneById(args.id.getValue());
 	}
 	else {
-		auto scene = world->getObjects()->findSceneById(args.id.getValue());
+		auto scene = world->getScenes()->findSceneById(args.id.getValue());
 		if (scene == nullptr) {
 			return false;
 		}
-		world->getObjects()->deleteSceneById(args.id.getValue());
+		world->getScenes()->deleteSceneById(args.id.getValue());
 	}
 	return true;
 }

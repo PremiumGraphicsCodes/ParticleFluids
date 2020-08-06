@@ -27,8 +27,8 @@ void IntersectionView::onShow()
 void IntersectionView::onOk()
 {
 	auto repository = getWorld();
-	auto obj1 = repository->getObjects()->findSceneById<PolygonMeshScene*>(mesh1.getId());
-	auto obj2 = repository->getObjects()->findSceneById<PolygonMeshScene*>(mesh2.getId());
+	auto obj1 = repository->getScenes()->findSceneById<PolygonMeshScene*>(mesh1.getId());
+	auto obj2 = repository->getScenes()->findSceneById<PolygonMeshScene*>(mesh2.getId());
 	if (obj1 == nullptr || obj2 == nullptr) {
 		return;
 	}

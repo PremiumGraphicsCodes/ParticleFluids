@@ -20,7 +20,7 @@ VolumeConvertView::VolumeConvertView(World* model, Canvas* canvas) :
 void VolumeConvertView::onOk()
 {
 	auto id = particleSystemSelectView.getId();
-	auto particleSystem = getWorld()->getObjects()->findSceneById<ParticleSystemScene*>(id);
+	auto particleSystem = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
 
 	//Math::Box3d box;
 	//Volume volume(32, 32, 32, box);

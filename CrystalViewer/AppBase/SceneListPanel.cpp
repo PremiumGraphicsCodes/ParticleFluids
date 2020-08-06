@@ -26,7 +26,7 @@ SceneListPanel::SceneListPanel(const std::string& name, World* model, Canvas* ca
 void SceneListPanel::onShow()
 {
 	ImGui::Begin("SceneList");
-	show(getWorld()->getObjects());
+	show(getWorld()->getScenes());
 	ImGui::End();
 }
 

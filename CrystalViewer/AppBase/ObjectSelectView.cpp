@@ -31,7 +31,7 @@ ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas
 			Command::Command command(ShapeSelectLabels::CommandNameLabel);
 			command.setArg(ShapeSelectLabels::ShapeIdLabel, parentId);
 			if (command.execute(model)) {
-				const auto bb = model->getObjects()->findSceneById( parentId )->getBoundingBox();
+				const auto bb = model->getScenes()->findSceneById( parentId )->getBoundingBox();
 				WireFrameBuilder builder;
 				builder.build(bb);
 				WireFrameAttribute attribute;

@@ -22,7 +22,7 @@ std::string SetMatrixCommand::getName()
 
 bool SetMatrixCommand::execute(World* world)
 {
-	auto scene = world->getObjects()->findSceneById<Scene::IShapeScene*>(args.id.getValue());
+	auto scene = world->getScenes()->findSceneById<Scene::IShapeScene*>(args.id.getValue());
 	scene->setMatrix(args.matrix.getValue());
 
 	return true;

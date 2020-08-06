@@ -26,7 +26,7 @@ void LightEditView::setValue(LightScene* value)
 
 void LightEditView::onEdit()
 {
-	auto light = getWorld()->getObjects()->findSceneById<LightScene*>(idView.getValue());
+	auto light = getWorld()->getScenes()->findSceneById<LightScene*>(idView.getValue());
 	auto l = light->getLight();
 	l->setPosition(lightView.position.getValue());
 	l->setAmbient(lightView.ambient.getValue());

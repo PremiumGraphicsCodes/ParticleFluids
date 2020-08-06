@@ -33,7 +33,7 @@ std::string TrimCommand::getName()
 
 bool TrimCommand::execute(World* world)
 {
-	auto shape = world->getObjects()->findSceneById<IShapeScene*>(args.shapeId.getValue());
+	auto shape = world->getScenes()->findSceneById<IShapeScene*>(args.shapeId.getValue());
 	if (shape == nullptr) {
 		return false;
 	}
@@ -58,7 +58,7 @@ bool TrimCommand::execute(World* world)
 		attr.size = 1.0f;
 		auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
 		auto newObj = new ParticleSystemScene(world->getNextSceneId(), "Trimmed",std::move(shape));
-		world->getObjects()->addScene(newObj);
+		world->getScenes()->addScene(newObj);
 		results.newId.setValue(newObj->getId());
 	}
 	return true;

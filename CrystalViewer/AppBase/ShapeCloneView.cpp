@@ -12,6 +12,6 @@ ShapeCloneView::ShapeCloneView(const std::string& name, World* model, Canvas* ca
 
 void ShapeCloneView::onOk()
 {
-	auto shape = getWorld()->getObjects()->findSceneById<IShapeScene*>( shapeSelectView.getId() );
+	auto shape = getWorld()->getScenes()->findSceneById<IShapeScene*>( shapeSelectView.getId() );
 	//shape->clone();
 }

@@ -32,6 +32,6 @@ void PolygonMeshEditView::setValue(PolygonMeshScene* value)
 
 void PolygonMeshEditView::onEdit()
 {
-	auto polygonMesh = world->getObjects()->findSceneById<PolygonMeshScene*>(id.getValue());
+	auto polygonMesh = world->getScenes()->findSceneById<PolygonMeshScene*>(id.getValue());
 	polygonMesh->setName(name.getValue());
 }

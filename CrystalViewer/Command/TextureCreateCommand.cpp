@@ -42,7 +42,7 @@ bool TextureCreateCommand::execute(World* world)
 //	auto scene = world->getSceneFactory()->createTextureScene(std::move(image), args.name.getValue());
 	auto scene = new TextureScene(world->getNextSceneId(), std::move(image), args.name.getValue());
 
-	world->getObjects()->addScene(scene);
+	world->getScenes()->addScene(scene);
 	results.newId.setValue(scene->getId());
 	return true;
 }

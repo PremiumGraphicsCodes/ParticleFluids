@@ -32,7 +32,7 @@ TextureSetCommand::Results::Results() :
 
 bool TextureSetCommand::execute(World* world)
 {
-	auto scene = world->getObjects()->findSceneById<TextureScene*>(args.id.getValue());
+	auto scene = world->getScenes()->findSceneById<TextureScene*>(args.id.getValue());
 	if (scene == nullptr) {
 		results.isOk.setValue(false);
 		return false;

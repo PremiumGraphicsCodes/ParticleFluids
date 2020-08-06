@@ -33,7 +33,7 @@ MaterialSetCommand::Args::Args() :
 
 bool MaterialSetCommand::execute(World* world)
 {
-	auto scene = world->getObjects()->findSceneById<MaterialScene*>(args.id.getValue());
+	auto scene = world->getScenes()->findSceneById<MaterialScene*>(args.id.getValue());
 	if (scene == nullptr) {
 		return false;
 	}

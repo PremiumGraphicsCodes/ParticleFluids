@@ -23,8 +23,8 @@ void BooleanView::onShow()
 
 void BooleanView::onOk()
 {
-	auto polygon1 = static_cast<Crystal::Scene::PolygonMeshScene*>( getWorld()->getObjects()->findSceneById(objectButton1.getId()) );
-	auto polygon2 = static_cast<Crystal::Scene::PolygonMeshScene*>( getWorld()->getObjects()->findSceneById(objectButton2.getId()) );
+	auto polygon1 = static_cast<Crystal::Scene::PolygonMeshScene*>( getWorld()->getScenes()->findSceneById(objectButton1.getId()) );
+	auto polygon2 = static_cast<Crystal::Scene::PolygonMeshScene*>( getWorld()->getScenes()->findSceneById(objectButton2.getId()) );
 	if (polygon1 == nullptr || polygon2 == nullptr) {
 		return;
 	}

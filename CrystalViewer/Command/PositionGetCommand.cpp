@@ -29,7 +29,7 @@ std::string PositionGetCommand::getName()
 
 bool PositionGetCommand::execute(World* world)
 {
-	auto scene = world->getObjects()->findSceneById<Crystal::Scene::IShapeScene*>(args.parentId.getValue());
+	auto scene = world->getScenes()->findSceneById<Crystal::Scene::IShapeScene*>(args.parentId.getValue());
 	if (scene == nullptr) {
 		return false;
 	}

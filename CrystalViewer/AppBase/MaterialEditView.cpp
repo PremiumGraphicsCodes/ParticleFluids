@@ -27,7 +27,7 @@ void MaterialEditView::setValue(MaterialScene* value)
 
 void MaterialEditView::onEdit()
 {
-	auto mat = getWorld()->getObjects()->findSceneById<MaterialScene*>(idView.getValue());
+	auto mat = getWorld()->getScenes()->findSceneById<MaterialScene*>(idView.getValue());
 	auto material = mat->getMaterial();
 	(*material) = this->materialView.getValue();
 	//mat->setMaterial(materialView.getValue());

@@ -43,7 +43,7 @@ void KFFluidSimulationView::onOk()
 	auto world = getWorld();
 
 	fluidScene = new KFFluidScene(getWorld()->getNextSceneId(), "KFFluid");
-	getWorld()->getObjects()->addScene(fluidScene);
+	getWorld()->getScenes()->addScene(fluidScene);
 
 	this->reset();
 

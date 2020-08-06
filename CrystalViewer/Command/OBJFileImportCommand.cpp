@@ -90,7 +90,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 			}
 			//faceGroup->setMaterialName(g.usemtl);
 		}
-		world->getObjects()->addScene(meshScene);
+		world->getScenes()->addScene(meshScene);
 		results.newId.setValue(meshScene->getId());
 
 		return true;
@@ -109,7 +109,7 @@ bool OBJFileImportCommand::importMTL(const std::filesystem::path& filePath, Worl
 			mat->diffuse = m.diffuse;
 			mat->specular = m.specular;
 			mat->shininess = m.specularExponent;
-			world->getObjects()->addScene(new MaterialScene(world->getNextSceneId(), m.name, std::move(mat)));
+			world->getScenes()->addScene(new MaterialScene(world->getNextSceneId(), m.name, std::move(mat)));
 			//mat.textureId = m.ambientTexture;
 		}
 		return true;
@@ -135,7 +135,7 @@ bool OBJFileImportCommand::importOBJWithMTL(const std::filesystem::path& filePat
 		return false;
 	}
 
-	world->getObjects()->addScene(scene);
+	world->getScenes()->addScene(scene);
 
 	return true;
 }

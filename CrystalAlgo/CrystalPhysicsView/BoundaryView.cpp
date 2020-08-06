@@ -15,8 +15,10 @@ BoundaryView::BoundaryView(const std::string& name, World* model, Canvas* canvas
 
 void BoundaryView::onOk()
 {
-	auto mesh = model->getObjects()->findSceneById<PolygonMeshScene*>(meshSelectView.getId());
+	/*
+	auto mesh = getWorld()->getScenes()->findSceneById<PolygonMeshScene*>(meshSelectView.getId());
 	if (mesh == nullptr) {
 		return;
 	}
+	*/
 }

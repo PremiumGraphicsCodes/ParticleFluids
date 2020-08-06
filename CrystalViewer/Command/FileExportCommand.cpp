@@ -40,7 +40,7 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	case FileFormat::OBJ :
 	{
 		std::vector<int> ids;
-		auto scenes = world->getObjects()->findScenes(SceneType::PolygonMeshScene);
+		auto scenes = world->getScenes()->findScenes(SceneType::PolygonMeshScene);
 		for (auto s : scenes) {
 			ids.push_back(s->getId());
 		}
@@ -61,7 +61,7 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	{
 		/*
 		std::vector<int> ids;
-		auto scenes = world->getObjects()->findScenes(SceneType::TriangleMeshScene);
+		auto scenes = world->getScenes()->findScenes(SceneType::TriangleMeshScene);
 		for (auto s : scenes) {
 			ids.push_back(s->getId());
 		}
@@ -83,7 +83,7 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	{
 		Crystal::Command::Command command(::PCDFileExportLabels::CommandNameLabel);
 		std::vector<int> ids;
-		auto scenes = world->getObjects()->findScenes(SceneType::ParticleSystemScene);
+		auto scenes = world->getScenes()->findScenes(SceneType::ParticleSystemScene);
 		for (auto s : scenes) {
 			ids.push_back(s->getId());
 		}

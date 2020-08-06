@@ -17,7 +17,7 @@ TranslateView::TranslateView(const std::string& name, World* scene, Canvas* canv
 void TranslateView::onOk()
 {
 	const auto id = objectSelectView.getId();
-	auto shape = getWorld()->getObjects()->findSceneById<IShapeScene*>(id);
+	auto shape = getWorld()->getScenes()->findSceneById<IShapeScene*>(id);
 	const auto& v = translateView.getValue();
 	const Matrix4dd matrix
 	(

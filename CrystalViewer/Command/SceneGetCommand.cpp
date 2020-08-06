@@ -40,7 +40,7 @@ SceneGetCommand::SceneGetCommand() :
 
 bool SceneGetCommand::execute(World* world)
 {
-	auto scene = world->getObjects()->findSceneById(args.id.getValue());
+	auto scene = world->getScenes()->findSceneById(args.id.getValue());
 	if (scene == nullptr) {
 		return false;
 	}

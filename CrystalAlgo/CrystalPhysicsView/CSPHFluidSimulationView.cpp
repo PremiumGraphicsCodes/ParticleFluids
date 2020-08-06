@@ -42,7 +42,7 @@ void CSPHFluidSimulationView::onOk()
 	auto world = getWorld();
 
 	fluidScene = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
-	getWorld()->getObjects()->addScene(fluidScene);
+	getWorld()->getScenes()->addScene(fluidScene);
 
 	this->reset();
 

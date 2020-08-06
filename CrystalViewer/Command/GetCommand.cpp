@@ -12,10 +12,10 @@ using namespace Crystal::Command;
 std::any GetCommand::Get(World* world, const std::string& name)
 {
 	if (name == GetLabels::SceneCountLabel) {
-		return static_cast<int>( world->getObjects()->getRoot()->getChildren().size() );
+		return static_cast<int>( world->getScenes()->getRoot()->getChildren().size() );
 	}
 	else if (name == GetLabels::SceneListIdsLabel) {
-		const auto& children = world->getObjects()->getRoot()->getChildren();
+		const auto& children = world->getScenes()->getRoot()->getChildren();
 		std::vector<int> ids;
 		for (auto child : children) {
 			ids.push_back(child->getId());
@@ -28,7 +28,7 @@ std::any GetCommand::Get(World* world, const std::string& name)
 
 std::any GetCommand::Get(World* world, int id, const std::string& name)
 {
-	auto scene = world->getObjects()->findSceneById(id);
+	auto scene = world->getScenes()->findSceneById(id);
 	if (name == GetLabels::SceneCountLabel) {
 		return static_cast<int>(scene->getChildren().size());
 	}
@@ -42,7 +42,7 @@ std::any GetCommand::Get(World* world, int id, const std::string& name)
 	}
 	/*
 	else if (scene->getType() == SceneType::FaceGroupScene) {
-		auto faceGroup = world->getObjects()->findSceneById<FaceGroupScene*>(id);
+		auto faceGroup = world->getScenes()->findSceneById<FaceGroupScene*>(id);
 		return std::any( faceGroup->getMaterial()->get Name() );
 	}
 	*/

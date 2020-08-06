@@ -55,7 +55,7 @@ void DFSPHFluidSimulationView::onOk()
 
 
 	reset();
-	getWorld()->getObjects()->addScene(this->fluidScene);
+	getWorld()->getScenes()->addScene(this->fluidScene);
 	this->newId = this->fluidScene->getId();
 
 	Command::Command command;

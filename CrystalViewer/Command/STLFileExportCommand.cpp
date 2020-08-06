@@ -39,7 +39,7 @@ bool STLFileExportCommand::execute(World* world)
 	STLFile stl;
 	std::vector<STLFace> fs;
 	for (const auto id : ids) {
-		auto polygonMesh = world->getObjects()->findSceneById<PolygonMeshScene*>(id);
+		auto polygonMesh = world->getScenes()->findSceneById<PolygonMeshScene*>(id);
 		const auto& positions = polygonMesh->getShape()->getPositions();
 		const auto& vertices = polygonMesh->getShape()->getVertices();
 		const auto& faces = polygonMesh->getShape()->getFaces();
@@ -60,7 +60,7 @@ bool STLFileExportCommand::execute(World* world)
 	}
 	stl.faces = fs;
 	stl.faceCount = fs.size();
-	const auto scenes = world->getObjects()->findScenes(SceneType::PolygonMeshScene);
+	const auto scenes = world->getScenes()->findScenes(SceneType::PolygonMeshScene);
 
 	if (args.isBinary.getValue()) {
 		STLBinaryFileWriter writer;

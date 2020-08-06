@@ -17,7 +17,7 @@ ScaleView::ScaleView(const std::string& name, World* scene, Canvas* canvas) :
 void ScaleView::onOk()
 {
 	const auto id = objectSelectView.getId();
-	auto scene = getWorld()->getObjects()->findSceneById<IShapeScene*>(id);
+	auto scene = getWorld()->getScenes()->findSceneById<IShapeScene*>(id);
 	const auto& v = scaleView.getValue();
 	const Matrix4dd matrix
 	(
