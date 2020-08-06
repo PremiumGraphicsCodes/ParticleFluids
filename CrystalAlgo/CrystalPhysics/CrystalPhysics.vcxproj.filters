@@ -74,6 +74,7 @@
     <ClInclude Include="KFMicroParticle.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="Boundary.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -134,5 +135,6 @@
     <ClCompile Include="KFMicroParticle.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
+    <ClCompile Include="Boundary.cpp" />
   </ItemGroup>
 </Project>

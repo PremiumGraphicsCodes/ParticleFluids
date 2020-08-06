@@ -14,5 +14,6 @@
     <ClInclude Include="KFFluidSimulationView.h" />
     <ClInclude Include="DFSPHFluidSimulationView.h" />
     <ClInclude Include="PBSPHFluidSimulationView.h" />
+    <ClInclude Include="BoundaryView.h" />
   </ItemGroup>
 </Project>

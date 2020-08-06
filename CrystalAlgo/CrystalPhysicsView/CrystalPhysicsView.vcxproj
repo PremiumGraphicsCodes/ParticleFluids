@@ -193,6 +193,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoundaryView.h" />
     <ClInclude Include="CSPHFluidSimulationView.h" />
     <ClInclude Include="DFSPHFluidSimulationView.h" />
     <ClInclude Include="KFFluidSimulationView.h" />
