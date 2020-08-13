@@ -91,7 +91,8 @@ namespace {
 	}
 }
 
-Window::Window(World* model, Canvas* canvas) :
+Window::Window(const std::string& title, World* model, Canvas* canvas) :
+	title(title),
 	model(model),
 	canvas(canvas)
 {
@@ -110,7 +111,7 @@ bool Window::init()
 	//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	//glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	window = glfwCreateWindow(1280, 720, "ImGui OpenGL3 example", NULL, NULL);
+	window = glfwCreateWindow(1280, 720, title.c_str(), NULL, NULL);
 	glfwMakeContextCurrent(window);
 	//	gl3wInit();
 

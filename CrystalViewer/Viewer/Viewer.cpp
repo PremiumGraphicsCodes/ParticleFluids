@@ -27,7 +27,7 @@ int main(int, char**)
 	World world;
 	Canvas canvas;
 
-	Window window(&world, &canvas);
+	Window window("CrystalViewer", &world, &canvas);
 	if (!window.init()) {
 		assert(false);
 		return 0;

@@ -13,7 +13,7 @@ namespace Crystal {
 class Window
 {
 public:
-	Window(Scene::World* model, Canvas* canvas);
+	Window(const std::string& title, Scene::World* model, Canvas* canvas);
 
 	bool init();
 
@@ -29,6 +29,7 @@ private:
 	std::vector< IMenu* > menus;
 	std::vector< IWindow* > panels;
 	GLFWwindow* window;
+	std::string title;
 };
 	}
 }

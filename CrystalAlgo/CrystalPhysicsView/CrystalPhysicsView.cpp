@@ -23,7 +23,7 @@ int main(int, char**)
 	World model;
 	Canvas canvas;
 
-	Window window(&model, &canvas);
+	Window window("FluidStudio", &model, &canvas);
 	if (!window.init()) {
 		assert(false);
 		return 0;
