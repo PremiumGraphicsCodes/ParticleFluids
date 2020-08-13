@@ -15,6 +15,10 @@ bool NewCommand::execute(World* model)
 	model->clear();
 	model->init();
 	model->getRenderer()->build(*model->getGLFactory());
+
+	//world->getRenderer()->build(*world->getGLFactory());
+	model->getCamera()->getController()->createView(model->getRenderer(), *model->getGLFactory());
+
 //	model->updateViewModel();
 
 	return true;
