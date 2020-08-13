@@ -77,7 +77,7 @@ void PBSPHParticle::addDensity(const PBSPHParticle& rhs)
 
 void PBSPHParticle::addDensity(const float distance, const float mass)
 {
-	this->addDensity(getKernel()->getPoly6Kernel(distance, getKernel()->getEffectLength()) * mass);
+	this->addDensity(getKernel()->getPoly6Kernel(distance) * mass);
 }
 
 void PBSPHParticle::predictPosition_(const float dt)
@@ -123,14 +123,14 @@ float PBSPHParticle::getEffectLength() const
 void PBSPHParticle::calculatePressure(const PBSPHParticle& rhs)
 {
 	const auto v = this->getPredictPosition() - rhs.getPredictPosition();
-	const auto weight = getKernel()->getPoly6KernelGradient(v, getKernel()->getEffectLength());
+	const auto weight = getKernel()->getPoly6KernelGradient(v);
 	const auto c = this->getConstraint() + rhs.getConstraint();
 	dx += c * weight / this->getDensity() * 0.05f;
 }
 
 void PBSPHParticle::calculatePressure(const Vector3df& v)
 {
-	const auto weight = getKernel()->getPoly6KernelGradient(v, getKernel()->getEffectLength());
+	const auto weight = getKernel()->getPoly6KernelGradient(v);
 	const auto c = this->getConstraint() + this->getConstraint();
 	dx += c * weight / this->getDensity() * 0.5f;
 }

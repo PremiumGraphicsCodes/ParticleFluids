@@ -34,6 +34,7 @@ float SPHKernel::getPoly6Kernel2(const float distanceSquared)
 	return this->poly6KernelConstant * a * a * a;
 }
 
+/*
 float SPHKernel::getPoly6Kernel(const float distance, const float effectLength)
 {
 	if (distance > effectLength) {
@@ -42,8 +43,9 @@ float SPHKernel::getPoly6Kernel(const float distance, const float effectLength)
 	const auto poly6Constant = 315.0f / (64.0f * PI * pow(effectLength, 9));
 	return poly6Constant * pow(effectLength * effectLength - distance * distance, 3);
 }
+*/
 
-Vector3df SPHKernel::getPoly6KernelGradient(const Vector3df& distanceVector, const float effectLength)
+Vector3df SPHKernel::getPoly6KernelGradient(const Vector3df& distanceVector)
 {
 	const auto distance = glm::length(distanceVector);
 	if (distance > effectLength) {
@@ -54,14 +56,13 @@ Vector3df SPHKernel::getPoly6KernelGradient(const Vector3df& distanceVector, con
 	return distanceVector * factor;
 }
 
-float SPHKernel::getPoly6KernelGradientCoe(const float distance, const float effectLength)
+float SPHKernel::getPoly6KernelGradientCoe(const float distance)
 {
 	const auto poly6ConstantGradient = 945.0f / (32.0f * PIf * pow(effectLength, 9));
 	return poly6ConstantGradient * pow(effectLength * effectLength - distance * distance, 2);
 }
 
-
-float SPHKernel::getPoly6KernelLaplacian(const float distance, const float effectLength)
+float SPHKernel::getPoly6KernelLaplacian(const float distance)
 {
 	if (distance > effectLength) {
 		return 0.0f;
