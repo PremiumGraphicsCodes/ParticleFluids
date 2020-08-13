@@ -3,6 +3,7 @@
 #include "../../CrystalViewer/AppBase/DoubleView.h"
 #include "../CrystalPhysics/CSPHSolver.h"
 #include "../CrystalPhysics/CSPHFluidScene.h"
+#include "../../CrystalViewer/AppBase/DirectoryView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -27,6 +28,7 @@ private:
 	DoubleView viscosityView;
 	DoubleView timeStepView;
 	DoubleView densityView;
+	DirectoryView outputDirectoryView;
 	int newId;
 };
 

@@ -32,6 +32,7 @@
     <ClCompile Include="CtrlMenu.cpp" />
     <ClCompile Include="Cylinder3dView.cpp" />
     <ClCompile Include="DeleteView.cpp" />
+    <ClCompile Include="DirectoryView.cpp" />
     <ClCompile Include="Double4View.cpp" />
     <ClCompile Include="DoubleView.cpp" />
     <ClCompile Include="FaceGroupEditView.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Circle3dView.h" />
     <ClInclude Include="DeleteView.h" />
+    <ClInclude Include="DirectoryView.h" />
     <ClInclude Include="Double4View.h" />
     <ClInclude Include="FaceGroupEditView.h" />
     <ClInclude Include="FilePathView.h" />

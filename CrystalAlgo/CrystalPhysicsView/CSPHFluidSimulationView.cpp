@@ -28,6 +28,7 @@ CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
 	pressureCoeView("PressureCoe", 1.0),
 	viscosityView("Viscosity", 1.0),
 	densityView("Density", 10.0),
+	outputDirectoryView("OutDir"),
 	newId(-1)
 {
 	auto func = [=]() {
@@ -49,6 +50,7 @@ CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
 	add(&pressureCoeView);
 	add(&viscosityView);
 	add(&densityView);
+	add(&outputDirectoryView);
 }
 
 void CSPHFluidSimulationView::onOk()

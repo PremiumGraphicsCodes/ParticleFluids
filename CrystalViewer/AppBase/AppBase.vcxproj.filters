@@ -278,6 +278,9 @@
     <ClCompile Include="ShaderSceneListPanel.cpp">
       <Filter>ShaderScene</Filter>
     </ClCompile>
+    <ClCompile Include="DirectoryView.cpp">
+      <Filter>File\Directory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -608,6 +611,9 @@
     <ClInclude Include="ShaderSceneListPanel.h">
       <Filter>ShaderScene</Filter>
     </ClInclude>
+    <ClInclude Include="DirectoryView.h">
+      <Filter>File\Directory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">
@@ -747,6 +753,9 @@
     </Filter>
     <Filter Include="ShaderScene">
       <UniqueIdentifier>{1e727703-a1a9-4bc8-a78c-06d584fcdaae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File\Directory">
+      <UniqueIdentifier>{a813769c-dfc6-4d2d-ac56-4d7230a206bd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
