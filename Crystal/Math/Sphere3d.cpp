@@ -47,3 +47,10 @@ bool Sphere3d::isSame(const Sphere3d& rhs, const double tolerance) const
 		::isEqual(radius, rhs.radius, tolerance) &&
 		(center == rhs.center);
 }
+
+Box3d Sphere3d::getBoundingBox() const
+{
+	const auto min = center - Vector3dd(radius, radius, radius);
+	const auto max = center + Vector3dd(radius, radius, radius);
+	return Box3d(min, max);
+}

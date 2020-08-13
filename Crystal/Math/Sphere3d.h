@@ -41,6 +41,8 @@ public:
 
 	void moveTo(const Vector3dd& pos) { this->center = pos; }
 
+	Box3d getBoundingBox() const;
+
 private:
 	Vector3dd center;
 	double radius;

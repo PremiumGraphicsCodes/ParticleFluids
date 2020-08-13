@@ -2,7 +2,7 @@
 
 #include "IPSAddView.h"
 #include "Sphere3dView.h"
-#include "IntView.h"
+#include "DoubleView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -17,7 +17,7 @@ private:
 
 private:
 	Sphere3dView sphereView;
-	IntView countView;
+	DoubleView divideLengthView;
 };
 
 	}

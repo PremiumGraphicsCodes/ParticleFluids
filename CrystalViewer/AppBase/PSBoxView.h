@@ -3,7 +3,7 @@
 #include "IPSAddView.h"
 
 #include "Box3dView.h"
-#include "IntView.h"
+#include "DoubleView.h"
 #include "BoolView.h"
 
 namespace Crystal {
@@ -19,7 +19,7 @@ private:
 
 private:
 	Box3dView boxView;
-	IntView countView;
+	DoubleView divideLengthView;
 };
 
 	}
