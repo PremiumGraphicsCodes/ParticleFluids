@@ -24,6 +24,10 @@ CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
 	startButton("Start"),
 	resetButton("Reset"),
 	nextButton("Next"),
+	timeStepView("TimeStep", 0.001),
+	pressureCoeView("PressureCoe", 1.0),
+	viscosityView("Viscosity", 1.0),
+	densityView("Density", 10.0),
 	newId(-1)
 {
 	auto func = [=]() {
@@ -41,6 +45,10 @@ CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
 	};
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
+	add(&timeStepView);
+	add(&pressureCoeView);
+	add(&viscosityView);
+	add(&densityView);
 }
 
 void CSPHFluidSimulationView::onOk()
@@ -64,6 +72,7 @@ void CSPHFluidSimulationView::onOk()
 
 	auto simulator = new CSPHSolver();
 	simulator->add(fluidScene);
+	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 	getWorld()->addAnimation(simulator);
 }
 
@@ -73,9 +82,14 @@ void CSPHFluidSimulationView::reset()
 
 	const auto radius = 0.1;
 	const auto length = radius * 2.0;
+	::sphConstant.pressureCoe = pressureCoeView.getValue();
+	::sphConstant.viscosityCoe = viscosityView.getValue();
 	::sphConstant.effectLength = (length * 1.25);
+	::sphConstant.density = densityView.getValue();
+	simulator.setTimeStep(timeStepView.getValue());
+
 	for (int i = 0; i < 1; ++i) {
-		for (int j = 0; j < 1; ++j) {
+		for (int j = 0; j < 5; ++j) {
 			for (int k = 0; k < 1; ++k) {
 				auto mp = new CSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
 				fluidScene->addParticle(mp);

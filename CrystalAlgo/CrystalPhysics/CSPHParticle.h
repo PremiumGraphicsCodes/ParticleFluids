@@ -54,7 +54,7 @@ public:
 
 	void forwardTime(const float timeStep);
 
-	void addExternalForce(const Math::Vector3df& force);
+	void addExternalForce(const Math::Vector3df& force, const float timeStep);
 
 	void solveNormal(const CSPHParticle& rhs);
 

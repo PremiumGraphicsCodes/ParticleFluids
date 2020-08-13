@@ -11,18 +11,16 @@ using namespace Crystal::Physics;
 
 void CSPHSolver::clear()
 {
-	timeStep = 0;
+	//timeStep = 0.001;
 }
 
 void CSPHSolver::step()
 {
-	simulate(1.25f);
+	simulate(this->timeStep);
 }
 
 void CSPHSolver::simulate(const float timeStep)
 {
-	this->timeStep++;
-
 	std::vector<CSPHParticle*> particles;
 
 	for (auto fluid : fluids) {
@@ -71,7 +69,7 @@ void CSPHSolver::simulate(const float timeStep)
 	}
 
 	for (auto p : particles) {
-		p->addExternalForce(externalForce);
+		p->addExternalForce(externalForce, timeStep);
 	}
 
 	CSPHBoundarySolver boundarySolver(timeStep, boundary);

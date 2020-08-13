@@ -42,10 +42,12 @@ public:
 
 	float effectLength;
 
-private:
 	float pressureCoe;
-	float tensionCoe;
+
 	float density;
+
+private:
+	float tensionCoe;
 };
 
 	}

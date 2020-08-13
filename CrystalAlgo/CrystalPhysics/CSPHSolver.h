@@ -13,7 +13,7 @@ namespace Crystal {
 class CSPHSolver : public Scene::IAnimator
 {
 public:
-	CSPHSolver() : timeStep(0)
+	CSPHSolver() : timeStep(0.001)
 	{}
 
 	void add(CSPHFluidScene* particle) { this->fluids.push_back(particle); }
@@ -24,12 +24,16 @@ public:
 
 	void simulate(const float timeStep);
 
-	int getTimeStep() const { return timeStep; }
+	void setTimeStep(const float timeStep) { this->timeStep = timeStep; }
+
+	//int getTimeStep() const { return timeStep; }
+
+	void setExternalForce(const Math::Vector3df& force) { this->externalForce = force; }
 
 	//std::vector<CSPHParticle*> getParticles() const { return particles; }
 
 private:
-	int timeStep;
+	float timeStep;
 	float effectLength = 1.25f;
 	//SPHKernel kernel;
 	std::vector<CSPHFluidScene*> fluids;

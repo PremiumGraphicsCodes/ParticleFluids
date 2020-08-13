@@ -23,6 +23,10 @@ private:
 	Button startButton;
 	Button resetButton;
 	Button nextButton;
+	DoubleView pressureCoeView;
+	DoubleView viscosityView;
+	DoubleView timeStepView;
+	DoubleView densityView;
 	int newId;
 };
 
