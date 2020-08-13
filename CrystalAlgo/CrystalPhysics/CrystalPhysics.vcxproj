@@ -155,6 +155,7 @@
     <ClInclude Include="Boundary.h" />
     <ClInclude Include="CSPHBoundarySolver.h" />
     <ClInclude Include="CSPHFluidScene.h" />
+    <ClInclude Include="CSPHFluidSceneController.h" />
     <ClInclude Include="CSPHParticle.h" />
     <ClInclude Include="CSPHSolver.h" />
     <ClInclude Include="DFFluidSceneController.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="Boundary.cpp" />
     <ClCompile Include="CSPHBoundarySolver.cpp" />
     <ClCompile Include="CSPHFluidScene.cpp" />
+    <ClCompile Include="CSPHFluidSceneController.cpp" />
     <ClCompile Include="CSPHParticle.cpp" />
     <ClCompile Include="CSPHSolver.cpp" />
     <ClCompile Include="DFFluidSceneController.cpp" />

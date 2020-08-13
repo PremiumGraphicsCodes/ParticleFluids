@@ -2,6 +2,7 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/DoubleView.h"
 #include "../CrystalPhysics/CSPHSolver.h"
+#include "../CrystalPhysics/CSPHFluidScene.h"
 
 namespace Crystal {
 	namespace UI {
@@ -17,7 +18,7 @@ private:
 	void reset();
 
 private:
-//			Algo::Physics::FluidScene* fluidScene;
+	Physics::CSPHFluidScene* fluidScene;
 	Physics::CSPHSolver simulator;
 	Button startButton;
 	Button resetButton;

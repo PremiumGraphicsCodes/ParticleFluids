@@ -6,6 +6,8 @@
 #include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
 #include "../../CrystalViewer/Command/Public/CameraLabels.h"
 
+#include "../CrystalPhysics/SPHConstant.h"
+
 using namespace Crystal::Math;
 //using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -13,11 +15,16 @@ using namespace Crystal::UI;
 using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
+namespace {
+	SPHConstant sphConstant;
+}
+
 CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("CSPHFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	nextButton("Next")
+	nextButton("Next"),
+	newId(-1)
 {
 	auto func = [=]() {
 		simulator.simulate(0.01);
@@ -38,10 +45,9 @@ CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
 
 void CSPHFluidSimulationView::onOk()
 {
-	/*
 	auto world = getWorld();
 
-	fluidScene = new FluidScene(getWorld()->getNextSceneId(), "Fluid");
+	fluidScene = new CSPHFluidScene(getWorld()->getNextSceneId(), "Fluid");
 	getWorld()->getScenes()->addScene(fluidScene);
 
 	this->reset();
@@ -56,15 +62,13 @@ void CSPHFluidSimulationView::onOk()
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
-	auto simulator = new FluidSimulator();
-	simulator->add(this->fluidScene);
+	auto simulator = new CSPHSolver();
+	simulator->add(fluidScene);
 	getWorld()->addAnimation(simulator);
-	*/
 }
 
 void CSPHFluidSimulationView::reset()
 {
-	/*
 	this->fluidScene->clearParticles();
 
 	const auto radius = 0.1;
@@ -72,11 +76,9 @@ void CSPHFluidSimulationView::reset()
 	for (int i = -50; i < 50; ++i) {
 		for (int j = 0; j < 10; ++j) {
 			for (int k = 0; k < 1; ++k) {
-				auto mp = new MacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(10, 10);
+				auto mp = new CSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
 				fluidScene->addParticle(mp);
 			}
 		}
 	}
-	*/
 }

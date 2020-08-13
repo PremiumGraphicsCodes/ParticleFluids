@@ -78,6 +78,9 @@
     <ClInclude Include="CSPHFluidScene.h">
       <Filter>CSPH</Filter>
     </ClInclude>
+    <ClInclude Include="CSPHFluidSceneController.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -140,6 +143,9 @@
     </ClCompile>
     <ClCompile Include="Boundary.cpp" />
     <ClCompile Include="CSPHFluidScene.cpp">
+      <Filter>CSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="CSPHFluidSceneController.cpp">
       <Filter>CSPH</Filter>
     </ClCompile>
   </ItemGroup>

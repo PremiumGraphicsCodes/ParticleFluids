@@ -8,7 +8,7 @@
 
 namespace Crystal {
 	namespace Physics {
-		class CSPHParticle;
+		class CSPHFluidScene;
 
 class CSPHSolver : public Scene::IAnimator
 {
@@ -16,9 +16,7 @@ public:
 	CSPHSolver() : timeStep(0)
 	{}
 
-	void add(CSPHParticle* particle) {
-		this->particles.push_back(particle);
-	}
+	void add(CSPHFluidScene* particle) { this->fluids.push_back(particle); }
 
 	void clear();
 
@@ -28,13 +26,13 @@ public:
 
 	int getTimeStep() const { return timeStep; }
 
-	std::vector<CSPHParticle*> getParticles() const { return particles; }
+	//std::vector<CSPHParticle*> getParticles() const { return particles; }
 
 private:
 	int timeStep;
 	float effectLength = 1.25f;
 	SPHKernel kernel;
-	std::vector<CSPHParticle*> particles;
+	std::vector<CSPHFluidScene*> fluids;
 	Math::Vector3df externalForce;
 	Math::Box3d boundary;
 };

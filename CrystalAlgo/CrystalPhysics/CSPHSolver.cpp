@@ -1,6 +1,7 @@
 #include "CSPHSolver.h"
 #include "CSPHParticle.h"
 #include "CSPHBoundarySolver.h"
+#include "CSPHFluidScene.h"
 
 #include "../CrystalAlgo/IndexedSortSearchAlgo.h"
 
@@ -11,10 +12,6 @@ using namespace Crystal::Physics;
 void CSPHSolver::clear()
 {
 	timeStep = 0;
-	for (auto p : particles) {
-		delete p;
-	}
-	particles.clear();
 }
 
 void CSPHSolver::step()
@@ -25,6 +22,13 @@ void CSPHSolver::step()
 void CSPHSolver::simulate(const float timeStep)
 {
 	this->timeStep++;
+
+	std::vector<CSPHParticle*> particles;
+
+	for (auto fluid : fluids) {
+		const auto ps = fluid->getParticles();
+		particles.insert(particles.end(), ps.begin(), ps.end());
+	}
 
 	for (auto particle : particles) {
 		particle->init();

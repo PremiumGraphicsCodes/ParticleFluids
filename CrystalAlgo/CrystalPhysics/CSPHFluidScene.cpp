@@ -6,7 +6,7 @@ using namespace Crystal::Physics;
 CSPHFluidScene::CSPHFluidScene(const int id, const std::string& name) :
 	Scene::IScene(id, name)
 {
-	//controller = std::make_unique<DFFluidSceneController>(this);
+	controller = std::make_unique<CSPHFluidSceneController>(this);
 }
 
 void CSPHFluidScene::clearParticles()
