@@ -30,6 +30,13 @@ void CSPHSolver::simulate(const float timeStep)
 		particles.insert(particles.end(), ps.begin(), ps.end());
 	}
 
+	SPHKernel kernel(effectLength);
+	for (auto p : particles) {
+		p->setKernel(&kernel);
+	}
+
+	//kernel.setEffectLength(fluids.front()->)
+
 	for (auto particle : particles) {
 		particle->init();
 	}
@@ -72,5 +79,9 @@ void CSPHSolver::simulate(const float timeStep)
 
 	for (auto p : particles) {
 		p->forwardTime(timeStep);
+	}
+
+	for (auto fluid : fluids) {
+		fluid->getController()->updateView();
 	}
 }

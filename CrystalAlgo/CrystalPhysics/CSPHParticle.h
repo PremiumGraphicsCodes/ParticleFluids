@@ -11,6 +11,7 @@
 
 namespace Crystal {
 	namespace Physics {
+		class SPHKernel;
 
 class CSPHParticle : public Shape::IParticle
 {
@@ -77,6 +78,8 @@ public:
 
 	void move(const Math::Vector3df& v);
 
+	void setKernel(SPHKernel* kernel) { this->kernel = kernel; }
+
 private:
 	float density;
 	float radius;
@@ -85,6 +88,7 @@ private:
 	Math::Vector3df velocity;
 	Math::Vector3df normal;
 	SPHConstant* constant;
+	SPHKernel* kernel;
 };
 
 	}

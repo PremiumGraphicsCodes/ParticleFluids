@@ -40,10 +40,11 @@ public:
 
 	float viscosityCoe;
 
+	float effectLength;
+
 private:
 	float pressureCoe;
 	float tensionCoe;
-	float effectLength;
 	float density;
 };
 

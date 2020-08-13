@@ -56,14 +56,10 @@ void CSPHParticle::addExternalForce(const Vector3df& externalForce)
 	this->force += externalForce * getDensity();
 }
 
-namespace {
-	SPHKernel kernel;
-}
-
 void CSPHParticle::solveNormal(const CSPHParticle& rhs)
 {
 	const auto& distanceVector = this->getPosition() - rhs.getPosition();
-	this->normal += kernel.getPoly6KernelGradient(distanceVector, constant->getEffectLength()) * rhs.getVolume();
+	this->normal += kernel->getPoly6KernelGradient(distanceVector, constant->getEffectLength()) * rhs.getVolume();
 	//pairs[i].getParticle1()->addForce(viscosityCoe * velocityDiff * kernel.getViscosityKernelLaplacian(distance, effectLength) * pairs[i].getParticle2()->getVolume());
 }
 
@@ -75,14 +71,14 @@ void CSPHParticle::solveSurfaceTension(const CSPHParticle& rhs)
 	const auto distance = glm::distance(this->getPosition(), rhs.getPosition());
 	const auto n = glm::normalize(this->normal);
 	const float tensionCoe = (this->constant->getTensionCoe() + rhs.constant->getTensionCoe()) * 0.5f;;
-	this->force -= tensionCoe * kernel.getPoly6KernelLaplacian(distance, constant->getEffectLength()) * n;
+	this->force -= tensionCoe * kernel->getPoly6KernelLaplacian(distance, constant->getEffectLength()) * n;
 }
 
 void CSPHParticle::solvePressureForce(const CSPHParticle& rhs)
 {
 	const auto pressure = (this->getPressure() + rhs.getPressure()) * 0.5f;
 	const auto& distanceVector = (this->getPosition() - rhs.getPosition());
-	const auto& f = kernel.getSpikyKernelGradient(distanceVector, constant->getEffectLength()) * pressure * rhs.getVolume();
+	const auto& f = kernel->getSpikyKernelGradient(distanceVector, constant->getEffectLength()) * pressure * rhs.getVolume();
 	this->force += f;
 }
 
@@ -91,18 +87,18 @@ void CSPHParticle::solveViscosityForce(const CSPHParticle& rhs)
 	const auto viscosityCoe = (this->constant->getViscosityCoe() + rhs.constant->getViscosityCoe()) * 0.5f;
 	const auto& velocityDiff = (rhs.velocity - this->velocity);
 	const auto distance = glm::distance(getPosition(), rhs.getPosition());
-	this->addForce(viscosityCoe * velocityDiff * kernel.getViscosityKernelLaplacian(distance, constant->getEffectLength()) * rhs.getVolume());
+	this->addForce(viscosityCoe * velocityDiff * kernel->getViscosityKernelLaplacian(distance, constant->getEffectLength()) * rhs.getVolume());
 }
 
 void CSPHParticle::addSelfDensity()
 {
-	this->addDensity(kernel.getCubicSpline(0.0, constant->getEffectLength()) * this->getMass());
+	this->addDensity(kernel->getCubicSpline(0.0, constant->getEffectLength()) * this->getMass());
 }
 
 void CSPHParticle::addDensity(const CSPHParticle& rhs)
 {
 	const float distance = glm::distance(this->getPosition(), rhs.getPosition());
-	this->addDensity(kernel.getCubicSpline(distance, constant->getEffectLength()) * rhs.getMass());
+	this->addDensity(kernel->getCubicSpline(distance, constant->getEffectLength()) * rhs.getMass());
 }
 
 void CSPHParticle::move(const Vector3df& v)

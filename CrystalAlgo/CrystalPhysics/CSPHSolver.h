@@ -31,7 +31,7 @@ public:
 private:
 	int timeStep;
 	float effectLength = 1.25f;
-	SPHKernel kernel;
+	//SPHKernel kernel;
 	std::vector<CSPHFluidScene*> fluids;
 	Math::Vector3df externalForce;
 	Math::Box3d boundary;

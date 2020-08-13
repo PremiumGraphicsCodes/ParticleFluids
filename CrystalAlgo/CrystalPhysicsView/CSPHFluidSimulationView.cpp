@@ -73,8 +73,9 @@ void CSPHFluidSimulationView::reset()
 
 	const auto radius = 0.1;
 	const auto length = radius * 2.0;
-	for (int i = -50; i < 50; ++i) {
-		for (int j = 0; j < 10; ++j) {
+	::sphConstant.effectLength = (length * 1.25);
+	for (int i = 0; i < 1; ++i) {
+		for (int j = 0; j < 1; ++j) {
 			for (int k = 0; k < 1; ++k) {
 				auto mp = new CSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
 				fluidScene->addParticle(mp);
