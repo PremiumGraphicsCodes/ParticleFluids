@@ -66,13 +66,13 @@ void PBSPHParticle::addExternalForce(const Vector3df& externalForce)
 
 void PBSPHParticle::addSelfDensity()
 {
-	this->addDensity(getKernel()->getPoly6Kernel(0.0, getKernel()->getEffectLength()) * this->getMass());
+	this->addDensity(getKernel()->getPoly6Kernel(0.0) * this->getMass());
 }
 
 void PBSPHParticle::addDensity(const PBSPHParticle& rhs)
 {
 	const float distance = glm::distance(this->getPredictPosition(), rhs.getPredictPosition());
-	this->addDensity(scene->getKernel()->getPoly6Kernel(distance, getKernel()->getEffectLength()) * rhs.getMass());
+	this->addDensity(scene->getKernel()->getPoly6Kernel(distance) * rhs.getMass());
 }
 
 void PBSPHParticle::addDensity(const float distance, const float mass)

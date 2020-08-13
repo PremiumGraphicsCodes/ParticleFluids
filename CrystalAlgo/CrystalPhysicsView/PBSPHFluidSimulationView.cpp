@@ -48,7 +48,7 @@ void PBSPHFluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	kernel.setEffectLength(2.25);
+	kernel = SPHKernel(2.25);
 	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid", kernel, sphConstant);
 	this->simulator = new PBSPHSolver();
 

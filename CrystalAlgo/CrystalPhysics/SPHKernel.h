@@ -43,7 +43,7 @@ public:
 
 	float getEffectLength() const { return effectLength; }
 
-	void setEffectLength(const float el) { this->effectLength = el; }
+	//void setEffectLength(const float el) { this->effectLength = el; }
 
 private:
 	float effectLength;
