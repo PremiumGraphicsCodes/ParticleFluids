@@ -34,6 +34,8 @@ public:
 
 	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
 
+	void setEffectLenth(const float length) { this->effectLength = length; }
+
 private:
 	float timeStep;
 	float effectLength = 1.25f;

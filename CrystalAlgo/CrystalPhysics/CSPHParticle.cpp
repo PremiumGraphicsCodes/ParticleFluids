@@ -46,7 +46,7 @@ float CSPHParticle::getRestVolume() const
 
 void CSPHParticle::forwardTime(const float timeStep)
 {
-	const auto& acc = getAccelaration();
+	const auto& acc = getAccelaration() / getDensity();
 	this->velocity += (acc * timeStep);
 	this->position += (velocity * timeStep);
 }
@@ -92,13 +92,13 @@ void CSPHParticle::solveViscosityForce(const CSPHParticle& rhs)
 
 void CSPHParticle::addSelfDensity()
 {
-	this->addDensity(kernel->getCubicSpline(0.0, constant->getEffectLength()) * this->getMass());
+	this->addDensity(kernel->getPoly6Kernel(0.0) * this->getMass());
 }
 
 void CSPHParticle::addDensity(const CSPHParticle& rhs)
 {
 	const float distance = glm::distance(this->getPosition(), rhs.getPosition());
-	this->addDensity(kernel->getCubicSpline(distance, constant->getEffectLength()) * rhs.getMass());
+	this->addDensity(kernel->getPoly6Kernel(distance) * rhs.getMass());
 }
 
 void CSPHParticle::move(const Vector3df& v)

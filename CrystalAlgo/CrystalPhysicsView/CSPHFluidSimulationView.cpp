@@ -92,12 +92,13 @@ void CSPHFluidSimulationView::reset()
 	::sphConstant.pressureCoe = pressureCoeView.getValue();
 	::sphConstant.viscosityCoe = viscosityView.getValue();
 	::sphConstant.effectLength = (length * 1.25);
+	simulator->setEffectLenth(::sphConstant.effectLength);
 	::sphConstant.density = densityView.getValue();
 	simulator->setTimeStep(timeStepView.getValue());
 	simulator->setBoundary(boundaryView.getValue());
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < 1; ++i) {
 		for (int j = 0; j < 5; ++j) {
 			for (int k = 0; k < 1; ++k) {
 				auto mp = new CSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
