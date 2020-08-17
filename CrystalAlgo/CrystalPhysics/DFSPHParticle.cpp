@@ -13,10 +13,10 @@ float DFSPHParticle::getMass() const
 void DFSPHParticle::calculateDensity()
 {
 	this->density = 0.0;
-	this->density += (kernel->getCubicSpline(0.0f, kernel->getEffectLength()) * this->getMass());
+	this->density += (kernel->getCubicSpline(0.0f) * this->getMass());
 	for (auto n : neighbors) {
 		const auto distance = glm::distance(this->getPosition(), n->getPosition());
-		this->density += (kernel->getCubicSpline(distance, kernel->getEffectLength()) * n->getMass());
+		this->density += (kernel->getCubicSpline(distance) * n->getMass());
 	}
 }
 
@@ -87,7 +87,7 @@ void DFSPHParticle::calculateViscosity()
 		const auto viscosityCoe = (this->constant->getViscosityCoe() + n->constant->getViscosityCoe()) * 0.5f;
 		const auto velocityDiff = (n->velocity - this->velocity);
 		const auto distance = glm::distance(getPosition(), n->getPosition());
-		this->force += viscosityCoe * velocityDiff * kernel->getCubicSpline(distance, constant->getEffectLength());
+		this->force += viscosityCoe * velocityDiff * kernel->getCubicSpline(distance);
 
 		/*
 		const auto vel = n->getVelocity() - this->velocity;

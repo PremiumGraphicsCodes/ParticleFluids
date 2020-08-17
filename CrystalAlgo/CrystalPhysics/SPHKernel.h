@@ -27,15 +27,15 @@ public:
 
 	Math::Vector3df getSpikyKernelGradient(const Math::Vector3df& distanceVector);
 
-	float getSpikyKernelGradientWeight(const float distance, const float effectLength);
+	float getSpikyKernelGradientWeight(const float distance);
 
-	Math::Vector3df getSpikyKernelGradient(const Math::Vector3df& distanceVector, const float effectLength);
+	//Math::Vector3df getSpikyKernelGradient(const Math::Vector3df& distanceVector);
 
 	float getViscosityKernelLaplacian(const float distance);
 
-	float getCubicSpline(const float q);
+	//float getCubicSpline(const float q);
 
-	float getCubicSpline(const float distance, const float effectRadius);
+	float getCubicSpline(const float distance);
 
 	Math::Vector3df getCubicSplineGradient(const Math::Vector3df& distanceVector);
 

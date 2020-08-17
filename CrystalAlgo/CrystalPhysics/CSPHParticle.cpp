@@ -78,7 +78,7 @@ void CSPHParticle::solvePressureForce(const CSPHParticle& rhs)
 {
 	const auto pressure = (this->getPressure() + rhs.getPressure()) * 0.5f;
 	const auto& distanceVector = (this->getPosition() - rhs.getPosition());
-	const auto& f = kernel->getSpikyKernelGradient(distanceVector, constant->getEffectLength()) * pressure * rhs.getVolume();
+	const auto& f = kernel->getSpikyKernelGradient(distanceVector) * pressure * rhs.getVolume();
 	this->force += f;
 }
 
