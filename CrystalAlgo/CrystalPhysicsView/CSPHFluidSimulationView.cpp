@@ -23,14 +23,16 @@ CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("CSPHFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	nextButton("Next"),
+//	nextButton("Next"),
 	timeStepView("TimeStep", 0.001),
 	pressureCoeView("PressureCoe", 1.0),
 	viscosityView("Viscosity", 1.0),
 	densityView("Density", 10.0),
+	boundaryView("Boundary"),
 	outputDirectoryView("OutDir"),
 	newId(-1)
 {
+	/*
 	auto func = [=]() {
 		simulator.simulate(0.01);
 		Command::Command command;
@@ -40,16 +42,16 @@ CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
 	};
 	nextButton.setFunction(func);
 	add(&nextButton);
+	*/
 
-	auto resetFunc = [=]() {
-		reset();
-	};
-	resetButton.setFunction(resetFunc);
+	boundaryView.setValue(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 1000, 100)));
+	resetButton.setFunction([=]() { reset(); } );
 	add(&resetButton);
 	add(&timeStepView);
 	add(&pressureCoeView);
 	add(&viscosityView);
 	add(&densityView);
+	add(&boundaryView);
 	add(&outputDirectoryView);
 }
 
@@ -60,7 +62,6 @@ void CSPHFluidSimulationView::onOk()
 	fluidScene = new CSPHFluidScene(getWorld()->getNextSceneId(), "Fluid");
 	getWorld()->getScenes()->addScene(fluidScene);
 
-	this->reset();
 
 	this->newId = fluidScene->getId();
 
@@ -69,28 +70,34 @@ void CSPHFluidSimulationView::onOk()
 	command.setArg(ShaderBuildLabels::IdLabel, newId);
 	command.execute(getWorld());
 
+	simulator = new CSPHSolver();
+	simulator->add(fluidScene);
+
+	this->reset();
+
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
-	auto simulator = new CSPHSolver();
-	simulator->add(fluidScene);
-	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
+
 	getWorld()->addAnimation(simulator);
+
 }
 
 void CSPHFluidSimulationView::reset()
 {
 	this->fluidScene->clearParticles();
 
-	const auto radius = 0.1;
+	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	::sphConstant.pressureCoe = pressureCoeView.getValue();
 	::sphConstant.viscosityCoe = viscosityView.getValue();
 	::sphConstant.effectLength = (length * 1.25);
 	::sphConstant.density = densityView.getValue();
-	simulator.setTimeStep(timeStepView.getValue());
+	simulator->setTimeStep(timeStepView.getValue());
+	simulator->setBoundary(boundaryView.getValue());
+	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
-	for (int i = 0; i < 1; ++i) {
+	for (int i = 0; i < 5; ++i) {
 		for (int j = 0; j < 5; ++j) {
 			for (int k = 0; k < 1; ++k) {
 				auto mp = new CSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);

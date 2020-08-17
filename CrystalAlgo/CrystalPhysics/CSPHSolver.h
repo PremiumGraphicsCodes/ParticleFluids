@@ -32,6 +32,8 @@ public:
 
 	//std::vector<CSPHParticle*> getParticles() const { return particles; }
 
+	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
+
 private:
 	float timeStep;
 	float effectLength = 1.25f;
