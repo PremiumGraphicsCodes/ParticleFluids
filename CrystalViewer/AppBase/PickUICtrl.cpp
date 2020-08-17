@@ -11,10 +11,11 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-PickUICtrl::PickUICtrl(World* model, Canvas* canvas, const SceneType& type) :
+PickUICtrl::PickUICtrl(World* model, Canvas* canvas, const SceneType& type, const float mergin) :
 	model(model),
 	canvas(canvas),
-	type(type)
+	type(type),
+	mergin(mergin)
 {
 	function = [](int parentId, int childId) {
 		;
@@ -26,19 +27,30 @@ void PickUICtrl::onLeftButtonDown(const Vector2df& position)
 	const auto x = position.x;
 	const auto y = position.y;
 
-	std::cout << x << " " << y << std::endl;
+	//std::cout << x << " " << y << std::endl;
+	const auto dx = mergin / canvas->getWidth();
+	const auto dy = mergin / canvas->getHeight();
+	for (float x = -mergin; x < mergin; x += dx) {
+		for (float y = -mergin; y < mergin; y += dy) {
+			Crystal::Command::Command command(PickLabels::PickCommandLabel);
+			command.setArg(PickLabels::PositionLabel, Vector2dd(position));
+			command.execute(model);
+			const auto parentId = std::any_cast<int>(command.getResult(PickLabels::ParentIdLabel));
 
-	Crystal::Command::Command command(PickLabels::PickCommandLabel);
-	command.setArg(PickLabels::PositionLabel, Vector2dd(position));
-	command.execute(model);
-	const auto parentId = std::any_cast<int>( command.getResult(PickLabels::ParentIdLabel) );
-	const auto childId = std::any_cast<int>(command.getResult(PickLabels::ChildIdLabel));
+			if (parentId == 0) {
+				continue;
+			}
 
-	auto object = model->getScenes()->findSceneById(parentId);
-	if (object != nullptr) {
-		const bool masked = (int)type && (int)object->getType();
-		if (masked) {
-			function(parentId, childId);
+			const auto childId = std::any_cast<int>(command.getResult(PickLabels::ChildIdLabel));
+
+			auto object = model->getScenes()->findSceneById(parentId);
+			if (object != nullptr) {
+				const bool masked = (int)type && (int)object->getType();
+				if (masked) {
+					function(parentId, childId);
+					return;
+				}
+			}
 		}
 	}
 }

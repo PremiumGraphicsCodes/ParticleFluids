@@ -16,7 +16,7 @@ namespace Crystal {
 class PickUICtrl : public IUICtrl
 {
 public:
-	PickUICtrl(Scene::World* model, Canvas* canvas, const Scene::SceneType& type);
+	PickUICtrl(Scene::World* model, Canvas* canvas, const Scene::SceneType& type, const float mergin);
 
 	virtual ~PickUICtrl() {}
 
@@ -41,6 +41,7 @@ private:
 	Canvas* canvas;
 	std::function<void(int, int)> function;
 	const Scene::SceneType type;
+	float mergin;
 };
 	}
 }

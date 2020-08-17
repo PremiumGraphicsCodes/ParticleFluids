@@ -19,7 +19,7 @@ void CtrlMenu::onShow()
 			canvas->setUICtrl(new CameraUICtrl(model));
 		}
 		if (ImGui::MenuItem("Pick")) {
-			canvas->setUICtrl(new PickUICtrl(model, canvas, SceneType::All));
+			canvas->setUICtrl(new PickUICtrl(model, canvas, SceneType::All, 0.01f));
 		}
 
 		ImGui::EndMenu();
