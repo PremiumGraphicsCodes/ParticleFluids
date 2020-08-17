@@ -25,6 +25,7 @@ private:
 private:
 	Physics::PBSPHSolver* simulator;
 	Physics::PBFluidScene* fluidScene;
+	ObjectSelectView particleSystemSelectView;
 	Button startButton;
 	Button resetButton;
 	DoubleView timeStepView;

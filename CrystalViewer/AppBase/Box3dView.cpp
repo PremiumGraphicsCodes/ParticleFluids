@@ -12,6 +12,15 @@ Box3dView::Box3dView(const std::string& name) :
 	add(&maxView);
 }
 
+Box3dView::Box3dView(const std::string& name, const Box3d& value) :
+	IView(name),
+	minView("Min", value.getMin()),
+	maxView("Max", value.getMax())
+{
+	add(&minView);
+	add(&maxView);
+}
+
 Box3d Box3dView::getValue() const
 {
 	return Box3d(minView.getValue(), maxView.getValue());

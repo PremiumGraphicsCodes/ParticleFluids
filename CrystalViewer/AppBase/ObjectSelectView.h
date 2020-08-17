@@ -24,6 +24,9 @@ private:
 	IntView idView;
 	Button pickButton;
 	Scene::SceneType type;
+
+private:
+	void onPick(Scene::World* model, Canvas* canvas);
 };
 
 	}

@@ -25,34 +25,36 @@ ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas
 	pickButton("Pick"),
 	type(type)
 {
-	pickButton.setFunction([=] {
-		auto ctrl = new PickUICtrl(model, canvas, type);
-		auto func = [=](int parentId, int childId) {
-			Command::Command command(ShapeSelectLabels::CommandNameLabel);
-			command.setArg(ShapeSelectLabels::ShapeIdLabel, parentId);
-			if (command.execute(model)) {
-				const auto bb = model->getScenes()->findSceneById( parentId )->getBoundingBox();
-				WireFrameBuilder builder;
-				builder.build(bb);
-				WireFrameAttribute attribute;
-				attribute.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
-				attribute.width = 1.0f;
-				const auto newId = model->getNextSceneId();
-				auto bbshape = new WireFrameScene(newId, "BoundingBox", builder.createWireFrame(), attribute);
-				model->getItems()->addScene(bbshape);
-//				results.boundingBoxItemId.setValue(bbshape->getId());
-			}
-
-			//model->getObjects()->findSceneById(parentId)->setSelected(true);
-
-			//model->updateViewModel();
-			return this->idView.setValue(parentId);
-		};
-		ctrl->setFunction(func);
-		canvas->setUICtrl(ctrl);
-	});
+	pickButton.setFunction([=]() { onPick(model, canvas); });
 	add(&idView);
 	add(&pickButton);
-
 }
 
+void ObjectSelectView::onPick(World* model, Canvas* canvas)
+{
+	auto ctrl = new PickUICtrl(model, canvas, type);
+	auto func = [=](int parentId, int childId) {
+		Command::Command command(ShapeSelectLabels::CommandNameLabel);
+		command.setArg(ShapeSelectLabels::ShapeIdLabel, parentId);
+		if (command.execute(model)) {
+			const auto bb = model->getScenes()->findSceneById(parentId)->getBoundingBox();
+			WireFrameBuilder builder;
+			builder.build(bb);
+			WireFrameAttribute attribute;
+			attribute.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+			attribute.width = 1.0f;
+			const auto newId = model->getNextSceneId();
+			auto bbshape = new WireFrameScene(newId, "BoundingBox", builder.createWireFrame(), attribute);
+			model->getItems()->addScene(bbshape);
+			//				results.boundingBoxItemId.setValue(bbshape->getId());
+		}
+
+		//model->getObjects()->findSceneById(parentId)->setSelected(true);
+
+		//model->updateViewModel();
+		return this->idView.setValue(parentId);
+	};
+	ctrl->setFunction(func);
+	canvas->setUICtrl(ctrl);
+
+}

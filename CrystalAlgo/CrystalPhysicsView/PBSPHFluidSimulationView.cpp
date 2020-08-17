@@ -28,18 +28,14 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	startButton("Start"),
 	resetButton("Reset"),
 	timeStepView("TimeStep", 0.01),
-	boundaryView("Boundary")
+	boundaryView("Boundary"),
+	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene)
 {
-
-	auto resetFunc = [=]() {
-		reset();
-	};
-	resetButton.setFunction(resetFunc);
-	add(&resetButton);
-
+	resetButton.setFunction([=]() { reset(); });
 	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
 
-
+	add(&particleSystemSelectView);
+	add(&resetButton);
 	add(&timeStepView);
 	add(&boundaryView);
 }

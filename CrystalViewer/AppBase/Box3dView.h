@@ -12,7 +12,9 @@ namespace Crystal {
 class Box3dView : public IView
 {
 public:
-	Box3dView(const std::string& name);
+	explicit Box3dView(const std::string& name);
+
+	Box3dView(const std::string& name, const Math::Box3d& value);
 
 	Math::Box3d getValue() const;
 
