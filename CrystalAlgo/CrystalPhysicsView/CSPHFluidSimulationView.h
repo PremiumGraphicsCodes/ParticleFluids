@@ -19,7 +19,7 @@ public:
 private:
 	void onOk() override;
 
-	void reset();
+	void onReset();
 
 private:
 	Physics::CSPHFluidScene* fluidScene;

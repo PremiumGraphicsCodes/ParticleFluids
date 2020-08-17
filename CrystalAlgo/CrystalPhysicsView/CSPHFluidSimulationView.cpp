@@ -45,7 +45,7 @@ CSPHFluidSimulationView::CSPHFluidSimulationView(World* model, Canvas* canvas) :
 	*/
 
 	boundaryView.setValue(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 1000, 100)));
-	resetButton.setFunction([=]() { reset(); } );
+	resetButton.setFunction([=]() { onReset(); } );
 	add(&resetButton);
 	add(&timeStepView);
 	add(&pressureCoeView);
@@ -73,7 +73,7 @@ void CSPHFluidSimulationView::onOk()
 	simulator = new CSPHSolver();
 	simulator->add(fluidScene);
 
-	this->reset();
+	this->onReset();
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
@@ -83,7 +83,7 @@ void CSPHFluidSimulationView::onOk()
 
 }
 
-void CSPHFluidSimulationView::reset()
+void CSPHFluidSimulationView::onReset()
 {
 	this->fluidScene->clearParticles();
 

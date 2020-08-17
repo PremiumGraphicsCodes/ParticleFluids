@@ -20,7 +20,7 @@ public:
 private:
 	void onOk() override;
 
-	void reset();
+	void onReset();
 
 private:
 	Physics::PBSPHSolver* simulator;
@@ -30,7 +30,6 @@ private:
 	Button resetButton;
 	DoubleView timeStepView;
 	Box3dView boundaryView;
-	int newId;
 };
 
 	}

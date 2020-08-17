@@ -32,7 +32,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	boundaryView("Boundary"),
 	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene)
 {
-	resetButton.setFunction([=]() { reset(); });
+	resetButton.setFunction([=]() { onReset(); });
 	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
 
 	add(&particleSystemSelectView);
@@ -50,9 +50,9 @@ void PBSPHFluidSimulationView::onOk()
 	this->simulator = new PBSPHSolver();
 
 	
-	reset();
+	onReset();
 	getWorld()->getScenes()->addScene(this->fluidScene);
-	this->newId = this->fluidScene->getId();
+	auto newId = this->fluidScene->getId();
 
 	Command::Command command;
 	command.create(ShaderBuildLabels::CommandNameLabel);
@@ -70,7 +70,7 @@ void PBSPHFluidSimulationView::onOk()
 	getWorld()->addAnimation(simulator);
 }
 
-void PBSPHFluidSimulationView::reset()
+void PBSPHFluidSimulationView::onReset()
 {
 	//this->simulator->clear();
 	this->fluidScene->clearParticles();

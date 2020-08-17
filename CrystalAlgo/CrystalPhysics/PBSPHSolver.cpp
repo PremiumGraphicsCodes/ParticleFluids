@@ -17,7 +17,7 @@ PBSPHSolver::PBSPHSolver() :
 
 void PBSPHSolver::step()
 {
-	simulate(maxTimeStep, 2.25, 2.5, 3);
+	simulate(maxTimeStep, 2.25f, 2.5f, 3);
 }
 
 void PBSPHSolver::simulate(const float maxTimeStep, const float effectLength, const float searchLength, const int maxIter)

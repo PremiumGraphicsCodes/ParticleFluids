@@ -34,11 +34,14 @@ public:
 
 	void setTimeStep(const double dt) { this->maxTimeStep = dt; }
 
+	//void setEffectLength(const float effectLength) { this->effectLength = effectLength; }
+
 private:
 	std::vector<PBFluidScene*> fluids;
 	Math::Box3d boundary;
 	Math::Vector3df externalForce;
 	double maxTimeStep;
+	//float effectLength;
 
 	double calculateTimeStep(const std::vector<PBSPHParticle*>& particles);
 };
