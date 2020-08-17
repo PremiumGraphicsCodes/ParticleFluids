@@ -9,6 +9,7 @@
 #include "../../CrystalViewer/Command/Public/ShaderBuildLabels.h"
 #include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
 #include "../../CrystalViewer/Command/Public/CameraLabels.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -74,6 +75,16 @@ void PBSPHFluidSimulationView::reset()
 	//this->simulator->clear();
 	this->fluidScene->clearParticles();
 
+	const auto id = this->particleSystemSelectView.getId();
+	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
+
+	const auto& ps = scene->getShape()->getParticles();
+	for (auto p : ps) {
+		auto pos = p->getPosition();
+		auto mp = new PBSPHParticle(pos, 1.0, this->fluidScene);
+		this->fluidScene->addParticle(mp);
+	}
+	/*
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 20; ++i) {
@@ -84,6 +95,7 @@ void PBSPHFluidSimulationView::reset()
 			}
 		}
 	}
+	*/
 	simulator->setBoundary(boundaryView.getValue());
 	simulator->setTimeStep(timeStepView.getValue());
 }
