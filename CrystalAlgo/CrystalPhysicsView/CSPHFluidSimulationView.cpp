@@ -98,9 +98,9 @@ void CSPHFluidSimulationView::reset()
 	simulator->setBoundary(boundaryView.getValue());
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 5; ++j) {
-			for (int k = 0; k < 1; ++k) {
+			for (int k = 0; k < 10; ++k) {
 				auto mp = new CSPHParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
 				fluidScene->addParticle(mp);
 			}

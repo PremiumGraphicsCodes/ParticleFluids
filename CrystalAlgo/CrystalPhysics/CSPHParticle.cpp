@@ -53,7 +53,7 @@ void CSPHParticle::forwardTime(const float timeStep)
 
 void CSPHParticle::addExternalForce(const Vector3df& externalForce, const float timeStep)
 {
-	this->force += externalForce * getDensity() * timeStep;
+	this->force += externalForce * getDensity();
 }
 
 void CSPHParticle::solveNormal(const CSPHParticle& rhs)
