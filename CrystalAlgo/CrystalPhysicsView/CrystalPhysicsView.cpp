@@ -11,12 +11,12 @@
 #include "../../Crystal/Scene/World.h"
 
 #include "PhysicsMenu.h"
+#include "AnimationControlPanel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-
 
 int main(int, char**)
 {
@@ -40,6 +40,7 @@ int main(int, char**)
 
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 
+	window.add(new AnimationControlPanel("AnimationControl", &model, &canvas));
 
 	window.show();
 

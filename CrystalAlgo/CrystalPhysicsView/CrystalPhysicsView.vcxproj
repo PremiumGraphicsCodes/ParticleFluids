@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationControlPanel.cpp" />
     <ClCompile Include="BoundaryView.cpp" />
     <ClCompile Include="CrystalPhysicsView.cpp" />
     <ClCompile Include="CSPHFluidSimulationView.cpp" />
@@ -194,6 +195,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationControlPanel.h" />
     <ClInclude Include="BoundaryView.h" />
     <ClInclude Include="CSPHFluidSimulationView.h" />
     <ClInclude Include="DFSPHFluidSimulationView.h" />
