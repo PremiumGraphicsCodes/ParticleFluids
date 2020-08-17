@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../../Crystal/Scene/IAnimator.h"
+
 #include <filesystem>
 
 namespace Crystal {
@@ -8,14 +10,16 @@ namespace Crystal {
 	}
 	namespace Physics {
 
-class TimeSeriesParticleSystemWriter
+class TimeSeriesParticleSystemWriter : public Scene::IAnimator
 {
 public:
 	void add(Shape::IParticle* particle);
 
-	bool write(const std::filesystem::path& filename);
+	void step() override;
 
 private:
+	bool write(const std::filesystem::path& filename);
+
 	std::vector<Shape::IParticle*> particles;
 
 };
