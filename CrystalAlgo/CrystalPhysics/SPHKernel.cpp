@@ -100,7 +100,7 @@ Vector3df SPHKernel::getSpikyKernelGradient(const Vector3df& distanceVector, con
 	return distanceVector * constant * pow(effectLength - distance, 2) / distance;
 }
 
-float SPHKernel::getViscosityKernelLaplacian(const float distance, const float effectLength)
+float SPHKernel::getViscosityKernelLaplacian(const float distance)
 {
 	if (distance > effectLength) {
 		return 0.0f;
@@ -129,7 +129,7 @@ float SPHKernel::getCubicSpline(const float distance, const float effectRadius)
 	return effectLength * effectLength * effectLength * getCubicSpline(q);
 }
 
-Vector3df SPHKernel::getCubicSplineGradient(const Vector3df& distanceVector, const float effectLength)
+Vector3df SPHKernel::getCubicSplineGradient(const Vector3df& distanceVector)
 {
 	const auto length = glm::length(distanceVector);
 	const auto l = 48.0f / (PIf * effectLength * effectLength * effectLength);
@@ -150,7 +150,7 @@ Vector3df SPHKernel::getCubicSplineGradient(const Vector3df& distanceVector, con
 	}
 }
 
-float SPHKernel::getCubicSpline(const Vector3df& v, const float effectLength)
+float SPHKernel::getCubicSpline(const Vector3df& v)
 {
 	const auto q = glm::length(v) / effectLength;
 	const auto numerator = getCubicSpline(q);

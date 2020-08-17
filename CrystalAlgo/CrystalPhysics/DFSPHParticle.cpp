@@ -28,7 +28,7 @@ void DFSPHParticle::calculateAlpha()
 	double b = 0.0;
 	for (auto n : neighbors) {
 		const auto v = this->position - n->position;
-		const auto weight = (kernel->getCubicSplineGradient(v, kernel->getEffectLength()) * (float)n->getMass());
+		const auto weight = (kernel->getCubicSplineGradient(v) * (float)n->getMass());
 		a += weight;
 		b += Math::getLengthSquared(weight);
 	}
@@ -45,7 +45,7 @@ void DFSPHParticle::calculateDpDt()
 	this->dpdt = 0.0;
 	for (auto n : neighbors) {
 		const auto v = this->position - n->position;
-		const auto grad = kernel->getCubicSplineGradient(v, kernel->getEffectLength());
+		const auto grad = kernel->getCubicSplineGradient(v);
 		dpdt += glm::dot(this->velocity, grad);
 	}
 	this->dpdt *= -density;
@@ -64,7 +64,7 @@ void DFSPHParticle::calculateVelocityInDivergenceError(const float dt)
 	for (auto n : neighbors) {
 		const auto k_j = 1.0f / dt * n->dpdt * n->alpha;
 		const auto v = this->position - n->position;
-		dv += n->getMass()* (k_i / density + k_j / n->density) * kernel->getCubicSplineGradient(v, kernel->getEffectLength());
+		dv += n->getMass()* (k_i / density + k_j / n->density) * kernel->getCubicSplineGradient(v);
 	}
 	this->velocity -= dt * dv;
 }
@@ -76,7 +76,7 @@ void DFSPHParticle::calculateVelocityInDensityError(const float dt)
 	for (auto n : neighbors) {
 		const auto k_j = (n->predictedDensity - constant->getDensity()) / dt / dt * n->alpha;
 		const auto v = this->position - n->position;
-		dv += n->getMass() * (k_i / density + k_j / n->density) * kernel->getCubicSplineGradient(v, kernel->getEffectLength());
+		dv += n->getMass() * (k_i / density + k_j / n->density) * kernel->getCubicSplineGradient(v);
 	}
 	this->velocity -= dt * dv;
 }

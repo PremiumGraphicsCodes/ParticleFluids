@@ -87,7 +87,7 @@ void CSPHParticle::solveViscosityForce(const CSPHParticle& rhs)
 	const auto viscosityCoe = (this->constant->getViscosityCoe() + rhs.constant->getViscosityCoe()) * 0.5f;
 	const auto& velocityDiff = (rhs.velocity - this->velocity);
 	const auto distance = glm::distance(getPosition(), rhs.getPosition());
-	this->addForce(viscosityCoe * velocityDiff * kernel->getViscosityKernelLaplacian(distance, constant->getEffectLength()) * rhs.getVolume());
+	this->addForce(viscosityCoe * velocityDiff * kernel->getViscosityKernelLaplacian(distance) * rhs.getVolume());
 }
 
 void CSPHParticle::addSelfDensity()
