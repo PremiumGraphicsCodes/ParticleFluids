@@ -36,6 +36,7 @@ private:
 	DoubleView effectLengthView;
 	DoubleView densityView;
 	DoubleView stiffnessView;
+	DoubleView vicsocityView;
 	Box3dView boundaryView;
 	DirectoryView outputDirectoryView;
 };

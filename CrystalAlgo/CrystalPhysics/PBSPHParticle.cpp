@@ -133,7 +133,7 @@ void PBSPHParticle::calculateViscosity(const PBSPHParticle& rhs)
 	const auto v = this->getPredictPosition() - rhs.getPredictPosition();
 	const auto vel = rhs.getVelocity() - this->velocity;
 	const auto weight = getKernel()->getViscosityKernelLaplacian(glm::length(v));
-	this->xvisc += vel * weight * 0.1f;
+	this->xvisc += vel * weight * scene->getViscosity();
 }
 
 float PBSPHParticle::getConstraint() const

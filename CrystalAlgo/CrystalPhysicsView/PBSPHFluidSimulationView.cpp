@@ -29,7 +29,8 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	boundaryView("Boundary"),
 	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
 	outputDirectoryView("OutputDir"),
-	stiffnessView("Stiffness", 0.05)
+	stiffnessView("Stiffness", 0.05),
+	vicsocityView("Viscosity", 0.1)
 {
 	resetButton.setFunction([=]() { onReset(); });
 	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
@@ -41,8 +42,9 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	add(&densityView);
 	add(&effectLengthView);
 	add(&boundaryView);
-	add(&outputDirectoryView);
 	add(&stiffnessView);
+	add(&vicsocityView);
+	add(&outputDirectoryView);
 }
 
 void PBSPHFluidSimulationView::onOk()
@@ -87,6 +89,7 @@ void PBSPHFluidSimulationView::onReset()
 	this->fluidScene->setEffectLength(this->effectLengthView.getValue());
 	this->fluidScene->setRestDensity(this->densityView.getValue());
 	this->fluidScene->setStiffness(this->stiffnessView.getValue());
+	this->fluidScene->setVicsosity(this->vicsocityView.getValue());
 
 	this->writer.reset();
 	this->writer.setDirectryPath(outputDirectoryView.getPath());
