@@ -1,8 +1,8 @@
-#include "AnimationControlPanel.h"
+#include "TimeLinePanel.h"
 
 using namespace Crystal::UI;
 
-AnimationControlPanel::AnimationControlPanel(const std::string& name, Scene::World* world, Canvas* canvas) :
+TimeLinePanel::TimeLinePanel(const std::string& name, Scene::World* world, Canvas* canvas) :
 	IPanel(name, world, canvas),
 	startButton("Start"),
 	stopButton("Stop"),
@@ -19,17 +19,17 @@ AnimationControlPanel::AnimationControlPanel(const std::string& name, Scene::Wor
 	add(&directoryView);
 }
 
-void AnimationControlPanel::onStart()
+void TimeLinePanel::onStart()
 {
 	const auto directoryPath = directoryView.getPath();
 }
 
-void AnimationControlPanel::onStop()
+void TimeLinePanel::onStop()
 {
 
 }
 
-void AnimationControlPanel::onReset()
+void TimeLinePanel::onReset()
 {
 
 }

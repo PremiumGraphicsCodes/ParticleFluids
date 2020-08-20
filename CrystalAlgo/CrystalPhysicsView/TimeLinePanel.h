@@ -7,10 +7,10 @@
 namespace Crystal {
 	namespace UI {
 
-class AnimationControlPanel : public IPanel
+class TimeLinePanel : public IPanel
 {
 public:
-	AnimationControlPanel(const std::string& name, Scene::World* world, Canvas* canvas);
+	TimeLinePanel(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	Button startButton;

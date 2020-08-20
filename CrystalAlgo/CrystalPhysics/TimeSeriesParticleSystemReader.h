@@ -21,6 +21,8 @@ public:
 
 	void reset();
 
+	std::vector<Math::Vector3dd> getPositions() const { return positions; }
+
 private:
 	bool read(const std::filesystem::path& filename);
 

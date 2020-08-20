@@ -11,7 +11,7 @@
 #include "../../Crystal/Scene/World.h"
 
 #include "PhysicsMenu.h"
-#include "AnimationControlPanel.h"
+#include "TimeLinePanel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -40,7 +40,7 @@ int main(int, char**)
 
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 
-	//window.add(new AnimationControlPanel("AnimationControl", &model, &canvas));
+	window.add(new TimeLinePanel("TimeLine", &model, &canvas));
 
 	window.show();
 

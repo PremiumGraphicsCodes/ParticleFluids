@@ -33,10 +33,17 @@ bool TimeSeriesParticleSystemReader::read(const std::filesystem::path& filename)
 	if (!stream.is_open()) {
 		return false;
 	}
+	while (!stream.eof()) {
+		Vector3dd p;
+		stream >> p.x >> p.y >> p.z;
+		positions.push_back(p);
+	}
 	/*
-	for (const auto& p : particles) {
-		const auto& pos = p->getPosition();
-		stream << pos.x << " " << pos.y << " " << pos.z << std::endl;
+	std::string str;
+	while (std::getline(stream, str)) {
+		Vector3dd p;
+		stream >> p.x >> p.y >> p.z;
+
 	}
 	*/
 	return true;
