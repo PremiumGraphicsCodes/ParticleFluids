@@ -14,7 +14,7 @@ PBSPHParticle::PBSPHParticle(const Vector3df& center, const float radius, PBFlui
 //	ISPHParticle(center, radius),
 	scene(scene)
 {
-	this->density = scene->getConstant()->getDensity();
+	this->density = scene->getRestDensity();
 }
 
 void PBSPHParticle::init()
@@ -28,13 +28,13 @@ void PBSPHParticle::init()
 
 float PBSPHParticle::getDensityRatio() const
 {
-	return density / scene->getConstant()->getDensity();
+	return density / scene->getRestDensity();
 }
 
 float PBSPHParticle::getMass() const
 {
 	const auto diameter = radius * 2.0;
-	return scene->getConstant()->getDensity() * diameter * diameter * diameter;
+	return scene->getRestDensity() * diameter * diameter * diameter;
 }
 
 float PBSPHParticle::getVolume() const
@@ -44,12 +44,12 @@ float PBSPHParticle::getVolume() const
 
 float PBSPHParticle::getRestVolume() const
 {
-	return getMass() / scene->getConstant()->getDensity();
+	return getMass() / scene->getRestDensity();
 }
 
 void PBSPHParticle::setDefaultDensity()
 {
-	this->density = scene->getConstant()->getDensity();
+	this->density = scene->getRestDensity();
 }
 
 void PBSPHParticle::forwardTime(const float timeStep)
@@ -117,7 +117,7 @@ Vector3df PBSPHParticle::getDiff(const PBSPHParticle& rhs) const
 
 float PBSPHParticle::getEffectLength() const
 {
-	return scene->getConstant()->getEffectLength();
+	return scene->getKernel()->getEffectLength();
 }
 
 void PBSPHParticle::calculatePressure(const PBSPHParticle& rhs)

@@ -5,7 +5,6 @@
 //#include "MacroParticle.h"
 #include "PBFluidSceneController.h"
 #include "SPHKernel.h"
-#include "SPHConstant.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -14,7 +13,7 @@ namespace Crystal {
 class PBFluidScene : public Scene::IScene
 {
 public:
-	PBFluidScene(const int id, const std::string& name, const SPHKernel& kernel, const SPHConstant& constant);
+	PBFluidScene(const int id, const std::string& name, const SPHKernel& kernel, const double restDensity);
 
 	~PBFluidScene();
 
@@ -32,13 +31,13 @@ public:
 
 	SPHKernel* getKernel() { return &kernel; }
 
-	SPHConstant* getConstant() { return &constant; }
+	double getRestDensity() const { return restDensity; }
 
 private:
 	std::list<PBSPHParticle*> particles;
 	std::unique_ptr<PBFluidSceneController> controller;
 	SPHKernel kernel;
-	SPHConstant constant;
+	const double restDensity;
 };
 
 	}

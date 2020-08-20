@@ -19,9 +19,7 @@ using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
 namespace {
-	SPHConstant sphConstant(1.0f, 1000.0f, 100.0f, 0.0f, 2.25f);
 	SPHKernel kernel;
-	//sphConstant.
 }
 
 PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas) :
@@ -29,6 +27,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	startButton("Start"),
 	resetButton("Reset"),
 	timeStepView("TimeStep", 0.01),
+	effectLengthView("EffectLength", 2.25),
 	boundaryView("Boundary"),
 	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
 	outputDirectoryView("OutputDir")
@@ -39,6 +38,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	add(&particleSystemSelectView);
 	add(&resetButton);
 	add(&timeStepView);
+	add(&effectLengthView);
 	add(&boundaryView);
 	add(&outputDirectoryView);
 }
@@ -48,9 +48,8 @@ void PBSPHFluidSimulationView::onOk()
 	auto world = getWorld();
 
 	kernel = SPHKernel(2.25);
-	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid", kernel, sphConstant);
+	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid", kernel, 1.0f);
 	this->simulator = new PBSPHSolver();
-
 	
 	onReset();
 	getWorld()->getScenes()->addScene(this->fluidScene);
