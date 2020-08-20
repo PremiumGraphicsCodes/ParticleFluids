@@ -18,10 +18,6 @@ using namespace Crystal::UI;
 using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
-namespace {
-	SPHKernel kernel;
-}
-
 PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("PBFluidSimulation", model, canvas),
 	startButton("Start"),
@@ -47,8 +43,7 @@ void PBSPHFluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	kernel = SPHKernel(2.25);
-	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid", kernel, 1.0f);
+	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid", effectLengthView.getValue(), 1.0f);
 	this->simulator = new PBSPHSolver();
 	
 	onReset();
@@ -62,7 +57,6 @@ void PBSPHFluidSimulationView::onOk()
 
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
-
 
 	simulator->add(this->fluidScene);
 

@@ -13,7 +13,7 @@ namespace Crystal {
 class PBFluidScene : public Scene::IScene
 {
 public:
-	PBFluidScene(const int id, const std::string& name, const SPHKernel& kernel, const double restDensity);
+	PBFluidScene(const int id, const std::string& name, const double effectLength, const double restDensity);
 
 	~PBFluidScene();
 
