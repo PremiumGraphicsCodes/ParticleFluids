@@ -91,6 +91,7 @@ void PBSPHFluidSimulationView::onReset()
 	const auto id = this->particleSystemSelectView.getId();
 	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
 
+	/*
 	const auto& ps = scene->getShape()->getParticles();
 	for (auto p : ps) {
 		auto pos = p->getPosition();
@@ -98,8 +99,9 @@ void PBSPHFluidSimulationView::onReset()
 		this->fluidScene->addParticle(mp);
 		writer.add(mp);
 	}
-	/*
-	const auto radius = 0.1;
+	*/
+
+	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
@@ -109,7 +111,6 @@ void PBSPHFluidSimulationView::onReset()
 			}
 		}
 	}
-	*/
 	simulator->setBoundary(boundaryView.getValue());
 	simulator->setTimeStep(timeStepView.getValue());
 

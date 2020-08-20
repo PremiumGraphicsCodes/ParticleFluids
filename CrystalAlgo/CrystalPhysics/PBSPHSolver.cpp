@@ -32,7 +32,7 @@ void PBSPHSolver::simulate(const float maxTimeStep, const int maxIter)
 		p->init();
 	}
 
-	const auto dt = calculateTimeStep(particles);
+	const auto dt = maxTimeStep;//calculateTimeStep(particles);
 
 	PBSPHBoundarySolver boundarySolver(boundary);
 	for (auto p : particles) {

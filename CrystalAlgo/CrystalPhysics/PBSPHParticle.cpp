@@ -61,7 +61,7 @@ void PBSPHParticle::forwardTime(const float timeStep)
 
 void PBSPHParticle::addExternalForce(const Vector3df& externalForce)
 {
-	this->force += externalForce * getMass();//constant->getDensity();
+	this->force += externalForce * scene->getRestDensity();
 }
 
 void PBSPHParticle::addSelfDensity()

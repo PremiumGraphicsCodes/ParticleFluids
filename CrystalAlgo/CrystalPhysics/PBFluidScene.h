@@ -31,7 +31,7 @@ public:
 
 	SPHKernel* getKernel() { return &kernel; }
 
-	double getRestDensity() const { return restDensity; }
+	float getRestDensity() const { return restDensity; }
 
 	void setEffectLength(const double effectLength);
 
