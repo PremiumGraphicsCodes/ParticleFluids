@@ -24,7 +24,7 @@ public:
 
 	void add(PBFluidScene* fluid) { this->fluids.push_back(fluid); }
 
-	void simulate(const float dt, const float effectRadius, const float searchRadius, const int maxIter);
+	void simulate(const float dt, const int maxIter);
 
 	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
 

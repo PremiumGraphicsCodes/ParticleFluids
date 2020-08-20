@@ -17,10 +17,10 @@ PBSPHSolver::PBSPHSolver() :
 
 void PBSPHSolver::step()
 {
-	simulate(maxTimeStep, 2.25f, 2.5f, 3);
+	simulate(maxTimeStep, 3);
 }
 
-void PBSPHSolver::simulate(const float maxTimeStep, const float effectLength, const float searchLength, const int maxIter)
+void PBSPHSolver::simulate(const float maxTimeStep, const int maxIter)
 {
 	std::vector<PBSPHParticle*> particles;
 	for (auto fluid : fluids) {
@@ -40,6 +40,7 @@ void PBSPHSolver::simulate(const float maxTimeStep, const float effectLength, co
 		p->predictPosition_(dt);
 	}
 
+	const auto searchLength = fluids.front()->getKernel()->getEffectLength() * 1.1;
 	IndexedSortSearchAlgo finder(searchLength);
 	for (auto p : particles) {
 		finder.add(p);

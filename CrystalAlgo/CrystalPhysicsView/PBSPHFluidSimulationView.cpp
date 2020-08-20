@@ -50,11 +50,13 @@ void PBSPHFluidSimulationView::onOk()
 	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
 	this->simulator = new PBSPHSolver();
 
+	/*
 	const auto id = this->particleSystemSelectView.getId();
 	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
 	if (scene == nullptr) {
 		return;
 	}
+	*/
 	
 	onReset();
 	getWorld()->getScenes()->addScene(this->fluidScene);
@@ -97,7 +99,7 @@ void PBSPHFluidSimulationView::onReset()
 		writer.add(mp);
 	}
 	/*
-	const auto radius = 1.0;
+	const auto radius = 0.1;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
