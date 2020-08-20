@@ -22,14 +22,16 @@ TimeLinePanel::TimeLinePanel(const std::string& name, Scene::World* world, Canva
 void TimeLinePanel::onStart()
 {
 	const auto directoryPath = directoryView.getPath();
+	reader.setDirectryPath(directoryPath);
+	getWorld()->addAnimation(&reader);
 }
 
 void TimeLinePanel::onStop()
 {
-
+	//getWorld()->removeAnimation(&reader);
 }
 
 void TimeLinePanel::onReset()
 {
-
+	reader.reset();
 }

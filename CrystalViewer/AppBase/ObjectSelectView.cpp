@@ -32,7 +32,7 @@ ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas
 
 void ObjectSelectView::onPick(World* model, Canvas* canvas)
 {
-	auto ctrl = new PickUICtrl(model, canvas, type, 0.01);
+	auto ctrl = new PickUICtrl(model, canvas, type, 0.01f);
 	auto func = [=](int parentId, int childId) { this->idView.setValue(parentId); };
 	ctrl->setFunction(func);
 	canvas->setUICtrl(ctrl);

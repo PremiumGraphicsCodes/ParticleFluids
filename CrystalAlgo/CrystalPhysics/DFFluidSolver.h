@@ -32,7 +32,7 @@ public:
 
 	//std::vector<PBSPHParticle*> getParticles() const { return particles; }
 
-	void setTimeStep(const double dt) { this->maxTimeStep = dt; }
+	void setTimeStep(const float dt) { this->maxTimeStep = dt; }
 
 private:
 	std::vector<DFFluidScene*> fluids;

@@ -13,7 +13,7 @@ namespace Crystal {
 class CSPHSolver : public Scene::IAnimator
 {
 public:
-	CSPHSolver() : timeStep(0.001)
+	CSPHSolver() : timeStep(0.001f)
 	{}
 
 	void add(CSPHFluidScene* particle) { this->fluids.push_back(particle); }
