@@ -30,7 +30,8 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	resetButton("Reset"),
 	timeStepView("TimeStep", 0.01),
 	boundaryView("Boundary"),
-	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene)
+	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
+	outputDirectoryView("OutputDir")
 {
 	resetButton.setFunction([=]() { onReset(); });
 	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
@@ -39,6 +40,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	add(&resetButton);
 	add(&timeStepView);
 	add(&boundaryView);
+	add(&outputDirectoryView);
 }
 
 void PBSPHFluidSimulationView::onOk()
@@ -75,6 +77,9 @@ void PBSPHFluidSimulationView::onReset()
 	//this->simulator->clear();
 	this->fluidScene->clearParticles();
 
+	this->writer.reset();
+	this->writer.setDirectryPath(outputDirectoryView.getPath());
+
 	const auto id = this->particleSystemSelectView.getId();
 	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
 
@@ -83,6 +88,7 @@ void PBSPHFluidSimulationView::onReset()
 		auto pos = p->getPosition();
 		auto mp = new PBSPHParticle(pos, 1.0, this->fluidScene);
 		this->fluidScene->addParticle(mp);
+		writer.add(mp);
 	}
 	/*
 	const auto radius = 1.0;
@@ -98,4 +104,5 @@ void PBSPHFluidSimulationView::onReset()
 	*/
 	simulator->setBoundary(boundaryView.getValue());
 	simulator->setTimeStep(timeStepView.getValue());
+
 }
