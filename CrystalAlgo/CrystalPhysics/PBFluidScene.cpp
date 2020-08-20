@@ -9,7 +9,8 @@ using namespace Crystal::Physics;
 PBFluidScene::PBFluidScene(const int id, const std::string& name) :
 	IScene(id, name),
 	kernel(1.0),
-	restDensity(1.0)
+	restDensity(1.0),
+	stiffness(0.05)
 {
 	this->controller = std::make_unique<PBFluidSceneController>(this);
 }

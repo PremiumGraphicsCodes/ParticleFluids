@@ -125,14 +125,7 @@ void PBSPHParticle::calculatePressure(const PBSPHParticle& rhs)
 	const auto v = this->getPredictPosition() - rhs.getPredictPosition();
 	const auto weight = getKernel()->getPoly6KernelGradient(v);
 	const auto c = this->getConstraint() + rhs.getConstraint();
-	dx += c * weight / this->getDensity() * 0.05f;
-}
-
-void PBSPHParticle::calculatePressure(const Vector3df& v)
-{
-	const auto weight = getKernel()->getPoly6KernelGradient(v);
-	const auto c = this->getConstraint() + this->getConstraint();
-	dx += c * weight / this->getDensity() * 0.5f;
+	dx += c * weight / this->getDensity() * scene->getStiffness();//0.05f;
 }
 
 void PBSPHParticle::calculateViscosity(const PBSPHParticle& rhs)

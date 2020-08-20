@@ -37,11 +37,16 @@ public:
 
 	void setRestDensity(const double restDensity);
 
+	void setStiffness(const float s) { this->stiffness = s; }
+
+	float getStiffness() const { return stiffness; }
+
 private:
 	std::list<PBSPHParticle*> particles;
 	std::unique_ptr<PBFluidSceneController> controller;
 	SPHKernel kernel;
-	double restDensity;
+	float restDensity;
+	float stiffness;
 };
 
 	}

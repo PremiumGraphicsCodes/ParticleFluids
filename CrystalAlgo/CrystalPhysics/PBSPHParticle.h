@@ -85,8 +85,6 @@ public:
 
 	void calculatePressure(const PBSPHParticle& rhs);
 
-	void calculatePressure(const Math::Vector3df& v);
-
 	void calculateViscosity(const PBSPHParticle& rhs);
 
 	float getConstraint() const;
