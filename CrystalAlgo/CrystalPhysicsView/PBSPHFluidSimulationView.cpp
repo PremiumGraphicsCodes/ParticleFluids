@@ -70,6 +70,7 @@ void PBSPHFluidSimulationView::onOk()
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
 	getWorld()->addAnimation(simulator);
+	getWorld()->addAnimation(&writer);
 }
 
 void PBSPHFluidSimulationView::onReset()

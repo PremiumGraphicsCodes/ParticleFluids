@@ -21,7 +21,7 @@ void TimeSeriesParticleSystemWriter::add(IParticle* particle)
 void TimeSeriesParticleSystemWriter::step()
 {
 	auto filePath = directoryPath;
-	filePath += std::to_string(step_) + extension;
+	filePath += "//" + std::to_string(step_) + extension;
 	write(filePath);
 	step_++;
 }
