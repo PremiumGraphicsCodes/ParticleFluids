@@ -6,10 +6,10 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-PBFluidScene::PBFluidScene(const int id, const std::string& name, const double effectLength, const double restDensity) :
+PBFluidScene::PBFluidScene(const int id, const std::string& name) :
 	IScene(id, name),
-	kernel(effectLength),
-	restDensity(restDensity)
+	kernel(1.0),
+	restDensity(1.0)
 {
 	this->controller = std::make_unique<PBFluidSceneController>(this);
 }
@@ -34,4 +34,14 @@ Box3d PBFluidScene::getBoundingBox() const
 		bb.add(p->getPosition());
 	}
 	return bb;
+}
+
+void PBFluidScene::setEffectLength(const double effectLength)
+{
+	this->kernel = SPHKernel(effectLength);
+}
+
+void PBFluidScene::setRestDensity(const double restDensity)
+{
+	this->restDensity = restDensity;
 }

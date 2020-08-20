@@ -13,7 +13,7 @@ namespace Crystal {
 class PBFluidScene : public Scene::IScene
 {
 public:
-	PBFluidScene(const int id, const std::string& name, const double effectLength, const double restDensity);
+	PBFluidScene(const int id, const std::string& name);
 
 	~PBFluidScene();
 
@@ -33,11 +33,15 @@ public:
 
 	double getRestDensity() const { return restDensity; }
 
+	void setEffectLength(const double effectLength);
+
+	void setRestDensity(const double restDensity);
+
 private:
 	std::list<PBSPHParticle*> particles;
 	std::unique_ptr<PBFluidSceneController> controller;
 	SPHKernel kernel;
-	const double restDensity;
+	double restDensity;
 };
 
 	}

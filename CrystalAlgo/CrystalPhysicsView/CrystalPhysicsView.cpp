@@ -40,7 +40,7 @@ int main(int, char**)
 
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 
-	window.add(new AnimationControlPanel("AnimationControl", &model, &canvas));
+	//window.add(new AnimationControlPanel("AnimationControl", &model, &canvas));
 
 	window.show();
 

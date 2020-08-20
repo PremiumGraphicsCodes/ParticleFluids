@@ -24,6 +24,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	resetButton("Reset"),
 	timeStepView("TimeStep", 0.01),
 	effectLengthView("EffectLength", 2.25),
+	densityView("Density", 1.0),
 	boundaryView("Boundary"),
 	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
 	outputDirectoryView("OutputDir")
@@ -34,6 +35,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	add(&particleSystemSelectView);
 	add(&resetButton);
 	add(&timeStepView);
+	add(&densityView);
 	add(&effectLengthView);
 	add(&boundaryView);
 	add(&outputDirectoryView);
@@ -43,7 +45,7 @@ void PBSPHFluidSimulationView::onOk()
 {
 	auto world = getWorld();
 
-	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid", effectLengthView.getValue(), 1.0f);
+	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
 	this->simulator = new PBSPHSolver();
 	
 	onReset();
@@ -70,6 +72,8 @@ void PBSPHFluidSimulationView::onReset()
 {
 	//this->simulator->clear();
 	this->fluidScene->clearParticles();
+	this->fluidScene->setEffectLength(this->effectLengthView.getValue());
+	this->fluidScene->setRestDensity(this->densityView.getValue());
 
 	this->writer.reset();
 	this->writer.setDirectryPath(outputDirectoryView.getPath());

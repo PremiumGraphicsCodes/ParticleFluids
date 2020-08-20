@@ -33,6 +33,7 @@ private:
 	Button resetButton;
 	DoubleView timeStepView;
 	DoubleView effectLengthView;
+	DoubleView densityView;
 	Box3dView boundaryView;
 	DirectoryView outputDirectoryView;
 };
