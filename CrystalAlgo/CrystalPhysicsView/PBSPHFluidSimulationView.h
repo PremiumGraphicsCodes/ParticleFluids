@@ -32,6 +32,7 @@ private:
 	Button startButton;
 	Button resetButton;
 	DoubleView timeStepView;
+	DoubleView radiusView;
 	DoubleView effectLengthView;
 	DoubleView densityView;
 	Box3dView boundaryView;

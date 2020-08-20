@@ -1,32 +1,30 @@
 #pragma once
 
+#include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Scene/IAnimator.h"
 
 #include <filesystem>
 
 namespace Crystal {
-	namespace Shape {
-		class IParticle;
-	}
 	namespace Physics {
 
-class TimeSeriesParticleSystemWriter : public Scene::IAnimator
+class TimeSeriesParticleSystemReader : public Scene::IAnimator
 {
 public:
-	TimeSeriesParticleSystemWriter();
+	TimeSeriesParticleSystemReader();
 
 	void setDirectryPath(const std::filesystem::path& directoryPath) { this->directoryPath = directoryPath; }
 
-	void add(Shape::IParticle* particle);
+	//void add(Shape::IParticle* particle);
 
 	void step() override;
 
 	void reset();
 
 private:
-	bool write(const std::filesystem::path& filename);
+	bool read(const std::filesystem::path& filename);
 
-	std::vector<Shape::IParticle*> particles;
+	std::vector<Math::Vector3dd> positions;
 
 	std::filesystem::path directoryPath;
 
@@ -34,5 +32,6 @@ private:
 
 	unsigned int step_;
 };
+
 	}
 }

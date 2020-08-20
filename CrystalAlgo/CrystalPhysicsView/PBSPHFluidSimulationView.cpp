@@ -23,6 +23,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	startButton("Start"),
 	resetButton("Reset"),
 	timeStepView("TimeStep", 0.01),
+	radiusView("Radius", 1.0),
 	effectLengthView("EffectLength", 2.25),
 	densityView("Density", 1.0),
 	boundaryView("Boundary"),
@@ -35,6 +36,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	add(&particleSystemSelectView);
 	add(&resetButton);
 	add(&timeStepView);
+	add(&radiusView);
 	add(&densityView);
 	add(&effectLengthView);
 	add(&boundaryView);
@@ -47,6 +49,12 @@ void PBSPHFluidSimulationView::onOk()
 
 	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
 	this->simulator = new PBSPHSolver();
+
+	const auto id = this->particleSystemSelectView.getId();
+	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
+	if (scene == nullptr) {
+		return;
+	}
 	
 	onReset();
 	getWorld()->getScenes()->addScene(this->fluidScene);
@@ -84,7 +92,7 @@ void PBSPHFluidSimulationView::onReset()
 	const auto& ps = scene->getShape()->getParticles();
 	for (auto p : ps) {
 		auto pos = p->getPosition();
-		auto mp = new PBSPHParticle(pos, 1.0, this->fluidScene);
+		auto mp = new PBSPHParticle(pos, radiusView.getValue(), this->fluidScene);
 		this->fluidScene->addParticle(mp);
 		writer.add(mp);
 	}

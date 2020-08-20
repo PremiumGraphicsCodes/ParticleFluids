@@ -21,7 +21,7 @@ AnimationControlPanel::AnimationControlPanel(const std::string& name, Scene::Wor
 
 void AnimationControlPanel::onStart()
 {
-
+	const auto directoryPath = directoryView.getPath();
 }
 
 void AnimationControlPanel::onStop()

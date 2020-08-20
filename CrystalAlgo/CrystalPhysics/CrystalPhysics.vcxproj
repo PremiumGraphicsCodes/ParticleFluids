@@ -171,6 +171,7 @@
     <ClInclude Include="KFFluidSolver.h" />
     <ClInclude Include="KFMacroParticle.h" />
     <ClInclude Include="KFMicroParticle.h" />
+    <ClInclude Include="TimeSeriesParticleSystemReader.h" />
     <ClInclude Include="TimeSeriesParticleSystemWriter.h" />
     <ClInclude Include="PBFluidScene.h" />
     <ClInclude Include="PBFluidSceneController.h" />
@@ -204,6 +205,7 @@
     <ClCompile Include="PBSPHParticle.cpp" />
     <ClCompile Include="PBSPHSolver.cpp" />
     <ClCompile Include="SPHKernel.cpp" />
+    <ClCompile Include="TimeSeriesParticleSystemReader.cpp" />
     <ClCompile Include="TimeSeriesParticleSystemWriter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
