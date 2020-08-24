@@ -17,7 +17,7 @@ public:
 
 	virtual SceneType getType() const { return SceneType::Root; }
 
-	IPresenter* getController() override { return nullptr; }
+	IPresenter* getPresenter() override { return nullptr; }
 private:
 };
 	}

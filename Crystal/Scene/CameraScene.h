@@ -17,7 +17,7 @@ public:
 
 	Graphics::Camera* getCamera() const { return camera.get(); }
 
-	CameraPresenter* getController() { return controller.get(); }
+	CameraPresenter* getPresenter() { return controller.get(); }
 
 	SceneType getType() const { return SceneType::CameraScene; }
 

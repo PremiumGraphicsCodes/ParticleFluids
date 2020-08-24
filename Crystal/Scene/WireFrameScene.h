@@ -39,7 +39,7 @@ public:
 
 	Shape::WireFrame* getShape() { return shape.get(); }
 
-	IPresenter* getController() { return &controller; }
+	IPresenter* getPresenter() { return &controller; }
 
 private:
 	std::unique_ptr<Shape::WireFrame> shape;

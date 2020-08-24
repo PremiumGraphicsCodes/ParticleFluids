@@ -114,7 +114,7 @@ void PBSPHSolver::simulate(const float maxTimeStep, const int maxIter)
 
 
 	for (auto fluid : fluids) {
-		fluid->getController()->updateView();
+		fluid->getPresenter()->updateView();
 	}
 }
 

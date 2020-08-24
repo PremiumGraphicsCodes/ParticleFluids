@@ -38,7 +38,7 @@ public:
 
 	void setAttribute(const ParticleAttribute& attribute);
 
-	ParticleSystemPresenter* getController() { return controller.get(); }
+	ParticleSystemPresenter* getPresenter() { return controller.get(); }
 
 private:
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;

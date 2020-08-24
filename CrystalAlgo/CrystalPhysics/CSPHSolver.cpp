@@ -80,6 +80,6 @@ void CSPHSolver::simulate(const float timeStep)
 	}
 
 	for (auto fluid : fluids) {
-		fluid->getController()->updateView();
+		fluid->getPresenter()->updateView();
 	}
 }

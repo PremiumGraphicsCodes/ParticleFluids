@@ -18,7 +18,7 @@ public:
 
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
-	Scene::IPresenter* getController() {
+	Scene::IPresenter* getPresenter() {
 		return controller.get();
 	}//controller.get(); }
 

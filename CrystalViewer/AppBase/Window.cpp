@@ -148,7 +148,7 @@ bool Window::init()
 
 	world->init();
 	world->getRenderer()->build(*world->getGLFactory());
-	world->getCamera()->getController()->createView(world->getRenderer(), *world->getGLFactory());
+	world->getCamera()->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 	//auto camera = world->getCamera()->getController().getView();
 	//world->getRenderer()->getScene()->setCamera(camera);
 

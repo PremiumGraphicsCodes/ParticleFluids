@@ -24,7 +24,7 @@ public:
 
 	SceneType getType() const override { return SceneType::FaceGroupScene; }
 
-	IPresenter* getController() override { return nullptr; }
+	IPresenter* getPresenter() override { return nullptr; }
 
 private:
 	PolygonMeshScene* polygonMesh;

@@ -18,7 +18,7 @@ public:
 
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
-	Scene::IPresenter* getController() { return controller.get(); }
+	Scene::IPresenter* getPresenter() { return controller.get(); }
 
 	void addParticle(KFMacroParticle* mp) {
 		mp->setScene(this);

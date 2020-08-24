@@ -20,7 +20,7 @@ std::string ShaderSendCommand::getName()
 bool ShaderSendCommand::execute(World* world)
 {
 	auto s = world->getScenes()->findSceneById(std::any_cast<int>(args.id.getValue()));
-	s->getController()->updateView();
+	s->getPresenter()->updateView();
 	return true;
 }
 

@@ -117,7 +117,7 @@ void KFFluidSolver::simulate()
 
 
 	for (auto fluid : fluids) {
-		fluid->getController()->updateView();
+		fluid->getPresenter()->updateView();
 	}
 }
 

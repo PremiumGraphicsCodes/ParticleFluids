@@ -118,7 +118,7 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 	}
 
 	for (auto fluid : fluids) {
-		fluid->getController()->updateView();
+		fluid->getPresenter()->updateView();
 	}
 }
 

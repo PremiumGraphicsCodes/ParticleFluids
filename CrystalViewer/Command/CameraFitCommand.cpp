@@ -19,7 +19,7 @@ bool CameraFitCommand::execute(World* world)
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
 	camera->lookAt(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0), boundingBox.getCenter(), Vector3dd(0,1,0));
-	world->getCamera()->getController()->updateView();
+	world->getCamera()->getPresenter()->updateView();
 	return true;
 }
 
@@ -36,7 +36,7 @@ bool CameraXYCommand::execute(World* world)
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
 	camera->lookAt(boundingBox.getCenter() - Vector3dd(0, 0, dist * 2.0), boundingBox.getCenter(), Vector3dd(0, 1, 0));
-	world->getCamera()->getController()->updateView();
+	world->getCamera()->getPresenter()->updateView();
 	return true;
 }
 
@@ -53,7 +53,7 @@ bool CameraYZCommand::execute(World* world)
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
 	camera->lookAt(boundingBox.getCenter() - Vector3dd(dist * 2.0, 0, 0), boundingBox.getCenter(), Vector3dd(0, 0, 1));
-	world->getCamera()->getController()->updateView();
+	world->getCamera()->getPresenter()->updateView();
 	return true;
 }
 
@@ -70,6 +70,6 @@ bool CameraZXCommand::execute(World* world)
 	camera->setNear(dist * 0.1f);
 	camera->setFar(dist * 10.0f);
 	camera->lookAt(boundingBox.getCenter() - Vector3dd(0, dist * 2.0, 0), boundingBox.getCenter(), Vector3dd(1, 0, 0));
-	world->getCamera()->getController()->updateView();
+	world->getCamera()->getPresenter()->updateView();
 	return true;
 }
