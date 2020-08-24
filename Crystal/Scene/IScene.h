@@ -8,7 +8,7 @@
 #include "../Graphics/Camera.h"
 #include "../Shader/GLObjectFactory.h"
 
-#include "IController.h"
+#include "IPresenter.h"
 
 namespace Crystal {
 	namespace Scene {

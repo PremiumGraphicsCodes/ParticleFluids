@@ -26,7 +26,7 @@
     <ClInclude Include="CameraController.h" />
     <ClInclude Include="CameraShaderScene.h" />
     <ClInclude Include="IAnimator.h" />
-    <ClInclude Include="IController.h" />
+    <ClInclude Include="IPresenter.h" />
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="LightController.h" />
     <ClInclude Include="LightShaderScene.h" />

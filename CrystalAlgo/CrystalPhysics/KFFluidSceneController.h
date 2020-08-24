@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Scene/IController.h"
+#include "../../Crystal/Scene/IPresenter.h"
 
 #include "../../Crystal/Scene/SceneShader.h"
 #include "../../Crystal/Scene/PointShaderScene.h"

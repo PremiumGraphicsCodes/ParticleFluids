@@ -142,9 +142,6 @@
     <ClInclude Include="CameraController.h">
       <Filter>Controller</Filter>
     </ClInclude>
-    <ClInclude Include="IController.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
     <ClInclude Include="IAnimator.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -155,6 +152,9 @@
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemPresenter.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="IPresenter.h">
       <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
