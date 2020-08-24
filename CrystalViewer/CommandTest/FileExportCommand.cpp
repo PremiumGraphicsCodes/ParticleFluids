@@ -22,7 +22,7 @@ TEST(FileExportCommand, TestExportPCD)
 	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>();
 	shape->add(Vector3dd(0, 0, 0), ParticleAttribute());
 	auto ps = new ParticleSystemScene(1,"", std::move(shape));
-	world.getObjects()->addScene(ps);
+	world.getScenes()->addScene(ps);
 
 	const std::string filePath = "TestFileExport.pcd";
 	Crystal::Command::Command command(::FileExportLabels::FileExportCommandLabel);
@@ -39,7 +39,7 @@ TEST(FileExportCommand, TestExportOBJ)
 	PolygonMeshBuilder builder;
 	builder.add(quad);
 	auto scene = new PolygonMeshScene(1, "", builder.build());
-	world.getObjects()->addScene(scene);
+	world.getScenes()->addScene(scene);
 
 	const std::string filePath = "TestFileExport.obj";
 	Crystal::Command::Command command(::FileExportLabels::FileExportCommandLabel);

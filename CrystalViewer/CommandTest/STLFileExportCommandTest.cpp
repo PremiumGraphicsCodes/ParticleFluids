@@ -19,7 +19,7 @@ TEST(STLFileExportCommandTest, TestExecute)
 	PolygonMeshBuilder builder;
 	builder.add(Box3d());
 	auto scene = new PolygonMeshScene(1, "", builder.build());
-	world.getObjects()->addScene(scene);
+	world.getScenes()->addScene(scene);
 
 	const std::vector<int> newIds = { scene->getId() };
 	const std::string filePath = "STLFileExportTest.stl";

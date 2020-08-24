@@ -20,7 +20,7 @@ TEST(OBJFileExportCommand, TestExecute)
 	PolygonMeshBuilder builder;
 	builder.add(quad);
 	auto scene = new PolygonMeshScene(1, "", builder.build());
-	world.getObjects()->addScene(scene);
+	world.getScenes()->addScene(scene);
 
 	const std::vector<int> ids = { scene->getId() };
 	const std::string filePath = "./OBJFileExportTest.obj";

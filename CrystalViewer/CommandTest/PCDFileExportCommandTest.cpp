@@ -17,7 +17,7 @@ TEST(PCDFileExportCommand, TestExecute)
 	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>();
 	shape->add(Vector3dd(0, 0, 0), ParticleAttribute());
 	auto ps = new ParticleSystemScene(1, "", std::move(shape));
-	world.getObjects()->addScene(ps);
+	world.getScenes()->addScene(ps);
 
 	const std::vector<int> newIds = { ps->getId() };
 	const std::string filePath = "PCDFileExportTest.pcd";
