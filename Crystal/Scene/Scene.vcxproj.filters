@@ -157,6 +157,9 @@
     <ClInclude Include="TexturePresenter.h">
       <Filter>Presenter</Filter>
     </ClInclude>
+    <ClInclude Include="TriangleShaderScene.h">
+      <Filter>SceneShader\Triangle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -276,6 +279,9 @@
     </ClCompile>
     <ClCompile Include="TexturePresenter.cpp">
       <Filter>Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleShaderScene.cpp">
+      <Filter>SceneShader\Triangle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
