@@ -6,6 +6,7 @@ namespace Crystal {
 	namespace Scene {
 		class PolygonMeshScene;
 		class SmoothShaderScene;
+		class TriangleShaderScene;
 
 class PolygonMeshPresenter : public IPresenter
 {
@@ -25,9 +26,9 @@ private:
 
 	void updateChildIdView();
 
-
 	PolygonMeshScene* model;
 	SmoothShaderScene* view;
+	TriangleShaderScene* parentIdView;
 };
 
 	}

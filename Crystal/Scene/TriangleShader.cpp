@@ -14,19 +14,19 @@ namespace {
 	constexpr char* modelViewMatrixLabel = "modelviewMatrix";
 }
 
-void TriangleShader::GLBuffer::build()
+void TriangleShaderScene::build()
 {
 	vbo.position.build();
 	vbo.color.build();
 }
 
-void TriangleShader::GLBuffer::release()
+void TriangleShaderScene::release()
 {
 	vbo.position.release();
 	vbo.color.release();
 }
 
-void TriangleShader::GLBuffer::send(const LineBuffer& buffer)
+void TriangleShaderScene::send(const LineBuffer& buffer)
 {
 	vbo.position.send(buffer.getPositions().get());
 	vbo.color.send(buffer.getColors().get());

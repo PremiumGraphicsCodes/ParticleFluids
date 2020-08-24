@@ -49,7 +49,7 @@ public:
 
 private:
 	LineShaderScene lineBuffer;
-	TriangleShader::GLBuffer triangleBuffer;
+	TriangleShaderScene triangleBuffer;
 
 	LineShader lineIdRenderer;
 	TriangleShader triangleIdRenderer;
