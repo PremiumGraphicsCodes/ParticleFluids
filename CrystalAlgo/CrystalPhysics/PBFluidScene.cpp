@@ -11,7 +11,8 @@ PBFluidScene::PBFluidScene(const int id, const std::string& name) :
 	kernel(1.0),
 	restDensity(1.0),
 	stiffness(0.05),
-	viscosity(0.1f)
+	viscosity(0.1f),
+	_isBoundary(false)
 {
 	this->controller = std::make_unique<PBFluidSceneController>(this);
 }

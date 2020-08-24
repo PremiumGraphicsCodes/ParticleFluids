@@ -28,6 +28,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	densityView("Density", 1.0),
 	boundaryView("Boundary"),
 	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
+	boundarySelectView("Boundary", model, canvas, Scene::SceneType::ParticleSystemScene),
 	outputDirectoryView("OutputDir"),
 	stiffnessView("Stiffness", 0.05),
 	vicsocityView("Viscosity", 0.1)
@@ -36,6 +37,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
 
 	add(&particleSystemSelectView);
+	add(&boundarySelectView);
 	add(&resetButton);
 	add(&timeStepView);
 	add(&radiusView);
@@ -52,6 +54,7 @@ void PBSPHFluidSimulationView::onOk()
 	auto world = getWorld();
 
 	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
+	this->boundaryScene = new PBFluidScene(getWorld()->getNextSceneId(), "Boundary");
 	this->simulator = new PBSPHSolver();
 
 	/*
@@ -63,18 +66,27 @@ void PBSPHFluidSimulationView::onOk()
 	*/
 	
 	onReset();
+
 	getWorld()->getScenes()->addScene(this->fluidScene);
 	auto newId = this->fluidScene->getId();
+
+	getWorld()->getScenes()->addScene(this->boundaryScene);
+	auto boundaryId = this->boundaryScene->getId();
 
 	Command::Command command;
 	command.create(ShaderBuildLabels::CommandNameLabel);
 	command.setArg(ShaderBuildLabels::IdLabel, newId);
 	command.execute(getWorld());
 
+	command.create(ShaderBuildLabels::CommandNameLabel);
+	command.setArg(ShaderBuildLabels::IdLabel, boundaryId);
+	command.execute(getWorld());
+
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
 	simulator->add(this->fluidScene);
+	simulator->add(this->boundaryScene);
 
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
@@ -90,6 +102,13 @@ void PBSPHFluidSimulationView::onReset()
 	this->fluidScene->setRestDensity(this->densityView.getValue());
 	this->fluidScene->setStiffness(this->stiffnessView.getValue());
 	this->fluidScene->setVicsosity(this->vicsocityView.getValue());
+
+	this->boundaryScene->clearParticles();
+	this->boundaryScene->setEffectLength(this->effectLengthView.getValue());
+	this->boundaryScene->setRestDensity(this->densityView.getValue());
+	this->boundaryScene->setStiffness(this->stiffnessView.getValue() * 10.0f);
+	this->boundaryScene->setVicsosity(this->vicsocityView.getValue());
+	this->boundaryScene->setIsBoundary(true);
 
 	this->writer.reset();
 	this->writer.setDirectryPath(outputDirectoryView.getPath());
@@ -117,6 +136,36 @@ void PBSPHFluidSimulationView::onReset()
 			}
 		}
 	}
-	simulator->setBoundary(boundaryView.getValue());
+
+	for (int i = 0; i < 20; ++i) {
+		for (int j = -2; j < 0; ++j) {
+			for (int k = 0; k < 20; ++k) {
+				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
+				this->boundaryScene->addParticle(mp);
+			}
+		}
+	}
+
+	for (int i = 20; i < 22; ++i) {
+		for (int j = -2; j < 20; ++j) {
+			for (int k = 0; k < 20; ++k) {
+				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
+				this->boundaryScene->addParticle(mp);
+			}
+		}
+	}
+
+	for (int i = -2; i < 0; ++i) {
+		for (int j = -2; j < 20; ++j) {
+			for (int k = 0; k < 20; ++k) {
+				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
+				this->boundaryScene->addParticle(mp);
+			}
+		}
+	}
+
+
+
+	//simulator->setBoundary(boundaryView.getValue());
 	simulator->setTimeStep(timeStepView.getValue());
 }

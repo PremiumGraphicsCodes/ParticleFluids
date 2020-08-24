@@ -45,6 +45,10 @@ public:
 
 	float getViscosity() const { return viscosity; }
 
+	bool isBoundary() const { return _isBoundary; }
+
+	void setIsBoundary(const bool b) { _isBoundary = b; }
+
 private:
 	std::list<PBSPHParticle*> particles;
 	std::unique_ptr<PBFluidSceneController> controller;
@@ -52,6 +56,7 @@ private:
 	float restDensity;
 	float stiffness;
 	float viscosity;
+	bool _isBoundary;
 };
 
 	}

@@ -27,8 +27,10 @@ private:
 private:
 	Physics::PBSPHSolver* simulator;
 	Physics::PBFluidScene* fluidScene;
+	Physics::PBFluidScene* boundaryScene;
 	Physics::TimeSeriesParticleSystemWriter writer;
 	ObjectSelectView particleSystemSelectView;
+	ObjectSelectView boundarySelectView;
 	Button startButton;
 	Button resetButton;
 	DoubleView timeStepView;

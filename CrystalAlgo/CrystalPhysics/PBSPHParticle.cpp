@@ -28,6 +28,11 @@ void PBSPHParticle::init()
 
 float PBSPHParticle::getDensityRatio() const
 {
+	/*
+	if (scene->isBoundary()) {
+		return 10.0f;
+	}
+	*/
 	return density / scene->getRestDensity();
 }
 
@@ -61,6 +66,9 @@ void PBSPHParticle::forwardTime(const float timeStep)
 
 void PBSPHParticle::addExternalForce(const Vector3df& externalForce)
 {
+	if (scene->isBoundary()) {
+		return;
+	}
 	this->force += externalForce * scene->getRestDensity();
 }
 
@@ -82,6 +90,9 @@ void PBSPHParticle::addDensity(const float distance, const float mass)
 
 void PBSPHParticle::predictPosition_(const float dt)
 {
+	if (scene->isBoundary()) {
+		return;
+	}
 	this->position = this->predictPosition;
 	this->velocity += dt * this->force;
 	this->predictPosition += dt * this->velocity;
@@ -89,16 +100,25 @@ void PBSPHParticle::predictPosition_(const float dt)
 
 void PBSPHParticle::updatePredictPosition()
 {
+	if (scene->isBoundary()) {
+		return;
+	}
 	this->predictPosition += dx;
 }
 
 void PBSPHParticle::updateVelocity(const float dt)
 {
+	if (scene->isBoundary()) {
+		return;
+	}
 	this->velocity = (this->predictPosition - this->position) / dt;
 }
 
 void PBSPHParticle::updatePosition()
 {
+	if (scene->isBoundary()) {
+		return;
+	}
 	this->position = this->predictPosition;
 }
 
