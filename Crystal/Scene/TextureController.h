@@ -7,7 +7,7 @@ namespace Crystal {
 		class TextureScene;
 		class TextureShaderScene;
 
-class TextureController : public IController
+class TextureController : public IPresenter
 {
 public:
 	explicit TextureController(TextureScene* model);

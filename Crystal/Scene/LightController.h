@@ -7,7 +7,7 @@ namespace Crystal {
 		class LightScene;
 		class LightShaderScene;
 
-class LightController : public IController
+class LightController : public IPresenter
 {
 public:
 	explicit LightController(LightScene* model);

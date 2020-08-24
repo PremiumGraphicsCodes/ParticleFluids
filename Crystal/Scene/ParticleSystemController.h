@@ -7,7 +7,7 @@ namespace Crystal {
 		class ParticleSystemScene;
 		class PointShaderScene;
 
-class ParticleSystemController : public IController
+class ParticleSystemController : public IPresenter
 {
 public:
 	explicit ParticleSystemController(ParticleSystemScene* model);

@@ -74,7 +74,7 @@ public:
 
 	bool isLeaf() const { return children.empty(); }
 
-	virtual IController* getController() = 0;
+	virtual IPresenter* getController() = 0;
 
 protected:
 	std::string name;

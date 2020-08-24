@@ -11,7 +11,7 @@ namespace Crystal {
 		class CameraShaderScene;
 		class SceneShader;
 
-class CameraController : public IController
+class CameraController : public IPresenter
 {
 public:
 	explicit CameraController(CameraScene* model);

@@ -7,10 +7,10 @@ namespace Crystal {
 	namespace Scene {
 		class SceneShader;
 
-class IController
+class IPresenter
 {
 public:
-	virtual ~IController() {};
+	virtual ~IPresenter() {};
 
 	virtual void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) = 0;
 

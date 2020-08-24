@@ -9,7 +9,7 @@ namespace Crystal {
 	namespace Physics {
 		class CSPHFluidScene;
 
-class CSPHFluidSceneController : public Scene::IController
+class CSPHFluidSceneController : public Scene::IPresenter
 {
 public:
 	explicit CSPHFluidSceneController(CSPHFluidScene* model);

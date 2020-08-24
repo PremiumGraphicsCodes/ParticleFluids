@@ -7,7 +7,7 @@ namespace Crystal {
 		class VolumeScene;
 		class PointShaderScene;
 
-class VolumeController : public IController
+class VolumeController : public IPresenter
 {
 public:
 	explicit VolumeController(VolumeScene* model);

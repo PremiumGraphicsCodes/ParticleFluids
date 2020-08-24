@@ -17,7 +17,7 @@ public:
 
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
-	Scene::IController* getController() { return controller.get(); }
+	Scene::IPresenter* getController() { return controller.get(); }
 
 	void addParticle(CSPHParticle* mp) { particles.push_back(mp); }
 

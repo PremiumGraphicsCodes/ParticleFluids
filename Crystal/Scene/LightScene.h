@@ -27,7 +27,7 @@ public:
 
 	SceneType getType() const override { return SceneType::LightScene; }
 
-	IController* getController() override { return &controller; }
+	IPresenter* getController() override { return &controller; }
 
 private:
 	std::unique_ptr<Graphics::PointLight> light;

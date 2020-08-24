@@ -9,7 +9,7 @@ namespace Crystal {
 		class WireFrameScene;
 		class LineShaderScene;
 
-class WireFrameController : public IController
+class WireFrameController : public IPresenter
 {
 public:
 	explicit WireFrameController(WireFrameScene* model);

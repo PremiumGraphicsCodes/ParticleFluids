@@ -9,7 +9,7 @@ namespace Crystal {
 	namespace Physics {
 		class KFFluidScene;
 
-class KFFluidSceneController : public Scene::IController
+class KFFluidSceneController : public Scene::IPresenter
 {
 public:
 	explicit KFFluidSceneController(KFFluidScene* model);

@@ -11,7 +11,7 @@ namespace Crystal {
 		class SceneShader;
 		class MaterialShaderScene;
 
-class MaterialController : public IController
+class MaterialController : public IPresenter
 {
 public:
 	explicit MaterialController(MaterialScene* model);

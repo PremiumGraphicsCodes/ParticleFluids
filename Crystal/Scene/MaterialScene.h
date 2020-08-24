@@ -20,7 +20,7 @@ public:
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
 
-	IController* getController() override { return &controller; }
+	IPresenter* getController() override { return &controller; }
 	
 private:
 	std::unique_ptr<Graphics::Material> material;

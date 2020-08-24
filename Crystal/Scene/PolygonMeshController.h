@@ -7,7 +7,7 @@ namespace Crystal {
 		class PolygonMeshScene;
 		class SmoothShaderScene;
 
-class PolygonMeshController : public IController
+class PolygonMeshController : public IPresenter
 {
 public:
 	explicit PolygonMeshController(PolygonMeshScene* model);

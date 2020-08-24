@@ -7,7 +7,7 @@ namespace Crystal {
 		class PolygonMeshScene;
 		class LineShaderScene;
 
-class PMToWFPresenter : public IController
+class PMToWFPresenter : public IPresenter
 {
 public:
 	explicit PMToWFPresenter(PolygonMeshScene* model);
