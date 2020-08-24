@@ -1,4 +1,4 @@
-#include "LightController.h"
+#include "LightPresenter.h"
 
 #include "LightScene.h"
 #include "LightShaderScene.h"
@@ -8,12 +8,12 @@
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-LightController::LightController(LightScene* model) :
+LightPresenter::LightPresenter(LightScene* model) :
 	model(model),
 	view(nullptr)
 {}
 
-void LightController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
+void LightPresenter::createView(SceneShader* sceneShader, GLObjectFactory& factory)
 {
 	const auto& l = model->getLight();
 	this->view = new LightShaderScene(model->getName());
@@ -24,7 +24,7 @@ void LightController::createView(SceneShader* sceneShader, GLObjectFactory& fact
 	sceneShader->getScene()->screen.add(this->view);
 }
 
-void LightController::updateView()
+void LightPresenter::updateView()
 {
 	const auto& l = model->getLight();
 	this->view->position = l->getPosition();

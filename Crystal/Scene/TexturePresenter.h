@@ -7,10 +7,10 @@ namespace Crystal {
 		class TextureScene;
 		class TextureShaderScene;
 
-class TextureController : public IPresenter
+class TexturePresenter : public IPresenter
 {
 public:
-	explicit TextureController(TextureScene* model);
+	explicit TexturePresenter(TextureScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory);
 

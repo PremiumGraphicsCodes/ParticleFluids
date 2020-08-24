@@ -11,10 +11,10 @@ namespace Crystal {
 		class SceneShader;
 		class MaterialShaderScene;
 
-class MaterialController : public IPresenter
+class MaterialPresenter : public IPresenter
 {
 public:
-	explicit MaterialController(MaterialScene* model);
+	explicit MaterialPresenter(MaterialScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 

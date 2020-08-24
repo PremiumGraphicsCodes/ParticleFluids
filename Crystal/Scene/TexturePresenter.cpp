@@ -1,4 +1,4 @@
-#include "TextureController.h"
+#include "TexturePresenter.h"
 
 #include "SceneShader.h"
 #include "TextureScene.h"
@@ -6,12 +6,12 @@
 using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
-TextureController::TextureController(TextureScene* model) :
+TexturePresenter::TexturePresenter(TextureScene* model) :
 	model(model),
 	view(nullptr)
 {}
 
-void TextureController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
+void TexturePresenter::createView(SceneShader* sceneShader, GLObjectFactory& factory)
 {
 	this->view = new TextureShaderScene(model->getName());
 	this->view->build(factory);
@@ -19,7 +19,7 @@ void TextureController::createView(SceneShader* sceneShader, GLObjectFactory& fa
 	sceneShader->getScene()->screen.add(this->view);
 }
 
-void TextureController::updateView()
+void TexturePresenter::updateView()
 {
 	this->view->send(*model->getImage());
 }

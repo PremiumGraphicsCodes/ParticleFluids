@@ -2,7 +2,7 @@
 
 #include "IScene.h"
 #include "../Graphics/Material.h"
-#include "MaterialController.h"
+#include "MaterialPresenter.h"
 #include <memory>
 
 namespace Crystal {
@@ -24,7 +24,7 @@ public:
 	
 private:
 	std::unique_ptr<Graphics::Material> material;
-	MaterialController controller;
+	MaterialPresenter controller;
 };
 
 	}

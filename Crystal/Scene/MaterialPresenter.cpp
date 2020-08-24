@@ -1,4 +1,4 @@
-#include "MaterialController.h"
+#include "MaterialPresenter.h"
 
 #include "MaterialScene.h"
 #include "MaterialShaderScene.h"
@@ -8,12 +8,12 @@
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-MaterialController::MaterialController(MaterialScene* model) :
+MaterialPresenter::MaterialPresenter(MaterialScene* model) :
 	model(model),
 	view(nullptr)
 {}
 
-void MaterialController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
+void MaterialPresenter::createView(SceneShader* sceneShader, GLObjectFactory& factory)
 {
 	const auto& m = model->getMaterial();
 	this->view = new MaterialShaderScene(model->getName());
@@ -24,7 +24,7 @@ void MaterialController::createView(SceneShader* sceneShader, GLObjectFactory& f
 	sceneShader->getScene()->screen.add(this->view);
 }
 
-void MaterialController::updateView()
+void MaterialPresenter::updateView()
 {
 	const auto& m = model->getMaterial();
 	this->view->shininess = m->shininess;

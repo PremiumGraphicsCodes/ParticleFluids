@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TextureController.h"
+#include "TexturePresenter.h"
 
 #include "IScene.h"
 #include "../Graphics/Image.h"
@@ -26,7 +26,7 @@ public:
 
 private:
 	std::unique_ptr<Graphics::Image> image;
-	TextureController controller;
+	TexturePresenter controller;
 };
 
 	}

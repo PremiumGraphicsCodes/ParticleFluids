@@ -7,10 +7,10 @@ namespace Crystal {
 		class LightScene;
 		class LightShaderScene;
 
-class LightController : public IPresenter
+class LightPresenter : public IPresenter
 {
 public:
-	explicit LightController(LightScene* model);
+	explicit LightPresenter(LightScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 

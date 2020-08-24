@@ -3,7 +3,7 @@
 #include "IScene.h"
 #include "../Graphics/ColorRGBA.h"
 #include "../Graphics/PointLight.h"
-#include "LightController.h"
+#include "LightPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -31,7 +31,7 @@ public:
 
 private:
 	std::unique_ptr<Graphics::PointLight> light;
-	LightController controller;
+	LightPresenter controller;
 };
 
 	}

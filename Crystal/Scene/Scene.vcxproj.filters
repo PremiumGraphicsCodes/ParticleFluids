@@ -115,9 +115,6 @@
     <ClInclude Include="CameraShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialController.h">
-      <Filter>Presenter</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialShaderScene.h">
       <Filter>SceneShader\Material</Filter>
     </ClInclude>
@@ -126,12 +123,6 @@
     </ClInclude>
     <ClInclude Include="LightShaderScene.h">
       <Filter>SceneShader\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="LightController.h">
-      <Filter>Presenter</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureController.h">
-      <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="IAnimator.h">
       <Filter>Scene</Filter>
@@ -155,6 +146,15 @@
       <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="CameraPresenter.h">
+      <Filter>Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="LightPresenter.h">
+      <Filter>Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialPresenter.h">
+      <Filter>Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturePresenter.h">
       <Filter>Presenter</Filter>
     </ClInclude>
   </ItemGroup>
@@ -241,9 +241,6 @@
     <ClCompile Include="CameraShaderScene.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
-    <ClCompile Include="MaterialController.cpp">
-      <Filter>Presenter</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialShaderScene.cpp">
       <Filter>SceneShader\Material</Filter>
     </ClCompile>
@@ -252,12 +249,6 @@
     </ClCompile>
     <ClCompile Include="LightShaderScene.cpp">
       <Filter>SceneShader\Light</Filter>
-    </ClCompile>
-    <ClCompile Include="LightController.cpp">
-      <Filter>Presenter</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureController.cpp">
-      <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="PMToWFPresenter.cpp">
       <Filter>Presenter</Filter>
@@ -275,6 +266,15 @@
       <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="CameraPresenter.cpp">
+      <Filter>Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="LightPresenter.cpp">
+      <Filter>Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialPresenter.cpp">
+      <Filter>Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturePresenter.cpp">
       <Filter>Presenter</Filter>
     </ClCompile>
   </ItemGroup>

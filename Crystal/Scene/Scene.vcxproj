@@ -28,9 +28,9 @@
     <ClInclude Include="IAnimator.h" />
     <ClInclude Include="IPresenter.h" />
     <ClInclude Include="IShaderScene.h" />
-    <ClInclude Include="LightController.h" />
+    <ClInclude Include="LightPresenter.h" />
     <ClInclude Include="LightShaderScene.h" />
-    <ClInclude Include="MaterialController.h" />
+    <ClInclude Include="MaterialPresenter.h" />
     <ClInclude Include="MaterialShaderScene.h" />
     <ClInclude Include="ParticleSystemPresenter.h" />
     <ClInclude Include="FaceGroupScene.h" />
@@ -51,7 +51,7 @@
     <ClInclude Include="SceneShaderScene.h" />
     <ClInclude Include="SceneShader.h" />
     <ClInclude Include="SmoothShaderScene.h" />
-    <ClInclude Include="TextureController.h" />
+    <ClInclude Include="TexturePresenter.h" />
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TextureShaderScene.h" />
     <ClInclude Include="TriangleMeshScene.h" />
@@ -82,12 +82,12 @@
     <ClCompile Include="CameraShaderScene.cpp" />
     <ClCompile Include="FaceGroupScene.cpp" />
     <ClCompile Include="IScene.cpp" />
-    <ClCompile Include="LightController.cpp" />
+    <ClCompile Include="LightPresenter.cpp" />
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="LightShaderScene.cpp" />
     <ClCompile Include="LineShaderScene.cpp" />
     <ClCompile Include="LineShader.cpp" />
-    <ClCompile Include="MaterialController.cpp" />
+    <ClCompile Include="MaterialPresenter.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="MaterialShaderScene.cpp" />
     <ClCompile Include="ParticleSystemPresenter.cpp" />
@@ -104,7 +104,7 @@
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="SceneShader.cpp" />
     <ClCompile Include="SmoothShaderScene.cpp" />
-    <ClCompile Include="TextureController.cpp" />
+    <ClCompile Include="TexturePresenter.cpp" />
     <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="TextureShaderScene.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
