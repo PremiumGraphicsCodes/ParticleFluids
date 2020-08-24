@@ -11,10 +11,10 @@ namespace Crystal {
 		class CameraShaderScene;
 		class SceneShader;
 
-class CameraController : public IPresenter
+class CameraPresenter : public IPresenter
 {
 public:
-	explicit CameraController(CameraScene* model);
+	explicit CameraPresenter(CameraScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 

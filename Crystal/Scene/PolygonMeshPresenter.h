@@ -7,10 +7,10 @@ namespace Crystal {
 		class PolygonMeshScene;
 		class SmoothShaderScene;
 
-class PolygonMeshController : public IPresenter
+class PolygonMeshPresenter : public IPresenter
 {
 public:
-	explicit PolygonMeshController(PolygonMeshScene* model);
+	explicit PolygonMeshPresenter(PolygonMeshScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 

@@ -115,11 +115,8 @@
     <ClInclude Include="CameraShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshController.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialController.h">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="MaterialShaderScene.h">
       <Filter>SceneShader\Material</Filter>
@@ -131,31 +128,34 @@
       <Filter>SceneShader\Light</Filter>
     </ClInclude>
     <ClInclude Include="LightController.h">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="TextureController.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraController.h">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="IAnimator.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="VolumeController.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
     <ClInclude Include="PMToWFPresenter.h">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemPresenter.h">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="IPresenter.h">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="WireFramePresenter.h">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshPresenter.h">
+      <Filter>Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumePresenter.h">
+      <Filter>Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraPresenter.h">
+      <Filter>Presenter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -241,11 +241,8 @@
     <ClCompile Include="CameraShaderScene.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonMeshController.cpp">
-      <Filter>Controller</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialController.cpp">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="MaterialShaderScene.cpp">
       <Filter>SceneShader\Material</Filter>
@@ -257,25 +254,28 @@
       <Filter>SceneShader\Light</Filter>
     </ClCompile>
     <ClCompile Include="LightController.cpp">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="TextureController.cpp">
-      <Filter>Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraController.cpp">
-      <Filter>Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="VolumeController.cpp">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="PMToWFPresenter.cpp">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemPresenter.cpp">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="WireFramePresenter.cpp">
-      <Filter>Controller</Filter>
+      <Filter>Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshPresenter.cpp">
+      <Filter>Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumePresenter.cpp">
+      <Filter>Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraPresenter.cpp">
+      <Filter>Presenter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -306,9 +306,6 @@
     <Filter Include="Scene\Shape\Volume">
       <UniqueIdentifier>{e4eec2bb-f092-4b14-864c-f47953c88957}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Controller">
-      <UniqueIdentifier>{6c2a936a-2655-454e-9870-3306dae4a9ea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SceneShader">
       <UniqueIdentifier>{442dc2c7-873a-40c4-a519-d8ff2e247cb4}</UniqueIdentifier>
     </Filter>
@@ -338,6 +335,9 @@
     </Filter>
     <Filter Include="SceneShader\Light">
       <UniqueIdentifier>{f7aa0911-b632-4f3c-97f4-5ad344f49c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter">
+      <UniqueIdentifier>{6c2a936a-2655-454e-9870-3306dae4a9ea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -7,10 +7,10 @@ namespace Crystal {
 		class VolumeScene;
 		class PointShaderScene;
 
-class VolumeController : public IPresenter
+class VolumePresenter : public IPresenter
 {
 public:
-	explicit VolumeController(VolumeScene* model);
+	explicit VolumePresenter(VolumeScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 

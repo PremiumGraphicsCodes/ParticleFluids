@@ -1,4 +1,4 @@
-#include "VolumeController.h"
+#include "VolumePresenter.h"
 
 #include "VolumeScene.h"
 #include "SceneShader.h"
@@ -9,14 +9,14 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 using namespace Crystal::Graphics;
 
-VolumeController::VolumeController(VolumeScene* model) :
+VolumePresenter::VolumePresenter(VolumeScene* model) :
 	model(model),
 	view(nullptr),
 	parentIdView(nullptr),
 	childIdView(nullptr)
 {}
 
-void VolumeController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void VolumePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
@@ -41,12 +41,12 @@ void VolumeController::createView(SceneShader* sceneShader, GLObjectFactory& glF
 	updateView();
 }
 
-void VolumeController::updateView()
+void VolumePresenter::updateView()
 {
 
 }
 
-void VolumeController::updateScreenView()
+void VolumePresenter::updateScreenView()
 {
 	PointBuffer pb;
 
@@ -64,7 +64,7 @@ void VolumeController::updateScreenView()
 	this->view->send(pb);
 }
 
-void VolumeController::updateParentIdView()
+void VolumePresenter::updateParentIdView()
 {
 	const auto objectId = model->getId();
 	int particleId = 0;
@@ -84,7 +84,7 @@ void VolumeController::updateParentIdView()
 	parentIdView->send(parentIdBuffer);
 }
 
-void VolumeController::updateChildIdView()
+void VolumePresenter::updateChildIdView()
 {
 	const auto objectId = model->getId();
 	int particleId = 0;

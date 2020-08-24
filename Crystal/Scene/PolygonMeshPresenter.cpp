@@ -1,4 +1,4 @@
-#include "PolygonMeshController.h"
+#include "PolygonMeshPresenter.h"
 
 #include "PolygonMeshScene.h"
 
@@ -7,13 +7,13 @@
 using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
-PolygonMeshController::PolygonMeshController(PolygonMeshScene* model) :
+PolygonMeshPresenter::PolygonMeshPresenter(PolygonMeshScene* model) :
 	model(model),
 	view(nullptr)
 {
 }
 
-void PolygonMeshController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PolygonMeshPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	const auto& shape = model->getShape();
 	const auto& vs = shape->getVertices();
@@ -57,24 +57,24 @@ void PolygonMeshController::createView(SceneShader* sceneShader, GLObjectFactory
 	}
 }
 
-void PolygonMeshController::updateView()
+void PolygonMeshPresenter::updateView()
 {
 	updateScreenView();
 	updateParentIdView();
 	updateChildIdView();
 }
 
-void PolygonMeshController::updateScreenView()
+void PolygonMeshPresenter::updateScreenView()
 {
 
 }
 
-void PolygonMeshController::updateParentIdView()
+void PolygonMeshPresenter::updateParentIdView()
 {
 
 }
 
-void PolygonMeshController::updateChildIdView()
+void PolygonMeshPresenter::updateChildIdView()
 {
 
 }

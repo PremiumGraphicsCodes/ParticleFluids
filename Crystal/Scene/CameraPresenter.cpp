@@ -1,4 +1,4 @@
-#include "CameraController.h"
+#include "CameraPresenter.h"
 
 #include "SceneShader.h"
 
@@ -7,12 +7,12 @@
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-CameraController::CameraController(CameraScene* model) :
+CameraPresenter::CameraPresenter(CameraScene* model) :
 	model(model),
 	view(nullptr)
 {}
 
-void CameraController::createView(SceneShader* sceneShader, GLObjectFactory& factory)
+void CameraPresenter::createView(SceneShader* sceneShader, GLObjectFactory& factory)
 {
 	const auto& m = model->getCamera();
 	this->view = new CameraShaderScene(model->getName());
@@ -22,7 +22,7 @@ void CameraController::createView(SceneShader* sceneShader, GLObjectFactory& fac
 	//sceneShader->getScene()->screen.cameraScene()
 }
 
-void CameraController::updateView()
+void CameraPresenter::updateView()
 {
 	const auto m = model->getCamera();
 	this->view->update(*m);

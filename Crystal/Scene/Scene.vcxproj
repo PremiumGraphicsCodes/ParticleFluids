@@ -23,7 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraScene.h" />
-    <ClInclude Include="CameraController.h" />
+    <ClInclude Include="CameraPresenter.h" />
     <ClInclude Include="CameraShaderScene.h" />
     <ClInclude Include="IAnimator.h" />
     <ClInclude Include="IPresenter.h" />
@@ -43,7 +43,7 @@
     <ClInclude Include="PMToWFPresenter.h" />
     <ClInclude Include="PointBuffer.h" />
     <ClInclude Include="PointShaderScene.h" />
-    <ClInclude Include="PolygonMeshController.h" />
+    <ClInclude Include="PolygonMeshPresenter.h" />
     <ClInclude Include="ScreenIdShader.h" />
     <ClInclude Include="ScreenShaderScene.h" />
     <ClInclude Include="ScreenShader.h" />
@@ -55,7 +55,7 @@
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TextureShaderScene.h" />
     <ClInclude Include="TriangleMeshScene.h" />
-    <ClInclude Include="VolumeController.h" />
+    <ClInclude Include="VolumePresenter.h" />
     <ClInclude Include="WireFramePresenter.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="SmoothShader.h" />
@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraScene.cpp" />
-    <ClCompile Include="CameraController.cpp" />
+    <ClCompile Include="CameraPresenter.cpp" />
     <ClCompile Include="CameraShaderScene.cpp" />
     <ClCompile Include="FaceGroupScene.cpp" />
     <ClCompile Include="IScene.cpp" />
@@ -93,7 +93,7 @@
     <ClCompile Include="ParticleSystemPresenter.cpp" />
     <ClCompile Include="PMToWFPresenter.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
-    <ClCompile Include="PolygonMeshController.cpp" />
+    <ClCompile Include="PolygonMeshPresenter.cpp" />
     <ClCompile Include="SceneShaderScene.cpp" />
     <ClCompile Include="ScreenIdShader.cpp" />
     <ClCompile Include="ScreenIdShaderScene.cpp" />
@@ -108,7 +108,7 @@
     <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="TextureShaderScene.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
-    <ClCompile Include="VolumeController.cpp" />
+    <ClCompile Include="VolumePresenter.cpp" />
     <ClCompile Include="VolumeScene.cpp" />
     <ClCompile Include="WireFramePresenter.cpp" />
     <ClCompile Include="World.cpp" />

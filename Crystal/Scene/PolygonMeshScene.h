@@ -4,7 +4,7 @@
 #include "IShapeScene.h"
 #include "MaterialScene.h"
 #include "FaceGroupScene.h"
-#include "PolygonMeshController.h"
+#include "PolygonMeshPresenter.h"
 
 #include "../Shape/PolygonMesh.h"
 #include "../Graphics/ColorRGBA.h"
@@ -48,7 +48,7 @@ public:
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
 	std::vector<FaceGroupScene*> groups;
-	PolygonMeshController controller;
+	PolygonMeshPresenter controller;
 };
 
 	}
