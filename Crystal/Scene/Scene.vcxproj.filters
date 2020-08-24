@@ -88,9 +88,6 @@
     <ClInclude Include="LineBuffer.h">
       <Filter>SceneShader\Line</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemController.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
     <ClInclude Include="PointShaderScene.h">
       <Filter>SceneShader\Point</Filter>
     </ClInclude>
@@ -157,6 +154,9 @@
     <ClInclude Include="PMToWFPresenter.h">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleSystemPresenter.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -213,9 +213,6 @@
     </ClCompile>
     <ClCompile Include="TriangleShader.cpp">
       <Filter>SceneShader\Triangle</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystemController.cpp">
-      <Filter>Controller</Filter>
     </ClCompile>
     <ClCompile Include="PointShaderScene.cpp">
       <Filter>SceneShader\Point</Filter>
@@ -275,6 +272,9 @@
       <Filter>Controller</Filter>
     </ClCompile>
     <ClCompile Include="PMToWFPresenter.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemPresenter.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
   </ItemGroup>

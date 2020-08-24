@@ -1,4 +1,4 @@
-#include "ParticleSystemController.h"
+#include "ParticleSystemPresenter.h"
 
 #include "ParticleSystemScene.h"
 #include "SceneShader.h"
@@ -7,7 +7,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Graphics;
 
-ParticleSystemController::ParticleSystemController(ParticleSystemScene* model) :
+ParticleSystemPresenter::ParticleSystemPresenter(ParticleSystemScene* model) :
 	model(model),
 	view(nullptr),
 	parentIdView(nullptr),
@@ -15,7 +15,7 @@ ParticleSystemController::ParticleSystemController(ParticleSystemScene* model) :
 {
 }
 
-void ParticleSystemController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void ParticleSystemPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
@@ -40,14 +40,14 @@ void ParticleSystemController::createView(SceneShader* sceneShader, GLObjectFact
 	updateView();
 }
 
-void ParticleSystemController::updateView()
+void ParticleSystemPresenter::updateView()
 {
 	updateScreenView();
 	updateParentIdView();
 	updateChildIdView();
 }
 
-void ParticleSystemController::updateScreenView()
+void ParticleSystemPresenter::updateScreenView()
 {
 	const auto& ps = model->getShape()->getParticles();
 	PointBuffer pb;
@@ -58,7 +58,7 @@ void ParticleSystemController::updateScreenView()
 	this->view->send(pb);
 }
 
-void ParticleSystemController::updateParentIdView()
+void ParticleSystemPresenter::updateParentIdView()
 {
 	const auto objectId = model->getId();
 	const auto& particles = model->getShape()->getParticles();
@@ -72,7 +72,7 @@ void ParticleSystemController::updateParentIdView()
 	parentIdView->send(parentIdBuffer);
 }
 
-void ParticleSystemController::updateChildIdView()
+void ParticleSystemPresenter::updateChildIdView()
 {
 	const auto objectId = model->getId();
 	const auto& particles = model->getShape()->getParticles();

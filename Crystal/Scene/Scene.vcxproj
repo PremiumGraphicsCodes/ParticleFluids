@@ -32,7 +32,7 @@
     <ClInclude Include="LightShaderScene.h" />
     <ClInclude Include="MaterialController.h" />
     <ClInclude Include="MaterialShaderScene.h" />
-    <ClInclude Include="ParticleSystemController.h" />
+    <ClInclude Include="ParticleSystemPresenter.h" />
     <ClInclude Include="FaceGroupScene.h" />
     <ClInclude Include="IPoint.h" />
     <ClInclude Include="IScene.h" />
@@ -90,7 +90,7 @@
     <ClCompile Include="MaterialController.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="MaterialShaderScene.cpp" />
-    <ClCompile Include="ParticleSystemController.cpp" />
+    <ClCompile Include="ParticleSystemPresenter.cpp" />
     <ClCompile Include="PMToWFPresenter.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
     <ClCompile Include="PolygonMeshController.cpp" />

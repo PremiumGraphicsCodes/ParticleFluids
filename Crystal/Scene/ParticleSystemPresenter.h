@@ -7,10 +7,10 @@ namespace Crystal {
 		class ParticleSystemScene;
 		class PointShaderScene;
 
-class ParticleSystemController : public IPresenter
+class ParticleSystemPresenter : public IPresenter
 {
 public:
-	explicit ParticleSystemController(ParticleSystemScene* model);
+	explicit ParticleSystemPresenter(ParticleSystemScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
