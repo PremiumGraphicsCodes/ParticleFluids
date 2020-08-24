@@ -97,13 +97,17 @@ void PolygonMeshBuilder::add(const Box3d& box)
 	auto v3 = createVertex(p3, n5);
 	auto v4 = createVertex(p4, n4);
 	auto v5 = createVertex(p5, n4);
-	auto v6 = createVertex(p5, n4);
-	auto v7 = createVertex(p5, n4);
+	auto v6 = createVertex(p6, n4);
+	auto v7 = createVertex(p7, n4);
 
 	createFace(v0, v1, v2); // front
-	createFace(v3, v2, v1);
-	createFace(v4, v5, v6);
-	createFace(v7, v4, v5);
+	createFace(v2, v3, v0);
+
+	createFace(v1, v5, v6);
+	createFace(v6, v2, v1);
+
+	createFace(v6, v5, v4);
+	createFace(v4, v7, v6);
 
 	/*
 	add(p0, p1, p2, p3); // front

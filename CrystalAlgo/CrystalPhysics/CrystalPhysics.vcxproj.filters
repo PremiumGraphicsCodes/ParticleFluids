@@ -90,6 +90,9 @@
     <ClInclude Include="TimeSeriesParticleSystemReader.h">
       <Filter>FileIO</Filter>
     </ClInclude>
+    <ClInclude Include="PBSPHBoundaryParticle.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">

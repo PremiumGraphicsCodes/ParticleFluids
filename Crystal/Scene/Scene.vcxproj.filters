@@ -154,6 +154,9 @@
     <ClInclude Include="VolumeController.h">
       <Filter>Controller</Filter>
     </ClInclude>
+    <ClInclude Include="PMToWFPresenter.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -269,6 +272,9 @@
       <Filter>Controller</Filter>
     </ClCompile>
     <ClCompile Include="VolumeController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="PMToWFPresenter.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
   </ItemGroup>

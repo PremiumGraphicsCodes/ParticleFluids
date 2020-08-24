@@ -171,6 +171,7 @@
     <ClInclude Include="KFFluidSolver.h" />
     <ClInclude Include="KFMacroParticle.h" />
     <ClInclude Include="KFMicroParticle.h" />
+    <ClInclude Include="PBSPHBoundaryParticle.h" />
     <ClInclude Include="TimeSeriesParticleSystemReader.h" />
     <ClInclude Include="TimeSeriesParticleSystemWriter.h" />
     <ClInclude Include="PBFluidScene.h" />

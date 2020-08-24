@@ -164,6 +164,25 @@ void PBSPHFluidSimulationView::onReset()
 		}
 	}
 
+	for (int i = -2; i < 20; ++i) {
+		for (int j = -2; j < 20; ++j) {
+			for (int k = -2; k < 0; ++k) {
+				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
+				this->boundaryScene->addParticle(mp);
+			}
+		}
+	}
+
+	for (int i = -2; i < 20; ++i) {
+		for (int j = -2; j < 20; ++j) {
+			for (int k = 20; k < 22; ++k) {
+				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
+				this->boundaryScene->addParticle(mp);
+			}
+		}
+	}
+
+
 
 
 	//simulator->setBoundary(boundaryView.getValue());
