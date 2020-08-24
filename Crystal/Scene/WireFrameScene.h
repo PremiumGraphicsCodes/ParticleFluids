@@ -2,7 +2,7 @@
 
 #include "IShapeScene.h"
 #include "WireFrameAttribute.h"
-#include "WireFrameController.h"
+#include "WireFramePresenter.h"
 
 #include "../Math/Line3d.h"
 #include "../Shape/WireFrame.h"
@@ -44,7 +44,7 @@ public:
 private:
 	std::unique_ptr<Shape::WireFrame> shape;
 	WireFrameAttribute attribute;
-	WireFrameController controller;
+	WireFramePresenter controller;
 };
 
 	}

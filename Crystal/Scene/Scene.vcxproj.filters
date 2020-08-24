@@ -112,9 +112,6 @@
     <ClInclude Include="IShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
-    <ClInclude Include="WireFrameController.h">
-      <Filter>Controller</Filter>
-    </ClInclude>
     <ClInclude Include="CameraShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
@@ -155,6 +152,9 @@
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="IPresenter.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFramePresenter.h">
       <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
@@ -235,9 +235,6 @@
     <ClCompile Include="SceneShaderScene.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
-    <ClCompile Include="WireFrameController.cpp">
-      <Filter>Controller</Filter>
-    </ClCompile>
     <ClCompile Include="CameraScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
@@ -275,6 +272,9 @@
       <Filter>Controller</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemPresenter.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFramePresenter.cpp">
       <Filter>Controller</Filter>
     </ClCompile>
   </ItemGroup>

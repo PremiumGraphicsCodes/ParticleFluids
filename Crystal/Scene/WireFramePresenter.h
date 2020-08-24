@@ -9,10 +9,10 @@ namespace Crystal {
 		class WireFrameScene;
 		class LineShaderScene;
 
-class WireFrameController : public IPresenter
+class WireFramePresenter : public IPresenter
 {
 public:
-	explicit WireFrameController(WireFrameScene* model);
+	explicit WireFramePresenter(WireFrameScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 

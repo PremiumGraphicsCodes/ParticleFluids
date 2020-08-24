@@ -1,4 +1,4 @@
-#include "WireFrameController.h"
+#include "WireFramePresenter.h"
 
 #include "WireFrameScene.h"
 #include "LineBuffer.h"
@@ -12,14 +12,14 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-WireFrameController::WireFrameController(WireFrameScene* model) :
+WireFramePresenter::WireFramePresenter(WireFrameScene* model) :
 	model(model),
 	view(nullptr),
 	parentIdView(nullptr)
 {
 }
 
-void WireFrameController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void WireFramePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new LineShaderScene(model->getName());
@@ -37,14 +37,14 @@ void WireFrameController::createView(SceneShader* sceneShader, GLObjectFactory& 
 	updateView();
 }
 
-void WireFrameController::updateView()
+void WireFramePresenter::updateView()
 {
 	updateScreenView();
 	updateParentIdView();
 	updateChildIdView();
 }
 
-void WireFrameController::updateScreenView()
+void WireFramePresenter::updateScreenView()
 {
 	const auto& color = model->getAttribute().color;
 
@@ -64,7 +64,7 @@ void WireFrameController::updateScreenView()
 	this->view->send(buffer);
 }
 
-void WireFrameController::updateParentIdView()
+void WireFramePresenter::updateParentIdView()
 {
 	const auto objectId = model->getId();
 
@@ -87,7 +87,7 @@ void WireFrameController::updateParentIdView()
 	this->parentIdView->send(buffer);
 }
 
-void WireFrameController::updateChildIdView()
+void WireFramePresenter::updateChildIdView()
 {
 
 }
