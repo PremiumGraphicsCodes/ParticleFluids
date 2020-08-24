@@ -9,6 +9,7 @@
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
     <ClCompile Include="BoundaryView.cpp" />
     <ClCompile Include="TimeLinePanel.cpp" />
+    <ClCompile Include="MeshToParticleView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -18,5 +19,6 @@
     <ClInclude Include="PBSPHFluidSimulationView.h" />
     <ClInclude Include="BoundaryView.h" />
     <ClInclude Include="TimeLinePanel.h" />
+    <ClInclude Include="MeshToParticleView.h" />
   </ItemGroup>
 </Project>
