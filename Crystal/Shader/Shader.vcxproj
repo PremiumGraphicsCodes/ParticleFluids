@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BillBoardRenderer.h" />
     <ClInclude Include="CubeMapTextureObject.h" />
     <ClInclude Include="DepthBuffer.h" />
     <ClInclude Include="DepthRenderer.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="VertexBufferObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BillBoardRenderer.cpp" />
     <ClCompile Include="CubeMapTextureObject.cpp" />
     <ClCompile Include="DepthBuffer.cpp" />
     <ClCompile Include="DepthRenderer.cpp" />

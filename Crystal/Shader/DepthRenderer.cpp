@@ -1,6 +1,8 @@
 #include "DepthRenderer.h"
 
-#include "glew.h"
+#include "DepthTextureObject.h"
+
+//#include "glew.h"
 
 #include <sstream>
 

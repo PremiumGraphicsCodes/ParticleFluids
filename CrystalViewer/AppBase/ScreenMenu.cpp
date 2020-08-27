@@ -7,7 +7,7 @@ using namespace Crystal::UI;
 
 void ScreenMenu::onShow()
 {
-	auto model = getWorld();
+	auto world = getWorld();
 	auto canvas = getCanvas();
 
 	//const auto& textures = model->getShaders()->getTextures()->getTextures();
@@ -15,10 +15,13 @@ void ScreenMenu::onShow()
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::MenuItem("OnScreen")) {
-			model->getRenderer()->setRenderTarget(Crystal::Scene::RenderTarget::Shaded);
+			world->getRenderer()->setRenderTarget(Crystal::Scene::RenderTarget::Shaded);
 		}
 		if (ImGui::MenuItem("ParentId")) {
-			model->getRenderer()->setRenderTarget(Crystal::Scene::RenderTarget::ParentId);
+			world->getRenderer()->setRenderTarget(Crystal::Scene::RenderTarget::ParentId);
+		}
+		if (ImGui::MenuItem("ChildId")) {
+			world->getRenderer()->setRenderTarget(Crystal::Scene::RenderTarget::ChildId);
 		}
 		ImGui::EndMenu();
 	}

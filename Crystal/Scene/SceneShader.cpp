@@ -75,6 +75,12 @@ void SceneShader::render(const int width, const int height)
 		renderer.render(*texture);
 		break;
 	}
+	case RenderTarget::ChildId:
+	{
+		auto texture = childIdRenderer->getTextureScene()->getTextureObject();
+		renderer.render(*texture);
+		break;
+	}
 	default:
 		assert(false);
 	}
