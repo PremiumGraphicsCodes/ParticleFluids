@@ -1,5 +1,8 @@
 #include "FrameBufferObject.h"
 
+//#include "glew.h"
+#include "TextureObject.h"
+
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
@@ -49,8 +52,6 @@ void FrameBufferObject::unbind()
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	assert(GL_NO_ERROR == glGetError());
 }
-
-#include <iostream>
 
 Image FrameBufferObject::toImage() const
 {

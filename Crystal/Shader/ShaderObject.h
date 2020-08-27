@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_SHADER_SHADER_OBJECT_H__
-#define __CRYSTAL_SHADER_SHADER_OBJECT_H__
+#pragma once
 
 #include <vector>
 #include <map>
@@ -12,11 +11,6 @@
 
 #include "ShaderUnit.h"
 #include "IGLObject.h"
-
-#include "../Graphics/Buffer1d.h"
-#include "../Graphics/Buffer2d.h"
-#include "../Graphics/Buffer3d.h"
-#include "../Graphics/Buffer4d.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -156,5 +150,3 @@ private:
 
 	}
 }
-
-#endif

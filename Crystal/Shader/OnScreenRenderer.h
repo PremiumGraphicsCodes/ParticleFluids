@@ -1,13 +1,12 @@
 #pragma once
 
-#include "ITextureObject.h"
 #include "ShaderObject.h"
-#include "IShader.h"
-#include "GLObjectFactory.h"
+#include <memory>
 
 namespace Crystal {
 	namespace Shader {
 		class GLObjectFactory;
+		class ITextureObject;
 
 class OnScreenRenderer
 {

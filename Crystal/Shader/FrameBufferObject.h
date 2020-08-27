@@ -1,15 +1,12 @@
-#ifndef __CRYSTAL_SHADER_FRAME_BUFFER_H__
-#define __CRYSTAL_SHADER_FRAME_BUFFER_H__
+#pragma once
 
+#include "glew.h"
 #include "../Graphics/Image.h"
-#include "TextureObject.h"
-#include "DepthTextureObject.h"
 #include "IGLObject.h"
-#include <cassert>
-#include <vector>
 
 namespace Crystal {
 	namespace Shader {
+		class ITextureObject;
 
 class FrameBufferObject : IGLObject
 {
@@ -47,7 +44,6 @@ private:
 	int width;
 	int height;
 };
+
 	}
 }
-
-#endif

@@ -5,6 +5,7 @@
 
 #include "GLObjectFactory.h"
 #include "ShaderObjectFactory.h"
+#include "ITextureObject.h"
 
 #include <sstream>
 

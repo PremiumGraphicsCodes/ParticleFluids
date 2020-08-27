@@ -3,6 +3,9 @@
 #include "../Math/Vector2d.h"
 #include "../Math/Box2d.h"
 
+#include "GLObjectFactory.h"
+#include "TextureObject.h"
+
 #include <sstream>
 
 using namespace Crystal::Math;
