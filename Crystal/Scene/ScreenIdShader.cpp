@@ -24,7 +24,7 @@ bool ScreenIdShader::build(GLObjectFactory& factory)
 	if (!lineIdRenderer.build(factory)) {
 		return false;
 	}
-	if (!triangleIdRenderer.build()) {
+	if (!triangleIdRenderer.build(factory)) {
 		return false;
 	}
 
@@ -74,6 +74,10 @@ void ScreenIdShader::render()
 	const auto& lbs = buffer.getLineScenes();
 	for (auto lb : lbs) {
 		lb->render();
+	}
+	const auto& tbs = buffer.getTriangleScenes();
+	for (auto tb : tbs) {
+		tb->render();
 	}
 	/*
 	for (const auto& b : lineBuffers) {

@@ -14,11 +14,12 @@ namespace {
 	constexpr char* modelViewMatrixLabel = "modelviewMatrix";
 }
 
-TriangleShader::TriangleShader(const std::string& name)
+TriangleShader::TriangleShader(const std::string& name) :
+	IShaderScene(name)
 {
 }
 
-bool TriangleShader::build()
+bool TriangleShader::build(GLObjectFactory& factory)
 {
 	const auto& vsSource = getBuildInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
@@ -33,6 +34,12 @@ bool TriangleShader::build()
 
 	return isOk;
 }
+
+void TriangleShader::release(GLObjectFactory& glFactory)
+{
+
+}
+
 
 void TriangleShader::render()
 {

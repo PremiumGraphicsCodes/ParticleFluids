@@ -6,13 +6,14 @@
 namespace Crystal {
 	namespace Scene {
 
-class TriangleShader
+class TriangleShader : public IShaderScene
 {
 public:
+	explicit TriangleShader(const std::string& name);
 
-	TriangleShader(const std::string& name);
+	bool build(Shader::GLObjectFactory& glFactory);
 
-	bool build();
+	void release(Shader::GLObjectFactory& glFactory);
 
 	void setScene(TriangleShaderScene* scene) { this->scene = scene; }
 

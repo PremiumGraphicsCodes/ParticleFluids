@@ -19,11 +19,13 @@ ScreenShader::ScreenShader(const std::string& name) :
 	pointRenderer(new PointShader("PointRenderer")),
 	wireRenderer(new LineShader("LineRenderer")),
 	smoothRenderer(new SmoothShader("SmoothRenderer")),
+	triagleRenderer(new TriangleShader("TriangleRenderer")),
 	buffer("ScreenBuffer")
 {
 	addChild(pointRenderer);
 	addChild(wireRenderer);
 	addChild(smoothRenderer);
+	addChild(triagleRenderer);
 
 	texture = new TextureShaderScene("ScreenTex");// = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
 	addChild(texture);
@@ -38,6 +40,9 @@ bool ScreenShader::build(GLObjectFactory& factory)
 		return false;
 	}
 	if (!smoothRenderer->build(factory)) {
+		return false;
+	}
+	if (!triagleRenderer->build(factory)) {
 		return false;
 	}
 

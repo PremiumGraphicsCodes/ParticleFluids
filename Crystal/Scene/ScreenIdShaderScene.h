@@ -32,6 +32,8 @@ public:
 
 	std::vector<LineShaderScene*> getLineScenes() const { return lineScenes; }
 
+	std::vector<TriangleShaderScene*> getTriangleScenes() const { return triangleIdBuffers; }
+
 	void setCamera(CameraShaderScene* camera);
 
 private:

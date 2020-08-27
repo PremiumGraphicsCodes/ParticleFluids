@@ -62,7 +62,7 @@ public:
 
 	LineShader* getWireShader() { return wireRenderer; }
 
-	TriangleShader* getTriangleShader() { return triagleShader; }
+	TriangleShader* getTriangleShader() { return triagleRenderer; }
 
 	SmoothShader* getSmoothShader() { return smoothRenderer; }
 
@@ -71,7 +71,7 @@ public:
 private:
 	PointShader* pointRenderer;
 	LineShader* wireRenderer;
-	TriangleShader* triagleShader;
+	TriangleShader* triagleRenderer;
 	SmoothShader* smoothRenderer;
 
 	Mask mask;
