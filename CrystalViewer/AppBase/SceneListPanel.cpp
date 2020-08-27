@@ -50,7 +50,7 @@ void SceneListPanel::show(IScene* scene)
 	else {
 		auto obj = scene->findSceneById(id);
 		if (ImGui::Checkbox(str, &obj->_isVisible)) {
-//			model->updateViewModel();
+			obj->getPresenter()->updateView();
 			switch (type) {
 				case SceneType::ParticleSystemScene:
 				{

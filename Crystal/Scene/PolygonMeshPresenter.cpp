@@ -44,6 +44,10 @@ void PolygonMeshPresenter::updateView()
 
 void PolygonMeshPresenter::updateScreenView()
 {
+	if (!model->isVisible()) {
+		this->view->send(SmoothBuffer());
+		return;
+	}
 	const auto& shape = model->getShape();
 	const auto& vs = shape->getVertices();
 	const auto& ps = shape->getPositions();
