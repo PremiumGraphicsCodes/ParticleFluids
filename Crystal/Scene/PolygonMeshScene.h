@@ -19,7 +19,7 @@ public:
 
 	PolygonMeshScene(const int id, const std::string& name, std::unique_ptr<Shape::PolygonMesh> shape);
 
-	~PolygonMeshScene() {};
+	~PolygonMeshScene();
 
 	Shape::PolygonMesh* getShape() const { return shape.get(); }
 
@@ -37,9 +37,11 @@ public:
 
 	void addGroup(FaceGroupScene* group) {
 		groups.push_back(group);
-		addScene(group);
+		//addScene(group);
 //		children.push_back(group);
 	}
+
+	std::vector<FaceGroupScene*> getGroups() { return groups; }
 
 	IShapeScene* clone() const override;
 

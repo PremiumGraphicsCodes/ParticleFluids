@@ -22,6 +22,14 @@ PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::u
 	controller(this)
 {}
 
+PolygonMeshScene::~PolygonMeshScene()
+{
+	for (auto g : groups) {
+		delete g;
+	}
+}
+
+
 Box3d PolygonMeshScene::getBoundingBox() const
 {
 	return getShape()->getBoundingBox();

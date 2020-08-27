@@ -54,9 +54,9 @@ void PolygonMeshPresenter::updateScreenView()
 	SmoothBuffer buffer;
 	buffer.setMatrix(matrix);
 
-	for (auto child : model->getChildren()) {
+	auto groups = model->getGroups();
+	for (auto scene : groups) {
 		int materialId = 0;
-		auto scene = static_cast<FaceGroupScene*>(child);
 		/*
 		if (scene->getMaterial() != nullptr) {
 			materialId = scene->getMaterial()->getMaterialId();
