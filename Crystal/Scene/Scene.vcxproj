@@ -54,6 +54,7 @@
     <ClInclude Include="TexturePresenter.h" />
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TextureShaderScene.h" />
+    <ClInclude Include="TriangleBuffer.h" />
     <ClInclude Include="TriangleMeshScene.h" />
     <ClInclude Include="TriangleShaderScene.h" />
     <ClInclude Include="VolumePresenter.h" />

@@ -29,7 +29,7 @@ void PolygonMeshPresenter::createView(SceneShader* sceneShader, GLObjectFactory&
 		this->parentIdView = new TriangleShaderScene(model->getName());
 		this->parentIdView->setShader(sceneShader->getObjectRenderer()->getTriangleShader());
 		this->parentIdView->build(glFactory);
-		//sceneShader->getScene()->parentId.add(this->parentIdView);
+		sceneShader->getScene()->parentId.add(this->parentIdView);
 	}
 
 	updateView();

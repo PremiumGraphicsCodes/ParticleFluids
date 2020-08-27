@@ -2,6 +2,8 @@
 
 #include "PointShader.h"
 #include "LineShader.h"
+#include "TriangleBuffer.h"
+#include "TriangleShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -24,7 +26,7 @@ public:
 
 	void add(LineShaderScene* scene);
 
-	void add(PolygonMeshScene* scene);
+	void add(TriangleShaderScene* scene);
 
 	std::vector<PointShaderScene*> getPointScenes() const { return pointScenes; }
 
@@ -35,7 +37,7 @@ public:
 private:
 	std::vector<PointShaderScene*> pointScenes;
 	std::vector<LineShaderScene*> lineScenes;
-	std::vector<LineBuffer> triangleIdBuffers;
+	std::vector<TriangleShaderScene*> triangleIdBuffers;
 	CameraShaderScene* camera;
 };
 

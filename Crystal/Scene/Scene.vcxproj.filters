@@ -160,6 +160,9 @@
     <ClInclude Include="TriangleShaderScene.h">
       <Filter>SceneShader\Triangle</Filter>
     </ClInclude>
+    <ClInclude Include="TriangleBuffer.h">
+      <Filter>SceneShader\Triangle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">

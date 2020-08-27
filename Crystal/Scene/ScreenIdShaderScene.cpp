@@ -56,8 +56,12 @@ void ScreenIdShaderScene::add(WireFrameScene* scene)
 }
 */
 
-void ScreenIdShaderScene::add(PolygonMeshScene* scene)
+void ScreenIdShaderScene::add(TriangleShaderScene* scene)
 {
+	scene->setCamera(camera);
+	this->triangleIdBuffers.push_back(scene);
+	addChild(scene);
+	/*
 	const auto objectId = scene->getId();
 	const auto& vertices = scene->getShape()->getVertices();
 	const auto& positions = scene->getShape()->getPositions();
@@ -81,7 +85,7 @@ void ScreenIdShaderScene::add(PolygonMeshScene* scene)
 		buffer.addIndex(index++);
 	}
 	//parentIdViewModel.triangleIdBuffers.push_back(buffer);
-
+	*/
 }
 
 void ScreenIdShaderScene::setCamera(CameraShaderScene* camera)

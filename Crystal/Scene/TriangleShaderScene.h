@@ -11,7 +11,7 @@ namespace Crystal {
 		class TriangleShader;
 		class CameraShaderScene;
 
-class TriangleShaderScene : IShaderScene
+class TriangleShaderScene : public IShaderScene
 {
 public:
 	struct VBO {
