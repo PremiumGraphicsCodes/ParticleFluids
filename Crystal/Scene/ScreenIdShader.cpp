@@ -11,6 +11,8 @@ ScreenIdShader::ScreenIdShader(const std::string& name) :
 	IShaderScene(name),
 	lineBuffer("LineIdBuffer"),
 	lineIdRenderer("LineIdRenderer"),
+	triangleBuffer("TriangleIdBuffer"),
+	triangleIdRenderer("TriangleIdRenderer"),
 	buffer("ScreenIdBuffer")
 {
 	texture = new TextureShaderScene("IdTexture");
@@ -27,7 +29,7 @@ bool ScreenIdShader::build(GLObjectFactory& factory)
 	}
 
 	lineBuffer.build(factory);
-	triangleBuffer.build();
+	triangleBuffer.build(factory);
 
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 

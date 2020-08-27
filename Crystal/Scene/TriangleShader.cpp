@@ -3,7 +3,7 @@
 #include <sstream>
 
 #include "../Shader/VertexBufferObject.h"
-
+#include "CameraShaderScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
@@ -14,7 +14,7 @@ namespace {
 	constexpr char* modelViewMatrixLabel = "modelviewMatrix";
 }
 
-TriangleShader::TriangleShader()
+TriangleShader::TriangleShader(const std::string& name)
 {
 }
 
@@ -34,10 +34,10 @@ bool TriangleShader::build()
 	return isOk;
 }
 
-void TriangleShader::render(const Camera& camera)
+void TriangleShader::render()
 {
-	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix();
+	const auto& projectionMatrix = scene->getCamera()->getProjectionMatrix();
+	const auto& modelviewMatrix = scene->getCamera()->getModelViewMatrix();
 
 	shader.bind();
 	shader.bindOutput("fragColor");
@@ -47,13 +47,13 @@ void TriangleShader::render(const Camera& camera)
 	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
 	shader.sendUniform(::modelViewMatrixLabel, modelviewMatrix);
 
-	shader.sendVertexAttribute3df("position", glBuffer.vbo.position);
-	shader.sendVertexAttribute4df("color", glBuffer.vbo.color);
+	shader.sendVertexAttribute3df("position", scene->vbo.position);
+	shader.sendVertexAttribute4df("color", scene->vbo.color);
 
 	shader.enableVertexAttribute("position");
 	shader.enableVertexAttribute("color");
 
-	shader.drawTriangles(glBuffer.indices);
+	shader.drawTriangles(scene->indices);
 
 	shader.disableVertexAttribute("color");
 	shader.disableVertexAttribute("position");

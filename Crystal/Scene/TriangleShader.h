@@ -10,21 +10,21 @@ class TriangleShader
 {
 public:
 
-	TriangleShader();
+	TriangleShader(const std::string& name);
 
 	bool build();
 
-	void setBuffer(const TriangleShaderScene& glBuffer) { this->glBuffer = glBuffer; }
+	void setScene(TriangleShaderScene* scene) { this->scene = scene; }
 
-	void render(const Graphics::Camera& camera);
+	void render();
 
 private:
 	std::string getBuildInVertexShaderSource() const;
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	TriangleShaderScene glBuffer;
 	Shader::ShaderObject shader;
+	TriangleShaderScene* scene;
 };
 
 	}
