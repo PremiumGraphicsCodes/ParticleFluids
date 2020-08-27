@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IShaderScene.h"
-#include "LineBuffer.h"
+#include "TriangleBuffer.h"
 #include "../Shader/VertexBufferObject.h"
 
 #include <string>
@@ -29,7 +29,7 @@ public:
 
 	void release(Shader::GLObjectFactory& glFactory) override;
 
-	void send(const LineBuffer& buffer);
+	void send(const TriangleBuffer& buffer);
 
 	void setShader(TriangleShader* shader);
 

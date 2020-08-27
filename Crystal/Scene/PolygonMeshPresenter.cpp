@@ -91,40 +91,29 @@ void PolygonMeshPresenter::updateScreenView()
 
 void PolygonMeshPresenter::updateParentIdView()
 {
-	LineBuffer parentIdBuffer;
-	parentIdBuffer.setMatrix(model->getMatrix());
-
-	const auto& vs = model->getShape()->getVertices();
-	const auto& ps = model->getShape()->getPositions();
-
 	const auto objectId = model->getId();
+	const auto& vertices = model->getShape()->getVertices();
+	const auto& positions = model->getShape()->getPositions();
+	const auto& faces = model->getShape()->getFaces();
+	int childId = 0;
+	int index = 0;
 
-	for (auto child : model->getChildren()) {
-		auto scene = static_cast<FaceGroupScene*>(child);
+	TriangleBuffer buffer;
+	//buffer.setMatrix(scene->getMatrix());
+	for (auto f : faces) {
+		Graphics::DrawableID parentDid(objectId);
+		Graphics::DrawableID childDid(childId++);
+		const auto& idColor = parentDid.toColor();
+		const auto& vIds = f.getVertexIds();
 
-		auto faces = scene->getFaces();
-		for (const auto& f : faces) {
-			const auto& vIds = f.getVertexIds();
-			for (const auto vId : vIds) {
-				const auto& v = vs[vId];
-				const auto& p = ps[v.positionId];
-				DrawableID parentDid(objectId);
-				//parentIdBuffer.add(p, n, texCoord, materialId);
-			}
-		}
-
-		/*
-		const auto objectId = model->getId();
-		const auto& particles = model->getShape()->getParticles();
-		int particleId = 0;
-		for (auto p : particles) {
-			DrawableID parentDid(objectId);
-			parentIdBuffer.add(p->getPosition(), parentDid.toColor(), p->getAttribute().size);
-		}
-		*/
+		buffer.addVertex(positions[vertices[vIds[0]].positionId], idColor);
+		buffer.addVertex(positions[vertices[vIds[1]].positionId], idColor);
+		buffer.addVertex(positions[vertices[vIds[2]].positionId], idColor);
+		buffer.addIndex(index++);
+		buffer.addIndex(index++);
+		buffer.addIndex(index++);
 	}
-	//parentIdView->send(parentIdBuffer);
-
+	parentIdView->send(buffer);
 }
 
 void PolygonMeshPresenter::updateChildIdView()

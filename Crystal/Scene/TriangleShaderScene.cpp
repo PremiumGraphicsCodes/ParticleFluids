@@ -18,7 +18,7 @@ void TriangleShaderScene::release(GLObjectFactory& glFactory)
 	vbo.color.release();
 }
 
-void TriangleShaderScene::send(const LineBuffer& buffer)
+void TriangleShaderScene::send(const TriangleBuffer& buffer)
 {
 	vbo.position.send(buffer.getPositions().get());
 	vbo.color.send(buffer.getColors().get());
