@@ -7,8 +7,10 @@ ParticleSystemEditView::ParticleSystemEditView(const std::string& name, World* w
 	IEditCancelView(name, world, canvas),
 	particleSystemView("ParticleSystem"),
 	idView("Id"),
-	attributeView("Attribute")
+	attributeView("Attribute"),
+	presenterView("Presenter")
 {
+	add(&presenterView);
 }
 
 void ParticleSystemEditView::setValue(ParticleSystemScene* value)

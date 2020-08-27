@@ -281,6 +281,7 @@
     <ClCompile Include="DirectoryView.cpp">
       <Filter>File\Directory</Filter>
     </ClCompile>
+    <ClCompile Include="ComboBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -614,6 +615,7 @@
     <ClInclude Include="DirectoryView.h">
       <Filter>File\Directory</Filter>
     </ClInclude>
+    <ClInclude Include="ComboBox.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">

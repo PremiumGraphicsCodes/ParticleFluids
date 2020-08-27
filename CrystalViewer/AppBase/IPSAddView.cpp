@@ -14,11 +14,13 @@ using namespace Crystal::Command;
 
 IPSAddView::IPSAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	matrixView("Matrix", Math::Identity()),
-	attributeView("PSAttribute")
+	//matrixView("Matrix", Math::Identity()),
+	attributeView("PSAttribute"),
+	presenterView("Presenter")
 {
-	add(&matrixView);
+	//add(&matrixView);
 	add(&attributeView);
+	add(&presenterView);
 }
 
 void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
@@ -29,7 +31,7 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 	command.setArg(ParticleSystemCreateLabels::PointSizeLabel, attributeView.getValue().size);
 	command.setArg(ParticleSystemCreateLabels::ColorLabel, attributeView.getValue().color);
 	command.setArg(ParticleSystemCreateLabels::NameLabel, attributeView.getName());
-	command.setArg(ParticleSystemCreateLabels::MatrixLabel, matrixView.getValue());
+//	command.setArg(ParticleSystemCreateLabels::MatrixLabel, matrixView.getValue());
 	command.execute(getWorld());
 	auto newId = std::any_cast<int>( command.getResult(ParticleSystemCreateLabels::NewIdLabel) );
 

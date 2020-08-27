@@ -27,6 +27,7 @@
     <ClCompile Include="CameraUICtrl.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Circle3dView.cpp" />
+    <ClCompile Include="ComboBox.cpp" />
     <ClCompile Include="Cone3dView.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="CtrlMenu.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="CameraUICtrl.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Circle3dView.h" />
+    <ClInclude Include="ComboBox.h" />
     <ClInclude Include="DeleteView.h" />
     <ClInclude Include="DirectoryView.h" />
     <ClInclude Include="Double4View.h" />
