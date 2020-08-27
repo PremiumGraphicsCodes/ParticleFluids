@@ -21,6 +21,13 @@ namespace Crystal {
 	}
 	namespace Scene {
 
+enum RenderTarget
+{
+	Shaded,
+	ParentId,
+	ChildId,
+};
+
 class SceneShader : public IShaderScene
 {
 public:
@@ -42,7 +49,7 @@ public:
 
 	ScreenIdShader* getChildIdRenderer() { return childIdRenderer; }
 
-	void setShowOffScreen(const bool b) { this->showOffScreen = b; }
+	void setRenderTarget(const RenderTarget target) { this->target = target; }
 
 	SceneShaderScene* getScene() { return &scene; }
 
@@ -54,6 +61,8 @@ private:
 	ScreenIdShader* childIdRenderer;
 
 	SceneShaderScene scene;
+
+	RenderTarget target;
 
 	bool showOffScreen;
 };

@@ -15,7 +15,8 @@ SceneShader::SceneShader() :
 	scene("Scene"),
 	objectRenderer(new ScreenShader("ObjectRenderer")),
 	parentIdRenderer(new ScreenIdShader("ParentIdRenderer")),
-	childIdRenderer(new ScreenIdShader("ChildIdRenderer"))
+	childIdRenderer(new ScreenIdShader("ChildIdRenderer")),
+	target(RenderTarget::Shaded)
 {
 	//addChild(&renderer);
 	addChild(objectRenderer);
@@ -61,12 +62,20 @@ void SceneShader::render(const int width, const int height)
 	//glClearColor(0.0, 0.0, 1.0, 0.0);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	if (showOffScreen) {
-		auto texture = parentIdRenderer->getTextureScene()->getTextureObject();
-		renderer.render(*texture);
-	}
-	else {
+	switch (target) {
+	case RenderTarget::Shaded:
+	{
 		auto texture = objectRenderer->getTextureScene()->getTextureObject();
 		renderer.render(*texture);
+		break;
+	}
+	case RenderTarget::ParentId:
+	{
+		auto texture = parentIdRenderer->getTextureScene()->getTextureObject();
+		renderer.render(*texture);
+		break;
+	}
+	default:
+		assert(false);
 	}
 }
