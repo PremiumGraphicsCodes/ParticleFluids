@@ -156,6 +156,7 @@
     <ClInclude Include="ShaderType.h" />
     <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="ShaderUnit.h" />
+    <ClInclude Include="SmoothRenderer.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="TextureObjectFactory.h" />
     <ClInclude Include="TriangleRenderer.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="ShaderType.cpp" />
     <ClCompile Include="ShaderUniform.cpp" />
     <ClCompile Include="ShaderUnit.cpp" />
+    <ClCompile Include="SmoothRenderer.cpp" />
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="TextureObjectFactory.cpp" />
     <ClCompile Include="TriangleRenderer.cpp" />
