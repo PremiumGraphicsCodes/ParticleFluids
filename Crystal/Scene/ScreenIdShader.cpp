@@ -17,7 +17,6 @@ ScreenIdShader::ScreenIdShader(const std::string& name) :
 	buffer("ScreenIdBuffer")
 {
 	texture = new TextureShaderScene("IdTexture");
-	addChild(texture);
 }
 
 bool ScreenIdShader::build(GLObjectFactory& factory)

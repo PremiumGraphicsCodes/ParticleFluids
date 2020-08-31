@@ -14,9 +14,14 @@ ScreenShaderScene::ScreenShaderScene(const std::string& name) :
 
 bool ScreenShaderScene::build(GLObjectFactory& glFactory)
 {
-	const auto& children = getChildren();
-	for (auto c : children) {
-		c->build(glFactory);
+	for (auto p : pointBuffers) {
+		p->build(glFactory);
+	}
+	for (auto l : lineBuffers) {
+		l->build(glFactory);
+	}
+	for (auto t : pmScenes) {
+		t->build(glFactory);
 	}
 
 	return true;
@@ -24,11 +29,6 @@ bool ScreenShaderScene::build(GLObjectFactory& glFactory)
 
 void ScreenShaderScene::release(GLObjectFactory& glFactory)
 {
-	const auto& children = getChildren();
-	for (auto c : children) {
-		c->release(glFactory);
-	}
-
 	for (auto& lb : lineBuffers) {
 		lb->release(glFactory);
 	}
@@ -45,9 +45,14 @@ void ScreenShaderScene::release(GLObjectFactory& glFactory)
 
 void ScreenShaderScene::render()
 {
-	const auto& children = getChildren();
-	for (auto c : children) {
-		c->render();
+	for (auto p : pointBuffers) {
+		p->render();
+	}
+	for (auto l : lineBuffers) {
+		l->render();
+	}
+	for (auto t : pmScenes) {
+		t->render();
 	}
 }
 
@@ -55,36 +60,29 @@ void ScreenShaderScene::add(PointShaderScene* point)
 {
 	point->setCamera(camera);
 	this->pointBuffers.push_back(point);
-	addChild(point);
 }
 
 void ScreenShaderScene::add(LineShaderScene* line)
 {
 	line->setCamera(camera);
 	this->lineBuffers.push_back(line);
-	addChild(line);
 }
 
 void ScreenShaderScene::add(SmoothShaderScene* smooth)
 {
 	smooth->setCamera(camera);
 	this->pmScenes.push_back(smooth);
-	addChild(smooth);
 }
 
 void ScreenShaderScene::add(LightShaderScene* light)
 {
-	//this->lineBuffers.push_back(light);
-	addChild(light);
 }
 
 void ScreenShaderScene::add(MaterialShaderScene* material)
 {
-	addChild(material);
 }
 
 void ScreenShaderScene::add(TextureShaderScene* texture)
 {
 	this->textureScenes.push_back(texture);
-	addChild(texture);
 }

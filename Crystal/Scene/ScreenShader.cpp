@@ -22,9 +22,7 @@ ScreenShader::ScreenShader(const std::string& name) :
 	triagleRenderer(new TriangleRenderer()),
 	buffer("ScreenBuffer")
 {
-	addChild(smoothRenderer);
 	texture = new TextureShaderScene("ScreenTex");// = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
-	addChild(texture);
 }
 
 bool ScreenShader::build(GLObjectFactory& factory)
@@ -68,12 +66,6 @@ void ScreenShader::render()
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	const auto& children = buffer.getChildren();
-	/*
-	for (auto buffer : children) {
-		buffer->render();
-	}
-	*/
 	if (mask.showPoints) {
 		const auto& pointBuffers = buffer.getPointBuffers();
 		for (auto pb : pointBuffers) {

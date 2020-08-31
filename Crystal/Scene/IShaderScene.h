@@ -24,16 +24,10 @@ public:
 
 	virtual void render() = 0;
 
-	void addChild(IShaderScene* child) { children.push_back(child); }
-
-	std::list<IShaderScene*> getChildren() const { return children; }
-
 	std::string getName() const { return name; }
 
 private:
 	std::string name;
-	std::list<IShaderScene*> children;
-
 };
 
 	}

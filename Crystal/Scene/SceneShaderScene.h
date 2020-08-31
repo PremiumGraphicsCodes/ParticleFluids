@@ -11,7 +11,7 @@ class SceneShaderScene : public IShaderScene
 public:
 	explicit SceneShaderScene(const std::string& name);
 
-	bool build(Shader::GLObjectFactory& glFactory) { return true; }
+	bool build(Shader::GLObjectFactory& glFactory) override;
 
 	void release(Shader::GLObjectFactory& glFactory) {}
 

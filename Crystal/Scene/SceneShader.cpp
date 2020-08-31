@@ -18,11 +18,6 @@ SceneShader::SceneShader() :
 	childIdRenderer(new ScreenIdShader("ChildIdRenderer")),
 	target(RenderTarget::Shaded)
 {
-	//addChild(&renderer);
-	addChild(objectRenderer);
-	addChild(&scene);
-	addChild(parentIdRenderer);
-	addChild(childIdRenderer);
 }
 
 bool SceneShader::build(GLObjectFactory& factory)

@@ -9,9 +9,6 @@ SceneShaderScene::SceneShaderScene(const std::string& name) :
 	parentId("ParentIdScene"),
 	childId("ChildIdScene")
 {
-	addChild(&screen);
-	addChild(&parentId);
-	addChild(&childId);
 }
 
 void SceneShaderScene::setCamera(CameraShaderScene* camera)
@@ -20,4 +17,12 @@ void SceneShaderScene::setCamera(CameraShaderScene* camera)
 	parentId.setCamera(camera);
 	childId.setCamera(camera);
 	//addChild(camera);
+}
+
+bool SceneShaderScene::build(GLObjectFactory& glFactory)
+{
+	screen.build(glFactory);
+	parentId.build(glFactory);
+	childId.build(glFactory);
+	return true;
 }
