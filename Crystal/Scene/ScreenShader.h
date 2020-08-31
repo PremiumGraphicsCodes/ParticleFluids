@@ -2,7 +2,7 @@
 
 #include "IShaderScene.h"
 
-#include "../Scene/PointShader.h"
+#include "../Shader/PointRenderer.h"
 #include "../Scene/LineShader.h"
 #include "../Scene/TriangleShader.h"
 #include "../Scene/SmoothShader.h"
@@ -58,7 +58,7 @@ public:
 
 	//Shader::TextureObject getTexture() { return texture; }
 
-	PointShader* getPointShader() { return pointRenderer; }
+	Shader::PointRenderer* getPointShader() { return pointRenderer; }
 
 	LineShader* getWireShader() { return wireRenderer; }
 
@@ -69,7 +69,7 @@ public:
 	TextureShaderScene* getTextureScene() { return texture; }
 
 private:
-	PointShader* pointRenderer;
+	Shader::PointRenderer* pointRenderer;
 	LineShader* wireRenderer;
 	TriangleShader* triagleRenderer;
 	SmoothShader* smoothRenderer;

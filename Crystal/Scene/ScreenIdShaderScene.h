@@ -1,6 +1,5 @@
 #pragma once
 
-#include "PointShader.h"
 #include "LineShader.h"
 #include "TriangleBuffer.h"
 #include "TriangleShaderScene.h"

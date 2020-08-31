@@ -18,7 +18,7 @@ public:
 		Shader::VertexBufferObject color;
 		Math::Matrix4dd projectionMatrix;
 		Math::Matrix4dd modelViewMatrix;
-		const int count;
+		int count;
 	};
 
 	PointRenderer();

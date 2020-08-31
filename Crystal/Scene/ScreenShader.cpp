@@ -16,13 +16,12 @@ using namespace Crystal::Scene;
 
 ScreenShader::ScreenShader(const std::string& name) :
 	IShaderScene(name),
-	pointRenderer(new PointShader("PointRenderer")),
+	pointRenderer(new PointRenderer()),
 	wireRenderer(new LineShader("LineRenderer")),
 	smoothRenderer(new SmoothShader("SmoothRenderer")),
 	triagleRenderer(new TriangleShader("TriangleRenderer")),
 	buffer("ScreenBuffer")
 {
-	addChild(pointRenderer);
 	addChild(wireRenderer);
 	addChild(smoothRenderer);
 	addChild(triagleRenderer);

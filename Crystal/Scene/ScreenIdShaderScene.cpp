@@ -4,6 +4,8 @@
 #include "WireFrameScene.h"
 #include "PolygonMeshScene.h"
 
+#include "PointShaderScene.h"
+
 #include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Scene;

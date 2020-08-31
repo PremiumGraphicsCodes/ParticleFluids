@@ -1,6 +1,6 @@
 #include "PointShaderScene.h"
 
-#include "PointShader.h"
+#include "../Shader/PointRenderer.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
@@ -14,9 +14,9 @@ PointShaderScene::PointShaderScene(const std::string& name) :
 
 bool PointShaderScene::build(GLObjectFactory& glFactory)
 {
-	vbo.position.build();
-	vbo.size.build();
-	vbo.color.build();
+	rBuffer.position.build();
+	rBuffer.size.build();
+	rBuffer.color.build();
 
 	//vao.build();
 	return true;
@@ -24,9 +24,9 @@ bool PointShaderScene::build(GLObjectFactory& glFactory)
 
 void PointShaderScene::release(GLObjectFactory& glFactory)
 {
-	vbo.position.release();
-	vbo.size.release();
-	vbo.color.release();
+	rBuffer.position.release();
+	rBuffer.size.release();
+	rBuffer.color.release();
 
 	//vao.release();
 }
@@ -42,22 +42,23 @@ void PointShaderScene::send(const PointBuffer& buffer)
 	}
 
 	//vao.bind();
-	vbo.position.send(positions);
-	vbo.size.send(sizes);
-	vbo.color.send(colors);
+	rBuffer.position.send(positions);
+	rBuffer.size.send(sizes);
+	rBuffer.color.send(colors);
 	//vao.unbind();
 
-	count = positions.size() / 3;
-	matrix = buffer.getMatrix();
+	rBuffer.count = positions.size() / 3;
+//	rBuffer.matrix = buffer.getMatrix();
 }
 
 void PointShaderScene::render()
 {
-	shader->send(*this);
-	shader->render();
+	rBuffer.modelViewMatrix = camera->getModelViewMatrix();
+	rBuffer.projectionMatrix = camera->getProjectionMatrix();
+	shader->render(rBuffer);
 }
 
-void PointShaderScene::setShader(PointShader* shader)
+void PointShaderScene::setShader(PointRenderer* shader)
 {
 	this->shader = shader;
 }

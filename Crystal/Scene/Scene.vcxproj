@@ -47,7 +47,6 @@
     <ClInclude Include="ScreenIdShader.h" />
     <ClInclude Include="ScreenShaderScene.h" />
     <ClInclude Include="ScreenShader.h" />
-    <ClInclude Include="PointShader.h" />
     <ClInclude Include="SceneShaderScene.h" />
     <ClInclude Include="SceneShader.h" />
     <ClInclude Include="SmoothShaderScene.h" />
@@ -102,7 +101,6 @@
     <ClCompile Include="ScreenShaderScene.cpp" />
     <ClCompile Include="ScreenShader.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />
-    <ClCompile Include="PointShader.cpp" />
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="SceneShader.cpp" />
     <ClCompile Include="SmoothShaderScene.cpp" />

@@ -3,6 +3,8 @@
 
 #include "../Shader/GLObjectFactory.h"
 
+#include "PointShaderScene.h"
+
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
@@ -68,7 +70,6 @@ void ScreenIdShader::render()
 
 	const auto& pbs = buffer.getPointScenes();
 	for (auto pb : pbs) {
-		//pb->setCamera(&cameraScene);
 		pb->render();
 	}
 	const auto& lbs = buffer.getLineScenes();

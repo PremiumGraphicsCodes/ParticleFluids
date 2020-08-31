@@ -64,9 +64,6 @@
     <ClInclude Include="TextureScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="PointShader.h">
-      <Filter>SceneShader\Point</Filter>
-    </ClInclude>
     <ClInclude Include="SmoothShader.h">
       <Filter>SceneShader\Smooth</Filter>
     </ClInclude>
@@ -201,9 +198,6 @@
     </ClCompile>
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
-    </ClCompile>
-    <ClCompile Include="PointShader.cpp">
-      <Filter>SceneShader\Point</Filter>
     </ClCompile>
     <ClCompile Include="SmoothShader.cpp">
       <Filter>SceneShader\Smooth</Filter>

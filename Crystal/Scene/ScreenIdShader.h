@@ -5,7 +5,7 @@
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
 
-#include "../Scene/PointShader.h"
+//#include "../Scene/PointShader.h"
 #include "../Scene/LineShader.h"
 #include "../Scene/TriangleShader.h"
 

@@ -19,6 +19,10 @@ namespace {
 	constexpr char* fragColorLabel = "fragColor";
 }
 
+PointRenderer::PointRenderer()
+{
+}
+
 bool PointRenderer::build(GLObjectFactory& factory)
 {
 	const auto& vsSource = getBuiltInVertexShaderSource();

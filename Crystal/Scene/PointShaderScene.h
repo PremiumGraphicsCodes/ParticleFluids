@@ -5,15 +5,19 @@
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/VertexArrayObject.h"
 #include "../Graphics/Camera.h"
+#include "../Shader/PointRenderer.h"
 #include "CameraShaderScene.h"
 
 namespace Crystal {
+	namespace Shader {
+		class PointRenderer;
+	}
 	namespace Scene {
-		class PointShader;
 
 class PointShaderScene : public IShaderScene
 {
 public:
+	/*
 	struct VBO
 	{
 		Shader::VertexBufferObject position;
@@ -25,6 +29,7 @@ public:
 	VBO vbo;
 	GLuint count;
 	Math::Matrix4df matrix;
+	*/
 
 	explicit PointShaderScene(const std::string& name);
 
@@ -36,14 +41,15 @@ public:
 
 	void send(const PointBuffer& buffer);
 
-	void setShader(PointShader* shader);
+	void setShader(Shader::PointRenderer* shader);
 
 	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
 
 	CameraShaderScene* getCamera() const { return camera; }
 
 private:
-	PointShader* shader;
+	Shader::PointRenderer* shader;
+	Shader::PointRenderer::Buffer rBuffer;
 	CameraShaderScene* camera;
 };
 
