@@ -39,7 +39,6 @@
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LineBuffer.h" />
     <ClInclude Include="LineShaderScene.h" />
-    <ClInclude Include="LineShader.h" />
     <ClInclude Include="PMToWFPresenter.h" />
     <ClInclude Include="PointBuffer.h" />
     <ClInclude Include="PointShaderScene.h" />
@@ -87,7 +86,6 @@
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="LightShaderScene.cpp" />
     <ClCompile Include="LineShaderScene.cpp" />
-    <ClCompile Include="LineShader.cpp" />
     <ClCompile Include="MaterialPresenter.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="MaterialShaderScene.cpp" />

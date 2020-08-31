@@ -1,20 +1,17 @@
 
 #include "LineShaderScene.h"
 
-#include "LineShader.h"
-
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 LineShaderScene::LineShaderScene(const std::string& name) :
-	IShaderScene(name),
-	shader(nullptr)
+	IShaderScene(name)
 {}
 
 bool LineShaderScene::build(GLObjectFactory& glFactory)
 {
-	vbo.position.build();
-	vbo.color.build();
+	sBuffer.position.build();
+	sBuffer.color.build();
 
 	//vao.build();
 	return true;
@@ -22,8 +19,8 @@ bool LineShaderScene::build(GLObjectFactory& glFactory)
 
 void LineShaderScene::release(GLObjectFactory& glFactory)
 {
-	vbo.position.release();
-	vbo.color.release();
+	sBuffer.position.release();
+	sBuffer.color.release();
 
 	//vao.release();
 }
@@ -36,16 +33,18 @@ void LineShaderScene::send(const LineBuffer& buffer)
 		return;
 	}
 
-	vbo.position.send(positions);
-	vbo.color.send(colors);
+	sBuffer.position.send(positions);
+	sBuffer.color.send(colors);
 
-	indices = buffer.getIndices().get();
-	matrix = buffer.getMatrix();
-	lineWidth = buffer.getWidth();
+	sBuffer.indices = buffer.getIndices().get();
+//	sBuffer.matrix = buffer.getMatrix();
+	sBuffer.lineWidth = buffer.getWidth();
 }
 
 void LineShaderScene::render()
 {
-	shader->setScene(this);
-	shader->render();
+	//shader->setScene(this);
+	sBuffer.modelViewMatrix = camera->getModelViewMatrix();
+	sBuffer.projectionMatrix = camera->getProjectionMatrix();
+	shader->render(sBuffer);
 }

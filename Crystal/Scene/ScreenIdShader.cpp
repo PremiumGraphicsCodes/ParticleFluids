@@ -12,7 +12,7 @@ using namespace Crystal::Scene;
 ScreenIdShader::ScreenIdShader(const std::string& name) :
 	IShaderScene(name),
 	lineBuffer("LineIdBuffer"),
-	lineIdRenderer("LineIdRenderer"),
+	//lineIdRenderer("LineIdRenderer"),
 	triangleBuffer("TriangleIdBuffer"),
 	triangleIdRenderer("TriangleIdRenderer"),
 	buffer("ScreenIdBuffer")
@@ -23,9 +23,11 @@ ScreenIdShader::ScreenIdShader(const std::string& name) :
 
 bool ScreenIdShader::build(GLObjectFactory& factory)
 {
+	/*
 	if (!lineIdRenderer.build(factory)) {
 		return false;
 	}
+	*/
 	if (!triangleIdRenderer.build(factory)) {
 		return false;
 	}

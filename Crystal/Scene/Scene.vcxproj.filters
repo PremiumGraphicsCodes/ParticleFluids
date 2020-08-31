@@ -70,9 +70,6 @@
     <ClInclude Include="ScreenShader.h">
       <Filter>SceneShader\Screen</Filter>
     </ClInclude>
-    <ClInclude Include="LineShader.h">
-      <Filter>SceneShader\Line</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenIdShader.h">
       <Filter>SceneShader\ScreenId</Filter>
     </ClInclude>
@@ -204,9 +201,6 @@
     </ClCompile>
     <ClCompile Include="ScreenShader.cpp">
       <Filter>SceneShader\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="LineShader.cpp">
-      <Filter>SceneShader\Line</Filter>
     </ClCompile>
     <ClCompile Include="ScreenIdShader.cpp">
       <Filter>SceneShader\ScreenId</Filter>

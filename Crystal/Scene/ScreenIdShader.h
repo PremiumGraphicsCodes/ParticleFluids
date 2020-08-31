@@ -6,7 +6,7 @@
 #include "../Shader/TextureObject.h"
 
 //#include "../Scene/PointShader.h"
-#include "../Scene/LineShader.h"
+#include "../Scene/LineShaderScene.h"
 #include "../Scene/TriangleShader.h"
 
 #include "IShaderScene.h"
@@ -51,7 +51,7 @@ private:
 	LineShaderScene lineBuffer;
 	TriangleShaderScene triangleBuffer;
 
-	LineShader lineIdRenderer;
+	//LineShader lineIdRenderer;
 	TriangleShader triangleIdRenderer;
 
 	TextureShaderScene* texture;

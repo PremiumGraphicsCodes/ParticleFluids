@@ -17,20 +17,6 @@ namespace Crystal {
 class PointShaderScene : public IShaderScene
 {
 public:
-	/*
-	struct VBO
-	{
-		Shader::VertexBufferObject position;
-		Shader::VertexBufferObject size;
-		Shader::VertexBufferObject color;
-	};
-
-	//Shader::VertexArrayObject vao;
-	VBO vbo;
-	GLuint count;
-	Math::Matrix4df matrix;
-	*/
-
 	explicit PointShaderScene(const std::string& name);
 
 	bool build(Shader::GLObjectFactory& glFactory) override;

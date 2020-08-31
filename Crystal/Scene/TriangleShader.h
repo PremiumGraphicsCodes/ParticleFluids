@@ -1,7 +1,8 @@
 #pragma once
 
-#include "LineShader.h"
+//#include "LineShader.h"
 #include "TriangleShaderScene.h"
+#include "../Shader/ShaderObject.h"
 
 namespace Crystal {
 	namespace Scene {
