@@ -64,6 +64,9 @@
     <ClInclude Include="PointRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="LineRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
@@ -118,6 +121,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="PointRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="LineRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>

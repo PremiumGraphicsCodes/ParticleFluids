@@ -41,32 +41,22 @@ void PointRenderer::release(GLObjectFactory& factory)
 	shader.release();
 }
 
-void PointRenderer::send(const Buffer& buffer)
+void PointRenderer::render(const Buffer& buffer)
 {
 	shader.bind();
+
+	shader.sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
+	shader.sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
 
 	shader.sendVertexAttribute3df(::positionLabel, buffer.position);
 	shader.sendVertexAttribute4df(::colorLabel, buffer.color);
 	shader.sendVertexAttribute1df(::sizeLabel, buffer.size);
 
-	shader.unbind();
-}
-
-void PointRenderer::render(const Graphics::Camera& camera, const int count)
-{
-	const auto& projectionMatrix = camera.getProjectionMatrix();
-	const auto& modelviewMatrix = camera.getModelViewMatrix();
-
-	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
-	shader.sendUniform(::modelViewMatrixLabel, modelviewMatrix);
-
-
-	shader.bind();
 
 	shader.enableDepthTest();
 	shader.enablePointSprite();
 
-	shader.drawPoints(count);
+	shader.drawPoints(buffer.count);
 
 	shader.bindOutput(::fragColorLabel);
 

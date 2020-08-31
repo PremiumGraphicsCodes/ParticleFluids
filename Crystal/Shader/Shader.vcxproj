@@ -147,6 +147,7 @@
     <ClInclude Include="IShader.h" />
     <ClInclude Include="IShaderCommand.h" />
     <ClInclude Include="ITextureObject.h" />
+    <ClInclude Include="LineRenderer.h" />
     <ClInclude Include="OnScreenRenderer.h" />
     <ClInclude Include="PointRenderer.h" />
     <ClInclude Include="ShaderAttribute.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="FrameBufferObjectFactory.cpp" />
     <ClCompile Include="IShaderCommand.cpp" />
+    <ClCompile Include="LineRenderer.cpp" />
     <ClCompile Include="OnScreenRenderer.cpp" />
     <ClCompile Include="PointRenderer.cpp" />
     <ClCompile Include="ShaderAttribute.cpp" />

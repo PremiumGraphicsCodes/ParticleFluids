@@ -16,6 +16,9 @@ public:
 		Shader::VertexBufferObject position;
 		Shader::VertexBufferObject size;
 		Shader::VertexBufferObject color;
+		Math::Matrix4dd projectionMatrix;
+		Math::Matrix4dd modelViewMatrix;
+		const int count;
 	};
 
 	PointRenderer();
@@ -24,9 +27,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory);
 
-	void send(const Buffer& buffer);
-
-	void render(const Graphics::Camera& camera, const int count);
+	void render(const Buffer& buffer);
 
 private:
 	std::string getBuiltInVertexShaderSource() const;
@@ -34,8 +35,6 @@ private:
 	std::string getBuiltInFragmentShaderSource() const;
 
 	Shader::ShaderObject shader;
-
-	int count;
 };
 
 	}
