@@ -7,7 +7,6 @@
 
 //#include "../Scene/PointShader.h"
 #include "../Scene/LineShaderScene.h"
-#include "../Scene/TriangleShader.h"
 
 #include "IShaderScene.h"
 #include "TextureShaderScene.h"
@@ -50,9 +49,6 @@ public:
 private:
 	LineShaderScene lineBuffer;
 	TriangleShaderScene triangleBuffer;
-
-	//LineShader lineIdRenderer;
-	TriangleShader triangleIdRenderer;
 
 	TextureShaderScene* texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;

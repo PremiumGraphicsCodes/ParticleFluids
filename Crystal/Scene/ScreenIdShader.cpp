@@ -14,7 +14,6 @@ ScreenIdShader::ScreenIdShader(const std::string& name) :
 	lineBuffer("LineIdBuffer"),
 	//lineIdRenderer("LineIdRenderer"),
 	triangleBuffer("TriangleIdBuffer"),
-	triangleIdRenderer("TriangleIdRenderer"),
 	buffer("ScreenIdBuffer")
 {
 	texture = new TextureShaderScene("IdTexture");
@@ -23,15 +22,6 @@ ScreenIdShader::ScreenIdShader(const std::string& name) :
 
 bool ScreenIdShader::build(GLObjectFactory& factory)
 {
-	/*
-	if (!lineIdRenderer.build(factory)) {
-		return false;
-	}
-	*/
-	if (!triangleIdRenderer.build(factory)) {
-		return false;
-	}
-
 	lineBuffer.build(factory);
 	triangleBuffer.build(factory);
 
@@ -82,18 +72,6 @@ void ScreenIdShader::render()
 	for (auto tb : tbs) {
 		tb->render();
 	}
-	/*
-	for (const auto& b : lineBuffers) {
-		lineBuffer.send(b);
-		lineIdRenderer.setBuffer(lineBuffer);
-		lineIdRenderer.render();
-	}
-	for (const auto& b : triangleBuffers) {
-		triangleBuffer.send(b);
-		triangleIdRenderer.setBuffer(triangleBuffer);
-		triangleIdRenderer.render(*camera);
-	}
-	*/
 
 	frameBufferObject->unbind();
 }

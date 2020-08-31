@@ -1,38 +1,40 @@
 #include "TriangleShaderScene.h"
 
-#include "TriangleShader.h"
+#include "../Shader/TriangleRenderer.h"
+#include "CameraShaderScene.h"
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 bool TriangleShaderScene::build(GLObjectFactory& glFactory)
 {
-	vbo.position.build();
-	vbo.color.build();
+	sBuffer.position.build();
+	sBuffer.color.build();
 	return true;
 }
 
 void TriangleShaderScene::release(GLObjectFactory& glFactory)
 {
-	vbo.position.release();
-	vbo.color.release();
+	sBuffer.position.release();
+	sBuffer.color.release();
 }
 
 void TriangleShaderScene::send(const TriangleBuffer& buffer)
 {
-	vbo.position.send(buffer.getPositions().get());
-	vbo.color.send(buffer.getColors().get());
+	sBuffer.position.send(buffer.getPositions().get());
+	sBuffer.color.send(buffer.getColors().get());
 
-	indices = buffer.getIndices().get();
+	sBuffer.indices = buffer.getIndices().get();
 }
 
 void TriangleShaderScene::render()
 {
-	shader->setScene(this);
-	shader->render();
+	sBuffer.projectionMatrix = camera->getProjectionMatrix();
+	sBuffer.modelViewMatrix = camera->getModelViewMatrix();
+	shader->render(sBuffer);
 }
 
-void TriangleShaderScene::setShader(TriangleShader* shader)
+void TriangleShaderScene::setShader(TriangleRenderer* shader)
 {
 	this->shader = shader;
 }

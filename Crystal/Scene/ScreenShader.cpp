@@ -19,12 +19,10 @@ ScreenShader::ScreenShader(const std::string& name) :
 	pointRenderer(new PointRenderer()),
 	wireRenderer(new LineRenderer()),
 	smoothRenderer(new SmoothShader("SmoothRenderer")),
-	triagleRenderer(new TriangleShader("TriangleRenderer")),
+	triagleRenderer(new TriangleRenderer()),
 	buffer("ScreenBuffer")
 {
 	addChild(smoothRenderer);
-	addChild(triagleRenderer);
-
 	texture = new TextureShaderScene("ScreenTex");// = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
 	addChild(texture);
 }

@@ -5,7 +5,6 @@
 #include "SceneShader.h"
 
 #include "../Graphics/DrawableId.h"
-#include "../Scene/TriangleShader.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;

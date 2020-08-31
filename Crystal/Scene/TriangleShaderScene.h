@@ -2,6 +2,7 @@
 
 #include "IShaderScene.h"
 #include "TriangleBuffer.h"
+#include "../Shader/TriangleRenderer.h"
 #include "../Shader/VertexBufferObject.h"
 
 #include <string>
@@ -14,13 +15,6 @@ namespace Crystal {
 class TriangleShaderScene : public IShaderScene
 {
 public:
-	struct VBO {
-		Shader::VertexBufferObject position;
-		Shader::VertexBufferObject color;
-	};
-	VBO vbo;
-	std::vector<unsigned int> indices;
-
 	explicit TriangleShaderScene(const std::string& name) :
 		IShaderScene(name)
 	{}
@@ -31,7 +25,7 @@ public:
 
 	void send(const TriangleBuffer& buffer);
 
-	void setShader(TriangleShader* shader);
+	void setShader(Shader::TriangleRenderer* shader);
 
 	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
 
@@ -41,7 +35,8 @@ public:
 
 private:
 	std::string name;
-	TriangleShader* shader;
+	Shader::TriangleRenderer* shader;
+	Shader::TriangleRenderer::Buffer sBuffer;
 	CameraShaderScene* camera;
 };
 

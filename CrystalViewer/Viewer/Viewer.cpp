@@ -9,7 +9,6 @@
 #include "../AppBase/SelectionMenu.h"
 
 #include "../AppBase/SceneListPanel.h"
-#include "../AppBase/ShaderSceneListPanel.h"
 
 #include "../AppBase/ControlPanel.h"
 
@@ -46,7 +45,6 @@ int main(int, char**)
 	window.add(new SelectionMenu("Selection", &world, &canvas, control));
 
 	window.add(new SceneListPanel("SceneList", &world, &canvas, control));
-	window.add(new ShaderSceneListPanel("ShaderSceneList", &world, &canvas, control));
 
 	window.show();
 

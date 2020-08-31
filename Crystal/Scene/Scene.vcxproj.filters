@@ -73,9 +73,6 @@
     <ClInclude Include="ScreenIdShader.h">
       <Filter>SceneShader\ScreenId</Filter>
     </ClInclude>
-    <ClInclude Include="TriangleShader.h">
-      <Filter>SceneShader\Triangle</Filter>
-    </ClInclude>
     <ClInclude Include="PointBuffer.h">
       <Filter>SceneShader\Point</Filter>
     </ClInclude>
@@ -204,9 +201,6 @@
     </ClCompile>
     <ClCompile Include="ScreenIdShader.cpp">
       <Filter>SceneShader\ScreenId</Filter>
-    </ClCompile>
-    <ClCompile Include="TriangleShader.cpp">
-      <Filter>SceneShader\Triangle</Filter>
     </ClCompile>
     <ClCompile Include="PointShaderScene.cpp">
       <Filter>SceneShader\Point</Filter>

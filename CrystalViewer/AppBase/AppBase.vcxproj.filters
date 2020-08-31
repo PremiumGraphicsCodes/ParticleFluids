@@ -275,9 +275,6 @@
     <ClCompile Include="IPMAddView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderSceneListPanel.cpp">
-      <Filter>ShaderScene</Filter>
-    </ClCompile>
     <ClCompile Include="DirectoryView.cpp">
       <Filter>File\Directory</Filter>
     </ClCompile>
@@ -609,9 +606,6 @@
     <ClInclude Include="IPMAddView.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderSceneListPanel.h">
-      <Filter>ShaderScene</Filter>
-    </ClInclude>
     <ClInclude Include="DirectoryView.h">
       <Filter>File\Directory</Filter>
     </ClInclude>
@@ -752,9 +746,6 @@
     </Filter>
     <Filter Include="Math\Vector">
       <UniqueIdentifier>{5336a907-956d-437b-9038-0da11a41ac0b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ShaderScene">
-      <UniqueIdentifier>{1e727703-a1a9-4bc8-a78c-06d584fcdaae}</UniqueIdentifier>
     </Filter>
     <Filter Include="File\Directory">
       <UniqueIdentifier>{a813769c-dfc6-4d2d-ac56-4d7230a206bd}</UniqueIdentifier>
