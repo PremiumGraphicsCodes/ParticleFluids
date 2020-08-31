@@ -61,6 +61,9 @@
     <ClInclude Include="BillBoardRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="PointRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
@@ -112,6 +115,9 @@
     <ClCompile Include="VertexBufferObject.cpp" />
     <ClCompile Include="VertexArrayObject.cpp" />
     <ClCompile Include="BillBoardRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="PointRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>
