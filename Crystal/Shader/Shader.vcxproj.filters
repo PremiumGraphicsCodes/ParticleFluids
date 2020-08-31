@@ -67,6 +67,9 @@
     <ClInclude Include="LineRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="TriangleRenderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />
@@ -124,6 +127,9 @@
       <Filter>Renderer</Filter>
     </ClCompile>
     <ClCompile Include="LineRenderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
   </ItemGroup>

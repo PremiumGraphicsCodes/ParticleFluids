@@ -158,6 +158,7 @@
     <ClInclude Include="ShaderUnit.h" />
     <ClInclude Include="TextureObject.h" />
     <ClInclude Include="TextureObjectFactory.h" />
+    <ClInclude Include="TriangleRenderer.h" />
     <ClInclude Include="VertexArrayObject.h" />
     <ClInclude Include="VertexBufferObject.h" />
   </ItemGroup>
@@ -181,6 +182,7 @@
     <ClCompile Include="ShaderUnit.cpp" />
     <ClCompile Include="TextureObject.cpp" />
     <ClCompile Include="TextureObjectFactory.cpp" />
+    <ClCompile Include="TriangleRenderer.cpp" />
     <ClCompile Include="VertexArrayObject.cpp" />
     <ClCompile Include="VertexBufferObject.cpp" />
   </ItemGroup>
