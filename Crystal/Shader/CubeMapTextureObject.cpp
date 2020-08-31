@@ -3,10 +3,9 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-void CubeMapTextureObject::create(const std::array<Imagef, 6>& images, const unsigned int id)
+void CubeMapTextureObject::create(const std::array<Imagef, 6>& images)
 {
-	this->id = id;
-	glActiveTexture(GL_TEXTURE0 + id);
+	//glActiveTexture(GL_TEXTURE0 + id);
 	glGenTextures(1, &handle);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, handle);
 
@@ -30,10 +29,10 @@ void CubeMapTextureObject::create(const std::array<Imagef, 6>& images, const uns
 	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 }
 
-void CubeMapTextureObject::bind() const
+void CubeMapTextureObject::bind(const int slotNumber) const
 {
 	glEnable(GL_TEXTURE_CUBE_MAP);
-	glActiveTexture(GL_TEXTURE0 + id);
+	glActiveTexture(GL_TEXTURE0 + slotNumber);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, handle);
 }
 

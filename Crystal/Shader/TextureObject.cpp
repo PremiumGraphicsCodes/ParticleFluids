@@ -3,23 +3,10 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-void TextureObject::create(const std::string& name, const int id)
+void TextureObject::create(const std::string& name)
 {
 	this->name = name;
-	glActiveTexture(GL_TEXTURE0 + id);
 	glGenTextures(1, &handle);
-}
-
-void TextureObject::create(const std::string& name, const Image& image, const int id)
-{
-	this->name = name;
-	this->id = id;
-	this->width = image.getWidth();
-	this->height = image.getHeight();
-
-	glActiveTexture(GL_TEXTURE0 + id);
-	glGenTextures(1, &handle);
-	send(image);
 }
 
 void TextureObject::clear()
@@ -27,9 +14,9 @@ void TextureObject::clear()
 	glDeleteTextures(1, &handle);
 }
 
-void TextureObject::bind() const
+void TextureObject::bind(const int slotId) const
 {
-	glActiveTexture(GL_TEXTURE0 + id);
+	glActiveTexture(GL_TEXTURE0 + slotId);
 	glBindTexture(GL_TEXTURE_2D, handle);
 }
 
@@ -37,19 +24,6 @@ void TextureObject::unbind() const
 {
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glActiveTexture(GL_TEXTURE0);
-}
-
-void TextureObject::create(const std::string& name, const Imagef& image, const int id)
-{
-	this->name = name;
-
-	this->id = id;
-	this->width = image.getWidth();
-	this->height = image.getHeight();
-
-	glActiveTexture(GL_TEXTURE0 + id);
-	glGenTextures(1, &handle);
-	send(image);
 }
 
 void TextureObject::send(const Image& image)
@@ -68,9 +42,7 @@ void TextureObject::send(const Image& image)
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	assert(GL_NO_ERROR == glGetError());
-
 }
-
 
 void TextureObject::send(const Imagef& image)
 {

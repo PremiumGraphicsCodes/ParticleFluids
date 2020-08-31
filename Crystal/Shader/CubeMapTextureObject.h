@@ -12,7 +12,7 @@ namespace Crystal {
 class CubeMapTextureObject : public ITextureObject
 {
 public:
-	void create(const std::array<Graphics::Imagef, 6>& images, const unsigned int id);
+	void create(const std::array<Graphics::Imagef, 6>& images);
 
 	void setPositiveX(const Graphics::Imagef& image);
 
@@ -26,7 +26,7 @@ public:
 
 	void setNegativeZ(const Graphics::Imagef& image);
 
-	void bind() const override;
+	void bind(const int slotNumber) const override;
 
 	void unbind() const override;
 

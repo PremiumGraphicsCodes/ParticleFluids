@@ -3,19 +3,16 @@
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
+DepthTextureObject::DepthTextureObject() :
+	ITextureObject()
+{}
 
-DepthTextureObject::DepthTextureObject(const Imagef& image, const int id)
+void DepthTextureObject::send(const Imagef& image)
 {
-	create(image, id);
-}
-
-void DepthTextureObject::create(const Imagef& image, const int id)
-{
-	this->id = id;
 	this->width = image.getWidth();
 	this->height = image.getHeight();
 
-	glActiveTexture(GL_TEXTURE0 + id);
+	//glActiveTexture(GL_TEXTURE0 + id);
 	glGenTextures(1, &handle);
 	glBindTexture(GL_TEXTURE_2D, handle);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, image.getWidth(), image.getHeight(), 0, GL_DEPTH_COMPONENT, GL_FLOAT, image.getValues().data());
@@ -31,9 +28,9 @@ void DepthTextureObject::create(const Imagef& image, const int id)
 	assert(GL_NO_ERROR == glGetError());
 }
 
-void DepthTextureObject::bind() const
+void DepthTextureObject::bind(const int slotNumber) const
 {
-	glActiveTexture(GL_TEXTURE0 + id);
+	glActiveTexture(GL_TEXTURE0 + slotNumber);
 	glBindTexture(GL_TEXTURE_2D, handle);
 }
 

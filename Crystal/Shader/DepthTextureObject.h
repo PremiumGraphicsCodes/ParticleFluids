@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_SHADER_DEPTH_TEXTURE_OBJECT_H__
-#define __CRYSTAL_SHADER_DEPTH_TEXTURE_OBJECT_H__
+#pragma once
 
 #include "glew.h"
 #include "../Graphics/Imagef.h"
@@ -11,15 +10,11 @@ namespace Crystal {
 class DepthTextureObject : public ITextureObject
 {
 public:
-	DepthTextureObject(const int id = 0) :
-		ITextureObject(id)
-	{}
+	DepthTextureObject();
 
-	DepthTextureObject(const Graphics::Imagef& image, const int id = 0);
+	void send(const Graphics::Imagef& image);
 
-	void create(const Graphics::Imagef& image, const int id = 0);
-
-	void bind() const override;
+	void bind(const int slotNumber) const override;
 
 	void unbind() const override;
 
@@ -28,4 +23,3 @@ public:
 
 	}
 }
-#endif

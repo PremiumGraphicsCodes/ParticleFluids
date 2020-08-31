@@ -79,7 +79,7 @@ public:
 
 	void sendUniform(const std::string& name, const Math::Vector3df& vector);
 
-	void sendUniform(const std::string& name, const TextureObject& texture);
+	void sendUniform(const std::string& name, const TextureObject& texture, const int slotId);
 
 	void sendUniform(const std::string& name, const int value);
 

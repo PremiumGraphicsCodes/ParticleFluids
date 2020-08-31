@@ -11,18 +11,16 @@ namespace Crystal {
 class ITextureObject : public IGLObject
 {
 public:
-	ITextureObject(const int id = 0) :
-		id(id)
+	ITextureObject() : 
+		IGLObject()
 	{}
 
 	virtual ~ITextureObject()
 	{}
 
-	virtual void bind() const = 0;
+	virtual void bind(const int slotNumber) const = 0;
 
 	virtual void unbind() const = 0;
-
-	int getId() const { return id; }
 
 	GLuint getHandle() const { return handle; }
 
@@ -30,9 +28,7 @@ public:
 
 	int getHeight() const { return height; }
 
-
 protected:
-	int id;
 	GLuint handle;
 	int width;
 	int height;

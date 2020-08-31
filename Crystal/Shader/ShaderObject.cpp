@@ -362,11 +362,11 @@ void ShaderObject::sendUniform(const std::string& name, const float value)
 	glUniform1f(getUniformLocation(name), value);
 }
 
-void ShaderObject::sendUniform(const std::string& name, const TextureObject& texture)
+void ShaderObject::sendUniform(const std::string& name, const TextureObject& texture, const int slotId)
 {
-	texture.bind();
+	texture.bind(slotId);
 	const auto location = getUniformLocation(name);
-	glUniform1i(location, texture.getId());
+	glUniform1i(location, slotId);
 	texture.unbind();
 }
 

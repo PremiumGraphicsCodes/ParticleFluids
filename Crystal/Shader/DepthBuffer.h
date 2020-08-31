@@ -18,7 +18,7 @@ public:
 
 	bool build(const DepthTextureObject& depthTexture);
 
-	bool bind() const;
+	bool bind(const int slotNumber) const;
 
 	bool unbind() const;
 

@@ -22,11 +22,7 @@ public:
 		ITextureObject(id)
 	{}
 	*/
-	void create(const std::string& name, const int id);
-
-	void create(const std::string& name, const Graphics::Image& image, const int id);
-
-	void create(const std::string& name, const Graphics::Imagef& image, const int id);
+	void create(const std::string& name);
 
 	void clear() override;
 
@@ -34,7 +30,7 @@ public:
 
 	void send(const Graphics::Imagef& image);
 
-	void bind() const override;
+	void bind(const int slotNumber) const override;
 
 	void unbind() const override;
 

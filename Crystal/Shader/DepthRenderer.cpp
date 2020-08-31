@@ -68,9 +68,9 @@ void DepthRenderer::render(const DepthTextureObject& depthTexture)
 
 	glUseProgram(shader.getHandle());
 
-	depthTexture.bind();
+	depthTexture.bind(0);
 
-	glUniform1i(shader.getUniformLocation("depthTexture"), depthTexture.getId());
+	glUniform1i(shader.getUniformLocation("depthTexture"), 0);
 	glVertexAttribPointer(shader.getAttribLocation("positions"), 2, GL_FLOAT, GL_FALSE, 0, positions.data());
 
 	glEnableVertexAttribArray(0);

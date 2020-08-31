@@ -9,26 +9,31 @@ using namespace Crystal::Shader;
 
 void TextureObjectFactory::clear()
 {
-	nextId = 0;
 }
 
 TextureObject TextureObjectFactory::createTextureObject(const std::string& name)
 {
 	auto object = TextureObject();
-	object.create(name, nextId++);
+	object.create(name);
 	return object;
 }
 
 TextureObject TextureObjectFactory::createTextureObject(const std::string& name, const Image& image)
 {
 	auto object = TextureObject();
-	object.create(name, image, nextId++);
+	object.create(name);
+	object.bind(0);
+	object.send(image);
+	object.unbind();
 	return object;
 }
 
 TextureObject TextureObjectFactory::createTextureObject(const std::string& name, const Imagef& image)
 {
 	auto object = TextureObject();
-	object.create(name, image, nextId++);
+	object.create(name);
+	object.bind(0);
+	object.send(image);
+	object.unbind();
 	return object;
 }

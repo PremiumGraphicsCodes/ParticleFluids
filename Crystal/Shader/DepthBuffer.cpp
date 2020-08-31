@@ -29,10 +29,10 @@ void DepthBuffer::setTexture(const DepthTextureObject& texture)
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-bool DepthBuffer::bind() const
+bool DepthBuffer::bind(const int slotNumber) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
-	texture.bind();
+	texture.bind(slotNumber);
 	return (GL_NO_ERROR == glGetError());
 }
 

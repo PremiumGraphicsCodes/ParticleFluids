@@ -72,9 +72,9 @@ void BillBoardRenderer::render(const ITextureObject& texture)
 
 	glUseProgram(shader->getHandle());
 
-	texture.bind();
+	texture.bind(0);
 
-	glUniform1i(shader->getUniformLocation("texture"), texture.getId());
+	glUniform1i(shader->getUniformLocation("texture"), 0);
 
 	glVertexAttribPointer(shader->getAttribLocation("position"), 2, GL_FLOAT, GL_FALSE, 0, positions.data());
 

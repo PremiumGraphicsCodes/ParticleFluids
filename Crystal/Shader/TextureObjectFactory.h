@@ -19,8 +19,7 @@ class TextureObject;
 class TextureObjectFactory : private UnCopyable
 {
 public:
-	TextureObjectFactory() :
-		nextId(0)
+	TextureObjectFactory()
 	{}
 
 	void clear();
@@ -33,7 +32,6 @@ public:
 
 private:
 	//std::map<std::string, TextureObject> textures;
-	int nextId;
 };
 	}
 

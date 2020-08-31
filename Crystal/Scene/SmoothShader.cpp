@@ -173,9 +173,9 @@ void SmoothShader::render()
 	shader.enableVertexAttribute(::texCoordLabel);
 	shader.enableVertexAttribute(::materialIdLabel);
 
-
+	int texId = 0;
 	for (const auto& t : textures) {
-		t.bind();
+		t.bind(texId++);
 	}
 
 	shader.drawTriangles(count);
