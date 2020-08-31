@@ -13,7 +13,7 @@ SceneShader::SceneShader() :
 	IShaderScene("SceneShader"),
 	showOffScreen(false),
 	scene("Scene"),
-	objectRenderer(new ScreenShader("ObjectRenderer")),
+	objectRenderer(new ShaderRepository("ObjectRenderer")),
 	parentIdRenderer(new ScreenIdShader("ParentIdRenderer")),
 	childIdRenderer(new ScreenIdShader("ChildIdRenderer")),
 	target(RenderTarget::Shaded)

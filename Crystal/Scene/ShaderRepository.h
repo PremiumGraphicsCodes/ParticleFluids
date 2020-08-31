@@ -24,12 +24,12 @@ namespace Crystal {
 	namespace Scene {
 		class ScreenShaderScene;
 
-class ScreenShader : public IShaderScene
+class ShaderRepository : public IShaderScene
 {
 public:
-	explicit ScreenShader(const std::string& name);
+	explicit ShaderRepository(const std::string& name);
 
-	~ScreenShader() {}
+	~ShaderRepository() {}
 
 	bool build(Shader::GLObjectFactory& factory);
 

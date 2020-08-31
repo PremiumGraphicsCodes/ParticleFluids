@@ -67,9 +67,6 @@
     <ClInclude Include="SmoothShader.h">
       <Filter>SceneShader\Smooth</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenShader.h">
-      <Filter>SceneShader\Screen</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenIdShader.h">
       <Filter>SceneShader\ScreenId</Filter>
     </ClInclude>
@@ -154,6 +151,9 @@
     <ClInclude Include="TriangleBuffer.h">
       <Filter>SceneShader\Triangle</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderRepository.h">
+      <Filter>SceneShader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -195,9 +195,6 @@
     </ClCompile>
     <ClCompile Include="SmoothShader.cpp">
       <Filter>SceneShader\Smooth</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenShader.cpp">
-      <Filter>SceneShader\Screen</Filter>
     </ClCompile>
     <ClCompile Include="ScreenIdShader.cpp">
       <Filter>SceneShader\ScreenId</Filter>
@@ -267,6 +264,9 @@
     </ClCompile>
     <ClCompile Include="TriangleShaderScene.cpp">
       <Filter>SceneShader\Triangle</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderRepository.cpp">
+      <Filter>SceneShader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

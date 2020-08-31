@@ -1,4 +1,4 @@
-#include "ScreenShader.h"
+#include "ShaderRepository.h"
 
 #include "../Shader/GLObjectFactory.h"
 
@@ -14,7 +14,7 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-ScreenShader::ScreenShader(const std::string& name) :
+ShaderRepository::ShaderRepository(const std::string& name) :
 	IShaderScene(name),
 	pointRenderer(new PointRenderer()),
 	wireRenderer(new LineRenderer()),
@@ -25,7 +25,7 @@ ScreenShader::ScreenShader(const std::string& name) :
 	texture = new TextureShaderScene("ScreenTex");// = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
 }
 
-bool ScreenShader::build(GLObjectFactory& factory)
+bool ShaderRepository::build(GLObjectFactory& factory)
 {
 	if (!pointRenderer->build(factory)) {
 		return false;
@@ -47,17 +47,17 @@ bool ScreenShader::build(GLObjectFactory& factory)
 	return true;
 }
 
-void ScreenShader::release(GLObjectFactory& factory)
+void ShaderRepository::release(GLObjectFactory& factory)
 {
 	//TODO;
 }
 
-void ScreenShader::setBuffer(const ScreenShaderScene& buffer)
+void ShaderRepository::setBuffer(const ScreenShaderScene& buffer)
 {
 	this->buffer = buffer;
 }
 
-void ScreenShader::render()
+void ShaderRepository::render()
 {
 	auto texture = *this->texture->getTextureObject();
 	frameBufferObject->setTexture(texture);
