@@ -121,10 +121,10 @@
     <ClInclude Include="TriangleBuffer.h">
       <Filter>SceneShader\Triangle</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderRepository.h">
+    <ClInclude Include="ScreenIdShader.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenIdShader.h">
+    <ClInclude Include="ScreenShader.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
   </ItemGroup>
@@ -208,10 +208,10 @@
     <ClCompile Include="TriangleShaderScene.cpp">
       <Filter>SceneShader\Triangle</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderRepository.cpp">
+    <ClCompile Include="ScreenIdShader.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenIdShader.cpp">
+    <ClCompile Include="ScreenShader.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
   </ItemGroup>

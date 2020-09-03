@@ -10,7 +10,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 SceneShader::SceneShader() :
-	objectRenderer(new ShaderRepository("ObjectRenderer")),
+	objectRenderer(new ScreenShader("ObjectRenderer")),
 	parentIdRenderer(new ScreenIdShader("ParentIdRenderer")),
 	childIdRenderer(new ScreenIdShader("ChildIdRenderer")),
 	target(RenderTarget::Shaded)
