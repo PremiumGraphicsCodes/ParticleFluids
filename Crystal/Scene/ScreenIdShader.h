@@ -33,7 +33,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory);
 
-	void render(std::vector<IShaderScene*> scenes, const Graphics::Camera& camera);
+	void render(const Graphics::Camera& camera);
 
 	Graphics::DrawableID getId(const double x, const double y);
 
@@ -41,7 +41,11 @@ public:
 
 	TextureShaderScene* getTextureScene() { return texture; }
 
+	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
+
 private:
+	std::vector<IShaderScene*> scenes;
+
 	TextureShaderScene* texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
 };

@@ -7,7 +7,6 @@
 #include "ScreenIdShader.h"
 
 #include "ScreenShaderScene.h"
-#include "SceneShaderScene.h"
 
 #include "IShaderScene.h"
 
@@ -49,16 +48,14 @@ public:
 
 	void setRenderTarget(const RenderTarget target) { this->target = target; }
 
-	SceneShaderScene* getScene() { return &scene; }
-
 private:
+
 	Shader::OnScreenRenderer renderer;
 
 	ScreenShader* objectRenderer;
 	ScreenIdShader* parentIdRenderer;
 	ScreenIdShader* childIdRenderer;
 
-	SceneShaderScene scene;
 	RenderTarget target;
 };
 

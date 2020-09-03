@@ -38,7 +38,7 @@ public:
 
 	//void setBuffer(const ScreenShaderScene& buffer);
 
-	void render(const std::vector<IShaderScene*>& scenes, const Graphics::Camera& camera);
+	void render(const Graphics::Camera& camera);
 
 	struct Mask
 	{
@@ -69,11 +69,15 @@ public:
 
 	TextureShaderScene* getTextureScene() { return texture; }
 
+	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
+
 private:
 	Shader::PointRenderer* pointRenderer;
 	Shader::LineRenderer* wireRenderer;
 	Shader::TriangleRenderer* triagleRenderer;
 	Shader::SmoothRenderer* smoothRenderer;
+
+	std::vector<IShaderScene*> scenes;
 
 	Mask mask;
 

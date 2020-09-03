@@ -40,7 +40,6 @@
     <ClInclude Include="ScreenIdShader.h" />
     <ClInclude Include="ScreenShaderScene.h" />
     <ClInclude Include="ScreenShader.h" />
-    <ClInclude Include="SceneShaderScene.h" />
     <ClInclude Include="SceneShader.h" />
     <ClInclude Include="SmoothShaderScene.h" />
     <ClInclude Include="TexturePresenter.h" />
@@ -77,7 +76,6 @@
     <ClCompile Include="PMToWFPresenter.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
     <ClCompile Include="PolygonMeshPresenter.cpp" />
-    <ClCompile Include="SceneShaderScene.cpp" />
     <ClCompile Include="ScreenIdShader.cpp" />
     <ClCompile Include="ScreenShaderScene.cpp" />
     <ClCompile Include="ScreenShader.cpp" />

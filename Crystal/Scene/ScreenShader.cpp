@@ -50,7 +50,7 @@ void ScreenShader::release(GLObjectFactory& factory)
 	//TODO;
 }
 
-void ScreenShader::render(const std::vector<IShaderScene*>& scenes, const Camera& camera)
+void ScreenShader::render(const Camera& camera)
 {
 	auto texture = *this->texture->getTextureObject();
 	frameBufferObject->setTexture(texture);

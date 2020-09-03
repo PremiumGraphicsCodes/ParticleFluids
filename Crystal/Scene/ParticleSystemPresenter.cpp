@@ -21,21 +21,21 @@ void ParticleSystemPresenter::createView(SceneShader* sceneShader, GLObjectFacto
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
 		this->view->build(glFactory);
-		sceneShader->getScene()->addScene(this->view);
+		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 
 	{
 		this->parentIdView = new PointShaderScene(model->getName());
 		this->parentIdView->setShader(sceneShader->getObjectRenderer()->getPointShader());
 		this->parentIdView->build(glFactory);
-		sceneShader->getScene()->addParentIdScene(this->parentIdView);
+		sceneShader->getParentIdRenderer()->addScene(this->parentIdView);
 	}
 
 	{
 		this->childIdView = new PointShaderScene(model->getName());
 		this->childIdView->setShader(sceneShader->getObjectRenderer()->getPointShader());
 		this->childIdView->build(glFactory);
-		sceneShader->getScene()->addChildIdScene(this->childIdView);
+		sceneShader->getChildIdRenderer()->addScene(this->childIdView);
 	}
 	updateView();
 }

@@ -25,13 +25,13 @@ void WireFramePresenter::createView(SceneShader* sceneShader, GLObjectFactory& g
 		this->view = new LineShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
 		this->view->build(glFactory);
-		sceneShader->getScene()->addScene(this->view);
+		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	{
 		this->parentIdView = new LineShaderScene(model->getName());
 		this->parentIdView->setShader(sceneShader->getObjectRenderer()->getWireShader());
 		this->parentIdView->build(glFactory);
-		sceneShader->getScene()->addParentIdScene(this->parentIdView);
+		sceneShader->getParentIdRenderer()->addScene(this->parentIdView);
 	}
 
 	updateView();

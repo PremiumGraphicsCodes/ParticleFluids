@@ -85,9 +85,6 @@
     <ClInclude Include="SceneShader.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
-    <ClInclude Include="SceneShaderScene.h">
-      <Filter>SceneShader</Filter>
-    </ClInclude>
     <ClInclude Include="IShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
@@ -179,9 +176,6 @@
       <Filter>SceneShader\Smooth</Filter>
     </ClCompile>
     <ClCompile Include="SceneShader.cpp">
-      <Filter>SceneShader</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneShaderScene.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
     <ClCompile Include="CameraScene.cpp">

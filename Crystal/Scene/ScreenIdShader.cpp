@@ -29,7 +29,7 @@ void ScreenIdShader::release(GLObjectFactory& factory)
 
 }
 
-void ScreenIdShader::render(std::vector<IShaderScene*> scenes, const Graphics::Camera& camera)
+void ScreenIdShader::render(const Graphics::Camera& camera)
 {
 	frameBufferObject->setTexture(*texture->getTextureObject());
 	//texture.bind();
