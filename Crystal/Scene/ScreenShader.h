@@ -6,12 +6,9 @@
 #include "../Shader/LineRenderer.h"
 #include "../Shader/TriangleRenderer.h"
 #include "../Shader/SmoothRenderer.h"
-#include "TextureShaderScene.h"
 
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
-
-#include "ScreenShaderScene.h"
 
 //#include "TextureObjectRepository.h"
 
@@ -67,7 +64,7 @@ public:
 
 	Shader::SmoothRenderer* getSmoothShader() { return smoothRenderer; }
 
-	TextureShaderScene* getTextureScene() { return texture; }
+	Shader::TextureObject* getTextureScene() { return &texture; }
 
 	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 
@@ -81,7 +78,7 @@ private:
 
 	Mask mask;
 
-	TextureShaderScene* texture;
+	Shader::TextureObject texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
 };
 	}

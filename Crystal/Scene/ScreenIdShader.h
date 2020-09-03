@@ -8,8 +8,6 @@
 //#include "../Scene/PointShader.h"
 #include "../Scene/LineShaderScene.h"
 
-#include "TextureShaderScene.h"
-
 #include "../Util/UnCopyable.h"
 #include <memory>
 
@@ -39,14 +37,14 @@ public:
 
 	Graphics::DrawableID getIdInTexCoord(const int x, const int y);
 
-	TextureShaderScene* getTextureScene() { return texture; }
+	Shader::TextureObject* getTextureScene() { return &texture; }
 
 	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 
 private:
 	std::vector<IShaderScene*> scenes;
 
-	TextureShaderScene* texture;
+	Shader::TextureObject texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
 };
 	}

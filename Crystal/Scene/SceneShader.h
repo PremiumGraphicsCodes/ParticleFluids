@@ -6,8 +6,6 @@
 #include "ScreenShader.h"
 #include "ScreenIdShader.h"
 
-#include "ScreenShaderScene.h"
-
 #include "IShaderScene.h"
 
 #include "../Util/UnCopyable.h"

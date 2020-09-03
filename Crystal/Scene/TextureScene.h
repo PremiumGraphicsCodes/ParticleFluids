@@ -1,7 +1,5 @@
 #pragma once
 
-#include "TexturePresenter.h"
-
 #include "IScene.h"
 #include "../Graphics/Image.h"
 
@@ -22,11 +20,10 @@ public:
 	Graphics::Image* getImage() { return image.get(); }
 
 	//TextureController getController() { return controller; }
-	IPresenter* getPresenter() override { return &controller; }
+	IPresenter* getPresenter() override { return nullptr; }
 
 private:
 	std::unique_ptr<Graphics::Image> image;
-	TexturePresenter controller;
 };
 
 	}

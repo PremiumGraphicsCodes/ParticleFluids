@@ -54,19 +54,19 @@ void SceneShader::render(const Graphics::Camera& camera, const int width, const 
 	switch (target) {
 	case RenderTarget::Shaded:
 	{
-		auto texture = objectRenderer->getTextureScene()->getTextureObject();
+		auto texture = objectRenderer->getTextureScene();
 		renderer.render(*texture);
 		break;
 	}
 	case RenderTarget::ParentId:
 	{
-		auto texture = parentIdRenderer->getTextureScene()->getTextureObject();
+		auto texture = parentIdRenderer->getTextureScene();
 		renderer.render(*texture);
 		break;
 	}
 	case RenderTarget::ChildId:
 	{
-		auto texture = childIdRenderer->getTextureScene()->getTextureObject();
+		auto texture = childIdRenderer->getTextureScene();
 		renderer.render(*texture);
 		break;
 	}

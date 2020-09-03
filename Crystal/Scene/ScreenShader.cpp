@@ -2,8 +2,6 @@
 
 #include "../Shader/GLObjectFactory.h"
 
-#include "ScreenShaderScene.h"
-
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"
 #include "PolygonMeshScene.h"
@@ -20,7 +18,6 @@ ScreenShader::ScreenShader(const std::string& name) :
 	smoothRenderer(new SmoothRenderer()),
 	triagleRenderer(new TriangleRenderer())
 {
-	texture = new TextureShaderScene("ScreenTex");// = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
 }
 
 bool ScreenShader::build(GLObjectFactory& factory)
@@ -38,8 +35,8 @@ bool ScreenShader::build(GLObjectFactory& factory)
 		return false;
 	}
 
-	texture->build(factory);
-	texture->send(Image(512, 512));
+	texture = factory.getTextureFactory()->createTextureObject("");
+	texture.send(Image(512, 512));
 	//texture.create(, 1);
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 	return true;
@@ -52,7 +49,6 @@ void ScreenShader::release(GLObjectFactory& factory)
 
 void ScreenShader::render(const Camera& camera)
 {
-	auto texture = *this->texture->getTextureObject();
 	frameBufferObject->setTexture(texture);
 	//texture.bind();
 	frameBufferObject->bind();

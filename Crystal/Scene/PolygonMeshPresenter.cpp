@@ -4,6 +4,7 @@
 #include "TriangleShaderScene.h"
 
 #include "SceneShader.h"
+#include "SmoothShaderScene.h"
 
 #include "../Graphics/DrawableId.h"
 

@@ -2,6 +2,7 @@
 
 #include "ParticleSystemScene.h"
 #include "SceneShader.h"
+#include "PointShaderScene.h"
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
