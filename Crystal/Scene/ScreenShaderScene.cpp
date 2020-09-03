@@ -29,11 +29,3 @@ void ScreenShaderScene::add(SmoothShaderScene* smooth)
 	smooth->setCamera(camera);
 	this->scenes.push_back(smooth);
 }
-
-void ScreenShaderScene::add(LightShaderScene* light)
-{
-}
-
-void ScreenShaderScene::add(MaterialShaderScene* material)
-{
-}

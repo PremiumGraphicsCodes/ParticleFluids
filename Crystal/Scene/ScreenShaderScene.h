@@ -3,8 +3,6 @@
 #include "PointShaderScene.h"
 #include "LineShaderScene.h"
 #include "SmoothShaderScene.h"
-#include "MaterialShaderScene.h"
-#include "LightShaderScene.h"
 
 #include <list>
 
@@ -22,10 +20,6 @@ public:
 	void add(LineShaderScene* line);
 
 	void add(SmoothShaderScene* smooth);
-
-	void add(LightShaderScene* light);
-
-	void add(MaterialShaderScene* material);
 
 	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
 
