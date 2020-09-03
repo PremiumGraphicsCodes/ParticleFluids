@@ -2,7 +2,6 @@
 
 #include "IScene.h"
 #include "../Shape/Face.h"
-#include "SmoothShader.h"
 
 namespace Crystal {
 	namespace Scene {

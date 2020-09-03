@@ -58,7 +58,6 @@
     <ClInclude Include="VolumePresenter.h" />
     <ClInclude Include="WireFramePresenter.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="SmoothShader.h" />
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
@@ -111,7 +110,6 @@
     <ClCompile Include="WireFramePresenter.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SmoothShader.cpp" />
     <ClCompile Include="TransformScene.cpp" />
     <ClCompile Include="WireFrameScene.cpp" />
   </ItemGroup>

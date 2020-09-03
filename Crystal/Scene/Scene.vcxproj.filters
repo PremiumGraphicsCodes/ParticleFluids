@@ -64,9 +64,6 @@
     <ClInclude Include="TextureScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="SmoothShader.h">
-      <Filter>SceneShader\Smooth</Filter>
-    </ClInclude>
     <ClInclude Include="ScreenIdShader.h">
       <Filter>SceneShader\ScreenId</Filter>
     </ClInclude>
@@ -192,9 +189,6 @@
     </ClCompile>
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
-    </ClCompile>
-    <ClCompile Include="SmoothShader.cpp">
-      <Filter>SceneShader\Smooth</Filter>
     </ClCompile>
     <ClCompile Include="ScreenIdShader.cpp">
       <Filter>SceneShader\ScreenId</Filter>

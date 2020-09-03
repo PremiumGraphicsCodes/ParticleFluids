@@ -1,5 +1,7 @@
 #include "SmoothShaderScene.h"
-#include "SmoothShader.h"
+#include "CameraShaderScene.h"
+
+#include "../Shader/SmoothRenderer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shader;
@@ -48,6 +50,7 @@ void SmoothShaderScene::send(const SmoothBuffer& buffer)
 
 void SmoothShaderScene::render()
 {
-	shader->send(*this);
-	shader->render();
+	rBuffer.modelViewMatrix = camera->getModelViewMatrix();
+	rBuffer.projectionMatrix = camera->getProjectionMatrix();
+	shader->render(rBuffer);
 }

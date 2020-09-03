@@ -18,7 +18,7 @@ ShaderRepository::ShaderRepository(const std::string& name) :
 	IShaderScene(name),
 	pointRenderer(new PointRenderer()),
 	wireRenderer(new LineRenderer()),
-	smoothRenderer(new SmoothShader("SmoothRenderer")),
+	smoothRenderer(new SmoothRenderer()),
 	triagleRenderer(new TriangleRenderer()),
 	buffer("ScreenBuffer")
 {

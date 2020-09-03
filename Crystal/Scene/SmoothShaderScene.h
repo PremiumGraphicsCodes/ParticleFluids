@@ -8,6 +8,7 @@
 #include "../Graphics/Material.h"
 
 #include "../Shader/VertexBufferObject.h"
+#include "../Shader/SmoothRenderer.h"
 #include "IShaderScene.h"
 
 namespace Crystal {
@@ -68,15 +69,16 @@ public:
 
 	void render() override;
 
-	void setShader(SmoothShader* shader) { this->shader = shader; }
+	void setShader(Shader::SmoothRenderer* shader) { this->shader = shader; }
 
 	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
 
 	CameraShaderScene* getCamera() const { return camera; }
 
 private:
-	SmoothShader* shader;
+	Shader::SmoothRenderer* shader;
 	CameraShaderScene* camera;
+	Shader::SmoothRenderer::Buffer rBuffer;
 };
 
 	}

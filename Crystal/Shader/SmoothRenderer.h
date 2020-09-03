@@ -2,6 +2,7 @@
 
 #include "GLObjectFactory.h"
 #include "VertexBufferObject.h"
+#include "../Shader/TextureObject.h"
 
 namespace Crystal {
 	namespace Shader {
