@@ -67,17 +67,12 @@ public:
 
 	void release(Shader::GLObjectFactory& glFactory) override;
 
-	void render() override;
+	void render(const Graphics::Camera& camera) override;
 
 	void setShader(Shader::SmoothRenderer* shader) { this->shader = shader; }
 
-	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
-
-	CameraShaderScene* getCamera() const { return camera; }
-
 private:
 	Shader::SmoothRenderer* shader;
-	CameraShaderScene* camera;
 	Shader::SmoothRenderer::Buffer rBuffer;
 };
 

@@ -16,11 +16,7 @@ class ScreenShaderScene
 public:
 	ScreenShaderScene();
 
-	void add(ParticleSystemScene* point, Shader::GLObjectFactory& factory, Shader::PointRenderer* shader);
-
-	void add(LineShaderScene* line);
-
-	void add(SmoothShaderScene* smooth);
+	void add(IShaderScene* scene);
 
 	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
 

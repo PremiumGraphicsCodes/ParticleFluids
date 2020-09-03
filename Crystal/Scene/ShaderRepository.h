@@ -38,7 +38,7 @@ public:
 
 	//void setBuffer(const ScreenShaderScene& buffer);
 
-	void render(const std::vector<IShaderScene*>& scenes);
+	void render(const std::vector<IShaderScene*>& scenes, const Graphics::Camera& camera);
 
 	struct Mask
 	{

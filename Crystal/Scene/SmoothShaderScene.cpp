@@ -48,9 +48,9 @@ void SmoothShaderScene::send(const SmoothBuffer& buffer)
 	matrix = buffer.getMatrix();
 }
 
-void SmoothShaderScene::render()
+void SmoothShaderScene::render(const Graphics::Camera& camera)
 {
-	rBuffer.modelViewMatrix = camera->getModelViewMatrix();
-	rBuffer.projectionMatrix = camera->getProjectionMatrix();
+	rBuffer.modelViewMatrix = camera.getModelViewMatrix();
+	rBuffer.projectionMatrix = camera.getProjectionMatrix();
 	shader->render(rBuffer);
 }

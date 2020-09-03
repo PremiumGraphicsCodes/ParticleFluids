@@ -10,7 +10,6 @@ CameraScene::CameraScene(const int id, const std::string& name, Camera* camera) 
 	IScene(id, name),
 	camera(camera)
 {
-	controller = std::make_unique<CameraPresenter>(this);
 }
 
 

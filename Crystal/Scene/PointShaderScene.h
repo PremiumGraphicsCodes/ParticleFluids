@@ -6,7 +6,6 @@
 #include "../Shader/VertexArrayObject.h"
 #include "../Graphics/Camera.h"
 #include "../Shader/PointRenderer.h"
-#include "CameraShaderScene.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -23,20 +22,15 @@ public:
 
 	void release(Shader::GLObjectFactory& glFactory) override;
 
-	void render() override;
+	void render(const Graphics::Camera& camera) override;
 
 	void send(const PointBuffer& buffer);
 
 	void setShader(Shader::PointRenderer* shader);
 
-	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
-
-	CameraShaderScene* getCamera() const { return camera; }
-
 private:
 	Shader::PointRenderer* shader;
 	Shader::PointRenderer::Buffer rBuffer;
-	CameraShaderScene* camera;
 };
 
 	}

@@ -39,9 +39,9 @@ public:
 
 	void release(Shader::GLObjectFactory& factory){};
 
-	void render();
+	void render(const Graphics::Camera& camera);
 
-	void render(const int width, const int height);
+	void render(const Graphics::Camera& camera, const int width, const int height);
 
 	ShaderRepository* getObjectRenderer() { return objectRenderer; }
 

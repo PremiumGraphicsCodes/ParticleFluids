@@ -27,17 +27,12 @@ public:
 
 	void setShader(Shader::TriangleRenderer* shader);
 
-	void setCamera(CameraShaderScene* camera) { this->camera = camera; }
-
-	void render() override;
-
-	CameraShaderScene* getCamera() const { return camera; }
+	void render(const Graphics::Camera& camera) override;
 
 private:
 	std::string name;
 	Shader::TriangleRenderer* shader;
 	Shader::TriangleRenderer::Buffer sBuffer;
-	CameraShaderScene* camera;
 };
 
 	}

@@ -3,8 +3,6 @@
 #include "IScene.h"
 #include "../Graphics/Camera.h"
 
-#include "CameraPresenter.h"
-
 namespace Crystal {
 	namespace Scene {
 
@@ -17,13 +15,12 @@ public:
 
 	Graphics::Camera* getCamera() const { return camera.get(); }
 
-	CameraPresenter* getPresenter() { return controller.get(); }
+	IPresenter* getPresenter() { return nullptr; }
 
 	SceneType getType() const { return SceneType::CameraScene; }
 
 private:
 	std::unique_ptr< Graphics::Camera > camera;
-	std::unique_ptr< CameraPresenter > controller;
 
 };
 

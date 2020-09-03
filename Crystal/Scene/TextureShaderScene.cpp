@@ -22,7 +22,7 @@ void TextureShaderScene::release(GLObjectFactory& glFactory)
 	this->textureObject.clear();
 }
 
-void TextureShaderScene::render()
+void TextureShaderScene::render(const Camera& camera)
 {
 
 }

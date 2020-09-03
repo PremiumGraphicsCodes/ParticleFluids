@@ -1,8 +1,8 @@
 #include "TriangleShaderScene.h"
 
 #include "../Shader/TriangleRenderer.h"
-#include "CameraShaderScene.h"
 
+using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
@@ -27,10 +27,10 @@ void TriangleShaderScene::send(const TriangleBuffer& buffer)
 	sBuffer.indices = buffer.getIndices().get();
 }
 
-void TriangleShaderScene::render()
+void TriangleShaderScene::render(const Camera& camera)
 {
-	sBuffer.projectionMatrix = camera->getProjectionMatrix();
-	sBuffer.modelViewMatrix = camera->getModelViewMatrix();
+	sBuffer.projectionMatrix = camera.getProjectionMatrix();
+	sBuffer.modelViewMatrix = camera.getModelViewMatrix();
 	shader->render(sBuffer);
 }
 

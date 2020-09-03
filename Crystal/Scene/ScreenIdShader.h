@@ -35,7 +35,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory);
 
-	void render(std::vector<IShaderScene*> scenes);
+	void render(std::vector<IShaderScene*> scenes, const Graphics::Camera& camera);
 
 	Graphics::DrawableID getId(const double x, const double y);
 

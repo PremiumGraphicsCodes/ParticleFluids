@@ -36,7 +36,7 @@ void ScreenIdShader::release(GLObjectFactory& factory)
 
 }
 
-void ScreenIdShader::render(std::vector<IShaderScene*> scenes)
+void ScreenIdShader::render(std::vector<IShaderScene*> scenes, const Graphics::Camera& camera)
 {
 	frameBufferObject->setTexture(*texture->getTextureObject());
 	//texture.bind();
@@ -48,7 +48,7 @@ void ScreenIdShader::render(std::vector<IShaderScene*> scenes)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for (auto s : scenes) {
-		s->render();
+		s->render(camera);
 	}
 
 	frameBufferObject->unbind();

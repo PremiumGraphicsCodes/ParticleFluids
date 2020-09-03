@@ -16,23 +16,15 @@ ScreenIdShaderScene::ScreenIdShaderScene()
 
 void ScreenIdShaderScene::add(PointShaderScene* scene)
 {
-	scene->setCamera(camera);
 	this->scenes.push_back(scene);
 }
 
 void ScreenIdShaderScene::add(LineShaderScene* scene)
 {
-	scene->setCamera(camera);
 	this->scenes.push_back(scene);
 }
 
 void ScreenIdShaderScene::add(TriangleShaderScene* scene)
 {
-	scene->setCamera(camera);
 	this->scenes.push_back(scene);
-}
-
-void ScreenIdShaderScene::setCamera(CameraShaderScene* camera)
-{
-	this->camera = camera;
 }

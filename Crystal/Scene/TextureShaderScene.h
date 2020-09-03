@@ -25,7 +25,7 @@ public:
 
 	void release(Shader::GLObjectFactory& glFactory);
 
-	void render();
+	void render(const Graphics::Camera& camera);
 
 	void send(const Graphics::Image& image);
 

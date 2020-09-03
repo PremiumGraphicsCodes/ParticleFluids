@@ -97,9 +97,6 @@
     <ClInclude Include="IShaderScene.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
-    <ClInclude Include="CameraShaderScene.h">
-      <Filter>SceneShader</Filter>
-    </ClInclude>
     <ClInclude Include="TextureShaderScene.h">
       <Filter>SceneShader\Texture</Filter>
     </ClInclude>
@@ -119,9 +116,6 @@
       <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshPresenter.h">
-      <Filter>Presenter</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraPresenter.h">
       <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="TexturePresenter.h">
@@ -202,9 +196,6 @@
     <ClCompile Include="CameraScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="CameraShaderScene.cpp">
-      <Filter>SceneShader</Filter>
-    </ClCompile>
     <ClCompile Include="TextureShaderScene.cpp">
       <Filter>SceneShader\Texture</Filter>
     </ClCompile>
@@ -218,9 +209,6 @@
       <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshPresenter.cpp">
-      <Filter>Presenter</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraPresenter.cpp">
       <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="TexturePresenter.cpp">

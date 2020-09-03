@@ -2,6 +2,7 @@
 
 #include <list>
 #include <string>
+#include "../Graphics/Camera.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -22,7 +23,7 @@ public:
 
 	virtual void release(Shader::GLObjectFactory& glFactory) = 0;
 
-	virtual void render() = 0;
+	virtual void render(const Graphics::Camera& camera) = 0;
 
 	std::string getName() const { return name; }
 

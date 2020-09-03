@@ -23,27 +23,8 @@ public:
 
 	std::vector<IShaderScene*> getScenes() const { return scenes; }
 
-	void setCamera(CameraShaderScene* camera);
-
 private:
 	std::vector<IShaderScene*> scenes;
-	CameraShaderScene* camera;
-};
-
-class ScreenChildIdShaderScene
-{
-public:
-	void add(PointShaderScene* scene);
-
-	void add(LineShaderScene* scene);
-
-	void add(TriangleShaderScene* scene);
-
-	void setCamera(CameraShaderScene* camera);
-
-	std::vector<IShaderScene*> scenes;
-	CameraShaderScene* camera;
-
 };
 
 	}

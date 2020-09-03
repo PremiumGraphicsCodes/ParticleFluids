@@ -148,7 +148,7 @@ bool Window::init()
 
 	world->init();
 	world->getRenderer()->build(*world->getGLFactory());
-	world->getCamera()->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	//world->getCamera()->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 	//auto camera = world->getCamera()->getController().getView();
 	//world->getRenderer()->getScene()->setCamera(camera);
 
@@ -183,7 +183,7 @@ void Window::show()
 
 		int width, height;
 		glfwGetWindowSize(window, &width, &height);
-		world->getRenderer()->render(width, height);
+		world->getRenderer()->render(*world->getCamera()->getCamera(), width, height);
 		const auto animations = world->getAnimations();
 		for (auto& a : animations) {
 			a->step();

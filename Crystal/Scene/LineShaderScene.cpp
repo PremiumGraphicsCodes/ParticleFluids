@@ -1,6 +1,7 @@
 
 #include "LineShaderScene.h"
 
+using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
@@ -41,10 +42,10 @@ void LineShaderScene::send(const LineBuffer& buffer)
 	sBuffer.lineWidth = buffer.getWidth();
 }
 
-void LineShaderScene::render()
+void LineShaderScene::render(const Camera& camera)
 {
 	//shader->setScene(this);
-	sBuffer.modelViewMatrix = camera->getModelViewMatrix();
-	sBuffer.projectionMatrix = camera->getProjectionMatrix();
+	sBuffer.modelViewMatrix = camera.getModelViewMatrix();
+	sBuffer.projectionMatrix = camera.getProjectionMatrix();
 	shader->render(sBuffer);
 }

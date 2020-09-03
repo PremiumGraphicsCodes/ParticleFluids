@@ -21,6 +21,6 @@ bool CameraRotateCommand::execute(World* scene)
 	Matrix3df matrix = args.matrix.getValue();
 	auto camera = scene->getCamera()->getCamera();
 	camera->rotate(matrix);
-	scene->getCamera()->getPresenter()->updateView();
+	//scene->getCamera()->getPresenter()->updateView();
 	return true;
 }
