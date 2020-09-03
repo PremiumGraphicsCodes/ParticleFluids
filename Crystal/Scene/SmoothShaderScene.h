@@ -51,14 +51,6 @@ private:
 class SmoothShaderScene : public IShaderScene
 {
 public:
-	Shader::VertexBufferObject position;
-	Shader::VertexBufferObject normal;
-	Shader::VertexBufferObject texCoord;
-	Shader::VertexBufferObject materialId;
-	Shader::VertexBufferObject specularTexId;
-	int count = 0;
-	Math::Matrix4df matrix;
-
 	explicit SmoothShaderScene(const std::string& name);
 
 	bool build(Shader::GLObjectFactory& glFactory) override;

@@ -21,30 +21,30 @@ void SmoothBuffer::addVertex(const Vector3df& position, const Vector3df& normal,
 
 bool SmoothShaderScene::build(GLObjectFactory& glFactory)
 {
-	position.build();
-	normal.build();
-	texCoord.build();
-	materialId.build();
+	rBuffer.position.build();
+	rBuffer.normal.build();
+	rBuffer.texCoord.build();
+	rBuffer.materialId.build();
 	return true;
 }
 
 void SmoothShaderScene::release(GLObjectFactory& glFactory)
 {
-	position.release();
-	normal.release();
-	texCoord.release();
-	materialId.release();
+	rBuffer.position.release();
+	rBuffer.normal.release();
+	rBuffer.texCoord.release();
+	rBuffer.materialId.release();
 }
 
 void SmoothShaderScene::send(const SmoothBuffer& buffer)
 {
-	position.send(buffer.getPositions().get());
-	normal.send(buffer.getNormals().get());
-	texCoord.send(buffer.getTexCoords().get());
-	materialId.send(buffer.getMaterialIds().get());
+	rBuffer.position.send(buffer.getPositions().get());
+	rBuffer.normal.send(buffer.getNormals().get());
+	rBuffer.texCoord.send(buffer.getTexCoords().get());
+	rBuffer.materialId.send(buffer.getMaterialIds().get());
 
-	count = buffer.getPositions().get().size() / 3;
-	matrix = buffer.getMatrix();
+	rBuffer.count = buffer.getPositions().get().size() / 3;
+	rBuffer.matrix = buffer.getMatrix();
 }
 
 void SmoothShaderScene::render(const Graphics::Camera& camera)
