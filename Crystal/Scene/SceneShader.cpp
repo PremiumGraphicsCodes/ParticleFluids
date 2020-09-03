@@ -42,20 +42,7 @@ bool SceneShader::build(GLObjectFactory& factory)
 
 void SceneShader::render()
 {
-	//objectRenderer->setBuffer(scene.screen);
-	const auto& pb = scene.screen.getPointBuffers();
-	for (auto p : pb) {
-		objectRenderer->addScene(p);
-	}
-	const auto& lb = scene.screen.getLineBuffers();
-	for (auto l : lb) {
-		objectRenderer->addScene(l);
-	}
-	const auto& sb = scene.screen.getSmoothBuffers();
-	for (auto s : sb) {
-		objectRenderer->addScene(s);
-	}
-	objectRenderer->render();
+	objectRenderer->render(scene.screen.getScenes());
 	parentIdRenderer->render(scene.parentId.getScenes());
 	childIdRenderer->render(scene.childId.getScenes());
 }

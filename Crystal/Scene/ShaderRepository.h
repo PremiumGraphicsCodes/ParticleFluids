@@ -38,9 +38,7 @@ public:
 
 	//void setBuffer(const ScreenShaderScene& buffer);
 
-	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
-
-	void render();
+	void render(const std::vector<IShaderScene*>& scenes);
 
 	struct Mask
 	{
@@ -81,7 +79,6 @@ private:
 
 	TextureShaderScene* texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
-	std::vector<IShaderScene*> scenes;
 };
 	}
 }

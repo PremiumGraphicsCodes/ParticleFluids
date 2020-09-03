@@ -50,7 +50,7 @@ void ShaderRepository::release(GLObjectFactory& factory)
 	//TODO;
 }
 
-void ShaderRepository::render()
+void ShaderRepository::render(const std::vector<IShaderScene*>& scenes)
 {
 	auto texture = *this->texture->getTextureObject();
 	frameBufferObject->setTexture(texture);
