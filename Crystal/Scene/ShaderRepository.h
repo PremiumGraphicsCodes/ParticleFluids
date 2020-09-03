@@ -36,7 +36,9 @@ public:
 
 	void release(Shader::GLObjectFactory& factory);
 
-	void setBuffer(const ScreenShaderScene& buffer);
+	//void setBuffer(const ScreenShaderScene& buffer);
+
+	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 
 	void render();
 
@@ -79,7 +81,7 @@ private:
 
 	TextureShaderScene* texture;
 	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
-	ScreenShaderScene buffer;
+	std::vector<IShaderScene*> scenes;
 };
 	}
 }

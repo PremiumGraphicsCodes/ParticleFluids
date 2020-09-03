@@ -18,8 +18,7 @@ ShaderRepository::ShaderRepository(const std::string& name) :
 	pointRenderer(new PointRenderer()),
 	wireRenderer(new LineRenderer()),
 	smoothRenderer(new SmoothRenderer()),
-	triagleRenderer(new TriangleRenderer()),
-	buffer("ScreenBuffer")
+	triagleRenderer(new TriangleRenderer())
 {
 	texture = new TextureShaderScene("ScreenTex");// = factory.getTextureFactory()->createTextureObject("Scene",Image(512, 512));
 }
@@ -51,11 +50,6 @@ void ShaderRepository::release(GLObjectFactory& factory)
 	//TODO;
 }
 
-void ShaderRepository::setBuffer(const ScreenShaderScene& buffer)
-{
-	this->buffer = buffer;
-}
-
 void ShaderRepository::render()
 {
 	auto texture = *this->texture->getTextureObject();
@@ -65,27 +59,10 @@ void ShaderRepository::render()
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	if (mask.showPoints) {
-		const auto& pointBuffers = buffer.getPointBuffers();
-		for (auto pb : pointBuffers) {
-			pb->render();
-		}
+
+	for (auto s : scenes) {
+		s->render();
 	}
 
-	if (mask.showLines) {
-		const auto& lineBuffers = buffer.getLineBuffers();
-		for (auto lb : lineBuffers) {
-			lb->render();
-		}
-	}
-	if (mask.showTrianlges) {
-		const auto& pmScenes = buffer.getSmoothBuffers();
-		for (auto pm : pmScenes) {
-			pm->render();
-//			smoothRenderer->send(*pm);
-//			smoothRenderer->render();
-		}
-	}
-	//texture.unbind();
 	frameBufferObject->unbind();
 }
