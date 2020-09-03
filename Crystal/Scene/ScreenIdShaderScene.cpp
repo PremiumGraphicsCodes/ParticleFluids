@@ -10,12 +10,7 @@
 
 using namespace Crystal::Scene;
 
-ScreenIdShaderScene::ScreenIdShaderScene(const std::string& name) :
-	IShaderScene(name)
-{
-}
-
-void ScreenIdShaderScene::render()
+ScreenIdShaderScene::ScreenIdShaderScene()
 {
 }
 

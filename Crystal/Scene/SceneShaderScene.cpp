@@ -4,10 +4,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 SceneShaderScene::SceneShaderScene(const std::string& name) :
-	IShaderScene(name),
-	screen("ScreenScene"),
-	parentId("ParentIdScene"),
-	childId("ChildIdScene")
+	IShaderScene(name)
 {
 }
 
@@ -21,8 +18,5 @@ void SceneShaderScene::setCamera(CameraShaderScene* camera)
 
 bool SceneShaderScene::build(GLObjectFactory& glFactory)
 {
-	screen.build(glFactory);
-	parentId.build(glFactory);
-	childId.build(glFactory);
 	return true;
 }

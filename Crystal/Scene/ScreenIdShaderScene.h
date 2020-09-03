@@ -10,16 +10,10 @@ namespace Crystal {
 		class WireFrameScene;
 		class PolygonMeshScene;
 
-class ScreenIdShaderScene : public IShaderScene
+class ScreenIdShaderScene
 {
 public:
-	explicit ScreenIdShaderScene(const std::string& name);
-
-	bool build(Shader::GLObjectFactory& glFactory) { return true; }
-
-	void release(Shader::GLObjectFactory& glFactory) {}
-
-	void render() override;
+	ScreenIdShaderScene();
 
 	void add(PointShaderScene* scene);
 

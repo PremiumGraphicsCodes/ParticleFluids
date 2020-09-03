@@ -8,20 +8,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-ScreenShaderScene::ScreenShaderScene(const std::string& name) :
-	IShaderScene(name)
-{}
-
-bool ScreenShaderScene::build(GLObjectFactory& glFactory)
-{
-	return true;
-}
-
-void ScreenShaderScene::release(GLObjectFactory& glFactory)
-{
-}
-
-void ScreenShaderScene::render()
+ScreenShaderScene::ScreenShaderScene()
 {
 }
 
