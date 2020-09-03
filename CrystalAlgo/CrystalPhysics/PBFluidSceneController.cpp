@@ -18,7 +18,7 @@ void PBFluidSceneController::createView(SceneShader* sceneShader, GLObjectFactor
 		this->view = new PointShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
 		this->view->build(glFactory);
-		sceneShader->getScene()->screen.add(this->view);
+		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	updateView();
 }
