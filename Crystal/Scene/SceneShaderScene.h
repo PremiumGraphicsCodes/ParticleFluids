@@ -6,22 +6,15 @@
 namespace Crystal {
 	namespace Scene {
 
-class SceneShaderScene : public IShaderScene
+class SceneShaderScene
 {
 public:
-	explicit SceneShaderScene(const std::string& name);
-
-	bool build(Shader::GLObjectFactory& glFactory) override;
-
-	void release(Shader::GLObjectFactory& glFactory) {}
-
-	void render() {};
-
 	void setCamera(CameraShaderScene* camera);
 
 	ScreenShaderScene screen;
 	ScreenIdShaderScene parentId;
 	ScreenIdShaderScene childId;
+
 };
 
 	}

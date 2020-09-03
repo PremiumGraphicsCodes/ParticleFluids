@@ -28,18 +28,18 @@ enum RenderTarget
 	ChildId,
 };
 
-class SceneShader : public IShaderScene
+class SceneShader
 {
 public:
 	SceneShader();
 
 	~SceneShader() {}
 
-	bool build(Shader::GLObjectFactory& factory) override;
+	bool build(Shader::GLObjectFactory& factory);
 
-	void release(Shader::GLObjectFactory& factory) override {};
+	void release(Shader::GLObjectFactory& factory){};
 
-	void render() override;
+	void render();
 
 	void render(const int width, const int height);
 
@@ -61,10 +61,7 @@ private:
 	ScreenIdShader* childIdRenderer;
 
 	SceneShaderScene scene;
-
 	RenderTarget target;
-
-	bool showOffScreen;
 };
 
 	}
