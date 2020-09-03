@@ -27,18 +27,12 @@ public:
 
 	void add(TriangleShaderScene* scene);
 
-	std::vector<PointShaderScene*> getPointScenes() const { return pointScenes; }
-
-	std::vector<LineShaderScene*> getLineScenes() const { return lineScenes; }
-
-	std::vector<TriangleShaderScene*> getTriangleScenes() const { return triangleIdBuffers; }
+	std::vector<IShaderScene*> getScenes() const { return scenes; }
 
 	void setCamera(CameraShaderScene* camera);
 
 private:
-	std::vector<PointShaderScene*> pointScenes;
-	std::vector<LineShaderScene*> lineScenes;
-	std::vector<TriangleShaderScene*> triangleIdBuffers;
+	std::vector<IShaderScene*> scenes;
 	CameraShaderScene* camera;
 };
 

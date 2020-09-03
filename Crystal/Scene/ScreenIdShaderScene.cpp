@@ -17,33 +17,24 @@ ScreenIdShaderScene::ScreenIdShaderScene(const std::string& name) :
 
 void ScreenIdShaderScene::render()
 {
-	for (auto c : pointScenes) {
-		c->render();
-	}
-	for (auto c : lineScenes) {
-		c->render();
-	}
-	for (auto t : triangleIdBuffers) {
-		t->render();
-	}
 }
 
 void ScreenIdShaderScene::add(PointShaderScene* scene)
 {
 	scene->setCamera(camera);
-	this->pointScenes.push_back(scene);
+	this->scenes.push_back(scene);
 }
 
 void ScreenIdShaderScene::add(LineShaderScene* scene)
 {
 	scene->setCamera(camera);
-	this->lineScenes.push_back(scene);
+	this->scenes.push_back(scene);
 }
 
 void ScreenIdShaderScene::add(TriangleShaderScene* scene)
 {
 	scene->setCamera(camera);
-	this->triangleIdBuffers.push_back(scene);
+	this->scenes.push_back(scene);
 }
 
 void ScreenIdShaderScene::setCamera(CameraShaderScene* camera)

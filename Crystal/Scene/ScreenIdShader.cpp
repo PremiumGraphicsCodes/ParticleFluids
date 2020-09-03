@@ -10,11 +10,9 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 ScreenIdShader::ScreenIdShader(const std::string& name) :
-	IShaderScene(name),
 	lineBuffer("LineIdBuffer"),
 	//lineIdRenderer("LineIdRenderer"),
-	triangleBuffer("TriangleIdBuffer"),
-	buffer("ScreenIdBuffer")
+	triangleBuffer("TriangleIdBuffer")
 {
 	texture = new TextureShaderScene("IdTexture");
 }
@@ -38,17 +36,8 @@ void ScreenIdShader::release(GLObjectFactory& factory)
 
 }
 
-void ScreenIdShader::setBuffer(const ScreenIdShaderScene& vm)
+void ScreenIdShader::render(std::vector<IShaderScene*> scenes)
 {
-	this->buffer = vm;
-}
-
-void ScreenIdShader::render()
-{
-	//const auto& pointBuffers = vm.pointIdBuffers;
-	//const auto& lineBuffers = vm.lineIdBuffers;
-	//const auto& triangleBuffers = vm.triangleIdBuffers;
-
 	frameBufferObject->setTexture(*texture->getTextureObject());
 	//texture.bind();
 	frameBufferObject->bind();
@@ -58,18 +47,8 @@ void ScreenIdShader::render()
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-	const auto& pbs = buffer.getPointScenes();
-	for (auto pb : pbs) {
-		pb->render();
-	}
-	const auto& lbs = buffer.getLineScenes();
-	for (auto lb : lbs) {
-		lb->render();
-	}
-	const auto& tbs = buffer.getTriangleScenes();
-	for (auto tb : tbs) {
-		tb->render();
+	for (auto s : scenes) {
+		s->render();
 	}
 
 	frameBufferObject->unbind();

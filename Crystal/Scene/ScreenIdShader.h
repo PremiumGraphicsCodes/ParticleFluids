@@ -8,7 +8,6 @@
 //#include "../Scene/PointShader.h"
 #include "../Scene/LineShaderScene.h"
 
-#include "IShaderScene.h"
 #include "TextureShaderScene.h"
 
 #include "ScreenIdShaderScene.h"
@@ -25,20 +24,18 @@ namespace Crystal {
 		class SceneFactory;
 		class ScreenIdShaderScene;
 
-class ScreenIdShader : public IShaderScene
+class ScreenIdShader //: public IShaderScene
 {
 public:
 	explicit ScreenIdShader(const std::string& name);
 
 	~ScreenIdShader() {}
 
-	bool build(Shader::GLObjectFactory& factory) override;
+	bool build(Shader::GLObjectFactory& factory);
 
-	void release(Shader::GLObjectFactory& factory) override;
+	void release(Shader::GLObjectFactory& factory);
 
-	void setBuffer(const ScreenIdShaderScene& buffer);
-
-	void render() override;
+	void render(std::vector<IShaderScene*> scenes);
 
 	Graphics::DrawableID getId(const double x, const double y);
 
@@ -52,8 +49,6 @@ private:
 
 	TextureShaderScene* texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
-
-	ScreenIdShaderScene buffer;
 };
 	}
 }

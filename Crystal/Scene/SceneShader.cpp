@@ -56,10 +56,8 @@ void SceneShader::render()
 		objectRenderer->addScene(s);
 	}
 	objectRenderer->render();
-	parentIdRenderer->setBuffer(scene.parentId);
-	parentIdRenderer->render();
-	childIdRenderer->setBuffer(scene.childId);
-	childIdRenderer->render();
+	parentIdRenderer->render(scene.parentId.getScenes());
+	childIdRenderer->render(scene.childId.getScenes());
 }
 
 void SceneShader::render(const int width, const int height)
