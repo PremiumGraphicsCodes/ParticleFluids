@@ -18,7 +18,7 @@ ParticleSystemPresenter::ParticleSystemPresenter(ParticleSystemScene* model) :
 void ParticleSystemPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
-		sceneShader->getScene()->screen.add(model, glFactory, sceneShader->getObjectRenderer()->getPointShader());
+		sceneShader->getScene()->add(model, glFactory, sceneShader->getObjectRenderer()->getPointShader());
 	}
 
 	{

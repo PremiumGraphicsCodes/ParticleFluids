@@ -30,5 +30,21 @@ private:
 	CameraShaderScene* camera;
 };
 
+class ScreenChildIdShaderScene
+{
+public:
+	void add(PointShaderScene* scene);
+
+	void add(LineShaderScene* scene);
+
+	void add(TriangleShaderScene* scene);
+
+	void setCamera(CameraShaderScene* camera);
+
+	std::vector<IShaderScene*> scenes;
+	CameraShaderScene* camera;
+
+};
+
 	}
 }

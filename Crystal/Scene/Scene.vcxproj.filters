@@ -121,9 +121,6 @@
     <ClInclude Include="PolygonMeshPresenter.h">
       <Filter>Presenter</Filter>
     </ClInclude>
-    <ClInclude Include="VolumePresenter.h">
-      <Filter>Presenter</Filter>
-    </ClInclude>
     <ClInclude Include="CameraPresenter.h">
       <Filter>Presenter</Filter>
     </ClInclude>
@@ -221,9 +218,6 @@
       <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshPresenter.cpp">
-      <Filter>Presenter</Filter>
-    </ClCompile>
-    <ClCompile Include="VolumePresenter.cpp">
       <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="CameraPresenter.cpp">
