@@ -1,7 +1,6 @@
 #pragma once
 
-#include "ScreenShaderScene.h"
-#include "ScreenIdShaderScene.h"
+#include "IShaderScene.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -9,17 +8,22 @@ namespace Crystal {
 class SceneShaderScene
 {
 public:
-	/*
-	void add(ParticleSystemScene* model, Shader::GLObjectFactory& glFactory, Shader::PointRenderer* renderer);
+	void addScene(IShaderScene* scene);
 
-	void add(WireFrameScene* model);
+	void addParentIdScene(IShaderScene* scene);
 
-	void add(PolygonMeshScene* model);
-	*/
+	void addChildIdScene(IShaderScene* scene);
 
-	ScreenShaderScene screen;
-	ScreenIdShaderScene parentId;
-	ScreenIdShaderScene childId;
+	std::vector<IShaderScene*> getScreenScenes() const { return screenScenes; }
+
+	std::vector<IShaderScene*> getParentIdScenes() const { return parentIdScenes; }
+
+	std::vector<IShaderScene*> getChildIdScenes() const { return childIdScenes; }
+
+private:
+	std::vector<IShaderScene*> screenScenes;
+	std::vector<IShaderScene*> parentIdScenes;
+	std::vector<IShaderScene*> childIdScenes;
 
 };
 

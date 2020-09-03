@@ -3,7 +3,6 @@
 #include "../Util/UnCopyable.h"
 
 #include "Scene.h"
-#include "ScreenIdShaderScene.h"
 #include "SceneIdProvider.h"
 
 #include "SceneShader.h"

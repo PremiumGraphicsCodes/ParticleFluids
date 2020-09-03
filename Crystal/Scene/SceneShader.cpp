@@ -39,9 +39,9 @@ bool SceneShader::build(GLObjectFactory& factory)
 
 void SceneShader::render(const Camera& camera)
 {
-	objectRenderer->render(scene.screen.getScenes(), camera);
-	parentIdRenderer->render(scene.parentId.getScenes(), camera);
-	childIdRenderer->render(scene.childId.getScenes(), camera);
+	objectRenderer->render(scene.getScreenScenes(), camera);
+	parentIdRenderer->render(scene.getParentIdScenes(), camera);
+	childIdRenderer->render(scene.getChildIdScenes(), camera);
 }
 
 void SceneShader::render(const Graphics::Camera& camera, const int width, const int height)

@@ -20,7 +20,7 @@ void PMToWFPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFa
 		this->view = new LineShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
 		this->view->build(glFactory);
-		sceneShader->getScene()->screen.add(this->view);
+		sceneShader->getScene()->addScene(this->view);
 	}
 	/*
 	{

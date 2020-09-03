@@ -7,8 +7,6 @@
 #include "ScreenIdShader.h"
 
 #include "ScreenShaderScene.h"
-#include "ScreenIdShaderScene.h"
-
 #include "SceneShaderScene.h"
 
 #include "IShaderScene.h"

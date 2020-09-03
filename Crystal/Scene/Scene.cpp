@@ -1,7 +1,5 @@
 #include "Scene.h"
 
-#include "ScreenIdShaderScene.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;

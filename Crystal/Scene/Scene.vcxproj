@@ -54,7 +54,6 @@
     <ClInclude Include="TransformScene.h" />
     <ClInclude Include="LightScene.h" />
     <ClInclude Include="MaterialScene.h" />
-    <ClInclude Include="ScreenIdShaderScene.h" />
     <ClInclude Include="SceneId.h" />
     <ClInclude Include="SceneIdProvider.h" />
     <ClInclude Include="Scene.h" />
@@ -80,7 +79,6 @@
     <ClCompile Include="PolygonMeshPresenter.cpp" />
     <ClCompile Include="SceneShaderScene.cpp" />
     <ClCompile Include="ScreenIdShader.cpp" />
-    <ClCompile Include="ScreenIdShaderScene.cpp" />
     <ClCompile Include="ScreenShaderScene.cpp" />
     <ClCompile Include="ShaderRepository.cpp" />
     <ClCompile Include="ParticleSystemScene.cpp" />

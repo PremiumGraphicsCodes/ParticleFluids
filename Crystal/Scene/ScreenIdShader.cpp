@@ -1,5 +1,4 @@
 #include "ScreenIdShader.h"
-#include "../../Crystal/Scene/ScreenIdShaderScene.h"
 
 #include "../Shader/GLObjectFactory.h"
 
@@ -9,19 +8,13 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
-ScreenIdShader::ScreenIdShader(const std::string& name) :
-	lineBuffer("LineIdBuffer"),
-	//lineIdRenderer("LineIdRenderer"),
-	triangleBuffer("TriangleIdBuffer")
+ScreenIdShader::ScreenIdShader(const std::string& name)
 {
 	texture = new TextureShaderScene("IdTexture");
 }
 
 bool ScreenIdShader::build(GLObjectFactory& factory)
 {
-	lineBuffer.build(factory);
-	triangleBuffer.build(factory);
-
 	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
 
 	texture->build(factory);

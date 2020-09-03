@@ -10,8 +10,6 @@
 
 #include "TextureShaderScene.h"
 
-#include "ScreenIdShaderScene.h"
-
 #include "../Util/UnCopyable.h"
 #include <memory>
 
@@ -44,9 +42,6 @@ public:
 	TextureShaderScene* getTextureScene() { return texture; }
 
 private:
-	LineShaderScene lineBuffer;
-	TriangleShaderScene triangleBuffer;
-
 	TextureShaderScene* texture;
 	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
 };

@@ -1,5 +1,4 @@
 #include "SmoothShaderScene.h"
-#include "CameraShaderScene.h"
 
 #include "../Shader/SmoothRenderer.h"
 

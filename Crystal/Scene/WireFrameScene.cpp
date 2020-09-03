@@ -1,7 +1,5 @@
 #include "WireFrameScene.h"
 
-#include "ScreenIdShaderScene.h"
-
 #include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Math;

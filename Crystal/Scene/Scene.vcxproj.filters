@@ -64,9 +64,6 @@
     <ClInclude Include="TextureScene.h">
       <Filter>Scene\Appearance</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenIdShader.h">
-      <Filter>SceneShader\ScreenId</Filter>
-    </ClInclude>
     <ClInclude Include="PointBuffer.h">
       <Filter>SceneShader\Point</Filter>
     </ClInclude>
@@ -81,9 +78,6 @@
     </ClInclude>
     <ClInclude Include="ScreenShaderScene.h">
       <Filter>SceneShader\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenIdShaderScene.h">
-      <Filter>SceneShader\ScreenId</Filter>
     </ClInclude>
     <ClInclude Include="SmoothShaderScene.h">
       <Filter>SceneShader\Smooth</Filter>
@@ -130,6 +124,9 @@
     <ClInclude Include="ShaderRepository.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
+    <ClInclude Include="ScreenIdShader.h">
+      <Filter>SceneShader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -169,9 +166,6 @@
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenIdShader.cpp">
-      <Filter>SceneShader\ScreenId</Filter>
-    </ClCompile>
     <ClCompile Include="PointShaderScene.cpp">
       <Filter>SceneShader\Point</Filter>
     </ClCompile>
@@ -180,9 +174,6 @@
     </ClCompile>
     <ClCompile Include="ScreenShaderScene.cpp">
       <Filter>SceneShader\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenIdShaderScene.cpp">
-      <Filter>SceneShader\ScreenId</Filter>
     </ClCompile>
     <ClCompile Include="SmoothShaderScene.cpp">
       <Filter>SceneShader\Smooth</Filter>
@@ -218,6 +209,9 @@
       <Filter>SceneShader\Triangle</Filter>
     </ClCompile>
     <ClCompile Include="ShaderRepository.cpp">
+      <Filter>SceneShader</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenIdShader.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
   </ItemGroup>
@@ -266,9 +260,6 @@
     </Filter>
     <Filter Include="SceneShader\Screen">
       <UniqueIdentifier>{047ecd1c-8082-4ba8-865d-2104aa99fc07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SceneShader\ScreenId">
-      <UniqueIdentifier>{10586be7-6032-4329-8d9f-49fb8c1d71a1}</UniqueIdentifier>
     </Filter>
     <Filter Include="SceneShader\Texture">
       <UniqueIdentifier>{571391d4-42bd-4ef6-90ca-d2ae252713fd}</UniqueIdentifier>
