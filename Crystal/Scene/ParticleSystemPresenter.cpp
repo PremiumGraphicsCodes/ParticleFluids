@@ -18,10 +18,7 @@ ParticleSystemPresenter::ParticleSystemPresenter(ParticleSystemScene* model) :
 void ParticleSystemPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
-		this->view = new PointShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
-		sceneShader->getScene()->screen.add(this->view);
+		sceneShader->getScene()->screen.add(model, glFactory, sceneShader->getObjectRenderer()->getPointShader());
 	}
 
 	{
@@ -49,13 +46,6 @@ void ParticleSystemPresenter::updateView()
 
 void ParticleSystemPresenter::updateScreenView()
 {
-	const auto& ps = model->getShape()->getParticles();
-	PointBuffer pb;
-	for (auto p : ps) {
-		pb.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
-	}
-	pb.setMatrix(model->getMatrix());
-	this->view->send(pb);
 }
 
 void ParticleSystemPresenter::updateParentIdView()

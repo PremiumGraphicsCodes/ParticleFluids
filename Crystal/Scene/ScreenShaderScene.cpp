@@ -12,10 +12,22 @@ ScreenShaderScene::ScreenShaderScene()
 {
 }
 
-void ScreenShaderScene::add(PointShaderScene* point)
+void ScreenShaderScene::add(ParticleSystemScene* model, GLObjectFactory& glFactory, PointRenderer* shader)
 {
-	point->setCamera(camera);
-	this->scenes.push_back(point);
+	auto scene = new PointShaderScene(model->getName());
+	scene->setShader(shader);
+	scene->build(glFactory);
+
+	const auto& ps = model->getShape()->getParticles();
+	PointBuffer pb;
+	for (auto p : ps) {
+		pb.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
+	}
+	pb.setMatrix(model->getMatrix());
+
+	scene->setCamera(camera);
+	scene->send(pb);
+	this->scenes.push_back(scene);
 }
 
 void ScreenShaderScene::add(LineShaderScene* line)

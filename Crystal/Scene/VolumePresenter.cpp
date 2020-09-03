@@ -18,12 +18,6 @@ VolumePresenter::VolumePresenter(VolumeScene* model) :
 
 void VolumePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
-	{
-		this->view = new PointShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
-		sceneShader->getScene()->screen.add(this->view);
-	}
 
 	{
 		this->parentIdView = new PointShaderScene(model->getName());

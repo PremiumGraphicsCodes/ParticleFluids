@@ -9,13 +9,14 @@
 namespace Crystal {
 	namespace Scene {
 		class TextureShaderScene;
+		class ParticleSystemScene;
 
 class ScreenShaderScene 
 {
 public:
 	ScreenShaderScene();
 
-	void add(PointShaderScene* point);
+	void add(ParticleSystemScene* point, Shader::GLObjectFactory& factory, Shader::PointRenderer* shader);
 
 	void add(LineShaderScene* line);
 
