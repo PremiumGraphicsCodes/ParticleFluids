@@ -15,7 +15,6 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 ShaderRepository::ShaderRepository(const std::string& name) :
-	IShaderScene(name),
 	pointRenderer(new PointRenderer()),
 	wireRenderer(new LineRenderer()),
 	smoothRenderer(new SmoothRenderer()),

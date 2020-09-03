@@ -25,7 +25,7 @@ namespace Crystal {
 	namespace Scene {
 		class ScreenShaderScene;
 
-class ShaderRepository : public IShaderScene
+class ShaderRepository
 {
 public:
 	explicit ShaderRepository(const std::string& name);
