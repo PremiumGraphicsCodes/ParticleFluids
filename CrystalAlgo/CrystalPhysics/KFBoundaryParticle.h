@@ -16,9 +16,9 @@ public:
 
 	~KFBoundaryParticle();
 
-	void setScene(KFFluidScene* scene) { this->scene = scene; }
+	//void setScene(KFFluidScene* scene) { this->scene = scene; }
 
-	KFFluidScene* getScene() { return scene; }
+	//KFFluidScene* getScene() { return scene; }
 
 	//void addMicro(KFMicroParticle* microParticle);
 

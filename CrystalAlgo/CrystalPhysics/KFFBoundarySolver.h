@@ -3,6 +3,9 @@
 #include "../../Crystal/Util/UnCopyable.h"
 
 #include "../../Crystal/Math/Box3d.h"
+
+#include "KFBoundaryParticle.h"
+
 #include <memory>
 
 namespace Crystal {
@@ -14,9 +17,12 @@ class KFFBoundarySolver : private UnCopyable
 public:
 	//~KFFBoundarySolver();
 
-	explicit KFFBoundarySolver(const Math::Box3d& boundary) :
-		boundary(boundary)
+	KFFBoundarySolver()
 	{}
+
+	void add(const Math::Box3d& box) { this->surfaces.push_back(box); }
+
+	void add(KFBoundaryParticle* bp) { this->boudaryParticles.push_back(bp); }
 
 	~KFFBoundarySolver() { clear(); }
 
@@ -24,15 +30,15 @@ public:
 
 	void solve(KFMacroParticle* particle, const double dt);
 
-	void createMacro(KFMacroParticle* mp);
+	//void createMacro(KFMacroParticle* mp);
 
 private:
-	void createMacro(KFMacroParticle* mp, const Math::Vector3dd& position);
-
+	//void createMacro(KFMacroParticle* mp, const Math::Vector3dd& position);
 
 private:
-	Math::Box3d boundary;
+	std::vector<Math::Box3d> surfaces;
 	std::vector<std::unique_ptr<KFMacroParticle>> macros;
+	std::vector<KFBoundaryParticle*> boudaryParticles;
 };
 	}
 }

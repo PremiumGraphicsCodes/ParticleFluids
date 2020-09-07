@@ -71,7 +71,8 @@ void KFFluidSolver::simulate()
 		}
 		
 
-		KFFBoundarySolver boundarySolver(boundary);
+		KFFBoundarySolver boundarySolver;
+		boundarySolver.add(boundary);
 		for (auto particle : particles) {
 			//boundarySolver.createMacro(particle);
 			boundarySolver.solve(particle, dt);

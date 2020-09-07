@@ -16,6 +16,9 @@
     <Filter Include="FileIO">
       <UniqueIdentifier>{e9afbd05-1c2a-42f9-a6e6-55506fbb719e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="KFFluid\Boundary">
+      <UniqueIdentifier>{3a808556-e77d-4bde-98b5-4170444133bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PBSPHParticle.h">
@@ -46,9 +49,6 @@
       <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="KFFluidScene.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
-    <ClInclude Include="KFFBoundarySolver.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="DFFluidSolver.h">
@@ -93,8 +93,14 @@
     <ClInclude Include="KFFluidScenePresenter.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="KFFBoundarySolver.h">
+      <Filter>KFFluid\Boundary</Filter>
+    </ClInclude>
     <ClInclude Include="KFBoundaryParticle.h">
-      <Filter>KFFluid</Filter>
+      <Filter>KFFluid\Boundary</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBoundaryScene.h">
+      <Filter>KFFluid\Boundary</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -126,9 +132,6 @@
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidScene.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="KFFBoundarySolver.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="DFFluidSolver.cpp">
@@ -172,8 +175,14 @@
     <ClCompile Include="KFFluidScenePresenter.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
+    <ClCompile Include="KFFBoundarySolver.cpp">
+      <Filter>KFFluid\Boundary</Filter>
+    </ClCompile>
     <ClCompile Include="KFBoundaryParticle.cpp">
-      <Filter>KFFluid</Filter>
+      <Filter>KFFluid\Boundary</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBoundaryScene.cpp">
+      <Filter>KFFluid\Boundary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
