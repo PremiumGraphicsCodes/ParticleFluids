@@ -25,7 +25,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	boundaryView("Boundary"),
 	pressureCoeView("PressureCoe", 1000),
 	viscosityCoeView("ViscosityCoe", 25.0),
-	timeStepView("TimeStep", 0.01),
+	timeStepView("TimeStep", 0.025),
 	particleSystemSelectView("ParticleSystem", model, canvas),
 	boundarySelectView("Boundary", model, canvas),
 	radiusView("SearchRadius", 1.0)
@@ -98,7 +98,7 @@ void KFFluidSimulationView::reset()
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 20; ++i) {
-		for (int j = 0; j < 20; ++j) {
+		for (int j = 20; j < 40; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3, 1.0f);
