@@ -35,6 +35,7 @@ private:
 	int newId;
 
 	ObjectSelectView particleSystemSelectView;
+	ObjectSelectView boundarySelectView;
 	DoubleView radiusView;
 };
 
