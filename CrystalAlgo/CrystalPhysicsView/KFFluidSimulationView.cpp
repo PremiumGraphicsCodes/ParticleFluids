@@ -112,7 +112,6 @@ void KFFluidSimulationView::reset()
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3);
-				mp->setStatic(true);
 				boundaryScene->addParticle(mp);
 			}
 		}
@@ -124,7 +123,6 @@ void KFFluidSimulationView::reset()
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3);
-				mp->setStatic(true);
 				boundaryScene->addParticle(mp);
 			}
 		}
@@ -135,7 +133,7 @@ void KFFluidSimulationView::reset()
 		for (int j = -2; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->setStatic(true);
+				mp->distributePoints(3, 3, 3);
 				boundaryScene->addParticle(mp);
 			}
 		}
@@ -146,7 +144,7 @@ void KFFluidSimulationView::reset()
 		for (int j = -2; j < 20; ++j) {
 			for (int k = -2; k < 0; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->setStatic(true);
+				mp->distributePoints(3, 3, 3);
 				boundaryScene->addParticle(mp);
 			}
 		}
@@ -157,7 +155,7 @@ void KFFluidSimulationView::reset()
 		for (int j = -2; j < 20; ++j) {
 			for (int k = 20; k < 22; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->setStatic(true);
+				mp->distributePoints(3, 3, 3);
 				boundaryScene->addParticle(mp);
 			}
 		}
@@ -166,5 +164,5 @@ void KFFluidSimulationView::reset()
 
 
 	simulator.setBoundary(this->boundaryView.getValue());
-	simulator.setTimeStep(timeStepView.getValue());
+	simulator.setTimeStep(this->timeStepView.getValue());
 }

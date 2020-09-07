@@ -102,10 +102,6 @@ void KFMacroParticle::addMicro(KFMicroParticle* microParticle)
 
 void KFMacroParticle::calculatePressure(const float pressureCoe)
 {
-	if (isStatic) {
-		return;
-	}
-
 	Vector3df averagedCenter(0, 0, 0);
 	for (auto mp : innerPoints) {
 		averagedCenter += mp->getPosition();// *mp->getWeight();
@@ -128,9 +124,6 @@ void KFMacroParticle::calculateViscosity(const float viscosityCoe)
 
 void KFMacroParticle::stepTime(const float dt)
 {
-	if (isStatic) {
-		return;
-	}
 	const auto acc = (force) / getDensity();
 	this->velocity += acc * dt;
 	this->position += this->velocity * dt;

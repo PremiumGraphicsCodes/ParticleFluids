@@ -50,10 +50,6 @@ public:
 
 	void addForce(const Math::Vector3dd& force) { this->force += force; }
 
-	void setStatic(const bool isStatic) { this->isStatic = isStatic; }
-
-	bool isStatic_() const { return isStatic; }
-
 	//void addBoundaryCount(const int count) { this->boundaryCount += count; }
 
 	float getDensity() const;
@@ -77,7 +73,6 @@ private:
 	//int microCount;
 	int selfCount;
 	//double density;
-	bool isStatic = false;
 };
 
 	}

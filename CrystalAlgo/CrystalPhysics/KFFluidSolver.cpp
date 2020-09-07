@@ -23,21 +23,21 @@ void KFFluidSolver::step()
 
 void KFFluidSolver::simulate()
 {
-	std::vector<KFMacroParticle*> particles;
+	std::vector<KFMacroParticle*> fluidParticles;
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
-		particles.insert(particles.end(), ps.begin(), ps.end());
+		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
 	}
 
-	for (auto particle : particles) {
+	for (auto particle : fluidParticles) {
 		particle->reset(true);
 	}
 
 
-	const auto hashSize = particles.front()->getPoints().size() * particles.size();
-	const auto searchRadius = particles.front()->getRadius() * 2.25;
+	const auto hashSize = fluidParticles.front()->getPoints().size() * fluidParticles.size();
+	const auto searchRadius = fluidParticles.front()->getRadius() * 2.25;
 	CompactSpaceHash3d spaceHash(searchRadius, hashSize);
-	for (auto particle : particles) {
+	for (auto particle : fluidParticles) {
 		particle->updateMicros();
 		const auto& microParticles = particle->getPoints();
 		for (auto mp : microParticles) {
@@ -46,11 +46,8 @@ void KFFluidSolver::simulate()
 	}
 
 #pragma omp parallel for
-	for(int i = 0; i < particles.size(); ++i) {
-		const auto particle = particles[i];
-		if (particle->isStatic_()) {
-			continue;
-		}
+	for(int i = 0; i < fluidParticles.size(); ++i) {
+		const auto particle = fluidParticles[i];
 		const auto& neighbors = spaceHash.findNeighbors(particle);
 		for (auto n : neighbors) {
 			particle->addMicro(static_cast<KFMicroParticle*>(n));
@@ -59,23 +56,23 @@ void KFFluidSolver::simulate()
 
 	double time = 0.0;
 	while (time < maxTimeStep) {
-		const auto dt = calculateTimeStep(particles);
+		const auto dt = calculateTimeStep(fluidParticles);
 
 #pragma omp parallel for
-		for (int i = 0; i < particles.size(); ++i) {
-			const auto particle = particles[i];
+		for (int i = 0; i < fluidParticles.size(); ++i) {
+			const auto particle = fluidParticles[i];
 			particle->updateInnerPoints();
 			particle->calculatePressure(particle->getScene()->getPressureCoe());
 			particle->calculateViscosity(particle->getScene()->getViscosityCoe());
 		}
 		
 
-		for (auto particle : particles) {
+		for (auto particle : fluidParticles) {
 			//boundarySolver.createMacro(particle);
 			solveBoundary(particle, dt);
 		}
 
-		for (auto particle : particles) {
+		for (auto particle : fluidParticles) {
 			particle->addForce(Vector3dd(0.0, -9.8 * particle->getDensity(), 0.0));
 			particle->stepTime(dt);
 		}
@@ -83,27 +80,24 @@ void KFFluidSolver::simulate()
 		// solve incompressibility.
 		double relaxationCoe = 0.5;
 		for (int i = 0; i < 2; ++i) {
-			for (auto particle : particles) {
+			for (auto particle : fluidParticles) {
 				particle->reset(false);
 				particle->updateMicros();
 			}
 
 #pragma omp parallel for
-			for (int i = 0; i < particles.size(); ++i) {
-				const auto particle = particles[i];
-				if (particle->isStatic_()) {
-					continue;
-				}
+			for (int i = 0; i < fluidParticles.size(); ++i) {
+				const auto particle = fluidParticles[i];
 				particle->updateInnerPoints();
 				particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
 			}
 
-			for (auto particle : particles) {
+			for (auto particle : fluidParticles) {
 				solveBoundary(particle, dt);
 			}
 			//	solveBoundary(particles);
 
-			for (auto particle : particles) {
+			for (auto particle : fluidParticles) {
 				//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
 				particle->stepTime(dt);
 			}
@@ -114,8 +108,8 @@ void KFFluidSolver::simulate()
 	}
 
 	auto densityError = 0.0;
-	for (auto particle : particles) {
-		densityError += particle->getDensity() / (double)particles.size();
+	for (auto particle : fluidParticles) {
+		densityError += particle->getDensity() / (double)fluidParticles.size();
 	}
 	std::cout << densityError << std::endl;
 
