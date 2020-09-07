@@ -19,7 +19,7 @@ bool CameraZoomCommand::execute(Crystal::Scene::World* scene)
 {
 	auto camera = scene->getCamera()->getCamera();
 	camera->zoom(args.ratio.getValue());
-	scene->getCamera()->getPresenter()->updateView();
+	//scene->getCamera()->getPresenter()->updateView();
 
 	return true;
 }

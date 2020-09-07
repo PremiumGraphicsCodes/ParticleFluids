@@ -129,12 +129,6 @@ void PBSPHParticle::addPositionCorrection(const Vector3df& distanceVector)
 	//this->positionCorrection += pc;
 }
 
-Vector3df PBSPHParticle::getDiff(const PBSPHParticle& rhs) const
-{
-	//return this->getPosition() - rhs.getPosition();
-	return rhs.getPosition() - this->getPosition();
-}
-
 float PBSPHParticle::getEffectLength() const
 {
 	return scene->getKernel()->getEffectLength();

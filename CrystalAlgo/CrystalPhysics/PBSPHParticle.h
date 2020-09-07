@@ -97,8 +97,6 @@ public:
 	double getRadius() const { return radius; }
 
 private:
-	Math::Vector3df getDiff(const PBSPHParticle& rhs) const;
-
 	Math::Vector3df predictPosition;
 	Math::Vector3df force;
 	Math::Vector3df velocity;
