@@ -120,6 +120,7 @@ void KFFluidSimulationView::reset()
 	}
 
 	// right
+	/*
 	for (int i = 20; i < 22; ++i) {
 		for (int j = -2; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
@@ -129,6 +130,7 @@ void KFFluidSimulationView::reset()
 			}
 		}
 	}
+	*/
 
 	// left
 	for (int i = -2; i < 0; ++i) {
