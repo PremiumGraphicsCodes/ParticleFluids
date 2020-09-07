@@ -20,6 +20,8 @@ public:
 
 	void add(KFFluidScene* fluid) { this->fluids.push_back(fluid); }
 
+	void addBoundary(KFFluidScene* boundary) { this->boundaries.push_back(boundary); }
+
 	void simulate();
 
 	void step() override;
@@ -30,6 +32,7 @@ public:
 
 private:
 	std::list<KFFluidScene*> fluids;
+	std::list<KFFluidScene*> boundaries;
 	Math::Box3d boundary;
 	double maxTimeStep;
 

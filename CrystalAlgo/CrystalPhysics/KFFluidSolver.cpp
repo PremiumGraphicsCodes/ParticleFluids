@@ -49,6 +49,9 @@ void KFFluidSolver::simulate()
 #pragma omp parallel for
 	for(int i = 0; i < particles.size(); ++i) {
 		const auto particle = particles[i];
+		if (particle->isStatic_()) {
+			continue;
+		}
 		const auto& neighbors = spaceHash.findNeighbors(particle);
 		for (auto n : neighbors) {
 			particle->addMicro(static_cast<KFMicroParticle*>(n));
@@ -90,6 +93,9 @@ void KFFluidSolver::simulate()
 #pragma omp parallel for
 			for (int i = 0; i < particles.size(); ++i) {
 				const auto particle = particles[i];
+				if (particle->isStatic_()) {
+					continue;
+				}
 				particle->updateInnerPoints();
 				particle->calculatePressure(particle->getScene()->getPressureCoe() * relaxationCoe);
 			}

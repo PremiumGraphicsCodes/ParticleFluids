@@ -52,6 +52,8 @@ public:
 
 	void setStatic(const bool isStatic) { this->isStatic = isStatic; }
 
+	bool isStatic_() const { return isStatic; }
+
 	void addBoundaryCount(const int count) { this->boundaryCount += count; }
 
 	float getDensity() const;

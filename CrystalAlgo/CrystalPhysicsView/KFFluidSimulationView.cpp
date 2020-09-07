@@ -137,6 +137,29 @@ void KFFluidSimulationView::reset()
 		}
 	}
 
+	// near
+	for (int i = -2; i < 20; ++i) {
+		for (int j = -2; j < 20; ++j) {
+			for (int k = -2; k < 0; ++k) {
+				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
+				mp->setStatic(true);
+				fluidScene->addParticle(mp);
+			}
+		}
+	}
+
+	// far
+	for (int i = -2; i < 20; ++i) {
+		for (int j = -2; j < 20; ++j) {
+			for (int k = 20; k < 22; ++k) {
+				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
+				mp->setStatic(true);
+				fluidScene->addParticle(mp);
+			}
+		}
+	}
+
+
 
 	simulator.setBoundary(this->boundaryView.getValue());
 	simulator.setTimeStep(timeStepView.getValue());
