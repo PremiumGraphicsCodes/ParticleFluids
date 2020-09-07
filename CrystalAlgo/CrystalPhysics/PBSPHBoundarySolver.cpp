@@ -3,6 +3,8 @@
 #include "PBSPHParticle.h"
 #include "SPHKernel.h"
 
+#include "PBSPHBoundaryParticle.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
@@ -143,4 +145,30 @@ float PBSPHBoundarySolver::getOverZ(const float z)
 		over = z - boundary.getMinZ();
 	}
 	return over;
+}
+
+PBSPHBoundarySolver2::PBSPHBoundarySolver2(const double searchRadius, const int tableSize) :
+	spaceHash(searchRadius, tableSize)
+{}
+
+void PBSPHBoundarySolver2::searchNeighbors(const std::vector<PBSPHParticle*>& particles)
+{
+	spaceHash.clear();
+	for (auto p : particles) {
+		spaceHash.add(p);
+	}
+}
+
+void PBSPHBoundarySolver2::calculateDensity(const std::vector<PBSPHParticle*>& particles)
+{
+	for (auto bp : boundaryParticles) {
+		// 一番近い粒子の密度をコピーする．
+		const auto neighbors = spaceHash.findNeighbors(bp->getPosition());
+		std::tuple<PBSPHParticle*, double> particlesAndDistances;
+		/*
+		auto closest = std::min_element(neighbors.begin(), neighbors.end(), [bp](PBSPHParticle* p) {
+			return Math::getDistanceSquared(bp->getPosition(), p->getPosition());
+		});
+		*/
+	}
 }
