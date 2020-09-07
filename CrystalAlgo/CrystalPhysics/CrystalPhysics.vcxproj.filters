@@ -166,5 +166,8 @@
     <ClCompile Include="TimeSeriesParticleSystemReader.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="PBSPHBoundaryParticle.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

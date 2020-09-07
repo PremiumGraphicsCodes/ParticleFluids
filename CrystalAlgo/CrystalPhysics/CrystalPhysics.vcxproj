@@ -202,6 +202,7 @@
     <ClCompile Include="KFMicroParticle.cpp" />
     <ClCompile Include="PBFluidScene.cpp" />
     <ClCompile Include="PBFluidSceneController.cpp" />
+    <ClCompile Include="PBSPHBoundaryParticle.cpp" />
     <ClCompile Include="PBSPHBoundarySolver.cpp" />
     <ClCompile Include="PBSPHParticle.cpp" />
     <ClCompile Include="PBSPHSolver.cpp" />
