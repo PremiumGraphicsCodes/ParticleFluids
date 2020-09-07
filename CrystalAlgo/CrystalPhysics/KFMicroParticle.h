@@ -10,10 +10,10 @@ namespace Crystal {
 class KFMicroParticle : public Shape::IParticle
 {
 public:
-	KFMicroParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float weight) :
+	KFMicroParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float mass) :
 		parent(parent),
 		vector(point),
-		weight(weight)
+		mass(mass)
 	{
 		updatePosition();
 	}
@@ -26,14 +26,14 @@ public:
 
 	void updatePosition();
 
-	float getWeight() const { return weight; }
+	float getMass() const { return mass; }
 
 	Math::Vector3df position;
 
 private:
 	KFMacroParticle* parent;
 	Math::Vector3df vector;
-	float weight;
+	float mass;
 };
 
 	}

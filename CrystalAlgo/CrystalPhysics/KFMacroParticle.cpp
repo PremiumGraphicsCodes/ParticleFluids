@@ -8,7 +8,7 @@ using namespace Crystal::Physics;
 KFMacroParticle::KFMacroParticle(const double radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
-	selfWeight(0.0f)
+	selfMass(0.0f)
 {}
 
 KFMacroParticle::~KFMacroParticle()
@@ -70,7 +70,7 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 			}
 		}
 	}
-	selfWeight = unum * vnum * wnum * weight;
+	selfMass = unum * vnum * wnum * weight;
 }
 
 void KFMacroParticle::reset(bool resetMicro)
@@ -104,10 +104,10 @@ void KFMacroParticle::calculatePressure(const float pressureCoe)
 {
 	Vector3df averagedCenter(0, 0, 0);
 	for (auto mp : innerPoints) {
-		averagedCenter += mp->position * mp->getWeight();
+		averagedCenter += mp->position * mp->getMass();
 	}
-	averagedCenter /= totalWeight;
-	auto ratio = (totalWeight / selfWeight) - 1.0f;
+	averagedCenter /= totalMass;
+	auto ratio = (totalMass / selfMass) - 1.0f;
 	ratio = std::max(0.0f, ratio);
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe;// 10000.0;
 }
@@ -116,9 +116,9 @@ void KFMacroParticle::calculateViscosity(const float viscosityCoe)
 {
 	Vector3df averagedVelocity(0, 0, 0);
 	for (auto mp : innerPoints) {
-		averagedVelocity += mp->getVelocity() * mp->getWeight();
+		averagedVelocity += mp->getVelocity() * mp->getMass();
 	}
-	averagedVelocity /= totalWeight;
+	averagedVelocity /= totalMass;
 	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
 }
 
@@ -131,7 +131,7 @@ void KFMacroParticle::stepTime(const float dt)
 
 float KFMacroParticle::getDensity() const
 {
-	return totalWeight / selfWeight;
+	return totalMass / selfMass;
 	//return microCount / (double)(microCount + preCount);
 }
 
@@ -146,12 +146,12 @@ void KFMacroParticle::updateInnerPoints()
 {
 	const auto r = this->radius * 2.0;
 	innerPoints.clear();
-	totalWeight = 0.0f;
+	totalMass = 0.0f;
 	for (auto mp : this->microPoints) {
 		const auto distanceSquared = Math::getDistanceSquared(mp->getPosition(), this->getPosition());
 		if (distanceSquared < r * r) {
 			innerPoints.push_back(mp);
-			totalWeight += mp->getWeight();
+			totalMass += mp->getMass();
 		}
 	}
 }

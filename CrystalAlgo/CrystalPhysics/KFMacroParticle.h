@@ -68,10 +68,10 @@ private:
 	Math::Vector3df force;
 	Math::Vector3df position;
 	Math::Vector3df velocity;
-	float totalWeight;
 	KFFluidScene* scene;
 
-	float selfWeight;
+	float selfMass;
+	float totalMass;
 	//int microCount;
 	//int selfCount;
 	//double density;
