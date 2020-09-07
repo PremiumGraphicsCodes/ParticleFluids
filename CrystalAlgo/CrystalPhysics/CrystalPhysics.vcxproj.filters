@@ -93,9 +93,6 @@
     <ClInclude Include="KFFluidScenePresenter.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
-    <ClInclude Include="KFFBoundarySolver.h">
-      <Filter>KFFluid\Boundary</Filter>
-    </ClInclude>
     <ClInclude Include="KFBoundaryParticle.h">
       <Filter>KFFluid\Boundary</Filter>
     </ClInclude>
@@ -174,9 +171,6 @@
     </ClCompile>
     <ClCompile Include="KFFluidScenePresenter.cpp">
       <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="KFFBoundarySolver.cpp">
-      <Filter>KFFluid\Boundary</Filter>
     </ClCompile>
     <ClCompile Include="KFBoundaryParticle.cpp">
       <Filter>KFFluid\Boundary</Filter>

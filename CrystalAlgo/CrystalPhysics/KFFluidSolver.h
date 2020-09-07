@@ -26,19 +26,22 @@ public:
 
 	void step() override;
 
-	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
+	void setBoundary(const Math::Box3d& surface) {
+		this->surfaces.clear();
+		this->surfaces.push_back(surface); }
 
 	void setTimeStep(const double dt) { this->maxTimeStep = dt; }
 
 private:
 	std::list<KFFluidScene*> fluids;
 	std::list<KFFluidScene*> boundaries;
-	Math::Box3d boundary;
+	std::list<Math::Box3d> surfaces;
 	double maxTimeStep;
 
 private:
 	double calculateTimeStep(const std::vector<KFMacroParticle*>& particles);
 
+	void solveBoundary(KFMacroParticle* particle, const double dt);
 	//void solveBoundary(const std::vector<MacroParticle*>& particles);
 };
 
