@@ -53,6 +53,9 @@ void KFFluidSimulationView::onOk()
 	fluidScene = new KFFluidScene(getWorld()->getNextSceneId(), "KFFluid");
 	getWorld()->getScenes()->addScene(fluidScene);
 
+	boundaryScene = new KFFluidScene(getWorld()->getNextSceneId(), "KFBoundary");
+	getWorld()->getScenes()->addScene(boundaryScene);
+
 	this->reset();
 
 	this->newId = fluidScene->getId();
@@ -72,6 +75,7 @@ void KFFluidSimulationView::onOk()
 void KFFluidSimulationView::reset()
 {
 	this->fluidScene->clearParticles();
+	this->boundaryScene->clearParticles();
 
 	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
@@ -109,7 +113,7 @@ void KFFluidSimulationView::reset()
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3);
 				mp->setStatic(true);
-				fluidScene->addParticle(mp);
+				boundaryScene->addParticle(mp);
 			}
 		}
 	}
@@ -121,7 +125,7 @@ void KFFluidSimulationView::reset()
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3);
 				mp->setStatic(true);
-				fluidScene->addParticle(mp);
+				boundaryScene->addParticle(mp);
 			}
 		}
 	}
@@ -132,7 +136,7 @@ void KFFluidSimulationView::reset()
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->setStatic(true);
-				fluidScene->addParticle(mp);
+				boundaryScene->addParticle(mp);
 			}
 		}
 	}
@@ -143,7 +147,7 @@ void KFFluidSimulationView::reset()
 			for (int k = -2; k < 0; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->setStatic(true);
-				fluidScene->addParticle(mp);
+				boundaryScene->addParticle(mp);
 			}
 		}
 	}
@@ -154,7 +158,7 @@ void KFFluidSimulationView::reset()
 			for (int k = 20; k < 22; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->setStatic(true);
-				fluidScene->addParticle(mp);
+				boundaryScene->addParticle(mp);
 			}
 		}
 	}

@@ -167,7 +167,7 @@
     <ClInclude Include="DFFluidSolver.h" />
     <ClInclude Include="KFFBoundarySolver.h" />
     <ClInclude Include="KFFluidScene.h" />
-    <ClInclude Include="KFFluidSceneController.h" />
+    <ClInclude Include="KFFluidScenePresenter.h" />
     <ClInclude Include="KFFluidSolver.h" />
     <ClInclude Include="KFMacroParticle.h" />
     <ClInclude Include="KFMicroParticle.h" />
@@ -196,7 +196,7 @@
     <ClCompile Include="DFFluidSolver.cpp" />
     <ClCompile Include="KFFBoundarySolver.cpp" />
     <ClCompile Include="KFFluidScene.cpp" />
-    <ClCompile Include="KFFluidSceneController.cpp" />
+    <ClCompile Include="KFFluidScenePresenter.cpp" />
     <ClCompile Include="KFFluidSolver.cpp" />
     <ClCompile Include="KFMacroParticle.cpp" />
     <ClCompile Include="KFMicroParticle.cpp" />

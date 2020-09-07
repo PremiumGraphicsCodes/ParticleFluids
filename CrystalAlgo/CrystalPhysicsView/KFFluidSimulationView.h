@@ -25,6 +25,7 @@ private:
 
 private:
 	Physics::KFFluidScene* fluidScene;
+	Physics::KFFluidScene* boundaryScene;
 	Physics::KFFluidSolver simulator;
 	Box3dView boundaryView;
 	DoubleView pressureCoeView;
