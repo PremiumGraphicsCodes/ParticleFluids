@@ -1,5 +1,7 @@
 #include "KFFluidSimulationView.h"
 
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+
 #include "../CrystalPhysics/KFFluidScene.h"
 #include "../CrystalPhysics/KFFluidSolver.h"
 
@@ -23,7 +25,9 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	boundaryView("Boundary"),
 	pressureCoeView("PressureCoe", 1000),
 	viscosityCoeView("ViscosityCoe", 25.0),
-	timeStepView("TimeStep", 0.05)
+	timeStepView("TimeStep", 0.05),
+	particleSystemSelectView("ParticleSystem", model, canvas),
+	radiusView("SearchRadius", 1.0)
 {
 	auto resetFunc = [=]() {
 		reset();
@@ -36,6 +40,8 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
 	add(&timeStepView);
+	add(&particleSystemSelectView);
+	add(&radiusView);
 }
 
 void KFFluidSimulationView::onOk()
@@ -68,6 +74,19 @@ void KFFluidSimulationView::reset()
 	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
 
+	const auto id = this->particleSystemSelectView.getId();
+	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
+
+	const auto& ps = scene->getShape()->getParticles();
+	for (auto p : ps) {
+		auto pos = p->getPosition();
+		auto mp = new KFMacroParticle(radiusView.getValue(), pos);
+		mp->distributePoints(3, 3, 3);
+		this->fluidScene->addParticle(mp);
+		//writer.add(mp);
+	}
+
+	/*
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 20; ++i) {
@@ -79,6 +98,7 @@ void KFFluidSimulationView::reset()
 			}
 		}
 	}
+	*/
 
 	simulator.setBoundary(this->boundaryView.getValue());
 	simulator.setTimeStep(timeStepView.getValue());

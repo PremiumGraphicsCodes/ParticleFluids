@@ -33,6 +33,9 @@ private:
 	Button startButton;
 	Button resetButton;
 	int newId;
+
+	ObjectSelectView particleSystemSelectView;
+	DoubleView radiusView;
 };
 
 	}

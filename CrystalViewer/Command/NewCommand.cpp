@@ -17,7 +17,7 @@ bool NewCommand::execute(World* model)
 	model->getRenderer()->build(*model->getGLFactory());
 
 	//world->getRenderer()->build(*world->getGLFactory());
-	model->getCamera()->getPresenter()->createView(model->getRenderer(), *model->getGLFactory());
+	//model->getCamera()->getPresenter()->createView(model->getRenderer(), *model->getGLFactory());
 
 //	model->updateViewModel();
 

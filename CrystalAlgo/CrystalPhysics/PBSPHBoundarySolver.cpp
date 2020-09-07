@@ -164,7 +164,14 @@ void PBSPHBoundarySolver2::calculateDensity(const std::vector<PBSPHParticle*>& p
 	for (auto bp : boundaryParticles) {
 		// 一番近い粒子の密度をコピーする．
 		const auto neighbors = spaceHash.findNeighbors(bp->getPosition());
-		std::tuple<PBSPHParticle*, double> particlesAndDistances;
+		auto closest = *neighbors.begin();
+		double minDistance2 = std::numeric_limits<double>().max();
+		for (auto n : neighbors) {
+			const auto d2 = Math::getDistanceSquared(n->getPosition(), bp->getPosition());
+			if (d2 < minDistance2) {
+				closest = n;
+			}
+		}
 		/*
 		auto closest = std::min_element(neighbors.begin(), neighbors.end(), [bp](PBSPHParticle* p) {
 			return Math::getDistanceSquared(bp->getPosition(), p->getPosition());

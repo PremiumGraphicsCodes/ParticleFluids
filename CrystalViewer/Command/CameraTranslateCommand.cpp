@@ -24,7 +24,7 @@ bool CameraTranslateCommand::execute(World* scene)
 	const auto& target = camera->getTarget();
 	const auto& up = camera->getUp();
 	camera->lookAt(eye + t, target + t, up);
-	scene->getCamera()->getPresenter()->updateView();
+	//scene->getCamera()->getPresenter()->updateView();
 
 	//camera->moveTarget(args.translate.getValue());
 	return true;
