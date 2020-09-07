@@ -18,7 +18,7 @@ public:
 
 	void distributePoints(const int unum, const int vnum);
 
-	void distributePoints(const int unum, const int vnum, const int wnum);
+	void distributePoints(const int unum, const int vnum, const int wnum, const float weight);
 
 	void setScene(KFFluidScene* scene) { this->scene = scene; }
 
@@ -68,10 +68,12 @@ private:
 	Math::Vector3df force;
 	Math::Vector3df position;
 	Math::Vector3df velocity;
+	float totalWeight;
 	KFFluidScene* scene;
 
+	float selfWeight;
 	//int microCount;
-	int selfCount;
+	//int selfCount;
 	//double density;
 };
 

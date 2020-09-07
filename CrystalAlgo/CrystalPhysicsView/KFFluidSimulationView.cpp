@@ -25,7 +25,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	boundaryView("Boundary"),
 	pressureCoeView("PressureCoe", 1000),
 	viscosityCoeView("ViscosityCoe", 25.0),
-	timeStepView("TimeStep", 0.05),
+	timeStepView("TimeStep", 0.01),
 	particleSystemSelectView("ParticleSystem", model, canvas),
 	boundarySelectView("Boundary", model, canvas),
 	radiusView("SearchRadius", 1.0)
@@ -101,18 +101,19 @@ void KFFluidSimulationView::reset()
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(3, 3, 3);
+				mp->distributePoints(3, 3, 3, 1.0f);
 				fluidScene->addParticle(mp);
 			}
 		}
 	}
 
+	const float weight = 5.0f;
 	// bottom
 	for (int i = 0; i < 20; ++i) {
 		for (int j = -2; j < 0; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(3, 3, 3);
+				mp->distributePoints(3, 3, 3, weight);
 				boundaryScene->addParticle(mp);
 			}
 		}
@@ -123,7 +124,7 @@ void KFFluidSimulationView::reset()
 		for (int j = -2; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(3, 3, 3);
+				mp->distributePoints(3, 3, 3, weight);
 				boundaryScene->addParticle(mp);
 			}
 		}
@@ -134,7 +135,7 @@ void KFFluidSimulationView::reset()
 		for (int j = -2; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(3, 3, 3);
+				mp->distributePoints(3, 3, 3, weight);
 				boundaryScene->addParticle(mp);
 			}
 		}
@@ -145,7 +146,7 @@ void KFFluidSimulationView::reset()
 		for (int j = -2; j < 20; ++j) {
 			for (int k = -2; k < 0; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(3, 3, 3);
+				mp->distributePoints(3, 3, 3, weight);
 				boundaryScene->addParticle(mp);
 			}
 		}
@@ -156,7 +157,7 @@ void KFFluidSimulationView::reset()
 		for (int j = -2; j < 20; ++j) {
 			for (int k = 20; k < 22; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(3, 3, 3);
+				mp->distributePoints(3, 3, 3, weight);
 				boundaryScene->addParticle(mp);
 			}
 		}

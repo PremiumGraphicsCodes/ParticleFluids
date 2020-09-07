@@ -8,7 +8,7 @@ using namespace Crystal::Physics;
 KFMacroParticle::KFMacroParticle(const double radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
-	selfCount(0)
+	selfWeight(0.0f)
 {}
 
 KFMacroParticle::~KFMacroParticle()
@@ -42,11 +42,11 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum)
 			}
 		}
 	}
-	selfCount = unum * vnum;
+	//selfCount = unum * vnum;
 }
 
 
-void KFMacroParticle::distributePoints(const int unum, const int vnum, const int wnum)
+void KFMacroParticle::distributePoints(const int unum, const int vnum, const int wnum, const float weight)
 {
 	// 左上から右下に向かって均等分割する．->内外判定する．
 	const auto dx = 1.0 / (double)unum;
@@ -64,13 +64,13 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto d = Math::getLengthSquared(v);
 				if (d < 0.5 * 0.5) {
-					points.push_back(new KFMicroParticle(this, v * 3.0, 1.0));
-					selfCount++;
+					points.push_back(new KFMicroParticle(this, v * 3.0, weight));
+//					selfWeight+= weight;
 				}
 			}
 		}
 	}
-	selfCount = unum * vnum * wnum;
+	selfWeight = unum * vnum * wnum * weight;
 }
 
 void KFMacroParticle::reset(bool resetMicro)
@@ -104,10 +104,10 @@ void KFMacroParticle::calculatePressure(const float pressureCoe)
 {
 	Vector3df averagedCenter(0, 0, 0);
 	for (auto mp : innerPoints) {
-		averagedCenter += mp->getPosition();// *mp->getWeight();
+		averagedCenter += mp->position * mp->getWeight();
 	}
-	averagedCenter /= (float)(innerPoints.size());
-	auto ratio = ((innerPoints.size()) / (float)selfCount) - 1.0f;
+	averagedCenter /= totalWeight;
+	auto ratio = (totalWeight / selfWeight) - 1.0f;
 	ratio = std::max(0.0f, ratio);
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe;// 10000.0;
 }
@@ -118,7 +118,7 @@ void KFMacroParticle::calculateViscosity(const float viscosityCoe)
 	for (auto mp : innerPoints) {
 		averagedVelocity += mp->getVelocity() * mp->getWeight();
 	}
-	averagedVelocity /= (float)(innerPoints.size());
+	averagedVelocity /= totalWeight;
 	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
 }
 
@@ -131,7 +131,7 @@ void KFMacroParticle::stepTime(const float dt)
 
 float KFMacroParticle::getDensity() const
 {
-	return (microPoints.size()) / (double)selfCount;
+	return (microPoints.size()) / selfWeight;
 	//return microCount / (double)(microCount + preCount);
 }
 
@@ -146,10 +146,12 @@ void KFMacroParticle::updateInnerPoints()
 {
 	const auto r = this->radius * 2.0;
 	innerPoints.clear();
+	totalWeight = 0.0f;
 	for (auto mp : this->microPoints) {
 		const auto distanceSquared = Math::getDistanceSquared(mp->getPosition(), this->getPosition());
 		if (distanceSquared < r * r) {
 			innerPoints.push_back(mp);
+			totalWeight += mp->getWeight();
 		}
 	}
 }

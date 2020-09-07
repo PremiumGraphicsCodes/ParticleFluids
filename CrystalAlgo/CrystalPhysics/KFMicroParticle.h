@@ -28,9 +28,10 @@ public:
 
 	float getWeight() const { return weight; }
 
+	Math::Vector3df position;
+
 private:
 	KFMacroParticle* parent;
-	Math::Vector3df position;
 	Math::Vector3df vector;
 	float weight;
 };
