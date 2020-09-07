@@ -75,7 +75,6 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 
 void KFMacroParticle::reset(bool resetMicro)
 {
-	this->boundaryCount = 0;
 	this->force = Math::Vector3dd(0, 0, 0);
 	if (resetMicro) {
 		this->microPoints.clear();
@@ -112,7 +111,7 @@ void KFMacroParticle::calculatePressure(const float pressureCoe)
 		averagedCenter += mp->getPosition();// *mp->getWeight();
 	}
 	averagedCenter /= (float)(innerPoints.size());
-	auto ratio = ((innerPoints.size() + boundaryCount) / (float)selfCount) - 1.0f;
+	auto ratio = ((innerPoints.size()) / (float)selfCount) - 1.0f;
 	ratio = std::max(0.0f, ratio);
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe;// 10000.0;
 }
@@ -139,7 +138,7 @@ void KFMacroParticle::stepTime(const float dt)
 
 float KFMacroParticle::getDensity() const
 {
-	return (microPoints.size() + boundaryCount) / (double)selfCount;
+	return (microPoints.size()) / (double)selfCount;
 	//return microCount / (double)(microCount + preCount);
 }
 
