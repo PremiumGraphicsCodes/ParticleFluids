@@ -29,6 +29,12 @@ void KFFluidSolver::simulate()
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
 	}
 
+	std::vector<KFMacroParticle*> boundaryParticles;
+	for (auto b : boundaries) {
+		const auto bp = b->getParticles();
+		boundaryParticles.insert(boundaryParticles.end(), bp.begin(), bp.end());
+	}
+
 	for (auto particle : fluidParticles) {
 		particle->reset(true);
 	}
@@ -40,6 +46,12 @@ void KFFluidSolver::simulate()
 	for (auto particle : fluidParticles) {
 		particle->updateMicros();
 		const auto& microParticles = particle->getPoints();
+		for (auto mp : microParticles) {
+			spaceHash.add(mp);
+		}
+	}
+	for (auto bp : boundaryParticles) {
+		const auto& microParticles = bp->getPoints();
 		for (auto mp : microParticles) {
 			spaceHash.add(mp);
 		}

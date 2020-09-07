@@ -69,6 +69,7 @@ void KFFluidSimulationView::onOk()
 	command.execute(getWorld());
 
 	simulator.add(this->fluidScene);
+	simulator.addBoundary(this->boundaryScene);
 	getWorld()->addAnimation(&simulator);
 }
 
