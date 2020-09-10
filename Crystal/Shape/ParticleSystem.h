@@ -58,6 +58,8 @@ public:
 		}
 	}
 
+	std::vector<Particle<Attr>*>& getParticles() { return particles; }
+
 	std::vector<Particle<Attr>*> getParticles() const { return particles; }
 
 	std::vector<IParticle*> getIParticles() const

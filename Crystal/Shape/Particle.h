@@ -21,6 +21,8 @@ public:
 
 	void move(const Math::Vector3dd& v) { this->position += v; }
 
+	void moveTo(const Math::Vector3dd& v) { this->position = v; }
+
 	void transform(const Math::Matrix3dd& m) { position = m * position; }
 
 	void transform(const Math::Matrix4dd& m) { position = m * glm::vec4(position, 1.0); }
