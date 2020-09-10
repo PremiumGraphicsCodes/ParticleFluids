@@ -28,7 +28,8 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	timeStepView("TimeStep", 0.025),
 	particleSystemSelectView("ParticleSystem", model, canvas),
 	boundarySelectView("Boundary", model, canvas),
-	radiusView("SearchRadius", 1.0)
+	radiusView("SearchRadius", 1.0),
+	outputDirectoryView("OutputDir")
 {
 	auto resetFunc = [=]() {
 		reset();
@@ -44,6 +45,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	add(&particleSystemSelectView);
 	add(&boundarySelectView);
 	add(&radiusView);
+	add(&outputDirectoryView);
 }
 
 void KFFluidSimulationView::onOk()
@@ -71,6 +73,7 @@ void KFFluidSimulationView::onOk()
 	simulator.add(this->fluidScene);
 	simulator.addBoundary(this->boundaryScene);
 	getWorld()->addAnimation(&simulator);
+	getWorld()->addAnimation(&writer);
 }
 
 void KFFluidSimulationView::reset()
@@ -94,6 +97,8 @@ void KFFluidSimulationView::reset()
 		//writer.add(mp);
 	}
 	*/
+	this->writer.reset();
+	this->writer.setDirectryPath(outputDirectoryView.getPath());
 
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
@@ -103,6 +108,7 @@ void KFFluidSimulationView::reset()
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3, 1.0f);
 				fluidScene->addParticle(mp);
+				writer.add(mp);
 			}
 		}
 	}

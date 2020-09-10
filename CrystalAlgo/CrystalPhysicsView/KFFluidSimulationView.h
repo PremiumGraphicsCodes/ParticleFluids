@@ -4,8 +4,10 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
 #include "../../CrystalViewer/AppBase/DoubleView.h"
+#include "../../CrystalViewer/AppBase/DirectoryView.h"
 
 #include "../CrystalPhysics/KFFluidSolver.h"
+#include "../CrystalPhysics/TimeSeriesParticleSystemWriter.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -38,6 +40,8 @@ private:
 	ObjectSelectView particleSystemSelectView;
 	ObjectSelectView boundarySelectView;
 	DoubleView radiusView;
+	Physics::TimeSeriesParticleSystemWriter writer;
+	DirectoryView outputDirectoryView;
 };
 
 	}
