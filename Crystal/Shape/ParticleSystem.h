@@ -83,6 +83,15 @@ public:
 		return bb;
 	}
 
+	void resize(int newCount, Attr attr)
+	{
+		for (int i = particles.size(); i < newCount; ++i) {
+			particles.push_back(new Particle<Attr>(Math::Vector3dd(0,0,0), attr));
+		}
+	}
+
+	size_t getSize() const { return particles.size(); }
+
 private:
 	std::vector<Particle<Attr>*> particles;
 };

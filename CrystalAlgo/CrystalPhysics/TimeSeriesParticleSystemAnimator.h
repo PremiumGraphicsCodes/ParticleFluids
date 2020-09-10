@@ -10,12 +10,16 @@ namespace Crystal {
 class TimeSeriesParticleSystemAnimator : public Scene::IAnimator
 {
 public:
-	TimeSeriesParticleSystemAnimator(Scene::ParticleSystemScene* particleSystem, TimeSeriesParticleSystemReader* reader);
+	TimeSeriesParticleSystemAnimator();
+
+	void setScene(Scene::ParticleSystemScene* scene) { this->scene = scene; }
+
+	void setReader(TimeSeriesParticleSystemReader* reader) { this->reader = reader; }
 
 	void step();
 
 private:
-	Scene::ParticleSystemScene* particleSystem;
+	Scene::ParticleSystemScene* scene;
 	TimeSeriesParticleSystemReader* reader;
 };
 	}

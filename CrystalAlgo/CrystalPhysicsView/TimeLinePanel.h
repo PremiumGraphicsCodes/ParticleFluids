@@ -4,6 +4,7 @@
 #include "../../CrystalViewer/AppBase/Button.h"
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
 #include "../CrystalPhysics/TimeSeriesParticleSystemReader.h"
+#include "../CrystalPhysics/TimeSeriesParticleSystemAnimator.h"
 
 namespace Crystal {
 	namespace UI {
@@ -19,6 +20,9 @@ private:
 	Button resetButton;
 	DirectoryView directoryView;
 	Physics::TimeSeriesParticleSystemReader reader;
+	Physics::TimeSeriesParticleSystemAnimator animator;
+
+	Scene::ParticleSystemScene* psScene;
 
 	void onStart();
 

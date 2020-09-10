@@ -15,6 +15,8 @@ class ParticleSystemScene : public IShapeScene
 public:
 	ParticleSystemScene();
 
+	//ParticleSystemScene(const int id, const std::string& name);
+
 	ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<Shape::ParticleSystem<ParticleAttribute>> shape);
 
 	~ParticleSystemScene() {};

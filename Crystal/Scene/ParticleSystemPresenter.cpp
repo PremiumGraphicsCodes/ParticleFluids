@@ -12,7 +12,8 @@ ParticleSystemPresenter::ParticleSystemPresenter(ParticleSystemScene* model) :
 	model(model),
 	view(nullptr),
 	parentIdView(nullptr),
-	childIdView(nullptr)
+	childIdView(nullptr),
+	doBlend(false)
 {
 }
 

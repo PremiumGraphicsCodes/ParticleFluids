@@ -29,6 +29,8 @@ void TimeSeriesParticleSystemReader::reset()
 
 bool TimeSeriesParticleSystemReader::read(const std::filesystem::path& filename)
 {
+	positions.clear();
+
 	std::ifstream stream(filename);
 	if (!stream.is_open()) {
 		return false;
