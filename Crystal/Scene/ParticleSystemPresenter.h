@@ -16,6 +16,8 @@ public:
 
 	void updateView() override;
 
+	void setBlend(const bool b) { this->doBlend = b; }
+
 private:
 	void updateScreenView();
 
@@ -28,6 +30,7 @@ private:
 	PointShaderScene* view;
 	PointShaderScene* parentIdView;
 	PointShaderScene* childIdView;
+	bool doBlend;
 };
 
 	}

@@ -8,7 +8,8 @@ using namespace Crystal::Scene;
 
 PointShaderScene::PointShaderScene(const std::string& name) :
 	IShaderScene(name),
-	shader(nullptr)
+	shader(nullptr),
+	doBlend(false)
 {}
 
 bool PointShaderScene::build(GLObjectFactory& glFactory)
@@ -54,7 +55,13 @@ void PointShaderScene::render(const Graphics::Camera& camera)
 {
 	rBuffer.modelViewMatrix = camera.getModelViewMatrix();
 	rBuffer.projectionMatrix = camera.getProjectionMatrix();
-	shader->render(rBuffer);
+
+	if (doBlend) {
+		shader->renderBlend(rBuffer);
+	}
+	else {
+		shader->render(rBuffer);
+	}
 }
 
 void PointShaderScene::setShader(PointRenderer* shader)

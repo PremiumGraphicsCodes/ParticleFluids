@@ -57,6 +57,7 @@ void ParticleSystemPresenter::updateScreenView()
 	}
 	pb.setMatrix(model->getMatrix());
 
+	this->view->setBlend(this->doBlend);
 	this->view->send(pb);
 }
 

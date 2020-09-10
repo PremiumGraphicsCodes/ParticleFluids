@@ -28,9 +28,12 @@ public:
 
 	void setShader(Shader::PointRenderer* shader);
 
+	void setBlend(const bool b) { this->doBlend = b; }
+
 private:
 	Shader::PointRenderer* shader;
 	Shader::PointRenderer::Buffer rBuffer;
+	bool doBlend;
 };
 
 	}

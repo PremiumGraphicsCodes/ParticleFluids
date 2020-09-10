@@ -17,8 +17,7 @@ public:
 	PSAttributeView(const std::string& name) :
 		IWindow(name),
 		sizeView("Size", 10.0f),
-		colorView("Color", glm::vec4(1,1,1,1)),
-		nameView("Name", "ParticleSystem01")
+		colorView("Color", glm::vec4(1,1,1,1))
 	{
 	}
 
@@ -26,7 +25,6 @@ public:
 	{
 		sizeView.show();
 		colorView.show();
-		nameView.show();
 	}
 
 	Scene::ParticleAttribute getValue() const {
@@ -41,14 +39,10 @@ public:
 		this->colorView.setValue(value.color);
 	}
 	
-	std::string getName() const { return nameView.getValue(); }
-
-	void setName(const std::string& name) { this->nameView.setValue(name); }
 
 private:
 	FloatView sizeView;
 	ColorRGBAView colorView;
-	StringView nameView;
 };
 
 	}

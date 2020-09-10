@@ -29,6 +29,8 @@ public:
 
 	void render(const Buffer& buffer);
 
+	void renderBlend(const Buffer& buffer);
+
 private:
 	std::string getBuiltInVertexShaderSource() const;
 

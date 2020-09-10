@@ -4,6 +4,7 @@
 #include "PSAttributeView.h"
 #include "Matrix4dView.h"
 #include "ComboBox.h"
+#include "BoolView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -19,7 +20,9 @@ protected:
 private:
 	//Matrix4dView matrixView;
 	PSAttributeView attributeView;
+	StringView nameView;
 	ComboBox presenterView;
+	BoolView doBlendView;
 };
 
 	}

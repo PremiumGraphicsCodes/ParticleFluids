@@ -72,6 +72,38 @@ void PointRenderer::render(const Buffer& buffer)
 	assert(GL_NO_ERROR == glGetError());
 }
 
+void PointRenderer::renderBlend(const Buffer& buffer)
+{
+	shader.bind();
+
+	shader.sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
+	shader.sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
+
+	shader.sendVertexAttribute3df(::positionLabel, buffer.position);
+	shader.sendVertexAttribute4df(::colorLabel, buffer.color);
+	shader.sendVertexAttribute1df(::sizeLabel, buffer.size);
+
+	//shader.enableDepthTest();
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	shader.enablePointSprite();
+
+	shader.drawPoints(buffer.count);
+
+	shader.bindOutput(::fragColorLabel);
+
+	shader.disablePointSprite();
+
+	glDisable(GL_BLEND);
+	//shader.disableDepthTest();
+
+	shader.unbind();
+
+	assert(GL_NO_ERROR == glGetError());
+
+}
+
 std::string PointRenderer::getBuiltInVertexShaderSource() const
 {
 	std::ostringstream stream;
