@@ -4,7 +4,6 @@
 #include "../Math/Box2d.h"
 
 #include "GLObjectFactory.h"
-#include "ShaderObjectFactory.h"
 #include "ITextureObject.h"
 
 #include <sstream>

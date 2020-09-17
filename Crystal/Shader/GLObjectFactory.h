@@ -2,9 +2,12 @@
 
 #include "../Util/UnCopyable.h"
 
-#include "ShaderObjectFactory.h"
 #include "TextureObjectFactory.h"
-#include "FrameBufferObjectFactory.h"
+#include "FrameBufferObject.h"
+#include "VertexBufferObject.h"
+#include "ShaderObject.h"
+
+#include <list>
 
 namespace Crystal {
 	namespace Shader {

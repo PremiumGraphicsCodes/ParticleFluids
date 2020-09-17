@@ -152,7 +152,6 @@
     <ClInclude Include="PointRenderer.h" />
     <ClInclude Include="ShaderAttribute.h" />
     <ClInclude Include="ShaderObject.h" />
-    <ClInclude Include="ShaderObjectFactory.h" />
     <ClInclude Include="ShaderType.h" />
     <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="ShaderUnit.h" />
@@ -177,7 +176,6 @@
     <ClCompile Include="PointRenderer.cpp" />
     <ClCompile Include="ShaderAttribute.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
-    <ClCompile Include="ShaderObjectFactory.cpp" />
     <ClCompile Include="ShaderType.cpp" />
     <ClCompile Include="ShaderUniform.cpp" />
     <ClCompile Include="ShaderUnit.cpp" />

@@ -53,9 +53,6 @@
       <Filter>FrameBufferObject</Filter>
     </ClInclude>
     <ClInclude Include="IGLObject.h" />
-    <ClInclude Include="ShaderObjectFactory.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
     <ClInclude Include="VertexBufferObject.h" />
     <ClInclude Include="VertexArrayObject.h" />
     <ClInclude Include="BillBoardRenderer.h">
@@ -117,9 +114,6 @@
     </ClCompile>
     <ClCompile Include="FrameBufferObject.cpp">
       <Filter>FrameBufferObject</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderObjectFactory.cpp">
-      <Filter>Shader</Filter>
     </ClCompile>
     <ClCompile Include="VertexBufferObject.cpp" />
     <ClCompile Include="VertexArrayObject.cpp" />
