@@ -16,7 +16,9 @@ ScreenShader::ScreenShader(const std::string& name) :
 	pointRenderer(new PointRenderer()),
 	wireRenderer(new LineRenderer()),
 	smoothRenderer(new SmoothRenderer()),
-	triagleRenderer(new TriangleRenderer())
+	triagleRenderer(new TriangleRenderer()),
+	texture(nullptr),
+	frameBufferObject(nullptr)
 {
 }
 
@@ -37,21 +39,22 @@ bool ScreenShader::build(GLObjectFactory& factory)
 
 	texture = factory.createTextureObject();
 	texture->send(Image(512, 512));
-	//texture.create(, 1);
-	frameBufferObject.build(512, 512);
+	frameBufferObject = factory.createFrameBufferObject();
+	frameBufferObject->build(512, 512);
 	return true;
 }
 
 void ScreenShader::release(GLObjectFactory& factory)
 {
-	//TODO;
+	factory.remove(texture);
+	factory.remove(frameBufferObject);
 }
 
 void ScreenShader::render(const Camera& camera)
 {
-	frameBufferObject.setTexture(*texture);
+	frameBufferObject->setTexture(*texture);
 	//texture.bind();
-	frameBufferObject.bind();
+	frameBufferObject->bind();
 	glViewport(0, 0, texture->getWidth(), texture->getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -60,5 +63,5 @@ void ScreenShader::render(const Camera& camera)
 		s->render(camera);
 	}
 
-	frameBufferObject.unbind();
+	frameBufferObject->unbind();
 }

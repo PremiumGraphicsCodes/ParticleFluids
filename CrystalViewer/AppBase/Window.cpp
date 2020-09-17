@@ -89,6 +89,11 @@ namespace {
 	{
 		canvas->onWheel(offsety);
 	}
+
+	void onClose(GLFWwindow* window)
+	{
+		world->getRenderer()->release(*world->getGLFactory());
+	}
 }
 
 Window::Window(const std::string& title, World* model, Canvas* canvas) :
@@ -144,6 +149,7 @@ bool Window::init()
 	glfwSetMouseButtonCallback(window, onMouse);
 	glfwSetCursorPosCallback(window, onMouseMove);
 
+	glfwSetWindowCloseCallback(window, onClose);
 	//canvas->addUICommand(new CameraUICtrl());
 
 	world->init();

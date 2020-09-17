@@ -19,7 +19,8 @@ namespace {
 	constexpr char* fragColorLabel = "fragColor";
 }
 
-PointRenderer::PointRenderer()
+PointRenderer::PointRenderer() :
+	shader(nullptr)
 {
 }
 
@@ -28,77 +29,80 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	const auto& vsSource = getBuiltInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
 
-	const auto isOk = shader.build(vsSource, fsSource);
+	shader = factory.createShaderObject();
+	const auto isOk = shader->build(vsSource, fsSource);
+	if (!isOk) {
+		return false;
+	}
 
-	shader.findUniformLocation(::projectionMatrixLabel);
-	shader.findUniformLocation(::modelViewMatrixLabel);
+	shader->findUniformLocation(::projectionMatrixLabel);
+	shader->findUniformLocation(::modelViewMatrixLabel);
 
-	shader.findAttribLocation(::positionLabel);
-	shader.findAttribLocation(::colorLabel);
-	shader.findAttribLocation(::sizeLabel);
+	shader->findAttribLocation(::positionLabel);
+	shader->findAttribLocation(::colorLabel);
+	shader->findAttribLocation(::sizeLabel);
 
-	return isOk;
+	return true;
 }
 
 void PointRenderer::release(GLObjectFactory& factory)
 {
-	shader.release();
+	factory.remove(shader);
 }
 
 void PointRenderer::render(const Buffer& buffer)
 {
-	shader.bind();
+	shader->bind();
 
-	shader.sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
-	shader.sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
+	shader->sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
+	shader->sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
 
-	shader.sendVertexAttribute3df(::positionLabel, buffer.position);
-	shader.sendVertexAttribute4df(::colorLabel, buffer.color);
-	shader.sendVertexAttribute1df(::sizeLabel, buffer.size);
+	shader->sendVertexAttribute3df(::positionLabel, buffer.position);
+	shader->sendVertexAttribute4df(::colorLabel, buffer.color);
+	shader->sendVertexAttribute1df(::sizeLabel, buffer.size);
 
+	shader->enableDepthTest();
+	shader->enablePointSprite();
 
-	shader.enableDepthTest();
-	shader.enablePointSprite();
+	shader->drawPoints(buffer.count);
 
-	shader.drawPoints(buffer.count);
+	shader->bindOutput(::fragColorLabel);
 
-	shader.bindOutput(::fragColorLabel);
+	shader->disablePointSprite();
+	shader->disableDepthTest();
 
-	shader.disablePointSprite();
-	shader.disableDepthTest();
-
-	shader.unbind();
+	shader->unbind();
 
 	assert(GL_NO_ERROR == glGetError());
 }
 
 void PointRenderer::renderBlend(const Buffer& buffer)
 {
-	shader.bind();
+	shader->bind();
 
-	shader.sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
-	shader.sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
+	shader->sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
+	shader->sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
 
-	shader.sendVertexAttribute3df(::positionLabel, buffer.position);
-	shader.sendVertexAttribute4df(::colorLabel, buffer.color);
-	shader.sendVertexAttribute1df(::sizeLabel, buffer.size);
+	shader->sendVertexAttribute3df(::positionLabel, buffer.position);
+	shader->sendVertexAttribute4df(::colorLabel, buffer.color);
+	shader->sendVertexAttribute1df(::sizeLabel, buffer.size);
 
 	//shader.enableDepthTest();
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	shader.enablePointSprite();
+	shader->enablePointSprite();
 
-	shader.drawPoints(buffer.count);
+	shader->drawPoints(buffer.count);
 
-	shader.bindOutput(::fragColorLabel);
+	shader->bindOutput(::fragColorLabel);
 
-	shader.disablePointSprite();
+	shader->disablePointSprite();
 
 	glDisable(GL_BLEND);
 	//shader.disableDepthTest();
 
-	shader.unbind();
+	shader->unbind();
 
 	assert(GL_NO_ERROR == glGetError());
 

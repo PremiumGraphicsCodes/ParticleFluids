@@ -7,6 +7,11 @@
 
 using namespace Crystal::Shader;
 
+GLObjectFactory::~GLObjectFactory()
+{
+	clear();
+}
+
 void GLObjectFactory::clear()
 {
 	textures.clear();

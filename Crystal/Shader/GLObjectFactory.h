@@ -15,6 +15,8 @@ namespace Crystal {
 class GLObjectFactory : private UnCopyable
 {
 public:
+	~GLObjectFactory();
+
 	void clear();
 
 	FrameBufferObject* createFrameBufferObject();

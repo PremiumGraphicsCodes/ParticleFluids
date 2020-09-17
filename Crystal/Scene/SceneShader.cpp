@@ -33,8 +33,15 @@ bool SceneShader::build(GLObjectFactory& factory)
 		return false;
 	}
 
-
 	return true;
+}
+
+void SceneShader::release(GLObjectFactory& factory)
+{
+	objectRenderer->release(factory);
+	parentIdRenderer->release(factory);
+	childIdRenderer->release(factory);
+	renderer.release(factory);
 }
 
 void SceneShader::render(const Camera& camera)

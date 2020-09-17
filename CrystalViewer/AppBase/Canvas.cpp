@@ -15,26 +15,6 @@ Canvas::Canvas() :
 {
 }
 
-/*
-Canvas::Canvas(ICamera* camera) :
-	width(0),
-	height(0),
-	camera(camera)
-{
-	renderer.reset(new Renderer());
-}
-
-void Canvas::build()
-{
-	setUICtrl(new CameraUICtrl(getCamera()));
-}
-
-/*
-void Canvas::render(const int width, const int height, IShaderScene* scene, const SceneViewModel& vm)
-{
-}
-*/
-
 void Canvas::onLeftButtonDown(const Vector2df& position)
 {
 	ctrl->onLeftButtonDown(position);

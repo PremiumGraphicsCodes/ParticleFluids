@@ -79,7 +79,7 @@ private:
 	Mask mask;
 
 	Shader::TextureObject* texture;
-	Shader::FrameBufferObject frameBufferObject;
+	Shader::FrameBufferObject* frameBufferObject;
 };
 	}
 }

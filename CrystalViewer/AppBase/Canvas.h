@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_UI_I_CANVAS_H__
-#define __CRYSTAL_UI_I_CANVAS_H__
+#pragma once
 
 #include "../../Crystal/Math/Vector2d.h"
 #include "../../Crystal/Math/Box3d.h"
@@ -24,11 +23,7 @@ class Canvas : public IMouseListener
 public:
 	Canvas();
 
-	//explicit Canvas(Graphics::Camera* camera);
-
 	virtual ~Canvas() {}
-
-	void build();
 
 	void setUICtrl(IUICtrl* ctrl) { this->ctrl.reset(ctrl); }
 
@@ -65,5 +60,3 @@ private:
 };
 	}
 }
-
-#endif

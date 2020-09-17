@@ -32,7 +32,7 @@ public:
 
 	bool build(Shader::GLObjectFactory& factory);
 
-	void release(Shader::GLObjectFactory& factory){};
+	void release(Shader::GLObjectFactory& factory);
 
 	void render(const Graphics::Camera& camera);
 
