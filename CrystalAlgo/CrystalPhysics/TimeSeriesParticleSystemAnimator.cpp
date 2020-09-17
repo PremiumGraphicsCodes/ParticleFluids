@@ -8,7 +8,8 @@ using namespace Crystal::Physics;
 
 TimeSeriesParticleSystemAnimator::TimeSeriesParticleSystemAnimator() :
 	scene(nullptr),
-	reader(nullptr)
+	reader(nullptr),
+	stop_(false)
 {}
 
 void TimeSeriesParticleSystemAnimator::reset()
@@ -18,6 +19,9 @@ void TimeSeriesParticleSystemAnimator::reset()
 
 void TimeSeriesParticleSystemAnimator::step()
 {
+	if (stop_) {
+		return;
+	}
 	reader->step();
 
 	const auto positions = reader->getPositions();

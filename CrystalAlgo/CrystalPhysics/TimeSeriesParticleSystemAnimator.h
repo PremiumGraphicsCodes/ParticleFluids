@@ -20,9 +20,14 @@ public:
 
 	void step();
 
+	void stop() { this->stop_ = true; }
+
+	void start() { this->stop_ = false; }
+
 private:
 	Scene::ParticleSystemScene* scene;
 	TimeSeriesParticleSystemReader* reader;
+	bool stop_;
 };
 	}
 }

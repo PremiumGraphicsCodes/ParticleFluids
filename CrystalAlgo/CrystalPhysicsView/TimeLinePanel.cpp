@@ -45,6 +45,7 @@ void TimeLinePanel::onStart()
 
 void TimeLinePanel::onStop()
 {
+	animator.stop();
 	//getWorld()->removeAnimation(&reader);
 }
 
