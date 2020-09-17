@@ -37,14 +37,14 @@ public:
 
 	Graphics::DrawableID getIdInTexCoord(const int x, const int y);
 
-	Shader::TextureObject* getTextureScene() { return &texture; }
+	Shader::TextureObject* getTextureScene() { return texture; }
 
 	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 
 private:
 	std::vector<IShaderScene*> scenes;
 
-	Shader::TextureObject texture;
+	Shader::TextureObject* texture;
 	Shader::FrameBufferObject frameBufferObject;
 };
 	}

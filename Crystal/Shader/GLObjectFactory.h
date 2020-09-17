@@ -2,12 +2,13 @@
 
 #include "../Util/UnCopyable.h"
 
-#include "TextureObjectFactory.h"
+#include "TextureObject.h"
 #include "FrameBufferObject.h"
 #include "VertexBufferObject.h"
 #include "ShaderObject.h"
 
 #include <list>
+#include <memory>
 
 namespace Crystal {
 	namespace Shader {
@@ -16,12 +17,10 @@ class GLObjectFactory : private UnCopyable
 {
 public:
 	void clear() {
-		textureFactory.clear();
+		textures.clear();
 		shaders.clear();
 	}
 
-
-	TextureObjectFactory* getTextureFactory() { return &textureFactory; }
 
 	std::list<FrameBufferObject> fbos;
 
@@ -33,8 +32,15 @@ public:
 		return shaders.back().get();
 	}
 
+	TextureObject* createTextureObject() {
+		auto texture = std::make_unique<TextureObject>();
+		texture->create("");
+		textures.push_back(std::move(texture));
+		return textures.back().get();
+	}
+
 private:
-	TextureObjectFactory textureFactory;
+	std::list<std::unique_ptr<TextureObject>> textures;
 	std::list<std::unique_ptr<ShaderObject>> shaders;
 };
 

@@ -64,7 +64,7 @@ public:
 
 	Shader::SmoothRenderer* getSmoothShader() { return smoothRenderer; }
 
-	Shader::TextureObject* getTextureScene() { return &texture; }
+	Shader::TextureObject* getTextureScene() { return texture; }
 
 	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 
@@ -78,7 +78,7 @@ private:
 
 	Mask mask;
 
-	Shader::TextureObject texture;
+	Shader::TextureObject* texture;
 	Shader::FrameBufferObject frameBufferObject;
 };
 	}
