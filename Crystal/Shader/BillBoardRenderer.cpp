@@ -9,7 +9,7 @@
 #include <sstream>
 
 using namespace Crystal::Math;
-using namespace Crystal::Graphics;
+//using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
 bool BillBoardRenderer::build(GLObjectFactory& factory)

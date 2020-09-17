@@ -4,6 +4,8 @@
 #include "VertexArrayObject.h"
 #include "GLObjectFactory.h"
 #include "../Graphics/Camera.h"
+#include "../Shader/ShaderObject.h"
+#include <string>
 
 namespace Crystal {
 	namespace Shader {

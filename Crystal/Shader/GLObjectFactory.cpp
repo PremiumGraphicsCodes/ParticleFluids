@@ -1,5 +1,10 @@
 #include "GLObjectFactory.h"
 
+#include "TextureObject.h"
+#include "FrameBufferObject.h"
+#include "VertexBufferObject.h"
+#include "ShaderObject.h"
+
 using namespace Crystal::Shader;
 
 void GLObjectFactory::clear()
@@ -7,8 +12,15 @@ void GLObjectFactory::clear()
 	textures.clear();
 	shaders.clear();
 	vbos.clear();
+	fbos.clear();
 }
 
+FrameBufferObject* GLObjectFactory::createFrameBufferObject()
+{
+	auto fbo = std::make_unique<FrameBufferObject>();
+	fbos.push_back(std::move(fbo));
+	return fbos.back().get();
+}
 
 VertexBufferObject* GLObjectFactory::createVertexBufferObject()
 {

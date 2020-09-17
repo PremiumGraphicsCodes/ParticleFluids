@@ -1,7 +1,10 @@
 #pragma once
 
-#include "../Shader/GLObjectFactory.h"
 #include "VertexBufferObject.h"
+
+#include "../Shader/GLObjectFactory.h"
+#include "../Math/Matrix4d.h"
+#include "../Shader/ShaderObject.h"
 
 namespace Crystal {
 	namespace Shader {
