@@ -11,8 +11,8 @@ class LineRenderer
 public:
 	struct Buffer
 	{
-		Shader::VertexBufferObject position;
-		Shader::VertexBufferObject color;
+		Shader::VertexBufferObject* position;
+		Shader::VertexBufferObject* color;
 		std::vector<unsigned int> indices;
 		Math::Matrix4df projectionMatrix;
 		Math::Matrix4df modelViewMatrix;

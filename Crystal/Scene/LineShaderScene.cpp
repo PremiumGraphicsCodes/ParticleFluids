@@ -11,11 +11,10 @@ LineShaderScene::LineShaderScene(const std::string& name) :
 
 bool LineShaderScene::build(GLObjectFactory& glFactory)
 {
-	sBuffer.position.build();
-	sBuffer.color.build();
-
-	glFactory.vbos.push_back(sBuffer.position);
-	glFactory.vbos.push_back(sBuffer.color);
+	sBuffer.position = glFactory.createVertexBufferObject();
+	sBuffer.position->build();
+	sBuffer.color = glFactory.createVertexBufferObject();
+	sBuffer.color->build();
 
 	//vao.build();
 	return true;
@@ -23,11 +22,11 @@ bool LineShaderScene::build(GLObjectFactory& glFactory)
 
 void LineShaderScene::release(GLObjectFactory& glFactory)
 {
-	sBuffer.position.release();
-	sBuffer.color.release();
+	sBuffer.position->release();
+	sBuffer.color->release();
 
-	glFactory.vbos.remove(sBuffer.position);
-	glFactory.vbos.remove(sBuffer.color);
+	//glFactory.vbos.remove(sBuffer.position);
+	//glFactory.vbos.remove(sBuffer.color);
 
 	//vao.release();
 }
@@ -40,8 +39,8 @@ void LineShaderScene::send(const LineBuffer& buffer)
 		return;
 	}
 
-	sBuffer.position.send(positions);
-	sBuffer.color.send(colors);
+	sBuffer.position->send(positions);
+	sBuffer.color->send(colors);
 
 	sBuffer.indices = buffer.getIndices().get();
 //	sBuffer.matrix = buffer.getMatrix();

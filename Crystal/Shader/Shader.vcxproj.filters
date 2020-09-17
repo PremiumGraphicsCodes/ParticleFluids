@@ -43,9 +43,6 @@
       <Filter>ThirdParty</Filter>
     </ClInclude>
     <ClInclude Include="GLObjectFactory.h" />
-    <ClInclude Include="TextureObjectFactory.h">
-      <Filter>Texture</Filter>
-    </ClInclude>
     <ClInclude Include="FrameBufferObjectFactory.h">
       <Filter>FrameBufferObject</Filter>
     </ClInclude>
@@ -106,9 +103,6 @@
     <ClCompile Include="IShaderCommand.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
-    <ClCompile Include="TextureObjectFactory.cpp">
-      <Filter>Texture</Filter>
-    </ClCompile>
     <ClCompile Include="FrameBufferObjectFactory.cpp">
       <Filter>FrameBufferObject</Filter>
     </ClCompile>
@@ -132,6 +126,7 @@
     <ClCompile Include="SmoothRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="GLObjectFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Texture">

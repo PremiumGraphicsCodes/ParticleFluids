@@ -157,7 +157,6 @@
     <ClInclude Include="ShaderUnit.h" />
     <ClInclude Include="SmoothRenderer.h" />
     <ClInclude Include="TextureObject.h" />
-    <ClInclude Include="TextureObjectFactory.h" />
     <ClInclude Include="TriangleRenderer.h" />
     <ClInclude Include="VertexArrayObject.h" />
     <ClInclude Include="VertexBufferObject.h" />
@@ -170,6 +169,7 @@
     <ClCompile Include="DepthTextureObject.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="FrameBufferObjectFactory.cpp" />
+    <ClCompile Include="GLObjectFactory.cpp" />
     <ClCompile Include="IShaderCommand.cpp" />
     <ClCompile Include="LineRenderer.cpp" />
     <ClCompile Include="OnScreenRenderer.cpp" />
@@ -181,7 +181,6 @@
     <ClCompile Include="ShaderUnit.cpp" />
     <ClCompile Include="SmoothRenderer.cpp" />
     <ClCompile Include="TextureObject.cpp" />
-    <ClCompile Include="TextureObjectFactory.cpp" />
     <ClCompile Include="TriangleRenderer.cpp" />
     <ClCompile Include="VertexArrayObject.cpp" />
     <ClCompile Include="VertexBufferObject.cpp" />

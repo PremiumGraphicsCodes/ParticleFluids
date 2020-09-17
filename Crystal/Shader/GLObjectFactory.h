@@ -16,30 +16,18 @@ namespace Crystal {
 class GLObjectFactory : private UnCopyable
 {
 public:
-	void clear() {
-		textures.clear();
-		shaders.clear();
-	}
-
+	void clear();
 
 	std::list<FrameBufferObject> fbos;
 
-	std::list<VertexBufferObject> vbos;
+	VertexBufferObject* createVertexBufferObject();
 
-	ShaderObject* createShaderObject() {
-		auto shader = std::make_unique<ShaderObject>();
-		shaders.push_back(std::move(shader));
-		return shaders.back().get();
-	}
+	ShaderObject* createShaderObject();
 
-	TextureObject* createTextureObject() {
-		auto texture = std::make_unique<TextureObject>();
-		texture->create("");
-		textures.push_back(std::move(texture));
-		return textures.back().get();
-	}
+	TextureObject* createTextureObject();
 
 private:
+	std::list<std::unique_ptr<VertexBufferObject>> vbos;
 	std::list<std::unique_ptr<TextureObject>> textures;
 	std::list<std::unique_ptr<ShaderObject>> shaders;
 };

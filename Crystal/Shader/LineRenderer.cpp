@@ -47,8 +47,8 @@ void LineRenderer::render(const Buffer& buffer)
 	shader.setLineWidth(buffer.lineWidth);
 	shader.enableDepthTest();
 
-	shader.sendVertexAttribute3df(positionLabel, buffer.position);
-	shader.sendVertexAttribute4df(colorLabel, buffer.color);
+	shader.sendVertexAttribute3df(positionLabel, *buffer.position);
+	shader.sendVertexAttribute4df(colorLabel, *buffer.color);
 
 	shader.drawLines(buffer.indices);
 
