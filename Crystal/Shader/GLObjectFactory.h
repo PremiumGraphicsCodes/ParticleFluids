@@ -25,6 +25,14 @@ public:
 
 	TextureObject* createTextureObject();
 
+	void remove(FrameBufferObject* fbo);
+
+	void remove(VertexBufferObject* vbo);
+
+	void remove(TextureObject* texture);
+
+	void remove(ShaderObject* shader);
+
 private:
 	std::list<std::unique_ptr<FrameBufferObject>> fbos;
 	std::list<std::unique_ptr<VertexBufferObject>> vbos;

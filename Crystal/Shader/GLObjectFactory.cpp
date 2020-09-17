@@ -43,3 +43,23 @@ TextureObject* GLObjectFactory::createTextureObject()
 	textures.push_back(std::move(texture));
 	return textures.back().get();
 }
+
+void GLObjectFactory::remove(FrameBufferObject* fbo)
+{
+	fbos.remove_if( [fbo](auto& o) { return o.get() == fbo; });
+}
+
+void GLObjectFactory::remove(VertexBufferObject* vbo)
+{
+	vbos.remove_if([vbo](auto& o) { return o.get() == vbo; });
+}
+
+void GLObjectFactory::remove(TextureObject* texture)
+{
+	textures.remove_if([texture](auto& o) { return o.get() == texture; });
+}
+
+void GLObjectFactory::remove(ShaderObject* shader)
+{
+	shaders.remove_if([shader](auto& s) { return s.get() == shader; });
+}

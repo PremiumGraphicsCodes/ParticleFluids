@@ -24,6 +24,11 @@ bool OnScreenRenderer::build(GLObjectFactory& factory)
 	return true;
 }
 
+void OnScreenRenderer::release(GLObjectFactory& factory)
+{
+	factory.remove(this->shader);
+}
+
 std::string OnScreenRenderer::getBuildinVertexShaderSource()
 {
 	std::ostringstream stream;

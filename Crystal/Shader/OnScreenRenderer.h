@@ -13,6 +13,8 @@ class OnScreenRenderer
 public:
 	bool build(GLObjectFactory& factory);
 
+	void release(GLObjectFactory& factory);
+
 	void render(const ITextureObject& texture);
 
 private:
