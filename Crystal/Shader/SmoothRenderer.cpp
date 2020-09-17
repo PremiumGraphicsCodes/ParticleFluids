@@ -31,36 +31,40 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	const auto& vsSource = getBuildInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
 
-	const auto isOk = shader.build(vsSource, fsSource);
+	this->shader = factory.createShaderObject();
+	const auto isOk = shader->build(vsSource, fsSource);
+	if (!isOk) {
+		return false;
+	}
 
-	shader.findUniformLocation(::projectionMatrixLabel);
-	shader.findUniformLocation(::modelviewMatrixLabel);
-	shader.findUniformLocation(::eyePositionLabel);
+	shader->findUniformLocation(::projectionMatrixLabel);
+	shader->findUniformLocation(::modelviewMatrixLabel);
+	shader->findUniformLocation(::eyePositionLabel);
 	//shader.findUniformLocation("texture1");
 
-	shader.findAttribLocation(::positionLabel);
-	shader.findAttribLocation(::normalLabel);
-	shader.findAttribLocation(::materialIdLabel);
-	shader.findAttribLocation(::texCoordLabel);
+	shader->findAttribLocation(::positionLabel);
+	shader->findAttribLocation(::normalLabel);
+	shader->findAttribLocation(::materialIdLabel);
+	shader->findAttribLocation(::texCoordLabel);
 
 	//materialShader.build(&shader);
 	for (int i = 0; i < 256; ++i) {
 		const auto prefix = "materials[" + std::to_string(i) + "]";
-		shader.findUniformLocation(prefix + ".Ka");
-		shader.findUniformLocation(prefix + ".Kd");
-		shader.findUniformLocation(prefix + ".Ks");
-		shader.findUniformLocation(prefix + ".shininess");
-		shader.findUniformLocation(prefix + ".ambientTexId");
-		shader.findUniformLocation(prefix + ".diffuseTexId");
-		shader.findUniformLocation(prefix + ".specularTexId");
+		shader->findUniformLocation(prefix + ".Ka");
+		shader->findUniformLocation(prefix + ".Kd");
+		shader->findUniformLocation(prefix + ".Ks");
+		shader->findUniformLocation(prefix + ".shininess");
+		shader->findUniformLocation(prefix + ".ambientTexId");
+		shader->findUniformLocation(prefix + ".diffuseTexId");
+		shader->findUniformLocation(prefix + ".specularTexId");
 	}
 
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "lights[" + std::to_string(i) + "]";
-		shader.findUniformLocation(prefix + ".position");
-		shader.findUniformLocation(prefix + ".La");
-		shader.findUniformLocation(prefix + ".Ld");
-		shader.findUniformLocation(prefix + ".Ls");
+		shader->findUniformLocation(prefix + ".position");
+		shader->findUniformLocation(prefix + ".La");
+		shader->findUniformLocation(prefix + ".Ld");
+		shader->findUniformLocation(prefix + ".Ls");
 	}
 
 	/*
@@ -72,7 +76,7 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	}
 	*/
 
-	return isOk;
+	return true;
 }
 
 void SmoothRenderer::release(GLObjectFactory& factory)
@@ -80,7 +84,7 @@ void SmoothRenderer::release(GLObjectFactory& factory)
 	for (int i = 0; i < 8; ++i) {
 		//		textures[i].release();
 	}
-	shader.release();
+	factory.remove(shader);
 }
 
 /*
@@ -136,40 +140,40 @@ void SmoothShader::send(const TextureShaderBuffer& buffer)
 
 void SmoothRenderer::render(const Buffer& buffer)
 {
-	shader.bind();
+	shader->bind();
 
 	const auto& projectionMatrix = buffer.projectionMatrix;
 	const auto& modelviewMatrix = buffer.modelViewMatrix;
 	const auto& eyePos = buffer.eyePosition;
 
-	shader.bind();
+	shader->bind();
 
-	shader.sendUniform(::projectionMatrixLabel, projectionMatrix);
-	shader.sendUniform(::modelviewMatrixLabel, modelviewMatrix);
-	shader.sendUniform(::eyePositionLabel, eyePos);
+	shader->sendUniform(::projectionMatrixLabel, projectionMatrix);
+	shader->sendUniform(::modelviewMatrixLabel, modelviewMatrix);
+	shader->sendUniform(::eyePositionLabel, eyePos);
 
-	shader.sendVertexAttribute3df(::positionLabel, buffer.position);
-	shader.sendVertexAttribute3df(::normalLabel, buffer.normal);
-	shader.sendVertexAttribute2df(::texCoordLabel, buffer.texCoord);
-	shader.sendVertexAttribute1di(::materialIdLabel, buffer.materialId);
-
-
-	shader.bindOutput("fragColor");
-
-	shader.enableDepthTest();
+	shader->sendVertexAttribute3df(::positionLabel, buffer.position);
+	shader->sendVertexAttribute3df(::normalLabel, buffer.normal);
+	shader->sendVertexAttribute2df(::texCoordLabel, buffer.texCoord);
+	shader->sendVertexAttribute1di(::materialIdLabel, buffer.materialId);
 
 
-	shader.enableVertexAttribute(::positionLabel);
-	shader.enableVertexAttribute(::normalLabel);
-	shader.enableVertexAttribute(::texCoordLabel);
-	shader.enableVertexAttribute(::materialIdLabel);
+	shader->bindOutput("fragColor");
+
+	shader->enableDepthTest();
+
+
+	shader->enableVertexAttribute(::positionLabel);
+	shader->enableVertexAttribute(::normalLabel);
+	shader->enableVertexAttribute(::texCoordLabel);
+	shader->enableVertexAttribute(::materialIdLabel);
 
 	int texId = 0;
 	for (const auto& t : buffer.textures) {
 		t.bind(texId++);
 	}
 
-	shader.drawTriangles(buffer.count);
+	shader->drawTriangles(buffer.count);
 
 	for (const auto& t : buffer.textures) {
 		t.unbind();
@@ -177,15 +181,15 @@ void SmoothRenderer::render(const Buffer& buffer)
 
 	//textures[0].unbind();
 
-	shader.disableVertexAttribute(::materialIdLabel);
-	shader.disableVertexAttribute(::texCoordLabel);
-	shader.disableVertexAttribute(::normalLabel);
-	shader.disableVertexAttribute(::positionLabel);
+	shader->disableVertexAttribute(::materialIdLabel);
+	shader->disableVertexAttribute(::texCoordLabel);
+	shader->disableVertexAttribute(::normalLabel);
+	shader->disableVertexAttribute(::positionLabel);
 
 	assert(GL_NO_ERROR == glGetError());
 
-	shader.disableDepthTest();
-	shader.unbind();
+	shader->disableDepthTest();
+	shader->unbind();
 }
 
 std::string SmoothRenderer::getBuildInVertexShaderSource() const

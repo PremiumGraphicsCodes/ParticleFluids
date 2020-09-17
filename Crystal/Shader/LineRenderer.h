@@ -36,7 +36,7 @@ private:
 
 	std::string getBuiltInFsSource() const;
 
-	Shader::ShaderObject shader;
+	Shader::ShaderObject* shader;
 };
 
 	}

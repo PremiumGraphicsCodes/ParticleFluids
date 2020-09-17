@@ -20,47 +20,51 @@ bool LineRenderer::build(GLObjectFactory& factory)
 {
 	const auto& vsSource = getBuiltInVsSource();
 	const auto& fsSource = getBuiltInFsSource();
-	//	factory.getShaderFactory()->create()
-	const auto isOk = shader.build(vsSource, fsSource);
 
-	shader.findUniformLocation(::projectionMatrixLabel);
-	shader.findUniformLocation(::modelViewMatrixLabel);
+	this->shader = factory.createShaderObject();
+	const auto isOk = shader->build(vsSource, fsSource);
+	if (!isOk) {
+		return false;
+	}
 
-	shader.findAttribLocation(::positionLabel);
-	shader.findAttribLocation(::colorLabel);
+	shader->findUniformLocation(::projectionMatrixLabel);
+	shader->findUniformLocation(::modelViewMatrixLabel);
 
-	return isOk;
+	shader->findAttribLocation(::positionLabel);
+	shader->findAttribLocation(::colorLabel);
+
+	return true;
 }
 
 void LineRenderer::release(GLObjectFactory& factory)
 {
-	shader.release();
+	factory.remove(shader);
 }
 
 void LineRenderer::render(const Buffer& buffer)
 {
-	shader.bind();
+	shader->bind();
 
-	shader.sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
-	shader.sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
+	shader->sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);
+	shader->sendUniform(::modelViewMatrixLabel, buffer.modelViewMatrix);
 
-	shader.setLineWidth(buffer.lineWidth);
-	shader.enableDepthTest();
+	shader->setLineWidth(buffer.lineWidth);
+	shader->enableDepthTest();
 
-	shader.sendVertexAttribute3df(positionLabel, *buffer.position);
-	shader.sendVertexAttribute4df(colorLabel, *buffer.color);
+	shader->sendVertexAttribute3df(positionLabel, *buffer.position);
+	shader->sendVertexAttribute4df(colorLabel, *buffer.color);
 
-	shader.drawLines(buffer.indices);
+	shader->drawLines(buffer.indices);
 
 	//shader->disableVertexAttribute("color");
 	//shader->disableVertexAttribute("position");
 
-	shader.bindOutput(::fragColorLabel);
+	shader->bindOutput(::fragColorLabel);
 
-	shader.setLineWidth(1);
-	shader.disableDepthTest();
+	shader->setLineWidth(1);
+	shader->disableDepthTest();
 
-	shader.unbind();
+	shader->unbind();
 
 	assert(GL_NO_ERROR == glGetError());
 }
