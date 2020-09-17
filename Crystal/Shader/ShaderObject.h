@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Util/UnCopyable.h"
+
 #include <vector>
 #include <map>
 #include <string>
@@ -17,7 +19,7 @@ namespace Crystal {
 		class VertexBufferObject;
 		class TextureObject;
 
-class ShaderObject : IGLObject
+class ShaderObject : IGLObject, private UnCopyable
 {
 private:
 

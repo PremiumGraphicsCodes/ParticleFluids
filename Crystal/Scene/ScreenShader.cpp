@@ -46,6 +46,11 @@ bool ScreenShader::build(GLObjectFactory& factory)
 
 void ScreenShader::release(GLObjectFactory& factory)
 {
+	pointRenderer->release(factory);
+	wireRenderer->release(factory);
+	smoothRenderer->release(factory);
+	triagleRenderer->release(factory);
+
 	factory.remove(texture);
 	factory.remove(frameBufferObject);
 }

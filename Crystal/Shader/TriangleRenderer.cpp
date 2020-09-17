@@ -9,7 +9,8 @@ namespace {
 	constexpr char* modelViewMatrixLabel = "modelviewMatrix";
 }
 
-TriangleRenderer::TriangleRenderer()
+TriangleRenderer::TriangleRenderer() :
+	shader(nullptr)
 {
 }
 
@@ -18,6 +19,7 @@ bool TriangleRenderer::build(GLObjectFactory& factory)
 	const auto& vsSource = getBuildInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
 
+	shader = factory.createShaderObject();
 	const auto isOk = shader->build(vsSource, fsSource);
 	if (!isOk) {
 		return false;
@@ -32,11 +34,10 @@ bool TriangleRenderer::build(GLObjectFactory& factory)
 	return true;
 }
 
-void TriangleRenderer::release(GLObjectFactory& glFactory)
+void TriangleRenderer::release(GLObjectFactory& factory)
 {
-
+	factory.remove(shader);
 }
-
 
 void TriangleRenderer::render(const Buffer& buffer)
 {

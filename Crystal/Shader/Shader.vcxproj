@@ -140,7 +140,6 @@
     <ClInclude Include="DepthRenderer.h" />
     <ClInclude Include="DepthTextureObject.h" />
     <ClInclude Include="FrameBufferObject.h" />
-    <ClInclude Include="FrameBufferObjectFactory.h" />
     <ClInclude Include="glew.h" />
     <ClInclude Include="GLObjectFactory.h" />
     <ClInclude Include="IGLObject.h" />
@@ -168,7 +167,6 @@
     <ClCompile Include="DepthRenderer.cpp" />
     <ClCompile Include="DepthTextureObject.cpp" />
     <ClCompile Include="FrameBufferObject.cpp" />
-    <ClCompile Include="FrameBufferObjectFactory.cpp" />
     <ClCompile Include="GLObjectFactory.cpp" />
     <ClCompile Include="IShaderCommand.cpp" />
     <ClCompile Include="LineRenderer.cpp" />

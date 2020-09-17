@@ -43,9 +43,6 @@
       <Filter>ThirdParty</Filter>
     </ClInclude>
     <ClInclude Include="GLObjectFactory.h" />
-    <ClInclude Include="FrameBufferObjectFactory.h">
-      <Filter>FrameBufferObject</Filter>
-    </ClInclude>
     <ClInclude Include="FrameBufferObject.h">
       <Filter>FrameBufferObject</Filter>
     </ClInclude>
@@ -102,9 +99,6 @@
     </ClCompile>
     <ClCompile Include="IShaderCommand.cpp">
       <Filter>Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="FrameBufferObjectFactory.cpp">
-      <Filter>FrameBufferObject</Filter>
     </ClCompile>
     <ClCompile Include="FrameBufferObject.cpp">
       <Filter>FrameBufferObject</Filter>
