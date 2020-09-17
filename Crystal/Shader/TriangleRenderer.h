@@ -34,7 +34,7 @@ private:
 
 	std::string getBuiltInFragmentShaderSource() const;
 
-	Shader::ShaderObject shader;
+	Shader::ShaderObject* shader;
 };
 
 	}
