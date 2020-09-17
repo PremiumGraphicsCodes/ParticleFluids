@@ -23,7 +23,7 @@ private:
 	void findLocation();
 
 private:
-	std::unique_ptr<ShaderObject> shader;
+	ShaderObject* shader;
 };
 
 	}

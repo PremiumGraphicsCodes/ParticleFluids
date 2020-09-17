@@ -17,8 +17,8 @@ bool BillBoardRenderer::build(GLObjectFactory& factory)
 {
 	const auto vsSource = getBuildinVertexShaderSource();
 	const auto fsSource = getBuildinFragmentShaderSource();
-	this->shader = std::move(factory.getShaderFactory()->create(vsSource, fsSource));
-	if (this->shader->getHandle() == -1) {
+	this->shader = factory.createShaderObject();
+	if(!this->shader->build(vsSource, fsSource)) {
 		return false;
 	}
 	findLocation();

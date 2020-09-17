@@ -13,11 +13,10 @@ class GLObjectFactory : private UnCopyable
 {
 public:
 	void clear() {
-		shaderFactory.clear();
 		textureFactory.clear();
+		shaders.clear();
 	}
 
-	ShaderObjectFactory* getShaderFactory() { return &shaderFactory; }
 
 	TextureObjectFactory* getTextureFactory() { return &textureFactory; }
 
@@ -25,9 +24,15 @@ public:
 
 	std::list<VertexBufferObject> vbos;
 
+	ShaderObject* createShaderObject() {
+		auto shader = std::make_unique<ShaderObject>();
+		shaders.push_back(std::move(shader));
+		return shaders.back().get();
+	}
+
 private:
-	ShaderObjectFactory shaderFactory;
 	TextureObjectFactory textureFactory;
+	std::list<std::unique_ptr<ShaderObject>> shaders;
 };
 
 	}
