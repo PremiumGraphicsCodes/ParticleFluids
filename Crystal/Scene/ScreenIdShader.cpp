@@ -14,7 +14,8 @@ ScreenIdShader::ScreenIdShader(const std::string& name)
 
 bool ScreenIdShader::build(GLObjectFactory& factory)
 {
-	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
+	//frameBufferObject;
+	frameBufferObject.build(512, 512);
 
 	texture = factory.getTextureFactory()->createTextureObject("");
 	texture.send(Image(512, 512));
@@ -30,9 +31,9 @@ void ScreenIdShader::release(GLObjectFactory& factory)
 
 void ScreenIdShader::render(const Graphics::Camera& camera)
 {
-	frameBufferObject->setTexture(texture);
+	frameBufferObject.setTexture(texture);
 	//texture.bind();
-	frameBufferObject->bind();
+	frameBufferObject.bind();
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 
@@ -43,7 +44,7 @@ void ScreenIdShader::render(const Graphics::Camera& camera)
 		s->render(camera);
 	}
 
-	frameBufferObject->unbind();
+	frameBufferObject.unbind();
 }
 
 DrawableID ScreenIdShader::getId(const double x, const double y)
@@ -53,9 +54,9 @@ DrawableID ScreenIdShader::getId(const double x, const double y)
 
 DrawableID ScreenIdShader::getIdInTexCoord(const int x, const int y)
 {
-	frameBufferObject->bind();
+	frameBufferObject.bind();
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
-	const auto& color = frameBufferObject->getColor(x, y);
-	frameBufferObject->unbind();
+	const auto& color = frameBufferObject.getColor(x, y);
+	frameBufferObject.unbind();
 	return DrawableID(color);
 }

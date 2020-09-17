@@ -38,7 +38,7 @@ bool ScreenShader::build(GLObjectFactory& factory)
 	texture = factory.getTextureFactory()->createTextureObject("");
 	texture.send(Image(512, 512));
 	//texture.create(, 1);
-	frameBufferObject = factory.getFrameBufferFactory()->create(512, 512);
+	frameBufferObject.build(512, 512);
 	return true;
 }
 
@@ -49,9 +49,9 @@ void ScreenShader::release(GLObjectFactory& factory)
 
 void ScreenShader::render(const Camera& camera)
 {
-	frameBufferObject->setTexture(texture);
+	frameBufferObject.setTexture(texture);
 	//texture.bind();
-	frameBufferObject->bind();
+	frameBufferObject.bind();
 	glViewport(0, 0, texture.getWidth(), texture.getHeight());
 	glClearColor(0.0, 0.0, 1.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -60,5 +60,5 @@ void ScreenShader::render(const Camera& camera)
 		s->render(camera);
 	}
 
-	frameBufferObject->unbind();
+	frameBufferObject.unbind();
 }

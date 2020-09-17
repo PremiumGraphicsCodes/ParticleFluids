@@ -27,6 +27,10 @@ public:
 
 	void unbind() const;
 
+	bool operator==(const VertexBufferObject& rhs) const {
+		return this->handle == rhs.handle;
+	}
+
 private:
 	GLuint handle;
 };

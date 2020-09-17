@@ -45,7 +45,7 @@ private:
 	std::vector<IShaderScene*> scenes;
 
 	Shader::TextureObject texture;
-	std::unique_ptr<Shader::FrameBufferObject> frameBufferObject;
+	Shader::FrameBufferObject frameBufferObject;
 };
 	}
 }

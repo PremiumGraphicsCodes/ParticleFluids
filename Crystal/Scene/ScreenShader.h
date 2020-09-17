@@ -79,7 +79,7 @@ private:
 	Mask mask;
 
 	Shader::TextureObject texture;
-	std::unique_ptr< Shader::FrameBufferObject > frameBufferObject;
+	Shader::FrameBufferObject frameBufferObject;
 };
 	}
 }

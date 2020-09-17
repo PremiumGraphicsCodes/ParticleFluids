@@ -14,6 +14,9 @@ bool LineShaderScene::build(GLObjectFactory& glFactory)
 	sBuffer.position.build();
 	sBuffer.color.build();
 
+	glFactory.vbos.push_back(sBuffer.position);
+	glFactory.vbos.push_back(sBuffer.color);
+
 	//vao.build();
 	return true;
 }
@@ -22,6 +25,9 @@ void LineShaderScene::release(GLObjectFactory& glFactory)
 {
 	sBuffer.position.release();
 	sBuffer.color.release();
+
+	glFactory.vbos.remove(sBuffer.position);
+	glFactory.vbos.remove(sBuffer.color);
 
 	//vao.release();
 }

@@ -21,12 +21,13 @@ public:
 
 	TextureObjectFactory* getTextureFactory() { return &textureFactory; }
 
-	FrameBufferObjectFactory* getFrameBufferFactory() { return &frameBufferFactory; }
+	std::list<FrameBufferObject> fbos;
+
+	std::list<VertexBufferObject> vbos;
 
 private:
 	ShaderObjectFactory shaderFactory;
 	TextureObjectFactory textureFactory;
-	FrameBufferObjectFactory frameBufferFactory;
 };
 
 	}
