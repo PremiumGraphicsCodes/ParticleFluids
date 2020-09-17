@@ -11,6 +11,11 @@ TimeSeriesParticleSystemAnimator::TimeSeriesParticleSystemAnimator() :
 	reader(nullptr)
 {}
 
+void TimeSeriesParticleSystemAnimator::reset()
+{
+	//reader->reset();
+}
+
 void TimeSeriesParticleSystemAnimator::step()
 {
 	reader->step();

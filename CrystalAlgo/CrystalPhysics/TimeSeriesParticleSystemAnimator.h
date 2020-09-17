@@ -16,6 +16,8 @@ public:
 
 	void setReader(TimeSeriesParticleSystemReader* reader) { this->reader = reader; }
 
+	void reset();
+
 	void step();
 
 private:

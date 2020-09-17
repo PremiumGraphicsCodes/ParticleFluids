@@ -23,6 +23,7 @@ void TimeSeriesParticleSystemReader::step()
 
 void TimeSeriesParticleSystemReader::reset()
 {
+	this->step_ = 0;
 	this->directoryPath.clear();
 	//this->particles.clear();
 }

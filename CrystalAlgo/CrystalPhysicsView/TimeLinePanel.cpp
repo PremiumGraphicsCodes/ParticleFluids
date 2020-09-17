@@ -38,11 +38,9 @@ void TimeLinePanel::onStart()
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	presenter->setBlend(false);
 
-	const auto directoryPath = directoryView.getPath();
-	reader.setDirectryPath(directoryPath);
-	animator.setReader(&reader);
-	animator.setScene(psScene);
 	getWorld()->addAnimation(&animator);
+
+	onReset();
 }
 
 void TimeLinePanel::onStop()
@@ -53,4 +51,11 @@ void TimeLinePanel::onStop()
 void TimeLinePanel::onReset()
 {
 	reader.reset();
+	animator.reset();
+
+	const auto directoryPath = directoryView.getPath();
+	reader.setDirectryPath(directoryPath);
+	animator.setReader(&reader);
+	animator.setScene(psScene);
+
 }
