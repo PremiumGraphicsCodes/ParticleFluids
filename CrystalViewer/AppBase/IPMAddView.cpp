@@ -1,7 +1,6 @@
 #include "IPMAddView.h"
 
 #include "../Command/Command.h"
-#include "../Command/Public/PolygonMeshCreateLabels.h"
 #include "../Command/Public/CameraLabels.h"
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
@@ -24,23 +23,27 @@ IPMAddView::IPMAddView(const std::string& name, World* model, Canvas* canvas) :
 
 void IPMAddView::addPolygonMesh(const PolygonMeshBuilder& builder)
 {
-	Command::Command command;
-	command.create(PolygonMeshCreateLabels::CommandNameLabel);
-	command.setArg(PolygonMeshCreateLabels::PositionsLabel, builder.getPositions());
-	command.setArg(PolygonMeshCreateLabels::NormalsLabel, builder.getNormals());
-	command.setArg(PolygonMeshCreateLabels::TexCoordsLabel, builder.getTexCoords());
-	command.setArg(PolygonMeshCreateLabels::VerticesLabel, builder.getVertices());
-	command.setArg(PolygonMeshCreateLabels::FacesLabel, builder.getFaces());
-	command.setArg(PolygonMeshCreateLabels::NameLabel, nameView.getValue());
-	command.execute(getWorld());
-	const auto newId = std::any_cast<int>(command.getResult(PolygonMeshCreateLabels::NewIdLabel));
+	auto world = getWorld();
+	auto mesh = std::make_unique<PolygonMesh>();
+	mesh->positions = builder.getPositions();
+	mesh->normals = builder.getNormals();
+	mesh->texCoords = builder.getTexCoords();
+	mesh->vertices = builder.getVertices();
+	mesh->faces = builder.getFaces();
+
+	auto shape = new PolygonMeshScene(world->getNextSceneId(), nameView.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
+	world->getScenes()->addScene(shape);
+	auto group = new FaceGroupScene(world->getNextSceneId(), "FaceGroup", shape);
+	shape->addGroup(group);
+	const auto& faces = shape->getShape()->faces;
+	for (auto f : faces) {
+		group->addFace(f);
+	}
+	const auto newId = shape->getId();
 
 	auto scene = getWorld()->getScenes()->findSceneById<PolygonMeshScene*>(newId);
 	auto controller = scene->getPresenter();
 	controller->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	//getWorld()->getRenderer()->getScene()->screen.addChild(controller.getView());
-
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(getWorld());
 
 }
