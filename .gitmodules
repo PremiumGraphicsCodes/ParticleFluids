@@ -1,6 +1,3 @@
-[submodule "CrystalAlgo/ThirdParty/openvdb"]
-	path = CrystalAlgo/ThirdParty/openvdb
-	url = https://premiumgraphics@bitbucket.org/premiumgraphics/openvdb.git
 [submodule "FluidStudio/ThirdParty/openvdb"]
 	path = FluidStudio/ThirdParty/openvdb
 	url = https://premiumgraphics@bitbucket.org/premiumgraphics/openvdb.git
