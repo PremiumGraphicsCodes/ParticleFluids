@@ -25,7 +25,20 @@ namespace glm {
 		}
 
 
+
+
 //	}
+}
+
+namespace Crystal {
+	namespace Math {
+		void to_json(json& j, const Box3d& b) {
+			j = json{
+				{"min", b.getMin()},
+				{"max", b.getMax()}
+			};
+		}
+	}
 }
 
 nlohmann::json JSONConverter::toJSON(const std::string& name, const int value)
@@ -57,9 +70,13 @@ nlohmann::json JSONConverter::toJSON(const std::string& name, const Vector3dd& v
 {
 	return { name, value };
 }
-/*
-nlohmann::json toJSON(const std::string& name, const Math::Box3d& value);
 
+nlohmann::json JSONConverter::toJSON(const std::string& name, const Box3d& value)
+{
+	return { name, value };
+}
+
+/*
 void fromJSON(const std::string& name, int& value);
 
 void fromJSON(const std::string& name, float& value);

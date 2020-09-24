@@ -1,0 +1,4 @@
+class FSProjFileReader
+{
+	int x;
+};
