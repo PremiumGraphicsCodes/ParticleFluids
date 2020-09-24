@@ -62,18 +62,14 @@ void KFFluidSimulationView::onOk()
 
 	this->newId = fluidScene->getId();
 
-	Command::Command command;
-	command.create(ShaderBuildLabels::CommandNameLabel);
-	command.setArg(ShaderBuildLabels::IdLabel, newId);
-	command.execute(getWorld());
+	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(getWorld());
-
-	simulator.add(this->fluidScene);
-	simulator.addBoundary(this->boundaryScene);
+	args.fluids.push_back(this->fluidScene);
+	args.boundaries.push_back(this->boundaryScene);
 	getWorld()->addAnimation(&simulator);
 	getWorld()->addAnimation(&writer);
+
+	simulator.setArgs(args);
 }
 
 void KFFluidSimulationView::reset()
@@ -185,8 +181,8 @@ void KFFluidSimulationView::reset()
 	}
 		*/
 
+	args.surfaces.push_back(this->boundaryView.getValue());
+	args.maxTimeStep = (this->timeStepView.getValue());
 
-
-	simulator.setBoundary(this->boundaryView.getValue());
-	simulator.setTimeStep(this->timeStepView.getValue());
+	simulator.setArgs(args);
 }
