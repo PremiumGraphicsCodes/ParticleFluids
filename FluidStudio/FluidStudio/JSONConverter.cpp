@@ -35,6 +35,13 @@ namespace Crystal {
 				{"max", b.getMax()}
 			};
 		}
+
+		void from_json(const json& j, Box3d& v) {
+			Vector3dd min = j.at("min");
+			Vector3dd max = j.at("max");
+			v = Box3d(min, max);
+		}
+
 	}
 }
 
@@ -100,35 +107,46 @@ nlohmann::json JSONConverter::toJSON(const std::any& a)
 
 
 template<>
-int JSONConverter::fromJSON<int>(const nlohmann::json& j, const std::string& name)
+int JSONConverter::fromJSON<int>(const nlohmann::json& j)
 {
-	return j.at(name).get<int>();
+	return j.get<int>();
 }
 
 template<>
-float JSONConverter::fromJSON<float>(const nlohmann::json& j, const std::string& name)
+float JSONConverter::fromJSON<float>(const nlohmann::json& j)
 {
-	return j[name].get<float>();
+	return j.get<float>();
 }
 
 template<>
-double JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
+double JSONConverter::fromJSON<double>(const nlohmann::json& j)
 {
-	return j[name].get<double>();
+	return j.get<double>();
 }
 
 template<>
-std::string JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
+std::string JSONConverter::fromJSON<std::string>(const nlohmann::json& j)
 {
-	return j[name].get<std::string>();
+	return j.get<std::string>();
 }
 
 template<>
-Vector3df JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
+Vector3df JSONConverter::fromJSON<Vector3df>(const nlohmann::json& j)
 {
-	return j[name].get<Vector3df>();
+	return j.get<Vector3df>();
 }
 
+template<>
+Vector3dd JSONConverter::fromJSON<Vector3dd>(const nlohmann::json& j)
+{
+	return j.get<Vector3dd>();
+}
+
+template<>
+Box3d JSONConverter::fromJSON<Box3d>(const nlohmann::json& j)
+{
+	return j.get<Box3d>();
+}
 
 /*
 void fromJSON(const std::string& name, std::string& value);

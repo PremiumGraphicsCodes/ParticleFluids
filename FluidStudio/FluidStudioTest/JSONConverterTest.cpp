@@ -62,26 +62,44 @@ TEST(JSONConverterTest, TestToJSON)
 TEST(JSONConverterTest, TestFromJSON)
 {
 	{
-		const json j { {"Int", 1} };
-		const auto v = JSONConverter::fromJSON<int>(j, "Int");
+		const json j(1);
+		const auto v = JSONConverter::fromJSON<int>(j);
 		EXPECT_EQ(1, v);
 	}
 
 	{
-		const json j{ {"Float", 9.9f} };
-		const auto v = JSONConverter::fromJSON<float>(j, "Float");
+		const json j(9.9f);
+		const auto v = JSONConverter::fromJSON<float>(j);
 		EXPECT_EQ(9.9f, v);
 	}
 
 	{
-		const json j{ {"String", "Hello"} };
-		const auto v = JSONConverter::fromJSON<std::string>(j, "String");
+		const json j("Hello");
+		const auto v = JSONConverter::fromJSON<std::string>(j);
 		EXPECT_EQ("Hello", v);
 	}
 
 	{
-		const json j{ {"Vector3df", {1,2,3} } };
-		const auto v = JSONConverter::fromJSON<Vector3df>(j, "Vector3df");
+		const json j = {1,2,3};
+		const auto v = JSONConverter::fromJSON<Vector3df>(j);
 		EXPECT_EQ(Vector3df(1, 2, 3), v);
+	}
+
+
+	{
+		const json j = {1,2,3};
+		const auto v = JSONConverter::fromJSON<Vector3df>(j);
+		EXPECT_EQ(Vector3df(1, 2, 3), v);
+	}
+
+	{
+		const json j =
+		{
+			{ "min", {1,2,3} },
+			{ "max", {11,12,13} }
+		};
+		const auto v = JSONConverter::fromJSON<Box3d>(j);
+		const Box3d expected(Vector3dd(1, 2, 3), Vector3dd(11, 12, 13));
+		EXPECT_TRUE(expected.isSame(v, 1.0e-12));
 	}
 }

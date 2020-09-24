@@ -23,7 +23,7 @@ public:
 	static nlohmann::json toJSON(const std::any& a);
 
 	template<typename T>
-	static T fromJSON(const nlohmann::json& j, const std::string& name);
+	static T fromJSON(const nlohmann::json& j);
 
 	/*
 	static void fromJSON(const nlohmann::json& j, const std::string& name);
