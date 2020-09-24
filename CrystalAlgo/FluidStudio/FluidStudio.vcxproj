@@ -20,6 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FSProjFileReader.cpp" />
+    <ClCompile Include="JSONConverter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FSProjFileReader.h" />
+    <ClInclude Include="JSONConverter.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

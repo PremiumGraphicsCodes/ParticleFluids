@@ -154,7 +154,6 @@
     <ClInclude Include="IndexedSortSearchAlgo.h" />
     <ClInclude Include="IndexedParticle.h" />
     <ClInclude Include="IntersectionAlgo.h" />
-    <ClInclude Include="JSONConverter.h" />
     <ClInclude Include="MarchingCubesAlgo.h" />
     <ClInclude Include="MarchingCubesTable.h" />
     <ClInclude Include="MCCell.h" />
@@ -175,7 +174,6 @@
     <ClCompile Include="IndexedSortSearchAlgo.cpp" />
     <ClCompile Include="IndexedParticle.cpp" />
     <ClCompile Include="IntersectionAlgo.cpp" />
-    <ClCompile Include="JSONConverter.cpp" />
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="MeshToParticleAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />

@@ -6,7 +6,7 @@
 #include <any>
 
 namespace Crystal {
-	namespace Algo {
+	namespace FS {
 
 class JSONConverter
 {
@@ -25,9 +25,11 @@ public:
 
 	static nlohmann::json toJSON(const std::string& name, const Math::Box3d& value);
 
-	static void fromJSON(const std::string& name, int& value);
+	template<typename T>
+	static T fromJSON(const nlohmann::json& j, const std::string& name);
 
-	static void fromJSON(const std::string& name, float& value);
+	/*
+	static void fromJSON(const nlohmann::json& j, const std::string& name);
 
 	static void fromJSON(const std::string& name, double& value);
 
@@ -38,6 +40,7 @@ public:
 	static void fromJSON(const std::string& name, Math::Vector3dd& value);
 
 	static void fromJSON(const std::string& name, Math::Box3d& value);
+	*/
 };
 
 	}

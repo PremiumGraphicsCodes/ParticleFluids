@@ -1,33 +1,33 @@
 #include "JSONConverter.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Algo;
+using namespace Crystal::FS;
 
 using json = nlohmann::json;
 
 namespace glm {
-//	namespace Math {
-//		to_json
-		void to_json(json& j, const Vector3df& p) {
-			j = json{ p.x, p.y, p.z };
-		}
+	//	namespace Math {
+	//		to_json
+	void to_json(json& j, const Vector3df& p) {
+		j = json{ p.x, p.y, p.z };
+	}
 
-		/*
-		void from_json(const json& j, person& p) {
-			j.at("name").get_to(p.name);       // get_to(T& arg) ‚Í arg = get<T>() ‚Æ“¯‚¶
-			j.at("address").get_to(p.address);
-			j.at("age").get_to(p.age);
-		}
-		*/
+	/*
+	void from_json(const json& j, person& p) {
+		j.at("name").get_to(p.name);       // get_to(T& arg) ‚Í arg = get<T>() ‚Æ“¯‚¶
+		j.at("address").get_to(p.address);
+		j.at("age").get_to(p.age);
+	}
+	*/
 
-		void to_json(json& j, const Vector3dd& p) {
-			j = json{ p.x, p.y, p.z };
-		}
-
-
+	void to_json(json& j, const Vector3dd& p) {
+		j = json{ p.x, p.y, p.z };
+	}
 
 
-//	}
+
+
+	//	}
 }
 
 namespace Crystal {
@@ -76,10 +76,22 @@ nlohmann::json JSONConverter::toJSON(const std::string& name, const Box3d& value
 	return { name, value };
 }
 
-/*
-void fromJSON(const std::string& name, int& value);
+template<>
+int JSONConverter::fromJSON<int>(const nlohmann::json& j, const std::string& name)
+{
+	return j[name].get<int>();
+}
 
-void fromJSON(const std::string& name, float& value);
+/*
+int JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
+{
+	return j[name].get<int>();
+}
+
+float JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
+{
+	return j[name].get<float>();
+}
 
 void fromJSON(const std::string& name, double& value);
 
