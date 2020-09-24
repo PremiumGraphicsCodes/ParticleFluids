@@ -1,15 +1,11 @@
 #include "IPMAddView.h"
 
-#include "../Command/Command.h"
-#include "../Command/Public/CameraLabels.h"
-
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Command;
 
 IPMAddView::IPMAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),

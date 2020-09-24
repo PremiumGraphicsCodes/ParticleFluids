@@ -3,7 +3,6 @@
 #include "../../Crystal/Scene/WireFrameScene.h"
 
 #include "../Command/Command.h"
-#include "../Command/Public/WireFrameCreateLabels.h"
 #include "../Command/Public/ShaderBuildLabels.h"
 #include "../Command/Public/CameraLabels.h"
 
@@ -15,17 +14,17 @@ using namespace Crystal::Command;
 
 void IWFAddView::addWireFrame(const std::vector<Vector3dd>& positions, const std::vector<WireFrameEdge>& edges)
 {
-	const auto& attribute = attributeView.getValue();
-	Command::Command command(WireFrameCreateLabels::WireFrameAddLabel);
-	command.setArg(WireFrameCreateLabels::PositionsLabel, positions);
-	command.setArg(WireFrameCreateLabels::EdgesLabel, edges);
-	command.setArg(WireFrameCreateLabels::LineWidthLabel, attribute.width);
-	command.setArg(WireFrameCreateLabels::ColorLabel, attribute.color);
-	command.setArg(WireFrameCreateLabels::MatrixLabel, matrixView.getValue());
-	command.setArg(WireFrameCreateLabels::NameLabel, nameView.getValue());
-	command.execute(getWorld());
-	const auto newId = std::any_cast<int>(command.getResult(WireFrameCreateLabels::NewIdLabel));
+	WireFrameAttribute attr = attributeView.getValue();
+	const auto& name = nameView.getValue();
+	auto shape = std::make_unique<WireFrame>(positions, edges);
+	auto newId = getWorld()->getNextSceneId();
+	auto scene = new WireFrameScene(newId, name, std::move(shape), attr);
+	getWorld()->getScenes()->addScene(scene);
+	scene->setMatrix(matrixView.getValue());
+	//getWorld()->addScene(scene);
 
+
+	Command::Command command;
 	command.create(ShaderBuildLabels::CommandNameLabel);
 	command.setArg(ShaderBuildLabels::IdLabel, newId);
 	command.execute(getWorld());
