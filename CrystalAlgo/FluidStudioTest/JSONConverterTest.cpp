@@ -5,26 +5,83 @@
 
 using json = nlohmann::json;
 
+using namespace Crystal::Math;
 using namespace Crystal::FS;
 
 TEST(JSONConverterTest, TestToJSON)
 {
 	{
-		const json actual = JSONConverter::toJSON("Int", 1);
-		const json expected{ "Int", 1 };
+		const json actual = JSONConverter::toJSON(1);
+		const json expected( 1 );
 		EXPECT_EQ(expected, actual);
 	}
 
 	{
-		const json actual = JSONConverter::toJSON("Float", 1.0f);
-		const json expected{ "Float", 1.0f };
+		const json actual = JSONConverter::toJSON(9.9f);
+		const json expected( 9.9f );
+		EXPECT_EQ(expected, actual);
+	}
+
+	{
+		const json actual = JSONConverter::toJSON(99.9);
+		const json expected( 99.9 );
+		EXPECT_EQ(expected, actual);
+	}
+
+	{
+		const json actual = JSONConverter::toJSON(std::string("Hello"));
+		const json expected( "Hello" );
+		EXPECT_EQ(expected, actual);
+	}
+
+	{
+		const json actual = JSONConverter::toJSON(Vector3df(1,2,3));
+		const json expected( {1,2,3} );
+		EXPECT_EQ(expected, actual);
+	}
+
+	{
+		const json actual = JSONConverter::toJSON(Vector3dd(1,2,3));
+		const json expected( {1,2,3} );
 		EXPECT_EQ(expected, actual);
 	}
 
 
 	{
-		const json actual = JSONConverter::toJSON("String", "Hello");
-		const json expected{ "String", "Hello" };
+		const Box3d box(Vector3dd(1, 2, 3), Vector3dd(11, 12, 13));
+		const json actual = JSONConverter::toJSON(box);
+		const json expected =
+		{
+			{ "min", {1,2,3} },
+			{ "max", {11,12,13} }
+		};
 		EXPECT_EQ(expected, actual);
+	}
+}
+
+TEST(JSONConverterTest, TestFromJSON)
+{
+	{
+		const json j { {"Int", 1} };
+		const auto v = JSONConverter::fromJSON<int>(j, "Int");
+		EXPECT_EQ(1, v);
+	}
+
+	{
+		const json j{ {"Float", 9.9f} };
+		const auto v = JSONConverter::fromJSON<float>(j, "Float");
+		EXPECT_EQ(9.9f, v);
+	}
+
+	{
+		const json j{ {"String", "Hello"} };
+		const auto v = JSONConverter::fromJSON<std::string>(j, "String");
+		EXPECT_EQ("Hello", v);
+	}
+
+	{
+		const json j{ {"Vector3df", {1,2,3} } };
+		const auto v = JSONConverter::fromJSON<Vector3df>(j, "Vector3df");
+		EXPECT_EQ(Vector3df(1, 2, 3), v);
 	}
 }

@@ -11,19 +11,16 @@ namespace Crystal {
 class JSONConverter
 {
 public:
-	static nlohmann::json toJSON(const std::string& name, const int value);
+	static nlohmann::json toJSON(const int value);
 
-	static nlohmann::json toJSON(const std::string& name, const float value);
+	static nlohmann::json toJSON(const float value);
 
-	static nlohmann::json toJSON(const std::string& name, const double value);
+	static nlohmann::json toJSON(const double value);
 
-	static nlohmann::json toJSON(const std::string& name, const std::string& value);
+	template<typename T>
+	static nlohmann::json toJSON(const T& value);
 
-	static nlohmann::json toJSON(const std::string& name, const Math::Vector3df& value);
-
-	static nlohmann::json toJSON(const std::string& name, const Math::Vector3dd& value);
-
-	static nlohmann::json toJSON(const std::string& name, const Math::Box3d& value);
+	static nlohmann::json toJSON(const std::any& a);
 
 	template<typename T>
 	static T fromJSON(const nlohmann::json& j, const std::string& name);

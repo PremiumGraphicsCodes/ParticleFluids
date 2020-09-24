@@ -6,28 +6,25 @@ using namespace Crystal::FS;
 using json = nlohmann::json;
 
 namespace glm {
-	//	namespace Math {
-	//		to_json
 	void to_json(json& j, const Vector3df& p) {
 		j = json{ p.x, p.y, p.z };
 	}
 
-	/*
-	void from_json(const json& j, person& p) {
-		j.at("name").get_to(p.name);       // get_to(T& arg) ‚Í arg = get<T>() ‚Æ“¯‚¶
-		j.at("address").get_to(p.address);
-		j.at("age").get_to(p.age);
+	void from_json(const json& j, Vector3df& v) {
+		j[0].get_to(v[0]);
+		j[1].get_to(v[1]);
+		j[2].get_to(v[2]);
 	}
-	*/
 
 	void to_json(json& j, const Vector3dd& p) {
 		j = json{ p.x, p.y, p.z };
 	}
 
-
-
-
-	//	}
+	void from_json(const json& j, Vector3dd& v) {
+		j[0].get_to(v[0]);
+		j[1].get_to(v[1]);
+		j[2].get_to(v[2]);
+	}
 }
 
 namespace Crystal {
@@ -41,63 +38,100 @@ namespace Crystal {
 	}
 }
 
-nlohmann::json JSONConverter::toJSON(const std::string& name, const int value)
+nlohmann::json JSONConverter::toJSON(const int value)
 {
-	return { name, value };
+	return value;
 }
 
-nlohmann::json JSONConverter::toJSON(const std::string& name, const float value)
+nlohmann::json JSONConverter::toJSON(const float value)
 {
-	return { name, value };
+	return value;
 }
 
-nlohmann::json JSONConverter::toJSON(const std::string& name, const double value)
+nlohmann::json JSONConverter::toJSON(const double value)
 {
-	return { name, value };
+	return value;
 }
 
-nlohmann::json JSONConverter::toJSON(const std::string& name, const std::string& value)
+template<>
+nlohmann::json JSONConverter::toJSON<std::string>(const std::string& value)
 {
-	return { name,value };
+	return value;
 }
 
-nlohmann::json JSONConverter::toJSON(const std::string& name, const Vector3df& value)
+template<>
+nlohmann::json JSONConverter::toJSON<Vector3df>(const Vector3df& value)
 {
-	return { name, value };
+	return value;
 }
 
-nlohmann::json JSONConverter::toJSON(const std::string& name, const Vector3dd& value)
+template<>
+nlohmann::json JSONConverter::toJSON<Vector3dd>(const Vector3dd& value)
 {
-	return { name, value };
+	return value;
 }
 
-nlohmann::json JSONConverter::toJSON(const std::string& name, const Box3d& value)
+template<>
+nlohmann::json JSONConverter::toJSON<Box3d>(const Box3d& value)
 {
-	return { name, value };
+	return value;
 }
+
+nlohmann::json JSONConverter::toJSON(const std::any& a)
+{
+	const auto& t = a.type();
+	if (t == typeid(int)) {
+		return std::any_cast<int>(a);
+	}
+	else if (t == typeid(float)) {
+		return std::any_cast<float>(a);
+	}
+	else if (t == typeid(double)) {
+		return std::any_cast<double>(a);
+	}
+	else if (t == typeid(std::string)) {
+		return std::any_cast<std::string>(a);
+	}
+	else {
+		assert(false);
+	}
+	return nlohmann::json();
+}
+
 
 template<>
 int JSONConverter::fromJSON<int>(const nlohmann::json& j, const std::string& name)
 {
-	return j[name].get<int>();
+	return j.at(name).get<int>();
 }
 
-/*
-int JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
-{
-	return j[name].get<int>();
-}
-
-float JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
+template<>
+float JSONConverter::fromJSON<float>(const nlohmann::json& j, const std::string& name)
 {
 	return j[name].get<float>();
 }
 
-void fromJSON(const std::string& name, double& value);
+template<>
+double JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
+{
+	return j[name].get<double>();
+}
 
+template<>
+std::string JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
+{
+	return j[name].get<std::string>();
+}
+
+template<>
+Vector3df JSONConverter::fromJSON(const nlohmann::json& j, const std::string& name)
+{
+	return j[name].get<Vector3df>();
+}
+
+
+/*
 void fromJSON(const std::string& name, std::string& value);
-
-void fromJSON(const std::string& name, Math::Vector3dd& value);
 
 void fromJSON(const std::string& name, Math::Box3d& value);
 */
