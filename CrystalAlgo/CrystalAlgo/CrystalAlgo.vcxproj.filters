@@ -48,6 +48,7 @@
       <Filter>Search</Filter>
     </ClInclude>
     <ClInclude Include="MeshToParticleAlgo.h" />
+    <ClInclude Include="JSONConverter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -93,6 +94,7 @@
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="MeshToParticleAlgo.cpp" />
+    <ClCompile Include="JSONConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">

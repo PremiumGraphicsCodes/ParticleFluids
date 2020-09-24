@@ -20,5 +20,6 @@
     <ClInclude Include="BoundaryView.h" />
     <ClInclude Include="TimeLinePanel.h" />
     <ClInclude Include="MeshToParticleView.h" />
+    <ClInclude Include="FSProjFileWriter.h" />
   </ItemGroup>
 </Project>

@@ -64,12 +64,10 @@ void KFFluidSimulationView::onOk()
 
 	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
-	args.fluids.push_back(this->fluidScene);
-	args.boundaries.push_back(this->boundaryScene);
 	getWorld()->addAnimation(&simulator);
 	getWorld()->addAnimation(&writer);
 
-	simulator.setArgs(args);
+	//simulator.setArgs(args);
 }
 
 void KFFluidSimulationView::reset()
@@ -181,6 +179,8 @@ void KFFluidSimulationView::reset()
 	}
 		*/
 
+	args.fluids.push_back(this->fluidScene);
+	args.boundaries.push_back(this->boundaryScene);
 	args.surfaces.push_back(this->boundaryView.getValue());
 	args.maxTimeStep = (this->timeStepView.getValue());
 
