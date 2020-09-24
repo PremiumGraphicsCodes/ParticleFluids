@@ -39,13 +39,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\Crystal\Scene\S
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Command", "..\CrystalViewer\Command\Command.vcxproj", "{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalAlgoTest", "CrystalAlgoTest\CrystalAlgoTest.vcxproj", "{C949F391-906B-4326-A421-DF0349E92C07}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shape", "..\Crystal\Shape\Shape.vcxproj", "{ED61B745-9F00-48C2-B309-F1DBB37F03E3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysics", "CrystalPhysics\CrystalPhysics.vcxproj", "{4C0EFD78-680E-45C9-9828-9B674EE70DF0}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysicsView", "CrystalPhysicsView\CrystalPhysicsView.vcxproj", "{2D7CBB98-EB56-49AF-BB4E-261EA2010951}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysics", "..\CrystalAlgo\CrystalPhysics\CrystalPhysics.vcxproj", "{4C0EFD78-680E-45C9-9828-9B674EE70DF0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FluidStudio", "FluidStudio\FluidStudio.vcxproj", "{27C23275-E35F-46BA-A574-9D40EC086663}"
 EndProject

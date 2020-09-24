@@ -47,10 +47,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysics", "CrystalPh
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysicsView", "CrystalPhysicsView\CrystalPhysicsView.vcxproj", "{2D7CBB98-EB56-49AF-BB4E-261EA2010951}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FluidStudio", "FluidStudio\FluidStudio.vcxproj", "{27C23275-E35F-46BA-A574-9D40EC086663}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FluidStudioTest", "FluidStudioTest\FluidStudioTest.vcxproj", "{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,26 +187,6 @@ Global
 		{2D7CBB98-EB56-49AF-BB4E-261EA2010951}.Release|x64.Build.0 = Release|x64
 		{2D7CBB98-EB56-49AF-BB4E-261EA2010951}.Release|x86.ActiveCfg = Release|Win32
 		{2D7CBB98-EB56-49AF-BB4E-261EA2010951}.Release|x86.Build.0 = Release|Win32
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Debug|x64.ActiveCfg = Debug|x64
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Debug|x64.Build.0 = Debug|x64
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Debug|x86.ActiveCfg = Debug|Win32
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Debug|x86.Build.0 = Debug|Win32
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Release|Any CPU.ActiveCfg = Release|Win32
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Release|x64.ActiveCfg = Release|x64
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Release|x64.Build.0 = Release|x64
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Release|x86.ActiveCfg = Release|Win32
-		{27C23275-E35F-46BA-A574-9D40EC086663}.Release|x86.Build.0 = Release|Win32
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Debug|x64.ActiveCfg = Debug|x64
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Debug|x64.Build.0 = Debug|x64
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Debug|x86.ActiveCfg = Debug|Win32
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Debug|x86.Build.0 = Debug|Win32
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Release|Any CPU.ActiveCfg = Release|Win32
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Release|x64.ActiveCfg = Release|x64
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Release|x64.Build.0 = Release|x64
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Release|x86.ActiveCfg = Release|Win32
-		{F7A663CE-F229-495C-B7E9-59A81FBCA7BA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
