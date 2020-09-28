@@ -1,5 +1,6 @@
 #include "OpenVDBFileWriter.h"
 
+#include <openvdb/openvdb.h>
 #include <openvdb/points/PointConversion.h>
 
 using namespace Crystal::OpenVDB;
