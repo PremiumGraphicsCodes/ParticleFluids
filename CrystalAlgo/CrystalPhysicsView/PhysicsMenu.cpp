@@ -4,7 +4,7 @@
 #include "KFFluidSimulationView.h"
 #include "PBSPHFluidSimulationView.h"
 #include "DFSPHFluidSimulationView.h"
-#include "MeshToParticleView.h"
+//#include "MeshToParticleView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 
@@ -31,12 +31,6 @@ void PhysicsMenu::onShow()
 		}
 		if (ImGui::MenuItem("DFSPHFluid")) {
 			control->setWindow(new DFSPHFluidSimulationView(getWorld(), getCanvas()));
-		}
-		ImGui::EndMenu();
-	}
-	if (ImGui::BeginMenu("Tools")) {
-		if (ImGui::MenuItem("MeshToParticle")) {
-			control->setWindow(new MeshToParticleView("MeshToParticle", getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}

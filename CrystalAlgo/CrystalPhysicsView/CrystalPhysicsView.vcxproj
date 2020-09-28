@@ -153,7 +153,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MeshToParticleView.cpp" />
     <ClCompile Include="BoundaryView.cpp" />
     <ClCompile Include="CrystalPhysicsView.cpp" />
     <ClCompile Include="CSPHFluidSimulationView.cpp" />
@@ -195,7 +194,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MeshToParticleView.h" />
     <ClInclude Include="BoundaryView.h" />
     <ClInclude Include="CSPHFluidSimulationView.h" />
     <ClInclude Include="DFSPHFluidSimulationView.h" />
