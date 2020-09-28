@@ -36,6 +36,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FSProjFileReaderTest.cpp" />
     <ClCompile Include="JSONConverterTest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
@@ -126,7 +127,7 @@
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalDependencies>..\ThirdParty\openvdb\openvdb\Release\openvdb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbbmalloc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_iostreams-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_regex-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_system-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\Half-2_3.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\blosc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

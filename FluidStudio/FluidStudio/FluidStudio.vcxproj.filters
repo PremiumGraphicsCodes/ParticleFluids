@@ -3,9 +3,12 @@
   <ItemGroup>
     <ClCompile Include="FSProjFileReader.cpp" />
     <ClCompile Include="JSONConverter.cpp" />
+    <ClCompile Include="FSProjFileWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FSProjFileReader.h" />
     <ClInclude Include="JSONConverter.h" />
+    <ClInclude Include="FSProjFileWriter.h" />
+    <ClInclude Include="FSScene.h" />
   </ItemGroup>
 </Project>

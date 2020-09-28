@@ -6,12 +6,9 @@
 namespace PG {
 	namespace FS {
 
-class FSProjFileReader
+class FSScene
 {
 public:
-	bool read(nlohmann::json json);
-
-	bool read(const std::string& filePath);
 };
 
 	}

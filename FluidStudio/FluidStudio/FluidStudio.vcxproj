@@ -20,10 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FSProjFileReader.cpp" />
+    <ClCompile Include="FSProjFileWriter.cpp" />
     <ClCompile Include="JSONConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FSProjFileReader.h" />
+    <ClInclude Include="FSProjFileWriter.h" />
+    <ClInclude Include="FSScene.h" />
     <ClInclude Include="JSONConverter.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

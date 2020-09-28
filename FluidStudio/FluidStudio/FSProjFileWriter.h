@@ -1,15 +1,16 @@
 #pragma once
 
 #include "../ThirdParty/nlohmann/include/json.hpp"
+#include "FSScene.h"
 #include <string>
 
 namespace PG {
 	namespace FS {
 
-class FSProjFileReader
+class FSProjFileWriter
 {
 public:
-	bool read(nlohmann::json json);
+	nlohmann::json write(const FSScene& scene);
 
 	bool read(const std::string& filePath);
 };
