@@ -9,10 +9,10 @@
     <ClCompile Include="ParticleSystem.cpp">
       <Filter>OpenVDB</Filter>
     </ClCompile>
-    <ClCompile Include="OpenVBDFileReader.cpp">
+    <ClCompile Include="OpenVDBFileWriter.cpp">
       <Filter>OpenVDB</Filter>
     </ClCompile>
-    <ClCompile Include="OpenVDBFileWRiter.cpp">
+    <ClCompile Include="OpenVDBFileReader.cpp">
       <Filter>OpenVDB</Filter>
     </ClCompile>
   </ItemGroup>
@@ -25,10 +25,10 @@
     <ClInclude Include="ParticleSystem.h">
       <Filter>OpenVDB</Filter>
     </ClInclude>
-    <ClInclude Include="OpenVBDFileReader.h">
+    <ClInclude Include="OpenVDBFileWriter.h">
       <Filter>OpenVDB</Filter>
     </ClInclude>
-    <ClInclude Include="OpenVDBFileWriter.h">
+    <ClInclude Include="OpenVDBFileReader.h">
       <Filter>OpenVDB</Filter>
     </ClInclude>
   </ItemGroup>

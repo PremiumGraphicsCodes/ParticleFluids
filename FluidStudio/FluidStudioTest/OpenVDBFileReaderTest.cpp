@@ -1,6 +1,6 @@
 #include "pch.h"
 
-#include "../FluidStudio/OpenVBDFileReader.h"
+#include "../FluidStudio/OpenVDBFileReader.h"
 
 using namespace Crystal::OpenVDB;
 
