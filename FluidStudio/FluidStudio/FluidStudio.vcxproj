@@ -21,18 +21,10 @@
   <ItemGroup>
     <ClCompile Include="FSProjFileReader.cpp" />
     <ClCompile Include="JSONConverter.cpp" />
-    <ClCompile Include="OpenVDBFileReader.cpp" />
-    <ClCompile Include="OpenVDBFileWriter.cpp" />
-    <ClCompile Include="ParticlesToVolumeConverter.cpp" />
-    <ClCompile Include="ParticleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FSProjFileReader.h" />
     <ClInclude Include="JSONConverter.h" />
-    <ClInclude Include="OpenVDBFileReader.h" />
-    <ClInclude Include="OpenVDBFileWriter.h" />
-    <ClInclude Include="ParticlesToVolumeConverter.h" />
-    <ClInclude Include="ParticleSystem.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
