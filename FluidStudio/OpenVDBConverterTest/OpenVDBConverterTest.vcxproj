@@ -33,15 +33,15 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
-    <ProjectReference Include="..\VDBParticleConverter\vdb_particle_converter.vcxproj">
-      <Project>{516a29d3-e143-4d8a-8067-24b2d24a6643}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestOpenVDBFileWriter.cpp" />
+    <ClCompile Include="TestOpenVDBFileWriterTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenVDBConverter\OpenVDBConverter.vcxproj">
+      <Project>{516a29d3-e143-4d8a-8067-24b2d24a6643}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

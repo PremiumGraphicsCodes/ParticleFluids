@@ -329,9 +329,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OpenVDBFileReader.cpp" />
+    <ClCompile Include="OpenVDBFileWriter.cpp" />
     <ClCompile Include="VolumeToMeshConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OpenVDBFileReader.h" />
+    <ClInclude Include="OpenVDBFileWriter.h" />
     <ClInclude Include="PolygonMesh.h" />
     <ClInclude Include="VolumeToMeshConverter.h" />
   </ItemGroup>

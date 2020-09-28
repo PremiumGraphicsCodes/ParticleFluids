@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
-//#include "../OpenVDBConverter/OpenVDBFileWriter.h"
-//#include "../OpenVDBConverter/OpenVDBFileReader.h"
+#include "../OpenVDBConverter/OpenVDBFileWriter.h"
+#include "../OpenVDBConverter/OpenVDBFileReader.h"
 /*
 #include "OpenVDBFileWriter.h"
 #include "VolumeToMeshConverter.h"
@@ -11,12 +11,6 @@
 #include "ParticleSystem.h"
 */
 
-TEST(TESTXXX, TestAAA)
-{
-    EXPECT_TRUE(false);
-}
-
-/*
 using namespace openvdb;
 using namespace Crystal::OpenVDB;
 
