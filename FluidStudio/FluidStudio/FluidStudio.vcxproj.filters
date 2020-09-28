@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="FSProjFileReader.cpp" />
+    <ClCompile Include="JSONConverter.cpp" />
+    <ClCompile Include="ParticlesToVolumeConverter.cpp">
+      <Filter>OpenVDB</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem.cpp">
+      <Filter>OpenVDB</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenVBDFileReader.cpp">
+      <Filter>OpenVDB</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenVDBFileWRiter.cpp">
+      <Filter>OpenVDB</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FSProjFileReader.h" />
+    <ClInclude Include="JSONConverter.h" />
+    <ClInclude Include="ParticlesToVolumeConverter.h">
+      <Filter>OpenVDB</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>OpenVDB</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenVBDFileReader.h">
+      <Filter>OpenVDB</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenVDBFileWriter.h">
+      <Filter>OpenVDB</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="OpenVDB">
+      <UniqueIdentifier>{5147559d-1c18-497b-98c0-1570917ce62c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
