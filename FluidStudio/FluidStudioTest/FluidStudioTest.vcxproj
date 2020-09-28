@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FSProjFileReaderTest.cpp" />
+    <ClCompile Include="FSProjFileWriterTest.cpp" />
     <ClCompile Include="JSONConverterTest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">

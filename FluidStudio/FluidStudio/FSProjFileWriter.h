@@ -12,7 +12,7 @@ class FSProjFileWriter
 public:
 	nlohmann::json write(const FSScene& scene);
 
-	bool read(const std::string& filePath);
+	bool write(const std::string& filePath);
 };
 
 	}
