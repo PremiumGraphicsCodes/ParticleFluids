@@ -3,8 +3,8 @@
 #include "../../CrystalViewer/AppBase/IPanel.h"
 #include "../../CrystalViewer/AppBase/Button.h"
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
-#include "../../CrystalAlgo/CrystalPhysics/TimeSeriesParticleSystemReader.h"
-#include "../../CrystalAlgo/CrystalPhysics/TimeSeriesParticleSystemAnimator.h"
+#include "TimeSeriesParticleSystemReader.h"
+#include "TimeSeriesParticleSystemAnimator.h"
 
 namespace Crystal {
 	namespace UI {

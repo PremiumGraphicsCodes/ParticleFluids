@@ -91,7 +91,7 @@ void PBSPHFluidSimulationView::onOk()
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
 	getWorld()->addAnimation(simulator);
-	getWorld()->addAnimation(&writer);
+	//getWorld()->addAnimation(&writer);
 }
 
 void PBSPHFluidSimulationView::onReset()
@@ -110,8 +110,8 @@ void PBSPHFluidSimulationView::onReset()
 	this->boundaryScene->setVicsosity(this->vicsocityView.getValue());
 	this->boundaryScene->setIsBoundary(true);
 
-	this->writer.reset();
-	this->writer.setDirectryPath(outputDirectoryView.getPath());
+	//this->writer.reset();
+//	this->writer.setDirectryPath(outputDirectoryView.getPath());
 
 	const auto id = this->particleSystemSelectView.getId();
 	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);

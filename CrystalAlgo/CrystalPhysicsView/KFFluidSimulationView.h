@@ -7,7 +7,7 @@
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
 
 #include "../CrystalPhysics/KFFluidSolver.h"
-#include "../CrystalPhysics/TimeSeriesParticleSystemWriter.h"
+//#include "../CrystalPhysics/TimeSeriesParticleSystemWriter.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -41,7 +41,7 @@ private:
 	ObjectSelectView particleSystemSelectView;
 	ObjectSelectView boundarySelectView;
 	DoubleView radiusView;
-	Physics::TimeSeriesParticleSystemWriter writer;
+	//Physics::TimeSeriesParticleSystemWriter writer;
 	DirectoryView outputDirectoryView;
 };
 

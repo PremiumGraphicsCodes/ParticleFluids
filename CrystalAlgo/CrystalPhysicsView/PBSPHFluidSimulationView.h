@@ -5,7 +5,6 @@
 #include "../../CrystalViewer/AppBase/DoubleView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
-#include "../CrystalPhysics/TimeSeriesParticleSystemWriter.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -28,7 +27,6 @@ private:
 	Physics::PBSPHSolver* simulator;
 	Physics::PBFluidScene* fluidScene;
 	Physics::PBFluidScene* boundaryScene;
-	Physics::TimeSeriesParticleSystemWriter writer;
 	ObjectSelectView particleSystemSelectView;
 	ObjectSelectView boundarySelectView;
 	Button startButton;

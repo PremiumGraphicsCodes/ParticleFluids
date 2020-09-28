@@ -13,9 +13,6 @@
     <Filter Include="DFSPH">
       <UniqueIdentifier>{80bcb3ac-b523-4050-8667-f3e7ed2ffc4d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FileIO">
-      <UniqueIdentifier>{e9afbd05-1c2a-42f9-a6e6-55506fbb719e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PBSPHParticle.h">
@@ -78,20 +75,11 @@
     <ClInclude Include="CSPHFluidSceneController.h">
       <Filter>CSPH</Filter>
     </ClInclude>
-    <ClInclude Include="TimeSeriesParticleSystemWriter.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeSeriesParticleSystemReader.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="PBSPHBoundaryParticle.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
     <ClInclude Include="KFFluidScenePresenter.h">
       <Filter>KFFluid</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeSeriesParticleSystemAnimator.h">
-      <Filter>FileIO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -154,20 +142,11 @@
     <ClCompile Include="CSPHFluidSceneController.cpp">
       <Filter>CSPH</Filter>
     </ClCompile>
-    <ClCompile Include="TimeSeriesParticleSystemWriter.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeSeriesParticleSystemReader.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="PBSPHBoundaryParticle.cpp">
       <Filter>PBSPH</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidScenePresenter.cpp">
       <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp">
-      <Filter>FileIO</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
