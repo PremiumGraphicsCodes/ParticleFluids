@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "../VDBParticleConverter/OpenVDBFileWriter.h"
+#include "../VDBParticleConverter/OpenVDBFileReader.h"
 /*
 #include "OpenVDBFileWriter.h"
 #include "VolumeToMeshConverter.h"
@@ -14,9 +15,26 @@ using namespace openvdb;
 using namespace Crystal::OpenVDB;
 
 
-TEST(TestCaseName, TestName) {
+TEST(TestOpenVDBFileWriter, TestWrite)
+{
+    openvdb::initialize();
+    OpenVDBFileWriter writer;
+    writer.addPoint(openvdb::Vec3R(0, 1, 0));
+    writer.addPoint(openvdb::Vec3R(1.5, 3.5, 1));
+    writer.addPoint(openvdb::Vec3R(-1, 6, -2));
+    writer.addPoint(openvdb::Vec3R(1.1, 1.25, 0.06));
 
-        openvdb::initialize();
+    writer.setName("Points");
+    writer.write("testWrite.vdb");
+}
+
+TEST(TestOpenVDBFileReader, TestRead)
+{
+    OpenVDBFileReader reader;
+    reader.read("testWrite.vdb");
+    const auto positions = reader.getPositions();
+    EXPECT_EQ(4, positions.size());
+}
 
         /*
         Crystal::OpenVDB::FSPSFileReader reader;
@@ -62,18 +80,3 @@ TEST(TestCaseName, TestName) {
         }
         */
 
-        OpenVDBFileWriter writer;
-        writer.addPoint(openvdb::Vec3R(0, 1, 0));
-        writer.addPoint(openvdb::Vec3R(1.5, 3.5, 1));
-        writer.addPoint(openvdb::Vec3R(-1, 6, -2));
-        writer.addPoint(openvdb::Vec3R(1.1, 1.25, 0.06));
-
-        writer.setName("Points");
-        writer.write("testWrite.vdb");
-
-        /*
-            OpenVDBFileReader reader;
-            reader.read("testWrite.vdb");
-            reader.getPositions();
-            */
-}
