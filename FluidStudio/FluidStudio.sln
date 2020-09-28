@@ -38,6 +38,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FluidStudioTest", "FluidStu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FluidStudioView", "FluidStudioView\FluidStudioView.vcxproj", "{2D7CBB98-EB56-49AF-BB4E-261EA2010951}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenVDBConverter", "OpenVDBConverter\OpenVDBConverter.vcxproj", "{516A29D3-E143-4D8A-8067-24B2D24A6643}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -340,6 +342,22 @@ Global
 		{2D7CBB98-EB56-49AF-BB4E-261EA2010951}.RelWithDebInfo|x64.Build.0 = Release|x64
 		{2D7CBB98-EB56-49AF-BB4E-261EA2010951}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
 		{2D7CBB98-EB56-49AF-BB4E-261EA2010951}.RelWithDebInfo|x86.Build.0 = Release|Win32
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.Debug|x64.ActiveCfg = Debug|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.Debug|x64.Build.0 = Debug|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.Debug|x86.ActiveCfg = Debug|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.MinSizeRel|Any CPU.ActiveCfg = MinSizeRel|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.MinSizeRel|x86.ActiveCfg = MinSizeRel|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.Release|Any CPU.ActiveCfg = Release|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.Release|x64.ActiveCfg = Release|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.Release|x64.Build.0 = Release|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.Release|x86.ActiveCfg = Release|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.RelWithDebInfo|Any CPU.ActiveCfg = RelWithDebInfo|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{516A29D3-E143-4D8A-8067-24B2D24A6643}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
