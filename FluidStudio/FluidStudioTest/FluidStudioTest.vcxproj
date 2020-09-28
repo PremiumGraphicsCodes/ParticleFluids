@@ -120,12 +120,14 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>..\ThirdParty\openvdb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalDependencies>..\ThirdParty\openvdb\openvdb\Release\openvdb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbbmalloc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_iostreams-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_regex-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_system-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\Half-2_3.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\blosc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
