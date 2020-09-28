@@ -3,8 +3,16 @@
   <ItemGroup>
     <ClCompile Include="FluidStudioView.cpp" />
     <ClCompile Include="TimeLinePanel.cpp" />
+    <ClCompile Include="OpenVDBMenu.cpp" />
+    <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp" />
+    <ClCompile Include="TimeSeriesParticleSystemReader.cpp" />
+    <ClCompile Include="TimeSeriesParticleSystemWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TimeLinePanel.h" />
+    <ClInclude Include="OpenVDBMenu.h" />
+    <ClInclude Include="TimeSeriesParticleSystemAnimator.h" />
+    <ClInclude Include="TimeSeriesParticleSystemReader.h" />
+    <ClInclude Include="TimeSeriesParticleSystemWriter.h" />
   </ItemGroup>
 </Project>

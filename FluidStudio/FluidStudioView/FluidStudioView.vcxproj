@@ -139,9 +139,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;WIN32;_WINDOWS;_USE_MATH_DEFINES;NOMINMAX;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;OPENVDB_ABI_VERSION_NUMBER=7;_WIN32;OPENVDB_DLL;OPENEXR_DLL;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\PremiumGraphics\Documents\GitHub\cgstudio4\FluidStudio\ThirdParty\openvdb\openvdb\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,7 +150,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../CrystalViewer/ThirdParty\glfw-3.3\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\ThirdParty\openvdb\openvdb\Release\openvdb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbbmalloc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_iostreams-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_regex-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_system-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\Half-2_3.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\blosc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\zlibd.lib;opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -183,13 +184,24 @@
     <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
       <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\OpenVDBConverter\OpenVDBConverter.vcxproj">
+      <Project>{516a29d3-e143-4d8a-8067-24b2d24a6643}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FluidStudioView.cpp" />
+    <ClCompile Include="OpenVDBMenu.cpp" />
     <ClCompile Include="TimeLinePanel.cpp" />
+    <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp" />
+    <ClCompile Include="TimeSeriesParticleSystemReader.cpp" />
+    <ClCompile Include="TimeSeriesParticleSystemWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OpenVDBMenu.h" />
     <ClInclude Include="TimeLinePanel.h" />
+    <ClInclude Include="TimeSeriesParticleSystemAnimator.h" />
+    <ClInclude Include="TimeSeriesParticleSystemReader.h" />
+    <ClInclude Include="TimeSeriesParticleSystemWriter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
