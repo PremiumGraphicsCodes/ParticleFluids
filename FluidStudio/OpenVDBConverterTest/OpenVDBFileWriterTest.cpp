@@ -17,7 +17,6 @@ using namespace Crystal::OpenVDB;
 
 TEST(TestOpenVDBFileWriter, TestWrite)
 {
-    openvdb::initialize();
     OpenVDBFileWriter writer;
     writer.addPoint(openvdb::Vec3R(0, 1, 0));
     writer.addPoint(openvdb::Vec3R(1.5, 3.5, 1));
