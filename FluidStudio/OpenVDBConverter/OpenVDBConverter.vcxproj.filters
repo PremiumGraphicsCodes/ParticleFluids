@@ -16,6 +16,9 @@
     <ClInclude Include="ParticleSystem.h">
       <Filter>Private</Filter>
     </ClInclude>
+    <ClInclude Include="Converter.h">
+      <Filter>Private</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Private">

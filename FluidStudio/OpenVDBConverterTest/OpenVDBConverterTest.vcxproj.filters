@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OpenVDBFileReaderTest.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenVDBFileWriterTest.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="FileIO">
+      <UniqueIdentifier>{7bf986f2-b0f7-45d3-a5d5-6b4e622a2976}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

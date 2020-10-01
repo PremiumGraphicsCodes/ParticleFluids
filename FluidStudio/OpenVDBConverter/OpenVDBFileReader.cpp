@@ -36,4 +36,12 @@ bool OpenVDBFileReader::read(const std::string& filename)
             indices.push_back(index);
         }
     }
+    return true;
+
+    /*
+    std::vector<Math::Vector3dd> dest;
+    for (const auto i : indices) {
+        positions[i]
+    }
+    */
 }

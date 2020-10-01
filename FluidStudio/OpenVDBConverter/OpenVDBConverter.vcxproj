@@ -336,6 +336,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="VolumeToMeshConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Converter.h" />
     <ClInclude Include="OpenVDBFileReader.h" />
     <ClInclude Include="OpenVDBFileWriter.h" />
     <ClInclude Include="ParticlesToVolumeConverter.h" />
