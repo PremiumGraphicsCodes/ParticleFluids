@@ -17,13 +17,15 @@ using namespace Crystal::OpenVDB;
 TEST(OpenVDBFileWriterTest, TestWrite)
 {
     OpenVDBFileWriter writer;
-    writer.addPoint(Vector3dd(0, 1, 0));
-    writer.addPoint(Vector3dd(1.5, 3.5, 1));
-    writer.addPoint(Vector3dd(-1, 6, -2));
-    writer.addPoint(Vector3dd(1.1, 1.25, 0.06));
 
-    writer.setName("Points");
-    writer.write("testWrite.vdb");
+    std::vector<Vector3dd> positions;
+    positions.push_back(Vector3dd(0, 1, 0));
+    positions.push_back(Vector3dd(1.5, 3.5, 1));
+    positions.push_back(Vector3dd(-1, 6, -2));
+    positions.push_back(Vector3dd(1.1, 1.25, 0.06));
+
+    writer.open("testWrite.vdb");
+    writer.write("points", positions);
 }
 
 /*

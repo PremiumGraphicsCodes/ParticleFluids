@@ -9,21 +9,15 @@ namespace Crystal {
 class OpenVDBFileWriter
 {
 public:
-    void setName(const std::string& name)
-    {
-        this->name = name;
-    }
+    ~OpenVDBFileWriter();
 
-    void addPoint(const Math::Vector3dd& position)
-    {
-        this->positions.push_back(position);
-    }
+    bool open(const std::string& filePath);
 
-    bool write(const std::string& filename) const;
+    void close();
+
+    void write(const std::string& name, const std::vector<Math::Vector3dd>& positions) const;
 
 private:
-    std::string name;
-    std::vector<Math::Vector3dd> positions;
 };
 
     }

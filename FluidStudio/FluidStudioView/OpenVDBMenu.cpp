@@ -77,18 +77,20 @@ void OpenVDBMenu::onShow()
 			fileSaveView.show();
 			const auto& filename = fileSaveView.getFileName();
 			if (!filename.empty()) {
-				const auto scenes = world->getScenes()->findScenes(SceneType::ParticleSystemScene);
 				OpenVDBFileWriter writer;
-				writer.addPoint(Vector3dd(0, 1, 0));
-				writer.addPoint(Vector3dd(1.5, 3.5, 1));
-				writer.addPoint(Vector3dd(-1, 6, -2));
-				writer.addPoint(Vector3dd(1.1, 1.25, 0.06));
-
-				writer.setName("Points");
-				std::cout << filename << std::endl;
-				const auto isOk = writer.write(filename);
+				const auto isOk = writer.open(filename);
 				if (isOk) {
-					//std::cout << "import suceeded." << std::endl;
+					const auto scenes = world->getScenes()->findScenes(SceneType::ParticleSystemScene);
+					for (auto s : scenes) {
+						auto ps = static_cast<ParticleSystemScene*>(s);
+						const auto& particles = ps->getShape()->getParticles();
+						std::vector<Vector3dd> positions;
+						for (auto p : particles) {
+							positions.push_back(p->getPosition());
+						}
+						writer.write(s->getName(), positions);
+					}
+					std::cout << "export succeded." << std::endl;
 				}
 				else {
 					std::cout << "export failed." << std::endl;
