@@ -53,6 +53,7 @@ std::vector<Vector3dd> OpenVDBFileReader::readPositions(const std::string& point
     std::vector<openvdb::Vec3R> v_positions;
     std::vector<openvdb::Index32> v_indices;
 
+    std::vector<Vector3dd> positions;
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
         //std::cout << "Leaf" << leafIter->origin() << std::endl;
         // Extract the position attribute from the leaf by name (P is position).
@@ -66,16 +67,26 @@ std::vector<Vector3dd> OpenVDBFileReader::readPositions(const std::string& point
             const auto xyz = indexIter.getCoord().asVec3d();
             openvdb::Vec3f worldPosition =
                 grid->transform().indexToWorld(voxelPosition + xyz);
-            v_positions.push_back(worldPosition);
+//            v_positions.push_back(worldPosition);
             auto index = *indexIter;
             v_indices.push_back(index);
+
+            positions.push_back(Converter::fromVDB(worldPosition));
         }
     }
 
+    /*
     std::vector<Vector3dd> positions(v_positions.size());
-    for (const auto i : v_indices) {
-        positions[i] = Converter::fromVDB(v_positions[i]);
+    for (const auto& vp : v_positions) {
+        positions.push_back(Converter::fromVDB(vp));
     }
+    */
+    /*
+    for (const auto i : v_indices) {
+        std::cout << i << std::endl;
+//        positions[i] = Converter::fromVDB(v_positions[i]);
+    }
+    */
 
     return std::move(positions);
 }
