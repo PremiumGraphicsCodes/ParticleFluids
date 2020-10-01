@@ -19,7 +19,7 @@ public:
         this->positions.push_back(position);
     }
 
-    void write(const std::string& filename);
+    bool write(const std::string& filename) const;
 
 private:
     std::string name;

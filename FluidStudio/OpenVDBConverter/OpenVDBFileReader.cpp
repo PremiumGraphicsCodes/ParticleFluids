@@ -14,6 +14,13 @@ bool OpenVDBFileReader::read(const std::string& filename)
     if (!isOk) {
         return false;
     }
+    auto metas = newFile.readAllGridMetadata();
+    for (auto iter = metas->begin(); iter != metas->end(); ++iter) {
+        const auto isPoint = (*iter)->isType<openvdb::points::PointDataGrid>();        
+        if (isPoint) {
+            std::cout << (*iter)->getName() << std::endl;
+        }
+    }
     auto baseGrid = newFile.readGrid("Points");
     newFile.close();
 

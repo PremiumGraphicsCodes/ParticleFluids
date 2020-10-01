@@ -10,7 +10,7 @@ using namespace Crystal::OpenVDB;
 //openvdb::Vec3R
 
 
-void OpenVDBFileWriter::write(const std::string& filename)
+bool OpenVDBFileWriter::write(const std::string& filename) const
 {
     std::vector<openvdb::Vec3R> ps = Converter::toVDB(positions);
     openvdb::points::PointAttributeVector<openvdb::Vec3R> positionsWrapper(ps);
@@ -25,10 +25,16 @@ void OpenVDBFileWriter::write(const std::string& filename)
         openvdb::points::PointDataGrid
         >
         (ps, *transform);
-
     grid->setName(name);
+    //std::cout << grid->gridType() << std::endl;
 
     openvdb::io::File file(filename);
+    /*
+    if (!file.isOpen()) {
+        return false;
+    }
+    */
     file.write({ grid });
     file.close();
+    return true;
 }
