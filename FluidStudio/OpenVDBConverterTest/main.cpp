@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
-#include "openvdb/openvdb.h"
+#include "../OpenVDBConverter/OpenVDBAdapter.h"
 
 int main(int argc, char** argv) {
 //	std::cout << "hello" << std::endl;
 	::testing::InitGoogleTest(&argc, argv);
-	::openvdb::initialize();
+	Crystal::OpenVDB::OpenVDBAdapter::init();
 	return RUN_ALL_TESTS();
 }

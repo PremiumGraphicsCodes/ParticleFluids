@@ -21,6 +21,20 @@ public:
         }
         return dest;
     }
+
+    static Crystal::Math::Vector3dd fromVDB(const openvdb::Vec3R& p)
+    {
+        return Crystal::Math::Vector3dd(p[0], p[1], p[2]);
+    }
+
+    static std::vector<Crystal::Math::Vector3dd> fromVDB(const std::vector<openvdb::Vec3R>& positions)
+    {
+        std::vector<Math::Vector3dd> dest(positions.size());
+        for (int i = 0; i < positions.size(); ++i) {
+            dest[i] = fromVDB(positions[i]);
+        }
+        return dest;
+    }
 };
 
     }

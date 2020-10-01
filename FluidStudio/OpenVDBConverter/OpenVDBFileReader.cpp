@@ -1,5 +1,7 @@
 #include "OpenVDBFileReader.h"
 
+#include "Converter.h"
+
 #include <openvdb/points/PointConversion.h>
 
 using namespace Crystal::OpenVDB;
@@ -17,9 +19,13 @@ bool OpenVDBFileReader::read(const std::string& filename)
 
     auto grid = openvdb::gridPtrCast<openvdb::points::PointDataGrid>(baseGrid);
     auto count = openvdb::points::pointCount(grid->tree());
-    std::cout << "PointCount=" << count << std::endl;
+    //std::cout << "PointCount=" << count << std::endl;
+
+    std::vector<openvdb::Vec3R> v_positions;
+    std::vector<openvdb::Index32> v_indices;
+
     for (auto leafIter = grid->tree().cbeginLeaf(); leafIter; ++leafIter) {
-        std::cout << "Leaf" << leafIter->origin() << std::endl;
+        //std::cout << "Leaf" << leafIter->origin() << std::endl;
         // Extract the position attribute from the leaf by name (P is position).
         const auto& array = leafIter->constAttributeArray("P");
 
@@ -31,17 +37,15 @@ bool OpenVDBFileReader::read(const std::string& filename)
             const auto xyz = indexIter.getCoord().asVec3d();
             openvdb::Vec3f worldPosition =
                 grid->transform().indexToWorld(voxelPosition + xyz);
-            this->positions.push_back(worldPosition);
+            v_positions.push_back(worldPosition);
             auto index = *indexIter;
-            indices.push_back(index);
+            v_indices.push_back(index);
         }
     }
-    return true;
-
-    /*
-    std::vector<Math::Vector3dd> dest;
-    for (const auto i : indices) {
-        positions[i]
+    this->positions.resize(v_positions.size());
+    for (const auto i : v_indices) {
+        this->positions[i] = Converter::fromVDB(v_positions[i]);
     }
-    */
+
+    return true;
 }

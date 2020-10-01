@@ -329,6 +329,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OpenVDBAdapter.cpp" />
     <ClCompile Include="OpenVDBFileReader.cpp" />
     <ClCompile Include="OpenVDBFileWriter.cpp" />
     <ClCompile Include="ParticlesToVolumeConverter.cpp" />
@@ -337,6 +338,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h" />
+    <ClInclude Include="OpenVDBAdapter.h" />
     <ClInclude Include="OpenVDBFileReader.h" />
     <ClInclude Include="OpenVDBFileWriter.h" />
     <ClInclude Include="ParticlesToVolumeConverter.h" />

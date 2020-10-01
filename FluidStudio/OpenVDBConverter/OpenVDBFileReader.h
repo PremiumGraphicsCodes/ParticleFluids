@@ -3,22 +3,21 @@
 #include <string>
 #include <vector>
 
-#include <openvdb/openvdb.h>
+#include "../../Crystal/Math/Vector3d.h"
 
 namespace Crystal {
     namespace OpenVDB {
 
-        class OpenVDBFileReader
-        {
-        public:
-            bool read(const std::string& filename);
+class OpenVDBFileReader
+{
+public:
+    bool read(const std::string& filename);
 
-            std::vector<openvdb::Vec3R> getPositions() const { return positions; }
+    std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
-        private:
-            std::vector<openvdb::Vec3R> positions;
-            std::vector<openvdb::Index32> indices;
-        };
+private:
+    std::vector<Math::Vector3dd> positions;
+};
 
     }
 }

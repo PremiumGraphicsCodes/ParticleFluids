@@ -7,11 +7,11 @@
     <ClCompile Include="ParticleSystem.cpp">
       <Filter>Private</Filter>
     </ClCompile>
+    <ClCompile Include="OpenVDBAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenVDBFileReader.h" />
     <ClInclude Include="OpenVDBFileWriter.h" />
-    <ClInclude Include="PolygonMesh.h" />
     <ClInclude Include="VolumeToMeshConverter.h" />
     <ClInclude Include="ParticleSystem.h">
       <Filter>Private</Filter>
@@ -19,6 +19,10 @@
     <ClInclude Include="Converter.h">
       <Filter>Private</Filter>
     </ClInclude>
+    <ClInclude Include="PolygonMesh.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenVDBAdapter.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Private">
