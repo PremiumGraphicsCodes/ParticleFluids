@@ -1,30 +1,30 @@
 #pragma once
 
 #include <string>
-#include <openvdb/openvdb.h>
+#include "../../Crystal/Math/Vector3d.h"
 
 namespace Crystal {
     namespace OpenVDB {
 
-        class OpenVDBFileWriter
-        {
-        public:
-            void setName(const std::string& name)
-            {
-                this->name = name;
-            }
+class OpenVDBFileWriter
+{
+public:
+    void setName(const std::string& name)
+    {
+        this->name = name;
+    }
 
-            void addPoint(const openvdb::Vec3R position)
-            {
-                this->positions.push_back(position);
-            }
+    void addPoint(const Math::Vector3dd& position)
+    {
+        this->positions.push_back(position);
+    }
 
-            void write(const std::string& filename);
+    void write(const std::string& filename);
 
-        private:
-            std::string name;
-            std::vector<openvdb::Vec3R> positions;
-        };
+private:
+    std::string name;
+    std::vector<Math::Vector3dd> positions;
+};
 
     }
 }

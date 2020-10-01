@@ -1,7 +1,6 @@
 #include "gtest/gtest.h"
 
 #include "../OpenVDBConverter/OpenVDBFileWriter.h"
-#include "../OpenVDBConverter/OpenVDBFileReader.h"
 /*
 #include "OpenVDBFileWriter.h"
 #include "VolumeToMeshConverter.h"
@@ -11,28 +10,20 @@
 #include "ParticleSystem.h"
 */
 
-using namespace openvdb;
+using namespace Crystal::Math;
 using namespace Crystal::OpenVDB;
 
 
-TEST(TestOpenVDBFileWriter, TestWrite)
+TEST(OpenVDBFileWriterTest, TestWrite)
 {
     OpenVDBFileWriter writer;
-    writer.addPoint(openvdb::Vec3R(0, 1, 0));
-    writer.addPoint(openvdb::Vec3R(1.5, 3.5, 1));
-    writer.addPoint(openvdb::Vec3R(-1, 6, -2));
-    writer.addPoint(openvdb::Vec3R(1.1, 1.25, 0.06));
+    writer.addPoint(Vector3dd(0, 1, 0));
+    writer.addPoint(Vector3dd(1.5, 3.5, 1));
+    writer.addPoint(Vector3dd(-1, 6, -2));
+    writer.addPoint(Vector3dd(1.1, 1.25, 0.06));
 
     writer.setName("Points");
     writer.write("testWrite.vdb");
-}
-
-TEST(TestOpenVDBFileReader, TestRead)
-{
-    OpenVDBFileReader reader;
-    reader.read("testWrite.vdb");
-    const auto positions = reader.getPositions();
-    EXPECT_EQ(4, positions.size());
 }
 
 /*
