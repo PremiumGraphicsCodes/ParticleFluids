@@ -8,11 +8,9 @@ namespace Crystal {
 class OpenVDBMenu : public IMenu
 {
 public:
-	OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas) :
-		IMenu(name, model, canvas)
-	{}
+	OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	virtual void onShow() override;
+	void onShow() override;
 };
 	}
 }
