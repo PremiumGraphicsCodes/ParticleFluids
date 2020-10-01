@@ -11,19 +11,20 @@
 #include "../OpenVDBConverter/OpenVDBFileReader.h"
 #include "../OpenVDBConverter/OpenVDBFileWriter.h"
 
+#include "../OpenVDBConverter/OpenVDBAdapter.h"
 
 #include <iostream>
 
-using namespace openvdb;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
+using namespace Crystal::OpenVDB;
 
 OpenVDBMenu::OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas) :
 	IMenu(name, model, canvas)
 {
-	openvdb::initialize();
+	OpenVDBAdapter::init();
 }
 
 void OpenVDBMenu::onShow()
@@ -55,10 +56,10 @@ void OpenVDBMenu::onShow()
 		}
 		if (ImGui::MenuItem("Export")) {
 			OpenVDBFileWriter writer;
-			writer.addPoint(openvdb::Vec3R(0, 1, 0));
-			writer.addPoint(openvdb::Vec3R(1.5, 3.5, 1));
-			writer.addPoint(openvdb::Vec3R(-1, 6, -2));
-			writer.addPoint(openvdb::Vec3R(1.1, 1.25, 0.06));
+			writer.addPoint(Vector3dd(0, 1, 0));
+			writer.addPoint(Vector3dd(1.5, 3.5, 1));
+			writer.addPoint(Vector3dd(-1, 6, -2));
+			writer.addPoint(Vector3dd(1.1, 1.25, 0.06));
 
 			writer.setName("Points");
 			writer.write("testWrite.vdb");
