@@ -27,17 +27,6 @@ TEST(OpenVDBFileWriterTest, TestWrite)
 }
 
 /*
-Crystal::OpenVDB::FSPSFileReader reader;
-reader.read("C:\\Users\\PremiumGraphics\\Desktop\\1.fsps");
-const auto positions = reader.getPositions();
-Crystal::OpenVDB::OpenVDBFileWriter writer;
-ParticleSystem particles;
-for (const auto& p : positions) {
-    writer.addPoint(p);
-    particles.add(p, 2.0);
-}
-writer.write("Test1.vdb");
-
 {
     ParticlesToVolumeConverter pToVolume;
     auto volume = pToVolume.toVolume(particles);
