@@ -41,13 +41,18 @@ void OpenVDBMenu::onShow()
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
 				OpenVDBFileReader reader;
-				const auto isOk = reader.read(filename);
-				if (isOk) {
-					const auto id = getWorld()->getNextSceneId();
-					ParticleSystem<ParticleAttribute> ps;
-					//					ps.add(V)
-										//Crystal::Scene::ParticleSystemScene ps(id, "VDB", ;
-					//					getWorld()->getScenes()->addScene();
+				const auto isOk = reader.open(filename);
+				if(isOk) {
+					const auto pointNames = reader.getPointGridNames();
+					for (const auto& n : pointNames) {
+						const auto positions = reader.readPositions(n);
+						const auto id = getWorld()->getNextSceneId();
+						auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>();
+						ParticleSystemScene* scene = new ParticleSystemScene(id, n, std::move(ps));
+						world->getScenes()->addScene(scene);
+					}
+
+					std::cout << "import suceeded." << std::endl;
 				}
 				else {
 					std::cout << "import failed." << std::endl;
@@ -71,7 +76,10 @@ void OpenVDBMenu::onShow()
 				writer.setName("Points");
 				std::cout << filename << std::endl;
 				const auto isOk = writer.write(filename);
-				if (!isOk) {
+				if (isOk) {
+					//std::cout << "import suceeded." << std::endl;
+				}
+				else {
 					std::cout << "export failed." << std::endl;
 				}
 			}

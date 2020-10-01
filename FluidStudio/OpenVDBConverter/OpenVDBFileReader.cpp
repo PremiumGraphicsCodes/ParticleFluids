@@ -4,25 +4,47 @@
 
 #include <openvdb/points/PointConversion.h>
 
+using namespace Crystal::Math;
 using namespace Crystal::OpenVDB;
 
-bool OpenVDBFileReader::read(const std::string& filename)
-{
-    openvdb::io::File newFile(filename);
+namespace {
+    openvdb::io::File file("");
+}
 
-    const auto isOk = newFile.open();
-    if (!isOk) {
-        return false;
-    }
-    auto metas = newFile.readAllGridMetadata();
+OpenVDBFileReader::~OpenVDBFileReader()
+{
+    close();
+}
+
+bool OpenVDBFileReader::open(const std::string& filename)
+{
+    file = openvdb::io::File(filename);
+    const auto isOk = file.open();
+    return isOk;
+}
+
+void OpenVDBFileReader::close()
+{
+    file.close();
+}
+
+std::vector<std::string> OpenVDBFileReader::getPointGridNames() const
+{
+    std::vector<std::string> names;
+    auto metas = file.readAllGridMetadata();
     for (auto iter = metas->begin(); iter != metas->end(); ++iter) {
-        const auto isPoint = (*iter)->isType<openvdb::points::PointDataGrid>();        
+        const auto isPoint = (*iter)->isType<openvdb::points::PointDataGrid>();
         if (isPoint) {
-            std::cout << (*iter)->getName() << std::endl;
+            //std::cout << (*iter)->getName() << std::endl;
+            names.push_back((*iter)->getName());
         }
     }
-    auto baseGrid = newFile.readGrid("Points");
-    newFile.close();
+    return names;
+}
+
+std::vector<Vector3dd> OpenVDBFileReader::readPositions(const std::string& pointName)
+{
+    auto baseGrid = file.readGrid(pointName);
 
     auto grid = openvdb::gridPtrCast<openvdb::points::PointDataGrid>(baseGrid);
     auto count = openvdb::points::pointCount(grid->tree());
@@ -49,10 +71,11 @@ bool OpenVDBFileReader::read(const std::string& filename)
             v_indices.push_back(index);
         }
     }
-    this->positions.resize(v_positions.size());
+
+    std::vector<Vector3dd> positions(v_positions.size());
     for (const auto i : v_indices) {
-        this->positions[i] = Converter::fromVDB(v_positions[i]);
+        positions[i] = Converter::fromVDB(v_positions[i]);
     }
 
-    return true;
+    return std::move(positions);
 }

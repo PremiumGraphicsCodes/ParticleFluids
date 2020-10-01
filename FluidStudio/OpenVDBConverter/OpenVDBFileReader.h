@@ -11,12 +11,19 @@ namespace Crystal {
 class OpenVDBFileReader
 {
 public:
-    bool read(const std::string& filename);
+    OpenVDBFileReader() {}
 
-    std::vector<Math::Vector3dd> getPositions() const { return positions; }
+    ~OpenVDBFileReader();
+
+    bool open(const std::string& filename);
+
+    void close();
+
+    std::vector<std::string> getPointGridNames() const;
+
+    std::vector<Math::Vector3dd> readPositions(const std::string& pointName);
 
 private:
-    std::vector<Math::Vector3dd> positions;
 };
 
     }

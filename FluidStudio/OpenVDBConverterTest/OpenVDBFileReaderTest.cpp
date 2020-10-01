@@ -7,8 +7,9 @@ using namespace Crystal::OpenVDB;
 TEST(OpenVDBFileReaderTest, TestRead)
 {
     OpenVDBFileReader reader;
-    const auto isOk = reader.read("testWrite.vdb");
+    const auto isOk = reader.open("testWrite.vdb");
     EXPECT_TRUE(isOk);
-    const auto positions = reader.getPositions();
+    const auto& names = reader.getPointGridNames();
+    const auto positions = reader.readPositions(names[0]);
     EXPECT_EQ(4, positions.size());
 }
