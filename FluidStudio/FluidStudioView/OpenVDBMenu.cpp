@@ -19,6 +19,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Shape;
+using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 using namespace Crystal::OpenVDB;
 
@@ -48,8 +49,18 @@ void OpenVDBMenu::onShow()
 						const auto positions = reader.readPositions(n);
 						const auto id = getWorld()->getNextSceneId();
 						auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>();
+						ParticleAttribute attr;
+						attr.color = ColorRGBAf(1.0, 1.0, 1.0, 1.0);
+						attr.size = 10.0f;
+						for (const auto& p : positions) {
+							ps->add(p, attr);
+						}
 						ParticleSystemScene* scene = new ParticleSystemScene(id, n, std::move(ps));
 						world->getScenes()->addScene(scene);
+
+						auto presenter = scene->getPresenter();
+						presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+						presenter->setBlend(false);
 					}
 
 					std::cout << "import suceeded." << std::endl;
