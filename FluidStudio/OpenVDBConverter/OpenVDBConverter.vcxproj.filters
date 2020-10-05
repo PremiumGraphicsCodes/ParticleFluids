@@ -33,6 +33,9 @@
     <ClInclude Include="VolumeImpl.h">
       <Filter>Private</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleSystemImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Private">
