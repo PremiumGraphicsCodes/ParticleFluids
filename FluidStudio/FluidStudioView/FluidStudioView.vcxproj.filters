@@ -4,19 +4,36 @@
     <ClCompile Include="FluidStudioView.cpp" />
     <ClCompile Include="TimeLinePanel.cpp" />
     <ClCompile Include="OpenVDBMenu.cpp" />
-    <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp" />
-    <ClCompile Include="TimeSeriesParticleSystemReader.cpp" />
-    <ClCompile Include="TimeSeriesParticleSystemWriter.cpp" />
     <ClCompile Include="FluidSimulationView.cpp" />
     <ClCompile Include="SimulationMenu.cpp" />
+    <ClCompile Include="TimeSeriesParticleSystemReader.cpp">
+      <Filter>TimeSeries</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeSeriesParticleSystemWriter.cpp">
+      <Filter>TimeSeries</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp">
+      <Filter>TimeSeries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TimeLinePanel.h" />
     <ClInclude Include="OpenVDBMenu.h" />
-    <ClInclude Include="TimeSeriesParticleSystemAnimator.h" />
-    <ClInclude Include="TimeSeriesParticleSystemReader.h" />
-    <ClInclude Include="TimeSeriesParticleSystemWriter.h" />
     <ClInclude Include="FluidSimulationView.h" />
     <ClInclude Include="SimulationMenu.h" />
+    <ClInclude Include="TimeSeriesParticleSystemReader.h">
+      <Filter>TimeSeries</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeSeriesParticleSystemWriter.h">
+      <Filter>TimeSeries</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeSeriesParticleSystemAnimator.h">
+      <Filter>TimeSeries</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="TimeSeries">
+      <UniqueIdentifier>{3eec49a9-986f-49d4-9f9f-991bb36aed64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

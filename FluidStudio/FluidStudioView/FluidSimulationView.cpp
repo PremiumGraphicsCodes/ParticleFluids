@@ -66,7 +66,7 @@ void FluidSimulationView::onOk()
 	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
 	getWorld()->addAnimation(&simulator);
-	//getWorld()->addAnimation(&writer);
+	getWorld()->addAnimation(&writer);
 
 	//simulator.setArgs(args);
 }
@@ -82,18 +82,8 @@ void FluidSimulationView::reset()
 	const auto id = this->particleSystemSelectView.getId();
 	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
 
-	/*
-	const auto& ps = scene->getShape()->getParticles();
-	for (auto p : ps) {
-		auto pos = p->getPosition();
-		auto mp = new KFMacroParticle(radiusView.getValue(), pos);
-		mp->distributePoints(3, 3, 3);
-		this->fluidScene->addParticle(mp);
-		//writer.add(mp);
-	}
-	*/
-	//this->writer.reset();
-	//this->writer.setDirectryPath(outputDirectoryView.getPath());
+	this->writer.reset();
+	this->writer.setDirectryPath(outputDirectoryView.getPath());
 
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
@@ -103,7 +93,7 @@ void FluidSimulationView::reset()
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3, 1.0f);
 				fluidScene->addParticle(mp);
-				//writer.add(mp);
+				writer.add(mp);
 			}
 		}
 	}
