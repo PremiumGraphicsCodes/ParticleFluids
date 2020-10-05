@@ -8,6 +8,11 @@
       <Filter>Private</Filter>
     </ClCompile>
     <ClCompile Include="OpenVDBAdapter.cpp" />
+    <ClCompile Include="ParticlesToVolumeConverter.cpp" />
+    <ClCompile Include="VolumeImpl.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Volume.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenVDBFileReader.h" />
@@ -23,6 +28,11 @@
       <Filter>Private</Filter>
     </ClInclude>
     <ClInclude Include="OpenVDBAdapter.h" />
+    <ClInclude Include="ParticlesToVolumeConverter.h" />
+    <ClInclude Include="Volume.h" />
+    <ClInclude Include="VolumeImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Private">

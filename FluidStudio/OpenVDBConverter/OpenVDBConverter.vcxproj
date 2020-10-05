@@ -334,6 +334,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="OpenVDBFileWriter.cpp" />
     <ClCompile Include="ParticlesToVolumeConverter.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="Volume.cpp" />
+    <ClCompile Include="VolumeImpl.cpp" />
     <ClCompile Include="VolumeToMeshConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -344,6 +346,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="ParticlesToVolumeConverter.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="PolygonMesh.h" />
+    <ClInclude Include="Volume.h" />
+    <ClInclude Include="VolumeImpl.h" />
     <ClInclude Include="VolumeToMeshConverter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
