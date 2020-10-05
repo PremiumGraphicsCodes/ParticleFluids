@@ -7,6 +7,8 @@
     <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp" />
     <ClCompile Include="TimeSeriesParticleSystemReader.cpp" />
     <ClCompile Include="TimeSeriesParticleSystemWriter.cpp" />
+    <ClCompile Include="FluidSimulationView.cpp" />
+    <ClCompile Include="SimulationMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TimeLinePanel.h" />
@@ -14,5 +16,7 @@
     <ClInclude Include="TimeSeriesParticleSystemAnimator.h" />
     <ClInclude Include="TimeSeriesParticleSystemReader.h" />
     <ClInclude Include="TimeSeriesParticleSystemWriter.h" />
+    <ClInclude Include="FluidSimulationView.h" />
+    <ClInclude Include="SimulationMenu.h" />
   </ItemGroup>
 </Project>

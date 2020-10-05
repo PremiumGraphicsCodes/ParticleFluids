@@ -189,15 +189,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FluidSimulationView.cpp" />
     <ClCompile Include="FluidStudioView.cpp" />
     <ClCompile Include="OpenVDBMenu.cpp" />
+    <ClCompile Include="SimulationMenu.cpp" />
     <ClCompile Include="TimeLinePanel.cpp" />
     <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp" />
     <ClCompile Include="TimeSeriesParticleSystemReader.cpp" />
     <ClCompile Include="TimeSeriesParticleSystemWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FluidSimulationView.h" />
     <ClInclude Include="OpenVDBMenu.h" />
+    <ClInclude Include="SimulationMenu.h" />
     <ClInclude Include="TimeLinePanel.h" />
     <ClInclude Include="TimeSeriesParticleSystemAnimator.h" />
     <ClInclude Include="TimeSeriesParticleSystemReader.h" />
