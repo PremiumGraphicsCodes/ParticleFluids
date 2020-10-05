@@ -29,7 +29,6 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	boundaryView("Boundary"),
 	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
 	boundarySelectView("Boundary", model, canvas, Scene::SceneType::ParticleSystemScene),
-	outputDirectoryView("OutputDir"),
 	stiffnessView("Stiffness", 0.05),
 	vicsocityView("Viscosity", 0.1)
 {
@@ -46,7 +45,6 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	add(&boundaryView);
 	add(&stiffnessView);
 	add(&vicsocityView);
-	add(&outputDirectoryView);
 }
 
 void PBSPHFluidSimulationView::onOk()
@@ -146,6 +144,7 @@ void PBSPHFluidSimulationView::onReset()
 		}
 	}
 
+	/*
 	for (int i = 20; i < 22; ++i) {
 		for (int j = -2; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
@@ -181,10 +180,9 @@ void PBSPHFluidSimulationView::onReset()
 			}
 		}
 	}
+	*/
 
 
-
-
-	//simulator->setBoundary(boundaryView.getValue());
+	simulator->setBoundary(boundaryView.getValue());
 	simulator->setTimeStep(timeStepView.getValue());
 }

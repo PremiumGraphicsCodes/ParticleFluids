@@ -38,7 +38,6 @@ private:
 	DoubleView stiffnessView;
 	DoubleView vicsocityView;
 	Box3dView boundaryView;
-	DirectoryView outputDirectoryView;
 };
 
 	}

@@ -34,7 +34,7 @@ void PBSPHSolver::simulate(const float maxTimeStep, const int maxIter)
 
 	const auto dt = maxTimeStep;//calculateTimeStep(particles);
 
-	//PBSPHBoundarySolver boundarySolver(boundary);
+	PBSPHBoundarySolver boundarySolver(boundary);
 	for (auto p : particles) {
 		p->addExternalForce(externalForce);
 		p->predictPosition_(dt);
@@ -57,7 +57,7 @@ void PBSPHSolver::simulate(const float maxTimeStep, const int maxIter)
 			p->dx = Math::Vector3df(0, 0, 0);
 		}
 
-		//boundarySolver.addDX(particles, dt);
+		boundarySolver.addDX(particles, dt);
 
 		for (int i = 0; i < particles.size(); ++i) {
 			const auto p = static_cast<PBSPHParticle*>(particles[i]);
@@ -80,7 +80,7 @@ void PBSPHSolver::simulate(const float maxTimeStep, const int maxIter)
 			p2->calculatePressure(*p1);
 		}
 
-		//boundarySolver.calculatePressure(particles);
+		boundarySolver.calculatePressure(particles);
 
 		for (int i = 0; i < particles.size(); ++i) {
 			const auto p = particles[i];

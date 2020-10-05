@@ -41,8 +41,6 @@ private:
 	ObjectSelectView particleSystemSelectView;
 	ObjectSelectView boundarySelectView;
 	DoubleView radiusView;
-	//Physics::TimeSeriesParticleSystemWriter writer;
-	DirectoryView outputDirectoryView;
 };
 
 	}

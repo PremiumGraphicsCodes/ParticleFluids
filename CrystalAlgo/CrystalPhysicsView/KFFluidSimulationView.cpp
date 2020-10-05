@@ -28,8 +28,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	timeStepView("TimeStep", 0.025),
 	particleSystemSelectView("ParticleSystem", model, canvas),
 	boundarySelectView("Boundary", model, canvas),
-	radiusView("SearchRadius", 1.0),
-	outputDirectoryView("OutputDir")
+	radiusView("SearchRadius", 1.0)
 {
 	auto resetFunc = [=]() {
 		reset();
@@ -45,7 +44,6 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	add(&particleSystemSelectView);
 	add(&boundarySelectView);
 	add(&radiusView);
-	add(&outputDirectoryView);
 }
 
 void KFFluidSimulationView::onOk()
@@ -65,9 +63,6 @@ void KFFluidSimulationView::onOk()
 	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
 	getWorld()->addAnimation(&simulator);
-	//getWorld()->addAnimation(&writer);
-
-	//simulator.setArgs(args);
 }
 
 void KFFluidSimulationView::reset()
@@ -91,8 +86,6 @@ void KFFluidSimulationView::reset()
 		//writer.add(mp);
 	}
 	*/
-	//this->writer.reset();
-	//this->writer.setDirectryPath(outputDirectoryView.getPath());
 
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
