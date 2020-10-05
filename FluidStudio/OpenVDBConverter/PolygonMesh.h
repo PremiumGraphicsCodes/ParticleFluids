@@ -11,9 +11,13 @@ class PolygonMesh : private UnCopyable
 public:
 	PolygonMesh();
 
+	//PolygonMesh(PolygonMesh&& rhs);
+
+	//PolygonMesh& operator=(const PolygonMesh&& rhs);
+
 	~PolygonMesh();
 
-	const PolygonMeshImpl* getImpl() const { return impl; }
+	PolygonMeshImpl* getImpl() const { return impl; }
 
 private:
 	PolygonMeshImpl* impl;

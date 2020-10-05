@@ -19,7 +19,7 @@ public:
 
 	~Volume();
 
-	VolumeImpl* getImpl() { return impl; }
+	VolumeImpl* getImpl() const { return impl; }
 
 private:
 	VolumeImpl* impl;

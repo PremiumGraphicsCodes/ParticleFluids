@@ -9,6 +9,10 @@ PolygonMesh::PolygonMesh() :
 {
 }
 
+//PolygonMesh::PolygonMesh(PolygonMesh&& rhs) = default;
+
+//PolygonMesh& PolygonMesh::operator=(const PolygonMesh&& rhs) = default;
+
 PolygonMesh::~PolygonMesh()
 {
 	delete impl;

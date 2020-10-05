@@ -1,6 +1,7 @@
 #pragma once
 
-#include "PolygonMeshImpl.h"
+#include "PolygonMesh.h"
+#include "Volume.h"
 
 namespace Crystal {
 	namespace OpenVDB {
@@ -8,10 +9,9 @@ namespace Crystal {
 class VolumeToMeshConverter
 {
 public:
-	PolygonMeshImpl toMesh(openvdb::FloatGrid grid);
+	std::unique_ptr<PolygonMesh> toMesh(const Volume& volume);
 
 private:
-	PolygonMeshImpl mesh;
 };
 
 	}
