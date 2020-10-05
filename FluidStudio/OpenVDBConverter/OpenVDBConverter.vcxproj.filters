@@ -18,6 +18,7 @@
     <ClCompile Include="OpenVDBFileWriter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="PolygonMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VolumeToMeshConverter.h" />
@@ -43,6 +44,7 @@
     <ClInclude Include="OpenVDBFileWriter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
+    <ClInclude Include="PolygonMesh.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Private">

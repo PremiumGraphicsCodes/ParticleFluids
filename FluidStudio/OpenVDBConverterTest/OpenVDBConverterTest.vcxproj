@@ -40,6 +40,7 @@
     <ClCompile Include="OpenVDBFileReaderTest.cpp" />
     <ClCompile Include="OpenVDBFileWriterTest.cpp" />
     <ClCompile Include="ParticleSystemToVolumeConverterTest.cpp" />
+    <ClCompile Include="VolumeTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">

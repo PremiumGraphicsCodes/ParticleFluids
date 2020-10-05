@@ -8,14 +8,13 @@ namespace Crystal {
 class VolumeImpl
 {
 public:
-	VolumeImpl() {}
-
-	/*
-	explicit VolumeImpl(openvdb::FloatGrid::Ptr ptr) :
-		ptr(std::move(ptr))
+	VolumeImpl()
 	{
 	}
-	*/
+
+	explicit VolumeImpl(openvdb::FloatGrid::Ptr ptr) :
+		ptr(ptr)
+	{}
 
 	~VolumeImpl() {}
 

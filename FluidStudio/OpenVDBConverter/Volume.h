@@ -13,6 +13,8 @@ class Volume : private UnCopyable
 public:
 	Volume();
 
+	explicit Volume(const float value);
+
 	//explicit Volume(std::unique_ptr<VolumeImpl> impl);
 
 	~Volume();
