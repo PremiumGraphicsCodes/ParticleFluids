@@ -1,22 +1,27 @@
 #pragma once
 
+#include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Util/UnCopyable.h"
+
 #include <memory>
 
 namespace Crystal {
     namespace OpenVDB {
         class ParticleSystemImpl;
 
-class ParticleSystem
+class ParticleSystem : private UnCopyable
 {
 public:
     ParticleSystem();
 
-    ~ParticleSystem() {};
+    ~ParticleSystem();
 
-    const ParticleSystemImpl* getImpl() const { return impl.get(); }
+    void add(const Math::Vector3dd& position, const double radius);
+
+    const ParticleSystemImpl* getImpl() const { return impl; }
 
 private:
-    std::unique_ptr<ParticleSystemImpl> impl;
+    ParticleSystemImpl* impl;
 };
 
     }

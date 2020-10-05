@@ -5,6 +5,17 @@
 using namespace Crystal::OpenVDB;
 
 Volume::Volume() :
-	impl(std::make_unique<VolumeImpl>())
+	impl(new VolumeImpl())
 {
+}
+
+/*
+Volume::Volume(std::unique_ptr<VolumeImpl> impl) :
+	impl(std::move(impl))
+{}
+*/
+
+Volume::~Volume()
+{
+	delete impl;
 }

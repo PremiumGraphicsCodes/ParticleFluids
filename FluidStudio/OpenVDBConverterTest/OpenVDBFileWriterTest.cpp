@@ -30,23 +30,6 @@ TEST(OpenVDBFileWriterTest, TestWrite)
 
 /*
 {
-    ParticlesToVolumeConverter pToVolume;
-    auto volume = pToVolume.toVolume(particles);
-
-    openvdb::io::File file("Test1Volume.vdb");
-    file.write({ volume });
-    file.close();
-
-    VolumeToMeshConverter vToMesh;
-    auto mesh = vToMesh.toMesh(*volume);
-
-    OBJFileWriter writer;
-    writer.write("TestMesh.obj", mesh);
-}
-*/
-
-/*
-{
     using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
     using FloatGridType = openvdb::Grid<FloatTreeType>;
 

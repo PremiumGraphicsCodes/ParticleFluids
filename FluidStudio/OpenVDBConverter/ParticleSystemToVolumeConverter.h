@@ -7,7 +7,7 @@
 namespace Crystal {
 	namespace OpenVDB {
 
-class ParticlesToVolumeConverter
+class ParticleSystemToVolumeConverter
 {
 public:
 	std::unique_ptr<Volume> toVolume(const ParticleSystem& particles);

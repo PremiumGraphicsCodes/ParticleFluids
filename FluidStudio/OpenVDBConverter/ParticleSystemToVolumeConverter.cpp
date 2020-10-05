@@ -2,7 +2,7 @@
 #include "openvdb/tools/ParticlesToLevelSet.h"
 #include <openvdb/tools/LevelSetUtil.h>
 
-#include "ParticlesToVolumeConverter.h"
+#include "ParticleSystemToVolumeConverter.h"
 #include "ParticleSystem.h"
 #include "ParticleSystemImpl.h"
 #include "VolumeImpl.h"
@@ -11,13 +11,13 @@
 using namespace openvdb;
 using namespace Crystal::OpenVDB;
 
-std::unique_ptr<Volume> ParticlesToVolumeConverter::toVolume(const ParticleSystem& particles)
+std::unique_ptr<Volume> ParticleSystemToVolumeConverter::toVolume(const ParticleSystem& particles)
 {
     // Rasterize into an SDF.
     auto sdf = createLevelSet<FloatGrid>();
     auto p = particles.getImpl();
     tools::particlesToSdf(*p, *sdf/*radius=10.0*/);
-    std::unique_ptr<VolumeImpl> vImpl = std::make_unique<VolumeImpl>(sdf);
-    std::unique_ptr<Volume> v = std::make_unique<Volume>(std::move(vImpl) );
+    std::unique_ptr<Volume> v = std::make_unique<Volume>();
+    v->getImpl()->setPtr(sdf);
     return std::move(v);
 }

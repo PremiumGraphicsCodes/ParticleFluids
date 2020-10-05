@@ -2,25 +2,25 @@
 
 #include <memory>
 
+#include "../../Crystal/Util/UnCopyable.h"
+
 namespace Crystal {
 	namespace OpenVDB {
 		class VolumeImpl;
 
-class Volume
+class Volume : private UnCopyable
 {
 public:
 	Volume();
 
-	explicit Volume(std::unique_ptr<VolumeImpl> impl) :
-		impl(std::move(impl))
-	{}
+	//explicit Volume(std::unique_ptr<VolumeImpl> impl);
 
-	~Volume() {}
+	~Volume();
 
-	const VolumeImpl* getImpl() { return impl.get(); }
+	VolumeImpl* getImpl() { return impl; }
 
 private:
-	std::unique_ptr<VolumeImpl> impl;
+	VolumeImpl* impl;
 };
 	}
 }
