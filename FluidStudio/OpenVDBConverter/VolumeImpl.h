@@ -10,7 +10,7 @@ class VolumeImpl
 public:
 	VolumeImpl() {}
 
-	VolumeImpl(openvdb::FloatGrid::Ptr ptr) :
+	explicit VolumeImpl(openvdb::FloatGrid::Ptr ptr) :
 		ptr(std::move(ptr))
 	{
 	}

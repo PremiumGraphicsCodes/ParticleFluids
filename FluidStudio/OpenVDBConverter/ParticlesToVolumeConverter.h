@@ -2,6 +2,7 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "ParticleSystem.h"
+#include "Volume.h"
 
 namespace Crystal {
 	namespace OpenVDB {
@@ -9,9 +10,7 @@ namespace Crystal {
 class ParticlesToVolumeConverter
 {
 public:
-	void add(const Math::Vector3dd& position);
-
-	openvdb::FloatGrid::Ptr toVolume(const ParticleSystem& particles);
+	std::unique_ptr<Volume> toVolume(const ParticleSystem& particles);
 
 private:
 };
