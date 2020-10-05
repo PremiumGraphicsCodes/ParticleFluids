@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="OpenVDBFileReader.cpp" />
-    <ClCompile Include="OpenVDBFileWriter.cpp" />
     <ClCompile Include="VolumeToMeshConverter.cpp" />
     <ClCompile Include="OpenVDBAdapter.cpp" />
     <ClCompile Include="VolumeImpl.cpp">
@@ -11,15 +9,19 @@
     <ClCompile Include="Volume.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="ParticleSystemToVolumeConverter.cpp" />
+    <ClCompile Include="ParticleSystemImpl.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenVDBFileReader.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenVDBFileWriter.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OpenVDBFileReader.h" />
-    <ClInclude Include="OpenVDBFileWriter.h" />
     <ClInclude Include="VolumeToMeshConverter.h" />
     <ClInclude Include="Converter.h">
-      <Filter>Private</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonMesh.h">
       <Filter>Private</Filter>
     </ClInclude>
     <ClInclude Include="OpenVDBAdapter.h" />
@@ -32,10 +34,22 @@
     </ClInclude>
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="ParticleSystemToVolumeConverter.h" />
+    <ClInclude Include="PolygonMeshImpl.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenVDBFileReader.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenVDBFileWriter.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Private">
       <UniqueIdentifier>{0f07a8f8-2e2f-46b1-84e9-eb32e7f913f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO">
+      <UniqueIdentifier>{c5f10b5d-9511-410c-99ce-6ef985958a28}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

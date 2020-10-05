@@ -1,18 +1,18 @@
 #pragma once
 
-#include "PolygonMesh.h"
+#include "PolygonMeshImpl.h"
 
 namespace Crystal {
 	namespace OpenVDB {
 
-		class VolumeToMeshConverter
-		{
-		public:
-			PolygonMesh toMesh(openvdb::FloatGrid grid);
+class VolumeToMeshConverter
+{
+public:
+	PolygonMeshImpl toMesh(openvdb::FloatGrid grid);
 
-		private:
-			PolygonMesh mesh;
+private:
+	PolygonMeshImpl mesh;
+};
 
-		};
 	}
 }

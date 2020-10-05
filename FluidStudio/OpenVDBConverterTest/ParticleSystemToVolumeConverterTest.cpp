@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "../OpenVDBConverter/ParticleSystemToVolumeConverter.h"
-/*
+
 using namespace Crystal::Math;
 using namespace Crystal::OpenVDB;
 
@@ -12,5 +12,3 @@ TEST(ParticleSystemToVolumeConverterTest, TestToVolume)
     ParticleSystemToVolumeConverter pToVolume;
     auto volume = pToVolume.toVolume(ps);
 }
-
-*/

@@ -1,18 +1,9 @@
 #include "gtest/gtest.h"
 
 #include "../OpenVDBConverter/OpenVDBFileWriter.h"
-/*
-#include "OpenVDBFileWriter.h"
-#include "VolumeToMeshConverter.h"
-#include "ParticlesToVolumeConverter.h"
-#include "OBJFileWriter.h"
-
-#include "ParticleSystem.h"
-*/
 
 using namespace Crystal::Math;
 using namespace Crystal::OpenVDB;
-
 
 TEST(OpenVDBFileWriterTest, TestWrite)
 {

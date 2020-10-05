@@ -4,13 +4,13 @@
 
 #include "openvdb/tools/VolumeToMesh.h"
 
-#include "PolygonMesh.h"
+#include "PolygonMeshImpl.h"
 
 using namespace Crystal::OpenVDB;
 
-PolygonMesh VolumeToMeshConverter::toMesh(openvdb::FloatGrid grid)
+PolygonMeshImpl VolumeToMeshConverter::toMesh(openvdb::FloatGrid grid)
 {
-    PolygonMesh mesh;
+    PolygonMeshImpl mesh;
     openvdb::tools::volumeToMesh(grid, mesh.points, mesh.quads);
     return std::move(mesh);
 }
