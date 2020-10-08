@@ -2,6 +2,8 @@
 
 #include "KFFluidScene.h"
 
+#include "SPHKernel.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
@@ -28,7 +30,6 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum)
 
 	const double tolerance = 1.0e-12;
 
-	const auto r = 0.35;
 	for (int x = 0; x <= unum; x++) {
 		for (int y = 0; y <= vnum; ++y) {
 			const auto xx = x / (double)unum;
@@ -54,7 +55,7 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 
 	const double tolerance = 1.0e-12;
 
-	const auto r = 0.35;
+	SPHKernel kernel(0.5);
 	for (int x = 0; x <= unum; x++) {
 		for (int y = 0; y <= vnum; ++y) {
 			for (int z = 0; z <= wnum; ++z) {
@@ -64,7 +65,7 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto d = Math::getLengthSquared(v);
 				if (d < 0.5 * 0.5) {
-					const auto weight = (1.0 - std::sqrt(d) * 2.0);
+					const auto weight = kernel.getCubicSpline(std::sqrt(d));
 					points.push_back(new KFMicroParticle(this, v * 3.0, weight));
 					selfMass += weight;
 				}

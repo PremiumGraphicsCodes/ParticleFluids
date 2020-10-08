@@ -23,8 +23,8 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	startButton("Start"),
 	resetButton("Reset"),
 	boundaryView("Boundary"),
-	pressureCoeView("PressureCoe", 1000),
-	viscosityCoeView("ViscosityCoe", 25.0),
+	pressureCoeView("PressureCoe", 100),
+	viscosityCoeView("ViscosityCoe", 10.0),
 	timeStepView("TimeStep", 0.025),
 	particleSystemSelectView("ParticleSystem", model, canvas),
 	boundarySelectView("Boundary", model, canvas),
@@ -36,7 +36,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 
-	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
+	boundaryView.setValue(Box3d(Vector3dd(-50, -100.0, -50.0), Vector3dd(100.0, 1000.0, 100.0)));
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
@@ -63,6 +63,10 @@ void KFFluidSimulationView::onOk()
 	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
 	getWorld()->addAnimation(&simulator);
+
+	Command::Command command;
+	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
+	command.execute(getWorld());
 }
 
 void KFFluidSimulationView::reset()
@@ -88,7 +92,7 @@ void KFFluidSimulationView::reset()
 	*/
 
 	const auto radius = 1.0;
-	const auto length = radius * 2.0;
+	const auto length = radius * 2.0 * 1.25;
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
@@ -184,7 +188,4 @@ void KFFluidSimulationView::reset()
 
 	simulator.setArgs(args);
 
-	Command::Command command;
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(getWorld());
 }
