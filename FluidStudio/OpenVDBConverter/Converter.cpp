@@ -85,3 +85,7 @@ openvdb::Vec4I Converter::toVDB(const std::array<int, 4>& indices)
     return openvdb::Vec4I(indices[0], indices[1], indices[2], indices[3]);
 }
 
+std::array<unsigned int, 4> Converter::fromVDB(const openvdb::Vec4I& src)
+{
+    return { src[0], src[1], src[2], src[3] };
+}

@@ -52,6 +52,16 @@ void PolygonMesh::addQuad(const std::array<int, 4>& indices)
 	impl->quads.push_back(Converter::toVDB(indices));
 }
 
+std::vector<std::array<unsigned int, 4>> PolygonMesh::getQuads() const
+{
+	std::vector<std::array<unsigned int, 4>> dest;
+	for (const auto& q : impl->quads) {
+		dest.push_back(Converter::fromVDB(q));
+	}
+	return dest;
+}
+
+
 //void PolygonMesh::fromCrystal(const Crystal::Shape::PolygonMesh& src)
 //{	
 //	impl->points = Converter::toVDB(src.getPositions());

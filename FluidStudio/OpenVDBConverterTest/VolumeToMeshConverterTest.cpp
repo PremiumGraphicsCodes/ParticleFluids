@@ -11,7 +11,5 @@ TEST(VolumeToMeshConverterTest, Test)
     VolumeToMeshConverter vToMesh;
     const auto mesh = vToMesh.toMesh(grid);
     EXPECT_FALSE( mesh->getVertices().empty() );
-    //mesh->get
-    //assert(!mesh.points.empty());
-    //assert(size_t(216) == mesh.quads.size());
+    EXPECT_EQ( 216, mesh->getQuads().size() );
 }

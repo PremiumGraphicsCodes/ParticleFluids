@@ -33,6 +33,8 @@ public:
 
     static openvdb::Vec4I toVDB(const std::array<int, 4>& indices);
 
+    static std::array<unsigned int, 4> fromVDB(const openvdb::Vec4I& src);
+
 };
 
     }

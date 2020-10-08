@@ -33,7 +33,7 @@ public:
 
 	void addQuad(const std::array<int, 4>& indices);
 
-	//std::array<int, 4> getQuad() const;
+	std::vector<std::array<unsigned int, 4>> getQuads() const;
 
 	//void fromCrystal(const Crystal::Shape::PolygonMesh& src);
 
