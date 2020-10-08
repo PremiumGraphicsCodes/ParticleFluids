@@ -31,6 +31,14 @@ void OpenVDBFileWriter::close()
 
 void OpenVDBFileWriter::write(const std::string& name, const std::vector<Vector3dd>& positions) const
 {
+    try {
+        file.open();
+    }
+    catch (openvdb::Exception& e) {
+        std::cout << "file could not open" << std::endl;
+        return;
+    }
+
     std::vector<openvdb::Vec3R> ps = Converter::toVDB(positions);
     openvdb::points::PointAttributeVector<openvdb::Vec3R> positionsWrapper(ps);
 
