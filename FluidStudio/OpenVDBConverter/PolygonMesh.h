@@ -4,6 +4,9 @@
 #include "../../Crystal/Util/UnCopyable.h"
 
 namespace Crystal {
+	namespace Shape {
+		class PolygonMesh;
+	}
 	namespace OpenVDB {
 		class PolygonMeshImpl;
 
@@ -22,7 +25,15 @@ public:
 
 	void addTriangle(const std::array<int, 3>& indices);
 
+	std::array<unsigned int, 3> getTriangle(const int index) const;
+
 	void addQuad(const std::array<int, 4>& indices);
+
+	//std::array<int, 4> getQuad() const;
+
+	//void fromCrystal(const Crystal::Shape::PolygonMesh& src);
+
+	//Crystal::Shape::PolygonMesh toCrystal() const;
 
 	PolygonMeshImpl* getImpl() const { return impl; }
 

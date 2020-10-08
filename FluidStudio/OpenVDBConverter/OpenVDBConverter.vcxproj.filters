@@ -23,6 +23,12 @@
     <ClCompile Include="VolumeToMeshConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
+    <ClCompile Include="Converter.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJFileWriter.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -52,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="VolumeToMeshConverter.h">
       <Filter>Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJFileWriter.h">
+      <Filter>FileIO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

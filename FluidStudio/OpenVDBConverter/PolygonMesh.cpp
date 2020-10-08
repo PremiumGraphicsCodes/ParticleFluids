@@ -3,6 +3,8 @@
 #include "PolygonMeshImpl.h"
 #include "Converter.h"
 
+#include "../../Crystal/Shape/PolygonMesh.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::OpenVDB;
 
@@ -27,12 +29,39 @@ void PolygonMesh::addVertex(const Vector3dd& position)
 
 void PolygonMesh::addTriangle(const std::array<int, 3>& indices)
 {
-	openvdb::Vec3I i(indices[0], indices[1], indices[2]);
-	impl->triangles.push_back(i);
+	impl->triangles.push_back(Converter::toVDB(indices));
+}
+
+std::array<unsigned int, 3> PolygonMesh::getTriangle(const int index) const
+{
+	return Converter::fromVDB( impl->triangles[index] );
 }
 
 void PolygonMesh::addQuad(const std::array<int, 4>& indices)
 {
-	openvdb::Vec4I i(indices[0], indices[1], indices[2], indices[3]);
-	impl->quads.push_back(i);
+	impl->quads.push_back(Converter::toVDB(indices));
 }
+
+//void PolygonMesh::fromCrystal(const Crystal::Shape::PolygonMesh& src)
+//{
+//	const auto positions = Converter::toVDB( src.getPositions() );
+//	const auto faces = src.getFaces();
+//	for (const auto& f : faces) {
+//		addTriangle( f.getVertexIds() );
+//	}
+//	/*
+//	const auto& faces = src.getFaces();
+//	for (const auto& f : faces) {
+//		impl->triangles.push_back()
+//	}
+//	*/
+//	return;
+//}
+//
+//Crystal::Shape::PolygonMesh PolygonMesh::toCrystal() const
+//{
+//	//const auto& faces = src.get
+//
+//	return Crystal::Shape::PolygonMesh();
+//}
+//

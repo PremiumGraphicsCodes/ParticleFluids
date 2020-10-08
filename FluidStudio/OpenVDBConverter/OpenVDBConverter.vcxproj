@@ -329,6 +329,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Converter.cpp" />
+    <ClCompile Include="OBJFileWriter.cpp" />
     <ClCompile Include="OpenVDBAdapter.cpp" />
     <ClCompile Include="OpenVDBFileReader.cpp" />
     <ClCompile Include="OpenVDBFileWriter.cpp" />
@@ -342,6 +344,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h" />
+    <ClInclude Include="OBJFileWriter.h" />
     <ClInclude Include="OpenVDBAdapter.h" />
     <ClInclude Include="OpenVDBFileReader.h" />
     <ClInclude Include="OpenVDBFileWriter.h" />

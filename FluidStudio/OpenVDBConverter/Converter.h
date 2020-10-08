@@ -8,33 +8,22 @@ namespace Crystal {
 
 class Converter {
 public:
-    static openvdb::Vec3R toVDB(const Crystal::Math::Vector3dd& p)
-    {
-        return openvdb::Vec3R(p.x, p.y, p.z);
-    }
+    static openvdb::Vec3R toVDB(const Crystal::Math::Vector3dd& p);
 
-    static std::vector<openvdb::Vec3R> toVDB(const std::vector<Crystal::Math::Vector3dd>& positions)
-    {
-        std::vector<openvdb::Vec3R> dest(positions.size());
-        for (int i = 0; i < positions.size(); ++i) {
-            dest[i] = toVDB(positions[i]);
-        }
-        return dest;
-    }
+    static std::vector<openvdb::Vec3R> toVDB(const std::vector<Crystal::Math::Vector3dd>& positions);
 
-    static Crystal::Math::Vector3dd fromVDB(const openvdb::Vec3R& p)
-    {
-        return Crystal::Math::Vector3dd(p[0], p[1], p[2]);
-    }
+    static Crystal::Math::Vector3df fromVDB(const openvdb::Vec3f& p);
 
-    static std::vector<Crystal::Math::Vector3dd> fromVDB(const std::vector<openvdb::Vec3R>& positions)
-    {
-        std::vector<Math::Vector3dd> dest(positions.size());
-        for (int i = 0; i < positions.size(); ++i) {
-            dest[i] = fromVDB(positions[i]);
-        }
-        return dest;
-    }
+    static Crystal::Math::Vector3dd fromVDB(const openvdb::Vec3R& p);
+
+    static std::vector<Crystal::Math::Vector3dd> fromVDB(const std::vector<openvdb::Vec3R>& positions);
+
+    static openvdb::Vec3I toVDB(const std::array<int, 3>& indices);
+
+    static std::array<unsigned int, 3> fromVDB(const openvdb::Vec3I& src);
+
+    static openvdb::Vec4I toVDB(const std::array<int, 4>& indices);
+
 };
 
     }
