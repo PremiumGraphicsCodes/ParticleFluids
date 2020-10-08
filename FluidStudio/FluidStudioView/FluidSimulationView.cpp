@@ -24,7 +24,7 @@ FluidSimulationView::FluidSimulationView(World* model, Canvas* canvas) :
 	startButton("Start"),
 	resetButton("Reset"),
 	boundaryView("Boundary"),
-	pressureCoeView("PressureCoe", 1000),
+	pressureCoeView("PressureCoe", 100),
 	viscosityCoeView("ViscosityCoe", 25.0),
 	timeStepView("TimeStep", 0.025),
 	particleSystemSelectView("ParticleSystem", model, canvas),
@@ -86,7 +86,7 @@ void FluidSimulationView::reset()
 	this->writer.setDirectryPath(outputDirectoryView.getPath());
 
 	const auto radius = 1.0;
-	const auto length = radius * 2.0;
+	const auto length = radius * 2.0 * 1.25;
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 20; j < 40; ++j) {
 			for (int k = 0; k < 20; ++k) {
@@ -170,10 +170,9 @@ void FluidSimulationView::reset()
 	}
 		*/
 
-	args.fluids.push_back(this->fluidScene);
-	args.boundaries.push_back(this->boundaryScene);
-	args.surfaces.push_back(this->boundaryView.getValue());
-	args.maxTimeStep = (this->timeStepView.getValue());
-
-	simulator.setArgs(args);
+	simulator.clear();
+	simulator.addFluidScene(this->fluidScene);
+	simulator.addBoundaryScene(this->boundaryScene);
+	simulator.addSurface(this->boundaryView.getValue());
+	simulator.setMaxTimeStep(this->timeStepView.getValue());
 }
