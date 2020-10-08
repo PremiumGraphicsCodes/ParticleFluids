@@ -36,7 +36,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 
-	boundaryView.setValue(Box3d(Vector3dd(-50, -100.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
+	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
@@ -90,7 +90,7 @@ void KFFluidSimulationView::reset()
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
 	for (int i = 0; i < 20; ++i) {
-		for (int j = 20; j < 40; ++j) {
+		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3, 1.0f);
@@ -183,4 +183,8 @@ void KFFluidSimulationView::reset()
 	args.maxTimeStep = (this->timeStepView.getValue());
 
 	simulator.setArgs(args);
+
+	Command::Command command;
+	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
+	command.execute(getWorld());
 }
