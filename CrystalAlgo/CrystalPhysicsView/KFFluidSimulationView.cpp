@@ -36,7 +36,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 
-	boundaryView.setValue(Box3d(Vector3dd(-50, -100.0, -50.0), Vector3dd(100.0, 1000.0, 100.0)));
+	boundaryView.setValue(Box3d(Vector3dd(0,  -100.0, -50.0), Vector3dd(100.0, 1000.0, 100.0)));
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);

@@ -16,8 +16,6 @@ public:
 
 	~KFMacroParticle();
 
-	void distributePoints(const int unum, const int vnum);
-
 	void distributePoints(const int unum, const int vnum, const int wnum, const float weight);
 
 	void setScene(KFFluidScene* scene) { this->scene = scene; }
@@ -72,9 +70,6 @@ private:
 
 	float selfMass;
 	float totalMass;
-	//int microCount;
-	//int selfCount;
-	//double density;
 };
 
 	}

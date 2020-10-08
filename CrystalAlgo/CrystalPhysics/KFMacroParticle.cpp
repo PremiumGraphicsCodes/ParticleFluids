@@ -21,33 +21,7 @@ KFMacroParticle::~KFMacroParticle()
 	//points.clear();
 }
 
-// MicroParticleを遠くに配置する->探索では自分に入らない．
-void KFMacroParticle::distributePoints(const int unum, const int vnum)
-{
-	// 左上から右下に向かって均等分割する．->内外判定する．
-	const auto dx = 1.0 / (double)unum;
-	const auto dy = 1.0 / (double)vnum;
-
-	const double tolerance = 1.0e-12;
-
-	for (int x = 0; x <= unum; x++) {
-		for (int y = 0; y <= vnum; ++y) {
-			const auto xx = x / (double)unum;
-			const auto yy = y / (double)vnum;
-			const Vector3dd v(xx - 0.5, yy - 0.5, 0.0);
-			const auto d = Math::getLengthSquared(v);
-			if (d < 0.5 * 0.5) {
-//				const auto weight = (1.0 - std::sqrt(d) * 2.0);
-				points.push_back(new KFMicroParticle(this, v * 3.0, 1.0)); //weight));////d));
-//				selfCount++;
-			}
-		}
-	}
-	//selfCount = unum * vnum;
-}
-
-
-void KFMacroParticle::distributePoints(const int unum, const int vnum, const int wnum, const float weight)
+void KFMacroParticle::distributePoints(const int unum, const int vnum, const int wnum, const float w)
 {
 	// 左上から右下に向かって均等分割する．->内外判定する．
 	const auto dx = 1.0 / (double)unum;
@@ -65,7 +39,8 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto d = Math::getLengthSquared(v);
 				if (d < 0.5 * 0.5) {
-					const auto weight = kernel.getCubicSpline(std::sqrt(d));
+//					const auto weight = (1.0 - std::sqrt(d) * 2.0);
+					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
 					points.push_back(new KFMicroParticle(this, v * 3.0, weight));
 					selfMass += weight;
 				}
