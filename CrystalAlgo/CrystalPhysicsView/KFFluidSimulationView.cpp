@@ -26,8 +26,6 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	pressureCoeView("PressureCoe", 100),
 	viscosityCoeView("ViscosityCoe", 10.0),
 	timeStepView("TimeStep", 0.025),
-	particleSystemSelectView("ParticleSystem", model, canvas),
-	boundarySelectView("Boundary", model, canvas),
 	radiusView("SearchRadius", 1.0)
 {
 	auto resetFunc = [=]() {
@@ -41,8 +39,6 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
 	add(&timeStepView);
-	add(&particleSystemSelectView);
-	add(&boundarySelectView);
 	add(&radiusView);
 }
 
@@ -62,6 +58,7 @@ void KFFluidSimulationView::onOk()
 
 	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
+
 	getWorld()->addAnimation(&simulator);
 
 	Command::Command command;
@@ -77,20 +74,6 @@ void KFFluidSimulationView::reset()
 	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
 
-	const auto id = this->particleSystemSelectView.getId();
-	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
-
-	/*
-	const auto& ps = scene->getShape()->getParticles();
-	for (auto p : ps) {
-		auto pos = p->getPosition();
-		auto mp = new KFMacroParticle(radiusView.getValue(), pos);
-		mp->distributePoints(3, 3, 3);
-		this->fluidScene->addParticle(mp);
-		//writer.add(mp);
-	}
-	*/
-
 	const auto radius = 1.0;
 	const auto length = radius * 2.0 * 1.25;
 	for (int i = 0; i < 20; ++i) {
@@ -99,7 +82,6 @@ void KFFluidSimulationView::reset()
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3, 1.0f);
 				fluidScene->addParticle(mp);
-				//writer.add(mp);
 			}
 		}
 	}
@@ -178,14 +160,11 @@ void KFFluidSimulationView::reset()
 	}
 		*/
 
-	args.fluids.clear();
-	args.fluids.push_back(this->fluidScene);
-	args.boundaries.clear();
-	args.boundaries.push_back(this->boundaryScene);
-	args.surfaces.clear();
-	args.surfaces.push_back(this->boundaryView.getValue());
-	args.maxTimeStep = (this->timeStepView.getValue());
+	simulator.clear();
+	simulator.addFluidScene(fluidScene);
+	simulator.addBoundaryScene(boundaryScene);
+	simulator.addSurface(this->boundaryView.getValue());
 
-	simulator.setArgs(args);
+	simulator.setMaxTimeStep(this->timeStepView.getValue());
 
 }

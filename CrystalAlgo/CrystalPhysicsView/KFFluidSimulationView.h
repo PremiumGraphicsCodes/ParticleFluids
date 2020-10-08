@@ -29,7 +29,6 @@ private:
 	Physics::KFFluidScene* fluidScene;
 	Physics::KFFluidScene* boundaryScene;
 	Physics::KFFluidSolver simulator;
-	Physics::KFFluidSolver::Args args;
 	Box3dView boundaryView;
 	DoubleView pressureCoeView;
 	DoubleView viscosityCoeView;
@@ -37,9 +36,6 @@ private:
 	Button startButton;
 	Button resetButton;
 	int newId;
-
-	ObjectSelectView particleSystemSelectView;
-	ObjectSelectView boundarySelectView;
 	DoubleView radiusView;
 };
 

@@ -16,17 +16,23 @@ namespace Crystal {
 class KFFluidSolver : public Scene::IAnimator
 {
 public:
-	struct Args
-	{
-		std::list<KFFluidScene*> fluids;
-		std::list<KFFluidScene*> boundaries;
-		std::list<Math::Box3d> surfaces;
-		double maxTimeStep = 0.03;
-	};
 
 	KFFluidSolver();
 
-	void setArgs(const Args& args) { this->args = args; }
+	void clear() {
+		fluids.clear();
+		boundaries.clear();
+		surfaces.clear();
+		maxTimeStep = 0.03;
+	}
+
+	void addFluidScene(KFFluidScene* scene) { this->fluids.push_back(scene); }
+
+	void addBoundaryScene(KFFluidScene* scene) { this->boundaries.push_back(scene); }
+
+	void addSurface(const Math::Box3d& surface) { this->surfaces.push_back(surface); }
+
+	void setMaxTimeStep(const double maxTimeStep) { this->maxTimeStep = maxTimeStep; }
 
 	void simulate();
 
@@ -37,7 +43,11 @@ private:
 
 	void solveBoundary(KFMacroParticle* particle, const double dt);
 	//void solveBoundary(const std::vector<MacroParticle*>& particles);
-	Args args;
+	
+	std::list<KFFluidScene*> fluids;
+	std::list<KFFluidScene*> boundaries;
+	std::list<Math::Box3d> surfaces;
+	double maxTimeStep = 0.03;
 };
 
 	}

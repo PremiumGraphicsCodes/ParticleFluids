@@ -23,13 +23,13 @@ void KFFluidSolver::step()
 void KFFluidSolver::simulate()
 {
 	std::vector<KFMacroParticle*> fluidParticles;
-	for (auto fluid : args.fluids) {
+	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
 	}
 
 	std::vector<KFMacroParticle*> boundaryParticles;
-	for (auto b : args.boundaries) {
+	for (auto b : boundaries) {
 		const auto bp = b->getParticles();
 		boundaryParticles.insert(boundaryParticles.end(), bp.begin(), bp.end());
 	}
@@ -66,7 +66,7 @@ void KFFluidSolver::simulate()
 	}
 
 	double time = 0.0;
-	while (time < args.maxTimeStep) {
+	while (time < maxTimeStep) {
 		const auto dt = calculateTimeStep(fluidParticles);
 
 #pragma omp parallel for
@@ -125,7 +125,7 @@ void KFFluidSolver::simulate()
 	std::cout << densityError << std::endl;
 
 
-	for (auto fluid : args.fluids) {
+	for (auto fluid : fluids) {
 		fluid->getPresenter()->updateView();
 	}
 }
@@ -137,17 +137,17 @@ double KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& par
 		maxVelocity = std::max<double>(maxVelocity, Math::getLengthSquared( p->getVelocity() ) );
 	}
 	if (maxVelocity < 1.0e-3) {
-		return args.maxTimeStep;
+		return maxTimeStep;
 	}
 	maxVelocity = std::sqrt(maxVelocity);
 	const auto dt = 0.4 * particles.front()->getRadius() * 2.0 / maxVelocity;
-	return args.maxTimeStep;
+	return maxTimeStep;
 	//return std::min(dt, maxTimeStep);
 }
 
 void KFFluidSolver::solveBoundary(KFMacroParticle* particle, const double dt)
 {
-	for (const auto& boundary : args.surfaces) {
+	for (const auto& boundary : surfaces) {
 		auto position = particle->getPosition();
 		if (position.y < boundary.getMinY()) {
 			const auto distance = boundary.getMinY() - position.y;

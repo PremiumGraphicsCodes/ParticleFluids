@@ -32,6 +32,9 @@ void PBFluidScene::clearParticles()
 
 Box3d PBFluidScene::getBoundingBox() const
 {
+	if (particles.empty()) {
+		return Box3d::createDegeneratedBox();
+	}
 	Box3d bb(particles.front()->getPosition());
 	for (auto p : particles) {
 		bb.add(p->getPosition());
