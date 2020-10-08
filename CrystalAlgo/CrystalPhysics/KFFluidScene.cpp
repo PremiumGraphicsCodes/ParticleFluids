@@ -27,6 +27,9 @@ void KFFluidScene::clearParticles()
 
 Box3d KFFluidScene::getBoundingBox() const
 {
+	if (particles.empty()) {
+		return Box3d::createDegeneratedBox();
+	}
 	Box3d bb(particles.front()->getPosition());
 	for (auto p : particles) {
 		bb.add(p->getPosition());

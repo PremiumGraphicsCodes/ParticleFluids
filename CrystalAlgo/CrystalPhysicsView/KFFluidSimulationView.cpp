@@ -100,6 +100,7 @@ void KFFluidSimulationView::reset()
 		}
 	}
 
+	/*
 	const float weight = 5.0f;
 	// bottom
 	for (int i = 0; i < 50; ++i) {
@@ -111,6 +112,7 @@ void KFFluidSimulationView::reset()
 			}
 		}
 	}
+	*/
 
 	// bottom
 	/*
