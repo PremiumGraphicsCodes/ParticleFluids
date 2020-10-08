@@ -64,13 +64,15 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto d = Math::getLengthSquared(v);
 				if (d < 0.5 * 0.5) {
+					const auto weight = (1.0 - std::sqrt(d) * 2.0);
 					points.push_back(new KFMicroParticle(this, v * 3.0, weight));
-//					selfWeight+= weight;
+					selfMass += weight;
 				}
 			}
 		}
 	}
-	selfMass = unum * vnum * wnum * weight;
+	selfMass *= 1.5;
+//	selfMass = unum * vnum * wnum * weight;
 }
 
 void KFMacroParticle::reset(bool resetMicro)
