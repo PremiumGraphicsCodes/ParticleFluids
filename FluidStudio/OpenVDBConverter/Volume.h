@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "../../Crystal/Util/UnCopyable.h"
+#include "../../Crystal/Math/Box3d.h"
 
 namespace Crystal {
 	namespace OpenVDB {
@@ -18,6 +19,8 @@ public:
 	//explicit Volume(std::unique_ptr<VolumeImpl> impl);
 
 	~Volume();
+
+	void fill(const unsigned int coord1, const unsigned int coord2, const float value);
 
 	VolumeImpl* getImpl() const { return impl; }
 

@@ -18,20 +18,3 @@ TEST(OpenVDBFileWriterTest, TestWrite)
     writer.open("testWrite.vdb");
     writer.write("points", positions);
 }
-
-/*
-{
-    using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
-    using FloatGridType = openvdb::Grid<FloatTreeType>;
-
-    FloatGridType grid(1.0f);
-    openvdb::CoordBBox bbox(openvdb::Coord(1), openvdb::Coord(6));
-    grid.tree().fill(bbox, -1.0f);
-
-    VolumeToMeshConverter vToMesh;
-    const auto mesh = vToMesh.toMesh(grid);
-    assert(!mesh.points.empty());
-    assert(size_t(216) == mesh.quads.size());
-}
-*/
-

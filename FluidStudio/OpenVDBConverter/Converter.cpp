@@ -25,14 +25,40 @@ std::vector<openvdb::Vec3R> Converter::toVDB(const std::vector<Crystal::Math::Ve
     return dest;
 }
 
+/*
+openvdb::CoordBBox Converter::toVDB(const Math::Box3d& src)
+{
+    const auto v1 = Converter::toVDB( src.getMin() );
+    const auto v2 = Converter::toVDB( src.getMax() );
+    openvdb::Coord c1(v1);
+    return openvdb::CoordBBox(v1, v2);
+}
+*/
+
 Crystal::Math::Vector3df Converter::fromVDB(const openvdb::Vec3f& p)
 {
     return Crystal::Math::Vector3df(p[0], p[1], p[2]);
 }
 
+/*
+Crystal::Math::Vector3df Converter::fromVDB(const openvdb::Vec3s& p)
+{
+    return Crystal::Math::Vector3df(p[0], p[1], p[2]);
+}
+*/
+
 Crystal::Math::Vector3dd Converter::fromVDB(const openvdb::Vec3R& p)
 {
     return Crystal::Math::Vector3dd(p[0], p[1], p[2]);
+}
+
+std::vector<Crystal::Math::Vector3df> Crystal::OpenVDB::Converter::fromVDBf(const std::vector<openvdb::Vec3s>& positions)
+{
+    std::vector<Crystal::Math::Vector3df> dest(positions.size());
+    for (int i = 0; i < positions.size(); ++i) {
+        dest[i] = fromVDB( positions[i] );
+    }
+    return dest;
 }
 
 std::vector<Crystal::Math::Vector3dd> Converter::fromVDB(const std::vector<openvdb::Vec3R>& positions)

@@ -25,6 +25,8 @@ public:
 
 	Math::Vector3df getVertex(const int index);
 
+	std::vector<Math::Vector3df> getVertices() const;
+
 	void addTriangle(const std::array<int, 3>& indices);
 
 	std::array<unsigned int, 3> getTriangle(const int index) const;

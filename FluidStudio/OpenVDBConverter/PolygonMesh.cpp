@@ -3,7 +3,7 @@
 #include "PolygonMeshImpl.h"
 #include "Converter.h"
 
-#include "../../Crystal/Shape/PolygonMesh.h"
+//#include "../../Crystal/Shape/PolygonMesh.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::OpenVDB;
@@ -30,6 +30,11 @@ void PolygonMesh::addVertex(const Vector3df& position)
 Vector3df PolygonMesh::getVertex(const int index)
 {
 	return Converter::fromVDB( impl->points[index] );
+}
+
+std::vector<Vector3df> PolygonMesh::getVertices() const
+{
+	return Converter::fromVDBf(impl->points);
 }
 
 void PolygonMesh::addTriangle(const std::array<int, 3>& indices)

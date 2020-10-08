@@ -42,6 +42,7 @@
     <ClCompile Include="ParticleSystemToVolumeConverterTest.cpp" />
     <ClCompile Include="PolygonMeshTest.cpp" />
     <ClCompile Include="VolumeTest.cpp" />
+    <ClCompile Include="VolumeToMeshConverterTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
