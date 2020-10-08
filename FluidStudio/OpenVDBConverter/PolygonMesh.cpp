@@ -22,9 +22,14 @@ PolygonMesh::~PolygonMesh()
 	delete impl;
 }
 
-void PolygonMesh::addVertex(const Vector3dd& position)
+void PolygonMesh::addVertex(const Vector3df& position)
 {
 	impl->points.push_back(Converter::toVDB(position));
+}
+
+Vector3df PolygonMesh::getVertex(const int index)
+{
+	return Converter::fromVDB( impl->points[index] );
 }
 
 void PolygonMesh::addTriangle(const std::array<int, 3>& indices)
@@ -43,8 +48,8 @@ void PolygonMesh::addQuad(const std::array<int, 4>& indices)
 }
 
 //void PolygonMesh::fromCrystal(const Crystal::Shape::PolygonMesh& src)
-//{
-//	const auto positions = Converter::toVDB( src.getPositions() );
+//{	
+//	impl->points = Converter::toVDB(src.getPositions());
 //	const auto faces = src.getFaces();
 //	for (const auto& f : faces) {
 //		addTriangle( f.getVertexIds() );

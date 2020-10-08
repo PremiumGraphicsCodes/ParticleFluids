@@ -7,6 +7,15 @@ openvdb::Vec3R Converter::toVDB(const Crystal::Math::Vector3dd& p)
     return openvdb::Vec3R(p.x, p.y, p.z);
 }
 
+std::vector<openvdb::Vec3s> Converter::toVDB(const std::vector<Crystal::Math::Vector3df>& positions)
+{
+    std::vector<openvdb::Vec3s> dest(positions.size());
+    for (int i = 0; i < positions.size(); ++i) {
+        dest[i] = toVDB(positions[i]);
+    }
+    return dest;
+}
+
 std::vector<openvdb::Vec3R> Converter::toVDB(const std::vector<Crystal::Math::Vector3dd>& positions)
 {
     std::vector<openvdb::Vec3R> dest(positions.size());

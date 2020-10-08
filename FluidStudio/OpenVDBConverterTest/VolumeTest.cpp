@@ -4,7 +4,8 @@
 //using namespace Crystal::Math;
 using namespace Crystal::OpenVDB;
 
-TEST(VolumeTest, Test)
+TEST(VolumeTest, TestFill)
 {
 	Volume volume(1.0f);
+	//volume.fill(Ve)
 }

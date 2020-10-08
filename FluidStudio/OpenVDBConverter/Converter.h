@@ -10,6 +10,8 @@ class Converter {
 public:
     static openvdb::Vec3R toVDB(const Crystal::Math::Vector3dd& p);
 
+    static std::vector<openvdb::Vec3s> toVDB(const std::vector<Crystal::Math::Vector3df>& positions);
+
     static std::vector<openvdb::Vec3R> toVDB(const std::vector<Crystal::Math::Vector3dd>& positions);
 
     static Crystal::Math::Vector3df fromVDB(const openvdb::Vec3f& p);

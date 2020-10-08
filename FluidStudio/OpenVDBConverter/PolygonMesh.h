@@ -21,7 +21,9 @@ public:
 
 	~PolygonMesh();
 
-	void addVertex(const Math::Vector3dd& position);
+	void addVertex(const Math::Vector3df& position);
+
+	Math::Vector3df getVertex(const int index);
 
 	void addTriangle(const std::array<int, 3>& indices);
 
