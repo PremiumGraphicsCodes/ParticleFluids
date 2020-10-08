@@ -174,8 +174,11 @@ void KFFluidSimulationView::reset()
 	}
 		*/
 
+	args.fluids.clear();
 	args.fluids.push_back(this->fluidScene);
+	args.boundaries.clear();
 	args.boundaries.push_back(this->boundaryScene);
+	args.surfaces.clear();
 	args.surfaces.push_back(this->boundaryView.getValue());
 	args.maxTimeStep = (this->timeStepView.getValue());
 
