@@ -33,13 +33,20 @@
                     <RibbonButton Label="Sphere" Command="{Binding NavigateCommand}" CommandParameter="PSSphereGeneration"/>
                     <RibbonButton Label="Quad" Command="{Binding NavigateCommand}" CommandParameter="PSQuadGeneration"/>
                 </RibbonGroup>
-
-                <RibbonGroup Header="グループ B">
-                    <RibbonCheckBox Label="チェックボックス1"/>
-                    <RibbonCheckBox Label="チェックボックス2"/>
-                    <RibbonToggleButton Label="トグルボタン"/>
+            </RibbonTab>
+            <RibbonTab Header="Physics">
+                <RibbonGroup Header="Primitive">
+                    <RibbonButton Label="Fluid" Command="{Binding NavigateCommand}" CommandParameter="FluidGeneration"/>
                 </RibbonGroup>
-
+            </RibbonTab>
+            <RibbonTab Header="View">
+                <RibbonGroup Header="Camera" DataContext="{Binding CameraControlViewModel}">
+                    <RibbonButton Label="XY" Command="{Binding XYCommand}"/>
+                    <RibbonButton Label="YZ" Command="{Binding YZCommand}"/>
+                    <RibbonButton Label="ZX" Command="{Binding ZXCommand}"/>
+                    <RibbonButton Label="XYZ" Command="{Binding XYZCommand}"/>
+                    <RibbonButton Label="Fit" Command="{Binding FitCommand}"/>
+                </RibbonGroup>
             </RibbonTab>
         </Ribbon>
         <Grid Grid.Row="1">

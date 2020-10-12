@@ -1,4 +1,5 @@
-﻿using PG.Control.OpenGL;
+﻿using FluidStudio.Physics;
+using PG.Control.OpenGL;
 using PG.Scene;
 using Prism.Ioc;
 using Prism.Unity;
@@ -25,6 +26,8 @@ namespace FluidStudio
 
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
+
+            containerRegistry.RegisterForNavigation<FluidView>("FluidGeneration");
         }
     }
 }

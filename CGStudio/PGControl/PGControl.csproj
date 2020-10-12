@@ -116,6 +116,10 @@
   <ItemGroup>
     <Compile Include="CameraModel.cs" />
     <Compile Include="ConstLabels.cs" />
+    <Compile Include="Math\Quad3dView.xaml.cs">
+      <DependentUpon>Quad3dView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Math\Quad3dViewModel.cs" />
     <Compile Include="Math\Torus3dView.xaml.cs">
       <DependentUpon>Torus3dView.xaml</DependentUpon>
     </Compile>
@@ -246,6 +250,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Math\Matrix4dView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Math\Quad3dView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

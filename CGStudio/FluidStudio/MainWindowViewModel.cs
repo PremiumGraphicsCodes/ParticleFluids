@@ -3,6 +3,8 @@ using PG.Scene;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+using Reactive.Bindings;
+using System;
 using Unity;
 
 namespace FluidStudio
@@ -11,11 +13,14 @@ namespace FluidStudio
     {
         public Canvas3d Canvas { get; }
 
-        public DelegateCommand<string> NavigateCommand { get; }
+        public ReactiveCommand<string> NavigateCommand { get; }
+            = new ReactiveCommand<string>();
 
         private IRegionManager regionManager;
 
         public FileIOViewModel FileIOViewModel { get; }
+
+        public CameraControlViewModel CameraControlViewModel { get; }
 
 
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
@@ -25,9 +30,10 @@ namespace FluidStudio
             var world = container.Resolve<SceneList>();
             Canvas = container.Resolve<Canvas3d>();
 
-            this.NavigateCommand = new DelegateCommand<string>(OnNavigate);
+            this.NavigateCommand.Subscribe(OnNavigate);
 
             this.FileIOViewModel = new FileIOViewModel(world, Canvas);
+            this.CameraControlViewModel = new CameraControlViewModel(world, Canvas);
         }
 
         private void OnNavigate(string name)
