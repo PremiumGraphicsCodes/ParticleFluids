@@ -1,17 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using PG.Control.OpenGL;
+using PG.Scene;
+using Prism.Ioc;
+using Prism.Unity;
+using System.ComponentModel;
 using System.Windows;
 
 namespace FluidStudio
 {
-    /// <summary>
-    /// App.xaml の相互作用ロジック
-    /// </summary>
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
+        private SceneList world;
+        private Canvas3d canvas;
+
+        protected override Window CreateShell()
+        {
+            return Container.Resolve<MainWindow>();
+        }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            this.world = new SceneList();
+            containerRegistry.RegisterInstance<SceneList>(world);
+            this.canvas = new Canvas3d(world);
+            containerRegistry.RegisterInstance<Canvas3d>(canvas);
+
+        }
+
     }
 }

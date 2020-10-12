@@ -1,4 +1,4 @@
-﻿<Window x:Class="FluidStudio.MainWindow"
+﻿<RibbonWindow x:Class="FluidStudio.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FluidStudio"
         xmlns:host="clr-namespace:HwndExtensions.Host;assembly=HwndExtensions"
         xmlns:cgstudio="clr-namespace:PG.CGStudio;assembly=PGControl"
+        xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Initialized="Window_Initialized"
@@ -20,6 +21,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Ribbon Grid.Row="0">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu KeyTip="F">
+                    <RibbonApplicationMenuItem Header="Open"/>
+                    <RibbonApplicationMenuItem Header="Import"/>
+                    <RibbonApplicationMenuItem Header="Export"/>
+                    <RibbonApplicationMenuItem Header="Exit"/>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
             <RibbonTab Header="ホーム">
                 <RibbonGroup Header="グループ A">
                     <RibbonMenuButton Label="メニューボタンA">
@@ -50,4 +59,4 @@
             </Grid>
         </host:HwndHostManager>
     </Grid>
-</Window>
+</RibbonWindow>
