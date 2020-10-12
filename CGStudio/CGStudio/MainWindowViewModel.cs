@@ -26,7 +26,7 @@ namespace PG.CGStudio
             this.Canvas = canvas;
 
             this.regionManager = regionManager;
-            NavigateCommand = new DelegateCommand<string>(OnNavigate);// (name => );
+            this.NavigateCommand = new DelegateCommand<string>(OnNavigate);// (name => );
             this.FileIOViewModel = new FileIOViewModel(world, canvas);
             this.CameraControlViewModel = new CameraControlViewModel(world, canvas);
             this.UIControlViewModel = new UIControlViewModel(world, canvas);

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity;
 
 namespace FluidStudio
 {
@@ -16,10 +17,12 @@ namespace FluidStudio
 
         private IRegionManager regionManager;
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
         {
-            var world = new SceneList();
-            Canvas = new Canvas3d(world);
+            this.regionManager = regionManager;
+
+            var world = container.Resolve<SceneList>();
+            Canvas = container.Resolve<Canvas3d>();
         }
     }
 }
