@@ -14,7 +14,33 @@
         <local:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
-        <host:HwndHostManager Grid.Column="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- 上部にリボンUIを配置する -->
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Ribbon Grid.Row="0">
+            <RibbonTab Header="ホーム">
+                <RibbonGroup Header="グループ A">
+                    <RibbonMenuButton Label="メニューボタンA">
+                        <RibbonMenuItem Header="1"/>
+                        <RibbonMenuItem Header="2"/>
+                    </RibbonMenuButton>
+
+                    <RibbonButton Label="ボタン 1"/>
+                    <RibbonButton Label="ボタン 2"/>
+                    <RibbonButton Label="ボタン 3"/>
+                </RibbonGroup>
+
+                <RibbonGroup Header="グループ B">
+                    <RibbonCheckBox Label="チェックボックス1"/>
+                    <RibbonCheckBox Label="チェックボックス2"/>
+                    <RibbonToggleButton Label="トグルボタン"/>
+                </RibbonGroup>
+
+            </RibbonTab>
+        </Ribbon>
+        <host:HwndHostManager Grid.Row="1">
             <Grid Margin="0,0,0,0">
                 <cgstudio:HwndHostPresenter3d x:Name="HwndHostPresenter">
                     <cgstudio:HwndHostPresenter3d.Adornment>
