@@ -1,9 +1,10 @@
-﻿using PG.Control.OpenGL;
+﻿using Microsoft.Win32;
+using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
-using System.Windows.Forms;
+using System.Windows;
 
-namespace PG.CGStudio
+namespace FluidStudio
 {
     public class FileIOViewModel
     {
@@ -55,7 +56,7 @@ namespace PG.CGStudio
             {
                 Title = "Open"
             };
-            if ( DialogResult.OK == dialog.ShowDialog() )
+            if (dialog.ShowDialog() == true)
             {
                 //world.Open(dialog.FileName);
             }
@@ -67,7 +68,7 @@ namespace PG.CGStudio
             {
                 Title = "Save"
             };
-            if ( DialogResult.OK == dialog.ShowDialog() )
+            if (dialog.ShowDialog() == true)
             {
                 //world.Save(dialog.FileName);
             }
@@ -79,7 +80,7 @@ namespace PG.CGStudio
             {
                 Title = "SaveAs"
             };
-            if (DialogResult.OK == dialog.ShowDialog())
+            if (dialog.ShowDialog() == true)
             {
                 //world.Save(dialog.FileName);
             }
@@ -92,14 +93,14 @@ namespace PG.CGStudio
                 Title = "Import",
                 Filter = "STLFile(*.stl)|*.stl|OBJFile(*.obj)|*.obj|PCDFile(*.pcd)|*.pcd|すべてのファイル(*.*)|*.*",
             };
-            if (DialogResult.OK == dialog.ShowDialog())
+            if (dialog.ShowDialog() == true)
             {
-                if(Import(dialog.FileName))
+                if (Import(dialog.FileName))
                 {
                     world.Sync();
                     canvas.Update();
                     canvas.Render();
-                    MessageBox.Show("Import Suceeded");                    
+                    MessageBox.Show("Import Suceeded");
                 }
                 else
                 {
@@ -124,9 +125,9 @@ namespace PG.CGStudio
                 Title = "Export",
                 Filter = "STLFile(*.stl)|*.stl|OBJFile(*.obj)|*.obj|PCDFile(*.pcd)|*.pcd|すべてのファイル(*.*)|*.*",
             };
-            if (DialogResult.OK == dialog.ShowDialog())
+            if (dialog.ShowDialog() == true)
             {
-                if(Export(dialog.FileName))
+                if (Export(dialog.FileName))
                 {
                     MessageBox.Show("Export Suceeded");
                 }

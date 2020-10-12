@@ -1,15 +1,15 @@
-﻿<UserControl x:Class="FluidStudio.Scene.ParticleSystem.BoxGenerationView"
+﻿<UserControl x:Class="FluidStudio.Scene.ParticleSystem.SphereGenerationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FluidStudio.Scene.ParticleSystem"
-             mc:Ignorable="d"
-             xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
+             xmlns:control="clr-namespace:PG.Control;assembly=PGControl"
              xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
     <StackPanel>
-        <math:Box3dView DataContext="{Binding BoxViewModel}"/>
+        <control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
         <TextBox Text="{Binding Count.Value}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>

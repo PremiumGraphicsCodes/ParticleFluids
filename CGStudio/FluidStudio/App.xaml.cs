@@ -2,7 +2,6 @@
 using PG.Scene;
 using Prism.Ioc;
 using Prism.Unity;
-using System.ComponentModel;
 using System.Windows;
 
 namespace FluidStudio
@@ -25,7 +24,7 @@ namespace FluidStudio
             containerRegistry.RegisterInstance<Canvas3d>(canvas);
 
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
+            containerRegistry.RegisterForNavigation<Scene.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
         }
-
     }
 }
