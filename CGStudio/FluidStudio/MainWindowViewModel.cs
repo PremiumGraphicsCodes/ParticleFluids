@@ -1,5 +1,6 @@
 ﻿using PG.Control.OpenGL;
 using PG.Scene;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
@@ -15,7 +16,10 @@ namespace FluidStudio
     {
         public Canvas3d Canvas { get; }
 
+        public DelegateCommand<string> NavigateCommand { get; }
+
         private IRegionManager regionManager;
+
 
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
         {
@@ -23,6 +27,14 @@ namespace FluidStudio
 
             var world = container.Resolve<SceneList>();
             Canvas = container.Resolve<Canvas3d>();
+
+            this.NavigateCommand = new DelegateCommand<string>(OnNavigate);
         }
+
+        private void OnNavigate(string name)
+        {
+            regionManager.RequestNavigate("ContentRegion", name);
+        }
+
     }
 }

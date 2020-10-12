@@ -27,16 +27,11 @@
                     <RibbonApplicationMenuItem Header="Exit"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
-            <RibbonTab Header="ホーム">
-                <RibbonGroup Header="グループ A">
-                    <RibbonMenuButton Label="メニューボタンA">
-                        <RibbonMenuItem Header="1"/>
-                        <RibbonMenuItem Header="2"/>
-                    </RibbonMenuButton>
-
-                    <RibbonButton Label="ボタン 1"/>
-                    <RibbonButton Label="ボタン 2"/>
-                    <RibbonButton Label="ボタン 3"/>
+            <RibbonTab Header="ParticleSystem">
+                <RibbonGroup Header="Primitive">
+                    <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="PSBoxGeneration"/>
+                    <RibbonButton Label="Sphere" Command="{Binding NavigateCommand}" CommandParameter="PSSphereGeneration"/>
+                    <RibbonButton Label="Quad" Command="{Binding NavigateCommand}" CommandParameter="PSQuadGeneration"/>
                 </RibbonGroup>
 
                 <RibbonGroup Header="グループ B">

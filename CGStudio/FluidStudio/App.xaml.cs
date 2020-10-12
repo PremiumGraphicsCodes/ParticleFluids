@@ -24,6 +24,7 @@ namespace FluidStudio
             this.canvas = new Canvas3d(world);
             containerRegistry.RegisterInstance<Canvas3d>(canvas);
 
+            containerRegistry.RegisterForNavigation<Scene.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
         }
 
     }
