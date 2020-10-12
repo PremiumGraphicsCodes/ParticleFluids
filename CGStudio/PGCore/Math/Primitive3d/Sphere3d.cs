@@ -56,5 +56,12 @@
             var distanceSquared = position.DistanceSquared( center );
             return distanceSquared < radius * radius;
         }
+
+        public Box3d GetBoundingBox()
+        {
+            var min = center - new Vector3d(radius, radius, radius);
+            var max = center + new Vector3d(radius, radius, radius);
+            return new Box3d(min, max);
+        }
     }
 }

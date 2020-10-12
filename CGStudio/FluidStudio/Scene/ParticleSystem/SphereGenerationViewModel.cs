@@ -1,13 +1,11 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
+using PG.Core.Math;
+using PG.Core.UI;
 using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FluidStudio.Scene.ParticleSystem
 {
@@ -19,8 +17,14 @@ namespace FluidStudio.Scene.ParticleSystem
         public Sphere3dViewModel SphereViewModel { get; }
             = new Sphere3dViewModel();
 
-        //public AppearanceViewModel Appearance { get; }
-        //    = new AppearanceViewModel();
+        public ReactiveProperty<double> Dx { get; }
+            = new ReactiveProperty<double>(0.1);
+
+        public ReactiveProperty<double> Dy { get; }
+            = new ReactiveProperty<double>(0.1);
+
+        public ReactiveProperty<double> Dz { get; }
+            = new ReactiveProperty<double>(0.1);
 
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
@@ -32,22 +36,36 @@ namespace FluidStudio.Scene.ParticleSystem
 
         private void OnGenerate(SceneList world, Canvas3d canvas)
         {
-            /*
-            var random = new System.Random();
             var positions = new List<Vector3d>();
             var sphere = SphereViewModel.Value;
-            for (int i = 0; i < Count.Value; ++i)
+            var box = sphere.GetBoundingBox();
+            var dx = Dx.Value;
+            var dy = Dy.Value;
+            var dz = Dz.Value;
+            var min = box.Min;
+            var max = box.Max;
+            var radius = sphere.Radius;
+            for (var x = -radius; x < radius; x += dx)
             {
-                var u = random.NextDouble();
-                var v = random.NextDouble();
-                var pos = sphere.GetPosition(1.0, u, v);
-                positions.Add(pos);
+                for (var y = -radius; y < radius; y += dy)
+                {
+                    for (var z = -radius; z < radius; z += dz)
+                    {
+                        var p = new Vector3d(x, y, z);
+                        if (p.LengthSquared < radius * radius)
+                        {
+                            positions.Add(p + sphere.Center);
+                        }
+                    }
+                }
             }
-            var id = world.AddParticleSystemScene(positions, "PSSphere", Appearance.Value, 1);
+            var appearance = new ParticleAppearance();
+            appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
+            appearance.Size = 10.0f;
+            var newId = world.AddParticleSystemScene(positions, "PSSphere", appearance, 1);
             canvas.Camera.Fit();
-            canvas.BuildShader(world, id);
+            canvas.BuildShader(world, newId);
             canvas.Render();
-            */
         }
     }
 }

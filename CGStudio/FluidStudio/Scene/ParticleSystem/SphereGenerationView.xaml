@@ -10,7 +10,12 @@
              mc:Ignorable="d">
     <StackPanel>
         <control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
-        <TextBox Text="{Binding Count.Value}"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Dx"/>
+            <TextBox Text="{Binding Dx.Value}" MinWidth="50"/>
+            <TextBox Text="{Binding Dy.Value}" MinWidth="50"/>
+            <TextBox Text="{Binding Dz.Value}" MinWidth="50"/>
+        </StackPanel>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>
