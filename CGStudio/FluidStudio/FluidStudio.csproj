@@ -118,6 +118,7 @@
     <Compile Include="Scene\ParticleSystem\QuadGenerationView.xaml.cs">
       <DependentUpon>QuadGenerationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Scene\ParticleSystem\QuadGenerationViewModel.cs" />
     <Compile Include="Scene\ParticleSystem\SphereGenerationView.xaml.cs">
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>

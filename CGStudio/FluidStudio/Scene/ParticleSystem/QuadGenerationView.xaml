@@ -5,8 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FluidStudio.Scene.ParticleSystem"
              xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
     <StackPanel>
-        <math:Quad3dView/>
+        <math:Quad3dView DataContext="{Binding QuadViewModel}"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Dx"/>
+            <TextBox Text="{Binding Du.Value}" MinWidth="50"/>
+            <TextBox Text="{Binding Dv.Value}" MinWidth="50"/>
+        </StackPanel>
+        <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>
