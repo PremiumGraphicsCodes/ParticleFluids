@@ -4,9 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FluidStudio"
+        xmlns:host="clr-namespace:HwndExtensions.Host;assembly=HwndExtensions"
+        xmlns:cgstudio="clr-namespace:PG.CGStudio;assembly=PGControl"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Initialized="Window_Initialized"
+        >
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <host:HwndHostManager Grid.Column="1">
+            <Grid Margin="0,0,0,0">
+                <cgstudio:HwndHostPresenter3d x:Name="HwndHostPresenter">
+                    <cgstudio:HwndHostPresenter3d.Adornment>
+                        <cgstudio:OpenGLView/>
+                    </cgstudio:HwndHostPresenter3d.Adornment>
+                </cgstudio:HwndHostPresenter3d>
+            </Grid>
+        </host:HwndHostManager>
     </Grid>
 </Window>

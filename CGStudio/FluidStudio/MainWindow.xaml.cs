@@ -24,5 +24,13 @@ namespace FluidStudio
         {
             InitializeComponent();
         }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            var dataContext = this.DataContext as MainWindowViewModel;
+            var canvas = dataContext.Canvas;
+            HwndHostPresenter.SetCanvas(canvas);
+
+        }
     }
 }

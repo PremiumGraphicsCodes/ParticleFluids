@@ -11,7 +11,6 @@ using PG.CGStudio.Scene.Shape.PolygonMesh;
 using PG.CGStudio.Scene.Shape.PolygonMesh.Generation;
 using PG.CGStudio.Scene.Shape.Trim;
 using PG.CGStudio.Scene.Shape.WireFrame;
-using PG.CGStudio.Scene.Shape.WireFrame.Generation;
 using PG.CGStudio.Selection;
 using PG.CGStudio.Texture;
 using PG.Control.OpenGL;
