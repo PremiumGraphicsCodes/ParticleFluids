@@ -54,7 +54,8 @@ namespace FluidStudio
         {
             var dialog = new OpenFileDialog
             {
-                Title = "Open"
+                Title = "Open",
+                Filter = "FSProjectFile(*.fsproj)|*.fsproj|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {
@@ -66,7 +67,8 @@ namespace FluidStudio
         {
             var dialog = new SaveFileDialog
             {
-                Title = "Save"
+                Title = "Save",
+                Filter = "FSProjectFile(*.fsproj)|*.fsproj|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {
@@ -91,7 +93,7 @@ namespace FluidStudio
             var dialog = new OpenFileDialog
             {
                 Title = "Import",
-                Filter = "STLFile(*.stl)|*.stl|OBJFile(*.obj)|*.obj|PCDFile(*.pcd)|*.pcd|すべてのファイル(*.*)|*.*",
+                Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {
@@ -123,7 +125,7 @@ namespace FluidStudio
             var dialog = new SaveFileDialog
             {
                 Title = "Export",
-                Filter = "STLFile(*.stl)|*.stl|OBJFile(*.obj)|*.obj|PCDFile(*.pcd)|*.pcd|すべてのファイル(*.*)|*.*",
+                Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {

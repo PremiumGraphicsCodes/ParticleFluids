@@ -20,10 +20,10 @@
         </Grid.RowDefinitions>
         <Ribbon Grid.Row="0">
             <Ribbon.ApplicationMenu>
-                <RibbonApplicationMenu KeyTip="F">
-                    <RibbonApplicationMenuItem Header="Open"/>
-                    <RibbonApplicationMenuItem Header="Import"/>
-                    <RibbonApplicationMenuItem Header="Export"/>
+                <RibbonApplicationMenu DataContext="{Binding FileIOViewModel}">
+                    <RibbonApplicationMenuItem Header="Open" Command="{Binding OpenCommand}"/>
+                    <RibbonApplicationMenuItem Header="Import" Command="{Binding ImportCommand}"/>
+                    <RibbonApplicationMenuItem Header="Export" Command="{Binding ExportCommand}"/>
                     <RibbonApplicationMenuItem Header="Exit"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>

@@ -3,11 +3,6 @@ using PG.Scene;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity;
 
 namespace FluidStudio
@@ -20,6 +15,8 @@ namespace FluidStudio
 
         private IRegionManager regionManager;
 
+        public FileIOViewModel FileIOViewModel { get; }
+
 
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
         {
@@ -29,6 +26,8 @@ namespace FluidStudio
             Canvas = container.Resolve<Canvas3d>();
 
             this.NavigateCommand = new DelegateCommand<string>(OnNavigate);
+
+            this.FileIOViewModel = new FileIOViewModel(world, Canvas);
         }
 
         private void OnNavigate(string name)

@@ -10,6 +10,12 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
         <math:Box3dView DataContext="{Binding BoxViewModel}"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Dx"/>
+            <TextBox Text="{Binding Dx.Value}" MinWidth="50"/>
+            <TextBox Text="{Binding Dy.Value}" MinWidth="50"/>
+            <TextBox Text="{Binding Dz.Value}" MinWidth="50"/>
+        </StackPanel>            
         <TextBox Text="{Binding Count.Value}"/>
         <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
