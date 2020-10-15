@@ -2,8 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="OpenVDBFileReadCommand.h" />
+    <ClInclude Include="OpenVDBFileWriteCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenVDBFileReadCommand.cpp" />
+    <ClCompile Include="OpenVDBFileWriteCommand.cpp" />
   </ItemGroup>
 </Project>
