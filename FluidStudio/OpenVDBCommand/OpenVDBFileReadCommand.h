@@ -31,5 +31,6 @@ private:
 	Args args;
 	Results results;
 };
+
 	}
 }

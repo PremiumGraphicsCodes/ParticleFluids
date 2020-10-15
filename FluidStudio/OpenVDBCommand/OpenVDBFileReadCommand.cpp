@@ -1,6 +1,6 @@
 #include "OpenVDBFileReadCommand.h"
 
-#include "OpenVDBFileReader.h"
+#include "../OpenVDBConverter/OpenVDBFileReader.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
@@ -42,7 +42,7 @@ bool OpenVDBFileReadCommand::execute(World* world)
 	for (auto n : names) {
 		const auto& positions = reader.readPositions(n);
 		ParticleAttribute attr;
-		auto ps = std::make_unique< ParticleSystem<ParticleAttribute> >(positions,attr);
+		auto ps = std::make_unique< ParticleSystem<ParticleAttribute> >(positions, attr);
 		ParticleSystemScene* scene = new ParticleSystemScene(world->getNextSceneId(), "", std::move(ps));
 		world->getScenes()->addScene(scene);
 		const auto newId = scene->getId();

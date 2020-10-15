@@ -37,9 +37,6 @@
     <ClCompile Include="Volume.cpp">
       <Filter>Private</Filter>
     </ClCompile>
-    <ClCompile Include="OpenVDBFileReadCommand.cpp">
-      <Filter>Public</Filter>
-    </ClCompile>
     <ClCompile Include="OpenVDBFileWriteCommand.cpp">
       <Filter>Public</Filter>
     </ClCompile>
@@ -83,9 +80,6 @@
     </ClInclude>
     <ClInclude Include="Volume.h">
       <Filter>Private</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenVDBFileReadCommand.h">
-      <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="OpenVDBFileWriteCommand.h">
       <Filter>Public</Filter>
