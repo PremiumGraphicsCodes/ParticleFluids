@@ -148,6 +148,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrystalAlgo\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj">
+      <Project>{09ee8b6a-2d6f-4b9e-83ff-6a40d03bc465}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalViewer\Command\Command.vcxproj">
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
     </ProjectReference>
