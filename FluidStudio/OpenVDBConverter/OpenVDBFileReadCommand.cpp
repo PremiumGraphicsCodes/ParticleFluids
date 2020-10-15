@@ -41,11 +41,14 @@ bool OpenVDBFileReadCommand::execute(World* world)
 	std::vector<int> newIds;
 	for (auto n : names) {
 		const auto& positions = reader.readPositions(n);
-		ParticleSystem<ParticleAttribute> ps;
-		//ParticleSystemScene scene;
-		//world->getScenes()->addScene()
-		//newIds.push_back(id);
+		ParticleAttribute attr;
+		auto ps = std::make_unique< ParticleSystem<ParticleAttribute> >(positions,attr);
+		ParticleSystemScene* scene = new ParticleSystemScene(world->getNextSceneId(), "", std::move(ps));
+		world->getScenes()->addScene(scene);
+		const auto newId = scene->getId();
+		newIds.push_back(newId);
 	}
+	results.newIds.setValue(newIds);
 	//reader.get
 	return true;
 }

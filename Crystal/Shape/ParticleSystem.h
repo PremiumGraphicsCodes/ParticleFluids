@@ -71,10 +71,19 @@ public:
 		return ps;
 	}
 
+	std::vector<Math::Vector3dd> getPositions() const 
+	{
+		std::vector<Math::Vector3dd> positions;
+		for (const auto& p : particles) {
+			positions.push_back(p->getPosition());
+		}
+		return positions;
+	}
+
 	Math::Box3d getBoundingBox() const
 	{
 		if (particles.empty()) {
-			return Math::Box3d();
+			return Math::Box3d::createDegeneratedBox();
 		}
 		Math::Box3d bb(particles.front()->getPosition());
 		for (auto p : particles) {

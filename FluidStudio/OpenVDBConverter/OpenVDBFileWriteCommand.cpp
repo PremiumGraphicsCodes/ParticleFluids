@@ -31,8 +31,19 @@ std::string OpenVDBFileWriteCommand::getName()
 
 bool OpenVDBFileWriteCommand::execute(World* world)
 {
-	//OpenVDBFileWriter writer;
+	auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
+	if (scene == nullptr) {
+		return false;
+	}
+	const auto positions = scene->getShape()->getPositions();
+
+	OpenVDBFileWriter writer;
+	const auto isOk = writer.open(args.filePath.getValue());
+	if (!isOk) {
+		return false;
+	}
+
+	writer.write(scene->getName(), positions);
 
 	return true;
 }
-
