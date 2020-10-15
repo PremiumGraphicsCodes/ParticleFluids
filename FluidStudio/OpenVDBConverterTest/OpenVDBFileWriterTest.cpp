@@ -17,4 +17,5 @@ TEST(OpenVDBFileWriterTest, TestWrite)
 
     writer.open("testWrite.vdb");
     writer.write("points", positions);
+    writer.close();
 }

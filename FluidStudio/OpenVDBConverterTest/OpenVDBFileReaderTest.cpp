@@ -12,4 +12,5 @@ TEST(OpenVDBFileReaderTest, TestRead)
     const auto& names = reader.getPointGridNames();
     const auto positions = reader.readPositions(names[0]);
     EXPECT_EQ(4, positions.size());
+    reader.close();
 }

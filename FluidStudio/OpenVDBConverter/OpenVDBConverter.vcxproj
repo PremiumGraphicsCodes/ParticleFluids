@@ -151,7 +151,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <DisableSpecificWarnings>4244;4251;4267;4275;4305</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -332,6 +332,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="OBJFileWriter.cpp" />
     <ClCompile Include="OpenVDBAdapter.cpp" />
+    <ClCompile Include="OpenVDBFileReadCommand.cpp" />
     <ClCompile Include="OpenVDBFileReader.cpp" />
     <ClCompile Include="OpenVDBFileWriter.cpp" />
     <ClCompile Include="ParticleSystemImpl.cpp" />
@@ -346,6 +347,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="Converter.h" />
     <ClInclude Include="OBJFileWriter.h" />
     <ClInclude Include="OpenVDBAdapter.h" />
+    <ClInclude Include="OpenVDBFileReadCommand.h" />
     <ClInclude Include="OpenVDBFileReader.h" />
     <ClInclude Include="OpenVDBFileWriter.h" />
     <ClInclude Include="ParticleSystemToVolumeConverter.h" />

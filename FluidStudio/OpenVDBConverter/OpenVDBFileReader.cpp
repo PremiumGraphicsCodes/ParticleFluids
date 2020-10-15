@@ -13,7 +13,9 @@ namespace {
 
 OpenVDBFileReader::~OpenVDBFileReader()
 {
-    close();
+    if (file.isOpen()) {
+        close();
+    }
 }
 
 bool OpenVDBFileReader::open(const std::string& filename)

@@ -1,77 +1,105 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="OpenVDBAdapter.cpp" />
     <ClCompile Include="VolumeImpl.cpp">
-      <Filter>Private</Filter>
+      <Filter>Private\Impl</Filter>
     </ClCompile>
-    <ClCompile Include="Volume.cpp" />
-    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="ParticleSystemImpl.cpp">
-      <Filter>Private</Filter>
+      <Filter>Private\Impl</Filter>
     </ClCompile>
     <ClCompile Include="OpenVDBFileReader.cpp">
-      <Filter>FileIO</Filter>
+      <Filter>Private\FileIO</Filter>
     </ClCompile>
     <ClCompile Include="OpenVDBFileWriter.cpp">
-      <Filter>FileIO</Filter>
+      <Filter>Private\FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonMesh.cpp" />
     <ClCompile Include="ParticleSystemToVolumeConverter.cpp">
-      <Filter>Converter</Filter>
+      <Filter>Private\Converter</Filter>
     </ClCompile>
     <ClCompile Include="VolumeToMeshConverter.cpp">
-      <Filter>Converter</Filter>
+      <Filter>Private\Converter</Filter>
     </ClCompile>
     <ClCompile Include="Converter.cpp">
-      <Filter>Private</Filter>
+      <Filter>Private\Impl</Filter>
     </ClCompile>
     <ClCompile Include="OBJFileWriter.cpp">
-      <Filter>FileIO</Filter>
+      <Filter>Private\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenVDBAdapter.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMesh.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Volume.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenVDBFileReadCommand.cpp">
+      <Filter>Public</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
-      <Filter>Private</Filter>
+      <Filter>Private\Impl</Filter>
     </ClInclude>
-    <ClInclude Include="OpenVDBAdapter.h" />
-    <ClInclude Include="Volume.h" />
     <ClInclude Include="VolumeImpl.h">
-      <Filter>Private</Filter>
+      <Filter>Private\Impl</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemImpl.h">
-      <Filter>Private</Filter>
+      <Filter>Private\Impl</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="PolygonMeshImpl.h">
-      <Filter>Private</Filter>
+      <Filter>Private\Impl</Filter>
     </ClInclude>
     <ClInclude Include="OpenVDBFileReader.h">
-      <Filter>FileIO</Filter>
+      <Filter>Private\FileIO</Filter>
     </ClInclude>
     <ClInclude Include="OpenVDBFileWriter.h">
-      <Filter>FileIO</Filter>
+      <Filter>Private\FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMesh.h" />
     <ClInclude Include="ParticleSystemToVolumeConverter.h">
-      <Filter>Converter</Filter>
+      <Filter>Private\Converter</Filter>
     </ClInclude>
     <ClInclude Include="VolumeToMeshConverter.h">
-      <Filter>Converter</Filter>
+      <Filter>Private\Converter</Filter>
     </ClInclude>
     <ClInclude Include="OBJFileWriter.h">
-      <Filter>FileIO</Filter>
+      <Filter>Private\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenVDBAdapter.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMesh.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="Volume.h">
+      <Filter>Private</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenVDBFileReadCommand.h">
+      <Filter>Public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Private">
-      <UniqueIdentifier>{0f07a8f8-2e2f-46b1-84e9-eb32e7f913f3}</UniqueIdentifier>
+      <UniqueIdentifier>{41cbc6fb-097a-492e-a695-de391989c89c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FileIO">
+    <Filter Include="Private\FileIO">
       <UniqueIdentifier>{c5f10b5d-9511-410c-99ce-6ef985958a28}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Converter">
+    <Filter Include="Private\Converter">
       <UniqueIdentifier>{2538a3bd-b862-4418-97e9-1652dd54d164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Impl">
+      <UniqueIdentifier>{0f07a8f8-2e2f-46b1-84e9-eb32e7f913f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{2451d94d-4be3-468c-8b62-3829c4fb379f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
