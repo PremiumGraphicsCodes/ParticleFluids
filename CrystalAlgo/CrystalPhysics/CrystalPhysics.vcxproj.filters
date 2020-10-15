@@ -1,177 +1,152 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Public">
-      <UniqueIdentifier>{de92f5f4-6c8b-450f-a9e6-cadc544dc784}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Private">
-      <UniqueIdentifier>{3c34bc4b-9b0e-4d99-836c-602cbb5f0b97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Private\KFFluid">
-      <UniqueIdentifier>{78ff2e95-a432-49fc-8ca9-4c386fae1a97}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Private\DFSPH">
-      <UniqueIdentifier>{80bcb3ac-b523-4050-8667-f3e7ed2ffc4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Private\CSPH">
+    <Filter Include="CSPH">
       <UniqueIdentifier>{77488121-418f-48ac-9822-6b51cce96a7e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Private\PBSPH">
+    <Filter Include="DFSPH">
+      <UniqueIdentifier>{80bcb3ac-b523-4050-8667-f3e7ed2ffc4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KFFluid">
+      <UniqueIdentifier>{78ff2e95-a432-49fc-8ca9-4c386fae1a97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PBSPH">
       <UniqueIdentifier>{51e44d13-c0a6-4c44-b8d2-140b0cc53e0a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PBSPHParticle.h">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClInclude>
     <ClInclude Include="PBSPHSolver.h">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClInclude>
     <ClInclude Include="PBSPHBoundarySolver.h">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClInclude>
     <ClInclude Include="PBFluidScene.h">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClInclude>
     <ClInclude Include="PBFluidSceneController.h">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClInclude>
     <ClInclude Include="CSPHSolver.h">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClInclude>
     <ClInclude Include="CSPHParticle.h">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClInclude>
     <ClInclude Include="CSPHBoundarySolver.h">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClInclude>
     <ClInclude Include="KFFluidSolver.h">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="KFFluidScene.h">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="DFFluidSolver.h">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClInclude>
     <ClInclude Include="DFFluidScene.h">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClInclude>
     <ClInclude Include="KFMacroParticle.h">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="DFSPHParticle.h">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClInclude>
     <ClInclude Include="DFFluidSceneController.h">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClInclude>
     <ClInclude Include="DFSPHBoundarySolver.h">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClInclude>
     <ClInclude Include="KFMicroParticle.h">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="CSPHFluidScene.h">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClInclude>
     <ClInclude Include="CSPHFluidSceneController.h">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClInclude>
     <ClInclude Include="PBSPHBoundaryParticle.h">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClInclude>
     <ClInclude Include="KFFluidScenePresenter.h">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClInclude>
-    <ClInclude Include="FluidSimulationCommand.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="FluidSceneCreateCommand.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Boundary.h">
-      <Filter>Private</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHConstant.h">
-      <Filter>Private</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHKernel.h">
-      <Filter>Private</Filter>
-    </ClInclude>
+    <ClInclude Include="Boundary.h" />
+    <ClInclude Include="SPHConstant.h" />
+    <ClInclude Include="SPHKernel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClCompile>
     <ClCompile Include="PBSPHSolver.cpp">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClCompile>
     <ClCompile Include="PBSPHBoundarySolver.cpp">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClCompile>
     <ClCompile Include="PBFluidScene.cpp">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClCompile>
     <ClCompile Include="PBFluidSceneController.cpp">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClCompile>
     <ClCompile Include="CSPHParticle.cpp">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClCompile>
     <ClCompile Include="CSPHSolver.cpp">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClCompile>
     <ClCompile Include="CSPHBoundarySolver.cpp">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidSolver.cpp">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidScene.cpp">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="DFFluidSolver.cpp">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="DFFluidScene.cpp">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="KFMacroParticle.cpp">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="DFSPHParticle.cpp">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="DFFluidSceneController.cpp">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="DFSPHBoundarySolver.cpp">
-      <Filter>Private\DFSPH</Filter>
+      <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="KFMicroParticle.cpp">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="CSPHFluidScene.cpp">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClCompile>
     <ClCompile Include="CSPHFluidSceneController.cpp">
-      <Filter>Private\CSPH</Filter>
+      <Filter>CSPH</Filter>
     </ClCompile>
     <ClCompile Include="PBSPHBoundaryParticle.cpp">
-      <Filter>Private\PBSPH</Filter>
+      <Filter>PBSPH</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidScenePresenter.cpp">
-      <Filter>Private\KFFluid</Filter>
+      <Filter>KFFluid</Filter>
     </ClCompile>
-    <ClCompile Include="FluidSimulationCommand.cpp">
-      <Filter>Public</Filter>
-    </ClCompile>
-    <ClCompile Include="Boundary.cpp">
-      <Filter>Private</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHKernel.cpp">
-      <Filter>Private</Filter>
-    </ClCompile>
+    <ClCompile Include="Boundary.cpp" />
+    <ClCompile Include="SPHKernel.cpp" />
   </ItemGroup>
 </Project>
