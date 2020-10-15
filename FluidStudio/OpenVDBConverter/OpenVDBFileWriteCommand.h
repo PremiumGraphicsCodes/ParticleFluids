@@ -5,23 +5,24 @@
 namespace Crystal {
 	namespace OpenVDB {
 
-class OpenVDBFileReadCommand : Command::ICommand
+class OpenVDBFileWriteCommand : Command::ICommand
 {
 	struct Args : Command::IArgs
 	{
 		Args();
 
 		Command::Arg<std::string> filePath;
+		Command::Arg<int> particleSystemId;
 	};
 
 	struct Results : Command::IResults
 	{
 		Results();
 
-		Command::Result<std::vector<int>> newIds;
+		//Command::Result<std::vector<int>> newIds;
 	};
 
-	OpenVDBFileReadCommand();
+	OpenVDBFileWriteCommand();
 
 	static std::string getName();
 
