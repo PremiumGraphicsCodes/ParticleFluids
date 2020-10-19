@@ -3,6 +3,7 @@
 namespace PG {
 	namespace CLI {
 		ref class WorldAdapter;
+		interface class ICommandFactory;
 
 public ref class Command
 {
@@ -34,8 +35,23 @@ public:
 
 	generic <class T>
 	static void Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, T value);
+
+	void SetFactory(ICommandFactory^ factory) { this->factory = factory; }
+
+private:
+	ICommandFactory^ factory;
 };
 
+public interface class ICommandFactory
+{
+	Command^ Create(System::String^ name);
+};
+
+public ref class CommandFactory : ICommandFactory
+{
+public:
+	virtual Command^ Create(System::String^ name) { return nullptr; }
+};
 
 	}
 }
