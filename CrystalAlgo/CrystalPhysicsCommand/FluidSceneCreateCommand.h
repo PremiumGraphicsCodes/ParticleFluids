@@ -24,6 +24,8 @@ public:
 
 	static std::string getName();
 
+	std::string getCommandName() const { return getName(); }
+
 	FluidSceneCreateCommand();
 
 	bool execute(Scene::World* world) override;

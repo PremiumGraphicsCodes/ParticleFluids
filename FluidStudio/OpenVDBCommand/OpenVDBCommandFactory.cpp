@@ -6,7 +6,7 @@
 using namespace Crystal::Command;
 using namespace Crystal::OpenVDB;
 
-std::unique_ptr<ICommand> OpenVDBCommandFactory::create(const std::string& name)
+std::unique_ptr<ICommand> OpenVDBCommandFactory::createCommand(const std::string& name)
 {
 	if (name == OpenVDBFileWriteCommand::getName()) {
 		return std::make_unique<OpenVDBFileWriteCommand>();

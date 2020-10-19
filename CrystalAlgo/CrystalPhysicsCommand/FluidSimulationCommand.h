@@ -30,6 +30,8 @@ class FluidSimulationCommand : public Command::ICommand
 
 	static std::string getName();
 
+	std::string getCommandName() const { return getName(); }
+
 	FluidSimulationCommand() :
 		ICommand(&args, &results)
 	{}

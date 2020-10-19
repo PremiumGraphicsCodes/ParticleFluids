@@ -9,10 +9,10 @@
 namespace Crystal {
 	namespace OpenVDB {
 
-class OpenVDBCommandFactory : public ICommandFactory
+class OpenVDBCommandFactory : public Command::ICommandFactory
 {
 public:
-	std::unique_ptr<Command::ICommand> create(const std::string& name) override;
+	std::unique_ptr<Command::ICommand> createCommand(const std::string& name) override;
 };
 	}
 }
