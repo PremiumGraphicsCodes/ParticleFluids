@@ -9,7 +9,6 @@
 #include "../../Crystal/Scene/World.h"
 #include "Converter.h"
 #include "AnyConverter.h"
-#include "EachCommand.h"
 #include "WorldAdapter.h"
 
 using namespace PG::CLI;
@@ -22,9 +21,9 @@ namespace {
 Command::Command()
 {}
 
-Command::Command(EachCommand^ command)
+Command::Command(std::unique_ptr<Crystal::Command::ICommand> command)
 {
-	instance = command->getInstance();
+	instance = std::move(command);
 }
 
 Command::Command(System::String^ name)

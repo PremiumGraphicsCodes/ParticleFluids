@@ -19,8 +19,6 @@ public:
 
 	Command(System::String^ name);
 
-	Command(EachCommand^ command);
-
 	void Create(System::String^ name);
 
 	generic <class T>
@@ -51,6 +49,7 @@ private:
 	ICommandFactory^ factory;
 
 internal:
+	Command(std::unique_ptr<Crystal::Command::ICommand> command);
 };
 
 
