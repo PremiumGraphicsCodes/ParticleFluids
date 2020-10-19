@@ -35,6 +35,8 @@ public:
 
 	static std::string getName();
 
+	std::string getCommandName() const { return getName(); }
+
 	MockCommand() :
 		ICommand(&args, &results)
 	{}

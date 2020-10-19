@@ -17,6 +17,8 @@ public:
 
 	static std::string getName();
 
+	std::string getCommandName() const { return getName(); }
+
 	ClearCommand();
 
 	bool execute(Scene::World* world) override;

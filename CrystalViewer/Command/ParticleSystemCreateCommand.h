@@ -36,6 +36,8 @@ public:
 
 	static std::string getName();
 
+	std::string getCommandName() const { return getName(); }
+
 	bool execute(Scene::World* scene) override;
 
 private:
