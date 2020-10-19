@@ -10,6 +10,10 @@ class CommandFactory : UnCopyable
 {
 public:
 	static std::unique_ptr<ICommand> create(const std::string& name);
+
+	std::unique_ptr<ICommand> createCommand(const std::string& name) {
+		return create(name);
+	}
 };
 	}
 }

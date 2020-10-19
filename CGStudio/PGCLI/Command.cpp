@@ -15,6 +15,7 @@ using namespace PG::CLI;
 
 namespace {
 	std::unique_ptr<Crystal::Command::ICommand> instance;
+	Crystal::Command::CommandFactory factory;
 }
 
 Command::Command()
@@ -23,13 +24,13 @@ Command::Command()
 Command::Command(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);
-	::instance = Crystal::Command::CommandFactory::create(str);
+	::instance = ::factory.createCommand(str);
 }
 
 void Command::Create(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);
-	::instance = Crystal::Command::CommandFactory::create(str);
+	::instance = ::factory.createCommand(str);
 }
 
 generic <class T>

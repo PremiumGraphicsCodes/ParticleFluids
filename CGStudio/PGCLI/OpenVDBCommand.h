@@ -1,0 +1,27 @@
+//#pragma once
+//
+//namespace PG {
+//	namespace CLI {
+//
+//ref class WorldAdapter;
+//
+//public ref class OpenVDBCommand
+//{
+//	OpenVDBCommand();
+//
+//	OpenVDBCommand(System::String^ name);
+//
+//	void Create(System::String^ name);
+//
+//	generic <class T>
+//	void SetArg(System::String^ name, T value);
+//
+//	bool Execute(WorldAdapter^ objects);
+//
+//	generic <class T>
+//	T GetResult(System::String^ name);
+//
+//	void Clear();
+//};
+//	}
+//}
