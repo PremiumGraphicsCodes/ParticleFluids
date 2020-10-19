@@ -9,6 +9,7 @@ namespace Crystal {
 namespace PG {
 	namespace CLI {
 		ref class WorldAdapter;
+		ref class EachCommand;
 		interface class ICommandFactory;
 
 public ref class Command
@@ -17,6 +18,8 @@ public:
 	Command();
 
 	Command(System::String^ name);
+
+	Command(EachCommand^ command);
 
 	void Create(System::String^ name);
 
@@ -48,8 +51,8 @@ private:
 	ICommandFactory^ factory;
 
 internal:
-	Command(std::unique_ptr<Crystal::Command::ICommand> command);
 };
+
 
 	}
 }

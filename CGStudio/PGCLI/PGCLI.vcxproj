@@ -144,6 +144,7 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="Converter.h" />
+    <ClInclude Include="EachCommand.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="WorldAdapter.h" />
     <ClInclude Include="Resource.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="Converter.cpp" />
+    <ClCompile Include="EachCommand.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="WorldAdapter.cpp" />
     <ClCompile Include="stdafx.cpp">

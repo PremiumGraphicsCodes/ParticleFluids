@@ -10,6 +10,7 @@
     <ClInclude Include="AnyConverter.h" />
     <ClInclude Include="WorldAdapter.h" />
     <ClInclude Include="CommandFactory.h" />
+    <ClInclude Include="EachCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -20,6 +21,7 @@
     <ClCompile Include="AnyConverter.cpp" />
     <ClCompile Include="WorldAdapter.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
+    <ClCompile Include="EachCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

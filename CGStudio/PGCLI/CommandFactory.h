@@ -2,17 +2,17 @@
 
 namespace PG {
 	namespace CLI {
-		ref class Command;
+		ref class EachCommand;
 
 public interface class ICommandFactory
 {
-	Command^ Create(System::String^ name);
+	EachCommand^ Create(System::String^ name);
 };
 
 public ref class CommandFactory : ICommandFactory
 {
 public:
-	virtual Command^ Create(System::String^ name);
+	virtual EachCommand^ Create(System::String^ name);
 };
 
 	}
