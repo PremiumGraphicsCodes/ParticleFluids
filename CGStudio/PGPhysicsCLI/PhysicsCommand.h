@@ -24,7 +24,6 @@ public:
 	void Clear();
 
 private:
-	Command^ command;
 };
 
 
