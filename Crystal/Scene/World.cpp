@@ -14,6 +14,8 @@ World::World() :
 {
 	scenes[0] = std::make_unique<Scene>(0, "Item");
 	scenes[1] = std::make_unique<Scene>(0, "Root");
+
+	createDefaultCamera();
 }
 
 World::~World()
@@ -86,6 +88,12 @@ void World::init()
 		scenes[1]->addScene(s);
 	}
 
+	renderer = std::make_unique<SceneShader>();
+
+}
+
+void World::createDefaultCamera()
+{
 	{
 		auto c = new Camera(
 			Vector3df(0, 0, 0),
@@ -96,9 +104,6 @@ void World::init()
 
 		scenes[1]->addScene(camera);
 	}
-
-	renderer = std::make_unique<SceneShader>();
-
 }
 
 void World::clear()

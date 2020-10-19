@@ -51,6 +51,8 @@ public:
 
 	void addAnimation(IAnimator* a) { this->animations.push_back(a); }
 
+	void createDefaultCamera();
+
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
 	std::list<IAnimator*> animations;
