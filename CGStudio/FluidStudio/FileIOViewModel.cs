@@ -53,7 +53,7 @@ namespace FluidStudio
         private void OnOpen()
         {
             PG.CLI.PhysicsCommand command = new PG.CLI.PhysicsCommand();
-            command.Create("NewCommand");
+            command.Create(PG.ParticleSystemCreateLabels.ParticleSystemAddLabel);
             command.Execute(world.Adapter);
 
             var dialog = new OpenFileDialog
