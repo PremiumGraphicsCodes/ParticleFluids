@@ -21,6 +21,11 @@ namespace {
 Command::Command()
 {}
 
+Command::Command(std::unique_ptr<Crystal::Command::ICommand> command)
+{
+	instance = std::move(command);
+}
+
 Command::Command(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);

@@ -1,5 +1,11 @@
 #pragma once
 
+namespace Crystal {
+	namespace Command {
+		class ICommand;
+	}
+}
+
 namespace PG {
 	namespace CLI {
 		ref class WorldAdapter;
@@ -9,6 +15,7 @@ public ref class Command
 {
 public:
 	Command();
+
 
 	Command(System::String^ name);
 
@@ -40,6 +47,9 @@ public:
 
 private:
 	ICommandFactory^ factory;
+
+internal:
+	Command(std::unique_ptr<Crystal::Command::ICommand> command);
 };
 
 public interface class ICommandFactory
