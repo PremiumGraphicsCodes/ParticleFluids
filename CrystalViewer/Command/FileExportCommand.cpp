@@ -1,6 +1,7 @@
 #include "FileExportCommand.h"
 
 #include "Command.h"
+#include "CommandFactory.h"
 
 #include "Public/FileExportLabels.h"
 #include "Public/OBJFileExportLabels.h"
@@ -45,10 +46,10 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 			ids.push_back(s->getId());
 		}
 
-		Crystal::Command::Command command(::OBJFileExportLabels::CommandNameLabel);
-		command.setArg(::OBJFileExportLabels::FilePathLabel, args.filePath.getValue());
-		command.setArg(::OBJFileExportLabels::IdsLabel, ids);
-		return command.execute(world);
+		auto command = CommandFactory::create(::OBJFileExportLabels::CommandNameLabel);
+		command->setArg(::OBJFileExportLabels::FilePathLabel, args.filePath.getValue());
+		command->setArg(::OBJFileExportLabels::IdsLabel, ids);
+		return command->execute(world);
 	}
 	/*
 	case FileFormat::MTL :
@@ -67,29 +68,29 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 		}
 		*/
 
-		Crystal::Command::Command command(::OBJFileExportLabels::CommandNameLabel);
-		command.setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
-		command.setArg(::STLFileExportLabels::IsBinaryLabel, false);
-		return command.execute(world);
+		auto command = CommandFactory::create(::OBJFileExportLabels::CommandNameLabel);
+		command->setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
+		command->setArg(::STLFileExportLabels::IsBinaryLabel, false);
+		return command->execute(world);
 	}
 	case FileFormat::STL_BINARY :
 	{
-		Crystal::Command::Command command(::STLFileExportLabels::CommandNameLabel);
-		command.setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
-		command.setArg(::STLFileExportLabels::IsBinaryLabel, true);
-		return command.execute(world);
+		auto command = CommandFactory::create(::STLFileExportLabels::CommandNameLabel);
+		command->setArg(::STLFileExportLabels::FilePathLabel, args.filePath.getValue());
+		command->setArg(::STLFileExportLabels::IsBinaryLabel, true);
+		return command->execute(world);
 	}
 	case FileFormat::PCD :
 	{
-		Crystal::Command::Command command(::PCDFileExportLabels::CommandNameLabel);
+		auto command = CommandFactory::create(::PCDFileExportLabels::CommandNameLabel);
 		std::vector<int> ids;
 		auto scenes = world->getScenes()->findScenes(SceneType::ParticleSystemScene);
 		for (auto s : scenes) {
 			ids.push_back(s->getId());
 		}
-		command.setArg(::PCDFileExportLabels::IdsLabel, ids);
-		command.setArg(::PCDFileExportLabels::FilePathLabel, args.filePath.getValue());
-		return command.execute(world);
+		command->setArg(::PCDFileExportLabels::IdsLabel, ids);
+		command->setArg(::PCDFileExportLabels::FilePathLabel, args.filePath.getValue());
+		return command->execute(world);
 	}
 	default :
 		assert(false);

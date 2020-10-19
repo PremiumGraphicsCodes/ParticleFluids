@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "../Command/Command.h"
+#include "../Command/CommandFactory.h"
 #include "../Command/Public/OBJFileExportLabels.h"
 
 #include "../../Crystal/Math/Quad3d.h"
@@ -24,8 +25,8 @@ TEST(OBJFileExportCommand, TestExecute)
 
 	const std::vector<int> ids = { scene->getId() };
 	const std::string filePath = "./OBJFileExportTest.obj";
-	Command command(OBJFileExportLabels::CommandNameLabel);
-	command.setArg(OBJFileExportLabels::IdsLabel, ids);
-	command.setArg(OBJFileExportLabels::FilePathLabel, filePath);
-	EXPECT_TRUE(command.execute(&world));
+	auto command = CommandFactory::create(OBJFileExportLabels::CommandNameLabel);
+	command->setArg(OBJFileExportLabels::IdsLabel, ids);
+	command->setArg(OBJFileExportLabels::FilePathLabel, filePath);
+	EXPECT_TRUE(command->execute(&world));
 }

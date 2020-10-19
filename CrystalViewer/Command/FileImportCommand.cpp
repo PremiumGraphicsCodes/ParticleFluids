@@ -8,6 +8,7 @@
 #include "Public/STLFileImportLabels.h"
 
 #include "Command.h"
+#include "CommandFactory.h"
 
 using namespace Crystal::IO;
 using namespace Crystal::Scene;
@@ -51,9 +52,9 @@ bool FileImportCommand::importFile(const std::filesystem::path& filePath, World*
 	switch (format) {
 	case FileFormat::OBJ:
 	{
-		Command command(::OBJFileImportLabels::CommandNameLabel);
-		command.setArg(::OBJFileImportLabels::FilePathLabel, args.filePath.getValue());
-		const auto isOk = command.execute(world);
+		auto command = CommandFactory::create(::OBJFileImportLabels::CommandNameLabel);
+		command->setArg(::OBJFileImportLabels::FilePathLabel, args.filePath.getValue());
+		const auto isOk = command->execute(world);
 		//OBJFileImporter importer(factory);
 		//return importer.importOBJWithMTL(filePath, parent);
 		return isOk;
@@ -66,16 +67,16 @@ bool FileImportCommand::importFile(const std::filesystem::path& filePath, World*
 	}
 	case FileFormat::STL:
 	{
-		Command command(STLFileImportLabels::CommandNameLabel);
-		command.setArg(STLFileImportLabels::FilePathLabel, this->args.filePath.getValue());
-		const auto isOk = command.execute(world);
+		auto command = CommandFactory::create(STLFileImportLabels::CommandNameLabel);
+		command->setArg(STLFileImportLabels::FilePathLabel, this->args.filePath.getValue());
+		const auto isOk = command->execute(world);
 		return isOk;
 	}
 	case FileFormat::PCD:
 	{
-		Command command(::PCDFileImportLabels::CommandNameLabel);
-		command.setArg(::PCDFileImportLabels::FilePathLabel, this->args.filePath.getValue());
-		const auto isOk = command.execute(world);
+		auto command = CommandFactory::create(::PCDFileImportLabels::CommandNameLabel);
+		command->setArg(::PCDFileImportLabels::FilePathLabel, this->args.filePath.getValue());
+		const auto isOk = command->execute(world);
 		return isOk;
 	}
 	default:

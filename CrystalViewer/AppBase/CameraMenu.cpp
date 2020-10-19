@@ -3,6 +3,7 @@
 #include "../../Crystal/Scene/World.h"
 #include "Canvas.h"
 #include "../Command/Command.h"
+#include "../Command/CommandFactory.h"
 #include "../Command/Public/CameraLabels.h"
 
 using namespace Crystal::Scene;
@@ -17,24 +18,20 @@ void CameraMenu::onShow()
 	const auto c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
 		if (ImGui::MenuItem("Fit")) {
-			Command::Command command;
-			command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-			command.execute(getWorld());
+			auto command = CommandFactory::create(CameraFitCommandLabels::CameraFitCommandLabel);
+			command->execute(getWorld());
 		}
 		if (ImGui::MenuItem("XY")) {
-			Command::Command command;
-			command.create("CameraXY");
-			command.execute(getWorld());
+			auto command = CommandFactory::create("CameraXY");
+			command->execute(getWorld());
 		}
 		if (ImGui::MenuItem("YZ")) {
-			Command::Command command;
-			command.create("CameraYZ");
-			command.execute(getWorld());
+			auto command = CommandFactory::create("CameraYZ");
+			command->execute(getWorld());
 		}
 		if (ImGui::MenuItem("ZX")) {
-			Command::Command command;
-			command.create("CameraZX");
-			command.execute(getWorld());
+			auto command = CommandFactory::create("CameraZX");
+			command->execute(getWorld());
 		}
 		ImGui::EndMenu();
 	}

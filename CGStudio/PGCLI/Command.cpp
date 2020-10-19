@@ -4,6 +4,7 @@
 #include "../../CrystalViewer/Command/Command.h"
 #include "../../CrystalViewer/Command/GetCommand.h"
 #include "../../CrystalViewer/Command/SetCommand.h"
+#include "../../CrystalViewer/Command/CommandFactory.h"
 
 #include "../../Crystal/Scene/World.h"
 #include "Converter.h"
@@ -13,7 +14,7 @@
 using namespace PG::CLI;
 
 namespace {
-	Crystal::Command::Command instance;
+	std::unique_ptr<Crystal::Command::ICommand> instance;
 }
 
 Command::Command()
@@ -22,13 +23,13 @@ Command::Command()
 Command::Command(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);
-	::instance.create(str);
+	::instance = Crystal::Command::CommandFactory::create(str);
 }
 
 void Command::Create(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);
-	::instance.create(str);
+	::instance = Crystal::Command::CommandFactory::create(str);
 }
 
 generic <class T>
@@ -36,25 +37,26 @@ void Command::SetArg(System::String^ name, T value)
 {
 	const auto& str = PG::CLI::Converter::toCpp(name);
 	const auto v = AnyConverter::toCpp(value, T::typeid);
-	::instance.setArg(str, v);
+	::instance->setArg(str, v);
 }
 
 bool Command::Execute(WorldAdapter^ objects)
 {
-	return ::instance.execute(objects->instance);
+	return ::instance->execute(objects->instance);
 }
 
 generic <class T>
 T Command::GetResult(System::String^ name)
 {
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
-	auto result = ::instance.getResult(str);
+	auto result = ::instance->getResult(str);
 	return (T)(AnyConverter::fromCpp(result));
 }
 
 void Command::Clear()
 {
-	::instance.clear();
+	::instance.reset();
+	//::instance.clear();
 }
 
 generic <class T>

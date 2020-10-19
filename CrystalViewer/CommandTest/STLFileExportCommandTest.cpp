@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "../Command/Command.h"
+#include "../Command/CommandFactory.h"
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
@@ -23,8 +24,8 @@ TEST(STLFileExportCommandTest, TestExecute)
 
 	const std::vector<int> newIds = { scene->getId() };
 	const std::string filePath = "STLFileExportTest.stl";
-	Command command(STLFileExportLabels::CommandNameLabel);
-	command.setArg(STLFileExportLabels::IdsLabel, newIds);
-	command.setArg(STLFileExportLabels::FilePathLabel, filePath);
-	EXPECT_TRUE(command.execute(&world));
+	auto command = CommandFactory::create(STLFileExportLabels::CommandNameLabel);
+	command->setArg(STLFileExportLabels::IdsLabel, newIds);
+	command->setArg(STLFileExportLabels::FilePathLabel, filePath);
+	EXPECT_TRUE(command->execute(&world));
 }

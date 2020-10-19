@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "../Command/Command.h"
+#include "../Command/CommandFactory.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../Command/Public/PCDFileExportLabels.h"
@@ -21,8 +22,8 @@ TEST(PCDFileExportCommand, TestExecute)
 
 	const std::vector<int> newIds = { ps->getId() };
 	const std::string filePath = "PCDFileExportTest.pcd";
-	Command command(PCDFileExportLabels::CommandNameLabel);
-	command.setArg(PCDFileExportLabels::IdsLabel, newIds);
-	command.setArg(PCDFileExportLabels::FilePathLabel, filePath);
-	EXPECT_TRUE( command.execute(&world) );
+	auto command = CommandFactory::create(PCDFileExportLabels::CommandNameLabel);
+	command->setArg(PCDFileExportLabels::IdsLabel, newIds);
+	command->setArg(PCDFileExportLabels::FilePathLabel, filePath);
+	EXPECT_TRUE( command->execute(&world) );
 }

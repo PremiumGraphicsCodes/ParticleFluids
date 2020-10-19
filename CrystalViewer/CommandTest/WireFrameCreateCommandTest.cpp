@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "../Command/Command.h"
+#include "../Command/CommandFactory.h"
 
 #include "../Command/Public/WireFrameCreateLabels.h"
 
@@ -19,11 +20,11 @@ TEST(WireFrameCreateCommandTest, TestExecute)
 	WireFrameBuilder builder;
 	builder.build(Line3dd(Vector3dd(0,0,0), Vector3dd(1,0,0)));
 
-	Crystal::Command::Command command(WireFrameCreateLabels::WireFrameAddLabel);
-	command.setArg(WireFrameCreateLabels::PositionsLabel, builder.getPositions());
-	command.setArg(WireFrameCreateLabels::EdgesLabel, builder.getEdges());
-	EXPECT_TRUE(command.execute(&world));
+	auto command = CommandFactory::create(WireFrameCreateLabels::WireFrameAddLabel);
+	command->setArg(WireFrameCreateLabels::PositionsLabel, builder.getPositions());
+	command->setArg(WireFrameCreateLabels::EdgesLabel, builder.getEdges());
+	EXPECT_TRUE(command->execute(&world));
 
-	const auto newId = std::any_cast<int>(command.getResult(WireFrameCreateLabels::NewIdLabel));
+	const auto newId = std::any_cast<int>(command->getResult(WireFrameCreateLabels::NewIdLabel));
 	EXPECT_EQ(1, newId);
 }

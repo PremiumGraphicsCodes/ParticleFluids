@@ -8,6 +8,7 @@
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../Command/Command.h"
+#include "../Command/CommandFactory.h"
 #include "../Command/Public/FileExportLabels.h"
 
 using namespace Crystal::Math;
@@ -25,9 +26,9 @@ TEST(FileExportCommand, TestExportPCD)
 	world.getScenes()->addScene(ps);
 
 	const std::string filePath = "TestFileExport.pcd";
-	Crystal::Command::Command command(::FileExportLabels::FileExportCommandLabel);
-	command.setArg(::FileExportLabels::FilePathLabel, filePath);
-	const auto isOk = command.execute(&world);
+	auto command = CommandFactory::create(::FileExportLabels::FileExportCommandLabel);
+	command->setArg(::FileExportLabels::FilePathLabel, filePath);
+	const auto isOk = command->execute(&world);
 	EXPECT_TRUE(isOk);
 }
 
@@ -42,9 +43,9 @@ TEST(FileExportCommand, TestExportOBJ)
 	world.getScenes()->addScene(scene);
 
 	const std::string filePath = "TestFileExport.obj";
-	Crystal::Command::Command command(::FileExportLabels::FileExportCommandLabel);
-	command.setArg(::FileExportLabels::FilePathLabel, filePath);
-	const auto isOk = command.execute(&world);
+	auto command = CommandFactory::create(::FileExportLabels::FileExportCommandLabel);
+	command->setArg(::FileExportLabels::FilePathLabel, filePath);
+	const auto isOk = command->execute(&world);
 	EXPECT_TRUE(isOk);
 
 }

@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "../Command/Command.h"
+#include "../Command/CommandFactory.h"
 
 #include "../Command/Public/FileImportLabels.h"
 
@@ -13,9 +14,9 @@ TEST(STLFileImportCommand, TestExecute)
 	World world;
 
 	const std::string filePath = "STLFileImportTest.stl";
-	Command command(FileImportLabels::STLFileImportCommandLabel);
-	command.setArg(FileImportLabels::FilePathLabel, filePath);
-	EXPECT_TRUE(command.execute(&world));
+	auto command = CommandFactory::create(FileImportLabels::STLFileImportCommandLabel);
+	command->setArg(FileImportLabels::FilePathLabel, filePath);
+	EXPECT_TRUE(command->execute(&world));
 
 	//const auto id = std::any_cast<int>(command.getResult(FileImportLabels::NewIdLabel));
 	//EXPECT_EQ(1, id);

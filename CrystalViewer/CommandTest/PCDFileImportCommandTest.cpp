@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "../Command/Command.h"
+#include "../Command/CommandFactory.h"
 
 #include "../Command/Public/PCDFileImportLabels.h"
 
@@ -13,11 +14,11 @@ TEST(PCDFileImportCommand, TestExecute)
 	World world;
 
 	const std::string filePath = "./PCDFileImportTest.pcd";
-	Command command(PCDFileImportLabels::CommandNameLabel);
-	command.setArg(PCDFileImportLabels::FilePathLabel, filePath);
-	const auto isOk = command.execute(&world);
+	auto command = CommandFactory::create(PCDFileImportLabels::CommandNameLabel);
+	command->setArg(PCDFileImportLabels::FilePathLabel, filePath);
+	const auto isOk = command->execute(&world);
 	EXPECT_TRUE(isOk);
 
-	const auto id = std::any_cast<int>( command.getResult(PCDFileImportLabels::NewIdLabel) );
+	const auto id = std::any_cast<int>( command->getResult(PCDFileImportLabels::NewIdLabel) );
 	EXPECT_EQ(1, id);
 }
