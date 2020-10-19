@@ -5,38 +5,33 @@
 namespace Crystal {
 	namespace Physics {
 
-		class FluidSceneCreateCommand : public Command::ICommand
-		{
-			struct Args : Command::IArgs
-			{
-				Command::Arg<int> sourceParticleSystemId;
-				Command::Arg<int> boundaryParticleSystemId;
+class FluidSceneCreateCommand : public Command::ICommand
+{
+public:
+	struct Args : Command::IArgs
+	{
+		Command::Arg<int> particleSystemId;
 
-				Args();
-			};
+		Args();
+	};
 
-			struct Results : Command::IResults
-			{
-				Command::Result<int> newId;
+	struct Results : Command::IResults
+	{
+		Command::Result<int> newId;
 
-				Results() :
-					newId("newId", 0)
-				{
-					add(&newId);
-				}
-			};
+		Results();
+	};
 
-			static std::string getName();
+	static std::string getName();
 
-			FluidSceneCreateCommand() :
-				ICommand(&args, &results)
-			{}
+	FluidSceneCreateCommand();
 
-			bool execute(Scene::World* world) override;
+	bool execute(Scene::World* world) override;
 
-		private:
-			Args args;
-			Results results;
-		};
+private:
+	Args args;
+	Results results;
+};
+
 	}
 }

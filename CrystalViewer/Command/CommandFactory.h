@@ -2,8 +2,6 @@
 
 #include "../../Crystal/Util/UnCopyable.h"
 #include "ICommand.h"
-#include <map>
-#include <memory>
 
 namespace Crystal {
 	namespace Command {

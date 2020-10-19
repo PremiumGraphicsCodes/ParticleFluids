@@ -182,12 +182,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CrystalPhysicsCommand.cpp" />
+    <ClCompile Include="FluidSceneCreateCommand.cpp" />
     <ClCompile Include="FluidSimulationCommand.cpp" />
+    <ClCompile Include="PhysicsCommandFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSceneCreateCommand.h" />
     <ClInclude Include="FluidSimulationCommand.h" />
+    <ClInclude Include="PhysicsCommandFactory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
