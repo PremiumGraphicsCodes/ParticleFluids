@@ -2,6 +2,7 @@
 
 #include "../../CrystalViewer/Command/CommandFactory.h"
 #include "Converter.h"
+#include "Command.h"
 
 using namespace PG::CLI;
 
@@ -12,5 +13,5 @@ namespace {
 Command^ CommandFactory::Create(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);
-	return ::instance.createCommand(str);
+	return gcnew Command( ::instance.createCommand(str) );
 }

@@ -142,6 +142,7 @@
     <ClInclude Include="AnyConverter.h" />
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="WorldAdapter.h" />
@@ -152,6 +153,7 @@
     <ClCompile Include="AnyConverter.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="WorldAdapter.cpp" />

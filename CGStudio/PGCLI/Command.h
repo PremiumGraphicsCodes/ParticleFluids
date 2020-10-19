@@ -16,7 +16,6 @@ public ref class Command
 public:
 	Command();
 
-
 	Command(System::String^ name);
 
 	void Create(System::String^ name);
@@ -50,17 +49,6 @@ private:
 
 internal:
 	Command(std::unique_ptr<Crystal::Command::ICommand> command);
-};
-
-public interface class ICommandFactory
-{
-	Command^ Create(System::String^ name);
-};
-
-public ref class CommandFactory : ICommandFactory
-{
-public:
-	virtual Command^ Create(System::String^ name) { return nullptr; }
 };
 
 	}
