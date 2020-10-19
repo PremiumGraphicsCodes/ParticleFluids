@@ -44,6 +44,7 @@ void PhysicsCommand::SetArg(System::String^ name, T value)
 
 bool PhysicsCommand::Execute(WorldAdapter^ objects)
 {
+	auto world = static_cast<Crystal::Scene::World*>( objects->getPtr().ToPointer() );
 	return command->Execute(objects);
 	//return ::instance.execute(objects->instance);
 }

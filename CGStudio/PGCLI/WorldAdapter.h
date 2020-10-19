@@ -20,6 +20,8 @@ public:
 
 	void ClearItems();
 
+	IntPtr getPtr() { return IntPtr(instance); }
+
 internal:
 	Crystal::Scene::World* instance;
 };
