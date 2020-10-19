@@ -52,6 +52,10 @@ namespace FluidStudio
 
         private void OnOpen()
         {
+            PG.CLI.PhysicsCommand command = new PG.CLI.PhysicsCommand();
+            command.Create("NewCommand");
+            command.Execute(world.Adapter);
+
             var dialog = new OpenFileDialog
             {
                 Title = "Open",
