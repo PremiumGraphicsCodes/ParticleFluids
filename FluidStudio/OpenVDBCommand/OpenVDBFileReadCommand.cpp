@@ -4,18 +4,27 @@
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
+#include "../../CrystalViewer/Command/Public/PublicLabel.h"
+
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::OpenVDB;
 
+namespace 
+{
+	PublicLabel CommandNameLabel = "OpenVDBFileRead";
+	PublicLabel FilePathLabel = "FilePath";
+	PublicLabel NewIdLabel = "NewId";
+}
+
 OpenVDBFileReadCommand::Args::Args() :
-	filePath("FilePath", "")
+	filePath(::FilePathLabel, "")
 {
 	add(&filePath);
 }
 
 OpenVDBFileReadCommand::Results::Results() :
-	newIds("NewId", {})
+	newIds(::NewIdLabel, {})
 {
 	add(&newIds);
 }
@@ -26,7 +35,7 @@ OpenVDBFileReadCommand::OpenVDBFileReadCommand() :
 
 std::string OpenVDBFileReadCommand::getName()
 {
-	return "OpenVDBFileRead";
+	return ::CommandNameLabel;
 }
 
 bool OpenVDBFileReadCommand::execute(World* world)

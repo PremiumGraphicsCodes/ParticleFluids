@@ -5,8 +5,9 @@
 namespace Crystal {
 	namespace OpenVDB {
 
-class OpenVDBFileWriteCommand : Command::ICommand
+class OpenVDBFileWriteCommand : public Command::ICommand
 {
+public:
 	struct Args : Command::IArgs
 	{
 		Args();

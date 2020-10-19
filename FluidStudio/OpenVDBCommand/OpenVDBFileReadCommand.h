@@ -5,16 +5,17 @@
 namespace Crystal {
 	namespace OpenVDB {
 
-class OpenVDBFileReadCommand : Command::ICommand
+class OpenVDBFileReadCommand : public Command::ICommand
 {
-	struct Args : Command::IArgs
+public:
+	struct Args : public Command::IArgs
 	{
 		Args();
 
 		Command::Arg<std::string> filePath;
 	};
 
-	struct Results : Command::IResults
+	struct Results : public Command::IResults
 	{
 		Results();
 

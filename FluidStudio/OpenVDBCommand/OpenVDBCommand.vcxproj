@@ -179,10 +179,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OpenVDBCommandFactory.h" />
     <ClInclude Include="OpenVDBFileReadCommand.h" />
     <ClInclude Include="OpenVDBFileWriteCommand.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="OpenVDBCommandFactory.cpp" />
     <ClCompile Include="OpenVDBFileReadCommand.cpp" />
     <ClCompile Include="OpenVDBFileWriteCommand.cpp" />
   </ItemGroup>

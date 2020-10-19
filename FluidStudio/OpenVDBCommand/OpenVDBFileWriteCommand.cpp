@@ -4,13 +4,22 @@
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
+#include "../../CrystalViewer/Command/Public/PublicLabel.h"
+
+namespace
+{
+	PublicLabel CommandNameLabel = "OpenVDBFileWrite";
+	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
+	PublicLabel FilePathLabel = "FilePath";
+}
+
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::OpenVDB;
 
 OpenVDBFileWriteCommand::Args::Args() :
-	particleSystemId("ParticleSystemId", -1),
-	filePath("FilePath", "")
+	particleSystemId(::ParticleSystemIdLabel, -1),
+	filePath(::FilePathLabel, "")
 {
 	add(&particleSystemId);
 	add(&filePath);
@@ -26,7 +35,7 @@ OpenVDBFileWriteCommand::OpenVDBFileWriteCommand() :
 
 std::string OpenVDBFileWriteCommand::getName()
 {
-	return "OpenVDBFileWrite";
+	return ::CommandNameLabel;
 }
 
 bool OpenVDBFileWriteCommand::execute(World* world)

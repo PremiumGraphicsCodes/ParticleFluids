@@ -3,9 +3,11 @@
   <ItemGroup>
     <ClInclude Include="OpenVDBFileReadCommand.h" />
     <ClInclude Include="OpenVDBFileWriteCommand.h" />
+    <ClInclude Include="OpenVDBCommandFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenVDBFileReadCommand.cpp" />
     <ClCompile Include="OpenVDBFileWriteCommand.cpp" />
+    <ClCompile Include="OpenVDBCommandFactory.cpp" />
   </ItemGroup>
 </Project>
