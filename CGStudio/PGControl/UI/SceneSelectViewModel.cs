@@ -18,6 +18,8 @@ namespace PG.Control.UI
 
         private readonly Canvas3d canvas;
 
+        private readonly SceneType selectType = SceneType.AllScene;
+
         public SceneSelectViewModel(SceneList scenes, Canvas3d canvas)
         {
             this.scenes = scenes;
@@ -25,9 +27,17 @@ namespace PG.Control.UI
             this.SceneSelectCommand.Subscribe(OnSelect);
         }
 
+        public SceneSelectViewModel(SceneList scenes, Canvas3d canvas, SceneType type)
+        {
+            this.scenes = scenes;
+            this.canvas = canvas;
+            this.SceneSelectCommand.Subscribe(OnSelect);
+            this.selectType = type;
+        }
+
         private void OnSelect()
         {
-            var picker = new PickUICtrl(scenes, canvas, 10, Core.SceneType.AllScene);
+            var picker = new PickUICtrl(scenes, canvas, 10, selectType);
             picker.AddAction(OnPick);
             this.canvas.UICtrl = picker;
         }

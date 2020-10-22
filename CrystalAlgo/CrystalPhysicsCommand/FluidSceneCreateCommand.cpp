@@ -19,6 +19,7 @@ FluidSceneCreateCommand::Args::Args() :
 	name(::NameLabel, std::string("FluidScene"))
 {
 	add(&particleSystemId);
+	add(&name);
 }
 
 FluidSceneCreateCommand::Results::Results() :
