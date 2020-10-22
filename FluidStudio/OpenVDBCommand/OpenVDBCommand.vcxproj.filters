@@ -4,10 +4,24 @@
     <ClInclude Include="OpenVDBFileReadCommand.h" />
     <ClInclude Include="OpenVDBFileWriteCommand.h" />
     <ClInclude Include="OpenVDBCommandFactory.h" />
+    <ClInclude Include="PublicLabels\VDBFileInitCommand.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\VDBFileReadCommand.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\VDBFileWriteCommand.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenVDBFileReadCommand.cpp" />
     <ClCompile Include="OpenVDBFileWriteCommand.cpp" />
     <ClCompile Include="OpenVDBCommandFactory.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="PublicLabels">
+      <UniqueIdentifier>{d9acac73-38c5-4e16-9bbb-e748d84a4654}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
