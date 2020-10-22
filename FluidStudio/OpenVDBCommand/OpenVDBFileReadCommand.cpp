@@ -4,7 +4,7 @@
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
-#include "PublicLabels/VDBFileReadCommand.h"
+#include "PublicLabels/VDBFileReadLabels.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

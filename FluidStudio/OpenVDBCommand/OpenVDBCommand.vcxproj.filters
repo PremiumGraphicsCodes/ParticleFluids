@@ -4,13 +4,13 @@
     <ClInclude Include="OpenVDBFileReadCommand.h" />
     <ClInclude Include="OpenVDBFileWriteCommand.h" />
     <ClInclude Include="OpenVDBCommandFactory.h" />
-    <ClInclude Include="PublicLabels\VDBFileInitCommand.h">
+    <ClInclude Include="PublicLabels\VDBFileInitLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
-    <ClInclude Include="PublicLabels\VDBFileReadCommand.h">
+    <ClInclude Include="PublicLabels\VDBFileReadLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
-    <ClInclude Include="PublicLabels\VDBFileWriteCommand.h">
+    <ClInclude Include="PublicLabels\VDBFileWriteLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>

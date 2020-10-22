@@ -182,9 +182,9 @@
     <ClInclude Include="OpenVDBCommandFactory.h" />
     <ClInclude Include="OpenVDBFileReadCommand.h" />
     <ClInclude Include="OpenVDBFileWriteCommand.h" />
-    <ClInclude Include="PublicLabels\VDBFileInitCommand.h" />
-    <ClInclude Include="PublicLabels\VDBFileReadCommand.h" />
-    <ClInclude Include="PublicLabels\VDBFileWriteCommand.h" />
+    <ClInclude Include="PublicLabels\VDBFileInitLabels.h" />
+    <ClInclude Include="PublicLabels\VDBFileReadLabels.h" />
+    <ClInclude Include="PublicLabels\VDBFileWriteLabels.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenVDBCommandFactory.cpp" />
