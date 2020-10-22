@@ -6,9 +6,11 @@
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="OpenVDBCommand.cpp" />
+    <ClCompile Include="..\PGCLI\AnyConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="OpenVDBCommand.h" />
+    <ClInclude Include="..\PGCLI\AnyConverter.h" />
   </ItemGroup>
 </Project>
