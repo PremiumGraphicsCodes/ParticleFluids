@@ -11,6 +11,7 @@ public:
 	struct Args : Command::IArgs
 	{
 		Command::Arg<int> particleSystemId;
+		Command::Arg<std::string> name;
 
 		Args();
 	};

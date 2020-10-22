@@ -10,4 +10,14 @@
     <ClInclude Include="FluidSceneCreateCommand.h" />
     <ClInclude Include="PhysicsCommandFactory.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Filter Include="PublicLabels">
+      <UniqueIdentifier>{cdb751d1-455f-41d6-a288-e9f4d685b523}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="PublicLabels\FluidSceneCreateLabels.h">
+      <Filter>PublicLabels</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

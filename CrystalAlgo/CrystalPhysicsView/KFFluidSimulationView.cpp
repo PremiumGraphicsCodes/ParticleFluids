@@ -58,7 +58,6 @@ void KFFluidSimulationView::onOk()
 
 	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
-
 	getWorld()->addAnimation(&simulator);
 
 	Command::Command command;
