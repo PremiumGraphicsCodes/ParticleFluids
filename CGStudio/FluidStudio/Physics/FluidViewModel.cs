@@ -34,8 +34,11 @@ namespace FluidStudio.Physics
         {
             var command = new PG.CLI.PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.ParticleSystemIdLabel, this.ParticleSystemSelectViewModel.Id.Value);
+            command.SetArg(Labels.StiffnessLabel, this.Stiffness.Value);
+            command.SetArg(Labels.ViscosityLabel, this.Viscosity.Value);
             command.SetArg(Labels.NameLabel, "NewFluid");
             command.Execute(world.Adapter);
+            var newId = command.GetResult<int>(Labels.NewIdLabel);
         }
     }
 }

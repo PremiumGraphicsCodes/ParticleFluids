@@ -16,9 +16,13 @@ std::string FluidSceneCreateCommand::getName()
 
 FluidSceneCreateCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
+	stiffness(::StiffnessLabel, 1.0f),
+	viscosity(::ViscosityLabel, 1.0f),
 	name(::NameLabel, std::string("FluidScene"))
 {
 	add(&particleSystemId);
+	add(&stiffness);
+	add(&viscosity);
 	add(&name);
 }
 
