@@ -1,4 +1,3 @@
-#ifdef NDEBUG
 #include "OpenVDBMenu.h"
 
 //#include "../../CrystalViewer/AppBase/"
@@ -103,5 +102,3 @@ void OpenVDBMenu::onShow()
 	//ImGui::EndMenuBar();
 
 }
-
-#endif
