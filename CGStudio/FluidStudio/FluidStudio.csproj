@@ -107,6 +107,7 @@
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
+    <Compile Include="PhysicsLabels.cs" />
     <Compile Include="Physics\FluidView.xaml.cs">
       <DependentUpon>FluidView.xaml</DependentUpon>
     </Compile>

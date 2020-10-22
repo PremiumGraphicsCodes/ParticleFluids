@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace PGConstCSFileGenerator
 {
@@ -88,10 +91,44 @@ namespace PGConstCSFileGenerator
 
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
-            var cppDirectory = args[0];
+            if (args.Length == 2)
+            {
+                RunCUI(args[0], args[1]);
+            }
+            else
+            {
+                RunGUI();
+            }
+        }
+
+        static void RunCUI(string cppDirectory, string csFile)
+        {
             var cppFiles = Directory.EnumerateFiles(cppDirectory);
+            var blocks = CollectPublicBlocks(cppFiles);
+            DumpCSFile(csFile, blocks);
+        }
+
+        static void RunGUI()
+        {
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            if(dialog.ShowDialog() != true)
+            {
+                return;
+            }
+            var blocks = CollectPublicBlocks(dialog.FileNames);
+            var saveDialog = new Microsoft.Win32.SaveFileDialog();
+            if(saveDialog.ShowDialog() != true)
+            {
+                return;
+            }
+            DumpCSFile(saveDialog.FileName, blocks);
+        }
+
+        static List<PublicLabelBlock> CollectPublicBlocks(IEnumerable<string> cppFiles)
+        {
             var blocks = new List<PublicLabelBlock>();
             foreach (var file in cppFiles)
             {
@@ -99,8 +136,11 @@ namespace PGConstCSFileGenerator
                 block.ParseCPPFile(file);
                 blocks.Add(block);
             }
+            return blocks;
+        }
 
-            var csFile = args[1];
+        static void DumpCSFile(string csFile, IEnumerable<PublicLabelBlock> blocks)
+        {
             using (var writer = new StreamWriter(csFile))
             {
                 writer.WriteLine("namespace PG {");
