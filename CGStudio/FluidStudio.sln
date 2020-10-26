@@ -60,7 +60,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PGPhysicsCLI", "PGPhysicsCL
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysicsCommand", "..\CrystalAlgo\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj", "{09EE8B6A-2D6F-4B9E-83FF-6A40D03BC465}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenVDBCommand", "..\FluidStudio\OpenVDBCommand\OpenVDBCommand.vcxproj", "{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBCommand", "..\FluidStudio\VDBCommand\VDBCommand.vcxproj", "{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PGOpenVDBCLI", "PGOpenVDBCLI\PGOpenVDBCLI.vcxproj", "{C41F40D4-75C1-430C-AA3C-865AD4CD0B53}"
 EndProject

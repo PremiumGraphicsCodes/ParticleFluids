@@ -3,7 +3,7 @@
 
 #include "../../CrystalViewer/Command/Command.h"
 
-#include "../../FluidStudio/OpenVDBCommand/VDBCommandFactory.h"
+#include "../../FluidStudio/VDBCommand/VDBCommandFactory.h"
 
 //#include "../../Crystal/Scene/World.h"
 #include "../PGCLI/Converter.h"

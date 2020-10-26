@@ -42,7 +42,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenVDBConverter", "OpenVDB
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenVDBConverterTest", "OpenVDBConverterTest\OpenVDBConverterTest.vcxproj", "{A30A18CB-1B68-4887-B14C-F6C4534CF895}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenVDBCommand", "OpenVDBCommand\OpenVDBCommand.vcxproj", "{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBCommand", "VDBCommand\VDBCommand.vcxproj", "{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,7 +11,7 @@ namespace PG {
 class FSScene
 {
 public:
-	Crystal::Physics::KFFluidSolver::Args args;
+//	Crystal::Physics::KFFluidSolver::Args args;
 };
 
 	}
