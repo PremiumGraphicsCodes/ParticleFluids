@@ -1,4 +1,5 @@
-﻿using PG.Scene;
+﻿using PG.Control.OpenGL;
+using PG.Scene;
 using System.Collections.Generic;
 using Labels = PG.VDBFileReadLabels;
 
@@ -18,7 +19,7 @@ namespace FluidStudio.VDB
             command.Execute(world.Adapter);
         }
 
-        public bool Read(string filePath)
+        public bool Read(string filePath, Canvas3d canvas)
         {
             var command = new PG.CLI.OpenVDBCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.FilePathLabel, filePath);
@@ -27,6 +28,11 @@ namespace FluidStudio.VDB
                 return false;
             }
             var newIds = command.GetResult<List<int>>(Labels.NewIdLabel);
+            foreach(var id in newIds)
+            {
+                canvas.BuildShader(world, id);
+            }
+            canvas.Render();
             return true;
         }
     }

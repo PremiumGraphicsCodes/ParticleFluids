@@ -123,7 +123,7 @@ namespace FluidStudio
             var m = new VDBModel(world);
             m.Init();
 
-            return m.Read(filePath);
+            return m.Read(filePath, canvas);
             /*
             var command = new PG.CLI.Command(PG.FileImportLabels.FileImportCommandLabel);
             command.SetArg(PG.FileImportLabels.FilePathLabel, filePath);
