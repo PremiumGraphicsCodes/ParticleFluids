@@ -213,7 +213,7 @@
       <Project>{b2f0408a-6b39-4aee-b1e5-a67011ae9441}</Project>
       <Name>PGCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PGOpenVDBCLI\PGOpenVDBCLI.vcxproj">
+    <ProjectReference Include="..\PGVDBCLI\PGVDBCLI.vcxproj">
       <Project>{c41f40d4-75c1-430c-aa3c-865ad4cd0b53}</Project>
       <Name>PGOpenVDBCLI</Name>
     </ProjectReference>

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "OpenVDBCommand.h"
+#include "VDBCommand.h"
 
 #include "../../CrystalViewer/Command/Command.h"
 
@@ -17,44 +17,44 @@ namespace {
 	Crystal::OpenVDB::VDBCommandFactory factory;
 }
 
-OpenVDBCommand::OpenVDBCommand()
+VDBCommand::VDBCommand()
 {}
 
-OpenVDBCommand::OpenVDBCommand(System::String^ name)
+VDBCommand::VDBCommand(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);
 	::instance = factory.createCommand(str);
 }
 
-void OpenVDBCommand::Create(System::String^ name)
+void VDBCommand::Create(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);
 	::instance = factory.createCommand(str);
 }
 
 generic <class T>
-void OpenVDBCommand::SetArg(System::String^ name, T value)
+void VDBCommand::SetArg(System::String^ name, T value)
 {
 	const auto& str = PG::CLI::Converter::toCpp(name);
 	const auto v = AnyConverter::toCpp(value, T::typeid);
 	::instance->setArg(str, v);
 }
 
-bool OpenVDBCommand::Execute(WorldAdapter^ objects)
+bool VDBCommand::Execute(WorldAdapter^ objects)
 {
 	auto world = static_cast<Crystal::Scene::World*>(objects->getPtr().ToPointer());
 	return ::instance->execute(world);
 }
 
 generic <class T>
-T OpenVDBCommand::GetResult(System::String^ name)
+T VDBCommand::GetResult(System::String^ name)
 {
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
 	auto result = ::instance->getResult(str);
 	return (T)(AnyConverter::fromCpp(result));
 }
 
-void OpenVDBCommand::Clear()
+void VDBCommand::Clear()
 {
 	::instance.reset();
 }

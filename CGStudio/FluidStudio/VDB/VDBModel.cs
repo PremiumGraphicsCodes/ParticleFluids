@@ -8,13 +8,13 @@ namespace FluidStudio.VDB
     {
         public void Init(SceneList world)
         {
-            var command = new PG.CLI.OpenVDBCommand(PG.VDBInitLabels.CommandNameLabel);
+            var command = new PG.CLI.VDBCommand(PG.VDBInitLabels.CommandNameLabel);
             command.Execute(world.Adapter);
         }
 
         public bool Read(string filePath, SceneList world, Canvas3d canvas)
         {
-            var command = new PG.CLI.OpenVDBCommand(PG.VDBFileReadLabels.CommandNameLabel);
+            var command = new PG.CLI.VDBCommand(PG.VDBFileReadLabels.CommandNameLabel);
             command.SetArg(PG.VDBFileReadLabels.FilePathLabel, filePath);
             if (!command.Execute(world.Adapter))
             {
@@ -31,7 +31,7 @@ namespace FluidStudio.VDB
 
         public bool Write(string filePath, SceneList world, List<int> particleSystemIds)
         {
-            var command = new PG.CLI.OpenVDBCommand(PG.VDBFileWriteLabels.CommandNameLabel);
+            var command = new PG.CLI.VDBCommand(PG.VDBFileWriteLabels.CommandNameLabel);
             command.SetArg(PG.VDBFileWriteLabels.FilePathLabel, filePath);
             command.SetArg(PG.VDBFileWriteLabels.ParticleSystemIdsLabel, particleSystemIds);
             if (!command.Execute(world.Adapter))

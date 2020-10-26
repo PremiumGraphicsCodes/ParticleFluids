@@ -4,12 +4,12 @@ namespace PG {
 	namespace CLI {
 		ref class WorldAdapter;
 
-public ref class OpenVDBCommand
+public ref class VDBCommand
 {
 public:
-	OpenVDBCommand();
+	VDBCommand();
 
-	OpenVDBCommand(System::String^ name);
+	VDBCommand(System::String^ name);
 
 	void Create(System::String^ name);
 
