@@ -27,12 +27,15 @@ namespace FluidStudio
         public ReactiveCommand ExportCommand { get; }
             = new ReactiveCommand();
 
+        private readonly MainModel model;
+
         private readonly SceneList world;
 
         private readonly Canvas3d canvas;
 
-        public FileIOViewModel(SceneList world, Canvas3d canvas)
+        public FileIOViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
+            this.model = model;
             this.world = world;
             this.canvas = canvas;
             NewCommand.Subscribe(OnNew);
@@ -120,10 +123,8 @@ namespace FluidStudio
 
         private bool Import(string filePath)
         {
-            var m = new VDBModel(world);
-            m.Init();
 
-            return m.Read(filePath, canvas);
+            return model.VDBModel.Read(filePath, world, canvas);
             /*
             var command = new PG.CLI.Command(PG.FileImportLabels.FileImportCommandLabel);
             command.SetArg(PG.FileImportLabels.FilePathLabel, filePath);
@@ -155,11 +156,17 @@ namespace FluidStudio
 
         private bool Export(string filePath)
         {
+            return false;
+            //var particles = world.Scenes[0]
+//            model.VDBModel.Write(filePath, world);
+
+            /*
             var command = new PG.CLI.Command("FileExport");
             command.SetArg("FilePath", filePath);
             command.Execute(world.Adapter);
             var isOk = command.GetResult<bool>("IsOk");
             return false;
+            */
         }
     }
 }

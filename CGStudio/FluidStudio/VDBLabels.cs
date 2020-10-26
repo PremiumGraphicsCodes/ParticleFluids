@@ -1,8 +1,4 @@
 namespace PG {
-	public class VDBFileInitLabels
-	{
-	}
-
 	public class VDBFileReadLabels
 	{
 		public const string CommandNameLabel = "VDBFileRead";
@@ -12,6 +8,14 @@ namespace PG {
 
 	public class VDBFileWriteLabels
 	{
+		public const string CommandNameLabel = "OpenVDBFileWrite";
+		public const string ParticleSystemIdLabel = "ParticleSystemId";
+		public const string FilePathLabel = "FilePath";
+	}
+
+	public class VDBInitLabels
+	{
+		public const string CommandNameLabel = "VDBInit";
 	}
 
 }

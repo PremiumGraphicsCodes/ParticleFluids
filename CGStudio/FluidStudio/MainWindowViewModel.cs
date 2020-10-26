@@ -30,12 +30,13 @@ namespace FluidStudio
         {
             this.regionManager = regionManager;
 
+            var mainModel = container.Resolve<MainModel>();
             var world = container.Resolve<SceneList>();
             Canvas = container.Resolve<Canvas3d>();
 
             this.NavigateCommand.Subscribe(OnNavigate);
 
-            this.FileIOViewModel = new FileIOViewModel(world, Canvas);
+            this.FileIOViewModel = new FileIOViewModel(mainModel, world, Canvas);
             this.CameraControlViewModel = new CameraControlViewModel(world, Canvas);
 
             this.SceneListViewModel = new SceneListViewModel(regionManager, world);

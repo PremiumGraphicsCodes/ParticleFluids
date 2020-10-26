@@ -1,4 +1,5 @@
-﻿using Reactive.Bindings;
+﻿using PG.Core;
+using Reactive.Bindings;
 using System;
 using System.Collections.Generic;
 
@@ -13,6 +14,9 @@ namespace PG.Scene
         public ReactiveProperty<bool> IsVisible { get; }
 
         public ReactiveProperty<bool> IsSelected { get; }
+
+        public SceneType SceneType { get; set; }
+            = SceneType.None;
 
         public List<SceneModel> Children { get; }
             = new List<SceneModel>();

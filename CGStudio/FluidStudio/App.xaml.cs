@@ -11,6 +11,7 @@ namespace FluidStudio
     {
         private SceneList world;
         private Canvas3d canvas;
+        private MainModel model;
 
         protected override Window CreateShell()
         {
@@ -19,10 +20,17 @@ namespace FluidStudio
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            this.model = new MainModel();
+            containerRegistry.RegisterInstance<MainModel>(model);
+
             this.world = new SceneList();
             containerRegistry.RegisterInstance<SceneList>(world);
+
             this.canvas = new Canvas3d(world);
             containerRegistry.RegisterInstance<Canvas3d>(canvas);
+
+            model.VDBModel.Init(world);
+
 
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
