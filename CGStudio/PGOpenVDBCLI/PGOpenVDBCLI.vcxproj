@@ -95,7 +95,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Math.lib;Shader.lib;IO.lib;Scene.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Math.lib;Shader.lib;IO.lib;Scene.lib;opengl32.lib;glew32.lib;..\..\FluidStudio\ThirdParty\openvdb\openvdb\Debug\openvdb.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\tbbmalloc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_iostreams-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_regex-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\boost_system-vc140-mt-gd.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\lib\Half-2_3.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\blosc.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\tbb_debug.lib;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\debug\lib\zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;..\..\Crystal\ThirdParty\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -148,14 +148,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CrystalAlgo\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj">
-      <Project>{09ee8b6a-2d6f-4b9e-83ff-6a40d03bc465}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\CrystalViewer\Command\Command.vcxproj">
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
       <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FluidStudio\OpenVDBCommand\OpenVDBCommand.vcxproj">
+      <Project>{0aa3c227-939a-4b73-a27c-9d6be4f2adbc}</Project>
     </ProjectReference>
     <ProjectReference Include="..\PGCLI\PGCLI.vcxproj">
       <Project>{b2fcf247-2dcb-43ff-b179-c21d15c48500}</Project>
@@ -166,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\PGCLI\AnyConverter.cpp" />
+    <ClCompile Include="..\PGCLI\Converter.cpp" />
     <ClCompile Include="OpenVDBCommand.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -174,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\PGCLI\AnyConverter.h" />
+    <ClInclude Include="..\PGCLI\Converter.h" />
     <ClInclude Include="OpenVDBCommand.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

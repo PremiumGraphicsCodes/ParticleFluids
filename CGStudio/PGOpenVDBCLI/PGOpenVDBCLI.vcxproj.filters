@@ -7,10 +7,12 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="OpenVDBCommand.cpp" />
     <ClCompile Include="..\PGCLI\AnyConverter.cpp" />
+    <ClCompile Include="..\PGCLI\Converter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="OpenVDBCommand.h" />
     <ClInclude Include="..\PGCLI\AnyConverter.h" />
+    <ClInclude Include="..\PGCLI\Converter.h" />
   </ItemGroup>
 </Project>

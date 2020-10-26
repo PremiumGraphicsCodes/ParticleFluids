@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace PG {
+	public class VDBFileReadLabels
+	{
+		public const string CommandNameLabel = "VDBFileRead";
+		public const string FilePathLabel = "FilePath";
+		public const string NewIdLabel = "NewId";
+	}
 
-namespace FluidStudio
-{
-    class VDBLabels
-    {
-    }
 }
