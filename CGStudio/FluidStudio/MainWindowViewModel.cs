@@ -1,4 +1,5 @@
-﻿using PG.Control.OpenGL;
+﻿using FluidStudio.Scene;
+using PG.Control.OpenGL;
 using PG.Scene;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -22,6 +23,8 @@ namespace FluidStudio
 
         public CameraControlViewModel CameraControlViewModel { get; }
 
+        public SceneListViewModel SceneListViewModel { get; }
+
 
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
         {
@@ -34,6 +37,8 @@ namespace FluidStudio
 
             this.FileIOViewModel = new FileIOViewModel(world, Canvas);
             this.CameraControlViewModel = new CameraControlViewModel(world, Canvas);
+
+            this.SceneListViewModel = new SceneListViewModel(regionManager, world);
         }
 
         private void OnNavigate(string name)

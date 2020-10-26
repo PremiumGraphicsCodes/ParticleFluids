@@ -127,6 +127,7 @@
     <Compile Include="Scene\SceneListView.xaml.cs">
       <DependentUpon>SceneListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Scene\SceneListViewModel.cs" />
     <Compile Include="TimeLineView.xaml.cs">
       <DependentUpon>TimeLineView.xaml</DependentUpon>
     </Compile>

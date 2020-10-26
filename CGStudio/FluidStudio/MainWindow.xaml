@@ -58,7 +58,7 @@
 
             <TabControl Grid.Column="0">
                 <TabItem Header="Scene">
-                    <scene:SceneListView/>
+                    <scene:SceneListView DataContext="{Binding SceneListViewModel}"/>
                 </TabItem>
             </TabControl>
 
