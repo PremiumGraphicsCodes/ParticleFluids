@@ -318,8 +318,21 @@ namespace PG.Scene
 
             //var newScene = this.adapter.GetSceneAdapter().ToScene();
         }
-        /*
 
+        public List<int> FindSceneIdsByType(SceneType type)
+        {
+            var ids = new List<int>();
+            foreach(var scene in Scenes)
+            {
+                if(scene.SceneType == type)
+                {
+                    ids.Add(scene.Id.Value);
+                }
+            }
+            return ids;
+        }
+
+        /*
         public SceneType GetTypeById(int id)
         {
             var type = (SceneType)this.adapter.GetSceneAdapter().GetTypeById(id);

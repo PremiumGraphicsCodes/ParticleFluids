@@ -156,7 +156,9 @@ namespace FluidStudio
 
         private bool Export(string filePath)
         {
-            return false;
+            var ids = world.FindSceneIdsByType(PG.Core.SceneType.ParticleSystem);
+            var isOk = model.VDBModel.Write(filePath, world, ids[0]);
+            return isOk;
             //var particles = world.Scenes[0]
 //            model.VDBModel.Write(filePath, world);
 

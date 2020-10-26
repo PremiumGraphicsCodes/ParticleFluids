@@ -12,8 +12,8 @@ namespace FluidStudioTest
         public void TestInit()
         {
             var world = new SceneList();
-            var model = new VDBModel(world);
-            model.Init();
+            var model = new VDBModel();
+            model.Init(world);
         }
     }
 }
