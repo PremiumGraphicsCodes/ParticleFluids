@@ -132,6 +132,7 @@
     </Compile>
     <Compile Include="TimeLineViewModel.cs" />
     <Compile Include="VDBLabels.cs" />
+    <Compile Include="VDB\VDBModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -13,11 +13,13 @@
     <ClInclude Include="PublicLabels\VDBFileWriteLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
+    <ClInclude Include="OpenVDBInitCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenVDBFileReadCommand.cpp" />
     <ClCompile Include="OpenVDBFileWriteCommand.cpp" />
     <ClCompile Include="OpenVDBCommandFactory.cpp" />
+    <ClCompile Include="OpenVDBInitCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PublicLabels">

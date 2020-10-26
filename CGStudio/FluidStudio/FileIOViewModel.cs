@@ -1,9 +1,9 @@
-﻿using Microsoft.Win32;
+﻿using FluidStudio.VDB;
+using Microsoft.Win32;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
 using System.Windows;
-using Labels = PG.VDBFileReadLabels;
 
 namespace FluidStudio
 {
@@ -120,6 +120,10 @@ namespace FluidStudio
 
         private bool Import(string filePath)
         {
+            var m = new VDBModel(world);
+            m.Init();
+
+            return m.Read(filePath);
             /*
             var command = new PG.CLI.Command(PG.FileImportLabels.FileImportCommandLabel);
             command.SetArg(PG.FileImportLabels.FilePathLabel, filePath);
@@ -127,14 +131,6 @@ namespace FluidStudio
             var isOk = command.GetResult<bool>(PG.FileImportLabels.IsOkLabel);
             return isOk;
             */
-            var command = new PG.CLI.OpenVDBCommand(Labels.CommandNameLabel);
-            command.SetArg(Labels.FilePathLabel, filePath);
-            if (!command.Execute(world.Adapter))
-            {
-                return false;
-            }
-            var newId = command.GetResult<int>(Labels.NewIdLabel);
-            return true;
         }
 
         private void OnExport()

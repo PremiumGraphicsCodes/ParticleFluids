@@ -182,6 +182,7 @@
     <ClInclude Include="OpenVDBCommandFactory.h" />
     <ClInclude Include="OpenVDBFileReadCommand.h" />
     <ClInclude Include="OpenVDBFileWriteCommand.h" />
+    <ClInclude Include="OpenVDBInitCommand.h" />
     <ClInclude Include="PublicLabels\VDBFileInitLabels.h" />
     <ClInclude Include="PublicLabels\VDBFileReadLabels.h" />
     <ClInclude Include="PublicLabels\VDBFileWriteLabels.h" />
@@ -190,6 +191,7 @@
     <ClCompile Include="OpenVDBCommandFactory.cpp" />
     <ClCompile Include="OpenVDBFileReadCommand.cpp" />
     <ClCompile Include="OpenVDBFileWriteCommand.cpp" />
+    <ClCompile Include="OpenVDBInitCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
