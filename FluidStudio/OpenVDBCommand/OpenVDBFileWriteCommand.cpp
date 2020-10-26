@@ -4,14 +4,7 @@
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
-#include "../../CrystalViewer/Command/Public/PublicLabel.h"
-
-namespace
-{
-	PublicLabel CommandNameLabel = "OpenVDBFileWrite";
-	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
-	PublicLabel FilePathLabel = "FilePath";
-}
+#include "PublicLabels/VDBFileWriteLabels.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

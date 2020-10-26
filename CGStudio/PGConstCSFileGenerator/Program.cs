@@ -114,6 +114,7 @@ namespace PGConstCSFileGenerator
         static void RunGUI()
         {
             var dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.Multiselect = true;
             if(dialog.ShowDialog() != true)
             {
                 return;

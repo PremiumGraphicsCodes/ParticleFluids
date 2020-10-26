@@ -1,5 +1,7 @@
 #include "OpenVDBInitCommand.h"
 
+#include "PublicLabels/VDBInitLabels.h"
+
 #include "../OpenVDBConverter/OpenVDBAdapter.h"
 
 using namespace Crystal::OpenVDB;
@@ -19,7 +21,7 @@ OpenVDBInitCommand::OpenVDBInitCommand()
 
 std::string OpenVDBInitCommand::getName()
 {
-	return "VDBInit";
+	return ::CommandNameLabel;
 }
 
 bool OpenVDBInitCommand::execute(World* world)
