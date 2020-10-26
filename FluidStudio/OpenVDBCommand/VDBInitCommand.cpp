@@ -1,4 +1,4 @@
-#include "OpenVDBInitCommand.h"
+#include "VDBInitCommand.h"
 
 #include "PublicLabels/VDBInitLabels.h"
 
@@ -7,24 +7,24 @@
 using namespace Crystal::OpenVDB;
 using namespace Crystal::Scene;
 
-OpenVDBInitCommand::Args::Args()
+VDBInitCommand::Args::Args()
 {
 }
 
-OpenVDBInitCommand::Results::Results()
+VDBInitCommand::Results::Results()
 {
 }
 
-OpenVDBInitCommand::OpenVDBInitCommand()
+VDBInitCommand::VDBInitCommand()
 {
 }
 
-std::string OpenVDBInitCommand::getName()
+std::string VDBInitCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool OpenVDBInitCommand::execute(World* world)
+bool VDBInitCommand::execute(World* world)
 {
 	OpenVDBAdapter::init();
 	return true;

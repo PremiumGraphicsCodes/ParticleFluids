@@ -1,4 +1,4 @@
-#include "OpenVDBFileReadCommand.h"
+#include "VDBFileReadCommand.h"
 
 #include "../OpenVDBConverter/OpenVDBFileReader.h"
 
@@ -11,28 +11,28 @@ using namespace Crystal::Scene;
 using namespace Crystal::OpenVDB;
 
 
-OpenVDBFileReadCommand::Args::Args() :
+VDBFileReadCommand::Args::Args() :
 	filePath(::FilePathLabel, "")
 {
 	add(&filePath);
 }
 
-OpenVDBFileReadCommand::Results::Results() :
+VDBFileReadCommand::Results::Results() :
 	newIds(::NewIdLabel, {})
 {
 	add(&newIds);
 }
 
-OpenVDBFileReadCommand::OpenVDBFileReadCommand() :
+VDBFileReadCommand::VDBFileReadCommand() :
 	ICommand(&args, &results)
 {}
 
-std::string OpenVDBFileReadCommand::getName()
+std::string VDBFileReadCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool OpenVDBFileReadCommand::execute(World* world)
+bool VDBFileReadCommand::execute(World* world)
 {
 	OpenVDBFileReader reader;
 	const auto isOk = reader.open(args.filePath.getValue());

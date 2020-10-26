@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace OpenVDB {
 
-class OpenVDBFileReadCommand : public Command::ICommand
+class VDBFileReadCommand : public Command::ICommand
 {
 public:
 	struct Args : public Command::IArgs
@@ -22,7 +22,7 @@ public:
 		Command::Result<std::vector<int>> newIds;
 	};
 
-	OpenVDBFileReadCommand();
+	VDBFileReadCommand();
 
 	static std::string getName();
 

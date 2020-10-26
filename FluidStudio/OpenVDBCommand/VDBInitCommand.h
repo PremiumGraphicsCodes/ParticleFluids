@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace OpenVDB {
 
-class OpenVDBInitCommand : public Command::ICommand
+class VDBInitCommand : public Command::ICommand
 {
 public:
 	struct Args : public Command::IArgs
@@ -18,7 +18,7 @@ public:
 		Results();
 	};
 
-	OpenVDBInitCommand();
+	VDBInitCommand();
 
 	static std::string getName();
 

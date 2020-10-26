@@ -1,4 +1,4 @@
-#include "OpenVDBFileWriteCommand.h"
+#include "VDBFileWriteCommand.h"
 
 #include "../OpenVDBConverter/OpenVDBFileWriter.h"
 
@@ -10,7 +10,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::OpenVDB;
 
-OpenVDBFileWriteCommand::Args::Args() :
+VDBFileWriteCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	filePath(::FilePathLabel, "")
 {
@@ -18,20 +18,20 @@ OpenVDBFileWriteCommand::Args::Args() :
 	add(&filePath);
 }
 
-OpenVDBFileWriteCommand::Results::Results()
+VDBFileWriteCommand::Results::Results()
 {
 }
 
-OpenVDBFileWriteCommand::OpenVDBFileWriteCommand() :
+VDBFileWriteCommand::VDBFileWriteCommand() :
 	ICommand(&args, &results)
 {}
 
-std::string OpenVDBFileWriteCommand::getName()
+std::string VDBFileWriteCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool OpenVDBFileWriteCommand::execute(World* world)
+bool VDBFileWriteCommand::execute(World* world)
 {
 	auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
 	if (scene == nullptr) {

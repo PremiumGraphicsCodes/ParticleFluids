@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace OpenVDB {
 
-class OpenVDBFileWriteCommand : public Command::ICommand
+class VDBFileWriteCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
@@ -23,7 +23,7 @@ public:
 		//Command::Result<std::vector<int>> newIds;
 	};
 
-	OpenVDBFileWriteCommand();
+	VDBFileWriteCommand();
 
 	static std::string getName();
 

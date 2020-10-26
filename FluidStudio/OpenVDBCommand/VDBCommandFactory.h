@@ -9,7 +9,7 @@
 namespace Crystal {
 	namespace OpenVDB {
 
-class OpenVDBCommandFactory : public Command::ICommandFactory
+class VDBCommandFactory : public Command::ICommandFactory
 {
 public:
 	std::unique_ptr<Command::ICommand> createCommand(const std::string& name) override;
