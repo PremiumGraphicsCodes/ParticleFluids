@@ -2,7 +2,7 @@
 
 #include "PublicLabels/VDBInitLabels.h"
 
-#include "../OpenVDBConverter/OpenVDBAdapter.h"
+#include "../VDBConverter/OpenVDBAdapter.h"
 
 using namespace Crystal::OpenVDB;
 using namespace Crystal::Scene;

@@ -1,6 +1,6 @@
 #include "VDBFileWriteCommand.h"
 
-#include "../OpenVDBConverter/OpenVDBFileWriter.h"
+#include "../VDBConverter/OpenVDBFileWriter.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
