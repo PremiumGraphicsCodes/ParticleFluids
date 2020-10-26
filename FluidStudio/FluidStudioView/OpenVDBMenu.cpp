@@ -8,10 +8,10 @@
 #include "../../CrystalViewer/AppBase/FileOpenView.h"
 #include "../../CrystalViewer/AppBase/FileSaveView.h"
 
-#include "../OpenVDBConverter/OpenVDBFileReader.h"
-#include "../OpenVDBConverter/OpenVDBFileWriter.h"
+#include "../VDBConverter/OpenVDBFileReader.h"
+#include "../VDBConverter/OpenVDBFileWriter.h"
 
-#include "../OpenVDBConverter/OpenVDBAdapter.h"
+#include "../VDBConverter/OpenVDBAdapter.h"
 
 #include <iostream>
 

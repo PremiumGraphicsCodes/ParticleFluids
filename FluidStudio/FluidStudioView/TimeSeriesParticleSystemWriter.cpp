@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Shape/Particle.h"
 
-#include "../OpenVDBConverter/OpenVDBFileWriter.h"
+#include "../VDBConverter/OpenVDBFileWriter.h"
 
 #include <fstream>
 #include <string>
