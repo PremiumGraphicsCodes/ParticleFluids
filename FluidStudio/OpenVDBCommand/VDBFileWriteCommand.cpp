@@ -11,10 +11,10 @@ using namespace Crystal::Scene;
 using namespace Crystal::OpenVDB;
 
 VDBFileWriteCommand::Args::Args() :
-	particleSystemId(::ParticleSystemIdLabel, -1),
+	particleSystemIds(::ParticleSystemIdsLabel, {}),
 	filePath(::FilePathLabel, "")
 {
-	add(&particleSystemId);
+	add(&particleSystemIds);
 	add(&filePath);
 }
 
@@ -33,19 +33,20 @@ std::string VDBFileWriteCommand::getName()
 
 bool VDBFileWriteCommand::execute(World* world)
 {
-	auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
-	if (scene == nullptr) {
-		return false;
-	}
-	const auto positions = scene->getShape()->getPositions();
-
 	OpenVDBFileWriter writer;
 	const auto isOk = writer.open(args.filePath.getValue());
 	if (!isOk) {
 		return false;
 	}
-
-	writer.write(scene->getName(), positions);
+	const auto& ids = args.particleSystemIds.getValue();
+	for (auto id : ids) {
+		auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(id);
+		if (scene == nullptr) {
+			return false;
+		}
+		const auto positions = scene->getShape()->getPositions();
+		writer.write(scene->getName(), positions);
+	}
 
 	return true;
 }

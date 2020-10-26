@@ -9,7 +9,7 @@ namespace PG {
 	public class VDBFileWriteLabels
 	{
 		public const string CommandNameLabel = "OpenVDBFileWrite";
-		public const string ParticleSystemIdLabel = "ParticleSystemId";
+		public const string ParticleSystemIdsLabel = "ParticleSystemIds";
 		public const string FilePathLabel = "FilePath";
 	}
 

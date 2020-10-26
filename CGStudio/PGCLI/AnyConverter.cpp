@@ -60,6 +60,15 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 		auto values = (System::Collections::Generic::IEnumerable<Object^>^)object;
 		return toCpp(values);
 	}
+	else if (type == System::Collections::Generic::List<int>::typeid) {
+		auto value = (System::Collections::Generic::List<int>^)object;
+		std::vector<int> dest;
+		for each(auto v in value) {
+			dest.push_back(v);
+		}
+		return std::any(dest);
+	}
+
 	assert(false);
 
 	return std::any(0);

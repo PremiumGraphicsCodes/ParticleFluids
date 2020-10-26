@@ -13,7 +13,7 @@ public:
 		Args();
 
 		Command::Arg<std::string> filePath;
-		Command::Arg<int> particleSystemId;
+		Command::Arg<std::vector<int>> particleSystemIds;
 	};
 
 	struct Results : Command::IResults

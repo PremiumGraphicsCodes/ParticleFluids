@@ -3,6 +3,6 @@
 namespace
 {
 	PublicLabel CommandNameLabel = "OpenVDBFileWrite";
-	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
+	PublicLabel ParticleSystemIdsLabel = "ParticleSystemIds";
 	PublicLabel FilePathLabel = "FilePath";
 }

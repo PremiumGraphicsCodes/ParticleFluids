@@ -3,7 +3,7 @@
 
 #include "../../CrystalViewer/Command/Command.h"
 
-#include "../../FluidStudio/OpenVDBCommand/OpenVDBCommandFactory.h"
+#include "../../FluidStudio/OpenVDBCommand/VDBCommandFactory.h"
 
 //#include "../../Crystal/Scene/World.h"
 #include "../PGCLI/Converter.h"
@@ -14,7 +14,7 @@ using namespace PG::CLI;
 
 namespace {
 	std::unique_ptr<Crystal::Command::ICommand> instance;
-	Crystal::OpenVDB::OpenVDBCommandFactory factory;
+	Crystal::OpenVDB::VDBCommandFactory factory;
 }
 
 OpenVDBCommand::OpenVDBCommand()
