@@ -14,7 +14,7 @@ using namespace PG::CLI;
 
 namespace {
 	std::unique_ptr<Crystal::Command::ICommand> instance;
-	Crystal::OpenVDB::VDBCommandFactory factory;
+	Crystal::VDB::VDBCommandFactory factory;
 }
 
 VDBCommand::VDBCommand()
