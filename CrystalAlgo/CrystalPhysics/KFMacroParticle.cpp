@@ -7,7 +7,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
-KFMacroParticle::KFMacroParticle(const double radius, const Vector3dd& position) :
+KFMacroParticle::KFMacroParticle(const float radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
 	selfMass(0.0f)

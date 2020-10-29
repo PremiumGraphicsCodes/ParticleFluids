@@ -51,7 +51,7 @@ void DFSPHParticle::calculateDpDt()
 	this->dpdt *= -density;
 }
 
-void DFSPHParticle::predictDensity(const double dt)
+void DFSPHParticle::predictDensity(const float dt)
 {
 	calculateDpDt();
 	predictedDensity = density + dt * dpdt;
@@ -86,7 +86,7 @@ void DFSPHParticle::calculateViscosity()
 	for (auto n : neighbors) {
 		const auto viscosityCoe = (this->constant->getViscosityCoe() + n->constant->getViscosityCoe()) * 0.5f;
 		const auto velocityDiff = (n->velocity - this->velocity);
-		const auto distance = glm::distance(getPosition(), n->getPosition());
+		const auto distance = Math::getDistance(getPosition(), n->getPosition());
 		this->force += viscosityCoe * velocityDiff * kernel->getCubicSpline(distance);
 
 		/*

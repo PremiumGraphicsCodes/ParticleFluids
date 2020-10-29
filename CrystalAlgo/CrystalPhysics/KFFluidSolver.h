@@ -23,7 +23,7 @@ public:
 		fluids.clear();
 		boundaries.clear();
 		surfaces.clear();
-		maxTimeStep = 0.03;
+		maxTimeStep = 0.03f;
 	}
 
 	void addFluidScene(KFFluidScene* scene) { this->fluids.push_back(scene); }
@@ -32,14 +32,14 @@ public:
 
 	void addSurface(const Math::Box3d& surface) { this->surfaces.push_back(surface); }
 
-	void setMaxTimeStep(const double maxTimeStep) { this->maxTimeStep = maxTimeStep; }
+	void setMaxTimeStep(const float maxTimeStep) { this->maxTimeStep = maxTimeStep; }
 
 	void simulate();
 
 	void step() override;
 
 private:
-	double calculateTimeStep(const std::vector<KFMacroParticle*>& particles);
+	float calculateTimeStep(const std::vector<KFMacroParticle*>& particles);
 
 	void solveBoundary(KFMacroParticle* particle, const double dt);
 	//void solveBoundary(const std::vector<MacroParticle*>& particles);
@@ -47,7 +47,7 @@ private:
 	std::list<KFFluidScene*> fluids;
 	std::list<KFFluidScene*> boundaries;
 	std::list<Math::Box3d> surfaces;
-	double maxTimeStep = 0.03;
+	float maxTimeStep = 0.03f;
 };
 
 	}

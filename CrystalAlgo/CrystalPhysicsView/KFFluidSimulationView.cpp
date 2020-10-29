@@ -23,10 +23,10 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	startButton("Start"),
 	resetButton("Reset"),
 	boundaryView("Boundary"),
-	pressureCoeView("PressureCoe", 100),
-	viscosityCoeView("ViscosityCoe", 10.0),
-	timeStepView("TimeStep", 0.025),
-	radiusView("SearchRadius", 1.0)
+	pressureCoeView("PressureCoe", 100.0f),
+	viscosityCoeView("ViscosityCoe", 10.0f),
+	timeStepView("TimeStep", 0.025f),
+	radiusView("SearchRadius", 1.0f)
 {
 	auto resetFunc = [=]() {
 		reset();

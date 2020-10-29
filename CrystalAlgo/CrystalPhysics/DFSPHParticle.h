@@ -40,7 +40,7 @@ public:
 
 	void calculateDpDt();
 
-	void predictDensity(const double dt);
+	void predictDensity(const float dt);
 
 	void calculateVelocityInDivergenceError(const float dt);
 

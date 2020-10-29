@@ -12,7 +12,7 @@ namespace Crystal {
 class KFMacroParticle : public Shape::IParticle
 {
 public:
-	KFMacroParticle(const double radius, const Math::Vector3dd& position);
+	KFMacroParticle(const float radius, const Math::Vector3dd& position);
 
 	~KFMacroParticle();
 

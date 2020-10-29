@@ -41,7 +41,7 @@ void KFFluidSolver::simulate()
 
 	const auto hashSize = fluidParticles.front()->getPoints().size() * fluidParticles.size();
 	const auto searchRadius = fluidParticles.front()->getRadius() * 2.25;
-	CompactSpaceHash3d spaceHash(searchRadius, hashSize);
+	CompactSpaceHash3d spaceHash(searchRadius, static_cast<int>( hashSize));
 	for (auto particle : fluidParticles) {
 		particle->updateMicros();
 		const auto& microParticles = particle->getPoints();
@@ -89,7 +89,7 @@ void KFFluidSolver::simulate()
 		}
 
 		// solve incompressibility.
-		double relaxationCoe = 0.5;
+		float relaxationCoe = 0.5f;
 		for (int i = 0; i < 2; ++i) {
 			for (auto particle : fluidParticles) {
 				particle->reset(false);
@@ -130,17 +130,17 @@ void KFFluidSolver::simulate()
 	}
 }
 
-double KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& particles)
+float KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& particles)
 {
-	double maxVelocity = 0.0;
+	float maxVelocity = 0.0f;
 	for (auto p : particles) {
-		maxVelocity = std::max<double>(maxVelocity, Math::getLengthSquared( p->getVelocity() ) );
+		maxVelocity = std::max<float>(maxVelocity, Math::getLengthSquared( p->getVelocity() ) );
 	}
 	if (maxVelocity < 1.0e-3) {
 		return maxTimeStep;
 	}
 	maxVelocity = std::sqrt(maxVelocity);
-	const auto dt = 0.4 * particles.front()->getRadius() * 2.0 / maxVelocity;
+	const auto dt = 0.4f * particles.front()->getRadius() * 2.0f / maxVelocity;
 	return maxTimeStep;
 	//return std::min(dt, maxTimeStep);
 }

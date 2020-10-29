@@ -13,7 +13,7 @@ using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
 DFFluidSolver::DFFluidSolver() :
-	maxTimeStep(0.01)
+	maxTimeStep(0.01f)
 {}
 
 void DFFluidSolver::step()

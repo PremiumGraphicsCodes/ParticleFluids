@@ -25,7 +25,7 @@ float PBSPHBoundaryParticle::getDensityRatio() const
 
 float PBSPHBoundaryParticle::getMass() const
 {
-	const auto diameter = radius * 2.0;
+	const auto diameter = radius * 2.0f;
 	return scene->getRestDensity() * diameter * diameter * diameter;
 }
 
