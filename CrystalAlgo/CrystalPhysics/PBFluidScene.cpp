@@ -8,9 +8,9 @@ using namespace Crystal::Physics;
 
 PBFluidScene::PBFluidScene(const int id, const std::string& name) :
 	IScene(id, name),
-	kernel(1.0),
-	restDensity(1.0),
-	stiffness(0.05),
+	kernel(1.0f),
+	restDensity(1.0f),
+	stiffness(0.05f),
 	viscosity(0.1f),
 	_isBoundary(false)
 {
@@ -42,12 +42,12 @@ Box3d PBFluidScene::getBoundingBox() const
 	return bb;
 }
 
-void PBFluidScene::setEffectLength(const double effectLength)
+void PBFluidScene::setEffectLength(const float effectLength)
 {
 	this->kernel = SPHKernel(effectLength);
 }
 
-void PBFluidScene::setRestDensity(const double restDensity)
+void PBFluidScene::setRestDensity(const float restDensity)
 {
 	this->restDensity = restDensity;
 }

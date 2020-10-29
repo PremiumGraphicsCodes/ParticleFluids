@@ -33,9 +33,9 @@ public:
 
 	float getRestDensity() const { return restDensity; }
 
-	void setEffectLength(const double effectLength);
+	void setEffectLength(const float effectLength);
 
-	void setRestDensity(const double restDensity);
+	void setRestDensity(const float restDensity);
 
 	void setStiffness(const float s) { this->stiffness = s; }
 

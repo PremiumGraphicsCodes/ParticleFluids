@@ -21,4 +21,5 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	else {
 		assert(false);
 	}
+	return nullptr;
 }

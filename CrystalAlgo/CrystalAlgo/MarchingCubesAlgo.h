@@ -13,7 +13,7 @@ class MarchingCubesAlgo
 {
 public:
 
-	int build(const Shape::Volume<double>& volume, const double isoLevel);
+	size_t build(const Shape::Volume<double>& volume, const double isoLevel);
 
 	int march(const MCCell& cell, const double isoLevel);
 

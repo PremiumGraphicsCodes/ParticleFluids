@@ -6,7 +6,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
 namespace {
-	static const float PIf = 3.14159265358979323846;
+	static const float PIf = 3.14159265358979323846f;
 }
 
 SPHKernel::SPHKernel(const float effectLength) :
@@ -67,7 +67,7 @@ float SPHKernel::getPoly6KernelLaplacian(const float distance)
 	if (distance > effectLength) {
 		return 0.0f;
 	}
-	const auto poly6ConstantLaplacian = 945.0f / (32.0f * PI * pow(effectLength, 9));
+	const auto poly6ConstantLaplacian = 945.0f / (32.0f * PIf * pow(effectLength, 9));
 	return poly6ConstantLaplacian * (effectLength * effectLength - distance * distance)
 		* (42.0f * distance * distance - 18.0f * effectLength * effectLength);
 }
@@ -86,7 +86,7 @@ float SPHKernel::getSpikyKernelGradientWeight(const float distance)
 	if (distance > effectLength) {
 		return 0.0;
 	}
-	const auto constant = 45.0f / (PI * pow(effectLength, 6));
+	const auto constant = 45.0f / (PIf * pow(effectLength, 6));
 	return constant * pow(effectLength - distance, 2) / distance;
 }
 
@@ -107,14 +107,14 @@ float SPHKernel::getViscosityKernelLaplacian(const float distance)
 	if (distance > effectLength) {
 		return 0.0f;
 	}
-	const auto constant = 45.0f / (PI * pow(effectLength, 6));
+	const auto constant = 45.0f / (PIf * pow(effectLength, 6));
 	return (effectLength - distance) * constant;
 }
 
 float SPHKernel::getCubicSpline(const float distance)
 {
 	const auto q = distance * 2 / (effectLength);
-	const auto coe = effectLength * effectLength * effectLength * 3.0f / PI;
+	const auto coe = effectLength * effectLength * effectLength * 3.0f / PIf;
 
 	if (q < 1) {
 		return coe * (2.0f / 3.0f - q * q + 0.5f * q * q * q);

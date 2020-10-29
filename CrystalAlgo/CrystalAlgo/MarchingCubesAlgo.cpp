@@ -11,7 +11,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Algo;
 using namespace Crystal::Algo::MarchingCubesTable;
 
-int MarchingCubesAlgo::build(const Volume<double>& volume, const double isoLevel)
+size_t MarchingCubesAlgo::build(const Volume<double>& volume, const double isoLevel)
 {
 	const auto unum = volume.getResolutions()[0];
 	const auto vnum = volume.getResolutions()[1];

@@ -49,7 +49,9 @@ void ScreenIdShader::render(const Graphics::Camera& camera)
 
 DrawableID ScreenIdShader::getId(const double x, const double y)
 {
-	return getIdInTexCoord(x * texture->getWidth(), y * texture->getHeight());
+	const auto ix = static_cast<int>(x * texture->getWidth());
+	const auto iy = static_cast<int>(y * texture->getHeight());
+	return getIdInTexCoord(ix, iy);
 }
 
 DrawableID ScreenIdShader::getIdInTexCoord(const int x, const int y)
