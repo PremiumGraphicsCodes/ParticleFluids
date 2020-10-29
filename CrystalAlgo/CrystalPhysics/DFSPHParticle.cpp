@@ -6,13 +6,13 @@ using namespace Crystal::Physics;
 
 float DFSPHParticle::getMass() const
 {
-	const auto diameter = radius * 2.0;
+	const auto diameter = radius * 2.0f;
 	return constant->getDensity() * diameter * diameter * diameter;
 }
 
 void DFSPHParticle::calculateDensity()
 {
-	this->density = 0.0;
+	this->density = 0.0f;
 	this->density += (kernel->getCubicSpline(0.0f) * this->getMass());
 	for (auto n : neighbors) {
 		const auto distance = glm::distance(this->getPosition(), n->getPosition());

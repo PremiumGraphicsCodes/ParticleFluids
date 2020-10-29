@@ -31,18 +31,18 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
-	void setPressureCoe(const double coe) { this->pressureCoe = coe; }
+	void setPressureCoe(const float coe) { this->pressureCoe = coe; }
 
-	double getPressureCoe() const { return this->pressureCoe; }
+	float getPressureCoe() const { return this->pressureCoe; }
 
-	void setViscosityCoe(const double coe) { this->viscosityCoe = coe; }
+	void setViscosityCoe(const float coe) { this->viscosityCoe = coe; }
 
-	double getViscosityCoe() const { return this->viscosityCoe; }
+	float getViscosityCoe() const { return this->viscosityCoe; }
 
 private:
 	std::list<KFMacroParticle*> particles;
-	double pressureCoe;
-	double viscosityCoe;
+	float pressureCoe;
+	float viscosityCoe;
 	std::unique_ptr<KFFluidScenePresenter> controller;
 };
 

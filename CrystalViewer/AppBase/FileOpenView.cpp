@@ -19,7 +19,8 @@ void FileOpenView::addFilter(char const* filter)
 void FileOpenView::onShow()
 {
 	//char const * lFilterPatterns[2] = { "*.stl", "*.obj" };
-	filename = tinyfd_openFileDialog("Open", "", filters.size(), filters.data(), nullptr, 0);
+	const auto filerCount = static_cast<int>(filters.size());
+	filename = tinyfd_openFileDialog("Open", "", filerCount, filters.data(), nullptr, 0);
 }
 
 std::string FileOpenView::getFileName() const

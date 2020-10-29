@@ -16,7 +16,8 @@ void FileSaveView::addFilter(char const* filter)
 
 void FileSaveView::onShow()
 {
-	filename = tinyfd_saveFileDialog("Save", "", filters.size(), filters.data(), nullptr);
+	const auto filterCount = static_cast<int>(filters.size());
+	filename = tinyfd_saveFileDialog("Save", "", filterCount, filters.data(), nullptr);
 }
 
 std::string FileSaveView::getFileName() const

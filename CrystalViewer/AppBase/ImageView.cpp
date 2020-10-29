@@ -31,7 +31,9 @@ void ImageView::onShow()
 {
 	// Turn the RGBA pixel data into an OpenGL texture:
 	glBindTexture(GL_TEXTURE_2D, textureId);
-	ImGui::Image((void*)(intptr_t)textureId, ImVec2(image.getWidth(), image.getHeight()));
+	const auto width = static_cast<float>( image.getWidth() );
+	const auto height = static_cast<float>(image.getHeight());
+	ImGui::Image((void*)(intptr_t)textureId, ImVec2( width, height));
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 

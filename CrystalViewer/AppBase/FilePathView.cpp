@@ -21,7 +21,8 @@ void FilePathView::addFilter(const char* filter)
 
 void FilePathView::onSelect()
 {
-	auto fileName = tinyfd_openFileDialog("Open", "", filters.size(), filters.data(), nullptr, 0);
+	const auto filterCount = static_cast<int>(filters.size());
+	auto fileName = tinyfd_openFileDialog("Open", "", filterCount, filters.data(), nullptr, 0);
 	if (fileName == nullptr) {
 		return;
 	}
