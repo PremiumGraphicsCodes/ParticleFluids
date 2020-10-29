@@ -5,7 +5,7 @@
 #include "../../Crystal/Math/Box3d.h"
 
 namespace Crystal {
-    namespace OpenVDB {
+    namespace VDB {
 
 class Converter {
 public:

@@ -7,7 +7,7 @@
 #include "VolumeImpl.h"
 #include "PolygonMeshImpl.h"
 
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 std::unique_ptr<PolygonMesh> VolumeToMeshConverter::toMesh(const Volume& volume)
 {   

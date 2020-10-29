@@ -6,7 +6,7 @@
 #include <memory>
 
 namespace Crystal {
-    namespace OpenVDB {
+    namespace VDB {
         class ParticleSystemImpl;
 
 class ParticleSystem : private UnCopyable

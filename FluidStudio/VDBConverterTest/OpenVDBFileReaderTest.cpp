@@ -2,7 +2,7 @@
 
 #include "../VDBConverter/OpenVDBFileReader.h"
 
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 TEST(OpenVDBFileReaderTest, TestRead)
 {

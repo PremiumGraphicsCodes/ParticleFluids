@@ -1,6 +1,6 @@
 #include "Converter.h"
 
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 openvdb::Vec3R Converter::toVDB(const Crystal::Math::Vector3dd& p)
 {
@@ -52,7 +52,7 @@ Crystal::Math::Vector3dd Converter::fromVDB(const openvdb::Vec3R& p)
     return Crystal::Math::Vector3dd(p[0], p[1], p[2]);
 }
 
-std::vector<Crystal::Math::Vector3df> Crystal::OpenVDB::Converter::fromVDBf(const std::vector<openvdb::Vec3s>& positions)
+std::vector<Crystal::Math::Vector3df> Crystal::VDB::Converter::fromVDBf(const std::vector<openvdb::Vec3s>& positions)
 {
     std::vector<Crystal::Math::Vector3df> dest(positions.size());
     for (int i = 0; i < positions.size(); ++i) {

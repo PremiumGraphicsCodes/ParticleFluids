@@ -1,6 +1,6 @@
 #include "ParticleSystemImpl.h"
 
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 void ParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::Real& radius, const openvdb::Vec3R& v)
 {

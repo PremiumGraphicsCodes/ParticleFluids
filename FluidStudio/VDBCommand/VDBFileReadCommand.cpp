@@ -8,8 +8,7 @@
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
-using namespace Crystal::OpenVDB;
-
+using namespace Crystal::VDB;
 
 VDBFileReadCommand::Args::Args() :
 	filePath(::FilePathLabel, "")

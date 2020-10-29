@@ -6,7 +6,7 @@
 //#include "../../Crystal/Shape/PolygonMesh.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 PolygonMesh::PolygonMesh() :
 	impl( new PolygonMeshImpl() )

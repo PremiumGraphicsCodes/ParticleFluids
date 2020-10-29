@@ -7,7 +7,7 @@
 #include "../../CrystalViewer/Command/CommandFactory.h"
 
 namespace Crystal {
-	namespace OpenVDB {
+	namespace VDB {
 
 class VDBCommandFactory : public Command::ICommandFactory
 {

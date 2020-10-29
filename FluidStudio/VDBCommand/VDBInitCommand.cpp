@@ -4,7 +4,7 @@
 
 #include "../VDBConverter/OpenVDBAdapter.h"
 
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 using namespace Crystal::Scene;
 
 VDBInitCommand::Args::Args()

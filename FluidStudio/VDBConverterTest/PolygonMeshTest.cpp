@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
 
-#include "../OpenVDBConverter/PolygonMesh.h"
+#include "../VDBConverter/PolygonMesh.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 TEST(PolygonMeshTest, TestGetVertex)
 {

@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
-#include "../OpenVDBConverter/ParticleSystemToVolumeConverter.h"
+#include "../VDBConverter/ParticleSystemToVolumeConverter.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 TEST(ParticleSystemToVolumeConverterTest, TestToVolume)
 {

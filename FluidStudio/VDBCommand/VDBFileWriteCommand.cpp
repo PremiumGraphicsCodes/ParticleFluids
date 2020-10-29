@@ -8,7 +8,7 @@
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 VDBFileWriteCommand::Args::Args() :
 	particleSystemIds(::ParticleSystemIdsLabel, {}),

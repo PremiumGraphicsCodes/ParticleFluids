@@ -20,7 +20,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 OpenVDBMenu::OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas) :
 	IMenu(name, model, canvas)

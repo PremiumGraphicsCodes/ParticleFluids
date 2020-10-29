@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../VDBConverter/VolumeToMeshConverter.h"
 
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 TEST(VolumeToMeshConverterTest, Test)
 {

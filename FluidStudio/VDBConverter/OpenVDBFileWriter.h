@@ -4,7 +4,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 
 namespace Crystal {
-    namespace OpenVDB {
+    namespace VDB {
 
 class OpenVDBFileWriter
 {

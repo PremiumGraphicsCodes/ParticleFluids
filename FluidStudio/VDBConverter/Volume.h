@@ -6,7 +6,7 @@
 #include "../../Crystal/Math/Box3d.h"
 
 namespace Crystal {
-	namespace OpenVDB {
+	namespace VDB {
 		class VolumeImpl;
 
 class Volume : private UnCopyable

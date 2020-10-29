@@ -3,7 +3,7 @@
 #include "../VDBConverter/OpenVDBFileWriter.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 TEST(OpenVDBFileWriterTest, TestWrite)
 {

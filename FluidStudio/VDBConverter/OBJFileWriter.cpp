@@ -4,7 +4,7 @@
 
 #include <fstream>
 
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 bool OBJFileWriter::write(const std::string& filePath, const PolygonMesh& mesh)
 {

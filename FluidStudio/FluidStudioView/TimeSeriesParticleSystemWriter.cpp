@@ -10,7 +10,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 using namespace Crystal::Shape;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 TimeSeriesParticleSystemWriter::TimeSeriesParticleSystemWriter() :
 	step_(0),

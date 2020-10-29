@@ -2,7 +2,7 @@
 
 #include <openvdb/openvdb.h>
 
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 void OpenVDBAdapter::init()
 {

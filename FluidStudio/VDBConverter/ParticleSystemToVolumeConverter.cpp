@@ -9,7 +9,7 @@
 #include "Volume.h"
 
 using namespace openvdb;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 std::unique_ptr<Volume> ParticleSystemToVolumeConverter::toVolume(const ParticleSystem& particles)
 {

@@ -5,7 +5,7 @@
 #include <openvdb/points/PointConversion.h>
 
 using namespace Crystal::Math;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 namespace {
     openvdb::io::File file("");

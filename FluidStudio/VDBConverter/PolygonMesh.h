@@ -7,7 +7,7 @@ namespace Crystal {
 	namespace Shape {
 		class PolygonMesh;
 	}
-	namespace OpenVDB {
+	namespace VDB {
 		class PolygonMeshImpl;
 
 class PolygonMesh : private UnCopyable

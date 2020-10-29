@@ -4,7 +4,7 @@
 #include <string>
 
 namespace Crystal {
-	namespace OpenVDB {
+	namespace VDB {
 
 class OBJFileWriter
 {

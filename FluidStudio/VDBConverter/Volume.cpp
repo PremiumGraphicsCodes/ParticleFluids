@@ -4,7 +4,7 @@
 #include "Converter.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 using namespace openvdb;
 

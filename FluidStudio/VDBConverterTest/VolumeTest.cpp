@@ -2,7 +2,7 @@
 #include "../VDBConverter/Volume.h"
 
 //using namespace Crystal::Math;
-using namespace Crystal::OpenVDB;
+using namespace Crystal::VDB;
 
 TEST(VolumeTest, TestFill)
 {

@@ -3,7 +3,7 @@
 #include "../../CrystalViewer/Command/ICommand.h"
 
 namespace Crystal {
-	namespace OpenVDB {
+	namespace VDB {
 
 class VDBFileWriteCommand : public Command::ICommand
 {

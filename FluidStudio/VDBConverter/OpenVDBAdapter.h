@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Crystal {
-	namespace OpenVDB {
+	namespace VDB {
 
 class OpenVDBAdapter
 {

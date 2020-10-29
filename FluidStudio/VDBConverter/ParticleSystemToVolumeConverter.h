@@ -5,7 +5,7 @@
 #include "Volume.h"
 
 namespace Crystal {
-	namespace OpenVDB {
+	namespace VDB {
 
 class ParticleSystemToVolumeConverter
 {

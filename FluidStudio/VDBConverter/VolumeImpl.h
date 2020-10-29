@@ -3,7 +3,7 @@
 #include "openvdb/openvdb.h"
 
 namespace Crystal {
-	namespace OpenVDB {
+	namespace VDB {
 
 class VolumeImpl
 {
