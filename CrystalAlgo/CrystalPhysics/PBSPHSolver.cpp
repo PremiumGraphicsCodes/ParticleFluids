@@ -12,7 +12,7 @@ using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
 PBSPHSolver::PBSPHSolver() :
-	maxTimeStep(0.01)
+	maxTimeStep(0.01f)
 {}
 
 void PBSPHSolver::step()
@@ -40,7 +40,7 @@ void PBSPHSolver::simulate(const float maxTimeStep, const int maxIter)
 		p->predictPosition_(dt);
 	}
 
-	const auto searchLength = fluids.front()->getKernel()->getEffectLength() * 1.1;
+	const auto searchLength = fluids.front()->getKernel()->getEffectLength() * 1.1f;
 	IndexedSortSearchAlgo finder(searchLength);
 	for (auto p : particles) {
 		finder.add(p);
@@ -118,17 +118,17 @@ void PBSPHSolver::simulate(const float maxTimeStep, const int maxIter)
 	}
 }
 
-double PBSPHSolver::calculateTimeStep(const std::vector<PBSPHParticle*>& particles)
+float PBSPHSolver::calculateTimeStep(const std::vector<PBSPHParticle*>& particles)
 {
-	double maxVelocity = 0.0;
+	float maxVelocity = 0.0f;
 	for (auto p : particles) {
-		maxVelocity = std::max<double>(maxVelocity, Math::getLengthSquared(p->getVelocity()));
+		maxVelocity = std::max<float>(maxVelocity, Math::getLengthSquared(p->getVelocity()));
 	}
 	if (maxVelocity < 1.0e-3) {
 		return maxTimeStep;
 	}
 	maxVelocity = std::sqrt(maxVelocity);
-	const auto dt = 0.4 * particles.front()->getRadius() * 2.0 / maxVelocity;
+	const auto dt = 0.4f * particles.front()->getRadius() * 2.0f / maxVelocity;
 	return maxTimeStep;
 	//return std::min(dt, maxTimeStep);
 }

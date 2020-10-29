@@ -28,7 +28,7 @@ DFSPHFluidSimulationView::DFSPHFluidSimulationView(World* model, Canvas* canvas)
 	IOkCancelView("DFSPHFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	timeStepView("TimeStep", 0.001),
+	timeStepView("TimeStep", 0.001f),
 	viscosityCoeView("ViscosityCoe", 1000.0f),
 	boundaryView("Boundary")
 {

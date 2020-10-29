@@ -2,7 +2,7 @@
 
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
-#include "../../CrystalViewer/AppBase/DoubleView.h"
+#include "../../CrystalViewer/AppBase/FloatView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
 
 namespace Crystal {
@@ -27,8 +27,8 @@ private:
 	Physics::DFFluidScene* fluidScene;
 	Button startButton;
 	Button resetButton;
-	DoubleView timeStepView;
-	DoubleView viscosityCoeView;
+	FloatView timeStepView;
+	FloatView viscosityCoeView;
 	Box3dView boundaryView;
 	int newId;
 };

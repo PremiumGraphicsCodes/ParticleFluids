@@ -2,7 +2,7 @@
 
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
-#include "../../CrystalViewer/AppBase/DoubleView.h"
+#include "../../CrystalViewer/AppBase/FloatView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
 
@@ -31,12 +31,12 @@ private:
 	ObjectSelectView boundarySelectView;
 	Button startButton;
 	Button resetButton;
-	DoubleView timeStepView;
-	DoubleView radiusView;
-	DoubleView effectLengthView;
-	DoubleView densityView;
-	DoubleView stiffnessView;
-	DoubleView vicsocityView;
+	FloatView timeStepView;
+	FloatView radiusView;
+	FloatView effectLengthView;
+	FloatView densityView;
+	FloatView stiffnessView;
+	FloatView vicsocityView;
 	Box3dView boundaryView;
 };
 

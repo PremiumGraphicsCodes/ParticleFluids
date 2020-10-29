@@ -15,7 +15,7 @@ void DFSPHParticle::calculateDensity()
 	this->density = 0.0f;
 	this->density += (kernel->getCubicSpline(0.0f) * this->getMass());
 	for (auto n : neighbors) {
-		const auto distance = glm::distance(this->getPosition(), n->getPosition());
+		const float distance = Math::getDistance(this->getPosition(), n->getPosition());
 		this->density += (kernel->getCubicSpline(distance) * n->getMass());
 	}
 }
@@ -25,7 +25,7 @@ void DFSPHParticle::calculateAlpha()
 	this->alpha = 0.0;
 
 	Vector3dd a(0,0,0);
-	double b = 0.0;
+	float b = 0.0f;
 	for (auto n : neighbors) {
 		const auto v = this->position - n->position;
 		const auto weight = (kernel->getCubicSplineGradient(v) * (float)n->getMass());

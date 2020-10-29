@@ -19,6 +19,6 @@ void PolygonMeshView::onShow()
 
 void PolygonMeshView::setValue(PolygonMesh* value)
 {
-	vertexCount.setValue(value->getVertices().size());
-	faceCount.setValue(value->getFaces().size());
+	vertexCount.setValue(static_cast<int>( value->getVertices().size()));
+	faceCount.setValue(static_cast<int>( value->getFaces().size()) );
 }

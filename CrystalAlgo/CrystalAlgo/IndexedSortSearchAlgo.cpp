@@ -1,6 +1,8 @@
 #include "IndexedSortSearchAlgo.h"
 #include "IndexedParticle.h"
 
+#include <algorithm>
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Search;

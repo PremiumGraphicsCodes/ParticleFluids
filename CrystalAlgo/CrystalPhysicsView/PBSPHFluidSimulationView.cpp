@@ -22,15 +22,15 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	IOkCancelView("PBFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	timeStepView("TimeStep", 0.01),
-	radiusView("Radius", 1.0),
-	effectLengthView("EffectLength", 2.25),
-	densityView("Density", 1.0),
+	timeStepView("TimeStep", 0.01f),
+	radiusView("Radius", 1.0f),
+	effectLengthView("EffectLength", 2.25f),
+	densityView("Density", 1.0f),
 	boundaryView("Boundary"),
 	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
 	boundarySelectView("Boundary", model, canvas, Scene::SceneType::ParticleSystemScene),
-	stiffnessView("Stiffness", 0.05),
-	vicsocityView("Viscosity", 0.1)
+	stiffnessView("Stiffness", 0.05f),
+	vicsocityView("Viscosity", 0.1f)
 {
 	resetButton.setFunction([=]() { onReset(); });
 	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));

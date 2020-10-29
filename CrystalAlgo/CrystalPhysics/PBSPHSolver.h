@@ -32,7 +32,7 @@ public:
 
 	//std::vector<PBSPHParticle*> getParticles() const { return particles; }
 
-	void setTimeStep(const double dt) { this->maxTimeStep = dt; }
+	void setTimeStep(const float dt) { this->maxTimeStep = dt; }
 
 	//void setEffectLength(const float effectLength) { this->effectLength = effectLength; }
 
@@ -40,10 +40,10 @@ private:
 	std::vector<PBFluidScene*> fluids;
 	Math::Box3d boundary;
 	Math::Vector3df externalForce;
-	double maxTimeStep;
+	float maxTimeStep;
 	//float effectLength;
 
-	double calculateTimeStep(const std::vector<PBSPHParticle*>& particles);
+	float calculateTimeStep(const std::vector<PBSPHParticle*>& particles);
 };
 
 	}
