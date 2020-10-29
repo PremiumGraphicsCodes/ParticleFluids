@@ -6,14 +6,14 @@
 
 namespace PG {
 	namespace FS {
-
-class FSProjFileWriter
-{
-public:
-	nlohmann::json write(const FSScene& scene);
-
-	bool write(const std::string& filePath);
-};
+//
+//class FSProjFileWriter
+//{
+//public:
+//	nlohmann::json write(const FSScene& scene);
+//
+//	bool write(const std::string& filePath);
+//};
 
 	}
 }

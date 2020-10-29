@@ -48,7 +48,7 @@
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\OpenVDBConverter\OpenVDBConverter.vcxproj">
+    <ProjectReference Include="..\VDBConverter\VDBConverter.vcxproj">
       <Project>{516a29d3-e143-4d8a-8067-24b2d24a6643}</Project>
     </ProjectReference>
   </ItemGroup>

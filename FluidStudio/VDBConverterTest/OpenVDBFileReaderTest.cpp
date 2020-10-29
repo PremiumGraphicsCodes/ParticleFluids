@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../OpenVDBConverter/OpenVDBFileReader.h"
+#include "../VDBConverter/OpenVDBFileReader.h"
 
 using namespace Crystal::OpenVDB;
 

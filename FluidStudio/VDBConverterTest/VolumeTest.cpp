@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../OpenVDBConverter/Volume.h"
+#include "../VDBConverter/Volume.h"
 
 //using namespace Crystal::Math;
 using namespace Crystal::OpenVDB;

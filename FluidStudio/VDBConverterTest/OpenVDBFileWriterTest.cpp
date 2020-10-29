@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../OpenVDBConverter/OpenVDBFileWriter.h"
+#include "../VDBConverter/OpenVDBFileWriter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::OpenVDB;

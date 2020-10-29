@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../OpenVDBConverter/OpenVDBAdapter.h"
+#include "../VDBConverter/OpenVDBAdapter.h"
 
 int main(int argc, char** argv) {
 //	std::cout << "hello" << std::endl;
