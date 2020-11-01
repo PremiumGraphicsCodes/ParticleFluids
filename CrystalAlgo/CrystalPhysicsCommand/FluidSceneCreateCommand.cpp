@@ -45,6 +45,8 @@ bool FluidSceneCreateCommand::execute(World* world)
 	const auto& positions = particles->getShape()->getPositions();
 
 	auto fluidScene = new KFFluidScene(world->getNextSceneId(), args.name.getValue());
+	fluidScene->setPressureCoe(args.stiffness.getValue());
+	fluidScene->setViscosityCoe(args.viscosity.getValue());
 	world->getScenes()->addScene(fluidScene);
 
 	results.newId.setValue(fluidScene->getId());

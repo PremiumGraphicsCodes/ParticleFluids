@@ -54,13 +54,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluidStudio", "FluidStudio\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysics", "..\CrystalAlgo\CrystalPhysics\CrystalPhysics.vcxproj", "{4C0EFD78-680E-45C9-9828-9B674EE70DF0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBConverter", "..\FluidStudio\VDBConverter\VDBConverter.vcxproj", "{516A29D3-E143-4D8A-8067-24B2D24A6643}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBConverter", "..\CrystalVDB\VDBConverter\VDBConverter.vcxproj", "{516A29D3-E143-4D8A-8067-24B2D24A6643}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PGPhysicsCLI", "PGPhysicsCLI\PGPhysicsCLI.vcxproj", "{6BEE5CE6-C564-433F-909B-FFB0ED55731E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysicsCommand", "..\CrystalAlgo\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj", "{09EE8B6A-2D6F-4B9E-83FF-6A40D03BC465}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBCommand", "..\FluidStudio\VDBCommand\VDBCommand.vcxproj", "{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VDBCommand", "..\CrystalVDB\VDBCommand\VDBCommand.vcxproj", "{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PGVDBCLI", "PGVDBCLI\PGVDBCLI.vcxproj", "{C41F40D4-75C1-430C-AA3C-865AD4CD0B53}"
 EndProject
