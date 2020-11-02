@@ -11,6 +11,9 @@ namespace FluidStudio.Physics
 {
     public class PhysicsScene
     {
+        public ReactiveProperty<string> Name { get; }
+            = new ReactiveProperty<string>("PhysicsScene01");
+
         public ReactiveCollection<FluidScene> Fluids { get; }
             = new ReactiveCollection<FluidScene>();
 

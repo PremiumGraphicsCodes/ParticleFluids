@@ -1,10 +1,4 @@
 ﻿using Reactive.Bindings;
-using Reactive.Bindings.ObjectExtensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FluidStudio.Physics
 {
@@ -13,14 +7,13 @@ namespace FluidStudio.Physics
         public ReactiveProperty<PhysicsSceneViewModel> Children { get; }
             = new ReactiveProperty<PhysicsSceneViewModel>();
 
-        public ReactiveProperty<string> Name { get; }
-            = new ReactiveProperty<string>();
+        public ReadOnlyReactiveProperty<string> Name { get; }
         public ReactiveCollection<int> Ids { get; }
             = new ReactiveCollection<int>();
 
-        public PhysicsSceneViewModel()
+        public PhysicsSceneViewModel(PhysicsScene scene)
         {
-            Name.Value = "Name";
+            Name = scene.Name.ToReadOnlyReactiveProperty();
             Ids.Add(1);
         }
     }

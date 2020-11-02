@@ -6,13 +6,13 @@ namespace FluidStudio.Physics
 {
     public class PhysicsSceneListViewModel
     {
-        public ReactiveCollection<PhysicsSceneViewModel> Items { get; }
-            = new ReactiveCollection<PhysicsSceneViewModel>();
+        public ReadOnlyReactiveCollection<PhysicsSceneViewModel> Items { get; }
 
-        public PhysicsSceneListViewModel(IRegionManager regionManager, SceneList world)
+        public PhysicsSceneListViewModel(IRegionManager regionManager, SceneList world, MainModel mainModel)
         {
-            Items.Add(new PhysicsSceneViewModel());
+            Items = mainModel.PhysicsModel.Scenes.ToReadOnlyReactiveCollection(x => new PhysicsSceneViewModel(x));
             /*
+            Items.Add(new PhysicsSceneViewModel());
             this.world = world;
             this.regionManager = regionManager;
             Items = world.Scenes.ToReadOnlyReactiveCollection();

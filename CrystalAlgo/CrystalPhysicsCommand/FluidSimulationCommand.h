@@ -7,6 +7,7 @@ namespace Crystal {
 
 class FluidSimulationCommand : public Command::ICommand
 {
+public:
 	struct Args : Command::IArgs
 	{
 		Command::Arg<std::vector<int>> fluidSceneIds;

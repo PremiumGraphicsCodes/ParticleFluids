@@ -43,7 +43,7 @@ namespace FluidStudio
             this.CameraControlViewModel = new CameraControlViewModel(world, Canvas);
 
             this.SceneListViewModel = new SceneListViewModel(regionManager, world);
-            this.PhysicsSceneListViewModel = new PhysicsSceneListViewModel(regionManager, world);
+            this.PhysicsSceneListViewModel = new PhysicsSceneListViewModel(regionManager, world, mainModel);
         }
 
         private void OnNavigate(string name)
