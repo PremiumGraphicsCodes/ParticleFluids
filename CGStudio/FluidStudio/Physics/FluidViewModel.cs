@@ -3,7 +3,6 @@ using PG.Control.UI;
 using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
-using Labels = PG.FluidSceneCreateLabels;
 
 namespace FluidStudio.Physics
 {
@@ -14,31 +13,29 @@ namespace FluidStudio.Physics
         public ReactiveProperty<double> Density { get; }
             = new ReactiveProperty<double>(1000.0);
 
-        public ReactiveProperty<double> Stiffness { get; }
-            = new ReactiveProperty<double>(100.0);
+        public ReactiveProperty<float> Stiffness { get; }
+            = new ReactiveProperty<float>(100.0f);
 
-        public ReactiveProperty<double> Viscosity { get; }
-            = new ReactiveProperty<double>(10.0);
+        public ReactiveProperty<float> Viscosity { get; }
+            = new ReactiveProperty<float>(10.0f);
 
         public ReactiveCommand AddCommand { get; }
             = new ReactiveCommand();
 
-        public FluidViewModel(SceneList world, Canvas3d canvas)
+        public FluidViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.ParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
-            this.AddCommand.Subscribe(() => OnAdd(world));
+            this.AddCommand.Subscribe(() => OnAdd(model, world));
             //this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
-        private void OnAdd(SceneList world)
+        private void OnAdd(MainModel model, SceneList world)
         {
-            var command = new PG.CLI.PhysicsCommand(Labels.CommandNameLabel);
-            command.SetArg(Labels.ParticleSystemIdLabel, this.ParticleSystemSelectViewModel.Id.Value);
-            command.SetArg(Labels.StiffnessLabel, this.Stiffness.Value);
-            command.SetArg(Labels.ViscosityLabel, this.Viscosity.Value);
-            command.SetArg(Labels.NameLabel, "NewFluid");
-            command.Execute(world.Adapter);
-            var newId = command.GetResult<int>(Labels.NewIdLabel);
+            var particleSystemId = ParticleSystemSelectViewModel.Id.Value;
+            var stiffness = Stiffness.Value;
+            var viscosity = Viscosity.Value;
+            var scene = new FluidScene(world, particleSystemId, stiffness, viscosity);
+            model.PhysicsModel.Scenes[0].Fluids.Add(scene);
         }
     }
 }

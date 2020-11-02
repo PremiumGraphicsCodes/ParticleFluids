@@ -9,4 +9,11 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
+	public class FluidSimulationLabels
+	{
+		public const string CommandNameLabel = "FluidSimulationCommand";
+		public const string FluidSceneIdsLabel = "FluidSceneIds";
+		public const string TimeStepLabel = "TimeStep";
+	}
+
 }

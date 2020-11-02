@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace FluidStudio.Physics
 {
-    class BoundaryScene
+
+    public class PhysicsModel
     {
+        public ReactiveCollection<PhysicsScene> Scenes { get; }
+            = new ReactiveCollection<PhysicsScene>();
 
-    }
+        public PhysicsModel()
+        {
+            this.Scenes.Add(new PhysicsScene());
+        }
 
-    class PhysicsScene
-    {
-        public ReactiveProperty<FluidScene> Fluids { get; }
-            = new ReactiveProperty<FluidScene>();
-
-        public ReactiveProperty<BoundaryScene> Boundaries { get; }
-            = new ReactiveProperty<BoundaryScene>();
-    }
-
-    class PhysicsModel
-    {
-        public ReactiveProperty<PhysicsScene> Scenes { get; }
-            = new ReactiveProperty<PhysicsScene>(); 
+        public void Simulate(float timeStep)
+        {
+            foreach(var scene in Scenes)
+            {
+                
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FluidStudio.VDB;
+﻿using FluidStudio.Physics;
+using FluidStudio.VDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,13 @@ namespace FluidStudio
     public class MainModel
     {
         public VDBModel VDBModel { get; }
-        
+
+        public PhysicsModel PhysicsModel { get; }
+
         public MainModel()
         {
             this.VDBModel = new VDBModel();
+            this.PhysicsModel = new PhysicsModel();
         }
     }
 }

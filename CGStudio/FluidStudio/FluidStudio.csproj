@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Physics\FluidViewModel.cs" />
     <Compile Include="Physics\PhysicsModel.cs" />
+    <Compile Include="Physics\PhysicsScene.cs" />
     <Compile Include="Scene\ParticleSystem\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
