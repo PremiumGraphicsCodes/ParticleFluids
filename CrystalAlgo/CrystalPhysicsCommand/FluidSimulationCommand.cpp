@@ -29,5 +29,6 @@ bool FluidSimulationCommand::execute(World* world)
 		auto scene = world->getScenes()->findSceneById<KFFluidScene*>(id);
 		solver.addFluidScene(scene);
 	}
+	solver.step();
 	return true;
 }
