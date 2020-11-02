@@ -1,4 +1,5 @@
-﻿using Reactive.Bindings;
+﻿using PG.CLI;
+using Reactive.Bindings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,22 +9,14 @@ using System.Threading.Tasks;
 namespace FluidStudio.Physics
 {
 
-    public class PhysicsModel
+    public class PhysicsSceneList
     {
         public ReactiveCollection<PhysicsScene> Scenes { get; }
             = new ReactiveCollection<PhysicsScene>();
 
-        public PhysicsModel()
+        public PhysicsSceneList()
         {
             this.Scenes.Add(new PhysicsScene());
-        }
-
-        public void Simulate(float timeStep)
-        {
-            foreach(var scene in Scenes)
-            {
-                
-            }
         }
     }
 }

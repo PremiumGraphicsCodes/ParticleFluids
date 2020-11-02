@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FluidStudio"
         xmlns:host="clr-namespace:HwndExtensions.Host;assembly=HwndExtensions"
         xmlns:cgstudio="clr-namespace:PG.CGStudio;assembly=PGControl"
-        xmlns:prism="http://prismlibrary.com/" xmlns:scene="clr-namespace:FluidStudio.Scene"
+        xmlns:prism="http://prismlibrary.com/" xmlns:scene="clr-namespace:FluidStudio.Scene" xmlns:physics="clr-namespace:FluidStudio.Physics"
               prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
@@ -59,6 +59,9 @@
             <TabControl Grid.Column="0">
                 <TabItem Header="Scene">
                     <scene:SceneListView DataContext="{Binding SceneListViewModel}"/>
+                </TabItem>
+                <TabItem Header="Physics">
+                    <physics:PhysicsSceneListView/>
                 </TabItem>
             </TabControl>
 

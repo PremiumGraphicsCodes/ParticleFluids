@@ -107,6 +107,7 @@
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
+    <Compile Include="FileIO\FSProjFileWriter.cs" />
     <Compile Include="MainModel.cs" />
     <Compile Include="PhysicsLabels.cs" />
     <Compile Include="Physics\FluidScene.cs" />
@@ -114,8 +115,13 @@
       <DependentUpon>FluidView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Physics\FluidViewModel.cs" />
-    <Compile Include="Physics\PhysicsModel.cs" />
+    <Compile Include="Physics\PhysicsSceneList.cs" />
     <Compile Include="Physics\PhysicsScene.cs" />
+    <Compile Include="Physics\PhysicsSceneListView.xaml.cs">
+      <DependentUpon>PhysicsSceneListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Physics\PhysicsSceneListViewModel.cs" />
+    <Compile Include="Physics\PhysicsSceneViewModel.cs" />
     <Compile Include="Scene\ParticleSystem\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
@@ -151,6 +157,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Physics\FluidView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Physics\PhysicsSceneListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
