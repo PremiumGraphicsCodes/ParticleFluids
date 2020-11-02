@@ -1,20 +1,17 @@
 ﻿using PG.Scene;
 using Prism.Regions;
 using Reactive.Bindings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FluidStudio.Physics
 {
     public class PhysicsSceneListViewModel
     {
-        public ReadOnlyReactiveCollection<PhysicsSceneListViewModel> Items { get; }
+        public ReactiveCollection<PhysicsSceneViewModel> Items { get; }
+            = new ReactiveCollection<PhysicsSceneViewModel>();
 
         public PhysicsSceneListViewModel(IRegionManager regionManager, SceneList world)
         {
+            Items.Add(new PhysicsSceneViewModel());
             /*
             this.world = world;
             this.regionManager = regionManager;

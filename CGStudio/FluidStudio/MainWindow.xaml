@@ -61,7 +61,7 @@
                     <scene:SceneListView DataContext="{Binding SceneListViewModel}"/>
                 </TabItem>
                 <TabItem Header="Physics">
-                    <physics:PhysicsSceneListView/>
+                    <physics:PhysicsSceneListView DataContext="{Binding PhysicsSceneListViewModel}"/>
                 </TabItem>
             </TabControl>
 
