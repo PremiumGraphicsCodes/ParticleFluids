@@ -189,3 +189,10 @@ void KFFluidSolver::solveBoundary(KFMacroParticle* particle, const double dt)
 		}
 	}
 }
+
+void KFFUpdater::step()
+{
+	for (auto fluid : fluids) {
+		fluid->getPresenter()->updateView();
+	}
+}

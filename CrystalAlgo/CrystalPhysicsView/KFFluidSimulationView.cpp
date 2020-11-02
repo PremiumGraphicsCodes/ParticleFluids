@@ -18,6 +18,10 @@ using namespace Crystal::UI;
 using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
+namespace {
+}
+
+
 KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("FluidSimulation", model, canvas),
 	startButton("Start"),
@@ -57,8 +61,10 @@ void KFFluidSimulationView::onOk()
 	this->newId = fluidScene->getId();
 
 	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	updator.add(fluidScene);
 
 	getWorld()->addAnimation(&simulator);
+	getWorld()->addAnimation(&updator);
 
 	Command::Command command;
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);

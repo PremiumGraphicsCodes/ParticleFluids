@@ -50,5 +50,19 @@ private:
 	float maxTimeStep = 0.03f;
 };
 
+class KFFUpdater : public Scene::IAnimator
+{
+public:
+	KFFUpdater() {}
+
+	void add(Physics::KFFluidScene* f) { fluids.push_back(f); }
+
+	void step() override;
+
+private:
+	std::list<Physics::KFFluidScene*> fluids;
+};
+
+
 	}
 }
