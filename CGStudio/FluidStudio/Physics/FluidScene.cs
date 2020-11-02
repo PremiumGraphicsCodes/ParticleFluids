@@ -32,7 +32,12 @@ namespace FluidStudio.Physics
             this.id = command.GetResult<int>(Labels.NewIdLabel);
             canvas.BuildShader(world, this.Id);
             canvas.Render();
+        }
 
+        public void SendShader(SceneList world, Canvas3d canvas)
+        {
+            canvas.SendShader(world, id);
+            canvas.Render();
         }
     }
 }

@@ -125,9 +125,11 @@ void KFFluidSolver::simulate()
 	std::cout << densityError << std::endl;
 
 
+	/*
 	for (auto fluid : fluids) {
 		fluid->getPresenter()->updateView();
 	}
+	*/
 }
 
 float KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& particles)

@@ -20,6 +20,11 @@ namespace PG.Control.Math
         public Box3d Value
         {
             get { return new Box3d(MinViewModel.Value, MaxViewModel.Value); }
+            set
+            {
+                this.MinViewModel.Value = value.Min;
+                this.MaxViewModel.Value = value.Max;
+            }
         }
     }
 }

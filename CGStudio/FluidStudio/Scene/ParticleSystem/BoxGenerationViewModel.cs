@@ -21,16 +21,17 @@ namespace FluidStudio.Scene.ParticleSystem
             = new ReactiveCommand();
 
         public ReactiveProperty<double> Dx { get; }
-            = new ReactiveProperty<double>(0.1);
+            = new ReactiveProperty<double>(1.0);
 
         public ReactiveProperty<double> Dy { get; }
-            = new ReactiveProperty<double>(0.1);
+            = new ReactiveProperty<double>(1.0);
 
         public ReactiveProperty<double> Dz { get; }
-            = new ReactiveProperty<double>(0.1);
+            = new ReactiveProperty<double>(1.0);
 
         public BoxGenerationViewModel(SceneList world, Canvas3d canvas)
         {
+            BoxViewModel.Value = new Box3d(new Vector3d(0, 0, 0), new Vector3d(10, 10, 10));
             this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 

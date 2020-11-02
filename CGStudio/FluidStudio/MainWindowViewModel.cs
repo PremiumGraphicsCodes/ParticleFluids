@@ -45,7 +45,7 @@ namespace FluidStudio
 
             this.SceneListViewModel = new SceneListViewModel(regionManager, world);
             this.PhysicsSceneListViewModel = new PhysicsSceneListViewModel(regionManager, world, mainModel);
-            this.TimeLineViewModel = new TimeLineViewModel(mainModel, world);
+            this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
         }
 
         private void OnNavigate(string name)

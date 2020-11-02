@@ -18,19 +18,20 @@ namespace FluidStudio.Scene.ParticleSystem
             = new Sphere3dViewModel();
 
         public ReactiveProperty<double> Dx { get; }
-            = new ReactiveProperty<double>(0.1);
+            = new ReactiveProperty<double>(1.0);
 
         public ReactiveProperty<double> Dy { get; }
-            = new ReactiveProperty<double>(0.1);
+            = new ReactiveProperty<double>(1.0);
 
         public ReactiveProperty<double> Dz { get; }
-            = new ReactiveProperty<double>(0.1);
+            = new ReactiveProperty<double>(1.0);
 
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
         public SphereGenerationViewModel(SceneList world, Canvas3d canvas)
         {
+            this.SphereViewModel.Value = new Sphere3d(10.0, new Vector3d(0, 0, 0));
             this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 

@@ -1,4 +1,5 @@
 ﻿using PG.CLI;
+using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -28,6 +29,14 @@ namespace FluidStudio.Physics
             command.SetArg(Labels.FluidSceneIdsLabel, ids);
             command.SetArg(Labels.TimeStepLabel, TimeStep.Value);
             command.Execute(scenes.Adapter);
+        }
+
+        public void SendShader(SceneList scenes, Canvas3d canvas)
+        {
+            foreach (var scene in Fluids)
+            {
+                scene.SendShader(scenes, canvas);
+            }
         }
 
     }

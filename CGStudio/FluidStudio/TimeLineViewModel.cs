@@ -1,6 +1,8 @@
-﻿using PG.Scene;
+﻿using PG.Control.OpenGL;
+using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
+using System.Threading.Tasks;
 
 namespace FluidStudio
 {
@@ -12,17 +14,33 @@ namespace FluidStudio
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
 
-        public TimeLineViewModel(MainModel mainModel, SceneList scenes)
+        private readonly MainModel mainModel;
+
+        private readonly SceneList scenes;
+
+        private readonly Canvas3d canvas;
+
+        public TimeLineViewModel(MainModel mainModel, SceneList scenes, Canvas3d canvas)
         {
+            this.mainModel = mainModel;
+            this.scenes = scenes;
+            this.canvas = canvas;
             StartCommand.Subscribe(() => OnStart(mainModel, scenes));
         }
 
+
         private void OnStart(MainModel mainModel, SceneList sceneList)
         {
-            var scenes = mainModel.PhysicsModel.Scenes;
-            foreach(var scene in scenes)
+            Simulate();
+        }
+
+        private void Simulate()
+        {
+            var pScenes = mainModel.PhysicsModel.Scenes;
+            foreach (var ps in pScenes)
             {
-                scene.Simulate(sceneList);
+                ps.Simulate(scenes);
+                ps.SendShader(scenes, canvas);
             }
         }
     }
