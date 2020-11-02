@@ -1,4 +1,5 @@
-﻿using PG.Control.OpenGL;
+﻿using PG.CGStudio.UICtrl;
+using PG.Control.OpenGL;
 using PG.Control.UI;
 using PG.Scene;
 using Prism.Mvvm;
@@ -38,6 +39,8 @@ namespace FluidStudio.Physics
             var fScene = new PhysicsScene();
             fScene.Fluids.Add(scene);
             model.PhysicsModel.Scenes.Add(fScene);
+
+            canvas.UICtrl = new CameraUICtrl(world, canvas);
         }
     }
 }
