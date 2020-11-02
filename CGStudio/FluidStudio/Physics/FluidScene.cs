@@ -1,4 +1,5 @@
-﻿using PG.Scene;
+﻿using PG.Control.OpenGL;
+using PG.Scene;
 using Reactive.Bindings;
 using Labels = PG.FluidSceneCreateLabels;
 
@@ -15,12 +16,12 @@ namespace FluidStudio.Physics
 //        private int particleSystemId;
 //        public int ParticleSystemId { get; }
 
-        public FluidScene(SceneList world, int particleSystemId, float stiffness, float viscosity)
+        public FluidScene(SceneList world, Canvas3d canvas, int particleSystemId, float stiffness, float viscosity)
         {
-            Create(world, particleSystemId, stiffness, viscosity);
+            Create(world, canvas, particleSystemId, stiffness, viscosity);
         }
 
-        public void Create(SceneList world, int particleSystemId, float stiffness, float viscosity)
+        public void Create(SceneList world, Canvas3d canvas, int particleSystemId, float stiffness, float viscosity)
         {
             var command = new PG.CLI.PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.ParticleSystemIdLabel, particleSystemId);
@@ -29,6 +30,9 @@ namespace FluidStudio.Physics
             command.SetArg(Labels.NameLabel, "NewFluid");
             command.Execute(world.Adapter);
             this.id = command.GetResult<int>(Labels.NewIdLabel);
+            canvas.BuildShader(world, this.Id);
+            canvas.Render();
+
         }
     }
 }

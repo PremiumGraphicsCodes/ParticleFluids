@@ -78,7 +78,7 @@
             <ContentControl prism:RegionManager.RegionName="ContentRegion" Grid.Column="2"/>
         </Grid>
 
-        <local:TimeLineView Grid.Row="2">
+        <local:TimeLineView Grid.Row="2" DataContext="{Binding TimeLineViewModel}">
         </local:TimeLineView>
     </Grid>
 </RibbonWindow>

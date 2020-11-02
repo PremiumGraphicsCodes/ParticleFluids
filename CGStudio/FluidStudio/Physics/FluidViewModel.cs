@@ -25,16 +25,16 @@ namespace FluidStudio.Physics
         public FluidViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.ParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
-            this.AddCommand.Subscribe(() => OnAdd(model, world));
+            this.AddCommand.Subscribe(() => OnAdd(model, world, canvas));
             //this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
-        private void OnAdd(MainModel model, SceneList world)
+        private void OnAdd(MainModel model, SceneList world, Canvas3d canvas)
         {
             var particleSystemId = ParticleSystemSelectViewModel.Id.Value;
             var stiffness = Stiffness.Value;
             var viscosity = Viscosity.Value;
-            var scene = new FluidScene(world, particleSystemId, stiffness, viscosity);
+            var scene = new FluidScene(world, canvas, particleSystemId, stiffness, viscosity);
             var fScene = new PhysicsScene();
             fScene.Fluids.Add(scene);
             model.PhysicsModel.Scenes.Add(fScene);

@@ -16,7 +16,7 @@ namespace FluidStudio.Physics
 
         public PhysicsSceneList()
         {
-            this.Scenes.Add(new PhysicsScene());
+//            this.Scenes.Add(new PhysicsScene());
         }
     }
 }
