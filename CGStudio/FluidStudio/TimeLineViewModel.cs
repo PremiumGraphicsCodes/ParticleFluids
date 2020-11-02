@@ -31,7 +31,10 @@ namespace FluidStudio
 
         private void OnStart(MainModel mainModel, SceneList sceneList)
         {
-            Simulate();
+            for (int i = 0; i < 100; ++i)
+            {
+                Simulate();
+            }
         }
 
         private void Simulate()
