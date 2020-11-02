@@ -185,11 +185,14 @@
     <ClCompile Include="FluidSceneCreateCommand.cpp" />
     <ClCompile Include="FluidSimulationCommand.cpp" />
     <ClCompile Include="PhysicsCommandFactory.cpp" />
+    <ClCompile Include="PhysicsSceneCreateCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSceneCreateCommand.h" />
     <ClInclude Include="FluidSimulationCommand.h" />
     <ClInclude Include="PhysicsCommandFactory.h" />
+    <ClInclude Include="PhysicsSceneCreateCommand.h" />
+    <ClInclude Include="PublicLabels\FluidSimulationLabels.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="PublicLabels\FluidSceneCreateLabels.h" />

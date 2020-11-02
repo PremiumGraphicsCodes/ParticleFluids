@@ -1,22 +1,33 @@
 #include "FluidSimulationCommand.h"
 
+#include "PublicLabels/FluidSimulationLabels.h"
+
+#include "../CrystalPhysics/KFFluidScene.h"
+#include "../CrystalPhysics/KFFluidSolver.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
 FluidSimulationCommand::Args::Args() :
-	fluidSceneId("fluidSceneId", 0),
-	timeStep("timeStep", 0.03f)
+	fluidSceneIds(::FluidSceneIdsLabel, {}),
+	timeStep(::TimeStepLabel, 0.03f)
 {
-	add(&fluidSceneId);
+	add(&fluidSceneIds);
 	add(&timeStep);
 }
 
 std::string FluidSimulationCommand::getName()
 {
-	return "FluidSimulation";
+	return ::CommandNameLabel;
 }
 
 bool FluidSimulationCommand::execute(World* world)
 {
-	return false;
+	const auto ids = args.fluidSceneIds.getValue();
+	KFFluidSolver solver;
+	for (const auto id : ids) {
+		auto scene = world->getScenes()->findSceneById<KFFluidScene*>(id);
+		solver.addFluidScene(scene);
+	}
+	return true;
 }

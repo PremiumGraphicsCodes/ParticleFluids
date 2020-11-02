@@ -109,10 +109,12 @@
     <Compile Include="FileIOViewModel.cs" />
     <Compile Include="MainModel.cs" />
     <Compile Include="PhysicsLabels.cs" />
+    <Compile Include="Physics\FluidScene.cs" />
     <Compile Include="Physics\FluidView.xaml.cs">
       <DependentUpon>FluidView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Physics\FluidViewModel.cs" />
+    <Compile Include="Physics\PhysicsModel.cs" />
     <Compile Include="Scene\ParticleSystem\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
