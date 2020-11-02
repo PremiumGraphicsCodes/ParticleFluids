@@ -4,18 +4,19 @@ namespace FluidStudio.Physics
 {
     public class PhysicsSceneViewModel
     {
-        public ReactiveProperty<PhysicsSceneViewModel> Children { get; }
-            = new ReactiveProperty<PhysicsSceneViewModel>();
+        public ReadOnlyReactiveCollection<PhysicsSceneViewModel> Children { get; }
 
         public ReadOnlyReactiveProperty<string> Name { get; }
-
-        public ReactiveCollection<int> Ids { get; }
-            = new ReactiveCollection<int>();
 
         public PhysicsSceneViewModel(PhysicsScene scene)
         {
             Name = scene.Name.ToReadOnlyReactiveProperty();
-            Ids.Add(1);
+            Children = scene.Fluids.ToReadOnlyReactiveCollection(x => new PhysicsSceneViewModel(x));
+        }
+
+        public PhysicsSceneViewModel(FluidScene scene)
+        {
+            Name = scene.Name.ToReadOnlyReactiveProperty();
         }
     }
 }

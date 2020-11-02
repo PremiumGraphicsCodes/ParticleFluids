@@ -9,6 +9,9 @@ namespace FluidStudio.Physics
         private int id;
         public int Id { get { return id; } }
 
+        public ReactiveProperty<string> Name { get; }
+            = new ReactiveProperty<string>("Fluid01");
+
 //        private int particleSystemId;
 //        public int ParticleSystemId { get; }
 
