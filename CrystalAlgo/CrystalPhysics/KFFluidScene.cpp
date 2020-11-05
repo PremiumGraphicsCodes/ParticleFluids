@@ -7,7 +7,8 @@ using namespace Crystal::Physics;
 KFFluidScene::KFFluidScene(const int id, const std::string& name) :
 	IScene(id, name),
 	pressureCoe(10000.0),
-	viscosityCoe(50.0)
+	viscosityCoe(50.0),
+	isBoundary_(false)
 {
 	this->controller = std::make_unique<KFFluidScenePresenter>(this);
 }

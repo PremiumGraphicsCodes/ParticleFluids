@@ -18,11 +18,13 @@ FluidSceneCreateCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	stiffness(::StiffnessLabel, 1.0f),
 	viscosity(::ViscosityLabel, 1.0f),
+	isBoundary(::IsBoundary, false),
 	name(::NameLabel, std::string("FluidScene"))
 {
 	add(&particleSystemId);
 	add(&stiffness);
 	add(&viscosity);
+	add(&isBoundary);
 	add(&name);
 }
 
@@ -55,6 +57,7 @@ bool FluidSceneCreateCommand::execute(World* world)
 	//fluidScene->addParticle()
 	fluidScene->setPressureCoe(args.stiffness.getValue());
 	fluidScene->setViscosityCoe(args.viscosity.getValue());
+	fluidScene->setBoundary(args.isBoundary.getValue());
 	world->getScenes()->addScene(fluidScene);
 
 	results.newId.setValue(fluidScene->getId());

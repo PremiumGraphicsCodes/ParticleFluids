@@ -39,11 +39,16 @@ public:
 
 	float getViscosityCoe() const { return this->viscosityCoe; }
 
+	bool isBoundary() const { return isBoundary_; }
+
+	void setBoundary(const bool isBoundary_) { this->isBoundary_ = isBoundary_; }
+
 private:
 	std::list<KFMacroParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;
 	std::unique_ptr<KFFluidScenePresenter> controller;
+	bool isBoundary_;
 };
 
 
