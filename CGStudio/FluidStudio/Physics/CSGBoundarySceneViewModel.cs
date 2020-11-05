@@ -1,5 +1,6 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
+using PG.Core.Math;
 using PG.Scene;
 using Reactive.Bindings;
 using System.Linq;
@@ -20,6 +21,9 @@ namespace FluidStudio.Physics
         public CSGBoundarySceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             CreateCommand.Subscribe(() => OnCreate(model, world, canvas));
+            var min = new Vector3d(-100, -100, -100);
+            var max = new Vector3d(100, 100, 100);
+            BoxViewModel.Value = new Box3d(min, max);
         }
 
         private void OnCreate(MainModel model, SceneList world, Canvas3d canvas)
