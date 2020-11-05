@@ -38,6 +38,7 @@ bool CSGBoundarySceneCreateCommand::execute(World* world)
 {
 	auto boundaryScene = new CSGBoundaryScene(world->getNextSceneId(), args.name.getValue());
 	boundaryScene->add(args.box.getValue());
+	world->getScenes()->addScene(boundaryScene);
 
 	results.newId.setValue(boundaryScene->getId());
 

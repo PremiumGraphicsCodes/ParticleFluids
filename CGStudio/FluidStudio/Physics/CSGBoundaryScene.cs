@@ -8,6 +8,8 @@ namespace FluidStudio.Physics
     {
         private int id;
 
+        public int Id { get { return id; } }
+
         public CSGBoundaryScene(SceneList world, string name, Box3d box)
         {
             var command = new PG.CLI.PhysicsCommand(Labels.CommandNameLabel);

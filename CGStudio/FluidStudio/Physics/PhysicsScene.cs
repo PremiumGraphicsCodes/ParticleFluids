@@ -29,7 +29,13 @@ namespace FluidStudio.Physics
             {
                 ids.Add(scene.Id);
             }
+            var boundaryIds = new List<int>();
+            foreach(var b in CSGBoundaries)
+            {
+                boundaryIds.Add(b.Id);
+            }
             command.SetArg(Labels.FluidSceneIdsLabel, ids);
+            command.SetArg(Labels.CSGBoundarySceneIdsLabel, boundaryIds);
             command.SetArg(Labels.TimeStepLabel, TimeStep.Value);
             command.Execute(scenes.Adapter);
         }
