@@ -11,6 +11,7 @@ public:
 	struct Args : Command::IArgs
 	{
 		Command::Arg<std::vector<int>> fluidSceneIds;
+		Command::Arg<std::vector<int>> csgBoundarySceneIds;
 		Command::Arg<float> timeStep;
 
 		Args();

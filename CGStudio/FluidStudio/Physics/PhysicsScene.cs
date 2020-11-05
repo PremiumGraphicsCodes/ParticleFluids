@@ -15,6 +15,9 @@ namespace FluidStudio.Physics
         public ReactiveCollection<FluidScene> Fluids { get; }
             = new ReactiveCollection<FluidScene>();
 
+        public ReactiveCollection<CSGBoundaryScene> CSGBoundaries { get; }
+            = new ReactiveCollection<CSGBoundaryScene>();
+
         public ReactiveProperty<float> TimeStep { get; }
             = new ReactiveProperty<float>(0.03f);
 

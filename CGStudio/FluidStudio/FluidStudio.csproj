@@ -111,6 +111,11 @@
     <Compile Include="FileIO\FSProjFileWriter.cs" />
     <Compile Include="MainModel.cs" />
     <Compile Include="PhysicsLabels.cs" />
+    <Compile Include="Physics\CSGBoundaryScene.cs" />
+    <Compile Include="Physics\CSGBoundarySceneView.xaml.cs">
+      <DependentUpon>CSGBoundarySceneView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Physics\CSGBoundarySceneViewModel.cs" />
     <Compile Include="Physics\FluidScene.cs" />
     <Compile Include="Physics\FluidSceneView.xaml.cs">
       <DependentUpon>FluidSceneView.xaml</DependentUpon>
@@ -157,6 +162,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Physics\CSGBoundarySceneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Physics\FluidSceneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
