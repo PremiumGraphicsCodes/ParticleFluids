@@ -35,10 +35,14 @@ namespace FluidStudio.Physics
             var particleSystemId = ParticleSystemSelectViewModel.Id.Value;
             var stiffness = Stiffness.Value;
             var viscosity = Viscosity.Value;
-            var scene = new FluidScene(world, canvas, particleSystemId, stiffness, viscosity);
+            var scene = new FluidScene(world, particleSystemId, stiffness, viscosity);
             var fScene = new PhysicsScene();
             fScene.Fluids.Add(scene);
             model.PhysicsModel.Scenes.Add(fScene);
+
+            canvas.BuildShader(world, scene.Id);
+            canvas.Render();
+
 
             canvas.UICtrl = new CameraUICtrl(world, canvas);
         }

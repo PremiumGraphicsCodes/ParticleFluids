@@ -9,7 +9,6 @@ namespace FluidStudio
 {
     public partial class App : PrismApplication
     {
-        private SceneList world;
         private Canvas3d canvas;
         private MainModel model;
 
@@ -22,15 +21,12 @@ namespace FluidStudio
         {
             this.model = new MainModel();
             containerRegistry.RegisterInstance<MainModel>(model);
+            containerRegistry.RegisterInstance<SceneList>(model.Scenes);
 
-            this.world = new SceneList();
-            containerRegistry.RegisterInstance<SceneList>(world);
-
-            this.canvas = new Canvas3d(world);
+            this.canvas = new Canvas3d(model.Scenes);
             containerRegistry.RegisterInstance<Canvas3d>(canvas);
 
-            model.VDBModel.Init(world);
-
+            model.VDBModel.Init(model.Scenes);
 
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.SphereGenerationView>("PSSphereGeneration");

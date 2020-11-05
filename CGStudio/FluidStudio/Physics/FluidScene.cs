@@ -19,12 +19,12 @@ namespace FluidStudio.Physics
         public ReactiveProperty<float> Viscosity { get; }
             = new ReactiveProperty<float>(1.0f);
 
-        public FluidScene(SceneList world, Canvas3d canvas, int particleSystemId, float stiffness, float viscosity)
+        public FluidScene(SceneList world, int particleSystemId, float stiffness, float viscosity)
         {
-            Create(world, canvas, particleSystemId, stiffness, viscosity);
+            Create(world, particleSystemId, stiffness, viscosity);
         }
 
-        public void Create(SceneList world, Canvas3d canvas, int particleSystemId, float stiffness, float viscosity)
+        public void Create(SceneList world, int particleSystemId, float stiffness, float viscosity)
         {
             this.Stiffness.Value = stiffness;
             this.Viscosity.Value = viscosity;
@@ -35,8 +35,6 @@ namespace FluidStudio.Physics
             command.SetArg(Labels.NameLabel, "NewFluid");
             command.Execute(world.Adapter);
             this.id = command.GetResult<int>(Labels.NewIdLabel);
-            canvas.BuildShader(world, this.Id);
-            canvas.Render();
         }
 
         public void SendShader(SceneList world, Canvas3d canvas)
