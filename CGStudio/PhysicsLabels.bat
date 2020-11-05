@@ -1,0 +1,1 @@
+PGConstCSFileGenerator\bin\Release\PGConstCSFileGenerator ../CrystalAlgo/CrystalPhysicsCommand/PublicLabels FluidStudio/PhysicsLabels.cs
