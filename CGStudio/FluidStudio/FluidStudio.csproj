@@ -112,10 +112,10 @@
     <Compile Include="MainModel.cs" />
     <Compile Include="PhysicsLabels.cs" />
     <Compile Include="Physics\FluidScene.cs" />
-    <Compile Include="Physics\FluidView.xaml.cs">
-      <DependentUpon>FluidView.xaml</DependentUpon>
+    <Compile Include="Physics\FluidSceneView.xaml.cs">
+      <DependentUpon>FluidSceneView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Physics\FluidViewModel.cs" />
+    <Compile Include="Physics\FluidSceneViewModel.cs" />
     <Compile Include="Physics\PhysicsSceneList.cs" />
     <Compile Include="Physics\PhysicsScene.cs" />
     <Compile Include="Physics\PhysicsSceneListView.xaml.cs">
@@ -157,7 +157,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Physics\FluidView.xaml">
+    <Page Include="Physics\FluidSceneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

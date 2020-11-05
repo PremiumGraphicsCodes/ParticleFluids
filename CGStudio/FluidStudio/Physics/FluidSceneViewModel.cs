@@ -7,7 +7,7 @@ using Reactive.Bindings;
 
 namespace FluidStudio.Physics
 {
-    public class FluidViewModel : BindableBase
+    public class FluidSceneViewModel : BindableBase
     {
         public SceneSelectViewModel ParticleSystemSelectViewModel { get; }
 
@@ -20,10 +20,13 @@ namespace FluidStudio.Physics
         public ReactiveProperty<float> Viscosity { get; }
             = new ReactiveProperty<float>(10.0f);
 
+        public ReactiveProperty<bool> IsBoundary { get; }
+            = new ReactiveProperty<bool>(false);
+
         public ReactiveCommand AddCommand { get; }
             = new ReactiveCommand();
 
-        public FluidViewModel(MainModel model, SceneList world, Canvas3d canvas)
+        public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.ParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
             this.AddCommand.Subscribe(() => OnAdd(model, world, canvas));

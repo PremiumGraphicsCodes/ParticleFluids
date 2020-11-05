@@ -32,7 +32,7 @@ namespace FluidStudio
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.QuadGenerationView>("PSQuadGeneration");
 
-            containerRegistry.RegisterForNavigation<FluidView>("FluidGeneration");
+            containerRegistry.RegisterForNavigation<FluidSceneView>("FluidGeneration");
         }
     }
 }

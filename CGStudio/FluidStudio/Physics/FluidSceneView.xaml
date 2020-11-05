@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="FluidStudio.Physics.FluidView"
+﻿<UserControl x:Class="FluidStudio.Physics.FluidSceneView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -22,6 +22,7 @@
             <TextBlock Text="Viscosity"/>
             <TextBox Text="{Binding Viscosity.Value}" MinWidth="50"/>
         </StackPanel>
+        <CheckBox Content="Boundary" IsChecked="{Binding IsBoundary.Value}"/>
         <Button Content="Add" Command="{Binding AddCommand}"/>
     </StackPanel>
 </UserControl>
