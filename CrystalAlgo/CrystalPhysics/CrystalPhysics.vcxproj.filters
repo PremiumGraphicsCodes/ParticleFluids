@@ -13,6 +13,9 @@
     <Filter Include="PBSPH">
       <UniqueIdentifier>{51e44d13-c0a6-4c44-b8d2-140b0cc53e0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Boundary">
+      <UniqueIdentifier>{20181694-560d-416c-a91b-238762370505}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PBSPHParticle.h">
@@ -81,6 +84,12 @@
     <ClInclude Include="Boundary.h" />
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
+    <ClInclude Include="CSGBoundaryScene.h">
+      <Filter>Boundary</Filter>
+    </ClInclude>
+    <ClInclude Include="CSGBoundaryScenePresenter.h">
+      <Filter>Boundary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -148,5 +157,11 @@
     </ClCompile>
     <ClCompile Include="Boundary.cpp" />
     <ClCompile Include="SPHKernel.cpp" />
+    <ClCompile Include="CSGBoundaryScenePresenter.cpp">
+      <Filter>Boundary</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGBoundaryScene.cpp">
+      <Filter>Boundary</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -155,6 +155,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Boundary.h" />
+    <ClInclude Include="CSGBoundaryScene.h" />
+    <ClInclude Include="CSGBoundaryScenePresenter.h" />
     <ClInclude Include="CSPHBoundarySolver.h" />
     <ClInclude Include="CSPHFluidScene.h" />
     <ClInclude Include="CSPHFluidSceneController.h" />
@@ -181,6 +183,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Boundary.cpp" />
+    <ClCompile Include="CSGBoundaryScene.cpp" />
+    <ClCompile Include="CSGBoundaryScenePresenter.cpp" />
     <ClCompile Include="CSPHBoundarySolver.cpp" />
     <ClCompile Include="CSPHFluidScene.cpp" />
     <ClCompile Include="CSPHFluidSceneController.cpp" />

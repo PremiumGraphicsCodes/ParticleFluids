@@ -29,7 +29,12 @@ bool FluidSimulationCommand::execute(World* world)
 	solver.addSurface(Box3d(Vector3dd(-100, -100, -100), Vector3dd(100, 100, 100)));
 	for (const auto id : ids) {
 		auto scene = world->getScenes()->findSceneById<KFFluidScene*>(id);
-		solver.addFluidScene(scene);
+		if (scene->isBoundary()) {
+			solver.addBoundaryScene(scene);
+		}
+		else {
+			solver.addFluidScene(scene);
+		}
 	}
 	solver.step();
 	return true;
