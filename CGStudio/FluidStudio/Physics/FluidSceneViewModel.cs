@@ -15,10 +15,10 @@ namespace FluidStudio.Physics
             = new ReactiveProperty<double>(1000.0);
 
         public ReactiveProperty<float> Stiffness { get; }
-            = new ReactiveProperty<float>(100.0f);
+            = new ReactiveProperty<float>(1.0f);
 
         public ReactiveProperty<float> Viscosity { get; }
-            = new ReactiveProperty<float>(10.0f);
+            = new ReactiveProperty<float>(1.0f);
 
         public ReactiveProperty<bool> IsBoundary { get; }
             = new ReactiveProperty<bool>(false);
