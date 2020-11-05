@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FSProjFileWriterTest.cs" />
+    <Compile Include="FluidSceneTest.cs" />
     <Compile Include="VDBModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
