@@ -13,8 +13,11 @@ namespace FluidStudio.Physics
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("Fluid01");
 
-//        private int particleSystemId;
-//        public int ParticleSystemId { get; }
+        public ReactiveProperty<float> Stiffness { get; }
+            = new ReactiveProperty<float>(1.0f);
+
+        public ReactiveProperty<float> Viscosity { get; }
+            = new ReactiveProperty<float>(1.0f);
 
         public FluidScene(SceneList world, Canvas3d canvas, int particleSystemId, float stiffness, float viscosity)
         {
@@ -23,6 +26,8 @@ namespace FluidStudio.Physics
 
         public void Create(SceneList world, Canvas3d canvas, int particleSystemId, float stiffness, float viscosity)
         {
+            this.Stiffness.Value = stiffness;
+            this.Viscosity.Value = viscosity;
             var command = new PG.CLI.PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.ParticleSystemIdLabel, particleSystemId);
             command.SetArg(Labels.StiffnessLabel, stiffness);

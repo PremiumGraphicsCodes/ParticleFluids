@@ -8,6 +8,7 @@ namespace FluidStudioTest
     [TestClass]
     public class VDBModelTest
     {
+        /*
         [TestMethod]
         public void TestInit()
         {
@@ -15,5 +16,6 @@ namespace FluidStudioTest
             var model = new VDBModel();
             model.Init(world);
         }
+        */
     }
 }
