@@ -12,6 +12,7 @@ namespace Crystal {
 	namespace Physics {
 		class KFMacroParticle;
 		class KFFluidScene;
+		class CSGBoundaryScene;
 
 class KFFluidSolver : public Scene::IAnimator
 {
@@ -22,7 +23,7 @@ public:
 	void clear() {
 		fluids.clear();
 		boundaries.clear();
-		surfaces.clear();
+		csgBoundaries.clear();
 		maxTimeStep = 0.03f;
 	}
 
@@ -30,7 +31,7 @@ public:
 
 	void addBoundaryScene(KFFluidScene* scene) { this->boundaries.push_back(scene); }
 
-	void addSurface(const Math::Box3d& surface) { this->surfaces.push_back(surface); }
+	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
 
 	void setMaxTimeStep(const float maxTimeStep) { this->maxTimeStep = maxTimeStep; }
 
@@ -46,7 +47,7 @@ private:
 	
 	std::list<KFFluidScene*> fluids;
 	std::list<KFFluidScene*> boundaries;
-	std::list<Math::Box3d> surfaces;
+	std::list<CSGBoundaryScene*> csgBoundaries;
 	float maxTimeStep = 0.03f;
 };
 

@@ -13,6 +13,8 @@ public:
 
 	~CSGBoundaryScene();
 
+	void clear() { boxes.clear(); }
+
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
 	Scene::IPresenter* getPresenter();

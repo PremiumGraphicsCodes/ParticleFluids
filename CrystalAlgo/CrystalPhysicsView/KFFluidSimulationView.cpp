@@ -26,7 +26,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	IOkCancelView("FluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	boundaryView("Boundary"),
+	boundaryView("Boundary", model),
 	pressureCoeView("PressureCoe", 100.0f),
 	viscosityCoeView("ViscosityCoe", 10.0f),
 	timeStepView("TimeStep", 0.025f),
@@ -38,7 +38,6 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 
-	boundaryView.setValue(Box3d(Vector3dd(0,  -100.0, -50.0), Vector3dd(100.0, 1000.0, 100.0)));
 	add(&boundaryView);
 	add(&pressureCoeView);
 	add(&viscosityCoeView);
@@ -168,7 +167,7 @@ void KFFluidSimulationView::reset()
 	simulator.clear();
 	simulator.addFluidScene(fluidScene);
 	simulator.addBoundaryScene(boundaryScene);
-	simulator.addSurface(this->boundaryView.getValue());
+	simulator.addBoundary(this->boundaryView.getBoundary());
 
 	simulator.setMaxTimeStep(this->timeStepView.getValue());
 

@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClCompile Include="BoundaryView.cpp" />
     <ClCompile Include="CrystalPhysicsView.cpp" />
+    <ClCompile Include="CSGBoundaryView.cpp" />
     <ClCompile Include="CSPHFluidSimulationView.cpp" />
     <ClCompile Include="DFSPHFluidSimulationView.cpp" />
     <ClCompile Include="KFFluidSimulationView.cpp" />
@@ -195,6 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoundaryView.h" />
+    <ClInclude Include="CSGBoundaryView.h" />
     <ClInclude Include="CSPHFluidSimulationView.h" />
     <ClInclude Include="DFSPHFluidSimulationView.h" />
     <ClInclude Include="KFFluidSimulationView.h" />

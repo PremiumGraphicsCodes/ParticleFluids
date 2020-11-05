@@ -7,6 +7,7 @@
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
 
 #include "../CrystalPhysics/KFFluidSolver.h"
+#include "CSGBoundaryView.h"
 //#include "../CrystalPhysics/TimeSeriesParticleSystemWriter.h"
 
 namespace Crystal {
@@ -30,7 +31,7 @@ private:
 	Physics::KFFluidScene* boundaryScene;
 	Physics::KFFluidSolver simulator;
 	Physics::KFFUpdater updator;
-	Box3dView boundaryView;
+	CSGBoundaryView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;
 	FloatView timeStepView;

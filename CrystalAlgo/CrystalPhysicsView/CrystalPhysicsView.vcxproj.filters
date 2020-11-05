@@ -8,6 +8,7 @@
     <ClCompile Include="DFSPHFluidSimulationView.cpp" />
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
     <ClCompile Include="BoundaryView.cpp" />
+    <ClCompile Include="CSGBoundaryView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -16,5 +17,6 @@
     <ClInclude Include="DFSPHFluidSimulationView.h" />
     <ClInclude Include="PBSPHFluidSimulationView.h" />
     <ClInclude Include="BoundaryView.h" />
+    <ClInclude Include="CSGBoundaryView.h" />
   </ItemGroup>
 </Project>
