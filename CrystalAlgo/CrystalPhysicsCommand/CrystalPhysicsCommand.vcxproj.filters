@@ -5,6 +5,7 @@
     <ClCompile Include="FluidSceneCreateCommand.cpp" />
     <ClCompile Include="PhysicsCommandFactory.cpp" />
     <ClCompile Include="PhysicsSceneCreateCommand.cpp" />
+    <ClCompile Include="CSGBoundarySceneCreateCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -12,6 +13,10 @@
     <ClInclude Include="PhysicsCommandFactory.h" />
     <ClInclude Include="PhysicsSceneCreateCommand.h" />
     <ClInclude Include="PublicLabels\FluidSimulationLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="CSGBoundarySceneCreateCommand.h" />
+    <ClInclude Include="PublicLabels\CSGBoundarySceneCreateLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>
