@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using FluidStudio;
 using FluidStudio.FileIO;
 using FluidStudio.Physics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PG.Core.Math;
+using PG.Scene;
 
 namespace FluidStudioTest
 {
@@ -13,13 +16,17 @@ namespace FluidStudioTest
         [TestMethod]
         public void TestWrite()
         {
-            /*
             var model = new MainModel();
-            var scene = new PhysicsScene();
-            scene.Fluids.Add(new FluidScene(model.Scenes, 0, 1.0f, 1.0f));
+            var particles = new List<Vector3d>();
+            particles.Add(new Vector3d(0, 0, 0));
+            var world = new SceneList();
+            var id = world.AddParticleSystemScene(particles, "", new PG.Core.UI.ParticleAppearance(), 1);
+            var physicsScene = new PhysicsScene();
+            var fluidScene = new FluidScene(model.Scenes, id, 1.0f, 1.0f);
+            physicsScene.Fluids.Add(fluidScene);
+            model.PhysicsModel.Scenes.Add(physicsScene);
             var writer = new FSProjFileWriter();
-            writer.Write(model);
-            */
+            writer.Write(model, "TestWrite.fsproj");
         }
     }
 }

@@ -6,10 +6,10 @@ namespace FluidStudio.VDB
 {
     public class VDBModel
     {
-        public void Init(SceneList world)
+        public bool Init(SceneList world)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBInitLabels.CommandNameLabel);
-            command.Execute(world.Adapter);
+            return command.Execute(world.Adapter);
         }
 
         public bool Read(string filePath, SceneList world, Canvas3d canvas)

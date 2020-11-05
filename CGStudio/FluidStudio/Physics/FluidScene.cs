@@ -10,6 +10,9 @@ namespace FluidStudio.Physics
         private int id;
         public int Id { get { return id; } }
 
+        private int particleSystemId;
+        public int ParticleSystemId { get { return particleSystemId; } }
+
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("Fluid01");
 
@@ -28,6 +31,7 @@ namespace FluidStudio.Physics
         {
             this.Stiffness.Value = stiffness;
             this.Viscosity.Value = viscosity;
+            this.particleSystemId = particleSystemId;
             var command = new PG.CLI.PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.ParticleSystemIdLabel, particleSystemId);
             command.SetArg(Labels.StiffnessLabel, stiffness);

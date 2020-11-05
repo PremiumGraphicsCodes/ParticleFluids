@@ -8,14 +8,13 @@ namespace FluidStudioTest
     [TestClass]
     public class VDBModelTest
     {
-        /*
         [TestMethod]
         public void TestInit()
         {
             var world = new SceneList();
             var model = new VDBModel();
-            model.Init(world);
+            var isOk = model.Init(world);
+            Assert.IsTrue(isOk);
         }
-        */
     }
 }
