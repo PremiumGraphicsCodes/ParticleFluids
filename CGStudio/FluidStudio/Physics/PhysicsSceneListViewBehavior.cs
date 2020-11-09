@@ -28,7 +28,7 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            var selectedItem = treeView.SelectedItem as PhysicsScene;
+            var selectedItem = treeView.SelectedItem as PhysicsSolver;
             if (selectedItem == null)
             {
                 return;
@@ -51,6 +51,10 @@ namespace FluidStudio.Physics
             }
             var viewModel = treeView.DataContext as PhysicsSceneListViewModel;
             var selectedItem = treeView.SelectedItem as PhysicsSceneViewModel;
+            if(selectedItem.SceneType == PhysicsSceneType.Fluid)
+            {
+
+            }
             //            viewModel.ChangeView(selectedItem);
         }
 

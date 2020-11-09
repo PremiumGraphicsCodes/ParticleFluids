@@ -27,7 +27,7 @@ namespace FluidStudio.FileIO
 
         public void ReadPhysicsScene(MainModel model, XElement elem)
         {
-            var physicsScene = new PhysicsScene();
+            var physicsScene = new PhysicsSolver();
             {
                 var name = elem.Element(FSProjFile.NameLabel).Value;
                 var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);

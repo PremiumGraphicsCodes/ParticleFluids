@@ -21,7 +21,7 @@ namespace FluidStudioTest
             particles.Add(new Vector3d(0, 0, 0));
             var world = new SceneList();
             var id = world.AddParticleSystemScene(particles, "", new PG.Core.UI.ParticleAppearance(), 1);
-            var physicsScene = new PhysicsScene();
+            var physicsScene = new PhysicsSolver();
             var fluidScene = new FluidScene(model.Scenes, id, 1.0f, 1.0f);
             physicsScene.Fluids.Add(fluidScene);
             model.PhysicsModel.Scenes.Add(physicsScene);

@@ -5,8 +5,8 @@ namespace FluidStudio.Physics
 
     public class PhysicsSceneList
     {
-        public ReactiveCollection<PhysicsScene> Scenes { get; }
-            = new ReactiveCollection<PhysicsScene>();
+        public ReactiveCollection<PhysicsSolver> Scenes { get; }
+            = new ReactiveCollection<PhysicsSolver>();
 
         public PhysicsSceneList()
         {
