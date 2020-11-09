@@ -44,7 +44,7 @@ namespace FluidStudio.FileIO
         public XElement Write(SolverScene scene)
         {
             var root = new XElement(FSProjFile.PhysicsSceneLabel);
-            root.Add( new XAttribute(FSProjFile.NameLabel, scene.Name.Value) );
+            root.Add( new XAttribute(FSProjFile.NameLabel, scene.Name) );
             foreach (var fluid in scene.Fluids)
             {
                 root.Add(new XElement(FSProjFile.IdLabel, fluid.Id));

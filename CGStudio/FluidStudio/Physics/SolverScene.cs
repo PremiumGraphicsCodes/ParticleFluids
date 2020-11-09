@@ -9,17 +9,15 @@ namespace FluidStudio.Physics
 {
     public class SolverScene
     {
-        public ReactiveProperty<string> Name { get; }
-            = new ReactiveProperty<string>("Solver01");
+        public string Name { get; private set; } = "Solver01";
 
-        public ReactiveCollection<FluidScene> Fluids { get; }
-            = new ReactiveCollection<FluidScene>();
+        public List<FluidScene> Fluids { get; }
+            = new List<FluidScene>();
 
-        public ReactiveCollection<CSGBoundaryScene> CSGBoundaries { get; }
-            = new ReactiveCollection<CSGBoundaryScene>();
+        public List<CSGBoundaryScene> CSGBoundaries { get; }
+            = new List<CSGBoundaryScene>();
 
-        public ReactiveProperty<float> TimeStep { get; }
-            = new ReactiveProperty<float>(0.03f);
+        public float TimeStep { get; private set; } = 0.03f;
 
         public void Simulate(SceneList scenes)
         {
@@ -36,7 +34,7 @@ namespace FluidStudio.Physics
             }
             command.SetArg(Labels.FluidSceneIdsLabel, ids);
             command.SetArg(Labels.CSGBoundarySceneIdsLabel, boundaryIds);
-            command.SetArg(Labels.TimeStepLabel, TimeStep.Value);
+            command.SetArg(Labels.TimeStepLabel, TimeStep);
             command.Execute(scenes.Adapter);
         }
 

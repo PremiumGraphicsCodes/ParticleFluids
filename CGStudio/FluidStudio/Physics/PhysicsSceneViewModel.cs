@@ -28,7 +28,7 @@ namespace FluidStudio.Physics
         public PhysicsSceneViewModel(SolverScene scene)
         {
             this.SceneType = PhysicsSceneType.Solver;
-            Name = scene.Name;
+            Name.Value = scene.Name;
 //            Id = scene.Id
             foreach(var f in scene.Fluids)
             {
