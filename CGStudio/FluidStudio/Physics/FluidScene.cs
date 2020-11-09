@@ -4,7 +4,7 @@ using Labels = PG.FluidSceneCreateLabels;
 
 namespace FluidStudio.Physics
 {
-    public class FluidScene
+    public class FluidScene : IPhysicsScene
     {
         public int Id { get; private set; }
 
@@ -17,13 +17,14 @@ namespace FluidStudio.Physics
 
         public float Viscosity { get; private set; } = 1.0f;
 
-        public FluidScene(SceneList world, int particleSystemId, float stiffness, float viscosity)
+        public FluidScene(SceneList world, int particleSystemId, float stiffness, float viscosity, string name)
         {
-            Create(world, particleSystemId, stiffness, viscosity);
+            Create(world, particleSystemId, stiffness, viscosity, name);
         }
 
-        public void Create(SceneList world, int particleSystemId, float stiffness, float viscosity)
+        public void Create(SceneList world, int particleSystemId, float stiffness, float viscosity, string name)
         {
+            this.Name = name;
             this.Stiffness = stiffness;
             this.Viscosity = viscosity;
             this.particleSystemId = particleSystemId;

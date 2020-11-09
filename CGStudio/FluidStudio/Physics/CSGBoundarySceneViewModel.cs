@@ -36,7 +36,13 @@ namespace FluidStudio.Physics
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            throw new System.NotImplementedException();
+            var item = navigationContext.Parameters["CSGBoundaryScene"] as CSGBoundaryScene;
+            if (item == null)
+            {
+                return;
+            }
+            Name.Value = item.Name;
+            BoxViewModel.Value = item.Box;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

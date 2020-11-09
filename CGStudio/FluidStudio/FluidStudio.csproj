@@ -121,6 +121,7 @@
       <DependentUpon>FluidSceneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Physics\FluidSceneViewModel.cs" />
+    <Compile Include="Physics\IPhysicsScene.cs" />
     <Compile Include="Physics\PhysicsSceneList.cs" />
     <Compile Include="Physics\SolverScene.cs" />
     <Compile Include="Physics\PhysicsSceneListView.xaml.cs">

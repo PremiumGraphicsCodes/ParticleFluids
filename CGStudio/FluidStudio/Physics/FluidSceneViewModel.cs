@@ -29,10 +29,11 @@ namespace FluidStudio.Physics
         public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.ParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
-            this.AddCommand.Subscribe(() => OnAdd(model, world, canvas));
+        //    this.AddCommand.Subscribe(() => OnAdd(model, world, canvas));
             //this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
+        /*
         private void OnAdd(MainModel model, SceneList world, Canvas3d canvas)
         {
             var particleSystemId = ParticleSystemSelectViewModel.Id.Value;
@@ -49,5 +50,6 @@ namespace FluidStudio.Physics
 
             canvas.UICtrl = new CameraUICtrl(world, canvas);
         }
+        */
     }
 }

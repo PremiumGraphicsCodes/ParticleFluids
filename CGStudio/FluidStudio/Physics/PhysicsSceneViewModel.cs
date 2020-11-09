@@ -25,9 +25,12 @@ namespace FluidStudio.Physics
 
         public PhysicsSceneType SceneType { get; }
 
+        public IPhysicsScene Model { get; private set; }
+
         public PhysicsSceneViewModel(SolverScene scene)
         {
             this.SceneType = PhysicsSceneType.Solver;
+            this.Model = scene;
             Name.Value = scene.Name;
 //            Id = scene.Id
             foreach(var f in scene.Fluids)
@@ -42,6 +45,7 @@ namespace FluidStudio.Physics
 
         public PhysicsSceneViewModel(FluidScene scene)
         {
+            this.Model = scene;
             this.SceneType = PhysicsSceneType.Fluid;
             this.Id.Value = scene.Id;
             Name.Value = scene.Name;
@@ -49,6 +53,7 @@ namespace FluidStudio.Physics
 
         public PhysicsSceneViewModel(CSGBoundaryScene scene)
         {
+            this.Model = scene;
             this.SceneType = PhysicsSceneType.CSGBoundary;
             this.Id.Value = scene.Id;
             Name.Value = scene.Name;

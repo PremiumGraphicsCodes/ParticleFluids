@@ -87,7 +87,7 @@ namespace FluidStudio
 
 
             var scene = new SolverScene();
-            var fluidScene = new FluidScene(mainModel.Scenes, particleSystemSceneId, 1.0f, 1.0f);
+            var fluidScene = new FluidScene(mainModel.Scenes, particleSystemSceneId, 1.0f, 1.0f, "Fluid01");
             scene.Fluids.Add(fluidScene);
             scene.CSGBoundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", new Box3d()));
             this.mainModel.PhysicsModel.Scenes.Add(scene);

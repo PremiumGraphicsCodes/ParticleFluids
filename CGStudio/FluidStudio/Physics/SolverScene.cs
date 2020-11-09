@@ -7,7 +7,7 @@ using Labels = PG.FluidSimulationLabels;
 
 namespace FluidStudio.Physics
 {
-    public class SolverScene
+    public class SolverScene : IPhysicsScene
     {
         public string Name { get; private set; } = "Solver01";
 
@@ -18,6 +18,8 @@ namespace FluidStudio.Physics
             = new List<CSGBoundaryScene>();
 
         public float TimeStep { get; private set; } = 0.03f;
+
+        public int Id { get; private set; }
 
         public void Simulate(SceneList scenes)
         {

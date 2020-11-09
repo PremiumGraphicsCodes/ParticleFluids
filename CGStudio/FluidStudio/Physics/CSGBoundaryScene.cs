@@ -5,7 +5,7 @@ using Labels = PG.CSGBoundarySceneCreateLabels;
 
 namespace FluidStudio.Physics
 {
-    public class CSGBoundaryScene
+    public class CSGBoundaryScene : IPhysicsScene
     {
         private int id;
 
@@ -15,6 +15,8 @@ namespace FluidStudio.Physics
 
         public string Name { get { return name; } }
 
+        public Box3d Box { get; private set; }
+
         public CSGBoundaryScene(SceneList world, string name, Box3d box)
         {
             var command = new PG.CLI.PhysicsCommand(Labels.CommandNameLabel);
@@ -22,6 +24,7 @@ namespace FluidStudio.Physics
             command.Execute(world.Adapter);
             this.id = command.GetResult<int>(Labels.NewIdLabel);
             this.name = name;
+            this.Box = box;
         }
     }
 }
