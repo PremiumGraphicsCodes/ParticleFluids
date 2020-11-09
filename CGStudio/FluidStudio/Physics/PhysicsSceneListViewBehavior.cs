@@ -52,10 +52,7 @@ namespace FluidStudio.Physics
             var viewModel = treeView.DataContext as PhysicsSceneListViewModel;
             var selectedItem = treeView.SelectedItem as PhysicsSceneViewModel;
             var physicsScene = selectedItem.Model;
-            if(selectedItem.SceneType == PhysicsSceneType.Fluid)
-            {
-
-            }
+            viewModel.ChangeView(physicsScene);
             //            viewModel.ChangeView(selectedItem);
         }
 

@@ -21,29 +21,21 @@ namespace FluidStudio.Physics
             regionManager.RequestNavigate("ContentRegion", name, navigationParameters);
         }
 
-        public void ChangeView(PhysicsSceneViewModel selectedItem)
+        public void ChangeView(IPhysicsScene selectedItem)
         {
             if (selectedItem == null)
             {
                 return;
             }
-            var type = selectedItem.SceneType;
             var parameters = new NavigationParameters();
-            switch (type)
+            parameters.Add("Scene", selectedItem);
+            if(selectedItem is CSGBoundaryScene)
             {
-                case PhysicsSceneType.Solver:
-                    NavigateView("PhysicsSceneEdit", parameters);
-                    break;
-                case PhysicsSceneType.Fluid:
-                    parameters.Add("FluidSceneEdit", selectedItem);
-                    NavigateView("FluidSceneEdit", parameters);
-                    break;
-                case PhysicsSceneType.CSGBoundary:
-                    parameters.Add("CSGBoundarySceneEdit", selectedItem);
-                    NavigateView("CSGBoundarySceneEdit", parameters);
-                    break;
-                default:
-                    break;
+                NavigateView("CSGBoundaryGeneration", parameters);
+            }
+            else if(selectedItem is FluidScene)
+            {
+                NavigateView("FluidGeneration", parameters);
             }
         }
     }

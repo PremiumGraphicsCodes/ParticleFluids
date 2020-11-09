@@ -3,11 +3,12 @@ using PG.Control.OpenGL;
 using PG.Control.UI;
 using PG.Scene;
 using Prism.Mvvm;
+using Prism.Regions;
 using Reactive.Bindings;
 
 namespace FluidStudio.Physics
 {
-    public class FluidSceneViewModel : BindableBase
+    public class FluidSceneViewModel : INavigationAware
     {
         public SceneSelectViewModel ParticleSystemSelectViewModel { get; }
 
@@ -29,27 +30,26 @@ namespace FluidStudio.Physics
         public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.ParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
-        //    this.AddCommand.Subscribe(() => OnAdd(model, world, canvas));
-            //this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
-        /*
-        private void OnAdd(MainModel model, SceneList world, Canvas3d canvas)
+        public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var particleSystemId = ParticleSystemSelectViewModel.Id.Value;
-            var stiffness = Stiffness.Value;
-            var viscosity = Viscosity.Value;
-            var scene = new FluidScene(world, particleSystemId, stiffness, viscosity);
-            var fScene = new SolverScene();
-            fScene.Fluids.Add(scene);
-            model.PhysicsModel.Scenes.Add(fScene);
-
-            canvas.BuildShader(world, scene.Id);
-            canvas.Render();
-
-
-            canvas.UICtrl = new CameraUICtrl(world, canvas);
+            var item = navigationContext.Parameters["Scene"] as FluidScene;
+            if (item == null)
+            {
+                return;
+            }
+            Stiffness.Value = item.Stiffness;
+            Viscosity.Value = item.Viscosity;
         }
-        */
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+        }
     }
 }

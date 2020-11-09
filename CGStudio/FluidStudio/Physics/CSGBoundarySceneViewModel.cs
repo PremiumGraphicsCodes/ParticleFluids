@@ -36,7 +36,7 @@ namespace FluidStudio.Physics
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["CSGBoundaryScene"] as CSGBoundaryScene;
+            var item = navigationContext.Parameters["Scene"] as CSGBoundaryScene;
             if (item == null)
             {
                 return;
@@ -47,12 +47,11 @@ namespace FluidStudio.Physics
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            throw new System.NotImplementedException();
+            return true;
         }
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            throw new System.NotImplementedException();
         }
     }
 }
