@@ -8,6 +8,8 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 using Unity;
 
 namespace FluidStudio
@@ -62,11 +64,36 @@ namespace FluidStudio
 
         private void OnCreatePhysicsScene()
         {
+            var min = new Vector3d(0.0, 0.0, 0.0);
+            var max = new Vector3d(10.0, 10.0, 10.0);
+            var dx = 1.0;
+            var dy = 1.0;
+            var dz = 1.0;
+            var positions = new List<Vector3d>();
+            for (var x = min.X; x < max.X; x += dx)
+            {
+                for (var y = min.Y; y < max.Y; y += dy)
+                {
+                    for (var z = min.Z; z < max.Z; z += dz)
+                    {
+                        var p = new Vector3d(x, y, z);
+                        positions.Add(p);
+                    }
+                }
+            }
+            var particleSystemSceneId = mainModel.Scenes.AddParticleSystemScene(positions, "Particles01", new PG.Core.UI.ParticleAppearance(), 1);
+
+            Canvas.BuildShader(mainModel.Scenes, particleSystemSceneId);
+
+
             var scene = new PhysicsScene();
+            var fluidScene = new FluidScene(mainModel.Scenes, particleSystemSceneId, 1.0f, 1.0f);
+            scene.Fluids.Add(fluidScene);
             scene.CSGBoundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", new Box3d()));
             this.mainModel.PhysicsModel.Scenes.Add(scene);
 
+            Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
+            Canvas.Render();
         }
-
     }
 }
