@@ -111,19 +111,19 @@
     <Compile Include="FileIO\FSProjFileWriter.cs" />
     <Compile Include="MainModel.cs" />
     <Compile Include="PhysicsLabels.cs" />
-    <Compile Include="Physics\CSGBoundaryScene.cs" />
-    <Compile Include="Physics\CSGBoundarySceneView.xaml.cs">
+    <Compile Include="Physics\CSGBoundary\CSGBoundaryScene.cs" />
+    <Compile Include="Physics\CSGBoundary\CSGBoundarySceneView.xaml.cs">
       <DependentUpon>CSGBoundarySceneView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Physics\CSGBoundarySceneViewModel.cs" />
-    <Compile Include="Physics\FluidScene.cs" />
-    <Compile Include="Physics\FluidSceneView.xaml.cs">
+    <Compile Include="Physics\CSGBoundary\CSGBoundarySceneViewModel.cs" />
+    <Compile Include="Physics\Fluid\FluidScene.cs" />
+    <Compile Include="Physics\Fluid\FluidSceneView.xaml.cs">
       <DependentUpon>FluidSceneView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Physics\FluidSceneViewModel.cs" />
+    <Compile Include="Physics\Fluid\FluidSceneViewModel.cs" />
     <Compile Include="Physics\IPhysicsScene.cs" />
     <Compile Include="Physics\PhysicsSceneList.cs" />
-    <Compile Include="Physics\SolverScene.cs" />
+    <Compile Include="Physics\Solver\SolverScene.cs" />
     <Compile Include="Physics\PhysicsSceneListView.xaml.cs">
       <DependentUpon>PhysicsSceneListView.xaml</DependentUpon>
     </Compile>
@@ -164,11 +164,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Physics\CSGBoundarySceneView.xaml">
+    <Page Include="Physics\CSGBoundary\CSGBoundarySceneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Physics\FluidSceneView.xaml">
+    <Page Include="Physics\Fluid\FluidSceneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
