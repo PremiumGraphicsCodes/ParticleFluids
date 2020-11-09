@@ -26,4 +26,14 @@ namespace PG {
 		public const string TimeStepLabel = "TimeStep";
 	}
 
+	public class PhysicsSolverCreateLabels
+	{
+		public const string CommandNameLabel = "PhysicsSolverCreateCommand";
+		public const string FluidSceneIdsLabel = "FluidSceneIds";
+		public const string CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
+		public const string TimeStepLabel = "TimeStep";
+		public const string NameLabel = "Name";
+		public const string NewIdLabel = "NewId";
+	}
+
 }

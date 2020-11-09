@@ -196,6 +196,7 @@
     <ClInclude Include="PhysicsSolverCreateCommand.h" />
     <ClInclude Include="PublicLabels\CSGBoundarySceneCreateLabels.h" />
     <ClInclude Include="PublicLabels\FluidSimulationLabels.h" />
+    <ClInclude Include="PublicLabels\PhysicsSolverCreateLabels.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="PublicLabels\FluidSceneCreateLabels.h" />

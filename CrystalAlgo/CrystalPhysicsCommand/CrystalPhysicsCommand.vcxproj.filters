@@ -19,6 +19,9 @@
       <Filter>PublicLabels</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsSolverCreateCommand.h" />
+    <ClInclude Include="PublicLabels\PhysicsSolverCreateLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PublicLabels">

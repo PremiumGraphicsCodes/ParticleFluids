@@ -1,6 +1,6 @@
 #include "PhysicsSolverCreateCommand.h"
 
-//#include "PublicLabels/FluidSceneCreateLabels.h"
+#include "PublicLabels/PhysicsSolverCreateLabels.h"
 
 #include "../CrystalPhysics/KFFluidSolver.h"
 #include "../CrystalPhysics/KFFluidScene.h"
@@ -14,14 +14,14 @@ using namespace Crystal::Scene;
 
 std::string PhysicsSolverCreateCommand::getName()
 {
-	return "PhysicsSolverCreate";
+	return ::CommandNameLabel;
 }
 
 PhysicsSolverCreateCommand::Args::Args() :
-	fluidSceneIds("FluidSceneIds", {}),
-	csgBoundarySceneIds("CSGBoundarySceneIds", {}),
-	timeStep("TimeStep", 0.03f),
-	name("Name", std::string("FluidScene"))
+	fluidSceneIds(::FluidSceneIdsLabel, {}),
+	csgBoundarySceneIds(::CSGBoundarySceneIdsLabel, {}),
+	timeStep(::TimeStepLabel, 0.03f),
+	name(::NameLabel, std::string("FluidScene"))
 {
 	add(&fluidSceneIds);
 	add(&csgBoundarySceneIds);
@@ -30,7 +30,7 @@ PhysicsSolverCreateCommand::Args::Args() :
 }
 
 PhysicsSolverCreateCommand::Results::Results() :
-	newId("NewId", -1)
+	newId(::NewIdLabel, -1)
 {
 	add(&newId);
 }
