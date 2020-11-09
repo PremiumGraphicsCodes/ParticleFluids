@@ -126,6 +126,7 @@
     <Compile Include="Physics\PhysicsSceneListView.xaml.cs">
       <DependentUpon>PhysicsSceneListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Physics\PhysicsSceneListViewBehavior.cs" />
     <Compile Include="Physics\PhysicsSceneListViewModel.cs" />
     <Compile Include="Physics\PhysicsSceneViewModel.cs" />
     <Compile Include="Scene\ParticleSystem\BoxGenerationView.xaml.cs">

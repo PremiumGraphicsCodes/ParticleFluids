@@ -1,16 +1,14 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
-
-using Prism.Regions;
-
-using PG.Core;
 
 namespace FluidStudio.Physics
 {
     public class PhysicsSceneListViewBehavior : Behavior<TreeView>
     {
-        /*
         protected override void OnAttached()
         {
             this.AssociatedObject.MouseDoubleClick += this.ItemDoubleClicked;
@@ -30,11 +28,17 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            var selectedItem = treeView.SelectedItem as SceneModel;
+            var selectedItem = treeView.SelectedItem as PhysicsScene;
             if (selectedItem == null)
             {
                 return;
             }
+            /*
+            if (e.Key == Key.Delete)
+            {
+                World.Instance.Scenes.Delete(selectedItem.Id.Value);
+            }
+            */
         }
 
         private void ItemDoubleClicked(object sender, MouseButtonEventArgs e)
@@ -45,11 +49,10 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            var viewModel = treeView.DataContext as SceneListViewModel;
-            var selectedItem = treeView.SelectedItem as SceneModel;
-
-            viewModel.ChangeView(selectedItem);
+            var viewModel = treeView.DataContext as PhysicsSceneListViewModel;
+            var selectedItem = treeView.SelectedItem as PhysicsSceneViewModel;
+            //            viewModel.ChangeView(selectedItem);
         }
-        */
+
     }
 }
