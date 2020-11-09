@@ -1,6 +1,7 @@
 ﻿using FluidStudio.Physics;
 using FluidStudio.Scene;
 using PG.Control.OpenGL;
+using PG.Core.Math;
 using PG.Scene;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -30,13 +31,18 @@ namespace FluidStudio
 
         public TimeLineViewModel TimeLineViewModel { get; }
 
+        public ReactiveCommand PhysicsSceneCreateCommand { get; }
+            = new ReactiveCommand();
+
+        private readonly MainModel mainModel;
+
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
         {
             this.regionManager = regionManager;
 
-            var mainModel = container.Resolve<MainModel>();
+            this.mainModel = container.Resolve<MainModel>();
             var world = container.Resolve<SceneList>();
-            Canvas = container.Resolve<Canvas3d>();
+            this.Canvas = container.Resolve<Canvas3d>();
 
             this.NavigateCommand.Subscribe(OnNavigate);
 
@@ -46,11 +52,20 @@ namespace FluidStudio
             this.SceneListViewModel = new SceneListViewModel(regionManager, world);
             this.PhysicsSceneListViewModel = new PhysicsSceneListViewModel(regionManager, world, mainModel);
             this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
+            this.PhysicsSceneCreateCommand.Subscribe(OnCreatePhysicsScene);
         }
 
         private void OnNavigate(string name)
         {
             regionManager.RequestNavigate("ContentRegion", name);
+        }
+
+        private void OnCreatePhysicsScene()
+        {
+            var scene = new PhysicsScene();
+            scene.CSGBoundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", new Box3d()));
+            this.mainModel.PhysicsModel.Scenes.Add(scene);
+
         }
 
     }
