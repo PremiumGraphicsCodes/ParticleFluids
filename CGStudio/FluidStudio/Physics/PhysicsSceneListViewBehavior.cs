@@ -28,7 +28,7 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            var selectedItem = treeView.SelectedItem as PhysicsSolver;
+            var selectedItem = treeView.SelectedItem as SolverScene;
             if (selectedItem == null)
             {
                 return;

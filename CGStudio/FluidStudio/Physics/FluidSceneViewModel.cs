@@ -39,7 +39,7 @@ namespace FluidStudio.Physics
             var stiffness = Stiffness.Value;
             var viscosity = Viscosity.Value;
             var scene = new FluidScene(world, particleSystemId, stiffness, viscosity);
-            var fScene = new PhysicsSolver();
+            var fScene = new SolverScene();
             fScene.Fluids.Add(scene);
             model.PhysicsModel.Scenes.Add(fScene);
 

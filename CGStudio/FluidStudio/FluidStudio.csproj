@@ -122,7 +122,7 @@
     </Compile>
     <Compile Include="Physics\FluidSceneViewModel.cs" />
     <Compile Include="Physics\PhysicsSceneList.cs" />
-    <Compile Include="Physics\PhysicsSolver.cs" />
+    <Compile Include="Physics\SolverScene.cs" />
     <Compile Include="Physics\PhysicsSceneListView.xaml.cs">
       <DependentUpon>PhysicsSceneListView.xaml</DependentUpon>
     </Compile>

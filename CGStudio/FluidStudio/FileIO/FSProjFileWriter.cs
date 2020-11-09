@@ -41,7 +41,7 @@ namespace FluidStudio.FileIO
             return root;
         }
 
-        public XElement Write(PhysicsSolver scene)
+        public XElement Write(SolverScene scene)
         {
             var root = new XElement(FSProjFile.PhysicsSceneLabel);
             root.Add( new XAttribute(FSProjFile.NameLabel, scene.Name.Value) );

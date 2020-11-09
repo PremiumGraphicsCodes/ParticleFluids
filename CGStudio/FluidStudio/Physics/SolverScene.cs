@@ -7,10 +7,10 @@ using Labels = PG.FluidSimulationLabels;
 
 namespace FluidStudio.Physics
 {
-    public class PhysicsSolver
+    public class SolverScene
     {
         public ReactiveProperty<string> Name { get; }
-            = new ReactiveProperty<string>("PhysicsScene01");
+            = new ReactiveProperty<string>("Solver01");
 
         public ReactiveCollection<FluidScene> Fluids { get; }
             = new ReactiveCollection<FluidScene>();

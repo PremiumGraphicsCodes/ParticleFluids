@@ -24,7 +24,7 @@ namespace FluidStudio.Physics
 
         public PhysicsSceneType SceneType { get; }
 
-        public PhysicsSceneViewModel(PhysicsSolver scene)
+        public PhysicsSceneViewModel(SolverScene scene)
         {
             this.SceneType = PhysicsSceneType.Solver;
             Name = scene.Name.ToReadOnlyReactiveProperty();
