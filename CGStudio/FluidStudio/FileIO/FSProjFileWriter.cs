@@ -50,8 +50,8 @@ namespace FluidStudio.FileIO
                 root.Add(new XElement(FSProjFile.IdLabel, fluid.Id));
                 root.Add(new XElement(FSProjFile.NameLabel, fluid.Name));
                 root.Add(new XElement(FSProjFile.ParticleSystemIdLabel, fluid.ParticleSystemId));
-                root.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness.Value));
-                root.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity.Value));
+                root.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness));
+                root.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity));
             }
             return root;
         }

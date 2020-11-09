@@ -1,26 +1,21 @@
 ﻿using PG.Control.OpenGL;
 using PG.Scene;
-using Reactive.Bindings;
 using Labels = PG.FluidSceneCreateLabels;
 
 namespace FluidStudio.Physics
 {
     public class FluidScene
     {
-        private int id;
-        public int Id { get { return id; } }
+        public int Id { get; private set; }
 
         private int particleSystemId;
         public int ParticleSystemId { get { return particleSystemId; } }
 
-        private string name;
-        public string Name { get { return name; } }
+        public string Name { get; private set; }
 
-        public ReactiveProperty<float> Stiffness { get; }
-            = new ReactiveProperty<float>(1.0f);
+        public float Stiffness { get; private set; } = 1.0f;
 
-        public ReactiveProperty<float> Viscosity { get; }
-            = new ReactiveProperty<float>(1.0f);
+        public float Viscosity { get; private set; } = 1.0f;
 
         public FluidScene(SceneList world, int particleSystemId, float stiffness, float viscosity)
         {
@@ -29,8 +24,8 @@ namespace FluidStudio.Physics
 
         public void Create(SceneList world, int particleSystemId, float stiffness, float viscosity)
         {
-            this.Stiffness.Value = stiffness;
-            this.Viscosity.Value = viscosity;
+            this.Stiffness = stiffness;
+            this.Viscosity = viscosity;
             this.particleSystemId = particleSystemId;
             var command = new PG.CLI.PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.ParticleSystemIdLabel, particleSystemId);
@@ -38,12 +33,12 @@ namespace FluidStudio.Physics
             command.SetArg(Labels.ViscosityLabel, viscosity);
             command.SetArg(Labels.NameLabel, "NewFluid");
             command.Execute(world.Adapter);
-            this.id = command.GetResult<int>(Labels.NewIdLabel);
+            this.Id = command.GetResult<int>(Labels.NewIdLabel);
         }
 
         public void SendShader(SceneList world, Canvas3d canvas)
         {
-            canvas.SendShader(world, id);
+            canvas.SendShader(world, Id);
             canvas.Render();
         }
     }
