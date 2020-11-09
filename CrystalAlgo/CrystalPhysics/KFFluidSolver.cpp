@@ -13,7 +13,8 @@ using namespace Crystal::Math;
 using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
-KFFluidSolver::KFFluidSolver()
+KFFluidSolver::KFFluidSolver(const int id) :
+	IAnimator(id)
 {}
 
 void KFFluidSolver::step()

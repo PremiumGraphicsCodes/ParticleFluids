@@ -51,6 +51,8 @@ public:
 
 	void addAnimation(IAnimator* a) { this->animations.push_back(a); }
 
+	//IAnimator* findAnimatorById(const int id) const;
+
 	void createDefaultCamera();
 
 private:

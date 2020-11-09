@@ -17,8 +17,9 @@ namespace Crystal {
 class KFFluidSolver : public Scene::IAnimator
 {
 public:
+	KFFluidSolver() {}
 
-	KFFluidSolver();
+	explicit KFFluidSolver(const int id);
 
 	void clear() {
 		fluids.clear();
