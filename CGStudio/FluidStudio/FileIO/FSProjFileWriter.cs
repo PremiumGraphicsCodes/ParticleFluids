@@ -48,7 +48,7 @@ namespace FluidStudio.FileIO
             foreach (var fluid in scene.Fluids)
             {
                 root.Add(new XElement(FSProjFile.IdLabel, fluid.Id));
-                root.Add(new XElement(FSProjFile.NameLabel, fluid.Name.Value));
+                root.Add(new XElement(FSProjFile.NameLabel, fluid.Name));
                 root.Add(new XElement(FSProjFile.ParticleSystemIdLabel, fluid.ParticleSystemId));
                 root.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness.Value));
                 root.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity.Value));

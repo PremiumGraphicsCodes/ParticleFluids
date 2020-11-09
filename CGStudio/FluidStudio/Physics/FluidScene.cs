@@ -13,8 +13,8 @@ namespace FluidStudio.Physics
         private int particleSystemId;
         public int ParticleSystemId { get { return particleSystemId; } }
 
-        public ReactiveProperty<string> Name { get; }
-            = new ReactiveProperty<string>("Fluid01");
+        private string name;
+        public string Name { get { return name; } }
 
         public ReactiveProperty<float> Stiffness { get; }
             = new ReactiveProperty<float>(1.0f);

@@ -42,7 +42,7 @@ PhysicsSolverCreateCommand::PhysicsSolverCreateCommand() :
 bool PhysicsSolverCreateCommand::execute(World* world)
 {
 	const auto ids = args.fluidSceneIds.getValue();
-	auto solver = new KFFluidSolver();
+	auto solver = new KFFluidSolver(world->getNextSceneId());
 	for (const auto id : ids) {
 		auto scene = world->getScenes()->findSceneById<KFFluidScene*>(id);
 		if (scene->isBoundary()) {
@@ -59,6 +59,8 @@ bool PhysicsSolverCreateCommand::execute(World* world)
 		solver->addBoundary(scene);
 	}
 	world->addAnimation(solver);
+
+	results.newId.setValue(solver->getId());
 
 	return true;
 }

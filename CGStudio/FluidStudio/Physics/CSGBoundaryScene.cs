@@ -11,8 +11,9 @@ namespace FluidStudio.Physics
 
         public int Id { get { return id; } }
 
-        public ReactiveProperty<string> Name { get; }
-            = new ReactiveProperty<string>();
+        private string name;
+
+        public string Name { get { return name; } }
 
         public CSGBoundaryScene(SceneList world, string name, Box3d box)
         {
@@ -20,7 +21,7 @@ namespace FluidStudio.Physics
             command.SetArg(Labels.BoxLabel, box);
             command.Execute(world.Adapter);
             this.id = command.GetResult<int>(Labels.NewIdLabel);
-            this.Name.Value = name;
+            this.name = name;
         }
     }
 }

@@ -2,12 +2,13 @@
 using PG.Control.OpenGL;
 using PG.Core.Math;
 using PG.Scene;
+using Prism.Regions;
 using Reactive.Bindings;
 using System.Linq;
 
 namespace FluidStudio.Physics
 {
-    public class CSGBoundarySceneViewModel
+    public class CSGBoundarySceneViewModel : INavigationAware
     {
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("CSGBoundary01");
@@ -31,6 +32,21 @@ namespace FluidStudio.Physics
             var physicsScene = model.PhysicsModel.Scenes.FirstOrDefault();
             var boundary = new CSGBoundaryScene(world, Name.Value, BoxViewModel.Value);
             physicsScene.CSGBoundaries.Add(boundary);
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
