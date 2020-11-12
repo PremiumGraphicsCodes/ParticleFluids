@@ -51,7 +51,11 @@ public:
 
 	void addAnimation(IAnimator* a) { this->animations.push_back(a); }
 
-	//IAnimator* findAnimatorById(const int id) const;
+	template<typename T>
+	T findAnimatorById(const int id) const {
+		auto iter = std::find_if(animations.begin(), animations.end(), [id](IAnimator* a) { return id == a->getId(); });
+		return static_cast<T>(*iter);
+	}
 
 	void createDefaultCamera();
 

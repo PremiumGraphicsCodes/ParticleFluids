@@ -18,6 +18,9 @@
     <ClCompile Include="CSGBoundarySceneUpdateCommand.cpp">
       <Filter>CSGBoundaryScene</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsSolverUpdateCommand.cpp">
+      <Filter>FluidSolver</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -51,6 +54,12 @@
     </ClInclude>
     <ClInclude Include="CSGBoundarySceneUpdateCommand.h">
       <Filter>CSGBoundaryScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsSolverUpdateCommand.h">
+      <Filter>FluidSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\PhysicsSolverUpdateLabels.h">
+      <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

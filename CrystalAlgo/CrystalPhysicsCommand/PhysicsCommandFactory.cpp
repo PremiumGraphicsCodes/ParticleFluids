@@ -5,6 +5,8 @@
 #include "FluidSimulationCommand.h"
 #include "CSGBoundarySceneCreateCommand.h"
 #include "CSGBoundarySceneUpdateCommand.h"
+#include "PhysicsSolverCreateCommand.h"
+#include "PhysicsSolverUpdateCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::Physics;
@@ -25,6 +27,12 @@ std::unique_ptr<ICommand> PhysicsCommandFactory::create(const std::string& name)
 	}
 	else if (name == CSGBoundarySceneUpdateCommand::getName()) {
 		return std::make_unique<CSGBoundarySceneUpdateCommand>();
+	}
+	else if (name == PhysicsSolverCreateCommand::getName()) {
+		return std::make_unique<PhysicsSolverCreateCommand>();
+	}
+	else if (name == PhysicsSolverUpdateCommand::getName()) {
+		return std::make_unique<PhysicsSolverUpdateCommand>();
 	}
 	return nullptr;
 }
