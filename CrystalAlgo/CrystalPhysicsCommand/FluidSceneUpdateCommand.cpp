@@ -58,6 +58,7 @@ bool FluidSceneUpdateCommand::execute(World* world)
 		fluidScene->addParticle(mp);
 	}
 
+	fluidScene->setName(args.name.getValue());
 	fluidScene->setPressureCoe(args.stiffness.getValue());
 	fluidScene->setViscosityCoe(args.viscosity.getValue());
 	fluidScene->setBoundary(args.isBoundary.getValue());
