@@ -1,29 +1,36 @@
 ﻿using PG.Core.Math;
 using PG.Scene;
 using Reactive.Bindings;
-using Labels = PG.CSGBoundarySceneCreateLabels;
+using CreateLabels = PG.CSGBoundarySceneCreateLabels;
+using UpdateLabels = PG.CSGBoundarySceneUpdateLabels;
 
 namespace FluidStudio.Physics
 {
     public class CSGBoundaryScene : IPhysicsScene
     {
-        private int id;
+        public int Id { get; }
 
-        public int Id { get { return id; } }
-
-        private string name;
-
-        public string Name { get { return name; } }
+        public string Name { get; private set; }
 
         public Box3d Box { get; private set; }
 
         public CSGBoundaryScene(SceneList world, string name, Box3d box)
         {
-            var command = new PG.CLI.PhysicsCommand(Labels.CommandNameLabel);
-            command.SetArg(Labels.BoxLabel, box);
+            var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
+            command.SetArg(CreateLabels.BoxLabel, box);
             command.Execute(world.Adapter);
-            this.id = command.GetResult<int>(Labels.NewIdLabel);
-            this.name = name;
+            this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
+            this.Name = name;
+            this.Box = box;
+        }
+
+        public void Update(SceneList world, string name, Box3d box)
+        {
+            var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
+            command.SetArg(UpdateLabels.IdLabel, Id);
+            command.SetArg(UpdateLabels.NameLabel, name);
+            command.SetArg(UpdateLabels.BoxLabel, box);
+            this.Name = name;
             this.Box = box;
         }
     }
