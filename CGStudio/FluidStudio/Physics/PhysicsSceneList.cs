@@ -1,4 +1,6 @@
-﻿using Reactive.Bindings;
+﻿using PG.Control.OpenGL;
+using PG.Scene;
+using Reactive.Bindings;
 
 namespace FluidStudio.Physics
 {
@@ -11,6 +13,20 @@ namespace FluidStudio.Physics
         public PhysicsSceneList()
         {
 //            this.Scenes.Add(new PhysicsScene());
+        }
+
+        public void Simulate(SceneList world, Canvas3d canvas)
+        {
+            foreach (var ps in Scenes)
+            {
+                ps.Simulate(world);
+                foreach (var fluid in ps.Fluids)
+                {
+                    canvas.SendShader(world, fluid.Id);
+                }
+                canvas.Render();
+            }
+
         }
     }
 }

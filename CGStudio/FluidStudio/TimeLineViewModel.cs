@@ -38,12 +38,6 @@ namespace FluidStudio
         {
             isStop = false;
             Task.Run(() => Simulate());
-            /*
-            for (int i = 0; i < 100; ++i)
-            {
-                Simulate();
-            }
-            */
         }
 
         private void OnStop()
@@ -55,21 +49,7 @@ namespace FluidStudio
         {
             while(!isStop)
             {
-                SimulateNext();
-            }
-        }
-
-        private void SimulateNext()
-        {
-            var pScenes = mainModel.PhysicsModel.Scenes;
-            foreach (var ps in pScenes)
-            {
-                ps.Simulate(scenes);
-                foreach(var fluid in ps.Fluids)
-                {
-                    canvas.SendShader(scenes, fluid.Id);
-                }
-                canvas.Render();
+                mainModel.PhysicsModel.Simulate(scenes, canvas);
             }
         }
     }
