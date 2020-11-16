@@ -10,12 +10,6 @@ class FluidSceneCreateCommand : public Command::ICommand
 public:
 	struct Args : Command::IArgs
 	{
-		Command::Arg<int> particleSystemId;
-		Command::Arg<float> stiffness;
-		Command::Arg<float> viscosity;
-		Command::Arg<bool> isBoundary;
-		Command::Arg<std::string> name;
-
 		Args();
 	};
 

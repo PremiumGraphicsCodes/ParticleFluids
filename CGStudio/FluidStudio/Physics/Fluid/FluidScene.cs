@@ -24,17 +24,10 @@ namespace FluidStudio.Physics
 
         public void Create(SceneList world, int particleSystemId, float stiffness, float viscosity, string name)
         {
-            this.Name = name;
-            this.Stiffness = stiffness;
-            this.Viscosity = viscosity;
-            this.ParticleSystemId = particleSystemId;
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
-            command.SetArg(CreateLabels.ParticleSystemIdLabel, particleSystemId);
-            command.SetArg(CreateLabels.StiffnessLabel, stiffness);
-            command.SetArg(CreateLabels.ViscosityLabel, viscosity);
-            command.SetArg(CreateLabels.NameLabel, name);
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
+            Update(world, particleSystemId, stiffness, viscosity, name);
         }
 
         public void Update(SceneList world, int particleSystemId, float stiffness, float viscosity, string name)
@@ -45,10 +38,10 @@ namespace FluidStudio.Physics
             this.ParticleSystemId = particleSystemId;
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
-            command.SetArg(CreateLabels.ParticleSystemIdLabel, particleSystemId);
-            command.SetArg(CreateLabels.StiffnessLabel, stiffness);
-            command.SetArg(CreateLabels.ViscosityLabel, viscosity);
-            command.SetArg(CreateLabels.NameLabel, name);
+            command.SetArg(UpdateLabels.ParticleSystemIdLabel, particleSystemId);
+            command.SetArg(UpdateLabels.StiffnessLabel, stiffness);
+            command.SetArg(UpdateLabels.ViscosityLabel, viscosity);
+            command.SetArg(UpdateLabels.NameLabel, name);
             command.Execute(world.Adapter);
         }
     }

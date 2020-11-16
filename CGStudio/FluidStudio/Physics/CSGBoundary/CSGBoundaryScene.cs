@@ -8,7 +8,7 @@ namespace FluidStudio.Physics
 {
     public class CSGBoundaryScene : IPhysicsScene
     {
-        public int Id { get; }
+        public int Id { get; private set; }
 
         public string Name { get; private set; }
 
@@ -16,12 +16,15 @@ namespace FluidStudio.Physics
 
         public CSGBoundaryScene(SceneList world, string name, Box3d box)
         {
+            Create(world, name, box);
+        }
+        
+        public void Create(SceneList world, string name, Box3d box)
+        {
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
-            command.SetArg(CreateLabels.BoxLabel, box);
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            this.Name = name;
-            this.Box = box;
+            Update(world, name, box);
         }
 
         public void Update(SceneList world, string name, Box3d box)

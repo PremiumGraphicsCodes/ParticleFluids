@@ -14,18 +14,8 @@ std::string FluidSceneCreateCommand::getName()
 	return ::CommandNameLabel;
 }
 
-FluidSceneCreateCommand::Args::Args() :
-	particleSystemId(::ParticleSystemIdLabel, -1),
-	stiffness(::StiffnessLabel, 1.0f),
-	viscosity(::ViscosityLabel, 1.0f),
-	isBoundary(::IsBoundary, false),
-	name(::NameLabel, std::string("FluidScene"))
+FluidSceneCreateCommand::Args::Args()
 {
-	add(&particleSystemId);
-	add(&stiffness);
-	add(&viscosity);
-	add(&isBoundary);
-	add(&name);
 }
 
 FluidSceneCreateCommand::Results::Results() :
@@ -40,27 +30,8 @@ FluidSceneCreateCommand::FluidSceneCreateCommand() :
 
 bool FluidSceneCreateCommand::execute(World* world)
 {
-	auto particles = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
-	if (particles == nullptr) {
-		return false;
-	}
-	const auto& positions = particles->getShape()->getPositions();
-
-	auto fluidScene = new KFFluidScene(world->getNextSceneId(), args.name.getValue());
-	const auto radius = 1.0;
-	for (auto p : positions) {
-		auto mp = new KFMacroParticle(radius, p);
-		mp->distributePoints(3, 3, 3, 1.0f);
-		fluidScene->addParticle(mp);
-	}
-
-	//fluidScene->addParticle()
-	fluidScene->setPressureCoe(args.stiffness.getValue());
-	fluidScene->setViscosityCoe(args.viscosity.getValue());
-	fluidScene->setBoundary(args.isBoundary.getValue());
+	auto fluidScene = new KFFluidScene(world->getNextSceneId(), "");
 	world->getScenes()->addScene(fluidScene);
-
 	results.newId.setValue(fluidScene->getId());
-
 	return true;
 }

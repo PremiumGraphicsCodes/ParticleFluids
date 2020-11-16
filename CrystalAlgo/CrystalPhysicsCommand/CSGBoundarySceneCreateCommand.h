@@ -10,10 +10,7 @@ class CSGBoundarySceneCreateCommand : public Command::ICommand
 public:
 	struct Args : Command::IArgs
 	{
-		Command::Arg<Math::Box3d> box;
-		Command::Arg<std::string> name;
-
-		Args();
+		Args() {}
 	};
 
 	struct Results : Command::IResults
