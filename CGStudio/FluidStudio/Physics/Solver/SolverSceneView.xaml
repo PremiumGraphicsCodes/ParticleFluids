@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="FluidStudio.Physics.Solver.SolverSceneView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FluidStudio.Physics.Solver"
+             mc:Ignorable="d"             
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Name"/>
+            <TextBox Text="{Binding Name.Value}" MinWidth="50"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Id"/>
+            <TextBox Text="{Binding Id.Value}" MinWidth="50"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

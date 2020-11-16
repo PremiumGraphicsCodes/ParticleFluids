@@ -5,6 +5,8 @@ namespace FluidStudio.Physics.Solver
 {
     public class SolverSceneViewModel : INavigationAware
     {
+        private SolverScene scene;
+
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return true;
@@ -23,7 +25,7 @@ namespace FluidStudio.Physics.Solver
             }
             //Stiffness.Value = item.Stiffness;
             //Viscosity.Value = item.Viscosity;
-
+            this.scene = item;
         }
     }
 }

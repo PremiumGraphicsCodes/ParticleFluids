@@ -130,6 +130,9 @@
     <Compile Include="Physics\PhysicsSceneListViewBehavior.cs" />
     <Compile Include="Physics\PhysicsSceneListViewModel.cs" />
     <Compile Include="Physics\PhysicsSceneViewModel.cs" />
+    <Compile Include="Physics\Solver\SolverSceneView.xaml.cs">
+      <DependentUpon>SolverSceneView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Physics\Solver\SolverSceneViewModel.cs" />
     <Compile Include="Scene\ParticleSystem\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Physics\PhysicsSceneListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Physics\Solver\SolverSceneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

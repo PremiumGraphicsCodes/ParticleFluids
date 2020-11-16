@@ -29,13 +29,13 @@ namespace FluidStudio.Physics
             }
             var parameters = new NavigationParameters();
             parameters.Add("Scene", selectedItem);
-            if(selectedItem is CSGBoundaryScene)
+            if (selectedItem is FluidScene)
             {
-                NavigateView("CSGBoundaryGeneration", parameters);
+                NavigateView("FluidUpdate", parameters);
             }
-            else if(selectedItem is FluidScene)
+            else if (selectedItem is CSGBoundaryScene)
             {
-                NavigateView("FluidGeneration", parameters);
+                NavigateView("CSGBoundaryUpdate", parameters);
             }
         }
     }

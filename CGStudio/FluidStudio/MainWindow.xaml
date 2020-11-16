@@ -37,8 +37,6 @@
             <RibbonTab Header="Physics">
                 <RibbonGroup Header="Primitive">
                     <RibbonButton Label="Solver" Command="{Binding PhysicsSceneCreateCommand}"/>
-                    <RibbonButton Label="Fluid" Command="{Binding NavigateCommand}" CommandParameter="FluidGeneration"/>
-                    <RibbonButton Label="CSGBoundary" Command="{Binding NavigateCommand}" CommandParameter="CSGBoundaryGeneration"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="View">
