@@ -15,7 +15,7 @@ namespace FluidStudio
             var dataContext = this.DataContext as MainWindowViewModel;
             var canvas = dataContext.Canvas;
             HwndHostPresenter.SetCanvas(canvas);
-
+            dataContext.CreateDefaultTemplate();
         }
     }
 }

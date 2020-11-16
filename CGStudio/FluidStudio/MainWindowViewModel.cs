@@ -2,6 +2,7 @@
 using FluidStudio.Scene;
 using PG.Control.OpenGL;
 using PG.Core.Math;
+using PG.Core.UI;
 using PG.Scene;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -55,11 +56,47 @@ namespace FluidStudio
             this.PhysicsSceneListViewModel = new PhysicsSceneListViewModel(regionManager, world, mainModel);
             this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
             this.PhysicsSceneCreateCommand.Subscribe(OnCreatePhysicsScene);
+
         }
 
         private void OnNavigate(string name)
         {
             regionManager.RequestNavigate("ContentRegion", name);
+        }
+
+        // create template.
+        public void CreateDefaultTemplate()
+        {
+            OnCreateParticles();
+            OnCreatePhysicsScene();
+        }
+
+        private void OnCreateParticles()
+        {
+            var world = mainModel.Scenes;
+            var positions = new List<Vector3d>();
+            var min = new Vector3d(0.0, 0.0, 0.0);
+            var max = new Vector3d(10.0, 10.0, 10.0);
+            var box = new Box3d(min, max);
+            var length = box.Length;
+            for (var x = min.X; x < max.X; x += 1.0)
+            {
+                for (var y = min.Y; y < max.Y; y += 1.0)
+                {
+                    for (var z = min.Z; z < max.Z; z += 1.0)
+                    {
+                        var p = new Vector3d(x, y, z);
+                        positions.Add(p);
+                    }
+                }
+            }
+            var appearance = new ParticleAppearance();
+            appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
+            appearance.Size = 10.0f;
+            var newId = world.AddParticleSystemScene(positions, "PSBox", appearance, 1);
+            this.Canvas.Camera.Fit();
+            this.Canvas.BuildShader(world, newId);
+            this.Canvas.Render();
         }
 
         private void OnCreatePhysicsScene()
