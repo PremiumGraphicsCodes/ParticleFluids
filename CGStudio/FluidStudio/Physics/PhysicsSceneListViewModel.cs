@@ -29,7 +29,11 @@ namespace FluidStudio.Physics
             }
             var parameters = new NavigationParameters();
             parameters.Add("Scene", selectedItem);
-            if (selectedItem is FluidScene)
+            if(selectedItem is SolverScene)
+            {
+                NavigateView("SolverUpdate", parameters);
+            }
+            else if (selectedItem is FluidScene)
             {
                 NavigateView("FluidUpdate", parameters);
             }

@@ -1,4 +1,5 @@
 ﻿using FluidStudio.Physics;
+using FluidStudio.Physics.Solver;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Prism.Ioc;
@@ -32,7 +33,7 @@ namespace FluidStudio
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.QuadGenerationView>("PSQuadGeneration");
 
-            containerRegistry.RegisterForNavigation<SolverScene>("SolverUpdate");
+            containerRegistry.RegisterForNavigation<SolverSceneView>("SolverUpdate");
             containerRegistry.RegisterForNavigation<FluidSceneView>("FluidUpdate");
             containerRegistry.RegisterForNavigation<CSGBoundarySceneView>("CSGBoundaryUpdate");
         }

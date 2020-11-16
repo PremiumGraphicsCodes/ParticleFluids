@@ -1,10 +1,20 @@
 ﻿using Prism.Regions;
+using Reactive.Bindings;
 using System;
 
 namespace FluidStudio.Physics.Solver
 {
     public class SolverSceneViewModel : INavigationAware
     {
+        public ReactiveProperty<string> Name { get; }
+            = new ReactiveProperty<string>("Solver01");
+
+        public ReactiveProperty<int> Id { get; }
+            = new ReactiveProperty<int>();
+
+        public ReactiveCommand UpdateCommand { get; }
+            = new ReactiveCommand();
+
         private SolverScene scene;
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -23,9 +33,13 @@ namespace FluidStudio.Physics.Solver
             {
                 return;
             }
-            //Stiffness.Value = item.Stiffness;
-            //Viscosity.Value = item.Viscosity;
+            this.Name.Value = item.Name;
+            this.Id.Value = Id.Value;
             this.scene = item;
+        }
+
+        private void OnUpdate()
+        {
         }
     }
 }

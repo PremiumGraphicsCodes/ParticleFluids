@@ -17,6 +17,6 @@
             <TextBlock Text="Box"/>
             <math:Box3dView DataContext="{Binding BoxViewModel}"/>
         </StackPanel>
-        <Button Content="Create" Command="{Binding CreateCommand}"/>
+        <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>

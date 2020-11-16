@@ -16,22 +16,17 @@ namespace FluidStudio.Physics
         public Box3dViewModel BoxViewModel { get; }
             = new Box3dViewModel();
 
-        public ReactiveCommand CreateCommand { get; }
+        public ReactiveCommand UpdateCommand { get; }
             = new ReactiveCommand();
+
+        private CSGBoundaryScene scene;
 
         public CSGBoundarySceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
-            CreateCommand.Subscribe(() => OnCreate(model, world, canvas));
             var min = new Vector3d(-100, -100, -100);
             var max = new Vector3d(100, 100, 100);
             BoxViewModel.Value = new Box3d(min, max);
-        }
-
-        private void OnCreate(MainModel model, SceneList world, Canvas3d canvas)
-        {
-            var physicsScene = model.PhysicsModel.Scenes.FirstOrDefault();
-            var boundary = new CSGBoundaryScene(world, Name.Value, BoxViewModel.Value);
-            physicsScene.CSGBoundaries.Add(boundary);
+            UpdateCommand.Subscribe(() => OnUpdate(model, world, canvas));
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -41,8 +36,9 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            Name.Value = item.Name;
-            BoxViewModel.Value = item.Box;
+            this.Name.Value = item.Name;
+            this.BoxViewModel.Value = item.Box;
+            this.scene = item;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -52,6 +48,11 @@ namespace FluidStudio.Physics
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
+        }
+
+        private void OnUpdate(MainModel model, SceneList world, Canvas3d canvas)
+        {
+            this.scene.Update(world, Name.Value, BoxViewModel.Value);
         }
     }
 }

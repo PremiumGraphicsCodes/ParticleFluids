@@ -16,5 +16,10 @@
             <TextBlock Text="Id"/>
             <TextBox Text="{Binding Id.Value}" MinWidth="50"/>
         </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="TimeStep"/>
+            <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
+        </StackPanel>
+        <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>
