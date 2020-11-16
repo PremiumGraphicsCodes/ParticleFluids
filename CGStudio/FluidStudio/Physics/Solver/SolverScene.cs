@@ -44,6 +44,7 @@ namespace FluidStudio.Physics
             {
                 boundaryIds.Add(b.Id);
             }
+            this.CSGBoundaries = boundaries;
 
             var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
