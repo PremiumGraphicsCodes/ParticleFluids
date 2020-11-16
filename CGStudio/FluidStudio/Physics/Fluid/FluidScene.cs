@@ -51,11 +51,5 @@ namespace FluidStudio.Physics
             command.SetArg(CreateLabels.NameLabel, name);
             command.Execute(world.Adapter);
         }
-
-        public void SendShader(SceneList world, Canvas3d canvas)
-        {
-            canvas.SendShader(world, Id);
-            canvas.Render();
-        }
     }
 }

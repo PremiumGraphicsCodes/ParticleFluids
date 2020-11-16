@@ -61,15 +61,5 @@ namespace FluidStudio.Physics
             command.SetArg(Labels.TimeStepLabel, TimeStep);
             command.Execute(scenes.Adapter);
         }
-
-        public void SendShader(SceneList scenes, Canvas3d canvas)
-        {
-            foreach (var scene in Fluids)
-            {
-                scene.SendShader(scenes, canvas);
-            }
-        }
-
     }
-
 }

@@ -10,6 +10,10 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Id"/>
+            <TextBox Text="{Binding Id.Value}" MinWidth="50"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
             <TextBlock Text="Name"/>
             <TextBox Text="{Binding Name.Value}" MinWidth="50"/>
         </StackPanel>

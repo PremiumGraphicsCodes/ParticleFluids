@@ -10,6 +10,9 @@ namespace FluidStudio.Physics
 {
     public class CSGBoundarySceneViewModel : INavigationAware
     {
+        public ReactiveProperty<int> Id { get; }
+            = new ReactiveProperty<int>();
+
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("CSGBoundary01");
 
@@ -36,6 +39,7 @@ namespace FluidStudio.Physics
             {
                 return;
             }
+            this.Id.Value = item.Id;
             this.Name.Value = item.Name;
             this.BoxViewModel.Value = item.Box;
             this.scene = item;

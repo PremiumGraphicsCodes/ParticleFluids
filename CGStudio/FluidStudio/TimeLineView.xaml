@@ -9,6 +9,7 @@
              mc:Ignorable="d">
     <StackPanel Orientation="Horizontal">
         <Button Content="Start" Command="{Binding StartCommand}"/>
+        <Button Content="Stop" Command="{Binding StopCommand}"/>
         <TextBox Text="{Binding Step.Value}" MinWidth="50"/>
         <Slider MinWidth="500" Value="{Binding Step.Value}" Minimum="0" Maximum="100"/>
     </StackPanel>
