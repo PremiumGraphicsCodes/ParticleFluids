@@ -9,6 +9,14 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Id"/>
+            <TextBox Text="{Binding Id.Value}" IsReadOnly="True" MinWidth="50"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Name"/>
+            <TextBox Text="{Binding Name.Value}" IsReadOnly="True" MinWidth="50"/>
+        </StackPanel>
         <ui:SceneSelectView DataContext="{Binding ParticleSystemSelectViewModel}"/>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Density"/>
@@ -23,6 +31,6 @@
             <TextBox Text="{Binding Viscosity.Value}" MinWidth="50"/>
         </StackPanel>
         <CheckBox Content="Boundary" IsChecked="{Binding IsBoundary.Value}"/>
-        <Button Content="Add" Command="{Binding AddCommand}"/>
+        <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>

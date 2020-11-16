@@ -10,7 +10,13 @@ namespace FluidStudio.Physics
 {
     public class FluidSceneViewModel : INavigationAware
     {
+        public ReactiveProperty<string> Name { get; }
+            = new ReactiveProperty<string>("Fluid01");
+
         public SceneSelectViewModel ParticleSystemSelectViewModel { get; }
+
+        public ReactiveProperty<int> Id { get; }
+            = new ReactiveProperty<int>();
 
         public ReactiveProperty<double> Density { get; }
             = new ReactiveProperty<double>(1000.0);
@@ -24,12 +30,18 @@ namespace FluidStudio.Physics
         public ReactiveProperty<bool> IsBoundary { get; }
             = new ReactiveProperty<bool>(false);
 
-        public ReactiveCommand AddCommand { get; }
+        public ReactiveCommand UpdateCommand { get; }
             = new ReactiveCommand();
+
+        private FluidScene scene;
+
+        private SceneList world;
 
         public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.ParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
+            this.UpdateCommand.Subscribe(OnUpdate);
+            this.world = world;
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -39,8 +51,11 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            Stiffness.Value = item.Stiffness;
-            Viscosity.Value = item.Viscosity;
+            this.Id.Value = item.Id;
+            this.ParticleSystemSelectViewModel.Id.Value = item.ParticleSystemId;
+            this.Stiffness.Value = item.Stiffness;
+            this.Viscosity.Value = item.Viscosity;
+            this.scene = item;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -50,6 +65,16 @@ namespace FluidStudio.Physics
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
+        }
+
+        private void OnUpdate()
+        {
+            var particleSystemId = ParticleSystemSelectViewModel.Id.Value;
+            var stiffness = Stiffness.Value;
+            var viscosity = Viscosity.Value;
+            var name = Name.Value;
+            this.scene.Update(world, particleSystemId, stiffness, viscosity, name);
+           // this.model.PhysicsModel.
         }
     }
 }
