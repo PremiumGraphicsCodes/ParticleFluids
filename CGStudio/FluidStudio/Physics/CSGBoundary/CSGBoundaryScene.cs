@@ -30,6 +30,7 @@ namespace FluidStudio.Physics
             command.SetArg(UpdateLabels.IdLabel, Id);
             command.SetArg(UpdateLabels.NameLabel, name);
             command.SetArg(UpdateLabels.BoxLabel, box);
+            command.Execute(world.Adapter);
             this.Name = name;
             this.Box = box;
         }
