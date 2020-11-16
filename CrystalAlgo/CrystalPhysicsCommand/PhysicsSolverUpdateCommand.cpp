@@ -24,6 +24,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	timeStep(::TimeStepLabel, 0.03f),
 	name(::NameLabel, std::string("FluidScene"))
 {
+	add(&id);
 	add(&fluidSceneIds);
 	add(&csgBoundarySceneIds);
 	add(&timeStep);

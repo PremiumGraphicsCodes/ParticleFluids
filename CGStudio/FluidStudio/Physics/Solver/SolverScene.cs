@@ -5,6 +5,7 @@ using Reactive.Bindings;
 using System.Collections.Generic;
 using Labels = PG.FluidSimulationLabels;
 using CreateLabels = PG.PhysicsSolverCreateLabels;
+using UpdateLabels = PG.PhysicsSolverUpdateLabels;
 
 namespace FluidStudio.Physics
 {
@@ -24,41 +25,39 @@ namespace FluidStudio.Physics
 
         public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
         {
+            var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
+            command.Execute(scenes.Adapter);
+            this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
+            Update(scenes, fluids, boundaries, timeStep, name);
+        }
+
+        public void Update(SceneList world, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
+        {
             var fluidIds = new List<int>();
-            foreach(var f in fluids)
+            foreach (var f in fluids)
             {
                 fluidIds.Add(f.Id);
             }
             this.Fluids = fluids;
             var boundaryIds = new List<int>();
-            foreach(var b in boundaries)
+            foreach (var b in boundaries)
             {
                 boundaryIds.Add(b.Id);
             }
-            var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
-            command.SetArg(CreateLabels.FluidSceneIdsLabel, fluidIds);
-            command.SetArg(CreateLabels.CSGBoundarySceneIdsLabel, boundaryIds);
-            command.SetArg(CreateLabels.TimeStepLabel, timeStep);
-            command.SetArg(CreateLabels.NameLabel, name);
-            command.Execute(scenes.Adapter);
+
+            var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
+            command.SetArg(UpdateLabels.IdLabel, Id);
+            command.SetArg(UpdateLabels.FluidSceneIdsLabel, fluidIds);
+            command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, boundaryIds);
+            command.SetArg(UpdateLabels.TimeStepLabel, timeStep);
+            command.SetArg(UpdateLabels.NameLabel, name);
+            command.Execute(world.Adapter);
         }
 
         public void Simulate(SceneList scenes)
         {
             var command = new PhysicsCommand(Labels.CommandNameLabel);
-            var ids = new List<int>();
-            foreach (var scene in Fluids)
-            {
-                ids.Add(scene.Id);
-            }
-            var boundaryIds = new List<int>();
-            foreach(var b in CSGBoundaries)
-            {
-                boundaryIds.Add(b.Id);
-            }
-            command.SetArg(Labels.FluidSceneIdsLabel, ids);
-            command.SetArg(Labels.CSGBoundarySceneIdsLabel, boundaryIds);
-            command.SetArg(Labels.TimeStepLabel, TimeStep);
+            command.SetArg(Labels.SolverIdLabel, Id);
             command.Execute(scenes.Adapter);
         }
     }

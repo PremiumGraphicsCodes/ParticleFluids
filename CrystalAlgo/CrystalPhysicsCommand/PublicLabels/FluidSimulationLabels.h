@@ -2,7 +2,5 @@
 
 namespace {
 	PublicLabel CommandNameLabel = "FluidSimulationCommand";
-	PublicLabel FluidSceneIdsLabel = "FluidSceneIds";
-	PublicLabel CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
-	PublicLabel TimeStepLabel = "TimeStep";
+	PublicLabel SolverIdLabel = "SolverId";
 }

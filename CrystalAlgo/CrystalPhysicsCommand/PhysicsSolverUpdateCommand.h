@@ -10,7 +10,7 @@ class PhysicsSolverUpdateCommand : public Command::ICommand
 public:
 	struct Args : Command::IArgs
 	{
-		Command::Result<int> id;
+		Command::Arg<int> id;
 		Command::Arg<std::vector<int>> fluidSceneIds;
 		Command::Arg<std::vector<int>> csgBoundarySceneIds;
 		Command::Arg<float> timeStep;
