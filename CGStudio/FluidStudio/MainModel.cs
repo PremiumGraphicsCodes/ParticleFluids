@@ -8,14 +8,14 @@ namespace FluidStudio
     {
         public VDBModel VDBModel { get; }
 
-        public PhysicsSceneList PhysicsModel { get; }
+        public PhysicsModel PhysicsModel { get; }
 
         public SceneList Scenes { get; }
 
         public MainModel()
         {
             this.VDBModel = new VDBModel();
-            this.PhysicsModel = new PhysicsSceneList();
+            this.PhysicsModel = new PhysicsModel();
             this.Scenes = new SceneList();
         }
     }

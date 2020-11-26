@@ -4,13 +4,12 @@ using Reactive.Bindings;
 
 namespace FluidStudio.Physics
 {
-
-    public class PhysicsSceneList
+    public class PhysicsModel
     {
         public ReactiveCollection<SolverScene> Scenes { get; }
             = new ReactiveCollection<SolverScene>();
 
-        public PhysicsSceneList()
+        public PhysicsModel()
         {
 //            this.Scenes.Add(new PhysicsScene());
         }
@@ -26,7 +25,6 @@ namespace FluidStudio.Physics
                 }
                 canvas.Render();
             }
-
         }
     }
 }

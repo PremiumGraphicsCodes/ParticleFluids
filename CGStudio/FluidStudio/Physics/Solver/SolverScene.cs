@@ -33,26 +33,11 @@ namespace FluidStudio.Physics
 
         public void Update(SceneList world, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
         {
-            var fluidIds = new List<int>();
-            foreach (var f in fluids)
-            {
-                fluidIds.Add(f.Id);
-            }
             this.Fluids = fluids;
-            var boundaryIds = new List<int>();
-            foreach (var b in boundaries)
-            {
-                boundaryIds.Add(b.Id);
-            }
             this.CSGBoundaries = boundaries;
-
-            var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
-            command.SetArg(UpdateLabels.IdLabel, Id);
-            command.SetArg(UpdateLabels.FluidSceneIdsLabel, fluidIds);
-            command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, boundaryIds);
-            command.SetArg(UpdateLabels.TimeStepLabel, timeStep);
-            command.SetArg(UpdateLabels.NameLabel, name);
-            command.Execute(world.Adapter);
+            this.TimeStep = timeStep;
+            this.Name = name;
+            Reset(world);
         }
 
         public void Simulate(SceneList scenes)
@@ -60,6 +45,29 @@ namespace FluidStudio.Physics
             var command = new PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.SolverIdLabel, Id);
             command.Execute(scenes.Adapter);
+        }
+
+        public void Reset(SceneList world)
+        {
+            var fluidIds = new List<int>();
+            foreach (var f in Fluids)
+            {
+                fluidIds.Add(f.Id);
+            }
+            var boundaryIds = new List<int>();
+            foreach (var b in CSGBoundaries)
+            {
+                boundaryIds.Add(b.Id);
+            }
+
+
+            var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
+            command.SetArg(UpdateLabels.IdLabel, Id);
+            command.SetArg(UpdateLabels.FluidSceneIdsLabel, fluidIds);
+            command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, boundaryIds);
+            command.SetArg(UpdateLabels.TimeStepLabel, TimeStep);
+            command.SetArg(UpdateLabels.NameLabel, Name);
+            command.Execute(world.Adapter);
         }
     }
 }

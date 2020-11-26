@@ -18,17 +18,31 @@ namespace FluidStudioTest
             return new FluidScene(world, id, 1.0f, 1.0f, name);
         }
 
+        private SolverScene CreateSolverTestScene(SceneList world, string name)
+        {
+            var fluids = new List<FluidScene>();
+            fluids.Add(CreateFluidTestScene(world, "Fluid"));
+            var boundaries = new List<CSGBoundaryScene>();
+
+            var solver = new SolverScene();
+            solver.Create(world, fluids, boundaries, 0.03f, name);
+            return solver;
+        }
+
         [TestMethod]
         public void TestCreate()
         {
             var world = new SceneList();
-            var fluids = new List<FluidScene>();
-            fluids.Add(CreateFluidTestScene(world, "Fluid01"));
-            var boundaries = new List<CSGBoundaryScene>();
-
-            var solver = new SolverScene();
-            solver.Create(world, fluids, boundaries, 0.03f, "Solver01");
+            var solver = CreateSolverTestScene(world, "");
             Assert.AreEqual(4, solver.Id);
+        }
+
+        [TestMethod]
+        public void TestSimulate()
+        {
+            var world = new SceneList();
+            var solver = CreateSolverTestScene(world, "");
+            solver.Simulate(world);
         }
     }
 }
