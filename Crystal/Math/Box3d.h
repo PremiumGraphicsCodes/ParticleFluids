@@ -1,13 +1,13 @@
 #pragma once
 
 #include "Vector3d.h"
-#include "IVolume3d.h"
+#include "ISolid3d.h"
 
 namespace Crystal {
 	namespace Math {
 		class Sphere3d;
 
-class Box3d : public IVolume3d
+class Box3d : public ISolid3d
 {
 public:
 	Box3d();

@@ -67,11 +67,11 @@
     <ClInclude Include="ISurface3d.h">
       <Filter>Primitive3d\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="IVolume3d.h">
-      <Filter>Primitive3d\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="Circle3d.h">
       <Filter>Primitive3d</Filter>
+    </ClInclude>
+    <ClInclude Include="ISolid3d.h">
+      <Filter>Primitive3d\Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

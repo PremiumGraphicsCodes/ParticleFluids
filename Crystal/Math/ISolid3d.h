@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace Math {
 
-class IVolume3d
+class ISolid3d
 {
 public:
-	virtual ~IVolume3d() = default;
+	virtual ~ISolid3d() = default;
 
 	virtual Vector3dd getPosition(const double u, const double v, const double w) const = 0;
 
