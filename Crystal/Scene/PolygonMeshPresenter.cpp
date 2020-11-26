@@ -54,10 +54,8 @@ void PolygonMeshPresenter::updateScreenView()
 	const auto& ps = shape->getPositions();
 	const auto& tcs = shape->getTexCoords();
 	const auto& ns = shape->getNormals();
-	const auto& matrix = model->getMatrix();
 
 	SmoothBuffer buffer;
-	buffer.setMatrix(matrix);
 
 	auto groups = model->getGroups();
 	for (auto scene : groups) {

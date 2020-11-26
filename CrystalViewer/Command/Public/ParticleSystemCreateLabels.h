@@ -10,6 +10,5 @@ namespace ParticleSystemCreateLabels
 	PublicLabel ColorLabel = "Color";
 	PublicLabel NameLabel = "Name";
 	PublicLabel LayerLabel = "Layer";
-	PublicLabel MatrixLabel = "Matrix";
 	PublicLabel NewIdLabel = "NewId";
 }

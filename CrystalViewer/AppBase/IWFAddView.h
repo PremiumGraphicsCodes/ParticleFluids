@@ -14,11 +14,9 @@ public:
 	IWFAddView(const std::string& name, Scene::World* model, Canvas* canvas) :
 		IOkCancelView(name, model, canvas),
 		attributeView("WFAttribute"),
-		matrixView("Matrix", Math::Identity()),
 		nameView("Name", "WireFrame01")
 	{
 		add(&attributeView);
-		add(&matrixView);
 		add(&nameView);
 	}
 
@@ -27,7 +25,6 @@ protected:
 
 private:
 	WFAttributeView attributeView;
-	Matrix4dView matrixView;
 	StringView nameView;
 };
 

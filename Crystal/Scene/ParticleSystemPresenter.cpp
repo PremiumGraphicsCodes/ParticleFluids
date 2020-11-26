@@ -56,7 +56,6 @@ void ParticleSystemPresenter::updateScreenView()
 	for (auto p : ps) {
 		pb.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
-	pb.setMatrix(model->getMatrix());
 
 	this->view->setBlend(this->doBlend);
 	this->view->send(pb);
@@ -68,7 +67,6 @@ void ParticleSystemPresenter::updateParentIdView()
 	const auto& particles = model->getShape()->getParticles();
 	int particleId = 0;
 	PointBuffer parentIdBuffer;
-	parentIdBuffer.setMatrix(model->getMatrix());
 	for (auto p : particles) {
 		DrawableID parentDid(objectId);
 		parentIdBuffer.add(p->getPosition(), parentDid.toColor(), p->getAttribute().size);
@@ -82,7 +80,6 @@ void ParticleSystemPresenter::updateChildIdView()
 	const auto& particles = model->getShape()->getParticles();
 	int particleId = 0;
 	PointBuffer buffer;
-	buffer.setMatrix(model->getMatrix());
 	for (auto p : particles) {
 		DrawableID childDid(particleId++);
 		buffer.add(p->getPosition(), childDid.toColor(), p->getAttribute().size);

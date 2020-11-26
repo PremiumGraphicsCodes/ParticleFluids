@@ -161,17 +161,8 @@
     <ClInclude Include="Public\LightGetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="SetMatrixCommand.h">
-      <Filter>Scene\Shape\Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\SetMatrixLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="Public\GetMatrixLabels.h">
       <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="GetMatrixCommand.h">
-      <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
     <ClInclude Include="SceneGetCommand.h">
       <Filter>Scene</Filter>
@@ -323,9 +314,6 @@
     </ClCompile>
     <ClCompile Include="LightGetCommand.cpp">
       <Filter>Scene\Appearance\Light</Filter>
-    </ClCompile>
-    <ClCompile Include="SetMatrixCommand.cpp">
-      <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
     <ClCompile Include="SceneGetCommand.cpp">
       <Filter>Scene</Filter>

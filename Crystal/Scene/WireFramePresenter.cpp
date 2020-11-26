@@ -53,7 +53,6 @@ void WireFramePresenter::updateScreenView()
 	const auto& edges = shape->getEdges();
 
 	LineBuffer buffer(model->getAttribute().width);
-	buffer.setMatrix(model->getMatrix());
 	for (const auto& l : positions) {
 		buffer.addVertex(l, color);
 	}
@@ -75,7 +74,6 @@ void WireFramePresenter::updateParentIdView()
 	DrawableID did(objectId);
 	const auto color = did.toColor();
 	LineBuffer buffer(model->getAttribute().width);
-	buffer.setMatrix(model->getMatrix());
 	for (const auto& l : positions) {
 		buffer.addVertex(l, color);
 	}

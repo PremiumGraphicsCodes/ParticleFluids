@@ -49,14 +49,12 @@ void PMToWFPresenter::updateScreenView()
 	const auto& ps = shape->getPositions();
 	const auto& tcs = shape->getTexCoords();
 	const auto& ns = shape->getNormals();
-	const auto& matrix = model->getMatrix();
 
 	for (auto child : model->getChildren()) {
 		auto scene = static_cast<FaceGroupScene*>(child);
 		auto faces = scene->getFaces();
 
 		LineBuffer buffer;
-		buffer.setMatrix(matrix);
 		for (const auto& f : faces) {
 			const auto& vIds = f.getVertexIds();
 			for (const auto vId : vIds) {

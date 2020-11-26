@@ -31,7 +31,6 @@
 #include "OBJFileExportCommand.h"
 #include "STLFileExportCommand.h"
 #include "PCDFileExportCommand.h"
-#include "SetMatrixCommand.h"
 #include "SceneGetCommand.h"
 #include "CameraGetCommand.h"
 #include "CameraSetCommand.h"
@@ -144,9 +143,6 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == MaterialGetCommand::getName()) {
 		return std::make_unique<MaterialGetCommand>();
-	}
-	else if (name == SetMatrixCommand::getName()) {
-		return std::make_unique<SetMatrixCommand>();
 	}
 	else if (name == SceneGetCommand::getName()) {
 		return std::make_unique<SceneGetCommand>();

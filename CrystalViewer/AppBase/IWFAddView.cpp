@@ -20,7 +20,6 @@ void IWFAddView::addWireFrame(const std::vector<Vector3dd>& positions, const std
 	auto newId = getWorld()->getNextSceneId();
 	auto scene = new WireFrameScene(newId, name, std::move(shape), attr);
 	getWorld()->getScenes()->addScene(scene);
-	scene->setMatrix(matrixView.getValue());
 	//getWorld()->addScene(scene);
 
 
