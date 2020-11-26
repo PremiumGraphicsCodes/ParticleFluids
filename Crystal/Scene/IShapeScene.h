@@ -13,14 +13,12 @@ namespace Crystal {
 class IShapeScene : public IScene
 {
 public:
-	explicit IShapeScene(const int id, Shape::IShape* shape) :
-		IScene(id),
-		shape(shape)
+	explicit IShapeScene(const int id) :
+		IScene(id)
 	{}
 
-	IShapeScene(const int id, const std::string& name, Shape::IShape* shape) :
-		IScene(id, name),
-		shape(shape)
+	IShapeScene(const int id, const std::string& name) :
+		IScene(id, name)
 	{}
 
 	virtual ~IShapeScene() {};
@@ -31,10 +29,10 @@ public:
 
 	virtual void transform(const Math::Matrix4dd& m) = 0;
 
-	Shape::IShape* getShape() { return shape; }
+	//Shape::IShape* getShape() { return shape; }
 
 private:
-	Shape::IShape* shape;
+	//Shape::IShape* shape;
 };
 	}
 }

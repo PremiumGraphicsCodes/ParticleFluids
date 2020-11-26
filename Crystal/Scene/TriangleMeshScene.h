@@ -10,11 +10,11 @@ class TriangleMeshScene : public IShapeScene
 {
 public:
 	explicit TriangleMeshScene(const int id)
-		: IShapeScene(id, nullptr)
+		: IShapeScene(id)
 	{}
 
 	TriangleMeshScene(const int id, const std::string& name, std::unique_ptr<Shape::TriangleMesh> shape) :
-		IShapeScene(id, name, shape.get()),
+		IShapeScene(id, name),
 		shape(std::move(shape))
 	{}
 

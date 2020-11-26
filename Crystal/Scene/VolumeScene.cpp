@@ -7,6 +7,6 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 
 VolumeScene::VolumeScene(const int id, const std::string& name, std::unique_ptr<Volume<double>> shape) :
-	IShapeScene(id, name, shape.get())
+	IShapeScene(id, name)
 {
 }

@@ -14,7 +14,7 @@ ParticleSystemScene::ParticleSystemScene() :
 }
 
 ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<ParticleSystem<ParticleAttribute>> shape) :
-	IShapeScene(id, name, shape.get()),
+	IShapeScene(id, name),
 	shape(std::move(shape))
 {
 	controller = std::make_unique<ParticleSystemPresenter>(this);
