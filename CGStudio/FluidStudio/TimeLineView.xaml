@@ -8,6 +8,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
     <StackPanel Orientation="Horizontal">
+        <Button Content="Reset" Command="{Binding ResetCommand}"/>
         <Button Content="Start" Command="{Binding StartCommand}"/>
         <Button Content="Stop" Command="{Binding StopCommand}"/>
         <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>

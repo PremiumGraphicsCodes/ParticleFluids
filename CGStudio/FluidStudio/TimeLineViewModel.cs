@@ -17,6 +17,9 @@ namespace FluidStudio
         public ReactiveCommand StopCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveCommand ResetCommand { get; }
+            = new ReactiveCommand();
+
         private readonly MainModel mainModel;
 
         private readonly SceneList scenes;
@@ -30,11 +33,12 @@ namespace FluidStudio
             this.mainModel = mainModel;
             this.scenes = scenes;
             this.canvas = canvas;
-            StartCommand.Subscribe(() => OnStart(mainModel, scenes));
+            StartCommand.Subscribe(() => OnStart());
             StopCommand.Subscribe(() => OnStop());
+//            ResetCommand.Subscribe(() => 
         }
 
-        private void OnStart(MainModel mainModel, SceneList sceneList)
+        private void OnStart()
         {
             isStop = false;
             Task.Run(() => Simulate());
@@ -52,6 +56,11 @@ namespace FluidStudio
                 mainModel.PhysicsModel.Simulate(scenes, canvas);
                 TimeStep.Value++;
             }
+        }
+
+        private void OnReset()
+        {
+            //mainModel.PhysicsModel.Reset();
         }
     }
 }

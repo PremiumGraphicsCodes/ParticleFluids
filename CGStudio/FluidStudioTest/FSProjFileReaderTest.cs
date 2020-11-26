@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace FluidStudioTest
 {
+    /*
     [TestClass]
     public class FSProjFileReaderTest
     {
@@ -21,4 +22,5 @@ namespace FluidStudioTest
             Assert.AreEqual( 1, model.PhysicsModel.Scenes.Count() );
         }
     }
+    */
 }

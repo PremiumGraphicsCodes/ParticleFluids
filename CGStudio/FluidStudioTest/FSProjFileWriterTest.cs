@@ -13,6 +13,7 @@ namespace FluidStudioTest
     [TestClass]
     public class FSProjFileWriterTest
     {
+        /*
         [TestMethod]
         public void TestWrite()
         {
@@ -28,5 +29,6 @@ namespace FluidStudioTest
             var writer = new FSProjFileWriter();
             writer.Write(model, "TestWrite.fsproj");
         }
+        */
     }
 }

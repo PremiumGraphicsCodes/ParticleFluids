@@ -8,9 +8,9 @@ using PG.Scene;
 namespace FluidStudioTest
 {
     [TestClass]
-    public class FluidSceneTest
+    public class SolverSceneTest
     {
-        private FluidScene CreateTestScene(SceneList world, string name)
+        private FluidScene CreateFluidTestScene(SceneList world, string name)
         {
             var particles = new List<Vector3d>();
             particles.Add(new Vector3d(0, 0, 0));
@@ -19,21 +19,16 @@ namespace FluidStudioTest
         }
 
         [TestMethod]
-        public void TestConstruct()
+        public void TestCreate()
         {
             var world = new SceneList();
-            var scene0 = CreateTestScene(world, "Fluid01");
-            Assert.AreEqual(3, scene0.Id);
-            var scene1 = CreateTestScene(world, "Fluid02");
-            Assert.AreEqual(5, scene1.Id);
-        }
+            var fluids = new List<FluidScene>();
+            fluids.Add(CreateFluidTestScene(world, "Fluid01"));
+            var boundaries = new List<CSGBoundaryScene>();
 
-        /*
-        [TestMethod]
-        public void TestReset()
-        {
-
+            var solver = new SolverScene();
+            solver.Create(world, fluids, boundaries, 0.03f, "Solver01");
+            Assert.AreEqual(4, solver.Id);
         }
-        */
     }
 }

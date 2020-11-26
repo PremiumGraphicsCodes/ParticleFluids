@@ -72,6 +72,7 @@
     <Compile Include="FluidSceneTest.cs" />
     <Compile Include="FSProjFileReaderTest.cs" />
     <Compile Include="CSGBoundarySceneTest.cs" />
+    <Compile Include="SolverSceneTest.cs" />
     <Compile Include="VDBModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
