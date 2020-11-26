@@ -43,7 +43,7 @@ void SmoothShaderScene::send(const SmoothBuffer& buffer)
 	rBuffer.texCoord.send(buffer.getTexCoords().get());
 	rBuffer.materialId.send(buffer.getMaterialIds().get());
 
-	rBuffer.count = buffer.getPositions().get().size() / 3;
+	rBuffer.count = static_cast<int>( buffer.getPositions().get().size() / 3 );
 	rBuffer.matrix = buffer.getMatrix();
 }
 

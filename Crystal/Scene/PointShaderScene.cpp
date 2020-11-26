@@ -47,7 +47,7 @@ void PointShaderScene::send(const PointBuffer& buffer)
 	rBuffer.color.send(colors);
 	//vao.unbind();
 
-	rBuffer.count = positions.size() / 3;
+	rBuffer.count = static_cast<int>( positions.size() / 3 );
 //	rBuffer.matrix = buffer.getMatrix();
 }
 
