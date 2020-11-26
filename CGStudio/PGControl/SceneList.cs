@@ -96,14 +96,6 @@ namespace PG.Scene
             return newId;
         }
 
-        public void SetMatrix(int id, Matrix4d matrix)
-        {
-            var command = new PG.CLI.Command(SetMatrixLabels.CommandLabel);
-            command.SetArg(SetMatrixLabels.IdLabel, id);
-            command.SetArg(SetMatrixLabels.MatrixLabel, matrix);
-            command.Execute(adapter);
-        }
-
         public void Transform(int id, Matrix4d matrix)
         {
             var command = new PG.CLI.Command(TransformLabels.TransformCommandLabel);

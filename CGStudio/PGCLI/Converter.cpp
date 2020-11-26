@@ -252,7 +252,7 @@ Crystal::Math::ISurface3d* PG::CLI::Converter::toCpp(PG::Core::Math::ISurface3d^
 	return nullptr;
 }
 
-Crystal::Math::IVolume3d* PG::CLI::Converter::toCpp(PG::Core::Math::IVolume3d^ src)
+Crystal::Math::ISolid3d* PG::CLI::Converter::toCpp(PG::Core::Math::IVolume3d^ src)
 {
 	if (src->GetType() == PG::Core::Math::Sphere3d::typeid) {
 		auto s = (PG::Core::Math::Sphere3d^)(src);

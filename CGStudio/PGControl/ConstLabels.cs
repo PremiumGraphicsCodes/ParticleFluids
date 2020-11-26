@@ -181,7 +181,6 @@ namespace PG {
 		public const string ColorLabel = "Color";
 		public const string NameLabel = "Name";
 		public const string LayerLabel = "Layer";
-		public const string MatrixLabel = "Matrix";
 		public const string NewIdLabel = "NewId";
 	}
 
@@ -251,13 +250,6 @@ namespace PG {
 		public const string ColorLabel = "Color";
 		public const string MaterialNameLabel = "MaterialName";
 		public const string NameLabel = "Name";
-	}
-
-	public class SetMatrixLabels
-	{
-		public const string CommandLabel = "SetMatrix";
-		public const string IdLabel = "Id";
-		public const string MatrixLabel = "Matrix";
 	}
 
 	public class ShaderBuildLabels
@@ -333,7 +325,6 @@ namespace PG {
 		public const string ColorLabel = "Color";
 		public const string NameLabel = "Name";
 		public const string LayerLabel = "Layer";
-		public const string MatrixLabel = "Matrix";
 		public const string NewIdLabel = "NewId";
 	}
 
