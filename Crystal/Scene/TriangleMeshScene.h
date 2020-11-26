@@ -24,8 +24,6 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override;
 
-	Math::Vector3dd getPosition(const int index) const override;
-
 	std::vector<Math::Vector3dd> getAllVertices() const { return {}; }
 
 	SceneType getType() const override { return SceneType::TriangleMeshScene; }

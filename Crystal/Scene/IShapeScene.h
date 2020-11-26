@@ -31,8 +31,6 @@ public:
 
 	virtual void transform(const Math::Matrix4dd& m) = 0;
 
-	virtual Math::Vector3dd getPosition(const int index) const = 0;
-
 	Shape::IShape* getShape() { return shape; }
 
 private:

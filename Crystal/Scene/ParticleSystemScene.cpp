@@ -25,12 +25,6 @@ Crystal::Math::Box3d ParticleSystemScene::getBoundingBox() const
 	return getShape()->getBoundingBox();
 }
 
-Vector3dd ParticleSystemScene::getPosition(const int index) const
-{
-	const auto& ps = getShape()->getParticles();
-	return ps[index]->getPosition();
-}
-
 void ParticleSystemScene::setAttribute(const ParticleAttribute& attribute)
 {
 	auto particles = getShape()->getParticles();

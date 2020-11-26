@@ -33,8 +33,6 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const;
 
-	Math::Vector3dd getPosition(const int index) const override;
-
 	Shape::WireFrame* getShape() { return shape.get(); }
 
 	IPresenter* getPresenter() { return &controller; }

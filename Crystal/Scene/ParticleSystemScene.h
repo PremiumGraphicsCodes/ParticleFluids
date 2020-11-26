@@ -33,8 +33,6 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
-	Math::Vector3dd getPosition(const int index) const override;
-
 	void setAttribute(const ParticleAttribute& attribute);
 
 	ParticleSystemPresenter* getPresenter() { return controller.get(); }

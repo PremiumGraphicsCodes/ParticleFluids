@@ -17,9 +17,3 @@ void TriangleMeshScene::transform(const Matrix4dd& m)
 {
 	shape->transform(m);
 }
-
-Vector3dd TriangleMeshScene::getPosition(const int index) const
-{
-	assert(false);
-	return Vector3dd();
-}

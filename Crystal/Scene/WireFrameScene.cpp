@@ -44,9 +44,3 @@ Box3d WireFrameScene::getBoundingBox() const
 {
 	return shape->getBoundingBox();
 }
-
-Vector3dd WireFrameScene::getPosition(const int index) const
-{
-	const auto& positions = shape->getPositions();
-	return positions[index];
-}

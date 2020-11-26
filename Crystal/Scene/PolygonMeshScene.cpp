@@ -29,14 +29,7 @@ PolygonMeshScene::~PolygonMeshScene()
 	}
 }
 
-
 Box3d PolygonMeshScene::getBoundingBox() const
 {
 	return getShape()->getBoundingBox();
-}
-
-Vector3dd PolygonMeshScene::getPosition(const int index) const
-{
-	const auto& positions = getShape()->getPositions();
-	return positions[index];
 }
