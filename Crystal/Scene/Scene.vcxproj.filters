@@ -115,6 +115,9 @@
     <ClInclude Include="ScreenShader.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
+    <ClInclude Include="CSGScene.h">
+      <Filter>Scene\Shape\CSG</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -190,6 +193,9 @@
     <ClCompile Include="ScreenShader.cpp">
       <Filter>SceneShader</Filter>
     </ClCompile>
+    <ClCompile Include="CSGScene.cpp">
+      <Filter>Scene\Shape\CSG</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -236,6 +242,9 @@
     </Filter>
     <Filter Include="Presenter">
       <UniqueIdentifier>{6c2a936a-2655-454e-9870-3306dae4a9ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\CSG">
+      <UniqueIdentifier>{968cf7ad-c0af-4a0e-a00f-fba1c0e11ea5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

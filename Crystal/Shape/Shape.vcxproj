@@ -159,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CircularBuffer.h" />
+    <ClInclude Include="CSG.h" />
     <ClInclude Include="Face.h" />
     <ClInclude Include="IParticle.h" />
     <ClInclude Include="IShape.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="PolygonMesh.h" />
     <ClInclude Include="PolygonMeshBuilder.h" />
+    <ClInclude Include="Solid.h" />
     <ClInclude Include="TriangleMesh.h" />
     <ClInclude Include="TriangleMeshBuilder.h" />
     <ClInclude Include="Vertex.h" />
@@ -175,9 +177,11 @@
     <ClInclude Include="WireFrameEdge.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CSG.cpp" />
     <ClCompile Include="Face.cpp" />
     <ClCompile Include="PolygonMesh.cpp" />
     <ClCompile Include="PolygonMeshBuilder.cpp" />
+    <ClCompile Include="Solid.cpp" />
     <ClCompile Include="TriangleMesh.cpp" />
     <ClCompile Include="TriangleMeshBuilder.cpp" />
     <ClCompile Include="Volume.cpp" />

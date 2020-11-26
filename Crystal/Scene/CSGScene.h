@@ -1,27 +1,19 @@
 #pragma once
 
-#include "../Shape/ParticleSystem.h"
-
 #include "IShapeScene.h"
-#include "ParticleAttribute.h"
+#include "../Shape/Solid.h"
 
 #include "ParticleSystemPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
 
-class ParticleSystemScene : public IShapeScene
+class SolidScene : public IShapeScene
 {
 public:
-	ParticleSystemScene();
+	SolidScene();
 
-	//ParticleSystemScene(const int id, const std::string& name);
-
-	ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<Shape::ParticleSystem<ParticleAttribute>> shape);
-
-	~ParticleSystemScene() {};
-
-	Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape.get(); }
+	SolidScene(const int id, const std::string& name, std::unique_ptr<Shape::Solid> shape);
 
 	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 
@@ -29,7 +21,32 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override { shape->transform(m); }
 
-	SceneType getType() const override { return SceneType::ParticleSystemScene; }
+	SceneType getType() const override { return SceneType::CSGScene; }
+
+private:
+	std::unique_ptr<Shape::Solid> shape;
+};
+		/*
+class CSGScene : public IShapeScene
+{
+public:
+	CSGScene();
+
+	//ParticleSystemScene(const int id, const std::string& name);
+
+	CSGScene(const int id, const std::string& name);
+
+	~CSGScene() {};
+
+	//Shape::ParticleSystem<ParticleAttribute>* getShape() const { return shape.get(); }
+
+	void translate(const Math::Vector3dd& v) override { shape->move(v); }
+
+	void transform(const Math::Matrix3dd& m) override { shape->transform(m); }
+
+	void transform(const Math::Matrix4dd& m) override { shape->transform(m); }
+
+	SceneType getType() const override { return SceneType::CSGScene; }
 
 	Math::Box3d getBoundingBox() const override;
 
@@ -45,6 +62,7 @@ private:
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
 	std::unique_ptr< ParticleSystemPresenter > controller;
 };
+*/
 
 	}
 }

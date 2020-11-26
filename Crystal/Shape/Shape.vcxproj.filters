@@ -42,6 +42,12 @@
     <ClInclude Include="IParticle.h">
       <Filter>ParticleSystem</Filter>
     </ClInclude>
+    <ClInclude Include="CSG.h">
+      <Filter>CSG</Filter>
+    </ClInclude>
+    <ClInclude Include="Solid.h">
+      <Filter>CSG</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
@@ -58,6 +64,9 @@
     </Filter>
     <Filter Include="Volume">
       <UniqueIdentifier>{250a25a8-1979-467a-b40c-8164c5e4ea41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSG">
+      <UniqueIdentifier>{35c736aa-e4d8-48b9-9eda-fc362f21718b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +93,12 @@
     </ClCompile>
     <ClCompile Include="Volume.cpp">
       <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="CSG.cpp">
+      <Filter>CSG</Filter>
+    </ClCompile>
+    <ClCompile Include="Solid.cpp">
+      <Filter>CSG</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
