@@ -28,8 +28,6 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const { return {}; }
 
-	IShapeScene* clone() const override { return nullptr; }
-
 	SceneType getType() const override { return SceneType::TriangleMeshScene; }
 
 private:

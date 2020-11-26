@@ -40,8 +40,3 @@ Vector3dd PolygonMeshScene::getPosition(const int index) const
 	const auto& positions = getShape()->getPositions();
 	return positions[index];
 }
-
-IShapeScene* PolygonMeshScene::clone() const
-{
-	return nullptr;
-}

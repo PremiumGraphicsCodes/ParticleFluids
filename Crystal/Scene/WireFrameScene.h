@@ -35,8 +35,6 @@ public:
 
 	Math::Vector3dd getPosition(const int index) const override;
 
-	IShapeScene* clone() const override;
-
 	Shape::WireFrame* getShape() { return shape.get(); }
 
 	IPresenter* getPresenter() { return &controller; }

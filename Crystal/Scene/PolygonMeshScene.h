@@ -43,8 +43,6 @@ public:
 
 	std::vector<FaceGroupScene*> getGroups() { return groups; }
 
-	IShapeScene* clone() const override;
-
 	IPresenter* getPresenter() override { return &controller; }
 
 private:
