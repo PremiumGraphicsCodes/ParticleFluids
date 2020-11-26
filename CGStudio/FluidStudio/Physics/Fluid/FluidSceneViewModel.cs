@@ -55,6 +55,7 @@ namespace FluidStudio.Physics
             this.ParticleSystemSelectViewModel.Id.Value = item.ParticleSystemId;
             this.Stiffness.Value = item.Stiffness;
             this.Viscosity.Value = item.Viscosity;
+            this.IsBoundary.Value = item.IsBoundary;
             this.scene = item;
         }
 
@@ -73,7 +74,8 @@ namespace FluidStudio.Physics
             var stiffness = Stiffness.Value;
             var viscosity = Viscosity.Value;
             var name = Name.Value;
-            this.scene.Update(world, particleSystemId, stiffness, viscosity, name);
+            var isBoundary = IsBoundary.Value;
+            this.scene.Update(world, particleSystemId, stiffness, viscosity, name, isBoundary);
            // this.model.PhysicsModel.
         }
     }

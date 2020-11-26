@@ -15,7 +15,7 @@ namespace FluidStudioTest
             var particles = new List<Vector3d>();
             particles.Add(new Vector3d(0, 0, 0));
             var id = world.AddParticleSystemScene(particles, "", new PG.Core.UI.ParticleAppearance(), 1);
-            return new FluidScene(world, id, 1.0f, 1.0f, name);
+            return new FluidScene(world, id, 1.0f, 1.0f, name, false);
         }
 
         [TestMethod]
