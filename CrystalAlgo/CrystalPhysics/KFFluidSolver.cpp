@@ -198,5 +198,7 @@ void KFFUpdater::step()
 {
 	for (auto fluid : fluids) {
 		fluid->getPresenter()->updateView();
+		//for(auto b : fluid->get)
 	}
+	//for(auto b : csgB)
 }

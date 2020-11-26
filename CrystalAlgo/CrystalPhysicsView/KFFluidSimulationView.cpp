@@ -62,6 +62,8 @@ void KFFluidSimulationView::onOk()
 	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 	updator.add(fluidScene);
 
+	boundaryScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+
 	getWorld()->addAnimation(&simulator);
 	getWorld()->addAnimation(&updator);
 

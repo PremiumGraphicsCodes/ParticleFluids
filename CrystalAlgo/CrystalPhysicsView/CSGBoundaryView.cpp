@@ -10,7 +10,8 @@ using namespace Crystal::Physics;
 CSGBoundaryView::CSGBoundaryView(const std::string& name, Scene::World* model) :
 	IView(name),
 	boxView("Box"),
-	applyButton("Apply")
+	applyButton("Apply"),
+	world(model)
 {
 	add(&boxView);
 	add(&applyButton);
@@ -27,4 +28,6 @@ void CSGBoundaryView::onApply()
 {
 	boundary->clear();
 	boundary->add(boxView.getValue());
+
+	boundary->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 }

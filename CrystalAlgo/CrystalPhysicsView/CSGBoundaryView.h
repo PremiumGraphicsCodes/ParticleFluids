@@ -21,6 +21,7 @@ public:
 private:
 	void onApply();
 
+	Scene::World* world;
 	Box3dView boxView;
 	Button applyButton;	
 	std::unique_ptr<Physics::CSGBoundaryScene> boundary;
