@@ -1,0 +1,1 @@
+PGConstCSFileGenerator\bin\Release\PGConstCSFileGenerator ../CrystalViewer/Command/Public PGControl/ConstLabels.cs
