@@ -36,13 +36,20 @@ namespace FluidStudio.Physics
             this.Stiffness = stiffness;
             this.Viscosity = viscosity;
             this.ParticleSystemId = particleSystemId;
+            this.Name = name;
+            Reset(world);
+        }
+
+        public void Reset(SceneList world)
+        {
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
-            command.SetArg(UpdateLabels.ParticleSystemIdLabel, particleSystemId);
-            command.SetArg(UpdateLabels.StiffnessLabel, stiffness);
-            command.SetArg(UpdateLabels.ViscosityLabel, viscosity);
-            command.SetArg(UpdateLabels.NameLabel, name);
+            command.SetArg(UpdateLabels.ParticleSystemIdLabel, ParticleSystemId);
+            command.SetArg(UpdateLabels.StiffnessLabel, Stiffness);
+            command.SetArg(UpdateLabels.ViscosityLabel, Viscosity);
+            command.SetArg(UpdateLabels.NameLabel, Name);
             command.Execute(world.Adapter);
+
         }
     }
 }

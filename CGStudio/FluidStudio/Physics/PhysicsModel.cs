@@ -9,9 +9,12 @@ namespace FluidStudio.Physics
         public ReactiveCollection<SolverScene> Scenes { get; }
             = new ReactiveCollection<SolverScene>();
 
+        public ReactiveProperty<int> TimeStep { get; }
+            = new ReactiveProperty<int>(0);
+
         public PhysicsModel()
         {
-//            this.Scenes.Add(new PhysicsScene());
+            //            this.Scenes.Add(new PhysicsScene());
         }
 
         public void Simulate(SceneList world, Canvas3d canvas)
@@ -25,6 +28,22 @@ namespace FluidStudio.Physics
                 }
                 canvas.Render();
             }
+            TimeStep.Value++;
+        }
+
+        public void Reset(SceneList world, Canvas3d canvas)
+        {
+            foreach (var ps in Scenes)
+            {
+                ps.Reset(world);
+                foreach (var fluid in ps.Fluids)
+                {
+                    fluid.Reset(world);
+                    canvas.SendShader(world, fluid.Id);
+                }
+                canvas.Render();
+            }
+            TimeStep.Value = 0;
         }
     }
 }

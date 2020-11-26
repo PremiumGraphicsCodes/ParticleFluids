@@ -9,7 +9,6 @@ namespace FluidStudio
     public class TimeLineViewModel : BindableBase
     {
         public ReactiveProperty<int> TimeStep { get; }
-            = new ReactiveProperty<int>(0);
 
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
@@ -33,9 +32,10 @@ namespace FluidStudio
             this.mainModel = mainModel;
             this.scenes = scenes;
             this.canvas = canvas;
+            this.TimeStep = mainModel.PhysicsModel.TimeStep;
             StartCommand.Subscribe(() => OnStart());
             StopCommand.Subscribe(() => OnStop());
-//            ResetCommand.Subscribe(() => 
+            ResetCommand.Subscribe(() => OnReset());
         }
 
         private void OnStart()
@@ -54,12 +54,12 @@ namespace FluidStudio
             while(!isStop)
             {
                 mainModel.PhysicsModel.Simulate(scenes, canvas);
-                TimeStep.Value++;
             }
         }
 
         private void OnReset()
         {
+            mainModel.PhysicsModel.Reset(scenes, canvas);
             //mainModel.PhysicsModel.Reset();
         }
     }
