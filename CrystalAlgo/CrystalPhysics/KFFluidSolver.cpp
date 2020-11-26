@@ -44,6 +44,9 @@ void KFFluidSolver::simulate()
 		particle->reset(true);
 	}
 
+	if (fluidParticles.empty()) {
+		return;
+	}
 
 	const auto hashSize = fluidParticles.front()->getPoints().size() * fluidParticles.size();
 	const auto searchRadius = fluidParticles.front()->getRadius() * 2.25;

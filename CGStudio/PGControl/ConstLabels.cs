@@ -220,14 +220,6 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
-	public class PositionGetLabels
-	{
-		public const string CommandNameLabel = "PositionGet";
-		public const string ParentIdLabel = "ParentId";
-		public const string ChildIdLabel = "ChildId";
-		public const string PositionLabel = "Position";
-	}
-
 	public class PublicLabel
 	{
 	}

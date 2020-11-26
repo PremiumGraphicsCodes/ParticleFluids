@@ -265,6 +265,7 @@ namespace PG.Scene
             */
         }
 
+        /*
         public Vector3d GetPosition(SceneId id)
         {
             var command = new PG.CLI.Command(PG.PositionGetLabels.CommandNameLabel);
@@ -273,6 +274,7 @@ namespace PG.Scene
             command.Execute(adapter);
             return command.GetResult<Vector3d>(PG.PositionGetLabels.PositionLabel);
         }
+        */
 
         public void Sync()
         {
