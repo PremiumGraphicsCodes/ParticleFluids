@@ -34,7 +34,6 @@
 #include "SceneGetCommand.h"
 #include "CameraGetCommand.h"
 #include "CameraSetCommand.h"
-#include "PositionGetCommand.h"
 #include "ShaderBuildCommand.h"
 #include "ShaderSendCommand.h"
 
@@ -152,9 +151,6 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == CameraSetCommand::getName()) {
 		return std::make_unique<CameraSetCommand>();
-	}
-	else if (name == PositionGetCommand::getName()) {
-		return std::make_unique<PositionGetCommand>();
 	}
 	else if (name == ShaderBuildCommand::getName()) {
 		return std::make_unique<ShaderBuildCommand>();

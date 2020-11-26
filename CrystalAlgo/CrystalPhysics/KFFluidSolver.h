@@ -23,14 +23,11 @@ public:
 
 	void clear() {
 		fluids.clear();
-		boundaries.clear();
 		csgBoundaries.clear();
 		maxTimeStep = 0.03f;
 	}
 
 	void addFluidScene(KFFluidScene* scene) { this->fluids.push_back(scene); }
-
-	void addBoundaryScene(KFFluidScene* scene) { this->boundaries.push_back(scene); }
 
 	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
 
@@ -41,13 +38,16 @@ public:
 	void step() override;
 
 private:
+	std::list<KFFluidScene*> getFluids();
+
+	std::list<KFFluidScene*> getBoundaries();
+
 	float calculateTimeStep(const std::vector<KFMacroParticle*>& particles);
 
 	void solveBoundary(KFMacroParticle* particle, const double dt);
 	//void solveBoundary(const std::vector<MacroParticle*>& particles);
 	
 	std::list<KFFluidScene*> fluids;
-	std::list<KFFluidScene*> boundaries;
 	std::list<CSGBoundaryScene*> csgBoundaries;
 	float maxTimeStep = 0.03f;
 };

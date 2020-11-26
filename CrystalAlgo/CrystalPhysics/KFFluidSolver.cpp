@@ -25,6 +25,10 @@ void KFFluidSolver::step()
 void KFFluidSolver::simulate()
 {
 	std::vector<KFMacroParticle*> fluidParticles;
+
+	const auto fluids = getFluids();
+	const auto boundaries = getBoundaries();
+
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
@@ -148,6 +152,29 @@ float KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& part
 	return maxTimeStep;
 	//return std::min(dt, maxTimeStep);
 }
+
+std::list<KFFluidScene*> KFFluidSolver::getFluids()
+{
+	std::list<KFFluidScene*> results;
+	for (auto f : fluids) {
+		if (!f->isBoundary()) {
+			results.push_back(f);
+		}
+	}
+	return results;
+}
+
+std::list<KFFluidScene*> KFFluidSolver::getBoundaries()
+{
+	std::list<KFFluidScene*> results;
+	for (auto f : fluids) {
+		if (f->isBoundary()) {
+			results.push_back(f);
+		}
+	}
+	return results;
+}
+
 
 void KFFluidSolver::solveBoundary(KFMacroParticle* particle, const double dt)
 {

@@ -168,7 +168,7 @@ void KFFluidSimulationView::reset()
 
 	simulator.clear();
 	simulator.addFluidScene(fluidScene);
-	simulator.addBoundaryScene(boundaryScene);
+	simulator.addFluidScene(boundaryScene);
 	simulator.addBoundary(this->boundaryView.getBoundary());
 
 	simulator.setMaxTimeStep(this->timeStepView.getValue());

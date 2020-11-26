@@ -182,12 +182,6 @@
     <ClInclude Include="CameraGetCommand.h">
       <Filter>Camera</Filter>
     </ClInclude>
-    <ClInclude Include="PositionGetCommand.h">
-      <Filter>Scene\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\PositionGetLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
     <ClInclude Include="TextureSetCommand.h">
       <Filter>Scene\Appearance\Texture</Filter>
     </ClInclude>
@@ -323,9 +317,6 @@
     </ClCompile>
     <ClCompile Include="CameraGetCommand.cpp">
       <Filter>Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="PositionGetCommand.cpp">
-      <Filter>Scene\Shape</Filter>
     </ClCompile>
     <ClCompile Include="TextureSetCommand.cpp">
       <Filter>Scene\Appearance\Texture</Filter>

@@ -51,12 +51,7 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 
 	for (const auto id : ids) {
 		auto scene = world->getScenes()->findSceneById<KFFluidScene*>(id);
-		if (scene->isBoundary()) {
-			solver->addBoundaryScene(scene);
-		}
-		else {
-			solver->addFluidScene(scene);
-		}
+		solver->addFluidScene(scene);
 	}
 
 	const auto boundaryIds = args.csgBoundarySceneIds.getValue();
