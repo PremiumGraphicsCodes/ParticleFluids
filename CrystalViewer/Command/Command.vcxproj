@@ -168,6 +168,7 @@
     <ClInclude Include="Public\SceneGetLabels.h" />
     <ClInclude Include="Public\ShaderBuildLabels.h" />
     <ClInclude Include="Public\ShaderSendLabels.h" />
+    <ClInclude Include="Public\SolidCreateLabels.h" />
     <ClInclude Include="Public\STLFileExportLabels.h" />
     <ClInclude Include="Public\STLFileImportLabels.h" />
     <ClInclude Include="Public\TextureSetLabels.h" />
@@ -229,6 +230,7 @@
     <ClInclude Include="ShaderBuildCommand.h" />
     <ClInclude Include="ShaderSendCommand.h" />
     <ClInclude Include="ShapeSelectCommand.h" />
+    <ClInclude Include="SolidCreateCommand.h" />
     <ClInclude Include="STLFileExportCommand.h" />
     <ClInclude Include="STLFileImportCommand.h" />
     <ClInclude Include="TextureCreateCommand.h" />
@@ -273,6 +275,7 @@
     <ClCompile Include="ShaderBuildCommand.cpp" />
     <ClCompile Include="ShaderSendCommand.cpp" />
     <ClCompile Include="ShapeSelectCommand.cpp" />
+    <ClCompile Include="SolidCreateCommand.cpp" />
     <ClCompile Include="STLFileExportCommand.cpp" />
     <ClCompile Include="STLFileImportCommand.cpp" />
     <ClCompile Include="TextureCreateCommand.cpp" />

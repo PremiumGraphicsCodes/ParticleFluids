@@ -224,6 +224,12 @@
     <ClInclude Include="Public\CameraCreateLabels.h">
       <Filter>Scene\Appearance\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="SolidCreateCommand.h">
+      <Filter>Scene\Shape\Solid</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\SolidCreateLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -336,6 +342,9 @@
     <ClCompile Include="CameraCreateCommand.cpp">
       <Filter>Scene\Appearance\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="SolidCreateCommand.cpp">
+      <Filter>Scene\Shape\Solid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -394,6 +403,9 @@
     </Filter>
     <Filter Include="Scene\Appearance\Camera">
       <UniqueIdentifier>{f409ed4e-20e1-4584-8a2e-24b452169d5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Solid">
+      <UniqueIdentifier>{43be9c66-602e-4cf1-8b3e-f9f492576ab5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

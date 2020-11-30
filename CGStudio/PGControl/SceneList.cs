@@ -104,6 +104,22 @@ namespace PG.Scene
             return newId;
         }
 
+        public int AddSolidScene(Box3d solid, string name, int layer)
+        {
+            /*
+            var command = new PG.CLI.Command(PG.PolygonMeshCreateLabels.CommandNameLabel);
+            command.SetArg(PG.PolygonMeshCreateLabels.PositionsLabel, polygon.Positions);
+            command.SetArg(PG.PolygonMeshCreateLabels.NormalsLabel, polygon.Normals);
+            command.SetArg(PG.PolygonMeshCreateLabels.TexCoordsLabel, polygon.TexCoords);
+            command.SetArg(PG.PolygonMeshCreateLabels.VerticesLabel, polygon.Vertices);
+            command.SetArg(PG.PolygonMeshCreateLabels.FacesLabel, polygon.Faces);
+            command.SetArg(PG.PolygonMeshCreateLabels.NameLabel, name);
+            command.SetArg(PG.PolygonMeshCreateLabels.LayerLabel, layer);
+            command.Execute(adapter);
+            */
+            return -1;
+        }
+        
         public void Transform(int id, Matrix4d matrix)
         {
             var command = new PG.CLI.Command(TransformLabels.TransformCommandLabel);
