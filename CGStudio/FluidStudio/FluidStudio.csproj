@@ -134,6 +134,7 @@
       <DependentUpon>SolverSceneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Physics\Solver\SolverSceneViewModel.cs" />
+    <Compile Include="Scene\CSG\BoxGenerationViewModel.cs" />
     <Compile Include="Scene\ParticleSystem\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>

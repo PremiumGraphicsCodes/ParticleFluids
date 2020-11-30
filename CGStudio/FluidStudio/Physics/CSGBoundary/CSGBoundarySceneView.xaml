@@ -19,7 +19,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Solid"/>
-            <ui:SceneSelectView DataContext="{Binding SolidSceneSelectViewModel}"/>
+            <ui:SceneSelectView DataContext="{Binding SolidSelectViewModel}"/>
         </StackPanel>
         <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>

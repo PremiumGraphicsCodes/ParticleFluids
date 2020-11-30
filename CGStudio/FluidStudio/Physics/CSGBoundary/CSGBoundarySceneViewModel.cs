@@ -26,7 +26,7 @@ namespace FluidStudio.Physics
 
         public CSGBoundarySceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
-            var min = new Vector3d(-100, -100, -100);
+            var min = new Vector3d(-100, 0, -100);
             var max = new Vector3d(100, 100, 100);
             SolidSelectViewModel = new SceneSelectViewModel(world, canvas);
             UpdateCommand.Subscribe(() => OnUpdate(model, world, canvas));
@@ -41,7 +41,7 @@ namespace FluidStudio.Physics
             }
             this.Id.Value = item.Id;
             this.Name.Value = item.Name;
-            this.SolidSelectViewModel.Id.Value = item.Id;
+            this.SolidSelectViewModel.Id.Value = item.SolidId;
             //this.BoxViewModel.Value = item.Box;
             this.scene = item;
         }

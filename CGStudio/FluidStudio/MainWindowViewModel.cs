@@ -106,7 +106,7 @@ namespace FluidStudio
         private void OnCreateSolid()
         {
             var world = mainModel.Scenes;
-            var box = new Box3d(new Vector3d(-100, -100, -100), new Vector3d(100, 100, 100));
+            var box = new Box3d(new Vector3d(-10, 0, -100), new Vector3d(100, 100, 100));
             var color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
             var newId = world.AddSolidScene(box, "CSGBox", color, 1);
             this.solidId = newId;
@@ -141,7 +141,7 @@ namespace FluidStudio
             var fluids = new List<FluidScene>();
             var fluidScene = new FluidScene(mainModel.Scenes, particleSystemSceneId, 1.0f, 1.0f, "Fluid01", false);
             fluids.Add( fluidScene );
-            var box = new Box3d( new Vector3d(-100, -100, -100), new Vector3d(100, 100, 100));
+            //var box = new Box3d( new Vector3d(-100, -100, -100), new Vector3d(100, 100, 100));
             var boundaries = new List<CSGBoundaryScene>();
             boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
             var scene = new SolverScene();
