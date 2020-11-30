@@ -279,6 +279,12 @@
       <Filter>File\Directory</Filter>
     </ClCompile>
     <ClCompile Include="ComboBox.cpp" />
+    <ClCompile Include="WFAttributeView.cpp">
+      <Filter>Scene\Shape\WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="ISolidAddView.cpp">
+      <Filter>Scene\Shape\Solid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />

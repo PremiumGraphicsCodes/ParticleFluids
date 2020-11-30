@@ -13,13 +13,13 @@ using namespace Crystal::Scene;
 PolygonMeshScene::PolygonMeshScene() :
 	IShapeScene(-1),
 	shape(nullptr),
-	controller(this)
+	presenter(this)
 {}
 
 PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::unique_ptr<PolygonMesh> shape) :
 	IShapeScene(id, name),
 	shape(std::move(shape)),
-	controller(this)
+	presenter(this)
 {}
 
 PolygonMeshScene::~PolygonMeshScene()

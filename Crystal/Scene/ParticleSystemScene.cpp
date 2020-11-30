@@ -7,17 +7,17 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 ParticleSystemScene::ParticleSystemScene() :
-	IShapeScene(-1, nullptr),
+	IShapeScene(-1, ""),
 	shape(nullptr)
 {
-	controller = std::make_unique<ParticleSystemPresenter>(this);
+	presenter = std::make_unique<ParticleSystemPresenter>(this);
 }
 
 ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<ParticleSystem<ParticleAttribute>> shape) :
 	IShapeScene(id, name),
 	shape(std::move(shape))
 {
-	controller = std::make_unique<ParticleSystemPresenter>(this);
+	presenter = std::make_unique<ParticleSystemPresenter>(this);
 }
 
 Crystal::Math::Box3d ParticleSystemScene::getBoundingBox() const

@@ -1,9 +1,8 @@
 #pragma once
 
-#include "IPopupButton.h"
+#include "IWindow.h"
 #include "FloatView.h"
 #include "ColorRGBAView.h"
-#include "StringView.h"
 
 #include "../../Crystal/Scene/WireFrameAttribute.h"
 
@@ -13,28 +12,11 @@ namespace Crystal {
 class WFAttributeView : public IWindow
 {
 public:
-	WFAttributeView(const std::string& name) :
-		IWindow(name),
-		width("Width", 1.0f),
-		color("Color", glm::vec4(0,0,0,0))
-		//nameView("Name", "WireFrame")
-	{
-	}
+	explicit WFAttributeView(const std::string& name);
 
-	void onShow() override
-	{
-		width.show();
-		color.show();
-		//nameView.show();
-		//ImGui::ColorPicker4("Color", &color[0]);
-	}
+	void onShow() override;
 
-	Scene::WireFrameAttribute getValue() const {
-		Scene::WireFrameAttribute attr;
-		attr.width = width.getValue();
-		attr.color = color.getValue();
-		return attr;
-	}
+	Scene::WireFrameAttribute getValue() const;
 
 private:
 	FloatView width;

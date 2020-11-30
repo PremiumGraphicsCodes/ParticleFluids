@@ -1,12 +1,12 @@
 #pragma once
 
-//#include "IWFAddView.h"
+#include "ISolidAddView.h"
 #include "Box3dView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class SolidBoxView : public IWFAddView
+class SolidBoxView : public ISolidAddView
 {
 public:
 	SolidBoxView(const std::string& name, Scene::World* world, Canvas* canvas);

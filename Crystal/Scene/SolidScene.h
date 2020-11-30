@@ -2,6 +2,7 @@
 
 #include "IShapeScene.h"
 #include "../Shape/Solid.h"
+#include "SolidAsWFPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -21,8 +22,11 @@ public:
 
 	SceneType getType() const override { return SceneType::CSGScene; }
 
+	IPresenter* getPresenter() override { return presenter.get(); }
+
 private:
 	std::unique_ptr<Shape::Solid> shape;
+	std::unique_ptr<SolidAsWFPresenter> presenter;
 };
 
 	}

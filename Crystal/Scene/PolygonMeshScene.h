@@ -41,12 +41,12 @@ public:
 
 	std::vector<FaceGroupScene*> getGroups() { return groups; }
 
-	IPresenter* getPresenter() override { return &controller; }
+	IPresenter* getPresenter() override { return &presenter; }
 
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
 	std::vector<FaceGroupScene*> groups;
-	PolygonMeshPresenter controller;
+	PolygonMeshPresenter presenter;
 };
 
 	}

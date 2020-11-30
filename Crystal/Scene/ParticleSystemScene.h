@@ -35,11 +35,11 @@ public:
 
 	void setAttribute(const ParticleAttribute& attribute);
 
-	ParticleSystemPresenter* getPresenter() { return controller.get(); }
+	ParticleSystemPresenter* getPresenter() { return presenter.get(); }
 
 private:
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
-	std::unique_ptr< ParticleSystemPresenter > controller;
+	std::unique_ptr< ParticleSystemPresenter > presenter;
 };
 
 	}
