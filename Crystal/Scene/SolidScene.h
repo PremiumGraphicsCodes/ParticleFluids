@@ -29,6 +29,8 @@ public:
 
 	Graphics::ColorRGBAf getColor() const { return color; }
 
+	Math::Box3d getBoundingBox() const { return shape->getBoundingBox(); }
+
 private:
 	std::unique_ptr<Shape::Solid> shape;
 	std::unique_ptr<SolidAsWFPresenter> presenter;

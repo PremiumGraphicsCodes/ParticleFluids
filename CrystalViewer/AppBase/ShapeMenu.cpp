@@ -1,6 +1,6 @@
-#include "ShapeMenu.h"
 #include "imgui.h"
-#include "../../Crystal/Scene/World.h"
+
+#include "ShapeMenu.h"
 #include "Canvas.h"
 #include "ControlPanel.h"
 
@@ -22,6 +22,8 @@
 #include "PMSphereView.h"
 #include "PMConeView.h"
 
+#include "SolidBoxView.h"
+
 #include "ScaleView.h"
 #include "TranslateView.h"
 #include "TransformView.h"
@@ -29,9 +31,17 @@
 
 #include "DeleteView.h"
 
+#include "../../Crystal/Scene/World.h"
+
+using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-void PCGenerationMenu::onShow()
+PSGenerationMenu::PSGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas),
+	control(control)
+{}
+
+void PSGenerationMenu::onShow()
 {
 	auto world = getWorld();
 	auto canvas = getCanvas();
@@ -56,6 +66,11 @@ void PCGenerationMenu::onShow()
 		ImGui::EndMenu();
 	}
 }
+
+WFGenerationMenu::WFGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas),
+	control(control)
+{}
 
 void WFGenerationMenu::onShow()
 {
@@ -87,6 +102,11 @@ void WFGenerationMenu::onShow()
 	}
 }
 
+PMGenerationMenu::PMGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas),
+	control(control)
+{}
+
 void PMGenerationMenu::onShow()
 {
 	auto world = getWorld();
@@ -110,6 +130,33 @@ void PMGenerationMenu::onShow()
 		ImGui::EndMenu();
 	}
 }
+
+SolidGenerationMenu::SolidGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas),
+	control(control)
+{
+}
+
+void SolidGenerationMenu::onShow()
+{
+
+	auto world = getWorld();
+	auto canvas = getCanvas();
+
+	const auto& c = name.c_str();
+
+	if (ImGui::BeginMenu(c)) {
+		if (ImGui::MenuItem("SolidBox")) {
+			control->setWindow(new SolidBoxView("SolidBox", world, canvas));
+		}
+		ImGui::EndMenu();
+	}
+}
+
+TransformMenu::TransformMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas),
+	control(control)
+{}
 
 void TransformMenu::onShow()
 {
@@ -135,6 +182,16 @@ void TransformMenu::onShow()
 	}
 }
 
+ShapeMenu::ShapeMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas),
+	control(control),
+	particleSystemMenu("ParticleSystem", world, canvas, control),
+	wireFrameMenu("WireFrame", world, canvas, control),
+	polygonMeshMenu("PolygonMesh", world, canvas, control),
+	solidMenu("Solid", world, canvas, control),
+	transformMenu("Transform", world, canvas, control)
+{}
+
 void ShapeMenu::onShow()
 {
 	auto world = getWorld();
@@ -142,9 +199,10 @@ void ShapeMenu::onShow()
 
 	const auto& c = name.c_str();
 	if (ImGui::BeginMenu(c)) {
-		pointCloudMenu.show();
+		particleSystemMenu.show();
 		wireFrameMenu.show();
 		polygonMeshMenu.show();
+		solidMenu.show();
 		transformMenu.show();
 
 		if (ImGui::BeginMenu("Global")) {

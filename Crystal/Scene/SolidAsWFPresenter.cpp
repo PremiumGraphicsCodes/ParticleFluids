@@ -6,11 +6,14 @@
 #include "LineShaderScene.h"
 #include "SceneShader.h"
 
+#include "../Shape/WireFrameBuilder.h"
+
 //#include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
+using namespace Crystal::Shape;
 
 SolidAsWFPresenter::SolidAsWFPresenter(SolidScene* model) :
 	model(model),
@@ -39,14 +42,16 @@ void SolidAsWFPresenter::updateView()
 
 void SolidAsWFPresenter::updateScreenView()
 {
-	/*
-	const auto& color = model->getAttribute().color;
+	const auto& color = model->getColor();
 
-	const auto& shape = model->getShape();
-	const auto& positions = shape->getPositions();
-	const auto& edges = shape->getEdges();
+	const auto& shape = model->getBoundingBox();
 
-	LineBuffer buffer(model->getAttribute().width);
+	WireFrameBuilder builder;
+	builder.build(shape);
+	const auto& positions = builder.getPositions();
+	const auto& edges = builder.getEdges();
+
+	LineBuffer buffer(1.0f);
 	for (const auto& l : positions) {
 		buffer.addVertex(l, color);
 	}
@@ -55,7 +60,6 @@ void SolidAsWFPresenter::updateScreenView()
 		buffer.addIndex(e.destId);
 	}
 	this->view->send(buffer);
-	*/
 }
 
 void SolidAsWFPresenter::updateParentIdView()

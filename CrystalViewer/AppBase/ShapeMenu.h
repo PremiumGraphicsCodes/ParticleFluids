@@ -6,13 +6,10 @@ namespace Crystal {
 	namespace UI {
 		class ControlPanel;
 
-class PCGenerationMenu : public IMenu
+class PSGenerationMenu : public IMenu
 {
 public:
-	PCGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control):
-		IMenu(name, world, canvas),
-		control(control)
-	{}
+	PSGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
 
 	void onShow() override;
 
@@ -23,10 +20,7 @@ private:
 class WFGenerationMenu : public IMenu
 {
 public:
-	WFGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control) :
-		IMenu(name, world, canvas),
-		control(control)
-	{}
+	WFGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
 
 	void onShow() override;
 
@@ -37,10 +31,18 @@ private:
 class PMGenerationMenu : public IMenu
 {
 public:
-	PMGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control) :
-		IMenu(name, world, canvas),
-		control(control)
-	{}
+	PMGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
+
+	void onShow() override;
+
+private:
+	ControlPanel* control;
+};
+
+class SolidGenerationMenu : public IMenu
+{
+public:
+	SolidGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
 
 	void onShow() override;
 
@@ -51,37 +53,27 @@ private:
 class TransformMenu : public IMenu
 {
 public:
-	TransformMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control) :
-		IMenu(name, world, canvas),
-		control(control)
-	{}
-	
+	TransformMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
+
 	void onShow() override;
 
 private:
 	ControlPanel* control;
-
 };
 
 class ShapeMenu : public IMenu
 {
 public:
-	ShapeMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control) :
-		IMenu(name, world, canvas),
-		control(control),
-		pointCloudMenu("PointCloud", world, canvas, control),
-		wireFrameMenu("WireFrame", world, canvas, control),
-		polygonMeshMenu("PolygonMesh", world, canvas, control),
-		transformMenu("Transform", world, canvas, control)
-	{}
+	ShapeMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
 
 	void onShow() override;
 
 private:
 	ControlPanel* control;
-	PCGenerationMenu pointCloudMenu;
+	PSGenerationMenu particleSystemMenu;
 	WFGenerationMenu wireFrameMenu;
 	PMGenerationMenu polygonMeshMenu;
+	SolidGenerationMenu solidMenu;
 	TransformMenu transformMenu;
 };
 
