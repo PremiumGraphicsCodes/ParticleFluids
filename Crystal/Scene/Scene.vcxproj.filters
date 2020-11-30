@@ -118,6 +118,9 @@
     <ClInclude Include="CSGScene.h">
       <Filter>Scene\Shape\CSG</Filter>
     </ClInclude>
+    <ClInclude Include="SolidScene.h">
+      <Filter>Scene\Shape\CSG</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -194,6 +197,9 @@
       <Filter>SceneShader</Filter>
     </ClCompile>
     <ClCompile Include="CSGScene.cpp">
+      <Filter>Scene\Shape\CSG</Filter>
+    </ClCompile>
+    <ClCompile Include="SolidScene.cpp">
       <Filter>Scene\Shape\CSG</Filter>
     </ClCompile>
   </ItemGroup>
