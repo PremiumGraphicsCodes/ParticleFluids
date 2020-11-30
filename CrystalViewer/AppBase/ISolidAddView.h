@@ -2,7 +2,7 @@
 
 #include "IOkCancelView.h"
 #include "StringView.h"
-//#include "WFAttributeView.h"
+#include "ColorRGBAView.h"
 
 #include "../../Crystal/Shape/Solid.h"
 
@@ -15,10 +15,10 @@ public:
 	ISolidAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 protected:
-	void addSolid(const std::vector<Math::Vector3dd>& positions, std::unique_ptr<Shape::Solid> solid);
+	void addSolid(std::unique_ptr<Shape::Solid> solid);
 
 private:
-	//WFAttributeView attributeView;
+	ColorRGBAView colorView;
 	StringView nameView;
 };
 

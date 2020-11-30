@@ -2,6 +2,7 @@
 
 #include "IShapeScene.h"
 #include "../Shape/Solid.h"
+#include "../Graphics/ColorRGBA.h"
 #include "SolidAsWFPresenter.h"
 
 namespace Crystal {
@@ -24,9 +25,14 @@ public:
 
 	IPresenter* getPresenter() override { return presenter.get(); }
 
+	void setColor(const Graphics::ColorRGBAf& color) { this->color = color; }
+
+	Graphics::ColorRGBAf getColor() const { return color; }
+
 private:
 	std::unique_ptr<Shape::Solid> shape;
 	std::unique_ptr<SolidAsWFPresenter> presenter;
+	Graphics::ColorRGBAf color;
 };
 
 	}

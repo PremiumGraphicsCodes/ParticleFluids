@@ -64,6 +64,7 @@
     <ClCompile Include="ShaderView.cpp" />
     <ClCompile Include="ShapeCloneView.cpp" />
     <ClCompile Include="ShapeMenu.cpp" />
+    <ClCompile Include="SolidBoxView.cpp" />
     <ClCompile Include="Sphere3dView.cpp" />
     <ClCompile Include="StringView.cpp" />
     <ClCompile Include="TextureAddView.cpp" />
