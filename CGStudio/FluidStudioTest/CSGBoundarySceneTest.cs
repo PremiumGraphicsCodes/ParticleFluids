@@ -15,7 +15,7 @@ namespace FluidStudioTest
             var world = new SceneList();
             var box = new Box3d(new Vector3d(0, 0, 0), new Vector3d(10, 10, 10));
             var scene = new CSGBoundaryScene(world, "CSG", box);
-            Assert.AreEqual(2, scene.Id);
+            Assert.AreEqual(1, scene.Id);
         }
     }
 }

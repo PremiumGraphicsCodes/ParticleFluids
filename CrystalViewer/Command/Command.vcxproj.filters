@@ -218,6 +218,12 @@
     <ClInclude Include="Public\ShaderSendLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="CameraCreateCommand.h">
+      <Filter>Scene\Appearance\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\CameraCreateLabels.h">
+      <Filter>Scene\Appearance\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -327,6 +333,9 @@
     <ClCompile Include="ShaderSendCommand.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="CameraCreateCommand.cpp">
+      <Filter>Scene\Appearance\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -382,6 +391,9 @@
     </Filter>
     <Filter Include="World">
       <UniqueIdentifier>{fec791a6-45c4-43d2-a4c3-8aa0990ce47a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Appearance\Camera">
+      <UniqueIdentifier>{f409ed4e-20e1-4584-8a2e-24b452169d5a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

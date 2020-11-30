@@ -155,8 +155,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CameraCreateCommand.h" />
     <ClInclude Include="CameraGetCommand.h" />
     <ClInclude Include="CameraSetCommand.h" />
+    <ClInclude Include="Public\CameraCreateLabels.h" />
     <ClInclude Include="Public\CameraGetLabels.h" />
     <ClInclude Include="Public\CameraSetLabels.h" />
     <ClInclude Include="Public\OBJFileExportLabels.h" />
@@ -236,6 +238,7 @@
     <ClInclude Include="WireFrameCreateCommand.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CameraCreateCommand.cpp" />
     <ClCompile Include="CameraFitCommand.cpp" />
     <ClCompile Include="CameraGetCommand.cpp" />
     <ClCompile Include="CameraRotateCommand.cpp" />

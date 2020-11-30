@@ -57,7 +57,7 @@ public:
 		return static_cast<T>(*iter);
 	}
 
-	void createDefaultCamera();
+	int createDefaultCamera();
 
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;

@@ -15,7 +15,7 @@ World::World() :
 	scenes[0] = std::make_unique<Scene>(0, "Item");
 	scenes[1] = std::make_unique<Scene>(0, "Root");
 
-	createDefaultCamera();
+	//createDefaultCamera();
 }
 
 World::~World()
@@ -92,18 +92,17 @@ void World::init()
 
 }
 
-void World::createDefaultCamera()
+int World::createDefaultCamera()
 {
-	{
-		auto c = new Camera(
+	auto c = new Camera(
 			Vector3df(0, 0, 0),
 			Vector3df(0, 0, -10.0),
 			Vector3df(0, 0, 1),
 			1.0f, 10.0f);
-		camera = new CameraScene(getNextSceneId(), "MainCamera", c);
+	camera = new CameraScene(getNextSceneId(), "MainCamera", c);
 
-		scenes[1]->addScene(camera);
-	}
+	scenes[1]->addScene(camera);
+	return camera->getId();
 }
 
 void World::clear()

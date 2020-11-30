@@ -152,6 +152,7 @@ bool Window::init()
 	glfwSetWindowCloseCallback(window, onClose);
 	//canvas->addUICommand(new CameraUICtrl());
 
+	world->createDefaultCamera();
 	world->init();
 	world->getRenderer()->build(*world->getGLFactory());
 	//world->getCamera()->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());

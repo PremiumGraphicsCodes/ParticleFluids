@@ -31,6 +31,14 @@ namespace PG.Scene
             return root;
         }
 
+        public int CreateDefaultCameraScene()
+        {
+            var command = new PG.CLI.Command(PG.CameraCreateLabels.CommandNameLabel);
+            command.Execute(adapter);
+            var newId = command.GetResult<int>(PG.CameraCreateLabels.NewIdLabel);
+            return newId;
+        }
+
         public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance, int layer)
         {
             var command = new PG.CLI.Command(PG.ParticleSystemCreateLabels.ParticleSystemAddLabel);

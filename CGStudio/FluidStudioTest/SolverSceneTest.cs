@@ -34,7 +34,7 @@ namespace FluidStudioTest
         {
             var world = new SceneList();
             var solver = CreateSolverTestScene(world, "");
-            Assert.AreEqual(4, solver.Id);
+            Assert.AreEqual(3, solver.Id);
         }
 
         [TestMethod]

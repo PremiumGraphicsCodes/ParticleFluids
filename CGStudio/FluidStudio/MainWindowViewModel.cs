@@ -67,6 +67,7 @@ namespace FluidStudio
         // create template.
         public void CreateDefaultTemplate()
         {
+            mainModel.Scenes.CreateDefaultCameraScene();
             OnCreateParticles();
             OnCreatePhysicsScene();
         }

@@ -23,9 +23,9 @@ namespace FluidStudioTest
         {
             var world = new SceneList();
             var scene0 = CreateTestScene(world, "Fluid01");
-            Assert.AreEqual(3, scene0.Id);
+            Assert.AreEqual(2, scene0.Id);
             var scene1 = CreateTestScene(world, "Fluid02");
-            Assert.AreEqual(5, scene1.Id);
+            Assert.AreEqual(4, scene1.Id);
         }
 
         /*

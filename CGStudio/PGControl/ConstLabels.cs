@@ -1,4 +1,10 @@
 namespace PG {
+	public class CameraCreateLabels
+	{
+		public const string CommandNameLabel = "CameraCreate";
+		public const string NewIdLabel = "NewId";
+	}
+
 	public class CameraGetLabels
 	{
 		public const string CommandNameLabel = "CameraGet";
