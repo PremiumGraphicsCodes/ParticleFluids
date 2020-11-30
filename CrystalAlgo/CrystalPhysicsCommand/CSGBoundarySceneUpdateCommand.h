@@ -11,7 +11,7 @@ public:
 	struct Args : Command::IArgs
 	{
 		Command::Arg<int> id;
-		Command::Arg<Math::Box3d> box;
+		Command::Arg<int> solidId;
 		Command::Arg<std::string> name;
 
 		Args();

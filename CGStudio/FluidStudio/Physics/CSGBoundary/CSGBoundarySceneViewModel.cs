@@ -1,5 +1,6 @@
 ﻿using PG.Control.Math;
 using PG.Control.OpenGL;
+using PG.Control.UI;
 using PG.Core.Math;
 using PG.Scene;
 using Prism.Regions;
@@ -16,8 +17,7 @@ namespace FluidStudio.Physics
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("CSGBoundary01");
 
-        public Box3dViewModel BoxViewModel { get; }
-            = new Box3dViewModel();
+        public SceneSelectViewModel SolidSelectViewModel { get; }
 
         public ReactiveCommand UpdateCommand { get; }
             = new ReactiveCommand();
@@ -28,7 +28,7 @@ namespace FluidStudio.Physics
         {
             var min = new Vector3d(-100, -100, -100);
             var max = new Vector3d(100, 100, 100);
-            BoxViewModel.Value = new Box3d(min, max);
+            SolidSelectViewModel = new SceneSelectViewModel(world, canvas);
             UpdateCommand.Subscribe(() => OnUpdate(model, world, canvas));
         }
 
@@ -41,7 +41,8 @@ namespace FluidStudio.Physics
             }
             this.Id.Value = item.Id;
             this.Name.Value = item.Name;
-            this.BoxViewModel.Value = item.Box;
+            this.SolidSelectViewModel.Id.Value = item.Id;
+            //this.BoxViewModel.Value = item.Box;
             this.scene = item;
         }
 
@@ -56,7 +57,7 @@ namespace FluidStudio.Physics
 
         private void OnUpdate(MainModel model, SceneList world, Canvas3d canvas)
         {
-            this.scene.Update(world, Name.Value, BoxViewModel.Value);
+            this.scene.Update(world, Name.Value, this.SolidSelectViewModel.Id.Value);
         }
     }
 }

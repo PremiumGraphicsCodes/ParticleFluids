@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FluidStudio.Physics"
              mc:Ignorable="d"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
+             xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl" xmlns:ui="clr-namespace:PG.Control.UI;assembly=PGControl"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
         <StackPanel Orientation="Horizontal">
@@ -18,8 +18,8 @@
             <TextBox Text="{Binding Name.Value}" MinWidth="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Box"/>
-            <math:Box3dView DataContext="{Binding BoxViewModel}"/>
+            <TextBlock Text="Solid"/>
+            <ui:SceneSelectView DataContext="{Binding SolidSceneSelectViewModel}"/>
         </StackPanel>
         <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>

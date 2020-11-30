@@ -12,30 +12,31 @@ namespace FluidStudio.Physics
 
         public string Name { get; private set; }
 
-        public Box3d Box { get; private set; }
+        public int SolidId { get; private set; }
 
-        public CSGBoundaryScene(SceneList world, string name, Box3d box)
+        public CSGBoundaryScene(SceneList world, string name, int solidId)
         {
-            Create(world, name, box);
+            Create(world, name, solidId);
         }
         
-        public void Create(SceneList world, string name, Box3d box)
+        public void Create(SceneList world, string name, int solidId)
         {
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(world, name, box);
+            this.Name = name;
+            this.SolidId = solidId;
+            Update(world, name, solidId);
         }
 
-        public void Update(SceneList world, string name, Box3d box)
+        public void Update(SceneList world, string name, int solidId)
         {
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
             command.SetArg(UpdateLabels.NameLabel, name);
-            command.SetArg(UpdateLabels.BoxLabel, box);
+            command.SetArg(UpdateLabels.SolidIdLabel, solidId);
             command.Execute(world.Adapter);
             this.Name = name;
-            this.Box = box;
         }
     }
 }

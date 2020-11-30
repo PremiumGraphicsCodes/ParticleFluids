@@ -1,5 +1,7 @@
 #include "CSGBoundarySceneUpdateCommand.h"
 
+#include "../../Crystal/Scene/SolidScene.h"
+
 #include "PublicLabels/CSGBoundarySceneUpdateLabels.h"
 
 #include "../CrystalPhysics/CSGBoundaryScene.h"
@@ -18,11 +20,11 @@ std::string CSGBoundarySceneUpdateCommand::getName()
 
 CSGBoundarySceneUpdateCommand::Args::Args() :
 	id(::IdLabel, -1),
-	box(::BoxLabel, Math::Box3d()),
+	solidId(::SolidIdLabel, -1),
 	name(::NameLabel, std::string("CSGBoundary"))
 {
 	add(&id);
-	add(&box);
+	add(&solidId);
 	add(&name);
 }
 
@@ -37,9 +39,16 @@ CSGBoundarySceneUpdateCommand::CSGBoundarySceneUpdateCommand() :
 bool CSGBoundarySceneUpdateCommand::execute(World* world)
 {
 	auto boundaryScene = world->getScenes()->findSceneById<CSGBoundaryScene*>(args.id.getValue());
+
+	auto solidId = args.solidId.getValue();
+	auto solidScene = world->getScenes()->findSceneById<SolidScene*>(solidId);
+	if (solidScene == nullptr) {
+		return false;
+	}
+
 	boundaryScene->clear();
 	boundaryScene->setName(args.name.getValue());
-	boundaryScene->add(args.box.getValue());
+	boundaryScene->add(solidScene->getBoundingBox());
 	world->getScenes()->addScene(boundaryScene);
 
 	//results.newId.setValue(boundaryScene->getId());
