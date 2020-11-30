@@ -68,8 +68,8 @@ namespace FluidStudio
         public void CreateDefaultTemplate()
         {
             mainModel.Scenes.CreateDefaultCameraScene();
+            OnCreateSolid();
             OnCreateParticles();
-//            OnCreate
             OnCreatePhysicsScene();
         }
 
@@ -101,13 +101,19 @@ namespace FluidStudio
             this.Canvas.Render();
         }
 
-        /*
+        private int solidId;
+
         private void OnCreateSolid()
         {
             var world = mainModel.Scenes;
-            var solid = new 
+            var box = new Box3d(new Vector3d(-100, -100, -100), new Vector3d(100, 100, 100));
+            var color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
+            var newId = world.AddSolidScene(box, "CSGBox", color, 1);
+            this.solidId = newId;
+            this.Canvas.Camera.Fit();
+            this.Canvas.BuildShader(world, newId);
+            this.Canvas.Render();
         }
-        */
 
         private void OnCreatePhysicsScene()
         {
@@ -137,7 +143,7 @@ namespace FluidStudio
             fluids.Add( fluidScene );
             var box = new Box3d( new Vector3d(-100, -100, -100), new Vector3d(100, 100, 100));
             var boundaries = new List<CSGBoundaryScene>();
-            boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", -1));
+            boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
             var scene = new SolverScene();
             scene.Create(mainModel.Scenes, fluids, boundaries, 0.03f, "Solver01");
             this.mainModel.PhysicsModel.Scenes.Add(scene);
