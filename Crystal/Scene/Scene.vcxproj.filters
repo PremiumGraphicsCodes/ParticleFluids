@@ -121,6 +121,9 @@
     <ClInclude Include="SolidScene.h">
       <Filter>Scene\Shape\CSG</Filter>
     </ClInclude>
+    <ClInclude Include="SolidAsWFPresenter.h">
+      <Filter>Presenter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -201,6 +204,9 @@
     </ClCompile>
     <ClCompile Include="SolidScene.cpp">
       <Filter>Scene\Shape\CSG</Filter>
+    </ClCompile>
+    <ClCompile Include="SolidAsWFPresenter.cpp">
+      <Filter>Presenter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

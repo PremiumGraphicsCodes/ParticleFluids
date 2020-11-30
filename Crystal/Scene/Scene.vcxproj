@@ -42,6 +42,7 @@
     <ClInclude Include="ScreenShader.h" />
     <ClInclude Include="SceneShader.h" />
     <ClInclude Include="SmoothShaderScene.h" />
+    <ClInclude Include="SolidAsWFPresenter.h" />
     <ClInclude Include="SolidScene.h" />
     <ClInclude Include="TextureScene.h" />
     <ClInclude Include="TriangleBuffer.h" />
@@ -82,6 +83,7 @@
     <ClCompile Include="PolygonMeshScene.cpp" />
     <ClCompile Include="SceneShader.cpp" />
     <ClCompile Include="SmoothShaderScene.cpp" />
+    <ClCompile Include="SolidAsWFPresenter.cpp" />
     <ClCompile Include="SolidScene.cpp" />
     <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />

@@ -610,6 +610,12 @@
       <Filter>File\Directory</Filter>
     </ClInclude>
     <ClInclude Include="ComboBox.h" />
+    <ClInclude Include="SolidBoxView.h">
+      <Filter>Scene\Shape\Solid</Filter>
+    </ClInclude>
+    <ClInclude Include="ISolidAddView.h">
+      <Filter>Scene\Shape\Solid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">
@@ -749,6 +755,9 @@
     </Filter>
     <Filter Include="File\Directory">
       <UniqueIdentifier>{a813769c-dfc6-4d2d-ac56-4d7230a206bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Solid">
+      <UniqueIdentifier>{8acc4850-ed18-4c7d-a067-fce84a808c32}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

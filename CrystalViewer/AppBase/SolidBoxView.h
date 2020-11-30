@@ -1,15 +1,15 @@
 #pragma once
 
-#include "IWFAddView.h"
+//#include "IWFAddView.h"
 #include "Box3dView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class WFBoxView : public IWFAddView
+class SolidBoxView : public IWFAddView
 {
 public:
-	WFBoxView(const std::string& name, Scene::World* world, Canvas* canvas);
+	SolidBoxView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 private:
 	void onOk() override;

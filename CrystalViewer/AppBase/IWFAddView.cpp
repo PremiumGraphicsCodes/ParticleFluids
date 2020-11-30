@@ -12,6 +12,15 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Command;
 
+IWFAddView::IWFAddView(const std::string& name, Scene::World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
+	attributeView("WFAttribute"),
+	nameView("Name", "WireFrame01")
+{
+	add(&attributeView);
+	add(&nameView);
+}
+
 void IWFAddView::addWireFrame(const std::vector<Vector3dd>& positions, const std::vector<WireFrameEdge>& edges)
 {
 	WireFrameAttribute attr = attributeView.getValue();

@@ -133,6 +133,7 @@
     <ClInclude Include="IOkCancelView.h" />
     <ClInclude Include="IPMAddView.h" />
     <ClInclude Include="IPSAddView.h" />
+    <ClInclude Include="ISolidAddView.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="IView.h" />
     <ClInclude Include="IWFAddView.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="FloatView.h" />
     <ClInclude Include="Matrix3dView.h" />
     <ClInclude Include="ShaderAddView.h" />
+    <ClInclude Include="SolidBoxView.h" />
     <ClInclude Include="TextureAddView.h" />
     <ClInclude Include="TextureEditView.h" />
     <ClInclude Include="TextureView.h" />
