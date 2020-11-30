@@ -46,6 +46,16 @@ namespace PGControlTest
         }
 
         [TestMethod]
+        public void TestAddSolidScene()
+        {
+            var scene = new SceneList();
+            var box = new Box3d(new Vector3d(0, 0, 0), new Vector3d(1, 1, 1));
+            var color = new PG.Core.Graphics.ColorRGBA(0, 0, 0, 0);
+            var id = scene.AddSolidScene(box, "Solid", color, 1);
+            Assert.AreEqual(1, id);
+        }
+
+        [TestMethod]
         public void TestAddTextureScene()
         {
             var scene = new SceneList();

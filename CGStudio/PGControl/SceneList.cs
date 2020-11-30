@@ -104,20 +104,23 @@ namespace PG.Scene
             return newId;
         }
 
-        public int AddSolidScene(Box3d solid, string name, int layer)
+        public int AddSolidScene(Box3d solid, string name, ColorRGBA color, int layer)
         {
-            /*
-            var command = new PG.CLI.Command(PG.PolygonMeshCreateLabels.CommandNameLabel);
-            command.SetArg(PG.PolygonMeshCreateLabels.PositionsLabel, polygon.Positions);
-            command.SetArg(PG.PolygonMeshCreateLabels.NormalsLabel, polygon.Normals);
-            command.SetArg(PG.PolygonMeshCreateLabels.TexCoordsLabel, polygon.TexCoords);
-            command.SetArg(PG.PolygonMeshCreateLabels.VerticesLabel, polygon.Vertices);
-            command.SetArg(PG.PolygonMeshCreateLabels.FacesLabel, polygon.Faces);
-            command.SetArg(PG.PolygonMeshCreateLabels.NameLabel, name);
-            command.SetArg(PG.PolygonMeshCreateLabels.LayerLabel, layer);
+            var command = new PG.CLI.Command(PG.SolidCreateLabels.ParticleSystemAddLabel);
+            command.SetArg(PG.SolidCreateLabels.BoxLabel, solid);
+            command.SetArg(PG.SolidCreateLabels.NameLabel, name);
+            command.SetArg(PG.SolidCreateLabels.ColorLabel, color);
+            command.SetArg(PG.SolidCreateLabels.LayerLabel, layer);
             command.Execute(adapter);
-            */
-            return -1;
+            var newId = command.GetResult<int>(PG.SolidCreateLabels.NewIdLabel);
+
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            scene.SceneType = SceneType.Solid;
+            Scenes.Add(scene);
+
+            return newId;
         }
         
         public void Transform(int id, Matrix4d matrix)

@@ -268,6 +268,16 @@ namespace PG {
 		public const string ShapeIdLabel = "ShapeId";
 	}
 
+	public class SolidCreateLabels
+	{
+		public const string ParticleSystemAddLabel = "SolidCreate";
+		public const string BoxLabel = "Box";
+		public const string ColorLabel = "Color";
+		public const string NameLabel = "Name";
+		public const string LayerLabel = "Layer";
+		public const string NewIdLabel = "NewId";
+	}
+
 	public class STLFileExportLabels
 	{
 		public const string CommandNameLabel = "STLFileExport";
