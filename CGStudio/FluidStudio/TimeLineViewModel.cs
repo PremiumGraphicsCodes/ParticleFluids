@@ -4,6 +4,7 @@ using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FluidStudio
 {
@@ -19,6 +20,12 @@ namespace FluidStudio
 
         public ReactiveCommand ResetCommand { get; }
             = new ReactiveCommand();
+
+        public ReactiveCommand OutputDirectorySelectCommand { get; }
+            = new ReactiveCommand();
+
+        public ReactiveProperty<string> OutputDirectoryPath { get; }
+            = new ReactiveProperty<string>("");
 
         private readonly MainModel mainModel;
 
@@ -37,6 +44,7 @@ namespace FluidStudio
             StartCommand.Subscribe(() => OnStart());
             StopCommand.Subscribe(() => OnStop());
             ResetCommand.Subscribe(() => OnReset());
+            OutputDirectorySelectCommand.Subscribe(() => OnSelectOutputDirectory());
         }
 
         private void OnStart()
@@ -58,26 +66,20 @@ namespace FluidStudio
             }
         }
 
-        private void UpdateSources()
-        {
-            foreach (var scene in mainModel.PhysicsModel.Scenes)
-            {
-                foreach (var fluid in scene.Fluids)
-                {
-                    var command = new PhysicsCommand();
-                    command.Create(PG.FluidSceneToPSLabels.CommandNameLabel);
-                    command.SetArg(PG.FluidSceneToPSLabels.FluidIdLabel, fluid.Id);
-                    command.SetArg(PG.FluidSceneToPSLabels.ParticleSystemIdLabel, fluid.SourceParticleSystemId);
-                    command.Execute(scenes.Adapter);
-                    canvas.SendShader(scenes, fluid.Id);
-                }
-            }
-        }
-
         private void OnReset()
         {
             mainModel.PhysicsModel.Reset(scenes, canvas);
             //mainModel.PhysicsModel.Reset();
+        }
+
+        private void OnSelectOutputDirectory()
+        {
+            var dialog = new FolderBrowserDialog();
+            var result = dialog.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                this.OutputDirectoryPath.Value = dialog.SelectedPath;
+            }
         }
     }
 }

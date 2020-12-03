@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Labels = PG.FluidSimulationLabels;
 using CreateLabels = PG.PhysicsSolverCreateLabels;
 using UpdateLabels = PG.PhysicsSolverUpdateLabels;
+using PG.Control.OpenGL;
 
 namespace FluidStudio.Physics
 {
@@ -47,7 +48,20 @@ namespace FluidStudio.Physics
             command.Execute(scenes.Adapter);
         }
 
-        public void Reset(SceneList world)
+        public void UpdateSources(SceneList scenes, Canvas3d canvas)
+        {
+            foreach (var fluid in Fluids)
+            {
+                var command = new PhysicsCommand();
+                command.Create(PG.FluidSceneToPSLabels.CommandNameLabel);
+                command.SetArg(PG.FluidSceneToPSLabels.FluidIdLabel, fluid.Id);
+                command.SetArg(PG.FluidSceneToPSLabels.ParticleSystemIdLabel, fluid.SourceParticleSystemId);
+                command.Execute(scenes.Adapter);
+                canvas.SendShader(scenes, fluid.Id);
+            }
+        }
+
+    public void Reset(SceneList world)
         {
             var fluidIds = new List<int>();
             foreach (var f in Fluids)
