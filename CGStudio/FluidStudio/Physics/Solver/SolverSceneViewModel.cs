@@ -1,4 +1,5 @@
-﻿using Prism.Regions;
+﻿using PG.Scene;
+using Prism.Regions;
 using Reactive.Bindings;
 using System;
 
@@ -15,7 +16,21 @@ namespace FluidStudio.Physics.Solver
         public ReactiveCommand UpdateCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveProperty<float> TimeStep { get; }
+            = new ReactiveProperty<float>(0.03f);
+
+        public ReactiveProperty<bool> DoUpdateSource { get; }
+            = new ReactiveProperty<bool>(false);
+
         private SolverScene scene;
+
+        private readonly SceneList world;
+
+        public SolverSceneViewModel(SceneList world)
+        {
+            this.world = world;
+            this.UpdateCommand.Subscribe(OnUpdate);
+        }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
@@ -36,10 +51,13 @@ namespace FluidStudio.Physics.Solver
             this.Name.Value = item.Name;
             this.Id.Value = Id.Value;
             this.scene = item;
+            this.DoUpdateSource.Value = item.DoUpdateSource;
         }
 
         private void OnUpdate()
         {
+            scene.Update(world, this.scene.Fluids, this.scene.CSGBoundaries, TimeStep.Value, this.Name.Value);
+            scene.DoUpdateSource = DoUpdateSource.Value;
         }
     }
 }

@@ -21,6 +21,8 @@ namespace FluidStudio.Physics
 
         public int Id { get; private set; }
 
+        public bool DoUpdateSource { get; set; }
+
         public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
