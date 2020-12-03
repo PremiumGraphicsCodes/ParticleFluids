@@ -15,8 +15,6 @@ namespace FluidStudio.Physics
 
         public SceneSelectViewModel SourceParticleSystemSelectViewModel { get; }
 
-        public SceneSelectViewModel DestParticleSystemSelectViewModel { get; }
-
         public ReactiveProperty<int> Id { get; }
             = new ReactiveProperty<int>();
 
@@ -42,7 +40,6 @@ namespace FluidStudio.Physics
         public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.SourceParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
-            this.DestParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
             this.UpdateCommand.Subscribe(OnUpdate);
             this.world = world;
         }
@@ -56,7 +53,6 @@ namespace FluidStudio.Physics
             }
             this.Id.Value = item.Id;
             this.SourceParticleSystemSelectViewModel.Id.Value = item.SourceParticleSystemId;
-            this.DestParticleSystemSelectViewModel.Id.Value = item.DestPartcileSystemId;
             this.Stiffness.Value = item.Stiffness;
             this.Viscosity.Value = item.Viscosity;
             this.IsBoundary.Value = item.IsBoundary;
@@ -75,12 +71,11 @@ namespace FluidStudio.Physics
         private void OnUpdate()
         {
             var sourceId = SourceParticleSystemSelectViewModel.Id.Value;
-            var destId = DestParticleSystemSelectViewModel.Id.Value;
             var stiffness = Stiffness.Value;
             var viscosity = Viscosity.Value;
             var name = Name.Value;
             var isBoundary = IsBoundary.Value;
-            this.scene.Update(world, sourceId, destId, stiffness, viscosity, name, isBoundary);
+            this.scene.Update(world, sourceId, stiffness, viscosity, name, isBoundary);
            // this.model.PhysicsModel.
         }
     }

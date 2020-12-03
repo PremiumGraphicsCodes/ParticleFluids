@@ -1,4 +1,5 @@
-﻿using PG.Control.OpenGL;
+﻿using PG.CLI;
+using PG.Control.OpenGL;
 using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
@@ -54,6 +55,22 @@ namespace FluidStudio
             while(!isStop)
             {
                 mainModel.PhysicsModel.Simulate(scenes, canvas);
+            }
+        }
+
+        private void UpdateSources()
+        {
+            foreach (var scene in mainModel.PhysicsModel.Scenes)
+            {
+                foreach (var fluid in scene.Fluids)
+                {
+                    var command = new PhysicsCommand();
+                    command.Create(PG.FluidSceneToPSLabels.CommandNameLabel);
+                    command.SetArg(PG.FluidSceneToPSLabels.FluidIdLabel, fluid.Id);
+                    command.SetArg(PG.FluidSceneToPSLabels.ParticleSystemIdLabel, fluid.SourceParticleSystemId);
+                    command.Execute(scenes.Adapter);
+                    canvas.SendShader(scenes, fluid.Id);
+                }
             }
         }
 
