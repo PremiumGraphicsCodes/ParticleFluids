@@ -185,6 +185,7 @@
     <ClCompile Include="CSGBoundarySceneCreateCommand.cpp" />
     <ClCompile Include="CSGBoundarySceneUpdateCommand.cpp" />
     <ClCompile Include="FluidSceneCreateCommand.cpp" />
+    <ClCompile Include="FluidSceneToPSCommand.cpp" />
     <ClCompile Include="FluidSceneUpdateCommand.cpp" />
     <ClCompile Include="FluidSimulationCommand.cpp" />
     <ClCompile Include="PhysicsCommandFactory.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="CSGBoundarySceneCreateCommand.h" />
     <ClInclude Include="CSGBoundarySceneUpdateCommand.h" />
     <ClInclude Include="FluidSceneCreateCommand.h" />
+    <ClInclude Include="FluidSceneToPSCommand.h" />
     <ClInclude Include="FluidSceneUpdateCommand.h" />
     <ClInclude Include="FluidSimulationCommand.h" />
     <ClInclude Include="PhysicsSolverUpdateCommand.h" />
@@ -202,6 +204,7 @@
     <ClInclude Include="PhysicsSolverCreateCommand.h" />
     <ClInclude Include="PublicLabels\CSGBoundarySceneCreateLabels.h" />
     <ClInclude Include="PublicLabels\CSGBoundarySceneUpdateLabels.h" />
+    <ClInclude Include="PublicLabels\FluidSceneToPSLabels.h" />
     <ClInclude Include="PublicLabels\FluidSceneUpdateLabels.h" />
     <ClInclude Include="PublicLabels\FluidSimulationLabels.h" />
     <ClInclude Include="PublicLabels\PhysicsSolverCreateLabels.h" />

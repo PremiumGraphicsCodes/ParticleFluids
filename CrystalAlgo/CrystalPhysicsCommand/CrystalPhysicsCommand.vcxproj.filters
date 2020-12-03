@@ -21,6 +21,9 @@
     <ClCompile Include="PhysicsSolverUpdateCommand.cpp">
       <Filter>FluidSolver</Filter>
     </ClCompile>
+    <ClCompile Include="FluidSceneToPSCommand.cpp">
+      <Filter>FluidScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -59,6 +62,12 @@
       <Filter>FluidSolver</Filter>
     </ClInclude>
     <ClInclude Include="PublicLabels\PhysicsSolverUpdateLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="FluidSceneToPSCommand.h">
+      <Filter>FluidScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\FluidSceneToPSLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>
