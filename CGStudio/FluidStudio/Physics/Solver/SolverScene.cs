@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Labels = PG.FluidSimulationLabels;
 using CreateLabels = PG.PhysicsSolverCreateLabels;
 using UpdateLabels = PG.PhysicsSolverUpdateLabels;
+using FluidStudio.VDB;
 
 namespace FluidStudio.Physics
 {
@@ -45,6 +46,26 @@ namespace FluidStudio.Physics
             var command = new PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.SolverIdLabel, Id);
             command.Execute(scenes.Adapter);
+
+            /*
+            var destIds = new List<int>();
+            foreach(var fluid in Fluids)
+            {
+                var fluidId = fluid.Id;
+                var destId = fluid.DestPartcileSystemId;
+                if (destId > 0)
+                {
+                    command.Create(PG.FluidSceneToPSLabels.CommandNameLabel);
+                    command.SetArg(PG.FluidSceneToPSLabels.FluidIdLabel, fluidId);
+                    command.SetArg(PG.FluidSceneToPSLabels.ParticleSystemIdLabel, destId);
+                    command.Execute(scenes.Adapter);
+                    canvas.SendShader(scenes, destId);
+                    var ids = new List<int>();
+                    destIds.Add(destId);
+                }
+            }
+            vdb.Write("Test.vdb", scenes, destIds);
+            */
         }
 
         public void Reset(SceneList world)

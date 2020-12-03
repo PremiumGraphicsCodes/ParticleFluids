@@ -73,6 +73,8 @@ namespace FluidStudio
             OnCreatePhysicsScene();
         }
 
+        private int particleSystemId;
+
         private void OnCreateParticles()
         {
             var world = mainModel.Scenes;
@@ -95,9 +97,9 @@ namespace FluidStudio
             var appearance = new ParticleAppearance();
             appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
             appearance.Size = 10.0f;
-            var newId = world.AddParticleSystemScene(positions, "PSBox", appearance, 1);
+            this.particleSystemId = world.AddParticleSystemScene(positions, "PSBox", appearance, 1);
             this.Canvas.Camera.Fit();
-            this.Canvas.BuildShader(world, newId);
+            this.Canvas.BuildShader(world, particleSystemId);
             this.Canvas.Render();
         }
 
@@ -117,6 +119,7 @@ namespace FluidStudio
 
         private void OnCreatePhysicsScene()
         {
+            /*
             var min = new Vector3d(0.0, 0.0, 0.0);
             var max = new Vector3d(10.0, 10.0, 10.0);
             var dx = 1.0;
@@ -134,13 +137,14 @@ namespace FluidStudio
                     }
                 }
             }
-            var particleSystemSceneId = mainModel.Scenes.AddParticleSystemScene(positions, "Particles01", new PG.Core.UI.ParticleAppearance(), 1);
+            */
+            //var particleSystemSceneId = mainModel.Scenes.AddParticleSystemScene(positions, "Particles01", new PG.Core.UI.ParticleAppearance(), 1);
 
-            Canvas.BuildShader(mainModel.Scenes, particleSystemSceneId);
+            Canvas.BuildShader(mainModel.Scenes, particleSystemId);
 
             var fluids = new List<FluidScene>();
             var fluidScene = new FluidScene();
-            fluidScene.Create(mainModel.Scenes, particleSystemSceneId, -1, 1.0f, 1.0f, "Fluid01", false);
+            fluidScene.Create(mainModel.Scenes, particleSystemId, particleSystemId, 1.0f, 1.0f, "Fluid01", false);
             fluids.Add( fluidScene );
             //var box = new Box3d( new Vector3d(-100, -100, -100), new Vector3d(100, 100, 100));
             var boundaries = new List<CSGBoundaryScene>();

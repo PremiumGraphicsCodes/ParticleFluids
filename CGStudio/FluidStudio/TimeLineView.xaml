@@ -7,11 +7,19 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
-    <StackPanel Orientation="Horizontal">
-        <Button Content="Reset" Command="{Binding ResetCommand}"/>
-        <Button Content="Start" Command="{Binding StartCommand}"/>
-        <Button Content="Stop" Command="{Binding StopCommand}"/>
-        <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Reset" Command="{Binding ResetCommand}"/>
+            <Button Content="Start" Command="{Binding StartCommand}"/>
+            <Button Content="Stop" Command="{Binding StopCommand}"/>
+            <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding DoOutput}"/>
+            <TextBlock Text="OutputDirectory"/>
+            <Button Content="Select" Command="{Binding OutputDirectorySelectCommand}"/>
+            <TextBox Text="{Binding OutputDirectory.Value}" MinWidth="100"/>
+        </StackPanel>
         <!--
         <Slider MinWidth="500" Value="{Binding Step.Value}" Minimum="0" Maximum="100"/>
         -->
