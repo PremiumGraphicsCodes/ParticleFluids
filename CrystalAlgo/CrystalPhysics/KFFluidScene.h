@@ -25,7 +25,7 @@ public:
 		particles.push_back(mp);
 	}
 
-	std::list<KFMacroParticle*> getParticles() const { return particles; }
+	std::vector<KFMacroParticle*> getParticles() const { return particles; }
 
 	void clearParticles();
 
@@ -44,7 +44,7 @@ public:
 	void setBoundary(const bool isBoundary_) { this->isBoundary_ = isBoundary_; }
 
 private:
-	std::list<KFMacroParticle*> particles;
+	std::vector<KFMacroParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;
 	std::unique_ptr<KFFluidScenePresenter> controller;

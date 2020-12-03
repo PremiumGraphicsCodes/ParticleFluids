@@ -43,13 +43,10 @@ bool FluidSceneToPSCommand::execute(World* world)
 	}
 	auto& particles = particleScene->getShape()->getParticles();
 
-	/*
 	auto macroPositions = fluidScene->getParticles();
 	for (int i = 0; i < macroPositions.size(); ++i) {
-		auto& p = particles[i];
-		p.moveTo(macroPositions[i]);
+		particles[i]->moveTo(macroPositions[i]->getPosition());
 	}
-	*/
 
 	return true;
 }

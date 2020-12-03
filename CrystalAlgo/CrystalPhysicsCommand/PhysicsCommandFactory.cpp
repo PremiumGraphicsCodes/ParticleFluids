@@ -2,6 +2,7 @@
 
 #include "FluidSceneCreateCommand.h"
 #include "FluidSceneUpdateCommand.h"
+#include "FluidSceneToPSCommand.h"
 #include "FluidSimulationCommand.h"
 #include "CSGBoundarySceneCreateCommand.h"
 #include "CSGBoundarySceneUpdateCommand.h"
@@ -18,6 +19,9 @@ std::unique_ptr<ICommand> PhysicsCommandFactory::create(const std::string& name)
 	}
 	else if (name == FluidSceneUpdateCommand::getName()) {
 		return std::make_unique<FluidSceneUpdateCommand>();
+	}
+	else if (name == FluidSceneToPSCommand::getName()) {
+		return std::make_unique<FluidSceneToPSCommand>();
 	}
 	else if (name == FluidSimulationCommand::getName()) {
 		return std::make_unique<FluidSimulationCommand>();
