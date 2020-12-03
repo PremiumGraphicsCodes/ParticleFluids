@@ -27,6 +27,9 @@ namespace FluidStudio
         public ReactiveProperty<string> OutputDirectoryPath { get; }
             = new ReactiveProperty<string>("");
 
+        public ReactiveProperty<bool> DoOutput { get; }
+            = new ReactiveProperty<bool>(false);
+
         private readonly MainModel mainModel;
 
         private readonly SceneList scenes;
@@ -60,9 +63,14 @@ namespace FluidStudio
 
         private void Simulate()
         {
+            var vdb = mainModel.VDBModel;
             while(!isStop)
             {
                 mainModel.PhysicsModel.Simulate(scenes, canvas);
+                if (DoOutput.Value)
+                {
+                    mainModel.PhysicsModel.ExportVDB(scenes, vdb, OutputDirectoryPath.Value);
+                }
             }
         }
 

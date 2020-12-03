@@ -15,7 +15,7 @@
             <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <CheckBox IsChecked="{Binding DoOutput}"/>
+            <CheckBox IsChecked="{Binding DoOutput.Value}"/>
             <TextBlock Text="OutputDirectory"/>
             <Button Content="Select" Command="{Binding OutputDirectorySelectCommand}"/>
             <TextBox Text="{Binding OutputDirectoryPath.Value}" MinWidth="100"/>

@@ -5,6 +5,7 @@ using Labels = PG.FluidSimulationLabels;
 using CreateLabels = PG.PhysicsSolverCreateLabels;
 using UpdateLabels = PG.PhysicsSolverUpdateLabels;
 using PG.Control.OpenGL;
+using FluidStudio.VDB;
 
 namespace FluidStudio.Physics
 {
@@ -46,6 +47,16 @@ namespace FluidStudio.Physics
             var command = new PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.SolverIdLabel, Id);
             command.Execute(scenes.Adapter);
+        }
+
+        public void ExportVDB(SceneList world, VDBModel vdb, string filePath)
+        {
+            var ids = new List<int>();
+            foreach(var fluid in Fluids)
+            {
+                ids.Add( fluid.SourceParticleSystemId );
+            }
+            vdb.Write(filePath, world, ids);
         }
 
         public void UpdateSources(SceneList scenes, Canvas3d canvas)

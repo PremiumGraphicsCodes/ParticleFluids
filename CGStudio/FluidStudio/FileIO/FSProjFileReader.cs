@@ -38,7 +38,7 @@ namespace FluidStudio.FileIO
                 fluidScene.Create(model.Scenes, particleSystemId, stiffness, viscosity, "", false);
                 physicsScene.Fluids.Add(fluidScene);
             }
-            model.PhysicsModel.Scenes.Add(physicsScene);
+            model.PhysicsModel.Solvers.Add(physicsScene);
         }
     }
 }

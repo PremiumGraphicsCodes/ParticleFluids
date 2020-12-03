@@ -34,7 +34,7 @@ namespace FluidStudio.FileIO
         {
             var root = new XElement(FSProjFile.RootLabel);
             root.Add(new XAttribute(FSProjFile.FileFormatVersionLabel, version));
-            foreach (var scene in model.PhysicsModel.Scenes)
+            foreach (var scene in model.PhysicsModel.Solvers)
             {
                 root.Add( Write(scene) );
             }

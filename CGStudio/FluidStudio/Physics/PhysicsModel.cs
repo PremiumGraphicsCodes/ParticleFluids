@@ -7,7 +7,7 @@ namespace FluidStudio.Physics
 {
     public class PhysicsModel
     {
-        public ReactiveCollection<SolverScene> Scenes { get; }
+        public ReactiveCollection<SolverScene> Solvers { get; }
             = new ReactiveCollection<SolverScene>();
 
         public ReactiveProperty<int> TimeStep { get; }
@@ -20,7 +20,7 @@ namespace FluidStudio.Physics
 
         public void Simulate(SceneList world, Canvas3d canvas)
         {
-            foreach (var ps in Scenes)
+            foreach (var ps in Solvers)
             {
                 ps.Simulate(world);
                 foreach (var fluid in ps.Fluids)
@@ -36,9 +36,18 @@ namespace FluidStudio.Physics
             TimeStep.Value++;
         }
 
+        public void ExportVDB(SceneList world, VDBModel vdb, string directoryPath)
+        {
+            foreach (var solver in Solvers)
+            {
+                var filePath = directoryPath + "/" + solver.Name + "_" + TimeStep.Value.ToString() + ".vdb";
+                solver.ExportVDB(world, vdb, filePath);
+            }
+        }
+
         public void Reset(SceneList world, Canvas3d canvas)
         {
-            foreach (var ps in Scenes)
+            foreach (var ps in Solvers)
             {
                 ps.Reset(world);
                 foreach (var fluid in ps.Fluids)

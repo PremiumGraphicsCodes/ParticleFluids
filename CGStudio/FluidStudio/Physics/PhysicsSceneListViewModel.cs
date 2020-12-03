@@ -13,7 +13,7 @@ namespace FluidStudio.Physics
         public PhysicsSceneListViewModel(IRegionManager regionManager, SceneList world, MainModel mainModel)
         {
             this.regionManager = regionManager;
-            this.Items = mainModel.PhysicsModel.Scenes.ToReadOnlyReactiveCollection(x => new PhysicsSceneViewModel(x));
+            this.Items = mainModel.PhysicsModel.Solvers.ToReadOnlyReactiveCollection(x => new PhysicsSceneViewModel(x));
         }
 
         private void NavigateView(string name, NavigationParameters navigationParameters)
