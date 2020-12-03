@@ -1,12 +1,9 @@
 ﻿using PG.CLI;
-using PG.Control.OpenGL;
 using PG.Scene;
-using Reactive.Bindings;
 using System.Collections.Generic;
 using Labels = PG.FluidSimulationLabels;
 using CreateLabels = PG.PhysicsSolverCreateLabels;
 using UpdateLabels = PG.PhysicsSolverUpdateLabels;
-using FluidStudio.VDB;
 
 namespace FluidStudio.Physics
 {
