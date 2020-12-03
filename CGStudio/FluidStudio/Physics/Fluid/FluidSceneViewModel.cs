@@ -13,7 +13,9 @@ namespace FluidStudio.Physics
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("Fluid01");
 
-        public SceneSelectViewModel ParticleSystemSelectViewModel { get; }
+        public SceneSelectViewModel SourceParticleSystemSelectViewModel { get; }
+
+        public SceneSelectViewModel DestParticleSystemSelectViewModel { get; }
 
         public ReactiveProperty<int> Id { get; }
             = new ReactiveProperty<int>();
@@ -39,7 +41,8 @@ namespace FluidStudio.Physics
 
         public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
-            this.ParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
+            this.SourceParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
+            this.DestParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
             this.UpdateCommand.Subscribe(OnUpdate);
             this.world = world;
         }
@@ -52,7 +55,8 @@ namespace FluidStudio.Physics
                 return;
             }
             this.Id.Value = item.Id;
-            this.ParticleSystemSelectViewModel.Id.Value = item.ParticleSystemId;
+            this.SourceParticleSystemSelectViewModel.Id.Value = item.SourceParticleSystemId;
+            this.DestParticleSystemSelectViewModel.Id.Value = item.DestPartcileSystemId;
             this.Stiffness.Value = item.Stiffness;
             this.Viscosity.Value = item.Viscosity;
             this.IsBoundary.Value = item.IsBoundary;
@@ -70,12 +74,13 @@ namespace FluidStudio.Physics
 
         private void OnUpdate()
         {
-            var particleSystemId = ParticleSystemSelectViewModel.Id.Value;
+            var sourceId = SourceParticleSystemSelectViewModel.Id.Value;
+            var destId = DestParticleSystemSelectViewModel.Id.Value;
             var stiffness = Stiffness.Value;
             var viscosity = Viscosity.Value;
             var name = Name.Value;
             var isBoundary = IsBoundary.Value;
-            this.scene.Update(world, particleSystemId, stiffness, viscosity, name, isBoundary);
+            this.scene.Update(world, sourceId, destId, stiffness, viscosity, name, isBoundary);
            // this.model.PhysicsModel.
         }
     }

@@ -9,7 +9,9 @@ namespace FluidStudio.Physics
     {
         public int Id { get; private set; }
 
-        public int ParticleSystemId { get; private set; }
+        public int SourceParticleSystemId { get; private set; }
+
+        public int DestPartcileSystemId { get; private set; }
 
         public string Name { get; private set; }
 
@@ -19,25 +21,24 @@ namespace FluidStudio.Physics
 
         public bool IsBoundary { get; private set; } = false;
 
-        public FluidScene(SceneList world, int particleSystemId, float stiffness, float viscosity, string name, bool isBoundary)
-        {
-            Create(world, particleSystemId, stiffness, viscosity, name, isBoundary);
-        }
-
-        public void Create(SceneList world, int particleSystemId, float stiffness, float viscosity, string name, bool isBoundary)
+        public FluidScene()
+        { }
+        
+        public void Create(SceneList world, int particleSystemId, int destParticleSystemId, float stiffness, float viscosity, string name, bool isBoundary)
         {
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(world, particleSystemId, stiffness, viscosity, name, isBoundary);
+            Update(world, particleSystemId, destParticleSystemId, stiffness, viscosity, name, isBoundary);
         }
 
-        public void Update(SceneList world, int particleSystemId, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Update(SceneList world, int particleSystemId, int destParticleSystemId, float stiffness, float viscosity, string name, bool isBoundary)
         {
             this.Name = name;
             this.Stiffness = stiffness;
             this.Viscosity = viscosity;
-            this.ParticleSystemId = particleSystemId;
+            this.SourceParticleSystemId = particleSystemId;
+            this.DestPartcileSystemId = destParticleSystemId;
             this.IsBoundary = isBoundary;
             this.Name = name;
             Reset(world);
@@ -47,7 +48,7 @@ namespace FluidStudio.Physics
         {
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
-            command.SetArg(UpdateLabels.ParticleSystemIdLabel, ParticleSystemId);
+            command.SetArg(UpdateLabels.ParticleSystemIdLabel, SourceParticleSystemId);
             command.SetArg(UpdateLabels.StiffnessLabel, Stiffness);
             command.SetArg(UpdateLabels.ViscosityLabel, Viscosity);
             command.SetArg(UpdateLabels.IsBoundary, IsBoundary);

@@ -19,6 +19,13 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
+	public class FluidSceneToPSLabels
+	{
+		public const string CommandNameLabel = "FluidSceneToPSCommand";
+		public const string FluidIdLabel = "FluidId";
+		public const string ParticleSystemIdLabel = "ParticleSystemId";
+	}
+
 	public class FluidSceneUpdateLabels
 	{
 		public const string CommandNameLabel = "FluidSceneUpdateCommand";

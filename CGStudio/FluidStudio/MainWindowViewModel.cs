@@ -139,7 +139,8 @@ namespace FluidStudio
             Canvas.BuildShader(mainModel.Scenes, particleSystemSceneId);
 
             var fluids = new List<FluidScene>();
-            var fluidScene = new FluidScene(mainModel.Scenes, particleSystemSceneId, 1.0f, 1.0f, "Fluid01", false);
+            var fluidScene = new FluidScene();
+            fluidScene.Create(mainModel.Scenes, particleSystemSceneId, -1, 1.0f, 1.0f, "Fluid01", false);
             fluids.Add( fluidScene );
             //var box = new Box3d( new Vector3d(-100, -100, -100), new Vector3d(100, 100, 100));
             var boundaries = new List<CSGBoundaryScene>();
