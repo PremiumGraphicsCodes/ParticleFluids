@@ -186,12 +186,15 @@
     <ClInclude Include="PublicLabels\VDBInitLabels.h" />
     <ClInclude Include="PublicLabels\VDBFileReadLabels.h" />
     <ClInclude Include="PublicLabels\VDBFileWriteLabels.h" />
+    <ClInclude Include="VDBParticleSystemToMeshCommand.h" />
+    <ClInclude Include="VDBParticleSystemToMeshLabels.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VDBCommandFactory.cpp" />
     <ClCompile Include="VDBFileReadCommand.cpp" />
     <ClCompile Include="VDBFileWriteCommand.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
+    <ClCompile Include="VDBParticleSystemToMeshCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
