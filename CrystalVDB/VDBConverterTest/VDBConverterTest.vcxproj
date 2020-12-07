@@ -45,8 +45,20 @@
     <ClCompile Include="VolumeToMeshConverterTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
+      <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Crystal\IO\IO.vcxproj">
+      <Project>{198160cc-5ed1-499d-ad45-90dbac4852f8}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Crystal\Scene\Scene.vcxproj">
+      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
+      <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
     </ProjectReference>
     <ProjectReference Include="..\VDBConverter\VDBConverter.vcxproj">
       <Project>{516a29d3-e143-4d8a-8067-24b2d24a6643}</Project>

@@ -29,7 +29,7 @@ public:
 
 	void addTriangle(const std::array<int, 3>& indices);
 
-	std::array<unsigned int, 3> getTriangle(const int index) const;
+	std::vector<std::array<unsigned int, 3>> getTriangles() const;
 
 	void addQuad(const std::array<int, 4>& indices);
 
