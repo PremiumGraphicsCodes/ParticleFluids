@@ -39,3 +39,10 @@ Volume::~Volume()
 {
 	delete impl;
 }
+
+/*
+Crystal::Scene::ParticleSystemScene* Volume::toCrystalParticleSystem()
+{
+	impl->getPtr()->
+}
+*/

@@ -6,6 +6,9 @@
 #include "../../Crystal/Math/Box3d.h"
 
 namespace Crystal {
+	namespace Scene {
+		class ParticleSystemScene;
+	}
 	namespace VDB {
 		class VolumeImpl;
 
@@ -23,6 +26,8 @@ public:
 	void fill(const unsigned int coord1, const unsigned int coord2, const float value);
 
 	VolumeImpl* getImpl() const { return impl; }
+
+	//Crystal::Scene::ParticleSystemScene* toCrystalParticleSystem();
 
 private:
 	VolumeImpl* impl;

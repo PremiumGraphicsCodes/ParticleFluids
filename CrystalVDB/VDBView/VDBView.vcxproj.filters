@@ -15,6 +15,7 @@
     <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp">
       <Filter>TimeSeries</Filter>
     </ClCompile>
+    <ClCompile Include="PSToVolumeView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TimeLinePanel.h" />
@@ -30,6 +31,7 @@
     <ClInclude Include="TimeSeriesParticleSystemAnimator.h">
       <Filter>TimeSeries</Filter>
     </ClInclude>
+    <ClInclude Include="PSToVolumeView.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="TimeSeries">
