@@ -3,6 +3,8 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Util/UnCopyable.h"
 
+#include <memory>
+
 namespace Crystal {
 	namespace Shape {
 		class PolygonMesh;
@@ -14,10 +16,6 @@ class PolygonMesh : private UnCopyable
 {
 public:
 	PolygonMesh();
-
-	//PolygonMesh(PolygonMesh&& rhs);
-
-	//PolygonMesh& operator=(const PolygonMesh&& rhs);
 
 	~PolygonMesh();
 
@@ -39,7 +37,7 @@ public:
 
 	//void fromCrystal(const Crystal::Shape::PolygonMesh& src);
 
-	Crystal::Shape::PolygonMesh* toCrystal() const;
+	std::unique_ptr<Crystal::Shape::PolygonMesh> toCrystal() const;
 
 	PolygonMeshImpl* getImpl() const { return impl; }
 

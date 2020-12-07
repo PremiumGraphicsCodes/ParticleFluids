@@ -49,3 +49,17 @@ void ParticleSystem::fromCrystal(const Crystal::Shape::IParticleSystem& particle
         this->add(p->getPosition(), size);
     }
 }
+
+std::unique_ptr<Crystal::Shape::IParticleSystem> ParticleSystem::toCrystal() const
+{
+    const auto count = impl->size();
+    auto shape = std::make_unique<Crystal::Shape::ParticleSystem<Crystal::Shape::IParticleAttribute>>();
+    for (int i = 0; i < count; ++i) {
+        openvdb::Real radius;
+        openvdb::Vec3R v;
+        impl->getPosRad(i, v, radius);
+        const auto p = Converter::fromVDB(v);
+        shape->add(p, Crystal::Shape::IParticleAttribute(radius));
+    }
+    return std::move(shape);
+}

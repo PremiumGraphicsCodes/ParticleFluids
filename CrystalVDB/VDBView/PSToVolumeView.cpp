@@ -1,5 +1,7 @@
 #include "PSToVolumeView.h"
 
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+
 #include "../VDBConverter/ParticleSystemToVolumeConverter.h"
 #include "../VDBConverter/VolumeToMeshConverter.h"
 
@@ -23,7 +25,7 @@ void PSToVolumeView::onOk()
 	}
 
 	ParticleSystem ps;
-	ps.fromCrystal(*scene);
+	ps.fromCrystal(*scene->getShape());
 
 	ParticleSystemToVolumeConverter converter;
 	auto volume = converter.toVolume(ps);

@@ -88,9 +88,9 @@ std::vector<std::array<unsigned int, 4>> PolygonMesh::getQuads() const
 //	return;
 //}
 
-Crystal::Shape::PolygonMesh* PolygonMesh::toCrystal() const
+std::unique_ptr<Crystal::Shape::PolygonMesh> PolygonMesh::toCrystal() const
 {
-	auto mesh = new Crystal::Shape::PolygonMesh();
+	auto mesh = std::make_unique<Crystal::Shape::PolygonMesh>();
 
 	auto vertices = this->getVerticesd();
 
@@ -112,8 +112,9 @@ Crystal::Shape::PolygonMesh* PolygonMesh::toCrystal() const
 
 	mesh->positions = builder.getPositions();
 	mesh->vertices = builder.getVertices();
+	mesh->faces = builder.getFaces();
 
-	return mesh;
+	return std::move(mesh);
 
 	//return Crystal::Shape::PolygonMesh();
 }

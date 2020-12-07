@@ -21,8 +21,6 @@ public:
 
     void add(const Math::Vector3dd& position, const double radius);
 
-    void fromCrystal(const Crystal::Shape::IParticleSystem& ps);
-
     Math::Vector3dd getPosition(const int index) const;
 
     float getSize(const int index) const;
@@ -30,6 +28,10 @@ public:
  //   Crystal::Scene::ParticleSystemScene* toCrystal() const;
 
     const ParticleSystemImpl* getImpl() const { return impl; }
+
+    void fromCrystal(const Crystal::Shape::IParticleSystem& ps);
+
+    std::unique_ptr<Crystal::Shape::IParticleSystem> toCrystal() const;
 
 private:
     ParticleSystemImpl* impl;
