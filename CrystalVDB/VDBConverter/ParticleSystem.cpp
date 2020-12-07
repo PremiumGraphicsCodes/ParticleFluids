@@ -32,6 +32,14 @@ Crystal::Math::Vector3dd ParticleSystem::getPosition(const int index) const
     return Converter::fromVDB(v);
 }
 
+float ParticleSystem::getSize(const int index) const
+{
+    openvdb::Real radius;
+    openvdb::Vec3R v;
+    impl->getPosRad(index, v, radius);
+    return radius;
+}
+
 void ParticleSystem::fromCrystal(const Crystal::Shape::IParticleSystem& particleSystem)
 {
     const auto particles = particleSystem.getIParticles();

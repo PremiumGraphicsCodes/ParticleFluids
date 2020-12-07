@@ -18,4 +18,8 @@ TEST(ParticleSystemTest, TestToCrystal)
 
 	EXPECT_EQ(Vector3dd(0,0,0), dest.getPosition(0));
 	EXPECT_EQ(Vector3dd(1,2,3), dest.getPosition(1));
+
+	EXPECT_EQ(1.0f, dest.getSize(0));
+	EXPECT_EQ(2.0f, dest.getSize(1));
+
 }

@@ -25,6 +25,8 @@ public:
 
     Math::Vector3dd getPosition(const int index) const;
 
+    float getSize(const int index) const;
+
  //   Crystal::Scene::ParticleSystemScene* toCrystal() const;
 
     const ParticleSystemImpl* getImpl() const { return impl; }
