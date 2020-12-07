@@ -23,6 +23,8 @@ public:
 
     void fromCrystal(const Crystal::Scene::ParticleSystemScene& scene);
 
+ //   Crystal::Scene::ParticleSystemScene* toCrystal() const;
+
     const ParticleSystemImpl* getImpl() const { return impl; }
 
 private:

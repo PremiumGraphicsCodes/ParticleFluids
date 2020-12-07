@@ -23,7 +23,8 @@ public:
 
     static Crystal::Math::Vector3dd fromVDB(const openvdb::Vec3R& p);
 
-    static std::vector<Crystal::Math::Vector3df> fromVDBf(const std::vector<openvdb::Vec3s>& positions);
+    template<typename Dest>
+    static std::vector<Dest> fromVDBf(const std::vector<openvdb::Vec3s>& positions);
 
     static std::vector<Crystal::Math::Vector3dd> fromVDB(const std::vector<openvdb::Vec3R>& positions);
 

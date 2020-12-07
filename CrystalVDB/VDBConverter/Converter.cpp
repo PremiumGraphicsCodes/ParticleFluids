@@ -52,11 +52,22 @@ Crystal::Math::Vector3dd Converter::fromVDB(const openvdb::Vec3R& p)
     return Crystal::Math::Vector3dd(p[0], p[1], p[2]);
 }
 
+template<>
 std::vector<Crystal::Math::Vector3df> Crystal::VDB::Converter::fromVDBf(const std::vector<openvdb::Vec3s>& positions)
 {
     std::vector<Crystal::Math::Vector3df> dest(positions.size());
     for (int i = 0; i < positions.size(); ++i) {
         dest[i] = fromVDB( positions[i] );
+    }
+    return dest;
+}
+
+template<>
+std::vector<Crystal::Math::Vector3dd> Crystal::VDB::Converter::fromVDBf(const std::vector<openvdb::Vec3s>& positions)
+{
+    std::vector<Crystal::Math::Vector3dd> dest(positions.size());
+    for (int i = 0; i < positions.size(); ++i) {
+        dest[i] = fromVDB(positions[i]);
     }
     return dest;
 }

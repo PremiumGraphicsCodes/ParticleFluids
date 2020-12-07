@@ -10,6 +10,6 @@ TEST(VolumeToMeshConverterTest, Test)
 
     VolumeToMeshConverter vToMesh;
     const auto mesh = vToMesh.toMesh(grid);
-    EXPECT_FALSE( mesh->getVertices().empty() );
+    EXPECT_FALSE( mesh->getVerticesf().empty() );
     EXPECT_EQ( 216, mesh->getQuads().size() );
 }

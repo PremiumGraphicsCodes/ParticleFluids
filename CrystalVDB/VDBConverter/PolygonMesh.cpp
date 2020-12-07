@@ -33,9 +33,14 @@ Vector3df PolygonMesh::getVertex(const int index)
 	return Converter::fromVDB( impl->points[index] );
 }
 
-std::vector<Vector3df> PolygonMesh::getVertices() const
+std::vector<Vector3df> PolygonMesh::getVerticesf() const
 {
-	return Converter::fromVDBf(impl->points);
+	return Converter::fromVDBf<Vector3df>(impl->points);
+}
+
+std::vector<Vector3dd> PolygonMesh::getVerticesd() const
+{
+	return Converter::fromVDBf<Vector3dd>(impl->points);
 }
 
 void PolygonMesh::addTriangle(const std::array<int, 3>& indices)
@@ -87,7 +92,11 @@ Crystal::Shape::PolygonMesh* PolygonMesh::toCrystal() const
 {
 	auto mesh = new Crystal::Shape::PolygonMesh();
 
-	auto vertices = this->getVertices();
+	auto vertices = this->getVerticesd();
+
+	auto triangles = this->getTriangles();
+
+	mesh->positions = vertices;
 
 	/*
 	impl->points.push_back()
