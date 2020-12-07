@@ -7,6 +7,13 @@
 namespace Crystal {
 	namespace Shape {
 
+class IParticleAttribute
+{
+protected:
+	~IParticleAttribute()
+	{}
+};
+
 class IParticle
 {
 public:
@@ -14,6 +21,8 @@ public:
 	{}
 
 	virtual Math::Vector3dd getPosition() const = 0;
+
+	virtual IParticleAttribute* getIAttribute() const { return nullptr; }
 };
 
 	}
