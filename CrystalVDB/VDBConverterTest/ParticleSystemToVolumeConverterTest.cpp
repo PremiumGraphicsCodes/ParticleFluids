@@ -6,7 +6,7 @@ using namespace Crystal::VDB;
 
 TEST(ParticleSystemToVolumeConverterTest, TestToVolume)
 {
-    ParticleSystem ps;
+    VDBParticleSystem ps;
     ps.add(Vector3dd(0, 0, 0), 10.0);
 
     ParticleSystemToVolumeConverter pToVolume;

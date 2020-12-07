@@ -26,9 +26,9 @@
       <Filter>FileIO</Filter>
     </ClCompile>
     <ClCompile Include="OpenVDBAdapter.cpp" />
-    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="PolygonMesh.cpp" />
     <ClCompile Include="Volume.cpp" />
+    <ClCompile Include="VDBParticleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -59,9 +59,9 @@
       <Filter>FileIO</Filter>
     </ClInclude>
     <ClInclude Include="OpenVDBAdapter.h" />
-    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="PolygonMesh.h" />
     <ClInclude Include="Volume.h" />
+    <ClInclude Include="VDBParticleSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

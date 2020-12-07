@@ -96,8 +96,6 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> PolygonMesh::toCrystal() const
 
 	auto triangles = this->getTriangles();
 
-	mesh->positions = vertices;
-
 	Crystal::Shape::PolygonMeshBuilder builder;
 	for (const auto& v : vertices) {
 		builder.createPosition(v);

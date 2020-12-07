@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../Crystal/Math/Vector3d.h"
-#include "ParticleSystem.h"
+#include "VDBParticleSystem.h"
 #include "Volume.h"
 
 namespace Crystal {
@@ -10,7 +10,7 @@ namespace Crystal {
 class ParticleSystemToVolumeConverter
 {
 public:
-	std::unique_ptr<Volume> toVolume(const ParticleSystem& particles);
+	std::unique_ptr<Volume> toVolume(const VDBParticleSystem& particles);
 
 private:
 };

@@ -12,12 +12,12 @@ namespace Crystal {
     namespace VDB {
         class ParticleSystemImpl;
 
-class ParticleSystem : private UnCopyable
+class VDBParticleSystem : private UnCopyable
 {
 public:
-    ParticleSystem();
+    VDBParticleSystem();
 
-    ~ParticleSystem();
+    ~VDBParticleSystem();
 
     void add(const Math::Vector3dd& position, const double radius);
 
