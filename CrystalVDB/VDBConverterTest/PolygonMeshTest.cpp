@@ -2,14 +2,14 @@
 
 #include "../../Crystal/Shape/PolygonMesh.h"
 
-#include "../VDBConverter/PolygonMesh.h"
+#include "../VDBConverter/VDBPolygonMesh.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
 TEST(PolygonMeshTest, TestToCrystal)
 {
-	PolygonMesh mesh;
+	VDBPolygonMesh mesh;
 	mesh.addVertex(Vector3df(0, 0, 0));
 	mesh.addVertex(Vector3df(1, 0, 0));
 	mesh.addVertex(Vector3df(1, 1, 0));

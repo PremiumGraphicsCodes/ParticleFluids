@@ -1,4 +1,4 @@
-#include "PolygonMesh.h"
+#include "VDBPolygonMesh.h"
 
 #include "PolygonMeshImpl.h"
 #include "Converter.h"
