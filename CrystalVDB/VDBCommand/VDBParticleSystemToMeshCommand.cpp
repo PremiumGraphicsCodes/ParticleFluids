@@ -4,6 +4,10 @@
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
+#include "../VDBConverter/ParticleSystem.h"
+#include "../VDBConverter/ParticleSystemToVolumeConverter.h"
+#include "../VDBConverter/VolumeToMeshConverter.h"
+
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
@@ -31,27 +35,16 @@ std::string VDBParticleSystemToMeshCommand::getName()
 
 bool VDBParticleSystemToMeshCommand::execute(World* world)
 {
-	/*
-	OpenVDBFileReader reader;
-	const auto isOk = reader.open(args.filePath.getValue());
-	if (!isOk) {
+	auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
+	if (scene == nullptr) {
 		return false;
 	}
-	const auto& names = reader.getPointGridNames();
+	ParticleSystem ps;
+	ps.fromCrystal(scene);
+	ParticleSystemToVolumeConverter toVolumeConverter;
+	auto volume = toVolumeConverter.toVolume(ps);
 
-	std::vector<int> newIds;
-	for (auto n : names) {
-		const auto& positions = reader.readPositions(n);
-		ParticleAttribute attr;
-		auto ps = std::make_unique< ParticleSystem<ParticleAttribute> >(positions, attr);
-		ParticleSystemScene* scene = new ParticleSystemScene(world->getNextSceneId(), "", std::move(ps));
-		world->getScenes()->addScene(scene);
-		const auto newId = scene->getId();
-		newIds.push_back(newId);
-	}
-	results.newIds.setValue(newIds);
-	//reader.get
-	return true;
-	*/
+	VolumeToMeshConverter toMeshConvereter;
+	auto mesh = toMeshConvereter.toMesh(*volume);
 	return false;
 }

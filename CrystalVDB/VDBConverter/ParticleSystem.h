@@ -6,6 +6,9 @@
 #include <memory>
 
 namespace Crystal {
+    namespace Scene {
+        class ParticleSystemScene;
+    }
     namespace VDB {
         class ParticleSystemImpl;
 
@@ -17,6 +20,8 @@ public:
     ~ParticleSystem();
 
     void add(const Math::Vector3dd& position, const double radius);
+
+    void fromCrystal(const Crystal::Scene::ParticleSystemScene& scene);
 
     const ParticleSystemImpl* getImpl() const { return impl; }
 

@@ -37,7 +37,7 @@ public:
 
 	//void fromCrystal(const Crystal::Shape::PolygonMesh& src);
 
-	//Crystal::Shape::PolygonMesh toCrystal() const;
+	Crystal::Shape::PolygonMesh* toCrystal() const;
 
 	PolygonMeshImpl* getImpl() const { return impl; }
 

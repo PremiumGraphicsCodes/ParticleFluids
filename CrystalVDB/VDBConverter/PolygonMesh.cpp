@@ -3,7 +3,7 @@
 #include "PolygonMeshImpl.h"
 #include "Converter.h"
 
-//#include "../../Crystal/Shape/PolygonMesh.h"
+#include "../../Crystal/Shape/PolygonMesh.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
@@ -77,11 +77,13 @@ std::vector<std::array<unsigned int, 4>> PolygonMesh::getQuads() const
 //	*/
 //	return;
 //}
-//
-//Crystal::Shape::PolygonMesh PolygonMesh::toCrystal() const
-//{
-//	//const auto& faces = src.get
-//
-//	return Crystal::Shape::PolygonMesh();
-//}
-//
+
+Crystal::Shape::PolygonMesh* PolygonMesh::toCrystal() const
+{
+	auto mesh = new Crystal::Shape::PolygonMesh();
+	return mesh;
+	//const auto& faces = src.get
+
+	//return Crystal::Shape::PolygonMesh();
+}
+

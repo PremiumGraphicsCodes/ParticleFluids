@@ -4,6 +4,8 @@
 
 #include "Converter.h"
 
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
@@ -23,3 +25,14 @@ void ParticleSystem::add(const Vector3dd& position, const double radius)
     impl->add(pp, radius);
 }
 
+void ParticleSystem::fromCrystal(const Crystal::Scene::ParticleSystemScene& scene)
+{
+    auto particleSystem = scene.getShape();
+
+    const auto particles = scene.getShape()->getParticles();
+    for (auto p : particles) {
+        const auto position = p->getPosition();
+        const auto size = static_cast<double>(p->getAttribute().size);
+        this->add(p->getPosition(), size);
+    }
+}
