@@ -98,23 +98,25 @@ Crystal::Shape::PolygonMesh* PolygonMesh::toCrystal() const
 
 	mesh->positions = vertices;
 
-	/*
-	impl->points.push_back()
-
-	const auto& triangles = impl->triangles;
-	for (const auto t : triangles) {
-		const auto v1 = t[0];
-		const auto v2 = t[1];
-		const auto v3 = t[2];
-		Crystal::Shape::Vertex vertex;
-		vertex.positionId = ;
-		mesh->vertices
+	Crystal::Shape::PolygonMeshBuilder builder;
+	for (const auto& v : vertices) {
+		builder.createPosition(v);
 	}
-	mesh->vertices[]
-	*/
+
+	for (const auto& t : triangles) {
+		const auto v0 = builder.createVertex(t[0]);
+		const auto v1 = builder.createVertex(t[1]);
+		const auto v2 = builder.createVertex(t[2]);
+		builder.createFace(v0, v1, v2);
+	}
+
+	mesh->positions = builder.getPositions();
+	mesh->vertices = builder.getVertices();
 
 	return mesh;
 
 	//return Crystal::Shape::PolygonMesh();
 }
+
+
 

@@ -172,7 +172,7 @@ void FluidSimulationView::reset()
 
 	simulator.clear();
 	simulator.addFluidScene(this->fluidScene);
-	simulator.addBoundaryScene(this->boundaryScene);
+	//simulator.addBoundaryScene(this->boundaryScene);
 	//simulator.addSurface(this->boundaryView.getValue());
 	simulator.setMaxTimeStep(this->timeStepView.getValue());
 }

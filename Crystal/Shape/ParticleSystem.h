@@ -1,8 +1,6 @@
 #pragma once
 
-#include "IShape.h"
-
-#include "Particle.h"
+#include "IParticleSystem.h"
 
 #include "../Math/Box3d.h"
 
@@ -13,7 +11,7 @@ namespace Crystal {
 	namespace Shape {
 
 template<typename Attr>
-class ParticleSystem : public IShape
+class ParticleSystem : public IParticleSystem
 {
 public:
 	ParticleSystem() {}
@@ -62,7 +60,7 @@ public:
 
 	std::vector<Particle<Attr>*> getParticles() const { return particles; }
 
-	std::vector<IParticle*> getIParticles() const
+	std::vector<IParticle*> getIParticles() const override
 	{
 		std::vector<IParticle*> ps;
 		for (auto p : particles) {
@@ -71,7 +69,7 @@ public:
 		return ps;
 	}
 
-	std::vector<Math::Vector3dd> getPositions() const 
+	std::vector<Math::Vector3dd> getPositions() const override
 	{
 		std::vector<Math::Vector3dd> positions;
 		for (const auto& p : particles) {

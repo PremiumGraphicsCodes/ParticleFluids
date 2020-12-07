@@ -48,6 +48,9 @@
     <ClInclude Include="Solid.h">
       <Filter>CSG</Filter>
     </ClInclude>
+    <ClInclude Include="IParticleSystem.h">
+      <Filter>ParticleSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
