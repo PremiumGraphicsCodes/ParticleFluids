@@ -9,9 +9,9 @@
 
 using namespace Crystal::VDB;
 
-std::unique_ptr<PolygonMesh> VolumeToMeshConverter::toMesh(const Volume& volume)
+std::unique_ptr<VDBPolygonMesh> VolumeToMeshConverter::toMesh(const VDBVolume& volume)
 {   
-    auto mesh = std::make_unique<PolygonMesh>();
+    auto mesh = std::make_unique<VDBPolygonMesh>();
     auto impl = mesh->getImpl();
     auto grid = volume.getImpl()->getPtr();
     openvdb::tools::volumeToMesh(*grid, impl->points, impl->quads);

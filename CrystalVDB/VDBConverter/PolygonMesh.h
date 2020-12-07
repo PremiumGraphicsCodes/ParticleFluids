@@ -3,21 +3,20 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Util/UnCopyable.h"
 
+#include "../../Crystal/Shape/PolygonMesh.h"
+
 #include <memory>
 
 namespace Crystal {
-	namespace Shape {
-		class PolygonMesh;
-	}
 	namespace VDB {
 		class PolygonMeshImpl;
 
-class PolygonMesh : private UnCopyable
+class VDBPolygonMesh : private UnCopyable
 {
 public:
-	PolygonMesh();
+	VDBPolygonMesh();
 
-	~PolygonMesh();
+	~VDBPolygonMesh();
 
 	void addVertex(const Math::Vector3df& position);
 

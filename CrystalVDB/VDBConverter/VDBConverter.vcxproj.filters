@@ -27,8 +27,8 @@
     </ClCompile>
     <ClCompile Include="OpenVDBAdapter.cpp" />
     <ClCompile Include="PolygonMesh.cpp" />
-    <ClCompile Include="Volume.cpp" />
     <ClCompile Include="VDBParticleSystem.cpp" />
+    <ClCompile Include="VDBVolume.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -60,8 +60,8 @@
     </ClInclude>
     <ClInclude Include="OpenVDBAdapter.h" />
     <ClInclude Include="PolygonMesh.h" />
-    <ClInclude Include="Volume.h" />
     <ClInclude Include="VDBParticleSystem.h" />
+    <ClInclude Include="VDBVolume.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

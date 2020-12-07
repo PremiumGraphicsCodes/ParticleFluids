@@ -23,8 +23,8 @@ void Boundary::build(const PolygonMesh& mesh, const double divideLength)
 	const auto& normals = particleConverter.getNormals();
 	assert(divPositions.size() == normals.size());
 
-	for (int i = 0; i < divPositions.size(); ++i) {		
-		Particle<Vector3dd> pn(divPositions[i], normals[i]);		
+	for (int i = 0; i < divPositions.size(); ++i) {
+		Particle<BoundaryAttr> pn(divPositions[i], BoundaryAttr(normals[i]));	
 		positionWithNormal.push_back(pn);
 	}
 

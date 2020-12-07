@@ -24,7 +24,7 @@ void PSToVolumeView::onOk()
 		return;
 	}
 
-	ParticleSystem ps;
+	VDBParticleSystem ps;
 	ps.fromCrystal(*scene->getShape());
 
 	ParticleSystemToVolumeConverter converter;

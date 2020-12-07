@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../VDBConverter/Volume.h"
+#include "../VDBConverter/VDBVolume.h"
 
 //using namespace Crystal::Math;
 using namespace Crystal::VDB;
@@ -15,6 +15,6 @@ TEST(VolumeTest, TestFill)
     grid.tree().fill(bbox, -1.0f);
     */
 
-	Volume volume(1.0f);
+	VDBVolume volume(1.0f);
     volume.fill(1, 6, -1.0f);
 }

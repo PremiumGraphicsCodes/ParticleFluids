@@ -9,7 +9,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
-PolygonMesh::PolygonMesh() :
+VDBPolygonMesh::VDBPolygonMesh() :
 	impl( new PolygonMeshImpl() )
 {
 }
@@ -18,37 +18,37 @@ PolygonMesh::PolygonMesh() :
 
 //PolygonMesh& PolygonMesh::operator=(const PolygonMesh&& rhs) = default;
 
-PolygonMesh::~PolygonMesh()
+VDBPolygonMesh::~VDBPolygonMesh()
 {
 	delete impl;
 }
 
-void PolygonMesh::addVertex(const Vector3df& position)
+void VDBPolygonMesh::addVertex(const Vector3df& position)
 {
 	impl->points.push_back(Converter::toVDB(position));
 }
 
-Vector3df PolygonMesh::getVertex(const int index)
+Vector3df VDBPolygonMesh::getVertex(const int index)
 {
 	return Converter::fromVDB( impl->points[index] );
 }
 
-std::vector<Vector3df> PolygonMesh::getVerticesf() const
+std::vector<Vector3df> VDBPolygonMesh::getVerticesf() const
 {
 	return Converter::fromVDBf<Vector3df>(impl->points);
 }
 
-std::vector<Vector3dd> PolygonMesh::getVerticesd() const
+std::vector<Vector3dd> VDBPolygonMesh::getVerticesd() const
 {
 	return Converter::fromVDBf<Vector3dd>(impl->points);
 }
 
-void PolygonMesh::addTriangle(const std::array<int, 3>& indices)
+void VDBPolygonMesh::addTriangle(const std::array<int, 3>& indices)
 {
 	impl->triangles.push_back(Converter::toVDB(indices));
 }
 
-std::vector<std::array<unsigned int, 3>> PolygonMesh::getTriangles() const
+std::vector<std::array<unsigned int, 3>> VDBPolygonMesh::getTriangles() const
 {
 	std::vector<std::array<unsigned int, 3>> dest;
 	for (const auto& t : impl->triangles) {
@@ -57,12 +57,12 @@ std::vector<std::array<unsigned int, 3>> PolygonMesh::getTriangles() const
 	return dest;
 }
 
-void PolygonMesh::addQuad(const std::array<int, 4>& indices)
+void VDBPolygonMesh::addQuad(const std::array<int, 4>& indices)
 {
 	impl->quads.push_back(Converter::toVDB(indices));
 }
 
-std::vector<std::array<unsigned int, 4>> PolygonMesh::getQuads() const
+std::vector<std::array<unsigned int, 4>> VDBPolygonMesh::getQuads() const
 {
 	std::vector<std::array<unsigned int, 4>> dest;
 	for (const auto& q : impl->quads) {
@@ -88,7 +88,7 @@ std::vector<std::array<unsigned int, 4>> PolygonMesh::getQuads() const
 //	return;
 //}
 
-std::unique_ptr<Crystal::Shape::PolygonMesh> PolygonMesh::toCrystal() const
+std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMesh::toCrystal() const
 {
 	auto mesh = std::make_unique<Crystal::Shape::PolygonMesh>();
 

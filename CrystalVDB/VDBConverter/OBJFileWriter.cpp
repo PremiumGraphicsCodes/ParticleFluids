@@ -6,7 +6,7 @@
 
 using namespace Crystal::VDB;
 
-bool OBJFileWriter::write(const std::string& filePath, const PolygonMesh& mesh)
+bool OBJFileWriter::write(const std::string& filePath, const VDBPolygonMesh& mesh)
 {
 	std::ofstream stream(filePath);
 	if (!stream.is_open()) {
@@ -15,7 +15,7 @@ bool OBJFileWriter::write(const std::string& filePath, const PolygonMesh& mesh)
 	return write(stream, mesh);
 }
 
-bool OBJFileWriter::write(std::ostream& stream, const PolygonMesh& mesh_)
+bool OBJFileWriter::write(std::ostream& stream, const VDBPolygonMesh& mesh_)
 {
 	auto mesh = mesh_.getImpl();
 	stream << "g cube" << std::endl;

@@ -12,16 +12,16 @@ namespace Crystal {
 	namespace VDB {
 		class VolumeImpl;
 
-class Volume : private UnCopyable
+class VDBVolume : private UnCopyable
 {
 public:
-	Volume();
+	VDBVolume();
 
-	explicit Volume(const float value);
+	explicit VDBVolume(const float value);
 
 	//explicit Volume(std::unique_ptr<VolumeImpl> impl);
 
-	~Volume();
+	~VDBVolume();
 
 	void fill(const unsigned int coord1, const unsigned int coord2, const float value);
 

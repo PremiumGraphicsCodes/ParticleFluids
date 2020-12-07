@@ -5,7 +5,7 @@ using namespace Crystal::VDB;
 
 TEST(VolumeToMeshConverterTest, Test)
 {
-    Volume grid(1.0f);
+    VDBVolume grid(1.0f);
     grid.fill(1, 6, -1.0f);
 
     VolumeToMeshConverter vToMesh;

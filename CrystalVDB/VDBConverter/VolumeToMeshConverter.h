@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PolygonMesh.h"
-#include "Volume.h"
+#include "VDBVolume.h"
 
 namespace Crystal {
 	namespace VDB {
@@ -9,7 +9,7 @@ namespace Crystal {
 class VolumeToMeshConverter
 {
 public:
-	std::unique_ptr<PolygonMesh> toMesh(const Volume& volume);
+	std::unique_ptr<VDBPolygonMesh> toMesh(const VDBVolume& volume);
 
 private:
 };

@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "VDBParticleSystem.h"
-#include "Volume.h"
+#include "VDBVolume.h"
 
 namespace Crystal {
 	namespace VDB {
@@ -10,7 +10,7 @@ namespace Crystal {
 class ParticleSystemToVolumeConverter
 {
 public:
-	std::unique_ptr<Volume> toVolume(const VDBParticleSystem& particles);
+	std::unique_ptr<VDBVolume> toVolume(const VDBParticleSystem& particles);
 
 private:
 };
