@@ -25,14 +25,19 @@ void ParticleSystem::add(const Vector3dd& position, const double radius)
     impl->add(pp, radius);
 }
 
-void ParticleSystem::fromCrystal(const Crystal::Scene::ParticleSystemScene& scene)
+Crystal::Math::Vector3dd ParticleSystem::getPosition(const int index) const
 {
-    auto particleSystem = scene.getShape();
+    openvdb::Vec3R v;
+    impl->getPos(index, v);
+    return Converter::fromVDB(v);
+}
 
-    const auto particles = scene.getShape()->getParticles();
+void ParticleSystem::fromCrystal(const Crystal::Shape::IParticleSystem& particleSystem)
+{
+    const auto particles = particleSystem.getIParticles();
     for (auto p : particles) {
         const auto position = p->getPosition();
-        const auto size = static_cast<double>(p->getAttribute().size);
+        const auto size = static_cast<double>(p->getIAttribute()->size);
         this->add(p->getPosition(), size);
     }
 }

@@ -9,9 +9,19 @@ namespace Crystal {
 
 class IParticleAttribute
 {
-protected:
+public:
+	IParticleAttribute() {
+	}
+
+	explicit IParticleAttribute(const float size) :
+		size(size)
+	{}
+
 	~IParticleAttribute()
 	{}
+
+public:
+	float size;
 };
 
 class IParticle

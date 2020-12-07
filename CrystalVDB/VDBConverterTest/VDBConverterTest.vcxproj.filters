@@ -15,6 +15,7 @@
     <ClCompile Include="VolumeTest.cpp" />
     <ClCompile Include="PolygonMeshTest.cpp" />
     <ClCompile Include="VolumeToMeshConverterTest.cpp" />
+    <ClCompile Include="ParticleSystemTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">

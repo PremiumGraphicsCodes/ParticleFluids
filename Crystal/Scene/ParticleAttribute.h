@@ -9,7 +9,6 @@ namespace Crystal {
 struct ParticleAttribute : Shape::IParticleAttribute
 {
 	Graphics::ColorRGBAf color;
-	float size;
 };
 
 	}

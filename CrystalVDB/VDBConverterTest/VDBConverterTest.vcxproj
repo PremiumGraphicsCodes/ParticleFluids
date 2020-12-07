@@ -39,6 +39,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenVDBFileReaderTest.cpp" />
     <ClCompile Include="OpenVDBFileWriterTest.cpp" />
+    <ClCompile Include="ParticleSystemTest.cpp" />
     <ClCompile Include="ParticleSystemToVolumeConverterTest.cpp" />
     <ClCompile Include="PolygonMeshTest.cpp" />
     <ClCompile Include="VolumeTest.cpp" />
