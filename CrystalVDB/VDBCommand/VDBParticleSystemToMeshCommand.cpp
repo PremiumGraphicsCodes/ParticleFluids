@@ -4,7 +4,7 @@
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
-#include "../VDBConverter/ParticleSystem.h"
+#include "../VDBConverter/VDBParticleSystem.h"
 #include "../VDBConverter/ParticleSystemToVolumeConverter.h"
 #include "../VDBConverter/VolumeToMeshConverter.h"
 
@@ -39,8 +39,8 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	if (scene == nullptr) {
 		return false;
 	}
-	ParticleSystem ps;
-	ps.fromCrystal(*scene);
+	VDBParticleSystem ps;
+	ps.fromCrystal(*scene->getShape());
 	ParticleSystemToVolumeConverter toVolumeConverter;
 	auto volume = toVolumeConverter.toVolume(ps);
 
