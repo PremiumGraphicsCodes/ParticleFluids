@@ -16,6 +16,8 @@
 //#include "PhysicsMenu.h"
 #include "TimeLinePanel.h"
 
+#include "../VDBConverter/VDBAdapter.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
@@ -31,6 +33,7 @@ int main(int, char**)
 		assert(false);
 		return 0;
 	}
+	Crystal::VDB::VDBAdapter::init();
 	auto control = new ControlPanel("Control", &model, &canvas);
 	window.add(control);
 

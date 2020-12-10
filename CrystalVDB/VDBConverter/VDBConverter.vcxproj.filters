@@ -25,10 +25,10 @@
     <ClCompile Include="OBJFileWriter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="OpenVDBAdapter.cpp" />
     <ClCompile Include="VDBParticleSystem.cpp" />
     <ClCompile Include="VDBVolume.cpp" />
     <ClCompile Include="VDBPolygonMesh.cpp" />
+    <ClCompile Include="VDBAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -58,10 +58,10 @@
     <ClInclude Include="OBJFileWriter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="OpenVDBAdapter.h" />
     <ClInclude Include="VDBParticleSystem.h" />
     <ClInclude Include="VDBVolume.h" />
     <ClInclude Include="VDBPolygonMesh.h" />
+    <ClInclude Include="VDBAdapter.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

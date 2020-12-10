@@ -1,10 +1,10 @@
-#include "OpenVDBAdapter.h"
+#include "VDBAdapter.h"
 
 #include <openvdb/openvdb.h>
 
 using namespace Crystal::VDB;
 
-void OpenVDBAdapter::init()
+void VDBAdapter::init()
 {
 	openvdb::initialize();
 }

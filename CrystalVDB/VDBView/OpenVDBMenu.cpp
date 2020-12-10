@@ -11,8 +11,6 @@
 #include "../VDBConverter/OpenVDBFileReader.h"
 #include "../VDBConverter/OpenVDBFileWriter.h"
 
-#include "../VDBConverter/OpenVDBAdapter.h"
-
 #include "VDBParticleSystemView.h"
 #include "PSToVolumeView.h"
 
@@ -29,7 +27,6 @@ OpenVDBMenu::OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* c
 	IMenu(name, model, canvas),
 	control(control)
 {
-	OpenVDBAdapter::init();
 }
 
 void OpenVDBMenu::onShow()

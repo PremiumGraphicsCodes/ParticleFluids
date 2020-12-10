@@ -3,7 +3,7 @@
 namespace Crystal {
 	namespace VDB {
 
-class OpenVDBAdapter
+class VDBAdapter
 {
 public:
 	static void init();
