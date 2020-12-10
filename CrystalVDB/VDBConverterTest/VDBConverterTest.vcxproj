@@ -37,8 +37,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="OpenVDBFileReaderTest.cpp" />
-    <ClCompile Include="OpenVDBFileWriterTest.cpp" />
+    <ClCompile Include="VDBFileReaderTest.cpp" />
+    <ClCompile Include="VDBFileWriterTest.cpp" />
     <ClCompile Include="VDBParticleSystemTest.cpp" />
     <ClCompile Include="ParticleSystemToVolumeConverterTest.cpp" />
     <ClCompile Include="PolygonMeshTest.cpp" />

@@ -4,7 +4,7 @@
 
 using namespace Crystal::VDB;
 
-TEST(OpenVDBFileReaderTest, TestRead)
+TEST(VDBFileReaderTest, TestRead)
 {
     VDBFileReader reader;
     const auto isOk = reader.open("testWrite.vdb");

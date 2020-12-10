@@ -5,7 +5,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
-TEST(OpenVDBFileWriterTest, TestWrite)
+TEST(VDBFileWriterTest, TestWrite)
 {
     VDBFileWriter writer;
 
