@@ -38,6 +38,7 @@ void PointShaderScene::send(const PointBuffer& buffer)
 	const auto& sizes = buffer.getSize().get();
 
 	if (positions.empty()) {
+		rBuffer.count = 0;
 		return;
 	}
 

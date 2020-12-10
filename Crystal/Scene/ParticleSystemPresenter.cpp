@@ -51,6 +51,11 @@ void ParticleSystemPresenter::updateView()
 
 void ParticleSystemPresenter::updateScreenView()
 {
+	if (!model->isVisible()) {
+		PointBuffer pb;
+		this->view->send(pb);
+		return;
+	}
 	const auto& ps = model->getShape()->getParticles();
 	PointBuffer pb;
 	for (auto p : ps) {
