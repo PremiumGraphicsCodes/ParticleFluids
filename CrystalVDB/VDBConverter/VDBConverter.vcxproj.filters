@@ -7,12 +7,6 @@
     <ClCompile Include="ParticleSystemImpl.cpp">
       <Filter>Impl</Filter>
     </ClCompile>
-    <ClCompile Include="OpenVDBFileReader.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenVDBFileWriter.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleSystemToVolumeConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
@@ -29,6 +23,12 @@
     <ClCompile Include="VDBVolume.cpp" />
     <ClCompile Include="VDBPolygonMesh.cpp" />
     <ClCompile Include="VDBAdapter.cpp" />
+    <ClCompile Include="VDBFileReader.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBFileWriter.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -43,12 +43,6 @@
     <ClInclude Include="PolygonMeshImpl.h">
       <Filter>Impl</Filter>
     </ClInclude>
-    <ClInclude Include="OpenVDBFileReader.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenVDBFileWriter.h">
-      <Filter>FileIO</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleSystemToVolumeConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
@@ -62,6 +56,12 @@
     <ClInclude Include="VDBVolume.h" />
     <ClInclude Include="VDBPolygonMesh.h" />
     <ClInclude Include="VDBAdapter.h" />
+    <ClInclude Include="VDBFileReader.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBFileWriter.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

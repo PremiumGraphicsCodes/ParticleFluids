@@ -8,12 +8,12 @@
 namespace Crystal {
     namespace VDB {
 
-class OpenVDBFileReader
+class VDBFileReader
 {
 public:
-    OpenVDBFileReader() {}
+    VDBFileReader() {}
 
-    ~OpenVDBFileReader();
+    ~VDBFileReader();
 
     bool open(const std::string& filename);
 

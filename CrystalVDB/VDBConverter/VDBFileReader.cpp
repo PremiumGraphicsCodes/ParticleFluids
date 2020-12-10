@@ -1,4 +1,4 @@
-#include "OpenVDBFileReader.h"
+#include "VDBFileReader.h"
 
 #include "Converter.h"
 
@@ -11,26 +11,26 @@ namespace {
     openvdb::io::File file("");
 }
 
-OpenVDBFileReader::~OpenVDBFileReader()
+VDBFileReader::~VDBFileReader()
 {
     if (file.isOpen()) {
         close();
     }
 }
 
-bool OpenVDBFileReader::open(const std::string& filename)
+bool VDBFileReader::open(const std::string& filename)
 {
     file = openvdb::io::File(filename);
     const auto isOk = file.open();
     return isOk;
 }
 
-void OpenVDBFileReader::close()
+void VDBFileReader::close()
 {
     file.close();
 }
 
-std::vector<std::string> OpenVDBFileReader::getPointGridNames() const
+std::vector<std::string> VDBFileReader::getPointGridNames() const
 {
     std::vector<std::string> names;
     auto metas = file.readAllGridMetadata();
@@ -44,7 +44,7 @@ std::vector<std::string> OpenVDBFileReader::getPointGridNames() const
     return names;
 }
 
-std::vector<Vector3dd> OpenVDBFileReader::readPositions(const std::string& pointName)
+std::vector<Vector3dd> VDBFileReader::readPositions(const std::string& pointName)
 {
     auto baseGrid = file.readGrid(pointName);
 

@@ -6,10 +6,10 @@
 namespace Crystal {
     namespace VDB {
 
-class OpenVDBFileWriter
+class VDBFileWriter
 {
 public:
-    ~OpenVDBFileWriter();
+    ~VDBFileWriter();
 
     bool open(const std::string& filePath);
 

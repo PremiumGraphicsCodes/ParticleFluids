@@ -1,4 +1,4 @@
-#include "OpenVDBFileWriter.h"
+#include "VDBFileWriter.h"
 
 #include <openvdb/points/PointConversion.h>
 
@@ -13,23 +13,23 @@ namespace {
     openvdb::io::File file("");
 }
 
-OpenVDBFileWriter::~OpenVDBFileWriter()
+VDBFileWriter::~VDBFileWriter()
 {
     close();
 }
 
-bool OpenVDBFileWriter::open(const std::string& filePath)
+bool VDBFileWriter::open(const std::string& filePath)
 {
     file = openvdb::io::File(filePath);
     return true;
 }
 
-void OpenVDBFileWriter::close()
+void VDBFileWriter::close()
 {
     file.close();
 }
 
-void OpenVDBFileWriter::write(const std::string& name, const std::vector<Vector3dd>& positions) const
+void VDBFileWriter::write(const std::string& name, const std::vector<Vector3dd>& positions) const
 {
     /*
     try {

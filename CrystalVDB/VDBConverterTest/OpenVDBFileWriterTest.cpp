@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 
-#include "../VDBConverter/OpenVDBFileWriter.h"
+#include "../VDBConverter/VDBFileWriter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
 TEST(OpenVDBFileWriterTest, TestWrite)
 {
-    OpenVDBFileWriter writer;
+    VDBFileWriter writer;
 
     std::vector<Vector3dd> positions;
     positions.push_back(Vector3dd(0, 1, 0));
