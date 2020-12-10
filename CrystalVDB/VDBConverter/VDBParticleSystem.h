@@ -29,7 +29,7 @@ public:
 
     const ParticleSystemImpl* getImpl() const { return impl; }
 
-    void fromCrystal(const Crystal::Shape::IParticleSystem& ps);
+    void fromCrystal(const std::vector<Math::Vector3dd>& positions, const float radius);
 
     std::unique_ptr<Crystal::Shape::IParticleSystem> toCrystal() const;
 

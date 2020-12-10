@@ -40,13 +40,10 @@ float VDBParticleSystem::getSize(const int index) const
     return radius;
 }
 
-void VDBParticleSystem::fromCrystal(const Crystal::Shape::IParticleSystem& particleSystem)
+void VDBParticleSystem::fromCrystal(const std::vector<Vector3dd>& positions, const float radius)
 {
-    const auto particles = particleSystem.getIParticles();
-    for (auto p : particles) {
-        const auto position = p->getPosition();
-        const auto size = static_cast<double>(p->getIAttribute()->size);
-        this->add(p->getPosition(), size);
+    for (const auto& p : positions) {
+        this->add(p, radius);
     }
 }
 
