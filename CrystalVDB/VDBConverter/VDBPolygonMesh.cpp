@@ -111,7 +111,7 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMesh::toCrystal() const
 
 	for (const auto& t : quads) {
 		builder.createFace(t[0], t[1], t[2]);
-		//builder.createFace(v3, v2, v1);
+		builder.createFace(t[2], t[3], t[0]);
 	}
 
 	mesh->positions = builder.getPositions();
