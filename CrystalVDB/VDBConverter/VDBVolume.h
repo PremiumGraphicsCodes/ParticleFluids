@@ -6,8 +6,8 @@
 #include "../../Crystal/Math/Box3d.h"
 
 namespace Crystal {
-	namespace Scene {
-		class ParticleSystemScene;
+	namespace Shape {
+		class IParticleSystem;
 	}
 	namespace VDB {
 		class VolumeImpl;
@@ -27,7 +27,7 @@ public:
 
 	VolumeImpl* getImpl() const { return impl; }
 
-	//Crystal::Scene::ParticleSystemScene* toCrystalParticleSystem();
+	//Crystal::Shape::ParticleSystem* toCrystalParticleSystem();
 
 private:
 	VolumeImpl* impl;

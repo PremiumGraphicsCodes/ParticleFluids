@@ -38,7 +38,6 @@ void PointShaderScene::send(const PointBuffer& buffer)
 	const auto& sizes = buffer.getSize().get();
 
 	if (positions.empty()) {
-		rBuffer.count = 0;
 		return;
 	}
 
@@ -54,6 +53,10 @@ void PointShaderScene::send(const PointBuffer& buffer)
 
 void PointShaderScene::render(const Graphics::Camera& camera)
 {
+	if (!isVisible()) {
+		return;
+	}
+
 	rBuffer.modelViewMatrix = camera.getModelViewMatrix();
 	rBuffer.projectionMatrix = camera.getProjectionMatrix();
 

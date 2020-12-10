@@ -14,7 +14,8 @@ class IShaderScene
 {
 public:
 	explicit IShaderScene(const std::string& name) :
-		name(name)
+		name(name),
+		isVisible_(true)
 	{}
 
 	virtual ~IShaderScene() {};
@@ -27,8 +28,13 @@ public:
 
 	std::string getName() const { return name; }
 
+	void setVisible(const bool isVisible) { this->isVisible_ = isVisible; }
+
+	bool isVisible() const { return isVisible_; }
+
 private:
 	std::string name;
+	bool isVisible_;
 };
 
 	}

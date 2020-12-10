@@ -95,20 +95,27 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMesh::toCrystal() const
 	auto vertices = this->getVerticesd();
 
 	auto triangles = this->getTriangles();
+	auto quads = this->getQuads();
 
 	Crystal::Shape::PolygonMeshBuilder builder;
+
+	int normalId = builder.createNormal(Vector3dd(0, 0, 1));
 	for (const auto& v : vertices) {
-		builder.createPosition(v);
+		int id = builder.createPosition(v);
+		builder.createVertex(id, normalId);
 	}
 
 	for (const auto& t : triangles) {
-		const auto v0 = builder.createVertex(t[0]);
-		const auto v1 = builder.createVertex(t[1]);
-		const auto v2 = builder.createVertex(t[2]);
-		builder.createFace(v0, v1, v2);
+		builder.createFace(t[0], t[1], t[2]);
+	}
+
+	for (const auto& t : quads) {
+		builder.createFace(t[0], t[1], t[2]);
+		//builder.createFace(v3, v2, v1);
 	}
 
 	mesh->positions = builder.getPositions();
+	mesh->normals = builder.getNormals();
 	mesh->vertices = builder.getVertices();
 	mesh->faces = builder.getFaces();
 

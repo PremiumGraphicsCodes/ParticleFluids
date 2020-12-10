@@ -14,6 +14,7 @@
 #include "../VDBConverter/OpenVDBAdapter.h"
 
 #include "VDBParticleSystemView.h"
+#include "PSToVolumeView.h"
 
 #include <iostream>
 
@@ -102,6 +103,10 @@ void OpenVDBMenu::onShow()
 		if (ImGui::MenuItem("VDBParticleSystem")) {
 			control->setWindow(new VDBParticleSystemView("VDBParticles", world, getCanvas()));
 		}
+		if (ImGui::MenuItem("PSToMesh")) {
+			control->setWindow(new PSToVolumeView("PSToVolume", world, getCanvas()));
+		}
+
 
 		ImGui::EndMenu();
 	}

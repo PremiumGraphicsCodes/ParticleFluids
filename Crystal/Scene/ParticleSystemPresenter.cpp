@@ -51,11 +51,6 @@ void ParticleSystemPresenter::updateView()
 
 void ParticleSystemPresenter::updateScreenView()
 {
-	if (!model->isVisible()) {
-		PointBuffer pb;
-		this->view->send(pb);
-		return;
-	}
 	const auto& ps = model->getShape()->getParticles();
 	PointBuffer pb;
 	for (auto p : ps) {
@@ -64,6 +59,7 @@ void ParticleSystemPresenter::updateScreenView()
 
 	this->view->setBlend(this->doBlend);
 	this->view->send(pb);
+	this->view->setVisible(model->isVisible());
 }
 
 void ParticleSystemPresenter::updateParentIdView()
@@ -77,6 +73,7 @@ void ParticleSystemPresenter::updateParentIdView()
 		parentIdBuffer.add(p->getPosition(), parentDid.toColor(), p->getAttribute().size);
 	}
 	parentIdView->send(parentIdBuffer);
+	parentIdView->setVisible(model->isVisible());
 }
 
 void ParticleSystemPresenter::updateChildIdView()
@@ -90,4 +87,5 @@ void ParticleSystemPresenter::updateChildIdView()
 		buffer.add(p->getPosition(), childDid.toColor(), p->getAttribute().size);
 	}
 	childIdView->send(buffer);
+	childIdView->setVisible(model->isVisible());
 }

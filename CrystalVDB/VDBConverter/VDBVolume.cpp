@@ -41,8 +41,10 @@ VDBVolume::~VDBVolume()
 }
 
 /*
-Crystal::Scene::ParticleSystemScene* Volume::toCrystalParticleSystem()
+Crystal::Shape::ParticleSystem* VDBVolume::toCrystalParticleSystem()
 {
-	impl->getPtr()->
+	for (auto iter = impl->getPtr()->beginValueAll(); ; ++iter) {
+		*(iter).getCoord()
+	}
 }
 */

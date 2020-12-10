@@ -18,7 +18,7 @@ namespace Crystal {
 class PSToVolumeView : public IOkCancelView
 {
 public:
-	PSToVolumeView(Scene::World* model, Canvas* canvas);
+	PSToVolumeView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;
