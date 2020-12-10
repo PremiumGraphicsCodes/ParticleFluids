@@ -1,6 +1,6 @@
 #include "VDBFileWriteCommand.h"
 
-#include "../VDBConverter/OpenVDBFileWriter.h"
+#include "../VDBConverter/VDBFileWriter.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
@@ -33,7 +33,7 @@ std::string VDBFileWriteCommand::getName()
 
 bool VDBFileWriteCommand::execute(World* world)
 {
-	OpenVDBFileWriter writer;
+	VDBFileWriter writer;
 	const auto isOk = writer.open(args.filePath.getValue());
 	if (!isOk) {
 		return false;

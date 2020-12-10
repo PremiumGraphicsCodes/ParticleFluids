@@ -2,7 +2,7 @@
 
 #include "PublicLabels/VDBInitLabels.h"
 
-#include "../VDBConverter/OpenVDBAdapter.h"
+#include "../VDBConverter/VDBAdapter.h"
 
 using namespace Crystal::VDB;
 using namespace Crystal::Scene;
@@ -26,7 +26,7 @@ std::string VDBInitCommand::getName()
 
 bool VDBInitCommand::execute(World* world)
 {
-	OpenVDBAdapter::init();
+	VDBAdapter::init();
 	return true;
 }
 

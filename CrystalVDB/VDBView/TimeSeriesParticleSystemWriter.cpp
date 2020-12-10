@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Shape/Particle.h"
 
-#include "../VDBConverter/OpenVDBFileWriter.h"
+#include "../VDBConverter/VDBFileWriter.h"
 
 #include <fstream>
 #include <string>
@@ -44,7 +44,7 @@ bool TimeSeriesParticleSystemWriter::write(const std::filesystem::path& filename
 		positions.push_back(pos);
 	}
 
-	OpenVDBFileWriter writer;
+	VDBFileWriter writer;
 	const auto isOk = writer.open(filename.string());
 	if (!isOk) {
 		return false;

@@ -8,8 +8,8 @@
 #include "../../CrystalViewer/AppBase/FileOpenView.h"
 #include "../../CrystalViewer/AppBase/FileSaveView.h"
 
-#include "../VDBConverter/OpenVDBFileReader.h"
-#include "../VDBConverter/OpenVDBFileWriter.h"
+#include "../VDBConverter/VDBFileReader.h"
+#include "../VDBConverter/VDBFileWriter.h"
 
 #include "VDBParticleSystemView.h"
 #include "PSToVolumeView.h"
@@ -41,7 +41,7 @@ void OpenVDBMenu::onShow()
 			view.show();
 			const auto& filename = view.getFileName();
 			if (!filename.empty()) {
-				OpenVDBFileReader reader;
+				VDBFileReader reader;
 				const auto isOk = reader.open(filename);
 				if(isOk) {
 					const auto pointNames = reader.getPointGridNames();
@@ -77,7 +77,7 @@ void OpenVDBMenu::onShow()
 			fileSaveView.show();
 			const auto& filename = fileSaveView.getFileName();
 			if (!filename.empty()) {
-				OpenVDBFileWriter writer;
+				VDBFileWriter writer;
 				const auto isOk = writer.open(filename);
 				if (isOk) {
 					const auto scenes = world->getScenes()->findScenes(SceneType::ParticleSystemScene);

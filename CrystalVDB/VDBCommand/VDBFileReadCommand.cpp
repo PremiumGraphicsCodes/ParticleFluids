@@ -1,6 +1,6 @@
 #include "VDBFileReadCommand.h"
 
-#include "../VDBConverter/OpenVDBFileReader.h"
+#include "../VDBConverter/VDBFileReader.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
@@ -33,7 +33,7 @@ std::string VDBFileReadCommand::getName()
 
 bool VDBFileReadCommand::execute(World* world)
 {
-	OpenVDBFileReader reader;
+	VDBFileReader reader;
 	const auto isOk = reader.open(args.filePath.getValue());
 	if (!isOk) {
 		return false;

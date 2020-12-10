@@ -40,7 +40,7 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 		return false;
 	}
 	VDBParticleSystem ps;
-	ps.fromCrystal(*scene->getShape());
+	//ps.fromCrystal(*scene->getShape());
 	ParticleSystemToVolumeConverter toVolumeConverter;
 	auto volume = toVolumeConverter.toVolume(ps);
 
