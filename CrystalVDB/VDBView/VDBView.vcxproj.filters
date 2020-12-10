@@ -16,6 +16,7 @@
       <Filter>TimeSeries</Filter>
     </ClCompile>
     <ClCompile Include="PSToVolumeView.cpp" />
+    <ClCompile Include="VDBParticleSystemView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TimeLinePanel.h" />
@@ -32,6 +33,7 @@
       <Filter>TimeSeries</Filter>
     </ClInclude>
     <ClInclude Include="PSToVolumeView.h" />
+    <ClInclude Include="VDBParticleSystemView.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="TimeSeries">

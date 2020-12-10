@@ -40,7 +40,7 @@ int main(int, char**)
 	window.add(new ShapeMenu("Shape", &model, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &model, &canvas, control));
 	//window.add(new PhysicsMenu("Physics", &model, &canvas, control));
-	window.add(new OpenVDBMenu("OpenVDB", &model, &canvas));
+	window.add(new OpenVDBMenu("OpenVDB", &model, &canvas, control));
 	window.add(new SimulationMenu("Simulation", &model, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));

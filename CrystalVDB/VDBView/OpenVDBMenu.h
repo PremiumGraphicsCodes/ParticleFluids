@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../CrystalViewer/AppBase/IMenu.h"
+#include "../../CrystalViewer/AppBase/ControlPanel.h"
 
 namespace Crystal {
 	namespace UI {
@@ -8,9 +9,12 @@ namespace Crystal {
 class OpenVDBMenu : public IMenu
 {
 public:
-	OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas);
+	OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
 
 	void onShow() override;
+
+private:
+	ControlPanel* control;
 };
 	}
 }

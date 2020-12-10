@@ -198,6 +198,7 @@
     <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp" />
     <ClCompile Include="TimeSeriesParticleSystemReader.cpp" />
     <ClCompile Include="TimeSeriesParticleSystemWriter.cpp" />
+    <ClCompile Include="VDBParticleSystemView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationView.h" />
@@ -208,6 +209,7 @@
     <ClInclude Include="TimeSeriesParticleSystemAnimator.h" />
     <ClInclude Include="TimeSeriesParticleSystemReader.h" />
     <ClInclude Include="TimeSeriesParticleSystemWriter.h" />
+    <ClInclude Include="VDBParticleSystemView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

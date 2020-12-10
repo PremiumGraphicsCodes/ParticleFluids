@@ -13,6 +13,8 @@
 
 #include "../VDBConverter/OpenVDBAdapter.h"
 
+#include "VDBParticleSystemView.h"
+
 #include <iostream>
 
 using namespace Crystal::Math;
@@ -22,8 +24,9 @@ using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 using namespace Crystal::VDB;
 
-OpenVDBMenu::OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas) :
-	IMenu(name, model, canvas)
+OpenVDBMenu::OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, model, canvas),
+	control(control)
 {
 	OpenVDBAdapter::init();
 }
@@ -95,6 +98,9 @@ void OpenVDBMenu::onShow()
 					std::cout << "export failed." << std::endl;
 				}
 			}
+		}
+		if (ImGui::MenuItem("VDBParticleSystem")) {
+			control->setWindow(new VDBParticleSystemView("VDBParticles", world, getCanvas()));
 		}
 
 		ImGui::EndMenu();
