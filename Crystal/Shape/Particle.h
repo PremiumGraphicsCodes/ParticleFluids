@@ -31,14 +31,6 @@ public:
 
 	void setAttribute(Attr attr) { this->attribute = attr; }
 
-	IParticleAttribute* getIAttribute() const override { return &(IParticleAttribute)attribute; };
-
-	/*
-	Particle<Attr>* clone() const {
-		return new Particle(position, attribute);
-	}
-	*/
-
 private:
 	Math::Vector3dd position;
 	Attr attribute;

@@ -26,7 +26,11 @@ void PSToVolumeView::onOk()
 	}
 
 	VDBParticleSystem ps;
-	ps.fromCrystal(*scene->getShape());
+	auto particles = scene->getShape()->getParticles();
+	for (auto p : scene->getShape()->getParticles()) {
+		ps.add(p->getPosition(), p->getAttribute().size);
+
+	}
 
 	ParticleSystemToVolumeConverter converter;
 	auto volume = converter.toVolume(ps);

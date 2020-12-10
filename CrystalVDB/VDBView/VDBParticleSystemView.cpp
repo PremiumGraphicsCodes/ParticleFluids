@@ -22,9 +22,11 @@ void VDBParticleSystemView::onOk()
 	if (scene == nullptr) {
 		return;
 	}
-	const auto positions = scene->getShape()->getPositions();
+	const auto particles = scene->getShape()->getParticles();
 	VDBParticleSystem vdb;
-	vdb.fromCrystal(*scene->getShape());
+	for (auto p : particles) {
+		vdb.add(p->getPosition(), p->getAttribute().size);
+	}
 	auto ps = vdb.toCrystal();
 	ParticleAttribute attr;
 	attr.color = Crystal::Graphics::ColorRGBAf(1, 0, 0, 1);
