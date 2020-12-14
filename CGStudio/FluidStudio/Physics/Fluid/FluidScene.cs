@@ -11,6 +11,8 @@ namespace FluidStudio.Physics
 
         public int SourceParticleSystemId { get; private set; }
 
+        public int PolygonMeshId { get; set; }
+
         public string Name { get; private set; }
 
         public float Stiffness { get; private set; } = 1.0f;

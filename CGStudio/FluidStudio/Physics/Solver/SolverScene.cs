@@ -71,8 +71,8 @@ namespace FluidStudio.Physics
                 canvas.SendShader(scenes, fluid.Id);
             }
         }
-
-    public void Reset(SceneList world)
+        
+        public void Reset(SceneList world)
         {
             var fluidIds = new List<int>();
             foreach (var f in Fluids)
@@ -84,7 +84,6 @@ namespace FluidStudio.Physics
             {
                 boundaryIds.Add(b.Id);
             }
-
 
             var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);

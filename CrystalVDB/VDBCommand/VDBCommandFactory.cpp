@@ -3,6 +3,7 @@
 #include "VDBInitCommand.h"
 #include "VDBFileWriteCommand.h"
 #include "VDBFileReadCommand.h"
+#include "VDBParticleSystemToMeshCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
@@ -17,6 +18,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBFileReadCommand::getName()) {
 		return std::make_unique<VDBFileReadCommand>();
+	}
+	else if (name == VDBParticleSystemToMeshCommand::getName()) {
+		return std::make_unique<VDBParticleSystemToMeshCommand>();
 	}
 	else {
 		assert(false);
