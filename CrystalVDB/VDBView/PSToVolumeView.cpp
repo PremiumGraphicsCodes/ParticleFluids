@@ -42,13 +42,6 @@ void PSToVolumeView::onOk()
 	auto newMesh = mesh->toCrystal();
 	auto newScene = new Crystal::Scene::PolygonMeshScene(getWorld()->getNextSceneId(), "Mesh", std::move(newMesh));
 
-	auto group = new FaceGroupScene(getWorld()->getNextSceneId(), "FaceGroup", newScene);
-	newScene->addGroup(group);
-	const auto& faces = newScene->getShape()->faces;
-	for (auto f : faces) {
-		group->addFace(f);
-	}
-
 	newScene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	getWorld()->getScenes()->addScene(newScene);
 }

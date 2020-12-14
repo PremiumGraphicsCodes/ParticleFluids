@@ -5,7 +5,6 @@
 #include "ParticleSystemEditView.h"
 #include "WireFrameEditView.h"
 #include "PolygonMeshEditView.h"
-#include "FaceGroupEditView.h"
 #include "MaterialEditView.h"
 #include "LightEditView.h"
 #include "TextureEditView.h"
