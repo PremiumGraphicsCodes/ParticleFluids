@@ -25,6 +25,7 @@ private:
 
 private:
 	ObjectSelectView particleSystemSelectView;
+	DoubleView radiusView;
 };
 
 	}
