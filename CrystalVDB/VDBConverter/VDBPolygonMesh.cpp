@@ -110,10 +110,9 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMesh::toCrystal() const
 
 	Crystal::Shape::PolygonMeshBuilder builder;
 
-	int normalId = builder.createNormal(Vector3dd(0, 0, 1));
 	for (const auto& v : vertices) {
 		int id = builder.createPosition(v);
-		builder.createVertex(id, normalId);
+//		builder.createVertex(id, normalId);
 	}
 
 	for (const auto& t : triangles) {
@@ -121,7 +120,6 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMesh::toCrystal() const
 	}
 
 	for (const auto& t : quads) {
-		/*
 		{
 			const auto normal = ::getNormal(vertices, t[0], t[1], t[2]);
 			const auto normalId = builder.createNormal(normal);
@@ -129,11 +127,7 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMesh::toCrystal() const
 			const auto v01 = builder.createVertex(t[1], normalId);
 			const auto v02 = builder.createVertex(t[2], normalId);
 			builder.createFace(v00, v01, v02);
-		}*/
-		{
-			builder.createFace(t[0], t[1], t[2]);
 		}
-		/*
 		{
 			const auto normal = ::getNormal(vertices, t[2], t[3], t[0]);
 			const auto normalId = builder.createNormal(normal);
@@ -142,7 +136,6 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMesh::toCrystal() const
 			const auto v02 = builder.createVertex(t[0], normalId);
 			builder.createFace(v00, v01, v02);
 		}
-		*/
 	}
 
 	mesh->positions = builder.getPositions();
