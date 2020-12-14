@@ -20,7 +20,7 @@ namespace FluidStudio.Physics.Solver
             = new ReactiveProperty<float>(0.03f);
 
         public ReactiveProperty<bool> DoUpdateSource { get; }
-            = new ReactiveProperty<bool>(false);
+            = new ReactiveProperty<bool>(true);
 
         private SolverScene scene;
 
