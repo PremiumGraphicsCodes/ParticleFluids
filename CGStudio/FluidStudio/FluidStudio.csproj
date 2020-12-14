@@ -150,6 +150,9 @@
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\ParticleSystem\SphereGenerationViewModel.cs" />
+    <Compile Include="Scene\PolygonMesh\BoxGenerationView.xaml.cs">
+      <DependentUpon>BoxGenerationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scene\PolygonMesh\BoxGenerationViewModel.cs" />
     <Compile Include="Scene\SceneListView.xaml.cs">
       <DependentUpon>SceneListView.xaml</DependentUpon>
@@ -202,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\ParticleSystem\SphereGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\PolygonMesh\BoxGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

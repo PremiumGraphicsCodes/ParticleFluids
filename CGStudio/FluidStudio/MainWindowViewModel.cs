@@ -71,7 +71,7 @@ namespace FluidStudio
             mainModel.Scenes.CreateDefaultCameraScene();
             OnCreateSolid();
             OnCreateParticles();
-            //OnCreateMesh();
+            OnCreateMesh();
             OnCreatePhysicsScene();
         }
 
@@ -110,8 +110,9 @@ namespace FluidStudio
         private void OnCreateMesh()
         {
             var world = mainModel.Scenes;
-            var mesh = new PolygonMesh();
-            this.meshId = world.AddPolygonMeshScene(mesh, "Mesh", 1);
+            var builder = new PolygonMeshBuilder();
+            builder.Add(new Box3d(new Vector3d(0,0,0), new Vector3d(10,10,10)));
+            this.meshId = world.AddPolygonMeshScene(builder.ToPolygonMesh(), "Mesh", 1);
             this.Canvas.Camera.Fit();
             this.Canvas.BuildShader(world, meshId);
             this.Canvas.Render();

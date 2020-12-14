@@ -191,7 +191,7 @@
       <DependentUpon>PolygonMeshView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shape\PolygonMesh\PolygonMeshViewModel.cs" />
-    <Compile Include="Shape\WireFrameView.xaml.cs">
+    <Compile Include="Shape\WireFrame\WireFrameView.xaml.cs">
       <DependentUpon>WireFrameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TextBoxDouble.xaml.cs">
@@ -288,7 +288,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Shape\WireFrameView.xaml">
+    <Page Include="Shape\WireFrame\WireFrameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

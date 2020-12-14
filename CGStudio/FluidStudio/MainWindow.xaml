@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:FluidStudio"
         xmlns:host="clr-namespace:HwndExtensions.Host;assembly=HwndExtensions"
         xmlns:cgstudio="clr-namespace:PG.CGStudio;assembly=PGControl"
-        xmlns:prism="http://prismlibrary.com/" xmlns:scene="clr-namespace:FluidStudio.Scene" xmlns:physics="clr-namespace:FluidStudio.Physics"
-              prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:scene="clr-namespace:FluidStudio.Scene"
+        xmlns:physics="clr-namespace:FluidStudio.Physics"
+        prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Initialized="Window_Initialized"
@@ -27,11 +29,14 @@
                     <RibbonApplicationMenuItem Header="Exit"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
-            <RibbonTab Header="ParticleSystem">
-                <RibbonGroup Header="Primitive">
+            <RibbonTab Header="Shape">
+                <RibbonGroup Header="ParticleSystem">
                     <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="PSBoxGeneration"/>
                     <RibbonButton Label="Sphere" Command="{Binding NavigateCommand}" CommandParameter="PSSphereGeneration"/>
                     <RibbonButton Label="Quad" Command="{Binding NavigateCommand}" CommandParameter="PSQuadGeneration"/>
+                </RibbonGroup>
+                <RibbonGroup Header="PolygonMesh">
+                    <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="PMBoxGeneration"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="CSG">
