@@ -33,7 +33,7 @@ void PSToVolumeView::onOk()
 	}
 
 	ParticleSystemToVolumeConverter converter;
-	auto volume = converter.toVolume(ps);
+	auto volume = converter.toVolume(ps, 5.0f);
 
 	VolumeToMeshConverter toMeshConverter;
 	auto mesh = toMeshConverter.toMesh(*volume);

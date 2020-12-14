@@ -10,7 +10,7 @@ namespace Crystal {
 class ParticleSystemToVolumeConverter
 {
 public:
-	std::unique_ptr<VDBVolume> toVolume(const VDBParticleSystem& particles);
+	std::unique_ptr<VDBVolume> toVolume(const VDBParticleSystem& particles, const float radius);
 
 private:
 };
