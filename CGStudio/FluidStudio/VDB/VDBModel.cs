@@ -34,11 +34,16 @@ namespace FluidStudio.VDB
             var command = new PG.CLI.VDBCommand(PG.VDBFileWriteLabels.CommandNameLabel);
             command.SetArg(PG.VDBFileWriteLabels.FilePathLabel, filePath);
             command.SetArg(PG.VDBFileWriteLabels.ParticleSystemIdsLabel, particleSystemIds);
-            if (!command.Execute(world.Adapter))
-            {
-                return false;
-            }
-            return true;
+            return command.Execute(world.Adapter);
+        }
+
+        public bool BuildMesh(int particleSystemId, int meshId, SceneList world)
+        {
+            var command = new PG.CLI.VDBCommand();
+            command.SetArg(PG.VDBParticleSystemToMeshLabels.ParticleSystemIdLabel, particleSystemId);
+            command.SetArg(PG.VDBParticleSystemToMeshLabels.MeshIdLabel, meshId);
+            command.SetArg(PG.VDBParticleSystemToMeshLabels.RadiusLabel, 5.0);
+            return command.Execute(world.Adapter);
         }
     }
 }

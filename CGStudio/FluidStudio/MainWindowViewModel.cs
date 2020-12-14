@@ -2,6 +2,7 @@
 using FluidStudio.Scene;
 using PG.Control.OpenGL;
 using PG.Core.Math;
+using PG.Core.Shape;
 using PG.Core.UI;
 using PG.Scene;
 using Prism.Commands;
@@ -70,6 +71,7 @@ namespace FluidStudio
             mainModel.Scenes.CreateDefaultCameraScene();
             OnCreateSolid();
             OnCreateParticles();
+            //OnCreateMesh();
             OnCreatePhysicsScene();
         }
 
@@ -100,6 +102,18 @@ namespace FluidStudio
             this.particleSystemId = world.AddParticleSystemScene(positions, "PSBox", appearance, 1);
             this.Canvas.Camera.Fit();
             this.Canvas.BuildShader(world, particleSystemId);
+            this.Canvas.Render();
+        }
+
+        private int meshId;
+
+        private void OnCreateMesh()
+        {
+            var world = mainModel.Scenes;
+            var mesh = new PolygonMesh();
+            this.meshId = world.AddPolygonMeshScene(mesh, "Mesh", 1);
+            this.Canvas.Camera.Fit();
+            this.Canvas.BuildShader(world, meshId);
             this.Canvas.Render();
         }
 

@@ -150,6 +150,7 @@
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\ParticleSystem\SphereGenerationViewModel.cs" />
+    <Compile Include="Scene\PolygonMesh\BoxGenerationViewModel.cs" />
     <Compile Include="Scene\SceneListView.xaml.cs">
       <DependentUpon>SceneListView.xaml</DependentUpon>
     </Compile>

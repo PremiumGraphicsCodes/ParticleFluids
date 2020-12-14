@@ -18,4 +18,12 @@ namespace PG {
 		public const string CommandNameLabel = "VDBInit";
 	}
 
+	public class VDBParticleSystemToMeshLabels
+	{
+		public const string CommandNameLabel = "VDBParticleSystemToMesh";
+		public const string ParticleSystemIdLabel = "ParticleSystemId";
+		public const string MeshIdLabel = "MeshId";
+		public const string RadiusLabel = "Radius";
+	}
+
 }
