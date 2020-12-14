@@ -14,6 +14,7 @@ public:
 
 		Command::Arg<int> particleSystemId;
 		Command::Arg<int> meshId;
+		Command::Arg<double> radius;
 	};
 
 	struct Results : Command::IResults

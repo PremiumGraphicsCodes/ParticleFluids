@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace UI {
 
-class OpenVDBMenu : public IMenu
+class VDBMenu : public IMenu
 {
 public:
-	OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
+	VDBMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
 
 	void onShow() override;
 

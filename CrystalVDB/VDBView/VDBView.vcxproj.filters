@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="FluidStudioView.cpp" />
     <ClCompile Include="TimeLinePanel.cpp" />
-    <ClCompile Include="OpenVDBMenu.cpp" />
     <ClCompile Include="FluidSimulationView.cpp" />
     <ClCompile Include="SimulationMenu.cpp" />
     <ClCompile Include="TimeSeriesParticleSystemReader.cpp">
@@ -17,10 +16,10 @@
     </ClCompile>
     <ClCompile Include="PSToVolumeView.cpp" />
     <ClCompile Include="VDBParticleSystemView.cpp" />
+    <ClCompile Include="VDBMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TimeLinePanel.h" />
-    <ClInclude Include="OpenVDBMenu.h" />
     <ClInclude Include="FluidSimulationView.h" />
     <ClInclude Include="SimulationMenu.h" />
     <ClInclude Include="TimeSeriesParticleSystemReader.h">
@@ -34,6 +33,7 @@
     </ClInclude>
     <ClInclude Include="PSToVolumeView.h" />
     <ClInclude Include="VDBParticleSystemView.h" />
+    <ClInclude Include="VDBMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="TimeSeries">

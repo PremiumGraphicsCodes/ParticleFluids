@@ -191,7 +191,7 @@
   <ItemGroup>
     <ClCompile Include="FluidSimulationView.cpp" />
     <ClCompile Include="FluidStudioView.cpp" />
-    <ClCompile Include="OpenVDBMenu.cpp" />
+    <ClCompile Include="VDBMenu.cpp" />
     <ClCompile Include="PSToVolumeView.cpp" />
     <ClCompile Include="SimulationMenu.cpp" />
     <ClCompile Include="TimeLinePanel.cpp" />
@@ -202,7 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationView.h" />
-    <ClInclude Include="OpenVDBMenu.h" />
+    <ClInclude Include="VDBMenu.h" />
     <ClInclude Include="PSToVolumeView.h" />
     <ClInclude Include="SimulationMenu.h" />
     <ClInclude Include="TimeLinePanel.h" />

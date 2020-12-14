@@ -1,4 +1,4 @@
-#include "OpenVDBMenu.h"
+#include "VDBMenu.h"
 
 //#include "../../CrystalViewer/AppBase/"
 #include "../../Crystal/Scene/World.h"
@@ -23,13 +23,13 @@ using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 using namespace Crystal::VDB;
 
-OpenVDBMenu::OpenVDBMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
+VDBMenu::VDBMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, model, canvas),
 	control(control)
 {
 }
 
-void OpenVDBMenu::onShow()
+void VDBMenu::onShow()
 {
 	auto world = getWorld();
 

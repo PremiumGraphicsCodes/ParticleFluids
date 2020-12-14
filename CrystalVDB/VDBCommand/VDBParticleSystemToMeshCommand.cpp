@@ -14,10 +14,12 @@ using namespace Crystal::VDB;
 
 VDBParticleSystemToMeshCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
-	meshId(::MeshIdLabel, -1)
+	meshId(::MeshIdLabel, -1),
+	radius(::RadiusLabel, 5.0)
 {
 	add(&particleSystemId);
 	add(&meshId);
+	add(&radius);
 }
 
 VDBParticleSystemToMeshCommand::Results::Results()
@@ -40,9 +42,12 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 		return false;
 	}
 	VDBParticleSystem ps;
-	//ps.fromCrystal(*scene->getShape());
+	auto particles = scene->getShape()->getParticles();
+	for (auto p : scene->getShape()->getParticles()) {
+		ps.add(p->getPosition(), p->getAttribute().size);
+	}
 	ParticleSystemToVolumeConverter toVolumeConverter;
-	auto volume = toVolumeConverter.toVolume(ps);
+	auto volume = toVolumeConverter.toVolume(ps, args.radius.getValue());
 
 	VolumeToMeshConverter toMeshConvereter;
 	auto mesh = toMeshConvereter.toMesh(*volume);
