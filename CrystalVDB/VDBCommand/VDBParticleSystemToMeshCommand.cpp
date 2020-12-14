@@ -3,6 +3,7 @@
 #include "PublicLabels/VDBParticleSystemToMeshLabels.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../VDBConverter/VDBParticleSystem.h"
 #include "../VDBConverter/ParticleSystemToVolumeConverter.h"
@@ -41,6 +42,11 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	if (scene == nullptr) {
 		return false;
 	}
+	auto meshScene = world->getScenes()->findSceneById<PolygonMeshScene*>(args.meshId.getValue());
+	if (meshScene == nullptr) {
+		return false;
+	}
+
 	VDBParticleSystem ps;
 	auto particles = scene->getShape()->getParticles();
 	for (auto p : scene->getShape()->getParticles()) {
@@ -51,5 +57,11 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 
 	VolumeToMeshConverter toMeshConvereter;
 	auto mesh = toMeshConvereter.toMesh(*volume);
+
+	auto cMesh = mesh->toCrystal();
+	meshScene->setShape(std::move(cMesh));
+
+	//meshScene->getS
+	
 	return false;
 }

@@ -23,6 +23,10 @@ public:
 
 	Shape::PolygonMesh* getShape() const { return shape.get(); }
 
+	void setShape(std::unique_ptr<Shape::PolygonMesh> shape) {
+		this->shape = std::move(shape);
+	}
+
 	void translate(const Math::Vector3dd& v) override { shape->move(v); }
 
 	void transform(const Math::Matrix3dd& m) { shape->transform(m); }

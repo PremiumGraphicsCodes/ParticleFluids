@@ -292,6 +292,13 @@ namespace PG.Scene
             */
         }
 
+        public bool Export(string filePath)
+        {
+            var command = new PG.CLI.Command(PG.FileExportLabels.FileExportCommandLabel);
+            command.SetArg(PG.FileExportLabels.FilePathLabel, filePath);
+            return command.Execute(adapter);
+        }
+
         /*
         public Vector3d GetPosition(SceneId id)
         {

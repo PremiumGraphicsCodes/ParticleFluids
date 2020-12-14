@@ -64,13 +64,12 @@ bool OBJFileExportCommand::exportOBJ(const std::filesystem::path& filePath, cons
 		for (auto f : faces) {
 			std::vector<int> indices;
 			const auto& vIds = f.getVertexIds();
-			indices.push_back(vIds[0] + 1);
-			indices.push_back(vIds[1] + 1);
-			indices.push_back(vIds[2] + 1);
 			OBJFace face;
-			face.positionIndices = indices;
-			face.normalIndices = indices;
-			face.texCoordIndices = indices;
+			for (const int vid : vIds) {
+				face.positionIndices.push_back( vertices[vid].positionId );
+				face.normalIndices.push_back(vertices[vid].normalId);
+				face.texCoordIndices.push_back(vertices[vid].texCoordId);
+			}
 			obj.groups[0].faces.push_back(face);
 		}
 	}

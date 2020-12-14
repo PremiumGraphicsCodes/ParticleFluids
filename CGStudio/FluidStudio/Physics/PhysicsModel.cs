@@ -45,14 +45,16 @@ namespace FluidStudio.Physics
             }
         }
 
-        public void ConvertToMesh(SceneList world, VDBModel vdb)
+        public void ConvertToMesh(SceneList world, VDBModel vdb, Canvas3d canvas)
         {
             foreach (var ps in Solvers)
             {
                 foreach (var fluid in ps.Fluids)
                 {
                     vdb.BuildMesh(fluid.SourceParticleSystemId, fluid.PolygonMeshId, world);
+                    canvas.SendShader(world, fluid.PolygonMeshId);
                 }
+                canvas.Render();
             }
         }
 
