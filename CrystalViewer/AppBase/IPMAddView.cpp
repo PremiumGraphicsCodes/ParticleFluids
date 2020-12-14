@@ -29,12 +29,6 @@ void IPMAddView::addPolygonMesh(const PolygonMeshBuilder& builder)
 
 	auto shape = new PolygonMeshScene(world->getNextSceneId(), nameView.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
 	world->getScenes()->addScene(shape);
-	auto group = new FaceGroupScene(world->getNextSceneId(), "FaceGroup", shape);
-	shape->addGroup(group);
-	const auto& faces = shape->getShape()->faces;
-	for (auto f : faces) {
-		group->addFace(f);
-	}
 	const auto newId = shape->getId();
 
 	auto scene = getWorld()->getScenes()->findSceneById<PolygonMeshScene*>(newId);

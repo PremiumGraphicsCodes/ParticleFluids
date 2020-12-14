@@ -81,15 +81,6 @@ void SceneListPanel::show(IScene* scene)
 					control->add(editView);
 					break;
 				}
-				case SceneType::FaceGroupScene:
-				{
-					auto editView = new FaceGroupEditView("FaceGroupEdit", getWorld(), getCanvas());
-					auto s = scene->findSceneById<FaceGroupScene*>(id);
-					editView->setValue(s);
-					control->clear();
-					control->add(editView);
-					break;
-				}
 				case SceneType::LightScene:
 				{
 					auto editView = new LightEditView("LightEdit", getWorld(), getCanvas());

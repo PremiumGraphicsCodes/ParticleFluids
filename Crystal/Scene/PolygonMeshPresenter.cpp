@@ -57,8 +57,8 @@ void PolygonMeshPresenter::updateScreenView()
 
 	SmoothBuffer buffer;
 
-	auto groups = model->getGroups();
-	for (auto scene : groups) {
+	//auto groups = model->getGroups();
+	//for (auto scene : groups) {
 		int materialId = 0;
 		/*
 		if (scene->getMaterial() != nullptr) {
@@ -66,7 +66,7 @@ void PolygonMeshPresenter::updateScreenView()
 		}
 		*/
 
-		auto faces = scene->getFaces();
+		auto faces = shape->getFaces();
 		{
 			for (const auto& f : faces) {
 				const auto& vIds = f.getVertexIds();
@@ -81,13 +81,8 @@ void PolygonMeshPresenter::updateScreenView()
 					buffer.addVertex(p, n, texCoord, materialId);
 				}
 			}
-			//SmoothShaderScene* glBuffer = new SmoothShaderScene("");
-			//glBuffer->setShader(sceneShader->getObjectRenderer()->getSmoothShader());
-			//glBuffer->build(glFactory);
-			//glBuffer->send(buffer);
-			//sceneShader->getScene()->screen.add(glBuffer);
 		}
-	}
+	//}
 	this->view->send(buffer);
 
 }

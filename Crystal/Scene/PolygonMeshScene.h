@@ -3,7 +3,6 @@
 
 #include "IShapeScene.h"
 #include "MaterialScene.h"
-#include "FaceGroupScene.h"
 #include "PolygonMeshPresenter.h"
 
 #include "../Shape/PolygonMesh.h"
@@ -37,19 +36,10 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
-	void addGroup(FaceGroupScene* group) {
-		groups.push_back(group);
-		//addScene(group);
-//		children.push_back(group);
-	}
-
-	std::vector<FaceGroupScene*> getGroups() { return groups; }
-
 	IPresenter* getPresenter() override { return &presenter; }
 
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
-	std::vector<FaceGroupScene*> groups;
 	PolygonMeshPresenter presenter;
 };
 

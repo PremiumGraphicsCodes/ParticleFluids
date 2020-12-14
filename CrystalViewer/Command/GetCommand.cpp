@@ -3,7 +3,6 @@
 #include "Public/GetLabels.h"
 
 #include "../../Crystal/Scene/IShapeScene.h"
-#include "../../Crystal/Scene/FaceGroupScene.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;

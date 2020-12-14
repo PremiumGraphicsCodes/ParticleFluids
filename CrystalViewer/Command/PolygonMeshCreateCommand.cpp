@@ -52,13 +52,6 @@ bool PolygonMeshCreateCommand::execute(World* world)
 	auto shape = new PolygonMeshScene(world->getNextSceneId(), args.name.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
 	world->addScene(args.layer.getValue(), shape);
 	//auto group = (shape, "FaceGroup");
-	auto group = new FaceGroupScene(world->getNextSceneId(), "FaceGroup", shape);
-	shape->addGroup(group);
-	const auto& faces = shape->getShape()->faces;
-	for (auto f : faces) {
-		group->addFace(f);
-	}
-	//shape->addGroup(group);
 	const auto newId = shape->getId();
 
 	//world->updateViewModel();

@@ -3,7 +3,6 @@
 #include "Public/SetLabels.h"
 
 #include "../../Crystal/Scene/ParticleAttribute.h"
-#include "../../Crystal/Scene/FaceGroupScene.h"
 #include "../../Crystal/Scene/LightScene.h"
 #include "../../Crystal/Scene/MaterialScene.h"
 
@@ -36,13 +35,6 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 		}
 		else if (name == SetLabels::NameLabel) {
 			scene->setName(std::any_cast<std::string>(value));
-		}
-	}
-	else if (scene->getType() == SceneType::FaceGroupScene) {
-		auto faceGroup = world->getScenes()->findSceneById<FaceGroupScene*>(id);
-		if (name == SetLabels::MaterialNameLabel) {
-			auto mat = world->getScenes()->findSceneByName<MaterialScene*>(std::any_cast<std::string>(value));
-			faceGroup->setMaterial(mat);
 		}
 	}
 }

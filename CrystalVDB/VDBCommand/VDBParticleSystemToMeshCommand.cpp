@@ -46,6 +46,8 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	if (meshScene == nullptr) {
 		return false;
 	}
+	auto groups = meshScene->getGroups();
+	auto groupScene = groups.front();
 
 	VDBParticleSystem ps;
 	auto particles = scene->getShape()->getParticles();
@@ -59,7 +61,12 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	auto mesh = toMeshConvereter.toMesh(*volume);
 
 	auto cMesh = mesh->toCrystal();
+	const auto faces = cMesh->getFaces();
 	meshScene->setShape(std::move(cMesh));
+	for (const auto& f : faces) {
+		groupScene->addFace(f);
+	}
+	meshScene->addGroup(groupScene);
 
 	//meshScene->getS
 	

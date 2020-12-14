@@ -50,9 +50,8 @@ void PMToWFPresenter::updateScreenView()
 	const auto& tcs = shape->getTexCoords();
 	const auto& ns = shape->getNormals();
 
-	for (auto child : model->getChildren()) {
-		auto scene = static_cast<FaceGroupScene*>(child);
-		auto faces = scene->getFaces();
+	//for (auto child : model->getChildren()) {
+		auto faces = shape->getFaces();
 
 		LineBuffer buffer;
 		for (const auto& f : faces) {
@@ -69,7 +68,7 @@ void PMToWFPresenter::updateScreenView()
 			}
 		}
 		this->view->send(buffer);
-	}
+	//}
 }
 
 void PMToWFPresenter::updateParentIdView()

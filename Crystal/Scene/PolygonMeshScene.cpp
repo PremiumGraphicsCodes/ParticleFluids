@@ -24,9 +24,7 @@ PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::u
 
 PolygonMeshScene::~PolygonMeshScene()
 {
-	for (auto g : groups) {
-		delete g;
-	}
+
 }
 
 Box3d PolygonMeshScene::getBoundingBox() const

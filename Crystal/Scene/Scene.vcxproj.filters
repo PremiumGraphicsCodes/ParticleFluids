@@ -46,9 +46,6 @@
       <Filter>Scene\Transform</Filter>
     </ClInclude>
     <ClInclude Include="World.h" />
-    <ClInclude Include="FaceGroupScene.h">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="TriangleMeshScene.h">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClInclude>
@@ -156,9 +153,6 @@
     </ClCompile>
     <ClCompile Include="VolumeScene.cpp">
       <Filter>Scene\Shape\Volume</Filter>
-    </ClCompile>
-    <ClCompile Include="FaceGroupScene.cpp">
-      <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="TextureScene.cpp">
       <Filter>Scene\Appearance</Filter>

@@ -250,9 +250,6 @@
     <ClCompile Include="DeleteView.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="FaceGroupEditView.cpp">
-      <Filter>Scene\Shape\PolygonMesh\Edit</Filter>
-    </ClCompile>
     <ClCompile Include="FileOpenView.cpp">
       <Filter>File</Filter>
     </ClCompile>
@@ -592,9 +589,6 @@
     </ClInclude>
     <ClInclude Include="DeleteView.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="FaceGroupEditView.h">
-      <Filter>Scene\Shape\PolygonMesh\Edit</Filter>
     </ClInclude>
     <ClInclude Include="IEditCancelView.h">
       <Filter>Window</Filter>
