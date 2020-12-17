@@ -9,11 +9,9 @@ using namespace Crystal::UI;
 
 PMQuadView::PMQuadView(const std::string& name, World* world, Canvas* canvas) :
 	IPMAddView(name, world, canvas),
-	quadView("Quad"),
-	nameView("Name", "PMPlane")
+	quadView("Quad")
 {
 	add(&quadView);
-	add(&nameView);
 }
 
 void PMQuadView::onOk()

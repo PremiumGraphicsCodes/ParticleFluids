@@ -3,6 +3,7 @@
 #include "IOkCancelView.h"
 #include "Matrix4dView.h"
 #include "StringView.h"
+#include "ComboBox.h"
 
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
@@ -20,6 +21,7 @@ protected:
 private:
 	Matrix4dView matrixView;
 	StringView nameView;
+	ComboBox presenterView;
 	//PSAttributeView attributeView;
 };
 

@@ -6,15 +6,17 @@ using namespace Crystal::Shape;
 using namespace Crystal::UI;
 
 PolygonMeshView::PolygonMeshView(const std::string& name) :
-	IWindow(name),
+	IView(name),
 	vertexCount("Verticies"),
-	faceCount("Faces")
-{}
-
-void PolygonMeshView::onShow()
+	faceCount("Faces"),
+	presenterView("Presenter")
 {
-	vertexCount.show();
-	faceCount.show();
+	add(&vertexCount);
+	add(&faceCount);
+	add(&presenterView);
+	//std::function<void()> onPresenterChanged = []() { return 1; };
+	presenterView.add("Smooth");
+	presenterView.add("Wire");
 }
 
 void PolygonMeshView::setValue(PolygonMesh* value)

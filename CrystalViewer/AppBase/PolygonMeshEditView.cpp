@@ -10,13 +10,11 @@ PolygonMeshEditView::PolygonMeshEditView(const std::string& name, World* reposit
 	world(repository),
 	idView("Id"),
 	nameView("Name"),
-	editButton("Edit"),
-	presenterView("Presenter")
+	editButton("Edit")
 {
 	add(&polygonMeshView);
 	add(&idView);
 	add(&nameView);
-	add(&presenterView);
 	add(&editButton);
 	editButton.setFunction([=]() { onEdit(); });
 }

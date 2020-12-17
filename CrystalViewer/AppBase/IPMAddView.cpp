@@ -10,11 +10,15 @@ using namespace Crystal::UI;
 IPMAddView::IPMAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	matrixView("Matrix", Math::Identity()),
-	nameView("Name", "PolygonMesh01")
+	nameView("Name", "PolygonMesh01"),
+	presenterView("Presenter")
 //	attributeView("PSAttribute")
 {
 	add(&matrixView);
 	add(&nameView);
+	add(&presenterView);
+	presenterView.add("Smooth");
+	presenterView.add("Wire");
 }
 
 void IPMAddView::addPolygonMesh(const PolygonMeshBuilder& builder)

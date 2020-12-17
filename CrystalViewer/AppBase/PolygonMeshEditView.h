@@ -30,7 +30,7 @@ private:
 	IntView idView;
 	StringView nameView;
 	Button editButton;
-	ComboBox presenterView;
+
 };
 
 	}

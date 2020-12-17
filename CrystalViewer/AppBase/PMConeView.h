@@ -18,7 +18,6 @@ private:
 
 private:
 	Cone3dView coneView;
-	StringView nameView;
 };
 
 	}

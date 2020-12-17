@@ -11,11 +11,9 @@ using namespace Crystal::UI;
 
 PMConeView::PMConeView(const std::string& name, World* world, Canvas* canvas) :
 	IPMAddView(name, world, canvas),
-	coneView("Cone"),
-	nameView("Name", "PMCone")
+	coneView("Cone")
 {
 	add(&coneView);
-	add(&nameView);
 }
 
 void PMConeView::onOk()

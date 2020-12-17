@@ -2,9 +2,6 @@
 #include "IPMAddView.h"
 
 #include "Box3dView.h"
-#include "IntView.h"
-#include "StringView.h"
-#include "Button.h"
 
 namespace Crystal {
 	namespace UI {
@@ -19,7 +16,6 @@ private:
 
 private:
 	Box3dView boxView;
-	StringView nameView;
 };
 
 	}

@@ -3,7 +3,6 @@
 #include "IPMAddView.h"
 
 #include "Quad3dView.h"
-#include "StringView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -18,7 +17,6 @@ private:
 
 private:
 	Quad3dView quadView;
-	StringView nameView;
 };
 
 	}

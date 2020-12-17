@@ -20,7 +20,6 @@ private:
 	Sphere3dView sphereView;
 	IntView unumView;
 	IntView vnumView;
-	StringView nameView;
 };
 
 	}

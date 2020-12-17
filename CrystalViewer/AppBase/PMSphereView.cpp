@@ -9,13 +9,11 @@ PMSphereView::PMSphereView(const std::string& name, World* world, Canvas* canvas
 	IPMAddView(name, world, canvas),
 	sphereView("Sphere"),
 	unumView("UNum", 36),
-	vnumView("VNum", 36),
-	nameView("Name", "PMSphere")
+	vnumView("VNum", 36)
 {
 	add(&sphereView);
 	add(&unumView);
 	add(&vnumView);
-	add(&nameView);
 }
 
 void PMSphereView::onOk()

@@ -2,6 +2,9 @@
 
 #include "IWindow.h"
 
+#include <map>
+#include <functional>
+
 namespace Crystal {
 	namespace UI {
 
@@ -15,10 +18,17 @@ public:
 	//~Button()
 	//{}
 
+	void add(const std::string& label) { labelFuncMap[label] = std::function<void(void)>(); }
+
+	void add(const std::string& label, const std::function<void(void)> func);
+
 	void onShow() override;
 
+	std::string getSelected() const;
+
 private:
-//	std::function<void(void)> func;
+	std::map<std::string,std::function<void(void)>> labelFuncMap;
+	std::string selectedLabel;
 };
 	}
 }

@@ -1,8 +1,9 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 
 #include "IntView.h"
+#include "ComboBox.h"
 
 namespace Crystal {
 	namespace Shape {
@@ -10,18 +11,17 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class PolygonMeshView : public IWindow
+class PolygonMeshView : public IView
 {
 public:
 	explicit PolygonMeshView(const std::string& name);
-
-	void onShow() override;
 
 	void setValue(Shape::PolygonMesh* value);
 
 private:
 	IntView vertexCount;
 	IntView faceCount;
+	ComboBox presenterView;
 };
 
 	}

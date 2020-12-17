@@ -7,11 +7,9 @@ using namespace Crystal::UI;
 
 PMBoxView::PMBoxView(const std::string& name, World* world, Canvas* canvas) :
 	IPMAddView(name, world, canvas),
-	boxView("Box"),
-	nameView("Name", "PMBox")
+	boxView("Box")
 {
 	add(&boxView);
-	add(&nameView);
 }
 
 void PMBoxView::onOk()
