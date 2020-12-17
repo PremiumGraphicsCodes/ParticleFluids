@@ -14,6 +14,8 @@ public:
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
+	void removeView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+
 	void updateView() override;
 
 	void setBlend(const bool b) { this->doBlend = b; }

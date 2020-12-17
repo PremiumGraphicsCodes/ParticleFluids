@@ -37,6 +37,17 @@ void WireFramePresenter::createView(SceneShader* sceneShader, GLObjectFactory& g
 	updateView();
 }
 
+void WireFramePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+{
+	this->view->release(glFactory);
+	sceneShader->getObjectRenderer()->removeScene(this->view);
+	delete this->view;
+
+	this->parentIdView->release(glFactory);
+	sceneShader->getParentIdRenderer()->removeScene(this->parentIdView);
+	delete this->parentIdView;
+}
+
 void WireFramePresenter::updateView()
 {
 	updateScreenView();

@@ -33,6 +33,11 @@ void SolidAsWFPresenter::createView(SceneShader* sceneShader, GLObjectFactory& g
 	updateView();
 }
 
+void SolidAsWFPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+{
+	;
+}
+
 void SolidAsWFPresenter::updateView()
 {
 	updateScreenView();

@@ -35,6 +35,19 @@ void PMAsWFPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFa
 
 }
 
+void PMAsWFPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+{
+	this->view->release(glFactory);
+	sceneShader->getObjectRenderer()->removeScene(this->view);
+	delete this->view;
+
+	/*
+	this->parentIdView->release(glFactory);
+	sceneShader->getParentIdRenderer()->removeScene(this->parentIdView);
+	delete this->parentIdView;
+	*/
+}
+
 void PMAsWFPresenter::updateView()
 {
 	updateScreenView();

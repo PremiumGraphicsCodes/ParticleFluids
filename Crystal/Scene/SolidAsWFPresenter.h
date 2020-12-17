@@ -15,6 +15,8 @@ public:
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
+	void removeView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
+
 	void updateView() override;
 
 	LineShaderScene* getView() { return view; }

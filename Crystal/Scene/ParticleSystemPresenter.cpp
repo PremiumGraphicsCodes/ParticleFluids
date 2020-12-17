@@ -42,6 +42,21 @@ void ParticleSystemPresenter::createView(SceneShader* sceneShader, GLObjectFacto
 	updateView();
 }
 
+void ParticleSystemPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+{
+	this->view->release(factory);
+	sceneShader->getObjectRenderer()->removeScene(this->view);
+	delete this->view;
+
+	this->parentIdView->release(factory);
+	sceneShader->getParentIdRenderer()->removeScene(this->parentIdView);
+	delete this->parentIdView;
+
+	this->childIdView->release(factory);
+	sceneShader->getParentIdRenderer()->removeScene(this->childIdView);
+	delete this->childIdView;
+}
+
 void ParticleSystemPresenter::updateView()
 {
 	updateScreenView();
