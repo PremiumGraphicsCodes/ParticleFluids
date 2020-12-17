@@ -12,15 +12,17 @@ using namespace Crystal::Scene;
 
 PolygonMeshScene::PolygonMeshScene() :
 	IShapeScene(-1),
-	shape(nullptr),
-	presenter(this)
-{}
+	shape(nullptr)
+{
+	presenter = std::make_unique<PolygonMeshPresenter>(this);
+}
 
 PolygonMeshScene::PolygonMeshScene(const int id, const std::string& name, std::unique_ptr<PolygonMesh> shape) :
 	IShapeScene(id, name),
-	shape(std::move(shape)),
-	presenter(this)
-{}
+	shape(std::move(shape))
+{
+	presenter = std::make_unique<PolygonMeshPresenter>(this);
+}
 
 PolygonMeshScene::~PolygonMeshScene()
 {

@@ -1,13 +1,13 @@
 #pragma once
 
-#include "IPresenter.h"
+#include "IPolygonMeshPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
 		class PolygonMeshScene;
 		class LineShaderScene;
 
-class PMAsWFPresenter : public IPresenter
+class PMAsWFPresenter : public IPolygonMeshPresenter
 {
 public:
 	explicit PMAsWFPresenter(PolygonMeshScene* model);
@@ -25,7 +25,6 @@ private:
 
 	void updateChildIdView();
 
-	PolygonMeshScene* model;
 	LineShaderScene* view;
 };
 

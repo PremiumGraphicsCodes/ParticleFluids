@@ -12,9 +12,10 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
-PolygonMeshPresenter::PolygonMeshPresenter(PolygonMeshScene* model) :
-	model(model),
-	view(nullptr)
+PolygonMeshPresenter::PolygonMeshPresenter(PolygonMeshScene* model) : 
+	IPolygonMeshPresenter(model),
+	view(nullptr),
+	parentIdView(nullptr)
 {
 }
 
@@ -43,7 +44,8 @@ void PolygonMeshPresenter::removeView(SceneShader* sceneShader, GLObjectFactory&
 	delete this->view;
 
 	this->parentIdView->release(glFactory);
-	//sceneShader->getParentIdRenderer()->removeS
+	sceneShader->getParentIdRenderer()->removeScene(this->parentIdView);
+	delete this->parentIdView;
 }
 
 void PolygonMeshPresenter::updateView()

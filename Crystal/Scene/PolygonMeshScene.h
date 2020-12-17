@@ -36,11 +36,13 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
-	IPresenter* getPresenter() override { return &presenter; }
+	IPresenter* getPresenter() override { return presenter.get(); }
+
+	//void setPresenter(IPresenter* presenter);
 
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
-	PolygonMeshPresenter presenter;
+	std::unique_ptr<PolygonMeshPresenter> presenter;
 };
 
 	}
