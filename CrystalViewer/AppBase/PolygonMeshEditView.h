@@ -1,23 +1,23 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 #include "PolygonMeshView.h"
 #include "IntView.h"
 #include "StringView.h"
 #include "Button.h"
+#include "Canvas.h"
+#include "ComboBox.h"
+
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 #include "../../Crystal/Scene/World.h"
-#include "Canvas.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PolygonMeshEditView : public IWindow
+class PolygonMeshEditView : public IView
 {
 public:
 	PolygonMeshEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
-
-	void onShow() override;
 
 	void setValue(Scene::PolygonMeshScene* value);
 
@@ -25,11 +25,12 @@ private:
 	void onEdit();
 
 private:
-	PolygonMeshView polygonMesh;
+	PolygonMeshView polygonMeshView;
 	Scene::World* world;
-	IntView id;
-	StringView name;
-	Button edit;
+	IntView idView;
+	StringView nameView;
+	Button editButton;
+	ComboBox presenterView;
 };
 
 	}

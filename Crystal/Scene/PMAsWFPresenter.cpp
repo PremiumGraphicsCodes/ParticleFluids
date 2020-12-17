@@ -1,4 +1,4 @@
-#include "PMToWFPresenter.h"
+#include "PMAsWFPresenter.h"
 
 #include "PolygonMeshScene.h"
 
@@ -8,13 +8,13 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
-PMToWFPresenter::PMToWFPresenter(PolygonMeshScene* model) :
+PMAsWFPresenter::PMAsWFPresenter(PolygonMeshScene* model) :
 	model(model),
 	view(nullptr)
 {
 }
 
-void PMToWFPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PMAsWFPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new LineShaderScene(model->getName());
@@ -35,14 +35,14 @@ void PMToWFPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFa
 
 }
 
-void PMToWFPresenter::updateView()
+void PMAsWFPresenter::updateView()
 {
 	updateScreenView();
 	updateParentIdView();
 	updateChildIdView();
 }
 
-void PMToWFPresenter::updateScreenView()
+void PMAsWFPresenter::updateScreenView()
 {
 	const auto& shape = model->getShape();
 	const auto& vs = shape->getVertices();
@@ -71,12 +71,12 @@ void PMToWFPresenter::updateScreenView()
 	//}
 }
 
-void PMToWFPresenter::updateParentIdView()
+void PMAsWFPresenter::updateParentIdView()
 {
 
 }
 
-void PMToWFPresenter::updateChildIdView()
+void PMAsWFPresenter::updateChildIdView()
 {
 
 }

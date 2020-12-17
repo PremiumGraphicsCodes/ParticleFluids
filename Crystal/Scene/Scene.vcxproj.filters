@@ -85,19 +85,7 @@
     <ClInclude Include="IAnimator.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="PMToWFPresenter.h">
-      <Filter>Presenter</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleSystemPresenter.h">
-      <Filter>Presenter</Filter>
-    </ClInclude>
     <ClInclude Include="IPresenter.h">
-      <Filter>Presenter</Filter>
-    </ClInclude>
-    <ClInclude Include="WireFramePresenter.h">
-      <Filter>Presenter</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonMeshPresenter.h">
       <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="TriangleShaderScene.h">
@@ -120,6 +108,18 @@
     </ClInclude>
     <ClInclude Include="SolidAsWFPresenter.h">
       <Filter>Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemPresenter.h">
+      <Filter>Presenter\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="WireFramePresenter.h">
+      <Filter>Presenter\WireFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshPresenter.h">
+      <Filter>Presenter\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PMAsWFPresenter.h">
+      <Filter>Presenter\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -172,18 +172,6 @@
     <ClCompile Include="CameraScene.cpp">
       <Filter>Scene\Appearance</Filter>
     </ClCompile>
-    <ClCompile Include="PMToWFPresenter.cpp">
-      <Filter>Presenter</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystemPresenter.cpp">
-      <Filter>Presenter</Filter>
-    </ClCompile>
-    <ClCompile Include="WireFramePresenter.cpp">
-      <Filter>Presenter</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMeshPresenter.cpp">
-      <Filter>Presenter</Filter>
-    </ClCompile>
     <ClCompile Include="TriangleShaderScene.cpp">
       <Filter>SceneShader\Triangle</Filter>
     </ClCompile>
@@ -201,6 +189,18 @@
     </ClCompile>
     <ClCompile Include="SolidAsWFPresenter.cpp">
       <Filter>Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemPresenter.cpp">
+      <Filter>Presenter\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="WireFramePresenter.cpp">
+      <Filter>Presenter\WireFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshPresenter.cpp">
+      <Filter>Presenter\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PMAsWFPresenter.cpp">
+      <Filter>Presenter\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +251,15 @@
     </Filter>
     <Filter Include="Scene\Shape\CSG">
       <UniqueIdentifier>{968cf7ad-c0af-4a0e-a00f-fba1c0e11ea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\ParticleSystem">
+      <UniqueIdentifier>{070c53fe-4bfc-4f4a-884d-1f8a1b6d6aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\WireFrame">
+      <UniqueIdentifier>{dd678cf2-731d-43e9-8bed-6aa094d92d96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\PolygonMesh">
+      <UniqueIdentifier>{c851061b-17b8-4e08-ab22-5b0e71f97385}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

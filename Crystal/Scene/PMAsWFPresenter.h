@@ -7,10 +7,10 @@ namespace Crystal {
 		class PolygonMeshScene;
 		class LineShaderScene;
 
-class PMToWFPresenter : public IPresenter
+class PMAsWFPresenter : public IPresenter
 {
 public:
-	explicit PMToWFPresenter(PolygonMeshScene* model);
+	explicit PMAsWFPresenter(PolygonMeshScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 

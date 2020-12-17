@@ -33,7 +33,7 @@
     <ClInclude Include="IShapeScene.h" />
     <ClInclude Include="LineBuffer.h" />
     <ClInclude Include="LineShaderScene.h" />
-    <ClInclude Include="PMToWFPresenter.h" />
+    <ClInclude Include="PMAsWFPresenter.h" />
     <ClInclude Include="PointBuffer.h" />
     <ClInclude Include="PointShaderScene.h" />
     <ClInclude Include="PolygonMeshPresenter.h" />
@@ -72,7 +72,7 @@
     <ClCompile Include="LineShaderScene.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
     <ClCompile Include="ParticleSystemPresenter.cpp" />
-    <ClCompile Include="PMToWFPresenter.cpp" />
+    <ClCompile Include="PMAsWFPresenter.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />
     <ClCompile Include="PolygonMeshPresenter.cpp" />
     <ClCompile Include="ScreenIdShader.cpp" />

@@ -5,33 +5,31 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PolygonMeshEditView::PolygonMeshEditView(const std::string& name, World* repository, Canvas* canvas) :
-	IWindow(name),
-	polygonMesh("PolygonMesh"),
+	IView(name),
+	polygonMeshView("PolygonMesh"),
 	world(repository),
-	id("Id"),
-	name("Name"),
-	edit("Edit")
+	idView("Id"),
+	nameView("Name"),
+	editButton("Edit"),
+	presenterView("Presenter")
 {
-	edit.setFunction([=]() { onEdit(); });
-}
-
-void PolygonMeshEditView::onShow()
-{
-	polygonMesh.show();
-	id.show();
-	name.show();
-	edit.show();
+	add(&polygonMeshView);
+	add(&idView);
+	add(&nameView);
+	add(&presenterView);
+	add(&editButton);
+	editButton.setFunction([=]() { onEdit(); });
 }
 
 void PolygonMeshEditView::setValue(PolygonMeshScene* value)
 {
-	polygonMesh.setValue(value->getShape());
-	id.setValue(value->getId());
-	name.setValue(value->getName());
+	polygonMeshView.setValue(value->getShape());
+	idView.setValue(value->getId());
+	nameView.setValue(value->getName());
 }
 
 void PolygonMeshEditView::onEdit()
 {
-	auto polygonMesh = world->getScenes()->findSceneById<PolygonMeshScene*>(id.getValue());
-	polygonMesh->setName(name.getValue());
+	auto polygonMesh = world->getScenes()->findSceneById<PolygonMeshScene*>(idView.getValue());
+	polygonMesh->setName(nameView.getValue());
 }
