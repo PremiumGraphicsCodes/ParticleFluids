@@ -35,9 +35,6 @@
     <ClCompile Include="MaskMenu.cpp">
       <Filter>View</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonMeshView.cpp">
-      <Filter>Scene\Shape\PolygonMesh\View</Filter>
-    </ClCompile>
     <ClCompile Include="FaceView.cpp">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClCompile>
@@ -386,9 +383,6 @@
     </ClInclude>
     <ClInclude Include="MaskMenu.h">
       <Filter>View</Filter>
-    </ClInclude>
-    <ClInclude Include="PolygonMeshView.h">
-      <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClInclude>
     <ClInclude Include="FaceView.h">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>

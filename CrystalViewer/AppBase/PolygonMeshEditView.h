@@ -1,12 +1,10 @@
 #pragma once
 
 #include "IView.h"
-#include "PolygonMeshView.h"
 #include "IntView.h"
 #include "StringView.h"
 #include "Button.h"
 #include "Canvas.h"
-#include "ComboBox.h"
 #include "PMPresenterView.h"
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
@@ -26,7 +24,6 @@ private:
 	void onEdit();
 
 private:
-	PolygonMeshView polygonMeshView;
 	PMPresenterView presenterView;
 	Scene::World* world;
 	IntView idView;

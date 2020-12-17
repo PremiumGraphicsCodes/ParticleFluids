@@ -6,21 +6,23 @@ using namespace Crystal::UI;
 WireFrameEditView::WireFrameEditView(const std::string& name, World* repository, Canvas* canvas) :
 	IWindow(name),
 	//wire("WireFrame"),
-	id("Id"),
-	name("Name")
+	idView("Id"),
+	nameView("Name")
 {
+	add(&idView);
+	add(&nameView);
 }
 
 void WireFrameEditView::onShow()
 {
 	//wire.show();
-	id.show();
-	name.show();
+	idView.show();
+	nameView.show();
 }
 
 void WireFrameEditView::setValue(WireFrameScene* value)
 {
 	//wire.setValue(value);
-	id.setValue(value->getId());
-	name.setValue(value->getName());
+	idView.setValue(value->getId());
+	nameView.setValue(value->getName());
 }

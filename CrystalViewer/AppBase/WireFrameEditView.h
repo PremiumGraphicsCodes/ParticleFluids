@@ -1,11 +1,12 @@
 #pragma once
 
-#include "IWindow.h"
+#include "IView.h"
 #include "IntView.h"
 #include "StringView.h"
+#include "Canvas.h"
+
 #include "../../Crystal/Scene/WireFrameScene.h"
 #include "../../Crystal/Scene/World.h"
-#include "Canvas.h"
 
 namespace Crystal {
 	namespace UI {
@@ -13,7 +14,7 @@ namespace Crystal {
 class WireFrameEditView : public IWindow
 {
 public:
-	WireFrameEditView(const std::string& name, Scene::World* repository, Canvas* canvas);
+	WireFrameEditView(const std::string& name, Scene::World* world, Canvas* canvas);
 
 	void onShow() override;
 
@@ -21,8 +22,8 @@ public:
 
 private:
 	//WireFrameView wire;
-	IntView id;
-	StringView name;
+	IntView idView;
+	StringView nameView;
 };
 
 	}

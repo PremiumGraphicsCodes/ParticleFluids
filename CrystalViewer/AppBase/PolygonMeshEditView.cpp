@@ -6,14 +6,12 @@ using namespace Crystal::UI;
 
 PolygonMeshEditView::PolygonMeshEditView(const std::string& name, World* repository, Canvas* canvas) :
 	IView(name),
-	polygonMeshView("PolygonMesh"),
 	presenterView("Presenter"),
 	world(repository),
 	idView("Id"),
 	nameView("Name"),
 	editButton("Edit")
 {
-	add(&polygonMeshView);
 	add(&presenterView);
 	add(&idView);
 	add(&nameView);
@@ -23,7 +21,6 @@ PolygonMeshEditView::PolygonMeshEditView(const std::string& name, World* reposit
 
 void PolygonMeshEditView::setValue(PolygonMeshScene* value)
 {
-	polygonMeshView.setValue(value->getShape());
 	idView.setValue(value->getId());
 	nameView.setValue(value->getName());
 }
