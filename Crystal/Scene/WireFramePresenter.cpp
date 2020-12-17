@@ -13,7 +13,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 WireFramePresenter::WireFramePresenter(WireFrameScene* model) :
-	model(model),
+	IWireFramePresenter(model),
 	view(nullptr),
 	parentIdView(nullptr)
 {

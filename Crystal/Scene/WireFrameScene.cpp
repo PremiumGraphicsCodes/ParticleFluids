@@ -1,5 +1,7 @@
 #include "WireFrameScene.h"
 
+#include "WireFramePresenter.h"
+
 #include "../Graphics/DrawableId.h"
 
 using namespace Crystal::Math;
@@ -9,16 +11,18 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
 WireFrameScene::WireFrameScene() :
-	IShapeScene(-1),
-	controller(this)
-{}
+	IShapeScene(-1)
+{
+	this->presenter = std::make_unique<WireFramePresenter>(this);
+}
 
 WireFrameScene::WireFrameScene(const int id, const std::string& name, std::unique_ptr<WireFrame> shape, const WireFrameAttribute& attribute) :
 	IShapeScene(id, name),
 	shape(std::move(shape)),
-	attribute(attribute),
-	controller(this)
-{}
+	attribute(attribute)
+{
+	this->presenter = std::make_unique<WireFramePresenter>(this);
+}
 
 void WireFrameScene::translate(const Vector3dd& v)
 {

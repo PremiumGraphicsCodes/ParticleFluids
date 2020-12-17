@@ -2,7 +2,7 @@
 
 #include "IShapeScene.h"
 #include "WireFrameAttribute.h"
-#include "WireFramePresenter.h"
+#include "IWireFramePresenter.h"
 
 #include "../Math/Line3d.h"
 #include "../Shape/WireFrame.h"
@@ -35,12 +35,12 @@ public:
 
 	Shape::WireFrame* getShape() { return shape.get(); }
 
-	IPresenter* getPresenter() { return &controller; }
+	IPresenter* getPresenter() { return presenter.get(); }
 
 private:
 	std::unique_ptr<Shape::WireFrame> shape;
 	WireFrameAttribute attribute;
-	WireFramePresenter controller;
+	std::unique_ptr<IWireFramePresenter> presenter;
 };
 
 	}

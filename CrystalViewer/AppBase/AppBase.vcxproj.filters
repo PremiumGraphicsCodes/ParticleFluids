@@ -94,9 +94,6 @@
     <ClCompile Include="PMSphereView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
-    <ClCompile Include="WireFrameView.cpp">
-      <Filter>Scene\Shape\WireFrame\View</Filter>
-    </ClCompile>
     <ClCompile Include="WFBoxView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
@@ -446,9 +443,6 @@
     <ClInclude Include="PMSphereView.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
-    <ClInclude Include="WireFrameView.h">
-      <Filter>Scene\Shape\WireFrame\View</Filter>
-    </ClInclude>
     <ClInclude Include="WFBoxView.h">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClInclude>
@@ -704,9 +698,6 @@
     </Filter>
     <Filter Include="Scene\Shape\WireFrame\Add">
       <UniqueIdentifier>{0ef178e9-c8bf-499a-b9bf-fb031433e057}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Shape\WireFrame\View">
-      <UniqueIdentifier>{f36693f7-aa63-4851-b79d-67ed57a8804d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\Appearance\Shader\Add">
       <UniqueIdentifier>{7c2b8257-3636-4e0b-8b0a-d87925e37bbd}</UniqueIdentifier>

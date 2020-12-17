@@ -124,6 +124,9 @@
     <ClInclude Include="IPolygonMeshPresenter.h">
       <Filter>Presenter\PolygonMesh</Filter>
     </ClInclude>
+    <ClInclude Include="IWireFramePresenter.h">
+      <Filter>Presenter\WireFrame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">

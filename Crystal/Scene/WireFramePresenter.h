@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPresenter.h"
+#include "IWireFramePresenter.h"
 
 //#include "LineShaderScene.h"
 
@@ -9,7 +9,7 @@ namespace Crystal {
 		class WireFrameScene;
 		class LineShaderScene;
 
-class WireFramePresenter : public IPresenter
+class WireFramePresenter : public IWireFramePresenter
 {
 public:
 	explicit WireFramePresenter(WireFrameScene* model);

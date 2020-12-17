@@ -1,7 +1,6 @@
 #pragma once
 
 #include "IWindow.h"
-#include "WireFrameView.h"
 #include "IntView.h"
 #include "StringView.h"
 #include "../../Crystal/Scene/WireFrameScene.h"
@@ -21,7 +20,7 @@ public:
 	void setValue(Scene::WireFrameScene* value);
 
 private:
-	WireFrameView wire;
+	//WireFrameView wire;
 	IntView id;
 	StringView name;
 };
