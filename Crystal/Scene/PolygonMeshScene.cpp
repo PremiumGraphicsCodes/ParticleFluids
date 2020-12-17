@@ -1,9 +1,6 @@
 #include "PolygonMeshScene.h"
 
-#include "../Graphics/DrawableId.h"
-#include "../Math/Line3d.h"
-
-#include "LightScene.h"
+#include "PolygonMeshPresenter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

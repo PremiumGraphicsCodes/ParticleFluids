@@ -3,7 +3,7 @@
 
 #include "IShapeScene.h"
 #include "MaterialScene.h"
-#include "PolygonMeshPresenter.h"
+#include "IPolygonMeshPresenter.h"
 
 #include "../Shape/PolygonMesh.h"
 #include "../Graphics/ColorRGBA.h"

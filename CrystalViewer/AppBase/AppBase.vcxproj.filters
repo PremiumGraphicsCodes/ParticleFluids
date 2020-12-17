@@ -285,6 +285,9 @@
     <ClCompile Include="SolidBoxView.cpp">
       <Filter>Scene\Shape\Solid</Filter>
     </ClCompile>
+    <ClCompile Include="PMPresenterView.cpp">
+      <Filter>Scene\Shape\PolygonMesh\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -618,6 +621,9 @@
     </ClInclude>
     <ClInclude Include="ISolidAddView.h">
       <Filter>Scene\Shape\Solid</Filter>
+    </ClInclude>
+    <ClInclude Include="PMPresenterView.h">
+      <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

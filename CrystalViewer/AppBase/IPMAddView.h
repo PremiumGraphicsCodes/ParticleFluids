@@ -1,13 +1,14 @@
 #pragma once
 
 #include "IOkCancelView.h"
-#include "Matrix4dView.h"
 #include "StringView.h"
-#include "ComboBox.h"
+#include "PMPresenterView.h"
 
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
 namespace Crystal {
+	namespace Shape {
+		class PolygonMeshBuilder;
+	}
 	namespace UI {
 
 class IPMAddView : public IOkCancelView
@@ -19,10 +20,8 @@ protected:
 	void addPolygonMesh(const Shape::PolygonMeshBuilder& builder);
 
 private:
-	Matrix4dView matrixView;
 	StringView nameView;
-	ComboBox presenterView;
-	//PSAttributeView attributeView;
+	PMPresenterView presenterView;
 };
 
 	}

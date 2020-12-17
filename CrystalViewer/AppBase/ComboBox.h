@@ -15,14 +15,13 @@ public:
 		IWindow(name)
 	{}
 
-	//~Button()
-	//{}
-
 	void add(const std::string& label) { labelFuncMap[label] = std::function<void(void)>(); }
 
 	void add(const std::string& label, const std::function<void(void)> func);
 
 	void onShow() override;
+
+	void setSelected(const std::string& label) { this->selectedLabel = label; }
 
 	std::string getSelected() const;
 

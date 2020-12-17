@@ -18,6 +18,8 @@ public:
 
 	void setValue(Shape::PolygonMesh* value);
 
+	std::string getPresenterName() const { return presenterView.getSelected(); }
+
 private:
 	IntView vertexCount;
 	IntView faceCount;
