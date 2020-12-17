@@ -8,15 +8,10 @@ using namespace Crystal::UI;
 PolygonMeshView::PolygonMeshView(const std::string& name) :
 	IView(name),
 	vertexCount("Verticies"),
-	faceCount("Faces"),
-	presenterView("Presenter")
+	faceCount("Faces")
 {
 	add(&vertexCount);
 	add(&faceCount);
-	add(&presenterView);
-	//std::function<void()> onPresenterChanged = []() { return 1; };
-	presenterView.add("Smooth");
-	presenterView.add("Wire");
 }
 
 void PolygonMeshView::setValue(PolygonMesh* value)

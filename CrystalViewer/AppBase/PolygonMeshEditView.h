@@ -7,6 +7,7 @@
 #include "Button.h"
 #include "Canvas.h"
 #include "ComboBox.h"
+#include "PMPresenterView.h"
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 #include "../../Crystal/Scene/World.h"
@@ -26,6 +27,7 @@ private:
 
 private:
 	PolygonMeshView polygonMeshView;
+	PMPresenterView presenterView;
 	Scene::World* world;
 	IntView idView;
 	StringView nameView;

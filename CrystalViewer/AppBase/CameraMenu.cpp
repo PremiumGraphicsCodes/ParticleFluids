@@ -22,15 +22,15 @@ void CameraMenu::onShow()
 			command->execute(getWorld());
 		}
 		if (ImGui::MenuItem("XY")) {
-			auto command = CommandFactory::create("CameraXY");
+			auto command = CommandFactory::create(CameraFitCommandLabels::CameraXYCommandLabel);
 			command->execute(getWorld());
 		}
 		if (ImGui::MenuItem("YZ")) {
-			auto command = CommandFactory::create("CameraYZ");
+			auto command = CommandFactory::create(CameraFitCommandLabels::CameraYZCommandLabel);
 			command->execute(getWorld());
 		}
 		if (ImGui::MenuItem("ZX")) {
-			auto command = CommandFactory::create("CameraZX");
+			auto command = CommandFactory::create(CameraFitCommandLabels::CameraZXCommandLabel);
 			command->execute(getWorld());
 		}
 		ImGui::EndMenu();

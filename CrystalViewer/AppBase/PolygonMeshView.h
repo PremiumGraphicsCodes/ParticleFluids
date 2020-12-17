@@ -3,7 +3,6 @@
 #include "IView.h"
 
 #include "IntView.h"
-#include "ComboBox.h"
 
 namespace Crystal {
 	namespace Shape {
@@ -18,12 +17,9 @@ public:
 
 	void setValue(Shape::PolygonMesh* value);
 
-	std::string getPresenterName() const { return presenterView.getSelected(); }
-
 private:
 	IntView vertexCount;
 	IntView faceCount;
-	ComboBox presenterView;
 };
 
 	}
