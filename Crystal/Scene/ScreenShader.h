@@ -68,13 +68,15 @@ public:
 
 	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 
+	void removeScene(IShaderScene* scene) { this->scenes.remove(scene); }
+
 private:
 	Shader::PointRenderer* pointRenderer;
 	Shader::LineRenderer* wireRenderer;
 	Shader::TriangleRenderer* triagleRenderer;
 	Shader::SmoothRenderer* smoothRenderer;
 
-	std::vector<IShaderScene*> scenes;
+	std::list<IShaderScene*> scenes;
 
 	Mask mask;
 

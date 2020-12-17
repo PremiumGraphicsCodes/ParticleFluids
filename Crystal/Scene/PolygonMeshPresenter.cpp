@@ -36,6 +36,16 @@ void PolygonMeshPresenter::createView(SceneShader* sceneShader, GLObjectFactory&
 	updateView();
 }
 
+void PolygonMeshPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+{
+	this->view->release(glFactory);
+	sceneShader->getObjectRenderer()->removeScene(this->view);
+	delete this->view;
+
+	this->parentIdView->release(glFactory);
+	//sceneShader->getParentIdRenderer()->removeS
+}
+
 void PolygonMeshPresenter::updateView()
 {
 	updateScreenView();

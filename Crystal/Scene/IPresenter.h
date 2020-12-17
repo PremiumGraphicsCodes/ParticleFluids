@@ -14,6 +14,8 @@ public:
 
 	virtual void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) = 0;
 
+	virtual void removeView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) {};
+
 	virtual void updateView() = 0;
 };
 

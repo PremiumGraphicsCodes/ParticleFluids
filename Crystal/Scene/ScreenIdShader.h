@@ -41,8 +41,10 @@ public:
 
 	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 
+	void removeScene(IShaderScene* scene) { this->scenes.remove(scene); }
+
 private:
-	std::vector<IShaderScene*> scenes;
+	std::list<IShaderScene*> scenes;
 
 	Shader::TextureObject* texture;
 	Shader::FrameBufferObject frameBufferObject;
