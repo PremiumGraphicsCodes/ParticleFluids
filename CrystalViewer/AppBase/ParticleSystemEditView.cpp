@@ -5,19 +5,18 @@ using namespace Crystal::UI;
 
 ParticleSystemEditView::ParticleSystemEditView(const std::string& name, World* world, Canvas* canvas) :
 	IEditCancelView(name, world, canvas),
-	particleSystemView("ParticleSystem"),
 	idView("Id"),
 	attributeView("Attribute"),
 	presenterView("Presenter")
 {
+	add(&idView);
 	add(&presenterView);
 }
 
 void ParticleSystemEditView::setValue(ParticleSystemScene* value)
 {
 	this->idView.setValue(value->getId());
-	this->particleSystemView.setValue(value);
-//	this->attributeView.setName(value.getAtt)
+	//this->attributeView.setName(value->get)
 }
 
 void ParticleSystemEditView::onEdit()

@@ -73,7 +73,6 @@
     <ClCompile Include="MaskMenu.cpp" />
     <ClCompile Include="FaceView.cpp" />
     <ClCompile Include="ParticleSystemEditView.cpp" />
-    <ClCompile Include="ParticleSystemView.cpp" />
     <ClCompile Include="PolygonMeshEditView.cpp" />
     <ClCompile Include="SceneListPanel.cpp" />
     <ClCompile Include="SphereRegionSelectView.cpp" />
@@ -173,7 +172,6 @@
     <ClInclude Include="MaskMenu.h" />
     <ClInclude Include="FaceView.h" />
     <ClInclude Include="ParticleSystemEditView.h" />
-    <ClInclude Include="ParticleSystemView.h" />
     <ClInclude Include="PolygonMeshEditView.h" />
     <ClInclude Include="SceneListPanel.h" />
     <ClInclude Include="SphereRegionSelectView.h" />

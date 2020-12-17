@@ -5,7 +5,7 @@
 #include "IShapeScene.h"
 #include "ParticleAttribute.h"
 
-#include "ParticleSystemPresenter.h"
+#include "IParticleSystemPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -35,11 +35,11 @@ public:
 
 	void setAttribute(const ParticleAttribute& attribute);
 
-	ParticleSystemPresenter* getPresenter() { return presenter.get(); }
+	IParticleSystemPresenter* getPresenter() { return presenter.get(); }
 
 private:
 	std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
-	std::unique_ptr< ParticleSystemPresenter > presenter;
+	std::unique_ptr< IParticleSystemPresenter > presenter;
 };
 
 	}

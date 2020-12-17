@@ -33,7 +33,7 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 
 	auto presenter = scene->getPresenter();
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	presenter->setBlend(doBlendView.getValue());
+	//presenter->setBlend(doBlendView.getValue());
 
 	/*
 	const auto boundingBox = getWorld()->getBoundingBox();

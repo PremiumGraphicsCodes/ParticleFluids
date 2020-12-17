@@ -4,7 +4,6 @@
 #include "../../Crystal/Scene/World.h"
 
 #include "IEditCancelView.h"
-#include "ParticleSystemView.h"
 #include "IntView.h"
 #include "PSAttributeView.h"
 #include "Canvas.h"
@@ -26,7 +25,6 @@ private:
 
 private:
 	IntView idView;
-	ParticleSystemView particleSystemView;
 	PSAttributeView attributeView;
 	ComboBox presenterView;
 };

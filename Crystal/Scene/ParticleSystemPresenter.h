@@ -1,13 +1,13 @@
 #pragma once
 
-#include "IPresenter.h"
+#include "IParticleSystemPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
 		class ParticleSystemScene;
 		class PointShaderScene;
 
-class ParticleSystemPresenter : public IPresenter
+class ParticleSystemPresenter : public IParticleSystemPresenter
 {
 public:
 	explicit ParticleSystemPresenter(ParticleSystemScene* model);
@@ -26,7 +26,6 @@ private:
 	void updateChildIdView();
 
 private:
-	ParticleSystemScene* model;
 	PointShaderScene* view;
 	PointShaderScene* parentIdView;
 	PointShaderScene* childIdView;

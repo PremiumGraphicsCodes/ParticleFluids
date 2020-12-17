@@ -9,7 +9,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Graphics;
 
 ParticleSystemPresenter::ParticleSystemPresenter(ParticleSystemScene* model) :
-	model(model),
+	IParticleSystemPresenter(model),
 	view(nullptr),
 	parentIdView(nullptr),
 	childIdView(nullptr),

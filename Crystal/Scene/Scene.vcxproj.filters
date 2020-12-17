@@ -127,6 +127,9 @@
     <ClInclude Include="IWireFramePresenter.h">
       <Filter>Presenter\WireFrame</Filter>
     </ClInclude>
+    <ClInclude Include="IParticleSystemPresenter.h">
+      <Filter>Presenter\ParticleSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">

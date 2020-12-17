@@ -79,9 +79,6 @@
     <ClCompile Include="PMBoxView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleSystemView.cpp">
-      <Filter>Scene\Shape\ParticleSystem\View</Filter>
-    </ClCompile>
     <ClCompile Include="PSTorusView.cpp">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClCompile>
@@ -425,9 +422,6 @@
     <ClInclude Include="PMBoxView.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemView.h">
-      <Filter>Scene\Shape\ParticleSystem\View</Filter>
-    </ClInclude>
     <ClInclude Include="PSTorusView.h">
       <Filter>Scene\Shape\ParticleSystem\Add</Filter>
     </ClInclude>
@@ -683,9 +677,6 @@
     </Filter>
     <Filter Include="Scene\Shape\PolygonMesh\Add">
       <UniqueIdentifier>{de8ab38c-9b84-47d6-87c6-c6cc2ebcc527}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene\Shape\ParticleSystem\View">
-      <UniqueIdentifier>{cb9fbdd9-7dc9-49fa-aaaf-b4e9883b4dea}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\Appearance\Material\Add">
       <UniqueIdentifier>{ab9d6b48-39ad-430c-80b9-bcabe1486191}</UniqueIdentifier>
