@@ -50,25 +50,22 @@ void PMAsWFPresenter::updateScreenView()
 	const auto& tcs = shape->getTexCoords();
 	const auto& ns = shape->getNormals();
 
-	//for (auto child : model->getChildren()) {
-		auto faces = shape->getFaces();
+	auto faces = shape->getFaces();
 
-		LineBuffer buffer;
-		for (const auto& f : faces) {
-			const auto& vIds = f.getVertexIds();
-			for (const auto vId : vIds) {
-				const auto& v = vs[vId];
-				const auto& p = ps[v.positionId];
-				const auto& n = ns[v.normalId];
-				Math::Vector2df texCoord(0, 0);
-				if (v.texCoordId != -1) {
-					texCoord = tcs[v.texCoordId];
-				}
-				buffer.addVertex(p, ColorRGBAf(1.0, 1.0, 1.0, 1.0));
-			}
+	LineBuffer buffer;
+
+	for (const auto& p : ps) {
+		buffer.addVertex(p, ColorRGBAf(1.0, 1.0, 1.0, 1.0));
+	}
+
+	for (const auto& f : faces) {
+		const auto& vIds = f.getVertexIds();
+		for (const auto vId : vIds) {
+			auto vIndex = vs[vId];
+			buffer.addIndex(vIndex.positionId);
 		}
-		this->view->send(buffer);
-	//}
+	}
+	this->view->send(buffer);
 }
 
 void PMAsWFPresenter::updateParentIdView()

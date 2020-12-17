@@ -2,6 +2,9 @@
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
+#include "../../Crystal/Scene/PolygonMeshPresenter.h"
+#include "../../Crystal/Scene/PMAsWFPresenter.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -31,13 +34,21 @@ void IPMAddView::addPolygonMesh(const PolygonMeshBuilder& builder)
 	mesh->vertices = builder.getVertices();
 	mesh->faces = builder.getFaces();
 
-	auto shape = new PolygonMeshScene(world->getNextSceneId(), nameView.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
-	world->getScenes()->addScene(shape);
-	const auto newId = shape->getId();
+	auto scene = new PolygonMeshScene(world->getNextSceneId(), nameView.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
+	world->getScenes()->addScene(scene);
 
-	auto scene = getWorld()->getScenes()->findSceneById<PolygonMeshScene*>(newId);
-	auto controller = scene->getPresenter();
-	controller->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	const auto presenterName = presenterView.getSelected();
+	if (presenterName == "Smooth") {
+		auto presenter = std::make_unique<PolygonMeshPresenter>(scene);
+		scene->setPresenter(std::move(presenter));
+	}
+	else if (presenterName == "Wire") {
+		auto presenter = std::make_unique<PMAsWFPresenter>(scene);
+		scene->setPresenter(std::move(presenter));
+	}
+
+	auto presenter = scene->getPresenter();
+	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	//getWorld()->getRenderer()->getScene()->screen.addChild(controller.getView());
 
 }

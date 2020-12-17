@@ -38,11 +38,11 @@ public:
 
 	IPresenter* getPresenter() override { return presenter.get(); }
 
-	//void setPresenter(IPresenter* presenter);
+	void setPresenter(std::unique_ptr<IPolygonMeshPresenter> presenter) { this->presenter = std::move(presenter); }
 
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
-	std::unique_ptr<PolygonMeshPresenter> presenter;
+	std::unique_ptr<IPolygonMeshPresenter> presenter;
 };
 
 	}
