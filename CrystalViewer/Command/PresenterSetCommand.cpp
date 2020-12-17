@@ -1,5 +1,9 @@
 #include "PresenterSetCommand.h"
 
+#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../../Crystal/Scene/PolygonMeshPresenter.h"
+#include "../../Crystal/Scene/PMAsWFPresenter.h"
+
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
@@ -22,9 +26,19 @@ std::string PresenterSetCommand::getName()
 bool PresenterSetCommand::execute(World* world)
 {
 	auto s = world->getScenes()->findSceneById(std::any_cast<int>(args.id.getValue()));
-	/*
-	s->getPresenter()->updateView();
-	*/
+	if (s->getType() == SceneType::PolygonMeshScene) {
+		auto scene = static_cast<PolygonMeshScene*>(s);
+		const auto name = args.presenterName.getValue();
+		scene->getPresenter()->removeView(world->getRenderer(), *world->getGLFactory());
+		if (name == "Smooth") {
+			auto presenter = std::make_unique<PolygonMeshPresenter>(scene);
+			scene->setPresenter(std::move(presenter));
+		}
+		else if (name == "Wire") {
+			auto presenter = std::make_unique<PMAsWFPresenter>(scene);
+			scene->setPresenter(std::move(presenter));
+		}
+		scene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	}
 	return true;
 }
-
