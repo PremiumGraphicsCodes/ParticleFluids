@@ -38,6 +38,7 @@
 #include "CameraSetCommand.h"
 #include "ShaderBuildCommand.h"
 #include "ShaderSendCommand.h"
+#include "PresenterSetCommand.h"
 
 using namespace Crystal::Command;
 
@@ -165,6 +166,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == ShaderSendCommand::getName()) {
 		return std::make_unique<ShaderSendCommand>();
+	}
+	else if (name == PresenterSetCommand::getName()) {
+		return std::make_unique<PresenterSetCommand>();
 	}
 
 	assert(false);

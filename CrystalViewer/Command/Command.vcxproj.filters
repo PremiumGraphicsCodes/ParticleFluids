@@ -230,6 +230,12 @@
     <ClInclude Include="Public\SolidCreateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="PresenterSetCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\PresenterSetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -344,6 +350,9 @@
     </ClCompile>
     <ClCompile Include="SolidCreateCommand.cpp">
       <Filter>Scene\Shape\Solid</Filter>
+    </ClCompile>
+    <ClCompile Include="PresenterSetCommand.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
