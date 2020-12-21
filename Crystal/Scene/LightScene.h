@@ -3,6 +3,7 @@
 #include "IScene.h"
 #include "../Graphics/ColorRGBA.h"
 #include "../Graphics/PointLight.h"
+#include "LightPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -18,10 +19,11 @@ public:
 
 	SceneType getType() const override { return SceneType::LightScene; }
 
-	IPresenter* getPresenter() override { return nullptr; }
+	IPresenter* getPresenter() override { return presenter.get(); }
 
 private:
 	std::unique_ptr<Graphics::PointLight> light;
+	std::unique_ptr<LightPresenter> presenter;
 };
 
 	}

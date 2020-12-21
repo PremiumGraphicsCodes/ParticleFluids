@@ -12,7 +12,7 @@ class LightShaderScene
 public:
 	void add(const Graphics::PointLight& light) { this->lights.push_back(light); }
 
-	std::vector<Graphics::PointLight> getMaterials() const { return lights; }
+	std::vector<Graphics::PointLight> getLights() const { return lights; }
 
 	void update(const int index);
 

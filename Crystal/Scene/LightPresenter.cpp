@@ -19,7 +19,7 @@ LightPresenter::LightPresenter(LightScene* model) :
 void LightPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	this->view = sceneShader->getObjectRenderer()->getLightScene();
-	this->index = this->view->getMaterials().size();
+	this->index = this->view->getLights().size();
 	this->view->add(*this->model->getLight());
 }
 

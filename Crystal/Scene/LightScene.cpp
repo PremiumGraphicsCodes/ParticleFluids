@@ -7,4 +7,5 @@ LightScene::LightScene(const int id, const std::string& name, std::unique_ptr<Po
 	IScene(id, name),
 	light(std::move(light))
 {
+	presenter = std::make_unique<LightPresenter>(this);
 }

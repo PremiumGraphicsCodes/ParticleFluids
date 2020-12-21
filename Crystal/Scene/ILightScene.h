@@ -15,6 +15,8 @@ public:
 	virtual void setLightBuffer(LightShaderScene* buffer) = 0;
 
 	virtual void sendLight(const int index, const Graphics::PointLight& light) = 0;
+
+	virtual void sendAllLights() = 0;
 };
 
 	}

@@ -71,6 +71,8 @@ public:
 
 	void sendLight(const int index, const Graphics::PointLight& light) override;
 
+	void sendAllLights() override;
+
 	void release(Shader::GLObjectFactory& glFactory) override;
 
 	void render(const Graphics::Camera& camera) override;
