@@ -65,6 +65,8 @@ public:
 
 	void sendMaterial(const int index, const Graphics::Material& material) override;
 
+	void sendAllMaterials() override;
+
 	void setLightBuffer(LightShaderScene* buffer) override;
 
 	void sendLight(const int index, const Graphics::PointLight& light) override;

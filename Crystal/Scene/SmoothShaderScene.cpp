@@ -59,6 +59,14 @@ void SmoothShaderScene::sendMaterial(const int index, const Material& material)
 	shader->sendMaterial(index, material);
 }
 
+void SmoothShaderScene::sendAllMaterials()
+{
+	const auto& materials = this->materialScene->getMaterials();
+	for (auto i = 0; i < materials.size(); ++i) {
+		shader->sendMaterial(i, materials[i]);
+	}
+}
+
 void SmoothShaderScene::setLightBuffer(LightShaderScene* buffer)
 {
 	this->lightScene = buffer;

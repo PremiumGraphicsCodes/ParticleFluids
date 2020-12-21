@@ -94,7 +94,7 @@ void World::init()
 		scenes[1]->addScene(s);
 	}
 
-	renderer = std::make_unique<SceneShader>();
+	//renderer = std::make_unique<SceneShader>();
 
 }
 
