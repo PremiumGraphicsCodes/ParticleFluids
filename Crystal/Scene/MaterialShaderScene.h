@@ -19,6 +19,8 @@ public:
 
 	void update(const int index);
 
+	void addParent(IMaterialScene* parent) { this->parentScenes.push_back(parent); }
+
 private:
 	std::vector<Graphics::Material> materials;
 	std::list<IMaterialScene*> parentScenes;

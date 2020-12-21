@@ -78,6 +78,7 @@
     <ClCompile Include="LineShaderScene.cpp" />
     <ClCompile Include="MaterialPresenter.cpp" />
     <ClCompile Include="MaterialScene.cpp" />
+    <ClCompile Include="MaterialShaderScene.cpp" />
     <ClCompile Include="ParticleSystemPresenter.cpp" />
     <ClCompile Include="PMAsWFPresenter.cpp" />
     <ClCompile Include="PointShaderScene.cpp" />

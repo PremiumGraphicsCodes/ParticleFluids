@@ -61,7 +61,7 @@ public:
 
 	void setMaterialBuffer(MaterialShaderScene* buffer) override;
 
-	void updateMaterial(const int index, const Graphics::Material& material) override {};
+	void sendMaterial(const int index, const Graphics::Material& material) override;
 
 	void release(Shader::GLObjectFactory& glFactory) override;
 
@@ -72,7 +72,7 @@ public:
 private:
 	Shader::SmoothRenderer* shader;
 	Shader::SmoothRenderer::Buffer rBuffer;
-	MaterialShaderScene* materialBuffer;
+	//MaterialShaderScene* materialBuffer;
 };
 
 	}

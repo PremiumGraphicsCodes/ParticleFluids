@@ -223,6 +223,9 @@
     <ClCompile Include="PMSmoothPresenter.cpp">
       <Filter>Presenter\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="MaterialShaderScene.cpp">
+      <Filter>SceneShader\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

@@ -1,25 +1,12 @@
 #include "MaterialShaderScene.h"
 
+#include "IMaterialScene.h"
+
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 
-MaterialShaderScene::MaterialShaderScene(const std::string& name) :
-	IShaderScene(name)
-{
-
+void MaterialShaderScene::update(const int index) {
+	for (auto s : parentScenes) {
+		s->sendMaterial(index, materials[index]);
+	}
 }
-
-bool MaterialShaderScene::build(Shader::GLObjectFactory& glFactory)
-{
-	return true;
-}
-
-void MaterialShaderScene::send(const Graphics::Material& buffer)
-{
-
-}
-/*
-void release(Shader::GLObjectFactory& glFactory) override;
-
-void render(const Graphics::Camera& camera) override;
-*/

@@ -3,6 +3,7 @@
 #include "../Shader/SmoothRenderer.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
@@ -49,8 +50,14 @@ void SmoothShaderScene::send(const SmoothBuffer& buffer)
 
 void SmoothShaderScene::setMaterialBuffer(MaterialShaderScene* buffer)
 {
-	this->materialBuffer = buffer;
+	buffer->addParent(this);
 }
+
+void SmoothShaderScene::sendMaterial(const int index, const Material& material)
+{
+	shader->sendMaterial(index, material);
+}
+
 /*
 void SmoothShaderScene::sendMaterial(const MaterialBuffer& materials)
 {
