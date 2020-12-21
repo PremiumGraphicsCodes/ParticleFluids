@@ -112,9 +112,6 @@
     <ClInclude Include="WireFramePresenter.h">
       <Filter>Presenter\WireFrame</Filter>
     </ClInclude>
-    <ClInclude Include="PMAsWFPresenter.h">
-      <Filter>Presenter\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="IWireFramePresenter.h">
       <Filter>Presenter\WireFrame</Filter>
     </ClInclude>
@@ -144,6 +141,9 @@
     </ClInclude>
     <ClInclude Include="ILightScene.h">
       <Filter>SceneShader\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="PMWirePresenter.h">
+      <Filter>Presenter\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -220,9 +220,6 @@
     <ClCompile Include="WireFramePresenter.cpp">
       <Filter>Presenter\WireFrame</Filter>
     </ClCompile>
-    <ClCompile Include="PMAsWFPresenter.cpp">
-      <Filter>Presenter\PolygonMesh</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialPresenter.cpp">
       <Filter>Presenter\Material</Filter>
     </ClCompile>
@@ -234,6 +231,9 @@
     </ClCompile>
     <ClCompile Include="LightShaderScene.cpp">
       <Filter>SceneShader\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="PMWirePresenter.cpp">
+      <Filter>Presenter\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

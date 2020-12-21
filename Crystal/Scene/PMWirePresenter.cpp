@@ -1,4 +1,4 @@
-#include "PMAsWFPresenter.h"
+#include "PMWirePresenter.h"
 
 #include "PolygonMeshScene.h"
 
@@ -8,13 +8,13 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
-PMAsWFPresenter::PMAsWFPresenter(PolygonMeshScene* model) :
+PMWirePresenter::PMWirePresenter(PolygonMeshScene* model) :
 	IPMPresenter(model),
 	view(nullptr)
 {
 }
 
-void PMAsWFPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PMWirePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new LineShaderScene(model->getName());
@@ -35,7 +35,7 @@ void PMAsWFPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFa
 
 }
 
-void PMAsWFPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PMWirePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	this->view->release(glFactory);
 	sceneShader->getObjectRenderer()->removeScene(this->view);
@@ -48,14 +48,14 @@ void PMAsWFPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFa
 	*/
 }
 
-void PMAsWFPresenter::updateView()
+void PMWirePresenter::updateView()
 {
 	updateScreenView();
 	updateParentIdView();
 	updateChildIdView();
 }
 
-void PMAsWFPresenter::updateScreenView()
+void PMWirePresenter::updateScreenView()
 {
 	const auto& shape = model->getShape();
 	const auto& vs = shape->getVertices();
@@ -85,12 +85,12 @@ void PMAsWFPresenter::updateScreenView()
 	this->view->send(buffer);
 }
 
-void PMAsWFPresenter::updateParentIdView()
+void PMWirePresenter::updateParentIdView()
 {
 
 }
 
-void PMAsWFPresenter::updateChildIdView()
+void PMWirePresenter::updateChildIdView()
 {
 
 }

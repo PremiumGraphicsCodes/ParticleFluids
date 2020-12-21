@@ -3,7 +3,7 @@
 #include "../../Crystal/Scene/World.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 #include "../../Crystal/Scene/PMSmoothPresenter.h"
-#include "../../Crystal/Scene/PMAsWFPresenter.h"
+#include "../../Crystal/Scene/PMWirePresenter.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -26,7 +26,7 @@ void PMPresenterView::setPresenter(PolygonMeshScene* scene, World* world)
 		scene->setPresenter(std::move(presenter));
 	}
 	else if (name == "Wire") {
-		auto presenter = std::make_unique<PMAsWFPresenter>(scene);
+		auto presenter = std::make_unique<PMWirePresenter>(scene);
 		scene->setPresenter(std::move(presenter));
 	}
 
