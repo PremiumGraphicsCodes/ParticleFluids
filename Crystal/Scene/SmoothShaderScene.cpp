@@ -47,6 +47,11 @@ void SmoothShaderScene::send(const SmoothBuffer& buffer)
 	rBuffer.matrix = buffer.getMatrix();
 }
 
+void SmoothShaderScene::setMaterialBuffer(MaterialBuffer* buffer)
+{
+	this->materialBuffer = buffer;
+}
+/*
 void SmoothShaderScene::sendMaterial(const MaterialBuffer& materials)
 {
 	const auto ms = materials.getMaterials();
@@ -54,6 +59,7 @@ void SmoothShaderScene::sendMaterial(const MaterialBuffer& materials)
 		shader->sendMaterial(i, ms[i]);
 	}
 }
+*/
 
 void SmoothShaderScene::render(const Graphics::Camera& camera)
 {

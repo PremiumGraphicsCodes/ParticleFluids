@@ -1,4 +1,4 @@
-#include "PolygonMeshPresenter.h"
+#include "PMSmoothPresenter.h"
 
 #include "PolygonMeshScene.h"
 #include "TriangleShaderScene.h"
@@ -12,19 +12,20 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
-PolygonMeshPresenter::PolygonMeshPresenter(PolygonMeshScene* model) : 
+PMSmoothPresenter::PMSmoothPresenter(PolygonMeshScene* model) : 
 	IPolygonMeshPresenter(model),
 	view(nullptr),
 	parentIdView(nullptr)
 {
 }
 
-void PolygonMeshPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PMSmoothPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new SmoothShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getSmoothShader());
 		this->view->build(glFactory);
+		//this->view->setMaterialBuffer()
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	{
@@ -37,7 +38,7 @@ void PolygonMeshPresenter::createView(SceneShader* sceneShader, GLObjectFactory&
 	updateView();
 }
 
-void PolygonMeshPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PMSmoothPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	this->view->release(glFactory);
 	sceneShader->getObjectRenderer()->removeScene(this->view);
@@ -48,14 +49,14 @@ void PolygonMeshPresenter::removeView(SceneShader* sceneShader, GLObjectFactory&
 	delete this->parentIdView;
 }
 
-void PolygonMeshPresenter::updateView()
+void PMSmoothPresenter::updateView()
 {
 	updateScreenView();
 	updateParentIdView();
 	updateChildIdView();
 }
 
-void PolygonMeshPresenter::updateScreenView()
+void PMSmoothPresenter::updateScreenView()
 {
 	if (!model->isVisible()) {
 		this->view->send(SmoothBuffer());
@@ -97,7 +98,7 @@ void PolygonMeshPresenter::updateScreenView()
 
 }
 
-void PolygonMeshPresenter::updateParentIdView()
+void PMSmoothPresenter::updateParentIdView()
 {
 	const auto objectId = model->getId();
 	const auto& vertices = model->getShape()->getVertices();
@@ -124,7 +125,7 @@ void PolygonMeshPresenter::updateParentIdView()
 	parentIdView->send(buffer);
 }
 
-void PolygonMeshPresenter::updateChildIdView()
+void PMSmoothPresenter::updateChildIdView()
 {
 
 }

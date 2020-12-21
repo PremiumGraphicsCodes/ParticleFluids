@@ -115,9 +115,6 @@
     <ClInclude Include="WireFramePresenter.h">
       <Filter>Presenter\WireFrame</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshPresenter.h">
-      <Filter>Presenter\PolygonMesh</Filter>
-    </ClInclude>
     <ClInclude Include="PMAsWFPresenter.h">
       <Filter>Presenter\PolygonMesh</Filter>
     </ClInclude>
@@ -135,6 +132,9 @@
     </ClInclude>
     <ClInclude Include="MaterialBuffer.h">
       <Filter>SceneShader\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="PMSmoothPresenter.h">
+      <Filter>Presenter\PolygonMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -211,14 +211,14 @@
     <ClCompile Include="WireFramePresenter.cpp">
       <Filter>Presenter\WireFrame</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonMeshPresenter.cpp">
-      <Filter>Presenter\PolygonMesh</Filter>
-    </ClCompile>
     <ClCompile Include="PMAsWFPresenter.cpp">
       <Filter>Presenter\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="MaterialPresenter.cpp">
       <Filter>Presenter\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="PMSmoothPresenter.cpp">
+      <Filter>Presenter\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
