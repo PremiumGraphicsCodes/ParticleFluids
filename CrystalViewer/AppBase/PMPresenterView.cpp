@@ -9,20 +9,18 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
 PMPresenterView::PMPresenterView(const std::string& name) :
-	IView(name),
-	presenterView("PMPresenter")
+	ComboBox(name)
 {
-	presenterView.add("Smooth");
-	presenterView.add("Wire");
+	add("Smooth");
+	add("Wire");
 
-	presenterView.setSelected("Smooth");
+	setSelected("Smooth");
 
-	add(&presenterView);
 }
 
 void PMPresenterView::setPresenter(PolygonMeshScene* scene, World* world)
 {
-	const auto name = presenterView.getSelected();
+	const auto name = getSelected();
 	if (name == "Smooth") {
 		auto presenter = std::make_unique<PolygonMeshPresenter>(scene);
 		scene->setPresenter(std::move(presenter));

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "IView.h"
 #include "ComboBox.h"
 
 namespace Crystal {
@@ -10,7 +9,7 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class PMPresenterView : public IView
+class PMPresenterView : public ComboBox
 {
 public:
 	explicit PMPresenterView(const std::string& name);
@@ -18,7 +17,6 @@ public:
 	void setPresenter(Scene::PolygonMeshScene* scene, Scene::World* world);
 
 private:
-	ComboBox presenterView;
 };
 	}
 }
