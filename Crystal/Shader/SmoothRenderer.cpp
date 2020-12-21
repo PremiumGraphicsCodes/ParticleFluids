@@ -22,11 +22,10 @@ namespace {
 	constexpr char* texCoordLabel = "texCoord";
 }
 
-void MaterialBuffer::send(const int index, ShaderObject* shader)
+void SmoothRenderer::sendMaterial(const int index, const Material& material)
 {
 	shader->bind();
 	const auto i = index;
-	auto material = materials[index];
 	const auto prefix = "materials[" + std::to_string(index) + "]";
 	shader->sendUniform(prefix + ".Ka", material.ambient);
 	shader->sendUniform(prefix + ".Kd", material.diffuse);

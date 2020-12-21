@@ -10,21 +10,15 @@ using namespace Crystal::Scene;
 using namespace Crystal::Graphics;
 
 MaterialPresenter::MaterialPresenter(MaterialScene* model) :
-	view(nullptr)
+	model(model)
 {
 }
 
 void MaterialPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
-	/*
-	{
-		this->view = new MaterialShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getPointShader());
-		this->view->build(glFactory);
-		sceneShader->getObjectRenderer()->addScene(this->view);
-	}
-	updateView();
-	*/
+	const auto buffer = sceneShader->getObjectRenderer()->getMateialBuffer();
+	//this->index = buffer->getMaterials().size();
+	sceneShader->getObjectRenderer()->getMateialBuffer()->add(*this->model->getMaterial());
 }
 
 void MaterialPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
@@ -45,18 +39,6 @@ void MaterialPresenter::updateView()
 
 void MaterialPresenter::updateScreenView()
 {
-	this->view->sendMaterial(0, *model->getMaterial());
-	/*
-	const auto& ps = model->getShape()->getParticles();
-	PointBuffer pb;
-	for (auto p : ps) {
-		pb.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
-	}
-
-	this->view->setBlend(this->doBlend);
-	this->view->send(pb);
-	this->view->setVisible(model->isVisible());
-	*/
 }
 
 void MaterialPresenter::updateParentIdView()

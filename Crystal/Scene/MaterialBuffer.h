@@ -1,3 +1,5 @@
+#pragma once
+
 #include "IShaderScene.h"
 #include "../Graphics/Material.h"
 

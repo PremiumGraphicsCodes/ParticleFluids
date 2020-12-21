@@ -11,19 +11,6 @@
 namespace Crystal {
 	namespace Shader {
 
-class MaterialBuffer
-{
-public:
-	void set(const int index, const Graphics::Material& material);
-
-	void send(const int index, Shader::ShaderObject* shader);
-
-	std::vector<Graphics::Material> getMaterials() const { return materials; }
-
-private:
-	std::vector<Graphics::Material> materials;
-};
-
 class SmoothRenderer
 {
 public:
@@ -52,7 +39,7 @@ public:
 
 	void release(Shader::GLObjectFactory& factory);
 
-	//void sendMaterials(const MaterialBuffer& materials);
+	void sendMaterial(const int index, const Graphics::Material& material);
 	/*
 	void send(const std::vector<PointLight>& lights);
 	*/

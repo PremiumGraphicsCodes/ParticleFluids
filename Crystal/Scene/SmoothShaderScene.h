@@ -9,6 +9,7 @@
 
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/SmoothRenderer.h"
+#include "MaterialBuffer.h"
 #include "IShaderScene.h"
 
 namespace Crystal {
@@ -57,7 +58,7 @@ public:
 
 	void send(const SmoothBuffer& buffer);
 
-	void sendMaterial(const int index, const Graphics::Material& material);
+	void sendMaterial(const MaterialBuffer& materials);
 
 	void release(Shader::GLObjectFactory& glFactory) override;
 

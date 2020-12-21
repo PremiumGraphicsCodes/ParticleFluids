@@ -10,6 +10,7 @@
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
 
+#include "MaterialBuffer.h"
 //#include "TextureObjectRepository.h"
 
 #include "../Util/UnCopyable.h"
@@ -70,6 +71,8 @@ public:
 
 	void removeScene(IShaderScene* scene) { this->scenes.remove(scene); }
 
+	MaterialBuffer* getMateialBuffer() { return &this->materialBuffer; }
+
 private:
 	Shader::PointRenderer* pointRenderer;
 	Shader::LineRenderer* wireRenderer;
@@ -77,6 +80,7 @@ private:
 	Shader::SmoothRenderer* smoothRenderer;
 
 	std::list<IShaderScene*> scenes;
+	MaterialBuffer materialBuffer;
 
 	Mask mask;
 

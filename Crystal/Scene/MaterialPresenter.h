@@ -18,7 +18,7 @@ public:
 
 	void updateView() override;
 
-	SmoothShaderScene* getView() { return view; }
+	//SmoothShaderScene* getView() { return view; }
 
 private:
 	void updateScreenView();
@@ -28,7 +28,8 @@ private:
 	void updateChildIdView();
 
 	MaterialScene* model;
-	SmoothShaderScene* view;
+	//SmoothShaderScene* view;
+	int index = 0;
 };
 
 	}

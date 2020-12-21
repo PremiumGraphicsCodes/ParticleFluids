@@ -44,7 +44,9 @@ void World::init()
 		material->specular = ColorRGBAf(1, 1, 1, 1);
 		material->shininess = 1.0;
 		material->ambientTexName = "WhiteTex";
-		scenes[1]->addScene(new MaterialScene(getNextSceneId(), "WhiteMat", std::move(material)));
+		auto s = new MaterialScene(getNextSceneId(), "WhiteMat", std::move(material));
+		s->getPresenter()->createView(renderer.get(), glFactory);
+		scenes[1]->addScene(s);
 	}
 
 	{
@@ -53,7 +55,9 @@ void World::init()
 		material->diffuse = ColorRGBAf(0, 0, 0, 1);
 		material->specular = ColorRGBAf(0, 0, 0, 1);
 		material->shininess = 1.0;
-		scenes[1]->addScene(new MaterialScene(getNextSceneId(),"RedMat", std::move(material)));
+		auto s = new MaterialScene(getNextSceneId(),"RedMat", std::move(material));
+		s->getPresenter()->createView(renderer.get(), glFactory);
+		scenes[1]->addScene(s);
 	}
 
 	{
@@ -62,7 +66,9 @@ void World::init()
 		material->diffuse = ColorRGBAf(0, 0, 0, 1);
 		material->specular = ColorRGBAf(0, 0, 0, 1);
 		material->shininess = 1.0;
-		scenes[1]->addScene(new MaterialScene(getNextSceneId(), "BlackMat", std::move(material)));
+		auto s = new MaterialScene(getNextSceneId(), "BlackMat", std::move(material));
+		s->getPresenter()->createView(renderer.get(), glFactory);
+		scenes[1]->addScene(s);
 	}
 
 	{
