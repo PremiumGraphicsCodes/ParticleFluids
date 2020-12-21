@@ -87,24 +87,22 @@ void SmoothRenderer::release(GLObjectFactory& factory)
 	factory.remove(shader);
 }
 
-/*
-void SmoothRenderer::setMaterialScene(const int index, const MaterialShaderScene& m)
+void SmoothRenderer::setMaterial(const int index, const Material& material)
 {
-	shader.bind();
-	//for (int i = 0; i < materials.size(); ++i) {
+	shader->bind();
 	const auto i = index;
-	const auto prefix = "materials[" + std::to_string(i) + "]";
-	shader.sendUniform(prefix + ".Ka", m.ambient);
-	shader.sendUniform(prefix + ".Kd", m.diffuse);
-	shader.sendUniform(prefix + ".Ks", m.specular);
-	shader.sendUniform(prefix + ".shininess", m.shininess);
+	const auto prefix = "materials[" + std::to_string(index) + "]";
+	shader->sendUniform(prefix + ".Ka", material.ambient);
+	shader->sendUniform(prefix + ".Kd", material.diffuse);
+	shader->sendUniform(prefix + ".Ks", material.specular);
+	shader->sendUniform(prefix + ".shininess", material.shininess);
 	//		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
 	//		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
 	//		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
-//}
-	shader.unbind();
+	shader->unbind();
 }
 
+/*
 void SmoothRenderer::send(const std::vector<PointLight>& lights)
 {
 	shader.bind();

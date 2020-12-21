@@ -57,6 +57,8 @@ public:
 
 	void send(const SmoothBuffer& buffer);
 
+	void sendMaterial(const int index, const Graphics::Material& material);
+
 	void release(Shader::GLObjectFactory& glFactory) override;
 
 	void render(const Graphics::Camera& camera) override;

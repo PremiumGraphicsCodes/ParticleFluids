@@ -130,6 +130,12 @@
     <ClInclude Include="IParticleSystemPresenter.h">
       <Filter>Presenter\ParticleSystem</Filter>
     </ClInclude>
+    <ClInclude Include="MaterialPresenter.h">
+      <Filter>Presenter\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialShaderScene.h">
+      <Filter>SceneShader\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -211,6 +217,9 @@
     <ClCompile Include="PMAsWFPresenter.cpp">
       <Filter>Presenter\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="MaterialPresenter.cpp">
+      <Filter>Presenter\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -269,6 +278,12 @@
     </Filter>
     <Filter Include="Presenter\PolygonMesh">
       <UniqueIdentifier>{c851061b-17b8-4e08-ab22-5b0e71f97385}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Material">
+      <UniqueIdentifier>{09d2bfb2-780f-4524-b805-e76103f4fd91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\Material">
+      <UniqueIdentifier>{22a1a97e-6869-45b2-8d92-4424713abb59}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

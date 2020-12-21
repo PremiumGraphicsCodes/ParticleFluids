@@ -47,6 +47,11 @@ void SmoothShaderScene::send(const SmoothBuffer& buffer)
 	rBuffer.matrix = buffer.getMatrix();
 }
 
+void SmoothShaderScene::sendMaterial(const int index, const Graphics::Material& material)
+{
+	shader->setMaterial(index, material);
+}
+
 void SmoothShaderScene::render(const Graphics::Camera& camera)
 {
 	rBuffer.modelViewMatrix = camera.getModelViewMatrix();

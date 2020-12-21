@@ -59,9 +59,18 @@ public:
 
 	int createDefaultCamera();
 
+	void addPresenter(IPresenter* p) { this->presenters.push_back(p); }
+
+	template<typename T>
+	T findPresenterById(const int id) const {
+		auto iter = std::find_if(presenters.begin(), presenters.end(), [id](IPresenter* a) { return id == a->getId(); });
+		return static_cast<T>(*iter);
+	}
+
 private:
 	std::array<std::unique_ptr<Scene>, 2> scenes;
 	std::list<IAnimator*> animations;
+	std::list<IPresenter*> presenters;
 	CameraScene* camera;
 
 	SceneIdProvider sceneIdProvider;

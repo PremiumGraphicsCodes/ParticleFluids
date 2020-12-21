@@ -4,6 +4,7 @@
 #include "VertexBufferObject.h"
 #include "../Math/Matrix4d.h"
 #include "../Math/Vector3d.h"
+#include "../Graphics/Material.h"
 #include "../Shader/TextureObject.h"
 #include "../Shader/ShaderObject.h"
 
@@ -38,9 +39,9 @@ public:
 
 	void release(Shader::GLObjectFactory& factory);
 
-	/*
-	void setMaterialScene(const int index, const MaterialShaderScene& material);
+	void setMaterial(const int index, const Graphics::Material& material);
 
+	/*
 	void send(const std::vector<PointLight>& lights);
 	*/
 

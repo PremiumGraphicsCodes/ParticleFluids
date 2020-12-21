@@ -70,15 +70,15 @@ void PolygonMeshPresenter::updateScreenView()
 	SmoothBuffer buffer;
 
 	auto groups = model->getGroups();
-	for (const auto& scene : groups) {
-		int materialId = 0;
+	for (const auto& group : groups) {
+		int materialId = 0;//group.material->;
 		/*
 		if (scene->getMaterial() != nullptr) {
 			materialId = scene->getMaterial()->getMaterialId();
 		}
 		*/
 
-		auto faces = shape->getFaces();
+		auto faces = group.faces;
 		for (const auto& f : faces) {
 			const auto& vIds = f.getVertexIds();
 			for (const auto vId : vIds) {
