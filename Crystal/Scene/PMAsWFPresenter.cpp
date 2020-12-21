@@ -9,7 +9,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
 PMAsWFPresenter::PMAsWFPresenter(PolygonMeshScene* model) :
-	IPolygonMeshPresenter(model),
+	IPMPresenter(model),
 	view(nullptr)
 {
 }

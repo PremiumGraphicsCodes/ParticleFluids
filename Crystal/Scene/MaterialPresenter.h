@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPolygonMeshPresenter.h"
+#include "IPMPresenter.h"
 
 namespace Crystal {
 	namespace Scene {

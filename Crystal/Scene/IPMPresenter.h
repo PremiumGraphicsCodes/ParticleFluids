@@ -6,14 +6,14 @@ namespace Crystal {
 	namespace Scene {
 		class PolygonMeshScene;
 
-class IPolygonMeshPresenter : public IPresenter
+class IPMPresenter : public IPresenter
 {
 public:
-	explicit IPolygonMeshPresenter(PolygonMeshScene* model) :
+	explicit IPMPresenter(PolygonMeshScene* model) :
 		model(model)
 	{}
 
-	virtual ~IPolygonMeshPresenter() {}
+	virtual ~IPMPresenter() {}
 
 	//PolygonMeshScene* getModel()
 

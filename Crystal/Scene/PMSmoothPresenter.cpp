@@ -13,7 +13,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 
 PMSmoothPresenter::PMSmoothPresenter(PolygonMeshScene* model) : 
-	IPolygonMeshPresenter(model),
+	IPMPresenter(model),
 	view(nullptr),
 	parentIdView(nullptr)
 {

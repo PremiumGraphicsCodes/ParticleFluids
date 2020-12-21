@@ -3,7 +3,7 @@
 
 #include "IShapeScene.h"
 #include "MaterialScene.h"
-#include "IPolygonMeshPresenter.h"
+#include "IPMPresenter.h"
 
 #include "../Shape/PolygonMesh.h"
 #include "../Graphics/ColorRGBA.h"
@@ -50,7 +50,7 @@ public:
 
 	IPresenter* getPresenter() override { return presenter.get(); }
 
-	void setPresenter(std::unique_ptr<IPolygonMeshPresenter> presenter) { this->presenter = std::move(presenter); }
+	void setPresenter(std::unique_ptr<IPMPresenter> presenter) { this->presenter = std::move(presenter); }
 
 	void addGroup(const FaceGroup& group) { this->groups.push_back(group); }
 
@@ -58,7 +58,7 @@ public:
 
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
-	std::unique_ptr<IPolygonMeshPresenter> presenter;
+	std::unique_ptr<IPMPresenter> presenter;
 	std::vector<FaceGroup> groups;
 };
 
