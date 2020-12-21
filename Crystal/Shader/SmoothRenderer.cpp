@@ -22,6 +22,23 @@ namespace {
 	constexpr char* texCoordLabel = "texCoord";
 }
 
+void MaterialBuffer::send(const int index, ShaderObject* shader)
+{
+	shader->bind();
+	const auto i = index;
+	auto material = materials[index];
+	const auto prefix = "materials[" + std::to_string(index) + "]";
+	shader->sendUniform(prefix + ".Ka", material.ambient);
+	shader->sendUniform(prefix + ".Kd", material.diffuse);
+	shader->sendUniform(prefix + ".Ks", material.specular);
+	shader->sendUniform(prefix + ".shininess", material.shininess);
+	//		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
+	//		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
+	//		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
+	shader->unbind();
+}
+
+
 SmoothRenderer::SmoothRenderer()
 {
 }
@@ -85,21 +102,6 @@ void SmoothRenderer::release(GLObjectFactory& factory)
 		//		textures[i].release();
 	}
 	factory.remove(shader);
-}
-
-void SmoothRenderer::setMaterial(const int index, const Material& material)
-{
-	shader->bind();
-	const auto i = index;
-	const auto prefix = "materials[" + std::to_string(index) + "]";
-	shader->sendUniform(prefix + ".Ka", material.ambient);
-	shader->sendUniform(prefix + ".Kd", material.diffuse);
-	shader->sendUniform(prefix + ".Ks", material.specular);
-	shader->sendUniform(prefix + ".shininess", material.shininess);
-	//		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
-	//		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
-	//		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
-	shader->unbind();
 }
 
 /*

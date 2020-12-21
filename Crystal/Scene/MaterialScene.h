@@ -2,6 +2,7 @@
 
 #include "IScene.h"
 #include "../Graphics/Material.h"
+#include "MaterialPresenter.h"
 #include <memory>
 
 namespace Crystal {
@@ -19,10 +20,11 @@ public:
 
 	SceneType getType() const override { return SceneType::MaterialScene; }
 
-	IPresenter* getPresenter() override { return nullptr; }
+	IPresenter* getPresenter() override { return presenter.get(); }
 	
 private:
 	std::unique_ptr<Graphics::Material> material;
+	std::unique_ptr<MaterialPresenter> presenter;
 };
 
 	}

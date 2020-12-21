@@ -49,7 +49,7 @@ void SmoothShaderScene::send(const SmoothBuffer& buffer)
 
 void SmoothShaderScene::sendMaterial(const int index, const Graphics::Material& material)
 {
-	shader->setMaterial(index, material);
+	//shader->setMaterial(index, material);
 }
 
 void SmoothShaderScene::render(const Graphics::Camera& camera)
