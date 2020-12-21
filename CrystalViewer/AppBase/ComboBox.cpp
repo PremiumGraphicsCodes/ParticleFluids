@@ -13,7 +13,7 @@ void ComboBox::onShow()
 	auto str = name.c_str();
     auto current_item = selectedLabel.c_str();
 
-    if (ImGui::BeginCombo("##combo", current_item)) { // The second parameter is the label previewed before opening the combo.
+    if (ImGui::BeginCombo(str, current_item)) { // The second parameter is the label previewed before opening the combo.
         for (const auto& m : labelFuncMap) {
             auto sstr = m.first.c_str();
             bool is_selected = (current_item == sstr); // You can store your selection however you want, outside or inside your objects
@@ -27,9 +27,9 @@ void ComboBox::onShow()
         ImGui::EndCombo();
     }
 
-    ImGui::SameLine();
+    //ImGui::SameLine();
 
-    ImGui::Text(str);
+    //ImGui::Text(str);
 }
 
 std::string ComboBox::getSelected() const

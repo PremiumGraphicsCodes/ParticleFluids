@@ -279,6 +279,9 @@
     <ClCompile Include="PMPresenterView.cpp">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
     </ClCompile>
+    <ClCompile Include="MaterialSelectView.cpp">
+      <Filter>Scene\Appearance\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -606,6 +609,9 @@
     </ClInclude>
     <ClInclude Include="PMPresenterView.h">
       <Filter>Scene\Shape\PolygonMesh\View</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialSelectView.h">
+      <Filter>Scene\Appearance\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 #include "IOkCancelView.h"
 #include "StringView.h"
 #include "PMPresenterView.h"
+#include "MaterialSelectView.h"
 
 
 namespace Crystal {
@@ -21,6 +22,7 @@ protected:
 
 private:
 	StringView nameView;
+	MaterialSelectView materialView;
 	PMPresenterView presenterView;
 };
 

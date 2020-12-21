@@ -11,10 +11,12 @@ using namespace Crystal::UI;
 IPMAddView::IPMAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	nameView("Name", "PolygonMesh01"),
+	materialView("Material", model),
 	presenterView("Presenter")
 //	attributeView("PSAttribute")
 {
 	add(&nameView);
+	add(&materialView);
 	add(&presenterView);
 }
 
@@ -28,9 +30,12 @@ void IPMAddView::addPolygonMesh(const PolygonMeshBuilder& builder)
 	mesh->vertices = builder.getVertices();
 	mesh->faces = builder.getFaces();
 
+	const auto materialName = materialView.getSelected();
+	auto material = world->getScenes()->findSceneByName<MaterialScene*>(materialName);
+
 	auto scene = new PolygonMeshScene(world->getNextSceneId(), nameView.getValue(), std::move(mesh));
-	//PolygonMeshScene::FaceGroup group(builder.getFaces(), )
-	//scene->addGroup()
+	PolygonMeshScene::FaceGroup group(builder.getFaces(), material);
+	scene->addGroup(group);
 	world->getScenes()->addScene(scene);
 
 	presenterView.setPresenter(scene, world);
