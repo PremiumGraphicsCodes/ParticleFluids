@@ -66,16 +66,20 @@ void PMAsWFPresenter::updateScreenView()
 	auto faces = shape->getFaces();
 
 	LineBuffer buffer;
-
 	for (const auto& p : ps) {
 		buffer.addVertex(p, ColorRGBAf(1.0, 1.0, 1.0, 1.0));
 	}
 
-	for (const auto& f : faces) {
-		const auto& vIds = f.getVertexIds();
-		for (const auto vId : vIds) {
-			auto vIndex = vs[vId];
-			buffer.addIndex(vIndex.positionId);
+	auto groups = model->getGroups();
+	for (const auto& scene : groups) {
+		int materialId = 0;
+		auto faces = shape->getFaces();
+		for (const auto& f : faces) {
+			const auto& vIds = f.getVertexIds();
+			for (const auto vId : vIds) {
+				auto vIndex = vs[vId];
+				buffer.addIndex(vIndex.positionId);
+			}
 		}
 	}
 	this->view->send(buffer);

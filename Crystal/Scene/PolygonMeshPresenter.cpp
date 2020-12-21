@@ -69,8 +69,8 @@ void PolygonMeshPresenter::updateScreenView()
 
 	SmoothBuffer buffer;
 
-	//auto groups = model->getGroups();
-	//for (auto scene : groups) {
+	auto groups = model->getGroups();
+	for (const auto& scene : groups) {
 		int materialId = 0;
 		/*
 		if (scene->getMaterial() != nullptr) {
@@ -79,22 +79,20 @@ void PolygonMeshPresenter::updateScreenView()
 		*/
 
 		auto faces = shape->getFaces();
-		{
-			for (const auto& f : faces) {
-				const auto& vIds = f.getVertexIds();
-				for (const auto vId : vIds) {
-					const auto& v = vs[vId];
-					const auto& p = ps[v.positionId];
-					const auto& n = ns[v.normalId];
-					Math::Vector2df texCoord(0, 0);
-					if (v.texCoordId != -1) {
-						texCoord = tcs[v.texCoordId];
-					}
-					buffer.addVertex(p, n, texCoord, materialId);
+		for (const auto& f : faces) {
+			const auto& vIds = f.getVertexIds();
+			for (const auto vId : vIds) {
+				const auto& v = vs[vId];
+				const auto& p = ps[v.positionId];
+				const auto& n = ns[v.normalId];
+				Math::Vector2df texCoord(0, 0);
+				if (v.texCoordId != -1) {
+					texCoord = tcs[v.texCoordId];
 				}
+				buffer.addVertex(p, n, texCoord, materialId);
 			}
 		}
-	//}
+	}
 	this->view->send(buffer);
 
 }

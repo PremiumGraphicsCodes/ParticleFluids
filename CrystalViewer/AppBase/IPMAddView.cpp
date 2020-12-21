@@ -28,7 +28,9 @@ void IPMAddView::addPolygonMesh(const PolygonMeshBuilder& builder)
 	mesh->vertices = builder.getVertices();
 	mesh->faces = builder.getFaces();
 
-	auto scene = new PolygonMeshScene(world->getNextSceneId(), nameView.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
+	auto scene = new PolygonMeshScene(world->getNextSceneId(), nameView.getValue(), std::move(mesh));
+	//PolygonMeshScene::FaceGroup group(builder.getFaces(), )
+	//scene->addGroup()
 	world->getScenes()->addScene(scene);
 
 	presenterView.setPresenter(scene, world);

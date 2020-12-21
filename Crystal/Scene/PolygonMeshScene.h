@@ -14,6 +14,18 @@ namespace Crystal {
 class PolygonMeshScene : public IShapeScene
 {
 public:
+	class FaceGroup
+	{
+	public:
+		FaceGroup(const std::vector<Shape::Face>& faces, MaterialScene* material) :
+			faces(faces),
+			material(material)
+		{}
+
+		std::vector<Shape::Face> faces;
+		MaterialScene* material;
+	};
+
 	PolygonMeshScene();
 
 	PolygonMeshScene(const int id, const std::string& name, std::unique_ptr<Shape::PolygonMesh> shape);
@@ -40,9 +52,14 @@ public:
 
 	void setPresenter(std::unique_ptr<IPolygonMeshPresenter> presenter) { this->presenter = std::move(presenter); }
 
+	void addGroup(const FaceGroup& group) { this->groups.push_back(group); }
+
+	std::vector<FaceGroup> getGroups() const { return groups; }
+
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
 	std::unique_ptr<IPolygonMeshPresenter> presenter;
+	std::vector<FaceGroup> groups;
 };
 
 	}
