@@ -4,9 +4,6 @@
 #include "../Graphics/Material.h"
 
 namespace Crystal {
-	namespace Shader {
-		class SmoothRenderer;
-	}
 	namespace Scene {
 		class IMaterialScene;
 
