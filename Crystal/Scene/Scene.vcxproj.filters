@@ -133,7 +133,7 @@
     <ClInclude Include="MaterialPresenter.h">
       <Filter>Presenter\Material</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialShaderScene.h">
+    <ClInclude Include="MaterialBuffer.h">
       <Filter>SceneShader\Material</Filter>
     </ClInclude>
   </ItemGroup>

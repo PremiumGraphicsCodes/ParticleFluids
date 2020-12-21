@@ -31,7 +31,7 @@
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="IWireFramePresenter.h" />
     <ClInclude Include="MaterialPresenter.h" />
-    <ClInclude Include="MaterialShaderScene.h" />
+    <ClInclude Include="MaterialBuffer.h" />
     <ClInclude Include="ParticleSystemPresenter.h" />
     <ClInclude Include="IPoint.h" />
     <ClInclude Include="IScene.h" />
