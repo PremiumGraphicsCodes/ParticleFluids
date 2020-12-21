@@ -73,9 +73,6 @@
     <ClInclude Include="LineShaderScene.h">
       <Filter>SceneShader\Line</Filter>
     </ClInclude>
-    <ClInclude Include="SmoothShaderScene.h">
-      <Filter>SceneShader\Smooth</Filter>
-    </ClInclude>
     <ClInclude Include="SceneShader.h">
       <Filter>SceneShader</Filter>
     </ClInclude>
@@ -130,11 +127,17 @@
     <ClInclude Include="MaterialPresenter.h">
       <Filter>Presenter\Material</Filter>
     </ClInclude>
-    <ClInclude Include="MaterialBuffer.h">
-      <Filter>SceneShader\Material</Filter>
-    </ClInclude>
     <ClInclude Include="PMSmoothPresenter.h">
       <Filter>Presenter\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="SmoothShaderScene.h">
+      <Filter>SceneShader\Smooth</Filter>
+    </ClInclude>
+    <ClInclude Include="IMaterialScene.h">
+      <Filter>SceneShader\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialShaderScene.h">
+      <Filter>SceneShader\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

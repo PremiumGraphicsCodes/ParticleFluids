@@ -18,7 +18,7 @@ void MaterialPresenter::createView(SceneShader* sceneShader, GLObjectFactory& gl
 {
 	const auto buffer = sceneShader->getObjectRenderer()->getMateialBuffer();
 	//this->index = buffer->getMaterials().size();
-	sceneShader->getObjectRenderer()->getMateialBuffer()->add(*this->model->getMaterial());
+	buffer->add(*this->model->getMaterial());
 }
 
 void MaterialPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)

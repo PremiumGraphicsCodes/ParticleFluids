@@ -9,8 +9,9 @@
 
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/SmoothRenderer.h"
-#include "MaterialBuffer.h"
+#include "MaterialShaderScene.h"
 #include "IShaderScene.h"
+#include "IMaterialScene.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -49,7 +50,7 @@ private:
 	Graphics::Buffer1d<int> materialIds;
 };
 
-class SmoothShaderScene : public IShaderScene
+class SmoothShaderScene : public IShaderScene, IMaterialScene
 {
 public:
 	explicit SmoothShaderScene(const std::string& name);
@@ -58,7 +59,9 @@ public:
 
 	void send(const SmoothBuffer& buffer);
 
-	void setMaterialBuffer(MaterialBuffer* buffer);
+	void setMaterialBuffer(MaterialShaderScene* buffer) override;
+
+	void updateMaterial(const int index, const Graphics::Material& material) override {};
 
 	void release(Shader::GLObjectFactory& glFactory) override;
 
@@ -69,7 +72,7 @@ public:
 private:
 	Shader::SmoothRenderer* shader;
 	Shader::SmoothRenderer::Buffer rBuffer;
-	MaterialBuffer* materialBuffer;
+	MaterialShaderScene* materialBuffer;
 };
 
 	}

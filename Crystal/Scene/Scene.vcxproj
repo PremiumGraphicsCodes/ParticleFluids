@@ -25,13 +25,14 @@
     <ClInclude Include="CameraScene.h" />
     <ClInclude Include="CSGScene.h" />
     <ClInclude Include="IAnimator.h" />
+    <ClInclude Include="IMaterialScene.h" />
     <ClInclude Include="IParticleSystemPresenter.h" />
     <ClInclude Include="IPolygonMeshPresenter.h" />
     <ClInclude Include="IPresenter.h" />
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="IWireFramePresenter.h" />
     <ClInclude Include="MaterialPresenter.h" />
-    <ClInclude Include="MaterialBuffer.h" />
+    <ClInclude Include="MaterialShaderScene.h" />
     <ClInclude Include="ParticleSystemPresenter.h" />
     <ClInclude Include="IPoint.h" />
     <ClInclude Include="IScene.h" />
