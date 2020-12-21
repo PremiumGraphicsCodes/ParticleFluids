@@ -2,15 +2,15 @@
 
 #include "MaterialScene.h"
 #include "SceneShader.h"
-//#include "PointShaderScene.h"
-#include "SmoothShaderScene.h"
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Graphics;
 
 MaterialPresenter::MaterialPresenter(MaterialScene* model) :
-	model(model)
+	model(model),
+	view(nullptr),
+	index(0)
 {
 }
 

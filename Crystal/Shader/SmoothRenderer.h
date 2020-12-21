@@ -5,6 +5,7 @@
 #include "../Math/Matrix4d.h"
 #include "../Math/Vector3d.h"
 #include "../Graphics/Material.h"
+#include "../Graphics/PointLight.h"
 #include "../Shader/TextureObject.h"
 #include "../Shader/ShaderObject.h"
 
@@ -40,9 +41,8 @@ public:
 	void release(Shader::GLObjectFactory& factory);
 
 	void sendMaterial(const int index, const Graphics::Material& material);
-	/*
-	void send(const std::vector<PointLight>& lights);
-	*/
+
+	void sendLight(const int index, const Graphics::PointLight& light);
 
 	//void send(const std::vector<Shader::TextureObject>& textures);
 

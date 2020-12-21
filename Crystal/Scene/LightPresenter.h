@@ -4,13 +4,13 @@
 
 namespace Crystal {
 	namespace Scene {
-		class MaterialScene;
-		class MaterialShaderScene;
+		class LightScene;
+		class LightShaderScene;
 
-class MaterialPresenter : public IPresenter
+class LightPresenter : public IPresenter
 {
 public:
-	explicit MaterialPresenter(MaterialScene* model);
+	explicit LightPresenter(LightScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
@@ -27,8 +27,8 @@ private:
 
 	void updateChildIdView();
 
-	MaterialScene* model;
-	MaterialShaderScene* view;
+	LightScene* model;
+	LightShaderScene* view;
 	int index = 0;
 };
 

@@ -32,6 +32,7 @@
     <ClInclude Include="IPresenter.h" />
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="IWireFramePresenter.h" />
+    <ClInclude Include="LightPresenter.h" />
     <ClInclude Include="LightShaderScene.h" />
     <ClInclude Include="MaterialPresenter.h" />
     <ClInclude Include="MaterialShaderScene.h" />
@@ -76,6 +77,7 @@
     <ClCompile Include="CameraScene.cpp" />
     <ClCompile Include="CSGScene.cpp" />
     <ClCompile Include="IScene.cpp" />
+    <ClCompile Include="LightPresenter.cpp" />
     <ClCompile Include="LightScene.cpp" />
     <ClCompile Include="LightShaderScene.cpp" />
     <ClCompile Include="LineShaderScene.cpp" />

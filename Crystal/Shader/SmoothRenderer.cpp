@@ -22,22 +22,6 @@ namespace {
 	constexpr char* texCoordLabel = "texCoord";
 }
 
-void SmoothRenderer::sendMaterial(const int index, const Material& material)
-{
-	shader->bind();
-	const auto i = index;
-	const auto prefix = "materials[" + std::to_string(index) + "]";
-	shader->sendUniform(prefix + ".Ka", material.ambient);
-	shader->sendUniform(prefix + ".Kd", material.diffuse);
-	shader->sendUniform(prefix + ".Ks", material.specular);
-	shader->sendUniform(prefix + ".shininess", material.shininess);
-	//		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
-	//		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
-	//		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
-	shader->unbind();
-}
-
-
 SmoothRenderer::SmoothRenderer()
 {
 }
@@ -103,27 +87,40 @@ void SmoothRenderer::release(GLObjectFactory& factory)
 	factory.remove(shader);
 }
 
-/*
-void SmoothRenderer::send(const std::vector<PointLight>& lights)
+void SmoothRenderer::sendMaterial(const int index, const Material& material)
 {
-	shader.bind();
-	for (int i = 0; i < lights.size(); ++i) {
-		const auto& light = lights[i];
-		const auto prefix = "lights[" + std::to_string(i) + "]";
-
-		const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
-		const auto& ambient = light.getAmbient();
-		const auto& diffuse = light.getDiffuse();
-		const auto& specular = light.getSpecular();
-
-		shader.sendUniform(prefix + ".position", lightPos);
-		shader.sendUniform(prefix + ".La", ambient);
-		shader.sendUniform(prefix + ".Ld", diffuse);
-		shader.sendUniform(prefix + ".Ls", specular);
-	}
-	shader.unbind();
+	shader->bind();
+	const auto i = index;
+	const auto prefix = "materials[" + std::to_string(index) + "]";
+	shader->sendUniform(prefix + ".Ka", material.ambient);
+	shader->sendUniform(prefix + ".Kd", material.diffuse);
+	shader->sendUniform(prefix + ".Ks", material.specular);
+	shader->sendUniform(prefix + ".shininess", material.shininess);
+	//		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
+	//		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
+	//		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
+	shader->unbind();
 }
-*/
+
+
+void SmoothRenderer::sendLight(const int index, const PointLight& light)
+{
+	shader->bind();
+	
+	const auto prefix = "lights[" + std::to_string(index) + "]";
+
+	const auto& lightPos = light.getPosition();//{ -10.0f, 10.0f, 10.0f };
+	const auto& ambient = light.getAmbient();
+	const auto& diffuse = light.getDiffuse();
+	const auto& specular = light.getSpecular();
+
+	shader->sendUniform(prefix + ".position", lightPos);
+	shader->sendUniform(prefix + ".La", ambient);
+	shader->sendUniform(prefix + ".Ld", diffuse);
+	shader->sendUniform(prefix + ".Ls", specular);
+
+	shader->unbind();
+}
 
 /*
 void SmoothShader::send(const TextureShaderBuffer& buffer)

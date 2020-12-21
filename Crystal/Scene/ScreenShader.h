@@ -11,6 +11,7 @@
 #include "../Shader/TextureObject.h"
 
 #include "MaterialShaderScene.h"
+#include "LightShaderScene.h"
 //#include "TextureObjectRepository.h"
 
 #include "../Util/UnCopyable.h"
@@ -73,6 +74,8 @@ public:
 
 	MaterialShaderScene* getMateialBuffer() { return &this->materialBuffer; }
 
+	LightShaderScene* getLightScene() { return &this->lightScene; }
+
 private:
 	Shader::PointRenderer* pointRenderer;
 	Shader::LineRenderer* wireRenderer;
@@ -81,6 +84,7 @@ private:
 
 	std::list<IShaderScene*> scenes;
 	MaterialShaderScene materialBuffer;
+	LightShaderScene lightScene;
 
 	Mask mask;
 

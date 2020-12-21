@@ -145,6 +145,9 @@
     <ClInclude Include="PMWirePresenter.h">
       <Filter>Presenter\PolygonMesh</Filter>
     </ClInclude>
+    <ClInclude Include="LightPresenter.h">
+      <Filter>Presenter\Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -235,6 +238,9 @@
     <ClCompile Include="PMWirePresenter.cpp">
       <Filter>Presenter\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="LightPresenter.cpp">
+      <Filter>Presenter\Light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -302,6 +308,9 @@
     </Filter>
     <Filter Include="SceneShader\Light">
       <UniqueIdentifier>{8a25785f-9316-41b4-a923-8aa6f3324723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Light">
+      <UniqueIdentifier>{07019a94-ef98-4b82-a7a3-f5f2029f347b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

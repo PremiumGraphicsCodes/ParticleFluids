@@ -61,10 +61,13 @@ void SmoothShaderScene::sendMaterial(const int index, const Material& material)
 
 void SmoothShaderScene::setLightBuffer(LightShaderScene* buffer)
 {
+	this->lightScene = buffer;
+	buffer->addParent(this);
 }
 
 void SmoothShaderScene::sendLight(const int index, const PointLight& light)
 {
+	shader->sendLight(index, light);
 }
 
 /*
