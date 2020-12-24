@@ -30,7 +30,6 @@
     <ClInclude Include="IPMPresenter.h" />
     <ClInclude Include="IPresenter.h" />
     <ClInclude Include="IShaderScene.h" />
-    <ClInclude Include="ITextureScene.h" />
     <ClInclude Include="IWireFramePresenter.h" />
     <ClInclude Include="LightPresenter.h" />
     <ClInclude Include="LightShaderScene.h" />

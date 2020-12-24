@@ -151,9 +151,6 @@
     <ClInclude Include="TextureShaderScene.h">
       <Filter>SceneShader\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="ITextureScene.h">
-      <Filter>SceneShader\Texture</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">

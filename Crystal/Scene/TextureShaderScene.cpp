@@ -1,6 +1,6 @@
 #include "TextureShaderScene.h"
 
-#include "ITextureScene.h"
+#include "IMaterialScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;

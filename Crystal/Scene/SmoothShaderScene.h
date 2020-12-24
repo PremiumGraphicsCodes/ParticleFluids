@@ -14,7 +14,6 @@
 #include "TextureShaderScene.h"
 #include "IShaderScene.h"
 #include "IMaterialScene.h"
-#include "ITextureScene.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -53,7 +52,7 @@ private:
 	Graphics::Buffer1d<int> materialIds;
 };
 
-class SmoothShaderScene : public IShaderScene, public IMaterialScene, public ITextureScene
+class SmoothShaderScene : public IShaderScene, public IMaterialScene
 {
 public:
 	explicit SmoothShaderScene(const std::string& name);

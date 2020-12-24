@@ -5,9 +5,13 @@ namespace Crystal {
 		struct Material;
 		class PointLight;
 	}
+	namespace Shader {
+		class TextureObject;
+	}
 	namespace Scene {
 		class LightShaderScene;
 		class MaterialShaderScene;
+		class TextureShaderScene;
 
 class IMaterialScene
 {
@@ -23,6 +27,12 @@ public:
 	virtual void sendLight(const int index, const Graphics::PointLight& light) = 0;
 
 	virtual void sendAllLights() = 0;
+
+	virtual void setTexture(TextureShaderScene* buffer) = 0;
+
+	virtual void sendTexture(const int index, const Shader::TextureObject& texture) = 0;
+
+	virtual void sendAllTextures() = 0;
 };
 
 	}

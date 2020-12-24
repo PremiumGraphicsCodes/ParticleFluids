@@ -5,7 +5,7 @@
 
 namespace Crystal {
 	namespace Scene {
-		class ITextureScene;
+		class IMaterialScene;
 
 class TextureShaderScene
 {
@@ -16,11 +16,11 @@ public:
 
 	void update(const int index);
 
-	void addParent(ITextureScene* parent) { this->parentScenes.push_back(parent); }
+	void addParent(IMaterialScene* parent) { this->parentScenes.push_back(parent); }
 
 private:
 	std::vector<Shader::TextureObject*> textures;
-	std::list<ITextureScene*> parentScenes;
+	std::list<IMaterialScene*> parentScenes;
 };
 
 	}
