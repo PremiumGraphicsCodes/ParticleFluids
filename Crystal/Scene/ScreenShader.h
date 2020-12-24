@@ -68,7 +68,7 @@ public:
 
 	void removeScene(IShaderScene* scene) { this->scenes.remove(scene); }
 
-	MaterialShaderScene* getMateialBuffer() { return &this->materialBuffer; }
+	MaterialShaderScene* getMateialScene() { return &this->materialScene; }
 
 private:
 	Shader::PointRenderer* pointRenderer;
@@ -77,7 +77,7 @@ private:
 	Shader::SmoothRenderer* smoothRenderer;
 
 	std::list<IShaderScene*> scenes;
-	MaterialShaderScene materialBuffer;
+	MaterialShaderScene materialScene;
 
 	Mask mask;
 

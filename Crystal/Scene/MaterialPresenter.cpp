@@ -16,7 +16,7 @@ MaterialPresenter::MaterialPresenter(MaterialScene* model) :
 
 void MaterialPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
-	this->view = sceneShader->getObjectRenderer()->getMateialBuffer();
+	this->view = sceneShader->getObjectRenderer()->getMateialScene();
 	this->index = this->view->getMaterials().size();
 	this->view->add(*this->model->getMaterial());
 }

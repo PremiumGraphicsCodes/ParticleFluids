@@ -103,9 +103,6 @@
     <ClInclude Include="SolidScene.h">
       <Filter>Scene\Shape\CSG</Filter>
     </ClInclude>
-    <ClInclude Include="SolidAsWFPresenter.h">
-      <Filter>Presenter</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleSystemPresenter.h">
       <Filter>Presenter\Shape\ParticleSystem</Filter>
     </ClInclude>
@@ -144,6 +141,9 @@
     </ClInclude>
     <ClInclude Include="TexturePresenter.h">
       <Filter>Presenter\Appearance\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="SolidAsWFPresenter.h">
+      <Filter>Presenter\Shape\Solid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -211,9 +211,6 @@
     <ClCompile Include="SolidScene.cpp">
       <Filter>Scene\Shape\CSG</Filter>
     </ClCompile>
-    <ClCompile Include="SolidAsWFPresenter.cpp">
-      <Filter>Presenter</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleSystemPresenter.cpp">
       <Filter>Presenter\Shape\ParticleSystem</Filter>
     </ClCompile>
@@ -237,6 +234,9 @@
     </ClCompile>
     <ClCompile Include="TexturePresenter.cpp">
       <Filter>Presenter\Appearance\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="SolidAsWFPresenter.cpp">
+      <Filter>Presenter\Shape\Solid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -314,6 +314,9 @@
     </Filter>
     <Filter Include="Presenter\Shape\WireFrame">
       <UniqueIdentifier>{dd678cf2-731d-43e9-8bed-6aa094d92d96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Shape\Solid">
+      <UniqueIdentifier>{2aee7916-85d9-48c4-a3a5-743525cf59b2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

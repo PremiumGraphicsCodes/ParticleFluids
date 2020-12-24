@@ -16,7 +16,7 @@ TexturePresenter::TexturePresenter(TextureScene* model) :
 
 void TexturePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
-	this->view = sceneShader->getObjectRenderer()->getMateialBuffer();
+	this->view = sceneShader->getObjectRenderer()->getMateialScene();
 	this->index = this->view->getTextures().size();
 
 	auto texture = glFactory.createTextureObject();
