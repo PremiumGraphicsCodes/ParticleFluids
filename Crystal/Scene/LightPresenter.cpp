@@ -18,7 +18,7 @@ LightPresenter::LightPresenter(LightScene* model) :
 
 void LightPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
-	this->view = sceneShader->getObjectRenderer()->getLightScene();
+	this->view = sceneShader->getObjectRenderer()->getMateialBuffer();
 	this->index = this->view->getLights().size();
 	this->view->add(*this->model->getLight());
 }
@@ -41,7 +41,7 @@ void LightPresenter::updateView()
 
 void LightPresenter::updateScreenView()
 {
-	this->view->update(index);
+	this->view->updateLight(index);
 }
 
 void LightPresenter::updateParentIdView()

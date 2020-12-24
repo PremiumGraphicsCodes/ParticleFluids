@@ -39,7 +39,7 @@ void MaterialPresenter::updateView()
 
 void MaterialPresenter::updateScreenView()
 {
-	this->view->update(index);
+	this->view->updateMaterial(index);
 }
 
 void MaterialPresenter::updateParentIdView()

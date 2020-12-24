@@ -67,12 +67,6 @@ void SmoothShaderScene::sendAllMaterials()
 	}
 }
 
-void SmoothShaderScene::setLightBuffer(LightShaderScene* buffer)
-{
-	this->lightScene = buffer;
-	buffer->addParent(this);
-}
-
 void SmoothShaderScene::sendLight(const int index, const PointLight& light)
 {
 	shader->sendLight(index, light);
@@ -80,7 +74,7 @@ void SmoothShaderScene::sendLight(const int index, const PointLight& light)
 
 void SmoothShaderScene::sendAllLights()
 {
-	const auto& lights = this->lightScene->getLights();
+	const auto& lights = this->materialScene->getLights();
 	for (auto i = 0; i < lights.size(); ++i) {
 		shader->sendLight(i, lights[i]);
 	}

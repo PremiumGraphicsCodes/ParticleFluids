@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Scene {
 		class LightScene;
-		class LightShaderScene;
+		class MaterialShaderScene;
 
 class LightPresenter : public IPresenter
 {
@@ -28,7 +28,7 @@ private:
 	void updateChildIdView();
 
 	LightScene* model;
-	LightShaderScene* view;
+	MaterialShaderScene* view;
 	int index = 0;
 };
 

@@ -32,7 +32,6 @@
     <ClInclude Include="IShaderScene.h" />
     <ClInclude Include="IWireFramePresenter.h" />
     <ClInclude Include="LightPresenter.h" />
-    <ClInclude Include="LightShaderScene.h" />
     <ClInclude Include="MaterialPresenter.h" />
     <ClInclude Include="MaterialShaderScene.h" />
     <ClInclude Include="ParticleSystemPresenter.h" />
@@ -80,7 +79,6 @@
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="LightPresenter.cpp" />
     <ClCompile Include="LightScene.cpp" />
-    <ClCompile Include="LightShaderScene.cpp" />
     <ClCompile Include="LineShaderScene.cpp" />
     <ClCompile Include="MaterialPresenter.cpp" />
     <ClCompile Include="MaterialScene.cpp" />

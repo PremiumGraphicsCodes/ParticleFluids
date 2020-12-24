@@ -136,9 +136,6 @@
     <ClInclude Include="IPMPresenter.h">
       <Filter>Presenter\Shape\PolygonMesh</Filter>
     </ClInclude>
-    <ClInclude Include="LightShaderScene.h">
-      <Filter>SceneShader\Light</Filter>
-    </ClInclude>
     <ClInclude Include="PMWirePresenter.h">
       <Filter>Presenter\Shape\PolygonMesh</Filter>
     </ClInclude>
@@ -235,9 +232,6 @@
     <ClCompile Include="MaterialShaderScene.cpp">
       <Filter>SceneShader\Material</Filter>
     </ClCompile>
-    <ClCompile Include="LightShaderScene.cpp">
-      <Filter>SceneShader\Light</Filter>
-    </ClCompile>
     <ClCompile Include="PMWirePresenter.cpp">
       <Filter>Presenter\Shape\PolygonMesh</Filter>
     </ClCompile>
@@ -302,9 +296,6 @@
     </Filter>
     <Filter Include="SceneShader\Material">
       <UniqueIdentifier>{22a1a97e-6869-45b2-8d92-4424713abb59}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SceneShader\Light">
-      <UniqueIdentifier>{8a25785f-9316-41b4-a923-8aa6f3324723}</UniqueIdentifier>
     </Filter>
     <Filter Include="Presenter\Appearance">
       <UniqueIdentifier>{8af6cd6f-9cdf-4a55-84fc-89ad4190d37d}</UniqueIdentifier>

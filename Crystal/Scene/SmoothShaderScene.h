@@ -10,7 +10,6 @@
 #include "../Shader/VertexBufferObject.h"
 #include "../Shader/SmoothRenderer.h"
 #include "MaterialShaderScene.h"
-#include "LightShaderScene.h"
 #include "TextureShaderScene.h"
 #include "IShaderScene.h"
 #include "IMaterialScene.h"
@@ -66,8 +65,6 @@ public:
 	void sendMaterial(const int index, const Graphics::Material& material) override;
 
 	void sendAllMaterials() override;
-
-	void setLightBuffer(LightShaderScene* buffer) override;
 
 	void sendLight(const int index, const Graphics::PointLight& light) override;
 
