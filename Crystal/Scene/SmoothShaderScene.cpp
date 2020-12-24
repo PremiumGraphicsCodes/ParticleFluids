@@ -80,12 +80,6 @@ void SmoothShaderScene::sendAllLights()
 	}
 }
 
-void SmoothShaderScene::setTexture(TextureShaderScene* buffer)
-{
-	this->textureScene = buffer;
-	buffer->addParent(this);
-}
-
 void SmoothShaderScene::sendTexture(const int index, const Shader::TextureObject& texture)
 {
 	shader->sendTexture(index, texture);
@@ -93,7 +87,7 @@ void SmoothShaderScene::sendTexture(const int index, const Shader::TextureObject
 
 void SmoothShaderScene::sendAllTextures()
 {
-	const auto& textures = this->textureScene->getTextures();
+	const auto& textures = this->materialScene->getTextures();
 	for (auto i = 0; i < textures.size(); ++i) {
 		shader->sendTexture(i, *textures[i]);
 	}
@@ -103,6 +97,6 @@ void SmoothShaderScene::render(const Graphics::Camera& camera)
 {
 	rBuffer.modelViewMatrix = camera.getModelViewMatrix();
 	rBuffer.projectionMatrix = camera.getProjectionMatrix();
-	rBuffer.textures = this->textureScene->getTextures();
+	rBuffer.textures = this->materialScene->getTextures();
 	shader->render(rBuffer);
 }

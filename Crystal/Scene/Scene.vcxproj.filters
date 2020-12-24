@@ -145,9 +145,6 @@
     <ClInclude Include="TexturePresenter.h">
       <Filter>Presenter\Appearance\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="TextureShaderScene.h">
-      <Filter>SceneShader\Texture</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -241,9 +238,6 @@
     <ClCompile Include="TexturePresenter.cpp">
       <Filter>Presenter\Appearance\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="TextureShaderScene.cpp">
-      <Filter>SceneShader\Texture</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -320,9 +314,6 @@
     </Filter>
     <Filter Include="Presenter\Shape\WireFrame">
       <UniqueIdentifier>{dd678cf2-731d-43e9-8bed-6aa094d92d96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SceneShader\Texture">
-      <UniqueIdentifier>{076b2eb0-841a-4db5-a52e-d8f943bb177d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

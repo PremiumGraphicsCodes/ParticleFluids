@@ -2,7 +2,6 @@
 
 #include "TextureScene.h"
 #include "SceneShader.h"
-#include "TextureShaderScene.h"
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
@@ -17,7 +16,7 @@ TexturePresenter::TexturePresenter(TextureScene* model) :
 
 void TexturePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
-	this->view = sceneShader->getObjectRenderer()->getTextureScene();
+	this->view = sceneShader->getObjectRenderer()->getMateialBuffer();
 	this->index = this->view->getTextures().size();
 
 	auto texture = glFactory.createTextureObject();
@@ -46,7 +45,7 @@ void TexturePresenter::updateScreenView()
 {
 	auto textures = this->view->getTextures();
 	textures[index]->send(*model->getImage());
-	this->view->update(index);
+	this->view->updateTexture(index);
 }
 
 void TexturePresenter::updateParentIdView()

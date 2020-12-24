@@ -3,6 +3,7 @@
 #include "IShaderScene.h"
 #include "../Graphics/Material.h"
 #include "../Graphics/PointLight.h"
+#include "../Shader/TextureObject.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -23,11 +24,18 @@ public:
 
 	void updateLight(const int index);
 
+	void add(Shader::TextureObject* texture) { this->textures.push_back(texture); }
+
+	std::vector<Shader::TextureObject*> getTextures() const { return textures; }
+
+	void updateTexture(const int index);
+
 	void addParent(IMaterialScene* parent) { this->parentScenes.push_back(parent); }
 
 private:
 	std::vector<Graphics::Material> materials;
 	std::vector<Graphics::PointLight> lights;
+	std::vector<Shader::TextureObject*> textures;
 	std::list<IMaterialScene*> parentScenes;
 };
 

@@ -26,8 +26,6 @@ public:
 
 	virtual void sendAllLights() = 0;
 
-	virtual void setTexture(TextureShaderScene* buffer) = 0;
-
 	virtual void sendTexture(const int index, const Shader::TextureObject& texture) = 0;
 
 	virtual void sendAllTextures() = 0;

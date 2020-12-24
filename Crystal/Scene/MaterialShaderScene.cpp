@@ -18,3 +18,10 @@ void MaterialShaderScene::updateLight(const int index)
 		s->sendLight(index, lights[index]);
 	}
 }
+
+void MaterialShaderScene::updateTexture(const int index)
+{
+	for (auto s : parentScenes) {
+		s->sendTexture(index, *textures[index]);
+	}
+}
