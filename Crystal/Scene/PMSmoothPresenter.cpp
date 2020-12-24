@@ -25,10 +25,16 @@ void PMSmoothPresenter::createView(SceneShader* sceneShader, GLObjectFactory& gl
 		this->view = new SmoothShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getSmoothShader());
 		this->view->build(glFactory);
+
 		this->view->setMaterialBuffer(sceneShader->getObjectRenderer()->getMateialBuffer());
 		this->view->sendAllMaterials();
+
 		this->view->setLightBuffer(sceneShader->getObjectRenderer()->getLightScene());
 		this->view->sendAllLights();
+
+		this->view->setTexture(sceneShader->getObjectRenderer()->getTextureScene());
+		this->view->sendAllTextures();
+
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
 	{

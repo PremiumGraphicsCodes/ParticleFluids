@@ -109,5 +109,6 @@ void SmoothShaderScene::render(const Graphics::Camera& camera)
 {
 	rBuffer.modelViewMatrix = camera.getModelViewMatrix();
 	rBuffer.projectionMatrix = camera.getProjectionMatrix();
+	rBuffer.textures = this->textureScene->getTextures();
 	shader->render(rBuffer);
 }

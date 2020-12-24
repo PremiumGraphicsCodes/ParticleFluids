@@ -67,14 +67,10 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 		shader->findUniformLocation(prefix + ".Ls");
 	}
 
-	/*
 	for (int i = 0; i < 8; ++i) {
-		textures.push_back(factory.getTextureFactory()->createTextureObject("SmoothTex01", Imagef(512, 512)));
-
 		const auto prefix = "textures[" + std::to_string(i) + "]";
-		shader.findUniformLocation(prefix);
+		shader->findUniformLocation(prefix);
 	}
-	*/
 
 	return true;
 }
@@ -93,12 +89,11 @@ void SmoothRenderer::sendMaterial(const int index, const Material& material)
 	shader->sendUniform(prefix + ".Kd", material.diffuse);
 	shader->sendUniform(prefix + ".Ks", material.specular);
 	shader->sendUniform(prefix + ".shininess", material.shininess);
-	//		shader->sendUniform(prefix + ".ambientTexId", findIndex(m.ambientTexName));
-	//		shader->sendUniform(prefix + ".diffuseTexId", findIndex(m.diffuseTexName));// m.diffuseTexId);
-	//		shader->sendUniform(prefix + ".specularTexId", findIndex(m.specularTexName));// m.specularTexId);
+	shader->sendUniform(prefix + ".ambientTexId", 0);//findIndex(m.ambientTexName));
+	shader->sendUniform(prefix + ".diffuseTexId", 0);// m.diffuseTexId);
+	shader->sendUniform(prefix + ".specularTexId", 0);// m.specularTexId);
 	shader->unbind();
 }
-
 
 void SmoothRenderer::sendLight(const int index, const PointLight& light)
 {
@@ -131,8 +126,6 @@ void SmoothRenderer::sendTexture(const int index, const Shader::TextureObject& t
 
 void SmoothRenderer::render(const Buffer& buffer)
 {
-	shader->bind();
-
 	const auto& projectionMatrix = buffer.projectionMatrix;
 	const auto& modelviewMatrix = buffer.modelViewMatrix;
 	const auto& eyePos = buffer.eyePosition;
@@ -160,14 +153,14 @@ void SmoothRenderer::render(const Buffer& buffer)
 	shader->enableVertexAttribute(::materialIdLabel);
 
 	int texId = 0;
-	for (const auto& t : buffer.textures) {
-		t.bind(texId++);
+	for (auto t : buffer.textures) {
+		t->bind(texId++);
 	}
 
 	shader->drawTriangles(buffer.count);
 
-	for (const auto& t : buffer.textures) {
-		t.unbind();
+	for (auto t : buffer.textures) {
+		t->unbind();
 	}
 
 	//textures[0].unbind();
@@ -284,7 +277,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "}"
 		<< "void main(void) {" << std::endl
 		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal);" << std::endl
-		//		<< "	fragColor.r = vNormal.r;" << std::endl
+		<< "	fragColor.r = getTextureColor(0).r;" << std::endl
 		//		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal) * getTextureColor();" << std::endl
 		<< "	fragColor.a = 1.0;" << std::endl
 		<< "}" << std::endl;

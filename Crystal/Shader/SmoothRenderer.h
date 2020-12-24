@@ -21,10 +21,8 @@ public:
 		VertexBufferObject normal;
 		VertexBufferObject texCoord;
 		VertexBufferObject materialId;
-		VertexBufferObject specularTexId;
 
-		std::vector<Shader::TextureObject> textures;
-
+		std::vector<Shader::TextureObject*> textures;
 
 		Math::Matrix4df matrix;
 		Math::Matrix4df projectionMatrix;

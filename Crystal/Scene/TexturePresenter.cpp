@@ -22,6 +22,8 @@ void TexturePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glF
 
 	auto texture = glFactory.createTextureObject();
 	this->view->add(texture);
+
+	updateView();
 }
 
 void TexturePresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
@@ -42,6 +44,8 @@ void TexturePresenter::updateView()
 
 void TexturePresenter::updateScreenView()
 {
+	auto textures = this->view->getTextures();
+	textures[index]->send(*model->getImage());
 	this->view->update(index);
 }
 
