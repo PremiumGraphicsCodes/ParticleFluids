@@ -12,7 +12,7 @@
 
 #include "MaterialShaderScene.h"
 #include "LightShaderScene.h"
-//#include "TextureObjectRepository.h"
+#include "TextureShaderScene.h"
 
 #include "../Util/UnCopyable.h"
 #include <memory>
@@ -56,7 +56,7 @@ public:
 
 	Mask getMask() const { return mask; }
 
-	//Shader::TextureObject getTexture() { return texture; }
+	Shader::TextureObject* getTexture() { return texture; }
 
 	Shader::PointRenderer* getPointShader() { return pointRenderer; }
 
@@ -66,8 +66,6 @@ public:
 
 	Shader::SmoothRenderer* getSmoothShader() { return smoothRenderer; }
 
-	Shader::TextureObject* getTextureScene() { return texture; }
-
 	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 
 	void removeScene(IShaderScene* scene) { this->scenes.remove(scene); }
@@ -75,6 +73,8 @@ public:
 	MaterialShaderScene* getMateialBuffer() { return &this->materialBuffer; }
 
 	LightShaderScene* getLightScene() { return &this->lightScene; }
+
+	TextureShaderScene* getTextureScene() { return &this->textureScene; }
 
 private:
 	Shader::PointRenderer* pointRenderer;
@@ -85,6 +85,7 @@ private:
 	std::list<IShaderScene*> scenes;
 	MaterialShaderScene materialBuffer;
 	LightShaderScene lightScene;
+	TextureShaderScene textureScene;
 
 	Mask mask;
 

@@ -11,9 +11,11 @@
 #include "../Shader/SmoothRenderer.h"
 #include "MaterialShaderScene.h"
 #include "LightShaderScene.h"
+#include "TextureShaderScene.h"
 #include "IShaderScene.h"
 #include "IMaterialScene.h"
 #include "ILightScene.h"
+#include "ITextureScene.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -52,7 +54,7 @@ private:
 	Graphics::Buffer1d<int> materialIds;
 };
 
-class SmoothShaderScene : public IShaderScene, public IMaterialScene, public ILightScene
+class SmoothShaderScene : public IShaderScene, public IMaterialScene, public ILightScene, public ITextureScene
 {
 public:
 	explicit SmoothShaderScene(const std::string& name);
@@ -73,6 +75,12 @@ public:
 
 	void sendAllLights() override;
 
+	void setTexture(TextureShaderScene* buffer) override;
+
+	void sendTexture(const int index, const Shader::TextureObject& texture) override;
+
+	void sendAllTextures() override;
+
 	void release(Shader::GLObjectFactory& glFactory) override;
 
 	void render(const Graphics::Camera& camera) override;
@@ -84,6 +92,7 @@ private:
 	Shader::SmoothRenderer::Buffer rBuffer;
 	MaterialShaderScene* materialScene;
 	LightShaderScene* lightScene;
+	TextureShaderScene* textureScene;
 	
 	//MaterialShaderScene* materialBuffer;
 };

@@ -1,29 +1,13 @@
-#pragma once
+#include "TextureShaderScene.h"
 
-#include "IShaderScene.h"
-#include "../Shader/TextureObject.h"
+#include "ITextureScene.h"
 
-namespace Crystal {
-	namespace Scene {
-		class ITextureScene;
+using namespace Crystal::Graphics;
+using namespace Crystal::Scene;
 
-class LightShaderScene
+void TextureShaderScene::update(const int index)
 {
-	/*
-public:
-	void add(const Graphics::PointLight& light) { this->lights.push_back(light); }
-
-	std::vector<Graphics::PointLight> getLights() const { return lights; }
-
-	void update(const int index);
-
-	void addParent(ILightScene* parent) { this->parentScenes.push_back(parent); }
-
-private:
-	std::vector<Graphics::PointLight> lights;
-	std::list<ILightScene*> parentScenes;
-	*/
-};
-
+	for (auto s : parentScenes) {
+		s->sendTexture(index, *textures[index]);
 	}
 }

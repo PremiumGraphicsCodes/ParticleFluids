@@ -61,7 +61,7 @@ void SceneShader::render(const Graphics::Camera& camera, const int width, const 
 	switch (target) {
 	case RenderTarget::Shaded:
 	{
-		auto texture = objectRenderer->getTextureScene();
+		auto texture = objectRenderer->getTexture();
 		renderer.render(*texture);
 		break;
 	}

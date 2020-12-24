@@ -1,29 +1,26 @@
 #pragma once
 
 #include "IShaderScene.h"
-#include "../Graphics/Material.h"
 #include "../Shader/TextureObject.h"
 
 namespace Crystal {
 	namespace Scene {
-		class IMaterialScene;
+		class ITextureScene;
 
 class TextureShaderScene
 {
 public:
-	/*
-	void add(const Graphics::Material& material) { this->materials.push_back(material); }
+	void add(Shader::TextureObject* texture) { this->textures.push_back(texture); }
 
-	std::vector<Graphics::Material> getMaterials() const { return materials; }
+	std::vector<Shader::TextureObject*> getTextures() const { return textures; }
 
 	void update(const int index);
 
-	void addParent(IMaterialScene* parent) { this->parentScenes.push_back(parent); }
-	*/
+	void addParent(ITextureScene* parent) { this->parentScenes.push_back(parent); }
 
 private:
-	std::vector<Shader::TextureObject> textures;
-	std::list<IMaterialScene*> parentScenes;
+	std::vector<Shader::TextureObject*> textures;
+	std::list<ITextureScene*> parentScenes;
 };
 
 	}

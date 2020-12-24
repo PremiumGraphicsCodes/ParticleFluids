@@ -86,16 +86,21 @@ void SmoothShaderScene::sendAllLights()
 	}
 }
 
-
-/*
-void SmoothShaderScene::sendMaterial(const MaterialBuffer& materials)
+void SmoothShaderScene::setTexture(TextureShaderScene* buffer)
 {
-	const auto ms = materials.getMaterials();
-	for (int i = 0; i < ms.size(); ++i) {
-		shader->sendMaterial(i, ms[i]);
-	}
+	this->textureScene = buffer;
+	buffer->addParent(this);
 }
-*/
+
+void SmoothShaderScene::sendTexture(const int index, const Shader::TextureObject& texture)
+{
+	//shader->se
+}
+
+void SmoothShaderScene::sendAllTextures()
+{
+
+}
 
 void SmoothShaderScene::render(const Graphics::Camera& camera)
 {
