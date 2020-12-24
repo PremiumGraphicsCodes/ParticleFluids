@@ -16,6 +16,8 @@ public:
 
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
+	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override {};
+
 	void updateView() override;
 
 private:

@@ -60,7 +60,7 @@ void VDBMenu::onShow()
 
 						auto presenter = scene->getPresenter();
 						presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-						presenter->setBlend(false);
+//						presenter->setBlend(false);
 					}
 
 					std::cout << "import suceeded." << std::endl;

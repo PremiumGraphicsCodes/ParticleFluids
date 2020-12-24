@@ -36,7 +36,7 @@ void TimeLinePanel::onStart()
 
 	auto presenter = psScene->getPresenter();
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	presenter->setBlend(false);
+	//presenter->setBlend(false);
 
 	getWorld()->addAnimation(&animator);
 
