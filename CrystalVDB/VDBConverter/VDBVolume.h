@@ -17,6 +17,8 @@ class VDBVolume : private UnCopyable
 public:
 	VDBVolume();
 
+	explicit VDBVolume(VolumeImpl* impl) { this->impl = impl; }
+
 	explicit VDBVolume(const float value);
 
 	//explicit Volume(std::unique_ptr<VolumeImpl> impl);

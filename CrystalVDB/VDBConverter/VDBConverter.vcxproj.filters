@@ -29,6 +29,9 @@
     <ClCompile Include="VDBFileWriter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="MeshToVolumeConverter.cpp">
+      <Filter>Converter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -61,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="VDBFileWriter.h">
       <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshToVolumeConverter.h">
+      <Filter>Converter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
