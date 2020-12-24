@@ -107,22 +107,22 @@
       <Filter>Presenter</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemPresenter.h">
-      <Filter>Presenter\ParticleSystem</Filter>
+      <Filter>Presenter\Shape\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="WireFramePresenter.h">
-      <Filter>Presenter\WireFrame</Filter>
+      <Filter>Presenter\Shape\WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="IWireFramePresenter.h">
-      <Filter>Presenter\WireFrame</Filter>
+      <Filter>Presenter\Shape\WireFrame</Filter>
     </ClInclude>
     <ClInclude Include="IParticleSystemPresenter.h">
-      <Filter>Presenter\ParticleSystem</Filter>
+      <Filter>Presenter\Shape\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="MaterialPresenter.h">
-      <Filter>Presenter\Material</Filter>
+      <Filter>Presenter\Appearance\Material</Filter>
     </ClInclude>
     <ClInclude Include="PMSmoothPresenter.h">
-      <Filter>Presenter\PolygonMesh</Filter>
+      <Filter>Presenter\Shape\PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="SmoothShaderScene.h">
       <Filter>SceneShader\Smooth</Filter>
@@ -134,7 +134,7 @@
       <Filter>SceneShader\Material</Filter>
     </ClInclude>
     <ClInclude Include="IPMPresenter.h">
-      <Filter>Presenter\PolygonMesh</Filter>
+      <Filter>Presenter\Shape\PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="LightShaderScene.h">
       <Filter>SceneShader\Light</Filter>
@@ -143,10 +143,19 @@
       <Filter>SceneShader\Light</Filter>
     </ClInclude>
     <ClInclude Include="PMWirePresenter.h">
-      <Filter>Presenter\PolygonMesh</Filter>
+      <Filter>Presenter\Shape\PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="LightPresenter.h">
-      <Filter>Presenter\Light</Filter>
+      <Filter>Presenter\Appearance\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturePresenter.h">
+      <Filter>Presenter\Appearance\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureShaderScene.h">
+      <Filter>SceneShader\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="ITextureScene.h">
+      <Filter>SceneShader\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -218,16 +227,16 @@
       <Filter>Presenter</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemPresenter.cpp">
-      <Filter>Presenter\ParticleSystem</Filter>
+      <Filter>Presenter\Shape\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="WireFramePresenter.cpp">
-      <Filter>Presenter\WireFrame</Filter>
+      <Filter>Presenter\Shape\WireFrame</Filter>
     </ClCompile>
     <ClCompile Include="MaterialPresenter.cpp">
-      <Filter>Presenter\Material</Filter>
+      <Filter>Presenter\Appearance\Material</Filter>
     </ClCompile>
     <ClCompile Include="PMSmoothPresenter.cpp">
-      <Filter>Presenter\PolygonMesh</Filter>
+      <Filter>Presenter\Shape\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="MaterialShaderScene.cpp">
       <Filter>SceneShader\Material</Filter>
@@ -236,10 +245,16 @@
       <Filter>SceneShader\Light</Filter>
     </ClCompile>
     <ClCompile Include="PMWirePresenter.cpp">
-      <Filter>Presenter\PolygonMesh</Filter>
+      <Filter>Presenter\Shape\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="LightPresenter.cpp">
-      <Filter>Presenter\Light</Filter>
+      <Filter>Presenter\Appearance\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturePresenter.cpp">
+      <Filter>Presenter\Appearance\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureShaderScene.cpp">
+      <Filter>SceneShader\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -291,26 +306,38 @@
     <Filter Include="Scene\Shape\CSG">
       <UniqueIdentifier>{968cf7ad-c0af-4a0e-a00f-fba1c0e11ea5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Presenter\ParticleSystem">
-      <UniqueIdentifier>{070c53fe-4bfc-4f4a-884d-1f8a1b6d6aaa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Presenter\WireFrame">
-      <UniqueIdentifier>{dd678cf2-731d-43e9-8bed-6aa094d92d96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Presenter\PolygonMesh">
-      <UniqueIdentifier>{c851061b-17b8-4e08-ab22-5b0e71f97385}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Presenter\Material">
-      <UniqueIdentifier>{09d2bfb2-780f-4524-b805-e76103f4fd91}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SceneShader\Material">
       <UniqueIdentifier>{22a1a97e-6869-45b2-8d92-4424713abb59}</UniqueIdentifier>
     </Filter>
     <Filter Include="SceneShader\Light">
       <UniqueIdentifier>{8a25785f-9316-41b4-a923-8aa6f3324723}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Presenter\Light">
+    <Filter Include="Presenter\Appearance">
+      <UniqueIdentifier>{8af6cd6f-9cdf-4a55-84fc-89ad4190d37d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Appearance\Light">
       <UniqueIdentifier>{07019a94-ef98-4b82-a7a3-f5f2029f347b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Appearance\Material">
+      <UniqueIdentifier>{09d2bfb2-780f-4524-b805-e76103f4fd91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Appearance\Texture">
+      <UniqueIdentifier>{15492d18-10fe-4651-a7da-46ba77abeced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Shape">
+      <UniqueIdentifier>{8869dde4-b04c-4ec0-81e5-746196e0263e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Shape\ParticleSystem">
+      <UniqueIdentifier>{070c53fe-4bfc-4f4a-884d-1f8a1b6d6aaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Shape\PolygonMesh">
+      <UniqueIdentifier>{c851061b-17b8-4e08-ab22-5b0e71f97385}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Shape\WireFrame">
+      <UniqueIdentifier>{dd678cf2-731d-43e9-8bed-6aa094d92d96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneShader\Texture">
+      <UniqueIdentifier>{076b2eb0-841a-4db5-a52e-d8f943bb177d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

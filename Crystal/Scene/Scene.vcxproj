@@ -31,6 +31,7 @@
     <ClInclude Include="IPMPresenter.h" />
     <ClInclude Include="IPresenter.h" />
     <ClInclude Include="IShaderScene.h" />
+    <ClInclude Include="ITextureScene.h" />
     <ClInclude Include="IWireFramePresenter.h" />
     <ClInclude Include="LightPresenter.h" />
     <ClInclude Include="LightShaderScene.h" />
@@ -52,7 +53,9 @@
     <ClInclude Include="SmoothShaderScene.h" />
     <ClInclude Include="SolidAsWFPresenter.h" />
     <ClInclude Include="SolidScene.h" />
+    <ClInclude Include="TexturePresenter.h" />
     <ClInclude Include="TextureScene.h" />
+    <ClInclude Include="TextureShaderScene.h" />
     <ClInclude Include="TriangleBuffer.h" />
     <ClInclude Include="TriangleMeshScene.h" />
     <ClInclude Include="TriangleShaderScene.h" />
@@ -96,7 +99,9 @@
     <ClCompile Include="SmoothShaderScene.cpp" />
     <ClCompile Include="SolidAsWFPresenter.cpp" />
     <ClCompile Include="SolidScene.cpp" />
+    <ClCompile Include="TexturePresenter.cpp" />
     <ClCompile Include="TextureScene.cpp" />
+    <ClCompile Include="TextureShaderScene.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
     <ClCompile Include="TriangleShaderScene.cpp" />
     <ClCompile Include="VolumeScene.cpp" />
