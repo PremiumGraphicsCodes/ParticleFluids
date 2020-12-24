@@ -2,6 +2,7 @@
 
 #include "IScene.h"
 #include "../Graphics/Image.h"
+#include "TexturePresenter.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -19,11 +20,11 @@ public:
 
 	Graphics::Image* getImage() { return image.get(); }
 
-	//TextureController getController() { return controller; }
-	IPresenter* getPresenter() override { return nullptr; }
+	IPresenter* getPresenter() override { return presenter.get(); }
 
 private:
 	std::unique_ptr<Graphics::Image> image;
+	std::unique_ptr<TexturePresenter> presenter;
 };
 
 	}

@@ -81,9 +81,6 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 
 void SmoothRenderer::release(GLObjectFactory& factory)
 {
-	for (int i = 0; i < 8; ++i) {
-		//		textures[i].release();
-	}
 	factory.remove(shader);
 }
 
@@ -122,17 +119,15 @@ void SmoothRenderer::sendLight(const int index, const PointLight& light)
 	shader->unbind();
 }
 
-/*
-void SmoothShader::send(const TextureShaderBuffer& buffer)
+void SmoothRenderer::sendTexture(const int index, const Shader::TextureObject& texture)
 {
-	shader.bind();
-	for (int i = 0; i < textures.size(); ++i) {
-		const auto prefix = "textures[" + std::to_string(i) + "]";
-		shader->sendUniform(prefix, textures[i]);
-	}
-	shader.unbind();
+	shader->bind();
+	
+	const auto prefix = "textures[" + std::to_string(index) + "]";
+	shader->sendUniform(prefix, texture, index);
+
+	shader->unbind();
 }
-*/
 
 void SmoothRenderer::render(const Buffer& buffer)
 {

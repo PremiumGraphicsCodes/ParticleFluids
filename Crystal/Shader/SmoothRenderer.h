@@ -44,7 +44,7 @@ public:
 
 	void sendLight(const int index, const Graphics::PointLight& light);
 
-	//void send(const std::vector<Shader::TextureObject>& textures);
+	void sendTexture(const int index, const Shader::TextureObject& texture);
 
 	void render(const Buffer& buffer);
 

@@ -10,4 +10,5 @@ TextureScene::TextureScene(const int id, std::unique_ptr<Image> image, const std
 	IScene(id, name),
 	image(std::move(image))
 {
+	presenter = std::make_unique<TexturePresenter>(this);
 }

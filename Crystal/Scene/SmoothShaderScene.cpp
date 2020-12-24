@@ -94,12 +94,15 @@ void SmoothShaderScene::setTexture(TextureShaderScene* buffer)
 
 void SmoothShaderScene::sendTexture(const int index, const Shader::TextureObject& texture)
 {
-	//shader->se
+	shader->sendTexture(index, texture);
 }
 
 void SmoothShaderScene::sendAllTextures()
 {
-
+	const auto& textures = this->textureScene->getTextures();
+	for (auto i = 0; i < textures.size(); ++i) {
+		shader->sendTexture(i, *textures[i]);
+	}
 }
 
 void SmoothShaderScene::render(const Graphics::Camera& camera)
