@@ -1,7 +1,5 @@
 #pragma once
 
-//#include "../Graphics/PointLight.h"
-
 namespace Crystal {
 	namespace Graphics {
 		class PointLight;
@@ -9,7 +7,7 @@ namespace Crystal {
 	namespace Scene {
 		class LightShaderScene;
 
-class ILightScene
+class ISmoothShaderScene
 {
 public:
 	virtual void setLightBuffer(LightShaderScene* buffer) = 0;
@@ -17,7 +15,7 @@ public:
 	virtual void sendLight(const int index, const Graphics::PointLight& light) = 0;
 
 	virtual void sendAllLights() = 0;
-};
 
+};
 	}
 }

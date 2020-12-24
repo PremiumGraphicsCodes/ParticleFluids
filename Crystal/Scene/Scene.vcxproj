@@ -25,7 +25,6 @@
     <ClInclude Include="CameraScene.h" />
     <ClInclude Include="CSGScene.h" />
     <ClInclude Include="IAnimator.h" />
-    <ClInclude Include="ILightScene.h" />
     <ClInclude Include="IMaterialScene.h" />
     <ClInclude Include="IParticleSystemPresenter.h" />
     <ClInclude Include="IPMPresenter.h" />

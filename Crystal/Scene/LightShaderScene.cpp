@@ -1,5 +1,5 @@
 #include "LightShaderScene.h"
-#include "ILightScene.h"
+#include "IMaterialScene.h"
 
 using namespace Crystal::Scene;
 

@@ -5,7 +5,7 @@
 
 namespace Crystal {
 	namespace Scene {
-		class ILightScene;
+		class IMaterialScene;
 
 class LightShaderScene
 {
@@ -16,11 +16,11 @@ public:
 
 	void update(const int index);
 
-	void addParent(ILightScene* parent) { this->parentScenes.push_back(parent); }
+	void addParent(IMaterialScene* parent) { this->parentScenes.push_back(parent); }
 
 private:
 	std::vector<Graphics::PointLight> lights;
-	std::list<ILightScene*> parentScenes;
+	std::list<IMaterialScene*> parentScenes;
 };
 
 	}

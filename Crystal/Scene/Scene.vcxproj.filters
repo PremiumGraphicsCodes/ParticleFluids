@@ -139,9 +139,6 @@
     <ClInclude Include="LightShaderScene.h">
       <Filter>SceneShader\Light</Filter>
     </ClInclude>
-    <ClInclude Include="ILightScene.h">
-      <Filter>SceneShader\Light</Filter>
-    </ClInclude>
     <ClInclude Include="PMWirePresenter.h">
       <Filter>Presenter\Shape\PolygonMesh</Filter>
     </ClInclude>
