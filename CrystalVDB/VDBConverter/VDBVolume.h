@@ -23,6 +23,10 @@ public:
 
 	//explicit Volume(std::unique_ptr<VolumeImpl> impl);
 
+	void setValue(const std::array<int,3>& index, const float value);
+
+	float getValue(const std::array<int, 3> index);
+
 	~VDBVolume();
 
 	void fill(const unsigned int coord1, const unsigned int coord2, const float value);

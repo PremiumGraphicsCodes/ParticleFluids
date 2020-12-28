@@ -4,6 +4,13 @@
 //using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
+TEST(VolumeTest, TestGet)
+{
+    VDBVolume volume;
+    volume.setValue({ 1,1,1 }, 10.0f);
+    EXPECT_EQ(10.0f, volume.getValue({ 1,1,1 }));
+}
+
 TEST(VolumeTest, TestFill)
 {
     /*
