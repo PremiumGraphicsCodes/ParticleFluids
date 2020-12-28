@@ -7,20 +7,23 @@
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
 VDBPolygonMesh::VDBPolygonMesh() :
-	impl( new PolygonMeshImpl() )
+	VDBPolygonMesh(-1, "")
 {
 }
 
-//PolygonMesh::PolygonMesh(PolygonMesh&& rhs) = default;
-
-//PolygonMesh& PolygonMesh::operator=(const PolygonMesh&& rhs) = default;
+VDBPolygonMesh::VDBPolygonMesh(const int id, const std::string& name) :
+	IShapeScene(id, name)
+{
+	impl = std::make_unique<PolygonMeshImpl>();
+}
 
 VDBPolygonMesh::~VDBPolygonMesh()
 {
-	delete impl;
+
 }
 
 void VDBPolygonMesh::addVertex(const Vector3df& position)
@@ -148,5 +151,12 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMesh::toCrystal() const
 	//return Crystal::Shape::PolygonMesh();
 }
 
-
-
+Box3d VDBPolygonMesh::getBoundingBox() const
+{
+	auto vertices = this->getVerticesd();
+	Math::Box3d box(vertices[0]);
+	for (auto v : vertices) {
+		box.add(v);
+	}
+	return box;
+}

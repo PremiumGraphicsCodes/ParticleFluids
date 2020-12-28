@@ -4,6 +4,7 @@
 #include "../../Crystal/Util/UnCopyable.h"
 
 #include "../../Crystal/Shape/PolygonMesh.h"
+#include "../../Crystal/Scene/IShapeScene.h"
 
 #include <memory>
 
@@ -11,10 +12,12 @@ namespace Crystal {
 	namespace VDB {
 		class PolygonMeshImpl;
 
-class VDBPolygonMesh : private UnCopyable
+class VDBPolygonMesh : public Scene::IShapeScene
 {
 public:
 	VDBPolygonMesh();
+
+	VDBPolygonMesh(const int id, const std::string& name);
 
 	~VDBPolygonMesh();
 
@@ -38,10 +41,24 @@ public:
 
 	std::unique_ptr<Crystal::Shape::PolygonMesh> toCrystal() const;
 
-	PolygonMeshImpl* getImpl() const { return impl; }
+	PolygonMeshImpl* getImpl() const { return impl.get(); }
+
+	void translate(const Math::Vector3dd& v) override {};
+
+	void transform(const Math::Matrix3dd& m) override {};
+
+	void transform(const Math::Matrix4dd& m) override {};
+
+	Scene::IPresenter* getPresenter() {
+		return nullptr;
+	}//presenter.get(); };
+
+	Scene::SceneType getType() const { return Scene::SceneType::None; }
+
+	Math::Box3d getBoundingBox() const override;
 
 private:
-	PolygonMeshImpl* impl;
+	std::unique_ptr<PolygonMeshImpl> impl;
 };
 
 	}
