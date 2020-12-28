@@ -4,7 +4,7 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
 #include "../../CrystalViewer/AppBase/DoubleView.h"
-#include "../../CrystalViewer/AppBase/DirectoryView.h"
+#include "../../CrystalViewer/AppBase/MaterialSelectView.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -23,6 +23,7 @@ private:
 private:
 	ObjectSelectView particleSystemSelectView;
 	DoubleView radiusView;
+	MaterialSelectView materialView;
 };
 
 	}

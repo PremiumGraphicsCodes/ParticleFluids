@@ -13,10 +13,12 @@ using namespace Crystal::VDB;
 PSToVolumeView::PSToVolumeView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	particleSystemSelectView("ParticleSystem", model, canvas),
-	radiusView("Radius", 5.0)
+	radiusView("Radius", 5.0),
+	materialView("Material", model)
 {
 	add(&particleSystemSelectView);
 	add(&radiusView);
+	add(&materialView);
 }
 
 void PSToVolumeView::onOk()
@@ -42,7 +44,11 @@ void PSToVolumeView::onOk()
 	auto newMesh = mesh->toCrystal();
 	auto newScene = new Crystal::Scene::PolygonMeshScene(getWorld()->getNextSceneId(), "Mesh", std::move(newMesh));
 
+	auto materialName = materialView.getSelected();
+	auto material = getWorld()->getScenes()->findSceneByName<MaterialScene*>(materialName);
+	Crystal::Scene::PolygonMeshScene::FaceGroup group(newMesh->getFaces(), material);
+	//newScene->addGroup()
+
 	newScene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	getWorld()->getScenes()->addScene(newScene);
 }
-

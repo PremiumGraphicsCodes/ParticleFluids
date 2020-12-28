@@ -60,6 +60,8 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 
 	auto cMesh = mesh->toCrystal();
 	meshScene->setShape(std::move(cMesh));
+	//Crystal::Scene::PolygonMeshScene::FaceGroup group(cMesh->getFaces(), nullptr);
+	//meshScene->addGroup()
 
 	//meshScene->getS
 	

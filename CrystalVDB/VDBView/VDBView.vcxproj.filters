@@ -5,10 +5,12 @@
     <ClCompile Include="PSToVolumeView.cpp" />
     <ClCompile Include="VDBParticleSystemView.cpp" />
     <ClCompile Include="VDBMenu.cpp" />
+    <ClCompile Include="VDBVolumeView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PSToVolumeView.h" />
     <ClInclude Include="VDBParticleSystemView.h" />
     <ClInclude Include="VDBMenu.h" />
+    <ClInclude Include="VDBVolumeView.h" />
   </ItemGroup>
 </Project>
