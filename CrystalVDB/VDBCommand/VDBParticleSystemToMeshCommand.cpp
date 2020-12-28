@@ -16,10 +16,12 @@ using namespace Crystal::VDB;
 VDBParticleSystemToMeshCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	meshId(::MeshIdLabel, -1),
+	materialId(::MaterialIdLabel, -1),
 	radius(::RadiusLabel, 5.0)
 {
 	add(&particleSystemId);
 	add(&meshId);
+	add(&materialId);
 	add(&radius);
 }
 
@@ -46,6 +48,10 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	if (meshScene == nullptr) {
 		return false;
 	}
+	auto materialScene = world->getScenes()->findSceneById<MaterialScene*>(args.materialId.getValue());
+	if (materialScene == nullptr) {
+		return false;
+	}
 
 	VDBParticleSystem ps;
 	auto particles = scene->getShape()->getParticles();
@@ -59,11 +65,10 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	auto mesh = toMeshConvereter.toMesh(*volume);
 
 	auto cMesh = mesh->toCrystal();
+	meshScene->clear();
 	meshScene->setShape(std::move(cMesh));
-	//Crystal::Scene::PolygonMeshScene::FaceGroup group(cMesh->getFaces(), nullptr);
-	//meshScene->addGroup()
-
-	//meshScene->getS
+	Crystal::Scene::PolygonMeshScene::FaceGroup group(meshScene->getShape()->getFaces(), materialScene);
+	meshScene->addGroup(group);
 	
 	return false;
 }
