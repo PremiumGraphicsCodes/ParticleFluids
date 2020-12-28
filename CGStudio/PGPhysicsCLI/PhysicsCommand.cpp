@@ -3,7 +3,7 @@
 
 #include "../../CrystalViewer/Command/Command.h"
 
-#include "../../CrystalAlgo/CrystalPhysicsCommand/PhysicsCommandFactory.h"
+#include "../../CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
 
 //#include "../../Crystal/Scene/World.h"
 #include "../PGCLI/Converter.h"
