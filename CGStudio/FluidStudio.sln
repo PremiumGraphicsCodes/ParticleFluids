@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGControl", "PGControl\PGCo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Crystal", "Crystal", "{3794A29F-058E-4B42-9419-354A276119D7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalAlgo", "..\CrystalSpace\CrystalAlgo\CrystalAlgo.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalSpace\CrystalAlgo\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HwndExtensions", "ThirdParty\hwnd-adorner\HwndExtensions\HwndExtensions.csproj", "{529FE5B9-FAC5-4222-8170-C8C0B911A588}"
 EndProject

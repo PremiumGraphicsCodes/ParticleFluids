@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalAlgo", "CrystalAlgo\CrystalAlgo.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "CrystalAlgo\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
 	ProjectSection(ProjectDependencies) = postProject
 		{59C5EA30-1E57-417C-9416-17B592E8724E} = {59C5EA30-1E57-417C-9416-17B592E8724E}
 		{EF054C93-201B-4807-9285-CABC9C68978A} = {EF054C93-201B-4807-9285-CABC9C68978A}
