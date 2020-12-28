@@ -33,6 +33,7 @@
       <Filter>Converter</Filter>
     </ClCompile>
     <ClCompile Include="VDBParticleSystemPresenter.cpp" />
+    <ClCompile Include="VDBPolygonMeshPresenter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -70,6 +71,7 @@
       <Filter>Converter</Filter>
     </ClInclude>
     <ClInclude Include="VDBParticleSystemPresenter.h" />
+    <ClInclude Include="VDBPolygonMeshPresenter.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

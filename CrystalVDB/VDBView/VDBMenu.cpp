@@ -12,6 +12,7 @@
 #include "../VDBConverter/VDBFileWriter.h"
 
 #include "VDBParticleSystemView.h"
+#include "VDBPolygonMeshView.h"
 #include "VDBVolumeView.h"
 #include "PSToVolumeView.h"
 
@@ -100,6 +101,9 @@ void VDBMenu::onShow()
 		}
 		if (ImGui::MenuItem("VDBParticleSystem")) {
 			control->setWindow(new VDBParticleSystemView("VDBParticles", world, getCanvas()));
+		}
+		if (ImGui::MenuItem("VDBPolygonMesh")) {
+			control->setWindow(new VDBPolygonMeshView("VDBMesh", world, getCanvas()));
 		}
 		if (ImGui::MenuItem("VDBVolume")) {
 			control->setWindow(new VDBVolumeView("VDBVolume", world, getCanvas()));

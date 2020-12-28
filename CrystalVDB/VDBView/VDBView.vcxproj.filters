@@ -8,6 +8,7 @@
     <ClCompile Include="PSToVolumeView.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
+    <ClCompile Include="VDBPolygonMeshView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBParticleSystemView.h" />
@@ -16,6 +17,7 @@
     <ClInclude Include="PSToVolumeView.h">
       <Filter>Converter</Filter>
     </ClInclude>
+    <ClInclude Include="VDBPolygonMeshView.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">
