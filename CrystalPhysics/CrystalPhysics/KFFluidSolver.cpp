@@ -5,7 +5,7 @@
 
 #include "KFFluidScene.h"
 #include "CSGBoundaryScene.h"
-#include "../../CrystalAlgo/CrystalAlgo/CompactSpaceHash3d.h"
+#include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
 
 #include <iostream>
 

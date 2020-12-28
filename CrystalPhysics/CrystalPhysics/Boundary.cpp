@@ -1,7 +1,7 @@
 #include "Boundary.h"
 
 #include "../../Crystal/Math/Triangle3d.h"
-#include "../../CrystalAlgo/CrystalAlgo/MeshToParticleAlgo.h"
+#include "../../CrystalSpace/CrystalAlgo/MeshToParticleAlgo.h"
 
 #include <cassert>
 
