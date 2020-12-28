@@ -2,42 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="FluidStudioView.cpp" />
-    <ClCompile Include="TimeLinePanel.cpp" />
-    <ClCompile Include="FluidSimulationView.cpp" />
-    <ClCompile Include="SimulationMenu.cpp" />
-    <ClCompile Include="TimeSeriesParticleSystemReader.cpp">
-      <Filter>TimeSeries</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeSeriesParticleSystemWriter.cpp">
-      <Filter>TimeSeries</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeSeriesParticleSystemAnimator.cpp">
-      <Filter>TimeSeries</Filter>
-    </ClCompile>
     <ClCompile Include="PSToVolumeView.cpp" />
     <ClCompile Include="VDBParticleSystemView.cpp" />
     <ClCompile Include="VDBMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TimeLinePanel.h" />
-    <ClInclude Include="FluidSimulationView.h" />
-    <ClInclude Include="SimulationMenu.h" />
-    <ClInclude Include="TimeSeriesParticleSystemReader.h">
-      <Filter>TimeSeries</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeSeriesParticleSystemWriter.h">
-      <Filter>TimeSeries</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeSeriesParticleSystemAnimator.h">
-      <Filter>TimeSeries</Filter>
-    </ClInclude>
     <ClInclude Include="PSToVolumeView.h" />
     <ClInclude Include="VDBParticleSystemView.h" />
     <ClInclude Include="VDBMenu.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="TimeSeries">
-      <UniqueIdentifier>{3eec49a9-986f-49d4-9f9f-991bb36aed64}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

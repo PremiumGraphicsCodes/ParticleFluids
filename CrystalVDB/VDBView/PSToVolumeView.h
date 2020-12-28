@@ -6,9 +6,6 @@
 #include "../../CrystalViewer/AppBase/DoubleView.h"
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
 
-#include "../../CrystalAlgo/CrystalPhysics/KFFluidSolver.h"
-#include "TimeSeriesParticleSystemWriter.h"
-
 namespace Crystal {
 	namespace Physics {
 		class KFFluidScene;
