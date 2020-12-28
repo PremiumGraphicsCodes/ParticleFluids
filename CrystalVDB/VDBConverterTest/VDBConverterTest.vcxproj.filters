@@ -5,18 +5,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ParticleSystemToVolumeConverterTest.cpp" />
-    <ClCompile Include="VolumeTest.cpp" />
-    <ClCompile Include="PolygonMeshTest.cpp" />
     <ClCompile Include="VolumeToMeshConverterTest.cpp" />
-    <ClCompile Include="VDBParticleSystemTest.cpp" />
     <ClCompile Include="VDBFileReaderTest.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
     <ClCompile Include="VDBFileWriterTest.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="MeshToVolumeTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">

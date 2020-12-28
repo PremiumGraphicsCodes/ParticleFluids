@@ -12,7 +12,7 @@ struct Particle
     openvdb::Real  radius;
 };
 
-class ParticleSystemImpl
+class VDBParticleSystemImpl
 {
 protected:
     openvdb::Real           mRadiusScale;
@@ -21,10 +21,10 @@ protected:
 public:
     typedef openvdb::Vec3R  PosType;
 
-    ParticleSystemImpl(openvdb::Real rScale = 1, openvdb::Real vScale = 1)
+    VDBParticleSystemImpl(openvdb::Real rScale = 1, openvdb::Real vScale = 1)
         : mRadiusScale(rScale), mVelocityScale(vScale) {}
 
-    ~ParticleSystemImpl()
+    ~VDBParticleSystemImpl()
     {}
 
     void add(const openvdb::Vec3R& position, const openvdb::Real& radius, const openvdb::Vec3R& v = openvdb::Vec3R(0, 0, 0));

@@ -1,6 +1,6 @@
 #include "VDBParticleSystem.h"
 
-#include "ParticleSystemImpl.h"
+#include "VDBParticleSystemImpl.h"
 
 #include "Converter.h"
 
@@ -13,7 +13,7 @@ using namespace Crystal::VDB;
 Crystal::VDB::VDBParticleSystem::VDBParticleSystem(const int id, const std::string name) :
     IShapeScene(id, name)
 {
-    this->impl = std::make_unique<ParticleSystemImpl>();
+    this->impl = std::make_unique<VDBParticleSystemImpl>();
     this->presenter = std::make_unique<VDBParticleSystemPresenter>(this);
 }
 
@@ -57,18 +57,4 @@ Box3d VDBParticleSystem::getBoundingBox() const
         box.add(getPosition(i));
     }
     return box;
-}
-
-std::unique_ptr<Crystal::Shape::IParticleSystem> VDBParticleSystem::toCrystal() const
-{
-    const auto count = impl->size();
-    auto shape = std::make_unique<Crystal::Shape::ParticleSystem<Crystal::Shape::IParticleAttribute>>();
-    for (int i = 0; i < count; ++i) {
-        openvdb::Real radius;
-        openvdb::Vec3R v;
-        impl->getPosRad(i, v, radius);
-        const auto p = Converter::fromVDB(v);
-        shape->add(p, Crystal::Shape::IParticleAttribute(radius));
-    }
-    return std::move(shape);
 }

@@ -4,12 +4,6 @@
     <ClCompile Include="VolumeImpl.cpp">
       <Filter>Impl</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleSystemImpl.cpp">
-      <Filter>Impl</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystemToVolumeConverter.cpp">
-      <Filter>Converter</Filter>
-    </ClCompile>
     <ClCompile Include="VolumeToMeshConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
@@ -34,6 +28,12 @@
     </ClCompile>
     <ClCompile Include="VDBParticleSystemPresenter.cpp" />
     <ClCompile Include="VDBPolygonMeshPresenter.cpp" />
+    <ClCompile Include="VDBParticleSystemConverter.cpp">
+      <Filter>Converter</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBParticleSystemImpl.cpp">
+      <Filter>Impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -42,14 +42,8 @@
     <ClInclude Include="VolumeImpl.h">
       <Filter>Impl</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystemImpl.h">
-      <Filter>Impl</Filter>
-    </ClInclude>
     <ClInclude Include="PolygonMeshImpl.h">
       <Filter>Impl</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleSystemToVolumeConverter.h">
-      <Filter>Converter</Filter>
     </ClInclude>
     <ClInclude Include="VolumeToMeshConverter.h">
       <Filter>Converter</Filter>
@@ -72,6 +66,12 @@
     </ClInclude>
     <ClInclude Include="VDBParticleSystemPresenter.h" />
     <ClInclude Include="VDBPolygonMeshPresenter.h" />
+    <ClInclude Include="VDBParticleSystemConverter.h">
+      <Filter>Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBParticleSystemImpl.h">
+      <Filter>Impl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

@@ -1,8 +1,8 @@
-#include "ParticleSystemImpl.h"
+#include "VDBParticleSystemImpl.h"
 
 using namespace Crystal::VDB;
 
-void ParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::Real& radius, const openvdb::Vec3R& v)
+void VDBParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::Real& radius, const openvdb::Vec3R& v)
 {
     Particle pa;
     pa.position = position;
@@ -11,7 +11,7 @@ void ParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::Real
     particles.push_back(pa);
 }
 
-openvdb::CoordBBox ParticleSystemImpl::getBBox(const openvdb::GridBase& grid)
+openvdb::CoordBBox VDBParticleSystemImpl::getBBox(const openvdb::GridBase& grid)
 {
     openvdb::CoordBBox bbox;
     openvdb::Coord& min = bbox.min(), & max = bbox.max();

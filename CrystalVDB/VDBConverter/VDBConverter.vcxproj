@@ -354,8 +354,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="VDBAdapter.cpp" />
     <ClCompile Include="VDBFileReader.cpp" />
     <ClCompile Include="VDBFileWriter.cpp" />
-    <ClCompile Include="ParticleSystemImpl.cpp" />
-    <ClCompile Include="ParticleSystemToVolumeConverter.cpp" />
+    <ClCompile Include="VDBParticleSystemImpl.cpp" />
+    <ClCompile Include="VDBParticleSystemConverter.cpp" />
     <ClCompile Include="VDBParticleSystem.cpp" />
     <ClCompile Include="VDBParticleSystemPresenter.cpp" />
     <ClCompile Include="VDBPolygonMesh.cpp" />
@@ -371,9 +371,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="VDBAdapter.h" />
     <ClInclude Include="VDBFileReader.h" />
     <ClInclude Include="VDBFileWriter.h" />
-    <ClInclude Include="ParticleSystemToVolumeConverter.h" />
+    <ClInclude Include="VDBParticleSystemConverter.h" />
     <ClInclude Include="VDBParticleSystem.h" />
-    <ClInclude Include="ParticleSystemImpl.h" />
+    <ClInclude Include="VDBParticleSystemImpl.h" />
     <ClInclude Include="VDBParticleSystemPresenter.h" />
     <ClInclude Include="VDBPolygonMesh.h" />
     <ClInclude Include="PolygonMeshImpl.h" />

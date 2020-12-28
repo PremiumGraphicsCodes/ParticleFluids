@@ -3,7 +3,7 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "../VDBConverter/ParticleSystemToVolumeConverter.h"
+#include "../VDBConverter/VDBParticleSystemConverter.h"
 #include "../VDBConverter/VolumeToMeshConverter.h"
 
 #include <iostream>
@@ -37,7 +37,7 @@ void PSToVolumeView::onOk()
 		ps.add(p->getPosition(), p->getAttribute().size);
 	}
 
-	ParticleSystemToVolumeConverter converter;
+	VDBParticleSystemConverter converter;
 	auto volume = converter.toVolume(ps, radiusView.getValue());
 	std::cout << "voxels = " << volume->getActiveVoxelCount() << std::endl;;
 }

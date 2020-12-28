@@ -9,11 +9,8 @@
 #include <memory>
 
 namespace Crystal {
-    namespace Shape {
-        class IParticleSystem;
-    }
     namespace VDB {
-        class ParticleSystemImpl;
+        class VDBParticleSystemImpl;
 
 class VDBParticleSystem : public Scene::IShapeScene
 {
@@ -34,11 +31,9 @@ public:
 
  //   Crystal::Scene::ParticleSystemScene* toCrystal() const;
 
-    const ParticleSystemImpl* getImpl() const { return impl.get(); }
+    const VDBParticleSystemImpl* getImpl() const { return impl.get(); }
 
     void fromCrystal(const std::vector<Math::Vector3dd>& positions, const float radius);
-
-    std::unique_ptr<Crystal::Shape::IParticleSystem> toCrystal() const;
 
     void translate(const Math::Vector3dd& v) override {};
 
@@ -53,7 +48,7 @@ public:
     Math::Box3d getBoundingBox() const override;
 
 private:
-    std::unique_ptr<ParticleSystemImpl> impl;
+    std::unique_ptr<VDBParticleSystemImpl> impl;
     std::unique_ptr<VDBParticleSystemPresenter> presenter;
 };
 

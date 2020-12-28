@@ -4,7 +4,7 @@
 
 #include "../../Crystal/Scene/SceneShader.h"
 #include "../../Crystal/Scene/PointShaderScene.h"
-#include "ParticleSystemImpl.h"
+#include "VDBParticleSystemImpl.h"
 #include "Converter.h"
 //#include "PointShaderScene.h"
 
