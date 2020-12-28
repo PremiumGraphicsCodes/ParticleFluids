@@ -16,6 +16,7 @@
     <ClCompile Include="VDBFileWriterTest.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="MeshToVolumeTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="FileIO">
