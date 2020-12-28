@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
-#include "../../CrystalViewer/AppBase/ObjectSelectView.h"
+#include "../../CrystalViewer/AppBase/Sphere3dView.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -18,7 +18,8 @@ private:
 	void onOk() override;
 
 private:
-	ObjectSelectView particleSystemSelectView;
+	Sphere3dView sphereView;
+	DoubleView divideLengthView;
 };
 
 	}
