@@ -6,6 +6,8 @@
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "../../Crystal/Scene/IShapeScene.h"
 
+#include "VDBPolygonMeshPresenter.h"
+
 #include <memory>
 
 namespace Crystal {
@@ -49,9 +51,7 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override {};
 
-	Scene::IPresenter* getPresenter() {
-		return nullptr;
-	}//presenter.get(); };
+	Scene::IPresenter* getPresenter() { return presenter.get(); }
 
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
@@ -59,6 +59,7 @@ public:
 
 private:
 	std::unique_ptr<PolygonMeshImpl> impl;
+	std::unique_ptr<VDBPolygonMeshPresenter> presenter;
 };
 
 	}

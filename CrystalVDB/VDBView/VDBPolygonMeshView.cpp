@@ -3,18 +3,24 @@
 #include "../VDBConverter/VDBPolygonMesh.h"
 #include "../VDBConverter/VDBParticleSystem.h"
 
+#include "../../Crystal/Scene/MaterialScene.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBPolygonMeshView::VDBPolygonMeshView(const std::string& name, World* model, Canvas* canvas) :
-	IOkCancelView(name, model, canvas)
+VDBPolygonMeshView::VDBPolygonMeshView(const std::string& name, World* world, Canvas* canvas) :
+	IOkCancelView(name, world, canvas),
+	materialView("Material", world)
 {
+	add(&materialView);
 }
 
 void VDBPolygonMeshView::onOk()
 {
+	auto materialName = materialView.getSelected();
+	auto material = getWorld()->getScenes()->findSceneByName<MaterialScene*>(materialName);
 	auto mesh = new VDBPolygonMesh(getWorld()->getNextSceneId(), "VDBMesh");
 	// cube vertices
 

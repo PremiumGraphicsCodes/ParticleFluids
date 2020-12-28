@@ -183,7 +183,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FluidStudioView.cpp" />
+    <ClCompile Include="VDBView.cpp" />
     <ClCompile Include="VDBMenu.cpp" />
     <ClCompile Include="PSToVolumeView.cpp" />
     <ClCompile Include="VDBParticleSystemView.cpp" />

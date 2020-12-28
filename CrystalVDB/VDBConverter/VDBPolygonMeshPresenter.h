@@ -4,7 +4,7 @@
 
 namespace Crystal {
 	namespace Scene {
-		class SmoothShaderScene;
+		class LineShaderScene;
 	}
 	namespace VDB {
 		class VDBPolygonMesh;
@@ -29,7 +29,7 @@ private:
 
 private:
 	VDBPolygonMesh* model;
-	Scene::SmoothShaderScene* view;
+	Scene::LineShaderScene* view;
 };
 
 	}

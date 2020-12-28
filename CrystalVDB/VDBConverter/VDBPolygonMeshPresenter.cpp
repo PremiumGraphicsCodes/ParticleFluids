@@ -3,8 +3,9 @@
 #include "VDBPolygonMesh.h"
 
 #include "../../Crystal/Scene/SceneShader.h"
-#include "../../Crystal/Scene/SmoothShaderScene.h"
+#include "../../Crystal/Scene/LineShaderScene.h"
 
+using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 using namespace Crystal::VDB;
@@ -18,14 +19,10 @@ VDBPolygonMeshPresenter::VDBPolygonMeshPresenter(VDBPolygonMesh* model) :
 void VDBPolygonMeshPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
-		this->view = new SmoothShaderScene(model->getName());
-		this->view->setShader(sceneShader->getObjectRenderer()->getSmoothShader());
+		this->view = new LineShaderScene(model->getName());
+		this->view->setShader(sceneShader->getObjectRenderer()->getWireShader());
 		this->view->build(glFactory);
 
-		this->view->setMaterialBuffer(sceneShader->getObjectRenderer()->getMateialScene());
-		this->view->sendAllMaterials();
-		this->view->sendAllLights();
-		this->view->sendAllTextures();
 
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
@@ -49,42 +46,32 @@ void VDBPolygonMeshPresenter::updateView()
 
 void VDBPolygonMeshPresenter::updateScreenView()
 {
-	if (!model->isVisible()) {
-		this->view->send(SmoothBuffer());
-		return;
+	const auto ps = model->getVerticesf();
+	LineBuffer buffer;
+	for (const auto& p : ps) {
+		buffer.addVertex(p, ColorRGBAf(1.0, 1.0, 1.0, 1.0));
 	}
-	const auto vertices = model->getVerticesf();
-	const auto vs = model->getTriangles();
-	/*
-	const auto& shape = model->getShape();
-	const auto& vs = shape->getVertices();
-	const auto& ps = shape->getPositions();
-	const auto& tcs = shape->getTexCoords();
-	const auto& ns = shape->getNormals();
 
-	SmoothBuffer buffer;
+	const auto triangles = model->getTriangles();
 
-	auto groups = model->getGroups();
-	for (const auto& group : groups) {
-		int materialId = 0;//group.material->;
-
-		auto faces = group.faces;
-		for (const auto& f : faces) {
-			const auto& vIds = f.getVertexIds();
-			for (const auto vId : vIds) {
-				const auto& v = vs[vId];
-				const auto& p = ps[v.positionId];
-				const auto& n = ns[v.normalId];
-				Math::Vector2df texCoord(0, 0);
-				if (v.texCoordId != -1) {
-					texCoord = tcs[v.texCoordId];
-				}
-				buffer.addVertex(p, n, texCoord, materialId);
-			}
+	for (const auto& f : triangles) {
+		for (const auto vId : f) {
+			buffer.addIndex(vId);
 		}
 	}
+
+	const auto quads = model->getQuads();
+
+	for (const auto& q : quads) {
+		buffer.addIndex(q[0]);
+		buffer.addIndex(q[1]);
+		buffer.addIndex(q[1]);
+		buffer.addIndex(q[2]);
+		buffer.addIndex(q[2]);
+		buffer.addIndex(q[3]);
+	}
+
 	this->view->send(buffer);
-	*/
 }
 
 void VDBPolygonMeshPresenter::updateParentIdView()
