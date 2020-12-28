@@ -2,15 +2,24 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="FluidStudioView.cpp" />
-    <ClCompile Include="PSToVolumeView.cpp" />
     <ClCompile Include="VDBParticleSystemView.cpp" />
     <ClCompile Include="VDBMenu.cpp" />
     <ClCompile Include="VDBVolumeView.cpp" />
+    <ClCompile Include="PSToVolumeView.cpp">
+      <Filter>Converter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PSToVolumeView.h" />
     <ClInclude Include="VDBParticleSystemView.h" />
     <ClInclude Include="VDBMenu.h" />
     <ClInclude Include="VDBVolumeView.h" />
+    <ClInclude Include="PSToVolumeView.h">
+      <Filter>Converter</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Converter">
+      <UniqueIdentifier>{8572fffc-fd2e-4a5b-b3b7-92bbf93f66e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

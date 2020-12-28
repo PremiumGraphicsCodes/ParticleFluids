@@ -33,6 +33,8 @@ public:
 
 	VolumeImpl* getImpl() const { return impl; }
 
+	int getActiveVoxelCount() const;
+
 	//Crystal::Shape::ParticleSystem* toCrystalParticleSystem();
 
 private:

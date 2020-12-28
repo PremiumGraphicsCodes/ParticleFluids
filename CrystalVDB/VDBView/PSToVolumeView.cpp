@@ -6,6 +6,8 @@
 #include "../VDBConverter/ParticleSystemToVolumeConverter.h"
 #include "../VDBConverter/VolumeToMeshConverter.h"
 
+#include <iostream>
+
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::VDB;
@@ -37,18 +39,5 @@ void PSToVolumeView::onOk()
 
 	ParticleSystemToVolumeConverter converter;
 	auto volume = converter.toVolume(ps, radiusView.getValue());
-
-	VolumeToMeshConverter toMeshConverter;
-	auto mesh = toMeshConverter.toMesh(*volume);
-
-	auto newMesh = mesh->toCrystal();
-	auto newScene = new Crystal::Scene::PolygonMeshScene(getWorld()->getNextSceneId(), "Mesh", std::move(newMesh));
-
-	auto materialName = materialView.getSelected();
-	auto material = getWorld()->getScenes()->findSceneByName<MaterialScene*>(materialName);
-	Crystal::Scene::PolygonMeshScene::FaceGroup group(newMesh->getFaces(), material);
-	//newScene->addGroup()
-
-	newScene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	getWorld()->getScenes()->addScene(newScene);
+	std::cout << "voxels = " << volume->getActiveVoxelCount() << std::endl;;
 }

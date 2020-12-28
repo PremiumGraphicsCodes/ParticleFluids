@@ -43,6 +43,11 @@ float VDBVolume::getValue(const std::array<int, 3> index)
 	return impl->getPtr()->getAccessor().getValue(coord);
 }
 
+int VDBVolume::getActiveVoxelCount() const
+{
+	return impl->getPtr()->activeVoxelCount();
+}
+
 
 /*
 Volume::Volume(std::unique_ptr<VolumeImpl> impl) :
