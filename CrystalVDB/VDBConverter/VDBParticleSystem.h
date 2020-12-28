@@ -4,6 +4,7 @@
 #include "../../Crystal/Util/UnCopyable.h"
 
 #include "../../Crystal/Scene/IShapeScene.h"
+#include "VDBParticleSystemPresenter.h"
 
 #include <memory>
 
@@ -33,7 +34,7 @@ public:
 
  //   Crystal::Scene::ParticleSystemScene* toCrystal() const;
 
-    const ParticleSystemImpl* getImpl() const { return impl; }
+    const ParticleSystemImpl* getImpl() const { return impl.get(); }
 
     void fromCrystal(const std::vector<Math::Vector3dd>& positions, const float radius);
 
@@ -45,12 +46,15 @@ public:
 
     void transform(const Math::Matrix4dd& m) override {};
 
-    Scene::IPresenter* getPresenter() { return nullptr; };
+    Scene::IPresenter* getPresenter() { return presenter.get(); };
 
     Scene::SceneType getType() const { return Scene::SceneType::None; }
 
+    Math::Box3d getBoundingBox() const override;
+
 private:
-    ParticleSystemImpl* impl;
+    std::unique_ptr<ParticleSystemImpl> impl;
+    std::unique_ptr<VDBParticleSystemPresenter> presenter;
 };
 
     }

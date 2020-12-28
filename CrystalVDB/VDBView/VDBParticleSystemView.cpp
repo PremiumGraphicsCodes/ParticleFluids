@@ -39,16 +39,10 @@ void VDBParticleSystemView::onOk()
 			}
 		}
 	}
-	VDBParticleSystem vdb;
-	for (auto p : positions) {
-		vdb.add(p, 1.0f);
+	auto scene = new VDBParticleSystem(getWorld()->getNextSceneId(), "VDBPS");
+	for (const auto& p : positions) {
+		scene->add(p, 1.0f);
 	}
-	auto ps = vdb.toCrystal();
-	ParticleAttribute attr;
-	attr.color = Crystal::Graphics::ColorRGBAf(1, 1, 1, 1);
-	attr.size = 1.0f;
-	auto newShape = std::make_unique<Crystal::Shape::ParticleSystem<Crystal::Scene::ParticleAttribute>>(ps->getPositions(), attr);
-	ParticleSystemScene* newScene = new ParticleSystemScene(getWorld()->getNextSceneId(), "VDBPS",std::move(newShape));
-	newScene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	getWorld()->getScenes()->addScene(newScene);
+	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	getWorld()->getScenes()->addScene(scene);
 }

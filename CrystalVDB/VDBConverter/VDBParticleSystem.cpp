@@ -11,14 +11,14 @@ using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
 Crystal::VDB::VDBParticleSystem::VDBParticleSystem(const int id, const std::string name) :
-    IShapeScene(id, name),
-    impl(new ParticleSystemImpl())
+    IShapeScene(id, name)
 {
+    this->impl = std::make_unique<ParticleSystemImpl>();
+    this->presenter = std::make_unique<VDBParticleSystemPresenter>(this);
 }
 
 VDBParticleSystem::~VDBParticleSystem()
 {
-    delete impl;
 }
 
 void VDBParticleSystem::add(const Vector3dd& position, const double radius)
@@ -47,6 +47,16 @@ void VDBParticleSystem::fromCrystal(const std::vector<Vector3dd>& positions, con
     for (const auto& p : positions) {
         this->add(p, radius);
     }
+}
+
+Box3d VDBParticleSystem::getBoundingBox() const
+{
+    Box3d box(getPosition(0));
+    const auto size = impl->size();
+    for (int i = 0; i < size; ++i) {
+        box.add(getPosition(i));
+    }
+    return box;
 }
 
 std::unique_ptr<Crystal::Shape::IParticleSystem> VDBParticleSystem::toCrystal() const
