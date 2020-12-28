@@ -7,12 +7,14 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-
-VDBParticleSystem::VDBParticleSystem() :
+Crystal::VDB::VDBParticleSystem::VDBParticleSystem(const int id, const std::string name) :
+    IShapeScene(id, name),
     impl(new ParticleSystemImpl())
-{}
+{
+}
 
 VDBParticleSystem::~VDBParticleSystem()
 {

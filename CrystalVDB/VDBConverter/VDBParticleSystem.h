@@ -3,6 +3,8 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Util/UnCopyable.h"
 
+#include "../../Crystal/Scene/IShapeScene.h"
+
 #include <memory>
 
 namespace Crystal {
@@ -12,10 +14,14 @@ namespace Crystal {
     namespace VDB {
         class ParticleSystemImpl;
 
-class VDBParticleSystem : private UnCopyable
+class VDBParticleSystem : public Scene::IShapeScene
 {
 public:
-    VDBParticleSystem();
+    VDBParticleSystem() :
+        VDBParticleSystem(-1, "")
+    {}
+
+    VDBParticleSystem(const int id, const std::string name);
 
     ~VDBParticleSystem();
 
@@ -32,6 +38,16 @@ public:
     void fromCrystal(const std::vector<Math::Vector3dd>& positions, const float radius);
 
     std::unique_ptr<Crystal::Shape::IParticleSystem> toCrystal() const;
+
+    void translate(const Math::Vector3dd& v) override {};
+
+    void transform(const Math::Matrix3dd& m) override {};
+
+    void transform(const Math::Matrix4dd& m) override {};
+
+    Scene::IPresenter* getPresenter() { return nullptr; };
+
+    Scene::SceneType getType() const { return Scene::SceneType::None; }
 
 private:
     ParticleSystemImpl* impl;
