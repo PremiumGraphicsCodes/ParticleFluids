@@ -34,6 +34,7 @@
     <ClCompile Include="VDBPolygonMeshConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
+    <ClCompile Include="VDBVolumePresenter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -72,6 +73,7 @@
     <ClInclude Include="VDBPolygonMeshConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
+    <ClInclude Include="VDBVolumePresenter.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

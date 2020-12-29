@@ -1,9 +1,7 @@
 #pragma once
 
 #include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Util/UnCopyable.h"
 
-#include "../../Crystal/Shape/PolygonMesh.h"
 #include "../../Crystal/Scene/IShapeScene.h"
 
 #include "VDBPolygonMeshPresenter.h"

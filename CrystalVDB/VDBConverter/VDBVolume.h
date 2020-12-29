@@ -8,9 +8,6 @@
 #include "../../Crystal/Math/Box3d.h"
 
 namespace Crystal {
-	namespace Shape {
-		class IParticleSystem;
-	}
 	namespace VDB {
 		class VolumeImpl;
 
@@ -33,8 +30,6 @@ public:
 
 	void fill(const unsigned int coord1, const unsigned int coord2, const float value);
 
-	VolumeImpl* getImpl() const { return impl; }
-
 	int getActiveVoxelCount() const;
 
 	void translate(const Math::Vector3dd& v) override {};
@@ -50,6 +45,8 @@ public:
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
 	//Math::Box3d getBoundingBox() const override;
+
+	VolumeImpl* getImpl() const { return impl; }
 
 
 private:
