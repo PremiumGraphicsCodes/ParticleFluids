@@ -179,6 +179,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PublicLabels\VDBMeshCreateLabels.h" />
     <ClInclude Include="VDBCommandFactory.h" />
     <ClInclude Include="VDBFileReadCommand.h" />
     <ClInclude Include="VDBFileWriteCommand.h" />
@@ -186,6 +187,7 @@
     <ClInclude Include="PublicLabels\VDBInitLabels.h" />
     <ClInclude Include="PublicLabels\VDBFileReadLabels.h" />
     <ClInclude Include="PublicLabels\VDBFileWriteLabels.h" />
+    <ClInclude Include="VDBMeshCreateCommand.h" />
     <ClInclude Include="VDBParticleSystemToMeshCommand.h" />
     <ClInclude Include="VDBParticleSystemToMeshLabels.h" />
   </ItemGroup>
@@ -194,6 +196,7 @@
     <ClCompile Include="VDBFileReadCommand.cpp" />
     <ClCompile Include="VDBFileWriteCommand.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
+    <ClCompile Include="VDBMeshCreateCommand.cpp" />
     <ClCompile Include="VDBParticleSystemToMeshCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
