@@ -3,18 +3,4 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="VDBFileReaderTest.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="VDBFileWriterTest.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="FileIO">
-      <UniqueIdentifier>{7bf986f2-b0f7-45d3-a5d5-6b4e622a2976}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
 </Project>
