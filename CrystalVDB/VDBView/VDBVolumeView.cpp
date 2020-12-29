@@ -15,27 +15,15 @@ VDBVolumeView::VDBVolumeView(const std::string& name, World* model, Canvas* canv
 
 void VDBVolumeView::onOk()
 {
-	VDBVolume volume;
-	volume.setValue({ 0,0,0 }, 10);
-	volume.setValue({ 10, 0, 0 }, 10);
-	/*
-	auto id = particleSystemSelectView.getId();
-	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
-	if (scene == nullptr) {
-		return;
+	VDBVolume* volume = new VDBVolume(getWorld()->getNextSceneId(), "VDBVolume");
+	for (int i = 0; i < 10; ++i) {
+		for (int j = 0; j < 10; ++j) {
+			for (int k = 0; k < 10; ++k) {
+				volume->setValue({ i,j,k }, 10);
+			}
+		}
 	}
-	const auto particles = scene->getShape()->getParticles();
-	VDBParticleSystem vdb;
-	for (auto p : particles) {
-		vdb.add(p->getPosition(), p->getAttribute().size);
-	}
-	auto ps = vdb.toCrystal();
-	ParticleAttribute attr;
-	attr.color = Crystal::Graphics::ColorRGBAf(1, 0, 0, 1);
-	attr.size = 1.0f;
-	auto newShape = std::make_unique<Crystal::Shape::ParticleSystem<Crystal::Scene::ParticleAttribute>>(ps->getPositions(), attr);
-	ParticleSystemScene* newScene = new ParticleSystemScene(getWorld()->getNextSceneId(), "Clone", std::move(newShape));
-	newScene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	getWorld()->getScenes()->addScene(newScene);
-	*/
+
+	volume->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	getWorld()->getScenes()->addScene(volume);
 }

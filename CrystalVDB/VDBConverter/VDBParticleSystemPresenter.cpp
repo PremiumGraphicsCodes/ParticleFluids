@@ -80,6 +80,7 @@ void VDBParticleSystemPresenter::updateScreenView()
 		pb.add(Converter::fromVDB(v), ColorRGBAf(1,1,1,1), 1.0f);
 	}
 
+	this->view->send(pb);
 	this->view->setVisible(model->isVisible());
 }
 

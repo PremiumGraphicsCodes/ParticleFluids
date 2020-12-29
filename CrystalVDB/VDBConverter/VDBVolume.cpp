@@ -13,14 +13,15 @@ VDBVolume::VDBVolume() :
 	impl(new VolumeImpl())
 {
 	impl->setPtr(FloatGrid::create());
+	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 
 VDBVolume::VDBVolume(VolumeImpl* impl) :
 	IShapeScene(-1, "")
 {
 	this->impl = impl;
+	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
-
 
 VDBVolume::VDBVolume(const float value) :
 	IShapeScene(-1, "")
@@ -29,7 +30,20 @@ VDBVolume::VDBVolume(const float value) :
 	using FloatGridType = openvdb::Grid<FloatTreeType>;
 	auto grid = openvdb::createGrid<FloatGridType>(value);
 	impl = new VolumeImpl(grid);
+	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
+
+VDBVolume::VDBVolume(const int id, const std::string& name) :
+	IShapeScene(id, name)
+{
+	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
+	using FloatGridType = openvdb::Grid<FloatTreeType>;
+	auto grid = openvdb::createGrid<FloatGridType>();
+	impl = new VolumeImpl(grid);
+	impl->setPtr(FloatGrid::create());
+	presenter = std::make_unique<VDBVolumePresenter>(this);
+}
+
 
 void VDBVolume::fill(const unsigned int coord1, const unsigned int coord2, const float value)
 {
@@ -57,16 +71,20 @@ int VDBVolume::getActiveVoxelCount() const
 	return impl->getPtr()->activeVoxelCount();
 }
 
+Box3d VDBVolume::getBoundingBox() const
+{
+	auto grid = impl->getPtr();
+	auto transform = grid->transform();
+	auto firstPos = transform.indexToWorld( grid->cbeginValueOn().getCoord() );
+	Box3d bb(Converter::fromVDB(firstPos));
+	for (auto iter = grid->cbeginValueOn(); iter; ++iter) {
+		auto coord = transform.indexToWorld(iter.getCoord());
+		bb.add(Converter::fromVDB(coord));
+	}
+	return bb;
+}
+
 VDBVolume::~VDBVolume()
 {
 	delete impl;
 }
-
-/*
-Crystal::Shape::ParticleSystem* VDBVolume::toCrystalParticleSystem()
-{
-	for (auto iter = impl->getPtr()->beginValueAll(); ; ++iter) {
-		*(iter).getCoord()
-	}
-}
-*/

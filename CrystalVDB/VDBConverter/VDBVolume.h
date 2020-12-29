@@ -7,6 +7,8 @@
 #include "../../Crystal/Util/UnCopyable.h"
 #include "../../Crystal/Math/Box3d.h"
 
+#include "VDBVolumePresenter.h"
+
 namespace Crystal {
 	namespace VDB {
 		class VolumeImpl;
@@ -19,6 +21,9 @@ public:
 	explicit VDBVolume(VolumeImpl* impl);
 
 	explicit VDBVolume(const float value);
+
+	VDBVolume(const int id, const std::string& name);
+
 
 	//explicit Volume(std::unique_ptr<VolumeImpl> impl);
 
@@ -38,19 +43,17 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override {};
 
-	Scene::IPresenter* getPresenter() {
-		return nullptr;
-	}//presenter.get(); };
+	Scene::IPresenter* getPresenter() { return presenter.get(); };
 
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
-	//Math::Box3d getBoundingBox() const override;
+	Math::Box3d getBoundingBox() const override;
 
 	VolumeImpl* getImpl() const { return impl; }
 
-
 private:
 	VolumeImpl* impl;
+	std::unique_ptr<VDBVolumePresenter> presenter;
 };
 	}
 }

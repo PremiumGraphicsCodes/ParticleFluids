@@ -49,18 +49,17 @@ void VDBVolumePresenter::updateView()
 void VDBVolumePresenter::updateScreenView()
 {
 	auto impl = model->getImpl();
-	impl->getPtr();
-	/*
-	const auto size = impl->size();// getShape()->getParticles();
+	auto grid = impl->getPtr();
+	auto transform = grid->transform();
 	PointBuffer pb;
-	for (int i = 0; i < size; ++i) {
-		openvdb::Vec3R v;
-		impl->getPos(i, v);
-		pb.add(Converter::fromVDB(v), ColorRGBAf(1, 1, 1, 1), 1.0f);
+	for (auto iter = grid->cbeginValueOn(); iter; ++iter) {
+		auto coord = transform.indexToWorld(iter.getCoord());
+		auto value = *iter;
+		pb.add(Converter::fromVDB(coord), ColorRGBAf(1, 1, 1, 1), 1.0f);
 	}
-
-	this->view->setVisible(model->isVisible());
-	*/
+	this->view->send(pb);
+	this->view->setVisible(true);
+	//this->view->send(pb);
 }
 
 void VDBVolumePresenter::updateParentIdView()
