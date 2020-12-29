@@ -6,10 +6,12 @@
 namespace Crystal {
 	namespace VDB {
 
-class MeshToVolumeConverter
+class VDBPolygonMeshConverter
 {
 public:
 	std::unique_ptr<VDBVolume> toVolume(const VDBPolygonMesh& mesh);
+
+	std::unique_ptr<Shape::PolygonMesh> fromVDB(const VDBPolygonMesh& src);
 
 private:
 };

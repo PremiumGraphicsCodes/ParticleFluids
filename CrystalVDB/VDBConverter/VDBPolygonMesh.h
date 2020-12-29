@@ -39,12 +39,6 @@ public:
 
 	std::vector<std::array<unsigned int, 4>> getQuads() const;
 
-	//void fromCrystal(const Crystal::Shape::PolygonMesh& src);
-
-	std::unique_ptr<Crystal::Shape::PolygonMesh> toCrystal() const;
-
-	PolygonMeshImpl* getImpl() const { return impl.get(); }
-
 	void translate(const Math::Vector3dd& v) override {};
 
 	void transform(const Math::Matrix3dd& m) override {};
@@ -56,6 +50,8 @@ public:
 	Scene::SceneType getType() const { return Scene::SceneType::None; }
 
 	Math::Box3d getBoundingBox() const override;
+
+	PolygonMeshImpl* getImpl() const { return impl.get(); }
 
 private:
 	std::unique_ptr<PolygonMeshImpl> impl;
