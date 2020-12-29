@@ -109,10 +109,14 @@ namespace FluidStudio
 
         private void OnCreateMesh()
         {
+            /*
             var world = mainModel.Scenes;
             var builder = new PolygonMeshBuilder();
             builder.Add(new Box3d(new Vector3d(0,0,0), new Vector3d(10,10,10)));
             this.meshId = world.AddPolygonMeshScene(builder.ToPolygonMesh(), "Mesh", 1);
+            */
+            var world = mainModel.Scenes;
+            this.meshId = mainModel.VDBModel.CreateVDBMesh(world);
             this.Canvas.Camera.Fit();
             this.Canvas.BuildShader(world, meshId);
             this.Canvas.Render();

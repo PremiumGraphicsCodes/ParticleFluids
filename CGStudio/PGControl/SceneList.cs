@@ -31,6 +31,11 @@ namespace PG.Scene
             return root;
         }
 
+        public void Add(SceneModel scene)
+        {
+            this.Scenes.Add(scene);
+        }
+
         public int CreateDefaultCameraScene()
         {
             var command = new PG.CLI.Command(PG.CameraCreateLabels.CommandNameLabel);

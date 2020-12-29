@@ -76,7 +76,11 @@ std::vector<std::array<unsigned int, 4>> VDBPolygonMesh::getQuads() const
 
 Box3d VDBPolygonMesh::getBoundingBox() const
 {
+	if (impl->points.empty()) {
+		return Box3d::createDegeneratedBox();
+	}
 	auto vertices = this->getVerticesd();
+
 	Math::Box3d box(vertices[0]);
 	for (auto v : vertices) {
 		box.add(v);

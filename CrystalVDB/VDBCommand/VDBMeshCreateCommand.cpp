@@ -7,6 +7,7 @@
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
+using namespace Crystal::VDB;
 
 VDBMeshCreateCommand::Args::Args() :
 	positions(::PositionsLabel, {}),
@@ -31,6 +32,10 @@ std::string VDBMeshCreateCommand::getName()
 
 bool VDBMeshCreateCommand::execute(World* world)
 {
+	VDBPolygonMesh* mesh = new VDBPolygonMesh(world->getNextSceneId(), "VDBMesh");
+	world->addScene(1, mesh);
+	results.newId.setValue(mesh->getId());
+
 	/*
 	auto mesh = std::make_unique<PolygonMesh>();
 	mesh->positions = args.positions.getValue();
@@ -44,7 +49,6 @@ bool VDBMeshCreateCommand::execute(World* world)
 	//auto group = (shape, "FaceGroup");
 	const auto newId = shape->getId();
 
-	results.newId.setValue(newId);
 	*/
 
 	return true;

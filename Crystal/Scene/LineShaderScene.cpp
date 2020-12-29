@@ -35,9 +35,12 @@ void LineShaderScene::send(const LineBuffer& buffer)
 {
 	const auto positions = buffer.getPositions().get();
 	const auto colors = buffer.getColors().get();
+
+	/*
 	if (positions.empty()) {
 		return;
 	}
+	*/
 
 	sBuffer.position->send(positions);
 	sBuffer.color->send(colors);
