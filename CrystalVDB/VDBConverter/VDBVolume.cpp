@@ -9,12 +9,21 @@ using namespace Crystal::VDB;
 using namespace openvdb;
 
 VDBVolume::VDBVolume() :
+	IShapeScene(-1, ""),
 	impl(new VolumeImpl())
 {
 	impl->setPtr(FloatGrid::create());
 }
 
-VDBVolume::VDBVolume(const float value)
+VDBVolume::VDBVolume(VolumeImpl* impl) :
+	IShapeScene(-1, "")
+{
+	this->impl = impl;
+}
+
+
+VDBVolume::VDBVolume(const float value) :
+	IShapeScene(-1, "")
 {
 	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
 	using FloatGridType = openvdb::Grid<FloatTreeType>;
@@ -47,13 +56,6 @@ int VDBVolume::getActiveVoxelCount() const
 {
 	return impl->getPtr()->activeVoxelCount();
 }
-
-
-/*
-Volume::Volume(std::unique_ptr<VolumeImpl> impl) :
-	impl(std::move(impl))
-{}
-*/
 
 VDBVolume::~VDBVolume()
 {
