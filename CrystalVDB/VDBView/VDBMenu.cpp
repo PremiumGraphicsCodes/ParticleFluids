@@ -15,6 +15,7 @@
 #include "VDBPolygonMeshView.h"
 #include "VDBVolumeView.h"
 #include "PSToVolumeView.h"
+#include "VolumeToMeshView.h"
 
 #include <iostream>
 
@@ -110,6 +111,9 @@ void VDBMenu::onShow()
 		}
 		if (ImGui::MenuItem("PSToMesh")) {
 			control->setWindow(new PSToVolumeView("PSToVolume", world, getCanvas()));
+		}
+		if (ImGui::MenuItem("VolumeToMesh")) {
+			control->setWindow(new VolumeToMeshView("VolumeToMesh", world, getCanvas()));
 		}
 
 

@@ -5,7 +5,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="VolumeToMeshConverterTest.cpp" />
     <ClCompile Include="VDBFileReaderTest.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>

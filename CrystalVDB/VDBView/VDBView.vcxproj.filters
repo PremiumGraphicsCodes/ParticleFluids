@@ -4,24 +4,36 @@
     <ClCompile Include="VDBParticleSystemView.cpp" />
     <ClCompile Include="VDBMenu.cpp" />
     <ClCompile Include="VDBVolumeView.cpp" />
-    <ClCompile Include="PSToVolumeView.cpp">
-      <Filter>Converter</Filter>
-    </ClCompile>
     <ClCompile Include="VDBPolygonMeshView.cpp" />
     <ClCompile Include="VDBView.cpp" />
+    <ClCompile Include="PSToVolumeView.cpp">
+      <Filter>Converter\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeToMeshView.cpp">
+      <Filter>Converter\Volume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBParticleSystemView.h" />
     <ClInclude Include="VDBMenu.h" />
     <ClInclude Include="VDBVolumeView.h" />
-    <ClInclude Include="PSToVolumeView.h">
-      <Filter>Converter</Filter>
-    </ClInclude>
     <ClInclude Include="VDBPolygonMeshView.h" />
+    <ClInclude Include="PSToVolumeView.h">
+      <Filter>Converter\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeToMeshView.h">
+      <Filter>Converter\Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">
       <UniqueIdentifier>{8572fffc-fd2e-4a5b-b3b7-92bbf93f66e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Converter\ParticleSystem">
+      <UniqueIdentifier>{0123b7a7-edac-4dbe-8d12-29aff490752d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Converter\Volume">
+      <UniqueIdentifier>{2512a1f0-8460-4a5d-9f5b-096d2e1bea55}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

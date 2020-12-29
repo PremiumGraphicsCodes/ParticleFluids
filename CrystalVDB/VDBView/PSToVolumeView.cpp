@@ -15,12 +15,10 @@ using namespace Crystal::VDB;
 PSToVolumeView::PSToVolumeView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	particleSystemSelectView("ParticleSystem", model, canvas),
-	radiusView("Radius", 5.0),
-	materialView("Material", model)
+	radiusView("Radius", 5.0)
 {
 	add(&particleSystemSelectView);
 	add(&radiusView);
-	add(&materialView);
 }
 
 void PSToVolumeView::onOk()

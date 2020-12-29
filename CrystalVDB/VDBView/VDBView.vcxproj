@@ -189,6 +189,7 @@
     <ClCompile Include="VDBParticleSystemView.cpp" />
     <ClCompile Include="VDBPolygonMeshView.cpp" />
     <ClCompile Include="VDBVolumeView.cpp" />
+    <ClCompile Include="VolumeToMeshView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBMenu.h" />
@@ -196,6 +197,7 @@
     <ClInclude Include="VDBParticleSystemView.h" />
     <ClInclude Include="VDBPolygonMeshView.h" />
     <ClInclude Include="VDBVolumeView.h" />
+    <ClInclude Include="VolumeToMeshView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

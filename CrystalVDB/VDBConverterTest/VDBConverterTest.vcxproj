@@ -39,7 +39,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="VDBFileReaderTest.cpp" />
     <ClCompile Include="VDBFileWriterTest.cpp" />
-    <ClCompile Include="VolumeToMeshConverterTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">

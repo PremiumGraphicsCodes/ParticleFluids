@@ -9,7 +9,7 @@ namespace Crystal {
 class VolumeToMeshConverter
 {
 public:
-	std::unique_ptr<VDBPolygonMesh> toMesh(const VDBVolume& volume);
+	VDBPolygonMesh* toMesh(const VDBVolume& volume);
 
 private:
 };

@@ -4,14 +4,15 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
 #include "../../CrystalViewer/AppBase/DoubleView.h"
+#include "../../CrystalViewer/AppBase/MaterialSelectView.h"
 
 namespace Crystal {
 	namespace UI {
 
-class PSToVolumeView : public IOkCancelView
+class VolumeToMeshView : public IOkCancelView
 {
 public:
-	PSToVolumeView(const std::string& name, Scene::World* model, Canvas* canvas);
+	VolumeToMeshView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;
