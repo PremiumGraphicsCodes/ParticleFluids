@@ -22,8 +22,7 @@ namespace PG {
 	{
 		public const string CommandNameLabel = "VDBParticleSystemToMesh";
 		public const string ParticleSystemIdLabel = "ParticleSystemId";
-		public const string MeshIdLabel = "MeshId";
-		public const string MaterialIdLabel = "MaterialId";
+		public const string VDBMeshIdLabel = "VDBMeshId";
 		public const string RadiusLabel = "Radius";
 	}
 

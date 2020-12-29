@@ -6,7 +6,7 @@
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../VDBConverter/VDBParticleSystem.h"
-#include "../VDBConverter/ParticleSystemToVolumeConverter.h"
+#include "../VDBConverter/VDBParticleSystemConverter.h"
 #include "../VDBConverter/VolumeToMeshConverter.h"
 
 using namespace Crystal::Shape;
@@ -15,13 +15,11 @@ using namespace Crystal::VDB;
 
 VDBParticleSystemToMeshCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
-	meshId(::MeshIdLabel, -1),
-	materialId(::MaterialIdLabel, -1),
+	vdbMeshId(::VDBMeshIdLabel, -1),
 	radius(::RadiusLabel, 5.0)
 {
 	add(&particleSystemId);
-	add(&meshId);
-	add(&materialId);
+	add(&vdbMeshId);
 	add(&radius);
 }
 
@@ -44,12 +42,8 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	if (scene == nullptr) {
 		return false;
 	}
-	auto meshScene = world->getScenes()->findSceneById<PolygonMeshScene*>(args.meshId.getValue());
+	auto meshScene = world->getScenes()->findSceneById<VDBPolygonMesh*>(args.vdbMeshId.getValue());
 	if (meshScene == nullptr) {
-		return false;
-	}
-	auto materialScene = world->getScenes()->findSceneById<MaterialScene*>(args.materialId.getValue());
-	if (materialScene == nullptr) {
 		return false;
 	}
 
@@ -58,17 +52,11 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	for (auto p : scene->getShape()->getParticles()) {
 		ps.add(p->getPosition(), p->getAttribute().size);
 	}
-	ParticleSystemToVolumeConverter toVolumeConverter;
-	auto volume = toVolumeConverter.toVolume(ps, args.radius.getValue());
+	VDBParticleSystemConverter psConverter;
+	auto volume = psConverter.toVolume(ps, args.radius.getValue());
 
 	VolumeToMeshConverter toMeshConvereter;
-	auto mesh = toMeshConvereter.toMesh(*volume);
-
-	auto cMesh = mesh->toCrystal();
-	meshScene->clear();
-	meshScene->setShape(std::move(cMesh));
-	Crystal::Scene::PolygonMeshScene::FaceGroup group(meshScene->getShape()->getFaces(), materialScene);
-	meshScene->addGroup(group);
+	toMeshConvereter.toMesh(*volume, meshScene);
 	
-	return false;
+	return true;
 }

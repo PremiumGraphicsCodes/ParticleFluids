@@ -13,8 +13,7 @@ public:
 		Args();
 
 		Command::Arg<int> particleSystemId;
-		Command::Arg<int> meshId;
-		Command::Arg<int> materialId;
+		Command::Arg<int> vdbMeshId;
 		Command::Arg<double> radius;
 	};
 
