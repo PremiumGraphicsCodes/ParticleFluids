@@ -57,5 +57,13 @@ namespace FluidStudio.VDB
             command.SetArg(PG.VDBParticleSystemToMeshLabels.RadiusLabel, 5.0);
             return command.Execute(world.Adapter);
         }
+
+        public bool WriteOBJ(SceneList world, int vdbMeshId, string filePath)
+        {
+            var command = new PG.CLI.VDBCommand(PG.VDBOBJFileWriteLabels.CommandNameLabel);
+            command.SetArg(PG.VDBOBJFileWriteLabels.VDBMeshIdLabel, vdbMeshId);
+            command.SetArg(PG.VDBOBJFileWriteLabels.FilePathLabel, filePath);
+            return command.Execute(world.Adapter);
+        }
     }
 }

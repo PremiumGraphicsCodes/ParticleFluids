@@ -58,6 +58,18 @@ namespace FluidStudio.Physics
             }
         }
 
+        public void ExportMesh(SceneList world, VDBModel vdb, string directoryPath)
+        {
+            foreach (var solver in Solvers)
+            {
+                foreach (var fluid in solver.Fluids)
+                {
+                    var filePath = directoryPath + "/" + solver.Name + "_"  + fluid.Name + "_" + TimeStep.Value.ToString() + ".obj";
+                    vdb.WriteOBJ(world, fluid.PolygonMeshId, filePath);
+                }
+            }
+        }
+
         public void Reset(SceneList world, Canvas3d canvas)
         {
             foreach (var ps in Solvers)
