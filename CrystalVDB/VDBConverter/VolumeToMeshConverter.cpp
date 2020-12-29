@@ -15,4 +15,5 @@ void VolumeToMeshConverter::toMesh(const VDBVolume& volume, VDBPolygonMesh* mesh
     impl->clear();
     auto grid = volume.getImpl()->getPtr();
     openvdb::tools::volumeToMesh(*grid, impl->points, impl->quads);
+    impl->updateNormals();
 }

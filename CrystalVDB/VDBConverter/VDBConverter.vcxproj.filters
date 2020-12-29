@@ -35,6 +35,9 @@
       <Filter>Converter</Filter>
     </ClCompile>
     <ClCompile Include="VDBVolumePresenter.cpp" />
+    <ClCompile Include="PolygonMeshImpl.cpp">
+      <Filter>Impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
