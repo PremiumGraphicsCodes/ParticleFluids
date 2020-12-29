@@ -25,17 +25,30 @@ bool OBJFileWriter::write(std::ostream& stream, const VDBPolygonMesh& mesh_)
 		stream << "v " << v.x() << " " << v.y() << " " << v.z() << std::endl;
 	}
 
+	for (const auto& n : mesh->triangleNormals) {
+		stream << "vn " << n.x() << " " << n.y() << " " << n.z() << std::endl;
+	}
+
 	for (const auto& n : mesh->quadNormals) {
 		stream << "vn " << n.x() << " " << n.y() << " " << n.z() << std::endl;
 	}
 
+	int normalIndex = 1;
+	// TODO : triangle normal.
 	const auto& triangles = mesh->triangles;
 	for (const auto& t : triangles) {
-		stream << "f" << " " << t[0] << "/" << t[1] << "/" << t[2] << std::endl;
+		const auto f1 = t[0] + 1;
+		const auto f2 = t[1] + 1;
+		const auto f3 = t[2] + 1;
+		stream << "f"
+			<< " " << f1 << "//" << normalIndex
+			<< " " << f2 << "//" << normalIndex
+			<< " " << f3 << "//" << normalIndex
+			<< std::endl;
+		normalIndex++;
 	}
 
 	const auto& quads = mesh->quads;
-	int normalIndex = 1;
 	for (const auto& q : quads) {
 		const auto f1 = q[0] + 1;
 		const auto f2 = q[1] + 1;
