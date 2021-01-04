@@ -10,7 +10,6 @@
     <ClCompile Include="OBJFileWriter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="VDBParticleSystem.cpp" />
     <ClCompile Include="VDBVolume.cpp" />
     <ClCompile Include="VDBPolygonMesh.cpp" />
     <ClCompile Include="VDBAdapter.cpp" />
@@ -20,7 +19,6 @@
     <ClCompile Include="VDBFileWriter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="VDBParticleSystemPresenter.cpp" />
     <ClCompile Include="VDBPolygonMeshPresenter.cpp" />
     <ClCompile Include="VDBParticleSystemConverter.cpp">
       <Filter>Converter</Filter>
@@ -38,6 +36,12 @@
     <ClCompile Include="VDBVolumeConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
+    <ClCompile Include="VDBParticleSystem.cpp">
+      <Filter>ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBParticleSystemPresenter.cpp">
+      <Filter>ParticleSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -52,7 +56,6 @@
     <ClInclude Include="OBJFileWriter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="VDBParticleSystem.h" />
     <ClInclude Include="VDBVolume.h" />
     <ClInclude Include="VDBPolygonMesh.h" />
     <ClInclude Include="VDBAdapter.h" />
@@ -62,7 +65,6 @@
     <ClInclude Include="VDBFileWriter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="VDBParticleSystemPresenter.h" />
     <ClInclude Include="VDBPolygonMeshPresenter.h" />
     <ClInclude Include="VDBParticleSystemConverter.h">
       <Filter>Converter</Filter>
@@ -77,6 +79,12 @@
     <ClInclude Include="VDBVolumeConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
+    <ClInclude Include="VDBParticleSystem.h">
+      <Filter>ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBParticleSystemPresenter.h">
+      <Filter>ParticleSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">
@@ -87,6 +95,9 @@
     </Filter>
     <Filter Include="Impl">
       <UniqueIdentifier>{0f07a8f8-2e2f-46b1-84e9-eb32e7f913f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ParticleSystem">
+      <UniqueIdentifier>{d2aae527-4a64-4e57-84b8-245f2953f558}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -41,4 +41,9 @@ std::unique_ptr<IParticleSystem> VDBParticleSystemConverter::fromVDB(const VDBPa
     return std::move(shape);
 }
 
-//VDBParticleSystem toVDB();
+/*
+VDBParticleSystem VDBParticleSystemConverter::toVDB(const Shape::IParticleSystem& src)
+{
+    src.getIParticles();
+}
+*/

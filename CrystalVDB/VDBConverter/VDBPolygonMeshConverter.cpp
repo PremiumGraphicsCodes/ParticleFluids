@@ -10,13 +10,14 @@
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
-std::unique_ptr<VDBVolume> VDBPolygonMeshConverter::toVolume(const VDBPolygonMesh& mesh)
+void VDBPolygonMeshConverter::toVolume(const VDBPolygonMesh& mesh, VDBVolume* volume)
 {
 	openvdb::math::Transform::Ptr xform = openvdb::math::Transform::createLinearTransform();
 	openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec4I> m(mesh.getImpl()->points, mesh.getImpl()->quads);
 	auto result = openvdb::tools::meshToVolume<openvdb::FloatGrid>(m, *xform);
 	auto impl = new VolumeImpl(result);
-	return std::make_unique<VDBVolume>(impl);
+	delete volume->getImpl();
+	volume->setImpl(impl);
 }
 
 namespace {

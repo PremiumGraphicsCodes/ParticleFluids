@@ -24,6 +24,7 @@ public:
 
 	VDBVolume(const int id, const std::string& name);
 
+	void setImpl(VolumeImpl* impl) { this->impl = impl; }
 
 	//explicit Volume(std::unique_ptr<VolumeImpl> impl);
 

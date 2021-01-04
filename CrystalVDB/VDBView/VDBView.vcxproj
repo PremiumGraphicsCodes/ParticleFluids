@@ -183,6 +183,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MeshToVolumeView.cpp" />
     <ClCompile Include="VDBView.cpp" />
     <ClCompile Include="VDBMenu.cpp" />
     <ClCompile Include="PSToVolumeView.cpp" />
@@ -192,6 +193,7 @@
     <ClCompile Include="VolumeToMeshView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MeshToVolumeView.h" />
     <ClInclude Include="VDBMenu.h" />
     <ClInclude Include="PSToVolumeView.h" />
     <ClInclude Include="VDBParticleSystemView.h" />

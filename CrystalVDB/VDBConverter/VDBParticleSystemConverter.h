@@ -17,7 +17,7 @@ public:
 
 	std::unique_ptr<Shape::IParticleSystem> fromVDB(const VDBParticleSystem& src);
 
-	//VDBParticleSystem toVDB();
+	//VDBParticleSystem toVDB(const Shape::IParticleSystem& src);
 
 private:
 };
