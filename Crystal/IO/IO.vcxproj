@@ -29,6 +29,7 @@
     <ClInclude Include="OBJFile.h" />
     <ClInclude Include="OBJFileReader.h" />
     <ClInclude Include="OBJFileWriter.h" />
+    <ClInclude Include="OBJSyntaxParser.h" />
     <ClInclude Include="PCDFile.h" />
     <ClInclude Include="PCDFileReader.h" />
     <ClInclude Include="PCDFileWriter.h" />
@@ -46,6 +47,7 @@
     <ClCompile Include="MTLFileWriter.cpp" />
     <ClCompile Include="OBJFileReader.cpp" />
     <ClCompile Include="OBJFileWriter.cpp" />
+    <ClCompile Include="OBJSyntaxParser.cpp" />
     <ClCompile Include="PCDFileReader.cpp" />
     <ClCompile Include="PCDFileWriter.cpp" />
     <ClCompile Include="STLASCIIFileReader.cpp" />

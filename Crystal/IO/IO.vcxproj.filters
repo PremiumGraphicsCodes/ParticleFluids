@@ -54,6 +54,9 @@
     <ClInclude Include="STLFileReader.h">
       <Filter>STL</Filter>
     </ClInclude>
+    <ClInclude Include="OBJSyntaxParser.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="STLASCIIFileReader.cpp">
@@ -94,6 +97,9 @@
     </ClCompile>
     <ClCompile Include="STLFileReader.cpp">
       <Filter>STL</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJSyntaxParser.cpp">
+      <Filter>OBJ</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
