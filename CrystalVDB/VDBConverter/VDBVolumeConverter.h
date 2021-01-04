@@ -12,7 +12,7 @@ class VDBVolumeConverter
 public:
 	void toMesh(const VDBVolume& volume, VDBPolygonMesh* mesh);
 
-	VDBParticleSystem* toParticleSystem() const;
+	void toParticleSystem(const VDBVolume& volume, VDBParticleSystem* ps) const;
 
 private:
 };

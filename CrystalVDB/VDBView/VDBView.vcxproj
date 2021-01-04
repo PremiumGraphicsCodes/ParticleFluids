@@ -191,6 +191,7 @@
     <ClCompile Include="VDBPolygonMeshView.cpp" />
     <ClCompile Include="VDBVolumeView.cpp" />
     <ClCompile Include="VolumeToMeshView.cpp" />
+    <ClCompile Include="VolumeToPSView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MeshToVolumeView.h" />
@@ -200,6 +201,7 @@
     <ClInclude Include="VDBPolygonMeshView.h" />
     <ClInclude Include="VDBVolumeView.h" />
     <ClInclude Include="VolumeToMeshView.h" />
+    <ClInclude Include="VolumeToPSView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

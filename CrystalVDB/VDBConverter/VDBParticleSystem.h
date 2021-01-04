@@ -31,7 +31,7 @@ public:
 
  //   Crystal::Scene::ParticleSystemScene* toCrystal() const;
 
-    const VDBParticleSystemImpl* getImpl() const { return impl.get(); }
+    VDBParticleSystemImpl* getImpl() const { return impl.get(); }
 
     void fromCrystal(const std::vector<Math::Vector3dd>& positions, const float radius);
 

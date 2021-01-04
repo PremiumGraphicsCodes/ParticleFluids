@@ -2,10 +2,14 @@
 
 #include <openvdb/openvdb.h>
 
+#include <openvdb/points/PointSample.h>
+
 #include "openvdb/tools/VolumeToMesh.h"
 
 #include "VolumeImpl.h"
 #include "PolygonMeshImpl.h"
+#include "VDBParticleSystemImpl.h"
+
 #include "VDBParticleSystem.h"
 
 using namespace Crystal::VDB;
@@ -19,7 +23,13 @@ void VDBVolumeConverter::toMesh(const VDBVolume& volume, VDBPolygonMesh* mesh)
     impl->updateNormals();
 }
 
-VDBParticleSystem* VDBVolumeConverter::toParticleSystem() const
+void VDBVolumeConverter::toParticleSystem(const VDBVolume& volume, VDBParticleSystem* ps) const
 {
-    return nullptr;
+    auto impl = volume.getImpl();
+    auto grid = impl->getPtr();
+    auto transform = grid->transform();
+    for (auto iter = grid->cbeginValueOn(); iter; ++iter) {
+        auto coord = transform.indexToWorld(iter.getCoord());
+        ps->getImpl()->add(coord, 1.0);
+    }
 }

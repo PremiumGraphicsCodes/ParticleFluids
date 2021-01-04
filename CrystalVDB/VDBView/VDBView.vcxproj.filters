@@ -15,6 +15,9 @@
     <ClCompile Include="MeshToVolumeView.cpp">
       <Filter>Converter\PolygonMesh</Filter>
     </ClCompile>
+    <ClCompile Include="VolumeToPSView.cpp">
+      <Filter>Converter\Volume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBParticleSystemView.h" />
@@ -29,6 +32,9 @@
     </ClInclude>
     <ClInclude Include="MeshToVolumeView.h">
       <Filter>Converter\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeToPSView.h">
+      <Filter>Converter\Volume</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

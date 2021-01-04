@@ -17,6 +17,7 @@
 #include "PSToVolumeView.h"
 #include "VolumeToMeshView.h"
 #include "MeshToVolumeView.h"
+#include "VolumeToPSView.h"
 
 #include <iostream>
 
@@ -119,7 +120,9 @@ void VDBMenu::onShow()
 		if (ImGui::MenuItem("MeshToVolume")) {
 			control->setWindow(new MeshToVolumeView("MeshToVolume", world, getCanvas()));
 		}
-
+		if (ImGui::MenuItem("VolumeToPS")) {
+			control->setWindow(new VolumeToPSView("VolumeToPS", world, getCanvas()));
+		}
 
 		ImGui::EndMenu();
 	}
