@@ -7,13 +7,14 @@
 #include "VDBParticleSystemImpl.h"
 #include "VolumeImpl.h"
 #include "VDBVolume.h"
-#include "../../Crystal/Shape/ParticleSystem.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include "Converter.h"
 
 using namespace openvdb;
 using namespace Crystal::Shape;
 using namespace Crystal::VDB;
+using namespace Crystal::Scene;
 
 std::unique_ptr<VDBVolume> VDBParticleSystemConverter::toVolume(const VDBParticleSystem& particles, const float radius)
 {
@@ -26,19 +27,20 @@ std::unique_ptr<VDBVolume> VDBParticleSystemConverter::toVolume(const VDBParticl
     return std::move(v);
 }
 
-std::unique_ptr<IParticleSystem> VDBParticleSystemConverter::fromVDB(const VDBParticleSystem& src)
+void VDBParticleSystemConverter::fromVDB(const VDBParticleSystem& src, ParticleSystemScene* ps)
 {
     auto impl = src.getImpl();
     const auto count = impl->size();
-    auto shape = std::make_unique<Crystal::Shape::ParticleSystem<Crystal::Shape::IParticleAttribute>>();
     for (int i = 0; i < count; ++i) {
         openvdb::Real radius;
         openvdb::Vec3R v;
         impl->getPosRad(i, v, radius);
         const auto p = Converter::fromVDB(v);
-        shape->add(p, Crystal::Shape::IParticleAttribute(radius));
+        ParticleAttribute attr;
+        attr.color = Crystal::Graphics::ColorRGBAf(0, 0, 0, 0);
+        attr.size = radius;
+        ps->getShape()->add(p, attr);
     }
-    return std::move(shape);
 }
 
 /*

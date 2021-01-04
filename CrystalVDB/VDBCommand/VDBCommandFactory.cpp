@@ -6,6 +6,7 @@
 #include "VDBOBJFileWriteCommand.h"
 #include "VDBMeshCreateCommand.h"
 #include "VDBParticleSystemToMeshCommand.h"
+#include "VDBMeshToParticleSystemCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
@@ -29,6 +30,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBParticleSystemToMeshCommand::getName()) {
 		return std::make_unique<VDBParticleSystemToMeshCommand>();
+	}
+	else if (name == VDBMeshToParticleSystemCommand::getName()) {
+		return std::make_unique<VDBMeshToParticleSystemCommand>();
 	}
 	else {
 		assert(false);

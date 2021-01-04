@@ -5,8 +5,8 @@
 #include "VDBVolume.h"
 
 namespace Crystal {
-	namespace Shape {
-		class IParticleSystem;
+	namespace Scene {
+		class ParticleSystemScene;
 	}
 	namespace VDB {
 
@@ -15,7 +15,7 @@ class VDBParticleSystemConverter
 public:
 	std::unique_ptr<VDBVolume> toVolume(const VDBParticleSystem& particles, const float radius);
 
-	std::unique_ptr<Shape::IParticleSystem> fromVDB(const VDBParticleSystem& src);
+	void fromVDB(const VDBParticleSystem& src, Scene::ParticleSystemScene* ps);
 
 	//VDBParticleSystem toVDB(const Shape::IParticleSystem& src);
 

@@ -7,6 +7,7 @@
 
 #include "../VDBConverter/VDBParticleSystem.h"
 #include "../VDBConverter/VDBParticleSystemConverter.h"
+#include "../VDBConverter/VDBPolygonMeshConverter.h"
 #include "../VDBConverter/VDBVolumeConverter.h"
 
 using namespace Crystal::Shape;
@@ -38,27 +39,25 @@ std::string VDBMeshToParticleSystemCommand::getName()
 
 bool VDBMeshToParticleSystemCommand::execute(World* world)
 {
-	/*
-	auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
-	if (scene == nullptr) {
-		return false;
-	}
 	auto meshScene = world->getScenes()->findSceneById<VDBPolygonMesh*>(args.vdbMeshId.getValue());
 	if (meshScene == nullptr) {
 		return false;
 	}
+	auto psScene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
+	if (psScene == nullptr) {
+		return false;
+	}
+
+	VDBVolume volume;
+	VDBPolygonMeshConverter converter;
+	converter.toVolume(*meshScene, &volume);
 
 	VDBParticleSystem ps;
-	auto particles = scene->getShape()->getParticles();
-	for (auto p : scene->getShape()->getParticles()) {
-		ps.add(p->getPosition(), p->getAttribute().size);
-	}
-	VDBParticleSystemConverter psConverter;
-	auto volume = psConverter.toVolume(ps, args.radius.getValue());
+	VDBVolumeConverter volumeConverter;
+	volumeConverter.toParticleSystem(volume, &ps);
 
-	VDBVolumeConverter toMeshConvereter;
-	toMeshConvereter.toMesh(*volume, meshScene);
-	*/
+	VDBParticleSystemConverter psConverter;
+	psConverter.fromVDB(ps, psScene);
 
 	return true;
 }
