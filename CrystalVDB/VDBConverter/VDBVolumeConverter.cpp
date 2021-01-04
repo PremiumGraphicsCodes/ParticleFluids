@@ -1,4 +1,4 @@
-#include "VolumeToMeshConverter.h"
+#include "VDBVolumeConverter.h"
 
 #include <openvdb/openvdb.h>
 
@@ -9,7 +9,7 @@
 
 using namespace Crystal::VDB;
 
-void VolumeToMeshConverter::toMesh(const VDBVolume& volume, VDBPolygonMesh* mesh)
+void VDBVolumeConverter::toMesh(const VDBVolume& volume, VDBPolygonMesh* mesh)
 {   
     auto impl = mesh->getImpl();
     impl->clear();

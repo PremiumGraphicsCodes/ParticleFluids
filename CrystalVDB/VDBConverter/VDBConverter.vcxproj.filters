@@ -4,9 +4,6 @@
     <ClCompile Include="VolumeImpl.cpp">
       <Filter>Impl</Filter>
     </ClCompile>
-    <ClCompile Include="VolumeToMeshConverter.cpp">
-      <Filter>Converter</Filter>
-    </ClCompile>
     <ClCompile Include="Converter.cpp">
       <Filter>Impl</Filter>
     </ClCompile>
@@ -38,6 +35,9 @@
     <ClCompile Include="PolygonMeshImpl.cpp">
       <Filter>Impl</Filter>
     </ClCompile>
+    <ClCompile Include="VDBVolumeConverter.cpp">
+      <Filter>Converter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -48,9 +48,6 @@
     </ClInclude>
     <ClInclude Include="PolygonMeshImpl.h">
       <Filter>Impl</Filter>
-    </ClInclude>
-    <ClInclude Include="VolumeToMeshConverter.h">
-      <Filter>Converter</Filter>
     </ClInclude>
     <ClInclude Include="OBJFileWriter.h">
       <Filter>FileIO</Filter>
@@ -77,6 +74,9 @@
       <Filter>Converter</Filter>
     </ClInclude>
     <ClInclude Include="VDBVolumePresenter.h" />
+    <ClInclude Include="VDBVolumeConverter.h">
+      <Filter>Converter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

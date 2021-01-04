@@ -7,7 +7,7 @@
 
 #include "../VDBConverter/VDBParticleSystem.h"
 #include "../VDBConverter/VDBParticleSystemConverter.h"
-#include "../VDBConverter/VolumeToMeshConverter.h"
+#include "../VDBConverter/VDBVolumeConverter.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -55,7 +55,7 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	VDBParticleSystemConverter psConverter;
 	auto volume = psConverter.toVolume(ps, args.radius.getValue());
 
-	VolumeToMeshConverter toMeshConvereter;
+	VDBVolumeConverter toMeshConvereter;
 	toMeshConvereter.toMesh(*volume, meshScene);
 	
 	return true;

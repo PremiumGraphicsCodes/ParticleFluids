@@ -6,7 +6,7 @@
 namespace Crystal {
 	namespace VDB {
 
-class VolumeToMeshConverter
+class VDBVolumeConverter
 {
 public:
 	void toMesh(const VDBVolume& volume, VDBPolygonMesh* mesh);

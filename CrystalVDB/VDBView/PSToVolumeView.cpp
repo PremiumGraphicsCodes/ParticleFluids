@@ -4,7 +4,7 @@
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../VDBConverter/VDBParticleSystemConverter.h"
-#include "../VDBConverter/VolumeToMeshConverter.h"
+#include "../VDBConverter/VDBVolumeConverter.h"
 
 #include <iostream>
 
