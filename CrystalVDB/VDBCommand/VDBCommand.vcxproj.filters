@@ -8,6 +8,7 @@
     <ClCompile Include="VDBParticleSystemToMeshCommand.cpp" />
     <ClCompile Include="VDBMeshCreateCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
+    <ClCompile Include="VDBMeshToParticleSystemCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -33,6 +34,10 @@
     </ClInclude>
     <ClInclude Include="VDBOBJFileWriteCommand.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileWriteLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBMeshToParticleSystemCommand.h" />
+    <ClInclude Include="PublicLabels\VDBMeshToParticleSystemLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>
