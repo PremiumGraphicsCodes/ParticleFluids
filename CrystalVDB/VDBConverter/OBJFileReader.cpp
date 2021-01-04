@@ -1,6 +1,7 @@
 #include "OBJFileReader.h"
 
 #include "../../Crystal/IO/Helper.h"
+#include "../../Crystal/IO/OBJSyntaxParser.h"
 
 #include "PolygonMeshImpl.h"
 
@@ -68,16 +69,14 @@ bool OBJFileReader::read(std::istream& stream, VDBPolygonMesh& mesh)
 
 	std::string header;
 
-	PolygonMeshImpl impl;
+	PolygonMeshImpl* impl = mesh.getImpl();
 	while (!stream.eof()) {
 		if (header == "#") {
 			std::getline(stream, str);
-			//header = read< std::string >();
 		}
 		else if (header == "v") {
 			std::getline(stream, str);
-			//impl.points.push_back
-			impl.points.push_back(readVertices(str));
+			impl->points.push_back(readVertices(str));
 		}
 		else if (header == "vt") {
 			std::getline(stream, str);
@@ -95,44 +94,16 @@ bool OBJFileReader::read(std::istream& stream, VDBPolygonMesh& mesh)
 		else if (header == "f") {
 			std::getline(stream, str);
 
-			std::vector< std::string >& strs = Helper::split(str, ' ');
-
-			/*
-			OBJFace face;
-
-			//assert(strs.front() == "f");
-			for (unsigned int i = 0; i < strs.size(); ++i) {
-				if (strs[i].empty()) {
-					continue;
-				}
-				std::string::size_type pos(strs[i].find("//"));
-				if (pos != std::string::npos) {
-					strs[i].replace(pos, 2, "/ /");
-				}
-
-				std::vector<std::string>& splitted = Helper::split(strs[i], '/');
-				const int positionIndex = std::stoi(splitted[0]);
-				face.positionIndices.push_back(positionIndex);
-
-				if (splitted.size() >= 2 && splitted[1] != " ") {
-					const int texIndex = std::stoi(splitted[1]);
-					face.texCoordIndices.push_back(texIndex);
-				}
-				else {
-					face.texCoordIndices.push_back(-1);
-				}
-
-				if (splitted.size() >= 3) {
-					const int normalIndex = std::stoi(splitted[2]);
-					face.normalIndices.push_back(normalIndex);
-				}
-				else {
-					face.normalIndices.push_back(-1);
-				}
+			const auto& face = OBJSyntaxParser::parseFaceLine(str);
+			if (face.positionIndices.size() == 3) {
+				openvdb::Vec3I i(face.positionIndices[0], face.positionIndices[1], face.positionIndices[2]);
+				impl->triangles.push_back(i);
+			}
+			else if (face.positionIndices.size() == 4) {
+				openvdb::Vec4I i(face.positionIndices[0], face.positionIndices[1], face.positionIndices[2], face.positionIndices[3]);
+				impl->quads.push_back(i);
 			}
 
-			currentGroup.faces.push_back(face);
-			*/
 		}
 	}
 	//obj.groups.push_back(currentGroup);

@@ -54,10 +54,11 @@ void VDBPolygonMeshPresenter::updateScreenView()
 
 	const auto triangles = model->getTriangles();
 
-	for (const auto& f : triangles) {
-		for (const auto vId : f) {
-			buffer.addIndex(vId);
-		}
+	for (const auto& t : triangles) {
+		buffer.addIndex(t[0]);
+		buffer.addIndex(t[1]);
+		buffer.addIndex(t[1]);
+		buffer.addIndex(t[2]);
 	}
 
 	const auto quads = model->getQuads();
