@@ -27,6 +27,14 @@ namespace PG {
 		public const string NewVDBMeshIdLabel = "NewVDBMeshId";
 	}
 
+	public class VDBMeshToParticleSystemLabels
+	{
+		public const string CommandNameLabel = "VDBMeshToParticleSystem";
+		public const string VDBMeshIdLabel = "VDBMeshId";
+		public const string ParticleSystemIdLabel = "ParticleSystemId";
+		public const string RadiusLabel = "Radius";
+	}
+
 	public class VDBOBJFileWriteLabels
 	{
 		public const string CommandNameLabel = "VDBOBJFileWrite";

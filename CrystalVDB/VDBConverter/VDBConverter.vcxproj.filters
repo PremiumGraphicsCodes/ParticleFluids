@@ -42,6 +42,9 @@
     <ClCompile Include="VDBParticleSystemPresenter.cpp">
       <Filter>ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="OBJFileReader.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -84,6 +87,9 @@
     </ClInclude>
     <ClInclude Include="VDBParticleSystemPresenter.h">
       <Filter>ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJFileReader.h">
+      <Filter>FileIO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

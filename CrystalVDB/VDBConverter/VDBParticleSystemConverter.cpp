@@ -29,6 +29,8 @@ std::unique_ptr<VDBVolume> VDBParticleSystemConverter::toVolume(const VDBParticl
 
 void VDBParticleSystemConverter::fromVDB(const VDBParticleSystem& src, ParticleSystemScene* ps)
 {
+    ps->clear();
+
     auto impl = src.getImpl();
     const auto count = impl->size();
     for (int i = 0; i < count; ++i) {
