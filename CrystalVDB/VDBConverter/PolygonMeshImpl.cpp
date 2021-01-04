@@ -20,11 +20,12 @@ namespace {
 
 void PolygonMeshImpl::updateNormals()
 {
-	this->normals.clear();
-	for (const auto& t : triangles) {
-		this->normals.push_back( getNormal(points, t[0], t[1], t[2]) );
+	for (auto& tt : triangles) {
+		const auto& t = tt.indices;
+		tt.normal = getNormal(points, t[0], t[1], t[2]);
 	}
-	for (const auto& q : quads) {
-		this->normals.push_back(getNormal(points, q[0], q[1], q[2]));
+	for (auto& qq : quads) {
+		const auto& q = qq.indices;
+		qq.normal = getNormal(points, q[0], q[1], q[2]);
 	}
 }

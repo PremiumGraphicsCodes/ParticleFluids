@@ -1,4 +1,3 @@
-/*
 #include "VDBOBJFileReadCommand.h"
 
 #include "../VDBConverter/OBJFileReader.h"
@@ -11,29 +10,29 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBOBJFileWriteCommand::Args::Args() :
-	vdbMeshId(::VDBMeshIdLabel, {}),
+VDBOBJFileReadCommand::Args::Args() :
 	filePath(::FilePathLabel, "")
 {
-	add(&vdbMeshId);
 	add(&filePath);
 }
 
-VDBOBJFileWriteCommand::Results::Results()
+VDBOBJFileReadCommand::Results::Results() :
+	vdbMeshId(::VDBMeshIdLabel, {})
 {
 }
 
-VDBOBJFileWriteCommand::VDBOBJFileWriteCommand() :
+VDBOBJFileReadCommand::VDBOBJFileReadCommand() :
 	ICommand(&args, &results)
 {}
 
-std::string VDBOBJFileWriteCommand::getName()
+std::string VDBOBJFileReadCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool VDBOBJFileWriteCommand::execute(World* world)
+bool VDBOBJFileReadCommand::execute(World* world)
 {
+	/*
 	auto mesh = world->getScenes()->findSceneById<VDBPolygonMesh*>(args.vdbMeshId.getValue());
 	if (mesh == nullptr) {
 		return false;
@@ -43,5 +42,6 @@ bool VDBOBJFileWriteCommand::execute(World* world)
 	const auto isOk = writer.write(args.filePath.getValue(), *mesh);
 
 	return isOk;
+	*/
+	return false;
 }
-*/

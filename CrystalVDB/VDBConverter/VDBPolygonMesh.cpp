@@ -48,28 +48,32 @@ std::vector<Vector3dd> VDBPolygonMesh::getVerticesd() const
 
 void VDBPolygonMesh::addTriangle(const std::array<int, 3>& indices)
 {
-	impl->triangles.push_back(Converter::toVDB(indices));
+	PolygonMeshImpl::TriangleFace triangle;
+	triangle.indices = Converter::toVDB( indices );
+	impl->triangles.push_back(triangle);
 }
 
 std::vector<std::array<unsigned int, 3>> VDBPolygonMesh::getTriangles() const
 {
 	std::vector<std::array<unsigned int, 3>> dest;
 	for (const auto& t : impl->triangles) {
-		dest.push_back(Converter::fromVDB(t));
+		dest.push_back(Converter::fromVDB(t.indices));
 	}
 	return dest;
 }
 
 void VDBPolygonMesh::addQuad(const std::array<int, 4>& indices)
 {
-	impl->quads.push_back(Converter::toVDB(indices));
+	PolygonMeshImpl::QuadFace quad;
+	quad.indices = Converter::toVDB(indices);
+	impl->quads.push_back(quad);
 }
 
 std::vector<std::array<unsigned int, 4>> VDBPolygonMesh::getQuads() const
 {
 	std::vector<std::array<unsigned int, 4>> dest;
 	for (const auto& q : impl->quads) {
-		dest.push_back(Converter::fromVDB(q));
+		dest.push_back(Converter::fromVDB(q.indices));
 	}
 	return dest;
 }
