@@ -16,15 +16,14 @@ using namespace Crystal::Shape;
 using namespace Crystal::VDB;
 using namespace Crystal::Scene;
 
-std::unique_ptr<VDBVolumeScene> VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particles, const float radius)
+void VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particles, const float radius, VDBVolumeScene* volume)
 {
     // Rasterize into an SDF.
     auto sdf = createLevelSet<FloatGrid>();
     auto p = particles.getImpl();
     tools::particlesToSdf(*p, *sdf, radius);
     std::unique_ptr<VDBVolumeScene> v = std::make_unique<VDBVolumeScene>();
-    v->getImpl()->setPtr(sdf);
-    return std::move(v);
+    volume->getImpl()->setPtr(sdf);
 }
 
 void VDBParticleSystemConverter::fromVDB(const VDBParticleSystemScene& src, ParticleSystemScene* ps)

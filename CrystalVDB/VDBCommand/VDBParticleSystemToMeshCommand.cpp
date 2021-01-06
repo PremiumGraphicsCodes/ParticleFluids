@@ -8,6 +8,7 @@
 #include "../VDBConverter/VDBParticleSystemScene.h"
 #include "../VDBConverter/VDBParticleSystemConverter.h"
 #include "../VDBConverter/VDBPolygonMeshScene.h"
+#include "../VDBConverter/VDBVolumeScene.h"
 #include "../VDBConverter/VDBVolumeConverter.h"
 
 using namespace Crystal::Shape;
@@ -53,11 +54,12 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	for (auto p : scene->getShape()->getParticles()) {
 		ps.add(p->getPosition(), p->getAttribute().size);
 	}
+	VDBVolumeScene volume;
 	VDBParticleSystemConverter psConverter;
-	auto volume = psConverter.toVolume(ps, args.radius.getValue());
+	psConverter.toVolume(ps, args.radius.getValue(), &volume);
 
 	VDBVolumeConverter toMeshConvereter;
-	toMeshConvereter.toMesh(*volume, meshScene);
+	toMeshConvereter.toMesh(volume, meshScene);
 	
 	return true;
 }
