@@ -1,6 +1,7 @@
 #include "VolumeToMeshView.h"
 
-#include "../VDBConverter/VDBPolygonMesh.h"
+#include "../VDBConverter/VDBPolygonMeshScene.h"
+#include "../VDBConverter/VDBVolumeScene.h"
 #include "../VDBConverter/VDBVolumeConverter.h"
 
 #include <iostream>
@@ -24,7 +25,7 @@ void VolumeToMeshView::onOk()
 	grid.fill(1, 6, -1.0f);
 
 	VDBVolumeConverter vToMesh;
-	VDBPolygonMesh* mesh = new VDBPolygonMesh();
+	auto mesh = new VDBPolygonMeshScene();
 	vToMesh.toMesh(grid, mesh);
 	mesh->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	getWorld()->getScenes()->addScene(mesh);

@@ -1,16 +1,15 @@
 #pragma once
 
-#include "VDBPolygonMesh.h"
-#include "VDBVolumeScene.h"
-
 namespace Crystal {
 	namespace VDB {
+		class VDBVolumeScene;
+		class VDBPolygonMeshScene;
 		class VDBParticleSystemScene;
 
 class VDBVolumeConverter
 {
 public:
-	void toMesh(const VDBVolumeScene& volume, VDBPolygonMesh* mesh);
+	void toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScene* mesh);
 
 	void toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystemScene* ps) const;
 

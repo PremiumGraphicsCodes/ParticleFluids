@@ -3,7 +3,7 @@
 #include "../../Crystal/IO/OBJFileWriter.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
-#include "../VDBConverter/VDBPolygonMesh.h"
+#include "../VDBConverter/VDBPolygonMeshScene.h"
 
 #include "PublicLabels/VDBOBJFileWriteLabels.h"
 
@@ -34,7 +34,7 @@ std::string VDBOBJFileWriteCommand::getName()
 
 bool VDBOBJFileWriteCommand::execute(World* world)
 {
-	auto mesh = world->getScenes()->findSceneById<VDBPolygonMesh*>(args.vdbMeshId.getValue());
+	auto mesh = world->getScenes()->findSceneById<VDBPolygonMeshScene*>(args.vdbMeshId.getValue());
 	if (mesh == nullptr) {
 		return false;
 	}

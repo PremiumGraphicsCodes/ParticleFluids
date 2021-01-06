@@ -1,6 +1,6 @@
 #include "VDBPolygonMeshView.h"
 
-#include "../VDBConverter/VDBPolygonMesh.h"
+#include "../VDBConverter/VDBPolygonMeshScene.h"
 #include "../VDBConverter/VDBParticleSystemScene.h"
 
 #include "../../Crystal/Scene/MaterialScene.h"
@@ -17,7 +17,7 @@ VDBPolygonMeshView::VDBPolygonMeshView(const std::string& name, World* world, Ca
 
 void VDBPolygonMeshView::onOk()
 {
-	auto mesh = new VDBPolygonMesh(getWorld()->getNextSceneId(), "VDBMesh");
+	auto mesh = new VDBPolygonMeshScene(getWorld()->getNextSceneId(), "VDBMesh");
 	// cube vertices
 
 	mesh->addVertex(Vector3dd(2, 2, 2)); // 0       6--------7

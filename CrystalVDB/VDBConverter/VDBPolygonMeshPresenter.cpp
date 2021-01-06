@@ -1,6 +1,6 @@
 #include "VDBPolygonMeshPresenter.h"
 
-#include "VDBPolygonMesh.h"
+#include "VDBPolygonMeshScene.h"
 
 #include "../../Crystal/Scene/SceneShader.h"
 #include "../../Crystal/Scene/LineShaderScene.h"
@@ -10,7 +10,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Shader;
 using namespace Crystal::VDB;
 
-VDBPolygonMeshPresenter::VDBPolygonMeshPresenter(VDBPolygonMesh* model) :
+VDBPolygonMeshPresenter::VDBPolygonMeshPresenter(VDBPolygonMeshScene* model) :
 	model(model),
 	view(nullptr)
 {

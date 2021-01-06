@@ -1,6 +1,6 @@
 #pragma once
 
-#include "VDBPolygonMesh.h"
+#include "VDBPolygonMeshScene.h"
 #include "VDBVolumeScene.h"
 
 #include "../../Crystal/Shape/PolygonMesh.h"
@@ -11,9 +11,9 @@ namespace Crystal {
 class VDBPolygonMeshConverter
 {
 public:
-	void toVolume(const VDBPolygonMesh& mesh, VDBVolumeScene* volume);
+	void toVolume(const VDBPolygonMeshScene& mesh, VDBVolumeScene* volume);
 
-	std::unique_ptr<Shape::PolygonMesh> fromVDB(const VDBPolygonMesh& src);
+	std::unique_ptr<Shape::PolygonMesh> fromVDB(const VDBPolygonMeshScene& src);
 
 private:
 };

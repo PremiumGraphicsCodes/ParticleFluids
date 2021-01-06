@@ -1,6 +1,6 @@
 #include "VDBMeshCreateCommand.h"
 
-#include "../../CrystalVDB/VDBConverter/VDBPolygonMesh.h"
+#include "../../CrystalVDB/VDBConverter/VDBPolygonMeshScene.h"
 
 #include "PublicLabels/VDBMeshCreateLabels.h"
 
@@ -32,7 +32,7 @@ std::string VDBMeshCreateCommand::getName()
 
 bool VDBMeshCreateCommand::execute(World* world)
 {
-	VDBPolygonMesh* mesh = new VDBPolygonMesh(world->getNextSceneId(), "VDBMesh");
+	auto mesh = new VDBPolygonMeshScene(world->getNextSceneId(), "VDBMesh");
 	world->addScene(1, mesh);
 	results.newId.setValue(mesh->getId());
 

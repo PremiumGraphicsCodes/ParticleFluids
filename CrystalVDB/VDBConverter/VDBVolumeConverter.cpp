@@ -6,15 +6,16 @@
 
 #include "openvdb/tools/VolumeToMesh.h"
 
+#include "VDBVolumeScene.h"
 #include "VolumeImpl.h"
+#include "VDBPolygonMeshScene.h"
 #include "PolygonMeshImpl.h"
 #include "VDBParticleSystemImpl.h"
-
 #include "VDBParticleSystemScene.h"
 
 using namespace Crystal::VDB;
 
-void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMesh* mesh)
+void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScene* mesh)
 {   
     auto impl = mesh->getImpl();
     impl->clear();

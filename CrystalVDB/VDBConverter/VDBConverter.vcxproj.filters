@@ -2,9 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Converter.cpp">
-      <Filter>Impl</Filter>
+      <Filter>Converter\Private</Filter>
     </ClCompile>
-    <ClCompile Include="VDBPolygonMesh.cpp" />
     <ClCompile Include="VDBAdapter.cpp" />
     <ClCompile Include="VDBFileReader.cpp">
       <Filter>FileIO</Filter>
@@ -12,15 +11,11 @@
     <ClCompile Include="VDBFileWriter.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="VDBPolygonMeshPresenter.cpp" />
     <ClCompile Include="VDBParticleSystemConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
     <ClCompile Include="VDBPolygonMeshConverter.cpp">
       <Filter>Converter</Filter>
-    </ClCompile>
-    <ClCompile Include="PolygonMeshImpl.cpp">
-      <Filter>Impl</Filter>
     </ClCompile>
     <ClCompile Include="VDBVolumeConverter.cpp">
       <Filter>Converter</Filter>
@@ -43,15 +38,20 @@
     <ClCompile Include="VDBParticleSystemScene.cpp">
       <Filter>ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="VDBPolygonMeshPresenter.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshImpl.cpp">
+      <Filter>PolygonMesh\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBPolygonMeshScene.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
-      <Filter>Impl</Filter>
+      <Filter>Converter\Private</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonMeshImpl.h">
-      <Filter>Impl</Filter>
-    </ClInclude>
-    <ClInclude Include="VDBPolygonMesh.h" />
     <ClInclude Include="VDBAdapter.h" />
     <ClInclude Include="VDBFileReader.h">
       <Filter>FileIO</Filter>
@@ -59,7 +59,6 @@
     <ClInclude Include="VDBFileWriter.h">
       <Filter>FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="VDBPolygonMeshPresenter.h" />
     <ClInclude Include="VDBParticleSystemConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
@@ -87,6 +86,15 @@
     <ClInclude Include="VDBParticleSystemScene.h">
       <Filter>ParticleSystem</Filter>
     </ClInclude>
+    <ClInclude Include="VDBPolygonMeshPresenter.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonMeshImpl.h">
+      <Filter>PolygonMesh\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBPolygonMeshScene.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">
@@ -94,9 +102,6 @@
     </Filter>
     <Filter Include="FileIO">
       <UniqueIdentifier>{c5f10b5d-9511-410c-99ce-6ef985958a28}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Impl">
-      <UniqueIdentifier>{0f07a8f8-2e2f-46b1-84e9-eb32e7f913f3}</UniqueIdentifier>
     </Filter>
     <Filter Include="ParticleSystem">
       <UniqueIdentifier>{d2aae527-4a64-4e57-84b8-245f2953f558}</UniqueIdentifier>
@@ -109,6 +114,15 @@
     </Filter>
     <Filter Include="ParticleSystem\Private">
       <UniqueIdentifier>{0451f205-71e5-4c76-acef-a932cd8f6ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PolygonMesh">
+      <UniqueIdentifier>{d97b5d3a-14a6-4efc-b47a-67ca70ac9421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PolygonMesh\Private">
+      <UniqueIdentifier>{54852c6f-bc32-48ff-9fc0-3ba07b936a5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Converter\Private">
+      <UniqueIdentifier>{0f07a8f8-2e2f-46b1-84e9-eb32e7f913f3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

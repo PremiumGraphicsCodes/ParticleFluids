@@ -1,6 +1,6 @@
 #include "MeshToVolumeView.h"
 
-#include "../VDBConverter/VDBPolygonMesh.h"
+#include "../VDBConverter/VDBPolygonMeshScene.h"
 #include "../VDBConverter/VDBPolygonMeshConverter.h"
 
 #include <iostream>
@@ -22,7 +22,7 @@ MeshToVolumeView::MeshToVolumeView(const std::string& name, World* model, Canvas
 void MeshToVolumeView::onOk()
 {
 	const auto meshId = vdbMeshSelectView.getId();
-	auto mesh = getWorld()->getScenes()->findSceneById<VDBPolygonMesh*>(meshId);
+	auto mesh = getWorld()->getScenes()->findSceneById<VDBPolygonMeshScene*>(meshId);
 
 	auto volume = new VDBVolumeScene(getWorld()->getNextSceneId(), "MeshToVolume");
 	VDBPolygonMeshConverter converter;

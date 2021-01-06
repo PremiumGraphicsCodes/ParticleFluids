@@ -3,7 +3,7 @@
 #include "../VDBCommand/VDBOBJFileReadCommand.h"
 #include "../VDBCommand/PublicLabels/VDBOBJFileReadLabels.h"
 
-#include "../VDBConverter/VDBPolygonMesh.h"
+#include "../VDBConverter/VDBPolygonMeshScene.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -24,6 +24,6 @@ void OBJFileImportView::onOk()
 	VDBOBJFileReadCommand command(args);
 	command.execute(getWorld());
 	auto newId = std::any_cast<int>( command.getResult(::VDBMeshIdLabel) );
-	auto mesh = getWorld()->getScenes()->findSceneById<VDBPolygonMesh*>(newId);
+	auto mesh = getWorld()->getScenes()->findSceneById<VDBPolygonMeshScene*>(newId);
 	mesh->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 }

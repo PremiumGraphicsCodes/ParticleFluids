@@ -7,6 +7,7 @@
 
 #include "../VDBConverter/VDBParticleSystemScene.h"
 #include "../VDBConverter/VDBParticleSystemConverter.h"
+#include "../VDBConverter/VDBPolygonMeshScene.h"
 #include "../VDBConverter/VDBVolumeConverter.h"
 
 using namespace Crystal::Shape;
@@ -42,7 +43,7 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	if (scene == nullptr) {
 		return false;
 	}
-	auto meshScene = world->getScenes()->findSceneById<VDBPolygonMesh*>(args.vdbMeshId.getValue());
+	auto meshScene = world->getScenes()->findSceneById<VDBPolygonMeshScene*>(args.vdbMeshId.getValue());
 	if (meshScene == nullptr) {
 		return false;
 	}

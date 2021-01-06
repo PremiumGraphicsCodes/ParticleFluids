@@ -2,7 +2,7 @@
 
 #include "../../Crystal/IO/OBJFileReader.h"
 
-#include "../VDBConverter/VDBPolygonMesh.h"
+#include "../VDBConverter/VDBPolygonMeshScene.h"
 #include "PublicLabels/VDBOBJFileWriteLabels.h"
 
 using namespace Crystal::Shape;
@@ -44,7 +44,7 @@ bool VDBOBJFileReadCommand::execute(World* world)
 		return false;
 	}
 	const auto obj = reader.getOBJ();
-	auto mesh = new VDBPolygonMesh(world->getNextSceneId(), "OBJImport");
+	auto mesh = new VDBPolygonMeshScene(world->getNextSceneId(), "OBJImport");
 	for (const auto& p : obj.positions) {
 		mesh->addVertex(p);
 	}
