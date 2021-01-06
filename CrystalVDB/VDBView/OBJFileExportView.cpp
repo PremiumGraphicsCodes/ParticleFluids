@@ -7,18 +7,18 @@ using namespace Crystal::VDB;
 
 OBJFileExportView::OBJFileExportView(const std::string& name, Scene::World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	vdbMeshSelectView("VDBMesh", model, canvas)//,
-//	filePathView("OBJFile")
+	vdbMeshSelectView("VDBMesh", model, canvas),
+	fileSaveView("OBJFile")
 {
 	add(&vdbMeshSelectView);
-//	add(&filePathView);
+	add(&fileSaveView);
 }
 
 void OBJFileExportView::onOk()
 {
 	VDBOBJFileWriteCommand::Args args;
 	args.vdbMeshId.setValue( vdbMeshSelectView.getId() );
-//	args.filePath.setValue( filePathView.getFileName() );
+	args.filePath.setValue( fileSaveView.getFileName() );
 	VDBOBJFileWriteCommand command(args);
 	command.execute(getWorld());
 }

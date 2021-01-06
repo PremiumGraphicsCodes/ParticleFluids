@@ -2,7 +2,7 @@
 
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
-//#include "../../CrystalViewer/AppBase/FileOpenView.h"
+#include "../../CrystalViewer/AppBase/FileSaveView.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -19,7 +19,7 @@ private:
 	void onOk() override;
 
 	ObjectSelectView vdbMeshSelectView;
-	//FilePathView filePathView;
+	FileSaveView fileSaveView;
 };
 
 	}

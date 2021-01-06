@@ -56,16 +56,18 @@ bool VDBOBJFileWriteCommand::execute(World* world)
 	Crystal::IO::OBJGroup group;
 	for (const auto& t : triangles) {
 		Crystal::IO::OBJFace f;
-		f.positionIndices = { t.indices[0], t.indices[1], t.indices[2] };
+		f.positionIndices = { t.indices[0] +1, t.indices[1] +1, t.indices[2]+1 };
 		f.normalIndices = { normalIndex, normalIndex, normalIndex };
+		f.texCoordIndices = { 0,0,0 };
 		normalIndex++;
 		group.faces.push_back(f);
 	}
 
 	for (const auto& t : quads) {
 		Crystal::IO::OBJFace f;
-		f.positionIndices = { t.indices[0], t.indices[1], t.indices[2], t.indices[3] };
+		f.positionIndices = { t.indices[0]+1, t.indices[1]+1, t.indices[2]+1, t.indices[3]+1 };
 		f.normalIndices = { normalIndex, normalIndex, normalIndex, normalIndex };
+		f.texCoordIndices = { 0,0,0,0 };
 		normalIndex++;
 		group.faces.push_back(f);
 	}

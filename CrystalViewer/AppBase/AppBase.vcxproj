@@ -40,6 +40,7 @@
     <ClCompile Include="FileOpenMenu.cpp" />
     <ClCompile Include="FileOpenView.cpp" />
     <ClCompile Include="FileSaveMenu.cpp" />
+    <ClCompile Include="FileSaveView.cpp" />
     <ClCompile Include="Float4View.cpp" />
     <ClCompile Include="FloatView.cpp" />
     <ClCompile Include="ImageView.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="DirectoryView.h" />
     <ClInclude Include="Double4View.h" />
     <ClInclude Include="FileOpenView.h" />
+    <ClInclude Include="FileSaveView.h" />
     <ClInclude Include="glfw3.h" />
     <ClInclude Include="IEditCancelView.h" />
     <ClInclude Include="ImageView.h" />

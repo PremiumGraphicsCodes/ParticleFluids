@@ -115,3 +115,8 @@ Box3d VDBPolygonMesh::getBoundingBox() const
 	}
 	return box;
 }
+
+void VDBPolygonMesh::updateNormals()
+{
+	impl->updateNormals();
+}

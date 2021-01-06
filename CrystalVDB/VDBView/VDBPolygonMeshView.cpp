@@ -37,6 +37,8 @@ void VDBPolygonMeshView::onOk()
 	mesh->addQuad({ 2, 3, 7, 6 }); // top
 	mesh->addQuad({ 0, 4, 5, 1 }); // bottom
 
+	mesh->updateNormals();
+
 	mesh->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	getWorld()->getScenes()->addScene(mesh);
 }

@@ -282,6 +282,9 @@
     <ClCompile Include="FileOpenView.cpp">
       <Filter>File</Filter>
     </ClCompile>
+    <ClCompile Include="FileSaveView.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -611,6 +614,9 @@
       <Filter>File</Filter>
     </ClInclude>
     <ClInclude Include="FileOpenView.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSaveView.h">
       <Filter>File</Filter>
     </ClInclude>
   </ItemGroup>

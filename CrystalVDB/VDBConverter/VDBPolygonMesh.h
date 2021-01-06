@@ -69,6 +69,8 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
+	void updateNormals();
+
 	PolygonMeshImpl* getImpl() const { return impl.get(); }
 
 private:
