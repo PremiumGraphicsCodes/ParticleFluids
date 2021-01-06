@@ -16,9 +16,9 @@ OBJFileExportView::OBJFileExportView(const std::string& name, Scene::World* mode
 
 void OBJFileExportView::onOk()
 {
-	VDBOBJFileWriteCommand command;
 	VDBOBJFileWriteCommand::Args args;
 	args.vdbMeshId.setValue( vdbMeshSelectView.getId() );
 	args.filePath.setValue( filePathView.getFileName() );
+	VDBOBJFileWriteCommand command(args);
 	command.execute(getWorld());
 }

@@ -6,7 +6,7 @@
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 #include "../../CrystalViewer/AppBase/FileOpenMenu.h"
-#include "../../CrystalViewer/AppBase/FileSaveView.h"
+#include "../../CrystalViewer/AppBase/FileSaveMenu.h"
 
 #include "../VDBConverter/VDBFileReader.h"
 #include "../VDBConverter/VDBFileWriter.h"
@@ -78,7 +78,7 @@ void VDBMenu::onShow()
 //			reader.read()
 		}
 		if (ImGui::MenuItem("Export")) {
-			FileSaveView fileSaveView("Export");
+			FileSaveMenu fileSaveView("Export");
 			fileSaveView.addFilter("*.vdb");
 			fileSaveView.show();
 			const auto& filename = fileSaveView.getFileName();

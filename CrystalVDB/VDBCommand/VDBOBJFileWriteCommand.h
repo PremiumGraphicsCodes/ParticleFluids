@@ -25,6 +25,10 @@ public:
 
 	VDBOBJFileWriteCommand();
 
+	explicit VDBOBJFileWriteCommand(const Args& args) :
+		args(args)
+	{}	
+
 	static std::string getName();
 
 	std::string getCommandName() const { return getName(); }

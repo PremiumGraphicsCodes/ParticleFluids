@@ -1,26 +1,26 @@
-#include "FileSaveView.h"
+#include "FileSaveMenu.h"
 
 #include "tinyfiledialogs.h"
 
 using namespace Crystal::UI;
 
-FileSaveView::FileSaveView(const std::string& name) :
+FileSaveMenu::FileSaveMenu(const std::string& name) :
 	IWindow(name),
 	filename(nullptr)
 {}
 
-void FileSaveView::addFilter(char const* filter)
+void FileSaveMenu::addFilter(char const* filter)
 {
 	filters.push_back(filter);
 }
 
-void FileSaveView::onShow()
+void FileSaveMenu::onShow()
 {
 	const auto filterCount = static_cast<int>(filters.size());
 	filename = tinyfd_saveFileDialog("Save", "", filterCount, filters.data(), nullptr);
 }
 
-std::string FileSaveView::getFileName() const
+std::string FileSaveMenu::getFileName() const
 {
 	if (filename == nullptr) {
 		return "";

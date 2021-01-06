@@ -3,7 +3,7 @@
 #include "tinyfiledialogs.h"
 #include "Canvas.h"
 #include "FileOpenMenu.h"
-#include "FileSaveView.h"
+#include "FileSaveMenu.h"
 #include "../../Crystal/Scene/World.h"
 #include "../Command/CameraFitCommand.h"
 #include "../Command/Command.h"
@@ -47,7 +47,7 @@ void FileMenu::onShow()
 			//canvas->update();
 		}
 		if (ImGui::MenuItem("Export")) {
-			FileSaveView view("");
+			FileSaveMenu view("");
 			view.addFilter("*.stl");
 			view.addFilter("*.obj");
 			view.addFilter("*.mtl");
