@@ -53,13 +53,16 @@ void VDBPolygonMesh::addTriangle(const std::array<int, 3>& indices)
 	impl->triangles.push_back(triangle);
 }
 
-std::vector<std::array<unsigned int, 3>> VDBPolygonMesh::getTriangles() const
+std::vector<VDBPolygonMesh::TriangleFace> VDBPolygonMesh::getTriangles() const
 {
-	std::vector<std::array<unsigned int, 3>> dest;
+	std::vector<VDBPolygonMesh::TriangleFace> faces;
 	for (const auto& t : impl->triangles) {
-		dest.push_back(Converter::fromVDB(t.indices));
+		VDBPolygonMesh::TriangleFace face;
+		face.indices = Converter::fromVDB(t.indices);
+		face.normal = Converter::fromVDB(t.normal);
+		faces.emplace_back(face);
 	}
-	return dest;
+	return faces;
 }
 
 void VDBPolygonMesh::addQuad(const std::array<int, 4>& indices)
@@ -69,13 +72,16 @@ void VDBPolygonMesh::addQuad(const std::array<int, 4>& indices)
 	impl->quads.push_back(quad);
 }
 
-std::vector<std::array<unsigned int, 4>> VDBPolygonMesh::getQuads() const
+std::vector<VDBPolygonMesh::QuadFace> VDBPolygonMesh::getQuads() const
 {
-	std::vector<std::array<unsigned int, 4>> dest;
+	std::vector<VDBPolygonMesh::QuadFace> faces;
 	for (const auto& q : impl->quads) {
-		dest.push_back(Converter::fromVDB(q.indices));
+		VDBPolygonMesh::QuadFace face;
+		face.indices = Converter::fromVDB(q.indices);
+		face.normal = Converter::fromVDB(q.normal);
+		faces.emplace_back(face);
 	}
-	return dest;
+	return faces;
 }
 
 Box3d VDBPolygonMesh::getBoundingBox() const

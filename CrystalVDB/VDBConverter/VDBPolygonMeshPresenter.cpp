@@ -54,7 +54,8 @@ void VDBPolygonMeshPresenter::updateScreenView()
 
 	const auto triangles = model->getTriangles();
 
-	for (const auto& t : triangles) {
+	for (const auto& tt : triangles) {
+		const auto t = tt.indices;
 		buffer.addIndex(t[0]);
 		buffer.addIndex(t[1]);
 		buffer.addIndex(t[1]);
@@ -63,7 +64,8 @@ void VDBPolygonMeshPresenter::updateScreenView()
 
 	const auto quads = model->getQuads();
 
-	for (const auto& q : quads) {
+	for (const auto& qq : quads) {
+		const auto q = qq.indices;
 		buffer.addIndex(q[0]);
 		buffer.addIndex(q[1]);
 		buffer.addIndex(q[1]);

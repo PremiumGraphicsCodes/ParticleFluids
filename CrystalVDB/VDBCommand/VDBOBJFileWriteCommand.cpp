@@ -2,6 +2,7 @@
 
 #include "../VDBConverter/OBJFileWriter.h"
 
+#include "../../Crystal/IO/OBJFileWriter.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include "PublicLabels/VDBOBJFileWriteLabels.h"
@@ -38,8 +39,34 @@ bool VDBOBJFileWriteCommand::execute(World* world)
 		return false;
 	}
 
-	OBJFileWriter writer;
-	const auto isOk = writer.write(args.filePath.getValue(), *mesh);
+	Crystal::IO::OBJFile obj;
+	obj.positions = mesh->getVerticesf();
 
+	const auto& triangles = mesh->getTriangles();
+	for (const auto& t : triangles) {
+		obj.normals.emplace_back(t.normal);
+	}
+
+	const auto& quads = mesh->getQuads();
+	for (const auto& q : quads) {
+		obj.normals.emplace_back(q.normal);
+	}
+
+	int normalIndex = 1;
+	/*
+	Crystal::IO::OBJGroup group;
+	for (const auto& t : triangles) {
+		Crystal::IO::OBJFace face;
+		face.positionIndices = { t.indices[0], t.indices[1], t.indices[2] };
+		group.faces.push_back();
+	}
+
+	for (const auto& t : quads) {
+		group.faces.emplace_back(t.indices);
+	}
+	*/
+
+	Crystal::IO::OBJFileWriter writer;
+	const auto isOk = writer.write(args.filePath.getValue(), obj);
 	return isOk;
 }
