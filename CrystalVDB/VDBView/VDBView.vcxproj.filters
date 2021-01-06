@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="VDBMenu.cpp" />
     <ClCompile Include="VDBView.cpp" />
     <ClCompile Include="VolumeToMeshView.cpp">
       <Filter>Volume\Converter</Filter>
@@ -31,9 +30,10 @@
       <Filter>Volume</Filter>
     </ClCompile>
     <ClCompile Include="VDBFileMenu.cpp" />
+    <ClCompile Include="VDBMeshMenu.cpp" />
+    <ClCompile Include="VDBPSMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VDBMenu.h" />
     <ClInclude Include="VolumeToMeshView.h">
       <Filter>Volume\Converter</Filter>
     </ClInclude>
@@ -62,6 +62,8 @@
       <Filter>Volume</Filter>
     </ClInclude>
     <ClInclude Include="VDBFileMenu.h" />
+    <ClInclude Include="VDBMeshMenu.h" />
+    <ClInclude Include="VDBPSMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
