@@ -6,16 +6,17 @@ using namespace Crystal::IO;
 OBJFace OBJSyntaxParser::parseFace(std::vector< std::string >& strs)
 {
 	OBJFace face;
-	for (int i = 0; i < strs[i].size(); ++i) {
-		if (strs[i].empty()) {
+	for (int i = 0; i < strs.size(); ++i) {
+		auto str = strs[i];
+		if (str.empty()) {
 			continue;
 		}
-		std::string::size_type pos(strs[i].find("//"));
+		std::string::size_type pos(str.find("//"));
 		if (pos != std::string::npos) {
-			strs[i].replace(pos, 2, "/ /");
+			str.replace(pos, 2, "/ /");
 		}
 
-		std::vector<std::string>& splitted = Helper::split(strs[i], '/');
+		std::vector<std::string>& splitted = Helper::split(str, '/');
 		const int positionIndex = std::stoi(splitted[0]);
 		face.positionIndices.push_back(positionIndex);
 

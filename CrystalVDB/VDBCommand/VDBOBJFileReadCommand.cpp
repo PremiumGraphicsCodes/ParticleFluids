@@ -56,5 +56,7 @@ bool VDBOBJFileReadCommand::execute(World* world)
 	}
 	mesh->updateNormals();
 	world->getScenes()->addScene(mesh);
-	return false;
+
+	results.vdbMeshId.setValue(mesh->getId());
+	return true;
 }

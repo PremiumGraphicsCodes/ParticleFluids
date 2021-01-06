@@ -12,6 +12,7 @@ OBJFileExportView::OBJFileExportView(const std::string& name, Scene::World* mode
 {
 	add(&vdbMeshSelectView);
 	add(&fileSaveView);
+	fileSaveView.addFilter("obj");
 }
 
 void OBJFileExportView::onOk()

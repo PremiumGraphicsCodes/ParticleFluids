@@ -21,6 +21,9 @@
     <ClCompile Include="OBJFileExportView.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="OBJFileImportView.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBParticleSystemView.h" />
@@ -40,6 +43,9 @@
       <Filter>Converter\Volume</Filter>
     </ClInclude>
     <ClInclude Include="OBJFileExportView.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJFileImportView.h">
       <Filter>FileIO</Filter>
     </ClInclude>
   </ItemGroup>

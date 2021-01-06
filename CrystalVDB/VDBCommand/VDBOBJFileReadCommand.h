@@ -25,6 +25,10 @@ public:
 
 	VDBOBJFileReadCommand();
 
+	explicit VDBOBJFileReadCommand(const Args& args) :
+		args(args)
+	{}
+
 	static std::string getName();
 
 	std::string getCommandName() const { return getName(); }

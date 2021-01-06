@@ -18,6 +18,7 @@
 #include "VolumeToMeshView.h"
 #include "MeshToVolumeView.h"
 #include "VolumeToPSView.h"
+#include "OBJFileImportView.h"
 #include "OBJFileExportView.h"
 
 #include <iostream>
@@ -123,6 +124,9 @@ void VDBMenu::onShow()
 		}
 		if (ImGui::MenuItem("VolumeToPS")) {
 			control->setWindow(new VolumeToPSView("VolumeToPS", world, getCanvas()));
+		}
+		if (ImGui::MenuItem("OBJImport")) {
+			control->setWindow(new OBJFileImportView("OBJImport", world, getCanvas()));
 		}
 		if (ImGui::MenuItem("OBJExport")) {
 			control->setWindow(new OBJFileExportView("OBJExport", world, getCanvas()));

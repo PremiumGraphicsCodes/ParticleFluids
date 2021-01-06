@@ -150,3 +150,33 @@ TEST(OBJFileReaderTest, TestExampleTextureMappedSquare)
 	EXPECT_EQ(4, obj.positions.size());
 	EXPECT_EQ(4, obj.texCoords.size());
 }
+
+TEST(OBJFileReaderTest, TestReadCubedFace)
+{
+	std::stringstream stream;
+	stream
+		<< "v 2 2 2" << std::endl
+		<< "v 5 2 2" << std::endl
+		<< "v 2 5 2" << std::endl
+		<< "v 5 5 2" << std::endl
+		<< "v 2 2 5" << std::endl
+		<< "v 5 2 5" << std::endl
+		<< "v 2 5 5" << std::endl
+		<< "v 5 5 5" << std::endl
+		<< "vn 0 -0 1" << std::endl
+		<< "vn 0 0 -1" << std::endl
+		<< "vn 1 0 -0" << std::endl
+		<< "vn -1 0 0" << std::endl
+		<< "vn 0 -1 0" << std::endl
+		<< "vn -0 1 0" << std::endl
+		<< "g" << std::endl
+		<< "f 1//1 2//1 4//1 3//1" << std::endl
+		<< "f 6//2 5//2 7//2 8//2" << std::endl
+		<< "f 1//3 3//3 7//3 5//3" << std::endl
+		<< "f 2//4 6//4 8//4 4//4" << std::endl
+		<< "f 3//5 4//5 8//5 7//5" << std::endl
+		<< "f 1//6 5//6 6//6 2//6" << std::endl;
+
+	OBJFileReader reader;
+	EXPECT_TRUE(reader.read(stream));
+}
