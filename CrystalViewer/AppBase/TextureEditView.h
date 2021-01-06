@@ -2,7 +2,7 @@
 
 #include "IEditCancelView.h"
 #include "IntView.h"
-#include "FilePathView.h"
+#include "FileOpenView.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -21,7 +21,7 @@ private:
 	void onEdit() override;
 
 	IntView idView;
-	FilePathView filePathView;
+	FileOpenView filePathView;
 };
 
 	}

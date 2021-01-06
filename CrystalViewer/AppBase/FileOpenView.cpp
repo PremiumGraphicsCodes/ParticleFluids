@@ -1,10 +1,10 @@
-#include "FilePathView.h"
+#include "FileOpenView.h"
 
 #include "tinyfiledialogs.h"
 
 using namespace Crystal::UI;
 
-FilePathView::FilePathView(const std::string& name) :
+FileOpenView::FileOpenView(const std::string& name) :
 	IView(name),
 	selectButton("Select"),
 	fileNameView("FileName")
@@ -14,12 +14,12 @@ FilePathView::FilePathView(const std::string& name) :
 	add(&fileNameView);
 }
 
-void FilePathView::addFilter(const char* filter)
+void FileOpenView::addFilter(const char* filter)
 {
 	filters.push_back(filter);
 }
 
-void FilePathView::onSelect()
+void FileOpenView::onSelect()
 {
 	const auto filterCount = static_cast<int>(filters.size());
 	auto fileName = tinyfd_openFileDialog("Open", "", filterCount, filters.data(), nullptr, 0);

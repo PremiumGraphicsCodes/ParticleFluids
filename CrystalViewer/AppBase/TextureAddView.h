@@ -1,6 +1,6 @@
 #include "IOkCancelView.h"
 
-#include "FilePathView.h"
+#include "FileOpenView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -15,7 +15,7 @@ private:
 
 private:
 	//TextureView image;
-	FilePathView filePathView;
+	FileOpenView filePathView;
 	StringView nameView;
 };
 

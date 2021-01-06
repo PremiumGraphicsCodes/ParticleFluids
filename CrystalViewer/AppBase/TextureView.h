@@ -2,7 +2,7 @@
 
 #include "IView.h"
 #include "StringView.h"
-#include "FilePathView.h"
+#include "FileOpenView.h"
 #include "../../Crystal/Shader/TextureObject.h"
 
 namespace Crystal {
@@ -18,7 +18,7 @@ public:
 	void setValue(const Shader::TextureObject& texture);
 
 private:
-	FilePathView filePathView;
+	FileOpenView filePathView;
 	StringView nameView;
 };
 

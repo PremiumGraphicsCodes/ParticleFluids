@@ -241,9 +241,6 @@
     <ClCompile Include="DeleteView.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="FilePathView.cpp">
-      <Filter>File</Filter>
-    </ClCompile>
     <ClCompile Include="ImageView.cpp" />
     <ClCompile Include="PMConeView.cpp">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
@@ -280,6 +277,9 @@
       <Filter>File</Filter>
     </ClCompile>
     <ClCompile Include="FileSaveMenu.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="FileOpenView.cpp">
       <Filter>File</Filter>
     </ClCompile>
   </ItemGroup>
@@ -575,9 +575,6 @@
     <ClInclude Include="IEditCancelView.h">
       <Filter>Window</Filter>
     </ClInclude>
-    <ClInclude Include="FilePathView.h">
-      <Filter>File</Filter>
-    </ClInclude>
     <ClInclude Include="ImageView.h" />
     <ClInclude Include="PMConeView.h">
       <Filter>Scene\Shape\PolygonMesh\Add</Filter>
@@ -611,6 +608,9 @@
       <Filter>File</Filter>
     </ClInclude>
     <ClInclude Include="FileSaveMenu.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="FileOpenView.h">
       <Filter>File</Filter>
     </ClInclude>
   </ItemGroup>
