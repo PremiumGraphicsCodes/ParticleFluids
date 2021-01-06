@@ -1,4 +1,4 @@
-#include "VDBPolygonMeshView.h"
+#include "VDBPMBoxView.h"
 
 #include "../VDBConverter/VDBPolygonMeshScene.h"
 #include "../VDBConverter/VDBParticleSystemScene.h"
@@ -10,12 +10,12 @@ using namespace Crystal::UI;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBPolygonMeshView::VDBPolygonMeshView(const std::string& name, World* world, Canvas* canvas) :
+VDBPMBoxView::VDBPMBoxView(const std::string& name, World* world, Canvas* canvas) :
 	IOkCancelView(name, world, canvas)
 {
 }
 
-void VDBPolygonMeshView::onOk()
+void VDBPMBoxView::onOk()
 {
 	auto mesh = new VDBPolygonMeshScene(getWorld()->getNextSceneId(), "VDBMesh");
 	// cube vertices

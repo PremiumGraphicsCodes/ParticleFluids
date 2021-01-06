@@ -2,68 +2,83 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="VDBMenu.cpp" />
-    <ClCompile Include="VDBVolumeView.cpp" />
-    <ClCompile Include="VDBPolygonMeshView.cpp" />
     <ClCompile Include="VDBView.cpp" />
-    <ClCompile Include="PSToVolumeView.cpp">
-      <Filter>Converter\ParticleSystem</Filter>
-    </ClCompile>
     <ClCompile Include="VolumeToMeshView.cpp">
-      <Filter>Converter\Volume</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshToVolumeView.cpp">
-      <Filter>Converter\PolygonMesh</Filter>
+      <Filter>Volume\Converter</Filter>
     </ClCompile>
     <ClCompile Include="VolumeToPSView.cpp">
-      <Filter>Converter\Volume</Filter>
+      <Filter>Volume\Converter</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBPSBoxView.cpp">
+      <Filter>ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="PSToVolumeView.cpp">
+      <Filter>ParticleSystem\Converter</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshToVolumeView.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBPMBoxView.cpp">
+      <Filter>PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="OBJFileExportView.cpp">
-      <Filter>FileIO</Filter>
+      <Filter>PolygonMesh\OBJFileIO</Filter>
     </ClCompile>
     <ClCompile Include="OBJFileImportView.cpp">
-      <Filter>FileIO</Filter>
+      <Filter>PolygonMesh\OBJFileIO</Filter>
     </ClCompile>
-    <ClCompile Include="VDBPSBoxView.cpp" />
+    <ClCompile Include="VDBVolumeView.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBMenu.h" />
-    <ClInclude Include="VDBVolumeView.h" />
-    <ClInclude Include="VDBPolygonMeshView.h" />
-    <ClInclude Include="PSToVolumeView.h">
-      <Filter>Converter\ParticleSystem</Filter>
-    </ClInclude>
     <ClInclude Include="VolumeToMeshView.h">
-      <Filter>Converter\Volume</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshToVolumeView.h">
-      <Filter>Converter\PolygonMesh</Filter>
+      <Filter>Volume\Converter</Filter>
     </ClInclude>
     <ClInclude Include="VolumeToPSView.h">
-      <Filter>Converter\Volume</Filter>
+      <Filter>Volume\Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBPSBoxView.h">
+      <Filter>ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PSToVolumeView.h">
+      <Filter>ParticleSystem\Converter</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshToVolumeView.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBPMBoxView.h">
+      <Filter>PolygonMesh</Filter>
     </ClInclude>
     <ClInclude Include="OBJFileExportView.h">
-      <Filter>FileIO</Filter>
+      <Filter>PolygonMesh\OBJFileIO</Filter>
     </ClInclude>
     <ClInclude Include="OBJFileImportView.h">
-      <Filter>FileIO</Filter>
+      <Filter>PolygonMesh\OBJFileIO</Filter>
     </ClInclude>
-    <ClInclude Include="VDBPSBoxView.h" />
+    <ClInclude Include="VDBVolumeView.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Converter">
-      <UniqueIdentifier>{8572fffc-fd2e-4a5b-b3b7-92bbf93f66e0}</UniqueIdentifier>
+    <Filter Include="ParticleSystem">
+      <UniqueIdentifier>{aa16ed70-b898-4b38-b1d3-8793e7cdfb0b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Converter\ParticleSystem">
-      <UniqueIdentifier>{0123b7a7-edac-4dbe-8d12-29aff490752d}</UniqueIdentifier>
+    <Filter Include="ParticleSystem\Converter">
+      <UniqueIdentifier>{678dd3ad-051c-41d8-be59-8e45c4ff77c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Converter\Volume">
+    <Filter Include="PolygonMesh">
+      <UniqueIdentifier>{e0529865-6f40-458e-be5b-f9567bd34bcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PolygonMesh\OBJFileIO">
+      <UniqueIdentifier>{e20b1f7f-e0c4-46a1-9e03-84c6df89d447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volume">
+      <UniqueIdentifier>{79cf4d34-a3ee-4b1f-b37b-2be51f22edab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volume\Converter">
       <UniqueIdentifier>{2512a1f0-8460-4a5d-9f5b-096d2e1bea55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Converter\PolygonMesh">
-      <UniqueIdentifier>{03d45315-757b-436e-a311-e34d4c82280b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FileIO">
-      <UniqueIdentifier>{6febf400-0b12-471a-bf93-50cee04eb97f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

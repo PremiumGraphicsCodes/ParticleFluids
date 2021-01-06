@@ -12,7 +12,7 @@
 #include "../VDBConverter/VDBFileWriter.h"
 
 #include "VDBPSBoxView.h"
-#include "VDBPolygonMeshView.h"
+#include "VDBPMBoxView.h"
 #include "VDBVolumeView.h"
 #include "PSToVolumeView.h"
 #include "VolumeToMeshView.h"
@@ -117,7 +117,7 @@ void VDBMenu::onShow()
 	}
 	if (ImGui::BeginMenu("VDBPM")) {
 		if (ImGui::MenuItem("PMBox")) {
-			control->setWindow(new VDBPolygonMeshView("PMBox", world, getCanvas()));
+			control->setWindow(new VDBPMBoxView("PMBox", world, getCanvas()));
 		}
 		if (ImGui::MenuItem("MeshToVolume")) {
 			control->setWindow(new MeshToVolumeView("MeshToVolume", world, getCanvas()));

@@ -9,10 +9,10 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class VDBPolygonMeshView : public IOkCancelView
+class VDBPMBoxView : public IOkCancelView
 {
 public:
-	VDBPolygonMeshView(const std::string& name, Scene::World* model, Canvas* canvas);
+	VDBPMBoxView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;
