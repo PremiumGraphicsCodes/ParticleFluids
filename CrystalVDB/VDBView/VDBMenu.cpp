@@ -11,7 +11,7 @@
 #include "../VDBConverter/VDBFileReader.h"
 #include "../VDBConverter/VDBFileWriter.h"
 
-#include "VDBParticleSystemView.h"
+#include "VDBPSBoxView.h"
 #include "VDBPolygonMeshView.h"
 #include "VDBVolumeView.h"
 #include "PSToVolumeView.h"
@@ -50,7 +50,7 @@ void VDBMenu::onShow()
 			if (!filename.empty()) {
 				VDBFileReader reader;
 				const auto isOk = reader.open(filename);
-				if(isOk) {
+				if (isOk) {
 					const auto pointNames = reader.getPointGridNames();
 					for (const auto& n : pointNames) {
 						const auto positions = reader.readPositions(n);
@@ -67,7 +67,7 @@ void VDBMenu::onShow()
 
 						auto presenter = scene->getPresenter();
 						presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-//						presenter->setBlend(false);
+						//						presenter->setBlend(false);
 					}
 
 					std::cout << "import suceeded." << std::endl;
@@ -76,7 +76,7 @@ void VDBMenu::onShow()
 					std::cout << "import failed." << std::endl;
 				}
 			}
-//			reader.read()
+			//			reader.read()
 		}
 		if (ImGui::MenuItem("Export")) {
 			FileSaveMenu fileSaveView("Export");
@@ -104,26 +104,23 @@ void VDBMenu::onShow()
 				}
 			}
 		}
-		if (ImGui::MenuItem("VDBParticleSystem")) {
-			control->setWindow(new VDBParticleSystemView("VDBParticles", world, getCanvas()));
-		}
-		if (ImGui::MenuItem("VDBPolygonMesh")) {
-			control->setWindow(new VDBPolygonMeshView("VDBMesh", world, getCanvas()));
-		}
-		if (ImGui::MenuItem("VDBVolume")) {
-			control->setWindow(new VDBVolumeView("VDBVolume", world, getCanvas()));
+		ImGui::EndMenu();
+	}
+	if (ImGui::BeginMenu("VDBPS")) {
+		if (ImGui::MenuItem("PSBox")) {
+			control->setWindow(new VDBPSBox("PSBox", world, getCanvas()));
 		}
 		if (ImGui::MenuItem("PSToMesh")) {
 			control->setWindow(new PSToVolumeView("PSToVolume", world, getCanvas()));
 		}
-		if (ImGui::MenuItem("VolumeToMesh")) {
-			control->setWindow(new VolumeToMeshView("VolumeToMesh", world, getCanvas()));
+		ImGui::EndMenu();
+	}
+	if (ImGui::BeginMenu("VDBPM")) {
+		if (ImGui::MenuItem("PMBox")) {
+			control->setWindow(new VDBPolygonMeshView("PMBox", world, getCanvas()));
 		}
 		if (ImGui::MenuItem("MeshToVolume")) {
 			control->setWindow(new MeshToVolumeView("MeshToVolume", world, getCanvas()));
-		}
-		if (ImGui::MenuItem("VolumeToPS")) {
-			control->setWindow(new VolumeToPSView("VolumeToPS", world, getCanvas()));
 		}
 		if (ImGui::MenuItem("OBJImport")) {
 			control->setWindow(new OBJFileImportView("OBJImport", world, getCanvas()));
@@ -131,9 +128,18 @@ void VDBMenu::onShow()
 		if (ImGui::MenuItem("OBJExport")) {
 			control->setWindow(new OBJFileExportView("OBJExport", world, getCanvas()));
 		}
-
 		ImGui::EndMenu();
 	}
-	//ImGui::EndMenuBar();
-
+	if(ImGui::BeginMenu("VDBVolume")){
+		if (ImGui::MenuItem("VolumeBox")) {
+			control->setWindow(new VDBVolumeView("VDBVolume", world, getCanvas()));
+		}
+		if (ImGui::MenuItem("VolumeToMesh")) {
+			control->setWindow(new VolumeToMeshView("VolumeToMesh", world, getCanvas()));
+		}
+		if (ImGui::MenuItem("VolumeToPS")) {
+			control->setWindow(new VolumeToPSView("VolumeToPS", world, getCanvas()));
+		}
+		ImGui::EndMenu();
+	}
 }

@@ -9,10 +9,10 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class VDBParticleSystemView : public IOkCancelView
+class VDBPSBox : public IOkCancelView
 {
 public:
-	VDBParticleSystemView(const std::string& name, Scene::World* model, Canvas* canvas);
+	VDBPSBox(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

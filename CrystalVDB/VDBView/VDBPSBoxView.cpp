@@ -1,4 +1,4 @@
-#include "VDBParticleSystemView.h"
+#include "VDBPSBoxView.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../VDBConverter/VDBParticleSystemScene.h"
@@ -8,7 +8,7 @@ using namespace Crystal::UI;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBParticleSystemView::VDBParticleSystemView(const std::string& name, World* model, Canvas* canvas) :
+VDBPSBox::VDBPSBox(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	sphereView("Sphere"),
 	divideLengthView("DivideLength", 0.1)
@@ -17,7 +17,7 @@ VDBParticleSystemView::VDBParticleSystemView(const std::string& name, World* mod
 	add(&divideLengthView);
 }
 
-void VDBParticleSystemView::onOk()
+void VDBPSBox::onOk()
 {
 	const auto& sphere = sphereView.getValue();
 	const auto bb = sphere.getBoundingBox();
