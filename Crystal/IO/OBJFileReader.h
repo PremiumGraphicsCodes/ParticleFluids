@@ -18,11 +18,11 @@ public:
 
 private:
 
-	Math::Vector3df readVertices(const std::string& str);
+	Math::Vector3df readVertices(const std::vector<std::string>& strs);
 
-	Math::Vector3df readVector3d(const std::string& str);
+	Math::Vector3df readVector3d(const std::vector<std::string>& strs);
 
-	Math::Vector2df readVector2d(const std::string& str);
+	Math::Vector2df readVector2d(const std::vector<std::string>& strs);
 
 	OBJFile obj;
 };

@@ -71,15 +71,6 @@ TEST(OBJFileReaderTest, TestExampleGroups)
 {
 	std::stringstream stream;
 	stream
-		<< "v 0.000000 2.000000 2.000000" << std::endl
-		<< "v 0.000000 0.000000 2.000000" << std::endl
-		<< "v 2.000000 0.000000 2.000000" << std::endl
-		<< "v 2.000000 2.000000 2.000000" << std::endl
-		<< "v 0.000000 2.000000 0.000000" << std::endl
-		<< "v 0.000000 0.000000 0.000000" << std::endl
-		<< "v 2.000000 0.000000 0.000000" << std::endl
-		<< "v 2.000000 2.000000 0.000000" << std::endl
-		<< "# 8 vertices" << std::endl
 		<< "g front cube" << std::endl
 		<< "f 1 2 3 4" << std::endl
 		<< "g back cube" << std::endl
@@ -151,24 +142,10 @@ TEST(OBJFileReaderTest, TestExampleTextureMappedSquare)
 	EXPECT_EQ(4, obj.texCoords.size());
 }
 
-TEST(OBJFileReaderTest, TestReadCubedFace)
+TEST(OBJFileReaderTest, TestReadGroup)
 {
 	std::stringstream stream;
 	stream
-		<< "v 2 2 2" << std::endl
-		<< "v 5 2 2" << std::endl
-		<< "v 2 5 2" << std::endl
-		<< "v 5 5 2" << std::endl
-		<< "v 2 2 5" << std::endl
-		<< "v 5 2 5" << std::endl
-		<< "v 2 5 5" << std::endl
-		<< "v 5 5 5" << std::endl
-		<< "vn 0 -0 1" << std::endl
-		<< "vn 0 0 -1" << std::endl
-		<< "vn 1 0 -0" << std::endl
-		<< "vn -1 0 0" << std::endl
-		<< "vn 0 -1 0" << std::endl
-		<< "vn -0 1 0" << std::endl
 		<< "g" << std::endl
 		<< "f 1//1 2//1 4//1 3//1" << std::endl
 		<< "f 6//2 5//2 7//2 8//2" << std::endl
@@ -179,4 +156,7 @@ TEST(OBJFileReaderTest, TestReadCubedFace)
 
 	OBJFileReader reader;
 	EXPECT_TRUE(reader.read(stream));
+	const auto obj = reader.getOBJ();
+	EXPECT_EQ(1, obj.groups.size());
+	EXPECT_EQ(6, obj.groups.front().faces.size());
 }

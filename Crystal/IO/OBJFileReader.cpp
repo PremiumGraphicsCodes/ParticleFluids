@@ -35,49 +35,49 @@ bool OBJFileReader::read(const std::filesystem::path& filePath)
 
 bool OBJFileReader::read(std::istream& stream)
 {
-	std::string str;
-
 	std::string header;
 	std::string currentMtllibName;
 
 	auto currentGroup = OBJGroup();
 
 	while (!stream.eof()) {
+		std::string line;
+		std::getline(stream, line);
+		const auto strs = Helper::split(line, ' ');
+		if(strs.empty()) {
+			continue;
+		}
+		const auto header = strs.front();
 		if (header == "#") {
-			std::getline(stream, str);
-			//header = read< std::string >();
 		}
 		else if (header == "v") {
-			std::getline(stream, str);
-			obj.positions.push_back(readVertices(str));
+			obj.positions.push_back(readVertices(strs));
 		}
 		else if (header == "vt") {
-			std::getline(stream, str);
-			obj.texCoords.push_back(readVector2d(str));
+			obj.texCoords.push_back(readVector2d(strs));
 		}
 		else if (header == "vn" || header == "-vn") {
-			std::getline(stream, str);
-			obj.normals.push_back(readVector3d(str));
+			obj.normals.push_back(readVector3d(strs));
 		}
 		else if (header == "mtllib") {
-			currentMtllibName = Helper::read<std::string>(stream);
+			currentMtllibName = strs[1];
 			obj.mtllibs.push_back(currentMtllibName);
 		}
 		else if (header == "usemtl") {
-			currentGroup.usemtl = Helper::read<std::string>(stream);
+			currentGroup.usemtl = strs[1];
 			//mtllibMap.insert(std::make_pair(currentMtllibName, currentUseMtlName));
 		}
 		else if (header == "f") {
-			std::getline(stream, str);
-
 			//std::vector< std::string >& strs = Helper::split(str, ' ');
 
-			OBJFace face = OBJSyntaxParser::parseFaceLine(str);
+			OBJFace face = OBJSyntaxParser::parseFaceLine(line);
 
 			currentGroup.faces.push_back(face);
 		}
 		else if (header == "g") {
-			currentGroup.name = Helper::read<std::string>(stream);
+			if (!strs.size() >= 2) {
+				currentGroup.name = strs[1];
+			}
 			if (!currentGroup.faces.empty()) {
 				obj.groups.push_back(currentGroup);
 				currentGroup = OBJGroup();
@@ -85,7 +85,6 @@ bool OBJFileReader::read(std::istream& stream)
 			}
 		}
 
-		header = Helper::read< std::string >(stream);
 	}
 	obj.groups.push_back(currentGroup);
 
@@ -93,16 +92,13 @@ bool OBJFileReader::read(std::istream& stream)
 }
 
 
-Vector3df OBJFileReader::readVertices(const std::string& str)
+Vector3df OBJFileReader::readVertices(const std::vector<std::string>& strs)
 {
-	const auto& strs = Helper::split(str, ' ');
-	//assert(strs.front() == "v");
-
-	const float x = std::stof(strs[0].c_str());
-	const float y = std::stof(strs[1].c_str());
-	const float z = std::stof(strs[2].c_str());
-	if (strs.size() == 4) {
-		const float w = ::std::stof(strs[3].c_str());
+	const float x = std::stof(strs[1].c_str());
+	const float y = std::stof(strs[2].c_str());
+	const float z = std::stof(strs[3].c_str());
+	if (strs.size() == 5) {
+		const float w = ::std::stof(strs[4].c_str());
 		return Vector3df(x, y, z);
 	}
 	else {
@@ -110,14 +106,12 @@ Vector3df OBJFileReader::readVertices(const std::string& str)
 	}
 }
 
-Vector3df OBJFileReader::readVector3d(const std::string& str)
+Vector3df OBJFileReader::readVector3d(const std::vector<std::string>& strs)
 {
-	const auto& strs = Helper::split(str, ' ');
-	//assert(strs.front() == "vt");
-	const float u = ::std::stof(strs[0]);
-	const float v = ::std::stof(strs[1]);
-	if (strs.size() == 3) {
-		const float w = std::stof(strs[2]);
+	const float u = ::std::stof(strs[1]);
+	const float v = ::std::stof(strs[2]);
+	if (strs.size() == 4) {
+		const float w = std::stof(strs[3]);
 		return Vector3df(u, v, w);
 	}
 	else {
@@ -125,11 +119,9 @@ Vector3df OBJFileReader::readVector3d(const std::string& str)
 	}
 }
 
-Vector2df OBJFileReader::readVector2d(const std::string& str)
+Vector2df OBJFileReader::readVector2d(const std::vector<std::string>& strs)
 {
-	const auto& strs = Helper::split(str, ' ');
-	//assert(strs.front() == "vt");
-	const float u = ::std::stof(strs[0]);
-	const float v = ::std::stof(strs[1]);
+	const float u = ::std::stof(strs[1]);
+	const float v = ::std::stof(strs[2]);
 	return Vector2df(u, v);
 }

@@ -18,10 +18,16 @@ VDBOBJFileReadCommand::Args::Args() :
 VDBOBJFileReadCommand::Results::Results() :
 	vdbMeshId(::VDBMeshIdLabel, {})
 {
+	add(&vdbMeshId);
 }
 
 VDBOBJFileReadCommand::VDBOBJFileReadCommand() :
 	ICommand(&args, &results)
+{}
+
+VDBOBJFileReadCommand::VDBOBJFileReadCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &results)
 {}
 
 std::string VDBOBJFileReadCommand::getName()
@@ -45,12 +51,12 @@ bool VDBOBJFileReadCommand::execute(World* world)
 	for (const auto& g : obj.groups) {
 		for (const auto& f : g.faces) {
 			const auto i = f.positionIndices;
-			const auto n = obj.normals[f.normalIndices[0]];
+			//const auto n = obj.normals[f.normalIndices[0]];
 			if (i.size() == 3) {
-				mesh->addTriangle({ i[0], i[1], i[2] });
+				mesh->addTriangle({ i[0]-1, i[1]-1, i[2]-1 });
 			}
 			else if (i.size() == 4) {
-				mesh->addQuad({ i[0], i[1], i[2], i[3] });
+				mesh->addQuad({ i[0]-1, i[1]-1, i[2]-1, i[3]-1 });
 			}
 		}
 	}

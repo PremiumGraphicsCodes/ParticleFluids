@@ -6,7 +6,7 @@ using namespace Crystal::IO;
 OBJFace OBJSyntaxParser::parseFace(std::vector< std::string >& strs)
 {
 	OBJFace face;
-	for (int i = 0; i < strs.size(); ++i) {
+	for (int i = 1; i < strs.size(); ++i) {
 		auto str = strs[i];
 		if (str.empty()) {
 			continue;

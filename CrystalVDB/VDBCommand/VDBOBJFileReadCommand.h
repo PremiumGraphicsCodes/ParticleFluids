@@ -19,15 +19,13 @@ public:
 	{
 		Results();
 
-		Command::Arg<int> vdbMeshId;
+		Command::Result<int> vdbMeshId;
 		//Command::Result<std::vector<int>> newIds;
 	};
 
 	VDBOBJFileReadCommand();
 
-	explicit VDBOBJFileReadCommand(const Args& args) :
-		args(args)
-	{}
+	explicit VDBOBJFileReadCommand(const Args& args);
 
 	static std::string getName();
 
