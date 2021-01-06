@@ -2,7 +2,6 @@
 
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
 #include "../../CrystalViewer/AppBase/Sphere3dView.h"
-#include "../../CrystalViewer/AppBase/MaterialSelectView.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -18,8 +17,6 @@ public:
 private:
 	void onOk() override;
 
-private:
-	MaterialSelectView materialView;
 };
 
 	}

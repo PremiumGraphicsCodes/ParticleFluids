@@ -6,7 +6,7 @@
 #include "VDBParticleSystem.h"
 #include "VDBParticleSystemImpl.h"
 #include "VolumeImpl.h"
-#include "VDBVolume.h"
+#include "VDBVolumeScene.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include "Converter.h"
@@ -16,13 +16,13 @@ using namespace Crystal::Shape;
 using namespace Crystal::VDB;
 using namespace Crystal::Scene;
 
-std::unique_ptr<VDBVolume> VDBParticleSystemConverter::toVolume(const VDBParticleSystem& particles, const float radius)
+std::unique_ptr<VDBVolumeScene> VDBParticleSystemConverter::toVolume(const VDBParticleSystem& particles, const float radius)
 {
     // Rasterize into an SDF.
     auto sdf = createLevelSet<FloatGrid>();
     auto p = particles.getImpl();
     tools::particlesToSdf(*p, *sdf, radius);
-    std::unique_ptr<VDBVolume> v = std::make_unique<VDBVolume>();
+    std::unique_ptr<VDBVolumeScene> v = std::make_unique<VDBVolumeScene>();
     v->getImpl()->setPtr(sdf);
     return std::move(v);
 }

@@ -361,7 +361,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="VDBParticleSystemPresenter.cpp" />
     <ClCompile Include="VDBPolygonMesh.cpp" />
     <ClCompile Include="VDBPolygonMeshPresenter.cpp" />
-    <ClCompile Include="VDBVolume.cpp" />
+    <ClCompile Include="VDBVolumeScene.cpp" />
     <ClCompile Include="VDBVolumePresenter.cpp" />
     <ClCompile Include="VolumeImpl.cpp" />
     <ClCompile Include="VDBVolumeConverter.cpp" />
@@ -380,7 +380,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="VDBPolygonMesh.h" />
     <ClInclude Include="PolygonMeshImpl.h" />
     <ClInclude Include="VDBPolygonMeshPresenter.h" />
-    <ClInclude Include="VDBVolume.h" />
+    <ClInclude Include="VDBVolumeScene.h" />
     <ClInclude Include="VDBVolumePresenter.h" />
     <ClInclude Include="VolumeImpl.h" />
     <ClInclude Include="VDBVolumeConverter.h" />

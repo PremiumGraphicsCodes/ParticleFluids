@@ -7,12 +7,12 @@ namespace Crystal {
 		class PointShaderScene;
 	}
 	namespace VDB {
-		class VDBVolume;
+		class VDBVolumeScene;
 
 class VDBVolumePresenter : public Scene::IPresenter
 {
 public:
-	explicit VDBVolumePresenter(VDBVolume* model);
+	explicit VDBVolumePresenter(VDBVolumeScene* model);
 
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
@@ -28,7 +28,7 @@ private:
 	void updateChildIdView();
 
 private:
-	VDBVolume* model;
+	VDBVolumeScene* model;
 	Scene::PointShaderScene* view;
 };
 

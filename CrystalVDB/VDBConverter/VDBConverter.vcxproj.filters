@@ -7,7 +7,6 @@
     <ClCompile Include="Converter.cpp">
       <Filter>Impl</Filter>
     </ClCompile>
-    <ClCompile Include="VDBVolume.cpp" />
     <ClCompile Include="VDBPolygonMesh.cpp" />
     <ClCompile Include="VDBAdapter.cpp" />
     <ClCompile Include="VDBFileReader.cpp">
@@ -42,6 +41,7 @@
     <ClCompile Include="OBJFileReader.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="VDBVolumeScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
@@ -53,7 +53,6 @@
     <ClInclude Include="PolygonMeshImpl.h">
       <Filter>Impl</Filter>
     </ClInclude>
-    <ClInclude Include="VDBVolume.h" />
     <ClInclude Include="VDBPolygonMesh.h" />
     <ClInclude Include="VDBAdapter.h" />
     <ClInclude Include="VDBFileReader.h">
@@ -85,6 +84,7 @@
     <ClInclude Include="OBJFileReader.h">
       <Filter>FileIO</Filter>
     </ClInclude>
+    <ClInclude Include="VDBVolumeScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">

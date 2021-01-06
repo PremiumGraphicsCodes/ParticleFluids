@@ -48,7 +48,7 @@ bool VDBMeshToParticleSystemCommand::execute(World* world)
 		return false;
 	}
 
-	VDBVolume volume;
+	VDBVolumeScene volume;
 	VDBPolygonMeshConverter converter;
 	converter.toVolume(*meshScene, &volume);
 

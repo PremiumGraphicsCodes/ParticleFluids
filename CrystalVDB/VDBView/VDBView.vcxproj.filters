@@ -18,6 +18,9 @@
     <ClCompile Include="VolumeToPSView.cpp">
       <Filter>Converter\Volume</Filter>
     </ClCompile>
+    <ClCompile Include="OBJFileExportView.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBParticleSystemView.h" />
@@ -36,6 +39,9 @@
     <ClInclude Include="VolumeToPSView.h">
       <Filter>Converter\Volume</Filter>
     </ClInclude>
+    <ClInclude Include="OBJFileExportView.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">
@@ -49,6 +55,9 @@
     </Filter>
     <Filter Include="Converter\PolygonMesh">
       <UniqueIdentifier>{03d45315-757b-436e-a311-e34d4c82280b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileIO">
+      <UniqueIdentifier>{6febf400-0b12-471a-bf93-50cee04eb97f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

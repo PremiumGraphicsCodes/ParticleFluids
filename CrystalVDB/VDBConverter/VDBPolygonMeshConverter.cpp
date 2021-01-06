@@ -10,7 +10,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
-void VDBPolygonMeshConverter::toVolume(const VDBPolygonMesh& mesh, VDBVolume* volume)
+void VDBPolygonMeshConverter::toVolume(const VDBPolygonMesh& mesh, VDBVolumeScene* volume)
 {
 	openvdb::math::Transform::Ptr xform = openvdb::math::Transform::createLinearTransform();
 	openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec4I> m(mesh.getImpl()->points, mesh.getImpl()->getQuads());

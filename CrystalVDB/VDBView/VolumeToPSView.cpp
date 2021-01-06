@@ -19,7 +19,7 @@ VolumeToPSView::VolumeToPSView(const std::string& name, World* model, Canvas* ca
 void VolumeToPSView::onOk()
 {
 	const auto id = vdbVolumeSelectView.getId();
-	auto volume = getWorld()->getScenes()->findSceneById<VDBVolume*>(id);
+	auto volume = getWorld()->getScenes()->findSceneById<VDBVolumeScene*>(id);
 
 	VDBVolumeConverter converter;
 	VDBParticleSystem* ps = new VDBParticleSystem(getWorld()->getNextSceneId(), "VolumeToPS");

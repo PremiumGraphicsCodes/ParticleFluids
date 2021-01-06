@@ -24,6 +24,14 @@ public:
     std::vector<TriangleFace> triangles;
     std::vector<QuadFace> quads;
 
+    std::vector<openvdb::Vec3I> getTriangles() const {
+        std::vector<openvdb::Vec3I> results;
+        for (const auto& q : triangles) {
+            results.push_back(q.indices);
+        }
+        return results;
+    }
+
     std::vector<openvdb::Vec4I> getQuads() const {
         std::vector<openvdb::Vec4I> results;
         for (const auto& q : quads) {

@@ -5,6 +5,7 @@
 
 #include "../VDBConverter/VDBParticleSystemConverter.h"
 #include "../VDBConverter/VDBVolumeConverter.h"
+#include "../VDBConverter/VDBVolumeScene.h"
 
 #include <iostream>
 

@@ -1,7 +1,7 @@
 #include "VDBVolumeView.h"
 
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../VDBConverter/VDBVolume.h"
+#include "../VDBConverter/VDBVolumeScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
@@ -15,7 +15,7 @@ VDBVolumeView::VDBVolumeView(const std::string& name, World* model, Canvas* canv
 
 void VDBVolumeView::onOk()
 {
-	VDBVolume* volume = new VDBVolume(getWorld()->getNextSceneId(), "VDBVolume");
+	auto volume = new VDBVolumeScene(getWorld()->getNextSceneId(), "VDBVolume");
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 10; ++j) {
 			for (int k = 0; k < 10; ++k) {

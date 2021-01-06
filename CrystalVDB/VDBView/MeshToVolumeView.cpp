@@ -24,7 +24,7 @@ void MeshToVolumeView::onOk()
 	const auto meshId = vdbMeshSelectView.getId();
 	auto mesh = getWorld()->getScenes()->findSceneById<VDBPolygonMesh*>(meshId);
 
-	VDBVolume* volume = new VDBVolume(getWorld()->getNextSceneId(), "MeshToVolume");
+	auto volume = new VDBVolumeScene(getWorld()->getNextSceneId(), "MeshToVolume");
 	VDBPolygonMeshConverter converter;
 	converter.toVolume(*mesh, volume);
 	volume->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());

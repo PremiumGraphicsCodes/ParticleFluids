@@ -1,12 +1,12 @@
 #include "VDBVolumePresenter.h"
 
-#include "VDBVolume.h"
+#include "VDBVolumeScene.h"
+
+#include "VolumeImpl.h"
+#include "Converter.h"
 
 #include "../../Crystal/Scene/SceneShader.h"
 #include "../../Crystal/Scene/PointShaderScene.h"
-#include "VDBVolume.h"
-#include "VolumeImpl.h"
-#include "Converter.h"
 //#include "PointShaderScene.h"
 
 using namespace Crystal::Shader;
@@ -14,7 +14,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Graphics;
 using namespace Crystal::VDB;
 
-VDBVolumePresenter::VDBVolumePresenter(VDBVolume* model) :
+VDBVolumePresenter::VDBVolumePresenter(VDBVolumeScene* model) :
 	IPresenter(),
 	model(model),
 	view(nullptr)

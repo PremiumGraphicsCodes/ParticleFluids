@@ -1,7 +1,7 @@
 #pragma once
 
 #include "VDBPolygonMesh.h"
-#include "VDBVolume.h"
+#include "VDBVolumeScene.h"
 
 namespace Crystal {
 	namespace VDB {
@@ -10,9 +10,9 @@ namespace Crystal {
 class VDBVolumeConverter
 {
 public:
-	void toMesh(const VDBVolume& volume, VDBPolygonMesh* mesh);
+	void toMesh(const VDBVolumeScene& volume, VDBPolygonMesh* mesh);
 
-	void toParticleSystem(const VDBVolume& volume, VDBParticleSystem* ps) const;
+	void toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystem* ps) const;
 
 private:
 };

@@ -4,7 +4,6 @@
 
 #include "../../Crystal/Scene/IShapeScene.h"
 
-#include "../../Crystal/Util/UnCopyable.h"
 #include "../../Crystal/Math/Box3d.h"
 
 #include "VDBVolumePresenter.h"
@@ -13,16 +12,16 @@ namespace Crystal {
 	namespace VDB {
 		class VolumeImpl;
 
-class VDBVolume : public Scene::IShapeScene
+class VDBVolumeScene : public Scene::IShapeScene
 {
 public:
-	VDBVolume();
+	VDBVolumeScene();
 
-	explicit VDBVolume(VolumeImpl* impl);
+	explicit VDBVolumeScene(VolumeImpl* impl);
 
-	explicit VDBVolume(const float value);
+	explicit VDBVolumeScene(const float value);
 
-	VDBVolume(const int id, const std::string& name);
+	VDBVolumeScene(const int id, const std::string& name);
 
 	void setImpl(VolumeImpl* impl) { this->impl = impl; }
 
@@ -32,7 +31,7 @@ public:
 
 	float getValue(const std::array<int, 3> index);
 
-	~VDBVolume();
+	~VDBVolumeScene();
 
 	void fill(const unsigned int coord1, const unsigned int coord2, const float value);
 

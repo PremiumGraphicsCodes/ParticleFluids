@@ -20,7 +20,7 @@ VolumeToMeshView::VolumeToMeshView(const std::string& name, World* model, Canvas
 
 void VolumeToMeshView::onOk()
 {
-	VDBVolume grid(1.0f);
+	VDBVolumeScene grid(1.0f);
 	grid.fill(1, 6, -1.0f);
 
 	VDBVolumeConverter vToMesh;

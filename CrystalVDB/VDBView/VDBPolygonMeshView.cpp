@@ -11,16 +11,12 @@ using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
 VDBPolygonMeshView::VDBPolygonMeshView(const std::string& name, World* world, Canvas* canvas) :
-	IOkCancelView(name, world, canvas),
-	materialView("Material", world)
+	IOkCancelView(name, world, canvas)
 {
-	add(&materialView);
 }
 
 void VDBPolygonMeshView::onOk()
 {
-	auto materialName = materialView.getSelected();
-	auto material = getWorld()->getScenes()->findSceneByName<MaterialScene*>(materialName);
 	auto mesh = new VDBPolygonMesh(getWorld()->getNextSceneId(), "VDBMesh");
 	// cube vertices
 

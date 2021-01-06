@@ -14,7 +14,7 @@
 
 using namespace Crystal::VDB;
 
-void VDBVolumeConverter::toMesh(const VDBVolume& volume, VDBPolygonMesh* mesh)
+void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMesh* mesh)
 {   
     auto impl = mesh->getImpl();
     impl->clear();
@@ -23,7 +23,7 @@ void VDBVolumeConverter::toMesh(const VDBVolume& volume, VDBPolygonMesh* mesh)
     impl->updateNormals();
 }
 
-void VDBVolumeConverter::toParticleSystem(const VDBVolume& volume, VDBParticleSystem* ps) const
+void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystem* ps) const
 {
     auto impl = volume.getImpl();
     auto grid = impl->getPtr();

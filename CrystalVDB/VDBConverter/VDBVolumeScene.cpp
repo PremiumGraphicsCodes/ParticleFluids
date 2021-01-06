@@ -1,4 +1,4 @@
-#include "VDBVolume.h"
+#include "VDBVolumeScene.h"
 
 #include "VolumeImpl.h"
 #include "Converter.h"
@@ -8,7 +8,7 @@ using namespace Crystal::VDB;
 
 using namespace openvdb;
 
-VDBVolume::VDBVolume() :
+VDBVolumeScene::VDBVolumeScene() :
 	IShapeScene(-1, ""),
 	impl(new VolumeImpl())
 {
@@ -16,14 +16,14 @@ VDBVolume::VDBVolume() :
 	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 
-VDBVolume::VDBVolume(VolumeImpl* impl) :
+VDBVolumeScene::VDBVolumeScene(VolumeImpl* impl) :
 	IShapeScene(-1, "")
 {
 	this->impl = impl;
 	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 
-VDBVolume::VDBVolume(const float value) :
+VDBVolumeScene::VDBVolumeScene(const float value) :
 	IShapeScene(-1, "")
 {
 	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
@@ -33,7 +33,7 @@ VDBVolume::VDBVolume(const float value) :
 	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 
-VDBVolume::VDBVolume(const int id, const std::string& name) :
+VDBVolumeScene::VDBVolumeScene(const int id, const std::string& name) :
 	IShapeScene(id, name)
 {
 	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
@@ -45,7 +45,7 @@ VDBVolume::VDBVolume(const int id, const std::string& name) :
 }
 
 
-void VDBVolume::fill(const unsigned int coord1, const unsigned int coord2, const float value)
+void VDBVolumeScene::fill(const unsigned int coord1, const unsigned int coord2, const float value)
 {
 	openvdb::CoordBBox bbox;// openvdb::Coord(Int32(coord1)), openvdb::Coord(Int32(coord2)));
 	bbox.reset(Coord(coord1), Coord(coord2));
@@ -54,24 +54,24 @@ void VDBVolume::fill(const unsigned int coord1, const unsigned int coord2, const
 	//impl->getPtr()->tree().
 }
 
-void VDBVolume::setValue(const std::array<int, 3>& index, const float value)
+void VDBVolumeScene::setValue(const std::array<int, 3>& index, const float value)
 {
 	math::Coord coord(index[0], index[1], index[2]);
 	impl->getPtr()->getAccessor().setValue(coord, value);
 }
 
-float VDBVolume::getValue(const std::array<int, 3> index)
+float VDBVolumeScene::getValue(const std::array<int, 3> index)
 {
 	math::Coord coord(index[0], index[1], index[2]);
 	return impl->getPtr()->getAccessor().getValue(coord);
 }
 
-int VDBVolume::getActiveVoxelCount() const
+int VDBVolumeScene::getActiveVoxelCount() const
 {
 	return impl->getPtr()->activeVoxelCount();
 }
 
-Box3d VDBVolume::getBoundingBox() const
+Box3d VDBVolumeScene::getBoundingBox() const
 {
 	auto grid = impl->getPtr();
 	auto transform = grid->transform();
@@ -84,7 +84,7 @@ Box3d VDBVolume::getBoundingBox() const
 	return bb;
 }
 
-VDBVolume::~VDBVolume()
+VDBVolumeScene::~VDBVolumeScene()
 {
 	delete impl;
 }
