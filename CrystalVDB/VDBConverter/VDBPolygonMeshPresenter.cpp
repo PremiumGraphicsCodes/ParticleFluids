@@ -52,7 +52,7 @@ void VDBPolygonMeshPresenter::updateScreenView()
 		buffer.addVertex(p, ColorRGBAf(1.0, 1.0, 1.0, 1.0));
 	}
 
-	const auto triangles = model->getTriangles();
+	const auto triangles = model->getTriangleFaces();
 
 	for (const auto& tt : triangles) {
 		const auto t = tt.indices;
@@ -62,7 +62,7 @@ void VDBPolygonMeshPresenter::updateScreenView()
 		buffer.addIndex(t[2]);
 	}
 
-	const auto quads = model->getQuads();
+	const auto quads = model->getQuadFaces();
 
 	for (const auto& qq : quads) {
 		const auto q = qq.indices;

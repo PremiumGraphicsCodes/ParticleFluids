@@ -37,8 +37,8 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMeshConverter::fromVDB(co
 
 	auto vertices = src.getVerticesd();
 
-	auto triangles = src.getTriangles();
-	auto quads = src.getQuads();
+	auto triangles = src.getTriangleFaces();
+	auto quads = src.getQuadFaces();
 
 	Crystal::Shape::PolygonMeshBuilder builder;
 

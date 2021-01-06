@@ -27,6 +27,12 @@ public:
 		Math::Vector3df normal;
 	};
 
+	struct Face
+	{
+		std::vector<unsigned int> indices;
+		Math::Vector3df normal;
+	};
+
 	VDBPolygonMesh();
 
 	VDBPolygonMesh(const int id, const std::string& name);
@@ -43,11 +49,13 @@ public:
 
 	void addTriangle(const std::array<int, 3>& indices);
 
-	std::vector<TriangleFace> getTriangles() const;
+	std::vector<TriangleFace> getTriangleFaces() const;
 
 	void addQuad(const std::array<int, 4>& indices);
 
-	std::vector<QuadFace> getQuads() const;
+	std::vector<QuadFace> getQuadFaces() const;
+
+	std::vector<Face> getAllFaces() const;
 
 	void translate(const Math::Vector3dd& v) override {};
 

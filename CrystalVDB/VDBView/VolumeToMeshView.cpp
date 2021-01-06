@@ -31,5 +31,5 @@ void VolumeToMeshView::onOk()
 
 	//EXPECT_FALSE(mesh->getVerticesf().empty());
 	//EXPECT_EQ(216, mesh->getQuads().size());
-	std::cout << "quads = " << mesh->getQuads().size() << std::endl;;
+	std::cout << "quads = " << mesh->getQuadFaces().size() << std::endl;;
 }

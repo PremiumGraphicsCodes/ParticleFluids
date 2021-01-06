@@ -352,7 +352,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="OBJFileReader.cpp" />
     <ClCompile Include="PolygonMeshImpl.cpp" />
     <ClCompile Include="VDBPolygonMeshConverter.cpp" />
-    <ClCompile Include="OBJFileWriter.cpp" />
     <ClCompile Include="VDBAdapter.cpp" />
     <ClCompile Include="VDBFileReader.cpp" />
     <ClCompile Include="VDBFileWriter.cpp" />
@@ -371,7 +370,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="Converter.h" />
     <ClInclude Include="OBJFileReader.h" />
     <ClInclude Include="VDBPolygonMeshConverter.h" />
-    <ClInclude Include="OBJFileWriter.h" />
     <ClInclude Include="VDBAdapter.h" />
     <ClInclude Include="VDBFileReader.h" />
     <ClInclude Include="VDBFileWriter.h" />

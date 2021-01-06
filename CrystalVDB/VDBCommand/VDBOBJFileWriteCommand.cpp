@@ -1,9 +1,9 @@
 #include "VDBOBJFileWriteCommand.h"
 
-#include "../VDBConverter/OBJFileWriter.h"
-
 #include "../../Crystal/IO/OBJFileWriter.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
+
+#include "../VDBConverter/VDBPolygonMesh.h"
 
 #include "PublicLabels/VDBOBJFileWriteLabels.h"
 
@@ -42,29 +42,34 @@ bool VDBOBJFileWriteCommand::execute(World* world)
 	Crystal::IO::OBJFile obj;
 	obj.positions = mesh->getVerticesf();
 
-	const auto& triangles = mesh->getTriangles();
+	const auto& triangles = mesh->getTriangleFaces();
 	for (const auto& t : triangles) {
 		obj.normals.emplace_back(t.normal);
 	}
 
-	const auto& quads = mesh->getQuads();
-	for (const auto& q : quads) {
-		obj.normals.emplace_back(q.normal);
+	const auto& quads = mesh->getQuadFaces();
+	for (const auto& t : quads) {
+		obj.normals.emplace_back(t.normal);
 	}
 
 	int normalIndex = 1;
-	/*
 	Crystal::IO::OBJGroup group;
 	for (const auto& t : triangles) {
-		Crystal::IO::OBJFace face;
-		face.positionIndices = { t.indices[0], t.indices[1], t.indices[2] };
-		group.faces.push_back();
+		Crystal::IO::OBJFace f;
+		f.positionIndices = { t.indices[0], t.indices[1], t.indices[2] };
+		f.normalIndices = { normalIndex, normalIndex, normalIndex };
+		normalIndex++;
+		group.faces.push_back(f);
 	}
 
 	for (const auto& t : quads) {
-		group.faces.emplace_back(t.indices);
+		Crystal::IO::OBJFace f;
+		f.positionIndices = { t.indices[0], t.indices[1], t.indices[2], t.indices[3] };
+		f.normalIndices = { normalIndex, normalIndex, normalIndex, normalIndex };
+		normalIndex++;
+		group.faces.push_back(f);
 	}
-	*/
+	obj.groups.emplace_back(group);
 
 	Crystal::IO::OBJFileWriter writer;
 	const auto isOk = writer.write(args.filePath.getValue(), obj);

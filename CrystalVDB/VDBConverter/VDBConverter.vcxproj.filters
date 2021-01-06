@@ -7,9 +7,6 @@
     <ClCompile Include="Converter.cpp">
       <Filter>Impl</Filter>
     </ClCompile>
-    <ClCompile Include="OBJFileWriter.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="VDBVolume.cpp" />
     <ClCompile Include="VDBPolygonMesh.cpp" />
     <ClCompile Include="VDBAdapter.cpp" />
@@ -55,9 +52,6 @@
     </ClInclude>
     <ClInclude Include="PolygonMeshImpl.h">
       <Filter>Impl</Filter>
-    </ClInclude>
-    <ClInclude Include="OBJFileWriter.h">
-      <Filter>FileIO</Filter>
     </ClInclude>
     <ClInclude Include="VDBVolume.h" />
     <ClInclude Include="VDBPolygonMesh.h" />

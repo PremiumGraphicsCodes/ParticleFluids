@@ -53,7 +53,7 @@ void VDBPolygonMesh::addTriangle(const std::array<int, 3>& indices)
 	impl->triangles.push_back(triangle);
 }
 
-std::vector<VDBPolygonMesh::TriangleFace> VDBPolygonMesh::getTriangles() const
+std::vector<VDBPolygonMesh::TriangleFace> VDBPolygonMesh::getTriangleFaces() const
 {
 	std::vector<VDBPolygonMesh::TriangleFace> faces;
 	for (const auto& t : impl->triangles) {
@@ -72,7 +72,7 @@ void VDBPolygonMesh::addQuad(const std::array<int, 4>& indices)
 	impl->quads.push_back(quad);
 }
 
-std::vector<VDBPolygonMesh::QuadFace> VDBPolygonMesh::getQuads() const
+std::vector<VDBPolygonMesh::QuadFace> VDBPolygonMesh::getQuadFaces() const
 {
 	std::vector<VDBPolygonMesh::QuadFace> faces;
 	for (const auto& q : impl->quads) {
@@ -80,6 +80,24 @@ std::vector<VDBPolygonMesh::QuadFace> VDBPolygonMesh::getQuads() const
 		face.indices = Converter::fromVDB(q.indices);
 		face.normal = Converter::fromVDB(q.normal);
 		faces.emplace_back(face);
+	}
+	return faces;
+}
+
+std::vector<VDBPolygonMesh::Face> VDBPolygonMesh::getAllFaces() const
+{
+	std::vector<VDBPolygonMesh::Face> faces;
+	for (const auto& t : impl->triangles) {
+		VDBPolygonMesh::Face f;
+		f.indices = { t.indices[0], t.indices[1], t.indices[2] };
+		f.normal = Converter::fromVDB(t.normal);
+		faces.emplace_back(f);
+	}
+	for (const auto& t : impl->quads) {
+		VDBPolygonMesh::Face f;
+		f.indices = { t.indices[0], t.indices[1], t.indices[2], t.indices[3] };
+		f.normal = Converter::fromVDB(t.normal);
+		faces.emplace_back(f);
 	}
 	return faces;
 }
