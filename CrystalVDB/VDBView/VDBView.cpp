@@ -10,6 +10,7 @@
 
 #include "../../Crystal/Scene/World.h"
 
+#include "VDBFileMenu.h"
 #include "VDBMenu.h"
 
 
@@ -39,7 +40,9 @@ int main(int, char**)
 	window.add(new CtrlMenu("Ctrl", &model, &canvas));
 	window.add(new ShapeMenu("Shape", &model, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &model, &canvas, control));
+	window.add(new VDBFileMenu("VDBFile", &model, &canvas, control));
 	window.add(new VDBMenu("OpenVDB", &model, &canvas, control));
+	window.add(new VDBPolygonMeshMenu("VDBMesh", &model, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 

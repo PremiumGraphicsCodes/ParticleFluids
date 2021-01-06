@@ -16,5 +16,16 @@ public:
 private:
 	ControlPanel* control;
 };
+
+class VDBPolygonMeshMenu : public IMenu
+{
+public:
+	VDBPolygonMeshMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
+
+	void onShow() override;
+
+private:
+	ControlPanel* control;
+};
 	}
 }

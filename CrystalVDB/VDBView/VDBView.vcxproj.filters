@@ -30,6 +30,7 @@
     <ClCompile Include="VDBVolumeView.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
+    <ClCompile Include="VDBFileMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBMenu.h" />
@@ -60,6 +61,7 @@
     <ClInclude Include="VDBVolumeView.h">
       <Filter>Volume</Filter>
     </ClInclude>
+    <ClInclude Include="VDBFileMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
