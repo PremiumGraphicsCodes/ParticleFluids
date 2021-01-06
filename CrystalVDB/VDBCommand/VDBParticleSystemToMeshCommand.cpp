@@ -5,7 +5,7 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "../VDBConverter/VDBParticleSystem.h"
+#include "../VDBConverter/VDBParticleSystemScene.h"
 #include "../VDBConverter/VDBParticleSystemConverter.h"
 #include "../VDBConverter/VDBVolumeConverter.h"
 
@@ -47,7 +47,7 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 		return false;
 	}
 
-	VDBParticleSystem ps;
+	VDBParticleSystemScene ps;
 	auto particles = scene->getShape()->getParticles();
 	for (auto p : scene->getShape()->getParticles()) {
 		ps.add(p->getPosition(), p->getAttribute().size);

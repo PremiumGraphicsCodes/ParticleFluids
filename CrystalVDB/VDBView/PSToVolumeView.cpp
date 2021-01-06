@@ -30,7 +30,7 @@ void PSToVolumeView::onOk()
 		return;
 	}
 
-	VDBParticleSystem ps;
+	VDBParticleSystemScene ps;
 	auto particles = scene->getShape()->getParticles();
 	for (auto p : scene->getShape()->getParticles()) {
 		ps.add(p->getPosition(), p->getAttribute().size);

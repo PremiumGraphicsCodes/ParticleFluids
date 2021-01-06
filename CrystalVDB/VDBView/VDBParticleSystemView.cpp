@@ -1,7 +1,7 @@
 #include "VDBParticleSystemView.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../VDBConverter/VDBParticleSystem.h"
+#include "../VDBConverter/VDBParticleSystemScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
@@ -39,7 +39,7 @@ void VDBParticleSystemView::onOk()
 			}
 		}
 	}
-	auto scene = new VDBParticleSystem(getWorld()->getNextSceneId(), "VDBPS");
+	auto scene = new VDBParticleSystemScene(getWorld()->getNextSceneId(), "VDBPS");
 	for (const auto& p : positions) {
 		scene->add(p, 1.0f);
 	}

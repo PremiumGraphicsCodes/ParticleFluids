@@ -1,6 +1,6 @@
 #include "VolumeToPSView.h"
 
-#include "../VDBConverter/VDBParticleSystem.h"
+#include "../VDBConverter/VDBParticleSystemScene.h"
 #include "../VDBConverter/VDBVolumeConverter.h"
 
 #include <iostream>
@@ -22,7 +22,7 @@ void VolumeToPSView::onOk()
 	auto volume = getWorld()->getScenes()->findSceneById<VDBVolumeScene*>(id);
 
 	VDBVolumeConverter converter;
-	VDBParticleSystem* ps = new VDBParticleSystem(getWorld()->getNextSceneId(), "VolumeToPS");
+	auto ps = new VDBParticleSystemScene(getWorld()->getNextSceneId(), "VolumeToPS");
 	converter.toParticleSystem(*volume, ps);
 	ps->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	getWorld()->getScenes()->addScene(ps);

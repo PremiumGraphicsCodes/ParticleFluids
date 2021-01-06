@@ -1,7 +1,7 @@
 #include "VDBPolygonMeshView.h"
 
 #include "../VDBConverter/VDBPolygonMesh.h"
-#include "../VDBConverter/VDBParticleSystem.h"
+#include "../VDBConverter/VDBParticleSystemScene.h"
 
 #include "../../Crystal/Scene/MaterialScene.h"
 

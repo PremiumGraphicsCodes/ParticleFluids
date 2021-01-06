@@ -25,9 +25,6 @@
     <ClCompile Include="VDBVolumeConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
-    <ClCompile Include="VDBParticleSystem.cpp">
-      <Filter>ParticleSystem</Filter>
-    </ClCompile>
     <ClCompile Include="VDBParticleSystemPresenter.cpp">
       <Filter>ParticleSystem</Filter>
     </ClCompile>
@@ -42,6 +39,9 @@
     </ClCompile>
     <ClCompile Include="VDBParticleSystemImpl.cpp">
       <Filter>ParticleSystem\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBParticleSystemScene.cpp">
+      <Filter>ParticleSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,9 +69,6 @@
     <ClInclude Include="VDBVolumeConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
-    <ClInclude Include="VDBParticleSystem.h">
-      <Filter>ParticleSystem</Filter>
-    </ClInclude>
     <ClInclude Include="VDBParticleSystemPresenter.h">
       <Filter>ParticleSystem</Filter>
     </ClInclude>
@@ -86,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="VDBParticleSystemImpl.h">
       <Filter>ParticleSystem\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBParticleSystemScene.h">
+      <Filter>ParticleSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

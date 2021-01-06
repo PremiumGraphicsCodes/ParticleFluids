@@ -10,7 +10,7 @@
 #include "PolygonMeshImpl.h"
 #include "VDBParticleSystemImpl.h"
 
-#include "VDBParticleSystem.h"
+#include "VDBParticleSystemScene.h"
 
 using namespace Crystal::VDB;
 
@@ -23,7 +23,7 @@ void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMesh* me
     impl->updateNormals();
 }
 
-void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystem* ps) const
+void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystemScene* ps) const
 {
     auto impl = volume.getImpl();
     auto grid = impl->getPtr();

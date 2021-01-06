@@ -7,12 +7,12 @@ namespace Crystal {
 		class PointShaderScene;
 	}
 	namespace VDB {
-		class VDBParticleSystem;
+		class VDBParticleSystemScene;
 
 class VDBParticleSystemPresenter : public Scene::IPresenter
 {
 public:
-	explicit VDBParticleSystemPresenter(VDBParticleSystem* model);
+	explicit VDBParticleSystemPresenter(VDBParticleSystemScene* model);
 
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
@@ -28,7 +28,7 @@ private:
 	void updateChildIdView();
 
 private:
-	VDBParticleSystem* model;
+	VDBParticleSystemScene* model;
 	Scene::PointShaderScene* view;
 	Scene::PointShaderScene* parentIdView;
 	Scene::PointShaderScene* childIdView;

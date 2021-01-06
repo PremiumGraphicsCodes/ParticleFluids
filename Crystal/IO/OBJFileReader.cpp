@@ -75,7 +75,7 @@ bool OBJFileReader::read(std::istream& stream)
 			currentGroup.faces.push_back(face);
 		}
 		else if (header == "g") {
-			if (!strs.size() >= 2) {
+			if (strs.size() >= 2) {
 				currentGroup.name = strs[1];
 			}
 			if (!currentGroup.faces.empty()) {

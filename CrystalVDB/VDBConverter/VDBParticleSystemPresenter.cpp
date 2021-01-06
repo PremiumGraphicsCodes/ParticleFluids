@@ -1,6 +1,6 @@
 #include "VDBParticleSystemPresenter.h"
 
-#include "VDBParticleSystem.h"
+#include "VDBParticleSystemScene.h"
 
 #include "../../Crystal/Scene/SceneShader.h"
 #include "../../Crystal/Scene/PointShaderScene.h"
@@ -13,7 +13,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Graphics;
 using namespace Crystal::VDB;
 
-VDBParticleSystemPresenter::VDBParticleSystemPresenter(VDBParticleSystem* model) :
+VDBParticleSystemPresenter::VDBParticleSystemPresenter(VDBParticleSystemScene* model) :
 	IPresenter(),
 	model(model),
 	view(nullptr),

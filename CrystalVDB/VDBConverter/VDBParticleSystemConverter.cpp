@@ -3,7 +3,7 @@
 #include <openvdb/tools/LevelSetUtil.h>
 
 #include "VDBParticleSystemConverter.h"
-#include "VDBParticleSystem.h"
+#include "VDBParticleSystemScene.h"
 #include "VDBParticleSystemImpl.h"
 #include "VolumeImpl.h"
 #include "VDBVolumeScene.h"
@@ -16,7 +16,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::VDB;
 using namespace Crystal::Scene;
 
-std::unique_ptr<VDBVolumeScene> VDBParticleSystemConverter::toVolume(const VDBParticleSystem& particles, const float radius)
+std::unique_ptr<VDBVolumeScene> VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particles, const float radius)
 {
     // Rasterize into an SDF.
     auto sdf = createLevelSet<FloatGrid>();
@@ -27,7 +27,7 @@ std::unique_ptr<VDBVolumeScene> VDBParticleSystemConverter::toVolume(const VDBPa
     return std::move(v);
 }
 
-void VDBParticleSystemConverter::fromVDB(const VDBParticleSystem& src, ParticleSystemScene* ps)
+void VDBParticleSystemConverter::fromVDB(const VDBParticleSystemScene& src, ParticleSystemScene* ps)
 {
     ps->clear();
 

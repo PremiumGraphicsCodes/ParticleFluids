@@ -12,16 +12,16 @@ namespace Crystal {
     namespace VDB {
         class VDBParticleSystemImpl;
 
-class VDBParticleSystem : public Scene::IShapeScene
+class VDBParticleSystemScene : public Scene::IShapeScene
 {
 public:
-    VDBParticleSystem() :
-        VDBParticleSystem(-1, "")
+    VDBParticleSystemScene() :
+        VDBParticleSystemScene(-1, "")
     {}
 
-    VDBParticleSystem(const int id, const std::string name);
+    VDBParticleSystemScene(const int id, const std::string name);
 
-    ~VDBParticleSystem();
+    ~VDBParticleSystemScene();
 
     void add(const Math::Vector3dd& position, const double radius);
 
