@@ -1,6 +1,8 @@
 #include "VDBPolygonMeshConverter.h"
 
+#include "VDBPolygonMeshScene.h"
 #include "PolygonMeshImpl.h"
+#include "VDBVolumeScene.h"
 #include "VolumeImpl.h"
 
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
@@ -20,21 +22,8 @@ void VDBPolygonMeshConverter::toVolume(const VDBPolygonMeshScene& mesh, VDBVolum
 	volume->setImpl(impl);
 }
 
-namespace {
-	Vector3dd getNormal(const std::vector<Vector3dd>& positions, const int p0, const int p1, const int p2)
-	{
-		const auto& v0 = positions[p0];
-		const auto& v1 = positions[p1];
-		const auto& v2 = positions[p2];
-		const auto normal = glm::cross(glm::normalize(v2 - v1), glm::normalize(v0 - v1));
-		return normal;
-	}
-}
-
-std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMeshConverter::fromVDB(const VDBPolygonMeshScene& src)
+void VDBPolygonMeshConverter::fromVDB(const VDBPolygonMeshScene& src, Crystal::Shape::PolygonMesh* mesh)
 {
-	auto mesh = std::make_unique<Crystal::Shape::PolygonMesh>();
-
 	auto vertices = src.getVerticesd();
 
 	auto triangles = src.getTriangleFaces();
@@ -76,6 +65,4 @@ std::unique_ptr<Crystal::Shape::PolygonMesh> VDBPolygonMeshConverter::fromVDB(co
 	mesh->normals = builder.getNormals();
 	mesh->vertices = builder.getVertices();
 	mesh->faces = builder.getFaces();
-
-	return mesh;
 }

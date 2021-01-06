@@ -9,6 +9,8 @@
 #include "../VDBConverter/VDBParticleSystemConverter.h"
 #include "../VDBConverter/VDBPolygonMeshConverter.h"
 #include "../VDBConverter/VDBVolumeConverter.h"
+#include "../VDBConverter/VDBVolumeScene.h"
+#include "../VDBConverter/VDBPolygonMeshScene.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

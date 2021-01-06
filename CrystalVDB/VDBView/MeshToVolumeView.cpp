@@ -3,6 +3,8 @@
 #include "../VDBConverter/VDBPolygonMeshScene.h"
 #include "../VDBConverter/VDBPolygonMeshConverter.h"
 
+#include "../VDBConverter/VDBVolumeScene.h"
+
 #include <iostream>
 
 using namespace Crystal::Scene;
