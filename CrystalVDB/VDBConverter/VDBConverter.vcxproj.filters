@@ -31,9 +31,6 @@
     <ClCompile Include="VDBParticleSystemPresenter.cpp">
       <Filter>ParticleSystem</Filter>
     </ClCompile>
-    <ClCompile Include="OBJFileReader.cpp">
-      <Filter>FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="VDBVolumePresenter.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
@@ -77,9 +74,6 @@
     </ClInclude>
     <ClInclude Include="VDBParticleSystemPresenter.h">
       <Filter>ParticleSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="OBJFileReader.h">
-      <Filter>FileIO</Filter>
     </ClInclude>
     <ClInclude Include="VDBVolumePresenter.h">
       <Filter>Volume</Filter>

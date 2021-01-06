@@ -28,11 +28,11 @@ public:
 
     static std::vector<Crystal::Math::Vector3dd> fromVDB(const std::vector<openvdb::Vec3R>& positions);
 
-    static openvdb::Vec3I toVDB(const std::array<int, 3>& indices);
+    static openvdb::Vec3I toVDB(const std::array<unsigned int, 3>& indices);
 
     static std::array<unsigned int, 3> fromVDB(const openvdb::Vec3I& src);
 
-    static openvdb::Vec4I toVDB(const std::array<int, 4>& indices);
+    static openvdb::Vec4I toVDB(const std::array<unsigned int, 4>& indices);
 
     static std::array<unsigned int, 4> fromVDB(const openvdb::Vec4I& src);
 

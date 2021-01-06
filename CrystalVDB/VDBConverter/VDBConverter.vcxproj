@@ -349,7 +349,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Converter.cpp" />
-    <ClCompile Include="OBJFileReader.cpp" />
     <ClCompile Include="PolygonMeshImpl.cpp" />
     <ClCompile Include="VDBPolygonMeshConverter.cpp" />
     <ClCompile Include="VDBAdapter.cpp" />
@@ -368,7 +367,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h" />
-    <ClInclude Include="OBJFileReader.h" />
     <ClInclude Include="VDBPolygonMeshConverter.h" />
     <ClInclude Include="VDBAdapter.h" />
     <ClInclude Include="VDBFileReader.h" />

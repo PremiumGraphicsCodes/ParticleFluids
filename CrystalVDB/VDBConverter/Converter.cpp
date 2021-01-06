@@ -81,7 +81,7 @@ std::vector<Crystal::Math::Vector3dd> Converter::fromVDB(const std::vector<openv
     return dest;
 }
 
-openvdb::Vec3I Converter::toVDB(const std::array<int, 3>& indices)
+openvdb::Vec3I Converter::toVDB(const std::array<unsigned int, 3>& indices)
 {
     return openvdb::Vec3I(indices[0], indices[1], indices[2]);
 }
@@ -91,7 +91,7 @@ std::array<unsigned int, 3> Converter::fromVDB(const openvdb::Vec3I& src)
     return { src[0], src[1], src[2] };
 }
 
-openvdb::Vec4I Converter::toVDB(const std::array<int, 4>& indices)
+openvdb::Vec4I Converter::toVDB(const std::array<unsigned int, 4>& indices)
 {
     return openvdb::Vec4I(indices[0], indices[1], indices[2], indices[3]);
 }

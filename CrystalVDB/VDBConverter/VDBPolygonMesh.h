@@ -47,11 +47,11 @@ public:
 
 	std::vector<Math::Vector3dd> getVerticesd() const;
 
-	void addTriangle(const std::array<int, 3>& indices);
+	void addTriangle(const std::array<unsigned int, 3>& indices);
 
 	std::vector<TriangleFace> getTriangleFaces() const;
 
-	void addQuad(const std::array<int, 4>& indices);
+	void addQuad(const std::array<unsigned int, 4>& indices);
 
 	std::vector<QuadFace> getQuadFaces() const;
 

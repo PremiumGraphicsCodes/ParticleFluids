@@ -46,10 +46,11 @@ std::vector<Vector3dd> VDBPolygonMesh::getVerticesd() const
 	return Converter::fromVDBf<Vector3dd>(impl->points);
 }
 
-void VDBPolygonMesh::addTriangle(const std::array<int, 3>& indices)
+void VDBPolygonMesh::addTriangle(const std::array<unsigned int, 3>& indices)
 {
 	PolygonMeshImpl::TriangleFace triangle;
 	triangle.indices = Converter::toVDB( indices );
+	//triangle.normal = Converter::toVDB(normal);
 	impl->triangles.push_back(triangle);
 }
 
@@ -65,10 +66,11 @@ std::vector<VDBPolygonMesh::TriangleFace> VDBPolygonMesh::getTriangleFaces() con
 	return faces;
 }
 
-void VDBPolygonMesh::addQuad(const std::array<int, 4>& indices)
+void VDBPolygonMesh::addQuad(const std::array<unsigned int, 4>& indices)
 {
 	PolygonMeshImpl::QuadFace quad;
 	quad.indices = Converter::toVDB(indices);
+	//quad.normal = Converter::toVDB(normal);
 	impl->quads.push_back(quad);
 }
 
