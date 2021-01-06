@@ -196,6 +196,7 @@
     <ClCompile Include="PSToVolumeView.cpp" />
     <ClCompile Include="VDBPSBoxView.cpp" />
     <ClCompile Include="VDBPMBoxView.cpp" />
+    <ClCompile Include="VDBVolumeMenu.cpp" />
     <ClCompile Include="VDBVolumeView.cpp" />
     <ClCompile Include="VolumeToMeshView.cpp" />
     <ClCompile Include="VolumeToPSView.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="VDBMeshMenu.h" />
     <ClInclude Include="VDBPSBoxView.h" />
     <ClInclude Include="VDBPMBoxView.h" />
+    <ClInclude Include="VDBVolumeMenu.h" />
     <ClInclude Include="VDBVolumeView.h" />
     <ClInclude Include="VolumeToMeshView.h" />
     <ClInclude Include="VolumeToPSView.h" />

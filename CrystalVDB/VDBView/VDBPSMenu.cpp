@@ -1,11 +1,7 @@
 #include "VDBPSMenu.h"
 
 #include "../../Crystal/Scene/World.h"
-
 #include "../../CrystalViewer/AppBase/imgui.h"
-
-#include "../VDBConverter/VDBFileReader.h"
-#include "../VDBConverter/VDBFileWriter.h"
 
 #include "VDBPSBoxView.h"
 #include "PSToVolumeView.h"
@@ -14,7 +10,6 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
-using namespace Crystal::VDB;
 
 VDBPSMenu::VDBPSMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, model, canvas),

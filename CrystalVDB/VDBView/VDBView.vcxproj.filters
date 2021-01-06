@@ -29,9 +29,18 @@
     <ClCompile Include="VDBVolumeView.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
-    <ClCompile Include="VDBFileMenu.cpp" />
-    <ClCompile Include="VDBMeshMenu.cpp" />
-    <ClCompile Include="VDBPSMenu.cpp" />
+    <ClCompile Include="VDBPSMenu.cpp">
+      <Filter>ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBMeshMenu.cpp">
+      <Filter>PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBVolumeMenu.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBFileMenu.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VolumeToMeshView.h">
@@ -61,9 +70,18 @@
     <ClInclude Include="VDBVolumeView.h">
       <Filter>Volume</Filter>
     </ClInclude>
-    <ClInclude Include="VDBFileMenu.h" />
-    <ClInclude Include="VDBMeshMenu.h" />
-    <ClInclude Include="VDBPSMenu.h" />
+    <ClInclude Include="VDBPSMenu.h">
+      <Filter>ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBMeshMenu.h">
+      <Filter>PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBVolumeMenu.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBFileMenu.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ParticleSystem">
@@ -72,17 +90,20 @@
     <Filter Include="ParticleSystem\Converter">
       <UniqueIdentifier>{678dd3ad-051c-41d8-be59-8e45c4ff77c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Volume">
+      <UniqueIdentifier>{79cf4d34-a3ee-4b1f-b37b-2be51f22edab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volume\Converter">
+      <UniqueIdentifier>{2512a1f0-8460-4a5d-9f5b-096d2e1bea55}</UniqueIdentifier>
+    </Filter>
     <Filter Include="PolygonMesh">
       <UniqueIdentifier>{e0529865-6f40-458e-be5b-f9567bd34bcf}</UniqueIdentifier>
     </Filter>
     <Filter Include="PolygonMesh\OBJFileIO">
       <UniqueIdentifier>{e20b1f7f-e0c4-46a1-9e03-84c6df89d447}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Volume">
-      <UniqueIdentifier>{79cf4d34-a3ee-4b1f-b37b-2be51f22edab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Volume\Converter">
-      <UniqueIdentifier>{2512a1f0-8460-4a5d-9f5b-096d2e1bea55}</UniqueIdentifier>
+    <Filter Include="FileIO">
+      <UniqueIdentifier>{8cf978ae-990a-46ea-9f06-9d9ab9f93eab}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

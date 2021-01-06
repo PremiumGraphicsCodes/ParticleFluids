@@ -13,6 +13,7 @@
 #include "VDBFileMenu.h"
 #include "VDBPSMenu.h"
 #include "VDBMeshMenu.h"
+#include "VDBVolumeMenu.h"
 
 #include "../VDBConverter/VDBAdapter.h"
 
@@ -41,8 +42,9 @@ int main(int, char**)
 	window.add(new ShapeMenu("Shape", &model, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &model, &canvas, control));
 	window.add(new VDBFileMenu("VDBFile", &model, &canvas, control));
-	window.add(new VDBPSMenu("OpenVDB", &model, &canvas, control));
+	window.add(new VDBPSMenu("VDBPoints", &model, &canvas, control));
 	window.add(new VDBMeshMenu("VDBMesh", &model, &canvas, control));
+	window.add(new VDBVolumeMenu("VDBVolume", &model, &canvas, control));
 
 	window.add(new SceneListPanel("Scene", &model, &canvas, control));
 
