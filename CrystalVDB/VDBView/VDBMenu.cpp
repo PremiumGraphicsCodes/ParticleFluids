@@ -5,7 +5,7 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
-#include "../../CrystalViewer/AppBase/FileOpenView.h"
+#include "../../CrystalViewer/AppBase/FileOpenMenu.h"
 #include "../../CrystalViewer/AppBase/FileSaveView.h"
 
 #include "../VDBConverter/VDBFileReader.h"
@@ -18,6 +18,7 @@
 #include "VolumeToMeshView.h"
 #include "MeshToVolumeView.h"
 #include "VolumeToPSView.h"
+#include "OBJFileExportView.h"
 
 #include <iostream>
 
@@ -41,7 +42,7 @@ void VDBMenu::onShow()
 	const auto& n = name.c_str();
 	if (ImGui::BeginMenu(n)) {
 		if (ImGui::MenuItem("Import")) {
-			FileOpenView view("");
+			FileOpenMenu view("");
 			view.addFilter("*.vdb");
 			view.show();
 			const auto& filename = view.getFileName();
@@ -122,6 +123,9 @@ void VDBMenu::onShow()
 		}
 		if (ImGui::MenuItem("VolumeToPS")) {
 			control->setWindow(new VolumeToPSView("VolumeToPS", world, getCanvas()));
+		}
+		if (ImGui::MenuItem("OBJExport")) {
+			control->setWindow(new OBJFileExportView("OBJExport", world, getCanvas()));
 		}
 
 		ImGui::EndMenu();

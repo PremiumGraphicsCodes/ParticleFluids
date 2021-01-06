@@ -241,9 +241,6 @@
     <ClCompile Include="DeleteView.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="FileOpenView.cpp">
-      <Filter>File</Filter>
-    </ClCompile>
     <ClCompile Include="FilePathView.cpp">
       <Filter>File</Filter>
     </ClCompile>
@@ -281,6 +278,9 @@
     </ClCompile>
     <ClCompile Include="MaterialSelectView.cpp">
       <Filter>Scene\Appearance\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="FileOpenMenu.cpp">
+      <Filter>File</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -554,9 +554,6 @@
     <ClInclude Include="IView.h">
       <Filter>Window</Filter>
     </ClInclude>
-    <ClInclude Include="FileOpenView.h">
-      <Filter>File</Filter>
-    </ClInclude>
     <ClInclude Include="FileSaveView.h">
       <Filter>File</Filter>
     </ClInclude>
@@ -612,6 +609,9 @@
     </ClInclude>
     <ClInclude Include="MaterialSelectView.h">
       <Filter>Scene\Appearance\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="FileOpenMenu.h">
+      <Filter>File</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

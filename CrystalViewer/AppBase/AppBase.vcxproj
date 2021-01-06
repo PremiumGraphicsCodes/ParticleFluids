@@ -37,7 +37,7 @@
     <ClCompile Include="Double4View.cpp" />
     <ClCompile Include="DoubleView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
-    <ClCompile Include="FileOpenView.cpp" />
+    <ClCompile Include="FileOpenMenu.cpp" />
     <ClCompile Include="FilePathView.cpp" />
     <ClCompile Include="FileSaveView.cpp" />
     <ClCompile Include="Float4View.cpp" />
@@ -161,7 +161,7 @@
     <ClInclude Include="Cylinder3dView.h" />
     <ClInclude Include="DoubleView.h" />
     <ClInclude Include="FileMenu.h" />
-    <ClInclude Include="FileOpenView.h" />
+    <ClInclude Include="FileOpenMenu.h" />
     <ClInclude Include="FileSaveView.h" />
     <ClInclude Include="Float4View.h" />
     <ClInclude Include="FloatView.h" />

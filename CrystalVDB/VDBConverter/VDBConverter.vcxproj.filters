@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="VolumeImpl.cpp">
-      <Filter>Impl</Filter>
-    </ClCompile>
     <ClCompile Include="Converter.cpp">
       <Filter>Impl</Filter>
     </ClCompile>
@@ -19,13 +16,9 @@
     <ClCompile Include="VDBParticleSystemConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
-    <ClCompile Include="VDBParticleSystemImpl.cpp">
-      <Filter>Impl</Filter>
-    </ClCompile>
     <ClCompile Include="VDBPolygonMeshConverter.cpp">
       <Filter>Converter</Filter>
     </ClCompile>
-    <ClCompile Include="VDBVolumePresenter.cpp" />
     <ClCompile Include="PolygonMeshImpl.cpp">
       <Filter>Impl</Filter>
     </ClCompile>
@@ -41,13 +34,21 @@
     <ClCompile Include="OBJFileReader.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="VDBVolumeScene.cpp" />
+    <ClCompile Include="VDBVolumePresenter.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBVolumeScene.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeImpl.cpp">
+      <Filter>Volume\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBParticleSystemImpl.cpp">
+      <Filter>ParticleSystem\Private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h">
-      <Filter>Impl</Filter>
-    </ClInclude>
-    <ClInclude Include="VolumeImpl.h">
       <Filter>Impl</Filter>
     </ClInclude>
     <ClInclude Include="PolygonMeshImpl.h">
@@ -65,13 +66,9 @@
     <ClInclude Include="VDBParticleSystemConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
-    <ClInclude Include="VDBParticleSystemImpl.h">
-      <Filter>Impl</Filter>
-    </ClInclude>
     <ClInclude Include="VDBPolygonMeshConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
-    <ClInclude Include="VDBVolumePresenter.h" />
     <ClInclude Include="VDBVolumeConverter.h">
       <Filter>Converter</Filter>
     </ClInclude>
@@ -84,7 +81,18 @@
     <ClInclude Include="OBJFileReader.h">
       <Filter>FileIO</Filter>
     </ClInclude>
-    <ClInclude Include="VDBVolumeScene.h" />
+    <ClInclude Include="VDBVolumePresenter.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBVolumeScene.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeImpl.h">
+      <Filter>Volume\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBParticleSystemImpl.h">
+      <Filter>ParticleSystem\Private</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Converter">
@@ -98,6 +106,15 @@
     </Filter>
     <Filter Include="ParticleSystem">
       <UniqueIdentifier>{d2aae527-4a64-4e57-84b8-245f2953f558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volume">
+      <UniqueIdentifier>{55f10d9d-169d-4327-8b69-528b2c908e2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volume\Private">
+      <UniqueIdentifier>{6f79be99-26d8-40a9-ab7f-505504c5fdcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ParticleSystem\Private">
+      <UniqueIdentifier>{0451f205-71e5-4c76-acef-a932cd8f6ea1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -7,10 +7,10 @@
 namespace Crystal {
 	namespace UI {
 
-class FileOpenView : public IWindow
+class FileOpenMenu : public IWindow
 {
 public:
-	explicit FileOpenView(const std::string& name);
+	explicit FileOpenMenu(const std::string& name);
 
 	void addFilter(char const* filter);
 

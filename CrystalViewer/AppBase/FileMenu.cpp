@@ -2,7 +2,7 @@
 #include "imgui.h"
 #include "tinyfiledialogs.h"
 #include "Canvas.h"
-#include "FileOpenView.h"
+#include "FileOpenMenu.h"
 #include "FileSaveView.h"
 #include "../../Crystal/Scene/World.h"
 #include "../Command/CameraFitCommand.h"
@@ -28,7 +28,7 @@ void FileMenu::onShow()
 			command.execute(model);
 		}
 		if (ImGui::MenuItem("Import")) {
-			FileOpenView view("");
+			FileOpenMenu view("");
 			view.addFilter("*.stl");
 			view.addFilter("*.obj");
 			view.addFilter("*.mtl");
@@ -65,7 +65,7 @@ void FileMenu::onShow()
 			//model->write(filename);
 		}
 		if (ImGui::MenuItem("ScreenShot")) {
-			FileOpenView view("");
+			FileOpenMenu view("");
 			view.addFilter("*.png");
 			view.addFilter("*.bmp");
 			view.show();
