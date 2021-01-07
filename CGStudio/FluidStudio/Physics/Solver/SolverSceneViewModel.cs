@@ -2,6 +2,7 @@
 using Prism.Regions;
 using Reactive.Bindings;
 using System;
+using System.Windows.Forms;
 
 namespace FluidStudio.Physics.Solver
 {
@@ -19,17 +20,24 @@ namespace FluidStudio.Physics.Solver
         public ReactiveProperty<float> TimeStep { get; }
             = new ReactiveProperty<float>(0.03f);
 
-        public ReactiveProperty<bool> DoUpdateSource { get; }
-            = new ReactiveProperty<bool>(true);
-
         private SolverScene scene;
 
         private readonly SceneList world;
+
+        public ReactiveCommand OutputDirectorySelectCommand { get; }
+            = new ReactiveCommand();
+
+        public ReactiveProperty<string> OutputDirectoryPath { get; }
+            = new ReactiveProperty<string>("");
+
+        public ReactiveProperty<bool> DoOutput { get; }
+            = new ReactiveProperty<bool>(false);
 
         public SolverSceneViewModel(SceneList world)
         {
             this.world = world;
             this.UpdateCommand.Subscribe(OnUpdate);
+            this.OutputDirectorySelectCommand.Subscribe(() => OnSelectOutputDirectory());
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -57,5 +65,16 @@ namespace FluidStudio.Physics.Solver
         {
             scene.Update(world, this.scene.Fluids, this.scene.CSGBoundaries, TimeStep.Value, this.Name.Value);
         }
+
+        private void OnSelectOutputDirectory()
+        {
+            var dialog = new FolderBrowserDialog();
+            var result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                this.OutputDirectoryPath.Value = dialog.SelectedPath;
+            }
+        }
+
     }
 }

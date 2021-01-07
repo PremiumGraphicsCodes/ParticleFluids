@@ -20,6 +20,12 @@
             <TextBlock Text="TimeStep"/>
             <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
         </StackPanel>
+
+        <CheckBox Content="VDBExport" IsChecked="{Binding DoOutput.Value}"/>
+        <TextBlock Text = "OutputDirectory" />
+        <Button Content="Select" Command="{Binding OutputDirectorySelectCommand}"/>
+        <TextBox Text = "{Binding OutputDirectoryPath.Value}" MinWidth="100"/>
+        
         <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>

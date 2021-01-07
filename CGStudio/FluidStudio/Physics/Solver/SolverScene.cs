@@ -46,31 +46,16 @@ namespace FluidStudio.Physics
             command.SetArg(Labels.SolverIdLabel, Id);
             command.Execute(scenes.Adapter);
         }
-
+        
         public void ExportVDB(SceneList world, VDBModel vdb, string filePath)
         {
             var ids = new List<int>();
             foreach(var fluid in Fluids)
             {
-                ids.Add( fluid.SourceParticleSystemId );
+                ids.Add( fluid.Id );
             }
             vdb.Write(filePath, world, ids);
         }
-
-        /*
-        public void UpdateSources(SceneList scenes, Canvas3d canvas)
-        {
-            foreach (var fluid in Fluids)
-            {
-                var command = new PhysicsCommand();
-                command.Create(PG.FluidSceneToPSLabels.CommandNameLabel);
-                command.SetArg(PG.FluidSceneToPSLabels.FluidIdLabel, fluid.Id);
-                command.SetArg(PG.FluidSceneToPSLabels.ParticleSystemIdLabel, fluid.SourceParticleSystemId);
-                command.Execute(scenes.Adapter);
-                canvas.SendShader(scenes, fluid.Id);
-            }
-        }
-        */
         
         public void Reset(SceneList world)
         {

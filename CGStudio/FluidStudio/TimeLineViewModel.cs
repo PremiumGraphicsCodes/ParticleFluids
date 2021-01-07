@@ -21,15 +21,6 @@ namespace FluidStudio
         public ReactiveCommand ResetCommand { get; }
             = new ReactiveCommand();
 
-        public ReactiveCommand OutputDirectorySelectCommand { get; }
-            = new ReactiveCommand();
-
-        public ReactiveProperty<string> OutputDirectoryPath { get; }
-            = new ReactiveProperty<string>("");
-
-        public ReactiveProperty<bool> DoOutput { get; }
-            = new ReactiveProperty<bool>(false);
-
         private readonly MainModel mainModel;
 
         private readonly SceneList scenes;
@@ -47,7 +38,6 @@ namespace FluidStudio
             StartCommand.Subscribe(() => OnStart());
             StopCommand.Subscribe(() => OnStop());
             ResetCommand.Subscribe(() => OnReset());
-            OutputDirectorySelectCommand.Subscribe(() => OnSelectOutputDirectory());
         }
 
         private void OnStart()
@@ -63,16 +53,17 @@ namespace FluidStudio
 
         private void Simulate()
         {
-            var vdb = mainModel.VDBModel;
             while(!isStop)
             {
                 mainModel.PhysicsModel.Simulate(scenes, canvas);
+                /*
                 mainModel.PhysicsModel.ConvertToMesh(scenes, vdb, canvas);
                 //mainModel.Scenes.Export(filePath);
                 if (DoOutput.Value)
                 {
                     mainModel.PhysicsModel.ExportMesh(scenes, vdb, OutputDirectoryPath.Value);
                 }
+                */
             }
         }
 
@@ -80,16 +71,6 @@ namespace FluidStudio
         {
             mainModel.PhysicsModel.Reset(scenes, canvas);
             //mainModel.PhysicsModel.Reset();
-        }
-
-        private void OnSelectOutputDirectory()
-        {
-            var dialog = new FolderBrowserDialog();
-            var result = dialog.ShowDialog();
-            if(result == DialogResult.OK)
-            {
-                this.OutputDirectoryPath.Value = dialog.SelectedPath;
-            }
         }
     }
 }
