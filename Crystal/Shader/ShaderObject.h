@@ -7,8 +7,7 @@
 #include <string>
 
 #include "../Math/Vector3d.h"
-#include "ShaderUniform.h"
-#include "ShaderAttribute.h"
+#include "../Math/Matrix4d.h"
 #include "glew.h"
 
 #include "ShaderUnit.h"
@@ -47,10 +46,6 @@ public:
 	void findUniformLocation(const std::string& str);
 
 	void findAttribLocation(const std::string& str);
-
-	std::vector<IShaderUniform*> getActiveUniforms();
-
-	std::vector<IShaderAttribute*> getActiveAttributes();
 
 	std::string getLog() const { return log; }
 

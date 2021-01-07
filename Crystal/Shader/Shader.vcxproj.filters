@@ -21,16 +21,7 @@
     <ClInclude Include="DepthRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderAttribute.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderObject.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderType.h">
-      <Filter>Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderUniform.h">
       <Filter>Shader</Filter>
     </ClInclude>
     <ClInclude Include="ShaderUnit.h">
@@ -82,16 +73,7 @@
     <ClCompile Include="DepthRenderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderAttribute.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderObject.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderType.cpp">
-      <Filter>Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderUniform.cpp">
       <Filter>Shader</Filter>
     </ClCompile>
     <ClCompile Include="ShaderUnit.cpp">

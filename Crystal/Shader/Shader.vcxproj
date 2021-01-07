@@ -149,10 +149,7 @@
     <ClInclude Include="LineRenderer.h" />
     <ClInclude Include="OnScreenRenderer.h" />
     <ClInclude Include="PointRenderer.h" />
-    <ClInclude Include="ShaderAttribute.h" />
     <ClInclude Include="ShaderObject.h" />
-    <ClInclude Include="ShaderType.h" />
-    <ClInclude Include="ShaderUniform.h" />
     <ClInclude Include="ShaderUnit.h" />
     <ClInclude Include="SmoothRenderer.h" />
     <ClInclude Include="TextureObject.h" />
@@ -172,10 +169,7 @@
     <ClCompile Include="LineRenderer.cpp" />
     <ClCompile Include="OnScreenRenderer.cpp" />
     <ClCompile Include="PointRenderer.cpp" />
-    <ClCompile Include="ShaderAttribute.cpp" />
     <ClCompile Include="ShaderObject.cpp" />
-    <ClCompile Include="ShaderType.cpp" />
-    <ClCompile Include="ShaderUniform.cpp" />
     <ClCompile Include="ShaderUnit.cpp" />
     <ClCompile Include="SmoothRenderer.cpp" />
     <ClCompile Include="TextureObject.cpp" />
