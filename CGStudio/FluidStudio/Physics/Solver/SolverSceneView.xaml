@@ -21,6 +21,5 @@
             <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
         </StackPanel>
         <Button Content="Update" Command="{Binding UpdateCommand}"/>
-        <CheckBox Content="SyncSource" IsChecked="{Binding DoUpdateSource.Value}"/>
     </StackPanel>
 </UserControl>

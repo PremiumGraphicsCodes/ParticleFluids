@@ -23,8 +23,6 @@ namespace FluidStudio.Physics
 
         public int Id { get; private set; }
 
-        public bool DoUpdateSource { get; set; }
-
         public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
@@ -59,6 +57,7 @@ namespace FluidStudio.Physics
             vdb.Write(filePath, world, ids);
         }
 
+        /*
         public void UpdateSources(SceneList scenes, Canvas3d canvas)
         {
             foreach (var fluid in Fluids)
@@ -71,6 +70,7 @@ namespace FluidStudio.Physics
                 canvas.SendShader(scenes, fluid.Id);
             }
         }
+        */
         
         public void Reset(SceneList world)
         {

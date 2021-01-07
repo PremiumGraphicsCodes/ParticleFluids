@@ -27,10 +27,6 @@ namespace FluidStudio.Physics
                 {
                     canvas.SendShader(world, fluid.Id);
                 }
-                if(ps.DoUpdateSource)
-                {
-                    ps.UpdateSources(world, canvas);
-                }
                 canvas.Render();
             }
             TimeStep.Value++;

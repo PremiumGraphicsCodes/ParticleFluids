@@ -58,11 +58,8 @@ TEST(OBJFileReaderTest, TestNegativeReferenceNumber)
 		<< "f -4 -3 -2 -1" << std::endl;
 	OBJFileReader reader;
 	reader.read(stream);
-	//EXPECT_EQ(1, file.getGroups().size());
-	//EXPECT_EQ(4, file.getGroups().front().getPositions().size());
-	//EXPECT_EQ(1, file.getGroups().front().getFaces().size());
-	//std::vector<int> expected{ -4, - 3, -2, -1 };
 	const auto& obj = reader.getOBJ();
+	EXPECT_EQ(4, obj.positions.size());
 	EXPECT_EQ(1, obj.groups.size());
 	EXPECT_EQ(1, obj.groups[0].faces.size() );
 }
@@ -89,7 +86,6 @@ TEST(OBJFileReaderTest, TestExampleGroups)
 	reader.read(stream);
 	const auto& obj = reader.getOBJ();
 	EXPECT_EQ(6, obj.groups.size());
-	//EXPECT_EQ(6, obj.faces.size());
 }
 
 TEST(OBJFileReaderTest, TestExampleSmoothingGroup)

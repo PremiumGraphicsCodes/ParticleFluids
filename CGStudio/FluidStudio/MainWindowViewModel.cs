@@ -171,7 +171,6 @@ namespace FluidStudio
             boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
             var scene = new SolverScene();
             scene.Create(mainModel.Scenes, fluids, boundaries, 0.03f, "Solver01");
-            scene.DoUpdateSource = true;
             this.mainModel.PhysicsModel.Solvers.Add(scene);
 
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);

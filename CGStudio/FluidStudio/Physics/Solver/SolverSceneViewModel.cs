@@ -51,13 +51,11 @@ namespace FluidStudio.Physics.Solver
             this.Name.Value = item.Name;
             this.Id.Value = Id.Value;
             this.scene = item;
-            this.DoUpdateSource.Value = item.DoUpdateSource;
         }
 
         private void OnUpdate()
         {
             scene.Update(world, this.scene.Fluids, this.scene.CSGBoundaries, TimeStep.Value, this.Name.Value);
-            scene.DoUpdateSource = DoUpdateSource.Value;
         }
     }
 }
