@@ -23,6 +23,10 @@ namespace FluidStudio.Physics
 
         public int Id { get; private set; }
 
+        public bool DoExportVDB { get; set; }
+
+        public string VDBExportDirectory { get; set; }
+
         public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
@@ -40,11 +44,16 @@ namespace FluidStudio.Physics
             Reset(world);
         }
 
-        public void Simulate(SceneList scenes)
+        public void Simulate(SceneList scenes, VDBModel vdb, int timeStep)
         {
             var command = new PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.SolverIdLabel, Id);
             command.Execute(scenes.Adapter);
+            if(DoExportVDB)
+            {
+                var filePath = VDBExportDirectory + "/" + Name + "_" + timeStep.ToString() + ".vdb";
+                ExportVDB(scenes, vdb, filePath);
+            }
         }
         
         public void ExportVDB(SceneList world, VDBModel vdb, string filePath)

@@ -18,11 +18,11 @@ namespace FluidStudio.Physics
             //            this.Scenes.Add(new PhysicsScene());
         }
 
-        public void Simulate(SceneList world, Canvas3d canvas)
+        public void Simulate(SceneList world, VDBModel vdb, Canvas3d canvas)
         {
             foreach (var ps in Solvers)
             {
-                ps.Simulate(world);
+                ps.Simulate(world, vdb, TimeStep.Value);
                 foreach (var fluid in ps.Fluids)
                 {
                     canvas.SendShader(world, fluid.Id);
@@ -30,15 +30,6 @@ namespace FluidStudio.Physics
                 canvas.Render();
             }
             TimeStep.Value++;
-        }
-
-        public void ExportVDB(SceneList world, VDBModel vdb, string directoryPath)
-        {
-            foreach (var solver in Solvers)
-            {
-                var filePath = directoryPath + "/" + solver.Name + "_" + TimeStep.Value.ToString() + ".vdb";
-                solver.ExportVDB(world, vdb, filePath);
-            }
         }
 
         public void ConvertToMesh(SceneList world, VDBModel vdb, Canvas3d canvas)

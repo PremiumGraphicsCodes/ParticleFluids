@@ -21,10 +21,10 @@
             <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
         </StackPanel>
 
-        <CheckBox Content="VDBExport" IsChecked="{Binding DoOutput.Value}"/>
-        <TextBlock Text = "OutputDirectory" />
-        <Button Content="Select" Command="{Binding OutputDirectorySelectCommand}"/>
-        <TextBox Text = "{Binding OutputDirectoryPath.Value}" MinWidth="100"/>
+        <CheckBox Content="VDBExport" IsChecked="{Binding DoExportVDB.Value}"/>
+        <TextBlock Text = "Directory" />
+        <Button Content="Select" Command="{Binding VDBExportDirectorySelectCommand}"/>
+        <TextBox Text = "{Binding VDBExportDirectoryPath.Value}" MinWidth="100"/>
         
         <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>

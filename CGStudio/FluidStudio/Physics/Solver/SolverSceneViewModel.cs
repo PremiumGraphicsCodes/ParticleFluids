@@ -24,20 +24,38 @@ namespace FluidStudio.Physics.Solver
 
         private readonly SceneList world;
 
-        public ReactiveCommand OutputDirectorySelectCommand { get; }
+        public ReactiveCommand VDBExportDirectorySelectCommand { get; }
             = new ReactiveCommand();
 
-        public ReactiveProperty<string> OutputDirectoryPath { get; }
+        public ReactiveProperty<string> VDBExportDirectoryPath { get; }
             = new ReactiveProperty<string>("");
 
-        public ReactiveProperty<bool> DoOutput { get; }
+        public ReactiveProperty<bool> DoExportVDB { get; }
             = new ReactiveProperty<bool>(false);
 
         public SolverSceneViewModel(SceneList world)
         {
             this.world = world;
             this.UpdateCommand.Subscribe(OnUpdate);
-            this.OutputDirectorySelectCommand.Subscribe(() => OnSelectOutputDirectory());
+            this.VDBExportDirectorySelectCommand.Subscribe(() => OnSelectExportDirectory());
+            this.DoExportVDB.Subscribe(OnExportVDBChanged);
+            this.VDBExportDirectoryPath.Subscribe(OnExportDirectoryChanged);
+        }
+
+        private void OnExportVDBChanged(bool b)
+        {
+            if(scene != null)
+            {
+                scene.DoExportVDB = b;
+            }
+        }
+
+        private void OnExportDirectoryChanged(string path)
+        {
+            if(scene != null)
+            {
+                scene.VDBExportDirectory = path;
+            }
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -66,13 +84,13 @@ namespace FluidStudio.Physics.Solver
             scene.Update(world, this.scene.Fluids, this.scene.CSGBoundaries, TimeStep.Value, this.Name.Value);
         }
 
-        private void OnSelectOutputDirectory()
+        private void OnSelectExportDirectory()
         {
             var dialog = new FolderBrowserDialog();
             var result = dialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                this.OutputDirectoryPath.Value = dialog.SelectedPath;
+                this.VDBExportDirectoryPath.Value = dialog.SelectedPath;
             }
         }
 

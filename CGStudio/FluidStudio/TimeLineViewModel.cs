@@ -55,7 +55,7 @@ namespace FluidStudio
         {
             while(!isStop)
             {
-                mainModel.PhysicsModel.Simulate(scenes, canvas);
+                mainModel.PhysicsModel.Simulate(scenes, mainModel.VDBModel, canvas);
                 /*
                 mainModel.PhysicsModel.ConvertToMesh(scenes, vdb, canvas);
                 //mainModel.Scenes.Export(filePath);
