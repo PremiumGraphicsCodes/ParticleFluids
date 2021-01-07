@@ -71,6 +71,7 @@
     <ClInclude Include="VolumeScene.h" />
     <ClInclude Include="WireFrameAttribute.h" />
     <ClInclude Include="WireFrameScene.h" />
+    <ClInclude Include="IParticleSystemScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraScene.cpp" />

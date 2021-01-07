@@ -5,7 +5,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
 KFFluidScene::KFFluidScene(const int id, const std::string& name) :
-	IScene(id, name),
+	IParticleSystemScene(id, name),
 	pressureCoe(10000.0),
 	viscosityCoe(50.0),
 	isBoundary_(false)
@@ -36,4 +36,13 @@ Box3d KFFluidScene::getBoundingBox() const
 		bb.add(p->getPosition());
 	}
 	return bb;
+}
+
+std::vector<Vector3dd> KFFluidScene::getPositions() const
+{
+	std::vector<Vector3dd> positions;
+	for (auto p : particles) {
+		positions.push_back(p->getPosition());
+	}
+	return positions;
 }

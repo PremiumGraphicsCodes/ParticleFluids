@@ -8,15 +8,19 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
+IParticleSystemScene::IParticleSystemScene(const int id, const std::string& name) :
+	IShapeScene(id, name)
+{}
+
 ParticleSystemScene::ParticleSystemScene() :
-	IShapeScene(-1, ""),
+	IParticleSystemScene(-1, ""),
 	shape(nullptr)
 {
 	presenter = std::make_unique<ParticleSystemPresenter>(this);
 }
 
 ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<ParticleSystem<ParticleAttribute>> shape) :
-	IShapeScene(id, name),
+	IParticleSystemScene(id, name),
 	shape(std::move(shape))
 {
 	presenter = std::make_unique<ParticleSystemPresenter>(this);

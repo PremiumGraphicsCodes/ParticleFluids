@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Scene/IScene.h"
+#include "../../Crystal/Scene/IParticleSystemScene.h"
 
 #include "KFMacroParticle.h"
 #include "KFFluidScenePresenter.h"
@@ -9,7 +9,7 @@ namespace Crystal {
 	namespace Physics {
 		class KFFluidScenePresenter;
 
-class KFFluidScene : public Scene::IScene
+class KFFluidScene : public Scene::IParticleSystemScene
 {
 public:
 	KFFluidScene(const int id, const std::string& name);
@@ -42,6 +42,14 @@ public:
 	bool isBoundary() const { return isBoundary_; }
 
 	void setBoundary(const bool isBoundary_) { this->isBoundary_ = isBoundary_; }
+
+	void translate(const Math::Vector3dd& v) override { ; }
+
+	void transform(const Math::Matrix3dd& m) override { ; }
+
+	void transform(const Math::Matrix4dd& m) override { ; }
+
+	std::vector<Math::Vector3dd> getPositions() const override;
 
 private:
 	std::vector<KFMacroParticle*> particles;

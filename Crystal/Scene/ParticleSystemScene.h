@@ -5,17 +5,16 @@
 #include "IShapeScene.h"
 #include "ParticleAttribute.h"
 
+#include "IParticleSystemScene.h"
 #include "IParticleSystemPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
 
-class ParticleSystemScene : public IShapeScene
+class ParticleSystemScene : public IParticleSystemScene
 {
 public:
 	ParticleSystemScene();
-
-	//ParticleSystemScene(const int id, const std::string& name);
 
 	ParticleSystemScene(const int id, const std::string& name, std::unique_ptr<Shape::ParticleSystem<ParticleAttribute>> shape);
 
@@ -34,6 +33,8 @@ public:
 	Math::Box3d getBoundingBox() const override;
 
 	void setAttribute(const ParticleAttribute& attribute);
+
+	std::vector<Math::Vector3dd> getPositions() const override { return shape->getPositions(); }
 
 	IParticleSystemPresenter* getPresenter() { return presenter.get(); }
 

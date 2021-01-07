@@ -145,6 +145,9 @@
     <ClInclude Include="SolidAsWFPresenter.h">
       <Filter>Presenter\Shape\Solid</Filter>
     </ClInclude>
+    <ClInclude Include="IParticleSystemScene.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
