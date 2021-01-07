@@ -40,11 +40,11 @@ bool VDBFileWriteCommand::execute(World* world)
 	}
 	const auto& ids = args.particleSystemIds.getValue();
 	for (auto id : ids) {
-		auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(id);
+		auto scene = world->getScenes()->findSceneById<IParticleSystemScene*>(id);
 		if (scene == nullptr) {
 			return false;
 		}
-		const auto positions = scene->getShape()->getPositions();
+		const auto positions = scene->getPositions();
 		writer.write(scene->getName(), positions);
 	}
 

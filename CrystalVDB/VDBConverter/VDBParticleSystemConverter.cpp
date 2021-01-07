@@ -44,7 +44,11 @@ void VDBParticleSystemConverter::fromVDB(const VDBParticleSystemScene& src, Part
     }
 }
 
-void VDBParticleSystemConverter::toVDB(const ParticleSystemScene& src, VDBParticleSystemScene* dest)
+void VDBParticleSystemConverter::toVDB(const IParticleSystemScene& src, VDBParticleSystemScene* dest)
 {
-//    src.getShape()->getPositions();
+    dest->clear();
+    const auto positions = src.getPositions();
+    for (const auto& p : positions) {
+        dest->add(p, 1.0);
+    }
 }

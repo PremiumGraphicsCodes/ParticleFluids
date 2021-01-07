@@ -3,6 +3,7 @@
 namespace Crystal {
 	namespace Scene {
 		class ParticleSystemScene;
+		class IParticleSystemScene;
 	}
 	namespace VDB {
 		class VDBParticleSystemScene;
@@ -15,7 +16,7 @@ public:
 
 	void fromVDB(const VDBParticleSystemScene& src, Scene::ParticleSystemScene* ps);
 
-	void toVDB(const Scene::ParticleSystemScene& src, VDBParticleSystemScene* dest);
+	void toVDB(const Scene::IParticleSystemScene& src, VDBParticleSystemScene* dest);
 
 private:
 };
