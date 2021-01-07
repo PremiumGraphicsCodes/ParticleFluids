@@ -10,6 +10,7 @@
     <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
     <ClCompile Include="VDBMeshToParticleSystemCommand.cpp" />
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
+    <ClCompile Include="VDBParticleSystemCreateCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -43,6 +44,10 @@
     </ClInclude>
     <ClInclude Include="VDBOBJFileReadCommand.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileReadLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBParticleSystemCreateCommand.h" />
+    <ClInclude Include="PublicLabels\VDBParticleSystemCreateLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>

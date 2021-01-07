@@ -15,7 +15,7 @@ public:
 
 	void fromVDB(const VDBParticleSystemScene& src, Scene::ParticleSystemScene* ps);
 
-	//VDBParticleSystem toVDB(const Shape::IParticleSystem& src);
+	void toVDB(const Scene::ParticleSystemScene& src, VDBParticleSystemScene* dest);
 
 private:
 };

@@ -1,17 +1,15 @@
 #pragma once
 
 #include "../../CrystalViewer/Command/ICommand.h"
-#include "../../Crystal/Math/Vector3d.h"
 #include <vector>
-#include <array>
 
 namespace Crystal {
 	namespace Command {
 
-class VDBMeshCreateCommand : public ICommand
+class VDBParticleSystemCreateCommand : public ICommand
 {
 public:
-	VDBMeshCreateCommand() :
+	VDBParticleSystemCreateCommand() :
 		ICommand(&args, &results)
 	{}
 
@@ -20,8 +18,6 @@ public:
 		Args();
 
 		Arg< std::vector<Math::Vector3dd> > positions;
-		Arg< std::array<int, 3> > triangleIndices;
-		Arg< std::array<int, 4> > quadIndices;
 	};
 
 	struct Results : IResults

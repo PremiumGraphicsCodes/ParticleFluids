@@ -4,6 +4,7 @@
 #include "VDBFileWriteCommand.h"
 #include "VDBFileReadCommand.h"
 #include "VDBOBJFileWriteCommand.h"
+#include "VDBParticleSystemCreateCommand.h"
 #include "VDBMeshCreateCommand.h"
 #include "VDBParticleSystemToMeshCommand.h"
 #include "VDBMeshToParticleSystemCommand.h"
@@ -24,6 +25,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBOBJFileWriteCommand::getName()) {
 		return std::make_unique<VDBOBJFileWriteCommand>();
+	}
+	else if (name == VDBParticleSystemCreateCommand::getName()) {
+		return std::make_unique<VDBParticleSystemCreateCommand>();
 	}
 	else if (name == VDBMeshCreateCommand::getName()) {
 		return std::make_unique<VDBMeshCreateCommand>();

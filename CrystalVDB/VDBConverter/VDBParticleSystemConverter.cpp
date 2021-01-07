@@ -44,9 +44,7 @@ void VDBParticleSystemConverter::fromVDB(const VDBParticleSystemScene& src, Part
     }
 }
 
-/*
-VDBParticleSystem VDBParticleSystemConverter::toVDB(const Shape::IParticleSystem& src)
+void VDBParticleSystemConverter::toVDB(const ParticleSystemScene& src, VDBParticleSystemScene* dest)
 {
-    src.getIParticles();
+//    src.getShape()->getPositions();
 }
-*/

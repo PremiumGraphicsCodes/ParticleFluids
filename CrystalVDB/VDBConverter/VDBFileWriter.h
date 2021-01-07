@@ -5,6 +5,7 @@
 
 namespace Crystal {
     namespace VDB {
+        class VDBParticleSystem;
 
 class VDBFileWriter
 {
