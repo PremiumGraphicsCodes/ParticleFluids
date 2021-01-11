@@ -20,29 +20,20 @@ namespace FluidStudio.Physics
 
         public void Simulate(SceneList world, VDBModel vdb, Canvas3d canvas)
         {
-            foreach (var ps in Solvers)
+            foreach (var solver in Solvers)
             {
-                ps.Simulate(world, vdb, TimeStep.Value);
-                foreach (var fluid in ps.Fluids)
+                solver.Simulate(world, vdb, TimeStep.Value);
+                foreach (var fluid in solver.Fluids)
                 {
                     canvas.SendShader(world, fluid.Id);
                 }
                 canvas.Render();
+                if(solver.DoMakeMesh)
+                {
+                    solver.ConvertToMesh(world, vdb, canvas);
+                }
             }
             TimeStep.Value++;
-        }
-
-        public void ConvertToMesh(SceneList world, VDBModel vdb, Canvas3d canvas)
-        {
-            foreach (var ps in Solvers)
-            {
-                foreach (var fluid in ps.Fluids)
-                {
-                    vdb.BuildMesh(fluid.SourceParticleSystemId, fluid.PolygonMeshId, world);
-                    canvas.SendShader(world, fluid.PolygonMeshId);
-                }
-                canvas.Render();
-            }
         }
 
         public void ExportMesh(SceneList world, VDBModel vdb, string directoryPath)

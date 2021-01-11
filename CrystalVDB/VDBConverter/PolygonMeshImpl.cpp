@@ -17,6 +17,23 @@ namespace {
 	}
 }
 
+std::vector<openvdb::Vec3I> PolygonMeshImpl::getTriangles() const
+{
+	std::vector<openvdb::Vec3I> results;
+	for (const auto& q : triangles) {
+		results.push_back(q.indices);
+	}
+	return results;
+}
+
+std::vector<openvdb::Vec4I> PolygonMeshImpl::getQuads() const
+{
+	std::vector<openvdb::Vec4I> results;
+	for (const auto& q : quads) {
+		results.push_back(q.indices);
+	}
+	return results;
+}
 
 void PolygonMeshImpl::updateNormals()
 {

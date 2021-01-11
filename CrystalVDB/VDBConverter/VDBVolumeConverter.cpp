@@ -20,7 +20,13 @@ void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScen
     auto impl = mesh->getImpl();
     impl->clear();
     auto grid = volume.getImpl()->getPtr();
-    openvdb::tools::volumeToMesh(*grid, impl->points, impl->getQuads());
+    std::vector<openvdb::Vec4I> quads;
+    openvdb::tools::volumeToMesh(*grid, impl->points, quads);
+    for (const auto& q : quads) {
+        Crystal::VDB::PolygonMeshImpl::QuadFace face;
+        face.indices = q;
+        impl->quads.push_back(face);
+    }
     impl->updateNormals();
 }
 

@@ -27,6 +27,8 @@ namespace FluidStudio.Physics
 
         public string VDBExportDirectory { get; set; }
 
+        public bool DoMakeMesh { get; set; }
+
         public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
@@ -65,7 +67,17 @@ namespace FluidStudio.Physics
             }
             vdb.Write(filePath, world, ids);
         }
-        
+
+        public void ConvertToMesh(SceneList world, VDBModel vdb, Canvas3d canvas)
+        {
+            foreach (var fluid in Fluids)
+            {
+                vdb.BuildMesh(fluid.SourceParticleSystemId, fluid.PolygonMeshId, world);
+                canvas.SendShader(world, fluid.PolygonMeshId);
+            }
+            canvas.Render();
+        }
+
         public void Reset(SceneList world)
         {
             var fluidIds = new List<int>();
