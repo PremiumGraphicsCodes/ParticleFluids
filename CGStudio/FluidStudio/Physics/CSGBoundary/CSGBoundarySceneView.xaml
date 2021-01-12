@@ -21,6 +21,5 @@
             <TextBlock Text="Solid"/>
             <ui:SceneSelectView DataContext="{Binding SolidSelectViewModel}"/>
         </StackPanel>
-        <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>

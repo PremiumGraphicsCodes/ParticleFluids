@@ -6,6 +6,7 @@ using PG.Scene;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
+using System;
 
 namespace FluidStudio.Physics
 {
@@ -19,8 +20,8 @@ namespace FluidStudio.Physics
         public ReactiveProperty<int> Id { get; }
             = new ReactiveProperty<int>();
 
-        public ReactiveProperty<double> Density { get; }
-            = new ReactiveProperty<double>(1000.0);
+        public ReactiveProperty<float> Density { get; }
+            = new ReactiveProperty<float>(1000.0f);
 
         public ReactiveProperty<float> Stiffness { get; }
             = new ReactiveProperty<float>(1.0f);
@@ -30,9 +31,6 @@ namespace FluidStudio.Physics
 
         public ReactiveProperty<bool> IsBoundary { get; }
             = new ReactiveProperty<bool>(false);
-
-        public ReactiveCommand UpdateCommand { get; }
-            = new ReactiveCommand();
 
         public FluidFileExportViewModel ExportViewModel { get; }
             = new FluidFileExportViewModel();
@@ -44,7 +42,10 @@ namespace FluidStudio.Physics
         public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.SourceParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
-            this.UpdateCommand.Subscribe(OnUpdate);
+            this.SourceParticleSystemSelectViewModel.Id.Subscribe(OnChangeSourcePS);
+            this.Density.Subscribe(OnChangeDensity);
+            this.Stiffness.Subscribe(OnChangeStiffness);
+            this.IsBoundary.Subscribe(OnChangeIsBoundary);
             this.world = world;
         }
 
@@ -73,15 +74,43 @@ namespace FluidStudio.Physics
         {
         }
 
+        private void OnChangeSourcePS(int id)
+        {
+            OnUpdate();
+        }
+
+        private void OnChangeDensity(float density)
+        {
+            OnUpdate();
+        }
+
+        private void OnChangeStiffness(float s)
+        {
+            OnUpdate();
+        }
+
+        private void OnChangeViscosity(float v)
+        {
+            OnUpdate();
+        }
+
+        private void OnChangeIsBoundary(bool b)
+        {
+            OnUpdate();
+        }
+
         private void OnUpdate()
         {
+            if (scene == null)
+            {
+                return;
+            }
             var sourceId = SourceParticleSystemSelectViewModel.Id.Value;
             var stiffness = Stiffness.Value;
             var viscosity = Viscosity.Value;
             var name = Name.Value;
             var isBoundary = IsBoundary.Value;
             this.scene.Update(world, sourceId, stiffness, viscosity, name, isBoundary);
-           // this.model.PhysicsModel.
         }
     }
 }
