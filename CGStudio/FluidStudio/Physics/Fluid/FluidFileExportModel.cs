@@ -20,7 +20,7 @@ namespace FluidStudio.Physics.Fluid
 
         public string OBJExportDirectory { get; set; }
 
-        public double Radius { get; set; }
+        public double Radius { get; set; } = 5.0;
 
         public void ExportFiles(SceneList world, FluidScene fluid, VDBModel vdb, int timeStep)
         {
