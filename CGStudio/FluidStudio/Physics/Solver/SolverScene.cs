@@ -76,7 +76,7 @@ namespace FluidStudio.Physics
         {
             foreach (var fluid in Fluids)
             {
-                vdb.BuildMesh(fluid.SourceParticleSystemId, fluid.PolygonMeshId, world);
+                vdb.BuildMesh(fluid.Id, fluid.PolygonMeshId, world);
                 canvas.SendShader(world, fluid.PolygonMeshId);
             }
             canvas.Render();

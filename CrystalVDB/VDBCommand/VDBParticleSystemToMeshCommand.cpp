@@ -2,7 +2,7 @@
 
 #include "PublicLabels/VDBParticleSystemToMeshLabels.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/IParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../VDBConverter/VDBParticleSystemScene.h"
@@ -40,7 +40,7 @@ std::string VDBParticleSystemToMeshCommand::getName()
 
 bool VDBParticleSystemToMeshCommand::execute(World* world)
 {
-	auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
+	auto scene = world->getScenes()->findSceneById<IParticleSystemScene*>(args.particleSystemId.getValue());
 	if (scene == nullptr) {
 		return false;
 	}
@@ -50,9 +50,9 @@ bool VDBParticleSystemToMeshCommand::execute(World* world)
 	}
 
 	VDBParticleSystemScene ps;
-	auto particles = scene->getShape()->getParticles();
-	for (auto p : scene->getShape()->getParticles()) {
-		ps.add(p->getPosition(), p->getAttribute().size);
+	auto positions = scene->getPositions();
+	for (const auto& p : positions) {
+		ps.add(p, 1.0);
 	}
 	VDBVolumeScene volume;
 	VDBParticleSystemConverter psConverter;
