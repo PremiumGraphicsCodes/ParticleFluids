@@ -174,7 +174,7 @@
     <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
       <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\VDBConverter\VDBConverter.vcxproj">
+    <ProjectReference Include="..\VDBConverter\CrystalVDB.vcxproj">
       <Project>{516a29d3-e143-4d8a-8067-24b2d24a6643}</Project>
     </ProjectReference>
   </ItemGroup>
