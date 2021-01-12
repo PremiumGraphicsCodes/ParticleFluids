@@ -2,17 +2,14 @@
 using FluidStudio.Scene;
 using PG.Control.OpenGL;
 using PG.Core.Math;
-using PG.Core.Shape;
 using PG.Core.UI;
 using PG.Scene;
-using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Documents;
 using Unity;
 
 namespace FluidStudio
@@ -42,6 +39,9 @@ namespace FluidStudio
         public ReactiveCommand FluidSceneCreateCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveCommand BoundarySceneCreateCommand { get; }
+            = new ReactiveCommand();
+
         private readonly MainModel mainModel;
 
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
@@ -62,6 +62,7 @@ namespace FluidStudio
             this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
             this.PhysicsSceneCreateCommand.Subscribe(OnCreatePhysicsScene);
             this.FluidSceneCreateCommand.Subscribe(OnCreateFluidScene);
+            this.BoundarySceneCreateCommand.Subscribe(OnCreateBoundaryScene);
         }
 
         private void OnNavigate(string name)
@@ -149,7 +150,6 @@ namespace FluidStudio
             fluidScene.Create(mainModel.Scenes, particleSystemId, 1.0f, 1.0f, "Fluid01", false);
             fluidScene.PolygonMeshId = this.meshId;
             fluids.Add( fluidScene );
-            //var box = new Box3d( new Vector3d(-100, -100, -100), new Vector3d(100, 100, 100));
             var boundaries = new List<CSGBoundaryScene>();
             boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
             var scene = new SolverScene();
@@ -169,6 +169,14 @@ namespace FluidStudio
             solver.Fluids.Add(fluidScene);
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
             Canvas.Render();
+            mainModel.PhysicsModel.Solvers.Remove(solver);
+            mainModel.PhysicsModel.Solvers.Add(solver);
+        }
+
+        private void OnCreateBoundaryScene()
+        {
+            var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
+            solver.CSGBoundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
             mainModel.PhysicsModel.Solvers.Remove(solver);
             mainModel.PhysicsModel.Solvers.Add(solver);
         }
