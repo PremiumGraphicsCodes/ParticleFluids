@@ -27,6 +27,7 @@
         <TextBox Text = "{Binding VDBExportDirectoryPath.Value}" MinWidth="100"/>
 
         <CheckBox Content="MakeMesh" IsChecked="{Binding DoMakeMesh.Value}"/>
+        <CheckBox Content="OBJExport" IsChecked="{Binding DoExportOBJ.Value}"/>
         <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>

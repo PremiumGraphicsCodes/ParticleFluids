@@ -38,9 +38,9 @@
                 <RibbonGroup Header="PolygonMesh">
                     <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="PMBoxGeneration"/>
                 </RibbonGroup>
-            </RibbonTab>
-            <RibbonTab Header="CSG">
-                <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="CSGBoxGeneration"/>
+                <RibbonGroup Header="CSG">
+                    <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="CSGBoxGeneration"/>
+                </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Physics">
                 <RibbonGroup Header="Primitive">

@@ -31,6 +31,10 @@ namespace FluidStudio.Physics
                 if(solver.DoMakeMesh)
                 {
                     solver.ConvertToMesh(world, vdb, canvas);
+                    if(solver.DoExportOBJ)
+                    {
+
+                    }
                 }
             }
             TimeStep.Value++;

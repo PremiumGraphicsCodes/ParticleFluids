@@ -34,7 +34,10 @@ namespace FluidStudio.Physics.Solver
             = new ReactiveProperty<bool>(false);
 
         public ReactiveProperty<bool> DoMakeMesh { get; }
-            = new ReactiveProperty<bool>(false);            
+            = new ReactiveProperty<bool>(false);
+
+        public ReactiveProperty<bool> DoExportOBJ { get; }
+            = new ReactiveProperty<bool>(false);
 
         public SolverSceneViewModel(SceneList world)
         {
@@ -42,8 +45,9 @@ namespace FluidStudio.Physics.Solver
             this.UpdateCommand.Subscribe(OnUpdate);
             this.VDBExportDirectorySelectCommand.Subscribe(() => OnSelectExportDirectory());
             this.DoExportVDB.Subscribe(OnExportVDBChanged);
-            this.VDBExportDirectoryPath.Subscribe(OnExportDirectoryChanged);
+            this.VDBExportDirectoryPath.Subscribe(OnExportVDBDirectoryChanged);
             this.DoMakeMesh.Subscribe(OnMakeMeshChanged);
+            this.DoExportOBJ.Subscribe(OnExportOBJChanged);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -90,7 +94,7 @@ namespace FluidStudio.Physics.Solver
             }
         }
 
-        private void OnExportDirectoryChanged(string path)
+        private void OnExportVDBDirectoryChanged(string path)
         {
             if (scene != null)
             {
@@ -103,6 +107,14 @@ namespace FluidStudio.Physics.Solver
             if (scene != null)
             {
                 scene.DoMakeMesh = b;
+            }
+        }
+
+        private void OnExportOBJChanged(bool b)
+        {
+            if(scene != null)
+            {
+                scene.DoExportOBJ = b;
             }
         }
     }

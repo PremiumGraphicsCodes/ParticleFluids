@@ -29,6 +29,10 @@ namespace FluidStudio.Physics
 
         public bool DoMakeMesh { get; set; }
 
+        public bool DoExportOBJ { get; set; }
+
+        public string OBJExportDirectory { get; set; }
+
         public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
