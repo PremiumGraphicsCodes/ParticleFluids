@@ -30,6 +30,9 @@ namespace FluidStudio.Physics.Fluid
         public ReactiveProperty<bool> DoExportOBJ { get; }
             = new ReactiveProperty<bool>(false);
 
+        public ReactiveProperty<double> Radius { get; }
+            = new ReactiveProperty<double>(5.0);
+
         private FluidFileExportModel model;
 
         public FluidFileExportModel Model
@@ -53,6 +56,7 @@ namespace FluidStudio.Physics.Fluid
             this.OBJExportDirectoryPath.Subscribe(OnExportOBJDirectoryChanged);
             this.DoMakeMesh.Subscribe(OnMakeMeshChanged);
             this.DoExportOBJ.Subscribe(OnExportOBJChanged);
+            this.Radius.Subscribe(OnRadiusChanged);
         }
 
         private void OnSelectVDBExportDirectory()
@@ -114,6 +118,14 @@ namespace FluidStudio.Physics.Fluid
             if (model != null)
             {
                 model.DoExportOBJ = b;
+            }
+        }
+
+        private void OnRadiusChanged(double r)
+        {
+            if(model != null)
+            {
+                model.Radius = r;
             }
         }
 

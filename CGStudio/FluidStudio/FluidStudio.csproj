@@ -176,6 +176,7 @@
       <DependentUpon>TimeLineView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TimeLineViewModel.cs" />
+    <Compile Include="Tool\Modeling\PSModelingToolViewModel.cs" />
     <Compile Include="VDBLabels.cs" />
     <Compile Include="VDB\VDBModel.cs" />
     <Page Include="MainWindow.xaml">

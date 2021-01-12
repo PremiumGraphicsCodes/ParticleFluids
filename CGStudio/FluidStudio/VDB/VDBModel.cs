@@ -49,12 +49,12 @@ namespace FluidStudio.VDB
             return newId;
         }
 
-        public bool BuildMesh(int particleSystemId, int vdbMeshId, SceneList world)
+        public bool BuildMesh(int particleSystemId, int vdbMeshId, SceneList world, double radius)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBParticleSystemToMeshLabels.CommandNameLabel);
             command.SetArg(PG.VDBParticleSystemToMeshLabels.ParticleSystemIdLabel, particleSystemId);
             command.SetArg(PG.VDBParticleSystemToMeshLabels.VDBMeshIdLabel, vdbMeshId);
-            command.SetArg(PG.VDBParticleSystemToMeshLabels.RadiusLabel, 5.0);
+            command.SetArg(PG.VDBParticleSystemToMeshLabels.RadiusLabel, radius);
             return command.Execute(world.Adapter);
         }
 

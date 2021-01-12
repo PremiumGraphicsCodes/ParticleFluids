@@ -53,9 +53,9 @@ namespace FluidStudio.Physics
             ExportModel.ExportFiles(world, this, vdb, timeStep);
         }
 
-        public void ConvertToMesh(SceneList world, VDBModel vdb)
+        public void ConvertToMesh(SceneList world, VDBModel vdb, double radius)
         {
-            vdb.BuildMesh(this.Id, this.PolygonMeshId, world);
+            vdb.BuildMesh(this.Id, this.PolygonMeshId, world, radius);
         }
 
         public void Reset(SceneList world)

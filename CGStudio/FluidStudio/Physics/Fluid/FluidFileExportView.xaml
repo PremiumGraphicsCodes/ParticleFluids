@@ -13,6 +13,7 @@
             <TextBox Text = "{Binding VDBExportDirectoryPath.Value}" MinWidth="100"/>
         </StackPanel>
         <CheckBox Content="MakeMesh" IsChecked="{Binding DoMakeMesh.Value}"/>
+        <TextBox Text="{Binding Radius.Value}"/>
         <CheckBox Content="OBJExport" IsChecked="{Binding DoExportOBJ.Value}"/>
         <StackPanel Orientation="Horizontal">
             <Button Content="Select" Command="{Binding OBJExportDirectorySelectCommand}"/>

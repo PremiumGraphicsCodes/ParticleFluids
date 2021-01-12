@@ -31,7 +31,7 @@ namespace FluidStudio.Physics
                 {
                     if (fluid.ExportModel.DoMakeMesh)
                     {
-                        fluid.ConvertToMesh(world, vdb);
+                        fluid.ConvertToMesh(world, vdb, fluid.ExportModel.Radius);
                         canvas.SendShader(world, fluid.PolygonMeshId);
                     }
                 }

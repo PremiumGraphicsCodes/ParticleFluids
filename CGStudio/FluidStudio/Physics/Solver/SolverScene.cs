@@ -48,16 +48,6 @@ namespace FluidStudio.Physics
             command.Execute(scenes.Adapter);
         }
         
-        public void ConvertToMesh(SceneList world, VDBModel vdb, Canvas3d canvas)
-        {
-            foreach (var fluid in Fluids)
-            {
-                vdb.BuildMesh(fluid.Id, fluid.PolygonMeshId, world);
-                canvas.SendShader(world, fluid.PolygonMeshId);
-            }
-            canvas.Render();
-        }
-
         public void Reset(SceneList world)
         {
             var fluidIds = new List<int>();

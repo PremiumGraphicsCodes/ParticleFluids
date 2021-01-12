@@ -5,7 +5,7 @@
 #include "VDBParticleSystemConverter.h"
 #include "VDBParticleSystemScene.h"
 #include "VDBParticleSystemImpl.h"
-#include "VolumeImpl.h"
+#include "VDBVolumeImpl.h"
 #include "VDBVolumeScene.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
