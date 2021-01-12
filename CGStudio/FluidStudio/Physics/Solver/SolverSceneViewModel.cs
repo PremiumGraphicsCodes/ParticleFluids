@@ -27,7 +27,13 @@ namespace FluidStudio.Physics.Solver
         public ReactiveCommand VDBExportDirectorySelectCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveCommand OBJExportDirectorySelectCommand { get; }
+            = new ReactiveCommand();
+
         public ReactiveProperty<string> VDBExportDirectoryPath { get; }
+            = new ReactiveProperty<string>("");
+
+        public ReactiveProperty<string> OBJExportDirectoryPath { get; }
             = new ReactiveProperty<string>("");
 
         public ReactiveProperty<bool> DoExportVDB { get; }
@@ -43,9 +49,11 @@ namespace FluidStudio.Physics.Solver
         {
             this.world = world;
             this.UpdateCommand.Subscribe(OnUpdate);
-            this.VDBExportDirectorySelectCommand.Subscribe(() => OnSelectExportDirectory());
+            this.VDBExportDirectorySelectCommand.Subscribe(() => OnSelectVDBExportDirectory());
+            this.OBJExportDirectorySelectCommand.Subscribe(() => OnSelectOBJExportDirectory());
             this.DoExportVDB.Subscribe(OnExportVDBChanged);
             this.VDBExportDirectoryPath.Subscribe(OnExportVDBDirectoryChanged);
+            this.OBJExportDirectoryPath.Subscribe(OnExportOBJDirectoryChanged);
             this.DoMakeMesh.Subscribe(OnMakeMeshChanged);
             this.DoExportOBJ.Subscribe(OnExportOBJChanged);
         }
@@ -76,13 +84,23 @@ namespace FluidStudio.Physics.Solver
             scene.Update(world, this.scene.Fluids, this.scene.CSGBoundaries, TimeStep.Value, this.Name.Value);
         }
 
-        private void OnSelectExportDirectory()
+        private void OnSelectVDBExportDirectory()
         {
             var dialog = new FolderBrowserDialog();
             var result = dialog.ShowDialog();
             if (result == DialogResult.OK)
             {
                 this.VDBExportDirectoryPath.Value = dialog.SelectedPath;
+            }
+        }
+
+        private void OnSelectOBJExportDirectory()
+        {
+            var dialog = new FolderBrowserDialog();
+            var result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                this.OBJExportDirectoryPath.Value = dialog.SelectedPath;
             }
         }
 
@@ -99,6 +117,14 @@ namespace FluidStudio.Physics.Solver
             if (scene != null)
             {
                 scene.VDBExportDirectory = path;
+            }
+        }
+
+        private void OnExportOBJDirectoryChanged(string path)
+        {
+            if (scene != null)
+            {
+                scene.OBJExportDirectory = path;
             }
         }
 
