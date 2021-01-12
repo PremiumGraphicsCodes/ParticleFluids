@@ -1,4 +1,5 @@
 ﻿using FluidStudio.Physics.Fluid;
+using FluidStudio.VDB;
 using PG.Control.OpenGL;
 using PG.Scene;
 using CreateLabels = PG.FluidSceneCreateLabels;
@@ -45,6 +46,16 @@ namespace FluidStudio.Physics
             this.IsBoundary = isBoundary;
             this.Name = name;
             Reset(world);
+        }
+
+        public void ExportFiles(SceneList world, VDBModel vdb, int timeStep)
+        {
+            ExportModel.ExportFiles(world, this, vdb, timeStep);
+        }
+
+        public void ConvertToMesh(SceneList world, VDBModel vdb)
+        {
+            vdb.BuildMesh(this.Id, this.PolygonMeshId, world);
         }
 
         public void Reset(SceneList world)

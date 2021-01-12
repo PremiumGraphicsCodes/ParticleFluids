@@ -31,7 +31,7 @@
             <TextBox Text="{Binding Viscosity.Value}" MinWidth="50"/>
         </StackPanel>
         <CheckBox Content="Boundary" IsChecked="{Binding IsBoundary.Value}"/>
-        <fluid:FluidFileExportView DataContext="{Binding FluidFileExportViewModel}"/>
+        <fluid:FluidFileExportView DataContext="{Binding ExportViewModel}"/>
         <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>
