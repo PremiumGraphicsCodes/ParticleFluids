@@ -39,6 +39,7 @@ namespace FluidStudioTest
             Assert.AreEqual(3, solver.Id);
         }
 
+        /*
         [TestMethod]
         public void TestSimulate()
         {
@@ -46,5 +47,6 @@ namespace FluidStudioTest
             var solver = CreateSolverTestScene(world, "");
             solver.Simulate(world);
         }
+        */
     }
 }

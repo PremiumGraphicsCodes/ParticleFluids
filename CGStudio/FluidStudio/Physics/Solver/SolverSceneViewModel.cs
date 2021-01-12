@@ -86,21 +86,23 @@ namespace FluidStudio.Physics.Solver
 
         private void OnSelectVDBExportDirectory()
         {
-            var dialog = new FolderBrowserDialog();
+            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
             var result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
+            if (result == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
             {
-                this.VDBExportDirectoryPath.Value = dialog.SelectedPath;
+                this.VDBExportDirectoryPath.Value = dialog.FileName;
             }
         }
 
         private void OnSelectOBJExportDirectory()
         {
-            var dialog = new FolderBrowserDialog();
+            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
             var result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
+            if (result == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
             {
-                this.OBJExportDirectoryPath.Value = dialog.SelectedPath;
+                this.OBJExportDirectoryPath.Value = dialog.FileName;
             }
         }
 
