@@ -9,7 +9,7 @@
 #include "VDBVolumeScene.h"
 #include "VolumeImpl.h"
 #include "VDBPolygonMeshScene.h"
-#include "PolygonMeshImpl.h"
+#include "VDBPolygonMeshImpl.h"
 #include "VDBParticleSystemImpl.h"
 #include "VDBParticleSystemScene.h"
 
@@ -23,7 +23,7 @@ void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScen
     std::vector<openvdb::Vec4I> quads;
     openvdb::tools::volumeToMesh(*grid, impl->points, quads);
     for (const auto& q : quads) {
-        Crystal::VDB::PolygonMeshImpl::QuadFace face;
+        Crystal::VDB::VDBPolygonMeshImpl::QuadFace face;
         face.indices = q;
         impl->quads.push_back(face);
     }

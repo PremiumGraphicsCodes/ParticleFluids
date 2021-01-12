@@ -1,4 +1,4 @@
-#include "PolygonMeshImpl.h"
+#include "VDBPolygonMeshImpl.h"
 
 using namespace Crystal::VDB;
 
@@ -17,7 +17,7 @@ namespace {
 	}
 }
 
-std::vector<openvdb::Vec3I> PolygonMeshImpl::getTriangles() const
+std::vector<openvdb::Vec3I> VDBPolygonMeshImpl::getTriangles() const
 {
 	std::vector<openvdb::Vec3I> results;
 	for (const auto& q : triangles) {
@@ -26,7 +26,7 @@ std::vector<openvdb::Vec3I> PolygonMeshImpl::getTriangles() const
 	return results;
 }
 
-std::vector<openvdb::Vec4I> PolygonMeshImpl::getQuads() const
+std::vector<openvdb::Vec4I> VDBPolygonMeshImpl::getQuads() const
 {
 	std::vector<openvdb::Vec4I> results;
 	for (const auto& q : quads) {
@@ -35,7 +35,7 @@ std::vector<openvdb::Vec4I> PolygonMeshImpl::getQuads() const
 	return results;
 }
 
-void PolygonMeshImpl::updateNormals()
+void VDBPolygonMeshImpl::updateNormals()
 {
 	for (auto& tt : triangles) {
 		const auto& t = tt.indices;

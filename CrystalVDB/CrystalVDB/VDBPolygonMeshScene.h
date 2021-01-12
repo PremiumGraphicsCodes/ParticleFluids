@@ -10,7 +10,7 @@
 
 namespace Crystal {
 	namespace VDB {
-		class PolygonMeshImpl;
+		class VDBPolygonMeshImpl;
 
 class VDBPolygonMeshScene : public Scene::IShapeScene
 {
@@ -71,10 +71,10 @@ public:
 
 	void updateNormals();
 
-	PolygonMeshImpl* getImpl() const { return impl.get(); }
+	VDBPolygonMeshImpl* getImpl() const { return impl.get(); }
 
 private:
-	std::unique_ptr<PolygonMeshImpl> impl;
+	std::unique_ptr<VDBPolygonMeshImpl> impl;
 	std::unique_ptr<VDBPolygonMeshPresenter> presenter;
 };
 

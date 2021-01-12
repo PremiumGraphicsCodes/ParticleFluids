@@ -1,7 +1,7 @@
 #include "VDBPolygonMeshConverter.h"
 
 #include "VDBPolygonMeshScene.h"
-#include "PolygonMeshImpl.h"
+#include "VDBPolygonMeshImpl.h"
 #include "VDBVolumeScene.h"
 #include "VolumeImpl.h"
 

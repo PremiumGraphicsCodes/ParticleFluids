@@ -5,7 +5,7 @@
 namespace Crystal {
     namespace VDB {
 
-class PolygonMeshImpl
+class VDBPolygonMeshImpl
 {
 public:
     struct TriangleFace
