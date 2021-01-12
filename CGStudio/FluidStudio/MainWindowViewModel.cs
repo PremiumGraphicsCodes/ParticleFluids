@@ -11,6 +11,7 @@ using Prism.Regions;
 using Reactive.Bindings;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Documents;
 using Unity;
 
@@ -38,6 +39,9 @@ namespace FluidStudio
         public ReactiveCommand PhysicsSceneCreateCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveCommand FluidSceneCreateCommand { get; }
+            = new ReactiveCommand();
+
         private readonly MainModel mainModel;
 
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
@@ -57,7 +61,7 @@ namespace FluidStudio
             this.PhysicsSceneListViewModel = new PhysicsSceneListViewModel(regionManager, world, mainModel);
             this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
             this.PhysicsSceneCreateCommand.Subscribe(OnCreatePhysicsScene);
-
+            this.FluidSceneCreateCommand.Subscribe(OnCreateFluidScene);
         }
 
         private void OnNavigate(string name)
@@ -138,27 +142,6 @@ namespace FluidStudio
 
         private void OnCreatePhysicsScene()
         {
-            /*
-            var min = new Vector3d(0.0, 0.0, 0.0);
-            var max = new Vector3d(10.0, 10.0, 10.0);
-            var dx = 1.0;
-            var dy = 1.0;
-            var dz = 1.0;
-            var positions = new List<Vector3d>();
-            for (var x = min.X; x < max.X; x += dx)
-            {
-                for (var y = min.Y; y < max.Y; y += dy)
-                {
-                    for (var z = min.Z; z < max.Z; z += dz)
-                    {
-                        var p = new Vector3d(x, y, z);
-                        positions.Add(p);
-                    }
-                }
-            }
-            */
-            //var particleSystemSceneId = mainModel.Scenes.AddParticleSystemScene(positions, "Particles01", new PG.Core.UI.ParticleAppearance(), 1);
-
             Canvas.BuildShader(mainModel.Scenes, particleSystemId);
 
             var fluids = new List<FluidScene>();
@@ -175,6 +158,19 @@ namespace FluidStudio
 
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
             Canvas.Render();
+        }
+
+        private void OnCreateFluidScene()
+        {
+            var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
+            var fluidScene = new FluidScene();
+            fluidScene.Create(mainModel.Scenes, particleSystemId, 1.0f, 1.0f, "Fluid01", false);
+            fluidScene.PolygonMeshId = this.meshId;
+            solver.Fluids.Add(fluidScene);
+            Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
+            Canvas.Render();
+            mainModel.PhysicsModel.Solvers.Remove(solver);
+            mainModel.PhysicsModel.Solvers.Add(solver);
         }
     }
 }
