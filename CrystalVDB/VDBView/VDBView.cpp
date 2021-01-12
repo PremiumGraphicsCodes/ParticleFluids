@@ -15,7 +15,7 @@
 #include "VDBMeshMenu.h"
 #include "VDBVolumeMenu.h"
 
-#include "../VDBConverter/VDBAdapter.h"
+#include "../CrystalVDB/VDBAdapter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

@@ -5,12 +5,12 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "../VDBConverter/VDBParticleSystemScene.h"
-#include "../VDBConverter/VDBParticleSystemConverter.h"
-#include "../VDBConverter/VDBPolygonMeshConverter.h"
-#include "../VDBConverter/VDBVolumeConverter.h"
-#include "../VDBConverter/VDBVolumeScene.h"
-#include "../VDBConverter/VDBPolygonMeshScene.h"
+#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBParticleSystemConverter.h"
+#include "../CrystalVDB/VDBPolygonMeshConverter.h"
+#include "../CrystalVDB/VDBVolumeConverter.h"
+#include "../CrystalVDB/VDBVolumeScene.h"
+#include "../CrystalVDB/VDBPolygonMeshScene.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

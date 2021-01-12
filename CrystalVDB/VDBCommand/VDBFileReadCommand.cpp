@@ -1,6 +1,6 @@
 #include "VDBFileReadCommand.h"
 
-#include "../VDBConverter/VDBFileReader.h"
+#include "../CrystalVDB/VDBFileReader.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 

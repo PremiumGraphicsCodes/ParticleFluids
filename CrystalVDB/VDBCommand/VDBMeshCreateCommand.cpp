@@ -1,6 +1,6 @@
 #include "VDBMeshCreateCommand.h"
 
-#include "../../CrystalVDB/VDBConverter/VDBPolygonMeshScene.h"
+#include "../../CrystalVDB/CrystalVDB/VDBPolygonMeshScene.h"
 
 #include "PublicLabels/VDBMeshCreateLabels.h"
 

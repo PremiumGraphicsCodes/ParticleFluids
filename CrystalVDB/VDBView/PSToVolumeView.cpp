@@ -3,10 +3,10 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
-#include "../VDBConverter/VDBParticleSystemScene.h"
-#include "../VDBConverter/VDBParticleSystemConverter.h"
-#include "../VDBConverter/VDBVolumeConverter.h"
-#include "../VDBConverter/VDBVolumeScene.h"
+#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBParticleSystemConverter.h"
+#include "../CrystalVDB/VDBVolumeConverter.h"
+#include "../CrystalVDB/VDBVolumeScene.h"
 
 #include <iostream>
 

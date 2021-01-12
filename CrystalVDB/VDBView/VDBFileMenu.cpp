@@ -1,7 +1,7 @@
 #include "VDBFileMenu.h"
 
-#include "../VDBConverter/VDBFileReader.h"
-#include "../VDBConverter/VDBFileWriter.h"
+#include "../CrystalVDB/VDBFileReader.h"
+#include "../CrystalVDB/VDBFileWriter.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 

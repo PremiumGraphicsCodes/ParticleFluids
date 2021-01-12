@@ -3,7 +3,7 @@
 #include "../../Crystal/IO/OBJFileWriter.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
-#include "../VDBConverter/VDBPolygonMeshScene.h"
+#include "../CrystalVDB/VDBPolygonMeshScene.h"
 
 #include "PublicLabels/VDBOBJFileWriteLabels.h"
 

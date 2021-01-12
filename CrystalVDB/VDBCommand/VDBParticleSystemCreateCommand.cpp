@@ -1,6 +1,6 @@
 #include "VDBParticleSystemCreateCommand.h"
 
-#include "../../CrystalVDB/VDBConverter/VDBParticleSystemScene.h"
+#include "../../CrystalVDB/CrystalVDB/VDBParticleSystemScene.h"
 
 #include "PublicLabels/VDBParticleSystemCreateLabels.h"
 

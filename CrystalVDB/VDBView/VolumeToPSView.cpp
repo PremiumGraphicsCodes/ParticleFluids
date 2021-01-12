@@ -1,8 +1,8 @@
 #include "VolumeToPSView.h"
 
-#include "../VDBConverter/VDBParticleSystemScene.h"
-#include "../VDBConverter/VDBVolumeScene.h"
-#include "../VDBConverter/VDBVolumeConverter.h"
+#include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBVolumeScene.h"
+#include "../CrystalVDB/VDBVolumeConverter.h"
 
 #include <iostream>
 

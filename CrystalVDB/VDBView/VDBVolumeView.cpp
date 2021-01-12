@@ -1,7 +1,7 @@
 #include "VDBVolumeView.h"
 
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../VDBConverter/VDBVolumeScene.h"
+#include "../CrystalVDB/VDBVolumeScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::UI;
