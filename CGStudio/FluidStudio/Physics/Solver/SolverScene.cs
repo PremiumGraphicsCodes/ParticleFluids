@@ -6,6 +6,7 @@ using CreateLabels = PG.PhysicsSolverCreateLabels;
 using UpdateLabels = PG.PhysicsSolverUpdateLabels;
 using PG.Control.OpenGL;
 using FluidStudio.VDB;
+using FluidStudio.Physics.Fluid;
 
 namespace FluidStudio.Physics
 {
@@ -22,16 +23,6 @@ namespace FluidStudio.Physics
         public float TimeStep { get; private set; } = 0.03f;
 
         public int Id { get; private set; }
-
-        public bool DoExportVDB { get; set; }
-
-        public string VDBExportDirectory { get; set; }
-
-        public bool DoMakeMesh { get; set; }
-
-        public bool DoExportOBJ { get; set; }
-
-        public string OBJExportDirectory { get; set; }
 
         public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
         {
@@ -55,23 +46,8 @@ namespace FluidStudio.Physics
             var command = new PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.SolverIdLabel, Id);
             command.Execute(scenes.Adapter);
-            if(DoExportVDB)
-            {
-                var filePath = VDBExportDirectory + "/" + Name + "_" + timeStep.ToString() + ".vdb";
-                ExportVDB(scenes, vdb, filePath);
-            }
         }
         
-        public void ExportVDB(SceneList world, VDBModel vdb, string filePath)
-        {
-            var ids = new List<int>();
-            foreach(var fluid in Fluids)
-            {
-                ids.Add( fluid.Id );
-            }
-            vdb.Write(filePath, world, ids);
-        }
-
         public void ConvertToMesh(SceneList world, VDBModel vdb, Canvas3d canvas)
         {
             foreach (var fluid in Fluids)

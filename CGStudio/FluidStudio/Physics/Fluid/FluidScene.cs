@@ -1,4 +1,5 @@
-﻿using PG.Control.OpenGL;
+﻿using FluidStudio.Physics.Fluid;
+using PG.Control.OpenGL;
 using PG.Scene;
 using CreateLabels = PG.FluidSceneCreateLabels;
 using UpdateLabels = PG.FluidSceneUpdateLabels;
@@ -20,6 +21,9 @@ namespace FluidStudio.Physics
         public float Viscosity { get; private set; } = 1.0f;
 
         public bool IsBoundary { get; private set; } = false;
+
+        public FluidFileExportModel ExportModel { get; }
+            = new FluidFileExportModel();
 
         public FluidScene()
         { }

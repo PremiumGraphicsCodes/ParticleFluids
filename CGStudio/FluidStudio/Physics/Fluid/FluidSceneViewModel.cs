@@ -1,4 +1,5 @@
-﻿using PG.CGStudio.UICtrl;
+﻿using FluidStudio.Physics.Fluid;
+using PG.CGStudio.UICtrl;
 using PG.Control.OpenGL;
 using PG.Control.UI;
 using PG.Scene;
@@ -33,6 +34,9 @@ namespace FluidStudio.Physics
         public ReactiveCommand UpdateCommand { get; }
             = new ReactiveCommand();
 
+        public FluidFileExportViewModel ExportViewModel { get; }
+            = new FluidFileExportViewModel();
+
         private FluidScene scene;
 
         private SceneList world;
@@ -56,6 +60,7 @@ namespace FluidStudio.Physics
             this.Stiffness.Value = item.Stiffness;
             this.Viscosity.Value = item.Viscosity;
             this.IsBoundary.Value = item.IsBoundary;
+            this.ExportViewModel.Model = item.ExportModel;
             this.scene = item;
         }
 

@@ -125,6 +125,11 @@
       <DependentUpon>CSGBoundarySceneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Physics\CSGBoundary\CSGBoundarySceneViewModel.cs" />
+    <Compile Include="Physics\Fluid\FluidFileExportModel.cs" />
+    <Compile Include="Physics\Fluid\FluidFileExportView.xaml.cs">
+      <DependentUpon>FluidFileExportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Physics\Fluid\FluidFileExportViewModel.cs" />
     <Compile Include="Physics\Fluid\FluidScene.cs" />
     <Compile Include="Physics\Fluid\FluidSceneView.xaml.cs">
       <DependentUpon>FluidSceneView.xaml</DependentUpon>
@@ -186,6 +191,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Physics\CSGBoundary\CSGBoundarySceneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Physics\Fluid\FluidFileExportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

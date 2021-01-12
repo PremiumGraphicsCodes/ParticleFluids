@@ -27,15 +27,12 @@ namespace FluidStudio.Physics
                 {
                     canvas.SendShader(world, fluid.Id);
                 }
-                canvas.Render();
-                if(solver.DoMakeMesh)
+                foreach (var fluid in solver.Fluids)
                 {
-                    solver.ConvertToMesh(world, vdb, canvas);
-                    if(solver.DoExportOBJ)
-                    {
-
-                    }
+//                    fluid.ExportFiles();
+                    //ExportModel.ExportFiles(scenes, fluid, vdb, timeStep);
                 }
+                canvas.Render();
             }
             TimeStep.Value++;
         }

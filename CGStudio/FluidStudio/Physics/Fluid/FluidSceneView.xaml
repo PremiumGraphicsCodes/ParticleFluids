@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FluidStudio.Physics"
              xmlns:ui="clr-namespace:PG.Control.UI;assembly=PGControl"
              mc:Ignorable="d"
-             xmlns:prism="http://prismlibrary.com/"
+             xmlns:prism="http://prismlibrary.com/" xmlns:fluid="clr-namespace:FluidStudio.Physics.Fluid"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
         <StackPanel Orientation="Horizontal">
@@ -31,6 +31,7 @@
             <TextBox Text="{Binding Viscosity.Value}" MinWidth="50"/>
         </StackPanel>
         <CheckBox Content="Boundary" IsChecked="{Binding IsBoundary.Value}"/>
+        <fluid:FluidFileExportView DataContext="{Binding FluidFileExportViewModel}"/>
         <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>
