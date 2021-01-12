@@ -7,7 +7,7 @@
 #include "openvdb/tools/VolumeToMesh.h"
 
 #include "VDBVolumeScene.h"
-#include "VolumeImpl.h"
+#include "VDBVolumeImpl.h"
 #include "VDBPolygonMeshScene.h"
 #include "VDBPolygonMeshImpl.h"
 #include "VDBParticleSystemImpl.h"

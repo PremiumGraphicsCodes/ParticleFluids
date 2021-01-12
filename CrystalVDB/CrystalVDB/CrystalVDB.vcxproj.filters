@@ -29,9 +29,6 @@
     <ClCompile Include="VDBVolumeScene.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
-    <ClCompile Include="VolumeImpl.cpp">
-      <Filter>Volume\Private</Filter>
-    </ClCompile>
     <ClCompile Include="VDBParticleSystemImpl.cpp">
       <Filter>ParticleSystem\Private</Filter>
     </ClCompile>
@@ -46,6 +43,9 @@
     </ClCompile>
     <ClCompile Include="VDBPolygonMeshImpl.cpp">
       <Filter>PolygonMesh\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="VDBVolumeImpl.cpp">
+      <Filter>Volume\Private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +77,6 @@
     <ClInclude Include="VDBVolumeScene.h">
       <Filter>Volume</Filter>
     </ClInclude>
-    <ClInclude Include="VolumeImpl.h">
-      <Filter>Volume\Private</Filter>
-    </ClInclude>
     <ClInclude Include="VDBParticleSystemImpl.h">
       <Filter>ParticleSystem\Private</Filter>
     </ClInclude>
@@ -94,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="VDBPolygonMeshImpl.h">
       <Filter>PolygonMesh\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBVolumeImpl.h">
+      <Filter>Volume\Private</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

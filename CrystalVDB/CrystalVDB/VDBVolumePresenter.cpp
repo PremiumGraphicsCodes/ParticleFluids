@@ -2,7 +2,7 @@
 
 #include "VDBVolumeScene.h"
 
-#include "VolumeImpl.h"
+#include "VDBVolumeImpl.h"
 #include "Converter.h"
 
 #include "../../Crystal/Scene/SceneShader.h"

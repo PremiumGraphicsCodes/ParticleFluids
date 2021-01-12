@@ -362,7 +362,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="VDBPolygonMeshPresenter.cpp" />
     <ClCompile Include="VDBVolumeScene.cpp" />
     <ClCompile Include="VDBVolumePresenter.cpp" />
-    <ClCompile Include="VolumeImpl.cpp" />
+    <ClCompile Include="VDBVolumeImpl.cpp" />
     <ClCompile Include="VDBVolumeConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -380,7 +380,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="VDBPolygonMeshPresenter.h" />
     <ClInclude Include="VDBVolumeScene.h" />
     <ClInclude Include="VDBVolumePresenter.h" />
-    <ClInclude Include="VolumeImpl.h" />
+    <ClInclude Include="VDBVolumeImpl.h" />
     <ClInclude Include="VDBVolumeConverter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

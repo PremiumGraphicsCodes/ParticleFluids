@@ -3,7 +3,7 @@
 #include "VDBPolygonMeshScene.h"
 #include "VDBPolygonMeshImpl.h"
 #include "VDBVolumeScene.h"
-#include "VolumeImpl.h"
+#include "VDBVolumeImpl.h"
 
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
@@ -17,7 +17,7 @@ void VDBPolygonMeshConverter::toVolume(const VDBPolygonMeshScene& mesh, VDBVolum
 	openvdb::math::Transform::Ptr xform = openvdb::math::Transform::createLinearTransform();
 	openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec4I> m(mesh.getImpl()->points, mesh.getImpl()->getQuads());
 	auto result = openvdb::tools::meshToVolume<openvdb::FloatGrid>(m, *xform);
-	auto impl = new VolumeImpl(result);
+	auto impl = new VDBVolumeImpl(result);
 	delete volume->getImpl();
 	volume->setImpl(impl);
 }

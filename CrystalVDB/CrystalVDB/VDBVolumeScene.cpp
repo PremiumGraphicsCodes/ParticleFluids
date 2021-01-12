@@ -1,6 +1,6 @@
 #include "VDBVolumeScene.h"
 
-#include "VolumeImpl.h"
+#include "VDBVolumeImpl.h"
 #include "Converter.h"
 
 using namespace Crystal::Math;
@@ -10,13 +10,13 @@ using namespace openvdb;
 
 VDBVolumeScene::VDBVolumeScene() :
 	IShapeScene(-1, ""),
-	impl(new VolumeImpl())
+	impl(new VDBVolumeImpl())
 {
 	impl->setPtr(FloatGrid::create());
 	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 
-VDBVolumeScene::VDBVolumeScene(VolumeImpl* impl) :
+VDBVolumeScene::VDBVolumeScene(VDBVolumeImpl* impl) :
 	IShapeScene(-1, "")
 {
 	this->impl = impl;
@@ -29,7 +29,7 @@ VDBVolumeScene::VDBVolumeScene(const float value) :
 	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
 	using FloatGridType = openvdb::Grid<FloatTreeType>;
 	auto grid = openvdb::createGrid<FloatGridType>(value);
-	impl = new VolumeImpl(grid);
+	impl = new VDBVolumeImpl(grid);
 	presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 
@@ -39,7 +39,7 @@ VDBVolumeScene::VDBVolumeScene(const int id, const std::string& name) :
 	using FloatTreeType = openvdb::tree::Tree4<float, 5, 4, 3>::Type;
 	using FloatGridType = openvdb::Grid<FloatTreeType>;
 	auto grid = openvdb::createGrid<FloatGridType>();
-	impl = new VolumeImpl(grid);
+	impl = new VDBVolumeImpl(grid);
 	impl->setPtr(FloatGrid::create());
 	presenter = std::make_unique<VDBVolumePresenter>(this);
 }

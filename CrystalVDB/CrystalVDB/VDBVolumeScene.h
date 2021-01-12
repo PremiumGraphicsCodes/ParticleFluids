@@ -10,20 +10,20 @@
 
 namespace Crystal {
 	namespace VDB {
-		class VolumeImpl;
+		class VDBVolumeImpl;
 
 class VDBVolumeScene : public Scene::IShapeScene
 {
 public:
 	VDBVolumeScene();
 
-	explicit VDBVolumeScene(VolumeImpl* impl);
+	explicit VDBVolumeScene(VDBVolumeImpl* impl);
 
 	explicit VDBVolumeScene(const float value);
 
 	VDBVolumeScene(const int id, const std::string& name);
 
-	void setImpl(VolumeImpl* impl) { this->impl = impl; }
+	void setImpl(VDBVolumeImpl* impl) { this->impl = impl; }
 
 	//explicit Volume(std::unique_ptr<VolumeImpl> impl);
 
@@ -49,10 +49,10 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
-	VolumeImpl* getImpl() const { return impl; }
+	VDBVolumeImpl* getImpl() const { return impl; }
 
 private:
-	VolumeImpl* impl;
+	VDBVolumeImpl* impl;
 	std::unique_ptr<VDBVolumePresenter> presenter;
 };
 	}

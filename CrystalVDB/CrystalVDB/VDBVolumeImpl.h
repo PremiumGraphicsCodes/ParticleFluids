@@ -5,18 +5,18 @@
 namespace Crystal {
 	namespace VDB {
 
-class VolumeImpl
+class VDBVolumeImpl
 {
 public:
-	VolumeImpl()
+	VDBVolumeImpl()
 	{
 	}
 
-	explicit VolumeImpl(openvdb::FloatGrid::Ptr ptr) :
+	explicit VDBVolumeImpl(openvdb::FloatGrid::Ptr ptr) :
 		ptr(ptr)
 	{}
 
-	~VolumeImpl() {}
+	~VDBVolumeImpl() {}
 
 	openvdb::FloatGrid::Ptr getPtr() { return ptr; }
 
