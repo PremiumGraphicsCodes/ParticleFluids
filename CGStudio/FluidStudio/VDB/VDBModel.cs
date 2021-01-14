@@ -67,14 +67,14 @@ namespace FluidStudio.VDB
 
         public int ReadOBJ(SceneList world, string filePath)
         {
-            var command = new PG.CLI.VDBCommand(PG.VDBFileReadLabels.CommandNameLabel);
-            command.SetArg(PG.VDBFileReadLabels.FilePathLabel, filePath);
+            var command = new PG.CLI.VDBCommand(PG.VDBOBJFileReadLabels.CommandNameLabel);
+            command.SetArg(PG.VDBOBJFileReadLabels.FilePathLabel, filePath);
             var isOk = command.Execute(world.Adapter);
             if (!isOk)
             {
                 return -1;
             }
-            return command.GetResult<int>(PG.VDBFileReadLabels.NewIdLabel);
+            return command.GetResult<int>(PG.VDBOBJFileReadLabels.VDBMeshIdLabel);
         }
     }
 }

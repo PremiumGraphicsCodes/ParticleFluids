@@ -35,11 +35,25 @@ namespace PG {
 		public const string RadiusLabel = "Radius";
 	}
 
+	public class VDBOBJFileReadLabels
+	{
+		public const string CommandNameLabel = "VDBOBJFileRead";
+		public const string FilePathLabel = "FilePath";
+		public const string VDBMeshIdLabel = "VDBMeshId";
+	}
+
 	public class VDBOBJFileWriteLabels
 	{
 		public const string CommandNameLabel = "VDBOBJFileWrite";
 		public const string VDBMeshIdLabel = "VDBMeshId";
 		public const string FilePathLabel = "FilePath";
+	}
+
+	public class VDBParticleSystemCreateLabels
+	{
+		public const string CommandNameLabel = "VDBParticleSystemCreate";
+		public const string PositionsLabel = "Positions";
+		public const string NewVDBPSIdLabel = "NewVDBPSId";
 	}
 
 	public class VDBParticleSystemToMeshLabels

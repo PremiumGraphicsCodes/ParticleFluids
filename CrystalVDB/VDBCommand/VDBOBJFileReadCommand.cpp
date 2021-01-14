@@ -3,7 +3,7 @@
 #include "../../Crystal/IO/OBJFileReader.h"
 
 #include "../CrystalVDB/VDBPolygonMeshScene.h"
-#include "PublicLabels/VDBOBJFileWriteLabels.h"
+#include "PublicLabels/VDBOBJFileReadLabels.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
