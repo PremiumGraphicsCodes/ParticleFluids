@@ -14,6 +14,7 @@ public:
 
 		Command::Arg<std::string> filePath;
 		Command::Arg<std::vector<int>> particleSystemIds;
+		Command::Arg<std::vector<int>> vdbVolumeIds;
 	};
 
 	struct Results : Command::IResults

@@ -2,6 +2,9 @@
 
 #include <openvdb/points/PointConversion.h>
 
+#include "VDBVolumeScene.h"
+#include "VDBVolumeImpl.h"
+
 #include "Converter.h"
 
 using namespace Crystal::Math;
@@ -29,7 +32,7 @@ void VDBFileWriter::close()
     file.close();
 }
 
-void VDBFileWriter::write(const std::string& name, const std::vector<Vector3dd>& positions) const
+void VDBFileWriter::writePoints(const std::string& name, const std::vector<Vector3dd>& positions) const
 {
     /*
     try {
@@ -63,4 +66,10 @@ void VDBFileWriter::write(const std::string& name, const std::vector<Vector3dd>&
     }
     */
     file.write({ grid });
+}
+
+void VDBFileWriter::writeVolume(const VDBVolumeScene& volume) const
+{
+    auto grid = volume.getImpl();
+    file.write({ grid->getPtr() });
 }

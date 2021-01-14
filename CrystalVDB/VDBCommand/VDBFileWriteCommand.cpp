@@ -1,6 +1,7 @@
 #include "VDBFileWriteCommand.h"
 
 #include "../CrystalVDB/VDBFileWriter.h"
+#include "../CrystalVDB/VDBVolumeScene.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
@@ -12,9 +13,11 @@ using namespace Crystal::VDB;
 
 VDBFileWriteCommand::Args::Args() :
 	particleSystemIds(::ParticleSystemIdsLabel, {}),
+	vdbVolumeIds(::VDBVolumeIdsLabel, {}),
 	filePath(::FilePathLabel, "")
 {
 	add(&particleSystemIds);
+	add(&vdbVolumeIds);
 	add(&filePath);
 }
 
@@ -38,14 +41,22 @@ bool VDBFileWriteCommand::execute(World* world)
 	if (!isOk) {
 		return false;
 	}
-	const auto& ids = args.particleSystemIds.getValue();
-	for (auto id : ids) {
+	const auto psIds = args.particleSystemIds.getValue();
+	for (auto id : psIds) {
 		auto scene = world->getScenes()->findSceneById<IParticleSystemScene*>(id);
 		if (scene == nullptr) {
 			return false;
 		}
 		const auto positions = scene->getPositions();
-		writer.write(scene->getName(), positions);
+		writer.writePoints(scene->getName(), positions);
+	}
+	const auto volumeIds = args.vdbVolumeIds.getValue();
+	for (auto id : volumeIds) {
+		auto scene = world->getScenes()->findSceneById<VDBVolumeScene*>(id);
+		if (scene == nullptr) {
+			return false;
+		}
+		writer.writeVolume(*scene);
 	}
 
 	return true;

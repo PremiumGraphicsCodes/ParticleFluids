@@ -84,7 +84,7 @@ void VDBFileMenu::onShow()
 						for (auto p : particles) {
 							positions.push_back(p->getPosition());
 						}
-						writer.write(s->getName(), positions);
+						writer.writePoints(s->getName(), positions);
 					}
 					std::cout << "export succeded." << std::endl;
 				}

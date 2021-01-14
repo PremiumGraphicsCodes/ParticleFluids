@@ -6,6 +6,7 @@
 namespace Crystal {
     namespace VDB {
         class VDBParticleSystem;
+        class VDBVolumeScene;
 
 class VDBFileWriter
 {
@@ -16,7 +17,9 @@ public:
 
     void close();
 
-    void write(const std::string& name, const std::vector<Math::Vector3dd>& positions) const;
+    void writePoints(const std::string& name, const std::vector<Math::Vector3dd>& positions) const;
+
+    void writeVolume(const VDBVolumeScene& volume) const;
 
 private:
 };
