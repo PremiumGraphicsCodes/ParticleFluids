@@ -141,16 +141,10 @@ namespace FluidStudio
                 return new List<int>();
             }
         }
-            /*
-            var command = new PG.CLI.Command(PG.FileImportLabels.FileImportCommandLabel);
-            command.SetArg(PG.FileImportLabels.FilePathLabel, filePath);
-            command.Execute(world.Adapter);
-            var isOk = command.GetResult<bool>(PG.FileImportLabels.IsOkLabel);
-            return isOk;
-            */
 
         private void OnExport()
         {
+            /*
             var dialog = new SaveFileDialog
             {
                 Title = "Export",
@@ -167,22 +161,6 @@ namespace FluidStudio
                     MessageBox.Show("Export Failed");
                 }
             }
-        }
-
-        private bool Export(string filePath)
-        {
-            var ids = world.FindSceneIdsByType(PG.Core.SceneType.ParticleSystem);
-            var isOk = model.VDBModel.Write(filePath, world, ids);
-            return isOk;
-            //var particles = world.Scenes[0]
-//            model.VDBModel.Write(filePath, world);
-
-            /*
-            var command = new PG.CLI.Command("FileExport");
-            command.SetArg("FilePath", filePath);
-            command.Execute(world.Adapter);
-            var isOk = command.GetResult<bool>("IsOk");
-            return false;
             */
         }
     }

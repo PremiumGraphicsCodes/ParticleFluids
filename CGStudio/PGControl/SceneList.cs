@@ -62,7 +62,7 @@ namespace PG.Scene
             var scene = new SceneModel();
             scene.Id.Value = newId;
             scene.Name.Value = name;
-            scene.SceneType = SceneType.ParticleSystem;
+            scene.SceneType = new SceneType(SceneType.ParticleSystem);
             Scenes.Add(scene);
             return newId;
         }
@@ -82,7 +82,7 @@ namespace PG.Scene
             var scene = new SceneModel();
             scene.Id.Value = newId;
             scene.Name.Value = name;
-            scene.SceneType = SceneType.WireFrame;
+            scene.SceneType = new SceneType(SceneType.WireFrame);
             Scenes.Add(scene);
             return newId;
         }
@@ -103,7 +103,7 @@ namespace PG.Scene
             var scene = new SceneModel();
             scene.Id.Value = newId;
             scene.Name.Value = name;
-            scene.SceneType = SceneType.PolygonMesh;
+            scene.SceneType = new SceneType(SceneType.PolygonMesh);
             Scenes.Add(scene);
 
             return newId;
@@ -122,7 +122,7 @@ namespace PG.Scene
             var scene = new SceneModel();
             scene.Id.Value = newId;
             scene.Name.Value = name;
-            scene.SceneType = SceneType.Solid;
+            scene.SceneType = new SceneType(SceneType.Solid);
             Scenes.Add(scene);
 
             return newId;

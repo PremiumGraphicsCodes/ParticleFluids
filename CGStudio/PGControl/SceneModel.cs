@@ -16,7 +16,7 @@ namespace PG.Scene
         public ReactiveProperty<bool> IsSelected { get; }
 
         public SceneType SceneType { get; set; }
-            = SceneType.None;
+            = new SceneType();
 
         public List<SceneModel> Children { get; }
             = new List<SceneModel>();

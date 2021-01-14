@@ -18,7 +18,7 @@ namespace PG.Control.UI
 
         private readonly Canvas3d canvas;
 
-        private readonly SceneType selectType = SceneType.AllScene;
+        private readonly SceneType selectType;
 
         public SceneSelectViewModel(SceneList scenes, Canvas3d canvas)
         {

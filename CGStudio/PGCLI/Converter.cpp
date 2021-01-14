@@ -180,25 +180,25 @@ PG::Core::Math::Box3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Box3d& s
 	return gcnew PG::Core::Math::Box3d( fromCpp(src.getMin()), fromCpp(src.getMax()));// fromCpp(src.))
 }
 
-Crystal::Scene::SceneType PG::CLI::Converter::toCpp(PG::Core::SceneType src)
+Crystal::Scene::SceneType PG::CLI::Converter::toCpp(PG::Core::SceneType::Type src)
 {
 	switch (src)
 	{
-	case PG::Core::SceneType::None:
+	case PG::Core::SceneType::Type::None:
 		return Crystal::Scene::SceneType::None;
-	case PG::Core::SceneType::Root:
+	case PG::Core::SceneType::Type::Root:
 		return Crystal::Scene::SceneType::Root;
-	case PG::Core::SceneType::ParticleSystem:
+	case PG::Core::SceneType::Type::ParticleSystem:
 		return Crystal::Scene::SceneType::ParticleSystemScene;
-	case PG::Core::SceneType::WireFrame:
+	case PG::Core::SceneType::Type::WireFrame:
 		return Crystal::Scene::SceneType::WireFrameScene;
-	case PG::Core::SceneType::PolygonMesh:
+	case PG::Core::SceneType::Type::PolygonMesh:
 		return Crystal::Scene::SceneType::PolygonMeshScene;
-	case PG::Core::SceneType::FaceGroup:
+	case PG::Core::SceneType::Type::FaceGroup:
 		return Crystal::Scene::SceneType::FaceGroupScene;
-	case PG::Core::SceneType::PointLight:
+	case PG::Core::SceneType::Type::PointLight:
 		return Crystal::Scene::SceneType::LightScene;
-	case PG::Core::SceneType::Material :
+	case PG::Core::SceneType::Type::Material :
 		return Crystal::Scene::SceneType::MaterialScene;
 	default:
 		return Crystal::Scene::SceneType::None;
@@ -206,28 +206,28 @@ Crystal::Scene::SceneType PG::CLI::Converter::toCpp(PG::Core::SceneType src)
 	}
 }
 
-PG::Core::SceneType PG::CLI::Converter::fromCpp(Crystal::Scene::SceneType src)
+PG::Core::SceneType::Type PG::CLI::Converter::fromCpp(Crystal::Scene::SceneType src)
 {
 	switch (src)
 	{
 	case Crystal::Scene::SceneType::None:
-		return PG::Core::SceneType::None;
+		return PG::Core::SceneType::Type::None;
 	case Crystal::Scene::SceneType::Root:
-		return PG::Core::SceneType::Root;
+		return PG::Core::SceneType::Type::Root;
 	case Crystal::Scene::SceneType::ParticleSystemScene:
-		return PG::Core::SceneType::ParticleSystem;
+		return PG::Core::SceneType::Type::ParticleSystem;
 	case Crystal::Scene::SceneType::WireFrameScene:
-		return PG::Core::SceneType::WireFrame;
+		return PG::Core::SceneType::Type::WireFrame;
 	case Crystal::Scene::SceneType::PolygonMeshScene:
-		return PG::Core::SceneType::PolygonMesh;
+		return PG::Core::SceneType::Type::PolygonMesh;
 	case Crystal::Scene::SceneType::FaceGroupScene:
-		return PG::Core::SceneType::FaceGroup;
+		return PG::Core::SceneType::Type::FaceGroup;
 	case Crystal::Scene::SceneType::LightScene:
-		return PG::Core::SceneType::PointLight;
+		return PG::Core::SceneType::Type::PointLight;
 	case Crystal::Scene::SceneType::MaterialScene:
-		return PG::Core::SceneType::Material;
+		return PG::Core::SceneType::Type::Material;
 	default:
-		return PG::Core::SceneType::None;
+		return PG::Core::SceneType::Type::None;
 		break;
 	}
 }
