@@ -14,11 +14,7 @@ namespace FluidStudio.Physics.Fluid
 
         public string VDBExportDirectory { get; set; }
 
-        public bool DoMakeMesh { get; set; }
-
-        public bool DoExportOBJ { get; set; }
-
-        public string OBJExportDirectory { get; set; }
+        public bool DoConvertToVolume { get; set; }
 
         public double Radius { get; set; } = 5.0;
 
@@ -32,7 +28,7 @@ namespace FluidStudio.Physics.Fluid
                 vdb.Write(filePath, world, ids);
             }
             /*
-            if(DoExportOBJ)
+            if(DoConvertToVolume)
             {
                 var filePath = OBJExportDirectory + "/" + fluid.Name + "_" + timeStep.ToString() + ".obj";
                 vdb.WriteOBJ(world, fluid.PolygonMeshId, filePath);

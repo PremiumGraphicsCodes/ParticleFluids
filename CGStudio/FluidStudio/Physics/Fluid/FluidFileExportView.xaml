@@ -7,17 +7,12 @@
              mc:Ignorable="d">
     <StackPanel>
         <CheckBox Content="VDBExport" IsChecked="{Binding DoExportVDB.Value}"/>
+        <CheckBox Content="ConvertVolume" IsChecked="{Binding DoConvertToVolume.Value}"/>
+        <TextBox Text="{Binding Radius.Value}"/>
         <TextBlock Text = "Directory" />
         <StackPanel Orientation="Horizontal">
             <Button Content="Select" Command="{Binding VDBExportDirectorySelectCommand}"/>
             <TextBox Text = "{Binding VDBExportDirectoryPath.Value}" MinWidth="100"/>
-        </StackPanel>
-        <CheckBox Content="MakeMesh" IsChecked="{Binding DoMakeMesh.Value}"/>
-        <TextBox Text="{Binding Radius.Value}"/>
-        <CheckBox Content="OBJExport" IsChecked="{Binding DoExportOBJ.Value}"/>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Select" Command="{Binding OBJExportDirectorySelectCommand}"/>
-            <TextBox Text = "{Binding OBJExportDirectoryPath.Value}" MinWidth="100"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

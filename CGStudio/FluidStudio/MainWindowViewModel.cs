@@ -185,6 +185,8 @@ namespace FluidStudio
         private void OnCreateVDBVolume()
         {
             this.volumeId = mainModel.VDBModel.CreateVDBVolume(mainModel.Scenes, "VDBVolume");
+            Canvas.BuildShader(mainModel.Scenes, volumeId);
+            Canvas.Render();
         }
     }
 }

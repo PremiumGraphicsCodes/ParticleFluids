@@ -53,7 +53,7 @@ namespace FluidStudio.Physics
             ExportModel.ExportFiles(world, this, vdb, timeStep);
         }
 
-        public void ConvertToMesh(SceneList world, VDBModel vdb, double radius)
+        public void ConvertPSToVolume(SceneList world, VDBModel vdb, double radius)
         {
             vdb.ConvertPSToVolume(this.Id, this.VolumeId, world, radius);
         }

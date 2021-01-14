@@ -1,9 +1,5 @@
 ﻿using Reactive.Bindings;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FluidStudio.Physics.Fluid
 {
@@ -12,22 +8,13 @@ namespace FluidStudio.Physics.Fluid
         public ReactiveCommand VDBExportDirectorySelectCommand { get; }
             = new ReactiveCommand();
 
-        public ReactiveCommand OBJExportDirectorySelectCommand { get; }
-            = new ReactiveCommand();
-
         public ReactiveProperty<string> VDBExportDirectoryPath { get; }
-            = new ReactiveProperty<string>("");
-
-        public ReactiveProperty<string> OBJExportDirectoryPath { get; }
             = new ReactiveProperty<string>("");
 
         public ReactiveProperty<bool> DoExportVDB { get; }
             = new ReactiveProperty<bool>(false);
 
-        public ReactiveProperty<bool> DoMakeMesh { get; }
-            = new ReactiveProperty<bool>(false);
-
-        public ReactiveProperty<bool> DoExportOBJ { get; }
+        public ReactiveProperty<bool> DoConvertToVolume { get; }
             = new ReactiveProperty<bool>(false);
 
         public ReactiveProperty<double> Radius { get; }
@@ -42,20 +29,16 @@ namespace FluidStudio.Physics.Fluid
                 this.model = value;
                 this.DoExportVDB.Value = value.DoExportVDB;
                 this.VDBExportDirectoryPath.Value = value.VDBExportDirectory;
-                this.DoExportOBJ.Value = value.DoExportOBJ;
-                this.OBJExportDirectoryPath.Value = value.OBJExportDirectory;
+                this.DoConvertToVolume.Value = value.DoConvertToVolume;
             }
         }
 
         public FluidFileExportViewModel()
         {
             this.VDBExportDirectorySelectCommand.Subscribe(() => OnSelectVDBExportDirectory());
-            this.OBJExportDirectorySelectCommand.Subscribe(() => OnSelectOBJExportDirectory());
             this.DoExportVDB.Subscribe(OnExportVDBChanged);
             this.VDBExportDirectoryPath.Subscribe(OnExportVDBDirectoryChanged);
-            this.OBJExportDirectoryPath.Subscribe(OnExportOBJDirectoryChanged);
-            this.DoMakeMesh.Subscribe(OnMakeMeshChanged);
-            this.DoExportOBJ.Subscribe(OnExportOBJChanged);
+            this.DoConvertToVolume.Subscribe(OnConvertToVolumeChanged);
             this.Radius.Subscribe(OnRadiusChanged);
         }
 
@@ -67,17 +50,6 @@ namespace FluidStudio.Physics.Fluid
             if (result == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
             {
                 this.VDBExportDirectoryPath.Value = dialog.FileName;
-            }
-        }
-
-        private void OnSelectOBJExportDirectory()
-        {
-            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
-            var result = dialog.ShowDialog();
-            if (result == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
-            {
-                this.OBJExportDirectoryPath.Value = dialog.FileName;
             }
         }
 
@@ -97,27 +69,11 @@ namespace FluidStudio.Physics.Fluid
             }
         }
 
-        private void OnExportOBJDirectoryChanged(string path)
+        private void OnConvertToVolumeChanged(bool b)
         {
             if (model != null)
             {
-                model.OBJExportDirectory = path;
-            }
-        }
-
-        private void OnMakeMeshChanged(bool b)
-        {
-            if (model != null)
-            {
-                model.DoMakeMesh = b;
-            }
-        }
-
-        private void OnExportOBJChanged(bool b)
-        {
-            if (model != null)
-            {
-                model.DoExportOBJ = b;
+                model.DoConvertToVolume = b;
             }
         }
 
