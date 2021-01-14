@@ -272,7 +272,7 @@ namespace PG.Scene
             command.SetArg(PG.DeleteLabels.IdLabel, id);
             command.SetArg(PG.DeleteLabels.IsItemLabel, isItem);
             command.Execute(adapter);
-            Sync();
+            //Sync();
         }
 
         public void Clear(int layer)
@@ -280,7 +280,7 @@ namespace PG.Scene
             var command = new PG.CLI.Command(PG.ClearLabels.CommandNameLabel);
             command.SetArg(PG.ClearLabels.LayerLabel, layer);
             command.Execute(adapter);
-            Sync();
+            //Sync();
         }
 
         public void ShowBoundingBox(int id)
@@ -314,43 +314,6 @@ namespace PG.Scene
             return command.GetResult<Vector3d>(PG.PositionGetLabels.PositionLabel);
         }
         */
-
-        public void Sync()
-        {
-            var ids = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel);
-            this.Scenes.Clear();
-            var root = CreateRoot();
-            foreach (var id in ids)
-            {
-                var s = new SceneModel();
-
-                var command = new PG.CLI.Command(PG.SceneGetLabels.CommandLabel);
-                command.SetArg(PG.SceneGetLabels.IdLabel, id);
-                command.Execute(adapter);
-
-                s.Id.Value = id;
-                s.Name.Value = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
-                s.IsVisible.Value = command.GetResult<bool>(PG.SceneGetLabels.IsVisibleLabel);
-                var childIds = PG.CLI.Command.Get<List<int>>(adapter, PG.GetLabels.SceneListIdsLabel, id);
-                foreach (var childId in childIds)
-                {
-                    var ss = new SceneModel();
-                    ss.Id.Value = childId;
-
-                    var command2 = new PG.CLI.Command(PG.SceneGetLabels.CommandLabel);
-                    command2.SetArg(PG.SceneGetLabels.IdLabel, id);
-                    command2.Execute(adapter);
-
-                    ss.Name.Value = command.GetResult<string>(PG.SceneGetLabels.NameLabel);
-                    ss.IsVisible.Value = command.GetResult<bool>(PG.SceneGetLabels.IsVisibleLabel);
-                    s.Children.Add(ss);
-                }
-                root.Children.Add(s);
-            }
-            Scenes.Add(root);
-
-            //var newScene = this.adapter.GetSceneAdapter().ToScene();
-        }
 
         public List<int> FindSceneIdsByType(SceneType type)
         {

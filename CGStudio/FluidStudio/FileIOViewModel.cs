@@ -113,11 +113,6 @@ namespace FluidStudio
                 foreach (var id in newIds)
                 {
                     canvas.BuildShader(world, id);
-                    /*
-                    var newScene = new SceneModel();
-                    newScene.SceneType = PG.Core.SceneType.
-                    world.Add()
-                    */
                 }
                 canvas.Render();
             }
@@ -126,14 +121,29 @@ namespace FluidStudio
         private List<int> Import(string filePath)
         {
             var ext = System.IO.Path.GetExtension(filePath);
-            if (ext == "vdb")
+            if (ext == ".vdb")
             {
-                return model.VDBModel.Read(filePath, world);
+                var newIds = model.VDBModel.Read(filePath, world);
+                foreach(var newId in newIds)
+                {
+                    var scene = new SceneModel();
+                    scene.Id.Value = newId;
+                    scene.SceneType = new PG.Core.SceneType(VDBModel.VDBPointType);
+                    model.Scenes.Add(scene);
+                }
+                return newIds;
             }
-            else if(ext == "obj")
+            else if(ext == ".obj")
             {
+                var newId = model.VDBModel.ReadOBJ(world, filePath);
+
+                var scene = new SceneModel();
+                scene.Id.Value = newId;
+                scene.SceneType = new PG.Core.SceneType(VDBModel.VDBMeshType);
+                model.Scenes.Add(scene);
+
                 var newIds = new List<int>();
-                newIds.Add(model.VDBModel.ReadOBJ(world, filePath));
+                newIds.Add(newId);
                 return newIds;
             }
             else

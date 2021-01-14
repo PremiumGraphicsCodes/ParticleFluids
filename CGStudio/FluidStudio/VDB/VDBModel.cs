@@ -6,6 +6,10 @@ namespace FluidStudio.VDB
 {
     public class VDBModel
     {
+        public const string VDBPointType = "VDBPoint";
+
+        public const string VDBMeshType = "VDBMesh";
+
         public bool Init(SceneList world)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBInitLabels.CommandNameLabel);
