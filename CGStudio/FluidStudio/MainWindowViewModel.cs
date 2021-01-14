@@ -111,7 +111,7 @@ namespace FluidStudio
             this.Canvas.Render();
         }
 
-        private int meshId;
+        private int volumeId;
 
         private void OnCreateMesh()
         {
@@ -122,7 +122,7 @@ namespace FluidStudio
             this.meshId = world.AddPolygonMeshScene(builder.ToPolygonMesh(), "Mesh", 1);
             */
             var world = mainModel.Scenes;
-            this.meshId = mainModel.VDBModel.CreateVDBMesh(world, "VDBMesh");
+            var meshId = mainModel.VDBModel.CreateVDBMesh(world, "VDBMesh");
             this.Canvas.Camera.Fit();
             this.Canvas.BuildShader(world, meshId);
             this.Canvas.Render();
@@ -149,7 +149,7 @@ namespace FluidStudio
             var fluids = new List<FluidScene>();
             var fluidScene = new FluidScene();
             fluidScene.Create(mainModel.Scenes, particleSystemId, 1.0f, 1.0f, "Fluid01", false);
-            fluidScene.PolygonMeshId = this.meshId;
+            fluidScene.VolumeId = this.volumeId;
             fluids.Add( fluidScene );
             var boundaries = new List<CSGBoundaryScene>();
             boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
@@ -166,7 +166,7 @@ namespace FluidStudio
             var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
             var fluidScene = new FluidScene();
             fluidScene.Create(mainModel.Scenes, particleSystemId, 1.0f, 1.0f, "Fluid01", false);
-            fluidScene.PolygonMeshId = this.meshId;
+            fluidScene.VolumeId = this.volumeId;
             solver.Fluids.Add(fluidScene);
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
             Canvas.Render();
@@ -184,7 +184,7 @@ namespace FluidStudio
 
         private void OnCreateVDBVolume()
         {
-            mainModel.VDBModel.CreateVDBVolume(mainModel.Scenes, "VDBVolume");
+            this.volumeId = mainModel.VDBModel.CreateVDBVolume(mainModel.Scenes, "VDBVolume");
         }
     }
 }

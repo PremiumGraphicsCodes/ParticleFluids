@@ -31,11 +31,13 @@ namespace FluidStudio.Physics.Fluid
                 ids.Add(fluid.Id);
                 vdb.Write(filePath, world, ids);
             }
+            /*
             if(DoExportOBJ)
             {
                 var filePath = OBJExportDirectory + "/" + fluid.Name + "_" + timeStep.ToString() + ".obj";
                 vdb.WriteOBJ(world, fluid.PolygonMeshId, filePath);
             }
+            */
         }
     }
 }

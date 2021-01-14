@@ -13,7 +13,7 @@ namespace FluidStudio.Physics
 
         public int SourceParticleSystemId { get; private set; }
 
-        public int PolygonMeshId { get; set; }
+        public int VolumeId { get; set; }
 
         public string Name { get; private set; }
 
@@ -55,7 +55,7 @@ namespace FluidStudio.Physics
 
         public void ConvertToMesh(SceneList world, VDBModel vdb, double radius)
         {
-            vdb.BuildMesh(this.Id, this.PolygonMeshId, world, radius);
+            vdb.ConvertPSToVolume(this.Id, this.VolumeId, world, radius);
         }
 
         public void Reset(SceneList world)

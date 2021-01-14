@@ -10,6 +10,7 @@ namespace PG {
 	{
 		public const string CommandNameLabel = "OpenVDBFileWrite";
 		public const string ParticleSystemIdsLabel = "ParticleSystemIds";
+		public const string VDBVolumeIdsLabel = "VDBVolumeIds";
 		public const string FilePathLabel = "FilePath";
 	}
 
@@ -26,6 +27,13 @@ namespace PG {
 		public const string RadiusLabel = "Radius";
 	}
 
+	public class VDBMeshToVolumeLabels
+	{
+		public const string CommandNameLabel = "VDBMeshToVolume";
+		public const string VDBMeshIdLabel = "VDBMeshId";
+		public const string VDBVolumeIdLabel = "VDBVolumeId";
+	}
+
 	public class VDBOBJFileReadLabels
 	{
 		public const string CommandNameLabel = "VDBOBJFileRead";
@@ -40,11 +48,11 @@ namespace PG {
 		public const string FilePathLabel = "FilePath";
 	}
 
-	public class VDBParticleSystemToMeshLabels
+	public class VDBPSToVolumeLabels
 	{
 		public const string CommandNameLabel = "VDBParticleSystemToMesh";
 		public const string ParticleSystemIdLabel = "ParticleSystemId";
-		public const string VDBMeshIdLabel = "VDBMeshId";
+		public const string VolumeIdLabel = "VolumeId";
 		public const string RadiusLabel = "Radius";
 	}
 
@@ -57,6 +65,13 @@ namespace PG {
 		public const string SceneType_VDBVolumeLabel = "VDBVolume";
 		public const string NameLabel = "Name";
 		public const string NewIdLabel = "NewId";
+	}
+
+	public class VDBVolumeToMeshLabels
+	{
+		public const string CommandNameLabel = "VDBVolumeToMesh";
+		public const string VolumeIdLabel = "VolumeId";
+		public const string VDBMeshIdLabel = "VDBMeshId";
 	}
 
 }
