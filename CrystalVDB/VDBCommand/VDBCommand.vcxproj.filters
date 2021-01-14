@@ -5,12 +5,12 @@
     <ClCompile Include="VDBFileReadCommand.cpp" />
     <ClCompile Include="VDBFileWriteCommand.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
-    <ClCompile Include="VDBParticleSystemToMeshCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
     <ClCompile Include="VDBMeshToParticleSystemCommand.cpp" />
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
     <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
+    <ClCompile Include="VDBPSToVolumeCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -26,10 +26,6 @@
     <ClInclude Include="PublicLabels\VDBFileWriteLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
-    <ClInclude Include="VDBParticleSystemToMeshLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
-    <ClInclude Include="VDBParticleSystemToMeshCommand.h" />
     <ClInclude Include="VDBOBJFileWriteCommand.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileWriteLabels.h">
       <Filter>PublicLabels</Filter>
@@ -48,6 +44,10 @@
     </ClInclude>
     <ClInclude Include="VDBMeshToVolumeCommand.h" />
     <ClInclude Include="PublicLabels\VDBMeshToVolumeLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBPSToVolumeCommand.h" />
+    <ClInclude Include="PublicLabels\VDBPSToVolumeLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>

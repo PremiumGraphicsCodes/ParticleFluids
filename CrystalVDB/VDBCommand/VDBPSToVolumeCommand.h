@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace VDB {
 
-class VDBParticleSystemToMeshCommand : public Command::ICommand
+class VDBPSToVolumeCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
@@ -13,7 +13,7 @@ public:
 		Args();
 
 		Command::Arg<int> particleSystemId;
-		Command::Arg<int> vdbMeshId;
+		Command::Arg<int> vdbVolumeId;
 		Command::Arg<double> radius;
 	};
 
@@ -22,7 +22,7 @@ public:
 		Results();
 	};
 
-	VDBParticleSystemToMeshCommand();
+	VDBPSToVolumeCommand();
 
 	static std::string getName();
 

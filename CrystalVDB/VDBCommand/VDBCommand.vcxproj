@@ -183,6 +183,7 @@
     <ClInclude Include="PublicLabels\VDBMeshToVolumeLabels.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileReadLabels.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileWriteLabels.h" />
+    <ClInclude Include="PublicLabels\VDBPSToVolumeLabels.h" />
     <ClInclude Include="PublicLabels\VDBSceneCreateLabels.h" />
     <ClInclude Include="VDBCommandFactory.h" />
     <ClInclude Include="VDBFileReadCommand.h" />
@@ -196,8 +197,7 @@
     <ClInclude Include="VDBOBJFileReadCommand.h" />
     <ClInclude Include="VDBOBJFileWriteCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
-    <ClInclude Include="VDBParticleSystemToMeshCommand.h" />
-    <ClInclude Include="VDBParticleSystemToMeshLabels.h" />
+    <ClInclude Include="VDBPSToVolumeCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VDBCommandFactory.cpp" />
@@ -209,7 +209,7 @@
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
-    <ClCompile Include="VDBParticleSystemToMeshCommand.cpp" />
+    <ClCompile Include="VDBPSToVolumeCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

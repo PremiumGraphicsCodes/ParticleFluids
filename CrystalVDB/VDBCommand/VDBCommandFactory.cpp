@@ -6,7 +6,7 @@
 #include "VDBOBJFileReadCommand.h"
 #include "VDBOBJFileWriteCommand.h"
 #include "VDBSceneCreateCommand.h"
-#include "VDBParticleSystemToMeshCommand.h"
+#include "VDBPSToVolumeCommand.h"
 #include "VDBMeshToParticleSystemCommand.h"
 #include "VDBMeshToVolumeCommand.h"
 
@@ -33,8 +33,8 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	else if (name == VDBSceneCreateCommand::getName()) {
 		return std::make_unique<VDBSceneCreateCommand>();
 	}
-	else if (name == VDBParticleSystemToMeshCommand::getName()) {
-		return std::make_unique<VDBParticleSystemToMeshCommand>();
+	else if (name == VDBPSToVolumeCommand::getName()) {
+		return std::make_unique<VDBPSToVolumeCommand>();
 	}
 	else if (name == VDBMeshToParticleSystemCommand::getName()) {
 		return std::make_unique<VDBMeshToParticleSystemCommand>();

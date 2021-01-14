@@ -4,5 +4,5 @@ namespace
 {
 	PublicLabel CommandNameLabel = "VDBParticleSystemToMesh";
 	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
-	PublicLabel MeshIdLabel = "MeshId";
+	PublicLabel VolumeIdLabel = "VolumeId";
 }
