@@ -45,7 +45,7 @@ bool VDBSceneCreateCommand::execute(World* world)
 		results.newId.setValue(mesh->getId());
 	}
 	else if (typeName == ::SceneType_VDBVolumeLabel) {
-		auto mesh = new VDBPolygonMeshScene(world->getNextSceneId(), name);
+		auto mesh = new VDBVolumeScene(world->getNextSceneId(), name);
 		world->addScene(1, mesh);
 		results.newId.setValue(mesh->getId());
 	}

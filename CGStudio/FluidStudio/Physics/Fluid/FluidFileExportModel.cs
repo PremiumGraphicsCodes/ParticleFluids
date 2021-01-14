@@ -23,9 +23,19 @@ namespace FluidStudio.Physics.Fluid
             if(DoExportVDB)
             {
                 var filePath = VDBExportDirectory + "/" + fluid.Name + "_" + timeStep.ToString() + ".vdb";
-                var ids = new List<int>();
-                ids.Add(fluid.Id);
-                vdb.Write(filePath, world, ids);
+
+                var psIds = new List<int>();
+                var volumeIds = new List<int>();
+                if (DoConvertToVolume)
+                {
+                    volumeIds.Add(fluid.VolumeId);
+                }
+                else
+                {
+                    psIds.Add(fluid.Id);
+                }
+                vdb.Write(filePath, world, psIds, volumeIds);
+
             }
             /*
             if(DoConvertToVolume)

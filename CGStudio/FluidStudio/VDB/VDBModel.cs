@@ -30,11 +30,12 @@ namespace FluidStudio.VDB
             return newIds;
         }
 
-        public bool Write(string filePath, SceneList world, List<int> particleSystemIds)
+        public bool Write(string filePath, SceneList world, List<int> particleSystemIds, List<int> volumeIds)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBFileWriteLabels.CommandNameLabel);
             command.SetArg(PG.VDBFileWriteLabels.FilePathLabel, filePath);
             command.SetArg(PG.VDBFileWriteLabels.ParticleSystemIdsLabel, particleSystemIds);
+            command.SetArg(PG.VDBFileWriteLabels.VDBVolumeIdsLabel, volumeIds);
             return command.Execute(world.Adapter);
         }
 
