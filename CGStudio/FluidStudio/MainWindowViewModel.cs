@@ -76,6 +76,7 @@ namespace FluidStudio
             mainModel.Scenes.CreateDefaultCameraScene();
             OnCreateSolid();
             OnCreateParticles();
+            OnCreateVDBVolume();
             OnCreateMesh();
             OnCreatePhysicsScene();
         }
@@ -179,6 +180,11 @@ namespace FluidStudio
             solver.CSGBoundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
             mainModel.PhysicsModel.Solvers.Remove(solver);
             mainModel.PhysicsModel.Solvers.Add(solver);
+        }
+
+        private void OnCreateVDBVolume()
+        {
+            mainModel.VDBModel.CreateVDBVolume(mainModel.Scenes, "VDBVolume");
         }
     }
 }

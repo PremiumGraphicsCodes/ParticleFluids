@@ -10,6 +10,8 @@ namespace FluidStudio.VDB
 
         public const string VDBMeshType = "VDBMesh";
 
+        public const string VDBVolumeType = "VDBVolume";
+
         public bool Init(SceneList world)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBInitLabels.CommandNameLabel);
@@ -46,6 +48,20 @@ namespace FluidStudio.VDB
             scene.Id.Value = newId;
             scene.Name.Value = name;
             scene.SceneType = new PG.Core.SceneType(VDBMeshType);
+            world.Add(scene);
+            return newId;
+        }
+
+        public int CreateVDBVolume(SceneList world, string name)
+        {
+            var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
+            command.SetArg(PG.VDBSceneCreateLabels.SceneTypeLabel, PG.VDBSceneCreateLabels.SceneType_VDBVolumeLabel);
+            command.Execute(world.Adapter);
+            var newId = command.GetResult<int>(PG.VDBSceneCreateLabels.NewIdLabel);
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            scene.SceneType = new PG.Core.SceneType(VDBVolumeType);
             world.Add(scene);
             return newId;
         }
