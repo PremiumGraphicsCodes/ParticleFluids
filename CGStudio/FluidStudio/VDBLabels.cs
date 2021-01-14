@@ -49,19 +49,22 @@ namespace PG {
 		public const string FilePathLabel = "FilePath";
 	}
 
-	public class VDBParticleSystemCreateLabels
-	{
-		public const string CommandNameLabel = "VDBParticleSystemCreate";
-		public const string PositionsLabel = "Positions";
-		public const string NewVDBPSIdLabel = "NewVDBPSId";
-	}
-
 	public class VDBParticleSystemToMeshLabels
 	{
 		public const string CommandNameLabel = "VDBParticleSystemToMesh";
 		public const string ParticleSystemIdLabel = "ParticleSystemId";
 		public const string VDBMeshIdLabel = "VDBMeshId";
 		public const string RadiusLabel = "Radius";
+	}
+
+	public class VDBSceneCreateLabels
+	{
+		public const string CommandNameLabel = "VDBSceneCreate";
+		public const string SceneTypeLabel = "SceneType";
+		public const string SceneType_VDBPointsLabel = "VDBPoints";
+		public const string SceneType_VDBMeshLabel = "VDBMesh";
+		public const string SceneType_VDBVolumeLabel = "VDBVolu,e";
+		public const string NewIdLabel = "NewId";
 	}
 
 }

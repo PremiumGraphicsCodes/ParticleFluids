@@ -183,7 +183,7 @@
     <ClInclude Include="PublicLabels\VDBMeshToParticleSystemLabels.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileReadLabels.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileWriteLabels.h" />
-    <ClInclude Include="PublicLabels\VDBParticleSystemCreateLabels.h" />
+    <ClInclude Include="PublicLabels\VDBSceneCreateLabels.h" />
     <ClInclude Include="VDBCommandFactory.h" />
     <ClInclude Include="VDBFileReadCommand.h" />
     <ClInclude Include="VDBFileWriteCommand.h" />
@@ -195,7 +195,7 @@
     <ClInclude Include="VDBMeshToParticleSystemCommand.h" />
     <ClInclude Include="VDBOBJFileReadCommand.h" />
     <ClInclude Include="VDBOBJFileWriteCommand.h" />
-    <ClInclude Include="VDBParticleSystemCreateCommand.h" />
+    <ClInclude Include="VDBSceneCreateCommand.h" />
     <ClInclude Include="VDBParticleSystemToMeshCommand.h" />
     <ClInclude Include="VDBParticleSystemToMeshLabels.h" />
   </ItemGroup>
@@ -208,7 +208,7 @@
     <ClCompile Include="VDBMeshToParticleSystemCommand.cpp" />
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
-    <ClCompile Include="VDBParticleSystemCreateCommand.cpp" />
+    <ClCompile Include="VDBSceneCreateCommand.cpp" />
     <ClCompile Include="VDBParticleSystemToMeshCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -6,18 +6,18 @@
 namespace Crystal {
 	namespace Command {
 
-class VDBParticleSystemCreateCommand : public ICommand
+class VDBSceneCreateCommand : public ICommand
 {
 public:
-	VDBParticleSystemCreateCommand() :
+	VDBSceneCreateCommand() :
 		ICommand(&args, &results)
 	{}
 
 	struct Args : IArgs
 	{
+		Arg<std::string> sceneType;
+		
 		Args();
-
-		Arg< std::vector<Math::Vector3dd> > positions;
 	};
 
 	struct Results : IResults
