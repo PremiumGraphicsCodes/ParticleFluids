@@ -25,11 +25,12 @@ namespace FluidStudio.Physics
                 solver.Simulate(world, vdb, TimeStep.Value);
                 foreach (var fluid in solver.Fluids)
                 {
+                    canvas.SendShader(world, fluid.Id);
                     if (fluid.ExportModel.DoConvertToVolume)
                     {
                         fluid.ConvertPSToVolume(world, vdb, fluid.ExportModel.Radius);
+                        canvas.SendShader(world, fluid.VolumeId);
                     }
-                    canvas.SendShader(world, fluid.VolumeId);
                 }
                 foreach (var fluid in solver.Fluids)
                 {

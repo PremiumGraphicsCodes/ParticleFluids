@@ -44,8 +44,8 @@ bool VDBPSToVolumeCommand::execute(World* world)
 	if (scene == nullptr) {
 		return false;
 	}
-	auto meshScene = world->getScenes()->findSceneById<VDBPolygonMeshScene*>(args.vdbVolumeId.getValue());
-	if (meshScene == nullptr) {
+	auto volume = world->getScenes()->findSceneById<VDBVolumeScene*>(args.vdbVolumeId.getValue());
+	if (volume == nullptr) {
 		return false;
 	}
 
@@ -54,9 +54,8 @@ bool VDBPSToVolumeCommand::execute(World* world)
 	for (const auto& p : positions) {
 		ps.add(p, 1.0);
 	}
-	VDBVolumeScene volume;
 	VDBParticleSystemConverter psConverter;
-	psConverter.toVolume(ps, args.radius.getValue(), &volume);
+	psConverter.toVolume(ps, args.radius.getValue(), volume);
 	
 	return true;
 }
