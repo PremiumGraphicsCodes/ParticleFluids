@@ -2,6 +2,7 @@
 
 #include "../../CrystalVDB/CrystalVDB/VDBParticleSystemScene.h"
 #include "../../CrystalVDB/CrystalVDB/VDBPolygonMeshScene.h"
+#include "../../CrystalVDB/CrystalVDB/VDBVolumeScene.h"
 
 #include "PublicLabels/VDBSceneCreateLabels.h"
 
@@ -11,9 +12,11 @@ using namespace Crystal::Command;
 using namespace Crystal::VDB;
 
 VDBSceneCreateCommand::Args::Args() :
-	sceneType(::SceneTypeLabel, ::SceneType_VDBPointsLabel)
+	sceneType(::SceneTypeLabel, ::SceneType_VDBPointsLabel),
+	name(::NameLabel, "")
 {
 	add(&sceneType);
+	add(&name);
 }
 
 VDBSceneCreateCommand::Results::Results() :
@@ -30,13 +33,19 @@ std::string VDBSceneCreateCommand::getName()
 bool VDBSceneCreateCommand::execute(World* world)
 {
 	const auto typeName = args.sceneType.getValue();
+	const auto name = args.name.getValue();
 	if (typeName == ::SceneType_VDBPointsLabel) {
-		auto mesh = new VDBParticleSystemScene(world->getNextSceneId(), "VDBPS");
+		auto mesh = new VDBParticleSystemScene(world->getNextSceneId(), name);
 		world->addScene(1, mesh);
 		results.newId.setValue(mesh->getId());
 	}
 	else if (typeName == ::SceneType_VDBMeshLabel) {
-		auto mesh = new VDBPolygonMeshScene(world->getNextSceneId(), "VDBMesh");
+		auto mesh = new VDBPolygonMeshScene(world->getNextSceneId(), name);
+		world->addScene(1, mesh);
+		results.newId.setValue(mesh->getId());
+	}
+	else if (typeName == ::SceneType_VDBVolumeLabel) {
+		auto mesh = new VDBPolygonMeshScene(world->getNextSceneId(), name);
 		world->addScene(1, mesh);
 		results.newId.setValue(mesh->getId());
 	}

@@ -54,7 +54,8 @@ namespace PG {
 		public const string SceneTypeLabel = "SceneType";
 		public const string SceneType_VDBPointsLabel = "VDBPoints";
 		public const string SceneType_VDBMeshLabel = "VDBMesh";
-		public const string SceneType_VDBVolumeLabel = "VDBVolu,e";
+		public const string SceneType_VDBVolumeLabel = "VDBVolume";
+		public const string NameLabel = "Name";
 		public const string NewIdLabel = "NewId";
 	}
 

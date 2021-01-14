@@ -121,7 +121,7 @@ namespace FluidStudio
             this.meshId = world.AddPolygonMeshScene(builder.ToPolygonMesh(), "Mesh", 1);
             */
             var world = mainModel.Scenes;
-            this.meshId = mainModel.VDBModel.CreateVDBMesh(world);
+            this.meshId = mainModel.VDBModel.CreateVDBMesh(world, "VDBMesh");
             this.Canvas.Camera.Fit();
             this.Canvas.BuildShader(world, meshId);
             this.Canvas.Render();

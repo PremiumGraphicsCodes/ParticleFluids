@@ -6,6 +6,7 @@ namespace
 	PublicLabel SceneTypeLabel = "SceneType";
 	PublicLabel SceneType_VDBPointsLabel = "VDBPoints";
 	PublicLabel SceneType_VDBMeshLabel = "VDBMesh";
-	PublicLabel SceneType_VDBVolumeLabel = "VDBVolu,e";
+	PublicLabel SceneType_VDBVolumeLabel = "VDBVolume";
+	PublicLabel NameLabel = "Name";
 	PublicLabel NewIdLabel = "NewId";
 }

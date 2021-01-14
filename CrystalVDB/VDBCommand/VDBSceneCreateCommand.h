@@ -16,6 +16,7 @@ public:
 	struct Args : IArgs
 	{
 		Arg<std::string> sceneType;
+		Arg<std::string> name;
 		
 		Args();
 	};
