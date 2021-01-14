@@ -180,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PublicLabels\VDBMeshToParticleSystemLabels.h" />
+    <ClInclude Include="PublicLabels\VDBMeshToVolumeLabels.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileReadLabels.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileWriteLabels.h" />
     <ClInclude Include="PublicLabels\VDBSceneCreateLabels.h" />
@@ -191,6 +192,7 @@
     <ClInclude Include="PublicLabels\VDBFileReadLabels.h" />
     <ClInclude Include="PublicLabels\VDBFileWriteLabels.h" />
     <ClInclude Include="VDBMeshToParticleSystemCommand.h" />
+    <ClInclude Include="VDBMeshToVolumeCommand.h" />
     <ClInclude Include="VDBOBJFileReadCommand.h" />
     <ClInclude Include="VDBOBJFileWriteCommand.h" />
     <ClInclude Include="VDBSceneCreateCommand.h" />
@@ -203,6 +205,7 @@
     <ClCompile Include="VDBFileWriteCommand.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
     <ClCompile Include="VDBMeshToParticleSystemCommand.cpp" />
+    <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />

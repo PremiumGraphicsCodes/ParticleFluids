@@ -10,6 +10,7 @@
     <ClCompile Include="VDBMeshToParticleSystemCommand.cpp" />
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
+    <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -43,6 +44,10 @@
     </ClInclude>
     <ClInclude Include="VDBSceneCreateCommand.h" />
     <ClInclude Include="PublicLabels\VDBSceneCreateLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBMeshToVolumeCommand.h" />
+    <ClInclude Include="PublicLabels\VDBMeshToVolumeLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>

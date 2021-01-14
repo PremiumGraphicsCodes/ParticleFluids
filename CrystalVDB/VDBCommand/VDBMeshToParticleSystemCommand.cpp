@@ -1,6 +1,6 @@
 #include "VDBMeshToParticleSystemCommand.h"
 
-#include "PublicLabels/VDBParticleSystemToMeshLabels.h"
+#include "PublicLabels/VDBMeshToParticleSystemLabels.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
