@@ -20,6 +20,7 @@ void VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particle
 {
     // Rasterize into an SDF.
     auto sdf = createLevelSet<FloatGrid>();
+    sdf->setName("density");
     auto p = particles.getImpl();
     tools::particlesToSdf(*p, *sdf, radius);
     std::unique_ptr<VDBVolumeScene> v = std::make_unique<VDBVolumeScene>();
