@@ -1,6 +1,7 @@
 #include "VDBSceneCreateCommand.h"
 
 #include "../../CrystalVDB/CrystalVDB/VDBParticleSystemScene.h"
+#include "../../CrystalVDB/CrystalVDB/VDBPolygonMeshScene.h"
 
 #include "PublicLabels/VDBSceneCreateLabels.h"
 
@@ -12,6 +13,7 @@ using namespace Crystal::VDB;
 VDBSceneCreateCommand::Args::Args() :
 	sceneType(::SceneTypeLabel, ::SceneType_VDBPointsLabel)
 {
+	add(&sceneType);
 }
 
 VDBSceneCreateCommand::Results::Results() :
@@ -30,6 +32,11 @@ bool VDBSceneCreateCommand::execute(World* world)
 	const auto typeName = args.sceneType.getValue();
 	if (typeName == ::SceneType_VDBPointsLabel) {
 		auto mesh = new VDBParticleSystemScene(world->getNextSceneId(), "VDBPS");
+		world->addScene(1, mesh);
+		results.newId.setValue(mesh->getId());
+	}
+	else if (typeName == ::SceneType_VDBMeshLabel) {
+		auto mesh = new VDBPolygonMeshScene(world->getNextSceneId(), "VDBMesh");
 		world->addScene(1, mesh);
 		results.newId.setValue(mesh->getId());
 	}

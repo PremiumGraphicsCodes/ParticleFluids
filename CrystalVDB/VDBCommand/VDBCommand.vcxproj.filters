@@ -6,7 +6,6 @@
     <ClCompile Include="VDBFileWriteCommand.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
     <ClCompile Include="VDBParticleSystemToMeshCommand.cpp" />
-    <ClCompile Include="VDBMeshCreateCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp" />
     <ClCompile Include="VDBMeshToParticleSystemCommand.cpp" />
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
@@ -30,10 +29,6 @@
       <Filter>PublicLabels</Filter>
     </ClInclude>
     <ClInclude Include="VDBParticleSystemToMeshCommand.h" />
-    <ClInclude Include="VDBMeshCreateCommand.h" />
-    <ClInclude Include="PublicLabels\VDBMeshCreateLabels.h">
-      <Filter>PublicLabels</Filter>
-    </ClInclude>
     <ClInclude Include="VDBOBJFileWriteCommand.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileWriteLabels.h">
       <Filter>PublicLabels</Filter>

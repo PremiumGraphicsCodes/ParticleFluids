@@ -38,9 +38,10 @@ namespace FluidStudio.VDB
 
         public int CreateVDBMesh(SceneList world)
         {
-            var command = new PG.CLI.VDBCommand(PG.VDBMeshCreateLabels.CommandNameLabel);
+            var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
+            command.SetArg(PG.VDBSceneCreateLabels.SceneTypeLabel, PG.VDBSceneCreateLabels.SceneType_VDBMeshLabel);
             command.Execute(world.Adapter);
-            var newId = command.GetResult<int>(PG.VDBMeshCreateLabels.NewVDBMeshIdLabel);
+            var newId = command.GetResult<int>(PG.VDBSceneCreateLabels.NewIdLabel);
             var scene = new SceneModel();
             scene.Id.Value = newId;
             scene.Name.Value = "VDBMesh";

@@ -18,15 +18,6 @@ namespace PG {
 		public const string CommandNameLabel = "VDBInit";
 	}
 
-	public class VDBMeshCreateLabels
-	{
-		public const string CommandNameLabel = "VDBMeshCreate";
-		public const string PositionsLabel = "Positions";
-		public const string TriangleIndicesLabel = "TriangleIndices";
-		public const string QuadIndicesIdLabel = "QuadIndices";
-		public const string NewVDBMeshIdLabel = "NewVDBMeshId";
-	}
-
 	public class VDBMeshToParticleSystemLabels
 	{
 		public const string CommandNameLabel = "VDBMeshToParticleSystem";
