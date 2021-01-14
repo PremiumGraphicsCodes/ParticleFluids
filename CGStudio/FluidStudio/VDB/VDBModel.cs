@@ -12,21 +12,16 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
-        public bool Read(string filePath, SceneList world, Canvas3d canvas)
+        public List<int> Read(string filePath, SceneList world)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBFileReadLabels.CommandNameLabel);
             command.SetArg(PG.VDBFileReadLabels.FilePathLabel, filePath);
             if (!command.Execute(world.Adapter))
             {
-                return false;
+                return new List<int>();
             }
             var newIds = command.GetResult<List<int>>(PG.VDBFileReadLabels.NewIdLabel);
-            foreach(var id in newIds)
-            {
-                canvas.BuildShader(world, id);
-            }
-            canvas.Render();
-            return true;
+            return newIds;
         }
 
         public bool Write(string filePath, SceneList world, List<int> particleSystemIds)
@@ -64,6 +59,18 @@ namespace FluidStudio.VDB
             command.SetArg(PG.VDBOBJFileWriteLabels.VDBMeshIdLabel, vdbMeshId);
             command.SetArg(PG.VDBOBJFileWriteLabels.FilePathLabel, filePath);
             return command.Execute(world.Adapter);
+        }
+
+        public int ReadOBJ(SceneList world, string filePath)
+        {
+            var command = new PG.CLI.VDBCommand(PG.VDBFileReadLabels.CommandNameLabel);
+            command.SetArg(PG.VDBFileReadLabels.FilePathLabel, filePath);
+            var isOk = command.Execute(world.Adapter);
+            if (!isOk)
+            {
+                return -1;
+            }
+            return command.GetResult<int>(PG.VDBFileReadLabels.NewIdLabel);
         }
     }
 }

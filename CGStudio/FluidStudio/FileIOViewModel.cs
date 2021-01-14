@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace FluidStudio
@@ -103,28 +104,43 @@ namespace FluidStudio
             var dialog = new OpenFileDialog
             {
                 Title = "Import",
-                Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
+                Filter = "OBJFile(*.obj)|*.obj|OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {
-                if (Import(dialog.FileName))
+                var fileName = dialog.FileName;
+                var newIds = Import(dialog.FileName);
+                foreach (var id in newIds)
                 {
-                    world.Sync();
-                    canvas.Update();
-                    canvas.Render();
-                    MessageBox.Show("Import Suceeded");
+                    canvas.BuildShader(world, id);
+                    /*
+                    var newScene = new SceneModel();
+                    newScene.SceneType = PG.Core.SceneType.
+                    world.Add()
+                    */
                 }
-                else
-                {
-                    MessageBox.Show("Import Failed");
-                }
+                canvas.Render();
             }
         }
 
-        private bool Import(string filePath)
+        private List<int> Import(string filePath)
         {
-
-            return model.VDBModel.Read(filePath, world, canvas);
+            var ext = System.IO.Path.GetExtension(filePath);
+            if (ext == "vdb")
+            {
+                return model.VDBModel.Read(filePath, world);
+            }
+            else if(ext == "obj")
+            {
+                var newIds = new List<int>();
+                newIds.Add(model.VDBModel.ReadOBJ(world, filePath));
+                return newIds;
+            }
+            else
+            {
+                return new List<int>();
+            }
+        }
             /*
             var command = new PG.CLI.Command(PG.FileImportLabels.FileImportCommandLabel);
             command.SetArg(PG.FileImportLabels.FilePathLabel, filePath);
@@ -132,7 +148,6 @@ namespace FluidStudio
             var isOk = command.GetResult<bool>(PG.FileImportLabels.IsOkLabel);
             return isOk;
             */
-        }
 
         private void OnExport()
         {
