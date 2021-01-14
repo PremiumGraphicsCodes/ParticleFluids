@@ -11,6 +11,7 @@
     <ClCompile Include="VDBSceneCreateCommand.cpp" />
     <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
     <ClCompile Include="VDBPSToVolumeCommand.cpp" />
+    <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -48,6 +49,10 @@
     </ClInclude>
     <ClInclude Include="VDBPSToVolumeCommand.h" />
     <ClInclude Include="PublicLabels\VDBPSToVolumeLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="VDBVolumeToMeshCommand.h" />
+    <ClInclude Include="PublicLabels\VDBVolumeToMeshLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>

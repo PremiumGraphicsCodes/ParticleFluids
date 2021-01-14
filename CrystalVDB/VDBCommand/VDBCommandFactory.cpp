@@ -9,6 +9,7 @@
 #include "VDBPSToVolumeCommand.h"
 #include "VDBMeshToParticleSystemCommand.h"
 #include "VDBMeshToVolumeCommand.h"
+#include "VDBVolumeToMeshCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::VDB;
@@ -41,6 +42,9 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	}
 	else if (name == VDBMeshToVolumeCommand::getName()) {
 		return std::make_unique<VDBMeshToVolumeCommand>();
+	}
+	else if (name == VDBVolumeToMeshCommand::getName()) {
+		return std::make_unique<VDBVolumeToMeshCommand>();
 	}
 	else {
 		assert(false);
