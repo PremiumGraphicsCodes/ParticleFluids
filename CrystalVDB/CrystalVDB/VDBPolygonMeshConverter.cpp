@@ -15,7 +15,8 @@ using namespace Crystal::VDB;
 void VDBPolygonMeshConverter::toVolume(const VDBPolygonMeshScene& mesh, VDBVolumeScene* volume)
 {
 	openvdb::math::Transform::Ptr xform = openvdb::math::Transform::createLinearTransform();
-	openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec4I> m(mesh.getImpl()->points, mesh.getImpl()->getQuads());
+	const auto quads = mesh.getImpl()->getQuads();
+	openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec4I> m(mesh.getImpl()->points, quads);
 	auto result = openvdb::tools::meshToVolume<openvdb::FloatGrid>(m, *xform);
 	auto impl = new VDBVolumeImpl(result);
 	delete volume->getImpl();
