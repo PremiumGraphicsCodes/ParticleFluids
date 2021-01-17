@@ -41,6 +41,10 @@
                 <RibbonGroup Header="CSG">
                     <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="CSGBoxGeneration"/>
                 </RibbonGroup>
+                <RibbonGroup Header="Tool">
+                    <RibbonButton Label="MeshToVolume" Command="{Binding NavigateCommand}" CommandParameter="MeshToVolume"/>
+                    <RibbonButton Label="VolumeToPS" Command="{Binding NavigateCommand}" CommandParameter="VolumeToPS"/>
+                </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Physics">
                 <RibbonGroup Header="Primitive">

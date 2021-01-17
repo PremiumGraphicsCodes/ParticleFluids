@@ -1,5 +1,6 @@
 ﻿using FluidStudio.Physics;
 using FluidStudio.Physics.Solver;
+using FluidStudio.Tool.Modeling;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Prism.Ioc;
@@ -36,6 +37,8 @@ namespace FluidStudio
             containerRegistry.RegisterForNavigation<Scene.PolygonMesh.BoxGenerationView>("PMBoxGeneration");
 
             containerRegistry.RegisterForNavigation<Scene.CSG.BoxGenerationView>("CSGBoxGeneration");
+
+            containerRegistry.RegisterForNavigation<MeshToVolumeView>("MeshToVolume");
 
             containerRegistry.RegisterForNavigation<SolverSceneView>("SolverUpdate");
             containerRegistry.RegisterForNavigation<FluidSceneView>("FluidUpdate");

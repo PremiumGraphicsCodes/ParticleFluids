@@ -176,7 +176,10 @@
       <DependentUpon>TimeLineView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TimeLineViewModel.cs" />
-    <Compile Include="Tool\Modeling\PSModelingToolViewModel.cs" />
+    <Compile Include="Tool\Modeling\MeshToVolumeView.xaml.cs">
+      <DependentUpon>MeshToVolumeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\Modeling\MeshToVolumeViewModel.cs" />
     <Compile Include="VDBLabels.cs" />
     <Compile Include="VDB\VDBModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -236,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TimeLineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tool\Modeling\MeshToVolumeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

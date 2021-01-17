@@ -76,6 +76,14 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
+        public bool ConvertMeshToVolume(int meshId, int vdbVolumeId, SceneList world)
+        {
+            var command = new PG.CLI.VDBCommand(PG.VDBMeshToVolumeLabels.CommandNameLabel);
+            command.SetArg(PG.VDBMeshToVolumeLabels.VDBMeshIdLabel, meshId);
+            command.SetArg(PG.VDBMeshToVolumeLabels.VDBVolumeIdLabel, vdbVolumeId);
+            return command.Execute(world.Adapter);
+        }
+
         public bool WriteOBJ(SceneList world, int vdbMeshId, string filePath)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBOBJFileWriteLabels.CommandNameLabel);
