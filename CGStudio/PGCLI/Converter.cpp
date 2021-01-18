@@ -180,56 +180,16 @@ PG::Core::Math::Box3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Box3d& s
 	return gcnew PG::Core::Math::Box3d( fromCpp(src.getMin()), fromCpp(src.getMax()));// fromCpp(src.))
 }
 
-Crystal::Scene::SceneType PG::CLI::Converter::toCpp(PG::Core::SceneType::Type src)
+Crystal::Scene::SceneType PG::CLI::Converter::toCpp(PG::Core::SceneType src)
 {
-	switch (src)
-	{
-	case PG::Core::SceneType::Type::None:
-		return Crystal::Scene::SceneType::None;
-	case PG::Core::SceneType::Type::Root:
-		return Crystal::Scene::SceneType::Root;
-	case PG::Core::SceneType::Type::ParticleSystem:
-		return Crystal::Scene::SceneType::ParticleSystemScene;
-	case PG::Core::SceneType::Type::WireFrame:
-		return Crystal::Scene::SceneType::WireFrameScene;
-	case PG::Core::SceneType::Type::PolygonMesh:
-		return Crystal::Scene::SceneType::PolygonMeshScene;
-	case PG::Core::SceneType::Type::FaceGroup:
-		return Crystal::Scene::SceneType::FaceGroupScene;
-	case PG::Core::SceneType::Type::PointLight:
-		return Crystal::Scene::SceneType::LightScene;
-	case PG::Core::SceneType::Type::Material :
-		return Crystal::Scene::SceneType::MaterialScene;
-	default:
-		return Crystal::Scene::SceneType::None;
-		break;
-	}
+	auto t = Converter::toCpp(src.TypeName);
+	return Crystal::Scene::SceneType(t.c_str());
 }
 
-PG::Core::SceneType::Type PG::CLI::Converter::fromCpp(Crystal::Scene::SceneType src)
+PG::Core::SceneType^ PG::CLI::Converter::fromCpp(Crystal::Scene::SceneType src)
 {
-	switch (src)
-	{
-	case Crystal::Scene::SceneType::None:
-		return PG::Core::SceneType::Type::None;
-	case Crystal::Scene::SceneType::Root:
-		return PG::Core::SceneType::Type::Root;
-	case Crystal::Scene::SceneType::ParticleSystemScene:
-		return PG::Core::SceneType::Type::ParticleSystem;
-	case Crystal::Scene::SceneType::WireFrameScene:
-		return PG::Core::SceneType::Type::WireFrame;
-	case Crystal::Scene::SceneType::PolygonMeshScene:
-		return PG::Core::SceneType::Type::PolygonMesh;
-	case Crystal::Scene::SceneType::FaceGroupScene:
-		return PG::Core::SceneType::Type::FaceGroup;
-	case Crystal::Scene::SceneType::LightScene:
-		return PG::Core::SceneType::Type::PointLight;
-	case Crystal::Scene::SceneType::MaterialScene:
-		return PG::Core::SceneType::Type::Material;
-	default:
-		return PG::Core::SceneType::Type::None;
-		break;
-	}
+	auto t = Converter::fromCpp(src.getName());
+	return gcnew PG::Core::SceneType(t);
 }
 
 Crystal::Math::Space3d PG::CLI::Converter::toCpp(PG::Core::Math::Space3d^ src)

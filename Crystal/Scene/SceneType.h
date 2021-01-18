@@ -46,6 +46,8 @@ namespace Crystal {
 			}
 			*/
 
+			std::string getName() const { return name; }
+
 		private:
 			const std::string name;
 		};
