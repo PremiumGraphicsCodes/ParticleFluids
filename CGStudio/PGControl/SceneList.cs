@@ -5,6 +5,7 @@ using PG.Core.Shape;
 using PG.Core.UI;
 using Reactive.Bindings;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PG.Scene
 {
@@ -42,6 +43,11 @@ namespace PG.Scene
             command.Execute(adapter);
             var newId = command.GetResult<int>(PG.CameraCreateLabels.NewIdLabel);
             return newId;
+        }
+
+        public SceneModel FindSceneById(int id)
+        {
+            return Scenes.FirstOrDefault(x => x.Id.Value == id);
         }
 
         public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance, int layer)

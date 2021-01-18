@@ -13,5 +13,6 @@
             <Button Content="File" Command="{Binding FileSelectCommand}"/>
             <TextBox Text="{Binding FilePath.Value}" MinWidth="100"/>
         </StackPanel>
+        <Button Content="Export" Command="{Binding ExportCommand}"/>
     </StackPanel>
 </UserControl>
