@@ -179,7 +179,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PublicLabels\VDBMeshToParticleSystemLabels.h" />
+    <ClInclude Include="PublicLabels\VDBVolumeToPSLabels.h" />
     <ClInclude Include="PublicLabels\VDBMeshToVolumeLabels.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileReadLabels.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileWriteLabels.h" />

@@ -1,6 +1,6 @@
 #include "VDBVolumeToPSCommand.h"
 
-#include "PublicLabels/VDBMeshToParticleSystemLabels.h"
+#include "PublicLabels/VDBVolumeToPSLabels.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
@@ -17,12 +17,12 @@ using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
 VDBVolumeToPSCommand::Args::Args() :
-	particleSystemId(::ParticleSystemIdLabel, -1),
-	vdbMeshId(::VDBMeshIdLabel, -1),
+	vdbParticleSystemId(::VDBParticleSystemIdLabel, -1),
+	vdbVolumeId(::VDBVolumeIdLabel, -1),
 	radius(::RadiusLabel, 5.0)
 {
-	add(&particleSystemId);
-	add(&vdbMeshId);
+	add(&vdbParticleSystemId);
+	add(&vdbVolumeId);
 	add(&radius);
 }
 
@@ -45,7 +45,7 @@ bool VDBVolumeToPSCommand::execute(World* world)
 	if (volume == nullptr) {
 		return false;
 	}
-	auto particleSystem = world->getScenes()->findSceneById<IParticleSystemScene*>(args.vdbParticleSystemId.getValue());
+	auto particleSystem = world->getScenes()->findSceneById<VDBParticleSystemScene*>(args.vdbParticleSystemId.getValue());
 	if (particleSystem == nullptr) {
 		return false;
 	}

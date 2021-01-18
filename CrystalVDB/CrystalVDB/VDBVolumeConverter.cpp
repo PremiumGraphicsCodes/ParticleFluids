@@ -31,14 +31,13 @@ void VDBVolumeConverter::toMesh(const VDBVolumeScene& volume, VDBPolygonMeshScen
     impl->updateNormals();
 }
 
-void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, IParticleSystemScene* ps) const
+void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParticleSystemScene* ps) const
 {
     auto impl = volume.getImpl();
     auto grid = impl->getPtr();
     auto transform = grid->transform();
     for (auto iter = grid->cbeginValueOn(); iter; ++iter) {
         auto coord = transform.indexToWorld(iter.getCoord());
-        ps->add
-//        ps->getImpl()->add(coord, 1.0);
+        ps->getImpl()->add(coord, 1.0);
     }
 }

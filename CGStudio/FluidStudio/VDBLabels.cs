@@ -19,14 +19,6 @@ namespace PG {
 		public const string CommandNameLabel = "VDBInit";
 	}
 
-	public class VDBMeshToParticleSystemLabels
-	{
-		public const string CommandNameLabel = "VDBMeshToParticleSystem";
-		public const string VDBMeshIdLabel = "VDBMeshId";
-		public const string ParticleSystemIdLabel = "ParticleSystemId";
-		public const string RadiusLabel = "Radius";
-	}
-
 	public class VDBMeshToVolumeLabels
 	{
 		public const string CommandNameLabel = "VDBMeshToVolume";
@@ -72,6 +64,14 @@ namespace PG {
 		public const string CommandNameLabel = "VDBVolumeToMesh";
 		public const string VolumeIdLabel = "VolumeId";
 		public const string VDBMeshIdLabel = "VDBMeshId";
+	}
+
+	public class VDBVolumeToPSLabels
+	{
+		public const string CommandNameLabel = "VDBVolumeToPS";
+		public const string VDBVolumeIdLabel = "VDBVolumeId";
+		public const string VDBParticleSystemIdLabel = "VDBParticleSystemId";
+		public const string RadiusLabel = "Radius";
 	}
 
 }
