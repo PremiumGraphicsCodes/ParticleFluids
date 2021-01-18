@@ -26,7 +26,7 @@ std::string PresenterSetCommand::getName()
 bool PresenterSetCommand::execute(World* world)
 {
 	auto s = world->getScenes()->findSceneById(std::any_cast<int>(args.id.getValue()));
-	if (s->getType() == SceneType::PolygonMeshScene) {
+	if (s->getType() == SceneTypeLabels::PolygonMeshScene) {
 		auto scene = static_cast<PolygonMeshScene*>(s);
 		const auto name = args.presenterName.getValue();
 		scene->getPresenter()->removeView(world->getRenderer(), *world->getGLFactory());

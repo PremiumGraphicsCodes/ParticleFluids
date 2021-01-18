@@ -14,7 +14,7 @@ public:
 
 	~TextureScene() {};
 
-	SceneType getType() const override { return SceneType::TextureScene; }
+	SceneType getType() const override { return SceneTypeLabels::TextureScene; }
 
 	void setImage(std::unique_ptr<Graphics::Image> image) { this->image = std::move(image); }
 

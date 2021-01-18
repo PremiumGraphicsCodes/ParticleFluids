@@ -15,7 +15,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 ObjectSelectView::ObjectSelectView(const std::string& name, World* model, Canvas* canvas) :
-	ObjectSelectView(name, model, canvas, Scene::SceneType::All)
+	ObjectSelectView(name, model, canvas, Scene::SceneTypeLabels::ParticleSystemScene)
 {
 }
 

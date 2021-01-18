@@ -29,7 +29,7 @@ public:
 
 	Math::Vector3dd getTranslate() const { return translate; }
 
-	SceneType getType() const override { return SceneType::TransformScene; }
+	SceneType getType() const override { return SceneTypeLabels::TransformScene; }
 
 private:
 	Math::Vector3dd translate;

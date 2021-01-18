@@ -1,33 +1,61 @@
 #pragma once
 
+#include <string>
+
 namespace Crystal {
 	namespace Scene {
 
-enum class SceneType
-{
-	None = 0,
-	Root = 0x01,
-	ParticleSystemScene = 0x02,
-	WireFrameScene = 0x04,
-	TriangleMeshScene = 0x08,
-	PolygonMeshScene = 0x10,
-	CSGScene = 0x20,
-	LightScene = 0x40,
-	MaterialScene = 0x80,
-	TextureScene = 0xf0,
-	ShaderScene = 0xf1,
-	CameraScene = 0xf2,
-	TransformScene = 0xf3,
-	FaceGroupScene = 0xf4,
-	All = 0xFF,
-};
+		namespace  SceneTypeLabels {
+			constexpr auto None = "None";
+			constexpr auto Root = "Root";
+			constexpr auto ParticleSystemScene = "ParticleSystemScene";
+			constexpr auto WireFrameScene = "WireFrameScene";
+			constexpr auto PolygonMeshScene = "PolygonMeshScene";
+			constexpr auto TriangleMeshScene = "TriangleMeshScene";
+			constexpr auto CSGScene = "CSGScene";
+			constexpr auto LightScene = "LightScene";
+			constexpr auto MaterialScene = "MaterialScene";
+			constexpr auto TextureScene = "TextureScene";
+			constexpr auto ShaderScene = "ShaderScene";
+			constexpr auto CameraScene = "CameraScene";
+			constexpr auto TransformScene = "TransformScene";
+		}
+
+		class SceneType
+		{
+		public:
+			SceneType(const char* const name) :
+				name(name)
+			{
+			}
+
+			/*
+			SceneType(const std::string& name) :
+				name(name)
+			{
+			}
+			*/
+
+			bool operator==(const SceneType& rhs) const {
+				return this->name == rhs.name;
+			}
+
+				/*
+			bool operator==(const std::string& rhs) const {
+				return this->name == rhs;
+			}
+			*/
+
+		private:
+			const std::string name;
+		};
 
 static bool isShapeScene(const SceneType& type)
 {
-	if (type == SceneType::ParticleSystemScene
-		|| type == SceneType::WireFrameScene
-		|| type == SceneType::TriangleMeshScene
-		|| type == SceneType::CSGScene) {
+	if (type == SceneTypeLabels::ParticleSystemScene
+		|| type == SceneTypeLabels::WireFrameScene
+//		|| type == SceneType::TriangleMeshScene
+		|| type == SceneTypeLabels::CSGScene) {
 		return true;
 	}
 	return false;

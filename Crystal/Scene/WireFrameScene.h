@@ -27,7 +27,7 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override;
 
-	SceneType getType() const override { return SceneType::WireFrameScene; }
+	SceneType getType() const override { return SceneTypeLabels::WireFrameScene; }
 
 	Math::Box3d getBoundingBox() const override;
 

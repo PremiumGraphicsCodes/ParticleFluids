@@ -42,7 +42,7 @@ bool TrimCommand::execute(World* world)
 	for (auto& s : spheres) {
 		space.add(&s);
 	}
-	if (shape->getType() == SceneType::ParticleSystemScene) {
+	if (shape->getType() == SceneTypeLabels::ParticleSystemScene) {
 		auto pss = static_cast<ParticleSystemScene*>(shape);
 		auto ps = pss->getShape();
 		const auto& particles = ps->getParticles();

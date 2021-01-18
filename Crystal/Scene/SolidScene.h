@@ -21,7 +21,7 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override { shape->transform(m); }
 
-	SceneType getType() const override { return SceneType::CSGScene; }
+	SceneType getType() const override { return SceneTypeLabels::CSGScene; }
 
 	IPresenter* getPresenter() override { return presenter.get(); }
 

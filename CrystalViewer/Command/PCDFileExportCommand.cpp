@@ -30,7 +30,7 @@ std::string PCDFileExportCommand::getName()
 bool PCDFileExportCommand::execute(World* world)
 {
 	const auto& ids = args.ids.getValue();
-	auto scenes = world->getScenes()->findScenes(SceneType::ParticleSystemScene);
+	auto scenes = world->getScenes()->findScenes(SceneTypeLabels::ParticleSystemScene);
 
 	PCDFile file;
 	for (const auto& id : ids) {

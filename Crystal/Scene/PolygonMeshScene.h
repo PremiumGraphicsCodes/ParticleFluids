@@ -44,7 +44,7 @@ public:
 
 	void transform(const Math::Matrix4dd& m) { shape->transform(m); }
 
-	SceneType getType() const override { return SceneType::PolygonMeshScene; }
+	SceneType getType() const override { return SceneTypeLabels::PolygonMeshScene; }
 
 	Math::Box3d getBoundingBox() const override;
 

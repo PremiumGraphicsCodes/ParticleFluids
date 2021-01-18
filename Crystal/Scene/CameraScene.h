@@ -17,7 +17,7 @@ public:
 
 	IPresenter* getPresenter() { return nullptr; }
 
-	SceneType getType() const { return SceneType::CameraScene; }
+	SceneType getType() const { return SceneTypeLabels::CameraScene; }
 
 private:
 	std::unique_ptr< Graphics::Camera > camera;

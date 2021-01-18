@@ -28,7 +28,7 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override { shape->transform(m); }
 
-	SceneType getType() const override { return SceneType::ParticleSystemScene; }
+	SceneType getType() const override { return SceneTypeLabels::ParticleSystemScene; }
 
 	Math::Box3d getBoundingBox() const override;
 

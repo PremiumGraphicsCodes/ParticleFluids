@@ -52,61 +52,47 @@ void SceneListPanel::show(IScene* scene)
 		if (ImGui::Checkbox(str, &isVisible)) {
 			obj->setVisible(isVisible);
 			obj->getPresenter()->updateView();
-			switch (type) {
-				case SceneType::ParticleSystemScene:
-				{
-					auto editView = new ParticleSystemEditView("ParticleSystemEdit", getWorld(), getCanvas());
-					auto s = scene->findSceneById<ParticleSystemScene*>(id);
-					editView->setValue(s);
-					control->clear();
-					control->add(editView);
-					break;
-				}
-				case SceneType::WireFrameScene:
-				{
-					auto editView = new WireFrameEditView("WireFrameEdit", getWorld(), getCanvas());
-					auto s = scene->findSceneById<WireFrameScene*>(id);
-					editView->setValue(s);
-					control->clear();
-					control->add(editView);
-					break;
-				}
-				case SceneType::PolygonMeshScene:
-				{
+			if (type == SceneTypeLabels::ParticleSystemScene) {
+				auto editView = new ParticleSystemEditView("ParticleSystemEdit", getWorld(), getCanvas());
+				auto s = scene->findSceneById<ParticleSystemScene*>(id);
+				editView->setValue(s);
+				control->clear();
+				control->add(editView);
+			}
+			else if(type == SceneTypeLabels::WireFrameScene) {
+				auto editView = new WireFrameEditView("WireFrameEdit", getWorld(), getCanvas());
+				auto s = scene->findSceneById<WireFrameScene*>(id);
+				editView->setValue(s);
+				control->clear();
+				control->add(editView);
+			}
+			else if(type == SceneTypeLabels::PolygonMeshScene) {
 					auto editView = new PolygonMeshEditView("PolygonMeshEdit", getWorld(), getCanvas());
 					auto s = scene->findSceneById<PolygonMeshScene*>(id);
 					editView->setValue(s);
 					control->clear();
 					control->add(editView);
-					break;
 				}
-				case SceneType::LightScene:
-				{
+			else if(type == SceneTypeLabels::LightScene) {
 					auto editView = new LightEditView("LightEdit", getWorld(), getCanvas());
 					auto lightScene = scene->findSceneById<LightScene*>(id);
 					editView->setValue(lightScene);
 					control->clear();
 					control->add(editView);
-					break;
 				}
-				case SceneType::MaterialScene:
-				{
-					auto editView = new MaterialEditView("MaterialEdit", getWorld(), getCanvas());
-					auto materialScene = scene->findSceneById<MaterialScene*>(id);
-					editView->setValue(materialScene);
-					control->clear();
-					control->add(editView);
-					break;
-				}
-				case SceneType::TextureScene:
-				{
+			else if (type == SceneTypeLabels::MaterialScene) {
+				auto editView = new MaterialEditView("MaterialEdit", getWorld(), getCanvas());
+				auto materialScene = scene->findSceneById<MaterialScene*>(id);
+				editView->setValue(materialScene);
+				control->clear();
+				control->add(editView);
+			}
+			else if(type == SceneTypeLabels::TextureScene) {
 					auto editView = new TextureEditView("TextureEdit", getWorld(), getCanvas());
 					auto textureScene = scene->findSceneById<TextureScene*>(id);
 					editView->setValue(textureScene);
 					control->clear();
 					control->add(editView);
-					break;
-				}
 			}
 		}
 	}

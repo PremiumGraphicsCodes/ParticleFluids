@@ -15,7 +15,7 @@ public:
 
 	Math::Box3d getBoundingBox() const;
 
-	virtual SceneType getType() const { return SceneType::Root; }
+	virtual SceneType getType() const { return SceneTypeLabels::Root; }
 
 	IPresenter* getPresenter() override { return nullptr; }
 private:

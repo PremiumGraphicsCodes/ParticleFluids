@@ -60,7 +60,7 @@ bool STLFileExportCommand::execute(World* world)
 	}
 	stl.faces = fs;
 	stl.faceCount = fs.size();
-	const auto scenes = world->getScenes()->findScenes(SceneType::PolygonMeshScene);
+	const auto scenes = world->getScenes()->findScenes(SceneTypeLabels::PolygonMeshScene);
 
 	if (args.isBinary.getValue()) {
 		STLBinaryFileWriter writer;

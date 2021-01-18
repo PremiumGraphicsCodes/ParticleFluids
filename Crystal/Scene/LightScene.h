@@ -17,7 +17,7 @@ public:
 
 	Graphics::PointLight* getLight() const { return light.get(); }
 
-	SceneType getType() const override { return SceneType::LightScene; }
+	SceneType getType() const override { return SceneTypeLabels::LightScene; }
 
 	IPresenter* getPresenter() override { return presenter.get(); }
 

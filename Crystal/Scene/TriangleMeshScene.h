@@ -26,7 +26,7 @@ public:
 
 	std::vector<Math::Vector3dd> getAllVertices() const { return {}; }
 
-	SceneType getType() const override { return SceneType::TriangleMeshScene; }
+	SceneType getType() const override { return SceneTypeLabels::TriangleMeshScene; }
 
 private:
 	std::unique_ptr<Shape::TriangleMesh> shape;

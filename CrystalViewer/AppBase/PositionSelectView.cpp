@@ -19,7 +19,7 @@ PositionSelectView::PositionSelectView(const std::string& name, World* model, Ca
 	add(&button);
 
 	button.setFunction([=](){
-		auto ctrl = new PickUICtrl(world, canvas, SceneType::PolygonMeshScene, 0.01f);
+		auto ctrl = new PickUICtrl(world, canvas, SceneTypeLabels::PolygonMeshScene, 0.01f);
 		//model->getObjects()->getParticleSystems()->findParticleById();
 		auto func = [=](int parentId, int childId) {
 			/*

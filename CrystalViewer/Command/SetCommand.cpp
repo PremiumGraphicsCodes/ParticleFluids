@@ -13,7 +13,7 @@ using namespace Crystal::Command;
 void SetCommand::Set(World* world, int id, const std::string& name, std::any value)
 {
 	auto scene = world->getScenes()->findSceneById(id);
-	if (scene->getType() == SceneType::ParticleSystemScene) {
+	if (scene->getType() == SceneTypeLabels::ParticleSystemScene) {
 		ParticleAttribute attr;
 //		std::string name = scene->getName();
 		if (name == SetLabels::PointSizeLabel) {
@@ -29,7 +29,7 @@ void SetCommand::Set(World* world, int id, const std::string& name, std::any val
 			scene->setName( std::any_cast<std::string>(value) );
 		}
 	}
-	else if (scene->getType() == SceneType::WireFrameScene) {
+	else if (scene->getType() == SceneTypeLabels::WireFrameScene) {
 		if (name == SetLabels::IsVisibleLabel) {
 			scene->_isVisible = std::any_cast<bool>(value);
 		}

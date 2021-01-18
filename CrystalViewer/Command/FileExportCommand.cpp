@@ -41,7 +41,7 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	case FileFormat::OBJ :
 	{
 		std::vector<int> ids;
-		auto scenes = world->getScenes()->findScenes(SceneType::PolygonMeshScene);
+		auto scenes = world->getScenes()->findScenes(SceneTypeLabels::PolygonMeshScene);
 		for (auto s : scenes) {
 			ids.push_back(s->getId());
 		}
@@ -84,7 +84,7 @@ bool FileExportCommand::exportFile(const std::filesystem::path& filePath, const 
 	{
 		auto command = CommandFactory::create(::PCDFileExportLabels::CommandNameLabel);
 		std::vector<int> ids;
-		auto scenes = world->getScenes()->findScenes(SceneType::ParticleSystemScene);
+		auto scenes = world->getScenes()->findScenes(SceneTypeLabels::ParticleSystemScene);
 		for (auto s : scenes) {
 			ids.push_back(s->getId());
 		}

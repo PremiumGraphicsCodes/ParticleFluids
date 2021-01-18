@@ -18,7 +18,7 @@ public:
 
 	Graphics::Material* getMaterial() { return material.get(); }
 
-	SceneType getType() const override { return SceneType::MaterialScene; }
+	SceneType getType() const override { return SceneTypeLabels::MaterialScene; }
 
 	IPresenter* getPresenter() override { return presenter.get(); }
 	
