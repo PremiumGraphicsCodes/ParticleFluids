@@ -1,4 +1,5 @@
-﻿using FluidStudio.Physics;
+﻿using FluidStudio.FileIO;
+using FluidStudio.Physics;
 using FluidStudio.Physics.Solver;
 using FluidStudio.Tool.Modeling;
 using PG.Control.OpenGL;
@@ -44,6 +45,8 @@ namespace FluidStudio
             containerRegistry.RegisterForNavigation<SolverSceneView>("SolverUpdate");
             containerRegistry.RegisterForNavigation<FluidSceneView>("FluidUpdate");
             containerRegistry.RegisterForNavigation<CSGBoundarySceneView>("CSGBoundaryUpdate");
+
+            containerRegistry.RegisterForNavigation<ExportView>("Export");
         }
     }
 }

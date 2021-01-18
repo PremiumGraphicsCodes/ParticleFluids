@@ -45,6 +45,9 @@
                     <RibbonButton Label="MeshToVolume" Command="{Binding NavigateCommand}" CommandParameter="MeshToVolume"/>
                     <RibbonButton Label="VolumeToPS" Command="{Binding NavigateCommand}" CommandParameter="VolumeToPS"/>
                 </RibbonGroup>
+                <RibbonGroup Header="File">
+                    <RibbonButton Label="Export" Command="{Binding NavigateCommand}" CommandParameter="Export"/>
+                </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Physics">
                 <RibbonGroup Header="Primitive">

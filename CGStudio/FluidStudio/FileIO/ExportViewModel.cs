@@ -13,13 +13,13 @@ namespace FluidStudio.FileIO
         public ReactiveProperty<string> FilePath { get; }
             = new ReactiveProperty<string>("");
 
-        public ReactiveCommand SelectCommand { get; }
+        public ReactiveCommand FileSelectCommand { get; }
             = new ReactiveCommand();
 
         public ExportViewModel(SceneList scenes, Canvas3d canvas)
         {
             SceneSelectViewModel = new SceneSelectViewModel(scenes, canvas);
-            SelectCommand.Subscribe(OnSelect);
+            FileSelectCommand.Subscribe(OnSelect);
         }
 
         private void OnSelect()
