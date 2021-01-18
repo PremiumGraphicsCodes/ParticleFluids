@@ -77,6 +77,7 @@ namespace FluidStudio
             OnCreateSolid();
             OnCreateParticles();
             OnCreateVDBVolume();
+            OnCreateVDBPoints();
             OnCreateMesh();
             OnCreatePhysicsScene();
         }
@@ -186,6 +187,13 @@ namespace FluidStudio
         {
             this.volumeId = mainModel.VDBModel.CreateVDBVolume(mainModel.Scenes, "VDBVolume");
             Canvas.BuildShader(mainModel.Scenes, volumeId);
+            Canvas.Render();
+        }
+
+        private void OnCreateVDBPoints()
+        {
+            var id = mainModel.VDBModel.CreateVDBPoints(mainModel.Scenes, "VDBPoints");
+            Canvas.BuildShader(mainModel.Scenes, id);
             Canvas.Render();
         }
     }

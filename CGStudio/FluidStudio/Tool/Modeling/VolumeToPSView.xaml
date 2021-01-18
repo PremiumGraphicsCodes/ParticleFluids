@@ -5,9 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FluidStudio.Tool.Modeling"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:ui="clr-namespace:PG.Control.UI;assembly=PGControl"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <ui:SceneSelectView DataContext="{Binding VolumeSelectViewModel}"/>
+        <ui:SceneSelectView DataContext="{Binding PSSelectViewModel}"/>
+        <Button Content="Generate" Command="{Binding GenerateCommand}"/>
+    </StackPanel>
 </UserControl>

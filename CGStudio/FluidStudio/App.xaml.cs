@@ -39,6 +39,7 @@ namespace FluidStudio
             containerRegistry.RegisterForNavigation<Scene.CSG.BoxGenerationView>("CSGBoxGeneration");
 
             containerRegistry.RegisterForNavigation<MeshToVolumeView>("MeshToVolume");
+            containerRegistry.RegisterForNavigation<VolumeToPSView>("VolumeToPS");
 
             containerRegistry.RegisterForNavigation<SolverSceneView>("SolverUpdate");
             containerRegistry.RegisterForNavigation<FluidSceneView>("FluidUpdate");

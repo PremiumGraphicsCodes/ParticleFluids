@@ -39,6 +39,20 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
+        public int CreateVDBPoints(SceneList world, string name)
+        {
+            var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
+            command.SetArg(PG.VDBSceneCreateLabels.SceneTypeLabel, PG.VDBSceneCreateLabels.SceneType_VDBPointsLabel);
+            command.Execute(world.Adapter);
+            var newId = command.GetResult<int>(PG.VDBSceneCreateLabels.NewIdLabel);
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            scene.SceneType = new PG.Core.SceneType(VDBPointType);
+            world.Add(scene);
+            return newId;
+        }
+
         public int CreateVDBMesh(SceneList world, string name)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
