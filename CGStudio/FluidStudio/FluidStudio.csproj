@@ -180,6 +180,10 @@
       <DependentUpon>MeshToVolumeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tool\Modeling\MeshToVolumeViewModel.cs" />
+    <Compile Include="Tool\Modeling\VolumeToPSView.xaml.cs">
+      <DependentUpon>VolumeToPSView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\Modeling\VolumeToPSViewModel.cs" />
     <Compile Include="VDBLabels.cs" />
     <Compile Include="VDB\VDBModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -243,6 +247,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tool\Modeling\MeshToVolumeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tool\Modeling\VolumeToPSView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
