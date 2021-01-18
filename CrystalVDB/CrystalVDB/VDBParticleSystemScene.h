@@ -3,7 +3,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Util/UnCopyable.h"
 
-#include "../../Crystal/Scene/IShapeScene.h"
+#include "../../Crystal/Scene/IParticleSystemScene.h"
 #include "VDBParticleSystemPresenter.h"
 
 #include <memory>
@@ -12,7 +12,7 @@ namespace Crystal {
     namespace VDB {
         class VDBParticleSystemImpl;
 
-class VDBParticleSystemScene : public Scene::IShapeScene
+class VDBParticleSystemScene : public Scene::IParticleSystemScene
 {
 public:
     VDBParticleSystemScene() :

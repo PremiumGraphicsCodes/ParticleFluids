@@ -193,7 +193,7 @@
     <ClInclude Include="PublicLabels\VDBInitLabels.h" />
     <ClInclude Include="PublicLabels\VDBFileReadLabels.h" />
     <ClInclude Include="PublicLabels\VDBFileWriteLabels.h" />
-    <ClInclude Include="VDBMeshToParticleSystemCommand.h" />
+    <ClInclude Include="VDBVolumeToPSCommand.h" />
     <ClInclude Include="VDBMeshToVolumeCommand.h" />
     <ClInclude Include="VDBOBJFileReadCommand.h" />
     <ClInclude Include="VDBOBJFileWriteCommand.h" />
@@ -206,7 +206,7 @@
     <ClCompile Include="VDBFileReadCommand.cpp" />
     <ClCompile Include="VDBFileWriteCommand.cpp" />
     <ClCompile Include="VDBInitCommand.cpp" />
-    <ClCompile Include="VDBMeshToParticleSystemCommand.cpp" />
+    <ClCompile Include="VDBVolumeToPSCommand.cpp" />
     <ClCompile Include="VDBMeshToVolumeCommand.cpp" />
     <ClCompile Include="VDBOBJFileReadCommand.cpp" />
     <ClCompile Include="VDBOBJFileWriteCommand.cpp" />

@@ -37,8 +37,8 @@ std::unique_ptr<ICommand> VDBCommandFactory::createCommand(const std::string& na
 	else if (name == VDBPSToVolumeCommand::getName()) {
 		return std::make_unique<VDBPSToVolumeCommand>();
 	}
-	else if (name == VDBMeshToParticleSystemCommand::getName()) {
-		return std::make_unique<VDBMeshToParticleSystemCommand>();
+	else if (name == VDBVolumeToPSCommand::getName()) {
+		return std::make_unique<VDBVolumeToPSCommand>();
 	}
 	else if (name == VDBMeshToVolumeCommand::getName()) {
 		return std::make_unique<VDBMeshToVolumeCommand>();

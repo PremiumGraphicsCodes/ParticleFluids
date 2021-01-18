@@ -1,4 +1,4 @@
-#include "VDBMeshToParticleSystemCommand.h"
+#include "VDBVolumeToPSCommand.h"
 
 #include "PublicLabels/VDBMeshToParticleSystemLabels.h"
 
@@ -16,7 +16,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-VDBMeshToParticleSystemCommand::Args::Args() :
+VDBVolumeToPSCommand::Args::Args() :
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	vdbMeshId(::VDBMeshIdLabel, -1),
 	radius(::RadiusLabel, 5.0)
@@ -26,40 +26,32 @@ VDBMeshToParticleSystemCommand::Args::Args() :
 	add(&radius);
 }
 
-VDBMeshToParticleSystemCommand::Results::Results()
+VDBVolumeToPSCommand::Results::Results()
 {
 }
 
-VDBMeshToParticleSystemCommand::VDBMeshToParticleSystemCommand() :
+VDBVolumeToPSCommand::VDBVolumeToPSCommand() :
 	ICommand(&args, &results)
 {}
 
-std::string VDBMeshToParticleSystemCommand::getName()
+std::string VDBVolumeToPSCommand::getName()
 {
 	return ::CommandNameLabel;
 }
 
-bool VDBMeshToParticleSystemCommand::execute(World* world)
+bool VDBVolumeToPSCommand::execute(World* world)
 {
-	auto meshScene = world->getScenes()->findSceneById<VDBPolygonMeshScene*>(args.vdbMeshId.getValue());
-	if (meshScene == nullptr) {
+	auto volume = world->getScenes()->findSceneById<VDBVolumeScene*>(args.vdbVolumeId.getValue());
+	if (volume == nullptr) {
 		return false;
 	}
-	auto psScene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
-	if (psScene == nullptr) {
+	auto particleSystem = world->getScenes()->findSceneById<IParticleSystemScene*>(args.vdbParticleSystemId.getValue());
+	if (particleSystem == nullptr) {
 		return false;
 	}
 
-	VDBVolumeScene volume;
-	VDBPolygonMeshConverter converter;
-	converter.toVolume(*meshScene, &volume);
-
-	VDBParticleSystemScene ps;
 	VDBVolumeConverter volumeConverter;
-	volumeConverter.toParticleSystem(volume, &ps);
-
-	VDBParticleSystemConverter psConverter;
-	psConverter.fromVDB(ps, psScene);
+	volumeConverter.toParticleSystem(*volume, particleSystem);
 
 	return true;
 }
