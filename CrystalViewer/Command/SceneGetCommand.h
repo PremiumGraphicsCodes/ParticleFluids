@@ -25,7 +25,7 @@ public:
 		Result<bool> isPickable;
 		Result<std::string> name;
 		Result<Math::Box3d> boundingBox;
-		Result<Scene::SceneType> type;
+		Result<std::string> typeName;
 	};
 
 	static std::string getName();

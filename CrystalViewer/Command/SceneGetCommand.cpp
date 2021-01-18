@@ -18,14 +18,14 @@ SceneGetCommand::Results::Results() :
 	isPickable(SceneGetLabels::IsPickableLabel, false),
 	name(SceneGetLabels::NameLabel, std::string()),
 	boundingBox(SceneGetLabels::BoundingBoxLabel, Box3d()),
-	type(SceneGetLabels::TypeLabel, SceneTypeLabels::None)
+	typeName(SceneGetLabels::TypeNameLabel, "")
 {
 	//add(&center);
 	add(&isVisible);
 	add(&isPickable);
 	add(&name);
 	add(&boundingBox);
-	add(&type);
+	add(&typeName);
 }
 
 std::string SceneGetCommand::getName()
@@ -48,6 +48,6 @@ bool SceneGetCommand::execute(World* world)
 	results.isVisible.setValue(scene->isVisible());
 	results.isPickable.setValue(scene->isPickable());
 	results.name.setValue(scene->getName());
-	results.type.setValue(scene->getType());
+	results.typeName.setValue(scene->getType().getName());
 	return true;
 }

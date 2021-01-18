@@ -226,6 +226,13 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
+	public class PresenterSetLabels
+	{
+		public const string CommandNameLabel = "PresenterSet";
+		public const string IdLabel = "Id";
+		public const string PresenterNameLabel = "PresenterName";
+	}
+
 	public class PublicLabel
 	{
 	}
@@ -238,7 +245,7 @@ namespace PG {
 		public const string IsPickableLabel = "IsPickable";
 		public const string IsVisibleLabel = "IsVisible";
 		public const string NameLabel = "Name";
-		public const string TypeLabel = "Type";
+		public const string TypeNameLabel = "TypeName";
 	}
 
 	public class SetLabels

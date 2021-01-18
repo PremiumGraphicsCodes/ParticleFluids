@@ -10,5 +10,5 @@ namespace SceneGetLabels
 	PublicLabel IsPickableLabel = "IsPickable";
 	PublicLabel IsVisibleLabel = "IsVisible";
 	PublicLabel NameLabel = "Name";
-	PublicLabel TypeLabel = "Type";
+	PublicLabel TypeNameLabel = "TypeName";
 }
