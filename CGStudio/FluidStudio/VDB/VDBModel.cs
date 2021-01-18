@@ -4,13 +4,59 @@ using System.Collections.Generic;
 
 namespace FluidStudio.VDB
 {
+
     public class VDBModel
     {
-        public const string VDBPointType = "VDBPoint";
+        public enum VDBType
+        {
+            None,
+            Point,
+            Mesh,
+            Volume
+        }
 
-        public const string VDBMeshType = "VDBMesh";
+        private static string VDBPointLabel = "VDBParticleSystem";
+        private static string VDBVolumeLabel = "VDBVolume";
+        private static string VDBMeshLabel = "VDBMesh";
 
-        public const string VDBVolumeType = "VDBVolume";
+        public string ToString(VDBType type)
+        {
+            switch (type)
+            {
+                case VDBType.Point:
+                    return VDBPointLabel;
+                case VDBType.Volume:
+                    return VDBVolumeLabel;
+                case VDBType.Mesh:
+                    return VDBMeshLabel;
+                default:
+                    System.Diagnostics.Debug.Assert(false);
+                    return "";
+            }
+        }
+
+        public VDBType GetVDBType(int id, SceneList scene)
+        {
+            return FromString(scene.GetSceneTypeName(id));
+        }
+
+        public VDBType FromString(string str)
+        {
+            if(str == VDBPointLabel)
+            {
+                return VDBType.Point;
+            }
+            else if(str == VDBVolumeLabel)
+            {
+                return VDBType.Volume;
+            }
+            else if(str == VDBMeshLabel)
+            {
+                return VDBType.Mesh;
+            }
+            System.Diagnostics.Debug.Assert(false);
+            return VDBType.None;
+        }
 
         public bool Init(SceneList world)
         {
@@ -48,7 +94,7 @@ namespace FluidStudio.VDB
             var scene = new SceneModel();
             scene.Id.Value = newId;
             scene.Name.Value = name;
-            scene.SceneType = new PG.Core.SceneType(VDBPointType);
+            scene.SceneType = new PG.Core.SceneType(VDBPointLabel);
             world.Add(scene);
             return newId;
         }
@@ -62,7 +108,7 @@ namespace FluidStudio.VDB
             var scene = new SceneModel();
             scene.Id.Value = newId;
             scene.Name.Value = name;
-            scene.SceneType = new PG.Core.SceneType(VDBMeshType);
+            scene.SceneType = new PG.Core.SceneType(VDBMeshLabel);
             world.Add(scene);
             return newId;
         }
@@ -76,7 +122,7 @@ namespace FluidStudio.VDB
             var scene = new SceneModel();
             scene.Id.Value = newId;
             scene.Name.Value = name;
-            scene.SceneType = new PG.Core.SceneType(VDBVolumeType);
+            scene.SceneType = new PG.Core.SceneType(VDBVolumeLabel);
             world.Add(scene);
             return newId;
         }

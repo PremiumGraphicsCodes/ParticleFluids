@@ -121,6 +121,7 @@ namespace FluidStudio
         private List<int> Import(string filePath)
         {
             var ext = System.IO.Path.GetExtension(filePath);
+            /*
             if (ext == ".vdb")
             {
                 var newIds = model.VDBModel.Read(filePath, world);
@@ -128,18 +129,20 @@ namespace FluidStudio
                 {
                     var scene = new SceneModel();
                     scene.Id.Value = newId;
-                    scene.SceneType = new PG.Core.SceneType(VDBModel.VDBPointType);
+                    var type = model.VDBModel.GetVDBType(newId, world);
+                    scene.SceneType = new PG.Core.SceneType(model.VDBModel..ToString());
                     model.Scenes.Add(scene);
                 }
                 return newIds;
             }
-            else if(ext == ".obj")
+            else            */
+            if (ext == ".obj")
             {
                 var newId = model.VDBModel.ReadOBJ(world, filePath);
 
                 var scene = new SceneModel();
                 scene.Id.Value = newId;
-                scene.SceneType = new PG.Core.SceneType(VDBModel.VDBMeshType);
+                scene.SceneType = new PG.Core.SceneType("VDBMesh");
                 model.Scenes.Add(scene);
 
                 var newIds = new List<int>();
