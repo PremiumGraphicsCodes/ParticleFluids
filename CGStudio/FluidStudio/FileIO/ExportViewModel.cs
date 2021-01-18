@@ -57,14 +57,15 @@ namespace FluidStudio.FileIO
 //            if(id == scenes.Scenes[0].SceneType()
             if(ext == ".vdb")
             {
-                var type = scenes.FindSceneById(id).SceneType.TypeName;
                 var pointIds = new List<int>();
                 var volumeIds = new List<int>();
-                if (type == VDB.VDBModel.VDBPointType)
+
+                var typeName = scenes.GetSceneTypeName(id);
+                if (typeName == "VDBParticleSystem")
                 {
                     pointIds.Add(id);
                 }
-                else if(type == VDB.VDBModel.VDBVolumeType)
+                else if(typeName == "VDBVolume")
                 {
                     volumeIds.Add(id);
                 }
