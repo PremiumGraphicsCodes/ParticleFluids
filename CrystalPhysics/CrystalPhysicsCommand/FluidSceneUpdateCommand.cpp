@@ -45,11 +45,11 @@ bool FluidSceneUpdateCommand::execute(World* world)
 	fluidScene->clearParticles();
 	fluidScene->clear();
 
-	auto particles = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
+	auto particles = world->getScenes()->findSceneById<IParticleSystemScene*>(args.particleSystemId.getValue());
 	if (particles == nullptr) {
 		return false;
 	}
-	const auto& positions = particles->getShape()->getPositions();
+	const auto& positions = particles->getPositions();
 
 	const auto radius = 1.0;
 	for (auto p : positions) {

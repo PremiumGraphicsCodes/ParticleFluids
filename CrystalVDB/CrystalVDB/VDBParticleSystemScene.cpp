@@ -8,8 +8,8 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
-Crystal::VDB::VDBParticleSystemScene::VDBParticleSystemScene(const int id, const std::string name) :
-    IShapeScene(id, name)
+VDBParticleSystemScene::VDBParticleSystemScene(const int id, const std::string name) :
+    IParticleSystemScene(id, name)
 {
     this->impl = std::make_unique<VDBParticleSystemImpl>();
     this->presenter = std::make_unique<VDBParticleSystemPresenter>(this);
@@ -40,12 +40,14 @@ float VDBParticleSystemScene::getSize(const int index) const
     return radius;
 }
 
+/*
 void VDBParticleSystemScene::fromCrystal(const std::vector<Vector3dd>& positions, const float radius)
 {
     for (const auto& p : positions) {
         this->add(p, radius);
     }
 }
+*/
 
 Box3d VDBParticleSystemScene::getBoundingBox() const
 {
@@ -58,4 +60,13 @@ Box3d VDBParticleSystemScene::getBoundingBox() const
         box.add(getPosition(i));
     }
     return box;
+}
+
+std::vector<Vector3dd> VDBParticleSystemScene::getPositions() const
+{
+    std::vector<Vector3dd> positions;
+    for (int i = 0; i < impl->size(); ++i) {
+        positions.emplace_back( getPosition(i) );
+    }
+    return positions;
 }
