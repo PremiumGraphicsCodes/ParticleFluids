@@ -65,7 +65,9 @@ public:
 
 	Scene::IPresenter* getPresenter() { return presenter.get(); }
 
-	Scene::SceneType getType() const { return Scene::SceneType::None; }
+	static constexpr auto Type = "VDBPolygonMesh";
+
+	Scene::SceneType getType() const { return Type; }
 
 	Math::Box3d getBoundingBox() const override;
 

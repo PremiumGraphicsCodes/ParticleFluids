@@ -76,7 +76,7 @@ void VDBFileMenu::onShow()
 				VDBFileWriter writer;
 				const auto isOk = writer.open(filename);
 				if (isOk) {
-					const auto scenes = world->getScenes()->findScenes(SceneType::ParticleSystemScene);
+					const auto scenes = world->getScenes()->findScenes(SceneTypeLabels::ParticleSystemScene);
 					for (auto s : scenes) {
 						auto ps = static_cast<ParticleSystemScene*>(s);
 						const auto& particles = ps->getShape()->getParticles();
