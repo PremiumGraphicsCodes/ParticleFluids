@@ -16,7 +16,9 @@ public:
 
 	~KFFluidScene();
 
-	Scene::SceneType getType() const { return Scene::SceneType::None; }
+	static constexpr auto Type = "KFFluid";
+
+	Scene::SceneType getType() const { return Type; }
 
 	Scene::IPresenter* getPresenter() { return controller.get(); }
 

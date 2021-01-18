@@ -16,7 +16,9 @@ public:
 
 	~DFFluidScene() {}
 
-	Scene::SceneType getType() const { return Scene::SceneType::None; }
+	static constexpr auto Type = "DFFluid";
+
+	Scene::SceneType getType() const { return Type; }
 
 	Scene::IPresenter* getPresenter() {
 		return controller.get();

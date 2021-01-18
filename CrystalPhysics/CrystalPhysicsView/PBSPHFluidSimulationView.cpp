@@ -27,8 +27,8 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	effectLengthView("EffectLength", 2.25f),
 	densityView("Density", 1.0f),
 	boundaryView("Boundary"),
-	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
-	boundarySelectView("Boundary", model, canvas, Scene::SceneType::ParticleSystemScene),
+	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneTypeLabels::ParticleSystemScene),
+	boundarySelectView("Boundary", model, canvas, Scene::SceneTypeLabels::ParticleSystemScene),
 	stiffnessView("Stiffness", 0.05f),
 	vicsocityView("Viscosity", 0.1f)
 {

@@ -15,7 +15,9 @@ public:
 
 	~CSPHFluidScene() {}
 
-	Scene::SceneType getType() const { return Scene::SceneType::None; }
+	static constexpr auto Type = "CSPHFluid";
+
+	Scene::SceneType getType() const { return Type; }
 
 	Scene::IPresenter* getPresenter() { return controller.get(); }
 
