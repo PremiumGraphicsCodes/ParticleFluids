@@ -78,7 +78,6 @@ namespace FluidStudio
             OnCreateParticles();
             OnCreateVDBVolume();
             OnCreateVDBPoints();
-            OnCreateMesh();
             OnCreatePhysicsScene();
         }
 
@@ -127,37 +126,6 @@ namespace FluidStudio
 
         private int volumeId;
 
-        private void OnCreateMesh()
-        {
-            /*
-            var world = mainModel.Scenes;
-            var builder = new PolygonMeshBuilder();
-            builder.Add(new Box3d(new Vector3d(0,0,0), new Vector3d(10,10,10)));
-            this.meshId = world.AddPolygonMeshScene(builder.ToPolygonMesh(), "Mesh", 1);
-            */
-            var world = mainModel.Scenes;
-            var meshId = mainModel.VDBModel.CreateVDBMesh(world, "VDBMesh");
-            this.Canvas.Camera.Fit();
-            this.Canvas.BuildShader(world, meshId);
-            this.Canvas.Render();
-        }
-
-        //private int solidId;
-
-        /*
-        private void OnCreateSolid()
-        {
-            var world = mainModel.Scenes;
-            var box = new Box3d(new Vector3d(-10, 0, -100), new Vector3d(100, 100, 100));
-            var color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
-            var newId = world.AddSolidScene(box, "CSGBox", color, 1);
-            this.solidId = newId;
-            this.Canvas.Camera.Fit();
-            this.Canvas.BuildShader(world, newId);
-            this.Canvas.Render();
-        }
-        */
-
         private void OnCreatePhysicsScene()
         {
             Canvas.BuildShader(mainModel.Scenes, sourcePSId);
@@ -196,16 +164,6 @@ namespace FluidStudio
             mainModel.PhysicsModel.Solvers.Remove(solver);
             mainModel.PhysicsModel.Solvers.Add(solver);
         }
-
-        /*
-        private void OnCreateBoundaryScene()
-        {
-            var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
-            solver.CSGBoundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
-            mainModel.PhysicsModel.Solvers.Remove(solver);
-            mainModel.PhysicsModel.Solvers.Add(solver);
-        }
-        */
 
         private void OnCreateVDBVolume()
         {
