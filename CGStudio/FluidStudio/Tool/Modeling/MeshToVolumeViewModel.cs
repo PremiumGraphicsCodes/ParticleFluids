@@ -10,9 +10,7 @@ namespace FluidStudio.Tool.Modeling
     {
         public SceneSelectViewModel MeshSelectViewModel { get; }
 
-        public SceneSelectViewModel VolumeSelectViewModel { get; }
-
-        public ReactiveCommand GenerateCommand { get; }
+        public ReactiveCommand ConvertCommand { get; }
             = new ReactiveCommand();
 
         private readonly VDBModel vdb;
@@ -27,14 +25,16 @@ namespace FluidStudio.Tool.Modeling
             this.world = scenes;
             this.canvas = canvas;
             this.MeshSelectViewModel = new SceneSelectViewModel(scenes, canvas);
-            this.VolumeSelectViewModel = new SceneSelectViewModel(scenes, canvas);
-            this.GenerateCommand.Subscribe(OnGenerate);
+            this.ConvertCommand.Subscribe(OnGenerate);
         }
 
         private void OnGenerate()
         {
             var meshId = MeshSelectViewModel.Id.Value;
-            var volumeId = VolumeSelectViewModel.Id.Value;
+
+            var volumeId = vdb.CreateVDBVolume(world, "VDBVolume");
+            this.canvas.BuildShader(world, volumeId);
+
             this.vdb.ConvertMeshToVolume(meshId, volumeId, world);
             this.canvas.SendShader(world, volumeId);
         }
