@@ -62,7 +62,7 @@ namespace FluidStudio
             this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
             this.PhysicsSceneCreateCommand.Subscribe(OnCreatePhysicsScene);
             this.FluidSceneCreateCommand.Subscribe(OnCreateFluidScene);
-            this.BoundarySceneCreateCommand.Subscribe(OnCreateBoundaryScene);
+//            this.BoundarySceneCreateCommand.Subscribe(OnCreateBoundaryScene);
         }
 
         private void OnNavigate(string name)
@@ -74,7 +74,7 @@ namespace FluidStudio
         public void CreateDefaultTemplate()
         {
             mainModel.Scenes.CreateDefaultCameraScene();
-            OnCreateSolid();
+            //OnCreateSolid();
             OnCreateParticles();
             OnCreateVDBVolume();
             OnCreateVDBPoints();
@@ -82,7 +82,8 @@ namespace FluidStudio
             OnCreatePhysicsScene();
         }
 
-        private int particleSystemId;
+        private int sourcePSId;
+        private int boundaryPSId;
 
         private void OnCreateParticles()
         {
@@ -91,7 +92,18 @@ namespace FluidStudio
             var min = new Vector3d(0.0, 0.0, 0.0);
             var max = new Vector3d(10.0, 10.0, 10.0);
             var box = new Box3d(min, max);
+            sourcePSId = CreateBoxParticles(box, "SourcePS");
+            boundaryPSId = CreateBoxParticles(new Box3d( new Vector3d(-10, -2, -10), new Vector3d(10, 0, 10)), "BoundaryPS");
+        }
+
+        private int CreateBoxParticles(Box3d box, string name)
+        {
+            var world = mainModel.Scenes;
+            var positions = new List<Vector3d>();
+
             var length = box.Length;
+            var min = box.Min;
+            var max = box.Max;
             for (var x = min.X; x < max.X; x += 1.0)
             {
                 for (var y = min.Y; y < max.Y; y += 1.0)
@@ -106,10 +118,11 @@ namespace FluidStudio
             var appearance = new ParticleAppearance();
             appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
             appearance.Size = 10.0f;
-            this.particleSystemId = world.AddParticleSystemScene(positions, "PSBox", appearance, 1);
+            int id = world.AddParticleSystemScene(positions, name, appearance, 1);
             this.Canvas.Camera.Fit();
-            this.Canvas.BuildShader(world, particleSystemId);
+            this.Canvas.BuildShader(world, id);
             this.Canvas.Render();
+            return id;
         }
 
         private int volumeId;
@@ -129,8 +142,9 @@ namespace FluidStudio
             this.Canvas.Render();
         }
 
-        private int solidId;
+        //private int solidId;
 
+        /*
         private void OnCreateSolid()
         {
             var world = mainModel.Scenes;
@@ -142,23 +156,31 @@ namespace FluidStudio
             this.Canvas.BuildShader(world, newId);
             this.Canvas.Render();
         }
+        */
 
         private void OnCreatePhysicsScene()
         {
-            Canvas.BuildShader(mainModel.Scenes, particleSystemId);
+            Canvas.BuildShader(mainModel.Scenes, sourcePSId);
 
             var fluids = new List<FluidScene>();
-            var fluidScene = new FluidScene();
-            fluidScene.Create(mainModel.Scenes, particleSystemId, 1.0f, 1.0f, "Fluid01", false);
-            fluidScene.VolumeId = this.volumeId;
-            fluids.Add( fluidScene );
+            var fluidScene1 = new FluidScene();
+            fluidScene1.Create(mainModel.Scenes, sourcePSId, 1.0f, 1.0f, 1.0f, "Fluid01", false);
+            fluidScene1.VolumeId = this.volumeId;
+            fluids.Add( fluidScene1 );
+
+            var fluidScene2 = new FluidScene();
+            fluidScene2.Create(mainModel.Scenes, boundaryPSId, 5.0f, 1.0f, 1.0f, "Boundary01", true);
+            fluidScene2.VolumeId = this.volumeId;
+            fluids.Add(fluidScene2);
+
             var boundaries = new List<CSGBoundaryScene>();
-            boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
+            //boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
             var scene = new SolverScene();
             scene.Create(mainModel.Scenes, fluids, boundaries, 0.03f, "Solver01");
             this.mainModel.PhysicsModel.Solvers.Add(scene);
 
-            Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
+            Canvas.BuildShader(mainModel.Scenes, fluidScene1.Id);
+            Canvas.BuildShader(mainModel.Scenes, fluidScene2.Id);
             Canvas.Render();
         }
 
@@ -166,7 +188,7 @@ namespace FluidStudio
         {
             var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
             var fluidScene = new FluidScene();
-            fluidScene.Create(mainModel.Scenes, particleSystemId, 1.0f, 1.0f, "Fluid01", false);
+            fluidScene.Create(mainModel.Scenes, sourcePSId, 1.0f, 1.0f, 1.0f, "Fluid01", false);
             fluidScene.VolumeId = this.volumeId;
             solver.Fluids.Add(fluidScene);
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
@@ -175,6 +197,7 @@ namespace FluidStudio
             mainModel.PhysicsModel.Solvers.Add(solver);
         }
 
+        /*
         private void OnCreateBoundaryScene()
         {
             var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
@@ -182,6 +205,7 @@ namespace FluidStudio
             mainModel.PhysicsModel.Solvers.Remove(solver);
             mainModel.PhysicsModel.Solvers.Add(solver);
         }
+        */
 
         private void OnCreateVDBVolume()
         {

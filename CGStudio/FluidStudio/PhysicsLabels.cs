@@ -33,6 +33,7 @@ namespace PG {
 		public const string ParticleSystemIdLabel = "ParticleSystemId";
 		public const string StiffnessLabel = "Stiffness";
 		public const string ViscosityLabel = "Viscosity";
+		public const string DensityLabel = "Density";
 		public const string IsBoundary = "IsBoundary";
 		public const string NameLabel = "Name";
 	}

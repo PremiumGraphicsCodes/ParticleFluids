@@ -35,7 +35,7 @@ namespace FluidStudio.FileIO
                 var stiffness = float.Parse(elem.Element(FSProjFile.StiffnessLabel).Value);
                 var viscosity = float.Parse(elem.Element(FSProjFile.ViscosityLabel).Value);
                 var fluidScene = new FluidScene();
-                fluidScene.Create(model.Scenes, particleSystemId, stiffness, viscosity, "", false);
+                fluidScene.Create(model.Scenes, particleSystemId, 1.0f, stiffness, viscosity, "", false);
                 physicsScene.Fluids.Add(fluidScene);
             }
             model.PhysicsModel.Solvers.Add(physicsScene);

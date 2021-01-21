@@ -80,6 +80,9 @@ void KFFluidSimulationView::reset()
 	this->fluidScene->setPressureCoe(pressureCoeView.getValue());
 	this->fluidScene->setViscosityCoe(viscosityCoeView.getValue());
 
+	this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
+	this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
+
 	const auto radius = 1.0;
 	const auto length = radius * 2.0 * 1.25;
 	for (int i = 0; i < 20; ++i) {
@@ -92,19 +95,17 @@ void KFFluidSimulationView::reset()
 		}
 	}
 
-	/*
 	const float weight = 5.0f;
 	// bottom
-	for (int i = 0; i < 50; ++i) {
-		for (int j = -1; j < 0; ++j) {
-			for (int k = -50; k < 50; ++k) {
+	for (int i = 0; i < 20; ++i) {
+		for (int j = -2; j < 0; ++j) {
+			for (int k = 0; k < 20; ++k) {
 				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3, weight);
 				boundaryScene->addParticle(mp);
 			}
 		}
 	}
-	*/
 
 	// bottom
 	/*

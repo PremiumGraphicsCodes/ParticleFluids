@@ -12,6 +12,7 @@ public:
 	{
 		Command::Arg<int> id;
 		Command::Arg<int> particleSystemId;
+		Command::Arg<float> density;
 		Command::Arg<float> stiffness;
 		Command::Arg<float> viscosity;
 		Command::Arg<bool> isBoundary;

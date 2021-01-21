@@ -6,6 +6,7 @@ namespace {
 	PublicLabel ParticleSystemIdLabel = "ParticleSystemId";
 	PublicLabel StiffnessLabel = "Stiffness";
 	PublicLabel ViscosityLabel = "Viscosity";
+	PublicLabel DensityLabel = "Density";
 	PublicLabel IsBoundary = "IsBoundary";
 	PublicLabel NameLabel = "Name";
 }

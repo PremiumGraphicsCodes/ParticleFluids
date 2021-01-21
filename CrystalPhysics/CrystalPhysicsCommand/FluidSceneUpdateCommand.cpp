@@ -18,6 +18,7 @@ FluidSceneUpdateCommand::Args::Args() :
 	id(::IdLabel, -1),
 	particleSystemId(::ParticleSystemIdLabel, -1),
 	stiffness(::StiffnessLabel, 1.0f),
+	density(::DensityLabel, 1.0f),
 	viscosity(::ViscosityLabel, 1.0f),
 	isBoundary(::IsBoundary, false),
 	name(::NameLabel, std::string("FluidScene"))
@@ -25,6 +26,7 @@ FluidSceneUpdateCommand::Args::Args() :
 	add(&id);
 	add(&particleSystemId);
 	add(&stiffness);
+	add(&density);
 	add(&viscosity);
 	add(&isBoundary);
 	add(&name);
@@ -52,9 +54,10 @@ bool FluidSceneUpdateCommand::execute(World* world)
 	const auto& positions = particles->getPositions();
 
 	const auto radius = 1.0;
+	const auto density = args.density.getValue();
 	for (auto p : positions) {
 		auto mp = new KFMacroParticle(radius, p);
-		mp->distributePoints(3, 3, 3, 1.0f);
+		mp->distributePoints(3, 3, 3, density);
 		fluidScene->addParticle(mp);
 	}
 

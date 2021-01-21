@@ -17,6 +17,8 @@ namespace FluidStudio.Physics
 
         public string Name { get; private set; }
 
+        public float Density { get; private set; } = 1.0f;
+
         public float Stiffness { get; private set; } = 1.0f;
 
         public float Viscosity { get; private set; } = 1.0f;
@@ -29,17 +31,18 @@ namespace FluidStudio.Physics
         public FluidScene()
         { }
         
-        public void Create(SceneList world, int particleSystemId, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Create(SceneList world, int particleSystemId, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(world, particleSystemId, stiffness, viscosity, name, isBoundary);
+            Update(world, particleSystemId, density, stiffness, viscosity, name, isBoundary);
         }
 
-        public void Update(SceneList world, int particleSystemId, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Update(SceneList world, int particleSystemId, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
             this.Name = name;
+            this.Density = density;
             this.Stiffness = stiffness;
             this.Viscosity = viscosity;
             this.SourceParticleSystemId = particleSystemId;
@@ -63,6 +66,7 @@ namespace FluidStudio.Physics
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
             command.SetArg(UpdateLabels.ParticleSystemIdLabel, SourceParticleSystemId);
+            command.SetArg(UpdateLabels.DensityLabel, Density);
             command.SetArg(UpdateLabels.StiffnessLabel, Stiffness);
             command.SetArg(UpdateLabels.ViscosityLabel, Viscosity);
             command.SetArg(UpdateLabels.IsBoundary, IsBoundary);
