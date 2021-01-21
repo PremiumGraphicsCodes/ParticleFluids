@@ -3,11 +3,6 @@ using PG.Control.OpenGL;
 using PG.Control.UI;
 using PG.Scene;
 using Reactive.Bindings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FluidStudio.Tool.Modeling
 {
@@ -15,9 +10,7 @@ namespace FluidStudio.Tool.Modeling
     {
         public SceneSelectViewModel VolumeSelectViewModel { get; }
 
-        public SceneSelectViewModel PSSelectViewModel { get; }
-
-        public ReactiveCommand GenerateCommand { get; }
+        public ReactiveCommand ConvertCommand { get; }
             = new ReactiveCommand();
 
         private readonly VDBModel vdb;
@@ -32,14 +25,16 @@ namespace FluidStudio.Tool.Modeling
             this.world = scenes;
             this.canvas = canvas;
             VolumeSelectViewModel = new SceneSelectViewModel(scenes, canvas);
-            PSSelectViewModel = new SceneSelectViewModel(scenes, canvas);
-            GenerateCommand.Subscribe(OnGenerate);
+            ConvertCommand.Subscribe(OnGenerate);
         }
 
         private void OnGenerate()
         {
             var volumeId = VolumeSelectViewModel.Id.Value;
-            var psId = PSSelectViewModel.Id.Value;
+
+            var psId = vdb.CreateVDBPoints(world, "ConvertedPoints");
+            this.canvas.BuildShader(world, psId);
+
             this.vdb.ConvertVolumeToPS(volumeId, psId, world);
             this.canvas.SendShader(world, psId);
         }

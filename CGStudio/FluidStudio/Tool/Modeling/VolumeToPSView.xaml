@@ -10,7 +10,6 @@
              mc:Ignorable="d">
     <StackPanel>
         <ui:SceneSelectView DataContext="{Binding VolumeSelectViewModel}"/>
-        <ui:SceneSelectView DataContext="{Binding PSSelectViewModel}"/>
-        <Button Content="Generate" Command="{Binding GenerateCommand}"/>
+        <Button Content="Convert" Command="{Binding ConvertCommand}"/>
     </StackPanel>
 </UserControl>

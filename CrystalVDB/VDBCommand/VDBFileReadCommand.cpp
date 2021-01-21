@@ -39,6 +39,9 @@ bool VDBFileReadCommand::execute(World* world)
 		return false;
 	}
 	const auto& names = reader.getPointGridNames();
+	if (names.empty()) {
+		return false;
+	}
 
 	std::vector<int> newIds;
 	for (auto n : names) {
