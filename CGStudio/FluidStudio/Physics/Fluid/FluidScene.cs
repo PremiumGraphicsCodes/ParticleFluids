@@ -13,7 +13,7 @@ namespace FluidStudio.Physics
 
         public int SourceParticleSystemId { get; private set; }
 
-        public int VolumeId { get; set; }
+        public int VolumeId { get; private set; }
 
         public string Name { get; private set; }
 
@@ -37,6 +37,12 @@ namespace FluidStudio.Physics
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
             Update(world, particleSystemId, density, stiffness, viscosity, name, isBoundary);
+        }
+
+        public void CreateVolume(SceneList world, VDBModel vdb, Canvas3d canvas)
+        {
+            this.VolumeId = vdb.CreateVDBVolume(world, "Volume");
+            canvas.BuildShader(world, VolumeId);
         }
 
         public void Update(SceneList world, int particleSystemId, float density, float stiffness, float viscosity, string name, bool isBoundary)
