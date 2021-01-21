@@ -16,6 +16,9 @@ namespace FluidStudio.Physics.Solver
         public ReactiveProperty<float> TimeStep { get; }
             = new ReactiveProperty<float>(0.03f);
 
+        public ReactiveCommand UpdateCommand { get; }
+            = new ReactiveCommand();
+
         private SolverScene scene;
 
         private readonly SceneList world;
@@ -23,8 +26,7 @@ namespace FluidStudio.Physics.Solver
         public SolverSceneViewModel(SceneList world)
         {
             this.world = world;
-            this.Name.Subscribe(OnChangeName);
-            this.TimeStep.Subscribe(OnChangeTimeStep);
+            this.UpdateCommand.Subscribe(OnUpdate);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -46,16 +48,6 @@ namespace FluidStudio.Physics.Solver
             this.Name.Value = item.Name;
             this.Id.Value = Id.Value;
             this.scene = item;
-        }
-
-        private void OnChangeName(string name)
-        {
-            OnUpdate();
-        }
-
-        private void OnChangeTimeStep(float dt)
-        {
-            OnUpdate();
         }
 
         private void OnUpdate()

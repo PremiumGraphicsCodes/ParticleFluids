@@ -57,6 +57,7 @@ namespace FluidStudio.Physics
                 return;
             }
             this.Id.Value = item.Id;
+            this.Name.Value = item.Name;
             this.SourceParticleSystemSelectViewModel.Id.Value = item.SourceParticleSystemId;
             this.Density.Value = item.Density;
             this.Stiffness.Value = item.Stiffness;
