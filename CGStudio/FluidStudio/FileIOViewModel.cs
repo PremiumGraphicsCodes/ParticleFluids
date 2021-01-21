@@ -22,12 +22,6 @@ namespace FluidStudio
         public ReactiveCommand SaveAsCommand { get; }
             = new ReactiveCommand();
 
-        public ReactiveCommand ImportCommand { get; }
-            = new ReactiveCommand();
-
-        public ReactiveCommand ExportCommand { get; }
-            = new ReactiveCommand();
-
         private readonly MainModel model;
 
         private readonly SceneList world;
@@ -43,8 +37,6 @@ namespace FluidStudio
             OpenCommand.Subscribe(OnOpen);
             SaveCommand.Subscribe(OnSave);
             SaveAsCommand.Subscribe(OnSaveAs);
-            ImportCommand.Subscribe(OnImport);
-            ExportCommand.Subscribe(OnExport);
         }
 
         private void OnNew()
@@ -97,84 +89,6 @@ namespace FluidStudio
             {
                 //world.Save(dialog.FileName);
             }
-        }
-
-        private void OnImport()
-        {
-            var dialog = new OpenFileDialog
-            {
-                Title = "Import",
-                Filter = "OBJFile(*.obj)|*.obj|OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
-            };
-            if (dialog.ShowDialog() == true)
-            {
-                var fileName = dialog.FileName;
-                var newIds = Import(dialog.FileName);
-                foreach (var id in newIds)
-                {
-                    canvas.BuildShader(world, id);
-                }
-                canvas.Render();
-            }
-        }
-
-        private List<int> Import(string filePath)
-        {
-            var ext = System.IO.Path.GetExtension(filePath);
-            /*
-            if (ext == ".vdb")
-            {
-                var newIds = model.VDBModel.Read(filePath, world);
-                foreach(var newId in newIds)
-                {
-                    var scene = new SceneModel();
-                    scene.Id.Value = newId;
-                    var type = model.VDBModel.GetVDBType(newId, world);
-                    scene.SceneType = new PG.Core.SceneType(model.VDBModel..ToString());
-                    model.Scenes.Add(scene);
-                }
-                return newIds;
-            }
-            else            */
-            if (ext == ".obj")
-            {
-                var newId = model.VDBModel.ReadOBJ(world, filePath);
-
-                var scene = new SceneModel();
-                scene.Id.Value = newId;
-                scene.SceneType = new PG.Core.SceneType("VDBMesh");
-                model.Scenes.Add(scene);
-
-                var newIds = new List<int>();
-                newIds.Add(newId);
-                return newIds;
-            }
-            else
-            {
-                return new List<int>();
-            }
-        }
-
-        private void OnExport()
-        {
-            /*
-            var dialog = new SaveFileDialog
-            {
-                Title = "Export",
-                Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
-            };
-            if (dialog.ShowDialog() == true)
-            {
-                if (Export(dialog.FileName))
-                {
-                    MessageBox.Show("Export Suceeded");
-                }
-                else
-                {
-                    MessageBox.Show("Export Failed");
-                }
-            }
-            */
         }
     }
 }

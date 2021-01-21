@@ -12,12 +12,6 @@ namespace FluidStudio.FileIO
     {
         public SceneSelectViewModel SceneSelectViewModel { get; }
 
-        public ReactiveProperty<string> FilePath { get; }
-            = new ReactiveProperty<string>("");
-
-        public ReactiveCommand FileSelectCommand { get; }
-            = new ReactiveCommand();
-
         public ReactiveCommand ExportCommand { get; }
             = new ReactiveCommand();
 
@@ -30,8 +24,7 @@ namespace FluidStudio.FileIO
             this.vdb = mainModel.VDBModel;
             this.scenes = scenes;
             SceneSelectViewModel = new SceneSelectViewModel(scenes, canvas);
-            FileSelectCommand.Subscribe(OnSelect);
-            ExportCommand.Subscribe(OnExport);
+            ExportCommand.Subscribe(OnSelect);
         }
 
         private void OnSelect()
@@ -44,13 +37,12 @@ namespace FluidStudio.FileIO
             var isOk = dialog.ShowDialog();
             if(isOk == true)
             {
-                this.FilePath.Value = dialog.FileName;
+                OnExport(dialog.FileName);
             }
         }
 
-        private void OnExport()
+        private void OnExport(string path)
         {
-            var path = FilePath.Value;
             var ext = System.IO.Path.GetExtension(path);
 
             var id = SceneSelectViewModel.Id.Value;

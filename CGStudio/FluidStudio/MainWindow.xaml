@@ -24,8 +24,6 @@
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu DataContext="{Binding FileIOViewModel}">
                     <RibbonApplicationMenuItem Header="Open" Command="{Binding OpenCommand}"/>
-                    <RibbonApplicationMenuItem Header="Import" Command="{Binding ImportCommand}"/>
-                    <RibbonApplicationMenuItem Header="Export" Command="{Binding ExportCommand}"/>
                     <RibbonApplicationMenuItem Header="Exit"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
@@ -46,6 +44,7 @@
                     <RibbonButton Label="VolumeToPS" Command="{Binding NavigateCommand}" CommandParameter="VolumeToPS"/>
                 </RibbonGroup>
                 <RibbonGroup Header="File">
+                    <RibbonButton Label="Import" Command="{Binding NavigateCommand}" CommandParameter="Import"/>
                     <RibbonButton Label="Export" Command="{Binding NavigateCommand}" CommandParameter="Export"/>
                 </RibbonGroup>
             </RibbonTab>

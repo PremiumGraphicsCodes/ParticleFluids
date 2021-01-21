@@ -46,6 +46,7 @@ namespace FluidStudio
             containerRegistry.RegisterForNavigation<FluidSceneView>("FluidUpdate");
             containerRegistry.RegisterForNavigation<CSGBoundarySceneView>("CSGBoundaryUpdate");
 
+            containerRegistry.RegisterForNavigation<ImportView>("Import");
             containerRegistry.RegisterForNavigation<ExportView>("Export");
         }
     }

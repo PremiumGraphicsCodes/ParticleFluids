@@ -122,6 +122,10 @@
     <Compile Include="FileIO\ExportViewModel.cs" />
     <Compile Include="FileIO\FSProjFileReader.cs" />
     <Compile Include="FileIO\FSProjFileWriter.cs" />
+    <Compile Include="FileIO\ImportView.xaml.cs">
+      <DependentUpon>ImportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FileIO\ImportViewModel.cs" />
     <Compile Include="MainModel.cs" />
     <Compile Include="PhysicsLabels.cs" />
     <Compile Include="Physics\CSGBoundary\CSGBoundaryScene.cs" />
@@ -191,6 +195,10 @@
     <Compile Include="VDBLabels.cs" />
     <Compile Include="VDB\VDBModel.cs" />
     <Page Include="FileIO\ExportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FileIO\ImportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
