@@ -22,12 +22,12 @@ namespace PG.CGStudio.UICtrl
 
         public void OnKeyDown(Key key)
         {
-            throw new System.NotImplementedException();
+
         }
 
         public void OnKeyUp(Key key)
         {
-            throw new System.NotImplementedException();
+
         }
 
         public void OnLeftButtonDown(Vector2d position)
@@ -41,7 +41,7 @@ namespace PG.CGStudio.UICtrl
 
             var diff = position - prevPosition;
             //
-            var bb = world.GetBoundingBox(0);
+            //var bb = world.GetBoundingBox(0);
             //var scale = bb.Min.Distance(bb.Max) * 0.1;
             var v = new Vector4d(diff.X, diff.Y, 0.0, 0.0) * matrix.Transposed();
             canvas.Camera.Translate(new Vector3d(v.X, v.Y, v.Z));

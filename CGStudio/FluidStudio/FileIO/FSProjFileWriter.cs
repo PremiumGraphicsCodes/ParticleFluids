@@ -45,15 +45,23 @@ namespace FluidStudio.FileIO
         {
             var root = new XElement(FSProjFile.PhysicsSceneLabel);
             root.Add( new XAttribute(FSProjFile.NameLabel, scene.Name) );
+//            root.Add(new XAttribute(FSProjFile.TimeStepLabel, scene.TimeStep));
             foreach (var fluid in scene.Fluids)
             {
-                root.Add(new XElement(FSProjFile.IdLabel, fluid.Id));
-                root.Add(new XElement(FSProjFile.NameLabel, fluid.Name));
-                root.Add(new XElement(FSProjFile.ParticleSystemIdLabel, fluid.SourceParticleSystemId));
-                root.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness));
-                root.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity));
+                root.Add( Write(fluid));
             }
             return root;
+        }
+
+        private XElement Write(FluidScene fluid)
+        {
+            var froot = new XElement("Fluid");
+            froot.Add(new XElement(FSProjFile.IdLabel, fluid.Id));
+            froot.Add(new XElement(FSProjFile.NameLabel, fluid.Name));
+            froot.Add(new XElement(FSProjFile.ParticleSystemIdLabel, fluid.SourceParticleSystemId));
+            froot.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness));
+            froot.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity));
+            return froot;
         }
     }
 }

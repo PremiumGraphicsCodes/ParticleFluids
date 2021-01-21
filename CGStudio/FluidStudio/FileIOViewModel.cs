@@ -1,4 +1,5 @@
-﻿using FluidStudio.VDB;
+﻿using FluidStudio.FileIO;
+using FluidStudio.VDB;
 using Microsoft.Win32;
 using PG.Control.OpenGL;
 using PG.Scene;
@@ -51,10 +52,6 @@ namespace FluidStudio
 
         private void OnOpen()
         {
-            PG.CLI.PhysicsCommand command = new PG.CLI.PhysicsCommand();
-            command.Create(PG.ParticleSystemCreateLabels.ParticleSystemAddLabel);
-            command.Execute(world.Adapter);
-
             var dialog = new OpenFileDialog
             {
                 Title = "Open",
@@ -75,6 +72,9 @@ namespace FluidStudio
             };
             if (dialog.ShowDialog() == true)
             {
+                var writer = new FSProjFileWriter();
+                writer.Write(model, dialog.FileName);
+
                 //world.Save(dialog.FileName);
             }
         }

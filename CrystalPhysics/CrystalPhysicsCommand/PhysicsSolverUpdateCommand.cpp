@@ -47,6 +47,9 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 	}
 
 	solver->clear();
+
+	solver->setMaxTimeStep(args.timeStep.getValue());
+
 	const auto ids = args.fluidSceneIds.getValue();
 
 	for (const auto id : ids) {
