@@ -35,6 +35,9 @@ namespace FluidStudio.Physics
         public FluidFileExportViewModel ExportViewModel { get; }
             = new FluidFileExportViewModel();
 
+        public ReactiveCommand UpdateCommand { get; }
+            = new ReactiveCommand();
+
         private FluidScene scene;
 
         private SceneList world;
@@ -42,11 +45,8 @@ namespace FluidStudio.Physics
         public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.SourceParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
-            this.SourceParticleSystemSelectViewModel.Id.Subscribe(OnChangeSourcePS);
-            this.Density.Subscribe(OnChangeDensity);
-            this.Stiffness.Subscribe(OnChangeStiffness);
-            this.IsBoundary.Subscribe(OnChangeIsBoundary);
             this.world = world;
+            this.UpdateCommand.Subscribe(OnUpdate);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -73,31 +73,6 @@ namespace FluidStudio.Physics
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-        }
-
-        private void OnChangeSourcePS(int id)
-        {
-            OnUpdate();
-        }
-
-        private void OnChangeDensity(float density)
-        {
-            OnUpdate();
-        }
-
-        private void OnChangeStiffness(float s)
-        {
-            OnUpdate();
-        }
-
-        private void OnChangeViscosity(float v)
-        {
-            OnUpdate();
-        }
-
-        private void OnChangeIsBoundary(bool b)
-        {
-            OnUpdate();
         }
 
         private void OnUpdate()
