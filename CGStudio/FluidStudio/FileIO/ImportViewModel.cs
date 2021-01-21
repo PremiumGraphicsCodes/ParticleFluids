@@ -52,22 +52,23 @@ namespace FluidStudio.FileIO
         private List<int> Import(string filePath)
         {
             var ext = System.IO.Path.GetExtension(filePath);
-            /*
             if (ext == ".vdb")
             {
-                var newIds = model.VDBModel.Read(filePath, world);
+                var newIds = vdb.Read(filePath, world);
                 foreach(var newId in newIds)
                 {
                     var scene = new SceneModel();
                     scene.Id.Value = newId;
-                    var type = model.VDBModel.GetVDBType(newId, world);
-                    scene.SceneType = new PG.Core.SceneType(model.VDBModel..ToString());
-                    model.Scenes.Add(scene);
+                    var type = vdb.GetVDBType(newId, world);
+                    if(type == VDBModel.VDBType.Point)
+                    {
+                        scene.SceneType = new PG.Core.SceneType("VDBPoints");
+                        world.Scenes.Add(scene);
+                    }
                 }
                 return newIds;
             }
-            else            */
-            if (ext == ".obj")
+            else if (ext == ".obj")
             {
                 var newId = vdb.ReadOBJ(world, filePath);
 

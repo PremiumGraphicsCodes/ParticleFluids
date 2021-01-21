@@ -2,7 +2,7 @@
 
 #include "../CrystalVDB/VDBFileReader.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../CrystalVDB/VDBParticleSystemScene.h"
 
 #include "PublicLabels/VDBFileReadLabels.h"
 
@@ -43,9 +43,12 @@ bool VDBFileReadCommand::execute(World* world)
 	std::vector<int> newIds;
 	for (auto n : names) {
 		const auto& positions = reader.readPositions(n);
-		ParticleAttribute attr;
-		auto ps = std::make_unique< ParticleSystem<ParticleAttribute> >(positions, attr);
-		ParticleSystemScene* scene = new ParticleSystemScene(world->getNextSceneId(), "", std::move(ps));
+		//ParticleAttribute attr;
+		//auto ps = std::make_unique< ParticleSystem<ParticleAttribute> >(positions, attr);
+		auto scene = new VDBParticleSystemScene(world->getNextSceneId(), n);
+		for (const auto& p : positions) {
+			scene->add(p, 1.0);
+		}
 		world->getScenes()->addScene(scene);
 		const auto newId = scene->getId();
 		newIds.push_back(newId);
