@@ -7,6 +7,7 @@
 
 namespace Crystal {
     namespace VDB {
+        class VDBVolumeImpl;
 
 class VDBFileReader
 {
@@ -23,7 +24,11 @@ public:
 
     std::vector<std::string> getPointNames() const { return pointNames; }
 
+    std::vector<std::string> getGridNames() const { return floatGridNames; }
+
     std::vector<Math::Vector3dd> readPositions(const std::string& pointName);
+
+    VDBVolumeImpl readVolume(const std::string& volumeName);
 
 private:
     std::vector<std::string> pointNames;

@@ -4,6 +4,8 @@
 
 #include <openvdb/points/PointConversion.h>
 
+#include "VDBVolumeImpl.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
@@ -80,18 +82,11 @@ std::vector<Vector3dd> VDBFileReader::readPositions(const std::string& pointName
         }
     }
 
-    /*
-    std::vector<Vector3dd> positions(v_positions.size());
-    for (const auto& vp : v_positions) {
-        positions.push_back(Converter::fromVDB(vp));
-    }
-    */
-    /*
-    for (const auto i : v_indices) {
-        std::cout << i << std::endl;
-//        positions[i] = Converter::fromVDB(v_positions[i]);
-    }
-    */
+    return positions;
+}
 
-    return std::move(positions);
+VDBVolumeImpl VDBFileReader::readVolume(const std::string& volumeName)
+{
+    auto grid = openvdb::gridPtrCast<openvdb::FloatGrid>( file.readGrid(volumeName) );
+    return VDBVolumeImpl( grid );
 }
