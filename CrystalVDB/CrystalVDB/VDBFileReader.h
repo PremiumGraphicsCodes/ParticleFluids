@@ -19,11 +19,15 @@ public:
 
     void close();
 
-    std::vector<std::string> getPointGridNames() const;
+    void readMetaData();
+
+    std::vector<std::string> getPointNames() const { return pointNames; }
 
     std::vector<Math::Vector3dd> readPositions(const std::string& pointName);
 
 private:
+    std::vector<std::string> pointNames;
+    std::vector<std::string> floatGridNames;
 };
 
     }

@@ -30,18 +30,21 @@ void VDBFileReader::close()
     file.close();
 }
 
-std::vector<std::string> VDBFileReader::getPointGridNames() const
+void VDBFileReader::readMetaData()
 {
-    std::vector<std::string> names;
     auto metas = file.readAllGridMetadata();
     for (auto iter = metas->begin(); iter != metas->end(); ++iter) {
         const auto isPoint = (*iter)->isType<openvdb::points::PointDataGrid>();
         if (isPoint) {
             //std::cout << (*iter)->getName() << std::endl;
-            names.push_back((*iter)->getName());
+            pointNames.push_back((*iter)->getName());
+            continue;
+        }
+        const auto isVolume = (*iter)->isType<openvdb::FloatGrid>();
+        if (isVolume) {
+            floatGridNames.push_back((*iter)->getName());
         }
     }
-    return names;
 }
 
 std::vector<Vector3dd> VDBFileReader::readPositions(const std::string& pointName)

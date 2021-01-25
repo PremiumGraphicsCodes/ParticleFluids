@@ -44,7 +44,8 @@ bool VDBFileReadCommand::execute(World* world)
 	if (!isOk) {
 		return false;
 	}
-	const auto& names = reader.getPointGridNames();
+	reader.readMetaData();
+	const auto& names = reader.getPointNames();
 	if (names.empty()) {
 		return false;
 	}
