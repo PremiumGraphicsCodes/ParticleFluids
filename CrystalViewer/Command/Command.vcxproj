@@ -222,13 +222,13 @@
     <ClInclude Include="Public\PickLabels.h" />
     <ClInclude Include="Public\PolygonMeshCreateLabels.h" />
     <ClInclude Include="Public\PublicLabel.h" />
-    <ClInclude Include="Public\SetLabels.h" />
+    <ClInclude Include="Public\SceneSetLabels.h" />
     <ClInclude Include="Public\ShapeSelectLabels.h" />
     <ClInclude Include="Public\TextureCreateLabels.h" />
     <ClInclude Include="Public\TransformLabels.h" />
     <ClInclude Include="Public\TrimLabels.h" />
     <ClInclude Include="Public\WireFrameCreateLabels.h" />
-    <ClInclude Include="SetCommand.h" />
+    <ClInclude Include="SceneSetCommand.h" />
     <ClInclude Include="ShaderBuildCommand.h" />
     <ClInclude Include="ShaderSendCommand.h" />
     <ClInclude Include="ShapeSelectCommand.h" />
@@ -274,7 +274,7 @@
     <ClCompile Include="PolygonMeshCreateCommand.cpp" />
     <ClCompile Include="PresenterSetCommand.cpp" />
     <ClCompile Include="SceneGetCommand.cpp" />
-    <ClCompile Include="SetCommand.cpp" />
+    <ClCompile Include="SceneSetCommand.cpp" />
     <ClCompile Include="ShaderBuildCommand.cpp" />
     <ClCompile Include="ShaderSendCommand.cpp" />
     <ClCompile Include="ShapeSelectCommand.cpp" />

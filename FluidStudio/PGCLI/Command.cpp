@@ -3,7 +3,6 @@
 
 #include "../../CrystalViewer/Command/Command.h"
 #include "../../CrystalViewer/Command/GetCommand.h"
-#include "../../CrystalViewer/Command/SetCommand.h"
 #include "../../CrystalViewer/Command/CommandFactory.h"
 
 #include "../../Crystal/Scene/World.h"
@@ -80,20 +79,4 @@ T Command::Get(WorldAdapter^ objects, System::String^ name, int id)
 	const auto& str = PG::CLI::Converter::toCpp(name);
 	auto value = Crystal::Command::GetCommand::Get(objects->instance, id, str);
 	return (T)AnyConverter::fromCpp(value);
-}
-
-generic <class T>
-void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, T value)
-{
-	const auto& str = PG::CLI::Converter::toCpp(name);
-	auto v = AnyConverter::toCpp(value, T::typeid);
-	Crystal::Command::SetCommand::Set(objects->instance, parentId, str, v);
-}
-
-generic <class T>
-void Command::Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, T value)
-{
-	const auto& str = PG::CLI::Converter::toCpp(name);
-	auto v = AnyConverter::toCpp(value, T::typeid);
-	Crystal::Command::SetCommand::Set(objects->instance, parentId, childId, str, v);
 }

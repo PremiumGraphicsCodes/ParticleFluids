@@ -63,6 +63,7 @@ namespace FluidStudio.FileIO
                     if(type == VDBModel.VDBType.Point)
                     {
                         scene.SceneType = new PG.Core.SceneType("VDBPoints");
+                        scene.Name.Value = world.GetName(newId);
                         world.Scenes.Add(scene);
                     }
                 }

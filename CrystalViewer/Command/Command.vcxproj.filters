@@ -17,7 +17,6 @@
     <ClInclude Include="TransformCommand.h">
       <Filter>Scene\Shape\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="SetCommand.h" />
     <ClInclude Include="CameraFitCommand.h">
       <Filter>Camera</Filter>
     </ClInclude>
@@ -56,9 +55,6 @@
       <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="Public\FileExportLabels.h">
-      <Filter>Public</Filter>
-    </ClInclude>
-    <ClInclude Include="Public\SetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="PCDFileExportCommand.h">
@@ -236,6 +232,12 @@
     <ClInclude Include="Public\PresenterSetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="SceneSetCommand.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\SceneSetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -252,7 +254,6 @@
     <ClCompile Include="TransformCommand.cpp">
       <Filter>Scene\Shape\Transform</Filter>
     </ClCompile>
-    <ClCompile Include="SetCommand.cpp" />
     <ClCompile Include="CameraFitCommand.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
@@ -352,6 +353,9 @@
       <Filter>Scene\Shape\Solid</Filter>
     </ClCompile>
     <ClCompile Include="PresenterSetCommand.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSetCommand.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>

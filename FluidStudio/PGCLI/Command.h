@@ -37,12 +37,6 @@ public:
 	generic <class T>
 	static T Get(WorldAdapter^ objects, System::String^ name, int parentId);
 
-	generic <class T>
-	static void Set(WorldAdapter^ objects, System::String^ name, int parentId, T value);
-
-	generic <class T>
-	static void Set(WorldAdapter^ objects, System::String^ name, int parentId, int childId, T value);
-
 	void SetFactory(ICommandFactory^ factory) { this->factory = factory; }
 
 private:

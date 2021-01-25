@@ -34,6 +34,7 @@
 #include "STLFileExportCommand.h"
 #include "PCDFileExportCommand.h"
 #include "SceneGetCommand.h"
+#include "SceneSetCommand.h"
 #include "CameraGetCommand.h"
 #include "CameraSetCommand.h"
 #include "ShaderBuildCommand.h"
@@ -155,6 +156,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	else if (name == SceneGetCommand::getName()) {
 		return std::make_unique<SceneGetCommand>();
 	}
+	else if (name == SceneSetCommand::getName()) {
+
+}
 	else if (name == CameraGetCommand::getName()) {
 		return std::make_unique<CameraGetCommand>();
 	}

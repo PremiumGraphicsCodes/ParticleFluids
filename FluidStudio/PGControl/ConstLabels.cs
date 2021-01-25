@@ -248,12 +248,10 @@ namespace PG {
 		public const string TypeNameLabel = "TypeName";
 	}
 
-	public class SetLabels
+	public class SceneSetLabels
 	{
-		public const string PointSizeLabel = "PointSize";
-		public const string IsVisibleLabel = "IsVisible";
-		public const string ColorLabel = "Color";
-		public const string MaterialNameLabel = "MaterialName";
+		public const string CommandNameLabel = "SceneSet";
+		public const string IdLabel = "Id";
 		public const string NameLabel = "Name";
 	}
 
