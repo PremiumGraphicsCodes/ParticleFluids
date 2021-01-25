@@ -30,6 +30,8 @@ public:
 
 	std::string getName() const { return name; }
 
+	void setId(const int id) { this->id = id; }
+
 	int getId() const { return id; }
 
 	bool isVisible() const { return _isVisible; }

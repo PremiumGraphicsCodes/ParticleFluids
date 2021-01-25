@@ -11,6 +11,11 @@ void VDBParticleSystemImpl::add(const openvdb::Vec3R& position, const openvdb::R
     particles.push_back(pa);
 }
 
+void VDBParticleSystemImpl::resize(const size_t count)
+{
+    this->particles.resize(count);
+}
+
 openvdb::CoordBBox VDBParticleSystemImpl::getBBox(const openvdb::GridBase& grid)
 {
     openvdb::CoordBBox bbox;

@@ -19,6 +19,11 @@ VDBParticleSystemScene::~VDBParticleSystemScene()
 {
 }
 
+void VDBParticleSystemScene::resize(const size_t count)
+{
+    this->impl->resize(count);
+}
+
 void VDBParticleSystemScene::add(const Vector3dd& position, const double radius)
 {
     const auto pp = Converter::toVDB(position);

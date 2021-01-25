@@ -23,6 +23,8 @@ public:
 
     ~VDBParticleSystemScene();
 
+    void resize(const size_t count);
+
     void add(const Math::Vector3dd& position, const double radius);
 
     Math::Vector3dd getPosition(const int index) const;

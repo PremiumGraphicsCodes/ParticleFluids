@@ -3,6 +3,7 @@
 #include "../CrystalVDB/VDBFileReader.h"
 
 #include "../CrystalVDB/VDBParticleSystemScene.h"
+#include "../CrystalVDB/VDBVolumeScene.h"
 
 #include "PublicLabels/VDBFileReadLabels.h"
 
@@ -45,24 +46,28 @@ bool VDBFileReadCommand::execute(World* world)
 		return false;
 	}
 	reader.readMetaData();
-	const auto& names = reader.getPointNames();
-	if (names.empty()) {
-		return false;
-	}
-
+	const auto& pointNames = reader.getPointNames();
 	std::vector<int> newIds;
-	for (auto n : names) {
-		const auto& positions = reader.readPositions(n);
-		//ParticleAttribute attr;
-		//auto ps = std::make_unique< ParticleSystem<ParticleAttribute> >(positions, attr);
-		auto scene = new VDBParticleSystemScene(world->getNextSceneId(), n);
-		for (const auto& p : positions) {
-			scene->add(p, 1.0);
-		}
+	for (const auto& n : pointNames) {
+		const auto scene = reader.readPositions(n);
+		scene->setId(world->getNextSceneId());
+		scene->setName(n);
 		world->getScenes()->addScene(scene);
 		const auto newId = scene->getId();
 		newIds.push_back(newId);
 	}
+
+	const auto& volumeNames = reader.getGridNames();
+	for (const auto& n : volumeNames) {
+		const auto scene = reader.readVolume(n);
+		scene->setId(world->getNextSceneId());
+		scene->setName(n);
+		//auto scene = new VDBVolumeScene(world->getNextSceneId(), n);
+		world->getScenes()->addScene(scene);
+		const auto newId = scene->getId();
+		newIds.push_back(newId);
+	}
+
 	results.newIds.setValue(newIds);
 	//reader.get
 	return true;

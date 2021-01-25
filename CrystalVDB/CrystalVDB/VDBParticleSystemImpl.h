@@ -29,6 +29,8 @@ public:
 
     void add(const openvdb::Vec3R& position, const openvdb::Real& radius, const openvdb::Vec3R& v = openvdb::Vec3R(0, 0, 0));
 
+    void resize(const size_t count);
+
     /// @return coordinate bbox in the space of the specified transfrom
     openvdb::CoordBBox getBBox(const openvdb::GridBase& grid);
 

@@ -63,7 +63,6 @@ void VDBFileMenu::onShow()
 			}
 		}
 		if (ImGui::MenuItem("Export")) {
-			/*
 			FileSaveMenu fileSaveView("Export");
 			fileSaveView.addFilter("*.vdb");
 			fileSaveView.show();
@@ -72,7 +71,9 @@ void VDBFileMenu::onShow()
 				VDBFileWriter writer;
 				const auto isOk = writer.open(filename);
 				if (isOk) {
-					const auto scenes = world->getScenes()->findScenes(SceneTypeLabels::ParticleSystemScene);
+					auto type = SceneType(VDBParticleSystemScene::Type);
+					/*
+					const auto scenes = world->getScenes()->findScenes(type);
 					for (auto s : scenes) {
 						auto ps = static_cast<VDBParticleSystemScene*>(s);
 						const auto& particles = ps->getShape()->getParticles();
@@ -82,13 +83,13 @@ void VDBFileMenu::onShow()
 						}
 						writer.writePoints(s->getName(), positions);
 					}
+					*/
 					std::cout << "export succeded." << std::endl;
 				}
 				else {
 					std::cout << "export failed." << std::endl;
 				}
 			}
-			*/
 		}
 		ImGui::EndMenu();
 	}
