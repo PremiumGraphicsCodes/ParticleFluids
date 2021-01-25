@@ -71,19 +71,13 @@ void VDBFileMenu::onShow()
 				VDBFileWriter writer;
 				const auto isOk = writer.open(filename);
 				if (isOk) {
-					auto type = SceneType(VDBParticleSystemScene::Type);
-					/*
-					const auto scenes = world->getScenes()->findScenes(type);
-					for (auto s : scenes) {
+					const auto pointType = SceneType(VDBParticleSystemScene::Type);
+					const auto pointScenes = world->getScenes()->findScenes(pointType);
+					for (auto s : pointScenes) {
 						auto ps = static_cast<VDBParticleSystemScene*>(s);
-						const auto& particles = ps->getShape()->getParticles();
-						std::vector<Vector3dd> positions;
-						for (auto p : particles) {
-							positions.push_back(p->getPosition());
-						}
-						writer.writePoints(s->getName(), positions);
+						const auto& particles = ps->getPositions();
+						writer.writePoints(s->getName(), particles);
 					}
-					*/
 					std::cout << "export succeded." << std::endl;
 				}
 				else {
