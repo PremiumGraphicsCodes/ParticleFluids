@@ -34,12 +34,12 @@
                     <RibbonButton Label="Sphere" Command="{Binding NavigateCommand}" CommandParameter="PSSphereGeneration"/>
                     <RibbonButton Label="Quad" Command="{Binding NavigateCommand}" CommandParameter="PSQuadGeneration"/>
                 </RibbonGroup>
-                <RibbonGroup Header="PolygonMesh">
+                <!--RibbonGroup Header="PolygonMesh">
                     <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="PMBoxGeneration"/>
-                </RibbonGroup>
+                </>
                 <RibbonGroup Header="CSG">
                     <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="CSGBoxGeneration"/>
-                </RibbonGroup>
+                </-->
                 <RibbonGroup Header="Tool">
                     <RibbonButton Label="MeshToVolume" Command="{Binding NavigateCommand}" CommandParameter="MeshToVolume"/>
                     <RibbonButton Label="VolumeToPS" Command="{Binding NavigateCommand}" CommandParameter="VolumeToPS"/>

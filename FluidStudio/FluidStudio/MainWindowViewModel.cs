@@ -76,8 +76,8 @@ namespace FluidStudio
             mainModel.Scenes.CreateDefaultCameraScene();
             //OnCreateSolid();
             OnCreateParticles();
-            OnCreateVDBVolume();
-            OnCreateVDBPoints();
+            //OnCreateVDBVolume();
+            //OnCreateVDBPoints();
             OnCreatePhysicsScene();
         }
 
@@ -167,7 +167,7 @@ namespace FluidStudio
 
         private void OnCreateVDBVolume()
         {
-            this.volumeId = mainModel.VDBModel.CreateVDBVolume(mainModel.Scenes, "VDBVolume");
+            this.volumeId = mainModel.VDBModel.CreateVDBVolume(mainModel.Scenes, "VDBVolume", true);
             Canvas.BuildShader(mainModel.Scenes, volumeId);
             Canvas.Render();
         }

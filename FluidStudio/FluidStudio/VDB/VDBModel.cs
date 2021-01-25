@@ -115,18 +115,21 @@ namespace FluidStudio.VDB
             return newId;
         }
 
-        public int CreateVDBVolume(SceneList world, string name)
+        public int CreateVDBVolume(SceneList world, string name, bool doAddToList)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
             command.SetArg(PG.VDBSceneCreateLabels.SceneTypeLabel, PG.VDBSceneCreateLabels.SceneType_VDBVolumeLabel);
             command.Execute(world.Adapter);
             var newId = command.GetResult<int>(PG.VDBSceneCreateLabels.NewIdLabel);
-            var scene = new SceneModel();
-            scene.Id.Value = newId;
-            scene.Name.Value = name;
-            scene.SceneType = new PG.Core.SceneType(VDBVolumeLabel);
             world.SetName(newId, name);
-            world.Add(scene);
+            if (doAddToList)
+            {
+                var scene = new SceneModel();
+                scene.Id.Value = newId;
+                scene.Name.Value = name;
+                scene.SceneType = new PG.Core.SceneType(VDBVolumeLabel);
+                world.Add(scene);
+            }
             return newId;
         }
 

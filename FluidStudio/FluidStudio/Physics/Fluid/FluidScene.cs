@@ -41,7 +41,7 @@ namespace FluidStudio.Physics
 
         public void CreateVolume(SceneList world, VDBModel vdb, Canvas3d canvas)
         {
-            this.VolumeId = vdb.CreateVDBVolume(world, "Volume");
+            this.VolumeId = vdb.CreateVDBVolume(world, "Volume", false);
             canvas.BuildShader(world, VolumeId);
         }
 

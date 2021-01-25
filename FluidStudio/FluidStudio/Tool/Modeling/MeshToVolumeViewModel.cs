@@ -32,7 +32,7 @@ namespace FluidStudio.Tool.Modeling
         {
             var meshId = MeshSelectViewModel.Id.Value;
 
-            var volumeId = vdb.CreateVDBVolume(world, "VDBVolume");
+            var volumeId = vdb.CreateVDBVolume(world, "VDBVolume", true);
             this.canvas.BuildShader(world, volumeId);
 
             this.vdb.ConvertMeshToVolume(meshId, volumeId, world);
