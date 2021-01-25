@@ -2,13 +2,15 @@
 
 #include "../CrystalVDB/VDBFileReader.h"
 #include "../CrystalVDB/VDBFileWriter.h"
+#include "../CrystalVDB/VDBParticleSystemScene.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 
 #include "../../CrystalViewer/AppBase/FileOpenMenu.h"
 #include "../../CrystalViewer/AppBase/FileSaveMenu.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../VDBCommand/VDBFileReadCommand.h"
+//#include "../VDBCommand/PublicLabels/VDBFileReadLabels.h"
 
 #include <iostream>
 
@@ -40,34 +42,28 @@ void VDBFileMenu::onShow()
 				VDBFileReader reader;
 				const auto isOk = reader.open(filename);
 				if (isOk) {
-					const auto pointNames = reader.getPointGridNames();
-					for (const auto& n : pointNames) {
-						const auto positions = reader.readPositions(n);
-						const auto id = getWorld()->getNextSceneId();
-						auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>();
-						ParticleAttribute attr;
-						attr.color = ColorRGBAf(1.0, 1.0, 1.0, 1.0);
-						attr.size = 10.0f;
-						for (const auto& p : positions) {
-							ps->add(p, attr);
+					VDBFileReadCommand::Args args;
+					args.filePath.setValue(filename);
+					VDBFileReadCommand command(args);
+					const auto isOk = command.execute(world);
+					if (isOk) {
+						const auto results = command.getResults();
+						const auto newIds = std::any_cast<std::vector<int>>(results.newIds.value);
+						for (const auto& id : newIds) {
+							auto ps = world->getScenes()->findSceneById(id);
+							auto presenter = ps->getPresenter();
+							presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 						}
-						ParticleSystemScene* scene = new ParticleSystemScene(id, n, std::move(ps));
-						world->getScenes()->addScene(scene);
-
-						auto presenter = scene->getPresenter();
-						presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-						//						presenter->setBlend(false);
+						std::cout << "import suceeded." << std::endl;
 					}
-
-					std::cout << "import suceeded." << std::endl;
-				}
-				else {
-					std::cout << "import failed." << std::endl;
+					else {
+						std::cout << "import failed." << std::endl;
+					}
 				}
 			}
-			//			reader.read()
 		}
 		if (ImGui::MenuItem("Export")) {
+			/*
 			FileSaveMenu fileSaveView("Export");
 			fileSaveView.addFilter("*.vdb");
 			fileSaveView.show();
@@ -78,7 +74,7 @@ void VDBFileMenu::onShow()
 				if (isOk) {
 					const auto scenes = world->getScenes()->findScenes(SceneTypeLabels::ParticleSystemScene);
 					for (auto s : scenes) {
-						auto ps = static_cast<ParticleSystemScene*>(s);
+						auto ps = static_cast<VDBParticleSystemScene*>(s);
 						const auto& particles = ps->getShape()->getParticles();
 						std::vector<Vector3dd> positions;
 						for (auto p : particles) {
@@ -92,6 +88,7 @@ void VDBFileMenu::onShow()
 					std::cout << "export failed." << std::endl;
 				}
 			}
+			*/
 		}
 		ImGui::EndMenu();
 	}

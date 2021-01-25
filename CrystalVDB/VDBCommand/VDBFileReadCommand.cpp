@@ -26,6 +26,12 @@ VDBFileReadCommand::VDBFileReadCommand() :
 	ICommand(&args, &results)
 {}
 
+VDBFileReadCommand::VDBFileReadCommand(const Args& args) :
+	args(args),
+	ICommand(&this->args, &results)
+{
+}
+
 std::string VDBFileReadCommand::getName()
 {
 	return ::CommandNameLabel;

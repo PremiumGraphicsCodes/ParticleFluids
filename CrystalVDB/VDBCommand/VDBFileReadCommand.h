@@ -24,11 +24,15 @@ public:
 
 	VDBFileReadCommand();
 
+	explicit VDBFileReadCommand(const Args& args);
+
 	static std::string getName();
 
 	std::string getCommandName() const { return getName(); }
 
 	bool execute(Scene::World* world) override;
+
+	Results getResults() const { return results; }
 
 private:
 	Args args;

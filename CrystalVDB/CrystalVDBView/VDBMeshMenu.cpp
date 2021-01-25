@@ -40,16 +40,4 @@ void VDBMeshMenu::onShow()
 		}
 		ImGui::EndMenu();
 	}
-	if (ImGui::BeginMenu("VDBVolume")) {
-		if (ImGui::MenuItem("VolumeBox")) {
-			control->setWindow(new VDBVolumeView("VDBVolume", world, getCanvas()));
-		}
-		if (ImGui::MenuItem("VolumeToMesh")) {
-			control->setWindow(new VolumeToMeshView("VolumeToMesh", world, getCanvas()));
-		}
-		if (ImGui::MenuItem("VolumeToPS")) {
-			control->setWindow(new VolumeToPSView("VolumeToPS", world, getCanvas()));
-		}
-		ImGui::EndMenu();
-	}
 }

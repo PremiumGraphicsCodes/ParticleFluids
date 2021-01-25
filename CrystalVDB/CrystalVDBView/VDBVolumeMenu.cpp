@@ -22,7 +22,7 @@ void VDBVolumeMenu::onShow()
 
 	if (ImGui::BeginMenu("VDBVolume")) {
 		if (ImGui::MenuItem("VolumeBox")) {
-			control->setWindow(new VDBVolumeView("VDBVolume", world, getCanvas()));
+			control->setWindow(new VDBVolumeView("VDBVolumeBox", world, getCanvas()));
 		}
 		if (ImGui::MenuItem("VolumeToMesh")) {
 			control->setWindow(new VolumeToMeshView("VolumeToMesh", world, getCanvas()));
