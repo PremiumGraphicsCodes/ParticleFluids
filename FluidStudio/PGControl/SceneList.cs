@@ -69,7 +69,10 @@ namespace PG.Scene
 
         public void SetName(int id, string name)
         {
-//            var command = new PG.CLI.Command(PG.Up)
+            var command = new PG.CLI.Command(PG.SceneSetLabels.CommandNameLabel);
+            command.SetArg(PG.SceneSetLabels.IdLabel, id);
+            command.SetArg(PG.SceneSetLabels.NameLabel, name);
+            command.Execute(Adapter);
         }
 
         public int AddParticleSystemScene(List<Vector3d> positions, string name, Core.UI.ParticleAppearance appearance, int layer)

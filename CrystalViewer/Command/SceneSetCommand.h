@@ -8,7 +8,7 @@
 namespace Crystal {
 	namespace Command {
 
-class SceneSetCommand : ICommand
+class SceneSetCommand : public ICommand
 {
 public:
 	SceneSetCommand();

@@ -21,7 +21,7 @@ SceneSetCommand::SceneSetCommand() :
 
 std::string SceneSetCommand::getName()
 {
-	return SceneSetLabels::NameLabel;
+	return SceneSetLabels::CommandNameLabel;
 }
 
 bool SceneSetCommand::execute(World* world)

@@ -94,6 +94,7 @@ namespace FluidStudio.VDB
             var scene = new SceneModel();
             scene.Id.Value = newId;
             scene.Name.Value = name;
+            world.SetName(newId, name);
             scene.SceneType = new PG.Core.SceneType(VDBPointLabel);
             world.Add(scene);
             return newId;
@@ -109,6 +110,7 @@ namespace FluidStudio.VDB
             scene.Id.Value = newId;
             scene.Name.Value = name;
             scene.SceneType = new PG.Core.SceneType(VDBMeshLabel);
+            world.SetName(newId, name);
             world.Add(scene);
             return newId;
         }
@@ -123,6 +125,7 @@ namespace FluidStudio.VDB
             scene.Id.Value = newId;
             scene.Name.Value = name;
             scene.SceneType = new PG.Core.SceneType(VDBVolumeLabel);
+            world.SetName(newId, name);
             world.Add(scene);
             return newId;
         }

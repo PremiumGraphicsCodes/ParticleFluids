@@ -157,8 +157,8 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 		return std::make_unique<SceneGetCommand>();
 	}
 	else if (name == SceneSetCommand::getName()) {
-
-}
+		return std::make_unique<SceneSetCommand>();
+	}
 	else if (name == CameraGetCommand::getName()) {
 		return std::make_unique<CameraGetCommand>();
 	}
