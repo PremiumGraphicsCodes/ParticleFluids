@@ -34,7 +34,7 @@ namespace FluidStudio.Tool.Modeling
         {
             var volumeId = VolumeSelectViewModel.Id.Value;
 
-            var psId = vdb.CreateVDBPoints(world, new List<Vector3d>(), "ConvertedPoints");
+            var psId = vdb.CreateVDBPoints(world, "ConvertedPoints");
             this.canvas.BuildShader(world, psId);
 
             this.vdb.ConvertVolumeToPS(volumeId, psId, world);

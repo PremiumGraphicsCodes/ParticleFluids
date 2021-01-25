@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluidStudio.Scene.VDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,11 +49,13 @@ namespace FluidStudio.Scene
                 return;
             }
             var viewModel = treeView.DataContext as SceneListViewModel;
-            /*
-            var selectedItem = treeView.SelectedItem as PhysicsSceneViewModel;
-            var physicsScene = selectedItem.Model;
-            viewModel.ChangeView(physicsScene);
-            */
+            var selectedItem = treeView.SelectedItem as VDBSceneModel;
+            if(selectedItem != null)
+            {
+                viewModel.ChangeView(selectedItem);
+            }
+//            var physicsScene = selectedItem.Model;
+//            viewModel.ChangeView(physicsScene);
         }
     }
 }

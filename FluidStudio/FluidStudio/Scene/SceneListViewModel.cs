@@ -1,4 +1,5 @@
-﻿using PG.Scene;
+﻿using FluidStudio.Scene.VDB;
+using PG.Scene;
 using Prism.Regions;
 using Reactive.Bindings;
 
@@ -17,6 +18,35 @@ namespace FluidStudio.Scene
             this.world = world;
             this.regionManager = regionManager;
             Items = world.Scenes.ToReadOnlyReactiveCollection();
+        }
+
+        private void NavigateView(string name, NavigationParameters navigationParameters)
+        {
+            regionManager.RequestNavigate("ContentRegion", name, navigationParameters);
+        }
+
+        public void ChangeView(VDBSceneModel selectedItem)
+        {
+            /*
+            if (selectedItem == null)
+            {
+                return;
+            }
+            var parameters = new NavigationParameters();
+            parameters.Add("Scene", selectedItem);
+            if (selectedItem is SolverScene)
+            {
+                NavigateView("SolverUpdate", parameters);
+            }
+            else if (selectedItem is FluidScene)
+            {
+                NavigateView("FluidUpdate", parameters);
+            }
+            else if (selectedItem is CSGBoundaryScene)
+            {
+                NavigateView("CSGBoundaryUpdate", parameters);
+            }
+            */
         }
     }
 }
