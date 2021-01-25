@@ -114,10 +114,7 @@ namespace FluidStudio
                     }
                 }
             }
-            var appearance = new ParticleAppearance();
-            appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
-            appearance.Size = 10.0f;
-            int id = world.AddParticleSystemScene(positions, name, appearance, 1);
+            int id = mainModel.VDBModel.CreateVDBPoints(mainModel.Scenes, positions, name);
             this.Canvas.Camera.Fit();
             this.Canvas.BuildShader(world, id);
             this.Canvas.Render();
@@ -174,7 +171,7 @@ namespace FluidStudio
 
         private void OnCreateVDBPoints()
         {
-            var id = mainModel.VDBModel.CreateVDBPoints(mainModel.Scenes, "VDBPoints");
+            var id = mainModel.VDBModel.CreateVDBPoints(mainModel.Scenes, new List<Vector3d>(), "VDBPoints");
             Canvas.BuildShader(mainModel.Scenes, id);
             Canvas.Render();
         }

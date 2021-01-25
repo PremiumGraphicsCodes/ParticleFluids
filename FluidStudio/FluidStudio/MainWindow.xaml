@@ -25,6 +25,7 @@
                 <RibbonApplicationMenu DataContext="{Binding FileIOViewModel}">
                     <RibbonApplicationMenuItem Header="Open" Command="{Binding OpenCommand}"/>
                     <RibbonApplicationMenuItem Header="Save" Command="{Binding SaveCommand}"/>
+                    <RibbonApplicationMenuItem Header="Export" Command="{Binding ExportCommand}"/>
                     <RibbonApplicationMenuItem Header="Exit"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>

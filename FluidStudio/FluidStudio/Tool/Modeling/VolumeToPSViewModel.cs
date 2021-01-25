@@ -1,8 +1,10 @@
 ﻿using FluidStudio.VDB;
 using PG.Control.OpenGL;
 using PG.Control.UI;
+using PG.Core.Math;
 using PG.Scene;
 using Reactive.Bindings;
+using System.Collections.Generic;
 
 namespace FluidStudio.Tool.Modeling
 {
@@ -32,7 +34,7 @@ namespace FluidStudio.Tool.Modeling
         {
             var volumeId = VolumeSelectViewModel.Id.Value;
 
-            var psId = vdb.CreateVDBPoints(world, "ConvertedPoints");
+            var psId = vdb.CreateVDBPoints(world, new List<Vector3d>(), "ConvertedPoints");
             this.canvas.BuildShader(world, psId);
 
             this.vdb.ConvertVolumeToPS(volumeId, psId, world);

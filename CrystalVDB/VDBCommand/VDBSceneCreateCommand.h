@@ -17,6 +17,7 @@ public:
 	{
 		Arg<std::string> sceneType;
 		Arg<std::string> name;
+		Arg<std::vector<Math::Vector3dd>> positions;
 		
 		Args();
 	};

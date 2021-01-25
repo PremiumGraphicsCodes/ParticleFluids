@@ -9,4 +9,5 @@ namespace
 	PublicLabel SceneType_VDBVolumeLabel = "VDBVolume";
 	PublicLabel NameLabel = "Name";
 	PublicLabel NewIdLabel = "NewId";
+	PublicLabel PositionsLabel = "Positions";
 }

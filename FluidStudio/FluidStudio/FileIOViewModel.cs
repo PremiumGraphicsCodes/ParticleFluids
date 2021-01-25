@@ -23,6 +23,9 @@ namespace FluidStudio
         public ReactiveCommand SaveAsCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveCommand ExportCommand { get; }
+            = new ReactiveCommand();
+
         private readonly MainModel model;
 
         private readonly SceneList world;
@@ -38,6 +41,7 @@ namespace FluidStudio
             OpenCommand.Subscribe(OnOpen);
             SaveCommand.Subscribe(OnSave);
             SaveAsCommand.Subscribe(OnSaveAs);
+            ExportCommand.Subscribe(OnExport);
         }
 
         private void OnNew()
@@ -88,6 +92,23 @@ namespace FluidStudio
             if (dialog.ShowDialog() == true)
             {
                 //world.Save(dialog.FileName);
+            }
+        }
+
+        private void OnExport()
+        {
+            var dialog = new SaveFileDialog
+            {
+                Title = "Export",
+                Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
+            };
+            if(dialog.ShowDialog() == true)
+            {
+                var path = dialog.FileName;
+                var ext = System.IO.Path.GetExtension(path);
+                if (ext == ".vdb") {
+                    model.VDBModel.ExportAll(model.Scenes, path);
+                }
             }
         }
     }

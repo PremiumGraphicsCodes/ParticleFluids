@@ -13,10 +13,12 @@ using namespace Crystal::VDB;
 
 VDBSceneCreateCommand::Args::Args() :
 	sceneType(::SceneTypeLabel, ::SceneType_VDBPointsLabel),
-	name(::NameLabel, "")
+	name(::NameLabel, ""),
+	positions(::PositionsLabel, {})
 {
 	add(&sceneType);
 	add(&name);
+	add(&positions);
 }
 
 VDBSceneCreateCommand::Results::Results() :
@@ -36,6 +38,10 @@ bool VDBSceneCreateCommand::execute(World* world)
 	const auto name = args.name.getValue();
 	if (typeName == ::SceneType_VDBPointsLabel) {
 		auto mesh = new VDBParticleSystemScene(world->getNextSceneId(), name);
+		const auto& positions = args.positions.getValue();
+		for (const auto& p : positions) {
+			mesh->add(p, 1.0);
+		}
 		world->addScene(1, mesh);
 		results.newId.setValue(mesh->getId());
 	}
