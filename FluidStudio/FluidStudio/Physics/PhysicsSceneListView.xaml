@@ -16,5 +16,6 @@
                     <TextBlock Text="{Binding Name.Value}"/>
                 </StackPanel>
             </HierarchicalDataTemplate>
-        </TreeView.ItemTemplate>    </TreeView>
+        </TreeView.ItemTemplate>
+    </TreeView>
 </UserControl>

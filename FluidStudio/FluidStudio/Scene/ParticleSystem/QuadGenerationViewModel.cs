@@ -27,6 +27,7 @@ namespace FluidStudio.Scene.ParticleSystem
         {
             this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
+
         private void OnGenerate(SceneList world, Canvas3d canvas)
         {
             var quad = QuadViewModel.Value;

@@ -1,15 +1,14 @@
-﻿<UserControl x:Class="FluidStudio.Scene.PolygonMesh.BoxGenerationView"
+﻿<UserControl x:Class="FluidStudio.Scene.VDB.VDBSceneView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:FluidStudio.Scene.PolygonMesh"
+             xmlns:local="clr-namespace:FluidStudio.Scene.VDB"
              mc:Ignorable="d"
-             xmlns:math="clr-namespace:PG.Control.Math;assembly=PGControl"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
-        <math:Box3dView/>
-        <Button Content="Generate" Command="{Binding GenerationCommand}"/>
+        <TextBox Text="{Binding FilePath.Value}"/>
+        <Button Content="Select" Command="{Binding OnSelectFile}"/>
     </StackPanel>
 </UserControl>

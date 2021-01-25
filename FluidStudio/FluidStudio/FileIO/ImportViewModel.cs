@@ -1,13 +1,10 @@
-﻿using FluidStudio.VDB;
+﻿using FluidStudio.Scene.VDB;
+using FluidStudio.VDB;
 using Microsoft.Win32;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FluidStudio.FileIO
 {
@@ -57,8 +54,9 @@ namespace FluidStudio.FileIO
                 var newIds = vdb.Read(filePath, world);
                 foreach(var newId in newIds)
                 {
-                    var scene = new SceneModel();
+                    var scene = new VDBSceneModel();
                     scene.Id.Value = newId;
+                    scene.FilePath.Value = filePath;
                     var type = vdb.GetVDBType(newId, world);
                     if(type == VDBModel.VDBType.Point)
                     {

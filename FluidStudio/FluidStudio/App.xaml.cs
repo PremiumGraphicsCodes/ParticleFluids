@@ -1,6 +1,7 @@
 ﻿using FluidStudio.FileIO;
 using FluidStudio.Physics;
 using FluidStudio.Physics.Solver;
+using FluidStudio.Scene.VDB;
 using FluidStudio.Tool.Modeling;
 using PG.Control.OpenGL;
 using PG.Scene;
@@ -48,6 +49,8 @@ namespace FluidStudio
 
             containerRegistry.RegisterForNavigation<ImportView>("Import");
             containerRegistry.RegisterForNavigation<ExportView>("Export");
+
+            containerRegistry.RegisterForNavigation<VDBSceneView>("VDBScene");
         }
     }
 }

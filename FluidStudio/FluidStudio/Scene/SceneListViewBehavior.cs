@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
-namespace FluidStudio.Physics
+namespace FluidStudio.Scene
 {
-    public class PhysicsSceneListViewBehavior : Behavior<TreeView>
+    public class SceneListViewBehavior : Behavior<TreeView>
     {
         protected override void OnAttached()
         {
@@ -28,15 +30,11 @@ namespace FluidStudio.Physics
             {
                 return;
             }
+            /*
             var selectedItem = treeView.SelectedItem as SolverScene;
             if (selectedItem == null)
             {
                 return;
-            }
-            /*
-            if (e.Key == Key.Delete)
-            {
-                World.Instance.Scenes.Delete(selectedItem.Id.Value);
             }
             */
         }
@@ -49,11 +47,12 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            var viewModel = treeView.DataContext as PhysicsSceneListViewModel;
+            var viewModel = treeView.DataContext as SceneListViewModel;
+            /*
             var selectedItem = treeView.SelectedItem as PhysicsSceneViewModel;
             var physicsScene = selectedItem.Model;
             viewModel.ChangeView(physicsScene);
-            //            viewModel.ChangeView(selectedItem);
+            */
         }
     }
 }

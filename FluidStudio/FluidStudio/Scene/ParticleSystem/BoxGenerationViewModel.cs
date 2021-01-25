@@ -29,9 +29,12 @@ namespace FluidStudio.Scene.ParticleSystem
         public ReactiveProperty<double> Dz { get; }
             = new ReactiveProperty<double>(1.0);
 
-        public BoxGenerationViewModel(SceneList world, Canvas3d canvas)
+        private MainModel model;
+
+        public BoxGenerationViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
-            BoxViewModel.Value = new Box3d(new Vector3d(0, 0, 0), new Vector3d(10, 10, 10));
+            this.model = model;
+            this.BoxViewModel.Value = new Box3d(new Vector3d(0, 0, 0), new Vector3d(10, 10, 10));
             this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
         }
 
@@ -59,7 +62,7 @@ namespace FluidStudio.Scene.ParticleSystem
             var appearance = new ParticleAppearance();
             appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
             appearance.Size = 10.0f;
-            var newId = world.AddParticleSystemScene(positions, "PSBox", appearance, 1);
+            var newId = model.VDBModel.CreateVDBPoints(world, positions, "PSBox");//world.AddParticleSystemScene(positions, "PSBox", appearance, 1);
             canvas.Camera.Fit();
             canvas.BuildShader(world, newId);
             canvas.Render();

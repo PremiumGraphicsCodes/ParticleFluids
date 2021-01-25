@@ -48,6 +48,7 @@
                 <RibbonGroup Header="File">
                     <RibbonButton Label="Import" Command="{Binding NavigateCommand}" CommandParameter="Import"/>
                     <RibbonButton Label="Export" Command="{Binding NavigateCommand}" CommandParameter="Export"/>
+                    <RibbonButton Label="VDB" Command="{Binding NavigateCommand}" CommandParameter="VDBScene"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Physics">
