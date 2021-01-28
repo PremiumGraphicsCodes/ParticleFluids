@@ -51,14 +51,18 @@ namespace FluidStudio.FileIO
 
         private FluidScene ReadFluidScene(MainModel model, Canvas3d canvas, XElement elem)
         {
-            var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);
+//            var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);
             var particlesFilePath = elem.Element(FSProjFile.ParticlesFilePathLabel).Value;
             var stiffness = float.Parse(elem.Element(FSProjFile.StiffnessLabel).Value);
             var viscosity = float.Parse(elem.Element(FSProjFile.ViscosityLabel).Value);
             var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
             var fluidScene = new FluidScene();
-            fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, "", isBoundary);
             fluidScene.SetParticlesFromFile(model.Scenes, model.VDBModel, canvas, particlesFilePath);
+            fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, "", isBoundary);
+
+            canvas.BuildShader(model.Scenes, fluidScene.Id);
+            canvas.Render();
+
             return fluidScene;
         }
     }
