@@ -20,7 +20,7 @@ namespace FluidStudio.Physics
         public List<CSGBoundaryScene> CSGBoundaries { get; private set; }
             = new List<CSGBoundaryScene>();
 
-        public float TimeStep { get; private set; } = 0.03f;
+        public float TimeStep { get; set; } = 0.03f;
 
         public int Id { get; private set; }
 

@@ -78,7 +78,7 @@ namespace FluidStudio
             //OnCreateParticles();
             //OnCreateVDBVolume();
             //OnCreateVDBPoints();
-            OnCreatePhysicsScene();
+            //OnCreatePhysicsScene();
         }
 
         private int sourcePSId;

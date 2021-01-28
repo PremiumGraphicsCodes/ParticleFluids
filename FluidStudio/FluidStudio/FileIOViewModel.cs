@@ -59,11 +59,12 @@ namespace FluidStudio
             var dialog = new OpenFileDialog
             {
                 Title = "Open",
-                Filter = "FSSceneFile(*.fsscene)|*.fsproj|AllFiles(*.*)|*.*",
+                Filter = "FSSceneFile(*.fsscene)|*.fsscene|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {
-                //world.Open(dialog.FileName);
+                var reader = new FSSceneFileReader();
+                reader.Read(model, canvas, dialog.FileName);
             }
         }
 

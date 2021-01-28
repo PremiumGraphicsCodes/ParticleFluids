@@ -1,4 +1,5 @@
 ﻿using FluidStudio.Physics;
+using PG.Control.OpenGL;
 using PG.Scene;
 using System;
 using System.Collections.Generic;
@@ -11,34 +12,51 @@ namespace FluidStudio.FileIO
 {
     public class FSSceneFileReader
     {
-        public void Read(MainModel model, string filePath)
+        public void Read(MainModel model, Canvas3d canvas, string filePath)
         {
             var elem = XElement.Load(filePath);
-            Read(model, elem);
+            Read(model, canvas, elem);
         }
 
-        public void Read(MainModel model, XElement root)
+        public void Read(MainModel model, Canvas3d canvas, XElement root)
         {
 //            var root = elem.Element(FSProjFile.RootLabel);
             var version = root.Attribute(FSProjFile.FileFormatVersionLabel).Value;
             var physicsElem = root.Element(FSProjFile.PhysicsSceneLabel);
-            ReadPhysicsScene(model, physicsElem);
+            ReadPhysicsScene(model, canvas, physicsElem);
         }
 
-        public void ReadPhysicsScene(MainModel model, XElement elem)
+        private void ReadPhysicsScene(MainModel model, Canvas3d canvas, XElement elem)
         {
             var physicsScene = new SolverScene();
+            var timeStep = float.Parse(elem.Element(FSProjFile.TimeStepLabel).Value);
+            var scenes = elem.Elements(FSProjFile.FluidSceneLabel);
+            foreach(var scene in scenes)
             {
-                var name = elem.Element(FSProjFile.NameLabel).Value;
-                var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);
-//                var particleSystemId = int.Parse(elem.Element(FSProjFile.ParticleSystemIdLabel).Value);
-                var stiffness = float.Parse(elem.Element(FSProjFile.StiffnessLabel).Value);
-                var viscosity = float.Parse(elem.Element(FSProjFile.ViscosityLabel).Value);
-                var fluidScene = new FluidScene();
-                fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, "", false);
+                var fluid = ReadFluidScene(model, canvas, scene);
+                physicsScene.Fluids.Add(fluid);
+            }
+            /*
+            {
+//                var name = elem.Element(FSProjFile.NameLabel).Value;
                 physicsScene.Fluids.Add(fluidScene);
             }
+            */
+            physicsScene.TimeStep = timeStep;
             model.PhysicsModel.Solvers.Add(physicsScene);
+        }
+
+        private FluidScene ReadFluidScene(MainModel model, Canvas3d canvas, XElement elem)
+        {
+            var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);
+            var particlesFilePath = elem.Element(FSProjFile.ParticlesFilePathLabel).Value;
+            var stiffness = float.Parse(elem.Element(FSProjFile.StiffnessLabel).Value);
+            var viscosity = float.Parse(elem.Element(FSProjFile.ViscosityLabel).Value);
+            var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
+            var fluidScene = new FluidScene();
+            fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, "", false);
+            fluidScene.SetParticlesFromFile(model.Scenes, model.VDBModel, canvas, particlesFilePath);
+            return fluidScene;
         }
     }
 }
