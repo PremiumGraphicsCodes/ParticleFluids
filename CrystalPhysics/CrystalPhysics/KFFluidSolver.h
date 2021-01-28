@@ -31,6 +31,8 @@ public:
 
 	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
 
+	//void addBoundaryScene()
+
 	void setMaxTimeStep(const float maxTimeStep) { this->maxTimeStep = maxTimeStep; }
 
 	void simulate();

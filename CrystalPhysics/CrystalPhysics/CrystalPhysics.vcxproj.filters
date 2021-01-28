@@ -90,6 +90,12 @@
     <ClInclude Include="CSGBoundaryScenePresenter.h">
       <Filter>Boundary</Filter>
     </ClInclude>
+    <ClInclude Include="KFBoundaryScene.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBoundaryParticle.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -162,6 +168,9 @@
     </ClCompile>
     <ClCompile Include="CSGBoundaryScene.cpp">
       <Filter>Boundary</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBoundaryParticle.cpp">
+      <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
