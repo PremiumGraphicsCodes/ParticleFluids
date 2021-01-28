@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace FluidStudio.FileIO
 {
-    public class FSProjFileReader
+    public class FSSceneFileReader
     {
         public void Read(MainModel model, string filePath)
         {

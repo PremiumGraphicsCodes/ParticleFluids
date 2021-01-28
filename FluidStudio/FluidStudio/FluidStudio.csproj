@@ -120,8 +120,8 @@
       <DependentUpon>ExportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="FileIO\ExportViewModel.cs" />
-    <Compile Include="FileIO\FSProjFileReader.cs" />
-    <Compile Include="FileIO\FSProjFileWriter.cs" />
+    <Compile Include="FileIO\FSSceneFileReader.cs" />
+    <Compile Include="FileIO\FSSceneFileWriter.cs" />
     <Compile Include="FileIO\ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>
     </Compile>

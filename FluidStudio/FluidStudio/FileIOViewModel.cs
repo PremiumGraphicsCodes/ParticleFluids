@@ -59,7 +59,7 @@ namespace FluidStudio
             var dialog = new OpenFileDialog
             {
                 Title = "Open",
-                Filter = "FSProjectFile(*.fsproj)|*.fsproj|AllFiles(*.*)|*.*",
+                Filter = "FSSceneFile(*.fsscene)|*.fsproj|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {
@@ -72,11 +72,11 @@ namespace FluidStudio
             var dialog = new SaveFileDialog
             {
                 Title = "Save",
-                Filter = "FSProjectFile(*.fsproj)|*.fsproj|AllFiles(*.*)|*.*",
+                Filter = "FSSceneFile(*.fsscene)|*.fsproj|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {
-                var writer = new FSProjFileWriter();
+                var writer = new FSSceneFileWriter();
                 writer.Write(model, dialog.FileName);
 
                 //world.Save(dialog.FileName);

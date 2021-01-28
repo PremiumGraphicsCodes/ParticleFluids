@@ -17,7 +17,11 @@
             <TextBlock Text="Name"/>
             <TextBox Text="{Binding Name.Value}" IsReadOnly="True" MinWidth="50"/>
         </StackPanel>
-        <ui:SceneSelectView DataContext="{Binding SourceParticleSystemSelectViewModel}"/>
+        <!--ui:SceneSelectView DataContext="{Binding SourceParticleSystemSelectViewModel}"/-->
+        <StackPanel Orientation="Horizontal">
+            <Button Content="ParticleFile" Command="{Binding ParticleFileSelectCommand}"/>
+            <TextBox Text="{Binding ParticleFilePath.Value}" IsReadOnly="True" MinWidth="100"/>
+        </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Density"/>
             <TextBox Text="{Binding Density.Value}" MinWidth="50"/>

@@ -19,11 +19,11 @@ namespace FluidStudio.FileIO
         public const string IsBoundarylabel = "IsBoundary";
     }
 
-    public class FSProjFileWriter
+    public class FSSceneFileWriter
     {
         private int version = 1;
 
-        public FSProjFileWriter()
+        public FSSceneFileWriter()
         {
         }
 
