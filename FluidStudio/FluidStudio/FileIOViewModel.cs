@@ -76,8 +76,8 @@ namespace FluidStudio
             };
             if (dialog.ShowDialog() == true)
             {
-                var writer = new FSSceneFileWriter();
-                writer.Write(model, dialog.FileName);
+//                var writer = new FSSceneFileWriter();
+ //               writer.Write(model, dialog.FileName);
 
                 //world.Save(dialog.FileName);
             }

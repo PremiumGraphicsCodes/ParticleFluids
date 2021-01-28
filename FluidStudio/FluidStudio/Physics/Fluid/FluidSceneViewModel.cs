@@ -77,14 +77,7 @@ namespace FluidStudio.Physics
                 Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true) {
-                this.ParticleFilePath.Value = dialog.FileName;
-                var ids = mainModel.VDBModel.Read(this.ParticleFilePath.Value, world);
-                if(ids.Count() > 0)
-                {
-                    this.particleSystemId = ids[0];
-                    canvas.BuildShader(world, this.particleSystemId);
-                    canvas.Render();
-                }
+               this.scene.SetParticlesFromFile( world, mainModel.VDBModel, canvas, dialog.FileName );
             }
         }
 
@@ -128,7 +121,7 @@ namespace FluidStudio.Physics
             var viscosity = Viscosity.Value;
             var name = Name.Value;
             var isBoundary = IsBoundary.Value;
-            this.scene.Update(world, particleSystemId, density, stiffness, viscosity, name, isBoundary);
+            this.scene.Update(world, density, stiffness, viscosity, name, isBoundary);
         }
     }
 }

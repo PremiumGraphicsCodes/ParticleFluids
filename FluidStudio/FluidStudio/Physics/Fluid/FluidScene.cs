@@ -2,6 +2,7 @@
 using FluidStudio.VDB;
 using PG.Control.OpenGL;
 using PG.Scene;
+using System.Linq;
 using CreateLabels = PG.FluidSceneCreateLabels;
 using UpdateLabels = PG.FluidSceneUpdateLabels;
 
@@ -33,12 +34,12 @@ namespace FluidStudio.Physics
         public FluidScene()
         { }
         
-        public void Create(SceneList world, int particleSystemId, float density, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Create(SceneList world, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(world, particleSystemId, density, stiffness, viscosity, name, isBoundary);
+            Update(world, density, stiffness, viscosity, name, isBoundary);
         }
 
         public void CreateVolume(SceneList world, VDBModel vdb, Canvas3d canvas)
@@ -47,16 +48,28 @@ namespace FluidStudio.Physics
             canvas.BuildShader(world, VolumeId);
         }
 
-        public void Update(SceneList world, int particleSystemId, float density, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Update(SceneList world, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
             this.Name = name;
             this.Density = density;
             this.Stiffness = stiffness;
             this.Viscosity = viscosity;
-            this.SourceParticleSystemId = particleSystemId;
+            //this.SourceParticleSystemId = particleSystemId;
             this.IsBoundary = isBoundary;
             this.Name = name;
             Reset(world);
+        }
+
+        public void SetParticlesFromFile(SceneList world, VDBModel vdb, Canvas3d canvas, string particleFilePath)
+        {
+            // TODO 前のPSのクリア処理．
+            var ids = vdb.Read(particleFilePath, world);
+            if (ids.Count() > 0)
+            {
+                this.SourceParticleSystemId = ids[0];
+                canvas.BuildShader(world, this.SourceParticleSystemId);
+                canvas.Render();
+            }
         }
 
         public void ExportFiles(SceneList world, VDBModel vdb, int timeStep)

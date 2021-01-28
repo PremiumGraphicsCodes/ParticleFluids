@@ -31,11 +31,11 @@ namespace FluidStudio.FileIO
             {
                 var name = elem.Element(FSProjFile.NameLabel).Value;
                 var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);
-                var particleSystemId = int.Parse(elem.Element(FSProjFile.ParticleSystemIdLabel).Value);
+//                var particleSystemId = int.Parse(elem.Element(FSProjFile.ParticleSystemIdLabel).Value);
                 var stiffness = float.Parse(elem.Element(FSProjFile.StiffnessLabel).Value);
                 var viscosity = float.Parse(elem.Element(FSProjFile.ViscosityLabel).Value);
                 var fluidScene = new FluidScene();
-                fluidScene.Create(model.Scenes, particleSystemId, 1.0f, stiffness, viscosity, "", false);
+                fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, "", false);
                 physicsScene.Fluids.Add(fluidScene);
             }
             model.PhysicsModel.Solvers.Add(physicsScene);
