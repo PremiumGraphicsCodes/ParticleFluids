@@ -13,6 +13,8 @@ namespace FluidStudio.Physics
 
         public int SourceParticleSystemId { get; private set; }
 
+        public string ParticleFilePath { get; private set; }
+
         public int VolumeId { get; private set; }
 
         public string Name { get; private set; }

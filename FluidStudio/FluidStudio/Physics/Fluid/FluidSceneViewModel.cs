@@ -69,6 +69,8 @@ namespace FluidStudio.Physics
 
         private void OnSelectPSFile()
         {
+//            var currentDir = System.Environment.CurrentDirectory;
+//            Console.WriteLine();
             var dialog = new OpenFileDialog()
             {
                 Title = "Import",

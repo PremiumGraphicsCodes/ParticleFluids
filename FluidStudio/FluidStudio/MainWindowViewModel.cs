@@ -75,7 +75,7 @@ namespace FluidStudio
         {
             mainModel.Scenes.CreateDefaultCameraScene();
             //OnCreateSolid();
-            OnCreateParticles();
+            //OnCreateParticles();
             //OnCreateVDBVolume();
             //OnCreateVDBPoints();
             OnCreatePhysicsScene();
@@ -125,7 +125,7 @@ namespace FluidStudio
 
         private void OnCreatePhysicsScene()
         {
-            Canvas.BuildShader(mainModel.Scenes, sourcePSId);
+            //Canvas.BuildShader(mainModel.Scenes, sourcePSId);
 
             var fluids = new List<FluidScene>();
             var fluidScene1 = new FluidScene();
