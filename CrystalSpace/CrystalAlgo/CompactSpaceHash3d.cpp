@@ -26,6 +26,12 @@ CompactSpaceHash3d::~CompactSpaceHash3d()
 	clear();
 }
 
+void CompactSpaceHash3d::setup(const double divideLength, const int tableSize)
+{
+	this->divideLength = divideLength;
+	this->table.resize(tableSize);
+}
+
 void CompactSpaceHash3d::clear()
 {
 	for (auto cell : cells) {

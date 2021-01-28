@@ -74,6 +74,11 @@ namespace FluidStudio
         public void CreateDefaultTemplate()
         {
             mainModel.Scenes.CreateDefaultCameraScene();
+
+            var scene = new SolverScene();
+            scene.Create(mainModel.Scenes, new List<FluidScene>(), new List<CSGBoundaryScene>(), 0.03f, "Solver01");
+            mainModel.PhysicsModel.Solvers.Add(scene);
+            
             //OnCreateSolid();
             //OnCreateParticles();
             //OnCreateVDBVolume();

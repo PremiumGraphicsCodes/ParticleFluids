@@ -13,9 +13,48 @@ using namespace Crystal::Math;
 using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
+void KFBoundarySolver::setup()
+{
+	std::vector<KFMacroParticle*> boundaryParticles;
+	for (auto b : boundaries) {
+		const auto bp = b->getParticles();
+		boundaryParticles.insert(boundaryParticles.end(), bp.begin(), bp.end());
+	}
+
+	if (boundaryParticles.empty()) {
+		return;
+	}
+
+	const auto hashSize = boundaryParticles.front()->getPoints().size() * boundaryParticles.size();
+	const auto searchRadius = boundaryParticles.front()->getRadius() * 2.25;
+	spaceHash.setup(searchRadius, boundaryParticles.size());
+
+	for (auto bp : boundaryParticles) {
+		const auto& microParticles = bp->getPoints();
+		for (auto mp : microParticles) {
+			spaceHash.add(mp);
+		}
+	}
+}
+
 KFFluidSolver::KFFluidSolver(const int id) :
 	IAnimator(id)
 {}
+
+void KFFluidSolver::setupBoundaries()
+{
+	this->boundarySolver.setup();
+}
+
+void KFFluidSolver::addFluidScene(KFFluidScene* scene)
+{
+	this->fluids.push_back(scene);
+}
+
+void KFFluidSolver::addBoundaryScene(KFFluidScene* scene)
+{
+	this->boundarySolver.addBoundaryScene(scene);
+}
 
 void KFFluidSolver::step()
 {
@@ -26,18 +65,9 @@ void KFFluidSolver::simulate()
 {
 	std::vector<KFMacroParticle*> fluidParticles;
 
-	const auto fluids = getFluids();
-	const auto boundaries = getBoundaries();
-
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
-	}
-
-	std::vector<KFMacroParticle*> boundaryParticles;
-	for (auto b : boundaries) {
-		const auto bp = b->getParticles();
-		boundaryParticles.insert(boundaryParticles.end(), bp.begin(), bp.end());
 	}
 
 	for (auto particle : fluidParticles) {
@@ -58,18 +88,16 @@ void KFFluidSolver::simulate()
 			spaceHash.add(mp);
 		}
 	}
-	for (auto bp : boundaryParticles) {
-		const auto& microParticles = bp->getPoints();
-		for (auto mp : microParticles) {
-			spaceHash.add(mp);
-		}
-	}
 
 #pragma omp parallel for
 	for(int i = 0; i < fluidParticles.size(); ++i) {
 		const auto particle = fluidParticles[i];
 		const auto& neighbors = spaceHash.findNeighbors(particle);
 		for (auto n : neighbors) {
+			particle->addMicro(static_cast<KFMicroParticle*>(n));
+		}
+		const auto& bps = boundarySolver.findNeighbors(particle->getPosition());
+		for (auto n : bps) {
 			particle->addMicro(static_cast<KFMicroParticle*>(n));
 		}
 	}
@@ -155,29 +183,6 @@ float KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& part
 	return maxTimeStep;
 	//return std::min(dt, maxTimeStep);
 }
-
-std::list<KFFluidScene*> KFFluidSolver::getFluids()
-{
-	std::list<KFFluidScene*> results;
-	for (auto f : fluids) {
-		if (!f->isBoundary()) {
-			results.push_back(f);
-		}
-	}
-	return results;
-}
-
-std::list<KFFluidScene*> KFFluidSolver::getBoundaries()
-{
-	std::list<KFFluidScene*> results;
-	for (auto f : fluids) {
-		if (f->isBoundary()) {
-			results.push_back(f);
-		}
-	}
-	return results;
-}
-
 
 void KFFluidSolver::solveBoundary(KFMacroParticle* particle, const double dt)
 {

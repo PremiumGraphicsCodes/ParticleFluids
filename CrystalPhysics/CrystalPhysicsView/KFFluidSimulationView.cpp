@@ -106,6 +106,7 @@ void KFFluidSimulationView::reset()
 			}
 		}
 	}
+	boundaryScene->setBoundary(true);
 
 	// bottom
 	/*
@@ -169,9 +170,9 @@ void KFFluidSimulationView::reset()
 
 	simulator.clear();
 	simulator.addFluidScene(fluidScene);
-	simulator.addFluidScene(boundaryScene);
+	simulator.addBoundaryScene(boundaryScene);
 	simulator.addBoundary(this->boundaryView.getBoundary());
 
 	simulator.setMaxTimeStep(this->timeStepView.getValue());
-
+	simulator.setupBoundaries();
 }

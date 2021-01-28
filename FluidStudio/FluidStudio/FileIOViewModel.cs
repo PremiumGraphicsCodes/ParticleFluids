@@ -63,6 +63,7 @@ namespace FluidStudio
             };
             if (dialog.ShowDialog() == true)
             {
+                model.PhysicsModel.Solvers.Clear();
                 var reader = new FSSceneFileReader();
                 reader.Read(model, canvas, dialog.FileName);
             }

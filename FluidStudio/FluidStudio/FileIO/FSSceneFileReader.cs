@@ -31,10 +31,12 @@ namespace FluidStudio.FileIO
             var physicsScene = new SolverScene();
             var timeStep = float.Parse(elem.Element(FSProjFile.TimeStepLabel).Value);
             var scenes = elem.Elements(FSProjFile.FluidSceneLabel);
+            var fluids = new List<FluidScene>();
             foreach(var scene in scenes)
             {
                 var fluid = ReadFluidScene(model, canvas, scene);
-                physicsScene.Fluids.Add(fluid);
+                fluids.Add(fluid);
+//                physicsScene.Fluids.Add(fluid);
             }
             /*
             {
@@ -43,6 +45,7 @@ namespace FluidStudio.FileIO
             }
             */
             physicsScene.TimeStep = timeStep;
+            physicsScene.Create(model.Scenes, fluids, new List<CSGBoundaryScene>(), timeStep, "");
             model.PhysicsModel.Solvers.Add(physicsScene);
         }
 
@@ -54,7 +57,7 @@ namespace FluidStudio.FileIO
             var viscosity = float.Parse(elem.Element(FSProjFile.ViscosityLabel).Value);
             var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
             var fluidScene = new FluidScene();
-            fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, "", false);
+            fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, "", isBoundary);
             fluidScene.SetParticlesFromFile(model.Scenes, model.VDBModel, canvas, particlesFilePath);
             return fluidScene;
         }

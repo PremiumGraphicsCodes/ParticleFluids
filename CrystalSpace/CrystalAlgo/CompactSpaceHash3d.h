@@ -22,9 +22,13 @@ public:
 class CompactSpaceHash3d : private UnCopyable
 {
 public:
+	CompactSpaceHash3d() = default;
+
 	CompactSpaceHash3d(const double divideLength, const int tableSize);
 
 	~CompactSpaceHash3d();
+
+	void setup(const double divideLength, const int tableSize);
 
 	void clear();
 
@@ -51,7 +55,7 @@ private:
 
 	unsigned int toZIndex(const std::array<unsigned int, 3>& index) const;
 
-	const double divideLength;
+	double divideLength;
 	
 	const ZOrderCurve3d zCurve;
 
