@@ -96,6 +96,9 @@
     <ClInclude Include="KFBoundaryParticle.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="KFBoundaryScenePresenter.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -170,6 +173,12 @@
       <Filter>Boundary</Filter>
     </ClCompile>
     <ClCompile Include="KFBoundaryParticle.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBoundaryScene.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBoundaryScenePresenter.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>

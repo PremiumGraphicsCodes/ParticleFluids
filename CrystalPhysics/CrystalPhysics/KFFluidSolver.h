@@ -29,9 +29,9 @@ public:
 
 	void addFluidScene(KFFluidScene* scene) { this->fluids.push_back(scene); }
 
-	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
+	//void addBoundaryScene(KFFluidScene* scene) { this->boundaries.push_back(scene); }
 
-	//void addBoundaryScene()
+	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
 
 	void setMaxTimeStep(const float maxTimeStep) { this->maxTimeStep = maxTimeStep; }
 
@@ -50,6 +50,7 @@ private:
 	//void solveBoundary(const std::vector<MacroParticle*>& particles);
 	
 	std::list<KFFluidScene*> fluids;
+	//std::list<KFFluidScene*> boundaries;
 	std::list<CSGBoundaryScene*> csgBoundaries;
 	float maxTimeStep = 0.03f;
 };
