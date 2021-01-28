@@ -34,18 +34,15 @@ namespace FluidStudio.Physics
         public FluidScene()
         { }
         
-        public void Create(SceneList world, float density, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Create(SceneList world, VDBModel vdb, Canvas3d canvas, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(world, density, stiffness, viscosity, name, isBoundary);
-        }
-
-        public void CreateVolume(SceneList world, VDBModel vdb, Canvas3d canvas)
-        {
             this.VolumeId = vdb.CreateVDBVolume(world, "Volume", false);
             canvas.BuildShader(world, VolumeId);
+
+            Update(world, density, stiffness, viscosity, name, isBoundary);
         }
 
         public void Update(SceneList world, float density, float stiffness, float viscosity, string name, bool isBoundary)

@@ -100,17 +100,6 @@ void KFMacroParticle::calculatePressure(const float relaxationCoe)
 	auto ratio = (totalMass / selfMass) - 1.0f;
 	ratio = std::max(0.0f, ratio);
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe * relaxationCoe;// 10000.0;
-
-	/*
-	Vector3df averagedCenter(0, 0, 0);
-	for (auto mp : innerPoints) {
-		averagedCenter += mp->position * mp->getMass() * mp->getPressureCoe();
-	}
-	averagedCenter /= totalMass;
-	auto ratio = (totalMass / selfMass) - 1.0f;
-	ratio = std::max(0.0f, ratio);
-	this->force += (this->position - averagedCenter) * ratio * relaxationCoe;// 10000.0;
-	*/
 }
 
 void KFMacroParticle::calculateViscosity()
@@ -124,15 +113,6 @@ void KFMacroParticle::calculateViscosity()
 	averagedVelocity /= totalMass;
 	viscosityCoe /= totalMass;
 	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
-
-	/*
-	Vector3df vDiff(0, 0, 0);
-	for (auto mp : innerPoints) {
-		vDiff += (this->velocity - mp->getVelocity()) * mp->getMass() * mp->getViscosityCoe();
-	}
-	vDiff /= totalMass;
-	this->force += vDiff;//(this->velocity - averagedVelocity);//50.0;
-	*/
 }
 
 void KFMacroParticle::stepTime(const float dt)

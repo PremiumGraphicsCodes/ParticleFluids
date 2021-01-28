@@ -60,7 +60,7 @@ namespace FluidStudio.FileIO
             var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
             var fluidScene = new FluidScene();
             fluidScene.SetParticlesFromFile(model.Scenes, model.VDBModel, canvas, particlesFilePath);
-            fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, name, isBoundary);
+            fluidScene.Create(model.Scenes, model.VDBModel, canvas, 1.0f, stiffness, viscosity, name, isBoundary);
 
             canvas.BuildShader(model.Scenes, fluidScene.Id);
             canvas.Render();
