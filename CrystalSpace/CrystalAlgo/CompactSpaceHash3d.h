@@ -22,7 +22,7 @@ public:
 class CompactSpaceHash3d : private UnCopyable
 {
 public:
-	CompactSpaceHash3d() = default;
+	CompactSpaceHash3d();
 
 	CompactSpaceHash3d(const double divideLength, const int tableSize);
 
@@ -57,7 +57,7 @@ private:
 
 	double divideLength;
 	
-	const ZOrderCurve3d zCurve;
+	ZOrderCurve3d zCurve;
 
 	std::function<bool(Shape::IParticle* point1, Shape::IParticle* point2)> checkFunc;
 };

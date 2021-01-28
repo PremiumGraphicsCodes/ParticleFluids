@@ -27,14 +27,14 @@ public:
 
 	void clear() {
 		boundaries.clear();
-		spaceHash.clear();
+//		spaceHash.clear();
 	}
 
-	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position) { return spaceHash.findNeighbors(position); }
+	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
 
 private:
 	std::list<KFFluidScene*> boundaries;
-	Search::CompactSpaceHash3d spaceHash;
+	std::unique_ptr<Search::CompactSpaceHash3d> spaceHash;
 };
 
 class KFFluidSolver : public Scene::IAnimator

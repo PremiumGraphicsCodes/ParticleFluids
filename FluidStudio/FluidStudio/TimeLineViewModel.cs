@@ -68,7 +68,7 @@ namespace FluidStudio
 
         private void OnReset()
         {
-            mainModel.PhysicsModel.Reset(scenes, canvas);
+            mainModel.PhysicsModel.Reset(scenes, mainModel.VDBModel, canvas);
             //mainModel.PhysicsModel.Reset();
         }
     }

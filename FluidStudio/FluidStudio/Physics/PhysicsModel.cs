@@ -41,16 +41,17 @@ namespace FluidStudio.Physics
             TimeStep.Value++;
         }
 
-        public void Reset(SceneList world, Canvas3d canvas)
+        public void Reset(SceneList world, VDBModel vdb, Canvas3d canvas)
         {
             foreach (var ps in Solvers)
             {
-                ps.Reset(world);
                 foreach (var fluid in ps.Fluids)
                 {
+                    fluid.SetParticlesFromFile(world, vdb, canvas, fluid.ParticleFilePath);
                     fluid.Reset(world);
                     canvas.SendShader(world, fluid.Id);
                 }
+                ps.Reset(world);
                 canvas.Render();
             }
             TimeStep.Value = 0;

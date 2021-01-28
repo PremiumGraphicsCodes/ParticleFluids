@@ -14,6 +14,10 @@ namespace {
 	constexpr long int p3 = 83492791;
 }
 
+CompactSpaceHash3d::CompactSpaceHash3d()
+{
+}
+
 CompactSpaceHash3d::CompactSpaceHash3d(const double divideLength, const int tableSize) :
 	divideLength(divideLength),
 	table(tableSize),
@@ -35,11 +39,17 @@ void CompactSpaceHash3d::setup(const double divideLength, const int tableSize)
 void CompactSpaceHash3d::clear()
 {
 	for (auto cell : cells) {
+		cell->particles.clear();
 		delete cell;
 	}
 	cells.clear();
 
-	for (auto t : table) {
+	for (auto& t : table) {
+		/*
+		for (auto& tt : t) {
+			tt->particles.clear();
+		}
+		*/
 		t.clear();
 	}
 	table.clear();

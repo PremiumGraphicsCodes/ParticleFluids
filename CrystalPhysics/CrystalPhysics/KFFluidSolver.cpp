@@ -10,6 +10,7 @@
 #include <iostream>
 
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
@@ -27,14 +28,20 @@ void KFBoundarySolver::setup()
 
 	const auto hashSize = boundaryParticles.front()->getPoints().size() * boundaryParticles.size();
 	const auto searchRadius = boundaryParticles.front()->getRadius() * 2.25;
-	spaceHash.setup(searchRadius, boundaryParticles.size());
+	spaceHash = std::make_unique<CompactSpaceHash3d>(searchRadius, boundaryParticles.size());
+	//spaceHash.setup(searchRadius, boundaryParticles.size());
 
 	for (auto bp : boundaryParticles) {
 		const auto& microParticles = bp->getPoints();
 		for (auto mp : microParticles) {
-			spaceHash.add(mp);
+			spaceHash->add(mp);
 		}
 	}
+}
+
+std::vector<IParticle*> KFBoundarySolver::findNeighbors(const Vector3dd& position)
+{
+	return spaceHash->findNeighbors(position);
 }
 
 KFFluidSolver::KFFluidSolver(const int id) :
@@ -43,6 +50,7 @@ KFFluidSolver::KFFluidSolver(const int id) :
 
 void KFFluidSolver::setupBoundaries()
 {
+	//this->boundarySolver = KFBoundarySolver();
 	this->boundarySolver.setup();
 }
 
