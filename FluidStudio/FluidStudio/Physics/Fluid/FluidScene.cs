@@ -12,7 +12,7 @@ namespace FluidStudio.Physics
     {
         public int Id { get; private set; }
 
-        public int SourceParticleSystemId { get; private set; }
+        private int SourceParticleSystemId { get; set; }
 
         public string ParticleFilePath { get; private set; }
 
@@ -69,6 +69,7 @@ namespace FluidStudio.Physics
                 this.SourceParticleSystemId = ids[0];
                 canvas.BuildShader(world, this.SourceParticleSystemId);
                 canvas.Render();
+                this.ParticleFilePath = particleFilePath;
             }
         }
 

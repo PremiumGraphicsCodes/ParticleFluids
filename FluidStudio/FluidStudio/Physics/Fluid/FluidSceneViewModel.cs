@@ -54,8 +54,6 @@ namespace FluidStudio.Physics
 
         private Canvas3d canvas;
 
-        private int particleSystemId;
-
         public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.mainModel = model;
@@ -77,6 +75,7 @@ namespace FluidStudio.Physics
                 Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true) {
+                this.ParticleFilePath.Value = dialog.FileName;
                this.scene.SetParticlesFromFile( world, mainModel.VDBModel, canvas, dialog.FileName );
             }
         }
@@ -90,7 +89,8 @@ namespace FluidStudio.Physics
             }
             this.Id.Value = item.Id;
             this.Name.Value = item.Name;
-            this.particleSystemId = item.SourceParticleSystemId;
+            this.ParticleFilePath.Value = item.ParticleFilePath;
+//            this.particleSystemId = item.SourceParticleSystemId;
             this.Density.Value = item.Density;
             this.Stiffness.Value = item.Stiffness;
             this.Viscosity.Value = item.Viscosity;

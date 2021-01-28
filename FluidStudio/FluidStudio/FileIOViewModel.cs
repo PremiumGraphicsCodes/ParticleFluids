@@ -72,15 +72,13 @@ namespace FluidStudio
             var dialog = new SaveFileDialog
             {
                 Title = "Save",
-                Filter = "FSSceneFile(*.fsscene)|*.fsproj|AllFiles(*.*)|*.*",
+                Filter = "FSSceneFile(*.fsscene)|*.fsscene|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {
-//                var writer = new FSSceneFileWriter();
- //               writer.Write(model, dialog.FileName);
-
-                //world.Save(dialog.FileName);
-            }
+                var writer = new FSSceneFileWriter();
+                writer.Write(model, dialog.FileName);
+           }
         }
 
         private void OnSaveAs()
