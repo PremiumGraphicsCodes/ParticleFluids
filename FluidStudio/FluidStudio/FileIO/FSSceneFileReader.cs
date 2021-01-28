@@ -44,13 +44,15 @@ namespace FluidStudio.FileIO
                 physicsScene.Fluids.Add(fluidScene);
             }
             */
+            var name = elem.Attribute(FSProjFile.NameLabel).Value;
             physicsScene.TimeStep = timeStep;
-            physicsScene.Create(model.Scenes, fluids, new List<CSGBoundaryScene>(), timeStep, "");
+            physicsScene.Create(model.Scenes, fluids, new List<CSGBoundaryScene>(), timeStep, name);
             model.PhysicsModel.Solvers.Add(physicsScene);
         }
 
         private FluidScene ReadFluidScene(MainModel model, Canvas3d canvas, XElement elem)
         {
+            var name = elem.Attribute(FSProjFile.NameLabel).Value;
 //            var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);
             var particlesFilePath = elem.Element(FSProjFile.ParticlesFilePathLabel).Value;
             var stiffness = float.Parse(elem.Element(FSProjFile.StiffnessLabel).Value);
@@ -58,7 +60,7 @@ namespace FluidStudio.FileIO
             var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
             var fluidScene = new FluidScene();
             fluidScene.SetParticlesFromFile(model.Scenes, model.VDBModel, canvas, particlesFilePath);
-            fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, "", isBoundary);
+            fluidScene.Create(model.Scenes, 1.0f, stiffness, viscosity, name, isBoundary);
 
             canvas.BuildShader(model.Scenes, fluidScene.Id);
             canvas.Render();
