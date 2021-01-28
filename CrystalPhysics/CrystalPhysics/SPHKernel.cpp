@@ -72,7 +72,7 @@ float SPHKernel::getPoly6KernelLaplacian(const float distance)
 		* (42.0f * distance * distance - 18.0f * effectLength * effectLength);
 }
 
-Vector3df SPHKernel::getSpikyKernelGradient(const Vector3df& distanceVector)
+Vector3df SPHKernel::getSpikyKernelGradient(const Vector3df& distanceVector) const
 {
 	const auto distance = glm::length(distanceVector);
 	if (distance > effectLength) {

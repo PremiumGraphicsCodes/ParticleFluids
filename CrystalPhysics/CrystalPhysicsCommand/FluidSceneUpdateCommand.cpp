@@ -47,6 +47,11 @@ bool FluidSceneUpdateCommand::execute(World* world)
 	fluidScene->clearParticles();
 	fluidScene->clear();
 
+	fluidScene->setName(args.name.getValue());
+	fluidScene->setPressureCoe(args.stiffness.getValue());
+	fluidScene->setViscosityCoe(args.viscosity.getValue());
+	fluidScene->setBoundary(args.isBoundary.getValue());
+
 	const auto psId = args.particleSystemId.getValue();
 	if (psId > 0) {
 		auto particles = world->getScenes()->findSceneById<IParticleSystemScene*>(psId);
@@ -63,11 +68,6 @@ bool FluidSceneUpdateCommand::execute(World* world)
 		}
 	}
 
-
-	fluidScene->setName(args.name.getValue());
-	fluidScene->setPressureCoe(args.stiffness.getValue());
-	fluidScene->setViscosityCoe(args.viscosity.getValue());
-	fluidScene->setBoundary(args.isBoundary.getValue());
 
 	return true;
 }

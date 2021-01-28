@@ -10,13 +10,7 @@ namespace Crystal {
 class KFMicroParticle : public Shape::IParticle
 {
 public:
-	KFMicroParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float mass) :
-		parent(parent),
-		vector(point),
-		mass(mass)
-	{
-		updatePosition();
-	}
+	KFMicroParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float mass);
 
 	Math::Vector3dd getPosition() const override;
 
@@ -28,12 +22,22 @@ public:
 
 	float getMass() const { return mass; }
 
+	void setPressureCoe(const float p) { this->pressureCoe = p; }
+
+	void setViscosityCoe(const float v) { this->viscosityCoe = v; }
+
+	float getPressureCoe() const { return pressureCoe; }
+
+	float getViscosityCoe() const { return viscosityCoe; }
+
 	Math::Vector3df position;
 
 private:
 	KFMacroParticle* parent;
 	Math::Vector3df vector;
 	float mass;
+	float pressureCoe;
+	float viscosityCoe;
 };
 
 	}

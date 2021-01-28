@@ -18,7 +18,7 @@ public:
 
 	void distributePoints(const int unum, const int vnum, const int wnum, const float weight);
 
-	void setScene(KFFluidScene* scene) { this->scene = scene; }
+	void setScene(KFFluidScene* scene);
 
 	KFFluidScene* getScene() { return scene; }
 
@@ -30,9 +30,9 @@ public:
 
 	void addMicro(KFMicroParticle* microParticle);
 
-	void calculatePressure(const float pressureCoe);
+	void calculatePressure(const float relaxationCoe);
 
-	void calculateViscosity(const float viscosityCoe);
+	void calculateViscosity();
 
 	void stepTime(const float dt);
 
