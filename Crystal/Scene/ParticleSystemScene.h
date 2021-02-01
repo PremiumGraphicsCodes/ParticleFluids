@@ -28,6 +28,8 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override { shape->transform(m); }
 
+	static SceneType getTypeName() { return SceneTypeLabels::ParticleSystemScene; }
+
 	SceneType getType() const override { return SceneTypeLabels::ParticleSystemScene; }
 
 	Math::Box3d getBoundingBox() const override;

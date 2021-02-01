@@ -10,7 +10,7 @@ using namespace Crystal::Algo;
 
 VolumeConvertView::VolumeConvertView(World* model, Canvas* canvas) :
 	IOkCancelView("VolumeConvert", model, canvas),
-	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneType::ParticleSystemScene),
+	particleSystemSelectView("ParticleSystem", model, canvas, ParticleSystemScene::getTypeName()),
 	searchRadiusView("SearchRadius", 1.0)
 {
 	add(&particleSystemSelectView);
