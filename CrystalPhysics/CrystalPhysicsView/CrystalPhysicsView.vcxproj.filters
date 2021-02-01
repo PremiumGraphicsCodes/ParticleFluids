@@ -7,8 +7,8 @@
     <ClCompile Include="KFFluidSimulationView.cpp" />
     <ClCompile Include="DFSPHFluidSimulationView.cpp" />
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
-    <ClCompile Include="BoundaryView.cpp" />
     <ClCompile Include="CSGBoundaryView.cpp" />
+    <ClCompile Include="MeshBoundaryView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -16,7 +16,7 @@
     <ClInclude Include="KFFluidSimulationView.h" />
     <ClInclude Include="DFSPHFluidSimulationView.h" />
     <ClInclude Include="PBSPHFluidSimulationView.h" />
-    <ClInclude Include="BoundaryView.h" />
     <ClInclude Include="CSGBoundaryView.h" />
+    <ClInclude Include="MeshBoundaryView.h" />
   </ItemGroup>
 </Project>

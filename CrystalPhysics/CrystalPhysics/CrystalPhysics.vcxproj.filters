@@ -22,6 +22,9 @@
     <Filter Include="Boundary\Mesh">
       <UniqueIdentifier>{ff819c75-8710-4215-b391-e3ce5a50f5c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Boundary\Particle">
+      <UniqueIdentifier>{a2559790-0fc8-46e3-8c8d-26a0c9681588}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PBSPHParticle.h">
@@ -87,18 +90,8 @@
     <ClInclude Include="KFFluidScenePresenter.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
-    <ClInclude Include="Boundary.h" />
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
-    <ClInclude Include="KFBoundaryScene.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
-    <ClInclude Include="KFBoundaryParticle.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
-    <ClInclude Include="KFBoundaryScenePresenter.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
     <ClInclude Include="CSGBoundaryScene.h">
       <Filter>Boundary\CSG</Filter>
     </ClInclude>
@@ -110,6 +103,15 @@
     </ClInclude>
     <ClInclude Include="MeshBoundaryScenePresenter.h">
       <Filter>Boundary\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBoundaryParticle.h">
+      <Filter>Boundary\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBoundaryScene.h">
+      <Filter>Boundary\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="KFBoundaryScenePresenter.h">
+      <Filter>Boundary\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -176,17 +178,7 @@
     <ClCompile Include="KFFluidScenePresenter.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
-    <ClCompile Include="Boundary.cpp" />
     <ClCompile Include="SPHKernel.cpp" />
-    <ClCompile Include="KFBoundaryParticle.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="KFBoundaryScene.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="KFBoundaryScenePresenter.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
     <ClCompile Include="CSGBoundaryScene.cpp">
       <Filter>Boundary\CSG</Filter>
     </ClCompile>
@@ -198,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="MeshBoundaryScenePresenter.cpp">
       <Filter>Boundary\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBoundaryParticle.cpp">
+      <Filter>Boundary\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBoundaryScene.cpp">
+      <Filter>Boundary\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="KFBoundaryScenePresenter.cpp">
+      <Filter>Boundary\Particle</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

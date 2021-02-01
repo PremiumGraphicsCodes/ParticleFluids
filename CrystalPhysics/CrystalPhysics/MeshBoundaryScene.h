@@ -3,9 +3,23 @@
 #include "../../Crystal/Scene/IScene.h"
 #include "../../Crystal/Shape/PolygonMesh.h"
 
+#include "../../Crystal/Shape/IParticle.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
+
 namespace Crystal {
 	namespace Physics {
 		class MeshBoundaryScenePresenter;
+
+		class BoundaryAttr : public Shape::IParticleAttribute
+		{
+		public:
+			explicit BoundaryAttr(Math::Vector3dd normal) :
+				normal(normal)
+			{
+			}
+
+			Math::Vector3dd normal;
+		};
 
 class MeshBoundaryScene : public Scene::IScene
 {
@@ -15,6 +29,8 @@ public:
 	~MeshBoundaryScene();
 
 	void clear() { delete mesh; }
+
+	void build(const Shape::PolygonMesh& mesh, const double divideLength);
 
 	static constexpr auto Type = "MeshBoundaryScene";
 
@@ -34,6 +50,7 @@ public:
 
 private:
 	Shape::PolygonMesh* mesh;
+	std::vector<Shape::Particle<BoundaryAttr>> positionWithNormal;
 	std::unique_ptr<MeshBoundaryScenePresenter> controller;
 };
 

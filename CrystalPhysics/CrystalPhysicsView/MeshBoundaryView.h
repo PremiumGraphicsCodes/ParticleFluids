@@ -5,17 +5,17 @@
 #include "../../CrystalViewer/AppBase/DoubleView.h"
 
 #include "../CrystalPhysics/KFFluidSolver.h"
-#include "../CrystalPhysics/Boundary.h"
+//#include "../CrystalPhysics/Boundary.h"
 
 namespace Crystal {
 	namespace UI {
 
-class BoundaryView : public IOkCancelView
+class MeshBoundaryView : public IOkCancelView
 {
 public:
-	BoundaryView(const std::string& name, Scene::World* model, Canvas* canvas);
+	MeshBoundaryView(const std::string& name, Scene::World* model, Canvas* canvas);
 
-	Physics::Boundary getBoundary() const { return boundary; }
+	//Physics::Boundary getBoundary() const { return boundary; }
 
 private:
 	void onOk() override;
@@ -23,7 +23,7 @@ private:
 private:
 	ObjectSelectView meshSelectView;
 	DoubleView divideLengthView;
-	Physics::Boundary boundary;
+	//Physics::Boundary boundary;
 };
 
 	}
