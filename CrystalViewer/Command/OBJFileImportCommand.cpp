@@ -59,8 +59,6 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 			builder.createTexCoord(tc);
 		}
 
-		auto polygonMesh = builder.build();
-		auto meshScene = new PolygonMeshScene(world->getNextSceneId(), "PolygonMesh", std::move(polygonMesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(polygonMesh), "PolygonMesh");
 
 		std::vector< std::vector<int> > indices;
 		for (const auto& g : obj.groups) {
@@ -90,6 +88,10 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 			}
 			//faceGroup->setMaterialName(g.usemtl);
 		}
+
+		auto polygonMesh = builder.build();
+		auto meshScene = new PolygonMeshScene(world->getNextSceneId(), "PolygonMesh", std::move(polygonMesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(polygonMesh), "PolygonMesh");
+
 		world->getScenes()->addScene(meshScene);
 		results.newId.setValue(meshScene->getId());
 

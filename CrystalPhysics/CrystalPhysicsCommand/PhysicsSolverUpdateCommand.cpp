@@ -63,7 +63,6 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 			solver->addFluidScene(scene);
 		}
 	}
-	solver->setupBoundaries();
 
 	const auto boundaryIds = args.csgBoundarySceneIds.getValue();
 	for (const auto id : boundaryIds) {
@@ -76,6 +75,9 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 		auto scene = world->getScenes()->findSceneById<MeshBoundaryScene*>(id);
 		solver->addBoundary(scene);
 	}
+
+	solver->setupBoundaries();
+
 
 	return true;
 }
