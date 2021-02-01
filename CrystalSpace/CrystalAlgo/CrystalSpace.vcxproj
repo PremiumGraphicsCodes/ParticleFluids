@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="BooleanAlgo.h" />
     <ClInclude Include="CompactSpaceHash3d.h" />
+    <ClInclude Include="DistanceCalculator.h" />
     <ClInclude Include="IndexedSortSearchAlgo.h" />
     <ClInclude Include="IndexedParticle.h" />
     <ClInclude Include="IntersectionAlgo.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="BooleanAlgo.cpp" />
     <ClCompile Include="CompactSpaceHash3d.cpp" />
     <ClCompile Include="csgjs.h" />
+    <ClCompile Include="DistanceCalculator.cpp" />
     <ClCompile Include="IndexedSortSearchAlgo.cpp" />
     <ClCompile Include="IndexedParticle.cpp" />
     <ClCompile Include="IntersectionAlgo.cpp" />

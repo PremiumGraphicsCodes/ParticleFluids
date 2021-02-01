@@ -48,6 +48,9 @@
       <Filter>Search</Filter>
     </ClInclude>
     <ClInclude Include="MeshToParticleAlgo.h" />
+    <ClInclude Include="DistanceCalculator.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -93,6 +96,9 @@
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="MeshToParticleAlgo.cpp" />
+    <ClCompile Include="DistanceCalculator.cpp">
+      <Filter>Distance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">
@@ -109,6 +115,9 @@
     </Filter>
     <Filter Include="Volume">
       <UniqueIdentifier>{aa657a9f-2f54-427f-a595-70f197e46c21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Distance">
+      <UniqueIdentifier>{307bfd4f-119b-4d7f-a0bc-31b1fc143bb2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
