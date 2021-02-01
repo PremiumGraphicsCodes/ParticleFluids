@@ -47,6 +47,7 @@ namespace FluidStudio.Physics.Solver
             }
             this.Name.Value = item.Name;
             this.Id.Value = Id.Value;
+            this.TimeStep.Value = item.TimeStep;
             this.scene = item;
         }
 

@@ -60,7 +60,6 @@ namespace FluidStudio.FileIO
         {
             var froot = new XElement(FSProjFile.FluidSceneLabel);
             froot.Add(new XAttribute(FSProjFile.NameLabel, fluid.Name));
-            froot.Add(new XElement(FSProjFile.IdLabel, fluid.Id));
             froot.Add(new XElement(FSProjFile.ParticlesFilePathLabel, fluid.ParticleFilePath));
             froot.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness));
             froot.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity));
