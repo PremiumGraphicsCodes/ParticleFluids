@@ -19,9 +19,15 @@ MeshBoundaryView::MeshBoundaryView(const std::string& name, World* model, Canvas
 
 void MeshBoundaryView::onOk()
 {
+	auto world = getWorld();
+
 	auto mesh = getWorld()->getScenes()->findSceneById<PolygonMeshScene*>(meshSelectView.getId());
 	if (mesh == nullptr) {
 		return;
 	}
+	auto scene = new MeshBoundaryScene(getWorld()->getNextSceneId(), "MeshBoundary");
+	scene->build(mesh->getShape(), divideLengthView.getValue());
+
+	scene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 	//boundary.build(*(mesh->getShape()), divideLengthView.getValue());
 }

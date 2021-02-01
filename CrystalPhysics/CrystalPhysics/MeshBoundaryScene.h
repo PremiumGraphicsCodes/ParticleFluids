@@ -21,6 +21,8 @@ namespace Crystal {
 			Math::Vector3dd normal;
 		};
 
+		using BoundaryMeshParticle = Shape::Particle<BoundaryAttr>;
+
 class MeshBoundaryScene : public Scene::IScene
 {
 public:
@@ -30,7 +32,7 @@ public:
 
 	void clear() { delete mesh; }
 
-	void build(const Shape::PolygonMesh& mesh, const double divideLength);
+	void build(Shape::PolygonMesh* mesh, const double divideLength);
 
 	static constexpr auto Type = "MeshBoundaryScene";
 
@@ -38,19 +40,18 @@ public:
 
 	Scene::IPresenter* getPresenter();
 
-	//void add(const Math::Box3d& box) { boxes.push_back(box); }
-
 	Math::Box3d getBoundingBox() const override;
 
-	//std::list<Math::Box3d> getBoxes() const { return boxes; }
-
-	void setMesh(Shape::PolygonMesh* mesh);
-
 	Shape::PolygonMesh* getMesh() { return mesh; }
+	
+	std::vector<Shape::Particle<BoundaryAttr>*> getParticles() const { return positionWithNormal; }
+
+	double getRadius() const { return divideLength; }
 
 private:
 	Shape::PolygonMesh* mesh;
-	std::vector<Shape::Particle<BoundaryAttr>> positionWithNormal;
+	double divideLength;
+	std::vector<Shape::Particle<BoundaryAttr>*> positionWithNormal;
 	std::unique_ptr<MeshBoundaryScenePresenter> controller;
 };
 

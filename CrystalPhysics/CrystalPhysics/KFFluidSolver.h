@@ -15,6 +15,7 @@ namespace Crystal {
 		class KFMacroParticle;
 		class KFFluidScene;
 		class CSGBoundaryScene;
+		class MeshBoundaryScene;
 
 class KFBoundarySolver
 {
@@ -34,6 +35,27 @@ public:
 
 private:
 	std::list<KFFluidScene*> boundaries;
+	std::unique_ptr<Search::CompactSpaceHash3d> spaceHash;
+};
+
+class KFMeshBoundarySolver
+{
+public:
+	KFMeshBoundarySolver() {}
+
+	void addScene(MeshBoundaryScene* scene) { this->boundaries.push_back(scene); }
+
+	void setup();
+
+	void clear() {
+		boundaries.clear();
+		//		spaceHash.clear();
+	}
+
+	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
+
+private:
+	std::list<MeshBoundaryScene*> boundaries;
 	std::unique_ptr<Search::CompactSpaceHash3d> spaceHash;
 };
 

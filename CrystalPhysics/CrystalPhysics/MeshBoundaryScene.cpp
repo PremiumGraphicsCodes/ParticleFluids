@@ -18,15 +18,16 @@ MeshBoundaryScene::MeshBoundaryScene(const int id, const std::string& name) :
 	this->controller = std::make_unique<MeshBoundaryScenePresenter>(this);
 }
 
-
 MeshBoundaryScene::~MeshBoundaryScene()
 {
 }
 
-void MeshBoundaryScene::build(const Shape::PolygonMesh& mesh, const double divideLength)
+void MeshBoundaryScene::build(Shape::PolygonMesh* mesh, const double divideLength)
 {
-	const auto& positions = mesh.getPositions();
-	const auto& faces = mesh.getFaces();
+	this->mesh = mesh;
+	this->divideLength = divideLength;
+	const auto& positions = mesh->getPositions();
+	const auto& faces = mesh->getFaces();
 
 	MeshToParticleAlgo particleConverter;
 	for (const auto& f : faces) {
@@ -37,7 +38,7 @@ void MeshBoundaryScene::build(const Shape::PolygonMesh& mesh, const double divid
 	assert(divPositions.size() == normals.size());
 
 	for (int i = 0; i < divPositions.size(); ++i) {
-		Particle<BoundaryAttr> pn(divPositions[i], BoundaryAttr(normals[i]));
+		auto pn = new Particle<BoundaryAttr>(divPositions[i], BoundaryAttr(normals[i]));
 		positionWithNormal.push_back(pn);
 	}
 }

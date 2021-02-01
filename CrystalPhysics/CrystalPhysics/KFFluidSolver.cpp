@@ -5,6 +5,9 @@
 
 #include "KFFluidScene.h"
 #include "CSGBoundaryScene.h"
+
+#include "MeshBoundaryScene.h"
+
 #include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
 
 #include <iostream>
@@ -40,6 +43,33 @@ void KFBoundarySolver::setup()
 }
 
 std::vector<IParticle*> KFBoundarySolver::findNeighbors(const Vector3dd& position)
+{
+	return spaceHash->findNeighbors(position);
+}
+
+void KFMeshBoundarySolver::setup()
+{
+	std::vector<BoundaryMeshParticle*> boundaryParticles;
+	for (auto b : boundaries) {
+		const auto bp = b->getParticles();
+		boundaryParticles.insert(boundaryParticles.end(), bp.begin(), bp.end());
+	}
+
+	if (boundaryParticles.empty()) {
+		return;
+	}
+
+	const auto hashSize = boundaryParticles.size();
+	const auto searchRadius = boundaries.front()->getRadius() * 2.25;// boundaryParticles.front()->getRadius() * 2.25;
+	spaceHash = std::make_unique<CompactSpaceHash3d>(searchRadius, boundaryParticles.size());
+	//spaceHash.setup(searchRadius, boundaryParticles.size());
+
+	for (auto bp : boundaryParticles) {
+		spaceHash->add(bp);
+	}
+}
+
+std::vector<IParticle*> KFMeshBoundarySolver::findNeighbors(const Math::Vector3dd& position)
 {
 	return spaceHash->findNeighbors(position);
 }

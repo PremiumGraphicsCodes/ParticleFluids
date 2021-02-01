@@ -6,6 +6,8 @@
 #include "DFSPHFluidSimulationView.h"
 //#include "MeshToParticleView.h"
 
+#include "MeshBoundaryView.h"
+
 #include "../../CrystalViewer/AppBase/imgui.h"
 
 using namespace Crystal::Scene;
@@ -34,4 +36,11 @@ void PhysicsMenu::onShow()
 		}
 		ImGui::EndMenu();
 	}
+	if (ImGui::BeginMenu("Boundary")) {
+		if (ImGui::MenuItem("MeshBoundary")) {
+			control->setWindow(new MeshBoundaryView("Mesh", getWorld(), getCanvas()));
+		}
+		ImGui::EndMenu();
+	}
+
 }
