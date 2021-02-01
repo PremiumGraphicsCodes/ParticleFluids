@@ -175,6 +175,8 @@
     <ClInclude Include="KFFluidSolver.h" />
     <ClInclude Include="KFMacroParticle.h" />
     <ClInclude Include="KFMicroParticle.h" />
+    <ClInclude Include="MeshBoundaryScene.h" />
+    <ClInclude Include="MeshBoundaryScenePresenter.h" />
     <ClInclude Include="PBSPHBoundaryParticle.h" />
     <ClInclude Include="PBFluidScene.h" />
     <ClInclude Include="PBFluidSceneController.h" />
@@ -206,6 +208,8 @@
     <ClCompile Include="KFFluidSolver.cpp" />
     <ClCompile Include="KFMacroParticle.cpp" />
     <ClCompile Include="KFMicroParticle.cpp" />
+    <ClCompile Include="MeshBoundaryScene.cpp" />
+    <ClCompile Include="MeshBoundaryScenePresenter.cpp" />
     <ClCompile Include="PBFluidScene.cpp" />
     <ClCompile Include="PBFluidSceneController.cpp" />
     <ClCompile Include="PBSPHBoundaryParticle.cpp" />

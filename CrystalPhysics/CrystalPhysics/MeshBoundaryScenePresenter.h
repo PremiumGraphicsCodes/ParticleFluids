@@ -8,22 +8,25 @@
 
 namespace Crystal {
 	namespace Physics {
-		class CSGBoundaryScene;
+		class MeshBoundaryScene;
 
-class CSGBoundaryScenePresenter : public Scene::IPresenter
+class MeshBoundaryScenePresenter : public Scene::IPresenter
 {
 public:
-	explicit CSGBoundaryScenePresenter(CSGBoundaryScene* model);
+	explicit MeshBoundaryScenePresenter(MeshBoundaryScene* model);
 
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
-	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override {};
+	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
 	void updateView() override;
 
 private:
-	CSGBoundaryScene* model;
+	MeshBoundaryScene* model;
 	Scene::LineShaderScene* view;
+
+	void updateScreenView();
+
 };
 
 	}
