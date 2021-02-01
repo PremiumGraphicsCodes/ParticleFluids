@@ -49,7 +49,9 @@ namespace FluidStudio.Tool.Modeling
                 canvas.BuildShader(world, meshId);
                 canvas.Render();
                 var volumeId = MeshToVolume(meshId);
-                var psId = VolumeToPS(volumeId);
+                this.pointId = VolumeToPS(volumeId);
+//                canvas.Renderer.Update(mainMo)
+                canvas.Render();
             }
         }
 
@@ -83,7 +85,9 @@ namespace FluidStudio.Tool.Modeling
             var isOk = dialog.ShowDialog();
             if (isOk == true)
             {
- //               isOk = vdb.Write(dialog.FileName, world, pointIds, volumeIds);
+                var pointIds = new List<int>();
+                pointIds.Add(this.pointId);
+                isOk = vdb.Write(dialog.FileName, world, pointIds, new List<int>());
                 //OnExport(dialog.FileName);
             }
         }

@@ -32,12 +32,10 @@
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="PreProcess">
                 <RibbonGroup Header="Tool">
-                    <RibbonButton Label="MeshToVolume" Command="{Binding NavigateCommand}" CommandParameter="MeshToVolume"/>
-                    <RibbonButton Label="VolumeToPS" Command="{Binding NavigateCommand}" CommandParameter="VolumeToPS"/>
                     <RibbonButton Label="MeshToPS" Command="{Binding NavigateCommand}" CommandParameter="MeshToPS"/>
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="Physics">
+            <RibbonTab Header="Simulation">
                 <RibbonGroup Header="Primitive">
                     <RibbonButton Label="Solver" Command="{Binding PhysicsSceneCreateCommand}"/>
                     <RibbonButton Label="Fluid" Command="{Binding FluidSceneCreateCommand}"/>
@@ -45,16 +43,16 @@
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="PostProcess">
-                <RibbonGroup Header="Camera" DataContext="{Binding CameraControlViewModel}">
+                <RibbonGroup Header="Camera" >
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-        <ToolBar Grid.Row="1">
-            <RibbonButton Label="XY" Command="{Binding XYCommand}"/>
-            <RibbonButton Label="YZ" Command="{Binding YZCommand}"/>
-            <RibbonButton Label="ZX" Command="{Binding ZXCommand}"/>
-            <RibbonButton Label="XYZ" Command="{Binding XYZCommand}"/>
-            <RibbonButton Label="Fit" Command="{Binding FitCommand}"/>
+        <ToolBar Grid.Row="1" DataContext="{Binding CameraControlViewModel}">
+            <Button Content="XY" Command="{Binding XYCommand}"/>
+            <Button Content="YZ" Command="{Binding YZCommand}"/>
+            <Button Content="ZX" Command="{Binding ZXCommand}"/>
+            <Button Content="XYZ" Command="{Binding XYZCommand}"/>
+            <Button Content="Fit" Command="{Binding FitCommand}"/>
         </ToolBar>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>

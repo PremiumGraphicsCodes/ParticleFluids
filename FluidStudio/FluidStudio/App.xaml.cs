@@ -42,6 +42,7 @@ namespace FluidStudio
 
             containerRegistry.RegisterForNavigation<MeshToVolumeView>("MeshToVolume");
             containerRegistry.RegisterForNavigation<VolumeToPSView>("VolumeToPS");
+            containerRegistry.RegisterForNavigation<MeshToPSView>("MeshToPS");
 
             containerRegistry.RegisterForNavigation<SolverSceneView>("SolverUpdate");
             containerRegistry.RegisterForNavigation<FluidSceneView>("FluidUpdate");
