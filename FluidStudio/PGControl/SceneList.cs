@@ -328,6 +328,14 @@ namespace PG.Scene
             */
         }
 
+        public int ImportOBJ(string filePath)
+        {
+            var command = new PG.CLI.Command(PG.OBJFileImportLabels.CommandNameLabel);
+            command.SetArg(PG.OBJFileImportLabels.FilePathLabel, filePath);
+            command.Execute(adapter);
+            return command.GetResult<int>(PG.FileImportLabels.NewIdLabel);
+        }
+
         public bool Export(string filePath)
         {
             var command = new PG.CLI.Command(PG.FileExportLabels.FileExportCommandLabel);

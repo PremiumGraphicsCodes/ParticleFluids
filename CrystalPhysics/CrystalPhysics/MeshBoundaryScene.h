@@ -30,7 +30,7 @@ public:
 
 	~MeshBoundaryScene();
 
-	void clear() { delete mesh; }
+	void clear() {} //delete mesh; }
 
 	void build(Shape::PolygonMesh* mesh, const double divideLength);
 

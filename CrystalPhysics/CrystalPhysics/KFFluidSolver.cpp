@@ -76,6 +76,9 @@ void KFMeshBoundarySolver::setup()
 
 void KFMeshBoundarySolver::searchNeighbors(const std::vector<KFMacroParticle*>& macros)
 {
+	if (spaceHash == nullptr) {
+		return;
+	}
 	table.clear();
 	for (auto m : macros) {
 		const auto neighbors = spaceHash->findNeighbors(m->getPosition());

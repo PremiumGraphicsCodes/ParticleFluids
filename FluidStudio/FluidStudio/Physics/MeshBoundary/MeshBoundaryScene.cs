@@ -56,13 +56,14 @@ namespace FluidStudio.Physics.MeshBoundary
         public void SetMeshFromFile(SceneList world, VDBModel vdb, Canvas3d canvas, string meshFilePath)
         {
             // TODO 前のPSのクリア処理．
-            var id = vdb.ReadOBJ(world, meshFilePath);
+            var id = world.ImportOBJ(meshFilePath);
             if(id > 0)
             {
                 this.meshId = id;
                 canvas.BuildShader(world, meshId);
                 canvas.Render();
                 this.MeshFilePath = meshFilePath;
+                Update(world, this.Name, this.meshId);
             }
         }
 

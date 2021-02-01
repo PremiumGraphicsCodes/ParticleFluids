@@ -47,7 +47,7 @@ namespace FluidStudio.Physics.MeshBoundary
             var dialog = new OpenFileDialog()
             {
                 Title = "Import",
-                Filter = "MeshFile(*.obj)|*.vdb|AllFiles(*.*)|*.*",
+                Filter = "MeshFile(*.obj)|*.obj|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true)
             {
