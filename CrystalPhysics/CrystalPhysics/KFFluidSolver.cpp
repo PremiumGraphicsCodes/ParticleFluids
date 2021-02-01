@@ -46,6 +46,9 @@ void KFBoundarySolver::setup()
 
 std::vector<IParticle*> KFBoundarySolver::findNeighbors(const Vector3dd& position)
 {
+	if (spaceHash == nullptr) {
+		return {};
+	}
 	return spaceHash->findNeighbors(position);
 }
 
@@ -71,6 +74,15 @@ void KFMeshBoundarySolver::setup()
 	}
 }
 
+void KFMeshBoundarySolver::searchNeighbors(const std::vector<KFMacroParticle*>& macros)
+{
+	table.clear();
+	for (auto m : macros) {
+		const auto neighbors = spaceHash->findNeighbors(m->getPosition());
+		table.push_back(std::make_pair(m, neighbors));
+	}
+}
+
 void KFMeshBoundarySolver::calculateForces(const float dt)
 {
 	for (const auto& t : table) {
@@ -78,12 +90,13 @@ void KFMeshBoundarySolver::calculateForces(const float dt)
 	}
 }
 
-void KFMeshBoundarySolver::calculatePressureForce(const std::pair<KFMacroParticle*, std::list<BoundaryMeshParticle*>>& pair, const float dt)
+void KFMeshBoundarySolver::calculatePressureForce(const std::pair<KFMacroParticle*, std::vector<IParticle*>>& pair, const float dt)
 {
 	auto mp = pair.first;
 	const auto& meshes = pair.second;
 	const auto fluidPos = mp->getPositionf();
-	for (const auto& m : meshes) {
+	for (const auto& mm : meshes) {
+		auto m = static_cast<BoundaryMeshParticle*>(mm);
 		const auto& n = m->getAttribute().normal;
 		const auto boundaryPos = Vector3df( m->getPosition() );
 		const auto v = fluidPos - boundaryPos;
@@ -104,6 +117,7 @@ void KFFluidSolver::setupBoundaries()
 {
 	//this->boundarySolver = KFBoundarySolver();
 	this->boundarySolver.setup();
+	this->meshBoundarySolver.setup();
 }
 
 void KFFluidSolver::addFluidScene(KFFluidScene* scene)
@@ -114,6 +128,11 @@ void KFFluidSolver::addFluidScene(KFFluidScene* scene)
 void KFFluidSolver::addBoundaryScene(KFFluidScene* scene)
 {
 	this->boundarySolver.addBoundaryScene(scene);
+}
+
+void KFFluidSolver::addBoundary(MeshBoundaryScene* scene)
+{
+	this->meshBoundarySolver.addScene(scene);
 }
 
 void KFFluidSolver::step()
@@ -162,6 +181,8 @@ void KFFluidSolver::simulate()
 		}
 	}
 
+	meshBoundarySolver.searchNeighbors(fluidParticles);
+
 	double time = 0.0;
 	while (time < maxTimeStep) {
 		const auto dt = calculateTimeStep(fluidParticles);
@@ -177,6 +198,7 @@ void KFFluidSolver::simulate()
 
 		for (auto particle : fluidParticles) {
 			//boundarySolver.createMacro(particle);
+			meshBoundarySolver.calculateForces(dt);
 			solveBoundary(particle, dt);
 		}
 

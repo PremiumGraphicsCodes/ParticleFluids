@@ -11,6 +11,9 @@
 #include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
 #include "../../CrystalViewer/Command/Public/CameraLabels.h"
 
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
+#include "../../Crystal/Math/Quad3d.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -95,6 +98,15 @@ void KFFluidSimulationView::reset()
 		}
 	}
 
+	Crystal::Shape::PolygonMeshBuilder pmBuilder;
+	const auto quad = Quad3d(Vector3dd(0, 0, 0), Vector3dd(40, 0, 0), Vector3dd(0, 0, 40));
+	pmBuilder.add(quad);
+	this->mesh = pmBuilder.build();
+
+	auto meshBoundary = new MeshBoundaryScene(getWorld()->getNextSceneId(), "");
+	meshBoundary->build(mesh.get(), 1.0);
+	meshBoundary->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	/*
 	const float weight = 5.0f;
 	// bottom
 	for (int i = 0; i < 20; ++i) {
@@ -107,6 +119,7 @@ void KFFluidSimulationView::reset()
 		}
 	}
 	boundaryScene->setBoundary(true);
+	*/
 
 	// bottom
 	/*
@@ -170,8 +183,9 @@ void KFFluidSimulationView::reset()
 
 	simulator.clear();
 	simulator.addFluidScene(fluidScene);
-	simulator.addBoundaryScene(boundaryScene);
-	simulator.addBoundary(this->boundaryView.getBoundary());
+	//simulator.addBoundaryScene(boundaryScene);
+	simulator.addBoundary(meshBoundary);
+	//simulator.addBoundary(this->boundaryView.getBoundary());
 
 	simulator.setMaxTimeStep(this->timeStepView.getValue());
 	simulator.setupBoundaries();
