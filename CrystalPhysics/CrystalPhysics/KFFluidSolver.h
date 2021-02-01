@@ -9,6 +9,7 @@
 #include "../../Crystal/Scene/IAnimator.h"
 
 #include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
+#include "MeshBoundaryScene.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -52,11 +53,16 @@ public:
 		//		spaceHash.clear();
 	}
 
-	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
+	//std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
+
+	void calculateForces(const float dt);
+
+	void calculatePressureForce(const std::pair<KFMacroParticle*, std::list<BoundaryMeshParticle*>>& pair, const float dt);
 
 private:
 	std::list<MeshBoundaryScene*> boundaries;
 	std::unique_ptr<Search::CompactSpaceHash3d> spaceHash;
+	std::vector<std::pair<KFMacroParticle*, std::list<BoundaryMeshParticle*>>> table;
 };
 
 class KFFluidSolver : public Scene::IAnimator

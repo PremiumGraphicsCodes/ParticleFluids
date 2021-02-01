@@ -8,6 +8,8 @@
 
 #include "MeshBoundaryScene.h"
 
+#include "../../CrystalSpace/CrystalAlgo/DistanceCalculator.h"
+
 #include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
 
 #include <iostream>
@@ -69,9 +71,29 @@ void KFMeshBoundarySolver::setup()
 	}
 }
 
-std::vector<IParticle*> KFMeshBoundarySolver::findNeighbors(const Math::Vector3dd& position)
+void KFMeshBoundarySolver::calculateForces(const float dt)
 {
-	return spaceHash->findNeighbors(position);
+	for (const auto& t : table) {
+		calculatePressureForce(t, dt);
+	}
+}
+
+void KFMeshBoundarySolver::calculatePressureForce(const std::pair<KFMacroParticle*, std::list<BoundaryMeshParticle*>>& pair, const float dt)
+{
+	auto mp = pair.first;
+	const auto& meshes = pair.second;
+	const auto fluidPos = mp->getPositionf();
+	for (const auto& m : meshes) {
+		const auto& n = m->getAttribute().normal;
+		const auto boundaryPos = Vector3df( m->getPosition() );
+		const auto v = fluidPos - boundaryPos;
+		const auto distance = glm::dot(n, v);
+		if (distance < 0.0) {
+			const auto f = ::fabs(distance)* n;
+			mp->addForce(f / dt / dt);
+		}
+	}
+	//return spaceHash->findNeighbors(position);
 }
 
 KFFluidSolver::KFFluidSolver(const int id) :
