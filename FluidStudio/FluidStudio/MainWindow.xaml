@@ -17,6 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
@@ -29,26 +30,11 @@
                     <RibbonApplicationMenuItem Header="Exit"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
-            <RibbonTab Header="Shape">
-                <RibbonGroup Header="ParticleSystem">
-                    <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="PSBoxGeneration"/>
-                    <RibbonButton Label="Sphere" Command="{Binding NavigateCommand}" CommandParameter="PSSphereGeneration"/>
-                    <RibbonButton Label="Quad" Command="{Binding NavigateCommand}" CommandParameter="PSQuadGeneration"/>
-                </RibbonGroup>
-                <!--RibbonGroup Header="PolygonMesh">
-                    <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="PMBoxGeneration"/>
-                </>
-                <RibbonGroup Header="CSG">
-                    <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="CSGBoxGeneration"/>
-                </-->
+            <RibbonTab Header="PreProcess">
                 <RibbonGroup Header="Tool">
                     <RibbonButton Label="MeshToVolume" Command="{Binding NavigateCommand}" CommandParameter="MeshToVolume"/>
                     <RibbonButton Label="VolumeToPS" Command="{Binding NavigateCommand}" CommandParameter="VolumeToPS"/>
-                </RibbonGroup>
-                <RibbonGroup Header="File">
-                    <RibbonButton Label="Import" Command="{Binding NavigateCommand}" CommandParameter="Import"/>
-                    <RibbonButton Label="Export" Command="{Binding NavigateCommand}" CommandParameter="Export"/>
-                    <RibbonButton Label="VDB" Command="{Binding NavigateCommand}" CommandParameter="VDBScene"/>
+                    <RibbonButton Label="MeshToPS" Command="{Binding NavigateCommand}" CommandParameter="MeshToPS"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Physics">
@@ -58,17 +44,19 @@
                     <RibbonButton Label="Boundary" Command="{Binding BoundarySceneCreateCommand}"/>
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonTab Header="View">
+            <RibbonTab Header="PostProcess">
                 <RibbonGroup Header="Camera" DataContext="{Binding CameraControlViewModel}">
-                    <RibbonButton Label="XY" Command="{Binding XYCommand}"/>
-                    <RibbonButton Label="YZ" Command="{Binding YZCommand}"/>
-                    <RibbonButton Label="ZX" Command="{Binding ZXCommand}"/>
-                    <RibbonButton Label="XYZ" Command="{Binding XYZCommand}"/>
-                    <RibbonButton Label="Fit" Command="{Binding FitCommand}"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-        <Grid Grid.Row="1">
+        <ToolBar Grid.Row="1">
+            <RibbonButton Label="XY" Command="{Binding XYCommand}"/>
+            <RibbonButton Label="YZ" Command="{Binding YZCommand}"/>
+            <RibbonButton Label="ZX" Command="{Binding ZXCommand}"/>
+            <RibbonButton Label="XYZ" Command="{Binding XYZCommand}"/>
+            <RibbonButton Label="Fit" Command="{Binding FitCommand}"/>
+        </ToolBar>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
@@ -76,9 +64,6 @@
             </Grid.ColumnDefinitions>
 
             <TabControl Grid.Column="0">
-                <TabItem Header="Scene">
-                    <scene:SceneListView DataContext="{Binding SceneListViewModel}"/>
-                </TabItem>
                 <TabItem Header="Physics">
                     <physics:PhysicsSceneListView DataContext="{Binding PhysicsSceneListViewModel}"/>
                 </TabItem>
@@ -97,7 +82,7 @@
             <ContentControl prism:RegionManager.RegionName="ContentRegion" Grid.Column="2"/>
         </Grid>
 
-        <local:TimeLineView Grid.Row="2" DataContext="{Binding TimeLineViewModel}">
+        <local:TimeLineView Grid.Row="3" DataContext="{Binding TimeLineViewModel}">
         </local:TimeLineView>
     </Grid>
 </RibbonWindow>
