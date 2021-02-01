@@ -1,4 +1,5 @@
-﻿using Reactive.Bindings;
+﻿using FluidStudio.Physics.MeshBoundary;
+using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 
 namespace FluidStudio.Physics
@@ -10,6 +11,7 @@ namespace FluidStudio.Physics
         Solver,
         Fluid,
         CSGBoundary,
+        MeshBoundary,
     };
 
     public class PhysicsSceneViewModel
@@ -41,6 +43,10 @@ namespace FluidStudio.Physics
             {
                 Children.Add(new PhysicsSceneViewModel(b));
             }
+            foreach(var b in scene.MeshBoundaries)
+            {
+                Children.Add(new PhysicsSceneViewModel(b));
+            }
         }
 
         public PhysicsSceneViewModel(FluidScene scene)
@@ -55,6 +61,14 @@ namespace FluidStudio.Physics
         {
             this.Model = scene;
             this.SceneType = PhysicsSceneType.CSGBoundary;
+            this.Id.Value = scene.Id;
+            Name.Value = scene.Name;
+        }
+
+        public PhysicsSceneViewModel(MeshBoundaryScene scene)
+        {
+            this.Model = scene;
+            this.SceneType = PhysicsSceneType.MeshBoundary;
             this.Id.Value = scene.Id;
             Name.Value = scene.Name;
         }
