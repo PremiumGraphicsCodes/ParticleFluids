@@ -65,7 +65,7 @@ void KFMeshBoundarySolver::setup()
 	}
 
 	const auto hashSize = boundaryParticles.size();
-	const auto searchRadius = boundaries.front()->getRadius() * 2.25;// boundaryParticles.front()->getRadius() * 2.25;
+	const auto searchRadius = boundaries.front()->getRadius() * 1.25;// boundaryParticles.front()->getRadius() * 2.25;
 	spaceHash = std::make_unique<CompactSpaceHash3d>(searchRadius, boundaryParticles.size());
 	//spaceHash.setup(searchRadius, boundaryParticles.size());
 
@@ -83,22 +83,27 @@ void KFMeshBoundarySolver::searchNeighbors(const std::vector<KFMacroParticle*>& 
 	}
 }
 
-void KFMeshBoundarySolver::calculateForces(const float dt)
+void KFMeshBoundarySolver::calculateForces(const float dt, const float searchRadius)
 {
 	for (const auto& t : table) {
-		calculatePressureForce(t, dt);
+		calculatePressureForce(t, dt, searchRadius);
 	}
 }
 
-void KFMeshBoundarySolver::calculatePressureForce(const std::pair<KFMacroParticle*, std::vector<IParticle*>>& pair, const float dt)
+void KFMeshBoundarySolver::calculatePressureForce(const std::pair<KFMacroParticle*, std::vector<IParticle*>>& pair, const double dt, const float effectLength)
 {
 	auto mp = pair.first;
 	const auto& meshes = pair.second;
-	const auto fluidPos = mp->getPositionf();
 	for (const auto& mm : meshes) {
+		const auto distanceSquared = Crystal::Math::getDistanceSquared(pair.first->getPosition(), mm->getPosition());
+		if (distanceSquared > effectLength * effectLength) {
+			continue;
+		}
+
+		const auto fluidPos = mp->getPosition();
 		auto m = static_cast<BoundaryMeshParticle*>(mm);
 		const auto& n = m->getAttribute().normal;
-		const auto boundaryPos = Vector3df( m->getPosition() );
+		const auto boundaryPos = m->getPosition();
 		const auto v = fluidPos - boundaryPos;
 		const auto distance = glm::dot(n, v);
 		if (distance < 0.0) {
@@ -196,9 +201,11 @@ void KFFluidSolver::simulate()
 		}
 		
 
-		for (auto particle : fluidParticles) {
+#pragma omp parallel for
+		for (int i = 0; i < fluidParticles.size(); ++i) {
+			const auto particle = fluidParticles[i];
 			//boundarySolver.createMacro(particle);
-			meshBoundarySolver.calculateForces(dt);
+			meshBoundarySolver.calculateForces(dt, searchRadius * 0.5);
 			solveBoundary(particle, dt);
 		}
 

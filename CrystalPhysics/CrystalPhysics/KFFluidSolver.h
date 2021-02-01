@@ -57,9 +57,9 @@ public:
 
 	//std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
 
-	void calculateForces(const float dt);
+	void calculateForces(const float dt, const float effectLength);
 
-	void calculatePressureForce(const std::pair<KFMacroParticle*, std::vector<Shape::IParticle*>>& pair, const float dt);
+	void calculatePressureForce(const std::pair<KFMacroParticle*, std::vector<Shape::IParticle*>>& pair, const double dt, const float effectLength);
 
 private:
 	std::list<MeshBoundaryScene*> boundaries;

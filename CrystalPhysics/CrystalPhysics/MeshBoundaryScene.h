@@ -13,12 +13,12 @@ namespace Crystal {
 		class BoundaryAttr : public Shape::IParticleAttribute
 		{
 		public:
-			explicit BoundaryAttr(Math::Vector3df normal) :
+			explicit BoundaryAttr(Math::Vector3dd normal) :
 				normal(normal)
 			{
 			}
 
-			Math::Vector3df normal;
+			Math::Vector3dd normal;
 		};
 
 		using BoundaryMeshParticle = Shape::Particle<BoundaryAttr>;
