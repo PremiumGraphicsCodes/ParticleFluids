@@ -17,6 +17,8 @@ namespace FluidStudio.FileIO
         public const string StiffnessLabel = "Stiffness";
         public const string ViscosityLabel = "Viscosity";
         public const string IsBoundarylabel = "IsBoundary";
+        public const string DoExportVDBLabel = "ExportVDB";
+        public const string ExportDirectory = "ExportDirectory";
     }
 
     public class FSSceneFileWriter
@@ -64,6 +66,8 @@ namespace FluidStudio.FileIO
             froot.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness));
             froot.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity));
             froot.Add(new XElement(FSProjFile.IsBoundarylabel, fluid.IsBoundary));
+            froot.Add(new XElement(FSProjFile.DoExportVDBLabel, fluid.ExportModel.DoExportVDB));
+            froot.Add(new XElement(FSProjFile.ExportDirectory, fluid.ExportModel.VDBExportDirectory));
             return froot;
         }
     }
