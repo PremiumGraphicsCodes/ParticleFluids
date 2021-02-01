@@ -21,12 +21,14 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	id(::IdLabel, -1),
 	fluidSceneIds(::FluidSceneIdsLabel, {}),
 	csgBoundarySceneIds(::CSGBoundarySceneIdsLabel, {}),
+	meshBoundarySceneIds(::MeshBoundarySceneIdsLabel, {}),
 	timeStep(::TimeStepLabel, 0.03f),
 	name(::NameLabel, std::string("FluidScene"))
 {
 	add(&id);
 	add(&fluidSceneIds);
 	add(&csgBoundarySceneIds);
+	add(&meshBoundarySceneIds);
 	add(&timeStep);
 	add(&name);
 }
@@ -66,6 +68,12 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 	const auto boundaryIds = args.csgBoundarySceneIds.getValue();
 	for (const auto id : boundaryIds) {
 		auto scene = world->getScenes()->findSceneById<CSGBoundaryScene*>(id);
+		solver->addBoundary(scene);
+	}
+
+	const auto meshIds = args.meshBoundarySceneIds.getValue();
+	for (const auto id : meshIds) {
+		auto scene = world->getScenes()->findSceneById<MeshBoundaryScene*>(id);
 		solver->addBoundary(scene);
 	}
 

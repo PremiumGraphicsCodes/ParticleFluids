@@ -17,8 +17,6 @@ namespace FluidStudio.Physics
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("Fluid01");
 
-        //public SceneSelectViewModel SourceParticleSystemSelectViewModel { get; }
-
         public ReactiveCommand ParticleFileSelectCommand { get; }
             = new ReactiveCommand();
 
@@ -59,16 +57,12 @@ namespace FluidStudio.Physics
             this.mainModel = model;
             this.canvas = canvas;
             this.ParticleFileSelectCommand.Subscribe(OnSelectPSFile);
-//            this.ParticleFileSelectCommand = new
-            //this.SourceParticleSystemSelectViewModel = new SceneSelectViewModel(world, canvas);
             this.world = world;
             this.UpdateCommand.Subscribe(OnUpdate);
         }
 
         private void OnSelectPSFile()
         {
-//            var currentDir = System.Environment.CurrentDirectory;
-//            Console.WriteLine();
             var dialog = new OpenFileDialog()
             {
                 Title = "Import",

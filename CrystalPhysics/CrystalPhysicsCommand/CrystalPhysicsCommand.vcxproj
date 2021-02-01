@@ -189,6 +189,7 @@
     <ClCompile Include="FluidSceneUpdateCommand.cpp" />
     <ClCompile Include="FluidSimulationCommand.cpp" />
     <ClCompile Include="MeshBoundarySceneCreateCommand.cpp" />
+    <ClCompile Include="MeshBoundarySceneUpdateCommand.cpp" />
     <ClCompile Include="PhysicsCommandFactory.cpp" />
     <ClCompile Include="PhysicsSolverCreateCommand.cpp" />
     <ClCompile Include="PhysicsSolverUpdateCommand.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="FluidSceneUpdateCommand.h" />
     <ClInclude Include="FluidSimulationCommand.h" />
     <ClInclude Include="MeshBoundarySceneCreateCommand.h" />
+    <ClInclude Include="MeshBoundarySceneUpdateCommand.h" />
     <ClInclude Include="PhysicsSolverUpdateCommand.h" />
     <ClInclude Include="PhysicsCommandFactory.h" />
     <ClInclude Include="PhysicsSolverCreateCommand.h" />
@@ -210,6 +212,7 @@
     <ClInclude Include="PublicLabels\FluidSceneUpdateLabels.h" />
     <ClInclude Include="PublicLabels\FluidSimulationLabels.h" />
     <ClInclude Include="PublicLabels\MeshBoundarySceneCreateLabels.h" />
+    <ClInclude Include="PublicLabels\MeshBoundarySceneUpdateLabels.h" />
     <ClInclude Include="PublicLabels\PhysicsSolverCreateLabels.h" />
     <ClInclude Include="PublicLabels\PhysicsSolverUpdateLabels.h" />
   </ItemGroup>

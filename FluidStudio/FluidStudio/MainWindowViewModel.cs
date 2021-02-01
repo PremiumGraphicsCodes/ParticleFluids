@@ -1,4 +1,5 @@
 ﻿using FluidStudio.Physics;
+using FluidStudio.Physics.MeshBoundary;
 using FluidStudio.Scene;
 using PG.Control.OpenGL;
 using PG.Core.Math;
@@ -42,6 +43,9 @@ namespace FluidStudio
         public ReactiveCommand BoundarySceneCreateCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveCommand MeshBoundarySceneCreateCommand { get; }
+            = new ReactiveCommand();
+
         private readonly MainModel mainModel;
 
         public MainWindowViewModel(IRegionManager regionManager, IUnityContainer container)
@@ -62,6 +66,7 @@ namespace FluidStudio
             this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
             this.PhysicsSceneCreateCommand.Subscribe(OnCreatePhysicsScene);
             this.FluidSceneCreateCommand.Subscribe(OnCreateFluidScene);
+            this.MeshBoundarySceneCreateCommand.Subscribe(OnCreateMeshBoundary);
 //            this.BoundarySceneCreateCommand.Subscribe(OnCreateBoundaryScene);
         }
 
@@ -162,6 +167,19 @@ namespace FluidStudio
             Canvas.Render();
             mainModel.PhysicsModel.Solvers.Remove(solver);
             mainModel.PhysicsModel.Solvers.Add(solver);
+        }
+
+        private void OnCreateMeshBoundary()
+        {
+            var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
+            var meshScene = new MeshBoundaryScene();
+            meshScene.Create(mainModel.Scenes, "MeshBoundary", 0);
+            solver.MeshBoundaries.Add(meshScene);
+            Canvas.BuildShader(mainModel.Scenes, meshScene.Id);
+            Canvas.Render();
+            mainModel.PhysicsModel.Solvers.Remove(solver);
+            mainModel.PhysicsModel.Solvers.Add(solver);
+            //            solver.Mesh
         }
 
         private void OnCreateVDBVolume()

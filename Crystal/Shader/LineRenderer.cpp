@@ -43,6 +43,9 @@ void LineRenderer::release(GLObjectFactory& factory)
 
 void LineRenderer::render(const Buffer& buffer)
 {
+	if (buffer.indices.empty()) {
+		return;
+	}
 	shader->bind();
 
 	shader->sendUniform(::projectionMatrixLabel, buffer.projectionMatrix);

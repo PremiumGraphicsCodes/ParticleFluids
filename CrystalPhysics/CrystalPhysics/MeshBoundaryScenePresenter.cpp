@@ -58,7 +58,10 @@ void MeshBoundaryScenePresenter::updateView()
 
 void MeshBoundaryScenePresenter::updateScreenView()
 {
-	const auto& shape = model->getMesh();
+	const auto shape = model->getMesh();
+	if (shape == nullptr) {
+		return;
+	}
 	const auto& vs = shape->getVertices();
 	const auto& ps = shape->getPositions();
 	const auto& tcs = shape->getTexCoords();

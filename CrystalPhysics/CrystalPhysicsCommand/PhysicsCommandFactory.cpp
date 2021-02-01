@@ -6,6 +6,8 @@
 #include "FluidSimulationCommand.h"
 #include "CSGBoundarySceneCreateCommand.h"
 #include "CSGBoundarySceneUpdateCommand.h"
+#include "MeshBoundarySceneCreateCommand.h"
+#include "MeshBoundarySceneUpdateCommand.h"
 #include "PhysicsSolverCreateCommand.h"
 #include "PhysicsSolverUpdateCommand.h"
 
@@ -31,6 +33,12 @@ std::unique_ptr<ICommand> PhysicsCommandFactory::create(const std::string& name)
 	}
 	else if (name == CSGBoundarySceneUpdateCommand::getName()) {
 		return std::make_unique<CSGBoundarySceneUpdateCommand>();
+	}
+	else if (name == MeshBoundarySceneCreateCommand::getName()) {
+		return std::make_unique<MeshBoundarySceneCreateCommand>();
+	}
+	else if (name == MeshBoundarySceneUpdateCommand::getName()) {
+		return std::make_unique<MeshBoundarySceneUpdateCommand>();
 	}
 	else if (name == PhysicsSolverCreateCommand::getName()) {
 		return std::make_unique<PhysicsSolverCreateCommand>();

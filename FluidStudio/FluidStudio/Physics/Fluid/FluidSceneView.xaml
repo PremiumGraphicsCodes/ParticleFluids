@@ -6,18 +6,14 @@
              xmlns:local="clr-namespace:FluidStudio.Physics"
              xmlns:ui="clr-namespace:PG.Control.UI;assembly=PGControl"
              mc:Ignorable="d"
-             xmlns:prism="http://prismlibrary.com/" xmlns:fluid="clr-namespace:FluidStudio.Physics.Fluid"
+             xmlns:fluid="clr-namespace:FluidStudio.Physics.Fluid"           
+             xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Id"/>
-            <TextBox Text="{Binding Id.Value}" IsReadOnly="True" MinWidth="50"/>
-        </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Name"/>
             <TextBox Text="{Binding Name.Value}" IsReadOnly="True" MinWidth="50"/>
         </StackPanel>
-        <!--ui:SceneSelectView DataContext="{Binding SourceParticleSystemSelectViewModel}"/-->
         <StackPanel Orientation="Horizontal">
             <Button Content="ParticleFile" Command="{Binding ParticleFileSelectCommand}"/>
             <TextBox Text="{Binding ParticleFilePath.Value}" IsReadOnly="True" MinWidth="100"/>

@@ -1,0 +1,63 @@
+#include "MeshBoundarySceneUpdateCommand.h"
+
+#include "../../Crystal/Scene/PolygonMeshScene.h"
+
+#include "PublicLabels/MeshBoundarySceneUpdateLabels.h"
+
+#include "../CrystalPhysics/MeshBoundaryScene.h"
+//#include "../../Crystal/Scene/ParticleSystemScene.h"
+
+#include "../../CrystalViewer/Command/Public/PublicLabel.h"
+
+using namespace Crystal::Math;
+using namespace Crystal::Physics;
+using namespace Crystal::Scene;
+
+std::string MeshBoundarySceneUpdateCommand::getName()
+{
+	return ::CommandNameLabel;
+}
+
+MeshBoundarySceneUpdateCommand::Args::Args() :
+	id(::IdLabel, -1),
+	meshId(::MeshIdLabel, -1),
+	name(::NameLabel, std::string("MeshBoundary"))
+{
+	add(&id);
+	add(&meshId);
+	add(&name);
+}
+
+MeshBoundarySceneUpdateCommand::Results::Results()
+{
+}
+
+MeshBoundarySceneUpdateCommand::MeshBoundarySceneUpdateCommand() :
+	ICommand(&args, &results)
+{}
+
+bool MeshBoundarySceneUpdateCommand::execute(World* world)
+{
+	auto boundaryScene = world->getScenes()->findSceneById<MeshBoundaryScene*>(args.id.getValue());
+	if (boundaryScene == nullptr) {
+		return false;
+	}
+
+	auto meshId = args.meshId.getValue();
+	if (meshId > 0) {
+		auto meshScene = world->getScenes()->findSceneById<PolygonMeshScene*>(meshId);
+		if (meshScene == nullptr) {
+			return false;
+		}
+		boundaryScene->build(meshScene->getShape(), 1.0);
+	}
+
+	boundaryScene->clear();
+	boundaryScene->setName(args.name.getValue());
+	//boundaryScene->add(solidScene->getBoundingBox());
+	world->getScenes()->addScene(boundaryScene);
+
+	//results.newId.setValue(boundaryScene->getId());
+
+	return true;
+}

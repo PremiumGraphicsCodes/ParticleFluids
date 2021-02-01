@@ -27,6 +27,9 @@
     <ClCompile Include="MeshBoundarySceneCreateCommand.cpp">
       <Filter>MeshBoundaryScene</Filter>
     </ClCompile>
+    <ClCompile Include="MeshBoundarySceneUpdateCommand.cpp">
+      <Filter>MeshBoundaryScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -77,6 +80,12 @@
       <Filter>MeshBoundaryScene</Filter>
     </ClInclude>
     <ClInclude Include="PublicLabels\MeshBoundarySceneCreateLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshBoundarySceneUpdateCommand.h">
+      <Filter>MeshBoundaryScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\MeshBoundarySceneUpdateLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>

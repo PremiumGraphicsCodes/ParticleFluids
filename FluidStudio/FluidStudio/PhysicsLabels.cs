@@ -44,6 +44,20 @@ namespace PG {
 		public const string SolverIdLabel = "SolverId";
 	}
 
+	public class MeshBoundarySceneCreateLabels
+	{
+		public const string CommandNameLabel = "MeshBoundarySceneCreate";
+		public const string NewIdLabel = "NewId";
+	}
+
+	public class MeshBoundarySceneUpdateLabels
+	{
+		public const string CommandNameLabel = "MeshBoundarySceneUpdate";
+		public const string IdLabel = "Id";
+		public const string MeshIdLabel = "MeshId";
+		public const string NameLabel = "Name";
+	}
+
 	public class PhysicsSolverCreateLabels
 	{
 		public const string CommandNameLabel = "PhysicsSolverCreateCommand";
@@ -56,6 +70,7 @@ namespace PG {
 		public const string IdLabel = "Id";
 		public const string FluidSceneIdsLabel = "FluidSceneIds";
 		public const string CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
+		public const string MeshBoundarySceneIdsLabel = "MeshBoundarySceneIds";
 		public const string TimeStepLabel = "TimeStep";
 		public const string NameLabel = "Name";
 	}

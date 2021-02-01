@@ -5,16 +5,13 @@
 namespace Crystal {
 	namespace Physics {
 
-class PhysicsSolverUpdateCommand : public Command::ICommand
+class MeshBoundarySceneUpdateCommand : public Command::ICommand
 {
 public:
 	struct Args : Command::IArgs
 	{
 		Command::Arg<int> id;
-		Command::Arg<std::vector<int>> fluidSceneIds;
-		Command::Arg<std::vector<int>> csgBoundarySceneIds;
-		Command::Arg<std::vector<int>> meshBoundarySceneIds;
-		Command::Arg<float> timeStep;
+		Command::Arg<int> meshId;
 		Command::Arg<std::string> name;
 
 		Args();
@@ -22,6 +19,7 @@ public:
 
 	struct Results : Command::IResults
 	{
+
 		Results();
 	};
 
@@ -29,7 +27,7 @@ public:
 
 	std::string getCommandName() const { return getName(); }
 
-	PhysicsSolverUpdateCommand();
+	MeshBoundarySceneUpdateCommand();
 
 	bool execute(Scene::World* world) override;
 
