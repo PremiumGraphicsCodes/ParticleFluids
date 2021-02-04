@@ -14,6 +14,7 @@ namespace FluidStudio.FileIO
         public const string FluidSceneLabel = "FluidScene";
         public const string IdLabel = "Id";
         public const string ParticlesFilePathLabel = "ParticlesFilePath";
+        public const string DensityLabel = "Density";
         public const string StiffnessLabel = "Stiffness";
         public const string ViscosityLabel = "Viscosity";
         public const string IsBoundarylabel = "IsBoundary";
@@ -63,6 +64,7 @@ namespace FluidStudio.FileIO
             var froot = new XElement(FSProjFile.FluidSceneLabel);
             froot.Add(new XAttribute(FSProjFile.NameLabel, fluid.Name));
             froot.Add(new XElement(FSProjFile.ParticlesFilePathLabel, fluid.ParticleFilePath));
+            froot.Add(new XElement(FSProjFile.DensityLabel, fluid.Density));
             froot.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness));
             froot.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity));
             froot.Add(new XElement(FSProjFile.IsBoundarylabel, fluid.IsBoundary));
