@@ -1,4 +1,8 @@
-﻿using Reactive.Bindings;
+﻿using FluidStudio.VDB;
+using PG.Scene;
+using Reactive.Bindings;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FluidStudio.Tool.Modeling
 {
@@ -19,8 +23,14 @@ namespace FluidStudio.Tool.Modeling
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
 
-        public PSToVolumeViewModel()
+        private SceneList world;
+
+        private VDBModel vdb;
+
+        public PSToVolumeViewModel(MainModel mainModel)
         {
+            this.world = mainModel.Scenes;
+            this.vdb = mainModel.VDBModel;
             this.VDBInputDirectorySelectCommand.Subscribe(OnSelectVDBImportDirectory);
             this.VDBOutputDirectorySelectCommand.Subscribe(OnSelectVDBExportDirectory);
             this.StartCommand.Subscribe(OnStart);
@@ -50,8 +60,31 @@ namespace FluidStudio.Tool.Modeling
 
         private void OnStart()
         {
-            // vdbファイルを列挙する．
-            // 一つ一つコンバートしてexportDirectoryに保存する．
+            var files = System.IO.Directory.GetFiles(this.VDBInputDirectoryPath.Value, "*.vdb");
+            foreach(var file in files)
+            {
+                var pointIds = vdb.Read(file, world);
+                var volumeIds = new List<int>();
+                foreach(int id in pointIds) {
+                    if (vdb.GetVDBType(id, world) != VDBModel.VDBType.Point)
+                    {
+                        continue;
+                    }
+                    int volumeId = vdb.CreateVDBVolume(world, "Volume", false);
+                    vdb.ConvertPSToVolume(id, volumeId, world, 5.0);
+                    volumeIds.Add(volumeId);
+                }
+                var newName = System.IO.Path.Combine( this.VDBOutputDirectoryPath.Value, System.IO.Path.GetFileNameWithoutExtension(file) + "_volume.vdb");
+                vdb.Write(newName, world, new List<int>(), volumeIds);
+                foreach (int id in pointIds)
+                {
+                    world.Delete(id);
+                }
+                foreach (int id in volumeIds)
+                {
+                    world.Delete(id);
+                }
+            }
         }
     }
 }
