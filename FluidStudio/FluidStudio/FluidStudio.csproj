@@ -203,6 +203,10 @@
       <DependentUpon>MeshToVolumeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tool\Modeling\MeshToVolumeViewModel.cs" />
+    <Compile Include="Tool\Modeling\PSToVolumeView.xaml.cs">
+      <DependentUpon>PSToVolumeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\Modeling\PSToVolumeViewModel.cs" />
     <Compile Include="Tool\Modeling\VolumeToPSView.xaml.cs">
       <DependentUpon>VolumeToPSView.xaml</DependentUpon>
     </Compile>
@@ -290,6 +294,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tool\Modeling\MeshToVolumeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tool\Modeling\PSToVolumeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
