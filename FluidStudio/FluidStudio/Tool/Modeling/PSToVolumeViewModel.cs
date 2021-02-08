@@ -21,7 +21,7 @@ namespace FluidStudio.Tool.Modeling
             = new ReactiveProperty<string>("");
 
         public ReactiveProperty<float> Threshold { get; }
-            = new ReactiveProperty<float>(1.0f);
+            = new ReactiveProperty<float>(2.0f);
 
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
