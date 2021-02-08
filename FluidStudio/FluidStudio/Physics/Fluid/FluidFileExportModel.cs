@@ -14,8 +14,6 @@ namespace FluidStudio.Physics.Fluid
 
         public string VDBExportDirectory { get; set; }
 
-        public bool DoConvertToVolume { get; set; }
-
         public double Radius { get; set; } = 5.0;
 
         public void ExportFiles(SceneList world, FluidScene fluid, VDBModel vdb, int timeStep)
@@ -26,24 +24,10 @@ namespace FluidStudio.Physics.Fluid
 
                 var psIds = new List<int>();
                 var volumeIds = new List<int>();
-                if (DoConvertToVolume)
-                {
-                    volumeIds.Add(fluid.VolumeId);
-                }
-                else
-                {
-                    psIds.Add(fluid.Id);
-                }
+                psIds.Add(fluid.Id);
                 vdb.Write(filePath, world, psIds, volumeIds);
 
             }
-            /*
-            if(DoConvertToVolume)
-            {
-                var filePath = OBJExportDirectory + "/" + fluid.Name + "_" + timeStep.ToString() + ".obj";
-                vdb.WriteOBJ(world, fluid.PolygonMeshId, filePath);
-            }
-            */
         }
     }
 }

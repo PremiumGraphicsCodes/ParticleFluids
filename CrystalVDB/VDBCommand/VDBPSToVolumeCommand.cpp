@@ -40,7 +40,7 @@ std::string VDBPSToVolumeCommand::getName()
 
 bool VDBPSToVolumeCommand::execute(World* world)
 {
-	auto scene = world->getScenes()->findSceneById<IParticleSystemScene*>(args.particleSystemId.getValue());
+	auto scene = world->getScenes()->findSceneById<VDBParticleSystemScene*>(args.particleSystemId.getValue());
 	if (scene == nullptr) {
 		return false;
 	}
@@ -49,13 +49,8 @@ bool VDBPSToVolumeCommand::execute(World* world)
 		return false;
 	}
 
-	VDBParticleSystemScene ps;
-	auto positions = scene->getPositions();
-	for (const auto& p : positions) {
-		ps.add(p, 1.0);
-	}
 	VDBParticleSystemConverter psConverter;
-	psConverter.toVolume(ps, args.radius.getValue(), volume);
+	psConverter.toVolume(*scene, args.radius.getValue(), volume);
 	
 	return true;
 }

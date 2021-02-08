@@ -51,8 +51,6 @@ namespace FluidStudio
             containerRegistry.RegisterForNavigation<CSGBoundarySceneView>("CSGBoundaryUpdate");
             containerRegistry.RegisterForNavigation<MeshBoundarySceneView>("MeshBoundaryUpdate");
 
-            containerRegistry.RegisterForNavigation<ImportView>("Import");
-
             containerRegistry.RegisterForNavigation<VDBSceneView>("VDBScene");
         }
     }

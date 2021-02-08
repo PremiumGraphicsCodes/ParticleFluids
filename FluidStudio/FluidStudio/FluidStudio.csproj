@@ -118,10 +118,6 @@
     <Compile Include="FileIOViewModel.cs" />
     <Compile Include="FileIO\FSSceneFileReader.cs" />
     <Compile Include="FileIO\FSSceneFileWriter.cs" />
-    <Compile Include="FileIO\ImportView.xaml.cs">
-      <DependentUpon>ImportView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FileIO\ImportViewModel.cs" />
     <Compile Include="MainModel.cs" />
     <Compile Include="PhysicsLabels.cs" />
     <Compile Include="Physics\CSGBoundary\CSGBoundaryScene.cs" />
@@ -209,10 +205,6 @@
     <Compile Include="Tool\Modeling\VolumeToPSViewModel.cs" />
     <Compile Include="VDBLabels.cs" />
     <Compile Include="VDB\VDBModel.cs" />
-    <Page Include="FileIO\ImportView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

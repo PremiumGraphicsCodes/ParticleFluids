@@ -20,6 +20,9 @@ namespace FluidStudio.Tool.Modeling
         public ReactiveProperty<string> VDBOutputDirectoryPath { get; }
             = new ReactiveProperty<string>("");
 
+        public ReactiveProperty<float> Threshold { get; }
+            = new ReactiveProperty<float>(1.0f);
+
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
 
@@ -71,7 +74,7 @@ namespace FluidStudio.Tool.Modeling
                         continue;
                     }
                     int volumeId = vdb.CreateVDBVolume(world, "Volume", false);
-                    vdb.ConvertPSToVolume(id, volumeId, world, 5.0);
+                    vdb.ConvertPSToVolume(id, volumeId, world, Threshold.Value);
                     volumeIds.Add(volumeId);
                 }
                 var newName = System.IO.Path.Combine( this.VDBOutputDirectoryPath.Value, "volume_" + System.IO.Path.GetFileName(file));

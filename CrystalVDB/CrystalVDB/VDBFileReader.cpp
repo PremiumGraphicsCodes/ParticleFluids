@@ -85,7 +85,7 @@ VDBParticleSystemScene* VDBFileReader::readPositions(const std::string& pointNam
 //            v_positions.push_back(worldPosition);
             auto index = *indexIter;
             v_indices.push_back(index);
-            psScene->add(Converter::fromVDB(worldPosition), 1.0);//radius);
+            psScene->add(Converter::fromVDB(worldPosition), 0.5);//radius);
         }
     }
 

@@ -14,9 +14,6 @@ namespace FluidStudio.Physics.Fluid
         public ReactiveProperty<bool> DoExportVDB { get; }
             = new ReactiveProperty<bool>(false);
 
-        public ReactiveProperty<bool> DoConvertToVolume { get; }
-            = new ReactiveProperty<bool>(false);
-
         public ReactiveProperty<double> Radius { get; }
             = new ReactiveProperty<double>(5.0);
 
@@ -29,7 +26,6 @@ namespace FluidStudio.Physics.Fluid
                 this.model = value;
                 this.DoExportVDB.Value = value.DoExportVDB;
                 this.VDBExportDirectoryPath.Value = value.VDBExportDirectory;
-                this.DoConvertToVolume.Value = value.DoConvertToVolume;
             }
         }
 
@@ -38,7 +34,6 @@ namespace FluidStudio.Physics.Fluid
             this.VDBExportDirectorySelectCommand.Subscribe(() => OnSelectVDBExportDirectory());
             this.DoExportVDB.Subscribe(OnExportVDBChanged);
             this.VDBExportDirectoryPath.Subscribe(OnExportVDBDirectoryChanged);
-            this.DoConvertToVolume.Subscribe(OnConvertToVolumeChanged);
             this.Radius.Subscribe(OnRadiusChanged);
         }
 
@@ -66,14 +61,6 @@ namespace FluidStudio.Physics.Fluid
             if (model != null)
             {
                 model.VDBExportDirectory = path;
-            }
-        }
-
-        private void OnConvertToVolumeChanged(bool b)
-        {
-            if (model != null)
-            {
-                model.DoConvertToVolume = b;
             }
         }
 
