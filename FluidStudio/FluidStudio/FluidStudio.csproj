@@ -116,10 +116,6 @@
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
-    <Compile Include="FileIO\ExportView.xaml.cs">
-      <DependentUpon>ExportView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FileIO\ExportViewModel.cs" />
     <Compile Include="FileIO\FSSceneFileReader.cs" />
     <Compile Include="FileIO\FSSceneFileWriter.cs" />
     <Compile Include="FileIO\ImportView.xaml.cs">
@@ -213,10 +209,6 @@
     <Compile Include="Tool\Modeling\VolumeToPSViewModel.cs" />
     <Compile Include="VDBLabels.cs" />
     <Compile Include="VDB\VDBModel.cs" />
-    <Page Include="FileIO\ExportView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="FileIO\ImportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

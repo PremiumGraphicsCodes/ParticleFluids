@@ -25,7 +25,7 @@ public:
 
 	void addBoundaryScene(KFFluidScene* scene) { this->boundaries.push_back(scene); }
 
-	void setup();
+	void setup(const float effectLength);
 
 	void clear() {
 		boundaries.clear();
@@ -94,6 +94,8 @@ public:
 
 	void setMaxTimeStep(const float maxTimeStep) { this->maxTimeStep = maxTimeStep; }
 
+	void setEffectLength(const float effectLength) { this->effectLength = effectLength; }
+
 	void simulate();
 
 	void step() override;
@@ -109,6 +111,7 @@ private:
 	KFBoundarySolver boundarySolver;
 	KFMeshBoundarySolver meshBoundarySolver;
 	std::list<CSGBoundaryScene*> csgBoundaries;
+	float effectLength = 2.0f;
 	float maxTimeStep = 0.03f;
 };
 

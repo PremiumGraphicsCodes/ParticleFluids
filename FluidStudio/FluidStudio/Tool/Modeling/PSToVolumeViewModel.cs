@@ -74,7 +74,7 @@ namespace FluidStudio.Tool.Modeling
                     vdb.ConvertPSToVolume(id, volumeId, world, 5.0);
                     volumeIds.Add(volumeId);
                 }
-                var newName = System.IO.Path.Combine( this.VDBOutputDirectoryPath.Value, System.IO.Path.GetFileNameWithoutExtension(file) + "_volume.vdb");
+                var newName = System.IO.Path.Combine( this.VDBOutputDirectoryPath.Value, "volume_" + System.IO.Path.GetFileName(file));
                 vdb.Write(newName, world, new List<int>(), volumeIds);
                 foreach (int id in pointIds)
                 {

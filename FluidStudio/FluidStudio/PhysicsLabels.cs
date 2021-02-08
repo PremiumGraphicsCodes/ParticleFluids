@@ -71,6 +71,7 @@ namespace PG {
 		public const string FluidSceneIdsLabel = "FluidSceneIds";
 		public const string CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
 		public const string MeshBoundarySceneIdsLabel = "MeshBoundarySceneIds";
+		public const string EffectLengthLabel = "EffectLength";
 		public const string TimeStepLabel = "TimeStep";
 		public const string NameLabel = "Name";
 	}

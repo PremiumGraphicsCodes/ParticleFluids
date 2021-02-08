@@ -22,6 +22,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	fluidSceneIds(::FluidSceneIdsLabel, {}),
 	csgBoundarySceneIds(::CSGBoundarySceneIdsLabel, {}),
 	meshBoundarySceneIds(::MeshBoundarySceneIdsLabel, {}),
+	effectLength(::EffectLengthLabel, 2.0f),
 	timeStep(::TimeStepLabel, 0.03f),
 	name(::NameLabel, std::string("FluidScene"))
 {
@@ -29,6 +30,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 	add(&fluidSceneIds);
 	add(&csgBoundarySceneIds);
 	add(&meshBoundarySceneIds);
+	add(&effectLength);
 	add(&timeStep);
 	add(&name);
 }
@@ -47,6 +49,8 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 	if (solver == nullptr) {
 		return false;
 	}
+
+	solver->setEffectLength(args.effectLength.getValue());
 
 	solver->clear();
 

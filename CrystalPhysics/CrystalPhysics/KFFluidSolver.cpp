@@ -19,7 +19,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Search;
 using namespace Crystal::Physics;
 
-void KFBoundarySolver::setup()
+void KFBoundarySolver::setup(const float effectLength)
 {
 	std::vector<KFMacroParticle*> boundaryParticles;
 	for (auto b : boundaries) {
@@ -32,7 +32,7 @@ void KFBoundarySolver::setup()
 	}
 
 	const auto hashSize = boundaryParticles.front()->getPoints().size() * boundaryParticles.size();
-	const auto searchRadius = boundaryParticles.front()->getRadius() * 2.25;
+	const auto searchRadius = effectLength;
 	spaceHash = std::make_unique<CompactSpaceHash3d>(searchRadius, boundaryParticles.size());
 	//spaceHash.setup(searchRadius, boundaryParticles.size());
 
@@ -124,7 +124,7 @@ KFFluidSolver::KFFluidSolver(const int id) :
 void KFFluidSolver::setupBoundaries()
 {
 	//this->boundarySolver = KFBoundarySolver();
-	this->boundarySolver.setup();
+	this->boundarySolver.setup(effectLength);
 	this->meshBoundarySolver.setup();
 }
 
@@ -166,7 +166,7 @@ void KFFluidSolver::simulate()
 	}
 
 	const auto hashSize = fluidParticles.front()->getPoints().size() * fluidParticles.size();
-	const auto searchRadius = fluidParticles.front()->getRadius() * 2.25;
+	const auto searchRadius = effectLength;
 	CompactSpaceHash3d spaceHash(searchRadius, static_cast<int>( hashSize));
 	for (auto particle : fluidParticles) {
 		particle->updateMicros();

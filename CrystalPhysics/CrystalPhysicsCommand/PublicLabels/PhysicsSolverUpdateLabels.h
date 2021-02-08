@@ -6,6 +6,7 @@ namespace {
 	PublicLabel FluidSceneIdsLabel = "FluidSceneIds";
 	PublicLabel CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
 	PublicLabel MeshBoundarySceneIdsLabel = "MeshBoundarySceneIds";
+	PublicLabel EffectLengthLabel = "EffectLength";
 	PublicLabel TimeStepLabel = "TimeStep";
 	PublicLabel NameLabel = "Name";
 }

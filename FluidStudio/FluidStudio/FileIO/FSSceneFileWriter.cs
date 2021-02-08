@@ -10,6 +10,7 @@ namespace FluidStudio.FileIO
         public const string FileFormatVersionLabel = "FileFormatVersion";
         public const string PhysicsSceneLabel = "PhysicsScene";
         public const string NameLabel = "Name";
+        public const string EffectLengthLabel = "EffectLength";
         public const string TimeStepLabel = "TimeStep";
         public const string FluidSceneLabel = "FluidScene";
         public const string IdLabel = "Id";
@@ -52,6 +53,7 @@ namespace FluidStudio.FileIO
             var root = new XElement(FSProjFile.PhysicsSceneLabel);
             root.Add(new XAttribute(FSProjFile.NameLabel, scene.Name));
             root.Add(new XElement(FSProjFile.TimeStepLabel, scene.TimeStep));
+            root.Add(new XElement(FSProjFile.EffectLengthLabel, scene.EffectLength));
             foreach (var fluid in scene.Fluids)
             {
                 root.Add(CreateElement(fluid));

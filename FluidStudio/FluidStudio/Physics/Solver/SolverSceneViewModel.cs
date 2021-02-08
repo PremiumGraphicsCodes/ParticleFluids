@@ -13,6 +13,9 @@ namespace FluidStudio.Physics.Solver
         public ReactiveProperty<int> Id { get; }
             = new ReactiveProperty<int>();
 
+        public ReactiveProperty<float> EffectLength { get; }
+            = new ReactiveProperty<float>(2.0f);
+
         public ReactiveProperty<float> TimeStep { get; }
             = new ReactiveProperty<float>(0.03f);
 
@@ -47,6 +50,7 @@ namespace FluidStudio.Physics.Solver
             }
             this.Name.Value = item.Name;
             this.Id.Value = Id.Value;
+            this.EffectLength.Value = item.EffectLength;
             this.TimeStep.Value = item.TimeStep;
             this.scene = item;
         }
@@ -57,7 +61,7 @@ namespace FluidStudio.Physics.Solver
             {
                 return;
             }
-            scene.Update(world, this.scene.Fluids, this.scene.CSGBoundaries, TimeStep.Value, this.Name.Value);
+            scene.Update(world, this.scene.Fluids, this.scene.CSGBoundaries, EffectLength.Value, TimeStep.Value, this.Name.Value);
         }
     }
 }

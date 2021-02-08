@@ -24,22 +24,25 @@ namespace FluidStudio.Physics
         public List<MeshBoundaryScene> MeshBoundaries { get; private set; }
             = new List<MeshBoundaryScene>();
 
+        public float EffectLength { get; set; } = 2.0f;
+
         public float TimeStep { get; set; } = 0.03f;
 
         public int Id { get; private set; }
 
-        public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
+        public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float effectLength, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(scenes.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(scenes, fluids, boundaries, timeStep, name);
+            Update(scenes, fluids, boundaries, effectLength, timeStep, name);
         }
 
-        public void Update(SceneList world, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float timeStep, string name)
+        public void Update(SceneList world, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float effectLength, float timeStep, string name)
         {
             this.Fluids = fluids;
             this.CSGBoundaries = boundaries;
+            this.EffectLength = effectLength;
             this.TimeStep = timeStep;
             this.Name = name;
             Reset(world);
@@ -75,6 +78,7 @@ namespace FluidStudio.Physics
             command.SetArg(UpdateLabels.FluidSceneIdsLabel, fluidIds);
             command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, boundaryIds);
             command.SetArg(UpdateLabels.MeshBoundarySceneIdsLabel, meshIds);
+            command.SetArg(UpdateLabels.EffectLengthLabel, EffectLength);
             command.SetArg(UpdateLabels.TimeStepLabel, TimeStep);
             command.SetArg(UpdateLabels.NameLabel, Name);
             command.Execute(world.Adapter);

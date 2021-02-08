@@ -14,6 +14,7 @@ public:
 		Command::Arg<std::vector<int>> fluidSceneIds;
 		Command::Arg<std::vector<int>> csgBoundarySceneIds;
 		Command::Arg<std::vector<int>> meshBoundarySceneIds;
+		Command::Arg<float> effectLength;
 		Command::Arg<float> timeStep;
 		Command::Arg<std::string> name;
 

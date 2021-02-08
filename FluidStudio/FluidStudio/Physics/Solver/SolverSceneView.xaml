@@ -13,6 +13,10 @@
             <TextBox Text="{Binding Name.Value}" MinWidth="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="EffectLength"/>
+            <TextBox Text="{Binding EffectLength.Value}" MinWidth="50"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
             <TextBlock Text="TimeStep"/>
             <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
         </StackPanel>
