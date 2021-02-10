@@ -7,7 +7,6 @@
              mc:Ignorable="d">
     <StackPanel>
         <CheckBox Content="VDBExport" IsChecked="{Binding DoExportVDB.Value}"/>
-        <TextBox Text="{Binding Radius.Value}"/>
         <TextBlock Text = "Directory" />
         <StackPanel Orientation="Horizontal">
             <Button Content="Select" Command="{Binding VDBExportDirectorySelectCommand}"/>

@@ -14,8 +14,6 @@ namespace FluidStudio.Physics.Fluid
 
         public string VDBExportDirectory { get; set; }
 
-        public double Radius { get; set; } = 5.0;
-
         public void ExportFiles(SceneList world, FluidScene fluid, VDBModel vdb, int timeStep)
         {
             if(DoExportVDB)
