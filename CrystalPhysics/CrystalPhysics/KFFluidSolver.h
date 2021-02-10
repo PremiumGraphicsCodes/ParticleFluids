@@ -16,7 +16,6 @@ namespace Crystal {
 		class KFMacroParticle;
 		class KFFluidScene;
 		class CSGBoundaryScene;
-		class MeshBoundaryScene;
 
 class KFBoundarySolver
 {
@@ -39,34 +38,6 @@ private:
 	std::unique_ptr<Search::CompactSpaceHash3d> spaceHash;
 };
 
-class KFMeshBoundarySolver
-{
-public:
-	KFMeshBoundarySolver() {}
-
-	void addScene(MeshBoundaryScene* scene) { this->boundaries.push_back(scene); }
-
-	void setup();
-
-	void clear() {
-		boundaries.clear();
-		//		spaceHash.clear();
-	}
-
-	void searchNeighbors(const std::vector<KFMacroParticle*>& macros);
-
-	//std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
-
-	void calculateForces(const float dt, const float effectLength);
-
-	void calculatePressureForce(const std::pair<KFMacroParticle*, std::vector<Shape::IParticle*>>& pair, const double dt, const float effectLength);
-
-private:
-	std::list<MeshBoundaryScene*> boundaries;
-	std::unique_ptr<Search::CompactSpaceHash3d> spaceHash;
-	std::vector<std::pair<KFMacroParticle*, std::vector<Shape::IParticle*>>> table;
-};
-
 class KFFluidSolver : public Scene::IAnimator
 {
 public:
@@ -81,14 +52,11 @@ public:
 		csgBoundaries.clear();
 		maxTimeStep = 0.03f;
 		boundarySolver.clear();
-		meshBoundarySolver.clear();
 	}
 
 	void addFluidScene(KFFluidScene* scene);
 
 	void addBoundaryScene(KFFluidScene* scene);
-
-	void addBoundary(MeshBoundaryScene* scene);
 
 	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
 
@@ -109,7 +77,6 @@ private:
 	
 	std::list<KFFluidScene*> fluids;
 	KFBoundarySolver boundarySolver;
-	KFMeshBoundarySolver meshBoundarySolver;
 	std::list<CSGBoundaryScene*> csgBoundaries;
 	float effectLength = 2.0f;
 	float maxTimeStep = 0.03f;

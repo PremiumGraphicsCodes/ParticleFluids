@@ -74,12 +74,6 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 		solver->addBoundary(scene);
 	}
 
-	const auto meshIds = args.meshBoundarySceneIds.getValue();
-	for (const auto id : meshIds) {
-		auto scene = world->getScenes()->findSceneById<MeshBoundaryScene*>(id);
-		solver->addBoundary(scene);
-	}
-
 	solver->setupBoundaries();
 
 

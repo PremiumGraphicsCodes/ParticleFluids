@@ -34,16 +34,7 @@ namespace FluidStudio
 
         public TimeLineViewModel TimeLineViewModel { get; }
 
-        public ReactiveCommand PhysicsSceneCreateCommand { get; }
-            = new ReactiveCommand();
-
         public ReactiveCommand FluidSceneCreateCommand { get; }
-            = new ReactiveCommand();
-
-        public ReactiveCommand BoundarySceneCreateCommand { get; }
-            = new ReactiveCommand();
-
-        public ReactiveCommand MeshBoundarySceneCreateCommand { get; }
             = new ReactiveCommand();
 
         private readonly MainModel mainModel;
@@ -64,7 +55,6 @@ namespace FluidStudio
             this.SceneListViewModel = new SceneListViewModel(regionManager, world);
             this.PhysicsSceneListViewModel = new PhysicsSceneListViewModel(regionManager, world, mainModel);
             this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
-            this.PhysicsSceneCreateCommand.Subscribe(OnCreatePhysicsScene);
             this.FluidSceneCreateCommand.Subscribe(OnCreateFluidScene);
 //            this.BoundarySceneCreateCommand.Subscribe(OnCreateBoundaryScene);
         }
@@ -82,78 +72,6 @@ namespace FluidStudio
             var scene = new SolverScene();
             scene.Create(mainModel.Scenes, new List<FluidScene>(), 2.0f, 0.03f, "Solver01");
             mainModel.PhysicsModel.Solvers.Add(scene);
-            
-            //OnCreateSolid();
-            //OnCreateParticles();
-            //OnCreateVDBVolume();
-            //OnCreateVDBPoints();
-            //OnCreatePhysicsScene();
-        }
-
-        private int sourcePSId;
-        private int boundaryPSId;
-
-        private void OnCreateParticles()
-        {
-            var world = mainModel.Scenes;
-            var positions = new List<Vector3d>();
-            var min = new Vector3d(0.0, 0.0, 0.0);
-            var max = new Vector3d(10.0, 10.0, 10.0);
-            var box = new Box3d(min, max);
-            sourcePSId = CreateBoxParticles(box, "SourcePS");
-            boundaryPSId = CreateBoxParticles(new Box3d( new Vector3d(-10, -2, -10), new Vector3d(10, 0, 10)), "BoundaryPS");
-        }
-
-        private int CreateBoxParticles(Box3d box, string name)
-        {
-            var world = mainModel.Scenes;
-            var positions = new List<Vector3d>();
-
-            var length = box.Length;
-            var min = box.Min;
-            var max = box.Max;
-            for (var x = min.X; x < max.X; x += 1.0)
-            {
-                for (var y = min.Y; y < max.Y; y += 1.0)
-                {
-                    for (var z = min.Z; z < max.Z; z += 1.0)
-                    {
-                        var p = new Vector3d(x, y, z);
-                        positions.Add(p);
-                    }
-                }
-            }
-            int id = mainModel.VDBModel.CreateVDBPoints(mainModel.Scenes, positions, name);
-            this.Canvas.Camera.Fit();
-            this.Canvas.BuildShader(world, id);
-            this.Canvas.Render();
-            return id;
-        }
-
-        private int volumeId;
-
-        private void OnCreatePhysicsScene()
-        {
-            //Canvas.BuildShader(mainModel.Scenes, sourcePSId);
-
-            var fluids = new List<FluidScene>();
-            var fluidScene1 = new FluidScene();
-            fluidScene1.Create(mainModel.Scenes, mainModel.VDBModel, Canvas, 1.0f, 1.0f, 1.0f, "Fluid01", false);
-            fluids.Add( fluidScene1 );
-
-            var fluidScene2 = new FluidScene();
-            fluidScene2.Create(mainModel.Scenes, mainModel.VDBModel, Canvas, 5.0f, 1.0f, 1.0f, "Boundary01", true);
-            fluids.Add(fluidScene2);
-
-            var boundaries = new List<CSGBoundaryScene>();
-            //boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
-            var scene = new SolverScene();
-            scene.Create(mainModel.Scenes, fluids, 2.0f, 0.03f, "Solver01");
-            this.mainModel.PhysicsModel.Solvers.Add(scene);
-
-            Canvas.BuildShader(mainModel.Scenes, fluidScene1.Id);
-            Canvas.BuildShader(mainModel.Scenes, fluidScene2.Id);
-            Canvas.Render();
         }
 
         private void OnCreateFluidScene()
@@ -166,20 +84,6 @@ namespace FluidStudio
             Canvas.Render();
             mainModel.PhysicsModel.Solvers.Remove(solver);
             mainModel.PhysicsModel.Solvers.Add(solver);
-        }
-
-        private void OnCreateVDBVolume()
-        {
-            this.volumeId = mainModel.VDBModel.CreateVDBVolume(mainModel.Scenes, "VDBVolume", true);
-            Canvas.BuildShader(mainModel.Scenes, volumeId);
-            Canvas.Render();
-        }
-
-        private void OnCreateVDBPoints()
-        {
-            var id = mainModel.VDBModel.CreateVDBPoints(mainModel.Scenes, new List<Vector3d>(), "VDBPoints");
-            Canvas.BuildShader(mainModel.Scenes, id);
-            Canvas.Render();
         }
     }
 }

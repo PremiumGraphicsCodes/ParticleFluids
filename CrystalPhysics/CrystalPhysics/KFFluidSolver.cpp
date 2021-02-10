@@ -6,10 +6,6 @@
 #include "KFFluidScene.h"
 #include "CSGBoundaryScene.h"
 
-#include "MeshBoundaryScene.h"
-
-#include "../../CrystalSpace/CrystalAlgo/DistanceCalculator.h"
-
 #include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
 
 #include <iostream>
@@ -52,80 +48,13 @@ std::vector<IParticle*> KFBoundarySolver::findNeighbors(const Vector3dd& positio
 	return spaceHash->findNeighbors(position);
 }
 
-void KFMeshBoundarySolver::setup()
-{
-	std::vector<BoundaryMeshParticle*> boundaryParticles;
-	for (auto b : boundaries) {
-		const auto bp = b->getParticles();
-		boundaryParticles.insert(boundaryParticles.end(), bp.begin(), bp.end());
-	}
-
-	if (boundaryParticles.empty()) {
-		return;
-	}
-
-	const auto hashSize = boundaryParticles.size();
-	const auto searchRadius = boundaries.front()->getRadius() * 1.25;// boundaryParticles.front()->getRadius() * 2.25;
-	spaceHash = std::make_unique<CompactSpaceHash3d>(searchRadius, boundaryParticles.size());
-	//spaceHash.setup(searchRadius, boundaryParticles.size());
-
-	for (auto bp : boundaryParticles) {
-		spaceHash->add(bp);
-	}
-}
-
-void KFMeshBoundarySolver::searchNeighbors(const std::vector<KFMacroParticle*>& macros)
-{
-	if (spaceHash == nullptr) {
-		return;
-	}
-	table.clear();
-	for (auto m : macros) {
-		const auto neighbors = spaceHash->findNeighbors(m->getPosition());
-		table.push_back(std::make_pair(m, neighbors));
-	}
-}
-
-void KFMeshBoundarySolver::calculateForces(const float dt, const float searchRadius)
-{
-	for (const auto& t : table) {
-		calculatePressureForce(t, dt, searchRadius);
-	}
-}
-
-void KFMeshBoundarySolver::calculatePressureForce(const std::pair<KFMacroParticle*, std::vector<IParticle*>>& pair, const double dt, const float effectLength)
-{
-	auto mp = pair.first;
-	const auto& meshes = pair.second;
-	for (const auto& mm : meshes) {
-		const auto distanceSquared = Crystal::Math::getDistanceSquared(pair.first->getPosition(), mm->getPosition());
-		if (distanceSquared > effectLength * effectLength) {
-			continue;
-		}
-
-		const auto fluidPos = mp->getPosition();
-		auto m = static_cast<BoundaryMeshParticle*>(mm);
-		const auto& n = m->getAttribute().normal;
-		const auto boundaryPos = m->getPosition();
-		const auto v = fluidPos - boundaryPos;
-		const auto distance = glm::dot(n, v);
-		if (distance < 0.0) {
-			const auto f = ::fabs(distance)* n;
-			mp->addForce(f / dt / dt);
-		}
-	}
-	//return spaceHash->findNeighbors(position);
-}
-
 KFFluidSolver::KFFluidSolver(const int id) :
 	IAnimator(id)
 {}
 
 void KFFluidSolver::setupBoundaries()
 {
-	//this->boundarySolver = KFBoundarySolver();
 	this->boundarySolver.setup(effectLength);
-	this->meshBoundarySolver.setup();
 }
 
 void KFFluidSolver::addFluidScene(KFFluidScene* scene)
@@ -136,11 +65,6 @@ void KFFluidSolver::addFluidScene(KFFluidScene* scene)
 void KFFluidSolver::addBoundaryScene(KFFluidScene* scene)
 {
 	this->boundarySolver.addBoundaryScene(scene);
-}
-
-void KFFluidSolver::addBoundary(MeshBoundaryScene* scene)
-{
-	this->meshBoundarySolver.addScene(scene);
 }
 
 void KFFluidSolver::step()
@@ -189,8 +113,6 @@ void KFFluidSolver::simulate()
 		}
 	}
 
-	meshBoundarySolver.searchNeighbors(fluidParticles);
-
 	double time = 0.0;
 	while (time < maxTimeStep) {
 		const auto dt = calculateTimeStep(fluidParticles);
@@ -208,7 +130,6 @@ void KFFluidSolver::simulate()
 		for (int i = 0; i < fluidParticles.size(); ++i) {
 			const auto particle = fluidParticles[i];
 			//boundarySolver.createMacro(particle);
-			meshBoundarySolver.calculateForces(dt, searchRadius * 0.5);
 			solveBoundary(particle, dt);
 		}
 
