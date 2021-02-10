@@ -2,6 +2,7 @@
 using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
+using System.Linq;
 
 namespace FluidStudio.Physics
 {
@@ -16,6 +17,17 @@ namespace FluidStudio.Physics
         public PhysicsModel()
         {
             //            this.Scenes.Add(new PhysicsScene());
+        }
+
+        public void Clear()
+        {
+            foreach(var solver in Solvers)
+            {
+                solver.Clear();
+            }
+            var root = Solvers.FirstOrDefault();
+            Solvers.Clear();
+            Solvers.Add(root);
         }
 
         public void Simulate(SceneList world, VDBModel vdb, Canvas3d canvas)

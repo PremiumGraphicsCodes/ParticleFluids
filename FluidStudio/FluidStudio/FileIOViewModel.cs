@@ -48,7 +48,7 @@ namespace FluidStudio
         private void OnNew()
         {
             world.Scenes.Clear();
-            //var solver = model.PhysicsModel.Solvers.FirstOrDefault();
+            model.PhysicsModel.Clear();
             canvas.Renderer.Build(world.Adapter);
             canvas.Update();
             canvas.Render();
