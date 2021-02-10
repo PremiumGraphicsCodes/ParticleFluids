@@ -37,6 +37,7 @@
                 </RibbonGroup>
                 <RibbonGroup Header="Directory">
                     <RibbonButton Label="PSToVolume" Command="{Binding NavigateCommand}" CommandParameter="PSToVolume"/>
+                    <RibbonButton Label="VolumeToMesh" Command="{Binding NavigateCommand}" CommandParameter="VolumeToMesh"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Simulation">

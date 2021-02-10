@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="FluidStudio.Tool.Modeling.VolumeToMeshView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FluidStudio.Tool.Modeling"
+             mc:Ignorable="d"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel>
+        <TextBlock Text = "InputDirectory" />
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Select" Command="{Binding VDBInputDirectorySelectCommand}"/>
+            <TextBox Text = "{Binding VDBInputDirectoryPath.Value}" MinWidth="100"/>
+        </StackPanel>
+        <TextBlock Text = "OutputDirectory" />
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Select" Command="{Binding MeshOutputDirectorySelectCommand}"/>
+            <TextBox Text = "{Binding MeshOutputDirectoryPath.Value}" MinWidth="100"/>
+        </StackPanel>
+        <Button Content="Start" Command="{Binding StartCommand}"/>
+    </StackPanel>
+</UserControl>

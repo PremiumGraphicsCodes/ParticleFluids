@@ -168,6 +168,14 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
+        public bool ConvertVolumeToMesh(int vdbVolumeId, int vdbMeshId, SceneList world)
+        {
+            var command = new PG.CLI.VDBCommand(PG.VDBVolumeToMeshLabels.CommandNameLabel);
+            command.SetArg(PG.VDBVolumeToMeshLabels.VolumeIdLabel, vdbVolumeId);
+            command.SetArg(PG.VDBVolumeToMeshLabels.VDBMeshIdLabel, vdbMeshId);
+            return command.Execute(world.Adapter);
+        }
+
         public bool ConvertVolumeToPS(int vdbVolumeId, int vdbPSId, SceneList world)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBVolumeToPSLabels.CommandNameLabel);
