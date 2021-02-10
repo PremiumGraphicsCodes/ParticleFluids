@@ -78,18 +78,19 @@ namespace FluidStudio.Tool.Modeling
                     vdb.ConvertVolumeToMesh(id, meshId, world);
                     meshIds.Add(meshId);
                 }
-                var newName = System.IO.Path.Combine(this.MeshOutputDirectoryPath.Value, "" + System.IO.Path.GetFileNameWithoutExtension(file), ".obj");
-                /*
-                vdb.WriteOBJ(newName, world, new List<int>(), volumeIds);
-                foreach (int id in pointIds)
+                var newName = System.IO.Path.Combine(this.MeshOutputDirectoryPath.Value, "" + System.IO.Path.GetFileNameWithoutExtension(file) + ".obj");
+                foreach (var id in meshIds)
+                {
+                    vdb.WriteOBJ(world, id, newName);
+                }
+                foreach (int id in vdbIds)
                 {
                     world.Delete(id);
                 }
-                foreach (int id in volumeIds)
+                foreach (int id in meshIds)
                 {
                     world.Delete(id);
                 }
-                */
             }
         }
     }
