@@ -24,6 +24,7 @@
         <Ribbon Grid.Row="0">
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu DataContext="{Binding FileIOViewModel}">
+                    <RibbonApplicationMenuItem Header="New" Command="{Binding NewCommand}"/>
                     <RibbonApplicationMenuItem Header="Open" Command="{Binding OpenCommand}"/>
                     <RibbonApplicationMenuItem Header="Save" Command="{Binding SaveCommand}"/>
                     <RibbonApplicationMenuItem Header="Export" Command="{Binding ExportCommand}"/>

@@ -1,11 +1,6 @@
 ﻿using FluidStudio.Physics;
 using PG.Control.OpenGL;
-using PG.Scene;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace FluidStudio.FileIO
@@ -47,7 +42,7 @@ namespace FluidStudio.FileIO
             */
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             physicsScene.TimeStep = timeStep;
-            physicsScene.Create(model.Scenes, fluids, new List<CSGBoundaryScene>(), effectLength, timeStep, name);
+            physicsScene.Create(model.Scenes, fluids, effectLength, timeStep, name);
             model.PhysicsModel.Solvers.Add(physicsScene);
         }
 

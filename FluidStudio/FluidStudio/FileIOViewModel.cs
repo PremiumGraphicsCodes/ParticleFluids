@@ -5,6 +5,7 @@ using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace FluidStudio
@@ -46,12 +47,11 @@ namespace FluidStudio
 
         private void OnNew()
         {
-            /*
             world.Scenes.Clear();
+            //var solver = model.PhysicsModel.Solvers.FirstOrDefault();
             canvas.Renderer.Build(world.Adapter);
             canvas.Update();
             canvas.Render();
-            */
         }
 
         private void OnOpen()

@@ -39,14 +39,6 @@ namespace FluidStudio.Physics
             {
                 Children.Add(new PhysicsSceneViewModel(f));
             }
-            foreach(var b in scene.CSGBoundaries)
-            {
-                Children.Add(new PhysicsSceneViewModel(b));
-            }
-            foreach(var b in scene.MeshBoundaries)
-            {
-                Children.Add(new PhysicsSceneViewModel(b));
-            }
         }
 
         public PhysicsSceneViewModel(FluidScene scene)

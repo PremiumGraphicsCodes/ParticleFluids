@@ -4,10 +4,7 @@ using System.Collections.Generic;
 using Labels = PG.FluidSimulationLabels;
 using CreateLabels = PG.PhysicsSolverCreateLabels;
 using UpdateLabels = PG.PhysicsSolverUpdateLabels;
-using PG.Control.OpenGL;
 using FluidStudio.VDB;
-using FluidStudio.Physics.Fluid;
-using FluidStudio.Physics.MeshBoundary;
 
 namespace FluidStudio.Physics
 {
@@ -18,30 +15,28 @@ namespace FluidStudio.Physics
         public List<FluidScene> Fluids { get; private set; }
             = new List<FluidScene>();
 
-        public List<CSGBoundaryScene> CSGBoundaries { get; private set; }
-            = new List<CSGBoundaryScene>();
-
-        public List<MeshBoundaryScene> MeshBoundaries { get; private set; }
-            = new List<MeshBoundaryScene>();
-
         public float EffectLength { get; set; } = 2.0f;
 
         public float TimeStep { get; set; } = 0.03f;
 
         public int Id { get; private set; }
 
-        public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float effectLength, float timeStep, string name)
+        public void Clear()
+        {
+            Fluids.Clear();
+        }
+
+        public void Create(SceneList scenes, List<FluidScene> fluids, float effectLength, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(scenes.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(scenes, fluids, boundaries, effectLength, timeStep, name);
+            Update(scenes, fluids, effectLength, timeStep, name);
         }
 
-        public void Update(SceneList world, List<FluidScene> fluids, List<CSGBoundaryScene> boundaries, float effectLength, float timeStep, string name)
+        public void Update(SceneList world, List<FluidScene> fluids, float effectLength, float timeStep, string name)
         {
             this.Fluids = fluids;
-            this.CSGBoundaries = boundaries;
             this.EffectLength = effectLength;
             this.TimeStep = timeStep;
             this.Name = name;
@@ -62,22 +57,12 @@ namespace FluidStudio.Physics
             {
                 fluidIds.Add(f.Id);
             }
-            var boundaryIds = new List<int>();
-            foreach (var b in CSGBoundaries)
-            {
-                boundaryIds.Add(b.Id);
-            }
-            var meshIds = new List<int>();
-            foreach(var m in MeshBoundaries)
-            {
-                meshIds.Add(m.Id);
-            }
 
             var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
             command.SetArg(UpdateLabels.FluidSceneIdsLabel, fluidIds);
-            command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, boundaryIds);
-            command.SetArg(UpdateLabels.MeshBoundarySceneIdsLabel, meshIds);
+            command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, new List<int>());
+            command.SetArg(UpdateLabels.MeshBoundarySceneIdsLabel, new List<int>());
             command.SetArg(UpdateLabels.EffectLengthLabel, EffectLength);
             command.SetArg(UpdateLabels.TimeStepLabel, TimeStep);
             command.SetArg(UpdateLabels.NameLabel, Name);

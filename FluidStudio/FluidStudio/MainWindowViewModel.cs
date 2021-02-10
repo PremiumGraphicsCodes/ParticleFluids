@@ -66,7 +66,6 @@ namespace FluidStudio
             this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
             this.PhysicsSceneCreateCommand.Subscribe(OnCreatePhysicsScene);
             this.FluidSceneCreateCommand.Subscribe(OnCreateFluidScene);
-            this.MeshBoundarySceneCreateCommand.Subscribe(OnCreateMeshBoundary);
 //            this.BoundarySceneCreateCommand.Subscribe(OnCreateBoundaryScene);
         }
 
@@ -81,7 +80,7 @@ namespace FluidStudio
             mainModel.Scenes.CreateDefaultCameraScene();
 
             var scene = new SolverScene();
-            scene.Create(mainModel.Scenes, new List<FluidScene>(), new List<CSGBoundaryScene>(), 2.0f, 0.03f, "Solver01");
+            scene.Create(mainModel.Scenes, new List<FluidScene>(), 2.0f, 0.03f, "Solver01");
             mainModel.PhysicsModel.Solvers.Add(scene);
             
             //OnCreateSolid();
@@ -149,7 +148,7 @@ namespace FluidStudio
             var boundaries = new List<CSGBoundaryScene>();
             //boundaries.Add(new CSGBoundaryScene(mainModel.Scenes, "Boundary", solidId));
             var scene = new SolverScene();
-            scene.Create(mainModel.Scenes, fluids, boundaries, 2.0f, 0.03f, "Solver01");
+            scene.Create(mainModel.Scenes, fluids, 2.0f, 0.03f, "Solver01");
             this.mainModel.PhysicsModel.Solvers.Add(scene);
 
             Canvas.BuildShader(mainModel.Scenes, fluidScene1.Id);
@@ -167,19 +166,6 @@ namespace FluidStudio
             Canvas.Render();
             mainModel.PhysicsModel.Solvers.Remove(solver);
             mainModel.PhysicsModel.Solvers.Add(solver);
-        }
-
-        private void OnCreateMeshBoundary()
-        {
-            var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
-            var meshScene = new MeshBoundaryScene();
-            meshScene.Create(mainModel.Scenes, "MeshBoundary", 0);
-            solver.MeshBoundaries.Add(meshScene);
-            Canvas.BuildShader(mainModel.Scenes, meshScene.Id);
-            Canvas.Render();
-            mainModel.PhysicsModel.Solvers.Remove(solver);
-            mainModel.PhysicsModel.Solvers.Add(solver);
-            //            solver.Mesh
         }
 
         private void OnCreateVDBVolume()
