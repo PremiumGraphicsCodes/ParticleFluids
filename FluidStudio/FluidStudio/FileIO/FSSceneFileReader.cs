@@ -35,15 +35,16 @@ namespace FluidStudio.FileIO
                 fluids.Add(fluid);
 //                physicsScene.Fluids.Add(fluid);
             }
+            var bScenes = new List<CSGBoundaryScene>();
             var bElements = elem.Elements(FSProjFile.CSGBoundarySceneLabel);
             foreach(var bElem in bElements)
             {
                 var bScene = ReadCSGBoundaryScene(model, canvas, bElem);
-                physicsScene.CSGBoundaries.Add(bScene);
+                bScenes.Add(bScene);
             }
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             physicsScene.TimeStep = timeStep;
-            physicsScene.Create(model.Scenes, fluids, new List<CSGBoundaryScene>(), effectLength, timeStep, name);
+            physicsScene.Create(model.Scenes, fluids, bScenes, effectLength, timeStep, name);
             model.PhysicsModel.Solvers.Add(physicsScene);
         }
 
