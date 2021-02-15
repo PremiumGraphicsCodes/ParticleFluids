@@ -68,7 +68,7 @@ namespace FluidStudio.FileIO
             }
             foreach(var boundary in scene.CSGBoundaries)
             {
-                root.Add(CreateElement("CSGBoundary", boundary));
+                root.Add(CreateElement(FSProjFile.CSGBoundarySceneLabel, boundary));
             }
             return root;
         }
@@ -91,7 +91,7 @@ namespace FluidStudio.FileIO
         {
             var e = new XElement(name);
             e.Add(new XAttribute(FSProjFile.NameLabel, boundary.Name));
-            e.Add(CreateElement("Box", boundary.BoundingBox));
+            e.Add(CreateElement(FSProjFile.Box3dLabel, boundary.BoundingBox));
             return e;
         }
 

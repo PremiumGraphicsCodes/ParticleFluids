@@ -1,5 +1,6 @@
 ﻿using FluidStudio.Physics;
 using PG.Control.OpenGL;
+using PG.Core.Math;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
@@ -34,12 +35,12 @@ namespace FluidStudio.FileIO
                 fluids.Add(fluid);
 //                physicsScene.Fluids.Add(fluid);
             }
-            /*
+            var bElements = elem.Elements(FSProjFile.CSGBoundarySceneLabel);
+            foreach(var bElem in bElements)
             {
-//                var name = elem.Element(FSProjFile.NameLabel).Value;
-                physicsScene.Fluids.Add(fluidScene);
+                var bScene = ReadCSGBoundaryScene(model, canvas, bElem);
+                physicsScene.CSGBoundaries.Add(bScene);
             }
-            */
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             physicsScene.TimeStep = timeStep;
             physicsScene.Create(model.Scenes, fluids, new List<CSGBoundaryScene>(), effectLength, timeStep, name);
@@ -67,6 +68,32 @@ namespace FluidStudio.FileIO
             canvas.Render();
 
             return fluidScene;
+        }
+
+        private CSGBoundaryScene ReadCSGBoundaryScene(MainModel model, Canvas3d canvas, XElement elem)
+        {
+            var name = elem.Attribute(FSProjFile.NameLabel).Value;
+            var box = ReadBox3d(elem.Element(FSProjFile.Box3dLabel));
+
+            var bScene = new CSGBoundaryScene(model.Scenes, name, box);
+            canvas.BuildShader(model.Scenes, bScene.Id);
+            canvas.Render();
+            return bScene;
+        }
+
+        private Box3d ReadBox3d(XElement elem)
+        {
+            var min = ReadVector3d(elem.Element("Min"));
+            var max = ReadVector3d(elem.Element("Max"));
+            return new Box3d(min, max);
+        }
+
+        private Vector3d ReadVector3d(XElement elem)
+        {
+            var x = double.Parse(elem.Element(FSProjFile.XLabel).Value);
+            var y = double.Parse(elem.Element(FSProjFile.YLabel).Value);
+            var z = double.Parse(elem.Element(FSProjFile.ZLabel).Value);
+            return new Vector3d(x, y, z);
         }
     }
 }
