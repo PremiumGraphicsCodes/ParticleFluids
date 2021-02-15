@@ -70,7 +70,7 @@ namespace FluidStudio
             mainModel.Scenes.CreateDefaultCameraScene();
 
             var scene = new SolverScene();
-            scene.Create(mainModel.Scenes, new List<FluidScene>(), 2.0f, 0.03f, "Solver01");
+            scene.Create(mainModel.Scenes, new List<FluidScene>(), new List<CSGBoundaryScene>(), 2.0f, 0.03f, "Solver01");
             mainModel.PhysicsModel.Solvers.Add(scene);
         }
 

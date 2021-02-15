@@ -66,7 +66,7 @@
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\PremiumGraphics\Documents\GitHub\cgstudio4\FluidStudio\ThirdParty\openvdb\openvdb\cmd\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\PremiumGraphics\Documents\GitHub\FluidStudio\FluidStudio\ThirdParty\openvdb\openvdb\cmd\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectName)</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
@@ -146,7 +146,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\PremiumGraphics\Documents\GitHub\cgstudio4\CrystalVDB\ThirdParty\openvdb\openvdb\..;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\include;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\include\OpenEXR;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\PremiumGraphics\Documents\GitHub\FluidStudio\CrystalVDB\ThirdParty\openvdb\openvdb\..;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\include;C:\Users\PremiumGraphics\Desktop\vcpkg-2020.06\installed\x64-windows\include\OpenEXR;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>4244;4251;4267;4275;4305</DisableSpecificWarnings>

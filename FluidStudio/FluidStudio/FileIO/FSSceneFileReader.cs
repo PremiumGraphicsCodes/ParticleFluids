@@ -42,7 +42,7 @@ namespace FluidStudio.FileIO
             */
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             physicsScene.TimeStep = timeStep;
-            physicsScene.Create(model.Scenes, fluids, effectLength, timeStep, name);
+            physicsScene.Create(model.Scenes, fluids, new List<CSGBoundaryScene>(), effectLength, timeStep, name);
             model.PhysicsModel.Solvers.Add(physicsScene);
         }
 

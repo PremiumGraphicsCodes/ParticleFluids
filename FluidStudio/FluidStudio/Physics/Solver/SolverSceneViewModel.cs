@@ -2,6 +2,7 @@
 using Prism.Regions;
 using Reactive.Bindings;
 using System;
+using System.Collections.Generic;
 
 namespace FluidStudio.Physics.Solver
 {
@@ -61,7 +62,7 @@ namespace FluidStudio.Physics.Solver
             {
                 return;
             }
-            scene.Update(world, this.scene.Fluids, EffectLength.Value, TimeStep.Value, this.Name.Value);
+            scene.Update(world, this.scene.Fluids, new List<CSGBoundaryScene>(), EffectLength.Value, TimeStep.Value, this.Name.Value);
         }
     }
 }

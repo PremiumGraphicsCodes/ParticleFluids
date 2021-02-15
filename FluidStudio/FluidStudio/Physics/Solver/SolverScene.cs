@@ -15,6 +15,9 @@ namespace FluidStudio.Physics
         public List<FluidScene> Fluids { get; private set; }
             = new List<FluidScene>();
 
+        public List<CSGBoundaryScene> CSGBoundaries { get; private set; }
+            = new List<CSGBoundaryScene>();
+
         public float EffectLength { get; set; } = 2.0f;
 
         public float TimeStep { get; set; } = 0.03f;
@@ -26,17 +29,18 @@ namespace FluidStudio.Physics
             Fluids.Clear();
         }
 
-        public void Create(SceneList scenes, List<FluidScene> fluids, float effectLength, float timeStep, string name)
+        public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> csgBoundaries, float effectLength, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(scenes.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(scenes, fluids, effectLength, timeStep, name);
+            Update(scenes, fluids, csgBoundaries, effectLength, timeStep, name);
         }
 
-        public void Update(SceneList world, List<FluidScene> fluids, float effectLength, float timeStep, string name)
+        public void Update(SceneList world, List<FluidScene> fluids, List<CSGBoundaryScene> cSGBoundaries, float effectLength, float timeStep, string name)
         {
             this.Fluids = fluids;
+            this.CSGBoundaries = cSGBoundaries;
             this.EffectLength = effectLength;
             this.TimeStep = timeStep;
             this.Name = name;
@@ -58,10 +62,16 @@ namespace FluidStudio.Physics
                 fluidIds.Add(f.Id);
             }
 
+            var csgIds = new List<int>();
+            foreach(var csg in CSGBoundaries)
+            {
+                csgIds.Add(csg.Id);
+            }
+
             var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
             command.SetArg(UpdateLabels.FluidSceneIdsLabel, fluidIds);
-            command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, new List<int>());
+            command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, csgIds);
             command.SetArg(UpdateLabels.MeshBoundarySceneIdsLabel, new List<int>());
             command.SetArg(UpdateLabels.EffectLengthLabel, EffectLength);
             command.SetArg(UpdateLabels.TimeStepLabel, TimeStep);
