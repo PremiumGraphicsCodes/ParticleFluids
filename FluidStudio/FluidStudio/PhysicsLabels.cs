@@ -9,7 +9,7 @@ namespace PG {
 	{
 		public const string CommandNameLabel = "CSGBoundarySceneUpdate";
 		public const string IdLabel = "Id";
-		public const string SolidIdLabel = "SolidId";
+		public const string BoundingBoxLabel = "BoundingBox";
 		public const string NameLabel = "Name";
 	}
 

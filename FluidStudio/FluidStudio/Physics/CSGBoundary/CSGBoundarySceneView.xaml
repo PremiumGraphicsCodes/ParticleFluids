@@ -10,16 +10,12 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Id"/>
-            <TextBox Text="{Binding Id.Value}" MinWidth="50"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
             <TextBlock Text="Name"/>
             <TextBox Text="{Binding Name.Value}" MinWidth="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Solid"/>
-            <ui:SceneSelectView DataContext="{Binding SolidSelectViewModel}"/>
+            <TextBlock Text="BoundingBox"/>
+            <math:Box3dView DataContext="{Binding BoundingBoxViewModel}"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

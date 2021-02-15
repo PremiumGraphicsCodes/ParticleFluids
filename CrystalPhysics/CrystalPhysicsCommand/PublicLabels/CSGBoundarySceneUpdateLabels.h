@@ -3,6 +3,6 @@
 namespace {
 	PublicLabel CommandNameLabel = "CSGBoundarySceneUpdate";
 	PublicLabel IdLabel = "Id";
-	PublicLabel SolidIdLabel = "SolidId";
+	PublicLabel BoundingBoxLabel = "BoundingBox";
 	PublicLabel NameLabel = "Name";
 }

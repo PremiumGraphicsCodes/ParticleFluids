@@ -20,11 +20,11 @@ std::string CSGBoundarySceneUpdateCommand::getName()
 
 CSGBoundarySceneUpdateCommand::Args::Args() :
 	id(::IdLabel, -1),
-	solidId(::SolidIdLabel, -1),
+	bb(::BoundingBoxLabel, Math::Box3d()),
 	name(::NameLabel, std::string("CSGBoundary"))
 {
 	add(&id);
-	add(&solidId);
+	add(&bb);
 	add(&name);
 }
 
@@ -40,15 +40,9 @@ bool CSGBoundarySceneUpdateCommand::execute(World* world)
 {
 	auto boundaryScene = world->getScenes()->findSceneById<CSGBoundaryScene*>(args.id.getValue());
 
-	auto solidId = args.solidId.getValue();
-	auto solidScene = world->getScenes()->findSceneById<SolidScene*>(solidId);
-	if (solidScene == nullptr) {
-		return false;
-	}
-
 	boundaryScene->clear();
 	boundaryScene->setName(args.name.getValue());
-	boundaryScene->add(solidScene->getBoundingBox());
+	boundaryScene->add(args.bb.getValue());
 	world->getScenes()->addScene(boundaryScene);
 
 	//results.newId.setValue(boundaryScene->getId());

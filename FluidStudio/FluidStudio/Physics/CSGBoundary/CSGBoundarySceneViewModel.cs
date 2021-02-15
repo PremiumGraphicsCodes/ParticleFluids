@@ -18,7 +18,7 @@ namespace FluidStudio.Physics
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("CSGBoundary01");
 
-        public SceneSelectViewModel SolidSelectViewModel { get; }
+        public Box3dViewModel BoundingBoxViewModel { get; }
 
         private CSGBoundaryScene scene;
 
@@ -32,8 +32,8 @@ namespace FluidStudio.Physics
             this.canvas = canvas;
             var min = new Vector3d(-100, 0, -100);
             var max = new Vector3d(100, 100, 100);
-            SolidSelectViewModel = new SceneSelectViewModel(world, canvas);
-            SolidSelectViewModel.Id.Subscribe(OnSolidChanged);
+            BoundingBoxViewModel = new Box3dViewModel();
+            BoundingBoxViewModel.Value = new Box3d(min, max);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -45,7 +45,7 @@ namespace FluidStudio.Physics
             }
             this.Id.Value = item.Id;
             this.Name.Value = item.Name;
-            this.SolidSelectViewModel.Id.Value = item.SolidId;
+            this.BoundingBoxViewModel.Value = item.BoundingBox;
             //this.BoxViewModel.Value = item.Box;
             this.scene = item;
         }
@@ -65,8 +65,7 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            this.scene.Update(model.Scenes, Name.Value, this.SolidSelectViewModel.Id.Value);
+            this.scene.Update(model.Scenes, Name.Value, this.BoundingBoxViewModel.Value);
         }
-
    }
 }
