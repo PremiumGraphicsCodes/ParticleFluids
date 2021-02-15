@@ -14,7 +14,6 @@
             <TextBox Text="{Binding Name.Value}" MinWidth="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="BoundingBox"/>
             <math:Box3dView DataContext="{Binding BoundingBoxViewModel}"/>
         </StackPanel>
     </StackPanel>

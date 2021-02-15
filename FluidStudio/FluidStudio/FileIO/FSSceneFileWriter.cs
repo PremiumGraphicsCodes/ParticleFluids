@@ -1,4 +1,5 @@
 ﻿using FluidStudio.Physics;
+using PG.Core.Math;
 using System.Collections.Specialized;
 using System.Xml.Linq;
 
@@ -21,6 +22,13 @@ namespace FluidStudio.FileIO
         public const string IsBoundarylabel = "IsBoundary";
         public const string DoExportVDBLabel = "ExportVDB";
         public const string ExportDirectory = "ExportDirectory";
+
+        public const string CSGBoundarySceneLabel = "CSGBoundaryScene";
+        public const string Box3dLabel = "Box3d";
+        public const string Vector3dLabel = "Vector3d";
+        public const string XLabel = "X";
+        public const string YLabel = "Y";
+        public const string ZLabel = "Z";
     }
 
     public class FSSceneFileWriter
@@ -58,6 +66,10 @@ namespace FluidStudio.FileIO
             {
                 root.Add(CreateElement(fluid));
             }
+            foreach(var boundary in scene.CSGBoundaries)
+            {
+                root.Add(CreateElement("CSGBoundary", boundary));
+            }
             return root;
         }
 
@@ -73,6 +85,31 @@ namespace FluidStudio.FileIO
             froot.Add(new XElement(FSProjFile.DoExportVDBLabel, fluid.ExportModel.DoExportVDB));
             froot.Add(new XElement(FSProjFile.ExportDirectory, fluid.ExportModel.VDBExportDirectory));
             return froot;
+        }
+
+        private XElement CreateElement(string name, CSGBoundaryScene boundary)
+        {
+            var e = new XElement(name);
+            e.Add(new XAttribute(FSProjFile.NameLabel, boundary.Name));
+            e.Add(CreateElement("Box", boundary.BoundingBox));
+            return e;
+        }
+
+        private XElement CreateElement(string name, Box3d box)
+        {
+            var e = new XElement(name);
+            e.Add(CreateElement("Min", box.Min));
+            e.Add(CreateElement("Max", box.Max));
+            return e;
+        }
+
+        private XElement CreateElement(string name, Vector3d v)
+        {
+            var e = new XElement(name);
+            e.Add(new XElement("X", v.X));
+            e.Add(new XElement("Y", v.Y));
+            e.Add(new XElement("Z", v.Z));
+            return e;
         }
     }
 }
