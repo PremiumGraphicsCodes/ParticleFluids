@@ -55,7 +55,7 @@ void KFMacroParticle::setScene(KFFluidScene* scene)
 {
 	this->scene = scene;
 	for (auto p : points) {
-		//p->setPressureCoe(scene->getPressureCoe());
+		p->setPressureCoe(scene->getPressureCoe());
 		p->setViscosityCoe(scene->getViscosityCoe());
 	}
 }
@@ -87,6 +87,7 @@ void KFMacroParticle::addMicro(KFMicroParticle* microParticle)
 	*/
 }
 
+/*
 void KFMacroParticle::calculatePressure()
 {
 	auto ratio = (totalMass / selfMass) - 1.0f;
@@ -96,15 +97,21 @@ void KFMacroParticle::calculatePressure()
 		//mp.set
 	}
 }
+*/
 
 void KFMacroParticle::calculatePressureForce(const float relaxationCoe)
 {
 	Vector3df averagedCenter(0, 0, 0);
+	float pressureCoe = 0.0f;
 	for (auto mp : innerPoints) {
-		averagedCenter += (this->position - mp->position) * mp->getMass() * mp->getPressure();
+		averagedCenter += mp->position * mp->getMass();
+		pressureCoe += mp->getPressureCoe() * mp->getMass();
 	}
 	averagedCenter /= totalMass;
-	this->force += averagedCenter * relaxationCoe;// 10000.0;
+	pressureCoe /= totalMass;
+	auto ratio = (totalMass / selfMass) - 1.0f;
+	ratio = std::max(0.0f, ratio);
+	this->force += (this->position - averagedCenter) * ratio * pressureCoe * relaxationCoe;// 10000.0;
 }
 
 void KFMacroParticle::calculateViscosityForce()

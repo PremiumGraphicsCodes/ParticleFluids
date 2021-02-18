@@ -121,12 +121,6 @@ void KFFluidSolver::simulate()
 		for (int i = 0; i < fluidParticles.size(); ++i) {
 			const auto particle = fluidParticles[i];
 			particle->updateInnerPoints();
-			particle->calculatePressure();
-		}
-
-#pragma omp parallel for
-		for (int i = 0; i < fluidParticles.size(); ++i) {
-			const auto particle = fluidParticles[i];
 			particle->calculatePressureForce(1.0);
 			particle->calculateViscosityForce();
 		}

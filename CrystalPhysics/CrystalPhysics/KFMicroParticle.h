@@ -22,11 +22,11 @@ public:
 
 	float getMass() const { return mass; }
 
-	void setPressure(const float p) { this->pressure = p; }
+	void setPressureCoe(const float p) { this->pressure = p; }
 
 	void setViscosityCoe(const float v) { this->viscosityCoe = v; }
 
-	float getPressure() const { return pressure; }
+	float getPressureCoe() const { return pressure; }
 
 	float getViscosityCoe() const { return viscosityCoe; }
 

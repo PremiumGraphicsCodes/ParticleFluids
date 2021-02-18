@@ -30,7 +30,7 @@ public:
 
 	void addMicro(KFMicroParticle* microParticle);
 
-	void calculatePressure();
+	//void calculatePressure();
 
 	void calculatePressureForce(const float relaxationCoe);
 
