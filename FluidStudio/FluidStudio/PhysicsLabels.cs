@@ -31,6 +31,7 @@ namespace PG {
 		public const string CommandNameLabel = "FluidSceneUpdateCommand";
 		public const string IdLabel = "Id";
 		public const string ParticleSystemIdLabel = "ParticleSystemId";
+		public const string ParticleRadiusLabel = "ParticleRadius";
 		public const string StiffnessLabel = "Stiffness";
 		public const string ViscosityLabel = "Viscosity";
 		public const string DensityLabel = "Density";

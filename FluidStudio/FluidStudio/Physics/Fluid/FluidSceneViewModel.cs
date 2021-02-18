@@ -23,8 +23,8 @@ namespace FluidStudio.Physics
         public ReactiveProperty<string> ParticleFilePath { get; }
             = new ReactiveProperty<string>("");
 
-        public ReactiveProperty<int> Id { get; }
-            = new ReactiveProperty<int>();
+        public ReactiveProperty<float> ParticleRadius { get; }
+            = new ReactiveProperty<float>(0.5f);
 
         public ReactiveProperty<float> Density { get; }
             = new ReactiveProperty<float>(1.0f);
@@ -81,10 +81,10 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            this.Id.Value = item.Id;
+            //this.Id.Value = item.Id;
             this.Name.Value = item.Name;
             this.ParticleFilePath.Value = item.ParticleFilePath;
-//            this.particleSystemId = item.SourceParticleSystemId;
+            this.ParticleRadius.Value = item.ParticleRadius;
             this.Density.Value = item.Density;
             this.Stiffness.Value = item.Stiffness;
             this.Viscosity.Value = item.Viscosity;
@@ -109,13 +109,14 @@ namespace FluidStudio.Physics
                 return;
             }
             //var sourceId = SourceParticleSystemSelectViewModel.Id.Value;
-            
+
+            var radius = ParticleRadius.Value;
             var density = Density.Value;
             var stiffness = Stiffness.Value;
             var viscosity = Viscosity.Value;
             var name = Name.Value;
             var isBoundary = IsBoundary.Value;
-            this.scene.Update(world, density, stiffness, viscosity, name, isBoundary);
+            this.scene.Update(world, radius, density, stiffness, viscosity, name, isBoundary);
         }
     }
 }

@@ -19,6 +19,10 @@
             <TextBox Text="{Binding ParticleFilePath.Value}" IsReadOnly="True" MinWidth="100"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="ParticleRadius"/>
+            <TextBox Text="{Binding ParticleRadius.Value}" MinWidth="50"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
             <TextBlock Text="Density"/>
             <TextBox Text="{Binding Density.Value}" MinWidth="50"/>
         </StackPanel>

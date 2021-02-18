@@ -16,6 +16,8 @@ namespace FluidStudio.Physics
 
         public string ParticleFilePath { get; private set; }
 
+        public float ParticleRadius { get; private set; } = 0.5f;
+
         public int VolumeId { get; private set; }
 
         public string Name { get; private set; }
@@ -34,7 +36,7 @@ namespace FluidStudio.Physics
         public FluidScene()
         { }
         
-        public void Create(SceneList world, VDBModel vdb, Canvas3d canvas, float density, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Create(SceneList world, VDBModel vdb, Canvas3d canvas, float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(world.Adapter);
@@ -42,12 +44,13 @@ namespace FluidStudio.Physics
             this.VolumeId = vdb.CreateVDBVolume(world, "Volume", false);
             canvas.BuildShader(world, VolumeId);
 
-            Update(world, density, stiffness, viscosity, name, isBoundary);
+            Update(world, particleRadius, density, stiffness, viscosity, name, isBoundary);
         }
 
-        public void Update(SceneList world, float density, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Update(SceneList world, float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
             this.Name = name;
+            this.ParticleRadius = particleRadius;
             this.Density = density;
             this.Stiffness = stiffness;
             this.Viscosity = viscosity;
@@ -85,6 +88,7 @@ namespace FluidStudio.Physics
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
             command.SetArg(UpdateLabels.ParticleSystemIdLabel, SourceParticleSystemId);
+            command.SetArg(UpdateLabels.ParticleRadiusLabel, ParticleRadius);
             command.SetArg(UpdateLabels.DensityLabel, Density);
             command.SetArg(UpdateLabels.StiffnessLabel, Stiffness);
             command.SetArg(UpdateLabels.ViscosityLabel, Viscosity);
