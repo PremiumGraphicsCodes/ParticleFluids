@@ -71,34 +71,42 @@ namespace FluidStudio.Tool.Modeling
             }
         }
 
-        private void OnStart()
+        private async void OnStart()
         {
             var files = System.IO.Directory.GetFiles(this.VDBInputDirectoryPath.Value, "*.vdb");
+            FileCount.Value = 0;
+            MaxFileCount.Value = files.Count();
             foreach (var file in files)
             {
-                var pointIds = vdb.Read(file, world);
-                var volumeIds = new List<int>();
-                foreach (int id in pointIds)
-                {
-                    if (vdb.GetVDBType(id, world) != VDBModel.VDBType.Point)
-                    {
-                        continue;
-                    }
-                    int volumeId = vdb.CreateVDBVolume(world, "Volume", false);
-                    vdb.ConvertPSToVolume(id, volumeId, world, Threshold.Value);
-                    volumeIds.Add(volumeId);
-                }
-                var newName = System.IO.Path.Combine(this.VDBOutputDirectoryPath.Value, "volume_" + System.IO.Path.GetFileName(file));
-                vdb.Write(newName, world, new List<int>(), volumeIds);
-                foreach (int id in pointIds)
-                {
-                    world.Delete(id);
-                }
-                foreach (int id in volumeIds)
-                {
-                    world.Delete(id);
-                }
+                await Task.Run(() => Execute(file));
             }
+        }
+
+        private void Execute(string file)
+        {
+            var pointIds = vdb.Read(file, world);
+            var volumeIds = new List<int>();
+            foreach (int id in pointIds)
+            {
+                if (vdb.GetVDBType(id, world) != VDBModel.VDBType.Point)
+                {
+                    continue;
+                }
+                int volumeId = vdb.CreateVDBVolume(world, "Volume", false);
+                vdb.ConvertPSToVolume(id, volumeId, world, Threshold.Value);
+                volumeIds.Add(volumeId);
+            }
+            var newName = System.IO.Path.Combine(this.VDBOutputDirectoryPath.Value, "volume_" + System.IO.Path.GetFileName(file));
+            vdb.Write(newName, world, new List<int>(), volumeIds);
+            foreach (int id in pointIds)
+            {
+                world.Delete(id);
+            }
+            foreach (int id in volumeIds)
+            {
+                world.Delete(id);
+            }
+            FileCount.Value++;
         }
     }
 }
