@@ -30,9 +30,11 @@ public:
 
 	void addMicro(KFMicroParticle* microParticle);
 
-	void calculatePressure(const float relaxationCoe);
+	void calculatePressure();
 
-	void calculateViscosity();
+	void calculatePressureForce(const float relaxationCoe);
+
+	void calculateViscosityForce();
 
 	void stepTime(const float dt);
 
@@ -70,6 +72,7 @@ private:
 
 	float selfMass;
 	float totalMass;
+	float pressure;
 };
 
 	}

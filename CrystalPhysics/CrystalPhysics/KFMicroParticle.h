@@ -22,11 +22,11 @@ public:
 
 	float getMass() const { return mass; }
 
-	void setPressureCoe(const float p) { this->pressureCoe = p; }
+	void setPressure(const float p) { this->pressure = p; }
 
 	void setViscosityCoe(const float v) { this->viscosityCoe = v; }
 
-	float getPressureCoe() const { return pressureCoe; }
+	float getPressure() const { return pressure; }
 
 	float getViscosityCoe() const { return viscosityCoe; }
 
@@ -36,7 +36,7 @@ private:
 	KFMacroParticle* parent;
 	Math::Vector3df vector;
 	float mass;
-	float pressureCoe;
+	float pressure;
 	float viscosityCoe;
 };
 
