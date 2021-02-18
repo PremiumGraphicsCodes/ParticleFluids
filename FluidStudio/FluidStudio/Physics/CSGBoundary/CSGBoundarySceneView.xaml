@@ -16,5 +16,6 @@
         <StackPanel Orientation="Horizontal">
             <math:Box3dView DataContext="{Binding BoundingBoxViewModel}"/>
         </StackPanel>
+        <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>

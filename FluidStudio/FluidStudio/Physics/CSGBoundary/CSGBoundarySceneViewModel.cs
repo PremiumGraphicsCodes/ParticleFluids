@@ -18,6 +18,9 @@ namespace FluidStudio.Physics
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("CSGBoundary01");
 
+        public ReactiveCommand UpdateCommand { get; }
+            = new ReactiveCommand();
+
         public Box3dViewModel BoundingBoxViewModel { get; }
 
         private CSGBoundaryScene scene;
@@ -34,6 +37,7 @@ namespace FluidStudio.Physics
             var max = new Vector3d(100, 100, 100);
             BoundingBoxViewModel = new Box3dViewModel();
             BoundingBoxViewModel.Value = new Box3d(min, max);
+            this.UpdateCommand.Subscribe(OnUpdate);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
@@ -59,7 +63,7 @@ namespace FluidStudio.Physics
         {
         }
 
-        private void OnSolidChanged(int id)
+        private void OnUpdate()
         {
             if(scene == null)
             {
