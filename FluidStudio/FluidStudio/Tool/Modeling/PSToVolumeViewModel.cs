@@ -3,6 +3,7 @@ using PG.Scene;
 using Reactive.Bindings;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FluidStudio.Tool.Modeling
 {
@@ -26,6 +27,12 @@ namespace FluidStudio.Tool.Modeling
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveProperty<int> MaxFileCount { get; }
+            = new ReactiveProperty<int>(100);
+
+        public ReactiveProperty<int> FileCount { get; }
+            = new ReactiveProperty<int>(0);
+
         private SceneList world;
 
         private VDBModel vdb;
@@ -37,6 +44,9 @@ namespace FluidStudio.Tool.Modeling
             this.VDBInputDirectorySelectCommand.Subscribe(OnSelectVDBImportDirectory);
             this.VDBOutputDirectorySelectCommand.Subscribe(OnSelectVDBExportDirectory);
             this.StartCommand.Subscribe(OnStart);
+
+            this.MaxFileCount.Value = 100;
+            this.FileCount.Value = 50;
         }
 
         private void OnSelectVDBImportDirectory()
@@ -64,11 +74,12 @@ namespace FluidStudio.Tool.Modeling
         private void OnStart()
         {
             var files = System.IO.Directory.GetFiles(this.VDBInputDirectoryPath.Value, "*.vdb");
-            foreach(var file in files)
+            foreach (var file in files)
             {
                 var pointIds = vdb.Read(file, world);
                 var volumeIds = new List<int>();
-                foreach(int id in pointIds) {
+                foreach (int id in pointIds)
+                {
                     if (vdb.GetVDBType(id, world) != VDBModel.VDBType.Point)
                     {
                         continue;
@@ -77,7 +88,7 @@ namespace FluidStudio.Tool.Modeling
                     vdb.ConvertPSToVolume(id, volumeId, world, Threshold.Value);
                     volumeIds.Add(volumeId);
                 }
-                var newName = System.IO.Path.Combine( this.VDBOutputDirectoryPath.Value, "volume_" + System.IO.Path.GetFileName(file));
+                var newName = System.IO.Path.Combine(this.VDBOutputDirectoryPath.Value, "volume_" + System.IO.Path.GetFileName(file));
                 vdb.Write(newName, world, new List<int>(), volumeIds);
                 foreach (int id in pointIds)
                 {

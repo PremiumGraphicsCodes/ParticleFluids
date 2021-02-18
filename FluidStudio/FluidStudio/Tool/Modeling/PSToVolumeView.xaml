@@ -23,5 +23,7 @@
             <TextBox Text="{Binding Threshold.Value}" MinWidth="50"/>
         </StackPanel>
         <Button Content="Start" Command="{Binding StartCommand}"/>
+        <ProgressBar Width="200" Height="20" Minimum="0" Maximum="{Binding MaxFileCount.Value}" Value="{Binding FileCount.Value}">
+        </ProgressBar>
     </StackPanel>
 </UserControl>
