@@ -21,6 +21,7 @@ PMSmoothPresenter::PMSmoothPresenter(PolygonMeshScene* model) :
 
 void PMSmoothPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
+	/*
 	{
 		this->view = new SmoothShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getSmoothShader());
@@ -41,6 +42,7 @@ void PMSmoothPresenter::createView(SceneShader* sceneShader, GLObjectFactory& gl
 	}
 
 	updateView();
+	*/
 }
 
 void PMSmoothPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)

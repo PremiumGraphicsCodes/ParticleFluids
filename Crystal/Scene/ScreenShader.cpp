@@ -15,7 +15,7 @@ using namespace Crystal::Scene;
 ScreenShader::ScreenShader(const std::string& name) :
 	pointRenderer(new PointRenderer()),
 	wireRenderer(new LineRenderer()),
-	smoothRenderer(new SmoothRenderer()),
+	//smoothRenderer(new SmoothRenderer()),
 	triagleRenderer(new TriangleRenderer()),
 	texture(nullptr),
 	frameBufferObject(nullptr)
@@ -30,9 +30,11 @@ bool ScreenShader::build(GLObjectFactory& factory)
 	if (!wireRenderer->build(factory)) {
 		return false;
 	}
+	/*
 	if (!smoothRenderer->build(factory)) {
 		return false;
 	}
+	*/
 	if (!triagleRenderer->build(factory)) {
 		return false;
 	}
@@ -48,7 +50,7 @@ void ScreenShader::release(GLObjectFactory& factory)
 {
 	pointRenderer->release(factory);
 	wireRenderer->release(factory);
-	smoothRenderer->release(factory);
+	//smoothRenderer->release(factory);
 	triagleRenderer->release(factory);
 
 	factory.remove(texture);

@@ -62,7 +62,7 @@ public:
 
 	Shader::TriangleRenderer* getTriangleShader() { return triagleRenderer; }
 
-	Shader::SmoothRenderer* getSmoothShader() { return smoothRenderer; }
+	//Shader::SmoothRenderer* getSmoothShader() { return smoothRenderer; }
 
 	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 
@@ -74,7 +74,7 @@ private:
 	Shader::PointRenderer* pointRenderer;
 	Shader::LineRenderer* wireRenderer;
 	Shader::TriangleRenderer* triagleRenderer;
-	Shader::SmoothRenderer* smoothRenderer;
+	//Shader::SmoothRenderer* smoothRenderer;
 
 	std::list<IShaderScene*> scenes;
 	MaterialShaderScene materialScene;
