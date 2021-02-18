@@ -53,6 +53,7 @@ namespace FluidStudio.FileIO
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
 //            var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);
             var particlesFilePath = elem.Element(FSProjFile.ParticlesFilePathLabel).Value;
+            var radius = float.Parse(elem.Element(FSProjFile.ParticleRadiusLabel).Value);
             var density = float.Parse(elem.Element(FSProjFile.DensityLabel).Value);
             var stiffness = float.Parse(elem.Element(FSProjFile.StiffnessLabel).Value);
             var viscosity = float.Parse(elem.Element(FSProjFile.ViscosityLabel).Value);
@@ -61,7 +62,7 @@ namespace FluidStudio.FileIO
             var exportDirectory = elem.Element(FSProjFile.ExportDirectory).Value;
             var fluidScene = new FluidScene();
             fluidScene.SetParticlesFromFile(model.Scenes, model.VDBModel, canvas, particlesFilePath);
-            fluidScene.Create(model.Scenes, model.VDBModel, canvas, 0.5f, density, stiffness, viscosity, name, isBoundary);
+            fluidScene.Create(model.Scenes, model.VDBModel, canvas, radius, density, stiffness, viscosity, name, isBoundary);
             fluidScene.ExportModel.DoExportVDB = doExportVDB;
             fluidScene.ExportModel.VDBExportDirectory = exportDirectory;
 

@@ -16,6 +16,7 @@ namespace FluidStudio.FileIO
         public const string FluidSceneLabel = "FluidScene";
         public const string IdLabel = "Id";
         public const string ParticlesFilePathLabel = "ParticlesFilePath";
+        public const string ParticleRadiusLabel = "ParticleRadius";
         public const string DensityLabel = "Density";
         public const string StiffnessLabel = "Stiffness";
         public const string ViscosityLabel = "Viscosity";
@@ -75,16 +76,17 @@ namespace FluidStudio.FileIO
 
         private XElement CreateElement(FluidScene fluid)
         {
-            var froot = new XElement(FSProjFile.FluidSceneLabel);
-            froot.Add(new XAttribute(FSProjFile.NameLabel, fluid.Name));
-            froot.Add(new XElement(FSProjFile.ParticlesFilePathLabel, fluid.ParticleFilePath));
-            froot.Add(new XElement(FSProjFile.DensityLabel, fluid.Density));
-            froot.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness));
-            froot.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity));
-            froot.Add(new XElement(FSProjFile.IsBoundarylabel, fluid.IsBoundary));
-            froot.Add(new XElement(FSProjFile.DoExportVDBLabel, fluid.ExportModel.DoExportVDB));
-            froot.Add(new XElement(FSProjFile.ExportDirectory, fluid.ExportModel.VDBExportDirectory));
-            return froot;
+            var e = new XElement(FSProjFile.FluidSceneLabel);
+            e.Add(new XAttribute(FSProjFile.NameLabel, fluid.Name));
+            e.Add(new XElement(FSProjFile.ParticlesFilePathLabel, fluid.ParticleFilePath));
+            e.Add(new XElement(FSProjFile.ParticleRadiusLabel, fluid.ParticleRadius));
+            e.Add(new XElement(FSProjFile.DensityLabel, fluid.Density));
+            e.Add(new XElement(FSProjFile.StiffnessLabel, fluid.Stiffness));
+            e.Add(new XElement(FSProjFile.ViscosityLabel, fluid.Viscosity));
+            e.Add(new XElement(FSProjFile.IsBoundarylabel, fluid.IsBoundary));
+            e.Add(new XElement(FSProjFile.DoExportVDBLabel, fluid.ExportModel.DoExportVDB));
+            e.Add(new XElement(FSProjFile.ExportDirectory, fluid.ExportModel.VDBExportDirectory));
+            return e;
         }
 
         private XElement CreateElement(string name, CSGBoundaryScene boundary)
