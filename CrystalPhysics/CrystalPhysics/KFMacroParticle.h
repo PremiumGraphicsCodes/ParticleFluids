@@ -60,6 +60,8 @@ public:
 
 	void updateInnerPoints();
 
+	float getSelfMass() { return selfMass; }
+
 private:
 	float radius;
 	std::vector<KFMicroParticle*> points;

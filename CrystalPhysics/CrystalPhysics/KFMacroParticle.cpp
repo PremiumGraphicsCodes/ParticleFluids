@@ -129,7 +129,7 @@ void KFMacroParticle::calculateViscosityForce()
 
 void KFMacroParticle::stepTime(const float dt)
 {
-	const auto acc = (force) / 1.0f;//getDensity();
+	const auto acc = (force) / getDensity();
 	this->velocity += acc * dt;
 	this->position += this->velocity * dt;
 }

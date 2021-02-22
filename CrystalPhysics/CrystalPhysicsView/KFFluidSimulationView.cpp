@@ -103,10 +103,6 @@ void KFFluidSimulationView::reset()
 	pmBuilder.add(quad);
 	this->mesh = pmBuilder.build();
 
-	auto meshBoundary = new MeshBoundaryScene(getWorld()->getNextSceneId(), "");
-	meshBoundary->build(mesh.get(), 1.0);
-	meshBoundary->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	/*
 	const float weight = 5.0f;
 	// bottom
 	for (int i = 0; i < 20; ++i) {
@@ -119,7 +115,6 @@ void KFFluidSimulationView::reset()
 		}
 	}
 	boundaryScene->setBoundary(true);
-	*/
 
 	// bottom
 	/*
@@ -184,7 +179,6 @@ void KFFluidSimulationView::reset()
 	simulator.clear();
 	simulator.addFluidScene(fluidScene);
 	//simulator.addBoundaryScene(boundaryScene);
-	simulator.addBoundary(meshBoundary);
 	//simulator.addBoundary(this->boundaryView.getBoundary());
 
 	simulator.setMaxTimeStep(this->timeStepView.getValue());
