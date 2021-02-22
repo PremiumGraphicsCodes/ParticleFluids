@@ -122,3 +122,10 @@ void VDBPolygonMeshScene::updateNormals()
 {
 	impl->updateNormals();
 }
+
+void VDBPolygonMeshScene::scale(const double scale)
+{
+	for (auto& p : impl->points) {
+		p *= scale;
+	}
+}

@@ -8,6 +8,10 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
     <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="DivideLength"/>
+            <TextBox Text="{Binding DivideLength.Value}" MinWidth="50"/>
+        </StackPanel>
         <Button Content="Import" Command="{Binding ImportCommand}"/>
         <Button Content="Export" Command="{Binding ExportCommand}"/>
         <Button Content="Exit" Command="{Binding ExitCommand}"/>

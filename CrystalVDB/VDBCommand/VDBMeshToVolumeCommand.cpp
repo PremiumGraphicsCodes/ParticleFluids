@@ -16,10 +16,12 @@ using namespace Crystal::VDB;
 
 VDBMeshToVolumeCommand::Args::Args() :
 	vdbMeshId(::VDBMeshIdLabel, -1),
-	vdbVolumeId(::VDBVolumeIdLabel, -1)
+	vdbVolumeId(::VDBVolumeIdLabel, -1),
+	divideLength(::DivideLengthLabel, 1.0f)
 {
 	add(&vdbMeshId);
 	add(&vdbVolumeId);
+	add(&divideLength);
 }
 
 VDBMeshToVolumeCommand::Results::Results()
@@ -46,8 +48,12 @@ bool VDBMeshToVolumeCommand::execute(World* world)
 		return false;
 	}
 
+	//meshScene->scale(1.0 / args.divideLength.getValue());
+
 	VDBPolygonMeshConverter converter;
-	converter.toVolume(*meshScene, volumeScene);
+	converter.toVolume(*meshScene, volumeScene, args.divideLength.getValue());
+
+	//volumeScele->
 
 	return true;
 }

@@ -75,6 +75,8 @@ public:
 
 	VDBPolygonMeshImpl* getImpl() const { return impl.get(); }
 
+	void scale(const double scale);
+
 private:
 	std::unique_ptr<VDBPolygonMeshImpl> impl;
 	std::unique_ptr<VDBPolygonMeshPresenter> presenter;

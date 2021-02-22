@@ -19,6 +19,9 @@ namespace FluidStudio.Tool.Modeling
         public ReactiveCommand ExportCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveProperty<double> DivideLength { get; }
+            = new ReactiveProperty<double>(1.0);
+
         private readonly VDBModel vdb;
 
         private readonly SceneList world;
@@ -60,7 +63,7 @@ namespace FluidStudio.Tool.Modeling
             var volumeId = vdb.CreateVDBVolume(world, "VDBVolume", true);
             this.canvas.BuildShader(world, volumeId);
 
-            this.vdb.ConvertMeshToVolume(meshId, volumeId, world);
+            this.vdb.ConvertMeshToVolume(meshId, volumeId, DivideLength.Value, world);
             this.canvas.SendShader(world, volumeId);
             return volumeId;
         }

@@ -13,6 +13,7 @@ public:
 		Args();
 
 		Command::Arg<int> vdbMeshId;
+		Command::Arg<double> divideLength;
 		Command::Arg<int> vdbVolumeId;
 	};
 

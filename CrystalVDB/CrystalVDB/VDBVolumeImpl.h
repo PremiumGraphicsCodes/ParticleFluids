@@ -22,6 +22,8 @@ public:
 
 	void setPtr(openvdb::FloatGrid::Ptr ptr) { this->ptr = ptr; }
 
+	void setScale(const double scale);
+
 private:
 	openvdb::FloatGrid::Ptr ptr;
 };

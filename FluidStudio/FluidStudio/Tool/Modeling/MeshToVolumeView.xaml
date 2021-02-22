@@ -9,6 +9,10 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
     <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="DivideLength"/>
+            <TextBox Text="{Binding DivideLength.Value}" MinWidth="50"/>
+        </StackPanel>
         <ui:SceneSelectView DataContext="{Binding MeshSelectViewModel}"/>
         <Button Content="Convert" Command="{Binding ConvertCommand}"/>
     </StackPanel>

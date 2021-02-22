@@ -12,13 +12,18 @@
 using namespace Crystal::Math;
 using namespace Crystal::VDB;
 
-void VDBPolygonMeshConverter::toVolume(const VDBPolygonMeshScene& mesh, VDBVolumeScene* volume)
+void VDBPolygonMeshConverter::toVolume(const VDBPolygonMeshScene& mesh, VDBVolumeScene* volume, const double divideLength)
 {
 	openvdb::math::Transform::Ptr xform = openvdb::math::Transform::createLinearTransform();
 	const auto quads = mesh.getImpl()->getQuads();
+	std::vector<openvdb::Vec3s> points = mesh.getImpl()->points;
+	for (auto& p : points) {
+		p *= divideLength;
+	}
 	openvdb::tools::QuadAndTriangleDataAdapter<openvdb::Vec3s, openvdb::Vec4I> m(mesh.getImpl()->points, quads);
 	auto result = openvdb::tools::meshToVolume<openvdb::FloatGrid>(m, *xform);
 	auto impl = new VDBVolumeImpl(result);
+	impl->setScale(1.0 / divideLength);
 	delete volume->getImpl();
 	volume->setImpl(impl);
 }

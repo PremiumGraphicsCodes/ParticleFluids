@@ -24,6 +24,7 @@ namespace PG {
 		public const string CommandNameLabel = "VDBMeshToVolume";
 		public const string VDBMeshIdLabel = "VDBMeshId";
 		public const string VDBVolumeIdLabel = "VDBVolumeId";
+		public const string DivideLengthLabel = "DivideLength";
 	}
 
 	public class VDBOBJFileReadLabels

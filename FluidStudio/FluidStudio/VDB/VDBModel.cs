@@ -160,11 +160,12 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
-        public bool ConvertMeshToVolume(int meshId, int vdbVolumeId, SceneList world)
+        public bool ConvertMeshToVolume(int meshId, int vdbVolumeId, double divideLength, SceneList world)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBMeshToVolumeLabels.CommandNameLabel);
             command.SetArg(PG.VDBMeshToVolumeLabels.VDBMeshIdLabel, meshId);
             command.SetArg(PG.VDBMeshToVolumeLabels.VDBVolumeIdLabel, vdbVolumeId);
+            command.SetArg(PG.VDBMeshToVolumeLabels.DivideLengthLabel, divideLength);
             return command.Execute(world.Adapter);
         }
 
