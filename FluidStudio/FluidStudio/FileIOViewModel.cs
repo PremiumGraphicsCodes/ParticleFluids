@@ -33,6 +33,8 @@ namespace FluidStudio
 
         private readonly Canvas3d canvas;
 
+        private string currentFilePath = "";
+
         public FileIOViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.model = model;
@@ -52,6 +54,7 @@ namespace FluidStudio
             canvas.Renderer.Build(world.Adapter);
             canvas.Update();
             canvas.Render();
+            this.currentFilePath = "";
         }
 
         private void OnOpen()
@@ -66,10 +69,22 @@ namespace FluidStudio
                 model.PhysicsModel.Solvers.Clear();
                 var reader = new FSSceneFileReader();
                 reader.Read(model, canvas, dialog.FileName);
+                this.currentFilePath = dialog.FileName;
             }
         }
 
         private void OnSave()
+        {
+            if (!string.IsNullOrEmpty(this.currentFilePath))
+            {
+                var writer = new FSSceneFileWriter();
+                writer.Write(model, currentFilePath);
+                return;
+            }
+            OnSaveAs();
+        }
+
+        private void OnSaveAs()
         {
             var dialog = new SaveFileDialog
             {
@@ -80,18 +95,6 @@ namespace FluidStudio
             {
                 var writer = new FSSceneFileWriter();
                 writer.Write(model, dialog.FileName);
-           }
-        }
-
-        private void OnSaveAs()
-        {
-            var dialog = new SaveFileDialog
-            {
-                Title = "SaveAs"
-            };
-            if (dialog.ShowDialog() == true)
-            {
-                //world.Save(dialog.FileName);
             }
         }
 
