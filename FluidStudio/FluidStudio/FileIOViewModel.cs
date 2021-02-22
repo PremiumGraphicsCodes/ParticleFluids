@@ -95,6 +95,7 @@ namespace FluidStudio
             {
                 var writer = new FSSceneFileWriter();
                 writer.Write(model, dialog.FileName);
+                this.currentFilePath = dialog.FileName;
             }
         }
 

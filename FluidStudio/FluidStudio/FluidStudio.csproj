@@ -153,6 +153,10 @@
       <DependentUpon>SolverSceneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Physics\Solver\SolverSceneViewModel.cs" />
+    <Compile Include="ProgressView.xaml.cs">
+      <DependentUpon>ProgressView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressViewModel.cs" />
     <Compile Include="Scene\CSG\BoxGenerationView.xaml.cs">
       <DependentUpon>BoxGenerationView.xaml</DependentUpon>
     </Compile>
@@ -242,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Physics\Solver\SolverSceneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgressView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

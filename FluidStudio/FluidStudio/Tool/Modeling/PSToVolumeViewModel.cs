@@ -74,11 +74,19 @@ namespace FluidStudio.Tool.Modeling
             }
         }
 
+        private ProgressView progressView;
+        private ProgressViewModel progressVM;
+
         private async void OnStart()
         {
+            progressView = new ProgressView();
+            progressVM = new ProgressViewModel();
+            progressView.DataContext = progressVM;
             var files = System.IO.Directory.GetFiles(this.VDBInputDirectoryPath.Value, "*.vdb");
-            FileCount.Value = 0;
-            MaxFileCount.Value = files.Count();
+            progressVM.Min.Value = 0;
+            progressVM.Max.Value = files.Count();
+            progressVM.Value.Value = 50;
+            progressView.Show();
             foreach (var file in files)
             {
                 await Task.Run(() => Execute(file));
@@ -109,7 +117,10 @@ namespace FluidStudio.Tool.Modeling
             {
                 world.Delete(id);
             }
+            var value = progressVM.Value.Value;
+            progressVM.Value.Value = value + 1;
             FileCount.Value++;
+//            progressView.Data
         }
     }
 }
