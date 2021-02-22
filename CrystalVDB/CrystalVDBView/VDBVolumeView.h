@@ -2,6 +2,7 @@
 
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
+#include "../../CrystalViewer/AppBase/DoubleView.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -18,6 +19,7 @@ private:
 	void onOk() override;
 
 private:
+	DoubleView scaleView;
 	//ObjectSelectView particleSystemSelectView;
 };
 

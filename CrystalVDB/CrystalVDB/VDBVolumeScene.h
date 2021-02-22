@@ -53,6 +53,8 @@ public:
 
 	VDBVolumeImpl* getImpl() const { return impl; }
 
+	void setScale(const double scale);
+
 private:
 	VDBVolumeImpl* impl;
 	std::unique_ptr<VDBVolumePresenter> presenter;

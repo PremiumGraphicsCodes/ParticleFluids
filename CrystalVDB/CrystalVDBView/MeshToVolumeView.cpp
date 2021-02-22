@@ -14,11 +14,11 @@ using namespace Crystal::VDB;
 MeshToVolumeView::MeshToVolumeView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	vdbMeshSelectView("VDBMesh", model, canvas),
-	radiusView("Radius", 5.0)
+	divideLengthView("DivideLength", 1.0)
 {
 
 	add(&vdbMeshSelectView);
-	add(&radiusView);
+	add(&divideLengthView);
 }
 
 void MeshToVolumeView::onOk()
@@ -28,7 +28,7 @@ void MeshToVolumeView::onOk()
 
 	auto volume = new VDBVolumeScene(getWorld()->getNextSceneId(), "MeshToVolume");
 	VDBPolygonMeshConverter converter;
-	converter.toVolume(*mesh, volume);
+	converter.toVolume(*mesh, volume, divideLengthView.getValue());
 	volume->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	getWorld()->getScenes()->addScene(volume);
 

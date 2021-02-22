@@ -92,3 +92,8 @@ VDBVolumeScene::~VDBVolumeScene()
 {
 	delete impl;
 }
+
+void VDBVolumeScene::setScale(const double scale)
+{
+	impl->setScale(scale);
+}

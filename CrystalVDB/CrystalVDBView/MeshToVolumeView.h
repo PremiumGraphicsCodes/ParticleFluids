@@ -19,7 +19,7 @@ private:
 
 private:
 	ObjectSelectView vdbMeshSelectView;
-	DoubleView radiusView;
+	DoubleView divideLengthView;
 };
 
 	}

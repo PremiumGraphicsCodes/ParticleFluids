@@ -9,8 +9,10 @@ using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
 VDBVolumeView::VDBVolumeView(const std::string& name, World* model, Canvas* canvas) :
-	IOkCancelView(name, model, canvas)
+	IOkCancelView(name, model, canvas),
+	scaleView("Scale", 1.0)
 {
+	add(&scaleView);
 }
 
 void VDBVolumeView::onOk()
@@ -23,6 +25,7 @@ void VDBVolumeView::onOk()
 			}
 		}
 	}
+	volume->setScale(scaleView.getValue());
 
 	volume->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 	getWorld()->getScenes()->addScene(volume);
