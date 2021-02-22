@@ -30,12 +30,6 @@ namespace FluidStudio.Tool.Modeling
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
 
-        public ReactiveProperty<int> MaxFileCount { get; }
-            = new ReactiveProperty<int>(100);
-
-        public ReactiveProperty<int> FileCount { get; }
-            = new ReactiveProperty<int>(0);
-
         private SceneList world;
 
         private VDBModel vdb;
@@ -47,9 +41,6 @@ namespace FluidStudio.Tool.Modeling
             this.VDBInputDirectorySelectCommand.Subscribe(OnSelectVDBImportDirectory);
             this.VDBOutputDirectorySelectCommand.Subscribe(OnSelectVDBExportDirectory);
             this.StartCommand.Subscribe(OnStart);
-
-            this.MaxFileCount.Value = 100;
-            this.FileCount.Value = 50;
         }
 
         private void OnSelectVDBImportDirectory()
@@ -119,8 +110,6 @@ namespace FluidStudio.Tool.Modeling
             }
             var value = progressVM.Value.Value;
             progressVM.Value.Value = value + 1;
-            FileCount.Value++;
-//            progressView.Data
         }
     }
 }

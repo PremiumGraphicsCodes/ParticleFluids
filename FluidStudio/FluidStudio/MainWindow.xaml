@@ -27,6 +27,7 @@
                     <RibbonApplicationMenuItem Header="New" Command="{Binding NewCommand}"/>
                     <RibbonApplicationMenuItem Header="Open" Command="{Binding OpenCommand}"/>
                     <RibbonApplicationMenuItem Header="Save" Command="{Binding SaveCommand}"/>
+                    <RibbonApplicationMenuItem Header="SaveAs" Command="{Binding SaveAsCommand}"/>
                     <RibbonApplicationMenuItem Header="Export" Command="{Binding ExportCommand}"/>
                     <RibbonApplicationMenuItem Header="Exit"/>
                 </RibbonApplicationMenu>
