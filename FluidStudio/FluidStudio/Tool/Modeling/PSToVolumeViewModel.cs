@@ -21,6 +21,9 @@ namespace FluidStudio.Tool.Modeling
         public ReactiveProperty<string> VDBOutputDirectoryPath { get; }
             = new ReactiveProperty<string>("");
 
+        public ReactiveProperty<float> ParticleRadius { get; }
+            = new ReactiveProperty<float>(0.5f);
+
         public ReactiveProperty<float> Threshold { get; }
             = new ReactiveProperty<float>(2.0f);
 
@@ -84,7 +87,7 @@ namespace FluidStudio.Tool.Modeling
 
         private void Execute(string file)
         {
-            var pointIds = vdb.Read(file, world);
+            var pointIds = vdb.Read(file, world, ParticleRadius.Value);
             var volumeIds = new List<int>();
             foreach (int id in pointIds)
             {

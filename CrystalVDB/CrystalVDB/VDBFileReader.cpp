@@ -51,7 +51,7 @@ void VDBFileReader::readMetaData()
     }
 }
 
-VDBParticleSystemScene* VDBFileReader::readPositions(const std::string& pointName)
+VDBParticleSystemScene* VDBFileReader::readPositions(const std::string& pointName, const float radius)
 {
     auto baseGrid = file.readGrid(pointName);
 
@@ -85,7 +85,7 @@ VDBParticleSystemScene* VDBFileReader::readPositions(const std::string& pointNam
 //            v_positions.push_back(worldPosition);
             auto index = *indexIter;
             v_indices.push_back(index);
-            psScene->add(Converter::fromVDB(worldPosition), 0.5);//radius);
+            psScene->add(Converter::fromVDB(worldPosition), radius);
         }
     }
 

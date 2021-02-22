@@ -12,9 +12,11 @@ using namespace Crystal::Scene;
 using namespace Crystal::VDB;
 
 VDBFileReadCommand::Args::Args() :
-	filePath(::FilePathLabel, "")
+	filePath(::FilePathLabel, ""),
+	radius(::RadiusLabel, 0.5f)
 {
 	add(&filePath);
+	add(&radius);
 }
 
 VDBFileReadCommand::Results::Results() :
@@ -49,7 +51,7 @@ bool VDBFileReadCommand::execute(World* world)
 	const auto& pointNames = reader.getPointNames();
 	std::vector<int> newIds;
 	for (const auto& n : pointNames) {
-		const auto scene = reader.readPositions(n);
+		const auto scene = reader.readPositions(n, args.radius.getValue());
 		scene->setId(world->getNextSceneId());
 		scene->setName(n);
 		world->getScenes()->addScene(scene);

@@ -12,6 +12,7 @@ public:
 	{
 		Args();
 
+		Command::Arg<float> radius;
 		Command::Arg<std::string> filePath;
 	};
 

@@ -65,10 +65,11 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
-        public List<int> Read(string filePath, SceneList world)
+        public List<int> Read(string filePath, SceneList world, float particleRadius)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBFileReadLabels.CommandNameLabel);
             command.SetArg(PG.VDBFileReadLabels.FilePathLabel, filePath);
+            command.SetArg(PG.VDBFileReadLabels.RadiusLabel, particleRadius);
             if (!command.Execute(world.Adapter))
             {
                 return new List<int>();
