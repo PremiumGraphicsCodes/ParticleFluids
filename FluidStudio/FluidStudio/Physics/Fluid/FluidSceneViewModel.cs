@@ -1,14 +1,9 @@
 ﻿using FluidStudio.Physics.Fluid;
 using Microsoft.Win32;
-using PG.CGStudio.UICtrl;
 using PG.Control.OpenGL;
-using PG.Control.UI;
 using PG.Scene;
-using Prism.Mvvm;
 using Prism.Regions;
 using Reactive.Bindings;
-using System;
-using System.Linq;
 
 namespace FluidStudio.Physics
 {
@@ -70,14 +65,7 @@ namespace FluidStudio.Physics
             };
             if (dialog.ShowDialog() == true) {
                 var filename = dialog.FileName;
-                var ext = System.IO.Path.GetExtension(filename);
-                if (ext == ".vdb")
-                {
-                    this.ParticleFilePath.Value = dialog.FileName;
-                    this.scene.SetParticlesFromFile(world, mainModel.VDBModel, canvas, dialog.FileName);
-                    canvas.Camera.Fit();
-                    canvas.Render();
-                }
+                this.scene.SetParticlesFromFile(mainModel.VDBModel, canvas, dialog.FileName, ParticleRadius.Value);
             }
         }
 

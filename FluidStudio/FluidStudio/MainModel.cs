@@ -17,7 +17,6 @@ namespace FluidStudio
             this.Scenes = new SceneList();
             this.PhysicsModel = new PhysicsModel();
             this.VDBModel = new VDBModel(this.Scenes);
-
         }
     }
 }

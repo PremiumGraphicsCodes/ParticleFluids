@@ -60,10 +60,23 @@ namespace FluidStudio.Physics
             Reset(world);
         }
 
-        public void SetParticlesFromFile(SceneList world, VDBModel vdb, Canvas3d canvas, string particleFilePath)
+        public void SetParticlesFromFile(VDBModel vdb, Canvas3d canvas, string particleFilePath, double particleRadius)
+        {
+            var ext = System.IO.Path.GetExtension(particleFilePath);
+            if(ext == ".vdb")
+            {
+                SetParticlesFromVDBPoints(vdb, canvas, particleFilePath, particleRadius);
+            }
+            else if(ext == "obj")
+            {
+                SetParticlesFromMesh(vdb, canvas, particleFilePath, particleRadius);
+            }
+        }
+
+        private void SetParticlesFromVDBPoints(VDBModel vdb, Canvas3d canvas, string particleFilePath, double particleRadius)
         {
             // TODO 前のPSのクリア処理．
-            var ids = vdb.Read(particleFilePath, 0.5f);
+            var ids = vdb.Read(particleFilePath, (float)particleRadius);
             if (ids.Count() > 0)
             {
                 this.SourceParticleSystemId = ids[0];
@@ -71,6 +84,15 @@ namespace FluidStudio.Physics
                 //canvas.Render();
                 this.ParticleFilePath = particleFilePath;
             }
+        }
+
+        private void SetParticlesFromMesh(VDBModel vdb, Canvas3d canvas, string meshFilePath, double particleRadius)
+        {
+            int meshId = vdb.ReadOBJ(meshFilePath);
+            int pointId = vdb.CreateVDBPoints("");
+            this.ParticleFilePath = meshFilePath;
+            vdb.ConvertMeshToPS(meshId, pointId, particleRadius);
+            this.SourceParticleSystemId = pointId;
         }
 
         public void ExportFiles(SceneList world, VDBModel vdb, int timeStep)

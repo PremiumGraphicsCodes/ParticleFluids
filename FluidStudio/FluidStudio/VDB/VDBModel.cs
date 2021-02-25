@@ -125,7 +125,6 @@ namespace FluidStudio.VDB
             return newId;
         }
 
-
         public int CreateVDBMesh(string name)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
@@ -177,12 +176,20 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
-        /*
-        public bool ConvertMeshToPS(int meshId, int psId, double divideLength, SceneList world)
+        public bool ConvertMeshToPS(int meshId, int psId, double divideLength)
         {
-
+            var volumeId = CreateVDBVolume("Volume", false);
+            if(!ConvertMeshToVolume(meshId, volumeId, divideLength * 0.5))
+            {
+                return false;
+            }
+            if(!ConvertVolumeToPS(volumeId, psId))
+            {
+                return false;
+            }
+            world.Delete(volumeId);
+            return true;
         }
-        */
 
         public bool ConvertVolumeToMesh(int vdbVolumeId, int vdbMeshId)
         {
