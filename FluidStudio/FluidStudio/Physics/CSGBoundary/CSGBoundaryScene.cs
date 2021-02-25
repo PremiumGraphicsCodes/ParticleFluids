@@ -31,6 +31,7 @@ namespace FluidStudio.Physics
 
         public void Update(SceneList world, string name, Box3d bb)
         {
+            this.BoundingBox = bb;
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
             command.SetArg(UpdateLabels.NameLabel, name);
