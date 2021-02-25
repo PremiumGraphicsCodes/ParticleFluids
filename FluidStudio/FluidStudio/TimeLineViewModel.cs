@@ -68,7 +68,7 @@ namespace FluidStudio
                 mainModel.PhysicsModel.Simulate(scenes, mainModel.VDBModel, canvas);
                 TimeStep.Value++;
 
-                if (TimeStep.Value >= EndTimeStep.Value)
+                if (TimeStep.Value > EndTimeStep.Value)
                 {
                     isStop = true;
                 }
