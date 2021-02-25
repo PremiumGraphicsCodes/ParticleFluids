@@ -61,7 +61,7 @@ namespace FluidStudio.Physics
             var dialog = new OpenFileDialog()
             {
                 Title = "Import",
-                Filter = "OBJFile(*.obj)|*.obj|OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
+                Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true) {
                 var filename = dialog.FileName;
