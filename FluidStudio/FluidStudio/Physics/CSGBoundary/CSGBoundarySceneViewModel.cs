@@ -70,6 +70,8 @@ namespace FluidStudio.Physics
                 return;
             }
             this.scene.Update(model.Scenes, Name.Value, this.BoundingBoxViewModel.Value);
+            canvas.SendShader(model.Scenes, this.Id.Value);
+            canvas.Render();
         }
    }
 }
