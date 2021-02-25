@@ -21,6 +21,15 @@ namespace FluidStudio
         public ReactiveCommand ResetCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveProperty<int> StartTimeStep { get; }
+            = new ReactiveProperty<int>(0);
+
+        public ReactiveProperty<int> EndTimeStep { get; }
+            = new ReactiveProperty<int>(240);
+
+        public ReactiveProperty<int> CurrentTimeStep { get; }
+            = new ReactiveProperty<int>(0);
+
         private readonly MainModel mainModel;
 
         private readonly SceneList scenes;
@@ -56,19 +65,14 @@ namespace FluidStudio
             while(!isStop)
             {
                 mainModel.PhysicsModel.Simulate(scenes, mainModel.VDBModel, canvas);
-                /*
-                //mainModel.Scenes.Export(filePath);
-                if (DoOutput.Value)
-                {
-                    mainModel.PhysicsModel.ExportMesh(scenes, vdb, OutputDirectoryPath.Value);
-                }
-                */
+                CurrentTimeStep.Value++;
             }
         }
 
         private void OnReset()
         {
             mainModel.PhysicsModel.Reset(scenes, mainModel.VDBModel, canvas);
+            CurrentTimeStep.Value = 0;
             //mainModel.PhysicsModel.Reset();
         }
     }

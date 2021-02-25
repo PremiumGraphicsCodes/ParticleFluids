@@ -12,8 +12,16 @@
             <Button Content="Reset" Command="{Binding ResetCommand}"/>
             <Button Content="Start" Command="{Binding StartCommand}"/>
             <Button Content="Stop" Command="{Binding StopCommand}"/>
-            <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
         </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Start"/>
+            <TextBox Text="{Binding StartTimeStep.Value}" IsReadOnly="True" MinWidth="50"/>
+            <Label Content="Step"/>
+            <TextBox Text="{Binding TimeStep.Value}" MinWidth="50"/>
+            <Label Content="End"/>
+            <TextBox Text="{Binding EndTimeStep.Value}" MinWidth="50"/>
+        </StackPanel>
+        <ProgressBar Width="200" Height="20" Minimum="{Binding StartTimeStep.Value}" Maximum="{Binding EndTimeStep.Value}" Value="{Binding TimeStep.Value}"/>
         <!--
         <Slider MinWidth="500" Value="{Binding Step.Value}" Minimum="0" Maximum="100"/>
         -->
