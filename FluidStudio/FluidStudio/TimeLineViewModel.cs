@@ -11,6 +11,7 @@ namespace FluidStudio
     public class TimeLineViewModel : BindableBase
     {
         public ReactiveProperty<int> TimeStep { get; }
+            = new ReactiveProperty<int>(0);
 
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
@@ -27,8 +28,8 @@ namespace FluidStudio
         public ReactiveProperty<int> EndTimeStep { get; }
             = new ReactiveProperty<int>(240);
 
-        public ReactiveProperty<int> CurrentTimeStep { get; }
-            = new ReactiveProperty<int>(0);
+        //public ReactiveProperty<int> CurrentTimeStep { get; }
+        //    = new ReactiveProperty<int>(0);
 
         private readonly MainModel mainModel;
 
@@ -43,7 +44,7 @@ namespace FluidStudio
             this.mainModel = mainModel;
             this.scenes = scenes;
             this.canvas = canvas;
-            this.TimeStep = mainModel.PhysicsModel.TimeStep;
+            //this.CurrentTimeStep = mainModel.PhysicsModel.TimeStep;
             StartCommand.Subscribe(() => OnStart());
             StopCommand.Subscribe(() => OnStop());
             ResetCommand.Subscribe(() => OnReset());
@@ -65,15 +66,23 @@ namespace FluidStudio
             while(!isStop)
             {
                 mainModel.PhysicsModel.Simulate(scenes, mainModel.VDBModel, canvas);
-                CurrentTimeStep.Value++;
+                TimeStep.Value++;
+
+                if (TimeStep.Value >= EndTimeStep.Value)
+                {
+                    isStop = true;
+                }
             }
         }
 
         private void OnReset()
         {
+            if(!isStop)
+            {
+                return;
+            }
             mainModel.PhysicsModel.Reset(scenes, mainModel.VDBModel, canvas);
-            CurrentTimeStep.Value = 0;
-            //mainModel.PhysicsModel.Reset();
+            TimeStep.Value = 0;
         }
     }
 }
