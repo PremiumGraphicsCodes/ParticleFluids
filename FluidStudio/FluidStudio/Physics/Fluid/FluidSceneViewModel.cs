@@ -66,13 +66,18 @@ namespace FluidStudio.Physics
             var dialog = new OpenFileDialog()
             {
                 Title = "Import",
-                Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
+                Filter = "OBJFile(*.obj)|*.obj|OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
             };
             if (dialog.ShowDialog() == true) {
-                this.ParticleFilePath.Value = dialog.FileName;
-                this.scene.SetParticlesFromFile( world, mainModel.VDBModel, canvas, dialog.FileName );
-                canvas.Camera.Fit();
-                canvas.Render();
+                var filename = dialog.FileName;
+                var ext = System.IO.Path.GetExtension(filename);
+                if (ext == ".vdb")
+                {
+                    this.ParticleFilePath.Value = dialog.FileName;
+                    this.scene.SetParticlesFromFile(world, mainModel.VDBModel, canvas, dialog.FileName);
+                    canvas.Camera.Fit();
+                    canvas.Render();
+                }
             }
         }
 

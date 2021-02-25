@@ -6,17 +6,18 @@ namespace FluidStudio
 {
     public class MainModel
     {
-        public VDBModel VDBModel { get; }
+        public SceneList Scenes { get; }
 
         public PhysicsModel PhysicsModel { get; }
 
-        public SceneList Scenes { get; }
+        public VDBModel VDBModel { get; }
 
         public MainModel()
         {
-            this.VDBModel = new VDBModel();
-            this.PhysicsModel = new PhysicsModel();
             this.Scenes = new SceneList();
+            this.PhysicsModel = new PhysicsModel();
+            this.VDBModel = new VDBModel(this.Scenes);
+
         }
     }
 }

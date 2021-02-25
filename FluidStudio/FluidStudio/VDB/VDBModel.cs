@@ -59,13 +59,20 @@ namespace FluidStudio.VDB
             return VDBType.None;
         }
 
-        public bool Init(SceneList world)
+        private readonly SceneList world;
+
+        public VDBModel(SceneList world)
+        {
+            this.world = world;
+        }
+
+        public bool Init()
         {
             var command = new PG.CLI.VDBCommand(PG.VDBInitLabels.CommandNameLabel);
             return command.Execute(world.Adapter);
         }
 
-        public List<int> Read(string filePath, SceneList world, float particleRadius)
+        public List<int> Read(string filePath, float particleRadius)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBFileReadLabels.CommandNameLabel);
             command.SetArg(PG.VDBFileReadLabels.FilePathLabel, filePath);
@@ -78,7 +85,7 @@ namespace FluidStudio.VDB
             return newIds;
         }
 
-        public bool Write(string filePath, SceneList world, List<int> particleSystemIds, List<int> volumeIds)
+        public bool Write(string filePath, List<int> particleSystemIds, List<int> volumeIds)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBFileWriteLabels.CommandNameLabel);
             command.SetArg(PG.VDBFileWriteLabels.FilePathLabel, filePath);
@@ -169,6 +176,13 @@ namespace FluidStudio.VDB
             command.SetArg(PG.VDBMeshToVolumeLabels.DivideLengthLabel, divideLength);
             return command.Execute(world.Adapter);
         }
+
+        /*
+        public bool ConvertMeshToPS(int meshId, int psId, double divideLength, SceneList world)
+        {
+
+        }
+        */
 
         public bool ConvertVolumeToMesh(int vdbVolumeId, int vdbMeshId, SceneList world)
         {

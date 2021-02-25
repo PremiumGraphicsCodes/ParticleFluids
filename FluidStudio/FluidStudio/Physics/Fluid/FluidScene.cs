@@ -63,7 +63,7 @@ namespace FluidStudio.Physics
         public void SetParticlesFromFile(SceneList world, VDBModel vdb, Canvas3d canvas, string particleFilePath)
         {
             // TODO 前のPSのクリア処理．
-            var ids = vdb.Read(particleFilePath, world, 0.5f);
+            var ids = vdb.Read(particleFilePath, 0.5f);
             if (ids.Count() > 0)
             {
                 this.SourceParticleSystemId = ids[0];

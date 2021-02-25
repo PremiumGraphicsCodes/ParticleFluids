@@ -86,7 +86,7 @@ namespace FluidStudio.Tool.Modeling
 
         private void Execute(string file)
         {
-            var pointIds = vdb.Read(file, world, ParticleRadius.Value);
+            var pointIds = vdb.Read(file, ParticleRadius.Value);
             var volumeIds = new List<int>();
             foreach (int id in pointIds)
             {
@@ -99,7 +99,7 @@ namespace FluidStudio.Tool.Modeling
                 volumeIds.Add(volumeId);
             }
             var newName = System.IO.Path.Combine(this.VDBOutputDirectoryPath.Value, "volume_" + System.IO.Path.GetFileName(file));
-            vdb.Write(newName, world, new List<int>(), volumeIds);
+            vdb.Write(newName, new List<int>(), volumeIds);
             foreach (int id in pointIds)
             {
                 world.Delete(id);

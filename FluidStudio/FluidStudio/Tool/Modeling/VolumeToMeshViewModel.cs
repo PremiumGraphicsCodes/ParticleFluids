@@ -66,7 +66,7 @@ namespace FluidStudio.Tool.Modeling
             var files = System.IO.Directory.GetFiles(this.VDBInputDirectoryPath.Value, "*.vdb");
             foreach (var file in files)
             {
-                var vdbIds = vdb.Read(file, world, 0.5f);
+                var vdbIds = vdb.Read(file, 0.5f);
                 var meshIds = new List<int>();
                 foreach (int id in vdbIds)
                 {

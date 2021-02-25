@@ -23,7 +23,7 @@ namespace FluidStudio.Physics.Fluid
                 var psIds = new List<int>();
                 var volumeIds = new List<int>();
                 psIds.Add(fluid.Id);
-                vdb.Write(filePath, world, psIds, volumeIds);
+                vdb.Write(filePath, psIds, volumeIds);
 
             }
         }

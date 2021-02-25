@@ -90,7 +90,7 @@ namespace FluidStudio.Tool.Modeling
             {
                 var pointIds = new List<int>();
                 pointIds.Add(this.pointId);
-                isOk = vdb.Write(dialog.FileName, world, pointIds, new List<int>());
+                isOk = vdb.Write(dialog.FileName, pointIds, new List<int>());
                 //OnExport(dialog.FileName);
             }
         }

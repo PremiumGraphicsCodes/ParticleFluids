@@ -31,7 +31,7 @@ namespace FluidStudio
             this.canvas = new Canvas3d(model.Scenes);
             containerRegistry.RegisterInstance<Canvas3d>(canvas);
 
-            model.VDBModel.Init(model.Scenes);
+            model.VDBModel.Init();
 
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.BoxGenerationView>("PSBoxGeneration");
             containerRegistry.RegisterForNavigation<Scene.ParticleSystem.SphereGenerationView>("PSSphereGeneration");
