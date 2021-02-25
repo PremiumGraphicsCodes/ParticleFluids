@@ -91,7 +91,7 @@ namespace FluidStudio.Physics
             int meshId = vdb.ReadOBJ(meshFilePath);
             int pointId = vdb.CreateVDBPoints("");
             this.ParticleFilePath = meshFilePath;
-            vdb.ConvertMeshToPS(meshId, pointId, particleRadius);
+            vdb.ConvertMeshToPS(meshId, pointId, particleRadius * 2.0);
             this.SourceParticleSystemId = pointId;
         }
 
