@@ -110,7 +110,7 @@ void KFMacroParticle::calculatePressureForce(const float relaxationCoe)
 	averagedCenter /= totalMass;
 	pressureCoe /= totalMass;
 	auto ratio = (totalMass / selfMass) - 1.0f;
-	ratio = std::max(0.0f, ratio);
+	//ratio = std::max(0.0f, ratio);
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe * relaxationCoe;// 10000.0;
 }
 
