@@ -65,7 +65,15 @@ namespace FluidStudio.Physics
             };
             if (dialog.ShowDialog() == true) {
                 var filename = dialog.FileName;
+                this.ParticleFilePath.Value = filename;
                 this.scene.SetParticlesFromFile(mainModel.VDBModel, canvas, dialog.FileName, ParticleRadius.Value);
+                this.OnUpdate();
+
+                canvas.BuildShader(world, scene.Id);
+                canvas.Render();
+
+                canvas.Camera.Fit();
+                canvas.Render();
             }
         }
 

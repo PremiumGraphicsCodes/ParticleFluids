@@ -67,7 +67,7 @@ namespace FluidStudio.Physics
             {
                 SetParticlesFromVDBPoints(vdb, canvas, particleFilePath, particleRadius);
             }
-            else if(ext == "obj")
+            else if(ext == ".obj")
             {
                 SetParticlesFromMesh(vdb, canvas, particleFilePath, particleRadius);
             }
