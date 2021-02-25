@@ -67,8 +67,8 @@ namespace FluidStudio.Physics
             if (ids.Count() > 0)
             {
                 this.SourceParticleSystemId = ids[0];
-                canvas.BuildShader(world, this.SourceParticleSystemId);
-                canvas.Render();
+                //canvas.BuildShader(world, this.SourceParticleSystemId);
+                //canvas.Render();
                 this.ParticleFilePath = particleFilePath;
             }
         }
