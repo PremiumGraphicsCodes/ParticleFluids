@@ -70,6 +70,8 @@ namespace FluidStudio
                 var reader = new FSSceneFileReader();
                 reader.Read(model, canvas, dialog.FileName);
                 this.currentFilePath = dialog.FileName;
+                canvas.Camera.Fit();
+                canvas.Render();
             }
         }
 
