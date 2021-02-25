@@ -36,10 +36,10 @@ namespace FluidStudio.Tool.Modeling
             var meshId = MeshSelectViewModel.Id.Value;
             var divideLength = DivideLength.Value;
 
-            var volumeId = vdb.CreateVDBVolume(world, "VDBVolume", true);
+            var volumeId = vdb.CreateVDBVolume("VDBVolume", true);
             this.canvas.BuildShader(world, volumeId);
 
-            this.vdb.ConvertMeshToVolume(meshId, volumeId, divideLength, world);
+            this.vdb.ConvertMeshToVolume(meshId, volumeId, divideLength);
             this.canvas.SendShader(world, volumeId);
         }
     }

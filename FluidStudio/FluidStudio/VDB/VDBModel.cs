@@ -94,7 +94,7 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
-        public int CreateVDBPoints(SceneList world, List<Vector3d> positions, string name)
+        public int CreateVDBPoints(List<Vector3d> positions, string name)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
             command.SetArg(PG.VDBSceneCreateLabels.SceneTypeLabel, PG.VDBSceneCreateLabels.SceneType_VDBPointsLabel);
@@ -110,7 +110,7 @@ namespace FluidStudio.VDB
             return newId;
         }
 
-        public int CreateVDBPoints(SceneList world, string name)
+        public int CreateVDBPoints(string name)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
             command.SetArg(PG.VDBSceneCreateLabels.SceneTypeLabel, PG.VDBSceneCreateLabels.SceneType_VDBPointsLabel);
@@ -126,7 +126,7 @@ namespace FluidStudio.VDB
         }
 
 
-        public int CreateVDBMesh(SceneList world, string name)
+        public int CreateVDBMesh(string name)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
             command.SetArg(PG.VDBSceneCreateLabels.SceneTypeLabel, PG.VDBSceneCreateLabels.SceneType_VDBMeshLabel);
@@ -141,7 +141,7 @@ namespace FluidStudio.VDB
             return newId;
         }
 
-        public int CreateVDBVolume(SceneList world, string name, bool doAddToList)
+        public int CreateVDBVolume(string name, bool doAddToList)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBSceneCreateLabels.CommandNameLabel);
             command.SetArg(PG.VDBSceneCreateLabels.SceneTypeLabel, PG.VDBSceneCreateLabels.SceneType_VDBVolumeLabel);
@@ -159,7 +159,7 @@ namespace FluidStudio.VDB
             return newId;
         }
 
-        public bool ConvertPSToVolume(int particleSystemId, int vdbVolumeId, SceneList world, double radius)
+        public bool ConvertPSToVolume(int particleSystemId, int vdbVolumeId, double radius)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBPSToVolumeLabels.CommandNameLabel);
             command.SetArg(PG.VDBPSToVolumeLabels.ParticleSystemIdLabel, particleSystemId);
@@ -168,7 +168,7 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
-        public bool ConvertMeshToVolume(int meshId, int vdbVolumeId, double divideLength, SceneList world)
+        public bool ConvertMeshToVolume(int meshId, int vdbVolumeId, double divideLength)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBMeshToVolumeLabels.CommandNameLabel);
             command.SetArg(PG.VDBMeshToVolumeLabels.VDBMeshIdLabel, meshId);
@@ -184,7 +184,7 @@ namespace FluidStudio.VDB
         }
         */
 
-        public bool ConvertVolumeToMesh(int vdbVolumeId, int vdbMeshId, SceneList world)
+        public bool ConvertVolumeToMesh(int vdbVolumeId, int vdbMeshId)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBVolumeToMeshLabels.CommandNameLabel);
             command.SetArg(PG.VDBVolumeToMeshLabels.VolumeIdLabel, vdbVolumeId);
@@ -192,7 +192,7 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
-        public bool ConvertVolumeToPS(int vdbVolumeId, int vdbPSId, SceneList world)
+        public bool ConvertVolumeToPS(int vdbVolumeId, int vdbPSId)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBVolumeToPSLabels.CommandNameLabel);
             command.SetArg(PG.VDBVolumeToPSLabels.VDBVolumeIdLabel, vdbVolumeId);
@@ -200,7 +200,7 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
-        public bool WriteOBJ(SceneList world, int vdbMeshId, string filePath)
+        public bool WriteOBJ(int vdbMeshId, string filePath)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBOBJFileWriteLabels.CommandNameLabel);
             command.SetArg(PG.VDBOBJFileWriteLabels.VDBMeshIdLabel, vdbMeshId);
@@ -208,7 +208,7 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
-        public int ReadOBJ(SceneList world, string filePath)
+        public int ReadOBJ(string filePath)
         {
             var command = new PG.CLI.VDBCommand(PG.VDBOBJFileReadLabels.CommandNameLabel);
             command.SetArg(PG.VDBOBJFileReadLabels.FilePathLabel, filePath);
@@ -220,7 +220,7 @@ namespace FluidStudio.VDB
             return command.GetResult<int>(PG.VDBOBJFileReadLabels.VDBMeshIdLabel);
         }
 
-        public bool ExportAll(SceneList world, string filePath)
+        public bool ExportAll(string filePath)
         {
             var vdbPsIds = new List<int>();
             var vdbVolumeIds = new List<int>();

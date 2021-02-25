@@ -48,7 +48,7 @@ namespace FluidStudio.Tool.Modeling
             };
             if (dialog.ShowDialog() == true)
             {
-                var meshId = vdb.ReadOBJ(world, dialog.FileName);
+                var meshId = vdb.ReadOBJ(dialog.FileName);
                 canvas.BuildShader(world, meshId);
                 canvas.Render();
                 var volumeId = MeshToVolume(meshId);
@@ -60,20 +60,20 @@ namespace FluidStudio.Tool.Modeling
 
         private int MeshToVolume(int meshId)
         {
-            var volumeId = vdb.CreateVDBVolume(world, "VDBVolume", true);
+            var volumeId = vdb.CreateVDBVolume("VDBVolume", true);
             this.canvas.BuildShader(world, volumeId);
 
-            this.vdb.ConvertMeshToVolume(meshId, volumeId, DivideLength.Value, world);
+            this.vdb.ConvertMeshToVolume(meshId, volumeId, DivideLength.Value);
             this.canvas.SendShader(world, volumeId);
             return volumeId;
         }
 
         private int VolumeToPS(int volumeId)
         {
-            var psId = vdb.CreateVDBPoints(world, "ConvertedPoints");
+            var psId = vdb.CreateVDBPoints("ConvertedPoints");
             this.canvas.BuildShader(world, psId);
 
-            this.vdb.ConvertVolumeToPS(volumeId, psId, world);
+            this.vdb.ConvertVolumeToPS(volumeId, psId);
             this.canvas.SendShader(world, psId);
             return psId;
         }

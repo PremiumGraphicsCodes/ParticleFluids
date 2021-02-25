@@ -113,7 +113,7 @@ namespace FluidStudio
                 var path = dialog.FileName;
                 var ext = System.IO.Path.GetExtension(path);
                 if (ext == ".vdb") {
-                    model.VDBModel.ExportAll(model.Scenes, path);
+                    model.VDBModel.ExportAll(path);
                 }
             }
         }

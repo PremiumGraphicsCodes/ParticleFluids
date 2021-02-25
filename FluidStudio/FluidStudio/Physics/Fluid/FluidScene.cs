@@ -41,7 +41,7 @@ namespace FluidStudio.Physics
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            this.VolumeId = vdb.CreateVDBVolume(world, "Volume", false);
+            this.VolumeId = vdb.CreateVDBVolume("Volume", false);
             canvas.BuildShader(world, VolumeId);
 
             Update(world, particleRadius, density, stiffness, viscosity, name, isBoundary);
@@ -80,7 +80,7 @@ namespace FluidStudio.Physics
 
         public void ConvertPSToVolume(SceneList world, VDBModel vdb, double radius)
         {
-            vdb.ConvertPSToVolume(this.Id, this.VolumeId, world, radius);
+            vdb.ConvertPSToVolume(this.Id, this.VolumeId, radius);
         }
 
         public void Reset(SceneList world)

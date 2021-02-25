@@ -62,7 +62,7 @@ namespace FluidStudio.Scene.ParticleSystem
             var appearance = new ParticleAppearance();
             appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
             appearance.Size = 10.0f;
-            var newId = model.VDBModel.CreateVDBPoints(world, positions, "PSBox");//world.AddParticleSystemScene(positions, "PSBox", appearance, 1);
+            var newId = model.VDBModel.CreateVDBPoints(positions, "PSBox");//world.AddParticleSystemScene(positions, "PSBox", appearance, 1);
             canvas.Camera.Fit();
             canvas.BuildShader(world, newId);
             canvas.Render();

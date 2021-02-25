@@ -74,14 +74,14 @@ namespace FluidStudio.Tool.Modeling
                     {
                         continue;
                     }
-                    int meshId = vdb.CreateVDBMesh(world, "Mesh");
-                    vdb.ConvertVolumeToMesh(id, meshId, world);
+                    int meshId = vdb.CreateVDBMesh("Mesh");
+                    vdb.ConvertVolumeToMesh(id, meshId);
                     meshIds.Add(meshId);
                 }
                 var newName = System.IO.Path.Combine(this.MeshOutputDirectoryPath.Value, "" + System.IO.Path.GetFileNameWithoutExtension(file) + ".obj");
                 foreach (var id in meshIds)
                 {
-                    vdb.WriteOBJ(world, id, newName);
+                    vdb.WriteOBJ(id, newName);
                 }
                 foreach (int id in vdbIds)
                 {

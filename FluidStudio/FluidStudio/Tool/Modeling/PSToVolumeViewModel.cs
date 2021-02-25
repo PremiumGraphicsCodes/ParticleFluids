@@ -94,8 +94,8 @@ namespace FluidStudio.Tool.Modeling
                 {
                     continue;
                 }
-                int volumeId = vdb.CreateVDBVolume(world, "Volume", false);
-                vdb.ConvertPSToVolume(id, volumeId, world, Threshold.Value);
+                int volumeId = vdb.CreateVDBVolume("Volume", false);
+                vdb.ConvertPSToVolume(id, volumeId, Threshold.Value);
                 volumeIds.Add(volumeId);
             }
             var newName = System.IO.Path.Combine(this.VDBOutputDirectoryPath.Value, "volume_" + System.IO.Path.GetFileName(file));
