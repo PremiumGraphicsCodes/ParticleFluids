@@ -35,7 +35,7 @@ public:
 
 	void setPressureCoe(const float coe) { this->pressureCoe = coe; }
 
-	float getPressureCoe() const { return this->pressureCoe; }
+	float getPressure() const { return this->pressureCoe; }
 
 	void setViscosityCoe(const float coe) { this->viscosityCoe = coe; }
 

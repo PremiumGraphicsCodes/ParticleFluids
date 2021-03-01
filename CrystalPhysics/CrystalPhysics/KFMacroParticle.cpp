@@ -56,7 +56,7 @@ void KFMacroParticle::setScene(KFFluidScene* scene)
 {
 	this->scene = scene;
 	for (auto p : points) {
-		p->setPressure(scene->getPressureCoe());
+		p->setPressureCoe(scene->getPressure());
 		p->setViscosityCoe(scene->getViscosityCoe());
 	}
 }
@@ -86,7 +86,7 @@ void KFMacroParticle::calculateDensity()
 
 void KFMacroParticle::calculatePressure()
 {
-	this->pressure = (density - 1.0f) * scene->getPressureCoe();
+	this->pressure = (density - 1.0f);
 	this->pressure = std::max(0.0f, this->pressure);
 	for (auto mp : microPoints) {
 		mp->setPressure(this->pressure);
@@ -97,17 +97,16 @@ void KFMacroParticle::calculatePressureForce(const float relaxationCoe)
 {
 	Math::Vector3df f(0, 0, 0);
 	for (auto mp : innerPoints) {
-		f += (this->pressure + mp->getPressureCoe()) * (this->position - mp->position) * mp->getMass();
+		f += (this->pressure + mp->getPressure()) * (this->position - mp->position) * mp->getMass() * mp->getPressureCoe();
 	}
 	this->force += f;
 }
 
 void KFMacroParticle::calculateViscosityForce()
 {
-	auto coe = getScene()->getViscosityCoe();
 	Math::Vector3df f(0, 0, 0);
 	for (auto mp : innerPoints) {
-		f -= ( this->velocity - mp->getVelocity()) * mp->getMass() * coe;
+		f -= ( this->velocity - mp->getVelocity()) * mp->getMass() * mp->getPressureCoe();
 	}
 	this->force += f;
 }
@@ -133,7 +132,7 @@ void KFMacroParticle::updateMicros()
 
 void KFMacroParticle::updateInnerPoints()
 {
-	const auto r = this->radius * 2.0;
+	const auto r = this->radius;
 	innerPoints.clear();
 	for (auto mp : this->microPoints) {
 		const auto distanceSquared = Math::getDistanceSquared(mp->getPosition(), this->getPosition());

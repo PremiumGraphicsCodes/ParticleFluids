@@ -24,11 +24,16 @@ public:
 
 	void setPressure(const float p) { this->pressure = p; }
 
+	float getPressure() const { return pressure; }
+
+	void setPressureCoe(const float c) { this->pressureCoe = c; }
+
+	float getPressureCoe() const { return this->pressureCoe; }
+
 	void setViscosityCoe(const float v) { this->viscosityCoe = v; }
 
-	float getPressureCoe() const { return pressure; }
-
 	float getViscosityCoe() const { return viscosityCoe; }
+
 
 	Math::Vector3df position;
 
@@ -37,6 +42,7 @@ private:
 	Math::Vector3df vector;
 	float mass;
 	float pressure;
+	float pressureCoe;
 	float viscosityCoe;
 };
 
