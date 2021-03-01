@@ -115,6 +115,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CameraControlViewModel.cs" />
+    <Compile Include="FileIOModel.cs" />
     <Compile Include="FileIOViewModel.cs" />
     <Compile Include="FileIO\FSSceneFileReader.cs" />
     <Compile Include="FileIO\FSSceneFileWriter.cs" />

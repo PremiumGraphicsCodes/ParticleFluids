@@ -12,11 +12,14 @@ namespace FluidStudio
 
         public VDBModel VDBModel { get; }
 
+        public FileIOModel FileIOModel { get; }
+
         public MainModel()
         {
             this.Scenes = new SceneList();
             this.PhysicsModel = new PhysicsModel();
             this.VDBModel = new VDBModel(this.Scenes);
+            this.FileIOModel = new FileIOModel(this);
         }
     }
 }

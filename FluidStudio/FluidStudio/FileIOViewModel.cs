@@ -1,12 +1,8 @@
 ﻿using FluidStudio.FileIO;
-using FluidStudio.VDB;
 using Microsoft.Win32;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
 
 namespace FluidStudio
 {
@@ -33,8 +29,6 @@ namespace FluidStudio
 
         private readonly Canvas3d canvas;
 
-        private string currentFilePath = "";
-
         public FileIOViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.model = model;
@@ -54,7 +48,7 @@ namespace FluidStudio
             canvas.Renderer.Build(world.Adapter);
             canvas.Update();
             canvas.Render();
-            this.currentFilePath = "";
+            model.FileIOModel.New();
         }
 
         private void OnOpen()
@@ -66,21 +60,15 @@ namespace FluidStudio
             };
             if (dialog.ShowDialog() == true)
             {
-                model.PhysicsModel.Solvers.Clear();
-                var reader = new FSSceneFileReader();
-                reader.Read(model, canvas, dialog.FileName);
-                this.currentFilePath = dialog.FileName;
-                canvas.Camera.Fit();
-                canvas.Render();
+                model.FileIOModel.Open(dialog.FileName, canvas);
             }
         }
 
         private void OnSave()
         {
-            if (!string.IsNullOrEmpty(this.currentFilePath))
+            if (!string.IsNullOrEmpty(model.FileIOModel.CurrentFilePath))
             {
-                var writer = new FSSceneFileWriter();
-                writer.Write(model, currentFilePath);
+                model.FileIOModel.Save();
                 return;
             }
             OnSaveAs();
@@ -95,9 +83,7 @@ namespace FluidStudio
             };
             if (dialog.ShowDialog() == true)
             {
-                var writer = new FSSceneFileWriter();
-                writer.Write(model, dialog.FileName);
-                this.currentFilePath = dialog.FileName;
+                model.FileIOModel.SaveAs(dialog.FileName);
             }
         }
 
