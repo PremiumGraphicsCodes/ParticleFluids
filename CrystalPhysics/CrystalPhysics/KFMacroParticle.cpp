@@ -41,13 +41,13 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 				if (d < 0.5 * 0.5) {
 //					const auto weight = (1.0 - std::sqrt(d) * 2.0);
 					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
-					points.push_back(new KFMicroParticle(this, v * 3.0, weight));
+					points.push_back(new KFMicroParticle(this, v * 2.0, weight));
 					selfMass += weight;
 				}
 			}
 		}
 	}
-	selfMass *= 1.5;
+	//selfMass *= 1.5;
 //	selfMass = unum * vnum * wnum * weight;
 }
 
@@ -69,14 +69,6 @@ void KFMacroParticle::reset(bool resetMicro)
 	}
 }
 
-
-/*
-void MacroParticle::calculateDensity()
-{
-	this->density = (innerPoints.size() - points.size()) / (double)points.size();
-}
-*/
-
 void KFMacroParticle::addMicro(KFMicroParticle* microParticle)
 {
 	microPoints.push_back(microParticle);
@@ -87,20 +79,30 @@ void KFMacroParticle::addMicro(KFMicroParticle* microParticle)
 	*/
 }
 
-/*
+void KFMacroParticle::calculateDensity()
+{
+	this->density = (innerPoints.size() / (double)points.size());
+}
+
 void KFMacroParticle::calculatePressure()
 {
-	auto ratio = (totalMass / selfMass) - 1.0f;
-	this->pressure = std::max(0.0f, ratio) * scene->getPressureCoe();
+	this->pressure = (density - 1.0f) * scene->getPressureCoe();
+	this->pressure = std::max(0.0f, this->pressure);
 	for (auto mp : microPoints) {
-		mp->setPressure(this->pressure);
+		mp->setPressureCoe(this->pressure);
 		//mp.set
 	}
 }
-*/
 
 void KFMacroParticle::calculatePressureForce(const float relaxationCoe)
 {
+	Math::Vector3df f(0, 0, 0);
+	for (auto mp : innerPoints) {
+		f += (this->pressure + mp->getPressureCoe()) * (this->position - mp->position) * mp->getMass();
+	}
+	this->force += f;
+
+	/*
 	Vector3df averagedCenter(0, 0, 0);
 	float pressureCoe = 0.0f;
 	for (auto mp : innerPoints) {
@@ -110,8 +112,9 @@ void KFMacroParticle::calculatePressureForce(const float relaxationCoe)
 	averagedCenter /= totalMass;
 	pressureCoe /= totalMass;
 	auto ratio = (totalMass / selfMass) - 1.0f;
-	//ratio = std::max(0.0f, ratio);
+	ratio = std::max(0.0f, ratio);
 	this->force += (this->position - averagedCenter) * ratio * pressureCoe * relaxationCoe;// 10000.0;
+	*/
 }
 
 void KFMacroParticle::calculateViscosityForce()

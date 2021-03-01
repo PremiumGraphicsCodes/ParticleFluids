@@ -29,6 +29,7 @@ private:
 private:
 	Physics::KFFluidScene* fluidScene;
 	Physics::KFFluidScene* boundaryScene;
+	Physics::CSGBoundaryScene* csgScene;
 	Physics::KFFluidSolver simulator;
 	Physics::KFFUpdater updator;
 	CSGBoundaryView boundaryView;

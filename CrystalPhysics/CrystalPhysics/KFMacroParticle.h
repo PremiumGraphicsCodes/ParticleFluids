@@ -22,15 +22,15 @@ public:
 
 	KFFluidScene* getScene() { return scene; }
 
-	//void calculateDensity();
-
 	void reset(bool resetMicro);
 
 	void addSelfMicro(KFMicroParticle* mp) { this->points.push_back(mp); }
 
 	void addMicro(KFMicroParticle* microParticle);
 
-	//void calculatePressure();
+	void calculateDensity();
+
+	void calculatePressure();
 
 	void calculatePressureForce(const float relaxationCoe);
 
@@ -74,6 +74,7 @@ private:
 
 	float selfMass;
 	float totalMass;
+	float density;
 	float pressure;
 };
 

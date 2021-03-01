@@ -121,6 +121,8 @@ void KFFluidSolver::simulate()
 		for (int i = 0; i < fluidParticles.size(); ++i) {
 			const auto particle = fluidParticles[i];
 			particle->updateInnerPoints();
+			particle->calculateDensity();
+			particle->calculatePressure();
 			particle->calculatePressureForce(1.0);
 			particle->calculateViscosityForce();
 		}
@@ -150,6 +152,8 @@ void KFFluidSolver::simulate()
 			for (int i = 0; i < fluidParticles.size(); ++i) {
 				const auto particle = fluidParticles[i];
 				particle->updateInnerPoints();
+				particle->calculateDensity();
+				particle->calculatePressure();
 				particle->calculatePressureForce(relaxationCoe);
 			}
 
