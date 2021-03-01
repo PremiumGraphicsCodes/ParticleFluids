@@ -55,7 +55,7 @@ void KFMacroParticle::setScene(KFFluidScene* scene)
 {
 	this->scene = scene;
 	for (auto p : points) {
-		p->setPressureCoe(scene->getPressureCoe());
+		p->setPressure(scene->getPressureCoe());
 		p->setViscosityCoe(scene->getViscosityCoe());
 	}
 }
@@ -89,7 +89,7 @@ void KFMacroParticle::calculatePressure()
 	this->pressure = (density - 1.0f) * scene->getPressureCoe();
 	this->pressure = std::max(0.0f, this->pressure);
 	for (auto mp : microPoints) {
-		mp->setPressureCoe(this->pressure);
+		mp->setPressure(this->pressure);
 		//mp.set
 	}
 }
@@ -101,33 +101,16 @@ void KFMacroParticle::calculatePressureForce(const float relaxationCoe)
 		f += (this->pressure + mp->getPressureCoe()) * (this->position - mp->position) * mp->getMass();
 	}
 	this->force += f;
-
-	/*
-	Vector3df averagedCenter(0, 0, 0);
-	float pressureCoe = 0.0f;
-	for (auto mp : innerPoints) {
-		averagedCenter += mp->position * mp->getMass();
-		pressureCoe += mp->getPressureCoe() * mp->getMass();
-	}
-	averagedCenter /= totalMass;
-	pressureCoe /= totalMass;
-	auto ratio = (totalMass / selfMass) - 1.0f;
-	ratio = std::max(0.0f, ratio);
-	this->force += (this->position - averagedCenter) * ratio * pressureCoe * relaxationCoe;// 10000.0;
-	*/
 }
 
 void KFMacroParticle::calculateViscosityForce()
 {
-	Vector3df averagedVelocity(0, 0, 0);
-	float viscosityCoe = 0.0f;
+	auto coe = getScene()->getViscosityCoe();
+	Math::Vector3df f(0, 0, 0);
 	for (auto mp : innerPoints) {
-		averagedVelocity += mp->getVelocity() * mp->getMass();
-		viscosityCoe += mp->getViscosityCoe() * mp->getMass();
+		f -= ( this->velocity - mp->getVelocity()) * mp->getMass() * coe;
 	}
-	averagedVelocity /= totalMass;
-	viscosityCoe /= totalMass;
-	this->force -= (this->velocity - averagedVelocity) * viscosityCoe;//50.0;
+	this->force += f;
 }
 
 void KFMacroParticle::stepTime(const float dt)
@@ -139,7 +122,7 @@ void KFMacroParticle::stepTime(const float dt)
 
 float KFMacroParticle::getDensity() const
 {
-	return totalMass / selfMass;
+	return this->density; //totalMass / selfMass;
 	//return microCount / (double)(microCount + preCount);
 }
 
