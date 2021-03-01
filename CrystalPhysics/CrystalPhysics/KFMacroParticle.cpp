@@ -10,7 +10,7 @@ using namespace Crystal::Physics;
 KFMacroParticle::KFMacroParticle(const float radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
-	selfMass(0.0f)
+	restMass(0.0f)
 {}
 
 KFMacroParticle::~KFMacroParticle()
@@ -42,7 +42,7 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 //					const auto weight = (1.0 - std::sqrt(d) * 2.0);
 					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
 					points.push_back(new KFMicroParticle(this, v * 2.0, weight));
-					selfMass += weight;
+					restMass += weight;
 				}
 			}
 		}
@@ -72,16 +72,15 @@ void KFMacroParticle::reset(bool resetMicro)
 void KFMacroParticle::addMicro(KFMicroParticle* microParticle)
 {
 	microPoints.push_back(microParticle);
-	/*
-	averagedCenter += microParticle->getPosition();
-	averagedVelocity += microParticle->getVelocity();
-	microCount++;
-	*/
 }
 
 void KFMacroParticle::calculateDensity()
 {
-	this->density = (innerPoints.size() / (double)points.size());
+	float mass = 0.0f;
+	for (auto m : innerPoints) {
+		mass += m->getMass();
+	}
+	this->density = (mass / restMass);
 }
 
 void KFMacroParticle::calculatePressure()
@@ -90,7 +89,6 @@ void KFMacroParticle::calculatePressure()
 	this->pressure = std::max(0.0f, this->pressure);
 	for (auto mp : microPoints) {
 		mp->setPressure(this->pressure);
-		//mp.set
 	}
 }
 
@@ -122,8 +120,7 @@ void KFMacroParticle::stepTime(const float dt)
 
 float KFMacroParticle::getDensity() const
 {
-	return this->density; //totalMass / selfMass;
-	//return microCount / (double)(microCount + preCount);
+	return this->density;
 }
 
 void KFMacroParticle::updateMicros()
@@ -137,12 +134,10 @@ void KFMacroParticle::updateInnerPoints()
 {
 	const auto r = this->radius * 2.0;
 	innerPoints.clear();
-	totalMass = 0.0f;
 	for (auto mp : this->microPoints) {
 		const auto distanceSquared = Math::getDistanceSquared(mp->getPosition(), this->getPosition());
 		if (distanceSquared < r * r) {
 			innerPoints.push_back(mp);
-			totalMass += mp->getMass();
 		}
 	}
 }

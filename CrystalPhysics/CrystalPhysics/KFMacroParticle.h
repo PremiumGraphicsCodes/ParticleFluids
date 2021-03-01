@@ -60,7 +60,7 @@ public:
 
 	void updateInnerPoints();
 
-	float getSelfMass() { return selfMass; }
+	float getSelfMass() { return restMass; }
 
 private:
 	float radius;
@@ -72,8 +72,8 @@ private:
 	Math::Vector3df velocity;
 	KFFluidScene* scene;
 
-	float selfMass;
-	float totalMass;
+	//float selfMass;
+	float restMass;
 	float density;
 	float pressure;
 };
