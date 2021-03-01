@@ -47,6 +47,7 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 			}
 		}
 	}
+	restMass * 1.5;
 	//selfMass *= 1.5;
 //	selfMass = unum * vnum * wnum * weight;
 }
