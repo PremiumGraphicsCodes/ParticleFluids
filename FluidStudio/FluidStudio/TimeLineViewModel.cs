@@ -81,7 +81,7 @@ namespace FluidStudio
             {
                 return;
             }
-            mainModel.PhysicsModel.Reset(scenes, mainModel.VDBModel, canvas);
+            mainModel.PhysicsModel.Reset(scenes, mainModel.FileIOModel, mainModel.VDBModel, canvas);
             TimeStep.Value = 0;
         }
     }

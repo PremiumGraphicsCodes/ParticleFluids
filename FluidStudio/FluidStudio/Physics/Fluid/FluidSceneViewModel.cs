@@ -73,7 +73,7 @@ namespace FluidStudio.Physics
                     filename = mainModel.FileIOModel.ToRelativePath(filename);
                 }
                 this.ParticleFilePath.Value = filename;
-                this.scene.SetParticlesFromFile(mainModel.VDBModel, canvas, dialog.FileName, ParticleRadius.Value);
+                this.scene.SetParticlesFromFile(mainModel.VDBModel, mainModel.FileIOModel, canvas, dialog.FileName, ParticleRadius.Value);
                 this.OnUpdate();
 
                 canvas.BuildShader(world, scene.Id);

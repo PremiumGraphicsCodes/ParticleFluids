@@ -60,30 +60,19 @@ namespace FluidStudio.Physics
             Reset(world);
         }
 
-        public void SetParticlesFromFile(VDBModel vdb, Canvas3d canvas, string particleFilePath, double particleRadius)
+        public void SetParticlesFromFile(VDBModel vdb, FileIOModel ioModel, Canvas3d canvas, string particleFilePath, double particleRadius)
         {
             var ext = System.IO.Path.GetExtension(particleFilePath);
-            if(ext == ".vdb")
+            if(ext != ".vdb")
             {
-                SetParticlesFromVDBPoints(vdb, canvas, particleFilePath, particleRadius);
+                return;
             }
-            /*
-            else if(ext == ".obj")
-            {
-                SetParticlesFromMesh(vdb, canvas, particleFilePath, particleRadius);
-            }
-            */
-        }
-
-        private void SetParticlesFromVDBPoints(VDBModel vdb, Canvas3d canvas, string particleFilePath, double particleRadius)
-        {
+            var absolutePath = ioModel.ToFullPath(particleFilePath);
             // TODO 前のPSのクリア処理．
-            var ids = vdb.Read(particleFilePath, (float)particleRadius);
+            var ids = vdb.Read(absolutePath, (float)particleRadius);
             if (ids.Count() > 0)
             {
                 this.SourceParticleSystemId = ids[0];
-                //canvas.BuildShader(world, this.SourceParticleSystemId);
-                //canvas.Render();
                 this.ParticleFilePath = particleFilePath;
             }
         }
