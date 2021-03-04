@@ -18,6 +18,8 @@ namespace FluidStudio.Physics
 
         public float ParticleRadius { get; private set; } = 0.5f;
 
+        public bool DoUseRelativePath { get; private set; } = false;
+
         public int VolumeId { get; private set; }
 
         public string Name { get; private set; }
@@ -86,15 +88,6 @@ namespace FluidStudio.Physics
                 //canvas.Render();
                 this.ParticleFilePath = particleFilePath;
             }
-        }
-
-        private void SetParticlesFromMesh(VDBModel vdb, Canvas3d canvas, string meshFilePath, double particleRadius)
-        {
-            int meshId = vdb.ReadOBJ(meshFilePath);
-            int pointId = vdb.CreateVDBPoints("");
-            this.ParticleFilePath = meshFilePath;
-            vdb.ConvertMeshToPS(meshId, pointId, particleRadius * 2.0);
-            this.SourceParticleSystemId = pointId;
         }
 
         public void ExportFiles(SceneList world, VDBModel vdb, int timeStep)

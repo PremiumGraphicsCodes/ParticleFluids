@@ -39,6 +39,9 @@ namespace FluidStudio.Physics
         public ReactiveCommand UpdateCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveProperty<bool> DoUseRelativePath { get; }
+            = new ReactiveProperty<bool>(false);
+
         private FluidScene scene;
 
         private SceneList world;
@@ -65,6 +68,10 @@ namespace FluidStudio.Physics
             };
             if (dialog.ShowDialog() == true) {
                 var filename = dialog.FileName;
+                if (DoUseRelativePath.Value)
+                {
+                    filename = mainModel.FileIOModel.ToRelativePath(filename);
+                }
                 this.ParticleFilePath.Value = filename;
                 this.scene.SetParticlesFromFile(mainModel.VDBModel, canvas, dialog.FileName, ParticleRadius.Value);
                 this.OnUpdate();

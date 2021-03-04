@@ -79,5 +79,13 @@ namespace FluidStudio
             //var baseUri1 = new Uri(GetWorkingDirectory());
             //return new Uri(baseUri1, path).LocalPath;
         }
+
+        public string ToRelativePath(string fullPath)
+        {
+            var baseUri = new Uri(GetWorkingDirectory());
+            var fullUri = new Uri(fullPath);
+            var uri = baseUri.MakeRelativeUri(fullUri);
+            return uri.ToString();
+        }
     }
 }
