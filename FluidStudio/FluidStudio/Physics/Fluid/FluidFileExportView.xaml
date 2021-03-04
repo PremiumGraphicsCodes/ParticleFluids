@@ -8,6 +8,7 @@
     <StackPanel>
         <CheckBox Content="VDBExport" IsChecked="{Binding DoExportVDB.Value}"/>
         <TextBlock Text = "Directory" />
+        <CheckBox Content="RelativePath" IsChecked="{Binding DoUseRelativePath.Value}"/>
         <StackPanel Orientation="Horizontal">
             <Button Content="Select" Command="{Binding VDBExportDirectorySelectCommand}"/>
             <TextBox Text = "{Binding VDBExportDirectoryPath.Value}" MinWidth="100"/>

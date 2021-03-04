@@ -14,7 +14,12 @@ namespace FluidStudio.Physics.Fluid
         public ReactiveProperty<bool> DoExportVDB { get; }
             = new ReactiveProperty<bool>(false);
 
+        public ReactiveProperty<bool> DoUseRelativePath { get; }
+            = new ReactiveProperty<bool>(false);
+
         private FluidFileExportModel model;
+
+        private FileIOModel ioModel;
 
         public FluidFileExportModel Model
         {
@@ -26,8 +31,9 @@ namespace FluidStudio.Physics.Fluid
             }
         }
 
-        public FluidFileExportViewModel()
+        public FluidFileExportViewModel(FileIOModel ioModel)
         {
+            this.ioModel = ioModel;
             this.VDBExportDirectorySelectCommand.Subscribe(() => OnSelectVDBExportDirectory());
             this.DoExportVDB.Subscribe(OnExportVDBChanged);
             this.VDBExportDirectoryPath.Subscribe(OnExportVDBDirectoryChanged);
@@ -40,7 +46,12 @@ namespace FluidStudio.Physics.Fluid
             var result = dialog.ShowDialog();
             if (result == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
             {
-                this.VDBExportDirectoryPath.Value = dialog.FileName;
+                var dirname = dialog.FileName;
+                if(DoUseRelativePath.Value)
+                {
+                    dirname = ioModel.ToRelativePath(dirname);
+                }
+                this.VDBExportDirectoryPath.Value = dirname;
             }
         }
 

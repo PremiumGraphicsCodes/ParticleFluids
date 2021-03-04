@@ -34,7 +34,6 @@ namespace FluidStudio.Physics
             = new ReactiveProperty<bool>(false);
 
         public FluidFileExportViewModel ExportViewModel { get; }
-            = new FluidFileExportViewModel();
 
         public ReactiveCommand UpdateCommand { get; }
             = new ReactiveCommand();
@@ -52,6 +51,7 @@ namespace FluidStudio.Physics
 
         public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
+            this.ExportViewModel = new FluidFileExportViewModel(model.FileIOModel);
             this.mainModel = model;
             this.canvas = canvas;
             this.ParticleFileSelectCommand.Subscribe(OnSelectPSFile);

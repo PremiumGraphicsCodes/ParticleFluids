@@ -18,8 +18,6 @@ namespace FluidStudio.Physics
 
         public float ParticleRadius { get; private set; } = 0.5f;
 
-        public bool DoUseRelativePath { get; private set; } = false;
-
         public int VolumeId { get; private set; }
 
         public string Name { get; private set; }
