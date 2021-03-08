@@ -22,7 +22,7 @@ namespace FluidStudio.Physics
 
         public string Name { get; private set; }
 
-        public float Density { get; private set; } = 1.0f;
+        public float Density { get; private set; } = 1000.0f;
 
         public float Stiffness { get; private set; } = 1.0f;
 

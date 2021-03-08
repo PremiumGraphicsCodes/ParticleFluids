@@ -22,7 +22,7 @@ namespace FluidStudio.Physics
             = new ReactiveProperty<float>(0.5f);
 
         public ReactiveProperty<float> Density { get; }
-            = new ReactiveProperty<float>(1.0f);
+            = new ReactiveProperty<float>(1000.0f);
 
         public ReactiveProperty<float> Stiffness { get; }
             = new ReactiveProperty<float>(1.0f);
