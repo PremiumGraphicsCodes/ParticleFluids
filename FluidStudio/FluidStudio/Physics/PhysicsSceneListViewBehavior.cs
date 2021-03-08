@@ -28,15 +28,14 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            if( treeView.SelectedItem is SolverScene)
-            {
-                return;
-            }
             if (e.Key == Key.Delete)
             {
                 var item = treeView.SelectedItem as PhysicsSceneViewModel;
                 var solver = item.Model.Parent as SolverScene;
-                solver.Delete(item.Model);
+                if (solver != null)
+                {
+                    solver.Delete(item.Model);
+                }
             }
         }
 
