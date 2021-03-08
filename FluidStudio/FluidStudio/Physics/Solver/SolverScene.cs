@@ -31,18 +31,15 @@ namespace FluidStudio.Physics
         public SolverScene(SceneList scenes)
         {
             this.scenes = scenes;
+            var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
+            command.Execute(scenes.Adapter);
+            this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
         }
 
         public void Clear()
         {
             Fluids.Clear();
-        }
-
-        public void Create()
-        {
-            var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
-            command.Execute(scenes.Adapter);
-            this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
+            CSGBoundaries.Clear();
         }
 
         public void Simulate()

@@ -44,12 +44,12 @@ namespace FluidStudio.FileIO
             }
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             solver.TimeStep = timeStep;
-            solver.Create();
             solver.Fluids = fluids;
             solver.CSGBoundaries = bScenes;
             solver.EffectLength = effectLength;
             solver.TimeStep = timeStep;
             solver.Name = name;
+            solver.Send();
             model.PhysicsModel.Solvers.Add(solver);
         }
 
@@ -65,9 +65,8 @@ namespace FluidStudio.FileIO
             var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
             var doExportVDB = bool.Parse(elem.Element(FSProjFile.DoExportVDBLabel).Value);
             var exportDirectory = elem.Element(FSProjFile.ExportDirectory).Value;
-            var fluidScene = new FluidScene(model.Scenes);
+            var fluidScene = new FluidScene(model.Scenes, parent, model.VDBModel, canvas);
             fluidScene.SetParticlesFromFile(model.VDBModel, model.FileIOModel, canvas, particlesFilePath, radius);
-            fluidScene.Create(parent, model.VDBModel, canvas);
             fluidScene.ParticleRadius = radius;
             fluidScene.Density = density;
             fluidScene.Stiffness = stiffness;
@@ -89,7 +88,10 @@ namespace FluidStudio.FileIO
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             var box = ReadBox3d(elem.Element(FSProjFile.Box3dLabel));
 
-            var bScene = new CSGBoundaryScene(parent, model.Scenes, name, box);
+            var bScene = new CSGBoundaryScene(parent, model.Scenes);
+            bScene.Name = name;
+            bScene.BoundingBox = box;
+            bScene.Send();
             canvas.BuildShader(model.Scenes, bScene.Id);
             canvas.Render();
             return bScene;

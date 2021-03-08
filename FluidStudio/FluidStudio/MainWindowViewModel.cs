@@ -72,26 +72,26 @@ namespace FluidStudio
             mainModel.Scenes.CreateDefaultCameraScene();
 
             var scene = new SolverScene(mainModel.Scenes);
-            scene.Create();
             scene.Fluids = new List<FluidScene>();
             scene.CSGBoundaries = new List<CSGBoundaryScene>();
             scene.EffectLength = 0.5f;
             scene.TimeStep = 0.03f;
             scene.Name = "Solver01";
+            scene.Send();
             mainModel.PhysicsModel.Solvers.Add(scene);
         }
 
         private void OnCreateFluidScene()
         {
             var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
-            var fluidScene = new FluidScene(mainModel.Scenes);
-            fluidScene.Create(solver, mainModel.VDBModel, Canvas);
+            var fluidScene = new FluidScene(mainModel.Scenes, solver, mainModel.VDBModel, Canvas);
             fluidScene.ParticleRadius = 0.5f;
             fluidScene.Density = 1000.0f;
             fluidScene.Stiffness = 1.0f;
             fluidScene.Viscosity = 1.0f;
             fluidScene.Name = "Fluid01";
             fluidScene.IsBoundary = false;
+            fluidScene.Send();
             solver.Fluids.Add(fluidScene);
             solver.Send();
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
@@ -104,7 +104,10 @@ namespace FluidStudio
         {
             var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
             var box = new Box3d(new Vector3d(-100, 0, -100), new Vector3d(100, 100, 100));
-            var boundaryScene = new CSGBoundaryScene(solver, mainModel.Scenes, "Boundary", box);
+            var boundaryScene = new CSGBoundaryScene(solver, mainModel.Scenes);
+            boundaryScene.Name = "Boundary";
+            boundaryScene.BoundingBox= box;
+            boundaryScene.Send();
             solver.CSGBoundaries.Add(boundaryScene);
             solver.Send();
             Canvas.BuildShader(mainModel.Scenes, boundaryScene.Id);

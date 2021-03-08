@@ -37,13 +37,9 @@ namespace FluidStudio.Physics
 
         private readonly SceneList scenes;
 
-        public FluidScene(SceneList scenes)
+        public FluidScene(SceneList scenes, SolverScene parent, VDBModel vdb, Canvas3d canvas)
         {
             this.scenes = scenes;
-        }
-        
-        public void Create(SolverScene parent, VDBModel vdb, Canvas3d canvas)
-        {
             this.Parent = parent;
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(scenes.Adapter);
