@@ -65,6 +65,7 @@ namespace FluidStudio.Physics.Solver
             scene.EffectLength = EffectLength.Value;
             scene.TimeStep = TimeStep.Value;
             scene.Name = this.Name.Value;
+            this.scene.Send();
         }
     }
 }

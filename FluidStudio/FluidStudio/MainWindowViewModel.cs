@@ -85,7 +85,13 @@ namespace FluidStudio
         {
             var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
             var fluidScene = new FluidScene(mainModel.Scenes);
-            fluidScene.Create(solver, mainModel.VDBModel, Canvas, 0.5f, 1000.0f, 1.0f, 1.0f, "Fluid01", false);
+            fluidScene.Create(solver, mainModel.VDBModel, Canvas);
+            fluidScene.ParticleRadius = 0.5f;
+            fluidScene.Density = 1000.0f;
+            fluidScene.Stiffness = 1.0f;
+            fluidScene.Viscosity = 1.0f;
+            fluidScene.Name = "Fluid01";
+            fluidScene.IsBoundary = false;
             solver.Fluids.Add(fluidScene);
             solver.Send();
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);

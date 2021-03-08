@@ -118,15 +118,14 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            //var sourceId = SourceParticleSystemSelectViewModel.Id.Value;
 
-            var radius = ParticleRadius.Value;
-            var density = Density.Value;
-            var stiffness = Stiffness.Value;
-            var viscosity = Viscosity.Value;
-            var name = Name.Value;
-            var isBoundary = IsBoundary.Value;
-            this.scene.Update(radius, density, stiffness, viscosity, name, isBoundary);
+            this.scene.ParticleRadius = ParticleRadius.Value;
+            this.scene.Density = Density.Value;
+            this.scene.Stiffness = Stiffness.Value;
+            this.scene.Viscosity = Viscosity.Value;
+            this.scene.Name = Name.Value;
+            this.scene.IsBoundary= IsBoundary.Value;
+            this.scene.Send();
         }
     }
 }

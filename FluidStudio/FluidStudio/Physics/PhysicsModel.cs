@@ -55,7 +55,7 @@ namespace FluidStudio.Physics
                 foreach (var fluid in ps.Fluids)
                 {
                     fluid.SetParticlesFromFile(vdb, ioModel, canvas, fluid.ParticleFilePath, fluid.ParticleRadius);
-                    fluid.Reset();
+                    fluid.Send();
                     canvas.SendShader(world, fluid.Id);
                 }
                 ps.Send();

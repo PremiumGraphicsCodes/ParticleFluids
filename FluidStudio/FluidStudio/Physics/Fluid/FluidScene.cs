@@ -16,19 +16,19 @@ namespace FluidStudio.Physics
 
         public string ParticleFilePath { get; private set; }
 
-        public float ParticleRadius { get; private set; } = 0.5f;
+        public float ParticleRadius { get; set; } = 0.5f;
 
         public int VolumeId { get; private set; }
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
-        public float Density { get; private set; } = 1000.0f;
+        public float Density { get; set; } = 1000.0f;
 
-        public float Stiffness { get; private set; } = 1.0f;
+        public float Stiffness { get; set; } = 1.0f;
 
-        public float Viscosity { get; private set; } = 1.0f;
+        public float Viscosity { get; set; } = 1.0f;
 
-        public bool IsBoundary { get; private set; } = false;
+        public bool IsBoundary { get; set; } = false;
 
         public FluidFileExportModel ExportModel { get; }
             = new FluidFileExportModel();
@@ -42,7 +42,7 @@ namespace FluidStudio.Physics
             this.scenes = scenes;
         }
         
-        public void Create(SolverScene parent, VDBModel vdb, Canvas3d canvas, float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Create(SolverScene parent, VDBModel vdb, Canvas3d canvas)
         {
             this.Parent = parent;
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
@@ -50,21 +50,6 @@ namespace FluidStudio.Physics
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
             this.VolumeId = vdb.CreateVDBVolume("Volume", false);
             canvas.BuildShader(scenes, VolumeId);
-
-            Update(particleRadius, density, stiffness, viscosity, name, isBoundary);
-        }
-
-        public void Update(float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
-        {
-            this.Name = name;
-            this.ParticleRadius = particleRadius;
-            this.Density = density;
-            this.Stiffness = stiffness;
-            this.Viscosity = viscosity;
-            //this.SourceParticleSystemId = particleSystemId;
-            this.IsBoundary = isBoundary;
-            this.Name = name;
-            Reset();
         }
 
         public void SetParticlesFromFile(VDBModel vdb, FileIOModel ioModel, Canvas3d canvas, string particleFilePath, double particleRadius)
@@ -94,7 +79,7 @@ namespace FluidStudio.Physics
             vdb.ConvertPSToVolume(this.Id, this.VolumeId, radius);
         }
 
-        public void Reset()
+        public void Send()
         {
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
