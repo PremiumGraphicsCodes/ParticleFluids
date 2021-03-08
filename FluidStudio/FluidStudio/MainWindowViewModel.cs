@@ -96,6 +96,7 @@ namespace FluidStudio
             var box = new Box3d(new Vector3d(-100, 0, -100), new Vector3d(100, 100, 100));
             var boundaryScene = new CSGBoundaryScene(mainModel.Scenes, "Boundary", box);
             solver.CSGBoundaries.Add(boundaryScene);
+            solver.Reset(mainModel.Scenes);
             Canvas.BuildShader(mainModel.Scenes, boundaryScene.Id);
             Canvas.Render();
             mainModel.PhysicsModel.Solvers.Remove(solver);

@@ -14,11 +14,15 @@
             <TextBlock Text="Name"/>
             <TextBox Text="{Binding Name.Value}" IsReadOnly="True" MinWidth="50"/>
         </StackPanel>
-        <CheckBox Content="RelativePath" IsChecked="{Binding DoUseRelativePath.Value}"/>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="ParticleFile" Command="{Binding ParticleFileSelectCommand}"/>
-            <TextBox Text="{Binding ParticleFilePath.Value}" IsReadOnly="True" MinWidth="100"/>
-        </StackPanel>
+        <GroupBox Header="ParticleFile">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Select" Command="{Binding ParticleFileSelectCommand}"/>
+                    <TextBox Text="{Binding ParticleFilePath.Value}" IsReadOnly="True" MinWidth="100"/>
+                </StackPanel>
+                <CheckBox Content="RelativePath" IsChecked="{Binding DoUseRelativePath.Value}"/>
+            </StackPanel>
+        </GroupBox>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="ParticleRadius"/>
             <TextBox Text="{Binding ParticleRadius.Value}" MinWidth="50"/>
@@ -36,7 +40,9 @@
             <TextBox Text="{Binding Viscosity.Value}" MinWidth="50"/>
         </StackPanel>
         <CheckBox Content="Boundary" IsChecked="{Binding IsBoundary.Value}"/>
-        <fluid:FluidFileExportView DataContext="{Binding ExportViewModel}"/>
+        <GroupBox Header="VDBExport">
+            <fluid:FluidFileExportView DataContext="{Binding ExportViewModel}"/>
+        </GroupBox>
         <Button Content="Update" Command="{Binding UpdateCommand}"/>
     </StackPanel>
 </UserControl>
