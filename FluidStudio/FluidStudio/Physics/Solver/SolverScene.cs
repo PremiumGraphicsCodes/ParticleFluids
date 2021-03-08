@@ -5,6 +5,7 @@ using Labels = PG.FluidSimulationLabels;
 using CreateLabels = PG.PhysicsSolverCreateLabels;
 using UpdateLabels = PG.PhysicsSolverUpdateLabels;
 using FluidStudio.VDB;
+using Reactive.Bindings;
 
 namespace FluidStudio.Physics
 {
@@ -12,11 +13,11 @@ namespace FluidStudio.Physics
     {
         public string Name { get; set; } = "Solver01";
 
-        public List<FluidScene> Fluids { get; set; }
-            = new List<FluidScene>();
+        public ReactiveCollection<FluidScene> Fluids { get; }
+            = new ReactiveCollection<FluidScene>();
 
-        public List<CSGBoundaryScene> CSGBoundaries { get; set; }
-            = new List<CSGBoundaryScene>();
+        public ReactiveCollection<CSGBoundaryScene> CSGBoundaries { get; }
+            = new ReactiveCollection<CSGBoundaryScene>();
 
         public float EffectLength { get; set; } = 2.0f;
 

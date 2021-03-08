@@ -72,8 +72,6 @@ namespace FluidStudio
             mainModel.Scenes.CreateDefaultCameraScene();
 
             var scene = new SolverScene(mainModel.Scenes);
-            scene.Fluids = new List<FluidScene>();
-            scene.CSGBoundaries = new List<CSGBoundaryScene>();
             scene.EffectLength = 0.5f;
             scene.TimeStep = 0.03f;
             scene.Name = "Solver01";

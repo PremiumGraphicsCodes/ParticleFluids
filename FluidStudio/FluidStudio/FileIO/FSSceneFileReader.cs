@@ -28,24 +28,19 @@ namespace FluidStudio.FileIO
             var effectLength = float.Parse(elem.Element(FSProjFile.EffectLengthLabel).Value);
             var timeStep = float.Parse(elem.Element(FSProjFile.TimeStepLabel).Value);
             var scenes = elem.Elements(FSProjFile.FluidSceneLabel);
-            var fluids = new List<FluidScene>();
             foreach(var scene in scenes)
             {
                 var fluid = ReadFluidScene(model, canvas, scene, solver);
-                fluids.Add(fluid);
-//                physicsScene.Fluids.Add(fluid);
+                solver.Fluids.Add(fluid);
             }
-            var bScenes = new List<CSGBoundaryScene>();
             var bElements = elem.Elements(FSProjFile.CSGBoundarySceneLabel);
             foreach(var bElem in bElements)
             {
                 var bScene = ReadCSGBoundaryScene(model, canvas, bElem, solver);
-                bScenes.Add(bScene);
+                solver.CSGBoundaries.Add(bScene);
             }
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             solver.TimeStep = timeStep;
-            solver.Fluids = fluids;
-            solver.CSGBoundaries = bScenes;
             solver.EffectLength = effectLength;
             solver.TimeStep = timeStep;
             solver.Name = name;
