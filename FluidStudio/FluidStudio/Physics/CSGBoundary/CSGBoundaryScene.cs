@@ -16,31 +16,39 @@ namespace FluidStudio.Physics
 
         public IPhysicsScene Parent { get; private set; }
 
+        private readonly SceneList scenes;
+
         public CSGBoundaryScene(SolverScene parent, SceneList world, string name, Box3d bb)
         {
             this.Parent = parent;
-            Create(world, name, bb);
+            this.scenes = world;
+            Create(name, bb);
         }
         
-        public void Create(SceneList world, string name, Box3d bb)
+        public void Create(string name, Box3d bb)
         {
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
-            command.Execute(world.Adapter);
+            command.Execute(scenes.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
             this.Name = name;
             this.BoundingBox = bb;
-            Update(world, name, bb);
+            Update(name, bb);
         }
 
-        public void Update(SceneList world, string name, Box3d bb)
+        public void Update(string name, Box3d bb)
         {
             this.BoundingBox = bb;
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
             command.SetArg(UpdateLabels.NameLabel, name);
             command.SetArg(UpdateLabels.BoundingBoxLabel, bb);
-            command.Execute(world.Adapter);
+            command.Execute(scenes.Adapter);
             this.Name = name;
+        }
+
+        public void Delete()
+        {
+            scenes.Delete(this.Id);
         }
     }
 }

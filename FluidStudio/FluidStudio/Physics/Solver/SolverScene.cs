@@ -86,5 +86,32 @@ namespace FluidStudio.Physics
             command.SetArg(UpdateLabels.NameLabel, Name);
             command.Execute(scenes.Adapter);
         }
+
+        public void Delete(IPhysicsScene scene)
+        {
+            if (scene is FluidScene)
+            {
+                foreach (var f in Fluids)
+                {
+                    if (f == scene)
+                    {
+                        f.Delete();
+                    }
+                }
+                Fluids.Remove(scene as FluidScene);
+            }
+            else if(scene is CSGBoundaryScene)
+            {
+                foreach(var b in CSGBoundaries)
+                {
+                    if(b == scene)
+                    {
+                        b.Delete();
+                    }
+                }
+                CSGBoundaries.Remove(scene as CSGBoundaryScene);
+            }
+            Reset();
+        }
     }
 }

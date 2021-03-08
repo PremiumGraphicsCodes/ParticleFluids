@@ -28,8 +28,7 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            var selectedItem = treeView.SelectedItem as SolverScene;
-            if (selectedItem == null)
+            if( treeView.SelectedItem is SolverScene)
             {
                 return;
             }
@@ -37,13 +36,7 @@ namespace FluidStudio.Physics
             {
                 var item = treeView.SelectedItem as PhysicsSceneViewModel;
                 var solver = item.Model.Parent as SolverScene;
-                //solver.Scenes.Delete(item.Id.Value);
-                //solver.I
-                /*
-                item.Model.
-                item.Model.
-                World.Instance.Scenes.Delete(selectedItem.Id.Value);
-                */
+                solver.Delete(item.Model);
             }
         }
 
