@@ -62,7 +62,9 @@ namespace FluidStudio.Physics.Solver
             {
                 return;
             }
-            scene.Update(this.scene.Fluids, this.scene.CSGBoundaries, EffectLength.Value, TimeStep.Value, this.Name.Value);
+            scene.EffectLength = EffectLength.Value;
+            scene.TimeStep = TimeStep.Value;
+            scene.Name = this.Name.Value;
         }
     }
 }

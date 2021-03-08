@@ -10,12 +10,12 @@ namespace FluidStudio.Physics
 {
     public class SolverScene : IPhysicsScene
     {
-        public string Name { get; private set; } = "Solver01";
+        public string Name { get; set; } = "Solver01";
 
-        public List<FluidScene> Fluids { get; private set; }
+        public List<FluidScene> Fluids { get; set; }
             = new List<FluidScene>();
 
-        public List<CSGBoundaryScene> CSGBoundaries { get; private set; }
+        public List<CSGBoundaryScene> CSGBoundaries { get; set; }
             = new List<CSGBoundaryScene>();
 
         public float EffectLength { get; set; } = 2.0f;
@@ -38,55 +38,20 @@ namespace FluidStudio.Physics
             Fluids.Clear();
         }
 
-        public void Create(List<FluidScene> fluids, List<CSGBoundaryScene> csgBoundaries, float effectLength, float timeStep, string name)
+        public void Create()
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(scenes.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(fluids, csgBoundaries, effectLength, timeStep, name);
         }
 
-        public void Update(List<FluidScene> fluids, List<CSGBoundaryScene> cSGBoundaries, float effectLength, float timeStep, string name)
-        {
-            this.Fluids = fluids;
-            this.CSGBoundaries = cSGBoundaries;
-            this.EffectLength = effectLength;
-            this.TimeStep = timeStep;
-            this.Name = name;
-        }
-
-        public void Simulate(VDBModel vdb, int timeStep)
+        public void Simulate()
         {
             var command = new PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.SolverIdLabel, Id);
             command.Execute(scenes.Adapter);
         }
         
-        public void Reset()
-        {
-            var fluidIds = new List<int>();
-            foreach (var f in Fluids)
-            {
-                fluidIds.Add(f.Id);
-            }
-
-            var csgIds = new List<int>();
-            foreach(var csg in CSGBoundaries)
-            {
-                csgIds.Add(csg.Id);
-            }
-
-            var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
-            command.SetArg(UpdateLabels.IdLabel, Id);
-            command.SetArg(UpdateLabels.FluidSceneIdsLabel, fluidIds);
-            command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, csgIds);
-            command.SetArg(UpdateLabels.MeshBoundarySceneIdsLabel, new List<int>());
-            command.SetArg(UpdateLabels.EffectLengthLabel, EffectLength);
-            command.SetArg(UpdateLabels.TimeStepLabel, TimeStep);
-            command.SetArg(UpdateLabels.NameLabel, Name);
-            command.Execute(scenes.Adapter);
-        }
-
         public void Delete(IPhysicsScene scene)
         {
             if (scene is FluidScene)
@@ -111,7 +76,33 @@ namespace FluidStudio.Physics
                 }
                 CSGBoundaries.Remove(scene as CSGBoundaryScene);
             }
-            Reset();
+            Send();
         }
+
+        public void Send()
+        {
+            var fluidIds = new List<int>();
+            foreach (var f in Fluids)
+            {
+                fluidIds.Add(f.Id);
+            }
+
+            var csgIds = new List<int>();
+            foreach (var csg in CSGBoundaries)
+            {
+                csgIds.Add(csg.Id);
+            }
+
+            var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
+            command.SetArg(UpdateLabels.IdLabel, Id);
+            command.SetArg(UpdateLabels.FluidSceneIdsLabel, fluidIds);
+            command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, csgIds);
+            command.SetArg(UpdateLabels.MeshBoundarySceneIdsLabel, new List<int>());
+            command.SetArg(UpdateLabels.EffectLengthLabel, EffectLength);
+            command.SetArg(UpdateLabels.TimeStepLabel, TimeStep);
+            command.SetArg(UpdateLabels.NameLabel, Name);
+            command.Execute(scenes.Adapter);
+        }
+
     }
 }

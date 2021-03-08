@@ -34,7 +34,7 @@ namespace FluidStudio.Physics
         {
             foreach (var solver in Solvers)
             {
-                solver.Simulate(vdb, TimeStep.Value);
+                solver.Simulate();
                 foreach (var fluid in solver.Fluids)
                 {
                     canvas.SendShader(world, fluid.Id);
@@ -58,7 +58,7 @@ namespace FluidStudio.Physics
                     fluid.Reset();
                     canvas.SendShader(world, fluid.Id);
                 }
-                ps.Reset();
+                ps.Send();
                 canvas.Render();
             }
             TimeStep.Value = 0;

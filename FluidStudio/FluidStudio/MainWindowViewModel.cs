@@ -72,7 +72,12 @@ namespace FluidStudio
             mainModel.Scenes.CreateDefaultCameraScene();
 
             var scene = new SolverScene(mainModel.Scenes);
-            scene.Create(new List<FluidScene>(), new List<CSGBoundaryScene>(), 0.5f, 0.03f, "Solver01");
+            scene.Create();
+            scene.Fluids = new List<FluidScene>();
+            scene.CSGBoundaries = new List<CSGBoundaryScene>();
+            scene.EffectLength = 0.5f;
+            scene.TimeStep = 0.03f;
+            scene.Name = "Solver01";
             mainModel.PhysicsModel.Solvers.Add(scene);
         }
 
@@ -82,7 +87,7 @@ namespace FluidStudio
             var fluidScene = new FluidScene(mainModel.Scenes);
             fluidScene.Create(solver, mainModel.VDBModel, Canvas, 0.5f, 1000.0f, 1.0f, 1.0f, "Fluid01", false);
             solver.Fluids.Add(fluidScene);
-            solver.Reset();
+            solver.Send();
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
             Canvas.Render();
             mainModel.PhysicsModel.Solvers.Remove(solver);
@@ -95,7 +100,7 @@ namespace FluidStudio
             var box = new Box3d(new Vector3d(-100, 0, -100), new Vector3d(100, 100, 100));
             var boundaryScene = new CSGBoundaryScene(solver, mainModel.Scenes, "Boundary", box);
             solver.CSGBoundaries.Add(boundaryScene);
-            solver.Reset();
+            solver.Send();
             Canvas.BuildShader(mainModel.Scenes, boundaryScene.Id);
             Canvas.Render();
             mainModel.PhysicsModel.Solvers.Remove(solver);

@@ -44,7 +44,12 @@ namespace FluidStudio.FileIO
             }
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             solver.TimeStep = timeStep;
-            solver.Create(fluids, bScenes, effectLength, timeStep, name);
+            solver.Create();
+            solver.Fluids = fluids;
+            solver.CSGBoundaries = bScenes;
+            solver.EffectLength = effectLength;
+            solver.TimeStep = timeStep;
+            solver.Name = name;
             model.PhysicsModel.Solvers.Add(solver);
         }
 
