@@ -103,5 +103,12 @@ namespace FluidStudio.Physics
             command.SetArg(UpdateLabels.NameLabel, Name);
             command.Execute(world.Adapter);
         }
+
+        public void Delete(SceneList world)
+        {
+            world.Delete(SourceParticleSystemId);
+            world.Delete(Id);
+            world.Delete(VolumeId);
+        }
     }
 }

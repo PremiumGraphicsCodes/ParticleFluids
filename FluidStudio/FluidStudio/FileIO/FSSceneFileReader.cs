@@ -24,7 +24,7 @@ namespace FluidStudio.FileIO
 
         private void ReadPhysicsScene(MainModel model, Canvas3d canvas, XElement elem)
         {
-            var solver = new SolverScene();
+            var solver = new SolverScene(model.Scenes);
             var effectLength = float.Parse(elem.Element(FSProjFile.EffectLengthLabel).Value);
             var timeStep = float.Parse(elem.Element(FSProjFile.TimeStepLabel).Value);
             var scenes = elem.Elements(FSProjFile.FluidSceneLabel);
@@ -44,7 +44,7 @@ namespace FluidStudio.FileIO
             }
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             solver.TimeStep = timeStep;
-            solver.Create(model.Scenes, fluids, bScenes, effectLength, timeStep, name);
+            solver.Create(fluids, bScenes, effectLength, timeStep, name);
             model.PhysicsModel.Solvers.Add(solver);
         }
 

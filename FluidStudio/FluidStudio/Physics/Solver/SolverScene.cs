@@ -26,37 +26,43 @@ namespace FluidStudio.Physics
 
         public IPhysicsScene Parent { get; private set; }
 
+        public SceneList Scenes { get; private set; }
+
+        public SolverScene(SceneList scenes)
+        {
+            this.Scenes = scenes;
+        }
+
         public void Clear()
         {
             Fluids.Clear();
         }
 
-        public void Create(SceneList scenes, List<FluidScene> fluids, List<CSGBoundaryScene> csgBoundaries, float effectLength, float timeStep, string name)
+        public void Create(List<FluidScene> fluids, List<CSGBoundaryScene> csgBoundaries, float effectLength, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
-            command.Execute(scenes.Adapter);
+            command.Execute(Scenes.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
-            Update(scenes, fluids, csgBoundaries, effectLength, timeStep, name);
+            Update(fluids, csgBoundaries, effectLength, timeStep, name);
         }
 
-        public void Update(SceneList world, List<FluidScene> fluids, List<CSGBoundaryScene> cSGBoundaries, float effectLength, float timeStep, string name)
+        public void Update(List<FluidScene> fluids, List<CSGBoundaryScene> cSGBoundaries, float effectLength, float timeStep, string name)
         {
             this.Fluids = fluids;
             this.CSGBoundaries = cSGBoundaries;
             this.EffectLength = effectLength;
             this.TimeStep = timeStep;
             this.Name = name;
-            Reset(world);
         }
 
-        public void Simulate(SceneList scenes, VDBModel vdb, int timeStep)
+        public void Simulate(VDBModel vdb, int timeStep)
         {
             var command = new PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.SolverIdLabel, Id);
-            command.Execute(scenes.Adapter);
+            command.Execute(Scenes.Adapter);
         }
         
-        public void Reset(SceneList world)
+        public void Reset()
         {
             var fluidIds = new List<int>();
             foreach (var f in Fluids)
@@ -78,7 +84,7 @@ namespace FluidStudio.Physics
             command.SetArg(UpdateLabels.EffectLengthLabel, EffectLength);
             command.SetArg(UpdateLabels.TimeStepLabel, TimeStep);
             command.SetArg(UpdateLabels.NameLabel, Name);
-            command.Execute(world.Adapter);
+            command.Execute(Scenes.Adapter);
         }
     }
 }
