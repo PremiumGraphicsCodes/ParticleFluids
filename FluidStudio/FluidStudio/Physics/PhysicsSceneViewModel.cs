@@ -14,8 +14,7 @@ namespace FluidStudio.Physics
 
     public class PhysicsSceneViewModel
     {
-        public ReactiveCollection<PhysicsSceneViewModel> Children { get; }
-            = new ReactiveCollection<PhysicsSceneViewModel>();
+        public ReadOnlyReactiveCollection<PhysicsSceneViewModel> Children { get; }
 
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>();
@@ -32,25 +31,26 @@ namespace FluidStudio.Physics
             this.SceneType = PhysicsSceneType.Solver;
             this.Model = scene;
             Name.Value = scene.Name;
-//            Id = scene.Id
-            foreach(var f in scene.Fluids)
-            {
-                Children.Add(new PhysicsSceneViewModel(f));
-            }
-            foreach(var b in scene.CSGBoundaries)
-            {
-                Children.Add(new PhysicsSceneViewModel(b));
-            }
+
+            this.Children = scene.Children.ToReadOnlyReactiveCollection(x => new PhysicsSceneViewModel(x));
         }
 
-        public PhysicsSceneViewModel(FluidScene scene)
+        public PhysicsSceneViewModel(IPhysicsScene scene)
         {
             this.Model = scene;
-            this.SceneType = PhysicsSceneType.Fluid;
+            if (scene is FluidScene)
+            {
+                this.SceneType = PhysicsSceneType.Fluid;
+            }
+            else if(scene is CSGBoundaryScene)
+            {
+                this.SceneType = PhysicsSceneType.CSGBoundary;
+            }
             this.Id.Value = scene.Id;
             Name.Value = scene.Name;
         }
 
+        /*
         public PhysicsSceneViewModel(CSGBoundaryScene scene)
         {
             this.Model = scene;
@@ -58,5 +58,6 @@ namespace FluidStudio.Physics
             this.Id.Value = scene.Id;
             Name.Value = scene.Name;
         }
+        */
     }
 }

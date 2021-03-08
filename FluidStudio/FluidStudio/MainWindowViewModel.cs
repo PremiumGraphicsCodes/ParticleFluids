@@ -90,12 +90,12 @@ namespace FluidStudio
             fluidScene.Name = "Fluid01";
             fluidScene.IsBoundary = false;
             fluidScene.Send();
-            solver.Fluids.Add(fluidScene);
+            solver.Add(fluidScene);
             solver.Send();
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
             Canvas.Render();
-            mainModel.PhysicsModel.Solvers.Remove(solver);
-            mainModel.PhysicsModel.Solvers.Add(solver);
+            //mainModel.PhysicsModel.Solvers.Remove(solver);
+            //mainModel.PhysicsModel.Solvers.Add(solver);
         }
 
         private void OnCreateBoundaryScene()
@@ -106,12 +106,10 @@ namespace FluidStudio
             boundaryScene.Name = "Boundary";
             boundaryScene.BoundingBox= box;
             boundaryScene.Send();
-            solver.CSGBoundaries.Add(boundaryScene);
+            solver.Add(boundaryScene);
             solver.Send();
             Canvas.BuildShader(mainModel.Scenes, boundaryScene.Id);
             Canvas.Render();
-            mainModel.PhysicsModel.Solvers.Remove(solver);
-            mainModel.PhysicsModel.Solvers.Add(solver);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace FluidStudio.Physics
             {
                 var item = treeView.SelectedItem as PhysicsSceneViewModel;
                 var solver = item.Model.Parent as SolverScene;
-                //solver.Delete(item.Model);
+                solver.Delete(item.Model);
             }
         }
 

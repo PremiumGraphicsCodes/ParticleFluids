@@ -13,11 +13,18 @@ namespace FluidStudio.Physics
     {
         public string Name { get; set; } = "Solver01";
 
-        public ReactiveCollection<FluidScene> Fluids { get; }
-            = new ReactiveCollection<FluidScene>();
+        private List<FluidScene> fluids { get; }
+            = new List<FluidScene>();
 
-        public ReactiveCollection<CSGBoundaryScene> CSGBoundaries { get; }
-            = new ReactiveCollection<CSGBoundaryScene>();
+        private List<CSGBoundaryScene> boundaries { get; }
+            = new List<CSGBoundaryScene>();
+
+        public IEnumerable<FluidScene> Fluids { get { return fluids; } }
+
+        public IEnumerable<CSGBoundaryScene> Boundaries { get { return boundaries; } }
+
+        public ReactiveCollection<IPhysicsScene> Children { get; }
+            = new ReactiveCollection<IPhysicsScene>();
 
         public float EffectLength { get; set; } = 2.0f;
 
@@ -37,10 +44,23 @@ namespace FluidStudio.Physics
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
         }
 
+        public void Add(FluidScene f)
+        {
+            this.fluids.Add(f);
+            this.Children.Add(f);
+        }
+
+        public void Add(CSGBoundaryScene b)
+        {
+            this.boundaries.Add(b);
+            this.Children.Add(b);
+        }
+
         public void Clear()
         {
-            Fluids.Clear();
-            CSGBoundaries.Clear();
+            fluids.Clear();
+            boundaries.Clear();
+            Children.Clear();
         }
 
         public void Simulate()
@@ -54,25 +74,27 @@ namespace FluidStudio.Physics
         {
             if (scene is FluidScene)
             {
-                foreach (var f in Fluids)
+                foreach (var f in fluids)
                 {
                     if (f == scene)
                     {
                         f.Delete();
                     }
                 }
-                Fluids.Remove(scene as FluidScene);
+                fluids.Remove(scene as FluidScene);
+                Children.Remove(scene);
             }
             else if(scene is CSGBoundaryScene)
             {
-                foreach(var b in CSGBoundaries)
+                foreach(var b in boundaries)
                 {
                     if(b == scene)
                     {
                         b.Delete();
                     }
                 }
-                CSGBoundaries.Remove(scene as CSGBoundaryScene);
+                boundaries.Remove(scene as CSGBoundaryScene);
+                Children.Remove(scene);
             }
             Send();
         }
@@ -80,13 +102,13 @@ namespace FluidStudio.Physics
         public void Send()
         {
             var fluidIds = new List<int>();
-            foreach (var f in Fluids)
+            foreach (var f in fluids)
             {
                 fluidIds.Add(f.Id);
             }
 
             var csgIds = new List<int>();
-            foreach (var csg in CSGBoundaries)
+            foreach (var csg in boundaries)
             {
                 csgIds.Add(csg.Id);
             }

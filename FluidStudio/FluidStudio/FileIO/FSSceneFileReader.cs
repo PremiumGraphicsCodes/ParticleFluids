@@ -31,13 +31,13 @@ namespace FluidStudio.FileIO
             foreach(var scene in scenes)
             {
                 var fluid = ReadFluidScene(model, canvas, scene, solver);
-                solver.Fluids.Add(fluid);
+                solver.Add(fluid);
             }
             var bElements = elem.Elements(FSProjFile.CSGBoundarySceneLabel);
             foreach(var bElem in bElements)
             {
                 var bScene = ReadCSGBoundaryScene(model, canvas, bElem, solver);
-                solver.CSGBoundaries.Add(bScene);
+                solver.Add(bScene);
             }
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
             solver.TimeStep = timeStep;

@@ -67,7 +67,7 @@ namespace FluidStudio.FileIO
             {
                 root.Add(CreateElement(fluid));
             }
-            foreach(var boundary in scene.CSGBoundaries)
+            foreach(var boundary in scene.Boundaries)
             {
                 root.Add(CreateElement(FSProjFile.CSGBoundarySceneLabel, boundary));
             }
