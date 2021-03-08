@@ -1,5 +1,4 @@
-﻿using FluidStudio.Physics.MeshBoundary;
-using PG.Scene;
+﻿using PG.Scene;
 using Prism.Regions;
 using Reactive.Bindings;
 
@@ -41,10 +40,6 @@ namespace FluidStudio.Physics
             else if (selectedItem is CSGBoundaryScene)
             {
                 NavigateView("CSGBoundaryUpdate", parameters);
-            }
-            else if(selectedItem is MeshBoundaryScene)
-            {
-                NavigateView("MeshBoundaryUpdate", parameters);
             }
         }
     }

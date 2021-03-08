@@ -1,6 +1,4 @@
-﻿using FluidStudio.Physics.MeshBoundary;
-using Reactive.Bindings;
-using Reactive.Bindings.Extensions;
+﻿using Reactive.Bindings;
 
 namespace FluidStudio.Physics
 {
@@ -57,14 +55,6 @@ namespace FluidStudio.Physics
         {
             this.Model = scene;
             this.SceneType = PhysicsSceneType.CSGBoundary;
-            this.Id.Value = scene.Id;
-            Name.Value = scene.Name;
-        }
-
-        public PhysicsSceneViewModel(MeshBoundaryScene scene)
-        {
-            this.Model = scene;
-            this.SceneType = PhysicsSceneType.MeshBoundary;
             this.Id.Value = scene.Id;
             Name.Value = scene.Name;
         }

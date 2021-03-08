@@ -1,6 +1,5 @@
 ﻿using FluidStudio.FileIO;
 using FluidStudio.Physics;
-using FluidStudio.Physics.MeshBoundary;
 using FluidStudio.Physics.Solver;
 using FluidStudio.Scene.VDB;
 using FluidStudio.Tool.Modeling;
@@ -50,7 +49,6 @@ namespace FluidStudio
             containerRegistry.RegisterForNavigation<SolverSceneView>("SolverUpdate");
             containerRegistry.RegisterForNavigation<FluidSceneView>("FluidUpdate");
             containerRegistry.RegisterForNavigation<CSGBoundarySceneView>("CSGBoundaryUpdate");
-            containerRegistry.RegisterForNavigation<MeshBoundarySceneView>("MeshBoundaryUpdate");
 
             containerRegistry.RegisterForNavigation<VDBSceneView>("VDBScene");
         }

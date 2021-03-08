@@ -1,5 +1,4 @@
 ﻿using FluidStudio.Physics;
-using FluidStudio.Physics.MeshBoundary;
 using FluidStudio.Scene;
 using PG.Control.OpenGL;
 using PG.Core.Math;

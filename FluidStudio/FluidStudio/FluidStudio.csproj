@@ -137,11 +137,6 @@
     </Compile>
     <Compile Include="Physics\Fluid\FluidSceneViewModel.cs" />
     <Compile Include="Physics\IPhysicsScene.cs" />
-    <Compile Include="Physics\MeshBoundary\MeshBoundaryScene.cs" />
-    <Compile Include="Physics\MeshBoundary\MeshBoundarySceneView.xaml.cs">
-      <DependentUpon>MeshBoundarySceneView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Physics\MeshBoundary\MeshBoundarySceneViewModel.cs" />
     <Compile Include="Physics\PhysicsModel.cs" />
     <Compile Include="Physics\Solver\SolverScene.cs" />
     <Compile Include="Physics\PhysicsSceneListView.xaml.cs">
@@ -235,10 +230,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Physics\Fluid\FluidSceneView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Physics\MeshBoundary\MeshBoundarySceneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
