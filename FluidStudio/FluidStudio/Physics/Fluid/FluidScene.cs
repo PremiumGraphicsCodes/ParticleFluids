@@ -35,22 +35,26 @@ namespace FluidStudio.Physics
 
         public IPhysicsScene Parent { get; private set; }
 
-        public FluidScene()
-        { }
+        private readonly SceneList scenes;
+
+        public FluidScene(SceneList scenes)
+        {
+            this.scenes = scenes;
+        }
         
-        public void Create(SolverScene parent, SceneList world, VDBModel vdb, Canvas3d canvas, float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Create(SolverScene parent, VDBModel vdb, Canvas3d canvas, float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
             this.Parent = parent;
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
-            command.Execute(world.Adapter);
+            command.Execute(scenes.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
             this.VolumeId = vdb.CreateVDBVolume("Volume", false);
-            canvas.BuildShader(world, VolumeId);
+            canvas.BuildShader(scenes, VolumeId);
 
-            Update(world, particleRadius, density, stiffness, viscosity, name, isBoundary);
+            Update(particleRadius, density, stiffness, viscosity, name, isBoundary);
         }
 
-        public void Update(SceneList world, float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Update(float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
             this.Name = name;
             this.ParticleRadius = particleRadius;
@@ -60,7 +64,7 @@ namespace FluidStudio.Physics
             //this.SourceParticleSystemId = particleSystemId;
             this.IsBoundary = isBoundary;
             this.Name = name;
-            Reset(world);
+            Reset();
         }
 
         public void SetParticlesFromFile(VDBModel vdb, FileIOModel ioModel, Canvas3d canvas, string particleFilePath, double particleRadius)
@@ -80,17 +84,17 @@ namespace FluidStudio.Physics
             }
         }
 
-        public void ExportFiles(SceneList world, VDBModel vdb, int timeStep)
+        public void ExportFiles(VDBModel vdb, int timeStep)
         {
-            ExportModel.ExportFiles(world, this, vdb, timeStep);
+            ExportModel.ExportFiles(scenes, this, vdb, timeStep);
         }
 
-        public void ConvertPSToVolume(SceneList world, VDBModel vdb, double radius)
+        public void ConvertPSToVolume(VDBModel vdb, double radius)
         {
             vdb.ConvertPSToVolume(this.Id, this.VolumeId, radius);
         }
 
-        public void Reset(SceneList world)
+        public void Reset()
         {
             var command = new PG.CLI.PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
@@ -101,14 +105,14 @@ namespace FluidStudio.Physics
             command.SetArg(UpdateLabels.ViscosityLabel, Viscosity);
             command.SetArg(UpdateLabels.IsBoundary, IsBoundary);
             command.SetArg(UpdateLabels.NameLabel, Name);
-            command.Execute(world.Adapter);
+            command.Execute(scenes.Adapter);
         }
 
-        public void Delete(SceneList world)
+        public void Delete()
         {
-            world.Delete(SourceParticleSystemId);
-            world.Delete(Id);
-            world.Delete(VolumeId);
+            scenes.Delete(SourceParticleSystemId);
+            scenes.Delete(Id);
+            scenes.Delete(VolumeId);
         }
     }
 }

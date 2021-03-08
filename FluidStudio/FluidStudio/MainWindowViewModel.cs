@@ -80,8 +80,8 @@ namespace FluidStudio
         private void OnCreateFluidScene()
         {
             var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
-            var fluidScene = new FluidScene();
-            fluidScene.Create(solver, mainModel.Scenes, mainModel.VDBModel, Canvas, 0.5f, 1000.0f, 1.0f, 1.0f, "Fluid01", false);
+            var fluidScene = new FluidScene(mainModel.Scenes);
+            fluidScene.Create(solver, mainModel.VDBModel, Canvas, 0.5f, 1000.0f, 1.0f, 1.0f, "Fluid01", false);
             solver.Fluids.Add(fluidScene);
             solver.Reset();
             Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);

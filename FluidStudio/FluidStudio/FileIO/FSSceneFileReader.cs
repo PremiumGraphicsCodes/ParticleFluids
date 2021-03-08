@@ -60,9 +60,9 @@ namespace FluidStudio.FileIO
             var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
             var doExportVDB = bool.Parse(elem.Element(FSProjFile.DoExportVDBLabel).Value);
             var exportDirectory = elem.Element(FSProjFile.ExportDirectory).Value;
-            var fluidScene = new FluidScene();
+            var fluidScene = new FluidScene(model.Scenes);
             fluidScene.SetParticlesFromFile(model.VDBModel, model.FileIOModel, canvas, particlesFilePath, radius);
-            fluidScene.Create(parent, model.Scenes, model.VDBModel, canvas, radius, density, stiffness, viscosity, name, isBoundary);
+            fluidScene.Create(parent, model.VDBModel, canvas, radius, density, stiffness, viscosity, name, isBoundary);
             fluidScene.ExportModel.DoExportVDB = doExportVDB;
             fluidScene.ExportModel.VDBExportDirectory = exportDirectory;
 

@@ -26,11 +26,11 @@ namespace FluidStudio.Physics
 
         public IPhysicsScene Parent { get; private set; }
 
-        public SceneList Scenes { get; private set; }
+        private readonly SceneList scenes;
 
         public SolverScene(SceneList scenes)
         {
-            this.Scenes = scenes;
+            this.scenes = scenes;
         }
 
         public void Clear()
@@ -41,7 +41,7 @@ namespace FluidStudio.Physics
         public void Create(List<FluidScene> fluids, List<CSGBoundaryScene> csgBoundaries, float effectLength, float timeStep, string name)
         {
             var command = new PhysicsCommand(CreateLabels.CommandNameLabel);
-            command.Execute(Scenes.Adapter);
+            command.Execute(scenes.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);
             Update(fluids, csgBoundaries, effectLength, timeStep, name);
         }
@@ -59,7 +59,7 @@ namespace FluidStudio.Physics
         {
             var command = new PhysicsCommand(Labels.CommandNameLabel);
             command.SetArg(Labels.SolverIdLabel, Id);
-            command.Execute(Scenes.Adapter);
+            command.Execute(scenes.Adapter);
         }
         
         public void Reset()
@@ -84,7 +84,7 @@ namespace FluidStudio.Physics
             command.SetArg(UpdateLabels.EffectLengthLabel, EffectLength);
             command.SetArg(UpdateLabels.TimeStepLabel, TimeStep);
             command.SetArg(UpdateLabels.NameLabel, Name);
-            command.Execute(Scenes.Adapter);
+            command.Execute(scenes.Adapter);
         }
     }
 }

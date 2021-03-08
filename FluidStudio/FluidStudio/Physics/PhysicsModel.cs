@@ -41,7 +41,7 @@ namespace FluidStudio.Physics
                 }
                 foreach (var fluid in solver.Fluids)
                 {
-                    fluid.ExportFiles(world, vdb, TimeStep.Value);
+                    fluid.ExportFiles(vdb, TimeStep.Value);
                 }
                 canvas.Render();
             }
@@ -55,7 +55,7 @@ namespace FluidStudio.Physics
                 foreach (var fluid in ps.Fluids)
                 {
                     fluid.SetParticlesFromFile(vdb, ioModel, canvas, fluid.ParticleFilePath, fluid.ParticleRadius);
-                    fluid.Reset(world);
+                    fluid.Reset();
                     canvas.SendShader(world, fluid.Id);
                 }
                 ps.Reset();

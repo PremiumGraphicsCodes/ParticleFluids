@@ -126,7 +126,7 @@ namespace FluidStudio.Physics
             var viscosity = Viscosity.Value;
             var name = Name.Value;
             var isBoundary = IsBoundary.Value;
-            this.scene.Update(world, radius, density, stiffness, viscosity, name, isBoundary);
+            this.scene.Update(radius, density, stiffness, viscosity, name, isBoundary);
         }
     }
 }
