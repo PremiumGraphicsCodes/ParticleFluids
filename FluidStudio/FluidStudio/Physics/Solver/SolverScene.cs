@@ -24,6 +24,8 @@ namespace FluidStudio.Physics
 
         public int Id { get; private set; }
 
+        public IPhysicsScene Parent { get; private set; }
+
         public void Clear()
         {
             Fluids.Clear();

@@ -14,8 +14,11 @@ namespace FluidStudio.Physics
 
         public Box3d BoundingBox { get; private set; }
 
-        public CSGBoundaryScene(SceneList world, string name, Box3d bb)
+        public IPhysicsScene Parent { get; private set; }
+
+        public CSGBoundaryScene(SolverScene parent, SceneList world, string name, Box3d bb)
         {
+            this.Parent = parent;
             Create(world, name, bb);
         }
         

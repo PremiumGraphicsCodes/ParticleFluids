@@ -33,11 +33,14 @@ namespace FluidStudio.Physics
         public FluidFileExportModel ExportModel { get; }
             = new FluidFileExportModel();
 
+        public IPhysicsScene Parent { get; private set; }
+
         public FluidScene()
         { }
         
-        public void Create(SceneList world, VDBModel vdb, Canvas3d canvas, float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
+        public void Create(SolverScene parent, SceneList world, VDBModel vdb, Canvas3d canvas, float particleRadius, float density, float stiffness, float viscosity, string name, bool isBoundary)
         {
+            this.Parent = parent;
             var command = new PG.CLI.PhysicsCommand(CreateLabels.CommandNameLabel);
             command.Execute(world.Adapter);
             this.Id = command.GetResult<int>(CreateLabels.NewIdLabel);

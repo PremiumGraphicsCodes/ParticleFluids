@@ -33,12 +33,15 @@ namespace FluidStudio.Physics
             {
                 return;
             }
-            /*
             if (e.Key == Key.Delete)
             {
+                var item = treeView.SelectedItem as PhysicsSceneViewModel;
+                /*
+                item.Model.
+                item.Model.
                 World.Instance.Scenes.Delete(selectedItem.Id.Value);
+                */
             }
-            */
         }
 
         private void ItemDoubleClicked(object sender, MouseButtonEventArgs e)

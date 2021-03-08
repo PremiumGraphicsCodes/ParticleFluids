@@ -23,6 +23,8 @@ namespace FluidStudio.Physics.MeshBoundary
 
         public string MeshFilePath { get; set; }
 
+        public IPhysicsScene Parent { get; private set; }
+
         public MeshBoundaryScene()
         {
 
