@@ -18,16 +18,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IO", "..\Crystal\IO\IO.vcxp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\Crystal\Scene\Scene.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IOTest", "..\Crystal\IOTest\IOTest.vcxproj", "{82BC86BD-D6A1-495A-BF01-C106C4324E9D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{ED61B745-9F00-48C2-B309-F1DBB37F03E3} = {ED61B745-9F00-48C2-B309-F1DBB37F03E3}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shape", "..\Crystal\Shape\Shape.vcxproj", "{ED61B745-9F00-48C2-B309-F1DBB37F03E3}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AppBase", "..\CrystalViewer\AppBase\AppBase.vcxproj", "{8BCD40A1-4223-4E7A-A84A-93FBF1B6FFD8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Command", "..\CrystalViewer\Command\Command.vcxproj", "{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhoton", "CrystalPhoton\CrystalPhoton.vcxproj", "{0E5B53A9-7767-4013-98F3-3A3968EC05DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,16 +96,6 @@ Global
 		{59C5EA30-1E57-417C-9416-17B592E8724E}.Release|x64.Build.0 = Release|x64
 		{59C5EA30-1E57-417C-9416-17B592E8724E}.Release|x86.ActiveCfg = Release|Win32
 		{59C5EA30-1E57-417C-9416-17B592E8724E}.Release|x86.Build.0 = Release|Win32
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Debug|x64.ActiveCfg = Debug|x64
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Debug|x64.Build.0 = Debug|x64
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Debug|x86.ActiveCfg = Debug|Win32
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Debug|x86.Build.0 = Debug|Win32
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Release|Any CPU.ActiveCfg = Release|Win32
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Release|x64.ActiveCfg = Release|x64
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Release|x64.Build.0 = Release|x64
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Release|x86.ActiveCfg = Release|Win32
-		{82BC86BD-D6A1-495A-BF01-C106C4324E9D}.Release|x86.Build.0 = Release|Win32
 		{ED61B745-9F00-48C2-B309-F1DBB37F03E3}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{ED61B745-9F00-48C2-B309-F1DBB37F03E3}.Debug|x64.ActiveCfg = Debug|x64
 		{ED61B745-9F00-48C2-B309-F1DBB37F03E3}.Debug|x64.Build.0 = Debug|x64
@@ -139,6 +126,16 @@ Global
 		{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}.Release|x64.Build.0 = Release|x64
 		{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}.Release|x86.ActiveCfg = Release|Win32
 		{5A0D1CB7-6BE7-41A2-B061-431750E47BE0}.Release|x86.Build.0 = Release|Win32
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Debug|x64.ActiveCfg = Debug|x64
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Debug|x64.Build.0 = Debug|x64
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Debug|x86.ActiveCfg = Debug|Win32
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Debug|x86.Build.0 = Debug|Win32
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Release|Any CPU.ActiveCfg = Release|Win32
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Release|x64.ActiveCfg = Release|x64
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Release|x64.Build.0 = Release|x64
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Release|x86.ActiveCfg = Release|Win32
+		{0E5B53A9-7767-4013-98F3-3A3968EC05DA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
