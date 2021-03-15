@@ -34,6 +34,7 @@
     <ClInclude Include="Imagef.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="PointLight.h" />
+    <ClInclude Include="SpotLight.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColorHSV.cpp" />

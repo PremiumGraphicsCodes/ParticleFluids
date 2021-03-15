@@ -10,12 +10,12 @@ void PhotonTracer::add(IParticle* particle)
 
 }
 
-void PhotonTracer::add(PointLight* light)
+void PhotonTracer::add(SpotLight* light)
 {
 
 }
 
 void PhotonTracer::trance()
 {
-
+	// photonÇçÏê¨Ç∑ÇÈ
 }

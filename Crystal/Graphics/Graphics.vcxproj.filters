@@ -17,7 +17,6 @@
     <ClInclude Include="IBuffer.h">
       <Filter>Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="PointLight.h" />
     <ClInclude Include="DrawableId.h" />
     <ClInclude Include="ColorHSV.h">
       <Filter>Color</Filter>
@@ -40,6 +39,12 @@
     <ClInclude Include="Camera.h">
       <Filter>Camera</Filter>
     </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffer">
@@ -53,6 +58,9 @@
     </Filter>
     <Filter Include="Image">
       <UniqueIdentifier>{1da5f409-1c9b-47a6-aaed-500963934114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Light">
+      <UniqueIdentifier>{320057e1-9c76-4093-af0e-c84ae84fc824}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
