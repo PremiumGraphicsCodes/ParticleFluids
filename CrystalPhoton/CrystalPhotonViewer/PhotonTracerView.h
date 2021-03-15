@@ -10,6 +10,7 @@
 #include "../CrystalPhoton/PhotonTracer.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../CrystalPhoton/PhotonCloudScene.h"
 
 namespace Crystal {
 	namespace UI {
@@ -22,15 +23,18 @@ public:
 private:
 	void onBuild();
 
+	void onStep();
+
 	void onOk();
 
 private:
 	SpotLightView lightView;
 	Button buildButton;
-	//Sphere3dView sphereView;
-	//DoubleView divideLengthView;
+	Button stepButton;
+
 	Photon::PhotonTracer tracer;
 	Scene::ParticleSystemScene* particles;
+	Photon::PhotonCloudScene* photonCloud;
 };
 
 	}

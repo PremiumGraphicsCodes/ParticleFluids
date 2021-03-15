@@ -15,6 +15,8 @@ public:
 
 	virtual Math::Vector3dd getPosition() const { return position; }
 
+	Math::Vector3df getPositionf() const { return position; }
+
 	void setPosition(const Math::Vector3df& p) { this->position = p; }
 
 	Graphics::ColorRGBAf getColor() const { return color; }

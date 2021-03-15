@@ -6,6 +6,7 @@
 
 namespace Crystal {
 	namespace Photon {
+		class Photon;
 		class PhotonCloudScene;
 
 class PhotonTracer
@@ -15,7 +16,7 @@ public:
 
 	void build(const double searchRadius, const size_t tableSize);
 
-	void generatePhoton(const Graphics::SpotLight& light);
+	std::vector<Photon*> generatePhotons(const Graphics::SpotLight& light);
 
 	void trance(PhotonCloudScene* photonCloud, const float length);
 

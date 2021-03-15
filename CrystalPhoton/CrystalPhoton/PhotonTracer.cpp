@@ -13,10 +13,11 @@ void PhotonTracer::add(IParticle* particle)
 	spaceHash.add(particle);
 }
 
-void PhotonTracer::generatePhoton(const SpotLight& l)
+std::vector<Photon*> PhotonTracer::generatePhotons(const SpotLight& l)
 {
-	Photon* photon = new Photon(l.getPosition(), ColorRGBAf(1, 1, 1, 1), 1.0f);
+	Photon* photon = new Photon(l.getPosition(), ColorRGBAf(1, 1, 1, 1), 20.0f);
 	photon->setDirection(l.getDirection());
+	return { photon };
 }
 
 void PhotonTracer::build(const double searchRadius, const size_t tableSize)
@@ -33,7 +34,7 @@ void PhotonTracer::trance(PhotonCloudScene* photonCloud, const float length)
 			continue;
 		}
 
-		p->setPosition( p->getDirection() * length );
+		p->setPosition( p->getPositionf() + p->getDirection() * length );
 	}
 	for (auto p : photons) {
 		auto neighbors = spaceHash.findNeighbors( p->getPosition() );
