@@ -145,9 +145,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CrystalPhotonViewer.cpp" />
-    <ClCompile Include="PhotonPresenter.cpp" />
-    <ClCompile Include="PhotonScene.cpp" />
-    <ClCompile Include="PhotonTracer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CrystalViewer\AppBase\AppBase.vcxproj">
@@ -177,12 +174,6 @@
     <ProjectReference Include="..\CrystalPhoton\CrystalPhoton.vcxproj">
       <Project>{0e5b53a9-7767-4013-98f3-3a3968ec05da}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Photon.h" />
-    <ClInclude Include="PhotonPresenter.h" />
-    <ClInclude Include="PhotonScene.h" />
-    <ClInclude Include="PhotonTracer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,14 +2,5 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CrystalPhotonViewer.cpp" />
-    <ClCompile Include="PhotonTracer.cpp" />
-    <ClCompile Include="PhotonScene.cpp" />
-    <ClCompile Include="PhotonPresenter.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Photon.h" />
-    <ClInclude Include="PhotonTracer.h" />
-    <ClInclude Include="PhotonScene.h" />
-    <ClInclude Include="PhotonPresenter.h" />
   </ItemGroup>
 </Project>
