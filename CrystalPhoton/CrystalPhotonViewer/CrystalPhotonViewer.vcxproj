@@ -122,7 +122,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../../CrystalViewer/ThirdParty/glfw-3.3/lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../Crystal/ThirdParty/glew-2.1.0/lib/Release/x64;../../CrystalViewer/ThirdParty/glfw-3.3/lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,28 +145,28 @@
     <ClCompile Include="CrystalPhotonViewer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CrystalViewer\AppBase\AppBase.vcxproj">
+    <ProjectReference Include="..\..\CrystalViewer\AppBase\AppBase.vcxproj">
       <Project>{8bcd40a1-4223-4e7a-a84a-93fbf1b6ffd8}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\CrystalViewer\Command\Command.vcxproj">
+    <ProjectReference Include="..\..\CrystalViewer\Command\Command.vcxproj">
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Crystal\Graphics\Graphics.vcxproj">
+    <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
       <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Crystal\IO\IO.vcxproj">
+    <ProjectReference Include="..\..\Crystal\IO\IO.vcxproj">
       <Project>{198160cc-5ed1-499d-ad45-90dbac4852f8}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Crystal\Math\Math.vcxproj">
+    <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Crystal\Scene\Scene.vcxproj">
+    <ProjectReference Include="..\..\Crystal\Scene\Scene.vcxproj">
       <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Crystal\Shader\Shader.vcxproj">
+    <ProjectReference Include="..\..\Crystal\Shader\Shader.vcxproj">
       <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Crystal\Shape\Shape.vcxproj">
+    <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
       <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
     </ProjectReference>
   </ItemGroup>
