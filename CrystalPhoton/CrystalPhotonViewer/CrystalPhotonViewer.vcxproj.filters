@@ -3,8 +3,10 @@
   <ItemGroup>
     <ClCompile Include="CrystalPhotonViewer.cpp" />
     <ClCompile Include="PCSphereView.cpp" />
+    <ClCompile Include="PhotonMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PCSphereView.h" />
+    <ClInclude Include="PhotonMenu.h" />
   </ItemGroup>
 </Project>

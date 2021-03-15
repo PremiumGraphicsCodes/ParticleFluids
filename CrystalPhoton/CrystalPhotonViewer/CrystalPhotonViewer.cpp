@@ -11,6 +11,8 @@
 #include "../../CrystalViewer/AppBase/ControlPanel.h"
 #include "../../CrystalViewer/AppBase/Canvas.h"
 
+#include "PhotonMenu.h"
+
 //#include "../../Crystal/Scene/World.h"
 
 using namespace Crystal::Math;
@@ -42,6 +44,7 @@ int main(int, char**)
 	window.add(new ShapeMenu("Shape", &world, &canvas, control));
 	window.add(new AppearanceMenu("Appearance", &world, &canvas, control));
 	window.add(new SelectionMenu("Selection", &world, &canvas, control));
+	window.add(new PhotonMenu("Photon", &world, &canvas, control));
 
 	window.add(new SceneListPanel("SceneList", &world, &canvas, control));
 

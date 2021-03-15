@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../CrystalViewer/AppBase/IView.h"
+#include "../../CrystalViewer/AppBase/IOkCancelView.h"
 
 #include "../../CrystalViewer/AppBase/Sphere3dView.h"
 #include "../../CrystalViewer/AppBase/DoubleView.h"
@@ -11,7 +11,7 @@
 namespace Crystal {
 	namespace UI {
 
-class PCSphereView : public UI::IView
+class PCSphereView : public UI::IOkCancelView
 {
 public:
 	PCSphereView(const std::string& name, Scene::World* world, Canvas* canvas);

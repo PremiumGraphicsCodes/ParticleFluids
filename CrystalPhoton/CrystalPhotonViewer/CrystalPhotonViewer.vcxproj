@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClCompile Include="CrystalPhotonViewer.cpp" />
     <ClCompile Include="PCSphereView.cpp" />
+    <ClCompile Include="PhotonMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CrystalViewer\AppBase\AppBase.vcxproj">
@@ -178,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PCSphereView.h" />
+    <ClInclude Include="PhotonMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

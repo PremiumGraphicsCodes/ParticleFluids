@@ -12,9 +12,8 @@ using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-/*
-PSSphereView::PSSphereView(const std::string& name, World* world, Canvas* canvas) :
-	IPSAddView(name, world, canvas),
+PCSphereView::PCSphereView(const std::string& name, World* world, Canvas* canvas) :
+	IOkCancelView(name, world, canvas),
 	sphereView("Sphere"),
 	divideLengthView("DivLength", 0.1)
 {
@@ -22,7 +21,7 @@ PSSphereView::PSSphereView(const std::string& name, World* world, Canvas* canvas
 	add(&divideLengthView);
 }
 
-void PSSphereView::onOk()
+void PCSphereView::onOk()
 {
 	const auto& sphere = sphereView.getValue();
 	const auto bb = sphere.getBoundingBox();
@@ -44,18 +43,5 @@ void PSSphereView::onOk()
 			}
 		}
 	}
-	IPSAddView::addParticleSystem(positions);
-
-	/*
-	const auto& shape = sphereView.getValue();
-	std::mt19937 mt{ std::random_device{}() };
-	std::uniform_real_distribution<double> dist(0.0, 1.0);
-	std::vector<Vector3dd> positions;
-	for (int i = 0; i < countView.getValue(); ++i) {
-		const auto u = dist(mt);
-		const auto v = dist(mt);
-		positions.push_back(shape.getPosition(u, v, 1.0));
-	}
-	IPSAddView::addParticleSystem(positions);
-	*/
-//}
+	//IPSAddView::addParticleSystem(positions);
+}
