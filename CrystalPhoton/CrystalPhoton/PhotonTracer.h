@@ -1,23 +1,27 @@
 #pragma once
 
+#include "../../Crystal/Shape/IParticle.h"
 #include "../../Crystal/Graphics/SpotLight.h"
-#include "Photon.h"
+#include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
 
 namespace Crystal {
 	namespace Photon {
+		class PhotonCloudScene;
 
 class PhotonTracer
 {
 public:
 	void add(Shape::IParticle* particle);
 
-	void add(Graphics::SpotLight* light);
+	void build(const double searchRadius, const size_t tableSize);
 
-	void trance();
+	void generatePhoton(const Graphics::SpotLight& light);
+
+	void trance(PhotonCloudScene* photonCloud, const float length);
 
 private:
-	std::vector<Graphics::SpotLight*> lights;
 	std::vector<Shape::IParticle*> particles;
+	Crystal::Search::CompactSpaceHash3d spaceHash;
 };
 	}
 }

@@ -285,6 +285,9 @@
     <ClCompile Include="FileSaveView.cpp">
       <Filter>File</Filter>
     </ClCompile>
+    <ClCompile Include="SpotLightView.cpp">
+      <Filter>Scene\Appearance\Light\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -618,6 +621,9 @@
     </ClInclude>
     <ClInclude Include="FileSaveView.h">
       <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLightView.h">
+      <Filter>Scene\Appearance\Light\View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,9 +4,11 @@
     <ClCompile Include="CrystalPhotonViewer.cpp" />
     <ClCompile Include="PCSphereView.cpp" />
     <ClCompile Include="PhotonMenu.cpp" />
+    <ClCompile Include="PhotonTracerView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PCSphereView.h" />
     <ClInclude Include="PhotonMenu.h" />
+    <ClInclude Include="PhotonTracerView.h" />
   </ItemGroup>
 </Project>

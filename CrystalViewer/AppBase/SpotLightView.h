@@ -4,20 +4,21 @@
 
 #include "Vector3dView.h"
 #include "ColorRGBAView.h"
-#include "../../Crystal/Graphics/PointLight.h"
+#include "../../Crystal/Graphics/SpotLight.h"
 
 namespace Crystal {
 	namespace UI {
 
-class LightView : public IView
+class SpotLightView : public IView
 {
 public:
-	explicit LightView(const std::string& name);
+	explicit SpotLightView(const std::string& name);
 
-	void setValue(const Graphics::PointLight& value);
+	void setValue(const Graphics::SpotLight& value);
 
 public:
 	Vector3dView position;
+	Vector3dView direction;
 	ColorRGBAView ambient;
 	ColorRGBAView diffuse;
 	ColorRGBAView specular;

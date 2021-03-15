@@ -6,7 +6,10 @@ namespace Crystal {
 		class WireFrameEdge
 		{
 		public:
-			WireFrameEdge() {}
+			WireFrameEdge() :
+				originId(0),
+				destId(0)
+			{}
 
 			WireFrameEdge(const int originId, const int destId) :
 				originId(originId),

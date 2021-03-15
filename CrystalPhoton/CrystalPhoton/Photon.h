@@ -9,24 +9,32 @@ namespace Crystal {
 class Photon : Shape::IParticle
 {
 public:
-	Photon() {};
+	Photon();
 
-	Photon(const Math::Vector3dd& p, const Graphics::ColorRGBAf& c, const float size) :
-		position(p),
-		color(c),
-		size(size)
-	{}
+	Photon(const Math::Vector3df& p, const Graphics::ColorRGBAf& c, const float size);
 
 	virtual Math::Vector3dd getPosition() const { return position; }
+
+	void setPosition(const Math::Vector3df& p) { this->position = p; }
 
 	Graphics::ColorRGBAf getColor() const { return color; }
 
 	float getSize() const { return size; }
 
+	void setDirection(const Math::Vector3df& dir) { this->direction = dir; }
+
+	Math::Vector3df getDirection() const { return direction; }
+
+	bool isAbserved() const { return _isAbsorbed; }
+
+	void setAbserved(const bool b) { this->_isAbsorbed = b; }
+
 private:
-	Math::Vector3dd position;
+	Math::Vector3df position;
+	Math::Vector3df direction;
 	Graphics::ColorRGBAf color;
 	float size;
+	bool _isAbsorbed;
 };
 	}
 }

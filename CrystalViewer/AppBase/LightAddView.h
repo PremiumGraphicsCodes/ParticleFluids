@@ -1,7 +1,7 @@
 #include "IOkCancelView.h"
 
 #include "LightView.h"
-#include "Button.h"
+#include "StringView.h"
 
 namespace Crystal {
 	namespace UI {
