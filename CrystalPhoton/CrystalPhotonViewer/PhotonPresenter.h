@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Scene/IPresenter.h"
+#include "../../Crystal/Scene/IParticleSystemPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -20,8 +20,6 @@ public:
 
 	void updateView() override;
 
-	void setBlend(const bool b) { this->doBlend = b; }
-
 private:
 	void updateScreenView();
 
@@ -30,10 +28,8 @@ private:
 	void updateChildIdView();
 
 private:
+	PhotonScene* model;
 	Scene::PointShaderScene* view;
-	Scene::PointShaderScene* parentIdView;
-	Scene::PointShaderScene* childIdView;
-	bool doBlend;
 };
 
 	}

@@ -10,7 +10,7 @@ namespace Crystal {
 	namespace Photon {
 		class Photon;
 
-class PhotonScene : public Scene::IParticleSystemScene
+class PhotonScene : public Scene::IShapeScene
 {
 public:
 	//PhotonScene();
@@ -31,14 +31,16 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
-	std::vector<Math::Vector3dd> getPositions() const override;
+	std::vector<Photon*> getPhotons() const { return photons; }
 
-	Scene::IParticleSystemPresenter* getPresenter() { return presenter.get(); }
+	//std::vector<Math::Vector3dd> getPositions() const override;
+
+	Scene::IPresenter* getPresenter() override { return presenter.get(); }
 
 private:
 	std::vector<Photon*> photons;
 	//std::unique_ptr< Shape::ParticleSystem<ParticleAttribute> > shape;
-	std::unique_ptr< Scene::IParticleSystemPresenter > presenter;
+	std::unique_ptr< Scene::IPresenter > presenter;
 };
 
 	}

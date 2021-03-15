@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CrystalPhotonViewer.cpp" />
+    <ClCompile Include="PhotonPresenter.cpp" />
     <ClCompile Include="PhotonScene.cpp" />
     <ClCompile Include="PhotonTracer.cpp" />
   </ItemGroup>

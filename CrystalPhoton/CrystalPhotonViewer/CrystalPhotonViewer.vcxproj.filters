@@ -4,6 +4,7 @@
     <ClCompile Include="CrystalPhotonViewer.cpp" />
     <ClCompile Include="PhotonTracer.cpp" />
     <ClCompile Include="PhotonScene.cpp" />
+    <ClCompile Include="PhotonPresenter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Photon.h" />

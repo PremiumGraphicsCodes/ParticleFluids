@@ -1,16 +1,16 @@
 #include "PhotonScene.h"
 #include "Photon.h"
 
-#include "../../Crystal/Scene/ParticleSystemPresenter.h"
+#include "PhotonPresenter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Photon;
 
 PhotonScene::PhotonScene(const int id, const std::string& name) :
-	IParticleSystemScene(id, name)
+	IShapeScene(id, name)
 {
-	//presenter = std::make_unique<ParticleSystemPresenter>(this);
+	presenter = std::make_unique<PhotonPresenter>(this);
 }
 
 Box3d PhotonScene::getBoundingBox() const
@@ -25,6 +25,7 @@ Box3d PhotonScene::getBoundingBox() const
 	return bb;
 }
 
+/*
 std::vector<Vector3dd> PhotonScene::getPositions() const
 {
 	std::vector<Vector3dd> positions;
@@ -33,3 +34,4 @@ std::vector<Vector3dd> PhotonScene::getPositions() const
 	}
 	return positions;
 }
+*/
