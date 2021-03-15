@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CrystalPhotonViewer.cpp" />
+    <ClCompile Include="PhotonScene.cpp" />
     <ClCompile Include="PhotonTracer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +176,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Photon.h" />
+    <ClInclude Include="PhotonPresenter.h" />
+    <ClInclude Include="PhotonScene.h" />
     <ClInclude Include="PhotonTracer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
