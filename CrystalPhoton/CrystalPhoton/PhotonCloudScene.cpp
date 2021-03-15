@@ -1,19 +1,19 @@
-#include "PhotonScene.h"
+#include "PhotonCloudScene.h"
 #include "Photon.h"
 
-#include "PhotonPresenter.h"
+#include "PhotonCloudPresenter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Photon;
 
-PhotonScene::PhotonScene(const int id, const std::string& name) :
+PhotonCloudScene::PhotonCloudScene(const int id, const std::string& name) :
 	IShapeScene(id, name)
 {
-	presenter = std::make_unique<PhotonPresenter>(this);
+	presenter = std::make_unique<PhotonCloudPresenter>(this);
 }
 
-Box3d PhotonScene::getBoundingBox() const
+Box3d PhotonCloudScene::getBoundingBox() const
 {
 	if (photons.empty()) {
 		return Box3d::createDegeneratedBox();

@@ -7,12 +7,12 @@ namespace Crystal {
 		class PointShaderScene;
 	}
 	namespace Photon {
-		class PhotonScene;
+		class PhotonCloudScene;
 
-class PhotonPresenter : public Scene::IPresenter
+class PhotonCloudPresenter : public Scene::IPresenter
 {
 public:
-	explicit PhotonPresenter(PhotonScene* model);
+	explicit PhotonCloudPresenter(PhotonCloudScene* model);
 
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
@@ -28,7 +28,7 @@ private:
 	void updateChildIdView();
 
 private:
-	PhotonScene* model;
+	PhotonCloudScene* model;
 	Scene::PointShaderScene* view;
 };
 

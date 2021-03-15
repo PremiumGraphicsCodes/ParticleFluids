@@ -153,23 +153,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="pch.h" />
     <ClInclude Include="Photon.h" />
-    <ClInclude Include="PhotonPresenter.h" />
-    <ClInclude Include="PhotonScene.h" />
+    <ClInclude Include="PhotonCloudPresenter.h" />
+    <ClInclude Include="PhotonCloudScene.h" />
     <ClInclude Include="PhotonTracer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CrystalPhoton.cpp" />
-    <ClCompile Include="pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="PhotonPresenter.cpp" />
-    <ClCompile Include="PhotonScene.cpp" />
+    <ClCompile Include="PhotonCloudPresenter.cpp" />
+    <ClCompile Include="PhotonCloudScene.cpp" />
     <ClCompile Include="PhotonTracer.cpp" />
   </ItemGroup>
   <ItemGroup>

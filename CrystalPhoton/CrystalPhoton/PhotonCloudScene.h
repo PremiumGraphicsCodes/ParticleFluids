@@ -10,14 +10,14 @@ namespace Crystal {
 	namespace Photon {
 		class Photon;
 
-class PhotonScene : public Scene::IShapeScene
+class PhotonCloudScene : public Scene::IShapeScene
 {
 public:
 	//PhotonScene();
 
-	PhotonScene(const int id, const std::string& name);
+	PhotonCloudScene(const int id, const std::string& name);
 
-	~PhotonScene() {};
+	~PhotonCloudScene() {};
 
 	void translate(const Math::Vector3dd& v) override { ; }
 

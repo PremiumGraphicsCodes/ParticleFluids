@@ -1,7 +1,7 @@
-#include "PhotonPresenter.h"
+#include "PhotonCloudPresenter.h"
 
 //#include "ParticleSystemScene.h"
-#include "PhotonScene.h"
+#include "PhotonCloudScene.h"
 #include "Photon.h"
 
 #include "../../Crystal/Scene/SceneShader.h"
@@ -12,13 +12,13 @@ using namespace Crystal::Scene;
 //using namespace Crystal::Graphics;
 using namespace Crystal::Photon;
 
-PhotonPresenter::PhotonPresenter(PhotonScene* model) :
+PhotonCloudPresenter::PhotonCloudPresenter(PhotonCloudScene* model) :
 	view(nullptr),
 	model(model)
 {
 }
 
-void PhotonPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void PhotonCloudPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
@@ -30,21 +30,21 @@ void PhotonPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFa
 	updateView();
 }
 
-void PhotonPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
+void PhotonCloudPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& factory)
 {
 	this->view->release(factory);
 	sceneShader->getObjectRenderer()->removeScene(this->view);
 	delete this->view;
 }
 
-void PhotonPresenter::updateView()
+void PhotonCloudPresenter::updateView()
 {
 	updateScreenView();
 	updateParentIdView();
 	updateChildIdView();
 }
 
-void PhotonPresenter::updateScreenView()
+void PhotonCloudPresenter::updateScreenView()
 {
 	const auto& ps = model->getPhotons();
 	PointBuffer pb;
@@ -57,10 +57,10 @@ void PhotonPresenter::updateScreenView()
 	this->view->setVisible(model->isVisible());
 }
 
-void PhotonPresenter::updateParentIdView()
+void PhotonCloudPresenter::updateParentIdView()
 {
 }
 
-void PhotonPresenter::updateChildIdView()
+void PhotonCloudPresenter::updateChildIdView()
 {
 }
