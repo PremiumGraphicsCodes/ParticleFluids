@@ -3,6 +3,9 @@
 #include "../../Crystal/Math/Sphere3d.h"
 #include "../../Crystal/Graphics/ColorRGBA.h"
 
+#include "../CrystalPhoton/Photon.h"
+#include "../CrystalPhoton/PhotonCloudScene.h"
+
 //#include "../Command/Command.h"
 
 #include <random>
@@ -11,6 +14,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
+using namespace Crystal::Photon;
 
 PCSphereView::PCSphereView(const std::string& name, World* world, Canvas* canvas) :
 	IOkCancelView(name, world, canvas),
@@ -33,15 +37,22 @@ void PCSphereView::onOk()
 	const auto dv = divLength / length.y;
 	const auto dw = divLength / length.z;
 	const auto tolerance = 1.0e-12;
+
+	auto photonCloud = new PhotonCloudScene(getWorld()->getNextSceneId(), "PCSphere");
 	for (auto u = 0.0; u < 1.0 + tolerance; u += du) {
 		for (auto v = 0.0; v < 1.0 + tolerance; v += dv) {
 			for (auto w = 0.0; w < 1.0 + tolerance; w += dw) {
 				const auto p = bb.getPosition(u, v, w);
 				if (sphere.isInside(p)) {
-					positions.push_back(p);
+					auto photon = new Photon::Photon(p, ColorRGBAf(1.0f,1.0f,1.0f,1.0f), 10.0f);
+					photonCloud->addPhoton(photon);
+//					positions.push_back(p);
 				}
 			}
 		}
 	}
-	//IPSAddView::addParticleSystem(positions);
+	getWorld()->getScenes()->addScene(photonCloud);
+
+	auto presenter = photonCloud->getPresenter();
+	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 }

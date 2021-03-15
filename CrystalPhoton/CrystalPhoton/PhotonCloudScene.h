@@ -31,6 +31,8 @@ public:
 
 	Math::Box3d getBoundingBox() const override;
 
+	void addPhoton(Photon* p);
+
 	std::vector<Photon*> getPhotons() const { return photons; }
 
 	//std::vector<Math::Vector3dd> getPositions() const override;

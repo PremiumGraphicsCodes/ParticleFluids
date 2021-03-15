@@ -25,6 +25,12 @@ Box3d PhotonCloudScene::getBoundingBox() const
 	return bb;
 }
 
+void PhotonCloudScene::addPhoton(Photon* p)
+{
+	photons.push_back(p);
+}
+
+
 /*
 std::vector<Vector3dd> PhotonScene::getPositions() const
 {
