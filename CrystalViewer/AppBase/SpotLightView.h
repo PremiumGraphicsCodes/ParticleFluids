@@ -16,6 +16,8 @@ public:
 
 	void setValue(const Graphics::SpotLight& value);
 
+	Graphics::SpotLight getValue() const;
+
 public:
 	Vector3dView position;
 	Vector3dView direction;

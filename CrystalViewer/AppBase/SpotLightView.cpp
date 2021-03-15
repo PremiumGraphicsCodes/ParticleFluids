@@ -26,3 +26,14 @@ void SpotLightView::setValue(const SpotLight& value)
 	this->diffuse.setValue(value.getDiffuse());
 	this->specular.setValue(value.getSpecular());
 }
+
+SpotLight SpotLightView::getValue() const
+{
+	SpotLight l;
+	l.setPosition(this->position.getValue());
+	l.setDirection(this->direction.getValue());
+	l.setAmbient(this->ambient.getValue());
+	l.setDiffuse(this->diffuse.getValue());
+	l.setSpecular(this->specular.getValue());
+	return l;
+}

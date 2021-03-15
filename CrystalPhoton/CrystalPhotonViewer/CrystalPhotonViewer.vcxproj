@@ -150,6 +150,9 @@
     <ClCompile Include="PhotonTracerView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrystalSpace\CrystalAlgo\CrystalSpace.vcxproj">
+      <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalViewer\AppBase\AppBase.vcxproj">
       <Project>{8bcd40a1-4223-4e7a-a84a-93fbf1b6ffd8}</Project>
     </ProjectReference>

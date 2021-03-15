@@ -16,6 +16,8 @@ public:
 
 	void setValue(const Graphics::PointLight& value);
 
+	Graphics::PointLight getValue() const;
+
 public:
 	Vector3dView position;
 	ColorRGBAView ambient;
