@@ -10,7 +10,9 @@ namespace Crystal {
 class IParticleAttribute
 {
 public:
-	IParticleAttribute() {
+	IParticleAttribute() :
+		size(1.0f)
+	{
 	}
 
 	explicit IParticleAttribute(const float size) :
