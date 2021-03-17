@@ -373,9 +373,9 @@ void density_estimation( Vector3* color, int num_photon )
 //-------------------------------------------------------------------------------------------
 int main(int argc, char **argv) 
 {
-    auto w = 1280;      // 画像の横幅.
-    auto h = 1080;      // 画像の縦幅.
-    auto s = 10000;     // s * 1000 photon paths will be traced
+    auto w = 512;      // 画像の横幅.
+    auto h = 512;      // 画像の縦幅.
+    auto s = 1000;     // s * 1000 photon paths will be traced
     auto c = new Vector3[ w * h ];
 
     hpbbox.reset();
