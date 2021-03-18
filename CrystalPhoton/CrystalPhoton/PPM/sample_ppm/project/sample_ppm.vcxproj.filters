@@ -5,6 +5,7 @@
     <ClCompile Include="halton.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PhotonMap.cpp" />
+    <ClCompile Include="SpaceHash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
@@ -13,6 +14,7 @@
     <ClInclude Include="PhotonMap.h" />
     <ClInclude Include="sphere.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SpaceHash.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="image.bmp" />
