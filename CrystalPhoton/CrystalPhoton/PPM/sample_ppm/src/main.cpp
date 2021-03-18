@@ -146,7 +146,7 @@ inline bool intersect( const Ray &r, double &t, int &id )
 //-------------------------------------------------------------------------------------------
 //      レイを追跡します.
 //-------------------------------------------------------------------------------------------
-void trace( const Ray &r, int dpt, bool m, const Vector3 &fl, const Vector3 &adj, int i )
+void trace( const Ray &r, int dpt, const Vector3 &fl, const Vector3 &adj, int i )
 {
     double t;
     int id;
@@ -164,7 +164,6 @@ void trace( const Ray &r, int dpt, bool m, const Vector3 &fl, const Vector3 &adj
 
     if ( obj.type == MaterialType::Matte )
     {
-        if (m) 
         {
             // eye ray
             // store the measurment point
@@ -178,53 +177,11 @@ void trace( const Ray &r, int dpt, bool m, const Vector3 &fl, const Vector3 &adj
             // find the bounding box of all the measurement points
             hpbbox.merge( x );
         }
-        else
-        {
-            // photon ray
-            // find neighboring measurement points and accumulate flux via progressive density estimation
-            auto hh = (x - hpbbox.mini) * hash_s;
-            auto ix = abs(int(hh.x));
-            auto iy = abs(int(hh.y));
-            auto iz = abs(int(hh.z));
-            // strictly speaking, we should use #pragma omp critical here.
-            // it usually works without an artifact due to the fact that photons are 
-            // rarely accumulated to the same measurement points at the same time (especially with QMC).
-            // it is also significantly faster.
-            {
-                auto list = hash_grid[ hash( ix, iy, iz ) ];
-                for( auto itr = list.begin(); itr != list.end(); itr++ )
-                {
-                    auto hp = (*itr);
-                    auto v = hp->pos - x;
-                    // check normals to be closer than 90 degree (avoids some edge brightning)
-                    if ((dot(hp->nrm,n) > 1e-3) && (dot(v,v) <= hp->r2))
-                    {
-                        // unlike N in the paper, hp->n stores "N / ALPHA" to make it an integer value
-                        auto g = (hp->n * ALPHA + ALPHA ) / ( hp->n * ALPHA + 1.0 );
-                        hp->r2 = hp->r2 * g;
-                        hp->n++;
-                        hp->flux = ( hp->flux + mul( hp->f, fl ) / D_PI ) * g;
-                    }
-                }
-            }
-
-            // use QMC to sample the next direction
-            auto r1  = 2.0 * D_PI * halton( d3 - 1, i );
-            auto r2  = halton( d3 + 0, i );
-            auto r2s = sqrt( r2 );
-            auto w   = nl;
-            auto u   = normalize(cross((fabs(w.x) > .1 ? Vector3(0, 1, 0) : Vector3(1, 0, 0)), w));
-            auto v   = cross( w, u );
-            auto d   = normalize( u * cos( r1 ) * r2s + v * sin( r1 ) * r2s + w * sqrt( 1 - r2 ));
-
-            if ( halton( d3 + 1, i ) < p )
-                trace(Ray(x, d), dpt, m, mul(f,fl)*(1. / p), mul(f, adj), i);
-        }
 
     }
     else if ( obj.type == MaterialType::Mirror )
     {
-        trace(Ray(x, reflect(r.dir, n)), dpt, m, mul(f,fl), mul(f,adj), i);
+        trace(Ray(x, reflect(r.dir, n)), dpt, mul(f,fl), mul(f,adj), i);
     }
     else 
     {
@@ -238,7 +195,7 @@ void trace( const Ray &r, int dpt, bool m, const Vector3 &fl, const Vector3 &adj
 
         // total internal reflection
         if (cos2t < 0)
-            return trace(lr, dpt, m, mul(f, fl), mul(f, adj), i);
+            return trace(lr, dpt, mul(f, fl), mul(f, adj), i);
 
         auto td = normalize(r.dir * nnt - n * ( ( into ? 1 : -1 ) * ( ddn * nnt + sqrt( cos2t ))));
         auto a  = nt - nc;
@@ -251,65 +208,157 @@ void trace( const Ray &r, int dpt, bool m, const Vector3 &fl, const Vector3 &adj
         auto fa  = mul( f, adj );
         auto ffl = mul( f, fl  );
 
-        if (m) 
         {
             // eye ray (trace both rays)
-            trace( lr, dpt, m, ffl, fa * Re, i );
-            trace( rr, dpt, m, ffl, fa * (1.0 - Re), i );
-        }
-        else 
-        {
-            // photon ray (pick one via Russian roulette)
-            ( halton( d3 - 1, i ) < P ) 
-                ? trace( lr, dpt, m, ffl, fa * Re, i )
-                : trace( rr, dpt, m, ffl, fa * (1.0 - Re), i );
+            trace( lr, dpt, ffl, fa * Re, i );
+            trace( rr, dpt, ffl, fa * (1.0 - Re), i );
         }
     }
 }
 
-//-------------------------------------------------------------------------------------------
-//      eye rayを追跡します.
-//-------------------------------------------------------------------------------------------
-void trace_ray( int w, int h )
+void trace_photon_ray(const Ray& r, int dpt, const Vector3& fl, const Vector3& adj, int i)
 {
-    auto start = std::chrono::system_clock::now();
+    double t;
+    int id;
 
-    // trace eye rays and store measurement points
-    Ray cam(
-        Vector3(50, 48, 295.6),
-        normalize(Vector3(0, -0.042612, -1))
-    );
-    auto cx = Vector3( w * 0.5135 / h, 0, 0 );
-    auto cy = normalize( cross( cx, cam.dir ) ) * 0.5135;
+    dpt++;
+    if (!intersect(r, t, id) || (dpt >= 20))
+        return;
 
-    for (int y = 0; y < h; y++)
+    auto d3 = dpt * 3;
+    const auto& obj = sph[id];
+    auto x = r.pos + r.dir * t, n = normalize(x - obj.pos);
+    auto f = obj.color;
+    auto nl = (dot(n, r.dir) < 0) ? n : n * -1;
+    auto p = (f.x > f.y && f.x > f.z) ? f.x : (f.y > f.z) ? f.y : f.z;
+
+    if (obj.type == MaterialType::Matte)
     {
-        fprintf( stdout, "\rHitPointPass %5.2f%%", 100.0 * y / (h - 1) );
-        for (int x = 0; x < w; x++) 
         {
-            auto idx = x + y * w;
-            auto d   = cx * ((x + 0.5) / w - 0.5) + cy * (-(y + 0.5) / h + 0.5) + cam.dir;
-            trace( Ray(cam.pos + d * 140, normalize(d)), 0, true, Vector3(), Vector3(1, 1, 1), idx );
+            // photon ray
+            // find neighboring measurement points and accumulate flux via progressive density estimation
+            auto hh = (x - hpbbox.mini) * hash_s;
+            auto ix = abs(int(hh.x));
+            auto iy = abs(int(hh.y));
+            auto iz = abs(int(hh.z));
+            // strictly speaking, we should use #pragma omp critical here.
+            // it usually works without an artifact due to the fact that photons are 
+            // rarely accumulated to the same measurement points at the same time (especially with QMC).
+            // it is also significantly faster.
+            {
+                auto list = hash_grid[hash(ix, iy, iz)];
+                for (auto itr = list.begin(); itr != list.end(); itr++)
+                {
+                    auto hp = (*itr);
+                    auto v = hp->pos - x;
+                    // check normals to be closer than 90 degree (avoids some edge brightning)
+                    if ((dot(hp->nrm, n) > 1e-3) && (dot(v, v) <= hp->r2))
+                    {
+                        // unlike N in the paper, hp->n stores "N / ALPHA" to make it an integer value
+                        auto g = (hp->n * ALPHA + ALPHA) / (hp->n * ALPHA + 1.0);
+                        hp->r2 = hp->r2 * g;
+                        hp->n++;
+                        hp->flux = (hp->flux + mul(hp->f, fl) / D_PI) * g;
+                    }
+                }
+            }
+
+            // use QMC to sample the next direction
+            auto r1 = 2.0 * D_PI * halton(d3 - 1, i);
+            auto r2 = halton(d3 + 0, i);
+            auto r2s = sqrt(r2);
+            auto w = nl;
+            auto u = normalize(cross((fabs(w.x) > .1 ? Vector3(0, 1, 0) : Vector3(1, 0, 0)), w));
+            auto v = cross(w, u);
+            auto d = normalize(u * cos(r1) * r2s + v * sin(r1) * r2s + w * sqrt(1 - r2));
+
+            if (halton(d3 + 1, i) < p)
+                trace_photon_ray(Ray(x, d), dpt, mul(f, fl) * (1. / p), mul(f, adj), i);
         }
+
     }
-    fprintf( stdout, "\n" );
-    auto end = std::chrono::system_clock::now();
-    auto dif = end - start;
-    fprintf( stdout, "Ray Tracing Pass : %lld(msec)\n", std::chrono::duration_cast<std::chrono::milliseconds>(dif).count() );
+    else if (obj.type == MaterialType::Mirror)
+    {
+        trace_photon_ray(Ray(x, reflect(r.dir, n)), dpt, mul(f, fl), mul(f, adj), i);
+    }
+    else
+    {
+        Ray lr(x, reflect(r.dir, n));
+        auto into = dot(n, nl) > 0.0;
+        auto nc = 1.0;
+        auto nt = 1.5;
+        auto nnt = (into) ? nc / nt : nt / nc;
+        auto ddn = dot(r.dir, nl);
+        auto cos2t = 1 - nnt * nnt * (1 - ddn * ddn);
 
-    start = std::chrono::system_clock::now();
+        // total internal reflection
+        if (cos2t < 0)
+            return trace_photon_ray(lr, dpt, mul(f, fl), mul(f, adj), i);
 
-    // build the hash table over the measurement points
-    build_hash_grid( w, h );
+        auto td = normalize(r.dir * nnt - n * ((into ? 1 : -1) * (ddn * nnt + sqrt(cos2t))));
+        auto a = nt - nc;
+        auto b = nt + nc;
+        auto R0 = a * a / (b * b);
+        auto c = 1 - (into ? -ddn : dot(td, n));
+        auto Re = R0 + (1 - R0) * c * c * c * c * c;
+        auto P = Re;
+        Ray  rr(x, td);
+        auto fa = mul(f, adj);
+        auto ffl = mul(f, fl);
 
-    end = std::chrono::system_clock::now();
-    dif = end - start;
-    fprintf( stdout, "Build Hash Grid : %lld(msec)\n", std::chrono::duration_cast<std::chrono::milliseconds>(dif).count() );
+        (halton(d3 - 1, i) < P)
+            ? trace_photon_ray(lr, dpt, ffl, fa * Re, i)
+            : trace_photon_ray(rr, dpt, ffl, fa * (1.0 - Re), i);
+    }
 }
 
-//-------------------------------------------------------------------------------------------
-//      photon rayを追跡します.
-//-------------------------------------------------------------------------------------------
+class RayTracer
+{
+public:
+    void trace_ray(int w, int h)
+    {
+        auto start = std::chrono::system_clock::now();
+
+        // trace eye rays and store measurement points
+        Ray cam(
+            Vector3(50, 48, 295.6),
+            normalize(Vector3(0, -0.042612, -1))
+        );
+        auto cx = Vector3(w * 0.5135 / h, 0, 0);
+        auto cy = normalize(cross(cx, cam.dir)) * 0.5135;
+
+        for (int y = 0; y < h; y++)
+        {
+            fprintf(stdout, "\rHitPointPass %5.2f%%", 100.0 * y / (h - 1));
+            for (int x = 0; x < w; x++)
+            {
+                auto idx = x + y * w;
+                auto d = cx * ((x + 0.5) / w - 0.5) + cy * (-(y + 0.5) / h + 0.5) + cam.dir;
+                trace(Ray(cam.pos + d * 140, normalize(d)), 0, Vector3(), Vector3(1, 1, 1), idx);
+            }
+        }
+        fprintf(stdout, "\n");
+        auto end = std::chrono::system_clock::now();
+        auto dif = end - start;
+        fprintf(stdout, "Ray Tracing Pass : %lld(msec)\n", std::chrono::duration_cast<std::chrono::milliseconds>(dif).count());
+
+        start = std::chrono::system_clock::now();
+
+        // build the hash table over the measurement points
+        build_hash_grid(w, h);
+
+        end = std::chrono::system_clock::now();
+        dif = end - start;
+        fprintf(stdout, "Build Hash Grid : %lld(msec)\n", std::chrono::duration_cast<std::chrono::milliseconds>(dif).count());
+    }
+};
+
+class PhotonRay
+{
+public:
+    Ray ray;
+    Vector3 flux;
+};
 
 class PhotonMap
 {
@@ -327,12 +376,10 @@ public:
             auto p = 100.0 * (i + 1) / s;
             fprintf(stdout, "\rPhotonPass %5.2f%%", p);
             int m = 1000 * i;
-            Ray r;
-            Vector3 f;
             for (int j = 0; j < 1000; j++)
             {
-                generate_photon_ray(&r, &f, m + j);
-                trace(r, 0, false, f, vw, m + j);
+                PhotonRay pray = generate_photon_ray(m + j);
+                trace_photon_ray(pray.ray, 0, pray.flux, vw, m + j);
             }
         }
 
@@ -342,39 +389,33 @@ public:
         fprintf(stdout, "Photon Tracing Pass : %lld(sec)\n", std::chrono::duration_cast<std::chrono::seconds>(dif).count());
     }
 
+    void density_estimation(Vector3* color, int num_photon)
+    {
+        // density estimation
+        for (auto itr = hitpoints.begin(); itr != hitpoints.end(); ++itr)
+        {
+            auto hp = (*itr);
+            auto i = hp->idx;
+            color[i] = color[i] + hp->flux * (1.0 / (D_PI * hp->r2 * num_photon * 1000.0));
+        }
+    }
+
 private:
-    void generate_photon_ray(Ray* pr, Vector3* f, int i)
+    PhotonRay generate_photon_ray(int i)
     {
         // generate a photon ray from the point light source with QMC
-
-        (*f) = Vector3(2500, 2500, 2500) * (D_PI * 4.0); // flux
+        PhotonRay photonRay;
+        photonRay.flux = Vector3(2500, 2500, 2500) * (D_PI * 4.0); // flux
         auto p = 2.0 * D_PI * halton(0, i);
         auto t = 2.0 * acos(sqrt(1. - halton(1, i)));
         auto st = sin(t);
 
-        pr->dir = Vector3(cos(p) * st, cos(t), sin(p) * st);
-        pr->pos = Vector3(50, 60, 85);
+        photonRay.ray.dir = Vector3(cos(p) * st, cos(t), sin(p) * st);
+        photonRay.ray.pos = Vector3(50, 60, 85);
+        return photonRay;
     }
-
 };
 
-//-------------------------------------------------------------------------------------------
-//      密度推定を行います.
-//-------------------------------------------------------------------------------------------
-void density_estimation( Vector3* color, int num_photon )
-{
-    // density estimation
-    for( auto itr = hitpoints.begin(); itr != hitpoints.end(); ++itr )
-    {
-        auto hp = (*itr);
-        auto i = hp->idx;
-        color[i] = color[i] + hp->flux * ( 1.0 / ( D_PI * hp->r2 * num_photon * 1000.0 ));
-    }
-}
-
-//-------------------------------------------------------------------------------------------
-//      メインエントリーポイントです.
-//-------------------------------------------------------------------------------------------
 int main(int argc, char **argv) 
 {
     auto w = 512;      // 画像の横幅.
@@ -384,11 +425,12 @@ int main(int argc, char **argv)
 
     hpbbox.reset();
 
-    PhotonMap photonMap;
+    RayTracer rayTracer;
+    rayTracer.trace_ray(w, h);
 
-    trace_ray( w, h );
+    PhotonMap photonMap;
     photonMap.trace_photon( s );
-    density_estimation( c, s );
+    photonMap.density_estimation( c, s );
 
     save_to_bmp( "image.bmp", w, h, &c[0].x, 2.2 );
 
