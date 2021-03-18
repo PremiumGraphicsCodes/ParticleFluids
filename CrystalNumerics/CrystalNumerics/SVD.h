@@ -16,7 +16,7 @@ public:
 	{
 		bool isOk;
 		Math::Vector2dd eigenValues;
-		std::array<Math::Vector2dd,2> eigenVectors;
+		Math::Matrix2df eigenVectors;
 	};
 
 	SVD2dResult calculate(const Math::Matrix2dd& lhs);

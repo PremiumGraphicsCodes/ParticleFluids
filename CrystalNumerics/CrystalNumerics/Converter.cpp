@@ -39,9 +39,9 @@ Eigen::Matrix4f Converter::toEigen(const Matrix4dd& src)
 }
 
 
-Matrix2dd Converter::fromEigen(const Eigen::Matrix2d& src)
+Matrix2df Converter::fromEigen(const Eigen::Matrix2f& src)
 {
-	Matrix2dd dest;
+	Matrix2df dest;
 	for (int i = 0; i < 2; ++i) {
 		for (int j = 0; j < 2; ++j) {
 			dest[i][j] = src(i, j);
@@ -50,9 +50,9 @@ Matrix2dd Converter::fromEigen(const Eigen::Matrix2d& src)
 	return dest;
 }
 
-Matrix3dd Converter::fromEigen(const Eigen::Matrix3d& src)
+Matrix3df Converter::fromEigen(const Eigen::Matrix3f& src)
 {
-	Matrix3dd dest;
+	Matrix3df dest;
 	for (int i = 0; i < 3; ++i) {
 		for (int j = 0; j < 3; ++j) {
 			dest[i][j] = src(i, j);

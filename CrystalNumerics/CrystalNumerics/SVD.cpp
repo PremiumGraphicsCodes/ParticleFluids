@@ -29,7 +29,7 @@ SVD::SVD2dResult SVD::calculate(const Matrix2dd& lhs)
 	}
 	result.isOk = true;
 	const auto values = eigensolver.eigenvalues();
-	const auto vectors = eigensolver.eigenvectors();
+	result.eigenVectors = Impl::Converter::fromEigen( eigensolver.eigenvectors() );
 	result.eigenValues = Crystal::Math::Vector2dd(values[0], values[1]);
 	return result;
 }
