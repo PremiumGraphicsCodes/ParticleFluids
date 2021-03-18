@@ -19,30 +19,13 @@
 #include "sphere.h"
 #include "hitrecord.h"
 
+#include "Scene.h"
 
-namespace /* anonymous */ {
+#include <array>
+
+using namespace Crystal::Photon;
 
 constexpr double ALPHA = 0.7; // the alpha parameter of PPM
-
-std::list<HitRecord*>               hitpoints;
-std::vector<std::list<HitRecord*> > hash_grid;
-double                              hash_s;
-BoundingBox                         hpbbox;
-SphereObject sph[] = 
-{
-    // Scene: radius, position, color, material
-    SphereObject(1e5,  Vector3( 1e5 + 1,   40.8,       81.6 ), Vector3( 0.99, 0.01, 0.01 ),  MaterialType::Matte ),   //Right
-    SphereObject(1e5,  Vector3(-1e5 + 99,  40.8,       81.6 ), Vector3( 0.01, 0.01, 0.99 ),  MaterialType::Matte ),   //Left
-    SphereObject(1e5,  Vector3( 50,        40.8,        1e5 ), Vector3( 0.75, 0.75, 0.75 ),  MaterialType::Matte ),   //Back
-    SphereObject(1e5,  Vector3( 50,        40.8, -1e5 + 170 ), Vector3( 0.0,  0.0,  0.0  ),  MaterialType::Matte ),   //Front
-    SphereObject(1e5,  Vector3( 50,         1e5,       81.6 ), Vector3( 0.75, 0.75, 0.75 ),  MaterialType::Matte ),   //Bottomm
-    SphereObject(1e5,  Vector3( 50, -1e5 + 81.6,       81.6 ), Vector3( 0.75, 0.75, 0.75 ),  MaterialType::Matte ),   //Top
-    SphereObject(16.5, Vector3( 27,        16.5,         47 ), Vector3( 0.25, 0.85, 0.25 ),  MaterialType::Mirror),   //Mirror
-    SphereObject(16.5, Vector3( 73,        16.5,         88 ), Vector3( 0.99, 0.99, 0.99 ),  MaterialType::Glass ),   //Glass
-    SphereObject(8.5,  Vector3( 50,         8.5,         60 ), Vector3( 0.75, 0.75, 0.75 ),  MaterialType::Matte ),   //Middle
-};
-
-} // namespace /* anonymous */
 
 
 //-------------------------------------------------------------------------------------------
@@ -52,13 +35,14 @@ inline unsigned int hash
 (
     const int ix,
     const int iy,
-    const int iz
+    const int iz,
+    const Scene& scene
 ) 
 {
     return (unsigned int)(
         (ix * 73856093) ^
         (iy * 19349663) ^
-        (iz * 83492791)) % hash_grid.size();
+        (iz * 83492791)) % scene.hash_grid.size();
 }
 
 //-------------------------------------------------------------------------------------------
@@ -67,18 +51,19 @@ inline unsigned int hash
 void build_hash_grid
 (
     const int w,
-    const int h
+    const int h,
+    Scene& scene
 )
 {
     // heuristic for initial radius
-    auto size = hpbbox.maxi - hpbbox.mini;
+    auto size = scene.hpbbox.maxi - scene.hpbbox.mini;
     auto irad = ((size.x + size.y + size.z) / 3.0) / ((w + h) / 2.0) * 2.0;
 
     // determine hash table size
     // we now find the bounding box of all the measurement points inflated by the initial radius
-    hpbbox.reset();
+    scene.hpbbox.reset();
     auto photon_count = 0;
-    for( auto itr = hitpoints.begin(); itr != hitpoints.end(); ++itr )
+    for( auto itr = scene.hitpoints.begin(); itr != scene.hitpoints.end(); ++itr )
     {
         auto hp  = (*itr);
         hp->r2   = irad *irad;
@@ -86,21 +71,21 @@ void build_hash_grid
         hp->flux = Vector3();
 
         photon_count++;
-        hpbbox.merge( hp->pos - irad );
-        hpbbox.merge( hp->pos + irad );
+        scene.hpbbox.merge( hp->pos - irad );
+        scene.hpbbox.merge( hp->pos + irad );
     }
 
     // make each grid cell two times larger than the initial radius
-    hash_s = 1.0 / (irad * 2.0);
+    scene.hash_s = 1.0 / (irad * 2.0);
 
     // build the hash table
-    hash_grid.resize( photon_count );
-    hash_grid.shrink_to_fit();
-    for( auto itr = hitpoints.begin(); itr != hitpoints.end(); ++itr )
+    scene.hash_grid.resize( photon_count );
+    scene.hash_grid.shrink_to_fit();
+    for( auto itr = scene.hitpoints.begin(); itr != scene.hitpoints.end(); ++itr )
     {
         auto hp = (*itr);
-        auto min = ((hp->pos - irad) - hpbbox.mini) * hash_s;
-        auto max = ((hp->pos + irad) - hpbbox.mini) * hash_s;
+        auto min = ((hp->pos - irad) - scene.hpbbox.mini) * scene.hash_s;
+        auto max = ((hp->pos + irad) - scene.hpbbox.mini) * scene.hash_s;
 
         for (int iz = abs(int(min.z)); iz <= abs(int(max.z)); iz++)
         {
@@ -108,8 +93,8 @@ void build_hash_grid
             {
                 for (int ix = abs(int(min.x)); ix <= abs(int(max.x)); ix++)
                 {
-                    int hv = hash( ix, iy, iz );
-                    hash_grid[ hv ].push_back( hp );
+                    int hv = hash( ix, iy, iz, scene );
+                    scene.hash_grid[ hv ].push_back( hp );
                 }
             }
         }
@@ -119,14 +104,14 @@ void build_hash_grid
 //-------------------------------------------------------------------------------------------
 //      交差判定を行います.
 //-------------------------------------------------------------------------------------------
-inline bool intersect( const Ray &r, double &t, int &id )
+inline bool intersect( const Ray &r, double &t, int &id, Scene& scene )
 {
-    int n = sizeof(sph) / sizeof(sph[0]);
+    int n = sizeof(scene.sph) / sizeof(scene.sph[0]);
     auto d = D_INF;
     t = D_INF;
     for (int i = 0; i < n; i++)
     {
-        d = sph[i].intersect(r);
+        d = scene.sph[i].intersect(r);
         if (d < t)
         {
             t = d;
@@ -140,7 +125,7 @@ inline bool intersect( const Ray &r, double &t, int &id )
 class RayTracer
 {
 public:
-    void trace_ray(int w, int h)
+    void trace_ray(int w, int h, Scene& scene)
     {
         auto start = std::chrono::system_clock::now();
 
@@ -159,7 +144,7 @@ public:
             {
                 auto idx = x + y * w;
                 auto d = cx * ((x + 0.5) / w - 0.5) + cy * (-(y + 0.5) / h + 0.5) + cam.dir;
-                trace(Ray(cam.pos + d * 140, normalize(d)), 0, Vector3(), Vector3(1, 1, 1), idx);
+                trace(Ray(cam.pos + d * 140, normalize(d)), 0, Vector3(), Vector3(1, 1, 1), idx, scene);
             }
         }
         fprintf(stdout, "\n");
@@ -170,7 +155,7 @@ public:
         start = std::chrono::system_clock::now();
 
         // build the hash table over the measurement points
-        build_hash_grid(w, h);
+        build_hash_grid(w, h, scene);
 
         end = std::chrono::system_clock::now();
         dif = end - start;
@@ -178,17 +163,17 @@ public:
     }
 
 private:
-    void trace(const Ray& r, int dpt, const Vector3& fl, const Vector3& adj, int i)
+    void trace(const Ray& r, int dpt, const Vector3& fl, const Vector3& adj, int i, Scene& scene)
     {
         double t;
         int id;
 
         dpt++;
-        if (!intersect(r, t, id) || (dpt >= 20))
+        if (!intersect(r, t, id, scene) || (dpt >= 20))
             return;
 
         auto d3 = dpt * 3;
-        const auto& obj = sph[id];
+        const auto& obj = scene.sph[id];
         auto x = r.pos + r.dir * t, n = normalize(x - obj.pos);
         auto f = obj.color;
         auto nl = (dot(n, r.dir) < 0) ? n : n * -1;
@@ -204,16 +189,16 @@ private:
                 hp->pos = x;
                 hp->nrm = n;
                 hp->idx = i;
-                hitpoints.push_back(hp);
+                scene.hitpoints.push_back(hp);
 
                 // find the bounding box of all the measurement points
-                hpbbox.merge(x);
+                scene.hpbbox.merge(x);
             }
 
         }
         else if (obj.type == MaterialType::Mirror)
         {
-            trace(Ray(x, reflect(r.dir, n)), dpt, mul(f, fl), mul(f, adj), i);
+            trace(Ray(x, reflect(r.dir, n)), dpt, mul(f, fl), mul(f, adj), i, scene);
         }
         else
         {
@@ -227,7 +212,7 @@ private:
 
             // total internal reflection
             if (cos2t < 0)
-                return trace(lr, dpt, mul(f, fl), mul(f, adj), i);
+                return trace(lr, dpt, mul(f, fl), mul(f, adj), i, scene);
 
             auto td = normalize(r.dir * nnt - n * ((into ? 1 : -1) * (ddn * nnt + sqrt(cos2t))));
             auto a = nt - nc;
@@ -242,8 +227,8 @@ private:
 
             {
                 // eye ray (trace both rays)
-                trace(lr, dpt, ffl, fa * Re, i);
-                trace(rr, dpt, ffl, fa * (1.0 - Re), i);
+                trace(lr, dpt, ffl, fa * Re, i, scene);
+                trace(rr, dpt, ffl, fa * (1.0 - Re), i, scene);
             }
         }
     }
@@ -260,14 +245,15 @@ int main(int argc, char **argv)
     auto s = 1000;     // s * 1000 photon paths will be traced
     auto c = new Vector3[ w * h ];
 
-    hpbbox.reset();
+    Scene scene;
+    scene.hpbbox.reset();
 
     RayTracer rayTracer;
-    rayTracer.trace_ray(w, h);
+    rayTracer.trace_ray(w, h, scene);
 
     Crystal::Photon::PhotonMap photonMap;
-    photonMap.trace_photon( s );
-    photonMap.density_estimation( c, s );
+    photonMap.trace_photon( s, scene );
+    photonMap.density_estimation( c, s, scene.hitpoints );
 
     save_to_bmp( "image.bmp", w, h, &c[0].x, 2.2 );
 
