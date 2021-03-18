@@ -2,6 +2,8 @@
 
 #include "SVD.h"
 
+#include "Converter.h"
+
 using namespace Crystal::Numerics;
 
 
@@ -16,17 +18,18 @@ using namespace Crystal::Numerics;
 using namespace std;
 using namespace Eigen;
 
-void SVD::calculate(const Crystal::Math::Matrix2dd& lhs)
+Crystal::Math::Vector2dd SVD::calculate(const Crystal::Math::Matrix2dd& lhs)
 {
-	Matrix2f A;
-	A << 1, 2, 2, 3;
+	Matrix2f A = Impl::Converter::toEigen(lhs);
 	cout << "Here is the matrix A:\n" << A << endl;
 	SelfAdjointEigenSolver<Matrix2f> eigensolver(A);
 	if (eigensolver.info() != Success) abort();
+	const auto values = eigensolver.eigenvalues();
 	cout << "The eigenvalues of A are:\n" << eigensolver.eigenvalues() << endl;
 	cout << "Here's a matrix whose columns are eigenvectors of A \n"
 		<< "corresponding to these eigenvalues:\n"
 		<< eigensolver.eigenvectors() << endl;
+	return Crystal::Math::Vector2dd(values[0], values[1]);
 }
 
 void SVD::calculate(const Crystal::Math::Matrix3dd& lhs)

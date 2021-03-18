@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../Crystal/Math/Vector2d.h"
 #include "../../Crystal/Math/Matrix2d.h"
 #include "../../Crystal/Math/Matrix3d.h"
 #include "../../Crystal/Math/Matrix4d.h"
@@ -10,7 +11,7 @@ namespace Crystal {
 class SVD
 {
 public:
-	void calculate(const Math::Matrix2dd& lhs);
+	Math::Vector2dd calculate(const Math::Matrix2dd& lhs);
 
 	void calculate(const Math::Matrix3dd& lhs);
 
