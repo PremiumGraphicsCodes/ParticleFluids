@@ -23,6 +23,7 @@
     <ClCompile Include="halton.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PhotonMap.cpp" />
+    <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +31,7 @@
     <ClInclude Include="hitrecord.h" />
     <ClInclude Include="math_util.h" />
     <ClInclude Include="PhotonMap.h" />
+    <ClInclude Include="RayTracer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SpaceHash.h" />
     <ClInclude Include="sphere.h" />
