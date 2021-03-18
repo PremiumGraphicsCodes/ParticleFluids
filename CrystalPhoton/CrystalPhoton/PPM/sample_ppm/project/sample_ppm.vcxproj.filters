@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\src\bitmap.cpp" />
-    <ClCompile Include="..\src\halton.cpp" />
-    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="bitmap.cpp" />
+    <ClCompile Include="halton.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\bitmap.h" />
-    <ClInclude Include="..\include\hitrecord.h" />
-    <ClInclude Include="..\include\math_util.h" />
-    <ClInclude Include="..\include\sphere.h" />
-    <ClInclude Include="..\include\PhotonMap.h" />
+    <ClInclude Include="bitmap.h" />
+    <ClInclude Include="hitrecord.h" />
+    <ClInclude Include="math_util.h" />
+    <ClInclude Include="PhotonMap.h" />
+    <ClInclude Include="sphere.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="image.bmp" />
   </ItemGroup>
 </Project>

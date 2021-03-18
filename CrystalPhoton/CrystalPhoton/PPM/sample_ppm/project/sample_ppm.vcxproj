@@ -19,16 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\bitmap.cpp" />
-    <ClCompile Include="..\src\halton.cpp" />
-    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="bitmap.cpp" />
+    <ClCompile Include="halton.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\bitmap.h" />
-    <ClInclude Include="..\include\hitrecord.h" />
-    <ClInclude Include="..\include\math_util.h" />
-    <ClInclude Include="..\include\PhotonMap.h" />
-    <ClInclude Include="..\include\sphere.h" />
+    <ClInclude Include="bitmap.h" />
+    <ClInclude Include="hitrecord.h" />
+    <ClInclude Include="math_util.h" />
+    <ClInclude Include="PhotonMap.h" />
+    <ClInclude Include="sphere.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="image.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9E50D2F6-C985-4166-BC83-9A7D6FF49810}</ProjectGuid>

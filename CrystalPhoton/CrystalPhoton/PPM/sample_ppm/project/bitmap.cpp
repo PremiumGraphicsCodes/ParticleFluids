@@ -4,7 +4,7 @@
 // Copyright(c) Project Asura. All right reserved.
 //---------------------------------------------------------------------------------------
 
-#include <bitmap.h>
+#include "bitmap.h"
 #include <cstdio>
 #include <cmath>
 

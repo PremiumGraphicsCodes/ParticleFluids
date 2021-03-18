@@ -10,13 +10,14 @@
 #include <cmath>
 #include <cstdlib>
 #include <cstdio>
-#include <bitmap.h>
-#include <math_util.h>
 #include <list>
 #include <vector>
 #include <chrono>
-#include <sphere.h>
-#include <hitrecord.h>
+
+#include "bitmap.h"
+#include "math_util.h"
+#include "sphere.h"
+#include "hitrecord.h"
 
 
 namespace /* anonymous */ {
