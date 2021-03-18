@@ -27,6 +27,7 @@
     <ClInclude Include="..\include\bitmap.h" />
     <ClInclude Include="..\include\hitrecord.h" />
     <ClInclude Include="..\include\math_util.h" />
+    <ClInclude Include="..\include\PhotonMap.h" />
     <ClInclude Include="..\include\sphere.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
