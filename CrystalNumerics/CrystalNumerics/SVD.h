@@ -16,14 +16,19 @@ public:
 	{
 		bool isOk;
 		Math::Vector2dd eigenValues;
-		Math::Matrix2df eigenVectors;
+		Math::Matrix2dd eigenVectors;
 	};
 
 	SVD2dResult calculate(const Math::Matrix2dd& lhs);
 
-	Math::Vector3dd calculate(const Math::Matrix3dd& lhs);
+	struct SVD3dResult
+	{
+		bool isOk;
+		Math::Vector3dd eigenValues;
+		Math::Matrix3dd eigenVectors;
+	};
 
-	void calculate(const Math::Matrix4dd& lhs);
+	SVD3dResult calculate(const Math::Matrix3dd& lhs);
 
 private:
 	//std::vector<std::vector

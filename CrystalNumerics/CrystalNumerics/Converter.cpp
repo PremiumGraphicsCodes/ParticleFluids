@@ -5,9 +5,9 @@
 using namespace Crystal::Math;
 using namespace Crystal::Numerics::Impl;
 
-Eigen::Matrix2f Converter::toEigen(const Matrix2dd& src)
+Eigen::Matrix2d Converter::toEigen(const Matrix2dd& src)
 {
-	Eigen::Matrix2f dest;
+	Eigen::Matrix2d dest;
 	for (int i = 0; i < 2; ++i) {
 		for (int j = 0; j < 2; ++j) {
 			dest(i,j) = src[i][j];
@@ -16,9 +16,9 @@ Eigen::Matrix2f Converter::toEigen(const Matrix2dd& src)
 	return dest;
 }
 
-Eigen::Matrix3f Converter::toEigen(const Matrix3dd& src)
+Eigen::Matrix3d Converter::toEigen(const Matrix3dd& src)
 {
-	Eigen::Matrix3f dest;
+	Eigen::Matrix3d dest;
 	for (int i = 0; i < 3; ++i) {
 		for (int j = 0; j < 3; ++j) {
 			dest(i, j) = src[i][j];
@@ -27,9 +27,9 @@ Eigen::Matrix3f Converter::toEigen(const Matrix3dd& src)
 	return dest;
 }
 
-Eigen::Matrix4f Converter::toEigen(const Matrix4dd& src)
+Eigen::Matrix4d Converter::toEigen(const Matrix4dd& src)
 {
-	Eigen::Matrix4f dest;
+	Eigen::Matrix4d dest;
 	for (int i = 0; i < 4; ++i) {
 		for (int j = 0; j < 4; ++j) {
 			dest(i, j) = src[i][j];
@@ -39,9 +39,9 @@ Eigen::Matrix4f Converter::toEigen(const Matrix4dd& src)
 }
 
 
-Matrix2df Converter::fromEigen(const Eigen::Matrix2f& src)
+Matrix2dd Converter::fromEigen(const Eigen::Matrix2d& src)
 {
-	Matrix2df dest;
+	Matrix2dd dest;
 	for (int i = 0; i < 2; ++i) {
 		for (int j = 0; j < 2; ++j) {
 			dest[i][j] = src(i, j);
@@ -50,9 +50,9 @@ Matrix2df Converter::fromEigen(const Eigen::Matrix2f& src)
 	return dest;
 }
 
-Matrix3df Converter::fromEigen(const Eigen::Matrix3f& src)
+Matrix3dd Converter::fromEigen(const Eigen::Matrix3d& src)
 {
-	Matrix3df dest;
+	Matrix3dd dest;
 	for (int i = 0; i < 3; ++i) {
 		for (int j = 0; j < 3; ++j) {
 			dest[i][j] = src(i, j);
