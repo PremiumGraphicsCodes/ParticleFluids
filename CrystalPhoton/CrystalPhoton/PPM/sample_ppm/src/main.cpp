@@ -144,22 +144,6 @@ inline bool intersect( const Ray &r, double &t, int &id )
 }
 
 //-------------------------------------------------------------------------------------------
-//      フォトンレイを生成します.
-//-------------------------------------------------------------------------------------------
-void genp( Ray* pr, Vector3* f, int i )
-{
-    // generate a photon ray from the point light source with QMC
-
-    (*f) = Vector3( 2500, 2500, 2500 ) * ( D_PI * 4.0 ); // flux
-    auto p  = 2.0 * D_PI * halton( 0, i );
-    auto t  = 2.0 * acos( sqrt(1. - halton( 1, i ) ));
-    auto st = sin( t );
-
-    pr->dir = Vector3( cos( p ) * st, cos( t ), sin( p ) * st );
-    pr->pos = Vector3( 50, 60, 85 );
-}
-
-//-------------------------------------------------------------------------------------------
 //      レイを追跡します.
 //-------------------------------------------------------------------------------------------
 void trace( const Ray &r, int dpt, bool m, const Vector3 &fl, const Vector3 &adj, int i )
@@ -326,33 +310,53 @@ void trace_ray( int w, int h )
 //-------------------------------------------------------------------------------------------
 //      photon rayを追跡します.
 //-------------------------------------------------------------------------------------------
-void trace_photon( int s )
+
+class PhotonMap
 {
-    auto start = std::chrono::system_clock::now();
-
-    // trace photon rays with multi-threading
-    auto vw = Vector3(1, 1, 1);
-
-    #pragma omp parallel for schedule(dynamic, 1)
-    for (int i = 0; i < s; i++) 
+public:
+    void trace_photon(int s)
     {
-        auto p = 100.0 * ( i + 1 ) / s;
-        fprintf( stdout, "\rPhotonPass %5.2f%%", p );
-        int m = 1000 * i;
-        Ray r;
-        Vector3 f;
-        for ( int j = 0; j < 1000; j++ )
+        auto start = std::chrono::system_clock::now();
+
+        // trace photon rays with multi-threading
+        auto vw = Vector3(1, 1, 1);
+
+#pragma omp parallel for schedule(dynamic, 1)
+        for (int i = 0; i < s; i++)
         {
-            genp( &r, &f, m + j );
-            trace( r, 0, false, f, vw, m + j );
+            auto p = 100.0 * (i + 1) / s;
+            fprintf(stdout, "\rPhotonPass %5.2f%%", p);
+            int m = 1000 * i;
+            Ray r;
+            Vector3 f;
+            for (int j = 0; j < 1000; j++)
+            {
+                generate_photon_ray(&r, &f, m + j);
+                trace(r, 0, false, f, vw, m + j);
+            }
         }
+
+        fprintf(stdout, "\n");
+        auto end = std::chrono::system_clock::now();
+        auto dif = end - start;
+        fprintf(stdout, "Photon Tracing Pass : %lld(sec)\n", std::chrono::duration_cast<std::chrono::seconds>(dif).count());
     }
 
-    fprintf( stdout, "\n" );
-    auto end = std::chrono::system_clock::now();
-    auto dif = end - start;
-    fprintf( stdout, "Photon Tracing Pass : %lld(sec)\n", std::chrono::duration_cast<std::chrono::seconds>(dif).count() );
-}
+private:
+    void generate_photon_ray(Ray* pr, Vector3* f, int i)
+    {
+        // generate a photon ray from the point light source with QMC
+
+        (*f) = Vector3(2500, 2500, 2500) * (D_PI * 4.0); // flux
+        auto p = 2.0 * D_PI * halton(0, i);
+        auto t = 2.0 * acos(sqrt(1. - halton(1, i)));
+        auto st = sin(t);
+
+        pr->dir = Vector3(cos(p) * st, cos(t), sin(p) * st);
+        pr->pos = Vector3(50, 60, 85);
+    }
+
+};
 
 //-------------------------------------------------------------------------------------------
 //      密度推定を行います.
@@ -380,8 +384,10 @@ int main(int argc, char **argv)
 
     hpbbox.reset();
 
+    PhotonMap photonMap;
+
     trace_ray( w, h );
-    trace_photon( s );
+    photonMap.trace_photon( s );
     density_estimation( c, s );
 
     save_to_bmp( "image.bmp", w, h, &c[0].x, 2.2 );
