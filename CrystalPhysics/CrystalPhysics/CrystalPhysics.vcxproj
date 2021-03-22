@@ -184,6 +184,7 @@
     <ClInclude Include="PBSPHSolver.h" />
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
+    <ClInclude Include="WPCA.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CSGBoundaryScene.cpp" />
@@ -215,6 +216,7 @@
     <ClCompile Include="PBSPHParticle.cpp" />
     <ClCompile Include="PBSPHSolver.cpp" />
     <ClCompile Include="SPHKernel.cpp" />
+    <ClCompile Include="WPCA.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

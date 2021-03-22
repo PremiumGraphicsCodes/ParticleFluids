@@ -25,6 +25,9 @@
     <Filter Include="Boundary\Particle">
       <UniqueIdentifier>{a2559790-0fc8-46e3-8c8d-26a0c9681588}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SurfaceReconstruction">
+      <UniqueIdentifier>{93dd166c-0ba5-44cc-8a40-880633228676}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PBSPHParticle.h">
@@ -113,6 +116,9 @@
     <ClInclude Include="KFBoundaryScenePresenter.h">
       <Filter>Boundary\Particle</Filter>
     </ClInclude>
+    <ClInclude Include="WPCA.h">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -199,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="KFBoundaryScenePresenter.cpp">
       <Filter>Boundary\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="WPCA.cpp">
+      <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
