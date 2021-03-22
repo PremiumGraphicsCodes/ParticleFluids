@@ -2,7 +2,6 @@
 
 #include "IOkCancelView.h"
 #include "PSAttributeView.h"
-#include "Matrix4dView.h"
 #include "ComboBox.h"
 #include "BoolView.h"
 

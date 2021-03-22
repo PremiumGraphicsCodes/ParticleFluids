@@ -628,6 +628,12 @@
     <ClInclude Include="SpotLightView.h">
       <Filter>Scene\Appearance\Light\View</Filter>
     </ClInclude>
+    <ClInclude Include="VolSphereView.h">
+      <Filter>Scene\Shape\Volume\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="IVolAddView.h">
+      <Filter>Scene\Shape\Volume\Add</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">
@@ -764,6 +770,12 @@
     </Filter>
     <Filter Include="Scene\Shape\Solid">
       <UniqueIdentifier>{8acc4850-ed18-4c7d-a067-fce84a808c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Volume">
+      <UniqueIdentifier>{fe44758a-61fb-47fe-b271-fdd42c12974b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Volume\Add">
+      <UniqueIdentifier>{0294b4e3-e168-4a73-9765-d4feeae94815}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
