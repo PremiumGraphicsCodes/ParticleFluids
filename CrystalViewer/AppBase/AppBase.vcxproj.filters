@@ -288,6 +288,9 @@
     <ClCompile Include="SpotLightView.cpp">
       <Filter>Scene\Appearance\Light\View</Filter>
     </ClCompile>
+    <ClCompile Include="ColorMapView.cpp">
+      <Filter>Color</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />

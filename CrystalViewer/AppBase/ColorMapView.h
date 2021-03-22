@@ -5,38 +5,15 @@
 #include "TextureView.h"
 #include "FloatView.h"
 #include "IntView.h"
-#include "../Graphics/ColorMap.h"
+#include "../../Crystal/Graphics/ColorMap.h"
 
 namespace Crystal {
 	namespace UI {
 
-class ColorMapView : public IWindow
+class ColorMapView : public IView
 {
 public:
-	ColorMapView(const std::string& name, const Graphics::ColorMap& value) :
-		IWindow(name),
-		value(value),
-		image("Image", Graphics::Image(32,32)),
-		resolution("Resolution", value.getResolution()),
-		minValue("MinValue", value.getMin()),
-		maxValue("MaxValue", value.getMax())
-	{
-		Graphics::Image img(value.getResolution(), 32);
-		for (int i = 0; i < value.getResolution(); ++i) {
-			for (int j = 0; j < 32; ++j) {
-				const auto color = value.getColorFromIndex(i);
-				img.setColor(i,j, Crystal::Graphics::toColorRGBAuc(color));
-			}
-		}
-		image.setValue(img);
-	}
-
-	void onShow() override {
-		image.show();
-		resolution.show();
-		minValue.show();
-		maxValue.show();
-	}
+	ColorMapView(const std::string& name /*, const Graphics::ColorMap& value */);
 
 	//Graphics::ColorRGBAf getValue() const { return Graphics::ColorRGBAf(value[0], value[1], value[2], value[3]); }
 
@@ -59,7 +36,6 @@ public:
 
 private:
 	Graphics::ColorMap value;
-	TextureView image;
 	IntView resolution;
 	FloatView minValue;
 	FloatView maxValue;
