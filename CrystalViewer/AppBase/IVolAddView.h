@@ -16,7 +16,7 @@ public:
 	IVolAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 protected:
-	void addVolume(const Shape::Volume<float>& volume);
+	void addVolume(std::unique_ptr<Shape::Volume<float>> volume);
 
 private:
 	StringView nameView;

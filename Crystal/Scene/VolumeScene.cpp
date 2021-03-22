@@ -6,7 +6,8 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 
-VolumeScene::VolumeScene(const int id, const std::string& name, std::unique_ptr<Volume<double>> shape) :
+VolumeScene::VolumeScene(const int id, const std::string& name, std::unique_ptr<Volume<float>> shape) :
 	IShapeScene(id, name)
 {
+	presenter = std::make_unique<VolumePresenter>(this);
 }

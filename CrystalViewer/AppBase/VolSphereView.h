@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IVolAddView.h"
+#include "Box3dView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -12,6 +13,9 @@ public:
 
 	void onOk() override;
 
+private:
+	Box3dView boxView;
+	IntView resolutionView;
 };
 
 	}
