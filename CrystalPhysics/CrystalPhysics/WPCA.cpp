@@ -1,16 +1,25 @@
 #include "WPCA.h"
 
+#include "../../Crystal/Shape/IParticle.h"
+
 using namespace Crystal::Math;
+using namespace Crystal::Shape;
 using namespace Crystal::Physics;
 
-Matrix3df WPCA::calculate(const Vector3df& center, const std::vector<Vector3df>& positions, const float radius)
+/*
+Matrix3df WPCA::calculate(IParticle* center, const std::vector<IParticle*>& positions, const float radius)
+{
+}
+*/
+
+Matrix3df Crystal::Physics::WPCA::calculate(Shape::IParticle* center, const std::vector<Shape::IParticle*>& positions, const float radius)
 {
 	//std::vector<PositionWeight> pws;
 	//pws.reserve(positions.size());
 	for (const auto& p : positions) {
-		const auto w = calculateWeight(center, p, radius);
+		const auto w = calculateWeight(center->getPosition(), p->getPosition(), radius);
 		PositionWeight pw;
-		pw.position = p;
+		pw.position = p->getPosition();
 		pw.weight = w;
 		this->pws.push_back(pw);
 	}
@@ -20,15 +29,18 @@ Matrix3df WPCA::calculate(const Vector3df& center, const std::vector<Vector3df>&
 		this->totalWeight += pw.weight;
 	}
 
-	return calculateCovarianceMatrix(center, positions, radius);
+	return calculateCovarianceMatrix(radius);
 }
 
-Matrix3df WPCA::calculateCovarianceMatrix(const Vector3df& center, const std::vector<Vector3df>& positions, const float radius)
+Matrix3df WPCA::calculateCovarianceMatrix(const float radius)
 {
-	const auto wm = calculateWeightedMean(center, positions, radius);
+	const auto wm = calculateWeightedMean(radius);
 
 	Matrix3df matrix(0,0,0,0,0,0,0,0,0);
-	for (const auto& p : positions) {
+	for (const auto& pw : pws) {
+		const auto p = pw.position;
+		const auto w = pw.weight;
+
 		const auto v = p - wm;
 		//const auto vt = glm::transpose(v);
 		//Matrix3df m()
@@ -49,14 +61,14 @@ Matrix3df WPCA::calculateCovarianceMatrix(const Vector3df& center, const std::ve
 			x20, x21, x22
 		);
 
-		matrix += m;
+		matrix += w * m;
 	}
 	matrix /= totalWeight;
 
 	return matrix;
 }
 
-Vector3df WPCA::calculateWeightedMean(const Vector3df& center, const std::vector<Vector3df>& positions, const float radius)
+Vector3df WPCA::calculateWeightedMean(const float radius)
 {
 	Vector3df weightedCenter(0.0f, 0.0f, 0.0f);
 	for (const auto pw : pws) {

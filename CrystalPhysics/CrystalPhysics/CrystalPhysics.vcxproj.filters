@@ -119,6 +119,9 @@
     <ClInclude Include="WPCA.h">
       <Filter>SurfaceReconstruction</Filter>
     </ClInclude>
+    <ClInclude Include="SPHSmoothSurfaceConstructor.h">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -207,6 +210,9 @@
       <Filter>Boundary\Particle</Filter>
     </ClCompile>
     <ClCompile Include="WPCA.cpp">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHSmoothSurfaceConstructor.cpp">
       <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
   </ItemGroup>
