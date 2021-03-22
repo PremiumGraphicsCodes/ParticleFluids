@@ -22,6 +22,8 @@
 #include "PMSphereView.h"
 #include "PMConeView.h"
 
+#include "VolSphereView.h"
+
 #include "SolidBoxView.h"
 
 #include "ScaleView.h"
@@ -131,6 +133,27 @@ void PMGenerationMenu::onShow()
 	}
 }
 
+VolGenerationMenu::VolGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas),
+	control(control)
+{}
+
+void VolGenerationMenu::onShow()
+{
+	auto world = getWorld();
+	auto canvas = getCanvas();
+
+	const auto& c = name.c_str();
+
+	if (ImGui::BeginMenu(c)) {
+		if (ImGui::MenuItem("VolSphere")) {
+			control->setWindow(new VolSphereView("VolSphere", world, canvas));
+		}
+		ImGui::EndMenu();
+	}
+
+}
+
 SolidGenerationMenu::SolidGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, world, canvas),
 	control(control)
@@ -188,6 +211,7 @@ ShapeMenu::ShapeMenu(const std::string& name, World* world, Canvas* canvas, Cont
 	particleSystemMenu("ParticleSystem", world, canvas, control),
 	wireFrameMenu("WireFrame", world, canvas, control),
 	polygonMeshMenu("PolygonMesh", world, canvas, control),
+	volMenu("Volume", world, canvas, control),
 	solidMenu("Solid", world, canvas, control),
 	transformMenu("Transform", world, canvas, control)
 {}
@@ -202,6 +226,7 @@ void ShapeMenu::onShow()
 		particleSystemMenu.show();
 		wireFrameMenu.show();
 		polygonMeshMenu.show();
+		volMenu.show();
 		solidMenu.show();
 		transformMenu.show();
 

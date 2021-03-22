@@ -50,6 +50,7 @@
     <ClCompile Include="IPMAddView.cpp" />
     <ClCompile Include="IPSAddView.cpp" />
     <ClCompile Include="ISolidAddView.cpp" />
+    <ClCompile Include="IVolAddView.cpp" />
     <ClCompile Include="IWFAddView.cpp" />
     <ClCompile Include="MaterialSelectView.cpp" />
     <ClCompile Include="Matrix2dView.cpp" />
@@ -111,6 +112,7 @@
     <ClCompile Include="PositionSelectView.cpp" />
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="TransformView.cpp" />
+    <ClCompile Include="VolSphereView.cpp" />
     <ClCompile Include="WFAttributeView.cpp" />
     <ClCompile Include="WFBoxView.cpp" />
     <ClCompile Include="WFCircleView.cpp" />

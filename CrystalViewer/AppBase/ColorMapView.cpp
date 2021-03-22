@@ -242,5 +242,41 @@ ColorMapView::ColorMapView(const std::string& name /*, const ColorMap& value */)
 
 void ColorMapView::onShow()
 {
+    ImGui::BeginGroup();
+    ImGui::PushID(name.c_str());
+    ImDrawList* draw_list = ImGui::GetWindowDrawList();
+    // setup
+    ImVec2 picker_pos = ImGui::GetCursorScreenPos();
+
+    ImColor colors[2];
+    colors[0] = ImColor(255,0, 0);
+    colors[1] = ImColor(255,0, 0);
+    //colors[2] = 1.0;
+
+
+    for (int i = 0; i < 10; ++i) {
+        const auto x = picker_pos.x + i * 10;
+        draw_list->AddRectFilledMultiColor
+        (
+            ImVec2(x, picker_pos.y),
+            ImVec2(x + 10, picker_pos.y + 10),
+            colors[0],
+            colors[0],
+            colors[1],
+            colors[1]
+        );
+
+        //ImGui::ItemAddButton()
+        //draw_list->AddLine(ImVec2(x, picker_pos.y),
+        //    ImVec2(x + 10, picker_pos.y), colors[0]);
+        //ItemAdd
+    }
+
+    // keep layout.
+    ImGui::InvisibleButton("hue_selector", ImVec2(100, 10));
+
+    ImGui::PopID();
+    ImGui::EndGroup();
+
     //ColorPicker()
 }

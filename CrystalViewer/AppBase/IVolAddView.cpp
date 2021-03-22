@@ -1,29 +1,23 @@
-#include "IPSAddView.h"
-
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "IVolAddView.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-IPSAddView::IPSAddView(const std::string& name, World* model, Canvas* canvas) :
+IVolAddView::IVolAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	//matrixView("Matrix", Math::Identity()),
-	attributeView("PSAttribute"),
-	nameView("Name", "ParticleSystem01"),
+	nameView("Name", "Volume01"),
 	presenterView("Presenter"),
-	doBlendView("Blend", false)
+	colorMapView("ColorMap")
 {
-	//add(&matrixView);
-	add(&attributeView);
 	add(&nameView);
 	add(&presenterView);
-	add(&doBlendView);
+	add(&colorMapView);
 }
 
-void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
+void IVolAddView::addVolume(const Shape::Volume<float>& volume)
 {
+	/*
 	auto attr = attributeView.getValue();
 	auto name = nameView.getValue();
 	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
@@ -33,4 +27,5 @@ void IPSAddView::addParticleSystem(const std::vector<Vector3dd>& positions)
 
 	auto presenter = scene->getPresenter();
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	*/
 }

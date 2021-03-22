@@ -294,6 +294,12 @@
     <ClCompile Include="ColorRGBAView.cpp">
       <Filter>Color</Filter>
     </ClCompile>
+    <ClCompile Include="IVolAddView.cpp">
+      <Filter>Scene\Shape\Volume\Add</Filter>
+    </ClCompile>
+    <ClCompile Include="VolSphereView.cpp">
+      <Filter>Scene\Shape\Volume\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />

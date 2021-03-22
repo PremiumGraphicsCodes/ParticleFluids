@@ -5,6 +5,7 @@
 #include "ComboBox.h"
 #include "BoolView.h"
 #include "ColorMapView.h"
+#include "../../Crystal/Shape/Volume.h"
 
 namespace Crystal {
 	namespace UI {
@@ -15,11 +16,12 @@ public:
 	IVolAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 protected:
-	void addVolume(const std::vector<Math::Vector3dd>& positions);
+	void addVolume(const Shape::Volume<float>& volume);
 
 private:
 	StringView nameView;
 	ComboBox presenterView;
+	ColorMapView colorMapView;
 };
 
 	}
