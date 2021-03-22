@@ -15,6 +15,8 @@ class ColorMapView : public IView
 public:
 	ColorMapView(const std::string& name /*, const Graphics::ColorMap& value */);
 
+	void onShow() override;
+
 	//Graphics::ColorRGBAf getValue() const { return Graphics::ColorRGBAf(value[0], value[1], value[2], value[3]); }
 
 	/*

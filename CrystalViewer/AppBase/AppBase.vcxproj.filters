@@ -291,6 +291,9 @@
     <ClCompile Include="ColorMapView.cpp">
       <Filter>Color</Filter>
     </ClCompile>
+    <ClCompile Include="ColorRGBAView.cpp">
+      <Filter>Color</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />

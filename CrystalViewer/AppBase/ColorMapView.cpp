@@ -239,3 +239,8 @@ ColorMapView::ColorMapView(const std::string& name /*, const ColorMap& value */)
 	//ImDrawList* draw_list = ImGui::GetWindowDrawList();
 	//draw_list->AddRectFilledMultiColor()
 }
+
+void ColorMapView::onShow()
+{
+    //ColorPicker()
+}

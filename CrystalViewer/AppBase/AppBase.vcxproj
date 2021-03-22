@@ -28,6 +28,7 @@
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Circle3dView.cpp" />
     <ClCompile Include="ColorMapView.cpp" />
+    <ClCompile Include="ColorRGBAView.cpp" />
     <ClCompile Include="ComboBox.cpp" />
     <ClCompile Include="Cone3dView.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
