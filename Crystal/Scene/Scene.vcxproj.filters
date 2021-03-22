@@ -148,6 +148,9 @@
     <ClInclude Include="IParticleSystemScene.h">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClInclude>
+    <ClInclude Include="VolumePresenter.h">
+      <Filter>Presenter\Shape\Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -241,6 +244,9 @@
     <ClCompile Include="SolidAsWFPresenter.cpp">
       <Filter>Presenter\Shape\Solid</Filter>
     </ClCompile>
+    <ClCompile Include="VolumePresenter.cpp">
+      <Filter>Presenter\Shape\Volume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -320,6 +326,9 @@
     </Filter>
     <Filter Include="Presenter\Shape\Solid">
       <UniqueIdentifier>{2aee7916-85d9-48c4-a3a5-743525cf59b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Shape\Volume">
+      <UniqueIdentifier>{cd64008b-51dd-40ad-9917-6bc1e8391a1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

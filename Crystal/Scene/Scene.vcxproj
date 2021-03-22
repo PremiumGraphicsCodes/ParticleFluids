@@ -55,6 +55,7 @@
     <ClInclude Include="TriangleBuffer.h" />
     <ClInclude Include="TriangleMeshScene.h" />
     <ClInclude Include="TriangleShaderScene.h" />
+    <ClInclude Include="VolumePresenter.h" />
     <ClInclude Include="WireFramePresenter.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="TransformScene.h" />
@@ -99,6 +100,7 @@
     <ClCompile Include="TextureScene.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
     <ClCompile Include="TriangleShaderScene.cpp" />
+    <ClCompile Include="VolumePresenter.cpp" />
     <ClCompile Include="VolumeScene.cpp" />
     <ClCompile Include="WireFramePresenter.cpp" />
     <ClCompile Include="World.cpp" />
