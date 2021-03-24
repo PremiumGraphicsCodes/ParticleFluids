@@ -4,14 +4,14 @@
 using namespace Crystal::Math;
 
 Box3d::Box3d() :
-	start(0, 0, 0),
-	end(1, 1, 1)
+	min(0, 0, 0),
+	max(1, 1, 1)
 {
 }
 
 Box3d::Box3d(const Vector3dd& point) :
-	start(point),
-	end(point)
+	min(point),
+	max(point)
 {}
 
 Box3d::Box3d(const Vector3dd& pointX, const Vector3dd& pointY)
@@ -19,12 +19,28 @@ Box3d::Box3d(const Vector3dd& pointX, const Vector3dd& pointY)
 	const auto x = std::min<double>(pointX.x, pointY.x);
 	const auto y = std::min<double>(pointX.y, pointY.y);
 	const auto z = std::min<double>(pointX.z, pointY.z);
-	this->start = Vector3dd(x, y, z);
+	this->min = Vector3dd(x, y, z);
 	const auto endX = std::max<double>(pointX.x, pointY.x);
 	const auto endY = std::max<double>(pointX.y, pointY.y);
 	const auto endZ = std::max<double>(pointX.z, pointY.z);
-	this->end = Vector3dd(endX, endY, endZ);
+	this->max = Vector3dd(endX, endY, endZ);
 //	assert(isValid());
+}
+
+Box3d Box3d::createDegeneratedBox()
+{
+	Box3d b;
+	constexpr auto min = std::numeric_limits<double>::lowest();
+	constexpr auto max = std::numeric_limits<double>::max();
+	b.max = Vector3dd(min, min, min);
+	b.min = Vector3dd(max, max, max);
+	return b;
+}
+
+bool Box3d::isDegenerated() const
+{
+	const Box3d b = createDegeneratedBox();
+	return b.getMax() == this->getMax() && b.getMin() == this->getMin();
 }
 
 void Box3d::add(const Vector3dd& v)
@@ -32,12 +48,12 @@ void Box3d::add(const Vector3dd& v)
 	const auto x = std::min<double>(getMinX(), v.x);
 	const auto y = std::min<double>(getMinY(), v.y);
 	const auto z = std::min<double>(getMinZ(), v.z);
-	start = Vector3dd(x, y, z);
+	min = Vector3dd(x, y, z);
 
-	const auto endX = std::max<double>(end.x, v.x);
-	const auto endY = std::max<double>(end.y, v.y);
-	const auto endZ = std::max<double>(end.z, v.z);
-	end = Vector3dd(endX, endY, endZ);
+	const auto endX = std::max<double>(max.x, v.x);
+	const auto endY = std::max<double>(max.y, v.y);
+	const auto endZ = std::max<double>(max.z, v.z);
+	max = Vector3dd(endX, endY, endZ);
 }
 
 void Box3d::add(const Box3d& b)
@@ -45,12 +61,12 @@ void Box3d::add(const Box3d& b)
 	const auto sx = std::min<double>(getMinX(), b.getMinX());
 	const auto sy = std::min<double>(getMinY(), b.getMinY());
 	const auto sz = std::min<double>(getMinZ(), b.getMinZ());
-	this->start = Vector3dd(sx, sy, sz);
+	this->min = Vector3dd(sx, sy, sz);
 
-	const auto ex = std::max<double>(end.x, b.getMaxX());
-	const auto ey = std::max<double>(end.y, b.getMaxY());
-	const auto ez = std::max<double>(end.z, b.getMaxZ());
-	this->end = Vector3dd(ex, ey, ez);
+	const auto ex = std::max<double>(max.x, b.getMaxX());
+	const auto ey = std::max<double>(max.y, b.getMaxY());
+	const auto ez = std::max<double>(max.z, b.getMaxZ());
+	this->max = Vector3dd(ex, ey, ez);
 }
 
 double Box3d::getVolume() const
@@ -62,17 +78,17 @@ double Box3d::getVolume() const
 Vector3dd Box3d::getCenter() const
 {
 	return Vector3dd(
-		(getMinX() + end.x) / 2.0,
-		(getMinY() + end.y) / 2.0,
-		(getMinZ() + end.z) / 2.0
+		(getMinX() + max.x) / 2.0,
+		(getMinY() + max.y) / 2.0,
+		(getMinZ() + max.z) / 2.0
 	);
 }
 
 bool Box3d::isInside(const Vector3dd& point) const
 {
-	const bool xIsInterior = (getMinX() < point.x && point.x < end.x);
-	const bool yIsInterior = (getMinY() < point.y && point.y < end.y);
-	const bool zIsInterior = (getMinZ() < point.z && point.z < end.z);
+	const bool xIsInterior = (getMinX() < point.x && point.x < max.x);
+	const bool yIsInterior = (getMinY() < point.y && point.y < max.y);
+	const bool zIsInterior = (getMinZ() < point.z && point.z < max.z);
 	return xIsInterior && yIsInterior && zIsInterior;
 }
 
@@ -80,8 +96,8 @@ bool Box3d::isInside(const Vector3dd& point) const
 bool Box3d::isSame(const Box3d& rhs, const double tolerance) const
 {
 	return
-		areSame( start, rhs.getStart(), tolerance ) &&
-		areSame( end, rhs.getEnd(), tolerance );
+		areSame( min, rhs.getStart(), tolerance ) &&
+		areSame( max, rhs.getEnd(), tolerance );
 }
 
 bool Box3d::hasIntersection(const Box3d& rhs) const
@@ -118,9 +134,9 @@ Box3d Box3d::getOverlapped(const Box3d& rhs) const
 Vector3dd Box3d::getPosition(const double u, const double v, const double w) const
 {
 	const auto& length = getLength();
-	const auto x = start.x + length.x * u;
-	const auto y = start.y + length.y * v;
-	const auto z = start.z + length.z * w;
+	const auto x = min.x + length.x * u;
+	const auto y = min.y + length.y * v;
+	const auto z = min.z + length.z * w;
 	return Vector3dd(x, y, z);
 }
 
@@ -133,6 +149,6 @@ Sphere3d Box3d::getBoundintSphere() const
 
 void Box3d::translate(const Math::Vector3dd& v)
 {
-	this->start += v;
-	this->end += v;
+	this->min += v;
+	this->max += v;
 }

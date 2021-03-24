@@ -18,9 +18,9 @@ public:
 
 	Box3d getBoundingBox() const { return *this; }
 
-	static Box3d createDegeneratedBox() { return Box3d(Vector3dd(0, 0, 0), Vector3dd(0, 0, 0)); }
+	static Box3d createDegeneratedBox();
 
-	bool isDegenerated() { return start == Vector3dd(0, 0, 0) && end == Vector3dd(0, 0, 0); }
+	bool isDegenerated() const;
 
 	void add(const Vector3dd& v);
 
@@ -28,9 +28,9 @@ public:
 
 	double getVolume() const;
 
-	Vector3dd getMax() const { return end; }
+	Vector3dd getMax() const { return max; }
 
-	Vector3dd getMin() const { return Vector3dd(getMinX(), getMinY(), getMinZ()); }
+	Vector3dd getMin() const { return min; }
 
 	Vector3dd getStart() const { return getMin(); }
 
@@ -42,19 +42,19 @@ public:
 
 	bool isOutside(const Vector3dd& point) const { return !isInside(point); }
 
-	double getMaxX() const { return end.x; }
+	double getMaxX() const { return max.x; }
 
-	double getMinX() const { return start.x; }
+	double getMinX() const { return min.x; }
 
-	double getMaxY() const { return end.y; }
+	double getMaxY() const { return max.y; }
 
-	double getMinY() const { return start.y; }
+	double getMinY() const { return min.y; }
 
-	double getMaxZ() const { return end.z; }
+	double getMaxZ() const { return max.z; }
 
-	double getMinZ() const { return start.z; }
+	double getMinZ() const { return min.z; }
 
-	Vector3dd getLength() const { return Vector3dd(end.x - getMinX(), end.y - getMinY(), end.z - getMinZ()); }
+	Vector3dd getLength() const { return Vector3dd(max.x - getMinX(), max.y - getMinY(), max.z - getMinZ()); }
 
 	bool isSame(const Box3d& rhs, const double tolerance) const;
 
@@ -71,8 +71,8 @@ public:
 	void translate(const Math::Vector3dd& v);
 
 private:
-	Vector3dd start;
-	Vector3dd end;
+	Vector3dd min;
+	Vector3dd max;
 };
 
 	}
