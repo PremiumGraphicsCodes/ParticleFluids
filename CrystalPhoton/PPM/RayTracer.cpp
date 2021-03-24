@@ -4,6 +4,7 @@
 
 #include <chrono>
 
+using namespace Crystal::Math;
 using namespace Crystal::Photon;
 
 namespace {
@@ -34,10 +35,10 @@ void RayTracer::trace_ray(int w, int h, Scene& scene)
 
     // trace eye rays and store measurement points
     Ray cam(
-        Vector3(50, 48, 295.6),
-        normalize(Vector3(0, -0.042612, -1))
+        Math::Vector3dd(50, 48, 295.6),
+        normalize(Math::Vector3dd(0, -0.042612, -1))
     );
-    auto cx = Vector3(w * 0.5135 / h, 0, 0);
+    auto cx = Math::Vector3dd(w * 0.5135 / h, 0, 0);
     auto cy = normalize(cross(cx, cam.dir)) * 0.5135;
 
     for (int y = 0; y < h; y++)
@@ -47,7 +48,7 @@ void RayTracer::trace_ray(int w, int h, Scene& scene)
         {
             auto idx = x + y * w;
             auto d = cx * ((x + 0.5) / w - 0.5) + cy * (-(y + 0.5) / h + 0.5) + cam.dir;
-            trace(Ray(cam.pos + d * 140, normalize(d)), 0, Vector3(), Vector3(1, 1, 1), idx, scene);
+            trace(Ray(cam.pos + d * 140.0, normalize(d)), 0, Vector3dd(0,0,0), Vector3dd(1, 1, 1), idx, scene);
         }
     }
     fprintf(stdout, "\n");
@@ -65,7 +66,7 @@ void RayTracer::trace_ray(int w, int h, Scene& scene)
     fprintf(stdout, "Build Hash Grid : %lld(msec)\n", std::chrono::duration_cast<std::chrono::milliseconds>(dif).count());
 }
 
-void RayTracer::trace(const Ray& r, int dpt, const Vector3& fl, const Vector3& adj, int i, Scene& scene)
+void RayTracer::trace(const Ray& r, int dpt, const Vector3dd& fl, const Vector3dd& adj, int i, Scene& scene)
 {
     double t;
     int id;
@@ -78,7 +79,7 @@ void RayTracer::trace(const Ray& r, int dpt, const Vector3& fl, const Vector3& a
     const auto& obj = scene.sph[id];
     auto x = r.pos + r.dir * t, n = normalize(x - obj.pos);
     auto f = obj.color;
-    auto nl = (dot(n, r.dir) < 0) ? n : n * -1;
+    auto nl = (dot(n, r.dir) < 0) ? n : n * -1.0;
     auto p = (f.x > f.y && f.x > f.z) ? f.x : (f.y > f.z) ? f.y : f.z;
 
     if (obj.type == MaterialType::Matte)
@@ -105,7 +106,7 @@ void RayTracer::trace(const Ray& r, int dpt, const Vector3& fl, const Vector3& a
     else
     {
         Ray lr(x, reflect(r.dir, n));
-        auto into = dot(n, nl) > 0.0;
+        auto into = glm::dot(n, nl) > 0.0;
         auto nc = 1.0;
         auto nt = 1.5;
         auto nnt = (into) ? nc / nt : nt / nc;

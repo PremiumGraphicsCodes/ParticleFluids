@@ -4,6 +4,7 @@
 
 #include <chrono>
 
+using namespace Crystal::Math;
 using namespace Crystal::Photon;
 
 namespace {
@@ -32,7 +33,7 @@ void PhotonMap::trace_photon(int s, Scene& scene)
     auto start = std::chrono::system_clock::now();
 
     // trace photon rays with multi-threading
-    auto vw = Vector3(1, 1, 1);
+    auto vw = Vector3dd(1, 1, 1);
 
 #pragma omp parallel for schedule(dynamic, 1)
     for (int i = 0; i < s; i++)
@@ -53,7 +54,7 @@ void PhotonMap::trace_photon(int s, Scene& scene)
     fprintf(stdout, "Photon Tracing Pass : %lld(sec)\n", std::chrono::duration_cast<std::chrono::seconds>(dif).count());
 }
 
-void PhotonMap::density_estimation(Vector3* color, int num_photon, std::list<HitRecord*>& hitpoints)
+void PhotonMap::density_estimation(Vector3dd* color, int num_photon, std::list<HitRecord*>& hitpoints)
 {
     // density estimation
     for (auto itr = hitpoints.begin(); itr != hitpoints.end(); ++itr)
@@ -68,17 +69,17 @@ PhotonRay PhotonMap::generate_photon_ray(int i)
 {
     // generate a photon ray from the point light source with QMC
     PhotonRay photonRay;
-    photonRay.flux = Vector3(2500, 2500, 2500) * (D_PI * 4.0); // flux
+    photonRay.flux = Vector3dd(2500, 2500, 2500) * (D_PI * 4.0); // flux
     auto p = 2.0 * D_PI * halton(0, i);
     auto t = 2.0 * acos(sqrt(1. - halton(1, i)));
     auto st = sin(t);
 
-    photonRay.ray.dir = Vector3(cos(p) * st, cos(t), sin(p) * st);
-    photonRay.ray.pos = Vector3(50, 60, 85);
+    photonRay.ray.dir = Vector3dd(cos(p) * st, cos(t), sin(p) * st);
+    photonRay.ray.pos = Vector3dd(50, 60, 85);
     return photonRay;
 }
 
-void PhotonMap::trace_photon_ray(const Ray& r, int dpt, const Vector3& fl, const Vector3& adj, int i, Scene& scene)
+void PhotonMap::trace_photon_ray(const Ray& r, int dpt, const Vector3dd& fl, const Vector3dd& adj, int i, Scene& scene)
 {
     double t;
     int id;
@@ -92,7 +93,7 @@ void PhotonMap::trace_photon_ray(const Ray& r, int dpt, const Vector3& fl, const
     const auto& obj = scene.sph[id];
     auto x = r.pos + r.dir * t, n = normalize(x - obj.pos);
     auto f = obj.color;
-    auto nl = (dot(n, r.dir) < 0) ? n : n * -1;
+    auto nl = (dot(n, r.dir) < 0) ? n : n * -1.0;
     auto p = (f.x > f.y && f.x > f.z) ? f.x : (f.y > f.z) ? f.y : f.z;
 
     if (obj.type == MaterialType::Matte)
@@ -131,7 +132,7 @@ void PhotonMap::trace_photon_ray(const Ray& r, int dpt, const Vector3& fl, const
             auto r2 = halton(d3 + 0, i);
             auto r2s = sqrt(r2);
             auto w = nl;
-            auto u = normalize(cross((fabs(w.x) > .1 ? Vector3(0, 1, 0) : Vector3(1, 0, 0)), w));
+            auto u = normalize(cross((fabs(w.x) > .1 ? Vector3dd(0, 1, 0) : Vector3dd(1, 0, 0)), w));
             auto v = cross(w, u);
             auto d = normalize(u * cos(r1) * r2s + v * sin(r1) * r2s + w * sqrt(1 - r2));
 
@@ -147,7 +148,7 @@ void PhotonMap::trace_photon_ray(const Ray& r, int dpt, const Vector3& fl, const
     else
     {
         Ray lr(x, reflect(r.dir, n));
-        auto into = dot(n, nl) > 0.0;
+        auto into = glm::dot(n, nl) > 0.0;
         auto nc = 1.0;
         auto nt = 1.5;
         auto nnt = (into) ? nc / nt : nt / nc;

@@ -29,10 +29,10 @@ enum MaterialType
 ////////////////////////////////////////////////////////////////////////////////
 struct SphereObject : public Sphere
 {
-    Vector3         color;
+    Crystal::Math::Vector3dd         color;
     MaterialType    type;
 
-    SphereObject( double r, Vector3 pos, Vector3 col, MaterialType mat )
+    SphereObject( double r, Crystal::Math::Vector3dd pos, Crystal::Math::Vector3dd col, MaterialType mat )
     : Sphere( pos, r )
     , color ( col )
     , type  ( mat )

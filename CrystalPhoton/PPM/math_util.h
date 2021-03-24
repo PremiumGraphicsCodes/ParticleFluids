@@ -11,6 +11,8 @@
 //---------------------------------------------------------------------------------------
 #include <cmath>
 
+#include "../../Crystal/Math/Vector3d.h"
+
 
 //---------------------------------------------------------------------------------------
 // Constant Values
@@ -22,83 +24,15 @@ static const double     D_EPS = 1e-4;
 
 double halton( const int b, int j );
 
-
-/////////////////////////////////////////////////////////////////////////////////////////
-// Vector3 structure
-/////////////////////////////////////////////////////////////////////////////////////////
-struct Vector3
+inline Crystal::Math::Vector3dd mul(const Crystal::Math::Vector3dd& a, const Crystal::Math::Vector3dd& b)
 {
-    double  x;
-    double  y;
-    double  z;
-
-    Vector3()
-    : x( 0.0 ), y( 0.0 ), z( 0.0 )
-    { /* DO_NOTHING */ }
-
-    Vector3( double _x, double _y, double _z )
-    : x( _x ), y( _y ), z( _z )
-    { /* DO_NOTHING */ }
-
-    inline Vector3 operator + ( const Vector3& v ) const
-    { return Vector3( x + v.x, y + v.y, z + v.z ); }
-
-    inline Vector3 operator - ( const Vector3& v ) const
-    { return Vector3( x - v.x, y - v.y, z - v.z ); }
-
-    inline Vector3 operator + ( double v ) const
-    { return Vector3( x + v, y + v, z + v ); }
-
-    inline Vector3 operator - ( double v ) const
-    { return Vector3( x - v, y - v, z - v ); }
-
-    inline Vector3 operator * ( double v ) const
-    { return Vector3( x * v, y * v, z * v ); }
-
-    inline Vector3 operator / ( double v ) const
-    { return Vector3( x / v, y / v, z / v ); }
-
-    inline Vector3 operator + () const
-    { return (*this); }
-
-    inline Vector3 operator - () const
-    { return Vector3( -x, -y, -z ); }
-
-    inline Vector3& operator += ( const Vector3& v )
-    { x += v.x; y += v.y; z += v.z; return (*this); }
-
-    inline Vector3& operator -= ( const Vector3& v )
-    { x -= v.x; y -= v.y; z -= v.z; return (*this); }
-
-    inline Vector3& operator *= ( double v )
-    { x *= v; y *= v; z *= v; return (*this); }
-};
-
-
-inline Vector3 mul( const Vector3& a, const Vector3& b )
-{ return Vector3( a.x * b.x, a.y * b.y, a.z * b.z ); }
-
-inline Vector3 normalize( const Vector3& v )
-{
-    double mag = sqrt( v.x * v.x + v.y * v.y + v.z * v.z );
-    return Vector3( v.x / mag, v.y / mag, v.z / mag );
+    return Crystal::Math::Vector3dd(a.x * b.x, a.y * b.y, a.z * b.z);
 }
 
-inline double dot( const Vector3& a, const Vector3& b )
-{ return ( a.x * b.x + a.y * b.y + a.z * b.z ); }
-
-inline Vector3 cross( const Vector3& a, const Vector3& b )
-{
-    return Vector3(
-        a.y * b.z - a.z * b.y,
-        a.z * b.x - a.x * b.z,
-        a.x * b.y - a.y * b.x );
-}
-
-inline Vector3 reflect( const Vector3& a, const Vector3& b )
+inline Crystal::Math::Vector3dd reflect( const Crystal::Math::Vector3dd& a, const Crystal::Math::Vector3dd& b )
 {
     auto dot = a.x * b.x + a.y * b.y + a.z * b.z;
-    return Vector3(
+    return Crystal::Math::Vector3dd(
         a.x - 2.0 * dot * b.x,
         a.y - 2.0 * dot * b.y,
         a.z - 2.0 * dot * b.z );
@@ -109,14 +43,14 @@ inline Vector3 reflect( const Vector3& a, const Vector3& b )
 /////////////////////////////////////////////////////////////////////////////////////////
 struct Ray
 {
-    Vector3 pos;
-    Vector3 dir;
+    Crystal::Math::Vector3dd pos;
+    Crystal::Math::Vector3dd dir;
 
     Ray()
     : pos(), dir()
     { /* DO_NOTHING */ }
 
-    Ray( const Vector3& _position, const Vector3& _direction )
+    Ray( const Crystal::Math::Vector3dd& _position, const Crystal::Math::Vector3dd& _direction )
     : pos( _position ), dir( _direction )
     { /* DO_NOTHING */ }
 };
@@ -127,10 +61,10 @@ struct Ray
 /////////////////////////////////////////////////////////////////////////////////////////
 struct Sphere
 {
-    Vector3 pos;
+    Crystal::Math::Vector3dd pos;
     double  r;
 
-    Sphere( const Vector3& _pos, double _radius )
+    Sphere( const Crystal::Math::Vector3dd& _pos, double _radius )
     : pos( _pos ), r( _radius )
     { /* DO_NOTHING */ }
 
@@ -162,10 +96,10 @@ struct Sphere
 /////////////////////////////////////////////////////////////////////////////////////////
 struct BoundingBox
 {
-    Vector3 mini;
-    Vector3 maxi;
+    Crystal::Math::Vector3dd mini;
+    Crystal::Math::Vector3dd maxi;
 
-    inline void merge( const Vector3& value )
+    inline void merge( const Crystal::Math::Vector3dd& value )
     {
         mini.x = ( value.x < mini.x ) ? value.x : mini.x;
         mini.y = ( value.y < mini.y ) ? value.y : mini.y;
@@ -178,8 +112,8 @@ struct BoundingBox
 
     inline void reset()
     {
-        mini = Vector3(  D_INF,  D_INF,  D_INF );
-        maxi = Vector3( -D_INF, -D_INF, -D_INF );
+        mini = Crystal::Math::Vector3dd(  D_INF,  D_INF,  D_INF );
+        maxi = Crystal::Math::Vector3dd( -D_INF, -D_INF, -D_INF );
     }
 };
 

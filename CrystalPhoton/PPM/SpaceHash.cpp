@@ -1,5 +1,6 @@
 #include "SpaceHash.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Photon;
 
 
@@ -31,7 +32,7 @@ void SpaceHash::build_hash_grid
         auto hp = (*itr);
         hp->r2 = irad * irad;
         hp->n = 0;
-        hp->flux = Vector3();
+        hp->flux = Vector3dd(0,0,0);
 
         photon_count++;
         scene.hpbbox.merge(hp->pos - irad);

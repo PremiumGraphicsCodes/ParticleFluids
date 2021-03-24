@@ -9,25 +9,25 @@
 namespace Crystal {
 	namespace Photon {
 
-        class PhotonRay
-        {
-        public:
-            Ray ray;
-            Vector3 flux;
-        };
+class PhotonRay
+{
+public:
+    Ray ray;
+    Math::Vector3dd flux;
+};
 
-        class PhotonMap
-        {
-        public:
-            void trace_photon(int s, Scene& scene);
+class PhotonMap
+{
+public:
+    void trace_photon(int s, Scene& scene);
 
-            void density_estimation(Vector3* color, int num_photon, std::list<HitRecord*>& hitpoints);
+    void density_estimation(Math::Vector3dd* color, int num_photon, std::list<HitRecord*>& hitpoints);
 
-        private:
-            PhotonRay generate_photon_ray(int i);
+private:
+    PhotonRay generate_photon_ray(int i);
 
-            void trace_photon_ray(const Ray& r, int dpt, const Vector3& fl, const Vector3& adj, int i, Scene& scene);
-        };
+    void trace_photon_ray(const Ray& r, int dpt, const Math::Vector3dd& fl, const Math::Vector3dd& adj, int i, Scene& scene);
+};
 
 	}
 }

@@ -24,8 +24,8 @@
 #include "PhotonMap.h"
 #include "RayTracer.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Photon;
-
 
 
 int main(int argc, char **argv) 
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
     auto w = 512;      // 画像の横幅.
     auto h = 512;      // 画像の縦幅.
     auto s = 1000;     // s * 1000 photon paths will be traced
-    auto c = new Vector3[ w * h ];
+    auto c = new Vector3dd[ w * h ];
 
     Scene scene;
     scene.hpbbox.reset();
