@@ -4,10 +4,13 @@
 
 #include "Halton.h"
 
+#include "../../Crystal/Math/Tolerance.h"
+
 #include <chrono>
 
 using namespace Crystal::Math;
 using namespace Crystal::Photon;
+
 
 void PhotonMap::trace_photon(int s, Scene& scene)
 {
@@ -42,7 +45,7 @@ void PhotonMap::density_estimation(Vector3dd* color, int num_photon, std::list<H
     {
         auto hp = (*itr);
         auto i = hp->idx;
-        color[i] = color[i] + hp->flux * (1.0 / (D_PI * hp->r2 * num_photon * 1000.0));
+        color[i] = color[i] + hp->flux * (1.0 / (PI * hp->r2 * num_photon * 1000.0));
     }
 }
 
@@ -50,8 +53,8 @@ PhotonRay PhotonMap::generate_photon_ray(int i)
 {
     // generate a photon ray from the point light source with QMC
     PhotonRay photonRay;
-    photonRay.flux = Vector3dd(2500, 2500, 2500) * (D_PI * 4.0); // flux
-    auto p = 2.0 * D_PI * Halton::halton(0, i);
+    photonRay.flux = Vector3dd(2500, 2500, 2500) * (PI * 4.0); // flux
+    auto p = 2.0 * PI * Halton::halton(0, i);
     auto t = 2.0 * acos(sqrt(1. - Halton::halton(1, i)));
     auto st = sin(t);
 
@@ -105,13 +108,13 @@ void PhotonMap::trace_photon_ray(const Ray3d& r, int dpt, const Vector3dd& fl, c
                         auto g = (hp->n * ALPHA + ALPHA) / (hp->n * ALPHA + 1.0);
                         hp->r2 = hp->r2 * g;
                         hp->n++;
-                        hp->flux = (hp->flux + (hp->f * fl) / D_PI) * g;
+                        hp->flux = (hp->flux + (hp->f * fl) / PI) * g;
                     }
                 }
             }
 
             // use QMC to sample the next direction
-            auto r1 = 2.0 * D_PI * Halton::halton(d3 - 1, i);
+            auto r1 = 2.0 * PI * Halton::halton(d3 - 1, i);
             auto r2 = Halton::halton(d3 + 0, i);
             auto r2s = sqrt(r2);
             auto w = nl;

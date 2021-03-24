@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Math {
 
-static const double PI = 3.141592653589793238462643383279;
+constexpr double PI = 3.141592653589793238462643383279;
 
 static bool isEqual(const double x, const double y, const double tolerance) { return ::fabs(x - y) < tolerance; }
 

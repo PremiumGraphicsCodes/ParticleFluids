@@ -21,8 +21,8 @@ Scene::Scene()
 bool Scene::intersect(const Ray3d& r, double& t, int& id)
 {
     int n = sph.size();
-    auto d = D_INF;
-    t = D_INF;
+    auto d = std::numeric_limits<double>::max();
+    t = std::numeric_limits<double>::max();
     for (int i = 0; i < n; i++)
     {
         d = sph[i].intersect(r);
@@ -33,5 +33,5 @@ bool Scene::intersect(const Ray3d& r, double& t, int& id)
         }
     }
 
-    return (t < D_INF);
+    return (t < std::numeric_limits<double>::max());
 }
