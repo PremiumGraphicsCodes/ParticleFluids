@@ -77,7 +77,7 @@ void RayTracer::trace(const Ray3d& r, int dpt, const Vector3dd& fl, const Vector
 
     auto d3 = dpt * 3;
     const auto& obj = scene.sph[id];
-    auto x = r.getOrigin() + r.getDirection() * t, n = normalize(x - obj.pos);
+    auto x = r.getOrigin() + r.getDirection() * t, n = normalize(x - obj.sphere.pos);
     auto f = obj.color;
     auto nl = (dot(n, r.getDirection()) < 0) ? n : n * -1.0;
     auto p = (f.x > f.y && f.x > f.z) ? f.x : (f.y > f.z) ? f.y : f.z;

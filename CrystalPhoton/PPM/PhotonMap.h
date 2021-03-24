@@ -2,7 +2,6 @@
 
 #include "math_util.h"
 #include "hitrecord.h"
-#include "sphere.h"
 #include "Scene.h"
 #include <list>
 

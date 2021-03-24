@@ -30,16 +30,6 @@ inline Crystal::Math::Vector3dd mul(const Crystal::Math::Vector3dd& a, const Cry
     return Crystal::Math::Vector3dd(a.x * b.x, a.y * b.y, a.z * b.z);
 }
 
-inline Crystal::Math::Vector3dd reflect( const Crystal::Math::Vector3dd& a, const Crystal::Math::Vector3dd& b )
-{
-    auto dot = a.x * b.x + a.y * b.y + a.z * b.z;
-    return Crystal::Math::Vector3dd(
-        a.x - 2.0 * dot * b.x,
-        a.y - 2.0 * dot * b.y,
-        a.z - 2.0 * dot * b.z );
-}
-
-
 /////////////////////////////////////////////////////////////////////////////////////////
 // Sphre structure
 /////////////////////////////////////////////////////////////////////////////////////////

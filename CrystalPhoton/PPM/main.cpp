@@ -16,7 +16,7 @@
 
 #include "bitmap.h"
 #include "math_util.h"
-#include "sphere.h"
+#include "SphereObject.h"
 #include "hitrecord.h"
 
 #include "Scene.h"

@@ -27,16 +27,21 @@ enum MaterialType
 ////////////////////////////////////////////////////////////////////////////////
 // SphereObject structure
 ////////////////////////////////////////////////////////////////////////////////
-struct SphereObject : public Sphere
+struct SphereObject
 {
     Crystal::Math::Vector3dd         color;
     MaterialType    type;
+    Sphere sphere;
 
     SphereObject( double r, Crystal::Math::Vector3dd pos, Crystal::Math::Vector3dd col, MaterialType mat )
-    : Sphere( pos, r )
+    : sphere( pos, r )
     , color ( col )
     , type  ( mat )
     { /* DO_NOTHING */ }
+
+    double intersect(const Crystal::Math::Ray3d& ray) const { return sphere.intersect(ray); }
+
+private:
 };
 
 

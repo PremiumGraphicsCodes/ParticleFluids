@@ -6,7 +6,7 @@
 
 #include "math_util.h"
 #include "hitrecord.h"
-#include "sphere.h"
+#include "SphereObject.h"
 
 namespace Crystal {
     namespace Photon {

@@ -34,7 +34,7 @@
     <ClInclude Include="RayTracer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SpaceHash.h" />
-    <ClInclude Include="sphere.h" />
+    <ClInclude Include="SphereObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="image.bmp" />
