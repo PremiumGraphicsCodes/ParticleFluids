@@ -8,7 +8,7 @@
     <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SphereObject.cpp" />
-    <ClCompile Include="Halton.cpp" />
+    <ClCompile Include="Halton_.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
@@ -16,9 +16,9 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SpaceHash.h" />
     <ClInclude Include="RayTracer.h" />
-    <ClInclude Include="HitRecord.h" />
     <ClInclude Include="SphereObject.h" />
     <ClInclude Include="Halton.h" />
+    <ClInclude Include="HitRecord_.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="image.bmp" />
