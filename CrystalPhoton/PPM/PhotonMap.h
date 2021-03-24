@@ -12,7 +12,7 @@ namespace Crystal {
 class PhotonRay
 {
 public:
-    Ray ray;
+    Math::Ray3d ray;
     Math::Vector3dd flux;
 };
 
@@ -26,7 +26,7 @@ public:
 private:
     PhotonRay generate_photon_ray(int i);
 
-    void trace_photon_ray(const Ray& r, int dpt, const Math::Vector3dd& fl, const Math::Vector3dd& adj, int i, Scene& scene);
+    void trace_photon_ray(const Math::Ray3d& r, int dpt, const Math::Vector3dd& fl, const Math::Vector3dd& adj, int i, Scene& scene);
 };
 
 	}

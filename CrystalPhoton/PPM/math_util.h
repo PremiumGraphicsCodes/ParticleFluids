@@ -12,6 +12,7 @@
 #include <cmath>
 
 #include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Math/Ray3d.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -38,23 +39,6 @@ inline Crystal::Math::Vector3dd reflect( const Crystal::Math::Vector3dd& a, cons
         a.z - 2.0 * dot * b.z );
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////
-// Ray structure
-/////////////////////////////////////////////////////////////////////////////////////////
-struct Ray
-{
-    Crystal::Math::Vector3dd pos;
-    Crystal::Math::Vector3dd dir;
-
-    Ray()
-    : pos(), dir()
-    { /* DO_NOTHING */ }
-
-    Ray( const Crystal::Math::Vector3dd& _position, const Crystal::Math::Vector3dd& _direction )
-    : pos( _position ), dir( _direction )
-    { /* DO_NOTHING */ }
-};
-
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // Sphre structure
@@ -68,10 +52,10 @@ struct Sphere
     : pos( _pos ), r( _radius )
     { /* DO_NOTHING */ }
 
-    inline double intersect( const Ray& ray ) const
+    inline double intersect( const Crystal::Math::Ray3d& ray ) const
     {
-        auto diff = pos - ray.pos;
-        auto b = dot( diff, ray.dir );
+        auto diff = pos - ray.getOrigin();
+        auto b = dot( diff, ray.getDirection() );
         auto det = ( b * b ) - dot( diff, diff ) + r * r;
 
         if (det < 0)

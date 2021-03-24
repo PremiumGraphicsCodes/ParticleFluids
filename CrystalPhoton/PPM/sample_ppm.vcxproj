@@ -39,6 +39,11 @@
   <ItemGroup>
     <Image Include="image.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
+      <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9E50D2F6-C985-4166-BC83-9A7D6FF49810}</ProjectGuid>
     <RootNamespace>sample_ppm</RootNamespace>
