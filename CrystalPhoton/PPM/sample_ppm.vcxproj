@@ -24,10 +24,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PhotonMap.cpp" />
     <ClCompile Include="RayTracer.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
+    <ClInclude Include="Halton.h" />
     <ClInclude Include="HitRecord.h" />
     <ClInclude Include="math_util.h" />
     <ClInclude Include="PhotonMap.h" />

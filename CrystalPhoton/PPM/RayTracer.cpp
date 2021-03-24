@@ -7,28 +7,6 @@
 using namespace Crystal::Math;
 using namespace Crystal::Photon;
 
-namespace {
-
-    inline bool intersect(const Ray3d& r, double& t, int& id, Scene& scene)
-    {
-        int n = sizeof(scene.sph) / sizeof(scene.sph[0]);
-        auto d = D_INF;
-        t = D_INF;
-        for (int i = 0; i < n; i++)
-        {
-            d = scene.sph[i].intersect(r);
-            if (d < t)
-            {
-                t = d;
-                id = i;
-            }
-        }
-
-        return (t < D_INF);
-    }
-}
-
-
 void RayTracer::trace_ray(int w, int h, Scene& scene)
 {
     auto start = std::chrono::system_clock::now();
@@ -72,7 +50,7 @@ void RayTracer::trace(const Ray3d& r, int dpt, const Vector3dd& fl, const Vector
     int id;
 
     dpt++;
-    if (!intersect(r, t, id, scene) || (dpt >= 20))
+    if (!scene.intersect(r, t, id) || (dpt >= 20))
         return;
 
     auto d3 = dpt * 3;
@@ -88,7 +66,7 @@ void RayTracer::trace(const Ray3d& r, int dpt, const Vector3dd& fl, const Vector
             // eye ray
             // store the measurment point
             auto hp = new HitRecord;
-            hp->f = mul(f, adj);
+            hp->f = (f * adj);
             hp->pos = x;
             hp->nrm = n;
             hp->idx = i;
@@ -101,7 +79,7 @@ void RayTracer::trace(const Ray3d& r, int dpt, const Vector3dd& fl, const Vector
     }
     else if (obj.type == MaterialType::Mirror)
     {
-        trace(Ray3d(x, reflect(r.getDirection(), n)), dpt, mul(f, fl), mul(f, adj), i, scene);
+        trace(Ray3d(x, reflect(r.getDirection(), n)), dpt, (f * fl), (f * adj), i, scene);
     }
     else
     {
@@ -115,7 +93,7 @@ void RayTracer::trace(const Ray3d& r, int dpt, const Vector3dd& fl, const Vector
 
         // total internal reflection
         if (cos2t < 0)
-            return trace(lr, dpt, mul(f, fl), mul(f, adj), i, scene);
+            return trace(lr, dpt, (f * fl), (f * adj), i, scene);
 
         auto td = normalize(r.getDirection() * nnt - n * ((into ? 1 : -1) * (ddn * nnt + sqrt(cos2t))));
         auto a = nt - nc;
@@ -125,8 +103,8 @@ void RayTracer::trace(const Ray3d& r, int dpt, const Vector3dd& fl, const Vector
         auto Re = R0 + (1 - R0) * c * c * c * c * c;
         auto P = Re;
         Ray3d  rr(x, td);
-        auto fa = mul(f, adj);
-        auto ffl = mul(f, fl);
+        auto fa = (f * adj);
+        auto ffl = (f * fl);
 
         {
             // eye ray (trace both rays)

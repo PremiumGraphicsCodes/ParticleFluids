@@ -30,6 +30,8 @@ public:
         SphereObject(16.5, Math::Vector3dd(73,        16.5,         88), Math::Vector3dd(0.99, 0.99, 0.99),  MaterialType::Glass),   //Glass
         SphereObject(8.5,  Math::Vector3dd(50,         8.5,         60), Math::Vector3dd(0.75, 0.75, 0.75),  MaterialType::Matte),   //Middle
     };
+
+    bool intersect(const Math::Ray3d& r, double& t, int& id);
 };
 
     }

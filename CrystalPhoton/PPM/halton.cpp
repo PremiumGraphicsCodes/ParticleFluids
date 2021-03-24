@@ -1,13 +1,4 @@
-﻿//-----------------------------------------------------------------------------
-// File : halton.cpp
-// Desc : Halto Sequence.
-//-----------------------------------------------------------------------------
-
-//-----------------------------------------------------------------------------
-// Includes
-//-----------------------------------------------------------------------------
-#include "math_util.h"
-
+﻿#include "Halton.h"
 
 namespace /* anonymous */ {
 
@@ -29,7 +20,7 @@ inline int rev( const int i, const int p )
 } // namespace /*anonymous */
 
 
-double halton( const int b, int j )
+double Crystal::Photon::Halton::halton( const int b, int j )
 {
     const auto p = primes[b];
     auto h = 0.0;

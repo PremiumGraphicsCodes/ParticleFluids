@@ -22,14 +22,6 @@ static const double     D_PI  = 3.1415926535897932384626433832795;
 static const double     D_INF = 1e20;
 static const double     D_EPS = 1e-4;
 
-
-double halton( const int b, int j );
-
-inline Crystal::Math::Vector3dd mul(const Crystal::Math::Vector3dd& a, const Crystal::Math::Vector3dd& b)
-{
-    return Crystal::Math::Vector3dd(a.x * b.x, a.y * b.y, a.z * b.z);
-}
-
 /////////////////////////////////////////////////////////////////////////////////////////
 // Sphre structure
 /////////////////////////////////////////////////////////////////////////////////////////

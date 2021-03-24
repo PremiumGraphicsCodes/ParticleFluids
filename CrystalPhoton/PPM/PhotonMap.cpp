@@ -2,31 +2,12 @@
 
 #include "SpaceHash.h"
 
+#include "Halton.h"
+
 #include <chrono>
 
 using namespace Crystal::Math;
 using namespace Crystal::Photon;
-
-namespace {
-
-    inline bool intersect(const Ray3d& r, double& t, int& id, Scene& scene)
-    {
-        int n = sizeof(scene.sph) / sizeof(scene.sph[0]);
-        auto d = D_INF;
-        t = D_INF;
-        for (int i = 0; i < n; i++)
-        {
-            d = scene.sph[i].intersect(r);
-            if (d < t)
-            {
-                t = d;
-                id = i;
-            }
-        }
-
-        return (t < D_INF);
-    }
-}
 
 void PhotonMap::trace_photon(int s, Scene& scene)
 {
@@ -70,8 +51,8 @@ PhotonRay PhotonMap::generate_photon_ray(int i)
     // generate a photon ray from the point light source with QMC
     PhotonRay photonRay;
     photonRay.flux = Vector3dd(2500, 2500, 2500) * (D_PI * 4.0); // flux
-    auto p = 2.0 * D_PI * halton(0, i);
-    auto t = 2.0 * acos(sqrt(1. - halton(1, i)));
+    auto p = 2.0 * D_PI * Halton::halton(0, i);
+    auto t = 2.0 * acos(sqrt(1. - Halton::halton(1, i)));
     auto st = sin(t);
 
     const auto dir = Vector3dd(cos(p) * st, cos(t), sin(p) * st);
@@ -87,7 +68,7 @@ void PhotonMap::trace_photon_ray(const Ray3d& r, int dpt, const Vector3dd& fl, c
     int id;
 
     dpt++;
-    if (!intersect(r, t, id, scene) || (dpt >= 20)) {
+    if (!scene.intersect(r, t, id) || (dpt >= 20)) {
         return;
     }
 
@@ -124,28 +105,28 @@ void PhotonMap::trace_photon_ray(const Ray3d& r, int dpt, const Vector3dd& fl, c
                         auto g = (hp->n * ALPHA + ALPHA) / (hp->n * ALPHA + 1.0);
                         hp->r2 = hp->r2 * g;
                         hp->n++;
-                        hp->flux = (hp->flux + mul(hp->f, fl) / D_PI) * g;
+                        hp->flux = (hp->flux + (hp->f * fl) / D_PI) * g;
                     }
                 }
             }
 
             // use QMC to sample the next direction
-            auto r1 = 2.0 * D_PI * halton(d3 - 1, i);
-            auto r2 = halton(d3 + 0, i);
+            auto r1 = 2.0 * D_PI * Halton::halton(d3 - 1, i);
+            auto r2 = Halton::halton(d3 + 0, i);
             auto r2s = sqrt(r2);
             auto w = nl;
             auto u = normalize(cross((fabs(w.x) > .1 ? Vector3dd(0, 1, 0) : Vector3dd(1, 0, 0)), w));
             auto v = cross(w, u);
             auto d = normalize(u * cos(r1) * r2s + v * sin(r1) * r2s + w * sqrt(1 - r2));
 
-            if (halton(d3 + 1, i) < p)
-                trace_photon_ray(Ray3d(x, d), dpt, mul(f, fl) * (1. / p), mul(f, adj), i, scene);
+            if (Halton::halton(d3 + 1, i) < p)
+                trace_photon_ray(Ray3d(x, d), dpt, (f * fl) * (1. / p), (f * adj), i, scene);
         }
 
     }
     else if (obj.type == MaterialType::Mirror)
     {
-        trace_photon_ray(Ray3d(x, reflect(r.getDirection(), n)), dpt, mul(f, fl), mul(f, adj), i, scene);
+        trace_photon_ray(Ray3d(x, reflect(r.getDirection(), n)), dpt, (f * fl), (f * adj), i, scene);
     }
     else
     {
@@ -159,7 +140,7 @@ void PhotonMap::trace_photon_ray(const Ray3d& r, int dpt, const Vector3dd& fl, c
 
         // total internal reflection
         if (cos2t < 0) {
-            return trace_photon_ray(lr, dpt, mul(f, fl), mul(f, adj), i, scene);
+            return trace_photon_ray(lr, dpt, (f * fl), (f * adj), i, scene);
         }
 
         auto td = normalize(r.getDirection() * nnt - n * ((into ? 1 : -1) * (ddn * nnt + sqrt(cos2t))));
@@ -170,10 +151,10 @@ void PhotonMap::trace_photon_ray(const Ray3d& r, int dpt, const Vector3dd& fl, c
         auto Re = R0 + (1 - R0) * c * c * c * c * c;
         auto P = Re;
         Ray3d  rr(x, td);
-        auto fa = mul(f, adj);
-        auto ffl = mul(f, fl);
+        auto fa = (f * adj);
+        auto ffl = (f * fl);
 
-        (halton(d3 - 1, i) < P)
+        (Halton::halton(d3 - 1, i) < P)
             ? trace_photon_ray(lr, dpt, ffl, fa * Re, i, scene)
             : trace_photon_ray(rr, dpt, ffl, fa * (1.0 - Re), i, scene);
     }
