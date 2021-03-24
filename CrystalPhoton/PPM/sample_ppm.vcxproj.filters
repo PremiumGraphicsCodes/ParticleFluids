@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="bitmap.cpp" />
-    <ClCompile Include="halton.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PhotonMap.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
     <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SphereObject.cpp" />
+    <ClCompile Include="Halton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />

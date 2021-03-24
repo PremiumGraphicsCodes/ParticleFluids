@@ -1,11 +1,4 @@
-﻿//------------------------------------------------------------------------------
-// File : sphere.h
-// Desc : Sphere Object.
-//------------------------------------------------------------------------------
-
-#ifndef __SPHERE_H__
-#define __SPHERE_H__
-
+﻿#pragma once
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Sphere3d.h"
@@ -38,6 +31,3 @@ struct SphereObject
 
 private:
 };
-
-
-#endif//__SPHERE_H__
