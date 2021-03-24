@@ -20,12 +20,12 @@ void SpaceHash::build_hash_grid
 )
 {
     // heuristic for initial radius
-    auto size = scene.hpbbox.maxi - scene.hpbbox.mini;
+    auto size = scene.hpbbox.getLength();
     auto irad = ((size.x + size.y + size.z) / 3.0) / ((w + h) / 2.0) * 2.0;
 
     // determine hash table size
     // we now find the bounding box of all the measurement points inflated by the initial radius
-    scene.hpbbox.reset();
+    scene.hpbbox = Box3d::createDegeneratedBox();
     auto photon_count = 0;
     for (auto itr = scene.hitpoints.begin(); itr != scene.hitpoints.end(); ++itr)
     {
@@ -35,8 +35,8 @@ void SpaceHash::build_hash_grid
         hp->flux = Vector3dd(0,0,0);
 
         photon_count++;
-        scene.hpbbox.merge(hp->pos - irad);
-        scene.hpbbox.merge(hp->pos + irad);
+        scene.hpbbox.add(hp->pos - irad);
+        scene.hpbbox.add(hp->pos + irad);
     }
 
     // make each grid cell two times larger than the initial radius
@@ -48,8 +48,8 @@ void SpaceHash::build_hash_grid
     for (auto itr = scene.hitpoints.begin(); itr != scene.hitpoints.end(); ++itr)
     {
         auto hp = (*itr);
-        auto min = ((hp->pos - irad) - scene.hpbbox.mini) * scene.hash_s;
-        auto max = ((hp->pos + irad) - scene.hpbbox.mini) * scene.hash_s;
+        auto min = ((hp->pos - irad) - scene.hpbbox.getMin()) * scene.hash_s;
+        auto max = ((hp->pos + irad) - scene.hpbbox.getMin()) * scene.hash_s;
 
         for (int iz = abs(int(min.z)); iz <= abs(int(max.z)); iz++)
         {

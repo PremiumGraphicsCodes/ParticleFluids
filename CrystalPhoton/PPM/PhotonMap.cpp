@@ -84,7 +84,7 @@ void PhotonMap::trace_photon_ray(const Ray3d& r, int dpt, const Vector3dd& fl, c
         {
             // photon ray
             // find neighboring measurement points and accumulate flux via progressive density estimation
-            auto hh = (x - scene.hpbbox.mini) * scene.hash_s;
+            auto hh = (x - scene.hpbbox.getMin()) * scene.hash_s;
             auto ix = abs(int(hh.x));
             auto iy = abs(int(hh.y));
             auto iz = abs(int(hh.z));

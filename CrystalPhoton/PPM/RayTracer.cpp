@@ -73,7 +73,7 @@ void RayTracer::trace(const Ray3d& r, int dpt, const Vector3dd& fl, const Vector
             scene.hitpoints.push_back(hp);
 
             // find the bounding box of all the measurement points
-            scene.hpbbox.merge(x);
+            scene.hpbbox.add(x);
         }
 
     }

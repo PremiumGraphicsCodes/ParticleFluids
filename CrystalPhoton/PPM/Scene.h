@@ -8,6 +8,8 @@
 #include "hitrecord.h"
 #include "SphereObject.h"
 
+#include "../../Crystal/Math/Box3d.h"
+
 namespace Crystal {
     namespace Photon {
 
@@ -18,7 +20,7 @@ public:
     std::list<HitRecord*>               hitpoints;
     std::vector<std::list<HitRecord*> > hash_grid;
     double                              hash_s;
-    BoundingBox                         hpbbox;
+    Math::Box3d hpbbox;
 
     std::vector<SphereObject> sph;
 
