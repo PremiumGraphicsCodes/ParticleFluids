@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bitmap.cpp" />
-    <ClCompile Include="Halton_.cpp" />
+    <ClCompile Include="Halton.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PhotonMap.cpp" />
     <ClCompile Include="RayTracer.cpp" />
@@ -31,7 +31,7 @@
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
     <ClInclude Include="Halton.h" />
-    <ClInclude Include="HitRecord_.h" />
+    <ClInclude Include="HitRecord.h" />
     <ClInclude Include="PhotonMap.h" />
     <ClInclude Include="RayTracer.h" />
     <ClInclude Include="Scene.h" />
