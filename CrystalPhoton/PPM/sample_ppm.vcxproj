@@ -26,6 +26,7 @@
     <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SpaceHash.cpp" />
+    <ClCompile Include="SphereObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
@@ -42,6 +43,9 @@
     <Image Include="image.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrystalSpace\CrystalAlgo\CrystalSpace.vcxproj">
+      <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
     </ProjectReference>

@@ -8,6 +8,7 @@
     <ClCompile Include="SpaceHash.cpp" />
     <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SphereObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />

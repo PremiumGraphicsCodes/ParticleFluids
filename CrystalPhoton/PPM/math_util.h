@@ -23,41 +23,6 @@ static const double     D_INF = 1e20;
 static const double     D_EPS = 1e-4;
 
 /////////////////////////////////////////////////////////////////////////////////////////
-// Sphre structure
-/////////////////////////////////////////////////////////////////////////////////////////
-struct Sphere
-{
-    Crystal::Math::Vector3dd pos;
-    double  r;
-
-    Sphere( const Crystal::Math::Vector3dd& _pos, double _radius )
-    : pos( _pos ), r( _radius )
-    { /* DO_NOTHING */ }
-
-    inline double intersect( const Crystal::Math::Ray3d& ray ) const
-    {
-        auto diff = pos - ray.getOrigin();
-        auto b = dot( diff, ray.getDirection() );
-        auto det = ( b * b ) - dot( diff, diff ) + r * r;
-
-        if (det < 0)
-            return D_INF;
-
-        det = sqrt(det);
-        auto t1 = b - det;
-        if ( t1 >  D_EPS )
-            return t1;
-
-        auto t2 = b + det;
-        if ( t2 > D_EPS )
-            return t2;
-
-        return D_INF;
-    }
-};
-
-
-/////////////////////////////////////////////////////////////////////////////////////////
 // BoundingBox structure
 /////////////////////////////////////////////////////////////////////////////////////////
 struct BoundingBox

@@ -11,6 +11,7 @@
 // Includes
 //------------------------------------------------------------------------------
 #include "math_util.h"
+#include "../../Crystal/Math/Sphere3d.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +32,7 @@ struct SphereObject
 {
     Crystal::Math::Vector3dd         color;
     MaterialType    type;
-    Sphere sphere;
+    Crystal::Math::Sphere3d sphere;
 
     SphereObject( double r, Crystal::Math::Vector3dd pos, Crystal::Math::Vector3dd col, MaterialType mat )
     : sphere( pos, r )
@@ -39,7 +40,7 @@ struct SphereObject
     , type  ( mat )
     { /* DO_NOTHING */ }
 
-    double intersect(const Crystal::Math::Ray3d& ray) const { return sphere.intersect(ray); }
+    double intersect(const Crystal::Math::Ray3d& ray) const;
 
 private:
 };
