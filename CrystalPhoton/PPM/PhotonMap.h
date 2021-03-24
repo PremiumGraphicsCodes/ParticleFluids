@@ -1,8 +1,8 @@
 #pragma once
 
-#include "math_util.h"
 #include "hitrecord.h"
 #include "Scene.h"
+#include "../../Crystal/Math/Ray3d.h"
 #include <list>
 
 namespace Crystal {

@@ -4,9 +4,6 @@
 //        Original Code by T.Hachisuka (http://users-cs.au.dk/toshiya/)
 //-------------------------------------------------------------------------------------------
 
-//-------------------------------------------------------------------------------------------
-// Includes
-//-------------------------------------------------------------------------------------------
 #include <cmath>
 #include <cstdlib>
 #include <cstdio>
@@ -15,7 +12,6 @@
 #include <chrono>
 
 #include "bitmap.h"
-#include "math_util.h"
 #include "SphereObject.h"
 #include "hitrecord.h"
 

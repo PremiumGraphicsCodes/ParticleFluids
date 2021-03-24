@@ -32,7 +32,6 @@
     <ClInclude Include="bitmap.h" />
     <ClInclude Include="Halton.h" />
     <ClInclude Include="HitRecord.h" />
-    <ClInclude Include="math_util.h" />
     <ClInclude Include="PhotonMap.h" />
     <ClInclude Include="RayTracer.h" />
     <ClInclude Include="Scene.h" />

@@ -4,7 +4,6 @@
 #include <vector>
 #include <array>
 
-#include "math_util.h"
 #include "hitrecord.h"
 #include "SphereObject.h"
 
