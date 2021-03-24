@@ -1,20 +1,10 @@
-﻿//------------------------------------------------------------------------------
-// File : hitrecord.h
-// Desc : Hit Record.
-//------------------------------------------------------------------------------
+﻿#pragma once
 
-#ifndef __HITRECORD_H__
-#define __HITRECORD_H__
+#include "../../Crystal/Math/Vector3d.h"
 
-//------------------------------------------------------------------------------
-// Incluldes
-//------------------------------------------------------------------------------
-#include "math_util.h"
+namespace Crystal {
+    namespace Photon {
 
-
-////////////////////////////////////////////////////////////////////////////////
-// HitRecord structure
-////////////////////////////////////////////////////////////////////////////////
 struct HitRecord
 {
     Crystal::Math::Vector3dd         pos;
@@ -22,9 +12,9 @@ struct HitRecord
     Crystal::Math::Vector3dd         flux;
     Crystal::Math::Vector3dd         f;
     double          r2;
-    unsigned int    n; 
+    unsigned int    n;
     int             idx;
 };
 
-
-#endif//__HITRECORD_H__
+    }
+}
