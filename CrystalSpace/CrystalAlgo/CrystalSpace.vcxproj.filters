@@ -54,6 +54,9 @@
     <ClInclude Include="SparseVolumeScene.h">
       <Filter>Volume</Filter>
     </ClInclude>
+    <ClInclude Include="SparseVolumePresenter.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">

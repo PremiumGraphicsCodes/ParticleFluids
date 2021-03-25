@@ -32,12 +32,9 @@ private:
 class SparseVolumeScene : public Scene::IScene
 {
 public:
-	SparseVolumeScene(const int id, const std::string& name, const Math::Box3d& bb);
+	SparseVolumeScene(const int id, const std::string& name, const Math::Box3d& bb, const std::array<int,3>& resolutions);
 
-
-	//virtual IShapeScene* clone() const = 0;
-
-	//Math::Box3d getBoundingBox() const { return shape->getBoundingBox(); }
+	Math::Box3d getBoundingBox() const { return boundingBox; }
 
 	//Shape::Volume<float>* getShape() const { return shape.get(); }
 
@@ -45,13 +42,16 @@ public:
 
 	//IPresenter* getPresenter() { return presenter.get(); }
 
-	//std::vector<Shape::Particle<double>> toParticles() const;
+	void createNode(const std::array<int, 3>& index);
 
-	//void createNode(const std::array<int, 3>& index);
+	Math::Vector3dd getPositionAt(const std::array<int, 3>& index) const;
+
+	std::map< std::array<int, 3>, SparseVolumeNode*> getNodes() const { return nodes; }
 
 private:
 	std::map< std::array<int,3>, SparseVolumeNode*> nodes;
 	Math::Box3d boundingBox;
+	std::array<int, 3> resolutions;
 	//std::unique_ptr<Shape::Volume<float>> shape;
 	//std::unique_ptr<VolumePresenter> presenter;
 };

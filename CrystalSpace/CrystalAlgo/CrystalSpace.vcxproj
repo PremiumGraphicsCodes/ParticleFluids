@@ -161,6 +161,7 @@
     <ClInclude Include="MeshToParticleAlgo.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash3d.h" />
+    <ClInclude Include="SparseVolumePresenter.h" />
     <ClInclude Include="SparseVolumeScene.h" />
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="UniformGrid3d.h" />
