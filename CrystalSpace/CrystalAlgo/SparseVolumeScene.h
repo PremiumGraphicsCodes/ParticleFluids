@@ -13,7 +13,7 @@
 
 namespace Crystal {
 	namespace Space {
-		//class VolumePresenter;
+		class SparseVolumePresenter;
 
 class SparseVolumeNode : public Shape::IParticle
 {
@@ -53,7 +53,7 @@ private:
 	Math::Box3d boundingBox;
 	std::array<int, 3> resolutions;
 	//std::unique_ptr<Shape::Volume<float>> shape;
-	//std::unique_ptr<VolumePresenter> presenter;
+	std::unique_ptr<SparseVolumePresenter> presenter;
 };
 
 	}

@@ -108,6 +108,9 @@
     <ClCompile Include="SparseVolumeScene.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
+    <ClCompile Include="SparseVolumePresenter.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">

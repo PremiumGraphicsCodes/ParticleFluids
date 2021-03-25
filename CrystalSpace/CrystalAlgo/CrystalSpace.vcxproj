@@ -182,6 +182,7 @@
     <ClCompile Include="MeshToParticleAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash3d.cpp" />
+    <ClCompile Include="SparseVolumePresenter.cpp" />
     <ClCompile Include="SparseVolumeScene.cpp" />
     <ClCompile Include="UniformGrid3d.cpp" />
     <ClCompile Include="VolumeConvertAlgo.cpp" />

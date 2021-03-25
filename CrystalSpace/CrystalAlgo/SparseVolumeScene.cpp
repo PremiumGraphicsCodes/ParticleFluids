@@ -1,12 +1,16 @@
 #include "SparseVolumeScene.h"
 
+#include "SparseVolumePresenter.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 
 SparseVolumeScene::SparseVolumeScene(const int id, const std::string& name, const Box3d& bb, const std::array<int, 3>& resolutions) :
 	boundingBox(bb),
 	resolutions(resolutions)
-{}
+{
+	presenter = std::make_unique<SparseVolumePresenter>(this);
+}
 
 void SparseVolumeScene::createNode(const std::array<int, 3>& index)
 {
