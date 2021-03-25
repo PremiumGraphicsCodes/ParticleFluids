@@ -40,6 +40,9 @@
     <ClCompile Include="ISVAddView.cpp">
       <Filter>Volume\SparseVolume</Filter>
     </ClCompile>
+    <ClCompile Include="SVSphereView.cpp">
+      <Filter>Volume\SparseVolume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h">

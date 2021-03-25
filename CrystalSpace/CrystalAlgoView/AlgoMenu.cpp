@@ -14,6 +14,8 @@
 #include "UniformGrid3dView.h"
 #include "MeshToParticleAlgoView.h"
 
+#include "SVSphereView.h"
+
 #include "../../CrystalViewer/AppBase/imgui.h"
 
 using namespace Crystal::Scene;
@@ -63,6 +65,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("MeshToParticle")) {
 			control->setWindow(new MeshToParticleAlgoView("MeshToParticle",getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("SVSphere")) {
+			control->setWindow(new SVSphereView("SVSphere", getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}
