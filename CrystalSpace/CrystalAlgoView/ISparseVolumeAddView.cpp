@@ -1,7 +1,6 @@
-#include "IVolAddView.h"
+#include "ISparseVolumeAddView.h"
 
-#include "../../Crystal/Shape/Volume.h"
-#include "../../Crystal/Scene/VolumeScene.h"
+#include "../CrystalAlgo/SparseVolumeScene.h"
 
 #include <memory>
 
@@ -9,10 +8,11 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
+using namespace Crystal::Space;
 
-IVolAddView::IVolAddView(const std::string& name, World* model, Canvas* canvas) :
+ISparseVolumeAddView::ISparseVolumeAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	nameView("Name", "Volume01"),
+	nameView("Name", "SparseVolume01"),
 	presenterView("Presenter"),
 	colorMapView("ColorMap")
 {
@@ -21,10 +21,12 @@ IVolAddView::IVolAddView(const std::string& name, World* model, Canvas* canvas) 
 	add(&colorMapView);
 }
 
-void IVolAddView::addVolume(std::unique_ptr<Volume<float>> volume)
+void ISparseVolumeAddView::addVolume(std::unique_ptr<Volume<float>> volume)
 {
-	auto scene = new VolumeScene(getWorld()->getNextSceneId(), nameView.getValue(), std::move(volume));
+	/*
+	auto scene = new SparseVolumeScene(getWorld()->getNextSceneId(), nameView.getValue()); std::move(volume));
 	getWorld()->getScenes()->addScene(scene);
 
 	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	*/
 }

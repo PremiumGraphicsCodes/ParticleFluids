@@ -37,6 +37,9 @@
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="MeshToParticleAlgoView.cpp" />
+    <ClCompile Include="ISparseVolumeAddView.cpp">
+      <Filter>Volume\SparseVolume</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h">
@@ -74,6 +77,9 @@
       <Filter>Search</Filter>
     </ClInclude>
     <ClInclude Include="MeshToParticleAlgoView.h" />
+    <ClInclude Include="ISparseVolumeAddView.h">
+      <Filter>Volume\SparseVolume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">
@@ -90,6 +96,9 @@
     </Filter>
     <Filter Include="Volume">
       <UniqueIdentifier>{c2c44d67-d31e-48da-b504-2046a4e41f9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volume\SparseVolume">
+      <UniqueIdentifier>{9f94bf65-7479-4403-b110-951813dc8f21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

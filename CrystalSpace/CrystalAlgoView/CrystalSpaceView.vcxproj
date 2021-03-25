@@ -165,6 +165,7 @@
     <ClCompile Include="CrystalAlgoView.cpp" />
     <ClCompile Include="IndexedSortSearchAlgoView.cpp" />
     <ClCompile Include="IntersectionView.cpp" />
+    <ClCompile Include="ISparseVolumeAddView.cpp" />
     <ClCompile Include="MarchingCubesView.cpp" />
     <ClCompile Include="MeshToParticleAlgoView.cpp" />
     <ClCompile Include="OctreeView.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="CompactSpaceHash3dView.h" />
     <ClInclude Include="IndexedSortSearchAlgoView.h" />
     <ClInclude Include="IntersectionView.h" />
+    <ClInclude Include="ISparseVolumeAddView.h" />
     <ClInclude Include="MarchingCubesView.h" />
     <ClInclude Include="MeshToParticleAlgoView.h" />
     <ClInclude Include="OctreeView.h" />
