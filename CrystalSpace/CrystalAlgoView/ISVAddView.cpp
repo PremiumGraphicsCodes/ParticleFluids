@@ -1,4 +1,4 @@
-#include "ISparseVolumeAddView.h"
+#include "ISVAddView.h"
 
 #include "../CrystalAlgo/SparseVolumeScene.h"
 
@@ -10,7 +10,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Space;
 
-ISparseVolumeAddView::ISparseVolumeAddView(const std::string& name, World* model, Canvas* canvas) :
+ISVAddView::ISVAddView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	nameView("Name", "SparseVolume01"),
 	presenterView("Presenter"),
@@ -21,7 +21,7 @@ ISparseVolumeAddView::ISparseVolumeAddView(const std::string& name, World* model
 	add(&colorMapView);
 }
 
-void ISparseVolumeAddView::addVolume(std::unique_ptr<Volume<float>> volume)
+void ISVAddView::addVolume(std::unique_ptr<Volume<float>> volume)
 {
 	/*
 	auto scene = new SparseVolumeScene(getWorld()->getNextSceneId(), nameView.getValue()); std::move(volume));

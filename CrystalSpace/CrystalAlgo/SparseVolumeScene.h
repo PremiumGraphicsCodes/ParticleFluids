@@ -29,18 +29,16 @@ private:
 	//std::array<int,3> index;
 };
 
-class SparseVolumeScene : public Scene::IScene
+class SparseVolume
 {
 public:
-	SparseVolumeScene(const int id, const std::string& name, const Math::Box3d& bb, const std::array<int,3>& resolutions);
+	SparseVolume(const Math::Box3d& bb, const std::array<int, 3>& resolutions) :
+		boundingBox(bb),
+		resolutions(resolutions)
+	{
+	}
 
 	Math::Box3d getBoundingBox() const { return boundingBox; }
-
-	//Shape::Volume<float>* getShape() const { return shape.get(); }
-
-	Scene::SceneType getType() const { return Scene::SceneType("SparseVolumeScene"); }
-
-	//IPresenter* getPresenter() { return presenter.get(); }
 
 	void createNode(const std::array<int, 3>& index);
 
@@ -49,10 +47,27 @@ public:
 	std::map< std::array<int, 3>, SparseVolumeNode*> getNodes() const { return nodes; }
 
 private:
-	std::map< std::array<int,3>, SparseVolumeNode*> nodes;
+	std::map< std::array<int, 3>, SparseVolumeNode*> nodes;
+
 	Math::Box3d boundingBox;
 	std::array<int, 3> resolutions;
-	//std::unique_ptr<Shape::Volume<float>> shape;
+};
+
+
+class SparseVolumeScene : public Scene::IScene
+{
+public:
+	SparseVolumeScene(const int id, const std::string& name, std::unique_ptr<SparseVolume> shape);
+
+	SparseVolume* getShape() const { return shape.get(); }
+
+	Scene::SceneType getType() const { return Scene::SceneType("SparseVolumeScene"); }
+
+	//IPresenter* getPresenter() { return presenter.get(); }
+
+
+private:
+	std::unique_ptr<SparseVolume> shape;
 	std::unique_ptr<SparseVolumePresenter> presenter;
 };
 

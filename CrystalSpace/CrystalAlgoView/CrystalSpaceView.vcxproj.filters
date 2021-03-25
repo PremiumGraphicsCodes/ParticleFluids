@@ -37,7 +37,7 @@
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="MeshToParticleAlgoView.cpp" />
-    <ClCompile Include="ISparseVolumeAddView.cpp">
+    <ClCompile Include="ISVAddView.cpp">
       <Filter>Volume\SparseVolume</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,7 +77,10 @@
       <Filter>Search</Filter>
     </ClInclude>
     <ClInclude Include="MeshToParticleAlgoView.h" />
-    <ClInclude Include="ISparseVolumeAddView.h">
+    <ClInclude Include="SVSphereView.h">
+      <Filter>Volume\SparseVolume</Filter>
+    </ClInclude>
+    <ClInclude Include="ISVAddView.h">
       <Filter>Volume\SparseVolume</Filter>
     </ClInclude>
   </ItemGroup>

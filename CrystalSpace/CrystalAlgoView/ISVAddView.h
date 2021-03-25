@@ -9,10 +9,10 @@
 namespace Crystal {
 	namespace UI {
 
-class ISparseVolumeAddView : public IOkCancelView
+class ISVAddView : public IOkCancelView
 {
 public:
-	ISparseVolumeAddView(const std::string& name, Scene::World* model, Canvas* canvas);
+	ISVAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 protected:
 	void addVolume(std::unique_ptr<Shape::Volume<float>> volume);

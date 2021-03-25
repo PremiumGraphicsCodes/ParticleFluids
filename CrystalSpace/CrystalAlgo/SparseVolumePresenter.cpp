@@ -43,7 +43,7 @@ void SparseVolumePresenter::updateView()
 void SparseVolumePresenter::updateScreenView()
 {
 	PointBuffer pb;
-	auto nodes = model->getNodes();
+	auto nodes = model->getShape()->getNodes();
 
 	for (const auto& node : nodes) {
 		pb.add(node.second->getPosition(), ColorRGBAf(0, 0, 0, 0), 10.0f);
