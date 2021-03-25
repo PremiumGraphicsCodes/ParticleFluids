@@ -6,9 +6,6 @@
 
 using namespace Crystal::Numerics;
 
-
-//#include "framework.h"
-
 #include <iostream>
 #include <Eigen/Dense>
 //#include <Eigen/SVD>
@@ -28,8 +25,7 @@ SVD::SVD2dResult SVD::calculate(const Matrix2dd& lhs)
 		result.isOk = false;
 	}
 	result.isOk = true;
-	const auto values = eigensolver.eigenvalues();
-	result.eigenValues = Crystal::Math::Vector2dd(values[0], values[1]);
+	result.eigenValues = Impl::Converter::fromEigen(eigensolver.eigenvalues());
 	result.eigenVectors = Impl::Converter::fromEigen(eigensolver.eigenvectors());
 	return result;
 }
@@ -43,8 +39,7 @@ SVD::SVD3dResult SVD::calculate(const Matrix3dd& lhs)
 		result.isOk = false;
 	}
 	result.isOk = true;
-	const auto values = eigensolver.eigenvalues();
-	result.eigenValues = Crystal::Math::Vector3dd(values[0], values[1], values[2]);
+	result.eigenValues = Impl::Converter::fromEigen(eigensolver.eigenvalues());
 	result.eigenVectors = Impl::Converter::fromEigen(eigensolver.eigenvectors());
 	return result;
 }

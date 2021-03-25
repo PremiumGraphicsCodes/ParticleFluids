@@ -38,6 +38,20 @@ Eigen::Matrix4d Converter::toEigen(const Matrix4dd& src)
 	return dest;
 }
 
+Eigen::Vector2d Converter::toEigen(const Vector2dd& src)
+{
+	return Eigen::Vector2d(src[0], src[1]);
+}
+
+Eigen::Vector3d Converter::toEigen(const Vector3dd& src)
+{
+	return Eigen::Vector3d(src[0], src[1], src[2]);
+}
+
+Eigen::Vector4d Converter::toEigen(const Vector4dd& src)
+{
+	return Eigen::Vector4d(src[0], src[1], src[2], src[3]);
+}
 
 Matrix2dd Converter::fromEigen(const Eigen::Matrix2d& src)
 {
@@ -70,4 +84,19 @@ Matrix4dd Converter::fromEigen(const Eigen::Matrix4d& src)
 		}
 	}
 	return dest;
+}
+
+Vector2dd Converter::fromEigen(const Eigen::Vector2d& src)
+{
+	return Vector2dd(src[0], src[1]);
+}
+
+Vector3dd Converter::fromEigen(const Eigen::Vector3d& src)
+{
+	return Vector3dd(src[0], src[1], src[2]);
+}
+
+Vector4dd Converter::fromEigen(const Eigen::Vector4d& src)
+{
+	return Vector4dd(src[0], src[1], src[2], src[3]);
 }

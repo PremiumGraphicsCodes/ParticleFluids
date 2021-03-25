@@ -1,5 +1,4 @@
-#ifndef __CRSYTAL_MATH_VECTOR_4D_H__
-#define __CRSYTAL_MATH_VECTOR_4D_H__
+#pragma once
 
 #include <cmath>
 #include <vector>
@@ -30,5 +29,3 @@ static bool areSame(const Vector4dd& lhs, const Vector4dd& rhs, const double tol
 
 	}
 }
-
-#endif
