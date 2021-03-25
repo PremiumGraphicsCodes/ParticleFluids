@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ISVAddView.h"
-#include "../../CrystalViewer/AppBase/Box3dView.h"
+#include "../../CrystalViewer/AppBase/Sphere3dView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -14,7 +14,7 @@ public:
 	void onOk() override;
 
 private:
-	Box3dView boxView;
+	Sphere3dView sphereView;
 	IntView resolutionView;
 };
 
