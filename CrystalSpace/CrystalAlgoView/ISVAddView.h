@@ -4,7 +4,7 @@
 #include "../../CrystalViewer/AppBase/StringView.h"
 #include "../../CrystalViewer/AppBase/ComboBox.h"
 #include "../../CrystalViewer/AppBase/ColorMapView.h"
-#include "../../Crystal/Shape/Volume.h"
+#include "../CrystalAlgo/SparseVolume.h"
 
 namespace Crystal {
 	namespace UI {
@@ -15,7 +15,7 @@ public:
 	ISVAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 protected:
-	void addVolume(std::unique_ptr<Shape::Volume<float>> volume);
+	void addVolume(std::unique_ptr<Space::SparseVolume> volume);
 
 private:
 	StringView nameView;

@@ -57,6 +57,9 @@
     <ClInclude Include="SparseVolumePresenter.h">
       <Filter>Volume</Filter>
     </ClInclude>
+    <ClInclude Include="SparseVolume.h">
+      <Filter>Volume</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -109,6 +112,9 @@
       <Filter>Volume</Filter>
     </ClCompile>
     <ClCompile Include="SparseVolumePresenter.cpp">
+      <Filter>Volume</Filter>
+    </ClCompile>
+    <ClCompile Include="SparseVolume.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
   </ItemGroup>

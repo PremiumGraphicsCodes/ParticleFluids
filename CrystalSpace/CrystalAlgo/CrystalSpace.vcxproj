@@ -161,6 +161,7 @@
     <ClInclude Include="MeshToParticleAlgo.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash3d.h" />
+    <ClInclude Include="SparseVolume.h" />
     <ClInclude Include="SparseVolumePresenter.h" />
     <ClInclude Include="SparseVolumeScene.h" />
     <ClInclude Include="StopWatch.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="MeshToParticleAlgo.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash3d.cpp" />
+    <ClCompile Include="SparseVolume.cpp" />
     <ClCompile Include="SparseVolumePresenter.cpp" />
     <ClCompile Include="SparseVolumeScene.cpp" />
     <ClCompile Include="UniformGrid3d.cpp" />
