@@ -13,6 +13,7 @@ VolSphereView::VolSphereView(const std::string& name, World* world, Canvas* canv
 {
 	add(&boxView);
 	add(&resolutionView);
+	resolutionView.setValue(10);
 }
 
 void VolSphereView::onOk()

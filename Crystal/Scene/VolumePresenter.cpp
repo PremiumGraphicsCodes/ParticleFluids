@@ -4,6 +4,7 @@
 #include "PointShaderScene.h"
 #include "SceneShader.h"
 
+using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 
@@ -40,9 +41,21 @@ void VolumePresenter::updateView()
 
 void VolumePresenter::updateScreenView()
 {
-	/*
-	const auto& ps = model->getShape()->getParticles();
 	PointBuffer pb;
+	auto shape = model->getShape();
+
+	const auto& resolutions = shape->getResolutions();
+	for (auto ix = 0; ix < resolutions[0]; ix++) {
+		for (auto iy = 0; iy < resolutions[1]; iy++) {
+			for (auto iz = 0; iz < resolutions[2]; iz++) {
+				const auto p = shape->getCellPosition(ix, iy, iz);
+				pb.add(p, ColorRGBAf(0, 0, 0, 0), 10.0f);
+//				shape->get
+			}
+		}
+	}
+	this->view->send(pb);
+	/*
 	for (auto p : ps) {
 		pb.add(p->getPosition(), p->getAttribute().color, p->getAttribute().size);
 	}
