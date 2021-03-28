@@ -8,8 +8,8 @@
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Shape;
-using namespace Crystal::Algo;
-using namespace Crystal::Algo::MarchingCubesTable;
+using namespace Crystal::Space;
+using namespace Crystal::Space::MarchingCubesTable;
 
 size_t MarchingCubesAlgo::build(const Volume<double>& volume, const double isoLevel)
 {

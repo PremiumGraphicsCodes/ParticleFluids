@@ -8,7 +8,7 @@
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 IntersectionView::IntersectionView(World* model, Canvas* canvas) :
 	IOkCancelView("Intersection", model, canvas),

@@ -3,17 +3,21 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Math/Box3d.h"
-#include "MCCell.h"
 #include "../../Crystal/Shape/Volume.h"
 
+#include "MCCell.h"
+#include "SparseVolume.h"
+
 namespace Crystal {
-	namespace Algo {
+	namespace Space {
 
 class MarchingCubesAlgo
 {
 public:
 
 	size_t build(const Shape::Volume<double>& volume, const double isoLevel);
+
+	//void build(const SparseVolume& volume)
 
 	int march(const MCCell& cell, const double isoLevel);
 

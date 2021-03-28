@@ -9,7 +9,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 MarchingCubesView::MarchingCubesView(World* model, Canvas* canvas) :
 	IOkCancelView("MarchingCubes", model, canvas),

@@ -4,7 +4,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 
 namespace Crystal {
-	namespace Algo {
+	namespace Space {
 
 struct MCCell
 {

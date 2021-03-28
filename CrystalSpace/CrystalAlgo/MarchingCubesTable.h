@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Crystal {
-	namespace Algo {
+	namespace Space {
 		namespace MarchingCubesTable {
 
 			constexpr int edgeTable[256] = {

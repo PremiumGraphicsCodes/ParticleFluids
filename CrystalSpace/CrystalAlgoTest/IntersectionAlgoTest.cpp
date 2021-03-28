@@ -7,7 +7,7 @@
 #include "../CrystalAlgo/IntersectionAlgo.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 namespace {
 	Triangle3d getTriangle()

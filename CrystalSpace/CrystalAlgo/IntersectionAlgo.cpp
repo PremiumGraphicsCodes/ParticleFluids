@@ -14,7 +14,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Sphere3d& sphere, const double tolerance)
 {
