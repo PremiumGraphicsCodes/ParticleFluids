@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../CrystalAlgo/DistanceCalculator.h"
+#include "../CrystalSpace/DistanceCalculator.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;

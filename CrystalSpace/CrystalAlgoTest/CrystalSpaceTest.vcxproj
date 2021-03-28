@@ -46,7 +46,7 @@
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\CrystalAlgo\CrystalSpace.vcxproj">
+    <ProjectReference Include="..\CrystalSpace\CrystalSpace.vcxproj">
       <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
     </ProjectReference>
   </ItemGroup>

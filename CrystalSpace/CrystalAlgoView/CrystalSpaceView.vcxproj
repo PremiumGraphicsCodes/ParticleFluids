@@ -215,7 +215,7 @@
     <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
       <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\CrystalAlgo\CrystalSpace.vcxproj">
+    <ProjectReference Include="..\CrystalSpace\CrystalSpace.vcxproj">
       <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
     </ProjectReference>
   </ItemGroup>

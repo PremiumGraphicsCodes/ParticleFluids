@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../CrystalAlgo/CompactSpaceHash3d.h"
+#include "../CrystalSpace/CompactSpaceHash3d.h"
 
 #include "../../Crystal/Shape/IParticle.h"
 

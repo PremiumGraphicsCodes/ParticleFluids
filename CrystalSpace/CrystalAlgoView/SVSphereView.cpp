@@ -1,6 +1,6 @@
 #include "SVSphereView.h"
 
-#include "../../CrystalSpace/CrystalAlgo/SparseVolume.h"
+#include "../../CrystalSpace/CrystalSpace/SparseVolume.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;

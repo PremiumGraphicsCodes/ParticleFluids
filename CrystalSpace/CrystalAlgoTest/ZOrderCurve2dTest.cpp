@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../CrystalAlgo/ZOrderCurve2d.h"
+#include "../CrystalSpace/ZOrderCurve2d.h"
 
 using namespace Crystal::Search;
 

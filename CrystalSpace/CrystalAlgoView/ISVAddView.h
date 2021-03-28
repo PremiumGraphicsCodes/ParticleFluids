@@ -4,7 +4,7 @@
 #include "../../CrystalViewer/AppBase/StringView.h"
 #include "../../CrystalViewer/AppBase/ComboBox.h"
 #include "../../CrystalViewer/AppBase/ColorMapView.h"
-#include "../CrystalAlgo/SparseVolume.h"
+#include "../CrystalSpace/SparseVolume.h"
 
 namespace Crystal {
 	namespace UI {

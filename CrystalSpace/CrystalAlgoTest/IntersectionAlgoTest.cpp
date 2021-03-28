@@ -4,7 +4,7 @@
 #include "../../Crystal/Math/Plane3d.h"
 #include "../../Crystal/Math/Ray3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
-#include "../CrystalAlgo/IntersectionAlgo.h"
+#include "../CrystalSpace/IntersectionAlgo.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;

@@ -1,6 +1,6 @@
 #include "ISVAddView.h"
 
-#include "../CrystalAlgo/SparseVolumeScene.h"
+#include "../CrystalSpace/SparseVolumeScene.h"
 
 #include <memory>
 
