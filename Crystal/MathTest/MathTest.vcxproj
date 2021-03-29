@@ -115,6 +115,7 @@
     <ClCompile Include="Circle3dTest.cpp" />
     <ClCompile Include="Cone3dTest.cpp" />
     <ClCompile Include="Cylinder3dTest.cpp" />
+    <ClCompile Include="Ellipsoid3dTest.cpp" />
     <ClCompile Include="GaussianTest.cpp" />
     <ClCompile Include="Line3dTest.cpp" />
     <ClCompile Include="Matrix2dTest.cpp" />

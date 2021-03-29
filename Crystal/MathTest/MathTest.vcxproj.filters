@@ -68,5 +68,8 @@
     <ClCompile Include="Circle3dTest.cpp">
       <Filter>Primitive3d</Filter>
     </ClCompile>
+    <ClCompile Include="Ellipsoid3dTest.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -8,14 +8,14 @@ namespace Crystal {
 	namespace Math {
 		class Box3d;
 
-class Ellipsoid3d : public IVolume3d
+class Ellipsoid3d //: public IVolume3d
 {
 public:
 	Ellipsoid3d();
 
 	Ellipsoid3d(const Vector3dd& center, const Vector3dd& uvec, const Vector3dd& vvec, const Vector3dd& wvec);
 
-	Vector3dd getPosition(const double u, const double v, const double w) const override;
+	Vector3dd getPosition(const double u, const double v) const;
 
 	//Vector3dd getNormal(const double u, const double v) const override;
 

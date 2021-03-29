@@ -2,6 +2,8 @@
 
 #include "Box3d.h"
 
+#include "Sphere3d.h"
+
 using namespace Crystal::Math;
 
 Ellipsoid3d::Ellipsoid3d() :
@@ -19,15 +21,14 @@ Ellipsoid3d::Ellipsoid3d(const Vector3dd& center, const Vector3dd& uvec, const V
 {
 }
 
-Vector3dd Ellipsoid3d::getPosition(const double u, const double v, const double w) const
+Vector3dd Ellipsoid3d::getPosition(const double u, const double v) const
 {
-	const auto uu = u * 2.0 * PI;
-	auto x = uvec * ::cos(uu);
-	const auto vv = v * 2.0 * PI;
-	auto y = vvec * ::cos(vv);
-	const auto ww = w * 2.0 * PI;
-	auto z = wvec * ::cos(ww);	
-	return x + y + z;
+	Sphere3d s(Vector3dd(0,0,0), 1.0);
+	const auto p = s.getPosition(u, v);
+	auto uu = p.x * uvec;
+	auto vv = p.y * vvec;
+	auto ww = p.z * wvec;
+	return center + uu + vv + ww;
 }
 
 bool Ellipsoid3d::isSame(const Ellipsoid3d& rhs, const double tolerance) const
@@ -41,7 +42,7 @@ bool Ellipsoid3d::isSame(const Ellipsoid3d& rhs, const double tolerance) const
 
 Box3d Ellipsoid3d::getBoundingBox() const
 {
-	Box3d bb(getPosition(0, 0, 0));
-	bb.add(getPosition(1, 1, 1));
+	Box3d bb(getPosition(0, 0));
+	bb.add(getPosition(1, 1));
 	return bb;
 }
