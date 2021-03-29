@@ -22,9 +22,12 @@ void SPHSurfaceBuilderView::onOk()
 {
 	std::vector<Vector3dd> positions = 
 	{
-		Vector3dd(0.0,0.0,0.0),
-//		Vector3dd(10, 10, 10),
-		Vector3dd(0.0, 0.5, 0)
+		Vector3dd(0.0, 0.0, 0.0),
+		Vector3dd(0.5, 0.0, 0.0),
+		Vector3dd(10.0, 10.0, 10.0)
+
+//		Vector3dd(0.0, 0.5, 0.0),
+
 	};
 
 	SPHSurfaceBuilder builder;

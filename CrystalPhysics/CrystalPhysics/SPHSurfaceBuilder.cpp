@@ -11,6 +11,7 @@
 //#include <map>
 
 #include "WPCA.h"
+#include "SPHKernel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -23,6 +24,11 @@ void SPHSurfaceBuilder::add(IParticle* particle)
 	this->particles.push_back(particle);
 }
 */
+
+namespace {
+	constexpr auto kr = 4.0;
+	constexpr auto ks = 1400.0;
+}
 
 void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const float searchRadius)
 {
@@ -52,6 +58,17 @@ void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const flo
 			continue;
 		}
 		p->matrix = result.eigenVectors;
+		auto evs = result.eigenValues;
+		evs[1] = std::max(evs[1], evs[0] / kr);
+		evs[2] = std::max(evs[2], evs[0] / kr);
+		evs *= ks;
+
+		Matrix3dd diagonalMatrix(
+			evs[0], 0.0, 0.0,
+			0.0, evs[1], 0.0,
+			0.0, 0.0, evs[2]
+		);
+		p->matrix = p->matrix * diagonalMatrix * glm::transpose(p->matrix) * (1.0 / searchRadius);
 	}
 
 	Box3d bb = Box3d::createDegeneratedBox();
@@ -83,8 +100,22 @@ void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const flo
 		sv.createNode(index);
 	}
 
+	SPHKernel kernel(searchRadius);
+
 	const auto nodes = sv.getNodes();
-
-
+	for (auto& node : nodes) {
+		const auto pos = node.second->getPosition();
+		const auto neighbors = spaceHash.findNeighbors( pos );
+		for (auto n : neighbors) {
+			auto sp = static_cast<SPHSurfaceParticle*>(n);
+			auto m = sp->matrix;
+			const auto v = n->getPosition() - pos;
+			const auto distance = m * v;
+			const auto w = kernel.getCubicSpline(distance);
+			node.second->setValue(w + node.second->getValue());
+			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
+		}
+//		n.second->getValue();
+	}
 
 }
