@@ -161,7 +161,7 @@
     <ClCompile Include="KFFluidSimulationView.cpp" />
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
-    <ClCompile Include="SPHSurfaceConstructorView.cpp" />
+    <ClCompile Include="SPHSurfaceBuilderView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
@@ -203,7 +203,7 @@
     <ClInclude Include="KFFluidSimulationView.h" />
     <ClInclude Include="PBSPHFluidSimulationView.h" />
     <ClInclude Include="PhysicsMenu.h" />
-    <ClInclude Include="SPHSurfaceConstructorView.h" />
+    <ClInclude Include="SPHSurfaceBuilderView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

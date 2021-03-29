@@ -8,12 +8,12 @@ namespace Crystal {
 	}
 	namespace Physics {
 
-class SPHSmoothSurfaceConstructor
+class SPHSurfaceBuilder
 {
 public:
 	void add(Shape::IParticle* particle);
 
-	void construct(const float searchRadius);
+	void build(const float searchRadius);
 
 private:
 	std::vector<Shape::IParticle*> particles;

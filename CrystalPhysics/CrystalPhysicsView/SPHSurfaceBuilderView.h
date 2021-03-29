@@ -10,10 +10,10 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class SPHSurfaceConstructorView : public IOkCancelView
+class SPHSurfaceBuilderView : public IOkCancelView
 {
 public:
-	SPHSurfaceConstructorView(const std::string& name, Scene::World* model, Canvas* canvas);
+	SPHSurfaceBuilderView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;

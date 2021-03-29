@@ -17,3 +17,8 @@ void SparseVolume::createNode(const std::array<int, 3>& index)
 	const auto pos = getPositionAt(index);
 	nodes[index] = new SparseVolumeNode(pos);
 }
+
+void SparseVolume::addValue(const std::array<int, 3>& index, const float value)
+{
+	//nodes.find()
+}

@@ -119,7 +119,7 @@
     <ClInclude Include="WPCA.h">
       <Filter>SurfaceReconstruction</Filter>
     </ClInclude>
-    <ClInclude Include="SPHSmoothSurfaceConstructor.h">
+    <ClInclude Include="SPHSurfaceBuilder.h">
       <Filter>SurfaceReconstruction</Filter>
     </ClInclude>
   </ItemGroup>
@@ -212,7 +212,7 @@
     <ClCompile Include="WPCA.cpp">
       <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
-    <ClCompile Include="SPHSmoothSurfaceConstructor.cpp">
+    <ClCompile Include="SPHSurfaceBuilder.cpp">
       <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
   </ItemGroup>
