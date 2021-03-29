@@ -7,6 +7,7 @@
 //#include "MeshToParticleView.h"
 
 #include "MeshBoundaryView.h"
+#include "SPHSurfaceBuilderView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 
@@ -42,5 +43,10 @@ void PhysicsMenu::onShow()
 		}
 		ImGui::EndMenu();
 	}
-
+	if (ImGui::BeginMenu("SPHSurface")) {
+		if(ImGui::MenuItem("SPHSurface")) {
+			control->setWindow(new SPHSurfaceBuilderView("SPHSurface", getWorld(), getCanvas()));
+		}
+		ImGui::EndMenu();
+	}
 }

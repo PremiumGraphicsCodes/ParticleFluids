@@ -33,12 +33,11 @@ void SPHSurfaceBuilder::build(const float searchRadius)
 	const auto resz = static_cast<int>( length.z / searchRadius );
 
 	std::set<std::array<int, 3>> indices;
-//	SparseVolume sv(bb, { resx, resy, resz });
 	for (auto p : particles) {
 		const auto index = p->getPosition() / (double)searchRadius;
 		for (int ix = index.x - 1; ix <= index.x + 1; ix++) {
-			for (int iy = index.y - 1; iy <= index.y - 1; iy++) {
-				for (int iz = index.z - 1; iz <= index.z - 1; iz++) {
+			for (int iy = index.y - 1; iy <= index.y + 1; iy++) {
+				for (int iz = index.z - 1; iz <= index.z + 1; iz++) {
 					std::array<int, 3> index = { ix, iy, iz };
 					indices.insert(index);
 //					sv.
@@ -47,16 +46,22 @@ void SPHSurfaceBuilder::build(const float searchRadius)
 		}
 	}
 
-	/*
+	SparseVolume sv(bb, { resx, resy, resz });
+	for (const auto& index : indices) {
+		sv.createNode(index);
+	}
+
+	const auto nodes = sv.getNodes();
+
 	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
 	for (auto p : particles) {
 		spaceHash.add(p);
 	}
 
-	for (auto p : particles) {
+	for (auto n : nodes) {
+		auto p = n.second;
 		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
 		WPCA wpca;
-		wpca.calculate(p, neighbors, searchRadius);
+		const auto matrix = wpca.calculate(p, neighbors, searchRadius);
 	}
-	*/
 }
