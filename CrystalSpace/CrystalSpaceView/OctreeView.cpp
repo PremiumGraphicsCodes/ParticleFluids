@@ -1,6 +1,6 @@
 #include "OctreeView.h"
 
-#include "../CrystalAlgo/Octree.h"
+#include "../CrystalSpace/Octree.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

@@ -1,7 +1,7 @@
 #include "CompactSpaceHash3dView.h"
 
-#include "../CrystalAlgo/CompactSpaceHash3d.h"
-#include "../CrystalAlgo/StopWatch.h"
+#include "../CrystalSpace/CompactSpaceHash3d.h"
+#include "../CrystalSpace/StopWatch.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 
 #include <iostream>

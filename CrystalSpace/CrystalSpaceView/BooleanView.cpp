@@ -1,6 +1,6 @@
 #include "BooleanView.h"
 
-#include "../CrystalAlgo/BooleanAlgo.h"
+#include "../CrystalSpace/BooleanAlgo.h"
 #include "../../CrystalViewer/AppBase/Canvas.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 

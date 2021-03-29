@@ -1,4 +1,4 @@
-#include "../CrystalAlgo/ZIndexedSearchAlgo.h"
+#include "../CrystalSpace/ZIndexedSearchAlgo.h"
 
 #include "gtest/gtest.h"
 

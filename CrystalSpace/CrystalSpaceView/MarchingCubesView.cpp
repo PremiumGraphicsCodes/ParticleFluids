@@ -1,6 +1,6 @@
 #include "MarchingCubesView.h"
 
-#include "../CrystalAlgo/MarchingCubesAlgo.h"
+#include "../CrystalSpace/MarchingCubesAlgo.h"
 #include "../../Crystal/Scene/VolumeScene.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Math/Gaussian.h"
