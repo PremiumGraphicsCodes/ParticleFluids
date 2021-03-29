@@ -10,7 +10,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 CompactSpaceHash3dView::CompactSpaceHash3dView(World* model, Canvas* canvas) :
 	IOkCancelView("CompactSpaceHash", model, canvas),
@@ -30,7 +30,7 @@ void CompactSpaceHash3dView::onOk()
 		}
 	}
 
-	Crystal::Algo::StopWatch sw;
+	Crystal::Space::StopWatch sw;
 	sw.start();
 
 	CompactSpaceHash3d spaceHash(searchRadius.getValue(), 10000000);

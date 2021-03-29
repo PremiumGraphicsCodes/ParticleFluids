@@ -7,7 +7,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 using namespace Crystal::Algo;
 
 VolumeConvertAlgo::VolumeConvertAlgo(const Box3d& box, const std::array<size_t, 3>& resolutions) :

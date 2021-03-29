@@ -3,7 +3,7 @@
 #include <chrono>
 
 namespace Crystal {
-	namespace Algo {
+	namespace Space {
 
 class StopWatch
 {

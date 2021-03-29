@@ -6,7 +6,7 @@
 
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 BooleanView::BooleanView(World* model, Canvas* canvas) :
 	IOkCancelView("Boolean", model, canvas),

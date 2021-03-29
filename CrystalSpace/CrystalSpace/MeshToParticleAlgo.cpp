@@ -5,7 +5,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 void MeshToParticleAlgo::subdivide(const PolygonMesh& mesh, const double divideLength)
 {

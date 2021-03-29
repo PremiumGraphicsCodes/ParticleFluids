@@ -7,7 +7,7 @@
 //#include "ParticlePair.h"
 
 namespace Crystal {
-	namespace Search {
+	namespace Space {
 
 using ParticlePair = std::pair<Shape::IParticle*, Shape::IParticle*>;
 

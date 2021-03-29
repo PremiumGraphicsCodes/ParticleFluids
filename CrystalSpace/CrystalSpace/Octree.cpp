@@ -4,7 +4,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 Octree::Octree(const Box3d& space) :
 	space(space)

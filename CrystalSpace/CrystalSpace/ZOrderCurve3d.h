@@ -3,7 +3,7 @@
 #include <array>
 
 namespace Crystal {
-	namespace Search {
+	namespace Space {
 
 class ZOrderCurve3d
 {

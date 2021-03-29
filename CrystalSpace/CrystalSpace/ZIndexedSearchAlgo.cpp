@@ -8,7 +8,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 ZIndexedSearchAlgo::ZIndexedSearchAlgo(const double searchRadius, const Vector3dd& minPosition) :
 	searchRadius(searchRadius),

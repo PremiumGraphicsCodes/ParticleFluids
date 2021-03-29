@@ -1,6 +1,6 @@
 #include "ZOrderCurve3d.h"
 
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 namespace {
 	const auto mask16 = 0b0011111111000000000000000011111111;//0x30000FF;

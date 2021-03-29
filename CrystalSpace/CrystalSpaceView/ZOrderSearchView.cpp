@@ -9,7 +9,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 ZOrderSearchView::ZOrderSearchView(World* model, Canvas* canvas) :
 	IOkCancelView("ZOrderSearch", model, canvas),

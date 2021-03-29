@@ -9,7 +9,7 @@ namespace Crystal {
 	namespace Shape {
 		class IParticle;
 	}
-	namespace Search {
+	namespace Space {
 
 class SpaceHash3d : private UnCopyable
 {

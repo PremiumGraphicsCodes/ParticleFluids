@@ -11,7 +11,7 @@ namespace Crystal {
 	namespace Shape {
 		class IParticle;
 	}
-	namespace Algo {
+	namespace Space {
 
 class Octree //: private UnCopyable
 {

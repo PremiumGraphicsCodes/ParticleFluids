@@ -4,7 +4,7 @@
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 OctreeView::OctreeView(World* model, Canvas* canvas) :
 	IOkCancelView("Octree", model, canvas),

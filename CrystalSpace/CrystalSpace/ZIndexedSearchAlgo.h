@@ -13,7 +13,7 @@ namespace Crystal {
 	namespace Shape {
 		class IParticle;
 	}
-	namespace Search {
+	namespace Space {
 
 class ZIndexedParticle
 {

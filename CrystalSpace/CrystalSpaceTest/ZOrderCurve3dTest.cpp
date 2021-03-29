@@ -2,7 +2,7 @@
 
 #include "../CrystalSpace/ZOrderCurve3d.h"
 
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 TEST(ZOrderCurve3dTest, TestEncode)
 {

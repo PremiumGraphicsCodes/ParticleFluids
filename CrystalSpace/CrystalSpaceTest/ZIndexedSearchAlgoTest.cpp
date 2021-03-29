@@ -5,7 +5,7 @@
 #include "../../Crystal/Shape/IParticle.h"
 
 using namespace Crystal::Math;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 TEST(ZIndexedSearchAlgoTest, TestToIndex1d)
 {

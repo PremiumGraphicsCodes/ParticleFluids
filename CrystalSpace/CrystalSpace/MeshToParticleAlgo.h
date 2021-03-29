@@ -3,7 +3,7 @@
 #include "../../Crystal/Shape/PolygonMesh.h"
 
 namespace Crystal {
-	namespace Algo {
+	namespace Space {
 
 class MeshToParticleAlgo
 {

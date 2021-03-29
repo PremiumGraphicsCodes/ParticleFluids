@@ -4,7 +4,7 @@
 #include "../../Crystal/Shape/IParticle.h"
 
 namespace Crystal {
-	namespace Search {
+	namespace Space {
 
 class IndexedParticle
 {

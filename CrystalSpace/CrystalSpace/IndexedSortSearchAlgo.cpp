@@ -5,7 +5,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 void IndexedSortSearchAlgo::add(IParticle* particle)
 {

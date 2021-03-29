@@ -8,7 +8,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 namespace {
 	csgjs_model toCSGJSModel(const PolygonMesh& polygon)

@@ -4,7 +4,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 UniformGrid3d::UniformGrid3d(const double divideLength, const Vector3dd& min) :
 	divideLength(divideLength)

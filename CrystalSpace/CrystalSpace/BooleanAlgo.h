@@ -5,7 +5,7 @@ namespace Crystal {
 	namespace Shape {
 		class PolygonMesh;
 	}
-	namespace Algo {
+	namespace Space {
 
 class BooleanAlgo
 {
