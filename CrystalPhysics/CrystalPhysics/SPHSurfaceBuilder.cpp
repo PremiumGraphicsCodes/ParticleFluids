@@ -32,7 +32,6 @@ namespace {
 
 void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const float searchRadius)
 {
-	std::vector<std::unique_ptr<SPHSurfaceParticle>> particles;
 	for (auto p : positions) {
 		particles.push_back(std::make_unique<SPHSurfaceParticle>(p));
 	}

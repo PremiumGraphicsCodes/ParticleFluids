@@ -139,11 +139,12 @@
     <ClInclude Include="Circle3d.h" />
     <ClInclude Include="Cone3d.h" />
     <ClInclude Include="Cylinder3d.h" />
+    <ClInclude Include="Ellipsoid3d.h" />
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="glm.h" />
     <ClInclude Include="ICurve3d.h" />
     <ClInclude Include="ISurface3d.h" />
-    <ClInclude Include="ISolid3d.h" />
+    <ClInclude Include="IVolume3d.h" />
     <ClInclude Include="Line2d.h" />
     <ClInclude Include="Line3d.h" />
     <ClInclude Include="Matrix2d.h" />

@@ -3,7 +3,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
-Solid::Solid(std::unique_ptr<ISolid3d> shape) :
+Solid::Solid(std::unique_ptr<IVolume3d> shape) :
 	shape(std::move(shape)),
 	matrix(Math::Identity())
 {}

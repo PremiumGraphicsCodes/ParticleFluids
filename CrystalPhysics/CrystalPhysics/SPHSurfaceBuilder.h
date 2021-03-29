@@ -32,13 +32,17 @@ public:
 
 	void build(const std::vector<Math::Vector3dd>& positions, const float searchRadius);
 
+	const std::vector<std::unique_ptr<SPHSurfaceParticle>>& getParticles() const { return std::move(particles); }
+
 private:
 	std::unique_ptr<Space::SparseVolume> createSparseVolume(const std::vector<Math::Vector3dd>& particles, const float searchRadius);
 
 	void calculateAnisotoropicMatrix(SPHSurfaceParticle* particle, const std::vector<Shape::IParticle*>& neighbors, const float searchRadius);
-	//std::vector<Shape::IParticle*> particles;
+	
+	std::vector<Shape::IParticle*> particles;
 
 	std::unique_ptr<Space::SparseVolume> volume;
+	std::vector<std::unique_ptr<SPHSurfaceParticle>> particles;
 };
 	}
 }

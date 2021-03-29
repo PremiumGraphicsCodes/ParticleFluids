@@ -4,6 +4,8 @@
 
 #include "../../Crystal/Shape/Particle.h"
 
+#include "../../Crystal/Shape/WireFrameBuilder.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
@@ -31,6 +33,14 @@ void SPHSurfaceBuilderView::onOk()
 	};
 
 	SPHSurfaceBuilder builder;
-
 	builder.build(positions, searchRadiusView.getValue());
+
+	auto particles = std::move( builder.getParticles() );
+
+	/*
+	WireFrameBuilder wfBuilder;
+	for (const auto& p : particles) {
+		wfBuilder.build()
+	}
+	*/
 }

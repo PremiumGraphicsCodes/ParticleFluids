@@ -70,7 +70,10 @@
     <ClInclude Include="Circle3d.h">
       <Filter>Primitive3d</Filter>
     </ClInclude>
-    <ClInclude Include="ISolid3d.h">
+    <ClInclude Include="Ellipsoid3d.h">
+      <Filter>Primitive3d</Filter>
+    </ClInclude>
+    <ClInclude Include="IVolume3d.h">
       <Filter>Primitive3d\Interface</Filter>
     </ClInclude>
   </ItemGroup>

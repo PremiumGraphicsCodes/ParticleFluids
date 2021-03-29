@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Math/ISolid3d.h"
+#include "../Math/IVolume3d.h"
 
 #include "IShape.h"
 #include <memory>
@@ -11,7 +11,7 @@ namespace Crystal {
 class Solid : public IShape
 {
 public:
-	explicit Solid(std::unique_ptr<Math::ISolid3d> shape);
+	explicit Solid(std::unique_ptr<Math::IVolume3d> shape);
 
 	~Solid() {};
 
@@ -24,7 +24,7 @@ public:
 	Math::Box3d getBoundingBox() const override;
 
 private:
-	std::unique_ptr<Math::ISolid3d> shape;
+	std::unique_ptr<Math::IVolume3d> shape;
 	Math::Matrix4dd matrix;
 };
 
