@@ -1,8 +1,10 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
 #include "../../Crystal/Shape/IParticle.h"
+#include "../../CrystalSpace/CrystalSpace/SparseVolume.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -10,8 +12,9 @@ namespace Crystal {
 class SPHSurfaceParticle : public Shape::IParticle
 {
 public:
-	SPHSurfaceParticle(const Math::Vector3dd& p) :
-		position(p)
+	explicit SPHSurfaceParticle(const Math::Vector3dd& p) :
+		position(p),
+		matrix(Math::identitiyMatrix())
 	{}
 
 	Math::Vector3dd getPosition() const { return position; }
@@ -30,7 +33,12 @@ public:
 	void build(const std::vector<Math::Vector3dd>& positions, const float searchRadius);
 
 private:
+	std::unique_ptr<Space::SparseVolume> createSparseVolume(const std::vector<Math::Vector3dd>& particles, const float searchRadius);
+
+	void calculateAnisotoropicMatrix(SPHSurfaceParticle* particle, const std::vector<Shape::IParticle*>& neighbors, const float searchRadius);
 	//std::vector<Shape::IParticle*> particles;
+
+	std::unique_ptr<Space::SparseVolume> volume;
 };
 	}
 }

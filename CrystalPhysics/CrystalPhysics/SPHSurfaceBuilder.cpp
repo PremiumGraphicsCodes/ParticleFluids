@@ -45,64 +45,14 @@ void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const flo
 	std::vector<Math::Matrix3dd> matrices;
 	for (const auto& p : particles) {
 		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
-		if (neighbors.size() < 2) {
-			p->matrix = ::identitiyMatrix();
-			continue;
-		}
-		WPCA wpca;
-		const auto matrix = wpca.calculate(p.get(), neighbors, searchRadius);
-		Crystal::Numerics::SVD svd;
-		auto result = svd.calculate(matrix);
-		if (!result.isOk) {
-			p->matrix = ::identitiyMatrix();
-			continue;
-		}
-		p->matrix = result.eigenVectors;
-		auto evs = result.eigenValues;
-		evs[1] = std::max(evs[1], evs[0] / kr);
-		evs[2] = std::max(evs[2], evs[0] / kr);
-		evs *= ks;
-
-		Matrix3dd diagonalMatrix(
-			evs[0], 0.0, 0.0,
-			0.0, evs[1], 0.0,
-			0.0, 0.0, evs[2]
-		);
-		p->matrix = p->matrix * diagonalMatrix * glm::transpose(p->matrix) * (1.0 / searchRadius);
+		calculateAnisotoropicMatrix(p.get(), neighbors, searchRadius);
 	}
 
-	Box3d bb = Box3d::createDegeneratedBox();
-	for (const auto& p : particles) {
-		bb.add(p->getPosition());
-	}
-
-	const auto length = bb.getLength();
-	const auto resx = static_cast<int>( length.x / searchRadius );
-	const auto resy = static_cast<int>( length.y / searchRadius );
-	const auto resz = static_cast<int>( length.z / searchRadius );
-
-	std::set<std::array<int, 3>> indices;
-	for (const auto& p : particles) {
-		const auto index = p->getPosition() / (double)searchRadius;
-		for (int ix = index.x - 1; ix <= index.x + 1; ix++) {
-			for (int iy = index.y - 1; iy <= index.y + 1; iy++) {
-				for (int iz = index.z - 1; iz <= index.z + 1; iz++) {
-					std::array<int, 3> index = { ix, iy, iz };
-					indices.insert(index);
-//					sv.
-				}
-			}
-		}
-	}
-
-	SparseVolume sv(bb, { resx, resy, resz });
-	for (const auto& index : indices) {
-		sv.createNode(index);
-	}
+	this->volume = createSparseVolume(positions, searchRadius);
 
 	SPHKernel kernel(searchRadius);
 
-	const auto nodes = sv.getNodes();
+	const auto nodes = volume->getNodes();
 	for (auto& node : nodes) {
 		const auto pos = node.second->getPosition();
 		const auto neighbors = spaceHash.findNeighbors( pos );
@@ -117,5 +67,69 @@ void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const flo
 		}
 //		n.second->getValue();
 	}
+
+}
+
+std::unique_ptr<SparseVolume> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float searchRadius)
+{
+	Box3d bb = Box3d::createDegeneratedBox();
+	for (const auto& p : particles) {
+		bb.add(p);
+	}
+
+	const auto length = bb.getLength();
+	const auto resx = static_cast<int>(length.x / searchRadius);
+	const auto resy = static_cast<int>(length.y / searchRadius);
+	const auto resz = static_cast<int>(length.z / searchRadius);
+
+	std::set<std::array<int, 3>> indices;
+	for (const auto& p : particles) {
+		const auto index = p / (double)searchRadius;
+		for (int ix = index.x - 1; ix <= index.x + 1; ix++) {
+			for (int iy = index.y - 1; iy <= index.y + 1; iy++) {
+				for (int iz = index.z - 1; iz <= index.z + 1; iz++) {
+					std::array<int, 3> index = { ix, iy, iz };
+					indices.insert(index);
+					//					sv.
+				}
+			}
+		}
+	}
+
+	std::array<int, 3> resolution{ resx, resy, resz };
+	auto sv = std::make_unique<SparseVolume>(bb, resolution);
+	for (const auto& index : indices) {
+		sv->createNode(index);
+	}
+	return sv;
+}
+
+void SPHSurfaceBuilder::calculateAnisotoropicMatrix(SPHSurfaceParticle* p, const std::vector<IParticle*>& neighbors, const float searchRadius)
+{
+	if (neighbors.size() < 2) {
+		p->matrix = ::identitiyMatrix();
+		return;
+	}
+	WPCA wpca;
+	const auto matrix = wpca.calculate(p, neighbors, searchRadius);
+	Crystal::Numerics::SVD svd;
+	auto result = svd.calculate(matrix);
+	if (!result.isOk) {
+		p->matrix = ::identitiyMatrix();
+		return;
+	}
+	p->matrix = result.eigenVectors;
+	auto evs = result.eigenValues;
+	evs[1] = std::max(evs[1], evs[0] / kr);
+	evs[2] = std::max(evs[2], evs[0] / kr);
+	evs *= ks;
+
+	const Matrix3dd diagonalMatrix
+	(
+		evs[0], 0.0, 0.0,
+		0.0, evs[1], 0.0,
+		0.0, 0.0, evs[2]
+	);
+	p->matrix = p->matrix * diagonalMatrix * glm::transpose(p->matrix) * (1.0 / searchRadius);
 
 }
