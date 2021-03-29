@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Box3d.h"
-#include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
+#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 
 namespace Crystal {
 	namespace Physics {

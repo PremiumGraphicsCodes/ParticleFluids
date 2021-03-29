@@ -2,7 +2,7 @@
 
 #include "MeshBoundaryScenePresenter.h"
 #include "../../Crystal/Math/Triangle3d.h"
-#include "../../CrystalSpace/CrystalAlgo/MeshToParticleAlgo.h"
+#include "../../CrystalSpace/CrystalSpace/MeshToParticleAlgo.h"
 #include "../../Crystal/Shape/Particle.h"
 
 using namespace Crystal::Math;

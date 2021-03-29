@@ -8,7 +8,7 @@
 #include "../../Crystal/Shape/IParticle.h"
 #include "../../Crystal/Scene/IAnimator.h"
 
-#include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
+#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 #include "MeshBoundaryScene.h"
 
 namespace Crystal {

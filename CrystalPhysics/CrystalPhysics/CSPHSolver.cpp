@@ -3,7 +3,7 @@
 #include "CSPHBoundarySolver.h"
 #include "CSPHFluidScene.h"
 
-#include "../../CrystalSpace/CrystalAlgo/IndexedSortSearchAlgo.h"
+#include "../../CrystalSpace/CrystalSpace/IndexedSortSearchAlgo.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Search;

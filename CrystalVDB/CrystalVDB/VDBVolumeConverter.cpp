@@ -15,7 +15,7 @@
 
 #include "Converter.h"
 
-#include "../../CrystalSpace/CrystalAlgo/SparseVolumeScene.h"
+#include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
 using namespace Crystal::Space;
 using namespace Crystal::Scene;

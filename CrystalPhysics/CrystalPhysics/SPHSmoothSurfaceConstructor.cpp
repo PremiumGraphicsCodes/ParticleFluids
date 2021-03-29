@@ -2,7 +2,7 @@
 #include "SPHSmoothSurfaceConstructor.h"
 
 #include "../../Crystal/Shape/IParticle.h"
-#include "../../CrystalSpace/CrystalAlgo/CompactSpaceHash3d.h"
+#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 
 #include "WPCA.h"
 

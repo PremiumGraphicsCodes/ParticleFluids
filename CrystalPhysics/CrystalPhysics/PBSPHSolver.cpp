@@ -2,7 +2,7 @@
 #include "PBFluidScene.h"
 #include "PBSPHParticle.h"
 
-#include "../../CrystalSpace/CrystalAlgo/IndexedSortSearchAlgo.h"
+#include "../../CrystalSpace/CrystalSpace/IndexedSortSearchAlgo.h"
 #include "PBSPHBoundarySolver.h"
 
 #include <iostream>

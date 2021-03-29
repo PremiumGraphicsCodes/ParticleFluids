@@ -30,7 +30,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalVDB", "CrystalVDB\Cr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalVDBCommand", "VDBCommand\CrystalVDBCommand.vcxproj", "{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalSpace\CrystalAlgo\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

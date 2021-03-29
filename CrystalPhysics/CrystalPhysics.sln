@@ -30,7 +30,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysicsView", "Cryst
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPhysicsCommand", "CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj", "{09EE8B6A-2D6F-4B9E-83FF-6A40D03BC465}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalSpace\CrystalAlgo\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj", "{D2A606D5-8E40-4FC5-90EE-07B3A0F81383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
