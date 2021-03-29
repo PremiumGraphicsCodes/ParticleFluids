@@ -8,8 +8,8 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
+using namespace Crystal::Space;
 using namespace Crystal::Physics;
-using namespace Crystal::Algo;
 
 MeshBoundaryScene::MeshBoundaryScene(const int id, const std::string& name) :
 	IScene(id, name),

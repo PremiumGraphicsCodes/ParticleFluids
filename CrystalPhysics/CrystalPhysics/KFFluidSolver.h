@@ -35,7 +35,7 @@ public:
 
 private:
 	std::list<KFFluidScene*> boundaries;
-	std::unique_ptr<Search::CompactSpaceHash3d> spaceHash;
+	std::unique_ptr<Space::CompactSpaceHash3d> spaceHash;
 };
 
 class KFFluidSolver : public Scene::IAnimator

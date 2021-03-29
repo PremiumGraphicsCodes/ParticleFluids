@@ -8,7 +8,7 @@
 #include <iostream>
 
 using namespace Crystal::Math;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
 PBSPHSolver::PBSPHSolver() :

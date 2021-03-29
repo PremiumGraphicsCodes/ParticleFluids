@@ -50,7 +50,7 @@ public:
 
 private:
 	std::vector<PBSPHBoundaryParticle*> boundaryParticles;
-	Search::CompactSpaceHash3d spaceHash;
+	Space::CompactSpaceHash3d spaceHash;
 
 };
 	}
