@@ -5,6 +5,8 @@
 #include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 #include "../../CrystalSpace/CrystalSpace/SparseVolume.h"
 
+#include "../../CrystalNumerics/CrystalNumerics/SVD.h"
+
 #include <set>
 //#include <map>
 
@@ -15,15 +17,45 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
+/*
 void SPHSurfaceBuilder::add(IParticle* particle)
 {
 	this->particles.push_back(particle);
 }
+*/
 
-void SPHSurfaceBuilder::build(const float searchRadius)
+void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const float searchRadius)
 {
+	std::vector<std::unique_ptr<SPHSurfaceParticle>> particles;
+	for (auto p : positions) {
+		particles.push_back(std::make_unique<SPHSurfaceParticle>(p));
+	}
+
+	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
+	for (const auto& p : particles) {
+		spaceHash.add(p.get());
+	}
+
+	std::vector<Math::Matrix3dd> matrices;
+	for (const auto& p : particles) {
+		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
+		if (neighbors.size() < 2) {
+			p->matrix = ::identitiyMatrix();
+			continue;
+		}
+		WPCA wpca;
+		const auto matrix = wpca.calculate(p.get(), neighbors, searchRadius);
+		Crystal::Numerics::SVD svd;
+		auto result = svd.calculate(matrix);
+		if (!result.isOk) {
+			p->matrix = ::identitiyMatrix();
+			continue;
+		}
+		p->matrix = result.eigenVectors;
+	}
+
 	Box3d bb = Box3d::createDegeneratedBox();
-	for (auto p : particles) {
+	for (const auto& p : particles) {
 		bb.add(p->getPosition());
 	}
 
@@ -33,7 +65,7 @@ void SPHSurfaceBuilder::build(const float searchRadius)
 	const auto resz = static_cast<int>( length.z / searchRadius );
 
 	std::set<std::array<int, 3>> indices;
-	for (auto p : particles) {
+	for (const auto& p : particles) {
 		const auto index = p->getPosition() / (double)searchRadius;
 		for (int ix = index.x - 1; ix <= index.x + 1; ix++) {
 			for (int iy = index.y - 1; iy <= index.y + 1; iy++) {
@@ -53,15 +85,6 @@ void SPHSurfaceBuilder::build(const float searchRadius)
 
 	const auto nodes = sv.getNodes();
 
-	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
-	for (auto p : particles) {
-		spaceHash.add(p);
-	}
 
-	for (auto n : nodes) {
-		auto p = n.second;
-		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
-		WPCA wpca;
-		const auto matrix = wpca.calculate(p, neighbors, searchRadius);
-	}
+
 }

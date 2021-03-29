@@ -20,14 +20,14 @@ SPHSurfaceBuilderView::SPHSurfaceBuilderView(const std::string& name, World* mod
 
 void SPHSurfaceBuilderView::onOk()
 {
-	Particle<float> p1(Vector3dd(0,0,0), 10.0);
-	Particle<float> p2(Vector3dd(10, 10, 10), 10.0);
-	Particle<float> p3(Vector3dd(0.5, 0, 0), 10.0);
+	std::vector<Vector3dd> positions = 
+	{
+		Vector3dd(0.0,0.0,0.0),
+//		Vector3dd(10, 10, 10),
+		Vector3dd(0.0, 0.5, 0)
+	};
 
 	SPHSurfaceBuilder builder;
-	builder.add(&p1);
-	builder.add(&p2);
-	builder.add(&p3);
 
-	builder.build(searchRadiusView.getValue());
+	builder.build(positions, searchRadiusView.getValue());
 }

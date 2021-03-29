@@ -32,9 +32,9 @@ SVD::SVD2dResult SVD::calculate(const Matrix2dd& lhs)
 
 SVD::SVD3dResult SVD::calculate(const Matrix3dd& lhs)
 {
+	SVD3dResult result;
 	Matrix3d A = Impl::Converter::toEigen(lhs);
 	SelfAdjointEigenSolver<Matrix3d> eigensolver(A);
-	SVD3dResult result;
 	if (eigensolver.info() != Success) {
 		result.isOk = false;
 	}

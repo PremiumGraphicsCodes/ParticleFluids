@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_MATH_MATRIX_3D_H_
-#define __CRYSTAL_MATH_MATRIX_3D_H_
+#pragma once
 
 #include "glm.h"
 
@@ -11,6 +10,16 @@ namespace Crystal {
 
 using Matrix3df = glm::mat3;
 using Matrix3dd = glm::dmat3;
+
+static Matrix3dd identitiyMatrix()
+{
+	return Matrix3dd
+	(
+		1.0, 0.0, 0.0, 
+		0.0, 1.0, 0.0,
+		0.0, 0.0, 1.0
+	);
+}
 
 static Matrix3dd rotationMatrixX(double angle)
 {
@@ -56,5 +65,3 @@ static bool AreSame(const Matrix3dd& lhs, const Matrix3dd& rhs, const double tol
 
 	}
 }
-
-#endif

@@ -164,6 +164,9 @@
     <ClCompile Include="SPHSurfaceBuilderView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj">
+      <Project>{c4927d35-7611-4afd-934a-da114663bfb2}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
       <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
     </ProjectReference>
