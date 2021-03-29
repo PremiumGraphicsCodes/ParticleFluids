@@ -136,5 +136,8 @@
     <ClCompile Include="Circle3d.cpp">
       <Filter>Primitive3d</Filter>
     </ClCompile>
+    <ClCompile Include="Ellipsoid3d.cpp">
+      <Filter>Primitive3d</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
