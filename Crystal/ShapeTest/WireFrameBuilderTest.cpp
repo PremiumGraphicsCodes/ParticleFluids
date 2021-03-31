@@ -14,8 +14,10 @@ using namespace Crystal::Shape;
 
 TEST(WireFrameBuilderTest, TestBuildByLine)
 {
+	const Line3dd line(Vector3dd(0, 0, 0), Vector3dd(1, 0, 0));
+
 	WireFrameBuilder builder;
-	builder.build(Line3dd(Vector3dd(0, 0, 0), Vector3dd(1, 0, 0)));
+	builder.build(line, 1);
 	EXPECT_EQ(2, builder.getPositions().size());
 	EXPECT_EQ(1, builder.getEdges().size());
 }
@@ -30,25 +32,30 @@ TEST(WireFrameBuilderTest, TestBuildByBox)
 
 TEST(WireFrameBuilderTest, TestBuildByCircle)
 {
+	const Circle3d circle(Vector3dd(0, 0, 0), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0));
+
 	WireFrameBuilder builder;
-	builder.build(Circle3d(Vector3dd(0, 0, 0), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0)), 2);
-	EXPECT_EQ(2, builder.getPositions().size());
+	builder.build(circle, 2);
+	EXPECT_EQ(3, builder.getPositions().size());
 	EXPECT_EQ(2, builder.getEdges().size());
 }
 
 TEST(WireFrameBuilderTest, TestBuildBySphere)
 {
+	const Sphere3d s(Vector3dd(0, 0, 0), 1.0);
+
 	WireFrameBuilder builder;
-	builder.build(Sphere3d(Vector3dd(0,0,0), 1.0), 10, 10);
+	builder.build(s, 9, 9);
 	EXPECT_EQ(100, builder.getPositions().size());
-	EXPECT_EQ(200, builder.getEdges().size());
+	EXPECT_EQ(9*9*2, builder.getEdges().size());
 }
 
+/*
 TEST(WireFrameBuilderTest, TestBuildByCone)
 {
 	WireFrameBuilder builder;
 	const Cone3d cone(Vector3dd(0, 0, 0), 10, 10);
-	builder.build(cone, 10);
+	builder.build(cone, 10, 10);
 	EXPECT_EQ(10+1, builder.getPositions().size());
 }
 
@@ -56,6 +63,7 @@ TEST(WireFrameBuilderTest, TestBuildByCylinder)
 {
 	WireFrameBuilder builder;
 	const Cylinder3d cylinder(1.0, 10.0, Vector3dd(0, 0, 0));
-	builder.build(cylinder, 12);
+	builder.build(cylinder, 12, 12);
 	EXPECT_EQ(24+2, builder.getPositions().size());
 }
+*/

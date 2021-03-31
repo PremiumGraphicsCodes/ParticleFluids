@@ -1,11 +1,12 @@
 #pragma once
 
+#include "ICurve3d.h"
 #include "Vector3d.h"
 
 namespace Crystal {
 	namespace Math {
 
-class Circle3d
+class Circle3d : public ICurve3d
 {
 public:
 	Circle3d();

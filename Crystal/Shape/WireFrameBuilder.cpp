@@ -14,13 +14,43 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
-void WireFrameBuilder::build(const Line3dd& line)
-{
-	const auto p0 = createPosition( line.getStart() );
-	const auto p1 = createPosition( line.getEnd() );
-
-	edges.push_back(WireFrameEdge(p0, p1));
+namespace {
+	constexpr auto tolerance = 1.e-12;
 }
+
+void WireFrameBuilder::build(const ICurve3d& curve, const int unum)
+{
+	std::vector<int> grid;
+	const auto du = 1.0 / static_cast<double>(unum);
+	for (auto u = 0.0; u < 1.0 + tolerance; u += du) {
+		grid.push_back( createPosition(curve.getPosition(u)) );
+	}
+	for (int i = 0; i < grid.size() -1; ++i) {
+		edges.push_back(WireFrameEdge(grid[i], grid[i+1]));
+	}
+}
+
+void WireFrameBuilder::build(const ISurface3d& sphere, const int unum, const int vnum)
+{
+	const auto du = 1.0 / static_cast<double>(unum);
+	const auto dv = 1.0 / static_cast<double>(vnum);
+
+	std::vector<std::vector<int>> grid;
+	for (auto u = 0.0; u < 1.0 + tolerance; u += du) {
+		std::vector<int> g;
+		for (auto v = 0.0; v < 1.0 + tolerance; v += dv) {
+			g.push_back( createPosition(sphere.getPosition(u, v)) );
+		}
+		grid.push_back(g);
+	}
+	for (int i = 0; i < grid.size()-1; ++i) {
+		for (int j = 0; j < grid[i].size()-1; ++j) {
+			edges.push_back(WireFrameEdge(grid[i][j], grid[i + 1][j]));
+			edges.push_back(WireFrameEdge(grid[i][j], grid[i][j + 1]));
+		}
+	}
+}
+
 
 void WireFrameBuilder::build(const Box3d& box)
 {
@@ -47,93 +77,6 @@ void WireFrameBuilder::build(const Box3d& box)
 	edges.push_back(WireFrameEdge(p1, p5));
 	edges.push_back(WireFrameEdge(p2, p6));
 	edges.push_back(WireFrameEdge(p3, p7));
-}
-
-void WireFrameBuilder::build(const Circle3d& circle, const int unum)
-{
-	CircularBuffer<int> grid(unum);
-	for (auto u = 0; u < unum; ++u) {
-		const auto uu = (double)u / (double)unum;
-		grid[u] = createPosition(circle.getPosition(uu));
-	}
-	for (int i = 0; i < unum; ++i) {
-		edges.push_back(WireFrameEdge(grid[i], grid[i + 1]));
-	}
-}
-
-void WireFrameBuilder::build(const Sphere3d& sphere, const int unum, const int vnum)
-{
-	CircularBuffer<CircularBuffer<int>> grid(unum);
-	for (auto u = 0; u < unum; ++u) {
-		grid[u].resize(vnum);
-		const auto uu = (double)u / (double)(unum-1);
-		for (auto v = 0; v < vnum; ++v) {
-			const auto vv = (double)v / (double)(vnum-1);
-			grid[u][v] = createPosition(sphere.getPosition(uu, vv));
-		}
-	}
-	for (int i = 0; i < unum; ++i) {
-		for (int j = 0; j < vnum; ++j) {
-			edges.push_back(WireFrameEdge(grid[i][j], grid[i + 1][j]));
-			edges.push_back(WireFrameEdge(grid[i][j], grid[i][j + 1]));
-		}
-	}
-}
-
-void WireFrameBuilder::build(const Cone3d& cone, const int unum)
-{
-	const auto top = createPosition( cone.getPosition(0.0, 1.0) );
-	CircularBuffer<int> vertices(unum);
-	for (auto u = 0; u < unum; ++u) {
-		const auto uu = (double)u / (double)(unum-1);
-		vertices[u] = createPosition(cone.getPosition(uu, 0.0));
-	}
-	for (auto u = 0; u < unum; ++u) {
-		edges.push_back(WireFrameEdge(top, vertices[u]));
-	}
-	for (int i = 0; i < unum; ++i) {
-		edges.push_back(WireFrameEdge(vertices[i], vertices[i + 1]));
-	}
-}
-
-void WireFrameBuilder::build(const Cylinder3d& cylinder, const int unum)
-{
-	const auto bottomCenter = createPosition(cylinder.getPosition(0.0, 0.0, 0.0));
-	const auto topCenter = createPosition(cylinder.getPosition(0.0, 1.0, 0.0));
-
-	CircularBuffer<int> bottoms(unum);
-	CircularBuffer<int> tops(unum);
-	for (auto u = 0; u < unum; ++u) {
-		const auto p = (double)u / (double)(unum-1);
-		bottoms[u] = createPosition(cylinder.getPosition(p, 0.0, 1.0));
-		tops[u] = createPosition(cylinder.getPosition(p, 1.0, 1.0));
-	}
-
-	// create bottom circle.
-	for (auto u = 0; u < unum; ++u) {
-		edges.push_back(WireFrameEdge(bottomCenter, bottoms[u]));
-	}
-	for (auto u = 0; u < unum; ++u) {
-		edges.push_back(WireFrameEdge(bottoms[u], bottoms[u+1]));
-	}
-
-	// create top circle.
-	for (auto u = 0; u < unum; ++u) {
-		edges.push_back(WireFrameEdge(topCenter, tops[u]));
-	}
-	for (auto u = 0; u < unum; ++u) {
-		edges.push_back(WireFrameEdge(tops[u], tops[u+1]));
-	}
-
-	// create side.
-	for (auto u = 0; u < unum; ++u) {
-		edges.push_back(WireFrameEdge(bottoms[u], tops[u]));
-	}
-}
-
-void WireFrameBuilder::build(const Torus3d& torus, const int unu, const int vnum)
-{
-
 }
 
 void WireFrameBuilder::build(const std::vector<std::vector<int>>& grid)
