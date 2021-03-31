@@ -26,5 +26,7 @@ void IVolAddView::addVolume(std::unique_ptr<Volume<float>> volume)
 	auto scene = new VolumeScene(getWorld()->getNextSceneId(), nameView.getValue(), std::move(volume));
 	getWorld()->getScenes()->addScene(scene);
 
-	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	auto presenter = scene->getPresenter();
+	static_cast<VolumePresenter*>(presenter)->setColorMap(colorMapView.getValue());
+	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 }

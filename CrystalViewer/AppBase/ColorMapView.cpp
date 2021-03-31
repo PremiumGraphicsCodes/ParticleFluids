@@ -15,8 +15,8 @@ ColorMapView::ColorMapView(const std::string& name /*, const ColorMap& value */)
 	minValue("MinValue", value.getMin()),
 	maxValue("MaxValue", value.getMax())
 {
-    ColorMap colorMap(0.0, 1.0, 360);
-    for (int i = 0; i < 360; ++i) {
+    ColorMap colorMap(0.0, 1.0, 270);
+    for (int i = 0; i < 270; ++i) {
         ColorHSV hsv(i, 1.0, 1.0);
         ColorRGBAf c(hsv.toColorRGBf(), 0.0f);
         colorMap.setColor(i, c);

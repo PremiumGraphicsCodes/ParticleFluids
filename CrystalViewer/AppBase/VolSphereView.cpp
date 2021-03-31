@@ -22,6 +22,21 @@ void VolSphereView::onOk()
 	const auto res = static_cast<size_t>( resolutionView.getValue() );
 	std::array<size_t, 3> resolution = { res, res, res };
 	auto v = std::make_unique<Volume<float>>(box, resolution);
+
+	const auto corner = box.getPosition(0, 0, 0);
+	const auto center = box.getCenter();
+	const auto radius = glm::distance(center, corner);
+	for (int i = 0; i < resolution[0]; ++i) {
+		for (int j = 0; j < resolution[1]; ++j) {
+			for (int k = 0; k < resolution[2]; ++k) {
+				const auto p = v->getCellPosition(i,j,k);
+				const auto value = glm::distance(p, center) / radius;
+				v->setValue(i, j, k, value);
+			}
+		}
+	}
+
+	//const auto center = box.getCenter();
 	//v = std::make_unique<Volume<float>> 
 	
 	IVolAddView::addVolume(std::move(v));

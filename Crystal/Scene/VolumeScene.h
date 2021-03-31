@@ -24,8 +24,6 @@ public:
 
 	virtual Math::Vector3dd getPosition(const int index) const { return Math::Vector3dd(0, 0, 0); };
 
-	//virtual IShapeScene* clone() const = 0;
-
 	Math::Box3d getBoundingBox() const { return shape->getBoundingBox(); }
 
 	Shape::Volume<float>* getShape() const { return shape.get(); }
@@ -34,6 +32,7 @@ public:
 
 	IPresenter* getPresenter() { return presenter.get(); }
 
+	void setPresenter(std::unique_ptr<VolumePresenter> presenter) { this->presenter = std::move(presenter); }
 
 	//std::vector<Shape::Particle<double>> toParticles() const;
 

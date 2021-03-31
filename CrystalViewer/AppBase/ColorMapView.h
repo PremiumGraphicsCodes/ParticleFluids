@@ -17,19 +17,7 @@ public:
 
 	void onShow() override;
 
-	//Graphics::ColorRGBAf getValue() const { return Graphics::ColorRGBAf(value[0], value[1], value[2], value[3]); }
-
-	/*
-	void setValue(const Graphics::ColorMap& value)
-	{
-		this->value = value;
-		this->resolution.setValue( value.getResolution() );
-	}
-	*/
-
-	/*
-	add(new ColorMapView("ColorMap", colorMap));
-	*/
+	Graphics::ColorMap getValue() const { return value; }
 
 private:
 	Graphics::ColorMap value;

@@ -49,7 +49,9 @@ void VolumePresenter::updateScreenView()
 		for (auto iy = 0; iy < resolutions[1]; iy++) {
 			for (auto iz = 0; iz < resolutions[2]; iz++) {
 				const auto p = shape->getCellPosition(ix, iy, iz);
-				pb.add(p, ColorRGBAf(0, 0, 0, 0), 10.0f);
+				const auto v = shape->getValue(ix, iy, iz);
+				const auto c = colorMap.getColor(v);
+				pb.add(p, c, 10.0f);
 //				shape->get
 			}
 		}

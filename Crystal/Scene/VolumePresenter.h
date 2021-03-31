@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IPresenter.h"
+#include "../Graphics/ColorMap.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -18,6 +19,8 @@ public:
 
 	void updateView() override;
 
+	void setColorMap(const Graphics::ColorMap& colorMap) { this->colorMap = colorMap; }
+
 private:
 	void updateScreenView();
 
@@ -28,6 +31,7 @@ private:
 private:
 	PointShaderScene* view;
 	VolumeScene* model;
+	Graphics::ColorMap colorMap;
 	//PointShaderScene* parentIdView;
 	//PointShaderScene* childIdView;
 };
