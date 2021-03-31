@@ -45,8 +45,14 @@ void WireFrameBuilder::build(const ISurface3d& sphere, const int unum, const int
 	}
 	for (int i = 0; i < grid.size()-1; ++i) {
 		for (int j = 0; j < grid[i].size()-1; ++j) {
-			edges.push_back(WireFrameEdge(grid[i][j], grid[i + 1][j]));
-			edges.push_back(WireFrameEdge(grid[i][j], grid[i][j + 1]));
+			const auto v1 = grid[i][j];
+			const auto v2 = grid[i+1][j];
+			const auto v3 = grid[i+1][j+1];
+			const auto v4 = grid[i][j+1];
+			edges.push_back(WireFrameEdge(v1, v2));
+			edges.push_back(WireFrameEdge(v2, v3));
+			edges.push_back(WireFrameEdge(v3, v4));
+			edges.push_back(WireFrameEdge(v4, v1));
 		}
 	}
 }

@@ -49,7 +49,7 @@ TEST(WireFrameBuilderTest, TestBuildBySphere)
 	WireFrameBuilder builder;
 	builder.build(sphere, 9, 9);
 	EXPECT_EQ(100, builder.getPositions().size());
-	EXPECT_EQ(9*9*2, builder.getEdges().size());
+	EXPECT_EQ(9*9*4, builder.getEdges().size());
 }
 
 TEST(WireFrameBuilderTest, TestBuildByCone)
@@ -59,7 +59,7 @@ TEST(WireFrameBuilderTest, TestBuildByCone)
 	WireFrameBuilder builder;
 	builder.build(cone, 9, 1);
 	EXPECT_EQ(20, builder.getPositions().size());
-	EXPECT_EQ(18, builder.getEdges().size());
+	EXPECT_EQ(9*1*4, builder.getEdges().size());
 }
 
 TEST(WireFrameBuilderTest, TestBuildByCylinder)
@@ -69,5 +69,5 @@ TEST(WireFrameBuilderTest, TestBuildByCylinder)
 	WireFrameBuilder builder;
 	builder.build(cylinder, 9, 1);
 	EXPECT_EQ(20, builder.getPositions().size());
-	EXPECT_EQ(18, builder.getEdges().size());
+	EXPECT_EQ(9 * 1 * 4, builder.getEdges().size());
 }
