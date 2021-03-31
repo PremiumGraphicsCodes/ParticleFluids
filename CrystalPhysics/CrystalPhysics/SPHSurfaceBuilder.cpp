@@ -30,6 +30,34 @@ namespace {
 	constexpr auto ks = 1400.0;
 }
 
+void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float searchRadius)
+{
+	for (auto p : positions) {
+		particles.push_back(std::make_unique<SPHSurfaceParticle>(p));
+	}
+
+	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
+	for (const auto& p : particles) {
+		spaceHash.add(p.get());
+	}
+
+	this->volume = createSparseVolume(positions, searchRadius);
+
+	const SPHKernel kernel(searchRadius);
+
+	const auto nodes = volume->getNodes();
+	for (auto& node : nodes) {
+		const auto pos = node.second->getPosition();
+		const auto neighbors = spaceHash.findNeighbors(pos);
+		for (auto n : neighbors) {
+			auto sp = static_cast<SPHSurfaceParticle*>(n);
+			const auto v = n->getPosition() - pos;
+			const auto w = kernel.getCubicSpline(v);
+			node.second->setValue(w + node.second->getValue());
+		}
+	}
+}
+
 void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const float searchRadius)
 {
 	for (auto p : positions) {
@@ -49,7 +77,7 @@ void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const flo
 
 	this->volume = createSparseVolume(positions, searchRadius);
 
-	SPHKernel kernel(searchRadius);
+	const SPHKernel kernel(searchRadius);
 
 	const auto nodes = volume->getNodes();
 	for (auto& node : nodes) {

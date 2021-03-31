@@ -111,7 +111,7 @@ float SPHKernel::getViscosityKernelLaplacian(const float distance)
 	return (effectLength - distance) * constant;
 }
 
-float SPHKernel::getCubicSpline(const float distance)
+float SPHKernel::getCubicSpline(const float distance) const
 {
 	const auto q = distance * 2 / (effectLength);
 	const auto coe = effectLength * effectLength * effectLength * 3.0f / PIf;
@@ -125,6 +125,14 @@ float SPHKernel::getCubicSpline(const float distance)
 	else {
 		return 0;
 	}
+}
+
+float SPHKernel::getCubicSpline(const Vector3df& v) const
+{
+	const auto q = glm::length(v) / effectLength;
+	const auto numerator = getCubicSpline(q);
+	const auto denominator = std::pow(effectLength, 3);
+	return numerator / denominator;
 }
 
 Vector3df SPHKernel::getCubicSplineGradient(const Vector3df& distanceVector)
@@ -146,12 +154,4 @@ Vector3df SPHKernel::getCubicSplineGradient(const Vector3df& distanceVector)
 	else {
 		return Vector3df(0, 0, 0);
 	}
-}
-
-float SPHKernel::getCubicSpline(const Vector3df& v)
-{
-	const auto q = glm::length(v) / effectLength;
-	const auto numerator = getCubicSpline(q);
-	const auto denominator = std::pow(effectLength, 3);
-	return numerator / denominator;
 }

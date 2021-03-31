@@ -35,11 +35,11 @@ public:
 
 	//float getCubicSpline(const float q);
 
-	float getCubicSpline(const float distance);
+	float getCubicSpline(const float distance) const;
+
+	float getCubicSpline(const Math::Vector3df& v) const;
 
 	Math::Vector3df getCubicSplineGradient(const Math::Vector3df& distanceVector);
-
-	float getCubicSpline(const Math::Vector3df& v);
 
 	float getEffectLength() const { return effectLength; }
 

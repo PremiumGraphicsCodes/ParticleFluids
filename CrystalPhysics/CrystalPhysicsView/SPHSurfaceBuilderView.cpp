@@ -33,9 +33,13 @@ void SPHSurfaceBuilderView::onOk()
 	};
 
 	SPHSurfaceBuilder builder;
-	builder.build(positions, searchRadiusView.getValue());
+	builder.buildIsotoropic(positions, searchRadiusView.getValue());
 
 	auto& particles = builder.getParticles();
+
+	auto volume = builder.getVolume();
+
+	//volume.add
 
 	/*
 	WireFrameBuilder wfBuilder;

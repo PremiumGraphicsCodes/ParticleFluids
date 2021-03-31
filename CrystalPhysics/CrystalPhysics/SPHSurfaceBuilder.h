@@ -30,9 +30,13 @@ class SPHSurfaceBuilder
 public:
 	//void add(Shape::IParticle* particle);
 
+	void buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float searchRadius);
+
 	void build(const std::vector<Math::Vector3dd>& positions, const float searchRadius);
 
 	const std::vector<std::unique_ptr<SPHSurfaceParticle>>& getParticles() const { return particles; }
+
+	std::unique_ptr<Space::SparseVolume> getVolume() { return std::move(volume); }
 
 private:
 	std::unique_ptr<Space::SparseVolume> createSparseVolume(const std::vector<Math::Vector3dd>& particles, const float searchRadius);
