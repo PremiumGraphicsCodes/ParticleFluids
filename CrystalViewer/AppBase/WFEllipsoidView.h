@@ -2,8 +2,7 @@
 
 #include "IWFAddView.h"
 #include "IntView.h"
-//#include "Ellipsoid3dView.h"
-#include "WFAttributeView.h"
+#include "Ellipsoid3dView.h"
 
 namespace Crystal {
 	namespace UI {
@@ -19,7 +18,7 @@ private:
 private:
 	IntView unumView;
 	IntView vnumView;
-	//Sphere3dView sphereView;
+	Ellipsoid3dView ellipsoidView;
 };
 
 	}

@@ -303,6 +303,9 @@
     <ClCompile Include="Ellipsoid3dView.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="WFEllipsoidView.cpp">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />

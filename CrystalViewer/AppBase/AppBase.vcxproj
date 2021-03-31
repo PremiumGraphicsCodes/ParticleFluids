@@ -119,6 +119,7 @@
     <ClCompile Include="WFCircleView.cpp" />
     <ClCompile Include="WFConeView.cpp" />
     <ClCompile Include="WFCylinderView.cpp" />
+    <ClCompile Include="WFEllipsoidView.cpp" />
     <ClCompile Include="WFSphereView.cpp" />
     <ClCompile Include="WFTorusView.cpp" />
     <ClCompile Include="Window.cpp" />

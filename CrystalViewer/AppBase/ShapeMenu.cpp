@@ -15,6 +15,7 @@
 #include "WFConeView.h"
 #include "WFCylinderView.h"
 #include "WFSphereView.h"
+#include "WFEllipsoidView.h"
 #include "WFTorusView.h"
 
 #include "PMBoxView.h"
@@ -96,6 +97,9 @@ void WFGenerationMenu::onShow()
 		}
 		if (ImGui::MenuItem("WFSphere")) {
 			control->setWindow(new WFSphereView("WFSphere", world, canvas));
+		}
+		if (ImGui::MenuItem("WFEllipsoid")) {
+			control->setWindow(new WFEllipsoidView("WFEllipsoid", world, canvas));
 		}
 		if (ImGui::MenuItem("WFTorus")) {
 			control->setWindow(new WFTorusView("WFTorus", world, canvas));
