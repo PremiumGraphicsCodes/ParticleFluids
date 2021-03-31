@@ -12,15 +12,17 @@ using namespace Crystal::UI;
 WFCylinderView::WFCylinderView(const std::string& name, World* world, Canvas* canvas) :
 	IWFAddView(name, world, canvas),
 	cylinderView("Cylinder"),
-	unumView("UNum", 12)
+	unumView("UNum", 12),
+	vnumView("VNum", 1)
 {
 	add(&cylinderView);
 	add(&unumView);
+	add(&vnumView);
 }
 
 void WFCylinderView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(cylinderView.getValue(), unumView.getValue());
+	builder.build(cylinderView.getValue(), unumView.getValue(), vnumView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

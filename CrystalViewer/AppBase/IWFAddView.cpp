@@ -31,12 +31,6 @@ void IWFAddView::addWireFrame(const std::vector<Vector3dd>& positions, const std
 	getWorld()->getScenes()->addScene(scene);
 	//getWorld()->addScene(scene);
 
-
-	Command::Command command;
-	command.create(ShaderBuildLabels::CommandNameLabel);
-	command.setArg(ShaderBuildLabels::IdLabel, newId);
-	command.execute(getWorld());
-
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(getWorld());
+	auto presenter = scene->getPresenter();
+	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 }

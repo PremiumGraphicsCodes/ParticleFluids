@@ -28,7 +28,7 @@ private:
 	void updateChildIdView();
 
 private:
-	WireFrameScene* model;
+	//WireFrameScene* model;
 	LineShaderScene* view;
 	LineShaderScene* parentIdView;
 };
