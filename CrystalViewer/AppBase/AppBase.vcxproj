@@ -38,6 +38,7 @@
     <ClCompile Include="DirectoryView.cpp" />
     <ClCompile Include="Double4View.cpp" />
     <ClCompile Include="DoubleView.cpp" />
+    <ClCompile Include="Ellipsoid3dView.cpp" />
     <ClCompile Include="FileMenu.cpp" />
     <ClCompile Include="FileOpenMenu.cpp" />
     <ClCompile Include="FileOpenView.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="DeleteView.h" />
     <ClInclude Include="DirectoryView.h" />
     <ClInclude Include="Double4View.h" />
+    <ClInclude Include="Ellipsoid3dView.h" />
     <ClInclude Include="FileOpenView.h" />
     <ClInclude Include="FileSaveView.h" />
     <ClInclude Include="glfw3.h" />
@@ -237,6 +239,7 @@
     <ClInclude Include="WFCircleView.h" />
     <ClInclude Include="WFConeView.h" />
     <ClInclude Include="WFCylinderView.h" />
+    <ClInclude Include="WFEllipsoidView.h" />
     <ClInclude Include="WFSphereView.h" />
     <ClInclude Include="WFTorusView.h" />
     <ClInclude Include="Window.h" />

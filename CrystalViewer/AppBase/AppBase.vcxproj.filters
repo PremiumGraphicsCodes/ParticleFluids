@@ -300,6 +300,9 @@
     <ClCompile Include="VolSphereView.cpp">
       <Filter>Scene\Shape\Volume\Add</Filter>
     </ClCompile>
+    <ClCompile Include="Ellipsoid3dView.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -642,6 +645,12 @@
     </ClInclude>
     <ClInclude Include="IVolAddView.h">
       <Filter>Scene\Shape\Volume\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="WFEllipsoidView.h">
+      <Filter>Scene\Shape\WireFrame\Add</Filter>
+    </ClInclude>
+    <ClInclude Include="Ellipsoid3dView.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -31,6 +31,11 @@ Vector3dd Ellipsoid3d::getPosition(const double u, const double v) const
 	return center + uu + vv + ww;
 }
 
+Vector3dd Ellipsoid3d::getNormal(const double u, const double v) const
+{
+	return Vector3dd(0, 0, 0);
+}
+
 bool Ellipsoid3d::isSame(const Ellipsoid3d& rhs, const double tolerance) const
 {
 	return
