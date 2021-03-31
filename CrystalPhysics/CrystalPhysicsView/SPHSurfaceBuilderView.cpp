@@ -35,7 +35,7 @@ void SPHSurfaceBuilderView::onOk()
 	SPHSurfaceBuilder builder;
 	builder.build(positions, searchRadiusView.getValue());
 
-	auto particles = std::move( builder.getParticles() );
+	auto& particles = builder.getParticles();
 
 	/*
 	WireFrameBuilder wfBuilder;
