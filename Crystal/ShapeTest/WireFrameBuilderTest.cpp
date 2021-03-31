@@ -24,8 +24,10 @@ TEST(WireFrameBuilderTest, TestBuildByLine)
 
 TEST(WireFrameBuilderTest, TestBuildByBox)
 {
+	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
+
 	WireFrameBuilder builder;
-	builder.build(Box3d(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1)));
+	builder.build(box);
 	EXPECT_EQ(8, builder.getPositions().size());
 	EXPECT_EQ(12, builder.getEdges().size());
 }
@@ -42,10 +44,10 @@ TEST(WireFrameBuilderTest, TestBuildByCircle)
 
 TEST(WireFrameBuilderTest, TestBuildBySphere)
 {
-	const Sphere3d s(Vector3dd(0, 0, 0), 1.0);
+	const Sphere3d sphere(Vector3dd(0, 0, 0), 1.0);
 
 	WireFrameBuilder builder;
-	builder.build(s, 9, 9);
+	builder.build(sphere, 9, 9);
 	EXPECT_EQ(100, builder.getPositions().size());
 	EXPECT_EQ(9*9*2, builder.getEdges().size());
 }
@@ -60,12 +62,12 @@ TEST(WireFrameBuilderTest, TestBuildByCone)
 	EXPECT_EQ(18, builder.getEdges().size());
 }
 
-/*
 TEST(WireFrameBuilderTest, TestBuildByCylinder)
 {
-	WireFrameBuilder builder;
 	const Cylinder3d cylinder(1.0, 10.0, Vector3dd(0, 0, 0));
-	builder.build(cylinder, 12, 12);
-	EXPECT_EQ(24+2, builder.getPositions().size());
+
+	WireFrameBuilder builder;
+	builder.build(cylinder, 9, 1);
+	EXPECT_EQ(20, builder.getPositions().size());
+	EXPECT_EQ(18, builder.getEdges().size());
 }
-*/
