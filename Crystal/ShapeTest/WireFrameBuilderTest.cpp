@@ -50,15 +50,17 @@ TEST(WireFrameBuilderTest, TestBuildBySphere)
 	EXPECT_EQ(9*9*2, builder.getEdges().size());
 }
 
-/*
 TEST(WireFrameBuilderTest, TestBuildByCone)
 {
+	const Cone3d cone(Vector3dd(0, 0, 0), 10, 1);
+
 	WireFrameBuilder builder;
-	const Cone3d cone(Vector3dd(0, 0, 0), 10, 10);
-	builder.build(cone, 10, 10);
-	EXPECT_EQ(10+1, builder.getPositions().size());
+	builder.build(cone, 9, 1);
+	EXPECT_EQ(20, builder.getPositions().size());
+	EXPECT_EQ(18, builder.getEdges().size());
 }
 
+/*
 TEST(WireFrameBuilderTest, TestBuildByCylinder)
 {
 	WireFrameBuilder builder;

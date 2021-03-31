@@ -17,7 +17,12 @@ Cone3d::Cone3d(const Vector3dd& bottom, const double radius, const double height
 
 Vector3dd Cone3d::getPosition(const double u, const double v) const
 {
-	return getPosition(u, v, 1.0);
+	const auto uu = u * 2.0 * PI;
+	const auto r = radius * (1.0 - v);
+	const auto x = r * ::cos(uu);
+	const auto y = r * ::sin(uu);
+	const auto z = v * height;
+	return bottom + Vector3dd(x, y, z);
 }
 
 Vector3dd Cone3d::getPosition(const double u, const double v, const double w) const
