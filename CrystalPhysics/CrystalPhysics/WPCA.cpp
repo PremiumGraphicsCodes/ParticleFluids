@@ -41,7 +41,7 @@ Matrix3df WPCA::calculateCovarianceMatrix(const float radius)
 		const auto p = pw.position;
 		const auto w = pw.weight;
 
-		const auto v = p - wm;
+		const auto v = wm - p;
 		//const auto vt = glm::transpose(v);
 		//Matrix3df m()
 		const auto x00 = v[0] * v[0];
@@ -81,7 +81,7 @@ Vector3df WPCA::calculateWeightedMean(const float radius)
 
 float WPCA::calculateWeight(const Vector3df& lhs, const Vector3df& rhs, const float radius)
 {
-	const auto distance = Crystal::Math::getDistanceSquared(lhs, rhs);
+	const auto distance = Crystal::Math::getDistance(lhs, rhs);
 	if (distance > radius) {
 		return 0.0f;
 	}

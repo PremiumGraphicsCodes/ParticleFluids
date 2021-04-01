@@ -43,3 +43,15 @@ SVD::SVD3dResult SVD::calculate(const Matrix3dd& lhs)
 	result.eigenVectors = Impl::Converter::fromEigen(eigensolver.eigenvectors());
 	return result;
 }
+
+SVD::SVD3dResult SVD::calculateJacobi(const Matrix3dd& matrix)
+{
+	SVD3dResult result;
+	Matrix3d A = Impl::Converter::toEigen(matrix);
+	Eigen::JacobiSVD<Matrix3d> svd(A, Eigen::ComputeFullU);
+	const auto& R = svd.matrixU();
+	result.isOk = true;
+	result.eigenValues = Impl::Converter::fromEigen(svd.singularValues());
+	result.eigenVectors = Impl::Converter::fromEigen(svd.matrixU());
+	return result;
+}

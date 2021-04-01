@@ -57,7 +57,6 @@ void WireFrameBuilder::build(const ISurface3d& sphere, const int unum, const int
 	}
 }
 
-
 void WireFrameBuilder::build(const Box3d& box)
 {
 	const auto p0 = createPosition(box.getPosition(0, 0, 0));

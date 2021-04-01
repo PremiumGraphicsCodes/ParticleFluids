@@ -58,7 +58,7 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 	}
 }
 
-void SPHSurfaceBuilder::build(const std::vector<Vector3dd>& positions, const float searchRadius)
+void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float searchRadius)
 {
 	for (auto p : positions) {
 		particles.push_back(std::make_unique<SPHSurfaceParticle>(p));
@@ -140,16 +140,16 @@ void SPHSurfaceBuilder::calculateAnisotoropicMatrix(SPHSurfaceParticle* p, const
 	WPCA wpca;
 	const auto matrix = wpca.calculate(p, neighbors, searchRadius);
 	Crystal::Numerics::SVD svd;
-	auto result = svd.calculate(matrix);
+	auto result = svd.calculateJacobi(matrix);
 	if (!result.isOk) {
 		p->matrix = ::identitiyMatrix();
 		return;
 	}
-	p->matrix = result.eigenVectors;
+	const auto rotation = result.eigenVectors;
 	auto evs = result.eigenValues;
 	evs[1] = std::max(evs[1], evs[0] / kr);
 	evs[2] = std::max(evs[2], evs[0] / kr);
-	evs *= ks;
+	evs *= 2;//ks;
 
 	const Matrix3dd diagonalMatrix
 	(
@@ -157,6 +157,6 @@ void SPHSurfaceBuilder::calculateAnisotoropicMatrix(SPHSurfaceParticle* p, const
 		0.0, evs[1], 0.0,
 		0.0, 0.0, evs[2]
 	);
-	p->matrix = p->matrix * diagonalMatrix * glm::transpose(p->matrix) * (1.0 / searchRadius);
+	p->matrix = rotation * diagonalMatrix * glm::transpose(rotation) * (1.0 / searchRadius);
 
 }

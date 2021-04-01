@@ -30,6 +30,8 @@ public:
 
 	SVD3dResult calculate(const Math::Matrix3dd& lhs);
 
+	SVD3dResult calculateJacobi(const Math::Matrix3dd& lhs);
+
 private:
 	//std::vector<std::vector
 };

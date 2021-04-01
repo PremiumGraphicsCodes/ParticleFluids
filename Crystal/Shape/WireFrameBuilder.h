@@ -30,6 +30,8 @@ public:
 
 	int createPosition(const Math::Vector3dd& v);
 
+	void addEdge(const WireFrameEdge& e) { this->edges.push_back(e); }
+
 	std::unique_ptr<WireFrame> createWireFrame();
 
 private:
