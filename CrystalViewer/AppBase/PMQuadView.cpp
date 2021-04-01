@@ -17,7 +17,7 @@ PMQuadView::PMQuadView(const std::string& name, World* world, Canvas* canvas) :
 void PMQuadView::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.add(quadView.getValue());
+	builder.add(quadView.getValue(), 1, 1);
 
 	IPMAddView::addPolygonMesh(builder);
 }

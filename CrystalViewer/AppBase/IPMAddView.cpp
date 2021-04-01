@@ -40,6 +40,8 @@ void IPMAddView::addPolygonMesh(const PolygonMeshBuilder& builder)
 
 	presenterView.setPresenter(scene, world);
 
+	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+
 	//const auto presenterName = presenterView.getSelected();
 	//getWorld()->getRenderer()->getScene()->screen.addChild(controller.getView());
 
