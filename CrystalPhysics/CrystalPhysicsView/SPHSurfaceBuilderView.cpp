@@ -30,11 +30,13 @@ void SPHSurfaceBuilderView::onOk()
 	{
 		Vector3dd(0.0, 0.0, 0.0),
 		Vector3dd(0.5, 0.0, 0.0),
-		Vector3dd(10.0, 10.0, 10.0)
-
+		Vector3dd(10.0, 10.0, 10.0),
+		//Vector3dd(100.0, 100.0, 100.0)
 //		Vector3dd(0.0, 0.5, 0.0),
 
 	};
+
+	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
 	builder.buildIsotoropic(positions, searchRadiusView.getValue());
@@ -43,6 +45,12 @@ void SPHSurfaceBuilderView::onOk()
 
 	auto volume = builder.getVolume();
 	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));
+	auto presenter = svScene->getPresenter();
+
+	auto colorMap = this->colorMapView.getValue();
+	//colorMap.setMax(0.01f);
+	static_cast<SparseVolumePresenter*>(presenter)->setColorMap(colorMap);
+	presenter->createView(world->getRenderer(), *world->getGLFactory());
 	//volumeS
 
 	getWorld()->getScenes()->addScene(svScene);

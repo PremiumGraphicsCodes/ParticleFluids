@@ -54,6 +54,8 @@ public:
 
 	std::map< std::array<int, 3>, SparseVolumeNode*> getNodes() const { return nodes; }
 
+	std::map< std::array<int, 3>, SparseVolumeNode*>& getNodes() { return nodes; }
+
 	void addValue(const std::array<int, 3>& index, const float value);
 
 private:

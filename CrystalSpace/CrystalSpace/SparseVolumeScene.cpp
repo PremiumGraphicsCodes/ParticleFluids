@@ -10,3 +10,8 @@ SparseVolumeScene::SparseVolumeScene(const int id, const std::string& name, std:
 {
 	presenter = std::make_unique<SparseVolumePresenter>(this);
 }
+
+Box3d SparseVolumeScene::getBoundingBox() const
+{
+	return shape->getBoundingBox();
+}

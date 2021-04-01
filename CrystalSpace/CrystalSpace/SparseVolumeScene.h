@@ -21,6 +21,9 @@ public:
 
 	Scene::IPresenter* getPresenter() { return presenter.get(); }
 
+	Math::Box3d getBoundingBox() const override;
+
+
 private:
 	std::unique_ptr<SparseVolume> shape;
 	std::unique_ptr<SparseVolumePresenter> presenter;

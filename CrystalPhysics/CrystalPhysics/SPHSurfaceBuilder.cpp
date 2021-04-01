@@ -45,7 +45,7 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 
 	const SPHKernel kernel(searchRadius);
 
-	const auto nodes = volume->getNodes();
+	auto& nodes = volume->getNodes();
 	for (auto& node : nodes) {
 		const auto pos = node.second->getPosition();
 		const auto neighbors = spaceHash.findNeighbors(pos);
