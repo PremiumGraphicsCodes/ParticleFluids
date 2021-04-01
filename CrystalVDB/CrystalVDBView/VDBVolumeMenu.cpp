@@ -3,6 +3,7 @@
 #include "VDBVolumeView.h"
 #include "VolumeToMeshView.h"
 #include "VolumeToPSView.h"
+#include "ToVDBVolumeView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 
@@ -29,6 +30,9 @@ void VDBVolumeMenu::onShow()
 		}
 		if (ImGui::MenuItem("VolumeToPS")) {
 			control->setWindow(new VolumeToPSView("VolumeToPS", world, getCanvas()));
+		}
+		if (ImGui::MenuItem("ToVDBVolume")) {
+			control->setWindow(new ToVDBVolumeView("ToVDBVolume", world, getCanvas()));
 		}
 		ImGui::EndMenu();
 	}

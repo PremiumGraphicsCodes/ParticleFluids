@@ -1,6 +1,7 @@
 #include "ToVDBVolumeView.h"
 
 #include "../CrystalVDB/VDBVolumeConverter.h"
+#include "../CrystalVDB/VDBVolumeScene.h"
 
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
@@ -18,6 +19,7 @@ ToVDBVolumeView::ToVDBVolumeView(const std::string& name, World* model, Canvas* 
 {
 	add(&sphereView);
 	add(&resolutionView);
+	resolutionView.setValue(10);
 }
 
 void ToVDBVolumeView::onOk()
@@ -28,19 +30,31 @@ void ToVDBVolumeView::onOk()
 		resolutionView.getValue(),
 		resolutionView.getValue()
 	};
-	auto sv = std::make_unique<SparseVolume>(sphereView.getValue().getBoundingBox(), resolution);
-	//auto svScene = std::make_unique<SparseVolumeScene>()
 
-	/*
+	const auto sphere = sphereView.getValue();
+	const auto bb = sphere.getBoundingBox();
+	auto sv = std::make_unique<SparseVolume>(bb, resolution);
+	const auto center = sphere.getCenter();
+	for (int i = 0; i < resolution[0]; ++i) {
+		for (int j = 0; j < resolution[1]; ++j) {
+			for (int k = 0; k < resolution[2]; ++k) {
+				const auto p = sv->getPositionAt({ i,j,k });
+				const auto d = glm::distance(p, center);
+				if (d < sphere.getRadius()) {
+					const auto v = d / sphere.getRadius();
+					sv->createNode({ i,j,k });
+					auto n = sv->findNode({ i,j,k });
+					n->setValue(v);
+				}
+			}
+		}
+	}
+
+	SparseVolumeScene svScene(-1, "Original", std::move(sv));
+
+	VDBVolumeScene* dest = new VDBVolumeScene();
 	VDBVolumeConverter converter;
-	converter.toVDB()
-	auto mesh = new VDBPolygonMeshScene();
-	vToMesh.toMesh(grid, mesh);
-	mesh->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	getWorld()->getScenes()->addScene(mesh);
-
-	//EXPECT_FALSE(mesh->getVerticesf().empty());
-	//EXPECT_EQ(216, mesh->getQuads().size());
-	std::cout << "quads = " << mesh->getQuadFaces().size() << std::endl;;
-	*/
+	converter.toVDB(svScene, dest);
+	dest->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	getWorld()->getScenes()->addScene(dest);
 }

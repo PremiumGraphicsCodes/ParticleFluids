@@ -9,11 +9,12 @@ using namespace Crystal::VDB;
 using namespace openvdb;
 
 VDBVolumeScene::VDBVolumeScene() :
-	IShapeScene(-1, ""),
-	impl(new VDBVolumeImpl())
+	VDBVolumeScene(0.0f)
+	//IShapeScene(-1, ""),
+	//impl(new VDBVolumeImpl())
 {
-	impl->setPtr(FloatGrid::create());
-	presenter = std::make_unique<VDBVolumePresenter>(this);
+	//impl->setPtr(FloatGrid::create());
+	//presenter = std::make_unique<VDBVolumePresenter>(this);
 }
 
 VDBVolumeScene::VDBVolumeScene(VDBVolumeImpl* impl) :
