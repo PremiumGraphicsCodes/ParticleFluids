@@ -189,6 +189,7 @@
     <ClCompile Include="MeshToVolumeView.cpp" />
     <ClCompile Include="OBJFileExportView.cpp" />
     <ClCompile Include="OBJFileImportView.cpp" />
+    <ClCompile Include="ToVDBVolumeView.cpp" />
     <ClCompile Include="VDBFileMenu.cpp" />
     <ClCompile Include="VDBMeshMenu.cpp" />
     <ClCompile Include="VDBView.cpp" />
@@ -204,6 +205,7 @@
   <ItemGroup>
     <ClInclude Include="MeshToVolumeView.h" />
     <ClInclude Include="OBJFileImportView.h" />
+    <ClInclude Include="ToVDBVolumeView.h" />
     <ClInclude Include="VDBFileMenu.h" />
     <ClInclude Include="VDBPSMenu.h" />
     <ClInclude Include="PSToVolumeView.h" />

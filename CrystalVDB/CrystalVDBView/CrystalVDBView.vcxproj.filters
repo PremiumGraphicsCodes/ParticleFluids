@@ -41,6 +41,9 @@
     <ClCompile Include="VDBFileMenu.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="ToVDBVolumeView.cpp">
+      <Filter>Volume\Converter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VolumeToMeshView.h">
@@ -81,6 +84,9 @@
     </ClInclude>
     <ClInclude Include="VDBFileMenu.h">
       <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="ToVDBVolumeView.h">
+      <Filter>Volume\Converter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
