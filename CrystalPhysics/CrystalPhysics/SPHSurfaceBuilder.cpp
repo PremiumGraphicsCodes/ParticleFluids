@@ -133,30 +133,42 @@ std::unique_ptr<SparseVolume> SPHSurfaceBuilder::createSparseVolume(const std::v
 
 void SPHSurfaceBuilder::calculateAnisotoropicMatrix(SPHSurfaceParticle* p, const std::vector<IParticle*>& neighbors, const float searchRadius)
 {
-	if (neighbors.size() < 2) {
-		p->matrix = ::identitiyMatrix();
-		return;
-	}
+	//const Matrix3dd scaleMatrix;
 	WPCA wpca;
 	const auto matrix = wpca.calculate(p, neighbors, searchRadius);
 	Crystal::Numerics::SVD svd;
 	auto result = svd.calculateJacobi(matrix);
+	/*
 	if (!result.isOk) {
 		p->matrix = ::identitiyMatrix();
 		return;
 	}
-	const auto rotation = result.eigenVectors;
-	auto evs = result.eigenValues;
-	evs[1] = std::max(evs[1], evs[0] / kr);
-	evs[2] = std::max(evs[2], evs[0] / kr);
-	evs *= 2;//ks;
+	*/
 
-	const Matrix3dd diagonalMatrix
-	(
-		evs[0], 0.0, 0.0,
-		0.0, evs[1], 0.0,
-		0.0, 0.0, evs[2]
-	);
-	p->matrix = rotation * diagonalMatrix * glm::transpose(rotation) * (1.0 / searchRadius);
+	const auto rotation = result.eigenVectors;
+
+
+	Matrix3dd scaleMatrix = ::identitiyMatrix();
+	if (neighbors.size() < 25) {
+		scaleMatrix *= 0.5;
+//		p->matrix = scaleMatrix;
+	}
+	else {
+		auto evs = result.eigenValues;
+		evs[1] = std::max(evs[1], evs[0] / kr);
+		evs[2] = std::max(evs[2], evs[0] / kr);
+//		evs /= 14.0;//ks;
+
+		scaleMatrix = Matrix3dd
+		(
+			evs[0], 0.0, 0.0,
+			0.0, evs[1], 0.0,
+			0.0, 0.0, evs[2]
+		);
+	}
+	p->matrix = rotation * scaleMatrix * glm::transpose(rotation) * (1.0 / searchRadius);
 
 }
+
+// calculateRotationMatrix()
+// calculateScaleMatrix()

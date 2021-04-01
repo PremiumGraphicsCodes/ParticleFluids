@@ -31,7 +31,7 @@ namespace {
 		for (auto u = 0.0; u < 1.0 + tolerance; u += du) {
 			std::vector<int> g;
 			for (auto v = 0.0; v < 1.0 + tolerance; v += dv) {
-				auto p = m * sphere.getPosition(u, v);
+				auto p = sphere.getPosition(u, v);
 				p -= sphere.getCenter();
 				p = m * p;
 				p += sphere.getCenter();
@@ -76,9 +76,9 @@ void SPHSurfaceBuilderView::onOk()
 
 	};
 
-	for (int i = 0; i < 5; ++i) {
-		for (int j = 0; j < 5; ++j) {
-			for (int k = 0; k < 5; ++k) {
+	for (int i = 0; i < 10; ++i) {
+		for (int j = 0; j < 10; ++j) {
+			for (int k = 0; k < 10; ++k) {
 				positions.push_back(Vector3dd(0.25 * i, 0.25 * j, 0.25 * k));
 			}
 		}
