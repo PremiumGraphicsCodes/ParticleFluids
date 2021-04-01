@@ -1,7 +1,7 @@
 #include "IndexedSortSearchAlgoView.h"
 
-#include "../CrystalAlgo/IndexedSortSearchAlgo.h"
-#include "../CrystalAlgo/StopWatch.h"
+#include "../CrystalSpace/IndexedSortSearchAlgo.h"
+#include "../CrystalSpace/StopWatch.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 
 #include <iostream>
@@ -10,7 +10,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 IndexedSortSearchAlgoView::IndexedSortSearchAlgoView(World* model, Canvas* canvas) :
 	IOkCancelView("IndexedSort", model, canvas),
@@ -30,7 +30,7 @@ void IndexedSortSearchAlgoView::onOk()
 		}
 	}
 
-	Crystal::Algo::StopWatch sw;
+	Crystal::Space::StopWatch sw;
 	sw.start();
 
 	IndexedSortSearchAlgo searchAlgo(searchRadius.getValue());

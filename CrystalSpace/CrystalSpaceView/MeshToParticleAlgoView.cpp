@@ -1,6 +1,6 @@
 #include "MeshToParticleAlgoView.h"
 
-#include "../CrystalAlgo/MeshToParticleAlgo.h"
+#include "../CrystalSpace/MeshToParticleAlgo.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
@@ -12,7 +12,7 @@
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 using namespace Crystal::UI;
 
 MeshToParticleAlgoView::MeshToParticleAlgoView(const std::string& name, World* model, Canvas* canvas) :

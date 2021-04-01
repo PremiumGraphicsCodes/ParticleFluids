@@ -3,21 +3,25 @@
 #include "../CrystalPhysics/SPHSurfaceBuilder.h"
 
 #include "../../Crystal/Shape/Particle.h"
-
 #include "../../Crystal/Shape/WireFrameBuilder.h"
+
+#include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::UI;
 using namespace Crystal::Scene;
+using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
 SPHSurfaceBuilderView::SPHSurfaceBuilderView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	searchRadiusView("SearchRadius")
+	searchRadiusView("SearchRadius"),
+	colorMapView("ColorMap")
 {
 	searchRadiusView.setValue(1.0f);
 	add(&searchRadiusView);
+	add(&colorMapView);
 }
 
 void SPHSurfaceBuilderView::onOk()
@@ -38,8 +42,10 @@ void SPHSurfaceBuilderView::onOk()
 	auto& particles = builder.getParticles();
 
 	auto volume = builder.getVolume();
+	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));
+	//volumeS
 
-	//volume.add
+	getWorld()->getScenes()->addScene(svScene);
 
 	/*
 	WireFrameBuilder wfBuilder;

@@ -2,7 +2,7 @@
 
 #include "../../CrystalViewer/AppBase/IOkCancelView.h"
 #include "../../CrystalViewer/AppBase/FloatView.h"
-
+#include "../../CrystalViewer/AppBase/ColorMapView.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -20,6 +20,7 @@ private:
 
 private:
 	FloatView searchRadiusView;
+	ColorMapView colorMapView;
 };
 
 	}

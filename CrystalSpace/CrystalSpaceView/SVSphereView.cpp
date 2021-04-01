@@ -32,7 +32,7 @@ void SVSphereView::onOk()
 				const std::array<int,3> index = { ix, iy, iz };
 				const auto p = sv->getPositionAt(index);
 				if(Crystal::Math::getDistanceSquared(p, center) < rad * rad) {
-					const auto d = Crystal::Math::getDistance(p, center);
+					const auto d = Crystal::Math::getDistance(p, center) / rad;
 					sv->createNode(index);
 					auto n = sv->findNode(index);
 					n->setValue(d);

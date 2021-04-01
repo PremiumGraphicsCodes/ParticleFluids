@@ -1,7 +1,7 @@
 #include "SpaceHashView.h"
 
-#include "../CrystalAlgo/SpaceHash3d.h"
-#include "../CrystalAlgo/StopWatch.h"
+#include "../CrystalSpace/SpaceHash3d.h"
+#include "../CrystalSpace/StopWatch.h"
 #include "../../Crystal/Shape/ParticleSystem.h"
 
 #include <iostream>
@@ -10,7 +10,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 SpaceHashView::SpaceHashView(World* model, Canvas* canvas) :
 	IOkCancelView("SpaceHash", model, canvas),
@@ -30,7 +30,7 @@ void SpaceHashView::onOk()
 		}
 	}
 
-	Crystal::Algo::StopWatch sw;
+	Crystal::Space::StopWatch sw;
 	sw.start();
 
 	SpaceHash3d grid(searchRadius.getValue(), 10000000);

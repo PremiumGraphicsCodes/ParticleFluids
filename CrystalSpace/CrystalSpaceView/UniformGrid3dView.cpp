@@ -1,6 +1,6 @@
 #include "UniformGrid3dView.h"
 
-#include "../CrystalAlgo/UniformGrid3d.h"
+#include "../CrystalSpace/UniformGrid3d.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include <iostream>
@@ -9,7 +9,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Search;
+using namespace Crystal::Space;
 
 UniformGrid3dView::UniformGrid3dView(World* model, Canvas* canvas) :
 	IOkCancelView("UniformGrid", model, canvas),

@@ -1,12 +1,12 @@
 #include "VolumeConvertView.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../CrystalAlgo/VolumeConvertAlgo.h"
+#include "../CrystalSpace/VolumeConvertAlgo.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
-using namespace Crystal::Algo;
+using namespace Crystal::Space;
 
 VolumeConvertView::VolumeConvertView(World* model, Canvas* canvas) :
 	IOkCancelView("VolumeConvert", model, canvas),

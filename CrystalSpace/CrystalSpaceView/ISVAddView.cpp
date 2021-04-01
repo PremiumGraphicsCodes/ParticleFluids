@@ -26,5 +26,7 @@ void ISVAddView::addVolume(std::unique_ptr<SparseVolume> volume)
 	auto scene = new SparseVolumeScene(getWorld()->getNextSceneId(), nameView.getValue(), std::move(volume));
 	getWorld()->getScenes()->addScene(scene);
 
-	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	auto presenter = scene->getPresenter();
+	static_cast<SparseVolumePresenter*>(presenter)->setColorMap(colorMapView.getValue());
+	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 }

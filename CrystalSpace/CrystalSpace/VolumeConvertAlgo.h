@@ -4,7 +4,7 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 namespace Crystal {
-	namespace Algo {
+	namespace Space {
 
 class VolumeConvertAlgo
 {
