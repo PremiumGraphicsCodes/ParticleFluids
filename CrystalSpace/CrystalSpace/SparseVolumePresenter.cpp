@@ -48,7 +48,7 @@ void SparseVolumePresenter::updateScreenView()
 	for (const auto& node : nodes) {
 		const auto v = node.second->getValue();
 		const auto c = colorMap.getColor(v);
-		pb.add(node.second->getPosition(), c, 10.0f);
+		pb.add(node.second->getPosition(), c, 50.0f);
 	}
 	/*
 	const auto& resolutions = shape->getResolutions();

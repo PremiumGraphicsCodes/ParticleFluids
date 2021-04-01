@@ -98,7 +98,7 @@ void SPHSurfaceBuilderView::onOk()
 		//wfBuilder.build(s, 10, 10);
 		::build(s, 10, 10, m,  wfBuilder);
 	}
-	//WireFrame()
+	/*
 	auto wf = wfBuilder.createWireFrame();
 	WireFrameAttribute attr;
 	attr.color = glm::vec4(1, 1, 1, 1);
@@ -106,19 +106,18 @@ void SPHSurfaceBuilderView::onOk()
 	WireFrameScene* wfScene = new WireFrameScene(getWorld()->getNextSceneId(), "WF", std::move(wf), attr);
 	wfScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 	getWorld()->getScenes()->addScene(wfScene);
+	*/
 
-	/*
 	auto volume = builder.getVolume();
 	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));
 	auto presenter = svScene->getPresenter();
 
 	auto colorMap = this->colorMapView.getValue();
-	//colorMap.setMax(0.01f);
+	colorMap.setMax(1.0f);
 	static_cast<SparseVolumePresenter*>(presenter)->setColorMap(colorMap);
 	presenter->createView(world->getRenderer(), *world->getGLFactory());
 
 	getWorld()->getScenes()->addScene(svScene);
-	*/
 
 	/*
 	WireFrameBuilder wfBuilder;

@@ -79,7 +79,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 
 	const SPHKernel kernel(searchRadius);
 
-	const auto nodes = volume->getNodes();
+	auto& nodes = volume->getNodes();
 	for (auto& node : nodes) {
 		const auto pos = node.second->getPosition();
 		const auto neighbors = spaceHash.findNeighbors( pos );

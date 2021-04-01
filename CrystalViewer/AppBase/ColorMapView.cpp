@@ -19,7 +19,7 @@ ColorMapView::ColorMapView(const std::string& name /*, const ColorMap& value */)
     for (int i = 0; i < 270; ++i) {
         ColorHSV hsv(i, 1.0, 1.0);
         ColorRGBAf c(hsv.toColorRGBf(), 0.0f);
-        colorMap.setColor(i, c);
+        colorMap.setColor(269-i, c);
     }
     this->value = colorMap;
 
