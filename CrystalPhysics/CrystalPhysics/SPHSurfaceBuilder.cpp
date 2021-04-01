@@ -41,7 +41,7 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 		spaceHash.add(p.get());
 	}
 
-	this->volume = createSparseVolume(positions, searchRadius);
+	this->volume = createSparseVolume(positions, searchRadius, searchRadius);
 
 	const SPHKernel kernel(searchRadius);
 
@@ -58,7 +58,7 @@ void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& posi
 	}
 }
 
-void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float searchRadius)
+void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& positions, const float searchRadius, const float cellLength)
 {
 	for (auto p : positions) {
 		particles.push_back(std::make_unique<SPHSurfaceParticle>(p));
@@ -75,7 +75,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 		calculateAnisotoropicMatrix(p.get(), neighbors, searchRadius);
 	}
 
-	this->volume = createSparseVolume(positions, searchRadius);
+	this->volume = createSparseVolume(positions, searchRadius, cellLength);
 
 	const SPHKernel kernel(searchRadius);
 
@@ -97,27 +97,34 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 
 }
 
-std::unique_ptr<SparseVolume> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float searchRadius)
+std::unique_ptr<SparseVolume> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float searchRadius,  const float cellLength)
 {
 	Box3d bb = Box3d::createDegeneratedBox();
 	for (const auto& p : particles) {
 		bb.add(p);
 	}
 
+	bb.add(bb.getMin() - Vector3dd(cellLength));
+	bb.add(bb.getMax() + Vector3dd(cellLength));
+
+	const auto origin = bb.getMin();
+
 	const auto length = bb.getLength();
-	const auto resx = static_cast<int>(length.x / searchRadius);
-	const auto resy = static_cast<int>(length.y / searchRadius);
-	const auto resz = static_cast<int>(length.z / searchRadius);
+	const auto resx = static_cast<int>(length.x / cellLength);
+	const auto resy = static_cast<int>(length.y / cellLength);
+	const auto resz = static_cast<int>(length.z / cellLength);
+
+	const auto i = static_cast<int>( searchRadius / cellLength );
 
 	std::set<std::array<int, 3>> indices;
 	for (const auto& p : particles) {
-		const auto index = p / (double)searchRadius;
-		for (int ix = index.x - 1; ix <= index.x + 1; ix++) {
-			for (int iy = index.y - 1; iy <= index.y + 1; iy++) {
-				for (int iz = index.z - 1; iz <= index.z + 1; iz++) {
-					std::array<int, 3> index = { ix, iy, iz };
+		const auto localPosition = p - origin;
+		const auto ip = localPosition / (double)cellLength;
+		for (int ix = -i; ix <= i; ix++) {
+			for (int iy = -i; iy <= i; iy++) {
+				for (int iz = -i; iz <= i; iz++) {
+					std::array<int, 3> index = { ip[0] + ix, ip[1] + iy, ip[2] + iz };
 					indices.insert(index);
-					//					sv.
 				}
 			}
 		}

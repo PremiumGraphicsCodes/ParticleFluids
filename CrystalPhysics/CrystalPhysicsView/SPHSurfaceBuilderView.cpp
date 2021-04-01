@@ -57,24 +57,19 @@ namespace {
 SPHSurfaceBuilderView::SPHSurfaceBuilderView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
 	searchRadiusView("SearchRadius"),
+	cellLengthView("CellLength"),
 	colorMapView("ColorMap")
 {
 	searchRadiusView.setValue(1.0f);
 	add(&searchRadiusView);
+	cellLengthView.setValue(0.5f);
+	add(&cellLengthView);
 	add(&colorMapView);
 }
 
 void SPHSurfaceBuilderView::onOk()
 {
-	std::vector<Vector3dd> positions = 
-	{
-//		Vector3dd(0.0, 0.0, 0.0),
-//		Vector3dd(0.5, 0.0, 0.0),
-		//Vector3dd(10.0, 10.0, 10.0),
-		//Vector3dd(100.0, 100.0, 100.0)
-//		Vector3dd(0.0, 0.5, 0.0),
-
-	};
+	std::vector<Vector3dd> positions;
 
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 10; ++j) {
@@ -87,7 +82,7 @@ void SPHSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	builder.buildAnisotoropic(positions, searchRadiusView.getValue());
+	builder.buildAnisotoropic(positions, searchRadiusView.getValue(),cellLengthView.getValue());
 
 	WireFrameBuilder wfBuilder;
 
