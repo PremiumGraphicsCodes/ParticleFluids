@@ -183,6 +183,7 @@
     </Compile>
     <Compile Include="Scene\SceneListViewBehavior.cs" />
     <Compile Include="Scene\SceneListViewModel.cs" />
+    <Compile Include="SpaceLabels.cs" />
     <Compile Include="TimeLineView.xaml.cs">
       <DependentUpon>TimeLineView.xaml</DependentUpon>
     </Compile>

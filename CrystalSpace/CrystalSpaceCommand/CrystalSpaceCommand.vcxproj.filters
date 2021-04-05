@@ -10,8 +10,10 @@
       <Filter>PublicLabels</Filter>
     </ClInclude>
     <ClInclude Include="SpaceCommandFactory.h" />
+    <ClInclude Include="SparseVolumeSceneCreateCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceCommandFactory.cpp" />
+    <ClCompile Include="SparseVolumeSceneCreateCommand.cpp" />
   </ItemGroup>
 </Project>
