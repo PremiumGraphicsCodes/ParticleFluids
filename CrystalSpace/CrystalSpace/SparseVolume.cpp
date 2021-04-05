@@ -12,13 +12,16 @@ Vector3dd SparseVolume::getPositionAt(const std::array<int, 3>& index) const
 	return boundingBox.getPosition(u, v, w);
 }
 
-void SparseVolume::createNode(const std::array<int, 3>& index)
+SparseVolumeNode* SparseVolume::createNode(const std::array<int, 3>& index)
 {
 	const auto pos = getPositionAt(index);
-	nodes[index] = new SparseVolumeNode(pos);
+	auto node = new SparseVolumeNode(pos);
+	nodes[index] = node;
+	return node;
 }
 
 void SparseVolume::addValue(const std::array<int, 3>& index, const float value)
 {
-	//nodes.find()
+	auto n = nodes[index];
+	n->setValue(n->getValue() + value);
 }

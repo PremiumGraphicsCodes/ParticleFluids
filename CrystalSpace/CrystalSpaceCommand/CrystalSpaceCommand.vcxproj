@@ -179,12 +179,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PublicLabels\SparseVolumeNodeSetLabels.h" />
     <ClInclude Include="PublicLabels\SparseVolumeSceneCreateLabels.h" />
     <ClInclude Include="SpaceCommandFactory.h" />
+    <ClInclude Include="SparseVolumeNodeSetCommand.h" />
     <ClInclude Include="SparseVolumeSceneCreateCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceCommandFactory.cpp" />
+    <ClCompile Include="SparseVolumeNodeSetCommand.cpp" />
     <ClCompile Include="SparseVolumeSceneCreateCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -46,7 +46,7 @@ public:
 
 	Math::Box3d getBoundingBox() const { return boundingBox; }
 
-	void createNode(const std::array<int, 3>& index);
+	SparseVolumeNode* createNode(const std::array<int, 3>& index);
 
 	Math::Vector3dd getPositionAt(const std::array<int, 3>& index) const;
 

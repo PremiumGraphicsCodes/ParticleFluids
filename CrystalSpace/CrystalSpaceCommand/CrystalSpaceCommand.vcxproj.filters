@@ -11,9 +11,14 @@
     </ClInclude>
     <ClInclude Include="SpaceCommandFactory.h" />
     <ClInclude Include="SparseVolumeSceneCreateCommand.h" />
+    <ClInclude Include="SparseVolumeNodeSetCommand.h" />
+    <ClInclude Include="PublicLabels\SparseVolumeNodeSetLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceCommandFactory.cpp" />
     <ClCompile Include="SparseVolumeSceneCreateCommand.cpp" />
+    <ClCompile Include="SparseVolumeNodeSetCommand.cpp" />
   </ItemGroup>
 </Project>
