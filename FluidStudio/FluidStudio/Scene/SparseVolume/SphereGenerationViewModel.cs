@@ -40,9 +40,6 @@ namespace FluidStudio.Scene.SparseVolume
             res[2] = ResolutionZ.Value;
             var box = SphereViewModel.Value.GetBoundingBox();
             var newId = space.CreateSparseVolume("SparseVolume", res, box, 1);
-            canvas.Camera.Fit();
-            canvas.BuildShader(world, newId);
-            canvas.Render();
 
             var sphere = SphereViewModel.Value;
             var radius = sphere.Radius;
@@ -69,10 +66,18 @@ namespace FluidStudio.Scene.SparseVolume
                             var distance = System.Math.Sqrt(distanceSquared);
                             var value = distance / radius;
                             var node = new SparseVolumeNode(index, (float)value);
+                            nodes.Add(node);
                         }
                     }
                 }
             }
+
+            space.SetSparseNodes(newId, nodes);
+
+            canvas.Camera.Fit();
+            canvas.BuildShader(world, newId);
+            canvas.Render();
+
         }
 
         private Vector3d getPositionAt(int[] index, Box3d bb)

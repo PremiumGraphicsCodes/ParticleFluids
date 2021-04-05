@@ -4,6 +4,8 @@
 #include "../../Crystal/Scene/PointShaderScene.h"
 #include "../../Crystal/Scene/SceneShader.h"
 
+#include "../../Crystal/Graphics/ColorHSV.h"
+
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
@@ -13,6 +15,13 @@ SparseVolumePresenter::SparseVolumePresenter(SparseVolumeScene* model) :
 	model(model),
 	view(nullptr)
 {
+	ColorMap colorMap(0.0, 1.0, 270);
+	for (int i = 0; i < 270; ++i) {
+		ColorHSV hsv(i, 1.0, 1.0);
+		ColorRGBAf c(hsv.toColorRGBf(), 0.0f);
+		colorMap.setColor(269 - i, c);
+	}
+	this->colorMap = colorMap;
 }
 
 void SparseVolumePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
