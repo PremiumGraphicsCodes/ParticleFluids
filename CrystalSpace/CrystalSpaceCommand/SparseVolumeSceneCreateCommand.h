@@ -6,28 +6,30 @@
 #include <vector>
 
 namespace Crystal {
-	namespace Command {
+	namespace Space {
 
-class SparseVolumeSceneCreateCommand : public ICommand
+class SparseVolumeSceneCreateCommand : public Command::ICommand
 {
 public:
 	SparseVolumeSceneCreateCommand() :
-		ICommand(&args, &results)
+		Command::ICommand(&args, &results)
 	{}
 
-	struct Args : IArgs
+	struct Args : Command::IArgs
 	{
 		Args();
 
-		Arg< std::array<int,3> > resolutions;
-		Arg< Math::Box3d > boundingBox;
+		Command::Arg< std::array<int,3> > resolution;
+		Command::Arg< Math::Box3d > boundingBox;
+		Command::Arg< std::string> name;
+		Command::Arg< int > layer;
 	};
 
-	struct Results : IResults
+	struct Results : Command::IResults
 	{
 		Results();
 
-		Result<int> newId;
+		Command::Result<int> newId;
 	};
 
 	static std::string getName();

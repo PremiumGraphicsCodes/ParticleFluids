@@ -5,17 +5,23 @@
 
 #include "PublicLabels/SparseVolumeSceneCreateLabels.h"
 
+#include "../CrystalSpace/SparseVolumeScene.h"
+
 using namespace Crystal::Math;
-//using namespace Crystal::Shape;
+using namespace Crystal::Space;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 SparseVolumeSceneCreateCommand::Args::Args() :
-	resolutions(::ResolutionLabel, {10, 10, 10}),
-	boundingBox(::BoundingBoxLabel, Box3d())
+	resolution(::ResolutionLabel, {10, 10, 10}),
+	boundingBox(::BoundingBoxLabel, Box3d()),
+	name (::NameLabel, std::string("")),
+	layer(::LayerLabel, -1)
 {
-	add(&resolutions);
+	add(&resolution);
 	add(&boundingBox);
+	add(&name);
+	add(&layer);
 }
 
 SparseVolumeSceneCreateCommand::Results::Results() :
@@ -31,18 +37,14 @@ std::string SparseVolumeSceneCreateCommand::getName()
 
 bool SparseVolumeSceneCreateCommand::execute(World* world)
 {
-	/*
-	const auto& positions = args.positions.getValue();
-	ParticleAttribute attr;
-	attr.color = args.color.getValue();
-	attr.size = args.pointSize.getValue();
 	auto name = args.name.getValue();
-	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
-	auto scene = new ParticleSystemScene(world->getNextSceneId(), name, std::move(shape));
+
+	const auto bb = args.boundingBox.getValue();
+	const auto res = args.resolution.getValue();
+	auto shape = std::make_unique<SparseVolume>(bb, res);
+	auto scene = new SparseVolumeScene(world->getNextSceneId(), name, std::move(shape));
 	world->addScene(args.layer.getValue(), scene);
-	//world->getRenderer()->getBuffer()->screen.add(scene, *world->getGLFactory());
 	results.newId.setValue(scene->getId());
-	//world->updateViewModel();
-	*/
+
 	return true;
 }
