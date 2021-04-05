@@ -52,6 +52,7 @@ bool SPHSurfaceConstructionCommand::execute(World* world)
 	SPHSurfaceBuilder builder;
 	builder.buildAnisotoropic(positions, args.effectLength.getValue(), args.cellLength.getValue());
 	auto shape = builder.getVolume();
+	sp->resetShape(std::move(shape));
 	//sp->
 	//results.newId.setValue(fluidScene->getId());
 	return true;

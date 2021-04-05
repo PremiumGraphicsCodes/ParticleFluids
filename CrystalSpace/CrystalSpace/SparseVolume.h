@@ -2,6 +2,7 @@
 
 #include "../../Crystal/Math/Box3d.h"
 #include "../../Crystal/Shape/IParticle.h"
+#include "../../Crystal/Util/UnCopyable.h"
 
 #include <map>
 
@@ -35,7 +36,7 @@ private:
 	//std::array<int,3> index;
 };
 
-class SparseVolume
+class SparseVolume : private UnCopyable
 {
 public:
 	SparseVolume(const Math::Box3d& bb, const std::array<int, 3>& resolutions) :
@@ -43,6 +44,13 @@ public:
 		resolutions(resolutions)
 	{
 	}
+
+	~SparseVolume()
+	{
+		clear();
+	}
+
+	void clear();
 
 	Math::Box3d getBoundingBox() const { return boundingBox; }
 

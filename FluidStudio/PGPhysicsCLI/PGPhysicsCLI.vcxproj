@@ -150,6 +150,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj">
+      <Project>{c4927d35-7611-4afd-934a-da114663bfb2}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj">
       <Project>{09ee8b6a-2d6f-4b9e-83ff-6a40d03bc465}</Project>
     </ProjectReference>

@@ -17,12 +17,13 @@ public:
 
 	SparseVolume* getShape() const { return shape.get(); }
 
+	void resetShape(std::unique_ptr<SparseVolume> shape) { this->shape = std::move(shape); }
+
 	Scene::SceneType getType() const { return Scene::SceneType("SparseVolumeScene"); }
 
 	Scene::IPresenter* getPresenter() { return presenter.get(); }
 
 	Math::Box3d getBoundingBox() const override;
-
 
 private:
 	std::unique_ptr<SparseVolume> shape;

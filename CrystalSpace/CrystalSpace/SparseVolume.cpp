@@ -3,6 +3,14 @@
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 
+void SparseVolume::clear()
+{
+	for (auto n : nodes) {
+		delete n.second;
+	}
+	nodes.clear();
+}
+
 Vector3dd SparseVolume::getPositionAt(const std::array<int, 3>& index) const
 {
 	const auto u = index[0] / static_cast<double>(resolutions[0]);
