@@ -5,6 +5,7 @@ using PG.Core.Math;
 using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
+using System.Collections.Generic;
 
 namespace FluidStudio.Scene.SparseVolume
 {
@@ -43,45 +44,44 @@ namespace FluidStudio.Scene.SparseVolume
             canvas.BuildShader(world, newId);
             canvas.Render();
 
-            /*
-            var positions = new List<Vector3d>();
-            var box = sphere.GetBoundingBox();
-            var dx = Dx.Value;
-            var dy = Dy.Value;
-            var dz = Dz.Value;
-            var min = box.Min;
-            var max = box.Max;
-                        */
-
             var sphere = SphereViewModel.Value;
             var radius = sphere.Radius;
 
-            var dx = 1.0 / (double)(ResolutionX.Value);
-            var dy = 1.0 / (double)(ResolutionY.Value);
-            var dz = 1.0 / (double)(ResolutionZ.Value);
-            for (var x = -radius; x < radius; x += dx)
+            var nodes = new List<SparseVolumeNode>();
+
+            var resx = ResolutionX.Value;
+            var resy = ResolutionY.Value;
+            var resz = ResolutionZ.Value;
+            for (var x = 0; x < resx; x ++)
             {
-                for (var y = -radius; y < radius; y += dy)
+                for (var y = 0; y < resy; y++)
                 {
-                    for (var z = -radius; z < radius; z += dz)
+                    for (var z = 0; z < resz; z++)
                     {
-                        var p = new Vector3d(x, y, z);
-                        if (p.LengthSquared < radius * radius)
+                        var index = new int[3];
+                        index[0] = x;
+                        index[1] = y;
+                        index[2] = z;
+                        var pos = getPositionAt(index, box);
+                        var distanceSquared = pos.DistanceSquared(sphere.Center);
+                        if (distanceSquared < radius * radius)
                         {
-                            //positions.Add(p + sphere.Center);
+                            var distance = System.Math.Sqrt(distanceSquared);
+                            var value = distance / radius;
+                            var node = new SparseVolumeNode(index, (float)value);
                         }
                     }
                 }
             }
-            /*
-            var appearance = new ParticleAppearance();
-            appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
-            appearance.Size = 10.0f;
-            var newId = world.AddParticleSystemScene(positions, "PSSphere", appearance, 1);
-            canvas.Camera.Fit();
-            canvas.BuildShader(world, newId);
-            canvas.Render();
-            */
+        }
+
+        private Vector3d getPositionAt(int[] index, Box3d bb)
+        {
+            var u = index[0] / (double)(ResolutionX.Value);
+            var v = index[1] / (double)(ResolutionY.Value);
+            var w = index[2] / (double)(ResolutionZ.Value);
+
+            return bb.GetPosition(u, v, w);
         }
     }
 }
