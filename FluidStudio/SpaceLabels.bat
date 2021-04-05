@@ -1,0 +1,1 @@
+PGConstCSFileGenerator\bin\Release\PGConstCSFileGenerator ../CrystalSpace/CrystalSpaceCommand/PublicLabels FluidStudio/SpaceLabels.cs
