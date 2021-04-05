@@ -153,6 +153,9 @@
     <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysicsCommand\CrystalPhysicsCommand.vcxproj">
       <Project>{09ee8b6a-2d6f-4b9e-83ff-6a40d03bc465}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\CrystalSpace\CrystalSpaceCommand\CrystalSpaceCommand.vcxproj">
+      <Project>{33e8c184-64b2-410d-9aab-c47917688dbb}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
       <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
     </ProjectReference>
@@ -173,6 +176,7 @@
     <ClCompile Include="..\PGCLI\AnyConverter.cpp" />
     <ClCompile Include="..\PGCLI\Converter.cpp" />
     <ClCompile Include="PhysicsCommand.cpp" />
+    <ClCompile Include="SpaceCommand.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -182,6 +186,7 @@
     <ClInclude Include="..\PGCLI\AnyConverter.h" />
     <ClInclude Include="..\PGCLI\Converter.h" />
     <ClInclude Include="PhysicsCommand.h" />
+    <ClInclude Include="SpaceCommand.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
