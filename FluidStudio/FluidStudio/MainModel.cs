@@ -1,4 +1,5 @@
 ﻿using FluidStudio.Physics;
+using FluidStudio.Space;
 using FluidStudio.VDB;
 using PG.Scene;
 
@@ -12,6 +13,8 @@ namespace FluidStudio
 
         public VDBModel VDBModel { get; }
 
+        public SpaceModel SpaceModel { get; }
+
         public FileIOModel FileIOModel { get; }
 
         public MainModel()
@@ -19,6 +22,7 @@ namespace FluidStudio
             this.Scenes = new SceneList();
             this.PhysicsModel = new PhysicsModel();
             this.VDBModel = new VDBModel(this.Scenes);
+            this.SpaceModel = new SpaceModel(this.Scenes);
             this.FileIOModel = new FileIOModel(this);
         }
     }

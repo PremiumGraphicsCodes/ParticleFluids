@@ -169,6 +169,10 @@
       <DependentUpon>SphereGenerationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scene\ParticleSystem\SphereGenerationViewModel.cs" />
+    <Compile Include="Scene\SparseVolume\SphereGenerationView.xaml.cs">
+      <DependentUpon>SphereGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scene\SparseVolume\SphereGenerationViewModel.cs" />
     <Compile Include="Scene\VDB\VDBSceneModel.cs" />
     <Compile Include="Scene\VDB\VDBSceneView.xaml.cs">
       <DependentUpon>VDBSceneView.xaml</DependentUpon>
@@ -184,6 +188,7 @@
     <Compile Include="Scene\SceneListViewBehavior.cs" />
     <Compile Include="Scene\SceneListViewModel.cs" />
     <Compile Include="SpaceLabels.cs" />
+    <Compile Include="Space\SpaceModel.cs" />
     <Compile Include="TimeLineView.xaml.cs">
       <DependentUpon>TimeLineView.xaml</DependentUpon>
     </Compile>
@@ -267,6 +272,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scene\SceneListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scene\SparseVolume\SphereGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
