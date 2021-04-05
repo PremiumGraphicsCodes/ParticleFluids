@@ -13,12 +13,16 @@ using namespace Crystal::Scene;
 using namespace Crystal::Command;
 
 SparseVolumeSceneCreateCommand::Args::Args() :
-	resolution(::ResolutionLabel, {10, 10, 10}),
+	resolutionX(::ResolutionXLabel, 10),
+	resolutionY(::ResolutionYLabel, 10),
+	resolutionZ(::ResolutionZLabel, 10),
 	boundingBox(::BoundingBoxLabel, Box3d()),
 	name (::NameLabel, std::string("")),
 	layer(::LayerLabel, -1)
 {
-	add(&resolution);
+	add(&resolutionX);
+	add(&resolutionY);
+	add(&resolutionZ);
 	add(&boundingBox);
 	add(&name);
 	add(&layer);
@@ -40,7 +44,12 @@ bool SparseVolumeSceneCreateCommand::execute(World* world)
 	auto name = args.name.getValue();
 
 	const auto bb = args.boundingBox.getValue();
-	const auto res = args.resolution.getValue();
+	const std::array<int,3> res = 
+	{ 
+		args.resolutionX.getValue(),
+		args.resolutionY.getValue(),
+		args.resolutionZ.getValue()
+	};
 	auto shape = std::make_unique<SparseVolume>(bb, res);
 	auto scene = new SparseVolumeScene(world->getNextSceneId(), name, std::move(shape));
 	world->addScene(args.layer.getValue(), scene);

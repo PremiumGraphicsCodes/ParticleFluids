@@ -14,10 +14,10 @@ namespace FluidStudio.Scene.SparseVolume
             = new ReactiveProperty<int>(10);
 
         public ReactiveProperty<int> ResolutionY { get; }
-            = new ReactiveProperty<int>();
+            = new ReactiveProperty<int>(10);
 
         public ReactiveProperty<int> ResolutionZ { get; }
-            = new ReactiveProperty<int>();
+            = new ReactiveProperty<int>(10);
 
         public Sphere3dViewModel SphereViewModel { get; }
             = new Sphere3dViewModel();
@@ -38,7 +38,7 @@ namespace FluidStudio.Scene.SparseVolume
             res[1] = ResolutionY.Value;
             res[2] = ResolutionZ.Value;
             var box = SphereViewModel.Value.GetBoundingBox();
-            var newId = space.CreateSparseVolume("SparseVolume", res, box);
+            var newId = space.CreateSparseVolume("SparseVolume", res, box, 1);
             canvas.Camera.Fit();
             canvas.BuildShader(world, newId);
             canvas.Render();

@@ -19,7 +19,9 @@ public:
 	{
 		Args();
 
-		Command::Arg< std::array<int,3> > resolution;
+		Command::Arg< int > resolutionX;
+		Command::Arg< int > resolutionY;
+		Command::Arg< int > resolutionZ;
 		Command::Arg< Math::Box3d > boundingBox;
 		Command::Arg< std::string> name;
 		Command::Arg< int > layer;

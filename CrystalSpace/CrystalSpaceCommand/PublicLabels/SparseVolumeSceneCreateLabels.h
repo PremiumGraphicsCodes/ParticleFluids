@@ -2,7 +2,9 @@
 
 namespace {
 	PublicLabel CommandNameLabel = "SparseVolumeSceneCreate";
-	PublicLabel ResolutionLabel = "Resolution";
+	PublicLabel ResolutionXLabel = "ResolutionX";
+	PublicLabel ResolutionYLabel = "ResolutionY";
+	PublicLabel ResolutionZLabel = "ResolutionZ";
 	PublicLabel BoundingBoxLabel = "BoundingBox";
 	PublicLabel NameLabel = "Name";
 	PublicLabel LayerLabel = "Layer";
