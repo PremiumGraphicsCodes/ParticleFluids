@@ -24,6 +24,10 @@ SPHSurfaceConstructionCommand::Args::Args() :
 	effectLength(::EffectLengthLabel, 1.0),
 	cellLength(::CellLengthLabel, 0.5)
 {
+	add(&particleSystemId);
+	add(&sparseVolumeId);
+	add(&effectLength);
+	add(&cellLength);
 }
 
 SPHSurfaceConstructionCommand::Results::Results()// :

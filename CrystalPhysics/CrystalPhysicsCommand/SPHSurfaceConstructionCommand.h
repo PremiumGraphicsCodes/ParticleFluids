@@ -13,8 +13,8 @@ public:
 		Command::Arg<int> particleSystemId;
 		Command::Arg<int> sparseVolumeId;
 
-		Command::Arg<double> effectLength;
-		Command::Arg<double> cellLength;
+		Command::Arg<float> effectLength;
+		Command::Arg<float> cellLength;
 
 		Args();
 	};

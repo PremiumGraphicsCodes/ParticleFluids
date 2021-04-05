@@ -26,7 +26,7 @@ namespace FluidStudio.Tool.Modeling
             = new ReactiveProperty<float>(0.5f);
 
         public ReactiveProperty<float> CellLength { get; }
-    = new ReactiveProperty<float>(1.0f);
+            = new ReactiveProperty<float>(1.0f);
 
         public ReactiveProperty<float> Threshold { get; }
             = new ReactiveProperty<float>(2.0f);
@@ -134,9 +134,21 @@ namespace FluidStudio.Tool.Modeling
                 resolution[1] = 2;
                 resolution[2] = 2;
                 int sparseVolumeId = mainModel.SpaceModel.CreateSparseVolume("SparseVolume", resolution, new PG.Core.Math.Box3d(), 1);
+                volumeIds.Add(sparseVolumeId);
                 mainModel.PhysicsModel.ToSmoothVolume(world, id, sparseVolumeId, ParticleRadius.Value, 2.0f);
             }
-//            volumeIds = 
+            foreach (int id in pointIds)
+            {
+                world.Delete(id);
+            }
+            foreach (int id in volumeIds)
+            {
+                world.Delete(id);
+            }
+            var value = progressVM.Value.Value;
+            progressVM.Value.Value = value + 1;
+
+            //            volumeIds = 
         }
     }
 }
