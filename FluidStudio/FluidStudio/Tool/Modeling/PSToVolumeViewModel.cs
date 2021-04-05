@@ -1,4 +1,5 @@
-﻿using FluidStudio.VDB;
+﻿using FluidStudio.Physics;
+using FluidStudio.VDB;
 using PG.Scene;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -24,20 +25,26 @@ namespace FluidStudio.Tool.Modeling
         public ReactiveProperty<float> ParticleRadius { get; }
             = new ReactiveProperty<float>(0.5f);
 
+        public ReactiveProperty<float> CellLength { get; }
+    = new ReactiveProperty<float>(1.0f);
+
         public ReactiveProperty<float> Threshold { get; }
             = new ReactiveProperty<float>(2.0f);
 
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
 
-        private SceneList world;
+        private readonly SceneList world;
 
-        private VDBModel vdb;
+        private readonly VDBModel vdb;
+
+        private readonly MainModel mainModel;
 
         public PSToVolumeViewModel(MainModel mainModel)
         {
             this.world = mainModel.Scenes;
             this.vdb = mainModel.VDBModel;
+            this.mainModel = mainModel;
             this.VDBInputDirectorySelectCommand.Subscribe(OnSelectVDBImportDirectory);
             this.VDBOutputDirectorySelectCommand.Subscribe(OnSelectVDBExportDirectory);
             this.StartCommand.Subscribe(OnStart);
@@ -110,6 +117,26 @@ namespace FluidStudio.Tool.Modeling
             }
             var value = progressVM.Value.Value;
             progressVM.Value.Value = value + 1;
+        }
+
+        private void ExecuteSmooth(string file)
+        {
+            var pointIds = vdb.Read(file, ParticleRadius.Value);
+            var volumeIds = new List<int>();
+            foreach (int id in pointIds)
+            {
+                if (vdb.GetVDBType(id, world) != VDBModel.VDBType.Point)
+                {
+                    continue;
+                }
+                var resolution = new int[3];
+                resolution[0] = 2;
+                resolution[1] = 2;
+                resolution[2] = 2;
+                int sparseVolumeId = mainModel.SpaceModel.CreateSparseVolume("SparseVolume", resolution, new PG.Core.Math.Box3d(), 1);
+                mainModel.PhysicsModel.ToSmoothVolume(world, id, sparseVolumeId, ParticleRadius.Value, 2.0f);
+            }
+//            volumeIds = 
         }
     }
 }

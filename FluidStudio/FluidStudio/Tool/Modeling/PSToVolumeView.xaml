@@ -23,6 +23,11 @@
             <TextBox Text="{Binding ParticleRadius.Value}" MinWidth="50"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
+            <Label Content="GridCellLength"/>
+            <TextBox Text="{Binding CellLength.Value}" MinWidth="50"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
             <Label Content="Threshold"/>
             <TextBox Text="{Binding Threshold.Value}" MinWidth="50"/>
         </StackPanel>

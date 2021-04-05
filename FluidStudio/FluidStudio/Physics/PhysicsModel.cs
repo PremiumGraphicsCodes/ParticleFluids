@@ -1,4 +1,5 @@
 ﻿using FluidStudio.VDB;
+using PG.CLI;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
@@ -62,6 +63,16 @@ namespace FluidStudio.Physics
                 canvas.Render();
             }
             TimeStep.Value = 0;
+        }
+
+        public void ToSmoothVolume(SceneList world, int particleSystemId, int sparseVolumeId, float effectLength, float cellLength)
+        {
+            var command = new PhysicsCommand(PG.SPHSurfaceConstructionLabels.CommandNameLabel);
+            command.SetArg(PG.SPHSurfaceConstructionLabels.ParticleSystemIdLabel, particleSystemId);
+            command.SetArg(PG.SPHSurfaceConstructionLabels.SparseVolumeIdLabel, sparseVolumeId);
+            command.SetArg(PG.SPHSurfaceConstructionLabels.EffectLengthLabel, effectLength);
+            command.SetArg(PG.SPHSurfaceConstructionLabels.CellLengthLabel, cellLength);
+            command.Execute(world.Adapter);
         }
     }
 }

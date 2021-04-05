@@ -3,7 +3,7 @@
 #include "PublicLabels/SPHSurfaceConstructionLabels.h"
 
 //#include "../CrystalPhysics/KFFluidScene.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/IParticleSystemScene.h"
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
 #include "../../CrystalPhysics/CrystalPhysics/SPHSurfaceBuilder.h"
@@ -38,7 +38,7 @@ SPHSurfaceConstructionCommand::SPHSurfaceConstructionCommand() :
 
 bool SPHSurfaceConstructionCommand::execute(World* world)
 {
-	auto ps = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
+	auto ps = world->getScenes()->findSceneById<IParticleSystemScene*>(args.particleSystemId.getValue());
 	if (ps == nullptr) {
 		return false;
 	}

@@ -77,4 +77,13 @@ namespace PG {
 		public const string NameLabel = "Name";
 	}
 
+	public class SPHSurfaceConstructionLabels
+	{
+		public const string CommandNameLabel = "SPHSurfaceConstructionCommand";
+		public const string ParticleSystemIdLabel = "ParticleSystemId";
+		public const string SparseVolumeIdLabel = "SparseVolumeId";
+		public const string EffectLengthLabel = "EffectLength";
+		public const string CellLengthLabel = "CellLength";
+	}
+
 }
