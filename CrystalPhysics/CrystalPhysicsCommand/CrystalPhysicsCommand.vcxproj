@@ -193,6 +193,7 @@
     <ClCompile Include="PhysicsCommandFactory.cpp" />
     <ClCompile Include="PhysicsSolverCreateCommand.cpp" />
     <ClCompile Include="PhysicsSolverUpdateCommand.cpp" />
+    <ClCompile Include="SPHSurfaceConstructionCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CSGBoundarySceneCreateCommand.h" />
@@ -215,6 +216,8 @@
     <ClInclude Include="PublicLabels\MeshBoundarySceneUpdateLabels.h" />
     <ClInclude Include="PublicLabels\PhysicsSolverCreateLabels.h" />
     <ClInclude Include="PublicLabels\PhysicsSolverUpdateLabels.h" />
+    <ClInclude Include="PublicLabels\SPHSurfaceConstructionLabels.h" />
+    <ClInclude Include="SPHSurfaceConstructionCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="PublicLabels\FluidSceneCreateLabels.h" />

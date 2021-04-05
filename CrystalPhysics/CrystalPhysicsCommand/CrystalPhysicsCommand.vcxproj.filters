@@ -30,6 +30,9 @@
     <ClCompile Include="MeshBoundarySceneUpdateCommand.cpp">
       <Filter>MeshBoundaryScene</Filter>
     </ClCompile>
+    <ClCompile Include="SPHSurfaceConstructionCommand.cpp">
+      <Filter>SurfaceConstruction</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -88,6 +91,12 @@
     <ClInclude Include="PublicLabels\MeshBoundarySceneUpdateLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
+    <ClInclude Include="SPHSurfaceConstructionCommand.h">
+      <Filter>SurfaceConstruction</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\SPHSurfaceConstructionLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PublicLabels">
@@ -104,6 +113,9 @@
     </Filter>
     <Filter Include="MeshBoundaryScene">
       <UniqueIdentifier>{21e4c9d6-5737-4a6e-80eb-0e36d12b5b29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SurfaceConstruction">
+      <UniqueIdentifier>{0e5b995a-a21a-4fa1-a68a-79215cf229ef}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
