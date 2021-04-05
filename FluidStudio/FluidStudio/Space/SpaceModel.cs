@@ -1,8 +1,21 @@
 ﻿using PG.Core.Math;
 using PG.Scene;
+using System.Collections.Generic;
 
 namespace FluidStudio.Space
 {
+    public class SparseVolumeNode
+    {
+        public int[] Index;
+        public float Value;
+
+        public SparseVolumeNode(int[] index, float value)
+        {
+            this.Index = index;
+            this.Value = value;
+        }
+    }
+
     public class SpaceModel
     {
         private readonly SceneList world;
@@ -32,5 +45,27 @@ namespace FluidStudio.Space
             return newId;
         }
 
+        public void SetSparseNodes(int sparseVolumeId, IEnumerable<SparseVolumeNode> nodes)
+        {
+            var indicesX = new List<int>();
+            var indicesY = new List<int>();
+            var indicesZ = new List<int>();
+            var values = new List<float>();
+            foreach(var node in nodes)
+            {
+                indicesX.Add(node.Index[0]);
+                indicesY.Add(node.Index[1]);
+                indicesZ.Add(node.Index[2]);
+                values.Add(node.Value);
+            }
+
+            var command = new PG.CLI.SpaceCommand(PG.SparseVolumeNodeSetLabels.CommandNameLabel);
+            command.SetArg(PG.SparseVolumeNodeSetLabels.SparseVolumeIdLabel, sparseVolumeId);
+            command.SetArg(PG.SparseVolumeNodeSetLabels.IndicesXLabel, indicesX);
+            command.SetArg(PG.SparseVolumeNodeSetLabels.IndicesYLabel, indicesY);
+            command.SetArg(PG.SparseVolumeNodeSetLabels.IndicesZLabel, indicesZ);
+            command.SetArg(PG.SparseVolumeNodeSetLabels.ValuesLabel, values);
+            command.Execute(world.Adapter);
+        }
     }
 }

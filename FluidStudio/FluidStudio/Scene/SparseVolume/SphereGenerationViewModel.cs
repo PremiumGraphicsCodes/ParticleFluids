@@ -45,14 +45,20 @@ namespace FluidStudio.Scene.SparseVolume
 
             /*
             var positions = new List<Vector3d>();
-            var sphere = SphereViewModel.Value;
             var box = sphere.GetBoundingBox();
             var dx = Dx.Value;
             var dy = Dy.Value;
             var dz = Dz.Value;
             var min = box.Min;
             var max = box.Max;
+                        */
+
+            var sphere = SphereViewModel.Value;
             var radius = sphere.Radius;
+
+            var dx = 1.0 / (double)(ResolutionX.Value);
+            var dy = 1.0 / (double)(ResolutionY.Value);
+            var dz = 1.0 / (double)(ResolutionZ.Value);
             for (var x = -radius; x < radius; x += dx)
             {
                 for (var y = -radius; y < radius; y += dy)
@@ -62,11 +68,12 @@ namespace FluidStudio.Scene.SparseVolume
                         var p = new Vector3d(x, y, z);
                         if (p.LengthSquared < radius * radius)
                         {
-                            positions.Add(p + sphere.Center);
+                            //positions.Add(p + sphere.Center);
                         }
                     }
                 }
             }
+            /*
             var appearance = new ParticleAppearance();
             appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
             appearance.Size = 10.0f;
