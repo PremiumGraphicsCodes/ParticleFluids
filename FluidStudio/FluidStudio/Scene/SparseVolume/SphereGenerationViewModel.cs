@@ -1,4 +1,5 @@
-﻿using PG.Control.Math;
+﻿using FluidStudio.Space;
+using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Core.Math;
 using PG.Scene;
@@ -24,14 +25,24 @@ namespace FluidStudio.Scene.SparseVolume
         public ReactiveCommand GenerationCommand { get; }
             = new ReactiveCommand();
 
-        public SphereGenerationViewModel(SceneList world, Canvas3d canvas)
+        public SphereGenerationViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.SphereViewModel.Value = new Sphere3d(10.0, new Vector3d(0, 0, 0));
-            this.GenerationCommand.Subscribe(() => OnGenerate(world, canvas));
+            this.GenerationCommand.Subscribe(() => OnGenerate(model.SpaceModel, world, canvas));
         }
 
-        private void OnGenerate(SceneList world, Canvas3d canvas)
+        private void OnGenerate(SpaceModel space, SceneList world, Canvas3d canvas)
         {
+            var res = new int[3];
+            res[0] = ResolutionX.Value;
+            res[1] = ResolutionY.Value;
+            res[2] = ResolutionZ.Value;
+            var box = SphereViewModel.Value.GetBoundingBox();
+            var newId = space.CreateSparseVolume("SparseVolume", res, box);
+            canvas.Camera.Fit();
+            canvas.BuildShader(world, newId);
+            canvas.Render();
+
             /*
             var positions = new List<Vector3d>();
             var sphere = SphereViewModel.Value;

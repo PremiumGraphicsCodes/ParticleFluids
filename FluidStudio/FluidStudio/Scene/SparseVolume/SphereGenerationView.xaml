@@ -9,6 +9,14 @@
              xmlns:prism="http://prismlibrary.com/"            
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Resolution">
+                <TextBox Text="{Binding ResolutionX.Value}" MinWidth="50"/>
+                <TextBox Text="{Binding ResolutionY.Value}" MinWidth="50"/>
+                <TextBox Text="{Binding ResolutionZ.Value}" MinWidth="50"/>
+            </TextBlock>
+        </StackPanel>
         <control:Sphere3dView DataContext="{Binding SphereViewModel}"/>
+        <Button Content="Generate" Command="{Binding GenerationCommand}"/>
     </StackPanel>
 </UserControl>

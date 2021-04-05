@@ -47,6 +47,11 @@
                     <RibbonButton Label="VolumeToMesh" Command="{Binding NavigateCommand}" CommandParameter="VolumeToMesh"/>
                 </RibbonGroup>
             </RibbonTab>
+            <RibbonTab Header="Test">
+                <RibbonGroup Header="SparseVolume">
+                    <RibbonButton Label="Sphere" Command="{Binding NavigateCommand}" CommandParameter="SVSphereGeneration"/>
+                </RibbonGroup>
+            </RibbonTab>
         </Ribbon>
         <ToolBar Grid.Row="1" DataContext="{Binding CameraControlViewModel}">
             <Button Content="XY" Command="{Binding XYCommand}"/>
