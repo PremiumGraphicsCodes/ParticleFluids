@@ -23,7 +23,7 @@ namespace FluidStudio.Tool.Modeling
             = new ReactiveProperty<string>("");
 
         public ReactiveProperty<float> ParticleRadius { get; }
-            = new ReactiveProperty<float>(1.5f);
+            = new ReactiveProperty<float>(1.25f);
 
         public ReactiveProperty<float> CellLength { get; }
             = new ReactiveProperty<float>(1.0f);

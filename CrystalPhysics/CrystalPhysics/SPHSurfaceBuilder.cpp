@@ -80,8 +80,17 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 	const SPHKernel kernel(searchRadius);
 
 	auto& nodes = volume->getNodes();
-	for (auto& node : nodes) {
-		const auto pos = node.second->getPosition();
+	std::vector<SparseVolumeNode*> ns;
+	ns.reserve(nodes.size());
+	for (auto n : nodes) {
+		ns.push_back(n.second);
+	}
+
+	//for (auto& node : nodes) {
+#pragma omp parallel for
+	for(int i = 0; i < ns.size(); ++i){
+		auto node = ns[i];
+		const auto pos = node->getPosition();
 		const auto neighbors = spaceHash.findNeighbors( pos );
 		for (auto n : neighbors) {
 			auto sp = static_cast<SPHSurfaceParticle*>(n);
@@ -89,7 +98,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 			const auto v = n->getPosition() - pos;
 			const auto distance = m * v;
 			const auto w = kernel.getCubicSpline(distance);
-			node.second->setValue(w + node.second->getValue());
+			node->setValue(w + node->getValue());
 			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
 		}
 //		n.second->getValue();
