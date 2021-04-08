@@ -179,6 +179,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PublicLabels\ToVDBVolumeLabels.h" />
     <ClInclude Include="PublicLabels\VDBVolumeToPSLabels.h" />
     <ClInclude Include="PublicLabels\VDBMeshToVolumeLabels.h" />
     <ClInclude Include="PublicLabels\VDBOBJFileReadLabels.h" />

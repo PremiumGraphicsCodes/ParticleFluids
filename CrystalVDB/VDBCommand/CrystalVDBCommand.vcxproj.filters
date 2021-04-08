@@ -57,6 +57,9 @@
       <Filter>PublicLabels</Filter>
     </ClInclude>
     <ClInclude Include="ToVDBVolumeCommand.h" />
+    <ClInclude Include="PublicLabels\ToVDBVolumeLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PublicLabels">

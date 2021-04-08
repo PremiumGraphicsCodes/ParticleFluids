@@ -1,8 +1,6 @@
 #include "ToVDBVolumeCommand.h"
 
-#include "../../CrystalViewer/Command/Public/PublicLabel.h"
-
-//#include "PublicLabels/VDBPSToVolumeLabels.h"
+#include "PublicLabels/ToVDBVolumeLabels.h"
 
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
@@ -14,11 +12,6 @@ using namespace Crystal::Scene;
 using namespace Crystal::Space;
 using namespace Crystal::VDB;
 
-namespace {
-	PublicLabel SparseVolumeIdLabel = "SparseVolumeId";
-	PublicLabel VDBVolumeIdLabel = "VDBVolumeId";
-	PublicLabel CommandNameLabel = "ToVDBVolumeCommand";
-}
 
 ToVDBVolumeCommand::Args::Args() :
 	sparseVolumeId(::SparseVolumeIdLabel, -1),
