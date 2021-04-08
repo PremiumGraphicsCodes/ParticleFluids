@@ -12,6 +12,7 @@
     <ClCompile Include="VDBPSToVolumeCommand.cpp" />
     <ClCompile Include="VDBVolumeToMeshCommand.cpp" />
     <ClCompile Include="VDBVolumeToPSCommand.cpp" />
+    <ClCompile Include="ToVDBVolumeCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VDBCommandFactory.h" />
@@ -55,6 +56,7 @@
     <ClInclude Include="PublicLabels\VDBVolumeToPSLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
+    <ClInclude Include="ToVDBVolumeCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PublicLabels">
