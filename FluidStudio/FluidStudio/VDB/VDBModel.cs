@@ -176,6 +176,15 @@ namespace FluidStudio.VDB
             return command.Execute(world.Adapter);
         }
 
+        public bool ConvertVolumeFromSparseVolume(int sparseVolumeId, int vdbVolumeId)
+        {
+            var command = new PG.CLI.VDBCommand(PG.ToVDBVolumeLabels.CommandNameLabel);
+            command.SetArg(PG.ToVDBVolumeLabels.SparseVolumeIdLabel, sparseVolumeId);
+            command.SetArg(PG.ToVDBVolumeLabels.VDBVolumeIdLabel, vdbVolumeId);
+            command.Execute(world.Adapter);
+            return command.Execute(world.Adapter);
+        }
+
         public bool ConvertMeshToPS(int meshId, int psId, double divideLength)
         {
             var volumeId = CreateVDBVolume("Volume", false);

@@ -23,7 +23,7 @@ namespace FluidStudio.Tool.Modeling
             = new ReactiveProperty<string>("");
 
         public ReactiveProperty<float> ParticleRadius { get; }
-            = new ReactiveProperty<float>(0.5f);
+            = new ReactiveProperty<float>(1.5f);
 
         public ReactiveProperty<float> CellLength { get; }
             = new ReactiveProperty<float>(1.0f);
@@ -87,7 +87,7 @@ namespace FluidStudio.Tool.Modeling
             progressView.Show();
             foreach (var file in files)
             {
-                await Task.Run(() => Execute(file));
+                await Task.Run(() => ExecuteSmooth(file));
             }
         }
 
@@ -122,7 +122,8 @@ namespace FluidStudio.Tool.Modeling
         private void ExecuteSmooth(string file)
         {
             var pointIds = vdb.Read(file, ParticleRadius.Value);
-            var volumeIds = new List<int>();
+            var vdbVolumeIds = new List<int>();
+
             foreach (int id in pointIds)
             {
                 if (vdb.GetVDBType(id, world) != VDBModel.VDBType.Point)
@@ -134,14 +135,20 @@ namespace FluidStudio.Tool.Modeling
                 resolution[1] = 2;
                 resolution[2] = 2;
                 int sparseVolumeId = mainModel.SpaceModel.CreateSparseVolume("SparseVolume", resolution, new PG.Core.Math.Box3d(), 1);
-                volumeIds.Add(sparseVolumeId);
-                mainModel.PhysicsModel.ToSmoothVolume(world, id, sparseVolumeId, ParticleRadius.Value, 2.0f);
+                mainModel.PhysicsModel.ToSmoothVolume(world, id, sparseVolumeId, ParticleRadius.Value, CellLength.Value);
+                int vdbVolumeId = vdb.CreateVDBVolume("Volume", false);
+                vdb.ConvertVolumeFromSparseVolume(sparseVolumeId, vdbVolumeId);
+                vdbVolumeIds.Add(vdbVolumeId);
+                world.Delete(sparseVolumeId);
             }
+            var newName = System.IO.Path.Combine(this.VDBOutputDirectoryPath.Value, "volume_" + System.IO.Path.GetFileName(file));
+            vdb.Write(newName, new List<int>(), vdbVolumeIds);
+
             foreach (int id in pointIds)
             {
                 world.Delete(id);
             }
-            foreach (int id in volumeIds)
+            foreach (int id in vdbVolumeIds)
             {
                 world.Delete(id);
             }

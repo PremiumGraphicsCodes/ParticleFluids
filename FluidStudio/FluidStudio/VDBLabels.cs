@@ -1,4 +1,11 @@
 namespace PG {
+	public class ToVDBVolumeLabels
+	{
+		public const string SparseVolumeIdLabel = "SparseVolumeId";
+		public const string VDBVolumeIdLabel = "VDBVolumeId";
+		public const string CommandNameLabel = "ToVDBVolumeCommand";
+	}
+
 	public class VDBFileReadLabels
 	{
 		public const string CommandNameLabel = "VDBFileRead";
