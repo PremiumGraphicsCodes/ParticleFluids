@@ -3,6 +3,8 @@
 #include <openvdb/openvdb.h>
 
 #include <openvdb/points/PointSample.h>
+#include <openvdb/tools/LevelSetUtil.h>
+
 
 #include "openvdb/tools/VolumeToMesh.h"
 
@@ -50,7 +52,10 @@ void VDBVolumeConverter::toParticleSystem(const VDBVolumeScene& volume, VDBParti
 void VDBVolumeConverter::toVDB(const SparseVolumeScene& sv, VDBVolumeScene* vdb)
 {
     auto impl = vdb->getImpl();
-    auto grid = impl->getPtr();
+    auto sdf = openvdb::createLevelSet<openvdb::FloatGrid>();
+    sdf->setName("density");
+    impl->setPtr(sdf);
+//    auto grid = impl->getPtr();
  //   grid->
     auto nodes = sv.getShape()->getNodes();
     for (const auto& n : nodes) {
