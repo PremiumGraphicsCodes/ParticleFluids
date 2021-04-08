@@ -17,6 +17,8 @@
 
 #include "Converter.h"
 
+#include "../../Crystal/Math/Matrix4d.h"
+
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
 using namespace Crystal::Space;
@@ -66,5 +68,24 @@ void VDBVolumeConverter::toVDB(const SparseVolumeScene& sv, VDBVolumeScene* vdb)
     }
     const auto bb = sv.getBoundingBox();
     const auto scale = bb.getLength();
-    impl->setScale(scale.x, scale.y, scale.z);
+    const auto translate = bb.getMin();
+
+    const auto originalBB = vdb->getBoundingBox();
+    const auto originalScale = originalBB.getLength();
+
+    const auto sx = scale.x / originalScale.x;
+    const auto sy = scale.y / originalScale.y;
+    const auto sz = scale.z / originalScale.z;
+
+    impl->setScale(sx, sy, sz);
+    impl->setTranslate(translate);
+    /*
+    Crystal::Math::Matrix4dd matrix(
+        scale.x, 0.0, 0.0, 0.0,
+        0.0, scale.y, 0.0, 0.0,
+        0.0, 0.0, scale.z, 0.0,
+        -0.5, -0.5, -0.5, 1.0
+    );
+    impl->setTransformMatrix(matrix);
+    */
 }

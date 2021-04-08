@@ -53,6 +53,7 @@ void VDBVolumePresenter::updateScreenView()
 	auto transform = grid->transform();
 	PointBuffer pb;
 	for (auto iter = grid->cbeginValueOn(); iter; ++iter) {
+		auto c = iter.getCoord();
 		auto coord = transform.indexToWorld(iter.getCoord());
 		auto value = *iter;
 		pb.add(Converter::fromVDB(coord), ColorRGBAf(1, 1, 1, 1), 1.0f);
