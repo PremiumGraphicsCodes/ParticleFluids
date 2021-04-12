@@ -27,10 +27,12 @@
             <TextBox Text="{Binding CellLength.Value}" MinWidth="50"/>
         </StackPanel>
 
+        <!--
         <StackPanel Orientation="Horizontal">
             <Label Content="Threshold"/>
             <TextBox Text="{Binding Threshold.Value}" MinWidth="50"/>
         </StackPanel>
+        -->
         <Button Content="Start" Command="{Binding StartCommand}"/>
     </StackPanel>
 </UserControl>

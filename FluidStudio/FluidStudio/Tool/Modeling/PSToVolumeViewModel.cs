@@ -28,8 +28,8 @@ namespace FluidStudio.Tool.Modeling
         public ReactiveProperty<float> CellLength { get; }
             = new ReactiveProperty<float>(1.0f);
 
-        public ReactiveProperty<float> Threshold { get; }
-            = new ReactiveProperty<float>(2.0f);
+        //public ReactiveProperty<float> Threshold { get; }
+        //    = new ReactiveProperty<float>(2.0f);
 
         public ReactiveCommand StartCommand { get; }
             = new ReactiveCommand();
@@ -91,6 +91,7 @@ namespace FluidStudio.Tool.Modeling
             }
         }
 
+        /*
         private void Execute(string file)
         {
             var pointIds = vdb.Read(file, ParticleRadius.Value);
@@ -118,6 +119,7 @@ namespace FluidStudio.Tool.Modeling
             var value = progressVM.Value.Value;
             progressVM.Value.Value = value + 1;
         }
+        */
 
         private void ExecuteSmooth(string file)
         {
