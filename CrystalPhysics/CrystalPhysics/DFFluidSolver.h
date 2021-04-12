@@ -52,5 +52,19 @@ private:
 	float calculateAverageDpDt(const std::vector<DFSPHParticle*>& particles);
 };
 
+class DFFUpdater : public Scene::IAnimator
+{
+public:
+	DFFUpdater() {}
+
+	void add(Physics::DFFluidScene* f) { fluids.push_back(f); }
+
+	void step() override;
+
+private:
+	std::vector<Physics::DFFluidScene*> fluids;
+};
+
+
 	}
 }

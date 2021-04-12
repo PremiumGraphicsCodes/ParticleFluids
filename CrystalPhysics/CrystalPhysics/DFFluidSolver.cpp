@@ -116,10 +116,6 @@ void DFFluidSolver::simulate(const float dt, const float effectLength, const flo
 		correctDivergenceError(particles, dt);
 		time += dt;
 	}
-
-	for (auto fluid : fluids) {
-		fluid->getPresenter()->updateView();
-	}
 }
 
 void DFFluidSolver::correctDivergenceError(const std::vector<DFSPHParticle*>& particles, const float dt)
@@ -195,3 +191,11 @@ float DFFluidSolver::calculateAverageDpDt(const std::vector<DFSPHParticle*>& par
 	return totalDensity / (float)particles.size();
 }
 
+void DFFUpdater::step()
+{
+	for (auto fluid : fluids) {
+		fluid->getPresenter()->updateView();
+		//for(auto b : fluid->get)
+	}
+	//for(auto b : csgB)
+}

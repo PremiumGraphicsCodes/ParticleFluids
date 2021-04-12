@@ -4,6 +4,7 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/FloatView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
+#include "../CrystalPhysics/DFFluidSolver.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -25,6 +26,7 @@ private:
 private:
 	Physics::DFFluidSolver* simulator;
 	Physics::DFFluidScene* fluidScene;
+	Physics::DFFUpdater updater;
 	Button startButton;
 	Button resetButton;
 	FloatView timeStepView;

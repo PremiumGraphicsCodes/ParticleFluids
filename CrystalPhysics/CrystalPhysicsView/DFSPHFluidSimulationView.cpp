@@ -63,15 +63,22 @@ void DFSPHFluidSimulationView::onOk()
 	command.setArg(ShaderBuildLabels::IdLabel, newId);
 	command.execute(getWorld());
 
+	updater.add(fluidScene);
+
+	//boundaryScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+
+
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 
 
 	simulator->add(this->fluidScene);
 
+
 	simulator->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
 	getWorld()->addAnimation(simulator);
+	getWorld()->addAnimation(&updater);
 }
 
 void DFSPHFluidSimulationView::reset()
