@@ -145,6 +145,7 @@
     <ClInclude Include="ICurve3d.h" />
     <ClInclude Include="ISurface3d.h" />
     <ClInclude Include="IVolume3d.h" />
+    <ClInclude Include="Lerp.h" />
     <ClInclude Include="Line2d.h" />
     <ClInclude Include="Line3d.h" />
     <ClInclude Include="Matrix2d.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Tolerance.h" />
     <ClInclude Include="Torus3d.h" />
     <ClInclude Include="Triangle3d.h" />
+    <ClInclude Include="TriLerp.h" />
     <ClInclude Include="Vector2d.h" />
     <ClInclude Include="Vector3d.h" />
     <ClInclude Include="Vector4d.h" />

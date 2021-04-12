@@ -76,6 +76,12 @@
     <ClInclude Include="IVolume3d.h">
       <Filter>Primitive3d\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="TriLerp.h">
+      <Filter>Interpolation</Filter>
+    </ClInclude>
+    <ClInclude Include="Lerp.h">
+      <Filter>Interpolation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Matrix">
@@ -92,6 +98,9 @@
     </Filter>
     <Filter Include="Primitive3d\Interface">
       <UniqueIdentifier>{3de7be59-319c-4b1a-af3e-1cd59d2b5f53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interpolation">
+      <UniqueIdentifier>{24ec816c-64b8-4d4e-9cf7-9521be166241}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
