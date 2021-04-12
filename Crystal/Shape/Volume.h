@@ -12,6 +12,13 @@
 namespace Crystal {
 	namespace Shape {
 
+		/*
+class IVolume : public IShape
+{
+
+};
+*/
+
 template<typename T>
 class Volume : public IShape
 {
@@ -62,6 +69,16 @@ public:
 		const auto cy = length.y * j;
 		const auto cz = length.z * k;
 		return box.getMin() + length * 0.5 + Math::Vector3dd(cx, cy, cz);
+	}
+
+	std::array<size_t, 3> getIndexFromPosition(const Math::Vector3dd& position)
+	{
+		const auto p = position - box.getMin();
+		const auto length = getCellLength();
+		const auto ix = static_cast<size_t>( p.x / length.x );
+		const auto iy = static_cast<size_t>( p.y / length.y );
+		const auto iz = static_cast<size_t>( p.z / length.z );
+		return { ix, iy, iz };
 	}
 
 	Math::Vector3dd getCellLength() const {

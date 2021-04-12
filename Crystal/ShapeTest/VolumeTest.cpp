@@ -35,3 +35,17 @@ TEST(VolumeTest, TestGetCellPosition)
 		EXPECT_TRUE(::areSame(expected, actual, ::tolerance));
 	}
 }
+
+TEST(VolumeTest, TestIndexFromPosition)
+{
+	const std::array<size_t, 3> resolutions{ 2,1,4 };
+	Volume<double> volume(Box3d(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2)), resolutions);
+
+	{
+		const auto p = Vector3dd(1.5, 1.0, 0.25);
+		const auto actual = volume.getIndexFromPosition(p);
+		EXPECT_EQ(1, actual[0]);
+		EXPECT_EQ(0, actual[1]);
+		EXPECT_EQ(0, actual[2]);
+	}
+}
