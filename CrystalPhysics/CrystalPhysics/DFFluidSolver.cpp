@@ -169,11 +169,11 @@ float DFFluidSolver::calculateTimeStep(const std::vector<DFSPHParticle*>& partic
 		maxVelocity = std::max<float>(maxVelocity, Math::getLengthSquared(p->getVelocity()));
 	}
 	if (maxVelocity < 1.0e-3) {
-		return maxTimeStep;
+		return maxTimeStep / 2.0f;
 	}
 	maxVelocity = std::sqrt(maxVelocity);
 	const auto dt = 0.4f * particles.front()->getRadius() * 2.0f / maxVelocity;
-	return std::min(dt, maxTimeStep);
+	return std::min(dt, maxTimeStep / 2.0f);
 }
 
 float DFFluidSolver::calculateAverageDensity(const std::vector<DFSPHParticle*>& particles)
