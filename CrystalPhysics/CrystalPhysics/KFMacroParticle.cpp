@@ -106,7 +106,7 @@ void KFMacroParticle::calculateViscosityForce()
 {
 	Math::Vector3df f(0, 0, 0);
 	for (auto mp : innerPoints) {
-		f -= ( this->velocity - mp->getVelocity()) * mp->getMass() * mp->getPressureCoe();
+		f -= ( this->velocity - mp->getVelocity()) * mp->getMass() * mp->getViscosityCoe();
 	}
 	this->force += f;
 }
