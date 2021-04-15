@@ -97,7 +97,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 			auto m = sp->matrix;
 			const auto v = n->getPosition() - pos;
 			const auto distance = m * v;
-			const auto w = kernel.getCubicSpline(distance);
+			const auto w = kernel.getCubicSpline(distance) * glm::determinant(m);
 			node->setValue(w + node->getValue());
 			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
 		}
