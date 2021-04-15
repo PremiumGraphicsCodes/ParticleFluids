@@ -25,6 +25,8 @@ public:
 
 	void calculateAnisotoropicMatrix(const std::vector<Shape::IParticle*>& neighbors, const float searchRadius);
 
+	Math::Vector3df getCorrectedPosition() const { return correctedPosition; }
+
 private:
 	Math::Vector3df position;
 	Math::Vector3df correctedPosition;
