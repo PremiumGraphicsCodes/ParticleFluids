@@ -4,6 +4,8 @@
 
 #include "SPHKernel.h"
 
+#include "../../Crystal/Math/Gaussian.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
@@ -29,7 +31,8 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 
 	const double tolerance = 1.0e-12;
 
-	SPHKernel kernel(0.5);
+	//SPHKernel kernel(0.5);
+	Gaussian gaussian(0.0, 0.5);
 	for (int x = 0; x <= unum; x++) {
 		for (int y = 0; y <= vnum; ++y) {
 			for (int z = 0; z <= wnum; ++z) {
@@ -40,7 +43,8 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 				const auto d = Math::getLengthSquared(v);
 				if (d < 0.5 * 0.5) {
 //					const auto weight = (1.0 - std::sqrt(d) * 2.0);
-					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
+//					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
+					const auto weight = gaussian.getValue(d);
 					points.push_back(new KFMicroParticle(this, v * 2.0, weight));
 					restMass += weight;
 				}
@@ -109,6 +113,16 @@ void KFMacroParticle::calculateViscosityForce()
 		f -= ( this->velocity - mp->getVelocity()) * mp->getMass() * mp->getViscosityCoe();
 	}
 	this->force += f;
+}
+
+void KFMacroParticle::calculateVorticity()
+{
+	vorticity = Vector3df(0, 0, 0);
+	for (auto mp : innerPoints) {
+		const auto p = (mp->position - this->position);
+		const auto v = (mp->getVelocity() - this->velocity);
+		vorticity += glm::cross(p, v);
+	}
 }
 
 void KFMacroParticle::stepTime(const float dt)

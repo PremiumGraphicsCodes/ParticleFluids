@@ -36,6 +36,8 @@ public:
 
 	void calculateViscosityForce();
 
+	void calculateVorticity();
+
 	void stepTime(const float dt);
 
 	float getRadius() const { return radius; }
@@ -70,6 +72,7 @@ private:
 	Math::Vector3df force;
 	Math::Vector3df position;
 	Math::Vector3df velocity;
+	Math::Vector3df vorticity;
 	KFFluidScene* scene;
 
 	//float selfMass;
