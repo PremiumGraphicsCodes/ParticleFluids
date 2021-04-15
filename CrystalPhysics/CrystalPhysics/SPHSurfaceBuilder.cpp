@@ -173,7 +173,7 @@ void SPHSurfaceBuilder::calculateAnisotoropicMatrix(SPHSurfaceParticle* p, const
 		auto evs = result.eigenValues;
 		evs[1] = std::max(evs[1], evs[0] / kr);
 		evs[2] = std::max(evs[2], evs[0] / kr);
-//		evs /= 14.0;//ks;
+		evs *= ks;
 
 		scaleMatrix = Matrix3dd
 		(
