@@ -21,8 +21,14 @@ public:
 
 	Math::Matrix3dd matrix;
 
+	void calculateCorrectedPosition(const float lamda);
+
+	void calculateAnisotoropicMatrix(const std::vector<Shape::IParticle*>& neighbors, const float searchRadius);
+
 private:
-	Math::Vector3dd position;
+	Math::Vector3df position;
+	Math::Vector3df correctedPosition;
+	Math::Vector3df weightedMean;
 };
 
 class SPHSurfaceBuilder
@@ -41,7 +47,6 @@ public:
 private:
 	std::unique_ptr<Space::SparseVolume> createSparseVolume(const std::vector<Math::Vector3dd>& particles, const float searchRadius, const float cellLength);
 
-	void calculateAnisotoropicMatrix(SPHSurfaceParticle* particle, const std::vector<Shape::IParticle*>& neighbors, const float searchRadius);
 	
 	//std::vector<Shape::IParticle*> particles;
 

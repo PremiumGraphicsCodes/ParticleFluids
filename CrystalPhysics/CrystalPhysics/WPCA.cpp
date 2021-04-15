@@ -12,7 +12,7 @@ Matrix3df WPCA::calculate(IParticle* center, const std::vector<IParticle*>& posi
 }
 */
 
-Matrix3df Crystal::Physics::WPCA::calculate(Shape::IParticle* center, const std::vector<Shape::IParticle*>& positions, const float radius)
+void Crystal::Physics::WPCA::calculate(Shape::IParticle* center, const std::vector<Shape::IParticle*>& positions, const float radius)
 {
 	//std::vector<PositionWeight> pws;
 	//pws.reserve(positions.size());
@@ -29,19 +29,19 @@ Matrix3df Crystal::Physics::WPCA::calculate(Shape::IParticle* center, const std:
 		this->totalWeight += pw.weight;
 	}
 
-	return calculateCovarianceMatrix(radius);
+	this->covarianceMatrix = calculateCovarianceMatrix(radius);
 }
 
 Matrix3df WPCA::calculateCovarianceMatrix(const float radius)
 {
-	const auto wm = calculateWeightedMean(radius);
+	this->weightedMean = calculateWeightedMean(radius);
 
 	Matrix3df matrix(0,0,0,0,0,0,0,0,0);
 	for (const auto& pw : pws) {
 		const auto p = pw.position;
 		const auto w = pw.weight;
 
-		const auto v = wm - p;
+		const auto v = weightedMean - p;
 		//const auto vt = glm::transpose(v);
 		//Matrix3df m()
 		const auto x00 = v[0] * v[0];

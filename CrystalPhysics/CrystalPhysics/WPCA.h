@@ -11,7 +11,11 @@ namespace Crystal {
 class WPCA
 {
 public:
-	Math::Matrix3df calculate(Shape::IParticle* center, const std::vector<Shape::IParticle*>& positions, const float radius);
+	void calculate(Shape::IParticle* center, const std::vector<Shape::IParticle*>& positions, const float radius);
+
+	Math::Matrix3df getCovarianceMatrix() const { return covarianceMatrix; }
+
+	Math::Vector3df getWeightedMean() const { return weightedMean; }
 
 private :
 	Math::Matrix3df calculateCovarianceMatrix(const float radius);
@@ -30,6 +34,9 @@ private:
 
 	std::vector<PositionWeight> pws;
 	float totalWeight;
+
+	Math::Matrix3df covarianceMatrix;
+	Math::Vector3df weightedMean;
 };
 	}
 }
