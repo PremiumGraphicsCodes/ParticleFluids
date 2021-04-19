@@ -88,7 +88,7 @@ void SPHSurfaceBuilderView::onOk()
 
 	auto& particles = builder.getParticles();
 	for (auto& p : particles) {
-		const auto m = p->matrix;
+		const auto m = p->getMatrix();
 		Sphere3d s(p->getPosition(), 1.0);
 		//wfBuilder.build(s, 10, 10);
 		::build(s, 10, 10, m,  wfBuilder);

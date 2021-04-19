@@ -19,9 +19,9 @@ void SPHSurfaceBuilder::add(IParticle* particle)
 }
 */
 
-void SPHSurfaceParticle::calculateCorrectedPosition(const float lamda)
+void SPHSurfaceParticle::correctedPosition(const float lamda)
 {
-	this->correctedPosition = (1.0f - lamda) * position + lamda * weightedMean;
+	this->position = (1.0f - lamda) * position + lamda * weightedMean;
 }
 
 void SPHSurfaceParticle::calculateAnisotoropicMatrix(const std::vector<IParticle*>& neighbors, const float searchRadius)
@@ -63,4 +63,12 @@ void SPHSurfaceParticle::calculateAnisotoropicMatrix(const std::vector<IParticle
 		);
 	}
 	this->matrix = rotation * scaleMatrix * glm::transpose(rotation) * (1.0 / searchRadius);
+}
+
+void SPHSurfaceParticle::calculateDensity(const std::vector<IParticle*>& neighbors, const float searchRadius, const SPHKernel& kernel)
+{
+	for (auto n : neighbors) {
+		const auto distanceSquared = Math::getDistanceSquared<Vector3df>( n->getPosition(), this->position);
+		this->density += kernel.getCubicSpline(::sqrt(distanceSquared));
+	}
 }

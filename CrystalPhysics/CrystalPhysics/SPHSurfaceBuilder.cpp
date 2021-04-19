@@ -51,47 +51,51 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 		particles.push_back(std::make_unique<SPHSurfaceParticle>(p));
 	}
 
-	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
-	for (const auto& p : particles) {
-		spaceHash.add(p.get());
-	}
-
-	std::vector<Math::Matrix3dd> matrices;
-	for (const auto& p : particles) {
-		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
-		p->calculateAnisotoropicMatrix(neighbors, searchRadius);
-		p->calculateCorrectedPosition(0.95);
-	}
-
-	this->volume = createSparseVolume(positions, searchRadius, cellLength);
-
 	const SPHKernel kernel(searchRadius);
 
-	auto& nodes = volume->getNodes();
-	std::vector<SparseVolumeNode*> ns;
-	ns.reserve(nodes.size());
-	for (auto n : nodes) {
-		ns.push_back(n.second);
-	}
-
-	//for (auto& node : nodes) {
-#pragma omp parallel for
-	for(int i = 0; i < ns.size(); ++i){
-		auto node = ns[i];
-		const auto pos = node->getPosition();
-		const auto neighbors = spaceHash.findNeighbors( pos );
-		for (auto n : neighbors) {
-			auto sp = static_cast<SPHSurfaceParticle*>(n);
-			auto m = sp->matrix;
-			const auto v = Vector3dd(sp->getCorrectedPosition()) - pos;
-			const auto distance = m * v;
-			const auto w = kernel.getCubicSpline(distance) * glm::determinant(m);
-			node->setValue(w + node->getValue());
-			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
+	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
+	{
+		for (const auto& p : particles) {
+			spaceHash.add(p.get());
 		}
-//		n.second->getValue();
+
+		for (const auto& p : particles) {
+			const auto neighbors = spaceHash.findNeighbors(p->getPosition());
+			p->calculateDensity(neighbors, searchRadius, kernel);
+			p->calculateAnisotoropicMatrix(neighbors, searchRadius);
+			p->correctedPosition(0.95);
+		}
 	}
 
+	{
+		this->volume = createSparseVolume(positions, searchRadius, cellLength);
+
+
+		auto& nodes = volume->getNodes();
+		std::vector<SparseVolumeNode*> ns;
+		ns.reserve(nodes.size());
+		for (auto n : nodes) {
+			ns.push_back(n.second);
+		}
+
+		//for (auto& node : nodes) {
+#pragma omp parallel for
+		for (int i = 0; i < ns.size(); ++i) {
+			auto node = ns[i];
+			const auto pos = node->getPosition();
+			const auto neighbors = spaceHash.findNeighbors(pos);
+			for (auto n : neighbors) {
+				auto sp = static_cast<SPHSurfaceParticle*>(n);
+				auto m = sp->getMatrix();
+				const auto v = Vector3dd(sp->getPosition()) - pos;
+				const auto distance = m * v;
+				const auto w = kernel.getCubicSpline(distance) * sp->getDensity() * glm::determinant(m);
+				node->setValue(w + node->getValue());
+				//const auto distance = getDistanceSquared(sp->getPosition(), pos);
+			}
+			//		n.second->getValue();
+		}
+	}
 }
 
 std::unique_ptr<SparseVolume> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float searchRadius,  const float cellLength)

@@ -48,6 +48,12 @@ static bool areSame(const Vector3dd& lhs, const Vector3dd& rhs, const double tol
 	return getDistanceSquared(lhs, rhs) < tolerance;
 }
 
+template<typename T>
+static auto getDistanceSquared(const T& lhs, const T rhs)
+{
+	return getDistanceSquared(lhs, rhs);
+}
+
 	}
 }
 
