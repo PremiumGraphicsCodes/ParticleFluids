@@ -27,6 +27,7 @@ public:
 private:
 	std::unique_ptr<Space::SparseVolume> createSparseVolume(const std::vector<Math::Vector3dd>& particles, const float searchRadius, const float cellLength);
 
+	void calculateAnisotropy(const float searchRadius);
 	
 	//std::vector<Shape::IParticle*> particles;
 

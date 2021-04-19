@@ -33,7 +33,7 @@ namespace {
 			for (auto v = 0.0; v < 1.0 + tolerance; v += dv) {
 				auto p = sphere.getPosition(u, v);
 				p -= sphere.getCenter();
-				p = m * p;
+				p = m * p * glm::determinant(m);
 				p += sphere.getCenter();
 				g.push_back(wfBuilder.createPosition(p));
 			}
@@ -71,10 +71,26 @@ void SPHSurfaceBuilderView::onOk()
 {
 	std::vector<Vector3dd> positions;
 
+	/*
+	Sphere3d sphere(Vector3dd(0,0,0), 10);
+	for (auto u = 0.0; u < 1.0; u += 0.1) {
+		for (auto v = 0.0; v < 1.0; v +=0.1) {
+			for (auto w = 0.0; w < 1.0; w += 0.1) {
+				positions.push_back( sphere.getPosition(u, v, w) );
+			}
+		}
+	}
+	*/
+	//sphere.getPosition()
+
+	const auto center = Vector3dd(0.25 * 5, 0.25 * 5, 0.25 * 5);
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 10; ++j) {
 			for (int k = 0; k < 10; ++k) {
-				positions.push_back(Vector3dd(0.25 * i, 0.25 * j, 0.25 * k));
+				const auto p = Vector3dd(0.25 * i, 0.25 * j, 0.25 * k);
+				if (Math::getDistanceSquared(p, center) < 1.0 * 1.0) {
+					positions.push_back(p);
+				}
 			}
 		}
 	}
@@ -84,6 +100,7 @@ void SPHSurfaceBuilderView::onOk()
 	SPHSurfaceBuilder builder;
 	builder.buildAnisotoropic(positions, searchRadiusView.getValue(),cellLengthView.getValue());
 
+	/*
 	WireFrameBuilder wfBuilder;
 
 	auto& particles = builder.getParticles();
@@ -93,7 +110,6 @@ void SPHSurfaceBuilderView::onOk()
 		//wfBuilder.build(s, 10, 10);
 		::build(s, 10, 10, m,  wfBuilder);
 	}
-	/*
 	auto wf = wfBuilder.createWireFrame();
 	WireFrameAttribute attr;
 	attr.color = glm::vec4(1, 1, 1, 1);
