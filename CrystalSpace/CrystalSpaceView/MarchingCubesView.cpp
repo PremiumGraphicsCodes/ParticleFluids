@@ -26,18 +26,22 @@ void MarchingCubesView::onShow()
 void MarchingCubesView::onOk()
 {
 	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	Volume<double> v(box, { 100, 100, 100 });
+	//Volume<double> v(box, { 100, 100, 100 });
+
+	SparseVolume v(box, { 100,100,100 });
 
 	const auto center = box.getCenter();
 	const auto radius = 5.0;
 	for (int i = 0; i < 100; ++i) {
 		for (int j = 0; j < 100; ++j) {
 			for (int k = 0; k < 100; ++k) {
-				const auto distanceSquared = Math::getDistanceSquared(v.getCellPosition(i, j, k), center);
+				const auto distanceSquared = Math::getDistanceSquared(v.getPositionAt({ i, j, k }), center);
 				if (distanceSquared < radius * radius) {
 					const auto distance = ::sqrt(distanceSquared);
 					const auto value = 1.0 - distance / radius;
-					v.setValue(i, j, k, value);
+					auto n = v.createNode({ i,j,k });
+					n->setValue(value);
+					//v.setValue(i, j, k, value);
 				}
 			}
 		}

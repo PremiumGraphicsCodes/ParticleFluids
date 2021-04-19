@@ -6,11 +6,15 @@
 #include "../../Crystal/Shape/WireFrameBuilder.h"
 
 #include "../../Crystal/Scene/WireFrameScene.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
 #include "../../Crystal/Math/Sphere3d.h"
 #include "../../Crystal/Math/Ellipsoid3d.h"
+
+#include "../../CrystalSpace/CrystalSpace/MarchingCubesAlgo.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -98,8 +102,22 @@ void SPHSurfaceBuilderView::onOk()
 	auto world = getWorld();
 
 	SPHSurfaceBuilder builder;
-	builder.buildAnisotoropic(positions, searchRadiusView.getValue(),cellLengthView.getValue());
+	builder.buildAnisotoropic(positions, searchRadiusView.getValue(), cellLengthView.getValue());
 
+	MarchingCubesAlgo mcAlgo;
+	mcAlgo.build(*builder.getVolume(), 1.0e-2);
+
+	PolygonMeshBuilder pmBuilder;
+	const auto triangles = mcAlgo.getTriangles();
+	for (const auto& t : triangles) {
+		pmBuilder.add(t);
+	}
+	auto scene = new PolygonMeshScene(getWorld()->getNextSceneId(), "", std::move(pmBuilder.build()));
+
+	PolygonMeshScene::FaceGroup group(pmBuilder.getFaces(), nullptr);
+	scene->addGroup(group);
+	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	getWorld()->getScenes()->addScene(scene);
 	/*
 	WireFrameBuilder wfBuilder;
 
@@ -119,6 +137,7 @@ void SPHSurfaceBuilderView::onOk()
 	getWorld()->getScenes()->addScene(wfScene);
 	*/
 
+	/*
 	auto volume = builder.getVolume();
 	SparseVolumeScene* svScene = new SparseVolumeScene(getWorld()->getNextSceneId(), "Vol", std::move(volume));
 	auto presenter = svScene->getPresenter();
@@ -129,7 +148,7 @@ void SPHSurfaceBuilderView::onOk()
 	presenter->createView(world->getRenderer(), *world->getGLFactory());
 
 	getWorld()->getScenes()->addScene(svScene);
-
+	*/
 	/*
 	WireFrameBuilder wfBuilder;
 	for (const auto& p : particles) {
