@@ -35,6 +35,17 @@ void MarchingCubesView::onShow()
 
 void MarchingCubesView::onOk()
 {
+	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+	Volume<float> v(box, { 10, 10, 10 });
+
+
+	for (int i = 0; i < 10; ++i) {
+
+	}
+
+	//MarchingCubesAlgo mc;
+	//mc.build(v,)
+
 	MCCell cell;
 	cell.vertices[0].position = Vector3dd(0, 0, 0);
 	cell.vertices[1].position = Vector3dd(1, 0, 0);
@@ -48,7 +59,7 @@ void MarchingCubesView::onOk()
 	for (int i = 0; i < 8; ++i) {
 		cell.vertices[i].value = values[i].getValue();
 	}
-	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
+	//const Box3d box(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
 	/*
 	const auto& center = box.getCenter();
 	const auto radius = 2.0;

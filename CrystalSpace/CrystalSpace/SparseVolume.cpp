@@ -33,3 +33,12 @@ void SparseVolume::addValue(const std::array<int, 3>& index, const float value)
 	auto n = nodes[index];
 	n->setValue(n->getValue() + value);
 }
+
+float SparseVolume::getValueAt(const std::array<int, 3>& index) const
+{
+	auto iter = nodes.find(index);
+	if (iter == nodes.end()) {
+		return 0.0f;
+	}
+	return iter->second->getValue();
+}

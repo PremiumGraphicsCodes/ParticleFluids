@@ -66,6 +66,8 @@ public:
 
 	void addValue(const std::array<int, 3>& index, const float value);
 
+	float getValueAt(const std::array<int, 3>& index) const;
+
 private:
 	std::map< std::array<int, 3>, SparseVolumeNode*> nodes;
 
