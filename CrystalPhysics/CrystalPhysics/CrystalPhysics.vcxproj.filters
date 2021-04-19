@@ -128,6 +128,9 @@
     <ClInclude Include="FLIPSSolver.h">
       <Filter>FLIPS</Filter>
     </ClInclude>
+    <ClInclude Include="SPHSurfaceParticle.h">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -223,6 +226,9 @@
     </ClCompile>
     <ClCompile Include="FLIPSSolver.cpp">
       <Filter>FLIPS</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHSurfaceParticle.cpp">
+      <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

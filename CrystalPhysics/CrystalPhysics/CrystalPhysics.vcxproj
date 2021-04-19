@@ -186,6 +186,7 @@
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
     <ClInclude Include="SPHSurfaceBuilder.h" />
+    <ClInclude Include="SPHSurfaceParticle.h" />
     <ClInclude Include="WPCA.h" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +221,7 @@
     <ClCompile Include="PBSPHSolver.cpp" />
     <ClCompile Include="SPHKernel.cpp" />
     <ClCompile Include="SPHSurfaceBuilder.cpp" />
+    <ClCompile Include="SPHSurfaceParticle.cpp" />
     <ClCompile Include="WPCA.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
