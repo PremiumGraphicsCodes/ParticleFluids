@@ -4,6 +4,7 @@
 #include "../../Crystal/Scene/VolumeScene.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Math/Gaussian.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -12,37 +13,26 @@ using namespace Crystal::UI;
 using namespace Crystal::Space;
 
 MarchingCubesView::MarchingCubesView(World* model, Canvas* canvas) :
-	IOkCancelView("MarchingCubes", model, canvas),
-	values({
-		DoubleView("Value0", 0),
-		DoubleView("Value1", 100),
-		DoubleView("Value2", 0),
-		DoubleView("Value3", 0),
-		DoubleView("Value4", 0),
-		DoubleView("Value5", 0),
-		DoubleView("Value6", 0),
-		DoubleView("Value7", 0),
-		})
+	IOkCancelView("MarchingCubes", model, canvas)
 {
 }
 
+/*
 void MarchingCubesView::onShow()
 {
-	for (auto& v : values) {
-		v.show();
-	}
 }
+*/
 
 void MarchingCubesView::onOk()
 {
 	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	Volume<double> v(box, { 10, 10, 10 });
+	Volume<double> v(box, { 100, 100, 100 });
 
 	const auto center = box.getCenter();
 	const auto radius = 5.0;
-	for (int i = 0; i < 10; ++i) {
-		for (int j = 0; j < 10; ++j) {
-			for (int k = 0; k < 10; ++k) {
+	for (int i = 0; i < 100; ++i) {
+		for (int j = 0; j < 100; ++j) {
+			for (int k = 0; k < 100; ++k) {
 				const auto distanceSquared = Math::getDistanceSquared(v.getCellPosition(i, j, k), center);
 				if (distanceSquared < radius * radius) {
 					const auto distance = ::sqrt(distanceSquared);
@@ -60,7 +50,13 @@ void MarchingCubesView::onOk()
 	for (const auto& t : triangles) {
 		builder.add(t);
 	}
-	//getWorld()->getO
+	auto scene = new PolygonMeshScene(getWorld()->getNextSceneId(), "", std::move(builder.build()));
+
+	PolygonMeshScene::FaceGroup group(builder.getFaces(), nullptr);
+	scene->addGroup(group);
+
+	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	getWorld()->getScenes()->addScene(scene);
 	//builder.pushCurrentFaceGroup();
 	//getWorld()->getObjectFactory()->createPolygonMeshScene(builder.(), "MarchingCubes");
 	//getWorld()->updateViewModel();

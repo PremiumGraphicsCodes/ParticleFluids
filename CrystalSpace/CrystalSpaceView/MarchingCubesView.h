@@ -12,12 +12,12 @@ class MarchingCubesView : public IOkCancelView
 public:
 	MarchingCubesView(Scene::World* model, Canvas* canvas);
 
-	void onShow() override;
+	//void onShow() override;
 
 	void onOk() override;
 
 private:
-	std::array< DoubleView, 8 > values;
+	//std::array< DoubleView, 8 > values;
 };
 
 	}
