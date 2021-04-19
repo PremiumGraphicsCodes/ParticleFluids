@@ -45,7 +45,7 @@ void SPHSurfaceParticle::calculateAnisotoropicMatrix(const std::vector<IParticle
 
 
 	Matrix3dd scaleMatrix = ::identitiyMatrix();
-	if (neighbors.size() < 25) {
+	if (neighbors.size() < 15) {
 		scaleMatrix *= 0.5;
 		//		p->matrix = scaleMatrix;
 	}
@@ -62,7 +62,7 @@ void SPHSurfaceParticle::calculateAnisotoropicMatrix(const std::vector<IParticle
 			0.0, 0.0, evs[2]
 		);
 	}
-	this->matrix = rotation * scaleMatrix * glm::transpose(rotation) * (1.0 / searchRadius);
+	this->matrix = rotation * glm::inverse(scaleMatrix) * glm::transpose(rotation) * (1.0 / searchRadius);
 }
 
 void SPHSurfaceParticle::calculateDensity(const std::vector<IParticle*>& neighbors, const float searchRadius, const SPHKernel& kernel)
