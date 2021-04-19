@@ -36,61 +36,31 @@ void MarchingCubesView::onShow()
 void MarchingCubesView::onOk()
 {
 	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	Volume<float> v(box, { 10, 10, 10 });
+	Volume<double> v(box, { 10, 10, 10 });
 
-
+	const auto center = box.getCenter();
+	const auto radius = 5.0;
 	for (int i = 0; i < 10; ++i) {
-
-	}
-
-	//MarchingCubesAlgo mc;
-	//mc.build(v,)
-
-	MCCell cell;
-	cell.vertices[0].position = Vector3dd(0, 0, 0);
-	cell.vertices[1].position = Vector3dd(1, 0, 0);
-	cell.vertices[2].position = Vector3dd(1, 1, 0);
-	cell.vertices[3].position = Vector3dd(0, 1, 0);
-	cell.vertices[4].position = Vector3dd(0, 0, 1);
-	cell.vertices[5].position = Vector3dd(1, 0, 1);
-	cell.vertices[6].position = Vector3dd(1, 1, 1);
-	cell.vertices[7].position = Vector3dd(0, 1, 1);
-
-	for (int i = 0; i < 8; ++i) {
-		cell.vertices[i].value = values[i].getValue();
-	}
-	//const Box3d box(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
-	/*
-	const auto& center = box.getCenter();
-	const auto radius = 2.0;
-	Volume volume(5, 5, 5, box);
-	for (int i = 0; i < 5; ++i) {
-		for (int j = 0; j < 5; ++j) {
-			for (int k = 0; k < 5; ++k) {
-				volume.set()
+		for (int j = 0; j < 10; ++j) {
+			for (int k = 0; k < 10; ++k) {
+				const auto distanceSquared = Math::getDistanceSquared(v.getCellPosition(i, j, k), center);
+				if (distanceSquared < radius * radius) {
+					const auto distance = ::sqrt(distanceSquared);
+					const auto value = 1.0 - distance / radius;
+					v.setValue(i, j, k, value);
+				}
 			}
 		}
 	}
-	*/
-
-	std::array<size_t, 3> resolutions{ 32,32,32 };
-	Volume<double> volume(box, resolutions);
-
-	/*
-	auto function = [](double distance) {
-		Gaussian gaussian;
-		return gaussian.getValue(distance);
-	};
-	volume.add(function);
-	*/
 
 	MarchingCubesAlgo algo;
-	algo.build(volume, 0.30);
+	algo.build(v, 0.30);
 	const auto& triangles = algo.getTriangles();
 	PolygonMeshBuilder builder;
 	for (const auto& t : triangles) {
 		builder.add(t);
 	}
+	//getWorld()->getO
 	//builder.pushCurrentFaceGroup();
 	//getWorld()->getObjectFactory()->createPolygonMeshScene(builder.(), "MarchingCubes");
 	//getWorld()->updateViewModel();

@@ -38,7 +38,7 @@ void IPMAddView::addPolygonMesh(const PolygonMeshBuilder& builder)
 	scene->addGroup(group);
 	world->getScenes()->addScene(scene);
 
-	presenterView.setPresenter(scene, world);
+	//presenterView.setPresenter(scene, world);
 
 	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 
