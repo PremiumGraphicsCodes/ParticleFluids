@@ -77,10 +77,11 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 		spaceHash.add(p.get());
 	}
 
+	/*
 	for (const auto& p : particles) {
 		const auto neighbors = spaceHash.findNeighbors(p->getPosition());
-		p->calculateAnisotoropicMatrix(neighbors, searchRadius);
 	}
+	*/
 
 	this->volume = createSparseVolume(positions, searchRadius, cellLength);
 
@@ -172,5 +173,6 @@ void SPHSurfaceBuilder::calculateAnisotropy(const float searchRadius)
 		wpca.setup(p.get(), neighbors, searchRadius);
 		const auto wm = wpca.calculateWeightedMean(p.get(), neighbors, searchRadius);
 		p->correctedPosition(0.95, wm);
+		p->calculateAnisotoropicMatrix(neighbors, searchRadius);
 	}
 }

@@ -110,7 +110,7 @@ void SPHSurfaceBuilderView::onOk()
 	builder.buildAnisotoropic(positions, searchRadiusView.getValue(), cellLengthView.getValue());
 
 	MarchingCubesAlgo mcAlgo;
-	mcAlgo.build(*builder.getVolume(), 1.0);
+	mcAlgo.build(*builder.getVolume(), 1.0e-3);
 
 	PolygonMeshBuilder pmBuilder;
 	const auto triangles = mcAlgo.getTriangles();
