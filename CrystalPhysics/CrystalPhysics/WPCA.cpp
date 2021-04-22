@@ -6,35 +6,9 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Physics;
 
-/*
-Matrix3df WPCA::calculate(IParticle* center, const std::vector<IParticle*>& positions, const float radius)
+Matrix3df WPCA::calculateCovarianceMatrix(Shape::IParticle* center, const std::vector<Shape::IParticle*>& positions, const float radius)
 {
-}
-*/
-
-void Crystal::Physics::WPCA::calculate(Shape::IParticle* center, const std::vector<Shape::IParticle*>& positions, const float radius)
-{
-	//std::vector<PositionWeight> pws;
-	//pws.reserve(positions.size());
-	for (const auto& p : positions) {
-		const auto w = calculateWeight(center->getPosition(), p->getPosition(), radius);
-		PositionWeight pw;
-		pw.position = p->getPosition();
-		pw.weight = w;
-		this->pws.push_back(pw);
-	}
-
-	this->totalWeight = 0.0f;
-	for (const auto& pw : pws) {
-		this->totalWeight += pw.weight;
-	}
-
-	this->covarianceMatrix = calculateCovarianceMatrix(radius);
-}
-
-Matrix3df WPCA::calculateCovarianceMatrix(const float radius)
-{
-	this->weightedMean = calculateWeightedMean(radius);
+	const auto weightedMean = calculateWeightedMean(center, positions, radius);
 
 	Matrix3df matrix(0,0,0,0,0,0,0,0,0);
 	for (const auto& pw : pws) {
@@ -68,7 +42,7 @@ Matrix3df WPCA::calculateCovarianceMatrix(const float radius)
 	return matrix;
 }
 
-Vector3df WPCA::calculateWeightedMean(const float radius)
+Vector3df WPCA::calculateWeightedMean(Shape::IParticle* center, const std::vector<Shape::IParticle*>& positions, const float radius)
 {
 	Vector3df weightedCenter(0.0f, 0.0f, 0.0f);
 	for (const auto pw : pws) {
@@ -86,4 +60,23 @@ float WPCA::calculateWeight(const Vector3df& lhs, const Vector3df& rhs, const fl
 		return 0.0f;
 	}
 	return 1.0f - std::pow((distance / radius), 3.0f);
+}
+
+void WPCA::setup(IParticle* center, const std::vector<IParticle*>& positions, const float radius)
+{
+	//std::vector<PositionWeight> pws;
+	//pws.reserve(positions.size());
+	for (const auto& p : positions) {
+		const auto w = calculateWeight(center->getPosition(), p->getPosition(), radius);
+		PositionWeight pw;
+		pw.position = p->getPosition();
+		pw.weight = w;
+		this->pws.push_back(pw);
+	}
+
+	this->totalWeight = 0.0f;
+	for (const auto& pw : pws) {
+		this->totalWeight += pw.weight;
+	}
+
 }

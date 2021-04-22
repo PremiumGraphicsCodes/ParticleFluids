@@ -19,18 +19,17 @@ void SPHSurfaceBuilder::add(IParticle* particle)
 }
 */
 
-void SPHSurfaceParticle::correctedPosition(const float lamda)
+void SPHSurfaceParticle::correctedPosition(const float lamda, const Vector3df& wm)
 {
-	this->position = (1.0f - lamda) * position + lamda * weightedMean;
+	this->position = (1.0f - lamda) * position + lamda * wm;
 }
 
 void SPHSurfaceParticle::calculateAnisotoropicMatrix(const std::vector<IParticle*>& neighbors, const float searchRadius)
 {
 	//const Matrix3dd scaleMatrix;
 	WPCA wpca;
-	wpca.calculate(this, neighbors, searchRadius);
-	this->matrix = wpca.getCovarianceMatrix();
-	this->weightedMean = wpca.getWeightedMean();
+	wpca.setup(this, neighbors, searchRadius);
+	this->matrix = wpca.calculateCovarianceMatrix(this, neighbors, searchRadius);
 
 	Crystal::Numerics::SVD svd;
 	auto result = svd.calculateJacobi(matrix);
@@ -45,7 +44,7 @@ void SPHSurfaceParticle::calculateAnisotoropicMatrix(const std::vector<IParticle
 
 
 	Matrix3dd scaleMatrix = ::identitiyMatrix();
-	if (neighbors.size() < 15) {
+	if (neighbors.size() < 25) {
 		scaleMatrix *= 0.5;
 		//		p->matrix = scaleMatrix;
 	}

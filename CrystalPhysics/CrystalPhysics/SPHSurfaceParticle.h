@@ -11,14 +11,13 @@ class SPHSurfaceParticle : public Shape::IParticle
 public:
 	explicit SPHSurfaceParticle(const Math::Vector3dd& p) :
 		position(p),
-		weightedMean(),
 		matrix(Math::identitiyMatrix()),
 		density(0.0f)
 	{}
 
 	Math::Vector3dd getPosition() const { return position; }
 
-	void correctedPosition(const float lamda);
+	void correctedPosition(const float lamda, const Math::Vector3df& weightedMean);
 
 	void calculateAnisotoropicMatrix(const std::vector<Shape::IParticle*>& neighbors, const float searchRadius);
 
@@ -30,8 +29,6 @@ public:
 
 private:
 	Math::Vector3df position;
-	Math::Vector3df weightedMean;
-
 	Math::Matrix3dd matrix;
 	float density;
 };
