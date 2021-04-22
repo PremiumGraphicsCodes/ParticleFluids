@@ -15,7 +15,7 @@ using Vector3dd = glm::dvec3;
 
 static float getLengthSquared(const Vector3df& v)
 {
-	return std::pow(v.x, 2) + std::pow(v.y, 2) + std::pow(v.z, 2);
+	return v.x * v.x + v.y* v.y + v.z * v.z;
 }
 
 static float getLength(const Vector3df& v)
@@ -25,12 +25,15 @@ static float getLength(const Vector3df& v)
 
 static double getDistanceSquared(const Vector3dd& v)
 {
-	return std::pow(v.x, 2) + std::pow(v.y, 2) + std::pow(v.z, 2);
+	return v.x * v.x + v.y * v.y + v.z * v.z;
 }
 
 static float getDistanceSquared(const Vector3df& lhs, const Vector3df& rhs)
 {
-	return std::pow(lhs.x - rhs.x, 2) + std::pow(lhs.y - rhs.y, 2) + std::pow(lhs.z - rhs.z, 2);
+	const auto x = lhs.x - rhs.x;
+	const auto y = lhs.y - rhs.y;
+	const auto z = lhs.z - rhs.z;
+	return x * x + y * y + z * z;
 }
 
 static float getDistance(const Vector3df& lhs, const Vector3df& rhs)
@@ -40,7 +43,10 @@ static float getDistance(const Vector3df& lhs, const Vector3df& rhs)
 
 static double getDistanceSquared(const Vector3dd& lhs, const Vector3dd& rhs)
 {
-	return std::pow(lhs.x - rhs.x, 2) + std::pow(lhs.y - rhs.y, 2) + std::pow(lhs.z - rhs.z, 2);
+	const auto x = lhs.x - rhs.x;
+	const auto y = lhs.y - rhs.y;
+	const auto z = lhs.z - rhs.z;
+	return x*x + y*y + z*z;
 }
 
 static bool areSame(const Vector3dd& lhs, const Vector3dd& rhs, const double tolerance)
