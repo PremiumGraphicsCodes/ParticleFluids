@@ -96,10 +96,12 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 		for (auto n : neighbors) {
 			auto sp = static_cast<SPHSurfaceParticle*>(n);
 			auto m = sp->getMatrix();
+			//auto m = Matrix3df(1.0, 0, 0, 0, 1, 0, 0, 0, 1) / searchRadius;
 			const auto v = Vector3dd(sp->getPosition()) - pos;
 			const auto distance = m * v;
 			const auto d = glm::length(distance);
-			const auto w = ::getCubicSpline(d, searchRadius) * glm::determinant(m) / sp->getDensity();
+			const auto det = glm::determinant(m);
+			const auto w = ::getCubicSpline(d, searchRadius) * det / sp->getDensity();
 			node->setValue(w + node->getValue());
 			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
 		}
