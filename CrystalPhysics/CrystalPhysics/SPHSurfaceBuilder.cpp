@@ -16,6 +16,22 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
+namespace {
+	float getCubicSpline(const float distance, const float effectLength)
+	{
+		const auto q = distance * 2 / (effectLength);
+
+		if (q < 1) {
+			return (2.0f / 3.0f - q * q + 0.5f * q * q * q);
+		}
+		else if (q < 2) {
+			return (std::pow(2 - q, 3) / 6.0f);
+		}
+		else {
+			return 0;
+		}
+	}
+}
 
 void SPHSurfaceBuilder::buildIsotoropic(const std::vector<Math::Vector3dd>& positions, const float searchRadius)
 {
@@ -82,7 +98,8 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 			auto m = sp->getMatrix();
 			const auto v = Vector3dd(sp->getPosition()) - pos;
 			const auto distance = m * v;
-			const auto w = kernel.getCubicSpline(distance) * glm::determinant(m) / sp->getDensity();
+			const auto d = glm::length(distance);
+			const auto w = ::getCubicSpline(d, searchRadius) * glm::determinant(m) / sp->getDensity();
 			node->setValue(w + node->getValue());
 			//const auto distance = getDistanceSquared(sp->getPosition(), pos);
 		}
