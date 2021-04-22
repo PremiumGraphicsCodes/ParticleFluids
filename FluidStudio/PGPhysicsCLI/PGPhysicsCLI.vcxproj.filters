@@ -9,6 +9,7 @@
     <ClCompile Include="..\PGCLI\AnyConverter.cpp" />
     <ClCompile Include="..\PGCLI\Converter.cpp" />
     <ClCompile Include="SpaceCommand.cpp" />
+    <ClCompile Include="VDBCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsCommand.h" />
@@ -16,5 +17,6 @@
     <ClInclude Include="..\PGCLI\AnyConverter.h" />
     <ClInclude Include="..\PGCLI\Converter.h" />
     <ClInclude Include="SpaceCommand.h" />
+    <ClInclude Include="VDBCommand.h" />
   </ItemGroup>
 </Project>

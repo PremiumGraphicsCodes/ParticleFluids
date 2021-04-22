@@ -13,7 +13,7 @@
 using namespace PG::CLI;
 
 namespace {
-	std::unique_ptr<Crystal::Command::ICommand> instance;
+	std::unique_ptr<Crystal::Command::ICommand> vdb_instance;
 	Crystal::VDB::VDBCommandFactory factory;
 }
 
@@ -23,13 +23,13 @@ VDBCommand::VDBCommand()
 VDBCommand::VDBCommand(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);
-	::instance = factory.createCommand(str);
+	::vdb_instance = factory.createCommand(str);
 }
 
 void VDBCommand::Create(System::String^ name)
 {
 	const auto& str = Converter::toCpp(name);
-	::instance = factory.createCommand(str);
+	::vdb_instance = factory.createCommand(str);
 }
 
 generic <class T>
@@ -37,24 +37,24 @@ void VDBCommand::SetArg(System::String^ name, T value)
 {
 	const auto& str = PG::CLI::Converter::toCpp(name);
 	const auto v = AnyConverter::toCpp(value, T::typeid);
-	::instance->setArg(str, v);
+	::vdb_instance->setArg(str, v);
 }
 
 bool VDBCommand::Execute(WorldAdapter^ objects)
 {
 	auto world = static_cast<Crystal::Scene::World*>(objects->getPtr().ToPointer());
-	return ::instance->execute(world);
+	return ::vdb_instance->execute(world);
 }
 
 generic <class T>
 T VDBCommand::GetResult(System::String^ name)
 {
 	const auto& str = msclr::interop::marshal_as<std::string>(name);
-	auto result = ::instance->getResult(str);
+	auto result = ::vdb_instance->getResult(str);
 	return (T)(AnyConverter::fromCpp(result));
 }
 
 void VDBCommand::Clear()
 {
-	::instance.reset();
+	::vdb_instance.reset();
 }
