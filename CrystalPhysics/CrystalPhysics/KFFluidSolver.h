@@ -16,6 +16,7 @@ namespace Crystal {
 		class KFMacroParticle;
 		class KFFluidScene;
 		class KFFluidEmitterScene;
+		class IKFFluidScene;
 		class CSGBoundaryScene;
 
 class KFBoundarySolver
@@ -87,12 +88,12 @@ class KFFUpdater : public Scene::IAnimator
 public:
 	KFFUpdater() {}
 
-	void add(Physics::KFFluidScene* f) { fluids.push_back(f); }
+	void add(Physics::IKFFluidScene* f) { fluids.push_back(f); }
 
 	void step() override;
 
 private:
-	std::list<Physics::KFFluidScene*> fluids;
+	std::list<Physics::IKFFluidScene*> fluids;
 };
 
 

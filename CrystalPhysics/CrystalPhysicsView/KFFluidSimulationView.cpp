@@ -57,18 +57,24 @@ void KFFluidSimulationView::onStart()
 	fluidScene = new KFFluidScene(world->getNextSceneId(), "KFFluid");
 	world->getScenes()->addScene(fluidScene);
 
+	emitterScene = new KFFluidEmitterScene(world->getNextSceneId(), "KFEmitter");
+	world->getScenes()->addScene(emitterScene);
+
 	//boundaryScene = new KFFluidScene(getWorld()->getNextSceneId(), "KFBoundary");
 	//getWorld()->getScenes()->addScene(boundaryScene);
 
 	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
 	csgScene->add(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 100, 100)));
 
-	this->onAddFluid();
+	//this->onAddFluid();
+	this->onAddEmitter();
 
-	this->newId = fluidScene->getId();
 
-	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
-	updator.add(fluidScene);
+	//fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	//updator.add(fluidScene);
+
+	emitterScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	updator.add(emitterScene);
 
 	//boundaryScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
@@ -112,10 +118,14 @@ void KFFluidSimulationView::onAddFluid()
 
 void KFFluidSimulationView::onAddEmitter()
 {
-	emitterScene = new KFFluidEmitterScene(world->getNextSceneId(), "KFEmitter");
-	world->getScenes()->addScene(emitterScene);
+	this->emitterScene->clearParticles();
+	//this->boundaryScene->clearParticles();
 
-	emitterScene->addSource(Sphere3d(Vector3dd(0, 0, 0), 1.0));
+	this->emitterScene->setPressureCoe(pressureCoeView.getValue());
+	this->emitterScene->setViscosityCoe(viscosityCoeView.getValue());
+
+
+	emitterScene->addSource(Sphere3d(Vector3dd(0, 10, 0), 1.0));
 	emitterScene->setStartEnd(0, 100);
 	
 	solver.clear();

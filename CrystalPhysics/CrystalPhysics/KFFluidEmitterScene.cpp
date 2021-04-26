@@ -20,6 +20,7 @@ void KFFluidEmitterScene::emitParticle()
 {
 	for (const auto& s : sourcePositions) {
 		auto mp = new KFMacroParticle(s.getRadius(), s.getCenter());
+		mp->distributePoints(3, 3, 3, 1.0f);
 		addParticle(mp);
 	}
 }

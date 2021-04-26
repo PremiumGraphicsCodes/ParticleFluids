@@ -61,6 +61,7 @@ void KFFluidSolver::setupBoundaries()
 void KFFluidSolver::clear()
 {
 	fluids.clear();
+	emitters.clear();
 	csgBoundaries.clear();
 	maxTimeStep = 0.03f;
 	boundarySolver.clear();
@@ -92,6 +93,14 @@ void KFFluidSolver::simulate()
 {
 	std::vector<KFMacroParticle*> fluidParticles;
 
+	for (auto emitter : emitters) {
+		if (emitter->getStartStep() < currentTimeStep && currentTimeStep < emitter->getEndStep()) {
+			emitter->emitParticle();
+		}
+		const auto ps = emitter->getParticles();
+		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
+	}
+
 	for (auto fluid : fluids) {
 		const auto ps = fluid->getParticles();
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
@@ -102,6 +111,7 @@ void KFFluidSolver::simulate()
 	}
 
 	if (fluidParticles.empty()) {
+		currentTimeStep++;
 		return;
 	}
 
