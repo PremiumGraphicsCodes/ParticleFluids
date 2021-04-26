@@ -18,9 +18,11 @@ public:
 
 	void distributePoints(const int unum, const int vnum, const int wnum, const float weight);
 
-	void setScene(KFFluidScene* scene);
+	void setPressureCoe(const float c);
 
-	KFFluidScene* getScene() { return scene; }
+	void setViscosityCoe(const float c);
+
+	//KFFluidScene* getScene() { return scene; }
 
 	void reset(bool resetMicro);
 
@@ -73,7 +75,7 @@ private:
 	Math::Vector3df position;
 	Math::Vector3df velocity;
 	Math::Vector3df vorticity;
-	KFFluidScene* scene;
+	//KFFluidScene* scene;
 
 	//float selfMass;
 	float restMass;

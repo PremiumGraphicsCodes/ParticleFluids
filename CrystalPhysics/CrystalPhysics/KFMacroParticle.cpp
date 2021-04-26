@@ -45,7 +45,8 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 //					const auto weight = (1.0 - std::sqrt(d) * 2.0);
 //					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
 					const auto weight = gaussian.getValue(d);
-					points.push_back(new KFMicroParticle(this, v * 2.0, weight));
+					auto p = new KFMicroParticle(this, v * 2.0, weight);
+					points.push_back(p);
 					restMass += weight;
 				}
 			}
@@ -56,12 +57,17 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 //	selfMass = unum * vnum * wnum * weight;
 }
 
-void KFMacroParticle::setScene(KFFluidScene* scene)
+void KFMacroParticle::setPressureCoe(const float c)
 {
-	this->scene = scene;
 	for (auto p : points) {
-		p->setPressureCoe(scene->getPressure());
-		p->setViscosityCoe(scene->getViscosityCoe());
+		p->setPressureCoe(c);
+	}
+}
+
+void KFMacroParticle::setViscosityCoe(const float c)
+{
+	for (auto p : points) {
+		p->setViscosityCoe(c);
 	}
 }
 

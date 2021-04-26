@@ -4,18 +4,11 @@
 
 #include "KFMacroParticle.h"
 #include "KFFluidScenePresenter.h"
+#include "KFFluidEmitter.h"
 
 namespace Crystal {
 	namespace Physics {
 		class KFFluidScenePresenter;
-
-class KFFluidEmitter
-{
-
-private:
-	int startStep;
-	int endStep;
-};
 
 class KFFluidScene : public Scene::IParticleSystemScene
 {
@@ -31,7 +24,8 @@ public:
 	Scene::IPresenter* getPresenter() { return controller.get(); }
 
 	void addParticle(KFMacroParticle* mp) {
-		mp->setScene(this);
+		mp->setPressureCoe(this->pressureCoe);
+		mp->setViscosityCoe(this->viscosityCoe);
 		particles.push_back(mp);
 	}
 
@@ -61,11 +55,16 @@ public:
 
 	std::vector<Math::Vector3dd> getPositions() const override;
 
+	void addEmitter(const KFFluidEmitter& emitter) { this->emitters.push_back(emitter); }
+
+	void emitParticles(const int timeStep);
+
 private:
 	std::vector<KFMacroParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;
 	std::unique_ptr<KFFluidScenePresenter> controller;
+	std::vector<KFFluidEmitter> emitters;
 	bool isBoundary_;
 };
 

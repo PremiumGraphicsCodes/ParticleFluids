@@ -47,12 +47,7 @@ public:
 
 	void setupBoundaries();
 
-	void clear() {
-		fluids.clear();
-		csgBoundaries.clear();
-		maxTimeStep = 0.03f;
-		boundarySolver.clear();
-	}
+	void clear();
 
 	void addFluidScene(KFFluidScene* scene);
 
@@ -80,6 +75,7 @@ private:
 	std::list<CSGBoundaryScene*> csgBoundaries;
 	float effectLength = 2.0f;
 	float maxTimeStep = 0.03f;
+	int currentTimeStep = 0;
 };
 
 class KFFUpdater : public Scene::IAnimator

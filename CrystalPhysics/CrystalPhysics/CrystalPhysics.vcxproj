@@ -170,6 +170,7 @@
     <ClInclude Include="KFBoundaryParticle.h" />
     <ClInclude Include="KFBoundaryScene.h" />
     <ClInclude Include="KFBoundaryScenePresenter.h" />
+    <ClInclude Include="KFFluidEmitter.h" />
     <ClInclude Include="KFFluidScene.h" />
     <ClInclude Include="KFFluidScenePresenter.h" />
     <ClInclude Include="KFFluidSolver.h" />

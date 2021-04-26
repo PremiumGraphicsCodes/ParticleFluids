@@ -131,6 +131,9 @@
     <ClInclude Include="SPHSurfaceParticle.h">
       <Filter>SurfaceReconstruction</Filter>
     </ClInclude>
+    <ClInclude Include="KFFluidEmitter.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">

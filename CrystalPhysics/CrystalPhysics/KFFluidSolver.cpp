@@ -57,6 +57,16 @@ void KFFluidSolver::setupBoundaries()
 	this->boundarySolver.setup(effectLength);
 }
 
+void KFFluidSolver::clear()
+{
+	fluids.clear();
+	csgBoundaries.clear();
+	maxTimeStep = 0.03f;
+	boundarySolver.clear();
+	currentTimeStep = 0;
+}
+
+
 void KFFluidSolver::addFluidScene(KFFluidScene* scene)
 {
 	this->fluids.push_back(scene);
@@ -179,11 +189,7 @@ void KFFluidSolver::simulate()
 	std::cout << densityError << std::endl;
 
 
-	/*
-	for (auto fluid : fluids) {
-		fluid->getPresenter()->updateView();
-	}
-	*/
+	currentTimeStep++;
 }
 
 float KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& particles)
