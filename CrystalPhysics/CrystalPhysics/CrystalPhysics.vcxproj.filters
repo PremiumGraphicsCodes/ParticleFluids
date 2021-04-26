@@ -131,7 +131,7 @@
     <ClInclude Include="SPHSurfaceParticle.h">
       <Filter>SurfaceReconstruction</Filter>
     </ClInclude>
-    <ClInclude Include="KFFluidEmitter.h">
+    <ClInclude Include="KFFluidEmitterScene.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
   </ItemGroup>
@@ -232,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="SPHSurfaceParticle.cpp">
       <Filter>SurfaceReconstruction</Filter>
+    </ClCompile>
+    <ClCompile Include="KFFluidEmitterScene.cpp">
+      <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

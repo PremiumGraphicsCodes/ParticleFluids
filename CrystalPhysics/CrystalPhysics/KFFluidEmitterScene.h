@@ -1,38 +1,39 @@
 #pragma once
 
+#include <vector>
+#include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Scene/IParticleSystemScene.h"
-
-#include "KFMacroParticle.h"
-#include "KFFluidScenePresenter.h"
 
 namespace Crystal {
 	namespace Physics {
-		class KFFluidScenePresenter;
+		class KFMacroParticle;
 
-class KFFluidScene : public Scene::IParticleSystemScene
+class KFFluidEmitterScene : public Scene::IParticleSystemScene
 {
 public:
-	KFFluidScene(const int id, const std::string& name);
+	KFFluidEmitterScene(const int id, const std::string& name);
 
-	~KFFluidScene();
+	~KFFluidEmitterScene();
 
-	static constexpr auto Type = "KFFluid";
+	static constexpr auto Type = "KFFluidEmitter";
 
 	Scene::SceneType getType() const { return Type; }
 
-	Scene::IPresenter* getPresenter() { return controller.get(); }
-
-	void addParticle(KFMacroParticle* mp) {
-		mp->setPressureCoe(this->pressureCoe);
-		mp->setViscosityCoe(this->viscosityCoe);
-		particles.push_back(mp);
-	}
-
-	std::vector<KFMacroParticle*> getParticles() const { return particles; }
+	Scene::IPresenter* getPresenter() { return nullptr; }
 
 	void clearParticles();
 
 	Math::Box3d getBoundingBox() const override;
+
+	void addSource(const Math::Vector3df& p) { this->positions.push_back(p); }
+
+	void setStartEnd(const int startStep, const int endStep) { this->startEndStep = std::make_pair(startStep, endStep); }
+
+	//std::vector<Math::Vector3df> getPositions() const { return positions; }
+
+	int getStartStep() const { return startEndStep.first; }
+
+	int getEndStep() const { return startEndStep.second; }
 
 	void setPressureCoe(const float coe) { this->pressureCoe = coe; }
 
@@ -41,10 +42,6 @@ public:
 	void setViscosityCoe(const float coe) { this->viscosityCoe = coe; }
 
 	float getViscosityCoe() const { return this->viscosityCoe; }
-
-	bool isBoundary() const { return isBoundary_; }
-
-	void setBoundary(const bool isBoundary_) { this->isBoundary_ = isBoundary_; }
 
 	void translate(const Math::Vector3dd& v) override { ; }
 
@@ -56,12 +53,11 @@ public:
 
 private:
 	std::vector<KFMacroParticle*> particles;
+	std::vector<Math::Vector3df> positions;
+	std::pair<int,int> startEndStep;
 	float pressureCoe;
 	float viscosityCoe;
-	std::unique_ptr<KFFluidScenePresenter> controller;
-	bool isBoundary_;
 };
-
 
 	}
 }
