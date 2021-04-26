@@ -15,6 +15,7 @@ namespace Crystal {
 	namespace Physics {
 		class KFMacroParticle;
 		class KFFluidScene;
+		class KFEmitterScene;
 		class CSGBoundaryScene;
 
 class KFBoundarySolver
@@ -53,6 +54,8 @@ public:
 
 	void addBoundaryScene(KFFluidScene* scene);
 
+	void addEmitterScene(KFEmitterScene* scene);
+
 	void addBoundary(CSGBoundaryScene* scene) { this->csgBoundaries.push_back(scene); }
 
 	void setMaxTimeStep(const float maxTimeStep) { this->maxTimeStep = maxTimeStep; }
@@ -71,6 +74,7 @@ private:
 	//void solveBoundary(const std::vector<MacroParticle*>& particles);
 	
 	std::list<KFFluidScene*> fluids;
+	std::list<KFEmitterScene*> emitters;
 	KFBoundarySolver boundarySolver;
 	std::list<CSGBoundaryScene*> csgBoundaries;
 	float effectLength = 2.0f;

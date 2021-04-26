@@ -4,6 +4,7 @@
 #include "KFMicroParticle.h"
 
 #include "KFFluidScene.h"
+#include "KFFluidEmitterScene.h"
 #include "CSGBoundaryScene.h"
 
 #include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
@@ -70,6 +71,11 @@ void KFFluidSolver::clear()
 void KFFluidSolver::addFluidScene(KFFluidScene* scene)
 {
 	this->fluids.push_back(scene);
+}
+
+void KFFluidSolver::addEmitterScene(KFEmitterScene* scene)
+{
+	this->emitters.push_back(scene);
 }
 
 void KFFluidSolver::addBoundaryScene(KFFluidScene* scene)

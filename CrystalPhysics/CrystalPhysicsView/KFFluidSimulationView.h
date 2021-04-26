@@ -13,35 +13,45 @@
 namespace Crystal {
 	namespace Physics {
 		class KFFluidScene;
+		class KFFluidEmitterScene;
 	}
 	namespace UI {
 
-class KFFluidSimulationView : public IOkCancelView
+class KFFluidSimulationView : public IView
 {
 public:
 	KFFluidSimulationView(Scene::World* model, Canvas* canvas);
 
 private:
-	void onOk() override;
+	void onAddFluid();
 
-	void reset();
+	void onAddEmitter();
+
+	void onStart();
+	//void reset();
 
 private:
 	Physics::KFFluidScene* fluidScene;
 	Physics::KFFluidScene* boundaryScene;
+	Physics::KFFluidEmitterScene* emitterScene;
 	Physics::CSGBoundaryScene* csgScene;
-	Physics::KFFluidSolver simulator;
+	Physics::KFFluidSolver solver;
 	Physics::KFFUpdater updator;
 	CSGBoundaryView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;
 	FloatView timeStepView;
 	FloatView radiusView;
+	Button addFluidButton;
+	Button addEmitterButton;
 	Button startButton;
-	Button resetButton;
+	//Button resetButton;
 	int newId;
 
 	std::unique_ptr<Shape::PolygonMesh> mesh;
+
+	Scene::World* world;
+	Canvas* canvas;
 };
 
 	}
