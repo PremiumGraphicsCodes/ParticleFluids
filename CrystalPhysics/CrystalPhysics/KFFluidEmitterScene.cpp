@@ -27,6 +27,17 @@ void KFFluidEmitterScene::clearParticles()
 	particles.clear();
 }
 
+void KFFluidEmitterScene::emitParticle()
+{
+	for (const auto& s : sourcePositions) {
+		auto mp = new KFMacroParticle(s.getRadius(), s.getCenter());
+		mp->setPressureCoe(this->pressureCoe);
+		mp->setViscosityCoe(this->viscosityCoe);
+		particles.push_back(mp);
+	}
+}
+
+
 Box3d KFFluidEmitterScene::getBoundingBox() const
 {
 	if (particles.empty()) {

@@ -4,21 +4,26 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-KFFluidScene::KFFluidScene(const int id, const std::string& name) :
+IKFFluidScene::IKFFluidScene(const int id, const std::string& name) :
 	IParticleSystemScene(id, name),
 	pressureCoe(10000.0),
-	viscosityCoe(50.0),
-	isBoundary_(false)
+	viscosityCoe(50.0)
 {
 	this->controller = std::make_unique<KFFluidScenePresenter>(this);
 }
 
-KFFluidScene::~KFFluidScene()
+KFFluidScene::KFFluidScene(const int id, const std::string& name) :
+	IKFFluidScene(id, name),
+	isBoundary_(false)
+{
+}
+
+IKFFluidScene::~IKFFluidScene()
 {
 	clearParticles();
 }
 
-void KFFluidScene::clearParticles()
+void IKFFluidScene::clearParticles()
 {
 	for (auto p : particles) {
 		delete p;
@@ -26,7 +31,7 @@ void KFFluidScene::clearParticles()
 	particles.clear();
 }
 
-Box3d KFFluidScene::getBoundingBox() const
+Box3d IKFFluidScene::getBoundingBox() const
 {
 	if (particles.empty()) {
 		return Box3d::createDegeneratedBox();
@@ -38,7 +43,7 @@ Box3d KFFluidScene::getBoundingBox() const
 	return bb;
 }
 
-std::vector<Vector3dd> KFFluidScene::getPositions() const
+std::vector<Vector3dd> IKFFluidScene::getPositions() const
 {
 	std::vector<Vector3dd> positions;
 	for (auto p : particles) {

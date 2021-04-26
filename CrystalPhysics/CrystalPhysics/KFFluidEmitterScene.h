@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "../../Crystal/Math/Vector3d.h"
+#include "../../Crystal/Math/Sphere3d.h"
 #include "../../Crystal/Scene/IParticleSystemScene.h"
 
 namespace Crystal {
@@ -23,9 +24,11 @@ public:
 
 	void clearParticles();
 
+	void emitParticle();
+
 	Math::Box3d getBoundingBox() const override;
 
-	void addSource(const Math::Vector3df& p) { this->positions.push_back(p); }
+	void addSource(const Math::Sphere3d& s) { this->sourcePositions.push_back(s); }
 
 	void setStartEnd(const int startStep, const int endStep) { this->startEndStep = std::make_pair(startStep, endStep); }
 
@@ -53,7 +56,7 @@ public:
 
 private:
 	std::vector<KFMacroParticle*> particles;
-	std::vector<Math::Vector3df> positions;
+	std::vector<Math::Sphere3d> sourcePositions;
 	std::pair<int,int> startEndStep;
 	float pressureCoe;
 	float viscosityCoe;

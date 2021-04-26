@@ -73,7 +73,7 @@ void KFFluidSolver::addFluidScene(KFFluidScene* scene)
 	this->fluids.push_back(scene);
 }
 
-void KFFluidSolver::addEmitterScene(KFEmitterScene* scene)
+void KFFluidSolver::addEmitterScene(KFFluidEmitterScene* scene)
 {
 	this->emitters.push_back(scene);
 }

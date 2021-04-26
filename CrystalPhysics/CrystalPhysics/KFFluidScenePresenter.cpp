@@ -6,7 +6,7 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-KFFluidScenePresenter::KFFluidScenePresenter(KFFluidScene* model) :
+KFFluidScenePresenter::KFFluidScenePresenter(IKFFluidScene* model) :
 	model(model),
 	view(nullptr)
 {}

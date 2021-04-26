@@ -6,7 +6,7 @@
 #include "../CrystalPhysics/KFFluidEmitterScene.h"
 #include "../CrystalPhysics/KFFluidSolver.h"
 
-#include "../../CrystalViewer/Command/Command.h"
+#include "../../CrystalViewer/Command/CameraFitCommand.h"
 
 #include "../../CrystalViewer/Command/Public/ShaderBuildLabels.h"
 #include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
@@ -75,9 +75,8 @@ void KFFluidSimulationView::onStart()
 	world->addAnimation(&solver);
 	world->addAnimation(&updator);
 
-	Command::Command command;
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(world);
+	CameraFitCommand cameraCommand;
+	cameraCommand.execute(world);
 }
 
 void KFFluidSimulationView::onAddFluid()
@@ -106,8 +105,6 @@ void KFFluidSimulationView::onAddFluid()
 	solver.clear();
 	solver.addFluidScene(fluidScene);
 	solver.addBoundary(csgScene);
-	//simulator.addBoundaryScene(boundaryScene);
-	//simulator.addBoundary(this->boundaryView.getBoundary());
 
 	solver.setMaxTimeStep(this->timeStepView.getValue());
 	solver.setupBoundaries();
@@ -118,5 +115,14 @@ void KFFluidSimulationView::onAddEmitter()
 	emitterScene = new KFFluidEmitterScene(world->getNextSceneId(), "KFEmitter");
 	world->getScenes()->addScene(emitterScene);
 
-	//this->emitterScene = new KFFluidEmitterScene();
+	emitterScene->addSource(Sphere3d(Vector3dd(0, 0, 0), 1.0));
+	emitterScene->setStartEnd(0, 100);
+	
+	solver.clear();
+	solver.addEmitterScene(emitterScene);
+
+	solver.addBoundary(csgScene);
+
+	solver.setMaxTimeStep(this->timeStepView.getValue());
+	solver.setupBoundaries();
 }

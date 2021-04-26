@@ -9,18 +9,12 @@ namespace Crystal {
 	namespace Physics {
 		class KFFluidScenePresenter;
 
-class KFFluidScene : public Scene::IParticleSystemScene
+class IKFFluidScene : public Scene::IParticleSystemScene
 {
 public:
-	KFFluidScene(const int id, const std::string& name);
+	IKFFluidScene(const int id, const std::string& name);
 
-	~KFFluidScene();
-
-	static constexpr auto Type = "KFFluid";
-
-	Scene::SceneType getType() const { return Type; }
-
-	Scene::IPresenter* getPresenter() { return controller.get(); }
+	virtual ~IKFFluidScene();
 
 	void addParticle(KFMacroParticle* mp) {
 		mp->setPressureCoe(this->pressureCoe);
@@ -42,9 +36,6 @@ public:
 
 	float getViscosityCoe() const { return this->viscosityCoe; }
 
-	bool isBoundary() const { return isBoundary_; }
-
-	void setBoundary(const bool isBoundary_) { this->isBoundary_ = isBoundary_; }
 
 	void translate(const Math::Vector3dd& v) override { ; }
 
@@ -54,11 +45,31 @@ public:
 
 	std::vector<Math::Vector3dd> getPositions() const override;
 
+	Scene::IPresenter* getPresenter() { return controller.get(); }
+
 private:
+	std::unique_ptr<KFFluidScenePresenter> controller;
 	std::vector<KFMacroParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;
-	std::unique_ptr<KFFluidScenePresenter> controller;
+};
+
+class KFFluidScene : public IKFFluidScene
+{
+public:
+	KFFluidScene(const int id, const std::string& name);
+
+	~KFFluidScene() = default;
+
+	static constexpr auto Type = "KFFluid";
+
+	Scene::SceneType getType() const { return Type; }
+
+	bool isBoundary() const { return isBoundary_; }
+
+	void setBoundary(const bool isBoundary_) { this->isBoundary_ = isBoundary_; }
+
+private:
 	bool isBoundary_;
 };
 
