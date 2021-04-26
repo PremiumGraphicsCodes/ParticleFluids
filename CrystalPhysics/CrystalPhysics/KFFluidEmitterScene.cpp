@@ -7,11 +7,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
 KFFluidEmitterScene::KFFluidEmitterScene(const int id, const std::string& name) :
-	IParticleSystemScene(id, name),
-	pressureCoe(10000.0),
-	viscosityCoe(50.0)
+	IKFFluidScene(id, name)
 {
-	//this->controller = std::make_unique<KFFluidScenePresenter>(this);
 }
 
 KFFluidEmitterScene::~KFFluidEmitterScene()
@@ -19,42 +16,10 @@ KFFluidEmitterScene::~KFFluidEmitterScene()
 	clearParticles();
 }
 
-void KFFluidEmitterScene::clearParticles()
-{
-	for (auto p : particles) {
-		delete p;
-	}
-	particles.clear();
-}
-
 void KFFluidEmitterScene::emitParticle()
 {
 	for (const auto& s : sourcePositions) {
 		auto mp = new KFMacroParticle(s.getRadius(), s.getCenter());
-		mp->setPressureCoe(this->pressureCoe);
-		mp->setViscosityCoe(this->viscosityCoe);
-		particles.push_back(mp);
+		addParticle(mp);
 	}
-}
-
-
-Box3d KFFluidEmitterScene::getBoundingBox() const
-{
-	if (particles.empty()) {
-		return Box3d::createDegeneratedBox();
-	}
-	Box3d bb(particles.front()->getPosition());
-	for (auto p : particles) {
-		bb.add(p->getPosition());
-	}
-	return bb;
-}
-
-std::vector<Vector3dd> KFFluidEmitterScene::getPositions() const
-{
-	std::vector<Vector3dd> positions;
-	for (auto p : particles) {
-		positions.push_back(p->getPosition());
-	}
-	return positions;
 }
