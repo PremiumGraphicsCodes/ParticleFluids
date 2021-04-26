@@ -9,6 +9,14 @@ namespace Crystal {
 	namespace Physics {
 		class KFFluidScenePresenter;
 
+class KFFluidEmitter
+{
+
+private:
+	int startStep;
+	int endStep;
+};
+
 class KFFluidScene : public Scene::IParticleSystemScene
 {
 public:
