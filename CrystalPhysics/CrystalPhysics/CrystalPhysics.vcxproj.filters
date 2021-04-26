@@ -134,6 +134,9 @@
     <ClInclude Include="KFFluidEmitterScene.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="IKFFluidScene.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -234,6 +237,9 @@
       <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
     <ClCompile Include="KFFluidEmitterScene.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="IKFFluidScene.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>
