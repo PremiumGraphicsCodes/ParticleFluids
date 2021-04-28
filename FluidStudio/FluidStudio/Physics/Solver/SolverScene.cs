@@ -14,13 +14,13 @@ namespace FluidStudio.Physics
     {
         public string Name { get; set; } = "Solver01";
 
-        private List<FluidScene> fluids { get; }
+        private readonly List<FluidScene> fluids
             = new List<FluidScene>();
 
-        private List<EmitterScene> emitters { get; }
+        private readonly List<EmitterScene> emitters
             = new List<EmitterScene>();
 
-        private List<CSGBoundaryScene> boundaries { get; }
+        private readonly List<CSGBoundaryScene> boundaries
             = new List<CSGBoundaryScene>();
 
         public IEnumerable<FluidScene> Fluids { get { return fluids; } }

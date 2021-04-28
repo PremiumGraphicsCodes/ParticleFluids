@@ -1,4 +1,5 @@
 ﻿using FluidStudio.Physics;
+using FluidStudio.Physics.Fluid;
 using PG.Core.Math;
 using System.Collections.Specialized;
 using System.Xml.Linq;
@@ -23,6 +24,10 @@ namespace FluidStudio.FileIO
         public const string IsBoundarylabel = "IsBoundary";
         public const string DoExportVDBLabel = "ExportVDB";
         public const string ExportDirectory = "ExportDirectory";
+
+        public const string EmitterSceneLabel = "EmitterScene";
+        public const string StartStepLabel = "StartStep";
+        public const string EndStepLabel = "EndStep";
 
         public const string CSGBoundarySceneLabel = "CSGBoundaryScene";
         public const string Box3dLabel = "Box3d";
@@ -67,6 +72,10 @@ namespace FluidStudio.FileIO
             {
                 root.Add(CreateElement(fluid));
             }
+            foreach(var emitter in scene.Emitters)
+            {
+                root.Add(CreateElement(emitter));
+            }
             foreach(var boundary in scene.Boundaries)
             {
                 root.Add(CreateElement(FSProjFile.CSGBoundarySceneLabel, boundary));
@@ -86,6 +95,23 @@ namespace FluidStudio.FileIO
             e.Add(new XElement(FSProjFile.IsBoundarylabel, fluid.IsBoundary));
             e.Add(new XElement(FSProjFile.DoExportVDBLabel, fluid.ExportModel.DoExportVDB));
             e.Add(new XElement(FSProjFile.ExportDirectory, fluid.ExportModel.VDBExportDirectory));
+            return e;
+        }
+
+        private XElement CreateElement(EmitterScene emitter)
+        {
+            var e = new XElement(FSProjFile.EmitterSceneLabel);
+            e.Add(new XAttribute(FSProjFile.NameLabel, emitter.Name));
+            e.Add(new XElement(FSProjFile.ParticlesFilePathLabel, emitter.ParticleFilePath));
+            e.Add(new XElement(FSProjFile.ParticleRadiusLabel, emitter.ParticleRadius));
+            e.Add(new XElement(FSProjFile.DensityLabel, emitter.Density));
+            e.Add(new XElement(FSProjFile.StiffnessLabel, emitter.Stiffness));
+            e.Add(new XElement(FSProjFile.ViscosityLabel, emitter.Viscosity));
+            e.Add(new XElement(FSProjFile.StartStepLabel, emitter.StartTimeStep));
+            e.Add(new XElement(FSProjFile.EndStepLabel, emitter.EndTimeStep));
+//            e.Add(new XElement(FSProjFile.IsBoundarylabel, fluid.IsBoundary));
+            e.Add(new XElement(FSProjFile.DoExportVDBLabel, emitter.ExportModel.DoExportVDB));
+            e.Add(new XElement(FSProjFile.ExportDirectory, emitter.ExportModel.VDBExportDirectory));
             return e;
         }
 

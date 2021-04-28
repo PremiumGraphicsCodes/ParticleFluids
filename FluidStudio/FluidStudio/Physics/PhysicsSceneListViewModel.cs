@@ -1,4 +1,5 @@
-﻿using PG.Scene;
+﻿using FluidStudio.Physics.Fluid;
+using PG.Scene;
 using Prism.Regions;
 using Reactive.Bindings;
 
@@ -36,6 +37,10 @@ namespace FluidStudio.Physics
             else if (selectedItem is FluidScene)
             {
                 NavigateView("FluidUpdate", parameters);
+            }
+            else if(selectedItem is EmitterScene)
+            {
+                NavigateView("EmitterUpdate", parameters);
             }
             else if (selectedItem is CSGBoundaryScene)
             {

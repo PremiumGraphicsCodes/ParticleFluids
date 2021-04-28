@@ -1,4 +1,5 @@
-﻿using Reactive.Bindings;
+﻿using FluidStudio.Physics.Fluid;
+using Reactive.Bindings;
 
 namespace FluidStudio.Physics
 {
@@ -8,6 +9,7 @@ namespace FluidStudio.Physics
     {
         Solver,
         Fluid,
+        Emitter,
         CSGBoundary,
         MeshBoundary,
     };
@@ -41,6 +43,10 @@ namespace FluidStudio.Physics
             if (scene is FluidScene)
             {
                 this.SceneType = PhysicsSceneType.Fluid;
+            }
+            else if(scene is EmitterScene)
+            {
+                this.SceneType = PhysicsSceneType.Emitter;
             }
             else if(scene is CSGBoundaryScene)
             {
