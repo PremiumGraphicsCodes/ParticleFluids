@@ -4,8 +4,6 @@
 
 #include "../CrystalPhysics/KFFluidSolver.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 using namespace Crystal::Scene;

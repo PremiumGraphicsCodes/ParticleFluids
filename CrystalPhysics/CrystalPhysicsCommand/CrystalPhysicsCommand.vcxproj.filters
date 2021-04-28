@@ -33,6 +33,9 @@
     <ClCompile Include="SPHSurfaceConstructionCommand.cpp">
       <Filter>SurfaceConstruction</Filter>
     </ClCompile>
+    <ClCompile Include="EmitterSceneCreateCommand.cpp">
+      <Filter>EmitterScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -97,6 +100,12 @@
     <ClInclude Include="PublicLabels\SPHSurfaceConstructionLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
+    <ClInclude Include="EmitterSceneCreateCommand.h">
+      <Filter>EmitterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\EmitterSceneCreateLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PublicLabels">
@@ -116,6 +125,9 @@
     </Filter>
     <Filter Include="SurfaceConstruction">
       <UniqueIdentifier>{0e5b995a-a21a-4fa1-a68a-79215cf229ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EmitterScene">
+      <UniqueIdentifier>{e2569788-f3f2-4e61-bc12-e4992cec8ddc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
