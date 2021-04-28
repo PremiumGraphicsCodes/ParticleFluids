@@ -40,9 +40,17 @@ namespace FluidStudio.Physics
                 {
                     canvas.SendShader(world, fluid.Id);
                 }
+                foreach(var emitter in solver.Emitters)
+                {
+                    canvas.SendShader(world, emitter.Id);
+                }
                 foreach (var fluid in solver.Fluids)
                 {
                     fluid.ExportFiles(vdb, TimeStep.Value);
+                }
+                foreach(var emitter in solver.Emitters)
+                {
+                    emitter.ExportFiles(vdb, TimeStep.Value);
                 }
                 canvas.Render();
             }

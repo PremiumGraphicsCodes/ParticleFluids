@@ -162,6 +162,7 @@ namespace FluidStudio.Physics
             var command = new PhysicsCommand(UpdateLabels.CommandNameLabel);
             command.SetArg(UpdateLabels.IdLabel, Id);
             command.SetArg(UpdateLabels.FluidSceneIdsLabel, fluidIds);
+            command.SetArg(UpdateLabels.EmitterSceneIdsLabel, emitterIds);
             command.SetArg(UpdateLabels.CSGBoundarySceneIdsLabel, csgIds);
             command.SetArg(UpdateLabels.MeshBoundarySceneIdsLabel, new List<int>());
             command.SetArg(UpdateLabels.EffectLengthLabel, EffectLength);
