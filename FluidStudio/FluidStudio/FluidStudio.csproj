@@ -126,6 +126,7 @@
       <DependentUpon>CSGBoundarySceneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Physics\CSGBoundary\CSGBoundarySceneViewModel.cs" />
+    <Compile Include="Physics\Fluid\EmitterScene.cs" />
     <Compile Include="Physics\Fluid\FluidFileExportModel.cs" />
     <Compile Include="Physics\Fluid\FluidFileExportView.xaml.cs">
       <DependentUpon>FluidFileExportView.xaml</DependentUpon>

@@ -13,6 +13,26 @@ namespace PG {
 		public const string NameLabel = "Name";
 	}
 
+	public class EmitterSceneCreateLabels
+	{
+		public const string CommandNameLabel = "EmitterSceneCreateCommand";
+		public const string NewIdLabel = "NewId";
+	}
+
+	public class EmitterSceneUpdateLabels
+	{
+		public const string CommandNameLabel = "EmitterSceneUpdateCommand";
+		public const string IdLabel = "Id";
+		public const string ParticleSystemIdLabel = "ParticleSystemId";
+		public const string ParticleRadiusLabel = "ParticleRadius";
+		public const string StiffnessLabel = "Stiffness";
+		public const string ViscosityLabel = "Viscosity";
+		public const string DensityLabel = "Density";
+		public const string NameLabel = "Name";
+		public const string StartStepLabel = "StartStep";
+		public const string EndStepLabel = "EndStep";
+	}
+
 	public class FluidSceneCreateLabels
 	{
 		public const string CommandNameLabel = "FluidSceneCreateCommand";
@@ -70,6 +90,7 @@ namespace PG {
 		public const string CommandNameLabel = "PhysicsSolverUpdateCommand";
 		public const string IdLabel = "Id";
 		public const string FluidSceneIdsLabel = "FluidSceneIds";
+		public const string EmitterSceneIdsLabel = "EmitterSceneIds";
 		public const string CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
 		public const string MeshBoundarySceneIdsLabel = "MeshBoundarySceneIds";
 		public const string EffectLengthLabel = "EffectLength";
