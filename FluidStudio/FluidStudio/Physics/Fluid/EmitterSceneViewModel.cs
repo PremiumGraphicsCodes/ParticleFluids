@@ -1,13 +1,12 @@
-﻿using FluidStudio.Physics.Fluid;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Prism.Regions;
 using Reactive.Bindings;
 
-namespace FluidStudio.Physics
+namespace FluidStudio.Physics.Fluid
 {
-    public class FluidSceneViewModel : INavigationAware
+    class EmitterSceneViewModel : INavigationAware
     {
         public ReactiveProperty<string> Name { get; }
             = new ReactiveProperty<string>("Fluid01");
@@ -30,8 +29,11 @@ namespace FluidStudio.Physics
         public ReactiveProperty<float> Viscosity { get; }
             = new ReactiveProperty<float>(1.0f);
 
-        public ReactiveProperty<bool> IsBoundary { get; }
-            = new ReactiveProperty<bool>(false);
+        public ReactiveProperty<int> StartTimeStep { get; }
+            = new ReactiveProperty<int>(0);
+
+        public ReactiveProperty<int> EndTimeStep { get; }
+            = new ReactiveProperty<int>(100);
 
         public FluidFileExportViewModel ExportViewModel { get; }
 
@@ -41,7 +43,7 @@ namespace FluidStudio.Physics
         public ReactiveProperty<bool> DoUseRelativePath { get; }
             = new ReactiveProperty<bool>(false);
 
-        private FluidScene scene;
+        private EmitterScene scene;
 
         private readonly SceneList world;
 
@@ -49,7 +51,7 @@ namespace FluidStudio.Physics
 
         private readonly Canvas3d canvas;
 
-        public FluidSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
+        public EmitterSceneViewModel(MainModel model, SceneList world, Canvas3d canvas)
         {
             this.ExportViewModel = new FluidFileExportViewModel(model.FileIOModel);
             this.mainModel = model;
@@ -66,7 +68,8 @@ namespace FluidStudio.Physics
                 Title = "Import",
                 Filter = "OpenVDBFile(*.vdb)|*.vdb|AllFiles(*.*)|*.*",
             };
-            if (dialog.ShowDialog() == true) {
+            if (dialog.ShowDialog() == true)
+            {
                 var filename = dialog.FileName;
                 if (DoUseRelativePath.Value)
                 {
@@ -86,7 +89,7 @@ namespace FluidStudio.Physics
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            var item = navigationContext.Parameters["Scene"] as FluidScene;
+            var item = navigationContext.Parameters["Scene"] as EmitterScene;
             if (item == null)
             {
                 return;
@@ -98,8 +101,11 @@ namespace FluidStudio.Physics
             this.Density.Value = item.Density;
             this.Stiffness.Value = item.Stiffness;
             this.Viscosity.Value = item.Viscosity;
-            this.IsBoundary.Value = item.IsBoundary;
+            this.StartTimeStep.Value = item.StartTimeStep;
+            this.EndTimeStep.Value = item.EndTimeStep;
+            //this.IsBoundary.Value = item.IsBoundary;
             this.ExportViewModel.Model = item.ExportModel;
+//            this.
             this.scene = item;
         }
 
@@ -124,8 +130,10 @@ namespace FluidStudio.Physics
             this.scene.Stiffness = Stiffness.Value;
             this.scene.Viscosity = Viscosity.Value;
             this.scene.Name = Name.Value;
-            this.scene.IsBoundary= IsBoundary.Value;
+            this.scene.StartTimeStep = StartTimeStep.Value;
+            this.scene.EndTimeStep = EndTimeStep.Value;
             this.scene.Send();
         }
+
     }
 }
