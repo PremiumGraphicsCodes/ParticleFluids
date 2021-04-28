@@ -23,6 +23,7 @@ EmitterSceneUpdateCommand::Args::Args() :
 	viscosity(::ViscosityLabel, 1.0f),
 	startStep(::StartStepLabel, 0),
 	endStep(::EndStepLabel, 100),
+	interval(::IntervalLabel, 10),
 	name(::NameLabel, std::string("FluidScene"))
 {
 	add(&id);
@@ -33,6 +34,7 @@ EmitterSceneUpdateCommand::Args::Args() :
 	add(&viscosity);
 	add(&startStep);
 	add(&endStep);
+	add(&interval);
 	add(&name);
 }
 
@@ -46,16 +48,18 @@ EmitterSceneUpdateCommand::EmitterSceneUpdateCommand() :
 
 bool EmitterSceneUpdateCommand::execute(World* world)
 {
-	auto fluidScene = world->getScenes()->findSceneById<KFFluidEmitterScene*>(args.id.getValue());
+	auto emitterScene = world->getScenes()->findSceneById<KFFluidEmitterScene*>(args.id.getValue());
 
-	fluidScene->clearParticles();
-	fluidScene->clear();
+	emitterScene->clearSources();
+	emitterScene->clearParticles();
+	emitterScene->clear();
 
-	fluidScene->setName(args.name.getValue());
-	fluidScene->setPressureCoe(args.stiffness.getValue());
-	fluidScene->setViscosityCoe(args.viscosity.getValue());
+	emitterScene->setName(args.name.getValue());
+	emitterScene->setPressureCoe(args.stiffness.getValue());
+	emitterScene->setViscosityCoe(args.viscosity.getValue());
 
-	fluidScene->setStartEnd(args.startStep.getValue(), args.endStep.getValue());
+	emitterScene->setStartEnd(args.startStep.getValue(), args.endStep.getValue());
+	emitterScene->setInterval(args.interval.getValue());
 
 	const auto psId = args.particleSystemId.getValue();
 	if (psId > 0) {
@@ -67,7 +71,7 @@ bool EmitterSceneUpdateCommand::execute(World* world)
 		const auto radius = args.particleRadius.getValue();
 		const auto density = args.density.getValue();
 		for (const auto& p : positions) {
-			fluidScene->addSource(Sphere3d(p, radius));
+			emitterScene->addSource(Sphere3d(p, radius));
 		}
 	}
 

@@ -45,6 +45,10 @@
             <TextBlock Text="EndStep"/>
             <TextBox Text="{Binding EndTimeStep.Value}" MinWidth="50"/>
         </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Interval"/>
+            <TextBox Text="{Binding Interval.Value}" MinWidth="50"/>
+        </StackPanel>
         <GroupBox Header="VDBExport">
             <local:FluidFileExportView DataContext="{Binding ExportViewModel}"/>
         </GroupBox>

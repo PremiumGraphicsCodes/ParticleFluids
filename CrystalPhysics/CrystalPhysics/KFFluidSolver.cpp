@@ -94,9 +94,7 @@ void KFFluidSolver::simulate()
 	std::vector<KFMacroParticle*> fluidParticles;
 
 	for (auto emitter : emitters) {
-		if (emitter->getStartStep() < currentTimeStep && currentTimeStep < emitter->getEndStep()) {
-			emitter->emitParticle();
-		}
+		emitter->emitParticle(currentTimeStep);
 		const auto ps = emitter->getParticles();
 		fluidParticles.insert(fluidParticles.end(), ps.begin(), ps.end());
 	}

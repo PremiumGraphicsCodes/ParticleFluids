@@ -31,6 +31,7 @@ namespace PG {
 		public const string NameLabel = "Name";
 		public const string StartStepLabel = "StartStep";
 		public const string EndStepLabel = "EndStep";
+		public const string IntervalLabel = "Interval";
 	}
 
 	public class FluidSceneCreateLabels

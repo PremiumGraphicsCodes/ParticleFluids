@@ -28,6 +28,7 @@ namespace FluidStudio.FileIO
         public const string EmitterSceneLabel = "EmitterScene";
         public const string StartStepLabel = "StartStep";
         public const string EndStepLabel = "EndStep";
+        public const string IntervalLabel = "Interval";
 
         public const string CSGBoundarySceneLabel = "CSGBoundaryScene";
         public const string Box3dLabel = "Box3d";
@@ -109,7 +110,7 @@ namespace FluidStudio.FileIO
             e.Add(new XElement(FSProjFile.ViscosityLabel, emitter.Viscosity));
             e.Add(new XElement(FSProjFile.StartStepLabel, emitter.StartTimeStep));
             e.Add(new XElement(FSProjFile.EndStepLabel, emitter.EndTimeStep));
-//            e.Add(new XElement(FSProjFile.IsBoundarylabel, fluid.IsBoundary));
+            e.Add(new XElement(FSProjFile.IntervalLabel, emitter.Interval));
             e.Add(new XElement(FSProjFile.DoExportVDBLabel, emitter.ExportModel.DoExportVDB));
             e.Add(new XElement(FSProjFile.ExportDirectory, emitter.ExportModel.VDBExportDirectory));
             return e;

@@ -67,6 +67,12 @@ namespace FluidStudio.Physics
                     fluid.Send();
                     canvas.SendShader(world, fluid.Id);
                 }
+                foreach(var emitter in ps.Emitters)
+                {
+                    emitter.SetParticlesFromFile(vdb, ioModel, canvas, emitter.ParticleFilePath, emitter.ParticleRadius);
+                    emitter.Send();
+                    canvas.SendShader(world, emitter.Id);
+                }
                 ps.Send();
                 canvas.Render();
             }

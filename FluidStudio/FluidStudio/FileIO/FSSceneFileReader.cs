@@ -99,6 +99,7 @@ namespace FluidStudio.FileIO
             var exportDirectory = elem.Element(FSProjFile.ExportDirectory).Value;
             var startTimeStep = int.Parse(elem.Element(FSProjFile.StartStepLabel).Value);
             var endTimeStep = int.Parse(elem.Element(FSProjFile.EndStepLabel).Value);
+            var interval = int.Parse(elem.Element(FSProjFile.IntervalLabel).Value);
             var emitterScene = new EmitterScene(model.Scenes, parent, model.VDBModel, canvas);
             emitterScene.SetParticlesFromFile(model.VDBModel, model.FileIOModel, canvas, particlesFilePath, radius);
 
@@ -109,6 +110,7 @@ namespace FluidStudio.FileIO
             emitterScene.Name = name;
             emitterScene.StartTimeStep = startTimeStep;
             emitterScene.EndTimeStep = endTimeStep;
+            emitterScene.Interval = interval;
             emitterScene.ExportModel.DoExportVDB = doExportVDB;
             emitterScene.ExportModel.VDBExportDirectory = exportDirectory;
             emitterScene.Send();
@@ -117,21 +119,6 @@ namespace FluidStudio.FileIO
             canvas.Render();
 
             return emitterScene;
-        /*
-            var e = new XElement(FSProjFile.EmitterSceneLabel);
-            e.Add(new XAttribute(FSProjFile.NameLabel, emitter.Name));
-            e.Add(new XElement(FSProjFile.ParticlesFilePathLabel, emitter.ParticleFilePath));
-            e.Add(new XElement(FSProjFile.ParticleRadiusLabel, emitter.ParticleRadius));
-            e.Add(new XElement(FSProjFile.DensityLabel, emitter.Density));
-            e.Add(new XElement(FSProjFile.StiffnessLabel, emitter.Stiffness));
-            e.Add(new XElement(FSProjFile.ViscosityLabel, emitter.Viscosity));
-            e.Add(new XElement(FSProjFile.StartStepLabel, emitter.StartTimeStep));
-            e.Add(new XElement(FSProjFile.EndStepLabel, emitter.EndTimeStep));
-            //            e.Add(new XElement(FSProjFile.IsBoundarylabel, fluid.IsBoundary));
-            e.Add(new XElement(FSProjFile.DoExportVDBLabel, emitter.ExportModel.DoExportVDB));
-            e.Add(new XElement(FSProjFile.ExportDirectory, emitter.ExportModel.VDBExportDirectory));
-            return e;
-        */
         }
 
         private CSGBoundaryScene ReadCSGBoundaryScene(MainModel model, Canvas3d canvas, XElement elem, SolverScene parent)

@@ -11,4 +11,5 @@ namespace {
 	PublicLabel NameLabel = "Name";
 	PublicLabel StartStepLabel = "StartStep";
 	PublicLabel EndStepLabel = "EndStep";
+	PublicLabel IntervalLabel = "Interval";
 }

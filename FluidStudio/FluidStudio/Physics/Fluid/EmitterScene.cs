@@ -1,11 +1,7 @@
 ﻿using FluidStudio.VDB;
 using PG.Control.OpenGL;
 using PG.Scene;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CreateLabels = PG.EmitterSceneCreateLabels;
 using UpdateLabels = PG.EmitterSceneUpdateLabels;
 
@@ -35,6 +31,8 @@ namespace FluidStudio.Physics.Fluid
         public int StartTimeStep { get; set; } = 0;
 
         public int EndTimeStep { get; set; } = 100;
+
+        public int Interval { get; set; } = 10;
 
         public FluidFileExportModel ExportModel { get; }
             = new FluidFileExportModel();
@@ -93,6 +91,7 @@ namespace FluidStudio.Physics.Fluid
             //command.SetArg(UpdateLabels.IsBoundary, IsBoundary);
             command.SetArg(UpdateLabels.StartStepLabel, StartTimeStep);
             command.SetArg(UpdateLabels.EndStepLabel, EndTimeStep);
+            command.SetArg(UpdateLabels.IntervalLabel, Interval);
             command.SetArg(UpdateLabels.NameLabel, Name);
             command.Execute(scenes.Adapter);
         }

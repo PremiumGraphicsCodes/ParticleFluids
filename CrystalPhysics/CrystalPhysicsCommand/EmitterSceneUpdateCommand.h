@@ -20,6 +20,7 @@ public:
 
 		Command::Arg<int> startStep;
 		Command::Arg<int> endStep;
+		Command::Arg<int> interval;
 
 		Args();
 	};

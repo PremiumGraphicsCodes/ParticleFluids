@@ -7,7 +7,8 @@ using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
 KFFluidEmitterScene::KFFluidEmitterScene(const int id, const std::string& name) :
-	IKFFluidScene(id, name)
+	IKFFluidScene(id, name),
+	interval(10)
 {
 }
 
@@ -16,11 +17,18 @@ KFFluidEmitterScene::~KFFluidEmitterScene()
 	clearParticles();
 }
 
-void KFFluidEmitterScene::emitParticle()
+void KFFluidEmitterScene::emitParticle(const int timeStep)
 {
-	for (const auto& s : sourcePositions) {
-		auto mp = new KFMacroParticle(s.getRadius(), s.getCenter());
-		mp->distributePoints(3, 3, 3, 1.0f);
-		addParticle(mp);
+	const auto start = getStartStep();
+	const auto end = getEndStep();
+	if (start <= timeStep && timeStep <= end) {
+		const auto elapsed = timeStep - start;
+		if (elapsed % interval == 0) {
+			for (const auto& s : sourcePositions) {
+				auto mp = new KFMacroParticle(s.getRadius(), s.getCenter());
+				mp->distributePoints(3, 3, 3, 1.0f);
+				addParticle(mp);
+			}
+		}
 	}
 }

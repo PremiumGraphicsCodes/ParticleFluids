@@ -35,6 +35,9 @@ namespace FluidStudio.Physics.Fluid
         public ReactiveProperty<int> EndTimeStep { get; }
             = new ReactiveProperty<int>(100);
 
+        public ReactiveProperty<int> Interval { get; }
+            = new ReactiveProperty<int>(10);
+
         public FluidFileExportViewModel ExportViewModel { get; }
 
         public ReactiveCommand UpdateCommand { get; }
@@ -103,6 +106,7 @@ namespace FluidStudio.Physics.Fluid
             this.Viscosity.Value = item.Viscosity;
             this.StartTimeStep.Value = item.StartTimeStep;
             this.EndTimeStep.Value = item.EndTimeStep;
+            this.Interval.Value = item.Interval;
             //this.IsBoundary.Value = item.IsBoundary;
             this.ExportViewModel.Model = item.ExportModel;
 //            this.
@@ -132,6 +136,7 @@ namespace FluidStudio.Physics.Fluid
             this.scene.Name = Name.Value;
             this.scene.StartTimeStep = StartTimeStep.Value;
             this.scene.EndTimeStep = EndTimeStep.Value;
+            this.scene.Interval = Interval.Value;
             this.scene.Send();
         }
 
