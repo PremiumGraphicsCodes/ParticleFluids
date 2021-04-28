@@ -127,6 +127,9 @@
     </Compile>
     <Compile Include="Physics\CSGBoundary\CSGBoundarySceneViewModel.cs" />
     <Compile Include="Physics\Fluid\EmitterScene.cs" />
+    <Compile Include="Physics\Fluid\EmitterSceneView.xaml.cs">
+      <DependentUpon>EmitterSceneView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Physics\Fluid\EmitterSceneViewModel.cs" />
     <Compile Include="Physics\Fluid\FluidFileExportModel.cs" />
     <Compile Include="Physics\Fluid\FluidFileExportView.xaml.cs">
@@ -230,6 +233,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Physics\CSGBoundary\CSGBoundarySceneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Physics\Fluid\EmitterSceneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

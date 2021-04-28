@@ -35,6 +35,7 @@
             <RibbonTab Header="Simulation">
                 <RibbonGroup Header="Primitive">
                     <RibbonButton Label="Fluid" Command="{Binding FluidSceneCreateCommand}"/>
+                    <RibbonButton Label="Emitter" Command="{Binding EmitterSceneCreateCommand}"/>
                     <RibbonButton Label="Boundary" Command="{Binding BoundarySceneCreateCommand}"/>
                 </RibbonGroup>
             </RibbonTab>

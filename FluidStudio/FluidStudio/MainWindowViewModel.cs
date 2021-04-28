@@ -1,4 +1,5 @@
 ﻿using FluidStudio.Physics;
+using FluidStudio.Physics.Fluid;
 using FluidStudio.Scene;
 using PG.Control.OpenGL;
 using PG.Core.Math;
@@ -36,6 +37,9 @@ namespace FluidStudio
         public ReactiveCommand FluidSceneCreateCommand { get; }
             = new ReactiveCommand();
 
+        public ReactiveCommand EmitterSceneCreateCommand { get; }
+            = new ReactiveCommand();
+
         public ReactiveCommand BoundarySceneCreateCommand { get; }
             = new ReactiveCommand();
 
@@ -58,6 +62,7 @@ namespace FluidStudio
             this.PhysicsSceneListViewModel = new PhysicsSceneListViewModel(regionManager, world, mainModel);
             this.TimeLineViewModel = new TimeLineViewModel(mainModel, world, Canvas);
             this.FluidSceneCreateCommand.Subscribe(OnCreateFluidScene);
+            this.EmitterSceneCreateCommand.Subscribe(OnCreateEmitterScene);
             this.BoundarySceneCreateCommand.Subscribe(OnCreateBoundaryScene);
         }
 
@@ -96,6 +101,24 @@ namespace FluidStudio
             Canvas.Render();
             //mainModel.PhysicsModel.Solvers.Remove(solver);
             //mainModel.PhysicsModel.Solvers.Add(solver);
+        }
+
+        private void OnCreateEmitterScene()
+        {
+            var solver = mainModel.PhysicsModel.Solvers.FirstOrDefault();
+            var fluidScene = new EmitterScene(mainModel.Scenes, solver, mainModel.VDBModel, Canvas);
+            fluidScene.ParticleRadius = 0.5f;
+            fluidScene.Density = 1000.0f;
+            fluidScene.Stiffness = 1.0f;
+            fluidScene.Viscosity = 1.0f;
+            fluidScene.Name = "Emitter01";
+            fluidScene.StartTimeStep = 0;
+            fluidScene.EndTimeStep = 100;
+            fluidScene.Send();
+            solver.Add(fluidScene);
+            solver.Send();
+            Canvas.BuildShader(mainModel.Scenes, fluidScene.Id);
+            Canvas.Render();
         }
 
         private void OnCreateBoundaryScene()

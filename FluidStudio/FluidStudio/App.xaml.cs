@@ -1,5 +1,6 @@
 ﻿using FluidStudio.FileIO;
 using FluidStudio.Physics;
+using FluidStudio.Physics.Fluid;
 using FluidStudio.Physics.Solver;
 using FluidStudio.Scene.VDB;
 using FluidStudio.Tool.Modeling;
@@ -48,6 +49,7 @@ namespace FluidStudio
 
             containerRegistry.RegisterForNavigation<SolverSceneView>("SolverUpdate");
             containerRegistry.RegisterForNavigation<FluidSceneView>("FluidUpdate");
+            containerRegistry.RegisterForNavigation<EmitterSceneView>("EmitterUpdate");
             containerRegistry.RegisterForNavigation<CSGBoundarySceneView>("CSGBoundaryUpdate");
 
             containerRegistry.RegisterForNavigation<VDBSceneView>("VDBScene");
