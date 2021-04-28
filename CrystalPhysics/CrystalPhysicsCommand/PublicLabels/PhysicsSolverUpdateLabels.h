@@ -4,6 +4,7 @@ namespace {
 	PublicLabel CommandNameLabel = "PhysicsSolverUpdateCommand";
 	PublicLabel IdLabel = "Id";
 	PublicLabel FluidSceneIdsLabel = "FluidSceneIds";
+	PublicLabel EmitterSceneIdsLabel = "EmitterSceneIds";
 	PublicLabel CSGBoundarySceneIdsLabel = "CSGBoundarySceneIds";
 	PublicLabel MeshBoundarySceneIdsLabel = "MeshBoundarySceneIds";
 	PublicLabel EffectLengthLabel = "EffectLength";

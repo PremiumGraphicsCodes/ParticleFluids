@@ -12,6 +12,7 @@ public:
 	{
 		Command::Arg<int> id;
 		Command::Arg<std::vector<int>> fluidSceneIds;
+		Command::Arg<std::vector<int>> emitterSceneIds;
 		Command::Arg<std::vector<int>> csgBoundarySceneIds;
 		Command::Arg<std::vector<int>> meshBoundarySceneIds;
 		Command::Arg<float> effectLength;

@@ -4,6 +4,7 @@
 
 #include "../CrystalPhysics/KFFluidSolver.h"
 #include "../CrystalPhysics/KFFluidScene.h"
+#include "../CrystalPhysics/KFFluidEmitterScene.h"
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
@@ -20,6 +21,7 @@ std::string PhysicsSolverUpdateCommand::getName()
 PhysicsSolverUpdateCommand::Args::Args() :
 	id(::IdLabel, -1),
 	fluidSceneIds(::FluidSceneIdsLabel, {}),
+	emitterSceneIds(::EmitterSceneIdsLabel, {}),
 	csgBoundarySceneIds(::CSGBoundarySceneIdsLabel, {}),
 	meshBoundarySceneIds(::MeshBoundarySceneIdsLabel, {}),
 	effectLength(::EffectLengthLabel, 2.0f),
@@ -28,6 +30,7 @@ PhysicsSolverUpdateCommand::Args::Args() :
 {
 	add(&id);
 	add(&fluidSceneIds);
+	add(&emitterSceneIds);
 	add(&csgBoundarySceneIds);
 	add(&meshBoundarySceneIds);
 	add(&effectLength);
@@ -66,6 +69,13 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 		else {
 			solver->addFluidScene(scene);
 		}
+	}
+
+	const auto emitterIds = args.emitterSceneIds.getValue();
+
+	for (const auto id : emitterIds) {
+		auto scene = world->getScenes()->findSceneById<KFFluidEmitterScene*>(id);
+		solver->addEmitterScene(scene);
 	}
 
 	const auto boundaryIds = args.csgBoundarySceneIds.getValue();
