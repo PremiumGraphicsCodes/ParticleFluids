@@ -1,4 +1,5 @@
 ﻿using FluidStudio.Physics;
+using FluidStudio.Physics.Fluid;
 using PG.Control.OpenGL;
 using PG.Core.Math;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace FluidStudio.FileIO
 
         public void Read(MainModel model, Canvas3d canvas, XElement root)
         {
-//            var root = elem.Element(FSProjFile.RootLabel);
+            //            var root = elem.Element(FSProjFile.RootLabel);
             var version = root.Attribute(FSProjFile.FileFormatVersionLabel).Value;
             var physicsElem = root.Element(FSProjFile.PhysicsSceneLabel);
             ReadPhysicsScene(model, canvas, physicsElem);
@@ -28,13 +29,19 @@ namespace FluidStudio.FileIO
             var effectLength = float.Parse(elem.Element(FSProjFile.EffectLengthLabel).Value);
             var timeStep = float.Parse(elem.Element(FSProjFile.TimeStepLabel).Value);
             var scenes = elem.Elements(FSProjFile.FluidSceneLabel);
-            foreach(var scene in scenes)
+            foreach (var scene in scenes)
             {
                 var fluid = ReadFluidScene(model, canvas, scene, solver);
                 solver.Add(fluid);
             }
+            var emitters = elem.Elements(FSProjFile.EmitterSceneLabel);
+            foreach(var emitter in emitters)
+            {
+                var e = ReadEmitterScene(model, canvas, emitter, solver);
+                solver.Add(e);
+            }
             var bElements = elem.Elements(FSProjFile.CSGBoundarySceneLabel);
-            foreach(var bElem in bElements)
+            foreach (var bElem in bElements)
             {
                 var bScene = ReadCSGBoundaryScene(model, canvas, bElem, solver);
                 solver.Add(bScene);
@@ -51,7 +58,7 @@ namespace FluidStudio.FileIO
         private FluidScene ReadFluidScene(MainModel model, Canvas3d canvas, XElement elem, SolverScene parent)
         {
             var name = elem.Attribute(FSProjFile.NameLabel).Value;
-//            var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);
+            //            var id = int.Parse(elem.Element(FSProjFile.IdLabel).Value);
             var particlesFilePath = elem.Element(FSProjFile.ParticlesFilePathLabel).Value;
             var radius = float.Parse(elem.Element(FSProjFile.ParticleRadiusLabel).Value);
             var density = float.Parse(elem.Element(FSProjFile.DensityLabel).Value);
@@ -67,7 +74,7 @@ namespace FluidStudio.FileIO
             fluidScene.Stiffness = stiffness;
             fluidScene.Viscosity = viscosity;
             fluidScene.Name = name;
-            fluidScene.IsBoundary =isBoundary;
+            fluidScene.IsBoundary = isBoundary;
             fluidScene.ExportModel.DoExportVDB = doExportVDB;
             fluidScene.ExportModel.VDBExportDirectory = exportDirectory;
             fluidScene.Send();
@@ -76,6 +83,55 @@ namespace FluidStudio.FileIO
             canvas.Render();
 
             return fluidScene;
+        }
+
+        private EmitterScene ReadEmitterScene(MainModel model, Canvas3d canvas, XElement elem, SolverScene parent)
+        {
+            var name = elem.Attribute(FSProjFile.NameLabel).Value;
+
+            var particlesFilePath = elem.Element(FSProjFile.ParticlesFilePathLabel).Value;
+            var radius = float.Parse(elem.Element(FSProjFile.ParticleRadiusLabel).Value);
+            var density = float.Parse(elem.Element(FSProjFile.DensityLabel).Value);
+            var stiffness = float.Parse(elem.Element(FSProjFile.StiffnessLabel).Value);
+            var viscosity = float.Parse(elem.Element(FSProjFile.ViscosityLabel).Value);
+//            var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
+            var doExportVDB = bool.Parse(elem.Element(FSProjFile.DoExportVDBLabel).Value);
+            var exportDirectory = elem.Element(FSProjFile.ExportDirectory).Value;
+            var startTimeStep = int.Parse(elem.Element(FSProjFile.StartStepLabel).Value);
+            var endTimeStep = int.Parse(elem.Element(FSProjFile.EndStepLabel).Value);
+            var emitterScene = new EmitterScene(model.Scenes, parent, model.VDBModel, canvas);
+            emitterScene.SetParticlesFromFile(model.VDBModel, model.FileIOModel, canvas, particlesFilePath, radius);
+
+            emitterScene.ParticleRadius = radius;
+            emitterScene.Density = density;
+            emitterScene.Stiffness = stiffness;
+            emitterScene.Viscosity = viscosity;
+            emitterScene.Name = name;
+            emitterScene.StartTimeStep = startTimeStep;
+            emitterScene.EndTimeStep = endTimeStep;
+            emitterScene.ExportModel.DoExportVDB = doExportVDB;
+            emitterScene.ExportModel.VDBExportDirectory = exportDirectory;
+            emitterScene.Send();
+
+            canvas.BuildShader(model.Scenes, emitterScene.Id);
+            canvas.Render();
+
+            return emitterScene;
+        /*
+            var e = new XElement(FSProjFile.EmitterSceneLabel);
+            e.Add(new XAttribute(FSProjFile.NameLabel, emitter.Name));
+            e.Add(new XElement(FSProjFile.ParticlesFilePathLabel, emitter.ParticleFilePath));
+            e.Add(new XElement(FSProjFile.ParticleRadiusLabel, emitter.ParticleRadius));
+            e.Add(new XElement(FSProjFile.DensityLabel, emitter.Density));
+            e.Add(new XElement(FSProjFile.StiffnessLabel, emitter.Stiffness));
+            e.Add(new XElement(FSProjFile.ViscosityLabel, emitter.Viscosity));
+            e.Add(new XElement(FSProjFile.StartStepLabel, emitter.StartTimeStep));
+            e.Add(new XElement(FSProjFile.EndStepLabel, emitter.EndTimeStep));
+            //            e.Add(new XElement(FSProjFile.IsBoundarylabel, fluid.IsBoundary));
+            e.Add(new XElement(FSProjFile.DoExportVDBLabel, emitter.ExportModel.DoExportVDB));
+            e.Add(new XElement(FSProjFile.ExportDirectory, emitter.ExportModel.VDBExportDirectory));
+            return e;
+        */
         }
 
         private CSGBoundaryScene ReadCSGBoundaryScene(MainModel model, Canvas3d canvas, XElement elem, SolverScene parent)
