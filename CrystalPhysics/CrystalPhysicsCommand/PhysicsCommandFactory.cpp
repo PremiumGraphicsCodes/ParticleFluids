@@ -2,6 +2,8 @@
 
 #include "FluidSceneCreateCommand.h"
 #include "FluidSceneUpdateCommand.h"
+#include "EmitterSceneCreateCommand.h"
+#include "EmitterSceneUpdateCommand.h"
 #include "FluidSceneToPSCommand.h"
 #include "FluidSimulationCommand.h"
 #include "CSGBoundarySceneCreateCommand.h"
@@ -22,6 +24,12 @@ std::unique_ptr<ICommand> PhysicsCommandFactory::create(const std::string& name)
 	}
 	else if (name == FluidSceneUpdateCommand::getName()) {
 		return std::make_unique<FluidSceneUpdateCommand>();
+	}
+	else if (name == EmitterSceneCreateCommand::getName()) {
+		return std::make_unique<EmitterSceneCreateCommand>();
+	}
+	else if (name == EmitterSceneUpdateCommand::getName()) {
+		return std::make_unique<EmitterSceneUpdateCommand>();
 	}
 	else if (name == FluidSceneToPSCommand::getName()) {
 		return std::make_unique<FluidSceneToPSCommand>();
@@ -50,5 +58,6 @@ std::unique_ptr<ICommand> PhysicsCommandFactory::create(const std::string& name)
 	else if (name == SPHSurfaceConstructionCommand::getName()) {
 		return std::make_unique<SPHSurfaceConstructionCommand>();
 	}
+	assert(false);
 	return nullptr;
 }

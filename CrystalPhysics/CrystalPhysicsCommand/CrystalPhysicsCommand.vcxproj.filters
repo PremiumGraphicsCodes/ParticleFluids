@@ -36,6 +36,9 @@
     <ClCompile Include="EmitterSceneCreateCommand.cpp">
       <Filter>EmitterScene</Filter>
     </ClCompile>
+    <ClCompile Include="EmitterSceneUpdateCommand.cpp">
+      <Filter>EmitterScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FluidSimulationCommand.h" />
@@ -104,6 +107,12 @@
       <Filter>EmitterScene</Filter>
     </ClInclude>
     <ClInclude Include="PublicLabels\EmitterSceneCreateLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="EmitterSceneUpdateCommand.h">
+      <Filter>EmitterScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\EmitterSceneUpdateLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
   </ItemGroup>

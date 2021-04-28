@@ -185,6 +185,7 @@
     <ClCompile Include="CSGBoundarySceneCreateCommand.cpp" />
     <ClCompile Include="CSGBoundarySceneUpdateCommand.cpp" />
     <ClCompile Include="EmitterSceneCreateCommand.cpp" />
+    <ClCompile Include="EmitterSceneUpdateCommand.cpp" />
     <ClCompile Include="FluidSceneCreateCommand.cpp" />
     <ClCompile Include="FluidSceneToPSCommand.cpp" />
     <ClCompile Include="FluidSceneUpdateCommand.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="CSGBoundarySceneCreateCommand.h" />
     <ClInclude Include="CSGBoundarySceneUpdateCommand.h" />
     <ClInclude Include="EmitterSceneCreateCommand.h" />
+    <ClInclude Include="EmitterSceneUpdateCommand.h" />
     <ClInclude Include="FluidSceneCreateCommand.h" />
     <ClInclude Include="FluidSceneToPSCommand.h" />
     <ClInclude Include="FluidSceneUpdateCommand.h" />
@@ -212,6 +214,7 @@
     <ClInclude Include="PublicLabels\CSGBoundarySceneCreateLabels.h" />
     <ClInclude Include="PublicLabels\CSGBoundarySceneUpdateLabels.h" />
     <ClInclude Include="PublicLabels\EmitterSceneCreateLabels.h" />
+    <ClInclude Include="PublicLabels\EmitterSceneUpdateLabels.h" />
     <ClInclude Include="PublicLabels\FluidSceneToPSLabels.h" />
     <ClInclude Include="PublicLabels\FluidSceneUpdateLabels.h" />
     <ClInclude Include="PublicLabels\FluidSimulationLabels.h" />
