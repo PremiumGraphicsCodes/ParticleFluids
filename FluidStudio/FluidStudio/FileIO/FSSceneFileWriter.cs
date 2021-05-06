@@ -29,6 +29,7 @@ namespace FluidStudio.FileIO
         public const string StartStepLabel = "StartStep";
         public const string EndStepLabel = "EndStep";
         public const string IntervalLabel = "Interval";
+        public const string InitialVelocityLabel = "InitialVelocity";
 
         public const string CSGBoundarySceneLabel = "CSGBoundaryScene";
         public const string Box3dLabel = "Box3d";
@@ -108,6 +109,7 @@ namespace FluidStudio.FileIO
             e.Add(new XElement(FSProjFile.DensityLabel, emitter.Density));
             e.Add(new XElement(FSProjFile.StiffnessLabel, emitter.Stiffness));
             e.Add(new XElement(FSProjFile.ViscosityLabel, emitter.Viscosity));
+            e.Add(CreateElement(FSProjFile.InitialVelocityLabel, emitter.InitialVelocity));
             e.Add(new XElement(FSProjFile.StartStepLabel, emitter.StartTimeStep));
             e.Add(new XElement(FSProjFile.EndStepLabel, emitter.EndTimeStep));
             e.Add(new XElement(FSProjFile.IntervalLabel, emitter.Interval));

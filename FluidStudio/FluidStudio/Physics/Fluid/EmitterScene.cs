@@ -91,6 +91,7 @@ namespace FluidStudio.Physics.Fluid
             command.SetArg(UpdateLabels.DensityLabel, Density);
             command.SetArg(UpdateLabels.StiffnessLabel, Stiffness);
             command.SetArg(UpdateLabels.ViscosityLabel, Viscosity);
+            command.SetArg(UpdateLabels.InitialVelocityLabel, InitialVelocity);
             //command.SetArg(UpdateLabels.IsBoundary, IsBoundary);
             command.SetArg(UpdateLabels.StartStepLabel, StartTimeStep);
             command.SetArg(UpdateLabels.EndStepLabel, EndTimeStep);

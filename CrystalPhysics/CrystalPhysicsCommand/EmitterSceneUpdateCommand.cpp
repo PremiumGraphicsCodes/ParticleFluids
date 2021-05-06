@@ -21,7 +21,7 @@ EmitterSceneUpdateCommand::Args::Args() :
 	stiffness(::StiffnessLabel, 1.0f),
 	density(::DensityLabel, 1.0f),
 	viscosity(::ViscosityLabel, 1.0f),
-	initialVelocity(::InitialVelocityLabel, Vector3df(0,0,0)),
+	initialVelocity(::InitialVelocityLabel, Vector3dd(0,0,0)),
 	startStep(::StartStepLabel, 0),
 	endStep(::EndStepLabel, 100),
 	interval(::IntervalLabel, 10),

@@ -94,7 +94,8 @@ namespace FluidStudio.FileIO
             var density = float.Parse(elem.Element(FSProjFile.DensityLabel).Value);
             var stiffness = float.Parse(elem.Element(FSProjFile.StiffnessLabel).Value);
             var viscosity = float.Parse(elem.Element(FSProjFile.ViscosityLabel).Value);
-//            var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
+            var initialVelocity = ReadVector3d(elem.Element(FSProjFile.InitialVelocityLabel));
+            //            var isBoundary = bool.Parse(elem.Element(FSProjFile.IsBoundarylabel).Value);
             var doExportVDB = bool.Parse(elem.Element(FSProjFile.DoExportVDBLabel).Value);
             var exportDirectory = elem.Element(FSProjFile.ExportDirectory).Value;
             var startTimeStep = int.Parse(elem.Element(FSProjFile.StartStepLabel).Value);
@@ -107,6 +108,7 @@ namespace FluidStudio.FileIO
             emitterScene.Density = density;
             emitterScene.Stiffness = stiffness;
             emitterScene.Viscosity = viscosity;
+            emitterScene.InitialVelocity = initialVelocity;
             emitterScene.Name = name;
             emitterScene.StartTimeStep = startTimeStep;
             emitterScene.EndTimeStep = endTimeStep;
