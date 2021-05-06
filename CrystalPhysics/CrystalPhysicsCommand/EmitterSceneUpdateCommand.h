@@ -16,6 +16,7 @@ public:
 		Command::Arg<float> density;
 		Command::Arg<float> stiffness;
 		Command::Arg<float> viscosity;
+		Command::Arg<Math::Vector3df> initialVelocity;
 		Command::Arg<std::string> name;
 
 		Command::Arg<int> startStep;

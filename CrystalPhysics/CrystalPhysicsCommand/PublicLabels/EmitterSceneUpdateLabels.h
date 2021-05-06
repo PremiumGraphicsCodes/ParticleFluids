@@ -7,6 +7,7 @@ namespace {
 	PublicLabel ParticleRadiusLabel = "ParticleRadius";
 	PublicLabel StiffnessLabel = "Stiffness";
 	PublicLabel ViscosityLabel = "Viscosity";
+	PublicLabel InitialVelocityLabel = "InitialVelocity";
 	PublicLabel DensityLabel = "Density";
 	PublicLabel NameLabel = "Name";
 	PublicLabel StartStepLabel = "StartStep";

@@ -31,10 +31,13 @@ public:
 
 	int getEndStep() const { return startEndStep.second; }
 
+	void setInitialVelocity(const Math::Vector3df& velocity) { this->initialVelocity = velocity; }
+
 	void clearSources() { this->sourcePositions.clear(); }
 
 private:
 	std::vector<Math::Sphere3d> sourcePositions;
+	Math::Vector3df initialVelocity;
 	std::pair<int,int> startEndStep;
 	int interval;
 };

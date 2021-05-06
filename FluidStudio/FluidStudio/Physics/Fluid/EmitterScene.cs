@@ -1,5 +1,6 @@
 ﻿using FluidStudio.VDB;
 using PG.Control.OpenGL;
+using PG.Core.Math;
 using PG.Scene;
 using System.Linq;
 using CreateLabels = PG.EmitterSceneCreateLabels;
@@ -25,6 +26,8 @@ namespace FluidStudio.Physics.Fluid
         public float Density { get; set; } = 1000.0f;
 
         public float Stiffness { get; set; } = 1.0f;
+
+        public Vector3d InitialVelocity { get; set; } = new Vector3d(0, 0, 0);
 
         public float Viscosity { get; set; } = 1.0f;
 

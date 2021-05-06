@@ -66,6 +66,8 @@ public:
 
 	float getSelfMass() { return restMass; }
 
+	void setVelocity(const Math::Vector3df& velocity) { this->velocity = velocity; }
+
 private:
 	float radius;
 	std::vector<KFMicroParticle*> points;

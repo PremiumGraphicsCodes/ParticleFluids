@@ -21,6 +21,7 @@ EmitterSceneUpdateCommand::Args::Args() :
 	stiffness(::StiffnessLabel, 1.0f),
 	density(::DensityLabel, 1.0f),
 	viscosity(::ViscosityLabel, 1.0f),
+	initialVelocity(::InitialVelocityLabel, Vector3df(0,0,0)),
 	startStep(::StartStepLabel, 0),
 	endStep(::EndStepLabel, 100),
 	interval(::IntervalLabel, 10),
@@ -32,6 +33,7 @@ EmitterSceneUpdateCommand::Args::Args() :
 	add(&stiffness);
 	add(&density);
 	add(&viscosity);
+	add(&initialVelocity);
 	add(&startStep);
 	add(&endStep);
 	add(&interval);
@@ -57,6 +59,7 @@ bool EmitterSceneUpdateCommand::execute(World* world)
 	emitterScene->setName(args.name.getValue());
 	emitterScene->setPressureCoe(args.stiffness.getValue());
 	emitterScene->setViscosityCoe(args.viscosity.getValue());
+	emitterScene->setInitialVelocity(args.initialVelocity.getValue());
 
 	emitterScene->setStartEnd(args.startStep.getValue(), args.endStep.getValue());
 	emitterScene->setInterval(args.interval.getValue());

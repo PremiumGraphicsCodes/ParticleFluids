@@ -27,6 +27,7 @@ namespace PG {
 		public const string ParticleRadiusLabel = "ParticleRadius";
 		public const string StiffnessLabel = "Stiffness";
 		public const string ViscosityLabel = "Viscosity";
+		public const string InitialVelocityLabel = "InitialVelocity";
 		public const string DensityLabel = "Density";
 		public const string NameLabel = "Name";
 		public const string StartStepLabel = "StartStep";

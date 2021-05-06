@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using PG.Control.Math;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Prism.Regions;
@@ -28,6 +29,9 @@ namespace FluidStudio.Physics.Fluid
 
         public ReactiveProperty<float> Viscosity { get; }
             = new ReactiveProperty<float>(1.0f);
+
+        public Vector3dViewModel InitialVelocityViewModel { get; }
+            = new Vector3dViewModel();
 
         public ReactiveProperty<int> StartTimeStep { get; }
             = new ReactiveProperty<int>(0);
@@ -104,6 +108,7 @@ namespace FluidStudio.Physics.Fluid
             this.Density.Value = item.Density;
             this.Stiffness.Value = item.Stiffness;
             this.Viscosity.Value = item.Viscosity;
+            this.InitialVelocityViewModel.Value = item.InitialVelocity;
             this.StartTimeStep.Value = item.StartTimeStep;
             this.EndTimeStep.Value = item.EndTimeStep;
             this.Interval.Value = item.Interval;
@@ -133,6 +138,7 @@ namespace FluidStudio.Physics.Fluid
             this.scene.Density = Density.Value;
             this.scene.Stiffness = Stiffness.Value;
             this.scene.Viscosity = Viscosity.Value;
+            this.scene.InitialVelocity = this.InitialVelocityViewModel.Value;
             this.scene.Name = Name.Value;
             this.scene.StartTimeStep = StartTimeStep.Value;
             this.scene.EndTimeStep = EndTimeStep.Value;
