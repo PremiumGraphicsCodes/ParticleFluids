@@ -1,10 +1,5 @@
 ﻿using FluidStudio.VDB;
-using PG.Scene;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FluidStudio.Physics.Fluid
 {
@@ -14,17 +9,16 @@ namespace FluidStudio.Physics.Fluid
 
         public string VDBExportDirectory { get; set; }
 
-        public void ExportFiles(SceneList world, FluidScene fluid, VDBModel vdb, int timeStep)
+        public void ExportFiles(string name, int psId, VDBModel vdb, int timeStep)
         {
             if(DoExportVDB)
             {
-                var filePath = VDBExportDirectory + "/" + fluid.Name + "_" + timeStep.ToString() + ".vdb";
+                var filePath = VDBExportDirectory + "/" + name + "_" + timeStep.ToString() + ".vdb";
 
                 var psIds = new List<int>();
                 var volumeIds = new List<int>();
-                psIds.Add(fluid.Id);
+                psIds.Add(psId);
                 vdb.Write(filePath, psIds, volumeIds);
-
             }
         }
     }

@@ -179,6 +179,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MeshToPSCommand.h" />
+    <ClInclude Include="PublicLabels\MeshToPSLabels.h" />
     <ClInclude Include="PublicLabels\SparseVolumeNodeSetLabels.h" />
     <ClInclude Include="PublicLabels\SparseVolumeSceneCreateLabels.h" />
     <ClInclude Include="SpaceCommandFactory.h" />
@@ -186,6 +188,7 @@
     <ClInclude Include="SparseVolumeSceneCreateCommand.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MeshToPSCommand.cpp" />
     <ClCompile Include="SpaceCommandFactory.cpp" />
     <ClCompile Include="SparseVolumeNodeSetCommand.cpp" />
     <ClCompile Include="SparseVolumeSceneCreateCommand.cpp" />

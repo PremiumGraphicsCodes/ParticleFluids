@@ -74,7 +74,7 @@ namespace FluidStudio.Physics.Fluid
 
         public void ExportFiles(VDBModel vdb, int timeStep)
         {
-            //ExportModel.ExportFiles(scenes, this, vdb, timeStep);
+            ExportModel.ExportFiles(this.Name, this.Id, vdb, timeStep);
         }
 
         public void ConvertPSToVolume(VDBModel vdb, double radius)

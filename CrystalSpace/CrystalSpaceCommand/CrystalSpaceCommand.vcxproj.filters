@@ -15,10 +15,15 @@
     <ClInclude Include="PublicLabels\SparseVolumeNodeSetLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
+    <ClInclude Include="MeshToPSCommand.h" />
+    <ClInclude Include="PublicLabels\MeshToPSLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceCommandFactory.cpp" />
     <ClCompile Include="SparseVolumeSceneCreateCommand.cpp" />
     <ClCompile Include="SparseVolumeNodeSetCommand.cpp" />
+    <ClCompile Include="MeshToPSCommand.cpp" />
   </ItemGroup>
 </Project>
