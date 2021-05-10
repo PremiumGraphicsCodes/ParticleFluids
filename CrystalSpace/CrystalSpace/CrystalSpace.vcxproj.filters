@@ -60,6 +60,12 @@
     <ClInclude Include="SparseVolume.h">
       <Filter>Volume</Filter>
     </ClInclude>
+    <ClInclude Include="VoxelScene.h">
+      <Filter>Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="Voxel.h">
+      <Filter>Voxel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -117,6 +123,9 @@
     <ClCompile Include="SparseVolume.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
+    <ClCompile Include="Voxel.cpp">
+      <Filter>Voxel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">
@@ -136,6 +145,9 @@
     </Filter>
     <Filter Include="Distance">
       <UniqueIdentifier>{307bfd4f-119b-4d7f-a0bc-31b1fc143bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Voxel">
+      <UniqueIdentifier>{7eb616ec-5cd0-4afe-98cb-39efb984a28f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

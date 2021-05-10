@@ -168,6 +168,8 @@
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="UniformGrid3d.h" />
     <ClInclude Include="VolumeConvertAlgo.h" />
+    <ClInclude Include="Voxel.h" />
+    <ClInclude Include="VoxelScene.h" />
     <ClInclude Include="ZIndexedSearchAlgo.h" />
     <ClInclude Include="ZOrderCurve2d.h" />
     <ClInclude Include="ZOrderCurve3d.h" />
@@ -189,6 +191,7 @@
     <ClCompile Include="SparseVolumeScene.cpp" />
     <ClCompile Include="UniformGrid3d.cpp" />
     <ClCompile Include="VolumeConvertAlgo.cpp" />
+    <ClCompile Include="Voxel.cpp" />
     <ClCompile Include="ZIndexedSearchAlgo.cpp" />
     <ClCompile Include="ZOrderCurve2d.cpp" />
     <ClCompile Include="ZOrderCurve3d.cpp" />

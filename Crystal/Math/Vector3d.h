@@ -43,6 +43,12 @@ static T getDistanceSquared(const Vector3d<T>& lhs, const Vector3d<T>& rhs)
 }
 
 template<typename T>
+static T getDistance(const Vector3d<T>& lhs, const Vector3d<T>& rhs)
+{
+	return std::sqrt(getDistanceSquared(lhs, rhs));
+}
+
+template<typename T>
 static bool areSame(const Vector3d<T>& lhs, const Vector3d<T>& rhs, const T tolerance)
 {
 	return getDistanceSquared(lhs, rhs) < tolerance;

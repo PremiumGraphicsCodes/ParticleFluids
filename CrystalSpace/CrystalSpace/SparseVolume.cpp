@@ -3,6 +3,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 
+template class SparseVolumeNode<bool>;
 template class SparseVolumeNode<float>;
 template class SparseVolumeNode<double>;
 
@@ -51,5 +52,6 @@ T SparseVolume<T>::getValueAt(const std::array<int, 3>& index) const
 	return iter->second->getValue();
 }
 
+template class SparseVolume<bool>;
 template class SparseVolume<float>;
 template class SparseVolume<double>;
