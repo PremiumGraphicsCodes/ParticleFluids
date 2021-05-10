@@ -22,16 +22,16 @@ public:
 
 	const std::vector<std::unique_ptr<SPHSurfaceParticle>>& getParticles() const { return particles; }
 
-	std::unique_ptr<Space::SparseVolume> getVolume() { return std::move(volume); }
+	std::unique_ptr<Space::SparseVolumed> getVolume() { return std::move(volume); }
 
 private:
-	std::unique_ptr<Space::SparseVolume> createSparseVolume(const std::vector<Math::Vector3dd>& particles, const float searchRadius, const float cellLength);
+	std::unique_ptr<Space::SparseVolumed> createSparseVolume(const std::vector<Math::Vector3dd>& particles, const float searchRadius, const float cellLength);
 
 	void calculateAnisotropy(const float searchRadius);
 	
 	//std::vector<Shape::IParticle*> particles;
 
-	std::unique_ptr<Space::SparseVolume> volume;
+	std::unique_ptr<Space::SparseVolumed> volume;
 	std::vector<std::unique_ptr<SPHSurfaceParticle>> particles;
 };
 	}

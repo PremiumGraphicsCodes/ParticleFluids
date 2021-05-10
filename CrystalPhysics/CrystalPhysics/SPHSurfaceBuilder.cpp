@@ -87,7 +87,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 
 
 	auto& nodes = volume->getNodes();
-	std::vector<SparseVolumeNode*> ns;
+	std::vector<SparseVolumeNode<double>*> ns;
 	ns.reserve(nodes.size());
 	for (auto n : nodes) {
 		ns.push_back(n.second);
@@ -115,7 +115,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 	}
 }
 
-std::unique_ptr<SparseVolume> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float searchRadius,  const float cellLength)
+std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float searchRadius,  const float cellLength)
 {
 	Box3d bb = Box3d::createDegeneratedBox();
 	for (const auto& p : particles) {
@@ -149,7 +149,7 @@ std::unique_ptr<SparseVolume> SPHSurfaceBuilder::createSparseVolume(const std::v
 	}
 
 	std::array<int, 3> resolution{ resx, resy, resz };
-	auto sv = std::make_unique<SparseVolume>(bb, resolution);
+	auto sv = std::make_unique<SparseVolumed>(bb, resolution);
 	for (const auto& index : indices) {
 		sv->createNode(index);
 	}

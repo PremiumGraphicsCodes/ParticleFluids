@@ -15,6 +15,7 @@
 #include "MeshToParticleAlgoView.h"
 
 #include "SVSphereView.h"
+#include "VoxelSphereView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 
@@ -68,6 +69,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("SVSphere")) {
 			control->setWindow(new SVSphereView("SVSphere", getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("VoxelSphere")) {
+			control->setWindow(new VoxelSphereView("VoxelSphere", getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}
