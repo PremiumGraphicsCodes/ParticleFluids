@@ -183,6 +183,7 @@
     <ClInclude Include="IndexedSortSearchAlgoView.h" />
     <ClInclude Include="IntersectionView.h" />
     <ClInclude Include="ISVAddView.h" />
+    <ClInclude Include="IVoxelAddView.h" />
     <ClInclude Include="MarchingCubesView.h" />
     <ClInclude Include="MeshToParticleAlgoView.h" />
     <ClInclude Include="OctreeView.h" />
@@ -191,6 +192,7 @@
     <ClInclude Include="UniformGrid3dView.h" />
     <ClInclude Include="VolumeView.h" />
     <ClInclude Include="VolumeConvertView.h" />
+    <ClInclude Include="VoxelSphereView.h" />
     <ClInclude Include="ZOrderSearchView.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 #include "VoxelScene.h"
 
-//#include "SparseVolumePresenter.h"
+#include "VoxelPresenter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;
@@ -8,7 +8,7 @@ using namespace Crystal::Space;
 VoxelScene::VoxelScene(const int id, const std::string& name, std::unique_ptr<Voxel> shape) :
 	shape(std::move(shape))
 {
-	//presenter = std::make_unique<SparseVolumePresenter>(this);
+	presenter = std::make_unique<VoxelPresenter>(this);
 }
 
 Box3d VoxelScene::getBoundingBox() const

@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Scene/IScene.h"
 #include "Voxel.h"
-#include "SparseVolumePresenter.h"
+#include "VoxelPresenter.h"
 
 #include <memory>
 
@@ -21,15 +21,13 @@ public:
 
 	Scene::SceneType getType() const { return Scene::SceneType("VoxelScene"); }
 
-	Scene::IPresenter* getPresenter() {
-		return nullptr;
-	}//presenter.get(); }
+	Scene::IPresenter* getPresenter() { return presenter.get(); }
 
 	Math::Box3d getBoundingBox() const override;
 
 private:
 	std::unique_ptr<Voxel> shape;
-	//std::unique_ptr<SparseVolumePresenter> presenter;
+	std::unique_ptr<VoxelPresenter> presenter;
 };
 
 	}
