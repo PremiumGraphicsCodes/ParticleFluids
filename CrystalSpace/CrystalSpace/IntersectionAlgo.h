@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Crystal/Math/Vector3d.h"
+#include <vector>
 
 namespace Crystal {
 	namespace Math {

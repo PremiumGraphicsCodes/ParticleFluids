@@ -166,6 +166,7 @@
     <ClCompile Include="IndexedSortSearchAlgoView.cpp" />
     <ClCompile Include="IntersectionView.cpp" />
     <ClCompile Include="ISVAddView.cpp" />
+    <ClCompile Include="IVoxelAddView.cpp" />
     <ClCompile Include="MarchingCubesView.cpp" />
     <ClCompile Include="MeshToParticleAlgoView.cpp" />
     <ClCompile Include="OctreeView.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="UniformGrid3dView.cpp" />
     <ClCompile Include="VolumeView.cpp" />
     <ClCompile Include="VolumeConvertView.cpp" />
+    <ClCompile Include="VoxelSphereView.cpp" />
     <ClCompile Include="ZOrderSearchView.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 
 #include "IVoxelAddView.h"
 #include "../../CrystalViewer/AppBase/Sphere3dView.h"
+#include "../../CrystalViewer/AppBase/IntView.h"
 
 namespace Crystal {
 	namespace UI {
