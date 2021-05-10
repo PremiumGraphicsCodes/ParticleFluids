@@ -12,13 +12,13 @@ namespace Crystal {
 class BillBoard
 {
 public:
-	BillBoard(Math::Box2d area, ITextureObject* texture) :
+	BillBoard(Math::Box2d<float> area, ITextureObject* texture) :
 		area(area),
 		texture(texture)
 	{}
 
 private:
-	Math::Box2d area;
+	Math::Box2d<float> area;
 	ITextureObject* texture;
 };
 

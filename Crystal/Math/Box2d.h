@@ -1,5 +1,4 @@
-#ifndef __CRYSTAL_MATH_BOX_2D_H__
-#define __CRYSTAL_MATH_BOX_2D_H__
+#pragma once
 
 #include "Vector2d.h"
 //#include "ISurface3d.h"
@@ -8,61 +7,63 @@
 namespace Crystal {
 	namespace Math {
 
+template<typename T>
 class Box2d //: ICurve2d
 {
 public:
 	Box2d() :
-		Box2d(Vector2df(0, 0), Vector2df(1, 1))
+		start(Vector2d<T>(0, 0)),
+		end(Vector2d<T>(1, 1))
 	{}
 
-	Box2d(const Vector2df& pointX, const Vector2df& pointY);
+	Box2d(const Vector2d<T>& pointX, const Vector2d<T>& pointY);
 
-	void add(const Vector2df& v);
+	void add(const Vector2d<T>& v);
 
-	void add(const Box2d& b);
+	void add(const Box2d<T>& b);
 
-	float getArea() const { return (end.x - getMinX()) * (end.y - getMinY());  }
+	T getArea() const { return (end.x - getMinX()) * (end.y - getMinY());  }
 
-	Vector2df getMax() const { return Vector2df(end[0], end[1]); }
+	Vector2d<T> getMax() const { return Vector2d<T>(end[0], end[1]); }
 
-	Vector2df getMin() const { return Vector2df(getMinX(), getMinY()); }
+	Vector2d<T> getMin() const { return Vector2d<T>(getMinX(), getMinY()); }
 
-	Vector2df getStart() const { return getMin(); }
+	Vector2d<T> getStart() const { return getMin(); }
 
-	Vector2df getEnd() const { return getMax(); }
+	Vector2d<T> getEnd() const { return getMax(); }
 
-	Vector2df getCenter() const;
+	Vector2d<T> getCenter() const;
 
 	//std::vector< Vector2d<T> > toInnerPoints(const T divideLength) const;
 
-	float getMaxX() const { return end[0]; }
+	T getMaxX() const { return end[0]; }
 
-	float getMinX() const { return start[0]; }
+	T getMinX() const { return start[0]; }
 
-	float getMaxY() const { return end[1]; }
+	T getMaxY() const { return end[1]; }
 
-	float getMinY() const { return start[1]; }
+	T getMinY() const { return start[1]; }
 
-	Vector2df getLength() const { return Vector2df(end.x - getMinX(), end.y - getMinY()); }
+	Vector2d<T> getLength() const { return Vector2d<T>(end.x - getMinX(), end.y - getMinY()); }
 
 	bool isValid() const { return (getMinX() <= end.x) && (getMinY() <= end.y); }
 
 	bool isShirinked() const { return (getMinX() == end.x) && (getMinY() == end.y); }
 
-	bool isSame(const Box2d& rhs, const float tolerance) const;
+	bool isSame(const Box2d<T>& rhs, const T tolerance) const;
 
-	bool hasIntersection(const Box2d& rhs) const;
+	bool hasIntersection(const Box2d<T>& rhs) const;
 
-	Box2d getOverlapped(const Box2d& rhs) const;
+	Box2d<T> getOverlapped(const Box2d<T>& rhs) const;
 
-	std::array< float, 8 > toArray() const;
+	std::array< T, 8 > toArray() const;
 
 private:
-	Vector2df start;
-	Vector2df end;
+	Vector2d<T> start;
+	Vector2d<T> end;
 };
+
+using Box2df = Box2d<float>();
 
 	}
 }
-
-#endif
