@@ -2,6 +2,8 @@
 
 #include "../ThirdParty/glm-0.9.9.3/glm/gtc/matrix_transform.hpp"
 
+#include "../Math/Tolerance.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 

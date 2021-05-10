@@ -1,28 +1,37 @@
-#ifndef __CRSYTAL_MATH_VECTOR_2D_H__
-#define __CRSYTAL_MATH_VECTOR_2D_H__
+#pragma once
 
 #include <cmath>
-#include <vector>
-#include "Tolerance.h"
 #include "glm.h"
 
 namespace Crystal {
 	namespace Math {
 
-using Vector2df = glm::vec2;
-using Vector2dd = glm::dvec2;
+template<typename T>
+using Vector2d = glm::vec<2, T>;
 
-static double getDistanceSquared(const Vector2dd& v)
+using Vector2df = Vector2d<float>;
+using Vector2dd = Vector2d<double>;
+
+template<typename T>
+static T getDistanceSquared(const Vector2d<T>& v)
 {
 	return std::pow(v.x, 2) + std::pow(v.y, 2);
 }
 
-static double getDistanceSquared(const Vector2dd& lhs, const Vector2dd& rhs)
+template<typename T>
+static T getDistanceSquared(const Vector2d<T>& lhs, const Vector2d<T>& rhs)
 {
 	return std::pow(lhs.x - rhs.x, 2) + std::pow(lhs.y - rhs.y, 2);
 }
 
-static bool areSame(const Vector2dd& lhs, const Vector2dd& rhs, const double tolerance)
+template<typename T>
+static T getDistance(const Vector2d<T>& lhs, const Vector2d<T>& rhs)
+{
+	return std::sqrt(getDistanceSquared(lhs, rhs));
+}
+
+template<typename T>
+static bool areSame(const Vector2d<T>& lhs, const Vector2d<T>& rhs, const T tolerance)
 {
 	return getDistanceSquared(lhs, rhs) < tolerance;
 }
@@ -30,5 +39,3 @@ static bool areSame(const Vector2dd& lhs, const Vector2dd& rhs, const double tol
 
 	}
 }
-
-#endif

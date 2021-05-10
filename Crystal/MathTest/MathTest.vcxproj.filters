@@ -71,5 +71,8 @@
     <ClCompile Include="Ellipsoid3dTest.cpp">
       <Filter>Primitive3d</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2dTest.cpp">
+      <Filter>Vector</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

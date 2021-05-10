@@ -1,5 +1,7 @@
 #include "Cylinder3d.h"
 
+#include "Tolerance.h"
+
 using namespace Crystal::Math;
 
 Cylinder3d::Cylinder3d() :

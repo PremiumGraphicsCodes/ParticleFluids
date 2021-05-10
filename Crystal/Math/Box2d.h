@@ -49,13 +49,11 @@ public:
 
 	bool isShirinked() const { return (getMinX() == end.x) && (getMinY() == end.y); }
 
-	bool isSame(const Box2d& rhs, const double tolerance) const;
+	bool isSame(const Box2d& rhs, const float tolerance) const;
 
 	bool hasIntersection(const Box2d& rhs) const;
 
 	Box2d getOverlapped(const Box2d& rhs) const;
-
-	//Vector3dd getPosition(const double u, const double v) const;
 
 	std::array< float, 8 > toArray() const;
 

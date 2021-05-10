@@ -3,6 +3,7 @@
 #include "../Math/Vector2d.h"
 #include "../Math/Vector3d.h"
 #include <string>
+#include <vector>
 
 namespace Crystal {
 	namespace IO {

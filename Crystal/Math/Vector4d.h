@@ -1,9 +1,6 @@
 #pragma once
 
 #include <cmath>
-#include <vector>
-#include <array>
-#include "Tolerance.h"
 #include "glm.h"
 
 namespace Crystal {

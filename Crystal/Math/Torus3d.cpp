@@ -1,5 +1,7 @@
 #include "Torus3d.h"
 
+#include "Tolerance.h"
+
 using namespace Crystal::Math;
 
 Torus3d::Torus3d() :

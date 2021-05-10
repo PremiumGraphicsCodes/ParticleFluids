@@ -60,17 +60,17 @@ TEST(CameraTest, TestRotate)
 	{
 		const auto& actual = c.getEye();
 		const Vector3df expected(0, 0, 10);
-		EXPECT_TRUE( areSame( expected, actual, 1.0e-9));
+		EXPECT_TRUE( areSame( expected, actual, 1.0e-9f));
 	}
 	{
 		const auto& actual = c.getUp();
 		const Vector3df expected(0, 1, 0);
-		EXPECT_TRUE(areSame(expected, actual, 1.0e-9));
+		EXPECT_TRUE(areSame(expected, actual, 1.0e-9f));
 	}
 	{
 		const auto& actual = c.getRight();
 		const Vector3df expected(-1, 0, 0);
-		EXPECT_TRUE(areSame(expected, actual, 1.0e-9));
+		EXPECT_TRUE(areSame(expected, actual, 1.0e-9f));
 	}
 }
 

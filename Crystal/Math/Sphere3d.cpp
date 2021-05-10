@@ -1,6 +1,9 @@
 #include "Sphere3d.h"
 #include "Box3d.h"
 
+#include <numeric>
+#include "Tolerance.h"
+
 using namespace Crystal::Math;
 
 Sphere3d::Sphere3d() :

@@ -1,5 +1,7 @@
 #include "Cone3d.h"
 
+#include "Tolerance.h"
+
 using namespace Crystal::Math;
 
 Cone3d::Cone3d() :

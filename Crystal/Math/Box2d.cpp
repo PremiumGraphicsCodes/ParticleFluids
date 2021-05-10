@@ -42,7 +42,7 @@ Vector2df Box2d::getCenter() const {
 }
 
 
-bool Box2d::isSame(const Box2d& rhs, const double tolerance) const
+bool Box2d::isSame(const Box2d& rhs, const float tolerance) const
 {
 	return
 		areSame(start, rhs.start, tolerance) &&
@@ -83,11 +83,3 @@ std::array< float, 8 > Box2d::toArray() const
 		getMaxX(), getMaxY()
 	};
 }
-
-/*
-Vector3dd Box2d::getPosition(const double u, const double v) const
-{
-	const auto& l = getLength();
-	return start + l.x * u + l.y * v;
-}
-*/

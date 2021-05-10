@@ -3,6 +3,8 @@
 #include "Vector3d.h"
 #include "IVolume3d.h"
 
+#include <vector>
+
 namespace Crystal {
 	namespace Math {
 

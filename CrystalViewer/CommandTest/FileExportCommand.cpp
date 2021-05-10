@@ -32,6 +32,7 @@ TEST(FileExportCommand, TestExportPCD)
 	EXPECT_TRUE(isOk);
 }
 
+/*
 TEST(FileExportCommand, TestExportOBJ)
 {
 	World world;
@@ -47,5 +48,5 @@ TEST(FileExportCommand, TestExportOBJ)
 	command->setArg(::FileExportLabels::FilePathLabel, filePath);
 	const auto isOk = command->execute(&world);
 	EXPECT_TRUE(isOk);
-
 }
+*/

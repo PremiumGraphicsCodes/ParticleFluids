@@ -2,6 +2,8 @@
 
 #include "Vector2d.h"
 
+#include "Tolerance.h"
+
 namespace Crystal {
 	namespace Math {
 

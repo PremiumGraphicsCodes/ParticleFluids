@@ -1,9 +1,6 @@
 #pragma once
 
 #include <cmath>
-#include <vector>
-#include <array>
-#include "Tolerance.h"
 #include "glm.h"
 
 namespace Crystal {
@@ -18,7 +15,7 @@ using Vector3dd = Vector3d<double>;
 template<typename T>
 static T getLengthSquared(const Vector3d<T>& v)
 {
-	return v.x * v.x + v.y* v.y + v.z * v.z;
+	return v.x * v.x + v.y * v.y + v.z * v.z;
 }
 
 template<typename T>
