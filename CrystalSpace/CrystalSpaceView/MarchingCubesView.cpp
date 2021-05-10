@@ -28,7 +28,7 @@ void MarchingCubesView::onOk()
 	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	//Volume<double> v(box, { 100, 100, 100 });
 
-	SparseVolume v(box, { 100,100,100 });
+	SparseVolumed v(box, { 100,100,100 });
 
 	const auto center = box.getCenter();
 	const auto radius = 5.0;

@@ -10,7 +10,6 @@
 
 namespace Crystal {
 	namespace Space {
-		class SparseVolume;
 
 class MarchingCubesAlgo
 {
@@ -18,7 +17,7 @@ public:
 
 	size_t build(const Shape::Volume<double>& volume, const double isoLevel);
 
-	void build(const SparseVolume& volume, const float isoLevel);
+	void build(const SparseVolume<double>& volume, const float isoLevel);
 
 	int march(const MCCell& cell, const double isoLevel);
 

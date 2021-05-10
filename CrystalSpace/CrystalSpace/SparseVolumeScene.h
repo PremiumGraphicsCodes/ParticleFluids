@@ -13,11 +13,11 @@ namespace Crystal {
 class SparseVolumeScene : public Scene::IScene
 {
 public:
-	SparseVolumeScene(const int id, const std::string& name, std::unique_ptr<SparseVolume> shape);
+	SparseVolumeScene(const int id, const std::string& name, std::unique_ptr<SparseVolumed> shape);
 
-	SparseVolume* getShape() const { return shape.get(); }
+	SparseVolumed* getShape() const { return shape.get(); }
 
-	void resetShape(std::unique_ptr<SparseVolume> shape) { this->shape = std::move(shape); }
+	void resetShape(std::unique_ptr<SparseVolumed> shape) { this->shape = std::move(shape); }
 
 	Scene::SceneType getType() const { return Scene::SceneType("SparseVolumeScene"); }
 
@@ -26,7 +26,7 @@ public:
 	Math::Box3d getBoundingBox() const override;
 
 private:
-	std::unique_ptr<SparseVolume> shape;
+	std::unique_ptr<SparseVolumed> shape;
 	std::unique_ptr<SparseVolumePresenter> presenter;
 };
 

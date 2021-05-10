@@ -3,7 +3,11 @@
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 
-void SparseVolume::clear()
+template class SparseVolumeNode<float>;
+template class SparseVolumeNode<double>;
+
+template<typename T>
+void SparseVolume<T>::clear()
 {
 	for (auto n : nodes) {
 		delete n.second;
@@ -11,7 +15,8 @@ void SparseVolume::clear()
 	nodes.clear();
 }
 
-Vector3dd SparseVolume::getPositionAt(const std::array<int, 3>& index) const
+template<typename T>
+Vector3dd SparseVolume<T>::getPositionAt(const std::array<int, 3>& index) const
 {
 	const auto u = index[0] / static_cast<double>(resolutions[0]);
 	const auto v = index[1] / static_cast<double>(resolutions[1]);
@@ -20,21 +25,24 @@ Vector3dd SparseVolume::getPositionAt(const std::array<int, 3>& index) const
 	return boundingBox.getPosition(u, v, w);
 }
 
-SparseVolumeNode* SparseVolume::createNode(const std::array<int, 3>& index)
+template<typename T>
+SparseVolumeNode<T>* SparseVolume<T>::createNode(const std::array<int, 3>& index)
 {
 	const auto pos = getPositionAt(index);
-	auto node = new SparseVolumeNode(pos);
+	auto node = new SparseVolumeNode<T>(pos);
 	nodes[index] = node;
 	return node;
 }
 
-void SparseVolume::addValue(const std::array<int, 3>& index, const float value)
+template<typename T>
+void SparseVolume<T>::addValue(const std::array<int, 3>& index, const T value)
 {
 	auto n = nodes[index];
 	n->setValue(n->getValue() + value);
 }
 
-float SparseVolume::getValueAt(const std::array<int, 3>& index) const
+template<typename T>
+T SparseVolume<T>::getValueAt(const std::array<int, 3>& index) const
 {
 	auto iter = nodes.find(index);
 	if (iter == nodes.end()) {
@@ -42,3 +50,6 @@ float SparseVolume::getValueAt(const std::array<int, 3>& index) const
 	}
 	return iter->second->getValue();
 }
+
+template class SparseVolume<float>;
+template class SparseVolume<double>;

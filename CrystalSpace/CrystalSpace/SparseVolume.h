@@ -16,6 +16,7 @@ class SparseVolumeAttr : public Shape::IParticleAttribute
 };
 */
 
+template<typename T>
 class SparseVolumeNode : public Shape::IParticle
 {
 public:
@@ -26,16 +27,17 @@ public:
 
 	Math::Vector3dd getPosition() const override { return position; }
 
-	double getValue() const { return value; }
+	T getValue() const { return value; }
 
-	void setValue(const double v) { this->value = v; }
+	void setValue(const T v) { this->value = v; }
 
 private:
 	Math::Vector3dd position;
-	double value;
+	T value;
 	//std::array<int,3> index;
 };
 
+template<typename T>
 class SparseVolume : private UnCopyable
 {
 public:
@@ -54,26 +56,28 @@ public:
 
 	Math::Box3d getBoundingBox() const { return boundingBox; }
 
-	SparseVolumeNode* createNode(const std::array<int, 3>& index);
+	SparseVolumeNode<T>* createNode(const std::array<int, 3>& index);
 
 	Math::Vector3dd getPositionAt(const std::array<int, 3>& index) const;
 
-	SparseVolumeNode* findNode(const std::array<int, 3>& index) { return nodes[index]; }
+	SparseVolumeNode<T>* findNode(const std::array<int, 3>& index) { return nodes[index]; }
 
-	std::map< std::array<int, 3>, SparseVolumeNode*> getNodes() const { return nodes; }
+	std::map< std::array<int, 3>, SparseVolumeNode<T>*> getNodes() const { return nodes; }
 
-	std::map< std::array<int, 3>, SparseVolumeNode*>& getNodes() { return nodes; }
+	std::map< std::array<int, 3>, SparseVolumeNode<T>*>& getNodes() { return nodes; }
 
-	void addValue(const std::array<int, 3>& index, const float value);
+	void addValue(const std::array<int, 3>& index, const T value);
 
-	float getValueAt(const std::array<int, 3>& index) const;
+	T getValueAt(const std::array<int, 3>& index) const;
 
 private:
-	std::map< std::array<int, 3>, SparseVolumeNode*> nodes;
+	std::map< std::array<int, 3>, SparseVolumeNode<T>*> nodes;
 
 	Math::Box3d boundingBox;
 	std::array<int, 3> resolutions;
 };
 
+using SparseVolumef = SparseVolume<float>;
+using SparseVolumed = SparseVolume<double>;
 	}
 }

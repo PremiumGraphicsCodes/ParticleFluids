@@ -53,7 +53,7 @@ size_t MarchingCubesAlgo::build(const Volume<double>& volume, const double isoLe
 	return triangles.size();
 }
 
-void MarchingCubesAlgo::build(const SparseVolume& volume, const float isoLevel)
+void MarchingCubesAlgo::build(const SparseVolume<double>& volume, const float isoLevel)
 {
 	const auto nodes = volume.getNodes();
 
