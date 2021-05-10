@@ -7,6 +7,8 @@
 #include "VDBPolygonMeshPresenter.h"
 
 #include <memory>
+#include <array>
+#include <vector>
 
 namespace Crystal {
 	namespace VDB {

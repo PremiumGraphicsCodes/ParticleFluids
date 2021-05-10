@@ -9,6 +9,9 @@
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
 
+#include <array>
+#include <vector>
+
 namespace Crystal {
 	namespace Shape {
 

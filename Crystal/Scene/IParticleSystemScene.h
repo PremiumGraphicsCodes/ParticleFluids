@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IShapeScene.h"
+#include <vector>
 
 namespace Crystal {
 	namespace Scene {

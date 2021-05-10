@@ -19,8 +19,8 @@ using namespace Crystal::Math;
 SVD::SVD2dResult SVD::calculate(const Matrix2dd& lhs)
 {
 	SVD2dResult result;
-	Matrix2d A = Impl::Converter::toEigen(lhs);
-	SelfAdjointEigenSolver<Matrix2d> eigensolver(A);
+	Eigen::Matrix2d A = Impl::Converter::toEigen(lhs);
+	SelfAdjointEigenSolver<Eigen::Matrix2d> eigensolver(A);
 	if (eigensolver.info() != Success) {
 		result.isOk = false;
 	}
@@ -33,8 +33,8 @@ SVD::SVD2dResult SVD::calculate(const Matrix2dd& lhs)
 SVD::SVD3dResult SVD::calculate(const Matrix3dd& lhs)
 {
 	SVD3dResult result;
-	Matrix3d A = Impl::Converter::toEigen(lhs);
-	SelfAdjointEigenSolver<Matrix3d> eigensolver(A);
+	Eigen::Matrix3d A = Impl::Converter::toEigen(lhs);
+	SelfAdjointEigenSolver<Eigen::Matrix3d> eigensolver(A);
 	if (eigensolver.info() != Success) {
 		result.isOk = false;
 	}
@@ -47,8 +47,8 @@ SVD::SVD3dResult SVD::calculate(const Matrix3dd& lhs)
 SVD::SVD3dResult SVD::calculateJacobi(const Matrix3dd& matrix)
 {
 	SVD3dResult result;
-	Matrix3d A = Impl::Converter::toEigen(matrix);
-	Eigen::JacobiSVD<Matrix3d> svd(A, Eigen::ComputeFullU);
+	Eigen::Matrix3d A = Impl::Converter::toEigen(matrix);
+	Eigen::JacobiSVD<Eigen::Matrix3d> svd(A, Eigen::ComputeFullU);
 	const auto& R = svd.matrixU();
 	result.isOk = true;
 	result.eigenValues = Impl::Converter::fromEigen(svd.singularValues());

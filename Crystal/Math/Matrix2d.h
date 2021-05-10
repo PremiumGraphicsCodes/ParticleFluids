@@ -2,25 +2,27 @@
 
 #include "glm.h"
 
-#include <vector>
-#include <array>
-
 namespace Crystal {
 	namespace Math {
 
-using Matrix2df = glm::mat2;
-using Matrix2dd = glm::dmat2;
+template<typename T>
+using Matrix2d = glm::mat<2, 2, T>;
 
-static Matrix2dd rotationMatrix(double angle)
+using Matrix2df = Matrix2d<float>;
+using Matrix2dd = Matrix2d<double>;
+
+template<typename T>
+static Matrix2d<T> rotationMatrix(const T angle)
 {
-	return Matrix2dd
+	return Matrix2d<T>
 	(
 		::cos(angle), -::sin(angle),
 		::sin(angle), ::cos(angle)
 	);
 }
 
-static bool areSame(const Matrix2dd& lhs, const Matrix2dd& rhs, const double tolerance)
+template<typename T>
+static bool areSame(const Matrix2d<T>& lhs, const Matrix2d<T>& rhs, const T tolerance)
 {
 	for (int i = 0; i < 2; ++i) {
 		for (int j = 0; j < 2; ++j) {

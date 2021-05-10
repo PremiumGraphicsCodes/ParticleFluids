@@ -2,6 +2,7 @@
 
 #include "../../Crystal/Shape/IParticle.h"
 #include "SPHKernel.h"
+#include <vector>
 
 namespace Crystal {
 	namespace Physics {
@@ -11,7 +12,7 @@ class SPHSurfaceParticle : public Shape::IParticle
 public:
 	explicit SPHSurfaceParticle(const Math::Vector3dd& p) :
 		position(p),
-		matrix(Math::identitiyMatrix()),
+		matrix(Math::identitiyMatrix<double>()),
 		density(0.0f)
 	{}
 

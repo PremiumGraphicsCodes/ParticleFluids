@@ -25,7 +25,7 @@ class SmoothBuffer
 {
 public:
 	SmoothBuffer() :
-		matrix(Math::Identity())
+		matrix(Math::Identity<double>())
 	{}
 
 	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialId);

@@ -14,7 +14,7 @@ EVD::EVD3dResult EVD::calculate(const Math::Matrix3dd& lhs)
 {
 	const auto m = Impl::Converter::toEigen(lhs);
 
-	EigenSolver<Matrix3d> es(m);
+	EigenSolver<Eigen::Matrix3d> es(m);
 
 	//VectorXcd v = es.eigenvectors().col(0);
 	//cout << "If v is the corresponding eigenvector, then lambda * v = " << endl << lambda * v << endl;

@@ -4,6 +4,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include <list>
 #include <functional>
+#include <array>
 
 namespace Crystal {
 	namespace Shape {

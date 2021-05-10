@@ -2,6 +2,7 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Shape/IParticle.h"
+#include <array>
 
 namespace Crystal {
 	namespace Space {

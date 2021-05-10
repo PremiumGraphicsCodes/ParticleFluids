@@ -4,6 +4,7 @@
 #include "../../Crystal/Math/Matrix3d.h"
 
 #include "../../Crystal/Shape/IParticle.h"
+#include <vector>
 
 namespace Crystal {
 	namespace Physics {

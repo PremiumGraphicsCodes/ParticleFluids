@@ -5,6 +5,7 @@
 #include "../../Crystal/Util/UnCopyable.h"
 
 #include <map>
+#include <array>
 
 namespace Crystal {
 	namespace Space {

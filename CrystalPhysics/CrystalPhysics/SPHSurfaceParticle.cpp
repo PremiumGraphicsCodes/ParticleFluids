@@ -43,7 +43,7 @@ void SPHSurfaceParticle::calculateAnisotoropicMatrix(const std::vector<IParticle
 	const auto rotation = result.eigenVectors;
 
 
-	Matrix3dd scaleMatrix = ::identitiyMatrix();
+	Matrix3dd scaleMatrix = ::identitiyMatrix<double>();
 	if (neighbors.size() < 25) {
 		scaleMatrix *= 0.5;
 		//		p->matrix = scaleMatrix;

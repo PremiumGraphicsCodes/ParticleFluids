@@ -14,12 +14,12 @@ class LineBuffer
 public:
 	LineBuffer() :
 		width(1.0f),
-		matrix(Math::Identity())
+		matrix(Math::Identity<double>())
 	{}
 
 	explicit LineBuffer(const float width) :
 		width(width),
-		matrix(Math::Identity())
+		matrix(Math::Identity<double>())
 	{};
 
 	void addVertex(const Math::Vector3df& position, const Graphics::ColorRGBAf& color) {

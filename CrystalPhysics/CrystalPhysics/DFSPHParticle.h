@@ -2,6 +2,7 @@
 
 #include "../../Crystal/Shape/IParticle.h"
 #include "SPHKernel.h"
+#include <vector>
 
 namespace Crystal {
 	namespace Physics {

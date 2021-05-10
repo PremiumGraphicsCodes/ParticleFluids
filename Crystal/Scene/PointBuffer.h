@@ -14,7 +14,7 @@ class PointBuffer
 {
 public:
 	PointBuffer() :
-		matrix(Math::Identity())
+		matrix(Math::Identity<double>())
 	{};
 
 	void add(const Math::Vector3df& position, const Graphics::ColorRGBAf& color, const float size) {

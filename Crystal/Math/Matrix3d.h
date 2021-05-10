@@ -2,18 +2,19 @@
 
 #include "glm.h"
 
-#include <vector>
-#include <array>
-
 namespace Crystal {
 	namespace Math {
 
-using Matrix3df = glm::mat3;
-using Matrix3dd = glm::dmat3;
+template<typename T>
+using Matrix3d = glm::mat<3,3,T>;
 
-static Matrix3dd identitiyMatrix()
+using Matrix3df = Matrix3d<float>;
+using Matrix3dd = Matrix3d<double>;
+
+template<typename T>
+static Matrix3d<T> identitiyMatrix()
 {
-	return Matrix3dd
+	return Matrix3d<T>
 	(
 		1.0, 0.0, 0.0, 
 		0.0, 1.0, 0.0,
@@ -21,9 +22,10 @@ static Matrix3dd identitiyMatrix()
 	);
 }
 
-static Matrix3dd rotationMatrixX(double angle)
+template<typename T>
+static Matrix3d<T> rotationMatrixX(const T angle)
 {
-	return Matrix3dd
+	return Matrix3d<T>
 	(
 		1.0, 0.0, 0.0,
 		0.0, ::cos(angle), -::sin(angle),
@@ -31,9 +33,10 @@ static Matrix3dd rotationMatrixX(double angle)
 	);
 }
 
-static Matrix3dd rotationMatrixY(double angle)
+template<typename T>
+static Matrix3d<T> rotationMatrixY(const T angle)
 {
-	return Matrix3dd
+	return Matrix3d<T>
 	(
 		::cos(angle), 0.0, ::sin(angle),
 		0.0, 1.0, 0.0,
@@ -41,7 +44,8 @@ static Matrix3dd rotationMatrixY(double angle)
 	);
 }
 
-static Matrix3dd rotationMatrixZ(double angle)
+template<typename T>
+static Matrix3d<T> rotationMatrixZ(const T angle)
 {
 	return Matrix3dd
 	(
@@ -51,7 +55,8 @@ static Matrix3dd rotationMatrixZ(double angle)
 	);
 }
 
-static bool AreSame(const Matrix3dd& lhs, const Matrix3dd& rhs, const double tolerance)
+template<typename T>
+static bool AreSame(const Matrix3d<T>& lhs, const Matrix3d<T>& rhs, const T tolerance)
 {
 	for (int i = 0; i < 3; ++i) {
 		for (int j = 0; j < 3; ++j) {

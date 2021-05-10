@@ -4,6 +4,7 @@
 
 #include "../Math/Line3d.h"
 #include "WireFrameEdge.h"
+#include <vector>
 
 namespace Crystal {
 	namespace Shape {

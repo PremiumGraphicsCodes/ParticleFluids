@@ -1,19 +1,20 @@
-#ifndef __CRYSTAL_MATH_MATRIX_4D_H__
-#define __CRYSTAL_MATH_MATRIX_4D_H__
+#pragma once
 
-#include <cassert>
-#include <array>
 #include "glm.h"
 
 namespace Crystal {
 	namespace Math {
 
-using Matrix4df = glm::mat4;
-using Matrix4dd = glm::dmat4;
+template<typename T>
+using Matrix4d = glm::mat<4, 4, T>;
 
-static Matrix4dd Identity()
+using Matrix4df = Matrix4d<float>;
+using Matrix4dd = Matrix4d<double>;
+
+template<typename T>
+static Matrix4d<T> Identity()
 {
-	return Matrix4dd
+	return Matrix4d<T>
 	(
 		1, 0, 0, 0,
 		0, 1, 0, 0,
@@ -22,9 +23,10 @@ static Matrix4dd Identity()
 	);
 }
 
-static Matrix4dd operator*(const Matrix4dd& lhs, const Matrix4dd& rhs)
+template<typename T>
+static Matrix4d<T> operator*(const Matrix4d<T>& lhs, const Matrix4d<T>& rhs)
 {
-	Matrix4dd result(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	Matrix4d<T> result(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	for (int i = 0; i < 4; ++i) {
 		for (int j = 0; j < 4; ++j) {
 			for (int k = 0; k < 4; ++k) {
@@ -37,5 +39,3 @@ static Matrix4dd operator*(const Matrix4dd& lhs, const Matrix4dd& rhs)
 
 	}
 }
-
-#endif

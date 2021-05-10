@@ -5,7 +5,7 @@ using namespace Crystal::Shape;
 
 Solid::Solid(std::unique_ptr<IVolume3d> shape) :
 	shape(std::move(shape)),
-	matrix(Math::Identity())
+	matrix(Math::Identity<double>())
 {}
 
 Box3d Solid::getBoundingBox() const

@@ -3,6 +3,7 @@
 #include "../../Crystal/Util/UnCopyable.h"
 #include "../../Crystal/Math/Vector3d.h"
 #include <vector>
+#include <array>
 #include <list>
 #include <functional>
 
