@@ -1,5 +1,4 @@
-#ifndef __CRSYTAL_MATH_VECTOR_3D_H__
-#define __CRSYTAL_MATH_VECTOR_3D_H__
+#pragma once
 
 #include <cmath>
 #include <vector>
@@ -10,25 +9,32 @@
 namespace Crystal {
 	namespace Math {
 
-using Vector3df = glm::vec3;
-using Vector3dd = glm::dvec3;
+template<typename T>
+using Vector3d = glm::vec<3, T>;
 
-static float getLengthSquared(const Vector3df& v)
+using Vector3df = Vector3d<float>;
+using Vector3dd = Vector3d<double>;
+
+template<typename T>
+static T getLengthSquared(const Vector3d<T>& v)
 {
 	return v.x * v.x + v.y* v.y + v.z * v.z;
 }
 
-static float getLength(const Vector3df& v)
+template<typename T>
+static T getLength(const Vector3d<T>& v)
 {
 	return std::sqrt(getLengthSquared(v));
 }
 
-static double getDistanceSquared(const Vector3dd& v)
+template<typename T>
+static T getDistanceSquared(const Vector3d<T>& v)
 {
 	return v.x * v.x + v.y * v.y + v.z * v.z;
 }
 
-static float getDistanceSquared(const Vector3df& lhs, const Vector3df& rhs)
+template<typename T>
+static T getDistanceSquared(const Vector3d<T>& lhs, const Vector3d<T>& rhs)
 {
 	const auto x = lhs.x - rhs.x;
 	const auto y = lhs.y - rhs.y;
@@ -36,31 +42,11 @@ static float getDistanceSquared(const Vector3df& lhs, const Vector3df& rhs)
 	return x * x + y * y + z * z;
 }
 
-static float getDistance(const Vector3df& lhs, const Vector3df& rhs)
-{
-	return std::sqrt(getDistanceSquared(lhs, rhs));
-}
-
-static double getDistanceSquared(const Vector3dd& lhs, const Vector3dd& rhs)
-{
-	const auto x = lhs.x - rhs.x;
-	const auto y = lhs.y - rhs.y;
-	const auto z = lhs.z - rhs.z;
-	return x*x + y*y + z*z;
-}
-
-static bool areSame(const Vector3dd& lhs, const Vector3dd& rhs, const double tolerance)
+template<typename T>
+static bool areSame(const Vector3d<T>& lhs, const Vector3d<T>& rhs, const T tolerance)
 {
 	return getDistanceSquared(lhs, rhs) < tolerance;
 }
 
-template<typename T>
-static auto getDistanceSquared(const T& lhs, const T rhs)
-{
-	return getDistanceSquared(lhs, rhs);
-}
-
 	}
 }
-
-#endif
