@@ -4,14 +4,18 @@
     <Filter Include="PublicLabels">
       <UniqueIdentifier>{3785dcb4-c0ca-455e-aa76-9feb2128ba15}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SparseVolume">
+      <UniqueIdentifier>{b8a76ead-c15c-45b6-8ec2-f9eec2b7b387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Voxel">
+      <UniqueIdentifier>{ec92dbe9-7bda-4a51-8aaa-a3cde6bd553e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PublicLabels\SparseVolumeSceneCreateLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
     <ClInclude Include="SpaceCommandFactory.h" />
-    <ClInclude Include="SparseVolumeSceneCreateCommand.h" />
-    <ClInclude Include="SparseVolumeNodeSetCommand.h" />
     <ClInclude Include="PublicLabels\SparseVolumeNodeSetLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
@@ -23,12 +27,31 @@
       <Filter>PublicLabels</Filter>
     </ClInclude>
     <ClInclude Include="MeshToVoxelCommand.h" />
+    <ClInclude Include="SparseVolumeNodeSetCommand.h">
+      <Filter>SparseVolume</Filter>
+    </ClInclude>
+    <ClInclude Include="SparseVolumeSceneCreateCommand.h">
+      <Filter>SparseVolume</Filter>
+    </ClInclude>
+    <ClInclude Include="VoxelSceneCreateCommand.h">
+      <Filter>Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\VoxelSceneCreateLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceCommandFactory.cpp" />
-    <ClCompile Include="SparseVolumeSceneCreateCommand.cpp" />
-    <ClCompile Include="SparseVolumeNodeSetCommand.cpp" />
     <ClCompile Include="MeshToPSCommand.cpp" />
     <ClCompile Include="MeshToVoxelCommand.cpp" />
+    <ClCompile Include="SparseVolumeNodeSetCommand.cpp">
+      <Filter>SparseVolume</Filter>
+    </ClCompile>
+    <ClCompile Include="SparseVolumeSceneCreateCommand.cpp">
+      <Filter>SparseVolume</Filter>
+    </ClCompile>
+    <ClCompile Include="VoxelSceneCreateCommand.cpp">
+      <Filter>Voxel</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 
 #include "SparseVolumeSceneCreateCommand.h"
 #include "SparseVolumeNodeSetCommand.h"
+#include "VoxelSceneCreateCommand.h"
 #include "MeshToPSCommand.h"
 #include "MeshToVoxelCommand.h"
 
@@ -15,6 +16,9 @@ std::unique_ptr<ICommand> SpaceCommandFactory::create(const std::string& name)
 	}
 	else if (name == SparseVolumeNodeSetCommand::getName()) {
 		return std::make_unique<SparseVolumeNodeSetCommand>();
+	}
+	else if (name == VoxelSceneCreateCommand::getName()) {
+		return std::make_unique<VoxelSceneCreateCommand>();
 	}
 	else if (name == MeshToPSCommand::getName()) {
 		return std::make_unique<MeshToPSCommand>();
