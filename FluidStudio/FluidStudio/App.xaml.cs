@@ -55,6 +55,7 @@ namespace FluidStudio
             containerRegistry.RegisterForNavigation<VDBSceneView>("VDBScene");
 
             containerRegistry.RegisterForNavigation<Scene.SparseVolume.SphereGenerationView>("SVSphereGeneration");
+            containerRegistry.RegisterForNavigation<Scene.Voxel.SphereGenerationView>("VoxelSphereGeneration");
         }
     }
 }

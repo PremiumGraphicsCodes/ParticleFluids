@@ -52,6 +52,9 @@
                 <RibbonGroup Header="SparseVolume">
                     <RibbonButton Label="Sphere" Command="{Binding NavigateCommand}" CommandParameter="SVSphereGeneration"/>
                 </RibbonGroup>
+                <RibbonGroup Header="Voxel">
+                    <RibbonButton Label="Sphere" Command="{Binding NavigateCommand}" CommandParameter="VoxelSphereGeneration"/>
+                </RibbonGroup>
             </RibbonTab>
         </Ribbon>
         <ToolBar Grid.Row="1" DataContext="{Binding CameraControlViewModel}">
