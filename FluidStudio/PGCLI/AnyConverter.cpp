@@ -81,6 +81,14 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 		}
 		return std::any(dest);
 	}
+	else if (type == System::Collections::Generic::List<bool>::typeid) {
+		auto value = (System::Collections::Generic::List<bool>^)object;
+		std::vector<bool> dest;
+		for each (auto v in value) {
+			dest.push_back(v);
+		}
+		return std::any(dest);
+	}
 
 	assert(false);
 

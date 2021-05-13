@@ -5,6 +5,7 @@ using PG.Core.Math;
 using PG.Scene;
 using Prism.Mvvm;
 using Reactive.Bindings;
+using System.Collections.Generic;
 
 namespace FluidStudio.Scene.Voxel
 {
@@ -40,11 +41,10 @@ namespace FluidStudio.Scene.Voxel
             var box = SphereViewModel.Value.GetBoundingBox();
             var newId = space.CreateVoxel("Voxel", res, box, 1);
 
-            /*
             var sphere = SphereViewModel.Value;
             var radius = sphere.Radius;
 
-            var nodes = new List<SparseVolumeNode>();
+            var nodes = new List<VoxelNode>();
 
             var resx = ResolutionX.Value;
             var resy = ResolutionY.Value;
@@ -63,17 +63,14 @@ namespace FluidStudio.Scene.Voxel
                         var distanceSquared = pos.DistanceSquared(sphere.Center);
                         if (distanceSquared < radius * radius)
                         {
-                            var distance = System.Math.Sqrt(distanceSquared);
-                            var value = distance / radius;
-                            var node = new SparseVolumeNode(index, (float)value);
+                            var node = new VoxelNode(index, true);
                             nodes.Add(node);
                         }
                     }
                 }
             }
 
-            space.SetSparseNodes(newId, nodes);
-            */
+            space.SetVoxelNodes(newId, nodes);
 
             canvas.Camera.Fit();
             canvas.BuildShader(world, newId);

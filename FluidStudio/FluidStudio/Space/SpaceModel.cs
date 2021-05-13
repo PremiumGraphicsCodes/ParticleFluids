@@ -16,6 +16,18 @@ namespace FluidStudio.Space
         }
     }
 
+    public class VoxelNode
+    {
+        public int[] Index;
+        public bool Value;
+
+        public VoxelNode(int[] index, bool value)
+        {
+            this.Index = index;
+            this.Value = value;
+        }
+    }
+
     public class SpaceModel
     {
         private readonly SceneList world;
@@ -87,6 +99,30 @@ namespace FluidStudio.Space
             world.Add(scene);
             return newId;
         }
+
+        public void SetVoxelNodes(int voxelId, IEnumerable<VoxelNode> nodes)
+        {
+            var indicesX = new List<int>();
+            var indicesY = new List<int>();
+            var indicesZ = new List<int>();
+            var values = new List<bool>();
+            foreach (var node in nodes)
+            {
+                indicesX.Add(node.Index[0]);
+                indicesY.Add(node.Index[1]);
+                indicesZ.Add(node.Index[2]);
+                values.Add(node.Value);
+            }
+
+            var command = new PG.CLI.SpaceCommand(PG.VoxelNodeSetLabels.CommandNameLabel);
+            command.SetArg(PG.VoxelNodeSetLabels.VoxelIdLabel, voxelId);
+            command.SetArg(PG.VoxelNodeSetLabels.IndicesXLabel, indicesX);
+            command.SetArg(PG.VoxelNodeSetLabels.IndicesYLabel, indicesY);
+            command.SetArg(PG.VoxelNodeSetLabels.IndicesZLabel, indicesZ);
+            command.SetArg(PG.VoxelNodeSetLabels.ValuesLabel, values);
+            command.Execute(world.Adapter);
+        }
+
 
     }
 }
