@@ -37,6 +37,16 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
+	public class VoxelNodeSetLabels
+	{
+		public const string CommandNameLabel = "VoxelNodeSet";
+		public const string VoxelIdLabel = "VoxelId";
+		public const string IndicesXLabel = "IndicesX";
+		public const string IndicesYLabel = "IndicesY";
+		public const string IndicesZLabel = "IndicesZ";
+		public const string ValuesLabel = "Values";
+	}
+
 	public class VoxelSceneCreateLabels
 	{
 		public const string CommandNameLabel = "VoxelSceneCreate";

@@ -39,6 +39,12 @@
     <ClInclude Include="PublicLabels\VoxelSceneCreateLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
+    <ClInclude Include="VoxelNodeSetCommand.h">
+      <Filter>Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\VoxelNodeSetLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceCommandFactory.cpp" />
@@ -51,6 +57,9 @@
       <Filter>SparseVolume</Filter>
     </ClCompile>
     <ClCompile Include="VoxelSceneCreateCommand.cpp">
+      <Filter>Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="VoxelNodeSetCommand.cpp">
       <Filter>Voxel</Filter>
     </ClCompile>
   </ItemGroup>

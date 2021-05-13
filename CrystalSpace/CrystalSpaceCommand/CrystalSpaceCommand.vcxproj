@@ -185,10 +185,12 @@
     <ClInclude Include="PublicLabels\MeshToVoxelLabels.h" />
     <ClInclude Include="PublicLabels\SparseVolumeNodeSetLabels.h" />
     <ClInclude Include="PublicLabels\SparseVolumeSceneCreateLabels.h" />
+    <ClInclude Include="PublicLabels\VoxelNodeSetLabels.h" />
     <ClInclude Include="PublicLabels\VoxelSceneCreateLabels.h" />
     <ClInclude Include="SpaceCommandFactory.h" />
     <ClInclude Include="SparseVolumeNodeSetCommand.h" />
     <ClInclude Include="SparseVolumeSceneCreateCommand.h" />
+    <ClInclude Include="VoxelNodeSetCommand.h" />
     <ClInclude Include="VoxelSceneCreateCommand.h" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +199,7 @@
     <ClCompile Include="SpaceCommandFactory.cpp" />
     <ClCompile Include="SparseVolumeNodeSetCommand.cpp" />
     <ClCompile Include="SparseVolumeSceneCreateCommand.cpp" />
+    <ClCompile Include="VoxelNodeSetCommand.cpp" />
     <ClCompile Include="VoxelSceneCreateCommand.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
