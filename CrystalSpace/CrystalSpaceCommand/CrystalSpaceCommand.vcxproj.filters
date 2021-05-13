@@ -19,11 +19,16 @@
     <ClInclude Include="PublicLabels\MeshToPSLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
+    <ClInclude Include="PublicLabels\MeshToVoxelLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshToVoxelCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceCommandFactory.cpp" />
     <ClCompile Include="SparseVolumeSceneCreateCommand.cpp" />
     <ClCompile Include="SparseVolumeNodeSetCommand.cpp" />
     <ClCompile Include="MeshToPSCommand.cpp" />
+    <ClCompile Include="MeshToVoxelCommand.cpp" />
   </ItemGroup>
 </Project>

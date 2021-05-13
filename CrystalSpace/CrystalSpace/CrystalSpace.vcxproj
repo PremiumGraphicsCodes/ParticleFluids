@@ -160,6 +160,7 @@
     <ClInclude Include="MarchingCubesTable.h" />
     <ClInclude Include="MCCell.h" />
     <ClInclude Include="MeshToParticleAlgo.h" />
+    <ClInclude Include="MeshToVoxelConverter.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="SpaceHash3d.h" />
     <ClInclude Include="SparseVolume.h" />
@@ -185,6 +186,7 @@
     <ClCompile Include="IntersectionAlgo.cpp" />
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="MeshToParticleAlgo.cpp" />
+    <ClCompile Include="MeshToVoxelConverter.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="SpaceHash3d.cpp" />
     <ClCompile Include="SparseVolume.cpp" />

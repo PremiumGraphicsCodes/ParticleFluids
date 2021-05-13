@@ -3,6 +3,7 @@
 #include "SparseVolumeSceneCreateCommand.h"
 #include "SparseVolumeNodeSetCommand.h"
 #include "MeshToPSCommand.h"
+#include "MeshToVoxelCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::Space;
@@ -17,6 +18,9 @@ std::unique_ptr<ICommand> SpaceCommandFactory::create(const std::string& name)
 	}
 	else if (name == MeshToPSCommand::getName()) {
 		return std::make_unique<MeshToPSCommand>();
+	}
+	else if (name == MeshToVoxelCommand::getName()) {
+		return std::make_unique<MeshToVoxelCommand>();
 	}
 	assert(false);
 	return nullptr;
