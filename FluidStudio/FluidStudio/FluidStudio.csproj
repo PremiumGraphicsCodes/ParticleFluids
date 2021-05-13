@@ -192,6 +192,7 @@
     </Compile>
     <Compile Include="Scene\SceneListViewBehavior.cs" />
     <Compile Include="Scene\SceneListViewModel.cs" />
+    <Compile Include="Scene\Voxel\SphereGenerationViewModel.cs" />
     <Compile Include="SpaceLabels.cs" />
     <Compile Include="Space\SpaceModel.cs" />
     <Compile Include="TimeLineView.xaml.cs">

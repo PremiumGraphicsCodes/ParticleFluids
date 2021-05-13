@@ -67,5 +67,26 @@ namespace FluidStudio.Space
             command.SetArg(PG.SparseVolumeNodeSetLabels.ValuesLabel, values);
             command.Execute(world.Adapter);
         }
+
+        public int CreateVoxel(string name, int[] resolution, Box3d boundingBox, int layer)
+        {
+            var command = new PG.CLI.SpaceCommand(PG.VoxelSceneCreateLabels.CommandNameLabel);
+            command.SetArg(PG.VoxelSceneCreateLabels.ResolutionXLabel, resolution[0]);
+            command.SetArg(PG.VoxelSceneCreateLabels.ResolutionYLabel, resolution[1]);
+            command.SetArg(PG.VoxelSceneCreateLabels.ResolutionZLabel, resolution[2]);
+            command.SetArg(PG.VoxelSceneCreateLabels.BoundingBoxLabel, boundingBox);
+            command.SetArg(PG.VoxelSceneCreateLabels.NameLabel, name);
+            command.SetArg(PG.VoxelSceneCreateLabels.LayerLabel, layer);
+            command.Execute(world.Adapter);
+            var newId = command.GetResult<int>(PG.VoxelSceneCreateLabels.NewIdLabel);
+            var scene = new SceneModel();
+            scene.Id.Value = newId;
+            scene.Name.Value = name;
+            //            scene.SceneType = new PG.Core.SceneType(VDBMeshLabel);
+            world.SetName(newId, name);
+            world.Add(scene);
+            return newId;
+        }
+
     }
 }
