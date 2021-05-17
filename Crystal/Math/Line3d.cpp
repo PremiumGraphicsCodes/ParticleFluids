@@ -3,49 +3,59 @@
 
 using namespace Crystal::Math;
 
-Line3dd::Line3dd() :
+template<typename T>
+Line3d<T>::Line3d() :
 	origin(0, 0, 0),
 	dir(1, 0, 0)
 {
 }
 
-Line3dd::Line3dd(const Vector3dd& origin, const Vector3dd& dir) :
+template<typename T>
+Line3d<T>::Line3d(const Vector3d<T>& origin, const Vector3d<T>& dir) :
 	origin(origin),
 	dir(dir)
 {
 }
 
-Line3dd Line3dd::fromPoints(const Vector3dd& start, const Vector3dd& end)
+template<typename T>
+Line3d<T> Line3d<T>::fromPoints(const Vector3d<T>& start, const Vector3d<T>& end)
 {
-	return Line3dd(start, end - start);
+	return Line3d<T>(start, end - start);
 }
 
-void Line3dd::transform(const Matrix3dd& m)
+template<typename T>
+void Line3d<T>::transform(const Matrix3d<T>& m)
 {
 	origin = m * origin;
 	dir = m * dir;
 }
 
-void Line3dd::transform(const Matrix4dd& m)
+template<typename T>
+void Line3d<T>::transform(const Matrix4d<T>& m)
 {
 	origin = m * glm::vec4(origin, 1.0);
 	dir = m * glm::vec4(dir, 1.0);
 }
 
-Vector3dd Line3dd::getPosition(const double u) const
+template<typename T>
+Vector3d<T> Line3d<T>::getPosition(const T u) const
 {
 	return origin + dir * u;
 }
 
-bool Line3dd::isSame(const Line3dd& rhs, const double tolerance) const
+template<typename T>
+bool Line3d<T>::isSame(const Line3d<T>& rhs, const T tolerance) const
 {
 	return
 		areSame(origin, rhs.getStart(), tolerance) &&
 		areSame(dir, rhs.getDirection(), tolerance);
 }
 
-Ray3d Line3dd::toRay() const
+template<typename T>
+Ray3d Line3d<T>::toRay() const
 {
 	const auto& direction = glm::normalize(getDirection());
 	return Ray3d(origin, direction);
 }
+
+template class Line3d<double>;

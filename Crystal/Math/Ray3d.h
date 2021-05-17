@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../Math/Vector3d.h"
+#include "Vector3d.h"
+#include "Line3d.h"
 
 namespace Crystal {
 	namespace Math {
-		class Line3dd;
 
 class Ray3d
 {

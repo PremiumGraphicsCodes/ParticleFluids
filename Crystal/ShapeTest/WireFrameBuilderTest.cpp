@@ -34,7 +34,7 @@ TEST(WireFrameBuilderTest, TestBuildByBox)
 
 TEST(WireFrameBuilderTest, TestBuildByCircle)
 {
-	const Circle3d circle(Vector3dd(0, 0, 0), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0));
+	const Circle3dd circle(Vector3dd(0, 0, 0), Vector3dd(1, 0, 0), Vector3dd(0, 1, 0));
 
 	WireFrameBuilder builder;
 	builder.build(circle, 2);

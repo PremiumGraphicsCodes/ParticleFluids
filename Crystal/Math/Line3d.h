@@ -9,38 +9,41 @@ namespace Crystal {
 	namespace Math {
 		class Ray3d;
 
-class Line3dd : public ICurve3dd
+template<typename T>
+class Line3d : public ICurve3d<T>
 {
 public:
-	Line3dd();
+	Line3d();
 
-	Line3dd(const Math::Vector3dd& origin, const Math::Vector3dd& dir);
+	Line3d(const Math::Vector3d<T>& origin, const Math::Vector3d<T>& dir);
 
-	static Line3dd fromPoints(const Vector3dd& start, const Vector3dd& end);
+	static Line3d<T> fromPoints(const Vector3d<T>& start, const Vector3d<T>& end);
 
-	Math::Vector3dd getStart() const { return origin; }
+	Math::Vector3d<T> getStart() const { return origin; }
 
-	Math::Vector3dd getEnd() const { return origin + dir; }
+	Math::Vector3d<T> getEnd() const { return origin + dir; }
 
-	Math::Vector3dd getDirection() const { return dir; }
+	Math::Vector3d<T> getDirection() const { return dir; }
 
-	double getLength() const { return glm::distance(origin, dir); }
+	T getLength() const { return glm::distance(origin, dir); }
 
-	void move(const Math::Vector3dd& v) { this->origin += v; }
+	void move(const Math::Vector3d<T>& v) { this->origin += v; }
 
-	void transform(const Math::Matrix3dd& m);
+	void transform(const Math::Matrix3d<T>& m);
 
-	void transform(const Math::Matrix4dd& m);
+	void transform(const Math::Matrix4d<T>& m);
 
-	Math::Vector3dd getPosition(const double u) const override;
+	Math::Vector3d<T> getPosition(const T u) const override;
 
-	bool isSame(const Line3dd& rhs, const double tolerance) const;
+	bool isSame(const Line3d<T>& rhs, const T tolerance) const;
 
 	Ray3d toRay() const;
 
 private:
-	Math::Vector3dd origin;
-	Math::Vector3dd dir;
+	Math::Vector3d<T> origin;
+	Math::Vector3d<T> dir;
 };
+
+using Line3dd = Line3d<double>;
 	}
 }
