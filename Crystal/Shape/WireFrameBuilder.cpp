@@ -18,7 +18,7 @@ namespace {
 	constexpr auto tolerance = 1.e-12;
 }
 
-void WireFrameBuilder::build(const ICurve3d& curve, const int unum)
+void WireFrameBuilder::build(const ICurve3dd& curve, const int unum)
 {
 	std::vector<int> grid;
 	const auto du = 1.0 / static_cast<double>(unum);

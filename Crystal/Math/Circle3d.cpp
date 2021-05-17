@@ -1,30 +1,38 @@
 #include "Circle3d.h"
 
 #include "Tolerance.h"
+
 #include <cmath>
 
 using namespace Crystal::Math;
 
-Circle3d::Circle3d() :
+template<typename T>
+Circle3d<T>::Circle3d() :
 	center(Vector3dd(0,0,0)),
 	uvec(Vector3dd(1,0,0)),
 	vvec(Vector3dd(0,1,0))
 {}
 
-Circle3d::Circle3d(const Vector3dd& center, const Vector3dd& uvec, const Vector3dd& vvec) :
+template<typename T>
+Circle3d<T>::Circle3d(const Vector3d<T>& center, const Vector3d<T>& uvec, const Vector3d<T>& vvec) :
 	center(center),
 	uvec(uvec),
 	vvec(vvec)
 {}
 
-Vector3dd Circle3d::getPosition(const double u) const
+template<typename T>
+Vector3d<T> Circle3d<T>::getPosition(const T u) const
 {
-	const auto uu = u * 2.0 * PI;
+	const auto uu = u * T(2.0) * T(PI);
 	return center + ::cos(uu) * uvec + ::sin(uu) * vvec;
 }
 
-Vector3dd Circle3d::getNormal() const
+template<typename T>
+Vector3d<T> Circle3d<T>::getNormal() const
 {
 	return glm::normalize( glm::cross(uvec, vvec) );
 }
 
+
+template class Circle3d<float>;
+template class Circle3d<double>;

@@ -3,13 +3,14 @@
 #include <vector>
 #include <memory>
 
+#include "../Math/ICurve3d.h"
+
 #include "../Math/Vector3d.h"
 #include "WireFrameEdge.h"
 
 namespace Crystal {
 	namespace Math {
 		class Box3d;
-		class ICurve3d;
 		class ISurface3d;
 	}
 	namespace Shape {
@@ -18,7 +19,7 @@ namespace Crystal {
 class WireFrameBuilder
 {
 public:
-	void build(const Math::ICurve3d& curve, int unum);
+	void build(const Math::ICurve3dd& curve, int unum);
 
 	void build(const Math::ISurface3d& circle, const int unum, const int vnum);
 

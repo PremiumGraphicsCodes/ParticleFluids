@@ -6,27 +6,32 @@
 namespace Crystal {
 	namespace Math {
 
-class Circle3d : public ICurve3d
+template<typename T>
+class Circle3d : public ICurve3d<T>
 {
 public:
 	Circle3d();
 
-	Circle3d(const Vector3dd& center, const Vector3dd& uvec, const Vector3dd& vvec);
+	Circle3d(const Vector3d<T>& center, const Vector3d<T>& uvec, const Vector3d<T>& vvec);
 
-	Vector3dd getPosition(const double u) const;
+	Vector3d<T> getPosition(const T u) const;
 
-	Vector3dd getNormal() const;
+	Vector3d<T> getNormal() const;
 
-	Vector3dd getCenter() const { return center; }
+	Vector3d<T> getCenter() const { return center; }
 
-	Vector3dd getUVec() const { return uvec; }
+	Vector3d<T> getUVec() const { return uvec; }
 
-	Vector3dd getVVec() const { return vvec; }
+	Vector3d<T> getVVec() const { return vvec; }
 
 private:
-	Vector3dd center;
-	Vector3dd uvec;
-	Vector3dd vvec;
+	Vector3d<T> center;
+	Vector3d<T> uvec;
+	Vector3d<T> vvec;
 };
+
+
+using Circle3dd = Circle3d<double>;
+
 	}
 }

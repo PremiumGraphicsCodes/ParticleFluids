@@ -9,7 +9,7 @@ namespace Crystal {
 	namespace Math {
 		class Ray3d;
 
-class Line3dd : public ICurve3d
+class Line3dd : public ICurve3dd
 {
 public:
 	Line3dd();
