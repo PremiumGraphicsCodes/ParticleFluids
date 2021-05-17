@@ -76,10 +76,25 @@ void PMWirePresenter::updateScreenView()
 		auto faces = shape->getFaces();
 		for (const auto& f : faces) {
 			const auto& vIds = f.getVertexIds();
+			for (auto index = 0; index < vIds.size()-1; ++index) {
+				auto vIndex = vs[vIds[index]];
+				auto vNext = vs[vIds[index+1]];
+				buffer.addIndex(vIndex.positionId);
+				buffer.addIndex(vNext.positionId);
+			}
+			{
+				auto vIndex = vs[vIds.back()];
+				auto vNext = vs[vIds.front()];
+				buffer.addIndex(vIndex.positionId);
+				buffer.addIndex(vNext.positionId);
+
+			}
+			/*
 			for (const auto vId : vIds) {
 				auto vIndex = vs[vId];
 				buffer.addIndex(vIndex.positionId);
 			}
+			*/
 		}
 	}
 	this->view->send(buffer);

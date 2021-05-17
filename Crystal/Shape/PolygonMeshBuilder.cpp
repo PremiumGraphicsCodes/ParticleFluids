@@ -81,13 +81,13 @@ void PolygonMeshBuilder::add(const Box3d& box)
 	createFace(v0, v1, v2); // front
 	createFace(v2, v3, v0);
 
-	createFace(v1, v5, v6); // back
+	createFace(v1, v5, v6); // right
 	createFace(v6, v2, v1);
 
-	createFace(v6, v5, v4); // right
+	createFace(v6, v5, v4); // left
 	createFace(v4, v7, v6);
 
-	createFace(v4, v0, v3); // left
+	createFace(v4, v0, v3); // back
 	createFace(v7, v4, v3);
 
 	createFace(v6, v3, v2); // top;
@@ -95,14 +95,6 @@ void PolygonMeshBuilder::add(const Box3d& box)
 
 	createFace(v0, v5, v1); // bottom
 	createFace(v0, v4, v5); 
-	/*
-	add(p0, p1, p2, p3); // front
-	add(p7, p6, p5, p4); // back
-	add(p3, p2, p6, p7); // top
-	add(p0, p1, p5, p4); // bottom
-	add(p0, p4, p7, p3); // left
-	add(p1, p5, p6, p2); // right
-	*/
 }
 
 namespace {
