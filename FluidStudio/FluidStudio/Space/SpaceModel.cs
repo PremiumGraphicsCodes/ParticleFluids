@@ -123,6 +123,14 @@ namespace FluidStudio.Space
             command.Execute(world.Adapter);
         }
 
+        public void PolygonToVoxel(int polygonId, int voxelId, double divideLength)
+        {
+            var command = new PG.CLI.SpaceCommand(PG.MeshToVoxelLabels.CommandNameLabel);
+            command.SetArg(PG.MeshToVoxelLabels.PolygonMeshIdLabel, polygonId);
+            command.SetArg(PG.MeshToVoxelLabels.VoxelIdLabel, voxelId);
+            command.SetArg(PG.MeshToVoxelLabels.DivideLengthLabel, divideLength);
+            command.Equals(world.Adapter);
+        }
 
     }
 }

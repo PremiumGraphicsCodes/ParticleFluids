@@ -3,7 +3,7 @@
 #include "PublicLabels/MeshToPSLabels.h"
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
-#include "../CrystalSpace/MeshToParticleAlgo.h"
+#include "../CrystalSpace/MeshToParticleConverter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;

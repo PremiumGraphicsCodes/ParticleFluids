@@ -7,16 +7,16 @@
 namespace Crystal {
 	namespace UI {
 
-class MeshToParticleAlgoView : public IOkCancelView
+class MeshToParticleView : public IOkCancelView
 {
 public:
-	MeshToParticleAlgoView(const std::string& name, Scene::World* model, Canvas* canvas);
+	MeshToParticleView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
 	void onOk() override;
 
 private:
-	ObjectSelectView polygonMeshSelectView;
+	//ObjectSelectView polygonMeshSelectView;
 	DoubleView divideLengthView;
 };
 

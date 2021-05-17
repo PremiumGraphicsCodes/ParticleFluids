@@ -47,7 +47,6 @@
     <ClInclude Include="IndexedSortSearchAlgo.h">
       <Filter>Search</Filter>
     </ClInclude>
-    <ClInclude Include="MeshToParticleAlgo.h" />
     <ClInclude Include="DistanceCalculator.h">
       <Filter>Distance</Filter>
     </ClInclude>
@@ -72,6 +71,7 @@
     <ClInclude Include="MeshToVoxelConverter.h">
       <Filter>Voxel</Filter>
     </ClInclude>
+    <ClInclude Include="MeshToParticleConverter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -116,7 +116,6 @@
     <ClCompile Include="IndexedSortSearchAlgo.cpp">
       <Filter>Search</Filter>
     </ClCompile>
-    <ClCompile Include="MeshToParticleAlgo.cpp" />
     <ClCompile Include="DistanceCalculator.cpp">
       <Filter>Distance</Filter>
     </ClCompile>
@@ -141,6 +140,7 @@
     <ClCompile Include="MeshToVoxelConverter.cpp">
       <Filter>Voxel</Filter>
     </ClCompile>
+    <ClCompile Include="MeshToParticleConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">

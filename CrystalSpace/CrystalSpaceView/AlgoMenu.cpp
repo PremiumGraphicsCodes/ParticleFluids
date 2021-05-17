@@ -12,7 +12,7 @@
 #include "OctreeView.h"
 #include "SpaceHashView.h"
 #include "UniformGrid3dView.h"
-#include "MeshToParticleAlgoView.h"
+#include "MeshToParticleView.h"
 #include "MeshToVoxelView.h"
 
 #include "SVSphereView.h"
@@ -66,7 +66,7 @@ void AlgoMenu::onShow()
 			control->setWindow(new UniformGrid3dView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("MeshToParticle")) {
-			control->setWindow(new MeshToParticleAlgoView("MeshToParticle",getWorld(), getCanvas()));
+			control->setWindow(new MeshToParticleView("MeshToParticle",getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("SVSphere")) {
 			control->setWindow(new SVSphereView("SVSphere", getWorld(), getCanvas()));

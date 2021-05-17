@@ -2,6 +2,11 @@
 
 #include "PublicLabels/MeshToVoxelLabels.h"
 
+#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../CrystalSpace/VoxelScene.h"
+
+#include "../CrystalSpace/MeshToVoxelConverter.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 using namespace Crystal::Scene;
@@ -31,5 +36,17 @@ std::string MeshToVoxelCommand::getName()
 
 bool MeshToVoxelCommand::execute(World* scene)
 {
-	return false;
+	auto pmScene = scene->getScenes()->findSceneById<PolygonMeshScene*>(args.meshId.getValue());
+	if (pmScene == nullptr) {
+		return false;
+	}
+	auto voxelScene = scene->getScenes()->findSceneById<VoxelScene*>(args.voxelId.getValue());
+	if (voxelScene == nullptr) {
+		return false;
+	}
+	MeshToVoxelConverter converter;
+	converter.convert(*pmScene->getShape(), args.divideLength.getValue());
+	auto voxel = converter.toVoxel();
+	voxelScene->resetShape(std::move(voxel));
+	return true;
 }

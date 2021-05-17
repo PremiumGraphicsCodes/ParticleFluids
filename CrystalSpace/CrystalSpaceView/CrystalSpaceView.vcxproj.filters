@@ -36,7 +36,6 @@
     <ClCompile Include="IndexedSortSearchAlgoView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
-    <ClCompile Include="MeshToParticleAlgoView.cpp" />
     <ClCompile Include="ISVAddView.cpp">
       <Filter>Volume\SparseVolume</Filter>
     </ClCompile>
@@ -52,6 +51,7 @@
     <ClCompile Include="MeshToVoxelView.cpp">
       <Filter>Voxel</Filter>
     </ClCompile>
+    <ClCompile Include="MeshToParticleView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h">
@@ -88,7 +88,6 @@
     <ClInclude Include="IndexedSortSearchAlgoView.h">
       <Filter>Search</Filter>
     </ClInclude>
-    <ClInclude Include="MeshToParticleAlgoView.h" />
     <ClInclude Include="SVSphereView.h">
       <Filter>Volume\SparseVolume</Filter>
     </ClInclude>
@@ -104,6 +103,7 @@
     <ClInclude Include="MeshToVoxelView.h">
       <Filter>Voxel</Filter>
     </ClInclude>
+    <ClInclude Include="MeshToParticleView.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">
