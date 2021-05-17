@@ -169,6 +169,7 @@
     <ClCompile Include="IVoxelAddView.cpp" />
     <ClCompile Include="MarchingCubesView.cpp" />
     <ClCompile Include="MeshToParticleAlgoView.cpp" />
+    <ClCompile Include="MeshToVoxelView.cpp" />
     <ClCompile Include="OctreeView.cpp" />
     <ClCompile Include="SpaceHashView.cpp" />
     <ClCompile Include="SVSphereView.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="IVoxelAddView.h" />
     <ClInclude Include="MarchingCubesView.h" />
     <ClInclude Include="MeshToParticleAlgoView.h" />
+    <ClInclude Include="MeshToVoxelView.h" />
     <ClInclude Include="OctreeView.h" />
     <ClInclude Include="SpaceHashView.h" />
     <ClInclude Include="SVSphereView.h" />

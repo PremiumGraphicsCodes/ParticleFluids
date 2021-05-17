@@ -42,6 +42,9 @@ template<typename T>
 class SparseVolume : private UnCopyable
 {
 public:
+	SparseVolume()
+	{}
+
 	SparseVolume(const Math::Box3d& bb, const std::array<int, 3>& resolutions) :
 		boundingBox(bb),
 		resolutions(resolutions)
@@ -54,6 +57,16 @@ public:
 	}
 
 	void clear();
+
+	void setBox(const Math::Box3d& bb)
+	{
+		this->boundingBox = bb;
+	}
+
+	void setResolution(const std::array<int, 3>& resolution)
+	{
+		this->resolutions = resolution;
+	}
 
 	Math::Box3d getBoundingBox() const { return boundingBox; }
 

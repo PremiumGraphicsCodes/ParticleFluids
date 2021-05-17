@@ -49,6 +49,9 @@
     <ClCompile Include="VoxelSphereView.cpp">
       <Filter>Voxel</Filter>
     </ClCompile>
+    <ClCompile Include="MeshToVoxelView.cpp">
+      <Filter>Voxel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h">
@@ -96,6 +99,9 @@
       <Filter>Voxel</Filter>
     </ClInclude>
     <ClInclude Include="IVoxelAddView.h">
+      <Filter>Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshToVoxelView.h">
       <Filter>Voxel</Filter>
     </ClInclude>
   </ItemGroup>
