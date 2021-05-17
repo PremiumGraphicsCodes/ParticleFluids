@@ -47,6 +47,13 @@
                     <RibbonButton Label="PSToVolume" Command="{Binding NavigateCommand}" CommandParameter="PSToVolume"/>
                     <RibbonButton Label="VolumeToMesh" Command="{Binding NavigateCommand}" CommandParameter="VolumeToMesh"/>
                 </RibbonGroup>
+                <RibbonGroup Header="Converter">
+                    <RibbonButton Label="MeshToVoxel" Command="{Binding NavigateCommand}" CommandParameter="MeshToVoxel"/>
+                </RibbonGroup>
+                <RibbonGroup Header="PolygonMesh">
+                    <RibbonButton Label="Box" Command="{Binding NavigateCommand}" CommandParameter="PMBoxGeneration"/>
+                </RibbonGroup>
+
             </RibbonTab>
             <RibbonTab Header="Test">
                 <RibbonGroup Header="SparseVolume">

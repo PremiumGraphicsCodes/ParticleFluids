@@ -2,13 +2,13 @@
 
 #include "MeshBoundaryScenePresenter.h"
 #include "../../Crystal/Math/Triangle3d.h"
-#include "../../CrystalSpace/CrystalSpace/MeshToParticleAlgo.h"
+//#include "../../CrystalSpace/CrystalSpace/MeshToParticleAlgo.h"
 #include "../../Crystal/Shape/Particle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
-using namespace Crystal::Space;
+//using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
 MeshBoundaryScene::MeshBoundaryScene(const int id, const std::string& name) :
@@ -24,6 +24,7 @@ MeshBoundaryScene::~MeshBoundaryScene()
 
 void MeshBoundaryScene::build(Shape::PolygonMesh* mesh, const double divideLength)
 {
+	/*
 	this->mesh = mesh;
 	this->divideLength = divideLength;
 	const auto& positions = mesh->getPositions();
@@ -41,6 +42,7 @@ void MeshBoundaryScene::build(Shape::PolygonMesh* mesh, const double divideLengt
 		auto pn = new Particle<BoundaryAttr>(divPositions[i], BoundaryAttr(normals[i]));
 		positionWithNormal.push_back(pn);
 	}
+	*/
 }
 
 IPresenter* MeshBoundaryScene::getPresenter()

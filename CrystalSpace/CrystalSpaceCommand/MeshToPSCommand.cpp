@@ -3,9 +3,11 @@
 #include "PublicLabels/MeshToPSLabels.h"
 
 #include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../CrystalSpace/MeshToParticleConverter.h"
 
 using namespace Crystal::Math;
+using namespace Crystal::Graphics;
 using namespace Crystal::Space;
 using namespace Crystal::Scene;
 using namespace Crystal::Command;
@@ -33,29 +35,26 @@ std::string MeshToPSCommand::getName()
 
 bool MeshToPSCommand::execute(World* world)
 {
-	auto scene = world->getScenes()->findSceneById<PolygonMeshScene*>(args.polygonMeshId.getValue());
-	if (scene == nullptr) {
+	auto meshScene = world->getScenes()->findSceneById<PolygonMeshScene*>(args.polygonMeshId.getValue());
+	if (meshScene == nullptr) {
 		return false;
 	}
 
-	/*
-	auto shape = scene->getShape();
-
-	const auto indicesx = args.indicesX.getValue();
-	const auto indicesy = args.indicesY.getValue();
-	const auto indicesz = args.indicesZ.getValue();
-	const auto values = args.values.getValue();
-
-	assert(indicesx.size() == indicesy.size());
-	assert(indicesy.size() == indicesz.size());
-	assert(indicesz.size() == values.size());
-
-	for (int i = 0; i < indicesx.size(); ++i) {
-		std::array<int, 3> index{ indicesx[i], indicesy[i], indicesz[i] };
-		auto n = shape->createNode(index);
-		n->setValue(values[i]);
+	auto psScene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.particleSystemId.getValue());
+	if (psScene == nullptr) {
+		return false;
 	}
-	*/
+
+	MeshToParticleConverter converter;
+	converter.subdivide(*meshScene->getShape(), args.divideLength.getValue());
+	const auto positions = converter.getPositions();
+
+	auto ps = psScene->getShape();
+	ParticleAttribute attr;
+	attr.color = ColorRGBAf(0, 0, 0, 0);
+	for (auto p : positions) {
+		ps->add(p, attr);
+	}
 
 	return true;
 }

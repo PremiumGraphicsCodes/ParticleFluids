@@ -3,11 +3,7 @@ using Microsoft.Win32;
 using PG.Control.OpenGL;
 using PG.Scene;
 using Reactive.Bindings;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FluidStudio.Tool.Modeling
 {

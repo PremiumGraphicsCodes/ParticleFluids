@@ -80,6 +80,16 @@ namespace FluidStudio.Space
             command.Execute(world.Adapter);
         }
 
+        public int CreateVoxel(string name, int layer)
+        {
+            var resolution = new int[3];
+            resolution[0] = 1;
+            resolution[1] = 1;
+            resolution[2] = 1;
+            var box = new Box3d(new Vector3d(0, 0, 0), new Vector3d(1, 1, 1));
+            return CreateVoxel(name, resolution, box, layer);
+        }
+
         public int CreateVoxel(string name, int[] resolution, Box3d boundingBox, int layer)
         {
             var command = new PG.CLI.SpaceCommand(PG.VoxelSceneCreateLabels.CommandNameLabel);
@@ -129,8 +139,16 @@ namespace FluidStudio.Space
             command.SetArg(PG.MeshToVoxelLabels.PolygonMeshIdLabel, polygonId);
             command.SetArg(PG.MeshToVoxelLabels.VoxelIdLabel, voxelId);
             command.SetArg(PG.MeshToVoxelLabels.DivideLengthLabel, divideLength);
-            command.Equals(world.Adapter);
+            command.Execute(world.Adapter);
         }
 
+        public void PolygonToParticleSystem(int polygonId, int psId, double divideLength)
+        {
+            var command = new PG.CLI.SpaceCommand(PG.MeshToPSLabels.CommandNameLabel);
+            command.SetArg(PG.MeshToPSLabels.PolygonMeshIdLabel, polygonId);
+            command.SetArg(PG.MeshToPSLabels.ParticleSystemIdLabel, psId);
+            command.SetArg(PG.MeshToPSLabels.DivideLengthLabel, divideLength);
+            command.Execute(world.Adapter);
+        }
     }
 }
