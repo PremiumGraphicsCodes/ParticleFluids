@@ -5,7 +5,9 @@
 
 namespace Crystal {
 	namespace Math {
-		class Line3dd;
+		template<typename T>
+		class Line3d;
+		using Line3dd = Line3d<double>;
 		class Sphere3d;
 		class Ray3d;
 		class Plane3d;

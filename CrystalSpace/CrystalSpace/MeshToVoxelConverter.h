@@ -13,6 +13,8 @@ public:
 
 	void subdivide(const Math::Triangle3d& triangle, const double divideLength);
 
+	void toVoxel(const double divideLength);
+
 private:
 	Voxel voxel;
 

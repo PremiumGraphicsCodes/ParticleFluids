@@ -52,6 +52,14 @@ T SparseVolume<T>::getValueAt(const std::array<int, 3>& index) const
 	return iter->second->getValue();
 }
 
+template<typename T>
+bool SparseVolume<T>::exists(const std::array<int, 3>& index) const
+{
+	auto iter = nodes.find(index);
+	return iter == nodes.end();
+}
+
+
 template class SparseVolume<bool>;
 template class SparseVolume<float>;
 template class SparseVolume<double>;

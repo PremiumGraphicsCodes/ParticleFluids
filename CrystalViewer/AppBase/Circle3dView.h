@@ -14,9 +14,9 @@ class Circle3dView : public IView
 public:
 	explicit Circle3dView(const std::string& name);
 
-	Math::Circle3d getValue() const;
+	Math::Circle3dd getValue() const;
 
-	void setValue(const Math::Circle3d& value);
+	void setValue(const Math::Circle3dd& value);
 
 private:
 	Vector3dView centerView;

@@ -84,6 +84,8 @@ public:
 
 	T getValueAt(const std::array<int, 3>& index) const;
 
+	bool exists(const std::array<int, 3>& index) const;
+
 private:
 	std::map< std::array<int, 3>, SparseVolumeNode<T>*> nodes;
 

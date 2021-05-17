@@ -14,12 +14,12 @@ Circle3dView::Circle3dView(const std::string& name) :
 	add(&vvecView);
 }
 
-Circle3d Circle3dView::getValue() const
+Circle3dd Circle3dView::getValue() const
 {
-	return Circle3d(centerView.getValue(), uvecView.getValue(), vvecView.getValue());
+	return Circle3dd(centerView.getValue(), uvecView.getValue(), vvecView.getValue());
 }
 
-void Circle3dView::setValue(const Circle3d& value)
+void Circle3dView::setValue(const Circle3dd& value)
 {
 	this->centerView.setValue(value.getCenter());
 	this->uvecView.setValue(value.getUVec());
