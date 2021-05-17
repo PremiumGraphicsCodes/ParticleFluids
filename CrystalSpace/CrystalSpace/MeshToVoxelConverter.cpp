@@ -13,8 +13,10 @@ void MeshToVoxelConverter::convert(const PolygonMesh& mesh, const double divideL
 	const auto resx = static_cast<int>( box.getLength().x / divideLength );
 	const auto resy = static_cast<int>( box.getLength().y / divideLength );
 	const auto resz = static_cast<int>( box.getLength().z / divideLength );
-	voxel.setBox(box);
-	voxel.setResolution({ resx, resy, resz });
+
+	voxel = std::make_unique<Voxel>();
+	voxel->setBox(box);
+	voxel->setResolution({ resx, resy, resz });
 
 	const auto& positions = mesh.getPositions();
 	const auto& faces = mesh.getFaces();
@@ -22,6 +24,7 @@ void MeshToVoxelConverter::convert(const PolygonMesh& mesh, const double divideL
 		const auto& triangle = f.toTriangle(positions);
 		subdivide(triangle, divideLength);
 	}
+	toVoxel(divideLength);
 }
 
 void MeshToVoxelConverter::subdivide(const Triangle3d& triangle, const double divideLength)
@@ -52,16 +55,16 @@ void MeshToVoxelConverter::subdivide(const Triangle3d& triangle, const double di
 
 void MeshToVoxelConverter::toVoxel(const double divideLength)
 {
-	const auto origin = voxel.getBoundingBox().getMin();
+	const auto origin = voxel->getBoundingBox().getMin();
 	for (const auto& p : positions) {
 		const auto localPos = p - origin;
 		const auto ix = static_cast<int>( localPos.x / divideLength );
 		const auto iy = static_cast<int>( localPos.y / divideLength );
 		const auto iz = static_cast<int>( localPos.z / divideLength );
 		const std::array<int,3> index = { ix, iy, iz };
-		const bool exits = voxel.exists(index);
+		const bool exits = voxel->exists(index);
 		if (!exits) {
-			auto node = voxel.createNode(index);
+			auto node = voxel->createNode(index);
 			node->setValue(true);
 		}
 	}

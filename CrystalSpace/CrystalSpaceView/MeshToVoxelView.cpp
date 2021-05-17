@@ -1,6 +1,7 @@
 #include "MeshToVoxelView.h"
 
 #include "../CrystalSpace/MeshToVoxelConverter.h"
+#include "../CrystalSpace/VoxelScene.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
@@ -29,30 +30,12 @@ void MeshToVoxelView::onOk()
 
 	MeshToVoxelConverter converter;
 	converter.convert(*mesh, 1.0);
-	/*
-	auto id = polygonMeshSelectView.getId();
-	auto scene = getWorld()->getScenes()->findSceneById<PolygonMeshScene*>(id);
-	auto mesh = scene->getShape();
+	auto voxel = converter.toVoxel();
+	auto scene = new VoxelScene(getWorld()->getNextSceneId(), "Voxel", std::move(voxel));
 
-	MeshToParticleAlgo algo;
-	algo.subdivide(*mesh, divideLengthView.getValue());
-	const auto& positions = algo.getPositions();
+	//auto scene = new VoxelScene(getWorld()->getNextSceneId(), nameView.getValue(), std::move(voxel));
+	getWorld()->getScenes()->addScene(scene);
 
-	Command::Command command;
-	command.create(ParticleSystemCreateLabels::ParticleSystemAddLabel);
-	command.setArg(ParticleSystemCreateLabels::PositionsLabel, positions);
-	//command.setArg(ParticleSystemCreateLabels::PointSizeLabel, 1.0f);
-	//command.setArg(ParticleSystemCreateLabels::ColorLabel, glm::vec4);
-	command.setArg(ParticleSystemCreateLabels::NameLabel, std::string("MeshToParticle"));
-	//	command.setArg(ParticleSystemCreateLabels::MatrixLabel, matrixView.getValue());
-	command.execute(getWorld());
-	auto newId = std::any_cast<int>(command.getResult(ParticleSystemCreateLabels::NewIdLabel));
-
-	command.create(ShaderBuildLabels::CommandNameLabel);
-	command.setArg(ShaderBuildLabels::IdLabel, newId);
-	command.execute(getWorld());
-
-	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
-	command.execute(getWorld());
-	*/
+	auto presenter = scene->getPresenter();
+	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 }

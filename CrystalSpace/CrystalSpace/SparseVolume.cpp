@@ -56,7 +56,7 @@ template<typename T>
 bool SparseVolume<T>::exists(const std::array<int, 3>& index) const
 {
 	auto iter = nodes.find(index);
-	return iter == nodes.end();
+	return iter != nodes.end();
 }
 
 

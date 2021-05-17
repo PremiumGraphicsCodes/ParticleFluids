@@ -13,6 +13,7 @@
 #include "SpaceHashView.h"
 #include "UniformGrid3dView.h"
 #include "MeshToParticleAlgoView.h"
+#include "MeshToVoxelView.h"
 
 #include "SVSphereView.h"
 #include "VoxelSphereView.h"
@@ -72,6 +73,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("VoxelSphere")) {
 			control->setWindow(new VoxelSphereView("VoxelSphere", getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("MeshToVoxel")) {
+			control->setWindow(new MeshToVoxelView("MeshToVoxel", getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}

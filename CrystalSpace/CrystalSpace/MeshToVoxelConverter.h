@@ -3,6 +3,8 @@
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "Voxel.h"
 
+#include <memory>
+
 namespace Crystal {
 	namespace Space {
 
@@ -15,8 +17,10 @@ public:
 
 	void toVoxel(const double divideLength);
 
+	std::unique_ptr<Voxel> toVoxel() { return std::move(voxel); }
+
 private:
-	Voxel voxel;
+	std::unique_ptr<Voxel> voxel;
 
 	std::vector<Math::Vector3dd> positions;
 };
