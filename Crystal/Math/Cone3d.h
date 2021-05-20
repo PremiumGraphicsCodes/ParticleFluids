@@ -7,7 +7,7 @@
 namespace Crystal {
 	namespace Math {
 
-class Cone3d : public ISurface3d, public IVolume3dd
+class Cone3d : public ISurface3dd, public IVolume3dd
 {
 public:
 	Cone3d();

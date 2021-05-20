@@ -8,6 +8,7 @@ namespace Crystal {
 	namespace Math {
 		class Triangle3d;
 		class Box3d;
+		template<typename T>
 		class ISurface3d;
 	}
 	namespace Shape {
@@ -21,7 +22,7 @@ public:
 
 	void add(const Math::Box3d& box);
 
-	void add(const Math::ISurface3d& sphere, const int unum, const int vnum);
+	void add(const Math::ISurface3d<double>& sphere, const int unum, const int vnum);
 
 	void add(const Math::IVolume3dd& volume, const int unum, const int vnun, const int wnum);
 

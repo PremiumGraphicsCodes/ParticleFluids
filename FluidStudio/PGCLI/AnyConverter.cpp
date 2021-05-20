@@ -59,7 +59,7 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 	else if (type == Core::Math::ISurface3d::typeid) {
 		auto v = (Core::Math::ISurface3d^)(object);
 		auto vv = Converter::toCpp(v);
-		return std::any(std::shared_ptr<Crystal::Math::ISurface3d>(vv));
+		return std::any(std::shared_ptr<Crystal::Math::ISurface3dd>(vv));
 	}
 	else if(System::Collections::Generic::IEnumerable<Object^>::typeid->IsAssignableFrom(type)){
 		auto values = (System::Collections::Generic::IEnumerable<Object^>^)object;
@@ -203,7 +203,7 @@ std::any AnyConverter::toCpp(System::Collections::Generic::IEnumerable<Object^>^
 		return std::any(dest);
 	}
 	else if (contentType == Core::Math::ISurface3d::typeid) {
-		std::vector<Crystal::Math::ISurface3d*> dest;
+		std::vector<Crystal::Math::ISurface3dd*> dest;
 		for each (Core::Math::ISurface3d ^ s in values) {
 			dest.push_back(Converter::toCpp(s));
 		}

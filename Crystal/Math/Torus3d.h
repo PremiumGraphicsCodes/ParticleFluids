@@ -6,7 +6,7 @@
 namespace Crystal {
 	namespace Math {
 
-class Torus3d : public ISurface3d
+class Torus3d : public ISurface3dd
 {
 public:
 	Torus3d();

@@ -30,7 +30,7 @@ void WireFrameBuilder::build(const ICurve3dd& curve, const int unum)
 	}
 }
 
-void WireFrameBuilder::build(const ISurface3d& sphere, const int unum, const int vnum)
+void WireFrameBuilder::build(const ISurface3dd& sphere, const int unum, const int vnum)
 {
 	const auto du = 1.0 / static_cast<double>(unum);
 	const auto dv = 1.0 / static_cast<double>(vnum);

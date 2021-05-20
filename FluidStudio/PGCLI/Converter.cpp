@@ -201,7 +201,7 @@ Crystal::Math::Space3d PG::CLI::Converter::toCpp(PG::Core::Math::Space3d^ src)
 	return Crystal::Math::Space3d();
 }
 
-Crystal::Math::ISurface3d* PG::CLI::Converter::toCpp(PG::Core::Math::ISurface3d^ src)
+Crystal::Math::ISurface3dd* PG::CLI::Converter::toCpp(PG::Core::Math::ISurface3d^ src)
 {
 	if (src->GetType() == PG::Core::Math::Sphere3d::typeid) {
 		auto s = (PG::Core::Math::Sphere3d^)(src);

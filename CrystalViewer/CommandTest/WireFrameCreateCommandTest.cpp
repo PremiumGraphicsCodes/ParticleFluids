@@ -18,7 +18,7 @@ TEST(WireFrameCreateCommandTest, TestExecute)
 	World world;
 
 	WireFrameBuilder builder;
-	builder.build(Line3dd(Vector3dd(0,0,0), Vector3dd(1,0,0)));
+	builder.build(Line3dd(Vector3dd(0,0,0), Vector3dd(1,0,0)), 2);
 
 	auto command = CommandFactory::create(WireFrameCreateLabels::WireFrameAddLabel);
 	command->setArg(WireFrameCreateLabels::PositionsLabel, builder.getPositions());

@@ -11,6 +11,7 @@
 namespace Crystal {
 	namespace Math {
 		class Box3d;
+		template<typename T>
 		class ISurface3d;
 	}
 	namespace Shape {
@@ -21,7 +22,7 @@ class WireFrameBuilder
 public:
 	void build(const Math::ICurve3dd& curve, int unum);
 
-	void build(const Math::ISurface3d& circle, const int unum, const int vnum);
+	void build(const Math::ISurface3d<double>& circle, const int unum, const int vnum);
 
 	void build(const Math::Box3d& box);
 

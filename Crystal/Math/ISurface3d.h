@@ -5,15 +5,18 @@
 namespace Crystal {
 	namespace Math {
 
+template<typename T>
 class ISurface3d
 {
 public:
 	virtual ~ISurface3d() = default;
 
-	virtual Vector3dd getPosition(const double u, const double v) const = 0;
+	virtual Vector3d<T> getPosition(const T u, const T v) const = 0;
 
-	virtual Vector3dd getNormal(const double u, const double v) const = 0;
+	virtual Vector3d<T> getNormal(const T u, const T v) const = 0;
 };
+
+using ISurface3dd = ISurface3d<double>;
 
 	}
 }

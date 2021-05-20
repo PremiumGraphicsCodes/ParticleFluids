@@ -8,7 +8,7 @@ namespace Crystal {
 	namespace Math {
 		class Box3d;
 
-class Ellipsoid3d : public ISurface3d
+class Ellipsoid3d : public ISurface3dd
 {
 public:
 	Ellipsoid3d();

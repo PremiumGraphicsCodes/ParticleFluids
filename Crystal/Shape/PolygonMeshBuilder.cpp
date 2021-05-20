@@ -31,7 +31,7 @@ namespace {
 	constexpr auto tolerance = 1.0e-12;
 }
 
-void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const int vnum)
+void PolygonMeshBuilder::add(const ISurface3dd& surface, const int unum, const int vnum)
 {
 	const auto du = 1.0 / static_cast<double>(unum);
 	const auto dv = 1.0 / static_cast<double>(vnum);
