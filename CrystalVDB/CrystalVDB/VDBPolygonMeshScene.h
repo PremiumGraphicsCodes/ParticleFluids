@@ -71,7 +71,7 @@ public:
 
 	Scene::SceneType getType() const { return Type; }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 	void updateNormals();
 

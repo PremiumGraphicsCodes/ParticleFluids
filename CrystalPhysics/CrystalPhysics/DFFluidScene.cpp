@@ -17,9 +17,9 @@ void DFFluidScene::clearParticles()
 	particles.clear();
 }
 
-Box3d DFFluidScene::getBoundingBox() const
+Box3dd DFFluidScene::getBoundingBox() const
 {
-	Box3d bb(particles.front()->getPosition());
+	Box3dd bb(particles.front()->getPosition());
 	for (auto p : particles) {
 		bb.add(p->getPosition());
 	}

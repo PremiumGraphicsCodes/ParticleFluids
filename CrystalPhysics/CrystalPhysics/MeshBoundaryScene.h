@@ -40,7 +40,7 @@ public:
 
 	Scene::IPresenter* getPresenter();
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 	Shape::PolygonMesh* getMesh() { return mesh; }
 	

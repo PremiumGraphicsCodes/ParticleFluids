@@ -25,10 +25,10 @@ void IKFFluidScene::clearParticles()
 	particles.clear();
 }
 
-Box3d IKFFluidScene::getBoundingBox() const
+Box3dd IKFFluidScene::getBoundingBox() const
 {
 	if (particles.empty()) {
-		return Box3d::createDegeneratedBox();
+		return Box3dd::createDegeneratedBox();
 	}
 	Box3d bb(particles.front()->getPosition());
 	for (auto p : particles) {

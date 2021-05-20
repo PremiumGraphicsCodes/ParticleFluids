@@ -26,7 +26,7 @@ public:
 
 	void simulate(const float dt, const float effectRadius, const float searchRadius, const int maxIter);
 
-	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
+	void setBoundary(const Math::Box3dd& boundary) { this->boundary = boundary; }
 
 	void setExternalForce(const Math::Vector3df& force) { this->externalForce = force; }
 
@@ -36,7 +36,7 @@ public:
 
 private:
 	std::vector<DFFluidScene*> fluids;
-	Math::Box3d boundary;
+	Math::Box3dd boundary;
 	Math::Vector3df externalForce;
 	float maxTimeStep;
 

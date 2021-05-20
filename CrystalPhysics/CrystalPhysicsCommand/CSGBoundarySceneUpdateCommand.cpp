@@ -20,7 +20,7 @@ std::string CSGBoundarySceneUpdateCommand::getName()
 
 CSGBoundarySceneUpdateCommand::Args::Args() :
 	id(::IdLabel, -1),
-	bb(::BoundingBoxLabel, Math::Box3d()),
+	bb(::BoundingBoxLabel, Math::Box3dd()),
 	name(::NameLabel, std::string("CSGBoundary"))
 {
 	add(&id);

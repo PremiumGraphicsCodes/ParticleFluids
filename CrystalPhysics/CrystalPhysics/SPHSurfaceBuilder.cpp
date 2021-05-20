@@ -117,7 +117,7 @@ void SPHSurfaceBuilder::buildAnisotoropic(const std::vector<Vector3dd>& position
 
 std::unique_ptr<SparseVolumed> SPHSurfaceBuilder::createSparseVolume(const std::vector<Vector3dd>& particles, const float searchRadius,  const float cellLength)
 {
-	Box3d bb = Box3d::createDegeneratedBox();
+	Box3dd bb = Box3dd::createDegeneratedBox();
 	for (const auto& p : particles) {
 		bb.add(p);
 	}

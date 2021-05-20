@@ -29,7 +29,7 @@ public:
 
 	std::list<PBSPHParticle*> getParticles() const { return particles; }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 	SPHKernel* getKernel() { return &kernel; }
 

@@ -50,7 +50,7 @@ IPresenter* MeshBoundaryScene::getPresenter()
 	return controller.get();
 }
 
-Box3d MeshBoundaryScene::getBoundingBox() const
+Box3dd MeshBoundaryScene::getBoundingBox() const
 {
 	return mesh->getBoundingBox();
 }

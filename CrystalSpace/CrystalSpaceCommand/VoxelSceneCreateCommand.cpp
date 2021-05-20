@@ -12,7 +12,7 @@ VoxelSceneCreateCommand::Args::Args() :
 	resolutionX(::ResolutionXLabel, 10),
 	resolutionY(::ResolutionYLabel, 10),
 	resolutionZ(::ResolutionZLabel, 10),
-	boundingBox(::BoundingBoxLabel, Box3d()),
+	boundingBox(::BoundingBoxLabel, Box3dd()),
 	name(::NameLabel, std::string("")),
 	layer(::LayerLabel, -1)
 {

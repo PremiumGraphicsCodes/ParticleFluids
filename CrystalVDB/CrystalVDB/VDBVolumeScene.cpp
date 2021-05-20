@@ -73,11 +73,11 @@ int VDBVolumeScene::getActiveVoxelCount() const
 	return impl->getPtr()->activeVoxelCount();
 }
 
-Box3d VDBVolumeScene::getBoundingBox() const
+Box3dd VDBVolumeScene::getBoundingBox() const
 {
 	auto grid = impl->getPtr();
 	if (grid->empty()) {
-		return Box3d::createDegeneratedBox();
+		return Box3dd::createDegeneratedBox();
 	}
 	auto transform = grid->transform();
 	auto firstPos = transform.indexToWorld( grid->cbeginValueOn().getCoord() );

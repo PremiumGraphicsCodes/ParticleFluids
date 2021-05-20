@@ -104,10 +104,10 @@ std::vector<VDBPolygonMeshScene::Face> VDBPolygonMeshScene::getAllFaces() const
 	return faces;
 }
 
-Box3d VDBPolygonMeshScene::getBoundingBox() const
+Box3dd VDBPolygonMeshScene::getBoundingBox() const
 {
 	if (impl->points.empty()) {
-		return Box3d::createDegeneratedBox();
+		return Box3dd::createDegeneratedBox();
 	}
 	auto vertices = this->getVerticesd();
 

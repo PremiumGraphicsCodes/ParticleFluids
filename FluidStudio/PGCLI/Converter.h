@@ -68,9 +68,9 @@ public:
 
 	static PG::Core::Graphics::Material^ fromCpp(const Crystal::Graphics::Material& src);
 
-	static Crystal::Math::Box3d toCpp(PG::Core::Math::Box3d^ src);
+	static Crystal::Math::Box3dd toCpp(PG::Core::Math::Box3d^ src);
 
-	static PG::Core::Math::Box3d^ fromCpp(const Crystal::Math::Box3d& src);
+	static PG::Core::Math::Box3d^ fromCpp(const Crystal::Math::Box3dd& src);
 
 	static Crystal::Scene::SceneType toCpp(PG::Core::SceneType src);
 

@@ -33,7 +33,7 @@ public:
 
 	void clearParticles();
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 
 private:

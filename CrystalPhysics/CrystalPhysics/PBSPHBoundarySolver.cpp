@@ -12,7 +12,7 @@ namespace {
 	SPHKernel kernel;
 }
 
-PBSPHBoundarySolver::PBSPHBoundarySolver(const Box3d& boundary) :
+PBSPHBoundarySolver::PBSPHBoundarySolver(const Box3dd& boundary) :
 	boundary(boundary)
 {
 }

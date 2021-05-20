@@ -32,7 +32,7 @@ public:
 
 	//std::vector<CSPHParticle*> getParticles() const { return particles; }
 
-	void setBoundary(const Math::Box3d& boundary) { this->boundary = boundary; }
+	void setBoundary(const Math::Box3dd& boundary) { this->boundary = boundary; }
 
 	void setEffectLenth(const float length) { this->effectLength = length; }
 
@@ -42,7 +42,7 @@ private:
 	//SPHKernel kernel;
 	std::vector<CSPHFluidScene*> fluids;
 	Math::Vector3df externalForce;
-	Math::Box3d boundary;
+	Math::Box3dd boundary;
 };
 
 	}

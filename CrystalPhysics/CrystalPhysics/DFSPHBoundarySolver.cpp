@@ -5,7 +5,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
-DFSPHBoundarySolver::DFSPHBoundarySolver(const float timeStep, const Box3d& boundary) :
+DFSPHBoundarySolver::DFSPHBoundarySolver(const float timeStep, const Box3dd& boundary) :
 	timeStep(timeStep),
 	boundary(boundary)
 {

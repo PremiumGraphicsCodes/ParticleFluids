@@ -14,7 +14,7 @@ class PBSPHBoundarySolver
 public:
 	PBSPHBoundarySolver() {};
 
-	PBSPHBoundarySolver(const Math::Box3d& boundary);
+	PBSPHBoundarySolver(const Math::Box3dd& boundary);
 
 	void addDX(const std::vector<PBSPHParticle*>& particles, const float dt);
 
@@ -33,7 +33,7 @@ private:
 	float getOverY(const float y);
 	float getOverZ(const float z);
 
-	const Math::Box3d boundary;
+	const Math::Box3dd boundary;
 
 };
 

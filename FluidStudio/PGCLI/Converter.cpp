@@ -170,12 +170,12 @@ PG::Core::Graphics::Material^ PG::CLI::Converter::fromCpp(const Crystal::Graphic
 	return result;
 }
 
-Crystal::Math::Box3d PG::CLI::Converter::toCpp(PG::Core::Math::Box3d^ src)
+Crystal::Math::Box3dd PG::CLI::Converter::toCpp(PG::Core::Math::Box3d^ src)
 {
 	return Crystal::Math::Box3d( toCpp(src->Min), toCpp(src->Max));
 }
 
-PG::Core::Math::Box3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Box3d& src)
+PG::Core::Math::Box3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Box3dd& src)
 {
 	return gcnew PG::Core::Math::Box3d( fromCpp(src.getMin()), fromCpp(src.getMax()));// fromCpp(src.))
 }

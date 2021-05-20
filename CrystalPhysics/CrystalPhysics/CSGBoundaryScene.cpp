@@ -20,12 +20,12 @@ IPresenter* CSGBoundaryScene::getPresenter()
 	return controller.get();
 }
 
-Box3d CSGBoundaryScene::getBoundingBox() const
+Box3dd CSGBoundaryScene::getBoundingBox() const
 {
 	if (boxes.empty()) {
-		return Box3d::createDegeneratedBox();
+		return Box3dd::createDegeneratedBox();
 	}
-	Box3d bb(boxes.front());
+	Box3dd bb(boxes.front());
 	for (auto b : boxes) {
 		bb.add(b);
 	}

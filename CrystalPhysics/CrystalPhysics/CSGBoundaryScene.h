@@ -21,14 +21,14 @@ public:
 
 	Scene::IPresenter* getPresenter();
 
-	void add(const Math::Box3d& box) { boxes.push_back(box); }
+	void add(const Math::Box3dd& box) { boxes.push_back(box); }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
-	std::list<Math::Box3d> getBoxes() const { return boxes; }
+	std::list<Math::Box3dd> getBoxes() const { return boxes; }
 
 private:
-	std::list<Math::Box3d> boxes;
+	std::list<Math::Box3dd> boxes;
 	std::unique_ptr<CSGBoundaryScenePresenter> controller;
 };
 

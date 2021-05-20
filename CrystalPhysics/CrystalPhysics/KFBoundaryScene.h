@@ -31,7 +31,7 @@ public:
 
 	std::vector<KFBoundaryParticle*> getParticles() const { return particles; }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 	void setPressureCoe(const float coe) { this->pressureCoe = coe; }
 

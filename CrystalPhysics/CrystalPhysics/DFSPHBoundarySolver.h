@@ -13,7 +13,7 @@ public:
 	DFSPHBoundarySolver() :
 		timeStep(1.0f) {};
 
-	DFSPHBoundarySolver(const float timeStep, const Math::Box3d& boundary);
+	DFSPHBoundarySolver(const float timeStep, const Math::Box3dd& boundary);
 
 	void solve(const std::vector<DFSPHParticle*>& particles);
 
@@ -27,7 +27,7 @@ private:
 	float getForce(const float over);
 
 	const float timeStep;
-	const Math::Box3d boundary;
+	const Math::Box3dd boundary;
 };
 
 	}

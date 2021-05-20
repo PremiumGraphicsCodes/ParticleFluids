@@ -49,7 +49,7 @@ public:
 
     Scene::SceneType getType() const { return Type; }
 
-    Math::Box3d getBoundingBox() const override;
+    Math::Box3dd getBoundingBox() const override;
 
     std::vector<Math::Vector3dd> getPositions() const override;
 
