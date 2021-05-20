@@ -14,9 +14,9 @@ Scene::~Scene()
 {
 }
 
-Box3d Scene::getBoundingBox() const
+Box3dd Scene::getBoundingBox() const
 {
-	Box3d bb = Box3d::createDegeneratedBox();
+	Box3dd bb = Box3dd::createDegeneratedBox();
 	for (auto c : children) {
 		if (bb.isDegenerated()) {
 			bb = c->getBoundingBox();
@@ -29,7 +29,7 @@ Box3d Scene::getBoundingBox() const
 		bb.add(b);
 	}
 	if (bb.isDegenerated()) {
-		return Box3d();
+		return Box3dd();
 	}
 
 	return bb;

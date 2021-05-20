@@ -32,7 +32,7 @@ public:
 
 	SceneType getType() const override { return SceneTypeLabels::ParticleSystemScene; }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 	void setAttribute(const ParticleAttribute& attribute);
 

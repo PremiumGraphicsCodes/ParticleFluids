@@ -14,11 +14,11 @@ class Box3dView : public IView
 public:
 	explicit Box3dView(const std::string& name);
 
-	Box3dView(const std::string& name, const Math::Box3d& value);
+	Box3dView(const std::string& name, const Math::Box3dd& value);
 
-	Math::Box3d getValue() const;
+	Math::Box3dd getValue() const;
 
-	void setValue(const Math::Box3d& value);
+	void setValue(const Math::Box3dd& value);
 
 private:
 	Vector3dView minView;

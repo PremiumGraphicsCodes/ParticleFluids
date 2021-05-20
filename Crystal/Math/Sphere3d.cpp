@@ -16,7 +16,7 @@ Sphere3d::Sphere3d(const Vector3dd& center, const double radius) :
 	radius(radius)
 {}
 
-Sphere3d::Sphere3d(const Box3d& boundingBox)
+Sphere3d::Sphere3d(const Box3dd& boundingBox)
 {
 	center = boundingBox.getCenter();
 	const auto& length = boundingBox.getLength();
@@ -51,9 +51,9 @@ bool Sphere3d::isSame(const Sphere3d& rhs, const double tolerance) const
 		(center == rhs.center);
 }
 
-Box3d Sphere3d::getBoundingBox() const
+Box3dd Sphere3d::getBoundingBox() const
 {
 	const auto min = center - Vector3dd(radius, radius, radius);
 	const auto max = center + Vector3dd(radius, radius, radius);
-	return Box3d(min, max);
+	return Box3dd(min, max);
 }

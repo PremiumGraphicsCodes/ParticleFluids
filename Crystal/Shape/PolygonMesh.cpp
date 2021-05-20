@@ -64,15 +64,15 @@ void PolygonMesh::transform(const Matrix4dd& m)
 	}
 }
 
-Box3d PolygonMesh::getBoundingBox() const
+Box3dd PolygonMesh::getBoundingBox() const
 {
 	const auto& vertices = getVertices();
 
 	if (vertices.empty()) {
-		return Box3d();
+		return Box3dd();
 	}
 
-	Box3d bb(positions.front());
+	Box3dd bb(positions.front());
 	for (const auto& p : positions) {
 		bb.add(p);
 	}

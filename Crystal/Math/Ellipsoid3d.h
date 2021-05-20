@@ -6,6 +6,7 @@
 
 namespace Crystal {
 	namespace Math {
+		template<typename T>
 		class Box3d;
 
 class Ellipsoid3d : public ISurface3dd
@@ -31,7 +32,7 @@ public:
 
 	void moveTo(const Vector3dd& pos) { this->center = pos; }
 
-	Box3d getBoundingBox() const;
+	Box3d<double> getBoundingBox() const;
 
 private:
 	Vector3dd center;

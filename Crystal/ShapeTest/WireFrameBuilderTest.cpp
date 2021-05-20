@@ -24,7 +24,7 @@ TEST(WireFrameBuilderTest, TestBuildByLine)
 
 TEST(WireFrameBuilderTest, TestBuildByBox)
 {
-	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
+	const Box3dd box(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
 
 	WireFrameBuilder builder;
 	builder.build(box);

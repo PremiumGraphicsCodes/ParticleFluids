@@ -45,9 +45,9 @@ bool Ellipsoid3d::isSame(const Ellipsoid3d& rhs, const double tolerance) const
 		areSame(wvec, rhs.wvec, tolerance);
 }
 
-Box3d Ellipsoid3d::getBoundingBox() const
+Box3dd Ellipsoid3d::getBoundingBox() const
 {
-	Box3d bb(getPosition(0, 0));
+	Box3dd bb(getPosition(0, 0));
 	bb.add(getPosition(1, 1));
 	return bb;
 }

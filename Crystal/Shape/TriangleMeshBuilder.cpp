@@ -31,7 +31,7 @@ void TriangleMeshBuilder::add(const Quad3d& quad)
 	faces.push_back(f2);
 }
 
-void TriangleMeshBuilder::add(const Box3d& box)
+void TriangleMeshBuilder::add(const Box3dd& box)
 {
 	auto p0 = box.getPosition(0, 0, 0);
 	auto p1 = box.getPosition(1, 0, 0);

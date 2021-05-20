@@ -78,10 +78,10 @@ public:
 		return positions;
 	}
 
-	Math::Box3d getBoundingBox() const
+	Math::Box3dd getBoundingBox() const
 	{
 		if (particles.empty()) {
-			return Math::Box3d::createDegeneratedBox();
+			return Math::Box3dd::createDegeneratedBox();
 		}
 		Math::Box3d bb(particles.front()->getPosition());
 		for (auto p : particles) {

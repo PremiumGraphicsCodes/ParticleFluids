@@ -8,6 +8,7 @@
 namespace Crystal {
 	namespace Math {
 		class Plane3d;
+		template<typename T>
 		class Box3d;
 
 class Triangle3d
@@ -35,7 +36,7 @@ public:
 
 	void transform(const Math::Matrix4dd& matrix);
 
-	Box3d getBoundingBox() const;
+	Box3d<double> getBoundingBox() const;
 
 	bool isSame(const Triangle3d& rhs, const double tolerance) const;
 

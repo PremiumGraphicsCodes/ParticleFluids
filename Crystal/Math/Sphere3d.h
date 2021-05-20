@@ -6,6 +6,7 @@
 
 namespace Crystal {
 	namespace Math {
+		template<typename T>
 		class Box3d;
 
 class Sphere3d : public ISurface3dd, public IVolume3dd
@@ -15,7 +16,7 @@ public:
 
 	Sphere3d(const Vector3dd& center, const double radius);
 
-	explicit Sphere3d(const Math::Box3d& boundingBox);
+	explicit Sphere3d(const Math::Box3d<double>& boundingBox);
 
 	Vector3dd getPosition(const double u, const double v) const override;
 
@@ -41,7 +42,7 @@ public:
 
 	void moveTo(const Vector3dd& pos) { this->center = pos; }
 
-	Box3d getBoundingBox() const;
+	Box3d<double> getBoundingBox() const;
 
 private:
 	Vector3dd center;

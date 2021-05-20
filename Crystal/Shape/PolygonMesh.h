@@ -34,7 +34,7 @@ public:
 
 	void transform(const Math::Matrix4dd& m) override;
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 

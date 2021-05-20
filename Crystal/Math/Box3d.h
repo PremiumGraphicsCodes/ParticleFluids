@@ -7,73 +7,76 @@ namespace Crystal {
 	namespace Math {
 		class Sphere3d;
 
-class Box3d : public IVolume3dd
+template<typename T>
+class Box3d : public IVolume3d<T>
 {
 public:
 	Box3d();
 
-	explicit Box3d(const Vector3dd& point);
+	explicit Box3d(const Vector3d<T>& point);
 
-	Box3d(const Vector3dd& pointX, const Vector3dd& pointY);
+	Box3d(const Vector3d<T>& pointX, const Vector3d<T>& pointY);
 
-	Box3d getBoundingBox() const { return *this; }
+	Box3d<T> getBoundingBox() const { return *this; }
 
-	static Box3d createDegeneratedBox();
+	static Box3d<T> createDegeneratedBox();
 
 	bool isDegenerated() const;
 
-	void add(const Vector3dd& v);
+	void add(const Vector3d<T>& v);
 
-	void add(const Box3d& b);
+	void add(const Box3d<T>& b);
 
-	double getVolume() const;
+	T getVolume() const;
 
-	Vector3dd getMax() const { return max; }
+	Vector3d<T> getMax() const { return max; }
 
-	Vector3dd getMin() const { return min; }
+	Vector3d<T> getMin() const { return min; }
 
-	Vector3dd getStart() const { return getMin(); }
+	Vector3d<T> getStart() const { return getMin(); }
 
-	Vector3dd getEnd() const { return getMax(); }
+	Vector3d<T> getEnd() const { return getMax(); }
 
-	Vector3dd getCenter() const;
+	Vector3d<T> getCenter() const;
 
-	bool isInside(const Vector3dd& point) const;
+	bool isInside(const Vector3d<T>& point) const;
 
-	bool isOutside(const Vector3dd& point) const { return !isInside(point); }
+	bool isOutside(const Vector3d<T>& point) const { return !isInside(point); }
 
-	double getMaxX() const { return max.x; }
+	T getMaxX() const { return max.x; }
 
-	double getMinX() const { return min.x; }
+	T getMinX() const { return min.x; }
 
-	double getMaxY() const { return max.y; }
+	T getMaxY() const { return max.y; }
 
-	double getMinY() const { return min.y; }
+	T getMinY() const { return min.y; }
 
-	double getMaxZ() const { return max.z; }
+	T getMaxZ() const { return max.z; }
 
-	double getMinZ() const { return min.z; }
+	T getMinZ() const { return min.z; }
 
-	Vector3dd getLength() const { return Vector3dd(max.x - getMinX(), max.y - getMinY(), max.z - getMinZ()); }
+	Vector3d<T> getLength() const { return Vector3d<T>(max.x - getMinX(), max.y - getMinY(), max.z - getMinZ()); }
 
-	bool isSame(const Box3d& rhs, const double tolerance) const;
+	bool isSame(const Box3d<T>& rhs, const T tolerance) const;
 
-	bool hasIntersection(const Box3d& rhs) const;
+	bool hasIntersection(const Box3d<T>& rhs) const;
 
-	Box3d getOverlapped(const Box3d& rhs) const;
+	Box3d<T> getOverlapped(const Box3d<T>& rhs) const;
 
-	Vector3dd getPosition(const double u, const double v, const double w) const override;
+	Vector3d<T> getPosition(const T u, const T v, const T w) const override;
 
 	Sphere3d getBoundintSphere() const;
 
-	bool isDegenerated(const double tolerance) { return getVolume() < tolerance; }
+	bool isDegenerated(const T tolerance) { return getVolume() < tolerance; }
 
-	void translate(const Math::Vector3dd& v);
+	void translate(const Math::Vector3d<T>& v);
 
 private:
-	Vector3dd min;
-	Vector3dd max;
+	Vector3d<T> min;
+	Vector3d<T> max;
 };
+
+using Box3dd = Box3d<double>;
 
 	}
 }

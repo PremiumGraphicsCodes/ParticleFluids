@@ -24,7 +24,7 @@ public:
 		Result<bool> isVisible;
 		Result<bool> isPickable;
 		Result<std::string> name;
-		Result<Math::Box3d> boundingBox;
+		Result<Math::Box3dd> boundingBox;
 		Result<std::string> typeName;
 	};
 

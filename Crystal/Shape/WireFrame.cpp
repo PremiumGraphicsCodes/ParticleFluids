@@ -24,10 +24,10 @@ void WireFrame::transform(const Matrix4dd& m)
 	}
 }
 
-Box3d WireFrame::getBoundingBox() const
+Box3dd WireFrame::getBoundingBox() const
 {
 	if (positions.empty()) {
-		return Box3d();
+		return Box3dd();
 	}
 	Box3d bb(positions.front());
 	for (const auto& v : positions) {

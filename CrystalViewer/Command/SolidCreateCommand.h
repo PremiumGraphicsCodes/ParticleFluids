@@ -20,7 +20,7 @@ public:
 	{
 		Args();
 
-		Arg< Math::Box3d > box;
+		Arg< Math::Box3dd > box;
 		Arg< Graphics::ColorRGBAf > color;
 		Arg< std::string > name;
 		Arg< int > layer;

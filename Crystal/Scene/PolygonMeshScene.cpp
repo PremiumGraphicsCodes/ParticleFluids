@@ -26,7 +26,7 @@ PolygonMeshScene::~PolygonMeshScene()
 
 }
 
-Box3d PolygonMeshScene::getBoundingBox() const
+Box3dd PolygonMeshScene::getBoundingBox() const
 {
 	return getShape()->getBoundingBox();
 }

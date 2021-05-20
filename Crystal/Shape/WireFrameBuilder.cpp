@@ -1,12 +1,9 @@
 #include "WireFrameBuilder.h"
 
-#include "../Math/Line3d.h"
+#include "../Math/ICurve3d.h"
 #include "../Math/Sphere3d.h"
 #include "../Math/Ray3d.h"
 #include "../Math/Box3d.h"
-#include "../Math/Circle3d.h"
-#include "../Math/Cone3d.h"
-#include "../Math/Cylinder3d.h"
 
 #include "WireFrame.h"
 #include "CircularBuffer.h"
@@ -57,7 +54,7 @@ void WireFrameBuilder::build(const ISurface3dd& sphere, const int unum, const in
 	}
 }
 
-void WireFrameBuilder::build(const Box3d& box)
+void WireFrameBuilder::build(const Box3dd& box)
 {
 	const auto p0 = createPosition(box.getPosition(0, 0, 0));
 	const auto p1 = createPosition(box.getPosition(1, 0, 0));

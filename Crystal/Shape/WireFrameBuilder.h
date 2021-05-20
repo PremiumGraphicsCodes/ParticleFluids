@@ -10,6 +10,7 @@
 
 namespace Crystal {
 	namespace Math {
+		template<typename T>
 		class Box3d;
 		template<typename T>
 		class ISurface3d;
@@ -24,7 +25,7 @@ public:
 
 	void build(const Math::ISurface3d<double>& circle, const int unum, const int vnum);
 
-	void build(const Math::Box3d& box);
+	void build(const Math::Box3d<double>& box);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 

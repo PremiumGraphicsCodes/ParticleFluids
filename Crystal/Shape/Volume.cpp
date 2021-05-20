@@ -4,7 +4,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
 template<typename T>
-Volume<T>::Volume(const Math::Box3d& box, const std::array<size_t, 3>& resolutions) :
+Volume<T>::Volume(const Math::Box3dd& box, const std::array<size_t, 3>& resolutions) :
 	box(box),
 	resolutions(resolutions)
 {

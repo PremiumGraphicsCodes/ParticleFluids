@@ -46,7 +46,7 @@ public:
 
 	SceneType getType() const override { return SceneTypeLabels::PolygonMeshScene; }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 	IPresenter* getPresenter() override { return presenter.get(); }
 

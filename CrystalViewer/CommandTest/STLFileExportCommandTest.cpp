@@ -18,7 +18,7 @@ TEST(STLFileExportCommandTest, TestExecute)
 	World world;
 
 	PolygonMeshBuilder builder;
-	builder.add(Box3d());
+	builder.add(Box3dd(), 2, 2, 2);
 	auto scene = new PolygonMeshScene(1, "", builder.build());
 	world.getScenes()->addScene(scene);
 

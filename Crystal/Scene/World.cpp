@@ -129,7 +129,7 @@ void World::addScene(int layer, IScene* scene)
 	scenes[layer]->addScene(scene);
 }
 
-Box3d World::getBoundingBox() const
+Box3dd World::getBoundingBox() const
 {
 	return scenes[1]->getBoundingBox();
 }

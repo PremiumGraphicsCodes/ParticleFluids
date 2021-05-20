@@ -15,18 +15,11 @@
 namespace Crystal {
 	namespace Shape {
 
-		/*
-class IVolume : public IShape
-{
-
-};
-*/
-
 template<typename T>
 class Volume : public IShape
 {
 public:
-	Volume(const Math::Box3d& box, const std::array<size_t, 3>& resolutions);
+	Volume(const Math::Box3dd& box, const std::array<size_t, 3>& resolutions);
 
 	~Volume() {
 		//clear();
@@ -44,7 +37,7 @@ public:
 
 	}
 
-	Math::Box3d getBoundingBox() const override { return box; }
+	Math::Box3dd getBoundingBox() const override { return box; }
 
 	std::array<size_t,3> getResolutions() const { return resolutions; }
 
@@ -66,7 +59,7 @@ public:
 	*/
 
 private:
-	Math::Box3d box;
+	Math::Box3dd box;
 	std::array<size_t,3> resolutions;
 	std::vector<std::vector<std::vector<T>>> nodes;
 };

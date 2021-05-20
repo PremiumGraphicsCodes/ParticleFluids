@@ -16,7 +16,7 @@ public:
 
 	void transform(const Math::Matrix4dd& m) {}
 
-	Math::Box3d getBoundingBox() { return Math::Box3d(); }
+	Math::Box3dd getBoundingBox() { return Math::Box3dd(); }
 
 private:
 

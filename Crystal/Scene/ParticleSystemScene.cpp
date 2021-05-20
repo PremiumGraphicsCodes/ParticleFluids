@@ -26,7 +26,7 @@ ParticleSystemScene::ParticleSystemScene(const int id, const std::string& name, 
 	presenter = std::make_unique<ParticleSystemPresenter>(this);
 }
 
-Crystal::Math::Box3d ParticleSystemScene::getBoundingBox() const
+Crystal::Math::Box3dd ParticleSystemScene::getBoundingBox() const
 {
 	return getShape()->getBoundingBox();
 }

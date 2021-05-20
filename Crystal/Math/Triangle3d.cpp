@@ -90,9 +90,9 @@ void Triangle3d::transform(const Matrix4dd& matrix)
 	}
 }
 
-Box3d Triangle3d::getBoundingBox() const
+Box3d<double> Triangle3d::getBoundingBox() const
 {
-	Box3d bb(vertices[0]);
+	Box3d<double> bb(vertices[0]);
 	bb.add(vertices[1]);
 	bb.add(vertices[2]);
 	return bb;

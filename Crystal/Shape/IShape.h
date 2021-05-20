@@ -22,7 +22,7 @@ public:
 
 	virtual void transform(const Math::Matrix4dd& m) = 0;
 
-	virtual Math::Box3d getBoundingBox() const = 0;
+	virtual Math::Box3d<double> getBoundingBox() const = 0;
 };
 	}
 }

@@ -8,6 +8,7 @@ namespace Crystal {
 	namespace Math {
 		class Triangle3d;
 		class Quad3d;
+		template<typename T>
 		class Box3d;
 		class Sphere3d;
 		class Cone3d;
@@ -23,7 +24,7 @@ public:
 
 	void add(const Math::Quad3d& quad);
 
-	void add(const Math::Box3d& box);
+	void add(const Math::Box3dd& box);
 
 	/*
 	void add(const Math::Sphere3d& sphere, const int unum, const int vnum);

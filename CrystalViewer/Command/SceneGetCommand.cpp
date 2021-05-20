@@ -17,7 +17,7 @@ SceneGetCommand::Results::Results() :
 	isVisible(SceneGetLabels::IsVisibleLabel, false),
 	isPickable(SceneGetLabels::IsPickableLabel, false),
 	name(SceneGetLabels::NameLabel, std::string()),
-	boundingBox(SceneGetLabels::BoundingBoxLabel, Box3d()),
+	boundingBox(SceneGetLabels::BoundingBoxLabel, Box3dd()),
 	typeName(SceneGetLabels::TypeNameLabel, "")
 {
 	//add(&center);

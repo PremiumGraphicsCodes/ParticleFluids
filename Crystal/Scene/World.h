@@ -41,7 +41,7 @@ public:
 
 	Shader::GLObjectFactory* getGLFactory() { return &glFactory; }
 
-	Math::Box3d getBoundingBox() const;
+	Math::Box3dd getBoundingBox() const;
 
 	SceneShader* getRenderer() { return renderer.get(); }
 

@@ -13,7 +13,7 @@ namespace {
 TEST(VolumeTest, TestGetCellLength)
 {
 	const std::array<size_t, 3> resolutions{ 2,1,4 };
-	Volume<double> volume(Box3d(Vector3dd(0,0,0), Vector3dd(2,2,2)), resolutions);
+	Volume<double> volume(Box3dd(Vector3dd(0,0,0), Vector3dd(2,2,2)), resolutions);
 	const auto actual = volume.getCellLength();
 	const auto expected = Vector3dd(1.0, 2.0, 0.5);
 	EXPECT_TRUE(::areSame(expected, actual, ::tolerance));
@@ -22,7 +22,7 @@ TEST(VolumeTest, TestGetCellLength)
 TEST(VolumeTest, TestGetCellPosition)
 {
 	const std::array<size_t, 3> resolutions{ 2,1,4 };
-	Volume<double> volume(Box3d(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2)), resolutions);
+	Volume<double> volume(Box3dd(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2)), resolutions);
 	
 	{
 		const auto actual = volume.getCellPosition(0, 0, 0);
@@ -39,7 +39,7 @@ TEST(VolumeTest, TestGetCellPosition)
 TEST(VolumeTest, TestIndexFromPosition)
 {
 	const std::array<size_t, 3> resolutions{ 2,1,4 };
-	Volume<double> volume(Box3d(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2)), resolutions);
+	Volume<double> volume(Box3dd(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2)), resolutions);
 
 	{
 		const auto p = Vector3dd(1.5, 1.0, 0.25);

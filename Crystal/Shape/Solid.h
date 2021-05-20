@@ -21,7 +21,7 @@ public:
 
 	void transform(const Math::Matrix4dd& m) { matrix *= m; }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 private:
 	std::unique_ptr<Math::IVolume3dd> shape;

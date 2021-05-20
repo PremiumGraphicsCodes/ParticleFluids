@@ -16,7 +16,7 @@ TEST(PolygonMeshCreateCommandTest, TestExecute)
 	World world;
 
 	PolygonMeshBuilder builder;
-	builder.add(Box3d());
+	builder.add(Box3dd(), 2, 2, 2);
 
 	auto command = CommandFactory::create(PolygonMeshCreateLabels::CommandNameLabel);
 	command->setArg(PolygonMeshCreateLabels::PositionsLabel, builder.getPositions());

@@ -8,7 +8,7 @@ Solid::Solid(std::unique_ptr<IVolume3dd> shape) :
 	matrix(Math::Identity<double>())
 {}
 
-Box3d Solid::getBoundingBox() const
+Box3dd Solid::getBoundingBox() const
 {
 	const auto p1 = shape->getPosition(0, 0, 0);
 	const auto p2 = shape->getPosition(1, 1, 1);

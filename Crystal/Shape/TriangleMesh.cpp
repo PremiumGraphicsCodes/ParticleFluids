@@ -48,7 +48,7 @@ void TriangleMesh::transform(const Matrix4dd& m)
 	}
 }
 
-Box3d TriangleMesh::getBoundingBox() const
+Box3dd TriangleMesh::getBoundingBox() const
 {
 	auto bb = faces.front().triangle.getBoundingBox();
 	for (auto& f : faces) {

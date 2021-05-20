@@ -18,6 +18,6 @@ SolidBoxView::SolidBoxView(const std::string& name, World* world, Canvas* canvas
 
 void SolidBoxView::onOk()
 {
-	auto solid = std::make_unique<Solid>((std::make_unique<Box3d>()));
+	auto solid = std::make_unique<Solid>((std::make_unique<Box3dd>()));
 	ISolidAddView::addSolid(std::move(solid));
 }

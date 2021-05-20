@@ -44,7 +44,7 @@ std::vector<Vector3dd> WireFrameScene::getAllVertices() const
 	return shape->getPositions();
 }
 
-Box3d WireFrameScene::getBoundingBox() const
+Box3dd WireFrameScene::getBoundingBox() const
 {
 	return shape->getBoundingBox();
 }

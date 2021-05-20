@@ -13,7 +13,7 @@ public:
 
 	~Scene();
 
-	Math::Box3d getBoundingBox() const;
+	Math::Box3dd getBoundingBox() const;
 
 	virtual SceneType getType() const { return SceneTypeLabels::Root; }
 
