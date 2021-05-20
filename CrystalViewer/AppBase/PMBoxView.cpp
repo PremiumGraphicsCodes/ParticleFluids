@@ -17,7 +17,7 @@ PMBoxView::PMBoxView(const std::string& name, World* world, Canvas* canvas) :
 void PMBoxView::onOk()
 {
 	PolygonMeshBuilder builder;
-	builder.add(boxView.getValue());
+	builder.add(boxView.getValue(), 2, 2, 2);
 
 	IPMAddView::addPolygonMesh(builder);
 }

@@ -3,7 +3,6 @@
 #include "../Math/Triangle3d.h"
 #include "../Math/Plane3d.h"
 #include "../Math/Quad3d.h"
-#include "../Math/Box3d.h"
 
 #include "CircularBuffer.h"
 
@@ -28,24 +27,69 @@ void PolygonMeshBuilder::add(const Triangle3d& triangle)
 	createFace(v0, v1, v2);
 }
 
-void PolygonMeshBuilder::add(const Box3d& box)
+namespace {
+	constexpr auto tolerance = 1.0e-12;
+}
+
+void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const int vnum)
 {
-	auto p0 = createPosition(box.getPosition(0, 0, 0));
-	auto p1 = createPosition(box.getPosition(1, 0, 0));
-	auto p2 = createPosition(box.getPosition(1, 1, 0));
-	auto p3 = createPosition(box.getPosition(0, 1, 0));
+	const auto du = 1.0 / static_cast<double>(unum);
+	const auto dv = 1.0 / static_cast<double>(vnum);
 
-	auto p4 = createPosition(box.getPosition(0, 0, 1));
-	auto p5 = createPosition(box.getPosition(1, 0, 1));
-	auto p6 = createPosition(box.getPosition(1, 1, 1));
-	auto p7 = createPosition(box.getPosition(0, 1, 1));
+	std::vector<std::vector<int>> positions;
+	std::vector<std::vector<int>> normals;
+	std::vector<std::vector<int>> texCoords;
 
-	auto n0 = createNormal(Vector3dd( 1, 0, 0));
+	for (auto u = 0.0; u < 1.0 + tolerance; u+=du) {
+		std::vector<int> ps;
+		std::vector<int> ns;
+		std::vector<int> ts;
+
+		for (auto v = 0.0; v < 1.0 + tolerance; v+=du) {
+			ps.push_back( createPosition(surface.getPosition( u, v )) );
+			ns.push_back( createNormal(surface.getNormal(u, v)) );
+			ts.push_back( createTexCoord(Vector2dd(u, v)) );
+		}
+		positions.push_back(ps);
+		normals.push_back(ns);
+		texCoords.push_back(ts);
+	}
+
+	std::vector<std::vector<int>> vertices;
+	for (int i = 0; i < positions.size(); ++i) {
+		std::vector<int> vs;
+		for (int j = 0; j < positions[i].size(); ++j) {
+			vs.push_back( createVertex(positions[i][j], normals[i][j], texCoords[i][j]) );
+		}
+		vertices.push_back(vs);
+	}
+
+	for (int i = 0; i < unum; ++i) {
+		for (int j = 0; j < vnum; ++j) {
+			createFace(vertices[i][j], vertices[i+1][j], vertices[i][j+1]);
+			createFace(vertices[i+1][j+1], vertices[i][j+1], vertices[i+1][j]);
+		}
+	}
+}
+
+void PolygonMeshBuilder::add(const IVolume3d& volume, const int unum, const int vnun, const int wnum)
+{
+	auto p0 = createPosition(volume.getPosition(0, 0, 0));
+	auto p1 = createPosition(volume.getPosition(1, 0, 0));
+	auto p2 = createPosition(volume.getPosition(1, 1, 0));
+	auto p3 = createPosition(volume.getPosition(0, 1, 0));
+
+	auto p4 = createPosition(volume.getPosition(0, 0, 1));
+	auto p5 = createPosition(volume.getPosition(1, 0, 1));
+	auto p6 = createPosition(volume.getPosition(1, 1, 1));
+	auto p7 = createPosition(volume.getPosition(0, 1, 1));
+
+	auto n0 = createNormal(Vector3dd(1, 0, 0));
 	auto n1 = createNormal(Vector3dd(-1, 0, 0));
-	auto n2 = createNormal(Vector3dd( 0, 1, 0));
-	auto n3 = createNormal(Vector3dd( 0,-1, 0));
-	auto n4 = createNormal(Vector3dd( 0, 0, 1));
-	auto n5 = createNormal(Vector3dd( 0, 0,-1));
+	auto n2 = createNormal(Vector3dd(0, 1, 0));
+	auto n3 = createNormal(Vector3dd(0, -1, 0));
+	auto n4 = createNormal(Vector3dd(0, 0, 1));
+	auto n5 = createNormal(Vector3dd(0, 0, -1));
 
 	/*
 	auto t0 = createTexCoord(Vector2dd(0, 0));
@@ -94,52 +138,7 @@ void PolygonMeshBuilder::add(const Box3d& box)
 	createFace(v7, v3, v6);
 
 	createFace(v0, v5, v1); // bottom
-	createFace(v0, v4, v5); 
-}
-
-namespace {
-	constexpr auto tolerance = 1.0e-12;
-}
-
-void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const int vnum)
-{
-	const auto du = 1.0 / static_cast<double>(unum);
-	const auto dv = 1.0 / static_cast<double>(vnum);
-
-	std::vector<std::vector<int>> positions;
-	std::vector<std::vector<int>> normals;
-	std::vector<std::vector<int>> texCoords;
-
-	for (auto u = 0.0; u < 1.0 + tolerance; u+=du) {
-		std::vector<int> ps;
-		std::vector<int> ns;
-		std::vector<int> ts;
-
-		for (auto v = 0.0; v < 1.0 + tolerance; v+=du) {
-			ps.push_back( createPosition(surface.getPosition( u, v )) );
-			ns.push_back( createNormal(surface.getNormal(u, v)) );
-			ts.push_back( createTexCoord(Vector2dd(u, v)) );
-		}
-		positions.push_back(ps);
-		normals.push_back(ns);
-		texCoords.push_back(ts);
-	}
-
-	std::vector<std::vector<int>> vertices;
-	for (int i = 0; i < positions.size(); ++i) {
-		std::vector<int> vs;
-		for (int j = 0; j < positions[i].size(); ++j) {
-			vs.push_back( createVertex(positions[i][j], normals[i][j], texCoords[i][j]) );
-		}
-		vertices.push_back(vs);
-	}
-
-	for (int i = 0; i < unum; ++i) {
-		for (int j = 0; j < vnum; ++j) {
-			createFace(vertices[i][j], vertices[i+1][j], vertices[i][j+1]);
-			createFace(vertices[i+1][j+1], vertices[i][j+1], vertices[i+1][j]);
-		}
-	}
+	createFace(v0, v4, v5);
 }
 
 std::unique_ptr<PolygonMesh> PolygonMeshBuilder::build()
