@@ -60,13 +60,13 @@ PG::Core::Math::Triangle3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Tri
 	return gcnew PG::Core::Math::Triangle3d(v0, v1, v2);
 }
 
-Crystal::Math::Sphere3d PG::CLI::Converter::toCpp(PG::Core::Math::Sphere3d^ src)
+Crystal::Math::Sphere3dd PG::CLI::Converter::toCpp(PG::Core::Math::Sphere3d^ src)
 {
 	auto center = toCpp(src->Center);
 	return Crystal::Math::Sphere3d(center, src->Radius);
 }
 
-PG::Core::Math::Sphere3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Sphere3d& src)
+PG::Core::Math::Sphere3d^ PG::CLI::Converter::fromCpp(const Crystal::Math::Sphere3dd& src)
 {
 	auto center = fromCpp(src.getCenter());
 	return gcnew PG::Core::Math::Sphere3d(src.getRadius(), center);
@@ -205,7 +205,7 @@ Crystal::Math::ISurface3dd* PG::CLI::Converter::toCpp(PG::Core::Math::ISurface3d
 {
 	if (src->GetType() == PG::Core::Math::Sphere3d::typeid) {
 		auto s = (PG::Core::Math::Sphere3d^)(src);
-		 Crystal::Math::Sphere3d* ss = new Crystal::Math::Sphere3d();
+		 Crystal::Math::Sphere3dd* ss = new Crystal::Math::Sphere3dd();
 		*ss = toCpp(s);
 		return ss;
 	}
@@ -216,7 +216,7 @@ Crystal::Math::IVolume3dd* PG::CLI::Converter::toCpp(PG::Core::Math::IVolume3d^ 
 {
 	if (src->GetType() == PG::Core::Math::Sphere3d::typeid) {
 		auto s = (PG::Core::Math::Sphere3d^)(src);
-		Crystal::Math::Sphere3d* ss = new Crystal::Math::Sphere3d();
+		Crystal::Math::Sphere3dd* ss = new Crystal::Math::Sphere3dd();
 		*ss = toCpp(s);
 		return ss;		
 	}

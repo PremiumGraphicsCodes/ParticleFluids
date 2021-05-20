@@ -196,7 +196,7 @@ std::any AnyConverter::toCpp(System::Collections::Generic::IEnumerable<Object^>^
 		return std::any(dest);
 	}
 	else if (contentType == Core::Math::Sphere3d::typeid) {
-		std::vector<Crystal::Math::Sphere3d> dest;
+		std::vector<Crystal::Math::Sphere3dd> dest;
 		for each (Core::Math::Sphere3d ^ s in values) {
 			dest.push_back(Converter::toCpp(s));
 		}

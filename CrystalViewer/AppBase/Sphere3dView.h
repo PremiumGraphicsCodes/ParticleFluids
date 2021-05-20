@@ -13,9 +13,9 @@ class Sphere3dView : public IView
 public:
 	explicit Sphere3dView(const std::string& name);
 
-	Math::Sphere3d getValue() const;
+	Math::Sphere3dd getValue() const;
 
-	void setValue(const Math::Sphere3d& value);
+	void setValue(const Math::Sphere3dd& value);
 
 private:
 	Vector3dView center;

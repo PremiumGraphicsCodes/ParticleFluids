@@ -8,7 +8,9 @@ namespace Crystal {
 		template<typename T>
 		class Line3d;
 		using Line3dd = Line3d<double>;
+		template<typename T>
 		class Sphere3d;
+		using Sphere3dd = Sphere3d<double>;
 		class Ray3d;
 		class Plane3d;
 		class Triangle3d;
@@ -40,7 +42,7 @@ public:
 class IntersectionAlgo
 {
 public:
-	bool calculateIntersection(const Math::Ray3d& ray, const Math::Sphere3d& sphere, const double tolerance);
+	bool calculateIntersection(const Math::Ray3d& ray, const Math::Sphere3dd& sphere, const double tolerance);
 
 	bool calculateIntersection(const Math::Ray3d& ray, const Math::Plane3d& plane, const double tolerance);
 
@@ -50,7 +52,7 @@ public:
 
 	bool calculateIntersection(const Math::Line3dd& line, const Math::Plane3d& plane, const double tolerance);
 
-	bool calculateIntersection(const Math::Line3dd& line, const Math::Sphere3d& sphere, const double tolerance);
+	bool calculateIntersection(const Math::Line3dd& line, const Math::Sphere3dd& sphere, const double tolerance);
 
 	bool calculateIntersection(const Math::Line3dd& line, const Math::Triangle3d& triangle, const double tolerance);
 

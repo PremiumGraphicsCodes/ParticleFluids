@@ -12,12 +12,12 @@ Sphere3dView::Sphere3dView(const std::string& name) :
 	add(&radius);
 }
 
-Sphere3d Sphere3dView::getValue() const
+Sphere3dd Sphere3dView::getValue() const
 {
-	return Math::Sphere3d(center.getValue(), radius.getValue());
+	return Math::Sphere3dd(center.getValue(), radius.getValue());
 }
 
-void Sphere3dView::setValue(const Sphere3d& value)
+void Sphere3dView::setValue(const Sphere3dd& value)
 {
 	this->center.setValue(value.getCenter());
 	this->radius.setValue(value.getRadius());

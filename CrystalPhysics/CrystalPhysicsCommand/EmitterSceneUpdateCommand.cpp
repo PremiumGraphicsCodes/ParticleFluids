@@ -74,7 +74,7 @@ bool EmitterSceneUpdateCommand::execute(World* world)
 		const auto radius = args.particleRadius.getValue();
 		const auto density = args.density.getValue();
 		for (const auto& p : positions) {
-			emitterScene->addSource(Sphere3d(p, radius));
+			emitterScene->addSource(Sphere3dd(p, radius));
 		}
 	}
 

@@ -155,7 +155,7 @@ Vector3d<T> Box3d<T>::getPosition(const T u, const T v, const T w) const
 }
 
 template<typename T>
-Sphere3d Box3d<T>::getBoundintSphere() const
+Sphere3d<T> Box3d<T>::getBoundingSphere() const
 {
 	const auto& halfLength = getLength() * T(0.5);
 	const auto radius = glm::length(halfLength);

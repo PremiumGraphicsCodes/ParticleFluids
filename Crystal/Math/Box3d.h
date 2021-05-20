@@ -5,6 +5,7 @@
 
 namespace Crystal {
 	namespace Math {
+		template<typename T>
 		class Sphere3d;
 
 template<typename T>
@@ -65,7 +66,7 @@ public:
 
 	Vector3d<T> getPosition(const T u, const T v, const T w) const override;
 
-	Sphere3d getBoundintSphere() const;
+	Sphere3d<T> getBoundingSphere() const;
 
 	bool isDegenerated(const T tolerance) { return getVolume() < tolerance; }
 

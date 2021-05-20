@@ -22,7 +22,7 @@ TEST(PolygonMeshBuilderTest, TestBuildByQuad)
 
 TEST(PolygonMeshBuilderTest, TestBuildBySphere)
 {
-    const Sphere3d sphere(Vector3dd(0, 0, 0), 10.0);
+    const Sphere3dd sphere(Vector3dd(0, 0, 0), 10.0);
 
     PolygonMeshBuilder builder;
     builder.add(sphere, 2, 2);

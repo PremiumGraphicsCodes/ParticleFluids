@@ -44,9 +44,9 @@ public:
 
 	static PG::Core::Math::Triangle3d^ fromCpp(const Crystal::Math::Triangle3d& src);
 
-	static Crystal::Math::Sphere3d toCpp(PG::Core::Math::Sphere3d^ src);
+	static Crystal::Math::Sphere3dd toCpp(PG::Core::Math::Sphere3d^ src);
 
-	static PG::Core::Math::Sphere3d^ fromCpp(const Crystal::Math::Sphere3d& src);
+	static PG::Core::Math::Sphere3d^ fromCpp(const Crystal::Math::Sphere3dd& src);
 
 	static Crystal::Math::Matrix3dd toCpp(PG::Core::Math::Matrix3d^ src);
 

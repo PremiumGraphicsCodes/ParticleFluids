@@ -10,6 +10,7 @@ namespace Crystal {
 		class Quad3d;
 		template<typename T>
 		class Box3d;
+		template<typename T>
 		class Sphere3d;
 		class Cone3d;
 	}

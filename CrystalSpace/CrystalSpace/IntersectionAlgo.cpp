@@ -16,7 +16,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
-bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Sphere3d& sphere, const double tolerance)
+bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Sphere3dd& sphere, const double tolerance)
 {
 	const auto& direction = ray.getDirection();
 	const auto& diff = sphere.getCenter() - ray.getOrigin();
@@ -38,7 +38,7 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Sphere3d& s
 	return false;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Sphere3d& sphere, const double tolerance)
+bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Sphere3dd& sphere, const double tolerance)
 {
 	const auto& dir = glm::normalize(line.getDirection());
 	const auto diff = sphere.getCenter() - line.getStart();

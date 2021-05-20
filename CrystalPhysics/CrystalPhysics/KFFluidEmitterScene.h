@@ -21,7 +21,7 @@ public:
 
 	void emitParticle(const int timeStep);
 
-	void addSource(const Math::Sphere3d& s) { this->sourcePositions.push_back(s); }
+	void addSource(const Math::Sphere3dd& s) { this->sourcePositions.push_back(s); }
 
 	void setStartEnd(const int startStep, const int endStep) { this->startEndStep = std::make_pair(startStep, endStep); }
 
@@ -36,7 +36,7 @@ public:
 	void clearSources() { this->sourcePositions.clear(); }
 
 private:
-	std::vector<Math::Sphere3d> sourcePositions;
+	std::vector<Math::Sphere3dd> sourcePositions;
 	Math::Vector3df initialVelocity;
 	std::pair<int,int> startEndStep;
 	int interval;

@@ -6,54 +6,65 @@
 
 using namespace Crystal::Math;
 
-Sphere3d::Sphere3d() :
+template<typename T>
+Sphere3d<T>::Sphere3d() :
 	center(Vector3dd(0, 0, 0)),
 	radius(1.0)
 {}
 
-Sphere3d::Sphere3d(const Vector3dd& center, const double radius) :
+template<typename T>
+Sphere3d<T>::Sphere3d(const Vector3d<T>& center, const T radius) :
 	center(center),
 	radius(radius)
 {}
 
-Sphere3d::Sphere3d(const Box3dd& boundingBox)
+template<typename T>
+Sphere3d<T>::Sphere3d(const Box3d<T>& boundingBox)
 {
 	center = boundingBox.getCenter();
 	const auto& length = boundingBox.getLength();
 	radius = std::min<double>(std::min<double>(length.x, length.y), length.z) * 0.5;
 }
 
-Vector3dd Sphere3d::getPosition(const double u, const double v) const
+template<typename T>
+Vector3d<T> Sphere3d<T>::getPosition(const T u, const T v) const
 {
 	return getPosition(u, v, 1.0);
 }
 
-Vector3dd Sphere3d::getPosition(const double u, const double v, const double w) const
+template<typename T>
+Vector3d<T> Sphere3d<T>::getPosition(const T u, const T v, const T w) const
 {
 	const auto theta = u * PI;
 	const auto phi = 2.0 * v * PI;
 	const auto x = w * radius * std::sin(theta) * std::cos(phi);
 	const auto y = w * radius * std::sin(theta) * std::sin(phi);
 	const auto z = w * radius * std::cos(theta);
-	return center + Vector3dd(x, y, z);
+	return center + Vector3d<T>(x, y, z);
 }
 
-Vector3dd Sphere3d::getNormal(const double u, const double v) const
+template<typename T>
+Vector3d<T> Sphere3d<T>::getNormal(const T u, const T v) const
 {
 	const auto& pos = getPosition(u, v, 1.0);
 	return glm::normalize(pos - center);
 }
 
-bool Sphere3d::isSame(const Sphere3d& rhs, const double tolerance) const
+template<typename T>
+bool Sphere3d<T>::isSame(const Sphere3d<T>& rhs, const T tolerance) const
 {
 	return
 		::isEqual(radius, rhs.radius, tolerance) &&
 		(center == rhs.center);
 }
 
-Box3dd Sphere3d::getBoundingBox() const
+template<typename T>
+Box3d<T> Sphere3d<T>::getBoundingBox() const
 {
-	const auto min = center - Vector3dd(radius, radius, radius);
-	const auto max = center + Vector3dd(radius, radius, radius);
-	return Box3dd(min, max);
+	const auto min = center - Vector3d<T>(radius, radius, radius);
+	const auto max = center + Vector3d<T>(radius, radius, radius);
+	return Box3d<T>(min, max);
 }
+
+template class Sphere3d<float>;
+template class Sphere3d<double>;

@@ -26,7 +26,7 @@ using namespace Crystal::Physics;
 namespace {
 	constexpr auto tolerance = 1.0e-12;
 
-	void build(const Sphere3d& sphere, const int unum, const int vnum, const Matrix3dd& m, WireFrameBuilder& wfBuilder)
+	void build(const Sphere3dd& sphere, const int unum, const int vnum, const Matrix3dd& m, WireFrameBuilder& wfBuilder)
 	{
 		const auto du = 1.0 / static_cast<double>(unum);
 		const auto dv = 1.0 / static_cast<double>(vnum);

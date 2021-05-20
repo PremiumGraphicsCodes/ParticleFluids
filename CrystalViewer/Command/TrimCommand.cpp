@@ -13,7 +13,7 @@ using namespace Crystal::Command;
 
 TrimCommand::Args::Args() :
 	shapeId(TrimLabels::ShapeIdLabel, -1),
-	spheres("Spheres", std::vector<Sphere3d>())
+	spheres("Spheres", std::vector<Sphere3dd>())
 //	space(::SpaceLabel, Math::Space3d())
 {
 	add(&shapeId);

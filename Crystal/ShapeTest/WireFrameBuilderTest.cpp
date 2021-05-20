@@ -44,7 +44,7 @@ TEST(WireFrameBuilderTest, TestBuildByCircle)
 
 TEST(WireFrameBuilderTest, TestBuildBySphere)
 {
-	const Sphere3d sphere(Vector3dd(0, 0, 0), 1.0);
+	const Sphere3dd sphere(Vector3dd(0, 0, 0), 1.0);
 
 	WireFrameBuilder builder;
 	builder.build(sphere, 9, 9);

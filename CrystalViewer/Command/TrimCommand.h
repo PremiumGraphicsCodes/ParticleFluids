@@ -18,7 +18,7 @@ public:
 
 		Arg<int> shapeId;
 		//Arg<Math::Space3d> space;
-		Arg<std::vector<Math::Sphere3d>> spheres;
+		Arg<std::vector<Math::Sphere3d<double>>> spheres;
 	};
 
 	struct Results : IResults
