@@ -7,7 +7,7 @@ namespace Crystal {
 	namespace Math {
 		class Sphere3d;
 
-class Box3d : public IVolume3d
+class Box3d : public IVolume3dd
 {
 public:
 	Box3d();

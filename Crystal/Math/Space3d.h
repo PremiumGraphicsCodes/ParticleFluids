@@ -11,12 +11,12 @@ namespace Crystal {
 class Space3d
 {
 public:
-	void add(IVolume3d* volume);
+	void add(IVolume3dd* volume);
 
 	bool isInside(const Math::Vector3dd& position) const;
 
 private:
-	std::vector<IVolume3d*> volumes;
+	std::vector<IVolume3dd*> volumes;
 };
 
 	}

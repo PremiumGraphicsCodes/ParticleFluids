@@ -72,7 +72,7 @@ void PolygonMeshBuilder::add(const ISurface3d& surface, const int unum, const in
 	}
 }
 
-void PolygonMeshBuilder::add(const IVolume3d& volume, const int unum, const int vnun, const int wnum)
+void PolygonMeshBuilder::add(const IVolume3dd& volume, const int unum, const int vnun, const int wnum)
 {
 	auto p0 = createPosition(volume.getPosition(0, 0, 0));
 	auto p1 = createPosition(volume.getPosition(1, 0, 0));

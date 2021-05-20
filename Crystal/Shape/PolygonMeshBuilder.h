@@ -23,7 +23,7 @@ public:
 
 	void add(const Math::ISurface3d& sphere, const int unum, const int vnum);
 
-	void add(const Math::IVolume3d& volume, const int unum, const int vnun, const int wnum);
+	void add(const Math::IVolume3dd& volume, const int unum, const int vnun, const int wnum);
 
 	std::unique_ptr<PolygonMesh> build();
 

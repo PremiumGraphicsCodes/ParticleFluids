@@ -19,7 +19,7 @@ TEST(OBJFileExportCommand, TestExecute)
 
 	Quad3d quad(Vector3dd(0,0,0), Vector3dd(1,0,0), Vector3dd(0,1,0));
 	PolygonMeshBuilder builder;
-	builder.add(quad);
+	builder.add(quad, 2, 2);
 	auto scene = new PolygonMeshScene(1, "", builder.build());
 	world.getScenes()->addScene(scene);
 

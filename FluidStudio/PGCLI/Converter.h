@@ -80,7 +80,7 @@ public:
 
 	static Crystal::Math::ISurface3d* toCpp(PG::Core::Math::ISurface3d^ src);
 
-	static Crystal::Math::IVolume3d* toCpp(PG::Core::Math::IVolume3d^ src);
+	static Crystal::Math::IVolume3dd* toCpp(PG::Core::Math::IVolume3d^ src);
 
 	static Crystal::Shape::Vertex toCpp(PG::Core::Shape::Vertex^ src);
 

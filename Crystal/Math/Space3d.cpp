@@ -2,7 +2,7 @@
 
 using namespace Crystal::Math;
 
-void Space3d::add(IVolume3d* volume)
+void Space3d::add(IVolume3dd* volume)
 {
 	this->volumes.push_back(volume);
 }

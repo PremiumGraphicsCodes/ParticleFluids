@@ -11,7 +11,7 @@ namespace Crystal {
 class Solid : public IShape
 {
 public:
-	explicit Solid(std::unique_ptr<Math::IVolume3d> shape);
+	explicit Solid(std::unique_ptr<Math::IVolume3dd> shape);
 
 	~Solid() {};
 
@@ -24,7 +24,7 @@ public:
 	Math::Box3d getBoundingBox() const override;
 
 private:
-	std::unique_ptr<Math::IVolume3d> shape;
+	std::unique_ptr<Math::IVolume3dd> shape;
 	Math::Matrix4dd matrix;
 };
 
