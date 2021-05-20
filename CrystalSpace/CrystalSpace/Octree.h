@@ -18,7 +18,7 @@ class Octree //: private UnCopyable
 public:
 	Octree() {};
 
-	Octree(const Math::Box3d& space);
+	Octree(const Math::Box3dd& space);
 
 	void add(Shape::IParticle* particle);
 
@@ -34,7 +34,7 @@ public:
 
 private:
 	std::vector<Shape::IParticle*> particles;
-	Math::Box3d space;
+	Math::Box3dd space;
 };
 
 	}

@@ -11,7 +11,7 @@ VoxelScene::VoxelScene(const int id, const std::string& name, std::unique_ptr<Vo
 	presenter = std::make_unique<VoxelPresenter>(this);
 }
 
-Box3d VoxelScene::getBoundingBox() const
+Box3dd VoxelScene::getBoundingBox() const
 {
 	return shape->getBoundingBox();
 }

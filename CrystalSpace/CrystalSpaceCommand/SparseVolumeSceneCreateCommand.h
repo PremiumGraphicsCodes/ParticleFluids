@@ -22,7 +22,7 @@ public:
 		Command::Arg< int > resolutionX;
 		Command::Arg< int > resolutionY;
 		Command::Arg< int > resolutionZ;
-		Command::Arg< Math::Box3d > boundingBox;
+		Command::Arg< Math::Box3dd > boundingBox;
 		Command::Arg< std::string> name;
 		Command::Arg< int > layer;
 	};

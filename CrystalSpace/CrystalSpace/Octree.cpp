@@ -6,7 +6,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
-Octree::Octree(const Box3d& space) :
+Octree::Octree(const Box3dd& space) :
 	space(space)
 {}
 

@@ -9,7 +9,7 @@ namespace Crystal {
 class VolumeConvertAlgo
 {
 public:
-	VolumeConvertAlgo(const Math::Box3d& box, const std::array<size_t,3>& resolutions);
+	VolumeConvertAlgo(const Math::Box3dd& box, const std::array<size_t,3>& resolutions);
 
 	void add(Shape::IParticle* particle);
 

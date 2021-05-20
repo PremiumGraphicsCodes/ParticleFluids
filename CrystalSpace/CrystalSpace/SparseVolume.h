@@ -45,7 +45,7 @@ public:
 	SparseVolume()
 	{}
 
-	SparseVolume(const Math::Box3d& bb, const std::array<int, 3>& resolutions) :
+	SparseVolume(const Math::Box3dd& bb, const std::array<int, 3>& resolutions) :
 		boundingBox(bb),
 		resolutions(resolutions)
 	{
@@ -58,7 +58,7 @@ public:
 
 	void clear();
 
-	void setBox(const Math::Box3d& bb)
+	void setBox(const Math::Box3dd& bb)
 	{
 		this->boundingBox = bb;
 	}
@@ -68,7 +68,7 @@ public:
 		this->resolutions = resolution;
 	}
 
-	Math::Box3d getBoundingBox() const { return boundingBox; }
+	Math::Box3dd getBoundingBox() const { return boundingBox; }
 
 	SparseVolumeNode<T>* createNode(const std::array<int, 3>& index);
 
@@ -89,7 +89,7 @@ public:
 private:
 	std::map< std::array<int, 3>, SparseVolumeNode<T>*> nodes;
 
-	Math::Box3d boundingBox;
+	Math::Box3dd boundingBox;
 	std::array<int, 3> resolutions;
 };
 

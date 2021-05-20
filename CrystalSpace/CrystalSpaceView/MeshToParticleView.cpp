@@ -26,7 +26,7 @@ void MeshToParticleView::onOk()
 {
 	PolygonMeshBuilder builder;
 	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	builder.add(box);
+	builder.add(box, 2, 2, 2);
 	auto mesh = builder.build();
 
 	MeshToParticleConverter converter;

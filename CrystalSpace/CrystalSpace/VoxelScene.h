@@ -23,7 +23,7 @@ public:
 
 	Scene::IPresenter* getPresenter() { return presenter.get(); }
 
-	Math::Box3d getBoundingBox() const override;
+	Math::Box3dd getBoundingBox() const override;
 
 private:
 	std::unique_ptr<Voxel> shape;
