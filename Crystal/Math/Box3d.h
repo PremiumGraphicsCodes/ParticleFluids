@@ -76,6 +76,7 @@ private:
 	Vector3d<T> max;
 };
 
+using Box3df = Box3d<float>;
 using Box3dd = Box3d<double>;
 
 	}

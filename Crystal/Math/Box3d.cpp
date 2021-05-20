@@ -157,7 +157,7 @@ Vector3d<T> Box3d<T>::getPosition(const T u, const T v, const T w) const
 template<typename T>
 Sphere3d Box3d<T>::getBoundintSphere() const
 {
-	const auto& halfLength = getLength() * 0.5;
+	const auto& halfLength = getLength() * T(0.5);
 	const auto radius = glm::length(halfLength);
 	return Sphere3d(getCenter(), radius);
 }
@@ -169,4 +169,5 @@ void Box3d<T>::translate(const Math::Vector3d<T>& v)
 	this->max += v;
 }
 
+template class Box3d<float>;
 template class Box3d<double>;
