@@ -1,4 +1,5 @@
-﻿using FluidStudio.VDB;
+﻿using FluidStudio.Space;
+using FluidStudio.VDB;
 using Microsoft.Win32;
 using PG.Control.OpenGL;
 using PG.Scene;
@@ -18,6 +19,11 @@ namespace FluidStudio.Tool.Modeling
         public ReactiveProperty<double> DivideLength { get; }
             = new ReactiveProperty<double>(1.0);
 
+        public ReactiveProperty<bool> IsSurfaceOnly { get; }
+            = new ReactiveProperty<bool>(false);
+
+        private readonly SpaceModel space;
+
         private readonly VDBModel vdb;
 
         private readonly SceneList world;
@@ -28,6 +34,7 @@ namespace FluidStudio.Tool.Modeling
 
         public MeshToPSViewModel(MainModel mainModel, SceneList scenes, Canvas3d canvas)
         {
+            this.space = mainModel.SpaceModel;
             this.vdb = mainModel.VDBModel;
             this.world = scenes;
             this.canvas = canvas;
@@ -72,6 +79,14 @@ namespace FluidStudio.Tool.Modeling
             this.vdb.ConvertVolumeToPS(volumeId, psId);
             this.canvas.SendShader(world, psId);
             return psId;
+        }
+
+        private int MeshToVoxel(int meshId)
+        {
+            var voxelId = space.CreateVoxel("VDBVoxel", 1);
+            this.canvas.BuildShader(world, voxelId);
+
+            return voxelId;
         }
 
         private void OnExport()

@@ -1,20 +1,23 @@
 #pragma once
 
-#include "../../Crystal/Shape/PolygonMesh.h"
+#include "../../CrystalSpace/CrystalSpace/Voxel.h"
+#include <vector>
 
 namespace Crystal {
 	namespace Space {
 
-class MeshToParticleConverter
+class VoxelToParticleConverter
 {
 public:
-	void subdivide(const Shape::PolygonMesh& mesh, const double divideLength);
+	//VoxelToParticleConverter();
+
+	void convert(const Voxel& voxel);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 
 private:
 	std::vector<Math::Vector3dd> positions;
-	
 };
+
 	}
 }

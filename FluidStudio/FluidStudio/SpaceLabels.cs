@@ -59,4 +59,11 @@ namespace PG {
 		public const string NewIdLabel = "NewId";
 	}
 
+	public class VoxelToPSLabels
+	{
+		public const string CommandNameLabel = "VoxelToPSCommand";
+		public const string VoxelIdLabel = "VoxelId";
+		public const string PSIdLabel = "PSId";
+	}
+
 }

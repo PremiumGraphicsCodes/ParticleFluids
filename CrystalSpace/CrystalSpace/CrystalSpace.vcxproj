@@ -175,6 +175,7 @@
     <ClInclude Include="ZIndexedSearchAlgo.h" />
     <ClInclude Include="ZOrderCurve2d.h" />
     <ClInclude Include="ZOrderCurve3d.h" />
+    <ClInclude Include="VoxelToParticleConverter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BooleanAlgo.cpp" />
@@ -197,6 +198,7 @@
     <ClCompile Include="Voxel.cpp" />
     <ClCompile Include="VoxelPresenter.cpp" />
     <ClCompile Include="VoxelScene.cpp" />
+    <ClCompile Include="VoxelToParticleConverter.cpp" />
     <ClCompile Include="ZIndexedSearchAlgo.cpp" />
     <ClCompile Include="ZOrderCurve2d.cpp" />
     <ClCompile Include="ZOrderCurve3d.cpp" />

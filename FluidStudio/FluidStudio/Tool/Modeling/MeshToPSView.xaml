@@ -15,5 +15,6 @@
         <Button Content="Import" Command="{Binding ImportCommand}"/>
         <Button Content="Export" Command="{Binding ExportCommand}"/>
         <Button Content="Exit" Command="{Binding ExitCommand}"/>
+        <CheckBox Content="SurfaceOnly" IsChecked="{Binding IsSurfaceOnly.Value}"/>
     </StackPanel>
 </UserControl>
