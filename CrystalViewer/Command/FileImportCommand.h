@@ -25,7 +25,7 @@ public:
 	{
 		Results();
 
-		Result< bool > isOk;
+		Result< int > newId;
 	};
 
 	FileImportCommand() :

@@ -49,14 +49,26 @@ namespace FluidStudio.Tool.Modeling
                 Title = "Import",
                 Filter = "OBJFile(*.obj)|*.obj|AllFiles(*.*)|*.*",
             };
-            if (dialog.ShowDialog() == true)
+            if (dialog.ShowDialog() != true)
+            {
+                return;
+            }
+
+            if (IsSurfaceOnly.Value)
+            {
+                var meshId = world.ImportOBJ(dialog.FileName);
+                var voxelId = space.CreateVoxel("", 1);
+                space.PolygonToVoxel(meshId, voxelId, DivideLength.Value);
+                canvas.Render();
+            }
+            else
             {
                 var meshId = vdb.ReadOBJ(dialog.FileName);
                 canvas.BuildShader(world, meshId);
                 canvas.Render();
+
                 var volumeId = MeshToVolume(meshId);
                 this.pointId = VolumeToPS(volumeId);
-//                canvas.Renderer.Update(mainMo)
                 canvas.Render();
             }
         }

@@ -142,8 +142,13 @@ namespace FluidStudio.Space
             command.Execute(world.Adapter);
         }
 
-        public void VoxelToParticleSystem(int polygonId, int psId, double divideLength)
-        { }
+        public void VoxelToParticleSystem(int voxelId, int psId)
+        {
+            var command = new PG.CLI.SpaceCommand(PG.VoxelToPSLabels.CommandNameLabel);
+            command.SetArg(PG.VoxelToPSLabels.VoxelIdLabel, voxelId);
+            command.SetArg(PG.VoxelToPSLabels.PSIdLabel, psId);
+            command.Execute(world.Adapter);
+        }
 
         public void PolygonToParticleSystem(int polygonId, int psId, double divideLength)
         {

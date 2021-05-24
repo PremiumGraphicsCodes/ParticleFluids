@@ -38,10 +38,19 @@ void FileMenu::onShow()
 			if (!filename.empty()) {
 				Crystal::Command::Command command("FileImport");
 				command.setArg(FileImportLabels::FilePathLabel, std::string(filename));
-				command.execute(model);
+				bool isOk = command.execute(model);
+				/*
 				bool isOk = std::any_cast<bool>(command.getResult(FileImportLabels::IsOkLabel));
+				*/
 				if (!isOk) {
 					std::cout << "import failed." << std::endl;
+				}
+				else {
+					const int newId = std::any_cast<int>(command.getResult(FileImportLabels::NewIdLabel));
+					auto scene = model->getScenes()->findSceneById<Crystal::Scene::IScene*>(newId);
+					auto presenter = scene->getPresenter();
+					presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+//					scene->getParent()->se
 				}
 			}
 			//canvas->update();

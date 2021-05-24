@@ -21,9 +21,9 @@ FileImportCommand::Args::Args() :
 }
 
 FileImportCommand::Results::Results() :
-	isOk(FileImportLabels::IsOkLabel, false)
+	newId(FileImportLabels::NewIdLabel, -1)
 {
-	add(&isOk);
+	add(&newId);
 }
 
 std::string FileImportCommand::getName()
@@ -34,7 +34,6 @@ std::string FileImportCommand::getName()
 bool FileImportCommand::execute(World* scene)
 {
 	if (!importFile(args.filePath.getValue(), scene)) {
-		results.isOk.value = false;
 		return false;
 	}
 	return true;
@@ -55,6 +54,8 @@ bool FileImportCommand::importFile(const std::filesystem::path& filePath, World*
 		auto command = CommandFactory::create(::OBJFileImportLabels::CommandNameLabel);
 		command->setArg(::OBJFileImportLabels::FilePathLabel, args.filePath.getValue());
 		const auto isOk = command->execute(world);
+		const auto newId = command->getResult(::OBJFileImportLabels::NewIdLabel);
+		results.newId.setValue( std::any_cast<int>( newId ) );
 		//OBJFileImporter importer(factory);
 		//return importer.importOBJWithMTL(filePath, parent);
 		return isOk;
