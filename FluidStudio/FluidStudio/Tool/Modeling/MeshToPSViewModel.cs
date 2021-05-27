@@ -2,6 +2,7 @@
 using FluidStudio.VDB;
 using Microsoft.Win32;
 using PG.Control.OpenGL;
+using PG.Core.UI;
 using PG.Scene;
 using Reactive.Bindings;
 using System.Collections.Generic;
@@ -59,6 +60,13 @@ namespace FluidStudio.Tool.Modeling
                 var meshId = world.ImportOBJ(dialog.FileName);
                 var voxelId = space.CreateVoxel("", 1);
                 space.PolygonToVoxel(meshId, voxelId, DivideLength.Value);
+
+                var appearance = new ParticleAppearance();
+                appearance.Color = new PG.Core.Graphics.ColorRGBA(1, 1, 1, 1);
+                appearance.Size = 10.0f;
+                this.pointId = world.AddParticleSystemScene(new List<PG.Core.Math.Vector3d>(), "PSSphere", appearance, 1);
+                this.canvas.BuildShader(world, this.pointId);
+                space.VoxelToParticleSystem(voxelId, this.pointId);
                 canvas.Render();
             }
             else

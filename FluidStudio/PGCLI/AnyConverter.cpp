@@ -61,9 +61,17 @@ std::any AnyConverter::toCpp(System::Object^ object, System::Type^ type)
 		auto vv = Converter::toCpp(v);
 		return std::any(std::shared_ptr<Crystal::Math::ISurface3dd>(vv));
 	}
+	else if (type == System::Collections::Generic::List<Core::Math::Vector3d^>::typeid) {
+		auto values = (System::Collections::Generic::List<Core::Math::Vector3d^>^)object;
+		std::vector<Crystal::Math::Vector3dd> dest;
+		for each (Core::Math::Vector3d ^ v in values) {
+			dest.push_back(Converter::toCpp(v));
+		}
+		return std::any(dest);
+	}
 	else if(System::Collections::Generic::IEnumerable<Object^>::typeid->IsAssignableFrom(type)){
 		auto values = (System::Collections::Generic::IEnumerable<Object^>^)object;
-		return toCpp(values);
+		return toCpp(values, type);
 	}
 	else if (type == System::Collections::Generic::List<int>::typeid) {
 		auto value = (System::Collections::Generic::List<int>^)object;
@@ -169,11 +177,11 @@ System::Object^ AnyConverter::fromCpp(std::any any)
 	return nullptr;
 }
 
-std::any AnyConverter::toCpp(System::Collections::Generic::IEnumerable<Object^>^ object)
+std::any AnyConverter::toCpp(System::Collections::Generic::IEnumerable<Object^>^ object, System::Type^ contentType)
 {
 	auto values = object;
 	auto first = System::Linq::Enumerable::FirstOrDefault(values);
-	auto contentType = first->GetType();
+//	auto contentType = first->GetType();
 	if (contentType == PG::Core::Math::Vector3d::typeid) {
 		std::vector<Crystal::Math::Vector3dd> dest;
 		for each (Core::Math::Vector3d ^ v in values) {

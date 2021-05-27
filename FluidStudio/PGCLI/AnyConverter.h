@@ -13,7 +13,7 @@ public:
 	static System::Object^ fromCpp(std::any any);
 
 private:
-	static std::any toCpp(System::Collections::Generic::IEnumerable<System::Object^>^ object);
+	static std::any toCpp(System::Collections::Generic::IEnumerable<System::Object^>^ object, System::Type^ type);
 };
 
 	}
