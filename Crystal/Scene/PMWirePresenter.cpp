@@ -70,10 +70,8 @@ void PMWirePresenter::updateScreenView()
 		buffer.addVertex(p, ColorRGBAf(1.0, 1.0, 1.0, 1.0));
 	}
 
-	auto groups = model->getGroups();
-	for (const auto& scene : groups) {
 		int materialId = 0;
-		auto faces = shape->getFaces();
+	//	auto faces = shape->getFaces();
 		for (const auto& f : faces) {
 			const auto& vIds = f.getVertexIds();
 			for (auto index = 0; index < vIds.size()-1; ++index) {
@@ -96,7 +94,6 @@ void PMWirePresenter::updateScreenView()
 			}
 			*/
 		}
-	}
 	this->view->send(buffer);
 }
 

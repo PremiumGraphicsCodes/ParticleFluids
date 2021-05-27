@@ -77,17 +77,10 @@ void PMSmoothPresenter::updateScreenView()
 
 	SmoothBuffer buffer;
 
-	auto groups = model->getGroups();
-	for (const auto& group : groups) {
 		int materialId = 0;//group.material->;
-		/*
-		if (scene->getMaterial() != nullptr) {
-			materialId = scene->getMaterial()->getMaterialId();
-		}
-		*/
 
-		auto faces = group.faces;
-		for (const auto& f : faces) {
+		//auto faces = group.faces;
+		for (const auto& f : shape->faces) {
 			const auto& vIds = f.getVertexIds();
 			for (const auto vId : vIds) {
 				const auto& v = vs[vId];
@@ -100,8 +93,6 @@ void PMSmoothPresenter::updateScreenView()
 				buffer.addVertex(p, n, texCoord, materialId);
 			}
 		}
-	}
-	this->view->send(buffer);
 
 }
 

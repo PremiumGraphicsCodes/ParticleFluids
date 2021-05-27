@@ -52,14 +52,14 @@ public:
 
 	void setPresenter(std::unique_ptr<IPMPresenter> presenter) { this->presenter = std::move(presenter); }
 
-	void addGroup(const FaceGroup& group) { this->groups.push_back(group); }
+	//void addGroup(const FaceGroup& group) { this->groups.push_back(group); }
 
-	std::vector<FaceGroup> getGroups() const { return groups; }
+	//std::vector<FaceGroup> getGroups() const { return groups; }
 
 private:
 	std::unique_ptr<Shape::PolygonMesh> shape;
 	std::unique_ptr<IPMPresenter> presenter;
-	std::vector<FaceGroup> groups;
+	//std::vector<FaceGroup> groups;
 };
 
 	}

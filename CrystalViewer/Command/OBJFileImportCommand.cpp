@@ -91,6 +91,7 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 
 		auto polygonMesh = builder.build();
 		auto meshScene = new PolygonMeshScene(world->getNextSceneId(), "PolygonMesh", std::move(polygonMesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(polygonMesh), "PolygonMesh");
+//		meshScene->addGroup()
 
 		world->getScenes()->addScene(meshScene);
 		results.newId.setValue(meshScene->getId());
