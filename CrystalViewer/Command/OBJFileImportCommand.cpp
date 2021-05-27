@@ -75,6 +75,12 @@ bool OBJFileImportCommand::importOBJ(const std::filesystem::path& filePath, Worl
 					const auto v = builder.createVertex(p, n, tc);
 					indices.push_back(v);
 				}
+				/*
+				if (indices.size() == 3) {
+					builder.createFace(indices[0], indices[1], indices[2]);
+				}
+				*/
+
 				//indices.push_back(eachIndices);
 				int origin = indices[0];
 				int i1 = 1;

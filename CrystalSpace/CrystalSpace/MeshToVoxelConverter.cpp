@@ -19,10 +19,15 @@ void MeshToVoxelConverter::convert(const PolygonMesh& mesh, const double divideL
 	voxel->setResolution({ resx, resy, resz });
 
 	const auto& positions = mesh.getPositions();
+	const auto& vs = mesh.getVertices();
 	const auto& faces = mesh.getFaces();
 	for (const auto& f : faces) {
-		const auto& triangle = f.toTriangle(positions);
-		subdivide(triangle, divideLength);
+		const auto p0 = vs[ f.getV1()].positionId;
+		const auto p1 = vs[f.getV2()].positionId;
+		const auto p2 = vs[f.getV3()].positionId;
+		Triangle3d t(positions[p0], positions[p1], positions[p2]);
+		//const auto& triangle = f.toTriangle(positions);
+		subdivide(t, divideLength);
 	}
 	toVoxel(divideLength);
 }
