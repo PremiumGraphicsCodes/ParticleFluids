@@ -9,6 +9,7 @@
 
 #include "../Shader/FrameBufferObject.h"
 #include "../Shader/TextureObject.h"
+#include "../Shader/ShaderBuildStatus.h"
 
 #include "MaterialShaderScene.h"
 
@@ -29,7 +30,7 @@ public:
 
 	~ScreenShader() {}
 
-	bool build(Shader::GLObjectFactory& factory);
+	Shader::ShaderBuildStatus build(Shader::GLObjectFactory& factory);
 
 	void release(Shader::GLObjectFactory& factory);
 

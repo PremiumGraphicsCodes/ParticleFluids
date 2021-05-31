@@ -19,7 +19,7 @@ SceneShader::SceneShader() :
 
 bool SceneShader::build(GLObjectFactory& factory)
 {
-	if (!objectRenderer->build(factory)) {
+	if (!objectRenderer->build(factory).isOk) {
 		return false;
 	}
 	if (!parentIdRenderer->build(factory)) {

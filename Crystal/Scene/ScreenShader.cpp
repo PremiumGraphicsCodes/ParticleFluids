@@ -22,16 +22,20 @@ ScreenShader::ScreenShader(const std::string& name) :
 {
 }
 
-bool ScreenShader::build(GLObjectFactory& factory)
+ShaderBuildStatus ScreenShader::build(GLObjectFactory& factory)
 {
-	if (!pointRenderer->build(factory)) {
-		return false;
+	const auto prStatus = pointRenderer->build(factory);
+	if(!prStatus.isOk) {
+		return prStatus;
 	}
-	if (!wireRenderer->build(factory)) {
-		return false;
+	const auto wrStatus = wireRenderer->build(factory);
+	if(!wrStatus.isOk){
+		return wrStatus;
 	}
 	if (!triagleRenderer->build(factory)) {
-		return false;
+		ShaderBuildStatus status;
+		status.isOk = false;
+		return status;
 	}
 
 	/*
@@ -44,7 +48,9 @@ bool ScreenShader::build(GLObjectFactory& factory)
 	texture->send(Image(512, 512));
 	frameBufferObject = factory.createFrameBufferObject();
 	frameBufferObject->build(512, 512);
-	return true;
+	ShaderBuildStatus status;
+	status.isOk = true;
+	return status;
 }
 
 void ScreenShader::release(GLObjectFactory& factory)

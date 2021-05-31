@@ -16,16 +16,22 @@ LineRenderer::LineRenderer()
 {
 }
 
-bool LineRenderer::build(GLObjectFactory& factory)
+ShaderBuildStatus LineRenderer::build(GLObjectFactory& factory)
 {
+	ShaderBuildStatus status;
+
 	const auto& vsSource = getBuiltInVsSource();
 	const auto& fsSource = getBuiltInFsSource();
 
 	this->shader = factory.createShaderObject();
 	const auto isOk = shader->build(vsSource, fsSource);
 	if (!isOk) {
-		return false;
+		status.isOk = false;
+		status.log = shader->getLog();
+		return status;
 	}
+
+	status.isOk = true;
 
 	shader->findUniformLocation(::projectionMatrixLabel);
 	shader->findUniformLocation(::modelViewMatrixLabel);
@@ -33,7 +39,7 @@ bool LineRenderer::build(GLObjectFactory& factory)
 	shader->findAttribLocation(::positionLabel);
 	shader->findAttribLocation(::colorLabel);
 
-	return true;
+	return status;
 }
 
 void LineRenderer::release(GLObjectFactory& factory)

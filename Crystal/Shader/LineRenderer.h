@@ -5,6 +5,7 @@
 #include "../Shader/GLObjectFactory.h"
 #include "../Math/Matrix4d.h"
 #include "../Shader/ShaderObject.h"
+#include "../Shader/ShaderBuildStatus.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -25,7 +26,7 @@ public:
 
 	LineRenderer();
 
-	bool build(Shader::GLObjectFactory& factory);
+	ShaderBuildStatus build(Shader::GLObjectFactory& factory);
 
 	void release(Shader::GLObjectFactory& factory);
 

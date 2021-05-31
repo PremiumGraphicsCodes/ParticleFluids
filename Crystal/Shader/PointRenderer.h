@@ -5,6 +5,7 @@
 #include "GLObjectFactory.h"
 #include "../Graphics/Camera.h"
 #include "../Shader/ShaderObject.h"
+#include "ShaderBuildStatus.h"
 #include <string>
 
 namespace Crystal {
@@ -25,7 +26,7 @@ public:
 
 	PointRenderer();
 
-	bool build(Shader::GLObjectFactory& factory);
+	ShaderBuildStatus build(Shader::GLObjectFactory& factory);
 
 	void release(Shader::GLObjectFactory& factory);
 

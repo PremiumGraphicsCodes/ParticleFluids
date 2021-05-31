@@ -24,15 +24,20 @@ PointRenderer::PointRenderer() :
 {
 }
 
-bool PointRenderer::build(GLObjectFactory& factory)
+ShaderBuildStatus PointRenderer::build(GLObjectFactory& factory)
 {
+	ShaderBuildStatus status;
+	status.isOk = true;
+
 	const auto& vsSource = getBuiltInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
 
 	shader = factory.createShaderObject();
 	const auto isOk = shader->build(vsSource, fsSource);
+	status.log = shader->getLog();
 	if (!isOk) {
-		return false;
+		status.isOk = false;
+		return status;
 	}
 
 	shader->findUniformLocation(::projectionMatrixLabel);
@@ -42,7 +47,7 @@ bool PointRenderer::build(GLObjectFactory& factory)
 	shader->findAttribLocation(::colorLabel);
 	shader->findAttribLocation(::sizeLabel);
 
-	return true;
+	return status;
 }
 
 void PointRenderer::release(GLObjectFactory& factory)
