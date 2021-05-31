@@ -4,6 +4,7 @@
 #include "VertexBufferObject.h"
 #include "../Math/Matrix4d.h"
 #include "../Math/Vector3d.h"
+#include "../Graphics/Buffer1d.h"
 #include "../Graphics/Material.h"
 #include "../Graphics/PointLight.h"
 #include "../Shader/TextureObject.h"
@@ -16,6 +17,13 @@ namespace Crystal {
 class SmoothRenderer
 {
 public:
+	struct BufferBlock
+	{
+		Graphics::Buffer1d<unsigned int> vertexIndices;
+		Graphics::Material material;
+		Shader::TextureObject texture;
+	};
+
 	struct Buffer
 	{
 		VertexBufferObject position;
@@ -27,13 +35,8 @@ public:
 		Math::Matrix4df projectionMatrix;
 		Math::Matrix4df modelViewMatrix;
 		Math::Vector3df eyePosition;
-	};
 
-	struct BufferBlock
-	{
-		std::vector<unsigned int> vertexIndices;
-		Graphics::Material material;
-		Shader::TextureObject texture;
+		std::vector<BufferBlock> blocks;
 	};
 
 	SmoothRenderer();
@@ -44,7 +47,7 @@ public:
 
 	void sendLight(const int index, const Graphics::PointLight& light);
 
-	void render(const Buffer& buffer, const std::vector<BufferBlock>& blocks);
+	void render(const Buffer& buffer);
 
 private:
 	std::string getBuildInVertexShaderSource() const;

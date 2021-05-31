@@ -29,7 +29,7 @@ public:
 		buffer.clear();
 	}
 
-	std::vector<T> get() { return buffer; }
+	std::vector<T> get() const { return buffer; }
 
 private:
 	std::vector< T > buffer;

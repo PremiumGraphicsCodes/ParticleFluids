@@ -63,7 +63,7 @@ public:
 
 	Shader::TriangleRenderer* getTriangleShader() { return triagleRenderer; }
 
-	//Shader::SmoothRenderer* getSmoothShader() { return smoothRenderer; }
+	Shader::SmoothRenderer* getSmoothShader() { return smoothRenderer; }
 
 	void addScene(IShaderScene* scene) { this->scenes.push_back(scene); }
 

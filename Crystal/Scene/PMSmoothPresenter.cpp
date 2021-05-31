@@ -21,28 +21,30 @@ PMSmoothPresenter::PMSmoothPresenter(PolygonMeshScene* model) :
 
 void PMSmoothPresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
-	/*
 	{
 		this->view = new SmoothShaderScene(model->getName());
 		this->view->setShader(sceneShader->getObjectRenderer()->getSmoothShader());
 		this->view->build(glFactory);
 
+		/*
 		this->view->setMaterialBuffer(sceneShader->getObjectRenderer()->getMateialScene());
 		this->view->sendAllMaterials();
 		this->view->sendAllLights();
 		this->view->sendAllTextures();
+		*/
 
 		sceneShader->getObjectRenderer()->addScene(this->view);
 	}
+	/**
 	{
 		this->parentIdView = new TriangleShaderScene(model->getName());
 		this->parentIdView->setShader(sceneShader->getObjectRenderer()->getTriangleShader());
 		this->parentIdView->build(glFactory);
 		sceneShader->getParentIdRenderer()->addScene(this->parentIdView);
 	}
+	*/
 
 	updateView();
-	*/
 }
 
 void PMSmoothPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& glFactory)
@@ -59,8 +61,8 @@ void PMSmoothPresenter::removeView(SceneShader* sceneShader, GLObjectFactory& gl
 void PMSmoothPresenter::updateView()
 {
 	updateScreenView();
-	updateParentIdView();
-	updateChildIdView();
+	//updateParentIdView();
+	//updateChildIdView();
 }
 
 void PMSmoothPresenter::updateScreenView()
@@ -76,24 +78,35 @@ void PMSmoothPresenter::updateScreenView()
 	const auto& ns = shape->getNormals();
 
 	SmoothBuffer buffer;
+	auto groups = model->getGroups();
 
-		int materialId = 0;//group.material->;
+	for (const auto& f : shape->getFaces()) {
+		const auto vIds = f.getVertexIds();
+		for (const auto vId : vIds) {
+			const auto& v = vs[vId];
+			const auto& p = ps[v.positionId];
+			const auto& n = ns[v.normalId];
+			Math::Vector2df texCoord(0, 0);
+			if (v.texCoordId != -1) {
+				texCoord = tcs[v.texCoordId];
+			}
+			buffer.addVertex(p, n, texCoord);
+		}
+	}
 
-		//auto faces = group.faces;
-		for (const auto& f : shape->faces) {
-			const auto& vIds = f.getVertexIds();
+	for (const auto& g : groups) {
+		const auto& faces = g.faces;
+		SmoothGroupBuffer groupBuffer;
+		groupBuffer.material = *g.material->getMaterial();
+		for (const auto& f : g.faces) {
+			const auto vIds = f.getVertexIds();
 			for (const auto vId : vIds) {
-				const auto& v = vs[vId];
-				const auto& p = ps[v.positionId];
-				const auto& n = ns[v.normalId];
-				Math::Vector2df texCoord(0, 0);
-				if (v.texCoordId != -1) {
-					texCoord = tcs[v.texCoordId];
-				}
-				buffer.addVertex(p, n, texCoord, materialId);
+				groupBuffer.indices.add( vId );
 			}
 		}
-
+		buffer.addGroup(groupBuffer);
+	}
+	this->view->send(buffer);
 }
 
 void PMSmoothPresenter::updateParentIdView()

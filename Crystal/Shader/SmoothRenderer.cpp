@@ -59,6 +59,11 @@ ShaderBuildStatus SmoothRenderer::build(GLObjectFactory& factory)
 		shader->findUniformLocation(prefix + ".Ls");
 	}
 
+	shader->findUniformLocation("material.Ka");
+	shader->findUniformLocation("material.Ks");
+	shader->findUniformLocation("material.Kd");
+	shader->findUniformLocation("material.shininess");
+
 	ShaderBuildStatus status;
 	status.isOk = true;
 
@@ -89,7 +94,7 @@ void SmoothRenderer::sendLight(const int index, const PointLight& light)
 	shader->unbind();
 }
 
-void SmoothRenderer::render(const Buffer& buffer, const std::vector<BufferBlock>& blocks)
+void SmoothRenderer::render(const Buffer& buffer)
 {
 	const auto& projectionMatrix = buffer.projectionMatrix;
 	const auto& modelviewMatrix = buffer.modelViewMatrix;
@@ -104,8 +109,7 @@ void SmoothRenderer::render(const Buffer& buffer, const std::vector<BufferBlock>
 	shader->sendVertexAttribute3df(::positionLabel, buffer.position);
 	shader->sendVertexAttribute3df(::normalLabel, buffer.normal);
 	shader->sendVertexAttribute2df(::texCoordLabel, buffer.texCoord);
-	shader->sendVertexAttribute1di(::materialIdLabel, buffer.materialId);
-
+	//shader->sendVertexAttribute1di(::materialIdLabel, buffer.materialId);
 
 	shader->bindOutput("fragColor");
 
@@ -115,23 +119,21 @@ void SmoothRenderer::render(const Buffer& buffer, const std::vector<BufferBlock>
 	shader->enableVertexAttribute(::positionLabel);
 	shader->enableVertexAttribute(::normalLabel);
 	shader->enableVertexAttribute(::texCoordLabel);
-	shader->enableVertexAttribute(::materialIdLabel);
+	//shader->enableVertexAttribute(::materialIdLabel);
 
-	for (auto& block : blocks) {
+	for (const auto& block : buffer.blocks) {
 		shader->sendUniform("material.Ka", block.material.ambient);
 		shader->sendUniform("material.Kd", block.material.diffuse);
 		shader->sendUniform("material.Ks", block.material.specular);
 		shader->sendUniform("material.shininess", block.material.shininess);
 
 		block.texture.bind(0);
-		shader->drawTriangles(block.vertexIndices);
+		shader->drawTriangles(block.vertexIndices.get());
 		block.texture.unbind();
 	}
 
 
-	//textures[0].unbind();
-
-	shader->disableVertexAttribute(::materialIdLabel);
+	//shader->disableVertexAttribute(::materialIdLabel);
 	shader->disableVertexAttribute(::texCoordLabel);
 	shader->disableVertexAttribute(::normalLabel);
 	shader->disableVertexAttribute(::positionLabel);

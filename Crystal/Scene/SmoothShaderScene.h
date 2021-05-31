@@ -21,6 +21,14 @@ namespace Crystal {
 		class SmoothShader;
 		class CameraShaderScene;
 
+class SmoothGroupBuffer
+{
+public:
+	Graphics::Material material;
+	Shader::TextureObject* texture;
+	Graphics::Buffer1d<unsigned int> indices;
+};
+
 class SmoothBuffer
 {
 public:
@@ -28,7 +36,7 @@ public:
 		matrix(Math::Identity<double>())
 	{}
 
-	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord, const int materialId);
+	void addVertex(const Math::Vector3df& position, const Math::Vector3df& normal, const Math::Vector2df& texCoord);
 
 	Graphics::Buffer3d<float> getPositions() const { return positions; }
 
@@ -36,21 +44,25 @@ public:
 
 	Graphics::Buffer2d<float> getTexCoords() const { return texCoords; }
 
-	Graphics::Buffer1d<int> getMaterialIds() const { return materialIds; }
-
 	void setMatrix(const Math::Matrix4dd& matrix) { this->matrix = matrix; }
 
 	Math::Matrix4dd getMatrix() const { return matrix; }
+	
+	void addGroup(const SmoothGroupBuffer& group) { this->groups.push_back(group); }
+
+	std::vector<SmoothGroupBuffer> getGroups() const { return groups; }
 
 private:
 	Math::Matrix4dd matrix;
 	Graphics::Buffer3d<float> positions;
 	Graphics::Buffer3d<float> normals;
 	Graphics::Buffer2d<float> texCoords;
-	Graphics::Buffer1d<int> materialIds;
+
+	std::vector<SmoothGroupBuffer> groups;
 };
 
-class SmoothShaderScene : public IShaderScene, public IMaterialScene
+
+class SmoothShaderScene : public IShaderScene
 {
 public:
 	explicit SmoothShaderScene(const std::string& name);
@@ -61,9 +73,9 @@ public:
 
 	//void setMaterialBuffer(MaterialShaderScene* buffer) override;
 
-	void sendLight(const int index, const Graphics::PointLight& light) override;
+	void sendLight(const int index, const Graphics::PointLight& light);
 
-	void sendAllLights() override;
+	void sendAllLights();
 
 	void release(Shader::GLObjectFactory& glFactory) override;
 
@@ -77,8 +89,6 @@ private:
 	MaterialShaderScene* materialScene;
 	LightShaderScene* lightScene;
 	TextureShaderScene* textureScene;
-	
-	//MaterialShaderScene* materialBuffer;
 };
 
 	}
