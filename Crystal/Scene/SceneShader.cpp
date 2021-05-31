@@ -17,23 +17,35 @@ SceneShader::SceneShader() :
 {
 }
 
-bool SceneShader::build(GLObjectFactory& factory)
+ShaderBuildStatus SceneShader::build(GLObjectFactory& factory)
 {
-	if (!objectRenderer->build(factory).isOk) {
-		return false;
+	const auto prStatus = objectRenderer->build(factory);
+	if(!prStatus.isOk) {
+		ShaderBuildStatus status;
+		status.isOk = false;
+		status.log = prStatus.log;
+		return status;
 	}
 	if (!parentIdRenderer->build(factory)) {
-		return false;
+		ShaderBuildStatus status;
+		status.isOk = false;
+		return status;
 	}
 	if (!childIdRenderer->build(factory)) {
-		return false;
+		ShaderBuildStatus status;
+		status.isOk = false;
+		return status;
 	}
 
 	if (!renderer.build(factory)) {
-		return false;
+		ShaderBuildStatus status;
+		status.isOk = false;
+		return status;
 	}
 
-	return true;
+	ShaderBuildStatus status;
+	status.isOk = true;
+	return status;
 }
 
 void SceneShader::release(GLObjectFactory& factory)

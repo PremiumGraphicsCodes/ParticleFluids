@@ -3,6 +3,7 @@
 #include "ShaderObject.h"
 #include "GLObjectFactory.h"
 #include "VertexBufferObject.h"
+#include "ShaderBuildStatus.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -21,7 +22,7 @@ public:
 
 	TriangleRenderer();
 
-	bool build(Shader::GLObjectFactory& glFactory);
+	ShaderBuildStatus build(Shader::GLObjectFactory& glFactory);
 
 	void release(Shader::GLObjectFactory& glFactory);
 

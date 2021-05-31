@@ -14,7 +14,7 @@ TriangleRenderer::TriangleRenderer() :
 {
 }
 
-bool TriangleRenderer::build(GLObjectFactory& factory)
+ShaderBuildStatus TriangleRenderer::build(GLObjectFactory& factory)
 {
 	const auto& vsSource = getBuildInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
@@ -22,7 +22,10 @@ bool TriangleRenderer::build(GLObjectFactory& factory)
 	shader = factory.createShaderObject();
 	const auto isOk = shader->build(vsSource, fsSource);
 	if (!isOk) {
-		return false;
+		ShaderBuildStatus status;
+		status.isOk = false;
+		status.log = shader->getLog();
+		return status;
 	}
 
 	shader->findUniformLocation(::projectionMatrixLabel);
@@ -31,7 +34,9 @@ bool TriangleRenderer::build(GLObjectFactory& factory)
 	shader->findAttribLocation("position");
 	shader->findAttribLocation("color");
 
-	return true;
+	ShaderBuildStatus status;
+	status.isOk = true;
+	return status;
 }
 
 void TriangleRenderer::release(GLObjectFactory& factory)

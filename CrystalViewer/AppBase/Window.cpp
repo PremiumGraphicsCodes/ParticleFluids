@@ -13,6 +13,7 @@
 
 #include "CameraUICtrl.h"
 #include <chrono>
+#include <iostream>
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -154,7 +155,9 @@ bool Window::init()
 
 	world->createDefaultCamera();
 	world->init();
-	world->getRenderer()->build(*world->getGLFactory());
+
+	const auto shaderBuildStatus = world->getRenderer()->build(*world->getGLFactory());
+	std::cout << shaderBuildStatus.log << std::endl;
 	//world->getCamera()->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 	//auto camera = world->getCamera()->getController().getView();
 	//world->getRenderer()->getScene()->setCamera(camera);

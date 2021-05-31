@@ -30,7 +30,7 @@ public:
 
 	~SceneShader() {}
 
-	bool build(Shader::GLObjectFactory& factory);
+	Shader::ShaderBuildStatus build(Shader::GLObjectFactory& factory);
 
 	void release(Shader::GLObjectFactory& factory);
 

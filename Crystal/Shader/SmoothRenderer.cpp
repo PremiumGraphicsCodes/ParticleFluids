@@ -47,11 +47,11 @@ ShaderBuildStatus SmoothRenderer::build(GLObjectFactory& factory)
 
 	shader->findAttribLocation(::positionLabel);
 	shader->findAttribLocation(::normalLabel);
-	shader->findAttribLocation(::materialIdLabel);
+	//shader->findAttribLocation(::materialIdLabel);
 	shader->findAttribLocation(::texCoordLabel);
 
 
-	for (int i = 0; i < 8; ++i) {
+	for (int i = 0; i < 1; ++i) {
 		const auto prefix = "lights[" + std::to_string(i) + "]";
 		shader->findUniformLocation(prefix + ".position");
 		shader->findUniformLocation(prefix + ".La");
@@ -197,7 +197,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "};" << std::endl
 		<< "vec3 getAmbientColor(LightInfo light, MaterialInfo material){" << std::endl
 		<< "	vec3 ambient = light.La * material.Ka;" << std::endl
-		<< "	return ambient * getTextureColor(material.ambientTexId);" << std::endl
+		<< "	return ambient * getTextureColor();" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getS(LightInfo light){" << std::endl
 		<< "	return normalize(light.position - vPosition);" << std::endl
