@@ -55,6 +55,9 @@
     <ClInclude Include="SmoothRenderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderBuildStatus.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DepthBuffer.cpp" />

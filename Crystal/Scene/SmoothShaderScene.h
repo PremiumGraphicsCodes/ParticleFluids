@@ -59,19 +59,11 @@ public:
 
 	void send(const SmoothBuffer& buffer);
 
-	void setMaterialBuffer(MaterialShaderScene* buffer) override;
-
-	void sendMaterial(const int index, const Graphics::Material& material) override;
-
-	void sendAllMaterials() override;
+	//void setMaterialBuffer(MaterialShaderScene* buffer) override;
 
 	void sendLight(const int index, const Graphics::PointLight& light) override;
 
 	void sendAllLights() override;
-
-	void sendTexture(const int index, const Shader::TextureObject& texture) override;
-
-	void sendAllTextures() override;
 
 	void release(Shader::GLObjectFactory& glFactory) override;
 

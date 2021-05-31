@@ -74,7 +74,7 @@ private:
 	Shader::PointRenderer* pointRenderer;
 	Shader::LineRenderer* wireRenderer;
 	Shader::TriangleRenderer* triagleRenderer;
-	//Shader::SmoothRenderer* smoothRenderer;
+	Shader::SmoothRenderer* smoothRenderer;
 
 	std::list<IShaderScene*> scenes;
 	MaterialShaderScene materialScene;

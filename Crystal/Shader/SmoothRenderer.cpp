@@ -26,7 +26,7 @@ SmoothRenderer::SmoothRenderer()
 {
 }
 
-bool SmoothRenderer::build(GLObjectFactory& factory)
+ShaderBuildStatus SmoothRenderer::build(GLObjectFactory& factory)
 {
 	const auto& vsSource = getBuildInVertexShaderSource();
 	const auto& fsSource = getBuiltInFragmentShaderSource();
@@ -34,30 +34,22 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 	this->shader = factory.createShaderObject();
 	const auto isOk = shader->build(vsSource, fsSource);
 	if (!isOk) {
-		return false;
+		ShaderBuildStatus status;
+		status.isOk = false;
+		status.log = shader->getLog();
+		return status;
 	}
 
 	shader->findUniformLocation(::projectionMatrixLabel);
 	shader->findUniformLocation(::modelviewMatrixLabel);
 	shader->findUniformLocation(::eyePositionLabel);
-	//shader.findUniformLocation("texture1");
+	shader->findUniformLocation("texture");
 
 	shader->findAttribLocation(::positionLabel);
 	shader->findAttribLocation(::normalLabel);
 	shader->findAttribLocation(::materialIdLabel);
 	shader->findAttribLocation(::texCoordLabel);
 
-	//materialShader.build(&shader);
-	for (int i = 0; i < 256; ++i) {
-		const auto prefix = "materials[" + std::to_string(i) + "]";
-		shader->findUniformLocation(prefix + ".Ka");
-		shader->findUniformLocation(prefix + ".Kd");
-		shader->findUniformLocation(prefix + ".Ks");
-		shader->findUniformLocation(prefix + ".shininess");
-		shader->findUniformLocation(prefix + ".ambientTexId");
-		shader->findUniformLocation(prefix + ".diffuseTexId");
-		shader->findUniformLocation(prefix + ".specularTexId");
-	}
 
 	for (int i = 0; i < 8; ++i) {
 		const auto prefix = "lights[" + std::to_string(i) + "]";
@@ -67,32 +59,15 @@ bool SmoothRenderer::build(GLObjectFactory& factory)
 		shader->findUniformLocation(prefix + ".Ls");
 	}
 
-	for (int i = 0; i < 8; ++i) {
-		const auto prefix = "textures[" + std::to_string(i) + "]";
-		shader->findUniformLocation(prefix);
-	}
+	ShaderBuildStatus status;
+	status.isOk = true;
 
-	return true;
+	return status;
 }
 
 void SmoothRenderer::release(GLObjectFactory& factory)
 {
 	factory.remove(shader);
-}
-
-void SmoothRenderer::sendMaterial(const int index, const Material& material)
-{
-	shader->bind();
-	const auto i = index;
-	const auto prefix = "materials[" + std::to_string(index) + "]";
-	shader->sendUniform(prefix + ".Ka", material.ambient);
-	shader->sendUniform(prefix + ".Kd", material.diffuse);
-	shader->sendUniform(prefix + ".Ks", material.specular);
-	shader->sendUniform(prefix + ".shininess", material.shininess);
-	shader->sendUniform(prefix + ".ambientTexId", 0);//findIndex(m.ambientTexName));
-	shader->sendUniform(prefix + ".diffuseTexId", 0);// m.diffuseTexId);
-	shader->sendUniform(prefix + ".specularTexId", 0);// m.specularTexId);
-	shader->unbind();
 }
 
 void SmoothRenderer::sendLight(const int index, const PointLight& light)
@@ -114,17 +89,7 @@ void SmoothRenderer::sendLight(const int index, const PointLight& light)
 	shader->unbind();
 }
 
-void SmoothRenderer::sendTexture(const int index, const Shader::TextureObject& texture)
-{
-	shader->bind();
-	
-	const auto prefix = "textures[" + std::to_string(index) + "]";
-	shader->sendUniform(prefix, texture, index);
-
-	shader->unbind();
-}
-
-void SmoothRenderer::render(const Buffer& buffer)
+void SmoothRenderer::render(const Buffer& buffer, const std::vector<BufferBlock>& blocks)
 {
 	const auto& projectionMatrix = buffer.projectionMatrix;
 	const auto& modelviewMatrix = buffer.modelViewMatrix;
@@ -152,16 +117,17 @@ void SmoothRenderer::render(const Buffer& buffer)
 	shader->enableVertexAttribute(::texCoordLabel);
 	shader->enableVertexAttribute(::materialIdLabel);
 
-	int texId = 0;
-	for (auto t : buffer.textures) {
-		t->bind(texId++);
+	for (auto& block : blocks) {
+		shader->sendUniform("material.Ka", block.material.ambient);
+		shader->sendUniform("material.Kd", block.material.diffuse);
+		shader->sendUniform("material.Ks", block.material.specular);
+		shader->sendUniform("material.shininess", block.material.shininess);
+
+		block.texture.bind(0);
+		shader->drawTriangles(block.vertexIndices);
+		block.texture.unbind();
 	}
 
-	shader->drawTriangles(buffer.count);
-
-	for (auto t : buffer.textures) {
-		t->unbind();
-	}
 
 	//textures[0].unbind();
 
@@ -183,11 +149,9 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "#version 150" << std::endl
 		<< "in vec3 position;" << std::endl
 		<< "in vec3 normal;" << std::endl
-		<< "in int materialId;" << std::endl
 		<< "in vec2 texCoord;" << std::endl
 		<< "out vec3 vNormal;" << std::endl
 		<< "out vec3 vPosition;" << std::endl
-		<< "flat out int vMaterialId;" << std::endl
 		<< "out vec2 vTexCoord;" << std::endl
 		<< "uniform mat4 projectionMatrix;"
 		<< "uniform mat4 modelviewMatrix;"
@@ -195,7 +159,6 @@ std::string SmoothRenderer::getBuildInVertexShaderSource() const
 		<< "	gl_Position = projectionMatrix * modelviewMatrix * vec4(position, 1.0);" << std::endl
 		<< "	vNormal = normalize(normal);" << std::endl
 		<< "	vPosition = position;" << std::endl
-		<< "	vMaterialId = materialId;" << std::endl
 		<< "	vTexCoord = texCoord;" << std::endl
 		<< "}" << std::endl;
 	return stream.str();
@@ -208,11 +171,10 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "#version 150" << std::endl
 		<< "in vec3 vNormal;" << std::endl
 		<< "in vec3 vPosition;" << std::endl
-		<< "flat in int vMaterialId;" << std::endl
 		<< "in vec2 vTexCoord;" << std::endl
 		<< "out vec4 fragColor;" << std::endl
 		<< "uniform vec3 eyePosition;" << std::endl
-		<< "uniform sampler2D textures[8];" << std::endl
+		<< "uniform sampler2D texture;" << std::endl
 		<< "struct LightInfo {" << std::endl
 		<< "	vec3 position;" << std::endl
 		<< "	vec3 La;" << std::endl
@@ -229,12 +191,9 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	int diffuseTexId;" << std::endl
 		<< "	int specularTexId;" << std::endl
 		<< "};"
-		<< "uniform MaterialInfo materials[256];" << std::endl
-		<< "vec3 getTextureColor(int id){ " << std::endl
-		<< "	if(id == -1) {" << std::endl
-		<< "		return vec3(1,1,1);" << std::endl
-		<< "	}" << std::endl
-		<< "	return texture2D(textures[id], vTexCoord).rgb;" << std::endl
+		<< "uniform MaterialInfo material;" << std::endl
+		<< "vec3 getTextureColor(){ " << std::endl
+		<< "	return texture2D(texture, vTexCoord).rgb;" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getAmbientColor(LightInfo light, MaterialInfo material){" << std::endl
 		<< "	vec3 ambient = light.La * material.Ka;" << std::endl
@@ -252,7 +211,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "};" << std::endl
 		<< "vec3 getDiffuseColor(LightInfo light, MaterialInfo material, float innerProduct){" << std::endl
 		<< "	vec3 diffuse = light.Ld * material.Kd * innerProduct;" << std::endl
-		<< "	return diffuse * getTextureColor(material.diffuseTexId);" << std::endl
+		<< "	return diffuse * getTextureColor();" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getSpecularColor(LightInfo light, MaterialInfo material, float innerProduct, vec3 normal){" << std::endl
 		<< "	vec3 s = getS(light);" << std::endl
@@ -262,10 +221,9 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "	if(innerProduct > 0.0) {" << std::endl
 		<< "		specular = light.Ls * material.Ks * pow( max( dot(r,v), 0.0 ), material.shininess );" << std::endl
 		<< "	}" << std::endl
-		<< "	return specular * getTextureColor(material.specularTexId);" << std::endl
+		<< "	return specular * getTextureColor();" << std::endl
 		<< "};" << std::endl
 		<< "vec3 getPhongShadedColor( vec3 position, vec3 normal) {"
-		<< "	MaterialInfo material = materials[vMaterialId];" << std::endl
 		<< "	LightInfo light = lights[0];" << std::endl
 		<< "	vec3 s = getS(light);" << std::endl
 		<< "	vec3 r = getR(light, normal);" << std::endl
@@ -277,7 +235,7 @@ std::string SmoothRenderer::getBuiltInFragmentShaderSource() const
 		<< "}"
 		<< "void main(void) {" << std::endl
 		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal);" << std::endl
-		<< "	fragColor.r = getTextureColor(0).r;" << std::endl
+		<< "	fragColor.r = getTextureColor().r;" << std::endl
 		//		<< "	fragColor.rgb = getPhongShadedColor( eyePosition, vNormal) * getTextureColor();" << std::endl
 		<< "	fragColor.a = 1.0;" << std::endl
 		<< "}" << std::endl;

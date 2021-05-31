@@ -8,6 +8,7 @@
 #include "../Graphics/PointLight.h"
 #include "../Shader/TextureObject.h"
 #include "../Shader/ShaderObject.h"
+#include "../Shader/ShaderBuildStatus.h"
 
 namespace Crystal {
 	namespace Shader {
@@ -22,29 +23,28 @@ public:
 		VertexBufferObject texCoord;
 		VertexBufferObject materialId;
 
-		std::vector<Shader::TextureObject*> textures;
-
 		Math::Matrix4df matrix;
 		Math::Matrix4df projectionMatrix;
 		Math::Matrix4df modelViewMatrix;
 		Math::Vector3df eyePosition;
+	};
 
-		int count;
+	struct BufferBlock
+	{
+		std::vector<unsigned int> vertexIndices;
+		Graphics::Material material;
+		Shader::TextureObject texture;
 	};
 
 	SmoothRenderer();
 
-	bool build(Shader::GLObjectFactory& factory);
+	ShaderBuildStatus build(Shader::GLObjectFactory& factory);
 
 	void release(Shader::GLObjectFactory& factory);
 
-	void sendMaterial(const int index, const Graphics::Material& material);
-
 	void sendLight(const int index, const Graphics::PointLight& light);
 
-	void sendTexture(const int index, const Shader::TextureObject& texture);
-
-	void render(const Buffer& buffer);
+	void render(const Buffer& buffer, const std::vector<BufferBlock>& blocks);
 
 private:
 	std::string getBuildInVertexShaderSource() const;

@@ -44,27 +44,8 @@ void SmoothShaderScene::send(const SmoothBuffer& buffer)
 	rBuffer.texCoord.send(buffer.getTexCoords().get());
 	rBuffer.materialId.send(buffer.getMaterialIds().get());
 
-	rBuffer.count = static_cast<int>( buffer.getPositions().get().size() / 3 );
+	//rBuffer.count = static_cast<int>( buffer.getPositions().get().size() / 3 );
 	rBuffer.matrix = buffer.getMatrix();
-}
-
-void SmoothShaderScene::setMaterialBuffer(MaterialShaderScene* buffer)
-{
-	this->materialScene = buffer;
-	buffer->addParent(this);
-}
-
-void SmoothShaderScene::sendMaterial(const int index, const Material& material)
-{
-	shader->sendMaterial(index, material);
-}
-
-void SmoothShaderScene::sendAllMaterials()
-{
-	const auto& materials = this->materialScene->getMaterials();
-	for (auto i = 0; i < materials.size(); ++i) {
-		shader->sendMaterial(i, materials[i]);
-	}
 }
 
 void SmoothShaderScene::sendLight(const int index, const PointLight& light)
@@ -80,23 +61,10 @@ void SmoothShaderScene::sendAllLights()
 	}
 }
 
-void SmoothShaderScene::sendTexture(const int index, const Shader::TextureObject& texture)
-{
-	shader->sendTexture(index, texture);
-}
-
-void SmoothShaderScene::sendAllTextures()
-{
-	const auto& textures = this->materialScene->getTextures();
-	for (auto i = 0; i < textures.size(); ++i) {
-		shader->sendTexture(i, *textures[i]);
-	}
-}
-
 void SmoothShaderScene::render(const Graphics::Camera& camera)
 {
 	rBuffer.modelViewMatrix = camera.getModelViewMatrix();
 	rBuffer.projectionMatrix = camera.getProjectionMatrix();
-	rBuffer.textures = this->materialScene->getTextures();
-	shader->render(rBuffer);
+	//rBuffer.textures = this->materialScene->getTextures();
+	//shader->render(rBuffer);
 }

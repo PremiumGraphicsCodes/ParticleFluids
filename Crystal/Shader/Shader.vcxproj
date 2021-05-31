@@ -149,6 +149,7 @@
     <ClInclude Include="LineRenderer.h" />
     <ClInclude Include="OnScreenRenderer.h" />
     <ClInclude Include="PointRenderer.h" />
+    <ClInclude Include="ShaderBuildStatus.h" />
     <ClInclude Include="ShaderObject.h" />
     <ClInclude Include="ShaderUnit.h" />
     <ClInclude Include="SmoothRenderer.h" />
