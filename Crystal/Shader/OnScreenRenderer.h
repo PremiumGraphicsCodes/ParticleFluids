@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ShaderObject.h"
+#include "ShaderBuildStatus.h"
 #include <memory>
 
 namespace Crystal {
@@ -11,7 +12,7 @@ namespace Crystal {
 class OnScreenRenderer
 {
 public:
-	bool build(GLObjectFactory& factory);
+	ShaderBuildStatus build(GLObjectFactory& factory);
 
 	void release(GLObjectFactory& factory);
 

@@ -11,6 +11,11 @@ public:
 	bool isOk;
 	std::string log;
 
+	ShaderBuildStatus() :
+		isOk(true)
+	{
+	}
+
 	void add(const ShaderBuildStatus& rhs)
 	{
 		this->isOk = this->isOk && rhs.isOk;

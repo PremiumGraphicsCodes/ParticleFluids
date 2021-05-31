@@ -12,16 +12,20 @@ using namespace Crystal::Math;
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 
-bool OnScreenRenderer::build(GLObjectFactory& factory)
+ShaderBuildStatus OnScreenRenderer::build(GLObjectFactory& factory)
 {
+	ShaderBuildStatus status;
+
 	const auto vsSource = getBuildinVertexShaderSource();
 	const auto fsSource = getBuildinFragmentShaderSource();
 	this->shader = factory.createShaderObject();
 	if(!this->shader->build(vsSource, fsSource)){
-		return false;
+		status.isOk = false;
+		status.log += this->shader->getLog();
+		return status;
 	}
 	findLocation();
-	return true;
+	return status;
 }
 
 void OnScreenRenderer::release(GLObjectFactory& factory)

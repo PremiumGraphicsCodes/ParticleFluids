@@ -28,12 +28,12 @@ ShaderBuildStatus ScreenShader::build(GLObjectFactory& factory)
 	const auto prStatus = pointRenderer->build(factory);
 	const auto wrStatus = wireRenderer->build(factory);
 	const auto trStatus = triagleRenderer->build(factory);
-	//const auto smStatus = smoothRenderer->build(factory);
+	const auto smStatus = smoothRenderer->build(factory);
 
 	status.add(prStatus);
 	status.add(wrStatus);
 	status.add(trStatus);
-	//status.add(smStatus);
+	status.add(smStatus);
 
 	texture = factory.createTextureObject();
 	texture->send(Image(512, 512));

@@ -19,32 +19,18 @@ SceneShader::SceneShader() :
 
 ShaderBuildStatus SceneShader::build(GLObjectFactory& factory)
 {
-	const auto prStatus = objectRenderer->build(factory);
-	if(!prStatus.isOk) {
-		ShaderBuildStatus status;
-		status.isOk = false;
-		status.log = prStatus.log;
-		return status;
-	}
-	if (!parentIdRenderer->build(factory)) {
-		ShaderBuildStatus status;
-		status.isOk = false;
-		return status;
-	}
-	if (!childIdRenderer->build(factory)) {
-		ShaderBuildStatus status;
-		status.isOk = false;
-		return status;
-	}
-
-	if (!renderer.build(factory)) {
-		ShaderBuildStatus status;
-		status.isOk = false;
-		return status;
-	}
-
 	ShaderBuildStatus status;
-	status.isOk = true;
+
+	const auto prStatus = objectRenderer->build(factory);
+	parentIdRenderer->build(factory);
+	childIdRenderer->build(factory);
+	const auto rStatus = renderer.build(factory);
+
+	status.add(prStatus);
+	//status.add(pIdStatus);
+	//status.add(cIdStatus);
+	status.add(rStatus);
+
 	return status;
 }
 
