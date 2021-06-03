@@ -31,6 +31,9 @@
     <Filter Include="FLIPS">
       <UniqueIdentifier>{04e51dd0-8c12-4219-b1af-c5fd6e0928d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SPHFlame">
+      <UniqueIdentifier>{843b95aa-82b5-4fc1-92ce-63a98953ad6c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PBSPHParticle.h">
@@ -137,6 +140,9 @@
     <ClInclude Include="IKFFluidScene.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
+    <ClInclude Include="SPHFlameParticle.h">
+      <Filter>SPHFlame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -241,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="IKFFluidScene.cpp">
       <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHFlameParticle.cpp">
+      <Filter>SPHFlame</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

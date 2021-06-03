@@ -186,6 +186,7 @@
     <ClInclude Include="PBSPHParticle.h" />
     <ClInclude Include="PBSPHSolver.h" />
     <ClInclude Include="SPHConstant.h" />
+    <ClInclude Include="SPHFlameParticle.h" />
     <ClInclude Include="SPHKernel.h" />
     <ClInclude Include="SPHSurfaceBuilder.h" />
     <ClInclude Include="SPHSurfaceParticle.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="PBSPHBoundarySolver.cpp" />
     <ClCompile Include="PBSPHParticle.cpp" />
     <ClCompile Include="PBSPHSolver.cpp" />
+    <ClCompile Include="SPHFlameParticle.cpp" />
     <ClCompile Include="SPHKernel.cpp" />
     <ClCompile Include="SPHSurfaceBuilder.cpp" />
     <ClCompile Include="SPHSurfaceParticle.cpp" />
