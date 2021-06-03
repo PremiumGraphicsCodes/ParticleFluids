@@ -152,6 +152,9 @@
     <ClInclude Include="SPHFlameSolver.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
+    <ClInclude Include="SPHFlameBoundarySolver.h">
+      <Filter>SPHFlame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -267,6 +270,9 @@
       <Filter>SPHFlame</Filter>
     </ClCompile>
     <ClCompile Include="SPHFlameSolver.cpp">
+      <Filter>SPHFlame</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHFlameBoundarySolver.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
   </ItemGroup>
