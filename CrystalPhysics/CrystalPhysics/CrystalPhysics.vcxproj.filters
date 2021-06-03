@@ -146,6 +146,9 @@
     <ClInclude Include="SPHFlameScene.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
+    <ClInclude Include="SPHFlameSceneController.h">
+      <Filter>SPHFlame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -255,6 +258,9 @@
       <Filter>SPHFlame</Filter>
     </ClCompile>
     <ClCompile Include="SPHFlameScene.cpp">
+      <Filter>SPHFlame</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHFlameSceneController.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
   </ItemGroup>
