@@ -4,7 +4,7 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/FloatView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
-#include "../CrystalPhysics/DFFluidSolver.h"
+#include "../CrystalPhysics/DFSPH/DFFluidSolver.h"
 
 namespace Crystal {
 	namespace Physics {

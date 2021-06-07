@@ -3,7 +3,7 @@
 #include "DFFluidScene.h"
 #include "DFSPHBoundarySolver.h"
 
-#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 
 
 //#include "PBSPHBoundarySolver.h"

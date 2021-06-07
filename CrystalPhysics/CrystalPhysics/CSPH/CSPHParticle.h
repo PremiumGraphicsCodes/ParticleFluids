@@ -88,6 +88,8 @@ private:
 	Math::Vector3df velocity;
 	Math::Vector3df normal;
 	SPHConstant* constant;
+
+protected:
 	SPHKernel* kernel;
 };
 

@@ -1,5 +1,5 @@
 #include "DFSPHParticle.h"
-#include "SPHConstant.h"
+#include "..\SPHConstant.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

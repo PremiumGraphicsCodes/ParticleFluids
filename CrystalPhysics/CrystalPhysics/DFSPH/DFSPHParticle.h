@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Crystal/Shape/IParticle.h"
-#include "SPHKernel.h"
+#include "../../../Crystal/Shape/IParticle.h"
+#include "../SPHKernel.h"
 #include <vector>
 
 namespace Crystal {

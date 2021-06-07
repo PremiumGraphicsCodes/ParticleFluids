@@ -1,8 +1,8 @@
 #include "DFSPHFluidSimulationView.h"
 
-#include "../CrystalPhysics/DFFluidScene.h"
-#include "../CrystalPhysics/DFFluidSolver.h"
-#include "../CrystalPhysics/DFSPHParticle.h"
+#include "../CrystalPhysics/DFSPH/DFFluidScene.h"
+#include "../CrystalPhysics/DFSPH/DFFluidSolver.h"
+#include "../CrystalPhysics/DFSPH/DFSPHParticle.h"
 #include "../CrystalPhysics/SPHConstant.h"
 
 #include "../../CrystalViewer/Command/Command.h"

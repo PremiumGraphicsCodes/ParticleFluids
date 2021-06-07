@@ -51,21 +51,6 @@
     <ClInclude Include="PBFluidSceneController.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
-    <ClInclude Include="DFFluidSolver.h">
-      <Filter>DFSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="DFFluidScene.h">
-      <Filter>DFSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="DFSPHParticle.h">
-      <Filter>DFSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="DFFluidSceneController.h">
-      <Filter>DFSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="DFSPHBoundarySolver.h">
-      <Filter>DFSPH</Filter>
-    </ClInclude>
     <ClInclude Include="PBSPHBoundaryParticle.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
@@ -155,6 +140,21 @@
     <ClInclude Include="CSPH\CSPHSolver.h">
       <Filter>CSPH</Filter>
     </ClInclude>
+    <ClInclude Include="DFSPH\DFFluidScene.h">
+      <Filter>DFSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="DFSPH\DFFluidSceneController.h">
+      <Filter>DFSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="DFSPH\DFFluidSolver.h">
+      <Filter>DFSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="DFSPH\DFSPHBoundarySolver.h">
+      <Filter>DFSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="DFSPH\DFSPHParticle.h">
+      <Filter>DFSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -171,21 +171,6 @@
     </ClCompile>
     <ClCompile Include="PBFluidSceneController.cpp">
       <Filter>PBSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="DFFluidSolver.cpp">
-      <Filter>DFSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="DFFluidScene.cpp">
-      <Filter>DFSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="DFSPHParticle.cpp">
-      <Filter>DFSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="DFFluidSceneController.cpp">
-      <Filter>DFSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="DFSPHBoundarySolver.cpp">
-      <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="PBSPHBoundaryParticle.cpp">
       <Filter>PBSPH</Filter>
@@ -274,6 +259,21 @@
     </ClCompile>
     <ClCompile Include="CSPH\CSPHSolver.cpp">
       <Filter>CSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="DFSPH\DFFluidScene.cpp">
+      <Filter>DFSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="DFSPH\DFFluidSceneController.cpp">
+      <Filter>DFSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="DFSPH\DFFluidSolver.cpp">
+      <Filter>DFSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="DFSPH\DFSPHBoundarySolver.cpp">
+      <Filter>DFSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="DFSPH\DFSPHParticle.cpp">
+      <Filter>DFSPH</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

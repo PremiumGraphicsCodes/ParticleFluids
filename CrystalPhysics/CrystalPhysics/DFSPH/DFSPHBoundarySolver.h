@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Math/Box3d.h"
+#include "../../../Crystal/Math/Box3d.h"
 #include <vector>
 
 namespace Crystal {
