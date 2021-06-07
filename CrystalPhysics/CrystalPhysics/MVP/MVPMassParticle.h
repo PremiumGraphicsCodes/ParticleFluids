@@ -5,18 +5,18 @@
 
 namespace Crystal {
 	namespace Physics {
-		class KFMacroParticle;
+		class MVPVolumeParticle;
 
 class MVPMassParticle : public Shape::IParticle
 {
 public:
-	MVPMassParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float mass);
+	MVPMassParticle(MVPVolumeParticle* parent, const Math::Vector3df& point, const float mass);
 
 	Math::Vector3dd getPosition() const override;
 
 	Math::Vector3df getVelocity() const;
 
-	KFMacroParticle* getParent() { return parent; }
+	MVPVolumeParticle* getParent() { return parent; }
 
 	void updatePosition();
 
@@ -38,7 +38,7 @@ public:
 	Math::Vector3df position;
 
 private:
-	KFMacroParticle* parent;
+	MVPVolumeParticle* parent;
 	Math::Vector3df vector;
 	float mass;
 	float pressure;

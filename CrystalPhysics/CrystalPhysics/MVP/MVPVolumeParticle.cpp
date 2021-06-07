@@ -1,4 +1,4 @@
-#include "KFMacroParticle.h"
+#include "MVPVolumeParticle.h"
 
 #include "KFFluidScene.h"
 
@@ -9,13 +9,13 @@
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
-KFMacroParticle::KFMacroParticle(const float radius, const Vector3dd& position) :
+MVPVolumeParticle::MVPVolumeParticle(const float radius, const Vector3dd& position) :
 	radius(radius),
 	position(position),
 	restMass(0.0f)
 {}
 
-KFMacroParticle::~KFMacroParticle()
+MVPVolumeParticle::~MVPVolumeParticle()
 {
 	for (auto p : points) {
 		delete p;
@@ -23,7 +23,7 @@ KFMacroParticle::~KFMacroParticle()
 	//points.clear();
 }
 
-void KFMacroParticle::distributePoints(const int unum, const int vnum, const int wnum, const float w)
+void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const int wnum, const float w)
 {
 	// 左上から右下に向かって均等分割する．->内外判定する．
 	const auto dx = 1.0 / (double)unum;
@@ -56,21 +56,21 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 //	selfMass = unum * vnum * wnum * weight;
 }
 
-void KFMacroParticle::setPressureCoe(const float c)
+void MVPVolumeParticle::setPressureCoe(const float c)
 {
 	for (auto p : points) {
 		p->setPressureCoe(c);
 	}
 }
 
-void KFMacroParticle::setViscosityCoe(const float c)
+void MVPVolumeParticle::setViscosityCoe(const float c)
 {
 	for (auto p : points) {
 		p->setViscosityCoe(c);
 	}
 }
 
-void KFMacroParticle::reset(bool resetMicro)
+void MVPVolumeParticle::reset(bool resetMicro)
 {
 	this->force = Math::Vector3dd(0, 0, 0);
 	if (resetMicro) {
@@ -79,12 +79,12 @@ void KFMacroParticle::reset(bool resetMicro)
 	}
 }
 
-void KFMacroParticle::addMicro(MVPMassParticle* microParticle)
+void MVPVolumeParticle::addMicro(MVPMassParticle* microParticle)
 {
 	microPoints.push_back(microParticle);
 }
 
-void KFMacroParticle::calculateDensity()
+void MVPVolumeParticle::calculateDensity()
 {
 	float mass = 0.0f;
 	for (auto m : innerPoints) {
@@ -93,7 +93,7 @@ void KFMacroParticle::calculateDensity()
 	this->density = (mass / restMass);
 }
 
-void KFMacroParticle::calculatePressure()
+void MVPVolumeParticle::calculatePressure()
 {
 	this->pressure = (density - 1.0f);
 	this->pressure = std::max(0.0f, this->pressure);
@@ -102,7 +102,7 @@ void KFMacroParticle::calculatePressure()
 	}
 }
 
-void KFMacroParticle::calculatePressureForce(const float relaxationCoe)
+void MVPVolumeParticle::calculatePressureForce(const float relaxationCoe)
 {
 	Math::Vector3df f(0, 0, 0);
 	for (auto mp : innerPoints) {
@@ -111,7 +111,7 @@ void KFMacroParticle::calculatePressureForce(const float relaxationCoe)
 	this->force += f;
 }
 
-void KFMacroParticle::calculateViscosityForce()
+void MVPVolumeParticle::calculateViscosityForce()
 {
 	Math::Vector3df f(0, 0, 0);
 	for (auto mp : innerPoints) {
@@ -120,7 +120,7 @@ void KFMacroParticle::calculateViscosityForce()
 	this->force += f;
 }
 
-void KFMacroParticle::calculateVorticity()
+void MVPVolumeParticle::calculateVorticity()
 {
 	vorticity = Vector3df(0, 0, 0);
 	for (auto mp : innerPoints) {
@@ -130,26 +130,26 @@ void KFMacroParticle::calculateVorticity()
 	}
 }
 
-void KFMacroParticle::stepTime(const float dt)
+void MVPVolumeParticle::stepTime(const float dt)
 {
 	const auto acc = (force) / getDensity();
 	this->velocity += acc * dt;
 	this->position += this->velocity * dt;
 }
 
-float KFMacroParticle::getDensity() const
+float MVPVolumeParticle::getDensity() const
 {
 	return this->density;
 }
 
-void KFMacroParticle::updateMicros()
+void MVPVolumeParticle::updateMicros()
 {
 	for (auto mp : this->microPoints) {
 		mp->updatePosition();
 	}
 }
 
-void KFMacroParticle::updateInnerPoints()
+void MVPVolumeParticle::updateInnerPoints()
 {
 	const auto r = this->radius;
 	innerPoints.clear();

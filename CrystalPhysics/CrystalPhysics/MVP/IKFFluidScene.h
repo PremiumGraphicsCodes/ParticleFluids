@@ -2,7 +2,7 @@
 
 #include "../../../Crystal/Scene/IParticleSystemScene.h"
 
-#include "KFMacroParticle.h"
+#include "MVPVolumeParticle.h"
 #include "KFFluidScenePresenter.h"
 
 namespace Crystal {
@@ -16,13 +16,13 @@ public:
 
 	virtual ~IKFFluidScene();
 
-	void addParticle(KFMacroParticle* mp) {
+	void addParticle(MVPVolumeParticle* mp) {
 		mp->setPressureCoe(this->pressureCoe);
 		mp->setViscosityCoe(this->viscosityCoe);
 		particles.push_back(mp);
 	}
 
-	std::vector<KFMacroParticle*> getParticles() const { return particles; }
+	std::vector<MVPVolumeParticle*> getParticles() const { return particles; }
 
 	void clearParticles();
 
@@ -48,7 +48,7 @@ public:
 
 private:
 	std::unique_ptr<KFFluidScenePresenter> controller;
-	std::vector<KFMacroParticle*> particles;
+	std::vector<MVPVolumeParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;
 };

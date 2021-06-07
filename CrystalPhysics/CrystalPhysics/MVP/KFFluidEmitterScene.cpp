@@ -1,6 +1,6 @@
 #include "KFFluidEmitterScene.h"
 
-#include "KFMacroParticle.h"
+#include "MVPVolumeParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -25,7 +25,7 @@ void KFFluidEmitterScene::emitParticle(const int timeStep)
 		const auto elapsed = timeStep - start;
 		if (elapsed % interval == 0) {
 			for (const auto& s : sourcePositions) {
-				auto mp = new KFMacroParticle(s.getRadius(), s.getCenter());
+				auto mp = new MVPVolumeParticle(s.getRadius(), s.getCenter());
 				mp->distributePoints(3, 3, 3, 1.0f);
 				mp->setVelocity(this->initialVelocity);
 				addParticle(mp);

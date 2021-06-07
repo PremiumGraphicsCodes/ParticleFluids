@@ -64,7 +64,7 @@ bool FluidSceneUpdateCommand::execute(World* world)
 		const auto radius = args.particleRadius.getValue();
 		const auto density = args.density.getValue();
 		for (const auto& p : positions) {
-			auto mp = new KFMacroParticle(radius, p);
+			auto mp = new MVPVolumeParticle(radius, p);
 			mp->distributePoints(3, 3, 3, density);
 			fluidScene->addParticle(mp);
 		}

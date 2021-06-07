@@ -1,12 +1,12 @@
 #include "MVPMassParticle.h"
 
-#include "KFMacroParticle.h"
+#include "MVPVolumeParticle.h"
 #include "KFFluidScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
-MVPMassParticle::MVPMassParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float mass) :
+MVPMassParticle::MVPMassParticle(MVPVolumeParticle* parent, const Math::Vector3df& point, const float mass) :
 	parent(parent),
 	vector(point),
 	mass(mass)

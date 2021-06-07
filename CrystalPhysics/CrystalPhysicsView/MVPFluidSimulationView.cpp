@@ -101,7 +101,7 @@ void MVPFluidSimulationView::onAddFluid()
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
-				auto mp = new KFMacroParticle(radius, Vector3dd(i * length, j * length, k * length));
+				auto mp = new MVPVolumeParticle(radius, Vector3dd(i * length, j * length, k * length));
 				mp->distributePoints(3, 3, 3, 1.0f);
 				fluidScene->addParticle(mp);
 			}

@@ -2,9 +2,9 @@
 
 #include "PublicLabels/PhysicsSolverUpdateLabels.h"
 
-#include "../CrystalPhysics/KFFluidSolver.h"
-#include "../CrystalPhysics/KFFluidScene.h"
-#include "../CrystalPhysics/KFFluidEmitterScene.h"
+#include "../CrystalPhysics/MVP/KFFluidSolver.h"
+#include "../CrystalPhysics/MVP/KFFluidScene.h"
+#include "../CrystalPhysics/MVP/KFFluidEmitterScene.h"
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"

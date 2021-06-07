@@ -146,11 +146,11 @@
     <ClInclude Include="MVP/KFFluidSolver.h">
       <Filter>MVP</Filter>
     </ClInclude>
-    <ClInclude Include="MVP/KFMacroParticle.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
     <ClInclude Include="MVP/IKFFluidScene.h" />
     <ClInclude Include="MVP\MVPMassParticle.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP\MVPVolumeParticle.h">
       <Filter>MVP</Filter>
     </ClInclude>
   </ItemGroup>
@@ -267,10 +267,10 @@
     <ClCompile Include="MVP/KFFluidSolver.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
-    <ClCompile Include="MVP/KFMacroParticle.cpp">
+    <ClCompile Include="MVP\MVPMassParticle.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
-    <ClCompile Include="MVP\MVPMassParticle.cpp">
+    <ClCompile Include="MVP\MVPVolumeParticle.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
   </ItemGroup>

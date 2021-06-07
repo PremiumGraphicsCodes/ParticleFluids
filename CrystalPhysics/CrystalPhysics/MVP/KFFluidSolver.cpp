@@ -1,7 +1,7 @@
 #include "KFFluidSolver.h"
 
-#include "KFMacroParticle.h"
 #include "MVPMassParticle.h"
+#include "MVPVolumeParticle.h"
 
 #include "KFFluidScene.h"
 #include "KFFluidEmitterScene.h"
@@ -18,7 +18,7 @@ using namespace Crystal::Physics;
 
 void KFBoundarySolver::setup(const float effectLength)
 {
-	std::vector<KFMacroParticle*> boundaryParticles;
+	std::vector<MVPVolumeParticle*> boundaryParticles;
 	for (auto b : boundaries) {
 		const auto bp = b->getParticles();
 		boundaryParticles.insert(boundaryParticles.end(), bp.begin(), bp.end());
@@ -91,7 +91,7 @@ void KFFluidSolver::step()
 
 void KFFluidSolver::simulate()
 {
-	std::vector<KFMacroParticle*> fluidParticles;
+	std::vector<MVPVolumeParticle*> fluidParticles;
 
 	for (auto emitter : emitters) {
 		emitter->emitParticle(currentTimeStep);
@@ -206,7 +206,7 @@ void KFFluidSolver::simulate()
 	currentTimeStep++;
 }
 
-float KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& particles)
+float KFFluidSolver::calculateTimeStep(const std::vector<MVPVolumeParticle*>& particles)
 {
 	float maxVelocity = 0.0f;
 	for (auto p : particles) {
@@ -221,7 +221,7 @@ float KFFluidSolver::calculateTimeStep(const std::vector<KFMacroParticle*>& part
 	//return std::min(dt, maxTimeStep);
 }
 
-void KFFluidSolver::solveBoundary(KFMacroParticle* particle, const double dt)
+void KFFluidSolver::solveBoundary(MVPVolumeParticle* particle, const double dt)
 {
 	for (const auto& csg : csgBoundaries) {
 		for (const auto& boundary : csg->getBoxes()) {

@@ -13,7 +13,7 @@
 
 namespace Crystal {
 	namespace Physics {
-		class KFMacroParticle;
+		class MVPVolumeParticle;
 		class KFFluidScene;
 		class KFFluidEmitterScene;
 		class IKFFluidScene;
@@ -69,9 +69,9 @@ public:
 
 private:
 
-	float calculateTimeStep(const std::vector<KFMacroParticle*>& particles);
+	float calculateTimeStep(const std::vector<MVPVolumeParticle*>& particles);
 
-	void solveBoundary(KFMacroParticle* particle, const double dt);
+	void solveBoundary(MVPVolumeParticle* particle, const double dt);
 	//void solveBoundary(const std::vector<MacroParticle*>& particles);
 	
 	std::list<KFFluidScene*> fluids;
