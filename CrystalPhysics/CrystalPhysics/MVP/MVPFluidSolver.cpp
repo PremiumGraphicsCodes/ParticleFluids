@@ -1,9 +1,9 @@
-#include "KFFluidSolver.h"
+#include "MVPFluidSolver.h"
 
 #include "MVPMassParticle.h"
 #include "MVPVolumeParticle.h"
 
-#include "KFFluidScene.h"
+#include "MVPFluidScene.h"
 #include "KFFluidEmitterScene.h"
 #include "../CSGBoundaryScene.h"
 
@@ -16,7 +16,7 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 using namespace Crystal::Physics;
 
-void KFBoundarySolver::setup(const float effectLength)
+void MVPBoundarySolver::setup(const float effectLength)
 {
 	std::vector<MVPVolumeParticle*> boundaryParticles;
 	for (auto b : boundaries) {
@@ -41,7 +41,7 @@ void KFBoundarySolver::setup(const float effectLength)
 	}
 }
 
-std::vector<IParticle*> KFBoundarySolver::findNeighbors(const Vector3dd& position)
+std::vector<IParticle*> MVPBoundarySolver::findNeighbors(const Vector3dd& position)
 {
 	if (spaceHash == nullptr) {
 		return {};
@@ -49,16 +49,16 @@ std::vector<IParticle*> KFBoundarySolver::findNeighbors(const Vector3dd& positio
 	return spaceHash->findNeighbors(position);
 }
 
-KFFluidSolver::KFFluidSolver(const int id) :
+MVPFluidSolver::MVPFluidSolver(const int id) :
 	IAnimator(id)
 {}
 
-void KFFluidSolver::setupBoundaries()
+void MVPFluidSolver::setupBoundaries()
 {
 	this->boundarySolver.setup(effectLength);
 }
 
-void KFFluidSolver::clear()
+void MVPFluidSolver::clear()
 {
 	fluids.clear();
 	emitters.clear();
@@ -69,27 +69,27 @@ void KFFluidSolver::clear()
 }
 
 
-void KFFluidSolver::addFluidScene(KFFluidScene* scene)
+void MVPFluidSolver::addFluidScene(MVPFluidScene* scene)
 {
 	this->fluids.push_back(scene);
 }
 
-void KFFluidSolver::addEmitterScene(KFFluidEmitterScene* scene)
+void MVPFluidSolver::addEmitterScene(KFFluidEmitterScene* scene)
 {
 	this->emitters.push_back(scene);
 }
 
-void KFFluidSolver::addBoundaryScene(KFFluidScene* scene)
+void MVPFluidSolver::addBoundaryScene(MVPFluidScene* scene)
 {
 	this->boundarySolver.addBoundaryScene(scene);
 }
 
-void KFFluidSolver::step()
+void MVPFluidSolver::step()
 {
 	simulate();
 }
 
-void KFFluidSolver::simulate()
+void MVPFluidSolver::simulate()
 {
 	std::vector<MVPVolumeParticle*> fluidParticles;
 
@@ -206,7 +206,7 @@ void KFFluidSolver::simulate()
 	currentTimeStep++;
 }
 
-float KFFluidSolver::calculateTimeStep(const std::vector<MVPVolumeParticle*>& particles)
+float MVPFluidSolver::calculateTimeStep(const std::vector<MVPVolumeParticle*>& particles)
 {
 	float maxVelocity = 0.0f;
 	for (auto p : particles) {
@@ -221,7 +221,7 @@ float KFFluidSolver::calculateTimeStep(const std::vector<MVPVolumeParticle*>& pa
 	//return std::min(dt, maxTimeStep);
 }
 
-void KFFluidSolver::solveBoundary(MVPVolumeParticle* particle, const double dt)
+void MVPFluidSolver::solveBoundary(MVPVolumeParticle* particle, const double dt)
 {
 	for (const auto& csg : csgBoundaries) {
 		for (const auto& boundary : csg->getBoxes()) {
@@ -266,7 +266,7 @@ void KFFluidSolver::solveBoundary(MVPVolumeParticle* particle, const double dt)
 	}
 }
 
-void KFFUpdater::step()
+void MVPUpdater::step()
 {
 	for (auto fluid : fluids) {
 		fluid->getPresenter()->updateView();

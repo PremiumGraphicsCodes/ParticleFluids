@@ -1,6 +1,6 @@
 #include "MVPVolumeParticle.h"
 
-#include "KFFluidScene.h"
+#include "MVPFluidScene.h"
 
 #include "../SPHKernel.h"
 

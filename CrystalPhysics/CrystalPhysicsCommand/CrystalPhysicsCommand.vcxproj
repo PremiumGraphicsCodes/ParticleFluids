@@ -153,6 +153,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
+      <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalViewer\Command\Command.vcxproj">
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
     </ProjectReference>
@@ -173,9 +176,6 @@
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
       <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\CrystalSpace\CrystalSpace.vcxproj">
-      <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
     </ProjectReference>
     <ProjectReference Include="..\CrystalPhysics\CrystalPhysics.vcxproj">
       <Project>{4c0efd78-680e-45c9-9828-9b674ee70df0}</Project>

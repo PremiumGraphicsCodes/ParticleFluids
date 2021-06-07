@@ -4,7 +4,7 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/DoubleView.h"
 
-#include "../CrystalPhysics/MVP/KFFluidSolver.h"
+#include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 //#include "../CrystalPhysics/Boundary.h"
 
 namespace Crystal {

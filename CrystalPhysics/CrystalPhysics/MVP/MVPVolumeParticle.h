@@ -7,7 +7,7 @@
 
 namespace Crystal {
 	namespace Physics {
-		class KFFluidScene;
+		class MVPFluidScene;
 
 class MVPVolumeParticle : public Shape::IParticle
 {

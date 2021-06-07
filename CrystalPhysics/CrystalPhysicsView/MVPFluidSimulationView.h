@@ -6,13 +6,13 @@
 #include "../../CrystalViewer/AppBase/FloatView.h"
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
 
-#include "../CrystalPhysics/MVP/KFFluidSolver.h"
+#include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "CSGBoundaryView.h"
 //#include "../CrystalPhysics/TimeSeriesParticleSystemWriter.h"
 
 namespace Crystal {
 	namespace Physics {
-		class KFFluidScene;
+		class MVPFluidScene;
 		class KFFluidEmitterScene;
 	}
 	namespace UI {
@@ -31,12 +31,12 @@ private:
 	//void reset();
 
 private:
-	Physics::KFFluidScene* fluidScene;
-	Physics::KFFluidScene* boundaryScene;
+	Physics::MVPFluidScene* fluidScene;
+	Physics::MVPFluidScene* boundaryScene;
 	Physics::KFFluidEmitterScene* emitterScene;
 	Physics::CSGBoundaryScene* csgScene;
-	Physics::KFFluidSolver solver;
-	Physics::KFFUpdater updator;
+	Physics::MVPFluidSolver solver;
+	Physics::MVPUpdater updator;
 	CSGBoundaryView boundaryView;
 	FloatView pressureCoeView;
 	FloatView viscosityCoeView;

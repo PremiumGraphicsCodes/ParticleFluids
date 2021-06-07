@@ -137,20 +137,22 @@
     <ClInclude Include="MVP/KFFluidEmitterScene.h">
       <Filter>MVP</Filter>
     </ClInclude>
-    <ClInclude Include="MVP/KFFluidScene.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
     <ClInclude Include="MVP/KFFluidScenePresenter.h">
       <Filter>MVP</Filter>
     </ClInclude>
-    <ClInclude Include="MVP/KFFluidSolver.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
-    <ClInclude Include="MVP/IKFFluidScene.h" />
     <ClInclude Include="MVP\MVPMassParticle.h">
       <Filter>MVP</Filter>
     </ClInclude>
     <ClInclude Include="MVP\MVPVolumeParticle.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP\MVPFluidSolver.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP\MVPFluidScene.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/IKFFluidScene.h">
       <Filter>MVP</Filter>
     </ClInclude>
   </ItemGroup>
@@ -258,19 +260,19 @@
     <ClCompile Include="MVP/KFFluidEmitterScene.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
-    <ClCompile Include="MVP/KFFluidScene.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
     <ClCompile Include="MVP/KFFluidScenePresenter.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
-    <ClCompile Include="MVP/KFFluidSolver.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPMassParticle.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPVolumeParticle.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPFluidSolver.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPFluidScene.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
   </ItemGroup>

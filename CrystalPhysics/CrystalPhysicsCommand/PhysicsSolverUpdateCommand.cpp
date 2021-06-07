@@ -2,8 +2,8 @@
 
 #include "PublicLabels/PhysicsSolverUpdateLabels.h"
 
-#include "../CrystalPhysics/MVP/KFFluidSolver.h"
-#include "../CrystalPhysics/MVP/KFFluidScene.h"
+#include "../CrystalPhysics/MVP/MVPFluidSolver.h"
+#include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../CrystalPhysics/MVP/KFFluidEmitterScene.h"
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 
@@ -48,7 +48,7 @@ PhysicsSolverUpdateCommand::PhysicsSolverUpdateCommand() :
 
 bool PhysicsSolverUpdateCommand::execute(World* world)
 {
-	auto solver = world->findAnimatorById<KFFluidSolver*>(args.id.getValue());
+	auto solver = world->findAnimatorById<MVPFluidSolver*>(args.id.getValue());
 	if (solver == nullptr) {
 		return false;
 	}
@@ -62,7 +62,7 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 	const auto ids = args.fluidSceneIds.getValue();
 
 	for (const auto id : ids) {
-		auto scene = world->getScenes()->findSceneById<KFFluidScene*>(id);
+		auto scene = world->getScenes()->findSceneById<MVPFluidScene*>(id);
 		if (scene->isBoundary()) {
 			solver->addBoundaryScene(scene);
 		}

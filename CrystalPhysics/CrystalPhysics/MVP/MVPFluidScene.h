@@ -5,12 +5,12 @@
 namespace Crystal {
 	namespace Physics {
 
-class KFFluidScene : public IKFFluidScene
+class MVPFluidScene : public IKFFluidScene
 {
 public:
-	KFFluidScene(const int id, const std::string& name);
+	MVPFluidScene(const int id, const std::string& name);
 
-	~KFFluidScene() = default;
+	~MVPFluidScene() = default;
 
 	static constexpr auto Type = "KFFluid";
 

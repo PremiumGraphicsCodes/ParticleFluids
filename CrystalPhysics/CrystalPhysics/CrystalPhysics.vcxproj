@@ -172,9 +172,9 @@
     <ClInclude Include="MVP/KFBoundaryScene.h" />
     <ClInclude Include="MVP/KFBoundaryScenePresenter.h" />
     <ClInclude Include="MVP/KFFluidEmitterScene.h" />
-    <ClInclude Include="MVP/KFFluidScene.h" />
+    <ClInclude Include="MVP\MVPFluidScene.h" />
     <ClInclude Include="MVP/KFFluidScenePresenter.h" />
-    <ClInclude Include="MVP/KFFluidSolver.h" />
+    <ClInclude Include="MVP\MVPFluidSolver.h" />
     <ClInclude Include="MVP\MVPVolumeParticle.h" />
     <ClInclude Include="MVP\MVPMassParticle.h" />
     <ClInclude Include="MeshBoundaryScene.h" />
@@ -215,9 +215,9 @@
     <ClCompile Include="MVP/KFBoundaryScene.cpp" />
     <ClCompile Include="MVP/KFBoundaryScenePresenter.cpp" />
     <ClCompile Include="MVP/KFFluidEmitterScene.cpp" />
-    <ClCompile Include="MVP/KFFluidScene.cpp" />
+    <ClCompile Include="MVP\MVPFluidScene.cpp" />
     <ClCompile Include="MVP/KFFluidScenePresenter.cpp" />
-    <ClCompile Include="MVP/KFFluidSolver.cpp" />
+    <ClCompile Include="MVP\MVPFluidSolver.cpp" />
     <ClCompile Include="MVP\MVPVolumeParticle.cpp" />
     <ClCompile Include="MVP\MVPMassParticle.cpp" />
     <ClCompile Include="MeshBoundaryScene.cpp" />

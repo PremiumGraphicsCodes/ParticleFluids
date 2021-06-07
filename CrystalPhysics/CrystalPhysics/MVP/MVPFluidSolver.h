@@ -14,17 +14,17 @@
 namespace Crystal {
 	namespace Physics {
 		class MVPVolumeParticle;
-		class KFFluidScene;
+		class MVPFluidScene;
 		class KFFluidEmitterScene;
 		class IKFFluidScene;
 		class CSGBoundaryScene;
 
-class KFBoundarySolver
+class MVPBoundarySolver
 {
 public:
-	KFBoundarySolver() {}
+	MVPBoundarySolver() {}
 
-	void addBoundaryScene(KFFluidScene* scene) { this->boundaries.push_back(scene); }
+	void addBoundaryScene(MVPFluidScene* scene) { this->boundaries.push_back(scene); }
 
 	void setup(const float effectLength);
 
@@ -36,24 +36,24 @@ public:
 	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
 
 private:
-	std::list<KFFluidScene*> boundaries;
+	std::list<MVPFluidScene*> boundaries;
 	std::unique_ptr<Space::CompactSpaceHash3d> spaceHash;
 };
 
-class KFFluidSolver : public Scene::IAnimator
+class MVPFluidSolver : public Scene::IAnimator
 {
 public:
-	KFFluidSolver() {}
+	MVPFluidSolver() {}
 
-	explicit KFFluidSolver(const int id);
+	explicit MVPFluidSolver(const int id);
 
 	void setupBoundaries();
 
 	void clear();
 
-	void addFluidScene(KFFluidScene* scene);
+	void addFluidScene(MVPFluidScene* scene);
 
-	void addBoundaryScene(KFFluidScene* scene);
+	void addBoundaryScene(MVPFluidScene* scene);
 
 	void addEmitterScene(KFFluidEmitterScene* scene);
 
@@ -74,19 +74,19 @@ private:
 	void solveBoundary(MVPVolumeParticle* particle, const double dt);
 	//void solveBoundary(const std::vector<MacroParticle*>& particles);
 	
-	std::list<KFFluidScene*> fluids;
+	std::list<MVPFluidScene*> fluids;
 	std::list<KFFluidEmitterScene*> emitters;
-	KFBoundarySolver boundarySolver;
+	MVPBoundarySolver boundarySolver;
 	std::list<CSGBoundaryScene*> csgBoundaries;
 	float effectLength = 2.0f;
 	float maxTimeStep = 0.03f;
 	int currentTimeStep = 0;
 };
 
-class KFFUpdater : public Scene::IAnimator
+class MVPUpdater : public Scene::IAnimator
 {
 public:
-	KFFUpdater() {}
+	MVPUpdater() {}
 
 	void add(Physics::IKFFluidScene* f) { fluids.push_back(f); }
 
