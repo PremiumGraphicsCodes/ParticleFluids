@@ -17,6 +17,7 @@ using namespace Crystal::Physics;
 
 namespace {
 	SPHConstant sphConstant;
+	SPHFlameConstant flameConstant;
 }
 
 SPHFlameSimulationView::SPHFlameSimulationView(World* model, Canvas* canvas) :
@@ -79,7 +80,7 @@ void SPHFlameSimulationView::onReset()
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 5; ++j) {
 			for (int k = 0; k < 10; ++k) {
-				auto mp = new SPHFlameParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant);
+				auto mp = new SPHFlameParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, &flameConstant);
 				flame->addParticle(mp);
 			}
 		}
