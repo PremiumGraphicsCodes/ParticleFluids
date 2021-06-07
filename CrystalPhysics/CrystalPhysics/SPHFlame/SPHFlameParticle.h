@@ -30,6 +30,10 @@ public:
 
 	Math::Vector3df getBuoyancyForce();
 
+	void setFuel(const float fuel) { this->fuel = fuel; }
+
+	void setTemperature(const float t) { this->temperature = t; }
+
 private:
 	float temperature;
 	float fuel;

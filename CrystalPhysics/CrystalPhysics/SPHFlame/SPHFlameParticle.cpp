@@ -28,7 +28,7 @@ void SPHFlameParticle::forwardTime(const float dt)
 	this->temperature += enthalpy * rs * dt;
 	this->fuel += dfuel * rs * dt;
 
-	SPHFlameParticle::forwardTime(dt);
+	CSPHParticle::forwardTime(dt);
 }
 
 void SPHFlameParticle::solveHeatDiffuse(const SPHFlameParticle& rhs)

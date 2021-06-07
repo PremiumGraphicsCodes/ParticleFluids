@@ -25,7 +25,7 @@ SPHFlameSimulationView::SPHFlameSimulationView(World* model, Canvas* canvas) :
 	startButton("Start"),
 	resetButton("Reset"),
 	//	nextButton("Next"),
-	timeStepView("TimeStep", 0.001f),
+	timeStepView("TimeStep", 0.01f),
 	pressureCoeView("PressureCoe", 1.0f),
 	viscosityView("Viscosity", 1.0f),
 	densityView("Density", 10.0f),
@@ -75,12 +75,21 @@ void SPHFlameSimulationView::onReset()
 	::sphConstant.density = densityView.getValue();
 	solver->setTimeStep(timeStepView.getValue());
 	solver->setBoundary(boundaryView.getValue());
+
+	flameConstant.k_fd = 1.0f-6;
+	flameConstant.k_hd = 1.0f-6;
+	flameConstant.k_rs = 1.0f;
+	flameConstant.k_buo = 1.0f-12;
 	solver->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 5; ++j) {
 			for (int k = 0; k < 10; ++k) {
 				auto mp = new SPHFlameParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, &flameConstant);
+				if (j == 0) {
+//					mp->setFuel(100.0f);
+					mp->setTemperature(400.0f);
+				}
 				flame->addParticle(mp);
 			}
 		}
