@@ -7,12 +7,12 @@
 
 namespace Crystal {
 	namespace Physics {
-		class KFBoundaryScene;
+		class MVPBoundaryScene;
 
 class KFBoundaryScenePresenter : public Scene::IPresenter
 {
 public:
-	explicit KFBoundaryScenePresenter(KFBoundaryScene* model);
+	explicit KFBoundaryScenePresenter(MVPBoundaryScene* model);
 
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
@@ -21,7 +21,7 @@ public:
 	void updateView() override;
 
 private:
-	KFBoundaryScene* model;
+	MVPBoundaryScene* model;
 	Scene::PointShaderScene* view;
 };
 

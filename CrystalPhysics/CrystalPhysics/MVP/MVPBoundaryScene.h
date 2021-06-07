@@ -2,19 +2,19 @@
 
 #include "../../../Crystal/Scene/IParticleSystemScene.h"
 
-#include "KFFluidScenePresenter.h"
+#include "MVPFluidScenePresenter.h"
 
 namespace Crystal {
 	namespace Physics {
-		class KFBoundaryParticle;
-		class KFFluidScenePresenter;
+		class MVPBoundaryParticle;
+		class MVPFluidScenePresenter;
 
-class KFBoundaryScene : public Scene::IParticleSystemScene
+class MVPBoundaryScene : public Scene::IParticleSystemScene
 {
 public:
-	KFBoundaryScene(const int id, const std::string& name);
+	MVPBoundaryScene(const int id, const std::string& name);
 
-	~KFBoundaryScene();
+	~MVPBoundaryScene();
 
 	static constexpr auto Type = "KFBoundary";
 
@@ -29,7 +29,7 @@ public:
 	}
 	*/
 
-	std::vector<KFBoundaryParticle*> getParticles() const { return particles; }
+	std::vector<MVPBoundaryParticle*> getParticles() const { return particles; }
 
 	Math::Box3dd getBoundingBox() const override;
 
@@ -50,7 +50,7 @@ public:
 	std::vector<Math::Vector3dd> getPositions() const override;
 
 private:
-	std::vector<KFBoundaryParticle*> particles;
+	std::vector<MVPBoundaryParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;
 	//std::unique_ptr<KFFluidScenePresenter> controller;

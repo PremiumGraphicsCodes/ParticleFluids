@@ -29,7 +29,7 @@ void PhysicsMenu::onShow()
 		if (ImGui::MenuItem("CSPH")) {
 			control->setWindow(new CSPHFluidSimulationView(getWorld(), getCanvas()));
 		}
-		if (ImGui::MenuItem("KFFluid")) {
+		if (ImGui::MenuItem("MVPFluid")) {
 			control->setWindow(new MVPFluidSimulationView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("PBSPHFluid")) {

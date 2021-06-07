@@ -2,13 +2,13 @@
 
 #include "../../../Crystal/Math/Sphere3d.h"
 
-#include "IKFFluidScene.h"
+#include "IMVPFluidScene.h"
 
 namespace Crystal {
 	namespace Physics {
 		//class KFMacroParticle;
 
-class KFFluidEmitterScene : public IKFFluidScene
+class KFFluidEmitterScene : public IMVPFluidScene
 {
 public:
 	KFFluidEmitterScene(const int id, const std::string& name);

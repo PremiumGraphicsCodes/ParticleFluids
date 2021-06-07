@@ -7,12 +7,12 @@
 
 namespace Crystal {
 	namespace Physics {
-		class IKFFluidScene;
+		class IMVPFluidScene;
 
-class KFFluidScenePresenter : public Scene::IPresenter
+class MVPFluidScenePresenter : public Scene::IPresenter
 {
 public:
-	explicit KFFluidScenePresenter(IKFFluidScene* model);
+	explicit MVPFluidScenePresenter(IMVPFluidScene* model);
 
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
@@ -21,7 +21,7 @@ public:
 	void updateView() override;
 
 private:
-	IKFFluidScene* model;
+	IMVPFluidScene* model;
 	Scene::PointShaderScene* view;
 };
 

@@ -3,18 +3,18 @@
 #include "../../../Crystal/Scene/IParticleSystemScene.h"
 
 #include "MVPVolumeParticle.h"
-#include "KFFluidScenePresenter.h"
+#include "MVPFluidScenePresenter.h"
 
 namespace Crystal {
 	namespace Physics {
 //		class KFFluidScenePresenter;
 
-class IKFFluidScene : public Scene::IParticleSystemScene
+class IMVPFluidScene : public Scene::IParticleSystemScene
 {
 public:
-	IKFFluidScene(const int id, const std::string& name);
+	IMVPFluidScene(const int id, const std::string& name);
 
-	virtual ~IKFFluidScene();
+	virtual ~IMVPFluidScene();
 
 	void addParticle(MVPVolumeParticle* mp) {
 		mp->setPressureCoe(this->pressureCoe);
@@ -47,7 +47,7 @@ public:
 	Scene::IPresenter* getPresenter() { return controller.get(); }
 
 private:
-	std::unique_ptr<KFFluidScenePresenter> controller;
+	std::unique_ptr<MVPFluidScenePresenter> controller;
 	std::vector<MVPVolumeParticle*> particles;
 	float pressureCoe;
 	float viscosityCoe;

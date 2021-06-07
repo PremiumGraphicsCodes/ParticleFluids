@@ -1,13 +1,13 @@
 #include "KFBoundaryScenePresenter.h"
 
-#include "KFBoundaryScene.h"
-#include "KFBoundaryParticle.h"
+#include "MVPBoundaryScene.h"
+#include "MVPBoundaryParticle.h"
 
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-KFBoundaryScenePresenter::KFBoundaryScenePresenter(KFBoundaryScene* model) :
+KFBoundaryScenePresenter::KFBoundaryScenePresenter(MVPBoundaryScene* model) :
 	model(model),
 	view(nullptr)
 {}

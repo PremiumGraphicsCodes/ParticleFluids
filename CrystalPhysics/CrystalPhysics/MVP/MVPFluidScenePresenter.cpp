@@ -1,4 +1,4 @@
-#include "KFFluidScenePresenter.h"
+#include "MVPFluidScenePresenter.h"
 
 #include "MVPFluidScene.h"
 
@@ -6,12 +6,12 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-KFFluidScenePresenter::KFFluidScenePresenter(IKFFluidScene* model) :
+MVPFluidScenePresenter::MVPFluidScenePresenter(IMVPFluidScene* model) :
 	model(model),
 	view(nullptr)
 {}
 
-void KFFluidScenePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void MVPFluidScenePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
@@ -22,7 +22,7 @@ void KFFluidScenePresenter::createView(SceneShader* sceneShader, GLObjectFactory
 	updateView();
 }
 
-void KFFluidScenePresenter::updateView()
+void MVPFluidScenePresenter::updateView()
 {
 	const auto& ps = model->getParticles();
 	PointBuffer pb;

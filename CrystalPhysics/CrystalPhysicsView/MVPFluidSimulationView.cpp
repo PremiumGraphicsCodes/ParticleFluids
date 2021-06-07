@@ -23,7 +23,7 @@ using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
 MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
-	IView("FluidSimulation"),
+	IView("MVPFluid"),
 	world(model),
 	canvas(canvas),
 	addFluidButton("AddFluid"),

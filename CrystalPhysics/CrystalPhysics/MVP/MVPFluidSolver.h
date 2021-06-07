@@ -16,7 +16,7 @@ namespace Crystal {
 		class MVPVolumeParticle;
 		class MVPFluidScene;
 		class KFFluidEmitterScene;
-		class IKFFluidScene;
+		class IMVPFluidScene;
 		class CSGBoundaryScene;
 
 class MVPBoundarySolver
@@ -88,12 +88,12 @@ class MVPUpdater : public Scene::IAnimator
 public:
 	MVPUpdater() {}
 
-	void add(Physics::IKFFluidScene* f) { fluids.push_back(f); }
+	void add(Physics::IMVPFluidScene* f) { fluids.push_back(f); }
 
 	void step() override;
 
 private:
-	std::list<Physics::IKFFluidScene*> fluids;
+	std::list<Physics::IMVPFluidScene*> fluids;
 };
 
 

@@ -7,7 +7,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
 KFFluidEmitterScene::KFFluidEmitterScene(const int id, const std::string& name) :
-	IKFFluidScene(id, name),
+	IMVPFluidScene(id, name),
 	interval(10)
 {
 }

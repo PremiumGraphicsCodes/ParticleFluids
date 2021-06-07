@@ -1,24 +1,31 @@
-#include "KFBoundaryScene.h"
-
-#include "KFBoundaryParticle.h"
+#include "IMVPFluidScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-KFBoundaryScene::KFBoundaryScene(const int id, const std::string& name) :
+IMVPFluidScene::IMVPFluidScene(const int id, const std::string& name) :
 	IParticleSystemScene(id, name),
 	pressureCoe(10000.0),
 	viscosityCoe(50.0)
 {
-	//this->controller = std::make_unique<KFFluidScenePresenter>(this);
+	this->controller = std::make_unique<MVPFluidScenePresenter>(this);
 }
 
-KFBoundaryScene::~KFBoundaryScene()
+IMVPFluidScene::~IMVPFluidScene()
 {
+	clearParticles();
 }
 
-Box3dd KFBoundaryScene::getBoundingBox() const
+void IMVPFluidScene::clearParticles()
+{
+	for (auto p : particles) {
+		delete p;
+	}
+	particles.clear();
+}
+
+Box3dd IMVPFluidScene::getBoundingBox() const
 {
 	if (particles.empty()) {
 		return Box3dd::createDegeneratedBox();
@@ -30,7 +37,7 @@ Box3dd KFBoundaryScene::getBoundingBox() const
 	return bb;
 }
 
-std::vector<Vector3dd> KFBoundaryScene::getPositions() const
+std::vector<Vector3dd> IMVPFluidScene::getPositions() const
 {
 	std::vector<Vector3dd> positions;
 	for (auto p : particles) {

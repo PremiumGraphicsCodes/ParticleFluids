@@ -1,31 +1,24 @@
-#include "IKFFluidScene.h"
+#include "MVPBoundaryScene.h"
+
+#include "MVPBoundaryParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-IKFFluidScene::IKFFluidScene(const int id, const std::string& name) :
+MVPBoundaryScene::MVPBoundaryScene(const int id, const std::string& name) :
 	IParticleSystemScene(id, name),
 	pressureCoe(10000.0),
 	viscosityCoe(50.0)
 {
-	this->controller = std::make_unique<KFFluidScenePresenter>(this);
+	//this->controller = std::make_unique<KFFluidScenePresenter>(this);
 }
 
-IKFFluidScene::~IKFFluidScene()
+MVPBoundaryScene::~MVPBoundaryScene()
 {
-	clearParticles();
 }
 
-void IKFFluidScene::clearParticles()
-{
-	for (auto p : particles) {
-		delete p;
-	}
-	particles.clear();
-}
-
-Box3dd IKFFluidScene::getBoundingBox() const
+Box3dd MVPBoundaryScene::getBoundingBox() const
 {
 	if (particles.empty()) {
 		return Box3dd::createDegeneratedBox();
@@ -37,7 +30,7 @@ Box3dd IKFFluidScene::getBoundingBox() const
 	return bb;
 }
 
-std::vector<Vector3dd> IKFFluidScene::getPositions() const
+std::vector<Vector3dd> MVPBoundaryScene::getPositions() const
 {
 	std::vector<Vector3dd> positions;
 	for (auto p : particles) {

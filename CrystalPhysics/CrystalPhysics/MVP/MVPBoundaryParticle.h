@@ -7,22 +7,22 @@
 
 namespace Crystal {
 	namespace Physics {
-		class KFBoundaryScene;
+		class MVPBoundaryScene;
 
-class KFBoundaryParticle : public Shape::IParticle
+class MVPBoundaryParticle : public Shape::IParticle
 {
 public:
-	KFBoundaryParticle(const float radius, const Math::Vector3dd& position) :
+	MVPBoundaryParticle(const float radius, const Math::Vector3dd& position) :
 		radius(radius),
 		position(position),
 		scene(nullptr)
 	{}
 
-	~KFBoundaryParticle() {}
+	~MVPBoundaryParticle() {}
 
-	void setScene(KFBoundaryScene* scene) { this->scene = scene; }
+	void setScene(MVPBoundaryScene* scene) { this->scene = scene; }
 
-	KFBoundaryScene* getScene() { return scene; }
+	MVPBoundaryScene* getScene() { return scene; }
 
 	void stepTime(const float dt) {}
 
@@ -39,7 +39,7 @@ public:
 private:
 	float radius;
 	Math::Vector3df position;
-	KFBoundaryScene* scene;
+	MVPBoundaryScene* scene;
 };
 
 	}

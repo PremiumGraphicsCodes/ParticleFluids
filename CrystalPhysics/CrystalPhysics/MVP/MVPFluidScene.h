@@ -1,11 +1,11 @@
 #pragma once
 
-#include "IKFFluidScene.h"
+#include "IMVPFluidScene.h"
 
 namespace Crystal {
 	namespace Physics {
 
-class MVPFluidScene : public IKFFluidScene
+class MVPFluidScene : public IMVPFluidScene
 {
 public:
 	MVPFluidScene(const int id, const std::string& name);

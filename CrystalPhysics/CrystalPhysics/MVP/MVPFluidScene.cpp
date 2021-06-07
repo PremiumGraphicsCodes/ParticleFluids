@@ -5,7 +5,7 @@ using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
 MVPFluidScene::MVPFluidScene(const int id, const std::string& name) :
-	IKFFluidScene(id, name),
+	IMVPFluidScene(id, name),
 	isBoundary_(false)
 {
 }

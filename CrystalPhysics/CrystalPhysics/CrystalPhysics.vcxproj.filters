@@ -125,19 +125,10 @@
     <ClInclude Include="SPHFlame/SPHFlameSolver.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="MVP/KFBoundaryParticle.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
-    <ClInclude Include="MVP/KFBoundaryScene.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
     <ClInclude Include="MVP/KFBoundaryScenePresenter.h">
       <Filter>MVP</Filter>
     </ClInclude>
     <ClInclude Include="MVP/KFFluidEmitterScene.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
-    <ClInclude Include="MVP/KFFluidScenePresenter.h">
       <Filter>MVP</Filter>
     </ClInclude>
     <ClInclude Include="MVP\MVPMassParticle.h">
@@ -152,7 +143,16 @@
     <ClInclude Include="MVP\MVPFluidScene.h">
       <Filter>MVP</Filter>
     </ClInclude>
-    <ClInclude Include="MVP/IKFFluidScene.h">
+    <ClInclude Include="MVP\MVPFluidScenePresenter.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP\IMVPFluidScene.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP\MVPBoundaryParticle.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP\MVPBoundaryScene.h">
       <Filter>MVP</Filter>
     </ClInclude>
   </ItemGroup>
@@ -245,22 +245,10 @@
     <ClCompile Include="SPHFlame/SPHFlameSolver.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
-    <ClCompile Include="MVP/IKFFluidScene.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
-    <ClCompile Include="MVP/KFBoundaryParticle.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
-    <ClCompile Include="MVP/KFBoundaryScene.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
     <ClCompile Include="MVP/KFBoundaryScenePresenter.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
     <ClCompile Include="MVP/KFFluidEmitterScene.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
-    <ClCompile Include="MVP/KFFluidScenePresenter.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPMassParticle.cpp">
@@ -273,6 +261,18 @@
       <Filter>MVP</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPFluidScene.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPFluidScenePresenter.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\IMVPFluidScene.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPBoundaryParticle.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPBoundaryScene.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
   </ItemGroup>
