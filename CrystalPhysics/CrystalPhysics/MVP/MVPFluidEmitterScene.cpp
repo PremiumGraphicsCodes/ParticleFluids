@@ -1,4 +1,4 @@
-#include "KFFluidEmitterScene.h"
+#include "MVPFluidEmitterScene.h"
 
 #include "MVPVolumeParticle.h"
 
@@ -6,18 +6,18 @@ using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-KFFluidEmitterScene::KFFluidEmitterScene(const int id, const std::string& name) :
+MVPFluidEmitterScene::MVPFluidEmitterScene(const int id, const std::string& name) :
 	IMVPFluidScene(id, name),
 	interval(10)
 {
 }
 
-KFFluidEmitterScene::~KFFluidEmitterScene()
+MVPFluidEmitterScene::~MVPFluidEmitterScene()
 {
 	clearParticles();
 }
 
-void KFFluidEmitterScene::emitParticle(const int timeStep)
+void MVPFluidEmitterScene::emitParticle(const int timeStep)
 {
 	const auto start = getStartStep();
 	const auto end = getEndStep();

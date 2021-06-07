@@ -4,7 +4,7 @@
 #include "MVPVolumeParticle.h"
 
 #include "MVPFluidScene.h"
-#include "KFFluidEmitterScene.h"
+#include "MVPFluidEmitterScene.h"
 #include "../CSGBoundaryScene.h"
 
 #include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
@@ -74,7 +74,7 @@ void MVPFluidSolver::addFluidScene(MVPFluidScene* scene)
 	this->fluids.push_back(scene);
 }
 
-void MVPFluidSolver::addEmitterScene(KFFluidEmitterScene* scene)
+void MVPFluidSolver::addEmitterScene(MVPFluidEmitterScene* scene)
 {
 	this->emitters.push_back(scene);
 }

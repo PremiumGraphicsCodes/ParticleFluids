@@ -8,12 +8,12 @@ namespace Crystal {
 	namespace Physics {
 		//class KFMacroParticle;
 
-class KFFluidEmitterScene : public IMVPFluidScene
+class MVPFluidEmitterScene : public IMVPFluidScene
 {
 public:
-	KFFluidEmitterScene(const int id, const std::string& name);
+	MVPFluidEmitterScene(const int id, const std::string& name);
 
-	~KFFluidEmitterScene();
+	~MVPFluidEmitterScene();
 
 	static constexpr auto Type = "KFFluidEmitter";
 

@@ -4,7 +4,7 @@
 
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
-#include "../CrystalPhysics/MVP/KFFluidEmitterScene.h"
+#include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
@@ -74,7 +74,7 @@ bool PhysicsSolverUpdateCommand::execute(World* world)
 	const auto emitterIds = args.emitterSceneIds.getValue();
 
 	for (const auto id : emitterIds) {
-		auto scene = world->getScenes()->findSceneById<KFFluidEmitterScene*>(id);
+		auto scene = world->getScenes()->findSceneById<MVPFluidEmitterScene*>(id);
 		solver->addEmitterScene(scene);
 	}
 

@@ -4,9 +4,9 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/FloatView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
-#include "../CrystalPhysics/CSPHSolver.h"
-#include "../CrystalPhysics/CSPHFluidScene.h"
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
+#include "../CrystalPhysics/CSPH/CSPHSolver.h"
+#include "../CrystalPhysics/CSPH/CSPHFluidScene.h"
 
 namespace Crystal {
 	namespace UI {

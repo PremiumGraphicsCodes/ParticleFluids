@@ -156,11 +156,11 @@
   <ItemGroup>
     <ClInclude Include="CSGBoundaryScene.h" />
     <ClInclude Include="CSGBoundaryScenePresenter.h" />
-    <ClInclude Include="CSPHBoundarySolver.h" />
-    <ClInclude Include="CSPHFluidScene.h" />
-    <ClInclude Include="CSPHFluidSceneController.h" />
-    <ClInclude Include="CSPHParticle.h" />
-    <ClInclude Include="CSPHSolver.h" />
+    <ClInclude Include="CSPH\CSPHBoundarySolver.h" />
+    <ClInclude Include="CSPH\CSPHFluidScene.h" />
+    <ClInclude Include="CSPH\CSPHFluidSceneController.h" />
+    <ClInclude Include="CSPH\CSPHParticle.h" />
+    <ClInclude Include="CSPH\CSPHSolver.h" />
     <ClInclude Include="DFFluidSceneController.h" />
     <ClInclude Include="DFSPHBoundarySolver.h" />
     <ClInclude Include="DFSPHParticle.h" />
@@ -170,8 +170,8 @@
     <ClInclude Include="MVP\IMVPFluidScene.h" />
     <ClInclude Include="MVP\MVPBoundaryParticle.h" />
     <ClInclude Include="MVP\MVPBoundaryScene.h" />
-    <ClInclude Include="MVP/KFBoundaryScenePresenter.h" />
-    <ClInclude Include="MVP/KFFluidEmitterScene.h" />
+    <ClInclude Include="MVP\MVPBoundaryScenePresenter.h" />
+    <ClInclude Include="MVP\MVPFluidEmitterScene.h" />
     <ClInclude Include="MVP\MVPFluidScene.h" />
     <ClInclude Include="MVP\MVPFluidScenePresenter.h" />
     <ClInclude Include="MVP\MVPFluidSolver.h" />
@@ -199,11 +199,11 @@
   <ItemGroup>
     <ClCompile Include="CSGBoundaryScene.cpp" />
     <ClCompile Include="CSGBoundaryScenePresenter.cpp" />
-    <ClCompile Include="CSPHBoundarySolver.cpp" />
-    <ClCompile Include="CSPHFluidScene.cpp" />
-    <ClCompile Include="CSPHFluidSceneController.cpp" />
-    <ClCompile Include="CSPHParticle.cpp" />
-    <ClCompile Include="CSPHSolver.cpp" />
+    <ClCompile Include="CSPH\CSPHBoundarySolver.cpp" />
+    <ClCompile Include="CSPH\CSPHFluidScene.cpp" />
+    <ClCompile Include="CSPH\CSPHFluidSceneController.cpp" />
+    <ClCompile Include="CSPH\CSPHParticle.cpp" />
+    <ClCompile Include="CSPH\CSPHSolver.cpp" />
     <ClCompile Include="DFFluidSceneController.cpp" />
     <ClCompile Include="DFSPHBoundarySolver.cpp" />
     <ClCompile Include="DFSPHParticle.cpp" />
@@ -213,8 +213,8 @@
     <ClCompile Include="MVP\IMVPFluidScene.cpp" />
     <ClCompile Include="MVP\MVPBoundaryParticle.cpp" />
     <ClCompile Include="MVP\MVPBoundaryScene.cpp" />
-    <ClCompile Include="MVP/KFBoundaryScenePresenter.cpp" />
-    <ClCompile Include="MVP/KFFluidEmitterScene.cpp" />
+    <ClCompile Include="MVP\MVPBoundaryScenePresenter.cpp" />
+    <ClCompile Include="MVP\MVPFluidEmitterScene.cpp" />
     <ClCompile Include="MVP\MVPFluidScene.cpp" />
     <ClCompile Include="MVP\MVPFluidScenePresenter.cpp" />
     <ClCompile Include="MVP\MVPFluidSolver.cpp" />

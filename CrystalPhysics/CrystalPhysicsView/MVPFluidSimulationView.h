@@ -4,7 +4,6 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
 #include "../../CrystalViewer/AppBase/FloatView.h"
-#include "../../CrystalViewer/AppBase/DirectoryView.h"
 
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "CSGBoundaryView.h"
@@ -13,7 +12,7 @@
 namespace Crystal {
 	namespace Physics {
 		class MVPFluidScene;
-		class KFFluidEmitterScene;
+		class MVPFluidEmitterScene;
 	}
 	namespace UI {
 
@@ -33,7 +32,7 @@ private:
 private:
 	Physics::MVPFluidScene* fluidScene;
 	Physics::MVPFluidScene* boundaryScene;
-	Physics::KFFluidEmitterScene* emitterScene;
+	Physics::MVPFluidEmitterScene* emitterScene;
 	Physics::CSGBoundaryScene* csgScene;
 	Physics::MVPFluidSolver solver;
 	Physics::MVPUpdater updator;

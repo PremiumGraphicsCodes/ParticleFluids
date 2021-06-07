@@ -1,4 +1,4 @@
-#include "KFBoundaryScenePresenter.h"
+#include "MVPBoundaryScenePresenter.h"
 
 #include "MVPBoundaryScene.h"
 #include "MVPBoundaryParticle.h"
@@ -7,12 +7,12 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-KFBoundaryScenePresenter::KFBoundaryScenePresenter(MVPBoundaryScene* model) :
+MVPBoundaryScenePresenter::MVPBoundaryScenePresenter(MVPBoundaryScene* model) :
 	model(model),
 	view(nullptr)
 {}
 
-void KFBoundaryScenePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void MVPBoundaryScenePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
@@ -23,7 +23,7 @@ void KFBoundaryScenePresenter::createView(SceneShader* sceneShader, GLObjectFact
 	updateView();
 }
 
-void KFBoundaryScenePresenter::updateView()
+void MVPBoundaryScenePresenter::updateView()
 {
 	const auto& ps = model->getParticles();
 	PointBuffer pb;

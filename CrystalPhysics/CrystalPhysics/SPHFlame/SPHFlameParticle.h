@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../CSPHParticle.h"
+#include "../CSPH/CSPHParticle.h"
 
 namespace Crystal {
 	namespace Physics {

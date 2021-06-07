@@ -3,7 +3,7 @@
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
-#include "../CrystalPhysics/MVP/KFFluidEmitterScene.h"
+#include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 
 #include "../../CrystalViewer/Command/CameraFitCommand.h"
@@ -57,7 +57,7 @@ void MVPFluidSimulationView::onStart()
 	fluidScene = new MVPFluidScene(world->getNextSceneId(), "KFFluid");
 	world->getScenes()->addScene(fluidScene);
 
-	emitterScene = new KFFluidEmitterScene(world->getNextSceneId(), "KFEmitter");
+	emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "KFEmitter");
 	world->getScenes()->addScene(emitterScene);
 
 	//boundaryScene = new KFFluidScene(getWorld()->getNextSceneId(), "KFBoundary");

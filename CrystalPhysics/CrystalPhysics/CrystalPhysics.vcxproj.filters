@@ -51,15 +51,6 @@
     <ClInclude Include="PBFluidSceneController.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
-    <ClInclude Include="CSPHSolver.h">
-      <Filter>CSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="CSPHParticle.h">
-      <Filter>CSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="CSPHBoundarySolver.h">
-      <Filter>CSPH</Filter>
-    </ClInclude>
     <ClInclude Include="DFFluidSolver.h">
       <Filter>DFSPH</Filter>
     </ClInclude>
@@ -74,12 +65,6 @@
     </ClInclude>
     <ClInclude Include="DFSPHBoundarySolver.h">
       <Filter>DFSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="CSPHFluidScene.h">
-      <Filter>CSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="CSPHFluidSceneController.h">
-      <Filter>CSPH</Filter>
     </ClInclude>
     <ClInclude Include="PBSPHBoundaryParticle.h">
       <Filter>PBSPH</Filter>
@@ -125,12 +110,6 @@
     <ClInclude Include="SPHFlame/SPHFlameSolver.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="MVP/KFBoundaryScenePresenter.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
-    <ClInclude Include="MVP/KFFluidEmitterScene.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
     <ClInclude Include="MVP\MVPMassParticle.h">
       <Filter>MVP</Filter>
     </ClInclude>
@@ -155,6 +134,27 @@
     <ClInclude Include="MVP\MVPBoundaryScene.h">
       <Filter>MVP</Filter>
     </ClInclude>
+    <ClInclude Include="MVP\MVPBoundaryScenePresenter.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP\MVPFluidEmitterScene.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
+    <ClInclude Include="CSPH\CSPHBoundarySolver.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="CSPH\CSPHFluidScene.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="CSPH\CSPHFluidSceneController.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="CSPH\CSPHParticle.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="CSPH\CSPHSolver.h">
+      <Filter>CSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PBSPHParticle.cpp">
@@ -172,15 +172,6 @@
     <ClCompile Include="PBFluidSceneController.cpp">
       <Filter>PBSPH</Filter>
     </ClCompile>
-    <ClCompile Include="CSPHParticle.cpp">
-      <Filter>CSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="CSPHSolver.cpp">
-      <Filter>CSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="CSPHBoundarySolver.cpp">
-      <Filter>CSPH</Filter>
-    </ClCompile>
     <ClCompile Include="DFFluidSolver.cpp">
       <Filter>DFSPH</Filter>
     </ClCompile>
@@ -195,12 +186,6 @@
     </ClCompile>
     <ClCompile Include="DFSPHBoundarySolver.cpp">
       <Filter>DFSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="CSPHFluidScene.cpp">
-      <Filter>CSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="CSPHFluidSceneController.cpp">
-      <Filter>CSPH</Filter>
     </ClCompile>
     <ClCompile Include="PBSPHBoundaryParticle.cpp">
       <Filter>PBSPH</Filter>
@@ -245,12 +230,6 @@
     <ClCompile Include="SPHFlame/SPHFlameSolver.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
-    <ClCompile Include="MVP/KFBoundaryScenePresenter.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
-    <ClCompile Include="MVP/KFFluidEmitterScene.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
     <ClCompile Include="MVP\MVPMassParticle.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
@@ -274,6 +253,27 @@
     </ClCompile>
     <ClCompile Include="MVP\MVPBoundaryScene.cpp">
       <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPBoundaryScenePresenter.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPFluidEmitterScene.cpp">
+      <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="CSPH\CSPHBoundarySolver.cpp">
+      <Filter>CSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="CSPH\CSPHFluidScene.cpp">
+      <Filter>CSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="CSPH\CSPHFluidSceneController.cpp">
+      <Filter>CSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="CSPH\CSPHParticle.cpp">
+      <Filter>CSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="CSPH\CSPHSolver.cpp">
+      <Filter>CSPH</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 #include "CSPHParticle.h"
-#include "SPHKernel.h"
+#include "../SPHKernel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

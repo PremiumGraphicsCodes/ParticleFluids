@@ -1,8 +1,8 @@
 #pragma once
 
-#include "SPHKernel.h"
-#include "../../Crystal/Math/Box3d.h"
-#include "../../Crystal/Scene/IAnimator.h"
+#include "../SPHKernel.h"
+#include "../../../Crystal/Math/Box3d.h"
+#include "../../../Crystal/Scene/IAnimator.h"
 //#include "ISPHSolver.h"
 #include <vector>
 

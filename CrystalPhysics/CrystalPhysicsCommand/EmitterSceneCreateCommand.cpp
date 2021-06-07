@@ -2,7 +2,7 @@
 
 #include "PublicLabels/EmitterSceneCreateLabels.h"
 
-#include "../CrystalPhysics/MVP/KFFluidEmitterScene.h"
+#include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
@@ -29,7 +29,7 @@ EmitterSceneCreateCommand::EmitterSceneCreateCommand() :
 
 bool EmitterSceneCreateCommand::execute(World* world)
 {
-	auto fluidScene = new KFFluidEmitterScene(world->getNextSceneId(), "");
+	auto fluidScene = new MVPFluidEmitterScene(world->getNextSceneId(), "");
 	world->getScenes()->addScene(fluidScene);
 	results.newId.setValue(fluidScene->getId());
 	return true;
