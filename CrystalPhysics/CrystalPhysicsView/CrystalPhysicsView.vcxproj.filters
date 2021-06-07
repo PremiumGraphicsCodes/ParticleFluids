@@ -10,6 +10,7 @@
     <ClCompile Include="CSGBoundaryView.cpp" />
     <ClCompile Include="MeshBoundaryView.cpp" />
     <ClCompile Include="SPHSurfaceBuilderView.cpp" />
+    <ClCompile Include="SPHFlameSimulationView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
@@ -20,5 +21,6 @@
     <ClInclude Include="CSGBoundaryView.h" />
     <ClInclude Include="MeshBoundaryView.h" />
     <ClInclude Include="SPHSurfaceBuilderView.h" />
+    <ClInclude Include="SPHFlameSimulationView.h" />
   </ItemGroup>
 </Project>

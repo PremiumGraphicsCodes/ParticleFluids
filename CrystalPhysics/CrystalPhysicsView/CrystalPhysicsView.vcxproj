@@ -161,6 +161,7 @@
     <ClCompile Include="KFFluidSimulationView.cpp" />
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
+    <ClCompile Include="SPHFlameSimulationView.cpp" />
     <ClCompile Include="SPHSurfaceBuilderView.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +207,7 @@
     <ClInclude Include="KFFluidSimulationView.h" />
     <ClInclude Include="PBSPHFluidSimulationView.h" />
     <ClInclude Include="PhysicsMenu.h" />
+    <ClInclude Include="SPHFlameSimulationView.h" />
     <ClInclude Include="SPHSurfaceBuilderView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

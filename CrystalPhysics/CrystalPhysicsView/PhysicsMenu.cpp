@@ -4,7 +4,7 @@
 #include "KFFluidSimulationView.h"
 #include "PBSPHFluidSimulationView.h"
 #include "DFSPHFluidSimulationView.h"
-//#include "MeshToParticleView.h"
+#include "SPHFlameSimulationView.h"
 
 #include "MeshBoundaryView.h"
 #include "SPHSurfaceBuilderView.h"
@@ -22,6 +22,9 @@ PhysicsMenu::PhysicsMenu(const std::string& name, World* model, Canvas* canvas, 
 
 void PhysicsMenu::onShow()
 {
+	auto world =  getWorld();
+	auto canvas = getCanvas();
+
 	if (ImGui::BeginMenu("Physics")) {
 		if (ImGui::MenuItem("CSPH")) {
 			control->setWindow(new CSPHFluidSimulationView(getWorld(), getCanvas()));
@@ -34,6 +37,9 @@ void PhysicsMenu::onShow()
 		}
 		if (ImGui::MenuItem("DFSPHFluid")) {
 			control->setWindow(new DFSPHFluidSimulationView(getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("SPHFlame")) {
+			control->setWindow(new SPHFlameSimulationView(world, canvas));
 		}
 		ImGui::EndMenu();
 	}
