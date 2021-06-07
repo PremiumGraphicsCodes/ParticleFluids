@@ -69,7 +69,7 @@ void CSPHSolver::simulate(const float timeStep)
 	}
 
 	for (auto p : particles) {
-		p->addExternalForce(externalForce, timeStep);
+		p->addExternalForce(externalForce);
 	}
 
 	CSPHBoundarySolver boundarySolver(timeStep, boundary);

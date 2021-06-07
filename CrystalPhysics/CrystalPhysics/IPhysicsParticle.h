@@ -13,6 +13,9 @@ protected:
 	virtual void init() = 0;
 
 	virtual void forwardTime(const float timeStep) = 0;
+
+	virtual void addExternalForce(const Math::Vector3df& force) = 0;
+
 };
 
 	}

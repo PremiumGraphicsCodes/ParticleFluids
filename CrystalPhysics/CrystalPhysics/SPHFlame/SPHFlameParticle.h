@@ -10,6 +10,7 @@ struct SPHFlameConstant
 	float k_hd;
 	float k_fd;
 	float k_rs;
+	float k_buo;
 };
 
 class SPHFlameParticle : public CSPHParticle
@@ -19,11 +20,15 @@ public:
 
 	void init() override;
 
+	void forwardTime(const float dt) override;
+
 	void solveHeatDiffuse(const SPHFlameParticle& rhs);
 
 	void solveFuelDiffuse(const SPHFlameParticle& rhs);
 
 	float getReactionSpeed();
+
+	Math::Vector3df getBuoyancyForce();
 
 private:
 	float temperature;

@@ -21,6 +21,16 @@ void SPHFlameParticle::init()
 	dfuel = 0.0f;
 }
 
+void SPHFlameParticle::forwardTime(const float dt)
+{
+	const auto rs = this->getReactionSpeed();
+
+	this->temperature += enthalpy * rs * dt;
+	this->fuel += dfuel * rs * dt;
+
+	SPHFlameParticle::forwardTime(dt);
+}
+
 void SPHFlameParticle::solveHeatDiffuse(const SPHFlameParticle& rhs)
 {
 	const auto coe = (this->flameConstant->k_hd + rhs.flameConstant->k_hd) * 0.5f;
@@ -40,4 +50,10 @@ void SPHFlameParticle::solveFuelDiffuse(const SPHFlameParticle& rhs)
 float SPHFlameParticle::getReactionSpeed()
 {
 	return flameConstant->k_rs * temperature * fuel;
+}
+
+Vector3df SPHFlameParticle::getBuoyancyForce()
+{
+	const auto buo = (this->temperature - 300.0f) * this->flameConstant->k_buo * Vector3df(0,1,0);
+	return buo;
 }

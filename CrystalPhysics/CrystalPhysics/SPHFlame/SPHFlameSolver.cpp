@@ -79,8 +79,10 @@ void SPHFlameSolver::simulate(const float timeStep)
 	}
 
 	for (auto p : particles) {
-		p->addExternalForce(externalForce, timeStep);
+		p->addExternalForce(p->getBuoyancyForce());
+		p->addExternalForce(externalForce);
 	}
+
 
 	SPHFlameBoundarySolver boundarySolver(timeStep, boundary);
 	boundarySolver.solve(particles);
