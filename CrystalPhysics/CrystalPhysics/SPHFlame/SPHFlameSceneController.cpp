@@ -3,14 +3,26 @@
 #include "SPHFlameScene.h"
 #include "SPHFlameParticle.h"
 
+#include "../../../Crystal/Graphics/ColorHSV.h"
+
+using namespace Crystal::Graphics;
 using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
 SPHFlameSceneController::SPHFlameSceneController(SPHFlameScene* model) :
 	model(model),
-	view(nullptr)
-{}
+	view(nullptr),
+	colorMap(300.0, 400.0, 270)
+{
+	for (int i = 0; i < 270; ++i) {
+		ColorHSV hsv(i, 1.0, 1.0);
+		ColorRGBAf c(hsv.toColorRGBf(), 0.0f);
+		colorMap.setColor(269 - i, c);
+	}
+
+	//colorMap = Graphics::ColorMap::
+}
 
 void SPHFlameSceneController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
@@ -28,7 +40,8 @@ void SPHFlameSceneController::updateView()
 	const auto& ps = model->getParticles();
 	PointBuffer pb;
 	for (auto p : ps) {
-		pb.add(p->getPosition(), glm::vec4(1, 1, 1, 1), 50.0);
+		const auto c = colorMap.getColor(p->getTemperature());
+		pb.add(p->getPosition(), c, 50.0);
 		/*
 		const auto& pts = p->getPoints();
 		for (auto pp : pts) {

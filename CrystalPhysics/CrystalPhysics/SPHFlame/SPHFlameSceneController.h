@@ -5,6 +5,8 @@
 #include "../../../Crystal/Scene/SceneShader.h"
 #include "../../../Crystal/Scene/PointShaderScene.h"
 
+#include "../../../Crystal/Graphics/ColorMap.h"
+
 namespace Crystal {
 	namespace Physics {
 		class SPHFlameScene;
@@ -23,6 +25,7 @@ public:
 private:
 	SPHFlameScene* model;
 	Scene::PointShaderScene* view;
+	Graphics::ColorMap colorMap;
 };
 
 	}

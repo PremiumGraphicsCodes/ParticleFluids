@@ -76,10 +76,10 @@ void SPHFlameSimulationView::onReset()
 	solver->setTimeStep(timeStepView.getValue());
 	solver->setBoundary(boundaryView.getValue());
 
-	flameConstant.k_fd = 1.0f-6;
-	flameConstant.k_hd = 1.0f-6;
-	flameConstant.k_rs = 1.0f;
-	flameConstant.k_buo = 1.0f-12;
+	flameConstant.k_fd = 0;// 1.0f - 12;
+	flameConstant.k_hd = 1.0e-3f;
+	flameConstant.k_rs = 1.0e-3f;
+	flameConstant.k_buo = 0.0f;//1.0e-12f;
 	solver->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
 	for (int i = 0; i < 10; ++i) {
@@ -87,7 +87,7 @@ void SPHFlameSimulationView::onReset()
 			for (int k = 0; k < 10; ++k) {
 				auto mp = new SPHFlameParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, &flameConstant);
 				if (j == 0) {
-//					mp->setFuel(100.0f);
+					mp->setFuel(1.0f);
 					mp->setTemperature(400.0f);
 				}
 				flame->addParticle(mp);

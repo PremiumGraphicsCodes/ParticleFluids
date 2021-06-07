@@ -34,6 +34,8 @@ public:
 
 	void setTemperature(const float t) { this->temperature = t; }
 
+	float getTemperature() const { return this->temperature; }
+
 private:
 	float temperature;
 	float fuel;

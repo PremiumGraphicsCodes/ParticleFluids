@@ -18,7 +18,7 @@ void SPHFlameParticle::init()
 {
 	CSPHParticle::init();
 	enthalpy = 0.0f;
-	dfuel = 0.0f;
+	dfuel = 1.0f;
 }
 
 void SPHFlameParticle::forwardTime(const float dt)

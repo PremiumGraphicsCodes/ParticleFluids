@@ -60,7 +60,7 @@ void ScreenShader::render(const Camera& camera)
 	//texture.bind();
 	frameBufferObject->bind();
 	glViewport(0, 0, texture->getWidth(), texture->getHeight());
-	glClearColor(0.0, 0.0, 1.0, 0.0);
+	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for (auto s : scenes) {
