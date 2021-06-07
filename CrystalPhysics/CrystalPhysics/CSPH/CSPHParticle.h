@@ -5,15 +5,16 @@
 #include <memory>
 
 #include "../../../Crystal/Math/Vector3d.h"
-#include "../../../Crystal/Shape/IParticle.h"
 #include "../../../Crystal/Util/UnCopyable.h"
 #include "../SPHConstant.h"
+
+#include "../IPhysicsParticle.h"
 
 namespace Crystal {
 	namespace Physics {
 		class SPHKernel;
 
-class CSPHParticle : public Shape::IParticle
+class CSPHParticle : public IPhysicsParticle
 {
 public:
 	CSPHParticle(const Math::Vector3df& center, const float radius, SPHConstant* constant);
@@ -42,7 +43,7 @@ public:
 
 	void addDensity(const float density) { this->density += density; }
 
-	void init();
+	void init() override;
 
 	Math::Vector3df getAccelaration() { return force / density; }
 
@@ -52,7 +53,7 @@ public:
 
 	void addVelocity(const Math::Vector3df& velocity) { this->velocity += velocity; }
 
-	void forwardTime(const float timeStep);
+	void forwardTime(const float timeStep) override;
 
 	void addExternalForce(const Math::Vector3df& force, const float timeStep);
 

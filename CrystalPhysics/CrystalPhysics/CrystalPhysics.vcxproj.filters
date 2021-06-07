@@ -155,6 +155,7 @@
     <ClInclude Include="PBSPH\PBSPHSolver.h">
       <Filter>PBSPH</Filter>
     </ClInclude>
+    <ClInclude Include="IPhysicsParticle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />

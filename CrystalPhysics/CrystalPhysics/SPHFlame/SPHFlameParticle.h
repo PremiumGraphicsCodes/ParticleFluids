@@ -17,6 +17,8 @@ class SPHFlameParticle : public CSPHParticle
 public:
 	SPHFlameParticle(const Math::Vector3df& center, const float radius, SPHConstant* constant, SPHFlameConstant* flameConstant);
 
+	void init() override;
+
 	void solveHeatDiffuse(const SPHFlameParticle& rhs);
 
 	void solveFuelDiffuse(const SPHFlameParticle& rhs);
@@ -26,6 +28,8 @@ public:
 private:
 	float temperature;
 	float fuel;
+	float enthalpy;
+	float dfuel;
 	SPHFlameConstant* flameConstant;
 };
 

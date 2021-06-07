@@ -68,6 +68,16 @@ void SPHFlameSolver::simulate(const float timeStep)
 		p2->solveViscosityForce(*p1);
 	}
 
+#pragma omp parallel for
+	for (int i = 0; i < static_cast<int>(pairs.size()); ++i) {
+		auto p1 = static_cast<SPHFlameParticle*>(pairs[i].first);
+		auto p2 = static_cast<SPHFlameParticle*>(pairs[i].second);
+		p1->solveHeatDiffuse(*p2);
+		p2->solveHeatDiffuse(*p1);
+		p1->solveFuelDiffuse(*p2);
+		p2->solveFuelDiffuse(*p1);
+	}
+
 	for (auto p : particles) {
 		p->addExternalForce(externalForce, timeStep);
 	}

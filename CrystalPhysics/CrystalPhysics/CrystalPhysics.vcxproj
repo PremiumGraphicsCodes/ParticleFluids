@@ -167,6 +167,7 @@
     <ClInclude Include="DFSPH\DFSPHBoundarySolver.h" />
     <ClInclude Include="DFSPH\DFSPHParticle.h" />
     <ClInclude Include="FLIPSSolver.h" />
+    <ClInclude Include="IPhysicsParticle.h" />
     <ClInclude Include="MVP\IMVPFluidScene.h" />
     <ClInclude Include="MVP\MVPBoundaryParticle.h" />
     <ClInclude Include="MVP\MVPBoundaryScene.h" />
