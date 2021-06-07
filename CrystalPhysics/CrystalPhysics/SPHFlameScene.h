@@ -3,7 +3,7 @@
 #include "../../Crystal/Scene/IScene.h"
 
 #include "SPHFlameParticle.h"
-//#include "CSPHFluidSceneController.h"
+#include "SPHFlameSceneController.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -19,9 +19,7 @@ public:
 
 	Scene::SceneType getType() const { return Type; }
 
-	Scene::IPresenter* getPresenter() {
-		return nullptr;
-	}// { return controller.get(); }
+	Scene::IPresenter* getPresenter() { return controller.get(); }
 
 	void addParticle(SPHFlameParticle* mp) { particles.push_back(mp); }
 
@@ -33,7 +31,7 @@ public:
 
 private:
 	std::list<SPHFlameParticle*> particles;
-	//std::unique_ptr<CSPHFluidSceneController> controller;
+	std::unique_ptr<SPHFlameSceneController> controller;
 };
 
 	}

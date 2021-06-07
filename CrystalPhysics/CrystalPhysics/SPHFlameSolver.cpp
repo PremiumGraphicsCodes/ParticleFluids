@@ -1,6 +1,6 @@
 #include "SPHFlameSolver.h"
 #include "SPHFlameParticle.h"
-//#include "CSPHBoundarySolver.h"
+#include "SPHFlameBoundarySolver.h"
 #include "SPHFlameScene.h"
 
 #include "../../CrystalSpace/CrystalSpace/IndexedSortSearchAlgo.h"
@@ -21,7 +21,7 @@ void SPHFlameSolver::step()
 
 void SPHFlameSolver::simulate(const float timeStep)
 {
-	std::vector<CSPHParticle*> particles;
+	std::vector<SPHFlameParticle*> particles;
 
 	for (auto fluid : flames) {
 		const auto ps = fluid->getParticles();
@@ -72,8 +72,8 @@ void SPHFlameSolver::simulate(const float timeStep)
 		p->addExternalForce(externalForce, timeStep);
 	}
 
-	//CSPHBoundarySolver boundarySolver(timeStep, boundary);
-	//boundarySolver.solve(particles);
+	SPHFlameBoundarySolver boundarySolver(timeStep, boundary);
+	boundarySolver.solve(particles);
 
 	for (auto p : particles) {
 		p->forwardTime(timeStep);

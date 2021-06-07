@@ -6,7 +6,7 @@ using namespace Crystal::Physics;
 SPHFlameScene::SPHFlameScene(const int id, const std::string& name) :
 	Scene::IScene(id, name)
 {
-	//controller = std::make_unique<CSPHFluidSceneController>(this);
+	controller = std::make_unique<SPHFlameSceneController>(this);
 }
 
 void SPHFlameScene::clearParticles()

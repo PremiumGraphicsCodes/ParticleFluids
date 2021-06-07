@@ -28,8 +28,7 @@ SPHFlameSimulationView::SPHFlameSimulationView(World* model, Canvas* canvas) :
 	pressureCoeView("PressureCoe", 1.0f),
 	viscosityView("Viscosity", 1.0f),
 	densityView("Density", 10.0f),
-	boundaryView("Boundary"),
-	newId(-1)
+	boundaryView("Boundary")
 {
 	boundaryView.setValue(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 1000, 100)));
 	resetButton.setFunction([=]() { onReset(); });
@@ -48,16 +47,14 @@ void SPHFlameSimulationView::onOk()
 	flame = new SPHFlameScene(getWorld()->getNextSceneId(), "Flame");
 	getWorld()->getScenes()->addScene(flame);
 
-	Command::Command command;
-	command.create(ShaderBuildLabels::CommandNameLabel);
-	command.setArg(ShaderBuildLabels::IdLabel, newId);
-	command.execute(getWorld());
-
 	solver = new SPHFlameSolver();
 	solver->add(flame);
 
+	flame->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+
 	this->onReset();
 
+	Crystal::Command::Command command;
 	command.create(CameraFitCommandLabels::CameraFitCommandLabel);
 	command.execute(getWorld());
 

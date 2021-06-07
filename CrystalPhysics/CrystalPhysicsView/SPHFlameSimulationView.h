@@ -32,7 +32,6 @@ private:
 	FloatView timeStepView;
 	FloatView densityView;
 	Box3dView boundaryView;
-	int newId;
 };
 
 	}
