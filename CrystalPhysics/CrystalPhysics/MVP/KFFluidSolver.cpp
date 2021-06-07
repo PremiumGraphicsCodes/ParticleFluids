@@ -5,9 +5,9 @@
 
 #include "KFFluidScene.h"
 #include "KFFluidEmitterScene.h"
-#include "CSGBoundaryScene.h"
+#include "../CSGBoundaryScene.h"
 
-#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 
 #include <iostream>
 

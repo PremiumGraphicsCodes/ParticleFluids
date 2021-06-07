@@ -6,7 +6,7 @@
 #include "../../CrystalViewer/AppBase/FloatView.h"
 #include "../../CrystalViewer/AppBase/DirectoryView.h"
 
-#include "../CrystalPhysics/KFFluidSolver.h"
+#include "../CrystalPhysics/MVP/KFFluidSolver.h"
 #include "CSGBoundaryView.h"
 //#include "../CrystalPhysics/TimeSeriesParticleSystemWriter.h"
 

@@ -2,9 +2,9 @@
 
 #include "KFFluidScene.h"
 
-#include "SPHKernel.h"
+#include "../SPHKernel.h"
 
-#include "../../Crystal/Math/Gaussian.h"
+#include "../../../Crystal/Math/Gaussian.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

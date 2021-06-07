@@ -3,13 +3,13 @@
 #include <vector>
 #include <list>
 
-#include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Math/Box3d.h"
-#include "../../Crystal/Shape/IParticle.h"
-#include "../../Crystal/Scene/IAnimator.h"
+#include "../../../Crystal/Math/Vector3d.h"
+#include "../../../Crystal/Math/Box3d.h"
+#include "../../../Crystal/Shape/IParticle.h"
+#include "../../../Crystal/Scene/IAnimator.h"
 
-#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
-#include "MeshBoundaryScene.h"
+#include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "../MeshBoundaryScene.h"
 
 namespace Crystal {
 	namespace Physics {

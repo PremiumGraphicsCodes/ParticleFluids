@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Shape/IParticle.h"
+#include "../../../Crystal/Shape/IParticle.h"
 
 #include <vector>
 #include <list>

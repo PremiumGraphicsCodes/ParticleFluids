@@ -60,20 +60,11 @@
     <ClInclude Include="CSPHBoundarySolver.h">
       <Filter>CSPH</Filter>
     </ClInclude>
-    <ClInclude Include="KFFluidSolver.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
-    <ClInclude Include="KFFluidScene.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
     <ClInclude Include="DFFluidSolver.h">
       <Filter>DFSPH</Filter>
     </ClInclude>
     <ClInclude Include="DFFluidScene.h">
       <Filter>DFSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="KFMacroParticle.h">
-      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="DFSPHParticle.h">
       <Filter>DFSPH</Filter>
@@ -84,9 +75,6 @@
     <ClInclude Include="DFSPHBoundarySolver.h">
       <Filter>DFSPH</Filter>
     </ClInclude>
-    <ClInclude Include="KFMicroParticle.h">
-      <Filter>KFFluid</Filter>
-    </ClInclude>
     <ClInclude Include="CSPHFluidScene.h">
       <Filter>CSPH</Filter>
     </ClInclude>
@@ -95,9 +83,6 @@
     </ClInclude>
     <ClInclude Include="PBSPHBoundaryParticle.h">
       <Filter>PBSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="KFFluidScenePresenter.h">
-      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
@@ -113,15 +98,6 @@
     <ClInclude Include="MeshBoundaryScenePresenter.h">
       <Filter>Boundary\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="KFBoundaryParticle.h">
-      <Filter>Boundary\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="KFBoundaryScene.h">
-      <Filter>Boundary\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="KFBoundaryScenePresenter.h">
-      <Filter>Boundary\Particle</Filter>
-    </ClInclude>
     <ClInclude Include="WPCA.h">
       <Filter>SurfaceReconstruction</Filter>
     </ClInclude>
@@ -133,9 +109,6 @@
     </ClInclude>
     <ClInclude Include="SPHSurfaceParticle.h">
       <Filter>SurfaceReconstruction</Filter>
-    </ClInclude>
-    <ClInclude Include="KFFluidEmitterScene.h">
-      <Filter>KFFluid</Filter>
     </ClInclude>
     <ClInclude Include="IKFFluidScene.h">
       <Filter>KFFluid</Filter>
@@ -154,6 +127,33 @@
     </ClInclude>
     <ClInclude Include="SPHFlame/SPHFlameSolver.h">
       <Filter>SPHFlame</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/KFBoundaryParticle.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/KFBoundaryScene.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/KFBoundaryScenePresenter.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/KFFluidEmitterScene.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/KFFluidScene.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/KFFluidScenePresenter.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/KFFluidSolver.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/KFMacroParticle.h">
+      <Filter>KFFluid</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP/KFMicroParticle.h">
+      <Filter>KFFluid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -181,20 +181,11 @@
     <ClCompile Include="CSPHBoundarySolver.cpp">
       <Filter>CSPH</Filter>
     </ClCompile>
-    <ClCompile Include="KFFluidSolver.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="KFFluidScene.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
     <ClCompile Include="DFFluidSolver.cpp">
       <Filter>DFSPH</Filter>
     </ClCompile>
     <ClCompile Include="DFFluidScene.cpp">
       <Filter>DFSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="KFMacroParticle.cpp">
-      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="DFSPHParticle.cpp">
       <Filter>DFSPH</Filter>
@@ -205,9 +196,6 @@
     <ClCompile Include="DFSPHBoundarySolver.cpp">
       <Filter>DFSPH</Filter>
     </ClCompile>
-    <ClCompile Include="KFMicroParticle.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
     <ClCompile Include="CSPHFluidScene.cpp">
       <Filter>CSPH</Filter>
     </ClCompile>
@@ -216,9 +204,6 @@
     </ClCompile>
     <ClCompile Include="PBSPHBoundaryParticle.cpp">
       <Filter>PBSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="KFFluidScenePresenter.cpp">
-      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="SPHKernel.cpp" />
     <ClCompile Include="CSGBoundaryScene.cpp">
@@ -233,15 +218,6 @@
     <ClCompile Include="MeshBoundaryScenePresenter.cpp">
       <Filter>Boundary\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="KFBoundaryParticle.cpp">
-      <Filter>Boundary\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="KFBoundaryScene.cpp">
-      <Filter>Boundary\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="KFBoundaryScenePresenter.cpp">
-      <Filter>Boundary\Particle</Filter>
-    </ClCompile>
     <ClCompile Include="WPCA.cpp">
       <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
@@ -253,12 +229,6 @@
     </ClCompile>
     <ClCompile Include="SPHSurfaceParticle.cpp">
       <Filter>SurfaceReconstruction</Filter>
-    </ClCompile>
-    <ClCompile Include="KFFluidEmitterScene.cpp">
-      <Filter>KFFluid</Filter>
-    </ClCompile>
-    <ClCompile Include="IKFFluidScene.cpp">
-      <Filter>KFFluid</Filter>
     </ClCompile>
     <ClCompile Include="SPHFlame/SPHFlameBoundarySolver.cpp">
       <Filter>SPHFlame</Filter>
@@ -274,6 +244,36 @@
     </ClCompile>
     <ClCompile Include="SPHFlame/SPHFlameSolver.cpp">
       <Filter>SPHFlame</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/IKFFluidScene.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/KFBoundaryParticle.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/KFBoundaryScene.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/KFBoundaryScenePresenter.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/KFFluidEmitterScene.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/KFFluidScene.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/KFFluidScenePresenter.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/KFFluidSolver.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/KFMacroParticle.cpp">
+      <Filter>KFFluid</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP/KFMicroParticle.cpp">
+      <Filter>KFFluid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

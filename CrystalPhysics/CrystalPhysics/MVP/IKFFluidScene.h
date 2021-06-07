@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Scene/IParticleSystemScene.h"
+#include "../../../Crystal/Scene/IParticleSystemScene.h"
 
 #include "KFMacroParticle.h"
 #include "KFFluidScenePresenter.h"

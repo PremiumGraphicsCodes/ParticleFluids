@@ -2,7 +2,7 @@
 
 #include "PublicLabels/EmitterSceneCreateLabels.h"
 
-#include "../CrystalPhysics/KFFluidEmitterScene.h"
+#include "../CrystalPhysics/MVP/KFFluidEmitterScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

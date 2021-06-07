@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Shape/IParticle.h"
+#include "../../../Crystal/Math/Vector3d.h"
+#include "../../../Crystal/Shape/IParticle.h"
 
 namespace Crystal {
 	namespace Physics {
