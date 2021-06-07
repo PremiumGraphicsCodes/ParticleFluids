@@ -7,10 +7,10 @@ namespace Crystal {
 	namespace Physics {
 		class KFMacroParticle;
 
-class KFMicroParticle : public Shape::IParticle
+class MVPMassParticle : public Shape::IParticle
 {
 public:
-	KFMicroParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float mass);
+	MVPMassParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float mass);
 
 	Math::Vector3dd getPosition() const override;
 

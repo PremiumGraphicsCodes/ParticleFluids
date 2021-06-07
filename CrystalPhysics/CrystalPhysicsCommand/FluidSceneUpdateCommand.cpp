@@ -2,7 +2,7 @@
 
 #include "PublicLabels/FluidSceneUpdateLabels.h"
 
-#include "../CrystalPhysics/KFFluidScene.h"
+#include "../CrystalPhysics/MVP/KFFluidScene.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;

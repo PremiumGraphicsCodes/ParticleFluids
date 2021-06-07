@@ -17,10 +17,10 @@ namespace Crystal {
 	}
 	namespace UI {
 
-class KFFluidSimulationView : public IView
+class MVPFluidSimulationView : public IView
 {
 public:
-	KFFluidSimulationView(Scene::World* model, Canvas* canvas);
+	MVPFluidSimulationView(Scene::World* model, Canvas* canvas);
 
 private:
 	void onAddFluid();

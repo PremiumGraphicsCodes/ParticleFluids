@@ -1,4 +1,4 @@
-#include "KFMicroParticle.h"
+#include "MVPMassParticle.h"
 
 #include "KFMacroParticle.h"
 #include "KFFluidScene.h"
@@ -6,7 +6,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
-KFMicroParticle::KFMicroParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float mass) :
+MVPMassParticle::MVPMassParticle(KFMacroParticle* parent, const Math::Vector3df& point, const float mass) :
 	parent(parent),
 	vector(point),
 	mass(mass)
@@ -17,17 +17,17 @@ KFMicroParticle::KFMicroParticle(KFMacroParticle* parent, const Math::Vector3df&
 }
 
 
-Vector3dd KFMicroParticle::getPosition() const
+Vector3dd MVPMassParticle::getPosition() const
 {
 	return position;
 }
 
-Vector3df KFMicroParticle::getVelocity() const
+Vector3df MVPMassParticle::getVelocity() const
 {
 	return parent->getVelocity();
 }
 
-void KFMicroParticle::updatePosition()
+void MVPMassParticle::updatePosition()
 {
 	this->position = parent->getPositionf() + parent->getRadius() * vector;
 }

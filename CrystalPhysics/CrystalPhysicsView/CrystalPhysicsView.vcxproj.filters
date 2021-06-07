@@ -4,23 +4,23 @@
     <ClCompile Include="CrystalPhysicsView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
     <ClCompile Include="CSPHFluidSimulationView.cpp" />
-    <ClCompile Include="KFFluidSimulationView.cpp" />
     <ClCompile Include="DFSPHFluidSimulationView.cpp" />
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
     <ClCompile Include="CSGBoundaryView.cpp" />
     <ClCompile Include="MeshBoundaryView.cpp" />
     <ClCompile Include="SPHSurfaceBuilderView.cpp" />
     <ClCompile Include="SPHFlameSimulationView.cpp" />
+    <ClCompile Include="MVPFluidSimulationView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsMenu.h" />
     <ClInclude Include="CSPHFluidSimulationView.h" />
-    <ClInclude Include="KFFluidSimulationView.h" />
     <ClInclude Include="DFSPHFluidSimulationView.h" />
     <ClInclude Include="PBSPHFluidSimulationView.h" />
     <ClInclude Include="CSGBoundaryView.h" />
     <ClInclude Include="MeshBoundaryView.h" />
     <ClInclude Include="SPHSurfaceBuilderView.h" />
     <ClInclude Include="SPHFlameSimulationView.h" />
+    <ClInclude Include="MVPFluidSimulationView.h" />
   </ItemGroup>
 </Project>

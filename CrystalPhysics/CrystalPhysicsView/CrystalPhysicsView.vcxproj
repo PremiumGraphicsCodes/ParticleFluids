@@ -158,7 +158,7 @@
     <ClCompile Include="CSGBoundaryView.cpp" />
     <ClCompile Include="CSPHFluidSimulationView.cpp" />
     <ClCompile Include="DFSPHFluidSimulationView.cpp" />
-    <ClCompile Include="KFFluidSimulationView.cpp" />
+    <ClCompile Include="MVPFluidSimulationView.cpp" />
     <ClCompile Include="PBSPHFluidSimulationView.cpp" />
     <ClCompile Include="PhysicsMenu.cpp" />
     <ClCompile Include="SPHFlameSimulationView.cpp" />
@@ -204,7 +204,7 @@
     <ClInclude Include="CSGBoundaryView.h" />
     <ClInclude Include="CSPHFluidSimulationView.h" />
     <ClInclude Include="DFSPHFluidSimulationView.h" />
-    <ClInclude Include="KFFluidSimulationView.h" />
+    <ClInclude Include="MVPFluidSimulationView.h" />
     <ClInclude Include="PBSPHFluidSimulationView.h" />
     <ClInclude Include="PhysicsMenu.h" />
     <ClInclude Include="SPHFlameSimulationView.h" />

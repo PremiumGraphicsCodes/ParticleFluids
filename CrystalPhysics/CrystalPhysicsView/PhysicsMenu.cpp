@@ -1,7 +1,7 @@
 #include "PhysicsMenu.h"
 
 #include "CSPHFluidSimulationView.h"
-#include "KFFluidSimulationView.h"
+#include "MVPFluidSimulationView.h"
 #include "PBSPHFluidSimulationView.h"
 #include "DFSPHFluidSimulationView.h"
 #include "SPHFlameSimulationView.h"
@@ -30,7 +30,7 @@ void PhysicsMenu::onShow()
 			control->setWindow(new CSPHFluidSimulationView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("KFFluid")) {
-			control->setWindow(new KFFluidSimulationView(getWorld(), getCanvas()));
+			control->setWindow(new MVPFluidSimulationView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("PBSPHFluid")) {
 			control->setWindow(new PBSPHFluidSimulationView(getWorld(), getCanvas()));

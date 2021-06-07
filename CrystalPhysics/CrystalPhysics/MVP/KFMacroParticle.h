@@ -1,6 +1,6 @@
 #pragma once
 
-#include "KFMicroParticle.h"
+#include "MVPMassParticle.h"
 
 #include <vector>
 #include <list>
@@ -26,9 +26,9 @@ public:
 
 	void reset(bool resetMicro);
 
-	void addSelfMicro(KFMicroParticle* mp) { this->points.push_back(mp); }
+	void addSelfMicro(MVPMassParticle* mp) { this->points.push_back(mp); }
 
-	void addMicro(KFMicroParticle* microParticle);
+	void addMicro(MVPMassParticle* microParticle);
 
 	void calculateDensity();
 
@@ -44,7 +44,7 @@ public:
 
 	float getRadius() const { return radius; }
 
-	std::vector<KFMicroParticle*> getPoints() { return points; }
+	std::vector<MVPMassParticle*> getPoints() { return points; }
 
 	Math::Vector3dd getPosition() const override { return position; }
 
@@ -70,9 +70,9 @@ public:
 
 private:
 	float radius;
-	std::vector<KFMicroParticle*> points;
-	std::vector<KFMicroParticle*> innerPoints;
-	std::vector<KFMicroParticle*> microPoints;
+	std::vector<MVPMassParticle*> points;
+	std::vector<MVPMassParticle*> innerPoints;
+	std::vector<MVPMassParticle*> microPoints;
 	Math::Vector3df force;
 	Math::Vector3df position;
 	Math::Vector3df velocity;

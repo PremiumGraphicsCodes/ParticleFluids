@@ -1,4 +1,4 @@
-#include "KFFluidSimulationView.h"
+#include "MVPFluidSimulationView.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
@@ -22,7 +22,7 @@ using namespace Crystal::UI;
 using namespace Crystal::Command;
 using namespace Crystal::Physics;
 
-KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
+MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	IView("FluidSimulation"),
 	world(model),
 	canvas(canvas),
@@ -52,7 +52,7 @@ KFFluidSimulationView::KFFluidSimulationView(World* model, Canvas* canvas) :
 	add(&radiusView);
 }
 
-void KFFluidSimulationView::onStart()
+void MVPFluidSimulationView::onStart()
 {
 	fluidScene = new KFFluidScene(world->getNextSceneId(), "KFFluid");
 	world->getScenes()->addScene(fluidScene);
@@ -85,7 +85,7 @@ void KFFluidSimulationView::onStart()
 	cameraCommand.execute(world);
 }
 
-void KFFluidSimulationView::onAddFluid()
+void MVPFluidSimulationView::onAddFluid()
 {
 	this->fluidScene->clearParticles();
 	//this->boundaryScene->clearParticles();
@@ -116,7 +116,7 @@ void KFFluidSimulationView::onAddFluid()
 	solver.setupBoundaries();
 }
 
-void KFFluidSimulationView::onAddEmitter()
+void MVPFluidSimulationView::onAddEmitter()
 {
 	this->emitterScene->clearParticles();
 	//this->boundaryScene->clearParticles();

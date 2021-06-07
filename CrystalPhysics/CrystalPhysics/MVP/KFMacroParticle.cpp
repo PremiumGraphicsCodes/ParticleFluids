@@ -45,7 +45,7 @@ void KFMacroParticle::distributePoints(const int unum, const int vnum, const int
 //					const auto weight = (1.0 - std::sqrt(d) * 2.0);
 //					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
 					const auto weight = gaussian.getValue(d);
-					auto p = new KFMicroParticle(this, v * 2.0, weight);
+					auto p = new MVPMassParticle(this, v * 2.0, weight);
 					points.push_back(p);
 					restMass += weight;
 				}
@@ -79,7 +79,7 @@ void KFMacroParticle::reset(bool resetMicro)
 	}
 }
 
-void KFMacroParticle::addMicro(KFMicroParticle* microParticle)
+void KFMacroParticle::addMicro(MVPMassParticle* microParticle)
 {
 	microPoints.push_back(microParticle);
 }
