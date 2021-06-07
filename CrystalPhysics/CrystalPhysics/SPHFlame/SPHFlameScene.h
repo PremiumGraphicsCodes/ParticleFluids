@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Scene/IScene.h"
+#include "../../../Crystal/Scene/IScene.h"
 
 #include "SPHFlameParticle.h"
 #include "SPHFlameSceneController.h"

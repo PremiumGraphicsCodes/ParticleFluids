@@ -3,7 +3,7 @@
 #include "SPHFlameBoundarySolver.h"
 #include "SPHFlameScene.h"
 
-#include "../../CrystalSpace/CrystalSpace/IndexedSortSearchAlgo.h"
+#include "../../../CrystalSpace/CrystalSpace/IndexedSortSearchAlgo.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;

@@ -5,8 +5,9 @@
 #include "../../CrystalViewer/AppBase/FloatView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
 
-#include "../CrystalPhysics/SPHFlameSolver.h"
-#include "../CrystalPhysics/SPHFlameScene.h"
+#include "../CrystalPhysics/SPHFlame/SPHFlameParticle.h"
+#include "../CrystalPhysics/SPHFlame/SPHFlameSolver.h"
+#include "../CrystalPhysics/SPHFlame/SPHFlameScene.h"
 
 
 namespace Crystal {

@@ -140,19 +140,19 @@
     <ClInclude Include="IKFFluidScene.h">
       <Filter>KFFluid</Filter>
     </ClInclude>
-    <ClInclude Include="SPHFlameParticle.h">
+    <ClInclude Include="SPHFlame/SPHFlameBoundarySolver.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="SPHFlameScene.h">
+    <ClInclude Include="SPHFlame/SPHFlameParticle.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="SPHFlameSceneController.h">
+    <ClInclude Include="SPHFlame/SPHFlameScene.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="SPHFlameSolver.h">
+    <ClInclude Include="SPHFlame/SPHFlameSceneController.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="SPHFlameBoundarySolver.h">
+    <ClInclude Include="SPHFlame/SPHFlameSolver.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -260,19 +260,19 @@
     <ClCompile Include="IKFFluidScene.cpp">
       <Filter>KFFluid</Filter>
     </ClCompile>
-    <ClCompile Include="SPHFlameParticle.cpp">
+    <ClCompile Include="SPHFlame/SPHFlameBoundarySolver.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
-    <ClCompile Include="SPHFlameScene.cpp">
+    <ClCompile Include="SPHFlame/SPHFlameParticle.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
-    <ClCompile Include="SPHFlameSceneController.cpp">
+    <ClCompile Include="SPHFlame/SPHFlameScene.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
-    <ClCompile Include="SPHFlameSolver.cpp">
+    <ClCompile Include="SPHFlame/SPHFlameSceneController.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
-    <ClCompile Include="SPHFlameBoundarySolver.cpp">
+    <ClCompile Include="SPHFlame/SPHFlameSolver.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
   </ItemGroup>
