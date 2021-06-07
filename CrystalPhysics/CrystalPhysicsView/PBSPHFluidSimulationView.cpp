@@ -1,8 +1,8 @@
 #include "PBSPHFluidSimulationView.h"
 
-#include "../CrystalPhysics/PBFluidScene.h"
-#include "../CrystalPhysics/PBSPHSolver.h"
-#include "../CrystalPhysics/PBSPHParticle.h"
+#include "../CrystalPhysics/PBSPH/PBFluidScene.h"
+#include "../CrystalPhysics/PBSPH/PBSPHSolver.h"
+#include "../CrystalPhysics/PBSPH/PBSPHParticle.h"
 
 #include "../../CrystalViewer/Command/Command.h"
 

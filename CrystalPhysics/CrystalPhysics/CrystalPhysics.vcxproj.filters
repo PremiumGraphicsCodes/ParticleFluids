@@ -36,24 +36,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PBSPHParticle.h">
-      <Filter>PBSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="PBSPHSolver.h">
-      <Filter>PBSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="PBSPHBoundarySolver.h">
-      <Filter>PBSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="PBFluidScene.h">
-      <Filter>PBSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="PBFluidSceneController.h">
-      <Filter>PBSPH</Filter>
-    </ClInclude>
-    <ClInclude Include="PBSPHBoundaryParticle.h">
-      <Filter>PBSPH</Filter>
-    </ClInclude>
     <ClInclude Include="SPHConstant.h" />
     <ClInclude Include="SPHKernel.h" />
     <ClInclude Include="CSGBoundaryScene.h">
@@ -155,26 +137,26 @@
     <ClInclude Include="DFSPH\DFSPHParticle.h">
       <Filter>DFSPH</Filter>
     </ClInclude>
+    <ClInclude Include="PBSPH\PBFluidScene.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="PBSPH\PBFluidSceneController.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="PBSPH\PBSPHBoundaryParticle.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="PBSPH\PBSPHBoundarySolver.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="PBSPH\PBSPHParticle.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
+    <ClInclude Include="PBSPH\PBSPHSolver.h">
+      <Filter>PBSPH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PBSPHParticle.cpp">
-      <Filter>PBSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="PBSPHSolver.cpp">
-      <Filter>PBSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="PBSPHBoundarySolver.cpp">
-      <Filter>PBSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="PBFluidScene.cpp">
-      <Filter>PBSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="PBFluidSceneController.cpp">
-      <Filter>PBSPH</Filter>
-    </ClCompile>
-    <ClCompile Include="PBSPHBoundaryParticle.cpp">
-      <Filter>PBSPH</Filter>
-    </ClCompile>
     <ClCompile Include="SPHKernel.cpp" />
     <ClCompile Include="CSGBoundaryScene.cpp">
       <Filter>Boundary\CSG</Filter>
@@ -274,6 +256,24 @@
     </ClCompile>
     <ClCompile Include="DFSPH\DFSPHParticle.cpp">
       <Filter>DFSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBSPH\PBFluidScene.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBSPH\PBFluidSceneController.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBSPH\PBSPHBoundaryParticle.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBSPH\PBSPHBoundarySolver.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBSPH\PBSPHParticle.cpp">
+      <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="PBSPH\PBSPHSolver.cpp">
+      <Filter>PBSPH</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

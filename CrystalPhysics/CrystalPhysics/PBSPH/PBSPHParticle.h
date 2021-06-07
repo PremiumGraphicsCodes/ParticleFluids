@@ -4,12 +4,11 @@
 #include <vector>
 #include <memory>
 
-#include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Shape/IParticle.h"
+#include "../../../Crystal/Math/Vector3d.h"
+#include "../../../Crystal/Shape/IParticle.h"
 
-#include "SPHKernel.h"
-//#include "ISPHParticle.h"
-#include "SPHConstant.h"
+#include "../SPHKernel.h"
+#include "../SPHConstant.h"
 
 namespace Crystal {
 	namespace Physics {

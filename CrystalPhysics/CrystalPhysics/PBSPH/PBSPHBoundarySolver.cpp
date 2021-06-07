@@ -1,7 +1,7 @@
 #include "PBSPHBoundarySolver.h"
 
 #include "PBSPHParticle.h"
-#include "SPHKernel.h"
+#include "../SPHKernel.h"
 
 #include "PBSPHBoundaryParticle.h"
 

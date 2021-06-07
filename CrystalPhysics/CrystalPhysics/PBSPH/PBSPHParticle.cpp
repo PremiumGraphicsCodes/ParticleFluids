@@ -1,6 +1,6 @@
 #include "PBSPHParticle.h"
 
-#include "SPHKernel.h"
+#include "../SPHKernel.h"
 
 #include "PBFluidScene.h"
 
