@@ -40,6 +40,8 @@ public:
 
 	void setStatic(const bool b) { this->isStatic = b; }
 
+	bool isFire() const;
+
 private:
 	float temperature;
 	float fuel;

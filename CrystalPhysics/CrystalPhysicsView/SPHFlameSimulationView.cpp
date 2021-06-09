@@ -36,7 +36,7 @@ SPHFlameSimulationView::SPHFlameSimulationView(World* model, Canvas* canvas) :
 	boundaryView("Boundary"),
 	presenterView("Presenter")
 {
-	boundaryView.setValue(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 1000, 100)));
+	boundaryView.setValue(Box3d(Vector3dd(-20, 0, -20), Vector3dd(20, 20, 20)));
 	resetButton.setFunction([=]() { onReset(); });
 	add(&resetButton);
 	add(&timeStepView);
@@ -114,17 +114,17 @@ void SPHFlameSimulationView::onReset()
 	solver->setTimeStep(timeStepView.getValue());
 	solver->setBoundary(boundaryView.getValue());
 
-	flameConstant.k_fd = 1.0e+1f;//1.0e-3f;// 1.0f - 12;
-	flameConstant.k_hd = 1.0e+1f;
+	flameConstant.k_fd = 1.0e-1f;//1.0e-3f;// 1.0f - 12;
+	flameConstant.k_hd = 1.0e-1f;
 	flameConstant.k_rs = 1.0e-3f;
 	flameConstant.k_buo = 1.0e-1f;//1.0e-12f;
-	//solver->setExternalForce(Vector3df(0.0, -9.8, 0.0));
+	solver->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
-	for (int i = 0; i < 10; ++i) {
-		for (int j = 0; j < 5; ++j) {
-			for (int k = 0; k < 10; ++k) {
+	for (int i = -10; i < 10; ++i) {
+		for (int j = 0; j < 10; ++j) {
+			for (int k = -10; k < 10; ++k) {
 				auto mp = new SPHFlameParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, &flameConstant);
-				mp->setFuel(1.0f);
+				mp->setFuel(0.1f);
 				mp->setTemperature(300.0f);
 				mp->setStatic(false);
 				flame->addParticle(mp);
@@ -132,13 +132,13 @@ void SPHFlameSimulationView::onReset()
 		}
 	}
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = -5; i < 5; ++i) {
 		for (int j = 1; j < 2; ++j) {
-			for (int k = 0; k < 10; ++k) {
+			for (int k = -5; k < 5; ++k) {
 				auto mp = new SPHFlameParticle(Vector3dd(i * length, -j * length, k * length), radius, &sphConstant, &flameConstant);
 				mp->setStatic(true);
 				mp->setFuel(1.0f);
-				mp->setTemperature(1000.0f);
+				mp->setTemperature(2000.0f);
 				this->heatSource->addParticle(mp);
 			}
 		}

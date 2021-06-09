@@ -27,10 +27,16 @@ void SPHFlameParticle::forwardTime(const float dt)
 	if (isStatic) {
 		return;
 	}
-	const auto rs = this->getReactionSpeed();
 
-	this->temperature += enthalpy * rs * dt;
-	this->fuel += dfuel * rs * dt;
+
+	this->temperature += enthalpy * dt;
+	this->fuel += dfuel * dt;
+
+	if (isFire()) {
+		const auto rs = this->getReactionSpeed();
+		this->temperature += rs * dt;
+		this->fuel -= rs * dt;
+	}
 
 	CSPHParticle::forwardTime(dt);
 }
@@ -60,4 +66,9 @@ Vector3df SPHFlameParticle::getBuoyancyForce()
 {
 	const auto buo = (this->temperature - 300.0f) * this->flameConstant->k_buo * Vector3df(0,1,0);
 	return buo;
+}
+
+bool SPHFlameParticle::isFire() const
+{
+	return this->temperature > 600.0f && this->fuel > 0.1f;
 }
