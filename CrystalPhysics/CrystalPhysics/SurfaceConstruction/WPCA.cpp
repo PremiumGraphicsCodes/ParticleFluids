@@ -1,6 +1,6 @@
 #include "WPCA.h"
 
-#include "../../Crystal/Shape/IParticle.h"
+#include "../../../Crystal/Shape/IParticle.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

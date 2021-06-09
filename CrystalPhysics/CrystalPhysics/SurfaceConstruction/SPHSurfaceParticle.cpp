@@ -2,7 +2,7 @@
 
 #include "WPCA.h"
 
-#include "../../CrystalNumerics/CrystalNumerics/SVD.h"
+#include "../../../CrystalNumerics/CrystalNumerics/SVD.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

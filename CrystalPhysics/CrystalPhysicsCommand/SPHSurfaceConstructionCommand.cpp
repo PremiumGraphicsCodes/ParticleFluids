@@ -6,7 +6,7 @@
 #include "../../Crystal/Scene/IParticleSystemScene.h"
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
-#include "../../CrystalPhysics/CrystalPhysics/SPHSurfaceBuilder.h"
+#include "../../CrystalPhysics/CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;

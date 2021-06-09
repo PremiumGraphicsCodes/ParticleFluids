@@ -2,7 +2,7 @@
 
 #include "PublicLabels/EmitterSceneUpdateLabels.h"
 
-#include "../CrystalPhysics/KFFluidEmitterScene.h"
+#include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
@@ -50,7 +50,7 @@ EmitterSceneUpdateCommand::EmitterSceneUpdateCommand() :
 
 bool EmitterSceneUpdateCommand::execute(World* world)
 {
-	auto emitterScene = world->getScenes()->findSceneById<KFFluidEmitterScene*>(args.id.getValue());
+	auto emitterScene = world->getScenes()->findSceneById<MVPFluidEmitterScene*>(args.id.getValue());
 
 	emitterScene->clearSources();
 	emitterScene->clearParticles();

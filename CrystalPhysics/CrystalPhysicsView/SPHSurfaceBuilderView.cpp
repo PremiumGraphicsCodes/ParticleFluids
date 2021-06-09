@@ -1,6 +1,6 @@
 #include "SPHSurfaceBuilderView.h"
 
-#include "../CrystalPhysics/SPHSurfaceBuilder.h"
+#include "../CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"
 
 #include "../../Crystal/Shape/Particle.h"
 #include "../../Crystal/Shape/WireFrameBuilder.h"

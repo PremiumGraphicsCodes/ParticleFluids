@@ -2,7 +2,7 @@
 
 #include "PublicLabels/FluidSceneUpdateLabels.h"
 
-#include "../CrystalPhysics/MVP/KFFluidScene.h"
+#include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
@@ -44,7 +44,7 @@ FluidSceneUpdateCommand::FluidSceneUpdateCommand() :
 
 bool FluidSceneUpdateCommand::execute(World* world)
 {
-	auto fluidScene = world->getScenes()->findSceneById<KFFluidScene*>(args.id.getValue());
+	auto fluidScene = world->getScenes()->findSceneById<MVPFluidScene*>(args.id.getValue());
 
 	fluidScene->clearParticles();
 	fluidScene->clear();

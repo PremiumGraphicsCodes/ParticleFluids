@@ -2,7 +2,7 @@
 
 #include "PublicLabels/FluidSimulationLabels.h"
 
-#include "../CrystalPhysics/KFFluidSolver.h"
+#include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
@@ -21,7 +21,7 @@ std::string FluidSimulationCommand::getName()
 
 bool FluidSimulationCommand::execute(World* world)
 {
-	auto solver = world->findAnimatorById<KFFluidSolver*>(args.solverId.getValue());
+	auto solver = world->findAnimatorById<MVPFluidSolver*>(args.solverId.getValue());
 	solver->step();
 	return true;
 }

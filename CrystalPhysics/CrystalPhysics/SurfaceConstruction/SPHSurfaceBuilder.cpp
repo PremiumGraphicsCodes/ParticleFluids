@@ -1,15 +1,15 @@
 
 #include "SPHSurfaceBuilder.h"
 
-#include "../../Crystal/Shape/IParticle.h"
-#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
-#include "../../CrystalSpace/CrystalSpace/SparseVolume.h"
+#include "../../../Crystal/Shape/IParticle.h"
+#include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "../../../CrystalSpace/CrystalSpace/SparseVolume.h"
 
 #include <set>
 //#include <map>
 
 #include "WPCA.h"
-#include "SPHKernel.h"
+#include "../SPHKernel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

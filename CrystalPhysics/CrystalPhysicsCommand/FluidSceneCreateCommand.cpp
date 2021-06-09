@@ -2,7 +2,7 @@
 
 #include "PublicLabels/FluidSceneCreateLabels.h"
 
-#include "../CrystalPhysics/KFFluidScene.h"
+#include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
@@ -30,7 +30,7 @@ FluidSceneCreateCommand::FluidSceneCreateCommand() :
 
 bool FluidSceneCreateCommand::execute(World* world)
 {
-	auto fluidScene = new KFFluidScene(world->getNextSceneId(), "");
+	auto fluidScene = new MVPFluidScene(world->getNextSceneId(), "");
 	world->getScenes()->addScene(fluidScene);
 	results.newId.setValue(fluidScene->getId());
 	return true;

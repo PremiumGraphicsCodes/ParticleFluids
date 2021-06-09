@@ -2,7 +2,7 @@
 
 #include "PublicLabels/PhysicsSolverCreateLabels.h"
 
-#include "../CrystalPhysics/KFFluidSolver.h"
+#include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
@@ -29,7 +29,7 @@ PhysicsSolverCreateCommand::PhysicsSolverCreateCommand() :
 
 bool PhysicsSolverCreateCommand::execute(World* world)
 {
-	auto solver = new KFFluidSolver(world->getNextSceneId());
+	auto solver = new MVPFluidSolver(world->getNextSceneId());
 	world->addAnimation(solver);
 
 	results.newId.setValue(solver->getId());

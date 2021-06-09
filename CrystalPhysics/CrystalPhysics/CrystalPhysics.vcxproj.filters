@@ -50,29 +50,8 @@
     <ClInclude Include="MeshBoundaryScenePresenter.h">
       <Filter>Boundary\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="WPCA.h">
-      <Filter>SurfaceReconstruction</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHSurfaceBuilder.h">
-      <Filter>SurfaceReconstruction</Filter>
-    </ClInclude>
     <ClInclude Include="FLIPSSolver.h">
       <Filter>FLIPS</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHSurfaceParticle.h">
-      <Filter>SurfaceReconstruction</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHFlame/SPHFlameBoundarySolver.h">
-      <Filter>SPHFlame</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHFlame/SPHFlameParticle.h">
-      <Filter>SPHFlame</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHFlame/SPHFlameScene.h">
-      <Filter>SPHFlame</Filter>
-    </ClInclude>
-    <ClInclude Include="SPHFlame/SPHFlameSolver.h">
-      <Filter>SPHFlame</Filter>
     </ClInclude>
     <ClInclude Include="MVP\MVPMassParticle.h">
       <Filter>MVP</Filter>
@@ -156,6 +135,19 @@
     <ClInclude Include="SPHFlame\SPHFlameScenePresenter.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
+    <ClInclude Include="SPHFlame\SPHFlameBoundarySolver.h" />
+    <ClInclude Include="SPHFlame\SPHFlameParticle.h" />
+    <ClInclude Include="SPHFlame\SPHFlameScene.h" />
+    <ClInclude Include="SPHFlame\SPHFlameSolver.h" />
+    <ClInclude Include="SurfaceConstruction\SPHSurfaceBuilder.h">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClInclude>
+    <ClInclude Include="SurfaceConstruction\SPHSurfaceParticle.h">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClInclude>
+    <ClInclude Include="SurfaceConstruction\WPCA.h">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
@@ -171,29 +163,8 @@
     <ClCompile Include="MeshBoundaryScenePresenter.cpp">
       <Filter>Boundary\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="WPCA.cpp">
-      <Filter>SurfaceReconstruction</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHSurfaceBuilder.cpp">
-      <Filter>SurfaceReconstruction</Filter>
-    </ClCompile>
     <ClCompile Include="FLIPSSolver.cpp">
       <Filter>FLIPS</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHSurfaceParticle.cpp">
-      <Filter>SurfaceReconstruction</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHFlame/SPHFlameBoundarySolver.cpp">
-      <Filter>SPHFlame</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHFlame/SPHFlameParticle.cpp">
-      <Filter>SPHFlame</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHFlame/SPHFlameScene.cpp">
-      <Filter>SPHFlame</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHFlame/SPHFlameSolver.cpp">
-      <Filter>SPHFlame</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPMassParticle.cpp">
       <Filter>MVP</Filter>
@@ -275,6 +246,19 @@
     </ClCompile>
     <ClCompile Include="SPHFlame\SPHFlameScenePresenter.cpp">
       <Filter>SPHFlame</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHFlame\SPHFlameBoundarySolver.cpp" />
+    <ClCompile Include="SPHFlame\SPHFlameParticle.cpp" />
+    <ClCompile Include="SPHFlame\SPHFlameScene.cpp" />
+    <ClCompile Include="SPHFlame\SPHFlameSolver.cpp" />
+    <ClCompile Include="SurfaceConstruction\SPHSurfaceBuilder.cpp">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClCompile>
+    <ClCompile Include="SurfaceConstruction\SPHSurfaceParticle.cpp">
+      <Filter>SurfaceReconstruction</Filter>
+    </ClCompile>
+    <ClCompile Include="SurfaceConstruction\WPCA.cpp">
+      <Filter>SurfaceReconstruction</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

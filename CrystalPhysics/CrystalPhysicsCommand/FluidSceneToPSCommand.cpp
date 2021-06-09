@@ -2,7 +2,7 @@
 
 #include "PublicLabels/FluidSceneToPSLabels.h"
 
-#include "../CrystalPhysics/KFFluidScene.h"
+#include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
@@ -32,7 +32,7 @@ FluidSceneToPSCommand::FluidSceneToPSCommand() :
 
 bool FluidSceneToPSCommand::execute(World* world)
 {
-	auto fluidScene = world->getScenes()->findSceneById<KFFluidScene*>(args.fluidId.getValue());
+	auto fluidScene = world->getScenes()->findSceneById<MVPFluidScene*>(args.fluidId.getValue());
 	if (fluidScene == nullptr) {
 		return false;
 	}
