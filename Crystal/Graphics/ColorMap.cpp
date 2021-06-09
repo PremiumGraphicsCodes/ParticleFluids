@@ -2,26 +2,39 @@
 
 using namespace Crystal::Graphics;
 
+ColorTable::ColorTable(const int resolution) :
+	colors(resolution)
+{
+}
+
+int ColorTable::getResolution() const
+{
+	return static_cast<int>(colors.size());
+}
+
+void ColorTable::setColor(const int index, const ColorRGBAf& color)
+{
+	colors[index] = color;
+}
+
+ColorRGBAf ColorTable::getColorFromIndex(const int i) const
+{
+	if (i >= colors.size()) {
+		return colors.back();
+	}
+	return colors[i];
+}
+
 ColorMap::ColorMap() :
 	min_(0.0),
 	max_(1.0)
 {}
 
-ColorMap::ColorMap(const float min, const float max, const int resolution) :
+ColorMap::ColorMap(const float min, const float max, const ColorTable& table) :
 	min_(min),
 	max_(max),
-	colors(resolution)
+	table(table)
 {
-}
-
-void ColorMap::setColor(const int index, const ColorRGBAf& color)
-{
-	colors[index] = color;
-}
-
-int ColorMap::getResolution() const
-{
-	return static_cast<int>(colors.size());
 }
 
 float ColorMap::getNormalized(const float value) const
@@ -31,25 +44,18 @@ float ColorMap::getNormalized(const float value) const
 
 int ColorMap::getIndex(const float value) const
 {
-	return static_cast<int>(getNormalized(value) * (getResolution() - 1));
-}
-
-ColorRGBAf ColorMap::getColorFromIndex(const int i) const
-{
-	if (i >= colors.size()) {
-		return colors.back();
-	}
-	return colors[i];
+	return static_cast<int>(getNormalized(value) * (table.getResolution() - 1));
 }
 
 ColorRGBAf ColorMap::getColor(const float v) const
 {
 	const int index = getIndex(v);
-	return getColorFromIndex(index);
+	return table.getColorFromIndex(index);
 }
 
 ColorRGBAf ColorMap::getInterpolatedColor(const float v) const
 {
+	const auto& colors = table.getColors();
 	if (v <= min_) {
 		return colors.front();// getColor( min_ );
 	}
@@ -62,7 +68,7 @@ ColorRGBAf ColorMap::getInterpolatedColor(const float v) const
 	if (index1 < 0) {
 		return colors.front();// getColor( min_ );
 	}
-	if (index2 >= getResolution()) {
+	if (index2 >= table.getResolution()) {
 		return colors.back();
 	}
 	const float v1 = getValueFromIndex(index1);
@@ -70,14 +76,14 @@ ColorRGBAf ColorMap::getInterpolatedColor(const float v) const
 
 	const float ratio = getNormalized(v);
 
-	auto c1 = getColorFromIndex(index1) * (ratio);
-	auto c2 = getColorFromIndex(index2) * (1.0f - ratio);
+	auto c1 = table.getColorFromIndex(index1) * (ratio);
+	auto c2 = table.getColorFromIndex(index2) * (1.0f - ratio);
 	return c1 + c2;
 }
 
 float ColorMap::getValueFromIndex(const int i) const
 {
-	const float dt = (max_ - min_) / (getResolution() - 1);
+	const float dt = (max_ - min_) / (table.getResolution() - 1);
 	return (dt * i + min_);
 }
 
@@ -113,9 +119,4 @@ void ColorMap::setMinMax(const float min__, const float max__)
 bool ColorMap::isValid()
 {
 	return (min_ <= max_);
-}
-
-std::vector< ColorRGBAf > ColorMap::getColors() const
-{
-	return colors;
 }

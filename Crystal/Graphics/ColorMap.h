@@ -7,21 +7,35 @@
 namespace Crystal {
 	namespace Graphics {
 
-class ColorMap {
+class ColorTable
+{
 public:
-	ColorMap();
+	ColorTable(){}
 
-	ColorMap(const float min, const float max, const int resolution);
+	explicit ColorTable(const int resolution);
+
+	int getResolution() const;
 
 	void setColor(const int index, const Graphics::ColorRGBAf& color);
 
-	int getResolution() const;
+	Graphics::ColorRGBAf getColorFromIndex(const int i) const;
+
+	std::vector< ColorRGBAf > getColors() const { return colors; }
+
+private:
+	std::vector<ColorRGBAf> colors;
+};
+
+class ColorMap
+{
+public:
+	ColorMap();
+
+	ColorMap(const float min, const float max, const ColorTable& table);
 
 	float getNormalized(const float value) const;
 
 	int getIndex(const float value) const;
-
-	Graphics::ColorRGBAf getColorFromIndex(const int i) const;
 
 	Graphics::ColorRGBAf getColor(const float v) const;
 
@@ -41,10 +55,10 @@ public:
 
 	bool isValid();
 
-	std::vector< ColorRGBAf > getColors() const;
+	ColorTable getTable() const { return table; }
 
 private:
-	std::vector<ColorRGBAf> colors;
+	ColorTable table;
 
 	float min_;
 	float max_;

@@ -4,24 +4,23 @@
 
 #include "imgui.h"
 
-
 using namespace Crystal::Graphics;
 using namespace Crystal::UI;
 
 ColorMapView::ColorMapView(const std::string& name /*, const ColorMap& value */) :
 	IView(name),
 	value(value),
-	resolution("Resolution", value.getResolution()),
+	resolution("Resolution", value.getTable().getResolution()),
 	minValue("MinValue", value.getMin()),
 	maxValue("MaxValue", value.getMax())
 {
-    ColorMap colorMap(0.0, 1.0, 270);
+    ColorTable table(270);
     for (int i = 0; i < 270; ++i) {
         ColorHSV hsv(i, 1.0, 1.0);
         ColorRGBAf c(hsv.toColorRGBf(), 0.0f);
-        colorMap.setColor(269-i, c);
+        table.setColor(269-i, c);
     }
-    this->value = colorMap;
+    this->value = ColorMap(0.0, 1.0, table);
 
 	/*
 	Graphics::Image img(value.getResolution(), 32);
