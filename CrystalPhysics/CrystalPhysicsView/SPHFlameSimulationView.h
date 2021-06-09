@@ -26,6 +26,7 @@ private:
 
 private:
 	Physics::SPHFlameScene* flame;
+	Physics::SPHFlameScene* heatSource;
 	Physics::SPHFlameSolver* solver;
 	Button startButton;
 	Button resetButton;

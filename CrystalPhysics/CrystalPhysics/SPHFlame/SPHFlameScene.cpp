@@ -6,7 +6,7 @@ using namespace Crystal::Physics;
 SPHFlameScene::SPHFlameScene(const int id, const std::string& name) :
 	Scene::IScene(id, name)
 {
-	controller = std::make_unique<SPHFlameScenePresenter>(this);
+	presenter = std::make_unique<SPHFlameScenePresenter>(this);
 }
 
 void SPHFlameScene::clearParticles()
@@ -24,4 +24,9 @@ Box3dd SPHFlameScene::getBoundingBox() const
 		bb.add(p->getPosition());
 	}
 	return bb;
+}
+
+void SPHFlameScene::setPresenter(std::unique_ptr<SPHFlameScenePresenter> presenter)
+{
+	this->presenter = std::move(presenter);
 }

@@ -12,7 +12,8 @@ using namespace Crystal::Physics;
 
 SPHFlameScenePresenter::SPHFlameScenePresenter(SPHFlameScene* model) :
 	model(model),
-	view(nullptr)
+	view(nullptr),
+	mode(Mode::Uniform)
 {
 	const ColorTable table = ColorTable::createDefaultTable(270);
 	colorMap = ColorMap(300.0f, 400.0f, table);
@@ -35,11 +36,16 @@ void SPHFlameScenePresenter::updateView()
 	PointBuffer pb;
 	for (auto p : ps) {
 		ColorRGBAf c;
-		if (mode == Mode::Temperature) {
+		if (mode == Mode::Uniform) {
+			c = glm::vec4(1, 1, 1, 1);
+		}
+		else if (mode == Mode::Temperature) {
 			c = colorMap.getColor(p->getTemperature());
+			colorMap.setMinMax(300.0f, 400.0f);
 		}
 		else if (mode == Mode::Fuel) {
-//			c = colorMap.getColor(p->get)
+			c = colorMap.getColor(p->getFuel());
+			colorMap.setMinMax(0.0f, 1.0f);
 		}
 		else {
 			assert(false);
@@ -48,7 +54,7 @@ void SPHFlameScenePresenter::updateView()
 		/*
 		const auto& pts = p->getPoints();
 		for (auto pp : pts) {
-			pb.add(pp->getPosition(), glm::vec4(1, 1, 1, 1), 2.0);
+			pb.add(pp->getPosition(), , 2.0);
 		}
 		*/
 	}

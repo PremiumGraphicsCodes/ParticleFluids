@@ -32,9 +32,13 @@ public:
 
 	void setFuel(const float fuel) { this->fuel = fuel; }
 
+	float getFuel() const { return this->fuel; }
+
 	void setTemperature(const float t) { this->temperature = t; }
 
 	float getTemperature() const { return this->temperature; }
+
+	void setStatic(const bool b) { this->isStatic = b; }
 
 private:
 	float temperature;
@@ -42,6 +46,7 @@ private:
 	float enthalpy;
 	float dfuel;
 	SPHFlameConstant* flameConstant;
+	bool isStatic;
 };
 
 	}

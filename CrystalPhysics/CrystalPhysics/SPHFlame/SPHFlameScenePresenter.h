@@ -24,6 +24,7 @@ public:
 
 	enum class Mode
 	{
+		Uniform,
 		Temperature,
 		Fuel,
 	};

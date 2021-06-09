@@ -11,7 +11,8 @@ SPHFlameParticle::SPHFlameParticle(const Vector3df& center, const float radius, 
 	temperature(300.0f),
 	fuel(0.0f),
 	enthalpy(0.0f),
-	dfuel(0.0f)
+	dfuel(0.0f),
+	isStatic(false)
 {}
 
 void SPHFlameParticle::init()
@@ -23,6 +24,9 @@ void SPHFlameParticle::init()
 
 void SPHFlameParticle::forwardTime(const float dt)
 {
+	if (isStatic) {
+		return;
+	}
 	const auto rs = this->getReactionSpeed();
 
 	this->temperature += enthalpy * rs * dt;

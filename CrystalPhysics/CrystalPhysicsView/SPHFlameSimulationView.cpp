@@ -18,6 +18,10 @@ using namespace Crystal::Physics;
 namespace {
 	SPHConstant sphConstant;
 	SPHFlameConstant flameConstant;
+
+	constexpr auto Uniform = "Uniform";
+	constexpr auto Temperature = "Temperature";
+	constexpr auto Fuel = "Fuel";
 }
 
 SPHFlameSimulationView::SPHFlameSimulationView(World* model, Canvas* canvas) :
@@ -41,6 +45,12 @@ SPHFlameSimulationView::SPHFlameSimulationView(World* model, Canvas* canvas) :
 	add(&densityView);
 	add(&boundaryView);
 	add(&presenterView);
+
+	presenterView.add(::Uniform);
+	presenterView.add(::Temperature);
+	presenterView.add(::Fuel);
+
+	presenterView.setSelected(::Uniform);
 }
 
 void SPHFlameSimulationView::onOk()
@@ -48,12 +58,17 @@ void SPHFlameSimulationView::onOk()
 	auto world = getWorld();
 
 	flame = new SPHFlameScene(getWorld()->getNextSceneId(), "Flame");
-	getWorld()->getScenes()->addScene(flame);
+	world->getScenes()->addScene(flame);
+
+	heatSource = new SPHFlameScene(getWorld()->getNextSceneId(), "HeatSource");
+	world->getScenes()->addScene(heatSource);
 
 	solver = new SPHFlameSolver();
 	solver->add(flame);
+	solver->add(heatSource);
 
 	flame->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	heatSource->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
 	this->onReset();
 
@@ -66,7 +81,28 @@ void SPHFlameSimulationView::onOk()
 
 void SPHFlameSimulationView::onReset()
 {
+	auto world = getWorld();
+
 	this->flame->clearParticles();
+	this->heatSource->clearParticles();
+	//this->flame->getPresenter()->removeView(world->getRenderer(), *world->getGLFactory());
+
+	std::unique_ptr<SPHFlameScenePresenter> presenter = std::make_unique<SPHFlameScenePresenter>(this->flame);
+	const auto presenterName = presenterView.getSelected();
+	if (presenterName == ::Uniform) {
+		presenter->setMode(SPHFlameScenePresenter::Mode::Uniform);
+	}
+	else if (presenterName == ::Temperature) {
+		presenter->setMode(SPHFlameScenePresenter::Mode::Temperature);
+	}
+	else if (presenterName == ::Fuel) {
+		presenter->setMode(SPHFlameScenePresenter::Mode::Fuel);
+	}
+	else {
+		assert(false);
+	}
+	presenter->createView(world->getRenderer(), *world->getGLFactory());
+	this->flame->setPresenter(std::move(presenter));
 
 	const auto radius = 1.0;
 	const auto length = radius * 2.0;
@@ -78,21 +114,32 @@ void SPHFlameSimulationView::onReset()
 	solver->setTimeStep(timeStepView.getValue());
 	solver->setBoundary(boundaryView.getValue());
 
-	flameConstant.k_fd = 0;// 1.0f - 12;
-	flameConstant.k_hd = 1.0e-3f;
+	flameConstant.k_fd = 1.0e+1f;//1.0e-3f;// 1.0f - 12;
+	flameConstant.k_hd = 1.0e+1f;
 	flameConstant.k_rs = 1.0e-3f;
-	flameConstant.k_buo = 0.0f;//1.0e-12f;
-	solver->setExternalForce(Vector3df(0.0, -9.8, 0.0));
+	flameConstant.k_buo = 1.0e-1f;//1.0e-12f;
+	//solver->setExternalForce(Vector3df(0.0, -9.8, 0.0));
 
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 5; ++j) {
 			for (int k = 0; k < 10; ++k) {
 				auto mp = new SPHFlameParticle(Vector3dd(i * length, j * length, k * length), radius, &sphConstant, &flameConstant);
-				if (j == 0) {
-					mp->setFuel(1.0f);
-					mp->setTemperature(400.0f);
-				}
+				mp->setFuel(1.0f);
+				mp->setTemperature(300.0f);
+				mp->setStatic(false);
 				flame->addParticle(mp);
+			}
+		}
+	}
+
+	for (int i = 0; i < 10; ++i) {
+		for (int j = 1; j < 2; ++j) {
+			for (int k = 0; k < 10; ++k) {
+				auto mp = new SPHFlameParticle(Vector3dd(i * length, -j * length, k * length), radius, &sphConstant, &flameConstant);
+				mp->setStatic(true);
+				mp->setFuel(1.0f);
+				mp->setTemperature(1000.0f);
+				this->heatSource->addParticle(mp);
 			}
 		}
 	}

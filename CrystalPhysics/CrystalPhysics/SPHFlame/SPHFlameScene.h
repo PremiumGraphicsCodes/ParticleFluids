@@ -19,7 +19,9 @@ public:
 
 	Scene::SceneType getType() const { return Type; }
 
-	Scene::IPresenter* getPresenter() { return controller.get(); }
+	Scene::IPresenter* getPresenter() { return presenter.get(); }
+
+	void setPresenter(std::unique_ptr<SPHFlameScenePresenter> presenter);
 
 	void addParticle(SPHFlameParticle* mp) { particles.push_back(mp); }
 
@@ -31,7 +33,7 @@ public:
 
 private:
 	std::list<SPHFlameParticle*> particles;
-	std::unique_ptr<SPHFlameScenePresenter> controller;
+	std::unique_ptr<SPHFlameScenePresenter> presenter;
 };
 
 	}
