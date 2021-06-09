@@ -1,9 +1,10 @@
 #pragma once
 
 #include "../../../Crystal/Scene/IPresenter.h"
-
 #include "../../../Crystal/Scene/SceneShader.h"
 #include "../../../Crystal/Scene/PointShaderScene.h"
+
+#include "../../../Crystal/Graphics/ColorMap.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -20,9 +21,19 @@ public:
 
 	void updateView() override;
 
+	enum class Mode
+	{
+		Uniform,
+		Density,
+	};
+
+	void setMode(const Mode mode) { this->mode = mode; }
+
 private:
 	IMVPFluidScene* model;
 	Scene::PointShaderScene* view;
+	Graphics::ColorMap colorMap;
+	Mode mode;
 };
 
 	}

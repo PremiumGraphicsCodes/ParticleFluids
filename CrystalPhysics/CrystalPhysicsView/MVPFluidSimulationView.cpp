@@ -31,10 +31,10 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	startButton("Start"),
 //	resetButton("Reset"),
 	boundaryView("Boundary", model),
-	pressureCoeView("PressureCoe", 100.0f),
+	pressureCoeView("PressureCoe", 50.0f),
 	viscosityCoeView("ViscosityCoe", 10.0f),
 	timeStepView("TimeStep", 0.025f),
-	radiusView("SearchRadius", 1.0f)
+	radiusView("SearchRadius", 2.0f)
 {
 	addFluidButton.setFunction([=]() { onAddFluid(); });
 	add(&addFluidButton);
@@ -57,8 +57,8 @@ void MVPFluidSimulationView::onStart()
 	fluidScene = new MVPFluidScene(world->getNextSceneId(), "KFFluid");
 	world->getScenes()->addScene(fluidScene);
 
-	emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "KFEmitter");
-	world->getScenes()->addScene(emitterScene);
+	//emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "KFEmitter");
+	//world->getScenes()->addScene(emitterScene);
 
 	//boundaryScene = new KFFluidScene(getWorld()->getNextSceneId(), "KFBoundary");
 	//getWorld()->getScenes()->addScene(boundaryScene);
@@ -66,15 +66,15 @@ void MVPFluidSimulationView::onStart()
 	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
 	csgScene->add(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 100, 100)));
 
-	//this->onAddFluid();
-	this->onAddEmitter();
+	this->onAddFluid();
+	//this->onAddEmitter();
 
 
-	//fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
-	//updator.add(fluidScene);
+	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	updator.add(fluidScene);
 
-	emitterScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
-	updator.add(emitterScene);
+	//emitterScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
+	//updator.add(emitterScene);
 
 	//boundaryScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 
@@ -97,12 +97,12 @@ void MVPFluidSimulationView::onAddFluid()
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
 
 	const auto radius = 1.0;
-	const auto length = radius * 2.25;
+	const auto length = radius * 2.00;
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new MVPVolumeParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(3, 3, 3, 1.0f);
+				mp->distributePoints(3, 3, 3, 1.25f);
 				fluidScene->addParticle(mp);
 			}
 		}
