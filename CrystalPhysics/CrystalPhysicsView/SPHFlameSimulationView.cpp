@@ -29,7 +29,8 @@ SPHFlameSimulationView::SPHFlameSimulationView(World* model, Canvas* canvas) :
 	pressureCoeView("PressureCoe", 1.0f),
 	viscosityView("Viscosity", 1.0f),
 	densityView("Density", 10.0f),
-	boundaryView("Boundary")
+	boundaryView("Boundary"),
+	presenterView("Presenter")
 {
 	boundaryView.setValue(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 1000, 100)));
 	resetButton.setFunction([=]() { onReset(); });
@@ -39,6 +40,7 @@ SPHFlameSimulationView::SPHFlameSimulationView(World* model, Canvas* canvas) :
 	add(&viscosityView);
 	add(&densityView);
 	add(&boundaryView);
+	add(&presenterView);
 }
 
 void SPHFlameSimulationView::onOk()

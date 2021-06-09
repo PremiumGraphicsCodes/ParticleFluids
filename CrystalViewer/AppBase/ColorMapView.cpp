@@ -14,12 +14,7 @@ ColorMapView::ColorMapView(const std::string& name /*, const ColorMap& value */)
 	minValue("MinValue", value.getMin()),
 	maxValue("MaxValue", value.getMax())
 {
-    ColorTable table(270);
-    for (int i = 0; i < 270; ++i) {
-        ColorHSV hsv(i, 1.0, 1.0);
-        ColorRGBAf c(hsv.toColorRGBf(), 0.0f);
-        table.setColor(269-i, c);
-    }
+    const ColorTable table = ColorTable::createDefaultTable(270);
     this->value = ColorMap(0.0, 1.0, table);
 
 	/*

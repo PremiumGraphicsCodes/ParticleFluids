@@ -11,21 +11,30 @@ namespace Crystal {
 	namespace Physics {
 		class SPHFlameScene;
 
-class SPHFlameSceneController : public Scene::IPresenter
+class SPHFlameScenePresenter : public Scene::IPresenter
 {
 public:
-	explicit SPHFlameSceneController(SPHFlameScene* model);
+	explicit SPHFlameScenePresenter(SPHFlameScene* model);
 
 	void createView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
-	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) {};
+	void removeView(Scene::SceneShader* sceneShader, Shader::GLObjectFactory& factory) override{};
 
 	void updateView() override;
+
+	enum class Mode
+	{
+		Temperature,
+		Fuel,
+	};
+
+	void setMode(const Mode mode) { this->mode = mode; }
 
 private:
 	SPHFlameScene* model;
 	Scene::PointShaderScene* view;
 	Graphics::ColorMap colorMap;
+	Mode mode;
 };
 
 	}

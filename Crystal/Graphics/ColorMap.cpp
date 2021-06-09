@@ -1,29 +1,9 @@
 #include "ColorMap.h"
 
+#include <vector>
+#include <cassert>
+
 using namespace Crystal::Graphics;
-
-ColorTable::ColorTable(const int resolution) :
-	colors(resolution)
-{
-}
-
-int ColorTable::getResolution() const
-{
-	return static_cast<int>(colors.size());
-}
-
-void ColorTable::setColor(const int index, const ColorRGBAf& color)
-{
-	colors[index] = color;
-}
-
-ColorRGBAf ColorTable::getColorFromIndex(const int i) const
-{
-	if (i >= colors.size()) {
-		return colors.back();
-	}
-	return colors[i];
-}
 
 ColorMap::ColorMap() :
 	min_(0.0),

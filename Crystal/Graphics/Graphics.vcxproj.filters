@@ -45,6 +45,9 @@
     <ClInclude Include="SpotLight.h">
       <Filter>Light</Filter>
     </ClInclude>
+    <ClInclude Include="ColorTable.h">
+      <Filter>Color</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffer">
@@ -79,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorTable.cpp">
+      <Filter>Color</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

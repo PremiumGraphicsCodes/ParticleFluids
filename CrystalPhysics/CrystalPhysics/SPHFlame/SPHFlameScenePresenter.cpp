@@ -1,4 +1,4 @@
-#include "SPHFlameSceneController.h"
+#include "SPHFlameScenePresenter.h"
 
 #include "SPHFlameScene.h"
 #include "SPHFlameParticle.h"
@@ -10,21 +10,15 @@ using namespace Crystal::Shader;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
 
-SPHFlameSceneController::SPHFlameSceneController(SPHFlameScene* model) :
+SPHFlameScenePresenter::SPHFlameScenePresenter(SPHFlameScene* model) :
 	model(model),
-	view(nullptr),
-	colorMap(300.0, 400.0, 270)
+	view(nullptr)
 {
-	for (int i = 0; i < 270; ++i) {
-		ColorHSV hsv(i, 1.0, 1.0);
-		ColorRGBAf c(hsv.toColorRGBf(), 0.0f);
-		colorMap.setColor(269 - i, c);
-	}
-
-	//colorMap = Graphics::ColorMap::
+	const ColorTable table = ColorTable::createDefaultTable(270);
+	colorMap = ColorMap(300.0f, 400.0f, table);
 }
 
-void SPHFlameSceneController::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
+void SPHFlameScenePresenter::createView(SceneShader* sceneShader, GLObjectFactory& glFactory)
 {
 	{
 		this->view = new PointShaderScene(model->getName());
@@ -35,12 +29,21 @@ void SPHFlameSceneController::createView(SceneShader* sceneShader, GLObjectFacto
 	updateView();
 }
 
-void SPHFlameSceneController::updateView()
+void SPHFlameScenePresenter::updateView()
 {
 	const auto& ps = model->getParticles();
 	PointBuffer pb;
 	for (auto p : ps) {
-		const auto c = colorMap.getColor(p->getTemperature());
+		ColorRGBAf c;
+		if (mode == Mode::Temperature) {
+			c = colorMap.getColor(p->getTemperature());
+		}
+		else if (mode == Mode::Fuel) {
+//			c = colorMap.getColor(p->get)
+		}
+		else {
+			assert(false);
+		}
 		pb.add(p->getPosition(), c, 50.0);
 		/*
 		const auto& pts = p->getPoints();

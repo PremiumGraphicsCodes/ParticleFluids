@@ -1,30 +1,9 @@
 #pragma once
 
-#include <vector>
-#include <cassert>
-#include "ColorRGBA.h"
+#include "ColorTable.h"
 
 namespace Crystal {
 	namespace Graphics {
-
-class ColorTable
-{
-public:
-	ColorTable(){}
-
-	explicit ColorTable(const int resolution);
-
-	int getResolution() const;
-
-	void setColor(const int index, const Graphics::ColorRGBAf& color);
-
-	Graphics::ColorRGBAf getColorFromIndex(const int i) const;
-
-	std::vector< ColorRGBAf > getColors() const { return colors; }
-
-private:
-	std::vector<ColorRGBAf> colors;
-};
 
 class ColorMap
 {

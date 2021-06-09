@@ -4,6 +4,7 @@
 #include "../../CrystalViewer/AppBase/ObjectSelectView.h"
 #include "../../CrystalViewer/AppBase/FloatView.h"
 #include "../../CrystalViewer/AppBase/Box3dView.h"
+#include "../../CrystalViewer/AppBase/ComboBox.h"
 
 #include "../CrystalPhysics/SPHFlame/SPHFlameParticle.h"
 #include "../CrystalPhysics/SPHFlame/SPHFlameSolver.h"
@@ -33,6 +34,7 @@ private:
 	FloatView timeStepView;
 	FloatView densityView;
 	Box3dView boundaryView;
+	ComboBox presenterView;
 };
 
 	}

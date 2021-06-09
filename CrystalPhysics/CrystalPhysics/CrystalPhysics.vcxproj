@@ -190,7 +190,7 @@
     <ClInclude Include="SPHFlame/SPHFlameBoundarySolver.h" />
     <ClInclude Include="SPHFlame/SPHFlameParticle.h" />
     <ClInclude Include="SPHFlame/SPHFlameScene.h" />
-    <ClInclude Include="SPHFlame/SPHFlameSceneController.h" />
+    <ClInclude Include="SPHFlame\SPHFlameScenePresenter.h" />
     <ClInclude Include="SPHFlame/SPHFlameSolver.h" />
     <ClInclude Include="SPHKernel.h" />
     <ClInclude Include="SPHSurfaceBuilder.h" />
@@ -232,7 +232,7 @@
     <ClCompile Include="SPHFlame/SPHFlameBoundarySolver.cpp" />
     <ClCompile Include="SPHFlame/SPHFlameParticle.cpp" />
     <ClCompile Include="SPHFlame/SPHFlameScene.cpp" />
-    <ClCompile Include="SPHFlame/SPHFlameSceneController.cpp" />
+    <ClCompile Include="SPHFlame\SPHFlameScenePresenter.cpp" />
     <ClCompile Include="SPHFlame/SPHFlameSolver.cpp" />
     <ClCompile Include="SPHKernel.cpp" />
     <ClCompile Include="SPHSurfaceBuilder.cpp" />

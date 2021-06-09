@@ -71,9 +71,6 @@
     <ClInclude Include="SPHFlame/SPHFlameScene.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
-    <ClInclude Include="SPHFlame/SPHFlameSceneController.h">
-      <Filter>SPHFlame</Filter>
-    </ClInclude>
     <ClInclude Include="SPHFlame/SPHFlameSolver.h">
       <Filter>SPHFlame</Filter>
     </ClInclude>
@@ -156,6 +153,9 @@
       <Filter>PBSPH</Filter>
     </ClInclude>
     <ClInclude Include="IPhysicsParticle.h" />
+    <ClInclude Include="SPHFlame\SPHFlameScenePresenter.h">
+      <Filter>SPHFlame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
@@ -190,9 +190,6 @@
       <Filter>SPHFlame</Filter>
     </ClCompile>
     <ClCompile Include="SPHFlame/SPHFlameScene.cpp">
-      <Filter>SPHFlame</Filter>
-    </ClCompile>
-    <ClCompile Include="SPHFlame/SPHFlameSceneController.cpp">
       <Filter>SPHFlame</Filter>
     </ClCompile>
     <ClCompile Include="SPHFlame/SPHFlameSolver.cpp">
@@ -275,6 +272,9 @@
     </ClCompile>
     <ClCompile Include="PBSPH\PBSPHSolver.cpp">
       <Filter>PBSPH</Filter>
+    </ClCompile>
+    <ClCompile Include="SPHFlame\SPHFlameScenePresenter.cpp">
+      <Filter>SPHFlame</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

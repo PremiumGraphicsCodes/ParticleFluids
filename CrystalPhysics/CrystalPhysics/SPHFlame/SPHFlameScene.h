@@ -3,7 +3,7 @@
 #include "../../../Crystal/Scene/IScene.h"
 
 #include "SPHFlameParticle.h"
-#include "SPHFlameSceneController.h"
+#include "SPHFlameScenePresenter.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -31,7 +31,7 @@ public:
 
 private:
 	std::list<SPHFlameParticle*> particles;
-	std::unique_ptr<SPHFlameSceneController> controller;
+	std::unique_ptr<SPHFlameScenePresenter> controller;
 };
 
 	}
