@@ -74,5 +74,6 @@
     <ClCompile Include="Vector2dTest.cpp">
       <Filter>Vector</Filter>
     </ClCompile>
+    <ClCompile Include="Gaussian3dTest.cpp" />
   </ItemGroup>
 </Project>

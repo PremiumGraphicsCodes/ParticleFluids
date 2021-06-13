@@ -82,6 +82,7 @@
     <ClInclude Include="Lerp.h">
       <Filter>Interpolation</Filter>
     </ClInclude>
+    <ClInclude Include="Gaussian3d.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Matrix">
