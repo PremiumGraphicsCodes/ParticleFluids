@@ -33,7 +33,7 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	vicsocityView("Viscosity", 0.1f)
 {
 	resetButton.setFunction([=]() { onReset(); });
-	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
+	boundaryView.setValue(Box3d(Vector3dd(-100, 0.0, -100.0), Vector3dd(100.0, 1000.0, 100.0)));
 
 	add(&particleSystemSelectView);
 	add(&boundarySelectView);
