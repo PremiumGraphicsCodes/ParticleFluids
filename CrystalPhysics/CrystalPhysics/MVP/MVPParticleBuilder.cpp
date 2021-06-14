@@ -39,7 +39,7 @@ float MVPParticleBuilder::calculateWeight(const float a, const float r)
 
 float MVPParticleBuilder::calculateWeight(const float r, const float dr)
 {
-	Gaussian3d gaussian(0.5);
+	Gaussian3d gaussian(0.75);
 	float v = 0.0;
 	for (auto rr = 0.0; rr < r; rr += dr) {
 		v += gaussian.getValue(rr); //* 4.0 / 3.0 * PI * rr * rr * rr;
