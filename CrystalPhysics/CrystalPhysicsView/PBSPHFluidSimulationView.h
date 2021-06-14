@@ -26,7 +26,7 @@ private:
 private:
 	Physics::PBSPHSolver* simulator;
 	Physics::PBFluidScene* fluidScene;
-	Physics::PBFluidScene* boundaryScene;
+//	Physics::PBFluidScene* boundaryScene;
 	ObjectSelectView particleSystemSelectView;
 	ObjectSelectView boundarySelectView;
 	Button startButton;
