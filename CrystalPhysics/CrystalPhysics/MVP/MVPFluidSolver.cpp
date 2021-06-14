@@ -149,6 +149,7 @@ void MVPFluidSolver::simulate()
 			particle->calculatePressure();
 			particle->calculatePressureForce(1.0);
 			particle->calculateViscosityForce();
+//			particle->calculateVorticity();
 		}
 		
 

@@ -35,8 +35,8 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	boundaryView("Boundary", model),
 	pressureCoeView("PressureCoe", 50.0f),
 	viscosityCoeView("ViscosityCoe", 10.0f),
-	timeStepView("TimeStep", 0.025f),
-	radiusView("SearchRadius", 2.0f)
+	timeStepView("TimeStep", 0.03f),
+	radiusView("SearchRadius", 2.00f)
 {
 	addFluidButton.setFunction([=]() { onAddFluid(); });
 	add(&addFluidButton);
@@ -108,7 +108,7 @@ void MVPFluidSimulationView::onAddFluid()
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				auto mp = new MVPVolumeParticle(radius, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(3, 3, 3, 1.25f);
+				mp->distributePoints(3, 3, 3, 1.00f);
 				fluidScene->addParticle(mp);
 			}
 		}

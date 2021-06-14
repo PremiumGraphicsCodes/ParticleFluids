@@ -36,21 +36,23 @@ void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const i
 	MVPParticleBuilder builder;
 	const auto w1 = builder.calculateWeight(0.25, 0.05);
 	const auto w2 = builder.calculateWeight(0.5, 0.05);
-	const auto w3 = (w2-w1) / 6.0;
+	const auto w3 = (w2) / 8.0;
 
+	/*
 	Gaussian1d gaussian(0.0, 0.5);
-	points.push_back(new MVPMassParticle(this, Vector3df(0, 0, 0), w1));
-	points.push_back(new MVPMassParticle(this, Vector3df(0.4, 0, 0), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(-0.4, 0, 0), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.4, 0), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(0.0, -0.4, 0), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.0, 0.4), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.0, -0.4), w3));
+	const auto p = 0.5;
+	points.push_back(new MVPMassParticle(this, Vector3df(0, 0, 0) * this->getRadius(), w1));
+	points.push_back(new MVPMassParticle(this, Vector3df(p, 0, 0), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(-p, 0, 0), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(0.0, p, 0), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(0.0, -p, 0), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.0, p), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.0, -p), w3));
 
 	for (auto p : points) {
 		restMass += p->getMass();
 	}
-	/*
+	*/
 	//SPHKernel kernel(0.5);
 	Gaussian1d gaussian(0.0, 0.5);
 	for (int x = 0; x <= unum; x++) {
@@ -64,16 +66,14 @@ void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const i
 				if (d < 0.5 * 0.5) {
 //					const auto weight = (1.0 - std::sqrt(d) * 2.0);
 //					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
-					const auto weight = gaussian.getValue(d);
-					auto p = new MVPMassParticle(this, v * 2.0, weight);
+					auto p = new MVPMassParticle(this, v * 2.0, w3);
 					points.push_back(p);
-					restMass += weight;
+					restMass += w3;
 				}
 			}
 		}
 	}
-	*/
-	//selfMass *= 1.5;
+//	restMass *= 1.5;
 //	selfMass = unum * vnum * wnum * weight;
 }
 

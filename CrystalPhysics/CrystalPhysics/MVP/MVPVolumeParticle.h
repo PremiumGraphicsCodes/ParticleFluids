@@ -50,7 +50,9 @@ public:
 
 	Math::Vector3df getPositionf() const { return position; }
 
-	Math::Vector3dd getVelocity() const { return velocity; }
+	Math::Vector3df getVelocity() const { return velocity; }
+
+	Math::Vector3df getVorticity() const { return vorticity; }
 
 	void addForce(const Math::Vector3dd& force) { this->force += force; }
 
