@@ -2,7 +2,7 @@
 #include "CompactSpaceHash3d.h"
 
 #include "Octree.h"
-#include "../../Crystal/Math/Gaussian.h"
+#include "../../Crystal/Math/Gaussian1d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -21,7 +21,7 @@ void VolumeConvertAlgo::add(IParticle* particle)
 
 void VolumeConvertAlgo::build(const double searchRadius)
 {
-	Gaussian kernel;
+	Gaussian1d kernel;
 
 	CompactSpaceHash3d spaceHash(searchRadius, particles.size());
 

@@ -148,6 +148,9 @@
     <ClInclude Include="SurfaceConstruction\WPCA.h">
       <Filter>SurfaceReconstruction</Filter>
     </ClInclude>
+    <ClInclude Include="MVP\MVPParticleBuilder.h">
+      <Filter>MVP</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
@@ -259,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="SurfaceConstruction\WPCA.cpp">
       <Filter>SurfaceReconstruction</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPParticleBuilder.cpp">
+      <Filter>MVP</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

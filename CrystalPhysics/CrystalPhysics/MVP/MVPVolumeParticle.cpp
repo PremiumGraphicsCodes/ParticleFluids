@@ -4,7 +4,7 @@
 
 #include "../SPHKernel.h"
 
-#include "../../../Crystal/Math/Gaussian.h"
+#include "../../../Crystal/Math/Gaussian1d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
@@ -32,7 +32,7 @@ void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const i
 	const double tolerance = 1.0e-12;
 
 	//SPHKernel kernel(0.5);
-	Gaussian gaussian(0.0, 0.5);
+	Gaussian1d gaussian(0.0, 0.5);
 	for (int x = 0; x <= unum; x++) {
 		for (int y = 0; y <= vnum; ++y) {
 			for (int z = 0; z <= wnum; ++z) {

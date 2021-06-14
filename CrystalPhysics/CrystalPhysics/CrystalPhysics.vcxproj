@@ -176,6 +176,7 @@
     <ClInclude Include="MVP\MVPFluidScene.h" />
     <ClInclude Include="MVP\MVPFluidScenePresenter.h" />
     <ClInclude Include="MVP\MVPFluidSolver.h" />
+    <ClInclude Include="MVP\MVPParticleBuilder.h" />
     <ClInclude Include="MVP\MVPVolumeParticle.h" />
     <ClInclude Include="MVP\MVPMassParticle.h" />
     <ClInclude Include="MeshBoundaryScene.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="MVP\MVPFluidScene.cpp" />
     <ClCompile Include="MVP\MVPFluidScenePresenter.cpp" />
     <ClCompile Include="MVP\MVPFluidSolver.cpp" />
+    <ClCompile Include="MVP\MVPParticleBuilder.cpp" />
     <ClCompile Include="MVP\MVPVolumeParticle.cpp" />
     <ClCompile Include="MVP\MVPMassParticle.cpp" />
     <ClCompile Include="MeshBoundaryScene.cpp" />
