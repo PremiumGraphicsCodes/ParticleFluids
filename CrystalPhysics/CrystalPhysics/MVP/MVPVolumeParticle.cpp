@@ -66,7 +66,7 @@ void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const i
 				if (d < 0.5 * 0.5) {
 //					const auto weight = (1.0 - std::sqrt(d) * 2.0);
 //					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
-					auto p = new MVPMassParticle(this, v * 2.0, w3);
+					auto p = new MVPMassParticle(this, v, w3);
 					points.push_back(p);
 					restMass += w3;
 				}
