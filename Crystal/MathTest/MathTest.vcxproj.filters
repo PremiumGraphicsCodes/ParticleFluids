@@ -18,7 +18,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GaussianTest.cpp" />
     <ClCompile Include="Ray3dTest.cpp" />
     <ClCompile Include="Matrix2dTest.cpp">
       <Filter>Matrix</Filter>
@@ -75,5 +74,7 @@
       <Filter>Vector</Filter>
     </ClCompile>
     <ClCompile Include="Gaussian3dTest.cpp" />
+    <ClCompile Include="Gaussian1dTest.cpp" />
+    <ClCompile Include="Gaussian2dTest.cpp" />
   </ItemGroup>
 </Project>

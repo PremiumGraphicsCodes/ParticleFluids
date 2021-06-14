@@ -6,15 +6,15 @@
 namespace Crystal {
 	namespace Math {
 
-class Gaussian
+class Gaussian1d
 {
 public:
-	Gaussian() :
+	Gaussian1d() :
 		mu(0.0),
 		tau(1.0)
 	{}
 
-	Gaussian(const double mu, const double tau) :
+	Gaussian1d(const double mu, const double tau) :
 		mu(mu),
 		tau(tau)
 	{}

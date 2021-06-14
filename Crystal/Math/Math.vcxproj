@@ -140,7 +140,8 @@
     <ClInclude Include="Cone3d.h" />
     <ClInclude Include="Cylinder3d.h" />
     <ClInclude Include="Ellipsoid3d.h" />
-    <ClInclude Include="Gaussian.h" />
+    <ClInclude Include="Gaussian1d.h" />
+    <ClInclude Include="Gaussian2d.h" />
     <ClInclude Include="Gaussian3d.h" />
     <ClInclude Include="glm.h" />
     <ClInclude Include="ICurve3d.h" />
