@@ -6,6 +6,8 @@
 
 #include "../../../Crystal/Math/Gaussian1d.h"
 
+#include "MVPParticleBuilder.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 
@@ -31,6 +33,24 @@ void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const i
 
 	const double tolerance = 1.0e-12;
 
+	MVPParticleBuilder builder;
+	const auto w1 = builder.calculateWeight(0.25, 0.05);
+	const auto w2 = builder.calculateWeight(0.5, 0.05);
+	const auto w3 = (w2-w1) / 6.0;
+
+	Gaussian1d gaussian(0.0, 0.5);
+	points.push_back(new MVPMassParticle(this, Vector3df(0, 0, 0), w1));
+	points.push_back(new MVPMassParticle(this, Vector3df(0.4, 0, 0), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(-0.4, 0, 0), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.4, 0), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(0.0, -0.4, 0), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.0, 0.4), w3));
+	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.0, -0.4), w3));
+
+	for (auto p : points) {
+		restMass += p->getMass();
+	}
+	/*
 	//SPHKernel kernel(0.5);
 	Gaussian1d gaussian(0.0, 0.5);
 	for (int x = 0; x <= unum; x++) {
@@ -52,6 +72,7 @@ void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const i
 			}
 		}
 	}
+	*/
 	//selfMass *= 1.5;
 //	selfMass = unum * vnum * wnum * weight;
 }

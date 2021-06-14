@@ -15,6 +15,8 @@
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Math/Quad3d.h"
 
+#include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -50,6 +52,10 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	add(&viscosityCoeView);
 	add(&timeStepView);
 	add(&radiusView);
+
+	MVPParticleBuilder builder;
+	auto v1 = builder.calculateWeight(0.25, 0.05);
+	auto v2 = builder.calculateWeight(0.5, 0.05);
 }
 
 void MVPFluidSimulationView::onStart()

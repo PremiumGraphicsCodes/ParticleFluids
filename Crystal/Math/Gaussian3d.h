@@ -26,6 +26,13 @@ public:
 		return scale * std::exp(power);
 	}
 
+	double getValue(const double r) const
+	{
+		const auto scale = 1.0 / (std::pow(std::sqrt(2.0 * PI), 3.0) * std::pow(tau, 3.0));
+		const auto power = -(r * r) / (2.0 * tau * tau);
+		return scale * std::exp(power);
+	}
+
 private:
 //			const double mu;
 	const double tau;
