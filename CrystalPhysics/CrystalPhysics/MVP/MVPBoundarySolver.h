@@ -4,7 +4,7 @@
 #include <list>
 #include <memory>
 
-#include "../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
+#include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
 
 namespace Crystal {
 	namespace Physics {

@@ -25,9 +25,6 @@
     <Filter Include="SurfaceReconstruction">
       <UniqueIdentifier>{93dd166c-0ba5-44cc-8a40-880633228676}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FLIPS">
-      <UniqueIdentifier>{04e51dd0-8c12-4219-b1af-c5fd6e0928d1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SPHFlame">
       <UniqueIdentifier>{843b95aa-82b5-4fc1-92ce-63a98953ad6c}</UniqueIdentifier>
     </Filter>
@@ -52,9 +49,6 @@
     </ClInclude>
     <ClInclude Include="MeshBoundaryScenePresenter.h">
       <Filter>Boundary\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="FLIPSSolver.h">
-      <Filter>FLIPS</Filter>
     </ClInclude>
     <ClInclude Include="MVP\MVPMassParticle.h">
       <Filter>MVP</Filter>
@@ -154,7 +148,7 @@
     <ClInclude Include="MVP\MVPBoundaryScenePresenter.h">
       <Filter>MVP\Boundary</Filter>
     </ClInclude>
-    <ClInclude Include="MVPBoundarySolver.h">
+    <ClInclude Include="MVP\MVPBoundarySolver.h">
       <Filter>MVP\Boundary</Filter>
     </ClInclude>
   </ItemGroup>
@@ -171,9 +165,6 @@
     </ClCompile>
     <ClCompile Include="MeshBoundaryScenePresenter.cpp">
       <Filter>Boundary\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="FLIPSSolver.cpp">
-      <Filter>FLIPS</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPMassParticle.cpp">
       <Filter>MVP</Filter>
@@ -270,6 +261,9 @@
       <Filter>MVP\Boundary</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPBoundaryScenePresenter.cpp">
+      <Filter>MVP\Boundary</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPBoundarySolver.cpp">
       <Filter>MVP\Boundary</Filter>
     </ClCompile>
   </ItemGroup>
