@@ -13,7 +13,7 @@ public:
 
 	~CSGBoundaryScene();
 
-	void clear() { boxes.clear(); }
+	void clearBoxes() { boxes.clear(); }
 
 	static constexpr auto Type = "CSGBoundaryScene";
 

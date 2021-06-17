@@ -22,14 +22,19 @@ public:
 	MVPFluidSimulationView(Scene::World* model, Canvas* canvas);
 
 private:
-	void onAddFluid();
+	//void onAddFluid();
 
-	void onAddEmitter();
+	//void onAddEmitter();
 
 	void onStart();
-	//void reset();
+
+	void onReset();
 
 private:
+	void addFluid();
+
+	void addEmitter();
+
 	Physics::MVPFluidScene* fluidScene;
 	Physics::MVPFluidScene* boundaryScene;
 	Physics::MVPFluidEmitterScene* emitterScene;
@@ -41,13 +46,9 @@ private:
 	FloatView viscosityCoeView;
 	FloatView timeStepView;
 	FloatView radiusView;
-	Button addFluidButton;
-	Button addEmitterButton;
 	Button startButton;
-	//Button resetButton;
+	Button resetButton;
 	int newId;
-
-	//std::unique_ptr<Shape::PolygonMesh> mesh;
 
 	Scene::World* world;
 	Canvas* canvas;

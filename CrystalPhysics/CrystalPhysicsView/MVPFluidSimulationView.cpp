@@ -12,11 +12,6 @@
 #include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
 #include "../../CrystalViewer/Command/Public/CameraLabels.h"
 
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
-#include "../../Crystal/Math/Quad3d.h"
-
-#include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
-
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
@@ -28,24 +23,19 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	IView("MVPFluid"),
 	world(model),
 	canvas(canvas),
-	addFluidButton("AddFluid"),
-	addEmitterButton("AddEmitter"),
 	startButton("Start"),
-//	resetButton("Reset"),
+	resetButton("Reset"),
 	boundaryView("Boundary", model),
 	pressureCoeView("PressureCoe", 50.0f),
 	viscosityCoeView("ViscosityCoe", 10.0f),
 	timeStepView("TimeStep", 0.03f),
 	radiusView("SearchRadius", 2.25f)
 {
-	addFluidButton.setFunction([=]() { onAddFluid(); });
-	add(&addFluidButton);
-
-	addEmitterButton.setFunction([=]() {onAddEmitter(); });
-	add(&addEmitterButton);
-
 	startButton.setFunction([=]() { onStart(); });
 	add(&startButton);
+
+	resetButton.setFunction([=]() { onReset(); });
+	add(&resetButton);
 
 	add(&boundaryView);
 	add(&pressureCoeView);
@@ -53,45 +43,40 @@ MVPFluidSimulationView::MVPFluidSimulationView(World* model, Canvas* canvas) :
 	add(&timeStepView);
 	add(&radiusView);
 
-	MVPParticleBuilder builder;
-	auto v1 = builder.calculateWeight(0.25, 0.05);
-	auto v2 = builder.calculateWeight(0.5, 0.05);
+	fluidScene = new MVPFluidScene(world->getNextSceneId(), "KFFluid");
+	world->getScenes()->addScene(fluidScene);
+
+	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
+
+	world->addAnimation(&solver);
+	world->addAnimation(&updator);
+
 }
 
 void MVPFluidSimulationView::onStart()
 {
-	fluidScene = new MVPFluidScene(world->getNextSceneId(), "KFFluid");
-	world->getScenes()->addScene(fluidScene);
-
-	//emitterScene = new MVPFluidEmitterScene(world->getNextSceneId(), "KFEmitter");
-	//world->getScenes()->addScene(emitterScene);
-
-	//boundaryScene = new KFFluidScene(getWorld()->getNextSceneId(), "KFBoundary");
-	//getWorld()->getScenes()->addScene(boundaryScene);
-
-	csgScene = new CSGBoundaryScene(world->getNextSceneId(), "CSG");
-	csgScene->add(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 100, 100)));
-
-	this->onAddFluid();
-	//this->onAddEmitter();
-
+	onReset();
 
 	fluidScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
 	updator.add(fluidScene);
 
-	//emitterScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
-	//updator.add(emitterScene);
-
-	//boundaryScene->getPresenter()->createView(world->getRenderer(), *world->getGLFactory());
-
-	world->addAnimation(&solver);
-	world->addAnimation(&updator);
 
 	CameraFitCommand cameraCommand;
 	cameraCommand.execute(world);
 }
 
-void MVPFluidSimulationView::onAddFluid()
+void MVPFluidSimulationView::onReset()
+{
+	fluidScene->clearParticles();
+	this->addFluid();
+
+	csgScene->clearBoxes();
+	csgScene->add(Box3d(Vector3dd(-100, 0, -100), Vector3dd(100, 100, 100)));
+
+	//this->addEmitter();
+}
+
+void MVPFluidSimulationView::addFluid()
 {
 	this->fluidScene->clearParticles();
 	//this->boundaryScene->clearParticles();
@@ -123,7 +108,7 @@ void MVPFluidSimulationView::onAddFluid()
 	solver.setupBoundaries();
 }
 
-void MVPFluidSimulationView::onAddEmitter()
+void MVPFluidSimulationView::addEmitter()
 {
 	this->emitterScene->clearParticles();
 	//this->boundaryScene->clearParticles();
