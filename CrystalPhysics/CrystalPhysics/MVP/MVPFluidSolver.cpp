@@ -113,15 +113,11 @@ void MVPFluidSolver::simulate()
 		return;
 	}
 
-	const auto hashSize = fluidParticles.front()->getPoints().size() * fluidParticles.size();
+	const auto hashSize = fluidParticles.size();
 	const auto searchRadius = effectLength;
 	CompactSpaceHash3d spaceHash(searchRadius, static_cast<int>( hashSize));
 	for (auto particle : fluidParticles) {
-		particle->updateMicros();
-		const auto& microParticles = particle->getPoints();
-		for (auto mp : microParticles) {
-			spaceHash.add(mp);
-		}
+		spaceHash.add(particle);
 	}
 
 #pragma omp parallel for
@@ -129,24 +125,32 @@ void MVPFluidSolver::simulate()
 		const auto particle = fluidParticles[i];
 		const auto& neighbors = spaceHash.findNeighbors(particle);
 		for (auto n : neighbors) {
-			particle->addMicro(static_cast<MVPMassParticle*>(n));
+			particle->addNeighbor(static_cast<MVPVolumeParticle*>(n));
 		}
+		/*
 		const auto& bps = boundarySolver.findNeighbors(particle->getPosition());
 		for (auto n : bps) {
 			particle->addMicro(static_cast<MVPMassParticle*>(n));
 		}
+		*/
 	}
 
 	double time = 0.0;
 	while (time < maxTimeStep) {
 		const auto dt = calculateTimeStep(fluidParticles);
 
+		for (int i = 0; i < fluidParticles.size(); ++i) {
+			const auto particle = fluidParticles[i];
+			particle->updateMicros();
+		}
+
 #pragma omp parallel for
 		for (int i = 0; i < fluidParticles.size(); ++i) {
 			const auto particle = fluidParticles[i];
+//			particle->updateMicros();
 			particle->updateInnerPoints();
 			particle->calculateDensity();
-			particle->calculatePressure();
+			//particle->calculatePressure();
 			particle->calculatePressureForce(1.0);
 			particle->calculateViscosityForce();
 //			particle->calculateVorticity();
@@ -178,7 +182,7 @@ void MVPFluidSolver::simulate()
 				const auto particle = fluidParticles[i];
 				particle->updateInnerPoints();
 				particle->calculateDensity();
-				particle->calculatePressure();
+				//particle->calculatePressure();
 				particle->calculatePressureForce(relaxationCoe);
 			}
 

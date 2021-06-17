@@ -28,11 +28,13 @@ public:
 
 	void addSelfMicro(MVPMassParticle* mp) { this->points.push_back(mp); }
 
-	void addMicro(MVPMassParticle* microParticle);
+	void addNeighbor(MVPVolumeParticle* neighbor) { this->neighbors.push_back(neighbor); }
+
+	//void addMicro(MVPMassParticle* microParticle);
 
 	void calculateDensity();
 
-	void calculatePressure();
+	//void calculatePressure();
 
 	void calculatePressureForce(const float relaxationCoe);
 
@@ -74,7 +76,8 @@ private:
 	float radius;
 	std::vector<MVPMassParticle*> points;
 	std::vector<MVPMassParticle*> innerPoints;
-	std::vector<MVPMassParticle*> microPoints;
+	//std::vector<MVPMassParticle*> microPoints;
+	std::vector<MVPVolumeParticle*> neighbors;
 	Math::Vector3df force;
 	Math::Vector3df position;
 	Math::Vector3df velocity;

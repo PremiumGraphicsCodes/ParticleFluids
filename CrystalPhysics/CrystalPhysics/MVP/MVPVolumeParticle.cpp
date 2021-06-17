@@ -73,6 +73,7 @@ void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const i
 			}
 		}
 	}
+	restMass *= 1.25;
 //	restMass *= 1.5;
 //	selfMass = unum * vnum * wnum * weight;
 }
@@ -95,15 +96,19 @@ void MVPVolumeParticle::reset(bool resetMicro)
 {
 	this->force = Math::Vector3dd(0, 0, 0);
 	if (resetMicro) {
-		this->microPoints.clear();
-		this->microPoints.reserve(64);
+		this->neighbors.clear();
+		this->neighbors.reserve(64);
+//		this->microPoints.clear();
+//		this->microPoints.reserve(64);
 	}
 }
 
+/*
 void MVPVolumeParticle::addMicro(MVPMassParticle* microParticle)
 {
 	microPoints.push_back(microParticle);
 }
+*/
 
 void MVPVolumeParticle::calculateDensity()
 {
@@ -114,6 +119,7 @@ void MVPVolumeParticle::calculateDensity()
 	this->density = (mass / restMass);
 }
 
+/*
 void MVPVolumeParticle::calculatePressure()
 {
 	this->pressure = (density - 1.0f);
@@ -122,12 +128,13 @@ void MVPVolumeParticle::calculatePressure()
 		mp->setPressure(this->pressure);
 	}
 }
+*/
 
 void MVPVolumeParticle::calculatePressureForce(const float relaxationCoe)
 {
 	Math::Vector3df f(0, 0, 0);
 	for (auto mp : innerPoints) {
-		f += (this->pressure + mp->getPressure()) * (this->position - mp->position) * mp->getMass() * mp->getPressureCoe();
+		f += (this->position - mp->position) * mp->getMass() * mp->getPressureCoe();
 	}
 	this->force += f;
 }
@@ -165,7 +172,7 @@ float MVPVolumeParticle::getDensity() const
 
 void MVPVolumeParticle::updateMicros()
 {
-	for (auto mp : this->microPoints) {
+	for (auto mp : this->points) {
 		mp->updatePosition();
 	}
 }
@@ -174,10 +181,13 @@ void MVPVolumeParticle::updateInnerPoints()
 {
 	const auto r = this->radius;
 	innerPoints.clear();
-	for (auto mp : this->microPoints) {
-		const auto distanceSquared = Math::getDistanceSquared(mp->getPosition(), this->getPosition());
-		if (distanceSquared < r * r) {
-			innerPoints.push_back(mp);
+	innerPoints = this->points;
+	for (auto n : this->neighbors) {
+		for (auto mp : n->points) {
+			const auto distanceSquared = Math::getDistanceSquared(mp->getPosition(), this->getPosition());
+			if (distanceSquared < r * r) {
+				innerPoints.push_back(mp);
+			}
 		}
 	}
 }

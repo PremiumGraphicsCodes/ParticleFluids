@@ -51,8 +51,8 @@ Vector3df SPHKernel::getPoly6KernelGradient(const Vector3df& distanceVector)
 	if (distance > effectLength) {
 		return Vector3df(0, 0, 0);
 	}
-	const auto poly6ConstantGradient = 945.0f / (32.0f * PIf * pow(effectLength, 9));
-	const auto factor = poly6ConstantGradient * pow(effectLength * effectLength - distance * distance, 2);
+	const auto poly6ConstantGradient = 945.0f / (32.0f * PIf * pow(effectLength, 9.0f));
+	const auto factor = poly6ConstantGradient * pow(effectLength * effectLength - distance * distance, 2.0f);
 	return distanceVector * factor;
 }
 
@@ -78,7 +78,7 @@ Vector3df SPHKernel::getSpikyKernelGradient(const Vector3df& distanceVector) con
 	if (distance > effectLength) {
 		return Vector3df(0, 0, 0);
 	}
-	return distanceVector * this->spikyKernelGradConstant * pow(effectLength - distance, 2) / distance;
+	return distanceVector * this->spikyKernelGradConstant * pow(effectLength - distance, 2.0f) / distance;
 }
 
 float SPHKernel::getSpikyKernelGradientWeight(const float distance)
