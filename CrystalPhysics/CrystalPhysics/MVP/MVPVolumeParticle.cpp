@@ -34,26 +34,9 @@ void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const i
 	const double tolerance = 1.0e-12;
 
 	MVPParticleBuilder builder;
-	const auto w1 = builder.calculateWeight(0.25, 0.05);
 	const auto w2 = builder.calculateWeight(0.5, 0.05);
 	const auto w3 = (w2) / 8.0;
 
-	/*
-	Gaussian1d gaussian(0.0, 0.5);
-	const auto p = 0.5;
-	points.push_back(new MVPMassParticle(this, Vector3df(0, 0, 0) * this->getRadius(), w1));
-	points.push_back(new MVPMassParticle(this, Vector3df(p, 0, 0), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(-p, 0, 0), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(0.0, p, 0), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(0.0, -p, 0), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.0, p), w3));
-	points.push_back(new MVPMassParticle(this, Vector3df(0.0, 0.0, -p), w3));
-
-	for (auto p : points) {
-		restMass += p->getMass();
-	}
-	*/
-	//SPHKernel kernel(0.5);
 	Gaussian1d gaussian(0.0, 0.5);
 	for (int x = 0; x <= unum; x++) {
 		for (int y = 0; y <= vnum; ++y) {
@@ -64,8 +47,6 @@ void MVPVolumeParticle::distributePoints(const int unum, const int vnum, const i
 				const Vector3dd v(xx - 0.5, yy - 0.5,  zz - 0.5);
 				const auto d = Math::getLengthSquared(v);
 				if (d < 0.5 * 0.5) {
-//					const auto weight = (1.0 - std::sqrt(d) * 2.0);
-//					const auto weight = kernel.getCubicSpline(std::sqrt(d)) * w;
 					auto p = new MVPMassParticle(this, v, w3);
 					points.push_back(p);
 					restMass += w3;
@@ -98,17 +79,8 @@ void MVPVolumeParticle::reset(bool resetMicro)
 	if (resetMicro) {
 		this->neighbors.clear();
 		this->neighbors.reserve(64);
-//		this->microPoints.clear();
-//		this->microPoints.reserve(64);
 	}
 }
-
-/*
-void MVPVolumeParticle::addMicro(MVPMassParticle* microParticle)
-{
-	microPoints.push_back(microParticle);
-}
-*/
 
 void MVPVolumeParticle::calculateDensity()
 {
@@ -118,17 +90,6 @@ void MVPVolumeParticle::calculateDensity()
 	}
 	this->density = (mass / restMass);
 }
-
-/*
-void MVPVolumeParticle::calculatePressure()
-{
-	this->pressure = (density - 1.0f);
-	this->pressure = std::max(0.0f, this->pressure);
-	for (auto mp : microPoints) {
-		mp->setPressure(this->pressure);
-	}
-}
-*/
 
 void MVPVolumeParticle::calculatePressureForce(const float relaxationCoe)
 {

@@ -22,10 +22,6 @@ public:
 
 	float getMass() const { return mass; }
 
-	void setPressure(const float p) { this->pressure = p; }
-
-	float getPressure() const { return pressure; }
-
 	void setPressureCoe(const float c) { this->pressureCoe = c; }
 
 	float getPressureCoe() const { return this->pressureCoe; }
@@ -34,14 +30,12 @@ public:
 
 	float getViscosityCoe() const { return viscosityCoe; }
 
-
 	Math::Vector3df position;
 
 private:
 	MVPVolumeParticle* parent;
 	Math::Vector3df vector;
 	float mass;
-	float pressure;
 	float pressureCoe;
 	float viscosityCoe;
 };

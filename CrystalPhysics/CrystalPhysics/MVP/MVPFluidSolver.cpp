@@ -127,12 +127,6 @@ void MVPFluidSolver::simulate()
 		for (auto n : neighbors) {
 			particle->addNeighbor(static_cast<MVPVolumeParticle*>(n));
 		}
-		/*
-		const auto& bps = boundarySolver.findNeighbors(particle->getPosition());
-		for (auto n : bps) {
-			particle->addMicro(static_cast<MVPMassParticle*>(n));
-		}
-		*/
 	}
 
 	double time = 0.0;
@@ -150,7 +144,6 @@ void MVPFluidSolver::simulate()
 //			particle->updateMicros();
 			particle->updateInnerPoints();
 			particle->calculateDensity();
-			//particle->calculatePressure();
 			particle->calculatePressureForce(1.0);
 			particle->calculateViscosityForce();
 //			particle->calculateVorticity();

@@ -36,5 +36,4 @@ void MVPMassParticle::updatePosition()
 	this->position += vv;
 
 	//const auto vv = glm::cross(vector, parent->getVorticity());
-
 }

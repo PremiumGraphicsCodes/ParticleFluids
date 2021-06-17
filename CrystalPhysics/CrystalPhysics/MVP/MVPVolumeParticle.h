@@ -26,8 +26,6 @@ public:
 
 	void reset(bool resetMicro);
 
-	void addSelfMicro(MVPMassParticle* mp) { this->points.push_back(mp); }
-
 	void addNeighbor(MVPVolumeParticle* neighbor) { this->neighbors.push_back(neighbor); }
 
 	//void addMicro(MVPMassParticle* microParticle);
@@ -58,13 +56,9 @@ public:
 
 	void addForce(const Math::Vector3dd& force) { this->force += force; }
 
-	//void addBoundaryCount(const int count) { this->boundaryCount += count; }
-
 	float getDensity() const;
 
 	void updateMicros();
-
-	//void addMicroCount(int count) { this->microCount+=count; }
 
 	void updateInnerPoints();
 
@@ -76,15 +70,11 @@ private:
 	float radius;
 	std::vector<MVPMassParticle*> points;
 	std::vector<MVPMassParticle*> innerPoints;
-	//std::vector<MVPMassParticle*> microPoints;
 	std::vector<MVPVolumeParticle*> neighbors;
 	Math::Vector3df force;
 	Math::Vector3df position;
 	Math::Vector3df velocity;
 	Math::Vector3df vorticity;
-	//KFFluidScene* scene;
-
-	//float selfMass;
 	float restMass;
 	float density;
 	float pressure;
