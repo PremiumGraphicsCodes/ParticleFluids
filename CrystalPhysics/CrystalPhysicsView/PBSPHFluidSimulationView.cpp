@@ -27,16 +27,12 @@ PBSPHFluidSimulationView::PBSPHFluidSimulationView(World* model, Canvas* canvas)
 	effectLengthView("EffectLength", 2.25f),
 	densityView("Density", 1.0f),
 	boundaryView("Boundary"),
-	particleSystemSelectView("ParticleSystem", model, canvas, Scene::SceneTypeLabels::ParticleSystemScene),
-	boundarySelectView("Boundary", model, canvas, Scene::SceneTypeLabels::ParticleSystemScene),
 	stiffnessView("Stiffness", 0.05f),
 	vicsocityView("Viscosity", 0.1f)
 {
 	resetButton.setFunction([=]() { onReset(); });
 	boundaryView.setValue(Box3d(Vector3dd(-100, 0.0, -100.0), Vector3dd(100.0, 1000.0, 100.0)));
 
-	add(&particleSystemSelectView);
-	add(&boundarySelectView);
 	add(&resetButton);
 	add(&timeStepView);
 	add(&radiusView);
@@ -54,14 +50,6 @@ void PBSPHFluidSimulationView::onOk()
 	this->fluidScene = new PBFluidScene(getWorld()->getNextSceneId(), "Fluid");
 	//this->boundaryScene = new PBFluidScene(getWorld()->getNextSceneId(), "Boundary");
 	this->simulator = new PBSPHSolver();
-
-	/*
-	const auto id = this->particleSystemSelectView.getId();
-	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
-	if (scene == nullptr) {
-		return;
-	}
-	*/
 	
 	onReset();
 
@@ -111,8 +99,6 @@ void PBSPHFluidSimulationView::onReset()
 	//this->writer.reset();
 //	this->writer.setDirectryPath(outputDirectoryView.getPath());
 
-	const auto id = this->particleSystemSelectView.getId();
-	auto scene = getWorld()->getScenes()->findSceneById<ParticleSystemScene*>(id);
 
 	/*
 	const auto& ps = scene->getShape()->getParticles();
@@ -134,55 +120,6 @@ void PBSPHFluidSimulationView::onReset()
 			}
 		}
 	}
-
-	/*
-	for (int i = 0; i < 20; ++i) {
-		for (int j = -2; j < 0; ++j) {
-			for (int k = 0; k < 20; ++k) {
-				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
-				this->boundaryScene->addParticle(mp);
-			}
-		}
-	}
-	*/
-
-	/*
-	for (int i = 20; i < 22; ++i) {
-		for (int j = -2; j < 20; ++j) {
-			for (int k = 0; k < 20; ++k) {
-				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
-				this->boundaryScene->addParticle(mp);
-			}
-		}
-	}
-
-	for (int i = -2; i < 0; ++i) {
-		for (int j = -2; j < 20; ++j) {
-			for (int k = 0; k < 20; ++k) {
-				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
-				this->boundaryScene->addParticle(mp);
-			}
-		}
-	}
-
-	for (int i = -2; i < 20; ++i) {
-		for (int j = -2; j < 20; ++j) {
-			for (int k = -2; k < 0; ++k) {
-				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
-				this->boundaryScene->addParticle(mp);
-			}
-		}
-	}
-
-	for (int i = -2; i < 20; ++i) {
-		for (int j = -2; j < 20; ++j) {
-			for (int k = 20; k < 22; ++k) {
-				auto mp = new PBSPHParticle(Vector3dd(i * length, j * length, k * length), radius, this->boundaryScene);
-				this->boundaryScene->addParticle(mp);
-			}
-		}
-	}
-	*/
 
 
 	simulator->setBoundary(boundaryView.getValue());

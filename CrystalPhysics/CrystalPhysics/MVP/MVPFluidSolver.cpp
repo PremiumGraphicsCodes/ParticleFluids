@@ -242,22 +242,18 @@ void MVPFluidSolver::solveBoundary(MVPVolumeParticle* particle, const double dt)
 			if (position.x < boundary.getMinX()) {
 				const auto distance = boundary.getMinX() - position.x;
 				const auto overlap = Vector3dd(distance, 0, 0);
-				//const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
-				//particle->addBoundaryCount(count * 10);
 				particle->addForce(overlap / dt / dt);
 			}
 			if (position.z > boundary.getMaxZ()) {
 				const auto distance = boundary.getMaxZ() - position.z;
 				const auto overlap = Vector3dd(0, 0, distance);
 				const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
-				//particle->addBoundaryCount(count * 10);
 				particle->addForce(overlap / dt / dt);
 			}
 			if (position.z < boundary.getMinZ()) {
 				const auto distance = boundary.getMinZ() - position.z;
 				const auto overlap = Vector3dd(0, 0, distance);
 				const auto count = ::fabs(distance) / (particle->getRadius() * 0.1);
-				//particle->addBoundaryCount(count * 10);
 				particle->addForce(overlap / dt / dt);
 			}
 		}

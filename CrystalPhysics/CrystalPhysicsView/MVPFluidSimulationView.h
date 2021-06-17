@@ -47,7 +47,7 @@ private:
 	//Button resetButton;
 	int newId;
 
-	std::unique_ptr<Shape::PolygonMesh> mesh;
+	//std::unique_ptr<Shape::PolygonMesh> mesh;
 
 	Scene::World* world;
 	Canvas* canvas;

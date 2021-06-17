@@ -8,8 +8,7 @@
 #include "../../../Crystal/Shape/IParticle.h"
 #include "../../../Crystal/Scene/IAnimator.h"
 
-#include "../../../CrystalSpace/CrystalSpace/CompactSpaceHash3d.h"
-#include "../MeshBoundaryScene.h"
+#include "MVPBoundarySolver.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -18,27 +17,6 @@ namespace Crystal {
 		class MVPFluidEmitterScene;
 		class IMVPFluidScene;
 		class CSGBoundaryScene;
-
-class MVPBoundarySolver
-{
-public:
-	MVPBoundarySolver() {}
-
-	void addBoundaryScene(MVPFluidScene* scene) { this->boundaries.push_back(scene); }
-
-	void setup(const float effectLength);
-
-	void clear() {
-		boundaries.clear();
-//		spaceHash.clear();
-	}
-
-	std::vector<Shape::IParticle*> findNeighbors(const Math::Vector3dd& position);
-
-private:
-	std::list<MVPFluidScene*> boundaries;
-	std::unique_ptr<Space::CompactSpaceHash3d> spaceHash;
-};
 
 class MVPFluidSolver : public Scene::IAnimator
 {

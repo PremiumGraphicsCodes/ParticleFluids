@@ -34,6 +34,9 @@
     <Filter Include="MVP">
       <UniqueIdentifier>{78ff2e95-a432-49fc-8ca9-4c386fae1a97}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MVP\Boundary">
+      <UniqueIdentifier>{d17b61cc-41f8-454c-a5a7-e7e916c4078b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SPHConstant.h" />
@@ -69,15 +72,6 @@
       <Filter>MVP</Filter>
     </ClInclude>
     <ClInclude Include="MVP\IMVPFluidScene.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
-    <ClInclude Include="MVP\MVPBoundaryParticle.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
-    <ClInclude Include="MVP\MVPBoundaryScene.h">
-      <Filter>MVP</Filter>
-    </ClInclude>
-    <ClInclude Include="MVP\MVPBoundaryScenePresenter.h">
       <Filter>MVP</Filter>
     </ClInclude>
     <ClInclude Include="MVP\MVPFluidEmitterScene.h">
@@ -151,6 +145,18 @@
     <ClInclude Include="MVP\MVPParticleBuilder.h">
       <Filter>MVP</Filter>
     </ClInclude>
+    <ClInclude Include="MVP\MVPBoundaryParticle.h">
+      <Filter>MVP\Boundary</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP\MVPBoundaryScene.h">
+      <Filter>MVP\Boundary</Filter>
+    </ClInclude>
+    <ClInclude Include="MVP\MVPBoundaryScenePresenter.h">
+      <Filter>MVP\Boundary</Filter>
+    </ClInclude>
+    <ClInclude Include="MVPBoundarySolver.h">
+      <Filter>MVP\Boundary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SPHKernel.cpp" />
@@ -185,15 +191,6 @@
       <Filter>MVP</Filter>
     </ClCompile>
     <ClCompile Include="MVP\IMVPFluidScene.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
-    <ClCompile Include="MVP\MVPBoundaryParticle.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
-    <ClCompile Include="MVP\MVPBoundaryScene.cpp">
-      <Filter>MVP</Filter>
-    </ClCompile>
-    <ClCompile Include="MVP\MVPBoundaryScenePresenter.cpp">
       <Filter>MVP</Filter>
     </ClCompile>
     <ClCompile Include="MVP\MVPFluidEmitterScene.cpp">
@@ -265,6 +262,15 @@
     </ClCompile>
     <ClCompile Include="MVP\MVPParticleBuilder.cpp">
       <Filter>MVP</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPBoundaryParticle.cpp">
+      <Filter>MVP\Boundary</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPBoundaryScene.cpp">
+      <Filter>MVP\Boundary</Filter>
+    </ClCompile>
+    <ClCompile Include="MVP\MVPBoundaryScenePresenter.cpp">
+      <Filter>MVP\Boundary</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
