@@ -145,7 +145,7 @@ void MVPVolumeParticle::updateInnerPoints()
 	innerPoints = this->points;
 	for (auto n : this->neighbors) {
 		for (auto mp : n->points) {
-			const auto distanceSquared = Math::getDistanceSquared(mp->getPosition(), this->getPosition());
+			const auto distanceSquared = Math::getDistanceSquared(mp->position, this->position);
 			if (distanceSquared < r * r) {
 				innerPoints.push_back(mp);
 			}
