@@ -105,7 +105,7 @@ void MVPFluidSimulationView::addFluid()
 
 	solver.clear();
 	solver.addFluidScene(fluidScene);
-	solver.addBoundary(csgScene);
+	solver.addBoundary(boundaryView.getBoundary());
 	solver.setEffectLength(radiusView.getValue());
 
 	solver.setMaxTimeStep(this->timeStepView.getValue());
