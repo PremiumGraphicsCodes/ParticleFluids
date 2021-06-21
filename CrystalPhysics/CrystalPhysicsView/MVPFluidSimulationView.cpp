@@ -5,6 +5,7 @@
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
+#include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
 
 #include "../../CrystalViewer/Command/CameraFitCommand.h"
 
@@ -87,13 +88,16 @@ void MVPFluidSimulationView::addFluid()
 	//this->boundaryScene->setPressureCoe(pressureCoeView.getValue());
 	//this->boundaryScene->setViscosityCoe(viscosityCoeView.getValue());
 
+	MVPParticleBuilder builder;
 	const auto radius = 1.0;
 	const auto length = radius * 2.00;
 	for (int i = 0; i < 20; ++i) {
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
-				auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
-				mp->distributePoints(3, 3, 3, 1.00f);
+				//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
+				const auto p = Vector3dd(i * length, j * length, k * length);
+				auto mp = builder.create(p, radius * 2.0, 3, 3, 3, 1.0f);
+//				mp->distributePoints(3, 3, 3, 1.00f);
 				fluidScene->addParticle(mp);
 			}
 		}

@@ -2,6 +2,8 @@
 
 #include "MVPVolumeParticle.h"
 
+#include "MVPParticleBuilder.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 using namespace Crystal::Physics;
@@ -19,14 +21,15 @@ MVPFluidEmitterScene::~MVPFluidEmitterScene()
 
 void MVPFluidEmitterScene::emitParticle(const int timeStep)
 {
+	MVPParticleBuilder builder;
 	const auto start = getStartStep();
 	const auto end = getEndStep();
 	if (start <= timeStep && timeStep <= end) {
 		const auto elapsed = timeStep - start;
 		if (elapsed % interval == 0) {
 			for (const auto& s : sourcePositions) {
-				auto mp = new MVPVolumeParticle(s.getRadius(), s.getCenter());
-				mp->distributePoints(3, 3, 3, 1.0f);
+				//auto mp = new MVPVolumeParticle(s.getRadius(), s.getCenter());
+				auto mp = builder.create(s.getCenter(), s.getRadius(),3, 3, 3, 1.0f);
 				mp->setVelocity(this->initialVelocity);
 				addParticle(mp);
 			}

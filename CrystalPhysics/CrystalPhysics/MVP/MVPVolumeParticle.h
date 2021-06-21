@@ -16,8 +16,6 @@ public:
 
 	~MVPVolumeParticle();
 
-	void distributePoints(const int unum, const int vnum, const int wnum, const float weight);
-
 	void setPressureCoe(const float c);
 
 	void setViscosityCoe(const float c);
@@ -28,7 +26,7 @@ public:
 
 	void addNeighbor(MVPVolumeParticle* neighbor) { this->neighbors.push_back(neighbor); }
 
-	//void addMicro(MVPMassParticle* microParticle);
+	void addMassParticle(MVPMassParticle* massParticle) { this->points.push_back(massParticle); }
 
 	void calculateDensity();
 
@@ -65,6 +63,8 @@ public:
 	float getSelfMass() { return restMass; }
 
 	void setVelocity(const Math::Vector3df& velocity) { this->velocity = velocity; }
+
+	void setRestMass(const float m) { this->restMass = m; }
 
 private:
 	float radius;
