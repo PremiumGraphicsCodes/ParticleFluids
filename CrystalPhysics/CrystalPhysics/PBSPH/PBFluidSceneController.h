@@ -4,6 +4,7 @@
 
 #include "../../../Crystal/Scene/SceneShader.h"
 #include "../../../Crystal/Scene/PointShaderScene.h"
+#include "../../../Crystal/Graphics/ColorMap.h"
 
 namespace Crystal {
 	namespace Physics {
@@ -20,9 +21,18 @@ public:
 
 	void updateView() override;
 
+	enum class Mode
+	{
+		Uniform,
+		Density,
+	};
+
 private:
 	PBFluidScene* model;
 	Scene::PointShaderScene* view;
+	Graphics::ColorMap colorMap;
+	Mode mode;
+
 };
 
 	}

@@ -28,7 +28,7 @@ DFSPHFluidSimulationView::DFSPHFluidSimulationView(World* model, Canvas* canvas)
 	IOkCancelView("DFSPHFluidSimulation", model, canvas),
 	startButton("Start"),
 	resetButton("Reset"),
-	timeStepView("TimeStep", 0.001f),
+	timeStepView("TimeStep", 0.01f),
 	viscosityCoeView("ViscosityCoe", 1000.0f),
 	boundaryView("Boundary")
 {
@@ -39,7 +39,7 @@ DFSPHFluidSimulationView::DFSPHFluidSimulationView(World* model, Canvas* canvas)
 	resetButton.setFunction(resetFunc);
 	add(&resetButton);
 
-	boundaryView.setValue(Box3d(Vector3dd(-50, 0.0, -50.0), Vector3dd(50.0, 1000.0, 50.0)));
+	boundaryView.setValue(Box3d(Vector3dd(0, 0.0, 0.0), Vector3dd(100.0, 1000.0, 50.0)));
 	
 	add(&viscosityCoeView);
 	add(&timeStepView);

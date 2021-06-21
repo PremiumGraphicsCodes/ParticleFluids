@@ -67,6 +67,7 @@ public:
 	void setRestMass(const float m) { this->restMass = m; }
 
 private:
+	float pressureCoe;
 	float radius;
 	std::vector<MVPMassParticle*> points;
 	std::vector<MVPMassParticle*> innerPoints;

@@ -27,6 +27,7 @@ MVPVolumeParticle::~MVPVolumeParticle()
 
 void MVPVolumeParticle::setPressureCoe(const float c)
 {
+	this->pressureCoe = c;
 	for (auto p : points) {
 		p->setPressureCoe(c);
 	}
@@ -55,6 +56,12 @@ void MVPVolumeParticle::calculateDensity()
 		mass += m->getMass();
 	}
 	this->density = (mass / restMass);
+	/*
+	for (auto m : innerPoints) {
+		const auto p = (this->density - 1.0) * this->pressureCoe;
+		m->setPressureCoe(p);
+	}
+	*/
 }
 
 void MVPVolumeParticle::calculatePressureForce(const float relaxationCoe)
