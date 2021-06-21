@@ -19,7 +19,7 @@ MVPVolumeParticle::MVPVolumeParticle(const float radius, const Vector3dd& positi
 
 MVPVolumeParticle::~MVPVolumeParticle()
 {
-	for (auto p : points) {
+	for (auto p : massParticles) {
 		delete p;
 	}
 	//points.clear();
@@ -28,14 +28,14 @@ MVPVolumeParticle::~MVPVolumeParticle()
 void MVPVolumeParticle::setPressureCoe(const float c)
 {
 	this->pressureCoe = c;
-	for (auto p : points) {
+	for (auto p : massParticles) {
 		p->setPressureCoe(c);
 	}
 }
 
 void MVPVolumeParticle::setViscosityCoe(const float c)
 {
-	for (auto p : points) {
+	for (auto p : massParticles) {
 		p->setViscosityCoe(c);
 	}
 }
@@ -106,7 +106,7 @@ float MVPVolumeParticle::getDensity() const
 
 void MVPVolumeParticle::updateMicros()
 {
-	for (auto mp : this->points) {
+	for (auto mp : this->massParticles) {
 		mp->updatePosition();
 	}
 }
@@ -115,9 +115,9 @@ void MVPVolumeParticle::updateInnerPoints()
 {
 	const auto r = this->radius;
 	innerPoints.clear();
-	innerPoints = this->points;
+	innerPoints = this->massParticles;
 	for (auto n : this->neighbors) {
-		for (auto mp : n->points) {
+		for (auto mp : n->massParticles) {
 			const auto distanceSquared = Math::getDistanceSquared(mp->position, this->position);
 			if (distanceSquared < r * r) {
 				innerPoints.push_back(mp);

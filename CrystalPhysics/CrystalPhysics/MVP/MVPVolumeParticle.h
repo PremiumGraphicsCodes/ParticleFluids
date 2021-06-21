@@ -26,7 +26,7 @@ public:
 
 	void addNeighbor(MVPVolumeParticle* neighbor) { this->neighbors.push_back(neighbor); }
 
-	void addMassParticle(MVPMassParticle* massParticle) { this->points.push_back(massParticle); }
+	void addMassParticle(MVPMassParticle* massParticle) { this->massParticles.push_back(massParticle); }
 
 	void calculateDensity();
 
@@ -42,7 +42,7 @@ public:
 
 	float getRadius() const { return radius; }
 
-	std::vector<MVPMassParticle*> getPoints() { return points; }
+	std::vector<MVPMassParticle*> getPoints() { return massParticles; }
 
 	Math::Vector3dd getPosition() const override { return position; }
 
@@ -69,7 +69,7 @@ public:
 private:
 	float pressureCoe;
 	float radius;
-	std::vector<MVPMassParticle*> points;
+	std::vector<MVPMassParticle*> massParticles;
 	std::vector<MVPMassParticle*> innerPoints;
 	std::vector<MVPVolumeParticle*> neighbors;
 	Math::Vector3df force;
