@@ -130,7 +130,7 @@ void MVPFluidSolver::simulate()
 		}
 
 		// solve incompressibility.
-		float relaxationCoe = 0.5f;
+		float relaxationCoe = 0.75f;
 		for (int i = 0; i < 2; ++i) {
 			for (auto particle : fluidParticles) {
 				particle->reset(false);
@@ -155,7 +155,7 @@ void MVPFluidSolver::simulate()
 				//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
 				particle->stepTime(dt);
 			}
-			relaxationCoe /= 2.0;
+			relaxationCoe *= 0.75;
 		}
 
 		time += dt;
