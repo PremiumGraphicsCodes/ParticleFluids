@@ -130,10 +130,10 @@ void MVPFluidSolver::simulate()
 		}
 
 		// solve incompressibility.
-		float relaxationCoe = 0.95f;
-		for (int i = 0; i < 1; ++i) {
+		float relaxationCoe = 0.50f;
+		for (int i = 0; i < 3; ++i) {
 			for (auto particle : fluidParticles) {
-				//				particle->reset(false);
+//				particle->reset(false);
 				particle->updateMicros();
 			}
 
@@ -144,6 +144,8 @@ void MVPFluidSolver::simulate()
 				//particle->calculateDensity();
 				particle->calculatePressureForce(relaxationCoe, dt);
 			}
+
+			relaxationCoe = relaxationCoe * 0.5f;
 
 			//for (auto particle : fluidParticles) {
 			//	solveBoundary(particle, dt);
