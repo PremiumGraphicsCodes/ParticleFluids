@@ -42,7 +42,9 @@ void MVPVolumeParticle::setViscosityCoe(const float c)
 
 void MVPVolumeParticle::reset(bool resetMicro)
 {
-	this->force = Math::Vector3dd(0, 0, 0);
+	this->force = Math::Vector3df(0, 0, 0);
+	this->averagedCenter = this->position;
+	//this->dv = Math::Vector3df(0, 0, 0);
 	if (resetMicro) {
 		this->neighbors.clear();
 		this->neighbors.reserve(64);
@@ -64,13 +66,13 @@ void MVPVolumeParticle::calculateDensity()
 	*/
 }
 
-void MVPVolumeParticle::calculatePressureForce(const float relaxationCoe)
+void MVPVolumeParticle::calculatePressureForce(const float relaxationCoe, const float dt)
 {
-	Math::Vector3df f(0, 0, 0);
+	Math::Vector3df averagedCenter(0, 0, 0);
 	for (auto mp : innerPoints) {
-		f += (this->position - mp->position) * mp->getMass() * mp->getPressureCoe();
+		averagedCenter += (mp->position) / static_cast<float>(innerPoints.size());// mp->getPressureCoe();
 	}
-	this->force += f;
+	this->averagedCenter = averagedCenter;
 }
 
 void MVPVolumeParticle::calculateViscosityForce()
@@ -94,6 +96,9 @@ void MVPVolumeParticle::calculateVorticity()
 
 void MVPVolumeParticle::stepTime(const float dt)
 {
+	const auto dv = this->position - averagedCenter;
+	this->force += dv / dt / dt * this->density * this->pressureCoe;
+
 	const auto acc = (force) / getDensity();
 	this->velocity += acc * dt;
 	this->position += this->velocity * dt;
@@ -113,12 +118,13 @@ void MVPVolumeParticle::updateMicros()
 
 void MVPVolumeParticle::updateInnerPoints()
 {
+	const auto p = this->averagedCenter;
 	const auto r = this->radius;
 	innerPoints.clear();
 	innerPoints = this->massParticles;
 	for (auto n : this->neighbors) {
 		for (auto mp : n->massParticles) {
-			const auto distanceSquared = Math::getDistanceSquared(mp->position, this->position);
+			const auto distanceSquared = Math::getDistanceSquared(mp->position, p);
 			if (distanceSquared < r * r) {
 				innerPoints.push_back(mp);
 			}

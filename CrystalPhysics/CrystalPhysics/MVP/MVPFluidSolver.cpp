@@ -111,7 +111,7 @@ void MVPFluidSolver::simulate()
 //			particle->updateMicros();
 			particle->updateInnerPoints();
 			particle->calculateDensity();
-			particle->calculatePressureForce(1.0);
+//			particle->calculatePressureForce(1.0);
 			particle->calculateViscosityForce();
 //			particle->calculateVorticity();
 		}
@@ -126,14 +126,14 @@ void MVPFluidSolver::simulate()
 
 		for (auto particle : fluidParticles) {
 			particle->addForce(Vector3dd(0.0, -9.8 * particle->getDensity(), 0.0));
-			particle->stepTime(dt);
+			//particle->stepTime(dt);
 		}
 
 		// solve incompressibility.
 		float relaxationCoe = 0.95f;
-		for (int i = 0; i < 2; ++i) {
+		for (int i = 0; i < 1; ++i) {
 			for (auto particle : fluidParticles) {
-				particle->reset(false);
+				//				particle->reset(false);
 				particle->updateMicros();
 			}
 
@@ -141,21 +141,19 @@ void MVPFluidSolver::simulate()
 			for (int i = 0; i < fluidParticles.size(); ++i) {
 				const auto particle = fluidParticles[i];
 				particle->updateInnerPoints();
-				particle->calculateDensity();
-				//particle->calculatePressure();
-				particle->calculatePressureForce(relaxationCoe);
+				//particle->calculateDensity();
+				particle->calculatePressureForce(relaxationCoe, dt);
 			}
 
-			for (auto particle : fluidParticles) {
-				solveBoundary(particle, dt);
-			}
+			//for (auto particle : fluidParticles) {
+			//	solveBoundary(particle, dt);
+			//}
 			//	solveBoundary(particles);
+		}
 
-			for (auto particle : fluidParticles) {
-				//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
-				particle->stepTime(dt);
-			}
-			relaxationCoe *= 0.95;
+		for (auto particle : fluidParticles) {
+			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
+			particle->stepTime(dt);
 		}
 
 		time += dt;

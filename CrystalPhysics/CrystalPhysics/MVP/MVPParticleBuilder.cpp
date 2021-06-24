@@ -34,7 +34,7 @@ MVPVolumeParticle* Crystal::Physics::MVPParticleBuilder::create(const Math::Vect
 			}
 		}
 	}
-	restMass *= 1.25;
+	restMass *= 1.5;
 	volume->setRestMass(restMass);
 	return volume;
 	//	restMass *= 1.5;

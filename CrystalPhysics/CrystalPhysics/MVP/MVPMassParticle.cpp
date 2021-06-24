@@ -30,7 +30,7 @@ Vector3df MVPMassParticle::getVelocity() const
 void MVPMassParticle::updatePosition()
 {
 	//const auto v = (parent->getPositionf() - this->position);
-	this->position = parent->getPositionf() + parent->getRadius() * vector;
+	this->position = parent->getAveragedCenter() + parent->getRadius() * vector;
 
 	const auto vv = glm::cross(vector, parent->getVorticity());
 	this->position += vv;
