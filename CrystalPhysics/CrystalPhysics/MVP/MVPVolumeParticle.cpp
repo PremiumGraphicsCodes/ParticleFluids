@@ -73,9 +73,6 @@ void MVPVolumeParticle::calculatePressureForce(const float relaxationCoe, const 
 		averagedCenter += (mp->position) / static_cast<float>(innerPoints.size());// mp->getPressureCoe();
 	}
 	this->averagedCenter = averagedCenter;
-
-	const auto dv = this->position - averagedCenter;
-	this->force += dv / dt / dt * this->density * this->pressureCoe * relaxationCoe;
 }
 
 void MVPVolumeParticle::calculateViscosityForce()
@@ -99,6 +96,10 @@ void MVPVolumeParticle::calculateVorticity()
 
 void MVPVolumeParticle::stepTime(const float dt)
 {
+	const auto dv = this->position - averagedCenter;
+	this->force += dv / dt / dt * this->density * this->pressureCoe;
+
+
 	const auto acc = (force) / getDensity();
 	this->velocity += acc * dt;
 	this->position += this->velocity * dt;

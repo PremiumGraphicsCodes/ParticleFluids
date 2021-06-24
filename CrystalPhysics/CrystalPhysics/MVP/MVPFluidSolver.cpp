@@ -131,7 +131,7 @@ void MVPFluidSolver::simulate()
 
 		// solve incompressibility.
 		float relaxationCoe = 0.50f;
-		for (int i = 0; i < 3; ++i) {
+		for (int i = 0; i < 2; ++i) {
 			for (auto particle : fluidParticles) {
 //				particle->reset(false);
 				particle->updateMicros();
