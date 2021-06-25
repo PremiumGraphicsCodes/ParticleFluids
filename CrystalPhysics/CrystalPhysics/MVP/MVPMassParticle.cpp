@@ -13,7 +13,8 @@ MVPMassParticle::MVPMassParticle(MVPVolumeParticle* parent, const Math::Vector3d
 //	pressureCoe(parent->getScene()->getPressureCoe()),
 //	viscosityCoe(parent->getScene()->getViscosityCoe())
 {
-	updatePosition();
+	updatePosition(parent->getPositionf());
+	updateVelocity(parent->getVelocity());
 }
 
 
@@ -24,19 +25,24 @@ Vector3dd MVPMassParticle::getPosition() const
 
 Vector3df MVPMassParticle::getVelocity() const
 {
-	return parent->getVelocity();
+	return velocity;
 }
 
-void MVPMassParticle::updatePosition()
+void MVPMassParticle::updatePosition(const Vector3df& parentPosition)
 {
 	//const auto v = (parent->getPositionf() - this->position);
-	this->position = parent->getAveragedCenter() + parent->getRadius() * vector;
+	this->position = parentPosition + parent->getRadius() * vector;
 
-	const auto vv = glm::cross(vector, parent->getVorticity());
-	this->position += vv;
+	//const auto vv = glm::cross(vector, parent->getVorticity());
+	//this->position += vv;
 
 	//this->vector += vv;
 	//this->vector = glm::normalize(this->vector);
 
 	//const auto vv = glm::cross(vector, parent->getVorticity());
+}
+
+void MVPMassParticle::updateVelocity(const Vector3df& parentVelocity)
+{
+	this->velocity = parentVelocity;
 }

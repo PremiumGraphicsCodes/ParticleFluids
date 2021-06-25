@@ -102,7 +102,8 @@ void MVPFluidSolver::simulate()
 
 		for (int i = 0; i < fluidParticles.size(); ++i) {
 			const auto particle = fluidParticles[i];
-			particle->updateMicros();
+			particle->updateMassPositions();
+			particle->updateMassVelocities();
 		}
 
 #pragma omp parallel for
@@ -128,11 +129,10 @@ void MVPFluidSolver::simulate()
 		}
 
 		// solve incompressibility.
-		float relaxationCoe = 0.50f;
 		for (int i = 0; i < 2; ++i) {
 			for (auto particle : fluidParticles) {
 //				particle->reset(false);
-				particle->updateMicros();
+				particle->updateMassPositions();
 			}
 
 #pragma omp parallel for
@@ -140,10 +140,9 @@ void MVPFluidSolver::simulate()
 				const auto particle = fluidParticles[i];
 				particle->updateInnerPoints();
 				//particle->calculateDensity();
-				particle->calculatePressureForce(relaxationCoe, dt);
+				particle->calculatePressureForce(1.0f, dt);
 			}
 
-			relaxationCoe = relaxationCoe * 0.5f;
 
 			//for (auto particle : fluidParticles) {
 			//	solveBoundary(particle, dt);

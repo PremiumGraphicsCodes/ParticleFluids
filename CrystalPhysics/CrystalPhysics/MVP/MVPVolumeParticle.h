@@ -56,7 +56,9 @@ public:
 
 	float getDensity() const;
 
-	void updateMicros();
+	void updateMassPositions();
+
+	void updateMassVelocities();
 
 	void updateInnerPoints();
 

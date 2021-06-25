@@ -18,7 +18,9 @@ public:
 
 	MVPVolumeParticle* getParent() { return parent; }
 
-	void updatePosition();
+	void updatePosition(const Math::Vector3df& centerPosition);
+
+	void updateVelocity(const Math::Vector3df& centerVelocity);
 
 	float getMass() const { return mass; }
 
@@ -35,6 +37,7 @@ public:
 private:
 	MVPVolumeParticle* parent;
 	Math::Vector3df vector;
+	Math::Vector3df velocity;
 	float mass;
 	float pressureCoe;
 	float viscosityCoe;
