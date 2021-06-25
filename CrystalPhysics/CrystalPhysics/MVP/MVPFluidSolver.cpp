@@ -153,6 +153,10 @@ void MVPFluidSolver::simulate()
 		for (auto particle : fluidParticles) {
 			//particle->calculateViscosity(particle->getScene()->getViscosityCoe() * relaxationCoe);
 			particle->stepTime(dt);
+			const auto massPs = particle->getMassParticles();
+			for (auto mp : massPs) {
+				mp->updateVector();
+			}
 		}
 
 		time += dt;

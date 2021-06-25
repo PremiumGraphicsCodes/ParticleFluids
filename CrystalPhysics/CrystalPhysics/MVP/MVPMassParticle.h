@@ -22,6 +22,8 @@ public:
 
 	void updateVelocity(const Math::Vector3df& centerVelocity);
 
+	void updateVector();
+
 	float getMass() const { return mass; }
 
 	void setPressureCoe(const float c) { this->pressureCoe = c; }

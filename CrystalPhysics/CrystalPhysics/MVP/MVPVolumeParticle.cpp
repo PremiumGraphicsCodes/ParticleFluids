@@ -90,7 +90,7 @@ void MVPVolumeParticle::calculateVorticity()
 	for (auto mp : innerPoints) {
 		const auto p = (mp->position - this->position);
 		const auto v = (mp->getVelocity() - this->velocity);
-		//vorticity += glm::cross(p, v) * 0.05f;
+		vorticity += glm::cross(p, v) * 0.05f;
 	}
 }
 

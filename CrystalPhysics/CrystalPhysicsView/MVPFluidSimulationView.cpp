@@ -95,7 +95,7 @@ void MVPFluidSimulationView::addFluid()
 		for (int j = 0; j < 20; ++j) {
 			for (int k = 0; k < 20; ++k) {
 				//auto mp = new MVPVolumeParticle(radius*2.0, Vector3dd(i * length, j * length, k * length));
-				const auto p = Vector3dd(i * length + 1, j * length + 1, k * length);
+				const auto p = Vector3dd(i * length, j * length, k * length);
 				auto mp = builder.create(p, length, 3, 3, 3, 1.0f);
 //				mp->distributePoints(3, 3, 3, 1.00f);
 				fluidScene->addParticle(mp);

@@ -73,6 +73,8 @@ public:
 
 	Math::Vector3df getAveragedCenter() const { return averagedCenter; }
 
+	const std::vector<MVPMassParticle*>& getMassParticles() const { return massParticles; }
+
 private:
 	float pressureCoe;
 	float radius;
