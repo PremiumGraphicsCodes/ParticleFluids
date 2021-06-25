@@ -27,7 +27,7 @@ MVPVolumeParticle* Crystal::Physics::MVPParticleBuilder::create(const Math::Vect
 				const Vector3dd v(xx - 0.5, yy - 0.5, zz - 0.5);
 				const auto d = Math::getLengthSquared(v);
 				if (d < 0.5 * 0.5) {
-					auto mp = new MVPMassParticle(volume, v, weight / 8.0f);
+					auto mp = new MVPMassParticle(volume, v * 2.0, weight / 8.0f);
 					volume->addMassParticle(mp);
 					restMass += weight / 8.0f;
 				}

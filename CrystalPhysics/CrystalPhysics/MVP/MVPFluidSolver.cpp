@@ -108,12 +108,10 @@ void MVPFluidSolver::simulate()
 #pragma omp parallel for
 		for (int i = 0; i < fluidParticles.size(); ++i) {
 			const auto particle = fluidParticles[i];
-//			particle->updateMicros();
 			particle->updateInnerPoints();
 			particle->calculateDensity();
-//			particle->calculatePressureForce(1.0);
 			particle->calculateViscosityForce();
-//			particle->calculateVorticity();
+			particle->calculateVorticity();
 		}
 		
 
