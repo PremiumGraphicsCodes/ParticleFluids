@@ -13,7 +13,7 @@ static PyObject* c_list_param(PyObject* self, PyObject* args)
     }
 
     // Check list
-    if PyList_Check(c_list){
+    if(PyList_Check(c_list)){
         // get length of the list
         n = PyList_Size(c_list);
     }else{
