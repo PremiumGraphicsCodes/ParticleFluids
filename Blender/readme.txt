@@ -1,0 +1,1 @@
+https://colorful-pico.net/introduction-to-addon-development-in-blender/2.8/index.html
