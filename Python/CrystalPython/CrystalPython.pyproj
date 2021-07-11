@@ -23,6 +23,13 @@
   <ItemGroup>
     <Compile Include="CrystalPython.py" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrystalPythonIF\CrystalPythonIF.vcxproj">
+      <Name>CrystalPythonIF</Name>
+      <Project>{0a4195ff-4a84-4dac-85d4-0251b0af2bb3}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
        Visual Studio and specify your pre- and post-build commands in
