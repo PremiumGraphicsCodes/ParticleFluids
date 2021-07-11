@@ -5,6 +5,8 @@
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 
+#include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Physics;
 using namespace Crystal::Scene;
@@ -63,13 +65,14 @@ bool FluidSceneUpdateCommand::execute(World* world)
 		const auto& positions = particles->getPositions();
 		const auto radius = args.particleRadius.getValue();
 		const auto density = args.density.getValue();
+		MVPParticleBuilder builder;
 		for (const auto& p : positions) {
-			auto mp = new MVPVolumeParticle(radius, p);
-			mp->distributePoints(3, 3, 3, density);
+			//auto mp = new MVPVolumeParticle(radius, p);
+			//mp->addMassParticle();// distributePoints(3, 3, 3, density);
+			auto mp = builder.create(p, radius, 3, 3, 3, 1.0f);
 			fluidScene->addParticle(mp);
 		}
 	}
-
 
 	return true;
 }
