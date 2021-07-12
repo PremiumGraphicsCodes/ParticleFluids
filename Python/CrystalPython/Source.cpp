@@ -10,8 +10,20 @@
 #include <pybind11/operators.h>//operator
 #include "Header.h"
 
+#include "../../Crystal/Scene/World.h"
+#include "../../CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
 
 using namespace::std;
+
+namespace {
+    Crystal::Scene::World world;
+    Crystal::Physics::PhysicsCommandFactory factory;
+
+    void call(const std::string& commandName) {
+        auto command = factory.create(commandName);
+        command->execute(&world);
+    }
+}
 
 int add(int x, int y) {
     return x + y;
@@ -29,4 +41,6 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_property_readonly("y", &POINT::Y)
         .def(py::self + py::self)
         .def("__repr__", &POINT::toString);
+
+    m.def("call", &call);
 }
