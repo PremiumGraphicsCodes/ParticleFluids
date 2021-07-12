@@ -32,10 +32,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalNumerics", "..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj", "{C4927D35-7611-4AFD-934A-DA114663BFB2}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPython", "CrystalPython\CrystalPython.pyproj", "{CA9B248C-5100-4817-9F32-E5F2EB01639B}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPythonIF", "CrystalPythonIF\CrystalPythonIF.vcxproj", "{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -166,22 +162,6 @@ Global
 		{C4927D35-7611-4AFD-934A-DA114663BFB2}.Release|x64.Build.0 = Release|x64
 		{C4927D35-7611-4AFD-934A-DA114663BFB2}.Release|x86.ActiveCfg = Release|Win32
 		{C4927D35-7611-4AFD-934A-DA114663BFB2}.Release|x86.Build.0 = Release|Win32
-		{CA9B248C-5100-4817-9F32-E5F2EB01639B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA9B248C-5100-4817-9F32-E5F2EB01639B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{CA9B248C-5100-4817-9F32-E5F2EB01639B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CA9B248C-5100-4817-9F32-E5F2EB01639B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA9B248C-5100-4817-9F32-E5F2EB01639B}.Release|x64.ActiveCfg = Release|Any CPU
-		{CA9B248C-5100-4817-9F32-E5F2EB01639B}.Release|x86.ActiveCfg = Release|Any CPU
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Debug|x64.ActiveCfg = Debug|x64
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Debug|x64.Build.0 = Debug|x64
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Debug|x86.ActiveCfg = Debug|Win32
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Debug|x86.Build.0 = Debug|Win32
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Release|Any CPU.ActiveCfg = Release|Win32
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Release|x64.ActiveCfg = Release|x64
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Release|x64.Build.0 = Release|x64
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Release|x86.ActiveCfg = Release|Win32
-		{0A4195FF-4A84-4DAC-85D4-0251B0AF2BB3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
