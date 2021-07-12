@@ -11,6 +11,8 @@
     <OutputPath>.</OutputPath>
     <Name>CrystalPythonTest</Name>
     <RootNamespace>CrystalPythonTest</RootNamespace>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
