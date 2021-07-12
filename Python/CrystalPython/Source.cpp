@@ -18,7 +18,7 @@ int add(int x, int y) {
 }
 
 namespace py = pybind11;
-PYBIND11_MODULE(pybindtest, m) {
+PYBIND11_MODULE(CrystalPython, m) {
     m.doc() = "pybind11 example plugin";
     m.def("add", &add);
     py::class_<POINT>(m, "POINT")

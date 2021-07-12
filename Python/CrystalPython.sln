@@ -34,6 +34,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalNumerics", "..\Cryst
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPython", "CrystalPython\CrystalPython.vcxproj", "{09688343-9C7D-4B37-825A-3A4AD8201EAE}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPythonTest", "CrystalPythonTest\CrystalPythonTest.pyproj", "{6156F5C3-538A-424B-B9B9-2764446F5E67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -174,6 +176,12 @@ Global
 		{09688343-9C7D-4B37-825A-3A4AD8201EAE}.Release|x64.Build.0 = Release|x64
 		{09688343-9C7D-4B37-825A-3A4AD8201EAE}.Release|x86.ActiveCfg = Release|Win32
 		{09688343-9C7D-4B37-825A-3A4AD8201EAE}.Release|x86.Build.0 = Release|Win32
+		{6156F5C3-538A-424B-B9B9-2764446F5E67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6156F5C3-538A-424B-B9B9-2764446F5E67}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6156F5C3-538A-424B-B9B9-2764446F5E67}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6156F5C3-538A-424B-B9B9-2764446F5E67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6156F5C3-538A-424B-B9B9-2764446F5E67}.Release|x64.ActiveCfg = Release|Any CPU
+		{6156F5C3-538A-424B-B9B9-2764446F5E67}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
