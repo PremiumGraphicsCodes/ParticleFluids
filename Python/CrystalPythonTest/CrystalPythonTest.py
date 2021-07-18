@@ -1,6 +1,6 @@
 
 import CrystalPython
-from CrystalPython import add, POINT
+from CrystalPython import add, POINT, Vector3dd
 
 print('doc=', CrystalPython.__doc__)
 x1, y1 = 1, 2
@@ -16,4 +16,6 @@ print('q=', q)
 print('p+q=', p+q)
 print('p.x,p.y=', p.x, p.y)
 
-CrystalPython.call("PhysicsSolverCreateCommand");
+vector3dd = Vector3dd(0.0,0.0,0.0);
+
+#CrystalPython.call("PhysicsSolverCreateCommand");

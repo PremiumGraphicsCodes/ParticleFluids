@@ -13,6 +13,7 @@
     <RootNamespace>CrystalPythonTest</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
+    <InterpreterId>Global|PythonCore|3.9</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,11 +27,19 @@
     <Compile Include="CrystalPythonTest.py" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
+      <Name>Math</Name>
+      <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\CrystalPython\CrystalPython.vcxproj">
       <Name>CrystalPython</Name>
       <Project>{09688343-9c7d-4b37-825a-3a4ad8201eae}</Project>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.9" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

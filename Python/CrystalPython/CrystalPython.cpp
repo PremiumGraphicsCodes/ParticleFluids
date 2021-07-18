@@ -8,13 +8,16 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h> // vector—p
 #include <pybind11/operators.h>//operator
-#include "Header.h"
+#include "CrystalPython.h"
+#include "../../Crystal/Math/Vector3d.h"
 
 #include "../../Crystal/Scene/World.h"
 #include "../../CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
 
 using namespace::std;
+using namespace Crystal::Math;
 
+/*
 namespace {
     Crystal::Scene::World world;
     Crystal::Physics::PhysicsCommandFactory factory;
@@ -24,15 +27,41 @@ namespace {
         command->execute(&world);
     }
 }
+*/
+
+
+int add(int x, int y);
+
+class POINT {
+private:
+    int x;
+    int y;
+public:
+    int sum;
+    POINT(pair<int, int> xy) { this->x = xy.first; this->y = xy.second; this->sum = this->x + this->y; }
+    POINT(int x, int y) { this->x = x; this->y = y; this->sum = x + y; }
+    int X() { return x; }
+    int Y() { return y; }
+    POINT operator+(const POINT& v) const { return POINT(this->x + v.x, this->y + v.y); }
+    std::string toString() const {
+        return "(" + std::to_string(this->x) + ", " + std::to_string(this->y) + ")";
+    }
+};
 
 int add(int x, int y) {
     return x + y;
 }
 
+class Vector3dTest {
+public:
+    Vector3dTest(double x, double y, double z) {}
+};
+
 namespace py = pybind11;
 PYBIND11_MODULE(CrystalPython, m) {
     m.doc() = "pybind11 example plugin";
     m.def("add", &add);
+
     py::class_<POINT>(m, "POINT")
         .def(py::init<int, int>())
         .def(py::init<pair<int, int>>())
@@ -42,5 +71,11 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def(py::self + py::self)
         .def("__repr__", &POINT::toString);
 
-    m.def("call", &call);
+    py::class_<Vector3dTest>(m, "Vector3dd")
+        .def(py::init<double, double, double>());
+//        .def("x", &Vector3dd::x)
+//        .def("y", &Vector3dd::y)
+//        .def("z", &Vector3dd::z);
+
+    //m.def("call", &call);
 }
