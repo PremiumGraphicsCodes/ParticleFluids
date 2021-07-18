@@ -52,11 +52,6 @@ int add(int x, int y) {
     return x + y;
 }
 
-class Vector3dTest {
-public:
-    Vector3dTest(double x, double y, double z) {}
-};
-
 namespace py = pybind11;
 PYBIND11_MODULE(CrystalPython, m) {
     m.doc() = "pybind11 example plugin";
@@ -71,11 +66,17 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def(py::self + py::self)
         .def("__repr__", &POINT::toString);
 
-    py::class_<Vector3dTest>(m, "Vector3dd")
-        .def(py::init<double, double, double>());
-//        .def("x", &Vector3dd::x)
-//        .def("y", &Vector3dd::y)
-//        .def("z", &Vector3dd::z);
+    py::class_<Vector3df>(m, "Vector3df")
+        .def(py::init<float, float, float>())
+        .def_readwrite("x", &Vector3df::x)
+        .def_readwrite("y", &Vector3df::y)
+        .def_readwrite("z", &Vector3df::z);
+
+    py::class_<Vector3dd>(m, "Vector3dd")
+        .def(py::init<double, double, double>())
+        .def_readwrite("x", &Vector3dd::x)
+        .def_readwrite("y", &Vector3dd::y)
+        .def_readwrite("z", &Vector3dd::z);
 
     //m.def("call", &call);
 }
