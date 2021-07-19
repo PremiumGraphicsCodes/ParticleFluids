@@ -17,17 +17,33 @@
 using namespace::std;
 using namespace Crystal::Math;
 
-/*
 namespace {
     Crystal::Scene::World world;
     Crystal::Physics::PhysicsCommandFactory factory;
+    std::unique_ptr<Crystal::Command::ICommand> command;
 
-    void call(const std::string& commandName) {
-        auto command = factory.create(commandName);
+    void createCommand(const std::string& commandName) {
+        command = factory.create(commandName);
+//        command->execute(&world);
+    }
+
+    void setArg(const std::string& name, int value) {
+        command->setArg(name, value);
+    }
+
+    void executeCommand() {
         command->execute(&world);
     }
+    /*
+    void setArg(const std::string& name, const std::string& value) {
+        command->setArg(name, value);
+    }
+    */
+    int getResultInt(const std::string& name)
+    {
+        return std::any_cast<int>( command->getResult(name));
+    }
 }
-*/
 
 
 int add(int x, int y);
@@ -77,6 +93,13 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_readwrite("x", &Vector3dd::x)
         .def_readwrite("y", &Vector3dd::y)
         .def_readwrite("z", &Vector3dd::z);
+
+    m.def("create_command", &createCommand);
+    m.def("execute_command", &executeCommand);
+    m.def("set_arg", &setArg);
+    m.def("get_result_int", &getResultInt);
+    //py::class_<Crystal::Physics::PhysicsCommandFactory>(m, "PhysicsCommandFactory")
+    //    .def("create", &Crystal::Physics::PhysicsCommandFactory::create);
 
     //m.def("call", &call);
 }
