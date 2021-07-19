@@ -13,6 +13,7 @@
 
 #include "../../Crystal/Scene/World.h"
 #include "../../CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
+#include "../../CrystalVDB/VDBCommand/VDBCommandFactory.h"
 
 using namespace::std;
 using namespace Crystal::Math;
@@ -20,11 +21,16 @@ using namespace Crystal::Math;
 namespace {
     Crystal::Scene::World world;
     Crystal::Physics::PhysicsCommandFactory factory;
+    Crystal::VDB::VDBCommandFactory vdbCommandFactory;
     std::unique_ptr<Crystal::Command::ICommand> command;
 
     void createCommand(const std::string& commandName) {
         command = factory.create(commandName);
 //        command->execute(&world);
+    }
+
+    void createVDBCommand(const std::string& commandName) {
+        command = vdbCommandFactory.createCommand(commandName);
     }
 
     void setArg(const std::string& name, int value) {
@@ -95,6 +101,7 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_readwrite("z", &Vector3dd::z);
 
     m.def("create_command", &createCommand);
+    m.def("create_vdb_command", &createVDBCommand);
     m.def("execute_command", &executeCommand);
     m.def("set_arg", &setArg);
     m.def("get_result_int", &getResultInt);

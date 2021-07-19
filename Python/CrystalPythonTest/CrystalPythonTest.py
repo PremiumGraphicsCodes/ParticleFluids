@@ -3,7 +3,7 @@ import CrystalPython
 import unittest
 
 from CrystalPython import add, POINT, Vector3df, Vector3dd, create_command, set_arg, get_result_int
-from CrystalPython import execute_command
+from CrystalPython import execute_command, create_vdb_command
 
 
 print('doc=', CrystalPython.__doc__)
@@ -30,6 +30,11 @@ class PhysicsSolverCreateCommandTest(unittest.TestCase):
         self.assertEqual(1, newId)
         #factory = PhysicsCommandFactory;
         #factory.create()
+
+class VDBInitCommandTest(unittest.TestCase):
+    def test(self):
+        create_vdb_command("VDBInit")
+        execute_command()
 
 if __name__ == '__main__':
     unittest.main()
