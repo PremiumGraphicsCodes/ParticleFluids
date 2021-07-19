@@ -26,8 +26,8 @@ class PhysicsSolverCreateCommandTest(unittest.TestCase):
     def test(self):
         create_command("PhysicsSolverCreateCommand")
         execute_command()
-        newId = get_result_int("NewId");
-        
+        newId = get_result_int("NewId")
+        self.assertEqual(1, newId)
         #factory = PhysicsCommandFactory;
         #factory.create()
 
