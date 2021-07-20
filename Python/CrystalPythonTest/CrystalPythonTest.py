@@ -1,10 +1,9 @@
 
 import CrystalPython
 import unittest
+import os
 
-from CrystalPython import add, POINT, Vector3df, Vector3dd, create_command, set_arg, get_result_int
-from CrystalPython import execute_command, create_vdb_command
-
+from CrystalPython import *
 
 print('doc=', CrystalPython.__doc__)
 
@@ -25,7 +24,8 @@ class TestVector3dd(unittest.TestCase):
 class PhysicsSolverCreateCommandTest(unittest.TestCase):
     def test(self):
         create_command("PhysicsSolverCreateCommand")
-        execute_command()
+        isOk = execute_command()
+        self.assertTrue(isOk)
         newId = get_result_int("NewId")
         self.assertEqual(1, newId)
         #factory = PhysicsCommandFactory;
@@ -34,7 +34,25 @@ class PhysicsSolverCreateCommandTest(unittest.TestCase):
 class VDBInitCommandTest(unittest.TestCase):
     def test(self):
         create_vdb_command("VDBInit")
+        isOk = execute_command()
+        self.assertTrue(isOk)
+
+class VDBFileImportCommandTest(unittest.TestCase):
+    def test(self):
+#        path = os.getcwd()
+#        print(path)
+        create_vdb_command("VDBInit")
+        isOk = execute_command()
+        self.assertTrue(isOk)
+
+        create_vdb_command("VDBFileRead")
+#        set_arg_string("FilePath", "aaa")
+        set_arg_string("FilePath", "./source_river.vdb")
         execute_command()
+        newIds = get_result_int_vector("NewId")
+        print(newIds)
+#        self.assertEqual(1, newId)
+
 
 if __name__ == '__main__':
     unittest.main()
