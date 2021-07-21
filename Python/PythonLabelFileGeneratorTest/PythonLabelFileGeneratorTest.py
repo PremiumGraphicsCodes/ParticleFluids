@@ -6,10 +6,9 @@ from PythonLabelFileGenerator import *
 
 class TestXXX(unittest.TestCase):
     def test(self):
-        print("XXX")
         self.assertEqual(1.0, 1.0)
-        generator = PythonLabelFileGenerator
-        generator.read("")
+        generator = PythonLabelFileGenerator()
+        generator.read("./labels.h")
 
 
         
