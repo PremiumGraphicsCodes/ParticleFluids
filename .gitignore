@@ -272,3 +272,4 @@ ModelManifest.xml
 /CrystalPhysics/CrystalPhysicsView/mvp.data
 /Python/PythonLabelFileGenerator/__pycache__
 /Python/CrystalPythonTest/__pycache__
+/Python/CrystalPythonTest/test_write.vdb

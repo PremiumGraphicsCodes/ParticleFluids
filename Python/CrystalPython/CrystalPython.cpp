@@ -37,6 +37,10 @@ namespace {
         command->setArg(name, value);
     }
 
+    void setArgIntVector(const std::string& name, const std::vector<int>& values) {
+        command->setArg(name, values);
+    }
+
     void setArgString(const std::string& name, const std::string value) {
         command->setArg(name, value);
     }
@@ -113,6 +117,7 @@ PYBIND11_MODULE(CrystalPython, m) {
     m.def("create_vdb_command", &createVDBCommand);
     m.def("execute_command", &executeCommand);
     m.def("set_arg_int", &setArgInt);
+    m.def("set_arg_int_vector", &setArgIntVector);
     m.def("set_arg_string", &setArgString);
     m.def("get_result_int", &getResultInt);
     m.def("get_result_int_vector", &getResultIntVector);
