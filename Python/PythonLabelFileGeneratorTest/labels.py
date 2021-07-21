@@ -4,3 +4,7 @@ class labels:
    SparseVolumeIdLabel="SparseVolumeId"
    EffectLengthLabel="EffectLength"
    CellLengthLabel="CellLength"
+class labels2:
+   CommandNameLabel="Test2Command"
+   DogLabel="Dog"
+   CatLabel="Cat"

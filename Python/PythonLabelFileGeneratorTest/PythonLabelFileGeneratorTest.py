@@ -5,12 +5,14 @@ import unittest
 from PythonLabelFileGenerator import * 
 
 class TestXXX(unittest.TestCase):
-    def test(self):
-        self.assertEqual(1.0, 1.0)
+    def test_read(self):
         generator = PythonLabelFileGenerator()
         generator.read("./labels.h")
-        generator.write("./labels.py")
 
+    def test_read_directory(self):
+        generator = PythonLabelFileGenerator()
+        generator.read_all_files("*.h")
+        generator.write("./labels.py")
         
 if __name__ == '__main__':
     unittest.main()
