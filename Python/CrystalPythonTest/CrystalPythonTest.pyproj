@@ -25,6 +25,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CrystalPythonTest.py" />
+    <Compile Include="physics_labels.py" />
+    <Compile Include="vdb_labels.py" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrystalPython\CrystalPython.vcxproj">

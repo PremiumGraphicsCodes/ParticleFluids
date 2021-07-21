@@ -6,7 +6,4 @@
   <ItemGroup>
     <ClCompile Include="CrystalPython.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="physics_labels.py" />
-  </ItemGroup>
 </Project>

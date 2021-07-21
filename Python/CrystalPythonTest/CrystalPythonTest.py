@@ -2,6 +2,8 @@
 import CrystalPython
 import unittest
 import os
+import physics_labels
+import vdb_labels
 
 from CrystalPython import *
 
@@ -23,17 +25,17 @@ class TestVector3dd(unittest.TestCase):
 
 class PhysicsSolverCreateCommandTest(unittest.TestCase):
     def test(self):
-        create_command("PhysicsSolverCreateCommand")
+        create_command(physics_labels.PhysicsSolverCreateLabels.CommandNameLabel)
         isOk = execute_command()
         self.assertTrue(isOk)
-        newId = get_result_int("NewId")
+        newId = get_result_int(physics_labels.PhysicsSolverCreateLabels.NewIdLabel)
         self.assertEqual(1, newId)
         #factory = PhysicsCommandFactory;
         #factory.create()
 
 class VDBInitCommandTest(unittest.TestCase):
     def test(self):
-        create_vdb_command("VDBInit")
+        create_vdb_command(vdb_labels.VDBInitLabels.CommandNameLabel)
         isOk = execute_command()
         self.assertTrue(isOk)
 
@@ -41,15 +43,14 @@ class VDBFileImportCommandTest(unittest.TestCase):
     def test(self):
 #        path = os.getcwd()
 #        print(path)
-        create_vdb_command("VDBInit")
+        create_vdb_command(vdb_labels.VDBInitLabels.CommandNameLabel)
         isOk = execute_command()
         self.assertTrue(isOk)
 
-        create_vdb_command("VDBFileRead")
-#        set_arg_string("FilePath", "aaa")
-        set_arg_string("FilePath", "./source_river.vdb")
+        create_vdb_command(vdb_labels.VDBFileReadLabels.CommandNameLabel)
+        set_arg_string(vdb_labels.VDBFileReadLabels.FilePathLabel, "./source_river.vdb")
         execute_command()
-        newIds = get_result_int_vector("NewId")
+        newIds = get_result_int_vector(vdb_labels.VDBFileReadLabels.NewIdLabel)
         print(newIds)
 #        self.assertEqual(1, newId)
 
