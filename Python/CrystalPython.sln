@@ -40,6 +40,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalVDB", "..\CrystalVDB
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalVDBCommand", "..\CrystalVDB\VDBCommand\CrystalVDBCommand.vcxproj", "{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonLabelFileGenerator", "PythonLabelFileGenerator\PythonLabelFileGenerator.pyproj", "{D7827347-B8E9-4D35-B306-B778474DE904}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonLabelFileGeneratorTest", "PythonLabelFileGeneratorTest\PythonLabelFileGeneratorTest.pyproj", "{0F7BEA09-D087-47DF-B6CC-19D6585A025A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -392,6 +396,30 @@ Global
 		{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}.RelWithDebInfo|x64.Build.0 = Release|x64
 		{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
 		{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC}.RelWithDebInfo|x86.Build.0 = Release|Win32
+		{D7827347-B8E9-4D35-B306-B778474DE904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.MinSizeRel|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.MinSizeRel|x64.ActiveCfg = Debug|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.MinSizeRel|x86.ActiveCfg = Debug|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.Release|x64.ActiveCfg = Release|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.Release|x86.ActiveCfg = Release|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.RelWithDebInfo|Any CPU.ActiveCfg = Release|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.RelWithDebInfo|x64.ActiveCfg = Release|Any CPU
+		{D7827347-B8E9-4D35-B306-B778474DE904}.RelWithDebInfo|x86.ActiveCfg = Release|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.MinSizeRel|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.MinSizeRel|x64.ActiveCfg = Debug|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.MinSizeRel|x86.ActiveCfg = Debug|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.Release|x64.ActiveCfg = Release|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.Release|x86.ActiveCfg = Release|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.RelWithDebInfo|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.RelWithDebInfo|x64.ActiveCfg = Release|Any CPU
+		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.RelWithDebInfo|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
