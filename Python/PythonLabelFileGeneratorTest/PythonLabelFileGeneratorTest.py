@@ -9,7 +9,7 @@ class TestXXX(unittest.TestCase):
         self.assertEqual(1.0, 1.0)
         generator = PythonLabelFileGenerator()
         generator.read("./labels.h")
-
+        generator.write("./labels.py")
 
         
 if __name__ == '__main__':
