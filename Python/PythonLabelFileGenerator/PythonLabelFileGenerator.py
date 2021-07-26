@@ -52,12 +52,15 @@ class PythonLabelFileGenerator:
     def write(self,file_path):
         f = open(file_path, 'w')
         for group in self.groups :
+            if len(group.lls) == 0 :
+                continue
             f.write("class " + group.name + ":\n")
             for ll in group.lls:
                 f.write("   " + ll.title)
                 f.write('=')
                 f.write(ll.value)
                 f.write('\n') 
+            f.write('\n') 
         f.close()
 
 def create_scene_labels() :

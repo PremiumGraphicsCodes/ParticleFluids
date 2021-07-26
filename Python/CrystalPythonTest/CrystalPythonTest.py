@@ -91,20 +91,20 @@ class VDBCommand :
         newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
         return newId
 
-    def write_obj(self, vdb_mesh_Id, file_path) :
+    def write_obj_file(self, vdb_mesh_id, file_path) :
         create_vdb_command(vdb_labels.VDBOBJFileWriteLabels.CommandNameLabel)
-        set_arg_int(vdb_labels.VDBOBJFileWriteLabels.VDBMeshIdLabel, vdbMeshId)
-        set_arg_string(PG.VDBOBJFileWriteLabels.FilePathLabel, file_path)
+        set_arg_int(vdb_labels.VDBOBJFileWriteLabels.VDBMeshIdLabel, vdb_mesh_id)
+        set_arg_string(vdb_labels.VDBOBJFileWriteLabels.FilePathLabel, file_path)
         isOk = execute_command(self.world)
         return isOk
 
-    def read_obj(self, filePath) :
+    def read_obj_file(self, file_path) :
         create_vdb_command(vdb_labels.VDBOBJFileReadLabels.CommandNameLabel)
-        set_arg_string(vbd_labels.VDBOBJFileReadLabels.FilePathLabel, filePath)
-        isOk = command.Execute(self.world)
+        set_arg_string(vdb_labels.VDBOBJFileReadLabels.FilePathLabel, file_path)
+        isOk = execute_command(self.world)
         if isOk == False :
             return -1
-        newId = PG.VDBOBJFileReadLabels.VDBMeshIdLabel
+        newId = get_result_int(vdb_labels.VDBOBJFileReadLabels.VDBMeshIdLabel)
         return newId
 
 class TestVector3df(unittest.TestCase):
@@ -160,13 +160,12 @@ class VDBCommand_test(unittest.TestCase):
     def test_create_vdb_points(self):
         newId = self.vdb.create_vdb_empty_points("test_vdb_points")
         self.assertEqual(1, newId)
-        #points = []
-        #points.append( Vector3df(1.0, 2.0, 3.0) )
-        #points.append( Vector3df(4.0, 5.0, 6.0) )
+
         p = Vector3ddVector()
-        #p = points
+        p.add(Vector3dd(1.0, 2.0, 3.0))
+        p.add(Vector3dd(4.0, 5.0, 6.0))
         newId = self.vdb.create_vdb_points(p, "test_vdb_points_2")
-        print(newId) 
+        self.assertEqual(2, newId)
 
     def test_create_vdb_mesh(self):
         newId = self.vdb.create_vdb_mesh("test_vdb_mesh")
@@ -182,6 +181,10 @@ class VDBCommand_test(unittest.TestCase):
         self.vdb.write_vdb_file("test_write.vdb", newIds, [])
 #        self.assertEqual(1, newId)
 
+    def test_read_obj_file(self):
+        newId = self.vdb.read_obj_file("./quad.obj")
+        self.assertEqual(1, newId)
+        self.vdb.write_obj_file(newId, "./test_write.obj")
 
 if __name__ == '__main__':
     unittest.main()
