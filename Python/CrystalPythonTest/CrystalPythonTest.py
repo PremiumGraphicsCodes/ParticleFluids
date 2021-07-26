@@ -37,12 +37,33 @@ class VDBCommand :
         set_arg_int_vector(vdb_labels.VDBFileWriteLabels.VDBVolumeIdsLabel, volumeIds);
         execute_command()
 
+    def create_vdb_empty_points(self, name) :
+        create_vdb_command(vdb_labels.VDBSceneCreateLabels.CommandNameLabel);
+        set_arg_string(vdb_labels.VDBSceneCreateLabels.SceneTypeLabel, vdb_labels.VDBSceneCreateLabels.SceneType_VDBPointsLabel)
+        execute_command()
+        newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
+        return newId
+
+   # def create_vdb_points(self, positions, name) :
+   #     create_vdb_command(vdb_labels.VDBSceneCreateLabels.CommandNameLabel)
+   #     set_arg_string(vdb_labels.VDBSceneCreateLabels.SceneTypeLabel, vdb_labels.VDBSceneCreateLabels.SceneType_VDBPointsLabel)
+   #     set_arg_vector3df_vector(vdb_labels.VDBSceneCreateLabels.PositionsLabel, positions)
+   #     execute_command()
+   #     newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
+   #     return newId
+
 class TestVector3df(unittest.TestCase):
     def test(self):
         v = Vector3df(1.0, 2.0, 3.0)
         self.assertEqual(1.0, v.x)
         self.assertEqual(2.0, v.y)
         self.assertEqual(3.0, v.z)
+
+class TestVector3dfVector(unittest.TestCase):
+    def test(self):
+        v = []
+        v.append( Vector3df(1.0, 2.0, 3.0) )
+        v.append( Vector3df(4.0, 5.0, 6.0) )
 
 class TestVector3dd(unittest.TestCase):
     def test(self):
@@ -61,6 +82,15 @@ class VDBCommand_test(unittest.TestCase):
     def setUp(self):
         self.vdb = VDBCommand()
         self.vdb.init()
+
+    def test_create_vdb_points(self):
+        newId = self.vdb.create_vdb_empty_points("test_vdb_points")
+        print(newId)
+    #    points = []
+    #    points.append( Vector3df(1.0, 2.0, 3.0) )
+    #    points.append( Vector3df(4.0, 5.0, 6.0) )
+    #    newId = self.vdb.create_vdb_points(points, "test_vdb_points_2")
+    #    print(newId) 
 
     def test_read_vdb_file(self):
         newIds = self.vdb.read_vdb_file("./source_river.vdb")

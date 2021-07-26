@@ -33,17 +33,18 @@ namespace {
         command = vdbCommandFactory.createCommand(commandName);
     }
 
-    void setArgInt(const std::string& name, const int value) {
+    template<typename T>
+    void setArg(const std::string& name, T value) {
         command->setArg(name, value);
     }
 
-    void setArgIntVector(const std::string& name, const std::vector<int>& values) {
-        command->setArg(name, values);
-    }
+    /*
+    template<typename T>
+    void setArg<T>(const std::string& name, const T& value)
+    {
 
-    void setArgString(const std::string& name, const std::string value) {
-        command->setArg(name, value);
     }
+    */
 
     bool executeCommand() {
         return command->execute(&world);
@@ -116,9 +117,13 @@ PYBIND11_MODULE(CrystalPython, m) {
     m.def("create_command", &createCommand);
     m.def("create_vdb_command", &createVDBCommand);
     m.def("execute_command", &executeCommand);
-    m.def("set_arg_int", &setArgInt);
-    m.def("set_arg_int_vector", &setArgIntVector);
-    m.def("set_arg_string", &setArgString);
+    m.def("set_arg_int", &setArg<int>);
+    m.def("set_arg_int_vector", &setArg<std::vector<int>>);
+    m.def("set_arg_string", &setArg<std::string>);
+    m.def("set_arg_vector3df", &setArg<Vector3df>);
+    m.def("set_arg_vector3dd", &setArg<Vector3dd>);
+    m.def("set_arg_vector3df_vector", &setArg<std::vector<Vector3df>>);
+    m.def("set_arg_vector3dd_vector", &setArg<std::vector<Vector3dd>>);
     m.def("get_result_int", &getResultInt);
     m.def("get_result_int_vector", &getResultIntVector);
     //py::class_<Crystal::Physics::PhysicsCommandFactory>(m, "PhysicsCommandFactory")
