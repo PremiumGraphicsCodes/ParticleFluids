@@ -158,6 +158,11 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_readwrite("y", &Vector3dd::y)
         .def_readwrite("z", &Vector3dd::z);
 
+    py::class_<Box3df>(m, "Box3df")
+        .def(py::init<Vector3df, Vector3df>())
+        .def_property_readonly("min", &Box3df::getMin)
+        .def_property_readonly("max", &Box3df::getMax);
+
     py::class_<Vector3dfVector>(m, "Vector3dfVector")
         .def(py::init<>())
         .def("add", &Vector3dfVector::add)
@@ -181,6 +186,7 @@ PYBIND11_MODULE(CrystalPython, m) {
     m.def("set_arg_string", &setArg<std::string>);
     m.def("set_arg_vector3df", &setArg<Vector3df>);
     m.def("set_arg_vector3dd", &setArg<Vector3dd>);
+    m.def("set_arg_box3df", &setArg<Box3df>);
     m.def("set_arg_vector3df_vector", &setArgVector3dfVector);
     m.def("set_arg_vector3dd_vector", &setArgVector3ddVector);
     m.def("get_result_int", &getResult<int>);

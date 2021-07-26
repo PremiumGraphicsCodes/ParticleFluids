@@ -3,6 +3,7 @@ import CrystalPython
 import unittest
 import os
 import scene_labels
+import space_labels
 import physics_labels
 import vdb_labels
 
@@ -24,6 +25,23 @@ class SceneCommand :
         set_arg_int(scene_labels.DeleteLabels.IdLabel, id)
         set_arg_bool(scene_labels.DeleteLabels.IsItemLabel, isItem)
         return execute_command(self.world)
+
+class SpaceCommand :
+    def __init__(self, world):
+        self.world = world
+
+    def create_sparse_volume(resolution, boundingBox, layer, name) :
+        create_sparse_command(space_labels.SparseVolumeSceneCreateLabels.CommandNameLabel);
+        set_arg_int(space_labels.SparseVolumeSceneCreateLabels.ResolutionXLabel, resolution[0]);
+        set_arg_int(space_labels.SparseVolumeSceneCreateLabels.ResolutionYLabel, resolution[1]);
+        set_arg_int(space_labels.SparseVolumeSceneCreateLabels.ResolutionZLabel, resolution[2]);
+        set_arg_box3df(space_labels.SparseVolumeSceneCreateLabels.BoundingBoxLabel, boundingBox);
+        set_arg_string(space_labels.SparseVolumeSceneCreateLabels.NameLabel, name);
+        set_arg_int(space_labels.SparseVolumeSceneCreateLabels.LayerLabel, layer);
+        execute_command(self.world)
+        newId = get_result_int(space_labels.SparseVolumeSceneCreateLabels.NewIdLabel);
+        return newId
+
 
 class PhysicsCommand :
     def __init__(self, world) :
@@ -112,8 +130,23 @@ class VDBCommand :
         set_arg_int(vdb_labels.VDBPSToVolumeLabels.ParticleSystemIdLabel, particleSystemId)
         set_arg_int(vdb_labels.VDBPSToVolumeLabels.VolumeIdLabel, vdbVolumeId)
         set_arg_double(vdb_labels.VDBPSToVolumeLabels.RadiusLabel, radius)
-     #       return command.Execute(world.Adapter);
-     #   }
+        isOk = execute_command(self.world)
+        return isOk
+
+    def convert_mesh_to_volume(self, mesh_id, vdb_volume_id, divideLength) :
+        create_vdb_command(PG.VDBMeshToVolumeLabels.CommandNameLabel)
+        set_arg_int(vdb_labels.VDBMeshToVolumeLabels.VDBMeshIdLabel, meshId)
+        set_arg_int(vdb_labels.PG.VDBMeshToVolumeLabels.VDBVolumeIdLabel, vdbVolumeId)
+        set_arg_double(vdb_labels.VDBMeshToVolumeLabels.DivideLengthLabel, divideLength);
+        isOk = execute_command(self.world)
+        return isOk
+    
+    def convert_volume_from_sparse_volume(self, sparse_volume_id, vdb_volume_id) :
+        create_vdb_command(vdb_labels.ToVDBVolumeLabels.CommandNameLabel)
+        set_arg_int(vdb_labels.ToVDBVolumeLabels.SparseVolumeIdLabel, sparseVolumeId)
+        set_arg_int(vdb_labels.ToVDBVolumeLabels.VDBVolumeIdLabel, vdbVolumeId)
+        isOk = execute_command(self.world)
+        return isOk
 
 class TestVector3df(unittest.TestCase):
     def test(self):
@@ -145,10 +178,24 @@ class TestVector3ddVector(unittest.TestCase):
         vv = Vector3ddVector()
         vv.add( Vector3dd(1.0, 2.0, 3.0) )
         vv.add( Vector3dd(4.0, 5.0, 6.0) )
-        print(vv.values[0].x)
+#        print(vv.values[0].x)
 #        self.assertEqual(1.0, vv[0].x)
 #        self.assertEqual(2.0, vv[0].y)
 
+def calc_distance_squared(lhs, rhs) :
+    dx = lhs.x - rhs.x
+    dy = lhs.y - rhs.y
+    dz = lhs.z - rhs.z
+    return dx * dx + dy * dy + dz * dz
+
+#def are_same(lhs, rhs, tolerance) :
+
+class TestBox3df(unittest.TestCase):
+    def test(self):
+        box = Box3df(Vector3df(0,0,0), Vector3df(1,1,1))
+        dist = calc_distance_squared(Vector3df(0,0,0), Vector3df(1,1,1))
+        print(dist)
+#        self.assertEqual(Vector3df(0,0,0), box.min)
 
 class PhysicsSolverCreateCommandTest(unittest.TestCase):
     def test(self):
@@ -185,7 +232,8 @@ class VDBCommand_test(unittest.TestCase):
 
     def test_read_vdb_file(self):
         newIds = self.vdb.read_vdb_file("./source_river.vdb")
-        print(newIds)
+        self.assertEqual([1], newIds)
+#        print(newIds)
         self.vdb.write_vdb_file("test_write.vdb", newIds, [])
 #        self.assertEqual(1, newId)
 
