@@ -1,7 +1,6 @@
 class CameraCreateLabels:
    CommandNameLabel="CameraCreate"
    NewIdLabel="NewId"
-
 class CameraGetLabels:
    CommandNameLabel="CameraGet"
    NearLabel="Near"
@@ -11,7 +10,6 @@ class CameraGetLabels:
    UpVectorLabel="UpVector"
    ProjectionMatrixLabel="ProjectionMatrix"
    RotationMatrixLabel="RotationMatrix"
-
 class CameraLabels:
    CameraFitCommandLabel="CameraFit"
    CameraXYCommandLabel="CameraXY"
@@ -23,7 +21,6 @@ class CameraLabels:
    CameraTranslateCommandLabel="CameraTranslate"
    CameraZoomCommandLabel="CameraZoom"
    ZoomRatioLabel="Ratio"
-
 class CameraSetLabels:
    CommandLabel="CameraSet"
    NearLabel="Near"
@@ -31,38 +28,31 @@ class CameraSetLabels:
    EyePositionLabel="EyePosition"
    TargetPositionLabel="TargetPosition"
    UpVector="UpVector"
-
 class ClearLabels:
    CommandNameLabel="ClearCommand"
    LayerLabel="Layer"
-
 class DeleteLabels:
    CommandNameLabel="DeleteCommand"
    IdLabel="Id"
    IsItemLabel="IsItem"
-
 class FileExportLabels:
    FileExportCommandLabel="FileExport"
    FilePathLabel="FilePath"
-
 class FileImportLabels:
    FileImportCommandLabel="FileImport"
    FilePathLabel="FilePath"
    IsOkLabel="IsOk"
    NewIdLabel="NewId"
    STLFileImportCommandLabel="STLFileImport"
-
 class GetLabels:
    PositionLabel="Position"
    SceneCountLabel="SceneCount"
    SceneListIdsLabel="SceneListIds"
    MaterialNameLabel="MaterialName"
-
 class GetMatrixLabels:
    CommandLabel="SetMatrix"
    IdLabel="Id"
    MatrixLabel="Matrix"
-
 class LightCreateLabels:
    CommandNameLabel="LightCreate"
    PositionLabel="Position"
@@ -71,7 +61,6 @@ class LightCreateLabels:
    SpecularLabel="Specular"
    NameLabel="Name"
    NewIdLabel="NewId"
-
 class LightGetLabels:
    CommandNameLabel="LightGet"
    IdLabel="Id"
@@ -80,7 +69,6 @@ class LightGetLabels:
    DiffuseLabel="Diffuse"
    SpecularLabel="Specular"
    NameLabel="Name"
-
 class LightSetLabels:
    CommandNameLabel="LightSet"
    IdLabel="Id"
@@ -89,7 +77,6 @@ class LightSetLabels:
    DiffuseLabel="Diffuse"
    SpecularLabel="Specular"
    NameLabel="Name"
-
 class MaterialCreateLabels:
    CommandNameLabel="MaterialCreate"
    AmbientLabel="Ambient"
@@ -101,7 +88,6 @@ class MaterialCreateLabels:
    SpecularTextureNameLabel="SpecularTextureName"
    NameLabel="Name"
    NewIdLabel="NewId"
-
 class MaterialGetLabels:
    CommandNameLabel="MaterialGet"
    IdLabel="Id"
@@ -111,7 +97,6 @@ class MaterialGetLabels:
    ShininessLabel="Shininess"
    TextureNameLabel="TextureName"
    NameLabel="Name"
-
 class MaterialSetLabels:
    CommandNameLabel="MaterialSet"
    IdLabel="Id"
@@ -121,23 +106,18 @@ class MaterialSetLabels:
    ShininessLabel="Shininess"
    TextureNameLabel="TextureName"
    NameLabel="Name"
-
 class MockLabels:
    MockCommandLabel="Mock"
-
 class NewLabels:
    CommandNameLabel="NewCommand"
-
 class OBJFileExportLabels:
    CommandNameLabel="OBJFileExport"
    FilePathLabel="FilePath"
    IdsLabel="Ids"
-
 class OBJFileImportLabels:
    CommandNameLabel="OBJFileImport"
    FilePathLabel="FilePath"
    NewIdLabel="NewId"
-
 class ParticleSystemCreateLabels:
    ParticleSystemAddLabel="ParticleSystemAdd"
    PositionsLabel="Positions"
@@ -146,24 +126,20 @@ class ParticleSystemCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-
 class PCDFileExportLabels:
    CommandNameLabel="PCDFileExport"
    FilePathLabel="FilePath"
    IdsLabel="Ids"
    IsBinaryLabel="IsBinary"
-
 class PCDFileImportLabels:
    CommandNameLabel="PCDFileImport"
    FilePathLabel="FilePath"
    NewIdLabel="NewId"
-
 class PickLabels:
    PickCommandLabel="Pick"
    PositionLabel="Position"
    ParentIdLabel="ParentId"
    ChildIdLabel="ChildId"
-
 class PolygonMeshCreateLabels:
    CommandNameLabel="PolygonMeshCreate"
    PositionsLabel="Positions"
@@ -174,12 +150,10 @@ class PolygonMeshCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-
 class PresenterSetLabels:
    CommandNameLabel="PresenterSet"
    IdLabel="Id"
    PresenterNameLabel="PresenterName"
-
 class SceneGetLabels:
    CommandLabel="SceneGet"
    IdLabel="Id"
@@ -188,24 +162,19 @@ class SceneGetLabels:
    IsVisibleLabel="IsVisible"
    NameLabel="Name"
    TypeNameLabel="TypeName"
-
 class SceneSetLabels:
    CommandNameLabel="SceneSet"
    IdLabel="Id"
    NameLabel="Name"
-
 class ShaderBuildLabels:
    CommandNameLabel="ShaderBuild"
    IdLabel="Id"
-
 class ShaderSendLabels:
    CommandNameLabel="ShaderSend"
    IdLabel="Id"
-
 class ShapeSelectLabels:
    CommandNameLabel="ShapeSelectCommand"
    ShapeIdLabel="ShapeId"
-
 class SolidCreateLabels:
    ParticleSystemAddLabel="SolidCreate"
    BoxLabel="Box"
@@ -213,41 +182,34 @@ class SolidCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-
 class STLFileExportLabels:
    CommandNameLabel="STLFileExport"
    FilePathLabel="FilePath"
    IdsLabel="Ids"
    IsBinaryLabel="IsBinary"
-
 class STLFileImportLabels:
    CommandNameLabel="STLFileImport"
    FilePathLabel="FilePath"
    NewIdLabel="NewId"
-
 class TextureCreateLabels:
    CommandNameLabel="TextureCreate"
    FilePathLabel="FilePath"
    NameLabel="Name"
    NewIdLabel="NewId"
-
 class TextureSetLabels:
    CommandNameLabel="TextureSet"
    IdLabel="Id"
    FilePathLabel="FilePath"
    IsOkLabel="IsOk"
-
 class TransformLabels:
    TransformCommandLabel="Transform"
    IdLabel="Id"
    MatrixLabel="Matrix"
-
 class TrimLabels:
    TrimCommandLabel="Trim"
    ShapeIdLabel="ShapeId"
    SpaceLabel="Space"
    NewIdLabel="NewId"
-
 class WireFrameCreateLabels:
    WireFrameAddLabel="WireFrameAdd"
    PositionsLabel="Positions"
@@ -257,4 +219,3 @@ class WireFrameCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
-

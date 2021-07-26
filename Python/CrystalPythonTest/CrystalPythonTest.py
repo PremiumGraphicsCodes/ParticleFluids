@@ -107,6 +107,14 @@ class VDBCommand :
         newId = get_result_int(vdb_labels.VDBOBJFileReadLabels.VDBMeshIdLabel)
         return newId
 
+    def convert_ps_to_volume(self, psId, vbd_volume_id, radius) :
+        create_vdb_command(vdb_labels.VDBPSToVolumeLabels.CommandNameLabel)
+        set_arg_int(vdb_labels.VDBPSToVolumeLabels.ParticleSystemIdLabel, particleSystemId)
+        set_arg_int(vdb_labels.VDBPSToVolumeLabels.VolumeIdLabel, vdbVolumeId)
+        set_arg_double(vdb_labels.VDBPSToVolumeLabels.RadiusLabel, radius)
+     #       return command.Execute(world.Adapter);
+     #   }
+
 class TestVector3df(unittest.TestCase):
     def test(self):
         v = Vector3df(1.0, 2.0, 3.0)

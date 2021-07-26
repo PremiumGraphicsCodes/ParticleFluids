@@ -44,6 +44,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonLabelFileGenerator", 
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonLabelFileGeneratorTest", "PythonLabelFileGeneratorTest\PythonLabelFileGeneratorTest.pyproj", "{0F7BEA09-D087-47DF-B6CC-19D6585A025A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpaceCommand", "..\CrystalSpace\CrystalSpaceCommand\CrystalSpaceCommand.vcxproj", "{33E8C184-64B2-410D-9AAB-C47917688DBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -420,6 +422,28 @@ Global
 		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.RelWithDebInfo|Any CPU.ActiveCfg = Release|Any CPU
 		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.RelWithDebInfo|x64.ActiveCfg = Release|Any CPU
 		{0F7BEA09-D087-47DF-B6CC-19D6585A025A}.RelWithDebInfo|x86.ActiveCfg = Release|Any CPU
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Debug|x64.ActiveCfg = Debug|x64
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Debug|x64.Build.0 = Debug|x64
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Debug|x86.ActiveCfg = Debug|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Debug|x86.Build.0 = Debug|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.MinSizeRel|Any CPU.ActiveCfg = Debug|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.MinSizeRel|Any CPU.Build.0 = Debug|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.MinSizeRel|x64.ActiveCfg = Debug|x64
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.MinSizeRel|x64.Build.0 = Debug|x64
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.MinSizeRel|x86.ActiveCfg = Debug|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.MinSizeRel|x86.Build.0 = Debug|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Release|Any CPU.ActiveCfg = Release|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Release|x64.ActiveCfg = Release|x64
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Release|x64.Build.0 = Release|x64
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Release|x86.ActiveCfg = Release|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.Release|x86.Build.0 = Release|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.RelWithDebInfo|Any CPU.ActiveCfg = Debug|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.RelWithDebInfo|Any CPU.Build.0 = Debug|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.RelWithDebInfo|x64.ActiveCfg = Release|x64
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.RelWithDebInfo|x64.Build.0 = Release|x64
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
+		{33E8C184-64B2-410D-9AAB-C47917688DBB}.RelWithDebInfo|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -436,6 +460,7 @@ Global
 		{09EE8B6A-2D6F-4B9E-83FF-6A40D03BC465} = {B4537626-CA8F-448A-98CC-0F0FCD392AAD}
 		{C4927D35-7611-4AFD-934A-DA114663BFB2} = {B4537626-CA8F-448A-98CC-0F0FCD392AAD}
 		{0AA3C227-939A-4B73-A27C-9D6BE4F2ADBC} = {B4537626-CA8F-448A-98CC-0F0FCD392AAD}
+		{33E8C184-64B2-410D-9AAB-C47917688DBB} = {B4537626-CA8F-448A-98CC-0F0FCD392AAD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {90482F15-2F21-4098-9B30-0F69A2766AFA}

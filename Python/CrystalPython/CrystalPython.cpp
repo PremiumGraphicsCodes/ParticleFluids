@@ -13,6 +13,7 @@
 
 #include "../../Crystal/Scene/World.h"
 #include "../../CrystalViewer/Command/CommandFactory.h"
+#include "../../CrystalSpace/CrystalSpaceCommand/SpaceCommandFactory.h"
 #include "../../CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
 #include "../../CrystalVDB/VDBCommand/VDBCommandFactory.h"
 
@@ -40,14 +41,18 @@ public:
 };
 
 namespace {
-//    Crystal::Scene::World world;
     Crystal::Command::CommandFactory sceneCommandFactory;
+    Crystal::Space::SpaceCommandFactory spaceCommandFactory;
     Crystal::Physics::PhysicsCommandFactory physicsCommandFactory;
     Crystal::VDB::VDBCommandFactory vdbCommandFactory;
     std::unique_ptr<Crystal::Command::ICommand> command;
 
     void createSceneCommand(const std::string& commandName) {
         command = sceneCommandFactory.createCommand(commandName);
+    }
+
+    void createSpaceCommand(const std::string& commandName) {
+        command = spaceCommandFactory.create(commandName);
     }
 
     void createPhysicsCommand(const std::string& commandName) {
@@ -88,9 +93,10 @@ namespace {
         command->setArg(name, value);
     }
     */
-    int getResultInt(const std::string& name)
+    template<typename T>
+    T getResult(const std::string& name)
     {
-        return std::any_cast<int>( command->getResult(name));
+        return std::any_cast<T>( command->getResult(name));
     }
 
     std::vector<int> getResultIntVector(const std::string& name)
@@ -170,12 +176,14 @@ PYBIND11_MODULE(CrystalPython, m) {
     m.def("set_arg_bool", &setArg<bool>);
     m.def("set_arg_int", &setArg<int>);
     m.def("set_arg_int_vector", &setArg<std::vector<int>>);
+    m.def("set_arg_float", &setArg<float>);
+    m.def("set_arg_double", &setArg<double>);
     m.def("set_arg_string", &setArg<std::string>);
     m.def("set_arg_vector3df", &setArg<Vector3df>);
     m.def("set_arg_vector3dd", &setArg<Vector3dd>);
     m.def("set_arg_vector3df_vector", &setArgVector3dfVector);
     m.def("set_arg_vector3dd_vector", &setArgVector3ddVector);
-    m.def("get_result_int", &getResultInt);
+    m.def("get_result_int", &getResult<int>);
     m.def("get_result_int_vector", &getResultIntVector);
     //py::class_<Crystal::Physics::PhysicsCommandFactory>(m, "PhysicsCommandFactory")
     //    .def("create", &Crystal::Physics::PhysicsCommandFactory::create);

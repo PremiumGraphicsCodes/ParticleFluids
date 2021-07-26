@@ -27,6 +27,7 @@
     <Compile Include="CrystalPythonTest.py" />
     <Compile Include="physics_labels.py" />
     <Compile Include="scene_labels.py" />
+    <Compile Include="space_labels.py" />
     <Compile Include="vdb_labels.py" />
   </ItemGroup>
   <ItemGroup>

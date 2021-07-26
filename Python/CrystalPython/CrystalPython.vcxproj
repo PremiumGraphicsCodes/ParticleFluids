@@ -167,6 +167,9 @@
     <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj">
       <Project>{4c0efd78-680e-45c9-9828-9b674ee70df0}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\CrystalSpace\CrystalSpaceCommand\CrystalSpaceCommand.vcxproj">
+      <Project>{33e8c184-64b2-410d-9aab-c47917688dbb}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
       <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
     </ProjectReference>
