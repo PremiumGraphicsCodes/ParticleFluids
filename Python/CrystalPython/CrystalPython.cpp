@@ -12,6 +12,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 
 #include "../../Crystal/Scene/World.h"
+#include "../../CrystalViewer/Command/CommandFactory.h"
 #include "../../CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
 #include "../../CrystalVDB/VDBCommand/VDBCommandFactory.h"
 
@@ -20,9 +21,14 @@ using namespace Crystal::Math;
 
 namespace {
     Crystal::Scene::World world;
+    Crystal::Command::CommandFactory sceneCommandFactory;
     Crystal::Physics::PhysicsCommandFactory physicsCommandFactory;
     Crystal::VDB::VDBCommandFactory vdbCommandFactory;
     std::unique_ptr<Crystal::Command::ICommand> command;
+
+    void createSceneCommand(const std::string& commandName) {
+        command = sceneCommandFactory.createCommand(commandName);
+    }
 
     void createPhysicsCommand(const std::string& commandName) {
         command = physicsCommandFactory.create(commandName);
@@ -114,7 +120,12 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_readwrite("y", &Vector3dd::y)
         .def_readwrite("z", &Vector3dd::z);
 
-    m.def("create_command", &createPhysicsCommand);
+    py::class_<std::vector<Vector3df>>(m, "Vector3dfVector")
+        .def(py::init<>());
+    //    .def_readwrite("add", &std::vector<Vector3df>::push_back);
+
+    m.def("create_scene_command", &createSceneCommand);
+    m.def("create_physics_command", &createPhysicsCommand);
     m.def("create_vdb_command", &createVDBCommand);
     m.def("execute_command", &executeCommand);
     m.def("set_arg_int", &setArg<int>);

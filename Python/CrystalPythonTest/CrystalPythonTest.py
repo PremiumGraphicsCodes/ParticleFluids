@@ -11,7 +11,7 @@ print('doc=', CrystalPython.__doc__)
 
 class PhysicsCommand :
     def create_solver(self) :
-        create_command(physics_labels.PhysicsSolverCreateLabels.CommandNameLabel)
+        create_physics_command(physics_labels.PhysicsSolverCreateLabels.CommandNameLabel)
         isOk = execute_command()
         #self.assertTrue(isOk)
         newId = get_result_int(physics_labels.PhysicsSolverCreateLabels.NewIdLabel)
@@ -94,6 +94,9 @@ class TestVector3dfVector(unittest.TestCase):
         v = []
         v.append( Vector3df(1.0, 2.0, 3.0) )
         v.append( Vector3df(4.0, 5.0, 6.0) )
+        vv = Vector3dfVector()
+        vv = v
+        print(vv[0].x)
 
 class TestVector3dd(unittest.TestCase):
     def test(self):
