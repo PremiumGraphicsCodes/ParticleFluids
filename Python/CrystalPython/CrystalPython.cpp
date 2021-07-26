@@ -20,12 +20,12 @@ using namespace Crystal::Math;
 
 namespace {
     Crystal::Scene::World world;
-    Crystal::Physics::PhysicsCommandFactory factory;
+    Crystal::Physics::PhysicsCommandFactory physicsCommandFactory;
     Crystal::VDB::VDBCommandFactory vdbCommandFactory;
     std::unique_ptr<Crystal::Command::ICommand> command;
 
-    void createCommand(const std::string& commandName) {
-        command = factory.create(commandName);
+    void createPhysicsCommand(const std::string& commandName) {
+        command = physicsCommandFactory.create(commandName);
 //        command->execute(&world);
     }
 
@@ -114,7 +114,7 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_readwrite("y", &Vector3dd::y)
         .def_readwrite("z", &Vector3dd::z);
 
-    m.def("create_command", &createCommand);
+    m.def("create_command", &createPhysicsCommand);
     m.def("create_vdb_command", &createVDBCommand);
     m.def("execute_command", &executeCommand);
     m.def("set_arg_int", &setArg<int>);

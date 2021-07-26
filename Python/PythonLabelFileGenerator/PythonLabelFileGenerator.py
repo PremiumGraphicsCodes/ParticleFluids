@@ -60,6 +60,13 @@ class PythonLabelFileGenerator:
                 f.write('\n') 
         f.close()
 
+def create_scene_labels() :
+    input_directory_path = "../../CrystalViewer/Command/Public/*.h"
+    output_file_path = "../CrystalPythonTest/scene_labels.py"
+    generator = PythonLabelFileGenerator()
+    generator.read_all_files(input_directory_path)
+    generator.write(output_file_path)
+
 def create_physics_labels() :
     input_directory_path = "../../CrystalPhysics/CrystalPhysicsCommand/PublicLabels/*.h"
     output_file_path = "../CrystalPythonTest/physics_labels.py"
@@ -75,6 +82,7 @@ def create_vdb_labels() :
     generator.write(output_file_path)
 
 if __name__ == '__main__':
+    create_scene_labels()
     create_physics_labels()
     create_vdb_labels()
     #input_directory_path = sys.argv[1]

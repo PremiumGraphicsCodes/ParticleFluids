@@ -52,6 +52,36 @@ class VDBCommand :
    #     newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
    #     return newId
 
+    def create_vdb_mesh(self, name) :
+        create_vdb_command(vdb_labels.VDBSceneCreateLabels.CommandNameLabel)
+        set_arg_string(vdb_labels.VDBSceneCreateLabels.SceneTypeLabel, vdb_labels.VDBSceneCreateLabels.SceneType_VDBMeshLabel)
+        execute_command()
+        newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
+        return newId
+
+    def create_vdb_volume(self, name) :
+        create_vdb_command(vdb_labels.VDBSceneCreateLabels.CommandNameLabel)
+        set_arg_string(vdb_labels.VDBSceneCreateLabels.SceneTypeLabel, vdb_labels.VDBSceneCreateLabels.SceneType_VDBVolumeLabel)
+        execute_command()
+        newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
+        return newId
+
+    def write_obj(self, vdb_mesh_Id, file_path) :
+        create_vdb_command(vdb_labels.VDBOBJFileWriteLabels.CommandNameLabel)
+        set_arg_int(vdb_labels.VDBOBJFileWriteLabels.VDBMeshIdLabel, vdbMeshId)
+        set_arg_string(PG.VDBOBJFileWriteLabels.FilePathLabel, file_path)
+        isOk = execute_command()
+        return isOk
+
+    def read_obj(self, filePath) :
+        create_vdb_command(vdb_labels.VDBOBJFileReadLabels.CommandNameLabel)
+        set_arg_string(vbd_labels.VDBOBJFileReadLabels.FilePathLabel, filePath)
+        isOk = command.Execute(world.Adapter)
+        if isOk == False :
+            return -1
+        newId = PG.VDBOBJFileReadLabels.VDBMeshIdLabel
+        return newId
+
 class TestVector3df(unittest.TestCase):
     def test(self):
         v = Vector3df(1.0, 2.0, 3.0)
@@ -85,12 +115,20 @@ class VDBCommand_test(unittest.TestCase):
 
     def test_create_vdb_points(self):
         newId = self.vdb.create_vdb_empty_points("test_vdb_points")
-        print(newId)
+        self.assertEqual(3, newId)
     #    points = []
     #    points.append( Vector3df(1.0, 2.0, 3.0) )
     #    points.append( Vector3df(4.0, 5.0, 6.0) )
     #    newId = self.vdb.create_vdb_points(points, "test_vdb_points_2")
     #    print(newId) 
+
+    def test_create_vdb_mesh(self):
+        newId = self.vdb.create_vdb_mesh("test_vdb_mesh")
+        self.assertEqual(2, newId)
+
+    def test_create_vdb_volume(self):
+        newId = self.vdb.create_vdb_volume("test_vdb_volume")
+        print(newId)
 
     def test_read_vdb_file(self):
         newIds = self.vdb.read_vdb_file("./source_river.vdb")
