@@ -154,7 +154,7 @@ class PresenterSetLabels:
    CommandNameLabel="PresenterSet"
    IdLabel="Id"
    PresenterNameLabel="PresenterName"
-class PublicLabel:
+#class PublicLabel:
 class SceneGetLabels:
    CommandLabel="SceneGet"
    IdLabel="Id"

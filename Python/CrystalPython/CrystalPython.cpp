@@ -19,8 +19,28 @@
 using namespace::std;
 using namespace Crystal::Math;
 
+class Vector3dfVector
+{
+public:
+    std::vector<Vector3df> values;
+
+    void add(Vector3df v) { this->values.push_back(v); }
+
+    //    Vector3dd get(const int index) { return this->values[i]; }
+};
+
+class Vector3ddVector
+{
+public:
+    std::vector<Vector3dd> values;
+
+    void add(Vector3dd v) { this->values.push_back(v); }
+
+//    Vector3dd get(const int index) { return this->values[i]; }
+};
+
 namespace {
-    Crystal::Scene::World world;
+//    Crystal::Scene::World world;
     Crystal::Command::CommandFactory sceneCommandFactory;
     Crystal::Physics::PhysicsCommandFactory physicsCommandFactory;
     Crystal::VDB::VDBCommandFactory vdbCommandFactory;
@@ -44,6 +64,14 @@ namespace {
         command->setArg(name, value);
     }
 
+    void setArgVector3dfVector(const std::string& name, const Vector3dfVector& vv) {
+        command->setArg(name, vv.values);
+    }
+
+    void setArgVector3ddVector(const std::string& name, const Vector3ddVector& vv) {
+        command->setArg(name, vv.values);
+    }
+
     /*
     template<typename T>
     void setArg<T>(const std::string& name, const T& value)
@@ -52,7 +80,7 @@ namespace {
     }
     */
 
-    bool executeCommand() {
+    bool executeCommand(Crystal::Scene::World& world) {
         return command->execute(&world);
     }
     /*
@@ -94,6 +122,7 @@ int add(int x, int y) {
     return x + y;
 }
 
+
 namespace py = pybind11;
 PYBIND11_MODULE(CrystalPython, m) {
     m.doc() = "pybind11 example plugin";
@@ -108,6 +137,9 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def(py::self + py::self)
         .def("__repr__", &POINT::toString);
 
+    py::class_<Crystal::Scene::World>(m, "World")
+        .def(py::init());
+
     py::class_<Vector3df>(m, "Vector3df")
         .def(py::init<float, float, float>())
         .def_readwrite("x", &Vector3df::x)
@@ -120,21 +152,29 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_readwrite("y", &Vector3dd::y)
         .def_readwrite("z", &Vector3dd::z);
 
-    py::class_<std::vector<Vector3df>>(m, "Vector3dfVector")
-        .def(py::init<>());
+    py::class_<Vector3dfVector>(m, "Vector3dfVector")
+        .def(py::init<>())
+        .def("add", &Vector3dfVector::add)
+        .def_readwrite("values", &Vector3dfVector::values);
+
+    py::class_<Vector3ddVector>(m, "Vector3ddVector")
+        .def(py::init<>())
+        .def("add", &Vector3ddVector::add)
+        .def_readwrite("values", &Vector3ddVector::values);
     //    .def_readwrite("add", &std::vector<Vector3df>::push_back);
 
     m.def("create_scene_command", &createSceneCommand);
     m.def("create_physics_command", &createPhysicsCommand);
     m.def("create_vdb_command", &createVDBCommand);
     m.def("execute_command", &executeCommand);
+    m.def("set_arg_bool", &setArg<bool>);
     m.def("set_arg_int", &setArg<int>);
     m.def("set_arg_int_vector", &setArg<std::vector<int>>);
     m.def("set_arg_string", &setArg<std::string>);
     m.def("set_arg_vector3df", &setArg<Vector3df>);
     m.def("set_arg_vector3dd", &setArg<Vector3dd>);
-    m.def("set_arg_vector3df_vector", &setArg<std::vector<Vector3df>>);
-    m.def("set_arg_vector3dd_vector", &setArg<std::vector<Vector3dd>>);
+    m.def("set_arg_vector3df_vector", &setArgVector3dfVector);
+    m.def("set_arg_vector3dd_vector", &setArgVector3ddVector);
     m.def("get_result_int", &getResultInt);
     m.def("get_result_int_vector", &getResultIntVector);
     //py::class_<Crystal::Physics::PhysicsCommandFactory>(m, "PhysicsCommandFactory")
