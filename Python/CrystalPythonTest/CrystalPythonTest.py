@@ -2,16 +2,12 @@
 import CrystalPython
 import unittest
 import os
-import scene_labels
-import space_labels
-import physics_labels
-import vdb_command
 import vdb_command_test
 
-from vdb_command import *
 from CrystalPython import *
 
-from vdb_command_test import VDBCommand_test
+from scene_test import *
+from vdb_command_test import *
 from physics_command_test import *
 
 print('doc=', CrystalPython.__doc__)
@@ -32,6 +28,15 @@ class TestVector3dfVector(unittest.TestCase):
         vv = v
         self.assertEqual(1.0, vv[0].x)
         self.assertEqual(2.0, vv[0].y)
+        self.assertEqual(3.0, vv[0].z)
+
+class TestColorRGBAf(unittest.TestCase):
+    def test(self):
+        v = ColorRGBAf(0.1, 0.2, 0.3, 0.4)
+        self.assertAlmostEqual(0.1, v.r)
+        self.assertAlmostEqual(0.2, v.g)
+        self.assertAlmostEqual(0.3, v.b)
+        self.assertAlmostEqual(0.4, v.a)
 
 class TestVector3dd(unittest.TestCase):
     def test(self):
@@ -69,6 +74,7 @@ class TestBox3df(unittest.TestCase):
 class TestRunner(unittest.TestCase): 
     def test_runner(self):
         test_suite = unittest.TestSuite()
+        test_suite.addTest(unittest.makeSuite(SceneTest))
         test_suite.addTest(unittest.makeSuite(PhysicsSolverCreateCommandTest))
         test_suite.addTest(unittest.makeSuite(FluidSceneTest))
         test_suite.addTest(unittest.makeSuite(VDBCommand_test))

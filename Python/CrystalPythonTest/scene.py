@@ -16,3 +16,14 @@ class Scene :
         set_arg_bool(scene_labels.DeleteLabels.IsItemLabel, isItem)
         return execute_command(self.world)
 
+    def create_particle_system_scene(self, positions, name, point_size, color, layer) :
+        create_scene_command(scene_labels.ParticleSystemCreateLabels.ParticleSystemAddLabel)
+        set_arg_vector3dd_vector(scene_labels.ParticleSystemCreateLabels.PositionsLabel, positions)
+        set_arg_string(scene_labels.ParticleSystemCreateLabels.NameLabel, name)
+        set_arg_float(scene_labels.ParticleSystemCreateLabels.PointSizeLabel, point_size)
+        set_arg_color4f(scene_labels.ParticleSystemCreateLabels.ColorLabel, color)
+        set_arg_int(scene_labels.ParticleSystemCreateLabels.LayerLabel, layer)
+        execute_command(self.world)
+        newId = get_result_int(scene_labels.ParticleSystemCreateLabels.NewIdLabel)
+        return newId
+

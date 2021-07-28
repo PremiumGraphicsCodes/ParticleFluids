@@ -155,9 +155,6 @@
     <ClCompile Include="CrystalPython.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CrystalPython.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj">
       <Project>{c4927d35-7611-4afd-934a-da114663bfb2}</Project>
     </ProjectReference>

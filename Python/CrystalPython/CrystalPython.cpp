@@ -8,7 +8,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h> // vector—p
 #include <pybind11/operators.h>//operator
-#include "CrystalPython.h"
 #include "../../Crystal/Math/Vector3d.h"
 
 #include "../../Crystal/Scene/World.h"
@@ -174,6 +173,14 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_readwrite("values", &Vector3ddVector::values);
     //    .def_readwrite("add", &std::vector<Vector3df>::push_back);
 
+    py::class_<Crystal::Graphics::ColorRGBAf>(m, "ColorRGBAf")
+        .def(py::init<>())
+        .def(py::init<float, float, float, float>())
+        .def_readwrite("r", &Crystal::Graphics::ColorRGBAf::r)
+        .def_readwrite("g", &Crystal::Graphics::ColorRGBAf::g)
+        .def_readwrite("b", &Crystal::Graphics::ColorRGBAf::b)
+        .def_readwrite("a", &Crystal::Graphics::ColorRGBAf::a);
+
     m.def("create_scene_command", &createSceneCommand);
     m.def("create_physics_command", &createPhysicsCommand);
     m.def("create_vdb_command", &createVDBCommand);
@@ -189,6 +196,7 @@ PYBIND11_MODULE(CrystalPython, m) {
     m.def("set_arg_box3df", &setArg<Box3df>);
     m.def("set_arg_vector3df_vector", &setArgVector3dfVector);
     m.def("set_arg_vector3dd_vector", &setArgVector3ddVector);
+    m.def("set_arg_color4f", setArg<Crystal::Graphics::ColorRGBAf>);
     m.def("get_result_int", &getResult<int>);
     m.def("get_result_int_vector", &getResultIntVector);
     //py::class_<Crystal::Physics::PhysicsCommandFactory>(m, "PhysicsCommandFactory")

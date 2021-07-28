@@ -36,6 +36,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="scene_labels.py" />
+    <Compile Include="scene_test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="space_command.py">
       <SubType>Code</SubType>
     </Compile>
