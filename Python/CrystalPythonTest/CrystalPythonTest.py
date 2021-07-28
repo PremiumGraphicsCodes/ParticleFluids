@@ -12,6 +12,7 @@ from vdb_command import *
 from CrystalPython import *
 
 from vdb_command_test import VDBCommand_test
+from physics_command_test import PhysicsSolverCreateCommandTest
 
 print('doc=', CrystalPython.__doc__)
 
@@ -64,20 +65,12 @@ class TestBox3df(unittest.TestCase):
         print(dist)
 #        self.assertEqual(Vector3df(0,0,0), box.min)
 
-class PhysicsSolverCreateCommandTest(unittest.TestCase):
-    def test(self):
-        world = World()
-        physics = PhysicsCommand(world)
-        newId = physics.create_solver()
-        self.assertEqual(1, newId)
-#        scene = SceneCommand();
-#        scene.clear(0)
 
 class TestRunner(unittest.TestCase): 
     def test_runner(self):
         test_suite = unittest.TestSuite()
+        test_suite.addTest(unittest.makeSuite(PhysicsSolverCreateCommandTest))
         test_suite.addTest(unittest.makeSuite(VDBCommand_test))
-#        test_suite.addTest(unittest.makeSuite(test.test_mod2.TestMod2))
         unittest.TextTestRunner().run(test_suite)
 
 if __name__ == '__main__':
