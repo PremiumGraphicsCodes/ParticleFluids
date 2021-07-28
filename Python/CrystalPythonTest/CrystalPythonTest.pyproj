@@ -14,6 +14,7 @@
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
     <InterpreterId>Global|PythonCore|3.9</InterpreterId>
+    <TestFramework>unittest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +41,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="space_command.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="space_command_test.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="space_labels.py" />

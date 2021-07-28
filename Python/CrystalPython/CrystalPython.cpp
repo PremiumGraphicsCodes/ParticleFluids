@@ -104,43 +104,9 @@ namespace {
     }
 }
 
-
-int add(int x, int y);
-
-class POINT {
-private:
-    int x;
-    int y;
-public:
-    int sum;
-    POINT(pair<int, int> xy) { this->x = xy.first; this->y = xy.second; this->sum = this->x + this->y; }
-    POINT(int x, int y) { this->x = x; this->y = y; this->sum = x + y; }
-    int X() { return x; }
-    int Y() { return y; }
-    POINT operator+(const POINT& v) const { return POINT(this->x + v.x, this->y + v.y); }
-    std::string toString() const {
-        return "(" + std::to_string(this->x) + ", " + std::to_string(this->y) + ")";
-    }
-};
-
-int add(int x, int y) {
-    return x + y;
-}
-
-
 namespace py = pybind11;
 PYBIND11_MODULE(CrystalPython, m) {
-    m.doc() = "pybind11 example plugin";
-    m.def("add", &add);
-
-    py::class_<POINT>(m, "POINT")
-        .def(py::init<int, int>())
-        .def(py::init<pair<int, int>>())
-        .def_readwrite("sum", &POINT::sum)
-        .def_property_readonly("x", &POINT::X)
-        .def_property_readonly("y", &POINT::Y)
-        .def(py::self + py::self)
-        .def("__repr__", &POINT::toString);
+//    m.doc() = "pybind11 example plugin";
 
     py::class_<Crystal::Scene::World>(m, "World")
         .def(py::init());
@@ -158,9 +124,16 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_readwrite("z", &Vector3dd::z);
 
     py::class_<Box3df>(m, "Box3df")
+        .def(py::init<>())
         .def(py::init<Vector3df, Vector3df>())
         .def_property_readonly("min", &Box3df::getMin)
         .def_property_readonly("max", &Box3df::getMax);
+
+    py::class_<Box3dd>(m, "Box3dd")
+        .def(py::init<>())
+        .def(py::init<Vector3dd, Vector3dd>())
+        .def_property_readonly("min", &Box3dd::getMin)
+        .def_property_readonly("max", &Box3dd::getMax);
 
     py::class_<Vector3dfVector>(m, "Vector3dfVector")
         .def(py::init<>())
@@ -182,25 +155,29 @@ PYBIND11_MODULE(CrystalPython, m) {
         .def_readwrite("a", &Crystal::Graphics::ColorRGBAf::a);
 
     m.def("create_scene_command", &createSceneCommand);
+    m.def("create_space_command", &createSpaceCommand);
     m.def("create_physics_command", &createPhysicsCommand);
     m.def("create_vdb_command", &createVDBCommand);
     m.def("execute_command", &executeCommand);
     m.def("set_arg_bool", &setArg<bool>);
+    m.def("set_arg_bool_vector", &setArg<std::vector<bool>>);
     m.def("set_arg_int", &setArg<int>);
     m.def("set_arg_int_vector", &setArg<std::vector<int>>);
     m.def("set_arg_float", &setArg<float>);
+    m.def("set_arg_float_vector", &setArg<std::vector<float>>);
     m.def("set_arg_double", &setArg<double>);
+    m.def("set_arg_double_vector", &setArg<std::vector<double>>);
     m.def("set_arg_string", &setArg<std::string>);
     m.def("set_arg_vector3df", &setArg<Vector3df>);
     m.def("set_arg_vector3dd", &setArg<Vector3dd>);
     m.def("set_arg_box3df", &setArg<Box3df>);
+    m.def("set_arg_box3dd", &setArg<Box3dd>);
     m.def("set_arg_vector3df_vector", &setArgVector3dfVector);
     m.def("set_arg_vector3dd_vector", &setArgVector3ddVector);
     m.def("set_arg_color4f", setArg<Crystal::Graphics::ColorRGBAf>);
     m.def("get_result_int", &getResult<int>);
+    m.def("get_result_string", &getResult<std::string>);
     m.def("get_result_int_vector", &getResultIntVector);
-    //py::class_<Crystal::Physics::PhysicsCommandFactory>(m, "PhysicsCommandFactory")
-    //    .def("create", &Crystal::Physics::PhysicsCommandFactory::create);
 
     //m.def("call", &call);
 }

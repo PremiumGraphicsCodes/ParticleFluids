@@ -7,6 +7,7 @@ import vdb_command_test
 from CrystalPython import *
 
 from scene_test import *
+from space_command_test import *
 from vdb_command_test import *
 from physics_command_test import *
 
@@ -75,9 +76,10 @@ class TestRunner(unittest.TestCase):
     def test_runner(self):
         test_suite = unittest.TestSuite()
         test_suite.addTest(unittest.makeSuite(SceneTest))
+        test_suite.addTest(unittest.makeSuite(SpaceCommandTest))
         test_suite.addTest(unittest.makeSuite(PhysicsSolverCreateCommandTest))
         test_suite.addTest(unittest.makeSuite(FluidSceneTest))
-        test_suite.addTest(unittest.makeSuite(VDBCommand_test))
+        test_suite.addTest(unittest.makeSuite(VDBCommandTest))
         unittest.TextTestRunner().run(test_suite)
 
 if __name__ == '__main__':

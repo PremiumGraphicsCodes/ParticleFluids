@@ -11,7 +11,7 @@ from vdb_command import *
 from CrystalPython import *
 
 
-class VDBCommand_test(unittest.TestCase):
+class VDBCommandTest(unittest.TestCase):
     def setUp(self):
         world = World()
         scene = Scene(world)
