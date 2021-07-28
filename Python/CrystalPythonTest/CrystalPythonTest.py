@@ -11,7 +11,7 @@ from CrystalPython import *
 
 print('doc=', CrystalPython.__doc__)
 
-class SceneCommand :
+class Scene :
     def __init__(self, world) :
         self.world = world
 
@@ -55,21 +55,21 @@ class PhysicsCommand :
         return newId
 
 class VDBCommand :
-    def __init__(self, world) :
-        self.world = world
+    def __init__(self, scene) :
+        self.scene = scene
  #      create_vdb_command(vdb_labels.VDBInitLabels.CommandNameLabel)
  #       isOk = execute_command(self.world)
 
     def init(self) :
 #        self.world = world
         create_vdb_command(vdb_labels.VDBInitLabels.CommandNameLabel)
-        isOk = execute_command(self.world)
+        isOk = execute_command(self.scene.world)
         return isOk
 
     def read_vdb_file(self, filepath) :
         create_vdb_command(vdb_labels.VDBFileReadLabels.CommandNameLabel)
         set_arg_string(vdb_labels.VDBFileReadLabels.FilePathLabel, filepath)
-        execute_command(self.world)
+        execute_command(self.scene.world)
         newIds = get_result_int_vector(vdb_labels.VDBFileReadLabels.NewIdLabel)
         return newIds
 
@@ -78,12 +78,12 @@ class VDBCommand :
         set_arg_string(vdb_labels.VDBFileWriteLabels.FilePathLabel, filepath)
         set_arg_int_vector(vdb_labels.VDBFileWriteLabels.ParticleSystemIdsLabel, particleSystemIds)
         set_arg_int_vector(vdb_labels.VDBFileWriteLabels.VDBVolumeIdsLabel, volumeIds);
-        execute_command(self.world)
+        execute_command(self.scene.world)
 
     def create_vdb_empty_points(self, name) :
         create_vdb_command(vdb_labels.VDBSceneCreateLabels.CommandNameLabel);
         set_arg_string(vdb_labels.VDBSceneCreateLabels.SceneTypeLabel, vdb_labels.VDBSceneCreateLabels.SceneType_VDBPointsLabel)
-        execute_command(self.world)
+        execute_command(self.scene.world)
         newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
         return newId
     
@@ -91,21 +91,21 @@ class VDBCommand :
         create_vdb_command(vdb_labels.VDBSceneCreateLabels.CommandNameLabel)
         set_arg_string(vdb_labels.VDBSceneCreateLabels.SceneTypeLabel, vdb_labels.VDBSceneCreateLabels.SceneType_VDBPointsLabel)
         set_arg_vector3dd_vector(vdb_labels.VDBSceneCreateLabels.PositionsLabel, positions)
-        execute_command(self.world)
+        execute_command(self.scene.world)
         newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
         return newId
 
     def create_vdb_mesh(self, name) :
         create_vdb_command(vdb_labels.VDBSceneCreateLabels.CommandNameLabel)
         set_arg_string(vdb_labels.VDBSceneCreateLabels.SceneTypeLabel, vdb_labels.VDBSceneCreateLabels.SceneType_VDBMeshLabel)
-        execute_command(self.world)
+        execute_command(self.scene.world)
         newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
         return newId
 
     def create_vdb_volume(self, name) :
         create_vdb_command(vdb_labels.VDBSceneCreateLabels.CommandNameLabel)
         set_arg_string(vdb_labels.VDBSceneCreateLabels.SceneTypeLabel, vdb_labels.VDBSceneCreateLabels.SceneType_VDBVolumeLabel)
-        execute_command(self.world)
+        execute_command(self.scene.world)
         newId = get_result_int(vdb_labels.VDBSceneCreateLabels.NewIdLabel)
         return newId
 
@@ -113,40 +113,56 @@ class VDBCommand :
         create_vdb_command(vdb_labels.VDBOBJFileWriteLabels.CommandNameLabel)
         set_arg_int(vdb_labels.VDBOBJFileWriteLabels.VDBMeshIdLabel, vdb_mesh_id)
         set_arg_string(vdb_labels.VDBOBJFileWriteLabels.FilePathLabel, file_path)
-        isOk = execute_command(self.world)
+        isOk = execute_command(self.scene.world)
         return isOk
 
     def read_obj_file(self, file_path) :
         create_vdb_command(vdb_labels.VDBOBJFileReadLabels.CommandNameLabel)
         set_arg_string(vdb_labels.VDBOBJFileReadLabels.FilePathLabel, file_path)
-        isOk = execute_command(self.world)
+        isOk = execute_command(self.scene.world)
         if isOk == False :
             return -1
         newId = get_result_int(vdb_labels.VDBOBJFileReadLabels.VDBMeshIdLabel)
         return newId
 
-    def convert_ps_to_volume(self, psId, vbd_volume_id, radius) :
+    def convert_ps_to_volume(self, particle_system_id, vdb_volume_id, radius) :
         create_vdb_command(vdb_labels.VDBPSToVolumeLabels.CommandNameLabel)
-        set_arg_int(vdb_labels.VDBPSToVolumeLabels.ParticleSystemIdLabel, particleSystemId)
-        set_arg_int(vdb_labels.VDBPSToVolumeLabels.VolumeIdLabel, vdbVolumeId)
+        set_arg_int(vdb_labels.VDBPSToVolumeLabels.ParticleSystemIdLabel, particle_system_id)
+        set_arg_int(vdb_labels.VDBPSToVolumeLabels.VolumeIdLabel, vdb_volume_id)
         set_arg_double(vdb_labels.VDBPSToVolumeLabels.RadiusLabel, radius)
-        isOk = execute_command(self.world)
+        isOk = execute_command(self.scene.world)
         return isOk
 
     def convert_mesh_to_volume(self, mesh_id, vdb_volume_id, divideLength) :
-        create_vdb_command(PG.VDBMeshToVolumeLabels.CommandNameLabel)
-        set_arg_int(vdb_labels.VDBMeshToVolumeLabels.VDBMeshIdLabel, meshId)
-        set_arg_int(vdb_labels.PG.VDBMeshToVolumeLabels.VDBVolumeIdLabel, vdbVolumeId)
+        create_vdb_command(vdb_labels.VDBMeshToVolumeLabels.CommandNameLabel)
+        set_arg_int(vdb_labels.VDBMeshToVolumeLabels.VDBMeshIdLabel, mesh_id)
+        set_arg_int(vdb_labels.VDBMeshToVolumeLabels.VDBVolumeIdLabel, vdb_volume_id)
         set_arg_double(vdb_labels.VDBMeshToVolumeLabels.DivideLengthLabel, divideLength);
-        isOk = execute_command(self.world)
+        isOk = execute_command(self.scene.world)
         return isOk
     
     def convert_volume_from_sparse_volume(self, sparse_volume_id, vdb_volume_id) :
         create_vdb_command(vdb_labels.ToVDBVolumeLabels.CommandNameLabel)
-        set_arg_int(vdb_labels.ToVDBVolumeLabels.SparseVolumeIdLabel, sparseVolumeId)
-        set_arg_int(vdb_labels.ToVDBVolumeLabels.VDBVolumeIdLabel, vdbVolumeId)
-        isOk = execute_command(self.world)
+        set_arg_int(vdb_labels.ToVDBVolumeLabels.SparseVolumeIdLabel, sparse_volume_id)
+        set_arg_int(vdb_labels.ToVDBVolumeLabels.VDBVolumeIdLabel, vdb_volume_id)
+        isOk = execute_command(self.scene.world)
         return isOk
+
+    def convert_volume_to_mesh(self, vdb_volume_id, vdb_mesh_id) :
+        create_vdb_command(vdb_labels.VDBVolumeToMeshLabels.CommandNameLabel)
+        set_arg_int(vdb_labels.VDBVolumeToMeshLabels.VolumeIdLabel, vdb_volume_id)
+        set_arg_int(vdb_labels.VDBVolumeToMeshLabels.VDBMeshIdLabel, vdb_mesh_id)
+        isOk = execute_command(self.scene.world)
+        return isOk
+
+#        public bool ConvertVolumeToPS(int vdbVolumeId, int vdbPSId)
+#        {
+#            var command = new PG.CLI.VDBCommand(PG.VDBVolumeToPSLabels.CommandNameLabel);
+#            command.SetArg(PG.VDBVolumeToPSLabels.VDBVolumeIdLabel, vdbVolumeId);
+#            command.SetArg(PG.VDBVolumeToPSLabels.VDBParticleSystemIdLabel, vdbPSId);
+#            return command.Execute(world.Adapter);
+#        }
+
 
 class TestVector3df(unittest.TestCase):
     def test(self):
@@ -209,7 +225,8 @@ class PhysicsSolverCreateCommandTest(unittest.TestCase):
 class VDBCommand_test(unittest.TestCase):
     def setUp(self):
         world = World()
-        self.vdb = VDBCommand(world)
+        scene = Scene(world)
+        self.vdb = VDBCommand(scene)
         self.vdb.init()
 
     def test_create_vdb_points(self):
@@ -241,6 +258,11 @@ class VDBCommand_test(unittest.TestCase):
         newId = self.vdb.read_obj_file("./quad.obj")
         self.assertEqual(1, newId)
         self.vdb.write_obj_file(newId, "./test_write.obj")
+
+    def test_convert_ps_to_volume(self):
+        ps_id = self.vdb.create_vdb_empty_points("")
+        volume_id = self.vdb.create_vdb_volume("")
+        self.vdb.convert_ps_to_volume(ps_id, volume_id, 1.0)
 
 if __name__ == '__main__':
     unittest.main()

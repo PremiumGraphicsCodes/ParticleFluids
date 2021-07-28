@@ -22,6 +22,9 @@ void VDBParticleSystemConverter::toVolume(const VDBParticleSystemScene& particle
     auto sdf = createLevelSet<FloatGrid>();
     sdf->setName("density");
     auto p = particles.getImpl();
+    if (p->size() == 0) {
+        return;
+    }
     tools::particlesToSdf(*p, *sdf, radius);
     std::unique_ptr<VDBVolumeScene> v = std::make_unique<VDBVolumeScene>();
     volume->getImpl()->setPtr(sdf);
