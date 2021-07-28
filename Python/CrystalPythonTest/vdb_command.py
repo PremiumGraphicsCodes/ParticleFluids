@@ -1,7 +1,57 @@
 import CrystalPython
+import unittest
+import os
+import scene_labels
+import space_labels
+import physics_labels
 import vdb_labels
+import vdb_command
 
 from CrystalPython import *
+
+class Scene :
+    def __init__(self, world) :
+        self.world = world
+
+    def clear(self, layer) :
+        create_scene_command(scene_labels.ClearLabels.CommandNameLabel);
+        set_arg_int(scene_labels.ClearLabels.LayerLabel, layer);
+        return execute_command(self.world);
+
+    def delete(self, id, isItem):
+        create_scene_command(scene_labels.DeleteLabels.CommandNameLabel)
+        set_arg_int(scene_labels.DeleteLabels.IdLabel, id)
+        set_arg_bool(scene_labels.DeleteLabels.IsItemLabel, isItem)
+        return execute_command(self.world)
+
+class SpaceCommand :
+    def __init__(self, world):
+        self.world = world
+
+    def create_sparse_volume(resolution, boundingBox, layer, name) :
+        create_sparse_command(space_labels.SparseVolumeSceneCreateLabels.CommandNameLabel);
+        set_arg_int(space_labels.SparseVolumeSceneCreateLabels.ResolutionXLabel, resolution[0]);
+        set_arg_int(space_labels.SparseVolumeSceneCreateLabels.ResolutionYLabel, resolution[1]);
+        set_arg_int(space_labels.SparseVolumeSceneCreateLabels.ResolutionZLabel, resolution[2]);
+        set_arg_box3df(space_labels.SparseVolumeSceneCreateLabels.BoundingBoxLabel, boundingBox);
+        set_arg_string(space_labels.SparseVolumeSceneCreateLabels.NameLabel, name);
+        set_arg_int(space_labels.SparseVolumeSceneCreateLabels.LayerLabel, layer);
+        execute_command(self.world)
+        newId = get_result_int(space_labels.SparseVolumeSceneCreateLabels.NewIdLabel);
+        return newId
+
+
+class PhysicsCommand :
+    def __init__(self, world) :
+        self.world = world
+
+    def create_solver(self) :
+        create_physics_command(physics_labels.PhysicsSolverCreateLabels.CommandNameLabel)
+        isOk = execute_command(self.world)
+        #self.assertTrue(isOk)
+        newId = get_result_int(physics_labels.PhysicsSolverCreateLabels.NewIdLabel)
+        return newId
+
 
 class VDBCommand :
     def __init__(self, scene) :
@@ -111,12 +161,10 @@ class VDBCommand :
         isOk = command.Execute(world.Adapter)
         return isOk
 
-#        public bool ConvertMeshToPS(int meshId, int psId, double divideLength)
-#        {
-#            var volumeId = CreateVDBVolume("Volume", false);
-#            if(!ConvertMeshToVolume(meshId, volumeId, divideLength * 0.5))
-#            {
-#                return false;
+    def convert_mesh_to_particle_system(mesh_id, particle_system_id, divide_length) :
+        volume_id = create_vdb_volume("Volume", false)
+        if not convert_mesh_to_volume(mesh_id, volumeId, divideLength * 0.5) :
+            return False;
 #            }
 #            if(!ConvertVolumeToPS(volumeId, psId))
 #            {
