@@ -12,7 +12,7 @@ from vdb_command import *
 from CrystalPython import *
 
 from vdb_command_test import VDBCommand_test
-from physics_command_test import PhysicsSolverCreateCommandTest
+from physics_command_test import *
 
 print('doc=', CrystalPython.__doc__)
 
@@ -70,6 +70,7 @@ class TestRunner(unittest.TestCase):
     def test_runner(self):
         test_suite = unittest.TestSuite()
         test_suite.addTest(unittest.makeSuite(PhysicsSolverCreateCommandTest))
+        test_suite.addTest(unittest.makeSuite(FluidSceneTest))
         test_suite.addTest(unittest.makeSuite(VDBCommand_test))
         unittest.TextTestRunner().run(test_suite)
 

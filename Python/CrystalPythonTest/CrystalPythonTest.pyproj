@@ -32,7 +32,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="physics_labels.py" />
+    <Compile Include="scene.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="scene_labels.py" />
+    <Compile Include="space_command.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="space_labels.py" />
     <Compile Include="vdb_command.py">
       <SubType>Code</SubType>
