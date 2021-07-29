@@ -105,7 +105,7 @@ namespace {
 }
 
 namespace py = pybind11;
-PYBIND11_MODULE(CrystalPython, m) {
+PYBIND11_MODULE(CrystalPLI, m) {
 //    m.doc() = "pybind11 example plugin";
 
     py::class_<Crystal::Scene::World>(m, "World")

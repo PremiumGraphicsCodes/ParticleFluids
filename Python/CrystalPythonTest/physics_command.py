@@ -1,6 +1,6 @@
 import physics_labels
 from scene import Scene
-from CrystalPython import *
+from CrystalPLI import *
 
 class SolverScene :
     def __init__(self, scene) :

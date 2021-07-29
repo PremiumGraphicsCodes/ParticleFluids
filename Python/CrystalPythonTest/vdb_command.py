@@ -1,10 +1,10 @@
-import CrystalPython
+import CrystalPLI
 import os
 import vdb_labels
 import vdb_command
 
 from scene import Scene
-from CrystalPython import *
+from CrystalPLI import *
 
 class VDBCommand :
     def __init__(self, scene) :

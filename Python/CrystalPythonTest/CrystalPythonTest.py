@@ -1,17 +1,17 @@
 
-import CrystalPython
+import CrystalPLI
 import unittest
 import os
 import vdb_command_test
 
-from CrystalPython import *
+from CrystalPLI import *
 
 from scene_test import *
 from space_command_test import *
 from vdb_command_test import *
 from physics_command_test import *
 
-print('doc=', CrystalPython.__doc__)
+#print('doc=', CrystalPLI.__doc__)
 
 class TestVector3df(unittest.TestCase):
     def test(self):

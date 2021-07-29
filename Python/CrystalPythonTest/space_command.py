@@ -1,7 +1,7 @@
 import space_labels
 
 from scene import *
-from CrystalPython import *
+from CrystalPLI import *
 
 class SparseVolumeNode :
     def __init__(self) :

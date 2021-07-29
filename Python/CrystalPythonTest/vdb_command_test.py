@@ -1,4 +1,4 @@
-import CrystalPython
+import CrystalPLI
 import unittest
 import os
 import scene_labels
@@ -8,7 +8,7 @@ import vdb_command
 import vdb_command_test
 
 from vdb_command import *
-from CrystalPython import *
+from CrystalPLI import *
 
 
 class VDBCommandTest(unittest.TestCase):

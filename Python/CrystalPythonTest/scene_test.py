@@ -1,5 +1,5 @@
 import unittest
-import CrystalPython
+import CrystalPLI
 from scene import *
 
 class SceneTest(unittest.TestCase):

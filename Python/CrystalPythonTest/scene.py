@@ -1,5 +1,5 @@
 import scene_labels
-from CrystalPython import *
+from CrystalPLI import *
 
 class Scene :
     def __init__(self, world) :

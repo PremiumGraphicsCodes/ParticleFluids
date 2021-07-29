@@ -1,5 +1,5 @@
 import unittest
-import CrystalPython
+import CrystalPLI
 from space_command import *
 
 class SpaceCommandTest(unittest.TestCase):

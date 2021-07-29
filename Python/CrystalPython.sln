@@ -32,7 +32,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalNumerics", "..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj", "{C4927D35-7611-4AFD-934A-DA114663BFB2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPython", "CrystalPython\CrystalPython.vcxproj", "{09688343-9C7D-4B37-825A-3A4AD8201EAE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPython", "CrystalPLI\CrystalPython.vcxproj", "{09688343-9C7D-4B37-825A-3A4AD8201EAE}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPythonTest", "CrystalPythonTest\CrystalPythonTest.pyproj", "{6156F5C3-538A-424B-B9B9-2764446F5E67}"
 EndProject
