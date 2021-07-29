@@ -11,12 +11,22 @@ bl_info = {
     "tracker_url": "",
     "category": "Object"
 }
+# bpyインポート
 import bpy
-from bpy.props import *
-import scene
-import physics_command
+# osインポート(ディレクトリ取得のため)
+import os
+# sysインポート(システムパス追加のため)
+import sys
 
-from scebe import *
+# 読み込み元のディレクトリパスを取得
+addon_dirpath = os.path.dirname(__file__)
+# 読み込み元のディレクトリパスをシステムパスに追加
+sys.path += [addon_dirpath]
+import bpy
+import CrystalPLI
+import scene
+from scene import *
+from bpy.props import *
 
 class TUTORIAL_OT_SayComment(bpy.types.Operator):
   bl_idname = "tutorial.saycomment"
@@ -26,7 +36,10 @@ class TUTORIAL_OT_SayComment(bpy.types.Operator):
   comment: StringProperty(default="Hello", options={'HIDDEN'})
 
   def execute(self, context):
-      s = Scene()
+      w = World()
+      s = Scene(w)
+      self.report({'INFO'}, s.id)
+      self.report({'INFO'}, addon_dirpath)
       self.report({'INFO'}, self.comment)
       return {'FINISHED'}
 
