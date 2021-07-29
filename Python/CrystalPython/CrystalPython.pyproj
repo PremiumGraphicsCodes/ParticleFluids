@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>75a5dac9-0299-44e1-b8d0-c745b458d040</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>CrystalPython.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +22,21 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CrystalPython.py" />
+    <Compile Include="physics_command.py" />
+    <Compile Include="physics_labels.py" />
+    <Compile Include="scene.py" />
+    <Compile Include="scene_labels.py" />
+    <Compile Include="space_command.py" />
+    <Compile Include="space_labels.py" />
+    <Compile Include="vdb_command.py" />
+    <Compile Include="vdb_labels.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrystalPLI\CrystalPLI.vcxproj">
+      <Name>CrystalPLI</Name>
+      <Project>{09688343-9c7d-4b37-825a-3a4ad8201eae}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -26,44 +26,33 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CrystalPythonTest.py" />
-    <Compile Include="physics_command.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="physics_command_test.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="physics_labels.py" />
-    <Compile Include="scene.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="scene_labels.py" />
     <Compile Include="scene_test.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="space_command.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="space_command_test.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="space_labels.py" />
-    <Compile Include="vdb_command.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="vdb_command_test.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="vdb_labels.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CrystalPython\CrystalPython.vcxproj">
-      <Name>CrystalPython</Name>
-      <Project>{09688343-9c7d-4b37-825a-3a4ad8201eae}</Project>
-      <Private>True</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrystalPLI\CrystalPLI.vcxproj">
+      <Name>CrystalPLI</Name>
+      <Project>{09688343-9c7d-4b37-825a-3a4ad8201eae}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CrystalPython\CrystalPython.pyproj">
+      <Name>CrystalPython</Name>
+      <Project>{75a5dac9-0299-44e1-b8d0-c745b458d040}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
