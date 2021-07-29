@@ -2,11 +2,11 @@ import physics_labels
 from scene import Scene
 from CrystalPython import *
 
-class PhysicsCommand :
+class SolverScene :
     def __init__(self, scene) :
         self.scene = scene
 
-    def create_solver(self) :
+    def create(self) :
         create_physics_command(physics_labels.PhysicsSolverCreateLabels.CommandNameLabel)
         isOk = execute_command(self.scene.world)
         #self.assertTrue(isOk)
@@ -42,3 +42,26 @@ class FluidScene :
         set_arg_string(physics_labels.FluidSceneUpdateLabels.NameLabel, self.name)
         is_ok = execute_command(self.scene.world)
         return is_ok
+
+class CSGBoundaryScene :
+    def __init__(self, scene) :
+        self.scene = scene
+        self.id = 0
+        self.name = ""
+        self.bounding_box = Box3dd()
+
+    def create(self) :
+        create_physics_command(physics_labels.CSGBoundarySceneCreateLabels.CommandNameLabel)
+        execute_command(self.scene.world)
+        self.id = get_result_int(physics_labels.FluidSceneCreateLabels.NewIdLabel)
+
+    def send(self) :
+        create_physics_command(physics_labels.CSGBoundarySceneUpdateLabels.CommandNameLabel)
+        set_arg_int(physics_labels.CSGBoundarySceneUpdateLabels.IdLabel, self.id)
+        set_arg_string(physics_labels.CSGBoundarySceneUpdateLabels.NameLabel, self.name)
+        set_arg_box3dd(physics_labels.CSGBoundarySceneUpdateLabels.BoundingBoxLabel, self.bounding_box)
+        is_ok = execute_command(self.scene.world)
+        return is_ok
+    
+    def delete(self) :
+        self.scene.delete(self.id, False)
