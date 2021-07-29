@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ParticleFluids", "ParticleFluids.pyproj", "{8B6ED32A-92E8-46F2-9BBA-7F016239FF2F}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPython", "..\..\Python\CrystalPython\CrystalPython.pyproj", "{75A5DAC9-0299-44E1-B8D0-C745B458D040}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B6ED32A-92E8-46F2-9BBA-7F016239FF2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B6ED32A-92E8-46F2-9BBA-7F016239FF2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43FA349A-ECAB-4787-ACED-1A0ECAD545BA}
+	EndGlobalSection
+EndGlobal
