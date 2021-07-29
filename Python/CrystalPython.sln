@@ -32,7 +32,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpace", "..\CrystalS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalNumerics", "..\CrystalNumerics\CrystalNumerics\CrystalNumerics.vcxproj", "{C4927D35-7611-4AFD-934A-DA114663BFB2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPython", "CrystalPLI\CrystalPython.vcxproj", "{09688343-9C7D-4B37-825A-3A4AD8201EAE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalPLI", "CrystalPLI\CrystalPLI.vcxproj", "{09688343-9C7D-4B37-825A-3A4AD8201EAE}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPythonTest", "CrystalPythonTest\CrystalPythonTest.pyproj", "{6156F5C3-538A-424B-B9B9-2764446F5E67}"
 EndProject
@@ -45,6 +45,8 @@ EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonLabelFileGeneratorTest", "PythonLabelFileGeneratorTest\PythonLabelFileGeneratorTest.pyproj", "{0F7BEA09-D087-47DF-B6CC-19D6585A025A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CrystalSpaceCommand", "..\CrystalSpace\CrystalSpaceCommand\CrystalSpaceCommand.vcxproj", "{33E8C184-64B2-410D-9AAB-C47917688DBB}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CrystalPython", "CrystalPython\CrystalPython.pyproj", "{75A5DAC9-0299-44E1-B8D0-C745B458D040}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -444,6 +446,18 @@ Global
 		{33E8C184-64B2-410D-9AAB-C47917688DBB}.RelWithDebInfo|x64.Build.0 = Release|x64
 		{33E8C184-64B2-410D-9AAB-C47917688DBB}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
 		{33E8C184-64B2-410D-9AAB-C47917688DBB}.RelWithDebInfo|x86.Build.0 = Release|Win32
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.MinSizeRel|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.MinSizeRel|x64.ActiveCfg = Debug|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.MinSizeRel|x86.ActiveCfg = Debug|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.Release|x64.ActiveCfg = Release|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.Release|x86.ActiveCfg = Release|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.RelWithDebInfo|Any CPU.ActiveCfg = Release|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.RelWithDebInfo|x64.ActiveCfg = Release|Any CPU
+		{75A5DAC9-0299-44E1-B8D0-C745B458D040}.RelWithDebInfo|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
