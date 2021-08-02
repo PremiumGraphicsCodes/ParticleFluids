@@ -1,6 +1,6 @@
 bl_info = {
     "name": "ParticleFluids",
-    "author": "ぬっち（Nutti）",
+    "author": "PremiumGraphics",
     "version": (3, 0),
     "blender": (2, 80, 0),
     "location": "",
@@ -11,17 +11,12 @@ bl_info = {
     "tracker_url": "",
     "category": "Object"
 }
-# bpyインポート
-import bpy
-# osインポート(ディレクトリ取得のため)
 import os
-# sysインポート(システムパス追加のため)
 import sys
 
-# 読み込み元のディレクトリパスを取得
 addon_dirpath = os.path.dirname(__file__)
-# 読み込み元のディレクトリパスをシステムパスに追加
 sys.path += [addon_dirpath]
+
 import bpy
 import CrystalPLI
 import scene
@@ -29,6 +24,13 @@ import physics_command
 from physics_command import *
 from scene import *
 from bpy.props import *
+
+
+
+# 読み込み元のディレクトリパスを取得
+addon_dirpath = os.path.dirname(__file__)
+# 読み込み元のディレクトリパスをシステムパスに追加
+sys.path += [addon_dirpath]
 
 def fluid_point_cloud(ob_name, coords, edges=[], faces=[]):
     """Create point cloud object based on given coordinates and name.
@@ -77,7 +79,7 @@ class TUTORIAL_OT_SayComment(bpy.types.Operator):
       self.report({'INFO'}, self.comment)
       return {'FINISHED'}
 
-class TUTORIAL_PT_SamplePanel(bpy.types.Panel):
+class ParticleFluidsPanel(bpy.types.Panel):
   bl_space_type = "VIEW_3D"
   bl_region_type = "UI"
   bl_category = "Tutorial"
@@ -90,13 +92,21 @@ class TUTORIAL_PT_SamplePanel(bpy.types.Panel):
     op_prop = layout.operator(TUTORIAL_OT_SayComment.bl_idname, text="Say")
     op_prop.comment = context.scene.tutorial_comment
 
+class FastParticlesPanel(bpy.types.Panel):
+  bl_space_type = "VIEW_3D"
+  bl_region_type = "UI"
+  bl_category = "FastParticles"
+  bl_label = "PanelTitle"
+
+  def draw(self, context):
+    layout = self.layout
     layout.operator(MeshToPS.bl_idname, text="MeshToPS")
-#    op_prop.comment = context.scene.tutorial_comment
 
 
 classes = [
-  TUTORIAL_PT_SamplePanel,
+  ParticleFluidsPanel,
   TUTORIAL_OT_SayComment,
+  FastParticlesPanel,
   MeshToPS,
 ]
 
