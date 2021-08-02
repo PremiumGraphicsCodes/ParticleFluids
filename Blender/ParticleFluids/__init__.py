@@ -25,6 +25,8 @@ sys.path += [addon_dirpath]
 import bpy
 import CrystalPLI
 import scene
+import physics_command
+from physics_command import *
 from scene import *
 from bpy.props import *
 
@@ -38,7 +40,9 @@ class TUTORIAL_OT_SayComment(bpy.types.Operator):
   def execute(self, context):
       w = World()
       s = Scene(w)
-      self.report({'INFO'}, s.id)
+      f = FluidScene(s)
+      f.create()
+      self.report({'INFO'}, str(f.id))
       self.report({'INFO'}, addon_dirpath)
       self.report({'INFO'}, self.comment)
       return {'FINISHED'}
