@@ -50,6 +50,16 @@ def fluid_point_cloud(ob_name, coords, edges=[], faces=[]):
     me.update()
     return ob
 
+class MeshToPS(bpy.types.Operator) :
+  bl_idname = "pg.meshtops"
+  bl_label = "MeshToPS"
+  bl_options = {"REGISTER", "UNDO"}
+
+  def execute(self, context) :
+      pc = fluid_point_cloud("point-cloud", [(0.0, 0.0, 0.0)])
+      bpy.context.collection.objects.link(pc)
+      return {'FINISHED'}
+
 class TUTORIAL_OT_SayComment(bpy.types.Operator):
   bl_idname = "tutorial.saycomment"
   bl_label = "Say Comment"
@@ -58,9 +68,6 @@ class TUTORIAL_OT_SayComment(bpy.types.Operator):
   comment: StringProperty(default="Hello", options={'HIDDEN'})
 
   def execute(self, context):
-      pc = fluid_point_cloud("point-cloud", [(0.0, 0.0, 0.0)])
-      bpy.context.collection.objects.link(pc)
-
       w = World()
       s = Scene(w)
       f = FluidScene(s)
@@ -83,9 +90,14 @@ class TUTORIAL_PT_SamplePanel(bpy.types.Panel):
     op_prop = layout.operator(TUTORIAL_OT_SayComment.bl_idname, text="Say")
     op_prop.comment = context.scene.tutorial_comment
 
+    layout.operator(MeshToPS.bl_idname, text="MeshToPS")
+#    op_prop.comment = context.scene.tutorial_comment
+
+
 classes = [
   TUTORIAL_PT_SamplePanel,
-  TUTORIAL_OT_SayComment
+  TUTORIAL_OT_SayComment,
+  MeshToPS,
 ]
 
 def register():
