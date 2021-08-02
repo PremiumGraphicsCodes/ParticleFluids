@@ -14,7 +14,7 @@
 #include "../../CrystalViewer/Command/CommandFactory.h"
 #include "../../CrystalSpace/CrystalSpaceCommand/SpaceCommandFactory.h"
 #include "../../CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
-#include "../../CrystalVDB/VDBCommand/VDBCommandFactory.h"
+//#include "../../CrystalVDB/VDBCommand/VDBCommandFactory.h"
 
 using namespace::std;
 using namespace Crystal::Math;
@@ -43,7 +43,7 @@ namespace {
     Crystal::Command::CommandFactory sceneCommandFactory;
     Crystal::Space::SpaceCommandFactory spaceCommandFactory;
     Crystal::Physics::PhysicsCommandFactory physicsCommandFactory;
-    Crystal::VDB::VDBCommandFactory vdbCommandFactory;
+    //Crystal::VDB::VDBCommandFactory vdbCommandFactory;
     std::unique_ptr<Crystal::Command::ICommand> command;
 
     void createSceneCommand(const std::string& commandName) {
@@ -59,9 +59,11 @@ namespace {
 //        command->execute(&world);
     }
 
+    /*
     void createVDBCommand(const std::string& commandName) {
         command = vdbCommandFactory.createCommand(commandName);
     }
+    */
 
     template<typename T>
     void setArg(const std::string& name, T value) {
@@ -157,7 +159,7 @@ PYBIND11_MODULE(CrystalPLI, m) {
     m.def("create_scene_command", &createSceneCommand);
     m.def("create_space_command", &createSpaceCommand);
     m.def("create_physics_command", &createPhysicsCommand);
-    m.def("create_vdb_command", &createVDBCommand);
+    //m.def("create_vdb_command", &createVDBCommand);
     m.def("execute_command", &executeCommand);
     m.def("set_arg_bool", &setArg<bool>);
     m.def("set_arg_bool_vector", &setArg<std::vector<bool>>);

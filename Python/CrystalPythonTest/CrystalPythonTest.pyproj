@@ -35,9 +35,6 @@
     <Compile Include="space_command_test.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="vdb_command_test.py">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.9" />

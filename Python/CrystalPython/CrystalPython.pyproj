@@ -28,8 +28,6 @@
     <Compile Include="scene_labels.py" />
     <Compile Include="space_command.py" />
     <Compile Include="space_labels.py" />
-    <Compile Include="vdb_command.py" />
-    <Compile Include="vdb_labels.py" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrystalPLI\CrystalPLI.vcxproj">

@@ -2,13 +2,13 @@
 import CrystalPLI
 import unittest
 import os
-import vdb_command_test
+#import vdb_command_test
 
 from CrystalPLI import *
 
 from scene_test import *
 from space_command_test import *
-from vdb_command_test import *
+#from vdb_command_test import *
 from physics_command_test import *
 
 #print('doc=', CrystalPLI.__doc__)
@@ -80,7 +80,7 @@ class TestRunner(unittest.TestCase):
         test_suite.addTest(unittest.makeSuite(SolverSceneTest))
         test_suite.addTest(unittest.makeSuite(CSGBoundarySceneTest))
         test_suite.addTest(unittest.makeSuite(FluidSceneTest))
-        test_suite.addTest(unittest.makeSuite(VDBCommandTest))
+ #       test_suite.addTest(unittest.makeSuite(VDBCommandTest))
         unittest.TextTestRunner().run(test_suite)
 
 if __name__ == '__main__':
