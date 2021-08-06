@@ -176,6 +176,7 @@
     <ClCompile Include="UniformGrid3dView.cpp" />
     <ClCompile Include="VolumeView.cpp" />
     <ClCompile Include="VolumeConvertView.cpp" />
+    <ClCompile Include="VoxelizerView.cpp" />
     <ClCompile Include="VoxelSphereView.cpp" />
     <ClCompile Include="ZOrderSearchView.cpp" />
   </ItemGroup>
@@ -196,6 +197,7 @@
     <ClInclude Include="UniformGrid3dView.h" />
     <ClInclude Include="VolumeView.h" />
     <ClInclude Include="VolumeConvertView.h" />
+    <ClInclude Include="VoxelizerView.h" />
     <ClInclude Include="VoxelSphereView.h" />
     <ClInclude Include="ZOrderSearchView.h" />
   </ItemGroup>

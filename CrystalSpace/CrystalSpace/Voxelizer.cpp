@@ -1,11 +1,14 @@
+#include "Voxelizer.h"
+
 #define VOXELIZER_IMPLEMENTATION
 
 #include "../ThirdParty/voxelizer/voxelizer.h"
 #include "../../Crystal/Shape/PolygonMesh.h"
 
 using namespace Crystal::Shape;
+using namespace Crystal::Space;
 
-void convert(PolygonMesh* polygon)
+void Voxelizer::voxelize(PolygonMesh* polygon)
 {
 	vx_mesh_t* mesh;
 	vx_mesh_t* result;

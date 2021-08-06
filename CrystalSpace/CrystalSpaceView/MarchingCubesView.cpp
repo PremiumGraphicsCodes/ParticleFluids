@@ -3,7 +3,7 @@
 #include "../CrystalSpace/MarchingCubesAlgo.h"
 #include "../../Crystal/Scene/VolumeScene.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
-#include "../../Crystal/Math/Gaussian.h"
+//#include "../../Crystal/Math/Gaussian.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Math;

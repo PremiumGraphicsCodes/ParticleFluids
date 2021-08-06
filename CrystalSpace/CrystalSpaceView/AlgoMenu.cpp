@@ -17,6 +17,7 @@
 
 #include "SVSphereView.h"
 #include "VoxelSphereView.h"
+#include "VoxelizerView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 
@@ -76,6 +77,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("MeshToVoxel")) {
 			control->setWindow(new MeshToVoxelView("MeshToVoxel", getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("Voxelizer")) {
+			control->setWindow(new VoxelizerView("Voxelizer", getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}

@@ -1,7 +1,6 @@
 #include "VolumeView.h"
 
 #include "../../Crystal/Scene/VolumeScene.h"
-#include "../../Crystal/Math/Gaussian.h"
 #include "../../Crystal/Graphics/ColorMap.h"
 #include "../../Crystal/Graphics/ColorHSV.h"
 
