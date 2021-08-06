@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include "../../Crystal/Math/Vector3d.h"
+
 namespace Crystal {
 	namespace Shape {
 		class PolygonMesh;
@@ -9,7 +12,12 @@ namespace Crystal {
 class Voxelizer
 {
 public:
-	void voxelize(Shape::PolygonMesh* polygon);
+	void voxelize(const Shape::PolygonMesh& polygon, const float res);
+
+	std::vector<Math::Vector3dd> getPoints() const { return points; }
+
+private:
+	std::vector<Math::Vector3dd> points;
 };
 	}
 }

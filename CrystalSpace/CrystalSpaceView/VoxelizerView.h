@@ -16,7 +16,7 @@ private:
 	void onOk() override;
 
 private:
-	//DoubleView divideLengthView;
+	DoubleView divideLengthView;
 };
 
 	}

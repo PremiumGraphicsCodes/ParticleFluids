@@ -5,17 +5,18 @@
 #include "../ThirdParty/voxelizer/voxelizer.h"
 #include "../../Crystal/Shape/PolygonMesh.h"
 
+using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
-void Voxelizer::voxelize(PolygonMesh* polygon)
+void Voxelizer::voxelize(const PolygonMesh& polygon, const float res)
 {
 	vx_mesh_t* mesh;
-	vx_mesh_t* result;
+	vx_point_cloud_t* result;
 
-	const auto positions = polygon->getPositions();
-	const auto vertices = polygon->getVertices();
-	const auto faces = polygon->getFaces();
+	const auto positions = polygon.getPositions();
+	const auto vertices = polygon.getVertices();
+	const auto faces = polygon.getFaces();
 
 	std::vector<int> indices;
 	for (const auto& f : faces) {
@@ -36,12 +37,35 @@ void Voxelizer::voxelize(PolygonMesh* polygon)
 	}
 
 	// Precision factor to reduce "holes" artifact
-	const float res = 0.025;
+//	const float res = 0.025;
+//	const float res = 0.25;
 	const float precision = 0.01;
 
 	// Run voxelization
-	result = vx_voxelize(mesh, res, res, res, precision);
+	result = vx_voxelize_pc(mesh, res, res, res, precision);
 
-	vx_mesh_free(result);
+	for (int i = 0; i < result->nvertices; ++i) {
+		const auto v = result->vertices[i];
+		Vector3df p( v.x, v.y, v.z);
+		this->points.push_back(p);
+	}
+
+	/*
+	const auto width = 10;
+	const auto height = 10;
+	const auto depth = 10;
+	auto result_volume = vx_voxelize_snap_3dgrid(mesh, width, height, depth);
+	for (int i = 0; i < width; ++i) {
+		for (int j = 0; j < height; ++j) {
+			for (int k = 0; k < depth; ++k) {
+				auto index = i + i * width + i * (width * height);
+				auto v = result_volume[index];
+			}
+		}
+	}
+	//result_volume.[0][0][0];
+	*/
+
+	vx_point_cloud_free(result);
 	vx_mesh_free(mesh);
 }
