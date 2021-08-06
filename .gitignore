@@ -275,3 +275,7 @@ ModelManifest.xml
 /Python/CrystalPythonTest/test_write.vdb
 /Python/CrystalPython/__pycache__
 /Python/CrystalPython/CrystalPLI.pyd
+/Blender/CrystalPython/__pycache__
+/Blender/CrystalPythonTest/__pycache__
+/Blender/CrystalPythonTest/test_write.vdb
+/Blender/PythonLabelFileGenerator/__pycache__

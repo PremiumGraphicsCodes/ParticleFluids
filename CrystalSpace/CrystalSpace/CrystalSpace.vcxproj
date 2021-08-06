@@ -196,6 +196,7 @@
     <ClCompile Include="UniformGrid3d.cpp" />
     <ClCompile Include="VolumeConvertAlgo.cpp" />
     <ClCompile Include="Voxel.cpp" />
+    <ClCompile Include="Voxelizer.cpp" />
     <ClCompile Include="VoxelPresenter.cpp" />
     <ClCompile Include="VoxelScene.cpp" />
     <ClCompile Include="VoxelToParticleConverter.cpp" />

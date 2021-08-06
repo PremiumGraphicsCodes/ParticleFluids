@@ -143,6 +143,9 @@
     </ClCompile>
     <ClCompile Include="MeshToParticleConverter.cpp" />
     <ClCompile Include="VoxelToParticleConverter.cpp" />
+    <ClCompile Include="Voxelizer.cpp">
+      <Filter>Voxel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">
