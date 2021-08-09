@@ -7,6 +7,7 @@
 #include "MeshToPSCommand.h"
 #include "MeshToVoxelCommand.h"
 #include "VoxelToPSCommand.h"
+#include "VoxelizerCommand.h"
 
 using namespace Crystal::Command;
 using namespace Crystal::Space;
@@ -33,6 +34,9 @@ std::unique_ptr<ICommand> SpaceCommandFactory::create(const std::string& name)
 	}
 	else if (name == VoxelToPSCommand::getName()) {
 		return std::make_unique<VoxelToPSCommand>();
+	}
+	else if (name == VoxelizerCommand::getName()) {
+		return std::make_unique<VoxelizerCommand>();
 	}
 	assert(false);
 	return nullptr;

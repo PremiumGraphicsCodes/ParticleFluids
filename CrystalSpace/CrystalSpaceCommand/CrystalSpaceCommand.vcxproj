@@ -185,12 +185,14 @@
     <ClInclude Include="PublicLabels\MeshToVoxelLabels.h" />
     <ClInclude Include="PublicLabels\SparseVolumeNodeSetLabels.h" />
     <ClInclude Include="PublicLabels\SparseVolumeSceneCreateLabels.h" />
+    <ClInclude Include="PublicLabels\VoxelizerLabels.h" />
     <ClInclude Include="PublicLabels\VoxelNodeSetLabels.h" />
     <ClInclude Include="PublicLabels\VoxelSceneCreateLabels.h" />
     <ClInclude Include="PublicLabels\VoxelToPSLabels.h" />
     <ClInclude Include="SpaceCommandFactory.h" />
     <ClInclude Include="SparseVolumeNodeSetCommand.h" />
     <ClInclude Include="SparseVolumeSceneCreateCommand.h" />
+    <ClInclude Include="VoxelizerCommand.h" />
     <ClInclude Include="VoxelNodeSetCommand.h" />
     <ClInclude Include="VoxelSceneCreateCommand.h" />
     <ClInclude Include="VoxelToPSCommand.h" />
@@ -201,6 +203,7 @@
     <ClCompile Include="SpaceCommandFactory.cpp" />
     <ClCompile Include="SparseVolumeNodeSetCommand.cpp" />
     <ClCompile Include="SparseVolumeSceneCreateCommand.cpp" />
+    <ClCompile Include="VoxelizerCommand.cpp" />
     <ClCompile Include="VoxelNodeSetCommand.cpp" />
     <ClCompile Include="VoxelSceneCreateCommand.cpp" />
     <ClCompile Include="VoxelToPSCommand.cpp" />

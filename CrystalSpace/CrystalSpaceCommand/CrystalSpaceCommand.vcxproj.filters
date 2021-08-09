@@ -49,6 +49,12 @@
     <ClInclude Include="PublicLabels\VoxelToPSLabels.h">
       <Filter>PublicLabels</Filter>
     </ClInclude>
+    <ClInclude Include="VoxelizerCommand.h">
+      <Filter>Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicLabels\VoxelizerLabels.h">
+      <Filter>PublicLabels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SpaceCommandFactory.cpp" />
@@ -67,5 +73,8 @@
       <Filter>Voxel</Filter>
     </ClCompile>
     <ClCompile Include="VoxelToPSCommand.cpp" />
+    <ClCompile Include="VoxelizerCommand.cpp">
+      <Filter>Voxel</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
