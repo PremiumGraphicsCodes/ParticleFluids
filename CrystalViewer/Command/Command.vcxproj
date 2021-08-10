@@ -158,6 +158,7 @@
     <ClInclude Include="CameraCreateCommand.h" />
     <ClInclude Include="CameraGetCommand.h" />
     <ClInclude Include="CameraSetCommand.h" />
+    <ClInclude Include="PolygonMeshAddVerticesCommand.h" />
     <ClInclude Include="PresenterSetCommand.h" />
     <ClInclude Include="Public\CameraCreateLabels.h" />
     <ClInclude Include="Public\CameraGetLabels.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Public\OBJFileImportLabels.h" />
     <ClInclude Include="Public\PCDFileExportLabels.h" />
     <ClInclude Include="Public\PCDFileImportLabels.h" />
+    <ClInclude Include="Public\PolygonMeshAddVerticesLabels.h" />
     <ClInclude Include="Public\PresenterSetLabels.h" />
     <ClInclude Include="Public\SceneGetLabels.h" />
     <ClInclude Include="Public\ShaderBuildLabels.h" />
@@ -271,6 +273,7 @@
     <ClCompile Include="PCDFileExportCommand.cpp" />
     <ClCompile Include="PCDFileImportCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />
+    <ClCompile Include="PolygonMeshAddVerticesCommand.cpp" />
     <ClCompile Include="PolygonMeshCreateCommand.cpp" />
     <ClCompile Include="PresenterSetCommand.cpp" />
     <ClCompile Include="SceneGetCommand.cpp" />

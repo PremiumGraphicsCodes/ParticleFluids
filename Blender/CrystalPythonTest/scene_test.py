@@ -18,7 +18,7 @@ class ParticleSystemSceneTest(unittest.TestCase):
 
     def test_import_pcd(self):
         scene = Scene(World())
-        particle_system = ParticleSystemScene(scene.world)
+        particle_system = ParticleSystemScene(scene)
         particle_system.import_pcd_file("test.pcd")
         self.assertEqual(1, particle_system.id)
         
@@ -27,7 +27,7 @@ class ParticleSystemSceneTest(unittest.TestCase):
         positions.add(Vector3dd(1.0, 2.0, 3.0))
         positions.add(Vector3dd(4.0, 5.0, 6.0))
         color = ColorRGBAf()
-        particle_system = ParticleSystemScene(scene.world)
+        particle_system = ParticleSystemScene(scene)
         particle_system.create(positions, "", 1.0, color, 1)
         return particle_system
 
@@ -36,7 +36,7 @@ class WireFrameSceneTest(unittest.TestCase):
     def test_create_wire_frame_scene(self):
         scene = Scene(World())
         color = ColorRGBAf()
-        wire_frame = WireFrameScene(scene.world)
+        wire_frame = WireFrameScene(scene)
         wire_frame.create_empty_wire_frame_scene("", 1.0,color,1)
         self.assertEqual(1, wire_frame.id)
 
