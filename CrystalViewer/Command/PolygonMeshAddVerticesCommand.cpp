@@ -34,23 +34,20 @@ std::string PolygonMeshAddVerticesCommand::getName()
 
 bool PolygonMeshAddVerticesCommand::execute(World* world)
 {
-	/*
-	auto mesh = std::make_unique<PolygonMesh>();
-	mesh->positions = args.positions.getValue();
-	mesh->normals = args.normals.getValue();
-	mesh->texCoords = args.texCoords.getValue();
-	mesh->vertices = args.vertices.getValue();
-	mesh->faces = args.faces.getValue();
+	auto scene = world->getScenes()->findSceneById<PolygonMeshScene*>(args.meshId.getValue());
+	auto shape = scene->getShape();
+	const auto positionIds = args.positionsIds.getValue();
+	const auto normalIds = args.normalIds.getValue();
+	const auto texCoordIds = args.texCoordIds.getValue();
 
-	auto shape = new PolygonMeshScene(world->getNextSceneId(), args.name.getValue(), std::move(mesh));//world->getSceneFactory()->createPolygonMeshScene(std::move(mesh), args.name.getValue());
-	world->addScene(args.layer.getValue(), shape);
-	//auto group = (shape, "FaceGroup");
-	const auto newId = shape->getId();
-
-	//world->updateViewModel();
-
-	results.newId.setValue(newId);
-	*/
+	for(int i = 0; i < positionIds.size(); ++i)
+	{
+		Vertex v;
+		v.positionId = positionIds[i];
+		v.normalId = normalIds[i];
+		v.texCoordId = texCoordIds[i];
+		shape->vertices.push_back(v);
+	}
 
 	return true;
 }

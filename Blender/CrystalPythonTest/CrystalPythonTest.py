@@ -13,6 +13,12 @@ from physics_command_test import *
 
 #print('doc=', CrystalPLI.__doc__)
 
+class TestVector2df(unittest.TestCase):
+    def test(self):
+        v = Vector2df(1.0, 2.0)
+        self.assertEqual(1.0, v.x)
+        self.assertEqual(2.0, v.y)
+
 class TestVector3df(unittest.TestCase):
     def test(self):
         v = Vector3df(1.0, 2.0, 3.0)
@@ -77,6 +83,7 @@ class TestRunner(unittest.TestCase):
         test_suite = unittest.TestSuite()
         test_suite.addTest(unittest.makeSuite(ParticleSystemSceneTest))
         test_suite.addTest(unittest.makeSuite(WireFrameSceneTest))
+        test_suite.addTest(unittest.makeSuite(PolygonMeshSceneTest))
         test_suite.addTest(unittest.makeSuite(SpaceCommandTest))
         test_suite.addTest(unittest.makeSuite(SolverSceneTest))
         test_suite.addTest(unittest.makeSuite(CSGBoundarySceneTest))

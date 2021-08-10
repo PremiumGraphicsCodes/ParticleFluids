@@ -108,10 +108,15 @@ namespace {
 
 namespace py = pybind11;
 PYBIND11_MODULE(CrystalPLI, m) {
-//    m.doc() = "pybind11 example plugin";
+//    m.doc() = "";
 
     py::class_<Crystal::Scene::World>(m, "World")
         .def(py::init());
+
+    py::class_<Vector2df>(m, "Vector2df")
+        .def(py::init<float, float>())
+        .def_readwrite("x", &Vector2df::x)
+        .def_readwrite("y", &Vector2df::y);
 
     py::class_<Vector3df>(m, "Vector3df")
         .def(py::init<float, float, float>())

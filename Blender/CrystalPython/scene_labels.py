@@ -140,6 +140,12 @@ class PickLabels:
    PositionLabel="Position"
    ParentIdLabel="ParentId"
    ChildIdLabel="ChildId"
+class PolygonMeshAddVerticesLabels:
+   CommandNameLabel="PolygonMeshAddVertices"
+   PolygonMeshIdLabel="PolygonMeshId"
+   PositionIdsLabel="PositionIds"
+   NormalIdsLabel="NormalIds"
+   TexCoordIdsLabel="TexCoordIds"
 class PolygonMeshCreateLabels:
    CommandNameLabel="PolygonMeshCreate"
    PositionsLabel="Positions"
