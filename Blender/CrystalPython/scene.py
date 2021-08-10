@@ -16,24 +16,6 @@ class Scene :
         set_arg_bool(scene_labels.DeleteLabels.IsItemLabel, isItem)
         return execute_command(self.world)
 
-    def create_particle_system_scene(self, positions, name, point_size, color, layer) :
-        create_scene_command(scene_labels.ParticleSystemCreateLabels.ParticleSystemAddLabel)
-        set_arg_vector3dd_vector(scene_labels.ParticleSystemCreateLabels.PositionsLabel, positions)
-        set_arg_string(scene_labels.ParticleSystemCreateLabels.NameLabel, name)
-        set_arg_float(scene_labels.ParticleSystemCreateLabels.PointSizeLabel, point_size)
-        set_arg_color4f(scene_labels.ParticleSystemCreateLabels.ColorLabel, color)
-        set_arg_int(scene_labels.ParticleSystemCreateLabels.LayerLabel, layer)
-        execute_command(self.world)
-        newId = get_result_int(scene_labels.ParticleSystemCreateLabels.NewIdLabel)
-        return newId
-
-    def export_pcd_file(self, ids, file_path) :
-        create_scene_command(scene_labels.PCDFileExportLabels.CommandNameLabel)
-        set_arg_int_vector(scene_labels.PCDFileExportLabels.IdsLabel, ids)
-        set_arg_string(scene_labels.PCDFileExportLabels.FilePathLabel, file_path)
-        is_ok = execute_command(self.world)
-        return is_ok
-
     def create_empty_wire_frame_scene(self, name, line_width, color, layer) :
         create_scene_command(scene_labels.WireFrameCreateLabels.WireFrameAddLabel)
         set_arg_string(scene_labels.WireFrameCreateLabels.NameLabel, name)
@@ -43,7 +25,37 @@ class Scene :
         execute_command(self.world)
         new_id = get_result_int(scene_labels.WireFrameCreateLabels.NewIdLabel)
         return new_id
-        
+   
+
+class ParticleSystemScene :
+    def __init__(self, world) :
+        self.world = world
+        self.id = -1
+
+    def create(self, positions, name, point_size, color, layer) :
+        create_scene_command(scene_labels.ParticleSystemCreateLabels.ParticleSystemAddLabel)
+        set_arg_vector3dd_vector(scene_labels.ParticleSystemCreateLabels.PositionsLabel, positions)
+        set_arg_string(scene_labels.ParticleSystemCreateLabels.NameLabel, name)
+        set_arg_float(scene_labels.ParticleSystemCreateLabels.PointSizeLabel, point_size)
+        set_arg_color4f(scene_labels.ParticleSystemCreateLabels.ColorLabel, color)
+        set_arg_int(scene_labels.ParticleSystemCreateLabels.LayerLabel, layer)
+        execute_command(self.world)
+        self.id = get_result_int(scene_labels.ParticleSystemCreateLabels.NewIdLabel)
+
+    def export_pcd_file(self, file_path) :
+        create_scene_command(scene_labels.PCDFileExportLabels.CommandNameLabel)
+        set_arg_int_vector(scene_labels.PCDFileExportLabels.IdsLabel, [self.id])
+        set_arg_string(scene_labels.PCDFileExportLabels.FilePathLabel, file_path)
+        is_ok = execute_command(self.world)
+        return is_ok
+
+    def import_pcd_file(self, file_path) :
+        create_scene_command(scene_labels.PCDFileImportLabels.CommandNameLabel)
+        set_arg_string(scene_labels.PCDFileImportLabels, file_path)
+        is_ok = execute_command(self.world)
+        return is_ok
+
+     
     #def create_empty_polygon_mesh_scene(self, name, layer) :
     #    create_scene_command(scene_labels.PolygonMeshCreateLabels.CommandNameLabel)
     #    set_arg_int(scene_labels.PolygonMeshCreateLabels.NameLabel, name)

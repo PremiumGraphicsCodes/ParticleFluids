@@ -6,18 +6,24 @@ class SceneTest(unittest.TestCase):
     def test_create_mesh_scene(self):
         scene = Scene(World())
 
-    def __create_test_particle_system(self) :
-        scene = Scene(World())
+    def __create_test_particle_system(self, scene) :
         positions = Vector3ddVector()
         positions.add(Vector3dd(1.0, 2.0, 3.0))
         positions.add(Vector3dd(4.0, 5.0, 6.0))
         color = ColorRGBAf()
-        new_id = scene.create_particle_system_scene(positions, "", 1.0, color, 1)
-        return new_id
+        particle_system = ParticleSystemScene(scene.world)
+        particle_system.create(positions, "", 1.0, color, 1)
+        return particle_system
 
     def test_create_particle_system_scene(self):
-        new_id = self.__create_test_particle_system()
-        self.assertEqual(1, new_id)
+        scene = Scene(World())
+        particle_system = self.__create_test_particle_system(scene)
+        self.assertEqual(1, particle_system.id)
+
+    def test_write_pcd(self):
+        scene = Scene(World())
+        particle_system = self.__create_test_particle_system(scene)
+        particle_system.export_pcd_file("test.pcd")
 
     def test_create_wire_frame_scene(self):
         scene = Scene(World())
