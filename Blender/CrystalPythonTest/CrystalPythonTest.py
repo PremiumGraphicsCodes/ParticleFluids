@@ -75,12 +75,17 @@ class TestBox3df(unittest.TestCase):
 class TestRunner(unittest.TestCase): 
     def test_runner(self):
         test_suite = unittest.TestSuite()
-        test_suite.addTest(unittest.makeSuite(SceneTest))
+        test_suite.addTest(unittest.makeSuite(ParticleSystemSceneTest))
+        test_suite.addTest(unittest.makeSuite(WireFrameSceneTest))
         test_suite.addTest(unittest.makeSuite(SpaceCommandTest))
         test_suite.addTest(unittest.makeSuite(SolverSceneTest))
         test_suite.addTest(unittest.makeSuite(CSGBoundarySceneTest))
         test_suite.addTest(unittest.makeSuite(FluidSceneTest))
- #       test_suite.addTest(unittest.makeSuite(VDBCommandTest))
+
+#        tests = unittest.defaultTestLoader.discover("CrystalPythonTest", pattern="*.py")
+#        print(tests)
+#        test_suite.addTest(tests)
+
         unittest.TextTestRunner().run(test_suite)
 
 if __name__ == '__main__':

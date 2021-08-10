@@ -15,16 +15,6 @@ class Scene :
         set_arg_int(scene_labels.DeleteLabels.IdLabel, id)
         set_arg_bool(scene_labels.DeleteLabels.IsItemLabel, isItem)
         return execute_command(self.world)
-
-    def create_empty_wire_frame_scene(self, name, line_width, color, layer) :
-        create_scene_command(scene_labels.WireFrameCreateLabels.WireFrameAddLabel)
-        set_arg_string(scene_labels.WireFrameCreateLabels.NameLabel, name)
-        set_arg_float(scene_labels.WireFrameCreateLabels.LineWidthLabel, line_width)
-        set_arg_color4f(scene_labels.WireFrameCreateLabels.ColorLabel, color)
-        set_arg_int(scene_labels.WireFrameCreateLabels.LayerLabel, layer)
-        execute_command(self.world)
-        new_id = get_result_int(scene_labels.WireFrameCreateLabels.NewIdLabel)
-        return new_id
    
 
 class ParticleSystemScene :
@@ -39,8 +29,9 @@ class ParticleSystemScene :
         set_arg_float(scene_labels.ParticleSystemCreateLabels.PointSizeLabel, point_size)
         set_arg_color4f(scene_labels.ParticleSystemCreateLabels.ColorLabel, color)
         set_arg_int(scene_labels.ParticleSystemCreateLabels.LayerLabel, layer)
-        execute_command(self.world)
+        is_ok = execute_command(self.world)
         self.id = get_result_int(scene_labels.ParticleSystemCreateLabels.NewIdLabel)
+        return is_ok
 
     def export_pcd_file(self, file_path) :
         create_scene_command(scene_labels.PCDFileExportLabels.CommandNameLabel)
@@ -51,11 +42,30 @@ class ParticleSystemScene :
 
     def import_pcd_file(self, file_path) :
         create_scene_command(scene_labels.PCDFileImportLabels.CommandNameLabel)
-        set_arg_string(scene_labels.PCDFileImportLabels, file_path)
+        set_arg_string(scene_labels.PCDFileImportLabels.FilePathLabel, file_path)
         is_ok = execute_command(self.world)
+        self.id = get_result_int(scene_labels.PCDFileImportLabels.NewIdLabel)
         return is_ok
 
+class WireFrameScene :
+    def __init__(self, world) :
+        self.world = world
+        self.id = -1
+
+    def create_empty_wire_frame_scene(self, name, line_width, color, layer) :
+        create_scene_command(scene_labels.WireFrameCreateLabels.WireFrameAddLabel)
+        set_arg_string(scene_labels.WireFrameCreateLabels.NameLabel, name)
+        set_arg_float(scene_labels.WireFrameCreateLabels.LineWidthLabel, line_width)
+        set_arg_color4f(scene_labels.WireFrameCreateLabels.ColorLabel, color)
+        set_arg_int(scene_labels.WireFrameCreateLabels.LayerLabel, layer)
+        execute_command(self.world)
+        self.id = get_result_int(scene_labels.WireFrameCreateLabels.NewIdLabel)
      
+class PolygonMeshScene :
+    def __init__(self, world) :
+        self.world = world
+        self.id = -1
+
     #def create_empty_polygon_mesh_scene(self, name, layer) :
     #    create_scene_command(scene_labels.PolygonMeshCreateLabels.CommandNameLabel)
     #    set_arg_int(scene_labels.PolygonMeshCreateLabels.NameLabel, name)
