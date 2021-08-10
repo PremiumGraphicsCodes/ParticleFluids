@@ -140,6 +140,10 @@ class PickLabels:
    PositionLabel="Position"
    ParentIdLabel="ParentId"
    ChildIdLabel="ChildId"
+class PolygonMeshAddFacesLabels:
+   CommandNameLabel="PolygonMeshAddFaces"
+   PolygonMeshIdLabel="PolygonMeshId"
+   VertexIdsLabel="VertexIds"
 class PolygonMeshAddVerticesLabels:
    CommandNameLabel="PolygonMeshAddVertices"
    PolygonMeshIdLabel="PolygonMeshId"

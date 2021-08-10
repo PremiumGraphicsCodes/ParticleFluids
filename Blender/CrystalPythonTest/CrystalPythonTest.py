@@ -8,6 +8,7 @@ from CrystalPLI import *
 
 from scene_test import *
 from space_command_test import *
+from polygon_mesh_scene_test import *
 #from vdb_command_test import *
 from physics_command_test import *
 

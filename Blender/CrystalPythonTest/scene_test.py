@@ -39,11 +39,5 @@ class WireFrameSceneTest(unittest.TestCase):
         wire_frame.create_empty_wire_frame_scene("", 1.0,color,1)
         self.assertEqual(1, wire_frame.id)
 
-class PolygonMeshSceneTest(unittest.TestCase) :
-    def test_create_polygon_mesh_scene(self):
-        scene = Scene(World())
-        mesh = PolygonMeshScene(scene)
-        mesh.create_empty_polygon_mesh_scene("",1)
-        self.assertEqual(1, mesh.id)
 #if __name__ == '__main__':
 #    unittest.main()

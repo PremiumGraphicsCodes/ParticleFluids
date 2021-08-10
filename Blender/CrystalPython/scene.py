@@ -60,22 +60,3 @@ class WireFrameScene :
         execute_command(self.scene.world)
         self.id = get_result_int(scene_labels.WireFrameCreateLabels.NewIdLabel)
      
-class PolygonMeshScene :
-    def __init__(self, scene) :
-        self.scene = scene
-        self.id = -1
-
-    def create_empty_polygon_mesh_scene(self, name, layer) :
-        create_scene_command(scene_labels.PolygonMeshCreateLabels.CommandNameLabel)
-        set_arg_string(scene_labels.PolygonMeshCreateLabels.NameLabel, name)
-        set_arg_int(scene_labels.PolygonMeshCreateLabels.LayerLabel, layer)
-        execute_command(self.scene.world)
-        self.id = get_result_int(scene_labels.PolygonMeshCreateLabels.NewIdLabel)
-
-    def create_polygon_mesh_scene(self, name, positions, normals, texcoords, layer) :
-        create_scene_command(scene_labels.PolygonMeshCreateLabels.CommandNameLabel)
-        set_arg_string(scene_labels.PolygonMeshCreateLabels.NameLabel, name)
-        set_arg_int(scene_labels.PolygonMeshCreateLabels.LayerLabel, layer)
-        set_arg_vector3dd_vector(scene_labels.PolygonMeshCreateLabels.PositionsLabel, positions)
- #        execute_command(self.world)
-#        self.id = get_result_int(scene_labels.PolygonMeshCreateLabels.LayerLabel, layer)

@@ -24,6 +24,9 @@
   <ItemGroup>
     <Compile Include="physics_command.py" />
     <Compile Include="physics_labels.py" />
+    <Compile Include="polygon_mesh_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="scene.py" />
     <Compile Include="scene_labels.py" />
     <Compile Include="space_command.py" />
