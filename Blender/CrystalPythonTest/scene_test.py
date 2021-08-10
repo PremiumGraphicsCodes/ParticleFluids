@@ -3,6 +3,9 @@ import CrystalPLI
 from scene import *
 
 class SceneTest(unittest.TestCase):
+    def test_create_mesh_scene(self):
+        scene = Scene(World())
+
     def test_create_particle_system_scene(self):
         scene = Scene(World())
         positions = Vector3ddVector()
@@ -13,6 +16,12 @@ class SceneTest(unittest.TestCase):
         self.assertEqual(1, new_id)
         scene.delete(new_id, False)
 #        self.fail("Not implemented")
+
+    def test_create_wire_frame_scene(self):
+        scene = Scene(World())
+        color = ColorRGBAf()
+        new_id = scene.create_empty_wire_frame_scene("", 1.0,color,1)
+        self.assertEqual(1, new_id)
 
 #if __name__ == '__main__':
 #    unittest.main()

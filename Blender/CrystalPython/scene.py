@@ -27,3 +27,13 @@ class Scene :
         newId = get_result_int(scene_labels.ParticleSystemCreateLabels.NewIdLabel)
         return newId
 
+    def create_empty_wire_frame_scene(self, name, line_width, color, layer) :
+        create_scene_command(scene_labels.WireFrameCreateLabels.WireFrameAddLabel)
+        set_arg_string(scene_labels.WireFrameCreateLabels.NameLabel, name)
+        set_arg_float(scene_labels.WireFrameCreateLabels.LineWidthLabel, line_width)
+        set_arg_color4f(scene_labels.WireFrameCreateLabels.ColorLabel, color)
+        set_arg_int(scene_labels.WireFrameCreateLabels.LayerLabel, layer)
+        execute_command(self.world)
+        new_id = get_result_int(scene_labels.WireFrameCreateLabels.NewIdLabel)
+        return new_id
+        

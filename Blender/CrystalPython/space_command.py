@@ -85,3 +85,11 @@ class SpaceCommand :
         set_arg_bool_vector(space_labels.VoxelNodeSetLabels.ValuesLabel, values)
         is_ok = command.Execute(world.Adapter)
         return is_ok
+
+    def voxelize(mesh_id, particle_system_id, divide_length) :
+        create_space_command(space_labels.VoxelizerLabels.CommandNameLabel)
+        set_arg_int(space_labels.VoxelizerLabels.MeshIdLabel, mesh_id)
+        set_arg_int(space_labels.VoxelizerLabels.PSIdLabel, particle_system_id)
+        set_arg_float(space_labels.VoxelizerLabels.DivideLengthLabel, divide_length)
+        is_ok = command.Execute(world.Adapter)
+        return is_ok
