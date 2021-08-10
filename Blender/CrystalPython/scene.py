@@ -27,6 +27,13 @@ class Scene :
         newId = get_result_int(scene_labels.ParticleSystemCreateLabels.NewIdLabel)
         return newId
 
+    def export_pcd_file(self, ids, file_path) :
+        create_scene_command(scene_labels.PCDFileExportLabels.CommandNameLabel)
+        set_arg_int_vector(scene_labels.PCDFileExportLabels.IdsLabel, ids)
+        set_arg_string(scene_labels.PCDFileExportLabels.FilePathLabel, file_path)
+        is_ok = execute_command(self.world)
+        return is_ok
+
     def create_empty_wire_frame_scene(self, name, line_width, color, layer) :
         create_scene_command(scene_labels.WireFrameCreateLabels.WireFrameAddLabel)
         set_arg_string(scene_labels.WireFrameCreateLabels.NameLabel, name)
@@ -37,3 +44,8 @@ class Scene :
         new_id = get_result_int(scene_labels.WireFrameCreateLabels.NewIdLabel)
         return new_id
         
+    #def create_empty_polygon_mesh_scene(self, name, layer) :
+    #    create_scene_command(scene_labels.PolygonMeshCreateLabels.CommandNameLabel)
+    #    set_arg_int(scene_labels.PolygonMeshCreateLabels.NameLabel, name)
+    #    execute_command(self.world)
+    #    new_id = get_result_int(scene_labels.PolygonMeshCreateLabels.LayerLabel, layer)
