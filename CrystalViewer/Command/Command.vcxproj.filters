@@ -244,6 +244,12 @@
     <ClInclude Include="Public\PolygonMeshAddVerticesLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="PolygonMeshAddFacesCommand.h">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\PolygonMeshAddFacesLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -365,6 +371,9 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="PolygonMeshAddVerticesCommand.cpp">
+      <Filter>Scene\Shape\PolygonMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonMeshAddFacesCommand.cpp">
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
   </ItemGroup>

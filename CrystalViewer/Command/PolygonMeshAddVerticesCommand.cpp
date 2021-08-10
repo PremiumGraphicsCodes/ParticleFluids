@@ -1,9 +1,7 @@
 #include "PolygonMeshAddVerticesCommand.h"
 
-#include "../../Crystal/Scene/PolygonMeshScene.h"
-
 #include "../../Crystal/Shape/PolygonMesh.h"
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
+#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "Public/PolygonMeshAddVerticesLabels.h"
 
@@ -40,8 +38,7 @@ bool PolygonMeshAddVerticesCommand::execute(World* world)
 	const auto normalIds = args.normalIds.getValue();
 	const auto texCoordIds = args.texCoordIds.getValue();
 
-	for(int i = 0; i < positionIds.size(); ++i)
-	{
+	for(int i = 0; i < positionIds.size(); ++i) {
 		Vertex v;
 		v.positionId = positionIds[i];
 		v.normalId = normalIds[i];
