@@ -1,13 +1,14 @@
 
 import CrystalPLI
 import unittest
-import os
+#import os
 #import vdb_command_test
 
 from CrystalPLI import *
 
 from scene_test import *
 from space_command_test import *
+from wire_frame_scene_test import *
 from polygon_mesh_scene_test import *
 #from vdb_command_test import *
 from physics_command_test import *
@@ -74,8 +75,8 @@ def calc_distance_squared(lhs, rhs) :
 class TestBox3df(unittest.TestCase):
     def test(self):
         box = Box3df(Vector3df(0,0,0), Vector3df(1,1,1))
-        dist = calc_distance_squared(Vector3df(0,0,0), Vector3df(1,1,1))
-        print(dist)
+#        dist = calc_distance_squared(Vector3df(0,0,0), Vector3df(1,1,1))
+#        print(dist)
 #        self.assertEqual(Vector3df(0,0,0), box.min)
 
 
