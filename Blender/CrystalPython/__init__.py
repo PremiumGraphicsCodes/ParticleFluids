@@ -32,30 +32,58 @@ import bpy
 import CrystalPLI
 import scene
 import physics_command
+import particle_system_scene
 from physics_command import *
 from scene import *
 from bpy.props import *
 
-
+from bpy_extras.io_utils import (
+    ImportHelper,
+    ExportHelper,
+)
 
 # 読み込み元のディレクトリパスを取得
 addon_dirpath = os.path.dirname(__file__)
 # 読み込み元のディレクトリパスをシステムパスに追加
 sys.path += [addon_dirpath]
 
-class BLPointCloud :  
-  def __init__(self, ob_name, coords, edges=[], faces=[]):
+class BLPointCloud :    
+  def __init__(self, ob_name, coords):
       # Create new mesh and a new object
       me = bpy.data.meshes.new(name = ob_name + "Mesh")
       ob = bpy.data.objects.new(ob_name, me)
 
       # Make a mesh from a list of vertices/edges/faces
-      me.from_pydata(coords, edges, faces)
+      me.from_pydata(coords, [], [])
 
       # Display name and update the mesh
       ob.show_name = True
       me.update()
-      bpy.context.collection.objects.link(ob)          
+      bpy.context.collection.objects.link(ob)
+
+class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
+  bl_idname = "pg.particlesystemimportoperator"
+  bl_label = "ParticleSystemImport"
+  bl_options = {"UNDO"}
+
+  def execute(self, context) :
+    return {"FINISHED"}
+
+  def draw(self, context) :
+    pass
+
+class ParticleSystemExportOperator(bpy.types.Operator, ExportHelper) :
+  bl_idname = "pg.particlesystemexportoperator"
+  bl_label = "ParticleSystemExport"
+  bl_options = {"UNDO"}
+
+  filename_ext = ".pcd"
+
+  def execute(self, context) :
+    return {"FINISHED"}
+
+  def draw(self, context) :
+    pass
 
 class MeshToPS(bpy.types.Operator) :
   bl_idname = "pg.meshtops"
@@ -106,13 +134,16 @@ class FastParticlesPanel(bpy.types.Panel):
   def draw(self, context):
     layout = self.layout
     layout.operator(MeshToPS.bl_idname, text="MeshToPS")
-
+    layout.operator(ParticleSystemImportOperator.bl_idname, text="PSImport")
+    layout.operator(ParticleSystemExportOperator.bl_idname, text="PSExport")
 
 classes = [
   ParticleFluidsPanel,
   TUTORIAL_OT_SayComment,
   FastParticlesPanel,
   MeshToPS,
+  ParticleSystemImportOperator,
+  ParticleSystemExportOperator,
 ]
 
 def register():
