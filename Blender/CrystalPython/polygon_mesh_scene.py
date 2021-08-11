@@ -25,13 +25,19 @@ class PolygonMeshScene :
 
     def add_verticies(self, positionIds, normalIds, texCoordIds) :
         create_scene_command(scene_labels.PolygonMeshAddVerticesLabels.CommandNameLabel)
+        set_arg_int(scene_labels.PolygonMeshAddVerticesLabels.PolygonMeshIdLabel, self.id)
         set_arg_int_vector(scene_labels.PolygonMeshAddVerticesLabels.PositionIdsLabel, positionIds)
         set_arg_int_vector(scene_labels.PolygonMeshAddVerticesLabels.NormalIdsLabel, normalIds)
         set_arg_int_vector(scene_labels.PolygonMeshAddVerticesLabels.TexCoordIdsLabel, texCoordIds)
         is_ok = execute_command(self.world)
         return is_ok
 
-#        self.id = get_result_int(scene_labels.PolygonMeshCreateLabels.LayerLabel, layer)
+    def add_faces(self, vertexIds) :
+        create_scene_command(scene_labels.PolygonMeshAddFacesLabels.CommandNameLabel)
+        set_arg_int(scene_labels.PolygonMeshAddFacesLabels.PolygonMeshIdLabel, self.id)
+        set_arg_int_vector(scene_labels.PolygonMeshAddFacesLabels.VertexIdsLabel, vertexIds)
+        is_ok = execute_command(self.world)
+        return is_ok
 
     def export_obj_file(self, file_path) :
         create_scene_command(scene_labels.OBJFileExportLabels.CommandNameLabel)

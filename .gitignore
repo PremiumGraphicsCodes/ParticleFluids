@@ -280,3 +280,5 @@ ModelManifest.xml
 /Blender/CrystalPythonTest/test_write.vdb
 /Blender/PythonLabelFileGenerator/__pycache__
 /Blender/CrystalPythonTest/test.pcd
+/Blender/CrystalPython/CrystalPLI.pyd
+/Blender/CrystalPython/glew32.dll

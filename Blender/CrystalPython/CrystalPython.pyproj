@@ -34,6 +34,9 @@
     <Compile Include="scene_labels.py" />
     <Compile Include="space_command.py" />
     <Compile Include="space_labels.py" />
+    <Compile Include="wire_frame_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrystalPLI\CrystalPLI.vcxproj">
