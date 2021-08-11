@@ -43,25 +43,19 @@ addon_dirpath = os.path.dirname(__file__)
 # 読み込み元のディレクトリパスをシステムパスに追加
 sys.path += [addon_dirpath]
 
-def fluid_point_cloud(ob_name, coords, edges=[], faces=[]):
-    """Create point cloud object based on given coordinates and name.
+class BLPointCloud :  
+  def __init__(self, ob_name, coords, edges=[], faces=[]):
+      # Create new mesh and a new object
+      me = bpy.data.meshes.new(name = ob_name + "Mesh")
+      ob = bpy.data.objects.new(ob_name, me)
 
-    Keyword arguments:
-    ob_name -- new object name
-    coords -- float triplets eg: [(-1.0, 1.0, 0.0), (-1.0, -1.0, 0.0)]
-    """
+      # Make a mesh from a list of vertices/edges/faces
+      me.from_pydata(coords, edges, faces)
 
-    # Create new mesh and a new object
-    me = bpy.data.meshes.new(name = ob_name + "Mesh")
-    ob = bpy.data.objects.new(ob_name, me)
-
-    # Make a mesh from a list of vertices/edges/faces
-    me.from_pydata(coords, edges, faces)
-
-    # Display name and update the mesh
-    ob.show_name = True
-    me.update()
-    return ob
+      # Display name and update the mesh
+      ob.show_name = True
+      me.update()
+      bpy.context.collection.objects.link(ob)          
 
 class MeshToPS(bpy.types.Operator) :
   bl_idname = "pg.meshtops"
@@ -69,8 +63,7 @@ class MeshToPS(bpy.types.Operator) :
   bl_options = {"REGISTER", "UNDO"}
 
   def execute(self, context) :
-      pc = fluid_point_cloud("point-cloud", [(0.0, 0.0, 0.0)])
-      bpy.context.collection.objects.link(pc)
+      pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
       return {'FINISHED'}
 
 class TUTORIAL_OT_SayComment(bpy.types.Operator):
@@ -83,6 +76,7 @@ class TUTORIAL_OT_SayComment(bpy.types.Operator):
   def execute(self, context):
       w = World()
       s = Scene(w)
+
       f = FluidScene(s)
       f.create()
       self.report({'INFO'}, str(f.id))
