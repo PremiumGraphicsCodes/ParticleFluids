@@ -1,5 +1,6 @@
 import unittest
 import CrystalPLI
+from particle_system_scene import *
 from scene import *
 
 class ParticleSystemSceneTest(unittest.TestCase):

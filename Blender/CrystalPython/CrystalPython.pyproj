@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="particle_system_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="physics_command.py" />
     <Compile Include="physics_labels.py" />
     <Compile Include="polygon_mesh_scene.py">

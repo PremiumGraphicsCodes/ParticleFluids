@@ -40,11 +40,11 @@ class PolygonMeshScene :
         is_ok = execute_command(self.scene.world)
         return is_ok
 
-#    def import_obj_file(self, file_path) :
-#        create_scene_command(scene_labels.PCDFileImportLabels.CommandNameLabel)
-#        set_arg_string(scene_labels.PCDFileImportLabels.FilePathLabel, file_path)
-#        is_ok = execute_command(self.scene.world)
-#        self.id = get_result_int(scene_labels.PCDFileImportLabels.NewIdLabel)
-#        return is_ok
+    def import_obj_file(self, file_path) :
+        create_scene_command(scene_labels.OBJFileImportLabels.CommandNameLabel)
+        set_arg_string(scene_labels.OBJFileImportLabels.FilePathLabel, file_path)
+        is_ok = execute_command(self.scene.world)
+        self.id = get_result_int(scene_labels.OBJFileImportLabels.NewIdLabel)
+        return is_ok
 
 
