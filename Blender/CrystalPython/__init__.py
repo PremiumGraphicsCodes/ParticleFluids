@@ -47,6 +47,7 @@ addon_dirpath = os.path.dirname(__file__)
 # 読み込み元のディレクトリパスをシステムパスに追加
 sys.path += [addon_dirpath]
 
+
 class BLPointCloud :    
   def __init__(self, ob_name, coords):
       # Create new mesh and a new object
@@ -67,6 +68,8 @@ class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
   bl_options = {"UNDO"}
 
   def execute(self, context) :
+#    ps = particle_system_scene()
+#    ps.
     return {"FINISHED"}
 
   def draw(self, context) :
@@ -102,10 +105,7 @@ class TUTORIAL_OT_SayComment(bpy.types.Operator):
   comment: StringProperty(default="Hello", options={'HIDDEN'})
 
   def execute(self, context):
-      w = World()
-      s = Scene(w)
-
-      f = FluidScene(s)
+      f = FluidScene(scene)
       f.create()
       self.report({'INFO'}, str(f.id))
       self.report({'INFO'}, addon_dirpath)
@@ -123,7 +123,7 @@ class ParticleFluidsPanel(bpy.types.Panel):
     layout.prop(context.scene, "tutorial_comment")
 
     op_prop = layout.operator(TUTORIAL_OT_SayComment.bl_idname, text="Say")
-    op_prop.comment = context.scene.tutorial_comment
+    #op_prop.comment = context.scene.tutorial_comment
 
 class FastParticlesPanel(bpy.types.Panel):
   bl_space_type = "VIEW_3D"
@@ -146,17 +146,25 @@ classes = [
   ParticleSystemExportOperator,
 ]
 
+world = None
+scene = None
+
 def register():
+  global world
+  global scene
+  world = World()
+  scene = Scene(world)
+
   for c in classes:
     bpy.utils.register_class(c)
 
-  bpy.types.Scene.tutorial_comment = StringProperty(default = "")
+  #bpy.types.Scene.tutorial_comment = StringProperty(default = "")
 
 def unregister():
   for c in classes:
     bpy.utils.unregister_class(c)
 
-  del bpy.types.Scene.tutorial_comment
+  #del bpy.types.Scene.tutorial_comment
 
 if __name__ == "__main__":
   register()
