@@ -158,6 +158,7 @@
     <ClInclude Include="CameraCreateCommand.h" />
     <ClInclude Include="CameraGetCommand.h" />
     <ClInclude Include="CameraSetCommand.h" />
+    <ClInclude Include="ParticleSystemGetCommand.h" />
     <ClInclude Include="PolygonMeshAddFacesCommand.h" />
     <ClInclude Include="PolygonMeshAddVerticesCommand.h" />
     <ClInclude Include="PresenterSetCommand.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Public\CameraSetLabels.h" />
     <ClInclude Include="Public\OBJFileExportLabels.h" />
     <ClInclude Include="Public\OBJFileImportLabels.h" />
+    <ClInclude Include="Public\ParticleSystemGetLabels.h" />
     <ClInclude Include="Public\PCDFileExportLabels.h" />
     <ClInclude Include="Public\PCDFileImportLabels.h" />
     <ClInclude Include="Public\PolygonMeshAddFacesLabels.h" />
@@ -272,6 +274,7 @@
     <ClCompile Include="OBJFileExportCommand.cpp" />
     <ClCompile Include="OBJFileImportCommand.cpp" />
     <ClCompile Include="ParticleSystemCreateCommand.cpp" />
+    <ClCompile Include="ParticleSystemGetCommand.cpp" />
     <ClCompile Include="PCDFileExportCommand.cpp" />
     <ClCompile Include="PCDFileImportCommand.cpp" />
     <ClCompile Include="PickCommand.cpp" />
