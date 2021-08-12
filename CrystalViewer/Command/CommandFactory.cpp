@@ -7,6 +7,7 @@
 #include "FileExportCommand.h"
 #include "ParticleSystemCreateCommand.h"
 #include "ParticleSystemGetCommand.h"
+#include "ParticleSystemSetCommand.h"
 #include "WireFrameCreateCommand.h"
 #include "PolygonMeshCreateCommand.h"
 #include "PolygonMeshAddVerticesCommand.h"
@@ -68,6 +69,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == ParticleSystemGetCommand::getName()) {
 		return std::make_unique<ParticleSystemGetCommand>();
+	}
+	else if (name == ParticleSystemSetCommand::getName()) {
+		return std::make_unique<ParticleSystemSetCommand>();
 	}
 	else if (name == WireFrameCreateCommand::getName()) {
 		return std::make_unique<WireFrameCreateCommand>();

@@ -28,8 +28,8 @@ class ParticleSystemSceneTest(unittest.TestCase):
         scene = Scene(World())
         particle_system = self.__create_test_particle_system(scene)
         positions = particle_system.get_positions()
-        print(positions.values[0].x)
-        print(positions.values[0].y)
+        self.assertEqual(2, len(positions.values))
+#        print(positions.values[0].y)
         
     def __create_test_particle_system(self, scene) :
         positions = Vector3ddVector()

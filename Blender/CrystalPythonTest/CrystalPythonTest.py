@@ -72,9 +72,9 @@ def calc_distance_squared(lhs, rhs) :
 
 #def are_same(lhs, rhs, tolerance) :
 
-class TestBox3df(unittest.TestCase):
-    def test(self):
-        box = Box3df(Vector3df(0,0,0), Vector3df(1,1,1))
+#class TestBox3df(unittest.TestCase):
+#    def test(self):
+#        box = Box3df(Vector3df(0,0,0), Vector3df(1,1,1))
 #        dist = calc_distance_squared(Vector3df(0,0,0), Vector3df(1,1,1))
 #        print(dist)
 #        self.assertEqual(Vector3df(0,0,0), box.min)

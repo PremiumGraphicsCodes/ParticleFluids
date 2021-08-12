@@ -256,6 +256,12 @@
     <ClInclude Include="Public\ParticleSystemGetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleSystemSetCommand.h">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\ParticleSystemSetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -383,6 +389,9 @@
       <Filter>Scene\Shape\PolygonMesh</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemGetCommand.cpp">
+      <Filter>Scene\Shape\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemSetCommand.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
   </ItemGroup>
