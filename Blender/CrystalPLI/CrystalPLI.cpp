@@ -16,30 +16,44 @@
 #include "../../CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
 //#include "../../CrystalVDB/VDBCommand/VDBCommandFactory.h"
 
-using namespace::std;
 using namespace Crystal::Math;
 
-class Vector3dfVector
-{
-public:
-    std::vector<Vector3df> values;
-
-    void add(Vector3df v) { this->values.push_back(v); }
-
-    //    Vector3dd get(const int index) { return this->values[i]; }
-};
-
-class Vector3ddVector
-{
-public:
-    std::vector<Vector3dd> values;
-
-    void add(Vector3dd v) { this->values.push_back(v); }
-
-//    Vector3dd get(const int index) { return this->values[i]; }
-};
-
 namespace {
+
+    class Vector3dfVector
+    {
+    public:
+        std::vector<Vector3df> values;
+
+        Vector3dfVector()
+        {}
+
+        explicit Vector3dfVector(const std::vector<Vector3df>& vs) :
+            values(vs)
+        {}
+
+        void add(Vector3df v) { this->values.push_back(v); }
+
+        //    Vector3dd get(const int index) { return this->values[i]; }
+    };
+
+    class Vector3ddVector
+    {
+    public:
+        Vector3ddVector()
+        {}
+
+        explicit Vector3ddVector(const std::vector<Vector3dd>& vs) :
+            values(vs)
+        {}
+
+        std::vector<Vector3dd> values;
+
+        void add(Vector3dd v) { this->values.push_back(v); }
+
+        //    Vector3dd get(const int index) { return this->values[i]; }
+    };
+
     Crystal::Command::CommandFactory sceneCommandFactory;
     Crystal::Space::SpaceCommandFactory spaceCommandFactory;
     Crystal::Physics::PhysicsCommandFactory physicsCommandFactory;
@@ -103,6 +117,18 @@ namespace {
     std::vector<int> getResultIntVector(const std::string& name)
     {
         return std::any_cast<std::vector<int>>(command->getResult(name));
+    }
+
+    Vector3dfVector getResultVector3dfVector(const std::string& name)
+    {
+        const auto vv = std::any_cast<std::vector<Vector3df>>(command->getResult(name));
+        return Vector3dfVector(vv);
+    }
+
+    Vector3ddVector getResultVector3ddVector(const std::string& name)
+    {
+        const auto vv = std::any_cast<std::vector<Vector3dd>>(command->getResult(name));
+        return Vector3ddVector(vv);
     }
 }
 
@@ -185,6 +211,8 @@ PYBIND11_MODULE(CrystalPLI, m) {
     m.def("get_result_int", &getResult<int>);
     m.def("get_result_string", &getResult<std::string>);
     m.def("get_result_int_vector", &getResultIntVector);
+    m.def("get_result_vector3df_vector", getResultVector3dfVector);
+    m.def("get_result_vector3dd_vector", getResultVector3ddVector);
 
     //m.def("call", &call);
 }

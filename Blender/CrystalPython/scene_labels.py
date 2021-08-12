@@ -126,6 +126,14 @@ class ParticleSystemCreateLabels:
    NameLabel="Name"
    LayerLabel="Layer"
    NewIdLabel="NewId"
+class ParticleSystemGetLabels:
+   CommandNameLabel="ParticleSystemGet"
+   PSIdLabel="PSId"
+   LayerLabel="Layer"
+   PositionsLabel="Positions"
+   PointSizeLabel="PointSize"
+   ColorLabel="Color"
+   NameLabel="Name"
 class PCDFileExportLabels:
    CommandNameLabel="PCDFileExport"
    FilePathLabel="FilePath"

@@ -32,3 +32,10 @@ class ParticleSystemScene :
         self.id = get_result_int(scene_labels.PCDFileImportLabels.NewIdLabel)
         return is_ok
 
+    def get_positions(self) :
+        create_scene_command(scene_labels.ParticleSystemGetLabels.CommandNameLabel)
+        set_arg_int(scene_labels.ParticleSystemGetLabels.PSIdLabel, self.id)
+        is_ok = execute_command(self.scene.world)
+        return get_result_vector3dd_vector(scene_labels.ParticleSystemGetLabels.PositionsLabel)
+    #    return true;
+    #get_positions()

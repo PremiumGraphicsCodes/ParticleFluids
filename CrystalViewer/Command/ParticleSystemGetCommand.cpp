@@ -37,18 +37,12 @@ std::string ParticleSystemGetCommand::getName()
 
 bool ParticleSystemGetCommand::execute(World* world)
 {
-	/*
-	const auto& positions = args.positions.getValue();
-	ParticleAttribute attr;
-	attr.color = args.color.getValue();
-	attr.size = args.pointSize.getValue();
-	auto name = args.name.getValue();
-	auto shape = std::make_unique<ParticleSystem<ParticleAttribute>>(positions, attr);
-	auto scene = new ParticleSystemScene(world->getNextSceneId(), name, std::move(shape));
-	world->addScene(args.layer.getValue(), scene);
-	//world->getRenderer()->getBuffer()->screen.add(scene, *world->getGLFactory());
-	results.newId.setValue(scene->getId());
-	//world->updateViewModel();
-	*/
+	const auto scene = world->getScenes()->findSceneById<ParticleSystemScene*>(args.psId.getValue());
+	if (scene == nullptr) {
+		return false;
+	}
+
+	results.positions.setValue(scene->getShape()->getPositions());
+	results.name.setValue(scene->getName());
 	return true;
 }
