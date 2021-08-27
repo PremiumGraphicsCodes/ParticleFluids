@@ -1,24 +1,31 @@
 #include "VoxelFiller.h"
 
+using namespace Crystal::Util;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
 namespace {
-	enum VoxelType {
-		INSIDE_X,
-		INSIDE_Y,
-		INSIDE_Z
-	};
-
+	constexpr unsigned char INSIDE_X = 0x01;
+	constexpr unsigned char INSIDE_Y = 0x02;
+	constexpr unsigned char INSIDE_Z = 0x04;
 }
+
+// reference https://github.com/sylefeb/VoxSurf/blob/master/main.cpp
 
 void VoxelFiller::fill(Voxel& voxel)
 {
-
-
 	const auto resolutions = voxel.getResolutions();
 
-	// along x.
+	Array3d<unsigned char> array3d(resolutions);
+
+	scanX(voxel,array3d);
+}
+
+// along x.
+void VoxelFiller::scanX(const Voxel& voxel, Array3d<unsigned char> & array3d)
+{
+	const auto& resolutions = array3d.getResolutions();
+
 	for (int k = 0; k < resolutions[2]; ++k) {
 		for (int j = 0; j < resolutions[1]; ++j) {
 			bool isInside = false;
@@ -26,64 +33,64 @@ void VoxelFiller::fill(Voxel& voxel)
 				if (voxel.getValue(i, j, k)) {
 					isInside = !isInside;
 				}
-			}
-			if (isInside) {
-				
+				if (isInside) {
+					auto flag = array3d.get(i, j, k);
+					flag |= ::INSIDE_X;
+					array3d.set(i, j, k, flag);
+				}
 			}
 		}
 	}
 }
 
-
-/* from https://github.com/sylefeb/VoxSurf/blob/master/main.cpp
-// --------------------------------------------------------------
-
-// This version is more robust by using all three direction
-// and voting among them to decide what is filled or not
-void fillInsideVoting(Array3D<uchar>& _voxs)
+// along y
+void VoxelFiller::scanY(const Voxel& voxel, Array3d<unsigned char>& array3d)
 {
-  // along x
-  ForIndex(k, _voxs.zsize()) {
-	ForIndex(j, _voxs.ysize()) {
-	  bool inside = false;
-	  ForIndex(i, _voxs.xsize()) {
-		if (_voxs.at(i, j, k) & ALONG_X) {
-		  inside = !inside;
+	const auto& resolutions = array3d.getResolutions();
+
+	for (int k = 0; k < resolutions[2]; ++k) {
+		for (int i = 0; i < resolutions[0]; ++i) {
+			bool isInside = false;
+			for (int j = 0; j < resolutions[1]; ++j) {
+				bool isInside = false;
+				if (voxel.getValue(i, j, k)) {
+					isInside = !isInside;
+				}
+				if (isInside) {
+					auto flag = array3d.get(i, j, k);
+					flag |= ::INSIDE_Y;
+					array3d.set(i, j, k, flag);
+				}
+			}
 		}
-		if (inside) {
-		  _voxs.at(i, j, k) |= INSIDE_X;
-		}
-	  }
 	}
-  }
-  // along y
-  ForIndex(k, _voxs.zsize()) {
-	ForIndex(j, _voxs.xsize()) {
-	  bool inside = false;
-	  ForIndex(i, _voxs.ysize()) {
-		if (_voxs.at(j, i, k) & ALONG_Y) {
-		  inside = !inside;
+}
+
+// along z
+void VoxelFiller::scanZ(const Voxel & voxel, Array3d<unsigned char> & array3d)
+{
+	const auto& resolutions = array3d.getResolutions();
+
+	for (int j = 0; j < resolutions[1]; ++j) {
+		for (int i = 0; i < resolutions[0]; ++i) {
+			bool isInside = false;
+			for (int k = 0; k < resolutions[2]; ++k) {
+				if (voxel.getValue(i, j, k)) {
+					isInside = !isInside;
+				}
+				if (isInside) {
+					auto flag = array3d.get(i, j, k);
+					flag |= ::INSIDE_Z;
+					array3d.set(i, j, k, flag);
+				}
+			}
 		}
-		if (inside) {
-		  _voxs.at(j, i, k) |= INSIDE_Y;
-		}
-	  }
 	}
-  }
-  // along z
-  ForIndex(k, _voxs.ysize()) {
-	ForIndex(j, _voxs.xsize()) {
-	  bool inside = false;
-	  ForIndex(i, _voxs.zsize()) {
-		if (_voxs.at(j, k, i) & ALONG_Z) {
-		  inside = !inside;
-		}
-		if (inside) {
-		  _voxs.at(j, k, i) |= INSIDE_Z;
-		}
-	  }
-	}
-  }
+}
+
+void VoxelFiller::vote(Array3d<unsigned char>& array3d)
+{
+	/*
   // voting
   ForArray3D(_voxs, i, j, k) {
 	uchar v = _voxs.at(i, j, k);
@@ -98,23 +105,5 @@ void fillInsideVoting(Array3D<uchar>& _voxs)
 	  _voxs.at(i, j, k) |= INSIDE;
 	}
   }
+  */
 }
-
-// --------------------------------------------------------------
-
-void fillInside(Array3D<uchar>& _voxs)
-{
-  ForIndex(k, _voxs.zsize()) {
-	ForIndex(j, _voxs.ysize()) {
-	  bool inside = false;
-	  ForIndex(i, _voxs.xsize()) {
-		if (_voxs.at(i, j, k) & ALONG_X) {
-		  inside = !inside;
-		}
-		if (inside) {
-		  _voxs.at(i, j, k) |= INSIDE;
-		}
-	  }
-	}
-  }
-}*/

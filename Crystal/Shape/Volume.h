@@ -41,7 +41,7 @@ public:
 
 	Math::Box3dd getBoundingBox() const override { return box; }
 
-	std::array<size_t,3> getResolutions() const { return resolutions; }
+	std::array<size_t,3> getResolutions() const { return nodes.getResolutions(); }
 
 	Math::Vector3dd getCellPosition(int i, int j, int k) const;
 
@@ -52,17 +52,9 @@ public:
 	T getValue(const int i, const int j, const int k) const { return nodes.get(i,j,k); }
 
 	void setValue(const int i, const int j, const int k, const T value) { nodes.set(i,j,k, value); }
-	/*
-	const double getDU() const { return box.getLength().x / static_cast<double>(unum); }
-
-	const double getDV() const { return box.getLength().y / static_cast<double>(vnum); }
-
-	const double getDW() const { return box.getLength().z / static_cast<double>(wnum); }
-	*/
 
 private:
 	Math::Box3dd box;
-	std::array<size_t,3> resolutions;
 	Util::Array3d<T> nodes;
 };
 

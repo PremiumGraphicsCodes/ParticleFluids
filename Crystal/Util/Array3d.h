@@ -1,3 +1,5 @@
+#pragma once
+
 #include <vector>
 
 namespace Crystal {
@@ -7,7 +9,17 @@ template<typename T>
 class Array3d
 {
 public:
-	Array3d(const size_t unum, const size_t vnum, const size_t wnum) {
+	explicit Array3d(const std::array<size_t, 3>& resolutions) :
+		Array3d(resolutions[0], resolutions[1], resolutions[2])
+	{
+	}
+
+	Array3d(const size_t unum, const size_t vnum, const size_t wnum)
+	{
+		resolutions[0] = unum;
+		resolutions[1] = vnum;
+		resolutions[2] = wnum;
+
 		values.resize(unum);
 		for (int i = 0; i < unum; ++i) {
 			values[i].resize(vnum);
@@ -25,8 +37,11 @@ public:
 		return values[i][j][k];
 	}
 
+	const std::array<size_t, 3>& getResolutions() const { return resolutions; }
+
 private:
 	std::vector<std::vector<std::vector<T>>> values;
+	std::array<size_t, 3> resolutions;
 };
 
 	}
