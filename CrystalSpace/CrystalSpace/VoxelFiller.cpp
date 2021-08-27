@@ -10,8 +10,6 @@ Array3d<bool> VoxelFiller::fill(Voxel& voxel)
 {
 	const auto resolutions = voxel.getResolutions();
 
-	Array3d<unsigned char> array3d(resolutions);
-
 	const auto voxelX = scanX(voxel);
 	const auto voxelY = scanY(voxel);
 	const auto voxelZ = scanZ(voxel);
@@ -22,7 +20,7 @@ Array3d<bool> VoxelFiller::fill(Voxel& voxel)
 // along x.
 Array3d<bool> VoxelFiller::scanX(const Voxel& voxel)
 {
-	Array3d<bool> array3d(voxel.getResolutions());
+	Array3d<bool> array3d(voxel.getResolutions(), false);
 	const auto& resolutions = array3d.getResolutions();
 
 	for (int k = 0; k < resolutions[2]; ++k) {
@@ -32,10 +30,7 @@ Array3d<bool> VoxelFiller::scanX(const Voxel& voxel)
 				if (voxel.getValue(i, j, k)) {
 					isInside = !isInside;
 				}
-				if (isInside) {
-					auto flag = array3d.get(i, j, k) | isInside;
-					array3d.set(i, j, k, flag);
-				}
+				array3d.set(i, j, k, isInside);
 			}
 		}
 	}
@@ -45,7 +40,7 @@ Array3d<bool> VoxelFiller::scanX(const Voxel& voxel)
 // along y
 Array3d<bool> VoxelFiller::scanY(const Voxel& voxel)
 {
-	Array3d<bool> array3d(voxel.getResolutions());
+	Array3d<bool> array3d(voxel.getResolutions(), false);
 	const auto& resolutions = array3d.getResolutions();
 
 	for (int k = 0; k < resolutions[2]; ++k) {
@@ -56,10 +51,7 @@ Array3d<bool> VoxelFiller::scanY(const Voxel& voxel)
 				if (voxel.getValue(i, j, k)) {
 					isInside = !isInside;
 				}
-				if (isInside) {
-					auto flag = array3d.get(i, j, k) | isInside;
-					array3d.set(i, j, k, flag);
-				}
+				array3d.set(i, j, k, isInside);
 			}
 		}
 	}
@@ -69,7 +61,7 @@ Array3d<bool> VoxelFiller::scanY(const Voxel& voxel)
 // along z
 Array3d<bool> VoxelFiller::scanZ(const Voxel& voxel)
 {
-	Array3d<bool> array3d(voxel.getResolutions());
+	Array3d<bool> array3d(voxel.getResolutions(), false);
 	const auto& resolutions = array3d.getResolutions();
 
 	for (int j = 0; j < resolutions[1]; ++j) {
@@ -79,10 +71,7 @@ Array3d<bool> VoxelFiller::scanZ(const Voxel& voxel)
 				if (voxel.getValue(i, j, k)) {
 					isInside = !isInside;
 				}
-				if (isInside) {
-					auto flag = array3d.get(i, j, k) | isInside;
-					array3d.set(i, j, k, flag);
-				}
+				array3d.set(i, j, k, isInside);
 			}
 		}
 	}
@@ -91,18 +80,18 @@ Array3d<bool> VoxelFiller::scanZ(const Voxel& voxel)
 
 Array3d<bool> VoxelFiller::scanAll(const std::array<Util::Array3d<bool>, 3>& voxels)
 {
-	Array3d<bool> array3d(voxels[0].getResolutions());
+	Array3d<bool> array3d(voxels[0].getResolutions(), false);
 	const auto& resolutions = voxels[0].getResolutions();
 
-	for (int x = 0; x < resolutions[0]; ++x) {
-		for (int y = 0; y < resolutions[1]; ++y) {
-			for (int z = 0; z < resolutions[2]; ++z) {
-				const auto v = array3d.get(x, y, z);
-				const auto xIsInside = voxels[0].get(x, y, z);
-				const auto yIsInside = voxels[1].get(x, y, z);
-				const auto zIsInside = voxels[2].get(x, y, z);
+	for (int i = 0; i < resolutions[0]; ++i) {
+		for (int j = 0; j < resolutions[1]; ++j) {
+			for (int k = 0; k < resolutions[2]; ++k) {
+				const auto v = array3d.get(i, j, k);
+				const auto xIsInside = voxels[0].get(i, j, k);
+				const auto yIsInside = voxels[1].get(i, j, k);
+				const auto zIsInside = voxels[2].get(i, j, k);
 				if (xIsInside || yIsInside || zIsInside) {
-					array3d.set(x, y, z, true);
+					array3d.set(i, j, k, true);
 				}
 			}
 		}

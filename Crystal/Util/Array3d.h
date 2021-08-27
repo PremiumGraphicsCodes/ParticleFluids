@@ -14,6 +14,12 @@ public:
 	{
 	}
 
+	Array3d(const std::array<size_t, 3>& resolutions, T value) :
+		Array3d(resolutions[0], resolutions[1], resolutions[2])
+	{
+		fill(value);
+	}
+
 	Array3d(const size_t unum, const size_t vnum, const size_t wnum)
 	{
 		resolutions[0] = unum;
@@ -35,6 +41,17 @@ public:
 
 	T get(int i, int j, int k) const {
 		return values[i][j][k];
+	}
+
+	void fill(const T value)
+	{
+		for (int i = 0; i < resolutions[0]; ++i) {
+			for (int j = 0; j < resolutions[1]; ++j) {
+				for (int k = 0; k < resolutions[2]; ++k) {
+					values[i][j][k] = value;
+				}
+			}
+		}
 	}
 
 	const std::array<size_t, 3>& getResolutions() const { return resolutions; }
