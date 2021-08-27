@@ -151,6 +151,12 @@
     <ClInclude Include="VolumePresenter.h">
       <Filter>Presenter\Shape\Volume</Filter>
     </ClInclude>
+    <ClInclude Include="VoxelScene.h">
+      <Filter>Scene\Shape\Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="VoxelPresenter.h">
+      <Filter>Presenter\Shape\Voxel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -247,6 +253,12 @@
     <ClCompile Include="VolumePresenter.cpp">
       <Filter>Presenter\Shape\Volume</Filter>
     </ClCompile>
+    <ClCompile Include="VoxelScene.cpp">
+      <Filter>Scene\Shape\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="VoxelPresenter.cpp">
+      <Filter>Presenter\Shape\Voxel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -329,6 +341,15 @@
     </Filter>
     <Filter Include="Presenter\Shape\Volume">
       <UniqueIdentifier>{cd64008b-51dd-40ad-9917-6bc1e8391a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Voxel">
+      <UniqueIdentifier>{f2573e85-c39e-4e1e-bd0d-47fa5fb03862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Shape\Voxel">
+      <UniqueIdentifier>{4d6a83ec-51de-4586-a503-5883ad499b51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Voxel">
+      <UniqueIdentifier>{720e27db-c0df-44a6-85b4-3bafb96d12e6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

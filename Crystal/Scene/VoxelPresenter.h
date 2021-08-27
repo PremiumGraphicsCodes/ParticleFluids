@@ -5,21 +5,19 @@
 
 namespace Crystal {
 	namespace Scene {
-		class VolumeScene;
+		class VoxelScene;
 		class PointShaderScene;
 
-class VolumePresenter : public IPresenter
+class VoxelPresenter : public IPresenter
 {
 public:
-	explicit VolumePresenter(VolumeScene* model);
+	explicit VoxelPresenter(VoxelScene* model);
 
 	void createView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
 	void removeView(SceneShader* sceneShader, Shader::GLObjectFactory& factory) override;
 
 	void updateView() override;
-
-	void setColorMap(const Graphics::ColorMap& colorMap) { this->colorMap = colorMap; }
 
 private:
 	void updateScreenView();
@@ -30,8 +28,7 @@ private:
 
 private:
 	PointShaderScene* view;
-	VolumeScene* model;
-	Graphics::ColorMap colorMap;
+	VoxelScene* model;
 };
 
 	}
