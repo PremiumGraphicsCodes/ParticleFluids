@@ -50,6 +50,17 @@ private:
 	ControlPanel* control;
 };
 
+class VoxelGenerationMenu : public IMenu
+{
+public:
+	VoxelGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
+
+	void onShow() override;
+
+private:
+	ControlPanel* control;
+};
+
 class SolidGenerationMenu : public IMenu
 {
 public:
@@ -85,6 +96,7 @@ private:
 	WFGenerationMenu wireFrameMenu;
 	PMGenerationMenu polygonMeshMenu;
 	VolGenerationMenu volMenu;
+	VoxelGenerationMenu voxelMenu;
 	SolidGenerationMenu solidMenu;
 	TransformMenu transformMenu;
 };

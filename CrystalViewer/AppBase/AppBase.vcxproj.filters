@@ -306,6 +306,12 @@
     <ClCompile Include="WFEllipsoidView.cpp">
       <Filter>Scene\Shape\WireFrame\Add</Filter>
     </ClCompile>
+    <ClCompile Include="IVoxelAddView.cpp">
+      <Filter>Scene\Shape\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="VoxelSphereView.cpp">
+      <Filter>Scene\Shape\Voxel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -655,6 +661,12 @@
     <ClInclude Include="Ellipsoid3dView.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="IVoxelAddView.h">
+      <Filter>Scene\Shape\Voxel</Filter>
+    </ClInclude>
+    <ClInclude Include="VoxelSphereView.h">
+      <Filter>Scene\Shape\Voxel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">
@@ -797,6 +809,9 @@
     </Filter>
     <Filter Include="Scene\Shape\Volume\Add">
       <UniqueIdentifier>{0294b4e3-e168-4a73-9765-d4feeae94815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\Voxel">
+      <UniqueIdentifier>{04a10c40-662f-4000-9cd5-df2f8bc055e9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

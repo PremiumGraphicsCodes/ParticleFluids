@@ -42,5 +42,6 @@ Vector3dd Volume<T>::getCellLength() const
 	return Math::Vector3dd(dx, dy, dz);
 }
 
+template class Volume<bool>;
 template class Volume<float>;
 template class Volume<double>;

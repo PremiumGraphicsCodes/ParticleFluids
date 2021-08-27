@@ -52,6 +52,7 @@
     <ClCompile Include="IPSAddView.cpp" />
     <ClCompile Include="ISolidAddView.cpp" />
     <ClCompile Include="IVolAddView.cpp" />
+    <ClCompile Include="IVoxelAddView.cpp" />
     <ClCompile Include="IWFAddView.cpp" />
     <ClCompile Include="MaterialSelectView.cpp" />
     <ClCompile Include="Matrix2dView.cpp" />
@@ -114,6 +115,7 @@
     <ClCompile Include="tinyfiledialogs.cpp" />
     <ClCompile Include="TransformView.cpp" />
     <ClCompile Include="VolSphereView.cpp" />
+    <ClCompile Include="VoxelSphereView.cpp" />
     <ClCompile Include="WFAttributeView.cpp" />
     <ClCompile Include="WFBoxView.cpp" />
     <ClCompile Include="WFCircleView.cpp" />
@@ -147,6 +149,7 @@
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="IView.h" />
     <ClInclude Include="IVolAddView.h" />
+    <ClInclude Include="IVoxelAddView.h" />
     <ClInclude Include="IWFAddView.h" />
     <ClInclude Include="MaterialSelectView.h" />
     <ClInclude Include="Matrix2dView.h" />
@@ -235,6 +238,7 @@
     <ClInclude Include="Vector2dView.h" />
     <ClInclude Include="Vector3dView.h" />
     <ClInclude Include="VolSphereView.h" />
+    <ClInclude Include="VoxelSphereView.h" />
     <ClInclude Include="WFAttributeView.h" />
     <ClInclude Include="WFBoxView.h" />
     <ClInclude Include="WFCircleView.h" />

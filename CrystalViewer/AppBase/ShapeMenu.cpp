@@ -24,6 +24,7 @@
 #include "PMConeView.h"
 
 #include "VolSphereView.h"
+#include "VoxelSphereView.h"
 
 #include "SolidBoxView.h"
 
@@ -155,7 +156,26 @@ void VolGenerationMenu::onShow()
 		}
 		ImGui::EndMenu();
 	}
+}
 
+VoxelGenerationMenu::VoxelGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas),
+	control(control)
+{}
+
+void VoxelGenerationMenu::onShow()
+{
+	auto world = getWorld();
+	auto canvas = getCanvas();
+
+	const auto& c = name.c_str();
+
+	if (ImGui::BeginMenu(c)) {
+		if (ImGui::MenuItem("VoxelSphere")) {
+			control->setWindow(new VoxelSphereView("VoxelSphere", world, canvas));
+		}
+		ImGui::EndMenu();
+	}
 }
 
 SolidGenerationMenu::SolidGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
@@ -166,7 +186,6 @@ SolidGenerationMenu::SolidGenerationMenu(const std::string& name, World* world, 
 
 void SolidGenerationMenu::onShow()
 {
-
 	auto world = getWorld();
 	auto canvas = getCanvas();
 
@@ -216,6 +235,7 @@ ShapeMenu::ShapeMenu(const std::string& name, World* world, Canvas* canvas, Cont
 	wireFrameMenu("WireFrame", world, canvas, control),
 	polygonMeshMenu("PolygonMesh", world, canvas, control),
 	volMenu("Volume", world, canvas, control),
+	voxelMenu("Voxel", world, canvas, control),
 	solidMenu("Solid", world, canvas, control),
 	transformMenu("Transform", world, canvas, control)
 {}
@@ -231,6 +251,7 @@ void ShapeMenu::onShow()
 		wireFrameMenu.show();
 		polygonMeshMenu.show();
 		volMenu.show();
+		voxelMenu.show();
 		solidMenu.show();
 		transformMenu.show();
 
