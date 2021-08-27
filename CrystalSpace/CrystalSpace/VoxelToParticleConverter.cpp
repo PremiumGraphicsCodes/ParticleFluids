@@ -7,7 +7,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
-void VoxelToParticleConverter::convert(const Voxel& voxel)
+void VoxelToParticleConverter::convert(const SparseVoxel& voxel)
 {
 	const auto& nodes = voxel.getNodes();
 

@@ -13,11 +13,11 @@ namespace Crystal {
 class VoxelScene : public Scene::IScene
 {
 public:
-	VoxelScene(const int id, const std::string& name, std::unique_ptr<Voxel> shape);
+	VoxelScene(const int id, const std::string& name, std::unique_ptr<SparseVoxel> shape);
 
-	Voxel* getShape() const { return shape.get(); }
+	SparseVoxel* getShape() const { return shape.get(); }
 
-	void resetShape(std::unique_ptr<Voxel> shape) { this->shape = std::move(shape); }
+	void resetShape(std::unique_ptr<SparseVoxel> shape) { this->shape = std::move(shape); }
 
 	Scene::SceneType getType() const { return Scene::SceneType("VoxelScene"); }
 
@@ -26,7 +26,7 @@ public:
 	Math::Box3dd getBoundingBox() const override;
 
 private:
-	std::unique_ptr<Voxel> shape;
+	std::unique_ptr<SparseVoxel> shape;
 	std::unique_ptr<VoxelPresenter> presenter;
 };
 

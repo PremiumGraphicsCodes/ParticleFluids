@@ -17,10 +17,10 @@ public:
 
 	void toVoxel(const double divideLength);
 
-	std::unique_ptr<Voxel> toVoxel() { return std::move(voxel); }
+	std::unique_ptr<SparseVoxel> toVoxel() { return std::move(voxel); }
 
 private:
-	std::unique_ptr<Voxel> voxel;
+	std::unique_ptr<SparseVoxel> voxel;
 
 	std::vector<Math::Vector3dd> positions;
 };

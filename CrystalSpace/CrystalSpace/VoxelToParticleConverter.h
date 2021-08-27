@@ -11,7 +11,7 @@ class VoxelToParticleConverter
 public:
 	//VoxelToParticleConverter();
 
-	void convert(const Voxel& voxel);
+	void convert(const SparseVoxel& voxel);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 

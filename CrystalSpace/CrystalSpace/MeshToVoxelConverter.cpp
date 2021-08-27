@@ -14,7 +14,7 @@ void MeshToVoxelConverter::convert(const PolygonMesh& mesh, const double divideL
 	const auto resy = static_cast<int>( box.getLength().y / divideLength );
 	const auto resz = static_cast<int>( box.getLength().z / divideLength );
 
-	voxel = std::make_unique<Voxel>();
+	voxel = std::make_unique<SparseVoxel>();
 	voxel->setBox(box);
 	voxel->setResolution({ resx, resy, resz });
 

@@ -5,7 +5,7 @@
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 
-VoxelScene::VoxelScene(const int id, const std::string& name, std::unique_ptr<Voxel> shape) :
+VoxelScene::VoxelScene(const int id, const std::string& name, std::unique_ptr<SparseVoxel> shape) :
 	IScene(id, name),
 	shape(std::move(shape))
 {

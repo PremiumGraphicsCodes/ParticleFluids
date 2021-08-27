@@ -5,7 +5,7 @@
 namespace Crystal {
 	namespace Space {
 
-using Voxel = SparseVolume<bool>;
+using SparseVoxel = SparseVolume<bool>;
 
 	}
 }

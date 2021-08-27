@@ -13,7 +13,7 @@ public:
 	IVoxelAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 protected:
-	void addVoxel(std::unique_ptr<Space::Voxel> voxel);
+	void addVoxel(std::unique_ptr<Space::SparseVoxel> voxel);
 
 private:
 	StringView nameView;
