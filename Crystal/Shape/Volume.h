@@ -23,6 +23,8 @@ class Volume : public IShape
 public:
 	Volume(const Math::Box3dd& box, const std::array<size_t, 3>& resolutions);
 
+	Volume(const Math::Box3dd& box, const Util::Array3d<T>& nodes);
+
 	~Volume() {
 		//clear();
 	}
@@ -52,6 +54,10 @@ public:
 	T getValue(const int i, const int j, const int k) const { return nodes.get(i,j,k); }
 
 	void setValue(const int i, const int j, const int k, const T value) { nodes.set(i,j,k, value); }
+
+	Util::Array3d<T> getNodes() const { return nodes; }
+
+	void fill(const T value) { this->nodes.fill(value); }
 
 private:
 	Math::Box3dd box;

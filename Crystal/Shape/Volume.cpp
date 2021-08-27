@@ -11,6 +11,12 @@ Volume<T>::Volume(const Math::Box3dd& box, const std::array<size_t, 3>& resoluti
 }
 
 template<typename T>
+Volume<T>::Volume(const Math::Box3dd& box, const Util::Array3d<T>& nodes) :
+	box(box),
+	nodes(nodes)
+{}
+
+template<typename T>
 Vector3dd Volume<T>::getCellPosition(int i, int j, int k) const
 {
 	const auto& length = getCellLength();

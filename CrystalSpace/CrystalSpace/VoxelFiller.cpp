@@ -6,7 +6,7 @@ using namespace Crystal::Space;
 
 // reference https://github.com/sylefeb/VoxSurf/blob/master/main.cpp
 
-Array3d<bool> VoxelFiller::fill(Voxel& voxel)
+Voxel VoxelFiller::createFilled(Voxel& voxel)
 {
 	const auto resolutions = voxel.getResolutions();
 
@@ -14,7 +14,8 @@ Array3d<bool> VoxelFiller::fill(Voxel& voxel)
 	const auto voxelY = scanY(voxel);
 	const auto voxelZ = scanZ(voxel);
 
-	return scanAll({ voxelX, voxelY, voxelZ });
+	auto data = scanAll({ voxelX, voxelY, voxelZ });
+	return Voxel(voxel.getBoundingBox(), data);
 }
 
 // along x.

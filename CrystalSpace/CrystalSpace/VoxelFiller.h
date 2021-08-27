@@ -8,7 +8,7 @@ namespace Crystal {
 class VoxelFiller
 {
 public:
-	Util::Array3d<bool> fill(Voxel& voxel);
+	Voxel createFilled(Voxel& voxel);
 
 private:
 	Util::Array3d<bool> scanX(const Voxel& voxel);
