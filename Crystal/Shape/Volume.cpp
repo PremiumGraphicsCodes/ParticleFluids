@@ -6,15 +6,9 @@ using namespace Crystal::Shape;
 template<typename T>
 Volume<T>::Volume(const Math::Box3dd& box, const std::array<size_t, 3>& resolutions) :
 	box(box),
-	resolutions(resolutions)
+	resolutions(resolutions),
+	nodes(resolutions[0], resolutions[1], resolutions[2])
 {
-	nodes.resize(resolutions[0]);
-	for (int i = 0; i < resolutions[0]; ++i) {
-		nodes[i].resize(resolutions[1]);
-		for (int j = 0; j < resolutions[1]; ++j) {
-			nodes[i][j].resize(resolutions[2]);
-		}
-	}
 }
 
 template<typename T>

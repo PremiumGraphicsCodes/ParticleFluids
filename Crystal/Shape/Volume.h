@@ -9,6 +9,8 @@
 #include "../Math/Matrix3d.h"
 #include "../Math/Matrix4d.h"
 
+#include "../Util/Array3d.h"
+
 #include <array>
 #include <vector>
 
@@ -47,9 +49,9 @@ public:
 
 	Math::Vector3dd getCellLength() const;
 
-	T getValue(const int i, const int j, const int k) const { return nodes[i][j][k]; }
+	T getValue(const int i, const int j, const int k) const { return nodes.get(i,j,k); }
 
-	void setValue(const int i, const int j, const int k, const T value) { nodes[i][j][k] = value; }
+	void setValue(const int i, const int j, const int k, const T value) { nodes.set(i,j,k, value); }
 	/*
 	const double getDU() const { return box.getLength().x / static_cast<double>(unum); }
 
@@ -61,7 +63,7 @@ public:
 private:
 	Math::Box3dd box;
 	std::array<size_t,3> resolutions;
-	std::vector<std::vector<std::vector<T>>> nodes;
+	Util::Array3d<T> nodes;
 };
 
 	}

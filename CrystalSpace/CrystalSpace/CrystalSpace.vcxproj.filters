@@ -76,6 +76,9 @@
     <ClInclude Include="Voxelizer.h">
       <Filter>Voxel</Filter>
     </ClInclude>
+    <ClInclude Include="VoxelFiller.h">
+      <Filter>Voxel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -147,6 +150,9 @@
     <ClCompile Include="MeshToParticleConverter.cpp" />
     <ClCompile Include="VoxelToParticleConverter.cpp" />
     <ClCompile Include="Voxelizer.cpp">
+      <Filter>Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="VoxelFiller.cpp">
       <Filter>Voxel</Filter>
     </ClCompile>
   </ItemGroup>
