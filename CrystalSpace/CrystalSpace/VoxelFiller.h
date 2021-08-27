@@ -8,17 +8,17 @@ namespace Crystal {
 class VoxelFiller
 {
 public:
-	void fill(Voxel& voxel);
-
-	void scanX(const Voxel& voxel, Util::Array3d<unsigned char>& array3d);
-
-	void scanY(const Voxel& voxel, Util::Array3d<unsigned char>& array3d);
-
-	void scanZ(const Voxel& voxel, Util::Array3d<unsigned char>& array3d);
-
-	void vote(Util::Array3d<unsigned char>& array3d);
+	Util::Array3d<bool> fill(Voxel& voxel);
 
 private:
+	Util::Array3d<bool> scanX(const Voxel& voxel);
+
+	Util::Array3d<bool> scanY(const Voxel& voxel);
+
+	Util::Array3d<bool> scanZ(const Voxel& voxel);
+
+	Util::Array3d<bool> scanAll(const std::array<Util::Array3d<bool>,3>& voxels);
+
 };
 	}
 }
