@@ -67,6 +67,8 @@ public:
 
 	bool calculateIntersection(const Math::Box3dd& box, const Math::Plane3d& plane, const double tolerance);
 
+	bool calculateIntersection(const Math::Box3dd& box, const Math::Triangle3d& triangle);
+
 	std::vector<Intersection> getIntersections() const { return intersections; }
 
 private:

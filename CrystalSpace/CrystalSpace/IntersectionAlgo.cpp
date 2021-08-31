@@ -235,3 +235,10 @@ bool IntersectionAlgo::calculateIntersection(const Box3dd& box, const Plane3d& p
 	// Intersection occurs when distance s falls within [-r,+r] interval
 	return ::fabs(s) <= r;
 }
+
+#include "../ThirdParty/tribox/tribox2.cpp"
+
+bool IntersectionAlgo::calculateIntersection(const Box3dd& box, const Triangle3d& triangle)
+{
+	return false;
+}
