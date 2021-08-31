@@ -227,7 +227,7 @@ bool IntersectionAlgo::calculateIntersection(const Box3dd& box, const Plane3d& p
 	// Compute the projection interval radius of b onto L(t) = b.c + t * p.n
 	float r = e[0] * ::fabs(n[0]) + e[1] * ::fabs(n[1]) + e[2] * ::fabs(n[2]);
 
-	const auto d = glm::length(plane.getOrigin());
+	const auto d = plane.calculateD();
 
 	// Compute distance of box center from plane
 	float s = glm::dot(n, c) - d;

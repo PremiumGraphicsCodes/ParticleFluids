@@ -11,6 +11,8 @@ using namespace Crystal::Math;
 using namespace Crystal::Space;
 
 namespace {
+	const auto tolerance = 1.0e-12;
+
 	Triangle3d getTriangle()
 	{
 		return Triangle3d({ Vector3dd(0,0,0), Vector3dd(10, 0, 0), Vector3dd(0, 10, 0) });
@@ -19,7 +21,6 @@ namespace {
 
 TEST(IntersectionAlgoTest, TestLineAndTriangle)
 {
-	const auto tolerance = 1.0e-12;
 	const auto& triangle = getTriangle();
 	IntersectionAlgo algo;
 
@@ -41,8 +42,6 @@ TEST(IntersectionAlgoTest, TestLineAndTriangle)
 
 TEST(IntersectionAlgoTest, TestRayAndPlane)
 {
-	const auto tolerance = 1.0e-12;
-
 	IntersectionAlgo algo;
 	const Ray3d ray(Vector3dd(0, 0, -1), Vector3dd(0, 0, 1));
 
@@ -65,8 +64,6 @@ TEST(IntersectionAlgoTest, TestRayAndPlane)
 
 TEST(IntersectionAlgoTest, TestRayAndTriangle)
 {
-	const auto tolerance = 1.0e-12;
-
 	IntersectionAlgo algo;
 	const auto& triangle = getTriangle();
 
@@ -88,7 +85,6 @@ TEST(IntersectionAlgoTest, TestRayAndTriangle)
 
 TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 {
-	const auto tolerance = 1.0e-12;
 	IntersectionAlgo algo;
 	const auto& triangle1 = getTriangle();
 
@@ -104,12 +100,14 @@ TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 
 }
 
-/*
 TEST(IntersectionAlgoTest, TestBoxAndPlane)
 {
 	IntersectionAlgo i;
 	const Box3dd box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	i.calculateIntersection(box, Plane3d())
-	i.calculateIntersection(Box3dd(0,0,0), Box3dd(10,10,10),)
+	const Plane3d plane1(Vector3dd(5,5,5), Vector3dd(0, 0, 1));
+	EXPECT_TRUE( i.calculateIntersection(box, plane1, tolerance) );
+	const Plane3d plane2(Vector3dd(5, 5, 15), Vector3dd(0, 0, 1));
+	EXPECT_FALSE( i.calculateIntersection(box, plane2, tolerance));
+
+	//i.calculateIntersection(Box3dd(0,0,0), Box3dd(10,10,10),)
 }
-*/
