@@ -70,7 +70,7 @@ namespace {
 	}
 }
 
-void Voxelizer::voxelize(const PolygonMesh& polygon, const float res)
+std::vector<Vector3dd> Voxelizer::voxelizeToPoints(const PolygonMesh& polygon, const float res)
 {
 	vx_point_cloud_t* result;
 
@@ -81,10 +81,11 @@ void Voxelizer::voxelize(const PolygonMesh& polygon, const float res)
 	// Run voxelization
 	result = vx_voxelize_pc(mesh, res, res, res, precision);
 
+	std::vector<Vector3dd> points;
 	for (int i = 0; i < result->nvertices; ++i) {
 		const auto v = result->vertices[i];
 		Vector3df p( v.x, v.y, v.z);
-		this->points.push_back(p);
+		points.push_back(p);
 	}
 
 	/*
@@ -105,9 +106,10 @@ void Voxelizer::voxelize(const PolygonMesh& polygon, const float res)
 
 	vx_point_cloud_free(result);
 	vx_mesh_free(mesh);
+	return points;
 }
 
-void Voxelizer::voxelize(const PolygonMesh& polygon, const std::array<int, 3>& res)
+std::vector<Vector3dd> Voxelizer::voxelizeToPoints(const PolygonMesh& polygon, const std::array<int, 3>& res)
 {
 	vx_aabb_t* aabb = NULL;
 	vx_aabb_t* meshaabb = NULL;
@@ -123,6 +125,14 @@ void Voxelizer::voxelize(const PolygonMesh& polygon, const std::array<int, 3>& r
 	const float resz = length.z / res[2];
 
 	vx_point_cloud_t* pc = vx_voxelize_pc(m, resx, resy, resz, 0.0);
+
+	std::vector<Vector3dd> points;
+	for (int i = 0; i < pc->nvertices; ++i) {
+		const auto v = pc->vertices[i];
+		Vector3df p(v.x, v.y, v.z);
+		points.push_back(p);
+	}
+
 
 	/*
 	for (size_t i = 0; i < pc->nvertices; ++i) {
@@ -168,5 +178,5 @@ void Voxelizer::voxelize(const PolygonMesh& polygon, const std::array<int, 3>& r
 
 	//VX_FREE(aabb);
 	VX_FREE(meshaabb);
-
+	return points;
 }

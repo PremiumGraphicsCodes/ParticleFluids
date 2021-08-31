@@ -31,12 +31,12 @@ void VoxelizerView::onOk()
 	auto mesh = builder.build();
 
 	Voxelizer voxelizer;
-	voxelizer.voxelize(*mesh, divideLengthView.getValue());
+	const auto points = voxelizer.voxelizeToPoints(*mesh, divideLengthView.getValue());
 
 	ParticleAttribute attr;
 	attr.size = 10.0f;
 	attr.color = ColorRGBAf(1.0f, 1.0f, 1.0f, 1.0f);
-	auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>(voxelizer.getPoints(), attr);
+	auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>(points, attr);
 
 	auto scene = new ParticleSystemScene(getWorld()->getNextSceneId(), "Voxelized", std::move(ps));
 	getWorld()->getScenes()->addScene(scene);

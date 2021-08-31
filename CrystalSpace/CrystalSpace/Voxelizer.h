@@ -12,14 +12,11 @@ namespace Crystal {
 class Voxelizer
 {
 public:
-	void voxelize(const Shape::PolygonMesh& polygon, const float res);
+	std::vector<Math::Vector3dd> voxelizeToPoints(const Shape::PolygonMesh& polygon, const float res);
 
-	void voxelize(const Shape::PolygonMesh& polygon, const std::array<int,3>& res);
-
-	std::vector<Math::Vector3dd> getPoints() const { return points; }
+	std::vector<Math::Vector3dd> voxelizeToPoints(const Shape::PolygonMesh& polygon, const std::array<int,3>& res);
 
 private:
-	std::vector<Math::Vector3dd> points;
 };
 	}
 }
