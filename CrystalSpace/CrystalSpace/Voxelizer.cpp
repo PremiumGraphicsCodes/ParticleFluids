@@ -88,22 +88,6 @@ std::vector<Vector3dd> Voxelizer::voxelizeToPoints(const PolygonMesh& polygon, c
 		points.push_back(p);
 	}
 
-	/*
-	const auto width = 10;
-	const auto height = 10;
-	const auto depth = 10;
-	auto result_volume = vx_voxelize_snap_3dgrid(mesh, width, height, depth);
-	for (int i = 0; i < width; ++i) {
-		for (int j = 0; j < height; ++j) {
-			for (int k = 0; k < depth; ++k) {
-				auto index = i + i * width + i * (width * height);
-				auto v = result_volume[index];
-			}
-		}
-	}
-	//result_volume.[0][0][0];
-	*/
-
 	vx_point_cloud_free(result);
 	vx_mesh_free(mesh);
 	return points;
@@ -111,10 +95,6 @@ std::vector<Vector3dd> Voxelizer::voxelizeToPoints(const PolygonMesh& polygon, c
 
 std::vector<Vector3dd> Voxelizer::voxelizeToPoints(const PolygonMesh& polygon, const std::array<int, 3>& res)
 {
-	vx_aabb_t* aabb = NULL;
-	vx_aabb_t* meshaabb = NULL;
-	float ax, ay, az;
-
 	const auto bb = polygon.getBoundingBox();
 	const auto length = bb.getLength();
 
@@ -133,50 +113,31 @@ std::vector<Vector3dd> Voxelizer::voxelizeToPoints(const PolygonMesh& polygon, c
 		points.push_back(p);
 	}
 
+	vx_mesh_free(m);
+	return points;
+}
 
-	/*
-	for (size_t i = 0; i < pc->nvertices; ++i) {
-		ox = pc->vertices[i].x + fabs(aabb->min.x);
-		oy = pc->vertices[i].y + fabs(aabb->min.y);
-		oz = pc->vertices[i].z + fabs(aabb->min.z);
+std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const std::array<size_t, 3>& res)
+{
+	const auto bb = polygon.getBoundingBox();
+	auto voxel = std::make_unique<Voxel>(bb, res);
 
-		VX_ASSERT(ox >= 0.f);
-		VX_ASSERT(oy >= 0.f);
-		VX_ASSERT(oz >= 0.f);
+	auto m = toMesh(polygon);
 
-		ix = (ax == 0.0) ? 0 : (ox / ax) * (width - 1);
-		iy = (ay == 0.0) ? 0 : (oy / ay) * (height - 1);
-		iz = (az == 0.0) ? 0 : (oz / az) * (depth - 1);
-
-
-		VX_ASSERT(ix >= 0);
-		VX_ASSERT(iy >= 0);
-		VX_ASSERT(iz >= 0);
-
-		const auto ix = (ax == 0.0) ? 0 : (ox / ax) * (width - 1);
-		iy = (ay == 0.0) ? 0 : (oy / ay) * (height - 1);
-		iz = (az == 0.0) ? 0 : (oz / az) * (depth - 1);
-
-
-		VX_ASSERT(ix >= 0);
-		VX_ASSERT(iy >= 0);
-		VX_ASSERT(iz >= 0);
-
-		VX_ASSERT(ix + iy * width + iz * (width * height) < width * height * depth);
-
-		color = vx__rgbaf32_to_abgr8888(rgba);
-		index = ix + iy * width + iz * (width * height);
-
-		if (data[index] != 0) {
-			data[index] = vx__mix(color, data[index]);
-		}
-		else {
-			data[index] = color;
+	const auto width = res[0];
+	const auto height = res[1];
+	const auto depth = res[2];
+	auto grid = vx_voxelize_snap_3dgrid(m, width, height, depth);
+	for (int i = 0; i < width; ++i) {
+		for (int j = 0; j < height; ++j) {
+			for (int k = 0; k < depth; ++k) {
+				auto index = i + i * width + i * (width * height);
+				auto v = grid[index];
+				voxel->setValue(i, j, k, v);
+			}
 		}
 	}
-	*/
 
-	//VX_FREE(aabb);
-	VX_FREE(meshaabb);
-	return points;
+	VX_FREE(grid);
+	return voxel;
 }
