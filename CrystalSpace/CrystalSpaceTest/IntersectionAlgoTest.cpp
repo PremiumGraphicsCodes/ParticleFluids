@@ -4,6 +4,7 @@
 #include "../../Crystal/Math/Plane3d.h"
 #include "../../Crystal/Math/Ray3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
+#include "../../Crystal/Math/Box3d.h"
 #include "../CrystalSpace/IntersectionAlgo.h"
 
 using namespace Crystal::Math;
@@ -102,3 +103,13 @@ TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 	}
 
 }
+
+/*
+TEST(IntersectionAlgoTest, TestBoxAndPlane)
+{
+	IntersectionAlgo i;
+	const Box3dd box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+	i.calculateIntersection(box, Plane3d())
+	i.calculateIntersection(Box3dd(0,0,0), Box3dd(10,10,10),)
+}
+*/

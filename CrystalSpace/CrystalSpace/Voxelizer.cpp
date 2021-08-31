@@ -6,6 +6,7 @@
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "../../Crystal/Math/Triangle3d.h"
 #include "SpaceHash3d.h"
+#include "Octree.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -133,6 +134,10 @@ std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const std
 			continue;
 		}
 		const auto bb = triangle.getBoundingBox();
+
+		//Octree octree;
+		//octree.add()
+		//for(auto x = bb.getMinX(); x < bb.getMaxX(); x+= dx)
 	}
 
 		/*
