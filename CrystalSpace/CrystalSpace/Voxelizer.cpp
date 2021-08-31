@@ -4,6 +4,8 @@
 
 #include "../ThirdParty/voxelizer/voxelizer.h"
 #include "../../Crystal/Shape/PolygonMesh.h"
+#include "../../Crystal/Math/Triangle3d.h"
+#include "SpaceHash3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -122,12 +124,120 @@ std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const std
 	const auto bb = polygon.getBoundingBox();
 	auto voxel = std::make_unique<Voxel>(bb, res);
 
+	SpaceHash3d table(1.0, 1000);
+	const auto faces = polygon.getFaces();
+	
+	for (const auto& f : faces) {
+		const auto triangle = f.toTriangle(polygon.getPositions());
+		if (triangle.getArea() < 1.0e-12) {
+			continue;
+		}
+		const auto bb = triangle.getBoundingBox();
+	}
+
+		/*
+			if (vx__triangle_area(&triangle) < VOXELIZER_EPSILON) {
+				// triangle with 0 area
+				continue;
+			}
+
+			vx_aabb_t aabb = vx__triangle_aabb(&triangle);
+
+			aabb.min.x = vx__map_to_voxel(aabb.min.x, vs.x, true);
+			aabb.min.y = vx__map_to_voxel(aabb.min.y, vs.y, true);
+			aabb.min.z = vx__map_to_voxel(aabb.min.z, vs.z, true);
+
+			aabb.max.x = vx__map_to_voxel(aabb.max.x, vs.x, false);
+			aabb.max.y = vx__map_to_voxel(aabb.max.y, vs.y, false);
+			aabb.max.z = vx__map_to_voxel(aabb.max.z, vs.z, false);
+
+			for (float x = aabb.min.x; x <= aabb.max.x; x += vs.x) {
+				for (float y = aabb.min.y; y <= aabb.max.y; y += vs.y) {
+					for (float z = aabb.min.z; z <= aabb.max.z; z += vs.z) {
+						vx_aabb_t saabb;
+
+						saabb.min.x = x - hvs.x;
+						saabb.min.y = y - hvs.y;
+						saabb.min.z = z - hvs.z;
+						saabb.max.x = x + hvs.x;
+						saabb.max.y = y + hvs.y;
+						saabb.max.z = z + hvs.z;
+
+						vx_vertex_t boxcenter = vx__aabb_center(&saabb);
+						vx_vertex_t halfsize = vx__aabb_half_size(&saabb);
+
+						// HACK: some holes might appear, this
+						// precision factor reduces the artifact
+						halfsize.x += precision;
+						halfsize.y += precision;
+						halfsize.z += precision;
+
+						if (vx__triangle_box_overlap(boxcenter, halfsize, triangle)) {
+							vx_vec3_t v1, v2, v3;
+							vx_color_t c1, c2, c3;
+							vx_voxel_data_t* nodedata;
+							float a1, a2, a3;
+							float area;
+
+							nodedata = VX_MALLOC(vx_voxel_data_t, 1);
+
+							if (m->colors != NULL) {
+								// Perform barycentric interpolation of colors
+								v1 = triangle.p1;
+								v2 = triangle.p2;
+								v3 = triangle.p3;
+
+								c1 = triangle.colors[0];
+								c2 = triangle.colors[1];
+								c3 = triangle.colors[2];
+
+								vx_triangle_t t1 = { {{v1, v2, boxcenter}}, {{{{0.0f, 0.0f, 0.0f}}}} };
+								vx_triangle_t t2 = { {{v2, v3, boxcenter}}, {{{{0.0f, 0.0f, 0.0f}}}} };
+								vx_triangle_t t3 = { {{v3, v1, boxcenter}}, {{{{0.0f, 0.0f, 0.0f}}}} };
+
+								a1 = vx__triangle_area(&t1);
+								a2 = vx__triangle_area(&t2);
+								a3 = vx__triangle_area(&t3);
+
+								area = a1 + a2 + a3;
+
+								vx__vec3_multiply(&c1, a2 / area);
+								vx__vec3_multiply(&c2, a3 / area);
+								vx__vec3_multiply(&c3, a1 / area);
+
+								vx__vec3_add(&c1, &c2);
+								vx__vec3_add(&c1, &c3);
+
+								nodedata->color = c1;
+							}
+
+							nodedata->position = boxcenter;
+
+							size_t hash = vx__vertex_hash(boxcenter, VOXELIZER_HASH_TABLE_SIZE);
+
+							bool insert = vx__hash_table_insert(table, hash, nodedata,
+								vx__vertex_comp_func);
+
+							if (insert) {
+								(*nvoxels)++;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return table;
+	}
+	*/
+
+	/*
 	auto m = toMesh(polygon);
 
 	const auto width = res[0];
 	const auto height = res[1];
 	const auto depth = res[2];
-	auto grid = vx_voxelize_snap_3dgrid(m, width, height, depth);
+	auto grid = vx_voxelize(m, width, height, depth);
 	for (int i = 0; i < width; ++i) {
 		for (int j = 0; j < height; ++j) {
 			for (int k = 0; k < depth; ++k) {
@@ -137,7 +247,7 @@ std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const std
 			}
 		}
 	}
+	*/
 
-	VX_FREE(grid);
 	return voxel;
 }

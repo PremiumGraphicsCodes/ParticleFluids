@@ -1,8 +1,7 @@
 #include "VoxelizerView.h"
 
-
 #include "../CrystalSpace/Voxelizer.h"
-//#include "../CrystalSpace/VoxelScene.h"
+#include "../../Crystal/Scene/VoxelScene.h"
 
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
@@ -18,12 +17,20 @@ using namespace Crystal::UI;
 
 VoxelizerView::VoxelizerView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
+	toPointsButton("ToPoints"),
+	toVoxelButton("ToVoxel"),
 	divideLengthView("DivideLength", 1.0)
 {
+	toPointsButton.setFunction([=]() { toPoints(); });
+	toVoxelButton.setFunction([=]() { toVolume(); });
+
+	add(&toPointsButton);
+	add(&toVoxelButton);
+
 	add(&divideLengthView);
 }
 
-void VoxelizerView::onOk()
+void VoxelizerView::toPoints()
 {
 	PolygonMeshBuilder builder;
 	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
@@ -43,4 +50,23 @@ void VoxelizerView::onOk()
 
 	auto presenter = scene->getPresenter();
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+}
+
+void VoxelizerView::toVolume()
+{
+	PolygonMeshBuilder builder;
+	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+	builder.add(box, 2, 2, 2);
+	auto mesh = builder.build();
+
+	Voxelizer voxelizer;
+	auto voxel = voxelizer.voxelize(*mesh, { 10,10,10 });
+	auto scene = new VoxelScene(getWorld()->getNextSceneId(), "Voxelized", std::move(voxel));
+
+	auto presenter = scene->getPresenter();
+	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+}
+
+void VoxelizerView::onOk()
+{
 }
