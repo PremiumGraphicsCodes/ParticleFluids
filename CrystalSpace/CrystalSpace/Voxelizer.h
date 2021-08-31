@@ -19,7 +19,7 @@ public:
 
 	std::vector<Math::Vector3dd> voxelizeToPoints(const Shape::PolygonMesh& polygon, const std::array<int,3>& res);
 
-	std::unique_ptr<Voxel> voxelize(const Shape::PolygonMesh& polygon, const std::array<size_t, 3>& res);
+	std::unique_ptr<Voxel> voxelize(const Shape::PolygonMesh& polygon, const double res);
 
 private:
 };

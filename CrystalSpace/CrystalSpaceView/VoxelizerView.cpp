@@ -60,7 +60,7 @@ void VoxelizerView::toVolume()
 	auto mesh = builder.build();
 
 	Voxelizer voxelizer;
-	auto voxel = voxelizer.voxelize(*mesh, { 10,10,10 });
+	auto voxel = voxelizer.voxelize(*mesh, 1.0);
 	auto scene = new VoxelScene(getWorld()->getNextSceneId(), "Voxelized", std::move(voxel));
 
 	auto presenter = scene->getPresenter();

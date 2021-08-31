@@ -42,7 +42,7 @@ namespace {
 
 	bool check_overlap(const Box3dd& box, const Triangle3d& triangle)
 	{
-		return false;
+		return box.hasIntersection(triangle.getBoundingBox());
 	}
 }
 
@@ -93,12 +93,16 @@ std::vector<Vector3dd> Voxelizer::voxelizeToPoints(const PolygonMesh& polygon, c
 	return points;
 }
 
-std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const std::array<size_t, 3>& res)
+std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const double res)
 {
 	const auto bb = polygon.getBoundingBox();
-	auto voxel = std::make_unique<Voxel>(bb, res);
+	const auto xres = static_cast<size_t>( bb.getLength().x / res);
+	const auto yres = static_cast<size_t>( bb.getLength().y / res);
+	const auto zres = static_cast<size_t>(bb.getLength().z / res);
+	std::array<size_t, 3> ress = { xres, yres, zres };
+	auto voxel = std::make_unique<Voxel>(bb, ress);
 
-	SpaceHash3d table(1.0, 1000);
+	SpaceHash3d table(res, 1000);
 	const auto faces = polygon.getFaces();
 	
 	for (const auto& f : faces) {
@@ -108,13 +112,14 @@ std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const std
 		}
 		const auto bb = triangle.getBoundingBox();
 
-		const auto voxelSize = bb.getLength() / 10.0;
+		const auto voxelSize = Vector3dd(res);
 		for (float x = bb.getMinX(); x <= bb.getMaxX(); x += voxelSize.x) {
 			for (float y = bb.getMinY(); y <= bb.getMaxY(); y += voxelSize.y) {
 				for (float z = bb.getMinZ(); z <= bb.getMaxZ(); z += voxelSize.z) {
-					const auto v1 = Vector3dd(x, y, z) - voxelSize * 0.5;
-					const auto v2 = Vector3dd(x, y, z) + voxelSize * 0.5;
-					Box3dd smallBox(v1, v1 + voxelSize);
+					const Vector3dd p(x, y, z);
+					const auto v1 = p - voxelSize * 0.5;
+					const auto v2 = p + voxelSize * 0.5;
+					Box3dd smallBox(v1, v2);
 
 					// HACK: some holes might appear, this
 					// precision factor reduces the artifact
@@ -123,21 +128,7 @@ std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const std
 						//halfsize.z += precision;
 
 					if (::check_overlap(smallBox, triangle)) {
-						/*
-							nodedata = VX_MALLOC(vx_voxel_data_t, 1);
-
-							nodedata->position = boxcenter;
-
-							size_t hash = vx__vertex_hash(boxcenter, VOXELIZER_HASH_TABLE_SIZE);
-
-							bool insert = vx__hash_table_insert(table, hash, nodedata,
-								vx__vertex_comp_func);
-
-							if (insert) {
-								(*nvoxels)++;
-							}
-						}
-						*/
+						table.add(new Particle<bool>(p, false));
 					}
 				}
 			}
