@@ -1,6 +1,6 @@
 #include "MeshToParticleConverter.h"
 
-#include "MeshToVoxelConverter.h"
+#include "Voxelizer.h"
 
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Math/Circle3d.h"
@@ -11,12 +11,18 @@ using namespace Crystal::Space;
 
 void MeshToParticleConverter::subdivide(const PolygonMesh& mesh, const double divideLength)
 {
-	MeshToVoxelConverter converter;
-	converter.convert(mesh, divideLength);
-	auto voxel = converter.toVoxel();
-	auto nodes = voxel->getNodes();
+	Voxelizer converter;
+	auto voxel = converter.voxelize(mesh, divideLength);
 
-	for (const auto& node : nodes) {
-		positions.push_back( node.second->getPosition() );
+	const auto res = voxel->getResolutions();
+
+	for (int i = 0; i < res[0]; ++i) {
+		for (int j = 0; j < res[1]; ++j) {
+			for (int k = 0; k < res[2]; ++k) {
+				if (voxel->getValue(i, j, k)) {
+					positions.push_back(voxel->getCellPosition(i, j, k));
+				}
+			}
+		}
 	}
 }

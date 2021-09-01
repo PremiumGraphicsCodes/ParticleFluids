@@ -68,9 +68,6 @@
     <ClInclude Include="VoxelPresenter.h">
       <Filter>Voxel</Filter>
     </ClInclude>
-    <ClInclude Include="MeshToVoxelConverter.h">
-      <Filter>Voxel</Filter>
-    </ClInclude>
     <ClInclude Include="MeshToParticleConverter.h" />
     <ClInclude Include="VoxelToParticleConverter.h" />
     <ClInclude Include="Voxelizer.h">
@@ -145,9 +142,6 @@
       <Filter>Voxel</Filter>
     </ClCompile>
     <ClCompile Include="VoxelPresenter.cpp">
-      <Filter>Voxel</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshToVoxelConverter.cpp">
       <Filter>Voxel</Filter>
     </ClCompile>
     <ClCompile Include="MeshToParticleConverter.cpp" />
