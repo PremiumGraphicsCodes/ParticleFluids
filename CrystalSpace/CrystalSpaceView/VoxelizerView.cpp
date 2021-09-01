@@ -44,7 +44,7 @@ void VoxelizerView::onOk()
 
 	Voxelizer voxelizer;
 	voxelizer.voxelize(*mesh, 1.0);
-	//voxelizer.fill();
+	voxelizer.fill();
 	auto voxel = voxelizer.getVoxel();
 
 	std::ofstream stream("test2.txt");

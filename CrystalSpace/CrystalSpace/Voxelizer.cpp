@@ -128,7 +128,6 @@ Array3d<bool> Voxelizer::scanY()
 		for (int i = 0; i < resolutions[0]; ++i) {
 			bool isInside = false;
 			for (int j = 0; j < resolutions[1]; ++j) {
-				bool isInside = false;
 				if (voxel->getValue(i, j, k)) {
 					isInside = !isInside;
 				}
