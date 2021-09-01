@@ -39,6 +39,8 @@
     <ClInclude Include="STLBinaryFileWriter.h" />
     <ClInclude Include="STLFile.h" />
     <ClInclude Include="STLFileReader.h" />
+    <ClInclude Include="TXTFileReader.h" />
+    <ClInclude Include="TXTFileWriter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageFileReader.cpp" />
@@ -55,6 +57,8 @@
     <ClCompile Include="STLBinaryFileReader.cpp" />
     <ClCompile Include="STLBinaryFileWriter.cpp" />
     <ClCompile Include="STLFileReader.cpp" />
+    <ClCompile Include="TXTFileReader.cpp" />
+    <ClCompile Include="TXTFileWriter.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{198160CC-5ED1-499D-AD45-90DBAC4852F8}</ProjectGuid>

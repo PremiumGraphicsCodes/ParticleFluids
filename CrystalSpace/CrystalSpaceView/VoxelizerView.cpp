@@ -9,11 +9,12 @@
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 #include "../../Crystal/Math/Sphere3d.h"
 
-//#include "../../Crystal/IO/TEXT"
+#include "../../Crystal/IO/TXTFileWriter.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Graphics;
+using namespace Crystal::IO;
 using namespace Crystal::Scene;
 using namespace Crystal::Space;
 using namespace Crystal::UI;
@@ -31,8 +32,6 @@ VoxelizerView::VoxelizerView(const std::string& name, World* model, Canvas* canv
 	add(&divideLengthView);
 }
 
-#include <fstream>
-
 void VoxelizerView::onOk()
 {
 	PolygonMeshBuilder builder;
@@ -47,17 +46,19 @@ void VoxelizerView::onOk()
 	voxelizer.fill();
 	auto voxel = voxelizer.getVoxel();
 
-	std::ofstream stream("test2.txt");
+	std::vector<Math::Vector3dd> positions;
 	for (int i = 0; i < voxel->getResolutions()[0]; ++i) {
 		for (int j = 0; j < voxel->getResolutions()[1]; ++j) {
 			for (int k = 0; k < voxel->getResolutions()[2]; ++k) {
 				if (voxel->getValue(i, j, k)) {
 					auto p = voxel->getCellPosition(i, j, k);
-					stream << p.x << " " << p.y << " " << p.z << std::endl;
+					positions.push_back(p);
 				}
 			}
 		}
 	}
+	TXTFileWriter writer;
+	writer.write("test2.txt", positions);
 
 	auto scene = new VoxelScene(getWorld()->getNextSceneId(), "Voxelized", std::move(voxel));
 
