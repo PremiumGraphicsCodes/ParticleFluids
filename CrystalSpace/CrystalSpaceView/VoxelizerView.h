@@ -13,15 +13,9 @@ public:
 	VoxelizerView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 private:
-	void toPoints();
-
-	void toVolume();
-
 	void onOk() override;
 
 private:
-	Button toPointsButton;
-	Button toVoxelButton;
 	DoubleView divideLengthView;
 };
 

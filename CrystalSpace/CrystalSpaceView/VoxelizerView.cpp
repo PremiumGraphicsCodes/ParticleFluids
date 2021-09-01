@@ -18,47 +18,23 @@ using namespace Crystal::UI;
 
 VoxelizerView::VoxelizerView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
-	toPointsButton("ToPoints"),
-	toVoxelButton("ToVoxel"),
 	divideLengthView("DivideLength", 1.0)
 {
-	toPointsButton.setFunction([=]() { toPoints(); });
-	toVoxelButton.setFunction([=]() { toVolume(); });
+	//toPointsButton.setFunction([=]() { toPoints(); });
+	//toVoxelButton.setFunction([=]() { toVolume(); });
 
-	add(&toPointsButton);
-	add(&toVoxelButton);
+	//add(&toPointsButton);
+	//add(&toVoxelButton);
 
 	add(&divideLengthView);
 }
 
-void VoxelizerView::toPoints()
-{
-	PolygonMeshBuilder builder;
-	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	builder.add(box, 2, 2, 2);
-	auto mesh = builder.build();
-
-	Voxelizer voxelizer;
-	const auto points = voxelizer.voxelizeToPoints(*mesh, divideLengthView.getValue());
-
-	ParticleAttribute attr;
-	attr.size = 10.0f;
-	attr.color = ColorRGBAf(1.0f, 1.0f, 1.0f, 1.0f);
-	auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>(points, attr);
-
-	auto scene = new ParticleSystemScene(getWorld()->getNextSceneId(), "Voxelized", std::move(ps));
-	getWorld()->getScenes()->addScene(scene);
-
-	auto presenter = scene->getPresenter();
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-}
-
-void VoxelizerView::toVolume()
+void VoxelizerView::onOk()
 {
 	PolygonMeshBuilder builder;
 	//const Box3d box(Vector3dd(0, 0, 0), Vector3dd(5, 10, 10));
 	//builder.add(box, 2, 2, 2);
-	const Sphere3dd sphere(Vector3dd(0,0,0), 5);
+	const Sphere3dd sphere(Vector3dd(0, 0, 0), 5);
 	builder.add(sphere, 32, 32);
 	auto mesh = builder.build();
 
@@ -68,8 +44,5 @@ void VoxelizerView::toVolume()
 
 	auto presenter = scene->getPresenter();
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-}
 
-void VoxelizerView::onOk()
-{
 }
