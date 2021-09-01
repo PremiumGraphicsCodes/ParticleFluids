@@ -6,7 +6,7 @@
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "../../Crystal/Math/Triangle3d.h"
 #include "SpaceHash3d.h"
-#include "Octree.h"
+#include "Overlap.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -126,8 +126,8 @@ std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const dou
 						//halfsize.x += precision;
 						//halfsize.y += precision;
 						//halfsize.z += precision;
-
-					if (::check_overlap(smallBox, triangle)) {
+					Overlap o;
+					if (o.overlap(smallBox, triangle)) {
 						table.add(new Particle<bool>(p, false));
 					}
 				}
@@ -135,6 +135,7 @@ std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const dou
 		}
 
 	}
+	//table.
 
 	/*
 	auto m = toMesh(polygon);

@@ -55,11 +55,6 @@ void SpaceHash3d::solveInteractions(IParticle* particle, const std::function<voi
 					if (ix != index) {
 						continue;
 					}
-					/*
-					if (p->getParent() == macro) {
-						continue;
-					}
-					*/
 					const double d2 = Math::getDistanceSquared(p->getPosition(), position);
 					if (d2 < divideLength * divideLength) {
 						func(p, particle);
@@ -71,7 +66,36 @@ void SpaceHash3d::solveInteractions(IParticle* particle, const std::function<voi
 	}
 }
 
-std::array<int, 3> SpaceHash3d::toIndex(const Vector3df& pos)
+std::vector<IParticle*> SpaceHash3d::getParticles(const Vector3df& position)
+{
+	const auto& index = toIndex(position);
+	const auto& hash = toHash(index);
+	const auto& points = table[hash];
+	std::vector<IParticle*> results;
+	for (auto p : points) {
+		const auto ix = toIndex(p->getPosition());
+		if (ix == index) {
+			results.push_back(p);
+		}
+	}
+	return results;
+}
+
+bool SpaceHash3d::isEmpty(const Vector3df& position) const
+{
+	const auto& index = toIndex(position);
+	const auto& hash = toHash(index);
+	const auto& points = table[hash];
+	for (auto p : points) {
+		const auto ix = toIndex(p->getPosition());
+		if (ix == index) {
+			return true;
+		}
+	}
+	return false;
+}
+
+std::array<int, 3> SpaceHash3d::toIndex(const Vector3df& pos) const
 {
 	const int ix = static_cast<int>((pos[0]) / divideLength);
 	const int iy = static_cast<int>((pos[1]) / divideLength);
@@ -79,12 +103,12 @@ std::array<int, 3> SpaceHash3d::toIndex(const Vector3df& pos)
 	return { ix, iy, iz };
 }
 
-int SpaceHash3d::toHash(const Vector3df& pos)
+int SpaceHash3d::toHash(const Vector3df& pos) const
 {
 	return toHash(toIndex(pos));
 }
 
-int SpaceHash3d::toHash(const std::array<int, 3>& index)
+int SpaceHash3d::toHash(const std::array<int, 3>& index) const
 {
 	std::bitset<32> x = index[0] * p1;
 	std::bitset<32> y = index[1] * p2;
