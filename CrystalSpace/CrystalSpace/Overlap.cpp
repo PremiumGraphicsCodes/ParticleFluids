@@ -48,6 +48,5 @@ bool Overlap::overlap(const Box3dd& box, const Triangle3d& triangle)
 		vertices[i][1] = vs[i].y;
 		vertices[i][2] = vs[i].z;
 	}
-	::triBoxOverlap(boxCenter.data(), halfSize.data(), vertices);
-	return false;
+	return ::triBoxOverlap(boxCenter.data(), halfSize.data(), vertices);
 }

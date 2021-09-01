@@ -99,17 +99,3 @@ TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 	}
 
 }
-
-/*
-TEST(IntersectionAlgoTest, TestBoxAndPlane)
-{
-	IntersectionAlgo i;
-	const Box3dd box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	const Plane3d plane1(Vector3dd(5,5,5), Vector3dd(0, 0, 1));
-	EXPECT_TRUE( i.calculateIntersection(box, plane1, tolerance) );
-	const Plane3d plane2(Vector3dd(5, 5, 15), Vector3dd(0, 0, 1));
-	EXPECT_FALSE( i.calculateIntersection(box, plane2, tolerance));
-
-	//i.calculateIntersection(Box3dd(0,0,0), Box3dd(10,10,10),)
-}
-*/
