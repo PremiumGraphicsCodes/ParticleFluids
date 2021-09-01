@@ -7,6 +7,7 @@
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
+#include "../../Crystal/Math/Sphere3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -55,8 +56,10 @@ void VoxelizerView::toPoints()
 void VoxelizerView::toVolume()
 {
 	PolygonMeshBuilder builder;
-	const Box3d box(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	builder.add(box, 2, 2, 2);
+	//const Box3d box(Vector3dd(0, 0, 0), Vector3dd(5, 10, 10));
+	//builder.add(box, 2, 2, 2);
+	const Sphere3dd sphere(Vector3dd(0,0,0), 5);
+	builder.add(sphere, 32, 32);
 	auto mesh = builder.build();
 
 	Voxelizer voxelizer;

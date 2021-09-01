@@ -89,10 +89,10 @@ bool SpaceHash3d::isEmpty(const Vector3df& position) const
 	for (auto p : points) {
 		const auto ix = toIndex(p->getPosition());
 		if (ix == index) {
-			return true;
+			return false;
 		}
 	}
-	return false;
+	return true;
 }
 
 std::array<int, 3> SpaceHash3d::toIndex(const Vector3df& pos) const
