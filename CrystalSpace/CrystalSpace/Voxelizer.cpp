@@ -13,9 +13,9 @@ using namespace Crystal::Space;
 void Voxelizer::voxelize(const PolygonMesh& polygon, const double res)
 {
 	const auto bb = polygon.getBoundingBox();
-	const auto xres = static_cast<size_t>( bb.getLength().x / res);
-	const auto yres = static_cast<size_t>( bb.getLength().y / res);
-	const auto zres = static_cast<size_t>( bb.getLength().z / res);
+	const auto xres = static_cast<size_t>( bb.getLength().x / res) + 1;
+	const auto yres = static_cast<size_t>( bb.getLength().y / res) + 1;
+	const auto zres = static_cast<size_t>( bb.getLength().z / res) + 1;
 	std::array<size_t, 3> ress = { xres, yres, zres };
 
 	const auto faces = polygon.getFaces();
