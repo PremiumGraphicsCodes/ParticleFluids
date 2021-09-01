@@ -39,7 +39,8 @@ void VoxelizerView::onOk()
 	auto mesh = builder.build();
 
 	Voxelizer voxelizer;
-	auto voxel = voxelizer.voxelize(*mesh, 1.0);
+	voxelizer.voxelize(*mesh, 1.0);
+	auto voxel = voxelizer.getVoxel();
 	auto scene = new VoxelScene(getWorld()->getNextSceneId(), "Voxelized", std::move(voxel));
 
 	auto presenter = scene->getPresenter();

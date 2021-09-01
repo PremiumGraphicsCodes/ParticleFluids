@@ -1,18 +1,16 @@
 #include "Voxelizer.h"
 
-//#define VOXELIZER_IMPLEMENTATION
-
-//#include "../ThirdParty/voxelizer/voxelizer.h"
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "../../Crystal/Math/Triangle3d.h"
 #include "SpaceHash3d.h"
 #include "Overlap.h"
 
+using namespace Crystal::Util;
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
-std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const double res)
+void Voxelizer::voxelize(const PolygonMesh& polygon, const double res)
 {
 	const auto bb = polygon.getBoundingBox();
 	const auto xres = static_cast<size_t>( bb.getLength().x / res);
@@ -56,7 +54,8 @@ std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const dou
 			}
 		}
 	}
-	auto voxel = std::make_unique<Voxel>(bb, ress);
+
+	this->voxel = std::make_unique<Voxel>(bb, ress);
 	voxel->fill(false);
 	for (int i = 0; i < xres; ++i){
 		const auto x = bb.getMinX() + i * voxelSize.x;
@@ -74,5 +73,89 @@ std::unique_ptr<Voxel> Voxelizer::voxelize(const PolygonMesh& polygon, const dou
 	for (auto p : particles) {
 		delete p;
 	}
-	return voxel;
+}
+
+// reference https://github.com/sylefeb/VoxSurf/blob/master/main.cpp
+
+void Voxelizer::fill()
+{
+	const auto resolutions = voxel->getResolutions();
+
+	const auto voxelX = scanX();
+	const auto voxelY = scanY();
+	const auto voxelZ = scanZ();
+
+	for (int i = 0; i < resolutions[0]; ++i) {
+		for (int j = 0; j < resolutions[1]; ++j) {
+			for (int k = 0; k < resolutions[2]; ++k) {
+				const auto xIsInside = voxelX.get(i, j, k);
+				const auto yIsInside = voxelY.get(i, j, k);
+				const auto zIsInside = voxelZ.get(i, j, k);
+				if (xIsInside || yIsInside || zIsInside) {
+					voxel->setValue(i, j, k, true);
+				}
+			}
+		}
+	}
+}
+
+// along x.
+Array3d<bool> Voxelizer::scanX()
+{
+	Array3d<bool> array3d(voxel->getResolutions(), false);
+	const auto& resolutions = array3d.getResolutions();
+
+	for (int k = 0; k < resolutions[2]; ++k) {
+		for (int j = 0; j < resolutions[1]; ++j) {
+			bool isInside = false;
+			for (int i = 0; i < resolutions[0]; ++i) {
+				if (voxel->getValue(i, j, k)) {
+					isInside = !isInside;
+				}
+				array3d.set(i, j, k, isInside);
+			}
+		}
+	}
+	return array3d;
+}
+
+// along y
+Array3d<bool> Voxelizer::scanY()
+{
+	Array3d<bool> array3d(voxel->getResolutions(), false);
+	const auto& resolutions = array3d.getResolutions();
+
+	for (int k = 0; k < resolutions[2]; ++k) {
+		for (int i = 0; i < resolutions[0]; ++i) {
+			bool isInside = false;
+			for (int j = 0; j < resolutions[1]; ++j) {
+				bool isInside = false;
+				if (voxel->getValue(i, j, k)) {
+					isInside = !isInside;
+				}
+				array3d.set(i, j, k, isInside);
+			}
+		}
+	}
+	return array3d;
+}
+
+// along z
+Array3d<bool> Voxelizer::scanZ()
+{
+	Array3d<bool> array3d(voxel->getResolutions(), false);
+	const auto& resolutions = array3d.getResolutions();
+
+	for (int j = 0; j < resolutions[1]; ++j) {
+		for (int i = 0; i < resolutions[0]; ++i) {
+			bool isInside = false;
+			for (int k = 0; k < resolutions[2]; ++k) {
+				if (voxel->getValue(i, j, k)) {
+					isInside = !isInside;
+				}
+				array3d.set(i, j, k, isInside);
+			}
+		}
+	}
+	return array3d;
 }

@@ -170,7 +170,6 @@
     <ClInclude Include="UniformGrid3d.h" />
     <ClInclude Include="VolumeConvertAlgo.h" />
     <ClInclude Include="Voxel.h" />
-    <ClInclude Include="VoxelFiller.h" />
     <ClInclude Include="Voxelizer.h" />
     <ClInclude Include="VoxelPresenter.h" />
     <ClInclude Include="VoxelScene.h" />
@@ -198,7 +197,6 @@
     <ClCompile Include="UniformGrid3d.cpp" />
     <ClCompile Include="VolumeConvertAlgo.cpp" />
     <ClCompile Include="Voxel.cpp" />
-    <ClCompile Include="VoxelFiller.cpp" />
     <ClCompile Include="Voxelizer.cpp" />
     <ClCompile Include="VoxelPresenter.cpp" />
     <ClCompile Include="VoxelScene.cpp" />

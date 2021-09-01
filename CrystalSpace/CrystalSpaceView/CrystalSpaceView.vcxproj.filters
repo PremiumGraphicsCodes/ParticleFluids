@@ -52,9 +52,6 @@
     <ClCompile Include="VoxelizerView.cpp">
       <Filter>Voxel</Filter>
     </ClCompile>
-    <ClCompile Include="VoxelFillerView.cpp">
-      <Filter>Voxel</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h">
@@ -105,9 +102,6 @@
     </ClInclude>
     <ClInclude Include="MeshToParticleView.h" />
     <ClInclude Include="VoxelizerView.h">
-      <Filter>Voxel</Filter>
-    </ClInclude>
-    <ClInclude Include="VoxelFillerView.h">
       <Filter>Voxel</Filter>
     </ClInclude>
   </ItemGroup>
