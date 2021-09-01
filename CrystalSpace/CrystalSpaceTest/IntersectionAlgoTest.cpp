@@ -100,6 +100,7 @@ TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 
 }
 
+/*
 TEST(IntersectionAlgoTest, TestBoxAndPlane)
 {
 	IntersectionAlgo i;
@@ -111,3 +112,4 @@ TEST(IntersectionAlgoTest, TestBoxAndPlane)
 
 	//i.calculateIntersection(Box3dd(0,0,0), Box3dd(10,10,10),)
 }
+*/

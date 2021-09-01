@@ -213,32 +213,3 @@ bool IntersectionAlgo::calculateIntersection(const PolygonMesh& lhs, const Polyg
 	*/
 	return !intersections.empty();
 }
-
-bool IntersectionAlgo::calculateIntersection(const Box3dd& box, const Plane3d& plane, const double tolerance)
-{
-	// https://gdbooks.gitbooks.io/3dcollisions/content/Chapter2/static_aabb_plane.html
-
-	// Convert AABB to center-extents representation
-	const auto c = box.getCenter(); // Compute AABB center
-	const auto e = box.getMax() - c; // Compute positive extents
-
-	const auto n = plane.getNormal();
-
-	// Compute the projection interval radius of b onto L(t) = b.c + t * p.n
-	float r = e[0] * ::fabs(n[0]) + e[1] * ::fabs(n[1]) + e[2] * ::fabs(n[2]);
-
-	const auto d = plane.calculateD();
-
-	// Compute distance of box center from plane
-	float s = glm::dot(n, c) - d;
-
-	// Intersection occurs when distance s falls within [-r,+r] interval
-	return ::fabs(s) <= r;
-}
-
-#include "../ThirdParty/tribox/tribox2.cpp"
-
-bool IntersectionAlgo::calculateIntersection(const Box3dd& box, const Triangle3d& triangle)
-{
-	return false;
-}
