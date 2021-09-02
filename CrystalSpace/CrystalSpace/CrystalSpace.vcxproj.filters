@@ -37,12 +37,6 @@
     <ClInclude Include="UniformGrid3d.h">
       <Filter>Search</Filter>
     </ClInclude>
-    <ClInclude Include="SpaceHash3d.h">
-      <Filter>Search</Filter>
-    </ClInclude>
-    <ClInclude Include="CompactSpaceHash3d.h">
-      <Filter>Search</Filter>
-    </ClInclude>
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="IndexedSortSearchAlgo.h">
       <Filter>Search</Filter>
@@ -79,6 +73,15 @@
     <ClInclude Include="RayTracer.h">
       <Filter>Intersection</Filter>
     </ClInclude>
+    <ClInclude Include="OctreeOperator.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="CompactSpaceHash3d.h">
+      <Filter>Search\SpaceHash</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceHash3d.h">
+      <Filter>Search\SpaceHash</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -112,12 +115,6 @@
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="UniformGrid3d.cpp">
-      <Filter>Search</Filter>
-    </ClCompile>
-    <ClCompile Include="SpaceHash3d.cpp">
-      <Filter>Search</Filter>
-    </ClCompile>
-    <ClCompile Include="CompactSpaceHash3d.cpp">
       <Filter>Search</Filter>
     </ClCompile>
     <ClCompile Include="IndexedSortSearchAlgo.cpp">
@@ -155,6 +152,15 @@
     <ClCompile Include="RayTracer.cpp">
       <Filter>Intersection</Filter>
     </ClCompile>
+    <ClCompile Include="CompactSpaceHash3d.cpp">
+      <Filter>Search\SpaceHash</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceHash3d.cpp">
+      <Filter>Search\SpaceHash</Filter>
+    </ClCompile>
+    <ClCompile Include="OctreeOperator.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">
@@ -177,6 +183,9 @@
     </Filter>
     <Filter Include="Voxel">
       <UniqueIdentifier>{7eb616ec-5cd0-4afe-98cb-39efb984a28f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Search\SpaceHash">
+      <UniqueIdentifier>{a136df2c-f572-4919-b097-7919268da5bf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

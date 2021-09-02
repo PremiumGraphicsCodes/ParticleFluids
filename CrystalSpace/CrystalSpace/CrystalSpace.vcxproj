@@ -161,6 +161,7 @@
     <ClInclude Include="MCCell.h" />
     <ClInclude Include="MeshToParticleConverter.h" />
     <ClInclude Include="Octree.h" />
+    <ClInclude Include="OctreeOperator.h" />
     <ClInclude Include="Overlap.h" />
     <ClInclude Include="RayTracer.h" />
     <ClInclude Include="SpaceHash3d.h" />
@@ -190,6 +191,7 @@
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="MeshToParticleConverter.cpp" />
     <ClCompile Include="Octree.cpp" />
+    <ClCompile Include="OctreeOperator.cpp" />
     <ClCompile Include="Overlap.cpp" />
     <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="SpaceHash3d.cpp" />

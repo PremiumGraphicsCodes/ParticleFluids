@@ -5,6 +5,7 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Box3d.h"
+#include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Util/UnCopyable.h"
 
 namespace Crystal {
@@ -13,12 +14,21 @@ namespace Crystal {
 class IOctreeItem
 {
 public:
+	explicit IOctreeItem(const Math::Triangle3d& triangle) :
+		triangle(triangle)
+	{}
+
 	virtual ~IOctreeItem() {};
 
-	virtual Math::Box3dd getBoundingBox() = 0;
+	Math::Box3dd getBoundingBox() const { return triangle.getBoundingBox(); }
+
+	Math::Triangle3d getTriangle() const { return triangle; }
+
+private:
+	Math::Triangle3d triangle;
 };
 
-class Octree //: private UnCopyable
+class Octree : private UnCopyable
 {
 public:
 	Octree() {};
@@ -27,7 +37,7 @@ public:
 
 	void add(IOctreeItem* item);
 
-	void createChildren() const;
+	void createChildren();
 
 	bool isEmpty() const;
 
