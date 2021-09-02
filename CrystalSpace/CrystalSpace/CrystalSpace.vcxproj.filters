@@ -76,6 +76,9 @@
     <ClInclude Include="Overlap.h">
       <Filter>Intersection</Filter>
     </ClInclude>
+    <ClInclude Include="RayTracer.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Octree.cpp">
@@ -147,6 +150,9 @@
       <Filter>Voxel</Filter>
     </ClCompile>
     <ClCompile Include="Overlap.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="RayTracer.cpp">
       <Filter>Intersection</Filter>
     </ClCompile>
   </ItemGroup>

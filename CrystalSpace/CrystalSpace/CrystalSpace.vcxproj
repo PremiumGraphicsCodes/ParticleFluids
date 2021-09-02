@@ -162,6 +162,7 @@
     <ClInclude Include="MeshToParticleConverter.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="Overlap.h" />
+    <ClInclude Include="RayTracer.h" />
     <ClInclude Include="SpaceHash3d.h" />
     <ClInclude Include="SparseVolume.h" />
     <ClInclude Include="SparseVolumePresenter.h" />
@@ -190,6 +191,7 @@
     <ClCompile Include="MeshToParticleConverter.cpp" />
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="Overlap.cpp" />
+    <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="SpaceHash3d.cpp" />
     <ClCompile Include="SparseVolume.cpp" />
     <ClCompile Include="SparseVolumePresenter.cpp" />

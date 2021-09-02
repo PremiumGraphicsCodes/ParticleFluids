@@ -18,22 +18,19 @@ class Octree //: private UnCopyable
 public:
 	Octree() {};
 
-	Octree(const Math::Box3dd& space);
+	explicit Octree(const Math::Box3dd& space);
 
 	void add(Shape::IParticle* particle);
 
-	std::vector<Octree> createChildren() const;
-
-	std::vector<Octree> createChildren(const int depth) const;
+	void createChildren() const;
 
 	bool isEmpty() const;
-
-	bool equals(const Octree& rhs, const double tolerance) const;
 
 	std::vector<Shape::IParticle*> getParticles() const { return particles; }
 
 private:
 	std::vector<Shape::IParticle*> particles;
+	std::vector<Octree*> children;
 	Math::Box3dd space;
 };
 

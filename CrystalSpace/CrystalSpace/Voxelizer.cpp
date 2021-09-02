@@ -10,6 +10,10 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
+namespace {
+	const auto e = 1.0e-12;
+}
+
 void Voxelizer::voxelize(const PolygonMesh& polygon, const double res)
 {
 	const auto bb = polygon.getBoundingBox();
@@ -26,25 +30,19 @@ void Voxelizer::voxelize(const PolygonMesh& polygon, const double res)
 	std::vector<IParticle*> particles;
 	for (const auto& f : faces) {
 		const auto triangle = f.toTriangle(polygon.getPositions());
-		if (triangle.getArea() < 1.0e-12) {
+		if (triangle.getArea() < e) {
 			continue;
 		}
 		const auto smallBB = triangle.getBoundingBox();
 
-		for (float x = smallBB.getMinX(); x < smallBB.getMaxX() + 1.0e-12; x += voxelSize.x) {
-			for (float y = smallBB.getMinY(); y < smallBB.getMaxY() + 1.0e-12; y += voxelSize.y) {
-				for (float z = smallBB.getMinZ(); z < smallBB.getMaxZ() + 1.0e-12; z += voxelSize.z) {
+		for (float x = smallBB.getMinX(); x < smallBB.getMaxX() + e; x += voxelSize.x) {
+			for (float y = smallBB.getMinY(); y < smallBB.getMaxY() + e; y += voxelSize.y) {
+				for (float z = smallBB.getMinZ(); z < smallBB.getMaxZ() + e; z += voxelSize.z) {
 					const Vector3dd p(x, y, z);
-					const auto v1 = p - voxelSize * 0.5 - 1.0e-3;
-					const auto v2 = p + voxelSize * 0.5 + 1.0e-3;
+					const auto v1 = p - voxelSize * 0.5;// - 1.0e-3;
+					const auto v2 = p + voxelSize * 0.5;// + 1.0e-3;
 					Box3dd smallBox(v1, v2);
-					// HACK: some holes might appear, this
-					// precision factor reduces the artifact
-						//halfsize.x += precision;
-						//halfsize.y += precision;
-						//halfsize.z += precision;
-					Overlap o;
-					if (o.overlap(smallBox, triangle)) {
+					if (Overlap::overlap(smallBox, triangle)) {
 						auto particle = new Particle<bool>(p, false);
 						particles.push_back(particle);
 						table.add(particle);

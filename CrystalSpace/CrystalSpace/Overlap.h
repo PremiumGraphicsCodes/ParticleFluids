@@ -13,9 +13,9 @@ namespace Crystal {
 class Overlap
 {
 public:
-	bool overlap(const Math::Box3dd& box, const Math::Plane3d& plane, const double tolerance);
+	static bool overlap(const Math::Box3dd& box, const Math::Plane3d& plane, const double tolerance);
 
-	bool overlap(const Math::Box3dd& box, const Math::Triangle3d& triangle);
+	static bool overlap(const Math::Box3dd& box, const Math::Triangle3d& triangle);
 
 };
 
