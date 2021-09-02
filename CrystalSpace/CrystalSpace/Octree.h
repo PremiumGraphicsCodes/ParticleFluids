@@ -31,9 +31,10 @@ private:
 class Octree : private UnCopyable
 {
 public:
-	Octree() {};
+	Octree() : level(0)
+	{};
 
-	explicit Octree(const Math::Box3dd& space);
+	Octree(const Math::Box3dd& space, const int level);
 
 	void add(IOctreeItem* item);
 
@@ -47,6 +48,7 @@ private:
 	std::vector<IOctreeItem*> items;
 	std::vector<Octree*> children;
 	Math::Box3dd space;
+	const int level;
 };
 
 	}

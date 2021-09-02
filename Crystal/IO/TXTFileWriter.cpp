@@ -16,4 +16,5 @@ bool TXTFileWriter::write(const std::filesystem::path& filePath, const std::vect
 	}
 
 	stream.close();
+	return true;
 }

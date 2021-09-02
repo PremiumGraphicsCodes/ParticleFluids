@@ -13,11 +13,13 @@ using namespace Crystal::Space;
 namespace {
 	const auto e = 1.0e-12;
 
+	/*
 	class FaceItem : public IOctreeItem
 	{
 	public:
-		explicit FaceItem(const Box3dd& box) :
-			box(box)
+		explicit FaceItem(const Face& f) :
+			IOctreeItem(f.ge)
+			f(f)
 		{
 		}
 
@@ -27,9 +29,9 @@ namespace {
 		}
 
 	private:
-		Box3dd box;
+		Face f;
 	};
-
+	*/
 }
 
 
@@ -45,7 +47,7 @@ void RayTracer::buildSpace(const PolygonMesh& polygon, const double res)
 	SpaceHash3d table(res, faces.size() * 3);
 
 	const auto voxelSize = Vector3dd(res);
-	Octree octree(bb);
+	Octree octree(bb, 0);
 
 	std::vector<IParticle*> particles;
 	for (const auto& f : faces) {
@@ -54,8 +56,8 @@ void RayTracer::buildSpace(const PolygonMesh& polygon, const double res)
 			continue;
 		}
 		const auto smallBB = triangle.getBoundingBox();
-		auto item = new FaceItem(smallBB);
-		octree.add(item);
+		//auto item = new FaceItem(smallBB);
+		//octree.add(item);
 
 		/*
 		for (float x = smallBB.getMinX(); x < smallBB.getMaxX() + e; x += voxelSize.x) {

@@ -4,7 +4,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Space;
 
 OctreeOperator::OctreeOperator(const Box3dd& space, const float minSize) :
-	root(space),
+	root(space, 0),
 	minSize(minSize)
 {
 }
