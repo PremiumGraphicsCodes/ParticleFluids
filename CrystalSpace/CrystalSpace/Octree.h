@@ -2,6 +2,7 @@
 
 #include <array>
 #include <vector>
+#include <list>
 
 #include "../../Crystal/Math/Vector3d.h"
 #include "../../Crystal/Math/Box3d.h"
@@ -43,6 +44,12 @@ public:
 	bool isEmpty() const;
 
 	std::vector<IOctreeItem*> getItems() const { return items; }
+
+	std::vector<Octree*> getChildren() const { return children; }
+
+	Math::Box3dd getSpace() const { return space; }
+
+	std::list<Octree*> toSerialList();
 
 private:
 	std::vector<IOctreeItem*> items;

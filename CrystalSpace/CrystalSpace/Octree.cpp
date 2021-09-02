@@ -40,3 +40,17 @@ bool Octree::isEmpty() const
 {
 	return items.empty();
 }
+
+std::list<Octree*> Octree::toSerialList()
+{
+	std::list<Octree*> results;
+	results.push_back(this);
+	for (auto c : children) {
+		if (c->isEmpty()) {
+			continue;
+		}
+		auto list = c->toSerialList();
+		results.insert(results.end(), list.begin(), list.end());
+	}
+	return results;
+}
