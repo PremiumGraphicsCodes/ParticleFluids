@@ -8,10 +8,15 @@
 #include "../../Crystal/Util/UnCopyable.h"
 
 namespace Crystal {
-	namespace Shape {
-		class IParticle;
-	}
 	namespace Space {
+
+class IOctreeItem
+{
+public:
+	virtual ~IOctreeItem() {};
+
+	virtual Math::Box3dd getBoundingBox() = 0;
+};
 
 class Octree //: private UnCopyable
 {
@@ -20,16 +25,16 @@ public:
 
 	explicit Octree(const Math::Box3dd& space);
 
-	void add(Shape::IParticle* particle);
+	void add(IOctreeItem* item);
 
 	void createChildren() const;
 
 	bool isEmpty() const;
 
-	std::vector<Shape::IParticle*> getParticles() const { return particles; }
+	std::vector<IOctreeItem*> getItems() const { return items; }
 
 private:
-	std::vector<Shape::IParticle*> particles;
+	std::vector<IOctreeItem*> items;
 	std::vector<Octree*> children;
 	Math::Box3dd space;
 };
