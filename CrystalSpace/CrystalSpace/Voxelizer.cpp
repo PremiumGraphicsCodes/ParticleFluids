@@ -87,9 +87,9 @@ void Voxelizer::fill()
 	for (int i = 0; i < resolutions[0]; ++i) {
 		for (int j = 0; j < resolutions[1]; ++j) {
 			for (int k = 0; k < resolutions[2]; ++k) {
-				const auto xIsInside = voxelX.get(i, j, k);
-				const auto yIsInside = voxelY.get(i, j, k);
-				const auto zIsInside = voxelZ.get(i, j, k);
+				const auto xIsInside = (voxelX.get(i, j, k) % 2) == 1;
+				const auto yIsInside = (voxelY.get(i, j, k) % 2) == 1;
+				const auto zIsInside = (voxelZ.get(i, j, k) % 2) == 1;
 				if (xIsInside && yIsInside && zIsInside) {
 					voxel->setValue(i, j, k, true);
 				}
@@ -99,19 +99,19 @@ void Voxelizer::fill()
 }
 
 // along x.
-Array3d<bool> Voxelizer::scanX()
+Array3d<unsigned int> Voxelizer::scanX()
 {
-	Array3d<bool> array3d(voxel->getResolutions(), false);
+	Array3d<unsigned int> array3d(voxel->getResolutions(), 0);
 	const auto& resolutions = array3d.getResolutions();
 
 	for (int k = 0; k < resolutions[2]; ++k) {
 		for (int j = 0; j < resolutions[1]; ++j) {
-			bool isInside = false;
+			unsigned int count = 0;
 			for (int i = 0; i < resolutions[0]; ++i) {
 				if (voxel->getValue(i, j, k)) {
-					isInside = !isInside;
+					count++;
 				}
-				array3d.set(i, j, k, isInside);
+				array3d.set(i, j, k, count);
 			}
 		}
 	}
@@ -119,19 +119,19 @@ Array3d<bool> Voxelizer::scanX()
 }
 
 // along y
-Array3d<bool> Voxelizer::scanY()
+Array3d<unsigned int> Voxelizer::scanY()
 {
-	Array3d<bool> array3d(voxel->getResolutions(), false);
+	Array3d<unsigned int> array3d(voxel->getResolutions(), 0);
 	const auto& resolutions = array3d.getResolutions();
 
 	for (int k = 0; k < resolutions[2]; ++k) {
 		for (int i = 0; i < resolutions[0]; ++i) {
-			bool isInside = false;
+			unsigned int count = 0;
 			for (int j = 0; j < resolutions[1]; ++j) {
 				if (voxel->getValue(i, j, k)) {
-					isInside = !isInside;
+					count++;
 				}
-				array3d.set(i, j, k, isInside);
+				array3d.set(i, j, k, count);
 			}
 		}
 	}
@@ -139,19 +139,19 @@ Array3d<bool> Voxelizer::scanY()
 }
 
 // along z
-Array3d<bool> Voxelizer::scanZ()
+Array3d<unsigned int> Voxelizer::scanZ()
 {
-	Array3d<bool> array3d(voxel->getResolutions(), false);
+	Array3d<unsigned int> array3d(voxel->getResolutions(), 0);
 	const auto& resolutions = array3d.getResolutions();
 
 	for (int j = 0; j < resolutions[1]; ++j) {
 		for (int i = 0; i < resolutions[0]; ++i) {
-			bool isInside = false;
+			unsigned int count = 0;
 			for (int k = 0; k < resolutions[2]; ++k) {
 				if (voxel->getValue(i, j, k)) {
-					isInside = !isInside;
+					count++;
 				}
-				array3d.set(i, j, k, isInside);
+				array3d.set(i, j, k, count);
 			}
 		}
 	}

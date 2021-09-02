@@ -25,11 +25,11 @@ private:
 	std::unique_ptr<Voxel> voxel;
 
 private:
-	Util::Array3d<bool> scanX();
+	Util::Array3d<unsigned int> scanX();
 
-	Util::Array3d<bool> scanY();
+	Util::Array3d<unsigned int> scanY();
 
-	Util::Array3d<bool> scanZ();
+	Util::Array3d<unsigned int> scanZ();
 
 };
 	}
