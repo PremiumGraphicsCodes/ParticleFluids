@@ -167,6 +167,7 @@
     <ClCompile Include="IntersectionView.cpp" />
     <ClCompile Include="ISVAddView.cpp" />
     <ClCompile Include="IVoxelAddView.cpp" />
+    <ClCompile Include="LinearOctreeView.cpp" />
     <ClCompile Include="MarchingCubesView.cpp" />
     <ClCompile Include="MeshToParticleView.cpp" />
     <ClCompile Include="OctreeView.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="IntersectionView.h" />
     <ClInclude Include="ISVAddView.h" />
     <ClInclude Include="IVoxelAddView.h" />
+    <ClInclude Include="LinearOctreeView.h" />
     <ClInclude Include="MarchingCubesView.h" />
     <ClInclude Include="MeshToParticleView.h" />
     <ClInclude Include="OctreeView.h" />
