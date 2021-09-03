@@ -111,11 +111,8 @@ std::list<uint32_t> GetColliderMortonList(SpaceOctree::OctreeFactoryBase* factor
 
 void LinearOctreeOperator::init(const Math::Box3dd& box, const int level)
 {
-    int current = 1;
-    for (int i = 1; i < level + 1; i++){
-        current = current * 8;
-    }
-    const auto size = (current - 1) / 7;
+    this->rootSpace = box;
+    const auto size = (std::pow(8,level+1) - 1) / 7;
     tree.resize(size);
 }
 

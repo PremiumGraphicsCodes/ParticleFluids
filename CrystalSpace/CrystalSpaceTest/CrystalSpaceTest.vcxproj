@@ -37,6 +37,7 @@
     <ClCompile Include="CompactSpaceHash3dTest.cpp" />
     <ClCompile Include="DistanceCalculatorTest.cpp" />
     <ClCompile Include="IntersectionAlgoTest.cpp" />
+    <ClCompile Include="LinearOctreeTest.cpp" />
     <ClCompile Include="OverlapTest.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="ZIndexedSearchAlgoTest.cpp" />

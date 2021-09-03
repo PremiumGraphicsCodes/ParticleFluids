@@ -33,6 +33,8 @@ public:
 
 	Math::Box3dd calculateAABBFromMortonNumber(const unsigned int number);
 
+	const std::vector<LinearOctree*>& getTable() const { return tree; }
+
 private:
 	LinearOctree* root;
 	Math::Box3dd rootSpace;
