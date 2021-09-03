@@ -156,6 +156,7 @@
     <ClInclude Include="IndexedSortSearchAlgo.h" />
     <ClInclude Include="IndexedParticle.h" />
     <ClInclude Include="IntersectionAlgo.h" />
+    <ClInclude Include="IOctreeItem.h" />
     <ClInclude Include="LinearOctree.h" />
     <ClInclude Include="MarchingCubesAlgo.h" />
     <ClInclude Include="MarchingCubesTable.h" />

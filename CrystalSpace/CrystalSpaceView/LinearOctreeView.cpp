@@ -30,7 +30,8 @@ void LinearOctreeView::onOk()
 
 	const auto faces = builder.getFaces();
 	const auto positions = builder.getPositions();
-	LinearOctree octree(mesh->getBoundingBox());
+	LinearOctreeOperator treeOperator;
+	treeOperator.init(mesh->getBoundingBox(), 2);
 	/*
 	for (const auto& f : faces) {
 		const auto t = f.toTriangle(positions);
