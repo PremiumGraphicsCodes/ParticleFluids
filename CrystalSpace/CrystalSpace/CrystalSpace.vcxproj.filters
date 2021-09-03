@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="Octree.h">
-      <Filter>Search</Filter>
-    </ClInclude>
     <ClInclude Include="IntersectionAlgo.h">
       <Filter>Intersection</Filter>
     </ClInclude>
@@ -73,20 +70,23 @@
     <ClInclude Include="RayTracer.h">
       <Filter>Intersection</Filter>
     </ClInclude>
-    <ClInclude Include="OctreeOperator.h">
-      <Filter>Search</Filter>
-    </ClInclude>
     <ClInclude Include="CompactSpaceHash3d.h">
       <Filter>Search\SpaceHash</Filter>
     </ClInclude>
     <ClInclude Include="SpaceHash3d.h">
       <Filter>Search\SpaceHash</Filter>
     </ClInclude>
+    <ClInclude Include="Octree.h">
+      <Filter>Search\Octree</Filter>
+    </ClInclude>
+    <ClInclude Include="OctreeOperator.h">
+      <Filter>Search\Octree</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearOctree.h">
+      <Filter>Search\Octree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Octree.cpp">
-      <Filter>Search</Filter>
-    </ClCompile>
     <ClCompile Include="IntersectionAlgo.cpp">
       <Filter>Intersection</Filter>
     </ClCompile>
@@ -158,8 +158,14 @@
     <ClCompile Include="SpaceHash3d.cpp">
       <Filter>Search\SpaceHash</Filter>
     </ClCompile>
+    <ClCompile Include="Octree.cpp">
+      <Filter>Search\Octree</Filter>
+    </ClCompile>
     <ClCompile Include="OctreeOperator.cpp">
-      <Filter>Search</Filter>
+      <Filter>Search\Octree</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearOctree.cpp">
+      <Filter>Search\Octree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +192,9 @@
     </Filter>
     <Filter Include="Search\SpaceHash">
       <UniqueIdentifier>{a136df2c-f572-4919-b097-7919268da5bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Search\Octree">
+      <UniqueIdentifier>{dfbb5ca3-054e-431f-8ad7-aadeff567136}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
