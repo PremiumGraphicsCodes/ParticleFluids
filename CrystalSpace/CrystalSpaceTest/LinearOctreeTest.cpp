@@ -84,10 +84,11 @@ TEST(LinearOctreeTest, TestMinBoxSize)
 
 TEST(LinearOctreeTest, TestToIndex)
 {
-	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+	const Box3dd rootSpace(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(9, 3, 3));
 	LinearOctreeOperator treeOperator;
-	treeOperator.init(space, 2);
-	const auto actual = treeOperator.toIndex(Box3dd(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10)));
+	treeOperator.init(rootSpace, 2);
+	EXPECT_EQ(2, treeOperator.toIndex(space));
 }
 
 TEST(LinearOctreeTest, TestAdd)
