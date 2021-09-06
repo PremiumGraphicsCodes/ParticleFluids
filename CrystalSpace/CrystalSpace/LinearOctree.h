@@ -39,7 +39,7 @@ public:
 
 	std::list<IOctreeItem*> findItems(const Math::Box3dd& space);
 
-	unsigned int toIndex(const Math::Box3dd& space) const;
+	unsigned int getParentLevel(const Math::Box3dd& space) const;
 
 	Math::Box3dd calculateAABBFromMortonNumber(const unsigned int number);
 

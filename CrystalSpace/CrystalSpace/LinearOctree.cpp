@@ -49,7 +49,7 @@ void LinearOctreeOperator::init(const Math::Box3dd& box, const int level)
 void LinearOctreeOperator::add(IOctreeItem* item)
 {
     const auto bb = item->getBoundingBox();
-    const auto parentCode = toIndex(bb);
+    const auto parentCode = getParentLevel(bb);
     if (this->tree[parentCode] == nullptr) {
         this->tree[parentCode] = std::make_unique<LinearOctree>();
     }
@@ -58,20 +58,21 @@ void LinearOctreeOperator::add(IOctreeItem* item)
 
 std::list<IOctreeItem*> LinearOctreeOperator::findItems(const Box3dd& space)
 {
-    const auto parentCode = toIndex(space);
+    const auto parentCode = getParentLevel(space);
     if (this->tree[parentCode] == nullptr) {
         return {};
     }
     return this->tree[parentCode]->getItems();
 }
 
-unsigned int LinearOctreeOperator::toIndex(const Box3dd& space) const
+unsigned int LinearOctreeOperator::getParentLevel(const Box3dd& space) const
 {
     const auto i1 = calculateGridIndex(space.getMin());
     const auto i2 = calculateGridIndex(space.getMax());
     const auto e1 = ZOrderCurve3d::encode(i1);
     const auto e2 = ZOrderCurve3d::encode(i2);
-    return ZOrderCurve3d::getParent(e1, e2);
+    const auto shift = ZOrderCurve3d::getParent(e1, e2);
+    return maxLevel - shift;
 }
 
 Vector3dd LinearOctreeOperator::getMinBoxSize() const

@@ -82,13 +82,13 @@ TEST(LinearOctreeTest, TestMinBoxSize)
 	EXPECT_TRUE(areSame(expected, actual, tolerance));
 }
 
-TEST(LinearOctreeTest, TestToIndex)
+TEST(LinearOctreeTest, TestGetParentLevel)
 {
 	const Box3dd rootSpace(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(9, 3, 3));
 	LinearOctreeOperator treeOperator;
 	treeOperator.init(rootSpace, 2);
-	EXPECT_EQ(2, treeOperator.toIndex(space));
+	EXPECT_EQ(0, treeOperator.getParentLevel(space));
 }
 
 TEST(LinearOctreeTest, TestAdd)
