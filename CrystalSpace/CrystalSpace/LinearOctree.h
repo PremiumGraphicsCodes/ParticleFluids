@@ -36,6 +36,8 @@ public:
 
 	Math::Box3dd calculateAABBFromMortonNumber(const unsigned int number);
 
+	Math::Box3dd calculateAABBFromIndices(const std::array<unsigned int, 3>& indices) const;
+
 	std::list<IOctreeItem*> findCollisions(const Math::Ray3d& ray);
 
 	const std::vector<LinearOctree*>& getTable() const { return tree; }

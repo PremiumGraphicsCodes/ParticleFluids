@@ -47,13 +47,22 @@ Box3dd LinearOctreeOperator::calculateAABBFromMortonNumber(const unsigned int n)
     return Box3dd(bpos, Vector3dd(bpos.x + boxSize.x, bpos.y + boxSize.y, bpos.z + boxSize.z));
 }
 
+Box3dd Crystal::Space::LinearOctreeOperator::calculateAABBFromIndices(const std::array<unsigned int, 3>& indices) const
+{
+    const auto size = this->getMinBoxSize(); // 最大の空間レベルの分割サイズ
+    Vector3dd v1(indices[0] * size.x, indices[1] * size.y, indices[2] * size.z);
+    v1 += rootSpace.getMin();
+    const Vector3dd v2 = v1 + size;
+    return Math::Box3dd(v1, v2);
+}
+
 std::list<IOctreeItem*> Crystal::Space::LinearOctreeOperator::findCollisions(const Math::Ray3d& ray)
 {
     const auto size = this->getMinBoxSize(); // 最大の空間レベルの分割サイズ
-    const Vector3dd rayForward = ray.getDirection() + size;
+    Vector3dd rayForward = ray.getDirection() + size;
     auto rootAABB = this->rootSpace; // ルート空間
 
-    const auto gridIndex = calculateGridIndex(ray.getOrigin());
+    auto gridIndex = calculateGridIndex(ray.getOrigin());
     std::array<short int, 3> gridForward;
     gridForward[0] = ray.getDirection().x >= 0.0 ? 1.0 : -1.0;
     gridForward[1] = ray.getDirection().y >= 0.0 ? 1.0 : -1.0;
@@ -66,52 +75,56 @@ std::list<IOctreeItem*> Crystal::Space::LinearOctreeOperator::findCollisions(con
     
     std::list<IOctreeItem*> colliderList; // 衝突リスト（リストの中身は空間ハッシュ）
 
-    /*
     while (rootAABB.isInside(pos)) {
         // グリッドから空間ハッシュ算出
-    uint32_t number = SpaceOctree::Get3DMortonOrder(grid);
-
-    // 空間ハッシュを、ルート空間まで遡って、衝突リストに格納していく（存在する場合のみ）
-    for (int i = 0; i <= factory->GetSplitLevel(); i++) {
-        uint32_t idx = static_cast<uint32_t>((number >> i * 3) + PrecomputedConstants::PowNumbers<8, 8>::Get(factory->GetSplitLevel() - i) / 7);
-        if (factory->BoxExists(idx)) {
-            colliderList.insert(idx);
+        ZOrderCurve3d mortonOrder;
+        const auto number = mortonOrder.encode(gridIndex);
+        
+        // 空間ハッシュを、ルート空間まで遡って、衝突リストに格納していく（存在する場合のみ）
+        //for (int i = 0; i <= factory->GetSplitLevel(); i++) {
+        /*
+        for(int i = 0; i < 8; ++i) {
+            uint32_t idx = static_cast<uint32_t>((number >> i * 3) + PrecomputedConstants::PowNumbers<8, 8>::Get(factory->GetSplitLevel() - i) / 7);
+            if (factory->BoxExists(idx)) {
+                colliderList.insert(idx);
+            }
+        }
+        */
+        
+        // 次のグリッド
+        for (int i = 0; i < 3; ++i) {
+            nextGridIndex[i] = gridIndex[i] + gridForward[i];
+        }
+        
+        // 次の座標
+        Vector3dd nextpos = Vector3dd(nextGridIndex[0] * size.x, nextGridIndex[1] * size.y, nextGridIndex[2] * size.z) + rootAABB.getMin();
+        
+        // レイベクトルから、X方向、Y方向、Z方向のグリッドに到達する時のレイベクトルの係数を算出
+        double ax = ray.getDirection().x != 0.0f ? std::abs((nextpos.x - pos.x) / rayForward.x) : FLT_MAX;
+        double ay = ray.getDirection().y != 0.0f ? std::abs((nextpos.y - pos.y) / rayForward.y) : FLT_MAX;
+        double az = ray.getDirection().z != 0.0f ? std::abs((nextpos.z - pos.z) / rayForward.z) : FLT_MAX;
+        
+        // 最短で到達するグリッドの探索
+        if (ax < ay && ax < az) {
+            pos += rayForward * ax;
+            gridIndex[0] += gridForward[0];
+        }
+        else if (ay < ax && ay < az) {
+            pos += rayForward * ay;
+            gridIndex[1] += gridForward[1];
+        }
+        else if (az < ax && az < ay) {
+            pos += rayForward * az;
+            gridIndex[2] += gridForward[2];
+        }
+        else {
+            pos += rayForward;
+            for (int i = 0; i < 3; ++i) {
+                gridIndex[i] += gridForward[i];
+            }
         }
     }
-
-    // 次のグリッド
-    nextGrid = grid + gridForward;
-    // 次の座標
-    Vector3D nextpos = Vector3D(nextGrid.x * size.w, nextGrid.y * size.h, nextGrid.z * size.h) + rootAABB.bpos;
-
-    // レイベクトルから、X方向、Y方向、Z方向のグリッドに到達する時のレイベクトルの係数を算出
-    float ax = ray.dir.x != 0.0f ? std::abs((nextpos.x - pos.x) / rayForward.x) : FLT_MAX;
-    float ay = ray.dir.y != 0.0f ? std::abs((nextpos.y - pos.y) / rayForward.y) : FLT_MAX;
-    float az = ray.dir.z != 0.0f ? std::abs((nextpos.z - pos.z) / rayForward.z) : FLT_MAX;
-
-    // 最短で到達するグリッドの探索
-    if (ax < ay && ax < az) {
-        pos += rayForward * ax;
-        grid.x += gridForward.x;
-    }
-    else if (ay < ax && ay < az) {
-        pos += rayForward * ay;
-        grid.y += gridForward.y;
-    }
-    else if (az < ax && az < ay) {
-        pos += rayForward * az;
-        grid.z += gridForward.z;
-    }
-    else {
-        pos += rayForward;
-        grid += gridForward;
-    }
-}
-
-return colliderList;
-*/
-
-    return std::list<IOctreeItem*>();
+    return colliderList;
 }
 
 void LinearOctreeOperator::init(const Math::Box3dd& box, const int level)
