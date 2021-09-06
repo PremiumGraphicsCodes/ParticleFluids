@@ -4,8 +4,10 @@
 
 #include "../../Crystal/Math/Box3d.h"
 #include "../../Crystal/Math/Ray3d.h"
+#include "../../Crystal/Util/UnCopyable.h"
 #include <vector>
 #include <list>
+#include <memory>
 
 namespace Crystal {
 	namespace Space {
@@ -27,7 +29,7 @@ private:
 	std::list<IOctreeItem*> items;
 };
 
-class LinearOctreeOperator
+class LinearOctreeOperator : private UnCopyable
 {
 public:
 	void init(const Math::Box3dd& space, const int level);
@@ -40,7 +42,7 @@ public:
 
 	std::list<IOctreeItem*> findCollisions(const Math::Ray3d& ray);
 
-	const std::vector<LinearOctree*>& getTable() const { return tree; }
+	const std::vector<std::unique_ptr<LinearOctree>>& getTable() const { return tree; }
 
 	Math::Vector3dd getMinBoxSize() const;
 
@@ -49,7 +51,7 @@ public:
 private:
 	LinearOctree* root;
 	Math::Box3dd rootSpace;
-	std::vector<LinearOctree*> tree;
+	std::vector<std::unique_ptr<LinearOctree>> tree;
 	int maxLevel;
 	double minWidth;
 

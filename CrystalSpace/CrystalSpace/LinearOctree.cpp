@@ -140,10 +140,12 @@ void LinearOctreeOperator::add(IOctreeItem* item)
     const auto bb = item->getBoundingBox();
     const auto i1 = calculateGridIndex(bb.getMin());
     const auto i2 = calculateGridIndex(bb.getMax());
-    ZOrderCurve3d mortonCode;
-    const auto e1 = mortonCode.encode(i1);
-    const auto e2 = mortonCode.encode(i2);
-    const auto parentCode = mortonCode.getParent(e1, e2);
+    const auto e1 = ZOrderCurve3d::encode(i1);
+    const auto e2 = ZOrderCurve3d::encode(i2);
+    const auto parentCode = ZOrderCurve3d::getParent(e1, e2);
+    if (this->tree[parentCode] == nullptr) {
+        this->tree[parentCode] = std::make_unique<LinearOctree>();
+    }
     this->tree[parentCode]->add( item );
 }
 

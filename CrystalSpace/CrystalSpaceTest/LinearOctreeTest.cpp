@@ -5,6 +5,10 @@
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 
+namespace {
+	constexpr auto tolerance = 1.0e-12;
+}
+
 TEST(LinearOctreeTest, TestInit)
 {
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
@@ -29,19 +33,60 @@ TEST(LinearOctreeTest, TestInit)
 	//treeOperator.
 }
 
-TEST(LinearOctreeTest, TestCalculateSpace)
+TEST(LinearOctreeTest, TestCalculateAABBFromMotonNumber)
+{
+	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+
+	LinearOctreeOperator treeOperator;
+	treeOperator.init(space, 2);
+
+	const auto expected0 = space;
+	const auto bb0 = treeOperator.calculateAABBFromMortonNumber(0);
+	EXPECT_TRUE(bb0.isSame(expected0, tolerance));
+
+	const Box3dd expected1(Vector3dd(0, 0, 0), Vector3dd(5, 5, 5));
+	const auto bb1 = treeOperator.calculateAABBFromMortonNumber(1);
+	EXPECT_TRUE(bb1.isSame(expected1, tolerance));
+
+	const Box3dd expected2(Vector3dd(5, 0, 0), Vector3dd(10, 5, 5));
+	const auto bb2 = treeOperator.calculateAABBFromMortonNumber(2);
+	EXPECT_TRUE(bb2.isSame(expected2, tolerance));
+
+	const Box3dd expected3(Vector3dd(0, 5, 0), Vector3dd(5, 10, 5));
+	const auto bb3 = treeOperator.calculateAABBFromMortonNumber(3);
+	EXPECT_TRUE(bb3.isSame(expected3, tolerance));
+}
+
+TEST(LinearOctreeTest, TestCalculateAABBFromIndices)
 {
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	LinearOctreeOperator treeOperator;
 	treeOperator.init(space, 2);
-	const auto bb = treeOperator.calculateAABBFromMortonNumber(0);
-	EXPECT_TRUE(bb.isSame(space, 1.0e-12));
-	const auto bb2 = treeOperator.calculateAABBFromMortonNumber(1);
-	const Box3dd expected2(Vector3dd(0, 0, 0), Vector3dd(5, 5, 5));
-	EXPECT_TRUE(bb2.isSame(expected2, 1.0e-12));
 
-	const auto bb3 = treeOperator.calculateAABBFromMortonNumber(2);
-	const Box3dd expected3(Vector3dd(5, 0, 0), Vector3dd(10, 5, 5));
-	//EXPECT_TRUE(bb2.isSame(expected2, 1.0e-12));
+	const Box3dd expected1(Vector3dd(0, 0, 0), Vector3dd(2.5, 2.5, 2.5));
+	const auto bb1 = treeOperator.calculateAABBFromIndices({ 0,0,0 });
+	EXPECT_TRUE(expected1.isSame(bb1, tolerance));
 
+	const Box3dd expected2(Vector3dd(2.5, 0, 0), Vector3dd(5.0, 2.5, 2.5));
+	const auto bb2 = treeOperator.calculateAABBFromIndices({ 1,0,0 });
+	EXPECT_TRUE(expected2.isSame(bb2, tolerance));
+}
+
+TEST(LinearOctreeTest, TestMinBoxSize)
+{
+	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+	LinearOctreeOperator treeOperator;
+	treeOperator.init(space, 2);
+	const auto actual = treeOperator.getMinBoxSize();
+	const Vector3dd expected(2.5, 2.5, 2.5);
+	EXPECT_TRUE(areSame(expected, actual, tolerance));
+}
+
+TEST(LinearOctreeTest, TestAdd)
+{
+	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+	LinearOctreeOperator treeOperator;
+	treeOperator.init(space, 2);
+	IOctreeItem item(Triangle3d(Vector3dd(3, 0, 0), Vector3dd(6, 0, 0), Vector3dd(3, 6, 6)));
+	treeOperator.add(&item);
 }

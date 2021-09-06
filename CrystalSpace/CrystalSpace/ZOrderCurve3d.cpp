@@ -9,7 +9,7 @@ namespace {
 	const auto mask2  = 0b1001001001001001001001001001001001;//0x9249249;
 }
 
-unsigned int ZOrderCurve3d::encode(const std::array<unsigned int, 3>& index) const
+unsigned int ZOrderCurve3d::encode(const std::array<unsigned int, 3>& index)
 {
 	const auto ei1 = encode(index[0]);
 	const auto ei2 = encode(index[1]);
@@ -18,7 +18,7 @@ unsigned int ZOrderCurve3d::encode(const std::array<unsigned int, 3>& index) con
 	return (ei1 | (ei2 << 1) | (ei3 << 2));
 }
 
-std::array<unsigned int, 3> ZOrderCurve3d::decode(const unsigned int x) const
+std::array<unsigned int, 3> ZOrderCurve3d::decode(const unsigned int x)
 {
 	const auto ix = decode_(x);
 	const auto iy = decode_(x >> 1);
@@ -26,7 +26,7 @@ std::array<unsigned int, 3> ZOrderCurve3d::decode(const unsigned int x) const
 	return { ix, iy, iz };
 }
 
-unsigned int ZOrderCurve3d::encode(unsigned int x) const
+unsigned int ZOrderCurve3d::encode(unsigned int x)
 {
 	x = (x | (x << 16))& mask16;
 	x = (x | (x << 8)) & mask8;
@@ -35,7 +35,7 @@ unsigned int ZOrderCurve3d::encode(unsigned int x) const
 	return x;
 }
 
-unsigned int ZOrderCurve3d::decode_(unsigned int x) const
+unsigned int ZOrderCurve3d::decode_(unsigned int x)
 {
 	x = x & mask2;
 	x = (x ^ (x >> 2)) & mask4;
@@ -46,7 +46,7 @@ unsigned int ZOrderCurve3d::decode_(unsigned int x) const
 }
 
 // see https://edom18.hateblo.jp/entry/2017/07/28/083153.
-unsigned int ZOrderCurve3d::getParent(unsigned int ltd, unsigned int rbd) const
+unsigned int ZOrderCurve3d::getParent(unsigned int ltd, unsigned int rbd)
 {
 	auto xor_ = ltd ^ rbd; // 2“_‚ÌˆÊ’u‚ÌXOR
 	int i = 0;
