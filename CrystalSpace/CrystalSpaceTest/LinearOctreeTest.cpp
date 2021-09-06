@@ -87,6 +87,8 @@ TEST(LinearOctreeTest, TestAdd)
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	LinearOctreeOperator treeOperator;
 	treeOperator.init(space, 2);
-	IOctreeItem item(Triangle3d(Vector3dd(3, 0, 0), Vector3dd(6, 0, 0), Vector3dd(3, 6, 6)));
+	IOctreeItem item(Triangle3d(Vector3dd(3, 3, 3), Vector3dd(6, 0, 0), Vector3dd(3, 6, 6)));
 	treeOperator.add(&item);
+	const auto items = treeOperator.findItems(Box3dd(Vector3dd(3, 3, 3), Vector3dd(6, 6, 6)));
+	EXPECT_EQ(items.size(), 1);
 }

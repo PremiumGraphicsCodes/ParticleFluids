@@ -39,6 +39,8 @@ Box3dd LinearOctreeOperator::calculateAABBFromMortonNumber(const unsigned int n)
     }
     uint32_t z = s;
 
+    //auto ii = ZOrderCurve3d::decode(n);
+
     // _rootAABB.size: ルート空間のサイズ。空間レベルで割って所属する空間レベルの分割サイズを求める
     const auto boxSize = rootSpace.getLength() / static_cast<double>(1 << level);
     // _rootAABB.bpos: ルート空間の開始座標
@@ -56,77 +58,6 @@ Box3dd Crystal::Space::LinearOctreeOperator::calculateAABBFromIndices(const std:
     return Math::Box3dd(v1, v2);
 }
 
-std::list<IOctreeItem*> Crystal::Space::LinearOctreeOperator::findCollisions(const Math::Ray3d& ray)
-{
-    const auto size = this->getMinBoxSize(); // 最大の空間レベルの分割サイズ
-    Vector3dd rayForward = ray.getDirection() + size;
-    auto rootAABB = this->rootSpace; // ルート空間
-
-    auto gridIndex = calculateGridIndex(ray.getOrigin());
-    std::array<short int, 3> gridForward;
-    gridForward[0] = ray.getDirection().x >= 0.0 ? 1.0 : -1.0;
-    gridForward[1] = ray.getDirection().y >= 0.0 ? 1.0 : -1.0;
-    gridForward[2] = ray.getDirection().z >= 0.0 ? 1.0 : -1.0;
-
-    Vector3dd pos(gridIndex[0] * size.x, gridIndex[1] * size.y, gridIndex[2] * size.z);
-    pos += rootAABB.getMin();
-
-    auto nextGridIndex = gridIndex;
-    
-    std::list<IOctreeItem*> colliderList; // 衝突リスト（リストの中身は空間ハッシュ）
-
-    while (rootAABB.isInside(pos)) {
-        // グリッドから空間ハッシュ算出
-        ZOrderCurve3d mortonOrder;
-        const auto number = mortonOrder.encode(gridIndex);
-        
-        // 空間ハッシュを、ルート空間まで遡って、衝突リストに格納していく（存在する場合のみ）
-        //for (int i = 0; i <= factory->GetSplitLevel(); i++) {
-        /*
-        for(int i = 0; i < 8; ++i) {
-            uint32_t idx = static_cast<uint32_t>((number >> i * 3) + PrecomputedConstants::PowNumbers<8, 8>::Get(factory->GetSplitLevel() - i) / 7);
-            if (factory->BoxExists(idx)) {
-                colliderList.insert(idx);
-            }
-        }
-        */
-        
-        // 次のグリッド
-        for (int i = 0; i < 3; ++i) {
-            nextGridIndex[i] = gridIndex[i] + gridForward[i];
-        }
-        
-        // 次の座標
-        Vector3dd nextpos = Vector3dd(nextGridIndex[0] * size.x, nextGridIndex[1] * size.y, nextGridIndex[2] * size.z) + rootAABB.getMin();
-        
-        // レイベクトルから、X方向、Y方向、Z方向のグリッドに到達する時のレイベクトルの係数を算出
-        double ax = ray.getDirection().x != 0.0f ? std::abs((nextpos.x - pos.x) / rayForward.x) : FLT_MAX;
-        double ay = ray.getDirection().y != 0.0f ? std::abs((nextpos.y - pos.y) / rayForward.y) : FLT_MAX;
-        double az = ray.getDirection().z != 0.0f ? std::abs((nextpos.z - pos.z) / rayForward.z) : FLT_MAX;
-        
-        // 最短で到達するグリッドの探索
-        if (ax < ay && ax < az) {
-            pos += rayForward * ax;
-            gridIndex[0] += gridForward[0];
-        }
-        else if (ay < ax && ay < az) {
-            pos += rayForward * ay;
-            gridIndex[1] += gridForward[1];
-        }
-        else if (az < ax && az < ay) {
-            pos += rayForward * az;
-            gridIndex[2] += gridForward[2];
-        }
-        else {
-            pos += rayForward;
-            for (int i = 0; i < 3; ++i) {
-                gridIndex[i] += gridForward[i];
-            }
-        }
-    }
-    return colliderList;
-}
-
 void LinearOctreeOperator::init(const Math::Box3dd& box, const int level)
 {
     this->rootSpace = box;
@@ -138,15 +69,29 @@ void LinearOctreeOperator::init(const Math::Box3dd& box, const int level)
 void LinearOctreeOperator::add(IOctreeItem* item)
 {
     const auto bb = item->getBoundingBox();
-    const auto i1 = calculateGridIndex(bb.getMin());
-    const auto i2 = calculateGridIndex(bb.getMax());
-    const auto e1 = ZOrderCurve3d::encode(i1);
-    const auto e2 = ZOrderCurve3d::encode(i2);
-    const auto parentCode = ZOrderCurve3d::getParent(e1, e2);
+    const auto parentCode = toIndex(bb);
     if (this->tree[parentCode] == nullptr) {
         this->tree[parentCode] = std::make_unique<LinearOctree>();
     }
     this->tree[parentCode]->add( item );
+}
+
+std::list<IOctreeItem*> LinearOctreeOperator::findItems(const Box3dd& space)
+{
+    const auto parentCode = toIndex(space);
+    if (this->tree[parentCode] == nullptr) {
+        return {};
+    }
+    return this->tree[parentCode]->getItems();
+}
+
+unsigned int LinearOctreeOperator::toIndex(const Box3dd& space) const
+{
+    const auto i1 = calculateGridIndex(space.getMin());
+    const auto i2 = calculateGridIndex(space.getMax());
+    const auto e1 = ZOrderCurve3d::encode(i1);
+    const auto e2 = ZOrderCurve3d::encode(i2);
+    return ZOrderCurve3d::getParent(e1, e2);
 }
 
 Vector3dd LinearOctreeOperator::getMinBoxSize() const

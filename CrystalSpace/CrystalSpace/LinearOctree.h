@@ -23,6 +23,7 @@ public:
 
 	void add(IOctreeItem* item) { this->items.push_back(item); }
 
+	std::list<IOctreeItem*> getItems() const { return items; }
 
 private:
 	//Math::Box3dd space;
@@ -36,11 +37,13 @@ public:
 
 	void add(IOctreeItem* item);
 
+	std::list<IOctreeItem*> findItems(const Math::Box3dd& space);
+
+	unsigned int toIndex(const Math::Box3dd& space) const;
+
 	Math::Box3dd calculateAABBFromMortonNumber(const unsigned int number);
 
 	Math::Box3dd calculateAABBFromIndices(const std::array<unsigned int, 3>& indices) const;
-
-	std::list<IOctreeItem*> findCollisions(const Math::Ray3d& ray);
 
 	const std::vector<std::unique_ptr<LinearOctree>>& getTable() const { return tree; }
 
