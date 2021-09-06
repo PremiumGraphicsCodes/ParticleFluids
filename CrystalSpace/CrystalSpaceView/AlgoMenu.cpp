@@ -10,6 +10,7 @@
 #include "VolumeView.h"
 #include "VolumeConvertView.h"
 #include "OctreeView.h"
+#include "LinearOctreeView.h"
 #include "SpaceHashView.h"
 #include "UniformGrid3dView.h"
 #include "MeshToParticleView.h"
@@ -49,6 +50,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("Octree")) {
 			control->setWindow(new OctreeView(getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("LinearOctree")) {
+			control->setWindow(new LinearOctreeView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("Intersection")) {
 			control->setWindow(new IntersectionView(getWorld(), getCanvas()));

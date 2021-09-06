@@ -3,10 +3,10 @@
 #include "../CrystalSpace/LinearOctree.h"
 
 #include "../../Crystal/Math/Sphere3d.h"
-//#include "../../Crystal/Shape/WireFrameBuilder.h"
+#include "../../Crystal/Shape/WireFrameBuilder.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
-//#include "../../Crystal/Scene/WireFrameScene.h"
+#include "../../Crystal/Scene/WireFrameScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -31,18 +31,32 @@ void LinearOctreeView::onOk()
 	const auto faces = builder.getFaces();
 	const auto positions = builder.getPositions();
 	LinearOctreeOperator treeOperator;
-	treeOperator.init(mesh->getBoundingBox(), 2);
-	/*
+	treeOperator.init(mesh->getBoundingBox(), 4);
+
 	for (const auto& f : faces) {
 		const auto t = f.toTriangle(positions);
 		auto item = new IOctreeItem(t);
-		octree.add(item);
+		treeOperator.add(item);
+	}
+
+	const auto& table = treeOperator.getTable();
+	std::vector<Box3dd> boxes;
+	for (int i = 0; i < table.size(); ++i) {
+		if (table[i] != nullptr) {
+			const auto b = treeOperator.calculateAABBFromMortonNumber(i);
+			boxes.push_back(b);
+		}
 	}
 
 	WireFrameBuilder wfBuilder;
+	/*
 	auto children = octree.toSerialList();
 	for (auto c : children) {
 		wfBuilder.build(c->getSpace());
+	}
+	*/
+	for (auto b : boxes) {
+		wfBuilder.build(b);
 	}
 
 	auto wf = wfBuilder.createWireFrame();
@@ -54,5 +68,4 @@ void LinearOctreeView::onOk()
 
 	auto presenter = scene->getPresenter();
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	*/
 }
