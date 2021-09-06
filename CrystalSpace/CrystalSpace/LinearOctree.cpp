@@ -20,33 +20,13 @@ Box3dd LinearOctreeOperator::calculateAABBFromMortonNumber(const unsigned int n)
         level++;
     }
 
-    uint32_t s = 0;
+    auto ii = ZOrderCurve3d::decode(number);
 
-    for (int i = level; i > 0; i--) {
-        s = s | (number >> (3 * i - 2 - i) & (1 << i - 1));
-    }
-    uint32_t x = s;
-
-    s = 0;
-    for (int i = level; i > 0; i--) {
-        s = s | (number >> (3 * i - 1 - i) & (1 << i - 1));
-    }
-    uint32_t y = s;
-
-    s = 0;
-    for (int i = level; i > 0; i--) {
-        s = s | (number >> (3 * i - i) & (1 << i - 1));
-    }
-    uint32_t z = s;
-
-    //auto ii = ZOrderCurve3d::decode(n);
-
-    // _rootAABB.size: ルート空間のサイズ。空間レベルで割って所属する空間レベルの分割サイズを求める
-    const auto boxSize = rootSpace.getLength() / static_cast<double>(1 << level);
-    // _rootAABB.bpos: ルート空間の開始座標
-    Vector3dd bpos = Vector3dd(x * boxSize.x, y * boxSize.y, z * boxSize.z) + rootSpace.getMin();
-    // 所属するAABB
-    return Box3dd(bpos, Vector3dd(bpos.x + boxSize.x, bpos.y + boxSize.y, bpos.z + boxSize.z));
+    const auto boxSize = this->rootSpace.getLength() / std::pow(2.0, level);
+    Vector3dd v1(ii[0] * boxSize.x, ii[1] * boxSize.y, ii[2] * boxSize.z);
+    v1 += rootSpace.getMin();
+    const auto v2 = v1 + boxSize;
+    return Box3dd(v1, v2);
 }
 
 Box3dd Crystal::Space::LinearOctreeOperator::calculateAABBFromIndices(const std::array<unsigned int, 3>& indices) const
