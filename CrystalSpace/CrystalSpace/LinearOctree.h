@@ -12,6 +12,19 @@
 namespace Crystal {
 	namespace Space {
 
+class LinearOctreeItem
+{
+public:
+	explicit LinearOctreeItem(const Math::Box3dd& box) :
+		box(box)
+	{}
+	
+	Math::Box3dd getBoundingBox() const { return box; }
+
+private:
+	Math::Box3dd box;
+};
+
 class LinearOctree
 {
 public:
@@ -21,13 +34,13 @@ public:
 
 	//Math::Box3dd getSpace() const { return space; }
 
-	void add(IOctreeItem* item) { this->items.push_back(item); }
+	void add(LinearOctreeItem* item) { this->items.push_back(item); }
 
-	std::list<IOctreeItem*> getItems() const { return items; }
+	std::list<LinearOctreeItem*> getItems() const { return items; }
 
 private:
 	//Math::Box3dd space;
-	std::list<IOctreeItem*> items;
+	std::list<LinearOctreeItem*> items;
 };
 
 class LinearOctreeIndex
@@ -56,9 +69,9 @@ class LinearOctreeOperator : private UnCopyable
 public:
 	void init(const Math::Box3dd& space, const int level);
 
-	void add(IOctreeItem* item);
+	void add(LinearOctreeItem* item);
 
-	std::list<IOctreeItem*> findItems(const Math::Box3dd& space);
+	std::list<LinearOctreeItem*> findItems(const Math::Box3dd& space);
 
 	LinearOctreeIndex getIndex(const Math::Box3dd& space) const;
 

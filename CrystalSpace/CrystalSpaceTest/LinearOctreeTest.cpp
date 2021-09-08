@@ -132,12 +132,10 @@ TEST(LinearOctreeTest, TestGetParentLevel)
 		const auto bb = treeOperator.calculateAABB(LinearOctreeIndex(1, 7));
 	}
 
-	/*
 	{
-		const Box3dd space(Vector3dd(3, 1, 1), Vector3dd(8, 1, 1));
-		EXPECT_EQ(LinearOctreeIndex(2, 1), treeOperator.getIndex(space));
+		const Box3dd space(Vector3dd(7, 0, 0), Vector3dd(8, 0, 0));
+		EXPECT_EQ(LinearOctreeIndex(1, 1), treeOperator.getIndex(space));
 	}
-	*/
 }
 
 TEST(LinearOctreeTest, TestAdd)
@@ -145,7 +143,7 @@ TEST(LinearOctreeTest, TestAdd)
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	LinearOctreeOperator treeOperator;
 	treeOperator.init(space, 2);
-	IOctreeItem item(Triangle3d(Vector3dd(3, 3, 3), Vector3dd(6, 3, 3), Vector3dd(3, 6, 6)));
+	LinearOctreeItem item(Box3dd(Vector3dd(3, 3, 3), Vector3dd(6, 6, 6)));
 	treeOperator.add(&item);
 	const auto items = treeOperator.findItems(Box3dd(Vector3dd(3, 3, 3), Vector3dd(6, 6, 6)));
 	EXPECT_EQ(items.size(), 1);

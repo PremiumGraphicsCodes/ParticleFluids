@@ -64,7 +64,7 @@ void LinearOctreeOperator::init(const Math::Box3dd& box, const int level)
     tree.resize(size);
 }
 
-void LinearOctreeOperator::add(IOctreeItem* item)
+void LinearOctreeOperator::add(LinearOctreeItem* item)
 {
     const auto bb = item->getBoundingBox();
     const auto parentCode = getIndex(bb).getIndex1d();
@@ -74,7 +74,7 @@ void LinearOctreeOperator::add(IOctreeItem* item)
     this->tree[parentCode]->add( item );
 }
 
-std::list<IOctreeItem*> LinearOctreeOperator::findItems(const Box3dd& space)
+std::list<LinearOctreeItem*> LinearOctreeOperator::findItems(const Box3dd& space)
 {
     const auto parentCode = getIndex(space).getIndex1d();
     if (this->tree[parentCode] == nullptr) {
