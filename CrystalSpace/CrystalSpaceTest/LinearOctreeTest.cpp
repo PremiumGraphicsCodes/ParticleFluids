@@ -113,29 +113,43 @@ TEST(LinearOctreeTest, TestMinBoxSize)
 
 TEST(LinearOctreeTest, TestGetParentLevel)
 {
-	const Box3dd rootSpace(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	LinearOctreeOperator treeOperator;
-	treeOperator.init(rootSpace, 1);
 	{
-		const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(9, 3, 3));
-		EXPECT_EQ(LinearOctreeIndex(0, 0), treeOperator.getIndex(space));
+		const Box3dd rootSpace(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+		LinearOctreeOperator treeOperator;
+		treeOperator.init(rootSpace, 1);
+		{
+			const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(9, 3, 3));
+			EXPECT_EQ(LinearOctreeIndex(0, 0), treeOperator.getIndex(space));
+		}
+
+		{
+			const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
+			EXPECT_EQ(LinearOctreeIndex(1, 0), treeOperator.getIndex(space));
+		}
+
+		{
+			const Box3dd space(Vector3dd(7, 7, 7), Vector3dd(8, 8, 8));
+			EXPECT_EQ(LinearOctreeIndex(1, 7), treeOperator.getIndex(space));
+			const auto bb = treeOperator.calculateAABB(LinearOctreeIndex(1, 7));
+		}
+
+		{
+			const Box3dd space(Vector3dd(7, 0, 0), Vector3dd(8, 0, 0));
+			EXPECT_EQ(LinearOctreeIndex(1, 1), treeOperator.getIndex(space));
+		}
+	}
+	{
+		const Box3dd rootSpace(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+		LinearOctreeOperator treeOperator;
+		treeOperator.init(rootSpace, 4);
+
+		{
+			const Box3dd space(Vector3dd(8, 8, 8), Vector3dd(8, 8, 8));
+			EXPECT_EQ(LinearOctreeIndex(4, 4032), treeOperator.getIndex(space));
+			const auto bb = treeOperator.calculateAABB(LinearOctreeIndex(1, 7));
+		}
 	}
 
-	{
-		const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
-		EXPECT_EQ(LinearOctreeIndex(1, 0), treeOperator.getIndex(space));
-	}
-
-	{
-		const Box3dd space(Vector3dd(7, 7, 7), Vector3dd(8, 8, 8));
-		EXPECT_EQ(LinearOctreeIndex(1, 7), treeOperator.getIndex(space));
-		const auto bb = treeOperator.calculateAABB(LinearOctreeIndex(1, 7));
-	}
-
-	{
-		const Box3dd space(Vector3dd(7, 0, 0), Vector3dd(8, 0, 0));
-		EXPECT_EQ(LinearOctreeIndex(1, 1), treeOperator.getIndex(space));
-	}
 }
 
 TEST(LinearOctreeTest, TestAdd)
