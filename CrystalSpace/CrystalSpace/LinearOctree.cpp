@@ -91,7 +91,8 @@ LinearOctreeIndex LinearOctreeOperator::getIndex(const Box3dd& space) const
     const auto e2 = ZOrderCurve3d::encode(i2);
     const auto shift = ZOrderCurve3d::getParent(e1, e2);
     const auto parentLevel = maxLevel - shift;
-    const auto number = (e1 >> (shift * 3)) & 0x07;
+    const auto number = e1 >> (shift * 3);
+    //const auto number = (v) & 0x07;
     return LinearOctreeIndex(parentLevel, number);
 }
 

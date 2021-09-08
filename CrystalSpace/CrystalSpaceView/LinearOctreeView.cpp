@@ -42,7 +42,7 @@ void LinearOctreeView::onOk()
 		treeOperator.add(item);
 	}
 	*/
-	Box3dd b1(Vector3dd(8, 8, 8), Vector3dd(9, 9, 9));
+	Box3dd b1(Vector3dd(8, 8, 8), Vector3dd(8, 8, 8));
 	auto item1 = new LinearOctreeItem(b1);
 	treeOperator.add(item1);
 
@@ -50,7 +50,7 @@ void LinearOctreeView::onOk()
 	auto item2 = new LinearOctreeItem(b2);
 	treeOperator.add(item2);
 
-	Box3dd b3(Vector3dd(4, 4, 4), Vector3dd(6, 6, 6));
+	Box3dd b3(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
 	auto item3 = new LinearOctreeItem(b3);
 	treeOperator.add(item3);
 
