@@ -43,7 +43,7 @@ void LinearOctreeView::onOk()
 	std::vector<Box3dd> boxes;
 	for (int i = 0; i < table.size(); ++i) {
 		if (table[i] != nullptr) {
-			const auto b = treeOperator.calculateAABBFromMortonNumber(i);
+			const auto b = treeOperator.calculateAABB(LinearOctreeIndex(i));
 			boxes.push_back(b);
 		}
 	}

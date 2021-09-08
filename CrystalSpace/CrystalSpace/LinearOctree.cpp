@@ -10,17 +10,29 @@
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 
-Box3dd LinearOctreeOperator::calculateAABBFromMortonNumber(const unsigned int n)
+std::pair<unsigned int, unsigned int> LinearOctreeIndex::getLevelAndNumber() const
 {
-    unsigned int number = n;
+    unsigned int number = index1d;
     int level = 0;
     // ハッシュ値から所属する最小空間のモートンオーダーに変換
     while (number >= std::pow(8, level)) {
         number -= std::pow(8, level);
         level++;
     }
+    return std::make_pair(level, number);
+}
 
-    auto ii = ZOrderCurve3d::decode(number);
+unsigned int LinearOctreeIndex::getIndex1d() const
+{
+    return index1d;
+}
+
+Box3dd LinearOctreeOperator::calculateAABB(const LinearOctreeIndex& index) const
+{
+    const auto levelNumber = index.getLevelAndNumber();
+    const auto level = levelNumber.first;
+    const auto number = levelNumber.second;
+    const auto ii = ZOrderCurve3d::decode(number);
 
     const auto boxSize = this->rootSpace.getLength() / std::pow(2.0, level);
     Vector3dd v1(ii[0] * boxSize.x, ii[1] * boxSize.y, ii[2] * boxSize.z);
@@ -29,7 +41,7 @@ Box3dd LinearOctreeOperator::calculateAABBFromMortonNumber(const unsigned int n)
     return Box3dd(v1, v2);
 }
 
-Box3dd Crystal::Space::LinearOctreeOperator::calculateAABBFromIndices(const std::array<unsigned int, 3>& indices) const
+Box3dd LinearOctreeOperator::calculateAABBFromIndices(const std::array<unsigned int, 3>& indices) const
 {
     const auto size = this->getMinBoxSize(); // 最大の空間レベルの分割サイズ
     Vector3dd v1(indices[0] * size.x, indices[1] * size.y, indices[2] * size.z);

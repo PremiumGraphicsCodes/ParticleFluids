@@ -30,6 +30,23 @@ private:
 	std::list<IOctreeItem*> items;
 };
 
+class LinearOctreeIndex
+{
+public:
+	explicit LinearOctreeIndex(const unsigned int index1d) :
+		index1d(index1d)
+	{}
+
+	std::pair<unsigned int, unsigned int> getLevelAndNumber() const;
+
+	//unsigned int getNumber() const;
+
+	unsigned int getIndex1d() const;
+
+private:
+	unsigned int index1d;
+};
+
 class LinearOctreeOperator : private UnCopyable
 {
 public:
@@ -41,7 +58,7 @@ public:
 
 	unsigned int getParentLevel(const Math::Box3dd& space) const;
 
-	Math::Box3dd calculateAABBFromMortonNumber(const unsigned int number);
+	Math::Box3dd calculateAABB(const LinearOctreeIndex& index) const;
 
 	Math::Box3dd calculateAABBFromIndices(const std::array<unsigned int, 3>& indices) const;
 
@@ -50,6 +67,10 @@ public:
 	Math::Vector3dd getMinBoxSize() const;
 
 	std::array<unsigned int, 3> calculateGridIndex(const Math::Vector3dd& pos) const;
+
+	//static unsigned int toIndex(const unsigned int level, const unsigned int number);
+
+	//static std::pair<unsigned int, unsigned int> to
 
 private:
 	LinearOctree* root;

@@ -33,7 +33,7 @@ TEST(LinearOctreeTest, TestInit)
 	//treeOperator.
 }
 
-TEST(LinearOctreeTest, TestCalculateAABBFromMotonNumber)
+TEST(LinearOctreeTest, TestCalculateAABB)
 {
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 
@@ -41,19 +41,19 @@ TEST(LinearOctreeTest, TestCalculateAABBFromMotonNumber)
 	treeOperator.init(space, 2);
 
 	const auto expected0 = space;
-	const auto bb0 = treeOperator.calculateAABBFromMortonNumber(0);
+	const auto bb0 = treeOperator.calculateAABB(LinearOctreeIndex(0));
 	EXPECT_TRUE(bb0.isSame(expected0, tolerance));
 
 	const Box3dd expected1(Vector3dd(0, 0, 0), Vector3dd(5, 5, 5));
-	const auto bb1 = treeOperator.calculateAABBFromMortonNumber(1);
+	const auto bb1 = treeOperator.calculateAABB(LinearOctreeIndex(1));
 	EXPECT_TRUE(bb1.isSame(expected1, tolerance));
 
 	const Box3dd expected2(Vector3dd(5, 0, 0), Vector3dd(10, 5, 5));
-	const auto bb2 = treeOperator.calculateAABBFromMortonNumber(2);
+	const auto bb2 = treeOperator.calculateAABB(LinearOctreeIndex(2));
 	EXPECT_TRUE(bb2.isSame(expected2, tolerance));
 
 	const Box3dd expected3(Vector3dd(0, 5, 0), Vector3dd(5, 10, 5));
-	const auto bb3 = treeOperator.calculateAABBFromMortonNumber(3);
+	const auto bb3 = treeOperator.calculateAABB(LinearOctreeIndex(3));
 	EXPECT_TRUE(bb3.isSame(expected3, tolerance));
 }
 
