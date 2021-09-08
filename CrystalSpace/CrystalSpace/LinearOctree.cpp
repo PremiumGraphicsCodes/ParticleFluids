@@ -10,6 +10,12 @@
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 
+LinearOctreeIndex::LinearOctreeIndex(const unsigned int level, const unsigned int number)
+{
+    const auto start = (std::pow(8, level + 1) - 1) / 7;
+    this->index1d = start + number;
+}
+
 std::pair<unsigned int, unsigned int> LinearOctreeIndex::getLevelAndNumber() const
 {
     unsigned int number = index1d;
@@ -41,7 +47,7 @@ Box3dd LinearOctreeOperator::calculateAABB(const LinearOctreeIndex& index) const
     return Box3dd(v1, v2);
 }
 
-Box3dd LinearOctreeOperator::calculateAABBFromIndices(const std::array<unsigned int, 3>& indices) const
+Box3dd LinearOctreeOperator::calculateAABB(const std::array<unsigned int, 3>& indices) const
 {
     const auto size = this->getMinBoxSize(); // 最大の空間レベルの分割サイズ
     Vector3dd v1(indices[0] * size.x, indices[1] * size.y, indices[2] * size.z);
@@ -61,7 +67,7 @@ void LinearOctreeOperator::init(const Math::Box3dd& box, const int level)
 void LinearOctreeOperator::add(IOctreeItem* item)
 {
     const auto bb = item->getBoundingBox();
-    const auto parentCode = getParentLevel(bb);
+    const auto parentCode = getIndex(bb).getIndex1d();
     if (this->tree[parentCode] == nullptr) {
         this->tree[parentCode] = std::make_unique<LinearOctree>();
     }
@@ -70,21 +76,23 @@ void LinearOctreeOperator::add(IOctreeItem* item)
 
 std::list<IOctreeItem*> LinearOctreeOperator::findItems(const Box3dd& space)
 {
-    const auto parentCode = getParentLevel(space);
+    const auto parentCode = getIndex(space).getIndex1d();
     if (this->tree[parentCode] == nullptr) {
         return {};
     }
     return this->tree[parentCode]->getItems();
 }
 
-unsigned int LinearOctreeOperator::getParentLevel(const Box3dd& space) const
+LinearOctreeIndex LinearOctreeOperator::getIndex(const Box3dd& space) const
 {
     const auto i1 = calculateGridIndex(space.getMin());
     const auto i2 = calculateGridIndex(space.getMax());
     const auto e1 = ZOrderCurve3d::encode(i1);
     const auto e2 = ZOrderCurve3d::encode(i2);
     const auto shift = ZOrderCurve3d::getParent(e1, e2);
-    return maxLevel - shift;
+    const auto parentLevel = maxLevel - shift;
+    const auto number = e1 > (shift * 3) & 0x07;
+    return LinearOctreeIndex(parentLevel, number);
 }
 
 Vector3dd LinearOctreeOperator::getMinBoxSize() const

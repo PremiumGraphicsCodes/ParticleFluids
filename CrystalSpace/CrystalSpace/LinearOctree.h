@@ -37,11 +37,15 @@ public:
 		index1d(index1d)
 	{}
 
+	LinearOctreeIndex(const unsigned int level, const unsigned int number);
+
 	std::pair<unsigned int, unsigned int> getLevelAndNumber() const;
 
 	//unsigned int getNumber() const;
 
 	unsigned int getIndex1d() const;
+
+	bool operator==(const LinearOctreeIndex& rhs) const { return this->index1d == rhs.index1d; }
 
 private:
 	unsigned int index1d;
@@ -56,11 +60,11 @@ public:
 
 	std::list<IOctreeItem*> findItems(const Math::Box3dd& space);
 
-	unsigned int getParentLevel(const Math::Box3dd& space) const;
+	LinearOctreeIndex getIndex(const Math::Box3dd& space) const;
 
 	Math::Box3dd calculateAABB(const LinearOctreeIndex& index) const;
 
-	Math::Box3dd calculateAABBFromIndices(const std::array<unsigned int, 3>& indices) const;
+	Math::Box3dd calculateAABB(const std::array<unsigned int, 3>& indices) const;
 
 	const std::vector<std::unique_ptr<LinearOctree>>& getTable() const { return tree; }
 
@@ -77,7 +81,7 @@ private:
 	Math::Box3dd rootSpace;
 	std::vector<std::unique_ptr<LinearOctree>> tree;
 	int maxLevel;
-	double minWidth;
+	//double minWidth;
 
 };
 
