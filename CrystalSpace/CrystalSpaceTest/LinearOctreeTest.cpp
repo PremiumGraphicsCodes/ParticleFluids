@@ -12,13 +12,28 @@ namespace {
 TEST(LinearOctreeIndexTest, TestGetIndex1d)
 {
 	{
+		const LinearOctreeIndex index(1, 7);
+		EXPECT_EQ(8, index.getIndex1d());
+	}
+
+	{
 		const LinearOctreeIndex index(2, 0);
-		EXPECT_EQ(73, index.getIndex1d());
+		EXPECT_EQ(9, index.getIndex1d());
 	}
 
 	{
 		const LinearOctreeIndex index(2, 5);
-		EXPECT_EQ(78, index.getIndex1d());
+		EXPECT_EQ(14, index.getIndex1d());
+	}
+}
+
+TEST(LinearOctreeIndexTest, TestGetLevelAndNumber)
+{
+	{
+		const LinearOctreeIndex index(1, 1);
+		const auto ln = index.getLevelAndNumber();
+		EXPECT_EQ(1, ln.first);
+		EXPECT_EQ(1, ln.second);
 	}
 
 }
@@ -100,7 +115,7 @@ TEST(LinearOctreeTest, TestGetParentLevel)
 {
 	const Box3dd rootSpace(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	LinearOctreeOperator treeOperator;
-	treeOperator.init(rootSpace, 2);
+	treeOperator.init(rootSpace, 1);
 	{
 		const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(9, 3, 3));
 		EXPECT_EQ(LinearOctreeIndex(0, 0), treeOperator.getIndex(space));
@@ -108,24 +123,30 @@ TEST(LinearOctreeTest, TestGetParentLevel)
 
 	{
 		const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
-		EXPECT_EQ(LinearOctreeIndex(2, 0), treeOperator.getIndex(space));
+		EXPECT_EQ(LinearOctreeIndex(1, 0), treeOperator.getIndex(space));
 	}
 
 	{
-		const Box3dd space(Vector3dd(3, 1, 1), Vector3dd(3, 1, 1));
+		const Box3dd space(Vector3dd(7, 7, 7), Vector3dd(8, 8, 8));
+		EXPECT_EQ(LinearOctreeIndex(1, 7), treeOperator.getIndex(space));
+		const auto bb = treeOperator.calculateAABB(LinearOctreeIndex(1, 7));
+	}
+
+	/*
+	{
+		const Box3dd space(Vector3dd(3, 1, 1), Vector3dd(8, 1, 1));
 		EXPECT_EQ(LinearOctreeIndex(2, 1), treeOperator.getIndex(space));
 	}
+	*/
 }
 
-/*
 TEST(LinearOctreeTest, TestAdd)
 {
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	LinearOctreeOperator treeOperator;
 	treeOperator.init(space, 2);
-	IOctreeItem item(Triangle3d(Vector3dd(3, 3, 3), Vector3dd(6, 0, 0), Vector3dd(3, 6, 6)));
+	IOctreeItem item(Triangle3d(Vector3dd(3, 3, 3), Vector3dd(6, 3, 3), Vector3dd(3, 6, 6)));
 	treeOperator.add(&item);
 	const auto items = treeOperator.findItems(Box3dd(Vector3dd(3, 3, 3), Vector3dd(6, 6, 6)));
 	EXPECT_EQ(items.size(), 1);
 }
-*/

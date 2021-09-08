@@ -12,7 +12,7 @@ using namespace Crystal::Space;
 
 LinearOctreeIndex::LinearOctreeIndex(const unsigned int level, const unsigned int number)
 {
-    const auto start = (std::pow(8, level + 1) - 1) / 7;
+    const auto start = (std::pow(8, level) - 1) / 7;
     this->index1d = start + number;
 }
 
@@ -91,7 +91,7 @@ LinearOctreeIndex LinearOctreeOperator::getIndex(const Box3dd& space) const
     const auto e2 = ZOrderCurve3d::encode(i2);
     const auto shift = ZOrderCurve3d::getParent(e1, e2);
     const auto parentLevel = maxLevel - shift;
-    const auto number = e1 > (shift * 3) & 0x07;
+    const auto number = (e1 >> (shift * 3)) & 0x07;
     return LinearOctreeIndex(parentLevel, number);
 }
 
