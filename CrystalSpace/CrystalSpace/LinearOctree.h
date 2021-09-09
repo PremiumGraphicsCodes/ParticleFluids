@@ -89,6 +89,8 @@ public:
 
 	//static std::pair<unsigned int, unsigned int> to
 
+	Math::Box3dd getRootSpace() const { return rootSpace; }
+
 private:
 	LinearOctree* root;
 	Math::Box3dd rootSpace;
