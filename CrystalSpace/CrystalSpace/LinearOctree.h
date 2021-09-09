@@ -64,7 +64,7 @@ private:
 	unsigned int index1d;
 };
 
-class LinearOctreeOperator : private UnCopyable
+class LinearOctree : private UnCopyable
 {
 public:
 	void init(const Math::Box3dd& space, const int level);
@@ -72,6 +72,8 @@ public:
 	void add(LinearOctreeItem* item);
 
 	std::list<LinearOctreeItem*> findItems(const Math::Box3dd& space);
+
+	const LinearOctreeCell* findCell(const LinearOctreeIndex& index) const;
 
 	LinearOctreeIndex getIndex(const Math::Box3dd& space) const;
 
@@ -84,10 +86,6 @@ public:
 	Math::Vector3dd getMinBoxSize() const;
 
 	std::array<unsigned int, 3> calculateGridIndex(const Math::Vector3dd& pos) const;
-
-	//static unsigned int toIndex(const unsigned int level, const unsigned int number);
-
-	//static std::pair<unsigned int, unsigned int> to
 
 	Math::Box3dd getRootSpace() const { return rootSpace; }
 

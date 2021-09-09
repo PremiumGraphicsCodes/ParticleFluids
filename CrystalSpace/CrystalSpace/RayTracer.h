@@ -17,7 +17,7 @@ public:
 	std::list<LinearOctreeCell*> trace(const Math::Ray3d& ray);
 
 private:
-	LinearOctreeOperator octree;
+	LinearOctree octree;
 };
 
 	}

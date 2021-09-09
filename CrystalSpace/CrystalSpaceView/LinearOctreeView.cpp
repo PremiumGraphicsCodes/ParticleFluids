@@ -32,7 +32,7 @@ void LinearOctreeView::onOk()
 
 	const auto faces = builder.getFaces();
 	const auto positions = builder.getPositions();
-	LinearOctreeOperator treeOperator;
+	LinearOctree treeOperator;
 	treeOperator.init(space, 4);
 
 	/*

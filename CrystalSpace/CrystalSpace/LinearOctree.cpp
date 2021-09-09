@@ -33,7 +33,7 @@ unsigned int LinearOctreeIndex::getIndex1d() const
     return index1d;
 }
 
-Box3dd LinearOctreeOperator::calculateAABB(const LinearOctreeIndex& index) const
+Box3dd LinearOctree::calculateAABB(const LinearOctreeIndex& index) const
 {
     const auto levelNumber = index.getLevelAndNumber();
     const auto level = levelNumber.first;
@@ -47,7 +47,7 @@ Box3dd LinearOctreeOperator::calculateAABB(const LinearOctreeIndex& index) const
     return Box3dd(v1, v2);
 }
 
-Box3dd LinearOctreeOperator::calculateAABB(const std::array<unsigned int, 3>& indices) const
+Box3dd LinearOctree::calculateAABB(const std::array<unsigned int, 3>& indices) const
 {
     const auto size = this->getMinBoxSize(); // 最大の空間レベルの分割サイズ
     Vector3dd v1(indices[0] * size.x, indices[1] * size.y, indices[2] * size.z);
@@ -56,7 +56,7 @@ Box3dd LinearOctreeOperator::calculateAABB(const std::array<unsigned int, 3>& in
     return Math::Box3dd(v1, v2);
 }
 
-void LinearOctreeOperator::init(const Math::Box3dd& box, const int level)
+void LinearOctree::init(const Math::Box3dd& box, const int level)
 {
     this->rootSpace = box;
     this->maxLevel = level;
@@ -64,7 +64,7 @@ void LinearOctreeOperator::init(const Math::Box3dd& box, const int level)
     tree.resize(size);
 }
 
-void LinearOctreeOperator::add(LinearOctreeItem* item)
+void LinearOctree::add(LinearOctreeItem* item)
 {
     const auto bb = item->getBoundingBox();
     const auto parentCode = getIndex(bb).getIndex1d();
@@ -74,7 +74,7 @@ void LinearOctreeOperator::add(LinearOctreeItem* item)
     this->tree[parentCode]->add( item );
 }
 
-std::list<LinearOctreeItem*> LinearOctreeOperator::findItems(const Box3dd& space)
+std::list<LinearOctreeItem*> LinearOctree::findItems(const Box3dd& space)
 {
     const auto parentCode = getIndex(space).getIndex1d();
     if (this->tree[parentCode] == nullptr) {
@@ -83,7 +83,13 @@ std::list<LinearOctreeItem*> LinearOctreeOperator::findItems(const Box3dd& space
     return this->tree[parentCode]->getItems();
 }
 
-LinearOctreeIndex LinearOctreeOperator::getIndex(const Box3dd& space) const
+const LinearOctreeCell* LinearOctree::findCell(const LinearOctreeIndex& index) const
+{
+    const auto i = index.getIndex1d();
+    return this->tree[i].get();
+}
+
+LinearOctreeIndex LinearOctree::getIndex(const Box3dd& space) const
 {
     const auto i1 = calculateGridIndex(space.getMin());
     const auto i2 = calculateGridIndex(space.getMax());
@@ -96,12 +102,12 @@ LinearOctreeIndex LinearOctreeOperator::getIndex(const Box3dd& space) const
     return LinearOctreeIndex(parentLevel, number);
 }
 
-Vector3dd LinearOctreeOperator::getMinBoxSize() const
+Vector3dd LinearOctree::getMinBoxSize() const
 {
     return this->rootSpace.getLength() / std::pow(2.0, this->maxLevel);
 }
 
-std::array<unsigned int, 3> LinearOctreeOperator::calculateGridIndex(const Vector3dd& pos) const
+std::array<unsigned int, 3> LinearOctree::calculateGridIndex(const Vector3dd& pos) const
 {
     const auto p = pos - this->rootSpace.getMin();
     const auto size = getMinBoxSize();
