@@ -15,6 +15,9 @@ namespace Crystal {
 		class Plane3d;
 		class Triangle3d;
 		class Quad3d;
+		template<typename T>
+		class Box3d;
+		using Box3dd = Box3d<double>;
 	}
 	namespace Shape {
 		class PolygonMesh;
@@ -49,6 +52,8 @@ public:
 	bool calculateIntersection(const Math::Ray3d& ray, const Math::Triangle3d& triangle, const double tolerance);
 
 	bool calculateIntersection(const Math::Ray3d& ray, const Math::Quad3d& quad, const double tolerance);
+
+	bool calculateIntersection(const Math::Ray3d& ray, const Math::Box3dd& box, const double tolerance);
 
 	bool calculateIntersection(const Math::Line3dd& line, const Math::Plane3d& plane, const double tolerance);
 

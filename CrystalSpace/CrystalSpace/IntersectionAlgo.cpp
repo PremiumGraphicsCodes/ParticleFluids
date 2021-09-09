@@ -6,6 +6,7 @@
 #include "../../Crystal/Math/Sphere3d.h"
 #include "../../Crystal/Math/Plane3d.h"
 #include "../../Crystal/Math/Quad3d.h"
+#include "../../Crystal/Math/Box3d.h"
 
 #include "../../Crystal/Shape/PolygonMesh.h"
 
@@ -153,6 +154,52 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d&
 		return true;
 	}
 	return false;
+}
+
+// ref https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
+bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Box3dd& box, const double tolerance)
+{
+	// tmin, tmax -> parameter
+
+	const auto origin = ray.getOrigin();
+	const auto dir = ray.getDirection();
+
+	const auto min = box.getMin();
+	const auto max = box.getMax();
+	float tmin = (min.x - origin.x) / dir.x;
+	float tmax = (max.x - origin.x) / dir.x;
+
+	if (tmin > tmax) std::swap(tmin, tmax);
+
+	float tymin = (min.y - origin.y) / dir.y;
+	float tymax = (max.y - origin.y) / dir.y;
+
+	if (tymin > tymax) std::swap(tymin, tymax);
+
+	if ((tmin > tymax) || (tymin > tmax))
+		return false;
+
+	if (tymin > tmin)
+		tmin = tymin;
+
+	if (tymax < tmax)
+		tmax = tymax;
+
+	float tzmin = (min.z - origin.z) / dir.z;
+	float tzmax = (max.z - origin.z) / dir.z;
+
+	if (tzmin > tzmax) std::swap(tzmin, tzmax);
+
+	if ((tmin > tzmax) || (tzmin > tmax))
+		return false;
+
+	if (tzmin > tmin)
+		tmin = tzmin;
+
+	if (tzmax < tmax)
+		tmax = tzmax;
+
+	return true;
 }
 
 bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Plane3d& plane, const double tolerance)
