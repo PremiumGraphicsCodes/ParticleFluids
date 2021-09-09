@@ -199,6 +199,9 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Box3dd& box
 	if (tzmax < tmax)
 		tmax = tzmax;
 
+	intersections.push_back( Intersection( ray.getPosition(tmin), Vector3dd() ));
+	intersections.push_back(Intersection(ray.getPosition(tmax), Vector3dd()));
+
 	return true;
 }
 

@@ -102,10 +102,13 @@ TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 TEST(IntersectionAlgoTest, TestRayAndBox)
 {
 	IntersectionAlgo algo;
-	const Ray3d ray(Vector3dd(-100, 5, 5), Vector3dd(200, 5, 5));
+	const Ray3d ray(Vector3dd(-5, 5, 5), Vector3dd(20, 0, 0));
 
 	const Box3dd box1(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	EXPECT_TRUE( algo.calculateIntersection(ray, box1, tolerance) );
+	EXPECT_EQ(2, algo.getIntersections().size());
+	EXPECT_TRUE( ::areSame( Vector3dd(0, 5, 5), algo.getIntersections()[0].position, tolerance) );
+	EXPECT_TRUE( ::areSame(Vector3dd(10, 5, 5), algo.getIntersections()[1].position, tolerance) );
 
 	const Box3dd box2(Vector3dd(50, 50, 50), Vector3dd(100, 100, 100));
 	EXPECT_FALSE(algo.calculateIntersection(ray, box2, tolerance));
