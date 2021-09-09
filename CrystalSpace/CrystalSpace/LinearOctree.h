@@ -54,6 +54,8 @@ public:
 
 	std::pair<unsigned int, unsigned int> getLevelAndNumber() const;
 
+	LinearOctreeIndex getParentIndex() const;
+
 	//unsigned int getNumber() const;
 
 	unsigned int getIndex1d() const;
@@ -74,6 +76,8 @@ public:
 	std::list<LinearOctreeItem*> findItems(const Math::Box3dd& space);
 
 	const LinearOctreeCell* findCell(const LinearOctreeIndex& index) const;
+
+	const LinearOctreeCell* findParent(const LinearOctreeIndex& parentIndex) const;
 
 	LinearOctreeIndex getIndex(const Math::Box3dd& space) const;
 

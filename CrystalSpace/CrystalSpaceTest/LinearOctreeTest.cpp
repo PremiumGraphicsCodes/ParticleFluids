@@ -35,26 +35,44 @@ TEST(LinearOctreeIndexTest, TestGetLevelAndNumber)
 		EXPECT_EQ(1, ln.first);
 		EXPECT_EQ(1, ln.second);
 	}
+}
 
+TEST(LinearOctreeIndexTest, TestGetParentIndex)
+{
+	{
+		const LinearOctreeIndex index(1, 1);
+		const auto actual = index.getParentIndex();
+
+		const LinearOctreeIndex expected(0, 0);
+		EXPECT_EQ(expected, actual);
+	}
+
+	{
+		const LinearOctreeIndex index(2, 20);
+		const auto actual = index.getParentIndex();
+
+		const LinearOctreeIndex expected(1, 2);
+		EXPECT_EQ(expected, actual);
+	}
 }
 
 TEST(LinearOctreeTest, TestInit)
 {
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 	{
-		LinearOctreeOperator treeOperator;
+		LinearOctree treeOperator;
 		treeOperator.init(space, 0);
 		EXPECT_EQ(treeOperator.getTable().size(), 1);
 	}
 
 	{
-		LinearOctreeOperator treeOperator;
+		LinearOctree treeOperator;
 		treeOperator.init(space, 1);
 		EXPECT_EQ(treeOperator.getTable().size(), 9);
 	}
 
 	{
-		LinearOctreeOperator treeOperator;
+		LinearOctree treeOperator;
 		treeOperator.init(space, 2);
 		EXPECT_EQ(treeOperator.getTable().size(), 73);
 	}
@@ -66,7 +84,7 @@ TEST(LinearOctreeTest, TestCalculateAABB)
 {
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 
-	LinearOctreeOperator treeOperator;
+	LinearOctree treeOperator;
 	treeOperator.init(space, 2);
 
 	const auto expected0 = space;
@@ -89,7 +107,7 @@ TEST(LinearOctreeTest, TestCalculateAABB)
 TEST(LinearOctreeTest, TestCalculateAABBFromIndices)
 {
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	LinearOctreeOperator treeOperator;
+	LinearOctree treeOperator;
 	treeOperator.init(space, 2);
 
 	const Box3dd expected1(Vector3dd(0, 0, 0), Vector3dd(2.5, 2.5, 2.5));
@@ -104,7 +122,7 @@ TEST(LinearOctreeTest, TestCalculateAABBFromIndices)
 TEST(LinearOctreeTest, TestMinBoxSize)
 {
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	LinearOctreeOperator treeOperator;
+	LinearOctree treeOperator;
 	treeOperator.init(space, 2);
 	const auto actual = treeOperator.getMinBoxSize();
 	const Vector3dd expected(2.5, 2.5, 2.5);
@@ -115,7 +133,7 @@ TEST(LinearOctreeTest, TestGetParentLevel)
 {
 	{
 		const Box3dd rootSpace(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-		LinearOctreeOperator treeOperator;
+		LinearOctree treeOperator;
 		treeOperator.init(rootSpace, 1);
 		
 		const Box3dd space1(Vector3dd(0, 0, 0), Vector3dd(9, 3, 3));
@@ -131,9 +149,10 @@ TEST(LinearOctreeTest, TestGetParentLevel)
 		const Box3dd space4(Vector3dd(7, 0, 0), Vector3dd(8, 0, 0));
 		EXPECT_EQ(LinearOctreeIndex(1, 1), treeOperator.getIndex(space4));
 	}
+
 	{
 		const Box3dd rootSpace(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-		LinearOctreeOperator treeOperator;
+		LinearOctree treeOperator;
 		treeOperator.init(rootSpace, 4);
 
 		const Box3dd space(Vector3dd(8, 8, 8), Vector3dd(8, 8, 8));
@@ -146,7 +165,7 @@ TEST(LinearOctreeTest, TestGetParentLevel)
 TEST(LinearOctreeTest, TestAdd)
 {
 	const Box3dd space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
-	LinearOctreeOperator treeOperator;
+	LinearOctree treeOperator;
 	treeOperator.init(space, 2);
 	LinearOctreeItem item(Box3dd(Vector3dd(3, 3, 3), Vector3dd(6, 6, 6)));
 	treeOperator.add(&item);

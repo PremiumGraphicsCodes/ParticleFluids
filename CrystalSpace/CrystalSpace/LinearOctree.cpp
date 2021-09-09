@@ -28,6 +28,15 @@ std::pair<unsigned int, unsigned int> LinearOctreeIndex::getLevelAndNumber() con
     return std::make_pair(level, number);
 }
 
+LinearOctreeIndex LinearOctreeIndex::getParentIndex() const
+{
+    const auto levelNumber = getLevelAndNumber();
+    const auto parentLevel = levelNumber.first-1;
+    const auto number = levelNumber.second;
+    const auto parentNumber = number >> 3;
+    return LinearOctreeIndex(parentLevel, parentNumber);
+}
+
 unsigned int LinearOctreeIndex::getIndex1d() const
 {
     return index1d;
@@ -87,6 +96,11 @@ const LinearOctreeCell* LinearOctree::findCell(const LinearOctreeIndex& index) c
 {
     const auto i = index.getIndex1d();
     return this->tree[i].get();
+}
+
+const LinearOctreeCell* LinearOctree::findParent(const LinearOctreeIndex& parentIndex) const
+{
+    return nullptr;
 }
 
 LinearOctreeIndex LinearOctree::getIndex(const Box3dd& space) const
