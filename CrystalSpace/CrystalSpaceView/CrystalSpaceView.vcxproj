@@ -171,6 +171,7 @@
     <ClCompile Include="MarchingCubesView.cpp" />
     <ClCompile Include="MeshToParticleView.cpp" />
     <ClCompile Include="OctreeView.cpp" />
+    <ClCompile Include="RayTracerView.cpp" />
     <ClCompile Include="SpaceHashView.cpp" />
     <ClCompile Include="SVSphereView.cpp" />
     <ClCompile Include="UniformGrid3dView.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="MarchingCubesView.h" />
     <ClInclude Include="MeshToParticleView.h" />
     <ClInclude Include="OctreeView.h" />
+    <ClInclude Include="RayTracerView.h" />
     <ClInclude Include="SpaceHashView.h" />
     <ClInclude Include="SVSphereView.h" />
     <ClInclude Include="UniformGrid3dView.h" />

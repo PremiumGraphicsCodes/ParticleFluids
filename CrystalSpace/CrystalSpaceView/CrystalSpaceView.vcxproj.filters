@@ -55,6 +55,9 @@
     <ClCompile Include="LinearOctreeView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
+    <ClCompile Include="RayTracerView.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BooleanView.h">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="LinearOctreeView.h">
       <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="RayTracerView.h">
+      <Filter>Intersection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

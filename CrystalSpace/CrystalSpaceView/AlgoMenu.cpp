@@ -18,6 +18,7 @@
 #include "SVSphereView.h"
 #include "VoxelSphereView.h"
 #include "VoxelizerView.h"
+#include "RayTracerView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
 
@@ -80,6 +81,9 @@ void AlgoMenu::onShow()
 		}
 		if (ImGui::MenuItem("Voxelizer")) {
 			control->setWindow(new VoxelizerView("Voxelizer", getWorld(), getCanvas()));
+		}
+		if (ImGui::MenuItem("RayTracer")) {
+			control->setWindow(new RayTracerView("RayTracer", getWorld(), getCanvas()));
 		}
 		ImGui::EndMenu();
 	}
