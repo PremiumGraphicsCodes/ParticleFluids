@@ -69,7 +69,7 @@ void LinearOctreeOperator::add(LinearOctreeItem* item)
     const auto bb = item->getBoundingBox();
     const auto parentCode = getIndex(bb).getIndex1d();
     if (this->tree[parentCode] == nullptr) {
-        this->tree[parentCode] = std::make_unique<LinearOctree>();
+        this->tree[parentCode] = std::make_unique<LinearOctreeCell>();
     }
     this->tree[parentCode]->add( item );
 }

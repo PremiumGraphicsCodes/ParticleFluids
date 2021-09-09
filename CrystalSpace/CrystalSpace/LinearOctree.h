@@ -25,10 +25,10 @@ private:
 	Math::Box3dd box;
 };
 
-class LinearOctree
+class LinearOctreeCell : private UnCopyable
 {
 public:
-	LinearOctree(/*const Math::Box3dd& space*/)// :
+	LinearOctreeCell(/*const Math::Box3dd& space*/)// :
 		//space(space)
 	{}
 
@@ -79,7 +79,7 @@ public:
 
 	Math::Box3dd calculateAABB(const std::array<unsigned int, 3>& indices) const;
 
-	const std::vector<std::unique_ptr<LinearOctree>>& getTable() const { return tree; }
+	const std::vector<std::unique_ptr<LinearOctreeCell>>& getTable() const { return tree; }
 
 	Math::Vector3dd getMinBoxSize() const;
 
@@ -92,9 +92,9 @@ public:
 	Math::Box3dd getRootSpace() const { return rootSpace; }
 
 private:
-	LinearOctree* root;
+	LinearOctreeCell* root;
 	Math::Box3dd rootSpace;
-	std::vector<std::unique_ptr<LinearOctree>> tree;
+	std::vector<std::unique_ptr<LinearOctreeCell>> tree;
 	int maxLevel;
 	//double minWidth;
 
