@@ -97,5 +97,16 @@ TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 		const  Triangle3d triangle2({ Vector3dd(5,0,-10), Vector3dd(5, 0, 10), Vector3dd(0, 10, 0) });
 		EXPECT_TRUE(algo.calculateIntersection(triangle1, triangle2, tolerance));
 	}
+}
 
+TEST(IntersectionAlgoTest, TestRayAndBox)
+{
+	IntersectionAlgo algo;
+	const Ray3d ray(Vector3dd(-100, 5, 5), Vector3dd(200, 5, 5));
+
+	const Box3dd box1(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
+	EXPECT_TRUE( algo.calculateIntersection(ray, box1, tolerance) );
+
+	const Box3dd box2(Vector3dd(50, 50, 50), Vector3dd(100, 100, 100));
+	EXPECT_FALSE(algo.calculateIntersection(ray, box2, tolerance));
 }
