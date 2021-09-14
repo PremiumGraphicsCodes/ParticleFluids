@@ -11,6 +11,7 @@ namespace Crystal {
 
 class RayTraceItem : public LinearOctreeItem
 {
+public:
 	explicit RayTraceItem(const Math::Triangle3d& triangle) :
 		LinearOctreeItem(triangle.getBoundingBox())
 	{}
