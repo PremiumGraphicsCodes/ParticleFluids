@@ -1,4 +1,4 @@
-#include "IntersectionCalculator.h"
+﻿#include "IntersectionCalculator.h"
 
 #include "../../Crystal/Math/Line3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
@@ -138,8 +138,58 @@ bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Plane
 	return false;
 }
 
+// reference https://pheema.hatenablog.jp/entry/ray-triangle-intersection
 bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle, const double tolerance)
 {
+	const auto v0 = triangle.getVertices()[0];
+	const auto v1 = triangle.getVertices()[1];
+	const auto v2 = triangle.getVertices()[2];
+
+	const auto e1 = v1 - v0;
+	const auto e2 = v2 - v0;
+
+	const auto o = ray.getOrigin();
+	const auto d = ray.getDirection();
+	const auto alpha = glm::cross(d, e2);
+	const auto det = glm::dot(e1, alpha);
+
+	// 三角形に対して、レイが平行に入射するような場合 det = 0 となる。
+	// det が小さすぎると 1/det が大きくなりすぎて数値的に不安定になるので
+	// det ≈ 0 の場合は交差しないこととする。
+	if (-tolerance < det && det < tolerance) {
+		return false;
+	}
+
+	const auto invDet = 1.0 / det;
+	const auto r = o - v0;
+
+	// u が 0 <= u <= 1 を満たしているかを調べる。
+	const auto u = glm::dot(alpha, r) * invDet;
+	if (u < 0.0 || u > 1.0) {
+		return false;
+	}
+
+	const auto beta = glm::cross(r, e1);
+
+	// v が 0 <= v <= 1 かつ u + v <= 1 を満たすことを調べる。
+	// すなわち、v が 0 <= v <= 1 - u をみたしているかを調べればOK。
+	const auto v = glm::dot(d, beta) * invDet;
+	if (v < 0.0f || u + v > 1.0f) {
+		return false;
+	}
+
+	// t が 0 <= t を満たすことを調べる。
+	const auto t = glm::dot(e2, beta) * invDet;
+	if (t < 0.0f) {
+		return false;
+	}
+
+	Intersection i;
+	i.position = ray.getPosition(t);
+	this->intersections.push_back(i);
+	// 交差した！！！！
+	return true;
+	/*
 	const auto& normal = triangle.getNormal();
 	IntersectionCalculator innerAlgo;
 	const Plane3d plane(triangle.getVertices()[0], triangle.getNormal());
@@ -154,6 +204,7 @@ bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Trian
 		return true;
 	}
 	return false;
+	*/
 }
 
 // ref https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
@@ -207,19 +258,19 @@ bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Box3d
 
 bool IntersectionCalculator::calculateIntersection(const Line3dd& line, const Plane3d& plane, const double tolerance)
 {
-	// �����̎n�_���O�p�n�̗����ɂ���΁A������Ȃ�
-	const auto planeToStart = plane.getDistance(line.getStart());	// �����̎n�_�ƕ��ʂ̋���
+	// 線分の始点が三角系の裏側にあれば、当たらない
+	const auto planeToStart = plane.getDistance(line.getStart());	// 線分の始点と平面の距離
 	if (planeToStart <= tolerance) {
 		return false;
 	}
 
-	// �����̏I�_���O�p�n�̕\���ɂ���΁A������Ȃ�
-	const auto planeToEnd = plane.getDistance(line.getEnd());	// �����̏I�_�ƕ��ʂ̋���
+	// 線分の終点が三角系の表側にあれば、当たらない
+	const auto planeToEnd = plane.getDistance(line.getEnd());	// 線分の終点と平面の距離
 	if (planeToEnd >= -tolerance) {
 		return false;
 	}
 
-	// �����ƕ��ʂƂ̌�_�����
+	// 直線と平面との交点を取る
 	const auto denom = planeToStart - planeToEnd;
 	const auto param = planeToStart / denom;
 
