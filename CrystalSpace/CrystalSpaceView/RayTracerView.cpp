@@ -7,6 +7,7 @@
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
 #include "../../Crystal/Scene/WireFrameScene.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
@@ -96,4 +97,21 @@ void RayTracerView::onOk()
 
 	auto presenter = scene->getPresenter();
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+
+	const auto& intersections = rayTracer.getIntersections();
+	auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>();
+
+	{
+		ParticleAttribute attr;
+		attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+		attr.size = 100.0f;
+		for (const auto& p : intersections) {
+			ps->add(p, attr);
+		}
+
+		auto scene = new ParticleSystemScene(getWorld()->getNextSceneId(), "", std::move(ps));
+		getWorld()->getScenes()->addScene(scene);
+		auto presenter = scene->getPresenter();
+		presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	}
 }

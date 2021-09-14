@@ -27,7 +27,7 @@ void RayTracer::trace(const Ray3d& ray, const double pitch)
 	const auto dir = glm::normalize(ray.getDirection());
 
 	Vector3dd pos = ray.getOrigin();
-	std::list<const LinearOctreeCell*> cells;
+	//std::list<const LinearOctreeCell*> cells;
 
 	double length = 0.0;
 	while (octree.getRootSpace().isInside(pos)) {
@@ -55,10 +55,10 @@ void RayTracer::trace(const Ray3d& ray, const double pitch)
 	indices.unique();
 	cells.sort();
 	cells.unique();
-	findCollisions(ray);
+	calculateIntersections(ray);
 }
 
-void RayTracer::findCollisions(const Ray3d& ray)
+void RayTracer::calculateIntersections(const Ray3d& ray)
 {
 	IntersectionCalculator calculator;
 	for (auto cell : cells) {
@@ -71,6 +71,6 @@ void RayTracer::findCollisions(const Ray3d& ray)
 	}
 	const auto intersections = calculator.getIntersections();
 	for (auto i : intersections) {
-		this->collisions.push_back(i.position);
+		this->intersections.push_back(i.position);
 	}
 }

@@ -32,19 +32,21 @@ public:
 
 	void trace(const Math::Ray3d& ray, const double pitch);
 
-	void findCollisions(const Math::Ray3d& ray);
-
 	std::list<const LinearOctreeCell*> getCells() const { return cells; }
 
 	const LinearOctree& getOctree() const { return octree; }
 
 	std::list<LinearOctreeIndex> getIndices() const { return indices; }
 
+	std::vector<Math::Vector3dd> getIntersections() const { return intersections; }
+
 private:
+	void calculateIntersections(const Math::Ray3d& ray);
+
 	LinearOctree octree;
 	std::list<const LinearOctreeCell*> cells;
 	std::list<LinearOctreeIndex> indices;
-	std::vector<Math::Vector3dd> collisions;
+	std::vector<Math::Vector3dd> intersections;
 };
 
 	}
