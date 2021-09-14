@@ -58,14 +58,24 @@ void RayTracerView::onOk()
 	const auto origin = Vector3dd(0.1, 0.1, 0.1);
 	const auto dir = Vector3dd(1, 1, 1);
 	const Ray3d ray(origin, glm::normalize(dir));
+
+	{
+		WireFrameBuilder wfBuilder;
+		wfBuilder.build(Line3dd(ray.getOrigin(), ray.getPosition(std::sqrt(3) * 10)), 2);
+		WireFrameAttribute attr;
+		attr.color = Crystal::Graphics::ColorRGBAf(0, 1, 0, 1);
+		attr.width = 1.0;
+		auto scene = new WireFrameScene(getWorld()->getNextSceneId(), "", wfBuilder.createWireFrame(), attr);
+		getWorld()->getScenes()->addScene(scene);
+
+		auto presenter = scene->getPresenter();
+		presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+
+	}
+
 	rayTracer.trace(ray, 0.5);
-	auto found = rayTracer.getCells();
-	found.sort();
-	found.unique();
 
 	auto indices = rayTracer.getIndices();
-	indices.sort();
-	indices.unique();
 
 	WireFrameBuilder wfBuilder;
 	const auto& octree = rayTracer.getOctree();
@@ -75,7 +85,7 @@ void RayTracerView::onOk()
 		wfBuilder.build(b);
 	}
 
-	rayTracer.findCollisions(ray, found);
+	//rayTracer.findCollisions(ray, found);
 
 	auto wf = wfBuilder.createWireFrame();
 	WireFrameAttribute attr;

@@ -50,9 +50,15 @@ void RayTracer::trace(const Ray3d& ray, const double pitch)
 		pos = nextPos;
 		length += pitch;
 	}
+
+	indices.sort();
+	indices.unique();
+	cells.sort();
+	cells.unique();
+	findCollisions(ray);
 }
 
-void RayTracer::findCollisions(const Ray3d& ray, const std::list<const LinearOctreeCell*>& cells)
+void RayTracer::findCollisions(const Ray3d& ray)
 {
 	IntersectionCalculator calculator;
 	for (auto cell : cells) {
@@ -64,12 +70,7 @@ void RayTracer::findCollisions(const Ray3d& ray, const std::list<const LinearOct
 		}
 	}
 	const auto intersections = calculator.getIntersections();
+	for (auto i : intersections) {
+		this->collisions.push_back(i.position);
+	}
 }
-
-
-/*
-std::list<const LinearOctreeCell*> RayTracer::traceLv0(const Ray3d& ray, const double pitch)
-{
-	octree.findCell(LinearOctreeIndex)
-}
-*/

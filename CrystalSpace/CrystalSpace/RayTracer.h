@@ -32,7 +32,7 @@ public:
 
 	void trace(const Math::Ray3d& ray, const double pitch);
 
-	void findCollisions(const Math::Ray3d& ray, const std::list<const LinearOctreeCell*>& cells);
+	void findCollisions(const Math::Ray3d& ray);
 
 	std::list<const LinearOctreeCell*> getCells() const { return cells; }
 
