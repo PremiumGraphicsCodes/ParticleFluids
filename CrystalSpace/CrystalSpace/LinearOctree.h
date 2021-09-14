@@ -62,6 +62,8 @@ public:
 
 	bool operator==(const LinearOctreeIndex& rhs) const { return this->index1d == rhs.index1d; }
 
+	bool operator<(const LinearOctreeIndex& rhs) const { return this->index1d < rhs.index1d; }
+
 private:
 	unsigned int index1d;
 };

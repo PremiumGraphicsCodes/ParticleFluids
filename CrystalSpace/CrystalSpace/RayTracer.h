@@ -13,7 +13,8 @@ class RayTraceItem : public LinearOctreeItem
 {
 public:
 	explicit RayTraceItem(const Math::Triangle3d& triangle) :
-		LinearOctreeItem(triangle.getBoundingBox())
+		LinearOctreeItem(triangle.getBoundingBox()),
+		triangle(triangle)
 	{}
 
 	Math::Triangle3d getTriangle() const { return triangle; }
@@ -31,12 +32,17 @@ public:
 
 	std::list<const LinearOctreeCell*> trace(const Math::Ray3d& ray, const double pitch);
 
-	void findCollisions(const std::list<const LinearOctreeCell*>& cells);
+	void findCollisions(const Math::Ray3d& ray, const std::list<const LinearOctreeCell*>& cells);
 
 	//std::list<const LinearOctreeCell*> traceLv0(const Math::Ray3d& ray, const double pitch);
 
+	const LinearOctree& getOctree() const { return octree; }
+
+	std::list<LinearOctreeIndex> getIndices() const { return indices; }
+
 private:
 	LinearOctree octree;
+	std::list<LinearOctreeIndex> indices;
 	std::vector<Math::Vector3dd> collisions;
 };
 

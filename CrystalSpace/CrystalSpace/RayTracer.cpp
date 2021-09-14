@@ -1,5 +1,7 @@
 #include "RayTracer.h"
 
+#include "IntersectionCalculator.h"
+
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Shape/PolygonMesh.h"
 
@@ -36,6 +38,7 @@ std::list<const LinearOctreeCell*> RayTracer::trace(const Ray3d& ray, const doub
 		while (level >= 0) {
 			auto cell = octree.findCell(index);
 			if (cell != nullptr) {
+				indices.push_back(index);
 				cells.push_back(cell);
 			}
 			if (level == 0) {
@@ -52,9 +55,18 @@ std::list<const LinearOctreeCell*> RayTracer::trace(const Ray3d& ray, const doub
 	return cells;
 }
 
-void RayTracer::findCollisions(const std::list<const LinearOctreeCell*>& cells)
+void RayTracer::findCollisions(const Ray3d& ray, const std::list<const LinearOctreeCell*>& cells)
 {
-	;
+	IntersectionCalculator calculator;
+	for (auto cell : cells) {
+		const auto items = cell->getItems();
+		for (auto item : items) {
+			auto rtItem = static_cast<RayTraceItem*>(item);
+			const auto t = rtItem->getTriangle();
+			calculator.calculateIntersection(ray, t, 1.0e-12);
+		}
+	}
+	const auto intersections = calculator.getIntersections();
 }
 
 

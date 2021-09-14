@@ -61,12 +61,18 @@ void RayTracerView::onOk()
 	auto found = rayTracer.trace(ray, 0.5);
 	found.sort();
 	found.unique();
+	rayTracer.findCollisions(ray, found);
+
+	auto indices = rayTracer.getIndices();
+	indices.sort();
+	indices.unique();
 
 	WireFrameBuilder wfBuilder;
-	for (auto f : found) {
-		for (auto i : f->getItems()) {
-			wfBuilder.build(i->getBoundingBox());
-		}
+	const auto& octree = rayTracer.getOctree();
+	const auto& table = octree.getTable();
+	for (auto i : indices) {
+		const auto b = octree.calculateAABB(i);
+		wfBuilder.build(b);
 	}
 
 	auto wf = wfBuilder.createWireFrame();
