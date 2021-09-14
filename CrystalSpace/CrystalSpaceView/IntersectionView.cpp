@@ -10,22 +10,17 @@ using namespace Crystal::Scene;
 using namespace Crystal::UI;
 using namespace Crystal::Space;
 
-IntersectionView::IntersectionView(World* model, Canvas* canvas) :
-	IOkCancelView("Intersection", model, canvas),
-	mesh1("Mesh1", model, canvas),
-	mesh2("Mesh2", model, canvas),
+IntersectionView::IntersectionView(const std::string& name, World* model, Canvas* canvas) :
+	IOkCancelView(name, model, canvas),
 	tolerance("Tolerance", 1.0e-12)
 {
-}
+	//toPointsButton.setFunction([=]() { toPoints(); });
 
-void IntersectionView::onShow()
-{
-	mesh1.show();
-	mesh2.show();
 }
 
 void IntersectionView::onOk()
 {
+	/*
 	auto repository = getWorld();
 	auto obj1 = repository->getScenes()->findSceneById<PolygonMeshScene*>(mesh1.getId());
 	auto obj2 = repository->getScenes()->findSceneById<PolygonMeshScene*>(mesh2.getId());
@@ -33,6 +28,7 @@ void IntersectionView::onOk()
 		return;
 	}
 
+	/*
 	IntersectionCalculator algo;
 	const auto isFound = algo.calculateIntersection(*obj1->getShape(),*obj2->getShape(), tolerance.getValue());
 	if (isFound) {
@@ -48,5 +44,6 @@ void IntersectionView::onOk()
 		//repository->getSceneFactory()->createParticleSystemScene(positions, attr, "intersections");
 		//getWorld()->updateViewModel();
 	}
+	*/
 }
 

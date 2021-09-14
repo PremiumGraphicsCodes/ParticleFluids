@@ -239,27 +239,3 @@ bool IntersectionCalculator::calculateIntersection(const Triangle3d& lhs, const 
 	const auto found3 = calculateIntersection(l3, rhs, tolerance);
 	return (found1 || found2 || found3);
 }
-
-bool IntersectionCalculator::calculateIntersection(const PolygonMesh& lhs, const PolygonMesh& rhs, const double tolerance)
-{
-	/*
-	const auto& faces1 = lhs.getFaces();
-	std::vector<Triangle3d> triangles1;
-	for (auto f : faces1) {
-		const auto& triangle = f->toTriangle();
-		triangles1.push_back(triangle);
-	}
-	const auto& faces2 = rhs.getFaces();
-	std::vector<Triangle3d> triangles2;
-	for (auto f : faces2) {
-		const auto& triangle = f->toTriangle();
-		triangles2.push_back(triangle);
-	}
-	for (const auto& t1 : triangles1) {
-		for (const auto& t2 : triangles2) {
-			calculateIntersection(t1, t2, tolerance);
-		}
-	}
-	*/
-	return !intersections.empty();
-}

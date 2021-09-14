@@ -56,7 +56,7 @@ void AlgoMenu::onShow()
 			control->setWindow(new LinearOctreeView(getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("Intersection")) {
-			control->setWindow(new IntersectionView(getWorld(), getCanvas()));
+			control->setWindow(new IntersectionView("Intersection",getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("Volume")) {
 			control->setWindow(new VolumeView(getWorld(), getCanvas()));
