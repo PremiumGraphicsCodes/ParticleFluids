@@ -20,6 +20,6 @@ WFBoxView::WFBoxView(const std::string& name, World* world, Canvas* canvas) :
 void WFBoxView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(boxView.getValue());
+	builder.add(boxView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

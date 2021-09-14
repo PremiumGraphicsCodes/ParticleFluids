@@ -22,6 +22,6 @@ WFEllipsoidView::WFEllipsoidView(const std::string& name, World* world, Canvas* 
 void WFEllipsoidView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(ellipsoidView.getValue(), unumView.getValue(), vnumView.getValue());
+	builder.add(ellipsoidView.getValue(), unumView.getValue(), vnumView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

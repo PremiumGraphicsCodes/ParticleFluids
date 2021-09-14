@@ -33,7 +33,7 @@ void RayTracerView::onOk()
 
 	{
 		WireFrameBuilder wfBuilder;
-		wfBuilder.build(sphere, 20, 20);
+		wfBuilder.add(sphere, 20, 20);
 		auto wf = wfBuilder.createWireFrame();
 		WireFrameAttribute attr;
 		attr.color = Crystal::Graphics::ColorRGBAf(0, 0, 1, 1);
@@ -62,7 +62,7 @@ void RayTracerView::onOk()
 
 	{
 		WireFrameBuilder wfBuilder;
-		wfBuilder.build(Line3dd(ray.getOrigin(), ray.getPosition(std::sqrt(3) * 10)), 2);
+		wfBuilder.add(Line3dd(ray.getOrigin(), ray.getPosition(std::sqrt(3) * 10)), 2);
 		WireFrameAttribute attr;
 		attr.color = Crystal::Graphics::ColorRGBAf(0, 1, 0, 1);
 		attr.width = 1.0;
@@ -83,7 +83,7 @@ void RayTracerView::onOk()
 	const auto& table = octree.getTable();
 	for (auto i : indices) {
 		const auto b = octree.calculateAABB(i);
-		wfBuilder.build(b);
+		wfBuilder.add(b);
 	}
 
 	//rayTracer.findCollisions(ray, found);

@@ -20,7 +20,7 @@ void WFCircleView::onOk()
 {
 	const auto& circle = circleView.getValue();
 	WireFrameBuilder builder;
-	builder.build(circle, unumView.getValue());
+	builder.add(circle, unumView.getValue());
 
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

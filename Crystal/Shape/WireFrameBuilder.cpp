@@ -14,7 +14,7 @@ namespace {
 	constexpr auto tolerance = 1.e-12;
 }
 
-void WireFrameBuilder::build(const ICurve3dd& curve, const int unum)
+void WireFrameBuilder::add(const ICurve3dd& curve, const int unum)
 {
 	std::vector<int> grid;
 	const auto du = 1.0 / static_cast<double>(unum);
@@ -26,7 +26,7 @@ void WireFrameBuilder::build(const ICurve3dd& curve, const int unum)
 	}
 }
 
-void WireFrameBuilder::build(const ISurface3dd& sphere, const int unum, const int vnum)
+void WireFrameBuilder::add(const ISurface3dd& sphere, const int unum, const int vnum)
 {
 	const auto du = 1.0 / static_cast<double>(unum);
 	const auto dv = 1.0 / static_cast<double>(vnum);
@@ -53,7 +53,7 @@ void WireFrameBuilder::build(const ISurface3dd& sphere, const int unum, const in
 	}
 }
 
-void WireFrameBuilder::build(const IVolume3dd& box)
+void WireFrameBuilder::add(const IVolume3dd& box)
 {
 	const auto p0 = createPosition(box.getPosition(0, 0, 0));
 	const auto p1 = createPosition(box.getPosition(1, 0, 0));

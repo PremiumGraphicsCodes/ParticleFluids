@@ -22,11 +22,11 @@ namespace Crystal {
 class WireFrameBuilder
 {
 public:
-	void build(const Math::ICurve3d<double>& curve, int unum);
+	void add(const Math::ICurve3d<double>& curve, int unum);
 
-	void build(const Math::ISurface3d<double>& circle, const int unum, const int vnum);
+	void add(const Math::ISurface3d<double>& circle, const int unum, const int vnum);
 
-	void build(const Math::IVolume3d<double>& box);
+	void add(const Math::IVolume3d<double>& box);
 
 	std::vector<Math::Vector3dd> getPositions() const { return positions; }
 

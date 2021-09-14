@@ -23,6 +23,6 @@ WFSphereView::WFSphereView(const std::string& name, World* world, Canvas* canvas
 void WFSphereView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(sphereView.getValue(), unumView.getValue(), vnumView.getValue());
+	builder.add(sphereView.getValue(), unumView.getValue(), vnumView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

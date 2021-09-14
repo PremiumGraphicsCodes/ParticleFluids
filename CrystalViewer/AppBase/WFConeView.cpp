@@ -23,6 +23,6 @@ WFConeView::WFConeView(const std::string& name, World* world, Canvas* canvas) :
 void WFConeView::onOk()
 {
 	WireFrameBuilder builder;
-	builder.build(coneView.getValue(), unumView.getValue(), vnumView.getValue());
+	builder.add(coneView.getValue(), unumView.getValue(), vnumView.getValue());
 	IWFAddView::addWireFrame(builder.getPositions(), builder.getEdges());
 }

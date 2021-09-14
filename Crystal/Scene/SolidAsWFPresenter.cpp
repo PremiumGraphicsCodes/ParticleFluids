@@ -52,7 +52,7 @@ void SolidAsWFPresenter::updateScreenView()
 	const auto& shape = model->getBoundingBox();
 
 	WireFrameBuilder builder;
-	builder.build(shape);
+	builder.add(shape);
 	const auto& positions = builder.getPositions();
 	const auto& edges = builder.getEdges();
 

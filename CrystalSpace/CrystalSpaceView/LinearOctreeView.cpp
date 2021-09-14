@@ -51,7 +51,7 @@ void LinearOctreeView::onOk()
 	}
 	*/
 	for (auto b : boxes) {
-		wfBuilder.build(b);
+		wfBuilder.add(b);
 	}
 
 	auto wf = wfBuilder.createWireFrame();

@@ -40,7 +40,7 @@ void OctreeView::onOk()
 	WireFrameBuilder wfBuilder;
 	auto children = octree.toSerialList();
 	for (auto c : children) {
-		wfBuilder.build( c->getSpace());
+		wfBuilder.add( c->getSpace());
 	}
 
 	auto wf = wfBuilder.createWireFrame();
