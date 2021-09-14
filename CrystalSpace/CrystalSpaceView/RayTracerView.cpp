@@ -58,10 +58,10 @@ void RayTracerView::onOk()
 	const auto origin = Vector3dd(0.1, 0.1, 0.1);
 	const auto dir = Vector3dd(1, 1, 1);
 	const Ray3d ray(origin, glm::normalize(dir));
-	auto found = rayTracer.trace(ray, 0.5);
+	rayTracer.trace(ray, 0.5);
+	auto found = rayTracer.getCells();
 	found.sort();
 	found.unique();
-	rayTracer.findCollisions(ray, found);
 
 	auto indices = rayTracer.getIndices();
 	indices.sort();
@@ -74,6 +74,8 @@ void RayTracerView::onOk()
 		const auto b = octree.calculateAABB(i);
 		wfBuilder.build(b);
 	}
+
+	rayTracer.findCollisions(ray, found);
 
 	auto wf = wfBuilder.createWireFrame();
 	WireFrameAttribute attr;

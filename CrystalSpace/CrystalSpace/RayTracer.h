@@ -30,11 +30,11 @@ public:
 
 	void add(RayTraceItem* item);
 
-	std::list<const LinearOctreeCell*> trace(const Math::Ray3d& ray, const double pitch);
+	void trace(const Math::Ray3d& ray, const double pitch);
 
 	void findCollisions(const Math::Ray3d& ray, const std::list<const LinearOctreeCell*>& cells);
 
-	//std::list<const LinearOctreeCell*> traceLv0(const Math::Ray3d& ray, const double pitch);
+	std::list<const LinearOctreeCell*> getCells() const { return cells; }
 
 	const LinearOctree& getOctree() const { return octree; }
 
@@ -42,6 +42,7 @@ public:
 
 private:
 	LinearOctree octree;
+	std::list<const LinearOctreeCell*> cells;
 	std::list<LinearOctreeIndex> indices;
 	std::vector<Math::Vector3dd> collisions;
 };

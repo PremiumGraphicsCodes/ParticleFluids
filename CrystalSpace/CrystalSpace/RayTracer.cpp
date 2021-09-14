@@ -22,13 +22,12 @@ void RayTracer::add(RayTraceItem* item)
 
 // ref https://riyaaaaasan.hatenablog.com/entry/2018/05/08/224545
 
-std::list<const LinearOctreeCell*> RayTracer::trace(const Ray3d& ray, const double pitch)
+void RayTracer::trace(const Ray3d& ray, const double pitch)
 {
-	//const auto grid = octree.calculateGridIndex(ray.getOrigin()); // レイの初期位置から空間のグリッド座標を算出
 	const auto dir = glm::normalize(ray.getDirection());
 
-	Vector3dd pos = ray.getOrigin(); // 初期位置
-	std::list<const LinearOctreeCell*> cells; // 衝突リスト（リストの中身は空間ハッシュ）
+	Vector3dd pos = ray.getOrigin();
+	std::list<const LinearOctreeCell*> cells;
 
 	double length = 0.0;
 	while (octree.getRootSpace().isInside(pos)) {
@@ -51,8 +50,6 @@ std::list<const LinearOctreeCell*> RayTracer::trace(const Ray3d& ray, const doub
 		pos = nextPos;
 		length += pitch;
 	}
-
-	return cells;
 }
 
 void RayTracer::findCollisions(const Ray3d& ray, const std::list<const LinearOctreeCell*>& cells)
