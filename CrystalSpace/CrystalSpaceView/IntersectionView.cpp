@@ -1,6 +1,6 @@
 #include "IntersectionView.h"
 
-#include "../CrystalSpace/IntersectionAlgo.h"
+#include "../CrystalSpace/IntersectionCalculator.h"
 #include "../../Crystal/Shape/WireFrameBuilder.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
@@ -33,7 +33,7 @@ void IntersectionView::onOk()
 		return;
 	}
 
-	IntersectionAlgo algo;
+	IntersectionCalculator algo;
 	const auto isFound = algo.calculateIntersection(*obj1->getShape(),*obj2->getShape(), tolerance.getValue());
 	if (isFound) {
 		const auto& intersections = algo.getIntersections();

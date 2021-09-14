@@ -24,8 +24,9 @@ RayTracerView::RayTracerView(const std::string& name, World* model, Canvas* canv
 void RayTracerView::onOk()
 {
 	RayTracer rayTracer;
-	rayTracer.buildSpace(Box3dd(Vector3dd(0,0,0), Vector3dd(10,10,10)),4);
+	rayTracer.build(Box3dd(Vector3dd(0,0,0), Vector3dd(10,10,10)),4);
 
+	/*
 	Box3dd b1(Vector3dd(8, 8, 8), Vector3dd(9, 9, 9));
 	auto item1 = new LinearOctreeItem(b1);
 	rayTracer.add(item1);
@@ -37,6 +38,7 @@ void RayTracerView::onOk()
 	Box3dd b3(Vector3dd(0, 0, 0), Vector3dd(1, 1, 1));
 	auto item3 = new LinearOctreeItem(b3);
 	rayTracer.add(item3);
+	*/
 
 	Ray3d ray(Vector3dd(0.1, 0.1, 0.1), Vector3dd(10, 10, 10));
 	auto found = rayTracer.trace(ray, 0.5);

@@ -42,7 +42,7 @@ public:
 	Math::Vector3dd normal;
 };
 
-class IntersectionAlgo
+class IntersectionCalculator
 {
 public:
 	bool calculateIntersection(const Math::Ray3d& ray, const Math::Sphere3dd& sphere, const double tolerance);

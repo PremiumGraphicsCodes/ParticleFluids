@@ -1,4 +1,4 @@
-#include "IntersectionAlgo.h"
+#include "IntersectionCalculator.h"
 
 #include "../../Crystal/Math/Line3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
@@ -17,7 +17,7 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
-bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Sphere3dd& sphere, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Sphere3dd& sphere, const double tolerance)
 {
 	const auto& direction = ray.getDirection();
 	const auto& diff = sphere.getCenter() - ray.getOrigin();
@@ -39,7 +39,7 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Sphere3dd& 
 	return false;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Sphere3dd& sphere, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Line3dd& line, const Sphere3dd& sphere, const double tolerance)
 {
 	const auto& dir = glm::normalize(line.getDirection());
 	const auto diff = sphere.getCenter() - line.getStart();
@@ -65,11 +65,11 @@ bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Sphere3d
 	return true;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Triangle3d& triangle, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Line3dd& line, const Triangle3d& triangle, const double tolerance)
 {
 	const auto& plane = triangle.toPlane();
 
-	IntersectionAlgo innerAlgo;
+	IntersectionCalculator innerAlgo;
 	if (!innerAlgo.calculateIntersection(line, plane, tolerance)) {
 		return false;
 	}
@@ -85,11 +85,11 @@ bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Triangle
 	return false;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Quad3d& quad, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Line3dd& line, const Quad3d& quad, const double tolerance)
 {
 	const auto& plane = quad.toPlane();
 
-	IntersectionAlgo innerAlgo;
+	IntersectionCalculator innerAlgo;
 	if (!innerAlgo.calculateIntersection(line, plane, tolerance)) {
 		return false;
 	}
@@ -105,11 +105,11 @@ bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Quad3d& 
 	return false;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Quad3d& quad, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Quad3d& quad, const double tolerance)
 {
 	const auto& plane = quad.toPlane();
 
-	IntersectionAlgo innerAlgo;
+	IntersectionCalculator innerAlgo;
 	if (!innerAlgo.calculateIntersection(ray, plane, tolerance)) {
 		return false;
 	}
@@ -125,7 +125,7 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Quad3d& qua
 	return false;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Plane3d& plane, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Plane3d& plane, const double tolerance)
 {
 	const auto distance = plane.getDistance(ray.getOrigin());
 
@@ -138,10 +138,10 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Plane3d& pl
 	return false;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle, const double tolerance)
 {
 	const auto& normal = triangle.getNormal();
-	IntersectionAlgo innerAlgo;
+	IntersectionCalculator innerAlgo;
 	const Plane3d plane(triangle.getVertices()[0], triangle.getNormal());
 	if (!innerAlgo.calculateIntersection(ray, plane, tolerance)) {
 		return false;
@@ -157,7 +157,7 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Triangle3d&
 }
 
 // ref https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
-bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Box3dd& box, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Box3dd& box, const double tolerance)
 {
 	// tmin, tmax -> parameter
 
@@ -205,7 +205,7 @@ bool IntersectionAlgo::calculateIntersection(const Ray3d& ray, const Box3dd& box
 	return true;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Plane3d& plane, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Line3dd& line, const Plane3d& plane, const double tolerance)
 {
 	// 線分の始点が三角系の裏側にあれば、当たらない
 	const auto planeToStart = plane.getDistance(line.getStart());	// 線分の始点と平面の距離
@@ -228,7 +228,7 @@ bool IntersectionAlgo::calculateIntersection(const Line3dd& line, const Plane3d&
 	return true;
 }
 
-bool IntersectionAlgo::calculateIntersection(const Triangle3d& lhs, const Triangle3d& rhs, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const Triangle3d& lhs, const Triangle3d& rhs, const double tolerance)
 {
 	const auto& vertices = lhs.getVertices();
 	const auto l1 = Line3dd::fromPoints(vertices[0], vertices[1]);
@@ -240,7 +240,7 @@ bool IntersectionAlgo::calculateIntersection(const Triangle3d& lhs, const Triang
 	return (found1 || found2 || found3);
 }
 
-bool IntersectionAlgo::calculateIntersection(const PolygonMesh& lhs, const PolygonMesh& rhs, const double tolerance)
+bool IntersectionCalculator::calculateIntersection(const PolygonMesh& lhs, const PolygonMesh& rhs, const double tolerance)
 {
 	/*
 	const auto& faces1 = lhs.getFaces();

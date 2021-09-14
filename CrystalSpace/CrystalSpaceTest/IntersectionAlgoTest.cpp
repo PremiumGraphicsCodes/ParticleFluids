@@ -5,7 +5,7 @@
 #include "../../Crystal/Math/Ray3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Math/Box3d.h"
-#include "../CrystalSpace/IntersectionAlgo.h"
+#include "../CrystalSpace/IntersectionCalculator.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;
@@ -22,7 +22,7 @@ namespace {
 TEST(IntersectionAlgoTest, TestLineAndTriangle)
 {
 	const auto& triangle = getTriangle();
-	IntersectionAlgo algo;
+	IntersectionCalculator algo;
 
 	{
 		const Line3dd line(Vector3dd(1, 1, -1), Vector3dd(0, 0, 2));
@@ -42,7 +42,7 @@ TEST(IntersectionAlgoTest, TestLineAndTriangle)
 
 TEST(IntersectionAlgoTest, TestRayAndPlane)
 {
-	IntersectionAlgo algo;
+	IntersectionCalculator algo;
 	const Ray3d ray(Vector3dd(0, 0, -1), Vector3dd(0, 0, 1));
 
 	{
@@ -64,7 +64,7 @@ TEST(IntersectionAlgoTest, TestRayAndPlane)
 
 TEST(IntersectionAlgoTest, TestRayAndTriangle)
 {
-	IntersectionAlgo algo;
+	IntersectionCalculator algo;
 	const auto& triangle = getTriangle();
 
 	{
@@ -85,7 +85,7 @@ TEST(IntersectionAlgoTest, TestRayAndTriangle)
 
 TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 {
-	IntersectionAlgo algo;
+	IntersectionCalculator algo;
 	const auto& triangle1 = getTriangle();
 
 	{
@@ -101,7 +101,7 @@ TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 
 TEST(IntersectionAlgoTest, TestRayAndBox)
 {
-	IntersectionAlgo algo;
+	IntersectionCalculator algo;
 	const Ray3d ray(Vector3dd(-5, 5, 5), Vector3dd(20, 0, 0));
 
 	const Box3dd box1(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));

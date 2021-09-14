@@ -155,7 +155,7 @@
     <ClInclude Include="DistanceCalculator.h" />
     <ClInclude Include="IndexedSortSearchAlgo.h" />
     <ClInclude Include="IndexedParticle.h" />
-    <ClInclude Include="IntersectionAlgo.h" />
+    <ClInclude Include="IntersectionCalculator.h" />
     <ClInclude Include="IOctreeItem.h" />
     <ClInclude Include="LinearOctree.h" />
     <ClInclude Include="MarchingCubesAlgo.h" />
@@ -189,7 +189,7 @@
     <ClCompile Include="DistanceCalculator.cpp" />
     <ClCompile Include="IndexedSortSearchAlgo.cpp" />
     <ClCompile Include="IndexedParticle.cpp" />
-    <ClCompile Include="IntersectionAlgo.cpp" />
+    <ClCompile Include="IntersectionCalculator.cpp" />
     <ClCompile Include="LinearOctree.cpp" />
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="MeshToParticleConverter.cpp" />

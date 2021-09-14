@@ -8,12 +8,12 @@ using namespace Crystal::Shape;
 using namespace Crystal::Space;
 
 
-void RayTracer::buildSpace(const Box3dd& space, const int level)
+void RayTracer::build(const Box3dd& space, const int level)
 {
 	octree.init(space, level);
 }
 
-void RayTracer::add(LinearOctreeItem* item)
+void RayTracer::add(RayTraceItem* item)
 {
 	octree.add(item);
 }
