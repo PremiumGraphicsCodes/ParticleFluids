@@ -33,7 +33,7 @@ void CSGBoundaryScenePresenter::updateView()
 	
 	WireFrameBuilder builder;
 	for (const auto& b : boxes) {
-		builder.build(b);
+		builder.add(b);
 	}
 	const auto edges = builder.getEdges();
 	const auto positions = builder.getPositions();

@@ -48,6 +48,7 @@ bool VoxelizerCommand::execute(World* scene)
 	Voxelizer converter;
 	converter.voxelize(*pmScene->getShape(), args.divideLength.getValue());
 	psScene->getShape()->clear();
+	/*
 	const auto points = converter.getPoints();
 	ParticleAttribute attr;
 	attr.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
@@ -55,5 +56,6 @@ bool VoxelizerCommand::execute(World* scene)
 	for (const auto& p : points) {
 		psScene->getShape()->add(p, attr);
 	}
+	*/
 	return true;
 }
