@@ -80,7 +80,7 @@ void WireFrameBuilder::build(const IVolume3dd& box)
 	edges.push_back(WireFrameEdge(p3, p7));
 }
 
-void WireFrameBuilder::build(const std::vector<std::vector<int>>& grid)
+void WireFrameBuilder::add(const std::vector<std::vector<int>>& grid)
 {
 	for (int i = 0; i < grid.size() - 1; ++i) {
 		for (int j = 0; j < grid[i].size() - 1; ++j) {
@@ -101,4 +101,10 @@ int WireFrameBuilder::createPosition(const Vector3dd& v)
 std::unique_ptr<WireFrame> WireFrameBuilder::createWireFrame()
 {
 	return std::make_unique<WireFrame>(positions, edges);
+}
+
+void WireFrameBuilder::clear()
+{
+	positions.clear();
+	edges.clear();
 }

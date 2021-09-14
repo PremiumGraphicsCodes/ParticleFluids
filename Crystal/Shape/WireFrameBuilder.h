@@ -38,8 +38,10 @@ public:
 
 	std::unique_ptr<WireFrame> createWireFrame();
 
+	void clear();
+
 private:
-	void build(const std::vector<std::vector<int>>& grid);
+	void add(const std::vector<std::vector<int>>& grid);
 
 private:
 	std::vector<Math::Vector3dd> positions;

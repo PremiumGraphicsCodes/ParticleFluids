@@ -52,6 +52,12 @@ std::list<const LinearOctreeCell*> RayTracer::trace(const Ray3d& ray, const doub
 	return cells;
 }
 
+void RayTracer::findCollisions(const std::list<const LinearOctreeCell*>& cells)
+{
+	;
+}
+
+
 /*
 std::list<const LinearOctreeCell*> RayTracer::traceLv0(const Ray3d& ray, const double pitch)
 {

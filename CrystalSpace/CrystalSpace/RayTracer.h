@@ -31,10 +31,13 @@ public:
 
 	std::list<const LinearOctreeCell*> trace(const Math::Ray3d& ray, const double pitch);
 
+	void findCollisions(const std::list<const LinearOctreeCell*>& cells);
+
 	//std::list<const LinearOctreeCell*> traceLv0(const Math::Ray3d& ray, const double pitch);
 
 private:
 	LinearOctree octree;
+	std::vector<Math::Vector3dd> collisions;
 };
 
 	}

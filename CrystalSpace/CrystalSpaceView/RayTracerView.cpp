@@ -24,11 +24,25 @@ RayTracerView::RayTracerView(const std::string& name, World* model, Canvas* canv
 void RayTracerView::onOk()
 {
 	PolygonMeshBuilder builder;
-	//	const Sphere3dd sphere(Vector3dd(0,0,0), 10);
-	//	builder.add(sphere, 20, 20);
-	const Box3dd box(Vector3dd(-10, -10, -10), Vector3dd(10, 10, 10));
-	builder.add(box, 2, 2, 2);
+	const Sphere3dd sphere(Vector3dd(5,5,5), 5);
+	builder.add(sphere, 20, 20);
+	//const Box3dd box(Vector3dd(-10, -10, -10), Vector3dd(10, 10, 10));
+	//builder.add(box, 2, 2, 2);
 	auto mesh = builder.build();
+
+	{
+		WireFrameBuilder wfBuilder;
+		wfBuilder.build(sphere, 20, 20);
+		auto wf = wfBuilder.createWireFrame();
+		WireFrameAttribute attr;
+		attr.color = Crystal::Graphics::ColorRGBAf(0, 0, 1, 1);
+		attr.width = 1.0;
+		auto scene = new WireFrameScene(getWorld()->getNextSceneId(), "", std::move(wf), attr);
+		getWorld()->getScenes()->addScene(scene);
+
+		auto presenter = scene->getPresenter();
+		presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	}
 
 	RayTracer rayTracer;
 	rayTracer.build(Box3dd(Vector3dd(0,0,0), Vector3dd(10,10,10)),4);
@@ -41,8 +55,9 @@ void RayTracerView::onOk()
 		rayTracer.add(item);
 	}
 
+	const auto origin = Vector3dd(0.1, 0.1, 0.1);
 	const auto dir = Vector3dd(1, 1, 1);
-	Ray3d ray(Vector3dd(0.1, 0.1, 0.1), glm::normalize(dir));
+	const Ray3d ray(origin, glm::normalize(dir));
 	auto found = rayTracer.trace(ray, 0.5);
 	found.sort();
 	found.unique();
