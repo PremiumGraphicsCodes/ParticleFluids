@@ -1,11 +1,12 @@
 #include <gtest/gtest.h>
 
+#include "../CrystalSpace/IntersectionCalculator.h"
+
 #include "../../Crystal/Math/Line3d.h"
 #include "../../Crystal/Math/Plane3d.h"
 #include "../../Crystal/Math/Ray3d.h"
 #include "../../Crystal/Math/Triangle3d.h"
 #include "../../Crystal/Math/Box3d.h"
-#include "../CrystalSpace/IntersectionCalculator.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;
@@ -19,7 +20,7 @@ namespace {
 	}
 }
 
-TEST(IntersectionAlgoTest, TestLineAndTriangle)
+TEST(IntersectionCalculatorTest, TestLineAndTriangle)
 {
 	const auto& triangle = getTriangle();
 	IntersectionCalculator algo;
@@ -40,7 +41,7 @@ TEST(IntersectionAlgoTest, TestLineAndTriangle)
 	}
 }
 
-TEST(IntersectionAlgoTest, TestRayAndPlane)
+TEST(IntersectionCalculatorTest, TestRayAndPlane)
 {
 	IntersectionCalculator algo;
 	const Ray3d ray(Vector3dd(0, 0, -1), Vector3dd(0, 0, 1));
@@ -62,30 +63,27 @@ TEST(IntersectionAlgoTest, TestRayAndPlane)
 	}
 }
 
-TEST(IntersectionAlgoTest, TestRayAndTriangle)
+TEST(IntersectionCalculatorTest, TestRayAndTriangle)
 {
 	IntersectionCalculator algo;
 	const auto& triangle = getTriangle();
-
-	/*
-	{
-		const Ray3d ray(Vector3dd(1, 1,-1), Vector3dd(0, 0, 1));
-		EXPECT_FALSE(algo.calculateIntersection(ray, triangle, tolerance));
-	}
-	*/
 
 	{
 		const Ray3d ray(Vector3dd(1, 1, 1), Vector3dd(0, 0, -1));
 		EXPECT_TRUE(algo.calculateIntersection(ray, triangle, tolerance));
 		const auto& intersections = algo.getIntersections();
 		EXPECT_EQ(1, intersections.size());
-		const auto i = intersections[0];
+		const auto& i = intersections[0];
 		EXPECT_EQ(Vector3dd(1, 1, 0), i.position);
-		//EXPECT_EQ(Vector3dd(0, 0, 1), i.normal);
+	}
+
+	{
+		const Ray3d ray(Vector3dd(10, 1, 1), Vector3dd(0, 0, -1));
+		EXPECT_FALSE(algo.calculateIntersection(ray, triangle, tolerance));
 	}
 }
 
-TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
+TEST(IntersectionCalculatorTest, TestTriangleAndTriangle)
 {
 	IntersectionCalculator algo;
 	const auto& triangle1 = getTriangle();
@@ -101,7 +99,7 @@ TEST(IntersectionAlgoTest, TestTriangleAndTriangle)
 	}
 }
 
-TEST(IntersectionAlgoTest, TestRayAndBox)
+TEST(IntersectionCalculatorTest, TestRayAndBox)
 {
 	IntersectionCalculator algo;
 	const Ray3d ray(Vector3dd(-5, 5, 5), Vector3dd(20, 0, 0));
