@@ -1,10 +1,17 @@
 #include "IntersectionView.h"
 
-#include "../CrystalSpace/IntersectionCalculator.h"
+#include "../../Crystal/Math/Ray3d.h"
+#include "../../Crystal/Math/Sphere3d.h"
+#include "../../Crystal/Math/Triangle3d.h"
+
 #include "../../Crystal/Shape/WireFrameBuilder.h"
 #include "../../Crystal/Scene/ParticleSystemScene.h"
 #include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
+#include "../CrystalSpace/IntersectionCalculator.h"
+
+using namespace Crystal::Math;
 using namespace Crystal::Shape;
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
@@ -12,10 +19,51 @@ using namespace Crystal::Space;
 
 IntersectionView::IntersectionView(const std::string& name, World* model, Canvas* canvas) :
 	IOkCancelView(name, model, canvas),
+	rayTriangleButton("RayTriangle"),
 	tolerance("Tolerance", 1.0e-12)
 {
-	//toPointsButton.setFunction([=]() { toPoints(); });
+	rayTriangleButton.setFunction([=]() { onRayTriangle(); });
 
+	add(&rayTriangleButton);
+}
+
+void IntersectionView::onRayTriangle()
+{
+	PolygonMeshBuilder builder;
+//	const Sphere3dd sphere(Vector3dd(0,0,0), 10);
+//	builder.add(sphere, 20, 20);
+	const Box3dd box(Vector3dd(-10, -10, -10), Vector3dd(10, 10, 10));
+	builder.add(box, 2, 2, 2);
+	auto mesh = builder.build();
+
+	const Ray3d ray(Vector3dd(-100, 0, 0), Vector3dd(1, 0, 0));
+
+	IntersectionCalculator calculator;
+	const auto faces = mesh->getFaces();
+	for (const auto& f : faces) {
+		const auto t = f.toTriangle(mesh->getPositions());
+		calculator.calculateIntersection(ray, t, tolerance.getValue());
+	}
+
+	const auto& intersections = calculator.getIntersections();
+	std::vector<Math::Vector3dd> positions;
+	for (const auto& i : intersections) {
+		const auto& p = i.position;
+		positions.push_back(p);
+	}
+	auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>();
+
+	ParticleAttribute attr;
+	attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+	attr.size = 100.0f;
+	for (auto p : positions) {
+		ps->add(p, attr);
+	}
+
+	auto scene = new ParticleSystemScene(getWorld()->getNextSceneId(), "", std::move(ps));
+	getWorld()->getScenes()->addScene(scene);
+	auto presenter = scene->getPresenter();
+	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 }
 
 void IntersectionView::onOk()

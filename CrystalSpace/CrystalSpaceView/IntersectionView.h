@@ -15,7 +15,10 @@ public:
 private:
 	void onOk() override;
 
+	void onRayTriangle();
+
 private:
+	Button rayTriangleButton;
 	DoubleView tolerance;
 };
 
