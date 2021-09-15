@@ -1,4 +1,4 @@
-#include "AlgoMenu.h"
+#include "SpaceMenu.h"
 
 #include "IntersectionView.h"
 #include "IndexedSortSearchAlgoView.h"
@@ -24,13 +24,13 @@
 using namespace Crystal::Scene;
 using namespace Crystal::UI;
 
-AlgoMenu::AlgoMenu(const std::string& name, World* model, Canvas* canvas, ControlPanel* control) :
+SpaceMenu::SpaceMenu(const std::string& name, World* model, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, model, canvas),
 	control(control)
 {
 }
 
-void AlgoMenu::onShow()
+void SpaceMenu::onShow()
 {
 	if (ImGui::BeginMenu("Algo")) {
 		if (ImGui::MenuItem("SpaceHash")) {

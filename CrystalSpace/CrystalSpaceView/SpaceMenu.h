@@ -6,10 +6,10 @@
 namespace Crystal {
 	namespace UI {
 
-class AlgoMenu : public IMenu
+class SpaceMenu : public IMenu
 {
 public:
-	AlgoMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
+	SpaceMenu(const std::string& name, Scene::World* model, Canvas* canvas, ControlPanel* control);
 
 	void onShow() override;
 

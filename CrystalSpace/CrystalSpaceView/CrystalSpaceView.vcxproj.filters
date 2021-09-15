@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="CrystalAlgoView.cpp" />
     <ClCompile Include="SpaceHashView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
@@ -20,7 +19,6 @@
     <ClCompile Include="VolumeConvertView.cpp">
       <Filter>Volume</Filter>
     </ClCompile>
-    <ClCompile Include="AlgoMenu.cpp" />
     <ClCompile Include="ZOrderSearchView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
@@ -55,6 +53,8 @@
     <ClCompile Include="RayTracerView.cpp">
       <Filter>Intersection</Filter>
     </ClCompile>
+    <ClCompile Include="SpaceMenu.cpp" />
+    <ClCompile Include="CrystalSpaceView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpaceHashView.h">
@@ -72,7 +72,6 @@
     <ClInclude Include="VolumeView.h">
       <Filter>Volume</Filter>
     </ClInclude>
-    <ClInclude Include="AlgoMenu.h" />
     <ClInclude Include="VolumeConvertView.h">
       <Filter>Volume</Filter>
     </ClInclude>
@@ -110,6 +109,7 @@
     <ClInclude Include="RayTracerView.h">
       <Filter>Intersection</Filter>
     </ClInclude>
+    <ClInclude Include="SpaceMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">

@@ -159,9 +159,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AlgoMenu.cpp" />
+    <ClCompile Include="SpaceMenu.cpp" />
     <ClCompile Include="CompactSpaceHash3dView.cpp" />
-    <ClCompile Include="CrystalAlgoView.cpp" />
+    <ClCompile Include="CrystalSpaceView.cpp" />
     <ClCompile Include="IndexedSortSearchAlgoView.cpp" />
     <ClCompile Include="IntersectionView.cpp" />
     <ClCompile Include="ISVAddView.cpp" />
@@ -181,7 +181,7 @@
     <ClCompile Include="ZOrderSearchView.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AlgoMenu.h" />
+    <ClInclude Include="SpaceMenu.h" />
     <ClInclude Include="CompactSpaceHash3dView.h" />
     <ClInclude Include="IndexedSortSearchAlgoView.h" />
     <ClInclude Include="IntersectionView.h" />
