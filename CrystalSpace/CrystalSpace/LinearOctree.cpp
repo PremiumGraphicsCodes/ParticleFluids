@@ -10,6 +10,14 @@
 using namespace Crystal::Math;
 using namespace Crystal::Space;
 
+void LinearOctreeCell::clear()
+{
+    for (auto item : items) {
+        delete item;
+    }
+    items.clear();
+}
+
 LinearOctreeIndex::LinearOctreeIndex(const unsigned int level, const unsigned int number)
 {
     const auto start = (std::pow(8, level) - 1) / 7;
@@ -40,6 +48,13 @@ LinearOctreeIndex LinearOctreeIndex::getParentIndex() const
 unsigned int LinearOctreeIndex::getIndex1d() const
 {
     return index1d;
+}
+
+void LinearOctree::clear()
+{
+    for (auto& cell : tree) {
+        cell->clear();
+    }
 }
 
 Box3dd LinearOctree::calculateAABB(const LinearOctreeIndex& index) const

@@ -15,6 +15,11 @@ void RayTracer::build(const Box3dd& space, const int level)
 	octree.init(space, level);
 }
 
+void RayTracer::clear()
+{
+	octree.clear();
+}
+
 void RayTracer::add(RayTraceItem* item)
 {
 	octree.add(item);
@@ -60,17 +65,22 @@ void RayTracer::trace(const Ray3d& ray, const double pitch)
 
 void RayTracer::calculateIntersections(const Ray3d& ray)
 {
+	std::list<double> params;
 	IntersectionCalculator calculator;
 	for (auto cell : cells) {
 		const auto items = cell->getItems();
 		for (auto item : items) {
 			auto rtItem = static_cast<RayTraceItem*>(item);
 			const auto t = rtItem->getTriangle();
-			calculator.calculateIntersection(ray, t, 1.0e-12);
+			const auto p = IntersectionCalculator::calculateIntersectionParameters(ray, t, 1.0e-12);
+			if(p.has_value()) {
+				params.push_back(p->x);
+			}
 		}
 	}
-	const auto intersections = calculator.getIntersections();
-	for (auto i : intersections) {
-		this->intersections.push_back(i.position);
+	params.sort();
+	for (const auto p : params) {
+		const auto pos = ray.getPosition(p);
+		this->intersections.push_back(pos);
 	}
 }

@@ -32,6 +32,8 @@ public:
 		//space(space)
 	{}
 
+	void clear();
+
 	//Math::Box3dd getSpace() const { return space; }
 
 	void add(LinearOctreeItem* item) { this->items.push_back(item); }
@@ -72,6 +74,8 @@ class LinearOctree : private UnCopyable
 {
 public:
 	void init(const Math::Box3dd& space, const int level);
+
+	void clear();
 
 	void add(LinearOctreeItem* item);
 

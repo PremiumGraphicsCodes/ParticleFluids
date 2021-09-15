@@ -28,6 +28,8 @@ class RayTracer : private UnCopyable
 public:
 	void build(const Math::Box3dd& space, const int level);
 
+	void clear();
+
 	void add(RayTraceItem* item);
 
 	void trace(const Math::Ray3d& ray, const double pitch);
