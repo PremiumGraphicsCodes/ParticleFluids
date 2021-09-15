@@ -78,6 +78,13 @@ TEST(Box3dTest, TestIsInside)
 	EXPECT_FALSE(b1.isInside(Vector3dd(5, 1, 1)) );
 }
 
+TEST(Box3dTest, TestContains)
+{
+	const Box3dd b1(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2));
+	EXPECT_TRUE( b1.contains(Vector3dd(0, 0, 0), tolerance));
+	EXPECT_FALSE(b1.contains(Vector3dd(-1, 0, 0), tolerance));
+}
+
 TEST(Box3dTest, TestTranslate)
 {
 	Box3dd b1(Vector3dd(0, 0, 0), Vector3dd(2, 2, 2));

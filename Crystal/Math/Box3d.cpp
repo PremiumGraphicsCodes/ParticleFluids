@@ -105,6 +105,15 @@ bool Box3d<T>::isInside(const Vector3d<T>& point) const
 }
 
 template<typename T>
+bool Box3d<T>::contains(const Vector3d<T>& point, const T tolerance) const
+{
+	const bool xIsInterior = (min.x - tolerance < point.x && point.x < max.x + tolerance);
+	const bool yIsInterior = (min.y - tolerance < point.y && point.y < max.y + tolerance);
+	const bool zIsInterior = (min.z - tolerance < point.z && point.z < max.z + tolerance);
+	return xIsInterior && yIsInterior && zIsInterior;
+}
+
+template<typename T>
 bool Box3d<T>::isSame(const Box3d<T>& rhs, const T tolerance) const
 {
 	return

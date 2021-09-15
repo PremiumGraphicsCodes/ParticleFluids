@@ -44,6 +44,8 @@ public:
 
 	bool isOutside(const Vector3d<T>& point) const { return !isInside(point); }
 
+	bool contains(const Vector3d<T>& position, const T tolerance) const;
+
 	T getMaxX() const { return max.x; }
 
 	T getMinX() const { return min.x; }

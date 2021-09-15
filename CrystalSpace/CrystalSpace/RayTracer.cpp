@@ -39,7 +39,7 @@ void RayTracer::trace(const Ray3d& ray, const double pitch)
 	//std::list<const LinearOctreeCell*> cells;
 
 	double length = 0.0;
-	while (octree.getRootSpace().isInside(pos)) {
+	while (octree.getRootSpace().contains(pos, 0.0)) {// {1.0e-12)) {
 		const auto nextPos = pos + dir * pitch;
 		auto index = octree.getIndex(Box3dd(pos, nextPos));
 		auto level = index.getLevelAndNumber().first;
