@@ -29,14 +29,14 @@ void ScanLineVoxelizer::voxelize(const PolygonMesh& polygon, const Box3dd& space
 	//const Ray3d ray(Vector3dd(0.1, 5, 5), Vector3dd(1, 0, 0));
 	//rayTracer.trace(ray, res);
 
-	std::vector<Vector3dd> intersections;
+	//std::vector<Vector3dd> intersections;
 	for (auto y = space.getMinY(); y < space.getMaxY(); y += res) {
 		for (auto z = space.getMinZ(); z < space.getMaxZ(); z += res) {
 			const Ray3d ray(Vector3dd(space.getMinX() + e, y + e, z + e), Vector3dd(1, 0, 0));
 			rayTracer.trace(ray, res);
 			auto is = rayTracer.getIntersections();
 			for (const auto& i : is) {
-				intersections.push_back(i);
+				this->intersections.push_back(i);
 			}
 		}
 	}

@@ -19,8 +19,11 @@ public:
 
 	std::unique_ptr<Voxel> getVoxel() { return std::move(voxel); }
 
+	std::vector<Math::Vector3dd> getIntersections() const { return intersections; }
+
 private:
 	std::unique_ptr<Voxel> voxel;
+	std::vector<Math::Vector3dd> intersections;
 
 };
 

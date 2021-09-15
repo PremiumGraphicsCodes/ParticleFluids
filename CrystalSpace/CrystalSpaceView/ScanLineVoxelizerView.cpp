@@ -3,7 +3,7 @@
 #include "../CrystalSpace/ScanLineVoxelizer.h"
 #include "../../Crystal/Scene/VoxelScene.h"
 
-//#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../Crystal/Scene/ParticleSystemScene.h"
 //#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
@@ -45,7 +45,22 @@ void ScanLineVoxelizerView::onOk()
 
 	ScanLineVoxelizer voxelizer;
 	voxelizer.voxelize(*mesh, space, 1.0);
-	auto voxel = voxelizer.getVoxel();
+	//auto voxel = voxelizer.getVoxel();
+
+	const auto& intersections = voxelizer.getIntersections();
+	auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>();
+
+	ParticleAttribute attr;
+	attr.color = glm::vec4(1.0, 0.0, 0.0, 0.0);
+	attr.size = 100.0f;
+	for (auto p : intersections) {
+		ps->add(p, attr);
+	}
+
+	auto scene = new ParticleSystemScene(getWorld()->getNextSceneId(), "", std::move(ps));
+	getWorld()->getScenes()->addScene(scene);
+	auto presenter = scene->getPresenter();
+	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 
 	/*
 	std::vector<Math::Vector3dd> positions;
