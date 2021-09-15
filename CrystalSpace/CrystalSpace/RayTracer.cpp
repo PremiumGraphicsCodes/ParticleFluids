@@ -29,6 +29,10 @@ void RayTracer::add(RayTraceItem* item)
 
 void RayTracer::trace(const Ray3d& ray, const double pitch)
 {
+	cells.clear();
+	indices.clear();
+	intersections.clear();
+
 	const auto dir = glm::normalize(ray.getDirection());
 
 	Vector3dd pos = ray.getOrigin();

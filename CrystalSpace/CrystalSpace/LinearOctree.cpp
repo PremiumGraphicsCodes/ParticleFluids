@@ -21,7 +21,9 @@ void LinearOctreeCell::clear()
 void LinearOctree::clear()
 {
     for (auto& cell : tree) {
-        cell->clear();
+        if (cell != nullptr) {
+            cell->clear();
+        }
     }
 }
 

@@ -44,9 +44,6 @@
       <Filter>Voxel</Filter>
     </ClCompile>
     <ClCompile Include="MeshToParticleView.cpp" />
-    <ClCompile Include="VoxelizerView.cpp">
-      <Filter>Voxel</Filter>
-    </ClCompile>
     <ClCompile Include="LinearOctreeView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
@@ -55,6 +52,12 @@
     </ClCompile>
     <ClCompile Include="SpaceMenu.cpp" />
     <ClCompile Include="CrystalSpaceView.cpp" />
+    <ClCompile Include="VoxelizerView.cpp">
+      <Filter>Voxel\Voxelizer</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanLineVoxelizerView.cpp">
+      <Filter>Voxel\Voxelizer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpaceHashView.h">
@@ -100,9 +103,6 @@
       <Filter>Voxel</Filter>
     </ClInclude>
     <ClInclude Include="MeshToParticleView.h" />
-    <ClInclude Include="VoxelizerView.h">
-      <Filter>Voxel</Filter>
-    </ClInclude>
     <ClInclude Include="LinearOctreeView.h">
       <Filter>Search</Filter>
     </ClInclude>
@@ -110,6 +110,12 @@
       <Filter>Intersection</Filter>
     </ClInclude>
     <ClInclude Include="SpaceMenu.h" />
+    <ClInclude Include="VoxelizerView.h">
+      <Filter>Voxel\Voxelizer</Filter>
+    </ClInclude>
+    <ClInclude Include="ScanLineVoxelizerView.h">
+      <Filter>Voxel\Voxelizer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Intersection">
@@ -129,6 +135,9 @@
     </Filter>
     <Filter Include="Voxel">
       <UniqueIdentifier>{0d969ffd-9d34-4937-9987-6ce315f6b5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Voxel\Voxelizer">
+      <UniqueIdentifier>{fc72286e-d192-41a0-b1c1-526a57296a12}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

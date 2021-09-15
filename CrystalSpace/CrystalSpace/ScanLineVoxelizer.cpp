@@ -30,10 +30,15 @@ void ScanLineVoxelizer::voxelize(const PolygonMesh& polygon, const double res)
 		RayTraceItem* item = new RayTraceItem(f.toTriangle(positions));
 		rayTracer.add(item);
 	}
+	std::vector<Vector3dd> intersections;
 	for (auto y = min.y; y < max.y; y += res) {
-		for (auto z = min.z; z < min.z; z += res) {
+		for (auto z = min.z; z < max.z; z += res) {
 			const Ray3d ray(Vector3dd(min.x, y, z), Vector3dd(1, 0, 0));
-//			rayTracer.
+			rayTracer.trace(ray, res);
+			auto is = rayTracer.getIntersections();
+			for (auto i : intersections) {
+				intersections.push_back(i);
+			}
 		}
 	}
 	rayTracer.clear();

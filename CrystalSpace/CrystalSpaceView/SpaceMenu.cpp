@@ -17,6 +17,7 @@
 #include "SVSphereView.h"
 #include "VoxelSphereView.h"
 #include "VoxelizerView.h"
+#include "ScanLineVoxelizerView.h"
 #include "RayTracerView.h"
 
 #include "../../CrystalViewer/AppBase/imgui.h"
@@ -32,12 +33,13 @@ SpaceMenu::SpaceMenu(const std::string& name, World* model, Canvas* canvas, Cont
 
 void SpaceMenu::onShow()
 {
+	auto world = getWorld();
 	if (ImGui::BeginMenu("Algo")) {
 		if (ImGui::MenuItem("SpaceHash")) {
-			control->setWindow(new SpaceHashView(getWorld(), getCanvas()));
+			control->setWindow(new SpaceHashView(world, getCanvas()));
 		}
 		if (ImGui::MenuItem("CompactSpaceHash")) {
-			control->setWindow(new CompactSpaceHash3dView(getWorld(), getCanvas()));
+			control->setWindow(new CompactSpaceHash3dView(world, getCanvas()));
 		}
 		if (ImGui::MenuItem("IndexedSortSearch")) {
 			control->setWindow(new IndexedSortSearchAlgoView(getWorld(), getCanvas()));
@@ -76,10 +78,13 @@ void SpaceMenu::onShow()
 			control->setWindow(new VoxelSphereView("VoxelSphere", getWorld(), getCanvas()));
 		}
 		if (ImGui::MenuItem("Voxelizer")) {
-			control->setWindow(new VoxelizerView("Voxelizer", getWorld(), getCanvas()));
+			control->setWindow(new VoxelizerView("Voxelizer", world, getCanvas()));
+		}
+		if (ImGui::MenuItem("ScanLineVoxelizer")) {
+			control->setWindow(new ScanLineVoxelizerView("ScanLineVoxelizer", world, getCanvas()));
 		}
 		if (ImGui::MenuItem("RayTracer")) {
-			control->setWindow(new RayTracerView("RayTracer", getWorld(), getCanvas()));
+			control->setWindow(new RayTracerView("RayTracer", world, getCanvas()));
 		}
 		ImGui::EndMenu();
 	}
