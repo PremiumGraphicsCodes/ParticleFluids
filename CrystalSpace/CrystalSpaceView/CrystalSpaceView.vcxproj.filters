@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CrystalAlgoView.cpp" />
-    <ClCompile Include="BooleanView.cpp">
-      <Filter>Boolean</Filter>
-    </ClCompile>
     <ClCompile Include="SpaceHashView.cpp">
       <Filter>Search</Filter>
     </ClCompile>
@@ -60,9 +57,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BooleanView.h">
-      <Filter>Boolean</Filter>
-    </ClInclude>
     <ClInclude Include="SpaceHashView.h">
       <Filter>Search</Filter>
     </ClInclude>
@@ -123,9 +117,6 @@
     </Filter>
     <Filter Include="MarchingCubes">
       <UniqueIdentifier>{bb8df9fd-c2ee-46f5-b032-a296b1b0a69c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Boolean">
-      <UniqueIdentifier>{ebad4551-f6fe-43a7-80a6-06149d494e73}</UniqueIdentifier>
     </Filter>
     <Filter Include="Search">
       <UniqueIdentifier>{41a6a766-e885-4f76-9831-f9c5f38774f0}</UniqueIdentifier>

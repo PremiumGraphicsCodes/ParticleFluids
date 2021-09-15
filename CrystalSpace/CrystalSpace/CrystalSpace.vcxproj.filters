@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="BooleanAlgo.h">
-      <Filter>Boolean</Filter>
-    </ClInclude>
     <ClInclude Include="MarchingCubesAlgo.h">
       <Filter>MarchingCubes</Filter>
     </ClInclude>
@@ -34,9 +31,6 @@
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="IndexedSortSearchAlgo.h">
       <Filter>Search</Filter>
-    </ClInclude>
-    <ClInclude Include="DistanceCalculator.h">
-      <Filter>Distance</Filter>
     </ClInclude>
     <ClInclude Include="SparseVolumeScene.h">
       <Filter>Volume</Filter>
@@ -91,14 +85,11 @@
     <ClInclude Include="Voxelizer.h">
       <Filter>Voxel\Voxelizer</Filter>
     </ClInclude>
+    <ClInclude Include="DistanceCalculator.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BooleanAlgo.cpp">
-      <Filter>Boolean</Filter>
-    </ClCompile>
-    <ClCompile Include="csgjs.h">
-      <Filter>Boolean</Filter>
-    </ClCompile>
     <ClCompile Include="MarchingCubesAlgo.cpp">
       <Filter>MarchingCubes</Filter>
     </ClCompile>
@@ -122,9 +113,6 @@
     </ClCompile>
     <ClCompile Include="IndexedSortSearchAlgo.cpp">
       <Filter>Search</Filter>
-    </ClCompile>
-    <ClCompile Include="DistanceCalculator.cpp">
-      <Filter>Distance</Filter>
     </ClCompile>
     <ClCompile Include="SparseVolumeScene.cpp">
       <Filter>Volume</Filter>
@@ -176,13 +164,13 @@
     <ClCompile Include="Voxelizer.cpp">
       <Filter>Voxel\Voxelizer</Filter>
     </ClCompile>
+    <ClCompile Include="DistanceCalculator.cpp">
+      <Filter>Intersection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Search">
       <UniqueIdentifier>{e3a4c719-e1a6-4082-a18a-bf9d62b1fdcd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Boolean">
-      <UniqueIdentifier>{5a5a415d-e902-4344-98bc-c2c00f4b0cd5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Intersection">
       <UniqueIdentifier>{0048fd5c-36a5-427c-a1c4-7e067be63738}</UniqueIdentifier>
@@ -192,9 +180,6 @@
     </Filter>
     <Filter Include="Volume">
       <UniqueIdentifier>{aa657a9f-2f54-427f-a595-70f197e46c21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Distance">
-      <UniqueIdentifier>{307bfd4f-119b-4d7f-a0bc-31b1fc143bb2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Voxel">
       <UniqueIdentifier>{7eb616ec-5cd0-4afe-98cb-39efb984a28f}</UniqueIdentifier>

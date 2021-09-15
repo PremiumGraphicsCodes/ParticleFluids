@@ -1,7 +1,6 @@
 #include "AlgoMenu.h"
 
 #include "IntersectionView.h"
-#include "BooleanView.h"
 #include "IndexedSortSearchAlgoView.h"
 #include "SpaceHashView.h"
 #include "CompactSpaceHash3dView.h"
@@ -34,9 +33,6 @@ AlgoMenu::AlgoMenu(const std::string& name, World* model, Canvas* canvas, Contro
 void AlgoMenu::onShow()
 {
 	if (ImGui::BeginMenu("Algo")) {
-		if (ImGui::MenuItem("Boolean")) {
-			control->setWindow(new BooleanView(getWorld(), getCanvas()));
-		}
 		if (ImGui::MenuItem("SpaceHash")) {
 			control->setWindow(new SpaceHashView(getWorld(), getCanvas()));
 		}
