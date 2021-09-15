@@ -70,9 +70,6 @@
     <ClInclude Include="OctreeOperator.h">
       <Filter>Search\Octree</Filter>
     </ClInclude>
-    <ClInclude Include="LinearOctree.h">
-      <Filter>Search\Octree</Filter>
-    </ClInclude>
     <ClInclude Include="IOctreeItem.h">
       <Filter>Search\Octree</Filter>
     </ClInclude>
@@ -87,6 +84,12 @@
     </ClInclude>
     <ClInclude Include="DistanceCalculator.h">
       <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearOctree.h">
+      <Filter>Search\Octree\LinearOctree</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearOctreeIndex.h">
+      <Filter>Search\Octree\LinearOctree</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +155,6 @@
     <ClCompile Include="OctreeOperator.cpp">
       <Filter>Search\Octree</Filter>
     </ClCompile>
-    <ClCompile Include="LinearOctree.cpp">
-      <Filter>Search\Octree</Filter>
-    </ClCompile>
     <ClCompile Include="IntersectionCalculator.cpp">
       <Filter>Intersection</Filter>
     </ClCompile>
@@ -166,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="DistanceCalculator.cpp">
       <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearOctree.cpp">
+      <Filter>Search\Octree\LinearOctree</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearOctreeIndex.cpp">
+      <Filter>Search\Octree\LinearOctree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +198,9 @@
     </Filter>
     <Filter Include="Voxel\Voxelizer">
       <UniqueIdentifier>{68c8dfc0-a706-4065-8e83-2739a497516f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Search\Octree\LinearOctree">
+      <UniqueIdentifier>{7631fe81-9852-4548-a942-1f1a0c63d87b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

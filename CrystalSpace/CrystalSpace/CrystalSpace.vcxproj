@@ -157,6 +157,7 @@
     <ClInclude Include="IntersectionCalculator.h" />
     <ClInclude Include="IOctreeItem.h" />
     <ClInclude Include="LinearOctree.h" />
+    <ClInclude Include="LinearOctreeIndex.h" />
     <ClInclude Include="MarchingCubesAlgo.h" />
     <ClInclude Include="MarchingCubesTable.h" />
     <ClInclude Include="MCCell.h" />
@@ -189,6 +190,7 @@
     <ClCompile Include="IndexedParticle.cpp" />
     <ClCompile Include="IntersectionCalculator.cpp" />
     <ClCompile Include="LinearOctree.cpp" />
+    <ClCompile Include="LinearOctreeIndex.cpp" />
     <ClCompile Include="MarchingCubesAlgo.cpp" />
     <ClCompile Include="MeshToParticleConverter.cpp" />
     <ClCompile Include="Octree.cpp" />

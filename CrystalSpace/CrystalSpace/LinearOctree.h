@@ -3,8 +3,9 @@
 #include "IOctreeItem.h"
 
 #include "../../Crystal/Math/Box3d.h"
-#include "../../Crystal/Math/Ray3d.h"
 #include "../../Crystal/Util/UnCopyable.h"
+
+#include "LinearOctreeIndex.h"
 #include <vector>
 #include <list>
 #include <memory>
@@ -43,31 +44,6 @@ public:
 private:
 	//Math::Box3dd space;
 	std::list<LinearOctreeItem*> items;
-};
-
-class LinearOctreeIndex
-{
-public:
-	explicit LinearOctreeIndex(const unsigned int index1d) :
-		index1d(index1d)
-	{}
-
-	LinearOctreeIndex(const unsigned int level, const unsigned int number);
-
-	std::pair<unsigned int, unsigned int> getLevelAndNumber() const;
-
-	LinearOctreeIndex getParentIndex() const;
-
-	//unsigned int getNumber() const;
-
-	unsigned int getIndex1d() const;
-
-	bool operator==(const LinearOctreeIndex& rhs) const { return this->index1d == rhs.index1d; }
-
-	bool operator<(const LinearOctreeIndex& rhs) const { return this->index1d < rhs.index1d; }
-
-private:
-	unsigned int index1d;
 };
 
 class LinearOctree : private UnCopyable
