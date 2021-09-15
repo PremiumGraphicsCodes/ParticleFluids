@@ -2,6 +2,7 @@
 
 #include "../../Crystal/Math/Vector3d.h"
 #include <vector>
+#include <optional>
 
 namespace Crystal {
 	namespace Math {
@@ -47,6 +48,8 @@ public:
 	bool calculateIntersection(const Math::Ray3d& ray, const Math::Plane3d& plane, const double tolerance);
 
 	bool calculateIntersection(const Math::Ray3d& ray, const Math::Triangle3d& triangle, const double tolerance);
+
+	static std::optional<Math::Vector3dd> calculateIntersectionParameters(const Math::Ray3d& ray, const Math::Triangle3d& triangle, const double tolerance);
 
 	bool calculateIntersection(const Math::Ray3d& ray, const Math::Quad3d& quad, const double tolerance);
 

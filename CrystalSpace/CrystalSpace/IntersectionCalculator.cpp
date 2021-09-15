@@ -138,8 +138,20 @@ bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Plane
 	return false;
 }
 
-// reference https://pheema.hatenablog.jp/entry/ray-triangle-intersection
 bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Triangle3d& triangle, const double tolerance)
+{
+	auto res = calculateIntersectionParameters(ray, triangle, tolerance);
+	if (res.has_value()) {
+		Intersection i;
+		i.position = ray.getPosition(res.value().x);
+		this->intersections.push_back(i);
+		return true;
+	}
+	return false;
+}
+
+// reference https://pheema.hatenablog.jp/entry/ray-triangle-intersection
+std::optional<Vector3dd> IntersectionCalculator::calculateIntersectionParameters(const Math::Ray3d& ray, const Math::Triangle3d& triangle, const double tolerance)
 {
 	const auto v0 = triangle.getVertices()[0];
 	const auto v1 = triangle.getVertices()[1];
@@ -157,7 +169,7 @@ bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Trian
 	// det が小さすぎると 1/det が大きくなりすぎて数値的に不安定になるので
 	// det ≈ 0 の場合は交差しないこととする。
 	if (-tolerance < det && det < tolerance) {
-		return false;
+		return std::nullopt;
 	}
 
 	const auto invDet = 1.0 / det;
@@ -166,7 +178,7 @@ bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Trian
 	// u が 0 <= u <= 1 を満たしているかを調べる。
 	const auto u = glm::dot(alpha, r) * invDet;
 	if (u < 0.0 || u > 1.0) {
-		return false;
+		return std::nullopt;
 	}
 
 	const auto beta = glm::cross(r, e1);
@@ -175,37 +187,18 @@ bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Trian
 	// すなわち、v が 0 <= v <= 1 - u をみたしているかを調べればOK。
 	const auto v = glm::dot(d, beta) * invDet;
 	if (v < 0.0f || u + v > 1.0f) {
-		return false;
+		return std::nullopt;
 	}
 
 	// t が 0 <= t を満たすことを調べる。
 	const auto t = glm::dot(e2, beta) * invDet;
 	if (t < 0.0f) {
-		return false;
+		return std::nullopt;
 	}
 
-	Intersection i;
-	i.position = ray.getPosition(t);
-	this->intersections.push_back(i);
-	// 交差した！！！！
-	return true;
-	/*
-	const auto& normal = triangle.getNormal();
-	IntersectionCalculator innerAlgo;
-	const Plane3d plane(triangle.getVertices()[0], triangle.getNormal());
-	if (!innerAlgo.calculateIntersection(ray, plane, tolerance)) {
-		return false;
-	}
-	const auto intersectionOnPlane = innerAlgo.getIntersections()[0];
-
-	const auto& i = intersectionOnPlane.position;
-	if (triangle.isInside(i)) {
-		intersections.push_back(intersectionOnPlane);
-		return true;
-	}
-	return false;
-	*/
+	return Vector3dd(t, u, v);
 }
+
 
 // ref https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-box-intersection
 bool IntersectionCalculator::calculateIntersection(const Ray3d& ray, const Box3dd& box, const double tolerance)
