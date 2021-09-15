@@ -12,24 +12,15 @@ namespace Crystal {
 	}
 	namespace Space {
 
-class Voxelizer
+class ScanLineVoxelizer
 {
 public:
 	void voxelize(const Shape::PolygonMesh& polygon, const double res);
-
-	void fill();
 
 	std::unique_ptr<Voxel> getVoxel() { return std::move(voxel); }
 
 private:
 	std::unique_ptr<Voxel> voxel;
-
-private:
-	Util::Array3d<unsigned int> scanX();
-
-	Util::Array3d<unsigned int> scanY();
-
-	Util::Array3d<unsigned int> scanZ();
 
 };
 

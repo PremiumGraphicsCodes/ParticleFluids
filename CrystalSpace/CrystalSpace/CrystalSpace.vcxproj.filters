@@ -58,9 +58,6 @@
     </ClInclude>
     <ClInclude Include="MeshToParticleConverter.h" />
     <ClInclude Include="VoxelToParticleConverter.h" />
-    <ClInclude Include="Voxelizer.h">
-      <Filter>Voxel</Filter>
-    </ClInclude>
     <ClInclude Include="Overlap.h">
       <Filter>Intersection</Filter>
     </ClInclude>
@@ -87,6 +84,12 @@
     </ClInclude>
     <ClInclude Include="IntersectionCalculator.h">
       <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="ScanLineVoxelizer.h">
+      <Filter>Voxel\Voxelizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Voxelizer.h">
+      <Filter>Voxel\Voxelizer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -143,9 +146,6 @@
     </ClCompile>
     <ClCompile Include="MeshToParticleConverter.cpp" />
     <ClCompile Include="VoxelToParticleConverter.cpp" />
-    <ClCompile Include="Voxelizer.cpp">
-      <Filter>Voxel</Filter>
-    </ClCompile>
     <ClCompile Include="Overlap.cpp">
       <Filter>Intersection</Filter>
     </ClCompile>
@@ -169,6 +169,12 @@
     </ClCompile>
     <ClCompile Include="IntersectionCalculator.cpp">
       <Filter>Intersection</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanLineVoxelizer.cpp">
+      <Filter>Voxel\Voxelizer</Filter>
+    </ClCompile>
+    <ClCompile Include="Voxelizer.cpp">
+      <Filter>Voxel\Voxelizer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +204,9 @@
     </Filter>
     <Filter Include="Search\Octree">
       <UniqueIdentifier>{dfbb5ca3-054e-431f-8ad7-aadeff567136}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Voxel\Voxelizer">
+      <UniqueIdentifier>{68c8dfc0-a706-4065-8e83-2739a497516f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
