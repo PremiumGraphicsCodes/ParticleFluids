@@ -35,17 +35,17 @@ ScanLineVoxelizerView::ScanLineVoxelizerView(const std::string& name, World* mod
 void ScanLineVoxelizerView::onOk()
 {
 	PolygonMeshBuilder builder;
-	//const Box3d box(Vector3dd(2, 2, 2), Vector3dd(8, 8, 8));
-	//builder.add(box, 2, 2, 2);
-	const Sphere3dd sphere(Vector3dd(5, 5, 5), 5);
-	builder.add(sphere, 32, 32);
+	const Box3d box(Vector3dd(2, 2, 2), Vector3dd(8, 8, 8));
+	builder.add(box, 2, 2, 2);
+	//const Sphere3dd sphere(Vector3dd(5, 5, 5), 5);
+	//builder.add(sphere, 32, 32);
 	auto mesh = builder.build();
 
 	const Box3d space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
 
 	ScanLineVoxelizer voxelizer;
 	voxelizer.voxelize(*mesh, space, 1.0);
-	//auto voxel = voxelizer.getVoxel();
+	auto voxel = voxelizer.getVoxel();
 
 	const auto& intersections = voxelizer.getIntersections();
 	auto ps = std::make_unique<ParticleSystem<ParticleAttribute>>();
@@ -62,25 +62,25 @@ void ScanLineVoxelizerView::onOk()
 	auto presenter = scene->getPresenter();
 	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
 
-	/*
-	std::vector<Math::Vector3dd> positions;
-	for (int i = 0; i < voxel->getResolutions()[0]; ++i) {
-		for (int j = 0; j < voxel->getResolutions()[1]; ++j) {
-			for (int k = 0; k < voxel->getResolutions()[2]; ++k) {
-				if (voxel->getValue(i, j, k)) {
-					auto p = voxel->getCellPosition(i, j, k);
-					positions.push_back(p);
+	{
+		std::vector<Math::Vector3dd> positions;
+		for (int i = 0; i < voxel->getResolutions()[0]; ++i) {
+			for (int j = 0; j < voxel->getResolutions()[1]; ++j) {
+				for (int k = 0; k < voxel->getResolutions()[2]; ++k) {
+					if (voxel->getValue(i, j, k)) {
+						auto p = voxel->getCellPosition(i, j, k);
+						positions.push_back(p);
+					}
 				}
 			}
 		}
+		TXTFileWriter writer;
+		writer.write("voxelized.txt", positions);
 	}
-	//TXTFileWriter writer;
-	//writer.write("test2.txt", positions);
 
-	auto scene = new VoxelScene(getWorld()->getNextSceneId(), "Voxelized", std::move(voxel));
-
-
-	auto presenter = scene->getPresenter();
-	presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	*/
+	{
+		auto scene = new VoxelScene(getWorld()->getNextSceneId(), "Voxelized", std::move(voxel));
+		auto presenter = scene->getPresenter();
+		presenter->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
+	}
 }

@@ -70,11 +70,15 @@ void ScanLineVoxelizer::voxelize(const PolygonMesh& polygon, const Box3dd& space
 						const auto param = IntersectionCalculator::calculateIntersectionParameters(ray, triangle, e);
 						if (param.has_value()) {
 							params.push_back(param.value().x);
-							const auto i = ray.getPosition(param.value().x);
-							this->intersections.push_back(i);
+							const auto is = ray.getPosition(param.value().x);
+							this->intersections.push_back(is);
+							auto v = array3d.get(i, j, k);
 						}
 					}
 				}
+				array3d.set(i, j, k, params.size());
+//				const auto iCount = intersections.size();
+//				array3d.set(i, j, k, iCount);
 			}
 //			params.unique();
 //			params.sort();
@@ -91,23 +95,17 @@ void ScanLineVoxelizer::voxelize(const PolygonMesh& polygon, const Box3dd& space
 		}
 	}
 
-	/*
-	this->voxel = std::make_unique<Voxel>(bb, ress);
+	this->voxel = std::make_unique<Voxel>(space, ress);
 	voxel->fill(false);
 	for (int i = 0; i < xres; ++i) {
-		const auto x = bb.getMinX() + i * voxelSize.x;
 		for (int j = 0; j < yres; ++j) {
-			const auto y = bb.getMinY() + j * voxelSize.y;
 			for (int k = 0; k < zres; ++k) {
-				const auto z = bb.getMinZ() + k * voxelSize.z;
-				const Vector3dd p(x, y, z);
-				if (!table.isEmpty(p)) {
+				if (array3d.get(i, j, k) % 2 == 1) {
 					voxel->setValue(i, j, k, true);
 				}
 			}
 		}
 	}
-	*/
 
 	for (auto p : particles) {
 		delete p;
