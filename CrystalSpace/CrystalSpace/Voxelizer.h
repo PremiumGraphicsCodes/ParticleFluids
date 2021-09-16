@@ -15,9 +15,9 @@ namespace Crystal {
 class Voxelizer
 {
 public:
-	void voxelize(const Shape::PolygonMesh& polygon, const double res, const bool doFill);
+	void voxelize(const Shape::PolygonMesh& polygon, const double res);
 
-	void fill();
+	//void fill();
 
 	std::unique_ptr<Voxel> getVoxel() { return std::move(voxel); }
 

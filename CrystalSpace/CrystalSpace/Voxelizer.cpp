@@ -14,7 +14,7 @@ namespace {
 	const auto e = 1.0e-12;
 }
 
-void Voxelizer::voxelize(const PolygonMesh& polygon, const double res, const bool doFill)
+void Voxelizer::voxelize(const PolygonMesh& polygon, const double res)
 {
 	const auto bb = polygon.getBoundingBox();
 	const auto xres = static_cast<size_t>( bb.getLength().x / res) + 1;
@@ -55,24 +55,7 @@ void Voxelizer::voxelize(const PolygonMesh& polygon, const double res, const boo
 	this->voxel = std::make_unique<Voxel>(bb, ress);
 	voxel->fill(false);
 
-	if (doFill) {
-		for (int i = 0; i < xres; ++i) {
-			const auto x = bb.getMinX() + i * voxelSize.x;
-			for (int j = 0; j < yres; ++j) {
-				const auto y = bb.getMinY() + j * voxelSize.y;
-				int count = 0;
-				for (int k = 0; k < zres; ++k) {
-					const auto z = bb.getMinZ() + k * voxelSize.z;
-					const Vector3dd p(x, y, z);
-					count += table.getParticles(p).size();
-					if (count % 2 == 1) {
-						voxel->setValue(i, j, k, true);
-					}
-				}
-			}
-		}
-	}
-	else {
+	{
 		for (int i = 0; i < xres; ++i) {
 			const auto x = bb.getMinX() + i * voxelSize.x;
 			for (int j = 0; j < yres; ++j) {
@@ -94,6 +77,7 @@ void Voxelizer::voxelize(const PolygonMesh& polygon, const double res, const boo
 
 // reference https://github.com/sylefeb/VoxSurf/blob/master/main.cpp
 
+/*
 void Voxelizer::fill()
 {
 	const auto resolutions = voxel->getResolutions();
@@ -115,6 +99,7 @@ void Voxelizer::fill()
 		}
 	}
 }
+*/
 
 // along x.
 Array3d<unsigned int> Voxelizer::scanX()

@@ -12,7 +12,7 @@ using namespace Crystal::Space;
 void MeshToParticleConverter::subdivide(const PolygonMesh& mesh, const double divideLength)
 {
 	Voxelizer converter;
-	converter.voxelize(mesh, divideLength, false);
+	converter.voxelize(mesh, divideLength);
 	auto voxel = converter.getVoxel();
 
 	const auto res = voxel->getResolutions();
