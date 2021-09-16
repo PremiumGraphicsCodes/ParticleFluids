@@ -35,10 +35,10 @@ ScanLineVoxelizerView::ScanLineVoxelizerView(const std::string& name, World* mod
 void ScanLineVoxelizerView::onOk()
 {
 	PolygonMeshBuilder builder;
-	//const Box3d box(Vector3dd(2, 2, 2), Vector3dd(8, 8, 8));
-	//builder.add(box, 2, 2, 2);
-	const Sphere3dd sphere(Vector3dd(5, 5, 5), 4);
-	builder.add(sphere, 20, 20);
+	const Box3d box(Vector3dd(2, 2, 2), Vector3dd(8, 8, 8));
+	builder.add(box, 2, 2, 2);
+	//const Sphere3dd sphere(Vector3dd(5, 5, 5), 5);
+	//builder.add(sphere, 32, 32);
 	auto mesh = builder.build();
 
 	const Box3d space(Vector3dd(0, 0, 0), Vector3dd(10, 10, 10));
