@@ -76,6 +76,8 @@ void ScanLineVoxelizer::voxelize(const PolygonMesh& polygon, const Box3dd& space
 						}
 					}
 				}
+				params.sort();
+				params.unique([](auto p1, auto p2) { return std::fabs(p1 - p2) < 1.0e-6; });
 				array3d.set(i, j, k, params.size());
 //				const auto iCount = intersections.size();
 //				array3d.set(i, j, k, iCount);
