@@ -18,15 +18,15 @@ namespace {
 
 void ScanLineVoxelizer::voxelize(const PolygonMesh& polygon, const Box3dd& space, const double res)
 {
-	//const auto xres = static_cast<size_t>(space.getLength().x / res) + 1;
-	//const auto yres = static_cast<size_t>(space.getLength().y / res) + 1;
-	//const auto zres = static_cast<size_t>(space.getLength().z / res) + 1;
-	//std::array<size_t, 3> ress = { xres, yres, zres };
+	const auto xres = static_cast<size_t>(space.getLength().x / res) + 1;
+	const auto yres = static_cast<size_t>(space.getLength().y / res) + 1;
+	const auto zres = static_cast<size_t>(space.getLength().z / res) + 1;
+	std::array<size_t, 3> ress = { xres, yres, zres };
 
 	const auto faces = polygon.getFaces();
 	SpaceHash3d table(res, faces.size() * 3);
 
-	//const auto voxelSize = Vector3dd(res);
+	const auto voxelSize = Vector3dd(res);
 
 	std::vector<Particle<Triangle3d>*> particles;
 	for (const auto& f : faces) {
@@ -49,12 +49,18 @@ void ScanLineVoxelizer::voxelize(const PolygonMesh& polygon, const Box3dd& space
 		}
 	}
 
+	Array3d<unsigned int> array3d(ress, 0);
+	const auto& resolutions = array3d.getResolutions();
+
 	//const Ray3d ray(Vector3dd(0, 5, 5), Vector3dd(1, 0, 0));
-	for (auto y = space.getMinY(); y < space.getMaxY(); y += res) {
-		for (auto z = space.getMinZ(); z < space.getMaxZ(); z += res) {
+	for (auto j = 0; j < yres; ++j) {
+		const auto y = space.getMinY() + j * voxelSize.y;
+		for (auto k = 0; k < zres; ++k) {
+			const auto z = space.getMinZ() + k * voxelSize.z;
 			const Ray3d ray(Vector3dd(space.getMinX(), y, z), Vector3dd(1, 0, 0));
 			std::list<double> params;
-			for (auto x = space.getMinX(); x < space.getMaxX(); x += res) {
+			for (int i = 0; i < xres; ++i) {
+				const auto x = space.getMinX() + i * voxelSize.x;
 				const Vector3dd pos(x, y, z);
 				if (!table.isEmpty(pos)) {
 					const auto ps = table.getParticles(pos);
