@@ -120,7 +120,7 @@ class ParticleFluidsPanel(bpy.types.Panel):
 
   def draw(self, context):
     layout = self.layout
-    layout.prop(context.scene, "tutorial_comment")
+#    layout.prop(context.scene, "tutorial_comment")
 
     op_prop = layout.operator(TUTORIAL_OT_SayComment.bl_idname, text="Say")
     #op_prop.comment = context.scene.tutorial_comment
