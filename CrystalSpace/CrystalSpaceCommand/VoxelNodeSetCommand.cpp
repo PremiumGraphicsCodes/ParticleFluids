@@ -56,9 +56,7 @@ bool VoxelNodeSetCommand::execute(World* world)
 	assert(indicesz.size() == values.size());
 
 	for (int i = 0; i < indicesx.size(); ++i) {
-		std::array<int, 3> index{ indicesx[i], indicesy[i], indicesz[i] };
-		auto n = shape->createNode(index);
-		n->setValue(values[i]);
+		shape->setValue(indicesx[i], indicesy[i], indicesz[i], values[i]);
 	}
 
 	return true;
