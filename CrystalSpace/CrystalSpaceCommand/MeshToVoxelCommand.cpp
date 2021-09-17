@@ -5,7 +5,7 @@
 #include "../../Crystal/Scene/PolygonMeshScene.h"
 #include "../CrystalSpace/VoxelScene.h"
 
-//#include "../CrystalSpace/MeshToVoxelConverter.h"
+#include "../CrystalSpace/Voxelizer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Space;
@@ -44,6 +44,12 @@ bool MeshToVoxelCommand::execute(World* scene)
 	if (voxelScene == nullptr) {
 		return false;
 	}
+	/*
+	Voxelizer converter;
+	converter.voxelize(*pmScene->getShape(), args.divideLength.getValue());
+	auto voxel = converter.getVoxel();
+	voxelScene->resetShape();
+	*/
 	/*
 	MeshToVoxelConverter converter;
 	converter.convert(*pmScene->getShape(), args.divideLength.getValue());
