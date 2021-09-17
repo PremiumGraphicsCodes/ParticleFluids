@@ -21,20 +21,18 @@ void VoxelSphereView::onOk()
 {
 	const auto sphere = sphereView.getValue();
 	const auto res = static_cast<size_t>(resolutionView.getValue());
-	const std::array<int, 3> resolution = { res, res, res };
-	auto sv = std::make_unique<SparseVoxel>(sphere.getBoundingBox(), resolution);
+	const std::array<size_t, 3> resolution = { res, res, res };
+	auto sv = std::make_unique<Voxel>(sphere.getBoundingBox(), resolution);
+	sv->fill(false);
 
 	const auto center = sphere.getCenter();
 	const auto rad = sphere.getRadius();
 	for (int ix = 0; ix < resolution[0]; ++ix) {
 		for (int iy = 0; iy < resolution[1]; ++iy) {
 			for (int iz = 0; iz < resolution[2]; ++iz) {
-				const std::array<int, 3> index = { ix, iy, iz };
-				const auto p = sv->getPositionAt(index);
+				const auto p = sv->getCellPosition(ix, iy, iz);
 				if (Crystal::Math::getDistanceSquared(p, center) < rad * rad) {
-					sv->createNode(index);
-					auto n = sv->findNode(index);
-					n->setValue(true);
+					sv->setValue(ix, iy, iz, true);
 				}
 			}
 		}

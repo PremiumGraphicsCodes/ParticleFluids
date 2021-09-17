@@ -17,7 +17,7 @@ IVoxelAddView::IVoxelAddView(const std::string& name, World* model, Canvas* canv
 	add(&nameView);
 }
 
-void IVoxelAddView::addVoxel(std::unique_ptr<SparseVoxel> voxel)
+void IVoxelAddView::addVoxel(std::unique_ptr<Voxel> voxel)
 {
 	auto scene = new VoxelScene(getWorld()->getNextSceneId(), nameView.getValue(), std::move(voxel));
 	getWorld()->getScenes()->addScene(scene);

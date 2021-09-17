@@ -42,7 +42,7 @@ void VoxelizerView::onOk()
 	auto mesh = builder.build();
 
 	Voxelizer voxelizer;
-	voxelizer.voxelize(*mesh, 1.0, true);
+	voxelizer.voxelize(*mesh, 1.0);
 	//voxelizer.fill();
 	auto voxel = voxelizer.getVoxel();
 
