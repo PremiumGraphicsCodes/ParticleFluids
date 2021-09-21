@@ -1,19 +1,22 @@
 #include "TriangleMeshScene.h"
 
+#include "TMWirePresenter.h"
+
 using namespace Crystal::Math;
 using namespace Crystal::Scene;
 
 TriangleMeshScene::TriangleMeshScene(const int id)
 	: IShapeScene(id)
 {
-//	presenter = std::make_unique
+	presenter = std::make_unique<TMWirePresenter>(this);
 }
 
 TriangleMeshScene::TriangleMeshScene(const int id, const std::string& name, std::unique_ptr<Shape::TriangleMesh> shape) :
 	IShapeScene(id, name),
 	shape(std::move(shape))
-{}
-
+{
+	presenter = std::make_unique<TMWirePresenter>(this);
+}
 
 void TriangleMeshScene::translate(const Vector3dd& v)
 {

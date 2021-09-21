@@ -26,6 +26,8 @@ public:
 
 	ITMPresenter* getPresenter() { return presenter.get(); }
 
+	const Shape::TriangleMesh* getShape() const { return shape.get(); }
+
 private:
 	std::unique_ptr<Shape::TriangleMesh> shape;
 	std::unique_ptr<ITMPresenter> presenter;

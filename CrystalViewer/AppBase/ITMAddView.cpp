@@ -18,7 +18,7 @@ ITMAddView::ITMAddView(const std::string& name, World* model, Canvas* canvas) :
 	//add(&presenterView);
 }
 
-void ITMAddView::addPolygonMesh(std::unique_ptr<TriangleMesh> shape)
+void ITMAddView::addTriangleMesh(std::unique_ptr<TriangleMesh> shape)
 {
 	auto world = getWorld();
 

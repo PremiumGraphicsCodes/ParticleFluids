@@ -160,6 +160,9 @@
     <ClInclude Include="ITMPresenter.h">
       <Filter>Presenter\Shape\TriangleMesh</Filter>
     </ClInclude>
+    <ClInclude Include="TMWirePresenter.h">
+      <Filter>Presenter\Shape\TriangleMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -261,6 +264,9 @@
     </ClCompile>
     <ClCompile Include="VoxelPresenter.cpp">
       <Filter>Presenter\Shape\Voxel</Filter>
+    </ClCompile>
+    <ClCompile Include="TMWirePresenter.cpp">
+      <Filter>Presenter\Shape\TriangleMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

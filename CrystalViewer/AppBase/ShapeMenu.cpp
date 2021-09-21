@@ -23,6 +23,8 @@
 #include "PMSphereView.h"
 #include "PMConeView.h"
 
+#include "TMSphereView.h"
+
 #include "VolSphereView.h"
 #include "VoxelSphereView.h"
 
@@ -138,6 +140,40 @@ void PMGenerationMenu::onShow()
 	}
 }
 
+TMGenerationMenu::TMGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
+	IMenu(name, world, canvas),
+	control(control)
+{}
+
+void TMGenerationMenu::onShow()
+{
+	auto world = getWorld();
+	auto canvas = getCanvas();
+
+	const auto& c = name.c_str();
+
+	if (ImGui::BeginMenu(c)) {
+		/*
+		if (ImGui::MenuItem("PMBox")) {
+			control->setWindow(new PMBoxView("PMBox", world, canvas));
+		}
+		if (ImGui::MenuItem("PMQuad")) {
+			control->setWindow(new PMQuadView("PMQuad", world, canvas));
+		}
+		*/
+		if (ImGui::MenuItem("TMSphere")) {
+			control->setWindow(new TMSphereView("TMSphere", world, canvas));
+		}
+		/*
+		if (ImGui::MenuItem("PMCone")) {
+			control->setWindow(new PMConeView("PMCone", world, canvas));
+		}
+		*/
+		ImGui::EndMenu();
+	}
+}
+
+
 VolGenerationMenu::VolGenerationMenu(const std::string& name, World* world, Canvas* canvas, ControlPanel* control) :
 	IMenu(name, world, canvas),
 	control(control)
@@ -234,6 +270,7 @@ ShapeMenu::ShapeMenu(const std::string& name, World* world, Canvas* canvas, Cont
 	particleSystemMenu("ParticleSystem", world, canvas, control),
 	wireFrameMenu("WireFrame", world, canvas, control),
 	polygonMeshMenu("PolygonMesh", world, canvas, control),
+	triangleMeshMenu("TriangleMesh", world, canvas, control),
 	volMenu("Volume", world, canvas, control),
 	voxelMenu("Voxel", world, canvas, control),
 	solidMenu("Solid", world, canvas, control),
@@ -250,6 +287,7 @@ void ShapeMenu::onShow()
 		particleSystemMenu.show();
 		wireFrameMenu.show();
 		polygonMeshMenu.show();
+		triangleMeshMenu.show();
 		volMenu.show();
 		voxelMenu.show();
 		solidMenu.show();

@@ -17,7 +17,7 @@ public:
 	ITMAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 protected:
-	void addPolygonMesh(std::unique_ptr<Shape::TriangleMesh> shape);
+	void addTriangleMesh(std::unique_ptr<Shape::TriangleMesh> shape);
 
 private:
 	StringView nameView;

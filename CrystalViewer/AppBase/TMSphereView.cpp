@@ -23,5 +23,5 @@ void TMSphereView::onOk()
 	TriangleMeshBuilder builder;
 	builder.add(sphereView.getValue(), unumView.getValue(), vnumView.getValue());
 
-	ITMAddView::addPolygonMesh(builder.build());
+	ITMAddView::addTriangleMesh(std::move(builder.build()));
 }

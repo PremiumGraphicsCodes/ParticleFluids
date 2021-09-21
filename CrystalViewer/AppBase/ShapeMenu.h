@@ -39,6 +39,18 @@ private:
 	ControlPanel* control;
 };
 
+class TMGenerationMenu : public IMenu
+{
+public:
+	TMGenerationMenu(const std::string& name, Scene::World* world, Canvas* canvas, ControlPanel* control);
+
+	void onShow() override;
+
+private:
+	ControlPanel* control;
+};
+
+
 class VolGenerationMenu : public IMenu
 {
 public:
@@ -95,6 +107,7 @@ private:
 	PSGenerationMenu particleSystemMenu;
 	WFGenerationMenu wireFrameMenu;
 	PMGenerationMenu polygonMeshMenu;
+	TMGenerationMenu triangleMeshMenu;
 	VolGenerationMenu volMenu;
 	VoxelGenerationMenu voxelMenu;
 	SolidGenerationMenu solidMenu;
