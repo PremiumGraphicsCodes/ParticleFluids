@@ -70,13 +70,22 @@ class BLPolygonMesh :
 
   def build(self):
     self.mesh = PolygonMeshScene(scene)
-    self.mesh.create_empty_polygon_mesh_scene("", 0)
+#    self.mesh.create_empty_polygon_mesh_scene("", 0)
 
   def convert(self, mesh) :
     meshes = bpy.data.meshes
+
+    positions = []
+    normals = []
     print("num of vertices:", len(mesh.vertices))
     for vt in mesh.vertices:
       print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
+      p = Vector3dd(vt.co[0], vt.co[1], vt.co[2])
+      positions.append(p)
+      n = Vector3dd(vt.normal[0], vt.normal[1], vt.normal[2])
+      normals.append(n)
+
+    self.mesh.create_polygon_mesh_scene("", positions, normals, [], 0)
 
     print("num of edges:", len(mesh.edges))
     for ed in mesh.edges:
@@ -126,6 +135,7 @@ class MeshToPS(bpy.types.Operator) :
       selected_mesh = self.get_selected_mesh(context)
       mesh = BLPolygonMesh()
       mesh.build()
+      mesh.convert(selected_mesh)
       return {'FINISHED'}
 
   def get_selected_mesh(self, context) :
