@@ -312,6 +312,9 @@
     <ClCompile Include="VoxelSphereView.cpp">
       <Filter>Scene\Shape\Voxel</Filter>
     </ClCompile>
+    <ClCompile Include="ITMAddView.cpp">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -667,6 +670,9 @@
     <ClInclude Include="VoxelSphereView.h">
       <Filter>Scene\Shape\Voxel</Filter>
     </ClInclude>
+    <ClInclude Include="ITMAddView.h">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Window">
@@ -812,6 +818,9 @@
     </Filter>
     <Filter Include="Scene\Shape\Voxel">
       <UniqueIdentifier>{04a10c40-662f-4000-9cd5-df2f8bc055e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\TriangleMesh">
+      <UniqueIdentifier>{90048a3c-4b7a-43fd-bf8d-a582098eb75d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -51,6 +51,7 @@
     <ClCompile Include="IPMAddView.cpp" />
     <ClCompile Include="IPSAddView.cpp" />
     <ClCompile Include="ISolidAddView.cpp" />
+    <ClCompile Include="ITMAddView.cpp" />
     <ClCompile Include="IVolAddView.cpp" />
     <ClCompile Include="IVoxelAddView.cpp" />
     <ClCompile Include="IWFAddView.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="IPMAddView.h" />
     <ClInclude Include="IPSAddView.h" />
     <ClInclude Include="ISolidAddView.h" />
+    <ClInclude Include="ITMAddView.h" />
     <ClInclude Include="IUICtrl.h" />
     <ClInclude Include="IView.h" />
     <ClInclude Include="IVolAddView.h" />
