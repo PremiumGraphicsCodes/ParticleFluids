@@ -62,6 +62,17 @@ class BLPointCloud :
       me.update()
       bpy.context.collection.objects.link(ob)
 
+class MeshToPointCloudConverter :
+  def __init__(self):
+    pass
+
+  def convert(self, mesh) :
+    meshes = bpy.data.meshes
+    print("num of vertices:", len(mesh.vertices))
+    for vt in mesh.vertices:
+      print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
+
+
 class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
   bl_idname = "pg.particlesystemimportoperator"
   bl_label = "ParticleSystemImport"
@@ -95,7 +106,16 @@ class MeshToPS(bpy.types.Operator) :
 
   def execute(self, context) :
       pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
+      converter = MeshToPointCloudConverter()
+      mesh = self.get_selected_mesh(context)
+      converter.convert(mesh)
       return {'FINISHED'}
+
+  def get_selected_mesh(self, context) :
+    for o in bpy.data.objects:
+      if o.type == 'MESH' and o.select_get():
+        return o.to_mesh()
+    return None
 
 class TUTORIAL_OT_SayComment(bpy.types.Operator):
   bl_idname = "tutorial.saycomment"
