@@ -20,6 +20,8 @@ class PolygonMeshScene :
         set_arg_string(scene_labels.PolygonMeshCreateLabels.NameLabel, name)
         set_arg_int(scene_labels.PolygonMeshCreateLabels.LayerLabel, layer)
         set_arg_vector3dd_vector(scene_labels.PolygonMeshCreateLabels.PositionsLabel, positions)
+        set_arg_vector3dd_vector(scene_labels.PolygonMeshCreateLabels.NormalsLabel, normals)
+#        set_arg_
         is_ok = execute_command(self.world)
         return is_ok
 

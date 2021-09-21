@@ -32,6 +32,10 @@ bool PolygonMeshAddFacesCommand::execute(World* world)
 	auto shape = scene->getShape();
 	const auto vertexIds = args.vertexIds.getValue();
 
+	const auto faceId = shape->getFaces().size();
+	Face f(vertexIds[0], vertexIds[1], vertexIds[2], faceId);
+	shape->faces.push_back(f);
+
 	/*
 	for (int i = 0; i < positionIds.size(); ++i) {
 		Vertex v;

@@ -9,6 +9,11 @@ class PolygonMeshSceneTest(unittest.TestCase) :
         mesh.create_empty_polygon_mesh_scene("",1)
         self.assertEqual(1, mesh.id)
 
+    #def test_add_face():
+    #    scene = Scene(World())
+    #    mesh = PolygonMeshScene(scene)
+    #    mesh.add_face([0,1,2])
+
     def test_import_obj(self):
         scene = Scene(World())
         mesh = PolygonMeshScene(scene)

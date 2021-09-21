@@ -23,6 +23,7 @@ bl_info = {
 }
 
 import os
+#from polygon_mesh_scene import PolygonMeshScene
 import sys
 
 addon_dirpath = os.path.dirname(__file__)
@@ -33,6 +34,7 @@ import CrystalPLI
 import scene
 import physics_command
 import particle_system_scene
+from polygon_mesh_scene import *
 from physics_command import *
 from scene import *
 from bpy.props import *
@@ -62,9 +64,13 @@ class BLPointCloud :
       me.update()
       bpy.context.collection.objects.link(ob)
 
-class MeshToPointCloudConverter :
+class BLPolygonMesh :
   def __init__(self):
     pass
+
+  def build(self):
+    self.mesh = PolygonMeshScene(scene)
+    self.mesh.create_empty_polygon_mesh_scene("", 0)
 
   def convert(self, mesh) :
     meshes = bpy.data.meshes
@@ -72,6 +78,17 @@ class MeshToPointCloudConverter :
     for vt in mesh.vertices:
       print("vertex index:{0:2} co:{1} normal:{2}".format(vt.index, vt.co, vt.normal))
 
+    print("num of edges:", len(mesh.edges))
+    for ed in mesh.edges:
+      print("edge index:{0: 2} v0:{1} v1:{2}".format(ed.index, ed.vertices[0], ed.vertices[1]))
+
+    print("num of polygons:", len(mesh.polygons))
+    for pl in mesh.polygons:
+      print("polygon index:{0:2} ".format(pl.index), end="")
+      print("vertices:", end="")
+      for vi in pl.vertices:
+        print("{0:2}, ".format(vi), end="")
+      print("")
 
 class ParticleSystemImportOperator(bpy.types.Operator, ImportHelper) :
   bl_idname = "pg.particlesystemimportoperator"
@@ -106,9 +123,9 @@ class MeshToPS(bpy.types.Operator) :
 
   def execute(self, context) :
       pc = BLPointCloud("point-cloud", [(0.0, 0.0, 0.0)])      
-      converter = MeshToPointCloudConverter()
-      mesh = self.get_selected_mesh(context)
-      converter.convert(mesh)
+      selected_mesh = self.get_selected_mesh(context)
+      mesh = BLPolygonMesh()
+      mesh.build()
       return {'FINISHED'}
 
   def get_selected_mesh(self, context) :
