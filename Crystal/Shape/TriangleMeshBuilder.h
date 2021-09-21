@@ -13,6 +13,10 @@ namespace Crystal {
 		template<typename T>
 		class Sphere3d;
 		class Cone3d;
+		template<typename T>
+		class ISurface3d;
+		template<typename T>
+		class IVolume3d;
 	}
 	namespace Shape {
 
@@ -26,6 +30,10 @@ public:
 	void add(const Math::Quad3d& quad);
 
 	void add(const Math::Box3dd& box);
+
+	void add(const Math::ISurface3d<double>& sphere, const int unum, const int vnum);
+
+	void add(const Math::IVolume3dd& volume, const int unum, const int vnun, const int wnum);
 
 	/*
 	void add(const Math::Sphere3d& sphere, const int unum, const int vnum);

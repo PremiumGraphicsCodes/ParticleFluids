@@ -5,6 +5,10 @@
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
+namespace {
+	constexpr auto tolerance = 1.0e-12;
+}
+
 TriangleMeshBuilder::TriangleMeshBuilder()
 {
 }
@@ -56,4 +60,30 @@ std::unique_ptr<TriangleMesh> TriangleMeshBuilder::build()
 		mesh->addFace(f);
 	}
 	return std::move(mesh);
+}
+
+void TriangleMeshBuilder::add(const ISurface3dd& surface, const int unum, const int vnum)
+{
+	const auto du = 1.0 / static_cast<double>(unum);
+	const auto dv = 1.0 / static_cast<double>(vnum);
+
+	std::vector<std::vector<Vector3dd>> positions;
+
+	for (auto u = 0.0; u < 1.0 + tolerance; u += du) {
+		std::vector<Vector3dd> ps;
+
+		for (auto v = 0.0; v < 1.0 + tolerance; v += du) {
+			ps.push_back(surface.getPosition(u, v));
+		}
+		positions.push_back(ps);
+	}
+
+	for (int i = 0; i < unum; ++i) {
+		for (int j = 0; j < vnum; ++j) {
+			const Triangle3d t1(positions[i][j], positions[i+1][j], positions[i][j+1]);
+			faces.push_back(TriangleFace(t1));
+			const Triangle3d t2(positions[i+1][j+1], positions[i][j+1], positions[i+1][j]);
+			faces.push_back(TriangleFace(t2));
+		}
+	}
 }
