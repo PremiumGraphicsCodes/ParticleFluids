@@ -53,6 +53,7 @@
     <ClInclude Include="SolidScene.h" />
     <ClInclude Include="TexturePresenter.h" />
     <ClInclude Include="TextureScene.h" />
+    <ClInclude Include="TMSurfacePresenter.h" />
     <ClInclude Include="TMWirePresenter.h" />
     <ClInclude Include="TriangleBuffer.h" />
     <ClInclude Include="TriangleMeshScene.h" />
@@ -102,6 +103,7 @@
     <ClCompile Include="SolidScene.cpp" />
     <ClCompile Include="TexturePresenter.cpp" />
     <ClCompile Include="TextureScene.cpp" />
+    <ClCompile Include="TMSurfacePresenter.cpp" />
     <ClCompile Include="TMWirePresenter.cpp" />
     <ClCompile Include="TriangleMeshScene.cpp" />
     <ClCompile Include="TriangleShaderScene.cpp" />
