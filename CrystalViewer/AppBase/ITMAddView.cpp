@@ -18,27 +18,14 @@ ITMAddView::ITMAddView(const std::string& name, World* model, Canvas* canvas) :
 	//add(&presenterView);
 }
 
-void ITMAddView::addPolygonMesh(const TriangleMesh& shape)
+void ITMAddView::addPolygonMesh(std::unique_ptr<TriangleMesh> shape)
 {
-	/*
 	auto world = getWorld();
-	auto mesh = std::make_unique<PolygonMesh>();
-	mesh->positions = builder.getPositions();
-	mesh->normals = builder.getNormals();
-	mesh->texCoords = builder.getTexCoords();
-	mesh->vertices = builder.getVertices();
-	mesh->faces = builder.getFaces();
 
-	const auto materialName = materialView.getSelected();
-	auto material = world->getScenes()->findSceneByName<MaterialScene*>(materialName);
-
-	auto scene = new PolygonMeshScene(world->getNextSceneId(), nameView.getValue(), std::move(mesh));
-	PolygonMeshScene::FaceGroup group(builder.getFaces(), material);
-	scene->addGroup(group);
+	auto scene = new TriangleMeshScene(world->getNextSceneId(), nameView.getValue(), std::move(shape));
 	world->getScenes()->addScene(scene);
 
 	//presenterView.setPresenter(scene, world);
 
 	scene->getPresenter()->createView(getWorld()->getRenderer(), *getWorld()->getGLFactory());
-	*/
 }

@@ -2,6 +2,7 @@
 
 #include "IShapeScene.h"
 #include "../Shape/TriangleMesh.h"
+#include "ITMPresenter.h"
 
 namespace Crystal {
 	namespace Scene {
@@ -9,14 +10,9 @@ namespace Crystal {
 class TriangleMeshScene : public IShapeScene
 {
 public:
-	explicit TriangleMeshScene(const int id)
-		: IShapeScene(id)
-	{}
+	explicit TriangleMeshScene(const int id);
 
-	TriangleMeshScene(const int id, const std::string& name, std::unique_ptr<Shape::TriangleMesh> shape) :
-		IShapeScene(id, name),
-		shape(std::move(shape))
-	{}
+	TriangleMeshScene(const int id, const std::string& name, std::unique_ptr<Shape::TriangleMesh> shape);
 
 	void translate(const Math::Vector3dd& v) override;
 
@@ -28,8 +24,11 @@ public:
 
 	SceneType getType() const override { return SceneTypeLabels::TriangleMeshScene; }
 
+	ITMPresenter* getPresenter() { return presenter.get(); }
+
 private:
 	std::unique_ptr<Shape::TriangleMesh> shape;
+	std::unique_ptr<ITMPresenter> presenter;
 };
 
 	}

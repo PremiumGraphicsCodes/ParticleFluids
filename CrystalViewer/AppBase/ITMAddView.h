@@ -3,6 +3,7 @@
 #include "IOkCancelView.h"
 #include "StringView.h"
 //#include "TMPresenterView.h"
+#include <memory>
 
 namespace Crystal {
 	namespace Shape {
@@ -16,7 +17,7 @@ public:
 	ITMAddView(const std::string& name, Scene::World* model, Canvas* canvas);
 
 protected:
-	void addPolygonMesh(const Shape::TriangleMesh& shape);
+	void addPolygonMesh(std::unique_ptr<Shape::TriangleMesh> shape);
 
 private:
 	StringView nameView;

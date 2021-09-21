@@ -157,6 +157,9 @@
     <ClInclude Include="VoxelPresenter.h">
       <Filter>Presenter\Shape\Voxel</Filter>
     </ClInclude>
+    <ClInclude Include="ITMPresenter.h">
+      <Filter>Presenter\Shape\TriangleMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -350,6 +353,9 @@
     </Filter>
     <Filter Include="Presenter\Voxel">
       <UniqueIdentifier>{720e27db-c0df-44a6-85b4-3bafb96d12e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Presenter\Shape\TriangleMesh">
+      <UniqueIdentifier>{ebb728a7-35f7-46ea-8941-bafaf111efb1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

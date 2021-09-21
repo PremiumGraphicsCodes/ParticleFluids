@@ -315,6 +315,9 @@
     <ClCompile Include="ITMAddView.cpp">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClCompile>
+    <ClCompile Include="TMSphereView.cpp">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h" />
@@ -671,6 +674,9 @@
       <Filter>Scene\Shape\Voxel</Filter>
     </ClInclude>
     <ClInclude Include="ITMAddView.h">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TMSphereView.h">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClInclude>
   </ItemGroup>
