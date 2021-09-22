@@ -1,10 +1,10 @@
 #include "FluidSceneUpdateCommand.h"
 
+#include "CrystalScene/Scene/ParticleSystemScene.h"
+
 #include "PublicLabels/FluidSceneUpdateLabels.h"
 
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
-
 #include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
 
 using namespace Crystal::Math;

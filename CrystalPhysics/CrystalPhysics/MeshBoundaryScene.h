@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../../Crystal/Scene/IScene.h"
-#include "../../Crystal/Shape/PolygonMesh.h"
+#include "Crystal/Shape/PolygonMesh.h"
+#include "Crystal/Shape/IParticle.h"
 
-#include "../../Crystal/Shape/IParticle.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/IScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
 namespace Crystal {
 	namespace Physics {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../CrystalViewer/AppBase/IOkCancelView.h"
-#include "../../CrystalViewer/AppBase/ObjectSelectView.h"
-#include "../../CrystalViewer/AppBase/DoubleView.h"
+#include "CrystalScene/AppBase/IOkCancelView.h"
+#include "CrystalScene/AppBase/ObjectSelectView.h"
+#include "CrystalScene/AppBase/DoubleView.h"
 
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 //#include "../CrystalPhysics/Boundary.h"

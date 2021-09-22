@@ -4,7 +4,7 @@
 
 #include "../SPHKernel.h"
 
-#include "../../../Crystal/Math/Gaussian1d.h"
+#include "Crystal/Math/Gaussian1d.h"
 
 #include "MVPParticleBuilder.h"
 

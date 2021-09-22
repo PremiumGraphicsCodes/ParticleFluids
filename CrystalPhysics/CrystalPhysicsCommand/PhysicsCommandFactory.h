@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../Crystal/Util/UnCopyable.h"
-#include "../../CrystalViewer/Command/ICommand.h"
+#include "CrystalScene/Command/ICommand.h"
 
 namespace Crystal {
 	namespace Physics {

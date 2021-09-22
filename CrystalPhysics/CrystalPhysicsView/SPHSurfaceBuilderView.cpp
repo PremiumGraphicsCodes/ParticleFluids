@@ -2,11 +2,11 @@
 
 #include "../CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"
 
-#include "../../Crystal/Shape/Particle.h"
-#include "../../Crystal/Shape/WireFrameBuilder.h"
+#include "Crystal/Shape/Particle.h"
+#include "Crystal/Shape/WireFrameBuilder.h"
 
-#include "../../Crystal/Scene/WireFrameScene.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/WireFrameScene.h"
+#include "CrystalScene/Scene/PolygonMeshScene.h"
 
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 

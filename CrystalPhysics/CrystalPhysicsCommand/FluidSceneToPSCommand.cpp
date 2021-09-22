@@ -3,7 +3,7 @@
 #include "PublicLabels/FluidSceneToPSLabels.h"
 
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

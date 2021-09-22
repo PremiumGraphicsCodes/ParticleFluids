@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../Crystal/Scene/IParticleSystemScene.h"
+#include "CrystalScene/Scene/IParticleSystemScene.h"
 
 #include "MVPVolumeParticle.h"
 #include "MVPFluidScenePresenter.h"

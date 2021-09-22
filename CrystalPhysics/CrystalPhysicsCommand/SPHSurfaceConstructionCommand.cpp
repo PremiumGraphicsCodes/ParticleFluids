@@ -3,7 +3,7 @@
 #include "PublicLabels/SPHSurfaceConstructionLabels.h"
 
 //#include "../CrystalPhysics/KFFluidScene.h"
-#include "../../Crystal/Scene/IParticleSystemScene.h"
+#include "CrystalScene/Scene/IParticleSystemScene.h"
 #include "../../CrystalSpace/CrystalSpace/SparseVolumeScene.h"
 
 #include "../../CrystalPhysics/CrystalPhysics/SurfaceConstruction/SPHSurfaceBuilder.h"

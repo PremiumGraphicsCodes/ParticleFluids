@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../CrystalViewer/AppBase/IOkCancelView.h"
-#include "../../CrystalViewer/AppBase/FloatView.h"
-#include "../../CrystalViewer/AppBase/ColorMapView.h"
+#include "CrystalScene/AppBase/IOkCancelView.h"
+#include "CrystalScene/AppBase/FloatView.h"
+#include "CrystalScene/AppBase/ColorMapView.h"
 
 namespace Crystal {
 	namespace Physics {

@@ -3,7 +3,7 @@
 #include "MVPMassParticle.h"
 #include "MVPVolumeParticle.h"
 
-#include "../../../Crystal/Math/Gaussian3d.h"
+#include "Crystal/Math/Gaussian3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

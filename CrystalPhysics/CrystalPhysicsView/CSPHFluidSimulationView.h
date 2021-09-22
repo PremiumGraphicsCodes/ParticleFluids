@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../../CrystalViewer/AppBase/IOkCancelView.h"
-#include "../../CrystalViewer/AppBase/ObjectSelectView.h"
-#include "../../CrystalViewer/AppBase/FloatView.h"
-#include "../../CrystalViewer/AppBase/Box3dView.h"
-#include "../../CrystalViewer/AppBase/DirectoryView.h"
+#include "CrystalScene/AppBase/IOkCancelView.h"
+#include "CrystalScene/AppBase/ObjectSelectView.h"
+#include "CrystalScene/AppBase/FloatView.h"
+#include "CrystalScene/AppBase/Box3dView.h"
+#include "CrystalScene/AppBase/DirectoryView.h"
 #include "../CrystalPhysics/CSPH/CSPHSolver.h"
 #include "../CrystalPhysics/CSPH/CSPHFluidScene.h"
 

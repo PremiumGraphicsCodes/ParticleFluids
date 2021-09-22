@@ -1,10 +1,10 @@
 #include "SPHFlameSimulationView.h"
 
-#include "../../CrystalViewer/Command/Command.h"
+#include "CrystalScene/Command/Command.h"
 
-#include "../../CrystalViewer/Command/Public/ShaderBuildLabels.h"
-#include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
-#include "../../CrystalViewer/Command/Public/CameraLabels.h"
+#include "CrystalScene/Command/Public/ShaderBuildLabels.h"
+#include "CrystalScene/Command/Public/ShaderSendLabels.h"
+#include "CrystalScene/Command/Public/CameraLabels.h"
 
 #include "../CrystalPhysics/SPHConstant.h"
 

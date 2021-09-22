@@ -1,13 +1,13 @@
 #include "CSGBoundarySceneUpdateCommand.h"
 
-#include "../../Crystal/Scene/SolidScene.h"
+#include "CrystalScene/Scene/SolidScene.h"
 
 #include "PublicLabels/CSGBoundarySceneUpdateLabels.h"
 
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
 
-#include "../../CrystalViewer/Command/Public/PublicLabel.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

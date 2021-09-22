@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../CrystalViewer/AppBase/IView.h"
-#include "../../CrystalViewer/AppBase/Box3dView.h"
-#include "../../CrystalViewer/AppBase/Button.h"
+#include "CrystalScene/AppBase/IView.h"
+#include "CrystalScene/AppBase/Box3dView.h"
+#include "CrystalScene/AppBase/Button.h"
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 
 namespace Crystal {

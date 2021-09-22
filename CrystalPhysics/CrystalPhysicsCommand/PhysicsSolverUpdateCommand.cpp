@@ -7,7 +7,7 @@
 #include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "../CrystalPhysics/CSGBoundaryScene.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

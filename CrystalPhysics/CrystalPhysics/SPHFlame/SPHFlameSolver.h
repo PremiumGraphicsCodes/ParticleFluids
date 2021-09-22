@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../../Crystal/Math/Box3d.h"
-#include "../../../Crystal/Scene/IAnimator.h"
+#include "Crystal/Math/Box3d.h"
+#include "CrystalScene/Scene/IAnimator.h"
 
 #include "../SPHKernel.h"
 //#include "ISPHSolver.h"

@@ -5,11 +5,11 @@
 #include "../CrystalPhysics/DFSPH/DFSPHParticle.h"
 #include "../CrystalPhysics/SPHConstant.h"
 
-#include "../../CrystalViewer/Command/Command.h"
+#include "CrystalScene/Command/Command.h"
 
-#include "../../CrystalViewer/Command/Public/ShaderBuildLabels.h"
-#include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
-#include "../../CrystalViewer/Command/Public/CameraLabels.h"
+#include "CrystalScene/Command/Public/ShaderBuildLabels.h"
+#include "CrystalScene/Command/Public/ShaderSendLabels.h"
+#include "CrystalScene/Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

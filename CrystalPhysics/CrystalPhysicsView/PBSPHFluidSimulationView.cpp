@@ -4,12 +4,12 @@
 #include "../CrystalPhysics/PBSPH/PBSPHSolver.h"
 #include "../CrystalPhysics/PBSPH/PBSPHParticle.h"
 
-#include "../../CrystalViewer/Command/Command.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
-#include "../../CrystalViewer/Command/Public/ShaderBuildLabels.h"
-#include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
-#include "../../CrystalViewer/Command/Public/CameraLabels.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Command/Command.h"
+#include "CrystalScene/Command/Public/ShaderBuildLabels.h"
+#include "CrystalScene/Command/Public/ShaderSendLabels.h"
+#include "CrystalScene/Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

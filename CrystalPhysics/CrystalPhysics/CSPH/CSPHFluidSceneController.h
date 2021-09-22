@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../../../Crystal/Scene/IPresenter.h"
+#include "CrystalScene/Scene/IPresenter.h"
 
-#include "../../../Crystal/Scene/SceneShader.h"
-#include "../../../Crystal/Scene/PointShaderScene.h"
+#include "CrystalScene/Scene/SceneShader.h"
+#include "CrystalScene/Scene/PointShaderScene.h"
 
 namespace Crystal {
 	namespace Physics {

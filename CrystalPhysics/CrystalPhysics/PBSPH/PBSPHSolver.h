@@ -2,9 +2,9 @@
 
 #include <vector>
 
-#include "../../../Crystal/Math/Vector3d.h"
-#include "../../../Crystal/Math/Box3d.h"
-#include "../../../Crystal/Scene/IAnimator.h"
+#include "Crystal/Math/Vector3d.h"
+#include "Crystal/Math/Box3d.h"
+#include "CrystalScene/Scene/IAnimator.h"
 
 namespace Crystal {
 	namespace Physics {

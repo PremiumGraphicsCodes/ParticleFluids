@@ -1,13 +1,13 @@
 #include "MeshBoundarySceneUpdateCommand.h"
 
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/PolygonMeshScene.h"
 
 #include "PublicLabels/MeshBoundarySceneUpdateLabels.h"
 
 #include "../CrystalPhysics/MeshBoundaryScene.h"
 //#include "../../Crystal/Scene/ParticleSystemScene.h"
 
-#include "../../CrystalViewer/Command/Public/PublicLabel.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Physics;

@@ -1,17 +1,16 @@
 #include "MVPFluidSimulationView.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
-
 #include "../CrystalPhysics/MVP/MVPFluidScene.h"
 #include "../CrystalPhysics/MVP/MVPFluidEmitterScene.h"
 #include "../CrystalPhysics/MVP/MVPFluidSolver.h"
 #include "../CrystalPhysics/MVP/MVPParticleBuilder.h"
 
-#include "../../CrystalViewer/Command/CameraFitCommand.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
-#include "../../CrystalViewer/Command/Public/ShaderBuildLabels.h"
-#include "../../CrystalViewer/Command/Public/ShaderSendLabels.h"
-#include "../../CrystalViewer/Command/Public/CameraLabels.h"
+#include "CrystalScene/Command/CameraFitCommand.h"
+#include "CrystalScene/Command/Public/ShaderBuildLabels.h"
+#include "CrystalScene/Command/Public/ShaderSendLabels.h"
+#include "CrystalScene/Command/Public/CameraLabels.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

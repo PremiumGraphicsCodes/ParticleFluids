@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 
-#include "../../../Crystal/Math/Vector3d.h"
+#include "Crystal/Math/Vector3d.h"
 #include "../IPhysicsParticle.h"
 
 #include "../SPHKernel.h"

@@ -3,10 +3,10 @@
 #include <vector>
 #include <list>
 
-#include "../../../Crystal/Math/Vector3d.h"
-#include "../../../Crystal/Math/Box3d.h"
-#include "../../../Crystal/Shape/IParticle.h"
-#include "../../../Crystal/Scene/IAnimator.h"
+#include "Crystal/Math/Vector3d.h"
+#include "Crystal/Math/Box3d.h"
+#include "Crystal/Shape/IParticle.h"
+#include "CrystalScene/Scene/IAnimator.h"
 
 #include "MVPBoundarySolver.h"
 
