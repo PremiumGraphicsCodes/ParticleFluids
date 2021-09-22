@@ -1,8 +1,8 @@
 #pragma once
 
 #include "IShapeScene.h"
-#include "../Shape/Solid.h"
-#include "../Graphics/ColorRGBA.h"
+#include "Crystal/Shape/Solid.h"
+#include "Crystal/Graphics/ColorRGBA.h"
 #include "SolidAsWFPresenter.h"
 
 namespace Crystal {

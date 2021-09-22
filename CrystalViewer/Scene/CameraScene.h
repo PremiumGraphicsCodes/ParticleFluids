@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IScene.h"
-#include "../Graphics/Camera.h"
+#include "Crystal/Graphics/Camera.h"
 
 namespace Crystal {
 	namespace Scene {

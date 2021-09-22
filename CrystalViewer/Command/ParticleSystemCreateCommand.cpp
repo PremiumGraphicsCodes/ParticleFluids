@@ -1,7 +1,7 @@
 #include "ParticleSystemCreateCommand.h"
 
-#include "../../Crystal/Scene/ParticleAttribute.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../Scene/ParticleAttribute.h"
+#include "../Scene/ParticleSystemScene.h"
 
 #include "Public/ParticleSystemCreateLabels.h"
 

@@ -4,9 +4,9 @@
 #include "../Command/CommandFactory.h"
 #include "../Command/Public/OBJFileExportLabels.h"
 
-#include "../../Crystal/Math/Quad3d.h"
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "Crystal/Math/Quad3d.h"
+#include "Crystal/Shape/PolygonMeshBuilder.h"
+#include "../Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

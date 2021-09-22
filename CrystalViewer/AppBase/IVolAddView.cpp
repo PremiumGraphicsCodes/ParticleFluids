@@ -1,7 +1,7 @@
 #include "IVolAddView.h"
 
 #include "../../Crystal/Shape/Volume.h"
-#include "../../Crystal/Scene/VolumeScene.h"
+#include "../Scene/VolumeScene.h"
 
 #include <memory>
 

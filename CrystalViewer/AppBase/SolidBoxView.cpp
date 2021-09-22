@@ -1,7 +1,7 @@
 #include "SolidBoxView.h"
 
 #include "../../Crystal/Shape/Solid.h"
-#include "../../Crystal/Scene/SolidScene.h"
+#include "../Scene/SolidScene.h"
 #include "Canvas.h"
 
 using namespace Crystal::Math;

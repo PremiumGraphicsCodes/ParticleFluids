@@ -3,7 +3,7 @@
 #include "../../Crystal/IO/OBJFileWriter.h"
 #include "../../Crystal/IO/MTLFileWriter.h"
 
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../Scene/PolygonMeshScene.h"
 
 #include "Public/OBJFileExportLabels.h"
 

@@ -2,10 +2,10 @@
 
 #include "IScene.h"
 
-#include "../Shape/IShape.h"
+#include "Crystal/Shape/IShape.h"
 
-#include "../Math/Matrix3d.h"
-#include "../Math/Matrix4d.h"
+#include "Crystal/Math/Matrix3d.h"
+#include "Crystal/Math/Matrix4d.h"
 
 namespace Crystal {
 	namespace Scene {

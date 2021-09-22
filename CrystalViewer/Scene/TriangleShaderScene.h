@@ -2,8 +2,8 @@
 
 #include "IShaderScene.h"
 #include "TriangleBuffer.h"
-#include "../Shader/TriangleRenderer.h"
-#include "../Shader/VertexBufferObject.h"
+#include "Crystal/Shader/TriangleRenderer.h"
+#include "Crystal/Shader/VertexBufferObject.h"
 
 #include <string>
 

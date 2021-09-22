@@ -4,7 +4,7 @@
 #include "FloatView.h"
 #include "ColorRGBAView.h"
 
-#include "../../Crystal/Scene/WireFrameAttribute.h"
+#include "../Scene/WireFrameAttribute.h"
 
 namespace Crystal {
 	namespace UI {

@@ -1,14 +1,14 @@
 #pragma once
 
-#include "../Graphics/DrawableId.h"
+#include "Crystal/Graphics/DrawableId.h"
 
-#include "../Shader/FrameBufferObject.h"
-#include "../Shader/TextureObject.h"
+#include "Crystal/Shader/FrameBufferObject.h"
+#include "Crystal/Shader/TextureObject.h"
 
 //#include "../Scene/PointShader.h"
 #include "../Scene/LineShaderScene.h"
 
-#include "../Util/UnCopyable.h"
+#include "Crystal/Util/UnCopyable.h"
 #include <memory>
 
 namespace Crystal {

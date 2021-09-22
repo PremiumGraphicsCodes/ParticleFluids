@@ -2,7 +2,7 @@
 
 #include "WireFramePresenter.h"
 
-#include "../Graphics/DrawableId.h"
+#include "Crystal/Graphics/DrawableId.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

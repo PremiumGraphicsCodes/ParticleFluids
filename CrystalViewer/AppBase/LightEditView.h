@@ -5,8 +5,8 @@
 #include "IntView.h"
 #include "StringView.h"
 #include "Button.h"
-#include "../../Crystal/Scene/LightScene.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/LightScene.h"
+#include "../Scene/World.h"
 #include "Canvas.h"
 
 namespace Crystal {

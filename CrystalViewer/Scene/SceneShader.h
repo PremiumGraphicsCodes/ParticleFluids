@@ -1,14 +1,14 @@
 #pragma once
 
-#include "../Shader/TextureObject.h"
-#include "../Shader/OnScreenRenderer.h"
+#include "Crystal/Shader/TextureObject.h"
+#include "Crystal/Shader/OnScreenRenderer.h"
 
 #include "ScreenShader.h"
 #include "ScreenIdShader.h"
 
 #include "IShaderScene.h"
 
-#include "../Util/UnCopyable.h"
+#include "Crystal/Util/UnCopyable.h"
 
 namespace Crystal {
 	namespace Shader {

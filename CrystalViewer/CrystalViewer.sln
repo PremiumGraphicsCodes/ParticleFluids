@@ -36,7 +36,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "..\Crystal\Math\Mat
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shader", "..\Crystal\Shader\Shader.vcxproj", "{33BDCAB8-A30C-44B1-A93F-1AD3E15461AD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "..\Crystal\Scene\Scene.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Scene", "Scene\Scene.vcxproj", "{59C5EA30-1E57-417C-9416-17B592E8724E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IO", "..\Crystal\IO\IO.vcxproj", "{198160CC-5ED1-499D-AD45-90DBAC4852F8}"
 EndProject
@@ -45,6 +45,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shape", "..\Crystal\Shape\Shape.vcxproj", "{ED61B745-9F00-48C2-B309-F1DBB37F03E3}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphics", "..\Crystal\Graphics\Graphics.vcxproj", "{227E5411-92CB-4E30-A67B-043D8B04A9BC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SceneTest", "SceneTest\SceneTest.vcxproj", "{539EC4C4-1A6D-451B-9D34-3EF6D318D464}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -156,6 +158,16 @@ Global
 		{227E5411-92CB-4E30-A67B-043D8B04A9BC}.Release|x64.Build.0 = Release|x64
 		{227E5411-92CB-4E30-A67B-043D8B04A9BC}.Release|x86.ActiveCfg = Release|Win32
 		{227E5411-92CB-4E30-A67B-043D8B04A9BC}.Release|x86.Build.0 = Release|Win32
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Debug|x64.ActiveCfg = Debug|x64
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Debug|x64.Build.0 = Debug|x64
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Debug|x86.ActiveCfg = Debug|Win32
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Debug|x86.Build.0 = Debug|Win32
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Release|Any CPU.ActiveCfg = Release|Win32
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Release|x64.ActiveCfg = Release|x64
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Release|x64.Build.0 = Release|x64
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Release|x86.ActiveCfg = Release|Win32
+		{539EC4C4-1A6D-451B-9D34-3EF6D318D464}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

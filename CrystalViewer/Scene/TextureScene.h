@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IScene.h"
-#include "../Graphics/Image.h"
+#include "Crystal/Graphics/Image.h"
 #include "TexturePresenter.h"
 
 namespace Crystal {

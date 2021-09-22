@@ -4,9 +4,9 @@
 #include <string>
 #include "SceneType.h"
 
-#include "../Math/Box3d.h"
-#include "../Graphics/Camera.h"
-#include "../Shader/GLObjectFactory.h"
+#include "Crystal/Math/Box3d.h"
+#include "Crystal/Graphics/Camera.h"
+#include "Crystal/Shader/GLObjectFactory.h"
 
 #include "IPresenter.h"
 

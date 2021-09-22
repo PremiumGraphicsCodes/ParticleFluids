@@ -1,6 +1,6 @@
 #include "TransformCommand.h"
 
-#include "../../Crystal/Scene/IShapeScene.h"
+#include "../Scene/IShapeScene.h"
 #include "Public/TransformLabels.h"
 
 using namespace Crystal::Math;

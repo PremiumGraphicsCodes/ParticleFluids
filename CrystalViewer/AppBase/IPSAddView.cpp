@@ -1,6 +1,6 @@
 #include "IPSAddView.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

@@ -3,8 +3,8 @@
 #include "CameraUICtrl.h"
 
 #include "../../Crystal/Shape/WireFrameBuilder.h"
-#include "../../Crystal/Scene/IShapeScene.h"
-#include "../../Crystal/Scene/WireFrameScene.h"
+#include "../Scene/IShapeScene.h"
+#include "../Scene/WireFrameScene.h"
 
 #include "imgui.h"
 

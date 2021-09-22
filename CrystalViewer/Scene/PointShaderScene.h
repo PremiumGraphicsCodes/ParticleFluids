@@ -2,10 +2,10 @@
 
 #include "IShaderScene.h"
 #include "PointBuffer.h"
-#include "../Shader/VertexBufferObject.h"
-#include "../Shader/VertexArrayObject.h"
-#include "../Graphics/Camera.h"
-#include "../Shader/PointRenderer.h"
+#include "Crystal/Shader/VertexBufferObject.h"
+#include "Crystal/Shader/VertexArrayObject.h"
+#include "Crystal/Graphics/Camera.h"
+#include "Crystal/Shader/PointRenderer.h"
 
 namespace Crystal {
 	namespace Shader {

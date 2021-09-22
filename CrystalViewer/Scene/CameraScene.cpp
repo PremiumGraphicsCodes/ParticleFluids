@@ -1,6 +1,6 @@
 #include "CameraScene.h"
 
-#include "../Math/Box3d.h"
+#include "Crystal/Math/Box3d.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

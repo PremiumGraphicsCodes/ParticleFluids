@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "IUICtrl.h"
 
 namespace Crystal {

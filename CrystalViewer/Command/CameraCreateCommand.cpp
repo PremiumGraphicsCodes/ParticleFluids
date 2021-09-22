@@ -2,7 +2,7 @@
 
 #include "Public/CameraCreateLabels.h"
 
-#include "../../Crystal/Scene/CameraScene.h"
+#include "../Scene/CameraScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

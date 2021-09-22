@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IShapeScene.h"
-#include "../Shape/TriangleMesh.h"
+#include "Crystal/Shape/TriangleMesh.h"
 #include "ITMPresenter.h"
 
 namespace Crystal {

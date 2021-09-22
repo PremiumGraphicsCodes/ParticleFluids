@@ -2,7 +2,7 @@
 
 #include "Canvas.h"
 
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "../Command/Command.h"
 #include "../Command/Public/LightCreateLabels.h"
 

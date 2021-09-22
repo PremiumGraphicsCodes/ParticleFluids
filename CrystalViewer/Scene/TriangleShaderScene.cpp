@@ -1,6 +1,6 @@
 #include "TriangleShaderScene.h"
 
-#include "../Shader/TriangleRenderer.h"
+#include "Crystal/Shader/TriangleRenderer.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;

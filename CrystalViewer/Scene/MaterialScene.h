@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IScene.h"
-#include "../Graphics/Material.h"
+#include "Crystal/Graphics/Material.h"
 #include "MaterialPresenter.h"
 #include <memory>
 

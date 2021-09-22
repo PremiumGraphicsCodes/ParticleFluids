@@ -1,8 +1,8 @@
 #pragma once
 
 #include "IScene.h"
-#include "../Graphics/ColorRGBA.h"
-#include "../Graphics/PointLight.h"
+#include "Crystal/Graphics/ColorRGBA.h"
+#include "Crystal/Graphics/PointLight.h"
 #include "LightPresenter.h"
 
 namespace Crystal {

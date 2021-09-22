@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IShapeScene.h"
-#include "../Shape/Solid.h"
+#include "Crystal/Shape/Solid.h"
 
 #include "ParticleSystemPresenter.h"
 

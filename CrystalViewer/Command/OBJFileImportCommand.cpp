@@ -6,8 +6,8 @@
 #include "../../Crystal/IO/OBJFileReader.h"
 #include "../../Crystal/IO/MTLFileReader.h"
 
-#include "../../Crystal/Scene/Scene.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../Scene/Scene.h"
+#include "../Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::IO;

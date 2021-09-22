@@ -1,9 +1,9 @@
 #pragma once
 
 #include "IShaderScene.h"
-#include "../Graphics/Material.h"
-#include "../Graphics/PointLight.h"
-#include "../Shader/TextureObject.h"
+#include "Crystal/Graphics/Material.h"
+#include "Crystal/Graphics/PointLight.h"
+#include "Crystal/Shader/TextureObject.h"
 
 namespace Crystal {
 	namespace Scene {

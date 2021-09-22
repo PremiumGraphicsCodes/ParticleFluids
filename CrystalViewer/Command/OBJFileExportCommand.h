@@ -2,7 +2,7 @@
 
 #include "ICommand.h"
 #include <filesystem>
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../Scene/PolygonMeshScene.h"
 
 namespace Crystal {
 	namespace Command {

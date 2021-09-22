@@ -1,6 +1,6 @@
 #include "CameraMenu.h"
 #include "imgui.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "Canvas.h"
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"

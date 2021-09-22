@@ -1,6 +1,6 @@
 #include "MaterialSelectView.h"
 
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "MaterialSelectView.h"
 
 using namespace Crystal::Scene;

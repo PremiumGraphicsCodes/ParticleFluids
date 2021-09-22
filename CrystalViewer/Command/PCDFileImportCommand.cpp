@@ -1,7 +1,7 @@
 #include "PCDFileImportCommand.h"
 
 #include "../../Crystal/IO/PCDFileReader.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../Scene/ParticleSystemScene.h"
 
 #include "Public/PCDFileImportLabels.h"
 

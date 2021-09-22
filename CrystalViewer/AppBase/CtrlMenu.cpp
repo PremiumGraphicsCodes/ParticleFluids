@@ -1,6 +1,6 @@
 #include "CtrlMenu.h"
 #include "imgui.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "Canvas.h"
 #include "CameraUICtrl.h"
 #include "PickUICtrl.h"

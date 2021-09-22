@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IPresenter.h"
-#include "../Graphics/ColorMap.h"
+#include "Crystal/Graphics/ColorMap.h"
 
 namespace Crystal {
 	namespace Scene {

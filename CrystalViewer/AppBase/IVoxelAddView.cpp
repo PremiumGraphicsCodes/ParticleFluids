@@ -1,7 +1,7 @@
 #include "IVoxelAddView.h"
 
 #include "../../Crystal/Shape/Volume.h"
-#include "../../Crystal/Scene/VoxelScene.h"
+#include "../Scene/VoxelScene.h"
 
 #include <memory>
 

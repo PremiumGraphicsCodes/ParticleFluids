@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ICommand.h"
-#include "../../Crystal/Scene/Scene.h"
+#include "../Scene/Scene.h"
 
 namespace Crystal {
 	namespace Command {

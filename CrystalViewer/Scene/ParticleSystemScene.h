@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Shape/ParticleSystem.h"
+#include "Crystal/Shape/ParticleSystem.h"
 
 #include "IShapeScene.h"
 #include "ParticleAttribute.h"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Graphics/ColorRGBA.h"
+#include "Crystal/Graphics/ColorRGBA.h"
 
 namespace Crystal {
 	namespace Scene {

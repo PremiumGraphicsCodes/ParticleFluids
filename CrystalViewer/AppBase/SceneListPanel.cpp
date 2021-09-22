@@ -1,6 +1,6 @@
 #include "SceneListPanel.h"
 
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 
 #include "ParticleSystemEditView.h"
 #include "WireFrameEditView.h"
@@ -9,7 +9,7 @@
 #include "LightEditView.h"
 #include "TextureEditView.h"
 
-#include "../../Crystal/Scene/TextureScene.h"
+#include "../Scene/TextureScene.h"
 
 #include "imgui.h"
 

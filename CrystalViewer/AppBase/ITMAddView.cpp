@@ -1,6 +1,6 @@
 #include "ITMAddView.h"
 
-#include "../../Crystal/Scene/TriangleMeshScene.h"
+#include "../Scene/TriangleMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

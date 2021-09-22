@@ -1,6 +1,6 @@
 #include "IWFAddView.h"
 
-#include "../../Crystal/Scene/WireFrameScene.h"
+#include "../Scene/WireFrameScene.h"
 
 #include "../Command/Command.h"
 #include "../Command/Public/ShaderBuildLabels.h"

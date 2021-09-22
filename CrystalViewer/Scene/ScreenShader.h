@@ -2,18 +2,18 @@
 
 #include "IShaderScene.h"
 
-#include "../Shader/PointRenderer.h"
-#include "../Shader/LineRenderer.h"
-#include "../Shader/TriangleRenderer.h"
-#include "../Shader/SmoothRenderer.h"
+#include "Crystal/Shader/PointRenderer.h"
+#include "Crystal/Shader/LineRenderer.h"
+#include "Crystal/Shader/TriangleRenderer.h"
+#include "Crystal/Shader/SmoothRenderer.h"
 
-#include "../Shader/FrameBufferObject.h"
-#include "../Shader/TextureObject.h"
-#include "../Shader/ShaderBuildStatus.h"
+#include "Crystal/Shader/FrameBufferObject.h"
+#include "Crystal/Shader/TextureObject.h"
+#include "Crystal/Shader/ShaderBuildStatus.h"
 
 #include "MaterialShaderScene.h"
 
-#include "../Util/UnCopyable.h"
+#include "Crystal/Util/UnCopyable.h"
 #include <memory>
 
 namespace Crystal {

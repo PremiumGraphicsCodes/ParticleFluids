@@ -1,6 +1,6 @@
 #include "ISolidAddView.h"
 
-#include "../../Crystal/Scene/SolidScene.h"
+#include "../Scene/SolidScene.h"
 
 #include "../Command/Command.h"
 #include "../Command/Public/ShaderBuildLabels.h"

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../../Crystal/Util/UnCopyable.h"
+#include "Crystal/Util/UnCopyable.h"
 #include "IArgs.h"
 #include "IResults.h"
 
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 
 namespace Crystal {
 	namespace Command {

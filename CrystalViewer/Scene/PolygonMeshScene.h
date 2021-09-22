@@ -5,8 +5,8 @@
 #include "MaterialScene.h"
 #include "IPMPresenter.h"
 
-#include "../Shape/PolygonMesh.h"
-#include "../Graphics/ColorRGBA.h"
+#include "Crystal/Shape/PolygonMesh.h"
+#include "Crystal/Graphics/ColorRGBA.h"
 
 namespace Crystal {
 	namespace Scene {

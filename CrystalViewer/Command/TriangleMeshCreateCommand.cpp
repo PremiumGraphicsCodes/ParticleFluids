@@ -1,9 +1,9 @@
 #include "TriangleMeshCreateCommand.h"
 
-#include "../../Crystal/Scene/TriangleMeshScene.h"
+#include "../Scene/TriangleMeshScene.h"
 
-#include "../../Crystal/Shape/TriangleMesh.h"
-#include "../../Crystal/Shape/TriangleMeshBuilder.h"
+#include "Crystal/Shape/TriangleMesh.h"
+#include "Crystal/Shape/TriangleMeshBuilder.h"
 
 #include "Public/TriangleMeshCreateLabels.h"
 

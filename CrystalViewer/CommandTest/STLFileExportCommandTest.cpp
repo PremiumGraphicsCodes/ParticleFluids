@@ -1,10 +1,11 @@
 #include "pch.h"
 
+#include "Crystal/Shape/PolygonMeshBuilder.h"
+
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
 
-#include "../../Crystal/Scene/PolygonMeshScene.h"
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
+#include "../Scene/PolygonMeshScene.h"
 
 #include "../Command/Public/STLFileExportLabels.h"
 

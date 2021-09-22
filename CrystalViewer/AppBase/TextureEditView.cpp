@@ -3,7 +3,7 @@
 #include "../Command/Command.h"
 #include "../Command/Public/TextureSetLabels.h"
 
-#include "../../Crystal/Scene/TextureScene.h"
+#include "../Scene/TextureScene.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

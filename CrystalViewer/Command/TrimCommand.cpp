@@ -1,7 +1,7 @@
 #include "TrimCommand.h"
-#include "../../Crystal/Scene/World.h"
-#include "../../Crystal/Scene/IShapeScene.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../Scene/World.h"
+#include "../Scene/IShapeScene.h"
+#include "../Scene/ParticleSystemScene.h"
 #include "Public/TrimLabels.h"
 #include "../../Crystal/Math/Sphere3d.h"
 

@@ -2,7 +2,7 @@
 
 #include "Public/TextureSetLabels.h"
 
-#include "../../Crystal/Scene/TextureScene.h"
+#include "../Scene/TextureScene.h"
 #include "../../Crystal/IO/ImageFileReader.h"
 
 using namespace Crystal::Math;

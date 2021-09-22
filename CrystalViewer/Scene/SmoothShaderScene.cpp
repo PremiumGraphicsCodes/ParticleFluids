@@ -1,6 +1,6 @@
 #include "SmoothShaderScene.h"
 
-#include "../Shader/SmoothRenderer.h"
+#include "Crystal/Shader/SmoothRenderer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

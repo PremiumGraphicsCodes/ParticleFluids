@@ -1,7 +1,7 @@
 #include "PCDFileExportCommand.h"
 
 #include "../../Crystal/IO/PCDFileWriter.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../Scene/ParticleSystemScene.h"
 
 #include "Public/PCDFileExportLabels.h"
 

@@ -1,7 +1,7 @@
 #include "Canvas.h"
 #include "CameraUICtrl.h"
 #include "../../Crystal/Math/Box3d.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

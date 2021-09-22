@@ -6,9 +6,9 @@
 #include "LineShaderScene.h"
 #include "SceneShader.h"
 
-#include "../Shape/WireFrameBuilder.h"
+#include "Crystal/Shape/WireFrameBuilder.h"
 
-//#include "../Graphics/DrawableId.h"
+//#include "Crystal/Graphics/DrawableId.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;

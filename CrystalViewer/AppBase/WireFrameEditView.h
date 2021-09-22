@@ -5,8 +5,8 @@
 #include "StringView.h"
 #include "Canvas.h"
 
-#include "../../Crystal/Scene/WireFrameScene.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/WireFrameScene.h"
+#include "../Scene/World.h"
 
 namespace Crystal {
 	namespace UI {

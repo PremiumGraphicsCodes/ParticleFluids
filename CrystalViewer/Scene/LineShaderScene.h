@@ -1,13 +1,13 @@
 #pragma once
 
-#include "../Math/Vector3d.h"
-#include "../Math/Matrix4d.h"
+#include "Crystal/Math/Vector3d.h"
+#include "Crystal/Math/Matrix4d.h"
 
-#include "../Shader/VertexBufferObject.h"
-#include "../Graphics/Camera.h"
+#include "Crystal/Shader/VertexBufferObject.h"
+#include "Crystal/Graphics/Camera.h"
 
 #include "LineBuffer.h"
-#include "../Shader/LineRenderer.h"
+#include "Crystal/Shader/LineRenderer.h"
 
 #include "IShaderScene.h"
 

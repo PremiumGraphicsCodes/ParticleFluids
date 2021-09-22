@@ -1,6 +1,6 @@
 #include "TextureScene.h"
 
-#include "../Shader/TextureObject.h"
+#include "Crystal/Shader/TextureObject.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;

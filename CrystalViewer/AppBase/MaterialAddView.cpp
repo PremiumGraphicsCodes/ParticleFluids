@@ -1,7 +1,7 @@
 #include "MaterialAddView.h"
 
 #include "../../Crystal/Graphics/Material.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "Canvas.h"
 
 #include "../Command/Command.h"

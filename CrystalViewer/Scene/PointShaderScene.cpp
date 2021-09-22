@@ -1,6 +1,6 @@
 #include "PointShaderScene.h"
 
-#include "../Shader/PointRenderer.h"
+#include "Crystal/Shader/PointRenderer.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;

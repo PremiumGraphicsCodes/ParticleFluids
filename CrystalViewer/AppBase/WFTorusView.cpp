@@ -2,7 +2,7 @@
 
 #include "../../Crystal/Math/Torus3d.h"
 #include "../../Crystal/Shape/WireFrameBuilder.h"
-#include "../../Crystal/Scene/WireFrameScene.h"
+#include "../Scene/WireFrameScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

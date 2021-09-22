@@ -37,7 +37,7 @@
 
 #include "DeleteView.h"
 
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

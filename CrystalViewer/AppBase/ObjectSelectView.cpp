@@ -7,7 +7,7 @@
 #include "../Command/Public/ShapeSelectLabels.h"
 #include "../Command/Command.h"
 #include "../../Crystal/Shape/WireFrameBuilder.h"
-#include "../../Crystal/Scene/WireFrameScene.h"
+#include "../Scene/WireFrameScene.h"
 
 using namespace Crystal::Shape;
 using namespace Crystal::UI;

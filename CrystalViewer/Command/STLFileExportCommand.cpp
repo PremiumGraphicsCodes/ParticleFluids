@@ -3,7 +3,7 @@
 #include "../../Crystal/IO/STLASCIIFileWriter.h"
 #include "../../Crystal/IO/STLBinaryFileWriter.h"
 
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../Scene/PolygonMeshScene.h"
 
 #include "Public/STLFileExportLabels.h"
 

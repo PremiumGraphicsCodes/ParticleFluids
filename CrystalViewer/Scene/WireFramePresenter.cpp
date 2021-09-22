@@ -6,7 +6,7 @@
 #include "LineShaderScene.h"
 #include "SceneShader.h"
 
-#include "../Graphics/DrawableId.h"
+#include "Crystal/Graphics/DrawableId.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Shader;

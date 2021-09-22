@@ -1,7 +1,7 @@
 #include "WireFrameCreateCommand.h"
 
-#include "../../Crystal/Scene/WireFrameAttribute.h"
-#include "../../Crystal/Scene/WireFrameScene.h"
+#include "../Scene/WireFrameAttribute.h"
+#include "../Scene/WireFrameScene.h"
 
 #include "Public/WireFrameCreateLabels.h"
 

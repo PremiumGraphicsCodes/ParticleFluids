@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "Canvas.h"
 
 namespace Crystal {

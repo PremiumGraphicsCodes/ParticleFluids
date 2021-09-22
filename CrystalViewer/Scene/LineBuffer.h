@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../Math/Matrix4d.h"
+#include "Crystal/Math/Matrix4d.h"
 
-#include "../Graphics/Buffer1d.h"
-#include "../Graphics/Buffer3d.h"
-#include "../Graphics/Buffer4d.h"
+#include "Crystal/Graphics/Buffer1d.h"
+#include "Crystal/Graphics/Buffer3d.h"
+#include "Crystal/Graphics/Buffer4d.h"
 
 namespace Crystal {
 	namespace Scene {

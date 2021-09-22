@@ -1,6 +1,6 @@
 #include "PolygonMeshCreateCommand.h"
 
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../Scene/PolygonMeshScene.h"
 
 #include "../../Crystal/Shape/PolygonMesh.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"

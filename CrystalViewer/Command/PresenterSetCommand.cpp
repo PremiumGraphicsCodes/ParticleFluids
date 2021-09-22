@@ -1,8 +1,8 @@
 #include "PresenterSetCommand.h"
 
-#include "../../Crystal/Scene/PolygonMeshScene.h"
-#include "../../Crystal/Scene/PMSmoothPresenter.h"
-#include "../../Crystal/Scene/PMWirePresenter.h"
+#include "../Scene/PolygonMeshScene.h"
+#include "../Scene/PMSmoothPresenter.h"
+#include "../Scene/PMWirePresenter.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::Command;

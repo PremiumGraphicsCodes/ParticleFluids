@@ -1,7 +1,7 @@
 #include "LightGetCommand.h"
 
 #include "Public/LightGetLabels.h"
-#include "../../Crystal/Scene/LightScene.h"
+#include "../Scene/LightScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

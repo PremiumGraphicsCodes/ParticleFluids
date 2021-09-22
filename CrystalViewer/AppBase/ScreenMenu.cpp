@@ -1,6 +1,6 @@
 #include "ScreenMenu.h"
 #include "imgui.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "Canvas.h"
 
 using namespace Crystal::UI;

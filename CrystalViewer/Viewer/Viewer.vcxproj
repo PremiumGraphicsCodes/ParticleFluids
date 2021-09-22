@@ -102,7 +102,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../ThirdParty/imgui-1.49/;../ThirdParty/imgui-1.49/examples/libs/gl3w/;../ThirdParty/cereal-1.2.2/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../ThirdParty/imgui-1.49/;../ThirdParty/imgui-1.49/examples/libs/gl3w/;../ThirdParty/cereal-1.2.2/include/;../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -170,9 +170,6 @@
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Scene\Scene.vcxproj">
-      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Shader\Shader.vcxproj">
       <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>
     </ProjectReference>
@@ -186,6 +183,9 @@
       <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <ProjectReference Include="..\Scene\Scene.vcxproj">
+      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

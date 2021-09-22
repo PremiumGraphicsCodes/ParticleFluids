@@ -14,7 +14,7 @@
 
 #include "../AppBase/Canvas.h"
 
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 
 #include "ColorMenu.h"
 

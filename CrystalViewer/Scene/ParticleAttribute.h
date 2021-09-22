@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Graphics/ColorRGBA.h"
-#include "../Shape/IParticle.h"
+#include "Crystal/Graphics/ColorRGBA.h"
+#include "Crystal/Shape/IParticle.h"
 
 namespace Crystal {
 	namespace Scene {

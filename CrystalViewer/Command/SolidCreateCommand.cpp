@@ -1,6 +1,6 @@
 #include "SolidCreateCommand.h"
 
-#include "../../Crystal/Scene/SolidScene.h"
+#include "../Scene/SolidScene.h"
 
 #include "Public/SolidCreateLabels.h"
 

@@ -7,8 +7,8 @@
 #include "Canvas.h"
 #include "PMPresenterView.h"
 
-#include "../../Crystal/Scene/PolygonMeshScene.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/PolygonMeshScene.h"
+#include "../Scene/World.h"
 
 namespace Crystal {
 	namespace UI {

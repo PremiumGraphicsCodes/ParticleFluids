@@ -3,7 +3,7 @@
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../Scene/ParticleSystemScene.h"
 #include "../Command/Public/PCDFileExportLabels.h"
 
 using namespace Crystal::Math;

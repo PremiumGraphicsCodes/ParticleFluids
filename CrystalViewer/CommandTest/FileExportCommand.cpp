@@ -1,11 +1,13 @@
 #include "pch.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../../Crystal/Scene/ParticleAttribute.h"
 
-#include "../../Crystal/Math/Quad3d.h"
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "Crystal/Math/Quad3d.h"
+#include "Crystal/Shape/PolygonMeshBuilder.h"
+
+#include "../Scene/ParticleSystemScene.h"
+#include "../Scene/ParticleAttribute.h"
+
+#include "../Scene/PolygonMeshScene.h"
 
 #include "../Command/Command.h"
 #include "../Command/CommandFactory.h"

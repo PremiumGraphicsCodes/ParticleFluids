@@ -1,7 +1,7 @@
 #include "MaterialView.h"
 
-#include "../../Crystal/Scene/MaterialScene.h"
-#include "../../Crystal/Scene/TextureScene.h"
+#include "../Scene/MaterialScene.h"
+#include "../Scene/TextureScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

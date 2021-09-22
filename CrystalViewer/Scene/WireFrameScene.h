@@ -4,8 +4,8 @@
 #include "WireFrameAttribute.h"
 #include "IWireFramePresenter.h"
 
-#include "../Math/Line3d.h"
-#include "../Shape/WireFrame.h"
+#include "Crystal/Math/Line3d.h"
+#include "Crystal/Shape/WireFrame.h"
 
 namespace Crystal {
 	namespace Scene {

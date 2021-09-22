@@ -3,7 +3,7 @@
 #include <string>
 #include <any>
 #include "ICommand.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 
 namespace Crystal {
 	namespace Command {

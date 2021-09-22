@@ -1,8 +1,8 @@
 #include "SceneShader.h"
 
-#include "../Graphics/Camera.h"
+#include "Crystal/Graphics/Camera.h"
 
-#include "../Shader/GLObjectFactory.h"
+#include "Crystal/Shader/GLObjectFactory.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

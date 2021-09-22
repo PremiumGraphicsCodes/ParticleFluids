@@ -1,7 +1,7 @@
 #include "PolygonMeshAddFacesCommand.h"
 
 #include "../../Crystal/Shape/PolygonMesh.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../Scene/PolygonMeshScene.h"
 
 #include "Public/PolygonMeshAddFacesLabels.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IView.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "Canvas.h"
 
 #include "IOkCancelView.h"

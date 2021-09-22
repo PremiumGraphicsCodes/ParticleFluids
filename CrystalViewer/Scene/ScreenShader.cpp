@@ -1,6 +1,6 @@
 #include "ScreenShader.h"
 
-#include "../Shader/GLObjectFactory.h"
+#include "Crystal/Shader/GLObjectFactory.h"
 
 #include "ParticleSystemScene.h"
 #include "WireFrameScene.h"

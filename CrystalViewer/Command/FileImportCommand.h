@@ -5,7 +5,7 @@
 #include <filesystem>
 #include <vector>
 
-#include "../../Crystal/Scene/Scene.h"
+#include "../Scene/Scene.h"
 #include "../../Crystal/IO/FileFormat.h"
 
 namespace Crystal {

@@ -2,7 +2,7 @@
 
 #include <list>
 #include <string>
-#include "../Graphics/Camera.h"
+#include "Crystal/Graphics/Camera.h"
 
 namespace Crystal {
 	namespace Shader {

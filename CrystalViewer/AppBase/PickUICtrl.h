@@ -3,7 +3,7 @@
 #include "Canvas.h"
 #include "IUICtrl.h"
 
-#include "../../Crystal/Scene/SceneType.h"
+#include "../Scene/SceneType.h"
 
 #include <functional>
 

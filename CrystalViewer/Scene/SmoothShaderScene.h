@@ -1,14 +1,14 @@
 #pragma once
 
-#include "../Math/Matrix4d.h"
-#include "../Graphics/Buffer1d.h"
-#include "../Graphics/Buffer2d.h"
-#include "../Graphics/Buffer3d.h"
-#include "../Graphics/Camera.h"
-#include "../Graphics/Material.h"
+#include "Crystal/Math/Matrix4d.h"
+#include "Crystal/Graphics/Buffer1d.h"
+#include "Crystal/Graphics/Buffer2d.h"
+#include "Crystal/Graphics/Buffer3d.h"
+#include "Crystal/Graphics/Camera.h"
+#include "Crystal/Graphics/Material.h"
 
-#include "../Shader/VertexBufferObject.h"
-#include "../Shader/SmoothRenderer.h"
+#include "Crystal/Shader/VertexBufferObject.h"
+#include "Crystal/Shader/SmoothRenderer.h"
 #include "MaterialShaderScene.h"
 #include "IShaderScene.h"
 #include "IMaterialScene.h"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Util/UnCopyable.h"
+#include "Crystal/Util/UnCopyable.h"
 
 #include "Scene.h"
 #include "SceneIdProvider.h"
@@ -9,7 +9,7 @@
 
 #include "CameraScene.h"
 
-#include "../Shader/GLObjectFactory.h"
+#include "Crystal/Shader/GLObjectFactory.h"
 #include "IAnimator.h"
 
 #include <filesystem>

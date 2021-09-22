@@ -129,6 +129,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -306,10 +307,8 @@
     <Text Include="Public\GetLabels.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Crystal\Scene\Scene.vcxproj">
+    <ProjectReference Include="..\Scene\Scene.vcxproj">
       <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
-      <LinkLibraryDependencies>true</LinkLibraryDependencies>
-      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,6 +1,6 @@
 #include "ScreenIdShader.h"
 
-#include "../Shader/GLObjectFactory.h"
+#include "Crystal/Shader/GLObjectFactory.h"
 
 #include "PointShaderScene.h"
 

@@ -6,7 +6,7 @@
 #include "SceneShader.h"
 #include "SmoothShaderScene.h"
 
-#include "../Graphics/DrawableId.h"
+#include "Crystal/Graphics/DrawableId.h"
 
 using namespace Crystal::Graphics;
 using namespace Crystal::Scene;

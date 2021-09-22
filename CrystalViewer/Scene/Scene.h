@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Util/UnCopyable.h"
+#include "Crystal/Util/UnCopyable.h"
 #include "IScene.h"
 
 namespace Crystal {

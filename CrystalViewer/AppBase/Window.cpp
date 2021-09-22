@@ -9,7 +9,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "Canvas.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 
 #include "CameraUICtrl.h"
 #include <chrono>

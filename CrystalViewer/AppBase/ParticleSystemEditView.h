@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/ParticleSystemScene.h"
+#include "../Scene/World.h"
 
 #include "IEditCancelView.h"
 #include "IntView.h"

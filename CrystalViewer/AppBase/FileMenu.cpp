@@ -4,7 +4,7 @@
 #include "Canvas.h"
 #include "FileOpenMenu.h"
 #include "FileSaveMenu.h"
-#include "../../Crystal/Scene/World.h"
+#include "../Scene/World.h"
 #include "../Command/CameraFitCommand.h"
 #include "../Command/Command.h"
 #include "../Command/Public/FileImportLabels.h"

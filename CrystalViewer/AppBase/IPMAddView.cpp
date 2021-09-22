@@ -1,7 +1,7 @@
 #include "IPMAddView.h"
 
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "../Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
