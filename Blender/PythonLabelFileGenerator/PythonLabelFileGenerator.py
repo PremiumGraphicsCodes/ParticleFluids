@@ -64,7 +64,7 @@ class PythonLabelFileGenerator:
         f.close()
 
 def create_scene_labels() :
-    input_directory_path = "../../CrystalViewer/Command/Public/*.h"
+    input_directory_path = "../../CrystalScene/Command/Public/*.h"
     output_file_path = "../CrystalPython/scene_labels.py"
     generator = PythonLabelFileGenerator()
     generator.read_all_files(input_directory_path)

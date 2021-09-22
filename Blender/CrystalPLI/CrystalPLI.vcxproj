@@ -123,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../ThirdParty/pybind11/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../ThirdParty/pybind11/include;../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -145,7 +145,7 @@ copy ..\x64\Debug\*.pyd ..\CrystalPython\</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../ThirdParty/pybind11/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../ThirdParty/pybind11/include;../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -174,17 +174,20 @@ copy ..\x64\Release\*.pyd ..\CrystalPython\</Command>
     <ProjectReference Include="..\..\CrystalPhysics\CrystalPhysics\CrystalPhysics.vcxproj">
       <Project>{4c0efd78-680e-45c9-9828-9b674ee70df0}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\CrystalScene\AppBase\AppBase.vcxproj">
+      <Project>{8bcd40a1-4223-4e7a-a84a-93fbf1b6ffd8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrystalScene\Command\Command.vcxproj">
+      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrystalScene\Scene\Scene.vcxproj">
+      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\CrystalSpace\CrystalSpaceCommand\CrystalSpaceCommand.vcxproj">
       <Project>{33e8c184-64b2-410d-9aab-c47917688dbb}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\CrystalSpace\CrystalSpace\CrystalSpace.vcxproj">
       <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalViewer\AppBase\AppBase.vcxproj">
-      <Project>{8bcd40a1-4223-4e7a-a84a-93fbf1b6ffd8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrystalViewer\Command\Command.vcxproj">
-      <Project>{5a0d1cb7-6be7-41a2-b061-431750e47be0}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Graphics\Graphics.vcxproj">
       <Project>{227e5411-92cb-4e30-a67b-043d8b04a9bc}</Project>
@@ -194,9 +197,6 @@ copy ..\x64\Release\*.pyd ..\CrystalPython\</Command>
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Math\Math.vcxproj">
       <Project>{ef054c93-201b-4807-9285-cabc9c68978a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Crystal\Scene\Scene.vcxproj">
-      <Project>{59c5ea30-1e57-417c-9416-17b592e8724e}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Shader\Shader.vcxproj">
       <Project>{33bdcab8-a30c-44b1-a93f-1ad3e15461ad}</Project>

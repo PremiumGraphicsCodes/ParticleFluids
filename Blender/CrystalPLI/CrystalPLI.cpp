@@ -10,10 +10,10 @@
 #include <pybind11/operators.h>//operator
 #include "../../Crystal/Math/Vector3d.h"
 
-#include "../../Crystal/Scene/World.h"
-#include "../../CrystalViewer/Command/CommandFactory.h"
-#include "../../CrystalSpace/CrystalSpaceCommand/SpaceCommandFactory.h"
-#include "../../CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
+#include "CrystalScene/Scene/World.h"
+#include "CrystalScene/Command/CommandFactory.h"
+#include "CrystalSpace/CrystalSpaceCommand/SpaceCommandFactory.h"
+#include "CrystalPhysics/CrystalPhysicsCommand/PhysicsCommandFactory.h"
 //#include "../../CrystalVDB/VDBCommand/VDBCommandFactory.h"
 
 using namespace Crystal::Math;
