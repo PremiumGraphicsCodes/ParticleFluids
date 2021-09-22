@@ -1,10 +1,10 @@
 #include "VolumeView.h"
 
-#include "../../Crystal/Scene/VolumeScene.h"
 #include "../../Crystal/Graphics/ColorMap.h"
 #include "../../Crystal/Graphics/ColorHSV.h"
 
-#include "../../Crystal/Scene/ParticleAttribute.h"
+#include "../../CrystalViewer/Scene/VolumeScene.h"
+#include "../../CrystalViewer/Scene/ParticleAttribute.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

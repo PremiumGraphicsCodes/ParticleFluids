@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Scene/IScene.h"
+#include "../../CrystalViewer/Scene/IScene.h"
 #include "Voxel.h"
 #include "VoxelPresenter.h"
 

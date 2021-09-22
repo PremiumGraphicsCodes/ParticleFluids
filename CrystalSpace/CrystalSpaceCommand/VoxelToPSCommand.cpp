@@ -2,7 +2,7 @@
 
 #include "PublicLabels/VoxelToPSLabels.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
 #include "../CrystalSpace/VoxelScene.h"
 
 #include "../CrystalSpace/VoxelToParticleConverter.h"

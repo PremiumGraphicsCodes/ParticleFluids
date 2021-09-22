@@ -1,13 +1,13 @@
 #include "IntersectionView.h"
 
-#include "../../Crystal/Math/Ray3d.h"
-#include "../../Crystal/Math/Sphere3d.h"
-#include "../../Crystal/Math/Triangle3d.h"
+#include "Crystal/Math/Ray3d.h"
+#include "Crystal/Math/Sphere3d.h"
+#include "Crystal/Math/Triangle3d.h"
 
-#include "../../Crystal/Shape/WireFrameBuilder.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
+#include "Crystal/Shape/WireFrameBuilder.h"
+#include "Crystal/Shape/PolygonMeshBuilder.h"
+#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
+#include "../../CrystalViewer/Scene/PolygonMeshScene.h"
 
 #include "../CrystalSpace/IntersectionCalculator.h"
 

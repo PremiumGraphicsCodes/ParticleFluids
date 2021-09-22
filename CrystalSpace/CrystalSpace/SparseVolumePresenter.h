@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Crystal/Scene/IPresenter.h"
+#include "../../CrystalViewer/Scene/IPresenter.h"
 #include "../../Crystal/Graphics/ColorMap.h"
 
 namespace Crystal {

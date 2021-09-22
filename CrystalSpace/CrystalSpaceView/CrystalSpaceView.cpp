@@ -8,7 +8,7 @@
 #include "../../CrystalViewer/AppBase/Canvas.h"
 #include "../../CrystalViewer/AppBase/ControlPanel.h"
 
-#include "../../Crystal/Scene/World.h"
+#include "../../CrystalViewer/Scene/World.h"
 
 #include "SpaceMenu.h"
 

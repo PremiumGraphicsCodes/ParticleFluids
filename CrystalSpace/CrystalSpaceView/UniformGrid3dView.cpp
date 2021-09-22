@@ -1,7 +1,7 @@
 #include "UniformGrid3dView.h"
 
 #include "../CrystalSpace/UniformGrid3d.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
 
 #include <iostream>
 

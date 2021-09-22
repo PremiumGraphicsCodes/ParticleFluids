@@ -2,8 +2,8 @@
 
 #include "PublicLabels/MeshToPSLabels.h"
 
-#include "../../Crystal/Scene/PolygonMeshScene.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "../../CrystalViewer/Scene/PolygonMeshScene.h"
+#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
 #include "../CrystalSpace/MeshToParticleConverter.h"
 
 using namespace Crystal::Math;

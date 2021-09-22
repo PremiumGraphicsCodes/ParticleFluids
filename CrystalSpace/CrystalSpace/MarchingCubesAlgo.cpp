@@ -3,7 +3,7 @@
 #include "../../Crystal/Math/Vector3d.h"
 #include "MarchingCubesAlgo.h"
 #include "MarchingCubesTable.h"
-#include "../../Crystal/Scene/VolumeScene.h"
+#include "../../CrystalViewer/Scene/VolumeScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

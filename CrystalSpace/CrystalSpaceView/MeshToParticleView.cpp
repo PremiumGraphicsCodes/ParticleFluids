@@ -2,9 +2,9 @@
 
 #include "../CrystalSpace/MeshToParticleConverter.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
+#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
+#include "../../CrystalViewer/Scene/PolygonMeshScene.h"
+#include "Crystal/Shape/PolygonMeshBuilder.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Crystal/Shape/Volume.h"
-#include "../../Crystal/Scene/ParticleSystemScene.h"
+#include "Crystal/Shape/Volume.h"
+#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
 
 namespace Crystal {
 	namespace Space {

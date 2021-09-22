@@ -1,15 +1,16 @@
 #include "VoxelizerView.h"
 
 #include "../CrystalSpace/Voxelizer.h"
-#include "../../Crystal/Scene/VoxelScene.h"
 
-#include "../../Crystal/Scene/ParticleSystemScene.h"
-#include "../../Crystal/Scene/PolygonMeshScene.h"
+#include "Crystal/Shape/PolygonMeshBuilder.h"
+#include "Crystal/Math/Sphere3d.h"
 
-#include "../../Crystal/Shape/PolygonMeshBuilder.h"
-#include "../../Crystal/Math/Sphere3d.h"
+#include "Crystal/IO/TXTFileWriter.h"
 
-#include "../../Crystal/IO/TXTFileWriter.h"
+#include "../../CrystalViewer/Scene/VoxelScene.h"
+#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
+#include "../../CrystalViewer/Scene/PolygonMeshScene.h"
+
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;
