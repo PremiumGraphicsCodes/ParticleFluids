@@ -12,6 +12,7 @@
 #include "PolygonMeshCreateCommand.h"
 #include "PolygonMeshAddVerticesCommand.h"
 #include "PolygonMeshAddFacesCommand.h"
+#include "TriangleMeshCreateCommand.h"
 #include "SolidCreateCommand.h"
 #include "CameraFitCommand.h"
 #include "CameraTranslateCommand.h"
@@ -84,6 +85,9 @@ std::unique_ptr<ICommand> CommandFactory::create(const std::string& name)
 	}
 	else if (name == PolygonMeshAddFacesCommand::getName()) {
 		return std::make_unique<PolygonMeshAddFacesCommand>();
+	}
+	else if (name == TriangleMeshCreateCommand::getName()) {
+		return std::make_unique<TriangleMeshCreateCommand>();
 	}
 	else if (name == SolidCreateCommand::getName()) {
 		return std::make_unique<SolidCreateCommand>();

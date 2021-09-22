@@ -48,7 +48,7 @@ public:
 
 	std::vector<TriangleFace> getFaces() const { return faces; }
 
-	void addFace(const TriangleFace& faces);
+	void addFace(const TriangleFace& face);
 
 public:
 	std::vector<TriangleFace> faces;

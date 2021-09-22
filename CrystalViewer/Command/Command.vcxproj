@@ -182,6 +182,7 @@
     <ClInclude Include="Public\STLFileExportLabels.h" />
     <ClInclude Include="Public\STLFileImportLabels.h" />
     <ClInclude Include="Public\TextureSetLabels.h" />
+    <ClInclude Include="Public\TriangleMeshCreateLabels.h" />
     <ClInclude Include="SceneGetCommand.h" />
     <ClInclude Include="CameraFitCommand.h" />
     <ClInclude Include="CameraRotateCommand.h" />
@@ -246,6 +247,7 @@
     <ClInclude Include="TextureCreateCommand.h" />
     <ClInclude Include="TextureSetCommand.h" />
     <ClInclude Include="TransformCommand.h" />
+    <ClInclude Include="TriangleMeshCreateCommand.h" />
     <ClInclude Include="TrimCommand.h" />
     <ClInclude Include="WireFrameCreateCommand.h" />
   </ItemGroup>
@@ -296,6 +298,7 @@
     <ClCompile Include="TextureCreateCommand.cpp" />
     <ClCompile Include="TextureSetCommand.cpp" />
     <ClCompile Include="TransformCommand.cpp" />
+    <ClCompile Include="TriangleMeshCreateCommand.cpp" />
     <ClCompile Include="TrimCommand.cpp" />
     <ClCompile Include="WireFrameCreateCommand.cpp" />
   </ItemGroup>

@@ -262,6 +262,12 @@
     <ClInclude Include="Public\ParticleSystemSetLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="TriangleMeshCreateCommand.h">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\TriangleMeshCreateLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -394,6 +400,9 @@
     <ClCompile Include="ParticleSystemSetCommand.cpp">
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
+    <ClCompile Include="TriangleMeshCreateCommand.cpp">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -455,6 +464,9 @@
     </Filter>
     <Filter Include="Scene\Shape\Solid">
       <UniqueIdentifier>{43be9c66-602e-4cf1-8b3e-f9f492576ab5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Shape\TriangleMesh">
+      <UniqueIdentifier>{6b7ee31a-8822-46b4-bcba-b649cd9d78d2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

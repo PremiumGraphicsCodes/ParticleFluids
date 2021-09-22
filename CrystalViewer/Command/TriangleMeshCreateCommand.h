@@ -1,18 +1,16 @@
 #pragma once
 
 #include "ICommand.h"
-#include "../../Crystal/Math/Vector3d.h"
-#include "../../Crystal/Shape/Vertex.h"
-#include "../../Crystal/Shape/Face.h"
+#include "../../Crystal/Math/Triangle3d.h"
 #include <vector>
 
 namespace Crystal {
 	namespace Command {
 
-class PolygonMeshCreateCommand : public ICommand
+class TriangleMeshCreateCommand : public ICommand
 {
 public:
-	PolygonMeshCreateCommand() :
+	TriangleMeshCreateCommand() :
 		ICommand(&args, &results)
 	{}
 
@@ -20,11 +18,7 @@ public:
 	{
 		Args();
 
-		Arg< std::vector<Math::Vector3dd> > positions;
-		Arg< std::vector<Math::Vector3dd> > normals;
-		Arg< std::vector<Math::Vector2dd> > texCoords;
-		Arg< std::vector<Shape::Vertex > > vertices;
-		Arg< std::vector<Shape::Face > > faces;
+		Arg< std::vector<Math::Triangle3d> > triangles;
 		Arg< std::string > name;
 		Arg< int > layer;
 	};
@@ -46,5 +40,6 @@ private:
 	Args args;
 	Results results;
 };
+
 	}
 }
