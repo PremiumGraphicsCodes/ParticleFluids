@@ -3,8 +3,8 @@
 #include "../../Crystal/Graphics/ColorMap.h"
 #include "../../Crystal/Graphics/ColorHSV.h"
 
-#include "../../CrystalViewer/Scene/VolumeScene.h"
-#include "../../CrystalViewer/Scene/ParticleAttribute.h"
+#include "CrystalScene/Scene/VolumeScene.h"
+#include "CrystalScene/Scene/ParticleAttribute.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;

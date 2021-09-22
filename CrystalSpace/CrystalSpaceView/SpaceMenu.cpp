@@ -20,7 +20,7 @@
 #include "ScanLineVoxelizerView.h"
 #include "RayTracerView.h"
 
-#include "../../CrystalViewer/AppBase/imgui.h"
+#include "CrystalScene/AppBase/imgui.h"
 
 using namespace Crystal::Scene;
 using namespace Crystal::UI;

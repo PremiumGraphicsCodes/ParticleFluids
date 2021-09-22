@@ -1,10 +1,10 @@
 #include "MarchingCubesView.h"
 
 #include "../CrystalSpace/MarchingCubesAlgo.h"
-#include "../../CrystalViewer/Scene/VolumeScene.h"
+#include "CrystalScene/Scene/VolumeScene.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 //#include "../../Crystal/Math/Gaussian.h"
-#include "../../CrystalViewer/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/PolygonMeshScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Scene;

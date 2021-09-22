@@ -1,7 +1,7 @@
 #include "ZOrderSearchView.h"
 
 #include "../CrystalSpace/ZIndexedSearchAlgo.h"
-#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
 #include <iostream>
 

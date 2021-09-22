@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../CrystalViewer/Scene/IScene.h"
+#include "CrystalScene/Scene/IScene.h"
 #include "SparseVolume.h"
 #include "SparseVolumePresenter.h"
 

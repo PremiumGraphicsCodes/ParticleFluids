@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../CrystalViewer/Command/ICommand.h"
+#include "CrystalScene/Command/ICommand.h"
 #include "../../Crystal/Math/Box3d.h"
 #include <string>
 

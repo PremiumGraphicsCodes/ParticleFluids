@@ -1,7 +1,7 @@
 #include "VoxelPresenter.h"
 
-#include "../../CrystalViewer/Scene/PointShaderScene.h"
-#include "../../CrystalViewer/Scene/SceneShader.h"
+#include "CrystalScene/Scene/PointShaderScene.h"
+#include "CrystalScene/Scene/SceneShader.h"
 #include "VoxelScene.h"
 
 using namespace Crystal::Graphics;

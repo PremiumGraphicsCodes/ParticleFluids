@@ -2,7 +2,7 @@
 
 #include "PublicLabels/MeshToVoxelLabels.h"
 
-#include "../../CrystalViewer/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/PolygonMeshScene.h"
 #include "../CrystalSpace/VoxelScene.h"
 
 #include "../CrystalSpace/Voxelizer.h"

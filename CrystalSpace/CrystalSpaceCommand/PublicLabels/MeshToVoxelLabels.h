@@ -1,4 +1,4 @@
-#include "../../CrystalViewer/Command/Public/PublicLabel.h"
+#include "CrystalScene/Command/Public/PublicLabel.h"
 
 namespace {
 	PublicLabel CommandNameLabel = "MeshToVoxelCommand";

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../CrystalViewer/Command/ICommand.h"
+#include "CrystalScene/Command/ICommand.h"
 
 namespace Crystal {
 	namespace Space {

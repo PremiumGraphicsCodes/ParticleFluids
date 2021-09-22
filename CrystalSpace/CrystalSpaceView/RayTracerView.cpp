@@ -6,8 +6,8 @@
 #include "../../Crystal/Shape/WireFrameBuilder.h"
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
-#include "../../CrystalViewer/Scene/WireFrameScene.h"
-#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/WireFrameScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

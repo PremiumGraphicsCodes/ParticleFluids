@@ -7,9 +7,9 @@
 
 #include "Crystal/IO/TXTFileWriter.h"
 
-#include "../../CrystalViewer/Scene/VoxelScene.h"
-#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
-#include "../../CrystalViewer/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/VoxelScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/PolygonMeshScene.h"
 
 
 using namespace Crystal::Math;

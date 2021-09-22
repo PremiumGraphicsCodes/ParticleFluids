@@ -2,8 +2,8 @@
 
 #include "PublicLabels/VoxelizerLabels.h"
 
-#include "../../CrystalViewer/Scene/PolygonMeshScene.h"
-#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 
 #include "../CrystalSpace/Voxelizer.h"
 

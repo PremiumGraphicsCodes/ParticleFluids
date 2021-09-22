@@ -6,8 +6,8 @@
 
 #include "Crystal/Shape/WireFrameBuilder.h"
 #include "Crystal/Shape/PolygonMeshBuilder.h"
-#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
-#include "../../CrystalViewer/Scene/PolygonMeshScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/PolygonMeshScene.h"
 
 #include "../CrystalSpace/IntersectionCalculator.h"
 

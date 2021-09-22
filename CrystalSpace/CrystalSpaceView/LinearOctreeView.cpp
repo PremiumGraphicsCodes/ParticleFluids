@@ -7,7 +7,7 @@
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
 
 #include "../../Crystal/Math/Ray3d.h"
-#include "../../CrystalViewer/Scene/WireFrameScene.h"
+#include "CrystalScene/Scene/WireFrameScene.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Shape;

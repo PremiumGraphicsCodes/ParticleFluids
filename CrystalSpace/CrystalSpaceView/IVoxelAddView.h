@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../CrystalViewer/AppBase/IOkCancelView.h"
-#include "../../CrystalViewer/AppBase/StringView.h"
+#include "CrystalScene/AppBase/IOkCancelView.h"
+#include "CrystalScene/AppBase/StringView.h"
 #include "../CrystalSpace/Voxel.h"
 
 namespace Crystal {

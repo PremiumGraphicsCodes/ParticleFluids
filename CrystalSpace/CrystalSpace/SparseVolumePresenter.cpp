@@ -1,8 +1,8 @@
 #include "SparseVolumePresenter.h"
 #include "SparseVolumeScene.h"
 
-#include "../../CrystalViewer/Scene/PointShaderScene.h"
-#include "../../CrystalViewer/Scene/SceneShader.h"
+#include "CrystalScene/Scene/PointShaderScene.h"
+#include "CrystalScene/Scene/SceneShader.h"
 #include "Crystal/Graphics/ColorHSV.h"
 
 using namespace Crystal::Graphics;

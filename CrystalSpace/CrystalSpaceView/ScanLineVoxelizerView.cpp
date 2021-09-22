@@ -1,9 +1,9 @@
 #include "ScanLineVoxelizerView.h"
 
 #include "../CrystalSpace/ScanLineVoxelizer.h"
-#include "../../CrystalViewer/Scene/VoxelScene.h"
+#include "CrystalScene/Scene/VoxelScene.h"
 
-#include "../../CrystalViewer/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/ParticleSystemScene.h"
 //#include "../../Crystal/Scene/PolygonMeshScene.h"
 
 #include "../../Crystal/Shape/PolygonMeshBuilder.h"
