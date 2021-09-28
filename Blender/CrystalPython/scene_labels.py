@@ -134,6 +134,15 @@ class ParticleSystemGetLabels:
    PointSizeLabel="PointSize"
    ColorLabel="Color"
    NameLabel="Name"
+class ParticleSystemSetLabels:
+   CommandNameLabel="ParticleSystemSet"
+   IdLabel="Id"
+   PositionsLabel="Positions"
+   PointSizeLabel="PointSize"
+   ColorLabel="Color"
+   NameLabel="Name"
+   LayerLabel="Layer"
+   NewIdLabel="NewId"
 class PCDFileExportLabels:
    CommandNameLabel="PCDFileExport"
    FilePathLabel="FilePath"
@@ -223,6 +232,12 @@ class TransformLabels:
    TransformCommandLabel="Transform"
    IdLabel="Id"
    MatrixLabel="Matrix"
+class TriangleMeshCreateLabels:
+   CommandNameLabel="TriangleMeshCreate"
+   TrianglesLabel="Triangles"
+   NameLabel="Name"
+   LayerLabel="Layer"
+   NewIdLabel="NewId"
 class TrimLabels:
    TrimCommandLabel="Trim"
    ShapeIdLabel="ShapeId"

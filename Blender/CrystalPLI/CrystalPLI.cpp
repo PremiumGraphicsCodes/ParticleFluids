@@ -8,7 +8,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h> // vector—p
 #include <pybind11/operators.h>//operator
-#include "../../Crystal/Math/Vector3d.h"
+#include "Crystal/Math/Vector3d.h"
+#include "Crystal/Math/Triangle3d.h"
 
 #include "CrystalScene/Scene/World.h"
 #include "CrystalScene/Command/CommandFactory.h"
@@ -178,6 +179,12 @@ PYBIND11_MODULE(CrystalPLI, m) {
         .def("add", &Vector3ddVector::add)
         .def_readwrite("values", &Vector3ddVector::values);
     //    .def_readwrite("add", &std::vector<Vector3df>::push_back);
+
+    py::class_<Triangle3d>(m, "Triangle3d")
+        .def(py::init<Vector3dd, Vector3dd, Vector3dd>())
+        .def_property_readonly("v0", &Triangle3d::getV0)
+        .def_property_readonly("v1", &Triangle3d::getV1)
+        .def_property_readonly("v2", &Triangle3d::getV2);
 
     py::class_<Crystal::Graphics::ColorRGBAf>(m, "ColorRGBAf")
         .def(py::init<>())

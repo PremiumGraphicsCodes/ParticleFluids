@@ -39,6 +39,14 @@ class TestVector3dfVector(unittest.TestCase):
         self.assertEqual(2.0, vv[0].y)
         self.assertEqual(3.0, vv[0].z)
 
+class TestTriangle3d(unittest.TestCase):
+    def test(self):
+        v0 = Vector3dd(0.0,0.0,0.0)
+        v1 = Vector3dd(1.0,0.0,0.0)
+        v2 = Vector3dd(1.0,1.0,0.0)
+        t = Triangle3d(v0,v1,v2)
+#        t.v0
+
 class TestColorRGBAf(unittest.TestCase):
     def test(self):
         v = ColorRGBAf(0.1, 0.2, 0.3, 0.4)

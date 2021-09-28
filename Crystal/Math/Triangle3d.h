@@ -30,6 +30,12 @@ public:
 
 	std::array<Vector3dd, 3> getVertices() const { return vertices; }
 
+	Vector3dd getV0() const { return vertices[0]; }
+
+	Vector3dd getV1() const { return vertices[1]; }
+
+	Vector3dd getV2() const { return vertices[2]; }
+
 	void translate(const Math::Vector3dd& v);
 
 	void transform(const Math::Matrix3dd& matrix);

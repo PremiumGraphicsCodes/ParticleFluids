@@ -34,6 +34,9 @@
     <Compile Include="scene_labels.py" />
     <Compile Include="space_command.py" />
     <Compile Include="space_labels.py" />
+    <Compile Include="triangle_mesh_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="wire_frame_scene.py">
       <SubType>Code</SubType>
     </Compile>

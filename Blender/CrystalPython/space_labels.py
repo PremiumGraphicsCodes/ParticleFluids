@@ -27,7 +27,7 @@ class SparseVolumeSceneCreateLabels:
 class VoxelizerLabels:
    CommandNameLabel="VoxelizerCommand"
    MeshIdLabel="MeshId"
-   PSIdLabel="PSId"
+   VoxelIdLabel="VoxelId"
    DivideLengthLabel="DivideLength"
 class VoxelNodeSetLabels:
    CommandNameLabel="VoxelNodeSet"
