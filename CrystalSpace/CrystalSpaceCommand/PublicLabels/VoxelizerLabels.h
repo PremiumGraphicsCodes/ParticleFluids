@@ -1,8 +1,8 @@
 #include "CrystalScene/Command/Public/PublicLabel.h"
 
-namespace {
+namespace VoxelizerLabels {
 	PublicLabel CommandNameLabel = "VoxelizerCommand";
 	PublicLabel MeshIdLabel = "MeshId";
-	PublicLabel PSIdLabel = "PSId";
+	PublicLabel VoxelIdLabel = "VoxelId";
 	PublicLabel DivideLengthLabel = "DivideLength";
 }

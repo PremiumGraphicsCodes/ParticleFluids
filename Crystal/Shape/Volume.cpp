@@ -4,6 +4,12 @@ using namespace Crystal::Math;
 using namespace Crystal::Shape;
 
 template<typename T>
+Volume<T>::Volume() :
+	box(Box3dd()),
+	nodes(2,2,2)
+{}
+
+template<typename T>
 Volume<T>::Volume(const Math::Box3dd& box, const std::array<size_t, 3>& resolutions) :
 	box(box),
 	nodes(resolutions[0], resolutions[1], resolutions[2])

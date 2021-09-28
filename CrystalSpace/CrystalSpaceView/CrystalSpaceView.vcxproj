@@ -178,6 +178,7 @@
     <ClCompile Include="UniformGrid3dView.cpp" />
     <ClCompile Include="VolumeView.cpp" />
     <ClCompile Include="VolumeConvertView.cpp" />
+    <ClCompile Include="VoxelizerCommandView.cpp" />
     <ClCompile Include="VoxelizerView.cpp" />
     <ClCompile Include="VoxelSphereView.cpp" />
     <ClCompile Include="ZOrderSearchView.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="UniformGrid3dView.h" />
     <ClInclude Include="VolumeView.h" />
     <ClInclude Include="VolumeConvertView.h" />
+    <ClInclude Include="VoxelizerCommandView.h" />
     <ClInclude Include="VoxelizerView.h" />
     <ClInclude Include="VoxelSphereView.h" />
     <ClInclude Include="ZOrderSearchView.h" />
@@ -225,6 +227,9 @@
     </ProjectReference>
     <ProjectReference Include="..\..\Crystal\Shape\Shape.vcxproj">
       <Project>{ed61b745-9f00-48c2-b309-f1dbb37f03e3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CrystalSpaceCommand\CrystalSpaceCommand.vcxproj">
+      <Project>{33e8c184-64b2-410d-9aab-c47917688dbb}</Project>
     </ProjectReference>
     <ProjectReference Include="..\CrystalSpace\CrystalSpace.vcxproj">
       <Project>{d2a606d5-8e40-4fc5-90ee-07b3a0f81383}</Project>

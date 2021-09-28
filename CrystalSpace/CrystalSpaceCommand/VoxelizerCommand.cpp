@@ -3,9 +3,9 @@
 #include "PublicLabels/VoxelizerLabels.h"
 
 #include "CrystalScene/Scene/PolygonMeshScene.h"
-#include "CrystalScene/Scene/ParticleSystemScene.h"
+#include "CrystalScene/Scene/VoxelScene.h"
 
-#include "../CrystalSpace/Voxelizer.h"
+#include "../CrystalSpace/ScanLineVoxelizer.h"
 
 using namespace Crystal::Math;
 using namespace Crystal::Graphics;
@@ -17,12 +17,12 @@ VoxelizerCommand::VoxelizerCommand() :
 {}
 
 VoxelizerCommand::Args::Args() :
-	meshId(::MeshIdLabel, -1),
-	psId(::PSIdLabel, -1),
-	divideLength(::DivideLengthLabel, 1.0)
+	meshId(VoxelizerLabels::MeshIdLabel, -1),
+	voxelId(VoxelizerLabels::VoxelIdLabel, -1),
+	divideLength(VoxelizerLabels::DivideLengthLabel, 1.0)
 {
 	add(&meshId);
-	add(&psId);
+	add(&voxelId);
 	add(&divideLength);
 }
 
@@ -32,7 +32,7 @@ VoxelizerCommand::Results::Results()
 
 std::string VoxelizerCommand::getName()
 {
-	return ::CommandNameLabel;
+	return VoxelizerLabels::CommandNameLabel;
 }
 
 bool VoxelizerCommand::execute(World* scene)
@@ -41,21 +41,17 @@ bool VoxelizerCommand::execute(World* scene)
 	if (pmScene == nullptr) {
 		return false;
 	}
-	auto psScene = scene->getScenes()->findSceneById<ParticleSystemScene*>(args.psId.getValue());
-	if (psScene == nullptr) {
+	auto voxelScene = scene->getScenes()->findSceneById<VoxelScene*>(args.voxelId.getValue());
+	if (voxelScene == nullptr) {
 		return false;
 	}
-	Voxelizer converter;
-	converter.voxelize(*pmScene->getShape(), args.divideLength.getValue());
-	psScene->getShape()->clear();
-	/*
-	const auto points = converter.getPoints();
-	ParticleAttribute attr;
-	attr.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-	attr.size = 10.0;
-	for (const auto& p : points) {
-		psScene->getShape()->add(p, attr);
-	}
-	*/
+	const auto divideLength = args.divideLength.getValue();
+	const auto bb = pmScene->getShape()->getBoundingBox();
+	const auto p1 = bb.getMin() - Vector3dd(divideLength);
+	const auto p2 = bb.getMax() + Vector3dd(divideLength);
+	const Math::Box3dd space(p1, p2);
+	ScanLineVoxelizer converter;
+	converter.voxelize(*pmScene->getShape(), space, divideLength);
+	voxelScene->setShape(converter.getVoxel());
 	return true;
 }

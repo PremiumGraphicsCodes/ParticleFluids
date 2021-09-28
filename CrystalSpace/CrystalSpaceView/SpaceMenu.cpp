@@ -20,6 +20,8 @@
 #include "ScanLineVoxelizerView.h"
 #include "RayTracerView.h"
 
+#include "VoxelizerCommandView.h"
+
 #include "CrystalScene/AppBase/imgui.h"
 
 using namespace Crystal::Scene;
@@ -33,19 +35,21 @@ SpaceMenu::SpaceMenu(const std::string& name, World* model, Canvas* canvas, Cont
 
 void SpaceMenu::onShow()
 {
-	auto world = getWorld();
-	if (ImGui::BeginMenu("Algo")) {
+	const auto world = getWorld();
+	const auto canvas = getCanvas();
+
+	if (ImGui::BeginMenu("Space")) {
 		if (ImGui::MenuItem("SpaceHash")) {
-			control->setWindow(new SpaceHashView(world, getCanvas()));
+			control->setWindow(new SpaceHashView(world, canvas));
 		}
 		if (ImGui::MenuItem("CompactSpaceHash")) {
-			control->setWindow(new CompactSpaceHash3dView(world, getCanvas()));
+			control->setWindow(new CompactSpaceHash3dView(world, canvas));
 		}
 		if (ImGui::MenuItem("IndexedSortSearch")) {
-			control->setWindow(new IndexedSortSearchAlgoView(getWorld(), getCanvas()));
+			control->setWindow(new IndexedSortSearchAlgoView(world, canvas));
 		}
 		if (ImGui::MenuItem("ZOrderSearch")) {
-			control->setWindow(new ZOrderSearchView(getWorld(), getCanvas()));
+			control->setWindow(new ZOrderSearchView(world, canvas));
 		}
 		if (ImGui::MenuItem("Octree")) {
 			control->setWindow(new OctreeView(getWorld(), getCanvas()));
@@ -81,10 +85,16 @@ void SpaceMenu::onShow()
 			control->setWindow(new VoxelizerView("Voxelizer", world, getCanvas()));
 		}
 		if (ImGui::MenuItem("ScanLineVoxelizer")) {
-			control->setWindow(new ScanLineVoxelizerView("ScanLineVoxelizer", world, getCanvas()));
+			control->setWindow(new ScanLineVoxelizerView("ScanLineVoxelizer", world, canvas));
 		}
 		if (ImGui::MenuItem("RayTracer")) {
-			control->setWindow(new RayTracerView("RayTracer", world, getCanvas()));
+			control->setWindow(new RayTracerView("RayTracer", world, canvas));
+		}
+		ImGui::EndMenu();
+	}
+	if (ImGui::BeginMenu("SpaceCommand")) {
+		if (ImGui::MenuItem("VoxelizerCommand")) {
+			control->setWindow(new VoxelizerCommandView("VoxelizerCommand", world, canvas));
 		}
 		ImGui::EndMenu();
 	}

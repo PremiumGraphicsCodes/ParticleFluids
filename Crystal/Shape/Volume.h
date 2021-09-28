@@ -21,6 +21,8 @@ template<typename T>
 class Volume : public IShape
 {
 public:
+	Volume();
+
 	Volume(const Math::Box3dd& box, const std::array<size_t, 3>& resolutions);
 
 	Volume(const Math::Box3dd& box, const Util::Array3d<T>& nodes);

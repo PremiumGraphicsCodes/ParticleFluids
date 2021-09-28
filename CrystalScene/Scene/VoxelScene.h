@@ -26,7 +26,9 @@ public:
 
 	Math::Box3dd getBoundingBox() const { return shape->getBoundingBox(); }
 
-	Shape::Volume<bool>* getShape() const { return shape.get(); }
+	void setShape(std::unique_ptr<Shape::Volume<bool>> shape) { this->shape = std::move(shape); }
+
+	const Shape::Volume<bool>* getShape() const { return shape.get(); }
 
 	SceneType getType() const { return SceneType("VoxelScene"); }
 

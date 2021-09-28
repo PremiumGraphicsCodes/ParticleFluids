@@ -13,7 +13,7 @@ public:
 		Args();
 
 		Command::Arg<int> meshId;
-		Command::Arg<int> psId;
+		Command::Arg<int> voxelId;
 		Command::Arg<float> divideLength;
 	};
 
