@@ -9,7 +9,7 @@ class TriangleMeshScene :
 
     def create(self, triangles, name, layer) :
         create_scene_command(scene_labels.TriangleMeshCreateLabels.CommandNameLabel)
-        set_arg_int(scene_labels.TriangleMeshSceneCreateLabels.LayerLabel, layer)
+        set_arg_int(scene_labels.TriangleMeshCreateLabels.LayerLabel, layer)
         set_arg_triangle3dd_vector(scene_labels.TriangleMeshCreateLabels.TrianglesLabel, triangles)
         set_arg_string(scene_labels.TriangleMeshCreateLabels.NameLabel, name)
         is_ok = execute_command(self.scene.world)

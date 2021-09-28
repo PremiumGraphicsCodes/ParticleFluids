@@ -108,6 +108,10 @@ namespace {
         command->setArg(name, vv.values);
     }
 
+    void setArgTriangle3ddVector(const std::string& name, const Triangle3ddVector& tv) {
+        command->setArg(name, tv.values);
+    }
+
     /*
     template<typename T>
     void setArg<T>(const std::string& name, const T& value)
@@ -232,7 +236,7 @@ PYBIND11_MODULE(CrystalPLI, m) {
     m.def("set_arg_box3df", &setArg<Box3df>);
     m.def("set_arg_box3dd", &setArg<Box3dd>);
     m.def("set_arg_triangle3dd", &setArg<Triangle3d>);
-    m.def("set_arg_triangle3dd_vector", &setArg<Triangle3ddVector>);
+    m.def("set_arg_triangle3dd_vector", &setArgTriangle3ddVector);
     m.def("set_arg_vector3df_vector", &setArgVector3dfVector);
     m.def("set_arg_vector3dd_vector", &setArgVector3ddVector);
     m.def("set_arg_color4f", setArg<Crystal::Graphics::ColorRGBAf>);
