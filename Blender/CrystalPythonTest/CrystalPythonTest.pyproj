@@ -41,6 +41,9 @@
     <Compile Include="triangle_mesh_scene_test.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="voxel_scene_test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="wire_frame_scene_test.py" />
   </ItemGroup>
   <ItemGroup>

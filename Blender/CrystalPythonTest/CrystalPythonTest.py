@@ -11,6 +11,7 @@ from space_command_test import *
 from wire_frame_scene_test import *
 from polygon_mesh_scene_test import *
 from triangle_mesh_scene_test import *
+from voxel_scene_test import *
 from physics_command_test import *
 
 #print('doc=', CrystalPLI.__doc__)
@@ -107,6 +108,7 @@ class TestRunner(unittest.TestCase):
         test_suite.addTest(unittest.makeSuite(PolygonMeshSceneTest))
         test_suite.addTest(unittest.makeSuite(TriangleMeshSceneTest))
         test_suite.addTest(unittest.makeSuite(SpaceCommandTest))
+        test_suite.addTest(unittest.makeSuite(VoxelSceneTest))
         test_suite.addTest(unittest.makeSuite(SolverSceneTest))
         test_suite.addTest(unittest.makeSuite(CSGBoundarySceneTest))
         test_suite.addTest(unittest.makeSuite(FluidSceneTest))

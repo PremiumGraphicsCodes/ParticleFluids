@@ -37,6 +37,9 @@
     <Compile Include="triangle_mesh_scene.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="voxel_scene.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="wire_frame_scene.py">
       <SubType>Code</SubType>
     </Compile>
