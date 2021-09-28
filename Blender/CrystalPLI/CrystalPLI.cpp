@@ -55,6 +55,21 @@ namespace {
         //    Vector3dd get(const int index) { return this->values[i]; }
     };
 
+    class Triangle3ddVector
+    {
+    public:
+        Triangle3ddVector()
+        {}
+
+        explicit Triangle3ddVector(const std::vector<Triangle3d>& vs) :
+            values(vs)
+        {}
+
+        std::vector<Triangle3d> values;
+
+        void add(Triangle3d v) { this->values.push_back(v); }
+    };
+
     Crystal::Command::CommandFactory sceneCommandFactory;
     Crystal::Space::SpaceCommandFactory spaceCommandFactory;
     Crystal::Physics::PhysicsCommandFactory physicsCommandFactory;
@@ -180,11 +195,16 @@ PYBIND11_MODULE(CrystalPLI, m) {
         .def_readwrite("values", &Vector3ddVector::values);
     //    .def_readwrite("add", &std::vector<Vector3df>::push_back);
 
-    py::class_<Triangle3d>(m, "Triangle3d")
+    py::class_<Triangle3d>(m, "Triangle3dd")
         .def(py::init<Vector3dd, Vector3dd, Vector3dd>())
         .def_property_readonly("v0", &Triangle3d::getV0)
         .def_property_readonly("v1", &Triangle3d::getV1)
         .def_property_readonly("v2", &Triangle3d::getV2);
+
+    py::class_<Triangle3ddVector>(m, "Triangle3ddVector")
+        .def(py::init<>())
+        .def("add", &Triangle3ddVector::add)
+        .def_readwrite("values", &Triangle3ddVector::values);
 
     py::class_<Crystal::Graphics::ColorRGBAf>(m, "ColorRGBAf")
         .def(py::init<>())
@@ -197,7 +217,6 @@ PYBIND11_MODULE(CrystalPLI, m) {
     m.def("create_scene_command", &createSceneCommand);
     m.def("create_space_command", &createSpaceCommand);
     m.def("create_physics_command", &createPhysicsCommand);
-    //m.def("create_vdb_command", &createVDBCommand);
     m.def("execute_command", &executeCommand);
     m.def("set_arg_bool", &setArg<bool>);
     m.def("set_arg_bool_vector", &setArg<std::vector<bool>>);
@@ -212,6 +231,8 @@ PYBIND11_MODULE(CrystalPLI, m) {
     m.def("set_arg_vector3dd", &setArg<Vector3dd>);
     m.def("set_arg_box3df", &setArg<Box3df>);
     m.def("set_arg_box3dd", &setArg<Box3dd>);
+    m.def("set_arg_triangle3dd", &setArg<Triangle3d>);
+    m.def("set_arg_triangle3dd_vector", &setArg<Triangle3ddVector>);
     m.def("set_arg_vector3df_vector", &setArgVector3dfVector);
     m.def("set_arg_vector3dd_vector", &setArgVector3ddVector);
     m.def("set_arg_color4f", setArg<Crystal::Graphics::ColorRGBAf>);

@@ -10,7 +10,7 @@ from scene_test import *
 from space_command_test import *
 from wire_frame_scene_test import *
 from polygon_mesh_scene_test import *
-#from vdb_command_test import *
+from triangle_mesh_scene_test import *
 from physics_command_test import *
 
 #print('doc=', CrystalPLI.__doc__)
@@ -39,13 +39,24 @@ class TestVector3dfVector(unittest.TestCase):
         self.assertEqual(2.0, vv[0].y)
         self.assertEqual(3.0, vv[0].z)
 
-class TestTriangle3d(unittest.TestCase):
+class TestTriangle3dd(unittest.TestCase):
     def test(self):
         v0 = Vector3dd(0.0,0.0,0.0)
         v1 = Vector3dd(1.0,0.0,0.0)
         v2 = Vector3dd(1.0,1.0,0.0)
-        t = Triangle3d(v0,v1,v2)
+        t = Triangle3dd(v0,v1,v2)
 #        t.v0
+
+class TestTriangle3ddVector(unittest.TestCase):
+    def test(self):
+        v0 = Vector3dd(0.0,0.0,0.0)
+        v1 = Vector3dd(1.0,0.0,0.0)
+        v2 = Vector3dd(1.0,1.0,0.0)
+        t1 = Triangle3dd(v0,v1,v2)
+        t2 = Triangle3dd(v2,v1,v0)
+        tv = Triangle3ddVector()
+        tv.add(t1)
+        tv.add(t2)
 
 class TestColorRGBAf(unittest.TestCase):
     def test(self):
@@ -94,6 +105,7 @@ class TestRunner(unittest.TestCase):
         test_suite.addTest(unittest.makeSuite(ParticleSystemSceneTest))
         test_suite.addTest(unittest.makeSuite(WireFrameSceneTest))
         test_suite.addTest(unittest.makeSuite(PolygonMeshSceneTest))
+        test_suite.addTest(unittest.makeSuite(TriangleMeshSceneTest))
         test_suite.addTest(unittest.makeSuite(SpaceCommandTest))
         test_suite.addTest(unittest.makeSuite(SolverSceneTest))
         test_suite.addTest(unittest.makeSuite(CSGBoundarySceneTest))

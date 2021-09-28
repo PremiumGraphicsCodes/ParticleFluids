@@ -7,12 +7,11 @@ class TriangleMeshScene :
         self.scene = scene
         self.id = -1
 
-    def create(self, layer) :
+    def create(self, triangles, name, layer) :
         create_scene_command(scene_labels.TriangleMeshCreateLabels.CommandNameLabel)
         set_arg_int(scene_labels.TriangleMeshSceneCreateLabels.LayerLabel, layer)
-#        set_arg_vector3dd_vector(scene_labels.PolygonMeshCreateLabels.PositionsLabel, positions)
-#        set_arg_vector3dd_vector(scene_labels.PolygonMeshCreateLabels.NormalsLabel, normals)
-#        set_arg_
+        set_arg_triangle3dd_vector(scene_labels.TriangleMeshCreateLabels.TrianglesLabel, triangles)
+        set_arg_string(scene_labels.TriangleMeshCreateLabels.NameLabel, name)
         is_ok = execute_command(self.scene.world)
         self.id = get_result_int(scene_labels.PolygonMeshCreateLabels.NewIdLabel)
         return is_ok
