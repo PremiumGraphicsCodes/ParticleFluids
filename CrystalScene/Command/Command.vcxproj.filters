@@ -268,6 +268,12 @@
     <ClInclude Include="Public\TriangleMeshCreateLabels.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="TriangleMeshGetCommand.h">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\TriangleMeshGetLabels.h">
+      <Filter>Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICommand.cpp" />
@@ -401,6 +407,9 @@
       <Filter>Scene\Shape\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="TriangleMeshCreateCommand.cpp">
+      <Filter>Scene\Shape\TriangleMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleMeshGetCommand.cpp">
       <Filter>Scene\Shape\TriangleMesh</Filter>
     </ClCompile>
   </ItemGroup>
